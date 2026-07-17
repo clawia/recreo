@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Recreo — En jeu</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}" href="/css/app.css"/>
+    <script th:src="@{/js/htmx.min.js}" src="/js/htmx.min.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+    <h1>🎰 Recreo</h1>
+</header>
+
+<main class="layout">
+    <section class="stage">
+        <!-- Page complete hebergeant le fragment generique de la mecanique. -->
+        <div id="game-area" class="game-area">
+            <div th:insert="~{fragments/banditmanchot :: game}"></div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

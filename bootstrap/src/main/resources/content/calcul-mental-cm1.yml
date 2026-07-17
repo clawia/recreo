@@ -1,0 +1,17 @@
+# Contenu declaratif — Calcul mental CM1 (cycle 3).
+# Meme mecanique (bandit-manchot), difficulte pilotee par ce fichier.
+entryId: calcul-mental-cm1
+title: "Calcul mental — CM1"
+description: "Multiplications, additions et soustractions (2 a 12)."
+mechanic: bandit-manchot
+matiere: mathematiques
+niveau: CM1
+domaine: "Calcul mental"
+difficulty:
+  minOperand: 2
+  maxOperand: 12
+  operations:
+    - MULTIPLICATION
+    - ADDITION
+    - SOUSTRACTION
+  distractorCount: 3

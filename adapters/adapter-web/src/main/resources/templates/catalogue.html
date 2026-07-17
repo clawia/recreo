@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Recreo — Choisis ton jeu</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}" href="/css/app.css"/>
+    <!-- htmx : servi depuis le jar. Voir static/js/htmx-note.txt pour l'ajout du fichier. -->
+    <script th:src="@{/js/htmx.min.js}" src="/js/htmx.min.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+    <h1>🎰 Recreo</h1>
+    <p class="tagline">Choisis un jeu et amuse-toi en révisant !</p>
+</header>
+
+<main class="layout">
+    <section class="catalogue">
+        <h2>Les jeux</h2>
+        <div class="cards">
+            <form class="card" th:each="item : ${catalogue}"
+                  th:action="@{/sessions}" method="post"
+                  th:attr="hx-post=@{/sessions}"
+                  hx-target="#game-area" hx-swap="innerHTML">
+                <input type="hidden" name="catalogEntryId" th:value="${item.entryId}"/>
+                <button type="submit" class="card-btn">
+                    <span class="card-title" th:text="${item.title}">Titre du jeu</span>
+                    <span class="card-desc" th:text="${item.description}">Description</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <section class="stage">
+        <div id="game-area" class="game-area">
+            <p class="hint">👆 Clique sur un jeu pour commencer.</p>
+        </div>
+    </section>
+</main>
+</body>
+</html>

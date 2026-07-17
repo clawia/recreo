@@ -1,0 +1,16 @@
+# Contenu declaratif — Calcul mental CP (cycle 2).
+# Meme mecanique (bandit-manchot), difficulte pilotee par ce fichier.
+entryId: calcul-mental-cp
+title: "Calcul mental — CP"
+description: "Additions et soustractions jusqu'a 10."
+mechanic: bandit-manchot
+matiere: mathematiques
+niveau: CP
+domaine: "Calcul mental"
+difficulty:
+  minOperand: 0
+  maxOperand: 10
+  operations:
+    - ADDITION
+    - SOUSTRACTION
+  distractorCount: 2

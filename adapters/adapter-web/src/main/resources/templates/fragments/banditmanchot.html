@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Bandit manchot</title>
+</head>
+<body>
+<!--
+  Fragment generique de la mecanique "bandit manchot".
+  Il ne connait que la mecanique (prompt + rouleaux + feedback) : jamais le
+  contenu (addition, multiplication...). Reutilisable pour toute matiere.
+-->
+<div th:fragment="game" class="bandit" th:attr="data-session-id=${game.sessionId}">
+
+    <div class="scoreboard">
+        <span class="score">⭐ Score : <b th:text="${game.score}">0</b></span>
+        <span class="round">Manche <b th:text="${game.round}">1</b></span>
+    </div>
+
+    <div th:if="${game.hasFeedback}"
+         th:classappend="${game.correct} ? 'feedback ok' : 'feedback ko'"
+         class="feedback">
+        <span th:text="${game.feedbackMessage}">Feedback</span>
+    </div>
+
+    <div class="prompt">
+        <span th:text="${game.prompt}">2 + 3 = ?</span>
+    </div>
+
+    <div class="reels">
+        <form class="reel" th:each="opt : ${game.options}"
+              th:action="@{/sessions/{id}/moves(id=${game.sessionId})}" method="post"
+              th:attr="hx-post=@{/sessions/{id}/moves(id=${game.sessionId})}"
+              hx-target="#game-area" hx-swap="innerHTML">
+            <input type="hidden" name="chosenAnswer" th:value="${opt}"/>
+            <button type="submit" class="reel-btn" th:text="${opt}">42</button>
+        </form>
+    </div>
+
+    <p class="replay">
+        <a th:href="@{/}" href="/">↩ Retour aux jeux</a>
+    </p>
+</div>
+</body>
+</html>
