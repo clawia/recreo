@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+
+jobs:
+  build:
+    name: Build & test (Java 21)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21 (Temurin) + cache Maven
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Verify (compile + tests unitaires + integration H2 + ArchUnit)
+        run: mvn -B verify
+
+      - name: Package the executable fat jar (recreo.jar)
+        run: mvn -B -pl bootstrap -am package
