@@ -7,3 +7,4 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Une DEC = une ligne.
 |---|---|---|---|---|---|
 | DEC-0001 | Présentation « machine à sous » du bandit manchot | Maths — calcul mental CP/CM1 | VALIDÉ (user, 2026-07-18) | 2026-07-18 | s01 |
 | DEC-0002 | Français CP : exercice « dénombrer les syllabes » | Français CP — conscience phonologique | VALIDÉ (user, 2026-07-18) | 2026-07-18 | s02 |
+| DEC-0003 | Paramétrage des jeux : adulte, session, non persisté | transverse (adaptation difficulté) | VALIDÉ (user, 2026-07-18) | 2026-07-18 | s03 |
