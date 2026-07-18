@@ -8,6 +8,7 @@ reste la **validation pédagogique humaine**, pas la vitesse des agents.
 |--------|-------|-----|-----------------|-----------------|----------------|-------------|
 | s01 | 2026-07-17 09:00 | 2026-07-17 | 1 salve d'amorçage | Socle + squad + moteur de jeu + bandit manchot CP/CM1 (fat jar jouable) | ✅ CI verte (12 tests) | ✅ VALIDÉ 2026-07-18 (+ playtest) |
 | s02 | 2026-07-18 | 2026-07-18 | 1 salve (+ 2 retouches ergo en démo) | ADR-0004 (tokens génériques) + Français CP « syllabes » (même mécanique) + navigation (sélection → jeu centré + retour) | ✅ CI verte (18 tests) | ✅ VALIDÉ 2026-07-18 |
+| s03 | 2026-07-18 | 2026-07-18 | 1 salve | ADR-0005 (catalogue enrichi + paramètres) + navigation à deux axes (par niveau / par jeu) + bouton paramètres par jeu (maths/français) | ✅ CI verte (38 tests) | ⏳ À VALIDER |
 
 > Note : « 1 salve d'amorçage » = les agents ont produit l'incrément en une session de travail
 > continue (temps réel de l'ordre de la dizaine de minutes à quelques heures selon les tâches),
