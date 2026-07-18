@@ -4,6 +4,9 @@ entryId: calcul-mental-cm1
 title: "Calcul mental — CM1"
 description: "Multiplications, additions et soustractions (2 a 12)."
 mechanic: bandit-manchot
+# gameKey : meme jeu que le CP (regroupement "par jeu"), niveau different.
+gameKey: calcul-mental
+gameLabel: "Calcul mental"
 matiere: mathematiques
 niveau: CM1
 domaine: "Calcul mental"
@@ -15,3 +18,12 @@ difficulty:
     - ADDITION
     - SOUSTRACTION
   distractorCount: 3
+# Bornes de reglage coherentes avec le programme CM1 (les trois operations,
+# operandes plus grands mais bornes).
+bounds:
+  operandFloor: 0
+  operandCeiling: 100
+  allowedOperations:
+    - ADDITION
+    - SOUSTRACTION
+    - MULTIPLICATION

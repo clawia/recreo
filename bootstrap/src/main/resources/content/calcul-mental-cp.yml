@@ -4,6 +4,9 @@ entryId: calcul-mental-cp
 title: "Calcul mental — CP"
 description: "Additions et soustractions jusqu'a 10."
 mechanic: bandit-manchot
+# gameKey : identifiant du JEU independant du niveau (regroupement "par jeu").
+gameKey: calcul-mental
+gameLabel: "Calcul mental"
 matiere: mathematiques
 niveau: CP
 domaine: "Calcul mental"
@@ -14,3 +17,11 @@ difficulty:
     - ADDITION
     - SOUSTRACTION
   distractorCount: 2
+# Bornes de reglage coherentes avec le programme CP (pas de multiplication,
+# operandes raisonnables) : un reglage hors-programme est impossible.
+bounds:
+  operandFloor: 0
+  operandCeiling: 20
+  allowedOperations:
+    - ADDITION
+    - SOUSTRACTION

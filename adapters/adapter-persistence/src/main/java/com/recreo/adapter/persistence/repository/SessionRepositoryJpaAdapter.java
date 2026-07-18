@@ -55,13 +55,15 @@ public class SessionRepositoryJpaAdapter implements SessionRepository {
                 entity.getScore(),
                 entity.getRound(),
                 SessionStatus.valueOf(entity.getStatus()),
+                state.parameters(),
                 null,
                 null);
     }
 
     private String writeState(GameSession session) {
         try {
-            return objectMapper.writeValueAsString(new PersistedState(session.currentItem(), session.reels()));
+            return objectMapper.writeValueAsString(
+                    new PersistedState(session.currentItem(), session.reels(), session.parameters()));
         } catch (Exception e) {
             throw new IllegalStateException("Impossible de serialiser l'etat de session", e);
         }

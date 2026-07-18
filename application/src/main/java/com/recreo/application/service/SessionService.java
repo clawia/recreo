@@ -2,6 +2,8 @@ package com.recreo.application.service;
 
 import com.recreo.application.port.in.CatalogEntryView;
 import com.recreo.application.port.in.CatalogueQuery;
+import com.recreo.application.port.in.GameSettingsView;
+import com.recreo.application.port.in.GameSummaryView;
 import com.recreo.application.port.in.MoveOutcomeView;
 import com.recreo.application.port.in.SessionView;
 import com.recreo.application.port.in.StartSessionCommand;
@@ -21,7 +23,9 @@ import com.recreo.domain.mechanic.Reel;
 import com.recreo.domain.mechanic.SessionId;
 import com.recreo.domain.mechanic.SpinAndPick;
 
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Supplier;
 
 /**
@@ -42,10 +46,14 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
 
     @Override
     public SessionView start(StartSessionCommand command) {
-        GameConfig config = catalog.configFor(command.catalogEntryId());
+        // Reglages de session appliques sur la config de base au demarrage.
+        GameConfig config = catalog.configFor(command.catalogEntryId(), command.parameters());
         GameMechanic mechanic = catalog.mechanicFor(config.mechanic());
         GameSession session = mechanic.start(config, randomFactory.get())
-                .withCatalogEntryId(command.catalogEntryId());
+                .withCatalogEntryId(command.catalogEntryId())
+                // Les reglages font partie de l'etat de session : ils permettent de
+                // reconstruire le meme generateur parametre a chaque coup.
+                .withParameters(command.parameters());
         repository.save(session);
         return toSessionView(session);
     }
@@ -56,8 +64,9 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
         GameSession stored = repository.findById(sessionId)
                 .orElseThrow(() -> new IllegalArgumentException("Session inconnue : " + command.sessionId()));
 
-        // Re-attache les dependances d'execution perdues a la serialisation.
-        GameConfig config = catalog.configFor(stored.catalogEntryId());
+        // Re-attache les dependances d'execution perdues a la serialisation, en
+        // reappliquant les reglages memorises dans la session.
+        GameConfig config = catalog.configFor(stored.catalogEntryId(), stored.parameters());
         GameSession session = stored.withRuntime(config.content(), randomFactory.get());
 
         GameMechanic mechanic = catalog.mechanicFor(session.mechanic());
@@ -73,8 +82,54 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
                 .toList();
     }
 
+    @Override
+    public List<String> niveaux() {
+        Set<String> distinct = new LinkedHashSet<>();
+        for (CatalogEntry entry : catalog.entries()) {
+            distinct.add(entry.niveau());
+        }
+        return List.copyOf(distinct);
+    }
+
+    @Override
+    public List<GameSummaryView> games() {
+        Set<String> seen = new LinkedHashSet<>();
+        return catalog.entries().stream()
+                .filter(e -> seen.add(e.gameKey()))
+                .map(e -> new GameSummaryView(e.gameKey(), e.gameLabel()))
+                .toList();
+    }
+
+    @Override
+    public List<CatalogEntryView> byNiveau(String niveau) {
+        return catalog.entries().stream()
+                .filter(e -> e.niveau().equals(niveau))
+                .map(this::toCatalogEntryView)
+                .toList();
+    }
+
+    @Override
+    public List<CatalogEntryView> byGameKey(String gameKey) {
+        return catalog.entries().stream()
+                .filter(e -> e.gameKey().equals(gameKey))
+                .map(this::toCatalogEntryView)
+                .toList();
+    }
+
+    @Override
+    public GameSettingsView settingsFor(String entryId) {
+        return catalog.settingsFor(entryId);
+    }
+
     private CatalogEntryView toCatalogEntryView(CatalogEntry entry) {
-        return new CatalogEntryView(entry.entryId(), entry.title(), entry.description());
+        return new CatalogEntryView(
+                entry.entryId(),
+                entry.matiere(),
+                entry.niveau(),
+                entry.gameKey(),
+                entry.gameLabel(),
+                entry.title(),
+                entry.description());
     }
 
     private SessionView toSessionView(GameSession session) {

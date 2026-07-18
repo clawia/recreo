@@ -35,6 +35,8 @@ public final class ContentPackLoader {
         String title = (String) root.get("title");
         String description = (String) root.get("description");
         String mechanic = (String) root.get("mechanic");
+        String gameKey = (String) root.get("gameKey");
+        String gameLabel = (String) root.get("gameLabel");
 
         ContentDescriptor descriptor = new ContentDescriptor(
                 (String) root.get("matiere"),
@@ -45,14 +47,23 @@ public final class ContentPackLoader {
         int minOperand = ((Number) difficulty.get("minOperand")).intValue();
         int maxOperand = ((Number) difficulty.get("maxOperand")).intValue();
         int distractorCount = ((Number) difficulty.get("distractorCount")).intValue();
+        EnumSet<Operation> operations = readOperations((List<String>) difficulty.get("operations"));
+        DifficultyConfig config = new DifficultyConfig(minOperand, maxOperand, operations, distractorCount);
 
-        List<String> operationNames = (List<String>) difficulty.get("operations");
+        Map<String, Object> boundsNode = (Map<String, Object>) root.get("bounds");
+        int operandFloor = ((Number) boundsNode.get("operandFloor")).intValue();
+        int operandCeiling = ((Number) boundsNode.get("operandCeiling")).intValue();
+        EnumSet<Operation> allowed = readOperations((List<String>) boundsNode.get("allowedOperations"));
+        MathBounds bounds = new MathBounds(operandFloor, operandCeiling, allowed);
+
+        return new ContentPack(entryId, title, description, mechanic, gameKey, gameLabel, descriptor, config, bounds);
+    }
+
+    private EnumSet<Operation> readOperations(List<String> names) {
         EnumSet<Operation> operations = EnumSet.noneOf(Operation.class);
-        for (String name : operationNames) {
+        for (String name : names) {
             operations.add(Operation.valueOf(name));
         }
-
-        DifficultyConfig config = new DifficultyConfig(minOperand, maxOperand, operations, distractorCount);
-        return new ContentPack(entryId, title, description, mechanic, descriptor, config);
+        return operations;
     }
 }

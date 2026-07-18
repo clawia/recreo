@@ -42,9 +42,28 @@ public final class SyllabesCpGenerator implements ContentGenerator {
     private final ContentDescriptor descriptor;
     private final List<Map.Entry<String, Integer>> entries;
 
+    /** Comportement historique : aucun filtre, toute la liste de mots est jouable. */
     public SyllabesCpGenerator(ContentDescriptor descriptor) {
+        this(descriptor, null);
+    }
+
+    /**
+     * Generateur configurable : si {@code maxSyllabes} est non nul, seuls les mots
+     * comptant au plus {@code maxSyllabes} syllabes sont tires. {@code null} =
+     * aucun filtre (comportement par defaut, identique a la version historique).
+     *
+     * @throws IllegalArgumentException si le filtre ne laisse aucun mot jouable.
+     */
+    public SyllabesCpGenerator(ContentDescriptor descriptor, Integer maxSyllabes) {
         this.descriptor = descriptor;
-        this.entries = List.copyOf(MOTS.entrySet());
+        List<Map.Entry<String, Integer>> filtered = MOTS.entrySet().stream()
+                .filter(e -> maxSyllabes == null || e.getValue() <= maxSyllabes)
+                .toList();
+        if (filtered.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Aucun mot ne respecte maxSyllabes=" + maxSyllabes);
+        }
+        this.entries = List.copyOf(filtered);
     }
 
     private static Map<String, Integer> buildMots() {
