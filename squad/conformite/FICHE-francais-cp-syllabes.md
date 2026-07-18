@@ -5,7 +5,7 @@
 - **Contenu pédagogique** : `SyllabesCpGenerator` (`domain/content/impl`) — dénombrer les
   syllabes orales d'un mot.
 - **Entrée catalogue** : `francais-cp` (« Français CP — Les syllabes »).
-- **Statut global** : En cours (Done technique ✅) — en attente du Done pédagogique (démo).
+- **Statut global** : ✅ Validé pédago (démo du 2026-07-18) — playtest enfants à venir (jalon)
 - **Dernière mise à jour** : 2026-07-18, par camille-po
 
 ## Compétence programme couverte
@@ -25,15 +25,17 @@ Détail du référentiel : `squad/programme/francais/competences-cp.md`.
 - [x] Vocabulaire adapté au CP (mots courants : chat, lapin, bateau, chocolat, ordinateur…).
 - [x] Adaptation au niveau sans code de mécanique dédié : `BanditManchotMechanic` **inchangée** ;
       seul le `ContentGenerator` change (vérifié par ArchUnit + test paramétré maths/français).
-- [ ] **Réserve à valider en démo** : le mot sur un seul rouleau reste lisible et la consigne
-      « Combien de syllabes ? » est comprise par l'enfant (à confirmer au playtest).
+- [x] **Lisibilité confirmée en démo** après 2 retouches d'ergonomie : le **mot s'affiche en
+      entier** (rouleau à largeur adaptative) et la **consigne « Combien de syllabes ? » est sortie
+      de la machine** (placée entre le casier et les réponses).
 
 ## Bloc validation utilisateur (Done pédagogique)
 
-- **Démo jouée le** : — (à venir, fin de sprint s02)
-- **Validée par l'utilisatrice** : Non (en attente)
-- **Date de validation** : —
-- **Commentaires** : —
+- **Démo jouée le** : 2026-07-18
+- **Validée par l'utilisatrice** : ✅ Oui
+- **Date de validation** : 2026-07-18
+- **Commentaires** : Validé après 2 retouches (mot entier + consigne hors machine). Conforme à la
+  compétence de conscience syllabique CP.
 
 ## Bloc playtest enfants
 

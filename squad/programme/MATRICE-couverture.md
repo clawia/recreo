@@ -27,7 +27,7 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 
 | Matière | Niveau | Domaine | Compétence (réf. programme) | Jeu(x) couvrant | Mécanique | Statut |
 |---|---|---|---|---|---|---|
-| Français | CP | Langage oral / phonologie | Conscience phonologique — dénombrer les syllabes orales d'un mot | Bandit manchot — Les syllabes | bandit manchot | en cours (s02) |
+| Français | CP | Langage oral / phonologie | Conscience phonologique — dénombrer les syllabes orales d'un mot | Bandit manchot — Les syllabes | bandit manchot | couvert-validé (s02, 2026-07-18) |
 | Français | CP | Lecture et compréhension | Décodage — association graphème/phonème (voyelles + consonnes simples) | — | — | non couvert |
 | Français | CP | Écriture — orthographe | Copie et écriture de mots simples sans erreur | — | — | non couvert |
 | Français | CM1 | Orthographe | Accord sujet-verbe et accord dans le groupe nominal | — | — | non couvert |

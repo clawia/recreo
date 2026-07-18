@@ -6,8 +6,9 @@
 - **Sprint** : s02
 - **Compétence programme visée** : Français CP — conscience phonologique (dénombrer les syllabes
   orales d'un mot).
-- **Statut de validation** : À VALIDER (démo s02 à venir)
-- **Validé par** : — (en attente utilisatrice)
+- **Statut de validation** : VALIDÉ (user, 2026-07-18) — après 2 retouches d'ergonomie (mot
+  affiché en entier + consigne sortie de la machine)
+- **Validé par** : utilisatrice (démo 2026-07-18)
 
 ## Contexte / besoin
 
