@@ -7,8 +7,9 @@
 <body>
 <!--
   Fragment generique de la mecanique "bandit manchot".
-  Il ne connait que la mecanique (prompt + rouleaux + feedback) : jamais le
-  contenu (addition, multiplication...). Reutilisable pour toute matiere.
+  Les 3 rouleaux affichent le CALCUL (operande, operateur, operande), issu du
+  prompt de la mecanique ; l'enfant clique ensuite sur la bonne reponse parmi
+  les options, EN DEHORS de la machine. Animation cote client : /js/bandit.js.
 -->
 <div th:fragment="game" class="bandit" th:attr="data-session-id=${game.sessionId}">
 
@@ -17,24 +18,42 @@
         <span class="round">Manche <b th:text="${game.round}">1</b></span>
     </div>
 
-    <div th:if="${game.hasFeedback}"
-         th:classappend="${game.correct} ? 'feedback ok' : 'feedback ko'"
-         class="feedback">
-        <span th:text="${game.feedbackMessage}">Feedback</span>
+    <!-- Casier de machine a sous : les rouleaux montrent le calcul a resoudre.
+         On decoupe le prompt "a op b = ?" en symboles (avant le '='). -->
+    <div class="machine" th:classappend="${game.hasFeedback and game.correct} ? ' jackpot' : ''"
+         th:with="calcul=${#strings.trim(#strings.substringBefore(game.prompt,'='))},
+                  symboles=${#strings.arraySplit(calcul,' ')}">
+        <div class="machine-head">🎰 <span>BANDIT MANCHOT</span> 🎰</div>
+
+        <div class="reels">
+            <div class="reel" th:each="sym : ${symboles}" th:attr="data-value=${sym}">
+                <span class="reel-window">
+                    <span class="reel-strip"><span class="reel-item" th:text="${sym}">2</span></span>
+                </span>
+            </div>
+            <div class="reel-eq">= ?</div>
+        </div>
+
+        <div class="lever" aria-hidden="true"><span class="lever-stick"></span><span class="lever-knob"></span></div>
     </div>
 
-    <div class="prompt">
-        <span th:text="${game.prompt}">2 + 3 = ?</span>
-    </div>
-
-    <div class="reels">
-        <form class="reel" th:each="opt : ${game.options}"
+    <!-- Les reponses : EN DEHORS de la machine, l'enfant clique sur la bonne. -->
+    <p class="answers-title">Clique sur la bonne réponse 👇</p>
+    <div class="answers">
+        <form class="answer-form" th:each="opt : ${game.options}"
               th:action="@{/sessions/{id}/moves(id=${game.sessionId})}" method="post"
               th:attr="hx-post=@{/sessions/{id}/moves(id=${game.sessionId})}"
               hx-target="#game-area" hx-swap="innerHTML">
             <input type="hidden" name="chosenAnswer" th:value="${opt}"/>
-            <button type="submit" class="reel-btn" th:text="${opt}">42</button>
+            <button type="submit" class="answer-btn" th:text="${opt}">42</button>
         </form>
+    </div>
+
+    <!-- Message de points : SOUS les reponses, pour ne pas decaler la machine. -->
+    <div th:if="${game.hasFeedback}"
+         th:classappend="${game.correct} ? 'feedback ok' : 'feedback ko'"
+         class="feedback">
+        <span th:text="${game.feedbackMessage}">Feedback</span>
     </div>
 
     <p class="replay">
