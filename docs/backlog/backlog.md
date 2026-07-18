@@ -156,6 +156,28 @@ Critères d'acceptation :
 
 ---
 
+## Sprint s04 — Déclinaisons du bandit manchot (gains rapides)
+
+Réutilisent la mécanique existante (pur contenu, htmx). Cf. `PROPOSITIONS-jeux.md` et
+`2026-07-18-s04-planning.md`.
+
+**US-s04 — 6 nouveaux jeux bandit manchot.**
+> En tant qu'élève, je révise de nouvelles notions avec le même jeu de machine à sous.
+
+Critères d'acceptation (pour chacun des 6 jeux) :
+- [ ] Un `ContentGenerator` dédié (liste de contenu **vérifiée**) produit des items conformes à la
+      compétence visée (réponse correcte + distracteurs plausibles), testé en déterministe.
+- [ ] Une entrée de catalogue (matière/niveau/gameKey) apparaît dans les **deux axes** de navigation.
+- [ ] `BanditManchotMechanic` **non modifiée** (vérifié par ArchUnit + réutilisation).
+- [ ] Les jeux sans réglage n'affichent pas de bouton « Paramètres ».
+- [ ] Matrice + fiche(s) mises à jour ; Done pédagogique après démo.
+
+Jeux : compléments à 10 (Maths CP), comparaison de nombres (Maths CP), la première lettre
+(Français CP), homophones (Français CM1), nature d'un mot (Français CM1), lexique anglais
+(Anglais CM1).
+
+---
+
 ## Backlog — sprints suivants (non détaillé à ce stade)
 
 - Web htmx pour le bandit manchot (fragments Thymeleaf, view-models) — sprint s03 visé.
