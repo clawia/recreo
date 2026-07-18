@@ -13,4 +13,18 @@ public record GameSettingsView(
         String niveau,
         MathSettingsView math,
         SyllabesSettingsView syllabes) {
+
+    /**
+     * Vrai si l'entree propose des reglages (au moins un bloc non nul). Les jeux
+     * sans parametre reglable renvoient une vue « aucun reglage » (les deux blocs
+     * nuls) : le front n'affiche alors pas de bouton « Paramètres » (cf. US-s04).
+     */
+    public boolean hasSettings() {
+        return math != null || syllabes != null;
+    }
+
+    /** Vue « aucun reglage » pour un jeu sans parametre reglable. */
+    public static GameSettingsView none(String entryId, String title, String gameKey, String niveau) {
+        return new GameSettingsView(entryId, title, gameKey, niveau, null, null);
+    }
 }

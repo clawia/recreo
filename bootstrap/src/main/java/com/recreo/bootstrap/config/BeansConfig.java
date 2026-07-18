@@ -8,7 +8,14 @@ import com.recreo.application.port.out.GameCatalog;
 import com.recreo.application.port.out.SessionRepository;
 import com.recreo.application.service.SessionService;
 import com.recreo.domain.content.ContentDescriptor;
+import com.recreo.domain.content.ContentGenerator;
 import com.recreo.domain.content.RandomSource;
+import com.recreo.domain.content.impl.AnglaisLexiqueGenerator;
+import com.recreo.domain.content.impl.ComparaisonGenerator;
+import com.recreo.domain.content.impl.ComplementDixGenerator;
+import com.recreo.domain.content.impl.HomophonesGenerator;
+import com.recreo.domain.content.impl.NatureMotGenerator;
+import com.recreo.domain.content.impl.PremiereLettreGenerator;
 import com.recreo.domain.mechanic.MechanicId;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMechanic;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +23,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
@@ -65,7 +73,57 @@ public class BeansConfig {
                 "Français CP — Les syllabes", "Compte les syllabes des mots.",
                 BanditManchotMechanic.ID, syllabesFactory));
 
+        // Declinaisons s04 : 6 jeux SANS reglage, MEME mecanique bandit manchot,
+        // uniquement de nouveaux ContentGenerator (cf. US-s04 / ADR-0004/0005).
+        defs.add(simpleGame(
+                "complement-dix", "Maths", "CP", "complement-dix", "Compléments à 10",
+                "Compléments à 10", "Trouve ce qu'il manque pour faire 10.",
+                new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — compléments à 10"),
+                ComplementDixGenerator::new));
+        defs.add(simpleGame(
+                "comparaison", "Maths", "CP", "comparaison", "Le plus grand nombre",
+                "Le plus grand nombre", "Choisis le plus grand des deux nombres.",
+                new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — comparer des nombres"),
+                ComparaisonGenerator::new));
+        defs.add(simpleGame(
+                "premiere-lettre", "Français", "CP", "premiere-lettre", "La première lettre",
+                "La première lettre", "Trouve la lettre qui commence le mot.",
+                new ContentDescriptor("Français", "CP", "Lecture — principe alphabétique"),
+                PremiereLettreGenerator::new));
+        defs.add(simpleGame(
+                "homophones", "Français", "CM1", "homophones", "Le bon petit mot",
+                "Le bon petit mot", "Choisis le mot qui complète la phrase.",
+                new ContentDescriptor("Français", "CM1", "Orthographe — homophones grammaticaux"),
+                HomophonesGenerator::new));
+        defs.add(simpleGame(
+                "nature-mot", "Français", "CM1", "nature-mot", "La nature du mot",
+                "La nature du mot", "Nom, verbe, adjectif ou déterminant ?",
+                new ContentDescriptor("Français", "CM1", "Grammaire — classes de mots"),
+                NatureMotGenerator::new));
+        defs.add(simpleGame(
+                "anglais-lexique", "Anglais", "CM1", "anglais-lexique", "Le bon mot en anglais",
+                "Le bon mot en anglais", "Trouve la traduction anglaise.",
+                new ContentDescriptor("Anglais", "CM1", "Lexique — vocabulaire courant"),
+                AnglaisLexiqueGenerator::new));
+
         return new InMemoryGameCatalog(List.of(banditManchotMechanic), defs);
+    }
+
+    /**
+     * Construit une entree de jeu SANS reglage : meme mecanique bandit manchot, un
+     * {@link ContentGenerator} pilote par sa {@link ContentDescriptor}. La
+     * {@link SimpleGameFactory} garantit « aucun reglage » (pas de bouton Paramètres).
+     */
+    private static CatalogEntryDef simpleGame(
+            String entryId, String matiere, String niveau, String gameKey, String gameLabel,
+            String title, String description, ContentDescriptor descriptor,
+            Function<ContentDescriptor, ContentGenerator> generator) {
+        SimpleGameFactory factory = new SimpleGameFactory(
+                entryId, title, gameKey, niveau, BanditManchotMechanic.ID,
+                () -> generator.apply(descriptor));
+        return new CatalogEntryDef(
+                entryId, matiere, niveau, gameKey, gameLabel, title, description,
+                BanditManchotMechanic.ID, factory);
     }
 
     @Bean

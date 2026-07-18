@@ -20,5 +20,6 @@ public record CatalogEntry(
         String gameLabel,
         String title,
         String description,
+        boolean hasSettings,
         MechanicId mechanicId) {
 }

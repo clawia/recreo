@@ -34,7 +34,8 @@ public final class InMemoryGameCatalog implements GameCatalog {
             defsByEntry.put(def.entryId(), def);
             built.add(new CatalogEntry(
                     def.entryId(), def.matiere(), def.niveau(), def.gameKey(),
-                    def.gameLabel(), def.title(), def.description(), def.mechanicId()));
+                    def.gameLabel(), def.title(), def.description(),
+                    def.factory().settings().hasSettings(), def.mechanicId()));
         }
         this.entries = List.copyOf(built);
     }

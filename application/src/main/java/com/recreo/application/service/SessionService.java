@@ -129,7 +129,8 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
                 entry.gameKey(),
                 entry.gameLabel(),
                 entry.title(),
-                entry.description());
+                entry.description(),
+                entry.hasSettings());
     }
 
     private SessionView toSessionView(GameSession session) {
