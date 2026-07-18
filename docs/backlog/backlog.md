@@ -87,6 +87,25 @@ Critères d'acceptation :
 
 ---
 
+## Sprint s02 — Navigation : écran de sélection de niveau dédié
+
+Issu du playtest s01 (DEC-0001 / cérémonie `2026-07-18-s01-demo-playtest.md`).
+
+**US-s02-1 — Écran de sélection de niveau puis jeu plein écran centré.**
+> En tant qu'enfant, je choisis d'abord mon niveau sur un écran dédié, puis je joue au bandit
+> manchot centré à l'écran, avec un seul bouton « retour » pour revenir choisir un autre niveau.
+
+Critères d'acceptation :
+- [ ] Un écran de sélection présente **uniquement** les niveaux (CP / CM1), sans zone de jeu.
+- [ ] Cliquer un niveau **bascule vers l'écran de jeu** correspondant (le catalogue disparaît).
+- [ ] L'écran de jeu affiche le **bandit manchot centré** et une **flèche « retour »** unique qui
+      ramène à la sélection de niveau.
+- [ ] Aucune régression de l'animation des rouleaux ni du placement du message de points.
+- [ ] Découplage préservé : la sélection ne fait que choisir un `catalogEntryId` ; le domaine est
+      inchangé.
+
+---
+
 ## Backlog — sprints suivants (non détaillé à ce stade)
 
 - Web htmx pour le bandit manchot (fragments Thymeleaf, view-models) — sprint s03 visé.

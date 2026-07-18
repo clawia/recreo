@@ -7,4 +7,4 @@
 
 | Sprint | Incrément | Jeu / contenu | Compétence programme visée | Poussé en file le | Statut | Décidé le |
 |---|---|---|---|---|---|---|
-| s01 | Bandit manchot calcul mental jouable CP + CM1 (mécanique + contenu, socle Clean Architecture) | Bandit manchot — calcul mental | Mathématiques — CP : additions/soustractions ≤10 ; CM1 : tables/multiplications | 2026-07-17 | **À VALIDER** (Done technique ✅ ; démo à jouer) | — |
+| s01 | Bandit manchot calcul mental jouable CP + CM1 (mécanique + contenu, socle Clean Architecture) | Bandit manchot — calcul mental | Mathématiques — CP : additions/soustractions ≤10 ; CM1 : tables/multiplications | 2026-07-17 | ✅ **VALIDÉ** (Done technique + Done pédago + playtest enfants) | 2026-07-18 |
