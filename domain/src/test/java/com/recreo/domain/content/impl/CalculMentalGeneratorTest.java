@@ -76,4 +76,23 @@ class CalculMentalGeneratorTest {
                 .as("CM1 doit inclure des multiplications")
                 .isTrue();
     }
+
+    @Test
+    void respectsCustomWindowAndSingleChosenOperation() {
+        // Reglage : uniquement des multiplications, operandes dans [3, 6].
+        DifficultyConfig custom = new DifficultyConfig(
+                3, 6, EnumSet.of(Operation.MULTIPLICATION), 2);
+        CalculMentalGenerator generator = new CalculMentalGenerator(
+                custom, new ContentDescriptor("mathematiques", "CM1", "Calcul mental"));
+        RandomSource random = new SeededRandomSource(3L);
+
+        for (int i = 0; i < SAMPLES; i++) {
+            Item item = generator.next(random);
+            assertThat(item.meta().get("operation")).isEqualTo(Operation.MULTIPLICATION.name());
+            int a = Integer.parseInt(item.meta().get("operandA"));
+            int b = Integer.parseInt(item.meta().get("operandB"));
+            assertThat(a).isBetween(3, 6);
+            assertThat(b).isBetween(3, 6);
+        }
+    }
 }

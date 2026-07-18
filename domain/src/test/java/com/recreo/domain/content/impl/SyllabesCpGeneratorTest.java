@@ -84,4 +84,36 @@ class SyllabesCpGeneratorTest {
         }
         assertThat(sawOneSyllable).as("des mots d'une syllabe doivent etre tires").isTrue();
     }
+
+    @Test
+    void maxSyllabesFilterDrawsOnlyConformingWords() {
+        // Filtre : au plus 2 syllabes -> aucun mot de 3 ou 4 syllabes ne doit sortir.
+        SyllabesCpGenerator generator = new SyllabesCpGenerator(
+                new ContentDescriptor("Français", "CP", "Phonologie — dénombrer les syllabes"), 2);
+        RandomSource random = new SeededRandomSource(42L);
+
+        for (int i = 0; i < SAMPLES; i++) {
+            Item item = generator.next(random);
+            int syllabes = Integer.parseInt(item.expected().value());
+            assertThat(syllabes).isLessThanOrEqualTo(2);
+            assertThat(REFERENCE.get(item.meta().get("mot"))).isLessThanOrEqualTo(2);
+        }
+    }
+
+    @Test
+    void defaultBehaviourDrawsWordsBeyondTwoSyllables() {
+        // Sans filtre (comportement par defaut), des mots de 3+ syllabes sortent.
+        SyllabesCpGenerator generator = new SyllabesCpGenerator(
+                new ContentDescriptor("Français", "CP", "Phonologie — dénombrer les syllabes"));
+        RandomSource random = new SeededRandomSource(42L);
+
+        boolean sawLongWord = false;
+        for (int i = 0; i < SAMPLES; i++) {
+            if (Integer.parseInt(generator.next(random).expected().value()) >= 3) {
+                sawLongWord = true;
+                break;
+            }
+        }
+        assertThat(sawLongWord).as("le comportement par defaut ne filtre pas").isTrue();
+    }
 }

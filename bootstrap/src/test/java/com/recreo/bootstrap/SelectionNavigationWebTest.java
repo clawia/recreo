@@ -15,12 +15,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Couvre le flux de navigation pleine page (US-s02-1) et l'entree francais CP
- * (US-s02-2) : ecran de selection SANS zone de jeu, puis page de jeu complete
- * avec machine centree, fleche retour et consigne du contenu.
+ * Couvre l'accueil a deux entrees (US-s03-1) et la page de jeu pleine page
+ * (heritee de US-s02-1) : l'accueil ne contient AUCUNE zone de jeu, puis le
+ * demarrage renvoie la page de jeu complete (machine centree, fleche retour,
+ * consigne du contenu).
  *
- * <p>Le smoke test navigateur (Playwright) du flux selection -> jeu reste a faire
- * (pas de Node/navigateur dans cet environnement) ; couvert ici via MockMvc.</p>
+ * <p>Pas de smoke navigateur (Playwright) : couvert ici via MockMvc.</p>
  */
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -31,23 +31,24 @@ class SelectionNavigationWebTest {
     private MockMvc mockMvc;
 
     @Test
-    void selectionScreenListsCardsWithoutGameArea() throws Exception {
+    void homeOffersTheTwoNavigationAxesWithoutGameArea() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                // Les cartes, dont Francais CP.
-                .andExpect(content().string(containsString("Les jeux")))
-                .andExpect(content().string(containsString("Français CP — Les syllabes")))
-                .andExpect(content().string(containsString("Calcul mental — CP")))
-                // Cartes = formulaires POST /sessions en navigation classique.
-                .andExpect(content().string(containsString("action=\"/sessions\"")))
-                // AUCUNE zone de jeu sur l'ecran de selection.
+                // Les deux entrees de navigation.
+                .andExpect(content().string(containsString("Par niveau")))
+                .andExpect(content().string(containsString("Par jeu")))
+                .andExpect(content().string(containsString("href=\"/niveaux\"")))
+                .andExpect(content().string(containsString("href=\"/jeux\"")))
+                // AUCUNE zone de jeu sur l'accueil.
                 .andExpect(content().string(not(containsString("game-area"))))
                 .andExpect(content().string(not(containsString("data-session-id"))));
     }
 
     @Test
     void startingFrancaisCpReturnsFullGamePage() throws Exception {
-        mockMvc.perform(post("/sessions").param("catalogEntryId", "francais-cp"))
+        mockMvc.perform(post("/sessions")
+                        .param("catalogEntryId", "francais-cp")
+                        .param("from", "/niveau/CP"))
                 .andExpect(status().isOk())
                 // Page complete (pas un simple fragment).
                 .andExpect(content().string(containsString("<!DOCTYPE html>")))
@@ -55,8 +56,9 @@ class SelectionNavigationWebTest {
                 // La machine (bandit manchot) centree.
                 .andExpect(content().string(containsString("class=\"machine\"")))
                 .andExpect(content().string(containsString("BANDIT MANCHOT")))
-                // La fleche retour unique.
+                // La fleche retour contextuelle (revient a l'origine du parcours).
                 .andExpect(content().string(containsString("class=\"back-btn\"")))
+                .andExpect(content().string(containsString("href=\"/niveau/CP\"")))
                 // La consigne fournie par le contenu francais.
                 .andExpect(content().string(containsString("Combien de syllabes ?")))
                 .andExpect(content().string(containsString("data-session-id")));
