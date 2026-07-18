@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Recreo — Réglages</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}" href="/css/app.css"/>
+</head>
+<body>
+<a class="back-btn" th:href="@{${from}}" href="/" aria-label="Retour" title="Retour">←</a>
+
+<header class="topbar">
+    <h1>⚙ Réglages <span class="adulte">(adulte)</span></h1>
+    <p class="tagline" th:text="${settings.title}">Titre du jeu</p>
+</header>
+
+<main class="selection">
+    <section class="settings">
+        <!-- Reglages non enregistres : valables pour la session courante uniquement. -->
+        <form th:action="@{/sessions}" method="post" class="settings-form">
+            <input type="hidden" name="catalogEntryId" th:value="${settings.entryId}"/>
+            <input type="hidden" name="from" th:value="${from}"/>
+
+            <!-- Calcul mental : fenetre de nombres + operations. -->
+            <fieldset th:if="${settings.math != null}" class="settings-block">
+                <legend>Difficulté du calcul</legend>
+                <label class="field">
+                    Nombre le plus petit
+                    <input type="number" name="minOperand"
+                           th:value="${settings.math.minOperand}"
+                           th:min="${settings.math.operandFloor}"
+                           th:max="${settings.math.operandCeiling}"/>
+                </label>
+                <label class="field">
+                    Nombre le plus grand
+                    <input type="number" name="maxOperand"
+                           th:value="${settings.math.maxOperand}"
+                           th:min="${settings.math.operandFloor}"
+                           th:max="${settings.math.operandCeiling}"/>
+                </label>
+                <fieldset class="ops">
+                    <legend>Opérations</legend>
+                    <label class="op" th:each="op : ${settings.math.operations}">
+                        <input type="checkbox" name="operations"
+                               th:value="${op.name}" th:checked="${op.selected}"/>
+                        <span th:text="${op.symbol}">+</span>
+                    </label>
+                </fieldset>
+            </fieldset>
+
+            <!-- Syllabes : nombre de syllabes max. -->
+            <fieldset th:if="${settings.syllabes != null}" class="settings-block">
+                <legend>Nombre de syllabes maximum</legend>
+                <label class="field">
+                    Syllabes max
+                    <select name="maxSyllabes">
+                        <option th:each="o : ${settings.syllabes.options}"
+                                th:value="${o}" th:text="${o}"
+                                th:selected="${o == settings.syllabes.selected}">3</option>
+                    </select>
+                </label>
+            </fieldset>
+
+            <button type="submit" class="play-btn big">▶ Jouer avec ces réglages</button>
+        </form>
+    </section>
+</main>
+</body>
+</html>

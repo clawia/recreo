@@ -102,6 +102,142 @@ body {
     margin: 0;
 }
 
+/* Entrees de navigation (accueil, niveaux, jeux) : ancres stylees comme des cartes. */
+.card-btn.nav-entry {
+    text-decoration: none;
+    align-items: flex-start;
+}
+
+/* ---- Feuille de catalogue (carte avec actions Jouer / Parametres) ---- */
+.card.leaf {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.2rem;
+    border-radius: 18px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+}
+
+.card.leaf .card-title {
+    color: var(--ink);
+}
+
+.card.leaf .card-desc {
+    color: var(--ink);
+    opacity: 0.8;
+    font-size: 0.95rem;
+}
+
+.leaf-actions {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.leaf-play {
+    margin: 0;
+}
+
+.play-btn {
+    border: none;
+    border-radius: 14px;
+    padding: 0.7rem 1.1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    background: var(--ok);
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.play-btn.big {
+    font-size: 1.3rem;
+    padding: 1rem 1.6rem;
+    margin-top: 1rem;
+}
+
+.settings-btn {
+    border: none;
+    border-radius: 14px;
+    padding: 0.7rem 1.1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* ---- Ecran de reglages (adulte) ---- */
+.adulte {
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+.settings {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--card);
+    border-radius: 22px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.settings-block {
+    border: 2px solid #ffe0a3;
+    border-radius: 14px;
+    padding: 1rem;
+}
+
+.settings-block legend {
+    font-weight: bold;
+    padding: 0 0.4rem;
+}
+
+.field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+.field input[type="number"],
+.field select {
+    font-size: 1.2rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 10px;
+    border: 2px solid var(--accent);
+    width: 6rem;
+}
+
+.ops {
+    border: none;
+    padding: 0;
+    margin-top: 0.6rem;
+}
+
+.op {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 1.6rem;
+    margin-right: 1rem;
+}
+
 .card-btn {
     width: 100%;
     display: flex;

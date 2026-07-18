@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Recreo — Accueil</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}" href="/css/app.css"/>
+</head>
+<body>
+<header class="topbar">
+    <h1>🎰 Recreo</h1>
+    <p class="tagline">Comment veux-tu trouver ton jeu ?</p>
+</header>
+
+<!-- ACCUEIL : deux entrees de navigation (deux axes). -->
+<main class="selection">
+    <section class="catalogue">
+        <div class="cards">
+            <a class="card-btn nav-entry" th:href="@{/niveaux}" href="/niveaux">
+                <span class="card-title">🎒 Par niveau</span>
+                <span class="card-desc">Choisis d'abord ta classe (CP, CM1), puis un jeu.</span>
+            </a>
+            <a class="card-btn nav-entry" th:href="@{/jeux}" href="/jeux">
+                <span class="card-title">🎲 Par jeu</span>
+                <span class="card-desc">Choisis d'abord un jeu, puis ton niveau.</span>
+            </a>
+        </div>
+    </section>
+</main>
+</body>
+</html>

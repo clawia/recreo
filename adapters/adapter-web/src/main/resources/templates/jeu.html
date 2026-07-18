@@ -9,8 +9,9 @@
     <script th:src="@{/js/bandit.js}" src="/js/bandit.js" defer></script>
 </head>
 <body>
-<!-- Fleche "retour" UNIQUE : ramene a l'ecran de selection (/). -->
-<a class="back-btn" th:href="@{/}" href="/" aria-label="Retour aux jeux" title="Retour aux jeux">←</a>
+<!-- Fleche "retour" UNIQUE et CONTEXTUELLE : ramene a l'ecran d'ou l'on vient
+     (parcours par niveau ou par jeu), via le parametre `from`. -->
+<a class="back-btn" th:href="@{${from}}" href="/" aria-label="Retour" title="Retour">←</a>
 
 <header class="topbar">
     <h1>🎰 Recreo</h1>

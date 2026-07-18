@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Fragments catalogue</title>
+</head>
+<body>
+<!--
+  Fragment "feuille" : une entree precise du catalogue. Propose deux actions :
+  - Jouer (POST /sessions avec les parametres par defaut de l'entree) ;
+  - Parametres (GET /parametres, ecran de reglages propre au jeu).
+  Le parametre `from` propage l'origine du parcours pour la fleche retour contextuelle.
+-->
+<div th:fragment="leaf(item, from)" class="card leaf">
+    <span class="card-title" th:text="${item.title}">Titre du jeu</span>
+    <span class="card-desc" th:text="${item.description}">Description</span>
+    <div class="leaf-actions">
+        <form th:action="@{/sessions}" method="post" class="leaf-play">
+            <input type="hidden" name="catalogEntryId" th:value="${item.entryId}"/>
+            <input type="hidden" name="from" th:value="${from}"/>
+            <button type="submit" class="play-btn">▶ Jouer</button>
+        </form>
+        <a class="settings-btn"
+           th:href="@{/parametres(entryId=${item.entryId}, from=${from})}">⚙ Paramètres</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Recreo — Niveaux du jeu</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}" href="/css/app.css"/>
+</head>
+<body>
+<a class="back-btn" th:href="@{${back}}" href="/jeux" aria-label="Retour aux jeux" title="Retour">←</a>
+
+<header class="topbar">
+    <h1>Choisis ton niveau</h1>
+</header>
+
+<!-- Les niveaux ou ce jeu existe : chaque feuille (une entree precise) propose
+     Jouer et Parametres. Si un seul niveau, une seule feuille est proposee. -->
+<main class="selection">
+    <section class="catalogue">
+        <div class="cards">
+            <div th:each="item : ${entries}"
+                 th:insert="~{fragments/catalogue :: leaf(${item}, ${from})}"></div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
