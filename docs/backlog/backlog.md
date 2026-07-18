@@ -119,6 +119,43 @@ Critères d'acceptation :
 
 ---
 
+## Sprint s03 — Navigation à deux axes + paramétrage des jeux
+
+Demandé après la démo s02 (cérémonie `2026-07-18-s02-demo-playtest.md`). **Prérequis process**
+(rétro s02) : Camille fournit une esquisse d'ergonomie (DEC) avant implémentation ; Théo cadre le
+modèle de catalogue + paramètres (ADR).
+
+**US-s03-1 — Deux façons de trouver un jeu.**
+> En tant qu'enfant (ou accompagnant), je peux parcourir soit **par niveau puis jeux**, soit
+> **par jeux**, pour arriver au jeu voulu.
+
+Critères d'acceptation :
+- [ ] Écran d'accueil proposant deux entrées : **« Par niveau »** et **« Par jeu »**.
+- [ ] *Par niveau* : choisir CP ou CM1 → liste des jeux disponibles pour ce niveau.
+- [ ] *Par jeu* : liste des jeux → (si le jeu existe sur plusieurs niveaux) choix du niveau.
+- [ ] Le catalogue expose les **métadonnées** nécessaires au regroupement (matière, niveau(x),
+      identifiant de jeu/mécanique) — sans coupler le front au contenu.
+- [ ] Depuis n'importe quel jeu, la flèche retour ramène à l'entrée de navigation d'origine.
+
+**US-s03-2 — Bouton « paramètres » par jeu.**
+> En tant qu'accompagnant, je règle la difficulté d'un jeu avant de lancer une partie.
+
+Critères d'acceptation :
+- [ ] Chaque jeu a un **bouton paramètres** ouvrant un écran de réglages **propre au jeu**.
+- [ ] **Maths** : fenêtre de nombres (min/max) + opérations activées (addition, soustraction,
+      multiplication…).
+- [ ] **Français (syllabes)** : nombre de **syllabes max** (filtre la liste de mots), etc.
+- [ ] Les réglages sont passés au `ContentGenerator` **au démarrage de la session** (via les
+      paramètres de `GameConfig`) — la mécanique reste inchangée.
+- [ ] Des **valeurs par défaut** reproduisent le comportement actuel (CP/CM1, français CP).
+- [ ] Un réglage hors-programme est impossible (bornes cohérentes avec le niveau).
+- **Question produit ouverte (à trancher au planning s03)** : les paramètres sont-ils réglés par
+  un **adulte/enseignant** (hypothèse de départ) ou par l'enfant ? Sont-ils **persistés** ou
+  valables pour la session courante ? Hypothèse s03 : réglage par un adulte, appliqué à la
+  session, non persisté (persistance = sprint ultérieur).
+
+---
+
 ## Backlog — sprints suivants (non détaillé à ce stade)
 
 - Web htmx pour le bandit manchot (fragments Thymeleaf, view-models) — sprint s03 visé.
