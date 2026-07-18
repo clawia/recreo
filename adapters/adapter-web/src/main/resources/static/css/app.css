@@ -38,25 +38,64 @@ body {
     font-size: 1.1rem;
 }
 
-.layout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
+/* ---- Ecran de selection : grille de cartes centree ---- */
+.selection {
     padding: 1rem;
-    max-width: 1100px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
-.catalogue,
-.stage {
-    flex: 1 1 320px;
-    min-width: 300px;
+.catalogue h2 {
+    text-align: center;
 }
 
 .cards {
     display: grid;
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+    justify-content: center;
+}
+
+/* ---- Ecran de jeu : bandit manchot centre ---- */
+.play {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.play .game-area {
+    width: 100%;
+    max-width: 720px;
+}
+
+/* ---- Fleche retour unique (gros bouton tactile, en haut a gauche) ---- */
+.back-btn {
+    position: fixed;
+    top: 0.8rem;
+    left: 0.8rem;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-size: 2.4rem;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: var(--shadow);
+    transition: transform 0.1s ease, background 0.1s ease;
+}
+
+.back-btn:hover {
+    transform: translateY(-3px);
+    background: #339af0;
+}
+
+.back-btn:active {
+    transform: translateY(2px);
 }
 
 .card {
@@ -169,11 +208,17 @@ body {
     background: transparent;
 }
 
-.reel-eq {
-    font-size: 2.4rem;
+/* Consigne affichee dans le casier (game.question). Taille adaptative + wrap
+   pour absorber aussi bien "= ?" que "Combien de syllabes ?". */
+.reel-question {
+    font-size: 1.8rem;
     font-weight: bold;
     color: #fff3bf;
-    padding-left: 0.3rem;
+    padding-left: 0.4rem;
+    max-width: 9rem;
+    white-space: normal;
+    line-height: 1.1;
+    text-align: left;
 }
 
 .reel-window {

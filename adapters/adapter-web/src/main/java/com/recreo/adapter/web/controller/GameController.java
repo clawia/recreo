@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * Controllers Spring MVC renvoyant des FRAGMENTS HTML Thymeleaf (pas de JSON).
- * Le catalogue est une page complete ; les coups renvoient le fragment de jeu
- * que htmx vient echanger dans la page.
+ * Controllers Spring MVC renvoyant du HTML Thymeleaf (pas de JSON). Navigation
+ * pleine page : le catalogue ({@code GET /}) et le demarrage de session
+ * ({@code POST /sessions} -> page {@code jeu.html}) sont des pages completes ; les
+ * coups ({@code POST /sessions/{id}/moves}) renvoient le FRAGMENT de jeu que htmx
+ * vient echanger dans {@code #game-area} de {@code jeu.html}.
  */
 @Controller
 public class GameController {
@@ -50,7 +52,9 @@ public class GameController {
     public String startSession(@RequestParam("catalogEntryId") String catalogEntryId, Model model) {
         SessionView view = startSessionUseCase.start(new StartSessionCommand(catalogEntryId));
         model.addAttribute("game", mapper.toGameView(view));
-        return GAME_FRAGMENT;
+        // Navigation pleine page : on renvoie la PAGE complete jeu.html (qui heberge
+        // le fragment dans #game-area et porte la fleche retour), pas le fragment.
+        return "jeu";
     }
 
     @PostMapping("/sessions/{id}/moves")

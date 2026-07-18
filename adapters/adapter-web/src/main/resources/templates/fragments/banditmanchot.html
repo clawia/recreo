@@ -7,9 +7,11 @@
 <body>
 <!--
   Fragment generique de la mecanique "bandit manchot".
-  Les 3 rouleaux affichent le CALCUL (operande, operateur, operande), issu du
-  prompt de la mecanique ; l'enfant clique ensuite sur la bonne reponse parmi
-  les options, EN DEHORS de la machine. Animation cote client : /js/bandit.js.
+  Les rouleaux affichent les tokens fournis EXPLICITEMENT par le contenu
+  (game.reelSymbols) : calcul en maths, mot en francais... Le front n'interprete
+  plus la structure du contenu (cf. ADR-0004). La consigne (game.question) est
+  affichee telle quelle. L'enfant clique ensuite sur la bonne reponse parmi les
+  options, EN DEHORS de la machine. Animation cote client : /js/bandit.js.
 -->
 <div th:fragment="game" class="bandit" th:attr="data-session-id=${game.sessionId}">
 
@@ -18,20 +20,17 @@
         <span class="round">Manche <b th:text="${game.round}">1</b></span>
     </div>
 
-    <!-- Casier de machine a sous : les rouleaux montrent le calcul a resoudre.
-         On decoupe le prompt "a op b = ?" en symboles (avant le '='). -->
-    <div class="machine" th:classappend="${game.hasFeedback and game.correct} ? ' jackpot' : ''"
-         th:with="calcul=${#strings.trim(#strings.substringBefore(game.prompt,'='))},
-                  symboles=${#strings.arraySplit(calcul,' ')}">
+    <!-- Casier de machine a sous : un rouleau par symbole fourni par le contenu. -->
+    <div class="machine" th:classappend="${game.hasFeedback and game.correct} ? ' jackpot' : ''">
         <div class="machine-head">🎰 <span>BANDIT MANCHOT</span> 🎰</div>
 
         <div class="reels">
-            <div class="reel" th:each="sym : ${symboles}" th:attr="data-value=${sym}">
+            <div class="reel" th:each="sym : ${game.reelSymbols}" th:attr="data-value=${sym}">
                 <span class="reel-window">
                     <span class="reel-strip"><span class="reel-item" th:text="${sym}">2</span></span>
                 </span>
             </div>
-            <div class="reel-eq">= ?</div>
+            <div class="reel-question" th:text="${game.question}">= ?</div>
         </div>
 
         <div class="lever" aria-hidden="true"><span class="lever-stick"></span><span class="lever-knob"></span></div>
@@ -55,10 +54,6 @@
          class="feedback">
         <span th:text="${game.feedbackMessage}">Feedback</span>
     </div>
-
-    <p class="replay">
-        <a th:href="@{/}" href="/">↩ Retour aux jeux</a>
-    </p>
 </div>
 </body>
 </html>

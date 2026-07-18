@@ -8,7 +8,8 @@ import java.util.List;
  */
 public record GameView(
         String sessionId,
-        String prompt,
+        List<String> reelSymbols,
+        String question,
         List<String> options,
         int score,
         int round,
@@ -17,14 +18,15 @@ public record GameView(
         boolean correct,
         String feedbackMessage) {
 
-    public static GameView initial(String sessionId, String prompt, List<String> options,
-                                   int score, int round, boolean finished) {
-        return new GameView(sessionId, prompt, options, score, round, finished, false, false, null);
+    public static GameView initial(String sessionId, List<String> reelSymbols, String question,
+                                   List<String> options, int score, int round, boolean finished) {
+        return new GameView(sessionId, reelSymbols, question, options, score, round, finished, false, false, null);
     }
 
     public static GameView withFeedback(String sessionId, boolean correct, String feedbackMessage,
-                                        String prompt, List<String> options, int score, int round,
-                                        boolean finished) {
-        return new GameView(sessionId, prompt, options, score, round, finished, true, correct, feedbackMessage);
+                                        List<String> reelSymbols, String question, List<String> options,
+                                        int score, int round, boolean finished) {
+        return new GameView(sessionId, reelSymbols, question, options, score, round, finished, true, correct,
+                feedbackMessage);
     }
 }

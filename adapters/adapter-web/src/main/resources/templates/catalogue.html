@@ -15,26 +15,21 @@
     <p class="tagline">Choisis un jeu et amuse-toi en révisant !</p>
 </header>
 
-<main class="layout">
+<!-- Ecran de SELECTION : uniquement les cartes de jeux, aucune zone de jeu.
+     Chaque carte est un formulaire POST /sessions en navigation classique
+     (pas de swap htmx) : le clic bascule vers la page jeu.html. -->
+<main class="selection">
     <section class="catalogue">
         <h2>Les jeux</h2>
         <div class="cards">
             <form class="card" th:each="item : ${catalogue}"
-                  th:action="@{/sessions}" method="post"
-                  th:attr="hx-post=@{/sessions}"
-                  hx-target="#game-area" hx-swap="innerHTML">
+                  th:action="@{/sessions}" method="post">
                 <input type="hidden" name="catalogEntryId" th:value="${item.entryId}"/>
                 <button type="submit" class="card-btn">
                     <span class="card-title" th:text="${item.title}">Titre du jeu</span>
                     <span class="card-desc" th:text="${item.description}">Description</span>
                 </button>
             </form>
-        </div>
-    </section>
-
-    <section class="stage">
-        <div id="game-area" class="game-area">
-            <p class="hint">👆 Clique sur un jeu pour commencer.</p>
         </div>
     </section>
 </main>

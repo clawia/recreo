@@ -9,17 +9,19 @@
     <script th:src="@{/js/bandit.js}" src="/js/bandit.js" defer></script>
 </head>
 <body>
+<!-- Fleche "retour" UNIQUE : ramene a l'ecran de selection (/). -->
+<a class="back-btn" th:href="@{/}" href="/" aria-label="Retour aux jeux" title="Retour aux jeux">←</a>
+
 <header class="topbar">
     <h1>🎰 Recreo</h1>
 </header>
 
-<main class="layout">
-    <section class="stage">
-        <!-- Page complete hebergeant le fragment generique de la mecanique. -->
-        <div id="game-area" class="game-area">
-            <div th:insert="~{fragments/banditmanchot :: game}"></div>
-        </div>
-    </section>
+<!-- Ecran de JEU : le bandit manchot centre plein ecran. Le fragment est insere
+     dans #game-area ; htmx echange ce meme #game-area a chaque coup. -->
+<main class="play">
+    <div id="game-area" class="game-area">
+        <div th:insert="~{fragments/banditmanchot :: game}"></div>
+    </div>
 </main>
 </body>
 </html>

@@ -22,7 +22,8 @@ public class WebViewMapper {
     public GameView toGameView(SessionView view) {
         return GameView.initial(
                 view.sessionId(),
-                view.prompt(),
+                view.reelSymbols(),
+                view.question(),
                 view.options(),
                 view.score(),
                 view.round(),
@@ -34,7 +35,8 @@ public class WebViewMapper {
                 view.sessionId(),
                 view.correct(),
                 view.feedbackMessage(),
-                view.prompt(),
+                view.reelSymbols(),
+                view.question(),
                 view.options(),
                 view.score(),
                 view.round(),
