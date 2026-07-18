@@ -4,6 +4,13 @@
 > l'utilisatrice au fil des sprints, en lien avec `squad/programme/MATRICE-couverture.md`. Ne
 > remplace pas une lecture des programmes officiels de l'Éducation nationale.
 
+## Langage oral et conscience phonologique
+
+- **Dénombrer les syllabes orales d'un mot** (segmentation syllabique) — *couvert par le jeu
+  « Bandit manchot — Les syllabes » (voir `FICHE-francais-cp-syllabes.md`), s02.*
+- Localiser une syllabe dans un mot (début / milieu / fin).
+- Identifier un son (phonème) dans un mot.
+
 ## Lecture et compréhension de l'écrit
 
 - Associer les graphèmes aux phonèmes (voyelles, consonnes simples, puis digraphes `ch`, `ou`,

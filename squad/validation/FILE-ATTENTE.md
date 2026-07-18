@@ -8,3 +8,4 @@
 | Sprint | Incrément | Jeu / contenu | Compétence programme visée | Poussé en file le | Statut | Décidé le |
 |---|---|---|---|---|---|---|
 | s01 | Bandit manchot calcul mental jouable CP + CM1 (mécanique + contenu, socle Clean Architecture) | Bandit manchot — calcul mental | Mathématiques — CP : additions/soustractions ≤10 ; CM1 : tables/multiplications | 2026-07-17 | ✅ **VALIDÉ** (Done technique + Done pédago + playtest enfants) | 2026-07-18 |
+| s02 | Navigation (écran de sélection + jeu centré + retour) **et** Français CP « Les syllabes » (même mécanique) | Bandit manchot — Les syllabes ; navigation | Français CP — dénombrer les syllabes | 2026-07-18 | **À VALIDER** (Done technique ✅ ; démo à jouer) | — |
