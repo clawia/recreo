@@ -55,7 +55,10 @@ public final class CalculMentalGenerator implements ContentGenerator {
         }
 
         int result = op.apply(a, b);
-        String prompt = a + " " + op.symbol() + " " + b + " = ?";
+        // Les rouleaux affichent le calcul (operande, operateur, operande) ; la
+        // consigne "= ?" est fournie explicitement (cf. ADR-0004).
+        List<String> reelSymbols = List.of(String.valueOf(a), op.symbol(), String.valueOf(b));
+        String question = "= ?";
         Answer expected = new Answer(String.valueOf(result));
         List<Answer> distractors = buildDistractors(result, config.distractorCount(), random);
 
@@ -66,7 +69,7 @@ public final class CalculMentalGenerator implements ContentGenerator {
         meta.put("matiere", descriptor.matiere());
         meta.put("niveau", descriptor.niveau());
 
-        return new Item(new ItemId(UUID.randomUUID().toString()), prompt, expected, distractors, meta);
+        return new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, question, expected, distractors, meta);
     }
 
     @Override

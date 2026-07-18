@@ -7,12 +7,16 @@ import com.recreo.adapter.web.mapper.WebViewMapper;
 import com.recreo.application.port.out.GameCatalog;
 import com.recreo.application.port.out.SessionRepository;
 import com.recreo.application.service.SessionService;
+import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.content.RandomSource;
+import com.recreo.domain.content.impl.SyllabesCpGenerator;
+import com.recreo.domain.mechanic.GameConfig;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMechanic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 
 /**
@@ -33,7 +37,22 @@ public class BeansConfig {
         List<ContentPack> packs = List.of(
                 loader.load("content/calcul-mental-cp.yml"),
                 loader.load("content/calcul-mental-cm1.yml"));
-        return new InMemoryGameCatalog(List.of(banditManchotMechanic), packs);
+
+        // Francais CP : la difficulte n'est pas pilotable par le YAML maths
+        // (DifficultyConfig/operations) -> entree cablee en code (cf. ADR-0004),
+        // reutilisant la MEME mecanique bandit manchot avec un autre ContentGenerator.
+        SyllabesCpGenerator syllabesGenerator = new SyllabesCpGenerator(
+                new ContentDescriptor("Français", "CP", "Phonologie — dénombrer les syllabes"));
+        GameConfig francaisCp = new GameConfig(
+                BanditManchotMechanic.ID, syllabesGenerator, Map.of("niveau", "CP"));
+        List<InMemoryGameCatalog.CodedEntry> coded = List.of(
+                new InMemoryGameCatalog.CodedEntry(
+                        "francais-cp",
+                        "Français CP — Les syllabes",
+                        "Compte les syllabes des mots.",
+                        francaisCp));
+
+        return new InMemoryGameCatalog(List.of(banditManchotMechanic), packs, coded);
     }
 
     @Bean

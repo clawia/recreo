@@ -9,7 +9,8 @@ import java.util.List;
 public record SessionView(
         String sessionId,
         String mechanicId,
-        String prompt,
+        List<String> reelSymbols,
+        String question,
         List<String> options,
         int score,
         int round,
