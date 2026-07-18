@@ -30,11 +30,13 @@
                     <span class="reel-strip"><span class="reel-item" th:text="${sym}">2</span></span>
                 </span>
             </div>
-            <div class="reel-question" th:text="${game.question}">= ?</div>
         </div>
 
         <div class="lever" aria-hidden="true"><span class="lever-stick"></span><span class="lever-knob"></span></div>
     </div>
+
+    <!-- Consigne : EN DEHORS de la machine (game.question), entre la machine et les reponses. -->
+    <p class="consigne" th:text="${game.question}">= ?</p>
 
     <!-- Les reponses : EN DEHORS de la machine, l'enfant clique sur la bonne. -->
     <p class="answers-title">Clique sur la bonne réponse 👇</p>

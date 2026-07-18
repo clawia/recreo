@@ -197,28 +197,29 @@ body {
     box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.6);
 }
 
-/* Chaque rouleau affiche un symbole du calcul (nombre ou operateur). Non cliquable. */
+/* Chaque rouleau affiche un token fourni par le contenu (chiffre, opérateur, ou
+   un MOT entier en français). Largeur adaptative au contenu (mot lisible en entier),
+   non cliquable. */
 .reel {
     --reel-h: 96px;
-    width: 92px;
-    flex: 0 0 auto;
+    min-width: 84px;
+    max-width: 100%;
+    flex: 0 1 auto;
     padding: 0;
     border: none;
     border-radius: 12px;
     background: transparent;
 }
 
-/* Consigne affichee dans le casier (game.question). Taille adaptative + wrap
-   pour absorber aussi bien "= ?" que "Combien de syllabes ?". */
-.reel-question {
-    font-size: 1.8rem;
+/* Consigne (game.question) affichee EN DEHORS de la machine, entre le casier et
+   les reponses. Convient aussi bien a "= ?" qu'a "Combien de syllabes ?". */
+.consigne {
+    text-align: center;
+    font-size: 1.9rem;
     font-weight: bold;
-    color: #fff3bf;
-    padding-left: 0.4rem;
-    max-width: 9rem;
-    white-space: normal;
-    line-height: 1.1;
-    text-align: left;
+    color: var(--ink);
+    margin: 1rem auto 0.2rem;
+    max-width: 640px;
 }
 
 .reel-window {
@@ -267,9 +268,11 @@ body {
     height: var(--reel-h);
     line-height: var(--reel-h);
     text-align: center;
-    font-size: 2.6rem;
+    font-size: 2.3rem;
     font-weight: bold;
     color: var(--ink);
+    white-space: nowrap;
+    padding: 0 0.8rem;
 }
 
 .reel-item.decoy {
