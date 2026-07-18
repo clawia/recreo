@@ -11,5 +11,6 @@ public record CatalogItemView(
         String gameKey,
         String gameLabel,
         String title,
-        String description) {
+        String description,
+        boolean hasSettings) {
 }

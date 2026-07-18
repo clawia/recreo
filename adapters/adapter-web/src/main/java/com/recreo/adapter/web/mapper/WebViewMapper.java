@@ -17,7 +17,7 @@ public class WebViewMapper {
         return entries.stream()
                 .map(e -> new CatalogItemView(
                         e.entryId(), e.matiere(), e.niveau(), e.gameKey(), e.gameLabel(),
-                        e.title(), e.description()))
+                        e.title(), e.description(), e.hasSettings()))
                 .toList();
     }
 

@@ -6,9 +6,11 @@
 </head>
 <body>
 <!--
-  Fragment "feuille" : une entree precise du catalogue. Propose deux actions :
+  Fragment "feuille" : une entree precise du catalogue. Propose une ou deux actions :
   - Jouer (POST /sessions avec les parametres par defaut de l'entree) ;
-  - Parametres (GET /parametres, ecran de reglages propre au jeu).
+  - Parametres (GET /parametres, ecran de reglages propre au jeu) UNIQUEMENT si le
+    jeu a des reglages (item.hasSettings) — les jeux sans parametre n'affichent pas
+    le bouton (cf. US-s04).
   Le parametre `from` propage l'origine du parcours pour la fleche retour contextuelle.
 -->
 <div th:fragment="leaf(item, from)" class="card leaf">
@@ -20,7 +22,7 @@
             <input type="hidden" name="from" th:value="${from}"/>
             <button type="submit" class="play-btn">▶ Jouer</button>
         </form>
-        <a class="settings-btn"
+        <a th:if="${item.hasSettings}" class="settings-btn"
            th:href="@{/parametres(entryId=${item.entryId}, from=${from})}">⚙ Paramètres</a>
     </div>
 </div>
