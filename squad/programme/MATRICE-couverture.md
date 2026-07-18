@@ -27,7 +27,7 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 
 | Matière | Niveau | Domaine | Compétence (réf. programme) | Jeu(x) couvrant | Mécanique | Statut |
 |---|---|---|---|---|---|---|
-| Français | CP | Lecture et compréhension | Décodage — association graphème/phonème (voyelles + consonnes simples) | — | — | non couvert |
+| Français | CP | Lecture et compréhension | Décodage — association graphème/phonème (voyelles + consonnes simples) | Bandit manchot (français) | bandit manchot | en cours (s02) |
 | Français | CP | Écriture — orthographe | Copie et écriture de mots simples sans erreur | — | — | non couvert |
 | Français | CM1 | Orthographe | Accord sujet-verbe et accord dans le groupe nominal | — | — | non couvert |
 | Français | CM1 | Lecture et compréhension | Compréhension d'un texte narratif court (questions explicites/implicites) | — | — | non couvert |

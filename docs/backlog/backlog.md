@@ -87,9 +87,10 @@ Critères d'acceptation :
 
 ---
 
-## Sprint s02 — Navigation : écran de sélection de niveau dédié
+## Sprint s02 — Navigation + 1re matière français (2 évolutions)
 
-Issu du playtest s01 (DEC-0001 / cérémonie `2026-07-18-s01-demo-playtest.md`).
+Issu du playtest s01 (DEC-0001 / cérémonies `2026-07-18-s01-demo-playtest.md` et
+`2026-07-18-s02-planning.md`).
 
 **US-s02-1 — Écran de sélection de niveau puis jeu plein écran centré.**
 > En tant qu'enfant, je choisis d'abord mon niveau sur un écran dédié, puis je joue au bandit
@@ -103,6 +104,18 @@ Critères d'acceptation :
 - [ ] Aucune régression de l'animation des rouleaux ni du placement du message de points.
 - [ ] Découplage préservé : la sélection ne fait que choisir un `catalogEntryId` ; le domaine est
       inchangé.
+
+**US-s02-2 — Français CP joué avec le bandit manchot (évolution 2).**
+> En tant qu'élève de CP, je révise une compétence de français avec le bandit manchot.
+
+Critères d'acceptation :
+- [ ] Nouveau `ContentGenerator` français CP (`domain/content/impl`), piloté par des règles,
+      produisant des items conformes au programme CP (compétence figée par Camille).
+- [ ] Entrée catalogue `francais-cp` réutilisant **`BanditManchotMechanic` sans modification** de
+      la mécanique (vérifié par ArchUnit + test paramétré maths/français sur la même mécanique).
+- [ ] **Enabler technique (ADR-0004)** : l'affichage des rouleaux ne parse plus le calcul côté
+      front ; la mécanique/le view-model expose des **tokens de rouleaux génériques**.
+- [ ] La `MATRICE-couverture` reflète la couverture français CP (en cours → couvert-validé).
 
 ---
 
