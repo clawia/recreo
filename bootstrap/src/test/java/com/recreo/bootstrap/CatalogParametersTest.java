@@ -8,6 +8,7 @@ import com.recreo.domain.content.Operation;
 import com.recreo.domain.content.RandomSource;
 import com.recreo.domain.mechanic.GameConfig;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMechanic;
+import com.recreo.domain.mechanics.texteatrou.TexteATrouMechanic;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -25,7 +26,7 @@ class CatalogParametersTest {
 
     private static final int SAMPLES = 300;
 
-    private final GameCatalog catalog = new BeansConfig().gameCatalog(new BanditManchotMechanic());
+    private final GameCatalog catalog = new BeansConfig().gameCatalog(new BanditManchotMechanic(), new TexteATrouMechanic());
 
     private static RandomSource seeded(long seed) {
         Random random = new Random(seed);

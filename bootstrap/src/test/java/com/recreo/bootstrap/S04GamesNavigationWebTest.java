@@ -4,6 +4,7 @@ import com.recreo.application.port.in.GameSettingsView;
 import com.recreo.application.port.out.GameCatalog;
 import com.recreo.bootstrap.config.BeansConfig;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMechanic;
+import com.recreo.domain.mechanics.texteatrou.TexteATrouMechanic;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -32,7 +33,7 @@ class S04GamesNavigationWebTest {
     @Autowired
     private MockMvc mockMvc;
 
-    private final GameCatalog catalog = new BeansConfig().gameCatalog(new BanditManchotMechanic());
+    private final GameCatalog catalog = new BeansConfig().gameCatalog(new BanditManchotMechanic(), new TexteATrouMechanic());
 
     @Test
     void niveauCpListsTheNewCpGames() throws Exception {
