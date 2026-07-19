@@ -9,3 +9,4 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 | [ADR-0005](ADR-0005-catalogue-enrichi-parametres.md) | Catalogue enrichi (métadonnées) + paramètres de session | Accepté | 2026-07-18 | s03 |
 | [ADR-0006](ADR-0006-mode-session-cle-item-exclusion.md) | Mode session (N questions, sans doublon des réussis) : clé d'item + exclusion + fin de session | Accepté | 2026-07-19 | s05 |
 | [ADR-0007](ADR-0007-support-multi-mecaniques.md) | Support multi-mécaniques : moteur de session partagé + clé d'item + sélection de vue | Accepté | 2026-07-19 | s06 |
+| [ADR-0008](ADR-0008-strategie-test-ui.md) | Stratégie de test UI : niveau HTML (MockMvc), pas de navigateur | Accepté | 2026-07-19 | s07 |
