@@ -15,29 +15,12 @@
 -->
 <div th:fragment="game" class="bandit" th:attr="data-session-id=${game.sessionId}">
 
-    <!-- ECRAN DE FIN (session terminee, cf. ADR-0006) : plus de rouleaux ni de
-         reponses. Score X / Y (score courant / nombre de questions jouees) + Rejouer
-         (relance une session du meme jeu) et fleche retour. -->
-    <div th:if="${game.finished}" class="game-over">
-        <h2 class="game-over-title">🎉 Bravo !</h2>
-        <p class="final-score">Score : <b th:text="${game.score}">0</b>
-            / <span th:text="${game.answered}">0</span></p>
-        <div class="game-over-actions">
-            <form th:action="@{/sessions}" method="post" class="replay-form">
-                <input type="hidden" name="catalogEntryId" th:value="${game.catalogEntryId}"/>
-                <input type="hidden" name="from" th:value="${from}"/>
-                <button type="submit" class="play-btn">🔁 Rejouer</button>
-            </form>
-            <a class="settings-btn" th:href="@{${from}}" href="/">← Retour</a>
-        </div>
-    </div>
+    <!-- ECRAN DE FIN (session terminee, cf. ADR-0006) : ecran commun mutualise. -->
+    <div th:if="${game.finished}" th:replace="~{fragments/commun :: gameOver}"></div>
 
     <!-- ECRAN DE JEU (session active). -->
     <div th:unless="${game.finished}">
-        <div class="scoreboard">
-            <span class="score">⭐ Score : <b th:text="${game.score}">0</b></span>
-            <span class="round">Manche <b th:text="${game.round}">1</b></span>
-        </div>
+        <div th:replace="~{fragments/commun :: scoreboard}"></div>
 
         <!-- Casier de machine a sous : un rouleau par symbole fourni par le contenu. -->
         <div class="machine" th:classappend="${game.hasFeedback and game.correct} ? ' jackpot' : ''">
@@ -71,14 +54,9 @@
         </div>
 
         <!-- Message de points : SOUS les reponses, dans un emplacement RESERVE (hauteur
-             fixe) pour rester visible sans defiler et ne pas decaler la machine. -->
-        <div class="feedback-slot">
-            <div th:if="${game.hasFeedback}"
-                 th:classappend="${game.correct} ? 'feedback ok' : 'feedback ko'"
-                 class="feedback">
-                <span th:text="${game.feedbackMessage}">Feedback</span>
-            </div>
-        </div>
+             fixe, fragment commun) pour rester visible sans defiler et ne pas decaler
+             la machine. -->
+        <div th:replace="~{fragments/commun :: feedbackSlot}"></div>
     </div>
 </div>
 </body>

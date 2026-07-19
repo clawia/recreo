@@ -16,11 +16,13 @@
 <!-- Pas de header "Recreo" sur l'ecran de jeu : gagne de la hauteur pour que tout
      l'ecran (rouleaux, reponses, message de resultat) soit visible sans defiler. -->
 
-<!-- Ecran de JEU : le bandit manchot centre plein ecran. Le fragment est insere
-     dans #game-area ; htmx echange ce meme #game-area a chaque coup. -->
+<!-- Ecran de JEU centre plein ecran. Le fragment insere depend de la MECANIQUE
+     (game.mechanicView : "banditmanchot" ou "texteatrou", cf. ADR-0007) : il vient
+     de la session/mecanique, pas devine ici. htmx echange ce meme #game-area a
+     chaque coup en renvoyant le meme fragment. -->
 <main class="play">
     <div id="game-area" class="game-area">
-        <div th:insert="~{fragments/banditmanchot :: game}"></div>
+        <div th:insert="~{fragments/__${game.mechanicView}__ :: game}"></div>
     </div>
 </main>
 </body>

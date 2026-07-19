@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Fragments communs aux mecaniques</title>
+</head>
+<body>
+<!--
+  Elements MUTUALISES entre les mecaniques (cf. ADR-0007) : le scoreboard, l'ecran
+  de fin de session et l'emplacement de message reserve. banditmanchot.html et
+  texteatrou.html les incluent (th:replace) pour eviter la duplication. Ces fragments
+  s'appuient sur les variables `game` et `from` du contexte appelant.
+-->
+
+<!-- Scoreboard : score courant + manche. -->
+<div th:fragment="scoreboard" class="scoreboard">
+    <span class="score">⭐ Score : <b th:text="${game.score}">0</b></span>
+    <span class="round">Manche <b th:text="${game.round}">1</b></span>
+</div>
+
+<!-- Emplacement de message RESERVE (hauteur fixe) : le message apparait dedans sans
+     pousser la mise en page ni sortir de l'ecran. -->
+<div th:fragment="feedbackSlot" class="feedback-slot">
+    <div th:if="${game.hasFeedback}"
+         th:classappend="${game.correct} ? 'feedback ok' : 'feedback ko'"
+         class="feedback">
+        <span th:text="${game.feedbackMessage}">Feedback</span>
+    </div>
+</div>
+
+<!-- Ecran de FIN de session (cf. ADR-0006) : Bravo + score X / Y (score courant /
+     nombre de questions jouees) + Rejouer (relance une session du meme jeu) + retour
+     contextuel. -->
+<div th:fragment="gameOver" class="game-over">
+    <h2 class="game-over-title">🎉 Bravo !</h2>
+    <p class="final-score">Score : <b th:text="${game.score}">0</b>
+        / <span th:text="${game.answered}">0</span></p>
+    <div class="game-over-actions">
+        <form th:action="@{/sessions}" method="post" class="replay-form">
+            <input type="hidden" name="catalogEntryId" th:value="${game.catalogEntryId}"/>
+            <input type="hidden" name="from" th:value="${from}"/>
+            <button type="submit" class="play-btn">🔁 Rejouer</button>
+        </form>
+        <a class="settings-btn" th:href="@{${from}}" href="/">← Retour</a>
+    </div>
+</div>
+</body>
+</html>

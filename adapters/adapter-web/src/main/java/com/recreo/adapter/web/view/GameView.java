@@ -12,6 +12,7 @@ import java.util.List;
  */
 public record GameView(
         String sessionId,
+        String mechanicView,
         String catalogEntryId,
         List<String> reelSymbols,
         String question,
@@ -25,18 +26,18 @@ public record GameView(
         boolean correct,
         String feedbackMessage) {
 
-    public static GameView initial(String sessionId, String catalogEntryId, List<String> reelSymbols,
-                                   String question, List<String> options, int score, int round,
-                                   int answered, int questionsTarget, boolean finished) {
-        return new GameView(sessionId, catalogEntryId, reelSymbols, question, options, score, round,
+    public static GameView initial(String sessionId, String mechanicView, String catalogEntryId,
+                                   List<String> reelSymbols, String question, List<String> options,
+                                   int score, int round, int answered, int questionsTarget, boolean finished) {
+        return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
                 answered, questionsTarget, finished, false, false, null);
     }
 
-    public static GameView withFeedback(String sessionId, String catalogEntryId, boolean correct,
-                                        String feedbackMessage, List<String> reelSymbols, String question,
-                                        List<String> options, int score, int round, int answered,
-                                        int questionsTarget, boolean finished) {
-        return new GameView(sessionId, catalogEntryId, reelSymbols, question, options, score, round,
+    public static GameView withFeedback(String sessionId, String mechanicView, String catalogEntryId,
+                                        boolean correct, String feedbackMessage, List<String> reelSymbols,
+                                        String question, List<String> options, int score, int round,
+                                        int answered, int questionsTarget, boolean finished) {
+        return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
                 answered, questionsTarget, finished, true, correct, feedbackMessage);
     }
 }

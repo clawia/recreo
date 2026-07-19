@@ -37,7 +37,6 @@ public class GameController {
     private final CatalogueQuery catalogueQuery;
     private final WebViewMapper mapper;
 
-    private static final String GAME_FRAGMENT = "fragments/banditmanchot :: game";
     private static final String HOME = "/";
 
     public GameController(StartSessionUseCase startSessionUseCase,
@@ -134,10 +133,13 @@ public class GameController {
                              @RequestParam(value = "from", required = false, defaultValue = HOME) String from,
                              Model model) {
         MoveOutcomeView view = submitMoveUseCase.submit(new SubmitMoveCommand(sessionId, chosenAnswer));
-        model.addAttribute("game", mapper.toGameView(view));
+        var game = mapper.toGameView(view);
+        model.addAttribute("game", game);
         // `from` propage l'origine du parcours pour l'ecran de fin (Rejouer / retour).
         model.addAttribute("from", from);
-        return GAME_FRAGMENT;
+        // Le fragment renvoye a htmx est choisi selon la mecanique (cf. ADR-0007) :
+        // il vient de la session/mecanique (mechanicView), pas devine ici.
+        return "fragments/" + game.mechanicView() + " :: game";
     }
 
     private static void putIfPresent(Map<String, String> map, String key, String value) {
