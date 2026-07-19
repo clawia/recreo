@@ -556,6 +556,38 @@ body {
     transform: translateY(2px);
 }
 
+/* ---- Mecanique "quiz-aventure" : carte-question + boutons de reponses ---- */
+/* Carte qui met en valeur la QUESTION posee (pas de machine, pas de trou). */
+.quiz-carte {
+    background: linear-gradient(180deg, #fff3bf 0%, #ffe066 100%);
+    border-radius: 20px;
+    padding: 1.8rem 1.4rem;
+    margin: 0.6rem auto 1.1rem;
+    max-width: 680px;
+    box-shadow: inset 0 0 0 4px #ffd43b;
+}
+
+.quiz-question {
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: bold;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0;
+}
+
+/* Reponses du quiz : reprend les reperes de .answer-btn mais avec une taille de
+   police adaptee a des reponses potentiellement longues (phrases). */
+.quiz-answers {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.quiz-btn {
+    font-size: 1.4rem;
+    min-width: 140px;
+}
+
 /* Levier a droite du casier. */
 .lever {
     position: absolute;

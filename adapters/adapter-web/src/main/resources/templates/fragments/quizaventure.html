@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Quiz-aventure</title>
+</head>
+<body>
+<!--
+  Fragment de la mecanique "quiz-aventure" (3e mecanique, cf. ADR-0007). Presentation
+  DISTINCTE des autres mecaniques : une CARTE-QUESTION affiche la question (game.question)
+  en grand, puis des BOUTONS DE REPONSES (game.options). PAS de machine, PAS de trou.
+  Le scoreboard, l'emplacement de message et l'ecran de fin sont MUTUALISES avec les
+  autres mecaniques via fragments/commun. Meme endpoint / htmx que les autres jeux.
+-->
+<div th:fragment="game" class="quiz-game" th:attr="data-session-id=${game.sessionId}">
+
+    <!-- ECRAN DE FIN (session terminee) : ecran commun mutualise.
+         th:if porte par un th:block ENVELOPPANT (comme banditmanchot/texteatrou) : sinon
+         th:replace s'executerait avant th:if et l'ecran de fin s'afficherait toujours
+         (ne PAS reproduire le bug s06). -->
+    <th:block th:if="${game.finished}">
+        <div th:replace="~{fragments/commun :: gameOver}"></div>
+    </th:block>
+
+    <!-- ECRAN DE JEU (session active). -->
+    <div th:unless="${game.finished}">
+        <div th:replace="~{fragments/commun :: scoreboard}"></div>
+
+        <!-- La CARTE-QUESTION : la question posee, en grand et bien lisible. -->
+        <div class="quiz-carte">
+            <p class="quiz-question" th:text="${game.question}">Quel animal fait « miaou » ?</p>
+        </div>
+
+        <p class="answers-title">Choisis la bonne réponse 👇</p>
+
+        <!-- Les BOUTONS DE REPONSES : le clic POST la reponse choisie (meme endpoint et
+             meme cible htmx que les autres mecaniques). -->
+        <div class="answers quiz-answers">
+            <form class="answer-form" th:each="opt : ${game.options}"
+                  th:action="@{/sessions/{id}/moves(id=${game.sessionId})}" method="post"
+                  th:attr="hx-post=@{/sessions/{id}/moves(id=${game.sessionId})}"
+                  hx-target="#game-area" hx-swap="innerHTML">
+                <input type="hidden" name="chosenAnswer" th:value="${opt}"/>
+                <input type="hidden" name="from" th:value="${from}"/>
+                <button type="submit" class="answer-btn quiz-btn" th:text="${opt}">réponse</button>
+            </form>
+        </div>
+
+        <!-- Message de resultat : emplacement RESERVE commun, sous les reponses. -->
+        <div th:replace="~{fragments/commun :: feedbackSlot}"></div>
+    </div>
+</div>
+</body>
+</html>
