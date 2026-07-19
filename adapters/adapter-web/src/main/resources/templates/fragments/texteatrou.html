@@ -15,8 +15,12 @@
 -->
 <div th:fragment="game" class="trou-game" th:attr="data-session-id=${game.sessionId}">
 
-    <!-- ECRAN DE FIN (session terminee) : ecran commun mutualise. -->
-    <div th:if="${game.finished}" th:replace="~{fragments/commun :: gameOver}"></div>
+    <!-- ECRAN DE FIN (session terminee) : ecran commun mutualise.
+         th:if porte par un th:block ENVELOPPANT (voir banditmanchot.html) : sinon
+         th:replace s'executerait avant th:if et l'ecran de fin s'afficherait toujours. -->
+    <th:block th:if="${game.finished}">
+        <div th:replace="~{fragments/commun :: gameOver}"></div>
+    </th:block>
 
     <!-- ECRAN DE JEU (session active). -->
     <div th:unless="${game.finished}">
