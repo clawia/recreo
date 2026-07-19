@@ -22,6 +22,7 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 | Mathématiques | CP | Nombres et calculs | Calcul mental — soustractions dans la limite de 10 | Bandit manchot — calcul mental CP | Bandit manchot | couvert-validé (s01, 2026-07-18) |
 | Mathématiques | CP | Nombres et calculs | Compléments à 10 | Bandit manchot — Compléments à 10 | Bandit manchot | couvert-validé (s04, 2026-07-19) |
 | Mathématiques | CP | Nombres et calculs | Comparer des nombres (ordre) | Bandit manchot — Le plus grand nombre | Bandit manchot | couvert-validé (s04, 2026-07-19) |
+| Mathématiques | CP | Nombres et calculs | Sens de l'égalité (compléter a + ⬚ = c) | Texte à trous — Complète l'égalité | Texte à trous | en cours (s06) |
 | Mathématiques | CM1 | Nombres et calculs | Calcul mental — tables de multiplication (jusqu'à ×10) | Bandit manchot — calcul mental CM1 | Bandit manchot | couvert-validé (s01, 2026-07-18) |
 | Mathématiques | CM1 | Nombres et calculs | Multiplications posées de nombres à 2-3 chiffres | Bandit manchot — calcul mental CM1 | Bandit manchot | couvert-validé (s01, 2026-07-18) |
 
@@ -34,6 +35,9 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 | Français | CM1 | Orthographe grammaticale | Homophones grammaticaux (a/à, et/est, on/ont, son/sont, ou/où) | Bandit manchot — Le bon petit mot | Bandit manchot | couvert-validé (s04, 2026-07-19) |
 | Français | CM1 | Grammaire | Reconnaître la nature d'un mot (nom, verbe, adjectif, déterminant) | Bandit manchot — La nature du mot | Bandit manchot | couvert-validé (s04, 2026-07-19) |
 | Anglais (LV) | CM1 | Lexique | Connaître le vocabulaire courant (traduire un mot français) | Bandit manchot — Le bon mot en anglais | Bandit manchot | couvert-validé (s04, 2026-07-19) |
+| Français | CM1 | Conjugaison | Présent de l'indicatif (verbes fréquents) | Texte à trous — Conjugaison | Texte à trous | en cours (s06) |
+| Français | CM1 | Orthographe grammaticale | Accord de l'adjectif (genre/nombre) | Texte à trous — L'accord de l'adjectif | Texte à trous | en cours (s06) |
+| Français | CP | Lecture / vocabulaire | Compléter une phrase par le mot manquant (sens) | Texte à trous — Le mot qui manque | Texte à trous | en cours (s06) |
 | Français | CP | Lecture et compréhension | Décodage — association graphème/phonème (voyelles + consonnes simples) | — | — | non couvert |
 | Français | CP | Écriture — orthographe | Copie et écriture de mots simples sans erreur | — | — | non couvert |
 | Français | CM1 | Lecture et compréhension | Compréhension d'un texte narratif court (questions explicites/implicites) | — | — | non couvert |

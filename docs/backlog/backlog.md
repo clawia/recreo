@@ -193,6 +193,18 @@ possible.
 
 ---
 
+## Sprint s06 — 2e mécanique : Texte à trous
+
+Première nouvelle mécanique de la bibliothèque. Cf. `2026-07-19-s06-planning.md`, ADR-0007.
+
+**US-s06 — Mécanique « Texte à trous » + jeux.**
+Critères : mécanique `TexteATrouMechanic` isolée de bandit manchot (ArchUnit 5), logique de session
+partagée dans `domain/mechanic` ; présentation phrase-à-trou + choix du mot ; jeux `conjugaison-cm1`,
+`accords-cm1`, `mot-manquant-cp`, `egalite-cp` (contenus vérifiés) ; navigation 2 axes + réglage
+« nombre de questions » + écran de fin ; sélection de la vue selon la mécanique ; `mvn verify` vert.
+
+---
+
 ## Backlog — sprints suivants (non détaillé à ce stade)
 
 - Web htmx pour le bandit manchot (fragments Thymeleaf, view-models) — sprint s03 visé.
