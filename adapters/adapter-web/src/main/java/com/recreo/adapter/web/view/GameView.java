@@ -40,4 +40,13 @@ public record GameView(
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
                 answered, questionsTarget, finished, true, correct, feedbackMessage);
     }
+
+    /**
+     * Score MAXIMUM atteignable pour les questions jouees : 10 points par bonne reponse
+     * (cf. {@code SessionEngine}) x nombre de questions jouees. Sert au score de fin
+     * « score / score max » (et non « score / nombre de questions »).
+     */
+    public int scoreMax() {
+        return answered * 10;
+    }
 }

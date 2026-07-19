@@ -279,6 +279,7 @@ body {
    apparait dedans sans pousser la mise en page ni sortir de l'ecran. */
 .feedback-slot {
     min-height: 3.4rem;
+    margin-top: 0.9rem;
     display: flex;
     align-items: center;
     justify-content: center;

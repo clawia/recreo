@@ -28,13 +28,13 @@
     </div>
 </div>
 
-<!-- Ecran de FIN de session (cf. ADR-0006) : Bravo + score X / Y (score courant /
-     nombre de questions jouees) + Rejouer (relance une session du meme jeu) + retour
-     contextuel. -->
+<!-- Ecran de FIN de session (cf. ADR-0006) : Bravo + score X / SCORE MAX (score
+     courant / score maximum atteignable = questions x 10 pts) + Rejouer (relance une
+     session du meme jeu) + retour contextuel. -->
 <div th:fragment="gameOver" class="game-over">
     <h2 class="game-over-title">🎉 Bravo !</h2>
     <p class="final-score">Score : <b th:text="${game.score}">0</b>
-        / <span th:text="${game.answered}">0</span></p>
+        / <span th:text="${game.scoreMax}">0</span></p>
     <div class="game-over-actions">
         <form th:action="@{/sessions}" method="post" class="replay-form">
             <input type="hidden" name="catalogEntryId" th:value="${game.catalogEntryId}"/>
