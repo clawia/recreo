@@ -12,21 +12,27 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 import java.util.UUID;
 
 /**
  * Generateur "Le bon mot en anglais" (Anglais CM1, lexique LV). Affiche un mot
  * francais et propose trois traductions anglaises dont la bonne. Les distracteurs
- * sont d'autres traductions de la liste. Meme mecanique bandit manchot. Jeu sans
- * reglage.
+ * sont d'autres traductions de la liste. Meme mecanique bandit manchot.
+ *
+ * <p>Liste FINIE de 50 paires FR->EN verifiees (US-s05-2). En mode session, un mot
+ * deja reussi est exclu du tirage suivant via {@link #next(RandomSource, Set)} ;
+ * une session de 50 bonnes reponses ne montre jamais deux fois le meme mot (cf.
+ * ADR-0006).</p>
  */
 public final class AnglaisLexiqueGenerator implements ContentGenerator {
 
     private static final String QUESTION = "Comment dit-on en anglais ?";
     private static final int DISTRACTOR_COUNT = 2;
 
-    /** Liste verifiee francais -> anglais, ordre d'insertion deterministe. */
+    /** Liste verifiee francais -> anglais, ordre d'insertion deterministe (>= 50 paires). */
     private static final Map<String, String> LEXIQUE = buildLexique();
     private static final List<String> ALL_EN = List.copyOf(new LinkedHashSet<>(LEXIQUE.values()));
 
@@ -45,19 +51,65 @@ public final class AnglaisLexiqueGenerator implements ContentGenerator {
         m.put("maison", "house");
         m.put("rouge", "red");
         m.put("bleu", "blue");
+        m.put("vert", "green");
+        m.put("jaune", "yellow");
         m.put("pomme", "apple");
         m.put("eau", "water");
+        m.put("lait", "milk");
+        m.put("pain", "bread");
         m.put("livre", "book");
         m.put("école", "school");
         m.put("ami", "friend");
         m.put("soleil", "sun");
+        m.put("lune", "moon");
         m.put("main", "hand");
+        m.put("pied", "foot");
+        m.put("tête", "head");
+        m.put("arbre", "tree");
+        m.put("fleur", "flower");
+        m.put("oiseau", "bird");
+        m.put("poisson", "fish");
+        m.put("cheval", "horse");
+        m.put("vache", "cow");
+        m.put("mouton", "sheep");
+        m.put("cochon", "pig");
+        m.put("gâteau", "cake");
+        m.put("chaise", "chair");
+        m.put("porte", "door");
+        m.put("fenêtre", "window");
+        m.put("voiture", "car");
+        m.put("vélo", "bike");
+        m.put("balle", "ball");
+        m.put("garçon", "boy");
+        m.put("fille", "girl");
+        m.put("mère", "mother");
+        m.put("père", "father");
+        m.put("frère", "brother");
+        m.put("sœur", "sister");
+        m.put("jour", "day");
+        m.put("nuit", "night");
+        m.put("chaud", "hot");
+        m.put("froid", "cold");
+        m.put("grand", "big");
+        m.put("petit", "small");
+        m.put("blanc", "white");
+        m.put("noir", "black");
+        m.put("lit", "bed");
+        m.put("chapeau", "hat");
         return m;
     }
 
     @Override
-    public Item next(RandomSource random) {
-        Map.Entry<String, String> entry = entries.get(random.nextInt(entries.size()));
+    public Optional<Item> next(RandomSource random, Set<String> excludeKeys) {
+        // Cle d'un item anglais = le mot francais affiche (unique par entree).
+        List<Map.Entry<String, String>> available = entries.stream()
+                .filter(e -> !excludeKeys.contains(e.getKey()))
+                .toList();
+        if (available.isEmpty()) {
+            return Optional.empty(); // vivier epuise
+        }
+
+        Map.Entry<String, String> entry = available.get(random.nextInt(available.size()));
         String fr = entry.getKey();
         String en = entry.getValue();
 
@@ -71,7 +123,12 @@ public final class AnglaisLexiqueGenerator implements ContentGenerator {
         meta.put("matiere", descriptor.matiere());
         meta.put("niveau", descriptor.niveau());
 
-        return new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, QUESTION, expected, distractors, meta);
+        return Optional.of(new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, QUESTION, expected, distractors, meta));
+    }
+
+    @Override
+    public OptionalInt distinctPoolSize() {
+        return OptionalInt.of(entries.size());
     }
 
     @Override

@@ -137,11 +137,14 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
         return new SessionView(
                 session.id().value(),
                 session.mechanic().value(),
+                session.catalogEntryId(),
                 session.currentItem().reelSymbols(),
                 session.currentItem().question(),
                 options(session),
                 session.score(),
                 session.round(),
+                session.answered(),
+                session.questionsTarget(),
                 session.status().name());
     }
 
@@ -149,6 +152,7 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
         GameSession session = result.session();
         return new MoveOutcomeView(
                 session.id().value(),
+                session.catalogEntryId(),
                 result.correct(),
                 result.feedback().message(),
                 session.currentItem().reelSymbols(),
@@ -156,6 +160,8 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
                 options(session),
                 session.score(),
                 session.round(),
+                session.answered(),
+                session.questionsTarget(),
                 session.status().name());
     }
 

@@ -10,6 +10,9 @@ import com.recreo.domain.content.RandomSource;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -44,8 +47,16 @@ public final class HomophonesGenerator implements ContentGenerator {
     }
 
     @Override
-    public Item next(RandomSource random) {
-        Phrase phrase = PHRASES.get(random.nextInt(PHRASES.size()));
+    public Optional<Item> next(RandomSource random, Set<String> excludeKeys) {
+        // Cle d'un item = la phrase a trou affichee (unique par entree).
+        List<Phrase> available = PHRASES.stream()
+                .filter(p -> !excludeKeys.contains(p.texte()))
+                .toList();
+        if (available.isEmpty()) {
+            return Optional.empty(); // vivier epuise
+        }
+
+        Phrase phrase = available.get(random.nextInt(available.size()));
 
         List<String> reelSymbols = List.of(phrase.texte());
         Answer expected = new Answer(phrase.bon());
@@ -57,7 +68,12 @@ public final class HomophonesGenerator implements ContentGenerator {
         meta.put("matiere", descriptor.matiere());
         meta.put("niveau", descriptor.niveau());
 
-        return new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, QUESTION, expected, distractors, meta);
+        return Optional.of(new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, QUESTION, expected, distractors, meta));
+    }
+
+    @Override
+    public OptionalInt distinctPoolSize() {
+        return OptionalInt.of(PHRASES.size());
     }
 
     @Override

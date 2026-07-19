@@ -7,6 +7,7 @@ import com.recreo.domain.content.impl.SyllabesCpGenerator;
 import com.recreo.domain.mechanic.GameConfig;
 import com.recreo.domain.mechanic.MechanicId;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -51,10 +52,10 @@ final class SyllabesGameFactory implements GameFactory {
                 max = null; // reglage illisible : aucun filtre.
             }
         }
-        return new GameConfig(
-                mechanicId,
-                new SyllabesCpGenerator(descriptor, max),
-                Map.of("niveau", descriptor.niveau()));
+        Map<String, Object> settings = new LinkedHashMap<>();
+        settings.put("niveau", descriptor.niveau());
+        settings.put("questionsTarget", SessionQuestions.resolve(parameters.get("questionsTarget"), fullPoolCap()));
+        return new GameConfig(mechanicId, new SyllabesCpGenerator(descriptor, max), settings);
     }
 
     @Override
@@ -64,6 +65,13 @@ final class SyllabesGameFactory implements GameFactory {
         return new GameSettingsView(
                 entryId, title, gameKey, descriptor.niveau(),
                 null,
-                new SyllabesSettingsView(options, selected));
+                new SyllabesSettingsView(options, selected),
+                SessionQuestions.view(fullPoolCap()));
+    }
+
+    /** Vivier distinct plein (sans filtre maxSyllabes) : plafonne "nombre de questions". */
+    private int fullPoolCap() {
+        return new SyllabesCpGenerator(descriptor, null)
+                .distinctPoolSize().orElse(SessionQuestions.ABSOLUTE_MAX);
     }
 }

@@ -12,6 +12,8 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 import java.util.UUID;
 
@@ -38,8 +40,16 @@ public final class PremiereLettreGenerator implements ContentGenerator {
     }
 
     @Override
-    public Item next(RandomSource random) {
-        String mot = MOTS.get(random.nextInt(MOTS.size()));
+    public Optional<Item> next(RandomSource random, Set<String> excludeKeys) {
+        // Cle d'un item = le mot affiche (unique par entree).
+        List<String> available = MOTS.stream()
+                .filter(m -> !excludeKeys.contains(m))
+                .toList();
+        if (available.isEmpty()) {
+            return Optional.empty(); // vivier epuise
+        }
+
+        String mot = available.get(random.nextInt(available.size()));
         String lettre = mot.substring(0, 1);
 
         List<String> reelSymbols = List.of(mot);
@@ -52,7 +62,12 @@ public final class PremiereLettreGenerator implements ContentGenerator {
         meta.put("matiere", descriptor.matiere());
         meta.put("niveau", descriptor.niveau());
 
-        return new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, QUESTION, expected, distractors, meta);
+        return Optional.of(new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, QUESTION, expected, distractors, meta));
+    }
+
+    @Override
+    public OptionalInt distinctPoolSize() {
+        return OptionalInt.of(MOTS.size());
     }
 
     @Override

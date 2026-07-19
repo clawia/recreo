@@ -5,15 +5,16 @@ import com.recreo.domain.content.ContentGenerator;
 import com.recreo.domain.mechanic.GameConfig;
 import com.recreo.domain.mechanic.MechanicId;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
 /**
- * Fabrique d'un jeu SANS reglage : le generateur ne prend aucun parametre de
- * session. {@link #create(Map)} ignore les parametres et {@link #settings()}
- * renvoie une vue « aucun reglage » (les deux blocs nuls) — le front n'affiche donc
- * pas de bouton « Paramètres » pour ces jeux (cf. US-s04). Reutilise la meme
- * mecanique bandit manchot que les autres entrees.
+ * Fabrique d'un jeu sans reglage SPECIFIQUE (ni math ni syllabes) : le generateur
+ * n'attend aucun parametre de contenu. Depuis s05, ces jeux ont neanmoins le
+ * reglage COMMUN « nombre de questions » (cf. ADR-0006) : {@link #settings()}
+ * expose donc un bloc {@code questions} (borne par le vivier du generateur) et le
+ * bouton « Paramètres » s'affiche. Reutilise la meme mecanique bandit manchot.
  */
 final class SimpleGameFactory implements GameFactory {
 
@@ -36,12 +37,21 @@ final class SimpleGameFactory implements GameFactory {
 
     @Override
     public GameConfig create(Map<String, String> parameters) {
-        // Aucun reglage : les parametres eventuels sont ignores.
-        return new GameConfig(mechanicId, generatorSupplier.get(), Map.of("niveau", niveau));
+        ContentGenerator generator = generatorSupplier.get();
+        int poolCap = generator.distinctPoolSize().orElse(SessionQuestions.ABSOLUTE_MAX);
+
+        Map<String, Object> settings = new LinkedHashMap<>();
+        settings.put("niveau", niveau);
+        // Seul reglage applicable : le nombre de questions (les parametres de contenu
+        // eventuels sont ignores).
+        settings.put("questionsTarget", SessionQuestions.resolve(parameters.get("questionsTarget"), poolCap));
+        return new GameConfig(mechanicId, generator, settings);
     }
 
     @Override
     public GameSettingsView settings() {
-        return GameSettingsView.none(entryId, title, gameKey, niveau);
+        int poolCap = generatorSupplier.get().distinctPoolSize().orElse(SessionQuestions.ABSOLUTE_MAX);
+        return new GameSettingsView(entryId, title, gameKey, niveau,
+                null, null, SessionQuestions.view(poolCap));
     }
 }

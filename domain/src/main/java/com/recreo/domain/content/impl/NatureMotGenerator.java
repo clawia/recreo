@@ -12,6 +12,8 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 import java.util.UUID;
 
@@ -66,8 +68,16 @@ public final class NatureMotGenerator implements ContentGenerator {
     }
 
     @Override
-    public Item next(RandomSource random) {
-        Map.Entry<String, String> entry = entries.get(random.nextInt(entries.size()));
+    public Optional<Item> next(RandomSource random, Set<String> excludeKeys) {
+        // Cle d'un item = le mot affiche (unique par entree).
+        List<Map.Entry<String, String>> available = entries.stream()
+                .filter(e -> !excludeKeys.contains(e.getKey()))
+                .toList();
+        if (available.isEmpty()) {
+            return Optional.empty(); // vivier epuise
+        }
+
+        Map.Entry<String, String> entry = available.get(random.nextInt(available.size()));
         String mot = entry.getKey();
         String nature = entry.getValue();
 
@@ -81,7 +91,12 @@ public final class NatureMotGenerator implements ContentGenerator {
         meta.put("matiere", descriptor.matiere());
         meta.put("niveau", descriptor.niveau());
 
-        return new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, QUESTION, expected, distractors, meta);
+        return Optional.of(new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, QUESTION, expected, distractors, meta));
+    }
+
+    @Override
+    public OptionalInt distinctPoolSize() {
+        return OptionalInt.of(entries.size());
     }
 
     @Override

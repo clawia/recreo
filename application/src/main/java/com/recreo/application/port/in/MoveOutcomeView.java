@@ -8,6 +8,7 @@ import java.util.List;
  */
 public record MoveOutcomeView(
         String sessionId,
+        String catalogEntryId,
         boolean correct,
         String feedbackMessage,
         List<String> reelSymbols,
@@ -15,5 +16,7 @@ public record MoveOutcomeView(
         List<String> options,
         int score,
         int round,
+        int answered,
+        int questionsTarget,
         String status) {
 }

@@ -13,6 +13,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 import java.util.UUID;
 
@@ -86,8 +88,16 @@ public final class SyllabesCpGenerator implements ContentGenerator {
     }
 
     @Override
-    public Item next(RandomSource random) {
-        Map.Entry<String, Integer> entry = entries.get(random.nextInt(entries.size()));
+    public Optional<Item> next(RandomSource random, Set<String> excludeKeys) {
+        // Cle d'un item syllabes = le mot affiche en MAJUSCULES (unique par entree).
+        List<Map.Entry<String, Integer>> available = entries.stream()
+                .filter(e -> !excludeKeys.contains(e.getKey().toUpperCase(Locale.FRENCH)))
+                .toList();
+        if (available.isEmpty()) {
+            return Optional.empty(); // vivier (filtre) epuise
+        }
+
+        Map.Entry<String, Integer> entry = available.get(random.nextInt(available.size()));
         String mot = entry.getKey();
         int syllabes = entry.getValue();
 
@@ -101,7 +111,12 @@ public final class SyllabesCpGenerator implements ContentGenerator {
         meta.put("matiere", descriptor.matiere());
         meta.put("niveau", descriptor.niveau());
 
-        return new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, QUESTION, expected, distractors, meta);
+        return Optional.of(new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, QUESTION, expected, distractors, meta));
+    }
+
+    @Override
+    public OptionalInt distinctPoolSize() {
+        return OptionalInt.of(entries.size());
     }
 
     @Override

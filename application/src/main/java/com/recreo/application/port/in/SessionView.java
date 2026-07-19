@@ -9,10 +9,13 @@ import java.util.List;
 public record SessionView(
         String sessionId,
         String mechanicId,
+        String catalogEntryId,
         List<String> reelSymbols,
         String question,
         List<String> options,
         int score,
         int round,
+        int answered,
+        int questionsTarget,
         String status) {
 }

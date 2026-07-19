@@ -12,6 +12,7 @@ import com.recreo.domain.mechanic.MechanicId;
 
 import java.util.Comparator;
 import java.util.EnumSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -61,10 +62,14 @@ final class MathGameFactory implements GameFactory {
         }
 
         DifficultyConfig config = new DifficultyConfig(min, max, ops, base.distractorCount());
-        return new GameConfig(
-                mechanicId,
-                new CalculMentalGenerator(config, descriptor),
-                Map.of("niveau", descriptor.niveau()));
+        CalculMentalGenerator generator = new CalculMentalGenerator(config, descriptor);
+        // Calcul mental : generateur combinatoire -> plafond de session = 50.
+        int poolCap = generator.distinctPoolSize().orElse(SessionQuestions.ABSOLUTE_MAX);
+
+        Map<String, Object> settings = new LinkedHashMap<>();
+        settings.put("niveau", descriptor.niveau());
+        settings.put("questionsTarget", SessionQuestions.resolve(parameters.get("questionsTarget"), poolCap));
+        return new GameConfig(mechanicId, generator, settings);
     }
 
     @Override
@@ -77,7 +82,9 @@ final class MathGameFactory implements GameFactory {
                 base.minOperand(), base.maxOperand(),
                 bounds.operandFloor(), bounds.operandCeiling(),
                 operationOptions);
-        return new GameSettingsView(entryId, title, gameKey, descriptor.niveau(), math, null);
+        int poolCap = SessionQuestions.ABSOLUTE_MAX; // combinatoire
+        return new GameSettingsView(entryId, title, gameKey, descriptor.niveau(),
+                math, null, SessionQuestions.view(poolCap));
     }
 
     private int clamp(int value) {

@@ -10,6 +10,8 @@ import com.recreo.domain.content.RandomSource;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -29,8 +31,20 @@ public final class ComparaisonGenerator implements ContentGenerator {
         this.descriptor = descriptor;
     }
 
+    /** Nombre d'essais d'exclusion "best-effort" (generateur combinatoire, cf. ADR-0006). */
+    private static final int MAX_EXCLUSION_ATTEMPTS = 12;
+
     @Override
-    public Item next(RandomSource random) {
+    public Optional<Item> next(RandomSource random, Set<String> excludeKeys) {
+        // Generateur combinatoire : exclusion best-effort.
+        Item item = buildOne(random);
+        for (int attempt = 0; attempt < MAX_EXCLUSION_ATTEMPTS && excludeKeys.contains(item.key()); attempt++) {
+            item = buildOne(random);
+        }
+        return Optional.of(item);
+    }
+
+    private Item buildOne(RandomSource random) {
         int a = random.nextInt(MAX + 1); // 0..20
         int b;
         do {
