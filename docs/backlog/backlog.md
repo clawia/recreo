@@ -178,6 +178,21 @@ Jeux : compléments à 10 (Maths CP), comparaison de nombres (Maths CP), la prem
 
 ---
 
+## Sprint s05 — Mode session (N questions, sans doublon des réussis) + vocabulaire anglais
+
+Déclenché par la démo s04. Cf. `2026-07-19-s05-planning.md`.
+
+**US-s05-1 — Session de N questions, sans redemander un item réussi.**
+Critères : longueur cible réglable par un adulte (défaut 20, bornes 5..50, ≤ vivier distinct) ;
+item réussi non reproposé, item raté peut revenir ; écran de fin avec score ; découplage préservé
+(la mécanique exclut des clés, sans interpréter le contenu) ; ADR-0006.
+
+**US-s05-2 — Vocabulaire anglais ≥ 50 mots.**
+Critères : `AnglaisLexiqueGenerator` ≥ 50 paires FR→EN vérifiées ; session de 50 sans doublon
+possible.
+
+---
+
 ## Backlog — sprints suivants (non détaillé à ce stade)
 
 - Web htmx pour le bandit manchot (fragments Thymeleaf, view-models) — sprint s03 visé.
