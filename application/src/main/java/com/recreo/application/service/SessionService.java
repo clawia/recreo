@@ -55,7 +55,7 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
                 // reconstruire le meme generateur parametre a chaque coup.
                 .withParameters(command.parameters());
         repository.save(session);
-        return toSessionView(session);
+        return toSessionView(session, mechanic.view());
     }
 
     @Override
@@ -72,7 +72,7 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
         GameMechanic mechanic = catalog.mechanicFor(session.mechanic());
         MoveResult result = mechanic.apply(session, new SpinAndPick(new Answer(command.chosenAnswer())));
         repository.save(result.session());
-        return toMoveOutcomeView(result);
+        return toMoveOutcomeView(result, mechanic.view());
     }
 
     @Override
@@ -133,10 +133,11 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
                 entry.hasSettings());
     }
 
-    private SessionView toSessionView(GameSession session) {
+    private SessionView toSessionView(GameSession session, String mechanicView) {
         return new SessionView(
                 session.id().value(),
                 session.mechanic().value(),
+                mechanicView,
                 session.catalogEntryId(),
                 session.currentItem().reelSymbols(),
                 session.currentItem().question(),
@@ -148,10 +149,11 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
                 session.status().name());
     }
 
-    private MoveOutcomeView toMoveOutcomeView(MoveResult result) {
+    private MoveOutcomeView toMoveOutcomeView(MoveResult result, String mechanicView) {
         GameSession session = result.session();
         return new MoveOutcomeView(
                 session.id().value(),
+                mechanicView,
                 session.catalogEntryId(),
                 result.correct(),
                 result.feedback().message(),

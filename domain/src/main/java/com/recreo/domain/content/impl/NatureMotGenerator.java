@@ -69,9 +69,9 @@ public final class NatureMotGenerator implements ContentGenerator {
 
     @Override
     public Optional<Item> next(RandomSource random, Set<String> excludeKeys) {
-        // Cle d'un item = le mot affiche (unique par entree).
+        // Cle d'un item = celle derivee du contenu (mot affiche + consigne).
         List<Map.Entry<String, String>> available = entries.stream()
-                .filter(e -> !excludeKeys.contains(e.getKey()))
+                .filter(e -> !excludeKeys.contains(Item.keyOf(List.of(e.getKey()), QUESTION)))
                 .toList();
         if (available.isEmpty()) {
             return Optional.empty(); // vivier epuise

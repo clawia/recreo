@@ -8,6 +8,7 @@ import java.util.List;
  */
 public record MoveOutcomeView(
         String sessionId,
+        String mechanicView,
         String catalogEntryId,
         boolean correct,
         String feedbackMessage,

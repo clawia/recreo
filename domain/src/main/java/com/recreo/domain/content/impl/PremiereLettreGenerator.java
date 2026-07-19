@@ -41,9 +41,9 @@ public final class PremiereLettreGenerator implements ContentGenerator {
 
     @Override
     public Optional<Item> next(RandomSource random, Set<String> excludeKeys) {
-        // Cle d'un item = le mot affiche (unique par entree).
+        // Cle d'un item = celle derivee du contenu (mot affiche + consigne).
         List<String> available = MOTS.stream()
-                .filter(m -> !excludeKeys.contains(m))
+                .filter(m -> !excludeKeys.contains(Item.keyOf(List.of(m), QUESTION)))
                 .toList();
         if (available.isEmpty()) {
             return Optional.empty(); // vivier epuise

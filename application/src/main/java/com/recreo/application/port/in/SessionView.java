@@ -9,6 +9,7 @@ import java.util.List;
 public record SessionView(
         String sessionId,
         String mechanicId,
+        String mechanicView,
         String catalogEntryId,
         List<String> reelSymbols,
         String question,

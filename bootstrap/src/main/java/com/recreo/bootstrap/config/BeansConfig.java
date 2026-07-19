@@ -10,14 +10,19 @@ import com.recreo.application.service.SessionService;
 import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.content.ContentGenerator;
 import com.recreo.domain.content.RandomSource;
+import com.recreo.domain.content.impl.AccordsCm1Generator;
 import com.recreo.domain.content.impl.AnglaisLexiqueGenerator;
 import com.recreo.domain.content.impl.ComparaisonGenerator;
 import com.recreo.domain.content.impl.ComplementDixGenerator;
+import com.recreo.domain.content.impl.ConjugaisonCm1Generator;
+import com.recreo.domain.content.impl.EgaliteGenerator;
 import com.recreo.domain.content.impl.HomophonesGenerator;
+import com.recreo.domain.content.impl.MotManquantCpGenerator;
 import com.recreo.domain.content.impl.NatureMotGenerator;
 import com.recreo.domain.content.impl.PremiereLettreGenerator;
 import com.recreo.domain.mechanic.MechanicId;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMechanic;
+import com.recreo.domain.mechanics.texteatrou.TexteATrouMechanic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -39,7 +44,13 @@ public class BeansConfig {
     }
 
     @Bean
-    public GameCatalog gameCatalog(BanditManchotMechanic banditManchotMechanic) {
+    public TexteATrouMechanic texteATrouMechanic() {
+        return new TexteATrouMechanic();
+    }
+
+    @Bean
+    public GameCatalog gameCatalog(BanditManchotMechanic banditManchotMechanic,
+                                   TexteATrouMechanic texteATrouMechanic) {
         ContentPackLoader loader = new ContentPackLoader();
         List<ContentPack> packs = List.of(
                 loader.load("content/calcul-mental-cp.yml"),
@@ -106,7 +117,31 @@ public class BeansConfig {
                 new ContentDescriptor("Anglais", "CM1", "Lexique — vocabulaire courant"),
                 AnglaisLexiqueGenerator::new));
 
-        return new InMemoryGameCatalog(List.of(banditManchotMechanic), defs);
+        // 2e mecanique (s06 / ADR-0007) : "texte a trous". MEME moteur de session
+        // partage, presentation DISTINCTE (phrase a completer + mots a cliquer). Le
+        // reglage commun "nombre de questions" est fourni par SimpleGameFactory.
+        defs.add(texteATrouGame(
+                "conjugaison-cm1", "Français", "CM1", "conjugaison", "Conjugaison (présent)",
+                "Français CM1 — Conjugaison (présent)", "Complète la phrase avec le bon verbe.",
+                new ContentDescriptor("Français", "CM1", "Conjugaison — présent de l'indicatif"),
+                ConjugaisonCm1Generator::new));
+        defs.add(texteATrouGame(
+                "accords-cm1", "Français", "CM1", "accords-adjectif", "L'accord de l'adjectif",
+                "Français CM1 — L'accord de l'adjectif", "Accorde l'adjectif dans la phrase.",
+                new ContentDescriptor("Français", "CM1", "Grammaire — accord de l'adjectif"),
+                AccordsCm1Generator::new));
+        defs.add(texteATrouGame(
+                "mot-manquant-cp", "Français", "CP", "mot-manquant", "Le mot qui manque",
+                "Français CP — Le mot qui manque", "Trouve le mot qui complète la phrase.",
+                new ContentDescriptor("Français", "CP", "Lecture — compréhension (sens)"),
+                MotManquantCpGenerator::new));
+        defs.add(texteATrouGame(
+                "egalite-cp", "Maths", "CP", "egalite", "Complète l'égalité",
+                "Maths CP — Complète l'égalité", "Trouve le nombre qui manque dans l'égalité.",
+                new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — compléter une égalité"),
+                EgaliteGenerator::new));
+
+        return new InMemoryGameCatalog(List.of(banditManchotMechanic, texteATrouMechanic), defs);
     }
 
     /**
@@ -124,6 +159,24 @@ public class BeansConfig {
         return new CatalogEntryDef(
                 entryId, matiere, niveau, gameKey, gameLabel, title, description,
                 BanditManchotMechanic.ID, factory);
+    }
+
+    /**
+     * Construit une entree de jeu "texte a trous" (2e mecanique, cf. ADR-0007) :
+     * meme fabrique de reglage commun ({@link SimpleGameFactory}, nombre de questions
+     * borne par le vivier), mais rattachee a {@link TexteATrouMechanic}. La
+     * mecanique n'est PAS devinee : elle est portee par l'entree de catalogue.
+     */
+    private static CatalogEntryDef texteATrouGame(
+            String entryId, String matiere, String niveau, String gameKey, String gameLabel,
+            String title, String description, ContentDescriptor descriptor,
+            Function<ContentDescriptor, ContentGenerator> generator) {
+        SimpleGameFactory factory = new SimpleGameFactory(
+                entryId, title, gameKey, niveau, TexteATrouMechanic.ID,
+                () -> generator.apply(descriptor));
+        return new CatalogEntryDef(
+                entryId, matiere, niveau, gameKey, gameLabel, title, description,
+                TexteATrouMechanic.ID, factory);
     }
 
     @Bean

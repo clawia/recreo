@@ -89,9 +89,10 @@ public final class SyllabesCpGenerator implements ContentGenerator {
 
     @Override
     public Optional<Item> next(RandomSource random, Set<String> excludeKeys) {
-        // Cle d'un item syllabes = le mot affiche en MAJUSCULES (unique par entree).
+        // Cle d'un item syllabes = celle derivee du contenu (mot en MAJUSCULES + consigne).
         List<Map.Entry<String, Integer>> available = entries.stream()
-                .filter(e -> !excludeKeys.contains(e.getKey().toUpperCase(Locale.FRENCH)))
+                .filter(e -> !excludeKeys.contains(
+                        Item.keyOf(List.of(e.getKey().toUpperCase(Locale.FRENCH)), QUESTION)))
                 .toList();
         if (available.isEmpty()) {
             return Optional.empty(); // vivier (filtre) epuise

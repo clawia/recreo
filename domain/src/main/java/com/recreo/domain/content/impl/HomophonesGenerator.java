@@ -48,9 +48,9 @@ public final class HomophonesGenerator implements ContentGenerator {
 
     @Override
     public Optional<Item> next(RandomSource random, Set<String> excludeKeys) {
-        // Cle d'un item = la phrase a trou affichee (unique par entree).
+        // Cle d'un item = celle derivee du contenu (phrase affichee + consigne).
         List<Phrase> available = PHRASES.stream()
-                .filter(p -> !excludeKeys.contains(p.texte()))
+                .filter(p -> !excludeKeys.contains(Item.keyOf(List.of(p.texte()), QUESTION)))
                 .toList();
         if (available.isEmpty()) {
             return Optional.empty(); // vivier epuise

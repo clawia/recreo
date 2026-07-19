@@ -101,9 +101,9 @@ public final class AnglaisLexiqueGenerator implements ContentGenerator {
 
     @Override
     public Optional<Item> next(RandomSource random, Set<String> excludeKeys) {
-        // Cle d'un item anglais = le mot francais affiche (unique par entree).
+        // Cle d'un item anglais = celle derivee du contenu (mot francais + consigne).
         List<Map.Entry<String, String>> available = entries.stream()
-                .filter(e -> !excludeKeys.contains(e.getKey()))
+                .filter(e -> !excludeKeys.contains(Item.keyOf(List.of(e.getKey()), QUESTION)))
                 .toList();
         if (available.isEmpty()) {
             return Optional.empty(); // vivier epuise
