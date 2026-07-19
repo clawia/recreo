@@ -4,7 +4,8 @@
   — 2e mécanique de la bibliothèque, **isolée** du bandit manchot (ArchUnit 5), logique de session
   **partagée** via `domain/mechanic/SessionEngine` (ADR-0007).
 - **Contenus** : 4 `ContentGenerator` (listes vérifiées / combinatoire).
-- **Statut global** : En cours — Done technique ✅ (CI) ; en attente du Done pédagogique (démo).
+- **Statut global** : ✅ Validé pédago (2026-07-19) — les 4 jeux acceptés par l'utilisatrice ;
+  playtest enfants à venir (jalon).
 - **Dernière mise à jour** : 2026-07-19, par camille-po
 - **Ergonomie** : cf. DEC-0004 (phrase avec trou visible + boutons de mots, écrans communs
   score/message/fin réutilisés).
@@ -28,9 +29,11 @@
 - [x] **Présentation distincte** du bandit manchot (phrase à compléter, pas de machine à sous).
 
 ## Bloc validation utilisateur (Done pédagogique)
-- **Démo jouée le** : — (à venir)
-- **Validée par l'utilisatrice** : Non (en attente)
-- **Commentaires** : —
+- **Démo jouée le** : 2026-07-19
+- **Validée par l'utilisatrice** : ✅ Oui
+- **Commentaires** : Validé après plusieurs retouches d'ergonomie (écran de fin sans double
+  carte, score/score max, bandeau de résultat espacé, engrenage emoji, correctif d'affichage de
+  l'écran de fin).
 
 ## Bloc playtest enfants
 - **Session tenue le** : — (jalon) · **Observations** : —

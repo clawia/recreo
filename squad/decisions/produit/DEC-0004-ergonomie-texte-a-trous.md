@@ -7,7 +7,7 @@
 - **Sprint** : s06
 - **Compétence programme visée** : Français CM1 (conjugaison, accords), Français CP (mot manquant),
   Maths CP (sens de l'égalité).
-- **Statut de validation** : À VALIDER (démo s06 à venir)
+- **Statut de validation** : VALIDÉ (user, 2026-07-19)
 
 ## Contexte
 Le texte à trous est la 2e mécanique. Elle doit se **distinguer visuellement** du bandit manchot
