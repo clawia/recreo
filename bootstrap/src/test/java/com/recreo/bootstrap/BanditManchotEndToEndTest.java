@@ -47,6 +47,8 @@ class BanditManchotEndToEndTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("= ?")))
                 .andExpect(content().string(containsString("data-session-id")))
+                // Regression : au demarrage la session n'est PAS terminee -> pas d'ecran de fin.
+                .andExpect(content().string(org.hamcrest.Matchers.not(containsString("Bravo"))))
                 .andReturn();
 
         String startHtml = startResult.getResponse().getContentAsString();
@@ -59,7 +61,9 @@ class BanditManchotEndToEndTest {
         mockMvc.perform(post("/sessions/{id}/moves", sessionId).param("chosenAnswer", chosenAnswer))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Score")))
-                .andExpect(content().string(containsString("Manche")));
+                .andExpect(content().string(containsString("Manche")))
+                // Regression : cible par defaut (20) non atteinte apres 1 coup -> pas d'ecran de fin.
+                .andExpect(content().string(org.hamcrest.Matchers.not(containsString("Bravo"))));
     }
 
     @org.junit.jupiter.api.Test
