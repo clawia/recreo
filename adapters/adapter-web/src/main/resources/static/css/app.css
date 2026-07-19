@@ -648,14 +648,11 @@ body {
 }
 
 /* ---- Ecran de fin de session (cf. ADR-0006) ---- */
+/* Ecran de fin : contenu centre DANS la carte #game-area (pas de carte imbriquee,
+   sinon la carte exterieure forme une barre blanche a ombre sous la pop-up). */
 .game-over {
     text-align: center;
-    background: var(--card);
-    border-radius: 22px;
-    padding: 2rem 1.5rem;
-    box-shadow: var(--shadow);
-    max-width: 480px;
-    margin: 2rem auto 0;
+    padding: 1.5rem 1rem;
     animation: answer-pop 0.35s ease both;
 }
 
