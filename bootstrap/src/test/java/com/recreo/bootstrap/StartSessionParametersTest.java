@@ -10,6 +10,7 @@ import com.recreo.domain.content.RandomSource;
 import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.SessionId;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMechanic;
+import com.recreo.domain.mechanics.quizaventure.QuizAventureMechanic;
 import com.recreo.domain.mechanics.texteatrou.TexteATrouMechanic;
 import org.junit.jupiter.api.Test;
 
@@ -43,7 +44,7 @@ class StartSessionParametersTest {
     }
 
     private SessionService service() {
-        GameCatalog catalog = new BeansConfig().gameCatalog(new BanditManchotMechanic(), new TexteATrouMechanic());
+        GameCatalog catalog = new BeansConfig().gameCatalog(new BanditManchotMechanic(), new TexteATrouMechanic(), new QuizAventureMechanic());
         RandomSource shared = new Random(7L)::nextInt;
         return new SessionService(catalog, new InMemoryRepo(), () -> shared);
     }
