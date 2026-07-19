@@ -109,6 +109,7 @@ public class GameController {
                                @RequestParam(value = "maxOperand", required = false) String maxOperand,
                                @RequestParam(value = "operations", required = false) List<String> operations,
                                @RequestParam(value = "maxSyllabes", required = false) String maxSyllabes,
+                               @RequestParam(value = "questionsTarget", required = false) String questionsTarget,
                                Model model) {
         Map<String, String> parameters = new LinkedHashMap<>();
         putIfPresent(parameters, "minOperand", minOperand);
@@ -117,6 +118,7 @@ public class GameController {
             parameters.put("operations", String.join(",", operations));
         }
         putIfPresent(parameters, "maxSyllabes", maxSyllabes);
+        putIfPresent(parameters, "questionsTarget", questionsTarget);
 
         SessionView view = startSessionUseCase.start(new StartSessionCommand(catalogEntryId, parameters));
         model.addAttribute("game", mapper.toGameView(view));
@@ -129,9 +131,12 @@ public class GameController {
     @PostMapping("/sessions/{id}/moves")
     public String submitMove(@PathVariable("id") String sessionId,
                              @RequestParam("chosenAnswer") String chosenAnswer,
+                             @RequestParam(value = "from", required = false, defaultValue = HOME) String from,
                              Model model) {
         MoveOutcomeView view = submitMoveUseCase.submit(new SubmitMoveCommand(sessionId, chosenAnswer));
         model.addAttribute("game", mapper.toGameView(view));
+        // `from` propage l'origine du parcours pour l'ecran de fin (Rejouer / retour).
+        model.addAttribute("from", from);
         return GAME_FRAGMENT;
     }
 

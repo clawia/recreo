@@ -61,6 +61,18 @@
                 </label>
             </fieldset>
 
+            <!-- Nombre de questions : reglage COMMUN a tous les jeux (cf. ADR-0006). -->
+            <fieldset th:if="${settings.questions != null}" class="settings-block">
+                <legend>Longueur de la session</legend>
+                <label class="field">
+                    Nombre de questions
+                    <input type="number" name="questionsTarget"
+                           th:value="${settings.questions.defaultValue}"
+                           th:min="${settings.questions.min}"
+                           th:max="${settings.questions.max}"/>
+                </label>
+            </fieldset>
+
             <button type="submit" class="play-btn big">▶ Jouer avec ces réglages</button>
         </form>
     </section>

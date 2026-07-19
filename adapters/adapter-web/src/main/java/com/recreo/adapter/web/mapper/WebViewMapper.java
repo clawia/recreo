@@ -24,17 +24,21 @@ public class WebViewMapper {
     public GameView toGameView(SessionView view) {
         return GameView.initial(
                 view.sessionId(),
+                view.catalogEntryId(),
                 view.reelSymbols(),
                 view.question(),
                 view.options(),
                 view.score(),
                 view.round(),
+                view.answered(),
+                view.questionsTarget(),
                 FINISHED.equals(view.status()));
     }
 
     public GameView toGameView(MoveOutcomeView view) {
         return GameView.withFeedback(
                 view.sessionId(),
+                view.catalogEntryId(),
                 view.correct(),
                 view.feedbackMessage(),
                 view.reelSymbols(),
@@ -42,6 +46,8 @@ public class WebViewMapper {
                 view.options(),
                 view.score(),
                 view.round(),
+                view.answered(),
+                view.questionsTarget(),
                 FINISHED.equals(view.status()));
     }
 }
