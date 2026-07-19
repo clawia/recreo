@@ -116,4 +116,38 @@ class CatalogParametersTest {
         assertThat(settings.syllabes()).isNotNull();
         assertThat(settings.syllabes().options()).containsExactly(2, 3, 4);
     }
+
+    // ---- Reglage commun "nombre de questions" (ADR-0006) ----
+
+    @Test
+    void questionsTargetDefaultsToTwentyWhenAbsent() {
+        // Combinatoire : plafond 50, defaut 20.
+        assertThat(catalog.configFor("calcul-mental-cp").settings().get("questionsTarget"))
+                .isEqualTo(20);
+    }
+
+    @Test
+    void questionsTargetIsClampedToFiveAndFifty() {
+        assertThat(catalog.configFor("calcul-mental-cp", Map.of("questionsTarget", "1"))
+                .settings().get("questionsTarget")).isEqualTo(5);
+        assertThat(catalog.configFor("calcul-mental-cp", Map.of("questionsTarget", "999"))
+                .settings().get("questionsTarget")).isEqualTo(50);
+        assertThat(catalog.configFor("calcul-mental-cp", Map.of("questionsTarget", "30"))
+                .settings().get("questionsTarget")).isEqualTo(30);
+    }
+
+    @Test
+    void questionsTargetIsCappedByFinitePool() {
+        // homophones : vivier de 10 phrases -> demande 40 plafonnee a 10 ;
+        // defaut absent -> min(20, 10) = 10.
+        assertThat(catalog.configFor("homophones", Map.of("questionsTarget", "40"))
+                .settings().get("questionsTarget")).isEqualTo(10);
+        assertThat(catalog.configFor("homophones").settings().get("questionsTarget"))
+                .isEqualTo(10);
+        // anglais : 50 mots -> defaut 20 accepte, demande 50 acceptee.
+        assertThat(catalog.configFor("anglais-lexique").settings().get("questionsTarget"))
+                .isEqualTo(20);
+        assertThat(catalog.configFor("anglais-lexique", Map.of("questionsTarget", "50"))
+                .settings().get("questionsTarget")).isEqualTo(50);
+    }
 }

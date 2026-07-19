@@ -62,6 +62,29 @@ class BanditManchotEndToEndTest {
                 .andExpect(content().string(containsString("Manche")));
     }
 
+    @org.junit.jupiter.api.Test
+    void reachingTheTargetShowsTheEndOfSessionScreen() throws Exception {
+        // Session courte (cible = 5 questions) : apres 5 reponses, ecran de fin.
+        MvcResult start = mockMvc.perform(post("/sessions")
+                        .param("catalogEntryId", "calcul-mental-cp")
+                        .param("questionsTarget", "5"))
+                .andExpect(status().isOk())
+                .andReturn();
+        String sessionId = firstMatch(SESSION_ID, start.getResponse().getContentAsString());
+
+        String lastHtml = null;
+        for (int i = 0; i < 5; i++) {
+            lastHtml = mockMvc.perform(post("/sessions/{id}/moves", sessionId).param("chosenAnswer", "0"))
+                    .andExpect(status().isOk())
+                    .andReturn().getResponse().getContentAsString();
+        }
+
+        // Ecran de fin (Lea) : Bravo, score, Rejouer ; plus de rouleaux ni de reponses.
+        assertThat(lastHtml).contains("Bravo");
+        assertThat(lastHtml).contains("Rejouer");
+        assertThat(lastHtml).doesNotContain("BANDIT MANCHOT");
+    }
+
     private String firstMatch(Pattern pattern, String content) {
         Matcher matcher = pattern.matcher(content);
         assertThat(matcher.find()).as("motif introuvable : " + pattern).isTrue();

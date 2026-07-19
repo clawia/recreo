@@ -65,14 +65,26 @@ class S04GamesNavigationWebTest {
     }
 
     @Test
-    void gameWithoutSettingsHasNoParametresButton() throws Exception {
-        // La page du jeu "homophones" ne contient QUE ce jeu (sans reglage) : pas de bouton Paramètres.
+    void everyGameNowExposesTheQuestionsSetting() throws Exception {
+        // Depuis s05 (ADR-0006), TOUS les jeux ont le reglage commun "nombre de
+        // questions" : le jeu "homophones" (jadis sans reglage) affiche desormais
+        // aussi le bouton Paramètres.
         mockMvc.perform(get("/jeu/homophones"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Le bon petit mot")))
                 .andExpect(content().string(containsString("Jouer")))
-                .andExpect(content().string(not(containsString("/parametres"))))
-                .andExpect(content().string(not(containsString("Paramètres"))));
+                .andExpect(content().string(containsString("/parametres")))
+                .andExpect(content().string(containsString("Paramètres")));
+    }
+
+    @Test
+    void questionsSettingScreenIsShownForASimpleGame() throws Exception {
+        // L'ecran de reglages d'un jeu simple ne montre QUE le champ "nombre de questions".
+        mockMvc.perform(get("/parametres").param("entryId", "homophones"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("name=\"questionsTarget\"")))
+                .andExpect(content().string(not(containsString("name=\"minOperand\""))))
+                .andExpect(content().string(not(containsString("name=\"maxSyllabes\""))));
     }
 
     @Test
@@ -94,15 +106,31 @@ class S04GamesNavigationWebTest {
     }
 
     @Test
-    void newGamesExposeNoSettings() {
+    void newGamesExposeOnlyTheCommonQuestionsSetting() {
+        // Depuis s05 : ces jeux n'ont pas de reglage math/syllabes, mais ils ont le
+        // reglage commun "nombre de questions" -> hasSettings devient vrai.
         for (String entryId : new String[] {
                 "complement-dix", "comparaison", "premiere-lettre",
                 "homophones", "nature-mot", "anglais-lexique"}) {
             GameSettingsView settings = catalog.settingsFor(entryId);
-            assertThat(settings.hasSettings()).as("%s sans reglage", entryId).isFalse();
-            assertThat(settings.math()).isNull();
-            assertThat(settings.syllabes()).isNull();
+            assertThat(settings.hasSettings()).as("%s a le reglage questions", entryId).isTrue();
+            assertThat(settings.math()).as("%s sans bloc math", entryId).isNull();
+            assertThat(settings.syllabes()).as("%s sans bloc syllabes", entryId).isNull();
+            assertThat(settings.questions()).as("%s a un bloc questions", entryId).isNotNull();
         }
+    }
+
+    @Test
+    void finiteGameQuestionsAreCappedByTheirPool() {
+        // Vivier fini : le nombre de questions ne peut depasser la taille de la liste.
+        assertThat(catalog.settingsFor("homophones").questions().max()).isEqualTo(10);
+        assertThat(catalog.settingsFor("premiere-lettre").questions().max()).isEqualTo(12);
+        assertThat(catalog.settingsFor("nature-mot").questions().max()).isEqualTo(16);
+        // Anglais : 50 mots -> plafond 50.
+        assertThat(catalog.settingsFor("anglais-lexique").questions().max()).isEqualTo(50);
+        // Combinatoire : plafond 50.
+        assertThat(catalog.settingsFor("comparaison").questions().max()).isEqualTo(50);
+        assertThat(catalog.settingsFor("complement-dix").questions().max()).isEqualTo(50);
     }
 
     @Test
