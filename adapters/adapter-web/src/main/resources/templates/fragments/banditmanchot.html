@@ -26,7 +26,7 @@
             <form th:action="@{/sessions}" method="post" class="replay-form">
                 <input type="hidden" name="catalogEntryId" th:value="${game.catalogEntryId}"/>
                 <input type="hidden" name="from" th:value="${from}"/>
-                <button type="submit" class="play-btn big">🔁 Rejouer</button>
+                <button type="submit" class="play-btn">🔁 Rejouer</button>
             </form>
             <a class="settings-btn" th:href="@{${from}}" href="/">← Retour</a>
         </div>
@@ -70,11 +70,14 @@
             </form>
         </div>
 
-        <!-- Message de points : SOUS les reponses, pour ne pas decaler la machine. -->
-        <div th:if="${game.hasFeedback}"
-             th:classappend="${game.correct} ? 'feedback ok' : 'feedback ko'"
-             class="feedback">
-            <span th:text="${game.feedbackMessage}">Feedback</span>
+        <!-- Message de points : SOUS les reponses, dans un emplacement RESERVE (hauteur
+             fixe) pour rester visible sans defiler et ne pas decaler la machine. -->
+        <div class="feedback-slot">
+            <div th:if="${game.hasFeedback}"
+                 th:classappend="${game.correct} ? 'feedback ok' : 'feedback ko'"
+                 class="feedback">
+                <span th:text="${game.feedbackMessage}">Feedback</span>
+            </div>
         </div>
     </div>
 </div>

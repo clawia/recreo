@@ -13,9 +13,8 @@
      (parcours par niveau ou par jeu), via le parametre `from`. -->
 <a class="back-btn" th:href="@{${from}}" href="/" aria-label="Retour" title="Retour">←</a>
 
-<header class="topbar">
-    <h1>🎰 Recreo</h1>
-</header>
+<!-- Pas de header "Recreo" sur l'ecran de jeu : gagne de la hauteur pour que tout
+     l'ecran (rouleaux, reponses, message de resultat) soit visible sans defiler. -->
 
 <!-- Ecran de JEU : le bandit manchot centre plein ecran. Le fragment est insere
      dans #game-area ; htmx echange ce meme #game-area a chaque coup. -->
