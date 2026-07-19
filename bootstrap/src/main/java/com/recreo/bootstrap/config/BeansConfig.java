@@ -16,12 +16,17 @@ import com.recreo.domain.content.impl.ComparaisonGenerator;
 import com.recreo.domain.content.impl.ComplementDixGenerator;
 import com.recreo.domain.content.impl.ConjugaisonCm1Generator;
 import com.recreo.domain.content.impl.EgaliteGenerator;
+import com.recreo.domain.content.impl.GeographieCm1Generator;
+import com.recreo.domain.content.impl.HistoireCm1Generator;
 import com.recreo.domain.content.impl.HomophonesGenerator;
 import com.recreo.domain.content.impl.MotManquantCpGenerator;
 import com.recreo.domain.content.impl.NatureMotGenerator;
 import com.recreo.domain.content.impl.PremiereLettreGenerator;
+import com.recreo.domain.content.impl.QuestionnerLeMondeCpGenerator;
+import com.recreo.domain.content.impl.SciencesCm1Generator;
 import com.recreo.domain.mechanic.MechanicId;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMechanic;
+import com.recreo.domain.mechanics.quizaventure.QuizAventureMechanic;
 import com.recreo.domain.mechanics.texteatrou.TexteATrouMechanic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,8 +54,14 @@ public class BeansConfig {
     }
 
     @Bean
+    public QuizAventureMechanic quizAventureMechanic() {
+        return new QuizAventureMechanic();
+    }
+
+    @Bean
     public GameCatalog gameCatalog(BanditManchotMechanic banditManchotMechanic,
-                                   TexteATrouMechanic texteATrouMechanic) {
+                                   TexteATrouMechanic texteATrouMechanic,
+                                   QuizAventureMechanic quizAventureMechanic) {
         ContentPackLoader loader = new ContentPackLoader();
         List<ContentPack> packs = List.of(
                 loader.load("content/calcul-mental-cp.yml"),
@@ -141,7 +152,38 @@ public class BeansConfig {
                 new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — compléter une égalité"),
                 EgaliteGenerator::new));
 
-        return new InMemoryGameCatalog(List.of(banditManchotMechanic, texteATrouMechanic), defs);
+        // 3e mecanique (s07 / ADR-0007) : "quiz-aventure". MEME moteur de session
+        // partage, presentation DISTINCTE (carte-question + boutons de reponses). Le
+        // reglage commun "nombre de questions" est fourni par SimpleGameFactory. Ouvre
+        // des matieres jusque-la non couvertes (questionner le monde CP ; sciences,
+        // histoire, geographie CM1).
+        defs.add(quizAventureGame(
+                "questionner-le-monde-cp", "Questionner le monde", "CP",
+                "quiz-aventure", "Quiz-aventure", "Questionner le monde CP — Quiz-aventure",
+                "Réponds aux questions sur le monde qui t'entoure.",
+                new ContentDescriptor("Questionner le monde", "CP", "Le vivant, la matière, les objets"),
+                QuestionnerLeMondeCpGenerator::new));
+        defs.add(quizAventureGame(
+                "sciences-cm1", "Sciences et technologie", "CM1",
+                "quiz-aventure", "Quiz-aventure", "Sciences CM1 — Quiz-aventure",
+                "Teste tes connaissances en sciences.",
+                new ContentDescriptor("Sciences et technologie", "CM1", "Matière, mouvement, énergie, vivant"),
+                SciencesCm1Generator::new));
+        defs.add(quizAventureGame(
+                "histoire-cm1", "Histoire", "CM1",
+                "quiz-aventure", "Quiz-aventure", "Histoire CM1 — Quiz-aventure",
+                "Explore les grands repères de l'histoire.",
+                new ContentDescriptor("Histoire", "CM1", "Repères historiques"),
+                HistoireCm1Generator::new));
+        defs.add(quizAventureGame(
+                "geographie-cm1", "Géographie", "CM1",
+                "quiz-aventure", "Quiz-aventure", "Géographie CM1 — Quiz-aventure",
+                "Découvre la France et le monde.",
+                new ContentDescriptor("Géographie", "CM1", "Se repérer dans l'espace"),
+                GeographieCm1Generator::new));
+
+        return new InMemoryGameCatalog(
+                List.of(banditManchotMechanic, texteATrouMechanic, quizAventureMechanic), defs);
     }
 
     /**
@@ -177,6 +219,24 @@ public class BeansConfig {
         return new CatalogEntryDef(
                 entryId, matiere, niveau, gameKey, gameLabel, title, description,
                 TexteATrouMechanic.ID, factory);
+    }
+
+    /**
+     * Construit une entree de jeu "quiz-aventure" (3e mecanique, cf. ADR-0007) : meme
+     * fabrique de reglage commun ({@link SimpleGameFactory}, nombre de questions borne
+     * par le vivier), mais rattachee a {@link QuizAventureMechanic}. La mecanique n'est
+     * PAS devinee : elle est portee par l'entree de catalogue.
+     */
+    private static CatalogEntryDef quizAventureGame(
+            String entryId, String matiere, String niveau, String gameKey, String gameLabel,
+            String title, String description, ContentDescriptor descriptor,
+            Function<ContentDescriptor, ContentGenerator> generator) {
+        SimpleGameFactory factory = new SimpleGameFactory(
+                entryId, title, gameKey, niveau, QuizAventureMechanic.ID,
+                () -> generator.apply(descriptor));
+        return new CatalogEntryDef(
+                entryId, matiere, niveau, gameKey, gameLabel, title, description,
+                QuizAventureMechanic.ID, factory);
     }
 
     @Bean
