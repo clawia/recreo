@@ -2,8 +2,9 @@
 
 - **Mécanique** : bandit manchot (`BanditManchotMechanic`) — **réutilisée sans modification**.
 - **Contenus** : 6 nouveaux `ContentGenerator` (listes vérifiées) sur plusieurs matières.
-- **Statut global** : En cours — Done technique attendu (CI) puis Done pédagogique (démo).
-- **Dernière mise à jour** : 2026-07-18, par camille-po
+- **Statut global** : ✅ Validé pédago (2026-07-19) — les 6 jeux (dont « La première lettre »
+  reformulée) sont acceptés par l'utilisatrice ; playtest enfants à venir (jalon).
+- **Dernière mise à jour** : 2026-07-19, par camille-po
 
 ## Jeux et compétences visées
 
@@ -30,9 +31,10 @@
       À confirmer par l'utilisatrice (une vraie phonologie sonore = mécanique audio ultérieure).
 
 ## Bloc validation utilisateur (Done pédagogique)
-- **Démo jouée le** : — (à venir)
-- **Validée par l'utilisatrice** : Non (en attente)
-- **Commentaires** : —
+- **Démo jouée le** : 2026-07-19
+- **Validée par l'utilisatrice** : ✅ Oui
+- **Commentaires** : Les 6 jeux validés. Reformulation « La première lettre » acceptée (à défaut
+  d'audio pour une vraie phonologie sonore).
 
 ## Bloc playtest enfants
 - **Session tenue le** : — (jalon)
