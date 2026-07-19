@@ -205,6 +205,21 @@ partagée dans `domain/mechanic` ; présentation phrase-à-trou + choix du mot ;
 
 ---
 
+## Sprint s07 — Quiz-aventure (3e mécanique) + tests de non-régression UI
+
+Cf. `2026-07-19-s07-planning.md`.
+
+**US-s07-1 — Mécanique Quiz-aventure.** `QuizAventureMechanic` isolée (réutilise SessionEngine),
+fragment carte-question + réponses ; jeux questionner-le-monde CP, sciences/histoire/géo CM1
+(contenus vérifiés) → ouvre des matières « non couvert ». Navigation 2 axes + mode session réutilisés.
+
+**US-s07-2 — Tests de non-régression UI (MockMvc).** Pour chaque mécanique : écran de fin absent
+au start/en cours et présent à la fin ; icône ⚙️ (emoji) sur Paramètres ; bouton Rejouer sans
+classe `big` ; `.game-over` sans fond/ombre dans le CSS servi. Décision : test UI = niveau HTML
+(pas de Playwright dans cet env) ; rendu pixel = vérif manuelle en démo.
+
+---
+
 ## Backlog — sprints suivants (non détaillé à ce stade)
 
 - Web htmx pour le bandit manchot (fragments Thymeleaf, view-models) — sprint s03 visé.

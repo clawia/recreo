@@ -41,8 +41,10 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 | Français | CP | Lecture et compréhension | Décodage — association graphème/phonème (voyelles + consonnes simples) | — | — | non couvert |
 | Français | CP | Écriture — orthographe | Copie et écriture de mots simples sans erreur | — | — | non couvert |
 | Français | CM1 | Lecture et compréhension | Compréhension d'un texte narratif court (questions explicites/implicites) | — | — | non couvert |
-| Questionner le monde | CP | Le vivant, sa diversité, les besoins des êtres vivants | Repérer les caractéristiques du vivant (animal/végétal) | — | — | non couvert |
-| Questionner le monde / Sciences | CM1 | Matière, mouvement, énergie, information | Distinguer les états de la matière (solide/liquide/gaz) | — | — | non couvert |
+| Questionner le monde | CP | Le vivant, les objets, l'espace et le temps | Connaissances de base sur le vivant et le quotidien (quiz) | Quiz-aventure — Questionner le monde | Quiz-aventure | en cours (s07) |
+| Sciences et technologie | CM1 | Matière, vivant, objets techniques | Connaissances de base en sciences (états de la matière, vivant, corps) | Quiz-aventure — Sciences | Quiz-aventure | en cours (s07) |
+| Histoire | CM1 | Repères historiques | Repères et personnages (Révolution, Louis XIV, Préhistoire…) | Quiz-aventure — Histoire | Quiz-aventure | en cours (s07) |
+| Géographie | CM1 | Se repérer dans l'espace | Repères géographiques de la France (capitale, fleuves, relief, voisins) | Quiz-aventure — Géographie | Quiz-aventure | en cours (s07) |
 
 ## Prochaines actions suggérées
 
