@@ -22,8 +22,11 @@
 - [x] Contenu de niveau raisonnable (CP : vie quotidienne / vivant ; CM1 : repères usuels).
 - [x] Nouvelle mécanique **isolée** ; réutilise mode session, réglages et écran de fin.
 - [x] Présentation distincte (carte-question) des deux autres mécaniques.
-- [ ] **Réserve** : le socle de questions est volontairement restreint et à enrichir/valider par
-      l'utilisatrice (ce n'est pas une base exhaustive du programme).
+- [x] **Viviers doublés** (s07, à la demande de l'utilisatrice) : QLM CP 7→14, Sciences CM1 6→12,
+      Histoire CM1 5→10, Géographie CM1 6→12 — contenu vérifié, `QuizGeneratorTest` synchronisé.
+- [ ] **Réserve** : même doublé, le socle n'est pas une base exhaustive du programme ; il reste à
+      enrichir/valider par l'utilisatrice. Orientation actée : **externaliser le contenu** dans des
+      fichiers éditables (cf. DEC-0006) pour permettre l'enrichissement sans dev.
 
 ## Bloc validation utilisateur (Done pédagogique)
 - **Démo jouée le** : — (à venir) · **Validée** : Non (en attente) · **Commentaires** : —

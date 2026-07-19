@@ -10,3 +10,4 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Une DEC = une ligne.
 | DEC-0003 | Paramétrage des jeux : adulte, session, non persisté | transverse (adaptation difficulté) | VALIDÉ (user, 2026-07-18) | 2026-07-18 | s03 |
 | DEC-0004 | Ergonomie du « Texte à trous » (phrase à trou + boutons de mots) | Français CM1/CP, Maths CP | VALIDÉ (user, 2026-07-19) | 2026-07-19 | s06 |
 | DEC-0005 | Ergonomie du « Quiz-aventure » (carte-question + réponses) | Questionner le monde CP ; Sciences/Histoire/Géo CM1 | À VALIDER | 2026-07-19 | s07 |
+| DEC-0006 | Externaliser le contenu pédagogique hors du code (+ doublage des quiz en attendant) | transverse (contenu à liste finie) | ACTÉE (orientation, backlog) | 2026-07-19 | s07 |

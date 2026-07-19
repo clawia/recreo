@@ -101,3 +101,10 @@
 
 Chaque jeu retenu suit le rite : story + compétence visée (Camille) → éventuel ADR (Théo) → dev +
 tests → CI verte (Done technique) → démo + Done pédagogique → matrice mise à jour.
+
+## Chantier transverse — contenu éditable (DEC-0006)
+Indépendant des mécaniques : **externaliser les listes finies** (quiz, anglais, français) dans des
+fichiers YAML/JSON éditables, pour que l'utilisatrice enrichisse le programme **sans dev ni
+recompilation**. Prérequis à une vraie montée en couverture du contenu ; à cadrer par un ADR
+technique (chargement dans un adapter, validation au démarrage) au moment de l'implémenter. En
+attendant, les viviers de quiz ont été **doublés** en dur (s07).
