@@ -37,7 +37,17 @@ class QuizGeneratorTest {
                     new String[] {"De l'eau et de la lumière", "Du chocolat", "Du sable"}),
             Map.entry("Quel est le petit de la vache ?", new String[] {"Le veau", "Le poulain", "L'agneau"}),
             Map.entry("Que mange surtout le lapin ?", new String[] {"Des carottes", "De la viande", "Des cailloux"}),
-            Map.entry("Quand il neige, il fait...", new String[] {"froid", "chaud", "lourd"}));
+            Map.entry("Quand il neige, il fait...", new String[] {"froid", "chaud", "lourd"}),
+            Map.entry("Combien de saisons y a-t-il dans l'année ?", new String[] {"4", "2", "6"}),
+            Map.entry("Quel animal pond des œufs ?", new String[] {"La poule", "Le chien", "Le chat"}),
+            Map.entry("Le soir, dans le ciel, on voit souvent...",
+                    new String[] {"la Lune", "le Soleil", "l'arc-en-ciel"}),
+            Map.entry("Où pousse la carotte ?", new String[] {"Sous la terre", "Dans les arbres", "Dans l'eau"}),
+            Map.entry("Quel animal a une carapace ?", new String[] {"La tortue", "Le lapin", "Le cheval"}),
+            Map.entry("Avec quelle partie du corps sent-on les odeurs ?",
+                    new String[] {"Le nez", "Les oreilles", "Les mains"}),
+            Map.entry("Que devient une petite graine que l'on arrose ?",
+                    new String[] {"Une plante", "Un caillou", "Un animal"}));
 
     private static final Map<String, String[]> SCIENCES = Map.ofEntries(
             Map.entry("À quelle température l'eau bout-elle ?", new String[] {"100 °C", "50 °C", "0 °C"}),
@@ -46,7 +56,16 @@ class QuizGeneratorTest {
             Map.entry("Le Soleil est une...", new String[] {"étoile", "planète", "lune"}),
             Map.entry("Combien de pattes a un insecte ?", new String[] {"6", "8", "4"}),
             Map.entry("Grâce à quoi les plantes fabriquent-elles leur nourriture avec la lumière ?",
-                    new String[] {"La photosynthèse", "La digestion", "L'évaporation"}));
+                    new String[] {"La photosynthèse", "La digestion", "L'évaporation"}),
+            Map.entry("Combien de planètes compte le système solaire ?", new String[] {"8", "9", "7"}),
+            Map.entry("Quel gaz de l'air nous est indispensable pour respirer ?",
+                    new String[] {"L'oxygène", "Le dioxyde de carbone", "L'hélium"}),
+            Map.entry("Quel organe pompe le sang dans tout le corps ?",
+                    new String[] {"Le cœur", "Le cerveau", "Les reins"}),
+            Map.entry("En dessous de 0 °C, l'eau devient...", new String[] {"solide", "liquide", "gazeuse"}),
+            Map.entry("Sur quelle planète vivons-nous ?", new String[] {"La Terre", "Mars", "Jupiter"}),
+            Map.entry("Qu'est-ce qui attire les objets vers le sol ?",
+                    new String[] {"La gravité", "Le vent", "La lumière"}));
 
     private static final Map<String, String[]> HISTOIRE = Map.ofEntries(
             Map.entry("En quelle année a eu lieu la Révolution française ?",
@@ -58,7 +77,17 @@ class QuizGeneratorTest {
             Map.entry("Les Gaulois vivaient il y a environ...",
                     new String[] {"2000 ans", "200 ans", "100 ans"}),
             Map.entry("La Préhistoire, c'est l'époque...",
-                    new String[] {"avant l'écriture", "du Moyen Âge", "des rois de France"}));
+                    new String[] {"avant l'écriture", "du Moyen Âge", "des rois de France"}),
+            Map.entry("Quelle guerre s'est terminée en 1918 ?",
+                    new String[] {"La Première Guerre mondiale", "La guerre de Cent Ans", "La Seconde Guerre mondiale"}),
+            Map.entry("Comment appelle-t-on les habitants de la Gaule ?",
+                    new String[] {"Les Gaulois", "Les Romains", "Les Vikings"}),
+            Map.entry("Quel roi de France était surnommé le Roi-Soleil ?",
+                    new String[] {"Louis XIV", "Henri IV", "François Ier"}),
+            Map.entry("Au Moyen Âge, les chevaliers vivaient dans des...",
+                    new String[] {"châteaux forts", "gratte-ciels", "cavernes"}),
+            Map.entry("Qui devient empereur des Français en 1804 ?",
+                    new String[] {"Napoléon Bonaparte", "Louis XIV", "Charlemagne"}));
 
     private static final Map<String, String[]> GEOGRAPHIE = Map.ofEntries(
             Map.entry("Quelle est la capitale de la France ?", new String[] {"Paris", "Lyon", "Marseille"}),
@@ -69,7 +98,18 @@ class QuizGeneratorTest {
             Map.entry("Quel pays se trouve au sud de la France ?",
                     new String[] {"L'Espagne", "L'Allemagne", "La Belgique"}),
             Map.entry("Quel océan borde la France à l'ouest ?",
-                    new String[] {"L'océan Atlantique", "L'océan Pacifique", "L'océan Indien"}));
+                    new String[] {"L'océan Atlantique", "L'océan Pacifique", "L'océan Indien"}),
+            Map.entry("Quelle est la monnaie utilisée en France ?",
+                    new String[] {"L'euro", "Le dollar", "La livre"}),
+            Map.entry("Quelle chaîne de montagnes sépare la France de l'Espagne ?",
+                    new String[] {"Les Pyrénées", "Les Alpes", "Le Jura"}),
+            Map.entry("Combien de continents y a-t-il sur Terre ?", new String[] {"6", "4", "8"}),
+            Map.entry("Quelle mer borde le sud de la France ?",
+                    new String[] {"La mer Méditerranée", "La mer du Nord", "La mer Rouge"}),
+            Map.entry("Quel est le plus long fleuve de France ?",
+                    new String[] {"La Loire", "La Seine", "La Garonne"}),
+            Map.entry("Quel pays voisin se trouve à l'est de la France ?",
+                    new String[] {"L'Allemagne", "L'Espagne", "Le Portugal"}));
 
     @Test
     void questionnerLeMondeProducesConformingItems() {
