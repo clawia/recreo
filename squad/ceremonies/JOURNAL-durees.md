@@ -12,6 +12,7 @@ reste la **validation pédagogique humaine**, pas la vitesse des agents.
 | s04 | 2026-07-18 | 2026-07-18 | 1 salve | 6 déclinaisons du bandit manchot (maths CP, français CP/CM1, anglais CM1) — mécanique inchangée | ✅ CI verte (52 tests) | ✅ VALIDÉ 2026-07-19 |
 | s05 | 2026-07-19 | 2026-07-19 | 1 salve | ADR-0006 mode session (N questions, sans doublon des réussis, écran de fin) + anglais ≥ 50 mots + réglage « nombre de questions » | ✅ CI verte (63 tests) | ✅ VALIDÉ 2026-07-19 |
 | s06 | 2026-07-19 | 2026-07-19 | 1 salve | ADR-0007 archi multi-mécaniques (SessionEngine partagé) + 2e mécanique « Texte à trous » (4 jeux) | ✅ CI verte (81 tests) | ✅ VALIDÉ 2026-07-19 |
+| s07 | 2026-07-19 | 2026-07-19 | 1 salve | 3e mécanique « Quiz-aventure » (4 jeux, ouvre sciences/histoire/géo/questionner-le-monde) + tests de non-régression UI (ADR-0008) | ✅ CI verte (99 tests) | ⏳ À VALIDER |
 
 > Note : « 1 salve d'amorçage » = les agents ont produit l'incrément en une session de travail
 > continue (temps réel de l'ordre de la dizaine de minutes à quelques heures selon les tâches),
