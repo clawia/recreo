@@ -21,7 +21,17 @@ public final class HistoireCm1Generator extends QuizGenerator {
             new Question("Les Gaulois vivaient il y a environ...",
                     "2000 ans", List.of("200 ans", "100 ans")),
             new Question("La Préhistoire, c'est l'époque...",
-                    "avant l'écriture", List.of("du Moyen Âge", "des rois de France")));
+                    "avant l'écriture", List.of("du Moyen Âge", "des rois de France")),
+            new Question("Quelle guerre s'est terminée en 1918 ?", "La Première Guerre mondiale",
+                    List.of("La guerre de Cent Ans", "La Seconde Guerre mondiale")),
+            new Question("Comment appelle-t-on les habitants de la Gaule ?", "Les Gaulois",
+                    List.of("Les Romains", "Les Vikings")),
+            new Question("Quel roi de France était surnommé le Roi-Soleil ?", "Louis XIV",
+                    List.of("Henri IV", "François Ier")),
+            new Question("Au Moyen Âge, les chevaliers vivaient dans des...", "châteaux forts",
+                    List.of("gratte-ciels", "cavernes")),
+            new Question("Qui devient empereur des Français en 1804 ?", "Napoléon Bonaparte",
+                    List.of("Louis XIV", "Charlemagne")));
 
     public HistoireCm1Generator(ContentDescriptor descriptor) {
         super(descriptor, POOL);

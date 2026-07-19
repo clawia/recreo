@@ -18,7 +18,16 @@ public final class SciencesCm1Generator extends QuizGenerator {
             new Question("Le Soleil est une...", "étoile", List.of("planète", "lune")),
             new Question("Combien de pattes a un insecte ?", "6", List.of("8", "4")),
             new Question("Grâce à quoi les plantes fabriquent-elles leur nourriture avec la lumière ?",
-                    "La photosynthèse", List.of("La digestion", "L'évaporation")));
+                    "La photosynthèse", List.of("La digestion", "L'évaporation")),
+            new Question("Combien de planètes compte le système solaire ?", "8", List.of("9", "7")),
+            new Question("Quel gaz de l'air nous est indispensable pour respirer ?", "L'oxygène",
+                    List.of("Le dioxyde de carbone", "L'hélium")),
+            new Question("Quel organe pompe le sang dans tout le corps ?", "Le cœur",
+                    List.of("Le cerveau", "Les reins")),
+            new Question("En dessous de 0 °C, l'eau devient...", "solide", List.of("liquide", "gazeuse")),
+            new Question("Sur quelle planète vivons-nous ?", "La Terre", List.of("Mars", "Jupiter")),
+            new Question("Qu'est-ce qui attire les objets vers le sol ?", "La gravité",
+                    List.of("Le vent", "La lumière")));
 
     public SciencesCm1Generator(ContentDescriptor descriptor) {
         super(descriptor, POOL);

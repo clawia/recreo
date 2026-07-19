@@ -20,7 +20,18 @@ public final class GeographieCm1Generator extends QuizGenerator {
             new Question("Quel pays se trouve au sud de la France ?",
                     "L'Espagne", List.of("L'Allemagne", "La Belgique")),
             new Question("Quel océan borde la France à l'ouest ?",
-                    "L'océan Atlantique", List.of("L'océan Pacifique", "L'océan Indien")));
+                    "L'océan Atlantique", List.of("L'océan Pacifique", "L'océan Indien")),
+            new Question("Quelle est la monnaie utilisée en France ?", "L'euro",
+                    List.of("Le dollar", "La livre")),
+            new Question("Quelle chaîne de montagnes sépare la France de l'Espagne ?", "Les Pyrénées",
+                    List.of("Les Alpes", "Le Jura")),
+            new Question("Combien de continents y a-t-il sur Terre ?", "6", List.of("4", "8")),
+            new Question("Quelle mer borde le sud de la France ?", "La mer Méditerranée",
+                    List.of("La mer du Nord", "La mer Rouge")),
+            new Question("Quel est le plus long fleuve de France ?", "La Loire",
+                    List.of("La Seine", "La Garonne")),
+            new Question("Quel pays voisin se trouve à l'est de la France ?", "L'Allemagne",
+                    List.of("L'Espagne", "Le Portugal")));
 
     public GeographieCm1Generator(ContentDescriptor descriptor) {
         super(descriptor, POOL);

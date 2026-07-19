@@ -19,7 +19,17 @@ public final class QuestionnerLeMondeCpGenerator extends QuizGenerator {
                     "De l'eau et de la lumière", List.of("Du chocolat", "Du sable")),
             new Question("Quel est le petit de la vache ?", "Le veau", List.of("Le poulain", "L'agneau")),
             new Question("Que mange surtout le lapin ?", "Des carottes", List.of("De la viande", "Des cailloux")),
-            new Question("Quand il neige, il fait...", "froid", List.of("chaud", "lourd")));
+            new Question("Quand il neige, il fait...", "froid", List.of("chaud", "lourd")),
+            new Question("Combien de saisons y a-t-il dans l'année ?", "4", List.of("2", "6")),
+            new Question("Quel animal pond des œufs ?", "La poule", List.of("Le chien", "Le chat")),
+            new Question("Le soir, dans le ciel, on voit souvent...", "la Lune",
+                    List.of("le Soleil", "l'arc-en-ciel")),
+            new Question("Où pousse la carotte ?", "Sous la terre", List.of("Dans les arbres", "Dans l'eau")),
+            new Question("Quel animal a une carapace ?", "La tortue", List.of("Le lapin", "Le cheval")),
+            new Question("Avec quelle partie du corps sent-on les odeurs ?", "Le nez",
+                    List.of("Les oreilles", "Les mains")),
+            new Question("Que devient une petite graine que l'on arrose ?", "Une plante",
+                    List.of("Un caillou", "Un animal")));
 
     public QuestionnerLeMondeCpGenerator(ContentDescriptor descriptor) {
         super(descriptor, POOL);
