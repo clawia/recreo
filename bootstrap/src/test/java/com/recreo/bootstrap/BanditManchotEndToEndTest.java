@@ -48,7 +48,9 @@ class BanditManchotEndToEndTest {
                 .andExpect(content().string(containsString("= ?")))
                 .andExpect(content().string(containsString("data-session-id")))
                 // Regression : au demarrage la session n'est PAS terminee -> pas d'ecran de fin.
-                .andExpect(content().string(org.hamcrest.Matchers.not(containsString("Bravo"))))
+                // (marqueur unique a l'ecran de fin : "Rejouer" ; "Bravo" apparait aussi dans le
+                //  message de bonne reponse.)
+                .andExpect(content().string(org.hamcrest.Matchers.not(containsString("Rejouer"))))
                 .andReturn();
 
         String startHtml = startResult.getResponse().getContentAsString();
@@ -63,7 +65,7 @@ class BanditManchotEndToEndTest {
                 .andExpect(content().string(containsString("Score")))
                 .andExpect(content().string(containsString("Manche")))
                 // Regression : cible par defaut (20) non atteinte apres 1 coup -> pas d'ecran de fin.
-                .andExpect(content().string(org.hamcrest.Matchers.not(containsString("Bravo"))));
+                .andExpect(content().string(org.hamcrest.Matchers.not(containsString("Rejouer"))));
     }
 
     @org.junit.jupiter.api.Test
@@ -87,6 +89,8 @@ class BanditManchotEndToEndTest {
         assertThat(lastHtml).contains("Bravo");
         assertThat(lastHtml).contains("Rejouer");
         assertThat(lastHtml).doesNotContain("BANDIT MANCHOT");
+        // Le denominateur est le SCORE MAX (5 questions x 10 pts = 50), pas le nb de questions.
+        assertThat(lastHtml).contains("<span>50</span>");
     }
 
     private String firstMatch(Pattern pattern, String content) {
