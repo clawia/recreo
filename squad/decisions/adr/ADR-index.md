@@ -18,3 +18,5 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 
 | [ADR-0009](ADR-0009-externalisation-contenu-quiz.md) | Externalisation du contenu quiz dans des fichiers YAML éditables (chargés + validés en bootstrap) | Accepté | 2026-07-20 | s09 |
 | [ADR-0010](ADR-0010-externalisation-contenu-mots.md) | Externalisation du contenu « mot → réponse » (générateur générique + modes explicit/pool) | Accepté | 2026-07-20 | s10 |
+| [ADR-0011](ADR-0011-externalisation-contenu-textes-syllabes.md) | Externalisation « texte à trous » (réutilise QuizGenerator) + « syllabes » (schéma numérique dédié) | Accepté | 2026-07-20 | s11 |
+| [ADR-0012](ADR-0012-convention-nommage-config.md) | Convention de nommage des fichiers de contenu : `niveau-jeu.yml` | Accepté | 2026-07-20 | s11 |
