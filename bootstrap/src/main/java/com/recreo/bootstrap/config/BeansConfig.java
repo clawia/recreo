@@ -16,18 +16,12 @@ import com.recreo.domain.content.impl.ComparaisonGenerator;
 import com.recreo.domain.content.impl.ComplementDixGenerator;
 import com.recreo.domain.content.impl.ConjugaisonCm1Generator;
 import com.recreo.domain.content.impl.EgaliteGenerator;
-import com.recreo.domain.content.impl.EmcCm1Generator;
-import com.recreo.domain.content.impl.EmcCpGenerator;
-import com.recreo.domain.content.impl.GeographieCm1Generator;
-import com.recreo.domain.content.impl.HistoireCm1Generator;
 import com.recreo.domain.content.impl.HomophonesGenerator;
 import com.recreo.domain.content.impl.LeBonSonGenerator;
 import com.recreo.domain.content.impl.MotManquantCpGenerator;
 import com.recreo.domain.content.impl.NatureMotGenerator;
 import com.recreo.domain.content.impl.PremiereLettreGenerator;
-import com.recreo.domain.content.impl.QuestionnerLeMondeCpGenerator;
-import com.recreo.domain.content.impl.SciencesCm1Generator;
-import com.recreo.domain.content.impl.VraiFauxSciencesCm1Generator;
+import com.recreo.domain.content.impl.QuizGenerator;
 import com.recreo.domain.mechanic.MechanicId;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMechanic;
 import com.recreo.domain.mechanics.quizaventure.QuizAventureMechanic;
@@ -165,57 +159,17 @@ public class BeansConfig {
                 new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — compléter une égalité"),
                 EgaliteGenerator::new));
 
-        // 3e mecanique (s07 / ADR-0007) : "quiz-aventure". MEME moteur de session
-        // partage, presentation DISTINCTE (carte-question + boutons de reponses). Le
-        // reglage commun "nombre de questions" est fourni par SimpleGameFactory. Ouvre
-        // des matieres jusque-la non couvertes (questionner le monde CP ; sciences,
-        // histoire, geographie CM1).
-        defs.add(quizAventureGame(
-                "questionner-le-monde-cp", "Questionner le monde", "CP",
-                "quiz-aventure", "Quiz-aventure", "Questionner le monde CP — Quiz-aventure",
-                "Réponds aux questions sur le monde qui t'entoure.",
-                new ContentDescriptor("Questionner le monde", "CP", "Le vivant, la matière, les objets"),
-                QuestionnerLeMondeCpGenerator::new));
-        defs.add(quizAventureGame(
-                "sciences-cm1", "Sciences et technologie", "CM1",
-                "quiz-aventure", "Quiz-aventure", "Sciences CM1 — Quiz-aventure",
-                "Teste tes connaissances en sciences.",
-                new ContentDescriptor("Sciences et technologie", "CM1", "Matière, mouvement, énergie, vivant"),
-                SciencesCm1Generator::new));
-        defs.add(quizAventureGame(
-                "histoire-cm1", "Histoire", "CM1",
-                "quiz-aventure", "Quiz-aventure", "Histoire CM1 — Quiz-aventure",
-                "Explore les grands repères de l'histoire.",
-                new ContentDescriptor("Histoire", "CM1", "Repères historiques"),
-                HistoireCm1Generator::new));
-        defs.add(quizAventureGame(
-                "geographie-cm1", "Géographie", "CM1",
-                "quiz-aventure", "Quiz-aventure", "Géographie CM1 — Quiz-aventure",
-                "Découvre la France et le monde.",
-                new ContentDescriptor("Géographie", "CM1", "Se repérer dans l'espace"),
-                GeographieCm1Generator::new));
-
-        // Contenu s08 : quiz-aventure. Ouvre la matiere EMC (CP + CM1) et ajoute un
-        // "Vrai ou Faux" de sciences (2 options : le moteur/vue gerent un nombre
-        // d'options quelconque). MEME mecanique quiz-aventure, uniquement du contenu.
-        defs.add(quizAventureGame(
-                "emc-cp", "EMC", "CP",
-                "vivre-ensemble", "Vivre ensemble", "EMC CP — Vivre ensemble",
-                "Les règles de la classe et le respect des autres.",
-                new ContentDescriptor("EMC", "CP", "Règles de vie et respect"),
-                EmcCpGenerator::new));
-        defs.add(quizAventureGame(
-                "emc-cm1", "EMC", "CM1",
-                "citoyennete", "Citoyenneté & respect", "EMC CM1 — Citoyenneté & respect",
-                "La République, ses valeurs et ses symboles.",
-                new ContentDescriptor("EMC", "CM1", "Citoyenneté, valeurs de la République"),
-                EmcCm1Generator::new));
-        defs.add(quizAventureGame(
-                "vrai-faux-sciences-cm1", "Sciences et technologie", "CM1",
-                "vrai-faux-sciences", "Vrai ou Faux — sciences", "Sciences CM1 — Vrai ou Faux",
-                "Cette affirmation est-elle vraie ou fausse ?",
-                new ContentDescriptor("Sciences et technologie", "CM1", "Sciences — vrai ou faux"),
-                VraiFauxSciencesCm1Generator::new));
+        // 3e mecanique (s07 / ADR-0007) : "quiz-aventure". Le CONTENU est desormais
+        // EXTERNALISE (s09 / DEC-0006 / ADR-0009) : chaque jeu quiz est un fichier YAML
+        // editable sous content/quiz/*.yml, charge et VALIDE au demarrage. Le domaine
+        // n'expose qu'un QuizGenerator generique alimente par la liste chargee ; il n'y
+        // a plus une sous-classe Java par jeu. Ajouter/editer un quiz = editer un YAML.
+        for (QuizContentPack quiz : new QuizPackLoader().loadAll()) {
+            defs.add(quizAventureGame(
+                    quiz.entryId(), quiz.descriptor().matiere(), quiz.descriptor().niveau(),
+                    quiz.gameKey(), quiz.gameLabel(), quiz.title(), quiz.description(),
+                    quiz.descriptor(), descriptor -> new QuizGenerator(descriptor, quiz.questions())));
+        }
 
         return new InMemoryGameCatalog(
                 List.of(banditManchotMechanic, texteATrouMechanic, quizAventureMechanic), defs);
