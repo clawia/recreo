@@ -1,0 +1,46 @@
+# Quiz-aventure — Géographie (CM1). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+entryId: geographie-cm1
+title: "Géographie CM1 — Quiz-aventure"
+description: "Découvre la France et le monde."
+gameKey: quiz-aventure
+gameLabel: "Quiz-aventure"
+matiere: "Géographie"
+niveau: "CM1"
+domaine: "Se repérer dans l'espace"
+questions:
+  - question: "Quelle est la capitale de la France ?"
+    bonne: "Paris"
+    distracteurs: ["Lyon", "Marseille"]
+  - question: "Quel fleuve traverse Paris ?"
+    bonne: "La Seine"
+    distracteurs: ["La Loire", "Le Rhône"]
+  - question: "Sur quel continent se trouve la France ?"
+    bonne: "L'Europe"
+    distracteurs: ["L'Afrique", "L'Asie"]
+  - question: "Quel est le plus haut sommet des Alpes ?"
+    bonne: "Le mont Blanc"
+    distracteurs: ["Le Puy de Dôme", "Le mont Ventoux"]
+  - question: "Quel pays se trouve au sud de la France ?"
+    bonne: "L'Espagne"
+    distracteurs: ["L'Allemagne", "La Belgique"]
+  - question: "Quel océan borde la France à l'ouest ?"
+    bonne: "L'océan Atlantique"
+    distracteurs: ["L'océan Pacifique", "L'océan Indien"]
+  - question: "Quelle est la monnaie utilisée en France ?"
+    bonne: "L'euro"
+    distracteurs: ["Le dollar", "La livre"]
+  - question: "Quelle chaîne de montagnes sépare la France de l'Espagne ?"
+    bonne: "Les Pyrénées"
+    distracteurs: ["Les Alpes", "Le Jura"]
+  - question: "Combien de continents y a-t-il sur Terre ?"
+    bonne: "6"
+    distracteurs: ["4", "8"]
+  - question: "Quelle mer borde le sud de la France ?"
+    bonne: "La mer Méditerranée"
+    distracteurs: ["La mer du Nord", "La mer Rouge"]
+  - question: "Quel est le plus long fleuve de France ?"
+    bonne: "La Loire"
+    distracteurs: ["La Seine", "La Garonne"]
+  - question: "Quel pays voisin se trouve à l'est de la France ?"
+    bonne: "L'Allemagne"
+    distracteurs: ["L'Espagne", "Le Portugal"]

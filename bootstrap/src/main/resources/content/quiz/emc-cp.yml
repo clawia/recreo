@@ -1,0 +1,40 @@
+# Quiz-aventure — EMC « Vivre ensemble » (CP). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+entryId: emc-cp
+title: "EMC CP — Vivre ensemble"
+description: "Les règles de la classe et le respect des autres."
+gameKey: vivre-ensemble
+gameLabel: "Vivre ensemble"
+matiere: "EMC"
+niveau: "CP"
+domaine: "Règles de vie et respect"
+questions:
+  - question: "Que dit-on quand on demande quelque chose gentiment ?"
+    bonne: "S'il te plaît"
+    distracteurs: ["Donne", "Tais-toi"]
+  - question: "Avant de parler en classe, il faut..."
+    bonne: "lever la main"
+    distracteurs: ["crier", "se lever d'un bond"]
+  - question: "Quand quelqu'un t'aide, tu dis..."
+    bonne: "Merci"
+    distracteurs: ["Rien", "C'est normal"]
+  - question: "Comment doit-on traiter ses camarades ?"
+    bonne: "Avec respect"
+    distracteurs: ["En se moquant", "En bousculant"]
+  - question: "Où jette-t-on un papier ?"
+    bonne: "À la poubelle"
+    distracteurs: ["Par terre", "Dans le cartable du voisin"]
+  - question: "Si un camarade est triste, tu peux..."
+    bonne: "le consoler"
+    distracteurs: ["te moquer de lui", "l'ignorer"]
+  - question: "Dans la cour, on joue..."
+    bonne: "sans se faire mal"
+    distracteurs: ["en tapant", "en poussant"]
+  - question: "Quand la maîtresse parle, on doit..."
+    bonne: "écouter"
+    distracteurs: ["parler plus fort", "se lever"]
+  - question: "Prêter un jouet à un ami, c'est..."
+    bonne: "partager"
+    distracteurs: ["voler", "se disputer"]
+  - question: "Pour traverser la rue, on regarde..."
+    bonne: "des deux côtés"
+    distracteurs: ["ses chaussures", "le ciel"]

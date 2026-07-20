@@ -1,0 +1,55 @@
+# Quiz-aventure — Questionner le monde (CP). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+# Pour ajouter/modifier une question : édite ce fichier puis redémarre l'application.
+# Règles : chaque question a une "bonne" réponse et au moins un "distracteur" ; les
+# distracteurs doivent être distincts et différents de la bonne réponse.
+entryId: questionner-le-monde-cp
+title: "Questionner le monde CP — Quiz-aventure"
+description: "Réponds aux questions sur le monde qui t'entoure."
+gameKey: quiz-aventure
+gameLabel: "Quiz-aventure"
+matiere: "Questionner le monde"
+niveau: "CP"
+domaine: "Le vivant, la matière, les objets"
+questions:
+  - question: "Quel animal fait « miaou » ?"
+    bonne: "Le chat"
+    distracteurs: ["Le chien", "La vache"]
+  - question: "Où vivent les poissons ?"
+    bonne: "Dans l'eau"
+    distracteurs: ["Dans les arbres", "Sous la terre"]
+  - question: "Combien de pattes a une araignée ?"
+    bonne: "8"
+    distracteurs: ["6", "4"]
+  - question: "De quoi une plante a-t-elle besoin pour pousser ?"
+    bonne: "De l'eau et de la lumière"
+    distracteurs: ["Du chocolat", "Du sable"]
+  - question: "Quel est le petit de la vache ?"
+    bonne: "Le veau"
+    distracteurs: ["Le poulain", "L'agneau"]
+  - question: "Que mange surtout le lapin ?"
+    bonne: "Des carottes"
+    distracteurs: ["De la viande", "Des cailloux"]
+  - question: "Quand il neige, il fait..."
+    bonne: "froid"
+    distracteurs: ["chaud", "lourd"]
+  - question: "Combien de saisons y a-t-il dans l'année ?"
+    bonne: "4"
+    distracteurs: ["2", "6"]
+  - question: "Quel animal pond des œufs ?"
+    bonne: "La poule"
+    distracteurs: ["Le chien", "Le chat"]
+  - question: "Le soir, dans le ciel, on voit souvent..."
+    bonne: "la Lune"
+    distracteurs: ["le Soleil", "l'arc-en-ciel"]
+  - question: "Où pousse la carotte ?"
+    bonne: "Sous la terre"
+    distracteurs: ["Dans les arbres", "Dans l'eau"]
+  - question: "Quel animal a une carapace ?"
+    bonne: "La tortue"
+    distracteurs: ["Le lapin", "Le cheval"]
+  - question: "Avec quelle partie du corps sent-on les odeurs ?"
+    bonne: "Le nez"
+    distracteurs: ["Les oreilles", "Les mains"]
+  - question: "Que devient une petite graine que l'on arrose ?"
+    bonne: "Une plante"
+    distracteurs: ["Un caillou", "Un animal"]

@@ -1,0 +1,40 @@
+# Quiz-aventure — EMC « Citoyenneté & respect » (CM1). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+entryId: emc-cm1
+title: "EMC CM1 — Citoyenneté & respect"
+description: "La République, ses valeurs et ses symboles."
+gameKey: citoyennete
+gameLabel: "Citoyenneté & respect"
+matiere: "EMC"
+niveau: "CM1"
+domaine: "Citoyenneté, valeurs de la République"
+questions:
+  - question: "Quelle est la devise de la République française ?"
+    bonne: "Liberté, Égalité, Fraternité"
+    distracteurs: ["Paix, Amour, Joie", "Travail, Famille, Patrie"]
+  - question: "Quelles sont les couleurs du drapeau français ?"
+    bonne: "Bleu, blanc, rouge"
+    distracteurs: ["Rouge et jaune", "Vert, blanc, rouge"]
+  - question: "Comment s'appelle l'hymne national français ?"
+    bonne: "La Marseillaise"
+    distracteurs: ["La Parisienne", "Le Chant du départ"]
+  - question: "Respecter les autres, c'est accepter..."
+    bonne: "leurs différences"
+    distracteurs: ["seulement ses amis", "les plus forts"]
+  - question: "Dans une démocratie, les lois sont votées par..."
+    bonne: "les représentants élus"
+    distracteurs: ["le roi", "une seule personne"]
+  - question: "Le 14 juillet, en France, on célèbre..."
+    bonne: "la fête nationale"
+    distracteurs: ["Noël", "le nouvel an"]
+  - question: "Qui peut voter aux élections en France ?"
+    bonne: "Les citoyens majeurs"
+    distracteurs: ["Les enfants", "Tout le monde dès la naissance"]
+  - question: "Harceler un camarade, c'est..."
+    bonne: "interdit et puni"
+    distracteurs: ["autorisé", "un simple jeu"]
+  - question: "En France, l'école est..."
+    bonne: "obligatoire et gratuite"
+    distracteurs: ["payante", "réservée aux garçons"]
+  - question: "Qui Marianne représente-t-elle ?"
+    bonne: "La République française"
+    distracteurs: ["Une reine", "Une chanteuse"]

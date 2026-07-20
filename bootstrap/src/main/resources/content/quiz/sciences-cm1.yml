@@ -1,0 +1,46 @@
+# Quiz-aventure — Sciences et technologie (CM1). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+entryId: sciences-cm1
+title: "Sciences CM1 — Quiz-aventure"
+description: "Teste tes connaissances en sciences."
+gameKey: quiz-aventure
+gameLabel: "Quiz-aventure"
+matiere: "Sciences et technologie"
+niveau: "CM1"
+domaine: "Matière, mouvement, énergie, vivant"
+questions:
+  - question: "À quelle température l'eau bout-elle ?"
+    bonne: "100 °C"
+    distracteurs: ["50 °C", "0 °C"]
+  - question: "Quand l'eau gèle, elle devient..."
+    bonne: "solide"
+    distracteurs: ["gazeuse", "invisible"]
+  - question: "Quel organe sert à respirer ?"
+    bonne: "Les poumons"
+    distracteurs: ["L'estomac", "Le foie"]
+  - question: "Le Soleil est une..."
+    bonne: "étoile"
+    distracteurs: ["planète", "lune"]
+  - question: "Combien de pattes a un insecte ?"
+    bonne: "6"
+    distracteurs: ["8", "4"]
+  - question: "Grâce à quoi les plantes fabriquent-elles leur nourriture avec la lumière ?"
+    bonne: "La photosynthèse"
+    distracteurs: ["La digestion", "L'évaporation"]
+  - question: "Combien de planètes compte le système solaire ?"
+    bonne: "8"
+    distracteurs: ["9", "7"]
+  - question: "Quel gaz de l'air nous est indispensable pour respirer ?"
+    bonne: "L'oxygène"
+    distracteurs: ["Le dioxyde de carbone", "L'hélium"]
+  - question: "Quel organe pompe le sang dans tout le corps ?"
+    bonne: "Le cœur"
+    distracteurs: ["Le cerveau", "Les reins"]
+  - question: "En dessous de 0 °C, l'eau devient..."
+    bonne: "solide"
+    distracteurs: ["liquide", "gazeuse"]
+  - question: "Sur quelle planète vivons-nous ?"
+    bonne: "La Terre"
+    distracteurs: ["Mars", "Jupiter"]
+  - question: "Qu'est-ce qui attire les objets vers le sol ?"
+    bonne: "La gravité"
+    distracteurs: ["Le vent", "La lumière"]

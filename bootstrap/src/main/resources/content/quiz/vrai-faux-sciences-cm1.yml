@@ -1,0 +1,41 @@
+# Quiz-aventure — « Vrai ou Faux » sciences (CM1). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+# Variante à 2 options : "bonne" est "Vrai" ou "Faux", et l'unique distracteur est l'autre.
+entryId: vrai-faux-sciences-cm1
+title: "Sciences CM1 — Vrai ou Faux"
+description: "Cette affirmation est-elle vraie ou fausse ?"
+gameKey: vrai-faux-sciences
+gameLabel: "Vrai ou Faux — sciences"
+matiere: "Sciences et technologie"
+niveau: "CM1"
+domaine: "Sciences — vrai ou faux"
+questions:
+  - question: "La Terre tourne autour du Soleil."
+    bonne: "Vrai"
+    distracteurs: ["Faux"]
+  - question: "Le Soleil est une planète."
+    bonne: "Faux"
+    distracteurs: ["Vrai"]
+  - question: "L'eau bout à 100 °C."
+    bonne: "Vrai"
+    distracteurs: ["Faux"]
+  - question: "Les araignées sont des insectes."
+    bonne: "Faux"
+    distracteurs: ["Vrai"]
+  - question: "Le cœur fait circuler le sang dans le corps."
+    bonne: "Vrai"
+    distracteurs: ["Faux"]
+  - question: "La Lune produit sa propre lumière."
+    bonne: "Faux"
+    distracteurs: ["Vrai"]
+  - question: "Les plantes ont besoin de lumière pour grandir."
+    bonne: "Vrai"
+    distracteurs: ["Faux"]
+  - question: "Un insecte a six pattes."
+    bonne: "Vrai"
+    distracteurs: ["Faux"]
+  - question: "Les poumons servent à digérer les aliments."
+    bonne: "Faux"
+    distracteurs: ["Vrai"]
+  - question: "La glace est de l'eau à l'état solide."
+    bonne: "Vrai"
+    distracteurs: ["Faux"]
