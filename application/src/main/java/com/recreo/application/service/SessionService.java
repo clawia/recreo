@@ -18,10 +18,12 @@ import com.recreo.domain.content.RandomSource;
 import com.recreo.domain.mechanic.GameConfig;
 import com.recreo.domain.mechanic.GameMechanic;
 import com.recreo.domain.mechanic.GameSession;
+import com.recreo.domain.mechanic.Move;
 import com.recreo.domain.mechanic.MoveResult;
 import com.recreo.domain.mechanic.Reel;
 import com.recreo.domain.mechanic.SessionId;
 import com.recreo.domain.mechanic.SpinAndPick;
+import com.recreo.domain.mechanic.SubmitArrangement;
 
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -70,7 +72,10 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
         GameSession session = stored.withRuntime(config.content(), randomFactory.get());
 
         GameMechanic mechanic = catalog.mechanicFor(session.mechanic());
-        MoveResult result = mechanic.apply(session, new SpinAndPick(new Answer(command.chosenAnswer())));
+        Move move = (command.arrangement() != null && !command.arrangement().isEmpty())
+                ? new SubmitArrangement(command.arrangement())
+                : new SpinAndPick(new Answer(command.chosenAnswer()));
+        MoveResult result = mechanic.apply(session, move);
         repository.save(result.session());
         return toMoveOutcomeView(result, mechanic.view());
     }

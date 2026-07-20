@@ -89,6 +89,27 @@ public final class SessionEngine {
                 GameSession updated = advance(session, newScore, answered, mastered, generator, random);
                 yield new MoveResult(updated, correct, feedback);
             }
+            case SubmitArrangement arr -> {
+                // Glisser-deposer : correct si l'ordre soumis (encode canoniquement) egale
+                // la reponse attendue (deja encodee triee par le generateur). Le moteur reste
+                // AGNOSTIQUE : il ne trie pas, ne lit pas la meta. Meme scoring/maitrise que
+                // SpinAndPick.
+                boolean correct = Item.encodeArrangement(arr.order())
+                        .equals(session.currentItem().expected().value());
+                int newScore = session.score() + (correct ? POINTS_PER_CORRECT : 0);
+                int answered = session.answered() + 1;
+                Set<String> mastered = session.masteredKeys();
+                if (correct) {
+                    mastered = new LinkedHashSet<>(mastered);
+                    mastered.add(session.currentItem().key());
+                }
+                Feedback feedback = correct
+                        ? new Feedback("Bravo ! +" + POINTS_PER_CORRECT + " points")
+                        : new Feedback("Presque ! Le bon ordre etait "
+                                + session.currentItem().expected().value());
+                GameSession updated = advance(session, newScore, answered, mastered, generator, random);
+                yield new MoveResult(updated, correct, feedback);
+            }
             case Skip ignored -> {
                 // Passer ne compte pas comme une reponse et ne maitrise rien.
                 GameSession updated = advance(

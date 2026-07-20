@@ -52,4 +52,14 @@ public record Item(ItemId id, List<String> reelSymbols, String question, Answer 
     public static String keyOf(List<String> reelSymbols, String question) {
         return String.join(KEY_SEPARATOR, reelSymbols) + KEY_QUESTION_SEPARATOR + question;
     }
+
+    /**
+     * Encodage canonique d'un arrangement ordonne (mecanique glisser-deposer, cf.
+     * ADR-0013). SOURCE UNIQUE de la formule, utilisee par le generateur (pour produire
+     * {@code expected}) ET par le moteur (pour comparer l'ordre soumis). Le separateur
+     * ", " est lisible car il apparait dans le feedback ("le bon ordre etait ...").
+     */
+    public static String encodeArrangement(List<String> parts) {
+        return String.join(", ", parts);
+    }
 }

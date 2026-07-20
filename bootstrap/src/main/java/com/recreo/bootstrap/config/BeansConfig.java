@@ -15,8 +15,10 @@ import com.recreo.domain.content.impl.ComplementDixGenerator;
 import com.recreo.domain.content.impl.EgaliteGenerator;
 import com.recreo.domain.content.impl.MotChoixGenerator;
 import com.recreo.domain.content.impl.QuizGenerator;
+import com.recreo.domain.content.impl.RangeNombresGenerator;
 import com.recreo.domain.mechanic.MechanicId;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMechanic;
+import com.recreo.domain.mechanics.glisserdeposer.GlisserDeposerMechanic;
 import com.recreo.domain.mechanics.quizaventure.QuizAventureMechanic;
 import com.recreo.domain.mechanics.texteatrou.TexteATrouMechanic;
 import org.springframework.context.annotation.Bean;
@@ -50,9 +52,15 @@ public class BeansConfig {
     }
 
     @Bean
+    public GlisserDeposerMechanic glisserDeposerMechanic() {
+        return new GlisserDeposerMechanic();
+    }
+
+    @Bean
     public GameCatalog gameCatalog(BanditManchotMechanic banditManchotMechanic,
                                    TexteATrouMechanic texteATrouMechanic,
-                                   QuizAventureMechanic quizAventureMechanic) {
+                                   QuizAventureMechanic quizAventureMechanic,
+                                   GlisserDeposerMechanic glisserDeposerMechanic) {
         ContentPackLoader loader = new ContentPackLoader();
         List<ContentPack> packs = List.of(
                 loader.load("content/cp-calcul-mental.yml"),
@@ -143,8 +151,18 @@ public class BeansConfig {
                     quiz.descriptor(), descriptor -> new QuizGenerator(descriptor, quiz.questions())));
         }
 
+        // 4e mecanique (s12 / ADR-0013) : "glisser-deposer" (1er ilot JS). MEME moteur de
+        // session partage, presentation DISTINCTE (tuiles a ranger dans des emplacements).
+        // Contenu COMBINATOIRE (RangeNombresGenerator), pas de fichier. Reglage commun
+        // "nombre de questions" via SimpleGameFactory.
+        defs.add(glisserDeposerGame(
+                "range-nombres-cp", "Maths", "CP", "range-nombres", "Range les nombres",
+                "Maths CP — Range les nombres", "Range les nombres du plus petit au plus grand.",
+                new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — ordonner des nombres"),
+                RangeNombresGenerator::new));
+
         return new InMemoryGameCatalog(
-                List.of(banditManchotMechanic, texteATrouMechanic, quizAventureMechanic), defs);
+                List.of(banditManchotMechanic, texteATrouMechanic, quizAventureMechanic, glisserDeposerMechanic), defs);
     }
 
     /**
@@ -198,6 +216,24 @@ public class BeansConfig {
         return new CatalogEntryDef(
                 entryId, matiere, niveau, gameKey, gameLabel, title, description,
                 QuizAventureMechanic.ID, factory);
+    }
+
+    /**
+     * Construit une entree de jeu "glisser-deposer" (4e mecanique, 1er ilot JS, cf.
+     * ADR-0013) : meme fabrique de reglage commun ({@link SimpleGameFactory}), mais
+     * rattachee a {@link GlisserDeposerMechanic}. La mecanique n'est PAS devinee : elle
+     * est portee par l'entree de catalogue.
+     */
+    private static CatalogEntryDef glisserDeposerGame(
+            String entryId, String matiere, String niveau, String gameKey, String gameLabel,
+            String title, String description, ContentDescriptor descriptor,
+            Function<ContentDescriptor, ContentGenerator> generator) {
+        SimpleGameFactory factory = new SimpleGameFactory(
+                entryId, title, gameKey, niveau, GlisserDeposerMechanic.ID,
+                () -> generator.apply(descriptor));
+        return new CatalogEntryDef(
+                entryId, matiere, niveau, gameKey, gameLabel, title, description,
+                GlisserDeposerMechanic.ID, factory);
     }
 
     @Bean

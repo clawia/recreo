@@ -129,10 +129,14 @@ public class GameController {
 
     @PostMapping("/sessions/{id}/moves")
     public String submitMove(@PathVariable("id") String sessionId,
-                             @RequestParam("chosenAnswer") String chosenAnswer,
+                             @RequestParam(value = "chosenAnswer", required = false) String chosenAnswer,
+                             @RequestParam(value = "arrangement", required = false) java.util.List<String> arrangement,
                              @RequestParam(value = "from", required = false, defaultValue = HOME) String from,
                              Model model) {
-        MoveOutcomeView view = submitMoveUseCase.submit(new SubmitMoveCommand(sessionId, chosenAnswer));
+        SubmitMoveCommand command = (arrangement != null && !arrangement.isEmpty())
+                ? SubmitMoveCommand.arrangement(sessionId, arrangement)
+                : SubmitMoveCommand.pick(sessionId, chosenAnswer);
+        MoveOutcomeView view = submitMoveUseCase.submit(command);
         var game = mapper.toGameView(view);
         model.addAttribute("game", game);
         // `from` propage l'origine du parcours pour l'ecran de fin (Rejouer / retour).
