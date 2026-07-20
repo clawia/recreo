@@ -5,7 +5,8 @@ import com.recreo.domain.content.Answer;
 import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.content.ContentGenerator;
 import com.recreo.domain.content.RandomSource;
-import com.recreo.domain.content.impl.ConjugaisonCm1Generator;
+import com.recreo.domain.content.impl.QuizGenerator;
+import com.recreo.domain.content.impl.QuizGenerator.Question;
 import com.recreo.domain.mechanic.GameConfig;
 import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.MoveResult;
@@ -29,8 +30,15 @@ class TexteATrouMechanicTest {
     private static final TexteATrouMechanic MECHANIC = new TexteATrouMechanic();
 
     private static GameConfig config() {
-        ContentGenerator generator = new ConjugaisonCm1Generator(
-                new ContentDescriptor("Français", "CM1", "conjugaison"));
+        // Contenu "texte a trous" = meme forme que les quiz (phrase a trou + reponses) ;
+        // depuis s11, il est servi par le QuizGenerator generique (cf. ADR-0011).
+        ContentGenerator generator = new QuizGenerator(
+                new ContentDescriptor("Français", "CM1", "conjugaison"),
+                java.util.List.of(
+                        new Question("Tous les jours, il ___ à l'école.", "va",
+                                java.util.List.of("vais", "vont", "allez")),
+                        new Question("Nous ___ une histoire.", "lisons",
+                                java.util.List.of("lit", "lisent", "lis"))));
         return new GameConfig(TexteATrouMechanic.ID, generator, Map.of());
     }
 

@@ -36,7 +36,11 @@ class BanditManchotMechanicTest {
                 new DifficultyConfig(0, 10, EnumSet.of(Operation.ADDITION, Operation.SOUSTRACTION), 2),
                 new ContentDescriptor("mathematiques", "CP", "Calcul mental"));
         ContentGenerator francais = new SyllabesCpGenerator(
-                new ContentDescriptor("Français", "CP", "Phonologie — dénombrer les syllabes"));
+                new ContentDescriptor("Français", "CP", "Phonologie — dénombrer les syllabes"),
+                java.util.List.of(
+                        new SyllabesCpGenerator.Mot("chat", 1),
+                        new SyllabesCpGenerator.Mot("lapin", 2),
+                        new SyllabesCpGenerator.Mot("chocolat", 3)));
         return Stream.of(
                 Arguments.of("calcul-mental-cp", calcul),
                 Arguments.of("francais-cp", francais));

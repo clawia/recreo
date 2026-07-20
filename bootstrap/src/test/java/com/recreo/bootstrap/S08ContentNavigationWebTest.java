@@ -80,12 +80,10 @@ class S08ContentNavigationWebTest {
     }
 
     @Test
-    void finiteGameQuestionsAreCappedByTheirPool() {
-        assertThat(catalog.settingsFor("le-bon-son").questions().max()).isEqualTo(12);
-        assertThat(catalog.settingsFor("emc-cp").questions().max()).isEqualTo(10);
-        assertThat(catalog.settingsFor("emc-cm1").questions().max()).isEqualTo(10);
-        assertThat(catalog.settingsFor("vrai-faux-sciences-cm1").questions().max()).isEqualTo(10);
-        // Tables : generateur combinatoire (multiplication) -> plafond 50.
+    void tablesAreCappedAtFifty() {
+        // Tables = combinatoire (multiplication) -> plafond 50, indépendant du contenu.
+        // (Le cap des jeux FINIS externalisés est couvert, sans littéral de contenu, par
+        // SessionQuestionsTest + un test relatif dans S04 — cf. PLAN-refacto-tests-contenu.md.)
         assertThat(catalog.settingsFor("tables-multiplication-cm1").questions().max()).isEqualTo(50);
     }
 

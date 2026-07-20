@@ -123,16 +123,19 @@ class S04GamesNavigationWebTest {
     }
 
     @Test
-    void finiteGameQuestionsAreCappedByTheirPool() {
-        // Vivier fini : le nombre de questions ne peut depasser la taille de la liste.
-        assertThat(catalog.settingsFor("homophones").questions().max()).isEqualTo(10);
-        assertThat(catalog.settingsFor("premiere-lettre").questions().max()).isEqualTo(12);
-        assertThat(catalog.settingsFor("nature-mot").questions().max()).isEqualTo(16);
-        // Anglais : 50 mots -> plafond 50.
-        assertThat(catalog.settingsFor("anglais-lexique").questions().max()).isEqualTo(50);
-        // Combinatoire : plafond 50.
+    void combinatorialGamesAreCappedAtFifty() {
+        // Jeux COMBINATOIRES (vivier infini) : plafond 50, indépendant de tout contenu.
+        // (Le plafonnement par le vivier des jeux FINIS est testé, sans contenu figé,
+        // par SessionQuestionsTest — cf. PLAN-refacto-tests-contenu.md.)
         assertThat(catalog.settingsFor("comparaison").questions().max()).isEqualTo(50);
         assertThat(catalog.settingsFor("complement-dix").questions().max()).isEqualTo(50);
+    }
+
+    @Test
+    void aFiniteGameCapStaysWithinSaneBounds() {
+        // Assertion RELATIVE (pas de littéral de contenu) : le cap d'un jeu fini reste
+        // dans [5, 50] quelle que soit l'édition du fichier -> robuste.
+        assertThat(catalog.settingsFor("anglais-lexique").questions().max()).isBetween(5, 50);
     }
 
     @Test

@@ -31,19 +31,10 @@ class MotsPackLoaderTest {
     }
 
     @Test
-    void loadsTheFiveMotsFiles() {
-        assertThat(packsById().keySet()).containsExactlyInAnyOrder(
+    void loadsTheShippedMotsGames() {
+        // `contains` (pas `containsExactly`) : robuste à l'ajout/retrait d'un fichier.
+        assertThat(packsById().keySet()).contains(
                 "le-bon-son", "homophones", "premiere-lettre", "nature-mot", "anglais-lexique");
-    }
-
-    @Test
-    void poolSizesMatchTheVerifiedContent() {
-        Map<String, MotsContentPack> packs = packsById();
-        assertThat(packs.get("le-bon-son").entrees()).hasSize(12);
-        assertThat(packs.get("homophones").entrees()).hasSize(10);
-        assertThat(packs.get("premiere-lettre").entrees()).hasSize(12);
-        assertThat(packs.get("nature-mot").entrees()).hasSize(16);
-        assertThat(packs.get("anglais-lexique").entrees()).hasSize(50);
     }
 
     @Test

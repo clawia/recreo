@@ -32,9 +32,10 @@ class QuizPackLoaderTest {
     }
 
     @Test
-    void loadsTheSevenQuizFiles() {
-        Map<String, QuizContentPack> packs = packsById();
-        assertThat(packs.keySet()).containsExactlyInAnyOrder(
+    void loadsTheShippedQuizGames() {
+        // `contains` (pas `containsExactly`) : ajouter/retirer un fichier de contenu ne
+        // doit pas casser ce test (cf. PLAN-refacto-tests-contenu.md).
+        assertThat(packsById().keySet()).contains(
                 "questionner-le-monde-cp", "sciences-cm1", "histoire-cm1", "geographie-cm1",
                 "emc-cp", "emc-cm1", "vrai-faux-sciences-cm1");
     }
@@ -58,18 +59,6 @@ class QuizPackLoaderTest {
                 assertThat(seen.add(q.question())).as("%s : question unique", pack.entryId()).isTrue();
             }
         }
-    }
-
-    @Test
-    void poolSizesMatchTheVerifiedContent() {
-        Map<String, QuizContentPack> packs = packsById();
-        assertThat(packs.get("questionner-le-monde-cp").questions()).hasSize(14);
-        assertThat(packs.get("sciences-cm1").questions()).hasSize(17);
-        assertThat(packs.get("histoire-cm1").questions()).hasSize(10);
-        assertThat(packs.get("geographie-cm1").questions()).hasSize(12);
-        assertThat(packs.get("emc-cp").questions()).hasSize(10);
-        assertThat(packs.get("emc-cm1").questions()).hasSize(10);
-        assertThat(packs.get("vrai-faux-sciences-cm1").questions()).hasSize(10);
     }
 
     @Test

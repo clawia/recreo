@@ -138,18 +138,8 @@ class CatalogParametersTest {
                 .settings().get("questionsTarget")).isEqualTo(30);
     }
 
-    @Test
-    void questionsTargetIsCappedByFinitePool() {
-        // homophones : vivier de 10 phrases -> demande 40 plafonnee a 10 ;
-        // defaut absent -> min(20, 10) = 10.
-        assertThat(catalog.configFor("homophones", Map.of("questionsTarget", "40"))
-                .settings().get("questionsTarget")).isEqualTo(10);
-        assertThat(catalog.configFor("homophones").settings().get("questionsTarget"))
-                .isEqualTo(10);
-        // anglais : 50 mots -> defaut 20 accepte, demande 50 acceptee.
-        assertThat(catalog.configFor("anglais-lexique").settings().get("questionsTarget"))
-                .isEqualTo(20);
-        assertThat(catalog.configFor("anglais-lexique", Map.of("questionsTarget", "50"))
-                .settings().get("questionsTarget")).isEqualTo(50);
-    }
+    // Le plafonnement par le vivier d'un jeu FINI (ex-homophones/anglais) est désormais
+    // testé sans littéral de contenu par SessionQuestionsTest (logique en isolation) —
+    // cf. PLAN-refacto-tests-contenu.md. Le clamp général reste couvert ci-dessus sur un
+    // jeu combinatoire (calcul-mental-cp).
 }
