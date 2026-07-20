@@ -92,23 +92,24 @@ public final class SessionEngine {
             case SubmitArrangement arr -> {
                 // Glisser-deposer : correct si l'ordre soumis (encode canoniquement) egale
                 // la reponse attendue (deja encodee triee par le generateur). Le moteur reste
-                // AGNOSTIQUE : il ne trie pas, ne lit pas la meta. Meme scoring/maitrise que
-                // SpinAndPick.
+                // AGNOSTIQUE : il ne trie pas, ne lit pas la meta.
                 boolean correct = Item.encodeArrangement(arr.order())
                         .equals(session.currentItem().expected().value());
-                int newScore = session.score() + (correct ? POINTS_PER_CORRECT : 0);
-                int answered = session.answered() + 1;
-                Set<String> mastered = session.masteredKeys();
-                if (correct) {
-                    mastered = new LinkedHashSet<>(mastered);
-                    mastered.add(session.currentItem().key());
+                if (!correct) {
+                    // UX "ranger" : un arrangement FAUX ne fait PAS avancer (cf. DEC-0008).
+                    // On renvoie la session INCHANGEE (meme item, meme score) : le fragment
+                    // re-rendu remet les tuiles a l'etat initial (reserve), et un message
+                    // invite a reessayer le MEME puzzle. Rien n'est revele (retry).
+                    yield new MoveResult(session, false,
+                            new Feedback("Presque ! Remets les nombres dans le bon ordre et reessaie."));
                 }
-                Feedback feedback = correct
-                        ? new Feedback("Bravo ! +" + POINTS_PER_CORRECT + " points")
-                        : new Feedback("Presque ! Le bon ordre etait "
-                                + session.currentItem().expected().value());
+                // Correct : +10, item marque maitrise, item suivant / fin de session.
+                int newScore = session.score() + POINTS_PER_CORRECT;
+                int answered = session.answered() + 1;
+                Set<String> mastered = new LinkedHashSet<>(session.masteredKeys());
+                mastered.add(session.currentItem().key());
                 GameSession updated = advance(session, newScore, answered, mastered, generator, random);
-                yield new MoveResult(updated, correct, feedback);
+                yield new MoveResult(updated, true, new Feedback("Bravo ! +" + POINTS_PER_CORRECT + " points"));
             }
             case Skip ignored -> {
                 // Passer ne compte pas comme une reponse et ne maitrise rien.
