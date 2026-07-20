@@ -1,0 +1,25 @@
+# Texte à trous — Le mot qui manque (Français CP). Contenu ÉDITABLE (ADR-0011).
+entryId: mot-manquant-cp
+title: "Français CP — Le mot qui manque"
+description: "Trouve le mot qui complète la phrase."
+gameKey: mot-manquant
+gameLabel: "Le mot qui manque"
+matiere: "Français"
+niveau: "CP"
+domaine: "Lecture — compréhension (sens)"
+questions:
+  - question: "Le chat boit du ___."
+    bonne: "lait"
+    distracteurs: ["pain", "vélo", "chien"]
+  - question: "Je dors dans mon ___."
+    bonne: "lit"
+    distracteurs: ["bol", "chat", "arbre"]
+  - question: "Le soleil est dans le ___."
+    bonne: "ciel"
+    distracteurs: ["sac", "pied", "livre"]
+  - question: "On écrit avec un ___."
+    bonne: "crayon"
+    distracteurs: ["ballon", "gâteau", "nuage"]
+  - question: "Le poisson nage dans l'___."
+    bonne: "eau"
+    distracteurs: ["air", "herbe", "feu"]

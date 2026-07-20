@@ -1,0 +1,30 @@
+# Texte à trous — Conjugaison présent (Français CM1). Contenu ÉDITABLE (ADR-0011).
+# Même schéma que les quiz : "question" porte la phrase à compléter (marqueur ___),
+# "bonne" = le bon mot, "distracteurs" = les autres propositions.
+entryId: conjugaison-cm1
+title: "Français CM1 — Conjugaison (présent)"
+description: "Complète la phrase avec le bon verbe."
+gameKey: conjugaison
+gameLabel: "Conjugaison (présent)"
+matiere: "Français"
+niveau: "CM1"
+domaine: "Conjugaison — présent de l'indicatif"
+questions:
+  - question: "Tous les jours, il ___ à l'école."
+    bonne: "va"
+    distracteurs: ["vais", "vont", "allez"]
+  - question: "Nous ___ une histoire."
+    bonne: "lisons"
+    distracteurs: ["lit", "lisent", "lis"]
+  - question: "Vous ___ du chocolat."
+    bonne: "mangez"
+    distracteurs: ["mange", "mangeons", "mangent"]
+  - question: "Je ___ mes devoirs."
+    bonne: "fais"
+    distracteurs: ["fait", "faisons", "font"]
+  - question: "Elles ___ dans le jardin."
+    bonne: "jouent"
+    distracteurs: ["joue", "jouons", "jouez"]
+  - question: "Tu ___ un dessin."
+    bonne: "dessines"
+    distracteurs: ["dessine", "dessinent", "dessinez"]

@@ -1,0 +1,25 @@
+# Texte à trous — Accord de l'adjectif (Français CM1). Contenu ÉDITABLE (ADR-0011).
+entryId: accords-cm1
+title: "Français CM1 — L'accord de l'adjectif"
+description: "Accorde l'adjectif dans la phrase."
+gameKey: accords-adjectif
+gameLabel: "L'accord de l'adjectif"
+matiere: "Français"
+niveau: "CM1"
+domaine: "Grammaire — accord de l'adjectif"
+questions:
+  - question: "Les fleurs sont ___."
+    bonne: "jolies"
+    distracteurs: ["joli", "jolis", "jolie"]
+  - question: "Des chats ___."
+    bonne: "noirs"
+    distracteurs: ["noir", "noire", "noires"]
+  - question: "La maison est ___."
+    bonne: "grande"
+    distracteurs: ["grand", "grands", "grandes"]
+  - question: "Les garçons sont ___."
+    bonne: "petits"
+    distracteurs: ["petit", "petite", "petites"]
+  - question: "Une pomme ___."
+    bonne: "verte"
+    distracteurs: ["vert", "verts", "vertes"]

@@ -1,0 +1,30 @@
+# Bandit manchot — « Les syllabes » (Français CP). Contenu ÉDITABLE (ADR-0011).
+# Un mot s'affiche, l'enfant compte ses syllabes orales. Les options du réglage adulte
+# « nombre de syllabes max » sont dans syllabesOptions ; les distracteurs (nombres voisins)
+# sont calculés automatiquement. Édite/ajoute un mot (mot + son nombre de syllabes).
+entryId: francais-cp
+title: "Français CP — Les syllabes"
+description: "Compte les syllabes des mots."
+gameKey: syllabes
+gameLabel: "Les syllabes"
+matiere: "Français"
+niveau: "CP"
+domaine: "Phonologie — dénombrer les syllabes"
+syllabesOptions: [2, 3, 4]
+minSyllabes: 1
+maxSyllabes: 4
+items:
+  - { mot: "chat", syllabes: 1 }
+  - { mot: "riz", syllabes: 1 }
+  - { mot: "loup", syllabes: 1 }
+  - { mot: "papa", syllabes: 2 }
+  - { mot: "lapin", syllabes: 2 }
+  - { mot: "bateau", syllabes: 2 }
+  - { mot: "cadeau", syllabes: 2 }
+  - { mot: "maison", syllabes: 2 }
+  - { mot: "chocolat", syllabes: 3 }
+  - { mot: "éléphant", syllabes: 3 }
+  - { mot: "parapluie", syllabes: 3 }
+  - { mot: "dinosaure", syllabes: 3 }
+  - { mot: "ordinateur", syllabes: 4 }
+  - { mot: "hélicoptère", syllabes: 4 }
