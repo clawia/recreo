@@ -709,3 +709,112 @@ body {
 .replay-form {
     margin: 0;
 }
+
+/* ---- Mecanique "glisser-deposer" : tuiles a ranger + emplacements ---- */
+/* Grosses cibles tactiles pour de jeunes enfants (CP) : tuiles bien saisissables,
+   emplacements en pointilles genereux, gros bouton de validation. */
+.glisser-deposer {
+    text-align: center;
+}
+
+/* Reserve des tuiles a ranger (en desordre). */
+.dnd-tuiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.9rem;
+    min-height: 96px;
+    margin: 0.6rem auto 1.1rem;
+    max-width: 640px;
+    padding: 0.8rem;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #fff3bf 0%, #ffe066 100%);
+    box-shadow: inset 0 0 0 4px #ffd43b;
+}
+
+/* Une tuile deplacable : gros carre lisible, curseur "grab". */
+.dnd-tuile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 84px;
+    height: 84px;
+    padding: 0.6rem 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    background: var(--primary);
+    border: none;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    transition: transform 0.1s ease, background 0.1s ease;
+}
+
+.dnd-tuile:active {
+    cursor: grabbing;
+}
+
+.dnd-tuile.dragging {
+    opacity: 0.5;
+    transform: scale(1.05);
+}
+
+/* Rangee d'emplacements vides ou deposer les tuiles. */
+.dnd-slots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 0.6rem auto 1.1rem;
+    max-width: 640px;
+}
+
+/* Un emplacement vide : cadre en pointilles, meme gabarit qu'une tuile. */
+.dnd-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 92px;
+    min-height: 92px;
+    padding: 0.3rem;
+    border: 4px dashed var(--accent);
+    border-radius: 18px;
+    background: #fffdf5;
+}
+
+.dnd-slot .dnd-tuile {
+    margin: 0;
+}
+
+/* Gros bouton de validation (envoie l'ordre choisi). */
+.valider-btn {
+    margin-top: 0.4rem;
+    min-width: 200px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: 1rem 1.8rem;
+    border: none;
+    border-radius: 18px;
+    color: white;
+    background: var(--ok);
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform 0.1s ease, background 0.1s ease;
+}
+
+.valider-btn:hover {
+    transform: translateY(-3px);
+}
+
+.valider-btn:active {
+    transform: translateY(2px);
+}
+
+.dnd-form {
+    margin: 0;
+}
