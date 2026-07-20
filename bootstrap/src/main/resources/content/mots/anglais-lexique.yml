@@ -1,0 +1,64 @@
+# Bandit manchot — « Le bon mot en anglais » (Anglais CM1, lexique). ÉDITABLE (ADR-0010).
+# Mode "pool" : les distracteurs sont d'autres traductions anglaises de la liste.
+entryId: anglais-lexique
+title: "Le bon mot en anglais"
+description: "Trouve la traduction anglaise."
+gameKey: anglais-lexique
+gameLabel: "Le bon mot en anglais"
+matiere: "Anglais"
+niveau: "CM1"
+domaine: "Lexique — vocabulaire courant"
+question: "Comment dit-on en anglais ?"
+distractorMode: pool
+distractorCount: 2
+items:
+  - { prompt: "chien", bonne: "dog" }
+  - { prompt: "chat", bonne: "cat" }
+  - { prompt: "maison", bonne: "house" }
+  - { prompt: "rouge", bonne: "red" }
+  - { prompt: "bleu", bonne: "blue" }
+  - { prompt: "vert", bonne: "green" }
+  - { prompt: "jaune", bonne: "yellow" }
+  - { prompt: "pomme", bonne: "apple" }
+  - { prompt: "eau", bonne: "water" }
+  - { prompt: "lait", bonne: "milk" }
+  - { prompt: "pain", bonne: "bread" }
+  - { prompt: "livre", bonne: "book" }
+  - { prompt: "école", bonne: "school" }
+  - { prompt: "ami", bonne: "friend" }
+  - { prompt: "soleil", bonne: "sun" }
+  - { prompt: "lune", bonne: "moon" }
+  - { prompt: "main", bonne: "hand" }
+  - { prompt: "pied", bonne: "foot" }
+  - { prompt: "tête", bonne: "head" }
+  - { prompt: "arbre", bonne: "tree" }
+  - { prompt: "fleur", bonne: "flower" }
+  - { prompt: "oiseau", bonne: "bird" }
+  - { prompt: "poisson", bonne: "fish" }
+  - { prompt: "cheval", bonne: "horse" }
+  - { prompt: "vache", bonne: "cow" }
+  - { prompt: "mouton", bonne: "sheep" }
+  - { prompt: "cochon", bonne: "pig" }
+  - { prompt: "gâteau", bonne: "cake" }
+  - { prompt: "chaise", bonne: "chair" }
+  - { prompt: "porte", bonne: "door" }
+  - { prompt: "fenêtre", bonne: "window" }
+  - { prompt: "voiture", bonne: "car" }
+  - { prompt: "vélo", bonne: "bike" }
+  - { prompt: "balle", bonne: "ball" }
+  - { prompt: "garçon", bonne: "boy" }
+  - { prompt: "fille", bonne: "girl" }
+  - { prompt: "mère", bonne: "mother" }
+  - { prompt: "père", bonne: "father" }
+  - { prompt: "frère", bonne: "brother" }
+  - { prompt: "sœur", bonne: "sister" }
+  - { prompt: "jour", bonne: "day" }
+  - { prompt: "nuit", bonne: "night" }
+  - { prompt: "chaud", bonne: "hot" }
+  - { prompt: "froid", bonne: "cold" }
+  - { prompt: "grand", bonne: "big" }
+  - { prompt: "petit", bonne: "small" }
+  - { prompt: "blanc", bonne: "white" }
+  - { prompt: "noir", bonne: "black" }
+  - { prompt: "lit", bonne: "bed" }
+  - { prompt: "chapeau", bonne: "hat" }
