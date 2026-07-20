@@ -54,3 +54,10 @@ Viviers de quiz **doublés** (contenu en dur, vérifié, tests synchronisés) :
   stricte + message clair. Migration des listes actuelles vers les fichiers à faire proprement.
 - Cette DEC ne bloque aucun sprint ; elle entre au **backlog** et sera priorisée avec les prochaines
   mécaniques.
+
+## Suivi de réalisation
+- **s09 (ADR-0009)** : **famille quiz externalisée** — les 7 jeux quiz vivent dans
+  `content/quiz/*.yml`, éditables sans dev, chargés + validés au démarrage (`QuizPackLoader`).
+  Guide : `squad/programme/CONTENU-editable.md`.
+- **À suivre** : mots→réponse du bandit manchot (le bon son, anglais, syllabes, première lettre,
+  homophones, nature du mot) puis textes à trous — schémas propres à chaque famille.
