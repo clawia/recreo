@@ -18,4 +18,6 @@
 | s09 | Externalisation du contenu quiz (7 jeux en YAML éditables, ADR-0009) — refactor sans changement de contenu | Quiz-aventure (technique) | transverse (contenu éditable) | 2026-07-20 | ✅ **VALIDÉ** (Done technique + Done pédago, non-régression OK) | 2026-07-20 |
 | s10 | Externalisation du contenu « mot → réponse » (5 jeux en YAML éditables, ADR-0010) — refactor, contenu quasi identique (léger changement distracteurs « première lettre ») | Bandit manchot (technique) | transverse (contenu éditable) | 2026-07-20 | ✅ **VALIDÉ** (Done technique + Done pédago, non-régression OK) | 2026-07-20 |
 
-> ✅ **File à zéro** : aucun incrément en attente de validation. La règle d'or (max ~3) est respectée.
+| s11 | Durcissement (renommage `niveau-jeu.yml` + découplage des tests du contenu) + fin d'externalisation (textes à trous + syllabes en YAML) — refactor, contenu inchangé | transverse (technique) | transverse (contenu éditable) | 2026-07-20 | **À VALIDER** (Done technique ✅ ; non-régression à jouer) | — |
+
+> 1 incrément en attente (s11, refactor). Règle d'or (max ~3) respectée.

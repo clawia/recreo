@@ -16,6 +16,7 @@ reste la **validation pédagogique humaine**, pas la vitesse des agents.
 | s08 | 2026-07-20 | 2026-07-20 | 1 salve (+ plafond tables porté à 20) | 5 jeux de contenu sur mécaniques existantes (DEC-0007) : Le bon son (décodage CP), Tables de multiplication CM1, EMC CP/CM1, Vrai/Faux sciences — aucune nouvelle mécanique, pas de nouvel ADR | ✅ CI verte (114 tests) | ✅ VALIDÉ 2026-07-20 |
 | s09 | 2026-07-20 | 2026-07-20 | 1 salve | Externalisation du contenu quiz (ADR-0009 / DEC-0006) : 7 jeux quiz en fichiers YAML éditables, chargés + validés au démarrage ; 7 sous-classes supprimées ; zéro régression | ✅ CI verte (118 tests) | ✅ VALIDÉ 2026-07-20 |
 | s10 | 2026-07-20 | 2026-07-20 | 1 salve | Externalisation du contenu « mot → réponse » (ADR-0010 / DEC-0006) : 5 jeux (le bon son, homophones, première lettre, nature, anglais) en YAML éditables ; générateur générique MotChoixGenerator (modes explicit/pool) ; 5 sous-classes supprimées | ✅ CI verte (129 tests) | ✅ VALIDÉ 2026-07-20 |
+| s11 | 2026-07-20 | 2026-07-20 | 1 salve | Durcissement + fin d'externalisation : renommage `niveau-jeu.yml` (ADR-0012), découplage des tests du contenu (SessionQuestionsTest), textes à trous + syllabes externalisés (ADR-0011, PhraseATrouGenerator supprimé). DEC-0006 réalisé | ✅ CI verte (113 tests) | ⏳ À VALIDER |
 
 > Note : « 1 salve d'amorçage » = les agents ont produit l'incrément en une session de travail
 > continue (temps réel de l'ordre de la dizaine de minutes à quelques heures selon les tâches),
