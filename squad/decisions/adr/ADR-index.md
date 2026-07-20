@@ -17,3 +17,4 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 > (« EMC » ajouté sans changement structurel). Aucune décision d'architecture requise (Théo).
 
 | [ADR-0009](ADR-0009-externalisation-contenu-quiz.md) | Externalisation du contenu quiz dans des fichiers YAML éditables (chargés + validés en bootstrap) | Accepté | 2026-07-20 | s09 |
+| [ADR-0010](ADR-0010-externalisation-contenu-mots.md) | Externalisation du contenu « mot → réponse » (générateur générique + modes explicit/pool) | Accepté | 2026-07-20 | s10 |
