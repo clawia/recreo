@@ -62,5 +62,12 @@ Viviers de quiz **doublés** (contenu en dur, vérifié, tests synchronisés) :
 - **s10 (ADR-0010)** : **famille « mot → réponse » externalisée** — le bon son, homophones, première
   lettre, nature du mot, anglais dans `content/mots/*.yml` (générateur générique `MotChoixGenerator`,
   modes explicit/pool). 5 sous-classes supprimées.
-- **À suivre** : *syllabes* (options numériques + réglage) et *textes à trous* (conjugaison, accords,
-  mot manquant, phrase à trou, égalité) — schémas propres à chaque famille.
+- **s11 (ADR-0011)** : **textes à trous** (conjugaison, accords, mot manquant → `content/textes-trous/`,
+  servis par `QuizGenerator` ; `PhraseATrouGenerator` supprimé) **et syllabes** (`content/syllabes/`,
+  schéma numérique dédié) externalisés. **Externalisation du contenu à liste finie : TERMINÉE.**
+- **Reste en code, par conception** : le contenu **génératif** (calcul mental, tables, « complète
+  l'égalité ») — vivier infini, rien à éditer.
+
+## Statut : ATTEINTE
+Tout le contenu **à liste finie** est désormais éditable en YAML sans dev. Cette DEC peut être
+considérée **réalisée** (le génératif restant est hors périmètre par nature).

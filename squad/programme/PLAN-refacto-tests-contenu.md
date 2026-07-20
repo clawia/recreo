@@ -1,7 +1,9 @@
 # Plan — Découpler les tests du contenu externalisé
 
-Statut : **planifié** (non exécuté). Demandé par l'utilisatrice le 2026-07-20. Proposé pour **s11**
-(éventuellement groupé avec le renommage des configs).
+Statut : ✅ **EXÉCUTÉ en s11**. `SessionQuestionsTest` ajouté (logique de cap en isolation) ; tailles
+de contenu en dur supprimées ; présence de fichiers via `contains()` ; cap d'un jeu fini vérifié en
+**relatif** (`isBetween(5, 50)`). Preuve : ajouter des questions « système solaire » à sciences n'a
+plus cassé aucun test (la CI est restée verte sans toucher un test). CI verte, ArchUnit 5/5.
 
 ## Constat (audit du 2026-07-20)
 Depuis l'externalisation du contenu (quiz s09, mots s10), **éditer un fichier de contenu casse des

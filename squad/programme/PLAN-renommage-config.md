@@ -1,7 +1,7 @@
 # Plan — Renommer les fichiers de config selon `niveau-jeu.yml`
 
-Statut : **planifié** (non exécuté). Demandé par l'utilisatrice le 2026-07-20. À réaliser dans un
-sprint dédié (proposé : **s11**) ou à la demande.
+Statut : ✅ **EXÉCUTÉ en s11** (ADR-0012). 13 fichiers renommés en `niveau-jeu.yml`, 3 chemins de
+calcul mental mis à jour, CI verte, zéro régression.
 
 ## Objectif
 Uniformiser le nommage des fichiers de contenu en **`<niveau>-<jeu>.yml`** (niveau d'abord, en
