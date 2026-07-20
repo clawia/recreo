@@ -16,14 +16,18 @@ import com.recreo.domain.content.impl.ComparaisonGenerator;
 import com.recreo.domain.content.impl.ComplementDixGenerator;
 import com.recreo.domain.content.impl.ConjugaisonCm1Generator;
 import com.recreo.domain.content.impl.EgaliteGenerator;
+import com.recreo.domain.content.impl.EmcCm1Generator;
+import com.recreo.domain.content.impl.EmcCpGenerator;
 import com.recreo.domain.content.impl.GeographieCm1Generator;
 import com.recreo.domain.content.impl.HistoireCm1Generator;
 import com.recreo.domain.content.impl.HomophonesGenerator;
+import com.recreo.domain.content.impl.LeBonSonGenerator;
 import com.recreo.domain.content.impl.MotManquantCpGenerator;
 import com.recreo.domain.content.impl.NatureMotGenerator;
 import com.recreo.domain.content.impl.PremiereLettreGenerator;
 import com.recreo.domain.content.impl.QuestionnerLeMondeCpGenerator;
 import com.recreo.domain.content.impl.SciencesCm1Generator;
+import com.recreo.domain.content.impl.VraiFauxSciencesCm1Generator;
 import com.recreo.domain.mechanic.MechanicId;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMechanic;
 import com.recreo.domain.mechanics.quizaventure.QuizAventureMechanic;
@@ -65,7 +69,8 @@ public class BeansConfig {
         ContentPackLoader loader = new ContentPackLoader();
         List<ContentPack> packs = List.of(
                 loader.load("content/calcul-mental-cp.yml"),
-                loader.load("content/calcul-mental-cm1.yml"));
+                loader.load("content/calcul-mental-cm1.yml"),
+                loader.load("content/tables-multiplication-cm1.yml"));
 
         List<CatalogEntryDef> defs = new ArrayList<>();
 
@@ -128,6 +133,14 @@ public class BeansConfig {
                 new ContentDescriptor("Anglais", "CM1", "Lexique — vocabulaire courant"),
                 AnglaisLexiqueGenerator::new));
 
+        // Contenu s08 : "Le bon son" (Francais CP, decodage graphème/phonème). MEME
+        // mecanique bandit manchot ; comble un trou de la matrice (phonologie CP).
+        defs.add(simpleGame(
+                "le-bon-son", "Français", "CP", "le-bon-son", "Le bon son",
+                "Le bon son", "Quel son entends-tu dans le mot ?",
+                new ContentDescriptor("Français", "CP", "Décodage — association graphème/phonème"),
+                LeBonSonGenerator::new));
+
         // 2e mecanique (s06 / ADR-0007) : "texte a trous". MEME moteur de session
         // partage, presentation DISTINCTE (phrase a completer + mots a cliquer). Le
         // reglage commun "nombre de questions" est fourni par SimpleGameFactory.
@@ -181,6 +194,28 @@ public class BeansConfig {
                 "Découvre la France et le monde.",
                 new ContentDescriptor("Géographie", "CM1", "Se repérer dans l'espace"),
                 GeographieCm1Generator::new));
+
+        // Contenu s08 : quiz-aventure. Ouvre la matiere EMC (CP + CM1) et ajoute un
+        // "Vrai ou Faux" de sciences (2 options : le moteur/vue gerent un nombre
+        // d'options quelconque). MEME mecanique quiz-aventure, uniquement du contenu.
+        defs.add(quizAventureGame(
+                "emc-cp", "EMC", "CP",
+                "vivre-ensemble", "Vivre ensemble", "EMC CP — Vivre ensemble",
+                "Les règles de la classe et le respect des autres.",
+                new ContentDescriptor("EMC", "CP", "Règles de vie et respect"),
+                EmcCpGenerator::new));
+        defs.add(quizAventureGame(
+                "emc-cm1", "EMC", "CM1",
+                "citoyennete", "Citoyenneté & respect", "EMC CM1 — Citoyenneté & respect",
+                "La République, ses valeurs et ses symboles.",
+                new ContentDescriptor("EMC", "CM1", "Citoyenneté, valeurs de la République"),
+                EmcCm1Generator::new));
+        defs.add(quizAventureGame(
+                "vrai-faux-sciences-cm1", "Sciences et technologie", "CM1",
+                "vrai-faux-sciences", "Vrai ou Faux — sciences", "Sciences CM1 — Vrai ou Faux",
+                "Cette affirmation est-elle vraie ou fausse ?",
+                new ContentDescriptor("Sciences et technologie", "CM1", "Sciences — vrai ou faux"),
+                VraiFauxSciencesCm1Generator::new));
 
         return new InMemoryGameCatalog(
                 List.of(banditManchotMechanic, texteATrouMechanic, quizAventureMechanic), defs);
