@@ -69,26 +69,56 @@ class GlisserDeposerWebTest {
     }
 
     @Test
-    void wrongArrangementStaysOnTheSamePuzzle() throws Exception {
+    void wrongArrangementKeepsWellPlacedTilesLockedAndReturnsTheRest() throws Exception {
         // UX "ranger" (DEC-0008) : un arrangement faux ne fait PAS avancer -> meme puzzle,
-        // tuiles a nouveau presentes (remises a l'etat initial), pas d'ecran de fin.
+        // pas d'ecran de fin. Nouveaute : les tuiles DEJA bien placees restent VERROUILLEES
+        // dans leur emplacement ; seules les mal placees repartent en reserve. La bonne
+        // reponse n'est PAS revelee (on ne montre que les positions reussies par l'enfant).
         MvcResult start = mockMvc.perform(post("/sessions").param("catalogEntryId", "range-nombres-cp"))
                 .andExpect(status().isOk()).andReturn();
         String html = start.getResponse().getContentAsString();
         String sessionId = firstMatch(SESSION_ID, html);
-        List<String> descending = tilesSorted(html);
-        java.util.Collections.reverse(descending);
+
+        // Arrangement AVEC des positions correctes ET des fausses : on part de l'ordre trie
+        // (correct) puis on echange les DEUX DERNIERES tuiles -> les premieres positions
+        // restent correctes (verrouillees), les deux dernieres sont fausses (reserve).
+        List<String> sorted = tilesSorted(html);
+        assertThat(sorted.size()).as("puzzle avec au moins 3 tuiles").isGreaterThanOrEqualTo(3);
+        List<String> attempt = new ArrayList<>(sorted);
+        java.util.Collections.swap(attempt, attempt.size() - 1, attempt.size() - 2);
 
         String after = mockMvc.perform(post("/sessions/{id}/moves", sessionId)
-                        .param("arrangement", descending.toArray(new String[0])))
+                        .param("arrangement", attempt.toArray(new String[0])))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
         assertThat(after).contains("Presque");
-        assertThat(after).contains("class=\"dnd-slot\"");   // tuiles/emplacements a nouveau la
+        assertThat(after).contains("class=\"dnd-slot\"");
         assertThat(after).doesNotContain("Rejouer");         // pas d'ecran de fin
-        // Meme puzzle : les memes nombres sont reproposes.
-        assertThat(tilesSorted(after)).isEqualTo(tilesSorted(html));
+        // Meme puzzle : les memes nombres sont reproposes (verrouilles + reserve).
+        assertThat(tilesSorted(after)).isEqualTo(sorted);
+
+        // La 1re valeur triee est bien placee -> elle apparait DANS un emplacement rempli.
+        String firstValue = sorted.get(0);
+        Pattern lockedSlot = Pattern.compile(
+                "class=\"dnd-slot\">\\s*<div class=\"dnd-tuile\"[^>]*data-value=\"" + firstValue + "\"");
+        assertThat(lockedSlot.matcher(after).find())
+                .as("1re valeur triee verrouillee dans un .dnd-slot").isTrue();
+
+        // Les deux tuiles echangees (mal placees) repartent en RESERVE (.dnd-tuiles).
+        String reserve = reserveBlock(after);
+        String lastValue = sorted.get(sorted.size() - 1);
+        String beforeLastValue = sorted.get(sorted.size() - 2);
+        assertThat(reserve).contains("data-value=\"" + lastValue + "\"");
+        assertThat(reserve).contains("data-value=\"" + beforeLastValue + "\"");
+    }
+
+    /** Contenu de la reserve (.dnd-tuiles), coupe avant les emplacements (.dnd-slots). */
+    private String reserveBlock(String html) {
+        Matcher m = Pattern.compile("class=\"dnd-tuiles\">(.*?)<div class=\"dnd-slots\">",
+                Pattern.DOTALL).matcher(html);
+        assertThat(m.find()).as("bloc reserve .dnd-tuiles introuvable").isTrue();
+        return m.group(1);
     }
 
     @Test
