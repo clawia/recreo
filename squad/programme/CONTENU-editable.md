@@ -46,9 +46,35 @@ l'application **refuse de démarrer** avec un message indiquant le fichier et le
 > avec apostrophes/accents se mettent entre guillemets doubles `"..."`. Chaque fichier commence par
 > un rappel de ces règles.
 
+## Mots → réponse — bandit manchot (fait — s10)
+
+Fichiers dans `bootstrap/src/main/resources/content/mots/` :
+
+| Fichier | Jeu | Mode distracteurs |
+|---|---|---|
+| `le-bon-son.yml` | Le bon son (Français CP) | `explicit` |
+| `homophones.yml` | Le bon petit mot (Français CM1) | `explicit` |
+| `premiere-lettre.yml` | La première lettre (Français CP) | `pool` |
+| `nature-mot.yml` | La nature du mot (Français CM1) | `pool` |
+| `anglais-lexique.yml` | Le bon mot en anglais (Anglais CM1) | `pool` |
+
+Un item = un `prompt` (le mot ou la phrase affichés) + une `bonne` réponse. Deux façons de définir les
+mauvaises réponses, selon `distractorMode` :
+- **`explicit`** : chaque item liste ses `distracteurs` (distincts, différents de la bonne réponse).
+  ```yaml
+  - { prompt: "MAMAN", bonne: "[an]", distracteurs: ["[on]", "[in]"] }
+  ```
+- **`pool`** (avec `distractorCount:`) : les distracteurs sont tirés automatiquement parmi les **autres
+  bonnes réponses** du fichier — pas besoin de les écrire.
+  ```yaml
+  - { prompt: "chien", bonne: "dog" }
+  ```
+
+Ajouter un tout nouveau jeu « mot → réponse » = créer un fichier `content/mots/mon-jeu.yml` (copie un
+existant) ; il apparaît au redémarrage, sans code.
+
 ## À venir
-- **Mots → réponse** du bandit manchot (le bon son, anglais, syllabes, première lettre, homophones,
-  nature du mot) : schéma dédié (mot + bonne réponse + distracteurs).
+- **Syllabes** (Français CP) : options numériques + réglage « nb de syllabes max » → schéma dédié.
 - **Textes à trous** (conjugaison, accords, mot manquant, phrase à trou, égalité) : schéma dédié
   (phrase avec un trou + mots à choisir).
 - Le **calcul mental** (maths) est déjà piloté par YAML (`content/calcul-mental-*.yml`,

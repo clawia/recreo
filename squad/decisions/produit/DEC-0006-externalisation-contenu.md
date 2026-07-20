@@ -59,5 +59,8 @@ Viviers de quiz **doublés** (contenu en dur, vérifié, tests synchronisés) :
 - **s09 (ADR-0009)** : **famille quiz externalisée** — les 7 jeux quiz vivent dans
   `content/quiz/*.yml`, éditables sans dev, chargés + validés au démarrage (`QuizPackLoader`).
   Guide : `squad/programme/CONTENU-editable.md`.
-- **À suivre** : mots→réponse du bandit manchot (le bon son, anglais, syllabes, première lettre,
-  homophones, nature du mot) puis textes à trous — schémas propres à chaque famille.
+- **s10 (ADR-0010)** : **famille « mot → réponse » externalisée** — le bon son, homophones, première
+  lettre, nature du mot, anglais dans `content/mots/*.yml` (générateur générique `MotChoixGenerator`,
+  modes explicit/pool). 5 sous-classes supprimées.
+- **À suivre** : *syllabes* (options numériques + réglage) et *textes à trous* (conjugaison, accords,
+  mot manquant, phrase à trou, égalité) — schémas propres à chaque famille.
