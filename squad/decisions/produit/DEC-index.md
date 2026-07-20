@@ -12,3 +12,4 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Une DEC = une ligne.
 | DEC-0005 | Ergonomie du « Quiz-aventure » (carte-question + réponses) | Questionner le monde CP ; Sciences/Histoire/Géo CM1 | VALIDÉ (user, 2026-07-19) | 2026-07-19 | s07 |
 | DEC-0006 | Externaliser le contenu pédagogique hors du code (+ doublage des quiz en attendant) | transverse (contenu à liste finie) | RÉALISÉ (s09-s11 : quiz, mots, textes à trous, syllabes tous en YAML) | 2026-07-19 | s07 |
 | DEC-0007 | Contenu s08 : « Le bon son » (phonologie CP) + ouverture de l'EMC (+ tables, Vrai/Faux) | Français CP décodage ; EMC CP/CM1 | VALIDÉ (user, 2026-07-20) | 2026-07-20 | s08 |
+| DEC-0008 | Ergonomie du « glisser-déposer » (Range les nombres) | Maths CP — ordonner des nombres | À VALIDER | 2026-07-20 | s12 |

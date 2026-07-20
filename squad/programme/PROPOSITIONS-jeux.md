@@ -21,10 +21,11 @@
 | Nature d'un mot | Français | CM1 | grammaire | 🔜 |
 | Le bon mot (image → mot) | Anglais | CM1 | lexique LV | 🔜 |
 
-## 2. Glisser-déposer — classer / ranger / associer *(nouveau — îlot JS)*
-| Jeu | Matière | Niveau | Compétence |
-|---|---|---|---|
-| Ranger les nombres, quantité ↔ chiffre | Maths | CP | ordonner, dénombrer |
+## 2. Glisser-déposer — classer / ranger / associer *(mécanique existante — îlot JS, ADR-0013)*
+| Jeu | Matière | Niveau | Compétence | Statut |
+|---|---|---|---|---|
+| **Range les nombres** (ordonner) | Maths | CP | ordonner des nombres | ✅ (s12) |
+| Quantité ↔ chiffre | Maths | CP | dénombrer | 🔜 |
 | Ranger fractions/décimaux, fraction ↔ dessin | Maths | CM1 | fractions et décimaux |
 | Associer mot ↔ image, majuscule ↔ minuscule | Français | CP | lecture |
 | Glisser la bonne terminaison (accords) ; classer nom/verbe/adjectif | Français | CM1 | orthographe, grammaire |
