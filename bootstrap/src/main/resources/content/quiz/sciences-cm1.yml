@@ -44,3 +44,19 @@ questions:
   - question: "Qu'est-ce qui attire les objets vers le sol ?"
     bonne: "La gravité"
     distracteurs: ["Le vent", "La lumière"]
+  # Le ciel et la Terre — le système solaire (programme CM1)
+  - question: "Quelle planète est la plus proche du Soleil ?"
+    bonne: "Mercure"
+    distracteurs: ["La Terre", "Jupiter"]
+  - question: "Quelle est la plus grosse planète du système solaire ?"
+    bonne: "Jupiter"
+    distracteurs: ["La Terre", "Mars"]
+  - question: "Quel astre tourne autour de la Terre ?"
+    bonne: "La Lune"
+    distracteurs: ["Le Soleil", "Mars"]
+  - question: "Quelle planète est surnommée la planète rouge ?"
+    bonne: "Mars"
+    distracteurs: ["Vénus", "Saturne"]
+  - question: "Qu'est-ce qui cause l'alternance du jour et de la nuit ?"
+    bonne: "La rotation de la Terre sur elle-même"
+    distracteurs: ["Les nuages", "Les saisons"]

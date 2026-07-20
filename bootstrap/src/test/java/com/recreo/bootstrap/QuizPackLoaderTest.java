@@ -64,7 +64,7 @@ class QuizPackLoaderTest {
     void poolSizesMatchTheVerifiedContent() {
         Map<String, QuizContentPack> packs = packsById();
         assertThat(packs.get("questionner-le-monde-cp").questions()).hasSize(14);
-        assertThat(packs.get("sciences-cm1").questions()).hasSize(12);
+        assertThat(packs.get("sciences-cm1").questions()).hasSize(17);
         assertThat(packs.get("histoire-cm1").questions()).hasSize(10);
         assertThat(packs.get("geographie-cm1").questions()).hasSize(12);
         assertThat(packs.get("emc-cp").questions()).hasSize(10);
