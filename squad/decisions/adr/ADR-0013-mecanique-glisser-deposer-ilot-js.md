@@ -106,6 +106,12 @@ unitaires (`GlisserDeposerMechanicTest`, `RangeNombresGeneratorTest`) et MockMvc
   classer / frises chronologiques à venir réutiliseront `SubmitArrangement` et l'îlot JS.
 - **Positif** : le **moteur de session est réutilisé sans être complexifié** (il ignore
   qu'il s'agit d'un arrangement : il compare deux encodages).
+- **UX « réessayer » (DEC-0008, demande utilisatrice s12)** : un arrangement **faux** ne fait
+  **PAS avancer** — le moteur renvoie la session **inchangée** + un message, donc le fragment
+  re-rendu **remet les tuiles à l'état initial** (réserve) et l'enfant retente le **même** puzzle
+  (la bonne réponse n'est pas révélée). C'est spécifique au coup `SubmitArrangement` : `SpinAndPick`
+  (autres mécaniques) continue d'avancer sur une erreur. Conséquence : pour ce jeu, `answered`
+  ne compte que les **réussites** (session = N puzzles résolus).
 - **Limite mobile** : le drag-and-drop HTML5 natif est **peu ergonomique au doigt** sur
   mobile → un **fallback tap-to-place** est à prévoir en itération future.
 - **Anti-doublon best-effort** : la clé est dérivée des `reelSymbols` **mélangés** (comme

@@ -15,9 +15,13 @@
 - Une consigne claire en haut (« Range les nombres du plus petit au plus grand »).
 - Une rangée de **tuiles-nombres** mélangées (grosses cibles), que l'enfant **glisse** dans une
   rangée d'**emplacements** ordonnés de gauche à droite.
-- Un bouton **Valider** soumet l'arrangement ; feedback commun (Bravo / Presque, avec le bon ordre)
-  et écran de fin mutualisés (score / score max), comme les autres mécaniques.
-- Réutilise le mode session (N questions, réglage « nombre de questions »).
+- Un bouton **Valider** soumet l'arrangement.
+- **Arrangement correct** → « Bravo ! +10 » et on passe au puzzle suivant.
+- **Arrangement faux** → un **message** invite à réessayer et les **tuiles sont remises à l'état
+  initial** (dans la réserve) : on **reste sur le MÊME puzzle** (pas d'avance, la bonne réponse
+  n'est pas révélée). L'enfant recommence jusqu'à réussir. *(Demande utilisatrice s12.)*
+- Écran de fin mutualisé (score / score max) après N puzzles résolus. Réutilise le mode session
+  (réglage « nombre de questions »).
 
 ## Justification pédagogique
 Le geste « ranger » matérialise la relation d'ordre, plus concret pour un enfant de CP que choisir
