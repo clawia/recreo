@@ -11,16 +11,12 @@ import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.content.ContentGenerator;
 import com.recreo.domain.content.RandomSource;
 import com.recreo.domain.content.impl.AccordsCm1Generator;
-import com.recreo.domain.content.impl.AnglaisLexiqueGenerator;
 import com.recreo.domain.content.impl.ComparaisonGenerator;
 import com.recreo.domain.content.impl.ComplementDixGenerator;
 import com.recreo.domain.content.impl.ConjugaisonCm1Generator;
 import com.recreo.domain.content.impl.EgaliteGenerator;
-import com.recreo.domain.content.impl.HomophonesGenerator;
-import com.recreo.domain.content.impl.LeBonSonGenerator;
+import com.recreo.domain.content.impl.MotChoixGenerator;
 import com.recreo.domain.content.impl.MotManquantCpGenerator;
-import com.recreo.domain.content.impl.NatureMotGenerator;
-import com.recreo.domain.content.impl.PremiereLettreGenerator;
 import com.recreo.domain.content.impl.QuizGenerator;
 import com.recreo.domain.mechanic.MechanicId;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMechanic;
@@ -106,34 +102,20 @@ public class BeansConfig {
                 "Le plus grand nombre", "Choisis le plus grand des deux nombres.",
                 new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — comparer des nombres"),
                 ComparaisonGenerator::new));
-        defs.add(simpleGame(
-                "premiere-lettre", "Français", "CP", "premiere-lettre", "La première lettre",
-                "La première lettre", "Trouve la lettre qui commence le mot.",
-                new ContentDescriptor("Français", "CP", "Lecture — principe alphabétique"),
-                PremiereLettreGenerator::new));
-        defs.add(simpleGame(
-                "homophones", "Français", "CM1", "homophones", "Le bon petit mot",
-                "Le bon petit mot", "Choisis le mot qui complète la phrase.",
-                new ContentDescriptor("Français", "CM1", "Orthographe — homophones grammaticaux"),
-                HomophonesGenerator::new));
-        defs.add(simpleGame(
-                "nature-mot", "Français", "CM1", "nature-mot", "La nature du mot",
-                "La nature du mot", "Nom, verbe, adjectif ou déterminant ?",
-                new ContentDescriptor("Français", "CM1", "Grammaire — classes de mots"),
-                NatureMotGenerator::new));
-        defs.add(simpleGame(
-                "anglais-lexique", "Anglais", "CM1", "anglais-lexique", "Le bon mot en anglais",
-                "Le bon mot en anglais", "Trouve la traduction anglaise.",
-                new ContentDescriptor("Anglais", "CM1", "Lexique — vocabulaire courant"),
-                AnglaisLexiqueGenerator::new));
-
-        // Contenu s08 : "Le bon son" (Francais CP, decodage graphème/phonème). MEME
-        // mecanique bandit manchot ; comble un trou de la matrice (phonologie CP).
-        defs.add(simpleGame(
-                "le-bon-son", "Français", "CP", "le-bon-son", "Le bon son",
-                "Le bon son", "Quel son entends-tu dans le mot ?",
-                new ContentDescriptor("Français", "CP", "Décodage — association graphème/phonème"),
-                LeBonSonGenerator::new));
+        // Jeux "mot -> reponse" du bandit manchot : CONTENU EXTERNALISE (s10 / DEC-0006 /
+        // ADR-0010) dans content/mots/*.yml, charge + valide au demarrage. Un generateur
+        // GENERIQUE (MotChoixGenerator) remplace les sous-classes (le bon son, homophones,
+        // premiere lettre, nature du mot, anglais). Distracteurs explicites ou tires du
+        // vivier selon le fichier. Editer/ajouter un jeu = editer un YAML.
+        for (MotsContentPack mots : new MotsPackLoader().loadAll()) {
+            Function<ContentDescriptor, ContentGenerator> generator = mots.poolMode()
+                    ? d -> MotChoixGenerator.fromPool(d, mots.question(), mots.entrees(), mots.distractorCount())
+                    : d -> MotChoixGenerator.explicit(d, mots.question(), mots.entrees());
+            defs.add(simpleGame(
+                    mots.entryId(), mots.descriptor().matiere(), mots.descriptor().niveau(),
+                    mots.gameKey(), mots.gameLabel(), mots.title(), mots.description(),
+                    mots.descriptor(), generator));
+        }
 
         // 2e mecanique (s06 / ADR-0007) : "texte a trous". MEME moteur de session
         // partage, presentation DISTINCTE (phrase a completer + mots a cliquer). Le
