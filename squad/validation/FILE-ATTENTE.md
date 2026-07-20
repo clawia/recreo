@@ -15,9 +15,7 @@
 | s06 | 2e mécanique « Texte à trous » (conjugaison/accords CM1, mot manquant CP, égalité CP) + archi multi-mécaniques | Texte à trous | Français CM1/CP · Maths CP | 2026-07-19 | ✅ **VALIDÉ** (Done technique + Done pédago, après retouches ergo) | 2026-07-19 |
 | s07 | 3e mécanique « Quiz-aventure » (questionner le monde CP ; sciences/histoire/géo CM1) + tests de non-régression UI + quiz doublés | Quiz-aventure | Questionner le monde CP · Sciences/Histoire/Géo CM1 | 2026-07-19 | ✅ **VALIDÉ** (Done technique + Done pédago) | 2026-07-19 |
 | s08 | 5 jeux de contenu (Le bon son CP ; Tables de multiplication CM1 ; EMC CP/CM1 ; Vrai/Faux sciences CM1) — mécaniques existantes | Bandit manchot + Quiz-aventure | Français CP décodage · Maths CM1 · EMC CP/CM1 · Sciences CM1 | 2026-07-20 | ✅ **VALIDÉ** (Done technique + Done pédago ; plafond tables porté à 20) | 2026-07-20 |
-| s09 | Externalisation du contenu quiz (7 jeux en YAML éditables, ADR-0009) — refactor sans changement de contenu | Quiz-aventure (technique) | transverse (contenu éditable) | 2026-07-20 | **À VALIDER** (Done technique ✅ ; non-régression à jouer) | — |
-| s10 | Externalisation du contenu « mot → réponse » (5 jeux en YAML éditables, ADR-0010) — refactor, contenu quasi identique (léger changement distracteurs « première lettre ») | Bandit manchot (technique) | transverse (contenu éditable) | 2026-07-20 | **À VALIDER** (Done technique ✅ ; non-régression à jouer) | — |
+| s09 | Externalisation du contenu quiz (7 jeux en YAML éditables, ADR-0009) — refactor sans changement de contenu | Quiz-aventure (technique) | transverse (contenu éditable) | 2026-07-20 | ✅ **VALIDÉ** (Done technique + Done pédago, non-régression OK) | 2026-07-20 |
+| s10 | Externalisation du contenu « mot → réponse » (5 jeux en YAML éditables, ADR-0010) — refactor, contenu quasi identique (léger changement distracteurs « première lettre ») | Bandit manchot (technique) | transverse (contenu éditable) | 2026-07-20 | ✅ **VALIDÉ** (Done technique + Done pédago, non-régression OK) | 2026-07-20 |
 
-> ⚠️ **2 incréments non validés** (s09, s10) dans la file. Au prochain incrément de contenu non
-> validé, la **règle d'or** déclenche un **GEL DU CONTENU** (priorité démo). Une validation
-> utilisatrice de s09/s10 remet la file à zéro.
+> ✅ **File à zéro** : aucun incrément en attente de validation. La règle d'or (max ~3) est respectée.
