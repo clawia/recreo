@@ -19,5 +19,7 @@
 | s10 | Externalisation du contenu « mot → réponse » (5 jeux en YAML éditables, ADR-0010) — refactor, contenu quasi identique (léger changement distracteurs « première lettre ») | Bandit manchot (technique) | transverse (contenu éditable) | 2026-07-20 | ✅ **VALIDÉ** (Done technique + Done pédago, non-régression OK) | 2026-07-20 |
 
 | s11 | Durcissement (renommage `niveau-jeu.yml` + découplage des tests du contenu) + fin d'externalisation (textes à trous + syllabes en YAML) — refactor, contenu inchangé | transverse (technique) | transverse (contenu éditable) | 2026-07-20 | **À VALIDER** (Done technique ✅ ; non-régression à jouer) | — |
+| s12 | 4e mécanique **glisser-déposer** (1er îlot JS) — jeu « Range les nombres » (Maths CP) | Glisser-déposer | Maths CP — ordonner des nombres | 2026-07-20 | **À VALIDER** (Done technique ✅ ; démo à jouer) | — |
 
-> 1 incrément en attente (s11, refactor). Règle d'or (max ~3) respectée.
+> 2 incréments en attente (s11 refactor, s12 nouvelle mécanique). Règle d'or (max ~3) respectée ;
+> au prochain incrément non validé, penser à demander une validation.
