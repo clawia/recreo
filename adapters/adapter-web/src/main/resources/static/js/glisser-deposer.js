@@ -10,6 +10,11 @@
  *
  * Rebranche apres chaque echange htmx (htmx:afterSwap), comme bandit.js. Si le JS
  * est absent, le form ne fait qu'envoyer `from` : degrade sans planter.
+ *
+ * Les tuiles peuvent etre servies DEJA PLACEES dans un .dnd-slot (essai faux : le
+ * serveur verrouille les positions deja reussies, UX « ranger »). wire() cable TOUTES
+ * les .dnd-tuile (reserve ET slots) comme draggables, et la soumission lit l'ordre en
+ * parcourant les .dnd-slot (tuiles pre-placees + celles que l'enfant vient de poser).
  */
 (function () {
   var dragged = null; // la tuile en cours de deplacement

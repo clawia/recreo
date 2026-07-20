@@ -34,17 +34,40 @@
         <!-- La consigne : ce qu'il faut faire (game.question), affichee telle quelle. -->
         <p class="consigne" th:text="${game.question}">Range les nombres du plus petit au plus grand</p>
 
-        <!-- Les TUILES a ranger, en desordre : chaque tuile est deplacable (draggable).
-             La valeur transportee est portee par data-value (lue par le JS a la soumission). -->
-        <div class="dnd-tuiles">
-            <div class="dnd-tuile" th:each="sym : ${game.reelSymbols}"
-                 draggable="true" th:text="${sym}" th:attr="data-value=${sym}">3</div>
-        </div>
+        <!-- PLATEAU pilote par le serveur (game.arrangementSlots / game.arrangementReserve) :
+             sur un essai faux, les tuiles deja bien placees restent VERROUILLEES dans leur
+             emplacement, seules les mal placees repartent en reserve (UX « ranger », DEC-0008).
+             On n'affiche JAMAIS game.options (porterait la reponse). -->
+        <th:block th:if="${game.arrangementSlots != null}">
+            <!-- La RESERVE : tuiles a (re)placer. Chaque tuile est deplacable (draggable) ;
+                 la valeur transportee est portee par data-value (lue par le JS a la soumission). -->
+            <div class="dnd-tuiles">
+                <div class="dnd-tuile" th:each="sym : ${game.arrangementReserve}"
+                     draggable="true" th:text="${sym}" th:attr="data-value=${sym}">3</div>
+            </div>
 
-        <!-- Les EMPLACEMENTS vides ou deposer les tuiles : AUTANT de slots que de tuiles. -->
-        <div class="dnd-slots">
-            <div class="dnd-slot" th:each="sym : ${game.reelSymbols}"></div>
-        </div>
+            <!-- Les EMPLACEMENTS : un .dnd-slot par position. Si la position est verrouillee
+                 (valeur non vide), la tuile est PRE-PLACEE dedans (verrouillee-mais-deplacable) ;
+                 sinon l'emplacement est vide. -->
+            <div class="dnd-slots">
+                <div class="dnd-slot" th:each="val : ${game.arrangementSlots}">
+                    <div th:if="${!val.isEmpty()}" class="dnd-tuile"
+                         draggable="true" th:text="${val}" th:attr="data-value=${val}">3</div>
+                </div>
+            </div>
+        </th:block>
+
+        <!-- Repli (ne devrait pas arriver pour ce jeu) : ancien rendu, tuiles = reelSymbols en
+             reserve et emplacements tous vides. -->
+        <th:block th:if="${game.arrangementSlots == null}">
+            <div class="dnd-tuiles">
+                <div class="dnd-tuile" th:each="sym : ${game.reelSymbols}"
+                     draggable="true" th:text="${sym}" th:attr="data-value=${sym}">3</div>
+            </div>
+            <div class="dnd-slots">
+                <div class="dnd-slot" th:each="sym : ${game.reelSymbols}"></div>
+            </div>
+        </th:block>
 
         <!-- Formulaire de validation : le JS injecte les <input name="arrangement"> dans
              l'ordre des slots juste avant l'envoi htmx (meme endpoint et meme cible que les
