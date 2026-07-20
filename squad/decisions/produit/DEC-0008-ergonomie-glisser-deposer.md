@@ -17,9 +17,13 @@
   rangée d'**emplacements** ordonnés de gauche à droite.
 - Un bouton **Valider** soumet l'arrangement.
 - **Arrangement correct** → « Bravo ! +10 » et on passe au puzzle suivant.
-- **Arrangement faux** → un **message** invite à réessayer et les **tuiles sont remises à l'état
-  initial** (dans la réserve) : on **reste sur le MÊME puzzle** (pas d'avance, la bonne réponse
-  n'est pas révélée). L'enfant recommence jusqu'à réussir. *(Demande utilisatrice s12.)*
+- **Arrangement faux** → un **message** invite à réessayer et on **reste sur le MÊME puzzle** (pas
+  d'avance, la bonne réponse n'est pas révélée). **Feedback partiel (demande utilisatrice s12)** :
+  les tuiles **déjà bien placées restent verrouillées** dans leur emplacement ; **seules les tuiles
+  mal placées repartent en réserve**. L'enfant complète/corrige jusqu'à réussir. Techniquement : un
+  helper pur `ArrangementBoard.afterAttempt(soumis, attendu)` (domaine) calcule, par position,
+  verrouillé (soumis[i] == attendu[i]) vs à replacer ; le mapper web l'utilise pour re-rendre le
+  plateau (l'ordre attendu n'est jamais affiché, seulement les positions réussies par l'enfant).
 - Écran de fin mutualisé (score / score max) après N puzzles résolus. Réutilise le mode session
   (réglage « nombre de questions »).
 
