@@ -15,3 +15,5 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 > générateurs dans `domain.content.impl` (ne dépendent d'aucune mécanique — ArchUnit 5/5), tables
 > via pack YAML réutilisant `CalculMentalGenerator`. Matière/niveau restent des chaînes libres
 > (« EMC » ajouté sans changement structurel). Aucune décision d'architecture requise (Théo).
+
+| [ADR-0009](ADR-0009-externalisation-contenu-quiz.md) | Externalisation du contenu quiz dans des fichiers YAML éditables (chargés + validés en bootstrap) | Accepté | 2026-07-20 | s09 |
