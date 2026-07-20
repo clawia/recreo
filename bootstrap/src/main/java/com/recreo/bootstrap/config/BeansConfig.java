@@ -10,13 +10,10 @@ import com.recreo.application.service.SessionService;
 import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.content.ContentGenerator;
 import com.recreo.domain.content.RandomSource;
-import com.recreo.domain.content.impl.AccordsCm1Generator;
 import com.recreo.domain.content.impl.ComparaisonGenerator;
 import com.recreo.domain.content.impl.ComplementDixGenerator;
-import com.recreo.domain.content.impl.ConjugaisonCm1Generator;
 import com.recreo.domain.content.impl.EgaliteGenerator;
 import com.recreo.domain.content.impl.MotChoixGenerator;
-import com.recreo.domain.content.impl.MotManquantCpGenerator;
 import com.recreo.domain.content.impl.QuizGenerator;
 import com.recreo.domain.mechanic.MechanicId;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMechanic;
@@ -58,9 +55,9 @@ public class BeansConfig {
                                    QuizAventureMechanic quizAventureMechanic) {
         ContentPackLoader loader = new ContentPackLoader();
         List<ContentPack> packs = List.of(
-                loader.load("content/calcul-mental-cp.yml"),
-                loader.load("content/calcul-mental-cm1.yml"),
-                loader.load("content/tables-multiplication-cm1.yml"));
+                loader.load("content/cp-calcul-mental.yml"),
+                loader.load("content/cm1-calcul-mental.yml"),
+                loader.load("content/cm1-tables-multiplication.yml"));
 
         List<CatalogEntryDef> defs = new ArrayList<>();
 
@@ -77,18 +74,18 @@ public class BeansConfig {
                     mechanicId, factory));
         }
 
-        // Francais CP (jeu "syllabes") : MEME mecanique bandit manchot, autre
-        // ContentGenerator, reglage de session = nombre de syllabes max (filtre).
-        ContentDescriptor syllabesDescriptor =
-                new ContentDescriptor("Français", "CP", "Phonologie — dénombrer les syllabes");
-        SyllabesGameFactory syllabesFactory = new SyllabesGameFactory(
-                "francais-cp", "Français CP — Les syllabes", "syllabes",
-                BanditManchotMechanic.ID, syllabesDescriptor,
-                List.of(2, 3, 4), 1, 4);
-        defs.add(new CatalogEntryDef(
-                "francais-cp", "Français", "CP", "syllabes", "Les syllabes",
-                "Français CP — Les syllabes", "Compte les syllabes des mots.",
-                BanditManchotMechanic.ID, syllabesFactory));
+        // Francais CP (jeu "syllabes") : MEME mecanique bandit manchot, reglage de
+        // session = nombre de syllabes max (filtre). CONTENU EXTERNALISE (s11 / ADR-0011)
+        // dans content/syllabes/*.yml (mots + nombre de syllabes + options du reglage).
+        for (SyllabesContentPack syl : new SyllabesPackLoader().loadAll()) {
+            SyllabesGameFactory syllabesFactory = new SyllabesGameFactory(
+                    syl.entryId(), syl.title(), syl.gameKey(), BanditManchotMechanic.ID,
+                    syl.descriptor(), syl.syllabesOptions(), syl.minSyllabes(), syl.maxSyllabes(), syl.mots());
+            defs.add(new CatalogEntryDef(
+                    syl.entryId(), syl.descriptor().matiere(), syl.descriptor().niveau(),
+                    syl.gameKey(), syl.gameLabel(), syl.title(), syl.description(),
+                    BanditManchotMechanic.ID, syllabesFactory));
+        }
 
         // Declinaisons s04 : 6 jeux SANS reglage, MEME mecanique bandit manchot,
         // uniquement de nouveaux ContentGenerator (cf. US-s04 / ADR-0004/0005).
@@ -117,24 +114,17 @@ public class BeansConfig {
                     mots.descriptor(), generator));
         }
 
-        // 2e mecanique (s06 / ADR-0007) : "texte a trous". MEME moteur de session
-        // partage, presentation DISTINCTE (phrase a completer + mots a cliquer). Le
-        // reglage commun "nombre de questions" est fourni par SimpleGameFactory.
-        defs.add(texteATrouGame(
-                "conjugaison-cm1", "Français", "CM1", "conjugaison", "Conjugaison (présent)",
-                "Français CM1 — Conjugaison (présent)", "Complète la phrase avec le bon verbe.",
-                new ContentDescriptor("Français", "CM1", "Conjugaison — présent de l'indicatif"),
-                ConjugaisonCm1Generator::new));
-        defs.add(texteATrouGame(
-                "accords-cm1", "Français", "CM1", "accords-adjectif", "L'accord de l'adjectif",
-                "Français CM1 — L'accord de l'adjectif", "Accorde l'adjectif dans la phrase.",
-                new ContentDescriptor("Français", "CM1", "Grammaire — accord de l'adjectif"),
-                AccordsCm1Generator::new));
-        defs.add(texteATrouGame(
-                "mot-manquant-cp", "Français", "CP", "mot-manquant", "Le mot qui manque",
-                "Français CP — Le mot qui manque", "Trouve le mot qui complète la phrase.",
-                new ContentDescriptor("Français", "CP", "Lecture — compréhension (sens)"),
-                MotManquantCpGenerator::new));
+        // 2e mecanique (s06 / ADR-0007) : "texte a trous". CONTENU des jeux FINIS
+        // EXTERNALISE (s11 / DEC-0006 / ADR-0011) dans content/textes-trous/*.yml : meme
+        // schema que les quiz (phrase a completer + reponses), donc meme QuizGenerator
+        // generique, rattache a TexteATrouMechanic. Editer/ajouter un jeu = editer un YAML.
+        for (QuizContentPack trou : new QuizPackLoader().loadAll("classpath*:content/textes-trous/*.yml")) {
+            defs.add(texteATrouGame(
+                    trou.entryId(), trou.descriptor().matiere(), trou.descriptor().niveau(),
+                    trou.gameKey(), trou.gameLabel(), trou.title(), trou.description(),
+                    trou.descriptor(), descriptor -> new QuizGenerator(descriptor, trou.questions())));
+        }
+        // "Complète l'égalité" reste COMBINATOIRE (genere a la volee, pas de liste a editer).
         defs.add(texteATrouGame(
                 "egalite-cp", "Maths", "CP", "egalite", "Complète l'égalité",
                 "Maths CP — Complète l'égalité", "Trouve le nombre qui manque dans l'égalité.",

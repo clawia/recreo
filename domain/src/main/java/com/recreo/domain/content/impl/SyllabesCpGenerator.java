@@ -19,13 +19,14 @@ import java.util.Set;
 import java.util.UUID;
 
 /**
- * Generateur concret de francais CP : "denombrer les syllabes d'un mot". Chaque
- * item affiche UN rouleau (le mot en majuscules), pose la question
- * "Combien de syllabes ?" et attend le nombre de syllabes orales.
+ * Generateur de francais CP : "denombrer les syllabes d'un mot". Chaque item affiche
+ * UN rouleau (le mot en majuscules), pose la question "Combien de syllabes ?" et attend
+ * le nombre de syllabes orales. Les distracteurs sont des nombres voisins.
  *
- * <p>Meme mecanique que le calcul mental (bandit manchot) : ce generateur n'est
- * qu'un autre {@link ContentGenerator}. Place dans {@code content.impl}, hors de
- * portee des mecaniques (garanti par ArchUnit) — cf. ADR-0004.</p>
+ * <p>Le contenu (liste mot -> nombre de syllabes) est fourni de l'exterieur — il est
+ * externalise dans {@code content/syllabes/*.yml} (cf. ADR-0011) : ce generateur ne
+ * porte plus de liste en dur. Meme mecanique que le calcul mental (bandit manchot).
+ * Place dans {@code content.impl}, hors de portee des mecaniques (ArchUnit 4).</p>
  */
 public final class SyllabesCpGenerator implements ContentGenerator {
 
@@ -35,31 +36,29 @@ public final class SyllabesCpGenerator implements ContentGenerator {
     /** Nombre de distracteurs (CP). */
     private static final int DISTRACTOR_COUNT = 2;
 
-    /**
-     * Liste verifiee mot -> nombre de syllabes orales (figee pour eviter toute
-     * erreur pedagogique). Ordre d'insertion deterministe.
-     */
-    private static final Map<String, Integer> MOTS = buildMots();
+    /** Un mot verifie et son nombre de syllabes orales. */
+    public record Mot(String mot, int syllabes) {
+    }
 
     private final ContentDescriptor descriptor;
-    private final List<Map.Entry<String, Integer>> entries;
+    private final List<Mot> entries;
 
     /** Comportement historique : aucun filtre, toute la liste de mots est jouable. */
-    public SyllabesCpGenerator(ContentDescriptor descriptor) {
-        this(descriptor, null);
+    public SyllabesCpGenerator(ContentDescriptor descriptor, List<Mot> mots) {
+        this(descriptor, mots, null);
     }
 
     /**
      * Generateur configurable : si {@code maxSyllabes} est non nul, seuls les mots
      * comptant au plus {@code maxSyllabes} syllabes sont tires. {@code null} =
-     * aucun filtre (comportement par defaut, identique a la version historique).
+     * aucun filtre.
      *
      * @throws IllegalArgumentException si le filtre ne laisse aucun mot jouable.
      */
-    public SyllabesCpGenerator(ContentDescriptor descriptor, Integer maxSyllabes) {
+    public SyllabesCpGenerator(ContentDescriptor descriptor, List<Mot> mots, Integer maxSyllabes) {
         this.descriptor = descriptor;
-        List<Map.Entry<String, Integer>> filtered = MOTS.entrySet().stream()
-                .filter(e -> maxSyllabes == null || e.getValue() <= maxSyllabes)
+        List<Mot> filtered = mots.stream()
+                .filter(m -> maxSyllabes == null || m.syllabes() <= maxSyllabes)
                 .toList();
         if (filtered.isEmpty()) {
             throw new IllegalArgumentException(
@@ -68,39 +67,20 @@ public final class SyllabesCpGenerator implements ContentGenerator {
         this.entries = List.copyOf(filtered);
     }
 
-    private static Map<String, Integer> buildMots() {
-        Map<String, Integer> m = new LinkedHashMap<>();
-        m.put("chat", 1);
-        m.put("riz", 1);
-        m.put("loup", 1);
-        m.put("papa", 2);
-        m.put("lapin", 2);
-        m.put("bateau", 2);
-        m.put("cadeau", 2);
-        m.put("maison", 2);
-        m.put("chocolat", 3);
-        m.put("éléphant", 3);
-        m.put("parapluie", 3);
-        m.put("dinosaure", 3);
-        m.put("ordinateur", 4);
-        m.put("hélicoptère", 4);
-        return m;
-    }
-
     @Override
     public Optional<Item> next(RandomSource random, Set<String> excludeKeys) {
         // Cle d'un item syllabes = celle derivee du contenu (mot en MAJUSCULES + consigne).
-        List<Map.Entry<String, Integer>> available = entries.stream()
-                .filter(e -> !excludeKeys.contains(
-                        Item.keyOf(List.of(e.getKey().toUpperCase(Locale.FRENCH)), QUESTION)))
+        List<Mot> available = entries.stream()
+                .filter(m -> !excludeKeys.contains(
+                        Item.keyOf(List.of(m.mot().toUpperCase(Locale.FRENCH)), QUESTION)))
                 .toList();
         if (available.isEmpty()) {
             return Optional.empty(); // vivier (filtre) epuise
         }
 
-        Map.Entry<String, Integer> entry = available.get(random.nextInt(available.size()));
-        String mot = entry.getKey();
-        int syllabes = entry.getValue();
+        Mot entry = available.get(random.nextInt(available.size()));
+        String mot = entry.mot();
+        int syllabes = entry.syllabes();
 
         List<String> reelSymbols = List.of(mot.toUpperCase(Locale.FRENCH));
         Answer expected = new Answer(String.valueOf(syllabes));
@@ -127,8 +107,7 @@ public final class SyllabesCpGenerator implements ContentGenerator {
 
     /**
      * Distracteurs plausibles : nombres voisins (expected-1, expected+1, ...),
-     * jamais inferieurs a 1, sans doublon et differents de la reponse. On elargit
-     * vers l'exterieur tant que le compte n'est pas atteint (deterministe).
+     * jamais inferieurs a 1, sans doublon et differents de la reponse.
      */
     private List<Answer> buildDistractors(int expected) {
         Set<Integer> used = new LinkedHashSet<>();

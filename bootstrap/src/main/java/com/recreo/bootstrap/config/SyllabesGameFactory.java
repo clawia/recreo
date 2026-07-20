@@ -4,6 +4,7 @@ import com.recreo.application.port.in.GameSettingsView;
 import com.recreo.application.port.in.SyllabesSettingsView;
 import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.content.impl.SyllabesCpGenerator;
+import com.recreo.domain.content.impl.SyllabesCpGenerator.Mot;
 import com.recreo.domain.mechanic.GameConfig;
 import com.recreo.domain.mechanic.MechanicId;
 
@@ -26,10 +27,11 @@ final class SyllabesGameFactory implements GameFactory {
     private final List<Integer> options;
     private final int minSyllabes;
     private final int maxSyllabes;
+    private final List<Mot> mots;
 
     SyllabesGameFactory(String entryId, String title, String gameKey, MechanicId mechanicId,
                         ContentDescriptor descriptor, List<Integer> options,
-                        int minSyllabes, int maxSyllabes) {
+                        int minSyllabes, int maxSyllabes, List<Mot> mots) {
         this.entryId = entryId;
         this.title = title;
         this.gameKey = gameKey;
@@ -38,6 +40,7 @@ final class SyllabesGameFactory implements GameFactory {
         this.options = List.copyOf(options);
         this.minSyllabes = minSyllabes;
         this.maxSyllabes = maxSyllabes;
+        this.mots = List.copyOf(mots);
     }
 
     @Override
@@ -55,7 +58,7 @@ final class SyllabesGameFactory implements GameFactory {
         Map<String, Object> settings = new LinkedHashMap<>();
         settings.put("niveau", descriptor.niveau());
         settings.put("questionsTarget", SessionQuestions.resolve(parameters.get("questionsTarget"), fullPoolCap()));
-        return new GameConfig(mechanicId, new SyllabesCpGenerator(descriptor, max), settings);
+        return new GameConfig(mechanicId, new SyllabesCpGenerator(descriptor, mots, max), settings);
     }
 
     @Override
@@ -71,7 +74,7 @@ final class SyllabesGameFactory implements GameFactory {
 
     /** Vivier distinct plein (sans filtre maxSyllabes) : plafonne "nombre de questions". */
     private int fullPoolCap() {
-        return new SyllabesCpGenerator(descriptor, null)
+        return new SyllabesCpGenerator(descriptor, mots, null)
                 .distinctPoolSize().orElse(SessionQuestions.ABSOLUTE_MAX);
     }
 }
