@@ -4,6 +4,7 @@ import com.recreo.application.port.in.GameSettingsView;
 import com.recreo.application.port.out.GameCatalog;
 import com.recreo.bootstrap.config.BeansConfig;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMechanic;
+import com.recreo.domain.mechanics.glisserdeposer.GlisserDeposerMechanic;
 import com.recreo.domain.mechanics.quizaventure.QuizAventureMechanic;
 import com.recreo.domain.mechanics.texteatrou.TexteATrouMechanic;
 import org.junit.jupiter.api.Test;
@@ -34,7 +35,7 @@ class S04GamesNavigationWebTest {
     @Autowired
     private MockMvc mockMvc;
 
-    private final GameCatalog catalog = new BeansConfig().gameCatalog(new BanditManchotMechanic(), new TexteATrouMechanic(), new QuizAventureMechanic());
+    private final GameCatalog catalog = new BeansConfig().gameCatalog(new BanditManchotMechanic(), new TexteATrouMechanic(), new QuizAventureMechanic(), new GlisserDeposerMechanic());
 
     @Test
     void niveauCpListsTheNewCpGames() throws Exception {
