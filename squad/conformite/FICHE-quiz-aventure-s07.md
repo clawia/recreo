@@ -29,7 +29,9 @@
       fichiers éditables (cf. DEC-0006) pour permettre l'enrichissement sans dev.
 
 ## Bloc validation utilisateur (Done pédagogique)
-- **Démo jouée le** : — (à venir) · **Validée** : Non (en attente) · **Commentaires** : —
+- **Démo jouée le** : 2026-07-19 · **Validée** : Oui (« c'est ok ») · **Commentaires** : les 3
+  présentations (machine à sous / phrase à trou / carte-quiz) sont distinctes ; viviers de quiz
+  doublés jugés suffisants pour la démo. Enrichissement futur via externalisation (DEC-0006).
 
 ## Bloc playtest enfants
 - **Session tenue le** : — (jalon) · **Observations** : —

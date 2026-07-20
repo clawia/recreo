@@ -5,7 +5,7 @@
 - **Auteur** : Camille (PO) — esquisse d'ergonomie *avant* implémentation (Definition of Ready front).
 - **Sprint** : s07
 - **Compétence programme visée** : Questionner le monde CP ; Sciences / Histoire / Géographie CM1.
-- **Statut de validation** : À VALIDER (démo s07 à venir)
+- **Statut de validation** : VALIDÉ (user, 2026-07-19) — démo jouée, 3 présentations distinctes OK, quiz doublés OK.
 
 ## Contexte
 3e mécanique. Doit se distinguer des deux autres (machine à sous ; phrase à trou) tout en
