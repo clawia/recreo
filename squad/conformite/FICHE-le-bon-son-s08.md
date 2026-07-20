@@ -21,7 +21,8 @@ Conscience phonologique / décodage : reconnaître un son entendu dans un mot (n
       futur via externalisation (DEC-0006).
 
 ## Bloc validation utilisateur (Done pédagogique)
-- **Démo jouée le** : — (à venir) · **Validée** : Non (en attente) · **Commentaires** : —
+- **Démo jouée le** : 2026-07-20 · **Validée** : Oui (« c'est validé ») · **Commentaires** : liste
+  mot ↔ son jugée conforme en démo.
 
 ## Bloc playtest enfants
 - **Session tenue le** : — (jalon) · **Observations** : —

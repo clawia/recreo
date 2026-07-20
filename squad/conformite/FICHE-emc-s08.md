@@ -23,7 +23,8 @@
       (externalisation future — DEC-0006).
 
 ## Bloc validation utilisateur (Done pédagogique)
-- **Démo jouée le** : — (à venir) · **Validée** : Non (en attente) · **Commentaires** : —
+- **Démo jouée le** : 2026-07-20 · **Validée** : Oui (« c'est validé ») · **Commentaires** : EMC
+  CP/CM1 et Vrai/Faux sciences validés en démo.
 
 ## Bloc playtest enfants
 - **Session tenue le** : — (jalon) · **Observations** : —

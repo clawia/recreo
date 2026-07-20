@@ -6,7 +6,8 @@
 - **Sprint** : s08
 - **Compétence programme visée** : Français CP — décodage / association graphème↔phonème ;
   EMC CP & CM1 — règles de vie, valeurs et symboles de la République.
-- **Statut de validation** : À VALIDER (démo s08 à venir)
+- **Statut de validation** : VALIDÉ (user, 2026-07-20) — démo jouée, contenu jugé conforme ;
+  plafond des tables porté à 20 sur demande.
 
 ## Contexte / besoin
 Direction s08 : **élargir la couverture par du contenu**, sur des mécaniques existantes, sans
