@@ -24,13 +24,15 @@ public record GameView(
         boolean finished,
         boolean hasFeedback,
         boolean correct,
-        String feedbackMessage) {
+        String feedbackMessage,
+        List<String> arrangementSlots,
+        List<String> arrangementReserve) {
 
     public static GameView initial(String sessionId, String mechanicView, String catalogEntryId,
                                    List<String> reelSymbols, String question, List<String> options,
                                    int score, int round, int answered, int questionsTarget, boolean finished) {
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
-                answered, questionsTarget, finished, false, false, null);
+                answered, questionsTarget, finished, false, false, null, null, null);
     }
 
     public static GameView withFeedback(String sessionId, String mechanicView, String catalogEntryId,
@@ -38,7 +40,17 @@ public record GameView(
                                         String question, List<String> options, int score, int round,
                                         int answered, int questionsTarget, boolean finished) {
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
-                answered, questionsTarget, finished, true, correct, feedbackMessage);
+                answered, questionsTarget, finished, true, correct, feedbackMessage, null, null);
+    }
+
+    /**
+     * Copie de cette vue avec le PLATEAU glisser-deposer renseigne (tuiles verrouillees par
+     * emplacement + reserve a replacer). Records immuables : on reconstruit. Les autres
+     * mecaniques laissent ces deux champs {@code null} (plateau non pertinent).
+     */
+    public GameView withArrangementBoard(List<String> slots, List<String> reserve) {
+        return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
+                answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage, slots, reserve);
     }
 
     /**

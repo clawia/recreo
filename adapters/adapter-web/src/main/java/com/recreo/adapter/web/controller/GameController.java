@@ -137,7 +137,10 @@ public class GameController {
                 ? SubmitMoveCommand.arrangement(sessionId, arrangement)
                 : SubmitMoveCommand.pick(sessionId, chosenAnswer);
         MoveOutcomeView view = submitMoveUseCase.submit(command);
-        var game = mapper.toGameView(view);
+        // On passe l'arrangement soumis au mapper : pour glisser-deposer, un essai faux garde en
+        // place les tuiles deja bien positionnees (UX « ranger »). Pour les autres mecaniques,
+        // arrangement=null -> comportement inchange.
+        var game = mapper.toGameView(view, arrangement);
         model.addAttribute("game", game);
         // `from` propage l'origine du parcours pour l'ecran de fin (Rejouer / retour).
         model.addAttribute("from", from);
