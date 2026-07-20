@@ -95,7 +95,7 @@ class S08ContentNavigationWebTest {
         assertThat(settings.math()).isNotNull();
         List<String> ops = settings.math().operations().stream().map(o -> o.name()).toList();
         assertThat(ops).containsExactly(Operation.MULTIPLICATION.name());
-        assertThat(settings.math().operandCeiling()).isEqualTo(10);
+        assertThat(settings.math().operandCeiling()).isEqualTo(20);
     }
 
     @Test

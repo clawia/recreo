@@ -19,9 +19,10 @@ difficulty:
   operations:
     - MULTIPLICATION
   distractorCount: 3
-# Bornes de reglage : multiplication uniquement, operandes 1..10 (tables usuelles).
+# Bornes de reglage : multiplication uniquement. Defaut 1..10 (tables usuelles), mais
+# l'adulte peut monter le maximum jusqu'a 20.
 bounds:
   operandFloor: 1
-  operandCeiling: 10
+  operandCeiling: 20
   allowedOperations:
     - MULTIPLICATION
