@@ -69,34 +69,46 @@ class GlisserDeposerWebTest {
     }
 
     @Test
-    void wrongArrangementIsRejected() throws Exception {
+    void wrongArrangementStaysOnTheSamePuzzle() throws Exception {
+        // UX "ranger" (DEC-0008) : un arrangement faux ne fait PAS avancer -> meme puzzle,
+        // tuiles a nouveau presentes (remises a l'etat initial), pas d'ecran de fin.
         MvcResult start = mockMvc.perform(post("/sessions").param("catalogEntryId", "range-nombres-cp"))
                 .andExpect(status().isOk()).andReturn();
         String html = start.getResponse().getContentAsString();
         String sessionId = firstMatch(SESSION_ID, html);
         List<String> descending = tilesSorted(html);
-        java.util.Collections.reverse(descending); // ordre décroissant : faux (4 nombres distincts)
+        java.util.Collections.reverse(descending);
 
-        mockMvc.perform(post("/sessions/{id}/moves", sessionId)
+        String after = mockMvc.perform(post("/sessions/{id}/moves", sessionId)
                         .param("arrangement", descending.toArray(new String[0])))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Presque")));
+                .andReturn().getResponse().getContentAsString();
+
+        assertThat(after).contains("Presque");
+        assertThat(after).contains("class=\"dnd-slot\"");   // tuiles/emplacements a nouveau la
+        assertThat(after).doesNotContain("Rejouer");         // pas d'ecran de fin
+        // Meme puzzle : les memes nombres sont reproposes.
+        assertThat(tilesSorted(after)).isEqualTo(tilesSorted(html));
     }
 
     @Test
-    void sessionReachesTheEndScreen() throws Exception {
+    void sessionReachesTheEndScreenWithCorrectArrangements() throws Exception {
         MvcResult start = mockMvc.perform(post("/sessions")
                         .param("catalogEntryId", "range-nombres-cp")
                         .param("questionsTarget", "5"))
                 .andExpect(status().isOk()).andReturn();
-        String sessionId = firstMatch(SESSION_ID, start.getResponse().getContentAsString());
+        String html = start.getResponse().getContentAsString();
+        String sessionId = firstMatch(SESSION_ID, html);
 
         String lastHtml = null;
         for (int i = 0; i < 5; i++) {
+            // Chaque puzzle est resolu correctement (tri des tuiles courantes) -> on avance.
+            List<String> sorted = tilesSorted(html);
             lastHtml = mockMvc.perform(post("/sessions/{id}/moves", sessionId)
-                            .param("arrangement", "1", "2", "3", "4"))
+                            .param("arrangement", sorted.toArray(new String[0])))
                     .andExpect(status().isOk())
                     .andReturn().getResponse().getContentAsString();
+            html = lastHtml;
         }
 
         assertThat(lastHtml).contains("Rejouer");

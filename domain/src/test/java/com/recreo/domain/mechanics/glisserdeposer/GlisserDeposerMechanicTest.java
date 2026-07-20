@@ -85,5 +85,10 @@ class GlisserDeposerMechanicTest {
 
         assertThat(result.correct()).isFalse();
         assertThat(result.session().score()).isZero();
+        // UX "ranger" (DEC-0008) : un arrangement faux ne fait PAS avancer -> on reste sur
+        // le MEME item (meme round), pour reessayer apres remise a l'etat initial.
+        assertThat(result.session().round()).isEqualTo(1);
+        assertThat(result.session().currentItem().key()).isEqualTo(session.currentItem().key());
+        assertThat(result.session().status()).isEqualTo(SessionStatus.ACTIVE);
     }
 }
