@@ -19,7 +19,8 @@
 | s10 | Externalisation du contenu « mot → réponse » (5 jeux en YAML éditables, ADR-0010) — refactor, contenu quasi identique (léger changement distracteurs « première lettre ») | Bandit manchot (technique) | transverse (contenu éditable) | 2026-07-20 | ✅ **VALIDÉ** (Done technique + Done pédago, non-régression OK) | 2026-07-20 |
 
 | s11 | Durcissement (renommage `niveau-jeu.yml` + découplage des tests du contenu) + fin d'externalisation (textes à trous + syllabes en YAML) — refactor, contenu inchangé | transverse (technique) | transverse (contenu éditable) | 2026-07-20 | **À VALIDER** (Done technique ✅ ; non-régression à jouer) | — |
-| s12 | 4e mécanique **glisser-déposer** (1er îlot JS) — jeu « Range les nombres » (Maths CP) | Glisser-déposer | Maths CP — ordonner des nombres | 2026-07-20 | **À VALIDER** (Done technique ✅ ; démo à jouer) | — |
+| s12 | 4e mécanique **glisser-déposer** (1er îlot JS) — jeu « Range les nombres » (Maths CP) + feedback partiel | Glisser-déposer | Maths CP — ordonner des nombres | 2026-07-20 | **À VALIDER** (Done technique ✅ ; démo à jouer) | — |
+| s13 | Retours maths CP (complément=équation, sens tri/comparaison réglable, défaut 3) + nouveau jeu « Le bon symbole » (< > =) | Bandit manchot + Glisser-déposer | Maths CP — comparer/ordonner | 2026-07-21 | **À VALIDER** (Done technique ✅ ; démo à jouer) | — |
 
-> 2 incréments en attente (s11 refactor, s12 nouvelle mécanique). Règle d'or (max ~3) respectée ;
-> au prochain incrément non validé, penser à demander une validation.
+> ⚠️ **3 incréments en attente** (s11, s12, s13) = **seuil de la règle d'or atteint**. Avant tout
+> nouvel incrément de contenu, demander une **validation** à l'utilisatrice (sinon GEL DU CONTENU).
