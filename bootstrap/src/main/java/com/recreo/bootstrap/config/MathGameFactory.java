@@ -84,7 +84,7 @@ final class MathGameFactory implements GameFactory {
                 operationOptions);
         int poolCap = SessionQuestions.ABSOLUTE_MAX; // combinatoire
         return new GameSettingsView(entryId, title, gameKey, descriptor.niveau(),
-                math, null, SessionQuestions.view(poolCap));
+                math, null, SessionQuestions.view(poolCap), java.util.List.of());
     }
 
     private int clamp(int value) {

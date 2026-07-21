@@ -108,6 +108,7 @@ public class GameController {
                                @RequestParam(value = "maxOperand", required = false) String maxOperand,
                                @RequestParam(value = "operations", required = false) List<String> operations,
                                @RequestParam(value = "maxSyllabes", required = false) String maxSyllabes,
+                               @RequestParam(value = "centaines", required = false) List<String> centaines,
                                @RequestParam(value = "questionsTarget", required = false) String questionsTarget,
                                Model model) {
         Map<String, String> parameters = new LinkedHashMap<>();
@@ -117,6 +118,12 @@ public class GameController {
             parameters.put("operations", String.join(",", operations));
         }
         putIfPresent(parameters, "maxSyllabes", maxSyllabes);
+        // Toggle (case a cocher) : hidden "false" + checkbox "true" -> present si le
+        // formulaire est utilise ; coche => contient "true". Absent (jeu lance sans
+        // ouvrir les reglages) => la fabrique applique son defaut.
+        if (centaines != null && !centaines.isEmpty()) {
+            parameters.put("centaines", String.valueOf(centaines.contains("true")));
+        }
         putIfPresent(parameters, "questionsTarget", questionsTarget);
 
         SessionView view = startSessionUseCase.start(new StartSessionCommand(catalogEntryId, parameters));

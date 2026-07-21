@@ -61,6 +61,18 @@
                 </label>
             </fieldset>
 
+            <!-- Reglages « toggle » (cases a cocher : ex. inclure les centaines) — s15/DEC-0011.
+                 Champ cache "false" AVANT la case (name identique) : décoché -> "false" est envoyé,
+                 coché -> "true" aussi ; le controller lit la présence de "true". -->
+            <fieldset th:each="t : ${settings.toggles}" class="settings-block">
+                <legend th:text="${t.label}">Option</legend>
+                <label class="field">
+                    <input type="hidden" th:name="${t.paramName}" value="false"/>
+                    <input type="checkbox" th:name="${t.paramName}" value="true" th:checked="${t.on}"/>
+                    <span th:text="${t.label}">Option</span>
+                </label>
+            </fieldset>
+
             <!-- Nombre de questions : reglage COMMUN a tous les jeux (cf. ADR-0006). -->
             <fieldset th:if="${settings.questions != null}" class="settings-block">
                 <legend>Longueur de la session</legend>

@@ -66,6 +66,6 @@ final class SimpleGameFactory implements GameFactory {
     public GameSettingsView settings() {
         int poolCap = generatorSupplier.get().distinctPoolSize().orElse(SessionQuestions.ABSOLUTE_MAX);
         return new GameSettingsView(entryId, title, gameKey, niveau,
-                null, null, SessionQuestions.view(poolCap, questionsFloor, defaultQuestions));
+                null, null, SessionQuestions.view(poolCap, questionsFloor, defaultQuestions), java.util.List.of());
     }
 }
