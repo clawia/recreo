@@ -24,11 +24,11 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 | Mathématiques | CP | Nombres et calculs | Comparer des nombres (ordre) | Bandit manchot — Le plus grand nombre | Bandit manchot | couvert-validé (s04, 2026-07-19) |
 | Mathématiques | CP | Nombres et calculs | Ordonner des nombres (croissant ou décroissant, sens aléatoire par question) | Glisser-déposer — Range les nombres | Glisser-déposer | couvert-validé (s12, 2026-07-21) |
 | Mathématiques | CP | Nombres et calculs | Comparer deux nombres avec les signes <, >, = | Bandit manchot — Le bon symbole | Bandit manchot | couvert-validé (s13, 2026-07-21) |
-| Mathématiques | CP | Nombres et calculs | Valeur positionnelle des chiffres (dizaines, unités) | Bandit manchot — Décompose le nombre | Bandit manchot | en cours (s14) |
-| Mathématiques | CM1 | Nombres et calculs | Valeur positionnelle des chiffres (centaines, dizaines, unités) | Bandit manchot — Décompose le nombre | Bandit manchot | en cours (s14) |
-| Mathématiques | CM1 | Nombres et calculs | Ordonner des nombres (plus grands) | Glisser-déposer — Range les nombres CM1 | Glisser-déposer | en cours (s14) |
-| Histoire | CM1 | Se repérer dans le temps | Ordonner des événements sur une frise chronologique | Glisser-déposer — Frise chronologique | Glisser-déposer | en cours (s14) |
-| Mathématiques | CM1 | Fractions | Comparer deux fractions avec les signes <, >, = | Bandit manchot — Compare les fractions | Bandit manchot | en cours (s16) |
+| Mathématiques | CP | Nombres et calculs | Valeur positionnelle des chiffres (dizaines, unités) | Bandit manchot — Décompose le nombre | Bandit manchot | couvert-validé (s14, 2026-07-21) |
+| Mathématiques | CM1 | Nombres et calculs | Valeur positionnelle des chiffres (centaines, dizaines, unités) | Bandit manchot — Décompose le nombre | Bandit manchot | couvert-validé (s14, 2026-07-21) |
+| Mathématiques | CM1 | Nombres et calculs | Ordonner des nombres (plus grands) | Glisser-déposer — Range les nombres CM1 | Glisser-déposer | couvert-validé (s14, 2026-07-21) |
+| Histoire | CM1 | Se repérer dans le temps | Ordonner des événements sur une frise chronologique | Glisser-déposer — Frise chronologique | Glisser-déposer | couvert-validé (s14, 2026-07-21) |
+| Mathématiques | CM1 | Fractions | Comparer deux fractions avec les signes <, >, = | Bandit manchot — Compare les fractions | Bandit manchot | couvert-validé (s16, 2026-07-21) |
 | Mathématiques | CP | Nombres et calculs | Sens de l'égalité (compléter a + ⬚ = c) | Texte à trous — Complète l'égalité | Texte à trous | couvert-validé (s06, 2026-07-19) |
 | Mathématiques | CM1 | Nombres et calculs | Calcul mental — tables de multiplication (jusqu'à ×10) | Bandit manchot — calcul mental CM1 | Bandit manchot | couvert-validé (s01, 2026-07-18) |
 | Mathématiques | CM1 | Nombres et calculs | Multiplications posées de nombres à 2-3 chiffres | Bandit manchot — calcul mental CM1 | Bandit manchot | couvert-validé (s01, 2026-07-18) |

@@ -227,3 +227,22 @@ classe `big` ; `.game-over` sans fond/ombre dans le CSS servi. Décision : test 
 - 1re story hors mathématiques (français lecture CP ou orthographe CM1) pour faire bouger la
   matrice de couverture au-delà d'une seule matière — à planifier dès que le socle bandit manchot
   est validé pédagogiquement.
+
+---
+
+## Backlog (à venir — non planifié)
+
+### Story — « 3 jokers » : réessayer au lieu d'enchaîner sur une erreur
+**En tant qu'** enfant, **je veux**, quand je me trompe, **pouvoir réessayer la même question**
+(3 jokers / 3 ❤️ par session) plutôt que de passer à une nouvelle, **afin d'**apprendre en corrigeant.
+Sur un jeu à clic, la case fausse cliquée devient non cliquable.
+
+- **Compétence programme visée** : transverse (posture d'apprentissage / droit à l'erreur).
+- **Ajoutée le** : 2026-07-21, sur demande de l'utilisatrice.
+- **Détail & conception** : `squad/programme/PLAN-jokers-retenter.md` (comportement, pistes
+  d'implémentation, questions à trancher avec le PO).
+- **Critères d'acceptation (esquisse)** : une erreur consomme 1 joker et NE change PAS d'item tant
+  qu'il reste des jokers ; l'option fausse déjà tentée est désactivée ; ❤️ restants visibles ; à
+  0 joker, une erreur fait avancer (comportement actuel) ; l'écran de fin n'apparaît pas pendant les
+  retentes (non-régression UI à étendre).
+- **Statut** : 📋 backlog (voir aussi `squad/programme/ROADMAP.md` §A1 — proposé comme prochain sprint).

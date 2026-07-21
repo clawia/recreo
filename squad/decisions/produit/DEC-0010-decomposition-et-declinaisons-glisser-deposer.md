@@ -6,7 +6,7 @@
 - **Sprint** : s14
 - **Compétence programme visée** : Maths CP/CM1 — valeur positionnelle des chiffres ; Maths CM1 —
   ordonner des nombres ; Histoire CM1 — se repérer dans le temps (frise chronologique).
-- **Statut de validation** : À VALIDER (démo s14 à venir)
+- **Statut de validation** : VALIDÉ (user, 2026-07-21).
 
 ## Décisions
 1. **« Décompose le nombre »** (bandit manchot) : un nombre s'affiche, l'enfant clique le **chiffre**

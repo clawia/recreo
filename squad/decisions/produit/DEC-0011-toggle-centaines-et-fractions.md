@@ -6,7 +6,7 @@
 - **Sprint** : s15
 - **Compétence programme visée** : Maths CP/CM1 — valeur positionnelle ; Maths CM1 — comparer et
   ordonner des fractions.
-- **Statut de validation** : À VALIDER (démo s15 à venir)
+- **Statut de validation** : VALIDÉ (user, 2026-07-21).
 
 ## Décisions
 1. **Toggle « inclure les centaines »** sur « Décompose le nombre » (affine DEC-0010) : une **case à

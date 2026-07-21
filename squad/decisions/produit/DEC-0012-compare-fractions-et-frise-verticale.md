@@ -6,7 +6,7 @@
 - **Sprint** : s16
 - **Compétence programme visée** : Maths CM1 — comparer des fractions ; Histoire CM1 — se repérer
   dans le temps (frise).
-- **Statut de validation** : À VALIDER (démo s16 à venir)
+- **Statut de validation** : VALIDÉ (user, 2026-07-21) — fractions revues en s16 (comparaison).
 
 ## Décisions
 1. **« Range les fractions » → « Compare les fractions »** (affine/remplace la partie fractions de
