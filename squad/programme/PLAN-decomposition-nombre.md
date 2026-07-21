@@ -1,9 +1,14 @@
 # Plan — Jeu « Décompose le nombre » (centaines / dizaines / unités)
 
-Statut : 📋 **PLANIFIÉ — non implémenté**. Proposé pour un **sprint ultérieur**, après la mise en
-place de l'infra de réglage « choix » (`ChoixSettingsView` / `ChoixGameFactory`) prévue en **s13**.
-Ce document cadre le besoin ; aucun code n'est écrit, aucune décision n'est actée tant qu'il n'est
-pas repris en sprint.
+Statut : 📋 **PLANIFIÉ — non implémenté**. Proposé pour un **sprint ultérieur**. Ce document cadre le
+besoin ; aucun code n'est écrit, aucune décision n'est actée tant qu'il n'est pas repris en sprint.
+
+> ⚠️ **Mise à jour s13** : l'infra de réglage « choix » (`ChoixSettingsView`/`ChoixGameFactory`),
+> d'abord introduite en s13, a été **retirée** (le sens du tri/comparaison est finalement aléatoire,
+> pas un réglage — cf. ADR-0014/DEC-0009). Le toggle « inclure les centaines » de ce plan devra donc
+> **(ré)introduire** ce petit réglage à N options au moment de l'implémentation (l'historique Git en
+> garde une version de référence). Repli simple : livrer d'abord l'entrée CP **sans** toggle via
+> `SimpleGameFactory`, et n'ajouter le réglage « centaines » (CM1) que si l'utilisatrice le confirme.
 
 > Besoin exprimé par l'utilisatrice : un exercice où l'enfant **décompose un nombre affiché** et
 > **clique le bon chiffre** selon la position demandée. Par défaut on interroge **dizaines et

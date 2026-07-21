@@ -11,15 +11,17 @@
 1. **Complément à 10 — afficher l'équation** : les rouleaux montrent « n + ⬚ = 10 » (au lieu du seul
    « n »). La consigne « Combien pour aller à 10 ? » est conservée.
 2. **Range les nombres (glisser-déposer)** :
-   - **Sens réglable** par l'adulte : *croissant* (défaut, « du plus petit au plus grand ») ou
-     *décroissant* (« du plus grand au plus petit »).
+   - **Sens ALÉATOIRE par question** (croissant « du plus petit au plus grand » ou décroissant
+     « du plus grand au plus petit »), tiré au hasard à chaque puzzle de la session — **pas un
+     réglage** (retour utilisatrice : « je ne veux pas que le sens soit paramétrable »).
    - **Défaut 3 questions** (plancher abaissé à 1 pour ce jeu) — une courte session suffit.
-3. **Comparaison des nombres** : consigne réglable — demander *le plus grand* (défaut) **ou** *le
-   plus petit*.
+3. **Comparaison des nombres** : consigne **aléatoire par question** — parfois *le plus grand*,
+   parfois *le plus petit* (pas un réglage).
 4. **Nouveau jeu « Le bon symbole »** (Maths CP, bandit manchot) : deux nombres, l'enfant choisit le
    bon signe parmi `<`, `>`, `=` (cas d'égalité inclus).
 
-Les réglages (2/3) reposent sur le nouveau réglage « choix » générique (cf. ADR-0014).
+Le sens (2/3) est géré **côté contenu** (tiré aléatoirement dans le générateur), sans réglage. Le
+réglage « choix » d'abord envisagé a été retiré (cf. note d'amendement ADR-0014).
 
 ## Justification pédagogique
 Voir l'équation entière renforce le sens de la relation « compléter à 10 ». Varier le sens (tri,
