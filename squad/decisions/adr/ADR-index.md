@@ -31,3 +31,8 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 
 > **s15 — « Range les fractions » (Maths CM1) : pas de nouvel ADR** — déclinaison glisser-déposer
 > (ADR-0013), générateur `FractionsGenerator` dans `domain.content.impl`.
+
+> **s16 — pas de nouvel ADR.** « Compare les fractions » (retour utilisatrice) = bandit manchot
+> (`CompareFractionsGenerator`, comme « Le bon symbole ») ; l'ancien `FractionsGenerator` d'ordonnancement
+> est supprimé. Frise chronologique **verticale** = simple variante CSS de la vue glisser-déposer
+> (`frise-verticale`, activée par l'entryId), sans changement de mécanique. ArchUnit 5/5.
