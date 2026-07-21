@@ -14,8 +14,8 @@ import com.recreo.domain.content.impl.BonSymboleGenerator;
 import com.recreo.domain.content.impl.ComparaisonGenerator;
 import com.recreo.domain.content.impl.ComplementDixGenerator;
 import com.recreo.domain.content.impl.DecompositionGenerator;
+import com.recreo.domain.content.impl.CompareFractionsGenerator;
 import com.recreo.domain.content.impl.EgaliteGenerator;
-import com.recreo.domain.content.impl.FractionsGenerator;
 import com.recreo.domain.content.impl.FriseChronologiqueGenerator;
 import com.recreo.domain.content.impl.MotChoixGenerator;
 import com.recreo.domain.content.impl.QuizGenerator;
@@ -218,16 +218,13 @@ public class BeansConfig {
                 new SimpleGameFactory("frise-cm1", "Histoire CM1 — Frise chronologique", "frise-chronologique", "CM1",
                         GlisserDeposerMechanic.ID, () -> new FriseChronologiqueGenerator(friseDesc),
                         3, 1)));
-        // Fractions CM1 (s15) : ranger des fractions de la plus petite a la plus grande.
-        ContentDescriptor fractionsDesc =
-                new ContentDescriptor("Mathématiques", "CM1", "Fractions — comparer et ordonner");
-        defs.add(new CatalogEntryDef(
-                "fractions-cm1", "Maths", "CM1", "fractions", "Range les fractions",
-                "Maths CM1 — Range les fractions", "Range les fractions de la plus petite à la plus grande.",
-                GlisserDeposerMechanic.ID,
-                new SimpleGameFactory("fractions-cm1", "Maths CM1 — Range les fractions", "fractions", "CM1",
-                        GlisserDeposerMechanic.ID, () -> new FractionsGenerator(fractionsDesc),
-                        3, 1)));
+        // Fractions CM1 (s16, retour utilisatrice) : COMPARER deux fractions avec < > =
+        // (bandit manchot, comme « Le bon symbole »), au lieu de les ranger.
+        defs.add(simpleGame(
+                "fractions-cm1", "Maths", "CM1", "compare-fractions", "Compare les fractions",
+                "Maths CM1 — Compare les fractions", "Choisis le bon signe entre les deux fractions.",
+                new ContentDescriptor("Mathématiques", "CM1", "Fractions — comparer avec <, >, ="),
+                CompareFractionsGenerator::new));
 
         return new InMemoryGameCatalog(
                 List.of(banditManchotMechanic, texteATrouMechanic, quizAventureMechanic, glisserDeposerMechanic), defs);
