@@ -143,4 +143,55 @@ class CatalogParametersTest {
     // testé sans littéral de contenu par SessionQuestionsTest (logique en isolation) —
     // cf. PLAN-refacto-tests-contenu.md. Le clamp général reste couvert ci-dessus sur un
     // jeu combinatoire (calcul-mental-cp).
+
+    // ---- Reglage « choix » (s13 / ADR-0014) ----
+
+    @Test
+    void rangeNombresDefaultsToCroissantAndThreeQuestions() {
+        // Defaut : sens croissant + 3 questions (plancher abaisse pour ce jeu).
+        GameConfig config = catalog.configFor("range-nombres-cp");
+        assertThat(config.content().next(seeded(1L)).question()).contains("du plus petit au plus grand");
+        assertThat(config.settings().get("questionsTarget")).isEqualTo(3);
+        assertThat(catalog.settingsFor("range-nombres-cp").questions().defaultValue()).isEqualTo(3);
+        assertThat(catalog.settingsFor("range-nombres-cp").questions().min()).isEqualTo(1);
+        assertThat(catalog.settingsFor("range-nombres-cp").choix()).isNotEmpty();
+    }
+
+    @Test
+    void rangeNombresDecroissantReversesTheOrder() {
+        GameConfig config = catalog.configFor("range-nombres-cp", Map.of("sens", "decroissant"));
+        Item item = config.content().next(seeded(2L));
+        assertThat(item.question()).contains("du plus grand au plus petit");
+        // expected = les tuiles triees DECROISSANT.
+        List<Integer> reel = item.reelSymbols().stream().map(Integer::parseInt).sorted().toList();
+        List<Integer> desc = new java.util.ArrayList<>(reel);
+        java.util.Collections.reverse(desc);
+        String expected = desc.stream().map(String::valueOf).reduce((a, b) -> a + ", " + b).orElse("");
+        assertThat(item.expected().value()).isEqualTo(expected);
+    }
+
+    @Test
+    void comparaisonSensPlusPetit() {
+        GameConfig grand = catalog.configFor("comparaison"); // defaut plus grand
+        assertThat(grand.content().next(seeded(3L)).question()).contains("plus grand");
+        GameConfig petit = catalog.configFor("comparaison", Map.of("sens", "plusPetit"));
+        for (int i = 0; i < SAMPLES; i++) {
+            Item item = petit.content().next(seeded(100L + i));
+            assertThat(item.question()).contains("plus petit");
+            int a = Integer.parseInt(item.meta().get("a"));
+            int b = Integer.parseInt(item.meta().get("b"));
+            assertThat(item.expected().value()).isEqualTo(String.valueOf(Math.min(a, b)));
+        }
+    }
+
+    @Test
+    void bonSymboleProducesAValidSign() {
+        GameConfig config = catalog.configFor("bon-symbole");
+        for (int i = 0; i < SAMPLES; i++) {
+            Item item = config.content().next(seeded(200L + i));
+            assertThat(item.expected().value()).isIn("<", ">", "=");
+            assertThat(item.reelSymbols()).hasSize(3);
+            assertThat(item.reelSymbols().get(1)).isEqualTo("?");
+        }
+    }
 }

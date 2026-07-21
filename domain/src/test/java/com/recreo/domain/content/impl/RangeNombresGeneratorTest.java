@@ -54,6 +54,42 @@ class RangeNombresGeneratorTest {
     }
 
     @Test
+    void producesConformingDescendingArrangementItems() {
+        ContentDescriptor descriptor = new ContentDescriptor("Mathématiques", "CP", "ordre");
+        RangeNombresGenerator generator = new RangeNombresGenerator(descriptor, 4, 20, false);
+        RandomSource random = new SeededRandomSource(7L);
+
+        for (int i = 0; i < SAMPLES; i++) {
+            Item item = generator.next(random);
+
+            // Quatre tuiles : entiers distincts dans [0, 20].
+            assertThat(item.reelSymbols()).hasSize(4);
+            List<Integer> numbers = new ArrayList<>();
+            for (String symbol : item.reelSymbols()) {
+                int value = Integer.parseInt(symbol);
+                assertThat(value).isBetween(0, 20);
+                numbers.add(value);
+            }
+            assertThat(numbers).doesNotHaveDuplicates();
+
+            // Attendu = les memes nombres tries DECROISSANT puis joints par ", ".
+            List<Integer> sortedNumbers = new ArrayList<>(numbers);
+            sortedNumbers.sort((x, y) -> Integer.compare(y, x));
+            List<String> sorted = new ArrayList<>();
+            for (int value : sortedNumbers) {
+                sorted.add(String.valueOf(value));
+            }
+            assertThat(item.expected().value()).isEqualTo(String.join(", ", sorted));
+
+            // Item non trivial : les tuiles NE sont PAS deja dans l'ordre trie.
+            assertThat(String.join(", ", item.reelSymbols())).isNotEqualTo(item.expected().value());
+
+            assertThat(item.question()).contains("du plus grand au plus petit");
+            assertThat(item.distractors()).isEmpty();
+        }
+    }
+
+    @Test
     void isDeterministicForAGivenSeed() {
         ContentDescriptor descriptor = new ContentDescriptor("Mathématiques", "CP", "ordre");
 

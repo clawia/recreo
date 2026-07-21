@@ -41,4 +41,32 @@ class ComparaisonGeneratorTest {
             assertThat(item.distractors()).doesNotContain(item.expected());
         }
     }
+
+    @Test
+    void producesConformingSmallestItems() {
+        ComparaisonGenerator generator = new ComparaisonGenerator(
+                new ContentDescriptor("Mathématiques", "CP", "comparer des nombres"), false);
+        RandomSource random = new SeededRandomSource(7L);
+
+        for (int i = 0; i < SAMPLES; i++) {
+            Item item = generator.next(random);
+
+            assertThat(item.reelSymbols()).hasSize(2);
+            int a = Integer.parseInt(item.reelSymbols().get(0));
+            int b = Integer.parseInt(item.reelSymbols().get(1));
+            assertThat(a).isBetween(0, 20);
+            assertThat(b).isBetween(0, 20);
+            assertThat(a).isNotEqualTo(b);
+
+            assertThat(item.question()).isEqualTo("Quel est le plus petit ?");
+
+            // Regle : expected = min ; un seul distracteur = max.
+            int expected = Integer.parseInt(item.expected().value());
+            assertThat(expected).isEqualTo(Math.min(a, b));
+            assertThat(item.distractors()).hasSize(1);
+            assertThat(Integer.parseInt(item.distractors().get(0).value()))
+                    .isEqualTo(Math.max(a, b));
+            assertThat(item.distractors()).doesNotContain(item.expected());
+        }
+    }
 }

@@ -23,10 +23,15 @@ class ComplementDixGeneratorTest {
         for (int i = 0; i < SAMPLES; i++) {
             Item item = generator.next(random);
 
-            assertThat(item.reelSymbols()).hasSize(1);
+            // Equation affichee : « n + ⬚ = 10 » (5 symboles).
+            assertThat(item.reelSymbols()).hasSize(5);
             int n = Integer.parseInt(item.reelSymbols().get(0));
             assertThat(n).isBetween(0, 10);
             assertThat(item.reelSymbols().get(0)).isEqualTo(item.meta().get("nombre"));
+            assertThat(item.reelSymbols().get(1)).isEqualTo("+");
+            assertThat(item.reelSymbols().get(2)).isEqualTo("⬚");
+            assertThat(item.reelSymbols().get(3)).isEqualTo("=");
+            assertThat(item.reelSymbols().get(4)).isEqualTo("10");
 
             assertThat(item.question()).isEqualTo("Combien pour aller à 10 ?");
 
