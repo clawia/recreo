@@ -22,3 +22,7 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 | [ADR-0012](ADR-0012-convention-nommage-config.md) | Convention de nommage des fichiers de contenu : `niveau-jeu.yml` | Accepté | 2026-07-20 | s11 |
 | [ADR-0013](ADR-0013-mecanique-glisser-deposer-ilot-js.md) | 1ère mécanique à îlot JS : glisser-déposer (variant `SubmitArrangement`, drag-and-drop HTML5 natif) | Accepté | 2026-07-20 | s12 |
 | [ADR-0014](ADR-0014-reglage-choix-generique.md) | Défaut/plancher de questions par jeu (réglage « choix » retiré ; sens aléatoire — cf. DEC-0009) | Accepté (amendé) | 2026-07-21 | s13 |
+
+> **s14 — pas de nouvel ADR.** « Décompose le nombre » réutilise le bandit manchot ; « Frise
+> chronologique » et « Range les nombres CM1 » réutilisent le glisser-déposer (ADR-0013). Nouveaux
+> générateurs dans `domain.content.impl`, mécaniques inchangées → ArchUnit 5/5. Aucune décision d'archi.
