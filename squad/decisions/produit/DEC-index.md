@@ -15,4 +15,5 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Une DEC = une ligne.
 | DEC-0008 | Ergonomie du « glisser-déposer » (Range les nombres) | Maths CP — ordonner des nombres | VALIDÉ (user, 2026-07-21) | 2026-07-20 | s12 |
 | DEC-0009 | Retours ergonomie s13 (complément=équation, sens tri/comparaison aléatoire, défaut 3) + jeu « Le bon symbole » | Maths CP — comparer/ordonner | VALIDÉ (user, 2026-07-21) | 2026-07-21 | s13 |
 | DEC-0010 | Décomposition des nombres (CP/CM1) + déclinaisons glisser-déposer (frise chronologique CM1, range CM1) | Maths CP/CM1 valeur positionnelle ; Histoire CM1 frise | À VALIDER | 2026-07-21 | s14 |
-| DEC-0011 | Toggle « inclure les centaines » (décomposition) + « Range les fractions » (CM1) | Maths CP/CM1 valeur positionnelle ; Maths CM1 fractions | À VALIDER | 2026-07-21 | s15 |
+| DEC-0011 | Toggle « inclure les centaines » (décomposition) + « Range les fractions » (CM1) | Maths CP/CM1 valeur positionnelle ; Maths CM1 fractions | À VALIDER (fractions revues en s16 — DEC-0012) | 2026-07-21 | s15 |
+| DEC-0012 | « Compare les fractions » (< > =, remplace le rangement) + frise chronologique VERTICALE | Maths CM1 comparer fractions ; Histoire CM1 frise | À VALIDER | 2026-07-21 | s16 |

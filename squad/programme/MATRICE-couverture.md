@@ -28,7 +28,7 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 | Mathématiques | CM1 | Nombres et calculs | Valeur positionnelle des chiffres (centaines, dizaines, unités) | Bandit manchot — Décompose le nombre | Bandit manchot | en cours (s14) |
 | Mathématiques | CM1 | Nombres et calculs | Ordonner des nombres (plus grands) | Glisser-déposer — Range les nombres CM1 | Glisser-déposer | en cours (s14) |
 | Histoire | CM1 | Se repérer dans le temps | Ordonner des événements sur une frise chronologique | Glisser-déposer — Frise chronologique | Glisser-déposer | en cours (s14) |
-| Mathématiques | CM1 | Fractions | Comparer et ordonner des fractions | Glisser-déposer — Range les fractions | Glisser-déposer | en cours (s15) |
+| Mathématiques | CM1 | Fractions | Comparer deux fractions avec les signes <, >, = | Bandit manchot — Compare les fractions | Bandit manchot | en cours (s16) |
 | Mathématiques | CP | Nombres et calculs | Sens de l'égalité (compléter a + ⬚ = c) | Texte à trous — Complète l'égalité | Texte à trous | couvert-validé (s06, 2026-07-19) |
 | Mathématiques | CM1 | Nombres et calculs | Calcul mental — tables de multiplication (jusqu'à ×10) | Bandit manchot — calcul mental CM1 | Bandit manchot | couvert-validé (s01, 2026-07-18) |
 | Mathématiques | CM1 | Nombres et calculs | Multiplications posées de nombres à 2-3 chiffres | Bandit manchot — calcul mental CM1 | Bandit manchot | couvert-validé (s01, 2026-07-18) |
