@@ -61,18 +61,6 @@
                 </label>
             </fieldset>
 
-            <!-- Reglages « choix » generiques (sens du tri, plus grand/plus petit, ...) — s13/ADR-0014. -->
-            <fieldset th:each="c : ${settings.choix}" class="settings-block">
-                <legend th:text="${c.legend}">Choix</legend>
-                <label class="field">
-                    <select th:name="${c.paramName}">
-                        <option th:each="o : ${c.options}"
-                                th:value="${o.value}" th:text="${o.label}"
-                                th:selected="${o.value == c.selected}"></option>
-                    </select>
-                </label>
-            </fieldset>
-
             <!-- Nombre de questions : reglage COMMUN a tous les jeux (cf. ADR-0006). -->
             <fieldset th:if="${settings.questions != null}" class="settings-block">
                 <legend>Longueur de la session</legend>

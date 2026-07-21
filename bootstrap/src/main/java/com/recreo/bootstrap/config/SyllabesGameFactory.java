@@ -69,7 +69,7 @@ final class SyllabesGameFactory implements GameFactory {
                 entryId, title, gameKey, descriptor.niveau(),
                 null,
                 new SyllabesSettingsView(options, selected),
-                SessionQuestions.view(fullPoolCap()), java.util.List.of());
+                SessionQuestions.view(fullPoolCap()));
     }
 
     /** Vivier distinct plein (sans filtre maxSyllabes) : plafonne "nombre de questions". */

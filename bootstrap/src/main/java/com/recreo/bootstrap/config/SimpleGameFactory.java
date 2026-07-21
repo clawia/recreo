@@ -24,15 +24,28 @@ final class SimpleGameFactory implements GameFactory {
     private final String niveau;
     private final MechanicId mechanicId;
     private final Supplier<ContentGenerator> generatorSupplier;
+    private final int defaultQuestions;
+    private final int questionsFloor;
 
+    /** Defaut/plancher de questions GLOBAUX (20 / 5). */
     SimpleGameFactory(String entryId, String title, String gameKey, String niveau,
                       MechanicId mechanicId, Supplier<ContentGenerator> generatorSupplier) {
+        this(entryId, title, gameKey, niveau, mechanicId, generatorSupplier,
+                SessionQuestions.DEFAULT, SessionQuestions.MIN);
+    }
+
+    /** Defaut/plancher de questions PROPRES au jeu (ex. « Range les nombres » : 3 / 1). */
+    SimpleGameFactory(String entryId, String title, String gameKey, String niveau,
+                      MechanicId mechanicId, Supplier<ContentGenerator> generatorSupplier,
+                      int defaultQuestions, int questionsFloor) {
         this.entryId = entryId;
         this.title = title;
         this.gameKey = gameKey;
         this.niveau = niveau;
         this.mechanicId = mechanicId;
         this.generatorSupplier = generatorSupplier;
+        this.defaultQuestions = defaultQuestions;
+        this.questionsFloor = questionsFloor;
     }
 
     @Override
@@ -44,7 +57,8 @@ final class SimpleGameFactory implements GameFactory {
         settings.put("niveau", niveau);
         // Seul reglage applicable : le nombre de questions (les parametres de contenu
         // eventuels sont ignores).
-        settings.put("questionsTarget", SessionQuestions.resolve(parameters.get("questionsTarget"), poolCap));
+        settings.put("questionsTarget", SessionQuestions.resolve(
+                parameters.get("questionsTarget"), poolCap, questionsFloor, defaultQuestions));
         return new GameConfig(mechanicId, generator, settings);
     }
 
@@ -52,6 +66,6 @@ final class SimpleGameFactory implements GameFactory {
     public GameSettingsView settings() {
         int poolCap = generatorSupplier.get().distinctPoolSize().orElse(SessionQuestions.ABSOLUTE_MAX);
         return new GameSettingsView(entryId, title, gameKey, niveau,
-                null, null, SessionQuestions.view(poolCap), java.util.List.of());
+                null, null, SessionQuestions.view(poolCap, questionsFloor, defaultQuestions));
     }
 }
