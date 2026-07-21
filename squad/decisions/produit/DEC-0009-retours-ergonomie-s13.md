@@ -5,7 +5,7 @@
 - **Auteur** : Camille (PO), sur retours de l'utilisatrice.
 - **Sprint** : s13
 - **Compétence programme visée** : Maths CP — sens du nombre, comparaison (`<`, `>`, `=`), ordonner.
-- **Statut de validation** : À VALIDER (démo s13 à venir)
+- **Statut de validation** : VALIDÉ (user, 2026-07-21) — CP.
 
 ## Décisions
 1. **Complément à 10 — afficher l'équation** : les rouleaux montrent « n + ⬚ = 10 » (au lieu du seul

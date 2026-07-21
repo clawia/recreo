@@ -5,7 +5,7 @@
 - **Auteur** : Camille (PO) — esquisse d'ergonomie de la 1ère mécanique à îlot JS.
 - **Sprint** : s12
 - **Compétence programme visée** : Mathématiques CP — ordonner des nombres (du plus petit au plus grand).
-- **Statut de validation** : À VALIDER (démo s12 à venir)
+- **Statut de validation** : VALIDÉ (user, 2026-07-21) — CP ; feedback partiel (tuiles bien placées conservées) inclus.
 
 ## Contexte
 1ère mécanique nécessitant une interaction JS riche (îlot JS, cf. ADR-0013). Jeu inaugural
