@@ -26,4 +26,7 @@
 
 | s15 | Toggle « inclure les centaines » (décomposition) + « Range les fractions » (Maths CM1, glisser-déposer) | Bandit manchot + Glisser-déposer | Maths CP/CM1 valeur positionnelle · Maths CM1 fractions | 2026-07-21 | **À VALIDER** (Done technique ✅ ; démo à jouer) | — |
 
-> 2 incréments en attente (s14, s15). Règle d'or (max ~3) respectée. s11/s12/s13 validés le 2026-07-21.
+| s16 | « Compare les fractions » (< > =, remplace le rangement) + frise chronologique VERTICALE | Bandit manchot + Glisser-déposer | Maths CM1 comparer fractions · Histoire CM1 frise | 2026-07-21 | **À VALIDER** (Done technique ✅ ; démo à jouer) | — |
+
+> ⚠️ **3 incréments en attente** (s14, s15, s16) = **seuil de la règle d'or atteint**. Une validation
+> utilisatrice est souhaitée avant d'empiler un nouvel incrément de contenu. s11/s12/s13 validés le 2026-07-21.
