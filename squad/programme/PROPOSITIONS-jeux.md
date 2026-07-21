@@ -25,12 +25,16 @@
 | Jeu | Matière | Niveau | Compétence | Statut |
 |---|---|---|---|---|
 | **Range les nombres** (ordonner) | Maths | CP | ordonner des nombres | ✅ (s12) |
+| **Range les nombres** (plus grands) | Maths | CM1 | ordonner des nombres | ✅ (s14) |
+| **Frise chronologique** (ordonner des événements) | Histoire | CM1 | repères temporels | ✅ (s14) |
 | Quantité ↔ chiffre | Maths | CP | dénombrer | 🔜 |
-| Ranger fractions/décimaux, fraction ↔ dessin | Maths | CM1 | fractions et décimaux |
-| Associer mot ↔ image, majuscule ↔ minuscule | Français | CP | lecture |
-| Glisser la bonne terminaison (accords) ; classer nom/verbe/adjectif | Français | CM1 | orthographe, grammaire |
-| Classer vivant / non-vivant | Questionner le monde | CP | le vivant |
-| Ranger une frise chronologique | Histoire | CM1 | repères temporels |
+| Ranger fractions/décimaux, fraction ↔ dessin | Maths | CM1 | fractions et décimaux | 🔜 |
+| Associer mot ↔ image, majuscule ↔ minuscule *(matching — nouvelle interaction)* | Français | CP | lecture | 🔜 |
+| Classer nom/verbe/adjectif, vivant/non-vivant *(classification — nouvelle interaction)* | Français / QLM | CP/CM1 | grammaire, vivant | 🔜 |
+
+> Note : « associer » (paires) et « classer » (catégories) ne sont pas de l'ordonnancement — ils
+> demanderaient un **nouveau type de coup** (au-delà de `SubmitArrangement`), donc une évolution de
+> mécanique à part entière (à cadrer par un ADR le moment venu).
 
 ## 3. Memory — paires *(nouveau — îlot JS léger, flip CSS)*
 | Jeu | Matière | Niveau | Compétence |

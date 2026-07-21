@@ -1,7 +1,8 @@
 # Plan — Jeu « Décompose le nombre » (centaines / dizaines / unités)
 
-Statut : 📋 **PLANIFIÉ — non implémenté**. Proposé pour un **sprint ultérieur**. Ce document cadre le
-besoin ; aucun code n'est écrit, aucune décision n'est actée tant qu'il n'est pas repris en sprint.
+Statut : ✅ **IMPLÉMENTÉ en s14** (cf. DEC-0010). Choix retenu : **deux entrées par niveau** (CP :
+dizaines/unités ; CM1 : + centaines) plutôt qu'un toggle « centaines » — l'infra « choix » ayant été
+retirée en s13, une entrée par niveau est plus simple. Le reste du document garde sa valeur de cadrage.
 
 > ⚠️ **Mise à jour s13** : l'infra de réglage « choix » (`ChoixSettingsView`/`ChoixGameFactory`),
 > d'abord introduite en s13, a été **retirée** (le sens du tri/comparaison est finalement aléatoire,
