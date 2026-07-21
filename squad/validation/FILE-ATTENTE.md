@@ -22,11 +22,10 @@
 | s12 | 4e mécanique **glisser-déposer** (1er îlot JS) — jeu « Range les nombres » (Maths CP) + feedback partiel | Glisser-déposer | Maths CP — ordonner des nombres | 2026-07-20 | ✅ **VALIDÉ** (CP) | 2026-07-21 |
 | s13 | Retours maths CP (complément=équation, sens tri/comparaison aléatoire, défaut 3) + nouveau jeu « Le bon symbole » (< > =) | Bandit manchot + Glisser-déposer | Maths CP — comparer/ordonner | 2026-07-21 | ✅ **VALIDÉ** (CP) | 2026-07-21 |
 
-| s14 | « Décompose le nombre » (valeur positionnelle, CP+CM1) + déclinaisons glisser-déposer : Frise chronologique (Histoire CM1) & Range les nombres CM1 | Bandit manchot + Glisser-déposer | Maths CP/CM1 valeur positionnelle · Histoire CM1 frise · Maths CM1 ordonner | 2026-07-21 | **À VALIDER** (Done technique ✅ ; démo à jouer) | — |
+| s14 | « Décompose le nombre » (valeur positionnelle, CP+CM1) + déclinaisons glisser-déposer : Frise chronologique (Histoire CM1) & Range les nombres CM1 | Bandit manchot + Glisser-déposer | Maths CP/CM1 valeur positionnelle · Histoire CM1 frise · Maths CM1 ordonner | 2026-07-21 | ✅ **VALIDÉ** (Done technique + Done pédago) | 2026-07-21 |
 
-| s15 | Toggle « inclure les centaines » (décomposition) + « Range les fractions » (Maths CM1, glisser-déposer) | Bandit manchot + Glisser-déposer | Maths CP/CM1 valeur positionnelle · Maths CM1 fractions | 2026-07-21 | **À VALIDER** (Done technique ✅ ; démo à jouer) | — |
+| s15 | Toggle « inclure les centaines » (décomposition) + « Range les fractions » (Maths CM1, glisser-déposer) | Bandit manchot + Glisser-déposer | Maths CP/CM1 valeur positionnelle · Maths CM1 fractions | 2026-07-21 | ✅ **VALIDÉ** (Done technique + Done pédago) | 2026-07-21 |
 
-| s16 | « Compare les fractions » (< > =, remplace le rangement) + frise chronologique VERTICALE | Bandit manchot + Glisser-déposer | Maths CM1 comparer fractions · Histoire CM1 frise | 2026-07-21 | **À VALIDER** (Done technique ✅ ; démo à jouer) | — |
+| s16 | « Compare les fractions » (< > =, remplace le rangement) + frise chronologique VERTICALE | Bandit manchot + Glisser-déposer | Maths CM1 comparer fractions · Histoire CM1 frise | 2026-07-21 | ✅ **VALIDÉ** (Done technique + Done pédago) | 2026-07-21 |
 
-> ⚠️ **3 incréments en attente** (s14, s15, s16) = **seuil de la règle d'or atteint**. Une validation
-> utilisatrice est souhaitée avant d'empiler un nouvel incrément de contenu. s11/s12/s13 validés le 2026-07-21.
+> ✅ **File à zéro** : s14, s15 et s16 validés le 2026-07-21. Aucun incrément en attente.
