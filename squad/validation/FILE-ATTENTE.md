@@ -22,5 +22,6 @@
 | s12 | 4e mécanique **glisser-déposer** (1er îlot JS) — jeu « Range les nombres » (Maths CP) + feedback partiel | Glisser-déposer | Maths CP — ordonner des nombres | 2026-07-20 | ✅ **VALIDÉ** (CP) | 2026-07-21 |
 | s13 | Retours maths CP (complément=équation, sens tri/comparaison aléatoire, défaut 3) + nouveau jeu « Le bon symbole » (< > =) | Bandit manchot + Glisser-déposer | Maths CP — comparer/ordonner | 2026-07-21 | ✅ **VALIDÉ** (CP) | 2026-07-21 |
 
-> ✅ **File à zéro** : aucun incrément en attente. s12/s13 étaient CP uniquement ; s11 (refactor
-> transverse) a été vérifié en non-régression sur CP **et** CM1.
+| s14 | « Décompose le nombre » (valeur positionnelle, CP+CM1) + déclinaisons glisser-déposer : Frise chronologique (Histoire CM1) & Range les nombres CM1 | Bandit manchot + Glisser-déposer | Maths CP/CM1 valeur positionnelle · Histoire CM1 frise · Maths CM1 ordonner | 2026-07-21 | **À VALIDER** (Done technique ✅ ; démo à jouer) | — |
+
+> 1 incrément en attente (s14). Règle d'or (max ~3) respectée. s11/s12/s13 validés le 2026-07-21.
