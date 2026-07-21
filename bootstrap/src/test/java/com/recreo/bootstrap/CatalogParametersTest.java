@@ -213,4 +213,61 @@ class CatalogParametersTest {
             assertThat(item.reelSymbols().get(1)).isEqualTo("?");
         }
     }
+
+    // ---- s14 : décomposition + déclinaisons glisser-déposer ----
+
+    @Test
+    void decompositionGivesThePositionalDigit() {
+        assertPositionalDigit("decomposition-cp", 10, 99);
+        assertPositionalDigit("decomposition-cm1", 100, 999);
+    }
+
+    private void assertPositionalDigit(String entryId, int lo, int hi) {
+        GameConfig config = catalog.configFor(entryId);
+        RandomSource random = seeded(51L);
+        for (int i = 0; i < SAMPLES; i++) {
+            Item item = config.content().next(random);
+            assertThat(item.reelSymbols()).hasSize(1);
+            int n = Integer.parseInt(item.reelSymbols().get(0));
+            assertThat(n).isBetween(lo, hi);
+            int digit;
+            if (item.question().contains("unités")) {
+                digit = n % 10;
+            } else if (item.question().contains("dizaines")) {
+                digit = (n / 10) % 10;
+            } else {
+                assertThat(item.question()).contains("centaines");
+                digit = (n / 100) % 10;
+            }
+            assertThat(item.expected().value()).isEqualTo(String.valueOf(digit));
+            assertThat(item.distractors()).hasSize(2).doesNotContain(item.expected());
+        }
+    }
+
+    @Test
+    void friseOrdersEventsChronologicallyAndDefaultsToThreeQuestions() {
+        Map<String, Integer> rang = Map.of(
+                "La Préhistoire", 1, "Les Gaulois", 2, "Le Moyen Âge", 3,
+                "La Révolution française", 4, "La tour Eiffel", 5, "Aujourd'hui", 6);
+        GameConfig config = catalog.configFor("frise-cm1");
+        assertThat(config.settings().get("questionsTarget")).isEqualTo(3);
+        RandomSource random = seeded(61L);
+        for (int i = 0; i < SAMPLES; i++) {
+            Item item = config.content().next(random);
+            assertThat(item.question()).contains("du plus ancien au plus récent");
+            assertThat(item.reelSymbols()).hasSize(3);
+            List<String> ordre = List.of(item.expected().value().split(", "));
+            int prev = 0;
+            for (String label : ordre) {
+                assertThat(rang).containsKey(label);
+                assertThat(rang.get(label)).isGreaterThan(prev); // strictement croissant
+                prev = rang.get(label);
+            }
+        }
+    }
+
+    @Test
+    void rangeNombresCm1DefaultsToThreeQuestions() {
+        assertThat(catalog.configFor("range-nombres-cm1").settings().get("questionsTarget")).isEqualTo(3);
+    }
 }
