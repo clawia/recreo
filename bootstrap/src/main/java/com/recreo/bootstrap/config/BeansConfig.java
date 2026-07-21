@@ -15,6 +15,7 @@ import com.recreo.domain.content.impl.ComparaisonGenerator;
 import com.recreo.domain.content.impl.ComplementDixGenerator;
 import com.recreo.domain.content.impl.DecompositionGenerator;
 import com.recreo.domain.content.impl.EgaliteGenerator;
+import com.recreo.domain.content.impl.FractionsGenerator;
 import com.recreo.domain.content.impl.FriseChronologiqueGenerator;
 import com.recreo.domain.content.impl.MotChoixGenerator;
 import com.recreo.domain.content.impl.QuizGenerator;
@@ -118,18 +119,25 @@ public class BeansConfig {
                 "Le bon symbole", "Choisis le bon signe entre les deux nombres.",
                 new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — comparer avec <, >, ="),
                 BonSymboleGenerator::new));
-        // « Décompose le nombre » (s14) : cliquer le chiffre d'une position. Deux niveaux :
-        // CP = 2 chiffres (dizaines/unités), CM1 = 3 chiffres (+ centaines). Bandit manchot.
-        defs.add(simpleGame(
+        // « Décompose le nombre » (s14, toggle centaines en s15) : cliquer le chiffre d'une
+        // position. Réglage TOGGLE « inclure les centaines » (décoché → dizaines/unités ;
+        // coché → + centaines). Défaut par niveau : CP décoché, CM1 coché. Bandit manchot.
+        defs.add(new CatalogEntryDef(
                 "decomposition-cp", "Maths", "CP", "decomposition", "Décompose le nombre",
-                "Maths CP — Décompose le nombre", "Clique le bon chiffre (dizaines, unités).",
-                new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — valeur positionnelle des chiffres"),
-                d -> new DecompositionGenerator(d, false)));
-        defs.add(simpleGame(
+                "Maths CP — Décompose le nombre", "Clique le bon chiffre (dizaines, unités ; centaines en option).",
+                BanditManchotMechanic.ID,
+                new DecompositionGameFactory("decomposition-cp", "Maths CP — Décompose le nombre", "decomposition",
+                        BanditManchotMechanic.ID,
+                        new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — valeur positionnelle des chiffres"),
+                        false)));
+        defs.add(new CatalogEntryDef(
                 "decomposition-cm1", "Maths", "CM1", "decomposition", "Décompose le nombre",
                 "Maths CM1 — Décompose le nombre", "Clique le bon chiffre (centaines, dizaines, unités).",
-                new ContentDescriptor("Mathématiques", "CM1", "Nombres et calculs — valeur positionnelle des chiffres"),
-                d -> new DecompositionGenerator(d, true)));
+                BanditManchotMechanic.ID,
+                new DecompositionGameFactory("decomposition-cm1", "Maths CM1 — Décompose le nombre", "decomposition",
+                        BanditManchotMechanic.ID,
+                        new ContentDescriptor("Mathématiques", "CM1", "Nombres et calculs — valeur positionnelle des chiffres"),
+                        true)));
         // Jeux "mot -> reponse" du bandit manchot : CONTENU EXTERNALISE (s10 / DEC-0006 /
         // ADR-0010) dans content/mots/*.yml, charge + valide au demarrage. Un generateur
         // GENERIQUE (MotChoixGenerator) remplace les sous-classes (le bon son, homophones,
@@ -209,6 +217,16 @@ public class BeansConfig {
                 GlisserDeposerMechanic.ID,
                 new SimpleGameFactory("frise-cm1", "Histoire CM1 — Frise chronologique", "frise-chronologique", "CM1",
                         GlisserDeposerMechanic.ID, () -> new FriseChronologiqueGenerator(friseDesc),
+                        3, 1)));
+        // Fractions CM1 (s15) : ranger des fractions de la plus petite a la plus grande.
+        ContentDescriptor fractionsDesc =
+                new ContentDescriptor("Mathématiques", "CM1", "Fractions — comparer et ordonner");
+        defs.add(new CatalogEntryDef(
+                "fractions-cm1", "Maths", "CM1", "fractions", "Range les fractions",
+                "Maths CM1 — Range les fractions", "Range les fractions de la plus petite à la plus grande.",
+                GlisserDeposerMechanic.ID,
+                new SimpleGameFactory("fractions-cm1", "Maths CM1 — Range les fractions", "fractions", "CM1",
+                        GlisserDeposerMechanic.ID, () -> new FractionsGenerator(fractionsDesc),
                         3, 1)));
 
         return new InMemoryGameCatalog(
