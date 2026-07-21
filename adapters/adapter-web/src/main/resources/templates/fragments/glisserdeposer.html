@@ -17,7 +17,10 @@
   d'un champ `arrangement` REPETE (arrangement=3&arrangement=7&...), injecte par
   /js/glisser-deposer.js a la soumission.
 -->
-<div th:fragment="game" class="glisser-deposer" th:attr="data-session-id=${game.sessionId}">
+<div th:fragment="game" class="glisser-deposer"
+     th:with="frise=${game.catalogEntryId != null and #strings.startsWith(game.catalogEntryId, 'frise')}"
+     th:classappend="${frise} ? ' frise-verticale' : ''"
+     th:attr="data-session-id=${game.sessionId}">
 
     <!-- ECRAN DE FIN (session terminee) : ecran commun mutualise.
          th:if porte par un th:block ENVELOPPANT (comme banditmanchot/quizaventure) : sinon
@@ -48,11 +51,20 @@
 
             <!-- Les EMPLACEMENTS : un .dnd-slot par position. Si la position est verrouillee
                  (valeur non vide), la tuile est PRE-PLACEE dedans (verrouillee-mais-deplacable) ;
-                 sinon l'emplacement est vide. -->
-            <div class="dnd-slots">
-                <div class="dnd-slot" th:each="val : ${game.arrangementSlots}">
-                    <div th:if="${!val.isEmpty()}" class="dnd-tuile"
-                         draggable="true" th:text="${val}" th:attr="data-value=${val}">3</div>
+                 sinon l'emplacement est vide. En mode frise (frise-verticale), les emplacements
+                 sont empiles a la VERTICALE avec un rail « temps » a fleche descendante. -->
+            <div class="dnd-zone">
+                <!-- Rail du temps (frise uniquement) : du plus ancien (haut) au plus recent (bas). -->
+                <div class="frise-temps" th:if="${frise}" aria-hidden="true">
+                    <span>Plus ancien</span>
+                    <span class="fleche">↓</span>
+                    <span>Plus récent</span>
+                </div>
+                <div class="dnd-slots">
+                    <div class="dnd-slot" th:each="val : ${game.arrangementSlots}">
+                        <div th:if="${!val.isEmpty()}" class="dnd-tuile"
+                             draggable="true" th:text="${val}" th:attr="data-value=${val}">3</div>
+                    </div>
                 </div>
             </div>
         </th:block>
