@@ -24,4 +24,6 @@
 
 | s14 | « Décompose le nombre » (valeur positionnelle, CP+CM1) + déclinaisons glisser-déposer : Frise chronologique (Histoire CM1) & Range les nombres CM1 | Bandit manchot + Glisser-déposer | Maths CP/CM1 valeur positionnelle · Histoire CM1 frise · Maths CM1 ordonner | 2026-07-21 | **À VALIDER** (Done technique ✅ ; démo à jouer) | — |
 
-> 1 incrément en attente (s14). Règle d'or (max ~3) respectée. s11/s12/s13 validés le 2026-07-21.
+| s15 | Toggle « inclure les centaines » (décomposition) + « Range les fractions » (Maths CM1, glisser-déposer) | Bandit manchot + Glisser-déposer | Maths CP/CM1 valeur positionnelle · Maths CM1 fractions | 2026-07-21 | **À VALIDER** (Done technique ✅ ; démo à jouer) | — |
+
+> 2 incréments en attente (s14, s15). Règle d'or (max ~3) respectée. s11/s12/s13 validés le 2026-07-21.
