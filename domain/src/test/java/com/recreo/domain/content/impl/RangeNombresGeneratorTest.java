@@ -11,11 +11,10 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/** Test deterministe : "Range les nombres" (Maths CP). */
+/** Test deterministe : "Range les nombres" (Maths CP), sens tire ALEATOIREMENT. */
 class RangeNombresGeneratorTest {
 
     private static final int SAMPLES = 500;
-    private static final String QUESTION = "Range les nombres du plus petit au plus grand";
 
     @Test
     void producesConformingArrangementItems() {
@@ -23,41 +22,8 @@ class RangeNombresGeneratorTest {
                 new ContentDescriptor("Mathématiques", "CP", "ordre"));
         RandomSource random = new SeededRandomSource(7L);
 
-        for (int i = 0; i < SAMPLES; i++) {
-            Item item = generator.next(random);
-
-            // Quatre tuiles : entiers distincts dans [0, 20].
-            assertThat(item.reelSymbols()).hasSize(4);
-            List<Integer> numbers = new ArrayList<>();
-            for (String symbol : item.reelSymbols()) {
-                int value = Integer.parseInt(symbol);
-                assertThat(value).isBetween(0, 20);
-                numbers.add(value);
-            }
-            assertThat(numbers).doesNotHaveDuplicates();
-
-            // Attendu = les memes nombres tries croissant puis joints par ", ".
-            List<Integer> sortedNumbers = new ArrayList<>(numbers);
-            sortedNumbers.sort(Integer::compareTo);
-            List<String> sorted = new ArrayList<>();
-            for (int value : sortedNumbers) {
-                sorted.add(String.valueOf(value));
-            }
-            assertThat(item.expected().value()).isEqualTo(String.join(", ", sorted));
-
-            // Item non trivial : les tuiles NE sont PAS deja dans l'ordre trie.
-            assertThat(String.join(", ", item.reelSymbols())).isNotEqualTo(item.expected().value());
-
-            assertThat(item.question()).isEqualTo(QUESTION);
-            assertThat(item.distractors()).isEmpty();
-        }
-    }
-
-    @Test
-    void producesConformingDescendingArrangementItems() {
-        ContentDescriptor descriptor = new ContentDescriptor("Mathématiques", "CP", "ordre");
-        RangeNombresGenerator generator = new RangeNombresGenerator(descriptor, 4, 20, false);
-        RandomSource random = new SeededRandomSource(7L);
+        boolean sawAscending = false;
+        boolean sawDescending = false;
 
         for (int i = 0; i < SAMPLES; i++) {
             Item item = generator.next(random);
@@ -72,21 +38,42 @@ class RangeNombresGeneratorTest {
             }
             assertThat(numbers).doesNotHaveDuplicates();
 
-            // Attendu = les memes nombres tries DECROISSANT puis joints par ", ".
-            List<Integer> sortedNumbers = new ArrayList<>(numbers);
-            sortedNumbers.sort((x, y) -> Integer.compare(y, x));
-            List<String> sorted = new ArrayList<>();
-            for (int value : sortedNumbers) {
-                sorted.add(String.valueOf(value));
+            // Les memes nombres tries croissant / decroissant, joints par ", ".
+            List<Integer> ascendingInts = new ArrayList<>(numbers);
+            ascendingInts.sort(Integer::compareTo);
+            List<Integer> descendingInts = new ArrayList<>(numbers);
+            descendingInts.sort((x, y) -> Integer.compare(y, x));
+            String ascending = join(ascendingInts);
+            String descending = join(descendingInts);
+
+            String expected = item.expected().value();
+            boolean isAscending = expected.equals(ascending);
+            boolean isDescending = expected.equals(descending);
+
+            // Attendu = SOIT l'ordre croissant SOIT l'ordre decroissant.
+            assertThat(isAscending || isDescending)
+                    .as("expected must be ascending or descending order")
+                    .isTrue();
+
+            // La question correspond au sens.
+            if (isAscending) {
+                sawAscending = true;
+                assertThat(item.question()).contains("du plus petit au plus grand");
             }
-            assertThat(item.expected().value()).isEqualTo(String.join(", ", sorted));
+            if (isDescending) {
+                sawDescending = true;
+                assertThat(item.question()).contains("du plus grand au plus petit");
+            }
 
             // Item non trivial : les tuiles NE sont PAS deja dans l'ordre trie.
-            assertThat(String.join(", ", item.reelSymbols())).isNotEqualTo(item.expected().value());
+            assertThat(String.join(", ", item.reelSymbols())).isNotEqualTo(expected);
 
-            assertThat(item.question()).contains("du plus grand au plus petit");
             assertThat(item.distractors()).isEmpty();
         }
+
+        // Les DEUX sens apparaissent sur l'echantillon.
+        assertThat(sawAscending).as("ascending sense must appear").isTrue();
+        assertThat(sawDescending).as("descending sense must appear").isTrue();
     }
 
     @Test
@@ -98,5 +85,14 @@ class RangeNombresGeneratorTest {
 
         assertThat(first.reelSymbols()).isEqualTo(second.reelSymbols());
         assertThat(first.expected().value()).isEqualTo(second.expected().value());
+        assertThat(first.question()).isEqualTo(second.question());
+    }
+
+    private static String join(List<Integer> ints) {
+        List<String> parts = new ArrayList<>();
+        for (int value : ints) {
+            parts.add(String.valueOf(value));
+        }
+        return String.join(", ", parts);
     }
 }

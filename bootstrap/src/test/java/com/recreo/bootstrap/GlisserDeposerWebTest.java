@@ -59,10 +59,10 @@ class GlisserDeposerWebTest {
                 .andExpect(status().isOk()).andReturn();
         String html = start.getResponse().getContentAsString();
         String sessionId = firstMatch(SESSION_ID, html);
-        List<String> sorted = tilesSorted(html);
+        List<String> correct = correctOrder(html); // sens lu dans la consigne (aleatoire par item)
 
         mockMvc.perform(post("/sessions/{id}/moves", sessionId)
-                        .param("arrangement", sorted.toArray(new String[0])))
+                        .param("arrangement", correct.toArray(new String[0])))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Bravo")))
                 .andExpect(content().string(not(containsString("class=\"machine\""))));
@@ -82,9 +82,9 @@ class GlisserDeposerWebTest {
         // Arrangement AVEC des positions correctes ET des fausses : on part de l'ordre trie
         // (correct) puis on echange les DEUX DERNIERES tuiles -> les premieres positions
         // restent correctes (verrouillees), les deux dernieres sont fausses (reserve).
-        List<String> sorted = tilesSorted(html);
-        assertThat(sorted.size()).as("puzzle avec au moins 3 tuiles").isGreaterThanOrEqualTo(3);
-        List<String> attempt = new ArrayList<>(sorted);
+        List<String> correct = correctOrder(html);
+        assertThat(correct.size()).as("puzzle avec au moins 3 tuiles").isGreaterThanOrEqualTo(3);
+        List<String> attempt = new ArrayList<>(correct);
         java.util.Collections.swap(attempt, attempt.size() - 1, attempt.size() - 2);
 
         String after = mockMvc.perform(post("/sessions/{id}/moves", sessionId)
@@ -96,19 +96,19 @@ class GlisserDeposerWebTest {
         assertThat(after).contains("class=\"dnd-slot\"");
         assertThat(after).doesNotContain("Rejouer");         // pas d'ecran de fin
         // Meme puzzle : les memes nombres sont reproposes (verrouilles + reserve).
-        assertThat(tilesSorted(after)).isEqualTo(sorted);
+        assertThat(tilesSorted(after)).isEqualTo(tilesSorted(html));
 
-        // La 1re valeur triee est bien placee -> elle apparait DANS un emplacement rempli.
-        String firstValue = sorted.get(0);
+        // La 1re valeur de l'ordre correct est bien placee -> dans un emplacement rempli.
+        String firstValue = correct.get(0);
         Pattern lockedSlot = Pattern.compile(
                 "class=\"dnd-slot\">\\s*<div class=\"dnd-tuile\"[^>]*data-value=\"" + firstValue + "\"");
         assertThat(lockedSlot.matcher(after).find())
-                .as("1re valeur triee verrouillee dans un .dnd-slot").isTrue();
+                .as("1re valeur de l'ordre correct verrouillee dans un .dnd-slot").isTrue();
 
         // Les deux tuiles echangees (mal placees) repartent en RESERVE (.dnd-tuiles).
         String reserve = reserveBlock(after);
-        String lastValue = sorted.get(sorted.size() - 1);
-        String beforeLastValue = sorted.get(sorted.size() - 2);
+        String lastValue = correct.get(correct.size() - 1);
+        String beforeLastValue = correct.get(correct.size() - 2);
         assertThat(reserve).contains("data-value=\"" + lastValue + "\"");
         assertThat(reserve).contains("data-value=\"" + beforeLastValue + "\"");
     }
@@ -132,10 +132,10 @@ class GlisserDeposerWebTest {
 
         String lastHtml = null;
         for (int i = 0; i < 5; i++) {
-            // Chaque puzzle est resolu correctement (tri des tuiles courantes) -> on avance.
-            List<String> sorted = tilesSorted(html);
+            // Chaque puzzle est resolu correctement (ordre selon la consigne) -> on avance.
+            List<String> correct = correctOrder(html);
             lastHtml = mockMvc.perform(post("/sessions/{id}/moves", sessionId)
-                            .param("arrangement", sorted.toArray(new String[0])))
+                            .param("arrangement", correct.toArray(new String[0])))
                     .andExpect(status().isOk())
                     .andReturn().getResponse().getContentAsString();
             html = lastHtml;
@@ -146,8 +146,27 @@ class GlisserDeposerWebTest {
         assertThat(lastHtml).doesNotContain("class=\"dnd-slot\"");
     }
 
-    /** Extrait les valeurs des tuiles et les trie numériquement (= l'ordre attendu). */
+    /** Valeurs des tuiles triées croissant (comparaison d'ENSEMBLE, indépendante du sens). */
     private List<String> tilesSorted(String html) {
+        List<Integer> values = tileValues(html);
+        values.sort(Comparator.naturalOrder());
+        return values.stream().map(String::valueOf).toList();
+    }
+
+    /**
+     * L'ordre ATTENDU pour ce puzzle, déduit de la consigne (le sens est aléatoire par
+     * question) : croissant si « du plus petit au plus grand », sinon décroissant.
+     */
+    private List<String> correctOrder(String html) {
+        List<Integer> values = tileValues(html);
+        Comparator<Integer> order = html.contains("du plus petit au plus grand")
+                ? Comparator.naturalOrder()
+                : Comparator.reverseOrder();
+        values.sort(order);
+        return values.stream().map(String::valueOf).toList();
+    }
+
+    private List<Integer> tileValues(String html) {
         Matcher m = TILE.matcher(html);
         List<Integer> values = new ArrayList<>();
         while (m.find()) {
@@ -155,12 +174,7 @@ class GlisserDeposerWebTest {
             values.add(Integer.parseInt(v));
         }
         assertThat(values).as("tuiles data-value trouvées").isNotEmpty();
-        values.sort(Comparator.naturalOrder());
-        List<String> sorted = new ArrayList<>();
-        for (int v : values) {
-            sorted.add(String.valueOf(v));
-        }
-        return sorted;
+        return values;
     }
 
     private String firstMatch(Pattern pattern, String content) {

@@ -144,44 +144,63 @@ class CatalogParametersTest {
     // cf. PLAN-refacto-tests-contenu.md. Le clamp général reste couvert ci-dessus sur un
     // jeu combinatoire (calcul-mental-cp).
 
-    // ---- Reglage « choix » (s13 / ADR-0014) ----
+    // ---- Sens ALEATOIRE par question (s13, retour utilisatrice : pas de reglage) ----
 
     @Test
-    void rangeNombresDefaultsToCroissantAndThreeQuestions() {
-        // Defaut : sens croissant + 3 questions (plancher abaisse pour ce jeu).
-        GameConfig config = catalog.configFor("range-nombres-cp");
-        assertThat(config.content().next(seeded(1L)).question()).contains("du plus petit au plus grand");
-        assertThat(config.settings().get("questionsTarget")).isEqualTo(3);
+    void rangeNombresDefaultsToThreeQuestions() {
+        // Defaut 3 questions (plancher abaisse a 1 pour ce jeu).
+        assertThat(catalog.configFor("range-nombres-cp").settings().get("questionsTarget")).isEqualTo(3);
         assertThat(catalog.settingsFor("range-nombres-cp").questions().defaultValue()).isEqualTo(3);
         assertThat(catalog.settingsFor("range-nombres-cp").questions().min()).isEqualTo(1);
-        assertThat(catalog.settingsFor("range-nombres-cp").choix()).isNotEmpty();
     }
 
     @Test
-    void rangeNombresDecroissantReversesTheOrder() {
-        GameConfig config = catalog.configFor("range-nombres-cp", Map.of("sens", "decroissant"));
-        Item item = config.content().next(seeded(2L));
-        assertThat(item.question()).contains("du plus grand au plus petit");
-        // expected = les tuiles triees DECROISSANT.
-        List<Integer> reel = item.reelSymbols().stream().map(Integer::parseInt).sorted().toList();
-        List<Integer> desc = new java.util.ArrayList<>(reel);
-        java.util.Collections.reverse(desc);
-        String expected = desc.stream().map(String::valueOf).reduce((a, b) -> a + ", " + b).orElse("");
-        assertThat(item.expected().value()).isEqualTo(expected);
-    }
-
-    @Test
-    void comparaisonSensPlusPetit() {
-        GameConfig grand = catalog.configFor("comparaison"); // defaut plus grand
-        assertThat(grand.content().next(seeded(3L)).question()).contains("plus grand");
-        GameConfig petit = catalog.configFor("comparaison", Map.of("sens", "plusPetit"));
+    void rangeNombresDirectionIsRandomPerQuestion() {
+        GameConfig config = catalog.configFor("range-nombres-cp");
+        RandomSource random = seeded(31L); // un SEUL flux continu (comme en session reelle)
+        boolean sawCroissant = false;
+        boolean sawDecroissant = false;
         for (int i = 0; i < SAMPLES; i++) {
-            Item item = petit.content().next(seeded(100L + i));
-            assertThat(item.question()).contains("plus petit");
+            Item item = config.content().next(random);
+            List<Integer> reel = item.reelSymbols().stream().map(Integer::parseInt).sorted().toList();
+            List<Integer> desc = new java.util.ArrayList<>(reel);
+            java.util.Collections.reverse(desc);
+            String asc = reel.stream().map(String::valueOf).reduce((a, b) -> a + ", " + b).orElse("");
+            String dsc = desc.stream().map(String::valueOf).reduce((a, b) -> a + ", " + b).orElse("");
+            if (item.question().contains("du plus petit au plus grand")) {
+                assertThat(item.expected().value()).isEqualTo(asc);
+                sawCroissant = true;
+            } else {
+                assertThat(item.question()).contains("du plus grand au plus petit");
+                assertThat(item.expected().value()).isEqualTo(dsc);
+                sawDecroissant = true;
+            }
+        }
+        assertThat(sawCroissant).as("des questions croissantes apparaissent").isTrue();
+        assertThat(sawDecroissant).as("des questions decroissantes apparaissent").isTrue();
+    }
+
+    @Test
+    void comparaisonDirectionIsRandomPerQuestion() {
+        GameConfig config = catalog.configFor("comparaison");
+        RandomSource random = seeded(41L); // un SEUL flux continu
+        boolean sawGrand = false;
+        boolean sawPetit = false;
+        for (int i = 0; i < SAMPLES; i++) {
+            Item item = config.content().next(random);
             int a = Integer.parseInt(item.meta().get("a"));
             int b = Integer.parseInt(item.meta().get("b"));
-            assertThat(item.expected().value()).isEqualTo(String.valueOf(Math.min(a, b)));
+            if (item.question().contains("plus grand")) {
+                assertThat(item.expected().value()).isEqualTo(String.valueOf(Math.max(a, b)));
+                sawGrand = true;
+            } else {
+                assertThat(item.question()).contains("plus petit");
+                assertThat(item.expected().value()).isEqualTo(String.valueOf(Math.min(a, b)));
+                sawPetit = true;
+            }
         }
+        assertThat(sawGrand).as("des questions « plus grand » apparaissent").isTrue();
+        assertThat(sawPetit).as("des questions « plus petit » apparaissent").isTrue();
     }
 
     @Test
