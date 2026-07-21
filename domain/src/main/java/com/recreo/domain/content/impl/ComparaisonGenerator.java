@@ -15,20 +15,27 @@ import java.util.Set;
 import java.util.UUID;
 
 /**
- * Generateur "Le plus grand nombre" (Maths CP). Tire deux nombres distincts dans
- * [0, 20], les affiche sur deux rouleaux et attend le plus grand. Deux options
- * seulement (les deux nombres) : un unique distracteur (le plus petit). Meme
- * mecanique bandit manchot. Jeu sans reglage.
+ * Generateur "Le plus grand / plus petit nombre" (Maths CP). Tire deux nombres distincts
+ * dans [0, 20], les affiche sur deux rouleaux et attend le plus grand ou le plus petit
+ * selon le SENS ({@code plusGrand}). Deux options seulement (les deux nombres) : un unique
+ * distracteur (l'autre nombre). Meme mecanique bandit manchot.
  */
 public final class ComparaisonGenerator implements ContentGenerator {
 
-    private static final String QUESTION = "Quel est le plus grand ?";
     private static final int MAX = 20;
 
     private final ContentDescriptor descriptor;
+    private final boolean plusGrand;
+    private final String question;
 
     public ComparaisonGenerator(ContentDescriptor descriptor) {
+        this(descriptor, true);
+    }
+
+    public ComparaisonGenerator(ContentDescriptor descriptor, boolean plusGrand) {
         this.descriptor = descriptor;
+        this.plusGrand = plusGrand;
+        this.question = plusGrand ? "Quel est le plus grand ?" : "Quel est le plus petit ?";
     }
 
     /** Nombre d'essais d'exclusion "best-effort" (generateur combinatoire, cf. ADR-0006). */
@@ -55,8 +62,8 @@ public final class ComparaisonGenerator implements ContentGenerator {
         int min = Math.min(a, b);
 
         List<String> reelSymbols = List.of(String.valueOf(a), String.valueOf(b));
-        Answer expected = new Answer(String.valueOf(max));
-        List<Answer> distractors = List.of(new Answer(String.valueOf(min)));
+        Answer expected = new Answer(String.valueOf(plusGrand ? max : min));
+        List<Answer> distractors = List.of(new Answer(String.valueOf(plusGrand ? min : max)));
 
         Map<String, String> meta = new LinkedHashMap<>();
         meta.put("a", String.valueOf(a));
@@ -64,7 +71,7 @@ public final class ComparaisonGenerator implements ContentGenerator {
         meta.put("matiere", descriptor.matiere());
         meta.put("niveau", descriptor.niveau());
 
-        return new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, QUESTION, expected, distractors, meta);
+        return new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, question, expected, distractors, meta);
     }
 
     @Override

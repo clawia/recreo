@@ -52,7 +52,7 @@ public final class ComplementDixGenerator implements ContentGenerator {
         int n = random.nextInt(TARGET + 1); // 0..10
         int answer = TARGET - n;
 
-        List<String> reelSymbols = List.of(String.valueOf(n));
+        List<String> reelSymbols = List.of(String.valueOf(n), "+", "⬚", "=", "10");
         Answer expected = new Answer(String.valueOf(answer));
         List<Answer> distractors = buildDistractors(answer);
 
