@@ -296,24 +296,20 @@ class CatalogParametersTest {
     }
 
     @Test
-    void fractionsOrderedByValueAndDefaultsToThreeQuestions() {
-        Map<String, Double> valeur = Map.of(
-                "1/5", 0.2, "1/4", 0.25, "1/3", 1.0 / 3, "1/2", 0.5,
-                "2/3", 2.0 / 3, "3/4", 0.75, "4/5", 0.8);
+    void compareFractionsGivesTheCorrectSign() {
         GameConfig config = catalog.configFor("fractions-cm1");
-        assertThat(config.settings().get("questionsTarget")).isEqualTo(3);
         RandomSource random = seeded(81L);
         for (int i = 0; i < SAMPLES; i++) {
             Item item = config.content().next(random);
-            assertThat(item.question()).contains("de la plus petite à la plus grande");
-            List<String> ordre = List.of(item.expected().value().split(", "));
-            assertThat(ordre).hasSize(3);
-            double prev = -1;
-            for (String f : ordre) {
-                assertThat(valeur).containsKey(f);
-                assertThat(valeur.get(f)).isGreaterThan(prev); // strictement croissant
-                prev = valeur.get(f);
-            }
+            assertThat(item.reelSymbols()).hasSize(3);
+            assertThat(item.reelSymbols().get(1)).isEqualTo("?");
+            String[] a = item.reelSymbols().get(0).split("/");
+            String[] b = item.reelSymbols().get(2).split("/");
+            long left = (long) Integer.parseInt(a[0]) * Integer.parseInt(b[1]);
+            long right = (long) Integer.parseInt(b[0]) * Integer.parseInt(a[1]);
+            String attendu = left < right ? "<" : left > right ? ">" : "=";
+            assertThat(item.expected().value()).isEqualTo(attendu);
+            assertThat(item.distractors()).hasSize(2).doesNotContain(item.expected());
         }
     }
 }
