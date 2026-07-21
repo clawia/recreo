@@ -108,6 +108,7 @@ public class GameController {
                                @RequestParam(value = "maxOperand", required = false) String maxOperand,
                                @RequestParam(value = "operations", required = false) List<String> operations,
                                @RequestParam(value = "maxSyllabes", required = false) String maxSyllabes,
+                               @RequestParam(value = "sens", required = false) String sens,
                                @RequestParam(value = "questionsTarget", required = false) String questionsTarget,
                                Model model) {
         Map<String, String> parameters = new LinkedHashMap<>();
@@ -117,6 +118,8 @@ public class GameController {
             parameters.put("operations", String.join(",", operations));
         }
         putIfPresent(parameters, "maxSyllabes", maxSyllabes);
+        // Reglage « choix » generique (s13/ADR-0014) : ex. sens du tri / de la comparaison.
+        putIfPresent(parameters, "sens", sens);
         putIfPresent(parameters, "questionsTarget", questionsTarget);
 
         SessionView view = startSessionUseCase.start(new StartSessionCommand(catalogEntryId, parameters));
