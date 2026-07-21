@@ -13,3 +13,4 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Une DEC = une ligne.
 | DEC-0006 | Externaliser le contenu pédagogique hors du code (+ doublage des quiz en attendant) | transverse (contenu à liste finie) | RÉALISÉ (s09-s11 : quiz, mots, textes à trous, syllabes tous en YAML) | 2026-07-19 | s07 |
 | DEC-0007 | Contenu s08 : « Le bon son » (phonologie CP) + ouverture de l'EMC (+ tables, Vrai/Faux) | Français CP décodage ; EMC CP/CM1 | VALIDÉ (user, 2026-07-20) | 2026-07-20 | s08 |
 | DEC-0008 | Ergonomie du « glisser-déposer » (Range les nombres) | Maths CP — ordonner des nombres | À VALIDER | 2026-07-20 | s12 |
+| DEC-0009 | Retours ergonomie s13 (complément=équation, sens tri/comparaison réglable, défaut 3) + jeu « Le bon symbole » | Maths CP — comparer/ordonner | À VALIDER | 2026-07-21 | s13 |
