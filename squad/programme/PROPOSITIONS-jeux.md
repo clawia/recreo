@@ -28,7 +28,8 @@
 | **Range les nombres** (plus grands) | Maths | CM1 | ordonner des nombres | ✅ (s14) |
 | **Frise chronologique** (ordonner des événements) | Histoire | CM1 | repères temporels | ✅ (s14) |
 | Quantité ↔ chiffre | Maths | CP | dénombrer | 🔜 |
-| Ranger fractions/décimaux, fraction ↔ dessin | Maths | CM1 | fractions et décimaux | 🔜 |
+| **Range les fractions** (ordonner par valeur) | Maths | CM1 | fractions | ✅ (s15) |
+| Fraction ↔ dessin | Maths | CM1 | fractions | 🔜 |
 | Associer mot ↔ image, majuscule ↔ minuscule *(matching — nouvelle interaction)* | Français | CP | lecture | 🔜 |
 | Classer nom/verbe/adjectif, vivant/non-vivant *(classification — nouvelle interaction)* | Français / QLM | CP/CM1 | grammaire, vivant | 🔜 |
 
