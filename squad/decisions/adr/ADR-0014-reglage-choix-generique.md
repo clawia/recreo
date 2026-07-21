@@ -1,61 +1,46 @@
-# ADR-0014 — Réglage « choix » générique + défaut/plancher de questions par jeu
+# ADR-0014 — Défaut/plancher de questions par jeu (+ sens aléatoire par question)
 
-- **Statut** : Accepté
+- **Statut** : Accepté (amendé en cours de s13 — voir la note)
 - **Date** : 2026-07-21
 - **Auteur** : theo-archi
 - **Sprint** : s13
 
-## Contexte
-Jusqu'ici, les réglages « adulte » spécifiques étaient au cas par cas : `MathSettingsView`
-(fenêtre + opérations) et `SyllabesSettingsView` (nb de syllabes max), chacun avec son bloc de vue,
-sa fabrique et son rendu. s13 apporte plusieurs réglages de forme identique — un **choix parmi
-quelques options** : sens du rangement (croissant/décroissant), consigne de comparaison (plus
-grand/plus petit), et bientôt « inclure les centaines » (décomposition, cf.
-`PLAN-decomposition-nombre.md`). Créer un bloc dédié par cas dupliquerait la tuyauterie.
+## ⚠️ Note d'amendement (retour utilisatrice, même sprint)
+Une **première version** de cet ADR introduisait un **réglage « choix » générique**
+(`ChoixSettingsView`/`ChoixOptionView`/`ChoixGameFactory`) pour rendre *réglable* le sens du tri et
+de la comparaison. L'utilisatrice a demandé, avant validation, que le **sens ne soit PAS un
+réglage** mais **aléatoire à chaque question**. En conséquence :
+- l'infra « choix » (records + `ChoixGameFactory`, champ `GameSettingsView.choix`, `@RequestParam
+  "sens"`, bloc de template) a été **retirée** (YAGNI : plus aucun consommateur) ;
+- le **sens est tiré aléatoirement par item** dans les générateurs (voir DEC-0009) ;
+- **seul subsiste** de cet ADR le **défaut/plancher de questions par jeu**, décrit ci-dessous.
+Si un futur jeu a besoin d'un vrai réglage à options (ex. toggle « centaines » de la décomposition),
+l'infra « choix » sera réintroduite à ce moment-là (elle reste dans l'historique Git).
 
-Second besoin : le jeu « Range les nombres » doit démarrer par défaut sur **3 questions** (et non le
-défaut global 20), donc un **défaut — et un plancher — de questions propres au jeu**.
+## Contexte
+« Range les nombres » doit démarrer par défaut sur **3 questions** (une courte session suffit), et
+non le défaut global 20. Il faut donc un **défaut — et un plancher — de questions propres à un jeu**,
+sans changer le comportement global des autres jeux.
 
 ## Décision
-
-### 1. Un réglage « choix » générique et réutilisable
-- `application/port/in/ChoixSettingsView(paramName, legend, List<ChoixOptionView>, selected)` +
-  `ChoixOptionView(value, label)` — records purs (aucun framework, règle ArchUnit 3 respectée).
-- `GameSettingsView` porte désormais `List<ChoixSettingsView> choix` (0..n blocs) ; `hasSettings()`
-  en tient compte. Les 3 fabriques existantes passent `List.of()`.
-- `bootstrap/config/ChoixGameFactory` : fabrique **générique** paramétrée par le schéma de choix +
-  une `Function<String, ContentGenerator>` (la valeur choisie → le bon générateur). Rattachable à
-  **n'importe quelle mécanique** (portée par `mechanicId`). Utilisée en s13 par « Range les nombres »
-  (glisser-déposer) et « Comparaison » (bandit manchot) ; réutilisable pour la décomposition.
-- Rendu : un unique bloc `th:each="c : ${settings.choix}"` dans `parametres.html` (`<select
-  th:name="${c.paramName}">`).
-
-### 2. Le controller lit des `@RequestParam` NOMMÉS
-Contrainte structurante : `GameController.startSession` ne collecte pas un map générique mais des
-`@RequestParam` explicites. **Tout nouveau réglage « choix » impose d'ajouter son `@RequestParam`**
-(sinon la valeur est silencieusement perdue). En s13, un seul nom partagé : **`sens`** (interprété
-par chaque fabrique). La décomposition ajoutera `centaines`.
-
-### 3. Défaut + plancher de questions par jeu
-`SessionQuestions` gagne des surcharges `resolve(raw, poolCap, floor, def)` et `view(poolCap, floor,
-def)` ; les versions 2-args conservent les valeurs GLOBALES (plancher 5, défaut 20). « Range les
-nombres » utilise `defaultQuestions = 3`, `floor = 1` (sans abaisser le plancher, un défaut 3 serait
-re-clampé à 5 — les deux vont ensemble).
+`SessionQuestions` expose des surcharges `resolve(raw, poolCap, floor, def)` et `view(poolCap,
+floor, def)` ; les versions 2-args conservent les valeurs GLOBALES (plancher `MIN=5`, défaut
+`DEFAULT=20`). `SimpleGameFactory` gagne un constructeur optionnel `(…, int defaultQuestions, int
+questionsFloor)` (le constructeur historique délègue avec les valeurs globales). « Range les
+nombres » l'utilise avec `defaultQuestions = 3`, `questionsFloor = 1` — car un défaut 3 avec le
+plancher global 5 serait re-clampé à 5 : défaut et plancher par jeu vont ensemble.
 
 ## Règle exécutable ArchUnit
-**Aucune nouvelle règle.** `ChoixSettingsView`/`ChoixOptionView` sont des records d'`application.port.in`
-(pas de framework) ; `ChoixGameFactory` vit en `bootstrap.config` ; les générateurs restent en
-`domain.content.impl`. Les 5 règles restent vertes (vérifié). Couverture : `CatalogParametersTest`
-(sens croissant/décroissant, plus grand/petit, défaut 3, bon-symbole), `SessionQuestionsTest`.
+Aucune nouvelle règle. Changement purement en `bootstrap.config`. Les 5 règles restent vertes
+(vérifié). Couverture : `SessionQuestionsTest` (défauts globaux inchangés) + `CatalogParametersTest`
+(« Range les nombres » : défaut 3, plancher 1).
 
 ## Conséquences
-- **Positif** : ajouter un réglage « choix » à un jeu = un `ChoixSettingsView` + un builder + (si
-  nouveau nom) un `@RequestParam`. Zéro nouveau bloc de vue/template.
-- **Positif** : défaut de session par jeu (ex. 3) sans casser le défaut global.
-- **Coût / vigilance** : le `@RequestParam` nommé reste un point manuel (documenté) ; le template
-  générique ne suffit pas seul.
+- **Positif** : défaut de session par jeu sans casser le défaut global (5/20).
+- **Positif (YAGNI)** : pas d'infra de réglage spéculative — le sens est géré côté contenu (aléatoire).
+- **Coût** : un constructeur de plus sur `SimpleGameFactory` (surcharge, rétro-compatible).
 
 ## Alternatives considérées
-- **Un bloc de vue par réglage** (comme math/syllabes) : duplication. Écarté au profit du bloc « choix » générique.
-- **Map de params générique dans le controller** : plus souple mais moins typé/validé et divergent du
-  style Spring MVC existant. Écarté ; on garde les `@RequestParam` nommés + validation en fabrique.
+- **Réglage « choix » générique** (v1 de cet ADR) : retiré suite au retour utilisatrice (sens =
+  aléatoire, pas un réglage). Réintroductible si un vrai toggle apparaît (décomposition).
+- **Défaut global abaissé à 3** : casserait les autres jeux. Écarté au profit d'un défaut par jeu.

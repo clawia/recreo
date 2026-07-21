@@ -21,4 +21,4 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 | [ADR-0011](ADR-0011-externalisation-contenu-textes-syllabes.md) | Externalisation « texte à trous » (réutilise QuizGenerator) + « syllabes » (schéma numérique dédié) | Accepté | 2026-07-20 | s11 |
 | [ADR-0012](ADR-0012-convention-nommage-config.md) | Convention de nommage des fichiers de contenu : `niveau-jeu.yml` | Accepté | 2026-07-20 | s11 |
 | [ADR-0013](ADR-0013-mecanique-glisser-deposer-ilot-js.md) | 1ère mécanique à îlot JS : glisser-déposer (variant `SubmitArrangement`, drag-and-drop HTML5 natif) | Accepté | 2026-07-20 | s12 |
-| [ADR-0014](ADR-0014-reglage-choix-generique.md) | Réglage « choix » générique (ChoixGameFactory) + défaut/plancher de questions par jeu | Accepté | 2026-07-21 | s13 |
+| [ADR-0014](ADR-0014-reglage-choix-generique.md) | Défaut/plancher de questions par jeu (réglage « choix » retiré ; sens aléatoire — cf. DEC-0009) | Accepté (amendé) | 2026-07-21 | s13 |
