@@ -270,4 +270,50 @@ class CatalogParametersTest {
     void rangeNombresCm1DefaultsToThreeQuestions() {
         assertThat(catalog.configFor("range-nombres-cm1").settings().get("questionsTarget")).isEqualTo(3);
     }
+
+    // ---- s15 : toggle « centaines » + fractions ----
+
+    @Test
+    void decompositionCentainesToggleOverridesTheLevelDefault() {
+        // Le toggle explicite prime sur le défaut du niveau.
+        assertNumberRange(catalog.configFor("decomposition-cp", Map.of("centaines", "true")), 100, 999);
+        assertNumberRange(catalog.configFor("decomposition-cm1", Map.of("centaines", "false")), 10, 99);
+        // Le toggle est exposé dans les réglages, pré-coché selon le niveau.
+        assertThat(catalog.settingsFor("decomposition-cp").toggles()).singleElement()
+                .satisfies(t -> {
+                    assertThat(t.paramName()).isEqualTo("centaines");
+                    assertThat(t.on()).isFalse();
+                });
+        assertThat(catalog.settingsFor("decomposition-cm1").toggles().get(0).on()).isTrue();
+    }
+
+    private void assertNumberRange(GameConfig config, int lo, int hi) {
+        RandomSource random = seeded(71L);
+        for (int i = 0; i < SAMPLES; i++) {
+            int n = Integer.parseInt(config.content().next(random).reelSymbols().get(0));
+            assertThat(n).isBetween(lo, hi);
+        }
+    }
+
+    @Test
+    void fractionsOrderedByValueAndDefaultsToThreeQuestions() {
+        Map<String, Double> valeur = Map.of(
+                "1/5", 0.2, "1/4", 0.25, "1/3", 1.0 / 3, "1/2", 0.5,
+                "2/3", 2.0 / 3, "3/4", 0.75, "4/5", 0.8);
+        GameConfig config = catalog.configFor("fractions-cm1");
+        assertThat(config.settings().get("questionsTarget")).isEqualTo(3);
+        RandomSource random = seeded(81L);
+        for (int i = 0; i < SAMPLES; i++) {
+            Item item = config.content().next(random);
+            assertThat(item.question()).contains("de la plus petite à la plus grande");
+            List<String> ordre = List.of(item.expected().value().split(", "));
+            assertThat(ordre).hasSize(3);
+            double prev = -1;
+            for (String f : ordre) {
+                assertThat(valeur).containsKey(f);
+                assertThat(valeur.get(f)).isGreaterThan(prev); // strictement croissant
+                prev = valeur.get(f);
+            }
+        }
+    }
 }
