@@ -26,3 +26,8 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 > **s14 — pas de nouvel ADR.** « Décompose le nombre » réutilise le bandit manchot ; « Frise
 > chronologique » et « Range les nombres CM1 » réutilisent le glisser-déposer (ADR-0013). Nouveaux
 > générateurs dans `domain.content.impl`, mécaniques inchangées → ArchUnit 5/5. Aucune décision d'archi.
+
+| [ADR-0015](ADR-0015-reglage-toggle.md) | Réglage « toggle » (case à cocher, ex. « inclure les centaines ») réglé par l'adulte | Accepté | 2026-07-21 | s15 |
+
+> **s15 — « Range les fractions » (Maths CM1) : pas de nouvel ADR** — déclinaison glisser-déposer
+> (ADR-0013), générateur `FractionsGenerator` dans `domain.content.impl`.
