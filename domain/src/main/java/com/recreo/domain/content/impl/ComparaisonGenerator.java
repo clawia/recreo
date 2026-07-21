@@ -17,25 +17,17 @@ import java.util.UUID;
 /**
  * Generateur "Le plus grand / plus petit nombre" (Maths CP). Tire deux nombres distincts
  * dans [0, 20], les affiche sur deux rouleaux et attend le plus grand ou le plus petit
- * selon le SENS ({@code plusGrand}). Deux options seulement (les deux nombres) : un unique
- * distracteur (l'autre nombre). Meme mecanique bandit manchot.
+ * selon un SENS tire ALEATOIREMENT a chaque question. Deux options seulement (les deux
+ * nombres) : un unique distracteur (l'autre nombre). Meme mecanique bandit manchot.
  */
 public final class ComparaisonGenerator implements ContentGenerator {
 
     private static final int MAX = 20;
 
     private final ContentDescriptor descriptor;
-    private final boolean plusGrand;
-    private final String question;
 
     public ComparaisonGenerator(ContentDescriptor descriptor) {
-        this(descriptor, true);
-    }
-
-    public ComparaisonGenerator(ContentDescriptor descriptor, boolean plusGrand) {
         this.descriptor = descriptor;
-        this.plusGrand = plusGrand;
-        this.question = plusGrand ? "Quel est le plus grand ?" : "Quel est le plus petit ?";
     }
 
     /** Nombre d'essais d'exclusion "best-effort" (generateur combinatoire, cf. ADR-0006). */
@@ -60,6 +52,10 @@ public final class ComparaisonGenerator implements ContentGenerator {
 
         int max = Math.max(a, b);
         int min = Math.min(a, b);
+
+        // Sens tire ALEATOIREMENT a chaque item.
+        boolean plusGrand = random.nextInt(2) == 0;
+        String question = plusGrand ? "Quel est le plus grand ?" : "Quel est le plus petit ?";
 
         List<String> reelSymbols = List.of(String.valueOf(a), String.valueOf(b));
         Answer expected = new Answer(String.valueOf(plusGrand ? max : min));

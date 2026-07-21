@@ -20,29 +20,24 @@ import java.util.UUID;
 /**
  * Generateur "Range les nombres" (Maths CP). Tire {@code count} nombres DISTINCTS dans
  * [0, max], les affiche MELANGES sur les tuiles et attend l'ordre croissant ou decroissant
- * selon le SENS ({@code croissant}). Mecanique glisser-deposer (cf. ADR-0013) : la reponse
- * attendue est l'ARRANGEMENT trie, encode canoniquement via {@link Item#encodeArrangement(List)}.
+ * selon un SENS tire ALEATOIREMENT a chaque question. Mecanique glisser-deposer (cf. ADR-0013) :
+ * la reponse attendue est l'ARRANGEMENT trie, encode canoniquement via
+ * {@link Item#encodeArrangement(List)}.
  */
 public final class RangeNombresGenerator implements ContentGenerator {
 
     private final ContentDescriptor descriptor;
     private final int count;
     private final int max;
-    private final boolean croissant;
-    private final String question;
 
     public RangeNombresGenerator(ContentDescriptor descriptor) {
-        this(descriptor, 4, 20, true);
+        this(descriptor, 4, 20);
     }
 
-    public RangeNombresGenerator(ContentDescriptor descriptor, int count, int max, boolean croissant) {
+    public RangeNombresGenerator(ContentDescriptor descriptor, int count, int max) {
         this.descriptor = descriptor;
         this.count = count;
         this.max = max;
-        this.croissant = croissant;
-        this.question = croissant
-                ? "Range les nombres du plus petit au plus grand"
-                : "Range les nombres du plus grand au plus petit";
     }
 
     /** Nombre d'essais d'exclusion "best-effort" (generateur combinatoire, cf. ADR-0006). */
@@ -62,6 +57,12 @@ public final class RangeNombresGenerator implements ContentGenerator {
     }
 
     private Item buildOne(RandomSource random) {
+        // Sens tire ALEATOIREMENT a chaque item.
+        boolean croissant = random.nextInt(2) == 0;
+        String question = croissant
+                ? "Range les nombres du plus petit au plus grand"
+                : "Range les nombres du plus grand au plus petit";
+
         // Tire count entiers DISTINCTS dans [0, max].
         Set<Integer> values = new LinkedHashSet<>();
         while (values.size() < count) {

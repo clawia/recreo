@@ -4,8 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.recreo.adapter.persistence.repository.SessionRepositoryJpaAdapter;
 import com.recreo.adapter.persistence.repository.SpringDataSessionRepository;
 import com.recreo.adapter.web.mapper.WebViewMapper;
-import com.recreo.application.port.in.ChoixOptionView;
-import com.recreo.application.port.in.ChoixSettingsView;
 import com.recreo.application.port.out.GameCatalog;
 import com.recreo.application.port.out.SessionRepository;
 import com.recreo.application.service.SessionService;
@@ -105,21 +103,13 @@ public class BeansConfig {
                 "Compléments à 10", "Trouve ce qu'il manque pour faire 10.",
                 new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — compléments à 10"),
                 ComplementDixGenerator::new));
-        // Comparaison : sens REGLABLE (plus grand par defaut / plus petit) via le reglage
-        // « choix » generique (s13 / ADR-0014).
-        ContentDescriptor comparaisonDesc =
-                new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — comparer des nombres");
-        ChoixSettingsView comparaisonSens = new ChoixSettingsView("sens", "Consigne",
-                List.of(new ChoixOptionView("plusGrand", "le plus grand"),
-                        new ChoixOptionView("plusPetit", "le plus petit")), "plusGrand");
-        defs.add(new CatalogEntryDef(
+        // Comparaison : la consigne (plus grand / plus petit) est ALEATOIRE par question
+        // (s13, retour utilisatrice : pas de reglage). Jeu simple, mecanique bandit manchot.
+        defs.add(simpleGame(
                 "comparaison", "Maths", "CP", "comparaison", "Le plus grand nombre",
                 "Le plus grand nombre", "Choisis le plus grand (ou le plus petit) des deux nombres.",
-                BanditManchotMechanic.ID,
-                new ChoixGameFactory("comparaison", "Le plus grand nombre", "comparaison", "CP",
-                        BanditManchotMechanic.ID, comparaisonSens,
-                        sel -> new ComparaisonGenerator(comparaisonDesc, !"plusPetit".equals(sel)),
-                        SessionQuestions.ABSOLUTE_MAX, SessionQuestions.DEFAULT, SessionQuestions.MIN)));
+                new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — comparer des nombres"),
+                ComparaisonGenerator::new));
         // Nouveau jeu « Le bon symbole » (s13) : choisir < > ou = entre deux nombres.
         defs.add(simpleGame(
                 "bon-symbole", "Maths", "CP", "bon-symbole", "Le bon symbole",
@@ -174,21 +164,18 @@ public class BeansConfig {
         // session partage, presentation DISTINCTE (tuiles a ranger dans des emplacements).
         // Contenu COMBINATOIRE (RangeNombresGenerator), pas de fichier. Reglage commun
         // "nombre de questions" via SimpleGameFactory.
-        // Sens REGLABLE (croissant par defaut / decroissant) + defaut 3 questions (plancher 1)
-        // via le reglage « choix » generique (s13 / ADR-0014).
+        // Range les nombres : le SENS (croissant/decroissant) est ALEATOIRE par question
+        // (s13, retour utilisatrice : pas de reglage). Defaut 3 questions (plancher 1) —
+        // une courte session suffit. Mecanique glisser-deposer.
         ContentDescriptor rangeDesc =
                 new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — ordonner des nombres");
-        ChoixSettingsView rangeSens = new ChoixSettingsView("sens", "Sens du rangement",
-                List.of(new ChoixOptionView("croissant", "du plus petit au plus grand"),
-                        new ChoixOptionView("decroissant", "du plus grand au plus petit")), "croissant");
         defs.add(new CatalogEntryDef(
                 "range-nombres-cp", "Maths", "CP", "range-nombres", "Range les nombres",
-                "Maths CP — Range les nombres", "Range les nombres du plus petit au plus grand.",
+                "Maths CP — Range les nombres", "Range les nombres dans le bon ordre.",
                 GlisserDeposerMechanic.ID,
-                new ChoixGameFactory("range-nombres-cp", "Maths CP — Range les nombres", "range-nombres", "CP",
-                        GlisserDeposerMechanic.ID, rangeSens,
-                        sel -> new RangeNombresGenerator(rangeDesc, 4, 20, !"decroissant".equals(sel)),
-                        SessionQuestions.ABSOLUTE_MAX, 3, 1)));
+                new SimpleGameFactory("range-nombres-cp", "Maths CP — Range les nombres", "range-nombres", "CP",
+                        GlisserDeposerMechanic.ID, () -> new RangeNombresGenerator(rangeDesc),
+                        3, 1)));
 
         return new InMemoryGameCatalog(
                 List.of(banditManchotMechanic, texteATrouMechanic, quizAventureMechanic, glisserDeposerMechanic), defs);
