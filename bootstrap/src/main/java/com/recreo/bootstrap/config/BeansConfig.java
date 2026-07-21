@@ -13,7 +13,9 @@ import com.recreo.domain.content.RandomSource;
 import com.recreo.domain.content.impl.BonSymboleGenerator;
 import com.recreo.domain.content.impl.ComparaisonGenerator;
 import com.recreo.domain.content.impl.ComplementDixGenerator;
+import com.recreo.domain.content.impl.DecompositionGenerator;
 import com.recreo.domain.content.impl.EgaliteGenerator;
+import com.recreo.domain.content.impl.FriseChronologiqueGenerator;
 import com.recreo.domain.content.impl.MotChoixGenerator;
 import com.recreo.domain.content.impl.QuizGenerator;
 import com.recreo.domain.content.impl.RangeNombresGenerator;
@@ -116,6 +118,18 @@ public class BeansConfig {
                 "Le bon symbole", "Choisis le bon signe entre les deux nombres.",
                 new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — comparer avec <, >, ="),
                 BonSymboleGenerator::new));
+        // « Décompose le nombre » (s14) : cliquer le chiffre d'une position. Deux niveaux :
+        // CP = 2 chiffres (dizaines/unités), CM1 = 3 chiffres (+ centaines). Bandit manchot.
+        defs.add(simpleGame(
+                "decomposition-cp", "Maths", "CP", "decomposition", "Décompose le nombre",
+                "Maths CP — Décompose le nombre", "Clique le bon chiffre (dizaines, unités).",
+                new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — valeur positionnelle des chiffres"),
+                d -> new DecompositionGenerator(d, false)));
+        defs.add(simpleGame(
+                "decomposition-cm1", "Maths", "CM1", "decomposition", "Décompose le nombre",
+                "Maths CM1 — Décompose le nombre", "Clique le bon chiffre (centaines, dizaines, unités).",
+                new ContentDescriptor("Mathématiques", "CM1", "Nombres et calculs — valeur positionnelle des chiffres"),
+                d -> new DecompositionGenerator(d, true)));
         // Jeux "mot -> reponse" du bandit manchot : CONTENU EXTERNALISE (s10 / DEC-0006 /
         // ADR-0010) dans content/mots/*.yml, charge + valide au demarrage. Un generateur
         // GENERIQUE (MotChoixGenerator) remplace les sous-classes (le bon son, homophones,
@@ -175,6 +189,26 @@ public class BeansConfig {
                 GlisserDeposerMechanic.ID,
                 new SimpleGameFactory("range-nombres-cp", "Maths CP — Range les nombres", "range-nombres", "CP",
                         GlisserDeposerMechanic.ID, () -> new RangeNombresGenerator(rangeDesc),
+                        3, 1)));
+        // Declinaisons glisser-deposer (s14) : Range les nombres CM1 (plus grands nombres) et
+        // Frise chronologique (Histoire CM1, ranger des evenements du plus ancien au plus recent).
+        ContentDescriptor rangeCm1Desc =
+                new ContentDescriptor("Mathématiques", "CM1", "Nombres et calculs — ordonner des nombres");
+        defs.add(new CatalogEntryDef(
+                "range-nombres-cm1", "Maths", "CM1", "range-nombres", "Range les nombres",
+                "Maths CM1 — Range les nombres", "Range les nombres dans le bon ordre.",
+                GlisserDeposerMechanic.ID,
+                new SimpleGameFactory("range-nombres-cm1", "Maths CM1 — Range les nombres", "range-nombres", "CM1",
+                        GlisserDeposerMechanic.ID, () -> new RangeNombresGenerator(rangeCm1Desc, 4, 100),
+                        3, 1)));
+        ContentDescriptor friseDesc =
+                new ContentDescriptor("Histoire", "CM1", "Se repérer dans le temps — frise chronologique");
+        defs.add(new CatalogEntryDef(
+                "frise-cm1", "Histoire", "CM1", "frise-chronologique", "Frise chronologique",
+                "Histoire CM1 — Frise chronologique", "Range les événements du plus ancien au plus récent.",
+                GlisserDeposerMechanic.ID,
+                new SimpleGameFactory("frise-cm1", "Histoire CM1 — Frise chronologique", "frise-chronologique", "CM1",
+                        GlisserDeposerMechanic.ID, () -> new FriseChronologiqueGenerator(friseDesc),
                         3, 1)));
 
         return new InMemoryGameCatalog(
