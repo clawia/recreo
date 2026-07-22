@@ -65,7 +65,7 @@ public final class SessionEngine {
                 .withQuestionsTarget(questionsTarget);
     }
 
-    /** Applique un coup : score, comptage, maitrise, item suivant / fin de session. */
+    /** Applique un coup : score, comptage, maitrise, jokers, item suivant / fin de session. */
     public MoveResult apply(GameSession session, Move move) {
         ContentGenerator generator = session.content();
         RandomSource random = session.random();
@@ -73,21 +73,12 @@ public final class SessionEngine {
         return switch (move) {
             case SpinAndPick pick -> {
                 boolean correct = pick.chosen().equals(session.currentItem().expected());
-                int newScore = session.score() + (correct ? POINTS_PER_CORRECT : 0);
-                int answered = session.answered() + 1;
-                // Un item REUSSI est marque maitrise (par sa cle) : il ne sera plus
-                // repropose. Un item RATE n'entre pas dans mastered -> peut revenir.
-                Set<String> mastered = session.masteredKeys();
-                if (correct) {
-                    mastered = new LinkedHashSet<>(mastered);
-                    mastered.add(session.currentItem().key());
-                }
-                Feedback feedback = correct
-                        ? new Feedback("Bravo ! +" + POINTS_PER_CORRECT + " points")
-                        : new Feedback("Presque ! La bonne reponse etait "
-                                + session.currentItem().expected().value());
-                GameSession updated = advance(session, newScore, answered, mastered, generator, random);
-                yield new MoveResult(updated, correct, feedback);
+                // Sur un jeu a clic, on memorise l'option fausse cliquee pour la GRISER a la
+                // retente (cf. DEC-0009) : c'est la valeur soumise qui devient non cliquable.
+                yield correct
+                        ? onCorrect(session, generator, random)
+                        : onWrong(session, pick.chosen().value(),
+                                "Presque ! Reessaie, tu peux le faire.");
             }
             case SubmitArrangement arr -> {
                 // Glisser-deposer : correct si l'ordre soumis (encode canoniquement) egale
@@ -95,21 +86,23 @@ public final class SessionEngine {
                 // AGNOSTIQUE : il ne trie pas, ne lit pas la meta.
                 boolean correct = Item.encodeArrangement(arr.order())
                         .equals(session.currentItem().expected().value());
-                if (!correct) {
-                    // UX "ranger" : un arrangement FAUX ne fait PAS avancer (cf. DEC-0008).
-                    // On renvoie la session INCHANGEE (meme item, meme score) : le fragment
-                    // re-rendu remet les tuiles a l'etat initial (reserve), et un message
-                    // invite a reessayer le MEME puzzle. Rien n'est revele (retry).
-                    yield new MoveResult(session, false,
-                            new Feedback("Presque ! Remets les nombres dans le bon ordre et reessaie."));
-                }
-                // Correct : +10, item marque maitrise, item suivant / fin de session.
-                int newScore = session.score() + POINTS_PER_CORRECT;
-                int answered = session.answered() + 1;
-                Set<String> mastered = new LinkedHashSet<>(session.masteredKeys());
-                mastered.add(session.currentItem().key());
-                GameSession updated = advance(session, newScore, answered, mastered, generator, random);
-                yield new MoveResult(updated, true, new Feedback("Bravo ! +" + POINTS_PER_CORRECT + " points"));
+                // UX "ranger" (DEC-0008) : un arrangement FAUX ne fait PAS avancer ; le
+                // fragment re-rendu garde les tuiles bien placees (mapper) et invite a
+                // reessayer le MEME puzzle. Aligne sur les jokers (DEC-0009) : un essai
+                // faux consomme un coeur ; a 0 coeur, il termine la session.
+                yield correct
+                        ? onCorrect(session, generator, random)
+                        : onWrong(session, null,
+                                "Presque ! Remets les elements dans le bon ordre et reessaie.");
+            }
+            case SubmitAssociations assoc -> {
+                // Associer/classer & memory : correct si les associations soumises (encodees
+                // canoniquement, triees par cle) egalent la reponse attendue. Agnostique.
+                boolean correct = Item.encodeAssociations(assoc.associations())
+                        .equals(session.currentItem().expected().value());
+                yield correct
+                        ? onCorrect(session, generator, random)
+                        : onWrong(session, null, "Presque ! Reessaie de bien associer.");
             }
             case Skip ignored -> {
                 // Passer ne compte pas comme une reponse et ne maitrise rien.
@@ -120,12 +113,44 @@ public final class SessionEngine {
         };
     }
 
+    /** Bonne reponse : +10, item marque maitrise, item suivant / fin de session. */
+    private MoveResult onCorrect(GameSession session, ContentGenerator generator, RandomSource random) {
+        int newScore = session.score() + POINTS_PER_CORRECT;
+        int answered = session.answered() + 1;
+        Set<String> mastered = new LinkedHashSet<>(session.masteredKeys());
+        mastered.add(session.currentItem().key());
+        GameSession updated = advance(session, newScore, answered, mastered, generator, random);
+        return new MoveResult(updated, true, new Feedback("Bravo ! +" + POINTS_PER_CORRECT + " points"));
+    }
+
+    /**
+     * Mauvaise reponse, regle unique des « 3 coeurs » (cf. DEC-0009) : s'il reste un joker,
+     * on le CONSOMME et on RETENTE le meme item (pas d'avance, pas de +score) ; a 0 joker,
+     * une erreur TERMINE la session (ecran de fin avec le score courant). {@code triedValue}
+     * (non null sur les jeux a clic) est ajoute aux reponses grisees de l'item courant.
+     */
+    private MoveResult onWrong(GameSession session, String triedValue, String retryMessage) {
+        if (session.jokers() <= 0) {
+            GameSession finished = session.withStatus(SessionStatus.FINISHED);
+            return new MoveResult(finished, false,
+                    new Feedback("Plus de coeur ! La partie est terminee."));
+        }
+        Set<String> tried = new LinkedHashSet<>(session.triedWrong());
+        if (triedValue != null) {
+            tried.add(triedValue);
+        }
+        GameSession updated = session.withJokers(session.jokers() - 1).withTriedWrong(tried);
+        return new MoveResult(updated, false, new Feedback(retryMessage));
+    }
+
     private GameSession advance(GameSession session, int newScore, int answered,
                                 Set<String> mastered, ContentGenerator generator, RandomSource random) {
         GameSession base = session
                 .withScore(newScore)
                 .withAnswered(answered)
-                .withMasteredKeys(mastered);
+                .withMasteredKeys(mastered)
+                // Nouvel item : on repart avec des options fraiches, aucune deja tentee.
+                .withTriedWrong(Set.of());
 
         // Cible atteinte : session terminee, pas d'item suivant.
         if (answered >= session.questionsTarget()) {

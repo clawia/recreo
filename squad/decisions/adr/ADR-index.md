@@ -36,3 +36,5 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 > (`CompareFractionsGenerator`, comme « Le bon symbole ») ; l'ancien `FractionsGenerator` d'ordonnancement
 > est supprimé. Frise chronologique **verticale** = simple variante CSS de la vue glisser-déposer
 > (`frise-verticale`, activée par l'entryId), sans changement de mécanique. ArchUnit 5/5.
+
+| [ADR-0016](ADR-0016-coup-submitassociations-associer-memory.md) | Coup générique `SubmitAssociations(Map)` + mécaniques « Associer/Classer » (5e) & « Memory » (6e) — 6 jeux YAML ; isolation ArchUnit en slices dynamiques couvrant automatiquement les 2 paquets | Accepté | 2026-07-22 | s17 |

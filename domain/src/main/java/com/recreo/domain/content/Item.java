@@ -62,4 +62,20 @@ public record Item(ItemId id, List<String> reelSymbols, String question, Answer 
     public static String encodeArrangement(List<String> parts) {
         return String.join(", ", parts);
     }
+
+    /**
+     * Encodage canonique d'un ensemble d'associations {@code cle -> valeur} (mecaniques
+     * associer/classer et memory, cf. ADR-0016). SOURCE UNIQUE de la formule, utilisee par
+     * le generateur (pour produire {@code expected}) ET par le moteur (pour comparer les
+     * associations soumises). Les paires sont TRIEES par cle : l'ordre dans lequel l'enfant
+     * range ses elements n'a pas d'importance, seule compte l'association elle-meme. Le
+     * separateur ", " est lisible (coherent avec {@link #encodeArrangement(List)}).
+     */
+    public static String encodeAssociations(Map<String, String> associations) {
+        return associations.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .map(e -> e.getKey() + "=" + e.getValue())
+                .reduce((a, b) -> a + ", " + b)
+                .orElse("");
+    }
 }
