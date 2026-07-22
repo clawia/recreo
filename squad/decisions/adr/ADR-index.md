@@ -38,3 +38,9 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 > (`frise-verticale`, activée par l'entryId), sans changement de mécanique. ArchUnit 5/5.
 
 | [ADR-0016](ADR-0016-coup-submitassociations-associer-memory.md) | Coup générique `SubmitAssociations(Map)` + mécaniques « Associer/Classer » (5e) & « Memory » (6e) — 6 jeux YAML ; isolation ArchUnit en slices dynamiques couvrant automatiquement les 2 paquets | Accepté | 2026-07-22 | s17 |
+
+> **s18 — pas de nouvel ADR.** Raffinements UX de s17 après démo utilisatrice, aucune nouvelle
+> mécanique ni nouveau coup. Seul ajout structurant : le record domaine pur `AssociationBoard`
+> (calqué sur `ArrangementBoard`, aide de calcul pure pour le verrouillage partiel d'associer/classer),
+> aligné sur ADR-0013 (îlot glisser-déposer) et DEC-0008 (feedback partiel : tuiles bien placées
+> conservées). Les règles ArchUnit sont **inchangées** (5/5). Aucune décision d'architecture requise (Théo).
