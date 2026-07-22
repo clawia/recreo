@@ -333,6 +333,16 @@ public class BeansConfig {
                 DroiteGradueeMechanic.ID,
                 new SimpleGameFactory("droite-graduee-cm1", "Maths CM1 — Droite graduee", "droite-graduee", "CM1",
                         DroiteGradueeMechanic.ID, () -> new DroiteGradueeGenerator(droiteCm1Desc, 0, 100))));
+        // Fraction sur une droite (s23) : MEME mecanique (droite graduee), graduations = fractions.
+        ContentDescriptor droiteFracDesc =
+                new ContentDescriptor("Mathématiques", "CM1", "Fractions — situer une fraction sur une droite graduee");
+        List<String> fractionTicks = List.of("0", "1/4", "1/2", "3/4", "1");
+        defs.add(new CatalogEntryDef(
+                "droite-fraction-cm1", "Mathématiques", "CM1", "droite-graduee", "Place la fraction",
+                "Maths CM1 — Fractions sur la droite", "Place la fraction au bon endroit sur la droite graduee (0 a 1).",
+                DroiteGradueeMechanic.ID,
+                new SimpleGameFactory("droite-fraction-cm1", "Maths CM1 — Fractions sur la droite", "droite-graduee", "CM1",
+                        DroiteGradueeMechanic.ID, () -> new DroiteGradueeGenerator(droiteFracDesc, fractionTicks, "la fraction"))));
 
         return new InMemoryGameCatalog(
                 List.of(banditManchotMechanic, texteATrouMechanic, quizAventureMechanic, glisserDeposerMechanic,
