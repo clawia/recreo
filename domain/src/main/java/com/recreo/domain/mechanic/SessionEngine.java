@@ -37,9 +37,20 @@ public final class SessionEngine {
     private static final int POINTS_PER_CORRECT = 10;
 
     private final MechanicId mechanicId;
+    private final int defaultJokers;
 
     public SessionEngine(MechanicId mechanicId) {
+        this(mechanicId, GameSession.DEFAULT_JOKERS);
+    }
+
+    /**
+     * Variante avec un capital de jokers PROPRE a la mecanique (cf. DEC-0013 / backlog IDEE-1) :
+     * le memory, qui genere mecaniquement plus d'essais qu'un jeu a clic, demarre avec plus de
+     * coeurs. Le nombre de coeurs depend ainsi de la mecanique, pas d'une constante globale.
+     */
+    public SessionEngine(MechanicId mechanicId, int defaultJokers) {
         this.mechanicId = mechanicId;
+        this.defaultJokers = defaultJokers;
     }
 
     /** Demarre une session : tire le 1er item, construit les options, cible lue des reglages. */
@@ -62,7 +73,9 @@ public final class SessionEngine {
                 SessionStatus.ACTIVE,
                 generator,
                 random)
-                .withQuestionsTarget(questionsTarget);
+                .withQuestionsTarget(questionsTarget)
+                // Capital de coeurs propre a la mecanique (memory : plus large, cf. IDEE-1).
+                .withJokers(defaultJokers);
     }
 
     /** Applique un coup : score, comptage, maitrise, jokers, item suivant / fin de session. */

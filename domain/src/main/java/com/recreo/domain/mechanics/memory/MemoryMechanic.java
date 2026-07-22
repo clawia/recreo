@@ -33,7 +33,11 @@ public final class MemoryMechanic implements GameMechanic {
     /** Fragment Thymeleaf qui presente cette mecanique (cf. ADR-0007). */
     public static final String VIEW = "memory";
 
-    private final SessionEngine engine = new SessionEngine(ID);
+    /** Capital de coeurs du memory (cf. DEC-0013 / IDEE-1) : plus large qu'un jeu a clic,
+     *  car retourner des cartes produit mecaniquement plus d'essais infructueux. */
+    public static final int JOKERS = 6;
+
+    private final SessionEngine engine = new SessionEngine(ID, JOKERS);
 
     @Override
     public MechanicId id() {

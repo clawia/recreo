@@ -15,7 +15,9 @@
   MUTUALISES via fragments/commun. A la completion, /js/memory.js soumet le form cache
   avec les listes paralleles assocItem (cote g) / assocTarget (cote d) par paire.
 -->
-<div th:fragment="game" class="memory" th:attr="data-session-id=${game.sessionId}">
+<div th:fragment="game" class="memory"
+     th:classappend="${game.catalogEntryId != null and #strings.startsWith(game.catalogEntryId, 'memory-quantite')} ? ' memory-des' : ''"
+     th:attr="data-session-id=${game.sessionId}">
 
     <!-- ECRAN DE FIN (session terminee) : ecran commun mutualise.
          th:if porte par un th:block ENVELOPPANT (comme banditmanchot/glisserdeposer) :
