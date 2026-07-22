@@ -85,18 +85,6 @@
                 </label>
             </fieldset>
 
-            <!-- Nombre de coeurs (jokers) : reglage COMMUN quand le jeu l'expose (DEC-0009). -->
-            <fieldset th:if="${settings.jokers != null}" class="settings-block">
-                <legend>Nombre de cœurs ❤️</legend>
-                <label class="field">
-                    Nombre de cœurs ❤️
-                    <input type="number" name="jokers"
-                           th:value="${settings.jokers.defaultValue}"
-                           th:min="${settings.jokers.min}"
-                           th:max="${settings.jokers.max}"/>
-                </label>
-            </fieldset>
-
             <button type="submit" class="play-btn big">▶ Jouer avec ces réglages</button>
         </form>
     </section>

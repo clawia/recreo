@@ -18,7 +18,6 @@ public record GameSettingsView(
         MathSettingsView math,
         SyllabesSettingsView syllabes,
         QuestionsSettingsView questions,
-        JokersSettingsView jokers,
         List<ToggleSettingsView> toggles) {
 
     public GameSettingsView {
@@ -26,21 +25,12 @@ public record GameSettingsView(
     }
 
     /**
-     * Constructeur historique (avant le reglage « nombre de coeurs », cf. DEC-0013/s21) :
-     * pas de bloc {@code jokers}. Conserve la compatibilite des fabriques existantes.
-     */
-    public GameSettingsView(String entryId, String title, String gameKey, String niveau,
-                            MathSettingsView math, SyllabesSettingsView syllabes,
-                            QuestionsSettingsView questions, List<ToggleSettingsView> toggles) {
-        this(entryId, title, gameKey, niveau, math, syllabes, questions, null, toggles);
-    }
-
-    /**
      * Vrai si l'entree propose des reglages. Depuis s05, TOUS les jeux ont au moins
      * le reglage "nombre de questions" ({@code questions} non nul) : le bouton
-     * « Paramètres » s'affiche donc pour chaque jeu.
+     * « Paramètres » s'affiche donc pour chaque jeu. (Le capital de coeurs n'est PAS
+     * reglable ici : il est fixe par le YAML du jeu, cf. DEC-0013/s21.)
      */
     public boolean hasSettings() {
-        return questions != null || math != null || syllabes != null || jokers != null || !toggles.isEmpty();
+        return questions != null || math != null || syllabes != null || !toggles.isEmpty();
     }
 }

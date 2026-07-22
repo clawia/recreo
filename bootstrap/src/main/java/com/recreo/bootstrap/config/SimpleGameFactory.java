@@ -1,10 +1,8 @@
 package com.recreo.bootstrap.config;
 
 import com.recreo.application.port.in.GameSettingsView;
-import com.recreo.application.port.in.JokersSettingsView;
 import com.recreo.domain.content.ContentGenerator;
 import com.recreo.domain.mechanic.GameConfig;
-import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.MechanicId;
 
 import java.util.LinkedHashMap;
@@ -80,12 +78,10 @@ final class SimpleGameFactory implements GameFactory {
         // eventuels sont ignores).
         settings.put("questionsTarget", SessionQuestions.resolve(
                 parameters.get("questionsTarget"), poolCap, questionsFloor, defaultQuestions));
-        // Capital de coeurs (cf. DEC-0013/s21) : la valeur reglee par l'adulte prime sur le
-        // capital du YAML ; si aucune, on laisse le defaut porte par la mecanique.
-        Integer adult = parseJokers(parameters.get("jokers"));
-        Integer eff = adult != null ? adult : packJokers;
-        if (eff != null) {
-            settings.put("jokers", eff);
+        // Capital de coeurs (cf. DEC-0013/s21) : pilote UNIQUEMENT par le YAML du jeu (champ
+        // « jokers »). Absent -> on laisse le defaut porte par la mecanique. Pas de reglage adulte.
+        if (packJokers != null) {
+            settings.put("jokers", packJokers);
         }
         return new GameConfig(mechanicId, generator, settings);
     }
@@ -93,22 +89,8 @@ final class SimpleGameFactory implements GameFactory {
     @Override
     public GameSettingsView settings() {
         int poolCap = generatorSupplier.get().distinctPoolSize().orElse(SessionQuestions.ABSOLUTE_MAX);
-        JokersSettingsView jokers = new JokersSettingsView(
-                0, 6, packJokers != null ? packJokers : GameSession.DEFAULT_JOKERS);
         return new GameSettingsView(entryId, title, gameKey, niveau,
                 null, null, SessionQuestions.view(poolCap, questionsFloor, defaultQuestions),
-                jokers, java.util.List.of());
-    }
-
-    /** Parse un capital de coeurs saisi par l'adulte ; {@code null} si absent ou illisible. */
-    private static Integer parseJokers(String raw) {
-        if (raw == null || raw.isBlank()) {
-            return null;
-        }
-        try {
-            return Integer.valueOf(raw.trim());
-        } catch (NumberFormatException e) {
-            return null;
-        }
+                java.util.List.of());
     }
 }

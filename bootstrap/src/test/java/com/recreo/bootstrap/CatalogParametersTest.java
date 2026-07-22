@@ -320,7 +320,7 @@ class CatalogParametersTest {
         }
     }
 
-    // ---- s21 : capital de coeurs (jokers) pilote par le YAML + override adulte (DEC-0013) ----
+    // ---- s21 : capital de coeurs (jokers) pilote UNIQUEMENT par le YAML (DEC-0013) ----
 
     @Test
     void memoryJokersComeFromYamlSixHearts() {
@@ -332,11 +332,12 @@ class CatalogParametersTest {
     }
 
     @Test
-    void adultCanOverrideMemoryJokers() {
-        // Reglage adulte jokers=3 : prime sur le capital du YAML -> session a 3 coeurs.
+    void jokersAreNotAdjustableByTheAdult() {
+        // Le capital de coeurs n'est PAS reglable a la volee : un parametre "jokers" est ignore,
+        // seul le YAML fait foi (DEC-0013/s21). Le memory reste donc a 6.
         GameConfig config = catalog.configFor("memory-quantite-cp", Map.of("jokers", "3"));
-        assertThat(config.settings().get("jokers")).isEqualTo(3);
+        assertThat(config.settings().get("jokers")).isEqualTo(6);
         GameSession session = new MemoryMechanic().start(config, seeded(1L));
-        assertThat(session.jokers()).isEqualTo(3);
+        assertThat(session.jokers()).isEqualTo(6);
     }
 }
