@@ -1168,11 +1168,14 @@ body {
     margin: 0;
 }
 
-/* Un tick : cible tactile (nombre au-dessus d'un petit repere via bordure basse). */
+/* Un tick : cible tactile (nombre OU fraction au-dessus d'un petit repere via
+   bordure basse). Les etiquettes de fractions (« 1/4 ») ne doivent ni se couper ni
+   passer a la ligne : white-space:nowrap + min-width elargie pour rester lisibles. */
 .droite-tick {
     position: relative;
-    min-width: 44px;
-    padding: 0.6rem 0.5rem;
+    min-width: 48px;
+    padding: 0.6rem 0.6rem;
+    white-space: nowrap;
     font-size: 1.4rem;
     font-weight: bold;
     color: white;

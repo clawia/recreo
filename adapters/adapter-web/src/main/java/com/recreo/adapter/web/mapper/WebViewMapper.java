@@ -70,7 +70,7 @@ public class WebViewMapper {
                     : withBoard;
         }
         if (DROITE_GRADUEE.equals(view.mechanicView())) {
-            return game.withLine(intMeta(view.meta(), "min", 0), intMeta(view.meta(), "max", 10));
+            return game.withTicks(split(safe(view.meta()).get("ticks")));
         }
         return withAssociations(game, view.mechanicView(), view.reelSymbols(), view.meta());
     }
@@ -118,9 +118,9 @@ public class WebViewMapper {
             return game;
         }
 
-        // Droite graduee : bornes de la droite (ticks) lues de la meta de l'item courant.
+        // Droite graduee : graduations (entiers ou fractions) lues de la meta de l'item courant.
         if (DROITE_GRADUEE.equals(view.mechanicView())) {
-            return game.withLine(intMeta(view.meta(), "min", 0), intMeta(view.meta(), "max", 10));
+            return game.withTicks(split(safe(view.meta()).get("ticks")));
         }
 
         // Memory : plateau reconstruit depuis la meta de l'item (groupes de paires).
@@ -179,19 +179,6 @@ public class WebViewMapper {
      */
     private static Map<String, String> safe(Map<String, String> meta) {
         return meta == null ? Map.of() : meta;
-    }
-
-    /** Lit un entier de la meta de l'item (bornes de la droite graduee) ; defaut si absent/illisible. */
-    private static int intMeta(Map<String, String> meta, String key, int fallback) {
-        String raw = safe(meta).get(key);
-        if (raw == null || raw.isBlank()) {
-            return fallback;
-        }
-        try {
-            return Integer.parseInt(raw.trim());
-        } catch (NumberFormatException e) {
-            return fallback;
-        }
     }
 
     private static String firstOption(List<String> options) {

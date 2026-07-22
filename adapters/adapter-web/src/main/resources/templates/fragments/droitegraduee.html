@@ -8,8 +8,9 @@
 <!--
   Fragment de la mecanique "droite graduee". Calque la structure du bandit manchot
   (scoreboard / consigne / feedback / gameOver) mais remplace les boutons-reponses
-  par une DROITE : un tick cliquable par entier de game.lineMin a game.lineMax.
-  Chaque tick est un petit formulaire htmx qui poste `chosenAnswer` = valeur du tick
+  par une DROITE : un tick cliquable par etiquette de graduation (game.lineTicks,
+  entiers OU fractions comme « 1/4 »).
+  Chaque tick est un petit formulaire htmx qui poste `chosenAnswer` = etiquette du tick
   (reutilise le coup SpinAndPick, comme les boutons du bandit). Aucun JS requis :
   les ticks sont des formulaires (degradation propre). Un curseur cosmetique peut
   etre rebranche par /js/droite-graduee.js.
@@ -29,19 +30,21 @@
         <!-- Consigne : « Place le nombre N ». -->
         <p class="consigne" th:text="${game.question}">Place le nombre</p>
 
-        <!-- La DROITE : un tick cliquable par entier de lineMin a lineMax. Chaque tick
-             est un formulaire htmx (fonctionne SANS JS) postant sa valeur comme
-             chosenAnswer. Les ticks deja tentes a tort (disabledOptions) sont grises. -->
-        <div class="droite" th:attr="data-line-min=${game.lineMin}, data-line-max=${game.lineMax}">
-            <form class="tick-form" th:each="v : ${#numbers.sequence(game.lineMin, game.lineMax)}"
+        <!-- La DROITE : un tick cliquable par ETIQUETTE de graduation (game.lineTicks).
+             Les etiquettes sont des Strings : entiers (« 0 », « 1 »…) OU fractions
+             (« 0 », « 1/4 », « 1/2 »…). Chaque tick est un formulaire htmx (fonctionne
+             SANS JS) postant son etiquette comme chosenAnswer. Les etiquettes deja
+             tentees a tort (disabledOptions) sont grisees. -->
+        <div class="droite">
+            <form class="tick-form" th:each="v : ${game.lineTicks}"
                   th:action="@{/sessions/{id}/moves(id=${game.sessionId})}" method="post"
                   th:attr="hx-post=@{/sessions/{id}/moves(id=${game.sessionId})}"
                   hx-target="#game-area" hx-swap="innerHTML">
                 <input type="hidden" name="chosenAnswer" th:value="${v}"/>
                 <input type="hidden" name="from" th:value="${from}"/>
                 <button type="submit" class="droite-tick" th:text="${v}"
-                        th:classappend="${game.disabledOptions != null and game.disabledOptions.contains(#strings.toString(v))} ? ' tentee' : ''"
-                        th:attr="disabled=${game.disabledOptions != null and game.disabledOptions.contains(#strings.toString(v))} ? 'disabled' : null">0</button>
+                        th:classappend="${game.disabledOptions != null and game.disabledOptions.contains(v)} ? ' tentee' : ''"
+                        th:attr="disabled=${game.disabledOptions != null and game.disabledOptions.contains(v)} ? 'disabled' : null">0</button>
             </form>
         </div>
 
