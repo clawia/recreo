@@ -1,0 +1,31 @@
+entryId: masculin-feminin-cp
+title: "Le ou la ?"
+description: "Classe chaque nom selon son genre : le ou la ?"
+gameKey: classer
+gameLabel: "Le ou la ?"
+matiere: "Français"
+niveau: "CP"
+domaine: "Grammaire"
+consigne: "Classe chaque mot : le ou la ?"
+puzzles:
+  - associations:
+      - { item: "chat", cible: "le" }
+      - { item: "table", cible: "la" }
+      - { item: "soleil", cible: "le" }
+      - { item: "maison", cible: "la" }
+      - { item: "chien", cible: "le" }
+      - { item: "fleur", cible: "la" }
+  - associations:
+      - { item: "vélo", cible: "le" }
+      - { item: "voiture", cible: "la" }
+      - { item: "ballon", cible: "le" }
+      - { item: "pomme", cible: "la" }
+      - { item: "livre", cible: "le" }
+      - { item: "école", cible: "la" }
+  - associations:
+      - { item: "gâteau", cible: "le" }
+      - { item: "banane", cible: "la" }
+      - { item: "bateau", cible: "le" }
+      - { item: "montagne", cible: "la" }
+      - { item: "cartable", cible: "le" }
+      - { item: "chaise", cible: "la" }

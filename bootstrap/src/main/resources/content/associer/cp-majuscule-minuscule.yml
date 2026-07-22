@@ -1,0 +1,28 @@
+entryId: majuscule-minuscule-cp
+title: "Majuscule et minuscule"
+description: "Associe chaque lettre majuscule à sa minuscule."
+gameKey: associer
+gameLabel: "Majuscule et minuscule"
+matiere: "Français"
+niveau: "CP"
+domaine: "Lecture"
+consigne: "Associe chaque majuscule à sa minuscule"
+puzzles:
+  - associations:
+      - { item: "A", cible: "a" }
+      - { item: "B", cible: "b" }
+      - { item: "C", cible: "c" }
+      - { item: "D", cible: "d" }
+      - { item: "E", cible: "e" }
+  - associations:
+      - { item: "F", cible: "f" }
+      - { item: "G", cible: "g" }
+      - { item: "H", cible: "h" }
+      - { item: "I", cible: "i" }
+      - { item: "J", cible: "j" }
+  - associations:
+      - { item: "L", cible: "l" }
+      - { item: "M", cible: "m" }
+      - { item: "N", cible: "n" }
+      - { item: "O", cible: "o" }
+      - { item: "P", cible: "p" }

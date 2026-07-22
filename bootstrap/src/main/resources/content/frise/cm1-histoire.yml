@@ -1,0 +1,19 @@
+entryId: frise-cm1
+title: "Frise chronologique"
+description: "Range les grandes périodes de l'histoire du plus ancien au plus récent."
+gameKey: frise
+gameLabel: "Frise chronologique"
+matiere: "Histoire"
+niveau: "CM1"
+domaine: "Repères historiques"
+consigne: "Range du plus ancien au plus récent"
+count: 3
+evenements:
+  - { label: "La Préhistoire", rang: 1 }
+  - { label: "Les Gaulois", rang: 2 }
+  - { label: "Les Romains", rang: 3 }
+  - { label: "Le Moyen Âge", rang: 4 }
+  - { label: "La Renaissance", rang: 5 }
+  - { label: "La Révolution française", rang: 6 }
+  - { label: "La tour Eiffel", rang: 7 }
+  - { label: "Aujourd'hui", rang: 8 }

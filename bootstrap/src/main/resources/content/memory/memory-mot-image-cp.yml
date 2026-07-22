@@ -6,6 +6,7 @@ gameLabel: "Memory mot-image"
 matiere: "Français"
 niveau: "CP"
 domaine: "Lecture"
+jokers: 6
 consigne: "Retrouve les paires : le mot et son image"
 paires:
   - { gauche: "soleil", droite: "☀️" }

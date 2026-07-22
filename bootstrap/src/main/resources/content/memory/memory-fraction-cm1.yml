@@ -6,6 +6,7 @@ gameLabel: "Memory des fractions"
 matiere: "Mathématiques"
 niveau: "CM1"
 domaine: "Fractions"
+jokers: 6
 consigne: "Retrouve les paires : la fraction et sa part coloriée"
 paires:
   - { gauche: "1/2", droite: "▰▱" }

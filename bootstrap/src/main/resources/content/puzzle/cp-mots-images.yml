@@ -1,0 +1,16 @@
+entryId: puzzle-mots-images-cp
+title: "Reconstitue le mot"
+description: "Remets les lettres dans l'ordre pour retrouver le mot de l'image."
+gameKey: puzzle
+gameLabel: "Reconstitue le mot"
+matiere: "Français"
+niveau: "CP"
+domaine: "Lecture"
+consigne: "Remets les lettres dans l'ordre"
+mots:
+  - { mot: "chat", indice: "🐱" }
+  - { mot: "chien", indice: "🐶" }
+  - { mot: "maison", indice: "🏠" }
+  - { mot: "soleil", indice: "☀️" }
+  - { mot: "fleur", indice: "🌸" }
+  - { mot: "pomme", indice: "🍎" }

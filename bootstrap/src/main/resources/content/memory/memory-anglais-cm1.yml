@@ -6,6 +6,7 @@ gameLabel: "Memory anglais"
 matiere: "Anglais"
 niveau: "CM1"
 domaine: "Lexique"
+jokers: 6
 consigne: "Retrouve les paires : l'image et le mot anglais"
 paires:
   - { gauche: "🐶", droite: "dog" }

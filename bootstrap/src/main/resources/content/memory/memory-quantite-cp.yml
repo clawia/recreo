@@ -6,6 +6,7 @@ gameLabel: "Memory des quantités"
 matiere: "Mathématiques"
 niveau: "CP"
 domaine: "Nombres"
+jokers: 6
 consigne: "Retrouve les paires : le chiffre et la face du dé"
 paires:
   - { gauche: "1", droite: "⚀" }
