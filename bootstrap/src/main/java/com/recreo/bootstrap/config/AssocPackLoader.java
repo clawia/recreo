@@ -120,11 +120,23 @@ public final class AssocPackLoader {
         }
 
         ContentDescriptor descriptor = new ContentDescriptor(matiere, niveau, domaine);
-        return new AssocContentPack(entryId, title, description, gameKey, gameLabel, descriptor, consigne, puzzles);
+        return new AssocContentPack(entryId, title, description, gameKey, gameLabel, descriptor, consigne,
+                optionalInt(root.get("jokers")), puzzles);
     }
 
     private static String text(Object value) {
         return value == null ? "" : value.toString();
+    }
+
+    /** Champ d'en-tete optionnel {@code jokers} (capital de coeurs) : absent -> null (cf. DEC-0013/s21). */
+    private static Integer optionalInt(Object value) {
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof Number n) {
+            return n.intValue();
+        }
+        throw new IllegalStateException("champ 'jokers' doit etre un entier (recu : " + value + ")");
     }
 
     private static String requireText(Object value, String field, String where) {

@@ -122,11 +122,23 @@ public final class QuizPackLoader {
         }
 
         ContentDescriptor descriptor = new ContentDescriptor(matiere, niveau, domaine);
-        return new QuizContentPack(entryId, title, description, gameKey, gameLabel, descriptor, questions);
+        return new QuizContentPack(entryId, title, description, gameKey, gameLabel, descriptor,
+                optionalInt(root.get("jokers")), questions);
     }
 
     private static String text(Object value) {
         return value == null ? "" : value.toString();
+    }
+
+    /** Champ d'en-tete optionnel {@code jokers} (capital de coeurs) : absent -> null (cf. DEC-0013/s21). */
+    private static Integer optionalInt(Object value) {
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof Number n) {
+            return n.intValue();
+        }
+        throw new IllegalStateException("champ 'jokers' doit etre un entier (recu : " + value + ")");
     }
 
     private static String requireText(Object value, String field, String where) {

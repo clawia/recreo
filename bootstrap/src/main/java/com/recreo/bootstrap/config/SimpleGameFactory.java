@@ -1,8 +1,10 @@
 package com.recreo.bootstrap.config;
 
 import com.recreo.application.port.in.GameSettingsView;
+import com.recreo.application.port.in.JokersSettingsView;
 import com.recreo.domain.content.ContentGenerator;
 import com.recreo.domain.mechanic.GameConfig;
+import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.MechanicId;
 
 import java.util.LinkedHashMap;
@@ -26,18 +28,36 @@ final class SimpleGameFactory implements GameFactory {
     private final Supplier<ContentGenerator> generatorSupplier;
     private final int defaultQuestions;
     private final int questionsFloor;
+    /** Capital de coeurs (jokers) issu du YAML, {@code null} = defaut de la mecanique (cf. DEC-0013/s21). */
+    private final Integer packJokers;
 
-    /** Defaut/plancher de questions GLOBAUX (20 / 5). */
+    /** Defaut/plancher de questions GLOBAUX (20 / 5), sans capital de coeurs propre. */
     SimpleGameFactory(String entryId, String title, String gameKey, String niveau,
                       MechanicId mechanicId, Supplier<ContentGenerator> generatorSupplier) {
         this(entryId, title, gameKey, niveau, mechanicId, generatorSupplier,
-                SessionQuestions.DEFAULT, SessionQuestions.MIN);
+                SessionQuestions.DEFAULT, SessionQuestions.MIN, null);
+    }
+
+    /** Defaut/plancher de questions GLOBAUX (20 / 5), capital de coeurs pilote par le YAML. */
+    SimpleGameFactory(String entryId, String title, String gameKey, String niveau,
+                      MechanicId mechanicId, Supplier<ContentGenerator> generatorSupplier,
+                      Integer packJokers) {
+        this(entryId, title, gameKey, niveau, mechanicId, generatorSupplier,
+                SessionQuestions.DEFAULT, SessionQuestions.MIN, packJokers);
     }
 
     /** Defaut/plancher de questions PROPRES au jeu (ex. « Range les nombres » : 3 / 1). */
     SimpleGameFactory(String entryId, String title, String gameKey, String niveau,
                       MechanicId mechanicId, Supplier<ContentGenerator> generatorSupplier,
                       int defaultQuestions, int questionsFloor) {
+        this(entryId, title, gameKey, niveau, mechanicId, generatorSupplier,
+                defaultQuestions, questionsFloor, null);
+    }
+
+    /** Defaut/plancher de questions PROPRES au jeu + capital de coeurs pilote par le YAML. */
+    SimpleGameFactory(String entryId, String title, String gameKey, String niveau,
+                      MechanicId mechanicId, Supplier<ContentGenerator> generatorSupplier,
+                      int defaultQuestions, int questionsFloor, Integer packJokers) {
         this.entryId = entryId;
         this.title = title;
         this.gameKey = gameKey;
@@ -46,6 +66,7 @@ final class SimpleGameFactory implements GameFactory {
         this.generatorSupplier = generatorSupplier;
         this.defaultQuestions = defaultQuestions;
         this.questionsFloor = questionsFloor;
+        this.packJokers = packJokers;
     }
 
     @Override
@@ -59,13 +80,35 @@ final class SimpleGameFactory implements GameFactory {
         // eventuels sont ignores).
         settings.put("questionsTarget", SessionQuestions.resolve(
                 parameters.get("questionsTarget"), poolCap, questionsFloor, defaultQuestions));
+        // Capital de coeurs (cf. DEC-0013/s21) : la valeur reglee par l'adulte prime sur le
+        // capital du YAML ; si aucune, on laisse le defaut porte par la mecanique.
+        Integer adult = parseJokers(parameters.get("jokers"));
+        Integer eff = adult != null ? adult : packJokers;
+        if (eff != null) {
+            settings.put("jokers", eff);
+        }
         return new GameConfig(mechanicId, generator, settings);
     }
 
     @Override
     public GameSettingsView settings() {
         int poolCap = generatorSupplier.get().distinctPoolSize().orElse(SessionQuestions.ABSOLUTE_MAX);
+        JokersSettingsView jokers = new JokersSettingsView(
+                0, 6, packJokers != null ? packJokers : GameSession.DEFAULT_JOKERS);
         return new GameSettingsView(entryId, title, gameKey, niveau,
-                null, null, SessionQuestions.view(poolCap, questionsFloor, defaultQuestions), java.util.List.of());
+                null, null, SessionQuestions.view(poolCap, questionsFloor, defaultQuestions),
+                jokers, java.util.List.of());
+    }
+
+    /** Parse un capital de coeurs saisi par l'adulte ; {@code null} si absent ou illisible. */
+    private static Integer parseJokers(String raw) {
+        if (raw == null || raw.isBlank()) {
+            return null;
+        }
+        try {
+            return Integer.valueOf(raw.trim());
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 }

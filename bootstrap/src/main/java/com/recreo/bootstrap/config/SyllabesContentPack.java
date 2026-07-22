@@ -21,6 +21,7 @@ public record SyllabesContentPack(
         List<Integer> syllabesOptions,
         int minSyllabes,
         int maxSyllabes,
+        Integer jokers,
         List<Mot> mots) {
 
     public SyllabesContentPack {

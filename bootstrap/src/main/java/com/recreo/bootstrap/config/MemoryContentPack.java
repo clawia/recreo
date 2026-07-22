@@ -20,6 +20,7 @@ public record MemoryContentPack(
         String gameLabel,
         ContentDescriptor descriptor,
         String consigne,
+        Integer jokers,
         List<MemoryGenerator.Paire> paires) {
 
     public MemoryContentPack {

@@ -21,6 +21,7 @@ public record MotsContentPack(
         String question,
         boolean poolMode,
         int distractorCount,
+        Integer jokers,
         List<Entree> entrees) {
 
     public MotsContentPack {

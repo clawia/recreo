@@ -19,6 +19,7 @@ public record QuizContentPack(
         String gameKey,
         String gameLabel,
         ContentDescriptor descriptor,
+        Integer jokers,
         List<Question> questions) {
 
     public QuizContentPack {

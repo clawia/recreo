@@ -114,11 +114,22 @@ public final class SyllabesPackLoader {
 
         ContentDescriptor descriptor = new ContentDescriptor(matiere, niveau, domaine);
         return new SyllabesContentPack(entryId, title, description, gameKey, gameLabel, descriptor,
-                options, minSyllabes, maxSyllabes, mots);
+                options, minSyllabes, maxSyllabes, optionalInt(root.get("jokers")), mots);
     }
 
     private static String text(Object value) {
         return value == null ? "" : value.toString();
+    }
+
+    /** Champ d'en-tete optionnel {@code jokers} (capital de coeurs) : absent -> null (cf. DEC-0013/s21). */
+    private static Integer optionalInt(Object value) {
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof Number n) {
+            return n.intValue();
+        }
+        throw new IllegalStateException("champ 'jokers' doit etre un entier (recu : " + value + ")");
     }
 
     private static Object requirePresent(Object value, String field, String where) {

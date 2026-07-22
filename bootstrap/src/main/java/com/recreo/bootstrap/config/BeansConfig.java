@@ -18,6 +18,7 @@ import com.recreo.domain.content.impl.CompareFractionsGenerator;
 import com.recreo.domain.content.impl.EgaliteGenerator;
 import com.recreo.domain.content.impl.FriseChronologiqueGenerator;
 import com.recreo.domain.content.impl.MotChoixGenerator;
+import com.recreo.domain.content.impl.MotPuzzleGenerator;
 import com.recreo.domain.content.impl.QuizGenerator;
 import com.recreo.domain.content.impl.RangeNombresGenerator;
 import com.recreo.domain.content.impl.AssociationGenerator;
@@ -29,6 +30,7 @@ import com.recreo.domain.mechanics.quizaventure.QuizAventureMechanic;
 import com.recreo.domain.mechanics.texteatrou.TexteATrouMechanic;
 import com.recreo.domain.mechanics.associer.AssocierMechanic;
 import com.recreo.domain.mechanics.memory.MemoryMechanic;
+import com.recreo.domain.mechanics.puzzle.PuzzleMechanic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -75,12 +77,18 @@ public class BeansConfig {
     }
 
     @Bean
+    public PuzzleMechanic puzzleMechanic() {
+        return new PuzzleMechanic();
+    }
+
+    @Bean
     public GameCatalog gameCatalog(BanditManchotMechanic banditManchotMechanic,
                                    TexteATrouMechanic texteATrouMechanic,
                                    QuizAventureMechanic quizAventureMechanic,
                                    GlisserDeposerMechanic glisserDeposerMechanic,
                                    AssocierMechanic associerMechanic,
-                                   MemoryMechanic memoryMechanic) {
+                                   MemoryMechanic memoryMechanic,
+                                   PuzzleMechanic puzzleMechanic) {
         ContentPackLoader loader = new ContentPackLoader();
         List<ContentPack> packs = List.of(
                 loader.load("content/cp-calcul-mental.yml"),
@@ -166,7 +174,7 @@ public class BeansConfig {
             defs.add(simpleGame(
                     mots.entryId(), mots.descriptor().matiere(), mots.descriptor().niveau(),
                     mots.gameKey(), mots.gameLabel(), mots.title(), mots.description(),
-                    mots.descriptor(), generator));
+                    mots.descriptor(), generator, mots.jokers()));
         }
 
         // 2e mecanique (s06 / ADR-0007) : "texte a trous". CONTENU des jeux FINIS
@@ -177,7 +185,8 @@ public class BeansConfig {
             defs.add(texteATrouGame(
                     trou.entryId(), trou.descriptor().matiere(), trou.descriptor().niveau(),
                     trou.gameKey(), trou.gameLabel(), trou.title(), trou.description(),
-                    trou.descriptor(), descriptor -> new QuizGenerator(descriptor, trou.questions())));
+                    trou.descriptor(), descriptor -> new QuizGenerator(descriptor, trou.questions()),
+                    trou.jokers()));
         }
         // "Complète l'égalité" reste COMBINATOIRE (genere a la volee, pas de liste a editer).
         defs.add(texteATrouGame(
@@ -195,7 +204,8 @@ public class BeansConfig {
             defs.add(quizAventureGame(
                     quiz.entryId(), quiz.descriptor().matiere(), quiz.descriptor().niveau(),
                     quiz.gameKey(), quiz.gameLabel(), quiz.title(), quiz.description(),
-                    quiz.descriptor(), descriptor -> new QuizGenerator(descriptor, quiz.questions())));
+                    quiz.descriptor(), descriptor -> new QuizGenerator(descriptor, quiz.questions()),
+                    quiz.jokers()));
         }
 
         // 4e mecanique (s12 / ADR-0013) : "glisser-deposer" (1er ilot JS). MEME moteur de
@@ -225,22 +235,33 @@ public class BeansConfig {
                 new SimpleGameFactory("range-nombres-cm1", "Maths CM1 — Range les nombres", "range-nombres", "CM1",
                         GlisserDeposerMechanic.ID, () -> new RangeNombresGenerator(rangeCm1Desc, 4, 100),
                         3, 1)));
-        ContentDescriptor friseDesc =
-                new ContentDescriptor("Histoire", "CM1", "Se repérer dans le temps — frise chronologique");
-        defs.add(new CatalogEntryDef(
-                "frise-cm1", "Histoire", "CM1", "frise-chronologique", "Frise chronologique",
-                "Histoire CM1 — Frise chronologique", "Range les événements du plus ancien au plus récent.",
-                GlisserDeposerMechanic.ID,
-                new SimpleGameFactory("frise-cm1", "Histoire CM1 — Frise chronologique", "frise-chronologique", "CM1",
-                        GlisserDeposerMechanic.ID, () -> new FriseChronologiqueGenerator(friseDesc),
-                        3, 1)));
+        // Frise chronologique (glisser-deposer, Histoire CM1) : CONTENU EXTERNALISE (roadmap D)
+        // dans content/frise/*.yml (consigne + count + evenements). L'entryId « frise-cm1 »
+        // conserve la variante CSS verticale. Capital de coeurs pilotable par le YAML (s21).
+        for (FriseContentPack p : new FrisePackLoader().loadAll()) {
+            ContentDescriptor d = p.descriptor();
+            SimpleGameFactory factory = new SimpleGameFactory(
+                    p.entryId(), p.title(), p.gameKey(), d.niveau(), GlisserDeposerMechanic.ID,
+                    () -> new FriseChronologiqueGenerator(d, p.evenements(), p.consigne(), p.count()),
+                    3, 1, p.jokers());
+            defs.add(new CatalogEntryDef(
+                    p.entryId(), d.matiere(), d.niveau(), p.gameKey(), p.gameLabel(),
+                    p.title(), p.description(), GlisserDeposerMechanic.ID, factory));
+        }
         // Fractions CM1 (s16, retour utilisatrice) : COMPARER deux fractions avec < > =
-        // (bandit manchot, comme « Le bon symbole »), au lieu de les ranger.
-        defs.add(simpleGame(
-                "fractions-cm1", "Maths", "CM1", "compare-fractions", "Compare les fractions",
-                "Maths CM1 — Compare les fractions", "Choisis le bon signe entre les deux fractions.",
-                new ContentDescriptor("Mathématiques", "CM1", "Fractions — comparer avec <, >, ="),
-                CompareFractionsGenerator::new));
+        // (bandit manchot, comme « Le bon symbole »), au lieu de les ranger. CONTENU
+        // EXTERNALISE dans content/fractions/*.yml (consigne + pool de fractions). Defaut/
+        // plancher de questions GLOBAUX (comme avant). Capital de coeurs pilotable par le YAML.
+        for (FractionsContentPack p : new FractionsPackLoader().loadAll()) {
+            ContentDescriptor d = p.descriptor();
+            SimpleGameFactory factory = new SimpleGameFactory(
+                    p.entryId(), p.title(), p.gameKey(), d.niveau(), BanditManchotMechanic.ID,
+                    () -> new CompareFractionsGenerator(d, p.fractions(), p.consigne()),
+                    p.jokers());
+            defs.add(new CatalogEntryDef(
+                    p.entryId(), d.matiere(), d.niveau(), p.gameKey(), p.gameLabel(),
+                    p.title(), p.description(), BanditManchotMechanic.ID, factory));
+        }
 
         // 5e mecanique (s17 / ADR-0016) : "associer / classer". CONTENU EXTERNALISE dans
         // content/associer/*.yml (consigne + puzzles d'associations item -> cible), charge
@@ -250,7 +271,7 @@ public class BeansConfig {
             ContentDescriptor d = p.descriptor();
             SimpleGameFactory factory = new SimpleGameFactory(
                     p.entryId(), p.title(), p.gameKey(), d.niveau(), AssocierMechanic.ID,
-                    () -> new AssociationGenerator(d, p.consigne(), p.puzzles()), 3, 1);
+                    () -> new AssociationGenerator(d, p.consigne(), p.puzzles()), 3, 1, p.jokers());
             defs.add(new CatalogEntryDef(
                     p.entryId(), d.matiere(), d.niveau(), p.gameKey(), p.gameLabel(),
                     p.title(), p.description(), AssocierMechanic.ID, factory));
@@ -264,15 +285,29 @@ public class BeansConfig {
             ContentDescriptor d = p.descriptor();
             SimpleGameFactory factory = new SimpleGameFactory(
                     p.entryId(), p.title(), p.gameKey(), d.niveau(), MemoryMechanic.ID,
-                    () -> new MemoryGenerator(d, p.consigne(), p.paires()), 1, 1);
+                    () -> new MemoryGenerator(d, p.consigne(), p.paires()), 1, 1, p.jokers());
             defs.add(new CatalogEntryDef(
                     p.entryId(), d.matiere(), d.niveau(), p.gameKey(), p.gameLabel(),
                     p.title(), p.description(), MemoryMechanic.ID, factory));
         }
 
+        // 7e mecanique (s21 / ADR-0017) : "puzzle" (reconstitue le mot). CONTENU EXTERNALISE
+        // dans content/puzzle/*.yml (consigne + mots + indices), charge et VALIDE au demarrage.
+        // Le domaine n'expose qu'un MotPuzzleGenerator generique alimente par ces mots. Defaut
+        // 5 mots par session (plancher 1). Capital de coeurs pilotable par le YAML.
+        for (PuzzleContentPack p : new PuzzlePackLoader().loadAll()) {
+            ContentDescriptor d = p.descriptor();
+            SimpleGameFactory factory = new SimpleGameFactory(
+                    p.entryId(), p.title(), p.gameKey(), d.niveau(), PuzzleMechanic.ID,
+                    () -> new MotPuzzleGenerator(d, p.consigne(), p.mots()), 5, 1, p.jokers());
+            defs.add(new CatalogEntryDef(
+                    p.entryId(), d.matiere(), d.niveau(), p.gameKey(), p.gameLabel(),
+                    p.title(), p.description(), PuzzleMechanic.ID, factory));
+        }
+
         return new InMemoryGameCatalog(
                 List.of(banditManchotMechanic, texteATrouMechanic, quizAventureMechanic, glisserDeposerMechanic,
-                        associerMechanic, memoryMechanic), defs);
+                        associerMechanic, memoryMechanic, puzzleMechanic), defs);
     }
 
     /**
@@ -284,9 +319,18 @@ public class BeansConfig {
             String entryId, String matiere, String niveau, String gameKey, String gameLabel,
             String title, String description, ContentDescriptor descriptor,
             Function<ContentDescriptor, ContentGenerator> generator) {
+        return simpleGame(entryId, matiere, niveau, gameKey, gameLabel, title, description,
+                descriptor, generator, null);
+    }
+
+    /** Variante avec capital de coeurs pilote par le YAML ({@code jokers} nullable, cf. s21). */
+    private static CatalogEntryDef simpleGame(
+            String entryId, String matiere, String niveau, String gameKey, String gameLabel,
+            String title, String description, ContentDescriptor descriptor,
+            Function<ContentDescriptor, ContentGenerator> generator, Integer jokers) {
         SimpleGameFactory factory = new SimpleGameFactory(
                 entryId, title, gameKey, niveau, BanditManchotMechanic.ID,
-                () -> generator.apply(descriptor));
+                () -> generator.apply(descriptor), jokers);
         return new CatalogEntryDef(
                 entryId, matiere, niveau, gameKey, gameLabel, title, description,
                 BanditManchotMechanic.ID, factory);
@@ -302,9 +346,18 @@ public class BeansConfig {
             String entryId, String matiere, String niveau, String gameKey, String gameLabel,
             String title, String description, ContentDescriptor descriptor,
             Function<ContentDescriptor, ContentGenerator> generator) {
+        return texteATrouGame(entryId, matiere, niveau, gameKey, gameLabel, title, description,
+                descriptor, generator, null);
+    }
+
+    /** Variante avec capital de coeurs pilote par le YAML ({@code jokers} nullable, cf. s21). */
+    private static CatalogEntryDef texteATrouGame(
+            String entryId, String matiere, String niveau, String gameKey, String gameLabel,
+            String title, String description, ContentDescriptor descriptor,
+            Function<ContentDescriptor, ContentGenerator> generator, Integer jokers) {
         SimpleGameFactory factory = new SimpleGameFactory(
                 entryId, title, gameKey, niveau, TexteATrouMechanic.ID,
-                () -> generator.apply(descriptor));
+                () -> generator.apply(descriptor), jokers);
         return new CatalogEntryDef(
                 entryId, matiere, niveau, gameKey, gameLabel, title, description,
                 TexteATrouMechanic.ID, factory);
@@ -320,9 +373,18 @@ public class BeansConfig {
             String entryId, String matiere, String niveau, String gameKey, String gameLabel,
             String title, String description, ContentDescriptor descriptor,
             Function<ContentDescriptor, ContentGenerator> generator) {
+        return quizAventureGame(entryId, matiere, niveau, gameKey, gameLabel, title, description,
+                descriptor, generator, null);
+    }
+
+    /** Variante avec capital de coeurs pilote par le YAML ({@code jokers} nullable, cf. s21). */
+    private static CatalogEntryDef quizAventureGame(
+            String entryId, String matiere, String niveau, String gameKey, String gameLabel,
+            String title, String description, ContentDescriptor descriptor,
+            Function<ContentDescriptor, ContentGenerator> generator, Integer jokers) {
         SimpleGameFactory factory = new SimpleGameFactory(
                 entryId, title, gameKey, niveau, QuizAventureMechanic.ID,
-                () -> generator.apply(descriptor));
+                () -> generator.apply(descriptor), jokers);
         return new CatalogEntryDef(
                 entryId, matiere, niveau, gameKey, gameLabel, title, description,
                 QuizAventureMechanic.ID, factory);

@@ -20,6 +20,7 @@ public record AssocContentPack(
         String gameLabel,
         ContentDescriptor descriptor,
         String consigne,
+        Integer jokers,
         List<AssociationGenerator.Puzzle> puzzles) {
 
     public AssocContentPack {
