@@ -1,0 +1,30 @@
+entryId: durees-cm1
+title: "Les durées CM1"
+description: "Convertis et compare les unités de temps."
+gameKey: durees
+gameLabel: "Les durées"
+matiere: "Mathématiques"
+niveau: "CM1"
+domaine: "Grandeurs et mesures — durées"
+questions:
+  - question: "Combien de minutes dans 1 heure ?"
+    bonne: "60"
+    distracteurs: ["100", "30", "24"]
+  - question: "Combien d'heures dans 1 jour ?"
+    bonne: "24"
+    distracteurs: ["12", "60", "10"]
+  - question: "Combien de jours dans une semaine ?"
+    bonne: "7"
+    distracteurs: ["5", "30", "12"]
+  - question: "2 heures, c'est combien de minutes ?"
+    bonne: "120"
+    distracteurs: ["60", "200", "20"]
+  - question: "90 minutes, c'est…"
+    bonne: "1 h 30 min"
+    distracteurs: ["9 h", "1 h 3 min", "90 h"]
+  - question: "Combien de mois dans une année ?"
+    bonne: "12"
+    distracteurs: ["10", "24", "7"]
+  - question: "Avec quoi mesure-t-on une durée ?"
+    bonne: "une horloge"
+    distracteurs: ["une règle", "une balance"]

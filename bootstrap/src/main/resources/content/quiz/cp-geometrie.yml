@@ -1,0 +1,33 @@
+entryId: geometrie-cp
+title: "Les formes CP"
+description: "Découvre les formes géométriques et leurs côtés."
+gameKey: geometrie
+gameLabel: "Les formes"
+matiere: "Géométrie"
+niveau: "CP"
+domaine: "Formes géométriques"
+questions:
+  - question: "Combien de côtés a un triangle ?"
+    bonne: "3"
+    distracteurs: ["4", "2", "5"]
+  - question: "Combien de côtés a un carré ?"
+    bonne: "4"
+    distracteurs: ["3", "5", "6"]
+  - question: "Quelle forme n'a pas de coin ?"
+    bonne: "le cercle"
+    distracteurs: ["le carré", "le triangle", "le rectangle"]
+  - question: "Une forme à 3 côtés s'appelle…"
+    bonne: "un triangle"
+    distracteurs: ["un carré", "un cercle"]
+  - question: "Un carré a des côtés…"
+    bonne: "tous égaux"
+    distracteurs: ["tous différents", "de 2 tailles"]
+  - question: "Combien de côtés a un rectangle ?"
+    bonne: "4"
+    distracteurs: ["3", "5", "2"]
+  - question: "Quelle forme est ronde ?"
+    bonne: "le disque"
+    distracteurs: ["le carré", "le triangle"]
+  - question: "Un cube a des faces en forme de…"
+    bonne: "carré"
+    distracteurs: ["triangle", "cercle", "rectangle"]
