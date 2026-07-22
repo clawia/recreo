@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Droite graduee</title>
+</head>
+<body>
+<!--
+  Fragment de la mecanique "droite graduee". Calque la structure du bandit manchot
+  (scoreboard / consigne / feedback / gameOver) mais remplace les boutons-reponses
+  par une DROITE : un tick cliquable par entier de game.lineMin a game.lineMax.
+  Chaque tick est un petit formulaire htmx qui poste `chosenAnswer` = valeur du tick
+  (reutilise le coup SpinAndPick, comme les boutons du bandit). Aucun JS requis :
+  les ticks sont des formulaires (degradation propre). Un curseur cosmetique peut
+  etre rebranche par /js/droite-graduee.js.
+-->
+<div th:fragment="game" class="droite-graduee" th:attr="data-session-id=${game.sessionId}">
+
+    <!-- ECRAN DE FIN (session terminee) : ecran commun mutualise. th:if porte par un
+         th:block ENVELOPPANT (meme raison que le bandit : priorite th:replace > th:if). -->
+    <th:block th:if="${game.finished}">
+        <div th:replace="~{fragments/commun :: gameOver}"></div>
+    </th:block>
+
+    <!-- ECRAN DE JEU (session active). -->
+    <div th:unless="${game.finished}">
+        <div th:replace="~{fragments/commun :: scoreboard}"></div>
+
+        <!-- Consigne : « Place le nombre N ». -->
+        <p class="consigne" th:text="${game.question}">Place le nombre</p>
+
+        <!-- La DROITE : un tick cliquable par entier de lineMin a lineMax. Chaque tick
+             est un formulaire htmx (fonctionne SANS JS) postant sa valeur comme
+             chosenAnswer. Les ticks deja tentes a tort (disabledOptions) sont grises. -->
+        <div class="droite" th:attr="data-line-min=${game.lineMin}, data-line-max=${game.lineMax}">
+            <form class="tick-form" th:each="v : ${#numbers.sequence(game.lineMin, game.lineMax)}"
+                  th:action="@{/sessions/{id}/moves(id=${game.sessionId})}" method="post"
+                  th:attr="hx-post=@{/sessions/{id}/moves(id=${game.sessionId})}"
+                  hx-target="#game-area" hx-swap="innerHTML">
+                <input type="hidden" name="chosenAnswer" th:value="${v}"/>
+                <input type="hidden" name="from" th:value="${from}"/>
+                <button type="submit" class="droite-tick" th:text="${v}"
+                        th:classappend="${game.disabledOptions != null and game.disabledOptions.contains(#strings.toString(v))} ? ' tentee' : ''"
+                        th:attr="disabled=${game.disabledOptions != null and game.disabledOptions.contains(#strings.toString(v))} ? 'disabled' : null">0</button>
+            </form>
+        </div>
+
+        <!-- Message de points : emplacement RESERVE mutualise. -->
+        <div th:replace="~{fragments/commun :: feedbackSlot}"></div>
+    </div>
+</div>
+</body>
+</html>

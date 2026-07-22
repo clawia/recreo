@@ -23,6 +23,9 @@ public class WebViewMapper {
     /** Vue de la mecanique puzzle (cf. {@code PuzzleMechanic.VIEW}) : meme plateau d'arrangement. */
     private static final String PUZZLE = "puzzle";
 
+    /** Vue de la mecanique droite graduee (cf. {@code DroiteGradueeMechanic.VIEW}). */
+    private static final String DROITE_GRADUEE = "droitegraduee";
+
     /** Vue de la mecanique associer/classer (cf. {@code AssocierMechanic.VIEW}). */
     private static final String ASSOCIER = "associer";
 
@@ -65,6 +68,9 @@ public class WebViewMapper {
             return PUZZLE.equals(view.mechanicView())
                     ? withBoard.withHint(safe(view.meta()).get("indice"))
                     : withBoard;
+        }
+        if (DROITE_GRADUEE.equals(view.mechanicView())) {
+            return game.withLine(intMeta(view.meta(), "min", 0), intMeta(view.meta(), "max", 10));
         }
         return withAssociations(game, view.mechanicView(), view.reelSymbols(), view.meta());
     }
@@ -110,6 +116,11 @@ public class WebViewMapper {
         // Session terminee : pas de plateau a rendre (ecran de fin).
         if (FINISHED.equals(view.status())) {
             return game;
+        }
+
+        // Droite graduee : bornes de la droite (ticks) lues de la meta de l'item courant.
+        if (DROITE_GRADUEE.equals(view.mechanicView())) {
+            return game.withLine(intMeta(view.meta(), "min", 0), intMeta(view.meta(), "max", 10));
         }
 
         // Memory : plateau reconstruit depuis la meta de l'item (groupes de paires).
@@ -168,6 +179,19 @@ public class WebViewMapper {
      */
     private static Map<String, String> safe(Map<String, String> meta) {
         return meta == null ? Map.of() : meta;
+    }
+
+    /** Lit un entier de la meta de l'item (bornes de la droite graduee) ; defaut si absent/illisible. */
+    private static int intMeta(Map<String, String> meta, String key, int fallback) {
+        String raw = safe(meta).get(key);
+        if (raw == null || raw.isBlank()) {
+            return fallback;
+        }
+        try {
+            return Integer.parseInt(raw.trim());
+        } catch (NumberFormatException e) {
+            return fallback;
+        }
     }
 
     private static String firstOption(List<String> options) {

@@ -1104,3 +1104,105 @@ body {
     font-size: 3.4rem;
     line-height: 1;
 }
+
+/* ---- Barres de filtres (ecran « Par jeu ») : rangee de puces tactiles ---- */
+/* Chaque barre est une rangee qui se replie (wrap) ; les puces sont des liens
+   stylees en gros boutons pour de jeunes enfants. */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin: 0 auto 0.8rem;
+    max-width: 900px;
+}
+
+.filter-chip {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--ink);
+    background: var(--card);
+    text-decoration: none;
+    box-shadow: var(--shadow);
+    border: 3px solid transparent;
+    cursor: pointer;
+    transition: transform 0.1s ease, background 0.1s ease;
+}
+
+.filter-chip:hover {
+    transform: translateY(-2px);
+}
+
+/* Puce active : surbrillance (couleur accent) pour montrer le filtre en cours. */
+.filter-chip.active {
+    background: var(--accent);
+    color: white;
+    border-color: #339af0;
+}
+
+/* ---- Mecanique "droite graduee" : ticks alignes sur une droite horizontale ---- */
+.droite-graduee {
+    text-align: center;
+}
+
+/* La droite : rangee HORIZONTALE de ticks, avec un trait de base visible sous les
+   reperes. Grands intervalles (0..100) : on autorise le wrap ET le scroll horizontal
+   du conteneur pour rester utilisable sur petit ecran. */
+.droite-graduee .droite {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 0.4rem;
+    margin: 1rem auto 0.6rem;
+    padding: 0.6rem 0.4rem 0.9rem;
+    max-width: 640px;
+    overflow-x: auto;
+    border-bottom: 6px solid var(--accent);
+}
+
+.droite-graduee .tick-form {
+    margin: 0;
+}
+
+/* Un tick : cible tactile (nombre au-dessus d'un petit repere via bordure basse). */
+.droite-tick {
+    position: relative;
+    min-width: 44px;
+    padding: 0.6rem 0.5rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    background: var(--primary);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform 0.1s ease, background 0.1s ease;
+}
+
+.droite-tick:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+}
+
+.droite-tick:active {
+    transform: translateY(2px);
+}
+
+/* Tick deja tente a tort (tentee) ou desactive : grise et non cliquable. */
+.droite-tick.tentee,
+.droite-tick[disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.droite-tick.tentee:hover,
+.droite-tick[disabled]:hover {
+    transform: none;
+    background: var(--primary);
+}

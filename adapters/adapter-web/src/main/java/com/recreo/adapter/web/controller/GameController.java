@@ -91,15 +91,26 @@ public class GameController {
     // ---- Axe "par jeu" ----
 
     @GetMapping("/jeux")
-    public String jeux(Model model) {
-        // Axe « par jeu » : liste PLATE de tous les jeux, triee par nom (regroupe les memes jeux)
-        // puis par niveau, affichee au format complet « Matiere Niveau — Nom » (contexte 'jeu').
+    public String jeux(@RequestParam(value = "niveau", required = false) String niveau,
+                       @RequestParam(value = "matiere", required = false) String matiere,
+                       Model model) {
+        // Axe « par jeu » : liste PLATE de tous les jeux, FILTRABLE par niveau et/ou matiere
+        // (boutons de filtre combinables, cf. IDEE-3). Triee par nom (regroupe les memes jeux) puis
+        // niveau, affichee au format « Matiere Niveau — Nom » (contexte 'jeu').
+        boolean filtreNiveau = niveau != null && !niveau.isBlank();
+        boolean filtreMatiere = matiere != null && !matiere.isBlank();
         var entries = mapper.toCatalogItems(catalogueQuery.entries()).stream()
+                .filter(i -> !filtreNiveau || i.niveau().equals(niveau))
+                .filter(i -> !filtreMatiere || i.matiere().equals(matiere))
                 .sorted(java.util.Comparator
                         .comparing(com.recreo.adapter.web.view.CatalogItemView::gameLabel)
                         .thenComparing(com.recreo.adapter.web.view.CatalogItemView::niveau))
                 .toList();
         model.addAttribute("entries", entries);
+        model.addAttribute("niveaux", catalogueQuery.niveaux());
+        model.addAttribute("matieres", catalogueQuery.matieres());
+        model.addAttribute("selectedNiveau", filtreNiveau ? niveau : null);
+        model.addAttribute("selectedMatiere", filtreMatiere ? matiere : null);
         model.addAttribute("from", "/jeux");
         return "jeux";
     }

@@ -15,12 +15,38 @@
 
 <main class="selection">
     <section class="catalogue">
+        <!-- Barre de filtres NIVEAU : « Tous » + un bouton par niveau. Chaque lien
+             PRESERVE l'autre filtre (matiere) courant, et le bouton actif recoit
+             `filter-chip active`. -->
+        <div class="filters">
+            <a class="filter-chip" th:classappend="${selectedNiveau == null} ? ' active' : ''"
+               th:href="@{/jeux(matiere=${selectedMatiere})}">Tous</a>
+            <a class="filter-chip" th:each="n : ${niveaux}"
+               th:classappend="${n == selectedNiveau} ? ' active' : ''"
+               th:href="@{/jeux(niveau=${n}, matiere=${selectedMatiere})}"
+               th:text="${n}">CP</a>
+        </div>
+
+        <!-- Barre de filtres MATIERE : « Toutes » + un bouton par matiere. Chaque lien
+             PRESERVE l'autre filtre (niveau) courant. -->
+        <div class="filters">
+            <a class="filter-chip" th:classappend="${selectedMatiere == null} ? ' active' : ''"
+               th:href="@{/jeux(niveau=${selectedNiveau})}">Toutes</a>
+            <a class="filter-chip" th:each="m : ${matieres}"
+               th:classappend="${m == selectedMatiere} ? ' active' : ''"
+               th:href="@{/jeux(niveau=${selectedNiveau}, matiere=${m})}"
+               th:text="${m}">Maths</a>
+        </div>
+
         <!-- Axe « par jeu » : liste directe de TOUS les jeux, triés par nom (les mêmes jeux se
              regroupent), au format complet « Matière Niveau — Nom » (contexte 'jeu'). -->
         <div class="cards">
             <div th:each="item : ${entries}"
                  th:insert="~{fragments/catalogue :: leaf(${item}, ${from}, 'jeu')}"></div>
         </div>
+
+        <!-- Aucun jeu ne correspond au filtre courant. -->
+        <p th:if="${#lists.isEmpty(entries)}" class="hint">Aucun jeu pour ce filtre</p>
     </section>
 </main>
 </body>
