@@ -278,3 +278,62 @@ en sollicitant ma mémoire (quantité↔chiffre, fraction↔représentation, FR�
   fiche `FICHE-memory-s17.md` mises à jour.
 - **Statut** : ✅ **LIVRÉE en s17** — Done technique CI à confirmer ; Done pédagogique **À VALIDER**
   (DEC-0014, ADR-0016).
+
+---
+
+## Sprint s18 — Raffinements UX de s17 (après démo utilisatrice)
+
+Retouches issues de la démo de s17. **Aucune nouvelle mécanique, aucun nouveau coup, pas de nouvel
+ADR** (seul ajout : record domaine pur `AssociationBoard`). Cf. `2026-07-22-s18-planning.md`,
+sections « Raffinements s18 » de DEC-0013 et DEC-0014, note ADR-index s18. Validation **groupée avec
+s17**.
+
+### Story S18-1 — Le memory consomme un cœur sur une mauvaise paire  ✅ **LIVRÉE (s18)**
+**En tant qu'**enfant, **je veux** que le memory suive la même règle de cœurs que les autres jeux,
+**afin que** me tromper ait le même enjeu partout.
+- **Compétence programme visée** : transverse (droit à l'erreur — DEC-0013).
+- **Critères d'acceptation** : chaque **mauvaise paire retournée** coûte **1 cœur** (en s17 : aucun) ;
+  à **0 cœur**, une mauvaise paire **termine la session** ; synchro cœurs client/serveur (`memory.js`).
+- **Statut** : ✅ **LIVRÉE en s18** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0013).
+
+### Story S18-2 — Verrouillage partiel de « Associer / Classer »  ✅ **LIVRÉE (s18)**
+**En tant qu'**enfant, **je veux** que mes cases bien classées restent en place sur une erreur, **afin
+de** ne corriger que ce qui est faux (comme au glisser-déposer).
+- **Compétence programme visée** : QLM CP vivant/non-vivant · Anglais CM1 appariement (mêmes qu'en s17).
+- **Critères d'acceptation** : sur erreur, **seules les cases mal placées** reviennent en réserve, les
+  éléments bien classés restent **verrouillés** (alignement DEC-0008) ; via le record domaine pur
+  `AssociationBoard` (calqué sur `ArrangementBoard`) ; ArchUnit **5/5 inchangé**. Scope explicitement
+  différé en s17, maintenant repris.
+- **Statut** : ✅ **LIVRÉE en s18** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0014).
+
+### Story S18-3 — Écran de fin « Essaye encore »  ✅ **LIVRÉE (s18)**
+**En tant qu'**enfant, **je veux** un titre de fin qui distingue la victoire de l'échec par manque de
+cœurs, **afin de** comprendre pourquoi la partie s'est arrêtée.
+- **Compétence programme visée** : transverse (DEC-0013).
+- **Critères d'acceptation** : titre **« Bravo »** sur victoire (toutes les questions traitées) ;
+  **« Essaye encore »** quand la session s'arrête faute de cœurs (0 cœur + erreur).
+- **Statut** : ✅ **LIVRÉE en s18** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0013).
+
+### Story S18-4 — Score max correct en fin par cœurs épuisés  ✅ **LIVRÉE (s18)**
+**En tant qu'**enfant, **je veux** un score final juste quand la partie s'arrête sur une erreur,
+**afin que** la question ratée soit comptée.
+- **Compétence programme visée** : transverse (DEC-0013).
+- **Critères d'acceptation** : en fin par cœurs épuisés, le **dénominateur** compte la question **en
+  cours** (répondues + 1) — `SessionEngine.onWrong` incrémente `answered` **avant** `FINISHED`.
+- **Statut** : ✅ **LIVRÉE en s18** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0013).
+
+### Story S18-5 — Memory quantités CP en faces de dés  ✅ **LIVRÉE (s18)**
+**En tant qu'**élève de CP, **je veux** des faces de dés plutôt que des points, **afin de** relier
+plus vite une quantité à son chiffre.
+- **Compétence programme visée** : Maths CP — associer une quantité à son chiffre (Memory, mêmes qu'en s17).
+- **Critères d'acceptation** : `memory-quantite-cp` affiche des **faces de dés** (⚀⚁⚂⚃⚄⚅) au lieu de
+  points ; jeu porté à **6 paires** (changement de contenu YAML).
+- **Statut** : ✅ **LIVRÉE en s18** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0014).
+
+### Story S18-6 — Memory anglais CM1 avec images côté français  ✅ **LIVRÉE (s18)**
+**En tant qu'**élève de CM1, **je veux** associer une **image** à un mot anglais, **afin de** m'appuyer
+sur le sens plutôt que sur le mot français écrit.
+- **Compétence programme visée** : Anglais CM1 — lexique / appariement (Memory, mêmes qu'en s17).
+- **Critères d'acceptation** : `memory-anglais-cm1` remplace le côté français par des **images**
+  (🐶🐱🏠🐟☀️🍎) associées au mot anglais (changement de contenu YAML).
+- **Statut** : ✅ **LIVRÉE en s18** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0014).

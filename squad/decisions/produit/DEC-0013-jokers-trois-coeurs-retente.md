@@ -45,6 +45,20 @@ donne un enjeu (« il me reste 2 ❤️ »), tout en gardant l'expérience court
 - **Non-régression UI** : l'écran de fin ne doit PAS apparaître pendant les retentes (jokers > 0) ;
   il DOIT apparaître sur une erreur à 0 joker.
 
+## Raffinements s18 (après démo utilisatrice de s17)
+Retours de l'utilisatrice sur s17, corrigés en s18 — pas de nouvelle décision, ajustements de la
+règle des cœurs et de l'écran de fin :
+1. **Le memory consomme aussi un cœur.** En s17, le memory ne consommait aucun cœur ; désormais
+   **chaque mauvaise paire retournée coûte 1 cœur** (aligné sur les autres mécaniques à clic). À
+   **0 cœur**, une mauvaise paire **termine la session**. Note archi : cela a nécessité une synchro
+   cœurs client/serveur (fetch de l'état + fin de session côté îlot JS `memory.js`).
+2. **Écran de fin « Essaye encore ».** Le titre de l'écran de fin dépend désormais de la cause de fin :
+   **« Bravo »** quand la session se termine sur **victoire** (toutes les questions traitées) ;
+   **« Essaye encore »** quand elle s'arrête **faute de cœurs** (0 cœur + erreur).
+3. **Score max corrigé.** En fin par cœurs épuisés, le **dénominateur** du score compte la question
+   **en cours** (répondues + 1) : `SessionEngine.onWrong` incrémente `answered` **avant** de passer
+   la session à `FINISHED`. Le score affiché reflète ainsi la question ratée qui a mis fin à la session.
+
 ## Réserves / à confirmer en démo
 - Le **capital de 3** est-il le bon niveau de difficulté (ni trop punitif, ni trop permissif) ?
 - **Blast radius** : la sémantique du coup faux change pour **toutes** les mécaniques à clic — à

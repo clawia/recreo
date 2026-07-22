@@ -17,5 +17,12 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Une DEC = une ligne.
 | DEC-0010 | Décomposition des nombres (CP/CM1) + déclinaisons glisser-déposer (frise chronologique CM1, range CM1) | Maths CP/CM1 valeur positionnelle ; Histoire CM1 frise | VALIDÉ (user, 2026-07-21) | 2026-07-21 | s14 |
 | DEC-0011 | Toggle « inclure les centaines » (décomposition) + « Range les fractions » (CM1) | Maths CP/CM1 valeur positionnelle ; Maths CM1 fractions | VALIDÉ (user, 2026-07-21) | 2026-07-21 | s15 |
 | DEC-0012 | « Compare les fractions » (< > =, remplace le rangement) + frise chronologique VERTICALE | Maths CM1 comparer fractions ; Histoire CM1 frise | VALIDÉ (user, 2026-07-21) | 2026-07-21 | s16 |
-| DEC-0013 | Jokers : 3 cœurs, retente sur erreur (par clic faux, +10 plein), 0 cœur = fin de session | transverse (droit à l'erreur ; toutes mécaniques à clic) | À VALIDER | 2026-07-22 | s17 |
-| DEC-0014 | Mécaniques « Associer/Classer » & « Memory » + 6 jeux externalisés (YAML) | QLM CP vivant/non-vivant ; Anglais CM1 appariement ; Maths CP quantité↔chiffre ; Maths CM1 fractions↔représentation ; Français CP mot↔image | À VALIDER | 2026-07-22 | s17 |
+| DEC-0013 | Jokers : 3 cœurs, retente sur erreur (par clic faux, +10 plein), 0 cœur = fin de session | transverse (droit à l'erreur ; toutes mécaniques à clic) | À VALIDER | 2026-07-22 | s17 · raff. s18 |
+| DEC-0014 | Mécaniques « Associer/Classer » & « Memory » + 6 jeux externalisés (YAML) | QLM CP vivant/non-vivant ; Anglais CM1 appariement ; Maths CP quantité↔chiffre ; Maths CM1 fractions↔représentation ; Français CP mot↔image | À VALIDER | 2026-07-22 | s17 · raff. s18 |
+
+> **s18 — pas de nouvelle DEC.** Raffinements de s17 après démo utilisatrice, consignés en
+> section « Raffinements s18 » dans DEC-0013 (cœur consommé aussi par le memory ; écran de fin
+> « Essaye encore » quand la session s'arrête faute de cœurs ; correction du score max) et DEC-0014
+> (verrouillage partiel d'associer/classer aligné sur DEC-0008 ; faces de dés pour le memory
+> quantités CP ; images côté français pour le memory anglais CM1). Statut inchangé : **À VALIDER**
+> (s17 + s18 à valider ensemble).

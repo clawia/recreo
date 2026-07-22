@@ -62,6 +62,12 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 | Anglais (LV) | CM1 | Lexique | Apparier un mot français à sa traduction anglaise (lexique) | Associer/Classer — Appariement FR↔EN ; Memory — Anglais | Associer/Classer + Memory | en cours (s17, 2026-07-22) |
 | Français | CP | Lecture / vocabulaire | Associer un mot écrit à son image (lecture, reconnaissance de mots) | Memory — Mot et image | Memory | en cours (s17, 2026-07-22) |
 
+> **Note s18 — rien de nouveau à couvrir.** s18 raffine l'UX des jeux de s17 (cœur consommé par le
+> memory + écran « Essaye encore » + score max — DEC-0013 ; verrouillage partiel d'associer/classer,
+> faces de dés du memory quantités CP, images du memory anglais CM1 — DEC-0014). **Aucune nouvelle
+> compétence** : les 5 lignes s17 (associer/classer, memory) restent `en cours` et passeront
+> `couvert-validé` à la validation groupée s17 + s18 par l'utilisatrice.
+
 ## Prochaines actions suggérées
 
 - Sprint(s) suivants : prioriser au moins une compétence hors mathématiques (français lecture CP

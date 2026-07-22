@@ -49,6 +49,18 @@ besoins reposent sur un **nouveau coup générique `SubmitAssociations(Map)`** (
 - **Matrice** : 5 nouvelles compétences en `en cours` (à passer `couvert-validé` après démo).
 - **ArchUnit** : 5/5 — la règle d'isolation en slices dynamiques couvre les 2 nouveaux paquets.
 
+## Raffinements s18 (après démo utilisatrice de s17)
+Retours de l'utilisatrice sur s17, corrigés en s18 — pas de nouvelle mécanique ni nouveau coup :
+1. **Verrouillage partiel d'associer/classer** (scope explicitement différé en s17, décision 4
+   ci-dessus, maintenant repris). Sur une erreur, **seules les cases mal placées reviennent en
+   réserve** — les éléments bien classés restent **verrouillés en place**. Aligné sur DEC-0008
+   (feedback partiel du glisser-déposer). Note archi : nouveau record domaine pur `AssociationBoard`
+   (calqué sur `ArrangementBoard`, aide de calcul pure) ; règles ArchUnit inchangées (cf. note ADR-index s18).
+2. **Memory quantités CP** : les faces montrent désormais des **faces de dés** (⚀⚁⚂⚃⚄⚅) au lieu de
+   points ; le jeu passe à **6 paires**.
+3. **Memory anglais CM1** : le côté français est remplacé par des **images** (🐶🐱🏠🐟☀️🍎) associées
+   au mot anglais (au lieu du mot FR écrit).
+
 ## À confirmer en démo
 - Justesse des contenus des 6 packs YAML (paires FR↔EN, quantité↔chiffre, fractions↔représentation,
   mot↔image, catégorisation vivant/non-vivant).
