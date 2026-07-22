@@ -6,7 +6,9 @@ import com.recreo.application.port.in.CatalogEntryView;
 import com.recreo.application.port.in.MoveOutcomeView;
 import com.recreo.application.port.in.SessionView;
 import com.recreo.domain.mechanic.ArrangementBoard;
+import com.recreo.domain.mechanic.AssociationBoard;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -63,7 +65,12 @@ public class WebViewMapper {
 
     /** Ancienne surcharge : aucun arrangement soumis -> plateau initial pour glisser-deposer. */
     public GameView toGameView(MoveOutcomeView view) {
-        return toGameView(view, null);
+        return toGameView(view, null, null);
+    }
+
+    /** Surcharge sans associations (glisser-deposer / jeux a clic). */
+    public GameView toGameView(MoveOutcomeView view, List<String> submittedArrangement) {
+        return toGameView(view, submittedArrangement, null);
     }
 
     /**
@@ -75,7 +82,8 @@ public class WebViewMapper {
      * canoniquement (cf. {@code Item.encodeArrangement} ; le generateur ne produit aucun
      * distracteur). C'est la seule source de l'ordre attendu cote vue.</p>
      */
-    public GameView toGameView(MoveOutcomeView view, List<String> submittedArrangement) {
+    public GameView toGameView(MoveOutcomeView view, List<String> submittedArrangement,
+                               Map<String, String> submittedAssociations) {
         GameView game = GameView.withFeedback(
                 view.sessionId(),
                 view.mechanicView(),
@@ -98,8 +106,23 @@ public class WebViewMapper {
             return game;
         }
 
-        // Mecaniques associer/classer & memory : plateau reconstruit depuis la meta de l'item.
-        if (ASSOCIER.equals(view.mechanicView()) || MEMORY.equals(view.mechanicView())) {
+        // Memory : plateau reconstruit depuis la meta de l'item (groupes de paires).
+        if (MEMORY.equals(view.mechanicView())) {
+            return withAssociations(game, view.mechanicView(), view.reelSymbols(), view.meta());
+        }
+
+        // Associer/classer : sur un essai FAUX avec des associations soumises, on GARDE en place
+        // les elements bien classes et on ne renvoie en reserve que les mal classes (UX « ranger »,
+        // DEC-0008). Sinon (bonne reponse -> item suivant, ou pas de soumission) : plateau initial.
+        if (ASSOCIER.equals(view.mechanicView())) {
+            if (!view.correct() && submittedAssociations != null && !submittedAssociations.isEmpty()) {
+                Map<String, String> expected = parseAssociations(firstOption(view.options()));
+                AssociationBoard board = AssociationBoard.afterAttempt(
+                        view.reelSymbols(), submittedAssociations, expected);
+                return game
+                        .withAssociationBoard(split(safe(view.meta()).get("targets")), board.reserve(), List.of())
+                        .withAssociationLocked(board.lockedItems(), board.lockedTargets());
+            }
             return withAssociations(game, view.mechanicView(), view.reelSymbols(), view.meta());
         }
 
@@ -131,9 +154,32 @@ public class WebViewMapper {
      * et memory, a partir de la meta de l'item (cibles pour « classer », groupes de paires pour
      * memory). Les autres mecaniques sont renvoyees inchangees.
      */
+    private static Map<String, String> safe(Map<String, String> meta) {
+        return meta == null ? Map.of() : meta;
+    }
+
+    private static String firstOption(List<String> options) {
+        return options == null || options.isEmpty() ? "" : options.get(0);
+    }
+
+    /** Decode "item=cible, item2=cible2" (cf. {@code Item.encodeAssociations}) en map. */
+    private static Map<String, String> parseAssociations(String encoded) {
+        Map<String, String> map = new LinkedHashMap<>();
+        if (encoded == null || encoded.isEmpty()) {
+            return map;
+        }
+        for (String pair : encoded.split(ARRANGEMENT_SEPARATOR, -1)) {
+            int eq = pair.indexOf('=');
+            if (eq > 0) {
+                map.put(pair.substring(0, eq), pair.substring(eq + 1));
+            }
+        }
+        return map;
+    }
+
     private GameView withAssociations(GameView game, String mechanicView,
                                       List<String> reelSymbols, Map<String, String> meta) {
-        Map<String, String> safeMeta = meta == null ? Map.of() : meta;
+        Map<String, String> safeMeta = safe(meta);
         if (ASSOCIER.equals(mechanicView)) {
             // Zones-cibles (categories/mots-cibles) ; aucun groupe (on ne revele pas la reponse).
             return game.withAssociationBoard(split(safeMeta.get("targets")), reelSymbols, List.of());

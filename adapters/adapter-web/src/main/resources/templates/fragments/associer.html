@@ -45,7 +45,16 @@
             <div class="assoc-slot" th:each="cible : ${game.associationTargets}"
                  th:attr="data-target=${cible}">
                 <span class="assoc-cible" th:text="${cible}">catégorie</span>
-                <div class="assoc-drop"></div>
+                <!-- Elements BIEN classes (verrouilles) : pre-affiches dans leur zone.
+                     Les listes associationLockedItems / associationLockedTargets sont
+                     PARALLELES (meme index) ; on ne place ici que ceux dont la cible
+                     verrouillee == cette zone. -->
+                <div class="assoc-drop">
+                    <th:block th:each="li,st : ${game.associationLockedItems}">
+                        <div th:if="${game.associationLockedTargets[st.index] == cible}"
+                             class="assoc-item" draggable="true" th:text="${li}" th:attr="data-value=${li}"></div>
+                    </th:block>
+                </div>
             </div>
         </div>
 

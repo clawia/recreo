@@ -39,7 +39,8 @@
      courant / score maximum atteignable = questions x 10 pts) + Rejouer (relance une
      session du meme jeu) + retour contextuel. -->
 <div th:fragment="gameOver" class="game-over">
-    <h2 class="game-over-title">🎉 Bravo !</h2>
+    <h2 th:if="${game.correct}" class="game-over-title">🎉 Bravo !</h2>
+    <h2 th:unless="${game.correct}" class="game-over-title">💪 Essaye encore !</h2>
     <p class="final-score">Score : <b th:text="${game.score}">0</b>
         / <span th:text="${game.scoreMax}">0</span></p>
     <div class="game-over-actions">

@@ -131,7 +131,11 @@ public final class SessionEngine {
      */
     private MoveResult onWrong(GameSession session, String triedValue, String retryMessage) {
         if (session.jokers() <= 0) {
-            GameSession finished = session.withStatus(SessionStatus.FINISHED);
+            // Plus de coeur : fin de session. On COMPTE la question en cours (celle ratee) dans
+            // le total joue, pour que le score max de l'ecran de fin = (repondues + 1) x 10.
+            GameSession finished = session
+                    .withAnswered(session.answered() + 1)
+                    .withStatus(SessionStatus.FINISHED);
             return new MoveResult(finished, false,
                     new Feedback("Plus de coeur ! La partie est terminee."));
         }

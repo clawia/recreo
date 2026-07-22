@@ -41,7 +41,9 @@ public record GameView(
         List<String> disabledOptions,
         List<String> associationTargets,
         List<String> associationCards,
-        List<String> associationGroups) {
+        List<String> associationGroups,
+        List<String> associationLockedItems,
+        List<String> associationLockedTargets) {
 
     public static GameView initial(String sessionId, String mechanicView, String catalogEntryId,
                                    List<String> reelSymbols, String question, List<String> options,
@@ -49,7 +51,8 @@ public record GameView(
                                    int jokers, List<String> disabledOptions) {
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
                 answered, questionsTarget, finished, false, false, null, null, null,
-                jokers, disabledOptions == null ? List.of() : disabledOptions, null, null, null);
+                jokers, disabledOptions == null ? List.of() : disabledOptions, null, null, null,
+                List.of(), List.of());
     }
 
     public static GameView withFeedback(String sessionId, String mechanicView, String catalogEntryId,
@@ -59,7 +62,8 @@ public record GameView(
                                         int jokers, List<String> disabledOptions) {
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
                 answered, questionsTarget, finished, true, correct, feedbackMessage, null, null,
-                jokers, disabledOptions == null ? List.of() : disabledOptions, null, null, null);
+                jokers, disabledOptions == null ? List.of() : disabledOptions, null, null, null,
+                List.of(), List.of());
     }
 
     /**
@@ -70,7 +74,8 @@ public record GameView(
     public GameView withArrangementBoard(List<String> slots, List<String> reserve) {
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
                 answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage, slots, reserve,
-                jokers, disabledOptions, associationTargets, associationCards, associationGroups);
+                jokers, disabledOptions, associationTargets, associationCards, associationGroups,
+                associationLockedItems, associationLockedTargets);
     }
 
     /**
@@ -82,7 +87,21 @@ public record GameView(
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
                 answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage,
                 arrangementSlots, arrangementReserve,
-                jokers, disabledOptions, targets, cards, groups);
+                jokers, disabledOptions, targets, cards, groups,
+                associationLockedItems, associationLockedTargets);
+    }
+
+    /**
+     * Copie de cette vue avec les elements VERROUILLES (bien classes, cf. AssociationBoard) :
+     * {@code items} sont deja places dans leur cible {@code targets} (paralleles) et ne
+     * reviennent PAS en reserve (UX « ranger », DEC-0008). Mecanique associer/classer.
+     */
+    public GameView withAssociationLocked(List<String> items, List<String> targets) {
+        return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
+                answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage,
+                arrangementSlots, arrangementReserve,
+                jokers, disabledOptions, associationTargets, associationCards, associationGroups,
+                items, targets);
     }
 
     /**

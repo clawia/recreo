@@ -23,6 +23,7 @@ reste la **validation pédagogique humaine**, pas la vitesse des agents.
 | s15 | 2026-07-21 | 2026-07-21 | 1 salve (orchestration sous-agent) | Toggle « inclure les centaines » (décomposition, case à cocher — ADR-0015) + déclinaison glisser-déposer « Range les fractions » (Maths CM1) | ✅ CI verte (146 tests) | ✅ VALIDÉ 2026-07-21 |
 | s16 | 2026-07-21 | 2026-07-21 | 1 salve | Retours : « Compare les fractions » (< > =, bandit manchot ; remplace le rangement) + frise chronologique VERTICALE (rail temps + flèche) | ✅ CI verte (147 tests) | ✅ VALIDÉ 2026-07-21 |
 | s17 | 2026-07-22 09:00 | 2026-07-22 | 1 salve (orchestration multi-sous-agents sur contrats gelés) | Jokers / 3 cœurs (transverse, retente sur erreur, 0 cœur = fin — DEC-0013) + 5e mécanique « Associer/Classer » & 6e « Memory » (coup générique `SubmitAssociations`, 6 jeux YAML — ADR-0016 / DEC-0014) | ✅ CI verte (à confirmer) | ⏳ À VALIDER |
+| s18 | 2026-07-22 | 2026-07-22 | 1 salve (boucle démo → retouches, orchestration multi-sous-agents) | Raffinements UX de s17 (6 retouches, pas de nouvelle mécanique) : cœur consommé par le memory + écran de fin « Essaye encore » + score max (DEC-0013) ; verrouillage partiel associer/classer (record `AssociationBoard`) + dés du memory quantités CP + images du memory anglais CM1 (DEC-0014) — pas de nouvel ADR | ✅ CI verte (à confirmer) | ⏳ À VALIDER (avec s17) |
 
 > Note : « 1 salve d'amorçage » = les agents ont produit l'incrément en une session de travail
 > continue (temps réel de l'ordre de la dizaine de minutes à quelques heures selon les tâches),
