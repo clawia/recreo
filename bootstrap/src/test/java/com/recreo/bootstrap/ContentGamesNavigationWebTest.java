@@ -32,15 +32,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Navigation et réglages des jeux de CONTENU ajoutés en s08 (aucune nouvelle mécanique) :
- * "Le bon son" (Français CP, bandit manchot), "Vivre ensemble" (EMC CP) / "Citoyenneté &
- * respect" (EMC CM1) / "Vrai ou Faux — sciences" (quiz-aventure), et "Tables de
- * multiplication" (CM1, calcul mental borné à la seule multiplication).
+ * Navigation des jeux de CONTENU (batis sur des mecaniques existantes) et contraintes des
+ * « Tables de multiplication ». Ces jeux ("Le bon son" en Francais CP, EMC "Vivre ensemble" /
+ * "Citoyennete & respect", "Vrai ou Faux — sciences", et les tables) apparaissent aux bons
+ * niveaux et dans l'axe par jeu ; les tables restent bornees a la seule multiplication
+ * (operandes 1..10) et plafonnees a 50 questions.
  */
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-class S08ContentNavigationWebTest {
+class ContentGamesNavigationWebTest {
 
     private static final int SAMPLES = 300;
 
@@ -57,7 +58,7 @@ class S08ContentNavigationWebTest {
     }
 
     @Test
-    void niveauCpListsTheNewCpGames() throws Exception {
+    void niveauCpListsContentGames() throws Exception {
         mockMvc.perform(get("/niveau/CP"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Le bon son")))
@@ -65,7 +66,7 @@ class S08ContentNavigationWebTest {
     }
 
     @Test
-    void niveauCm1ListsTheNewCm1Games() throws Exception {
+    void niveauCm1ListsContentGames() throws Exception {
         mockMvc.perform(get("/niveau/CM1"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Tables de multiplication")))
@@ -74,7 +75,7 @@ class S08ContentNavigationWebTest {
     }
 
     @Test
-    void jeuxListsTheNewGamesByGameKey() throws Exception {
+    void jeuxListsContentGames() throws Exception {
         // Axe « par jeu » : liste plate des jeux, reperes par leur nom court (gameLabel).
         mockMvc.perform(get("/jeux"))
                 .andExpect(status().isOk())
@@ -89,7 +90,7 @@ class S08ContentNavigationWebTest {
     void tablesAreCappedAtFifty() {
         // Tables = combinatoire (multiplication) -> plafond 50, indépendant du contenu.
         // (Le cap des jeux FINIS externalisés est couvert, sans littéral de contenu, par
-        // SessionQuestionsTest + un test relatif dans S04 — cf. PLAN-refacto-tests-contenu.md.)
+        // SessionQuestionsTest + un test relatif dans GamesNavigationAndSettingsWebTest.)
         assertThat(catalog.settingsFor("tables-multiplication-cm1").questions().max()).isEqualTo(50);
     }
 

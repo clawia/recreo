@@ -26,14 +26,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Navigation des 6 nouveaux jeux s04 : les entrees apparaissent au bon niveau et
- * par jeu (deux axes), un jeu sans reglage n'expose pas de bouton « Paramètres »,
- * et les jeux existants (avec reglages) restent inchanges.
+ * Navigation ET reglages des jeux « simples » (sans parametre de contenu). Leurs entrees
+ * apparaissent aux bons niveaux et dans l'axe par jeu ; chaque jeu expose le reglage commun
+ * « nombre de questions » (les jeux simples n'ont QUE ce reglage) ; les bornes de session
+ * sont respectees (jeu combinatoire plafonne a 50, jeu fini borne par son vivier) ; les jeux
+ * avec reglages specifiques (calcul mental...) restent inchanges.
  */
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-class S04GamesNavigationWebTest {
+class GamesNavigationAndSettingsWebTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -41,7 +43,7 @@ class S04GamesNavigationWebTest {
     private final GameCatalog catalog = new BeansConfig().gameCatalog(new BanditManchotMechanic(), new TexteATrouMechanic(), new QuizAventureMechanic(), new GlisserDeposerMechanic(), new AssocierMechanic(), new MemoryMechanic(), new PuzzleMechanic());
 
     @Test
-    void niveauCpListsTheNewCpGames() throws Exception {
+    void niveauCpListsItsGames() throws Exception {
         mockMvc.perform(get("/niveau/CP"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Compléments à 10")))
@@ -50,7 +52,7 @@ class S04GamesNavigationWebTest {
     }
 
     @Test
-    void niveauCm1ListsTheNewCm1Games() throws Exception {
+    void niveauCm1ListsItsGames() throws Exception {
         mockMvc.perform(get("/niveau/CM1"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Le bon petit mot")))
@@ -59,7 +61,7 @@ class S04GamesNavigationWebTest {
     }
 
     @Test
-    void jeuxListsTheSixNewGamesByGameKey() throws Exception {
+    void jeuxListsAllGames() throws Exception {
         // Axe « par jeu » : liste plate des jeux, reperes par leur nom court (gameLabel).
         mockMvc.perform(get("/jeux"))
                 .andExpect(status().isOk())
@@ -103,7 +105,7 @@ class S04GamesNavigationWebTest {
     }
 
     @Test
-    void newGameStartsASessionWithoutParameters() throws Exception {
+    void aSimpleGameStartsASessionWithoutParameters() throws Exception {
         mockMvc.perform(post("/sessions")
                         .param("catalogEntryId", "complement-dix")
                         .param("from", "/niveau/CP"))
@@ -113,7 +115,7 @@ class S04GamesNavigationWebTest {
     }
 
     @Test
-    void newGamesExposeOnlyTheCommonQuestionsSetting() {
+    void simpleGamesExposeOnlyTheCommonQuestionsSetting() {
         // Depuis s05 : ces jeux n'ont pas de reglage math/syllabes, mais ils ont le
         // reglage commun "nombre de questions" -> hasSettings devient vrai.
         for (String entryId : new String[] {
