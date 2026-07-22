@@ -13,6 +13,8 @@ import com.recreo.domain.mechanics.banditmanchot.BanditManchotMechanic;
 import com.recreo.domain.mechanics.glisserdeposer.GlisserDeposerMechanic;
 import com.recreo.domain.mechanics.quizaventure.QuizAventureMechanic;
 import com.recreo.domain.mechanics.texteatrou.TexteATrouMechanic;
+import com.recreo.domain.mechanics.associer.AssocierMechanic;
+import com.recreo.domain.mechanics.memory.MemoryMechanic;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -45,7 +47,7 @@ class MultiMechanicTest {
     }
 
     private final GameCatalog catalog =
-            new BeansConfig().gameCatalog(new BanditManchotMechanic(), new TexteATrouMechanic(), new QuizAventureMechanic(), new GlisserDeposerMechanic());
+            new BeansConfig().gameCatalog(new BanditManchotMechanic(), new TexteATrouMechanic(), new QuizAventureMechanic(), new GlisserDeposerMechanic(), new AssocierMechanic(), new MemoryMechanic());
 
     private SessionService service() {
         RandomSource shared = new Random(11L)::nextInt;

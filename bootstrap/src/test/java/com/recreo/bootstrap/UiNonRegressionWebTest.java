@@ -61,7 +61,9 @@ class UiNonRegressionWebTest {
                 new MechanicGame("calcul-mental-cp", "class=\"machine\""),   // bandit manchot
                 new MechanicGame("mot-manquant-cp", "class=\"word-btn\""),    // texte a trous
                 new MechanicGame("questionner-le-monde-cp", "class=\"quiz-btn\""), // quiz-aventure
-                new MechanicGame("range-nombres-cp", "class=\"dnd-slot\"")); // glisser-deposer (ilot JS)
+                new MechanicGame("range-nombres-cp", "class=\"dnd-slot\""), // glisser-deposer (ilot JS)
+                new MechanicGame("vivant-non-vivant-cp", "class=\"assoc-slot\""), // associer / classer
+                new MechanicGame("memory-quantite-cp", "class=\"memory-carte\"")); // memory (paires)
     }
 
     // --- (1) Ecran de fin affiche au BON moment, pour CHAQUE mecanique ---
