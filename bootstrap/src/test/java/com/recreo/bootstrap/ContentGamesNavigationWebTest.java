@@ -14,6 +14,7 @@ import com.recreo.domain.mechanics.texteatrou.TexteATrouMechanic;
 import com.recreo.domain.mechanics.associer.AssocierMechanic;
 import com.recreo.domain.mechanics.memory.MemoryMechanic;
 import com.recreo.domain.mechanics.puzzle.PuzzleMechanic;
+import com.recreo.domain.mechanics.droitegraduee.DroiteGradueeMechanic;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -50,7 +51,7 @@ class ContentGamesNavigationWebTest {
 
     private final GameCatalog catalog = new BeansConfig().gameCatalog(
             new BanditManchotMechanic(), new TexteATrouMechanic(), new QuizAventureMechanic(), new GlisserDeposerMechanic(),
-            new AssocierMechanic(), new MemoryMechanic(), new PuzzleMechanic());
+            new AssocierMechanic(), new MemoryMechanic(), new PuzzleMechanic(), new DroiteGradueeMechanic());
 
     private static RandomSource seeded(long seed) {
         Random random = new Random(seed);

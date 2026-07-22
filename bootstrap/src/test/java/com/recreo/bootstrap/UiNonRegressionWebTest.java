@@ -64,7 +64,8 @@ class UiNonRegressionWebTest {
                 new MechanicGame("range-nombres-cp", "class=\"dnd-slot\""), // glisser-deposer (ilot JS)
                 new MechanicGame("vivant-non-vivant-cp", "class=\"assoc-slot\""), // associer / classer
                 new MechanicGame("memory-quantite-cp", "class=\"memory-carte\""), // memory (paires)
-                new MechanicGame("puzzle-mots-images-cp", "class=\"dnd-slot\"")); // puzzle (arrangement, ilot JS)
+                new MechanicGame("puzzle-mots-images-cp", "class=\"dnd-slot\""), // puzzle (arrangement, ilot JS)
+                new MechanicGame("droite-graduee-cp", "class=\"droite-tick\"")); // droite graduee (reutilise SpinAndPick)
     }
 
     // --- (1) Ecran de fin affiche au BON moment, pour CHAQUE mecanique ---

@@ -14,6 +14,7 @@ import com.recreo.domain.mechanics.texteatrou.TexteATrouMechanic;
 import com.recreo.domain.mechanics.associer.AssocierMechanic;
 import com.recreo.domain.mechanics.memory.MemoryMechanic;
 import com.recreo.domain.mechanics.puzzle.PuzzleMechanic;
+import com.recreo.domain.mechanics.droitegraduee.DroiteGradueeMechanic;
 import com.recreo.domain.mechanic.GameSession;
 import org.junit.jupiter.api.Test;
 
@@ -32,7 +33,7 @@ class CatalogParametersTest {
 
     private static final int SAMPLES = 300;
 
-    private final GameCatalog catalog = new BeansConfig().gameCatalog(new BanditManchotMechanic(), new TexteATrouMechanic(), new QuizAventureMechanic(), new GlisserDeposerMechanic(), new AssocierMechanic(), new MemoryMechanic(), new PuzzleMechanic());
+    private final GameCatalog catalog = new BeansConfig().gameCatalog(new BanditManchotMechanic(), new TexteATrouMechanic(), new QuizAventureMechanic(), new GlisserDeposerMechanic(), new AssocierMechanic(), new MemoryMechanic(), new PuzzleMechanic(), new DroiteGradueeMechanic());
 
     private static RandomSource seeded(long seed) {
         Random random = new Random(seed);
