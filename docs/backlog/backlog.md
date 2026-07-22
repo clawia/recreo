@@ -242,7 +242,7 @@ Sur un jeu à clic, la case fausse cliquée devient non cliquable.
 - **Détail & conception** : `squad/programme/PLAN-jokers-retenter.md` (comportement, pistes
   d'implémentation, questions à trancher avec le PO).
 - **Critères d'acceptation (esquisse)** : une erreur consomme 1 joker et NE change PAS d'item tant
-  qu'il reste des jokers ; l'option fausse déjà tentée est désactivée ; ❤️ restants visibles ; à
-  0 joker, une erreur fait avancer (comportement actuel) ; l'écran de fin n'apparaît pas pendant les
-  retentes (non-régression UI à étendre).
+  qu'il reste des jokers ; l'option fausse déjà tentée est désactivée ; ❤️ restants visibles ; **à
+  0 joker, une erreur TERMINE la session** (écran de fin avec le score courant) ; l'écran de fin
+  n'apparaît pas pendant les retentes (non-régression UI à étendre).
 - **Statut** : 📋 backlog (voir aussi `squad/programme/ROADMAP.md` §A1 — proposé comme prochain sprint).
