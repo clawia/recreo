@@ -1,0 +1,20 @@
+entryId: monnaie-centimes-cm1
+title: "Euros et centimes"
+description: "Associe chaque somme en euros à sa valeur en centimes."
+gameKey: associer
+gameLabel: "Euros et centimes"
+matiere: "Mathématiques"
+niveau: "CM1"
+domaine: "Grandeurs et mesures — monnaie"
+consigne: "Associe chaque somme en euros à sa valeur en centimes"
+puzzles:
+  - associations:
+      - { item: "1 €", cible: "100 c" }
+      - { item: "2 €", cible: "200 c" }
+      - { item: "5 €", cible: "500 c" }
+      - { item: "10 €", cible: "1000 c" }
+  - associations:
+      - { item: "0,20 €", cible: "20 c" }
+      - { item: "0,50 €", cible: "50 c" }
+      - { item: "1,50 €", cible: "150 c" }
+      - { item: "3 €", cible: "300 c" }

@@ -1,0 +1,33 @@
+entryId: monnaie-cm1
+title: "La monnaie CM1"
+description: "Rends la monnaie et convertis euros et centimes."
+gameKey: monnaie
+gameLabel: "La monnaie"
+matiere: "Mathématiques"
+niveau: "CM1"
+domaine: "Grandeurs et mesures — monnaie"
+questions:
+  - question: "Un jeu coûte 7 €. Tu paies avec un billet de 10 €. Combien te rend-on ?"
+    bonne: "3 €"
+    distracteurs: ["2 €", "4 €", "5 €"]
+  - question: "Combien de centimes y a-t-il dans 1 € ?"
+    bonne: "100"
+    distracteurs: ["10", "50", "1000"]
+  - question: "Tu paies 12 € avec un billet de 20 €. Combien te rend-on ?"
+    bonne: "8 €"
+    distracteurs: ["7 €", "9 €", "12 €"]
+  - question: "Combien font 2 € et 50 centimes, en centimes ?"
+    bonne: "250"
+    distracteurs: ["205", "25", "2500"]
+  - question: "Un livre coûte 8 € et un stylo 3 €. Combien pour les deux ?"
+    bonne: "11 €"
+    distracteurs: ["5 €", "10 €", "12 €"]
+  - question: "Tu as 3 pièces de 2 € et une pièce de 50 centimes. Combien as-tu ?"
+    bonne: "6,50 €"
+    distracteurs: ["6 €", "7 €", "5,50 €"]
+  - question: "50 centimes + 50 centimes = ?"
+    bonne: "1 €"
+    distracteurs: ["50 centimes", "2 €", "10 €"]
+  - question: "Une glace coûte 2,50 €. Tu paies avec un billet de 5 €. Combien te rend-on ?"
+    bonne: "2,50 €"
+    distracteurs: ["3 €", "2 €", "1,50 €"]
