@@ -72,3 +72,12 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 > `CompareFractionsGenerator` recevant leur liste par constructeur depuis `content/frise/*.yml` /
 > `content/fractions/*.yml`) = même patron d'externalisation que ADR-0009→0011, **dette remboursée**.
 > ArchUnit **5/5** inchangé sur tous ces chantiers.
+
+| [ADR-0018](ADR-0018-mecanique-droite-graduee.md) | Mécanique « Droite graduée » (8e) — **réutilise** le coup `SpinAndPick` (comme puzzle réutilise `SubmitArrangement`, memory `SubmitAssociations`) ; place un nombre sur une droite 0→N par clic de graduation (jokers automatiques : tick faux = cœur perdu + tick grisé) ; générateur combinatoire `DroiteGradueeGenerator` (bornes câblées dans BeansConfig), 2 jeux `droite-graduee-cp` (0→20) / `droite-graduee-cm1` (0→100) ; îlot JS de vue `droitegraduee` ; isolation ArchUnit en slices dynamiques couvrant automatiquement `domain.mechanics.droitegraduee`, inchangée | Accepté | 2026-07-22 | s22 |
+
+> **s22 — un seul nouvel ADR (ADR-0018, droite graduée).** L'autre livrable de s22 — les **filtres
+> « Par jeu »** (IDEE-3 : filtrer l'écran `/jeux` par niveau/matière via boutons combinables et
+> réinitialisables, filtrage serveur par query params `?niveau=&matiere=`) — **n'exige aucun ADR**
+> (cf. §Note d'ADR-0018) : pur **read-model / vue** sur le catalogue enrichi (ADR-0005), **aucun
+> changement de domaine** ni de règle d'architecture (même nature que la navigation « par matière »
+> de s21). ArchUnit **5/5** inchangé.
