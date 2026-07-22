@@ -6,6 +6,8 @@ import com.recreo.domain.content.Item;
 import com.recreo.domain.content.RandomSource;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -64,6 +66,40 @@ class DroiteGradueeGeneratorTest {
             assertThat(item.meta().get("min")).isEqualTo(String.valueOf(min));
             assertThat(item.meta().get("max")).isEqualTo(String.valueOf(max));
             assertThat(item.question()).startsWith("Place le nombre");
+            assertThat(item.reelSymbols()).isEmpty();
+            assertThat(item.distractors()).isEmpty();
+        }
+    }
+
+    /**
+     * Constructeur GENERIQUE (s23) : une droite d'ETIQUETTES quelconques (ici des fractions).
+     * Sur N tirages, la cible reste une graduation INTERNE (jamais une extremite « 0 » ou « 1 »),
+     * les etiquettes de la droite sont exposees telles quelles dans {@code meta["ticks"]} (jointes
+     * par « | »), et la consigne emploie le nom fourni (« Place la fraction … »).
+     */
+    @Test
+    void fractionLineTargetsInternalGraduationsWithFractionConsigne() {
+        List<String> ticks = List.of("0", "1/4", "1/2", "3/4", "1");
+        DroiteGradueeGenerator generator = new DroiteGradueeGenerator(
+                new ContentDescriptor("Mathématiques", "CM1", "Fractions — situer une fraction"),
+                ticks, "la fraction");
+        RandomSource random = new SeededRandomSource(11L);
+
+        for (int i = 0; i < SAMPLES; i++) {
+            Item item = generator.next(random);
+
+            // Cible = une graduation INTERNE (extremites « 0 » et « 1 » exclues).
+            assertThat(item.expected().value()).isIn("1/4", "1/2", "3/4");
+
+            // Les etiquettes de la droite (fractions) sont exposees telles quelles.
+            assertThat(item.meta().get("ticks")).isEqualTo("0|1/4|1/2|3/4|1");
+
+            // Consigne « Place la fraction X », sans min/max (droite non entiere).
+            assertThat(item.question()).startsWith("Place la fraction");
+            assertThat(item.meta().get("min")).isNull();
+            assertThat(item.meta().get("max")).isNull();
+
+            // Ni symboles de rouleau ni distracteurs : la droite fournit les positions.
             assertThat(item.reelSymbols()).isEmpty();
             assertThat(item.distractors()).isEmpty();
         }
