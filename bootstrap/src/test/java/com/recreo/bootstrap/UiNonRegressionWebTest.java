@@ -100,14 +100,10 @@ class UiNonRegressionWebTest {
     @ParameterizedTest
     @MethodSource("oneGamePerMechanic")
     void endScreenAppearsExactlyAtTheEnd(MechanicGame game) throws Exception {
-        // Session courte (cible = 5) : apres 5 coups, la partie est terminee.
-        String start = startSession(game.entryId(), "5");
-        String sessionId = firstMatch(SESSION_ID, start);
-
-        String lastHtml = null;
-        for (int i = 0; i < 5; i++) {
-            lastHtml = move(sessionId, "peu-importe");
-        }
+        // On enchaine des coups FAUX jusqu'a epuiser les coeurs : la partie se termine alors
+        // (DEC-0009). On boucle JUSQU'A l'ecran de fin plutot qu'un nombre fixe de coups, car le
+        // capital de coeurs depend de la mecanique (memory = 6, cf. IDEE-1).
+        String lastHtml = playUntilEnd(game.entryId());
 
         // Ecran de fin bien present a la fin (marqueur fiable "Rejouer" + game-over)...
         assertThat(lastHtml).contains("Rejouer");
@@ -184,11 +180,13 @@ class UiNonRegressionWebTest {
     private String playUntilEnd(String entryId) throws Exception {
         String start = startSession(entryId, "5");
         String sessionId = firstMatch(SESSION_ID, start);
-        String lastHtml = null;
-        for (int i = 0; i < 5; i++) {
-            lastHtml = move(sessionId, "peu-importe");
+        // Coups faux jusqu'a l'ecran de fin (coeurs epuises). Plafond de securite largement
+        // au-dessus du plus gros capital de coeurs (memory = 6 -> 7 coups).
+        String html = start;
+        for (int i = 0; i < 40 && !html.contains("Rejouer"); i++) {
+            html = move(sessionId, "peu-importe");
         }
-        return lastHtml;
+        return html;
     }
 
     private String firstMatch(Pattern pattern, String content) {
