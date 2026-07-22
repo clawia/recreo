@@ -36,9 +36,11 @@
 
 | s20 | Ouverture du domaine monnaie (Grandeurs et mesures) par 3 packs YAML auto-enregistrés : monnaie CP (quiz), monnaie CM1 (quiz), euros ↔ centimes CM1 (associer/classer) — pur contenu, aucun code — DEC-0016 | Quiz-aventure + Associer/Classer | Maths CP monnaie · Maths CM1 monnaie (rendre, conversions €/centimes, appariement) | 2026-07-22 | ✅ **VALIDÉ** (Done technique + Done pédago ; validé avec s19 ; correction pièce→billet 5 € monnaie CP) | 2026-07-22 |
 
-> ✅ **File redescendue à 0** : s19 et s20, poussés en file le **2026-07-22**, ont été **validés
-> ensemble le 2026-07-22** (Done pédagogique prononcé par l'utilisatrice, démo enchaînée sans
-> intermédiaire). DEC-0015 (s19) + DEC-0016 (s20) : **VALIDÉ (2026-07-22)** — une seule correction de
-> contenu appliquée (pièce → billet de 5 € dans la monnaie CP), le reste validé tel quel. **Aucun
-> incrément en attente.**
-> Rappel : s17 et s18 avaient été validés ensemble le 2026-07-22 (file déjà redescendue à 0 avant s19/s20).
+| s21 | Gros incrément parallèle (5 chantiers) : 7e mécanique **Puzzle** (reconstituer un mot, réutilise `SubmitArrangement` — ADR-0017) + jokers **paramétrables** (en-tête YAML `jokers` + réglage adulte, capital memory depuis YAML — DEC-0017, A3) + navigation **par matière** (3e axe — DEC-0017, E) + externalisation **frise + fractions** (dette remboursée — DEC-0018, D) + déclinaisons associer/classer Français CP (majuscule↔minuscule, le/la — DEC-0018, A2) | Puzzle + Associer/Classer (+ transverse jokers, navigation, refactor frise/fractions) | Français CP écriture/lecture (reconstituer un mot) · Français CM1 vocabulaire (reconstituer un mot) · Français CP majuscule↔minuscule · Français CP le/la (genre) · transverse (cœurs réglables) | 2026-07-22 | ⏳ **À VALIDER** | — |
+
+> ⏳ **1 incrément en attente (s21), sous le seuil.** s19 et s20 ont été **validés ensemble le
+> 2026-07-22** (file redescendue à 0). s21, poussé en file le **2026-07-22**, est **À VALIDER** :
+> DEC-0017 (puzzle + jokers réglables + navigation par matière) et DEC-0018 (externalisation
+> frise/fractions + déclinaisons associer/classer CP). **1 seul incrément en attente — sous le seuil
+> de gel de 3**, pas de gel du contenu.
+> Rappel : s17 + s18 puis s19 + s20 avaient chacun été validés ensemble le 2026-07-22.

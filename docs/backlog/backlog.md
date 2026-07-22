@@ -433,6 +433,75 @@ consolider la conversion par l'appariement.
 
 ---
 
+## Sprint s21 — Puzzle (7e mécanique) + jokers réglables + navigation par matière + externalisation frise/fractions + déclinaisons CP
+
+Gros incrément **parallèle** (5 chantiers, contrats gelés en amont), couvrant la roadmap **B**
+(puzzle), **A3** (cœurs réglables), **E** (navigation par matière), **D** (externalisation
+frise/fractions — dette remboursée) et **A2** (déclinaisons associer/classer). Cf.
+`2026-07-22-s21-planning.md`, ADR-0017, DEC-0017, DEC-0018.
+
+### Story S21-1 — Déclinaisons « Associer / Classer » Français CP  ✅ **LIVRÉE (s21)**
+**En tant qu'**élève de CP, **je veux** apparier chaque lettre majuscule à sa minuscule et classer
+des noms selon le / la, **afin de** consolider le principe alphabétique et le genre du nom.
+- **Compétence programme visée** : Français CP — principe alphabétique (correspondance
+  majuscule ↔ minuscule) ; Français CP — genre du nom (masculin / féminin).
+- **Critères d'acceptation** : 2 jeux **externalisés YAML** auto-enregistrés par `AssocPackLoader` —
+  `cp-majuscule-minuscule` (**appariement** A ↔ a) et `cp-masculin-feminin` (**classer** le / la) ;
+  correspondance correcte unique vérifiée (encodage canonique trié, coup `SubmitAssociations`) ;
+  jokers cohérents (DEC-0013 / DEC-0017) ; matrice + `FICHE-associer-s17.md` (ou fiche dédiée) à jour.
+- **Statut** : ✅ **LIVRÉE en s21** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0018).
+
+### Story S21-2 — Jokers paramétrables via YAML + réglage adulte  ✅ **LIVRÉE (s21)**
+**En tant qu'**adulte accompagnant, **je veux** régler le **nombre de cœurs** d'une session (et le
+définir par jeu dans le contenu), **afin d'**adapter le droit à l'erreur à l'enfant et à la mécanique.
+- **Compétence programme visée** : transverse (posture d'apprentissage / droit à l'erreur — DEC-0013).
+  **Réalise la réserve « cœurs réglables » (roadmap A3).**
+- **Critères d'acceptation** : champ **`jokers` optionnel** dans l'en-tête YAML, lu par
+  `SessionEngine` (`settings["jokers"]`) ; le **capital 6 du memory provient désormais du YAML** (plus
+  de constante Java) ; réglage adulte « nombre de cœurs » dans l'écran paramètres (`JokersSettingsView`,
+  param POST `jokers`) appliqué à la session ; **défaut 3 préservé** (DEC-0013) si ni YAML ni réglage
+  ne précisent ; non-régression de la fin de session à 0 cœur.
+- **Statut** : ✅ **LIVRÉE en s21** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0017).
+
+### Story S21-3 — Externalisation frise + fractions (dette remboursée)  ✅ **LIVRÉE (s21)**
+**En tant que** mainteneuse du contenu, **je veux** que les événements de la frise et le pool de
+fractions comparées vivent dans des YAML, **afin de** les enrichir sans dev (fin du contenu en dur).
+- **Compétence programme visée** : transverse (technique — **aucune nouvelle couverture** ; frise
+  chronologique CM1 et « Compare les fractions » CM1 restent `couvert-validé`).
+- **Critères d'acceptation** : `FriseChronologiqueGenerator` et `CompareFractionsGenerator`
+  **reçoivent leur liste par constructeur**, chargée depuis `content/frise/*.yml` et
+  `content/fractions/*.yml` (nouveaux loaders, même patron que ADR-0009→0011) ; **comportement
+  constant** (non-régression frise + compare-fractions) ; ArchUnit 5/5 ; pas de nouvel ADR.
+- **Statut** : ✅ **LIVRÉE en s21** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0018).
+- **Dette** : la dette **« générateurs = listes finies en dur » (frise, fractions)** de la roadmap §D
+  est **remboursée (s21)** — plus aucun contenu à liste finie n'est codé en Java.
+
+### Story S21-4 — Navigation « par matière » (3e axe)  ✅ **LIVRÉE (s21)**
+**En tant qu'**enfant ou accompagnant, **je veux** parcourir les jeux **par matière**, **afin d'**
+arriver au jeu voulu par un 3e chemin en plus de « par niveau » et « par jeu ».
+- **Compétence programme visée** : sans objet (fonctionnalité de navigation, pas de contenu).
+- **Critères d'acceptation** : pages `/matieres` (liste des matières couvertes) et
+  `/matiere/{matiere}` (jeux d'une matière, tous niveaux) reposant sur `CatalogueQuery.matieres()` et
+  `byMatiere()` (catalogue enrichi, ADR-0005) ; axes « par niveau » et « par jeu » conservés ; retour
+  vers l'axe d'origine ; pur read-model, aucun changement de domaine (pas de nouvel ADR).
+- **Statut** : ✅ **LIVRÉE en s21** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0017).
+
+### Story S21-5 — 7e mécanique « Puzzle / assemblage » — reconstituer un mot  ✅ **LIVRÉE (s21)**
+**En tant qu'**élève, **je veux** reconstituer un mot en remettant ses lettres dans l'ordre (avec un
+indice image ou définition), **afin de** travailler l'orthographe active et le vocabulaire.
+- **Compétence programme visée** : Français CP — écriture / lecture (reconstituer un mot, indice
+  image) ; Français CM1 — vocabulaire / orthographe lexicale (reconstituer un mot, indice définition).
+- **Critères d'acceptation** : mécanique **isolée** `mechanics/puzzle` (ArchUnit — slices dynamiques)
+  réutilisant le coup **`SubmitArrangement`** (comme memory réutilise `SubmitAssociations`, ADR-0017),
+  **sans nouveau coup** ; générateur `MotPuzzleGenerator` (lettres à remettre dans l'ordre + indice) ;
+  2 jeux **externalisés YAML** `content/puzzle/cp-mots-images.yml` (indice image) et
+  `content/puzzle/cm1-mots.yml` (indice définition) ; **îlot JS `puzzle.js`** (assemblage lettres,
+  zéro dépendance externe ; l'ordre attendu n'est pas révélé dans le DOM) ; matrice +
+  `FICHE-puzzle-s21.md` à jour.
+- **Statut** : ✅ **LIVRÉE en s21** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0017, ADR-0017).
+
+---
+
 ## Idées / à venir (non planifiées — aucun sprint assigné)
 
 > **Note (2026-07-22)** : IDEE-1 et IDEE-2 (ci-dessous) ont été **livrées en s19** (stories S19-1 et

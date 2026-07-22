@@ -73,6 +73,10 @@ sur des mécaniques existantes.
 | Questionner le monde | CP | Le vivant, les objets | Distinguer le vivant du non-vivant (catégoriser) | Associer/Classer — Vivant / non-vivant | Associer/Classer | couvert-validé (s17, 2026-07-22) |
 | Anglais (LV) | CM1 | Lexique | Apparier un mot français à sa traduction anglaise (lexique) | Associer/Classer — Appariement FR↔EN ; Memory — Anglais | Associer/Classer + Memory | couvert-validé (s17, 2026-07-22) |
 | Français | CP | Lecture / vocabulaire | Associer un mot écrit à son image (lecture, reconnaissance de mots) | Memory — Mot et image | Memory | couvert-validé (s17, 2026-07-22) |
+| Français | CP | Lecture — principe alphabétique | Correspondance majuscule ↔ minuscule (apparier A ↔ a) | Associer/Classer — Majuscule et minuscule | Associer/Classer | en cours (s21) |
+| Français | CP | Grammaire — genre du nom | Distinguer masculin / féminin (classer selon le / la) | Associer/Classer — Le ou la | Associer/Classer | en cours (s21) |
+| Français | CP | Écriture / lecture | Reconstituer un mot à partir de ses lettres (indice image) | Puzzle — Reconstitue le mot (images) | Puzzle | en cours (s21) |
+| Français | CM1 | Vocabulaire / orthographe lexicale | Reconstituer un mot à partir d'une définition (indice définition) | Puzzle — Reconstitue le mot (définitions) | Puzzle | en cours (s21) |
 
 > **Note s18 — rien de nouveau à couvrir.** s18 raffine l'UX des jeux de s17 (cœur consommé par le
 > memory + écran « Essaye encore » + score max — DEC-0013 ; verrouillage partiel d'associer/classer,
@@ -94,6 +98,17 @@ sur des mécaniques existantes.
 > contenu YAML sur quiz-aventure et associer/classer, **`couvert-validé (2026-07-22)`** à la
 > validation **groupée s19 + s20** par l'utilisatrice. Une seule correction de contenu appliquée à la
 > validation : le **5 € est un billet, pas une pièce** (monnaie CP) ; le reste validé tel quel.
+
+> **Note s21 — 4 compétences `en cours`, une 7e mécanique, refactor sans impact couverture.** s21
+> ajoute **4 compétences `en cours (s21)`**, toutes en Français : majuscule ↔ minuscule (associer,
+> `cp-majuscule-minuscule`) et le/la masculin-féminin (classer, `cp-masculin-feminin`) — DEC-0018 ;
+> reconstituer un mot CP avec indice image et CM1 avec indice définition — nouvelle **mécanique
+> Puzzle** (7e, `MotPuzzleGenerator`, réutilise le coup `SubmitArrangement`, ADR-0017) — DEC-0017.
+> **Frise chronologique et « Compare les fractions » sont désormais externalisées** (générateurs
+> alimentés par `content/frise/*.yml` / `content/fractions/*.yml`) : refactor **technique** à
+> comportement constant, **couverture inchangée** (restent `couvert-validé`). Enfin, le **capital de
+> cœurs est réglable** (via l'en-tête YAML + réglage adulte — DEC-0017, roadmap A3) : transverse, sans
+> nouvelle ligne de couverture. À passer `couvert-validé` après la démo/validation de s21.
 
 ## Prochaines actions suggérées
 

@@ -21,6 +21,8 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Une DEC = une ligne.
 | DEC-0014 | Mécaniques « Associer/Classer » & « Memory » + 6 jeux externalisés (YAML) | QLM CP vivant/non-vivant ; Anglais CM1 appariement ; Maths CP quantité↔chiffre ; Maths CM1 fractions↔représentation ; Français CP mot↔image | VALIDÉ (user, 2026-07-22) | 2026-07-22 | s17 · raff. s18 |
 | DEC-0015 | Compréhension & grammaire CM1 + cœurs adaptés à la mécanique (memory 6 ❤️, dés agrandis) | Français CM1 — compréhension de texte ; Français CM1 — grammaire (nature des mots) ; transverse (droit à l'erreur) | VALIDÉ (user, 2026-07-22) | 2026-07-22 | s19 |
 | DEC-0016 | Ouverture du domaine monnaie (Grandeurs et mesures) — pur contenu YAML | Maths CP — monnaie (compter/rendre) ; Maths CM1 — monnaie (rendre, conversions €/centimes) | VALIDÉ (user, 2026-07-22) | 2026-07-22 | s20 |
+| DEC-0017 | Mécanique « Puzzle » (7e, reconstituer un mot) + jokers paramétrables via YAML/réglage adulte + navigation par matière | Français CP écriture/lecture (reconstituer un mot) ; Français CM1 vocabulaire (reconstituer un mot) ; transverse (cœurs réglables) ; navigation (par matière) | **À VALIDER** | 2026-07-22 | s21 |
+| DEC-0018 | Externalisation frise + fractions (dette remboursée) + déclinaisons associer/classer Français CP (majuscule↔minuscule, le/la) | Français CP principe alphabétique (majuscule↔minuscule) ; Français CP genre du nom (le/la) ; transverse (technique — frise/fractions externalisées) | **À VALIDER** | 2026-07-22 | s21 |
 
 > **s18 — pas de nouvelle DEC.** Raffinements de s17 après démo utilisatrice, consignés en
 > section « Raffinements s18 » dans DEC-0013 (cœur consommé aussi par le memory ; écran de fin
