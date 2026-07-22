@@ -18,6 +18,7 @@ import com.recreo.domain.content.impl.CompareFractionsGenerator;
 import com.recreo.domain.content.impl.EgaliteGenerator;
 import com.recreo.domain.content.impl.FriseChronologiqueGenerator;
 import com.recreo.domain.content.impl.MotChoixGenerator;
+import com.recreo.domain.content.impl.DroiteGradueeGenerator;
 import com.recreo.domain.content.impl.MotPuzzleGenerator;
 import com.recreo.domain.content.impl.QuizGenerator;
 import com.recreo.domain.content.impl.RangeNombresGenerator;
@@ -31,6 +32,7 @@ import com.recreo.domain.mechanics.texteatrou.TexteATrouMechanic;
 import com.recreo.domain.mechanics.associer.AssocierMechanic;
 import com.recreo.domain.mechanics.memory.MemoryMechanic;
 import com.recreo.domain.mechanics.puzzle.PuzzleMechanic;
+import com.recreo.domain.mechanics.droitegraduee.DroiteGradueeMechanic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -82,13 +84,19 @@ public class BeansConfig {
     }
 
     @Bean
+    public DroiteGradueeMechanic droiteGradueeMechanic() {
+        return new DroiteGradueeMechanic();
+    }
+
+    @Bean
     public GameCatalog gameCatalog(BanditManchotMechanic banditManchotMechanic,
                                    TexteATrouMechanic texteATrouMechanic,
                                    QuizAventureMechanic quizAventureMechanic,
                                    GlisserDeposerMechanic glisserDeposerMechanic,
                                    AssocierMechanic associerMechanic,
                                    MemoryMechanic memoryMechanic,
-                                   PuzzleMechanic puzzleMechanic) {
+                                   PuzzleMechanic puzzleMechanic,
+                                   DroiteGradueeMechanic droiteGradueeMechanic) {
         ContentPackLoader loader = new ContentPackLoader();
         List<ContentPack> packs = List.of(
                 loader.load("content/cp-calcul-mental.yml"),
@@ -305,9 +313,30 @@ public class BeansConfig {
                     p.title(), p.description(), PuzzleMechanic.ID, factory));
         }
 
+        // 8e mecanique (s22 / ADR-0018) : "droite graduee" (ilot JS). MEME moteur partage,
+        // reutilise le coup SpinAndPick (cliquer un tick = choisir une valeur). Contenu
+        // COMBINATOIRE (DroiteGradueeGenerator), bornes cablees ici. Reglage commun "nombre de
+        // questions" via SimpleGameFactory ; benefice automatique des jokers (tick faux = coeur).
+        ContentDescriptor droiteCpDesc =
+                new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — situer un nombre sur une droite graduee");
+        defs.add(new CatalogEntryDef(
+                "droite-graduee-cp", "Mathématiques", "CP", "droite-graduee", "Place le nombre",
+                "Maths CP — Droite graduee", "Place le nombre au bon endroit sur la droite graduee (0 a 20).",
+                DroiteGradueeMechanic.ID,
+                new SimpleGameFactory("droite-graduee-cp", "Maths CP — Droite graduee", "droite-graduee", "CP",
+                        DroiteGradueeMechanic.ID, () -> new DroiteGradueeGenerator(droiteCpDesc, 0, 20))));
+        ContentDescriptor droiteCm1Desc =
+                new ContentDescriptor("Mathématiques", "CM1", "Nombres et calculs — situer un nombre sur une droite graduee");
+        defs.add(new CatalogEntryDef(
+                "droite-graduee-cm1", "Mathématiques", "CM1", "droite-graduee", "Place le nombre",
+                "Maths CM1 — Droite graduee", "Place le nombre au bon endroit sur la droite graduee (0 a 100).",
+                DroiteGradueeMechanic.ID,
+                new SimpleGameFactory("droite-graduee-cm1", "Maths CM1 — Droite graduee", "droite-graduee", "CM1",
+                        DroiteGradueeMechanic.ID, () -> new DroiteGradueeGenerator(droiteCm1Desc, 0, 100))));
+
         return new InMemoryGameCatalog(
                 List.of(banditManchotMechanic, texteATrouMechanic, quizAventureMechanic, glisserDeposerMechanic,
-                        associerMechanic, memoryMechanic, puzzleMechanic), defs);
+                        associerMechanic, memoryMechanic, puzzleMechanic, droiteGradueeMechanic), defs);
     }
 
     /**
