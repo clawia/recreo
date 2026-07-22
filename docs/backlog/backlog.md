@@ -230,19 +230,51 @@ classe `big` ; `.game-over` sans fond/ombre dans le CSS servi. Décision : test 
 
 ---
 
-## Backlog (à venir — non planifié)
+## Sprint s17 — Jokers (3 cœurs) + mécaniques « Associer/Classer » & « Memory »
 
-### Story — « 3 jokers » : réessayer au lieu d'enchaîner sur une erreur
+Gros incrément unique couvrant la roadmap A1 (jokers) + A2 (associer/classer) + B (memory). Cf.
+`2026-07-22-s17-planning.md`, ADR-0016, DEC-0013, DEC-0014.
+
+### Story S17-1 — « 3 jokers » : réessayer au lieu d'enchaîner sur une erreur  ✅ **LIVRÉE (s17)**
 **En tant qu'** enfant, **je veux**, quand je me trompe, **pouvoir réessayer la même question**
 (3 jokers / 3 ❤️ par session) plutôt que de passer à une nouvelle, **afin d'**apprendre en corrigeant.
 Sur un jeu à clic, la case fausse cliquée devient non cliquable.
 
 - **Compétence programme visée** : transverse (posture d'apprentissage / droit à l'erreur).
-- **Ajoutée le** : 2026-07-21, sur demande de l'utilisatrice.
-- **Détail & conception** : `squad/programme/PLAN-jokers-retenter.md` (comportement, pistes
-  d'implémentation, questions à trancher avec le PO).
-- **Critères d'acceptation (esquisse)** : une erreur consomme 1 joker et NE change PAS d'item tant
-  qu'il reste des jokers ; l'option fausse déjà tentée est désactivée ; ❤️ restants visibles ; **à
-  0 joker, une erreur TERMINE la session** (écran de fin avec le score courant) ; l'écran de fin
-  n'apparaît pas pendant les retentes (non-régression UI à étendre).
-- **Statut** : 📋 backlog (voir aussi `squad/programme/ROADMAP.md` §A1 — proposé comme prochain sprint).
+- **Ajoutée le** : 2026-07-21, sur demande de l'utilisatrice. **Décisions tranchées** le 2026-07-22
+  (cf. DEC-0013) : 3 cœurs fixes, cœur consommé **par clic faux**, bonne réponse après retente = **+10
+  plein**, **0 cœur = fin de session**.
+- **Détail & conception** : `squad/programme/PLAN-jokers-retenter.md` (✅ implémenté s17).
+- **Critères d'acceptation** : une erreur consomme 1 cœur et NE change PAS d'item tant qu'il reste des
+  cœurs ; l'option fausse déjà tentée est désactivée ; ❤️ restants visibles ; **à 0 cœur, une erreur
+  TERMINE la session** (écran de fin avec le score courant) ; l'écran de fin n'apparaît pas pendant
+  les retentes (non-régression UI étendue).
+- **Statut** : ✅ **LIVRÉE en s17** (2026-07-22) — Done technique CI à confirmer ; Done pédagogique
+  **À VALIDER** (DEC-0013).
+
+### Story S17-2 — 5e mécanique « Associer / Classer » (coup `SubmitAssociations`)  ✅ **LIVRÉE (s17)**
+**En tant qu'**élève, **je veux** **apparier** des paires ou **classer** des items par catégorie,
+**afin de** réviser des correspondances (lexique, tri du vivant) autrement que par choix ou ordre.
+
+- **Compétence programme visée** : Anglais CM1 — appariement lexique FR↔EN ; Questionner le monde CP —
+  distinguer vivant / non-vivant.
+- **Critères d'acceptation** : mécanique isolée (ArchUnit — slices dynamiques) réutilisant le
+  `SessionEngine` ; coup `SubmitAssociations(Map)` + `Item.encodeAssociations` (encodage trié) ; 2
+  jeux `anglais-associer-cm1`, `vivant-non-vivant-cp` **externalisés en YAML dès le départ**
+  (`AssocPackLoader`) ; sur erreur : retente plein plateau + 1 cœur (pas de verrouillage partiel
+  DEC-0008). Matrice + fiche `FICHE-associer-s17.md` mises à jour.
+- **Statut** : ✅ **LIVRÉE en s17** — Done technique CI à confirmer ; Done pédagogique **À VALIDER**
+  (DEC-0014, ADR-0016).
+
+### Story S17-3 — 6e mécanique « Memory » (cartes retournées, réutilise `SubmitAssociations`)  ✅ **LIVRÉE (s17)**
+**En tant qu'**élève, **je veux** retrouver des paires en retournant des cartes, **afin de** réviser
+en sollicitant ma mémoire (quantité↔chiffre, fraction↔représentation, FR↔EN, mot↔image).
+
+- **Compétence programme visée** : Maths CP — quantité↔chiffre ; Maths CM1 — fractions↔représentation ;
+  Anglais CM1 — lexique ; Français CP — mot↔image (lecture).
+- **Critères d'acceptation** : mécanique isolée réutilisant `SubmitAssociations` ; **îlot JS de flip**
+  (`memory.js`, zéro dépendance externe) ; 4 jeux `memory-quantite-cp`, `memory-fraction-cm1`,
+  `memory-anglais-cm1`, `memory-mot-image-cp` **externalisés en YAML** (`MemoryPackLoader`). Matrice +
+  fiche `FICHE-memory-s17.md` mises à jour.
+- **Statut** : ✅ **LIVRÉE en s17** — Done technique CI à confirmer ; Done pédagogique **À VALIDER**
+  (DEC-0014, ADR-0016).

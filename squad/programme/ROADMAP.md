@@ -1,23 +1,27 @@
-# Roadmap — ce qu'il reste à faire (au 2026-07-21, après s16)
+# Roadmap — ce qu'il reste à faire (au 2026-07-22, après s17)
 
-Vue d'ensemble du **restant**, pour prioriser les prochains sprints. État actuel : **4 mécaniques**
-(bandit manchot, texte à trous, quiz-aventure, glisser-déposer), **~24 compétences couvert-validé**
-(Maths CP/CM1, Français CP/CM1, Anglais CM1, Questionner le monde CP, Sciences/Histoire/Géo CM1, EMC
-CP/CM1, Histoire frise). Contenu à liste finie **externalisé** (quiz, mots, textes à trous, syllabes).
+Vue d'ensemble du **restant**, pour prioriser les prochains sprints. État actuel : **6 mécaniques**
+(bandit manchot, texte à trous, quiz-aventure, glisser-déposer, **associer/classer**, **memory**),
+**~24 compétences couvert-validé** (+ 5 nouvelles `en cours` s17, à valider), **jokers / 3 cœurs
+livrés (transverse, à valider)**. Contenu à liste finie **externalisé** (quiz, mots, textes à trous,
+syllabes, associer, memory).
 
 Priorisation recommandée en tête de chaque section. Chaque item devient une story (compétence visée +
 critères) au planning, met à jour la matrice, et suit le double Done (technique CI + pédago user).
 
 ## A. Évolutions transverses (mécanique / UX)
-1. **« 3 jokers » — réessayer sur erreur** (`PLAN-jokers-retenter.md`) — *reco : prochain sprint*.
-   Fort impact pédagogique, touche toutes les mécaniques à clic. Questions PO à trancher (cf. plan).
-2. **Nouveau type de coup « associer / classer »** — matching (paires) & catégorisation. Va **au-delà
-   de l'ordonnancement** (`SubmitArrangement`) → **nouvelle interaction + ADR**. Débloque : associer
-   mot↔image (Français CP), classer nom/verbe/adjectif (CM1), classer vivant/non-vivant (QLM CP),
-   majuscule↔minuscule…
+1. ✅ **LIVRÉ (s17)** — **« 3 jokers » — réessayer sur erreur** (`PLAN-jokers-retenter.md`, DEC-0013).
+   3 cœurs fixes, cœur consommé par clic faux, +10 plein après retente, **0 cœur = fin de session**.
+   Transverse à toutes les mécaniques à clic. *Done pédagogique à valider en démo.*
+2. ✅ **LIVRÉ (s17)** — **Nouveau type de coup « associer / classer »** (coup `SubmitAssociations(Map)`,
+   ADR-0016 / DEC-0014). 5e mécanique. 2 jeux YAML : `anglais-associer-cm1` (appariement FR↔EN),
+   `vivant-non-vivant-cp` (catégorisation QLM CP). *Reste à décliner : classer nom/verbe/adjectif (CM1),
+   majuscule↔minuscule… Done pédagogique à valider en démo.*
 
 ## B. Nouvelles mécaniques (îlot JS)
-- **Memory** (paires) — îlot JS léger (flip CSS) : quantité↔chiffre, mot↔image, FR↔EN, fraction↔dessin.
+- ✅ **LIVRÉ (s17)** — **Memory** (paires) — îlot JS léger (flip CSS), réutilise `SubmitAssociations`
+  (ADR-0016 / DEC-0014). 6e mécanique. 4 jeux YAML : `memory-quantite-cp`, `memory-fraction-cm1`,
+  `memory-anglais-cm1`, `memory-mot-image-cp`. *Done pédagogique à valider en démo.*
 - **Puzzle / assemblage** — tangram, reconstituer un mot/une phrase, carte de France.
 - **Droite graduée** — placer un nombre / une fraction sur une ligne.
 - **Animation-intensive (plus tard, îlot Canvas)** — attrape-taupe, runner ; **traçage tactile CP**
@@ -49,6 +53,7 @@ Domaines encore **absents** (à ouvrir progressivement) :
   couvre aujourd'hui au niveau HTML via `UiNonRegressionWebTest`).
 
 ## Suggestion d'ordre
-**Jokers** (A1) → **compréhension CM1** (C, sans nouvelle mécanique) ou **associer/classer** (A2, gros
-déblocage) → **memory/puzzle** (B) → **persistance** (E) quand un suivi est voulu. Le reste (géométrie,
-mesures, anglais…) se décline ensuite sur les mécaniques disponibles.
+~~**Jokers** (A1)~~ ✅ · ~~**associer/classer** (A2)~~ ✅ · ~~**memory** (B)~~ ✅ (livrés s17, à valider
+pédago). Suite : **compréhension CM1** (C, sans nouvelle mécanique) → **puzzle** (B) → **persistance**
+(E) quand un suivi est voulu. Le reste (géométrie, mesures, anglais…) se décline ensuite sur les
+mécaniques disponibles (dont associer/classer et memory).

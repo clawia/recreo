@@ -1,6 +1,8 @@
 # Plan — « 3 jokers » : réessayer au lieu d'enchaîner sur une erreur
 
-Statut : 📋 **PLANIFIÉ — non implémenté** (ajouté au backlog sur demande de l'utilisatrice, 2026-07-21).
+Statut : ✅ **IMPLÉMENTÉ en s17 (à valider pédago)** — 2026-07-22 (ADR-0016 pour `GameSession.jokers`/
+`triedWrong`, DEC-0013 pour les décisions produit ; Done technique CI à confirmer ; Done pédagogique en
+attente de démo). Planifié initialement le 2026-07-21 sur demande de l'utilisatrice.
 Réflexion pédagogique : sur une **erreur**, ne pas passer à une nouvelle question mais **redemander à
 l'enfant**. Chaque session offre **3 jokers (3 ❤️)** = 3 nouvelles tentatives au total. Sur un jeu à
 clic, **la case fausse cliquée devient non cliquable**.
@@ -31,15 +33,17 @@ clic, **la case fausse cliquée devient non cliquable**.
 - **Réglage** (option) : nombre de jokers réglable (toggle/réutilise le champ « nombre de questions »
   style) — par défaut 3. À trancher.
 
-## Questions à trancher avec l'utilisatrice (PO)
-1. Un joker se consomme-t-il **par clic faux** ou **par question ratée** (quel que soit le nb de
-   clics faux sur cette question) ? *(proposition : par clic faux, cohérent avec « 3 tentatives ».)*
-2. Une bonne réponse **après** retenter vaut-elle +10 plein, ou un score réduit ? *(proposition : +10
-   plein — l'objectif est d'apprendre en réessayant.)*
-3. ✅ **TRANCHÉ (utilisatrice, 2026-07-22)** : quand les jokers sont épuisés, une erreur **termine la
-   session** (écran de fin avec le score courant).
-4. Les jokers sont-ils **réglables** par l'adulte (0 à 5) ou fixés à 3 ?
-5. Affichage : ❤️ pleins/vidés dans le bandeau de score — position et animation ?
+## Questions à trancher avec l'utilisatrice (PO) — ✅ TRANCHÉES (2026-07-22, cf. DEC-0013)
+1. ✅ **TRANCHÉ** : un joker se consomme **par clic faux** (cohérent avec « 3 tentatives ») ; l'option
+   fausse cliquée devient non cliquable.
+2. ✅ **TRANCHÉ** : une bonne réponse après retente vaut **+10 plein** (l'objectif est d'apprendre en
+   réessayant).
+3. ✅ **TRANCHÉ** : quand les jokers sont épuisés, une erreur **termine la session** (écran de fin avec
+   le score courant).
+4. ✅ **TRANCHÉ** : les jokers sont **fixés à 3** (pas de réglage adulte pour l'instant ; réglage
+   éventuel 0..5 reporté).
+5. ⏳ Affichage : ❤️ pleins/vidés dans le bandeau de score — position et **animation** à affiner
+   visuellement en démo (❤️ × jokers dans le scoreboard commun, implémenté).
 
 ## Impact / risques
 - Change la **sémantique de coup faux** pour TOUTES les mécaniques à clic (aujourd'hui : avance).
