@@ -17,7 +17,7 @@
     <section class="catalogue">
         <div class="cards">
             <div th:each="item : ${entries}"
-                 th:insert="~{fragments/catalogue :: leaf(${item}, ${from})}"></div>
+                 th:insert="~{fragments/catalogue :: leaf(${item}, ${from}, 'matiere')}"></div>
         </div>
     </section>
 </main>

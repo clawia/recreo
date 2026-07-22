@@ -19,7 +19,7 @@
     <section class="catalogue">
         <div class="cards">
             <div th:each="item : ${entries}"
-                 th:insert="~{fragments/catalogue :: leaf(${item}, ${from})}"></div>
+                 th:insert="~{fragments/catalogue :: leaf(${item}, ${from}, 'jeu')}"></div>
         </div>
     </section>
 </main>

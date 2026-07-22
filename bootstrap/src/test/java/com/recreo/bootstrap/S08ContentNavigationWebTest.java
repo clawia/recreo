@@ -70,7 +70,7 @@ class S08ContentNavigationWebTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Tables de multiplication")))
                 .andExpect(content().string(containsString("Citoyenneté &amp; respect")))
-                .andExpect(content().string(containsString("Sciences CM1 — Vrai ou Faux")));
+                .andExpect(content().string(containsString("Vrai ou Faux")));
     }
 
     @Test

@@ -13,8 +13,16 @@
     le bouton (cf. US-s04).
   Le parametre `from` propage l'origine du parcours pour la fleche retour contextuelle.
 -->
-<div th:fragment="leaf(item, from)" class="card leaf">
-    <span class="card-title" th:text="${item.title}">Titre du jeu</span>
+<div th:fragment="leaf(item, from, context)" class="card leaf">
+    <!-- Nom affiche : le NOM COURT du jeu (gameLabel), prefixe par la/les dimension(s) NON fixee(s)
+         par l'axe de navigation courant, pour rester coherent et sans ambiguite :
+         - par niveau   -> prefixe MATIERE (le niveau est deja l'en-tete de page) ;
+         - par matiere  -> prefixe NIVEAU ;
+         - par jeu      -> prefixe MATIERE + NIVEAU (le jeu est deja l'en-tete).
+         On n'affiche plus le champ `title` (qui embarquait le niveau/la matiere de facon incoherente). -->
+    <span class="card-title"
+          th:with="prefix=${context == 'matiere' ? item.niveau : (context == 'jeu' ? item.matiere + ' ' + item.niveau : item.matiere)}"
+          th:text="${prefix + ' — ' + item.gameLabel}">Titre du jeu</span>
     <span class="card-desc" th:text="${item.description}">Description</span>
     <div class="leaf-actions">
         <form th:action="@{/sessions}" method="post" class="leaf-play">

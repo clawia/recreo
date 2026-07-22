@@ -38,9 +38,9 @@ class TwoAxisNavigationWebTest {
     void niveauCpListsItsGamesAsLeaves() throws Exception {
         mockMvc.perform(get("/niveau/CP"))
                 .andExpect(status().isOk())
-                // Les jeux CP : calcul mental CP et francais CP (syllabes).
-                .andExpect(content().string(containsString("Calcul mental — CP")))
-                .andExpect(content().string(containsString("Français CP — Les syllabes")))
+                // Les jeux CP, affiches « Matiere — Nom du jeu » (le niveau est l'en-tete de page).
+                .andExpect(content().string(containsString("Mathématiques — Calcul mental")))
+                .andExpect(content().string(containsString("Français — Les syllabes")))
                 // Chaque feuille propose Jouer et Parametres.
                 .andExpect(content().string(containsString("Jouer")))
                 .andExpect(content().string(containsString("/parametres")))
@@ -62,9 +62,9 @@ class TwoAxisNavigationWebTest {
     void jeuCalculMentalListsTheLevelsWhereItExists() throws Exception {
         mockMvc.perform(get("/jeu/calcul-mental"))
                 .andExpect(status().isOk())
-                // Le jeu existe en CP et CM1 : deux feuilles.
-                .andExpect(content().string(containsString("Calcul mental — CP")))
-                .andExpect(content().string(containsString("Calcul mental — CM1")))
+                // Le jeu existe en CP et CM1 : deux feuilles (axe « par jeu » -> prefixe Matiere Niveau).
+                .andExpect(content().string(containsString("Mathématiques CP — Calcul mental")))
+                .andExpect(content().string(containsString("Mathématiques CM1 — Calcul mental")))
                 .andExpect(content().string(containsString("value=\"/jeu/calcul-mental\"")));
     }
 
