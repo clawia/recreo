@@ -54,7 +54,9 @@
                   hx-target="#game-area" hx-swap="innerHTML">
                 <input type="hidden" name="chosenAnswer" th:value="${opt}"/>
                 <input type="hidden" name="from" th:value="${from}"/>
-                <button type="submit" class="answer-btn" th:text="${opt}">42</button>
+                <button type="submit" class="answer-btn" th:text="${opt}"
+                        th:classappend="${game.disabledOptions != null and game.disabledOptions.contains(opt)} ? ' tentee' : ''"
+                        th:attr="disabled=${game.disabledOptions != null and game.disabledOptions.contains(opt)} ? 'disabled' : null">42</button>
             </form>
         </div>
 

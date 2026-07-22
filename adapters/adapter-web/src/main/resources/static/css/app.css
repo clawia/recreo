@@ -294,8 +294,27 @@ body {
 .scoreboard {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 1.2rem;
     margin-bottom: 0.8rem;
+}
+
+/* Coeurs (jokers) restants : un coeur plein par joker, au centre du scoreboard.
+   Etat « plus de coeur » (coeur brise) grise pour rester lisible sans inquieter. */
+.lives {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15rem;
+    line-height: 1;
+}
+
+.coeur {
+    font-size: 1.4rem;
+}
+
+.coeur.vide {
+    opacity: 0.55;
+    filter: grayscale(0.4);
 }
 
 .prompt {
@@ -853,4 +872,204 @@ body {
     align-items: center;
     font-size: 2.2rem;
     line-height: 1;
+}
+
+/* ---- Options fausses deja tentees : grisees et non cliquables ---- */
+/* Un coeur (joker) a ete perdu sur cette option : on la garde visible mais inerte,
+   pour que l'enfant ne re-clique pas dessus. */
+.answer-btn[disabled],
+.quiz-btn[disabled],
+.word-btn[disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.answer-btn[disabled]:hover,
+.quiz-btn[disabled]:hover,
+.word-btn[disabled]:hover {
+    transform: none;
+    background: var(--primary);
+}
+
+.word-btn[disabled]:hover {
+    background: var(--accent);
+}
+
+/* ---- Mecanique "associer" : elements a classer + zones-cibles (categories) ---- */
+/* Reprend les reperes visuels du glisser-deposer (grosses cibles tactiles CP). */
+.associer {
+    text-align: center;
+}
+
+/* Reserve des elements a associer (en desordre). */
+.assoc-reserve {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.9rem;
+    min-height: 96px;
+    margin: 0.6rem auto 1.1rem;
+    max-width: 640px;
+    padding: 0.8rem;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #fff3bf 0%, #ffe066 100%);
+    box-shadow: inset 0 0 0 4px #ffd43b;
+}
+
+/* Un element deplacable (calque sur .dnd-tuile). */
+.assoc-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 84px;
+    min-height: 84px;
+    padding: 0.6rem 1rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: white;
+    background: var(--primary);
+    border: none;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    transition: transform 0.1s ease, background 0.1s ease;
+}
+
+.assoc-item:active {
+    cursor: grabbing;
+}
+
+.assoc-item.dragging {
+    opacity: 0.5;
+    transform: scale(1.05);
+}
+
+/* Les zones-cibles (categories) : disposees en rangee, se replient sur mobile. */
+.assoc-slots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0.9rem;
+    margin: 0.6rem auto 1.1rem;
+    max-width: 640px;
+}
+
+/* Une categorie : titre + zone de depot en pointilles (calque sur .dnd-slot). */
+.assoc-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1 1 180px;
+    min-width: 160px;
+    padding: 0.6rem;
+    border-radius: 18px;
+    background: #fffdf5;
+    box-shadow: inset 0 0 0 4px #a5d8ff;
+}
+
+.assoc-cible {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--ink);
+}
+
+/* La zone qui recoit les elements deposes. */
+.assoc-drop {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    min-height: 92px;
+    padding: 0.4rem;
+    border: 4px dashed var(--accent);
+    border-radius: 14px;
+}
+
+/* ---- Mecanique "memory" : grille de cartes a retourner (jeu de paires) ---- */
+.memory {
+    text-align: center;
+}
+
+/* Grille responsive : autant de colonnes que la largeur le permet. */
+.memory-grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 0.8rem;
+    justify-content: center;
+    margin: 0.8rem auto 1.1rem;
+    max-width: 640px;
+}
+
+/* Une carte : dos visible par defaut (« ? »), grosse cible tactile. La face
+   (.memory-face) reste masquee tant que la carte n'est ni .flipped ni .appariee. */
+.memory-carte {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    min-height: 96px;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #4dabf7 0%, #339af0 100%);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+/* Dos de carte : un gros « ? » tant que la carte est cachee. */
+.memory-carte::after {
+    content: "?";
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: white;
+}
+
+.memory-carte:hover {
+    transform: translateY(-3px);
+}
+
+/* La face (valeur) est masquee par defaut. */
+.memory-face {
+    display: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--ink);
+    padding: 0.3rem;
+    text-align: center;
+    word-break: break-word;
+}
+
+/* Carte retournee ou appariee : on montre la face et on cache le dos « ? ». */
+.memory-carte.flipped,
+.memory-carte.appariee {
+    background: #fffdf5;
+    box-shadow: inset 0 0 0 4px #ffd43b, var(--shadow);
+    transform: none;
+    cursor: default;
+}
+
+.memory-carte.flipped::after,
+.memory-carte.appariee::after {
+    content: none;
+}
+
+.memory-carte.flipped .memory-face,
+.memory-carte.appariee .memory-face {
+    display: block;
+    animation: answer-pop 0.25s ease both;
+}
+
+/* Paire trouvee : reste visible, mise en avant en vert. */
+.memory-carte.appariee {
+    background: #ebfbee;
+    box-shadow: inset 0 0 0 4px var(--ok), var(--shadow);
 }

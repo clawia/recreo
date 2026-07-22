@@ -28,4 +28,7 @@
 
 | s16 | « Compare les fractions » (< > =, remplace le rangement) + frise chronologique VERTICALE | Bandit manchot + Glisser-déposer | Maths CM1 comparer fractions · Histoire CM1 frise | 2026-07-21 | ✅ **VALIDÉ** (Done technique + Done pédago) | 2026-07-21 |
 
-> ✅ **File à zéro** : s14, s15 et s16 validés le 2026-07-21. Aucun incrément en attente.
+| s17 | Jokers / 3 cœurs (retente sur erreur, 0 cœur = fin) + mécaniques « Associer/Classer » (5e) & « Memory » (6e), 6 jeux YAML | Associer/Classer + Memory (transverse jokers) | transverse (droit à l'erreur) · QLM CP vivant/non-vivant · Anglais CM1 appariement · Maths CP quantité↔chiffre · Maths CM1 fractions↔représentation · Français CP mot↔image | 2026-07-22 | 🕒 **À VALIDER** (Done technique CI à confirmer ; Done pédago en attente de démo) | — |
+
+> 🕒 **1 incrément en attente** : s17 poussé le 2026-07-22 (s14/s15/s16 validés). Sous le seuil de gel
+> (< 3). DEC-0013 (jokers) + DEC-0014 (mécaniques) à valider en démo.

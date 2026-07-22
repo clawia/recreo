@@ -138,11 +138,11 @@ public class GameController {
     public String submitMove(@PathVariable("id") String sessionId,
                              @RequestParam(value = "chosenAnswer", required = false) String chosenAnswer,
                              @RequestParam(value = "arrangement", required = false) java.util.List<String> arrangement,
+                             @RequestParam(value = "assocItem", required = false) List<String> assocItem,
+                             @RequestParam(value = "assocTarget", required = false) List<String> assocTarget,
                              @RequestParam(value = "from", required = false, defaultValue = HOME) String from,
                              Model model) {
-        SubmitMoveCommand command = (arrangement != null && !arrangement.isEmpty())
-                ? SubmitMoveCommand.arrangement(sessionId, arrangement)
-                : SubmitMoveCommand.pick(sessionId, chosenAnswer);
+        SubmitMoveCommand command = buildCommand(sessionId, chosenAnswer, arrangement, assocItem, assocTarget);
         MoveOutcomeView view = submitMoveUseCase.submit(command);
         // On passe l'arrangement soumis au mapper : pour glisser-deposer, un essai faux garde en
         // place les tuiles deja bien positionnees (UX « ranger »). Pour les autres mecaniques,
@@ -154,6 +154,30 @@ public class GameController {
         // Le fragment renvoye a htmx est choisi selon la mecanique (cf. ADR-0007) :
         // il vient de la session/mecanique (mechanicView), pas devine ici.
         return "fragments/" + game.mechanicView() + " :: game";
+    }
+
+    /**
+     * Choisit le coup a soumettre selon la charge utile du formulaire : associations
+     * (associer/classer & memory : deux listes PARALLELES {@code assocItem}/{@code assocTarget}
+     * zippees en une map), sinon arrangement (glisser-deposer), sinon reponse cliquee (pick).
+     */
+    private static SubmitMoveCommand buildCommand(String sessionId, String chosenAnswer,
+                                                  List<String> arrangement,
+                                                  List<String> assocItem, List<String> assocTarget) {
+        if (assocItem != null && !assocItem.isEmpty() && assocTarget != null) {
+            Map<String, String> associations = new LinkedHashMap<>();
+            int n = Math.min(assocItem.size(), assocTarget.size());
+            for (int i = 0; i < n; i++) {
+                associations.put(assocItem.get(i), assocTarget.get(i));
+            }
+            if (!associations.isEmpty()) {
+                return SubmitMoveCommand.associations(sessionId, associations);
+            }
+        }
+        if (arrangement != null && !arrangement.isEmpty()) {
+            return SubmitMoveCommand.arrangement(sessionId, arrangement);
+        }
+        return SubmitMoveCommand.pick(sessionId, chosenAnswer);
     }
 
     private static void putIfPresent(Map<String, String> map, String key, String value) {

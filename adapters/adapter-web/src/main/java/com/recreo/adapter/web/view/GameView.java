@@ -9,6 +9,16 @@ import java.util.List;
  * <p>{@code catalogEntryId} permet au bouton « Rejouer » de l'ecran de fin de
  * relancer une session du meme jeu ; {@code answered} est le nombre de questions
  * jouees (affiche dans le score de fin, cf. ADR-0006).</p>
+ *
+ * <p><b>Jokers (DEC-0009)</b> : {@code jokers} = coeurs restants (affiches dans le
+ * bandeau de score) ; {@code disabledOptions} = reponses deja tentees a tort sur l'item
+ * courant, a rendre NON cliquables sur les jeux a clic.</p>
+ *
+ * <p><b>Associer/classer & memory (ADR-0016)</b> : {@code associationCards} = elements
+ * a associer (items a classer, ou cartes a apparier) ; {@code associationGroups} =
+ * identifiant de paire PARALLELE a {@code associationCards} (memory uniquement — vide
+ * pour « classer », pour ne jamais reveler la bonne reponse) ; {@code associationTargets}
+ * = zones-cibles (categories pour « classer », vide pour memory).</p>
  */
 public record GameView(
         String sessionId,
@@ -26,21 +36,30 @@ public record GameView(
         boolean correct,
         String feedbackMessage,
         List<String> arrangementSlots,
-        List<String> arrangementReserve) {
+        List<String> arrangementReserve,
+        int jokers,
+        List<String> disabledOptions,
+        List<String> associationTargets,
+        List<String> associationCards,
+        List<String> associationGroups) {
 
     public static GameView initial(String sessionId, String mechanicView, String catalogEntryId,
                                    List<String> reelSymbols, String question, List<String> options,
-                                   int score, int round, int answered, int questionsTarget, boolean finished) {
+                                   int score, int round, int answered, int questionsTarget, boolean finished,
+                                   int jokers, List<String> disabledOptions) {
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
-                answered, questionsTarget, finished, false, false, null, null, null);
+                answered, questionsTarget, finished, false, false, null, null, null,
+                jokers, disabledOptions == null ? List.of() : disabledOptions, null, null, null);
     }
 
     public static GameView withFeedback(String sessionId, String mechanicView, String catalogEntryId,
                                         boolean correct, String feedbackMessage, List<String> reelSymbols,
                                         String question, List<String> options, int score, int round,
-                                        int answered, int questionsTarget, boolean finished) {
+                                        int answered, int questionsTarget, boolean finished,
+                                        int jokers, List<String> disabledOptions) {
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
-                answered, questionsTarget, finished, true, correct, feedbackMessage, null, null);
+                answered, questionsTarget, finished, true, correct, feedbackMessage, null, null,
+                jokers, disabledOptions == null ? List.of() : disabledOptions, null, null, null);
     }
 
     /**
@@ -50,7 +69,20 @@ public record GameView(
      */
     public GameView withArrangementBoard(List<String> slots, List<String> reserve) {
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
-                answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage, slots, reserve);
+                answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage, slots, reserve,
+                jokers, disabledOptions, associationTargets, associationCards, associationGroups);
+    }
+
+    /**
+     * Copie de cette vue avec le PLATEAU d'associations renseigne (cf. ADR-0016) :
+     * {@code targets} = zones-cibles (classer), {@code cards} = elements a associer,
+     * {@code groups} = identifiants de paire paralleles aux cartes (memory).
+     */
+    public GameView withAssociationBoard(List<String> targets, List<String> cards, List<String> groups) {
+        return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
+                answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage,
+                arrangementSlots, arrangementReserve,
+                jokers, disabledOptions, targets, cards, groups);
     }
 
     /**

@@ -24,6 +24,7 @@ import com.recreo.domain.mechanic.Reel;
 import com.recreo.domain.mechanic.SessionId;
 import com.recreo.domain.mechanic.SpinAndPick;
 import com.recreo.domain.mechanic.SubmitArrangement;
+import com.recreo.domain.mechanic.SubmitAssociations;
 
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -72,9 +73,7 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
         GameSession session = stored.withRuntime(config.content(), randomFactory.get());
 
         GameMechanic mechanic = catalog.mechanicFor(session.mechanic());
-        Move move = (command.arrangement() != null && !command.arrangement().isEmpty())
-                ? new SubmitArrangement(command.arrangement())
-                : new SpinAndPick(new Answer(command.chosenAnswer()));
+        Move move = toMove(command);
         MoveResult result = mechanic.apply(session, move);
         repository.save(result.session());
         return toMoveOutcomeView(result, mechanic.view());
@@ -126,6 +125,17 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
         return catalog.settingsFor(entryId);
     }
 
+    /** Construit le coup du domaine selon la charge utile de la commande (pick / arrangement / associations). */
+    private Move toMove(SubmitMoveCommand command) {
+        if (command.associations() != null && !command.associations().isEmpty()) {
+            return new SubmitAssociations(command.associations());
+        }
+        if (command.arrangement() != null && !command.arrangement().isEmpty()) {
+            return new SubmitArrangement(command.arrangement());
+        }
+        return new SpinAndPick(new Answer(command.chosenAnswer()));
+    }
+
     private CatalogEntryView toCatalogEntryView(CatalogEntry entry) {
         return new CatalogEntryView(
                 entry.entryId(),
@@ -151,6 +161,9 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
                 session.round(),
                 session.answered(),
                 session.questionsTarget(),
+                session.jokers(),
+                List.copyOf(session.triedWrong()),
+                session.currentItem().meta(),
                 session.status().name());
     }
 
@@ -169,6 +182,9 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
                 session.round(),
                 session.answered(),
                 session.questionsTarget(),
+                session.jokers(),
+                List.copyOf(session.triedWrong()),
+                session.currentItem().meta(),
                 session.status().name());
     }
 

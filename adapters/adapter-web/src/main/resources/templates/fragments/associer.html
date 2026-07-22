@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Associer / classer</title>
+</head>
+<body>
+<!--
+  Fragment de la mecanique "associer" (associer/classer). Presentation calquee sur
+  glisser-deposer : une RESERVE d'elements a associer (game.associationCards) que
+  l'enfant GLISSE dans des ZONES-CIBLES / categories (game.associationTargets). PAS
+  de machine, PAS de trou, PAS de boutons de reponse. On N'affiche JAMAIS game.options.
+  Le scoreboard, l'emplacement de message et l'ecran de fin sont MUTUALISES via
+  fragments/commun. A la soumission, /js/associer.js pousse deux listes PARALLELES
+  `assocItem` / `assocTarget` (zippees en {item -> cible} par le controller).
+-->
+<div th:fragment="game" class="associer" th:attr="data-session-id=${game.sessionId}">
+
+    <!-- ECRAN DE FIN (session terminee) : ecran commun mutualise.
+         th:if porte par un th:block ENVELOPPANT (comme banditmanchot/glisserdeposer) :
+         sinon th:replace s'executerait avant th:if et l'ecran de fin s'afficherait
+         toujours (ne PAS reproduire le bug s06). -->
+    <th:block th:if="${game.finished}">
+        <div th:replace="~{fragments/commun :: gameOver}"></div>
+    </th:block>
+
+    <!-- ECRAN DE JEU (session active). -->
+    <div th:unless="${game.finished}">
+        <div th:replace="~{fragments/commun :: scoreboard}"></div>
+
+        <!-- La consigne : ce qu'il faut faire (game.question), affichee telle quelle. -->
+        <p class="consigne" th:text="${game.question}">Classe chaque élément dans la bonne catégorie</p>
+
+        <!-- RESERVE des elements a associer (en desordre). Chaque element est deplacable
+             (draggable) ; la valeur transportee est portee par data-value (lue par le JS
+             a la soumission). -->
+        <div class="assoc-reserve">
+            <div class="assoc-item" th:each="item : ${game.associationCards}"
+                 draggable="true" th:text="${item}" th:attr="data-value=${item}">élément</div>
+        </div>
+
+        <!-- ZONES-CIBLES (categories) : chaque bloc .assoc-slot porte sa cible (data-target) ;
+             le .assoc-drop recoit les elements deposes. -->
+        <div class="assoc-slots">
+            <div class="assoc-slot" th:each="cible : ${game.associationTargets}"
+                 th:attr="data-target=${cible}">
+                <span class="assoc-cible" th:text="${cible}">catégorie</span>
+                <div class="assoc-drop"></div>
+            </div>
+        </div>
+
+        <!-- Formulaire de validation : le JS injecte les listes paralleles assocItem /
+             assocTarget juste avant l'envoi htmx (meme endpoint et meme cible que les
+             autres mecaniques). -->
+        <form class="assoc-form"
+              th:attr="hx-post=@{/sessions/{id}/moves(id=${game.sessionId})}"
+              hx-target="#game-area" hx-swap="innerHTML" method="post">
+            <input type="hidden" name="from" th:value="${from}"/>
+            <button type="submit" class="valider-btn">✅ Valider</button>
+        </form>
+
+        <!-- Message de resultat : emplacement RESERVE commun, sous le formulaire. -->
+        <div th:replace="~{fragments/commun :: feedbackSlot}"></div>
+    </div>
+</div>
+</body>
+</html>

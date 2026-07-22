@@ -22,6 +22,7 @@ reste la **validation pédagogique humaine**, pas la vitesse des agents.
 | s14 | 2026-07-21 | 2026-07-21 | 1 salve (orchestration multi-sous-agents) | « Décompose le nombre » (valeur positionnelle, CP+CM1, bandit manchot) + déclinaisons glisser-déposer : Frise chronologique (Histoire CM1) & Range les nombres CM1 — aucune nouvelle mécanique, pas de nouvel ADR | ✅ CI verte (142 tests) | ✅ VALIDÉ 2026-07-21 |
 | s15 | 2026-07-21 | 2026-07-21 | 1 salve (orchestration sous-agent) | Toggle « inclure les centaines » (décomposition, case à cocher — ADR-0015) + déclinaison glisser-déposer « Range les fractions » (Maths CM1) | ✅ CI verte (146 tests) | ✅ VALIDÉ 2026-07-21 |
 | s16 | 2026-07-21 | 2026-07-21 | 1 salve | Retours : « Compare les fractions » (< > =, bandit manchot ; remplace le rangement) + frise chronologique VERTICALE (rail temps + flèche) | ✅ CI verte (147 tests) | ✅ VALIDÉ 2026-07-21 |
+| s17 | 2026-07-22 09:00 | 2026-07-22 | 1 salve (orchestration multi-sous-agents sur contrats gelés) | Jokers / 3 cœurs (transverse, retente sur erreur, 0 cœur = fin — DEC-0013) + 5e mécanique « Associer/Classer » & 6e « Memory » (coup générique `SubmitAssociations`, 6 jeux YAML — ADR-0016 / DEC-0014) | ✅ CI verte (à confirmer) | ⏳ À VALIDER |
 
 > Note : « 1 salve d'amorçage » = les agents ont produit l'incrément en une session de travail
 > continue (temps réel de l'ordre de la dizaine de minutes à quelques heures selon les tâches),

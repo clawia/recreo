@@ -12,9 +12,16 @@
   s'appuient sur les variables `game` et `from` du contexte appelant.
 -->
 
-<!-- Scoreboard : score courant + manche. -->
+<!-- Scoreboard : score courant + coeurs (jokers) restants + manche. -->
 <div th:fragment="scoreboard" class="scoreboard">
     <span class="score">⭐ Score : <b th:text="${game.score}">0</b></span>
+    <!-- Coeurs (jokers) restants : un coeur plein par joker ; si plus aucun coeur,
+         un etat « plus de coeur » (coeur brise) reste affiche. -->
+    <span class="lives" th:attr="aria-label='Coeurs restants : ' + ${game.jokers}">
+        <span th:if="${game.jokers > 0}" class="coeur"
+              th:each="i : ${#numbers.sequence(1, game.jokers)}">❤️</span>
+        <span th:unless="${game.jokers > 0}" class="coeur vide">💔</span>
+    </span>
     <span class="round">Manche <b th:text="${game.round}">1</b></span>
 </div>
 

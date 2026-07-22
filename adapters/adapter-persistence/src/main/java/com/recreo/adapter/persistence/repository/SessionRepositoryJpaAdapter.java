@@ -58,6 +58,8 @@ public class SessionRepositoryJpaAdapter implements SessionRepository {
                 state.questionsTarget(),
                 state.answered(),
                 state.masteredKeys(),
+                state.jokers(),
+                state.triedWrong(),
                 state.parameters(),
                 null,
                 null);
@@ -67,7 +69,8 @@ public class SessionRepositoryJpaAdapter implements SessionRepository {
         try {
             return objectMapper.writeValueAsString(new PersistedState(
                     session.currentItem(), session.reels(), session.parameters(),
-                    session.questionsTarget(), session.answered(), session.masteredKeys()));
+                    session.questionsTarget(), session.answered(), session.masteredKeys(),
+                    session.jokers(), session.triedWrong()));
         } catch (Exception e) {
             throw new IllegalStateException("Impossible de serialiser l'etat de session", e);
         }
