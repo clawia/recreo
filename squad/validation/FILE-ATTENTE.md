@@ -32,11 +32,13 @@
 
 | s18 | Raffinements UX de s17 (6 retouches, pas de nouvelle mécanique) : cœur consommé par le memory + écran « Essaye encore » + score max (DEC-0013) ; verrouillage partiel associer/classer + dés memory quantités CP + images memory anglais CM1 (DEC-0014) | Associer/Classer + Memory (transverse jokers) | transverse (droit à l'erreur) · mêmes compétences que s17 (aucune nouvelle) | 2026-07-22 | ✅ **VALIDÉ** (Done technique + Done pédago ; validé avec s17) | 2026-07-22 |
 
-| s19 | Contenu + polish (aucune nouvelle mécanique) : cœurs adaptés à la mécanique (memory 6 ❤️ — réalise IDEE-1) + dés agrandis memory quantités CP (réalise IDEE-2) + compréhension de texte CM1 (quiz, 8 items) + nom/verbe/adjectif CM1 (associer/classer, 3 puzzles) — DEC-0015 | Quiz-aventure + Associer/Classer (+ transverse jokers) | Français CM1 compréhension · Français CM1 grammaire (nature des mots) · transverse (droit à l'erreur) | 2026-07-22 | ⏳ **À VALIDER** (Done technique CI à confirmer ; Done pédago à valider avec s20) | — |
+| s19 | Contenu + polish (aucune nouvelle mécanique) : cœurs adaptés à la mécanique (memory 6 ❤️ — réalise IDEE-1) + dés agrandis memory quantités CP (réalise IDEE-2) + compréhension de texte CM1 (quiz, 8 items) + nom/verbe/adjectif CM1 (associer/classer, 3 puzzles) — DEC-0015 | Quiz-aventure + Associer/Classer (+ transverse jokers) | Français CM1 compréhension · Français CM1 grammaire (nature des mots) · transverse (droit à l'erreur) | 2026-07-22 | ✅ **VALIDÉ** (Done technique + Done pédago ; validé avec s20) | 2026-07-22 |
 
-| s20 | Ouverture du domaine monnaie (Grandeurs et mesures) par 3 packs YAML auto-enregistrés : monnaie CP (quiz), monnaie CM1 (quiz), euros ↔ centimes CM1 (associer/classer) — pur contenu, aucun code — DEC-0016 | Quiz-aventure + Associer/Classer | Maths CP monnaie · Maths CM1 monnaie (rendre, conversions €/centimes, appariement) | 2026-07-22 | ⏳ **À VALIDER** (Done technique CI à confirmer ; Done pédago à valider avec s19) | — |
+| s20 | Ouverture du domaine monnaie (Grandeurs et mesures) par 3 packs YAML auto-enregistrés : monnaie CP (quiz), monnaie CM1 (quiz), euros ↔ centimes CM1 (associer/classer) — pur contenu, aucun code — DEC-0016 | Quiz-aventure + Associer/Classer | Maths CP monnaie · Maths CM1 monnaie (rendre, conversions €/centimes, appariement) | 2026-07-22 | ✅ **VALIDÉ** (Done technique + Done pédago ; validé avec s19 ; correction pièce→billet 5 € monnaie CP) | 2026-07-22 |
 
-> ⏳ **2 incréments en attente** : s19 et s20 poussés en file le **2026-07-22**, à valider
-> **ensemble** (enchaînés sans démo intermédiaire). **2 incréments < seuil de gel de 3** → pas de
-> GEL DU CONTENU. DEC-0015 (s19) + DEC-0016 (s20) : **À VALIDER**.
-> Rappel : s17 et s18 ont été validés ensemble le 2026-07-22 (file redescendue à 0 avant s19/s20).
+> ✅ **File redescendue à 0** : s19 et s20, poussés en file le **2026-07-22**, ont été **validés
+> ensemble le 2026-07-22** (Done pédagogique prononcé par l'utilisatrice, démo enchaînée sans
+> intermédiaire). DEC-0015 (s19) + DEC-0016 (s20) : **VALIDÉ (2026-07-22)** — une seule correction de
+> contenu appliquée (pièce → billet de 5 € dans la monnaie CP), le reste validé tel quel. **Aucun
+> incrément en attente.**
+> Rappel : s17 et s18 avaient été validés ensemble le 2026-07-22 (file déjà redescendue à 0 avant s19/s20).

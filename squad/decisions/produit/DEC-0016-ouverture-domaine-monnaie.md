@@ -7,8 +7,9 @@
 - **Compétence programme visée** : Maths CP — Grandeurs et mesures — monnaie (compter des euros,
   petites sommes, rendre la monnaie) ; Maths CM1 — Grandeurs et mesures — monnaie (rendre la
   monnaie, conversions euros/centimes ; associer une somme en euros à sa valeur en centimes).
-- **Statut de validation** : **À VALIDER** (implémenté s20 ; Done pédagogique à prononcer par
-  l'utilisatrice — validation à venir, groupée avec s19).
+- **Statut de validation** : **VALIDÉ (utilisatrice, 2026-07-22)** — Done pédagogique prononcé par
+  l'utilisatrice (validation groupée s19 + s20). Une seule correction de contenu appliquée à la
+  validation : **le 5 € est un billet, pas une pièce** (monnaie CP) ; le reste validé tel quel.
 
 ## Contexte / besoin
 Le domaine **Grandeurs et mesures** était jusqu'ici **entièrement absent** de la matrice
@@ -49,3 +50,7 @@ nouvelle mécanique, en réutilisant trois briques déjà validées.
   vigilance principal — contenus à relire/enrichir par l'utilisatrice dans les YAML).
 - Niveau adapté (CP : petites sommes ; CM1 : conversions et rendus plus larges).
 - Lisibilité de l'appariement euros ↔ centimes sur le plateau (CM1).
+
+## Correction appliquée à la validation (2026-07-22)
+- **Correction : le 5 € est un billet, pas une pièce** (jeu monnaie CP). Le contenu YAML a été
+  ajusté en conséquence ; le reste du domaine monnaie a été validé tel quel.

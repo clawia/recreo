@@ -6,8 +6,8 @@
 - **Contenus** : 2 jeux **externalisés en YAML dès le départ**, **auto-enregistrés** par les loaders
   existants (`QuizPackLoader` pour la compréhension, `AssocPackLoader` pour la nature des mots ;
   convention `niveau-jeu.yml`).
-- **Statut global** : En cours — Done technique attendu (CI) puis Done pédagogique (démo, validation
-  groupée s19 + s20).
+- **Statut global** : ✅ **VALIDÉ (2026-07-22)** — Done pédagogique prononcé par l'utilisatrice
+  (validation groupée s19 + s20). Contenu validé tel quel.
 - **Dernière mise à jour** : 2026-07-22, par camille-po
 - **Ergonomie** : cf. DEC-0005 (carte-question, compréhension) + DEC-0014 (plateau de catégorisation,
   nature des mots) + DEC-0015.
@@ -16,8 +16,8 @@
 
 | gameKey | Jeu | Matière | Niveau | Compétence | Statut |
 |---|---|---|---|---|---|
-| `comprehension` | Compréhension de texte (`cm1-comprehension.yml`, 8 items) | Français | CM1 | compréhension d'un texte narratif court (questions explicites/implicites) | en cours (s19) |
-| `classer` | Nom, verbe ou adjectif (`cm1-nature-mots.yml`, 3 puzzles) | Français | CM1 | reconnaître la nature des mots (nom, verbe, adjectif) — catégorisation | en cours (s19) |
+| `comprehension` | Compréhension de texte (`cm1-comprehension.yml`, 8 items) | Français | CM1 | compréhension d'un texte narratif court (questions explicites/implicites) | couvert-validé (2026-07-22) |
+| `classer` | Nom, verbe ou adjectif (`cm1-nature-mots.yml`, 3 puzzles) | Français | CM1 | reconnaître la nature des mots (nom, verbe, adjectif) — catégorisation | couvert-validé (2026-07-22) |
 
 ## Critères pédagogiques
 - [x] Compréhension : chaque item présente un **court texte** puis une question à réponse unique +
@@ -35,7 +35,10 @@
       du tri grammatical = point de vigilance principal de la démo).
 
 ## Bloc validation utilisateur (Done pédagogique)
-- **Démo jouée le** : — · **Validée** : — · **Commentaires** : —
+- **Démo jouée le** : 2026-07-22 · **Validée** : Oui (VALIDÉ le 2026-07-22, groupée s19 + s20) ·
+  **Commentaires** : compréhension de texte CM1 (8 items) et catégorisation nom/verbe/adjectif CM1
+  (3 puzzles) validées telles quelles ; jokers (DEC-0013) cohérents, capital 6 ❤️ au memory validé
+  (IDEE-1) et dés agrandis du memory quantités CP validés (IDEE-2).
 
 ## Bloc playtest enfants
 - **Session tenue le** : — (jalon) · **Observations** : —

@@ -7,8 +7,8 @@
 - **Compétence programme visée** : Français CM1 — compréhension d'un texte narratif court
   (questions explicites/implicites) ; Français CM1 — grammaire (reconnaître la nature des mots :
   nom, verbe, adjectif). Volet transverse : posture d'apprentissage / droit à l'erreur (cœurs).
-- **Statut de validation** : **À VALIDER** (implémenté s19 ; Done pédagogique à prononcer par
-  l'utilisatrice — validation à venir, groupée avec s20).
+- **Statut de validation** : **VALIDÉ (utilisatrice, 2026-07-22)** — Done pédagogique prononcé par
+  l'utilisatrice (validation groupée s19 + s20). Contenu validé tel quel.
 
 ## Contexte / besoin
 Direction s19 : **élargir la couverture par du contenu et polir l'existant**, sur des mécaniques
