@@ -546,3 +546,24 @@ quantités, **afin de** lire facilement la quantité malgré ma vue de jeune enf
   (raffinement s18 : faces de dés du memory quantités CP) ; livrée par DEC-0015.
 - **Statut** : ✅ **LIVRÉE en s19** (story S19-2) — variante CSS `.memory-des .memory-face`. Done
   pédagogique **À VALIDER**.
+
+### Story IDEE-3 — Boutons de filtre (niveau / matière) dans les listes de jeux  🔲 **À FAIRE (non planifiée)**
+**En tant qu'**enfant (ou accompagnant), **je veux** filtrer une liste de jeux par **niveau**
+(CP / CM1) et/ou par **matière** grâce à des **boutons de sélection**, **afin de** réduire vite la
+liste à ce qui m'intéresse sans changer d'écran.
+
+- **Compétence programme visée** : transverse (ergonomie / navigation — pas de contenu).
+- **Justification** : depuis s21, l'axe **« Par jeu »** liste **tous** les jeux à plat (format
+  « Matière Niveau — Nom ») ; la liste est longue. Des filtres croisés évitent de repasser par un
+  autre axe. Exemple demandé (utilisatrice, 2026-07-22) : *Par jeu → bouton **CM1** → sous-ensemble
+  des jeux CM1* ; idem **CP** ; idem **par matière**. Les filtres se **combinent** (ex. CM1 +
+  Mathématiques) et recoupent les axes existants (par niveau, par matière) qui restent disponibles.
+- **Critères d'acceptation (à affiner)** :
+  - Sur l'écran **« Par jeu »**, une barre de **boutons de filtre** : niveau (Tous / CP / CM1) et
+    matière (Toutes / Mathématiques / Français / …) ; l'état actif est visible.
+  - Cliquer un filtre affiche **le sous-ensemble** correspondant ; « Tous / Toutes » réinitialise.
+  - Filtres **combinables** (niveau ET matière) ; un sous-ensemble vide affiche un message clair.
+  - Filtrage **pur read-model / front** (htmx ou filtre côté serveur), **aucun changement de
+    domaine** ; les libellés restent au format contextuel (cf. affichage cohérent des jeux, s21).
+  - Idéalement mutualisé pour être réutilisable sur les autres listes (par niveau / par matière).
+- **Statut** : 🔲 **À FAIRE** — non planifiée, aucun sprint, non livrée.

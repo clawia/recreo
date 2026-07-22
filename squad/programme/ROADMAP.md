@@ -73,6 +73,9 @@ Domaines encore **absents** (à ouvrir progressivement) :
 - ✅ **LIVRÉ (s21)** — **Axe de navigation « par matière »** (3e axe, en plus de par niveau / par
   jeu) : pages `/matieres` et `/matiere/{matiere}` via `CatalogueQuery.matieres()` + `byMatiere()`
   (read-model sur le catalogue enrichi, sans nouvel ADR) — DEC-0017. *Done pédagogique à valider.*
+- **Boutons de filtre (niveau / matière) dans les listes de jeux** (backlog **IDEE-3**, demandé
+  2026-07-22) : filtrer « Par jeu » par CP/CM1 et/ou par matière, filtres combinables et
+  réinitialisables — read-model / front, sans changement de domaine. *À planifier.*
 
 ## F. Intendance / technique
 - 🔑 **Révoquer/régénérer le token GitHub** (a transité en clair) — à faire.
