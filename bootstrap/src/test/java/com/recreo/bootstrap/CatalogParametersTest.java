@@ -13,6 +13,8 @@ import com.recreo.domain.mechanics.quizaventure.QuizAventureMechanic;
 import com.recreo.domain.mechanics.texteatrou.TexteATrouMechanic;
 import com.recreo.domain.mechanics.associer.AssocierMechanic;
 import com.recreo.domain.mechanics.memory.MemoryMechanic;
+import com.recreo.domain.mechanics.puzzle.PuzzleMechanic;
+import com.recreo.domain.mechanic.GameSession;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -30,7 +32,7 @@ class CatalogParametersTest {
 
     private static final int SAMPLES = 300;
 
-    private final GameCatalog catalog = new BeansConfig().gameCatalog(new BanditManchotMechanic(), new TexteATrouMechanic(), new QuizAventureMechanic(), new GlisserDeposerMechanic(), new AssocierMechanic(), new MemoryMechanic());
+    private final GameCatalog catalog = new BeansConfig().gameCatalog(new BanditManchotMechanic(), new TexteATrouMechanic(), new QuizAventureMechanic(), new GlisserDeposerMechanic(), new AssocierMechanic(), new MemoryMechanic(), new PuzzleMechanic());
 
     private static RandomSource seeded(long seed) {
         Random random = new Random(seed);
@@ -248,9 +250,12 @@ class CatalogParametersTest {
 
     @Test
     void friseOrdersEventsChronologicallyAndDefaultsToThreeQuestions() {
-        Map<String, Integer> rang = Map.of(
-                "La Préhistoire", 1, "Les Gaulois", 2, "Le Moyen Âge", 3,
-                "La Révolution française", 4, "La tour Eiffel", 5, "Aujourd'hui", 6);
+        // Événements et rangs chargés désormais depuis content/frise/cm1-histoire.yml (s21).
+        Map<String, Integer> rang = Map.ofEntries(
+                Map.entry("La Préhistoire", 1), Map.entry("Les Gaulois", 2), Map.entry("Les Romains", 3),
+                Map.entry("Le Moyen Âge", 4), Map.entry("La Renaissance", 5),
+                Map.entry("La Révolution française", 6), Map.entry("La tour Eiffel", 7),
+                Map.entry("Aujourd'hui", 8));
         GameConfig config = catalog.configFor("frise-cm1");
         assertThat(config.settings().get("questionsTarget")).isEqualTo(3);
         RandomSource random = seeded(61L);
@@ -313,5 +318,25 @@ class CatalogParametersTest {
             assertThat(item.expected().value()).isEqualTo(attendu);
             assertThat(item.distractors()).hasSize(2).doesNotContain(item.expected());
         }
+    }
+
+    // ---- s21 : capital de coeurs (jokers) pilote par le YAML + override adulte (DEC-0013) ----
+
+    @Test
+    void memoryJokersComeFromYamlSixHearts() {
+        // Le YAML memory-quantite-cp declare jokers: 6 -> la config le porte et la session demarre a 6.
+        GameConfig config = catalog.configFor("memory-quantite-cp", Map.of());
+        assertThat(config.settings().get("jokers")).isEqualTo(6);
+        GameSession session = new MemoryMechanic().start(config, seeded(1L));
+        assertThat(session.jokers()).isEqualTo(6);
+    }
+
+    @Test
+    void adultCanOverrideMemoryJokers() {
+        // Reglage adulte jokers=3 : prime sur le capital du YAML -> session a 3 coeurs.
+        GameConfig config = catalog.configFor("memory-quantite-cp", Map.of("jokers", "3"));
+        assertThat(config.settings().get("jokers")).isEqualTo(3);
+        GameSession session = new MemoryMechanic().start(config, seeded(1L));
+        assertThat(session.jokers()).isEqualTo(3);
     }
 }

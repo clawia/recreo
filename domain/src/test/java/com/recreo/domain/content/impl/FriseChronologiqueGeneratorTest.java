@@ -4,6 +4,7 @@ import com.recreo.domain.SeededRandomSource;
 import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.content.Item;
 import com.recreo.domain.content.RandomSource;
+import com.recreo.domain.content.impl.FriseChronologiqueGenerator.Evenement;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -18,6 +19,11 @@ class FriseChronologiqueGeneratorTest {
 
     private static final int SAMPLES = 300;
 
+    private static final String CONSIGNE = "Range du plus ancien au plus récent";
+
+    /** Nombre d'evenements tires par item (tuiles a ranger). */
+    private static final int COUNT = 3;
+
     /** Rang chronologique de reference (recalcule cote test, independant du generateur). */
     private static final Map<String, Integer> RANG = Map.of(
             "La Préhistoire", 1,
@@ -27,10 +33,23 @@ class FriseChronologiqueGeneratorTest {
             "La tour Eiffel", 5,
             "Aujourd'hui", 6);
 
+    /** Liste VERIFIEE d'evenements passee au generateur (label + rang chronologique croissant). */
+    private static final List<Evenement> EVENEMENTS = List.of(
+            new Evenement("La Préhistoire", 1),
+            new Evenement("Les Gaulois", 2),
+            new Evenement("Le Moyen Âge", 3),
+            new Evenement("La Révolution française", 4),
+            new Evenement("La tour Eiffel", 5),
+            new Evenement("Aujourd'hui", 6));
+
+    private static FriseChronologiqueGenerator generator() {
+        return new FriseChronologiqueGenerator(
+                new ContentDescriptor("Histoire", "CM1", "temps"), EVENEMENTS, CONSIGNE, COUNT);
+    }
+
     @Test
     void producesConformingChronologicalArrangements() {
-        FriseChronologiqueGenerator generator = new FriseChronologiqueGenerator(
-                new ContentDescriptor("Histoire", "CM1", "temps"));
+        FriseChronologiqueGenerator generator = generator();
         // SeededRandomSource CONTINU : un seul flux pour tout l'echantillon.
         RandomSource random = new SeededRandomSource(11L);
 
@@ -38,7 +57,7 @@ class FriseChronologiqueGeneratorTest {
             Item item = generator.next(random);
 
             // Trois tuiles : des labels de la liste connue, distincts.
-            assertThat(item.reelSymbols()).hasSize(3);
+            assertThat(item.reelSymbols()).hasSize(COUNT);
             for (String symbol : item.reelSymbols()) {
                 assertThat(RANG).containsKey(symbol);
             }
@@ -55,7 +74,7 @@ class FriseChronologiqueGeneratorTest {
             assertThat(item.reelSymbols()).isNotEqualTo(expectedOrder);
 
             // Consigne fixe.
-            assertThat(item.question()).isEqualTo("Range du plus ancien au plus récent");
+            assertThat(item.question()).isEqualTo(CONSIGNE);
 
             assertThat(item.distractors()).isEmpty();
         }
@@ -63,10 +82,8 @@ class FriseChronologiqueGeneratorTest {
 
     @Test
     void isDeterministicForAGivenSeed() {
-        ContentDescriptor descriptor = new ContentDescriptor("Histoire", "CM1", "temps");
-
-        Item first = new FriseChronologiqueGenerator(descriptor).next(new SeededRandomSource(42L));
-        Item second = new FriseChronologiqueGenerator(descriptor).next(new SeededRandomSource(42L));
+        Item first = generator().next(new SeededRandomSource(42L));
+        Item second = generator().next(new SeededRandomSource(42L));
 
         assertThat(first.reelSymbols()).isEqualTo(second.reelSymbols());
         assertThat(first.expected().value()).isEqualTo(second.expected().value());
