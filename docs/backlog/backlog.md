@@ -502,6 +502,45 @@ indice image ou définition), **afin de** travailler l'orthographe active et le 
 
 ---
 
+## Sprint s22 — Filtres « Par jeu » + 8e mécanique « Droite graduée »
+
+Deux livrables : ergonomie (filtres de la liste « Par jeu », réalise **IDEE-3**) + une **8e
+mécanique** (droite graduée, roadmap §B). Cf. `2026-07-22-s22-planning.md`, ADR-0018, DEC-0019.
+
+### Story S22-1 — Filtres « Par jeu » (niveau / matière)  ✅ **LIVRÉE (s22)**
+**En tant qu'**enfant (ou accompagnant), **je veux** filtrer la liste « Par jeu » par **niveau**
+(CP / CM1) et/ou par **matière** grâce à des **boutons**, **afin de** réduire vite la liste à ce qui
+m'intéresse sans changer d'écran. **Réalise IDEE-3.**
+
+- **Compétence programme visée** : transverse (ergonomie / navigation — **pas de contenu**).
+- **Critères d'acceptation** : sur l'écran **« Par jeu »** (`/jeux`), une **barre de boutons** de
+  filtre niveau (Tous / CP / CM1) et matière (Toutes / Mathématiques / Français / …) ; l'état actif
+  est visible ; cliquer un filtre affiche **le sous-ensemble** correspondant ; « Tous / Toutes »
+  réinitialise ; filtres **combinables** (niveau ET matière) ; sous-ensemble vide = message clair ;
+  **filtrage serveur par query params** (`/jeux?niveau=&matiere=`), pur **read-model / vue**, **aucun
+  changement de domaine** ; libellés au format contextuel (cohérent s21).
+- **Statut** : ✅ **LIVRÉE en s22** — Done technique CI à confirmer ; Done pédagogique **À VALIDER**
+  (DEC-0019).
+
+### Story S22-2 — 8e mécanique « Droite graduée » — placer un nombre entier  ✅ **LIVRÉE (s22)**
+**En tant qu'**élève, **je veux** placer un nombre sur une droite graduée (0 → N) en cliquant la
+bonne graduation, **afin de** travailler le sens du nombre (repérage, ordre de grandeur).
+
+- **Compétence programme visée** : Maths CP — situer / placer un nombre sur une droite graduée
+  (0 → 20) ; Maths CM1 — situer / placer un nombre sur une droite graduée (0 → 100).
+- **Critères d'acceptation** : mécanique **isolée** `mechanics/droitegraduee` (ArchUnit — slices
+  dynamiques) réutilisant le coup **`SpinAndPick`** (comme puzzle réutilise `SubmitArrangement`,
+  memory `SubmitAssociations` — ADR-0018), **sans nouveau coup** ; générateur `DroiteGradueeGenerator`
+  **combinatoire** (bornes câblées dans `BeansConfig`) ; 2 jeux `droite-graduee-cp` (0 → 20) et
+  `droite-graduee-cm1` (0 → 100) ; **îlot JS de vue `droitegraduee`** (droite + clic de graduation +
+  tick grisé, zéro dépendance externe ; la bonne graduation n'est pas révélée dans le DOM) ; **jokers
+  automatiques** (tick faux = 1 cœur perdu + tick grisé ; 0 cœur + tick faux = fin — DEC-0013 /
+  DEC-0017) ; matrice + `FICHE-droite-graduee-s22.md` à jour.
+- **Statut** : ✅ **LIVRÉE en s22** — Done technique CI à confirmer ; Done pédagogique **À VALIDER**
+  (DEC-0019, ADR-0018).
+
+---
+
 ## Idées / à venir (non planifiées — aucun sprint assigné)
 
 > **Note (2026-07-22)** : IDEE-1 et IDEE-2 (ci-dessous) ont été **livrées en s19** (stories S19-1 et
@@ -547,7 +586,7 @@ quantités, **afin de** lire facilement la quantité malgré ma vue de jeune enf
 - **Statut** : ✅ **LIVRÉE en s19** (story S19-2) — variante CSS `.memory-des .memory-face`. Done
   pédagogique **À VALIDER**.
 
-### Story IDEE-3 — Boutons de filtre (niveau / matière) dans les listes de jeux  🔲 **À FAIRE (non planifiée)**
+### Story IDEE-3 — Boutons de filtre (niveau / matière) dans les listes de jeux  ✅ **LIVRÉE (s22 — voir S22-1)**
 **En tant qu'**enfant (ou accompagnant), **je veux** filtrer une liste de jeux par **niveau**
 (CP / CM1) et/ou par **matière** grâce à des **boutons de sélection**, **afin de** réduire vite la
 liste à ce qui m'intéresse sans changer d'écran.
@@ -566,4 +605,6 @@ liste à ce qui m'intéresse sans changer d'écran.
   - Filtrage **pur read-model / front** (htmx ou filtre côté serveur), **aucun changement de
     domaine** ; les libellés restent au format contextuel (cf. affichage cohérent des jeux, s21).
   - Idéalement mutualisé pour être réutilisable sur les autres listes (par niveau / par matière).
-- **Statut** : 🔲 **À FAIRE** — non planifiée, aucun sprint, non livrée.
+- **Statut** : ✅ **LIVRÉE en s22** (story S22-1) — filtrage **serveur par query params**
+  (`/jeux?niveau=&matiere=`), boutons niveau / matière **combinables** et **réinitialisables**. Done
+  pédagogique **À VALIDER** (DEC-0019).

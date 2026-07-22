@@ -35,6 +35,8 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 | Mathématiques | CM1 | Nombres et calculs | Mémorisation des tables de multiplication (1 à 10) — entraînement dédié | Bandit manchot — Tables de multiplication | Bandit manchot | couvert-validé (s08, 2026-07-20) |
 | Mathématiques | CP | Nombres et calculs | Associer une quantité à son chiffre (quantité ↔ nombre) | Memory — Quantité et chiffre | Memory | couvert-validé (s17, 2026-07-22) |
 | Mathématiques | CM1 | Fractions | Associer une fraction à sa représentation (fraction ↔ dessin) | Memory — Fractions | Memory | couvert-validé (s17, 2026-07-22) |
+| Mathématiques | CP | Nombres et calculs | Situer / placer un nombre sur une droite graduée (0 → 20) | Droite graduée — Place le nombre CP | Droite graduée | en cours (s22) |
+| Mathématiques | CM1 | Nombres et calculs | Situer / placer un nombre sur une droite graduée (0 → 100) | Droite graduée — Place le nombre CM1 | Droite graduée | en cours (s22) |
 
 ## Mathématiques — grandeurs et mesures (monnaie)
 
@@ -109,6 +111,14 @@ sur des mécaniques existantes.
 > comportement constant, **couverture inchangée** (restent `couvert-validé`). Enfin, le **capital de
 > cœurs est réglable** (via l'en-tête YAML + réglage adulte — DEC-0017, roadmap A3) : transverse, sans
 > nouvelle ligne de couverture. À passer `couvert-validé` après la démo/validation de s21.
+
+> **Note s22 — 2 compétences `en cours`, une 8e mécanique ; filtres = ergonomie (pas de compétence).**
+> s22 ajoute **2 compétences `en cours (s22)`** en Maths : situer / placer un nombre sur une droite
+> graduée — CP (0 → 20) et CM1 (0 → 100) — via la nouvelle **mécanique Droite graduée** (8e,
+> `DroiteGradueeGenerator` combinatoire, **réutilise le coup `SpinAndPick`** — aucun nouveau coup,
+> ADR-0018 / DEC-0019). Les **filtres « Par jeu »** (IDEE-3 : filtrer `/jeux` par niveau/matière —
+> DEC-0019) sont de l'**ergonomie / navigation** : **aucune nouvelle ligne de couverture** (pas de
+> compétence). À passer `couvert-validé` après la démo/validation de s22.
 
 ## Prochaines actions suggérées
 

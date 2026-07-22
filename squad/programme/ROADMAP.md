@@ -1,13 +1,16 @@
-# Roadmap — ce qu'il reste à faire (au 2026-07-22, après s21)
+# Roadmap — ce qu'il reste à faire (au 2026-07-22, après s22)
 
-Vue d'ensemble du **restant**, pour prioriser les prochains sprints. État actuel : **7 mécaniques**
+Vue d'ensemble du **restant**, pour prioriser les prochains sprints. État actuel : **8 mécaniques**
 (bandit manchot, texte à trous, quiz-aventure, glisser-déposer, associer/classer, memory,
-**puzzle/assemblage**), **~34 compétences couvert-validé** (s17 → s20 validés) **+ 4 nouvelles
-`en cours` s21, à valider** (Français CP majuscule↔minuscule + le/la ; Français CP/CM1 reconstituer un
-mot — puzzle). Jokers **réglables** (capital piloté par l'en-tête YAML `jokers` + réglage adulte — s21,
-A3). **3 axes de navigation** : par niveau, par jeu, **par matière** (s21, E). Contenu à liste finie
-**entièrement externalisé et auto-enregistré** — y compris désormais **frise + fractions** (s21, D,
-dette remboursée) ; plus aucun contenu combinatoire en dur.
+puzzle/assemblage, **droite graduée**), **~34 compétences couvert-validé** (s17 → s20 validés) **+ 4
+`en cours` s21 + 2 `en cours` s22, à valider** (s21 : Français CP majuscule↔minuscule + le/la ;
+Français CP/CM1 reconstituer un mot — puzzle ; s22 : Maths CP/CM1 situer/placer un nombre sur une
+droite graduée). Jokers **réglables** (capital piloté par l'en-tête YAML `jokers` + réglage adulte —
+s21, A3). **3 axes de navigation** : par niveau, par jeu (désormais **filtrable** par niveau/matière —
+s22, E), **par matière** (s21, E). Contenu à liste finie **entièrement externalisé et auto-enregistré**
+— y compris **frise + fractions** (s21, D, dette remboursée) ; plus aucun contenu combinatoire en dur
+côté listes finies (les générateurs combinatoires, ex. droite graduée, gardent leurs bornes câblées
+dans `BeansConfig`).
 
 Priorisation recommandée en tête de chaque section. Chaque item devient une story (compétence visée +
 critères) au planning, met à jour la matrice, et suit le double Done (technique CI + pédago user).
@@ -40,7 +43,15 @@ critères) au planning, met à jour la matrice, et suit le double Done (techniqu
   `cp-mots-images` (indice image, Français CP écriture/lecture) et `cm1-mots` (indice définition,
   vocabulaire CM1) ; îlot JS `puzzle.js`. *Done pédagogique à valider en démo.* *Reste à décliner :
   reconstituer une phrase, tangram, carte de France.*
-- **Droite graduée** — placer un nombre / une fraction sur une ligne.
+- ✅ **LIVRÉ (s22) — démarré / 1re déclinaison** — **Droite graduée** (8e mécanique,
+  `domain.mechanics.droitegraduee`, ADR-0018 / DEC-0019). **Réutilise le coup `SpinAndPick`** (aucun
+  nouveau coup — comme puzzle réutilise `SubmitArrangement`, memory `SubmitAssociations`). 1re
+  déclinaison **nombres entiers** : l'enfant **place un nombre sur une droite graduée 0 → N** en
+  cliquant la bonne graduation ; **jokers automatiques** (tick faux = cœur perdu + tick grisé).
+  Générateur **combinatoire** `DroiteGradueeGenerator` (bornes câblées dans `BeansConfig`) ; 2 jeux
+  `droite-graduee-cp` (Maths CP, 0 → 20) et `droite-graduee-cm1` (Maths CM1, 0 → 100) ; îlot JS de vue
+  `droitegraduee`. *Done pédagogique à valider en démo.* *Reste à décliner : **fractions sur la
+  droite** graduée.*
 - **Animation-intensive (plus tard, îlot Canvas)** — attrape-taupe, runner ; **traçage tactile CP**
   (geste d'écriture — clé pour combler l'écriture CP, cf. §C).
 
@@ -73,9 +84,11 @@ Domaines encore **absents** (à ouvrir progressivement) :
 - ✅ **LIVRÉ (s21)** — **Axe de navigation « par matière »** (3e axe, en plus de par niveau / par
   jeu) : pages `/matieres` et `/matiere/{matiere}` via `CatalogueQuery.matieres()` + `byMatiere()`
   (read-model sur le catalogue enrichi, sans nouvel ADR) — DEC-0017. *Done pédagogique à valider.*
-- **Boutons de filtre (niveau / matière) dans les listes de jeux** (backlog **IDEE-3**, demandé
-  2026-07-22) : filtrer « Par jeu » par CP/CM1 et/ou par matière, filtres combinables et
-  réinitialisables — read-model / front, sans changement de domaine. *À planifier.*
+- ✅ **LIVRÉ (s22)** — **Boutons de filtre (niveau / matière) dans la liste « Par jeu »** (backlog
+  **IDEE-3**, demandé 2026-07-22, DEC-0019) : l'écran `/jeux` se filtre par CP/CM1 et/ou par matière
+  via des boutons **combinables** et **réinitialisables** ; **filtrage serveur par query params**
+  (`/jeux?niveau=&matiere=`), pur **read-model / vue**, sans changement de domaine (pas d'ADR).
+  *Done pédagogique à valider.*
 
 ## F. Intendance / technique
 - 🔑 **Révoquer/régénérer le token GitHub** (a transité en clair) — à faire.
@@ -88,10 +101,12 @@ Domaines encore **absents** (à ouvrir progressivement) :
 ~~**nature des mots CM1** (A2)~~ ✅ (s19) · ~~**monnaie** (C, Grandeurs et mesures)~~ ✅ amorcée (s20) ·
 ~~**puzzle / assemblage** (B, 7e mécanique)~~ ✅ démarré (s21) · ~~**cœurs réglables** (A3)~~ ✅ (s21) ·
 ~~**navigation par matière** (E)~~ ✅ (s21) · ~~**externalisation frise + fractions** (D, dette)~~ ✅ (s21) ·
-~~**déclinaisons associer/classer CP** (A2)~~ ✅ (s21) — **s21 à valider pédago**.
-Restent, par ordre suggéré : **droite graduée** (B — placer un nombre/une fraction, éventuellement en
-réutilisant l'ordonnancement) → **Canvas / traçage tactile CP** (B, débloque l'**écriture CP**, §C) →
+~~**déclinaisons associer/classer CP** (A2)~~ ✅ (s21) · ~~**droite graduée** (B, 8e mécanique — placer
+un nombre entier, réutilise `SpinAndPick`)~~ ✅ (s22) · ~~**filtres « Par jeu »** (E, IDEE-3)~~ ✅ (s22)
+— **s21 + s22 à valider pédago**.
+Restent, par ordre suggéré : **Canvas / traçage tactile CP** (B, débloque l'**écriture CP**, §C) →
 **persistance** (E, DEC-0003 — prérequis d'un vrai suivi de progression) → **géométrie** (formes,
 symétrie) et **longueurs / durées** (Grandeurs et mesures, §C). Le reste (anglais, sciences/histoire/
-géo/EMC approfondis, déclinaisons puzzle — phrase, tangram, carte) se décline sur les mécaniques
-disponibles (dont puzzle, associer/classer, memory) au fil des sprints.
+géo/EMC approfondis, **fractions sur la droite graduée** — 2e déclinaison de la droite, déclinaisons
+puzzle — phrase, tangram, carte) se décline sur les mécaniques disponibles (dont droite graduée,
+puzzle, associer/classer, memory) au fil des sprints.

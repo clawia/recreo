@@ -38,9 +38,11 @@
 
 | s21 | Gros incrément parallèle (5 chantiers) : 7e mécanique **Puzzle** (reconstituer un mot, réutilise `SubmitArrangement` — ADR-0017) + jokers **paramétrables** (en-tête YAML `jokers` + réglage adulte, capital memory depuis YAML — DEC-0017, A3) + navigation **par matière** (3e axe — DEC-0017, E) + externalisation **frise + fractions** (dette remboursée — DEC-0018, D) + déclinaisons associer/classer Français CP (majuscule↔minuscule, le/la — DEC-0018, A2) | Puzzle + Associer/Classer (+ transverse jokers, navigation, refactor frise/fractions) | Français CP écriture/lecture (reconstituer un mot) · Français CM1 vocabulaire (reconstituer un mot) · Français CP majuscule↔minuscule · Français CP le/la (genre) · transverse (cœurs réglables) | 2026-07-22 | ⏳ **À VALIDER** | — |
 
-> ⏳ **1 incrément en attente (s21), sous le seuil.** s19 et s20 ont été **validés ensemble le
-> 2026-07-22** (file redescendue à 0). s21, poussé en file le **2026-07-22**, est **À VALIDER** :
-> DEC-0017 (puzzle + jokers réglables + navigation par matière) et DEC-0018 (externalisation
-> frise/fractions + déclinaisons associer/classer CP). **1 seul incrément en attente — sous le seuil
-> de gel de 3**, pas de gel du contenu.
+| s22 | Deux livrables : **filtres « Par jeu »** (filtrer `/jeux` par niveau/matière via boutons combinables/réinitialisables, filtrage serveur `?niveau=&matiere=`, read-model / vue — IDEE-3) + 8e mécanique **Droite graduée** (placer un nombre sur une droite 0→N par clic de graduation, réutilise `SpinAndPick` — aucun nouveau coup, jokers automatiques ; `DroiteGradueeGenerator` combinatoire ; 2 jeux 0→20 / 0→100 — ADR-0018, DEC-0019) | Droite graduée (+ transverse ergonomie : filtres « Par jeu ») | Maths CP situer/placer un nombre sur une droite graduée (0→20) · Maths CM1 idem (0→100) · transverse (ergonomie — filtres) | 2026-07-22 | ⏳ **À VALIDER** | — |
+
+> ⏳ **2 incréments en attente (s21 + s22), sous le seuil.** s19 et s20 ont été **validés ensemble le
+> 2026-07-22** (file redescendue à 0). s21 (DEC-0017 : puzzle + jokers réglables + navigation par
+> matière ; DEC-0018 : externalisation frise/fractions + déclinaisons associer/classer CP) et s22
+> (DEC-0019 : filtres « Par jeu » + mécanique droite graduée), poussés en file le **2026-07-22**, sont
+> **À VALIDER**. **2 incréments en attente — sous le seuil de gel de 3**, pas de gel du contenu.
 > Rappel : s17 + s18 puis s19 + s20 avaient chacun été validés ensemble le 2026-07-22.

@@ -23,6 +23,7 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Une DEC = une ligne.
 | DEC-0016 | Ouverture du domaine monnaie (Grandeurs et mesures) — pur contenu YAML | Maths CP — monnaie (compter/rendre) ; Maths CM1 — monnaie (rendre, conversions €/centimes) | VALIDÉ (user, 2026-07-22) | 2026-07-22 | s20 |
 | DEC-0017 | Mécanique « Puzzle » (7e, reconstituer un mot) + jokers paramétrables via YAML/réglage adulte + navigation par matière | Français CP écriture/lecture (reconstituer un mot) ; Français CM1 vocabulaire (reconstituer un mot) ; transverse (cœurs réglables) ; navigation (par matière) | **À VALIDER** | 2026-07-22 | s21 |
 | DEC-0018 | Externalisation frise + fractions (dette remboursée) + déclinaisons associer/classer Français CP (majuscule↔minuscule, le/la) | Français CP principe alphabétique (majuscule↔minuscule) ; Français CP genre du nom (le/la) ; transverse (technique — frise/fractions externalisées) | **À VALIDER** | 2026-07-22 | s21 |
+| DEC-0019 | Filtres « Par jeu » (niveau/matière, boutons combinables/réinitialisables — IDEE-3) + mécanique « Droite graduée » (8e, réutilise `SpinAndPick`) | Maths CP situer/placer un nombre sur une droite graduée (0→20) ; Maths CM1 idem (0→100) ; transverse (ergonomie — filtres « Par jeu ») | **À VALIDER** | 2026-07-22 | s22 |
 
 > **s18 — pas de nouvelle DEC.** Raffinements de s17 après démo utilisatrice, consignés en
 > section « Raffinements s18 » dans DEC-0013 (cœur consommé aussi par le memory ; écran de fin
