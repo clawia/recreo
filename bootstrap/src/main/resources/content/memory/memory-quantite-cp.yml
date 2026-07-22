@@ -6,10 +6,11 @@ gameLabel: "Memory des quantités"
 matiere: "Mathématiques"
 niveau: "CP"
 domaine: "Nombres"
-consigne: "Retrouve les paires : le chiffre et sa quantité"
+consigne: "Retrouve les paires : le chiffre et la face du dé"
 paires:
-  - { gauche: "1", droite: "●" }
-  - { gauche: "2", droite: "●●" }
-  - { gauche: "3", droite: "●●●" }
-  - { gauche: "4", droite: "●●●●" }
-  - { gauche: "5", droite: "●●●●●" }
+  - { gauche: "1", droite: "⚀" }
+  - { gauche: "2", droite: "⚁" }
+  - { gauche: "3", droite: "⚂" }
+  - { gauche: "4", droite: "⚃" }
+  - { gauche: "5", droite: "⚄" }
+  - { gauche: "6", droite: "⚅" }

@@ -6,10 +6,11 @@ gameLabel: "Memory anglais"
 matiere: "Anglais"
 niveau: "CM1"
 domaine: "Lexique"
-consigne: "Retrouve les paires : le mot français et le mot anglais"
+consigne: "Retrouve les paires : l'image et le mot anglais"
 paires:
-  - { gauche: "chien", droite: "dog" }
-  - { gauche: "chat", droite: "cat" }
-  - { gauche: "maison", droite: "house" }
-  - { gauche: "école", droite: "school" }
-  - { gauche: "ami", droite: "friend" }
+  - { gauche: "🐶", droite: "dog" }
+  - { gauche: "🐱", droite: "cat" }
+  - { gauche: "🏠", droite: "house" }
+  - { gauche: "🐟", droite: "fish" }
+  - { gauche: "☀️", droite: "sun" }
+  - { gauche: "🍎", droite: "apple" }
