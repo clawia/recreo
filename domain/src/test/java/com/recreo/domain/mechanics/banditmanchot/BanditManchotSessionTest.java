@@ -108,16 +108,19 @@ class BanditManchotSessionTest {
     }
 
     @Test
-    void aFailedItemCanComeBackButAMasteredOneCannot() {
+    void aFailedItemStaysUntilMasteredThenNeverComesBack() {
         GameSession session = MECHANIC.start(config(new FiniteTestGenerator(3), 10), RANDOM);
         String firstKey = session.currentItem().key();
 
-        // Mauvaise reponse : l'item n'est PAS maitrise -> il peut revenir.
+        // Mauvaise reponse (DEC-0009) : l'item n'est PAS maitrise -> il n'est pas encore
+        // acquis ; on RETENTE le meme item (session ACTIVE, un joker consomme).
         MoveResult wrong = MECHANIC.apply(session, new SpinAndPick(new Answer("jamais-correct")));
         GameSession afterWrong = wrong.session();
         assertThat(wrong.correct()).isFalse();
+        assertThat(afterWrong.status()).isEqualTo(SessionStatus.ACTIVE);
         assertThat(afterWrong.masteredKeys()).doesNotContain(firstKey);
-        assertThat(afterWrong.currentItem().key()).isEqualTo(firstKey); // revenu
+        assertThat(afterWrong.currentItem().key()).isEqualTo(firstKey); // meme item a retenter
+        assertThat(afterWrong.jokers()).isEqualTo(session.jokers() - 1);
 
         // Bonne reponse sur ce meme item : desormais maitrise -> ne reviendra plus.
         GameSession afterCorrect = answerCorrectly(afterWrong);

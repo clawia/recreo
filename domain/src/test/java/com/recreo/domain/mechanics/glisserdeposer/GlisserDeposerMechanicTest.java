@@ -88,5 +88,7 @@ class GlisserDeposerMechanicTest {
         assertThat(result.session().round()).isEqualTo(1);
         assertThat(result.session().currentItem().key()).isEqualTo(session.currentItem().key());
         assertThat(result.session().status()).isEqualTo(SessionStatus.ACTIVE);
+        // Aligne sur les jokers (DEC-0009) : un essai faux consomme un coeur (3 -> 2).
+        assertThat(result.session().jokers()).isEqualTo(GameSession.DEFAULT_JOKERS - 1);
     }
 }

@@ -119,7 +119,9 @@ class BanditManchotMechanicTest {
     }
 
     @Test
-    void wrongPickDoesNotChangeScoreButStillAdvances() {
+    void wrongPickConsumesAJokerAndRetriesTheSameItem() {
+        // Regle des « 3 coeurs » (DEC-0009) : un coup faux NE FAIT PLUS avancer ; il
+        // consomme un joker et on RETENTE le meme item (session inchangee, ACTIVE).
         BanditManchotMechanic mechanic = new BanditManchotMechanic();
         RandomSource random = new SeededRandomSource(3L);
 
@@ -130,7 +132,12 @@ class BanditManchotMechanicTest {
 
         assertThat(result.correct()).isFalse();
         assertThat(result.session().score()).isZero();
-        assertThat(result.session().round()).isEqualTo(2);
-        assertThat(result.feedback().message()).contains("bonne reponse");
+        // On reste sur le MEME item, meme round : pas d'avance sur un coup faux.
+        assertThat(result.session().round()).isEqualTo(1);
+        assertThat(result.session().currentItem().key()).isEqualTo(session.currentItem().key());
+        assertThat(result.session().status()).isEqualTo(SessionStatus.ACTIVE);
+        // Un coeur consomme (3 -> 2) et l'option cliquee a tort est grisee.
+        assertThat(result.session().jokers()).isEqualTo(GameSession.DEFAULT_JOKERS - 1);
+        assertThat(result.session().triedWrong()).contains("this-is-never-correct");
     }
 }
