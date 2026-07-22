@@ -36,6 +36,17 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 | Mathématiques | CP | Nombres et calculs | Associer une quantité à son chiffre (quantité ↔ nombre) | Memory — Quantité et chiffre | Memory | couvert-validé (s17, 2026-07-22) |
 | Mathématiques | CM1 | Fractions | Associer une fraction à sa représentation (fraction ↔ dessin) | Memory — Fractions | Memory | couvert-validé (s17, 2026-07-22) |
 
+## Mathématiques — grandeurs et mesures (monnaie)
+
+Domaine **ouvert en s20** (DEC-0016) — jusque-là entièrement absent de la matrice. Pur contenu YAML
+sur des mécaniques existantes.
+
+| Matière | Niveau | Domaine | Compétence (réf. programme) | Jeu(x) couvrant | Mécanique | Statut |
+|---|---|---|---|---|---|---|
+| Mathématiques | CP | Grandeurs et mesures | Monnaie — compter des euros, petites sommes, rendre la monnaie | Quiz-aventure — La monnaie CP | Quiz-aventure | en cours (s20) |
+| Mathématiques | CM1 | Grandeurs et mesures | Monnaie — rendre la monnaie, conversions euros/centimes | Quiz-aventure — La monnaie CM1 | Quiz-aventure | en cours (s20) |
+| Mathématiques | CM1 | Grandeurs et mesures | Monnaie — associer une somme en euros à sa valeur en centimes | Associer/Classer — Euros ↔ centimes | Associer/Classer | en cours (s20) |
+
 ## Autres matières (aperçu — pilote la priorisation des sprints suivants)
 
 | Matière | Niveau | Domaine | Compétence (réf. programme) | Jeu(x) couvrant | Mécanique | Statut |
@@ -50,7 +61,8 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 | Français | CP | Lecture / vocabulaire | Compléter une phrase par le mot manquant (sens) | Texte à trous — Le mot qui manque | Texte à trous | couvert-validé (s06, 2026-07-19) |
 | Français | CP | Lecture et compréhension | Décodage — association graphème/phonème (voyelles + consonnes simples) | Bandit manchot — Le bon son | Bandit manchot | couvert-validé (s08, 2026-07-20) |
 | Français | CP | Écriture — orthographe | Copie et écriture de mots simples sans erreur | — | — | non couvert |
-| Français | CM1 | Lecture et compréhension | Compréhension d'un texte narratif court (questions explicites/implicites) | — | — | non couvert |
+| Français | CM1 | Lecture et compréhension | Compréhension d'un texte narratif court (questions explicites/implicites) | Quiz-aventure — Compréhension de texte | Quiz-aventure | en cours (s19) |
+| Français | CM1 | Grammaire | Reconnaître la nature des mots (nom, verbe, adjectif) — catégorisation | Associer/Classer — Nom, verbe ou adjectif | Associer/Classer | en cours (s19) |
 | Questionner le monde | CP | Le vivant, les objets, l'espace et le temps | Connaissances de base sur le vivant et le quotidien (quiz) | Quiz-aventure — Questionner le monde | Quiz-aventure | couvert-validé (s07, 2026-07-19) |
 | Sciences et technologie | CM1 | Matière, vivant, objets techniques | Connaissances de base en sciences (états de la matière, vivant, corps) | Quiz-aventure — Sciences | Quiz-aventure | couvert-validé (s07, 2026-07-19) |
 | Histoire | CM1 | Repères historiques | Repères et personnages (Révolution, Louis XIV, Préhistoire…) | Quiz-aventure — Histoire | Quiz-aventure | couvert-validé (s07, 2026-07-19) |
@@ -67,6 +79,18 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 > faces de dés du memory quantités CP, images du memory anglais CM1 — DEC-0014). **Aucune nouvelle
 > compétence** : les 5 lignes s17 (associer/classer, memory) sont passées `couvert-validé` à la
 > validation groupée s17 + s18 par l'utilisatrice (Done pédagogique prononcé le **2026-07-22**).
+
+> **Note s19 — nouvelles compétences `en cours` + ajustements UX sans couverture.** s19 (DEC-0015)
+> ajoute 2 compétences `en cours (s19)` : Français CM1 compréhension (quiz `comprehension`) et
+> Français CM1 grammaire nature des mots (associer/classer `classer`). Les deux autres items de s19
+> **ne changent aucune couverture** : le capital de cœurs devient **dépendant de la mécanique**
+> (memory 6 ❤️, autres 3 — IDEE-1, transverse droit à l'erreur) et les **dés du memory quantités CP
+> sont agrandis** (IDEE-2, variante CSS, même compétence Maths CP quantité↔chiffre qu'en s17).
+
+> **Note s20 — ouverture du domaine Grandeurs et mesures — monnaie.** s20 (DEC-0016) ajoute 3
+> compétences `en cours (s20)` (Maths CP monnaie ; Maths CM1 monnaie rendre/convertir ; Maths CM1
+> euros↔centimes), pur contenu YAML sur quiz-aventure et associer/classer. Toutes ces lignes s19 +
+> s20 passeront `couvert-validé` à la validation **groupée s19 + s20** par l'utilisatrice.
 
 ## Prochaines actions suggérées
 

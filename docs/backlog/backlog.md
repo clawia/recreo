@@ -340,13 +340,106 @@ sur le sens plutôt que sur le mot français écrit.
 
 ---
 
+## Sprint s19 — Compréhension & grammaire CM1 + cœurs adaptés (contenu + polish)
+
+Contenu + polish, **aucune nouvelle mécanique**. Réalise IDEE-1 et IDEE-2 (ci-dessous, marquées
+livrées). Cf. `2026-07-22-s19-planning.md`, DEC-0015, note ADR-index s19. Enchaîné avec s20, sans
+démo intermédiaire — validation **groupée s19 + s20** à venir.
+
+### Story S19-1 — Capital de jokers dépendant de la mécanique (memory : 6 cœurs)  ✅ **LIVRÉE (s19)**
+**En tant qu'**enfant jouant au **memory**, **je veux** un capital de **6 cœurs** (au lieu de 3),
+**afin de** ne pas voir la partie s'arrêter trop vite alors que retourner des cartes produit
+mécaniquement plus d'essais/erreurs qu'un jeu à clic. **Réalise IDEE-1.**
+
+- **Compétence programme visée** : transverse (posture d'apprentissage / droit à l'erreur — DEC-0013).
+- **Critères d'acceptation** : le capital de cœurs par session dépend de la mécanique
+  (`SessionEngine(mechanicId, defaultJokers)`) ; le **memory démarre à 6 cœurs** (`MemoryMechanic.JOKERS = 6`) ;
+  les autres mécaniques restent à **3** (DEC-0013 inchangé) ; l'affichage `❤️ × jokers` reflète le
+  capital réel ; non-régression de la fin de session à 0 cœur.
+- **Statut** : ✅ **LIVRÉE en s19** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0015).
+
+### Story S19-2 — Agrandir les dés du « Memory des quantités » CP  ✅ **LIVRÉE (s19)**
+**En tant qu'**élève de CP, **je veux** des faces de dés **plus grandes** sur le memory des
+quantités, **afin de** lire facilement la quantité malgré ma vue de jeune enfant. **Réalise IDEE-2.**
+
+- **Compétence programme visée** : Maths CP — associer une quantité à son chiffre (`memory-quantite-cp`,
+  mêmes qu'en s17/s18, pas de nouvelle couverture).
+- **Critères d'acceptation** : les faces de dés de `memory-quantite-cp` sont affichées à une taille
+  nettement plus lisible via une variante CSS `.memory-des .memory-face` (classe conditionnelle sur
+  l'entryId) ; pas de débordement du plateau ; aucun impact sur les autres jeux memory ; aucun
+  changement de contenu ni de domaine.
+- **Statut** : ✅ **LIVRÉE en s19** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0015).
+
+### Story S19-3 — Compréhension de texte CM1 (quiz-aventure)  ✅ **LIVRÉE (s19)**
+**En tant qu'**élève de CM1, **je veux** lire un court texte puis répondre à une question, **afin de**
+travailler la compréhension de lecture.
+
+- **Compétence programme visée** : Français CM1 — compréhension d'un texte narratif court (questions
+  explicites/implicites) — comble un trou `non couvert` de la matrice.
+- **Critères d'acceptation** : nouveau jeu `content/quiz/cm1-comprehension.yml` (gameKey `comprehension`),
+  **8 items** « lis un court texte + question » ; réponse unique + distracteurs plausibles ; **externalisé
+  YAML auto-enregistré** par `QuizPackLoader` (aucun code) ; matrice + `FICHE-comprehension-s19.md` à jour.
+- **Statut** : ✅ **LIVRÉE en s19** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0015).
+
+### Story S19-4 — Nom, verbe ou adjectif CM1 (associer/classer)  ✅ **LIVRÉE (s19)**
+**En tant qu'**élève de CM1, **je veux** classer des mots selon leur nature (nom / verbe / adjectif),
+**afin de** consolider ma grammaire par le tri plutôt que par le simple choix.
+
+- **Compétence programme visée** : Français CM1 — grammaire (reconnaître la nature des mots).
+- **Critères d'acceptation** : nouveau jeu `content/associer/cm1-nature-mots.yml` (gameKey `classer`),
+  **3 puzzles** de catégorisation ; **externalisé YAML auto-enregistré** par `AssocPackLoader` ; décline
+  la mécanique associer/classer de s17 (catégorisation, comme `vivant-non-vivant-cp`) ; jokers cohérents
+  (DEC-0013) ; matrice + `FICHE-comprehension-s19.md` à jour.
+- **Statut** : ✅ **LIVRÉE en s19** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0015).
+
+---
+
+## Sprint s20 — La monnaie (Grandeurs et mesures, pur contenu YAML)
+
+Ouvre le domaine **Grandeurs et mesures — monnaie** (jusqu'ici absent) par du **pur contenu**,
+sur les mécaniques existantes (quiz-aventure, associer/classer). **Aucun code, aucun nouvel ADR.**
+Cf. `2026-07-22-s20-planning.md`, DEC-0016, note ADR-index s20. Validation **groupée avec s19**.
+
+### Story S20-1 — Monnaie CP (quiz-aventure)  ✅ **LIVRÉE (s20)**
+**En tant qu'**élève de CP, **je veux** compter des euros et rendre la monnaie sur de petites sommes,
+**afin de** relier les nombres à l'argent du quotidien.
+
+- **Compétence programme visée** : Maths CP — Grandeurs et mesures — monnaie (compter des euros,
+  petites sommes, rendre la monnaie).
+- **Critères d'acceptation** : `content/quiz/cp-monnaie.yml` (gameKey `monnaie`) **externalisé YAML
+  auto-enregistré** par `QuizPackLoader` ; montants et rendus adaptés au CP ; matrice + `FICHE-monnaie-s20.md` à jour.
+- **Statut** : ✅ **LIVRÉE en s20** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0016).
+
+### Story S20-2 — Monnaie CM1 (quiz-aventure)  ✅ **LIVRÉE (s20)**
+**En tant qu'**élève de CM1, **je veux** rendre la monnaie et convertir euros/centimes, **afin de**
+maîtriser la monnaie sur des sommes plus larges.
+
+- **Compétence programme visée** : Maths CM1 — Grandeurs et mesures — monnaie (rendre la monnaie,
+  conversions euros/centimes).
+- **Critères d'acceptation** : `content/quiz/cm1-monnaie.yml` (gameKey `monnaie`) **externalisé YAML
+  auto-enregistré** ; conversions et rendus corrects (contenu vérifié) ; matrice + fiche à jour.
+- **Statut** : ✅ **LIVRÉE en s20** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0016).
+
+### Story S20-3 — Euros ↔ centimes CM1 (associer/classer)  ✅ **LIVRÉE (s20)**
+**En tant qu'**élève de CM1, **je veux** apparier une somme en euros à sa valeur en centimes, **afin de**
+consolider la conversion par l'appariement.
+
+- **Compétence programme visée** : Maths CM1 — Grandeurs et mesures — monnaie (associer une somme en
+  euros à sa valeur en centimes).
+- **Critères d'acceptation** : `content/associer/cm1-monnaie-centimes.yml` (gameKey `associer`)
+  **externalisé YAML auto-enregistré** par `AssocPackLoader` ; appariement euros ↔ centimes correct
+  (comme `anglais-associer-cm1`) ; jokers cohérents (DEC-0013) ; matrice + fiche à jour.
+- **Statut** : ✅ **LIVRÉE en s20** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0016).
+
+---
+
 ## Idées / à venir (non planifiées — aucun sprint assigné)
 
-Idées produit remontées après la validation s17 + s18 (2026-07-22). **Non livrées, à FAIRE plus
-tard** : pas de sprint assigné, pas de Done technique ni pédagogique. À prioriser dans un planning
-ultérieur.
+> **Note (2026-07-22)** : IDEE-1 et IDEE-2 (ci-dessous) ont été **livrées en s19** (stories S19-1 et
+> S19-2 ; DEC-0015). Elles sont conservées ici pour la traçabilité de leur origine (idées remontées
+> après la validation s17 + s18).
 
-### Story IDEE-1 — Jokers adaptés au type de jeu (memory : 6 cœurs)  🔲 **À FAIRE (non planifiée)**
+### Story IDEE-1 — Jokers adaptés au type de jeu (memory : 6 cœurs)  ✅ **LIVRÉE (s19 — voir S19-1)**
 **En tant qu'**enfant jouant au **memory**, **je veux** un capital de cœurs plus large (**6 cœurs**
 au lieu de 3), **afin de** ne pas voir la partie s'arrêter trop vite alors que le memory génère
 mécaniquement plus d'essais/erreurs qu'un jeu à clic.
@@ -362,10 +455,11 @@ mécaniquement plus d'essais/erreurs qu'un jeu à clic.
   mécaniques restent à 3 (comportement DEC-0013 inchangé) ; l'affichage `❤️ × jokers` reflète le
   capital réel ; non-régression de la fin de session à 0 cœur.
 - **Lien décision** : `squad/decisions/produit/DEC-0013-jokers-trois-coeurs-retente.md` (réserve
-  « rendre les cœurs réglables / dépendants du jeu » déjà laissée ouverte).
-- **Statut** : 🔲 **À FAIRE** — non planifiée, aucun sprint, non livrée.
+  « rendre les cœurs réglables / dépendants du jeu » déjà laissée ouverte) ; livrée par DEC-0015.
+- **Statut** : ✅ **LIVRÉE en s19** (story S19-1) — `SessionEngine(mechanicId, defaultJokers)`,
+  `MemoryMechanic.JOKERS = 6`. Done pédagogique **À VALIDER**.
 
-### Story IDEE-2 — Agrandir les dés du « Memory des quantités » CP  🔲 **À FAIRE (non planifiée)**
+### Story IDEE-2 — Agrandir les dés du « Memory des quantités » CP  ✅ **LIVRÉE (s19 — voir S19-2)**
 **En tant qu'**élève de CP, **je veux** des faces de dés **plus grandes** sur le memory des
 quantités, **afin de** lire facilement la quantité malgré ma vue de jeune enfant.
 
@@ -380,5 +474,6 @@ quantités, **afin de** lire facilement la quantité malgré ma vue de jeune enf
   la mise en page du plateau memory reste correcte (pas de débordement) ; aucun impact sur les
   autres jeux memory.
 - **Lien décision** : `squad/decisions/produit/DEC-0014-associer-classer-memory-jeux-externalises.md`
-  (raffinement s18 : faces de dés du memory quantités CP).
-- **Statut** : 🔲 **À FAIRE** — non planifiée, aucun sprint, non livrée.
+  (raffinement s18 : faces de dés du memory quantités CP) ; livrée par DEC-0015.
+- **Statut** : ✅ **LIVRÉE en s19** (story S19-2) — variante CSS `.memory-des .memory-face`. Done
+  pédagogique **À VALIDER**.

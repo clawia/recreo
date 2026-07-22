@@ -19,6 +19,8 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Une DEC = une ligne.
 | DEC-0012 | « Compare les fractions » (< > =, remplace le rangement) + frise chronologique VERTICALE | Maths CM1 comparer fractions ; Histoire CM1 frise | VALIDÉ (user, 2026-07-21) | 2026-07-21 | s16 |
 | DEC-0013 | Jokers : 3 cœurs, retente sur erreur (par clic faux, +10 plein), 0 cœur = fin de session | transverse (droit à l'erreur ; toutes mécaniques à clic) | VALIDÉ (user, 2026-07-22) | 2026-07-22 | s17 · raff. s18 |
 | DEC-0014 | Mécaniques « Associer/Classer » & « Memory » + 6 jeux externalisés (YAML) | QLM CP vivant/non-vivant ; Anglais CM1 appariement ; Maths CP quantité↔chiffre ; Maths CM1 fractions↔représentation ; Français CP mot↔image | VALIDÉ (user, 2026-07-22) | 2026-07-22 | s17 · raff. s18 |
+| DEC-0015 | Compréhension & grammaire CM1 + cœurs adaptés à la mécanique (memory 6 ❤️, dés agrandis) | Français CM1 — compréhension de texte ; Français CM1 — grammaire (nature des mots) ; transverse (droit à l'erreur) | À VALIDER | 2026-07-22 | s19 |
+| DEC-0016 | Ouverture du domaine monnaie (Grandeurs et mesures) — pur contenu YAML | Maths CP — monnaie (compter/rendre) ; Maths CM1 — monnaie (rendre, conversions €/centimes) | À VALIDER | 2026-07-22 | s20 |
 
 > **s18 — pas de nouvelle DEC.** Raffinements de s17 après démo utilisatrice, consignés en
 > section « Raffinements s18 » dans DEC-0013 (cœur consommé aussi par le memory ; écran de fin
@@ -26,3 +28,8 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Une DEC = une ligne.
 > (verrouillage partiel d'associer/classer aligné sur DEC-0008 ; faces de dés pour le memory
 > quantités CP ; images côté français pour le memory anglais CM1). Statut : **VALIDÉ (user,
 > 2026-07-22)** — s17 + s18 validés ensemble.
+
+> **s19 + s20 — enchaînés, à valider ensemble.** DEC-0015 (s19 : compréhension & grammaire CM1 +
+> cœurs adaptés à la mécanique — réalise IDEE-1/IDEE-2 du backlog) et DEC-0016 (s20 : ouverture du
+> domaine monnaie, pur contenu YAML) sont livrées sans démo intermédiaire. Statut : **À VALIDER**
+> (Done pédagogique à prononcer par l'utilisatrice — validation groupée s19 + s20 à venir).

@@ -44,3 +44,18 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 > (calqué sur `ArrangementBoard`, aide de calcul pure pour le verrouillage partiel d'associer/classer),
 > aligné sur ADR-0013 (îlot glisser-déposer) et DEC-0008 (feedback partiel : tuiles bien placées
 > conservées). Les règles ArchUnit sont **inchangées** (5/5). Aucune décision d'architecture requise (Théo).
+
+> **s19 — pas de nouvel ADR.** Sprint contenu + polish, aucune nouvelle mécanique ni nouveau coup
+> (DEC-0015) : compréhension CM1 (quiz) et nature des mots CM1 (associer/classer) sont deux **packs
+> YAML auto-enregistrés** par les loaders existants (`QuizPackLoader`, `AssocPackLoader`) — la nature
+> des mots réutilise la catégorisation d'associer/classer (comme `vivant-non-vivant-cp`). **Seul
+> ajout** : le paramètre `defaultJokers` de `SessionEngine` (`SessionEngine(mechanicId, defaultJokers)`)
+> pour un capital de cœurs dépendant de la mécanique (`MemoryMechanic.JOKERS = 6`) — extension d'un
+> service existant, pas de nouveau contrat. Les dés agrandis sont une variante CSS. ArchUnit **5/5**
+> inchangé. Aucune décision d'architecture requise (Théo).
+
+> **s20 — pas de nouvel ADR.** Sprint **pur contenu** (DEC-0016) : ouverture du domaine monnaie
+> (Grandeurs et mesures) par 3 packs YAML **auto-enregistrés** (2 quiz `cp-monnaie` / `cm1-monnaie`,
+> 1 associer `cm1-monnaie-centimes`) sur les mécaniques quiz-aventure et associer/classer existantes.
+> **Aucun code, aucune nouvelle mécanique, aucun nouveau coup.** ArchUnit **5/5** inchangé. Aucune
+> décision d'architecture requise (Théo).
