@@ -337,3 +337,48 @@ sur le sens plutôt que sur le mot français écrit.
 - **Critères d'acceptation** : `memory-anglais-cm1` remplace le côté français par des **images**
   (🐶🐱🏠🐟☀️🍎) associées au mot anglais (changement de contenu YAML).
 - **Statut** : ✅ **LIVRÉE en s18** — Done technique CI à confirmer ; Done pédagogique **À VALIDER** (DEC-0014).
+
+---
+
+## Idées / à venir (non planifiées — aucun sprint assigné)
+
+Idées produit remontées après la validation s17 + s18 (2026-07-22). **Non livrées, à FAIRE plus
+tard** : pas de sprint assigné, pas de Done technique ni pédagogique. À prioriser dans un planning
+ultérieur.
+
+### Story IDEE-1 — Jokers adaptés au type de jeu (memory : 6 cœurs)  🔲 **À FAIRE (non planifiée)**
+**En tant qu'**enfant jouant au **memory**, **je veux** un capital de cœurs plus large (**6 cœurs**
+au lieu de 3), **afin de** ne pas voir la partie s'arrêter trop vite alors que le memory génère
+mécaniquement plus d'essais/erreurs qu'un jeu à clic.
+
+- **Compétence programme visée** : transverse (posture d'apprentissage / droit à l'erreur) — même
+  registre que DEC-0013, sans nouvelle compétence de contenu.
+- **Justification** : depuis s18 le memory consomme un cœur par mauvaise paire (DEC-0013) ; or
+  retourner des cartes produit naturellement plus de tentatives infructueuses qu'un simple clic.
+  Un capital fixe de 3 est trop punitif pour cette mécanique. **Idée** : rendre le nombre de cœurs
+  **dépendant de la mécanique / du jeu** (memory → 6) plutôt qu'une constante globale.
+- **Critères d'acceptation (à affiner)** : le capital de cœurs par session dépend de la mécanique
+  (ou est déclaré par le jeu) ; les jeux de type **memory** démarrent avec **6 cœurs** ; les autres
+  mécaniques restent à 3 (comportement DEC-0013 inchangé) ; l'affichage `❤️ × jokers` reflète le
+  capital réel ; non-régression de la fin de session à 0 cœur.
+- **Lien décision** : `squad/decisions/produit/DEC-0013-jokers-trois-coeurs-retente.md` (réserve
+  « rendre les cœurs réglables / dépendants du jeu » déjà laissée ouverte).
+- **Statut** : 🔲 **À FAIRE** — non planifiée, aucun sprint, non livrée.
+
+### Story IDEE-2 — Agrandir les dés du « Memory des quantités » CP  🔲 **À FAIRE (non planifiée)**
+**En tant qu'**élève de CP, **je veux** des faces de dés **plus grandes** sur le memory des
+quantités, **afin de** lire facilement la quantité malgré ma vue de jeune enfant.
+
+- **Compétence programme visée** : Maths CP — associer une quantité à son chiffre (jeu
+  `memory-quantite-cp`, Memory) — même compétence qu'en s17/s18, pas de nouvelle couverture.
+- **Justification** : s18 a introduit les faces de dés (⚀⚁⚂⚃⚄⚅) pour `memory-quantite-cp`
+  (DEC-0014) ; à la taille d'affichage actuelle des cartes, les points des faces restent petits
+  pour de jeunes lecteurs. **Ajustement purement CSS** (agrandir `.memory-carte` / `.memory-face`
+  pour ce jeu), sans changement de contenu ni de domaine.
+- **Critères d'acceptation (à affiner)** : les faces de dés du jeu `memory-quantite-cp` sont
+  affichées à une **taille nettement plus lisible** (via CSS `.memory-carte` / `.memory-face`) ;
+  la mise en page du plateau memory reste correcte (pas de débordement) ; aucun impact sur les
+  autres jeux memory.
+- **Lien décision** : `squad/decisions/produit/DEC-0014-associer-classer-memory-jeux-externalises.md`
+  (raffinement s18 : faces de dés du memory quantités CP).
+- **Statut** : 🔲 **À FAIRE** — non planifiée, aucun sprint, non livrée.

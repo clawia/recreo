@@ -6,7 +6,8 @@
 - **Sprint** : s17
 - **Compétence programme visée** : transverse (posture d'apprentissage / droit à l'erreur — apprendre
   en corrigeant plutôt qu'en enchaînant).
-- **Statut de validation** : **À VALIDER** (implémenté s17, Done pédagogique en attente de démo).
+- **Statut de validation** : **VALIDÉ (utilisatrice, 2026-07-22)** (implémenté s17, raffiné s18 ;
+  Done pédagogique prononcé lors de la validation groupée s17 + s18).
 
 ## Contexte
 Jusqu'à présent, sur une **erreur**, les mécaniques à clic (bandit manchot, texte à trous,

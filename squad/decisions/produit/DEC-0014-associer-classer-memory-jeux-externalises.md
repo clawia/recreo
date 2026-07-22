@@ -7,7 +7,8 @@
 - **Compétence programme visée** : Questionner le monde CP (vivant/non-vivant) ; Anglais CM1
   (appariement lexique) ; Maths CP (quantité↔chiffre) ; Maths CM1 (fractions↔représentation) ;
   Français CP (mot↔image / lecture).
-- **Statut de validation** : **À VALIDER** (implémenté s17, Done pédagogique en attente de démo).
+- **Statut de validation** : **VALIDÉ (utilisatrice, 2026-07-22)** (implémenté s17, raffiné s18 ;
+  Done pédagogique prononcé lors de la validation groupée s17 + s18).
 
 ## Contexte
 Le glisser-déposer couvrait l'**ordonnancement**. « Associer » (paires) et « classer » (catégories)

@@ -33,8 +33,8 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 | Mathématiques | CM1 | Nombres et calculs | Calcul mental — tables de multiplication (jusqu'à ×10) | Bandit manchot — calcul mental CM1 | Bandit manchot | couvert-validé (s01, 2026-07-18) |
 | Mathématiques | CM1 | Nombres et calculs | Multiplications posées de nombres à 2-3 chiffres | Bandit manchot — calcul mental CM1 | Bandit manchot | couvert-validé (s01, 2026-07-18) |
 | Mathématiques | CM1 | Nombres et calculs | Mémorisation des tables de multiplication (1 à 10) — entraînement dédié | Bandit manchot — Tables de multiplication | Bandit manchot | couvert-validé (s08, 2026-07-20) |
-| Mathématiques | CP | Nombres et calculs | Associer une quantité à son chiffre (quantité ↔ nombre) | Memory — Quantité et chiffre | Memory | en cours (s17, 2026-07-22) |
-| Mathématiques | CM1 | Fractions | Associer une fraction à sa représentation (fraction ↔ dessin) | Memory — Fractions | Memory | en cours (s17, 2026-07-22) |
+| Mathématiques | CP | Nombres et calculs | Associer une quantité à son chiffre (quantité ↔ nombre) | Memory — Quantité et chiffre | Memory | couvert-validé (s17, 2026-07-22) |
+| Mathématiques | CM1 | Fractions | Associer une fraction à sa représentation (fraction ↔ dessin) | Memory — Fractions | Memory | couvert-validé (s17, 2026-07-22) |
 
 ## Autres matières (aperçu — pilote la priorisation des sprints suivants)
 
@@ -58,15 +58,15 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 | Sciences et technologie | CM1 | Matière, vivant, univers | Vérifier une affirmation scientifique (vrai/faux) | Quiz-aventure — Vrai ou Faux (sciences) | Quiz-aventure | couvert-validé (s08, 2026-07-20) |
 | EMC | CP | Enseignement moral et civique | Règles de vie de la classe, politesse, respect, sécurité | Quiz-aventure — Vivre ensemble | Quiz-aventure | couvert-validé (s08, 2026-07-20) |
 | EMC | CM1 | Enseignement moral et civique | Valeurs et symboles de la République, droits et devoirs du citoyen | Quiz-aventure — Citoyenneté & respect | Quiz-aventure | couvert-validé (s08, 2026-07-20) |
-| Questionner le monde | CP | Le vivant, les objets | Distinguer le vivant du non-vivant (catégoriser) | Associer/Classer — Vivant / non-vivant | Associer/Classer | en cours (s17, 2026-07-22) |
-| Anglais (LV) | CM1 | Lexique | Apparier un mot français à sa traduction anglaise (lexique) | Associer/Classer — Appariement FR↔EN ; Memory — Anglais | Associer/Classer + Memory | en cours (s17, 2026-07-22) |
-| Français | CP | Lecture / vocabulaire | Associer un mot écrit à son image (lecture, reconnaissance de mots) | Memory — Mot et image | Memory | en cours (s17, 2026-07-22) |
+| Questionner le monde | CP | Le vivant, les objets | Distinguer le vivant du non-vivant (catégoriser) | Associer/Classer — Vivant / non-vivant | Associer/Classer | couvert-validé (s17, 2026-07-22) |
+| Anglais (LV) | CM1 | Lexique | Apparier un mot français à sa traduction anglaise (lexique) | Associer/Classer — Appariement FR↔EN ; Memory — Anglais | Associer/Classer + Memory | couvert-validé (s17, 2026-07-22) |
+| Français | CP | Lecture / vocabulaire | Associer un mot écrit à son image (lecture, reconnaissance de mots) | Memory — Mot et image | Memory | couvert-validé (s17, 2026-07-22) |
 
 > **Note s18 — rien de nouveau à couvrir.** s18 raffine l'UX des jeux de s17 (cœur consommé par le
 > memory + écran « Essaye encore » + score max — DEC-0013 ; verrouillage partiel d'associer/classer,
 > faces de dés du memory quantités CP, images du memory anglais CM1 — DEC-0014). **Aucune nouvelle
-> compétence** : les 5 lignes s17 (associer/classer, memory) restent `en cours` et passeront
-> `couvert-validé` à la validation groupée s17 + s18 par l'utilisatrice.
+> compétence** : les 5 lignes s17 (associer/classer, memory) sont passées `couvert-validé` à la
+> validation groupée s17 + s18 par l'utilisatrice (Done pédagogique prononcé le **2026-07-22**).
 
 ## Prochaines actions suggérées
 
