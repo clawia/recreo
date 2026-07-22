@@ -6,8 +6,7 @@
 - **Sprint** : s21
 - **Compétence programme visée** : Français CP — écriture / lecture (reconstituer un mot à partir de
   ses lettres, avec indice image) ; Français CM1 — vocabulaire / orthographe lexicale (reconstituer
-  un mot à partir d'une définition) ; transverse (droit à l'erreur — capital de cœurs réglable par
-  l'adulte) ; sans objet pour l'axe « par matière » (fonctionnalité de navigation, pas de contenu).
+  un mot à partir d'une définition) ; transverse (droit à l'erreur — capital de cœurs défini dans le YAML du jeu) ; sans objet pour l'axe « par matière » (fonctionnalité de navigation, pas de contenu).
 - **Statut de validation** : **À VALIDER** (implémenté s21 ; Done pédagogique à prononcer par
   l'utilisatrice après démo).
 
@@ -15,9 +14,9 @@
 Trois évolutions produit avancent ensemble en s21 (gros incrément parallèle) :
 1. Ouvrir une **7e mécanique « Puzzle / assemblage »** (roadmap §B) — première façon pour l'enfant de
    **reconstituer** un objet (ici un mot) plutôt que de choisir, ordonner des nombres ou apparier.
-2. Rendre le **capital de jokers réglable par l'adulte** — la réserve laissée ouverte par DEC-0013 et
+2. Rendre le **capital de jokers défini dans le YAML du jeu** — la réserve laissée ouverte par DEC-0013 et
    déjà amorcée en s19 (`SessionEngine(mechanicId, defaultJokers)`, memory à 6). On veut désormais un
-   capital **piloté par le contenu (YAML) et ajustable dans l'écran de réglages** (roadmap A3).
+   capital **piloté uniquement par le contenu (YAML)** (roadmap A3).
 3. Ajouter un **3e axe de navigation « par matière »** (roadmap §E) — aujourd'hui on parcourt par
    niveau ou par jeu ; avec un catalogue qui couvre désormais de nombreuses matières, entrer « par
    matière » devient naturel.
@@ -37,14 +36,13 @@ cf. ADR-0017), sans nouveau coup. Interaction propre (assemblage de lettres + in
   orthographe lexicale CM1).
 Générateur `MotPuzzleGenerator` (lettres à replacer dans l'ordre + indice), alimenté par le YAML.
 
-### 2. Jokers paramétrables via YAML + réglage adulte
+### 2. Jokers paramétrables UNIQUEMENT via le YAML
 Le capital de cœurs devient **une donnée de contenu** : champ **`jokers` optionnel dans l'en-tête
 YAML** du jeu, lu par `SessionEngine` via `settings["jokers"]`. Le **capital 6 du memory** n'est plus
-une constante Java (`MemoryMechanic.JOKERS`) mais provient désormais **du YAML**. En complément, un
-**réglage adulte « nombre de cœurs »** est exposé dans l'écran de paramètres
-(`JokersSettingsView`, paramètre POST `jokers`), permettant d'ajuster le capital d'une session sans
-toucher au contenu. Défaut inchangé (3 cœurs — DEC-0013) quand le YAML ne précise rien et que
-l'adulte ne règle rien. **Aboutit la réserve « cœurs réglables » de DEC-0013 / roadmap A3.**
+une constante Java (`MemoryMechanic.JOKERS`) mais provient désormais **du YAML**. Défaut inchangé
+(3 cœurs — DEC-0013) quand le YAML ne précise rien. **Décision utilisatrice (2026-07-22) : le nombre
+de cœurs se règle UNIQUEMENT dans le YAML** — il n'y a **pas** de réglage adulte à la volée dans
+l'écran de paramètres (l'infra `JokersSettingsView` / paramètre POST envisagée a été retirée).
 
 ### 3. Navigation « par matière » (3e axe)
 Nouvelles pages de lecture **`/matieres`** (liste des matières couvertes) et
@@ -57,7 +55,7 @@ domaine (cf. note ADR-0017).
 - **Puzzle « reconstituer un mot »** : mobilise l'ordre des lettres et l'orthographe active (au CP,
   appui image pour relier le mot à son sens ; au CM1, appui définition pour le vocabulaire) — une
   entrée concrète vers l'**écriture CP**, trou repéré de la matrice, sans exiger le traçage tactile.
-- **Cœurs réglables** : le droit à l'erreur s'adapte à l'enfant et à la mécanique ; un adulte peut
+- **Cœurs paramétrables (YAML)** : le droit à l'erreur s'adapte à l'enfant et à la mécanique ; un adulte peut
   élargir (enfant plus jeune / mécanique plus exigeante) ou resserrer le capital.
 - **Navigation par matière** : reflète l'ambition « toutes les matières » du produit ; entrer par
   « Français », « Maths »… devient aussi direct qu'entrer par niveau ou par jeu.
@@ -68,10 +66,9 @@ domaine (cf. note ADR-0017).
   du service existant). Navigation par matière : aucun impact domaine.
 - **Bootstrap** : loader YAML puzzle + 2 packs (`cp-mots-images`, `cm1-mots`) + 2 entrées catalogue ;
   le capital memory migre de la constante Java vers l'en-tête YAML.
-- **Web** : îlot JS `puzzle.js` (assemblage lettres + indice) ; réglage « nombre de cœurs »
-  (`JokersSettingsView`, param `jokers`) ; pages `/matieres` et `/matiere/{matiere}`.
+- **Web** : îlot JS `puzzle.js` (assemblage lettres + indice) ; pages `/matieres` et `/matiere/{matiere}`.
 - **Matrice** : 2 nouvelles compétences `en cours (s21)` (Français CP reconstituer un mot ; Français
-  CM1 reconstituer un mot). Cœurs réglables et navigation par matière = transverse / fonctionnalité,
+  CM1 reconstituer un mot). Cœurs paramétrables (YAML) et navigation par matière = transverse / fonctionnalité,
   sans nouvelle ligne de couverture.
 - **ADR** : **ADR-0017** (puzzle). Jokers-en-YAML et navigation par matière **sans ADR** (paramètre
   de settings ; read-model — cf. note ADR-0017).

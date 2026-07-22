@@ -10,7 +10,7 @@ mechanic: bandit-manchot
 # gameKey distinct : jeu a part entiere dans la navigation "par jeu".
 gameKey: tables-multiplication
 gameLabel: "Tables de multiplication"
-matiere: Mathématiques
+matiere: "Mathématiques"
 niveau: CM1
 domaine: "Calcul mental — tables de multiplication"
 difficulty:

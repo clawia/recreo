@@ -7,7 +7,7 @@ mechanic: bandit-manchot
 # gameKey : identifiant du JEU independant du niveau (regroupement "par jeu").
 gameKey: calcul-mental
 gameLabel: "Calcul mental"
-matiere: mathematiques
+matiere: "Mathématiques"
 niveau: CP
 domaine: "Calcul mental"
 difficulty:

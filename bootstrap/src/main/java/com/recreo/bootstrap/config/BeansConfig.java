@@ -126,20 +126,20 @@ public class BeansConfig {
         // Declinaisons s04 : 6 jeux SANS reglage, MEME mecanique bandit manchot,
         // uniquement de nouveaux ContentGenerator (cf. US-s04 / ADR-0004/0005).
         defs.add(simpleGame(
-                "complement-dix", "Maths", "CP", "complement-dix", "Compléments à 10",
+                "complement-dix", "Mathématiques", "CP", "complement-dix", "Compléments à 10",
                 "Compléments à 10", "Trouve ce qu'il manque pour faire 10.",
                 new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — compléments à 10"),
                 ComplementDixGenerator::new));
         // Comparaison : la consigne (plus grand / plus petit) est ALEATOIRE par question
         // (s13, retour utilisatrice : pas de reglage). Jeu simple, mecanique bandit manchot.
         defs.add(simpleGame(
-                "comparaison", "Maths", "CP", "comparaison", "Le plus grand nombre",
+                "comparaison", "Mathématiques", "CP", "comparaison", "Le plus grand nombre",
                 "Le plus grand nombre", "Choisis le plus grand (ou le plus petit) des deux nombres.",
                 new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — comparer des nombres"),
                 ComparaisonGenerator::new));
         // Nouveau jeu « Le bon symbole » (s13) : choisir < > ou = entre deux nombres.
         defs.add(simpleGame(
-                "bon-symbole", "Maths", "CP", "bon-symbole", "Le bon symbole",
+                "bon-symbole", "Mathématiques", "CP", "bon-symbole", "Le bon symbole",
                 "Le bon symbole", "Choisis le bon signe entre les deux nombres.",
                 new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — comparer avec <, >, ="),
                 BonSymboleGenerator::new));
@@ -147,7 +147,7 @@ public class BeansConfig {
         // position. Réglage TOGGLE « inclure les centaines » (décoché → dizaines/unités ;
         // coché → + centaines). Défaut par niveau : CP décoché, CM1 coché. Bandit manchot.
         defs.add(new CatalogEntryDef(
-                "decomposition-cp", "Maths", "CP", "decomposition", "Décompose le nombre",
+                "decomposition-cp", "Mathématiques", "CP", "decomposition", "Décompose le nombre",
                 "Maths CP — Décompose le nombre", "Clique le bon chiffre (dizaines, unités ; centaines en option).",
                 BanditManchotMechanic.ID,
                 new DecompositionGameFactory("decomposition-cp", "Maths CP — Décompose le nombre", "decomposition",
@@ -155,7 +155,7 @@ public class BeansConfig {
                         new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — valeur positionnelle des chiffres"),
                         false)));
         defs.add(new CatalogEntryDef(
-                "decomposition-cm1", "Maths", "CM1", "decomposition", "Décompose le nombre",
+                "decomposition-cm1", "Mathématiques", "CM1", "decomposition", "Décompose le nombre",
                 "Maths CM1 — Décompose le nombre", "Clique le bon chiffre (centaines, dizaines, unités).",
                 BanditManchotMechanic.ID,
                 new DecompositionGameFactory("decomposition-cm1", "Maths CM1 — Décompose le nombre", "decomposition",
@@ -190,7 +190,7 @@ public class BeansConfig {
         }
         // "Complète l'égalité" reste COMBINATOIRE (genere a la volee, pas de liste a editer).
         defs.add(texteATrouGame(
-                "egalite-cp", "Maths", "CP", "egalite", "Complète l'égalité",
+                "egalite-cp", "Mathématiques", "CP", "egalite", "Complète l'égalité",
                 "Maths CP — Complète l'égalité", "Trouve le nombre qui manque dans l'égalité.",
                 new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — compléter une égalité"),
                 EgaliteGenerator::new));
@@ -218,7 +218,7 @@ public class BeansConfig {
         ContentDescriptor rangeDesc =
                 new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — ordonner des nombres");
         defs.add(new CatalogEntryDef(
-                "range-nombres-cp", "Maths", "CP", "range-nombres", "Range les nombres",
+                "range-nombres-cp", "Mathématiques", "CP", "range-nombres", "Range les nombres",
                 "Maths CP — Range les nombres", "Range les nombres dans le bon ordre.",
                 GlisserDeposerMechanic.ID,
                 new SimpleGameFactory("range-nombres-cp", "Maths CP — Range les nombres", "range-nombres", "CP",
@@ -229,7 +229,7 @@ public class BeansConfig {
         ContentDescriptor rangeCm1Desc =
                 new ContentDescriptor("Mathématiques", "CM1", "Nombres et calculs — ordonner des nombres");
         defs.add(new CatalogEntryDef(
-                "range-nombres-cm1", "Maths", "CM1", "range-nombres", "Range les nombres",
+                "range-nombres-cm1", "Mathématiques", "CM1", "range-nombres", "Range les nombres",
                 "Maths CM1 — Range les nombres", "Range les nombres dans le bon ordre.",
                 GlisserDeposerMechanic.ID,
                 new SimpleGameFactory("range-nombres-cm1", "Maths CM1 — Range les nombres", "range-nombres", "CM1",
