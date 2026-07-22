@@ -123,9 +123,13 @@ class SessionEngineJokerTest {
         assertThat(session.status()).isEqualTo(SessionStatus.ACTIVE);
 
         // 4e faux a 0 joker : la partie est terminee.
+        int answeredBefore = session.answered();
         MoveResult fourth = MECHANIC.apply(session, new SpinAndPick(WRONG));
         assertThat(fourth.correct()).isFalse();
         assertThat(fourth.session().status()).isEqualTo(SessionStatus.FINISHED);
+        // Correctif score max (s18) : la question EN COURS (ratee) est comptee dans le total
+        // joue, pour que l'ecran de fin affiche (repondues + 1) x 10 comme score max.
+        assertThat(fourth.session().answered()).isEqualTo(answeredBefore + 1);
     }
 
     @Test
