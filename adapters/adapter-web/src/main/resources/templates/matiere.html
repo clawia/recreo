@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Recreo — Jeux de la matière</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}" href="/css/app.css"/>
+</head>
+<body>
+<a class="back-btn" th:href="@{${back}}" href="/matieres" aria-label="Retour aux matières" title="Retour">←</a>
+
+<header class="topbar">
+    <h1>Les jeux de <span th:text="${matiere}">Maths</span></h1>
+</header>
+
+<main class="selection">
+    <section class="catalogue">
+        <div class="cards">
+            <div th:each="item : ${entries}"
+                 th:insert="~{fragments/catalogue :: leaf(${item}, ${from})}"></div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

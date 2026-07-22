@@ -105,9 +105,26 @@ public final class SessionService implements StartSessionUseCase, SubmitMoveUseC
     }
 
     @Override
+    public List<String> matieres() {
+        Set<String> distinct = new LinkedHashSet<>();
+        for (CatalogEntry entry : catalog.entries()) {
+            distinct.add(entry.matiere());
+        }
+        return List.copyOf(distinct);
+    }
+
+    @Override
     public List<CatalogEntryView> byNiveau(String niveau) {
         return catalog.entries().stream()
                 .filter(e -> e.niveau().equals(niveau))
+                .map(this::toCatalogEntryView)
+                .toList();
+    }
+
+    @Override
+    public List<CatalogEntryView> byMatiere(String matiere) {
+        return catalog.entries().stream()
+                .filter(e -> e.matiere().equals(matiere))
                 .map(this::toCatalogEntryView)
                 .toList();
     }

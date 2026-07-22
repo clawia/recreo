@@ -17,8 +17,14 @@ public interface CatalogueQuery {
     /** Les jeux distincts (par {@code gameKey}) avec leur libelle. */
     List<GameSummaryView> games();
 
+    /** Les matieres distinctes (ex. Mathematiques, Francais), dans l'ordre du catalogue. */
+    List<String> matieres();
+
     /** Les entrees d'un niveau donne. */
     List<CatalogEntryView> byNiveau(String niveau);
+
+    /** Les entrees d'une matiere donnee (3e axe de navigation). */
+    List<CatalogEntryView> byMatiere(String matiere);
 
     /** Les entrees d'un jeu donne (une par niveau ou ce jeu existe). */
     List<CatalogEntryView> byGameKey(String gameKey);

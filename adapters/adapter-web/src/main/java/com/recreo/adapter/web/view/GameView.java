@@ -43,7 +43,8 @@ public record GameView(
         List<String> associationCards,
         List<String> associationGroups,
         List<String> associationLockedItems,
-        List<String> associationLockedTargets) {
+        List<String> associationLockedTargets,
+        String hint) {
 
     public static GameView initial(String sessionId, String mechanicView, String catalogEntryId,
                                    List<String> reelSymbols, String question, List<String> options,
@@ -52,7 +53,7 @@ public record GameView(
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
                 answered, questionsTarget, finished, false, false, null, null, null,
                 jokers, disabledOptions == null ? List.of() : disabledOptions, null, null, null,
-                List.of(), List.of());
+                List.of(), List.of(), null);
     }
 
     public static GameView withFeedback(String sessionId, String mechanicView, String catalogEntryId,
@@ -63,7 +64,7 @@ public record GameView(
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
                 answered, questionsTarget, finished, true, correct, feedbackMessage, null, null,
                 jokers, disabledOptions == null ? List.of() : disabledOptions, null, null, null,
-                List.of(), List.of());
+                List.of(), List.of(), null);
     }
 
     /**
@@ -75,7 +76,7 @@ public record GameView(
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
                 answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage, slots, reserve,
                 jokers, disabledOptions, associationTargets, associationCards, associationGroups,
-                associationLockedItems, associationLockedTargets);
+                associationLockedItems, associationLockedTargets, hint);
     }
 
     /**
@@ -88,7 +89,7 @@ public record GameView(
                 answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage,
                 arrangementSlots, arrangementReserve,
                 jokers, disabledOptions, targets, cards, groups,
-                associationLockedItems, associationLockedTargets);
+                associationLockedItems, associationLockedTargets, hint);
     }
 
     /**
@@ -101,7 +102,16 @@ public record GameView(
                 answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage,
                 arrangementSlots, arrangementReserve,
                 jokers, disabledOptions, associationTargets, associationCards, associationGroups,
-                items, targets);
+                items, targets, hint);
+    }
+
+    /** Copie de cette vue avec un INDICE (image/emoji/definition) affiche — mecanique puzzle. */
+    public GameView withHint(String newHint) {
+        return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
+                answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage,
+                arrangementSlots, arrangementReserve,
+                jokers, disabledOptions, associationTargets, associationCards, associationGroups,
+                associationLockedItems, associationLockedTargets, newHint);
     }
 
     /**

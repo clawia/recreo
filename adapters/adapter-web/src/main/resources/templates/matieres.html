@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Recreo — Par matière</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}" href="/css/app.css"/>
+</head>
+<body>
+<a class="back-btn" th:href="@{/}" href="/" aria-label="Retour à l'accueil" title="Retour">←</a>
+
+<header class="topbar">
+    <h1>📚 Choisis ta matière</h1>
+</header>
+
+<main class="selection">
+    <section class="catalogue">
+        <div class="cards">
+            <a class="card-btn nav-entry" th:each="matiere : ${matieres}"
+               th:href="@{/matiere/{m}(m=${matiere})}" href="#">
+                <span class="card-title" th:text="${matiere}">Maths</span>
+            </a>
+        </div>
+    </section>
+</main>
+</body>
+</html>

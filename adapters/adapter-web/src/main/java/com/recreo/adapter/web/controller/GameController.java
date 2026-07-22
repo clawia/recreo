@@ -71,6 +71,23 @@ public class GameController {
         return "niveau";
     }
 
+    // ---- Axe "par matiere" ----
+
+    @GetMapping("/matieres")
+    public String matieres(Model model) {
+        model.addAttribute("matieres", catalogueQuery.matieres());
+        return "matieres";
+    }
+
+    @GetMapping("/matiere/{matiere}")
+    public String jeuxDeLaMatiere(@PathVariable("matiere") String matiere, Model model) {
+        model.addAttribute("matiere", matiere);
+        model.addAttribute("entries", mapper.toCatalogItems(catalogueQuery.byMatiere(matiere)));
+        model.addAttribute("from", "/matiere/" + matiere);
+        model.addAttribute("back", "/matieres");
+        return "matiere";
+    }
+
     // ---- Axe "par jeu" ----
 
     @GetMapping("/jeux")
@@ -110,6 +127,7 @@ public class GameController {
                                @RequestParam(value = "maxSyllabes", required = false) String maxSyllabes,
                                @RequestParam(value = "centaines", required = false) List<String> centaines,
                                @RequestParam(value = "questionsTarget", required = false) String questionsTarget,
+                               @RequestParam(value = "jokers", required = false) String jokers,
                                Model model) {
         Map<String, String> parameters = new LinkedHashMap<>();
         putIfPresent(parameters, "minOperand", minOperand);
@@ -125,6 +143,7 @@ public class GameController {
             parameters.put("centaines", String.valueOf(centaines.contains("true")));
         }
         putIfPresent(parameters, "questionsTarget", questionsTarget);
+        putIfPresent(parameters, "jokers", jokers);
 
         SessionView view = startSessionUseCase.start(new StartSessionCommand(catalogEntryId, parameters));
         model.addAttribute("game", mapper.toGameView(view));

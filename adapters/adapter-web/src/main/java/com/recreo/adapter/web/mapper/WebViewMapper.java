@@ -20,6 +20,9 @@ public class WebViewMapper {
     /** Vue de la mecanique glisser-deposer (cf. {@code GlisserDeposerMechanic.VIEW}). */
     private static final String GLISSER_DEPOSER = "glisserdeposer";
 
+    /** Vue de la mecanique puzzle (cf. {@code PuzzleMechanic.VIEW}) : meme plateau d'arrangement. */
+    private static final String PUZZLE = "puzzle";
+
     /** Vue de la mecanique associer/classer (cf. {@code AssocierMechanic.VIEW}). */
     private static final String ASSOCIER = "associer";
 
@@ -55,10 +58,13 @@ public class WebViewMapper {
                 FINISHED.equals(view.status()),
                 view.jokers(),
                 view.triedWrong());
-        // Nouveau puzzle glisser-deposer : plateau initial (emplacements vides, tuiles en reserve).
-        if (GLISSER_DEPOSER.equals(view.mechanicView())) {
+        // Nouveau plateau d'arrangement (glisser-deposer ET puzzle) : emplacements vides, tuiles en reserve.
+        if (GLISSER_DEPOSER.equals(view.mechanicView()) || PUZZLE.equals(view.mechanicView())) {
             ArrangementBoard board = ArrangementBoard.initial(view.reelSymbols());
-            return game.withArrangementBoard(board.slots(), board.reserve());
+            GameView withBoard = game.withArrangementBoard(board.slots(), board.reserve());
+            return PUZZLE.equals(view.mechanicView())
+                    ? withBoard.withHint(safe(view.meta()).get("indice"))
+                    : withBoard;
         }
         return withAssociations(game, view.mechanicView(), view.reelSymbols(), view.meta());
     }
@@ -126,27 +132,33 @@ public class WebViewMapper {
             return withAssociations(game, view.mechanicView(), view.reelSymbols(), view.meta());
         }
 
-        // Autres mecaniques (hors glisser-deposer) : rien de plus a faire.
-        if (!GLISSER_DEPOSER.equals(view.mechanicView())) {
+        // Arrangement (glisser-deposer ET puzzle, meme coup SubmitArrangement) : hors de ces
+        // mecaniques, rien de plus a faire.
+        if (!GLISSER_DEPOSER.equals(view.mechanicView()) && !PUZZLE.equals(view.mechanicView())) {
             return game;
         }
 
-        // Correct (ou pas d'arrangement fourni) : puzzle suivant, tuiles fraiches en reserve.
+        GameView board;
         if (view.correct() || submittedArrangement == null) {
-            ArrangementBoard board = ArrangementBoard.initial(view.reelSymbols());
-            return game.withArrangementBoard(board.slots(), board.reserve());
+            // Correct (ou pas d'arrangement fourni) : item suivant, tuiles fraiches en reserve.
+            ArrangementBoard b = ArrangementBoard.initial(view.reelSymbols());
+            board = game.withArrangementBoard(b.slots(), b.reserve());
+        } else {
+            // Faux : on garde en place les tuiles bien positionnees, on renvoie le reste en reserve.
+            List<String> options = view.options();
+            if (options == null || options.isEmpty()) {
+                ArrangementBoard b = ArrangementBoard.initial(view.reelSymbols()); // repli defensif
+                board = game.withArrangementBoard(b.slots(), b.reserve());
+            } else {
+                List<String> expected = List.of(options.get(0).split(ARRANGEMENT_SEPARATOR, -1));
+                ArrangementBoard b = ArrangementBoard.afterAttempt(submittedArrangement, expected);
+                board = game.withArrangementBoard(b.slots(), b.reserve());
+            }
         }
-
-        // Faux : on garde en place les tuiles bien positionnees, on renvoie le reste en reserve.
-        List<String> options = view.options();
-        if (options == null || options.isEmpty()) {
-            // Repli defensif (ne devrait pas arriver) : plateau initial.
-            ArrangementBoard board = ArrangementBoard.initial(view.reelSymbols());
-            return game.withArrangementBoard(board.slots(), board.reserve());
-        }
-        List<String> expected = List.of(options.get(0).split(ARRANGEMENT_SEPARATOR, -1));
-        ArrangementBoard board = ArrangementBoard.afterAttempt(submittedArrangement, expected);
-        return game.withArrangementBoard(board.slots(), board.reserve());
+        // Le puzzle affiche en plus l'indice (image/emoji/definition) porte par la meta de l'item.
+        return PUZZLE.equals(view.mechanicView())
+                ? board.withHint(safe(view.meta()).get("indice"))
+                : board;
     }
 
     /**

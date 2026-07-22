@@ -18,10 +18,21 @@ public record GameSettingsView(
         MathSettingsView math,
         SyllabesSettingsView syllabes,
         QuestionsSettingsView questions,
+        JokersSettingsView jokers,
         List<ToggleSettingsView> toggles) {
 
     public GameSettingsView {
         toggles = toggles == null ? List.of() : List.copyOf(toggles);
+    }
+
+    /**
+     * Constructeur historique (avant le reglage « nombre de coeurs », cf. DEC-0013/s21) :
+     * pas de bloc {@code jokers}. Conserve la compatibilite des fabriques existantes.
+     */
+    public GameSettingsView(String entryId, String title, String gameKey, String niveau,
+                            MathSettingsView math, SyllabesSettingsView syllabes,
+                            QuestionsSettingsView questions, List<ToggleSettingsView> toggles) {
+        this(entryId, title, gameKey, niveau, math, syllabes, questions, null, toggles);
     }
 
     /**
@@ -30,6 +41,6 @@ public record GameSettingsView(
      * « Paramètres » s'affiche donc pour chaque jeu.
      */
     public boolean hasSettings() {
-        return questions != null || math != null || syllabes != null || !toggles.isEmpty();
+        return questions != null || math != null || syllabes != null || jokers != null || !toggles.isEmpty();
     }
 }

@@ -874,6 +874,30 @@ body {
     line-height: 1;
 }
 
+/* ---- Mecanique "puzzle" : reutilise le plateau du glisser-deposer (.dnd-*) ---- */
+/* Meme presentation centree que le glisser-deposer ; ajoute l'INDICE (game.hint). */
+.puzzle {
+    text-align: center;
+}
+
+/* L'indice (emoji, image ou definition) : grand, centre, tres lisible pour de
+   jeunes enfants (CP). Un emoji occupe la place d'une grande image d'indice. */
+.puzzle-indice {
+    margin: 0.4rem auto 1rem;
+    max-width: 640px;
+    font-size: 4rem;
+    line-height: 1.15;
+    text-align: center;
+    color: var(--text, #222);
+}
+
+/* Si l'indice est une image, on la borne pour rester lisible sans deborder. */
+.puzzle-indice img {
+    max-width: 100%;
+    max-height: 220px;
+    height: auto;
+}
+
 /* ---- Options fausses deja tentees : grisees et non cliquables ---- */
 /* Un coeur (joker) a ete perdu sur cette option : on la garde visible mais inerte,
    pour que l'enfant ne re-clique pas dessus. */
