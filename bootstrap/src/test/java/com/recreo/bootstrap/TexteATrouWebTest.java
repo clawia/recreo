@@ -80,27 +80,51 @@ class TexteATrouWebTest {
                 .andExpect(content().string(not(containsString("BANDIT MANCHOT"))));
     }
 
+    private static final Pattern PHRASE = Pattern.compile("phrase-a-trou\"[^>]*>(.*?)</p>", Pattern.DOTALL);
+    private static final Pattern INT = Pattern.compile("\\d+");
+
     @Test
     void texteATrouSessionReachesTheEndScreen() throws Exception {
-        // Session courte (cible = 5) : apres 5 reponses, ecran de fin commun.
+        // Session courte (cible = 5). Depuis les jokers (DEC-0009), une reponse FAUSSE ne fait
+        // plus avancer : pour ATTEINDRE la cible on complete correctement l'egalite "a + ___ = c"
+        // (reponse = c - a), calculee a partir de la phrase affichee.
         MvcResult start = mockMvc.perform(post("/sessions")
                         .param("catalogEntryId", "egalite-cp")
                         .param("questionsTarget", "5"))
                 .andExpect(status().isOk())
                 .andReturn();
-        String sessionId = firstMatch(SESSION_ID, start.getResponse().getContentAsString());
+        String html = start.getResponse().getContentAsString();
+        String sessionId = firstMatch(SESSION_ID, html);
 
-        String lastHtml = null;
         for (int i = 0; i < 5; i++) {
-            lastHtml = mockMvc.perform(post("/sessions/{id}/moves", sessionId).param("chosenAnswer", "0"))
+            html = mockMvc.perform(post("/sessions/{id}/moves", sessionId)
+                            .param("chosenAnswer", egaliteAnswer(html)))
                     .andExpect(status().isOk())
                     .andReturn().getResponse().getContentAsString();
         }
 
         // Ecran de fin mutualise : Bravo + Rejouer ; plus de mots a cliquer.
-        assertThat(lastHtml).contains("Bravo");
-        assertThat(lastHtml).contains("Rejouer");
-        assertThat(lastHtml).doesNotContain("class=\"word-btn\"");
+        assertThat(html).contains("Bravo");
+        assertThat(html).contains("Rejouer");
+        assertThat(html).doesNotContain("class=\"word-btn\"");
+    }
+
+    /**
+     * Calcule le complement "a + ___ = c" -> c - a a partir de la phrase affichee. On isole le
+     * bloc {@code .phrase-a-trou} (pour ne pas capter un chiffre du <head>, ex. viewport), on
+     * retire les balises et on lit les deux entiers "a" et "c" (le trou vaut "?", pas un chiffre).
+     */
+    private String egaliteAnswer(String html) {
+        Matcher pm = PHRASE.matcher(html);
+        assertThat(pm.find()).as("bloc phrase-a-trou").isTrue();
+        String text = pm.group(1).replaceAll("<[^>]*>", " ");
+        Matcher im = INT.matcher(text);
+        java.util.List<Integer> nums = new java.util.ArrayList<>();
+        while (im.find()) {
+            nums.add(Integer.parseInt(im.group()));
+        }
+        assertThat(nums).as("les deux operandes a et c").hasSize(2);
+        return String.valueOf(nums.get(1) - nums.get(0));
     }
 
     private String firstMatch(Pattern pattern, String content) {
