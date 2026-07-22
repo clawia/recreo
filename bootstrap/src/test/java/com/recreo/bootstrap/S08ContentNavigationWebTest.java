@@ -75,13 +75,14 @@ class S08ContentNavigationWebTest {
 
     @Test
     void jeuxListsTheNewGamesByGameKey() throws Exception {
+        // Axe « par jeu » : liste plate des jeux, reperes par leur nom court (gameLabel).
         mockMvc.perform(get("/jeux"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("href=\"/jeu/le-bon-son\"")))
-                .andExpect(content().string(containsString("href=\"/jeu/tables-multiplication\"")))
-                .andExpect(content().string(containsString("href=\"/jeu/vivre-ensemble\"")))
-                .andExpect(content().string(containsString("href=\"/jeu/citoyennete\"")))
-                .andExpect(content().string(containsString("href=\"/jeu/vrai-faux-sciences\"")));
+                .andExpect(content().string(containsString("Le bon son")))
+                .andExpect(content().string(containsString("Tables de multiplication")))
+                .andExpect(content().string(containsString("Vivre ensemble")))
+                .andExpect(content().string(containsString("Citoyenneté &amp; respect")))
+                .andExpect(content().string(containsString("Vrai ou Faux")));
     }
 
     @Test

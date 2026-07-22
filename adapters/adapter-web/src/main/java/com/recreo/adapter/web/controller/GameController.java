@@ -92,7 +92,15 @@ public class GameController {
 
     @GetMapping("/jeux")
     public String jeux(Model model) {
-        model.addAttribute("jeux", catalogueQuery.games());
+        // Axe « par jeu » : liste PLATE de tous les jeux, triee par nom (regroupe les memes jeux)
+        // puis par niveau, affichee au format complet « Matiere Niveau — Nom » (contexte 'jeu').
+        var entries = mapper.toCatalogItems(catalogueQuery.entries()).stream()
+                .sorted(java.util.Comparator
+                        .comparing(com.recreo.adapter.web.view.CatalogItemView::gameLabel)
+                        .thenComparing(com.recreo.adapter.web.view.CatalogItemView::niveau))
+                .toList();
+        model.addAttribute("entries", entries);
+        model.addAttribute("from", "/jeux");
         return "jeux";
     }
 

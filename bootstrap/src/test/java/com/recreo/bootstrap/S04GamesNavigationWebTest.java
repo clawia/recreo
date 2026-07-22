@@ -60,14 +60,15 @@ class S04GamesNavigationWebTest {
 
     @Test
     void jeuxListsTheSixNewGamesByGameKey() throws Exception {
+        // Axe « par jeu » : liste plate des jeux, reperes par leur nom court (gameLabel).
         mockMvc.perform(get("/jeux"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("href=\"/jeu/complement-dix\"")))
-                .andExpect(content().string(containsString("href=\"/jeu/comparaison\"")))
-                .andExpect(content().string(containsString("href=\"/jeu/premiere-lettre\"")))
-                .andExpect(content().string(containsString("href=\"/jeu/homophones\"")))
-                .andExpect(content().string(containsString("href=\"/jeu/nature-mot\"")))
-                .andExpect(content().string(containsString("href=\"/jeu/anglais-lexique\"")));
+                .andExpect(content().string(containsString("Compléments à 10")))
+                .andExpect(content().string(containsString("Le plus grand nombre")))
+                .andExpect(content().string(containsString("première lettre")))
+                .andExpect(content().string(containsString("Le bon petit mot")))
+                .andExpect(content().string(containsString("La nature du mot")))
+                .andExpect(content().string(containsString("Le bon mot en anglais")));
     }
 
     @Test

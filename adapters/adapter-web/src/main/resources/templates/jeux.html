@@ -15,11 +15,11 @@
 
 <main class="selection">
     <section class="catalogue">
+        <!-- Axe « par jeu » : liste directe de TOUS les jeux, triés par nom (les mêmes jeux se
+             regroupent), au format complet « Matière Niveau — Nom » (contexte 'jeu'). -->
         <div class="cards">
-            <a class="card-btn nav-entry" th:each="jeu : ${jeux}"
-               th:href="@{/jeu/{k}(k=${jeu.gameKey})}" href="#">
-                <span class="card-title" th:text="${jeu.label}">Calcul mental</span>
-            </a>
+            <div th:each="item : ${entries}"
+                 th:insert="~{fragments/catalogue :: leaf(${item}, ${from}, 'jeu')}"></div>
         </div>
     </section>
 </main>

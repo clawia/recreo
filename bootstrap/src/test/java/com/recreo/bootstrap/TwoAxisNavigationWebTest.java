@@ -52,10 +52,10 @@ class TwoAxisNavigationWebTest {
     void jeuxListsDistinctGames() throws Exception {
         mockMvc.perform(get("/jeux"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Calcul mental")))
-                .andExpect(content().string(containsString("Les syllabes")))
-                .andExpect(content().string(containsString("href=\"/jeu/calcul-mental\"")))
-                .andExpect(content().string(containsString("href=\"/jeu/syllabes\"")));
+                // Axe « par jeu » : liste plate des jeux au format « Matiere Niveau — Nom ».
+                .andExpect(content().string(containsString("Mathématiques CP — Calcul mental")))
+                .andExpect(content().string(containsString("Français CP — Les syllabes")))
+                .andExpect(content().string(containsString("value=\"calcul-mental-cp\"")));
     }
 
     @Test
