@@ -28,10 +28,10 @@
 
 | s16 | « Compare les fractions » (< > =, remplace le rangement) + frise chronologique VERTICALE | Bandit manchot + Glisser-déposer | Maths CM1 comparer fractions · Histoire CM1 frise | 2026-07-21 | ✅ **VALIDÉ** (Done technique + Done pédago) | 2026-07-21 |
 
-| s17 | Jokers / 3 cœurs (retente sur erreur, 0 cœur = fin) + mécaniques « Associer/Classer » (5e) & « Memory » (6e), 6 jeux YAML | Associer/Classer + Memory (transverse jokers) | transverse (droit à l'erreur) · QLM CP vivant/non-vivant · Anglais CM1 appariement · Maths CP quantité↔chiffre · Maths CM1 fractions↔représentation · Français CP mot↔image | 2026-07-22 | 🕒 **À VALIDER** (Done technique CI à confirmer ; Done pédago en attente de démo) | — |
+| s17 | Jokers / 3 cœurs (retente sur erreur, 0 cœur = fin) + mécaniques « Associer/Classer » (5e) & « Memory » (6e), 6 jeux YAML | Associer/Classer + Memory (transverse jokers) | transverse (droit à l'erreur) · QLM CP vivant/non-vivant · Anglais CM1 appariement · Maths CP quantité↔chiffre · Maths CM1 fractions↔représentation · Français CP mot↔image | 2026-07-22 | ✅ **VALIDÉ** (Done technique + Done pédago ; validé avec s18) | 2026-07-22 |
 
-| s18 | Raffinements UX de s17 (6 retouches, pas de nouvelle mécanique) : cœur consommé par le memory + écran « Essaye encore » + score max (DEC-0013) ; verrouillage partiel associer/classer + dés memory quantités CP + images memory anglais CM1 (DEC-0014) | Associer/Classer + Memory (transverse jokers) | transverse (droit à l'erreur) · mêmes compétences que s17 (aucune nouvelle) | 2026-07-22 | 🕒 **À VALIDER** (Done technique CI à confirmer ; à valider avec s17) | — |
+| s18 | Raffinements UX de s17 (6 retouches, pas de nouvelle mécanique) : cœur consommé par le memory + écran « Essaye encore » + score max (DEC-0013) ; verrouillage partiel associer/classer + dés memory quantités CP + images memory anglais CM1 (DEC-0014) | Associer/Classer + Memory (transverse jokers) | transverse (droit à l'erreur) · mêmes compétences que s17 (aucune nouvelle) | 2026-07-22 | ✅ **VALIDÉ** (Done technique + Done pédago ; validé avec s17) | 2026-07-22 |
 
-> 🕒 **2 incréments en attente** : s17 et s18, tous deux poussés le 2026-07-22 (s14/s15/s16 validés).
-> **s17 et s18 sont à valider ensemble** (s18 raffine les jeux de s17). Sous le seuil de gel (< 3).
-> DEC-0013 (jokers + raffinements s18) + DEC-0014 (mécaniques + raffinements s18) à valider en démo.
+> ✅ **File redescendue à 0** : s17 et s18 validés ensemble le **2026-07-22** (Done pédagogique
+> prononcé par l'utilisatrice). **Aucun incrément en attente de validation.**
+> DEC-0013 (jokers + raffinements s18) + DEC-0014 (mécaniques + raffinements s18) : VALIDÉES.
