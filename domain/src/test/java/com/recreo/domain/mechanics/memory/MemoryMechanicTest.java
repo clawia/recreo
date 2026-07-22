@@ -55,6 +55,8 @@ class MemoryMechanicTest {
         assertThat(session.status()).isEqualTo(SessionStatus.ACTIVE);
         assertThat(session.round()).isEqualTo(1);
         assertThat(session.score()).isZero();
+        // Capital de coeurs propre au memory (6, cf. IDEE-1) et non 3.
+        assertThat(session.jokers()).isEqualTo(MemoryMechanic.JOKERS);
         // Contenu "memory" : les faces des cartes, dans l'ordre g0,d0,g1,d1.
         assertThat(session.currentItem().reelSymbols()).containsExactly("chat", "cat", "chien", "dog");
     }
@@ -83,6 +85,7 @@ class MemoryMechanicTest {
         // Regle des jokers (DEC-0009) : meme plateau, ACTIVE, un coeur en moins.
         assertThat(result.session().status()).isEqualTo(SessionStatus.ACTIVE);
         assertThat(result.session().currentItem().key()).isEqualTo(session.currentItem().key());
-        assertThat(result.session().jokers()).isEqualTo(GameSession.DEFAULT_JOKERS - 1);
+        // Capital du memory = 6 (IDEE-1) : 6 -> 5 apres un appariement faux.
+        assertThat(result.session().jokers()).isEqualTo(MemoryMechanic.JOKERS - 1);
     }
 }
