@@ -26,25 +26,25 @@ import java.util.UUID;
  */
 public final class CompareFractionsGenerator implements ContentGenerator {
 
-    private static final String QUESTION = "Quel signe ?";
     private static final int MAX_EXCLUSION_ATTEMPTS = 12;
 
     /** Une fraction verifiee : numerateur, denominateur, libelle affiche. */
-    private record Fraction(int num, int den, String label) {
+    public record Fraction(int num, int den, String label) {
     }
 
-    /** Pool avec des fractions EQUIVALENTES (memes valeurs, labels differents). */
-    private static final List<Fraction> POOL = List.of(
-            new Fraction(1, 2, "1/2"), new Fraction(2, 4, "2/4"), new Fraction(3, 6, "3/6"),
-            new Fraction(1, 3, "1/3"), new Fraction(2, 6, "2/6"),
-            new Fraction(1, 4, "1/4"), new Fraction(2, 8, "2/8"),
-            new Fraction(2, 3, "2/3"), new Fraction(3, 4, "3/4"),
-            new Fraction(1, 5, "1/5"), new Fraction(4, 5, "4/5"));
-
     private final ContentDescriptor descriptor;
+    private final List<Fraction> pool;
+    private final String consigne;
 
-    public CompareFractionsGenerator(ContentDescriptor descriptor) {
+    /**
+     * @param pool     fractions VERIFIEES chargees depuis le YAML (contenu externalise, roadmap D),
+     *                 incluant des fractions EQUIVALENTES (1/2 = 2/4 = 3/6, ...) pour permettre « = »
+     * @param consigne texte affiche (ex. « Quel signe ? »)
+     */
+    public CompareFractionsGenerator(ContentDescriptor descriptor, List<Fraction> pool, String consigne) {
         this.descriptor = descriptor;
+        this.pool = List.copyOf(pool);
+        this.consigne = consigne;
     }
 
     @Override
@@ -57,12 +57,12 @@ public final class CompareFractionsGenerator implements ContentGenerator {
     }
 
     private Item buildOne(RandomSource random) {
-        Fraction fa = POOL.get(random.nextInt(POOL.size()));
+        Fraction fa = pool.get(random.nextInt(pool.size()));
 
         // ~1/3 des cas : forcer une paire de MEME valeur (label different) pour obtenir « = ».
         Fraction fb;
         List<Fraction> sameValue = new ArrayList<>();
-        for (Fraction f : POOL) {
+        for (Fraction f : pool) {
             if (!f.label().equals(fa.label()) && crossEquals(fa, f)) {
                 sameValue.add(f);
             }
@@ -71,7 +71,7 @@ public final class CompareFractionsGenerator implements ContentGenerator {
             fb = sameValue.get(random.nextInt(sameValue.size()));
         } else {
             do {
-                fb = POOL.get(random.nextInt(POOL.size()));
+                fb = pool.get(random.nextInt(pool.size()));
             } while (fb.label().equals(fa.label()));
         }
 
@@ -92,7 +92,7 @@ public final class CompareFractionsGenerator implements ContentGenerator {
         meta.put("matiere", descriptor.matiere());
         meta.put("niveau", descriptor.niveau());
 
-        return new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, QUESTION,
+        return new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, consigne,
                 new Answer(expected), distractors, meta);
     }
 

@@ -27,23 +27,8 @@ import java.util.UUID;
 public final class FriseChronologiqueGenerator implements ContentGenerator {
 
     /** Un evenement historique et son rang chronologique (croissant = du plus ancien au plus recent). */
-    private record Evenement(String label, int rang) {
+    public record Evenement(String label, int rang) {
     }
-
-    /** Liste VERIFIEE d'evenements, rangs chronologiques croissants. */
-    private static final List<Evenement> EVENEMENTS = List.of(
-            new Evenement("La Préhistoire", 1),
-            new Evenement("Les Gaulois", 2),
-            new Evenement("Le Moyen Âge", 3),
-            new Evenement("La Révolution française", 4),
-            new Evenement("La tour Eiffel", 5),
-            new Evenement("Aujourd'hui", 6));
-
-    /** Consigne : ranger du plus ancien au plus recent. */
-    private static final String QUESTION = "Range du plus ancien au plus récent";
-
-    /** Nombre d'evenements tires par item. */
-    private static final int COUNT = 3;
 
     /** Nombre d'essais d'exclusion "best-effort" (generateur combinatoire, cf. ADR-0006). */
     private static final int MAX_EXCLUSION_ATTEMPTS = 12;
@@ -52,9 +37,22 @@ public final class FriseChronologiqueGenerator implements ContentGenerator {
     private static final int MAX_SHUFFLE_ATTEMPTS = 10;
 
     private final ContentDescriptor descriptor;
+    private final List<Evenement> evenements;
+    private final String consigne;
+    private final int count;
 
-    public FriseChronologiqueGenerator(ContentDescriptor descriptor) {
+    /**
+     * @param evenements liste VERIFIEE d'evenements (label + rang chronologique croissant), chargee
+     *                   depuis le YAML (contenu externalise, cf. roadmap D)
+     * @param consigne   texte affiche (ex. « Range du plus ancien au plus recent »)
+     * @param count      nombre d'evenements tires par item
+     */
+    public FriseChronologiqueGenerator(ContentDescriptor descriptor, List<Evenement> evenements,
+                                       String consigne, int count) {
         this.descriptor = descriptor;
+        this.evenements = List.copyOf(evenements);
+        this.consigne = consigne;
+        this.count = count;
     }
 
     @Override
@@ -68,10 +66,10 @@ public final class FriseChronologiqueGenerator implements ContentGenerator {
     }
 
     private Item buildOne(RandomSource random) {
-        // Tire COUNT evenements DISTINCTS de la liste (melange puis prend les COUNT premiers).
-        List<Evenement> pool = new ArrayList<>(EVENEMENTS);
+        // Tire {count} evenements DISTINCTS de la liste (melange puis prend les premiers).
+        List<Evenement> pool = new ArrayList<>(evenements);
         shuffleEvents(pool, random);
-        List<Evenement> target = new ArrayList<>(pool.subList(0, COUNT));
+        List<Evenement> target = new ArrayList<>(pool.subList(0, count));
 
         // Cible = ces evenements tries par rang CROISSANT (= ordre chronologique).
         target.sort(Comparator.comparingInt(Evenement::rang));
@@ -95,7 +93,7 @@ public final class FriseChronologiqueGenerator implements ContentGenerator {
         meta.put("matiere", descriptor.matiere());
         meta.put("niveau", descriptor.niveau());
 
-        return new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, QUESTION, expected, distractors, meta);
+        return new Item(new ItemId(UUID.randomUUID().toString()), reelSymbols, consigne, expected, distractors, meta);
     }
 
     private void shuffleEvents(List<Evenement> list, RandomSource random) {

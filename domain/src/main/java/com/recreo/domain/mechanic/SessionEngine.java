@@ -74,8 +74,21 @@ public final class SessionEngine {
                 generator,
                 random)
                 .withQuestionsTarget(questionsTarget)
-                // Capital de coeurs propre a la mecanique (memory : plus large, cf. IDEE-1).
-                .withJokers(defaultJokers);
+                // Capital de coeurs : reglage de session (YAML / adulte) s'il est fourni, sinon
+                // valeur propre a la mecanique (memory : plus large, cf. IDEE-1 / DEC-0013).
+                .withJokers(jokers(config));
+    }
+
+    /**
+     * Capital de coeurs de la session : lu des reglages ({@code settings.jokers}, issu du YAML du
+     * jeu ou d'un reglage adulte) si present et positif, sinon le defaut de la mecanique.
+     */
+    private int jokers(GameConfig config) {
+        Object raw = config.settings().get("jokers");
+        if (raw instanceof Integer value && value > 0) {
+            return value;
+        }
+        return defaultJokers;
     }
 
     /** Applique un coup : score, comptage, maitrise, jokers, item suivant / fin de session. */

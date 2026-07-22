@@ -59,3 +59,16 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 > 1 associer `cm1-monnaie-centimes`) sur les mécaniques quiz-aventure et associer/classer existantes.
 > **Aucun code, aucune nouvelle mécanique, aucun nouveau coup.** ArchUnit **5/5** inchangé. Aucune
 > décision d'architecture requise (Théo).
+
+| [ADR-0017](ADR-0017-mecanique-puzzle-assemblage.md) | Mécanique « Puzzle / assemblage » (7e) — **réutilise** le coup `SubmitArrangement` (comme memory réutilise `SubmitAssociations`) ; 1re déclinaison « reconstituer un mot » (`MotPuzzleGenerator`, lettres + indice), 2 jeux YAML, îlot JS `puzzle.js` ; isolation ArchUnit en slices dynamiques couvrant automatiquement `domain.mechanics.puzzle`, inchangée | Accepté | 2026-07-22 | s21 |
+
+> **s21 — un seul nouvel ADR (ADR-0017, puzzle).** Les autres chantiers de s21 n'exigent **aucun
+> ADR** (cf. §Note d'ADR-0017) : **jokers paramétrables via YAML + réglage adulte** = simple
+> paramètre de settings (`jokers` optionnel en en-tête YAML lu par `SessionEngine`, exposé via
+> `JokersSettingsView` / param POST `jokers` ; le capital 6 du memory vient désormais du YAML —
+> aboutit la réserve DEC-0013 / roadmap A3) ; **navigation par matière** (3e axe) = nouveau
+> **read-model** (`CatalogueQuery.matieres()` / `byMatiere()`, routes `/matieres`, `/matiere/{matiere}`),
+> sans changement de domaine ; **externalisation frise + fractions** (`FriseChronologiqueGenerator`,
+> `CompareFractionsGenerator` recevant leur liste par constructeur depuis `content/frise/*.yml` /
+> `content/fractions/*.yml`) = même patron d'externalisation que ADR-0009→0011, **dette remboursée**.
+> ArchUnit **5/5** inchangé sur tous ces chantiers.
