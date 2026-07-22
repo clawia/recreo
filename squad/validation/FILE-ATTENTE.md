@@ -40,9 +40,13 @@
 
 | s22 | Deux livrables : **filtres « Par jeu »** (filtrer `/jeux` par niveau/matière via boutons combinables/réinitialisables, filtrage serveur `?niveau=&matiere=`, read-model / vue — IDEE-3) + 8e mécanique **Droite graduée** (placer un nombre sur une droite 0→N par clic de graduation, réutilise `SpinAndPick` — aucun nouveau coup, jokers automatiques ; `DroiteGradueeGenerator` combinatoire ; 2 jeux 0→20 / 0→100 — ADR-0018, DEC-0019) | Droite graduée (+ transverse ergonomie : filtres « Par jeu ») | Maths CP situer/placer un nombre sur une droite graduée (0→20) · Maths CM1 idem (0→100) · transverse (ergonomie — filtres) | 2026-07-22 | ⏳ **À VALIDER** | — |
 
-> ⏳ **2 incréments en attente (s21 + s22), sous le seuil.** s19 et s20 ont été **validés ensemble le
-> 2026-07-22** (file redescendue à 0). s21 (DEC-0017 : puzzle + jokers réglables + navigation par
-> matière ; DEC-0018 : externalisation frise/fractions + déclinaisons associer/classer CP) et s22
-> (DEC-0019 : filtres « Par jeu » + mécanique droite graduée), poussés en file le **2026-07-22**, sont
-> **À VALIDER**. **2 incréments en attente — sous le seuil de gel de 3**, pas de gel du contenu.
-> Rappel : s17 + s18 puis s19 + s20 avaient chacun été validés ensemble le 2026-07-22.
+| s23 | Trois livrables, **aucune nouvelle mécanique, aucun nouveau coup, pas de nouvel ADR** : **fraction sur la droite** (droite graduée **généralisée à une liste d'étiquettes `lineTicks`** — entiers OU fractions ; réutilise `SpinAndPick` ; jeu `droite-fraction-cm1` 0→1 : 0, 1/4, 1/2, 3/4, 1) + ouverture matière **Géométrie** (quiz `cp-geometrie`, `cm1-geometrie`, associer `cp-formes`) + **longueurs / durées** (Grandeurs et mesures : quiz `cm1-longueurs`, `cm1-durees`, associer `cm1-mesures`) — géométrie & longueurs/durées = 6 packs YAML auto-enregistrés — DEC-0020 | Droite graduée (fraction) + Quiz-aventure + Associer/Classer | Maths CM1 situer une fraction sur une droite graduée (0→1) · Géométrie CP reconnaître les formes (quiz + associer) · Géométrie CM1 propriétés/angles/symétrie · Maths CM1 longueurs · Maths CM1 durées | 2026-07-22 | ⏳ **À VALIDER** | — |
+
+> 🧊 **3 incréments en attente (s21 + s22 + s23) — SEUIL DE GEL ATTEINT.** s19 et s20 ont été
+> **validés ensemble le 2026-07-22** (file redescendue à 0). Depuis, **trois incréments** ont été
+> poussés en file le **2026-07-22** sans validation intermédiaire : s21 (DEC-0017 / DEC-0018), s22
+> (DEC-0019) et s23 (DEC-0020). **La file atteint le seuil de gel de 3** (règle d'or,
+> `squad/README.md` §4) : le **planning suivant doit déclencher un GEL DU CONTENU** — priorité à la
+> **préparation de démo / validation**, **pas de nouvelle story de contenu** tant que la file n'est
+> pas redescendue sous le seuil. Rappel : s17 + s18 puis s19 + s20 avaient chacun été validés ensemble
+> le 2026-07-22.

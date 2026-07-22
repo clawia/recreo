@@ -81,3 +81,15 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 > (cf. §Note d'ADR-0018) : pur **read-model / vue** sur le catalogue enrichi (ADR-0005), **aucun
 > changement de domaine** ni de règle d'architecture (même nature que la navigation « par matière »
 > de s21). ArchUnit **5/5** inchangé.
+
+> **s23 — pas de nouvel ADR.** Trois livrables (DEC-0020), aucun n'exige de décision d'architecture :
+> **(1) fraction sur la droite** = **évolution de la mécanique droite graduée existante** (ADR-0018)
+> — les graduations sont généralisées à une **liste d'étiquettes `lineTicks`** (entiers **OU**
+> fractions), la mécanique **réutilise toujours `SpinAndPick`** (placer = choisir une graduation),
+> **aucun nouveau coup, aucune nouvelle mécanique** ; le jeu `droite-fraction-cm1` (droite 0 → 1 :
+> 0, 1/4, 1/2, 3/4, 1) est une nouvelle configuration de la même mécanique. **(2) Géométrie** (nouvelle
+> matière) et **(3) longueurs / durées** (Grandeurs et mesures) = **pur contenu YAML auto-enregistré**
+> (`QuizPackLoader`, `AssocPackLoader`) sur les mécaniques quiz-aventure et associer/classer existantes
+> — aucun code, matière/niveau restent des chaînes libres (« Géométrie » ajoutée sans changement
+> structurel, comme « EMC » en s08). ArchUnit **5/5** inchangé. Aucune décision d'architecture requise
+> (Théo).

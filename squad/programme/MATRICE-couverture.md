@@ -37,17 +37,33 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 | Mathématiques | CM1 | Fractions | Associer une fraction à sa représentation (fraction ↔ dessin) | Memory — Fractions | Memory | couvert-validé (s17, 2026-07-22) |
 | Mathématiques | CP | Nombres et calculs | Situer / placer un nombre sur une droite graduée (0 → 20) | Droite graduée — Place le nombre CP | Droite graduée | en cours (s22) |
 | Mathématiques | CM1 | Nombres et calculs | Situer / placer un nombre sur une droite graduée (0 → 100) | Droite graduée — Place le nombre CM1 | Droite graduée | en cours (s22) |
+| Mathématiques | CM1 | Fractions | Situer / placer une fraction sur une droite graduée (0 → 1 : 0, 1/4, 1/2, 3/4, 1) | Droite graduée — Place la fraction CM1 | Droite graduée | en cours (s23) |
 
-## Mathématiques — grandeurs et mesures (monnaie)
+## Mathématiques — grandeurs et mesures (monnaie, longueurs, durées)
 
-Domaine **ouvert en s20** (DEC-0016) — jusque-là entièrement absent de la matrice. Pur contenu YAML
-sur des mécaniques existantes.
+Domaine **ouvert en s20** (DEC-0016) par la monnaie — jusque-là entièrement absent de la matrice —
+et **étendu en s23** (DEC-0020) aux **longueurs** et **durées**. Pur contenu YAML sur des mécaniques
+existantes.
 
 | Matière | Niveau | Domaine | Compétence (réf. programme) | Jeu(x) couvrant | Mécanique | Statut |
 |---|---|---|---|---|---|---|
 | Mathématiques | CP | Grandeurs et mesures | Monnaie — compter des euros, petites sommes, rendre la monnaie | Quiz-aventure — La monnaie CP | Quiz-aventure | couvert-validé (s20, 2026-07-22) |
 | Mathématiques | CM1 | Grandeurs et mesures | Monnaie — rendre la monnaie, conversions euros/centimes | Quiz-aventure — La monnaie CM1 | Quiz-aventure | couvert-validé (s20, 2026-07-22) |
 | Mathématiques | CM1 | Grandeurs et mesures | Monnaie — associer une somme en euros à sa valeur en centimes | Associer/Classer — Euros ↔ centimes | Associer/Classer | couvert-validé (s20, 2026-07-22) |
+| Mathématiques | CM1 | Grandeurs et mesures | Longueurs — conversions (m / cm / km / mm) | Quiz-aventure — Les longueurs | Quiz-aventure | en cours (s23) |
+| Mathématiques | CM1 | Grandeurs et mesures | Durées — conversions (h / min / jour / semaine) | Quiz-aventure — Les durées | Quiz-aventure | en cours (s23) |
+| Mathématiques | CM1 | Grandeurs et mesures | Équivalences de mesures — apparier des grandeurs équivalentes | Associer/Classer — Les équivalences | Associer/Classer | en cours (s23) |
+
+## Géométrie (nouvelle matière — ouverte en s23)
+
+Matière **ouverte en s23** (DEC-0020) — jusque-là entièrement absente de la matrice. Pur contenu YAML
+sur des mécaniques existantes (quiz-aventure, associer/classer). 1re tranche.
+
+| Matière | Niveau | Domaine | Compétence (réf. programme) | Jeu(x) couvrant | Mécanique | Statut |
+|---|---|---|---|---|---|---|
+| Géométrie | CP | Formes et figures | Reconnaître et nommer les formes usuelles (carré, rond, triangle, rectangle…) | Quiz-aventure — Les formes CP | Quiz-aventure | en cours (s23) |
+| Géométrie | CP | Formes et figures | Apparier une forme à son nom (forme ↔ nom) | Associer/Classer — Les formes | Associer/Classer | en cours (s23) |
+| Géométrie | CM1 | Figures, angles, symétrie | Propriétés des figures, angles, symétrie | Quiz-aventure — Géométrie CM1 | Quiz-aventure | en cours (s23) |
 
 ## Autres matières (aperçu — pilote la priorisation des sprints suivants)
 
@@ -119,6 +135,18 @@ sur des mécaniques existantes.
 > ADR-0018 / DEC-0019). Les **filtres « Par jeu »** (IDEE-3 : filtrer `/jeux` par niveau/matière —
 > DEC-0019) sont de l'**ergonomie / navigation** : **aucune nouvelle ligne de couverture** (pas de
 > compétence). À passer `couvert-validé` après la démo/validation de s22.
+
+> **Note s23 — 5 compétences `en cours`, ouverture de la matière Géométrie ; aucune nouvelle
+> mécanique.** s23 (DEC-0020) ajoute **5 compétences `en cours (s23)`** : Maths CM1 situer une
+> **fraction** sur une droite graduée (0 → 1) — **2e déclinaison de la droite graduée** obtenue par
+> **généralisation des graduations à une liste d'étiquettes `lineTicks`** (entiers OU fractions),
+> **réutilise `SpinAndPick`**, **aucun nouveau coup ni ADR** (`droite-fraction-cm1`) ; **Géométrie CP**
+> reconnaître les formes (quiz `cp-geometrie` + associer `cp-formes`) et **Géométrie CM1** propriétés /
+> angles / symétrie (quiz `cm1-geometrie`) — **nouvelle matière** ouverte par pur contenu YAML ; Maths
+> CM1 Grandeurs et mesures **longueurs** (quiz `cm1-longueurs`) et **durées** (quiz `cm1-durees`, +
+> associer `cm1-mesures` pour les équivalences). Géométrie et longueurs/durées = **packs YAML
+> auto-enregistrés** (`QuizPackLoader`, `AssocPackLoader`), aucun code. À passer `couvert-validé` après
+> la démo/validation de s23.
 
 ## Prochaines actions suggérées
 

@@ -1,16 +1,22 @@
-# Roadmap — ce qu'il reste à faire (au 2026-07-22, après s22)
+# Roadmap — ce qu'il reste à faire (au 2026-07-22, après s23)
 
 Vue d'ensemble du **restant**, pour prioriser les prochains sprints. État actuel : **8 mécaniques**
 (bandit manchot, texte à trous, quiz-aventure, glisser-déposer, associer/classer, memory,
 puzzle/assemblage, **droite graduée**), **~34 compétences couvert-validé** (s17 → s20 validés) **+ 4
-`en cours` s21 + 2 `en cours` s22, à valider** (s21 : Français CP majuscule↔minuscule + le/la ;
-Français CP/CM1 reconstituer un mot — puzzle ; s22 : Maths CP/CM1 situer/placer un nombre sur une
-droite graduée). Jokers **réglables** (capital piloté par l'en-tête YAML `jokers` + réglage adulte —
-s21, A3). **3 axes de navigation** : par niveau, par jeu (désormais **filtrable** par niveau/matière —
-s22, E), **par matière** (s21, E). Contenu à liste finie **entièrement externalisé et auto-enregistré**
-— y compris **frise + fractions** (s21, D, dette remboursée) ; plus aucun contenu combinatoire en dur
-côté listes finies (les générateurs combinatoires, ex. droite graduée, gardent leurs bornes câblées
-dans `BeansConfig`).
+`en cours` s21 + 2 `en cours` s22 + 5 `en cours` s23, à valider** (s21 : Français CP
+majuscule↔minuscule + le/la ; Français CP/CM1 reconstituer un mot — puzzle ; s22 : Maths CP/CM1
+situer/placer un nombre sur une droite graduée ; s23 : Maths CM1 fraction sur la droite ; **Géométrie**
+CP formes + CM1 propriétés/angles/symétrie ; Maths CM1 longueurs + durées). Jokers **réglables**
+(capital piloté par l'en-tête YAML `jokers` + réglage adulte — s21, A3). **3 axes de navigation** : par
+niveau, par jeu (désormais **filtrable** par niveau/matière — s22, E), **par matière** (s21, E).
+Contenu à liste finie **entièrement externalisé et auto-enregistré** — y compris **frise + fractions**
+(s21, D, dette remboursée) ; plus aucun contenu combinatoire en dur côté listes finies (les
+générateurs combinatoires, ex. droite graduée, gardent leurs bornes câblées dans `BeansConfig`).
+
+> 🧊 **File de validation au SEUIL DE GEL (3 incréments : s21 + s22 + s23, tous À VALIDER).** Le
+> **prochain planning doit déclencher un GEL DU CONTENU** — priorité à la **démo / validation**, pas
+> de nouvelle story de contenu tant que la file n'est pas redescendue sous le seuil (règle d'or,
+> `squad/README.md` §4 ; cf. `squad/validation/FILE-ATTENTE.md`).
 
 Priorisation recommandée en tête de chaque section. Chaque item devient une story (compétence visée +
 critères) au planning, met à jour la matrice, et suit le double Done (technique CI + pédago user).
@@ -50,8 +56,13 @@ critères) au planning, met à jour la matrice, et suit le double Done (techniqu
   cliquant la bonne graduation ; **jokers automatiques** (tick faux = cœur perdu + tick grisé).
   Générateur **combinatoire** `DroiteGradueeGenerator` (bornes câblées dans `BeansConfig`) ; 2 jeux
   `droite-graduee-cp` (Maths CP, 0 → 20) et `droite-graduee-cm1` (Maths CM1, 0 → 100) ; îlot JS de vue
-  `droitegraduee`. *Done pédagogique à valider en démo.* *Reste à décliner : **fractions sur la
-  droite** graduée.*
+  `droitegraduee`. *Done pédagogique à valider en démo.*
+  - ✅ **LIVRÉ (s23) — 2e déclinaison : fractions sur la droite** (DEC-0020). La mécanique droite
+    graduée est **généralisée à une liste d'étiquettes `lineTicks`** (entiers **OU** fractions) — les
+    graduations affichées proviennent d'une liste d'étiquettes au lieu d'entiers recalculés ;
+    **réutilise toujours `SpinAndPick`**, **aucun nouveau coup, aucune nouvelle mécanique, aucun
+    nouvel ADR** (évolution de la mécanique existante). Jeu `droite-fraction-cm1` (Maths CM1, droite
+    0 → 1 : 0, 1/4, 1/2, 3/4, 1). *Done pédagogique à valider en démo.*
 - **Animation-intensive (plus tard, îlot Canvas)** — attrape-taupe, runner ; **traçage tactile CP**
   (geste d'écriture — clé pour combler l'écriture CP, cf. §C).
 
@@ -64,8 +75,14 @@ Déjà `non couvert` dans la matrice :
   `cm1-nature-mots` (3 puzzles nom/verbe/adjectif, DEC-0015, *à valider*).
 Domaines encore **absents** (à ouvrir progressivement) :
 - **Grandeurs et mesures** — ✅ **AMORCÉ (s20)** par la **monnaie** (`cp-monnaie`, `cm1-monnaie`,
-  `cm1-monnaie-centimes` — DEC-0016, *à valider*). *Reste : longueurs, durées.*
-- **Géométrie** (formes, symétrie, tracés).
+  `cm1-monnaie-centimes` — DEC-0016, *à valider*). ✅ **ÉTENDU (s23)** aux **longueurs / durées**
+  (DEC-0020, pur contenu YAML) : `cm1-longueurs` (conversions m/cm/km/mm), `cm1-durees` (h/min/jour/
+  semaine), `cm1-mesures` (associer — équivalences). *À valider.* *Reste : contenances, masses,
+  aires ; longueurs / durées au CP.*
+- **Géométrie** — ✅ **OUVERT (s23) — nouvelle matière, 1re tranche** (DEC-0020, pur contenu YAML) :
+  `cp-geometrie` (quiz — reconnaître les formes), `cp-formes` (associer — forme ↔ nom), `cm1-geometrie`
+  (quiz — propriétés, angles, symétrie). *À valider.* *Reste : tracés / symétrie active (dépend d'un
+  îlot Canvas / traçage, §B), plus de figures et de propriétés.*
 - **Anglais** — plus de lexique + consignes de classe. **Questionner le monde CM1**. Approfondir
   Sciences / Histoire / Géo / EMC.
 
@@ -102,11 +119,15 @@ Domaines encore **absents** (à ouvrir progressivement) :
 ~~**puzzle / assemblage** (B, 7e mécanique)~~ ✅ démarré (s21) · ~~**cœurs réglables** (A3)~~ ✅ (s21) ·
 ~~**navigation par matière** (E)~~ ✅ (s21) · ~~**externalisation frise + fractions** (D, dette)~~ ✅ (s21) ·
 ~~**déclinaisons associer/classer CP** (A2)~~ ✅ (s21) · ~~**droite graduée** (B, 8e mécanique — placer
-un nombre entier, réutilise `SpinAndPick`)~~ ✅ (s22) · ~~**filtres « Par jeu »** (E, IDEE-3)~~ ✅ (s22)
-— **s21 + s22 à valider pédago**.
-Restent, par ordre suggéré : **Canvas / traçage tactile CP** (B, débloque l'**écriture CP**, §C) →
-**persistance** (E, DEC-0003 — prérequis d'un vrai suivi de progression) → **géométrie** (formes,
-symétrie) et **longueurs / durées** (Grandeurs et mesures, §C). Le reste (anglais, sciences/histoire/
-géo/EMC approfondis, **fractions sur la droite graduée** — 2e déclinaison de la droite, déclinaisons
-puzzle — phrase, tangram, carte) se décline sur les mécaniques disponibles (dont droite graduée,
-puzzle, associer/classer, memory) au fil des sprints.
+un nombre entier, réutilise `SpinAndPick`)~~ ✅ (s22) · ~~**filtres « Par jeu »** (E, IDEE-3)~~ ✅ (s22) ·
+~~**fractions sur la droite** (B, 2e déclinaison — droite graduée généralisée à `lineTicks`)~~ ✅ (s23) ·
+~~**géométrie** (C, nouvelle matière — formes CP, propriétés/angles/symétrie CM1)~~ ✅ ouverte (s23) ·
+~~**longueurs / durées** (C, Grandeurs et mesures)~~ ✅ (s23) — **s21 + s22 + s23 à valider pédago**.
+🧊 **File au seuil de gel (3 incréments) : le prochain planning priorise la démo / validation, pas un
+nouveau contenu** (règle d'or) — une fois la file redescendue, restent, par ordre suggéré :
+**Canvas / traçage tactile CP** (B, débloque l'**écriture CP** §C + tracés / symétrie active en
+géométrie) → **persistance** (E, DEC-0003 — prérequis d'un vrai suivi de progression) → **plus de
+géométrie / mesures** (contenances, masses, aires ; géométrie CP/CM1 approfondie, §C). Le reste
+(anglais, sciences/histoire/géo/EMC approfondis, déclinaisons puzzle — phrase, tangram, carte) se
+décline sur les mécaniques disponibles (dont droite graduée, puzzle, associer/classer, memory) au fil
+des sprints.

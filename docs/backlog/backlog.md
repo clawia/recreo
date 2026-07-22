@@ -541,6 +541,67 @@ bonne graduation, **afin de** travailler le sens du nombre (repérage, ordre de 
 
 ---
 
+## Sprint s23 — Fraction sur la droite + ouverture Géométrie + longueurs / durées
+
+Trois livrables, **aucune nouvelle mécanique, aucun nouveau coup, pas de nouvel ADR** (DEC-0020) :
+la **fraction sur la droite** est obtenue en **généralisant la droite graduée** (ADR-0018) à une
+**liste d'étiquettes `lineTicks`** (entiers OU fractions), qui **réutilise `SpinAndPick`** ; la
+**Géométrie** (nouvelle matière) et les **longueurs / durées** (Grandeurs et mesures) sont du **pur
+contenu YAML auto-enregistré**. Cf. `2026-07-22-s23-planning.md`, note ADR-index s23.
+
+### Story S23-1 — Fraction sur une droite graduée CM1 (généralisation de la droite)  ✅ **LIVRÉE (s23)**
+**En tant qu'**élève de CM1, **je veux** placer une **fraction** sur une droite graduée 0 → 1 en
+cliquant la bonne graduation, **afin de** construire le sens de la fraction comme repère sur une
+graduation (ordre, distance à 0 / à 1).
+
+- **Compétence programme visée** : Maths CM1 — Fractions — situer / placer une fraction sur une
+  droite graduée (0 → 1 : 0, 1/4, 1/2, 3/4, 1) — 2e déclinaison de la droite graduée après les
+  nombres entiers (s22).
+- **Critères d'acceptation** : la mécanique **droite graduée** (ADR-0018) est **généralisée** — les
+  graduations affichées proviennent d'une **liste d'étiquettes `lineTicks`** (entiers **OU**
+  fractions) au lieu d'entiers recalculés ; l'îlot JS de vue `droitegraduee` rend les étiquettes
+  fournies ; **aucun nouveau coup** (toujours `SpinAndPick` — placer = choisir une graduation) ;
+  **aucune nouvelle mécanique, aucun nouvel ADR** ; nouveau jeu `droite-fraction-cm1` (droite 0 → 1,
+  graduations 0, 1/4, 1/2, 3/4, 1) ; graduation correcte unique vérifiée ; la bonne graduation
+  n'est pas révélée dans le DOM ; **jokers automatiques** (tick faux = 1 cœur perdu + tick grisé ;
+  0 cœur + tick faux = fin — DEC-0013 / DEC-0017) ; matrice + fiche droite graduée à jour.
+- **Statut** : ✅ **LIVRÉE en s23** — Done technique CI à confirmer ; Done pédagogique **À VALIDER**
+  (DEC-0020).
+
+### Story S23-2 — Géométrie (nouvelle matière) : formes CP + propriétés/angles/symétrie CM1  ✅ **LIVRÉE (s23)**
+**En tant qu'**élève, **je veux** reconnaître et nommer les formes (CP) puis raisonner sur les
+propriétés, angles et symétries des figures (CM1), **afin de** couvrir la géométrie, jusqu'ici
+absente de l'app.
+
+- **Compétence programme visée** : Géométrie CP — reconnaître / nommer les formes usuelles (quiz)
+  et apparier forme ↔ nom (associer) ; Géométrie CM1 — propriétés des figures, angles, symétrie
+  (quiz). **Ouvre la matière « Géométrie ».**
+- **Critères d'acceptation** : 3 jeux **externalisés YAML auto-enregistrés** — `cp-geometrie`
+  (quiz-aventure, formes), `cm1-geometrie` (quiz-aventure, propriétés / angles / symétrie),
+  `cp-formes` (associer/classer, forme ↔ nom) ; contenu vérifié (justesse et niveau) ; réponse /
+  appariement non fuités dans le DOM ; jokers cohérents (DEC-0013) ; **aucun code, aucune nouvelle
+  mécanique, pas de nouvel ADR** ; matrice + `FICHE-geometrie-s23.md` à jour.
+- **Statut** : ✅ **LIVRÉE en s23** — Done technique CI à confirmer ; Done pédagogique **À VALIDER**
+  (DEC-0020).
+
+### Story S23-3 — Longueurs & durées CM1 (Grandeurs et mesures)  ✅ **LIVRÉE (s23)**
+**En tant qu'**élève de CM1, **je veux** convertir des longueurs (m / cm / km / mm) et des durées
+(h / min / jour / semaine) et apparier des équivalences, **afin d'**étendre les grandeurs et mesures
+au-delà de la monnaie.
+
+- **Compétence programme visée** : Maths CM1 — Grandeurs et mesures — longueurs (conversions
+  m / cm / km / mm) ; durées (conversions h / min / jour / semaine) ; équivalences de mesures
+  (appariement).
+- **Critères d'acceptation** : 3 jeux **externalisés YAML auto-enregistrés** — `cm1-longueurs`
+  (quiz-aventure), `cm1-durees` (quiz-aventure), `cm1-mesures` (associer/classer, équivalences) ;
+  conversions et équivalences **exactes** (contenu vérifié) ; jokers cohérents (DEC-0013) ; **aucun
+  code, aucune nouvelle mécanique, pas de nouvel ADR** ; matrice + `FICHE-longueurs-durees-s23.md`
+  à jour.
+- **Statut** : ✅ **LIVRÉE en s23** — Done technique CI à confirmer ; Done pédagogique **À VALIDER**
+  (DEC-0020).
+
+---
+
 ## Idées / à venir (non planifiées — aucun sprint assigné)
 
 > **Note (2026-07-22)** : IDEE-1 et IDEE-2 (ci-dessous) ont été **livrées en s19** (stories S19-1 et
