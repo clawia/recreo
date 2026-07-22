@@ -20,11 +20,15 @@ import com.recreo.domain.content.impl.FriseChronologiqueGenerator;
 import com.recreo.domain.content.impl.MotChoixGenerator;
 import com.recreo.domain.content.impl.QuizGenerator;
 import com.recreo.domain.content.impl.RangeNombresGenerator;
+import com.recreo.domain.content.impl.AssociationGenerator;
+import com.recreo.domain.content.impl.MemoryGenerator;
 import com.recreo.domain.mechanic.MechanicId;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMechanic;
 import com.recreo.domain.mechanics.glisserdeposer.GlisserDeposerMechanic;
 import com.recreo.domain.mechanics.quizaventure.QuizAventureMechanic;
 import com.recreo.domain.mechanics.texteatrou.TexteATrouMechanic;
+import com.recreo.domain.mechanics.associer.AssocierMechanic;
+import com.recreo.domain.mechanics.memory.MemoryMechanic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -61,10 +65,22 @@ public class BeansConfig {
     }
 
     @Bean
+    public AssocierMechanic associerMechanic() {
+        return new AssocierMechanic();
+    }
+
+    @Bean
+    public MemoryMechanic memoryMechanic() {
+        return new MemoryMechanic();
+    }
+
+    @Bean
     public GameCatalog gameCatalog(BanditManchotMechanic banditManchotMechanic,
                                    TexteATrouMechanic texteATrouMechanic,
                                    QuizAventureMechanic quizAventureMechanic,
-                                   GlisserDeposerMechanic glisserDeposerMechanic) {
+                                   GlisserDeposerMechanic glisserDeposerMechanic,
+                                   AssocierMechanic associerMechanic,
+                                   MemoryMechanic memoryMechanic) {
         ContentPackLoader loader = new ContentPackLoader();
         List<ContentPack> packs = List.of(
                 loader.load("content/cp-calcul-mental.yml"),
@@ -226,8 +242,37 @@ public class BeansConfig {
                 new ContentDescriptor("Mathématiques", "CM1", "Fractions — comparer avec <, >, ="),
                 CompareFractionsGenerator::new));
 
+        // 5e mecanique (s17 / ADR-0016) : "associer / classer". CONTENU EXTERNALISE dans
+        // content/associer/*.yml (consigne + puzzles d'associations item -> cible), charge
+        // et VALIDE au demarrage. Le domaine n'expose qu'un AssociationGenerator generique
+        // alimente par la liste chargee. Defaut 3 puzzles par session (plancher 1).
+        for (AssocContentPack p : new AssocPackLoader().loadAll()) {
+            ContentDescriptor d = p.descriptor();
+            SimpleGameFactory factory = new SimpleGameFactory(
+                    p.entryId(), p.title(), p.gameKey(), d.niveau(), AssocierMechanic.ID,
+                    () -> new AssociationGenerator(d, p.consigne(), p.puzzles()), 3, 1);
+            defs.add(new CatalogEntryDef(
+                    p.entryId(), d.matiere(), d.niveau(), p.gameKey(), p.gameLabel(),
+                    p.title(), p.description(), AssocierMechanic.ID, factory));
+        }
+
+        // 6e mecanique (s17 / ADR-0016) : "memory". CONTENU EXTERNALISE dans
+        // content/memory/*.yml (consigne + paires gauche <-> droite), charge et VALIDE au
+        // demarrage. Le domaine n'expose qu'un MemoryGenerator generique alimente par la
+        // liste chargee. Un seul plateau par jeu : defaut 1, plancher 1.
+        for (MemoryContentPack p : new MemoryPackLoader().loadAll()) {
+            ContentDescriptor d = p.descriptor();
+            SimpleGameFactory factory = new SimpleGameFactory(
+                    p.entryId(), p.title(), p.gameKey(), d.niveau(), MemoryMechanic.ID,
+                    () -> new MemoryGenerator(d, p.consigne(), p.paires()), 1, 1);
+            defs.add(new CatalogEntryDef(
+                    p.entryId(), d.matiere(), d.niveau(), p.gameKey(), p.gameLabel(),
+                    p.title(), p.description(), MemoryMechanic.ID, factory));
+        }
+
         return new InMemoryGameCatalog(
-                List.of(banditManchotMechanic, texteATrouMechanic, quizAventureMechanic, glisserDeposerMechanic), defs);
+                List.of(banditManchotMechanic, texteATrouMechanic, quizAventureMechanic, glisserDeposerMechanic,
+                        associerMechanic, memoryMechanic), defs);
     }
 
     /**

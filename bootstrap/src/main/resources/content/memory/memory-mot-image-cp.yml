@@ -1,0 +1,15 @@
+entryId: memory-mot-image-cp
+title: "Memory mot-image"
+description: "Retrouve les paires mot / image."
+gameKey: memory
+gameLabel: "Memory mot-image"
+matiere: "Français"
+niveau: "CP"
+domaine: "Lecture"
+consigne: "Retrouve les paires : le mot et son image"
+paires:
+  - { gauche: "soleil", droite: "☀️" }
+  - { gauche: "chat", droite: "🐱" }
+  - { gauche: "maison", droite: "🏠" }
+  - { gauche: "fleur", droite: "🌸" }
+  - { gauche: "poisson", droite: "🐟" }

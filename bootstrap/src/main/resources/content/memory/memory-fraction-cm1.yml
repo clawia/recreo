@@ -1,0 +1,14 @@
+entryId: memory-fraction-cm1
+title: "Memory des fractions"
+description: "Retrouve les paires fraction / part coloriée."
+gameKey: memory
+gameLabel: "Memory des fractions"
+matiere: "Mathématiques"
+niveau: "CM1"
+domaine: "Fractions"
+consigne: "Retrouve les paires : la fraction et sa part coloriée"
+paires:
+  - { gauche: "1/2", droite: "▰▱" }
+  - { gauche: "1/3", droite: "▰▱▱" }
+  - { gauche: "1/4", droite: "▰▱▱▱" }
+  - { gauche: "3/4", droite: "▰▰▰▱" }

@@ -1,0 +1,15 @@
+entryId: memory-anglais-cm1
+title: "Memory anglais"
+description: "Retrouve les paires français / anglais."
+gameKey: memory
+gameLabel: "Memory anglais"
+matiere: "Anglais"
+niveau: "CM1"
+domaine: "Lexique"
+consigne: "Retrouve les paires : le mot français et le mot anglais"
+paires:
+  - { gauche: "chien", droite: "dog" }
+  - { gauche: "chat", droite: "cat" }
+  - { gauche: "maison", droite: "house" }
+  - { gauche: "école", droite: "school" }
+  - { gauche: "ami", droite: "friend" }
