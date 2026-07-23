@@ -93,3 +93,13 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 > — aucun code, matière/niveau restent des chaînes libres (« Géométrie » ajoutée sans changement
 > structurel, comme « EMC » en s08). ArchUnit **5/5** inchangé. Aucune décision d'architecture requise
 > (Théo).
+
+> **s24 — pas de nouvel ADR.** Sprint **100 % contenu** (DEC-0021) : géométrie & grandeurs/mesures
+> approfondies + enrichissement des viviers existants, par **8 packs YAML auto-enregistrés**
+> (`QuizPackLoader`, `AssocPackLoader` : 7 quiz `cp-symetrie`, `cm1-solides`, `cm1-perimetre`,
+> `cm1-masses`, `cm1-contenances`, `cm1-heure`, `cp-comparer` ; 1 associer `cm1-quadrilateres`) +
+> enrichissement de packs existants (anglais, EMC, sciences, QLM, histoire, géo, le bon son, première
+> lettre) sur les mécaniques quiz-aventure et associer/classer existantes. **Aucun code, aucune
+> nouvelle mécanique, aucun nouveau coup** ; matière/niveau restent des chaînes libres (comme
+> « Géométrie » en s23, « EMC » en s08). ArchUnit **5/5** inchangé. Aucune décision d'architecture
+> requise (Théo).
