@@ -9,8 +9,8 @@
   graduée (0 → 1) ; **Géométrie CP** — reconnaître les formes (formes ↔ nom) ; **Géométrie CM1** —
   propriétés des figures, angles, symétrie ; Maths CM1 — Grandeurs et mesures — **longueurs**
   (conversions m / cm / km / mm) et **durées** (h / min / jour / semaine).
-- **Statut de validation** : **À VALIDER** (implémenté s23 ; Done pédagogique à prononcer par
-  l'utilisatrice après démo).
+- **Statut de validation** : **VALIDÉ (utilisatrice, 2026-07-23)** — Done pédagogique prononcé par
+  l'utilisatrice après démo (validation groupée s21 + s22 + s23).
 
 ## Contexte / besoin
 Trois livrables avancent ensemble en s23, tous **sans nouvelle mécanique ni nouveau coup** et

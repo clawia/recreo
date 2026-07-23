@@ -35,9 +35,9 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 | Mathématiques | CM1 | Nombres et calculs | Mémorisation des tables de multiplication (1 à 10) — entraînement dédié | Bandit manchot — Tables de multiplication | Bandit manchot | couvert-validé (s08, 2026-07-20) |
 | Mathématiques | CP | Nombres et calculs | Associer une quantité à son chiffre (quantité ↔ nombre) | Memory — Quantité et chiffre | Memory | couvert-validé (s17, 2026-07-22) |
 | Mathématiques | CM1 | Fractions | Associer une fraction à sa représentation (fraction ↔ dessin) | Memory — Fractions | Memory | couvert-validé (s17, 2026-07-22) |
-| Mathématiques | CP | Nombres et calculs | Situer / placer un nombre sur une droite graduée (0 → 20) | Droite graduée — Place le nombre CP | Droite graduée | en cours (s22) |
-| Mathématiques | CM1 | Nombres et calculs | Situer / placer un nombre sur une droite graduée (0 → 100) | Droite graduée — Place le nombre CM1 | Droite graduée | en cours (s22) |
-| Mathématiques | CM1 | Fractions | Situer / placer une fraction sur une droite graduée (0 → 1 : 0, 1/4, 1/2, 3/4, 1) | Droite graduée — Place la fraction CM1 | Droite graduée | en cours (s23) |
+| Mathématiques | CP | Nombres et calculs | Situer / placer un nombre sur une droite graduée (0 → 20) | Droite graduée — Place le nombre CP | Droite graduée | couvert-validé (2026-07-23) |
+| Mathématiques | CM1 | Nombres et calculs | Situer / placer un nombre sur une droite graduée (0 → 100) | Droite graduée — Place le nombre CM1 | Droite graduée | couvert-validé (2026-07-23) |
+| Mathématiques | CM1 | Fractions | Situer / placer une fraction sur une droite graduée (0 → 1 : 0, 1/4, 1/2, 3/4, 1) | Droite graduée — Place la fraction CM1 | Droite graduée | couvert-validé (2026-07-23) |
 
 ## Mathématiques — grandeurs et mesures (monnaie, longueurs, durées)
 
@@ -50,9 +50,9 @@ existantes.
 | Mathématiques | CP | Grandeurs et mesures | Monnaie — compter des euros, petites sommes, rendre la monnaie | Quiz-aventure — La monnaie CP | Quiz-aventure | couvert-validé (s20, 2026-07-22) |
 | Mathématiques | CM1 | Grandeurs et mesures | Monnaie — rendre la monnaie, conversions euros/centimes | Quiz-aventure — La monnaie CM1 | Quiz-aventure | couvert-validé (s20, 2026-07-22) |
 | Mathématiques | CM1 | Grandeurs et mesures | Monnaie — associer une somme en euros à sa valeur en centimes | Associer/Classer — Euros ↔ centimes | Associer/Classer | couvert-validé (s20, 2026-07-22) |
-| Mathématiques | CM1 | Grandeurs et mesures | Longueurs — conversions (m / cm / km / mm) | Quiz-aventure — Les longueurs | Quiz-aventure | en cours (s23) |
-| Mathématiques | CM1 | Grandeurs et mesures | Durées — conversions (h / min / jour / semaine) | Quiz-aventure — Les durées | Quiz-aventure | en cours (s23) |
-| Mathématiques | CM1 | Grandeurs et mesures | Équivalences de mesures — apparier des grandeurs équivalentes | Associer/Classer — Les équivalences | Associer/Classer | en cours (s23) |
+| Mathématiques | CM1 | Grandeurs et mesures | Longueurs — conversions (m / cm / km / mm) | Quiz-aventure — Les longueurs | Quiz-aventure | couvert-validé (2026-07-23) |
+| Mathématiques | CM1 | Grandeurs et mesures | Durées — conversions (h / min / jour / semaine) | Quiz-aventure — Les durées | Quiz-aventure | couvert-validé (2026-07-23) |
+| Mathématiques | CM1 | Grandeurs et mesures | Équivalences de mesures — apparier des grandeurs équivalentes | Associer/Classer — Les équivalences | Associer/Classer | couvert-validé (2026-07-23) |
 
 ## Géométrie (nouvelle matière — ouverte en s23)
 
@@ -61,9 +61,9 @@ sur des mécaniques existantes (quiz-aventure, associer/classer). 1re tranche.
 
 | Matière | Niveau | Domaine | Compétence (réf. programme) | Jeu(x) couvrant | Mécanique | Statut |
 |---|---|---|---|---|---|---|
-| Géométrie | CP | Formes et figures | Reconnaître et nommer les formes usuelles (carré, rond, triangle, rectangle…) | Quiz-aventure — Les formes CP | Quiz-aventure | en cours (s23) |
-| Géométrie | CP | Formes et figures | Apparier une forme à son nom (forme ↔ nom) | Associer/Classer — Les formes | Associer/Classer | en cours (s23) |
-| Géométrie | CM1 | Figures, angles, symétrie | Propriétés des figures, angles, symétrie | Quiz-aventure — Géométrie CM1 | Quiz-aventure | en cours (s23) |
+| Géométrie | CP | Formes et figures | Reconnaître et nommer les formes usuelles (carré, rond, triangle, rectangle…) | Quiz-aventure — Les formes CP | Quiz-aventure | couvert-validé (2026-07-23) |
+| Géométrie | CP | Formes et figures | Apparier une forme à son nom (forme ↔ nom) | Associer/Classer — Les formes | Associer/Classer | couvert-validé (2026-07-23) |
+| Géométrie | CM1 | Figures, angles, symétrie | Propriétés des figures, angles, symétrie | Quiz-aventure — Géométrie CM1 | Quiz-aventure | couvert-validé (2026-07-23) |
 
 ## Autres matières (aperçu — pilote la priorisation des sprints suivants)
 
@@ -91,10 +91,10 @@ sur des mécaniques existantes (quiz-aventure, associer/classer). 1re tranche.
 | Questionner le monde | CP | Le vivant, les objets | Distinguer le vivant du non-vivant (catégoriser) | Associer/Classer — Vivant / non-vivant | Associer/Classer | couvert-validé (s17, 2026-07-22) |
 | Anglais (LV) | CM1 | Lexique | Apparier un mot français à sa traduction anglaise (lexique) | Associer/Classer — Appariement FR↔EN ; Memory — Anglais | Associer/Classer + Memory | couvert-validé (s17, 2026-07-22) |
 | Français | CP | Lecture / vocabulaire | Associer un mot écrit à son image (lecture, reconnaissance de mots) | Memory — Mot et image | Memory | couvert-validé (s17, 2026-07-22) |
-| Français | CP | Lecture — principe alphabétique | Correspondance majuscule ↔ minuscule (apparier A ↔ a) | Associer/Classer — Majuscule et minuscule | Associer/Classer | en cours (s21) |
-| Français | CP | Grammaire — genre du nom | Distinguer masculin / féminin (classer selon le / la) | Associer/Classer — Le ou la | Associer/Classer | en cours (s21) |
-| Français | CP | Écriture / lecture | Reconstituer un mot à partir de ses lettres (indice image) | Puzzle — Reconstitue le mot (images) | Puzzle | en cours (s21) |
-| Français | CM1 | Vocabulaire / orthographe lexicale | Reconstituer un mot à partir d'une définition (indice définition) | Puzzle — Reconstitue le mot (définitions) | Puzzle | en cours (s21) |
+| Français | CP | Lecture — principe alphabétique | Correspondance majuscule ↔ minuscule (apparier A ↔ a) | Associer/Classer — Majuscule et minuscule | Associer/Classer | couvert-validé (2026-07-23) |
+| Français | CP | Grammaire — genre du nom | Distinguer masculin / féminin (classer selon le / la) | Associer/Classer — Le ou la | Associer/Classer | couvert-validé (2026-07-23) |
+| Français | CP | Écriture / lecture | Reconstituer un mot à partir de ses lettres (indice image) | Puzzle — Reconstitue le mot (images) | Puzzle | couvert-validé (2026-07-23) |
+| Français | CM1 | Vocabulaire / orthographe lexicale | Reconstituer un mot à partir d'une définition (indice définition) | Puzzle — Reconstitue le mot (définitions) | Puzzle | couvert-validé (2026-07-23) |
 
 > **Note s18 — rien de nouveau à couvrir.** s18 raffine l'UX des jeux de s17 (cœur consommé par le
 > memory + écran « Essaye encore » + score max — DEC-0013 ; verrouillage partiel d'associer/classer,
@@ -118,7 +118,7 @@ sur des mécaniques existantes (quiz-aventure, associer/classer). 1re tranche.
 > validation : le **5 € est un billet, pas une pièce** (monnaie CP) ; le reste validé tel quel.
 
 > **Note s21 — 4 compétences `en cours`, une 7e mécanique, refactor sans impact couverture.** s21
-> ajoute **4 compétences `en cours (s21)`**, toutes en Français : majuscule ↔ minuscule (associer,
+> ajoute **4 compétences** (Français), désormais **`couvert-validé (2026-07-23)`** : majuscule ↔ minuscule (associer,
 > `cp-majuscule-minuscule`) et le/la masculin-féminin (classer, `cp-masculin-feminin`) — DEC-0018 ;
 > reconstituer un mot CP avec indice image et CM1 avec indice définition — nouvelle **mécanique
 > Puzzle** (7e, `MotPuzzleGenerator`, réutilise le coup `SubmitArrangement`, ADR-0017) — DEC-0017.
@@ -126,18 +126,20 @@ sur des mécaniques existantes (quiz-aventure, associer/classer). 1re tranche.
 > alimentés par `content/frise/*.yml` / `content/fractions/*.yml`) : refactor **technique** à
 > comportement constant, **couverture inchangée** (restent `couvert-validé`). Enfin, le **capital de
 > cœurs est réglable** (via l'en-tête YAML + réglage adulte — DEC-0017, roadmap A3) : transverse, sans
-> nouvelle ligne de couverture. À passer `couvert-validé` après la démo/validation de s21.
+> nouvelle ligne de couverture. Validation groupée s21 + s22 + s23 : **Done pédagogique prononcé par
+> l'utilisatrice après démo le 2026-07-23**.
 
 > **Note s22 — 2 compétences `en cours`, une 8e mécanique ; filtres = ergonomie (pas de compétence).**
-> s22 ajoute **2 compétences `en cours (s22)`** en Maths : situer / placer un nombre sur une droite
+> s22 ajoute **2 compétences** en Maths, désormais **`couvert-validé (2026-07-23)`** : situer / placer un nombre sur une droite
 > graduée — CP (0 → 20) et CM1 (0 → 100) — via la nouvelle **mécanique Droite graduée** (8e,
 > `DroiteGradueeGenerator` combinatoire, **réutilise le coup `SpinAndPick`** — aucun nouveau coup,
 > ADR-0018 / DEC-0019). Les **filtres « Par jeu »** (IDEE-3 : filtrer `/jeux` par niveau/matière —
 > DEC-0019) sont de l'**ergonomie / navigation** : **aucune nouvelle ligne de couverture** (pas de
-> compétence). À passer `couvert-validé` après la démo/validation de s22.
+> compétence). Validation groupée s21 + s22 + s23 : **Done pédagogique prononcé par l'utilisatrice
+> après démo le 2026-07-23**.
 
 > **Note s23 — 5 compétences `en cours`, ouverture de la matière Géométrie ; aucune nouvelle
-> mécanique.** s23 (DEC-0020) ajoute **5 compétences `en cours (s23)`** : Maths CM1 situer une
+> mécanique.** s23 (DEC-0020) ajoute **5 compétences**, désormais **`couvert-validé (2026-07-23)`** : Maths CM1 situer une
 > **fraction** sur une droite graduée (0 → 1) — **2e déclinaison de la droite graduée** obtenue par
 > **généralisation des graduations à une liste d'étiquettes `lineTicks`** (entiers OU fractions),
 > **réutilise `SpinAndPick`**, **aucun nouveau coup ni ADR** (`droite-fraction-cm1`) ; **Géométrie CP**
@@ -145,8 +147,8 @@ sur des mécaniques existantes (quiz-aventure, associer/classer). 1re tranche.
 > angles / symétrie (quiz `cm1-geometrie`) — **nouvelle matière** ouverte par pur contenu YAML ; Maths
 > CM1 Grandeurs et mesures **longueurs** (quiz `cm1-longueurs`) et **durées** (quiz `cm1-durees`, +
 > associer `cm1-mesures` pour les équivalences). Géométrie et longueurs/durées = **packs YAML
-> auto-enregistrés** (`QuizPackLoader`, `AssocPackLoader`), aucun code. À passer `couvert-validé` après
-> la démo/validation de s23.
+> auto-enregistrés** (`QuizPackLoader`, `AssocPackLoader`), aucun code. Validation groupée
+> s21 + s22 + s23 : **Done pédagogique prononcé par l'utilisatrice après démo le 2026-07-23**.
 
 ## Prochaines actions suggérées
 

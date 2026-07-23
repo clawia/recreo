@@ -8,8 +8,8 @@
   majuscule ↔ minuscule (appariement A ↔ a) ; Français CP — genre du nom, masculin / féminin
   (classer « le / la ») ; transverse (technique) pour l'externalisation frise/fractions — aucune
   compétence nouvelle, la couverture reste inchangée.
-- **Statut de validation** : **À VALIDER** (implémenté s21 ; Done pédagogique à prononcer par
-  l'utilisatrice après démo).
+- **Statut de validation** : **VALIDÉ (utilisatrice, 2026-07-23)** — Done pédagogique prononcé par
+  l'utilisatrice après démo (validation groupée s21 + s22 + s23).
 
 ## Contexte / besoin
 Deux volets « contenu » de s21, complémentaires du gros incrément DEC-0017 :

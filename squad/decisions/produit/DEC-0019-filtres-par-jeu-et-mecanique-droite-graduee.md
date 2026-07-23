@@ -8,8 +8,8 @@
   (0 → 20) ; Maths CM1 — situer / placer un nombre sur une droite graduée (0 → 100) ; transverse
   (ergonomie / navigation) pour les filtres « Par jeu » — **aucune compétence nouvelle**, la
   couverture reste inchangée.
-- **Statut de validation** : **À VALIDER** (implémenté s22 ; Done pédagogique à prononcer par
-  l'utilisatrice après démo).
+- **Statut de validation** : **VALIDÉ (utilisatrice, 2026-07-23)** — Done pédagogique prononcé par
+  l'utilisatrice après démo (validation groupée s21 + s22 + s23).
 
 ## Contexte / besoin
 Deux évolutions produit avancent ensemble en s22 :

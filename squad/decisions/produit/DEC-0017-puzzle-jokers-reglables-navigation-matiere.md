@@ -7,8 +7,8 @@
 - **Compétence programme visée** : Français CP — écriture / lecture (reconstituer un mot à partir de
   ses lettres, avec indice image) ; Français CM1 — vocabulaire / orthographe lexicale (reconstituer
   un mot à partir d'une définition) ; transverse (droit à l'erreur — capital de cœurs défini dans le YAML du jeu) ; sans objet pour l'axe « par matière » (fonctionnalité de navigation, pas de contenu).
-- **Statut de validation** : **À VALIDER** (implémenté s21 ; Done pédagogique à prononcer par
-  l'utilisatrice après démo).
+- **Statut de validation** : **VALIDÉ (utilisatrice, 2026-07-23)** — Done pédagogique prononcé par
+  l'utilisatrice après démo (validation groupée s21 + s22 + s23).
 
 ## Contexte / besoin
 Trois évolutions produit avancent ensemble en s21 (gros incrément parallèle) :
