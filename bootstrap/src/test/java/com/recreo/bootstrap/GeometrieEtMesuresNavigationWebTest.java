@@ -57,4 +57,50 @@ class GeometrieEtMesuresNavigationWebTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Les formes")));
     }
+
+    // Nouveaux contenus : jeux de géométrie ajoutés (symétrie, solides, périmètre, quadrilatères).
+    @Test
+    void matiereGeometrieListsNewGeometryGames() throws Exception {
+        // /matiere/G%C3%A9om%C3%A9trie via le template d'URI (encodage géré par MockMvc).
+        mockMvc.perform(get("/matiere/{m}", "Géométrie"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("La symétrie")))
+                .andExpect(content().string(containsString("Les solides")))
+                .andExpect(content().string(containsString("Le périmètre")))
+                .andExpect(content().string(containsString("Les quadrilatères")));
+    }
+
+    // Nouveaux contenus : jeux Grandeurs et mesures ajoutés (matière Mathématiques).
+    @Test
+    void matiereMathematiquesListsNewGrandeursGames() throws Exception {
+        // /matiere/Math%C3%A9matiques via le template d'URI (encodage géré par MockMvc).
+        mockMvc.perform(get("/matiere/{m}", "Mathématiques"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Les masses")))
+                .andExpect(content().string(containsString("Les contenances")))
+                // L'apostrophe du libellé est échappée par Thymeleaf (th:text) -> &#39; dans le HTML servi.
+                .andExpect(content().string(containsString("Lire l&#39;heure")))
+                .andExpect(content().string(containsString("Compare les grandeurs")));
+    }
+
+    // Nouveaux contenus CM1 découvrables par l'axe niveau (solides, masses, contenances, heure).
+    @Test
+    void niveauCm1ListsNewGames() throws Exception {
+        mockMvc.perform(get("/niveau/CM1"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Les solides")))
+                .andExpect(content().string(containsString("Les masses")))
+                .andExpect(content().string(containsString("Les contenances")))
+                // L'apostrophe du libellé est échappée par Thymeleaf (th:text) -> &#39; dans le HTML servi.
+                .andExpect(content().string(containsString("Lire l&#39;heure")));
+    }
+
+    // Nouveaux contenus CP découvrables par l'axe niveau (symétrie, comparaison de grandeurs).
+    @Test
+    void niveauCpListsNewGames() throws Exception {
+        mockMvc.perform(get("/niveau/CP"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("La symétrie")))
+                .andExpect(content().string(containsString("Compare les grandeurs")));
+    }
 }
