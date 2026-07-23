@@ -42,10 +42,15 @@
 
 | s23 | Trois livrables, **aucune nouvelle mécanique, aucun nouveau coup, pas de nouvel ADR** : **fraction sur la droite** (droite graduée **généralisée à une liste d'étiquettes `lineTicks`** — entiers OU fractions ; réutilise `SpinAndPick` ; jeu `droite-fraction-cm1` 0→1 : 0, 1/4, 1/2, 3/4, 1) + ouverture matière **Géométrie** (quiz `cp-geometrie`, `cm1-geometrie`, associer `cp-formes`) + **longueurs / durées** (Grandeurs et mesures : quiz `cm1-longueurs`, `cm1-durees`, associer `cm1-mesures`) — géométrie & longueurs/durées = 6 packs YAML auto-enregistrés — DEC-0020 | Droite graduée (fraction) + Quiz-aventure + Associer/Classer | Maths CM1 situer une fraction sur une droite graduée (0→1) · Géométrie CP reconnaître les formes (quiz + associer) · Géométrie CM1 propriétés/angles/symétrie · Maths CM1 longueurs · Maths CM1 durées | 2026-07-22 | ✅ **VALIDÉ** (Done technique + Done pédago ; démo 2026-07-23, validés ensemble s21 + s22 + s23) | 2026-07-23 |
 
-> ✅ **File redescendue à ZÉRO — aucun incrément en attente, seuil de gel levé.** Les trois
-> incréments qui avaient porté la file au **seuil de gel de 3** — s21 (DEC-0017 / DEC-0018), s22
-> (DEC-0019) et s23 (DEC-0020) — ont été **validés ensemble le 2026-07-23** après démo (Done
-> pédagogique prononcé par l'utilisatrice). **La file d'attente est à 0** : le **gel du contenu est
-> levé**, le planning suivant peut reprendre des stories de contenu (règle d'or, `squad/README.md`
-> §4). Rappel : s17 + s18 puis s19 + s20 avaient chacun été validés ensemble le 2026-07-22 ; s21 +
-> s22 + s23 le 2026-07-23.
+| s24 | **100 % contenu YAML, aucune nouvelle mécanique, aucun nouveau coup, pas de nouvel ADR** : **géométrie approfondie** (quiz `cp-symetrie`, `cm1-solides`, `cm1-perimetre` ; associer `cm1-quadrilateres`) + **grandeurs / mesures approfondies** (quiz `cm1-masses` g/kg/t, `cm1-contenances` L/cL/mL, `cm1-heure` lire l'heure, `cp-comparer` comparer des grandeurs CP) + **enrichissement des viviers** existants (anglais, EMC, sciences/histoire/géo/QLM, décodage CP — sans nouvelle compétence) — 8 nouveaux packs YAML auto-enregistrés + enrichissement — DEC-0021 | Quiz-aventure + Associer/Classer | Géométrie CP symétrie · Géométrie CM1 solides / périmètre / quadrilatères · Maths CM1 masses / contenances / lire l'heure · Maths CP comparer des grandeurs (+ enrichissement de viviers déjà couvert-validé, sans nouvelle compétence) | 2026-07-24 | ⏳ **À VALIDER** (Done technique CI à confirmer ; Done pédago non prononcé — seule l'utilisatrice, après démo) | — |
+
+> ⏳ **File à 1 incrément non validé (s24) — bien sous le seuil de gel (2-3), pas de gel.** La file
+> était **redescendue à ZÉRO le 2026-07-23** : les trois incréments qui l'avaient portée au **seuil de
+> gel de 3** — s21 (DEC-0017 / DEC-0018), s22 (DEC-0019) et s23 (DEC-0020) — ont été **validés
+> ensemble le 2026-07-23** après démo (Done pédagogique prononcé par l'utilisatrice). Le gel ayant été
+> levé, **s24 (DEC-0021)** a repris des stories de contenu (géométrie & grandeurs/mesures approfondies
+> + enrichissement des viviers, 100 % contenu YAML) et pousse **1 incrément en file : À VALIDER**.
+> **Règle d'or (`squad/README.md` §4) : max 2-3 incréments non validés → ici 1, OK, aucun gel.** Le
+> Done pédagogique de s24 reste à prononcer par la **seule utilisatrice**, après démo. Rappel : s17 +
+> s18 puis s19 + s20 avaient chacun été validés ensemble le 2026-07-22 ; s21 + s22 + s23 le
+> 2026-07-23.
