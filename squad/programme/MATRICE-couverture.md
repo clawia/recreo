@@ -41,9 +41,10 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 
 ## Mathématiques — grandeurs et mesures (monnaie, longueurs, durées)
 
-Domaine **ouvert en s20** (DEC-0016) par la monnaie — jusque-là entièrement absent de la matrice —
-et **étendu en s23** (DEC-0020) aux **longueurs** et **durées**. Pur contenu YAML sur des mécaniques
-existantes.
+Domaine **ouvert en s20** (DEC-0016) par la monnaie — jusque-là entièrement absent de la matrice —,
+**étendu en s23** (DEC-0020) aux **longueurs** et **durées**, puis **approfondi en s24** (DEC-0021)
+par les **masses**, les **contenances**, la **lecture de l'heure** (CM1) et la **comparaison de
+grandeurs** (CP). Pur contenu YAML sur des mécaniques existantes.
 
 | Matière | Niveau | Domaine | Compétence (réf. programme) | Jeu(x) couvrant | Mécanique | Statut |
 |---|---|---|---|---|---|---|
@@ -53,17 +54,27 @@ existantes.
 | Mathématiques | CM1 | Grandeurs et mesures | Longueurs — conversions (m / cm / km / mm) | Quiz-aventure — Les longueurs | Quiz-aventure | couvert-validé (2026-07-23) |
 | Mathématiques | CM1 | Grandeurs et mesures | Durées — conversions (h / min / jour / semaine) | Quiz-aventure — Les durées | Quiz-aventure | couvert-validé (2026-07-23) |
 | Mathématiques | CM1 | Grandeurs et mesures | Équivalences de mesures — apparier des grandeurs équivalentes | Associer/Classer — Les équivalences | Associer/Classer | couvert-validé (2026-07-23) |
+| Mathématiques | CM1 | Grandeurs et mesures | Masses — conversions (g / kg / t) | Quiz-aventure — Les masses | Quiz-aventure | en cours (s24) — à valider |
+| Mathématiques | CM1 | Grandeurs et mesures | Contenances — conversions (L / cL / mL) | Quiz-aventure — Les contenances | Quiz-aventure | en cours (s24) — à valider |
+| Mathématiques | CM1 | Grandeurs et mesures | Lire l'heure (heures / minutes) | Quiz-aventure — Lire l'heure | Quiz-aventure | en cours (s24) — à valider |
+| Mathématiques | CP | Grandeurs et mesures | Comparer des grandeurs (longueurs, masses, contenances — plus grand / plus petit) | Quiz-aventure — Compare les grandeurs CP | Quiz-aventure | en cours (s24) — à valider |
 
 ## Géométrie (nouvelle matière — ouverte en s23)
 
-Matière **ouverte en s23** (DEC-0020) — jusque-là entièrement absente de la matrice. Pur contenu YAML
-sur des mécaniques existantes (quiz-aventure, associer/classer). 1re tranche.
+Matière **ouverte en s23** (DEC-0020) — jusque-là entièrement absente de la matrice — et
+**approfondie en s24** (DEC-0021) par la **symétrie** (CP), les **solides**, le **périmètre** et les
+**quadrilatères** (CM1). Pur contenu YAML sur des mécaniques existantes (quiz-aventure,
+associer/classer).
 
 | Matière | Niveau | Domaine | Compétence (réf. programme) | Jeu(x) couvrant | Mécanique | Statut |
 |---|---|---|---|---|---|---|
 | Géométrie | CP | Formes et figures | Reconnaître et nommer les formes usuelles (carré, rond, triangle, rectangle…) | Quiz-aventure — Les formes CP | Quiz-aventure | couvert-validé (2026-07-23) |
 | Géométrie | CP | Formes et figures | Apparier une forme à son nom (forme ↔ nom) | Associer/Classer — Les formes | Associer/Classer | couvert-validé (2026-07-23) |
 | Géométrie | CM1 | Figures, angles, symétrie | Propriétés des figures, angles, symétrie | Quiz-aventure — Géométrie CM1 | Quiz-aventure | couvert-validé (2026-07-23) |
+| Géométrie | CP | Symétrie | Reconnaître un axe de symétrie / une figure symétrique | Quiz-aventure — La symétrie CP | Quiz-aventure | en cours (s24) — à valider |
+| Géométrie | CM1 | Solides | Reconnaître et nommer les solides usuels (cube, pavé, cylindre…) | Quiz-aventure — Les solides | Quiz-aventure | en cours (s24) — à valider |
+| Géométrie | CM1 | Grandeurs — périmètre | Calculer / comparer le périmètre d'un polygone | Quiz-aventure — Le périmètre | Quiz-aventure | en cours (s24) — à valider |
+| Géométrie | CM1 | Figures — quadrilatères | Classer les quadrilatères selon leurs propriétés | Associer/Classer — Les quadrilatères | Associer/Classer | en cours (s24) — à valider |
 
 ## Autres matières (aperçu — pilote la priorisation des sprints suivants)
 
@@ -149,6 +160,19 @@ sur des mécaniques existantes (quiz-aventure, associer/classer). 1re tranche.
 > associer `cm1-mesures` pour les équivalences). Géométrie et longueurs/durées = **packs YAML
 > auto-enregistrés** (`QuizPackLoader`, `AssocPackLoader`), aucun code. Validation groupée
 > s21 + s22 + s23 : **Done pédagogique prononcé par l'utilisatrice après démo le 2026-07-23**.
+
+> **Note s24 — 8 compétences `en cours (s24) — à valider`, enrichissement de viviers sans nouvelle
+> couverture ; aucune nouvelle mécanique.** s24 (DEC-0021) approfondit deux axes **100 % contenu
+> YAML** sur les mécaniques existantes (quiz-aventure, associer/classer), **aucun code** : **Géométrie**
+> — symétrie CP (quiz `cp-symetrie`), solides CM1 (quiz `cm1-solides`), périmètre CM1 (quiz
+> `cm1-perimetre`), quadrilatères CM1 (associer `cm1-quadrilateres`) ; **Grandeurs et mesures** — masses
+> CM1 (quiz `cm1-masses`), contenances CM1 (quiz `cm1-contenances`), lire l'heure CM1 (quiz `cm1-heure`),
+> comparer des grandeurs CP (quiz `cp-comparer`). Ces 8 compétences sont **`en cours (s24)`** en attente
+> du Done pédagogique (prononcé par la seule utilisatrice). En parallèle, **enrichissement de viviers
+> déjà `couvert-validé`** (plus d'items, **aucune nouvelle compétence**) : `anglais-lexique` (+~20),
+> `anglais-associer-cm1` (+ appariements), `cp-emc` & `cm1-emc` (+~6), `cm1-sciences`,
+> `cp-questionner-le-monde`, `cm1-histoire`, `cm1-geographie` (+~6 chacun), `cp-le-bon-son` &
+> `cp-premiere-lettre` (+~6). Incrément s24 poussé en `FILE-ATTENTE.md` **À VALIDER**.
 
 ## Prochaines actions suggérées
 

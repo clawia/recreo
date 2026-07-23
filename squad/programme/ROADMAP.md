@@ -1,11 +1,15 @@
-# Roadmap — ce qu'il reste à faire (au 2026-07-23, après s23 validé)
+# Roadmap — ce qu'il reste à faire (au 2026-07-24, après s24 livré — à valider)
 
 Vue d'ensemble du **restant**, pour prioriser les prochains sprints. État actuel : **8 mécaniques**
 (bandit manchot, texte à trous, quiz-aventure, glisser-déposer, associer/classer, memory,
-puzzle/assemblage, **droite graduée**), **~45 compétences couvert-validé** (s17 → s23 tous validés —
+puzzle/assemblage, **droite graduée**) — **s24 n'ajoute aucune mécanique** (100 % contenu YAML).
+**~45 compétences couvert-validé** (s17 → s23 tous validés) **+ 8 compétences `en cours (s24)` à
+valider** (géométrie : symétrie CP, solides / périmètre / quadrilatères CM1 ; grandeurs et mesures :
+masses / contenances / lire l'heure CM1, comparer des grandeurs CP — DEC-0021). Rappel des validés
+s21 → s23 :
 s21 : Français CP majuscule↔minuscule + le/la, Français CP/CM1 reconstituer un mot (puzzle) ; s22 :
 Maths CP/CM1 situer/placer un nombre sur une droite graduée ; s23 : Maths CM1 fraction sur la droite,
-**Géométrie** CP formes + CM1 propriétés/angles/symétrie, Maths CM1 longueurs + durées). Jokers
+**Géométrie** CP formes + CM1 propriétés/angles/symétrie, Maths CM1 longueurs + durées. Jokers
 **réglables**
 (capital piloté par l'en-tête YAML `jokers` + réglage adulte — s21, A3). **3 axes de navigation** : par
 niveau, par jeu (désormais **filtrable** par niveau/matière — s22, E), **par matière** (s21, E).
@@ -13,10 +17,11 @@ Contenu à liste finie **entièrement externalisé et auto-enregistré** — y c
 (s21, D, dette remboursée) ; plus aucun contenu combinatoire en dur côté listes finies (les
 générateurs combinatoires, ex. droite graduée, gardent leurs bornes câblées dans `BeansConfig`).
 
-> ✅ **File de validation redescendue à ZÉRO — gel du contenu levé.** s21 + s22 + s23 ont été
-> **validés ensemble le 2026-07-23** (Done pédagogique prononcé par l'utilisatrice après démo). La
-> file d'attente est à 0 : le prochain planning peut reprendre des stories de contenu (règle d'or,
-> `squad/README.md` §4 ; cf. `squad/validation/FILE-ATTENTE.md`).
+> ✅ **File redescendue à ZÉRO le 2026-07-23, gel levé** — s21 + s22 + s23 validés ensemble (Done
+> pédagogique prononcé par l'utilisatrice après démo). ⏳ **s24 (DEC-0021) pousse alors 1 nouvel
+> incrément en file** (géométrie & grandeurs/mesures approfondies + enrichissement des viviers, 100 %
+> contenu YAML) : **À VALIDER**. La file est à **1 incrément non validé** — **bien sous le seuil de
+> gel (2-3)**, pas de gel (règle d'or, `squad/README.md` §4 ; cf. `squad/validation/FILE-ATTENTE.md`).
 
 Priorisation recommandée en tête de chaque section. Chaque item devient une story (compétence visée +
 critères) au planning, met à jour la matrice, et suit le double Done (technique CI + pédago user).
@@ -77,16 +82,24 @@ Déjà `non couvert` dans la matrice :
   `cm1-nature-mots` (3 puzzles nom/verbe/adjectif, DEC-0015, *à valider*).
 Domaines encore **absents** (à ouvrir progressivement) :
 - **Grandeurs et mesures** — ✅ **AMORCÉ (s20)** par la **monnaie** (`cp-monnaie`, `cm1-monnaie`,
-  `cm1-monnaie-centimes` — DEC-0016, *à valider*). ✅ **ÉTENDU (s23)** aux **longueurs / durées**
+  `cm1-monnaie-centimes` — DEC-0016, ✅ validé 2026-07-23). ✅ **ÉTENDU (s23)** aux **longueurs / durées**
   (DEC-0020, pur contenu YAML) : `cm1-longueurs` (conversions m/cm/km/mm), `cm1-durees` (h/min/jour/
-  semaine), `cm1-mesures` (associer — équivalences). *✅ Validé 2026-07-23.* *Reste : contenances, masses,
-  aires ; longueurs / durées au CP.*
+  semaine), `cm1-mesures` (associer — équivalences). *✅ Validé 2026-07-23.* ✅ **APPROFONDI (s24)**
+  (DEC-0021, pur contenu YAML) : `cm1-masses` (g/kg/t), `cm1-contenances` (L/cL/mL), `cm1-heure` (lire
+  l'heure), `cp-comparer` (comparer des grandeurs CP). *⏳ À valider (démo).* *Reste : aires ;
+  longueurs / durées au CP.*
 - **Géométrie** — ✅ **OUVERT (s23) — nouvelle matière, 1re tranche** (DEC-0020, pur contenu YAML) :
   `cp-geometrie` (quiz — reconnaître les formes), `cp-formes` (associer — forme ↔ nom), `cm1-geometrie`
-  (quiz — propriétés, angles, symétrie). *✅ Validé 2026-07-23.* *Reste : tracés / symétrie active (dépend d'un
-  îlot Canvas / traçage, §B), plus de figures et de propriétés.*
-- **Anglais** — plus de lexique + consignes de classe. **Questionner le monde CM1**. Approfondir
-  Sciences / Histoire / Géo / EMC.
+  (quiz — propriétés, angles, symétrie). *✅ Validé 2026-07-23.* ✅ **APPROFONDI (s24)** (DEC-0021, pur
+  contenu YAML) : `cp-symetrie` (quiz — symétrie CP), `cm1-solides` (quiz — solides), `cm1-perimetre`
+  (quiz — périmètre), `cm1-quadrilateres` (associer — classer les quadrilatères). *⏳ À valider (démo).*
+  *Reste : tracés / symétrie active (dépend d'un îlot Canvas / traçage, §B), plus de figures et de
+  propriétés.*
+- **Anglais** — ✅ **ENRICHI (s24)** — `anglais-lexique` (+~20 mots), `anglais-associer-cm1`
+  (+ appariements) (DEC-0021, *à valider*, sans nouvelle compétence). Reste : consignes de classe.
+  **Questionner le monde CM1**. Approfondir Sciences / Histoire / Géo / EMC — ✅ **ENRICHIS (s24)**
+  (`cm1-sciences`, `cp-questionner-le-monde`, `cm1-histoire`, `cm1-geographie`, `cp-emc`, `cm1-emc`
+  — +~6 items chacun ; DEC-0021, *à valider*, sans nouvelle compétence).
 
 ## D. Contenu
 - ✅ **LIVRÉ (s21) — dette remboursée** : **derniers contenus en dur externalisés** — événements de la
@@ -94,7 +107,11 @@ Domaines encore **absents** (à ouvrir progressivement) :
   `FriseChronologiqueGenerator` et `CompareFractionsGenerator` reçoivent leur liste **par
   constructeur** (nouveaux loaders, même patron que quiz/mots/associer/memory) — DEC-0018.
   Comportement constant (couverture inchangée). **Plus aucun contenu à liste finie codé en Java.**
-- **Enrichir les viviers** existants (quiz, EMC, anglais, le bon son, frise, fractions, puzzle…) —
+- ✅ **LIVRÉ (s24) — 1re passe d'enrichissement** (DEC-0021, pur contenu YAML, **sans nouvelle
+  compétence**) : `anglais-lexique` (+~20), `anglais-associer-cm1` (+ appariements), `cp-emc` &
+  `cm1-emc` (+~6), `cm1-sciences`, `cp-questionner-le-monde`, `cm1-histoire`, `cm1-geographie`
+  (+~6 chacun), `cp-le-bon-son` & `cp-premiere-lettre` (+~6). *⏳ À valider (démo).* Enrichissement
+  **continu** des viviers existants (quiz, EMC, anglais, le bon son, frise, fractions, puzzle…) par
   l'utilisatrice via les YAML.
 
 ## E. Fonctionnalités produit
@@ -126,12 +143,15 @@ un nombre entier, réutilise `SpinAndPick`)~~ ✅ (s22) · ~~**filtres « Par je
 ~~**fractions sur la droite** (B, 2e déclinaison — droite graduée généralisée à `lineTicks`)~~ ✅ (s23) ·
 ~~**géométrie** (C, nouvelle matière — formes CP, propriétés/angles/symétrie CM1)~~ ✅ ouverte (s23) ·
 ~~**longueurs / durées** (C, Grandeurs et mesures)~~ ✅ (s23) — **s21 + s22 + s23 ✅ validés pédago le
-2026-07-23**.
-✅ **File de validation redescendue à ZÉRO, gel levé** (règle d'or) : le prochain planning peut
-reprendre des stories de contenu. Restent, par ordre suggéré :
-**plus de géométrie / mesures** (contenances, masses, aires ; géométrie CP/CM1 approfondie, §C) →
-**enrichir les viviers** (anglais, sciences/histoire/géo/EMC ; via les YAML) → **déclinaisons puzzle**
-(reconstituer une phrase, tangram, carte) et autres contenus sur les mécaniques disponibles (droite
-graduée, puzzle, associer/classer, memory).
+2026-07-23** ·
+~~**plus de géométrie / mesures** (masses, contenances, lire l'heure ; symétrie CP, solides / périmètre /
+quadrilatères CM1, §C)~~ ✅ **livré (s24) — ⏳ à valider** ·
+~~**enrichir les viviers** (anglais, EMC, sciences/histoire/géo/QLM, décodage CP ; via les YAML, §D)~~
+✅ **livré (s24) — ⏳ à valider** (100 % contenu YAML, aucune nouvelle mécanique — DEC-0021).
+⏳ **s24 en file d'attente : À VALIDER (1 incrément, sous le seuil de gel)** (règle d'or). Restent, par
+ordre suggéré :
+**déclinaisons puzzle** (reconstituer une phrase, tangram, carte) → autres contenus sur les mécaniques
+disponibles (droite graduée, puzzle, associer/classer, memory) → **encore plus de géométrie / mesures**
+(aires ; longueurs/durées au CP) et enrichissement continu des viviers.
 Écartés du programme : **écriture CP / traçage tactile** (hors scope, §C) ; **persistance / tableau de
 bord adulte** (évolution possible mais non envisagée pour l'instant, §E).
