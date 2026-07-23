@@ -319,15 +319,15 @@ public class BeansConfig {
         // questions" via SimpleGameFactory ; benefice automatique des jokers (tick faux = coeur).
         // Graduations ESPACEES (11 reperes) pour une vraie droite lisible, pas 21/101 boutons :
         // CP de 2 en 2 jusqu'a 20, CM1 de 10 en 10 jusqu'a 100. La cible est un repere interne.
+        // CP : graduations INTERMEDIAIRES a chaque entier (0..20), seules les bornes etiquetees.
         ContentDescriptor droiteCpDesc =
                 new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — situer un nombre sur une droite graduee");
-        List<String> droiteCpTicks = List.of("0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20");
         defs.add(new CatalogEntryDef(
                 "droite-graduee-cp", "Mathématiques", "CP", "droite-graduee", "Place le nombre",
                 "Maths CP — Droite graduee", "Place le nombre au bon endroit sur la droite graduee (0 a 20).",
                 DroiteGradueeMechanic.ID,
                 new SimpleGameFactory("droite-graduee-cp", "Maths CP — Droite graduee", "droite-graduee", "CP",
-                        DroiteGradueeMechanic.ID, () -> new DroiteGradueeGenerator(droiteCpDesc, droiteCpTicks, "le nombre"))));
+                        DroiteGradueeMechanic.ID, () -> new DroiteGradueeGenerator(droiteCpDesc, 0, 20))));
         ContentDescriptor droiteCm1Desc =
                 new ContentDescriptor("Mathématiques", "CM1", "Nombres et calculs — situer un nombre sur une droite graduee");
         List<String> droiteCm1Ticks = List.of("0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100");
@@ -340,7 +340,9 @@ public class BeansConfig {
         // Fraction sur une droite (s23) : MEME mecanique (droite graduee), graduations = fractions.
         ContentDescriptor droiteFracDesc =
                 new ContentDescriptor("Mathématiques", "CM1", "Fractions — situer une fraction sur une droite graduee");
-        List<String> fractionTicks = List.of("0", "1/4", "1/2", "3/4", "1");
+        // Huitiemes (labels reduits) : plus de cibles (1/8, 1/4, 3/8, 1/2, 5/8, 3/4, 7/8) pour eviter
+        // la repetition ; le generateur fini ne repropose pas une cible deja reussie.
+        List<String> fractionTicks = List.of("0", "1/8", "1/4", "3/8", "1/2", "5/8", "3/4", "7/8", "1");
         defs.add(new CatalogEntryDef(
                 "droite-fraction-cm1", "Mathématiques", "CM1", "droite-graduee", "Place la fraction",
                 "Maths CM1 — Fractions sur la droite", "Place la fraction au bon endroit sur la droite graduee (0 a 1).",

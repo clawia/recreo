@@ -12,6 +12,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 import java.util.UUID;
 
@@ -31,9 +32,6 @@ public final class DroiteGradueeGenerator implements ContentGenerator {
 
     /** Séparateur des étiquettes de graduation dans la meta (cf. {@code WebViewMapper}). */
     public static final String TICK_SEPARATOR = "|";
-
-    /** Nombre d'essais d'exclusion "best-effort" (générateur combinatoire, cf. ADR-0006). */
-    private static final int MAX_EXCLUSION_ATTEMPTS = 12;
 
     private final ContentDescriptor descriptor;
     private final List<String> ticks;
@@ -79,18 +77,28 @@ public final class DroiteGradueeGenerator implements ContentGenerator {
 
     @Override
     public Optional<Item> next(RandomSource random, Set<String> excludeKeys) {
-        Item item = buildOne(random);
-        for (int attempt = 0; attempt < MAX_EXCLUSION_ATTEMPTS && excludeKeys.contains(item.key()); attempt++) {
-            item = buildOne(random);
+        // Cibles = graduations INTERNES (on exclut les deux extrémités, triviales à placer, qui
+        // servent de repères étiquetés). Générateur FINI : une cible déjà réussie (sa clé est dans
+        // excludeKeys) n'est plus reproposée → pas de répétition dans une session.
+        List<String> available = new ArrayList<>();
+        for (int i = 1; i < ticks.size() - 1; i++) {
+            String label = ticks.get(i);
+            if (!excludeKeys.contains(keyOf(label))) {
+                available.add(label);
+            }
         }
-        return Optional.of(item);
+        if (available.isEmpty()) {
+            return Optional.empty(); // toutes les graduations internes ont été placées
+        }
+        return Optional.of(buildOne(available.get(random.nextInt(available.size()))));
     }
 
-    private Item buildOne(RandomSource random) {
-        // Cible parmi les graduations INTERNES (on exclut les deux extrémités, triviales à placer).
-        int idx = 1 + random.nextInt(ticks.size() - 2);
-        String cible = ticks.get(idx);
+    /** Clé déterministe d'une cible (identique à {@link Item#key()} de l'item produit). */
+    private String keyOf(String cible) {
+        return Item.keyOf(List.of(), "Place " + consigneNoun + " " + cible);
+    }
 
+    private Item buildOne(String cible) {
         String question = "Place " + consigneNoun + " " + cible;
         Answer expected = new Answer(cible);
 
@@ -106,6 +114,12 @@ public final class DroiteGradueeGenerator implements ContentGenerator {
 
         // reelSymbols/distractors vides : la droite graduee fournit toutes les positions.
         return new Item(new ItemId(UUID.randomUUID().toString()), List.of(), question, expected, List.of(), meta);
+    }
+
+    @Override
+    public OptionalInt distinctPoolSize() {
+        // Vivier fini = les graduations INTERNES (hors les deux extrémités-repères).
+        return OptionalInt.of(ticks.size() - 2);
     }
 
     @Override
