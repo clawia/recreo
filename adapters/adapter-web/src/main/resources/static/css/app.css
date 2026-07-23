@@ -1246,3 +1246,14 @@ body {
     background: var(--accent);
     height: 20px;
 }
+
+/* Graduation DEJA PLACEE (correctement) : etiquette conservee, en vert, pour montrer
+   la droite qui se remplit au fil de la session. */
+.droite-tick.placee {
+    color: var(--ok);
+}
+
+.droite-tick.placee::before {
+    background: var(--ok);
+    height: 26px;
+}

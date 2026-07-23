@@ -70,7 +70,7 @@ public class WebViewMapper {
                     : withBoard;
         }
         if (DROITE_GRADUEE.equals(view.mechanicView())) {
-            return game.withTicks(split(safe(view.meta()).get("ticks")));
+            return game.withTicks(split(safe(view.meta()).get("ticks")), split(safe(view.meta()).get("placed")));
         }
         return withAssociations(game, view.mechanicView(), view.reelSymbols(), view.meta());
     }
@@ -120,7 +120,7 @@ public class WebViewMapper {
 
         // Droite graduee : graduations (entiers ou fractions) lues de la meta de l'item courant.
         if (DROITE_GRADUEE.equals(view.mechanicView())) {
-            return game.withTicks(split(safe(view.meta()).get("ticks")));
+            return game.withTicks(split(safe(view.meta()).get("ticks")), split(safe(view.meta()).get("placed")));
         }
 
         // Memory : plateau reconstruit depuis la meta de l'item (groupes de paires).

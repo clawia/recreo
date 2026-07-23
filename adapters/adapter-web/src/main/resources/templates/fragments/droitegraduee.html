@@ -47,10 +47,12 @@
                 <input type="hidden" name="chosenAnswer" th:value="${v}"/>
                 <input type="hidden" name="from" th:value="${from}"/>
                 <button type="submit" class="droite-tick"
-                        th:text="${it.first or it.last} ? ${v} : ''"
+                        th:with="placee=${game.lineTicksPlaced != null and game.lineTicksPlaced.contains(v)},
+                                 tentee=${game.disabledOptions != null and game.disabledOptions.contains(v)}"
+                        th:text="${it.first or it.last or placee} ? ${v} : ''"
+                        th:classappend="${(placee ? ' placee' : '') + (tentee ? ' tentee' : '')}"
                         th:attr="aria-label=${v},
-                                 disabled=${game.disabledOptions != null and game.disabledOptions.contains(v)} ? 'disabled' : null"
-                        th:classappend="${game.disabledOptions != null and game.disabledOptions.contains(v)} ? ' tentee' : ''">0</button>
+                                 disabled=${tentee} ? 'disabled' : null">0</button>
             </form>
         </div>
 

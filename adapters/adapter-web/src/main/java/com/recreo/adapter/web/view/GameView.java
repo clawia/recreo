@@ -45,7 +45,8 @@ public record GameView(
         List<String> associationLockedItems,
         List<String> associationLockedTargets,
         String hint,
-        List<String> lineTicks) {
+        List<String> lineTicks,
+        List<String> lineTicksPlaced) {
 
     public static GameView initial(String sessionId, String mechanicView, String catalogEntryId,
                                    List<String> reelSymbols, String question, List<String> options,
@@ -54,7 +55,7 @@ public record GameView(
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
                 answered, questionsTarget, finished, false, false, null, null, null,
                 jokers, disabledOptions == null ? List.of() : disabledOptions, null, null, null,
-                List.of(), List.of(), null, List.of());
+                List.of(), List.of(), null, List.of(), List.of());
     }
 
     public static GameView withFeedback(String sessionId, String mechanicView, String catalogEntryId,
@@ -65,7 +66,7 @@ public record GameView(
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
                 answered, questionsTarget, finished, true, correct, feedbackMessage, null, null,
                 jokers, disabledOptions == null ? List.of() : disabledOptions, null, null, null,
-                List.of(), List.of(), null, List.of());
+                List.of(), List.of(), null, List.of(), List.of());
     }
 
     /**
@@ -77,7 +78,7 @@ public record GameView(
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
                 answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage, slots, reserve,
                 jokers, disabledOptions, associationTargets, associationCards, associationGroups,
-                associationLockedItems, associationLockedTargets, hint, lineTicks);
+                associationLockedItems, associationLockedTargets, hint, lineTicks, lineTicksPlaced);
     }
 
     /**
@@ -90,7 +91,7 @@ public record GameView(
                 answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage,
                 arrangementSlots, arrangementReserve,
                 jokers, disabledOptions, targets, cards, groups,
-                associationLockedItems, associationLockedTargets, hint, lineTicks);
+                associationLockedItems, associationLockedTargets, hint, lineTicks, lineTicksPlaced);
     }
 
     /**
@@ -103,7 +104,7 @@ public record GameView(
                 answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage,
                 arrangementSlots, arrangementReserve,
                 jokers, disabledOptions, associationTargets, associationCards, associationGroups,
-                items, targets, hint, lineTicks);
+                items, targets, hint, lineTicks, lineTicksPlaced);
     }
 
     /** Copie de cette vue avec un INDICE (image/emoji/definition) affiche — mecanique puzzle. */
@@ -112,16 +113,20 @@ public record GameView(
                 answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage,
                 arrangementSlots, arrangementReserve,
                 jokers, disabledOptions, associationTargets, associationCards, associationGroups,
-                associationLockedItems, associationLockedTargets, newHint, lineTicks);
+                associationLockedItems, associationLockedTargets, newHint, lineTicks, lineTicksPlaced);
     }
 
-    /** Copie de cette vue avec les GRADUATIONS de la droite (etiquettes : entiers ou fractions) — mecanique droite-graduee. */
-    public GameView withTicks(List<String> ticks) {
+    /**
+     * Copie de cette vue avec les GRADUATIONS de la droite (etiquettes : entiers ou fractions) et la
+     * liste des graduations DEJA PLACEES (qui restent etiquetees) — mecanique droite-graduee.
+     */
+    public GameView withTicks(List<String> ticks, List<String> placed) {
         return new GameView(sessionId, mechanicView, catalogEntryId, reelSymbols, question, options, score, round,
                 answered, questionsTarget, finished, hasFeedback, correct, feedbackMessage,
                 arrangementSlots, arrangementReserve,
                 jokers, disabledOptions, associationTargets, associationCards, associationGroups,
-                associationLockedItems, associationLockedTargets, hint, ticks == null ? List.of() : ticks);
+                associationLockedItems, associationLockedTargets, hint,
+                ticks == null ? List.of() : ticks, placed == null ? List.of() : placed);
     }
 
     /**
