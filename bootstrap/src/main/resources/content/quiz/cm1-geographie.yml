@@ -44,3 +44,22 @@ questions:
   - question: "Quel pays voisin se trouve à l'est de la France ?"
     bonne: "L'Allemagne"
     distracteurs: ["L'Espagne", "Le Portugal"]
+  # Points cardinaux, fleuves, océans, continents
+  - question: "Combien y a-t-il de points cardinaux ?"
+    bonne: "4"
+    distracteurs: ["2", "8"]
+  - question: "De quel côté le Soleil se lève-t-il ?"
+    bonne: "À l'est"
+    distracteurs: ["À l'ouest", "Au nord"]
+  - question: "Quel fleuve passe par Lyon et se jette dans la Méditerranée ?"
+    bonne: "Le Rhône"
+    distracteurs: ["La Seine", "La Loire"]
+  - question: "Quel fleuve arrose la ville de Bordeaux ?"
+    bonne: "La Garonne"
+    distracteurs: ["Le Rhône", "La Seine"]
+  - question: "Quel est le plus grand océan du monde ?"
+    bonne: "L'océan Pacifique"
+    distracteurs: ["L'océan Atlantique", "L'océan Indien"]
+  - question: "Sur quel continent se trouve le désert du Sahara ?"
+    bonne: "L'Afrique"
+    distracteurs: ["L'Asie", "L'Europe"]

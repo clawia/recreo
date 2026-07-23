@@ -1,0 +1,40 @@
+# Quiz-aventure — La symétrie (CP). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+entryId: symetrie-cp
+title: "La symétrie"
+description: "Découvre les axes de symétrie et les images en miroir."
+gameKey: symetrie
+gameLabel: "La symétrie"
+matiere: "Géométrie"
+niveau: "CP"
+domaine: "Symétrie"
+questions:
+  - question: "Un axe de symétrie partage une figure en..."
+    bonne: "deux parties identiques"
+    distracteurs: ["trois parties", "deux parties différentes"]
+  - question: "Si on plie une figure le long de son axe de symétrie, les deux parties..."
+    bonne: "se superposent"
+    distracteurs: ["ne se touchent pas", "changent de couleur"]
+  - question: "Quand tu te regardes dans un miroir, tu vois..."
+    bonne: "ton reflet"
+    distracteurs: ["ton ombre", "ta photo"]
+  - question: "Quelle lettre majuscule a un axe de symétrie vertical ?"
+    bonne: "A"
+    distracteurs: ["F", "G"]
+  - question: "Parmi ces lettres, laquelle a un axe de symétrie vertical ?"
+    bonne: "H"
+    distracteurs: ["L", "P"]
+  - question: "Quelle lettre peut se plier en deux le long d'un axe vertical ?"
+    bonne: "X"
+    distracteurs: ["R", "S"]
+  - question: "Combien d'axes de symétrie a un carré ?"
+    bonne: "4"
+    distracteurs: ["2", "1"]
+  - question: "Combien d'axes de symétrie a un rectangle ?"
+    bonne: "2"
+    distracteurs: ["4", "1"]
+  - question: "Combien d'axes de symétrie a un cercle ?"
+    bonne: "une infinité"
+    distracteurs: ["2", "4"]
+  - question: "Quelle forme n'a qu'un seul axe de symétrie ?"
+    bonne: "le cœur"
+    distracteurs: ["le carré", "le cercle"]

@@ -60,3 +60,22 @@ questions:
   - question: "Qu'est-ce qui cause l'alternance du jour et de la nuit ?"
     bonne: "La rotation de la Terre sur elle-même"
     distracteurs: ["Les nuages", "Les saisons"]
+  # Matière, énergie, mouvement, corps humain (programme CM1)
+  - question: "Quel instrument sert à mesurer la température ?"
+    bonne: "Le thermomètre"
+    distracteurs: ["La balance", "La règle"]
+  - question: "Quand l'eau bout et s'évapore, elle devient..."
+    bonne: "gazeuse"
+    distracteurs: ["solide", "liquide"]
+  - question: "Quelle source d'énergie est renouvelable ?"
+    bonne: "Le Soleil"
+    distracteurs: ["Le pétrole", "Le charbon"]
+  - question: "Combien de dents de lait un enfant a-t-il en tout ?"
+    bonne: "20"
+    distracteurs: ["32", "16"]
+  - question: "Quel organe reçoit les aliments après qu'on les a avalés ?"
+    bonne: "L'estomac"
+    distracteurs: ["Les poumons", "Le cerveau"]
+  - question: "Que faut-il pour mettre en mouvement un objet immobile ?"
+    bonne: "Une force, comme le pousser ou le tirer"
+    distracteurs: ["Le regarder", "Attendre sans rien faire"]

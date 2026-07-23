@@ -1,0 +1,43 @@
+# Quiz-aventure — Le périmètre (CM1). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+entryId: perimetre-cm1
+title: "Le périmètre"
+description: "Calcule le périmètre des figures à partir de leurs côtés."
+gameKey: perimetre
+gameLabel: "Le périmètre"
+matiere: "Géométrie"
+niveau: "CM1"
+domaine: "Périmètre"
+questions:
+  - question: "Le périmètre d'une figure, c'est..."
+    bonne: "la longueur de son contour"
+    distracteurs: ["sa surface intérieure", "le nombre de ses côtés"]
+  - question: "Comment calcule-t-on le périmètre d'un carré ?"
+    bonne: "côté × 4"
+    distracteurs: ["côté × 2", "côté × côté"]
+  - question: "Quel est le périmètre d'un carré de côté 5 cm ?"
+    bonne: "20 cm"
+    distracteurs: ["10 cm", "25 cm"]
+  - question: "Quel est le périmètre d'un rectangle de longueur 6 cm et de largeur 4 cm ?"
+    bonne: "20 cm"
+    distracteurs: ["24 cm", "10 cm"]
+  - question: "Quel est le périmètre d'un rectangle de longueur 8 cm et de largeur 3 cm ?"
+    bonne: "22 cm"
+    distracteurs: ["24 cm", "11 cm"]
+  - question: "Quel est le périmètre d'un triangle équilatéral de côté 7 cm ?"
+    bonne: "21 cm"
+    distracteurs: ["14 cm", "28 cm"]
+  - question: "Quel est le périmètre d'un carré de côté 10 cm ?"
+    bonne: "40 cm"
+    distracteurs: ["100 cm", "20 cm"]
+  - question: "Quel est le périmètre d'un rectangle de longueur 12 cm et de largeur 5 cm ?"
+    bonne: "34 cm"
+    distracteurs: ["60 cm", "17 cm"]
+  - question: "Quel est le périmètre d'un triangle équilatéral de côté 4 cm ?"
+    bonne: "12 cm"
+    distracteurs: ["8 cm", "16 cm"]
+  - question: "Quel est le périmètre d'un carré de côté 9 m ?"
+    bonne: "36 m"
+    distracteurs: ["81 m", "18 m"]
+  - question: "Quel est le périmètre d'un rectangle de longueur 7 cm et de largeur 2 cm ?"
+    bonne: "18 cm"
+    distracteurs: ["14 cm", "9 cm"]

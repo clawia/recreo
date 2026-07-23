@@ -53,3 +53,22 @@ questions:
   - question: "Que devient une petite graine que l'on arrose ?"
     bonne: "Une plante"
     distracteurs: ["Un caillou", "Un animal"]
+  # Les saisons, l'hygiène, la matière, le vivant
+  - question: "Que faut-il faire avant de passer à table ?"
+    bonne: "Se laver les mains"
+    distracteurs: ["Se coucher", "Courir"]
+  - question: "Combien de fois par jour faut-il se brosser les dents ?"
+    bonne: "2 fois"
+    distracteurs: ["Jamais", "Une fois par semaine"]
+  - question: "En quelle saison les feuilles des arbres tombent-elles ?"
+    bonne: "En automne"
+    distracteurs: ["En été", "Au printemps"]
+  - question: "En quelle saison fait-il le plus chaud ?"
+    bonne: "En été"
+    distracteurs: ["En hiver", "En automne"]
+  - question: "Lequel de ces éléments est vivant ?"
+    bonne: "Un arbre"
+    distracteurs: ["Une chaise", "Un caillou"]
+  - question: "Quel objet flotte sur l'eau ?"
+    bonne: "Un bouchon en liège"
+    distracteurs: ["Une pièce de monnaie", "Un clou"]

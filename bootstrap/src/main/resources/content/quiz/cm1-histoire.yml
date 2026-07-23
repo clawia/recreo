@@ -38,3 +38,22 @@ questions:
   - question: "Qui devient empereur des Français en 1804 ?"
     bonne: "Napoléon Bonaparte"
     distracteurs: ["Louis XIV", "Charlemagne"]
+  # Grandes périodes : Préhistoire, Antiquité, Moyen Âge, Temps modernes, époque contemporaine
+  - question: "Qu'est-ce qui marque la fin de la Préhistoire et le début de l'Antiquité ?"
+    bonne: "L'invention de l'écriture"
+    distracteurs: ["L'invention de la roue", "La Révolution française"]
+  - question: "En quelle année Christophe Colomb atteint-il l'Amérique ?"
+    bonne: "1492"
+    distracteurs: ["1789", "1918"]
+  - question: "Quel peuple de l'Antiquité, dirigé par Jules César, a conquis la Gaule ?"
+    bonne: "Les Romains"
+    distracteurs: ["Les Vikings", "Les Égyptiens"]
+  - question: "Quel chef gaulois s'est opposé à Jules César à Alésia ?"
+    bonne: "Vercingétorix"
+    distracteurs: ["Clovis", "Charlemagne"]
+  - question: "À quelle grande période appartient le règne de Louis XIV ?"
+    bonne: "Les Temps modernes"
+    distracteurs: ["Le Moyen Âge", "l'Antiquité"]
+  - question: "Quel événement marque le début de l'époque contemporaine en France ?"
+    bonne: "La Révolution française de 1789"
+    distracteurs: ["La chute de l'Empire romain", "La découverte de l'Amérique"]
