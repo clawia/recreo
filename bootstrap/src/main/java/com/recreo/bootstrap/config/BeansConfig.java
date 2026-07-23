@@ -317,22 +317,26 @@ public class BeansConfig {
         // reutilise le coup SpinAndPick (cliquer un tick = choisir une valeur). Contenu
         // COMBINATOIRE (DroiteGradueeGenerator), bornes cablees ici. Reglage commun "nombre de
         // questions" via SimpleGameFactory ; benefice automatique des jokers (tick faux = coeur).
+        // Graduations ESPACEES (11 reperes) pour une vraie droite lisible, pas 21/101 boutons :
+        // CP de 2 en 2 jusqu'a 20, CM1 de 10 en 10 jusqu'a 100. La cible est un repere interne.
         ContentDescriptor droiteCpDesc =
                 new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — situer un nombre sur une droite graduee");
+        List<String> droiteCpTicks = List.of("0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20");
         defs.add(new CatalogEntryDef(
                 "droite-graduee-cp", "Mathématiques", "CP", "droite-graduee", "Place le nombre",
                 "Maths CP — Droite graduee", "Place le nombre au bon endroit sur la droite graduee (0 a 20).",
                 DroiteGradueeMechanic.ID,
                 new SimpleGameFactory("droite-graduee-cp", "Maths CP — Droite graduee", "droite-graduee", "CP",
-                        DroiteGradueeMechanic.ID, () -> new DroiteGradueeGenerator(droiteCpDesc, 0, 20))));
+                        DroiteGradueeMechanic.ID, () -> new DroiteGradueeGenerator(droiteCpDesc, droiteCpTicks, "le nombre"))));
         ContentDescriptor droiteCm1Desc =
                 new ContentDescriptor("Mathématiques", "CM1", "Nombres et calculs — situer un nombre sur une droite graduee");
+        List<String> droiteCm1Ticks = List.of("0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100");
         defs.add(new CatalogEntryDef(
                 "droite-graduee-cm1", "Mathématiques", "CM1", "droite-graduee", "Place le nombre",
                 "Maths CM1 — Droite graduee", "Place le nombre au bon endroit sur la droite graduee (0 a 100).",
                 DroiteGradueeMechanic.ID,
                 new SimpleGameFactory("droite-graduee-cm1", "Maths CM1 — Droite graduee", "droite-graduee", "CM1",
-                        DroiteGradueeMechanic.ID, () -> new DroiteGradueeGenerator(droiteCm1Desc, 0, 100))));
+                        DroiteGradueeMechanic.ID, () -> new DroiteGradueeGenerator(droiteCm1Desc, droiteCm1Ticks, "le nombre"))));
         // Fraction sur une droite (s23) : MEME mecanique (droite graduee), graduations = fractions.
         ContentDescriptor droiteFracDesc =
                 new ContentDescriptor("Mathématiques", "CM1", "Fractions — situer une fraction sur une droite graduee");
