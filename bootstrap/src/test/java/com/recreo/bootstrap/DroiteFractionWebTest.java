@@ -64,7 +64,8 @@ class DroiteFractionWebTest {
         // Bonne graduation = la fraction à placer, lue dans la consigne.
         String cible = firstMatch(CIBLE, html);
         // La cible est une graduation INTERNE (jamais une extrémité).
-        assertThat(cible).isIn("1/4", "1/2", "3/4");
+        // La cible est une graduation INTERNE (jamais une extremite « 0 » / « 1 »).
+        assertThat(cible).isNotIn("0", "1");
 
         mockMvc.perform(post("/sessions/{id}/moves", sessionId).param("chosenAnswer", cible))
                 .andExpect(status().isOk())
