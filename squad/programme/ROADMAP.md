@@ -108,9 +108,6 @@ Domaines encore **absents** (à ouvrir progressivement) :
   *Done pédagogique ✅ validé 2026-07-23.*
 
 ## F. Intendance / technique
-- ✅ **Token GitHub — RÉSOLU** (utilisatrice, 2026-07-23) : **expiration proche, rotation non
-  nécessaire**. (Le token avait transité en clair ; compte tenu de son échéance rapprochée, aucune
-  révocation/régénération n'est requise — intendance close.)
 - Rendu **pixel / navigateur** (Playwright) si un environnement le permet un jour (dette rétro ; on
   couvre aujourd'hui au niveau HTML via `UiNonRegressionWebTest`).
 
