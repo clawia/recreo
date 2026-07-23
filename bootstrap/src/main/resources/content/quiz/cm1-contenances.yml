@@ -1,0 +1,39 @@
+entryId: contenances-cm1
+title: "Les contenances"
+description: "Convertis, compare et choisis la bonne unité de contenance."
+gameKey: contenances
+gameLabel: "Les contenances"
+matiere: "Mathématiques"
+niveau: "CM1"
+domaine: "Grandeurs et mesures — contenances"
+questions:
+  - question: "Combien de centilitres dans 1 litre ?"
+    bonne: "100 cl"
+    distracteurs: ["10 cl", "1000 cl", "50 cl"]
+  - question: "Combien de millilitres dans 1 litre ?"
+    bonne: "1000 ml"
+    distracteurs: ["100 ml", "10 ml", "500 ml"]
+  - question: "Combien de millilitres dans 1 centilitre ?"
+    bonne: "10 ml"
+    distracteurs: ["100 ml", "1 ml", "1000 ml"]
+  - question: "50 cl, c'est combien de litre ?"
+    bonne: "0,5 L"
+    distracteurs: ["5 L", "50 L", "0,05 L"]
+  - question: "250 ml, c'est combien de centilitres ?"
+    bonne: "25 cl"
+    distracteurs: ["2,5 cl", "250 cl", "2500 cl"]
+  - question: "Qu'est-ce qui contient le plus de liquide ?"
+    bonne: "1 L"
+    distracteurs: ["50 cl", "100 ml", "25 cl"]
+  - question: "Avec quoi mesure-t-on une contenance ?"
+    bonne: "un verre doseur"
+    distracteurs: ["une règle", "une balance", "une horloge"]
+  - question: "Quelle est la contenance d'une bouteille d'eau ?"
+    bonne: "environ 1,5 L"
+    distracteurs: ["environ 15 L", "environ 15 cl", "environ 150 L"]
+  - question: "Quelle est la contenance d'une cuillère à café ?"
+    bonne: "environ 5 ml"
+    distracteurs: ["environ 5 L", "environ 5 cl", "environ 50 cl"]
+  - question: "Quelle est la contenance d'une petite brique de jus ?"
+    bonne: "environ 20 cl"
+    distracteurs: ["environ 20 L", "environ 2 L", "environ 200 cl"]

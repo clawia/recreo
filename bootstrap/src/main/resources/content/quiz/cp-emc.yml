@@ -38,3 +38,21 @@ questions:
   - question: "Pour traverser la rue, on regarde..."
     bonne: "des deux côtés"
     distracteurs: ["ses chaussures", "le ciel"]
+  - question: "Quand on arrive à l'école le matin, on dit..."
+    bonne: "Bonjour"
+    distracteurs: ["Rien", "Va-t'en"]
+  - question: "Si on bouscule un camarade sans faire exprès, on dit..."
+    bonne: "Pardon"
+    distracteurs: ["Tant pis", "C'est ta faute"]
+  - question: "Pour ranger la classe, on doit..."
+    bonne: "aider tous ensemble"
+    distracteurs: ["laisser les autres faire", "tout renverser"]
+  - question: "Peut-on se moquer d'un camarade qui porte des lunettes ?"
+    bonne: "Non, jamais"
+    distracteurs: ["Oui", "Un peu"]
+  - question: "Quand un nouvel élève arrive dans la classe, on peut..."
+    bonne: "l'accueillir gentiment"
+    distracteurs: ["l'ignorer", "se moquer de lui"]
+  - question: "Si deux amis veulent le même jouet, ils peuvent..."
+    bonne: "jouer chacun leur tour"
+    distracteurs: ["se battre", "le casser"]

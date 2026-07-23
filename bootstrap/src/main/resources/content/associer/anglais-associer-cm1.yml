@@ -23,3 +23,13 @@ puzzles:
       - { item: "deux", cible: "two" }
       - { item: "trois", cible: "three" }
       - { item: "quatre", cible: "four" }
+  - associations:
+      - { item: "cinq", cible: "five" }
+      - { item: "six", cible: "six" }
+      - { item: "sept", cible: "seven" }
+      - { item: "huit", cible: "eight" }
+  - associations:
+      - { item: "main", cible: "hand" }
+      - { item: "pied", cible: "foot" }
+      - { item: "tête", cible: "head" }
+      - { item: "œil", cible: "eye" }

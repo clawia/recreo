@@ -62,3 +62,23 @@ items:
   - { prompt: "noir", bonne: "black" }
   - { prompt: "lit", bonne: "bed" }
   - { prompt: "chapeau", bonne: "hat" }
+  - { prompt: "banane", bonne: "banana" }
+  - { prompt: "orange", bonne: "orange" }
+  - { prompt: "table", bonne: "table" }
+  - { prompt: "chaussure", bonne: "shoe" }
+  - { prompt: "crayon", bonne: "pencil" }
+  - { prompt: "stylo", bonne: "pen" }
+  - { prompt: "poule", bonne: "hen" }
+  - { prompt: "canard", bonne: "duck" }
+  - { prompt: "lapin", bonne: "rabbit" }
+  - { prompt: "souris", bonne: "mouse" }
+  - { prompt: "abeille", bonne: "bee" }
+  - { prompt: "papillon", bonne: "butterfly" }
+  - { prompt: "pluie", bonne: "rain" }
+  - { prompt: "neige", bonne: "snow" }
+  - { prompt: "vent", bonne: "wind" }
+  - { prompt: "ciel", bonne: "sky" }
+  - { prompt: "mer", bonne: "sea" }
+  - { prompt: "montagne", bonne: "mountain" }
+  - { prompt: "rivière", bonne: "river" }
+  - { prompt: "jardin", bonne: "garden" }

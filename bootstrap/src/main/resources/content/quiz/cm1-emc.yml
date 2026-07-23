@@ -38,3 +38,21 @@ questions:
   - question: "Qui Marianne représente-t-elle ?"
     bonne: "La République française"
     distracteurs: ["Une reine", "Une chanteuse"]
+  - question: "Combien y a-t-il de couleurs sur le drapeau français ?"
+    bonne: "Trois"
+    distracteurs: ["Deux", "Quatre"]
+  - question: "Que célèbre-t-on en souvenir du 14 juillet 1789 ?"
+    bonne: "La prise de la Bastille"
+    distracteurs: ["La fin d'une guerre", "Le couronnement d'un roi"]
+  - question: "Un devoir du citoyen, c'est..."
+    bonne: "respecter les lois"
+    distracteurs: ["faire tout ce qu'il veut", "ignorer les autres"]
+  - question: "Un droit de l'enfant, c'est..."
+    bonne: "aller à l'école"
+    distracteurs: ["travailler à l'usine", "ne rien apprendre"]
+  - question: "Que voit-on souvent dans une mairie française ?"
+    bonne: "Un buste de Marianne"
+    distracteurs: ["Un portrait du roi", "Un drapeau étranger"]
+  - question: "La liberté d'expression permet de..."
+    bonne: "donner son opinion"
+    distracteurs: ["insulter les autres", "empêcher les gens de parler"]

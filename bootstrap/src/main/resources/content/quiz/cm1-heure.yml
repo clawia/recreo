@@ -1,0 +1,39 @@
+entryId: heure-cm1
+title: "Lire l'heure"
+description: "Lis l'heure, convertis les durées et calcule des temps."
+gameKey: lire-heure
+gameLabel: "Lire l'heure"
+matiere: "Mathématiques"
+niveau: "CM1"
+domaine: "Grandeurs et mesures — durées"
+questions:
+  - question: "« Huit heures et quart », c'est…"
+    bonne: "8 h 15"
+    distracteurs: ["8 h 30", "8 h 45", "8 h 25"]
+  - question: "« Huit heures et demie », c'est…"
+    bonne: "8 h 30"
+    distracteurs: ["8 h 15", "8 h 45", "8 h 20"]
+  - question: "« Neuf heures moins le quart », c'est…"
+    bonne: "8 h 45"
+    distracteurs: ["9 h 15", "9 h 45", "8 h 15"]
+  - question: "Combien de minutes dans 1 heure ?"
+    bonne: "60 min"
+    distracteurs: ["100 min", "30 min", "24 min"]
+  - question: "1 h 30, c'est combien de minutes ?"
+    bonne: "90 min"
+    distracteurs: ["130 min", "60 min", "120 min"]
+  - question: "2 heures, c'est combien de minutes ?"
+    bonne: "120 min"
+    distracteurs: ["200 min", "60 min", "20 min"]
+  - question: "90 minutes, c'est…"
+    bonne: "1 h 30"
+    distracteurs: ["9 h", "1 h 3 min", "90 h"]
+  - question: "De 14 h à 16 h, combien de temps s'est écoulé ?"
+    bonne: "2 h"
+    distracteurs: ["1 h", "3 h", "30 min"]
+  - question: "Un film commence à 8 h 30 et finit à 10 h. Il dure…"
+    bonne: "1 h 30"
+    distracteurs: ["2 h", "1 h", "30 min"]
+  - question: "Combien de secondes dans 1 minute ?"
+    bonne: "60 s"
+    distracteurs: ["100 s", "30 s", "10 s"]

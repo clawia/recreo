@@ -48,3 +48,21 @@ items:
   - prompt: "VACHE"
     bonne: "[ch]"
     distracteurs: ["[an]", "[on]"]
+  - prompt: "SOURIS"
+    bonne: "[ou]"
+    distracteurs: ["[on]", "[oi]"]
+  - prompt: "POULE"
+    bonne: "[ou]"
+    distracteurs: ["[in]", "[an]"]
+  - prompt: "SAPIN"
+    bonne: "[in]"
+    distracteurs: ["[on]", "[ou]"]
+  - prompt: "MONTRE"
+    bonne: "[on]"
+    distracteurs: ["[an]", "[oi]"]
+  - prompt: "ÉTOILE"
+    bonne: "[oi]"
+    distracteurs: ["[ou]", "[an]"]
+  - prompt: "NICHE"
+    bonne: "[ch]"
+    distracteurs: ["[an]", "[on]"]
