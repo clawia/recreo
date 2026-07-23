@@ -63,12 +63,14 @@ critères) au planning, met à jour la matrice, et suit le double Done (techniqu
     **réutilise toujours `SpinAndPick`**, **aucun nouveau coup, aucune nouvelle mécanique, aucun
     nouvel ADR** (évolution de la mécanique existante). Jeu `droite-fraction-cm1` (Maths CM1, droite
     0 → 1 : 0, 1/4, 1/2, 3/4, 1). *Done pédagogique ✅ validé 2026-07-23.*
-- **Animation-intensive (plus tard, îlot Canvas)** — attrape-taupe, runner ; **traçage tactile CP**
-  (geste d'écriture — clé pour combler l'écriture CP, cf. §C).
+- **Animation-intensive (îlot Canvas)** — attrape-taupe, runner. *(Le **traçage tactile CP** est
+  écarté : voir §C, écriture CP hors scope.)*
 
 ## C. Trous de couverture du programme
 Déjà `non couvert` dans la matrice :
-- **Français CP — écriture / copie** de mots (nécessite traçage tactile ou saisie → dépend de §B).
+- 🚫 **HORS SCOPE — Français CP — écriture / copie** de mots (traçage tactile / saisie) : écarté du
+  produit (décision utilisatrice, 2026-07-23). La lecture CP reste couverte (le bon son, mot↔image,
+  reconstitue le mot…) ; le geste d'écriture n'est pas visé.
 - ✅ **LIVRÉ (s19)** — **Français CM1 — compréhension** d'un texte narratif court : jeu quiz
   `cm1-comprehension` (8 items « lis un court texte + question », DEC-0015, *à valider*).
 - ✅ **LIVRÉ (s19)** — **Français CM1 — grammaire (nature des mots)** : jeu associer/classer
@@ -96,8 +98,10 @@ Domaines encore **absents** (à ouvrir progressivement) :
   l'utilisatrice via les YAML.
 
 ## E. Fonctionnalités produit
-- **Persistance** des profils élèves / scores / reprise de session (dette **DEC-0003** — aujourd'hui
-  tout est en mémoire). Prérequis d'un vrai **suivi de progression** / tableau de bord adulte.
+- 💤 **ÉVOLUTION POSSIBLE (non envisagée pour l'instant)** — **Persistance** des profils élèves /
+  scores / reprise de session (dette **DEC-0003** — aujourd'hui tout est en mémoire) et **tableau de
+  bord adulte** / suivi de progression. Piste ouverte, mais **pas au programme actuel** (décision
+  utilisatrice, 2026-07-23) ; à ré-évaluer si un besoin de suivi apparaît.
 - ✅ **LIVRÉ (s21)** — **Axe de navigation « par matière »** (3e axe, en plus de par niveau / par
   jeu) : pages `/matieres` et `/matiere/{matiere}` via `CatalogueQuery.matieres()` + `byMatiere()`
   (read-model sur le catalogue enrichi, sans nouvel ADR) — DEC-0017. *Done pédagogique ✅ validé 2026-07-23.*
@@ -125,9 +129,9 @@ un nombre entier, réutilise `SpinAndPick`)~~ ✅ (s22) · ~~**filtres « Par je
 2026-07-23**.
 ✅ **File de validation redescendue à ZÉRO, gel levé** (règle d'or) : le prochain planning peut
 reprendre des stories de contenu. Restent, par ordre suggéré :
-**Canvas / traçage tactile CP** (B, débloque l'**écriture CP** §C + tracés / symétrie active en
-géométrie) → **persistance** (E, DEC-0003 — prérequis d'un vrai suivi de progression) → **plus de
-géométrie / mesures** (contenances, masses, aires ; géométrie CP/CM1 approfondie, §C). Le reste
-(anglais, sciences/histoire/géo/EMC approfondis, déclinaisons puzzle — phrase, tangram, carte) se
-décline sur les mécaniques disponibles (dont droite graduée, puzzle, associer/classer, memory) au fil
-des sprints.
+**plus de géométrie / mesures** (contenances, masses, aires ; géométrie CP/CM1 approfondie, §C) →
+**enrichir les viviers** (anglais, sciences/histoire/géo/EMC ; via les YAML) → **déclinaisons puzzle**
+(reconstituer une phrase, tangram, carte) et autres contenus sur les mécaniques disponibles (droite
+graduée, puzzle, associer/classer, memory).
+Écartés du programme : **écriture CP / traçage tactile** (hors scope, §C) ; **persistance / tableau de
+bord adulte** (évolution possible mais non envisagée pour l'instant, §E).
