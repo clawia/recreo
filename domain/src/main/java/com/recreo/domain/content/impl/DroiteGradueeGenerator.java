@@ -81,16 +81,19 @@ public final class DroiteGradueeGenerator implements ContentGenerator {
         // servent de repères étiquetés). Générateur FINI : une cible déjà réussie (sa clé est dans
         // excludeKeys) n'est plus reproposée → pas de répétition dans une session.
         List<String> available = new ArrayList<>();
+        List<String> placed = new ArrayList<>();
         for (int i = 1; i < ticks.size() - 1; i++) {
             String label = ticks.get(i);
-            if (!excludeKeys.contains(keyOf(label))) {
+            if (excludeKeys.contains(keyOf(label))) {
+                placed.add(label); // graduation deja placee correctement -> restera etiquetee
+            } else {
                 available.add(label);
             }
         }
         if (available.isEmpty()) {
             return Optional.empty(); // toutes les graduations internes ont été placées
         }
-        return Optional.of(buildOne(available.get(random.nextInt(available.size()))));
+        return Optional.of(buildOne(available.get(random.nextInt(available.size())), placed));
     }
 
     /** Clé déterministe d'une cible (identique à {@link Item#key()} de l'item produit). */
@@ -98,12 +101,14 @@ public final class DroiteGradueeGenerator implements ContentGenerator {
         return Item.keyOf(List.of(), "Place " + consigneNoun + " " + cible);
     }
 
-    private Item buildOne(String cible) {
+    private Item buildOne(String cible, List<String> placed) {
         String question = "Place " + consigneNoun + " " + cible;
         Answer expected = new Answer(cible);
 
         Map<String, String> meta = new LinkedHashMap<>();
         meta.put("ticks", String.join(TICK_SEPARATOR, ticks));
+        // Graduations DEJA placees (correctement) : elles restent etiquetees sur la droite.
+        meta.put("placed", String.join(TICK_SEPARATOR, placed));
         meta.put("cible", cible);
         if (min != null && max != null) {
             meta.put("min", String.valueOf(min));
