@@ -1182,6 +1182,9 @@ body {
 .droite-graduee .tick-form {
     margin: 0;
     display: flex;
+    justify-content: center;
+    flex: 1 1 0;
+    min-width: 0;
 }
 
 /* Une graduation cliquable : un trait vertical qui descend de l'axe + l'etiquette

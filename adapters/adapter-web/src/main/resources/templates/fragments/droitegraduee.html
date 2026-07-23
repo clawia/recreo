@@ -35,16 +35,22 @@
              (« 0 », « 1/4 », « 1/2 »…). Chaque tick est un formulaire htmx (fonctionne
              SANS JS) postant son etiquette comme chosenAnswer. Les etiquettes deja
              tentees a tort (disabledOptions) sont grisees. -->
+        <!-- Seules les EXTREMITES (premier/dernier repere) sont etiquetees : l'enfant doit
+             SITUER le nombre/la fraction (donne dans la consigne) a la bonne position, sans que
+             sa valeur soit ecrite sur la graduation (sinon le jeu se resume a lire l'etiquette).
+             La valeur reste dans le champ cache `chosenAnswer` pour valider le clic. -->
         <div class="droite">
-            <form class="tick-form" th:each="v : ${game.lineTicks}"
+            <form class="tick-form" th:each="v,it : ${game.lineTicks}"
                   th:action="@{/sessions/{id}/moves(id=${game.sessionId})}" method="post"
                   th:attr="hx-post=@{/sessions/{id}/moves(id=${game.sessionId})}"
                   hx-target="#game-area" hx-swap="innerHTML">
                 <input type="hidden" name="chosenAnswer" th:value="${v}"/>
                 <input type="hidden" name="from" th:value="${from}"/>
-                <button type="submit" class="droite-tick" th:text="${v}"
-                        th:classappend="${game.disabledOptions != null and game.disabledOptions.contains(v)} ? ' tentee' : ''"
-                        th:attr="disabled=${game.disabledOptions != null and game.disabledOptions.contains(v)} ? 'disabled' : null">0</button>
+                <button type="submit" class="droite-tick"
+                        th:text="${it.first or it.last} ? ${v} : ''"
+                        th:attr="aria-label=${v},
+                                 disabled=${game.disabledOptions != null and game.disabledOptions.contains(v)} ? 'disabled' : null"
+                        th:classappend="${game.disabledOptions != null and game.disabledOptions.contains(v)} ? ' tentee' : ''">0</button>
             </form>
         </div>
 
