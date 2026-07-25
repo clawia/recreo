@@ -59,3 +59,8 @@
 > (tangram / carte de France, sprint s26 dédié, nouvel ADR) — laisse d'ailleurs respirer la file de
 > contenu. Rappel : s17 + s18 puis s19 + s20 avaient chacun été validés ensemble le 2026-07-22 ;
 > s21 + s22 + s23 le 2026-07-23.
+
+> ℹ️ **DEC-0023 (2026-07-25) — filtres « par niveau » / « par matière » : ERGONOMIE, hors compte de
+> gel.** Raffinement de navigation (read-model / vue, aucune compétence pédagogique nouvelle, comme
+> les filtres « Par jeu » IDEE-3). Il **n'ajoute pas d'incrément de contenu** : la file de contenu
+> reste à **2 incréments non validés (s24 + s25)**. Son Done pédagogique (UX) reste à confirmer en démo.

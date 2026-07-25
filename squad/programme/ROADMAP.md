@@ -169,6 +169,11 @@ Domaines encore **absents** (à ouvrir progressivement) :
   via des boutons **combinables** et **réinitialisables** ; **filtrage serveur par query params**
   (`/jeux?niveau=&matiere=`), pur **read-model / vue**, sans changement de domaine (pas d'ADR).
   *Done pédagogique ✅ validé 2026-07-23.*
+- ✅ **LIVRÉ (2026-07-25)** — **Filtres étendus aux axes « par niveau » et « par matière »**
+  (DEC-0023, demandé par l'utilisatrice) : `/niveau/{niveau}?matiere=` filtre par matière et
+  `/matiere/{matiere}?niveau=` filtre par niveau — chips **bascule** + « Tous / Toutes », n'affichant
+  que les options **présentes** dans la tranche courante. Symétrique aux filtres « Par jeu », pur
+  **read-model / vue** (pas d'ADR, ergonomie — aucune compétence nouvelle). *⏳ Done pédagogique à valider.*
 
 ## F. Intendance / technique
 - Rendu **pixel / navigateur** (Playwright) si un environnement le permet un jour (dette rétro ; on
