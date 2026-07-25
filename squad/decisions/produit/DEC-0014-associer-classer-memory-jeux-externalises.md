@@ -62,6 +62,15 @@ Retours de l'utilisatrice sur s17, corrigés en s18 — pas de nouvelle mécaniq
 3. **Memory anglais CM1** : le côté français est remplacé par des **images** (🐶🐱🏠🐟☀️🍎) associées
    au mot anglais (au lieu du mot FR écrit).
 
+### Raffinement (2026-07-25) — bouton « Suivant » à la complétion du memory
+Demande utilisatrice : quand la **dernière paire** est retournée, le memory **n'enchaîne plus
+automatiquement** l'écran suivant. L'enfant voit d'abord sa **planche complète**, puis un **bouton
+« Suivant ▶ »** (révélé par `memory.js` à la complétion) déclenche le passage à l'écran suivant
+(item suivant ou écran de fin). C'est ce clic qui soumet le form caché — **aucun changement serveur**
+(même coup `SubmitAssociations`, même endpoint) ; purement **vue + îlot JS** (`memory.html`,
+`memory.js`, CSS `.memory-suivant`). Repli : si le bouton est absent, comportement historique
+(soumission immédiate). Ergonomie — aucune compétence nouvelle.
+
 ## À confirmer en démo
 - Justesse des contenus des 6 packs YAML (paires FR↔EN, quantité↔chiffre, fractions↔représentation,
   mot↔image, catégorisation vivant/non-vivant).
