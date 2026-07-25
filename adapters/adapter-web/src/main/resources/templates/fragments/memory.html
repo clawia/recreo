@@ -55,6 +55,15 @@
             <input type="hidden" name="from" th:value="${from}"/>
         </form>
 
+        <!-- Bouton « Suivant » : MASQUE au depart, revele par /js/memory.js quand TOUTES les
+             paires sont trouvees. L'enfant voit d'abord sa planche complete, puis clique pour
+             passer a l'ecran suivant (item suivant ou ecran de fin) — c'est ce clic qui soumet
+             le form cache ci-dessus. Le symbole ▶ signale « ecran suivant ». -->
+        <div class="memory-suivant-slot">
+            <button type="button" class="memory-suivant play-btn big" hidden
+                    aria-label="Passer à l'écran suivant">Suivant ▶</button>
+        </div>
+
         <!-- Message de resultat : emplacement RESERVE commun, sous la grille. -->
         <div th:replace="~{fragments/commun :: feedbackSlot}"></div>
     </div>

@@ -101,6 +101,25 @@
     }
   }
 
+  // Toutes les paires trouvees : on NE soumet PAS tout de suite. On revele le bouton
+  // « Suivant » ; l'enfant voit sa planche complete puis clique pour passer a l'ecran
+  // suivant (item suivant ou ecran de fin). C'est ce clic qui appelle submit() -> soumet
+  // le form cache via htmx. Repli : si le bouton est absent, on garde le comportement
+  // historique (soumission immediate).
+  function revealNext(root) {
+    var btn = root.querySelector('.memory-suivant');
+    if (!btn) { submit(root); return; }
+    btn.hidden = false;
+    if (!btn.getAttribute('data-wired')) {
+      btn.setAttribute('data-wired', '1');
+      btn.addEventListener('click', function () {
+        btn.disabled = true;
+        submit(root);
+      });
+    }
+    btn.focus();
+  }
+
   function onCardClick(root, carte) {
     if (busy) return;
     if (carte.classList.contains('appariee')) return;
@@ -122,7 +141,7 @@
       second.classList.add('appariee');
       first = null;
       if (allMatched(root)) {
-        submit(root);
+        revealNext(root);
       }
     } else {
       // Mauvaise paire : -1 coeur. On decremente l'affichage tout de suite (visuel

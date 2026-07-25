@@ -160,6 +160,18 @@ body {
     margin-top: 1rem;
 }
 
+/* Bouton « Suivant » du memory : centre sous la grille, revele a la completion. */
+.memory-suivant-slot {
+    text-align: center;
+    min-height: 3.5rem;
+}
+.memory-suivant {
+    background: var(--accent, #4c6ef5);
+}
+.memory-suivant[hidden] {
+    display: none;
+}
+
 .settings-btn {
     border: none;
     border-radius: 14px;
