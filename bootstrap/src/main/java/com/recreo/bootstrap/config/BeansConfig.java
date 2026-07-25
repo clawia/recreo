@@ -20,6 +20,7 @@ import com.recreo.domain.content.impl.FriseChronologiqueGenerator;
 import com.recreo.domain.content.impl.MotChoixGenerator;
 import com.recreo.domain.content.impl.DroiteGradueeGenerator;
 import com.recreo.domain.content.impl.MotPuzzleGenerator;
+import com.recreo.domain.content.impl.PhrasePuzzleGenerator;
 import com.recreo.domain.content.impl.QuizGenerator;
 import com.recreo.domain.content.impl.RangeNombresGenerator;
 import com.recreo.domain.content.impl.AssociationGenerator;
@@ -313,6 +314,20 @@ public class BeansConfig {
                     p.title(), p.description(), PuzzleMechanic.ID, factory));
         }
 
+        // Declinaison "reconstitue la phrase" (s25) : MEME mecanique puzzle, l'unite a ordonner
+        // est le MOT (pas la lettre). CONTENU EXTERNALISE dans content/phrase/*.yml, charge et
+        // VALIDE au demarrage. Le domaine n'expose qu'un PhrasePuzzleGenerator generique alimente
+        // par ces phrases. Defaut 5 phrases par session (plancher 1). Coeurs pilotables par le YAML.
+        for (PhraseContentPack p : new PhrasePackLoader().loadAll()) {
+            ContentDescriptor d = p.descriptor();
+            SimpleGameFactory factory = new SimpleGameFactory(
+                    p.entryId(), p.title(), p.gameKey(), d.niveau(), PuzzleMechanic.ID,
+                    () -> new PhrasePuzzleGenerator(d, p.consigne(), p.phrases()), 5, 1, p.jokers());
+            defs.add(new CatalogEntryDef(
+                    p.entryId(), d.matiere(), d.niveau(), p.gameKey(), p.gameLabel(),
+                    p.title(), p.description(), PuzzleMechanic.ID, factory));
+        }
+
         // 8e mecanique (s22 / ADR-0018) : "droite graduee" (ilot JS). MEME moteur partage,
         // reutilise le coup SpinAndPick (cliquer un tick = choisir une valeur). Contenu
         // COMBINATOIRE (DroiteGradueeGenerator), bornes cablees ici. Reglage commun "nombre de
@@ -349,6 +364,26 @@ public class BeansConfig {
                 DroiteGradueeMechanic.ID,
                 new SimpleGameFactory("droite-fraction-cm1", "Maths CM1 — Fractions sur la droite", "droite-graduee", "CM1",
                         DroiteGradueeMechanic.ID, () -> new DroiteGradueeGenerator(droiteFracDesc, fractionTicks, "la fraction"))));
+        // Nouveaux jeux droite graduee (s25). CP : une 2e droite plus ambitieuse (0 a 50, de 5 en 5).
+        ContentDescriptor droiteCinquanteDesc =
+                new ContentDescriptor("Mathématiques", "CP", "Nombres et calculs — situer un nombre sur une droite graduee");
+        List<String> droiteCinquanteTicks = List.of("0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50");
+        defs.add(new CatalogEntryDef(
+                "droite-graduee-cinquante-cp", "Mathématiques", "CP", "droite-graduee", "Place le nombre (jusqu'à 50)",
+                "Maths CP — Droite graduee (0 a 50)", "Place le nombre au bon endroit sur la droite graduee (0 a 50).",
+                DroiteGradueeMechanic.ID,
+                new SimpleGameFactory("droite-graduee-cinquante-cp", "Maths CP — Droite graduee (0 a 50)", "droite-graduee", "CP",
+                        DroiteGradueeMechanic.ID, () -> new DroiteGradueeGenerator(droiteCinquanteDesc, droiteCinquanteTicks, "le nombre"))));
+        // CM1 : les milliers (0 a 1000, de 100 en 100).
+        ContentDescriptor droiteMilleDesc =
+                new ContentDescriptor("Mathématiques", "CM1", "Nombres et calculs — situer un nombre sur une droite graduee");
+        List<String> droiteMilleTicks = List.of("0", "100", "200", "300", "400", "500", "600", "700", "800", "900", "1000");
+        defs.add(new CatalogEntryDef(
+                "droite-graduee-milliers-cm1", "Mathématiques", "CM1", "droite-graduee", "Place le nombre (les milliers)",
+                "Maths CM1 — Droite graduee (milliers)", "Place le nombre au bon endroit sur la droite graduee (0 a 1000).",
+                DroiteGradueeMechanic.ID,
+                new SimpleGameFactory("droite-graduee-milliers-cm1", "Maths CM1 — Droite graduee (milliers)", "droite-graduee", "CM1",
+                        DroiteGradueeMechanic.ID, () -> new DroiteGradueeGenerator(droiteMilleDesc, droiteMilleTicks, "le nombre"))));
 
         return new InMemoryGameCatalog(
                 List.of(banditManchotMechanic, texteATrouMechanic, quizAventureMechanic, glisserDeposerMechanic,
