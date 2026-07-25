@@ -3,7 +3,7 @@
 - **Type** : Produit / Pédagogique — **déclinaison d'une mécanique existante** (Puzzle : ordonner
   des mots) + contenus additionnels sur mécaniques existantes + pur contenu YAML.
   **Aucune nouvelle mécanique, aucun nouveau coup, aucun nouvel ADR.**
-- **Date** : 2026-07-26
+- **Date** : 2026-07-25
 - **Auteur** : Camille (PO)
 - **Sprint** : s25
 - **Compétence programme visée** : **Français CP** & **Français CM1** — reconstituer / remettre une
