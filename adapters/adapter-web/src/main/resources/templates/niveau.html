@@ -15,10 +15,25 @@
 
 <main class="selection">
     <section class="catalogue">
+        <!-- Barre de filtres MATIERE (affichée s'il y a au moins 2 matières à ce niveau).
+             Un unique « Toutes » qui annule le filtre, puis un chip BASCULE par matière
+             (reclic sur la matière active → déselection). Symétrique aux filtres « Par jeu ». -->
+        <div class="filters" th:if="${matieres != null and matieres.size() > 1}">
+            <a class="filter-chip" th:classappend="${selectedMatiere == null} ? ' active' : ''"
+               th:href="@{/niveau/{n}(n=${niveau})}">Toutes</a>
+            <a class="filter-chip" th:each="m : ${matieres}"
+               th:classappend="${m == selectedMatiere} ? ' active' : ''"
+               th:href="${m == selectedMatiere} ? @{/niveau/{n}(n=${niveau})} : @{/niveau/{n}(n=${niveau}, matiere=${m})}"
+               th:text="${m}">Maths</a>
+        </div>
+
         <div class="cards">
             <div th:each="item : ${entries}"
                  th:insert="~{fragments/catalogue :: leaf(${item}, ${from}, 'niveau')}"></div>
         </div>
+
+        <!-- Aucun jeu ne correspond au filtre courant. -->
+        <p th:if="${#lists.isEmpty(entries)}" class="hint">Aucun jeu pour ce filtre</p>
     </section>
 </main>
 </body>

@@ -63,9 +63,23 @@ public class GameController {
     }
 
     @GetMapping("/niveau/{niveau}")
-    public String jeuxDuNiveau(@PathVariable("niveau") String niveau, Model model) {
+    public String jeuxDuNiveau(@PathVariable("niveau") String niveau,
+                               @RequestParam(value = "matiere", required = false) String matiere,
+                               Model model) {
+        // Axe « par niveau », FILTRABLE par matiere (chips bascule + « Toutes », symetrique aux
+        // filtres de « Par jeu », cf. DEC-0019). Les chips proposees = seulement les matieres
+        // PRESENTES a ce niveau, dans l'ordre canonique du catalogue.
+        boolean filtreMatiere = matiere != null && !matiere.isBlank();
+        var all = mapper.toCatalogItems(catalogueQuery.byNiveau(niveau));
+        var presentes = all.stream().map(i -> i.matiere()).distinct().toList();
+        var matieres = catalogueQuery.matieres().stream().filter(presentes::contains).toList();
+        var entries = all.stream()
+                .filter(i -> !filtreMatiere || i.matiere().equals(matiere))
+                .toList();
         model.addAttribute("niveau", niveau);
-        model.addAttribute("entries", mapper.toCatalogItems(catalogueQuery.byNiveau(niveau)));
+        model.addAttribute("entries", entries);
+        model.addAttribute("matieres", matieres);
+        model.addAttribute("selectedMatiere", filtreMatiere ? matiere : null);
         model.addAttribute("from", "/niveau/" + niveau);
         model.addAttribute("back", "/niveaux");
         return "niveau";
@@ -80,9 +94,23 @@ public class GameController {
     }
 
     @GetMapping("/matiere/{matiere}")
-    public String jeuxDeLaMatiere(@PathVariable("matiere") String matiere, Model model) {
+    public String jeuxDeLaMatiere(@PathVariable("matiere") String matiere,
+                                  @RequestParam(value = "niveau", required = false) String niveau,
+                                  Model model) {
+        // Axe « par matiere », FILTRABLE par niveau (chips bascule + « Tous », symetrique aux
+        // filtres de « Par jeu », cf. DEC-0019). Les chips proposees = seulement les niveaux
+        // PRESENTS dans cette matiere, dans l'ordre canonique du catalogue.
+        boolean filtreNiveau = niveau != null && !niveau.isBlank();
+        var all = mapper.toCatalogItems(catalogueQuery.byMatiere(matiere));
+        var presents = all.stream().map(i -> i.niveau()).distinct().toList();
+        var niveaux = catalogueQuery.niveaux().stream().filter(presents::contains).toList();
+        var entries = all.stream()
+                .filter(i -> !filtreNiveau || i.niveau().equals(niveau))
+                .toList();
         model.addAttribute("matiere", matiere);
-        model.addAttribute("entries", mapper.toCatalogItems(catalogueQuery.byMatiere(matiere)));
+        model.addAttribute("entries", entries);
+        model.addAttribute("niveaux", niveaux);
+        model.addAttribute("selectedNiveau", filtreNiveau ? niveau : null);
         model.addAttribute("from", "/matiere/" + matiere);
         model.addAttribute("back", "/matieres");
         return "matiere";
