@@ -9,6 +9,12 @@
   un mot à partir d'une définition) ; transverse (droit à l'erreur — capital de cœurs défini dans le YAML du jeu) ; sans objet pour l'axe « par matière » (fonctionnalité de navigation, pas de contenu).
 - **Statut de validation** : **VALIDÉ (utilisatrice, 2026-07-23)** — Done pédagogique prononcé par
   l'utilisatrice après démo (validation groupée s21 + s22 + s23).
+- **⚠️ PARTIELLEMENT ANNULÉE (2026-07-22)** : le **réglage adulte « nombre de cœurs »** initialement
+  envisagé (écran de paramètres + `JokersSettingsView` + paramètre POST `jokers`) a été **abandonné
+  sur demande de l'utilisatrice** — les jokers se paramètrent **uniquement via l'en-tête YAML**
+  `jokers`. Les décisions **1 (mécanique Puzzle)**, **3 (navigation par matière)** et le principe
+  **« jokers pilotés par le YAML » (2, partie retenue)** restent **en vigueur**. Voir la §2 ci-dessous
+  (déjà rédigée dans cette version définitive) et la ROADMAP §A3.
 
 ## Contexte / besoin
 Trois évolutions produit avancent ensemble en s21 (gros incrément parallèle) :
@@ -77,6 +83,7 @@ domaine (cf. note ADR-0017).
 - Justesse et niveau des mots des 2 puzzles (longueur CP courte + indice image lisible ; définitions
   CM1 claires et non ambiguës) — contenus à relire/enrichir par l'utilisatrice dans les YAML.
 - Ergonomie de l'assemblage des lettres (souris / tactile) et lisibilité de l'indice.
-- Réglage « nombre de cœurs » : bornes pertinentes, capital appliqué à la session en cours, défaut 3
-  préservé ; capital memory correct depuis le YAML.
+- Capital de cœurs piloté par le YAML : `jokers` de l'en-tête appliqué à la session, défaut 3
+  préservé quand le champ est absent ; capital memory (6) correct depuis le YAML. *(Le réglage adulte
+  à la volée a été retiré — cf. note « partiellement annulée » en tête.)*
 - Navigation « par matière » : liste des matières complète et cohérente ; retour vers l'axe d'origine.
