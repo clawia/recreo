@@ -11,7 +11,7 @@ s21 : Français CP majuscule↔minuscule + le/la, Français CP/CM1 reconstituer 
 Maths CP/CM1 situer/placer un nombre sur une droite graduée ; s23 : Maths CM1 fraction sur la droite,
 **Géométrie** CP formes + CM1 propriétés/angles/symétrie, Maths CM1 longueurs + durées. Jokers
 **réglables**
-(capital piloté par l'en-tête YAML `jokers` + réglage adulte — s21, A3). **3 axes de navigation** : par
+(capital piloté **uniquement** par l'en-tête YAML `jokers` — s21, A3). **3 axes de navigation** : par
 niveau, par jeu (désormais **filtrable** par niveau/matière — s22, E), **par matière** (s21, E).
 Contenu à liste finie **entièrement externalisé et auto-enregistré** — y compris **frise + fractions**
 (s21, D, dette remboursée) ; plus aucun contenu combinatoire en dur côté listes finies (les
@@ -39,9 +39,12 @@ critères) au planning, met à jour la matrice, et suit le double Done (techniqu
    `cp-masculin-feminin` — classer le / la (catégorisation) — **Français CP** (DEC-0018, ✅ validé 2026-07-23).
 3. **Capital de jokers dépendant de la mécanique** — ✅ **LIVRÉ (s19)** : memory à **6 cœurs**, autres
    à 3 (`SessionEngine(mechanicId, defaultJokers)`, `MemoryMechanic.JOKERS = 6` — DEC-0015, réalise
-   IDEE-1). ✅ **LIVRÉ (s21) — cœurs réglables** : capital porté par l'**en-tête YAML `jokers`** (lu
-   par `SessionEngine` via `settings["jokers"]` ; le 6 du memory vient désormais du YAML) + **réglage
-   adulte « nombre de cœurs »** (`JokersSettingsView`, param POST `jokers`) — DEC-0017, ✅ validé 2026-07-23.
+   IDEE-1). ✅ **LIVRÉ (s21) — cœurs réglables par le YAML** : capital porté par l'**en-tête YAML
+   `jokers`** (lu par `SessionEngine` via `settings["jokers"]` ; le 6 du memory vient désormais du YAML)
+   — DEC-0017, ✅ validé 2026-07-23. ⚠️ **Le réglage adulte « nombre de cœurs »** (`JokersSettingsView`,
+   param POST `jokers`), initialement prévu par DEC-0017, a été **retiré sur demande de l'utilisatrice**
+   (2026-07-22) : les cœurs se paramètrent **uniquement dans le YAML**. `JokersSettingsView` supprimée,
+   plus de bloc jokers dans `parametres.html`.
 
 ## B. Nouvelles mécaniques (îlot JS)
 - ✅ **LIVRÉ (s17)** — **Memory** (paires) — îlot JS léger (flip CSS), réutilise `SubmitAssociations`
