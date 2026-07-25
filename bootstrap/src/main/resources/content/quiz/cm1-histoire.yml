@@ -57,3 +57,22 @@ questions:
   - question: "Quel événement marque le début de l'époque contemporaine en France ?"
     bonne: "La Révolution française de 1789"
     distracteurs: ["La chute de l'Empire romain", "La découverte de l'Amérique"]
+  # Repères : dates et personnages (programme CM1)
+  - question: "En quelle année s'est terminée la Seconde Guerre mondiale ?"
+    bonne: "1945"
+    distracteurs: ["1918", "1789"]
+  - question: "Quel roi des Francs a été couronné empereur en l'an 800 ?"
+    bonne: "Charlemagne"
+    distracteurs: ["Clovis", "Louis XIV"]
+  - question: "Quel roi des Francs a été le premier à se convertir au christianisme ?"
+    bonne: "Clovis"
+    distracteurs: ["Charlemagne", "Napoléon"]
+  - question: "Quelle grande période commence avec la chute de l'Empire romain d'Occident en 476 ?"
+    bonne: "Le Moyen Âge"
+    distracteurs: ["L'Antiquité", "Les Temps modernes"]
+  - question: "À quel siècle a eu lieu la Révolution française ?"
+    bonne: "Au XVIIIe siècle"
+    distracteurs: ["Au XXe siècle", "Au XVe siècle"]
+  - question: "Quel empereur français a été vaincu à Waterloo en 1815 ?"
+    bonne: "Napoléon Bonaparte"
+    distracteurs: ["Louis XIV", "Charlemagne"]

@@ -1,0 +1,46 @@
+# Quiz-aventure — Les aires (CM1). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+entryId: aires-cm1
+title: "Les aires"
+description: "Calcule et compare les aires des figures."
+gameKey: aires
+gameLabel: "Les aires"
+matiere: "Géométrie"
+niveau: "CM1"
+domaine: "Aires"
+questions:
+  - question: "Quelle est l'aire d'un carré de 5 cm de côté ?"
+    bonne: "25 cm²"
+    distracteurs: ["20 cm²", "10 cm²"]
+  - question: "Quelle est l'aire d'un carré de 4 cm de côté ?"
+    bonne: "16 cm²"
+    distracteurs: ["8 cm²", "12 cm²"]
+  - question: "Quelle est l'aire d'un rectangle de 5 cm de longueur et 3 cm de largeur ?"
+    bonne: "15 cm²"
+    distracteurs: ["16 cm²", "8 cm²"]
+  - question: "Quelle est l'aire d'un rectangle de 6 cm de longueur et 2 cm de largeur ?"
+    bonne: "12 cm²"
+    distracteurs: ["16 cm²", "8 cm²"]
+  - question: "Quelle est l'aire d'un rectangle de 10 cm de longueur et 4 cm de largeur ?"
+    bonne: "40 cm²"
+    distracteurs: ["28 cm²", "14 cm²"]
+  - question: "Comment calcule-t-on l'aire d'un rectangle ?"
+    bonne: "Longueur × largeur"
+    distracteurs: ["Longueur + largeur", "(Longueur + largeur) × 2"]
+  - question: "Comment calcule-t-on l'aire d'un carré ?"
+    bonne: "côté × côté"
+    distracteurs: ["côté × 4", "côté + côté"]
+  - question: "Une figure recouvre exactement 12 carreaux de 1 cm² chacun. Quelle est son aire ?"
+    bonne: "12 cm²"
+    distracteurs: ["24 cm²", "12 cm"]
+  - question: "Que mesure l'aire d'une figure ?"
+    bonne: "La surface qu'elle occupe"
+    distracteurs: ["La longueur de son contour", "Le nombre de ses côtés"]
+  - question: "La longueur du tour d'une figure, c'est..."
+    bonne: "le périmètre"
+    distracteurs: ["l'aire", "la surface"]
+  - question: "Dans quelle unité mesure-t-on souvent une aire ?"
+    bonne: "le centimètre carré (cm²)"
+    distracteurs: ["le centimètre (cm)", "le kilogramme (kg)"]
+  - question: "Quelle est l'aire d'un carré de 10 cm de côté ?"
+    bonne: "100 cm²"
+    distracteurs: ["40 cm²", "20 cm²"]

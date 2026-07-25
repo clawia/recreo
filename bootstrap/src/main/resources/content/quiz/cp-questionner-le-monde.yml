@@ -72,3 +72,22 @@ questions:
   - question: "Quel objet flotte sur l'eau ?"
     bonne: "Un bouchon en liège"
     distracteurs: ["Une pièce de monnaie", "Un clou"]
+  # Le vivant : animaux, plantes, corps humain
+  - question: "Quel est le petit du chien ?"
+    bonne: "Le chiot"
+    distracteurs: ["Le chaton", "Le poussin"]
+  - question: "Quel animal vit dans une ruche et fabrique du miel ?"
+    bonne: "L'abeille"
+    distracteurs: ["La mouche", "Le papillon"]
+  - question: "Avec quelle partie du corps entend-on les sons ?"
+    bonne: "Les oreilles"
+    distracteurs: ["Les yeux", "La bouche"]
+  - question: "Quel animal a une trompe ?"
+    bonne: "L'éléphant"
+    distracteurs: ["Le lion", "La girafe"]
+  - question: "Combien de doigts as-tu sur une main ?"
+    bonne: "5"
+    distracteurs: ["4", "10"]
+  - question: "Quelle partie de la plante se trouve sous la terre ?"
+    bonne: "Les racines"
+    distracteurs: ["Les fleurs", "Les feuilles"]

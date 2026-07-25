@@ -63,3 +63,22 @@ questions:
   - question: "Sur quel continent se trouve le désert du Sahara ?"
     bonne: "L'Afrique"
     distracteurs: ["L'Asie", "L'Europe"]
+  # Pays, mers et repères du monde (programme CM1)
+  - question: "Dans quel pays se trouve la ville de Rome ?"
+    bonne: "L'Italie"
+    distracteurs: ["L'Espagne", "La Grèce"]
+  - question: "Quel est le plus grand pays du monde par sa superficie ?"
+    bonne: "La Russie"
+    distracteurs: ["La Chine", "Le Canada"]
+  - question: "Comment s'appelle la ligne imaginaire qui partage la Terre en deux hémisphères ?"
+    bonne: "L'équateur"
+    distracteurs: ["Le méridien", "Le tropique"]
+  - question: "Quel est le plus grand désert chaud du monde ?"
+    bonne: "Le Sahara"
+    distracteurs: ["Le désert de Gobi", "Le Kalahari"]
+  - question: "Quelle mer sépare la France du Royaume-Uni au nord ?"
+    bonne: "La Manche"
+    distracteurs: ["La mer Méditerranée", "La mer Rouge"]
+  - question: "Combien y a-t-il d'océans sur la Terre ?"
+    bonne: "5"
+    distracteurs: ["3", "7"]

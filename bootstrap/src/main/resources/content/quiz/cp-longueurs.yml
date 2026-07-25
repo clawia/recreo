@@ -1,0 +1,40 @@
+# Quiz-aventure — Les longueurs (CP). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+entryId: longueurs-cp
+title: "Les longueurs"
+description: "Mesure et compare des longueurs."
+gameKey: quiz-aventure
+gameLabel: "Les longueurs"
+matiere: "Mathématiques"
+niveau: "CP"
+domaine: "Grandeurs et mesures — longueurs"
+questions:
+  - question: "Avec quel objet mesure-t-on la longueur d'un cahier ?"
+    bonne: "La règle"
+    distracteurs: ["La balance", "La montre"]
+  - question: "Un crayon mesure environ..."
+    bonne: "15 cm"
+    distracteurs: ["15 mètres", "15 kilomètres"]
+  - question: "Une porte mesure environ..."
+    bonne: "2 mètres"
+    distracteurs: ["2 centimètres", "200 mètres"]
+  - question: "Entre un adulte et un bébé, qui est le plus grand ?"
+    bonne: "L'adulte"
+    distracteurs: ["Le bébé", "Ils font la même taille"]
+  - question: "Le contraire de « plus long », c'est..."
+    bonne: "plus court"
+    distracteurs: ["plus grand", "plus lourd"]
+  - question: "On mesure un ruban avec la règle : il va de 0 jusqu'à 5. Combien mesure-t-il ?"
+    bonne: "5 cm"
+    distracteurs: ["5 mètres", "50 cm"]
+  - question: "Lequel est le plus long : un train ou une voiture ?"
+    bonne: "Le train"
+    distracteurs: ["La voiture", "C'est pareil"]
+  - question: "Pour mesurer la longueur d'un terrain de football, on utilise..."
+    bonne: "le mètre"
+    distracteurs: ["le centimètre", "le gramme"]
+  - question: "En quelle unité mesure-t-on une petite longueur, comme celle d'une gomme ?"
+    bonne: "le centimètre"
+    distracteurs: ["le litre", "le kilogramme"]
+  - question: "Un escargot est ... qu'un serpent."
+    bonne: "plus court"
+    distracteurs: ["plus long", "aussi long"]

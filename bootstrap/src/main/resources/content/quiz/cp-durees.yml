@@ -1,0 +1,43 @@
+# Quiz-aventure — Les durées (CP). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+entryId: durees-cp
+title: "Les durées"
+description: "Le temps qui passe : jours, mois, saisons et heures."
+gameKey: quiz-aventure
+gameLabel: "Les durées"
+matiere: "Mathématiques"
+niveau: "CP"
+domaine: "Grandeurs et mesures — durées"
+questions:
+  - question: "Combien y a-t-il de jours dans une semaine ?"
+    bonne: "7"
+    distracteurs: ["5", "10"]
+  - question: "Quel jour vient juste après mardi ?"
+    bonne: "Mercredi"
+    distracteurs: ["Lundi", "Jeudi"]
+  - question: "Quel jour vient juste avant samedi ?"
+    bonne: "Vendredi"
+    distracteurs: ["Dimanche", "Jeudi"]
+  - question: "Combien y a-t-il de mois dans une année ?"
+    bonne: "12"
+    distracteurs: ["10", "7"]
+  - question: "Combien y a-t-il de saisons dans une année ?"
+    bonne: "4"
+    distracteurs: ["2", "12"]
+  - question: "Quand le soleil se lève, c'est..."
+    bonne: "le matin"
+    distracteurs: ["le soir", "la nuit"]
+  - question: "Quand on dort et qu'il fait tout noir dehors, c'est..."
+    bonne: "la nuit"
+    distracteurs: ["le matin", "le midi"]
+  - question: "La grande aiguille est sur le 12 et la petite aiguille sur le 3. Quelle heure est-il ?"
+    bonne: "3 heures"
+    distracteurs: ["12 heures", "6 heures"]
+  - question: "La grande aiguille est sur le 12 et la petite aiguille sur le 6. Quelle heure est-il ?"
+    bonne: "6 heures"
+    distracteurs: ["12 heures", "3 heures"]
+  - question: "Qu'est-ce qui dure le plus longtemps ?"
+    bonne: "Une nuit"
+    distracteurs: ["Une minute", "Une seconde"]
+  - question: "Quel est le premier mois de l'année ?"
+    bonne: "Janvier"
+    distracteurs: ["Décembre", "Juin"]
