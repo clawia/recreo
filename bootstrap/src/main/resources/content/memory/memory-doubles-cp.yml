@@ -1,0 +1,17 @@
+entryId: memory-doubles-cp
+title: "Memory des doubles"
+description: "Retrouve les paires : le nombre et son double."
+gameKey: memory
+gameLabel: "Memory des doubles"
+matiere: "Mathématiques"
+niveau: "CP"
+domaine: "Nombres — doubles"
+jokers: 6
+consigne: "Retrouve les paires : le nombre et son double"
+paires:
+  - { gauche: "1", droite: "2" }
+  - { gauche: "3", droite: "6" }
+  - { gauche: "4", droite: "8" }
+  - { gauche: "5", droite: "10" }
+  - { gauche: "7", droite: "14" }
+  - { gauche: "9", droite: "18" }

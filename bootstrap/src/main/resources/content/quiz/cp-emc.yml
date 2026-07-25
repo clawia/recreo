@@ -56,3 +56,21 @@ questions:
   - question: "Si deux amis veulent le même jouet, ils peuvent..."
     bonne: "jouer chacun leur tour"
     distracteurs: ["se battre", "le casser"]
+  - question: "Quand on emprunte les affaires d'un ami, on les rend..."
+    bonne: "en bon état"
+    distracteurs: ["cassées", "jamais"]
+  - question: "En classe, chaque élève a le droit d'être..."
+    bonne: "écouté"
+    distracteurs: ["ignoré", "moqué"]
+  - question: "Les filles et les garçons peuvent jouer..."
+    bonne: "aux mêmes jeux"
+    distracteurs: ["à rien ensemble", "chacun de leur côté seulement"]
+  - question: "Si tu vois un camarade tomber, tu peux..."
+    bonne: "l'aider à se relever"
+    distracteurs: ["rire de lui", "partir en courant"]
+  - question: "Pour bien vivre ensemble, on respecte..."
+    bonne: "les règles de la classe"
+    distracteurs: ["aucune règle", "seulement ses envies"]
+  - question: "Dire la vérité, c'est être..."
+    bonne: "honnête"
+    distracteurs: ["menteur", "tricheur"]

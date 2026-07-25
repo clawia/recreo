@@ -56,3 +56,21 @@ questions:
   - question: "La liberté d'expression permet de..."
     bonne: "donner son opinion"
     distracteurs: ["insulter les autres", "empêcher les gens de parler"]
+  - question: "Qui est le chef de l'État en France ?"
+    bonne: "Le président de la République"
+    distracteurs: ["Le roi", "Le maire"]
+  - question: "Comment appelle-t-on le chef d'une commune ?"
+    bonne: "Le maire"
+    distracteurs: ["Le préfet", "Le juge"]
+  - question: "Tous les citoyens sont égaux devant..."
+    bonne: "la loi"
+    distracteurs: ["l'argent", "le roi"]
+  - question: "La laïcité à l'école, c'est..."
+    bonne: "le respect de toutes les croyances"
+    distracteurs: ["une seule religion autorisée", "interdire de penser"]
+  - question: "En France, on peut voter à partir de..."
+    bonne: "18 ans"
+    distracteurs: ["10 ans", "30 ans"]
+  - question: "Où les députés votent-ils les lois ?"
+    bonne: "À l'Assemblée nationale"
+    distracteurs: ["À la mairie", "À l'école"]

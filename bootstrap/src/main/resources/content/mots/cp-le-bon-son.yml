@@ -66,3 +66,21 @@ items:
   - prompt: "NICHE"
     bonne: "[ch]"
     distracteurs: ["[an]", "[on]"]
+  - prompt: "CHÂTEAU"
+    bonne: "[ch]"
+    distracteurs: ["[oi]", "[in]"]
+  - prompt: "MOUCHE"
+    bonne: "[ou]"
+    distracteurs: ["[an]", "[in]"]
+  - prompt: "MANTEAU"
+    bonne: "[an]"
+    distracteurs: ["[oi]", "[ou]"]
+  - prompt: "BALANÇOIRE"
+    bonne: "[oi]"
+    distracteurs: ["[on]", "[ou]"]
+  - prompt: "MOUTON"
+    bonne: "[on]"
+    distracteurs: ["[in]", "[oi]"]
+  - prompt: "PINCEAU"
+    bonne: "[in]"
+    distracteurs: ["[ou]", "[oi]"]

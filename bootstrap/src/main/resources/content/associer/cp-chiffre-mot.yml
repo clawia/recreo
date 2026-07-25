@@ -1,0 +1,24 @@
+entryId: chiffre-mot-cp
+title: "Chiffre et mot-nombre"
+description: "Associe le chiffre et le mot."
+gameKey: associer
+gameLabel: "Chiffre et mot-nombre"
+matiere: "Mathématiques"
+niveau: "CP"
+domaine: "Nombres"
+consigne: "Associe le chiffre et le mot"
+puzzles:
+  - associations:
+      - { item: "1", cible: "un" }
+      - { item: "2", cible: "deux" }
+      - { item: "3", cible: "trois" }
+      - { item: "4", cible: "quatre" }
+  - associations:
+      - { item: "5", cible: "cinq" }
+      - { item: "6", cible: "six" }
+      - { item: "7", cible: "sept" }
+      - { item: "8", cible: "huit" }
+  - associations:
+      - { item: "9", cible: "neuf" }
+      - { item: "10", cible: "dix" }
+      - { item: "0", cible: "zéro" }

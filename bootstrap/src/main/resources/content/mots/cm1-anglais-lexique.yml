@@ -82,3 +82,18 @@ items:
   - { prompt: "montagne", bonne: "mountain" }
   - { prompt: "rivière", bonne: "river" }
   - { prompt: "jardin", bonne: "garden" }
+  - { prompt: "fromage", bonne: "cheese" }
+  - { prompt: "œuf", bonne: "egg" }
+  - { prompt: "poulet", bonne: "chicken" }
+  - { prompt: "viande", bonne: "meat" }
+  - { prompt: "riz", bonne: "rice" }
+  - { prompt: "tomate", bonne: "tomato" }
+  - { prompt: "carotte", bonne: "carrot" }
+  - { prompt: "chaussette", bonne: "sock" }
+  - { prompt: "manteau", bonne: "coat" }
+  - { prompt: "robe", bonne: "dress" }
+  - { prompt: "ville", bonne: "city" }
+  - { prompt: "pays", bonne: "country" }
+  - { prompt: "roi", bonne: "king" }
+  - { prompt: "reine", bonne: "queen" }
+  - { prompt: "étoile", bonne: "star" }
