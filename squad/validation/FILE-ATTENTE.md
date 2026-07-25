@@ -44,13 +44,18 @@
 
 | s24 | **100 % contenu YAML, aucune nouvelle mécanique, aucun nouveau coup, pas de nouvel ADR** : **géométrie approfondie** (quiz `cp-symetrie`, `cm1-solides`, `cm1-perimetre` ; associer `cm1-quadrilateres`) + **grandeurs / mesures approfondies** (quiz `cm1-masses` g/kg/t, `cm1-contenances` L/cL/mL, `cm1-heure` lire l'heure, `cp-comparer` comparer des grandeurs CP) + **enrichissement des viviers** existants (anglais, EMC, sciences/histoire/géo/QLM, décodage CP — sans nouvelle compétence) — 8 nouveaux packs YAML auto-enregistrés + enrichissement — DEC-0021 | Quiz-aventure + Associer/Classer | Géométrie CP symétrie · Géométrie CM1 solides / périmètre / quadrilatères · Maths CM1 masses / contenances / lire l'heure · Maths CP comparer des grandeurs (+ enrichissement de viviers déjà couvert-validé, sans nouvelle compétence) | 2026-07-24 | ⏳ **À VALIDER** (Done technique CI à confirmer ; Done pédago non prononcé — seule l'utilisatrice, après démo) | — |
 
-> ⏳ **File à 1 incrément non validé (s24) — bien sous le seuil de gel (2-3), pas de gel.** La file
-> était **redescendue à ZÉRO le 2026-07-23** : les trois incréments qui l'avaient portée au **seuil de
-> gel de 3** — s21 (DEC-0017 / DEC-0018), s22 (DEC-0019) et s23 (DEC-0020) — ont été **validés
-> ensemble le 2026-07-23** après démo (Done pédagogique prononcé par l'utilisatrice). Le gel ayant été
-> levé, **s24 (DEC-0021)** a repris des stories de contenu (géométrie & grandeurs/mesures approfondies
-> + enrichissement des viviers, 100 % contenu YAML) et pousse **1 incrément en file : À VALIDER**.
-> **Règle d'or (`squad/README.md` §4) : max 2-3 incréments non validés → ici 1, OK, aucun gel.** Le
-> Done pédagogique de s24 reste à prononcer par la **seule utilisatrice**, après démo. Rappel : s17 +
-> s18 puis s19 + s20 avaient chacun été validés ensemble le 2026-07-22 ; s21 + s22 + s23 le
-> 2026-07-23.
+| s25 | **Aucune nouvelle mécanique, aucun nouveau coup, pas de nouvel ADR** : **déclinaison puzzle PHRASE** (« Remets la phrase dans l'ordre » — **2e déclinaison de la mécanique Puzzle**, **réutilise `PuzzleMechanic` + le coup `SubmitArrangement`** ; `PhrasePuzzleGenerator` ordonne des **mots** au lieu de **lettres** + loader `content/phrase/*.yml` ; `phrase-cp`, `phrase-cm1`) + **contenus additionnels** sur mécaniques existantes (droite graduée câblée `droite-graduee-cinquante-cp` 0→50 / `droite-graduee-milliers-cm1` 0→1000 ; associer `synonymes-cm1`, `chiffre-mot-cp` ; memory `memory-doubles-cp`, `memory-tables-cm1` ; puzzle lettres `puzzle-sciences-cm1`, `puzzle-animaux-cp`) + **aires CM1** (quiz `aires-cm1`) + **longueurs / durées au CP** (quiz `longueurs-cp`, `durees-cp`) + **enrichissement des viviers** (anglais, EMC, sciences/histoire/géo/QLM, le bon son/première lettre — sans nouvelle compétence) — DEC-0022 | Puzzle (phrase) + Droite graduée + Associer/Classer + Memory + Quiz-aventure | Français CP reconstituer une phrase · Français CM1 reconstituer une phrase · Géométrie CM1 aires · Maths CP longueurs · Maths CP durées · Maths CP droite graduée 0→50 · Maths CM1 droite graduée 0→1000 (+ contenus additionnels & enrichissement de viviers déjà couvert-validé, sans nouvelle compétence) | 2026-07-26 | ⏳ **À VALIDER** (Done technique CI à confirmer ; Done pédago non prononcé — seule l'utilisatrice, après démo) | — |
+
+> ⏳ **File à 2 incréments non validés (s24 + s25) — sous le seuil de gel (2-3), pas de gel ; mais un
+> 3e sprint non validé le déclencherait.** La file était **redescendue à ZÉRO le 2026-07-23** (s21 +
+> s22 + s23 validés ensemble après démo). Le gel ayant été levé, **s24 (DEC-0021)** a repris des
+> stories de contenu (géométrie & grandeurs/mesures approfondies + enrichissement, 100 % contenu YAML,
+> **À VALIDER**), puis **s25 (DEC-0022)** a ajouté la **déclinaison puzzle PHRASE** + contenus
+> additionnels + aires / longueurs / durées CP + enrichissement (aucune nouvelle mécanique / coup /
+> ADR, **À VALIDER**). **Règle d'or (`squad/README.md` §4) : max 2-3 incréments non validés → ici 2,
+> OK, aucun gel — mais un 3e sprint non validé déclencherait le GEL DU CONTENU.** Priorité à la démo
+> et au Done pédagogique de **s24 + s25** (prononcé par la **seule utilisatrice**) avant d'empiler un
+> 3e incrément de contenu ; le prochain gros chantier planifié — la **mécanique de placement 2-D**
+> (tangram / carte de France, sprint s26 dédié, nouvel ADR) — laisse d'ailleurs respirer la file de
+> contenu. Rappel : s17 + s18 puis s19 + s20 avaient chacun été validés ensemble le 2026-07-22 ;
+> s21 + s22 + s23 le 2026-07-23.
