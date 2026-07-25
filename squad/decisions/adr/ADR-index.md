@@ -103,3 +103,19 @@ chiffres, jamais réutilisés (voir `squad/README.md` §1). Un ADR = une ligne.
 > nouvelle mécanique, aucun nouveau coup** ; matière/niveau restent des chaînes libres (comme
 > « Géométrie » en s23, « EMC » en s08). ArchUnit **5/5** inchangé. Aucune décision d'architecture
 > requise (Théo).
+
+> **s25 — pas de nouvel ADR (déclinaison de la mécanique Puzzle : ordonner des mots).** Le livrable
+> structurant — **« Reconstituer une phrase »** (DEC-0022) — est une **déclinaison de la mécanique
+> Puzzle existante** (ADR-0017), exactement comme la fraction sur la droite (s23) déclinait la droite
+> graduée sans ADR : le puzzle **réutilise `PuzzleMechanic` + le coup `SubmitArrangement`** ; on
+> ordonne des **mots** au lieu de **lettres** via un **générateur `PhrasePuzzleGenerator`** (dans
+> `domain.content.impl`) + un **loader `content/phrase/*.yml`** (même patron d'externalisation que
+> ADR-0009→0011 ; l'îlot `puzzle.js` affiche des tuiles-mots). **Aucun nouveau coup, aucune nouvelle
+> mécanique** (`phrase-cp`, `phrase-cm1`). Le reste de s25 n'exige **aucun ADR** non plus : **droite
+> graduée câblée** (`droite-graduee-cinquante-cp` 0→50, `droite-graduee-milliers-cm1` 0→1000) =
+> nouvelles configurations combinatoires d'ADR-0018 (bornes câblées dans `BeansConfig`, **réutilise
+> `SpinAndPick`**) ; **contenus additionnels** (associer `synonymes-cm1`, `chiffre-mot-cp` ; memory
+> `memory-doubles-cp`, `memory-tables-cm1` ; puzzle lettres `puzzle-sciences-cm1`, `puzzle-animaux-cp`)
+> + **aires CM1** (`aires-cm1`), **longueurs / durées CP** (`longueurs-cp`, `durees-cp`) + enrichissement
+> = **packs YAML auto-enregistrés** sur mécaniques existantes ; matière/niveau restent des chaînes
+> libres. ArchUnit **5/5** inchangé. Aucune décision d'architecture requise (Théo).
