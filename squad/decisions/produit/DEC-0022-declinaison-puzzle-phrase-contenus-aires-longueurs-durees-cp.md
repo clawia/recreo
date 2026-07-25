@@ -13,9 +13,8 @@
   (**0 → 50** au CP, **0 → 1000** au CM1). Plus des **contenus additionnels** (associer, memory,
   puzzle lettres) et de l'**enrichissement** de viviers déjà `couvert-validé`, **sans nouvelle
   compétence**.
-- **Statut de validation** : **⏳ À VALIDER (utilisatrice — après démo)** — Done pédagogique **non
-  prononcé** (seule l'utilisatrice le prononce, jamais un agent). Poussé en `FILE-ATTENTE.md` avec le
-  statut **À VALIDER**.
+- **Statut de validation** : ✅ **VALIDÉ (utilisatrice, 2026-07-25)** — Done pédagogique prononcé par
+  l'utilisatrice après démo (validé avec s24). File d'attente redescendue à zéro.
 
 ## Contexte / besoin
 s24 (DEC-0021 : géométrie & grandeurs/mesures approfondies + enrichissement des viviers) est **encore

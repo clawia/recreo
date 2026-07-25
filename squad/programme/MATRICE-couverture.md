@@ -38,8 +38,8 @@ prononcé par l'utilisatrice sur ce couple compétence/jeu).
 | Mathématiques | CP | Nombres et calculs | Situer / placer un nombre sur une droite graduée (0 → 20) | Droite graduée — Place le nombre CP | Droite graduée | couvert-validé (2026-07-23) |
 | Mathématiques | CM1 | Nombres et calculs | Situer / placer un nombre sur une droite graduée (0 → 100) | Droite graduée — Place le nombre CM1 | Droite graduée | couvert-validé (2026-07-23) |
 | Mathématiques | CM1 | Fractions | Situer / placer une fraction sur une droite graduée (0 → 1 : 0, 1/4, 1/2, 3/4, 1) | Droite graduée — Place la fraction CM1 | Droite graduée | couvert-validé (2026-07-23) |
-| Mathématiques | CP | Nombres et calculs | Situer / placer un nombre sur une droite graduée (0 → 50) | Droite graduée — Place le nombre CP (0 → 50) | Droite graduée | en cours (s25) — à valider |
-| Mathématiques | CM1 | Nombres et calculs | Situer / placer un nombre sur une droite graduée (0 → 1000) | Droite graduée — Place le nombre CM1 (0 → 1000) | Droite graduée | en cours (s25) — à valider |
+| Mathématiques | CP | Nombres et calculs | Situer / placer un nombre sur une droite graduée (0 → 50) | Droite graduée — Place le nombre CP (0 → 50) | Droite graduée | couvert-validé (s25, 2026-07-25) |
+| Mathématiques | CM1 | Nombres et calculs | Situer / placer un nombre sur une droite graduée (0 → 1000) | Droite graduée — Place le nombre CM1 (0 → 1000) | Droite graduée | couvert-validé (s25, 2026-07-25) |
 
 ## Mathématiques — grandeurs et mesures (monnaie, longueurs, durées)
 
@@ -57,12 +57,12 @@ CP (1res entrées CP du domaine). Pur contenu YAML sur des mécaniques existante
 | Mathématiques | CM1 | Grandeurs et mesures | Longueurs — conversions (m / cm / km / mm) | Quiz-aventure — Les longueurs | Quiz-aventure | couvert-validé (2026-07-23) |
 | Mathématiques | CM1 | Grandeurs et mesures | Durées — conversions (h / min / jour / semaine) | Quiz-aventure — Les durées | Quiz-aventure | couvert-validé (2026-07-23) |
 | Mathématiques | CM1 | Grandeurs et mesures | Équivalences de mesures — apparier des grandeurs équivalentes | Associer/Classer — Les équivalences | Associer/Classer | couvert-validé (2026-07-23) |
-| Mathématiques | CM1 | Grandeurs et mesures | Masses — conversions (g / kg / t) | Quiz-aventure — Les masses | Quiz-aventure | en cours (s24) — à valider |
-| Mathématiques | CM1 | Grandeurs et mesures | Contenances — conversions (L / cL / mL) | Quiz-aventure — Les contenances | Quiz-aventure | en cours (s24) — à valider |
-| Mathématiques | CM1 | Grandeurs et mesures | Lire l'heure (heures / minutes) | Quiz-aventure — Lire l'heure | Quiz-aventure | en cours (s24) — à valider |
-| Mathématiques | CP | Grandeurs et mesures | Comparer des grandeurs (longueurs, masses, contenances — plus grand / plus petit) | Quiz-aventure — Compare les grandeurs CP | Quiz-aventure | en cours (s24) — à valider |
-| Mathématiques | CP | Grandeurs et mesures | Longueurs — comparer des longueurs / unités simples | Quiz-aventure — Les longueurs CP | Quiz-aventure | en cours (s25) — à valider |
-| Mathématiques | CP | Grandeurs et mesures | Durées — se repérer dans le temps (jour / semaine / mois) | Quiz-aventure — Les durées CP | Quiz-aventure | en cours (s25) — à valider |
+| Mathématiques | CM1 | Grandeurs et mesures | Masses — conversions (g / kg / t) | Quiz-aventure — Les masses | Quiz-aventure | couvert-validé (s24, 2026-07-25) |
+| Mathématiques | CM1 | Grandeurs et mesures | Contenances — conversions (L / cL / mL) | Quiz-aventure — Les contenances | Quiz-aventure | couvert-validé (s24, 2026-07-25) |
+| Mathématiques | CM1 | Grandeurs et mesures | Lire l'heure (heures / minutes) | Quiz-aventure — Lire l'heure | Quiz-aventure | couvert-validé (s24, 2026-07-25) |
+| Mathématiques | CP | Grandeurs et mesures | Comparer des grandeurs (longueurs, masses, contenances — plus grand / plus petit) | Quiz-aventure — Compare les grandeurs CP | Quiz-aventure | couvert-validé (s24, 2026-07-25) |
+| Mathématiques | CP | Grandeurs et mesures | Longueurs — comparer des longueurs / unités simples | Quiz-aventure — Les longueurs CP | Quiz-aventure | couvert-validé (s25, 2026-07-25) |
+| Mathématiques | CP | Grandeurs et mesures | Durées — se repérer dans le temps (jour / semaine / mois) | Quiz-aventure — Les durées CP | Quiz-aventure | couvert-validé (s25, 2026-07-25) |
 
 ## Géométrie (nouvelle matière — ouverte en s23)
 
@@ -76,11 +76,11 @@ domaine). Pur contenu YAML sur des mécaniques existantes (quiz-aventure, associ
 | Géométrie | CP | Formes et figures | Reconnaître et nommer les formes usuelles (carré, rond, triangle, rectangle…) | Quiz-aventure — Les formes CP | Quiz-aventure | couvert-validé (2026-07-23) |
 | Géométrie | CP | Formes et figures | Apparier une forme à son nom (forme ↔ nom) | Associer/Classer — Les formes | Associer/Classer | couvert-validé (2026-07-23) |
 | Géométrie | CM1 | Figures, angles, symétrie | Propriétés des figures, angles, symétrie | Quiz-aventure — Géométrie CM1 | Quiz-aventure | couvert-validé (2026-07-23) |
-| Géométrie | CP | Symétrie | Reconnaître un axe de symétrie / une figure symétrique | Quiz-aventure — La symétrie CP | Quiz-aventure | en cours (s24) — à valider |
-| Géométrie | CM1 | Solides | Reconnaître et nommer les solides usuels (cube, pavé, cylindre…) | Quiz-aventure — Les solides | Quiz-aventure | en cours (s24) — à valider |
-| Géométrie | CM1 | Grandeurs — périmètre | Calculer / comparer le périmètre d'un polygone | Quiz-aventure — Le périmètre | Quiz-aventure | en cours (s24) — à valider |
-| Géométrie | CM1 | Figures — quadrilatères | Classer les quadrilatères selon leurs propriétés | Associer/Classer — Les quadrilatères | Associer/Classer | en cours (s24) — à valider |
-| Géométrie | CM1 | Grandeurs — aires | Calculer / comparer l'aire d'une figure | Quiz-aventure — Les aires | Quiz-aventure | en cours (s25) — à valider |
+| Géométrie | CP | Symétrie | Reconnaître un axe de symétrie / une figure symétrique | Quiz-aventure — La symétrie CP | Quiz-aventure | couvert-validé (s24, 2026-07-25) |
+| Géométrie | CM1 | Solides | Reconnaître et nommer les solides usuels (cube, pavé, cylindre…) | Quiz-aventure — Les solides | Quiz-aventure | couvert-validé (s24, 2026-07-25) |
+| Géométrie | CM1 | Grandeurs — périmètre | Calculer / comparer le périmètre d'un polygone | Quiz-aventure — Le périmètre | Quiz-aventure | couvert-validé (s24, 2026-07-25) |
+| Géométrie | CM1 | Figures — quadrilatères | Classer les quadrilatères selon leurs propriétés | Associer/Classer — Les quadrilatères | Associer/Classer | couvert-validé (s24, 2026-07-25) |
+| Géométrie | CM1 | Grandeurs — aires | Calculer / comparer l'aire d'une figure | Quiz-aventure — Les aires | Quiz-aventure | couvert-validé (s25, 2026-07-25) |
 
 ## Autres matières (aperçu — pilote la priorisation des sprints suivants)
 
@@ -112,8 +112,8 @@ domaine). Pur contenu YAML sur des mécaniques existantes (quiz-aventure, associ
 | Français | CP | Grammaire — genre du nom | Distinguer masculin / féminin (classer selon le / la) | Associer/Classer — Le ou la | Associer/Classer | couvert-validé (2026-07-23) |
 | Français | CP | Écriture / lecture | Reconstituer un mot à partir de ses lettres (indice image) | Puzzle — Reconstitue le mot (images) | Puzzle | couvert-validé (2026-07-23) |
 | Français | CM1 | Vocabulaire / orthographe lexicale | Reconstituer un mot à partir d'une définition (indice définition) | Puzzle — Reconstitue le mot (définitions) | Puzzle | couvert-validé (2026-07-23) |
-| Français | CP | Grammaire — syntaxe / ordre des mots | Reconstituer / remettre une phrase courte dans l'ordre | Puzzle — Remets la phrase dans l'ordre CP | Puzzle | en cours (s25) — à valider |
-| Français | CM1 | Grammaire — syntaxe / ordre des mots | Reconstituer / remettre une phrase dans l'ordre (phrases plus longues) | Puzzle — Remets la phrase dans l'ordre CM1 | Puzzle | en cours (s25) — à valider |
+| Français | CP | Grammaire — syntaxe / ordre des mots | Reconstituer / remettre une phrase courte dans l'ordre | Puzzle — Remets la phrase dans l'ordre CP | Puzzle | couvert-validé (s25, 2026-07-25) |
+| Français | CM1 | Grammaire — syntaxe / ordre des mots | Reconstituer / remettre une phrase dans l'ordre (phrases plus longues) | Puzzle — Remets la phrase dans l'ordre CM1 | Puzzle | couvert-validé (s25, 2026-07-25) |
 
 > **Note s18 — rien de nouveau à couvrir.** s18 raffine l'UX des jeux de s17 (cœur consommé par le
 > memory + écran « Essaye encore » + score max — DEC-0013 ; verrouillage partiel d'associer/classer,
@@ -169,22 +169,22 @@ domaine). Pur contenu YAML sur des mécaniques existantes (quiz-aventure, associ
 > auto-enregistrés** (`QuizPackLoader`, `AssocPackLoader`), aucun code. Validation groupée
 > s21 + s22 + s23 : **Done pédagogique prononcé par l'utilisatrice après démo le 2026-07-23**.
 
-> **Note s24 — 8 compétences `en cours (s24) — à valider`, enrichissement de viviers sans nouvelle
+> **Note s24 — 8 compétences ✅ `couvert-validé (2026-07-25)`, enrichissement de viviers sans nouvelle
 > couverture ; aucune nouvelle mécanique.** s24 (DEC-0021) approfondit deux axes **100 % contenu
 > YAML** sur les mécaniques existantes (quiz-aventure, associer/classer), **aucun code** : **Géométrie**
 > — symétrie CP (quiz `cp-symetrie`), solides CM1 (quiz `cm1-solides`), périmètre CM1 (quiz
 > `cm1-perimetre`), quadrilatères CM1 (associer `cm1-quadrilateres`) ; **Grandeurs et mesures** — masses
 > CM1 (quiz `cm1-masses`), contenances CM1 (quiz `cm1-contenances`), lire l'heure CM1 (quiz `cm1-heure`),
-> comparer des grandeurs CP (quiz `cp-comparer`). Ces 8 compétences sont **`en cours (s24)`** en attente
-> du Done pédagogique (prononcé par la seule utilisatrice). En parallèle, **enrichissement de viviers
+> comparer des grandeurs CP (quiz `cp-comparer`). Ces 8 compétences sont désormais **`couvert-validé`** —
+> Done pédagogique prononcé par l'utilisatrice le **2026-07-25**. En parallèle, **enrichissement de viviers
 > déjà `couvert-validé`** (plus d'items, **aucune nouvelle compétence**) : `anglais-lexique` (+~20),
 > `anglais-associer-cm1` (+ appariements), `cp-emc` & `cm1-emc` (+~6), `cm1-sciences`,
 > `cp-questionner-le-monde`, `cm1-histoire`, `cm1-geographie` (+~6 chacun), `cp-le-bon-son` &
-> `cp-premiere-lettre` (+~6). Incrément s24 poussé en `FILE-ATTENTE.md` **À VALIDER**.
+> `cp-premiere-lettre` (+~6). Incrément s24 : ✅ **VALIDÉ (utilisatrice, 2026-07-25)** — cf. `FILE-ATTENTE.md`.
 
-> **Note s25 — 7 compétences `en cours (s25) — à valider` ; déclinaison puzzle PHRASE, aucune nouvelle
-> mécanique.** s25 (DEC-0022) ajoute **7 compétences**, toutes `en cours (s25)` en attente du Done
-> pédagogique (prononcé par la seule utilisatrice) : **Français CP** & **Français CM1** reconstituer /
+> **Note s25 — 7 compétences ✅ `couvert-validé (2026-07-25)` ; déclinaison puzzle PHRASE, aucune nouvelle
+> mécanique.** s25 (DEC-0022) ajoute **7 compétences**, désormais **`couvert-validé`** — Done
+> pédagogique prononcé par l'utilisatrice le **2026-07-25** : **Français CP** & **Français CM1** reconstituer /
 > remettre une **phrase** dans l'ordre — **2e déclinaison de la mécanique Puzzle** (ADR-0017),
 > **réutilise `PuzzleMechanic` + le coup `SubmitArrangement`** (on ordonne des **mots** au lieu de
 > **lettres** via `PhrasePuzzleGenerator` + loader `content/phrase/*.yml`), **aucun nouveau coup, aucune
@@ -199,8 +199,8 @@ domaine). Pur contenu YAML sur des mécaniques existantes (quiz-aventure, associ
 > (Sciences CM1), `puzzle-animaux-cp` (Français CP) — plus de variété, mêmes mécaniques, **aucune
 > nouvelle ligne de couverture**. **Enrichissement de viviers** déjà `couvert-validé` (anglais, EMC,
 > sciences / histoire / géo / QLM, le bon son / première lettre) — **sans nouvelle compétence**.
-> Incrément s25 poussé en `FILE-ATTENTE.md` **À VALIDER** — file à **2 incréments non validés
-> (s24 + s25)**, sous le seuil de gel (2-3).
+> Incrément s25 : ✅ **VALIDÉ (utilisatrice, 2026-07-25)** — validé avec s24 ; **file redescendue à
+> ZÉRO** (cf. `FILE-ATTENTE.md`).
 
 ## Prochaines actions suggérées
 

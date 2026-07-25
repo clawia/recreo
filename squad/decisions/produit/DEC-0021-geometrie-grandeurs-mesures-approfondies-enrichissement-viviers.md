@@ -10,9 +10,8 @@
   l'heure ; **Maths CP — Grandeurs et mesures** — comparer des grandeurs. Plus l'**enrichissement**
   (sans nouvelle compétence) de viviers déjà `couvert-validé` (anglais, EMC, sciences/histoire/géo,
   questionner le monde, décodage CP).
-- **Statut de validation** : **⏳ À VALIDER (utilisatrice — après démo)** — Done pédagogique **non
-  prononcé** (seule l'utilisatrice le prononce). Poussé en `FILE-ATTENTE.md` avec le statut
-  **À VALIDER**.
+- **Statut de validation** : ✅ **VALIDÉ (utilisatrice, 2026-07-25)** — Done pédagogique prononcé par
+  l'utilisatrice après démo (validé avec s25). File d'attente redescendue à zéro.
 
 ## Contexte / besoin
 La file de validation est **redescendue à zéro** le 2026-07-23 (s01 → s23 tous validés

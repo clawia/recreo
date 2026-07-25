@@ -1,14 +1,14 @@
-# Roadmap — ce qu'il reste à faire (au 2026-07-26, après s25 livré — à valider)
+# Roadmap — ce qu'il reste à faire (au 2026-07-25, après s24 + s25 validés)
 
 Vue d'ensemble du **restant**, pour prioriser les prochains sprints. État actuel : **8 mécaniques**
 (bandit manchot, texte à trous, quiz-aventure, glisser-déposer, associer/classer, memory,
 puzzle/assemblage, **droite graduée**) — **ni s24 ni s25 n'ajoutent de mécanique** (s25 = déclinaison
-de la mécanique Puzzle + contenus / contenu YAML). **~45 compétences couvert-validé** (s17 → s23 tous
-validés) **+ 8 compétences `en cours (s24)` à valider** (géométrie : symétrie CP, solides / périmètre /
-quadrilatères CM1 ; grandeurs et mesures : masses / contenances / lire l'heure CM1, comparer des
-grandeurs CP — DEC-0021) **+ 7 compétences `en cours (s25)` à valider** (Français CP/CM1 reconstituer
-une **phrase** — déclinaison puzzle ; Géométrie CM1 **aires** ; Maths CP **longueurs** + **durées** ;
-Maths CP/CM1 droite graduée **0 → 50** / **0 → 1000** — DEC-0022). Rappel des validés s21 → s23 :
+de la mécanique Puzzle + contenus / contenu YAML). **~60 compétences couvert-validé** (s17 → s25 tous
+validés) — dont **8 en s24** (géométrie : symétrie CP, solides / périmètre / quadrilatères CM1 ;
+grandeurs et mesures : masses / contenances / lire l'heure CM1, comparer des grandeurs CP — DEC-0021)
+et **7 en s25** (Français CP/CM1 reconstituer une **phrase** — déclinaison puzzle ; Géométrie CM1
+**aires** ; Maths CP **longueurs** + **durées** ; Maths CP/CM1 droite graduée **0 → 50** / **0 → 1000**
+— DEC-0022), **s24 + s25 validés ensemble le 2026-07-25**. Rappel des validés s21 → s23 :
 s21 : Français CP majuscule↔minuscule + le/la, Français CP/CM1 reconstituer un mot (puzzle) ; s22 :
 Maths CP/CM1 situer/placer un nombre sur une droite graduée ; s23 : Maths CM1 fraction sur la droite,
 **Géométrie** CP formes + CM1 propriétés/angles/symétrie, Maths CM1 longueurs + durées. Jokers
@@ -19,14 +19,12 @@ Contenu à liste finie **entièrement externalisé et auto-enregistré** — y c
 (s21, D, dette remboursée) ; plus aucun contenu combinatoire en dur côté listes finies (les
 générateurs combinatoires, ex. droite graduée, gardent leurs bornes câblées dans `BeansConfig`).
 
-> ✅ **File redescendue à ZÉRO le 2026-07-23, gel levé** — s21 + s22 + s23 validés ensemble (Done
-> pédagogique prononcé par l'utilisatrice après démo). ⏳ **s24 (DEC-0021)** puis **s25 (DEC-0022)**
-> poussent **2 incréments non validés en file** — s24 (géométrie & grandeurs/mesures approfondies +
-> enrichissement des viviers, 100 % contenu YAML) et s25 (déclinaison puzzle **phrase** + contenus
-> additionnels + aires / longueurs / durées CP + enrichissement) : **À VALIDER** tous les deux. La file
-> est à **2 incréments non validés (s24 + s25)** — **sous le seuil de gel (2-3), pas de gel** ; mais un
-> **3e sprint non validé le déclencherait** (règle d'or, `squad/README.md` §4 ; cf.
-> `squad/validation/FILE-ATTENTE.md`). Priorité à la démo avant d'empiler un 3e incrément de contenu.
+> ✅ **File redescendue à ZÉRO le 2026-07-25, aucun gel** — **s24 (DEC-0021) + s25 (DEC-0022) validés
+> ensemble** par l'utilisatrice après démo (Done pédagogique prononcé par la **seule utilisatrice**).
+> Plus aucun incrément de contenu en attente. Rappel des validations groupées : s17 + s18 puis
+> s19 + s20 le 2026-07-22 ; s21 + s22 + s23 le 2026-07-23 ; **s24 + s25 le 2026-07-25** (cf.
+> `squad/validation/FILE-ATTENTE.md`). Le prochain gros chantier — la **mécanique de placement 2-D**
+> (tangram / carte de France, sprint s26 dédié, nouvel ADR) — repart donc d'une file vide.
 
 Priorisation recommandée en tête de chaque section. Chaque item devient une story (compétence visée +
 critères) au planning, met à jour la matrice, et suit le double Done (technique CI + pédago user).
@@ -68,7 +66,7 @@ critères) au planning, met à jour la matrice, et suit le double Done (techniqu
     `SubmitArrangement`**, **aucun nouveau coup, aucune nouvelle mécanique, aucun nouvel ADR**
     (déclinaison de la mécanique existante — exactement comme la fraction sur la droite déclinait la
     droite graduée en s23). Jeux `phrase-cp` (Français CP, phrases courtes) et `phrase-cm1`
-    (Français CM1, phrases plus longues). *⏳ Done pédagogique à valider (démo).*
+    (Français CM1, phrases plus longues). *✅ Done pédagogique validé (2026-07-25).*
   - 🔜 **PLANIFIÉ (s26) — tangram + carte de France = SPRINT MÉCANIQUE 2-D DÉDIÉ.** Ces deux
     déclinaisons ne relèvent **pas** du puzzle 1-D (ordonner une liste) : elles demandent un
     **placement spatial 2-D** et donc une **nouvelle mécanique** — **nouveau coup type
@@ -94,7 +92,7 @@ critères) au planning, met à jour la matrice, et suit le double Done (techniqu
     graduée — `droite-graduee-cinquante-cp` (Maths CP, **0 → 50**) et `droite-graduee-milliers-cm1`
     (Maths CM1, **0 → 1000**) — nouvelles configurations combinatoires (**bornes câblées dans
     `BeansConfig`**, **réutilisent `SpinAndPick`**), **aucune nouvelle mécanique, aucun nouvel ADR**.
-    *⏳ Done pédagogique à valider (démo).*
+    *✅ Done pédagogique validé (2026-07-25).*
 - 🔜 **PLANIFIÉ (s26) — Mécanique de placement 2-D (îlot Canvas/SVG)** — **prochaine grosse pierre.**
   Nouvelle mécanique pour **tangram** et **carte de France** : **nouveau coup type `SubmitPlacement`**,
   **plateau géométrique** (cibles / positions 2-D), **îlot Canvas/SVG**, **nouvel ADR**. Carte de
@@ -117,24 +115,24 @@ Domaines encore **absents** (à ouvrir progressivement) :
   (DEC-0020, pur contenu YAML) : `cm1-longueurs` (conversions m/cm/km/mm), `cm1-durees` (h/min/jour/
   semaine), `cm1-mesures` (associer — équivalences). *✅ Validé 2026-07-23.* ✅ **APPROFONDI (s24)**
   (DEC-0021, pur contenu YAML) : `cm1-masses` (g/kg/t), `cm1-contenances` (L/cL/mL), `cm1-heure` (lire
-  l'heure), `cp-comparer` (comparer des grandeurs CP). *⏳ À valider (démo).* ✅ **OUVERT AU CP (s25)**
+  l'heure), `cp-comparer` (comparer des grandeurs CP). *✅ Validé (2026-07-25).* ✅ **OUVERT AU CP (s25)**
   (DEC-0022, pur contenu YAML) : `longueurs-cp` (comparer des longueurs / unités simples) et
   `durees-cp` (se repérer dans le temps : jour / semaine / mois) — **1res entrées CP** du domaine.
-  *⏳ À valider (démo).* *Reste : approfondissements CP ; conversions plus riches.*
+  *✅ Validé (2026-07-25).* *Reste : approfondissements CP ; conversions plus riches.*
 - **Géométrie** — ✅ **OUVERT (s23) — nouvelle matière, 1re tranche** (DEC-0020, pur contenu YAML) :
   `cp-geometrie` (quiz — reconnaître les formes), `cp-formes` (associer — forme ↔ nom), `cm1-geometrie`
   (quiz — propriétés, angles, symétrie). *✅ Validé 2026-07-23.* ✅ **APPROFONDI (s24)** (DEC-0021, pur
   contenu YAML) : `cp-symetrie` (quiz — symétrie CP), `cm1-solides` (quiz — solides), `cm1-perimetre`
-  (quiz — périmètre), `cm1-quadrilateres` (associer — classer les quadrilatères). *⏳ À valider (démo).*
+  (quiz — périmètre), `cm1-quadrilateres` (associer — classer les quadrilatères). *✅ Validé (2026-07-25).*
   ✅ **ÉTENDU (s25)** (DEC-0022, pur contenu YAML) : `aires-cm1` (quiz — **les aires** CM1, 1er jeu du
-  domaine). *⏳ À valider (démo).* *Reste : tracés / symétrie active et **tangram / carte de France**
+  domaine). *✅ Validé (2026-07-25).* *Reste : tracés / symétrie active et **tangram / carte de France**
   (dépendent de la **mécanique de placement 2-D** — sprint dédié s26, §B), plus de figures et de
   propriétés.*
 - **Anglais** — ✅ **ENRICHI (s24)** — `anglais-lexique` (+~20 mots), `anglais-associer-cm1`
-  (+ appariements) (DEC-0021, *à valider*, sans nouvelle compétence). Reste : consignes de classe.
+  (+ appariements) (DEC-0021, *validé 2026-07-25*, sans nouvelle compétence). Reste : consignes de classe.
   **Questionner le monde CM1**. Approfondir Sciences / Histoire / Géo / EMC — ✅ **ENRICHIS (s24)**
   (`cm1-sciences`, `cp-questionner-le-monde`, `cm1-histoire`, `cm1-geographie`, `cp-emc`, `cm1-emc`
-  — +~6 items chacun ; DEC-0021, *à valider*, sans nouvelle compétence).
+  — +~6 items chacun ; DEC-0021, *validé 2026-07-25*, sans nouvelle compétence).
 
 ## D. Contenu
 - ✅ **LIVRÉ (s21) — dette remboursée** : **derniers contenus en dur externalisés** — événements de la
@@ -145,7 +143,7 @@ Domaines encore **absents** (à ouvrir progressivement) :
 - ✅ **LIVRÉ (s24) — 1re passe d'enrichissement** (DEC-0021, pur contenu YAML, **sans nouvelle
   compétence**) : `anglais-lexique` (+~20), `anglais-associer-cm1` (+ appariements), `cp-emc` &
   `cm1-emc` (+~6), `cm1-sciences`, `cp-questionner-le-monde`, `cm1-histoire`, `cm1-geographie`
-  (+~6 chacun), `cp-le-bon-son` & `cp-premiere-lettre` (+~6). *⏳ À valider (démo).* Enrichissement
+  (+~6 chacun), `cp-le-bon-son` & `cp-premiere-lettre` (+~6). *✅ Validé (2026-07-25).* Enrichissement
   **continu** des viviers existants (quiz, EMC, anglais, le bon son, frise, fractions, puzzle…) par
   l'utilisatrice via les YAML.
 - ✅ **LIVRÉ (s25) — contenus additionnels + 2e passe d'enrichissement** (DEC-0022, pur contenu YAML /
@@ -154,7 +152,7 @@ Domaines encore **absents** (à ouvrir progressivement) :
   `puzzle-sciences-cm1`, `puzzle-animaux-cp` ; droite graduée câblée `droite-graduee-cinquante-cp`
   (0→50), `droite-graduee-milliers-cm1` (0→1000). Enrichissement de `anglais-lexique`, `cp-emc`,
   `cm1-emc`, `cm1-sciences`, `cp-questionner-le-monde`, `cm1-histoire`, `cm1-geographie`,
-  `cp-le-bon-son`, `cp-premiere-lettre`. *⏳ À valider (démo).*
+  `cp-le-bon-son`, `cp-premiere-lettre`. *✅ Validé (2026-07-25).*
 
 ## E. Fonctionnalités produit
 - 💤 **ÉVOLUTION POSSIBLE (non envisagée pour l'instant)** — **Persistance** des profils élèves /
@@ -192,17 +190,16 @@ un nombre entier, réutilise `SpinAndPick`)~~ ✅ (s22) · ~~**filtres « Par je
 ~~**longueurs / durées** (C, Grandeurs et mesures)~~ ✅ (s23) — **s21 + s22 + s23 ✅ validés pédago le
 2026-07-23** ·
 ~~**plus de géométrie / mesures** (masses, contenances, lire l'heure ; symétrie CP, solides / périmètre /
-quadrilatères CM1, §C)~~ ✅ **livré (s24) — ⏳ à valider** ·
+quadrilatères CM1, §C)~~ ✅ **livré (s24) — ✅ validé 2026-07-25** ·
 ~~**enrichir les viviers** (anglais, EMC, sciences/histoire/géo/QLM, décodage CP ; via les YAML, §D)~~
-✅ **livré (s24) — ⏳ à valider** (100 % contenu YAML, aucune nouvelle mécanique — DEC-0021) ·
+✅ **livré (s24) — ✅ validé 2026-07-25** (100 % contenu YAML, aucune nouvelle mécanique — DEC-0021) ·
 ~~**déclinaison puzzle PHRASE** (reconstituer une phrase, réutilise `PuzzleMechanic` + `SubmitArrangement`,
-§B)~~ ✅ **livré (s25) — ⏳ à valider** ·
+§B)~~ ✅ **livré (s25) — ✅ validé 2026-07-25** ·
 ~~**autres contenus sur les mécaniques existantes** (droite graduée câblée 0→50 / 0→1000, associer,
-memory, puzzle lettres)~~ ✅ **livré (s25) — ⏳ à valider** ·
-~~**aires + longueurs / durées au CP**~~ ✅ **livré (s25) — ⏳ à valider** (DEC-0022, aucune nouvelle
+memory, puzzle lettres)~~ ✅ **livré (s25) — ✅ validé 2026-07-25** ·
+~~**aires + longueurs / durées au CP**~~ ✅ **livré (s25) — ✅ validé 2026-07-25** (DEC-0022, aucune nouvelle
 mécanique).
-⏳ **s24 + s25 en file d'attente : À VALIDER (2 incréments, sous le seuil de gel ; un 3e non validé le
-déclencherait)** (règle d'or). Restent, par ordre suggéré :
+✅ **s24 + s25 validés le 2026-07-25 (file à zéro)**. Restent, par ordre suggéré :
 1. 🔜 **Mécanique de placement 2-D — sprint dédié (s26), EN TÊTE** : **carte de France** (placement sur
    cibles, sans rotation) puis **tangram** (placement + rotation) — nouveau coup type `SubmitPlacement`,
    plateau géométrique, îlot Canvas/SVG, **nouvel ADR** (§B).
