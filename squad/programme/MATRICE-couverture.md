@@ -76,6 +76,15 @@ competence. Le sprint 0 ne couvre que la borne jusqu'a 10 ; la borne jusqu'a 20 
 et ne suffit pas a elle seule a faire passer la ligne en `couvert-valide` meme si la partie
 jusqu'a 10 est validee par Nadia.
 
+Etat au sprint 0, apres la porte pedagogique : `nadia-prof` a prononce **REFUSE** sur
+`squad/conformite/FICHE-bandit-manchot-additions-cp.md` (trois motifs bloquants sur le texte lu
+par l'enfant et sur un ecran d'erreur, sept reserves non bloquantes). La ligne reste donc `en
+cours` - un verdict `REFUSE` n'est pas un statut intermediaire vers `couvert-valide`, c'est un
+retour au backlog. Le contenu mathematique lui-meme est juge exact et n'a besoin d'aucune
+correction (61 manches auditees, zero faute arithmetique). Les stories correctives sont en
+`docs/backlog/backlog.md`, section "Sprint 1" (S1-1 a S1-9), et l'increment est suivi dans
+`squad/validation/FILE-ATTENTE.md`.
+
 ## Mathematiques - CM1 (cycle 3)
 
 Source : `squad/programme/mathematiques/competences-cm1.md`.

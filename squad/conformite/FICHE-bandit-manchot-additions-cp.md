@@ -33,6 +33,17 @@
 - [x] Rien dans le code de la mecanique ne fait reference a "addition", "CP" ou aux bornes 0-10 :
       tout provient du contenu injecte (verifie par la regle ArchUnit de `theo-archi`, story
       S0-3 de `docs/backlog/backlog.md`).
+- [ ] Tout texte destine a l'enfant (consigne, retours juste et faux, libelles de bouton,
+      messages d'etat comme la fin de partie ou l'absence de partie) est redige en francais
+      correct et integralement accentue, orthographe et ponctuation irreprochables (exigence de
+      categorie B ajoutee par l'amendement du 2026-08-04 a `DEC-0002`, en reaction directe au
+      premier motif de refus de ce sprint).
+- [ ] Le decompte de score affiche a l'enfant utilise une forme qu'un enfant de CP sait lire
+      (par exemple un nombre de reussites seul, ou un nombre d'etoiles/jetons), jamais une
+      notation "x / y" ni de barre oblique (deuxieme motif de refus de ce sprint).
+- [ ] Toute erreur cote serveur (session perdue, redemarrage) affiche a l'enfant un message
+      court en francais avec un moyen visible de repartir, jamais le corps brut d'une erreur
+      HTTP (troisieme motif de refus de ce sprint).
 
 ---
 

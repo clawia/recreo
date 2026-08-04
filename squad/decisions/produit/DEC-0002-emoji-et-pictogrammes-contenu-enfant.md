@@ -64,13 +64,17 @@ couleur)", pour ne plus presupposer un emoji.
 **Consequence pour la suite.** Quand une story ouvrira une mecanique qui reprend de la matiere
 premiere a base de pictogrammes (association, memory), la fiche de conformite correspondante
 devra nommer explicitement l'usage de ces pictogrammes dans ses "criteres pedagogiques
-attendus", pour que `nadia-prof` les audite comme n'importe quel contenu. Je signale des
-maintenant, sans le trancher ici, que `contenu-repris/associer/cp-formes.yml` presente au moins
-deux ambiguites a verifier ce jour-la : deux pictogrammes de triangle differents (l'un pointe
-vers le haut, l'autre vers le bas) associes a la meme cible "triangle" (orientation et couleur
-non pertinentes pour la competence mais potentiellement deroutantes), et un pictogramme de
-carre rendu en bleu associe a "carre" sans que la couleur ait de rapport avec la competence
-visee - a l'enfant de ne pas se tromper de critere de tri.
+attendus", pour que `nadia-prof` les audite comme n'importe quel contenu. Point sur
+`contenu-repris/associer/cp-formes.yml`, tranche par `nadia-prof` lors de sa relecture
+pedagogique du 2026-08-04 (voir amendement ci-dessous) : les deux pictogrammes de triangle
+d'orientation differente (l'un pointe vers le haut, l'autre vers le bas) associes a la meme
+cible "triangle" ne sont **pas** une ambiguite mais une **qualite** - la competence CP
+"reconnaitre et nommer quelques figures planes" demande justement d'abstraire l'orientation, la
+taille et la couleur, et un triangle toujours pointe vers le haut installerait un prototype faux.
+Les deux orientations sont a garder. Le pictogramme de carre rendu en bleu reste neutre a une
+seule condition, que `nadia-prof` verifiera elle-meme le jour ou la mecanique d'association
+arrivera au planning : qu'aucun item du meme lot ne fasse jamais de la couleur un critere de tri,
+et que la consigne ne mentionne jamais la couleur.
 
 ## Justification pedagogique
 
@@ -93,11 +97,60 @@ et, le cas echeant, remplacee.
 - `docs/backlog/backlog.md`, story S0-5 : critere d'acceptation reformule ("signal visuel" au
   lieu d'"icone").
 - `squad/conformite/FICHE-bandit-manchot-additions-cp.md` : critere correspondant reformule pour
-  la meme raison.
+  la meme raison. Voir aussi l'amendement du 2026-08-04 ci-dessous : trois criteres supplementaires
+  ajoutes a la meme fiche a la suite du refus pedagogique de sprint 0.
 - `CLAUDE.md`, section "Conventions de redaction" : le texte actuel ("s'appliquent a tout le
   depot, code et documentation compris") ne nomme pas cette distinction et devrait etre
   complete pour la rendre explicite (ex. "a l'exception du contenu et de l'interface destines a
-  l'enfant, gouvernes par la porte pedagogique de `nadia-prof`"). Cette DEC trace l'ecart ; elle
-  ne modifie pas elle-meme `CLAUDE.md`.
+  l'enfant, gouvernes par la porte pedagogique de `nadia-prof`"), **et** pour porter l'exigence
+  positive de l'amendement ci-dessous ("le texte destine a l'enfant est en francais correct et
+  integralement accentue"). Cette DEC trace l'ecart ; elle ne modifie pas elle-meme `CLAUDE.md`.
 - Aucune ligne de `squad/programme/MATRICE-couverture.md` n'est affectee : aucune competence
   n'est couverte ni decouverte par cette decision.
+
+## Amendement du 2026-08-04 - relecture pedagogique de nadia-prof (sprint 0, refus de
+`bandit-manchot-additions-cp`)
+
+`nadia-prof` a relu cette decision a ma demande, dans le cadre du refus pedagogique de
+`squad/conformite/FICHE-bandit-manchot-additions-cp.md` (section "Relecture de DEC-0002" de cette
+fiche). Elle valide la distinction des deux categories et le choix technique retenu pour le
+signal de S0-5 (une forme CSS/SVG plutot qu'un emoji, pour un rendu identique sur tout appareil).
+Mais elle signale un manque dont ce sprint est la preuve directe, que je corrige ici.
+
+**Le manque.** La decision **exemptait** la categorie B de la regle de redaction du depot sans y
+mettre aucune exigence positive a la place. Elle retirait donc ce texte du controle du
+`relecteur-pedagogique` et le confiait a la seule porte pedagogique de `nadia-prof`, qui ne
+s'exerce qu'une fois par sprint. Resultat constate : l'habitude ASCII du depot (categorie A) a
+fuite dans le registre de l'enfant precisement la ou plus aucune regle ne s'appliquait - le
+retour faux du gabarit `retour.html` affichait "Ce n'est pas ca. La bonne reponse etait X." a un
+enfant de CP en train de construire son orthographe lexicale sur ce qui lui est montre.
+
+**La correction.** J'ajoute a la categorie B une exigence positive, verifiable et executoire,
+que le `relecteur-pedagogique` controle desormais comme n'importe quelle autre regle de
+redaction du depot :
+
+> Le texte destine a l'enfant (categorie B) est redige en francais correct et integralement
+> accentue, orthographe et ponctuation irreprochables, parce qu'il est lu par un enfant en cours
+> d'apprentissage de la lecture et de la construction de ses correspondances graphemes-phonemes
+> et de son orthographe lexicale.
+
+Cette exigence s'applique a tout texte de categorie B present dans le depot : enonces,
+consignes, retours, libelles de bouton, messages d'etat (fin de partie, absence de partie,
+erreur affichee a l'enfant). Elle ne remplace pas la porte pedagogique de `nadia-prof`, qui reste
+seule a juger si le vocabulaire, le ton et le fond sont adaptes au niveau vise ; elle ajoute un
+filet de securite mecanique et systematique (orthographe, accentuation, ponctuation) qui
+s'exerce a chaque relecture de livrable, pas une seule fois par sprint. L'exemption de la regle
+de style d'ingenierie ne se lit donc plus comme une absence de regle.
+
+Le point sur les deux orientations du triangle de `contenu-repris/associer/cp-formes.yml` est
+tranche directement dans le corps de la decision ci-dessus, section "Consequence pour la suite",
+selon l'avis de `nadia-prof` et non le mien : elle y voit une qualite pedagogique et non un
+defaut, et je corrige le texte en ce sens plutot que de maintenir ma lecture initiale.
+
+**Impact de cet amendement** :
+- `squad/conformite/FICHE-bandit-manchot-additions-cp.md` : un critere pedagogique attendu ajoute
+  ("tout texte destine a l'enfant est redige en francais correct et integralement accentue").
+- `docs/backlog/backlog.md`, sprint 1, story S1-1 : corrige le manquement constate ce sprint et
+  rend l'exigence executoire sur l'increment refuse.
+- `CLAUDE.md` : le complement deja signale par cette DEC doit desormais porter aussi cette
+  exigence positive, pas seulement la distinction des deux categories (voir Impact ci-dessus).

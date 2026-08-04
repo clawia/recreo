@@ -7,3 +7,10 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0001 | Perimetre du sprint 0 et choix de la premiere competence couverte | s0 | 2026-08-04 | Acceptee |
 | DEC-0002 | Statut des emoji et pictogrammes dans le contenu et l'interface destines a l'enfant | s0 | 2026-08-04 | Acceptee |
 | DEC-0003 | Le sprint 0 ne cree pas de story de persistence, le critere d'integration est reformule | s0 | 2026-08-04 | Acceptee |
+
+Amendement (pas une nouvelle reference) : `DEC-0002` a ete amendee le 2026-08-04, a la suite de la
+relecture pedagogique de `nadia-prof` sur le refus de `bandit-manchot-additions-cp` - ajout d'une
+exigence positive de francais correct et integralement accentue pour la categorie B, et
+correction du jugement sur les deux orientations du triangle de `contenu-repris/associer/
+cp-formes.yml` (qualite pedagogique et non ambiguite, selon l'avis de Nadia). Voir la section
+"Amendement du 2026-08-04" dans `DEC-0002-emoji-et-pictogrammes-contenu-enfant.md`.

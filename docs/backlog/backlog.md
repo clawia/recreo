@@ -123,6 +123,179 @@ ambiguite, simple a auditer pour `nadia-prof`, mecanique restant entierement gen
     signal, hors emoji dans le gabarit).
 - **Agent pressenti** : lea-dev (ou marc-dev, a affecter au planning).
 
+## Sprint 1 - Lever le refus pedagogique de bandit-manchot-additions-cp
+
+**Contexte** : `nadia-prof` a prononce `REFUSE` sur `bandit-manchot-additions-cp`
+(`squad/conformite/FICHE-bandit-manchot-additions-cp.md`). Le Done technique est atteint
+(`mvn verify` vert, 92 tests) ; le Done pedagogique ne l'est pas, et les deux sont independants.
+Le contenu mathematique lui-meme n'a besoin d'aucune correction : 61 manches auditees, aucune
+faute arithmetique, aucune strategie de position exploitable, 41 enonces distincts sur 41
+manches. Ce que Nadia refuse est ce qui entoure le contenu : le texte lu par l'enfant, un ecran
+de score, un ecran d'erreur. Cet increment est suivi dans `squad/validation/FILE-ATTENTE.md`.
+
+**Priorisation** : S1-1 a S1-3 correspondent aux trois motifs de refus - elles bloquent la
+validation de cet increment, aucune n'est negociable pour repasser devant Nadia. S1-4 et S1-5
+correspondent a deux reserves que Nadia distingue explicitement du reste comme touchant au coeur
+du produit (une partie qui ne s'arrete jamais, un enfant en echec qui n'est pas aide) : elles ne
+bloquent pas la validation de cet increment mais sont prioritaires sur les autres reserves. S1-6
+a S1-9 couvrent les cinq reserves restantes.
+
+### S1-1 - Un texte que l'enfant peut lire sans apprendre une faute (motif de refus 1)
+
+- **Besoin** : en tant qu'enfant de CP qui apprend a lire et a orthographier, je veux que tout ce
+  que le jeu m'ecrit soit du francais correct et complet, afin de ne pas memoriser une graphie
+  fausse en jouant.
+- **Competence programme visee** : transverse - pas de contenu pedagogique specifique, mais
+  exigence positive de categorie B ajoutee par l'amendement du 2026-08-04 a
+  `squad/decisions/produit/DEC-0002-emoji-et-pictogrammes-contenu-enfant.md`.
+- **Criteres d'acceptation** :
+  - Etant donne le retour affiche a l'enfant apres une reponse fausse, quand on le relit, alors
+    chaque mot portant un accent en francais standard s'affiche avec son accent (par exemple
+    "ça", "réponse", "était"), sans faute d'orthographe ni de ponctuation.
+  - Etant donne le message affiche a la fin d'une partie, quand on le relit, alors il est
+    integralement accentue et sans faute (par exemple "terminée", "joué").
+  - Etant donne n'importe quel texte des trois gabarits destines a l'enfant (accueil, ecran de
+    jeu, retour), quand le `relecteur-pedagogique` l'audite selon l'exigence ajoutee a
+    `DEC-0002`, alors il n'y trouve aucune lettre accentuee manquante et aucune faute
+    d'orthographe ou de ponctuation.
+- **Lien decision** : `DEC-0002` (amendement du 2026-08-04).
+- **Agent pressenti** : a affecter au planning.
+
+### S1-2 - Un score que l'enfant de CP sait lire (motif de refus 2)
+
+- **Besoin** : en tant qu'enfant de CP, je veux voir mon nombre de bonnes reponses sous une forme
+  que je sais lire, afin de savoir si je progresse sans avoir besoin qu'un adulte me traduise un
+  symbole.
+- **Competence programme visee** : transverse.
+- **Criteres d'acceptation** :
+  - Etant donne une partie en cours, quand le score s'affiche a l'enfant, alors il est presente
+    sous une forme lisible sans notation fractionnaire ni barre oblique (par exemple un nombre
+    de bonnes reponses seul, ou un nombre d'etoiles ou de jetons gagnes).
+  - Etant donne ce meme affichage, quand l'enfant regarde l'ecran, alors le nombre d'essais
+    rates n'est plus montre sous forme de rapport au nombre de reussites.
+  - Etant donne l'enonce de la manche en cours (un calcul), quand le score s'affiche au meme
+    ecran, alors aucun symbole du score ne peut etre lu comme un signe operatoire.
+- **Agent pressenti** : a affecter au planning.
+
+### S1-3 - Un ecran franchissable quand quelque chose tourne mal (motif de refus 3)
+
+- **Besoin** : en tant qu'enfant, je veux, si le jeu rencontre un probleme, voir un message court
+  que je peux lire et un moyen de repartir, afin de ne jamais rester bloque devant un texte que je
+  ne comprends pas.
+- **Competence programme visee** : transverse.
+- **Criteres d'acceptation** :
+  - Etant donne une partie que le serveur ne reconnait plus (session perdue, redemarrage), quand
+    l'enfant declenche une action de jeu, alors l'ecran affiche un message court en francais
+    correctement accentue, jamais le corps brut d'une reponse technique (pas de texte en anglais,
+    pas de code ni de donnees techniques visibles dans la zone de jeu).
+  - Etant donne ce meme ecran, quand l'enfant veut continuer, alors un bouton visible lui permet
+    de recommencer une partie sans avoir besoin de comprendre un message technique ni de recharger
+    la page manuellement.
+- **Note** : la story decrit ce que l'enfant doit voir. La cause et la correction techniques
+  appartiennent a `theo-archi` et aux developpeurs.
+- **Agent pressenti** : a affecter au planning.
+
+### S1-4 - Une partie qui a une fin et une sortie (reserve 1, priorite coeur produit)
+
+- **Besoin** : en tant qu'enfant, je veux qu'une partie ait un debut et une fin que je peux
+  atteindre, avec un moment ou je sais que j'ai fini et un moyen de revenir a l'accueil quand je
+  le veux, afin de jouer une session courte plutot que sans fin.
+- **Competence programme visee** : transverse.
+- **Criteres d'acceptation** :
+  - Etant donne une partie qui commence, quand l'enfant joue des manches successives, alors la
+    partie se termine automatiquement apres un nombre fixe et annonce de manches.
+  - Etant donne la derniere manche de la partie, quand l'enfant y repond, alors un ecran de fin
+    s'affiche reellement (contrairement au constat de Nadia : le gabarit existe mais est
+    inatteignable avec le contenu actuel), avec le score final dans la forme retenue par S1-2.
+  - Etant donne n'importe quel ecran de jeu, quand l'enfant regarde l'ecran, alors un bouton pour
+    revenir a l'accueil est visible et utilisable a tout moment, avant meme la fin de la partie.
+  - Etant donne un enfant qui recharge la page pendant une partie, quand la page se recharge,
+    alors il retrouve sa partie en cours, ou a defaut un message clair explique qu'elle a
+    recommence (reserve 7 de la fiche, traitee ici avec la reserve 1 comme le recommande Nadia).
+- **Agent pressenti** : a affecter au planning.
+
+### S1-5 - Un enfant qui echoue plusieurs fois est aide, pas enferme (reserve 3, priorite coeur produit)
+
+- **Besoin** : en tant qu'enfant qui se trompe plusieurs fois sur la meme question, je veux
+  qu'on m'aide a comprendre plutot que de me montrer encore et encore la meme phrase sans rien
+  changer, afin de ne pas rester bloque sans progresser ni pouvoir m'arreter.
+- **Competence programme visee** : transverse - comportement generique de la mecanique bandit
+  manchot face a l'erreur repetee, applicable a tout contenu.
+- **Criteres d'acceptation** :
+  - Etant donne un meme item auquel l'enfant repond faux a trois reprises, quand il lui est
+    represente une nouvelle fois, alors l'item est presente avec un indice qu'il n'avait pas la
+    premiere fois.
+  - Etant donne une serie de plusieurs manches ratees consecutives, quand le seuil est atteint,
+    alors le jeu propose une manche plus simple avant de revenir a la difficulte normale.
+  - Etant donne cette meme serie d'echecs, quand elle se poursuit, alors le bouton de sortie
+    vers l'accueil (S1-4) reste visible : l'enfant n'a jamais besoin de fermer l'onglet pour
+    s'arreter.
+- **Agent pressenti** : a affecter au planning.
+
+### S1-6 - Un signal juste/faux qui ne depend pas de distinguer les couleurs (reserve 4)
+
+- **Besoin** : en tant qu'enfant qui ne distingue pas bien certaines couleurs, je veux reconnaitre
+  si j'ai juste ou faux grace a un signe que je connais deja de mon cahier, afin de comprendre le
+  retour meme sans distinguer le vert du rouge.
+- **Competence programme visee** : transverse.
+- **Criteres d'acceptation** :
+  - Etant donne un retour juste, quand il s'affiche, alors le signal visuel est une coche, la
+    couleur restant un second canal d'information et non le seul.
+  - Etant donne un retour faux, quand il s'affiche, alors le signal visuel est une croix, meme
+    condition sur la couleur.
+  - Etant donne ces deux signaux vus sans pouvoir distinguer leur couleur, quand on les compare,
+    alors leur forme seule permet de savoir lequel dit juste et lequel dit faux.
+  - Etant donne le gabarit corrige, quand on le relit, alors aucun emoji n'y a ete introduit
+    (compatible avec `DEC-0002` : forme dessinee en CSS ou en SVG).
+- **Agent pressenti** : a affecter au planning.
+
+### S1-7 - Des additions qui font vraiment calculer (reserve 2)
+
+- **Besoin** : en tant qu'enfant de CP, je veux m'entrainer sur des additions qui demandent de
+  calculer, afin que mon temps de jeu serve le calcul mental plutot que de constater qu'ajouter
+  zero ne change rien un tiers du temps.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Nombres et calculs" -
+  "Calcul mental - additions dans la limite de 10" (meme ligne que S0-4,
+  `squad/programme/mathematiques/competences-cp.md`).
+- **Criteres d'acceptation** :
+  - Etant donne une session de plusieurs manches jouees a la suite, quand on releve la
+    proportion d'additions dont un operande est nul, alors elle reste nettement inferieure au
+    tiers constate ce sprint (16 sur 61), sans jamais tomber a zero.
+- **Agent pressenti** : a affecter au planning.
+
+### S1-8 - Des mots d'interface que l'enfant de CP comprend (reserve 6)
+
+- **Besoin** : en tant qu'enfant de CP, je veux que tous les mots affiches par le jeu, pas
+  seulement la consigne, soient des mots que je comprends, afin de jouer seul sans qu'un adulte
+  ait besoin de me les traduire.
+- **Competence programme visee** : transverse.
+- **Criteres d'acceptation** :
+  - Etant donne le bouton qui permet de continuer apres une manche, quand il s'affiche, alors
+    son libelle n'emploie plus le mot "manche".
+  - Etant donne l'ecran de fin de partie, quand il s'affiche, alors son texte n'est plus d'un
+    registre adulte ("Merci d'avoir joue !" est reformule).
+  - Etant donne l'ecran affiche quand aucune partie n'est disponible, quand il s'affiche, alors
+    son texte est reformule en vocabulaire courant de CP.
+  - Etant donne le retour faux, quand il s'affiche, alors il est formule au present en une seule
+    phrase courte (par exemple "Non, c'est 4." plutot que "La bonne réponse était 4.").
+  - Etant donne le libelle du bouton d'accueil "Additions CP", quand il s'affiche, alors il ne
+    contient plus le grapheme "ti" prononce /si/, non acquis en lecture globale de CP.
+- **Agent pressenti** : a affecter au planning.
+
+### S1-9 - Un calcul et un signal plus grands que les boutons (reserve 5)
+
+- **Besoin** : en tant qu'enfant de CP qui lit encore lentement, je veux que le calcul a lire et
+  le signal de retour soient les elements les plus visibles de l'ecran, afin de ne pas devoir
+  lire le plus petit texte de l'ecran pour jouer.
+- **Competence programme visee** : transverse.
+- **Criteres d'acceptation** :
+  - Etant donne l'ecran de jeu, quand l'enonce de la manche s'affiche, alors sa taille de police
+    est nettement superieure a celle des boutons de proposition (au moins 2 rem, contre 1,1 rem
+    constate ce sprint).
+  - Etant donne le signal juste/faux, quand il s'affiche, alors sa taille est au moins le double
+    de celle constatee ce sprint (au moins 3 rem, contre 1,5 rem).
+- **Agent pressenti** : a affecter au planning.
+
 ## Backlog - sprints suivants (intentions non detaillees)
 
 Ces intentions ne sont pas des stories pretes a developper. Elles seront detaillees sprint par
@@ -146,5 +319,8 @@ en particulier le fait qu'a l'issue du sprint 0, le francais n'a encore aucune l
   sciences, EMC, anglais - dont de la matiere premiere existe deja dans `contenu-repris/`), ce
   qui suppose au prealable d'ecrire leurs referentiels de competences sous
   `squad/programme/<matiere>/`.
-- Suivre la file d'attente de validation pedagogique (`squad/validation/FILE-ATTENTE.md`) et
-  declencher le gel du contenu si elle depasse 2-3 increments non valides en attente.
+- Suivre la file d'attente de validation pedagogique (`squad/validation/FILE-ATTENTE.md`, creee
+  et alimentee depuis le sprint 1 avec `bandit-manchot-additions-cp`) et declencher le gel du
+  contenu si elle depasse 2-3 increments non valides en attente.
+- Repasser `bandit-manchot-additions-cp` devant `nadia-prof` une fois les stories S1-1 a S1-3 du
+  sprint 1 livrees, avant d'envisager toute nouvelle competence de contenu.
