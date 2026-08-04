@@ -38,7 +38,12 @@ class FrontieresDuJavaScriptTest {
 
     @Test
     void leJavaScriptDAgrementTientDansSonBudget() throws IOException {
-        for (Path fichier : javaScriptMaison()) {
+        List<Path> fichiers = javaScriptMaison();
+        assertThat(fichiers)
+                .as("ADR-0003 : cette regle ne prouve rien si aucun fichier n'est passe au crible")
+                .isNotEmpty();
+
+        for (Path fichier : fichiers) {
             assertThat(Files.size(fichier))
                     .as("ADR-0008 : %s depasse le budget de %d octets", fichier, PLAFOND_OCTETS)
                     .isLessThanOrEqualTo(PLAFOND_OCTETS);
@@ -50,7 +55,12 @@ class FrontieresDuJavaScriptTest {
 
     @Test
     void leJavaScriptNePrendAucuneDecisionDeJeu() throws IOException {
-        for (Path fichier : javaScriptMaison()) {
+        List<Path> fichiers = javaScriptMaison();
+        assertThat(fichiers)
+                .as("ADR-0003 : cette regle ne prouve rien si aucun fichier n'est passe au crible")
+                .isNotEmpty();
+
+        for (Path fichier : fichiers) {
             String source = Files.readString(fichier);
             assertThat(INTERDITS_JS.stream().filter(source::contains).toList())
                     .as("ADR-0008 : %s contient du vocabulaire de decision de jeu", fichier)
@@ -60,7 +70,12 @@ class FrontieresDuJavaScriptTest {
 
     @Test
     void aucunGabaritNeMarqueLaBonneReponse() throws IOException {
-        for (Path gabarit : fichiers(GABARITS, ".html").toList()) {
+        List<Path> gabarits = fichiers(GABARITS, ".html").toList();
+        assertThat(gabarits)
+                .as("ADR-0003 : cette regle ne prouve rien si aucun gabarit n'est passe au crible")
+                .isNotEmpty();
+
+        for (Path gabarit : gabarits) {
             String source = Files.readString(gabarit);
             assertThat(MARQUEURS_DE_CORRECTION.stream().filter(source::contains).toList())
                     .as("ADR-0008 : %s livre la bonne reponse au client", gabarit)

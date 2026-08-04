@@ -5,6 +5,7 @@ import com.recreo.domain.content.ContentSource;
 import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
+import com.recreo.domain.content.source.AdditionsBorneesContentSource;
 import com.recreo.domain.content.source.ListContentSource;
 import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.MechanicId;
@@ -166,6 +167,37 @@ class BanditManchotTest {
 
         assertThatThrownBy(() -> mecanique.apply(session, coupEtranger))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    /**
+     * S0-3 : preuve d'execution du decouplage, pas seulement structurelle (ArchUnit, cote
+     * theo-archi). La meme instance de mecanique, sans aucun changement de code, joue un contenu
+     * combinatoire de mathematiques CP et un contenu enumere d'une toute autre matiere et d'un
+     * tout autre niveau.
+     */
+    @Test
+    void laMemeMecaniqueJoueDeuxContenusDifferentsSansAucunChangementDeCode() {
+        BanditManchot mecanique = new BanditManchot();
+
+        ContentSource additionsMathsCP = new AdditionsBorneesContentSource(
+                new ContentDescriptor("Mathematiques", "CP", "Nombres et calculs",
+                        "additions dans la limite de 10"),
+                10, 3);
+        ContentSource vocabulaireAnglaisCM1 = new ListContentSource(
+                new ContentDescriptor("Anglais", "CM1", "Vocabulaire", "les couleurs"),
+                List.of(new Question(new ItemId("v1"), "red", "rouge", List.of("bleu", "vert"))));
+
+        BanditManchotSession sessionMaths = (BanditManchotSession) mecanique.start(additionsMathsCP, TOUJOURS_ZERO);
+        assertThat(sessionMaths.status()).isEqualTo(SessionStatus.EN_COURS);
+        assertThat(sessionMaths.enonceManche()).isPresent();
+
+        BanditManchotSession sessionAnglais = (BanditManchotSession) mecanique.start(vocabulaireAnglaisCM1, TOUJOURS_ZERO);
+        assertThat(sessionAnglais.enonceManche()).contains("red");
+
+        BanditManchotSession suivanteAnglais =
+                (BanditManchotSession) mecanique.apply(sessionAnglais, new BanditManchotMove("rouge"));
+        assertThat(suivanteAnglais.dernierVerdict()).contains(new Verdict(true, "rouge"));
+        assertThat(suivanteAnglais.score()).isEqualTo(new Score(1, 1));
     }
 
     @Test

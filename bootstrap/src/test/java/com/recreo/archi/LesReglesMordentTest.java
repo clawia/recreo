@@ -27,6 +27,17 @@ class LesReglesMordentTest {
                 .importPackages(paquet);
     }
 
+    /**
+     * layeredArchitecture() echoue par defaut si une couche declaree est vide, avant meme de
+     * regarder la dependance visee : un import restreint au seul contre-exemple laisserait donc
+     * "Application", "Web", "Contenu" et "Bootstrap" vides et masquerait la vraie violation
+     * derriere une autre. Il faut donc les classes de production de chaque couche, en plus du
+     * contre-exemple.
+     */
+    private static JavaClasses productionEtContreExemples() {
+        return new ClassFileImporter().importPackages("com.recreo");
+    }
+
     @Test
     void laPureteDuDomaineEchoueSurUnDomaineQuiUtiliseSpring() {
         assertThatThrownBy(() -> PureteDesCouchesTest.leDomaineNeDependQueDuJdk
@@ -69,5 +80,26 @@ class LesReglesMordentTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("ContenuQuiSaitJouerContreExemple")
                 .hasMessageContaining("GameMechanic");
+    }
+
+    /**
+     * ADR-0001, critere 4 de S0-1 : avant ce test, aucun contre-exemple ne prouvait que la regle
+     * de couches echoue reellement sur une dependance vers l'exterieur.
+     */
+    @Test
+    void leDomaineNeDoitPasDependreDeLApplication() {
+        assertThatThrownBy(() -> ArchitectureEnCouchesTest.lesDependancesVontVersLInterieur
+                .check(productionEtContreExemples()))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("DomaineDependantDeLApplicationContreExemple");
+    }
+
+    /** ADR-0001 : idem pour l'isolation entre adaptateurs, jamais mise en echec jusqu'ici. */
+    @Test
+    void deuxAdaptateursNeDoiventPasSeConnaitre() {
+        assertThatThrownBy(() -> ArchitectureEnCouchesTest.lesAdaptateursNeSeConnaissentPas
+                .check(contreExemples("com.recreo.adapter.web.contreexemple")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("AdaptateurWebDependantDuContenuContreExemple");
     }
 }
