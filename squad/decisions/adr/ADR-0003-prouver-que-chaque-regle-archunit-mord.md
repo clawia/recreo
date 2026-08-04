@@ -96,38 +96,68 @@ class LesReglesMordentTest {
     void laPureteDuDomaineEchoueSurUnDomaineQuiUtiliseSpring() {
         assertThatThrownBy(() -> PureteDesCouchesTest.leDomaineNeDependQueDuJdk
                 .check(contreExemples("com.recreo.domain.contreexemple")))
-                .isInstanceOf(AssertionError.class);
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("DomainePollueContreExemple")
+                .hasMessageContaining("org.springframework");
     }
 
     @Test
     void leContratDeMecaniqueRefuseUnMoteurPartage() {
         assertThatThrownBy(() -> DecouplageMecaniqueContenuTest.leContratDeMecaniqueEstFerme
                 .check(contreExemples("com.recreo.domain.mechanic")))
-                .isInstanceOf(AssertionError.class);
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("MoteurPartageContreExemple");
     }
 
     @Test
     void uneMecaniqueQuiUtiliseUnGenerateurConcretEstRefusee() {
         assertThatThrownBy(() -> DecouplageMecaniqueContenuTest.uneMecaniqueNeVoitQueLesContrats
                 .check(contreExemples("com.recreo.domain.mechanics.contreexemple")))
-                .isInstanceOf(AssertionError.class);
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("MecaniqueCoupleeContreExemple")
+                .hasMessageContaining("ListContentSource");
     }
 
     @Test
     void uneMecaniqueQuiLitLaMatiereEstRefusee() {
         assertThatThrownBy(() -> DecouplageMecaniqueContenuTest.uneMecaniqueIgnoreLaMatiere
                 .check(contreExemples("com.recreo.domain.mechanics.contreexemple")))
-                .isInstanceOf(AssertionError.class);
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("MecaniqueCoupleeContreExemple")
+                .hasMessageContaining("ContentDescriptor");
     }
 
     @Test
     void unContenuQuiConnaitSaMecaniqueEstRefuse() {
         assertThatThrownBy(() -> DecouplageMecaniqueContenuTest.leContenuIgnoreLesMecaniques
                 .check(contreExemples("com.recreo.domain.content.contreexemple")))
-                .isInstanceOf(AssertionError.class);
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ContenuQuiSaitJouerContreExemple")
+                .hasMessageContaining("GameMechanic");
     }
 }
 ```
+
+**Amendement du 2026-08-04, a la premiere execution de cette suite.** Les cinq tests etaient
+initialement ecrits avec le seul `isInstanceOf(AssertionError.class)`, et la section Consequences
+qualifiait de "faiblesse assumee" le fait de ne pas verifier le motif de l'echec. Le premier build
+a montre que ce n'est pas une faiblesse theorique : quand une regle ne selectionne aucune classe,
+ArchUnit leve exactement le meme `AssertionError` ("failed to check any classes"). Six des regles
+du socle echouent d'ailleurs ainsi a cette etape du sprint, en attendant la mecanique et le
+contenu. Un contre-exemple deplace, un paquet mal orthographie ou un `ImportOption` inverse
+auraient donc laisse ces cinq tests **verts sans que rien ne soit prouve** - la vacuite de type
+n°3, dans l'outil meme qui est cense la detecter.
+
+Verification faite, et refaisable : en pointant `contreExemples` sur
+`com.recreo.domain.contreexemple.absent`, le test echoue desormais avec le message
+`Expecting throwable message ... to contain "DomainePollueContreExemple"`. Avec la version
+initiale, il passait.
+
+`hasMessageContaining` porte donc sur le nom de la classe fautive, et sur la dependance interdite
+quand deux regles differentes visent le meme contre-exemple (regles 3 et 4 d'ADR-0004 visent
+toutes deux `MecaniqueCoupleeContreExemple` : c'est `ListContentSource` d'un cote et
+`ContentDescriptor` de l'autre qui distinguent le motif). Aucun de ces messages ne peut etre
+produit par un ensemble source vide.
 
 Fichiers de contre-exemple correspondants, tous dans `bootstrap/src/test/java` :
 
@@ -135,10 +165,17 @@ Fichiers de contre-exemple correspondants, tous dans `bootstrap/src/test/java` :
 |---|---|
 | `com/recreo/domain/contreexemple/DomainePollueContreExemple.java` | ADR-0002 : classe du domaine annotee `@org.springframework.stereotype.Component` |
 | `com/recreo/domain/mechanic/MoteurPartageContreExemple.java` | ADR-0004 : classe concrete avec comportement dans le paquet de contrat |
-| `com/recreo/domain/mechanics/contreexemple/MecaniqueCoupleeContreExemple.java` | ADR-0004 : depend de `domain.content.source.ListContentSource` et lit `ContentDescriptor` |
+| `com/recreo/domain/mechanics/contreexemple/MecaniqueCoupleeContreExemple.java` | ADR-0004 : depend de `domain.content.source.ListContentSource` et expose une methode qui **retourne** `ContentDescriptor` |
 | `com/recreo/domain/content/contreexemple/ContenuQuiSaitJouerContreExemple.java` | ADR-0004 : depend de `domain.mechanic.GameMechanic` |
 
 Ces classes ne sont jamais instanciees. Elles existent pour etre refusees.
+
+Point d'ecriture a respecter, constate a la redaction de ces quatre classes : **un contre-exemple
+doit porter la dependance interdite dans une signature**, pas dans un corps de methode. Une
+variable locale de type `ContentDescriptor` ne produit aucune dependance dans le bytecode ; un
+type de retour, un type de parametre ou un type de champ en produisent une. Un contre-exemple
+ecrit avec une variable locale ne violerait rien et rendrait le test de non-vacuite trompeusement
+vert.
 
 Nota : `ImportOption.OnlyIncludeTests` est le symetrique exact de `DoNotIncludeTests` ; les deux
 existent dans `archunit-1.5.0`. Les contre-exemples sont donc importes par les tests de
@@ -149,9 +186,10 @@ non-vacuite, et seulement par eux.
 - Le cout est reel : une regle coute desormais deux fichiers au lieu d'un. Il est tres inferieur
   au cout constate d'une regle qui ment pendant 25 sprints.
 - Un developpeur qui durcit une regle doit verifier que le contre-exemple echoue toujours pour la
-  bonne raison. `assertThatThrownBy(...).isInstanceOf(AssertionError.class)` ne verifie pas le
-  motif : une regle cassee pourrait echouer pour une autre cause. Faiblesse assumee au sprint 0 ;
-  si elle se manifeste, on ajoutera `.hasMessageContaining(...)` sur le nom de la classe fautive.
+  bonne raison. C'est ce que garantit `hasMessageContaining` sur le nom de la classe fautive (voir
+  l'amendement ci-dessus) : le motif de l'echec est verifie, pas seulement le fait qu'il y en ait
+  un. Ce qui reste non garanti est plus etroit : deux violations distinctes de la meme regle par la
+  meme classe ne sont pas distinguees.
 - Les paquets de production apparaissent en double dans l'arborescence de test de `bootstrap`.
   C'est deroutant a la premiere lecture, et c'est le seul moyen de violer une regle de paquet.
   D'ou le suffixe `ContreExemple`, obligatoire et verifie.

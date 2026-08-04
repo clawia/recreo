@@ -86,9 +86,31 @@ class AbstractionsCiteesTest {
             .that().haveFullyQualifiedName("com.recreo.domain.content.Item")
             .should().beInterfaces()
             .allowEmptyShould(false)
-            .as("ADR-0005 : Item existe et est une interface scellee");
+            .as("ADR-0005 : Item existe et est une interface");
+
+    /**
+     * ArchUnit 1.5 sait dire "interface", pas "scellee" : la couture d'extension d'ADR-0004 se
+     * verifie donc par reflexion. Le nombre de formes permises n'est pas fige, seule la cloture
+     * l'est.
+     */
+    @Test
+    void itemEstScelle() {
+        assertThat(Item.class.isSealed())
+                .as("ADR-0004 : Item est la couture d'extension des formes d'item, elle reste scellee")
+                .isTrue();
+    }
 }
 ```
+
+**Correction apportee a la livraison.** La regle `itemExiste` etait annoncee ici comme prouvant que
+"Item existe et est une interface scellee". Elle ne prouve que la moitie de cette phrase :
+`beInterfaces()` ignore la cloture, et `archunit-1.5.0` n'expose aucun predicat de scellement (le
+scellement n'est pas un drapeau d'acces du fichier de classe mais l'attribut `PermittedSubclasses`).
+Une regle qui affirme plus que ce qu'elle verifie est exactement le mode de defaillance que ce
+socle combat. Deux issues possibles : affaiblir la phrase, ou completer la verification. La seconde
+a ete retenue, pour trois lignes, parce que le scellement d'`Item` est la couture d'extension
+qu'ADR-0004 designe : le perdre par distraction doit etre rouge. Le test n'asserte volontairement
+pas la liste des formes permises, qui doit pouvoir s'allonger sans toucher a ce fichier.
 
 Le mecanisme central ici est `allowEmptyShould(false)` : sans lui, une regle dont le `that()` ne
 selectionne aucune classe est consideree comme satisfaite. C'est precisement le comportement qui

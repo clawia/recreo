@@ -31,6 +31,10 @@ la matiere est reutilisable, la structure ne l'est pas.
 Il implemente le port sortant `com.recreo.application.port.out.ContentCatalogPort`, et il est la
 **seule** classe du projet autorisee a lire des fichiers.
 
+Le port tient en une methode, `List<GameDefinition> games()`, et le chargeur est instancie en
+`@Bean` dans `bootstrap` : `adapter-content` ne declare aucune dependance Spring, ce qui lui
+interdit de se decouvrir tout seul et laisse le cablage la ou ADR-0001 le met.
+
 ### Un schema unique pour tous les paquets
 
 Toutes les matieres, tous les niveaux, toutes les mecaniques ecrivent la meme enveloppe :

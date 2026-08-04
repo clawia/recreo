@@ -57,19 +57,22 @@ comportement partage, donc aucun endroit ou hisser un `SessionEngine`.
 
 ```
 com.recreo.domain.content                      contrat de contenu (ferme)
-    ContentSource        interface   descriptor() + next(RandomSource, Set<ItemId>) -> Optional<Item>
-    Item                 sealed      permits Question
+    ContentSource        interface   ContentDescriptor descriptor()
+                                     Optional<Item> next(RandomSource hasard, Set<ItemId> dejaVus)
+    Item                 sealed      permits Question ; expose ItemId id()
     Question             record      (ItemId id, String enonce, String bonneReponse, List<String> distracteurs)
     ItemId               record      (String value)
     ContentDescriptor    record      (String matiere, String niveau, String domaine, String competence)
-    RandomSource         interface   tirage injectable, donc rejouable en test
+    RandomSource         interface   int nextInt(int bound) ; tirage injectable, rejouable en test
 
 com.recreo.domain.content.source               implementations de tirage, pures, sans entree/sortie
     ListContentSource    tire dans une liste finie, renvoie Optional.empty() quand le vivier est epuise
 
 com.recreo.domain.mechanic                     contrat de mecanique (ferme)
-    GameMechanic         interface   id() + start(ContentSource, RandomSource) + apply(GameSession, Move)
-    GameSession          interface   status() + score()
+    GameMechanic         interface   MechanicId id()
+                                     GameSession start(ContentSource contenu, RandomSource hasard)
+                                     GameSession apply(GameSession session, Move coup)
+    GameSession          interface   SessionStatus status() + Score score()
     Move                 interface   marqueur ; chaque mecanique definit ses coups
     MechanicId           record      (String value)
     SessionStatus        enum        EN_COURS, TERMINEE
@@ -77,6 +80,16 @@ com.recreo.domain.mechanic                     contrat de mecanique (ferme)
 
 com.recreo.domain.mechanics.<mecanique>        une mecanique = un paquet, tout son comportement dedans
 ```
+
+Deux precisions sur ce bloc, ajoutees a la livraison des contrats :
+
+- `Item` declare `ItemId id()`. Sans cet accesseur, `ListContentSource` devrait filtrer les items
+  deja vus en discriminant sur la forme concrete (`instanceof Question`), c'est-a-dire connaitre
+  les formes qu'elle transporte. L'identite est la seule chose que le contrat a besoin de savoir de
+  tout item.
+- `RandomSource.nextInt(int bound)` est volontairement la signature de `java.util.Random.nextInt` :
+  un test se donne un tirage rejouable par `new Random(42)::nextInt`, sans qu'aucune
+  implementation concrete n'ait a vivre dans le domaine.
 
 `GameSession` est une **interface**, pas un record : l'etat de session appartient a la mecanique,
 qui en definit la forme dans son propre paquet. C'est ce qui evite a la fois le moteur partage et
@@ -250,17 +263,24 @@ Et surtout, conformement a ADR-0003, chacune de ces regles est adossee a un cont
 
    @Test
    void aucuneMecaniqueNeNommeUneMatiere() throws IOException {
-       Path mecaniques = Path.of("src/main/java/com/recreo/domain/mechanics");
-       try (Stream<Path> sources = Files.walk(mecaniques)) {
-           for (Path source : sources.filter(f -> f.toString().endsWith(".java")).toList()) {
-               String texte = Files.readString(source).toLowerCase(Locale.ROOT);
-               assertThat(VOCABULAIRE_DE_MATIERE.stream().filter(texte::contains).toList())
-                       .as("ADR-0004 : %s nomme une matiere, une mecanique n'en connait aucune", source)
-                       .isEmpty();
-           }
+       List<Path> sources = sourcesDesMecaniques();
+
+       assertThat(sources)
+               .as("ADR-0004 : cette regle ne prouve rien s'il n'y a aucune mecanique a lire")
+               .isNotEmpty();
+
+       for (Path source : sources) {
+           String texte = Files.readString(source).toLowerCase(Locale.ROOT);
+           assertThat(VOCABULAIRE_DE_MATIERE.stream().filter(texte::contains).toList())
+                   .as("ADR-0004 : %s nomme une matiere, une mecanique n'en connait aucune", source)
+                   .isEmpty();
        }
    }
    ```
+
+   L'assertion `isNotEmpty()` et le controle d'existence du repertoire sont la par application
+   d'ADR-0003 : une boucle sur zero fichier passe sans rien lire. Un paquet `mechanics` renomme ou
+   deplace doit faire echouer ce test, pas le rendre muet.
 
    Quant a la borne numerique, elle est deja impossible autrement : une mecanique ne manipule que
    du texte (`Question` ne porte que des `String`, ADR-0006). Une constante `10` dans une mecanique

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.recreo</groupId>
+    <artifactId>recreo</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>recreo-adapter-content</artifactId>
+  <name>recreo-adapter-content</name>
+  <description>Adaptateur sortant de chargement du contenu. Seul module autorise a lire des fichiers (ADR-0007).</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.recreo</groupId>
+      <artifactId>recreo-application</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.recreo</groupId>
+      <artifactId>recreo-domain</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.yaml</groupId>
+      <artifactId>snakeyaml</artifactId>
+    </dependency>
+  </dependencies>
+</project>

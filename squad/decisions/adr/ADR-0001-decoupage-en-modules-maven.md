@@ -57,6 +57,17 @@ Trois consequences directes :
 Les tests d'architecture transverses vivent dans `bootstrap/src/test/java/com/recreo/archi/`,
 seul endroit du reacteur ou toutes les classes de tous les modules sont sur le meme classpath.
 
+Deux precisions de mise en oeuvre, notees a la livraison du squelette :
+
+- coordonnees du parent, `com.recreo:recreo:0.1.0-SNAPSHOT`, packaging `pom`, cinq `<module>` dont
+  deux avec un chemin a deux segments (`adapters/adapter-web`, `adapters/adapter-content`).
+  `adapters/` n'a **pas** de POM d'agregation : cinq modules signifie cinq `pom.xml` de module, plus
+  le parent, pas six ;
+- `bootstrap` fixe `<finalName>recreo</finalName>` et declare `spring-boot-maven-plugin`, ce qui
+  produit `bootstrap/target/recreo.jar`. Consequence a connaitre : `repackage` echoue tant que
+  `bootstrap` n'a pas sa classe `@SpringBootApplication`, avec le message `Unable to find main
+  class`. `mvn verify` n'est donc vert qu'a partir de l'etape de cablage.
+
 ## Regle executable ArchUnit
 
 Fichier : `bootstrap/src/test/java/com/recreo/archi/ArchitectureEnCouchesTest.java`
