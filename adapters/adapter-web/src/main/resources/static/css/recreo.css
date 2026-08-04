@@ -1,0 +1,43 @@
+body {
+    font-family: sans-serif;
+    margin: 2rem;
+}
+
+.proposition {
+    display: block;
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+}
+
+.signal {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.signal::before {
+    content: "";
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.signal.est-juste::before {
+    background-color: #2e7d32;
+    border-radius: 50%;
+}
+
+.signal.est-juste {
+    background-color: #e8f5e9;
+}
+
+.signal.est-faux::before {
+    background-color: #c62828;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.signal.est-faux {
+    background-color: #ffebee;
+}

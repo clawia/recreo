@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="manche" id="jeu">
+    <p class="score" th:text="'Score : ' + ${score.reussites()} + ' / ' + ${score.tentatives()}"></p>
+    <p class="consigne" th:text="${consigne}"></p>
+    <p class="enonce" th:text="${enonce}"></p>
+    <form th:attr="hx-post=@{'/parties/' + ${jeuId} + '/coups'}" hx-target="#jeu" hx-swap="innerHTML">
+        <button type="submit" class="proposition" th:each="proposition : ${propositions}"
+                name="propositionChoisie" th:value="${proposition}" th:text="${proposition}"></button>
+    </form>
+</div>
+</body>
+</html>
