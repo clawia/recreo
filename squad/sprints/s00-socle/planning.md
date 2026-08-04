@@ -31,8 +31,10 @@ retenu est strictement serie :
 
 1. `theo-archi` monte le squelette Maven a cinq modules et les huit classes ArchUnit avec leurs
    contre-exemples (S0-1 partie socle, S0-3).
-2. Puis `marc-dev` livre les contrats de domaine, la mecanique du bandit manchot, l'adapter-web
-   et le cablage bootstrap (S0-2, achevement de S0-1, moitie generique de S0-5).
+2. Puis `marc-dev` livre la mecanique du bandit manchot, l'adapter-web et le cablage bootstrap
+   (S0-2, achevement de S0-1, moitie generique de S0-5), sur les contrats de domaine et
+   d'application deja livres par `theo-archi` avec le squelette (voir correction du 2026-08-04
+   en fin de fichier).
 3. Puis `lea-dev` livre `adapter-content` (chargeur YAML unique), `AdditionsBorneesContentSource`,
    l'entree de catalogue et le paquet YAML des additions CP (S0-4, moitie contenu de S0-5).
 
@@ -86,15 +88,16 @@ livrables non executables (etape 5 de `squad/README.md` section 9), pas au plann
 ## Prochaines etapes
 
 1. **theo-archi** : monte le squelette Maven a cinq modules (`domain`, `application`,
-   `adapters/adapter-web`, `adapters/adapter-content`, `bootstrap`) selon `ADR-0001`, ecrit les
-   huit classes ArchUnit avec leurs contre-exemples exiges par `ADR-0003` (couvrant `ADR-0002`,
+   `adapters/adapter-web`, `adapters/adapter-content`, `bootstrap`) selon `ADR-0001`, y compris
+   les contrats de domaine et d'application, pour que son etape compile seule ; ecrit les huit
+   classes ArchUnit avec leurs contre-exemples exiges par `ADR-0003` (couvrant `ADR-0002`,
    `ADR-0004` a `ADR-0008`), livre S0-1 (partie socle) et S0-3. Toute commande Maven avec
    `JAVA_HOME` sur `<JDK 21>`.
-2. **marc-dev**, une fois le squelette de theo-archi committe et compilable : contrats de
-   domaine, mecanique du bandit manchot (`com.recreo.domain.mechanics.banditmanchot`),
-   adapter-web (templates htmx/Thymeleaf, fragment du retour juste/faux sans marqueur de
-   correction avant le coup de l'enfant, rendu generique du signal visuel de S0-5), cablage
-   bootstrap (fat jar `recreo.jar`, page accessible en HTTP). Livre S0-2, acheve S0-1.
+2. **marc-dev**, une fois le squelette de theo-archi committe et compilable : mecanique du
+   bandit manchot (`com.recreo.domain.mechanics.banditmanchot`), adapter-web (templates
+   htmx/Thymeleaf, fragment du retour juste/faux sans marqueur de correction avant le coup de
+   l'enfant, rendu generique du signal visuel de S0-5), cablage bootstrap (fat jar `recreo.jar`,
+   page accessible en HTTP). Livre S0-2, acheve S0-1.
 3. **lea-dev**, une fois le commit de marc-dev committe et compilable : `adapter-content`
    (chargeur YAML unique), `AdditionsBorneesContentSource`, entree de catalogue, paquet YAML des
    additions CP avec la consigne courte de S0-5 ("combien ca fait ?"). Livre S0-4, acheve S0-5.
@@ -110,3 +113,12 @@ livrables non executables (etape 5 de `squad/README.md` section 9), pas au plann
    ci-dessus.
 8. **nadia-prof** : joue l'increment et prononce le Done pedagogique dans
    `squad/conformite/FICHE-bandit-manchot-additions-cp.md`.
+
+## Correction du 2026-08-04, a la cloture du sprint
+
+Ce planning affectait a l'origine les contrats de domaine et d'application a `marc-dev`
+(sequencement, etape 2 des prochaines etapes ci-dessus). Ce n'est pas ce qui s'est passe : le
+commit `a3e530b` montre que `theo-archi` les a livres lui-meme avec le squelette Maven, pour que
+son etape compile seule avant que `marc-dev` ne demarre la mecanique. Corrige par `sofia-sm` a la
+review, les deux occurrences ci-dessus reformulees en consequence : le depot etant la seule
+source de verite, un planning qui decrit une affectation qui n'a pas eu lieu est faux.
