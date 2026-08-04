@@ -1,0 +1,180 @@
+# ADR-0006 - Supprimer la configuration de difficulte du domaine et la porter par le paquet de contenu
+
+- **Statut** : Accepte
+- **Date** : 2026-08-04
+- **Auteur** : theo-archi
+- **Sprint** : s00
+
+## Contexte
+
+La version precedente avait ce type au centre de son contrat de contenu :
+
+```java
+public record DifficultyConfig(int minOperand, int maxOperand, Set<Operation> operations, int distractorCount) { }
+```
+
+Quatre champs, dont trois purement arithmetiques, dans un produit qui vise **toutes** les matieres
+du programme CP et CM1. Consequence observee : chaque contenu de francais, d'anglais, d'histoire ou
+de geometrie devait remplir `minOperand`, `maxOperand` et `operations` avec des valeurs factices
+pour que l'objet soit constructible. Le validateur du record exigeait meme `operations` non vide :
+un paquet de vocabulaire anglais devait donc declarer qu'il pratiquait l'addition.
+
+Le probleme de fond n'est pas le nom des champs, c'est le postulat : que la difficulte soit un
+**parametre de generation** commun a toutes les matieres. Ce postulat est faux. La difficulte
+d'une addition se regle par des bornes d'operandes ; celle d'une liste de mots a lire se regle par
+le choix des mots ; celle d'une frise chronologique par le nombre d'evenements et leur proximite.
+Il n'existe pas de parametre commun, et fabriquer un type qui pretend le contraire oblige tout le
+monde a mentir.
+
+Il faut aussi entendre l'autre risque : remplacer ce record par un sac generique
+(`Map<String, String>`) rend le mensonge invisible au lieu de le supprimer.
+
+## Decision
+
+**Il n'y a pas de type de configuration de difficulte dans le domaine.** `DifficultyConfig` n'est
+pas remplace : il est supprime.
+
+La difficulte est portee a deux endroits, et a deux endroits seulement :
+
+1. **Le choix du paquet de contenu.** Un paquet couvre une competence, a un niveau. `CP - additions
+   jusqu'a 10` et `CM1 - tables de multiplication` sont deux paquets, pas un paquet et un reglage.
+   C'est deja la realite des 61 paquets de `contenu-repris/`, tous mono-niveau. Regler la
+   difficulte, c'est choisir le paquet : aucune ligne de Java n'est necessaire pour ajouter un
+   niveau.
+2. **La progression a l'interieur d'une partie**, si une story la demande : elle appartient a la
+   mecanique et vit dans son paquet, pilotee par ce que l'enfant reussit, pas par une
+   configuration externe.
+
+Le contrat de contenu ne porte donc que du **texte** :
+
+```java
+public record ContentDescriptor(String matiere, String niveau, String domaine, String competence) { }
+public record Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs) implements Item { }
+```
+
+`niveau` est une chaine, pas un enum. Un enum `Niveau { CP, CM1 }` obligerait a modifier du code
+Java le jour ou le CE1 arrive ; le principe du produit est justement qu'ajouter du contenu ne
+touche pas au code. Meme raisonnement pour `matiere`. La valeur admise est controlee au chargement
+par le schema de paquet (ADR-0007) et par le referentiel de competences que tient Camille, pas par
+le compilateur.
+
+Cas particulier, et il est reel des le sprint 0 : le contenu **combinatoire**. La story S0-4
+demande des additions qui varient d'une manche a l'autre, donc un tirage, pas une liste figee. Ses
+bornes (`sommeMaximale`, `nombreDePropositions`) sont des parametres de son **unique**
+implementation de `ContentSource`, `com.recreo.domain.content.source.AdditionsBorneesContentSource`,
+declares dans son propre paquet YAML sous `parametres` (ADR-0007) et lus par sa seule fabrique.
+
+Trois proprietes en decoulent, et ce sont elles qui distinguent cette solution de
+`DifficultyConfig` :
+
+- ces bornes ne figurent dans **aucun** type partage : un paquet de vocabulaire anglais ne les voit
+  pas et n'a rien a en faire ;
+- la mecanique ne les voit pas non plus : elle recoit des `Question` dont l'enonce et les
+  propositions sont du texte (ADR-0004) ;
+- ajouter "les additions jusqu'a 20" est un fichier YAML, sans une ligne de Java.
+
+## Regle executable ArchUnit
+
+Fichier : `bootstrap/src/test/java/com/recreo/archi/DifficulteTest.java`
+
+```java
+package com.recreo.archi;
+
+import com.tngtech.archunit.core.domain.JavaModifier;
+import com.tngtech.archunit.core.importer.ImportOption;
+import com.tngtech.archunit.junit.AnalyzeClasses;
+import com.tngtech.archunit.junit.ArchTest;
+import com.tngtech.archunit.lang.ArchRule;
+
+import static com.tngtech.archunit.core.domain.JavaClass.Predicates.resideInAnyPackage;
+import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.fields;
+import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
+
+@AnalyzeClasses(packages = "com.recreo", importOptions = ImportOption.DoNotIncludeTests.class)
+class DifficulteTest {
+
+    /** Le nom est brule, dans les deux orthographes. */
+    @ArchTest
+    static final ArchRule aucunTypeDifficultyDansLeDomaine = noClasses()
+            .that().resideInAPackage("com.recreo.domain..")
+            .should().haveSimpleNameContaining("Difficulty")
+            .as("ADR-0006 : la difficulte n'est pas un type du domaine");
+
+    @ArchTest
+    static final ArchRule aucunTypeDifficulteDansLeDomaine = noClasses()
+            .that().resideInAPackage("com.recreo.domain..")
+            .should().haveSimpleNameContaining("Difficulte")
+            .as("ADR-0006 : la difficulte n'est pas un type du domaine");
+
+    /**
+     * Le contrat de contenu ne porte que du texte : un champ numerique y serait forcement
+     * le reglage d'une matiere, que les autres matieres devraient remplir de valeurs factices.
+     */
+    @ArchTest
+    static final ArchRule leContratDeContenuNePorteQueDuTexte = fields()
+            .that().areDeclaredInClassesThat().resideInAPackage("com.recreo.domain.content")
+            .and().doNotHaveModifier(JavaModifier.STATIC)
+            .should().haveRawType(resideInAnyPackage(
+                    "java.lang", "java.util", "com.recreo.domain.content"))
+            .as("ADR-0006 : le contrat de contenu porte du texte, jamais des bornes de matiere");
+}
+```
+
+La troisieme regle est celle qui mord vraiment. ArchUnit exclut les primitifs de la construction
+des **dependances** mais pas de la **resolution du type brut d'un champ** : le type brut de
+`int minOperand` est le `JavaClass` du primitif `int`, dont le nom de paquet est vide, donc hors de
+la liste blanche. Rajouter `int minOperand`, `Set<Operation> operations` (l'enum `Operation`
+residerait hors du contrat) ou n'importe quel reglage arithmetique dans `Question` ou dans
+`ContentDescriptor` fait echouer le build. Les champs statiques sont exclus du controle pour ne pas
+achopper sur les champs synthetiques `$VALUES` d'un eventuel enum.
+
+Les deux premieres regles sont des interdictions de nommage, donc contournables par un
+developpeur determine qui appellerait son type `Reglage`. Elles ne sont pas la pour arreter la
+mauvaise foi mais pour arreter la reintroduction distraite, qui est le mode de defaillance reel.
+C'est la troisieme regle qui tient la propriete de fond.
+
+`fields().that().areDeclaredInClassesThat()`, `MembersThat.doNotHaveModifier(JavaModifier)` et
+`FieldsShould.haveRawType(DescribedPredicate)` sont verifies presents dans `archunit-1.5.0`.
+
+## Consequences
+
+- Un paquet de contenu = un niveau = une competence. Il y aura plus de paquets qu'avant, chacun
+  plus petit. C'est du contenu, pas du code : le cout est du cote de Camille et Nadia, et il est
+  reversible.
+- Impossible de proposer, dans le meme jeu, une montee CP vers CM1 par simple reglage. Si une story
+  le demande, la reponse sera une sequence de paquets decrite dans le catalogue, pas un curseur
+  numerique dans le domaine.
+- Le contenu de francais n'a plus rien de factice a remplir. C'est la mesure directe du succes de
+  cet ADR : un paquet de vocabulaire anglais ne declare plus pratiquer l'addition.
+- Mauvaise consequence assumee : la regle "que du texte" interdit aussi un champ legitime comme
+  `int nombreDeQuestions`. C'est voulu : ce nombre est un parametre de partie, il appartient a
+  l'entree de catalogue ou a la mecanique, pas au contenu. Si cette contrainte devient penible sur
+  un cas reel et non arithmetique, elle sera revue par un ADR.
+
+## Alternatives considerees
+
+- **Generaliser en `Map<String, String> parametres` dans le contrat.** Zero typage, zero test
+  possible, et le contenu de francais continue de remplir des cles qui ne le concernent pas, sans
+  meme que le compilateur le montre. Ecarte : ca deplace le mensonge, ca ne le supprime pas.
+- **Typer par matiere : `sealed interface Difficulte permits DifficulteArithmetique,
+  DifficulteLexicale, ...`.** Le typage est honnete, mais ajouter une matiere devient une
+  modification de code Java, ce qui contredit frontalement le principe directeur du produit
+  ("couvrir toutes les matieres sans coder par matiere"). Ecarte, et c'est l'alternative la plus
+  serieuse : elle redeviendrait pertinente si l'on constatait que plusieurs mecaniques ont besoin
+  de reglages numeriques riches.
+- **Garder `DifficultyConfig` avec des valeurs par defaut pour les matieres non arithmetiques.**
+  C'est la version precedente avec du sucre. Ecarte.
+- **Un enum `Niveau { CP, CM1 }` pour la securite de typage.** Le gain est faible (le niveau n'est
+  jamais utilise pour brancher du code, ADR-0004 l'interdit meme aux mecaniques) et le cout est
+  une modification de code par niveau ajoute. Ecarte.
+
+## Ce qui me ferait changer d'avis
+
+- Deux mecaniques ou plus qui auraient reellement besoin de parametres numeriques de partie : je
+  les porterais dans l'entree de catalogue (donnee), et je verrais alors s'il faut les typer.
+- Une demande pedagogique de progression continue a l'interieur d'un meme jeu : la reponse serait
+  une progression pilotee par les reussites, dans la mecanique, jamais un curseur dans le contrat
+  de contenu.
+- Un troisieme niveau (CE1, CM2) qui multiplierait les paquets au point de rendre le catalogue
+  illisible : ce serait un probleme d'organisation du contenu, traite dans ADR-0007, pas un retour
+  du type de difficulte.
