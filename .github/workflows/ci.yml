@@ -70,7 +70,7 @@ jobs:
           java-version: "21"
           cache: maven
 
-      - name: Verify (compilation + tests unitaires + integration H2 + ArchUnit)
+      - name: Verify (compilation + tests unitaires + tests d'integration Spring Boot + ArchUnit)
         if: steps.maven.outputs.present == 'true'
         run: mvn -B verify
 

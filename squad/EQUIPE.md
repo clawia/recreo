@@ -119,8 +119,9 @@ Ne fait pas : code, architecture, backlog, relecture de doc technique.
 
 ## Le double Done
 
-- **Done technique** : `mvn verify` vert (compilation, tests unitaires, integration H2, ArchUnit).
-  Juge par la CI, garanti par Yanis et Theo. Aucun agent ne le prononce a la place de la CI.
+- **Done technique** : `mvn verify` vert (compilation, tests unitaires, tests d'integration
+  Spring Boot, ArchUnit, et integration H2 une fois `adapter-persistence` cree). Juge par la CI,
+  garanti par Yanis et Theo. Aucun agent ne le prononce a la place de la CI.
 - **Done pedagogique** : prononce par **Nadia**, avec motif ecrit. Il ne decoule pas du Done
   technique. Un increment techniquement irreprochable peut etre refuse pedagogiquement.
 

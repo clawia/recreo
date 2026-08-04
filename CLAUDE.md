@@ -19,12 +19,14 @@ programme.
 - **Back** : Java 21 (LTS), Clean Architecture (`domain` -> `application` -> `adapters` ->
   `bootstrap`), Spring Boot uniquement dans les adapters et `bootstrap`.
 - **Build** : Maven multi-module (POM parent + `domain`, `application`, `adapters/adapter-web`,
-  `adapters/adapter-persistence`, `bootstrap`).
+  `adapters/adapter-content`, `bootstrap`).
 - **Front** : htmx + Thymeleaf (rendu serveur, fragments HTML, jamais de JSON cote vues),
   package dans un **fat jar unique** (`spring-boot-maven-plugin`) et deploye avec
-  `java -jar bootstrap/target/recreo.jar`. H2 embarque, zero build Node, zero serveur front
-  separe.
-- **Persistence** : JPA + H2 (dev et test), PostgreSQL vise en production.
+  `java -jar bootstrap/target/recreo.jar`. Zero build Node, zero serveur front separe.
+- **Persistence** : cible du produit, pas du sprint 0. JPA + H2 en dev et test, PostgreSQL en
+  production, portee par un module `adapters/adapter-persistence` cree dans le meme commit que la
+  premiere story qui a besoin de conserver une donnee entre deux sessions (voir `ADR-0001`,
+  `DEC-0003`). Absente du code livre a ce jour.
 
 Le decoupage exact en modules est une decision d'architecture : il est acte en `ADR` par
 `theo-archi`, pas presuppose par ce fichier.
@@ -49,22 +51,29 @@ Le decoupage exact en modules est une decision d'architecture : il est acte en `
 - **Le depot Git est la seule source de verite.** Ce qui n'est pas ecrit dans le depot n'existe
   pas : une ceremonie sans fichier dans `squad/sprints/` n'a pas eu lieu, une decision non
   redigee en `ADR` ou `DEC` n'a pas ete prise, un test non ecrit ne couvre rien.
-- **Double Done.** **Technique** = CI verte (`mvn verify` : compilation, tests unitaires,
-  integration H2, ArchUnit), juge objectivement par la CI. **Pedagogique** = prononce
+- **Double Done.** **Technique** = CI verte (`mvn verify` : compilation, tests unitaires, tests
+  d'integration Spring Boot, ArchUnit, et integration H2 une fois `adapter-persistence` cree),
+  juge objectivement par la CI. **Pedagogique** = prononce
   **uniquement par `nadia-prof`**, apres avoir joue l'increment, avec un motif ecrit dans
   `squad/conformite/FICHE-<jeu>.md`. Les deux sont independants : un increment techniquement
   irreprochable peut etre refuse pedagogiquement.
 
 ## Conventions de redaction
 
-Elles s'appliquent a tout le depot, code et documentation, et sont verifiees par le
-`relecteur-pedagogique` :
+Elles s'appliquent a la redaction du depot - code, commentaires, Javadoc, messages d'erreur
+techniques, README, `squad/`, `docs/backlog/`, ADR, DEC, fiches de conformite, messages de commit,
+noms de fichiers - et sont verifiees par le `relecteur-pedagogique` :
 
 - Tirets simples et guillemets droits. Pas de tiret cadratin, pas de guillemets typographiques.
 - Pas d'emoji ni de symbole Unicode decoratif.
 - Les caracteres accentues sont normaux dans le contenu redactionnel francais ; les messages de
   commit et les identifiants de code restent en ASCII.
 - Pas de commentaire qui paraphrase le code.
+
+Le contenu et l'interface destines a l'enfant (enonces, propositions de reponse, pictogrammes,
+signaux d'interface comme le retour juste/faux) n'entrent pas dans ce registre : ils sont
+gouvernes par la porte pedagogique de `nadia-prof`, pas par cette regle de style (voir
+`DEC-0002-emoji-et-pictogrammes-contenu-enfant.md`).
 
 ## La squad
 
