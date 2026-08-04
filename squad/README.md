@@ -1,0 +1,218 @@
+# squad - le journal operationnel de recreo
+
+Ce dossier est le journal de l'equipe qui construit `recreo`. Il est un **livrable de premiere
+classe**, au meme titre que le code Java.
+
+## Le principe qui fonde tout
+
+**Le depot Git est la seule memoire partagee de la squad.**
+
+Ce qui n'est pas ecrit ici n'existe pas :
+
+- une ceremonie sans fichier dans `squad/sprints/` n'a pas eu lieu ;
+- une decision qui n'est pas redigee en `ADR` ou en `DEC` n'a pas ete prise, meme si tout le
+  monde l'applique ;
+- un obstacle n'est clos que quand le fichier qui le tranche **existe physiquement** ;
+- un test qui n'est pas ecrit ne couvre rien.
+
+Les agents n'ont pas de memoire entre deux invocations. Ce fichier, et ceux qui l'entourent, sont
+cette memoire.
+
+## 1. L'equipe
+
+Huit agents, decrits dans [`EQUIPE.md`](EQUIPE.md), definis dans `.claude/agents/`.
+
+Trois developpeurs codent : Marc, Lea, et Sofia sous sa casquette dev. Deux agents detiennent une
+autorite exclusive : `theo-archi` sur l'architecture, `nadia-prof` sur la pedagogie.
+
+## 2. Conventions de nommage
+
+La regle generale : **le tri alphabetique d'un dossier doit donner le tri chronologique ou
+logique.**
+
+| Type | Chemin | Proprietaire |
+|---|---|---|
+| Sprint | `squad/sprints/sNN-<slug>/` | `sofia-sm` |
+| Ceremonie | `<sprint>/planning.md`, `<sprint>/review.md`, `<sprint>/retro.md` | `sofia-sm` |
+| Synthese de sprint | `<sprint>/RAPPORT.md` | `sofia-sm` |
+| Consommation de tokens | `<sprint>/RAPPORT-tokens.md` | `sofia-sm` (genere) |
+| ADR technique | `squad/decisions/adr/ADR-XXXX-<slug>.md` | `theo-archi` |
+| Decision produit | `squad/decisions/produit/DEC-XXXX-<slug>.md` | `camille-po` |
+| Fiche de conformite | `squad/conformite/FICHE-<jeu>.md` | `camille-po` ouvre, `nadia-prof` valide |
+| Referentiel de competences | `squad/programme/<matiere>/competences-<niveau>.md` | repris, en lecture |
+| Matrice de couverture | `squad/programme/MATRICE-couverture.md` | `camille-po` |
+| Journal des tokens | `squad/rapports/JOURNAL-tokens.md` | `sofia-sm` (genere) |
+
+Numerotation des `ADR` et des `DEC` : quatre chiffres, **jamais reutilisee**, meme quand une
+decision est rejetee ou remplacee. Ca garde l'historique honnete. `ADR-index.md` et
+`DEC-index.md` sont des tableaux recapitulatifs, une ligne par decision, tenus a jour par leur
+proprietaire a chaque creation et a chaque changement de statut.
+
+**Un fichier par ceremonie. On n'ajoute jamais a la suite d'un fichier existant** : diffs Git
+propres, pas d'ecriture concurrente, tri par date automatique.
+
+## 3. Pilotage par increment, pas par duree
+
+Il n'y a **pas de timebox**. Un sprint est un **increment livrable**, quelle que soit sa duree
+reelle.
+
+`planning.md` porte l'horodatage de **debut**, `review.md` porte l'horodatage de **fin** et la
+duree effective. C'est cette fenetre temporelle qui sert aussi a attribuer la consommation de
+tokens au sprint (voir section 6).
+
+## 4. Les ceremonies
+
+Trois produisent un fichier, une non.
+
+| Ceremonie | Fichier | Ce qu'elle contient obligatoirement |
+|---|---|---|
+| Planning | `planning.md` | Horodatage de debut, objectif gele, stories avec competence visee, affectations nominatives, avis de faisabilite de Theo |
+| Daily | **aucun** | Synchronisation de travail. Sofia collecte, classe et route ; elle n'ecrit pas de fichier |
+| Review | `review.md` | Horodatage de fin, duree, rapport qualite de Yanis, confirmation ArchUnit de Theo, corrections du relecteur, tableau des obstacles, avis de Nadia et Done pedagogique |
+| Retro | `retro.md` | Ce qui a marche, ce qui a coince, amendements a ce README |
+
+**Pourquoi le daily n'est pas journalise.** Sur la version precedente de `recreo`, le daily etait
+une ceremonie documentee dont **aucun fichier n'a jamais ete ecrit en 25 sprints**. Plutot que de
+maintenir une regle que personne ne suit, on acte la pratique reelle.
+
+Consequence a tenir : le **tableau des obstacles** ne disparait pas avec le daily. Il remonte
+dans `review.md` et dans `RAPPORT.md`. Sans lui, la chaine "obstacle route vers un agent,
+decision ecrite, obstacle clos" serait perdue.
+
+Regle de cloture : un fichier de ceremonie n'est complet que s'il contient une section
+`## Decisions prises` **non vide**, ou l'enonce explicite qu'aucune decision n'a ete prise.
+
+## 5. La synthese de sprint - `RAPPORT.md`
+
+C'est le document qu'on lit en premier pour savoir ce qui s'est passe. Ecrit par Sofia a la
+cloture, il agrege :
+
+- l'increment livre, en une phrase comprehensible sans contexte ;
+- **la liste complete des decisions** : chaque `ADR` et chaque `DEC` cree ou modifie, avec
+  numero, titre et statut ;
+- l'etat des deux Done ;
+- les obstacles resolus et ceux encore ouverts ;
+- le tableau de consommation de tokens.
+
+## 6. Le rapport de consommation de tokens
+
+`outils/rapport-tokens.py` agrege la consommation **par agent et par sprint** a partir des
+transcriptions que Claude Code ecrit sous
+`~/.claude/projects/<depot-encode>/`. Chaque sous-agent y laisse un fichier
+`subagents/agent-<id>.jsonl` et un `agent-<id>.meta.json` qui porte son `agentType`.
+
+Sofia le lance a chaque review :
+
+```
+python outils/rapport-tokens.py --sprint sNN
+```
+
+Il ecrit `squad/sprints/sNN-<slug>/RAPPORT-tokens.md` et met a jour
+`squad/rapports/JOURNAL-tokens.md`.
+
+L'attribution a un sprint se fait par **fenetre temporelle** : l'intervalle entre l'horodatage de
+debut du `planning.md` et l'horodatage de fin du `review.md`. Ce qui tombe hors de toute fenetre
+est reporte sur une ligne `hors sprint`, jamais reparti arbitrairement.
+
+Les quatre compteurs (`input`, `output`, `cache cree`, `cache lu`) sont toujours affiches
+**separement**. Les additionner en un chiffre unique donnerait un classement faux : le cache lu
+depasse couramment l'output de deux ordres de grandeur. Le rapport ne convertit rien en euros :
+ce sont des compteurs de tokens.
+
+## 7. Le double Done
+
+**Done technique** : `mvn verify` vert - compilation, tests unitaires, tests d'integration H2,
+ArchUnit. C'est **la CI qui juge**, pas un agent. Yanis et Theo en sont les garants : ils rendent
+le jugement fiable et le rapportent honnetement.
+
+**Done pedagogique** : prononce par **`nadia-prof`**, et par elle seule, avec un motif ecrit dans
+`squad/conformite/FICHE-<jeu>.md`. Trois verdicts : `VALIDE`, `VALIDE SOUS RESERVE`, `REFUSE`.
+
+Les deux sont independants. Un increment techniquement irreprochable peut etre refuse
+pedagogiquement, et c'est un fonctionnement normal, pas un incident. Un refus renvoie l'increment
+a Camille, qui en fait du backlog ; il ne bloque pas le sprint suivant.
+
+## 8. Prefixes de commit par agent
+
+Format : `[TAG] <resume>`.
+
+| Tag | Agent |
+|---|---|
+| `[CAM]` | Camille, Product Owner |
+| `[SOF]` | Sofia, Scrum Master et dev |
+| `[THEO]` | Theo, architecte |
+| `[MARC]` | Marc, dev |
+| `[LEA]` | Lea, dev |
+| `[YAN]` | Yanis, QA |
+| `[REL]` | Relecteur pedagogique |
+| `[NAD]` | Nadia, professeure des ecoles |
+
+Ca permet d'isoler la production d'un agent : `git log --grep='^\[NAD\]'`.
+
+Ce n'est pas une convention declarative : la CI **rejette** un commit dont le message ne commence
+pas par un tag connu (voir `.github/workflows/ci.yml`). Sur la version precedente, ce garde-fou
+etait annonce dans la documentation et n'existait pas dans le workflow.
+
+## 9. Derouler un sprint
+
+**1. Planning.** Camille ecrit ou affine les stories et met a jour la matrice. Theo donne un avis
+de faisabilite ecrit sur chacune et ouvre un `ADR` si la story en appelle un. Sofia gele
+l'objectif, affecte nominativement, ecrit `planning.md` avec l'horodatage de debut.
+
+**2. Developpement.** Marc, Lea et Sofia codent, tests dans le meme commit. Yanis traduit les
+criteres d'acceptation en tests et fait tourner la suite. Tout obstacle va a Sofia, qui classe,
+route, attend la decision **ecrite**, debloque.
+
+**3. Daily.** Sofia collecte et route. Pas de fichier.
+
+**4. Porte technique.** `mvn verify` vert. Yanis produit le rapport qualite, Theo confirme
+ArchUnit avec le resultat de la commande.
+
+**5. Relecture.** Le `relecteur-pedagogique` passe sur les livrables non executables. Il corrige
+ce qui est sans ambiguite, signale le reste.
+
+**6. Porte pedagogique.** Nadia joue l'increment, l'audite contre le referentiel, ecrit son
+verdict dans la fiche de conformite. Si c'est `VALIDE`, Camille passe la ligne de matrice a
+`couvert-valide`.
+
+**7. Review.** Sofia ecrit `review.md` : horodatage de fin, duree, rapport de Yanis, confirmation
+de Theo, corrections du relecteur, tableau des obstacles, verdict de Nadia.
+
+**8. Cloture.** Sofia lance le rapport de tokens et ecrit `RAPPORT.md`.
+
+**9. Retro.** Sofia anime, ecrit `retro.md`, et amende ce README si le process doit evoluer.
+
+## 10. Frontieres entre agents
+
+- Camille ne decide pas la technique. Theo ne decide pas le produit ni la pedagogie.
+- Marc, Lea et Sofia n'inventent aucune regle d'architecture : ils remontent a Sofia, qui route
+  vers Theo, et ils attendent la decision ecrite.
+- Yanis n'assouplit jamais le Done technique pour tenir un calendrier.
+- Le relecteur ne modifie pas la logique du code ; il ne juge pas ce que lit un enfant.
+- **Aucun agent, hors Nadia, ne prononce le Done pedagogique.**
+
+## 11. Arborescence
+
+```
+squad/
+  README.md               ce fichier - le process
+  EQUIPE.md               les 8 agents, miroir humain de .claude/agents/
+  TEMPLATES.md            gabarits vierges de tous les artefacts
+  sprints/
+    sNN-<slug>/
+      planning.md         sofia-sm
+      review.md           sofia-sm
+      retro.md            sofia-sm
+      RAPPORT.md          sofia-sm
+      RAPPORT-tokens.md   genere
+  decisions/
+    adr/                  theo-archi + ADR-index.md
+    produit/              camille-po + DEC-index.md
+  conformite/             FICHE-<jeu>.md - camille-po ouvre, nadia-prof valide
+  programme/
+    MATRICE-couverture.md camille-po
+    mathematiques/        referentiels repris de la version precedente
+    francais/             referentiels repris de la version precedente
+  rapports/
+    JOURNAL-tokens.md     cumul de la consommation, tous sprints
+```
