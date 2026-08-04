@@ -128,6 +128,91 @@ residerait hors du contrat) ou n'importe quel reglage arithmetique dans `Questio
 `ContentDescriptor` fait echouer le build. Les champs statiques sont exclus du controle pour ne pas
 achopper sur les champs synthetiques `$VALUES` d'un eventuel enum.
 
+**Amendement du 2026-08-04 : les deux phrases precedentes etaient fausses, et la regle ne mordait
+pas.** C'est le contre-exemple exige par ADR-0003 qui l'a montre, a sa premiere execution, sur la
+regle que cet ADR presentait comme "celle qui mord vraiment".
+
+1. Le nom de paquet du primitif `int`, tel qu'ArchUnit 1.5 le rend
+   (`JavaField.getRawType().getPackageName()`), n'est pas vide : c'est **`java.lang`**, mesure par
+   sonde et non deduit. Comme `java.lang` figurait dans la liste blanche, **tous** les primitifs
+   etaient admis. `DifficultyConfig(int minOperand, int maxOperand, ...)` serait passe sans un mot.
+   Accessoirement, `java.lang` admettait aussi `Integer`, `Double` et `Boolean`.
+2. Le type brut de `Set<Operation> operations` est `java.util.Set`, qui etait dans la liste blanche.
+   L'argument generique n'est pas regarde par `haveRawType`. La seconde forme de la dette passait
+   donc aussi.
+
+Autrement dit, cette regle interdisait un champ `java.time.LocalDate` et laissait passer les deux
+seules formes que la dette n°2 a reellement prises. La regle est reecrite ; la propriete annoncee
+est inchangee, c'est son encodage qui etait faux.
+
+```java
+@ArchTest
+static final ArchRule leContratDeContenuNePorteQueDuTexte = fields()
+        .that().areDeclaredInClassesThat().resideInAPackage(CONTRAT_CONTENU)
+        .and().doNotHaveModifier(JavaModifier.STATIC)
+        .should(neCiterQueDuTexteDesCollectionsOuDuContenu())
+        .as("ADR-0006 : le contrat de contenu porte du texte, jamais des bornes de matiere");
+
+private static ArchCondition<JavaField> neCiterQueDuTexteDesCollectionsOuDuContenu() {
+    return new ArchCondition<>(
+            "ne citer que du texte, des collections du JDK ou des types du contrat de contenu") {
+
+        @Override
+        public void check(JavaField champ, ConditionEvents evenements) {
+            typesCites(champ.getType()).stream()
+                    .filter(type -> !estPermis(type))
+                    .forEach(type -> evenements.add(SimpleConditionEvent.violated(champ,
+                            champ.getFullName() + " cite le type " + type.getName() + ", ...")));
+        }
+    };
+}
+
+private static List<JavaClass> typesCites(JavaType type) {
+    if (type instanceof JavaParameterizedType parametre) {
+        return Stream.concat(
+                        Stream.of(type.toErasure()),
+                        parametre.getActualTypeArguments().stream()
+                                .flatMap(argument -> typesCites(argument).stream()))
+                .toList();
+    }
+    return List.of(type.toErasure());
+}
+
+private static boolean estPermis(JavaClass type) {
+    return type.getName().equals(String.class.getName())
+            || type.getPackageName().equals("java.util")
+            || type.getPackageName().equals(CONTRAT_CONTENU);
+}
+```
+
+Trois differences, et une seule idee : ne plus juger le type brut mais **tous les types que la
+declaration cite**, arguments generiques compris ; n'admettre de `java.lang` que `String` et non le
+paquet entier ; garder `java.util` pour les collections et le paquet du contrat pour `ItemId`. Le
+prix est une `ArchCondition` ecrite a la main, une vingtaine de lignes la ou il y en avait cinq.
+Je l'assume : c'est le seul encodage qui ferme les deux portes, et une regle de cinq lignes qui ne
+mord pas coute plus cher que vingt lignes qui mordent. Ce qui me ferait revenir a la forme courte :
+un `haveRawType` capable de recevoir le type declare et non l'erasure, s'il apparait dans une
+version ulterieure d'ArchUnit.
+
+Contre-exemples, tous deux dans `bootstrap/src/test/java/com/recreo/domain/content/` :
+
+| Fichier | Ce qu'il ramene | Test de non-vacuite |
+|---|---|---|
+| `ReglageArithmetiqueContreExemple` (record, `int sommeMaximale`, `int nombreDePropositions`) | la borne primitive | `LesReglesMordentTest.uneBorneArithmetiqueDansLeContratDeContenuEstRefusee` |
+| `ReglageEnCollectionContreExemple` (record, `Set<OperationContreExemple>`, `List<Integer>`) | la borne cachee dans un argument generique | `LesReglesMordentTest.uneBorneArithmetiqueCacheeDansUneCollectionEstRefusee` |
+
+L'enum `OperationContreExemple` vit dans `domain.content.contreexemple` et non dans le contrat :
+place dans le contrat, il serait permis, et le contre-exemple ne prouverait rien.
+
+Les deux regles de nommage ont elles aussi recu leur contre-exemple, une par orthographe
+(`DifficultyConfigContreExemple`, `DifficulteConfigContreExemple`) : un seul nom ne peut pas
+contenir les deux sous-chaines brulees. Test :
+`LesReglesMordentTest.unTypeDeDifficulteDansLeDomaineEstRefuse`.
+
+Ce que la nouvelle regle ne garde toujours pas : un champ `List<String>` dont les chaines seraient
+en fait des nombres ecrits en texte. Aucune regle de bytecode ne verra jamais cela ; c'est le
+schema de paquet (ADR-0007) et la relecture de contenu qui le voient.
+
 Les deux premieres regles sont des interdictions de nommage, donc contournables par un
 developpeur determine qui appellerait son type `Reglage`. Elles ne sont pas la pour arreter la
 mauvaise foi mais pour arreter la reintroduction distraite, qui est le mode de defaillance reel.

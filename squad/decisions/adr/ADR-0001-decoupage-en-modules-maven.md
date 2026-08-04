@@ -118,6 +118,16 @@ La deuxieme regle n'est pas decorative : `adapter-web` et `adapter-content` cont
 deux du code reel des le sprint 0. Un developpeur qui appelle le chargeur YAML depuis un
 controleur, pour eviter de passer par un port, casse le build.
 
+**Amendement du 2026-08-04.** Ces deux regles n'avaient aucun contre-exemple, contrairement a ce
+qu'ADR-0003 exige ; c'est `yanis-qa` qui l'a trouve et comble, avec
+`DomaineDependantDeLApplicationContreExemple`, `AdaptateurWebDependantDuContenuContreExemple` et
+les deux tests correspondants de `LesReglesMordentTest`. Un piege d'ecriture est a retenir, il vaut
+pour toute regle de couches : `layeredArchitecture()` echoue par defaut sur une **couche declaree
+vide**, avant meme d'evaluer la dependance visee. Un test de non-vacuite qui n'importerait que le
+paquet du contre-exemple echouerait donc pour le mauvais motif, et resterait vert quand la regle
+cesserait de mordre. Il faut importer aussi les classes de production des cinq couches - ce que
+fait `productionEtContreExemples()`.
+
 ## Consequences
 
 - Un module de plus que la version precedente sur le chargement, un de moins sur la persistence.

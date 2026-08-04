@@ -12,18 +12,37 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0006](ADR-0006-la-difficulte-est-portee-par-le-paquet-de-contenu.md) | Supprimer la configuration de difficulte du domaine et la porter par le paquet de contenu | s00 | 2026-08-04 | Accepte |
 | [ADR-0007](ADR-0007-un-seul-chargeur-de-contenu-pilote-par-un-schema.md) | Charger tout le contenu avec un seul chargeur pilote par un schema | s00 | 2026-08-04 | Accepte |
 | [ADR-0008](ADR-0008-le-comportement-de-jeu-vit-sur-le-serveur.md) | Loger tout le comportement de jeu sur le serveur et brider le JavaScript par un budget | s00 | 2026-08-04 | Accepte |
+| [ADR-0009](ADR-0009-les-garde-fous-de-ci-sont-des-scripts-testes.md) | Extraire les garde-fous de CI dans des scripts versionnes, et leur donner des contre-exemples | s00 | 2026-08-04 | Accepte |
+
+## Amendements
+
+Un ADR accepte n'est pas fige : il est amende quand le depot montre qu'il dit faux, et l'amendement
+est date dans le corps de l'ADR. Ceux du sprint 0 :
+
+| ADR | Date | Ce que l'amendement corrige |
+|---|---|---|
+| ADR-0001 | 2026-08-04 | ses deux regles n'avaient pas de contre-exemple (comble par `yanis-qa`) ; piege de la couche declaree vide |
+| ADR-0002 | 2026-08-04 | la purete de `application` n'avait pas de contre-exemple ; nuance sur les primitifs |
+| ADR-0003 | 2026-08-04 | perimetre exact de l'exigence de contre-exemple, deux dispenses motivees, deux exceptions d'ecriture |
+| ADR-0003 | 2026-08-04 | (premier amendement) `hasMessageContaining` sur la classe fautive, un `AssertionError` ne suffit pas |
+| ADR-0004 | 2026-08-04 | trois de ses sept regles n'avaient pas de contre-exemple, dont l'isolation entre mecaniques |
+| ADR-0005 | 2026-08-04 | correction de `itemExiste`, puis contre-exemples des quatre regles |
+| ADR-0006 | 2026-08-04 | **sa regle centrale ne mordait pas** : primitifs vus dans `java.lang`, arguments generiques ignores. Regle reecrite |
+| ADR-0007 | 2026-08-04 | sa regle ArchUnit n'avait pas de contre-exemple |
+| ADR-0008 | 2026-08-04 | la regle d'assertion web n'avait pas de contre-exemple ; comment contre-exemplifier une regle qui juge du code de test |
 
 ## Lecture rapide
 
-Les huit ADR du sprint 0 forment un socle indissociable, dans cet ordre de lecture :
+Les neuf ADR du sprint 0 forment un socle indissociable, dans cet ordre de lecture :
 
 1. **ADR-0001** dit ou vit le code (cinq modules) ;
 2. **ADR-0002** dit ce que le coeur n'a pas le droit de connaitre (liste blanche, pas liste noire) ;
 3. **ADR-0003** dit comment on sait qu'une regle mord (contre-exemple obligatoire) - c'est lui qui
-   donne leur valeur aux sept autres ;
+   donne leur valeur aux huit autres ;
 4. **ADR-0004** tient le principe directeur du produit : mecanique et contenu s'ignorent, dans les
    deux sens ;
 5. **ADR-0005**, **ADR-0006**, **ADR-0007** tranchent trois dettes nommees de la version
    precedente : l'abstraction fantome, la difficulte arithmetique imposee a toutes les matieres,
    les neuf chargeurs ;
-6. **ADR-0008** ramene le comportement de jeu la ou il est testable.
+6. **ADR-0008** ramene le comportement de jeu la ou il est testable ;
+7. **ADR-0009** applique l'exigence d'ADR-0003 aux garde-fous qui ne sont pas en Java.

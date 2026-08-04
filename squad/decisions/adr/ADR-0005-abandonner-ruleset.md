@@ -121,6 +121,26 @@ soit lisible sans connaitre la configuration.
 Symetriquement, la regle `aucunTypeNommeRuleSet` selectionne tout `com.recreo..`, donc son `that()`
 n'est jamais vide : elle ne peut pas etre neutralisee par le meme mecanisme.
 
+**Amendement du 2026-08-04, application d'ADR-0003 aux quatre regles de ce fichier.** Le paragraphe
+ci-dessus raisonne juste sur la vacuite de type 1 et n'avait rien prouve : aucune des quatre regles
+n'avait de contre-exemple.
+
+- `aucunTypeNommeRuleSet` est desormais eprouvee par
+  `bootstrap/src/test/java/com/recreo/domain/content/contreexemple/RuleSet.java`, et par
+  `LesReglesMordentTest.unTypeNommeRuleSetEstRefuse`. Ce contre-exemple ne peut pas porter le
+  suffixe `ContreExemple` - il doit porter le nom brule, sinon la regle ne le voit pas ; ADR-0003
+  nomme cette exception. Il est place dans `domain.content` parce que c'est la que `RuleSet` serait
+  ne, si on l'avait ecrit. Le test asserte le **nom pleinement qualifie** de la classe fautive et
+  non `RuleSet` seul : la description de la regle contient deja ce mot, et une assertion sur le mot
+  seul serait passee sur un ensemble vide.
+- Les trois regles d'existence n'ont pas de classe fautive possible : la faute qu'elles gardent est
+  une absence. Elles sont eprouvees par
+  `LesReglesMordentTest.uneAbstractionCiteeQuiDisparaitEstRefusee`, qui les evalue sur un paquet ou
+  le type annonce n'est pas et exige l'echec nomme "failed to check any classes". C'est donc
+  `allowEmptyShould(false)` qui est mis a l'epreuve, c'est-a-dire exactement le mecanisme que ce
+  paragraphe presente comme central : le passer a `true` sur une seule des trois rend ce test rouge.
+  Verifie par mutation.
+
 Ce que cette regle **ne** garde **pas** : qu'un document cite une abstraction inexistante. Le
 `relecteur-pedagogique` verifie l'exactitude des livrables non executables contre le code (voir
 `squad/EQUIPE.md`), et toute abstraction qu'un ADR introduit doit arriver avec sa ligne dans ce

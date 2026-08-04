@@ -243,6 +243,27 @@ l'ordre d'importance :
 Et surtout, conformement a ADR-0003, chacune de ces regles est adossee a un contre-exemple qui
 **doit** la faire echouer. Une regle dont je ne peux pas montrer l'echec n'est pas encodee.
 
+**Amendement du 2026-08-04.** La phrase precedente etait fausse a la livraison : sur les sept
+regles, seules (2), (3), (4) et (5) avaient un contre-exemple. Les trois manquantes etaient
+precisement celles sur lesquelles repose l'argument "pourquoi cette regle n'est pas decorative"
+ci-dessus - (1) la fermeture du contrat de contenu, (6) une mecanique dans son propre paquet, et
+(7) l'isolation entre mecaniques, c'est-a-dire la regle exacte qui est restee verte 25 sprints sur
+`main` sans rien interdire. Elles sont desormais mises a l'epreuve :
+
+| Regle | Contre-exemple | Test de non-vacuite |
+|---|---|---|
+| (1) `leContratDeContenuEstFerme` | `domain/content/MoteurDeContenuPartageContreExemple` : une classe porteuse de comportement dans le contrat de contenu, pendant exact de `MoteurPartageContreExemple` | `LesReglesMordentTest.unMoteurDeContenuPartageEstRefuse` |
+| (6) `uneMecaniqueVitDansSonProprePaquet` | `domain/mechanics/MecaniqueHorsPaquetContreExemple` : implemente `GameMechanic` mais reside directement dans `domain.mechanics`, donc dans aucun sous-paquet | `LesReglesMordentTest.uneMecaniqueHorsDeSonPaquetEstRefusee` |
+| (7) `lesMecaniquesNeSeConnaissentPas` | `domain/mechanics/premiere/MecaniquePremiereContreExemple` et `domain/mechanics/seconde/MecaniqueSecondeContreExemple`, la seconde reutilisant le comportement de la premiere | `LesReglesMordentTest.deuxMecaniquesNeDoiventPasSeConnaitre` |
+
+Une precision sur ce que le contre-exemple de (7) prouve, et sur ce qu'il ne prouve pas : il prouve
+que la regle **peut** echouer, donc qu'elle n'est pas vide de selection ni mal ecrite (vacuite de
+types 1 et 3). Il ne prouve pas que les mecaniques ont du comportement a coupler (vacuite de type
+2) : cela reste tenu par (1), (2) et (6), qui suppriment l'ailleurs ou le mettre, et par ADR-0008
+qui exige un test de comportement par mecanique. Les deux moities du contre-exemple portent
+volontairement du comportement reel plutot que d'etre des coquilles vides, pour que le couplage
+qu'elles montrent soit celui qui a vraiment fait defaut sur `main`.
+
 **Ce qu'ArchUnit ne peut pas garder**, et par quoi c'est garde a la place :
 
 1. *La compatibilite de forme entre un paquet de contenu et la mecanique qui le joue* est une

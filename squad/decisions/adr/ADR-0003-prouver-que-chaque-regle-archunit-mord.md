@@ -170,6 +170,87 @@ Fichiers de contre-exemple correspondants, tous dans `bootstrap/src/test/java` :
 
 Ces classes ne sont jamais instanciees. Elles existent pour etre refusees.
 
+**Amendement du 2026-08-04, apres le rapport qualite de `yanis-qa`.** Ce texte exigeait un
+contre-exemple pour "toute regle ArchUnit qui garde une decision d'ADR", et le depot ne le faisait
+pas. Le compte exact, etabli en inventoriant les `ArchRule` du depot une par une : **21 regles de
+garde, 5 contre-exemplifiees** au premier commit du sprint. `yanis-qa` en a comble 2 (ADR-0001) et
+signale 5 autres ; l'inventaire en a montre **9 de plus** que son rapport ne cite pas, dont la
+regle d'isolation entre mecaniques - celle-la meme dont cet ADR raconte qu'elle a menti 25 sprints
+sur `main`. Un ADR qui exige a la lettre ce que le depot ne fait pas est la dette n°7 de `main`,
+dans le fichier meme qui pretend l'interdire. Les 21 regles sont desormais mises a l'epreuve.
+
+Trois choses sont donc tranchees ici : le perimetre exact de l'exigence, les deux seules dispenses
+admises, et deux exceptions d'ecriture.
+
+### Ce qui est une "regle de garde", et ce qui n'en est pas
+
+L'exigence porte sur les `ArchRule` : un objet dont on peut appeler `check(JavaClasses)` sur un jeu
+de classes de notre choix, donc dont on peut prouver l'echec. Elle ne porte pas sur les tests JUnit
+ordinaires qui assertent directement une propriete (`itemEstScelle`,
+`ilNYAQuUnSeulChargeurDeContenu`, `chaqueMecaniqueAUnTestDeComportement`,
+`aucuneMecaniqueNeNommeUneMatiere`, les trois tests de `FrontieresDuJavaScriptTest`) : une
+assertion directe est son propre temoin, elle devient rouge quand la propriete est fausse. Leur
+seul mode de vacuite est l'ensemble vide, et il est deja traite par un `isNotEmpty()` ou par un
+`containsExactly(...)` explicite - c'est exactement ce que `yanis-qa` a corrige sur
+`FrontieresDuJavaScriptTest`. Ecrire un "contre-exemple" pour ces tests demanderait de dupliquer
+leur code dans un test qui l'inverse : cout reel, information nulle.
+
+### Les deux seules dispenses, et leur contrepartie
+
+1. **Une regle d'existence** (`classes().that().haveFullyQualifiedName(X).should().beInterfaces()
+   .allowEmptyShould(false)`, ADR-0005) n'a pas de classe fautive possible : la faute qu'elle garde
+   est une **absence**. Sa mise a l'epreuve n'est donc pas une classe mais un jeu de classes ou `X`
+   n'est pas, et ce qui doit mordre est `allowEmptyShould(false)`. C'est ce que fait
+   `uneAbstractionCiteeQuiDisparaitEstRefusee` : les trois regles d'existence sont evaluees sur un
+   paquet qui ne contient pas le type annonce, et l'echec attendu est nommement "failed to check any
+   classes". Passer une seule d'elles a `allowEmptyShould(true)` rend ce test rouge - verifie.
+2. **Une regle qui juge du code de test** (`AssertionsWebTest`, ADR-0008) ne peut pas etre
+   contre-exemplifiee depuis `bootstrap`, qui ne voit pas les classes de test des autres modules.
+   Son contre-exemple vit donc dans les tests de son propre module, et il doit etre soustrait a
+   l'evaluation reelle sans quoi il la ferait echouer en permanence. C'est la seule regle du depot
+   dont le contre-exemple ne vit pas dans `bootstrap/src/test`, et cette dispense ouvre un trou que
+   je nomme plutot que de le taire : une assertion par expression reguliere ecrite dans le paquet
+   `com.recreo.adapter.web.contreexemple` echapperait a la regle. Je l'accepte parce que le mode de
+   defaillance reel est la regression distraite, pas la dissimulation deliberee dans un paquet
+   nomme `contreexemple`. Le texte de la regle, lui, n'est pas affaibli : c'est le perimetre
+   d'import qui exclut le contre-exemple, par un `ImportOption` de trois lignes visible dans le
+   fichier.
+
+Aucune autre dispense n'est admise. En particulier, "cette regle me parait sans risque a la
+lecture" n'en est pas une : c'est le raisonnement qui a laisse une regle mentir 25 sprints.
+
+### Deux exceptions d'ecriture
+
+1. **Le contre-exemple d'une regle qui brule un nom porte ce nom exact**, et donc pas le suffixe
+   `ContreExemple` : `RuleSet` (ADR-0005) ne peut pas s'appeler `RuleSetContreExemple`, sinon la
+   regle ne le voit pas. C'est le paquet `..contreexemple` qui dit son role a sa place, et sa
+   migration accidentelle vers `src/main` est deja rouge - par la regle qu'il viole, pas par la
+   regle de suffixe. Les noms brules par sous-chaine (`Difficulty`, `Difficulte`, ADR-0006), eux,
+   gardent le suffixe : `DifficultyConfigContreExemple` contient bien la sous-chaine interdite.
+   Deux orthographes brulees demandent deux classes : un seul nom ne peut pas contenir les deux.
+2. **Un contre-exemple ne doit violer qu'une regle a la fois**, sans quoi le motif de l'echec
+   devient ambigu. C'est pour cela que `ReglageArithmetiqueContreExemple` est un record (une classe
+   ferait aussi echouer ADR-0004 (1)) et que `MoteurDeContenuPartageContreExemple` n'a aucun champ
+   (un champ numerique ferait aussi echouer ADR-0006). Quand deux regles visent volontairement la
+   meme classe, c'est le second `hasMessageContaining` qui les distingue.
+
+### Etat de l'application, regle par regle
+
+L'inventaire complet, avec le contre-exemple de chaque regle et le test qui prouve son echec, est
+tenu a chaque fin de sprint dans `squad/sprints/<sprint>/confirmation-archunit.md`. Un tableau dans
+un ADR se perime ; un tableau produit avant chaque review ne se perime pas. Ce que cet ADR fixe est
+la regle, pas l'inventaire.
+
+Ce que ce travail a revele, et qui justifie a lui seul l'exigence : **la regle centrale d'ADR-0006
+ne mordait pas.** Elle est corrigee, et l'ADR est amende. Aucune relecture n'avait vu le defaut ;
+le premier contre-exemple l'a montre en une execution.
+
+### Les garde-fous qui ne sont pas en Java
+
+Le meme raisonnement s'applique au garde-fou de prefixes de commit, qui est en shell et non en
+ArchUnit. Il est traite par **ADR-0009**, qui l'extrait du workflow et lui donne ses
+contre-exemples.
+
 Point d'ecriture a respecter, constate a la redaction de ces quatre classes : **un contre-exemple
 doit porter la dependance interdite dans une signature**, pas dans un corps de methode. Une
 variable locale de type `ContentDescriptor` ne produit aucune dependance dans le bytecode ; un

@@ -86,6 +86,20 @@ compile pas ou qui echoue a tort serait pire que pas de regle :
 
 La non-vacuite de ces deux regles est prouvee par les contre-exemples decrits en ADR-0003.
 
+**Amendement du 2026-08-04.** Cette derniere phrase etait fausse pour la seconde regle : seul le
+domaine avait son contre-exemple (`DomainePollueContreExemple`), la purete de la couche
+`application` n'avait jamais eu a echouer. Le pendant existe desormais,
+`bootstrap/src/test/java/com/recreo/application/contreexemple/ApplicationPollueeContreExemple.java`
+(annotee `@org.springframework.stereotype.Service`), et
+`LesReglesMordentTest.lApplicationNeDoitPasDependreDUnFramework` verifie que la regle echoue en
+citant la classe fautive et `org.springframework`.
+
+A noter, parce que la nuance a coute une regle ailleurs : la remarque ci-dessus sur les primitifs
+vaut pour la construction des **dependances** (`Dependency.tryCreateDependency`), pas pour la
+resolution du **type brut d'un champ**, ou ArchUnit rend le primitif `int` comme une `JavaClass` de
+paquet `java.lang`. C'est ce que la premiere ecriture de la regle centrale d'ADR-0006 avait suppose
+a l'envers.
+
 ## Consequences
 
 - Le domaine ne peut pas journaliser. Une mecanique qui veut "tracer" doit remonter l'information

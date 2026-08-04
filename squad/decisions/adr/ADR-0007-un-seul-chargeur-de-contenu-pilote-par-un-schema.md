@@ -191,6 +191,19 @@ sur les deux suffixes qui avaient prolifere sur la version precedente (`...Loade
 `...ContentPack`) ; c'est une regle de cardinalite, qu'aucune API fluide d'ArchUnit n'exprime,
 d'ou le test JUnit ordinaire.
 
+**Amendement du 2026-08-04, application d'ADR-0003.** La regle ArchUnit de ce fichier n'avait pas de
+contre-exemple. Elle en a un :
+`bootstrap/src/test/java/com/recreo/bootstrap/contreexemple/ChargeurSauvageContreExemple.java`, le
+dixieme chargeur - une classe de `bootstrap` qui manipule un `java.nio.file.Path` au lieu de passer
+par l'adaptateur de contenu. `LesReglesMordentTest.unChargeurHorsDeLAdaptateurDeContenuEstRefuse`
+verifie que la regle echoue en citant cette classe **et** `java.nio.file`, pour que l'echec ne
+puisse pas venir d'un artefact du montage.
+
+Le test `ilNYAQuUnSeulChargeurDeContenu` n'en recoit pas, et c'est motive dans l'amendement
+d'ADR-0003 : ce n'est pas une `ArchRule` mais une assertion directe de cardinalite
+(`containsExactly`), qui devient rouge des qu'un second chargeur apparait **et** des que sa
+selection cesse de trouver le premier. Elle est son propre temoin.
+
 Deux gardes complementaires, qui ne sont pas des regles de bytecode :
 
 1. **Test d'integration de chargement**, `bootstrap/src/test/java/.../CatalogueChargeableIT.java` :

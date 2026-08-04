@@ -16,13 +16,16 @@ jobs:
 
       # squad/README.md section 8 annonce que la CI rejette un commit sans tag
       # d'agent. Sur la version precedente, cette regle etait documentee et
-      # n'existait dans aucun workflow. Ici elle est executable.
+      # n'existait dans aucun workflow. Ici elle est executable, et le verdict
+      # lui-meme est mis a l'epreuve avant d'etre applique : ADR-0009.
+      - name: Tester le garde-fou de prefixes
+        run: bash .github/scripts/verifier-prefixes-test.sh
+
       - name: Verifier les prefixes
         env:
           BASE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
         run: |
           set -euo pipefail
-          TAGS='CAM|SOF|THEO|MARC|LEA|YAN|REL|NAD'
 
           if [ -z "${BASE}" ] || [ "${BASE}" = "0000000000000000000000000000000000000000" ]; then
             echo "Pas de base comparable (branche neuve) : verification du dernier commit."
@@ -31,21 +34,7 @@ jobs:
             RANGE="${BASE}..${GITHUB_SHA}"
           fi
 
-          FAUTIFS=0
-          while IFS= read -r sujet; do
-            [ -z "${sujet}" ] && continue
-            if ! printf '%s' "${sujet}" | grep -Eq "^\[(${TAGS})\] "; then
-              echo "::error::message sans prefixe d'agent connu : ${sujet}"
-              FAUTIFS=$((FAUTIFS + 1))
-            fi
-          done < <(git log --no-merges --format=%s ${RANGE})
-
-          if [ "${FAUTIFS}" -gt 0 ]; then
-            echo "${FAUTIFS} commit(s) sans prefixe. Format attendu : [TAG] resume"
-            echo "Tags valides : ${TAGS//|/, }"
-            exit 1
-          fi
-          echo "Tous les commits portent un prefixe d'agent connu."
+          git log --no-merges --format=%s ${RANGE} | bash .github/scripts/verifier-prefixes.sh
 
   build:
     name: Build et tests (Java 21)

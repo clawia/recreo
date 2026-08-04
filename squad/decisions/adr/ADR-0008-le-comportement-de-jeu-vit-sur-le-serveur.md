@@ -234,6 +234,52 @@ Cette classe-ci **inclut** les tests dans l'analyse (pas de `DoNotIncludeTests`)
 justement le code de test qu'elle regarde ; elle vit dans `adapter-web` parce que les tests de ce
 module ne sont pas sur le classpath de `bootstrap`.
 
+**Amendement du 2026-08-04, application d'ADR-0003.** Cette regle n'avait pas de contre-exemple, et
+sa position est justement celle qui rend le contre-exemple difficile : puisqu'elle juge le code de
+test de son propre module, un contre-exemple ne peut ni vivre dans `bootstrap` (qui ne voit pas ces
+classes) ni etre laisse dans le perimetre d'analyse (il ferait echouer la regle en permanence). La
+solution retenue, et la seule ou le **texte** de la regle reste inchange, est un `ImportOption` qui
+soustrait le paquet `contreexemple` de l'analyse reelle :
+
+```java
+@AnalyzeClasses(packages = "com.recreo.adapter.web",
+        importOptions = AssertionsWebTest.SansLesContreExemples.class)
+class AssertionsWebTest {
+
+    public static final class SansLesContreExemples implements ImportOption {
+
+        @Override
+        public boolean includes(Location location) {
+            return !location.contains("/contreexemple/");
+        }
+    }
+
+    @ArchTest
+    static final ArchRule aucuneAssertionParExpressionReguliere = /* inchangee */;
+
+    @Test
+    void uneAssertionParExpressionReguliereEstRefusee() {
+        assertThatThrownBy(() -> aucuneAssertionParExpressionReguliere.check(
+                new ClassFileImporter().importPackages("com.recreo.adapter.web.contreexemple")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("com.recreo.adapter.web.contreexemple.AssertionRegexContreExemple")
+                .hasMessageContaining("java.util.regex");
+    }
+}
+```
+
+Le contre-exemple est
+`adapters/adapter-web/src/test/java/com/recreo/adapter/web/contreexemple/AssertionRegexContreExemple.java`,
+qui extrait un score d'un fragment HTML par `java.util.regex.Pattern` - l'assertion cassante que la
+version precedente pratiquait. C'est le seul contre-exemple du depot hors de `bootstrap/src/test`,
+et le trou que cette dispense ouvre (une assertion par expression reguliere ecrite dans un paquet
+nomme `contreexemple`) est nomme et assume dans l'amendement d'ADR-0003.
+
+Les trois tests de `FrontieresDuJavaScriptTest`, eux, n'ont pas de contre-exemple et n'en ont pas
+besoin : ce ne sont pas des `ArchRule` mais des assertions directes sur le contenu de fichiers,
+deja protegees de la vacuite par les `isNotEmpty()` que `yanis-qa` a ajoutes.
+`ToutesLesMecaniquesSontTesteesTest` est dans le meme cas.
+
 **Ce qui n'est garde par aucun automate** : qu'un test web verifie un comportement plutot qu'un
 detail de balisage. Interdire `java.util.regex` et fournir jsoup rend la bonne pratique la plus
 facile, mais la pertinence de l'assertion reste du ressort de Yanis en revue.
