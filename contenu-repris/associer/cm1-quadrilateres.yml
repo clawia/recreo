@@ -1,0 +1,22 @@
+entryId: quadrilateres-cm1
+title: "Les quadrilatères"
+description: "Associe chaque quadrilatère à sa propriété."
+gameKey: classer
+gameLabel: "Les quadrilatères"
+matiere: "Géométrie"
+niveau: "CM1"
+domaine: "Quadrilatères"
+consigne: "Associe chaque figure à sa propriété"
+puzzles:
+  - associations:
+      - { item: "carré", cible: "4 côtés égaux et 4 angles droits" }
+      - { item: "rectangle", cible: "4 angles droits, côtés opposés égaux" }
+      - { item: "losange", cible: "4 côtés égaux, angles non droits" }
+  - associations:
+      - { item: "parallélogramme", cible: "côtés opposés parallèles" }
+      - { item: "trapèze", cible: "une seule paire de côtés parallèles" }
+      - { item: "losange", cible: "un parallélogramme aux 4 côtés égaux" }
+  - associations:
+      - { item: "carré", cible: "à la fois un rectangle et un losange" }
+      - { item: "rectangle", cible: "des angles droits et des côtés opposés de même longueur" }
+      - { item: "parallélogramme", cible: "côtés opposés parallèles deux à deux" }

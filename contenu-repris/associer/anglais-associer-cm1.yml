@@ -1,0 +1,35 @@
+entryId: anglais-associer-cm1
+title: "Associe les mots (anglais)"
+description: "Relie chaque mot français à sa traduction anglaise."
+gameKey: associer
+gameLabel: "Associe les mots"
+matiere: "Anglais"
+niveau: "CM1"
+domaine: "Lexique"
+consigne: "Associe chaque mot français à sa traduction anglaise"
+puzzles:
+  - associations:
+      - { item: "chien", cible: "dog" }
+      - { item: "chat", cible: "cat" }
+      - { item: "oiseau", cible: "bird" }
+      - { item: "poisson", cible: "fish" }
+  - associations:
+      - { item: "rouge", cible: "red" }
+      - { item: "bleu", cible: "blue" }
+      - { item: "vert", cible: "green" }
+      - { item: "jaune", cible: "yellow" }
+  - associations:
+      - { item: "un", cible: "one" }
+      - { item: "deux", cible: "two" }
+      - { item: "trois", cible: "three" }
+      - { item: "quatre", cible: "four" }
+  - associations:
+      - { item: "cinq", cible: "five" }
+      - { item: "six", cible: "six" }
+      - { item: "sept", cible: "seven" }
+      - { item: "huit", cible: "eight" }
+  - associations:
+      - { item: "main", cible: "hand" }
+      - { item: "pied", cible: "foot" }
+      - { item: "tête", cible: "head" }
+      - { item: "œil", cible: "eye" }

@@ -1,0 +1,20 @@
+entryId: mesures-cm1
+title: "Les équivalences"
+description: "Associe chaque mesure à son équivalent."
+gameKey: associer
+gameLabel: "Les équivalences"
+matiere: "Mathématiques"
+niveau: "CM1"
+domaine: "Grandeurs et mesures"
+consigne: "Associe chaque mesure à son équivalent"
+puzzles:
+  - associations:
+      - { item: "1 m", cible: "100 cm" }
+      - { item: "1 km", cible: "1000 m" }
+      - { item: "1 cm", cible: "10 mm" }
+      - { item: "2 m", cible: "200 cm" }
+  - associations:
+      - { item: "1 h", cible: "60 min" }
+      - { item: "1 jour", cible: "24 h" }
+      - { item: "1 semaine", cible: "7 jours" }
+      - { item: "1 min", cible: "60 s" }

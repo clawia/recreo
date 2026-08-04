@@ -1,0 +1,19 @@
+# Secrets - JAMAIS commité
+.env
+
+# Build Maven
+target/
+*.jar
+*.war
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS
+Thumbs.db
+.DS_Store

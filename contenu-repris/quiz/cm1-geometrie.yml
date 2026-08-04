@@ -1,0 +1,33 @@
+entryId: geometrie-cm1
+title: "Géométrie CM1"
+description: "Angles, symétries et propriétés des figures."
+gameKey: geometrie
+gameLabel: "Géométrie"
+matiere: "Géométrie"
+niveau: "CM1"
+domaine: "Propriétés et angles"
+questions:
+  - question: "Combien de côtés a un hexagone ?"
+    bonne: "6"
+    distracteurs: ["5", "7", "8"]
+  - question: "Un angle droit mesure…"
+    bonne: "90°"
+    distracteurs: ["180°", "45°", "60°"]
+  - question: "Combien d'angles droits a un rectangle ?"
+    bonne: "4"
+    distracteurs: ["2", "0", "3"]
+  - question: "Combien d'axes de symétrie a un carré ?"
+    bonne: "4"
+    distracteurs: ["2", "1", "0"]
+  - question: "Quel instrument mesure un angle ?"
+    bonne: "le rapporteur"
+    distracteurs: ["la règle", "le compas", "l'équerre"]
+  - question: "Un triangle qui a 3 côtés égaux est…"
+    bonne: "équilatéral"
+    distracteurs: ["isocèle", "rectangle", "quelconque"]
+  - question: "Un quadrilatère a combien de côtés ?"
+    bonne: "4"
+    distracteurs: ["3", "5", "6"]
+  - question: "Deux droites qui ne se croisent jamais sont…"
+    bonne: "parallèles"
+    distracteurs: ["perpendiculaires", "sécantes"]

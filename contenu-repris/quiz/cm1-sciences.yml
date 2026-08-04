@@ -1,0 +1,100 @@
+# Quiz-aventure — Sciences et technologie (CM1). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+entryId: sciences-cm1
+title: "Sciences CM1 — Quiz-aventure"
+description: "Teste tes connaissances en sciences."
+gameKey: quiz-aventure
+gameLabel: "Quiz-aventure"
+matiere: "Sciences et technologie"
+niveau: "CM1"
+domaine: "Matière, mouvement, énergie, vivant"
+questions:
+  - question: "À quelle température l'eau bout-elle ?"
+    bonne: "100 °C"
+    distracteurs: ["50 °C", "0 °C"]
+  - question: "Quand l'eau gèle, elle devient..."
+    bonne: "solide"
+    distracteurs: ["gazeuse", "invisible"]
+  - question: "Quel organe sert à respirer ?"
+    bonne: "Les poumons"
+    distracteurs: ["L'estomac", "Le foie"]
+  - question: "Le Soleil est une..."
+    bonne: "étoile"
+    distracteurs: ["planète", "lune"]
+  - question: "Combien de pattes a un insecte ?"
+    bonne: "6"
+    distracteurs: ["8", "4"]
+  - question: "Grâce à quoi les plantes fabriquent-elles leur nourriture avec la lumière ?"
+    bonne: "La photosynthèse"
+    distracteurs: ["La digestion", "L'évaporation"]
+  - question: "Combien de planètes compte le système solaire ?"
+    bonne: "8"
+    distracteurs: ["9", "7"]
+  - question: "Quel gaz de l'air nous est indispensable pour respirer ?"
+    bonne: "L'oxygène"
+    distracteurs: ["Le dioxyde de carbone", "L'hélium"]
+  - question: "Quel organe pompe le sang dans tout le corps ?"
+    bonne: "Le cœur"
+    distracteurs: ["Le cerveau", "Les reins"]
+  - question: "En dessous de 0 °C, l'eau devient..."
+    bonne: "solide"
+    distracteurs: ["liquide", "gazeuse"]
+  - question: "Sur quelle planète vivons-nous ?"
+    bonne: "La Terre"
+    distracteurs: ["Mars", "Jupiter"]
+  - question: "Qu'est-ce qui attire les objets vers le sol ?"
+    bonne: "La gravité"
+    distracteurs: ["Le vent", "La lumière"]
+  # Le ciel et la Terre — le système solaire (programme CM1)
+  - question: "Quelle planète est la plus proche du Soleil ?"
+    bonne: "Mercure"
+    distracteurs: ["La Terre", "Jupiter"]
+  - question: "Quelle est la plus grosse planète du système solaire ?"
+    bonne: "Jupiter"
+    distracteurs: ["La Terre", "Mars"]
+  - question: "Quel astre tourne autour de la Terre ?"
+    bonne: "La Lune"
+    distracteurs: ["Le Soleil", "Mars"]
+  - question: "Quelle planète est surnommée la planète rouge ?"
+    bonne: "Mars"
+    distracteurs: ["Vénus", "Saturne"]
+  - question: "Qu'est-ce qui cause l'alternance du jour et de la nuit ?"
+    bonne: "La rotation de la Terre sur elle-même"
+    distracteurs: ["Les nuages", "Les saisons"]
+  # Matière, énergie, mouvement, corps humain (programme CM1)
+  - question: "Quel instrument sert à mesurer la température ?"
+    bonne: "Le thermomètre"
+    distracteurs: ["La balance", "La règle"]
+  - question: "Quand l'eau bout et s'évapore, elle devient..."
+    bonne: "gazeuse"
+    distracteurs: ["solide", "liquide"]
+  - question: "Quelle source d'énergie est renouvelable ?"
+    bonne: "Le Soleil"
+    distracteurs: ["Le pétrole", "Le charbon"]
+  - question: "Combien de dents de lait un enfant a-t-il en tout ?"
+    bonne: "20"
+    distracteurs: ["32", "16"]
+  - question: "Quel organe reçoit les aliments après qu'on les a avalés ?"
+    bonne: "L'estomac"
+    distracteurs: ["Les poumons", "Le cerveau"]
+  - question: "Que faut-il pour mettre en mouvement un objet immobile ?"
+    bonne: "Une force, comme le pousser ou le tirer"
+    distracteurs: ["Le regarder", "Attendre sans rien faire"]
+  # Le vivant, l'énergie, le corps humain (programme CM1)
+  - question: "Comment appelle-t-on un animal qui ne mange que des plantes ?"
+    bonne: "Un herbivore"
+    distracteurs: ["Un carnivore", "Un omnivore"]
+  - question: "Combien de temps la Terre met-elle pour faire un tour complet autour du Soleil ?"
+    bonne: "Un an"
+    distracteurs: ["Un jour", "Un mois"]
+  - question: "Quel appareil transforme l'énergie du vent en électricité ?"
+    bonne: "Une éolienne"
+    distracteurs: ["Un barrage", "Un panneau solaire"]
+  - question: "Quel organe nous permet de réfléchir et commande tout le corps ?"
+    bonne: "Le cerveau"
+    distracteurs: ["Le cœur", "L'estomac"]
+  - question: "Combien de dents un adulte possède-t-il normalement ?"
+    bonne: "32"
+    distracteurs: ["20", "28"]
+  - question: "Quelle partie du squelette protège le cerveau ?"
+    bonne: "Le crâne"
+    distracteurs: ["La colonne vertébrale", "Les côtes"]

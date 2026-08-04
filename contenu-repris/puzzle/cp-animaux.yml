@@ -1,0 +1,18 @@
+entryId: puzzle-animaux-cp
+title: "Reconstitue l'animal"
+description: "Remets les lettres dans l'ordre pour retrouver l'animal."
+gameKey: puzzle
+gameLabel: "Reconstitue l'animal"
+matiere: "Français"
+niveau: "CP"
+domaine: "Lecture — écriture"
+consigne: "Remets les lettres dans l'ordre"
+mots:
+  - { mot: "chat", indice: "🐱" }
+  - { mot: "chien", indice: "🐶" }
+  - { mot: "lapin", indice: "🐰" }
+  - { mot: "vache", indice: "🐮" }
+  - { mot: "souris", indice: "🐭" }
+  - { mot: "poule", indice: "🐔" }
+  - { mot: "canard", indice: "🦆" }
+  - { mot: "cheval", indice: "🐴" }

@@ -1,0 +1,31 @@
+entryId: nature-mots-cm1
+title: "Nom, verbe ou adjectif ?"
+description: "Classe chaque mot selon sa nature."
+gameKey: classer
+gameLabel: "Nom, verbe ou adjectif"
+matiere: "Français"
+niveau: "CM1"
+domaine: "Grammaire — nature des mots"
+consigne: "Classe chaque mot : nom, verbe ou adjectif"
+puzzles:
+  - associations:
+      - { item: "chien", cible: "nom" }
+      - { item: "sauter", cible: "verbe" }
+      - { item: "grand", cible: "adjectif" }
+      - { item: "école", cible: "nom" }
+      - { item: "lire", cible: "verbe" }
+      - { item: "petit", cible: "adjectif" }
+  - associations:
+      - { item: "fleur", cible: "nom" }
+      - { item: "dormir", cible: "verbe" }
+      - { item: "bleu", cible: "adjectif" }
+      - { item: "table", cible: "nom" }
+      - { item: "chanter", cible: "verbe" }
+      - { item: "rapide", cible: "adjectif" }
+  - associations:
+      - { item: "livre", cible: "nom" }
+      - { item: "courir", cible: "verbe" }
+      - { item: "gentil", cible: "adjectif" }
+      - { item: "ami", cible: "nom" }
+      - { item: "jouer", cible: "verbe" }
+      - { item: "joyeux", cible: "adjectif" }

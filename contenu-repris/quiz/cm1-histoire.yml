@@ -1,0 +1,78 @@
+# Quiz-aventure — Histoire (CM1). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+entryId: histoire-cm1
+title: "Histoire CM1 — Quiz-aventure"
+description: "Explore les grands repères de l'histoire."
+gameKey: quiz-aventure
+gameLabel: "Quiz-aventure"
+matiere: "Histoire"
+niveau: "CM1"
+domaine: "Repères historiques"
+questions:
+  - question: "En quelle année a eu lieu la Révolution française ?"
+    bonne: "1789"
+    distracteurs: ["1515", "1945"]
+  - question: "Quel monument parisien date de 1889 ?"
+    bonne: "La tour Eiffel"
+    distracteurs: ["Notre-Dame", "Le château de Versailles"]
+  - question: "Qui a fait construire le château de Versailles ?"
+    bonne: "Louis XIV"
+    distracteurs: ["Napoléon", "Charlemagne"]
+  - question: "Les Gaulois vivaient il y a environ..."
+    bonne: "2000 ans"
+    distracteurs: ["200 ans", "100 ans"]
+  - question: "La Préhistoire, c'est l'époque..."
+    bonne: "avant l'écriture"
+    distracteurs: ["du Moyen Âge", "des rois de France"]
+  - question: "Quelle guerre s'est terminée en 1918 ?"
+    bonne: "La Première Guerre mondiale"
+    distracteurs: ["La guerre de Cent Ans", "La Seconde Guerre mondiale"]
+  - question: "Comment appelle-t-on les habitants de la Gaule ?"
+    bonne: "Les Gaulois"
+    distracteurs: ["Les Romains", "Les Vikings"]
+  - question: "Quel roi de France était surnommé le Roi-Soleil ?"
+    bonne: "Louis XIV"
+    distracteurs: ["Henri IV", "François Ier"]
+  - question: "Au Moyen Âge, les chevaliers vivaient dans des..."
+    bonne: "châteaux forts"
+    distracteurs: ["gratte-ciels", "cavernes"]
+  - question: "Qui devient empereur des Français en 1804 ?"
+    bonne: "Napoléon Bonaparte"
+    distracteurs: ["Louis XIV", "Charlemagne"]
+  # Grandes périodes : Préhistoire, Antiquité, Moyen Âge, Temps modernes, époque contemporaine
+  - question: "Qu'est-ce qui marque la fin de la Préhistoire et le début de l'Antiquité ?"
+    bonne: "L'invention de l'écriture"
+    distracteurs: ["L'invention de la roue", "La Révolution française"]
+  - question: "En quelle année Christophe Colomb atteint-il l'Amérique ?"
+    bonne: "1492"
+    distracteurs: ["1789", "1918"]
+  - question: "Quel peuple de l'Antiquité, dirigé par Jules César, a conquis la Gaule ?"
+    bonne: "Les Romains"
+    distracteurs: ["Les Vikings", "Les Égyptiens"]
+  - question: "Quel chef gaulois s'est opposé à Jules César à Alésia ?"
+    bonne: "Vercingétorix"
+    distracteurs: ["Clovis", "Charlemagne"]
+  - question: "À quelle grande période appartient le règne de Louis XIV ?"
+    bonne: "Les Temps modernes"
+    distracteurs: ["Le Moyen Âge", "l'Antiquité"]
+  - question: "Quel événement marque le début de l'époque contemporaine en France ?"
+    bonne: "La Révolution française de 1789"
+    distracteurs: ["La chute de l'Empire romain", "La découverte de l'Amérique"]
+  # Repères : dates et personnages (programme CM1)
+  - question: "En quelle année s'est terminée la Seconde Guerre mondiale ?"
+    bonne: "1945"
+    distracteurs: ["1918", "1789"]
+  - question: "Quel roi des Francs a été couronné empereur en l'an 800 ?"
+    bonne: "Charlemagne"
+    distracteurs: ["Clovis", "Louis XIV"]
+  - question: "Quel roi des Francs a été le premier à se convertir au christianisme ?"
+    bonne: "Clovis"
+    distracteurs: ["Charlemagne", "Napoléon"]
+  - question: "Quelle grande période commence avec la chute de l'Empire romain d'Occident en 476 ?"
+    bonne: "Le Moyen Âge"
+    distracteurs: ["L'Antiquité", "Les Temps modernes"]
+  - question: "À quel siècle a eu lieu la Révolution française ?"
+    bonne: "Au XVIIIe siècle"
+    distracteurs: ["Au XXe siècle", "Au XVe siècle"]
+  - question: "Quel empereur français a été vaincu à Waterloo en 1815 ?"
+    bonne: "Napoléon Bonaparte"
+    distracteurs: ["Louis XIV", "Charlemagne"]

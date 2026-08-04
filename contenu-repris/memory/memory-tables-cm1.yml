@@ -1,0 +1,17 @@
+entryId: memory-tables-cm1
+title: "Memory des tables"
+description: "Retrouve les paires : le produit et son résultat."
+gameKey: memory
+gameLabel: "Memory des tables"
+matiere: "Mathématiques"
+niveau: "CM1"
+domaine: "Calcul — multiplication"
+jokers: 6
+consigne: "Retrouve les paires : le produit et son résultat"
+paires:
+  - { gauche: "6 × 7", droite: "42" }
+  - { gauche: "8 × 9", droite: "72" }
+  - { gauche: "7 × 8", droite: "56" }
+  - { gauche: "6 × 9", droite: "54" }
+  - { gauche: "4 × 7", droite: "28" }
+  - { gauche: "9 × 9", droite: "81" }

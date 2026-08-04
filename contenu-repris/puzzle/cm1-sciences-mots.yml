@@ -1,0 +1,18 @@
+entryId: puzzle-sciences-cm1
+title: "Mots de sciences"
+description: "Remets les lettres dans l'ordre pour retrouver le mot de sciences."
+gameKey: puzzle
+gameLabel: "Mots de sciences"
+matiere: "Sciences et technologie"
+niveau: "CM1"
+domaine: "Lexique scientifique"
+consigne: "Remets les lettres dans l'ordre"
+mots:
+  - { mot: "squelette", indice: "Ensemble des os du corps" }
+  - { mot: "volcan", indice: "Montagne qui peut cracher de la lave" }
+  - { mot: "oxygène", indice: "Gaz de l'air indispensable pour respirer" }
+  - { mot: "digestion", indice: "Transformation des aliments dans le corps" }
+  - { mot: "aimant", indice: "Objet qui attire le fer" }
+  - { mot: "énergie", indice: "Ce qui fait fonctionner les machines" }
+  - { mot: "microbe", indice: "Être vivant minuscule invisible à l'œil nu" }
+  - { mot: "circuit", indice: "Chemin fermé où circule le courant électrique" }

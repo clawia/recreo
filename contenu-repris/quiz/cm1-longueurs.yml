@@ -1,0 +1,30 @@
+entryId: longueurs-cm1
+title: "Les longueurs CM1"
+description: "Convertis et compare les unités de longueur."
+gameKey: longueurs
+gameLabel: "Les longueurs"
+matiere: "Mathématiques"
+niveau: "CM1"
+domaine: "Grandeurs et mesures — longueurs"
+questions:
+  - question: "Combien de centimètres dans 1 mètre ?"
+    bonne: "100"
+    distracteurs: ["10", "1000", "50"]
+  - question: "Combien de mètres dans 1 kilomètre ?"
+    bonne: "1000"
+    distracteurs: ["100", "10", "500"]
+  - question: "2 m, c'est combien de cm ?"
+    bonne: "200"
+    distracteurs: ["20", "2000", "250"]
+  - question: "Combien de millimètres dans 1 centimètre ?"
+    bonne: "10"
+    distracteurs: ["100", "1", "1000"]
+  - question: "Qu'est-ce qui est le plus long ?"
+    bonne: "1 km"
+    distracteurs: ["1 m", "100 cm", "500 m"]
+  - question: "150 cm, c'est…"
+    bonne: "1 m 50 cm"
+    distracteurs: ["15 m", "1 m 5 cm", "150 m"]
+  - question: "Avec quoi mesure-t-on une longueur ?"
+    bonne: "une règle"
+    distracteurs: ["une balance", "une horloge", "un verre doseur"]

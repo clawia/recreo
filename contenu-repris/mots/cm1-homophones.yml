@@ -1,0 +1,43 @@
+# Bandit manchot — « Le bon petit mot » (Français CM1, homophones). ÉDITABLE (ADR-0010).
+# Mode "explicit" : le prompt est la phrase à trou (___), la bonne réponse et l'homophone piège.
+entryId: homophones
+title: "Le bon petit mot"
+description: "Choisis le mot qui complète la phrase."
+gameKey: homophones
+gameLabel: "Le bon petit mot"
+matiere: "Français"
+niveau: "CM1"
+domaine: "Orthographe — homophones grammaticaux"
+question: "Quel mot complète la phrase ?"
+distractorMode: explicit
+items:
+  - prompt: "Il ___ mangé une pomme."
+    bonne: "a"
+    distracteurs: ["à"]
+  - prompt: "Je vais ___ l'école."
+    bonne: "à"
+    distracteurs: ["a"]
+  - prompt: "Papa ___ maman font la cuisine."
+    bonne: "et"
+    distracteurs: ["est"]
+  - prompt: "Le chat ___ noir."
+    bonne: "est"
+    distracteurs: ["et"]
+  - prompt: "Les enfants ___ partis."
+    bonne: "sont"
+    distracteurs: ["son"]
+  - prompt: "Il prend ___ cartable."
+    bonne: "son"
+    distracteurs: ["sont"]
+  - prompt: "Ils ___ un chien."
+    bonne: "ont"
+    distracteurs: ["on"]
+  - prompt: "___ joue dans la cour."
+    bonne: "On"
+    distracteurs: ["Ont"]
+  - prompt: "___ vas-tu ?"
+    bonne: "Où"
+    distracteurs: ["Ou"]
+  - prompt: "Tu veux du thé ___ du café ?"
+    bonne: "ou"
+    distracteurs: ["où"]

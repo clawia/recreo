@@ -1,0 +1,47 @@
+# Bandit manchot — « La nature du mot » (Français CM1). ÉDITABLE (ADR-0010).
+# Mode "pool" : les distracteurs sont d'autres natures (le vivier = l'ensemble des
+# bonnes réponses, ici nom / verbe / adjectif / déterminant).
+entryId: nature-mot
+title: "La nature du mot"
+description: "Nom, verbe, adjectif ou déterminant ?"
+gameKey: nature-mot
+gameLabel: "La nature du mot"
+matiere: "Français"
+niveau: "CM1"
+domaine: "Grammaire — classes de mots"
+question: "Quelle est la nature de ce mot ?"
+distractorMode: pool
+distractorCount: 2
+items:
+  - prompt: "chat"
+    bonne: "nom"
+  - prompt: "manger"
+    bonne: "verbe"
+  - prompt: "rouge"
+    bonne: "adjectif"
+  - prompt: "le"
+    bonne: "déterminant"
+  - prompt: "courir"
+    bonne: "verbe"
+  - prompt: "maison"
+    bonne: "nom"
+  - prompt: "grand"
+    bonne: "adjectif"
+  - prompt: "une"
+    bonne: "déterminant"
+  - prompt: "chanter"
+    bonne: "verbe"
+  - prompt: "joli"
+    bonne: "adjectif"
+  - prompt: "table"
+    bonne: "nom"
+  - prompt: "mon"
+    bonne: "déterminant"
+  - prompt: "sauter"
+    bonne: "verbe"
+  - prompt: "petit"
+    bonne: "adjectif"
+  - prompt: "la"
+    bonne: "déterminant"
+  - prompt: "fleur"
+    bonne: "nom"

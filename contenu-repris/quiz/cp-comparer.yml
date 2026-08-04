@@ -1,0 +1,39 @@
+entryId: comparer-cp
+title: "Compare les grandeurs"
+description: "Plus grand ou plus petit, plus lourd ou plus léger, plus long ou plus court."
+gameKey: comparer-grandeurs
+gameLabel: "Compare les grandeurs"
+matiere: "Mathématiques"
+niveau: "CP"
+domaine: "Grandeurs et mesures — comparaisons"
+questions:
+  - question: "Qu'est-ce qui est le plus long ?"
+    bonne: "une règle"
+    distracteurs: ["un crayon", "une gomme"]
+  - question: "Qu'est-ce qui est le plus court ?"
+    bonne: "un crayon"
+    distracteurs: ["une règle", "une trousse"]
+  - question: "Qu'est-ce qui est le plus lourd ?"
+    bonne: "un éléphant"
+    distracteurs: ["une souris", "une fourmi"]
+  - question: "Qu'est-ce qui est le plus léger ?"
+    bonne: "une plume"
+    distracteurs: ["un caillou", "une brique"]
+  - question: "Qu'est-ce qui est le plus grand ?"
+    bonne: "une girafe"
+    distracteurs: ["un chat", "un lapin"]
+  - question: "Qu'est-ce qui est le plus petit ?"
+    bonne: "une fourmi"
+    distracteurs: ["un chien", "un cheval"]
+  - question: "Quel nombre est le plus grand : 7 ou 4 ?"
+    bonne: "7"
+    distracteurs: ["4"]
+  - question: "Quel nombre est le plus petit : 3 ou 9 ?"
+    bonne: "3"
+    distracteurs: ["9"]
+  - question: "Qu'est-ce qui est le plus haut ?"
+    bonne: "une montagne"
+    distracteurs: ["une maison", "une chaise"]
+  - question: "Qui va le plus vite ?"
+    bonne: "une voiture"
+    distracteurs: ["un escargot", "une tortue"]

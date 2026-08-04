@@ -1,0 +1,21 @@
+# Puzzle « reconstitue la phrase » (Français CM1). Déclinaison "mots" de la mécanique puzzle (s25).
+# L'enfant remet les MOTS dans l'ordre pour former une phrase plus longue. Contenu ÉDITABLE.
+# Règles : phrases en minuscules, sans virgule ni point (le séparateur interne est « , ») ; ≥ 2 mots.
+entryId: phrase-cm1
+title: "Remets la phrase dans l'ordre"
+description: "Remets les mots dans le bon ordre pour reconstituer la phrase."
+gameKey: phrase
+gameLabel: "Remets la phrase dans l'ordre"
+matiere: "Français"
+niveau: "CM1"
+domaine: "Grammaire — ordre des mots dans la phrase"
+consigne: "Remets les mots dans l'ordre"
+phrases:
+  - { phrase: "le renard traverse la forêt sombre", indice: "🦊 la nature" }
+  - { phrase: "les enfants jouent dans la cour", indice: "🏫 l'école" }
+  - { phrase: "mon frère répare son vieux vélo", indice: "🚲 le bricolage" }
+  - { phrase: "la maîtresse explique une nouvelle leçon", indice: "📚 la classe" }
+  - { phrase: "nous partons en vacances à la mer", indice: "🏖️ les vacances" }
+  - { phrase: "le boulanger prépare du pain frais", indice: "🥖 les métiers" }
+  - { phrase: "un petit oiseau construit son nid", indice: "🐦 la nature" }
+  - { phrase: "la pluie tombe sur les toits", indice: "🌧️ la météo" }

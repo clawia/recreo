@@ -1,0 +1,84 @@
+# Quiz-aventure — Géographie (CM1). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+entryId: geographie-cm1
+title: "Géographie CM1 — Quiz-aventure"
+description: "Découvre la France et le monde."
+gameKey: quiz-aventure
+gameLabel: "Quiz-aventure"
+matiere: "Géographie"
+niveau: "CM1"
+domaine: "Se repérer dans l'espace"
+questions:
+  - question: "Quelle est la capitale de la France ?"
+    bonne: "Paris"
+    distracteurs: ["Lyon", "Marseille"]
+  - question: "Quel fleuve traverse Paris ?"
+    bonne: "La Seine"
+    distracteurs: ["La Loire", "Le Rhône"]
+  - question: "Sur quel continent se trouve la France ?"
+    bonne: "L'Europe"
+    distracteurs: ["L'Afrique", "L'Asie"]
+  - question: "Quel est le plus haut sommet des Alpes ?"
+    bonne: "Le mont Blanc"
+    distracteurs: ["Le Puy de Dôme", "Le mont Ventoux"]
+  - question: "Quel pays se trouve au sud de la France ?"
+    bonne: "L'Espagne"
+    distracteurs: ["L'Allemagne", "La Belgique"]
+  - question: "Quel océan borde la France à l'ouest ?"
+    bonne: "L'océan Atlantique"
+    distracteurs: ["L'océan Pacifique", "L'océan Indien"]
+  - question: "Quelle est la monnaie utilisée en France ?"
+    bonne: "L'euro"
+    distracteurs: ["Le dollar", "La livre"]
+  - question: "Quelle chaîne de montagnes sépare la France de l'Espagne ?"
+    bonne: "Les Pyrénées"
+    distracteurs: ["Les Alpes", "Le Jura"]
+  - question: "Combien de continents y a-t-il sur Terre ?"
+    bonne: "6"
+    distracteurs: ["4", "8"]
+  - question: "Quelle mer borde le sud de la France ?"
+    bonne: "La mer Méditerranée"
+    distracteurs: ["La mer du Nord", "La mer Rouge"]
+  - question: "Quel est le plus long fleuve de France ?"
+    bonne: "La Loire"
+    distracteurs: ["La Seine", "La Garonne"]
+  - question: "Quel pays voisin se trouve à l'est de la France ?"
+    bonne: "L'Allemagne"
+    distracteurs: ["L'Espagne", "Le Portugal"]
+  # Points cardinaux, fleuves, océans, continents
+  - question: "Combien y a-t-il de points cardinaux ?"
+    bonne: "4"
+    distracteurs: ["2", "8"]
+  - question: "De quel côté le Soleil se lève-t-il ?"
+    bonne: "À l'est"
+    distracteurs: ["À l'ouest", "Au nord"]
+  - question: "Quel fleuve passe par Lyon et se jette dans la Méditerranée ?"
+    bonne: "Le Rhône"
+    distracteurs: ["La Seine", "La Loire"]
+  - question: "Quel fleuve arrose la ville de Bordeaux ?"
+    bonne: "La Garonne"
+    distracteurs: ["Le Rhône", "La Seine"]
+  - question: "Quel est le plus grand océan du monde ?"
+    bonne: "L'océan Pacifique"
+    distracteurs: ["L'océan Atlantique", "L'océan Indien"]
+  - question: "Sur quel continent se trouve le désert du Sahara ?"
+    bonne: "L'Afrique"
+    distracteurs: ["L'Asie", "L'Europe"]
+  # Pays, mers et repères du monde (programme CM1)
+  - question: "Dans quel pays se trouve la ville de Rome ?"
+    bonne: "L'Italie"
+    distracteurs: ["L'Espagne", "La Grèce"]
+  - question: "Quel est le plus grand pays du monde par sa superficie ?"
+    bonne: "La Russie"
+    distracteurs: ["La Chine", "Le Canada"]
+  - question: "Comment s'appelle la ligne imaginaire qui partage la Terre en deux hémisphères ?"
+    bonne: "L'équateur"
+    distracteurs: ["Le méridien", "Le tropique"]
+  - question: "Quel est le plus grand désert chaud du monde ?"
+    bonne: "Le Sahara"
+    distracteurs: ["Le désert de Gobi", "Le Kalahari"]
+  - question: "Quelle mer sépare la France du Royaume-Uni au nord ?"
+    bonne: "La Manche"
+    distracteurs: ["La mer Méditerranée", "La mer Rouge"]
+  - question: "Combien y a-t-il d'océans sur la Terre ?"
+    bonne: "5"
+    distracteurs: ["3", "7"]

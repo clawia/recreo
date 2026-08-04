@@ -1,0 +1,25 @@
+entryId: vivant-non-vivant-cp
+title: "Vivant ou non-vivant ?"
+description: "Classe chaque élément dans la bonne catégorie."
+gameKey: classer
+gameLabel: "Vivant ou non-vivant"
+matiere: "Questionner le monde"
+niveau: "CP"
+domaine: "Le vivant"
+consigne: "Classe chaque élément : vivant ou non-vivant"
+puzzles:
+  - associations:
+      - { item: "chat", cible: "vivant" }
+      - { item: "arbre", cible: "vivant" }
+      - { item: "voiture", cible: "non-vivant" }
+      - { item: "caillou", cible: "non-vivant" }
+  - associations:
+      - { item: "fleur", cible: "vivant" }
+      - { item: "oiseau", cible: "vivant" }
+      - { item: "table", cible: "non-vivant" }
+      - { item: "ballon", cible: "non-vivant" }
+  - associations:
+      - { item: "chien", cible: "vivant" }
+      - { item: "poisson", cible: "vivant" }
+      - { item: "vélo", cible: "non-vivant" }
+      - { item: "cartable", cible: "non-vivant" }

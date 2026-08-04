@@ -1,0 +1,28 @@
+# Contenu declaratif — Tables de multiplication CM1 (cycle 3).
+# MEME mecanique (bandit-manchot), MEME generateur combinatoire (CalculMentalGenerator) :
+# aucun code Java specifique. Difficulte bornee a la SEULE multiplication, operandes 1..10,
+# pour un entrainement dedie aux tables. Le reglage adulte ne peut pas sortir de la
+# multiplication (bounds.allowedOperations = [MULTIPLICATION]).
+entryId: tables-multiplication-cm1
+title: "Tables de multiplication — CM1"
+description: "Révise tes tables de multiplication (de 1 à 10)."
+mechanic: bandit-manchot
+# gameKey distinct : jeu a part entiere dans la navigation "par jeu".
+gameKey: tables-multiplication
+gameLabel: "Tables de multiplication"
+matiere: "Mathématiques"
+niveau: CM1
+domaine: "Calcul mental — tables de multiplication"
+difficulty:
+  minOperand: 1
+  maxOperand: 10
+  operations:
+    - MULTIPLICATION
+  distractorCount: 3
+# Bornes de reglage : multiplication uniquement. Defaut 1..10 (tables usuelles), mais
+# l'adulte peut monter le maximum jusqu'a 20.
+bounds:
+  operandFloor: 1
+  operandCeiling: 20
+  allowedOperations:
+    - MULTIPLICATION

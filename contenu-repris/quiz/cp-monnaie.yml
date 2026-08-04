@@ -1,0 +1,33 @@
+entryId: monnaie-cp
+title: "La monnaie CP"
+description: "Compte les euros et rends la monnaie."
+gameKey: monnaie
+gameLabel: "La monnaie"
+matiere: "Mathématiques"
+niveau: "CP"
+domaine: "Grandeurs et mesures — monnaie"
+questions:
+  - question: "Tu as une pièce de 2 € et une pièce de 1 €. Combien as-tu en tout ?"
+    bonne: "3 €"
+    distracteurs: ["2 €", "1 €", "4 €"]
+  - question: "Tu as deux pièces de 2 €. Combien as-tu ?"
+    bonne: "4 €"
+    distracteurs: ["2 €", "3 €", "5 €"]
+  - question: "Un pain coûte 1 €. Tu paies avec une pièce de 2 €. Combien te rend-on ?"
+    bonne: "1 €"
+    distracteurs: ["2 €", "0 €", "3 €"]
+  - question: "Tu as un billet de 5 € et une pièce de 2 €. Combien as-tu en tout ?"
+    bonne: "7 €"
+    distracteurs: ["3 €", "5 €", "6 €"]
+  - question: "Combien de pièces de 1 € faut-il pour faire 3 € ?"
+    bonne: "3"
+    distracteurs: ["1", "2", "4"]
+  - question: "Tu as 2 €, encore 2 €, et 1 €. Combien as-tu en tout ?"
+    bonne: "5 €"
+    distracteurs: ["4 €", "6 €", "3 €"]
+  - question: "Un bonbon coûte 2 €. Tu as 5 €. Peux-tu l'acheter ?"
+    bonne: "oui"
+    distracteurs: ["non"]
+  - question: "Quelle pièce vaut le plus : 2 € ou 1 € ?"
+    bonne: "2 €"
+    distracteurs: ["1 €"]

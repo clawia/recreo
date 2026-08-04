@@ -1,0 +1,21 @@
+# Puzzle « reconstitue la phrase » (Français CP). Déclinaison "mots" de la mécanique puzzle (s25).
+# L'enfant remet les MOTS dans l'ordre pour former la phrase. Contenu ÉDITABLE.
+# Règles : phrases en minuscules, sans virgule ni point (le séparateur interne est « , ») ; ≥ 2 mots.
+entryId: phrase-cp
+title: "Remets la phrase dans l'ordre"
+description: "Remets les mots dans le bon ordre pour écrire la phrase."
+gameKey: phrase
+gameLabel: "Remets la phrase dans l'ordre"
+matiere: "Français"
+niveau: "CP"
+domaine: "Grammaire — la phrase"
+consigne: "Remets les mots dans l'ordre"
+phrases:
+  - { phrase: "le chat dort", indice: "🐱" }
+  - { phrase: "papa lit un livre", indice: "📖" }
+  - { phrase: "la fleur est jaune", indice: "🌼" }
+  - { phrase: "le chien mange un os", indice: "🦴" }
+  - { phrase: "maman fait un gâteau", indice: "🎂" }
+  - { phrase: "le soleil brille fort", indice: "☀️" }
+  - { phrase: "je bois un verre d'eau", indice: "💧" }
+  - { phrase: "nous jouons dans le jardin", indice: "🌳" }

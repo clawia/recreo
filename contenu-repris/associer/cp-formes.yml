@@ -1,0 +1,20 @@
+entryId: formes-cp
+title: "Associe les formes"
+description: "Associe chaque forme à son nom."
+gameKey: associer
+gameLabel: "Associe les formes"
+matiere: "Géométrie"
+niveau: "CP"
+domaine: "Formes géométriques"
+consigne: "Associe chaque forme à son nom"
+puzzles:
+  - associations:
+      - { item: "🔺", cible: "triangle" }
+      - { item: "🟦", cible: "carré" }
+      - { item: "🔵", cible: "cercle" }
+      - { item: "🔶", cible: "losange" }
+  - associations:
+      - { item: "⭐", cible: "étoile" }
+      - { item: "❤️", cible: "cœur" }
+      - { item: "🟧", cible: "rectangle" }
+      - { item: "🔻", cible: "triangle" }

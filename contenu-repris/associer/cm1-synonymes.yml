@@ -1,0 +1,25 @@
+entryId: synonymes-cm1
+title: "Les synonymes"
+description: "Associe chaque mot à son synonyme."
+gameKey: associer
+gameLabel: "Les synonymes"
+matiere: "Français"
+niveau: "CM1"
+domaine: "Vocabulaire — synonymes"
+consigne: "Associe chaque mot à son synonyme"
+puzzles:
+  - associations:
+      - { item: "content", cible: "heureux" }
+      - { item: "rapide", cible: "vite" }
+      - { item: "beau", cible: "joli" }
+      - { item: "triste", cible: "malheureux" }
+  - associations:
+      - { item: "calme", cible: "tranquille" }
+      - { item: "drôle", cible: "amusant" }
+      - { item: "fatigué", cible: "épuisé" }
+      - { item: "courageux", cible: "brave" }
+  - associations:
+      - { item: "malin", cible: "rusé" }
+      - { item: "fort", cible: "puissant" }
+      - { item: "ancien", cible: "vieux" }
+      - { item: "doux", cible: "tendre" }

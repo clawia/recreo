@@ -1,0 +1,86 @@
+# Bandit manchot — « Le bon son » (Français CP). Contenu ÉDITABLE (DEC-0006 / ADR-0010).
+# Mode "explicit" : chaque item liste ses distracteurs (ici des sons ABSENTS du mot).
+# Édite/ajoute un item puis redémarre l'application.
+entryId: le-bon-son
+title: "Le bon son"
+description: "Quel son entends-tu dans le mot ?"
+gameKey: le-bon-son
+gameLabel: "Le bon son"
+matiere: "Français"
+niveau: "CP"
+domaine: "Décodage — association graphème/phonème"
+question: "Quel son entends-tu ?"
+distractorMode: explicit
+items:
+  - prompt: "MAMAN"
+    bonne: "[an]"
+    distracteurs: ["[on]", "[in]"]
+  - prompt: "DENT"
+    bonne: "[an]"
+    distracteurs: ["[oi]", "[ou]"]
+  - prompt: "PONT"
+    bonne: "[on]"
+    distracteurs: ["[an]", "[ou]"]
+  - prompt: "BALLON"
+    bonne: "[on]"
+    distracteurs: ["[in]", "[oi]"]
+  - prompt: "LAPIN"
+    bonne: "[in]"
+    distracteurs: ["[an]", "[on]"]
+  - prompt: "JARDIN"
+    bonne: "[in]"
+    distracteurs: ["[ou]", "[oi]"]
+  - prompt: "LOUP"
+    bonne: "[ou]"
+    distracteurs: ["[on]", "[oi]"]
+  - prompt: "GENOU"
+    bonne: "[ou]"
+    distracteurs: ["[oi]", "[an]"]
+  - prompt: "ROI"
+    bonne: "[oi]"
+    distracteurs: ["[ou]", "[on]"]
+  - prompt: "BOIS"
+    bonne: "[oi]"
+    distracteurs: ["[ou]", "[in]"]
+  - prompt: "CHAT"
+    bonne: "[ch]"
+    distracteurs: ["[oi]", "[ou]"]
+  - prompt: "VACHE"
+    bonne: "[ch]"
+    distracteurs: ["[an]", "[on]"]
+  - prompt: "SOURIS"
+    bonne: "[ou]"
+    distracteurs: ["[on]", "[oi]"]
+  - prompt: "POULE"
+    bonne: "[ou]"
+    distracteurs: ["[in]", "[an]"]
+  - prompt: "SAPIN"
+    bonne: "[in]"
+    distracteurs: ["[on]", "[ou]"]
+  - prompt: "MONTRE"
+    bonne: "[on]"
+    distracteurs: ["[an]", "[oi]"]
+  - prompt: "ÉTOILE"
+    bonne: "[oi]"
+    distracteurs: ["[ou]", "[an]"]
+  - prompt: "NICHE"
+    bonne: "[ch]"
+    distracteurs: ["[an]", "[on]"]
+  - prompt: "CHÂTEAU"
+    bonne: "[ch]"
+    distracteurs: ["[oi]", "[in]"]
+  - prompt: "MOUCHE"
+    bonne: "[ou]"
+    distracteurs: ["[an]", "[in]"]
+  - prompt: "MANTEAU"
+    bonne: "[an]"
+    distracteurs: ["[oi]", "[ou]"]
+  - prompt: "BALANÇOIRE"
+    bonne: "[oi]"
+    distracteurs: ["[on]", "[ou]"]
+  - prompt: "MOUTON"
+    bonne: "[on]"
+    distracteurs: ["[in]", "[oi]"]
+  - prompt: "PINCEAU"
+    bonne: "[in]"
+    distracteurs: ["[ou]", "[oi]"]

@@ -1,0 +1,33 @@
+entryId: comprehension-cm1
+title: "Compréhension de texte CM1"
+description: "Lis un court texte et réponds à la question."
+gameKey: comprehension
+gameLabel: "Compréhension de texte"
+matiere: "Français"
+niveau: "CM1"
+domaine: "Lecture — compréhension"
+questions:
+  - question: "Lis : « Le renard vit un corbeau perché sur un arbre, un fromage dans le bec. » Où est le corbeau ?"
+    bonne: "sur un arbre"
+    distracteurs: ["dans un trou", "sur le sol", "dans une maison"]
+  - question: "Lis : « Léa a planté une graine. Chaque jour, elle l'arrose. Une petite tige verte apparaît. » Que fait Léa chaque jour ?"
+    bonne: "elle arrose la graine"
+    distracteurs: ["elle coupe la tige", "elle mange la graine", "elle plante un arbre"]
+  - question: "Lis : « Tom a raté son bus, alors il est arrivé en retard à l'école. » Pourquoi Tom est-il en retard ?"
+    bonne: "il a raté son bus"
+    distracteurs: ["il s'est levé tôt", "il a couru très vite", "il était malade"]
+  - question: "Lis : « La nuit tombe. Les animaux de la forêt s'endorment, sauf le hibou qui part chasser. » Quel animal reste éveillé la nuit ?"
+    bonne: "le hibou"
+    distracteurs: ["le renard", "l'écureuil", "le cerf"]
+  - question: "Lis : « Manon adore lire. Elle a déjà terminé trois livres cette semaine. » Combien de livres Manon a-t-elle lus cette semaine ?"
+    bonne: "trois"
+    distracteurs: ["deux", "un", "quatre"]
+  - question: "Lis : « Le vent souffle fort. Le cerf-volant de Paul monte très haut dans le ciel. » Grâce à quoi le cerf-volant monte-t-il ?"
+    bonne: "le vent"
+    distracteurs: ["la pluie", "le soleil", "la neige"]
+  - question: "Lis : « Sarah a mal aux dents. Sa maman l'emmène chez le dentiste. » Où va Sarah ?"
+    bonne: "chez le dentiste"
+    distracteurs: ["à l'école", "chez le boulanger", "au parc"]
+  - question: "Lis : « Les élèves rangent leurs cahiers : la récréation va commencer. » Que va-t-il se passer ?"
+    bonne: "la récréation"
+    distracteurs: ["la cantine", "le cours de sport", "la sortie de l'école"]

@@ -1,0 +1,46 @@
+# Quiz-aventure — Les solides (CM1). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+entryId: solides-cm1
+title: "Les solides"
+description: "Reconnais les solides et compte leurs faces, arêtes et sommets."
+gameKey: solides
+gameLabel: "Les solides"
+matiere: "Géométrie"
+niveau: "CM1"
+domaine: "Solides"
+questions:
+  - question: "Combien de faces a un cube ?"
+    bonne: "6"
+    distracteurs: ["4", "8"]
+  - question: "Combien d'arêtes a un cube ?"
+    bonne: "12"
+    distracteurs: ["6", "8"]
+  - question: "Combien de sommets a un cube ?"
+    bonne: "8"
+    distracteurs: ["6", "12"]
+  - question: "Combien de faces a un pavé droit ?"
+    bonne: "6"
+    distracteurs: ["4", "8"]
+  - question: "Combien de faces a une pyramide à base carrée ?"
+    bonne: "5"
+    distracteurs: ["4", "6"]
+  - question: "Combien de sommets a une pyramide à base carrée ?"
+    bonne: "5"
+    distracteurs: ["4", "8"]
+  - question: "Combien d'arêtes a une pyramide à base carrée ?"
+    bonne: "8"
+    distracteurs: ["5", "12"]
+  - question: "Combien de sommets a un cylindre ?"
+    bonne: "0"
+    distracteurs: ["2", "4"]
+  - question: "Combien de sommets a un cône ?"
+    bonne: "1"
+    distracteurs: ["0", "4"]
+  - question: "Un dé à jouer a la forme d'un..."
+    bonne: "cube"
+    distracteurs: ["cylindre", "cône"]
+  - question: "Une boîte de conserve a la forme d'un..."
+    bonne: "cylindre"
+    distracteurs: ["cube", "cône"]
+  - question: "Un ballon de football a la forme d'une..."
+    bonne: "sphère"
+    distracteurs: ["pyramide", "cube"]

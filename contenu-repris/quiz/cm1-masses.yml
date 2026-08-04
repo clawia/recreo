@@ -1,0 +1,39 @@
+entryId: masses-cm1
+title: "Les masses"
+description: "Convertis, compare et choisis la bonne unité de masse."
+gameKey: masses
+gameLabel: "Les masses"
+matiere: "Mathématiques"
+niveau: "CM1"
+domaine: "Grandeurs et mesures — masses"
+questions:
+  - question: "Combien de grammes dans 1 kilogramme ?"
+    bonne: "1000 g"
+    distracteurs: ["100 g", "10 g", "500 g"]
+  - question: "Combien de kilogrammes dans 1 tonne ?"
+    bonne: "1000 kg"
+    distracteurs: ["100 kg", "10 kg", "500 kg"]
+  - question: "2 kg, c'est combien de grammes ?"
+    bonne: "2000 g"
+    distracteurs: ["200 g", "20 g", "2500 g"]
+  - question: "500 g, c'est combien de kilogrammes ?"
+    bonne: "0,5 kg"
+    distracteurs: ["5 kg", "50 kg", "0,05 kg"]
+  - question: "1500 g, c'est…"
+    bonne: "1 kg 500 g"
+    distracteurs: ["15 kg", "1 kg 50 g", "150 kg"]
+  - question: "Qu'est-ce qui est le plus lourd ?"
+    bonne: "1 kg"
+    distracteurs: ["500 g", "100 g", "250 g"]
+  - question: "Avec quoi mesure-t-on une masse ?"
+    bonne: "une balance"
+    distracteurs: ["une règle", "une horloge", "un verre doseur"]
+  - question: "Quelle est la masse d'une pomme ?"
+    bonne: "environ 150 g"
+    distracteurs: ["environ 15 kg", "environ 1 tonne", "environ 50 kg"]
+  - question: "Quelle est la masse d'une voiture ?"
+    bonne: "environ 1 tonne"
+    distracteurs: ["environ 1 kg", "environ 100 g", "environ 10 kg"]
+  - question: "Quelle est la masse d'un enfant de 8 ans ?"
+    bonne: "environ 30 kg"
+    distracteurs: ["environ 300 g", "environ 3 kg", "environ 300 kg"]

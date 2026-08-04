@@ -1,0 +1,76 @@
+# Quiz-aventure — EMC « Vivre ensemble » (CP). Contenu ÉDITABLE (cf. DEC-0006 / ADR-0009).
+entryId: emc-cp
+title: "EMC CP — Vivre ensemble"
+description: "Les règles de la classe et le respect des autres."
+gameKey: vivre-ensemble
+gameLabel: "Vivre ensemble"
+matiere: "EMC"
+niveau: "CP"
+domaine: "Règles de vie et respect"
+questions:
+  - question: "Que dit-on quand on demande quelque chose gentiment ?"
+    bonne: "S'il te plaît"
+    distracteurs: ["Donne", "Tais-toi"]
+  - question: "Avant de parler en classe, il faut..."
+    bonne: "lever la main"
+    distracteurs: ["crier", "se lever d'un bond"]
+  - question: "Quand quelqu'un t'aide, tu dis..."
+    bonne: "Merci"
+    distracteurs: ["Rien", "C'est normal"]
+  - question: "Comment doit-on traiter ses camarades ?"
+    bonne: "Avec respect"
+    distracteurs: ["En se moquant", "En bousculant"]
+  - question: "Où jette-t-on un papier ?"
+    bonne: "À la poubelle"
+    distracteurs: ["Par terre", "Dans le cartable du voisin"]
+  - question: "Si un camarade est triste, tu peux..."
+    bonne: "le consoler"
+    distracteurs: ["te moquer de lui", "l'ignorer"]
+  - question: "Dans la cour, on joue..."
+    bonne: "sans se faire mal"
+    distracteurs: ["en tapant", "en poussant"]
+  - question: "Quand la maîtresse parle, on doit..."
+    bonne: "écouter"
+    distracteurs: ["parler plus fort", "se lever"]
+  - question: "Prêter un jouet à un ami, c'est..."
+    bonne: "partager"
+    distracteurs: ["voler", "se disputer"]
+  - question: "Pour traverser la rue, on regarde..."
+    bonne: "des deux côtés"
+    distracteurs: ["ses chaussures", "le ciel"]
+  - question: "Quand on arrive à l'école le matin, on dit..."
+    bonne: "Bonjour"
+    distracteurs: ["Rien", "Va-t'en"]
+  - question: "Si on bouscule un camarade sans faire exprès, on dit..."
+    bonne: "Pardon"
+    distracteurs: ["Tant pis", "C'est ta faute"]
+  - question: "Pour ranger la classe, on doit..."
+    bonne: "aider tous ensemble"
+    distracteurs: ["laisser les autres faire", "tout renverser"]
+  - question: "Peut-on se moquer d'un camarade qui porte des lunettes ?"
+    bonne: "Non, jamais"
+    distracteurs: ["Oui", "Un peu"]
+  - question: "Quand un nouvel élève arrive dans la classe, on peut..."
+    bonne: "l'accueillir gentiment"
+    distracteurs: ["l'ignorer", "se moquer de lui"]
+  - question: "Si deux amis veulent le même jouet, ils peuvent..."
+    bonne: "jouer chacun leur tour"
+    distracteurs: ["se battre", "le casser"]
+  - question: "Quand on emprunte les affaires d'un ami, on les rend..."
+    bonne: "en bon état"
+    distracteurs: ["cassées", "jamais"]
+  - question: "En classe, chaque élève a le droit d'être..."
+    bonne: "écouté"
+    distracteurs: ["ignoré", "moqué"]
+  - question: "Les filles et les garçons peuvent jouer..."
+    bonne: "aux mêmes jeux"
+    distracteurs: ["à rien ensemble", "chacun de leur côté seulement"]
+  - question: "Si tu vois un camarade tomber, tu peux..."
+    bonne: "l'aider à se relever"
+    distracteurs: ["rire de lui", "partir en courant"]
+  - question: "Pour bien vivre ensemble, on respecte..."
+    bonne: "les règles de la classe"
+    distracteurs: ["aucune règle", "seulement ses envies"]
+  - question: "Dire la vérité, c'est être..."
+    bonne: "honnête"
+    distracteurs: ["menteur", "tricheur"]

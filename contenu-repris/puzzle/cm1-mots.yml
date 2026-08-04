@@ -1,0 +1,16 @@
+entryId: puzzle-mots-cm1
+title: "Reconstitue le mot"
+description: "Remets les lettres dans l'ordre pour retrouver le mot à partir de sa définition."
+gameKey: puzzle
+gameLabel: "Reconstitue le mot"
+matiere: "Français"
+niveau: "CM1"
+domaine: "Vocabulaire"
+consigne: "Remets les lettres dans l'ordre"
+mots:
+  - { mot: "ordinateur", indice: "Machine pour travailler et jouer" }
+  - { mot: "montagne", indice: "Très haut relief que l'on peut escalader" }
+  - { mot: "dictionnaire", indice: "Livre où l'on cherche le sens des mots" }
+  - { mot: "planete", indice: "Astre qui tourne autour du Soleil" }
+  - { mot: "calendrier", indice: "Tableau des jours et des mois de l'année" }
+  - { mot: "horizon", indice: "Ligne où le ciel semble toucher la terre" }
