@@ -1,0 +1,79 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  prefixes:
+    name: Prefixes de commit par agent
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # squad/README.md section 8 annonce que la CI rejette un commit sans tag
+      # d'agent. Sur la version precedente, cette regle etait documentee et
+      # n'existait dans aucun workflow. Ici elle est executable.
+      - name: Verifier les prefixes
+        env:
+          BASE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          set -euo pipefail
+          TAGS='CAM|SOF|THEO|MARC|LEA|YAN|REL|NAD'
+
+          if [ -z "${BASE}" ] || [ "${BASE}" = "0000000000000000000000000000000000000000" ]; then
+            echo "Pas de base comparable (branche neuve) : verification du dernier commit."
+            RANGE="-1"
+          else
+            RANGE="${BASE}..${GITHUB_SHA}"
+          fi
+
+          FAUTIFS=0
+          while IFS= read -r sujet; do
+            [ -z "${sujet}" ] && continue
+            if ! printf '%s' "${sujet}" | grep -Eq "^\[(${TAGS})\] "; then
+              echo "::error::message sans prefixe d'agent connu : ${sujet}"
+              FAUTIFS=$((FAUTIFS + 1))
+            fi
+          done < <(git log --no-merges --format=%s ${RANGE})
+
+          if [ "${FAUTIFS}" -gt 0 ]; then
+            echo "${FAUTIFS} commit(s) sans prefixe. Format attendu : [TAG] resume"
+            echo "Tags valides : ${TAGS//|/, }"
+            exit 1
+          fi
+          echo "Tous les commits portent un prefixe d'agent connu."
+
+  build:
+    name: Build et tests (Java 21)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verifier la presence du build Maven
+        id: maven
+        run: |
+          if [ -f pom.xml ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "Pas encore de pom.xml : le socle Maven arrive au sprint 0."
+          fi
+
+      - uses: actions/setup-java@v4
+        if: steps.maven.outputs.present == 'true'
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Verify (compilation + tests unitaires + integration H2 + ArchUnit)
+        if: steps.maven.outputs.present == 'true'
+        run: mvn -B verify
+
+      - name: Package du fat jar
+        if: steps.maven.outputs.present == 'true'
+        run: mvn -B -pl bootstrap -am package
