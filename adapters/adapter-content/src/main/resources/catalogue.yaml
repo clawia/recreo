@@ -1,0 +1,7 @@
+schema: 1
+jeux:
+  - id: bandit-manchot-additions-cp
+    titre: "Additions CP"
+    consigne: "Combien ça fait ?"
+    mecanique: bandit-manchot
+    paquet: cp-additions-jusqu-a-10

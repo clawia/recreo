@@ -1,0 +1,15 @@
+schema: 1
+id: paquet-question
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CP"
+  domaine: "Formes"
+  competence: "reconnaitre les formes"
+items:
+  - enonce: "Combien de cotes a un triangle ?"
+    bonneReponse: "3"
+    distracteurs: ["4", "2"]
+  - enonce: "Combien de cotes a un carre ?"
+    bonneReponse: "4"
+    distracteurs: ["3", "5"]

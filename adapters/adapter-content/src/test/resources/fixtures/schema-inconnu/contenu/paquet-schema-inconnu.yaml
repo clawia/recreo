@@ -1,0 +1,12 @@
+schema: 2
+id: paquet-schema-inconnu
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CP"
+  domaine: "Formes"
+  competence: "reconnaitre les formes"
+items:
+  - enonce: "Combien de cotes a un triangle ?"
+    bonneReponse: "3"
+    distracteurs: ["4"]

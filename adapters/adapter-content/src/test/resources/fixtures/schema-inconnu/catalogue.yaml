@@ -1,0 +1,7 @@
+schema: 1
+jeux:
+  - id: jeu-schema-inconnu
+    titre: "Jeu schema inconnu"
+    consigne: "Choisis la bonne reponse"
+    mecanique: bandit-manchot
+    paquet: paquet-schema-inconnu

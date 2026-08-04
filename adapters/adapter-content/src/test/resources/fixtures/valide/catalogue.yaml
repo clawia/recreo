@@ -1,0 +1,12 @@
+schema: 1
+jeux:
+  - id: jeu-question
+    titre: "Jeu question"
+    consigne: "Choisis la bonne reponse"
+    mecanique: bandit-manchot
+    paquet: paquet-question
+  - id: jeu-additions
+    titre: "Jeu additions"
+    consigne: "Combien ca fait ?"
+    mecanique: bandit-manchot
+    paquet: paquet-additions

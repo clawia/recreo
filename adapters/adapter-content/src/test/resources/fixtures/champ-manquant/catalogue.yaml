@@ -1,0 +1,7 @@
+schema: 1
+jeux:
+  - id: jeu-incomplet
+    titre: "Jeu incomplet"
+    consigne: "Choisis la bonne reponse"
+    mecanique: bandit-manchot
+    paquet: paquet-incomplet

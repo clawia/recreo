@@ -1,0 +1,11 @@
+schema: 1
+id: cp-additions-jusqu-a-10
+type: additions-bornees
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - additions dans la limite de 10"
+parametres:
+  sommeMaximale: 10
+  nombreDePropositions: 3

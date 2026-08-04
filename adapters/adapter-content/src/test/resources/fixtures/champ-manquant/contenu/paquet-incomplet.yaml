@@ -1,0 +1,11 @@
+schema: 1
+id: paquet-incomplet
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CP"
+  domaine: "Formes"
+items:
+  - enonce: "Combien de cotes a un triangle ?"
+    bonneReponse: "3"
+    distracteurs: ["4"]
