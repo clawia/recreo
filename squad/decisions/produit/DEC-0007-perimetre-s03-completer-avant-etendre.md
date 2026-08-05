@@ -215,6 +215,36 @@ partiellement configure devient un scenario reel, ou si le mecanisme de gel de c
   sont coches. Deux criteres nouveaux sont ajoutes pour suivre S3-1 et S3-2. Le bloc de validation
   pedagogique n'est pas touche.
 
+## Amendement du 2026-08-05 (s03) - point 2, table de repartition recalculee sur le tirage compose
+
+**Ce que corrige cet amendement.** La table du point 2 ci-dessus est calculee sur le tirage nu
+(uniforme sur les 65 couples valides, sans tenir compte du filtre qui rejette une partie des
+tirages a operande nul pour tenir `DEC-0004` point 5). `theo-archi` a mesure, dans son avis de
+faisabilite du sprint 3, que la table telle qu'ecrite ne survit pas a la composition reelle : avec
+le filtre en place, les sommes 1 et 10 sortent de leurs fourchettes (0,82 % mesure contre 1,1 %
+attendu pour la somme 1 ; 19,2 % contre 18,9 % pour la somme 10), quel que soit le reglage du
+filtre qui tient par ailleurs `DEC-0004` point 5. La table doit porter sur le tirage tel qu'il sera
+reellement joue, pas sur une etape intermediaire de son calcul.
+
+**Table corrigee**, calculee sur le tirage reellement compose (uniforme sur les 65 couples valides,
+puis filtre a un operande nul accepte une fois sur trois - voir l'amendement du meme jour a
+`DEC-0004-textes-score-et-seuils-lever-refus-s01.md`, point 5, qui fixe 12,9 % comme cible
+pedagogique retenue) :
+
+| Somme | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Cible (tirage compose) | 0 % | 1,29 % | 3,23 % | 5,16 % | 7,10 % | 9,03 % | 10,97 % | 12,90 % | 14,84 % | 16,77 % | 18,71 % |
+
+Mesuree par `theo-archi` sur 20 graines a 6500 tirages chacune, avec une tolerance de +/- 2 points
+de pourcentage autour de cette cible : 0 echec sur 20, contre 4 echecs sur 10 avec l'ancienne
+table (calee sur le tirage nu). Le detail des fourchettes basse et haute qui en decoulent est
+porte dans `docs/backlog/backlog.md`, story S3-1, recalcule dans le meme geste que cet amendement.
+
+**Ce que cet amendement ne change pas** : le tirage lui-meme (uniforme sur les 65 couples valides,
+couple (0, 0) exclu) reste celui decide au point 2 ci-dessus. Seule la table de cibles qui sert a
+le verifier est corrigee, parce qu'elle avait ete calculee sur une etape du calcul qui ne
+correspond a aucun tirage reellement joue par l'application.
+
 ## Ce qui reste non testable par construction
 
 - Que le tirage corrige "travaille effectivement toute la competence" plutot que son bord

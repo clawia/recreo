@@ -168,6 +168,40 @@ possibles) :
   jour etre retenu a la suite d'un refus de Nadia, ce serait alors `theo-archi` qui ouvrirait
   l'ADR correspondant, pas cette decision.
 
+## Amendement du 2026-08-05 (s03)
+
+**Contexte.** `theo-archi`, dans son avis de faisabilite du sprint 3
+(`squad/sprints/s03-completer-mathematiques-cp/avis-faisabilite.md`, section S3-1), a mesure sur
+200 000 tirages que le tirage retenu par `DEC-0007` point 2 (uniforme sur les 65 couples valides)
+viole, seul, le point 5 ci-dessus : 30,7 % de tirages a operande nul, contre 5 % a 15 % exiges.
+Garder le filtre existant sur les operandes nuls tel quel (accepter un tirage a operande nul une
+fois sur cinq, `ACCEPTATION_OPERANDE_NUL_SUR = 5`) tient le point 5 (8,09 % mesure) mais fait
+sortir deux sommes de la table de `DEC-0007` point 2, parce que cette table a ete calculee sur le
+tirage nu et non sur le tirage reellement compose avec ce filtre.
+
+**Ce que je tranche.** La proportion de tirages a operande nul que je retiens comme cible
+pedagogique n'est pas seulement "quelque part entre 5 % et 15 %" : c'est **12,9 %**, la valeur
+que `nadia-prof` a mesuree en s01 et qu'elle a explicitement qualifiee de bon reglage ("c'est le
+bon reglage, et je le dis explicitement puisque la question m'est posee [...] la propriete du
+zero fait partie du programme de calcul de CP, la retirer entierement serait une erreur, et une
+manche sur dix la garde presente sans manger le temps de calcul"). Le point 5 ci-dessus (bande
+5 % - 15 % sur 200 tirages) **n'est pas modifie** : 12,9 % s'y trouve deja, cet amendement precise
+le point de la bande que je retiens, il n'en deplace pas les bornes.
+
+Porte a la connaissance de l'equipe, la mesure de `theo-archi` : porter
+`ACCEPTATION_OPERANDE_NUL_SUR` de 5 a 3 (accepter un tirage a operande nul une fois sur trois)
+produit 12,92 % sur 200 000 tirages, satisfait le point 5 tel qu'ecrit et ne fait sortir aucune
+somme de la table de `DEC-0007` point 2 une fois cette table recalculee sur le tirage compose (voir
+l'amendement du meme jour a `DEC-0007-perimetre-s03-completer-avant-etendre.md`, point 2). Le
+choix de la valeur exacte du filtre (implementation de
+`AdditionsBorneesContentSource`) reste a `theo-archi` et aux developpeurs ; ce que je fixe ici est
+la cible pedagogique qu'elle doit atteindre.
+
+**Impact** : `docs/backlog/backlog.md`, story S3-1, la table de fourchettes (premier critere) est
+recalculee en consequence dans le meme geste (voir l'amendement de `DEC-0007` point 2). Le
+quatrieme critere de S3-1, qui verifie que le point 5 ci-dessus reste vert, n'est pas modifie par
+cet amendement.
+
 ## Ce qui reste non testable par construction
 
 - Que le message d'erreur et le message de reprise "rassurent" reellement un enfant plutot que de

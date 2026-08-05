@@ -18,3 +18,14 @@ exigence positive de francais correct et integralement accentue pour la categori
 correction du jugement sur les deux orientations du triangle de `contenu-repris/associer/
 cp-formes.yml` (qualite pedagogique et non ambiguite, selon l'avis de Nadia). Voir la section
 "Amendement du 2026-08-04" dans `DEC-0002-emoji-et-pictogrammes-contenu-enfant.md`.
+
+Amendements (pas une nouvelle reference) : `DEC-0004` et `DEC-0007` ont chacune ete amendees le
+2026-08-05, sur mesure de `theo-archi` dans son avis de faisabilite du sprint 3
+(`squad/sprints/s03-completer-mathematiques-cp/avis-faisabilite.md`) : la table de repartition des
+sommes de `DEC-0007` point 2 etait calculee sur le tirage nu, pas sur le tirage reellement compose
+avec le filtre d'operandes nuls de `DEC-0004` point 5, ce qui faisait sortir deux sommes de leurs
+fourchettes. `DEC-0004` precise desormais que la cible pedagogique retenue est 12,9 %
+d'operandes nuls (bande du point 5 inchangee) ; `DEC-0007` porte la table de cibles recalculee sur
+le tirage compose. Voir les sections "Amendement du 2026-08-05 (s03)" dans
+`DEC-0004-textes-score-et-seuils-lever-refus-s01.md` et
+`DEC-0007-perimetre-s03-completer-avant-etendre.md`.

@@ -519,13 +519,15 @@ prononce que par `nadia-prof`, apres audit de l'increment corrige.
 - **Criteres d'acceptation** :
   - Etant donne 6500 tirages effectues avec une graine aleatoire fixee, quand on releve, pour
     chaque somme s comprise entre 0 et 10, la proportion de tirages produisant cette somme, alors
-    chaque proportion est comprise dans la fourchette suivante (cible theorique +/- 2 points de
-    pourcentage, `DEC-0007` point 2) :
+    chaque proportion est comprise dans la fourchette suivante (cible +/- 2 points de pourcentage,
+    calculee sur le tirage reellement compose - tirage uniforme sur les 65 couples valides puis
+    filtre d'operandes nuls - et non sur une etape intermediaire de son calcul ; voir
+    l'amendement du 2026-08-05 a `DEC-0007` point 2) :
 
     | Somme | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
     |---|---|---|---|---|---|---|---|---|---|---|---|
-    | Fourchette basse | 0 % | 1,1 % | 2,6 % | 4,2 % | 5,7 % | 7,2 % | 8,8 % | 10,3 % | 11,8 % | 13,4 % | 14,9 % |
-    | Fourchette haute | 0 % | 5,1 % | 6,6 % | 8,2 % | 9,7 % | 11,2 % | 12,8 % | 14,3 % | 15,8 % | 17,4 % | 18,9 % |
+    | Fourchette basse | 0 % | 0 % | 1,23 % | 3,16 % | 5,10 % | 7,03 % | 8,97 % | 10,90 % | 12,84 % | 14,77 % | 16,71 % |
+    | Fourchette haute | 0 % | 3,29 % | 5,23 % | 7,16 % | 9,10 % | 11,03 % | 12,97 % | 14,90 % | 16,84 % | 18,77 % | 20,71 % |
 
   - Etant donne le meme echantillon de tirages, quand on compte les tirages produisant l'addition
     "0 + 0", alors ce compte est exactement 0 (le couple est retire du tirage, `DEC-0007` point 2).
@@ -534,15 +536,22 @@ prononce que par `nadia-prof`, apres audit de l'increment corrige.
     critere precedent, verifiee explicitement parce que c'etait le cas le plus grave signale par
     `nadia-prof`, reserve 8 du verdict s01 : "et surtout pas en premiere manche").
   - Etant donne le seuil deja fixe par `DEC-0004` point 5 (5 % a 15 % des tirages avec au moins un
-    operande nul, sur 200 tirages a graine fixee), quand on rejoue ce test apres la correction,
-    alors il reste vert : cette story ne doit pas faire sortir la proportion d'operandes nuls de
-    la fourchette deja validee par `nadia-prof` en s01.
+    operande nul, sur 200 tirages a graine fixee - cible pedagogique retenue par l'amendement du
+    2026-08-05 : 12,9 %, le reglage deja valide par `nadia-prof` en s01), quand on rejoue ce test
+    apres la correction, alors il reste vert : cette story ne doit pas faire sortir la proportion
+    d'operandes nuls de la fourchette deja validee par `nadia-prof` en s01.
   - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
     `nadia-prof` : que cette repartition "travaille effectivement toute la competence" au sens
     pedagogique, et pas seulement au sens statistique de la table ci-dessus. Les criteres
     ci-dessus garantissent la forme du tirage, pas le jugement qu'un enfant de CP en tire un
     entrainement equilibre.
-- **Lien decision** : `DEC-0007-perimetre-s03-completer-avant-etendre.md`, point 2.
+- **Note de methode, transmise par `theo-archi`, non bloquante** : faire tourner ce test sur un jeu
+  de graines declare (par exemple 0 a 9) plutot que sur une graine unique est recommande pour eviter
+  qu'une correction ne passe que par chance de graine ; c'est un choix de forme qui appartient a
+  `yanis-qa`, cette story ne l'impose pas comme critere.
+- **Lien decision** : `DEC-0007-perimetre-s03-completer-avant-etendre.md`, point 2, tel qu'amende
+  le 2026-08-05 ; `DEC-0004-textes-score-et-seuils-lever-refus-s01.md`, point 5, tel que precise
+  par son amendement du 2026-08-05 (cible pedagogique 12,9 %, bande inchangee).
 - **Agent pressenti** : a affecter au planning.
 
 ### S3-2 - Un enfant qui rate trois fois de suite recoit un indice dans la partie en cours
@@ -637,11 +646,23 @@ prononce que par `nadia-prof`, apres audit de l'increment corrige.
 - **Competence programme visee** : transverse - accessibilite visuelle et motrice pour le niveau
   CP.
 - **Criteres d'acceptation** :
-  - Etant donne deux boutons de reponse consecutifs rendus, quand on mesure l'ecart reel entre
-    leurs boites, alors il est d'au moins 1 rem (16 px), contre 12 px constate en s02.
+  - Etant donne le conteneur `.propositions` declare dans `recreo.css`, quand on releve la valeur
+    de sa propriete `gap`, alors elle est explicitement declaree a au moins 1 rem (16 px), contre
+    0,75 rem (12 px) constate en s02. Cette declaration est retenue comme critere verifiable a la
+    place de "l'ecart reel entre les boites" (formulation initiale, non mesurable par un automate
+    du depot faute de moteur de rendu, voir S3-8) : c'est un proxy valide tant que les boutons de
+    reponse restent empiles sans marge additionnelle dans un conteneur flex en colonne, disposition
+    en place depuis la correction de s02 (`ines-design`, s02, `fd16057`) ; si cette disposition
+    change, le proxy cesse d'etre valide et devra etre revu par `yanis-qa` et `theo-archi`.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que l'ecart reellement rendu entre deux boutons, une fois la page affichee sur
+    un vrai ecran, soit effectivement confortable pour un geste d'enfant de CP. Le critere
+    ci-dessus garantit la declaration, pas le rendu.
 - **Note de frontiere de mandat** : `ines-design` propose la valeur exacte au-dessus du plancher,
   elle ne tranche pas la question pedagogique de savoir si c'est suffisant ; `nadia-prof` garde
-  seule ce veto.
+  seule ce veto. Le plancher de 1 rem reprend mot pour mot la reserve 2 de `nadia-prof` sur S2-1
+  ("Un ecart d'au moins 1 rem laisserait plus de place a un geste d'enfant.") ; cette story ne
+  reinterprete pas sa formulation.
 - **Lien decision** : reserve 2 de `squad/conformite/FICHE-bandit-manchot-additions-cp.md`
   (verdict S2-1 du 2026-08-05, point 2 bis) ; `DEC-0007-perimetre-s03-completer-avant-etendre.md`,
   point 4 (cette story est la reponse retenue a la question de l'appui rate compte comme erreur de
@@ -708,24 +729,43 @@ prononce que par `nadia-prof`, apres audit de l'increment corrige.
   pedagogique.
 - **Contexte** : `nadia-prof` a signale en s02 que son harnais de rendu ne peut pas juger le
   rendu sous ~500 px de large, sans trancher si un tel support est vise par le produit.
-  `DEC-0007-perimetre-s03-completer-avant-etendre.md`, point 5, tranche : oui.
-- **Criteres d'acceptation** :
-  - Etant donne l'application chargee dans une fenetre de 375 px de large (largeur de telephone
-    courante tenu en portrait), quand on parcourt l'accueil, l'ecran de jeu, le retour juste, le
-    retour faux, la fin de partie et l'ecran d'erreur, alors aucun element ne depasse la largeur de
-    la fenetre (aucun defilement horizontal necessaire pour voir l'integralite d'un ecran).
-  - Etant donne cette meme largeur, quand on releve la position et la taille de chaque bouton
-    actionnable de chaque ecran, alors chacun reste entierement visible et atteignable sans
-    chevaucher un autre element.
-  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
-    `nadia-prof`, une fois qu'un harnais capable de rendre sous 500 px existera (question
-    d'outillage routee a `yanis-qa` et `theo-archi`, hors du mandat de cette story) : que le
-    confort de lecture reel a cette largeur (taille percue, facilite de visee tactile) convienne a
-    un enfant de CP ou de CM1. Les criteres ci-dessus garantissent l'absence de defaut structurel,
-    pas le jugement pedagogique du rendu.
-- **Lien decision** : `DEC-0007-perimetre-s03-completer-avant-etendre.md`, point 5.
-- **Agent pressenti** : a affecter au planning ; outillage de rendu sous 500 px route a
-  `yanis-qa` / `theo-archi`, hors du perimetre de cette story.
+  `DEC-0007-perimetre-s03-completer-avant-etendre.md`, point 5, tranche : oui, 375 px est un
+  support vise. `theo-archi`, dans son avis de faisabilite du sprint 3, a trouve un defaut qui
+  rend la premisse de cette story caduque avant meme le debat d'outillage : `accueil.html` ne
+  porte **aucune** balise `<meta name="viewport">`. Sans elle, un telephone rend la page dans une
+  fenetre virtuelle d'environ 980 px puis reduit l'ensemble : la mise en page a 375 px n'est jamais
+  reellement exercee sur un vrai telephone, quel que soit par ailleurs l'etat du CSS. Il a etabli
+  aussi que les deux criteres centraux ci-dessous portent sur une propriete du rendu, verifiable
+  seulement avec un moteur de mise en page ; l'ajouter demanderait la premiere dependance
+  d'execution du depot hors JDK et Spring (navigateur sans tete, temps de build accru, nouveau
+  mode de defaillance), ce qu'il ne recommande pas pour trois criteres visuels.
+- **Perimetre reecrit** : cette story separe explicitement ce qui est verifiable aujourd'hui par
+  automate de ce qui ne l'est pas, conformement a `ADR-0013`. Elle ne clot pas `DEC-0007` point 5 :
+  seul le prealable ci-dessous est livre ce sprint (affecte a `marc-dev`, deja demarre au planning) ;
+  le reste est explicitement reporte, pas tranche par defaut.
+- **Criteres d'acceptation testables ce sprint (prealable)** :
+  - Etant donne `accueil.html` rendu, quand on relit son `<head>`, alors il porte une balise
+    `<meta name="viewport" content="width=device-width...">` (le premier segment de `content` vaut
+    exactement `width=device-width`), absente aujourd'hui.
+  - Etant donne l'ensemble de `recreo.css` et de tous les gabarits (perimetre derive d'un balayage
+    du repertoire `templates/` et du fichier `recreo.css`, jamais une liste de selecteurs enumeree,
+    `ADR-0013`), quand on releve toute largeur fixee en pixels, alors aucune ne depasse la largeur
+    cible de 375 px et aucune regle ne force une largeur fixe sur un conteneur de mise en page.
+- **Ce qui est report, et pourquoi** : les deux criteres suivants ne sont couverts par aucun
+  automate du depot aujourd'hui et ne sont pas non plus jugeables par la porte pedagogique de
+  `nadia-prof` avant qu'un harnais de rendu sous 500 px existe (question d'outillage deja routee a
+  `yanis-qa` et `theo-archi` depuis s02, non tranchee). Ils restent au backlog, sans date, plutot
+  que d'etre affirmes sans preuve :
+  - Qu'a 375 px de large, aucun element ne depasse la largeur de la fenetre sur l'accueil, l'ecran
+    de jeu, le retour juste, le retour faux, la fin de partie et l'ecran d'erreur (aucun
+    defilement horizontal necessaire).
+  - Qu'a cette meme largeur, chaque bouton actionnable de chaque ecran reste entierement visible et
+    atteignable sans chevaucher un autre element.
+- **Lien decision** : `DEC-0007-perimetre-s03-completer-avant-etendre.md`, point 5 (le support
+  reste vise ; le perimetre effectivement livrable ce sprint est precise ici).
+- **Agent pressenti** : `marc-dev` pour le prealable testable ci-dessus (deja demarre). Le reste de
+  la story n'a pas de developpeur affecte tant que l'outillage n'est pas tranche par `theo-archi` /
+  `yanis-qa`.
 
 ### S3-9 - Le nom du jeu s'ecrit comme il se lit ("Récréo")
 
