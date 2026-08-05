@@ -31,6 +31,9 @@ class YamlContentPackLoaderTest {
         assertThat(jeuQuestion.titre()).isEqualTo("Jeu question");
         assertThat(jeuQuestion.mecanique()).isEqualTo(new MechanicId("bandit-manchot"));
         assertThat(jeuQuestion.descripteur().matiere()).isEqualTo("Mathematiques");
+        assertThat(jeuQuestion.nombreDeManches())
+                .as("ADR-0012 : la valeur ecrite en YAML est bien celle rendue")
+                .isEqualTo(10);
 
         ContentSource contenuQuestion = jeuQuestion.contenu();
         Optional<Item> item = contenuQuestion.next(borne -> 0, Set.<ItemId>of());
@@ -64,6 +67,15 @@ class YamlContentPackLoaderTest {
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessageContaining("paquet-schema-inconnu.yaml")
                 .hasMessageContaining("2");
+    }
+
+    /** ADR-0012 : champ de catalogue obligatoire, comme tout champ du schema (ADR-0007). */
+    @Test
+    void unNombreDeManchesManquantNommeLeFichierEtLeChamp() {
+        assertThatThrownBy(() -> new YamlContentPackLoader("/fixtures/nombre-de-manches-manquant").games())
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("catalogue.yaml")
+                .hasMessageContaining("nombreDeManches");
     }
 
     private static GameDefinition jeu(List<GameDefinition> jeux, String id) {

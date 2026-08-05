@@ -2,9 +2,12 @@
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <body>
 <div th:fragment="manche" id="jeu">
+    <button type="button" class="retour-accueil" hx-post="/retour" hx-target="#jeu"
+            hx-swap="innerHTML">Retour à l'accueil</button>
     <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
     <p class="consigne" th:text="${consigne}"></p>
     <p class="enonce" th:text="${enonce}"></p>
+    <p class="indice" th:if="${indice != null}" th:text="${indice}"></p>
     <form th:attr="hx-post=@{'/parties/' + ${jeuId} + '/coups'}" hx-target="#jeu" hx-swap="innerHTML">
         <button type="submit" class="proposition" th:each="proposition : ${propositions}"
                 name="propositionChoisie" th:value="${proposition}" th:text="${proposition}"></button>

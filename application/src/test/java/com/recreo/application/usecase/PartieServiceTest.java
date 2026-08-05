@@ -7,8 +7,12 @@ import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
+import com.recreo.domain.content.ContentSource;
 import com.recreo.domain.content.source.ListContentSource;
+import com.recreo.domain.mechanic.GameMechanic;
 import com.recreo.domain.mechanic.GameSession;
+import com.recreo.domain.mechanic.MechanicId;
+import com.recreo.domain.mechanic.Move;
 import com.recreo.domain.mechanic.Score;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchot;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMove;
@@ -28,10 +32,13 @@ class PartieServiceTest {
     private static final ContentDescriptor DESCRIPTEUR =
             new ContentDescriptor("Mathematiques", "CP", "Nombres et calculs", "denombrer");
 
+    private static final int NOMBRE_DE_MANCHES = 10;
+
     private static final GameDefinition JEU = new GameDefinition(
             "un-jeu", "Un jeu", "Choisis la bonne reponse", BanditManchot.ID, DESCRIPTEUR,
             new ListContentSource(DESCRIPTEUR, List.of(
-                    new Question(new ItemId("q1"), "un", "1", List.of("2")))));
+                    new Question(new ItemId("q1"), "un", "1", List.of("2")))),
+            NOMBRE_DE_MANCHES);
 
     private static PartieService service() {
         ContentCatalogPort catalogue = () -> List.of(JEU);
@@ -89,5 +96,35 @@ class PartieServiceTest {
         PartieService service = new PartieService(catalogue, mecaniques, TOUJOURS_ZERO);
 
         assertThat(service.demarrer("un-jeu")).isNotNull();
+    }
+
+    /** ADR-0012 : demarrer() transmet GameDefinition.nombreDeManches() a GameMechanic.start. */
+    @Test
+    void demarrerTransmetLeNombreDeManchesDuJeuALaMecanique() {
+        int[] nombreDeManchesRecu = new int[1];
+        GameMechanic mecaniqueEspion = new GameMechanic() {
+            @Override
+            public MechanicId id() {
+                return BanditManchot.ID;
+            }
+
+            @Override
+            public GameSession start(ContentSource contenu, RandomSource hasard, int nombreDeManches) {
+                nombreDeManchesRecu[0] = nombreDeManches;
+                return new BanditManchot().start(contenu, hasard, nombreDeManches);
+            }
+
+            @Override
+            public GameSession apply(GameSession session, Move coup) {
+                return new BanditManchot().apply(session, coup);
+            }
+        };
+        ContentCatalogPort catalogue = () -> List.of(JEU);
+        MechanicRegistryPort mecaniques = id -> mecaniqueEspion;
+        PartieService service = new PartieService(catalogue, mecaniques, TOUJOURS_ZERO);
+
+        service.demarrer("un-jeu");
+
+        assertThat(nombreDeManchesRecu[0]).isEqualTo(NOMBRE_DE_MANCHES);
     }
 }

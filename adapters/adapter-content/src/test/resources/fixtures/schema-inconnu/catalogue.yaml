@@ -5,3 +5,4 @@ jeux:
     consigne: "Choisis la bonne reponse"
     mecanique: bandit-manchot
     paquet: paquet-schema-inconnu
+    nombreDeManches: 10

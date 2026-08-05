@@ -2,6 +2,7 @@ package com.recreo.domain.mechanics.banditmanchot;
 
 import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.content.ContentSource;
+import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
@@ -15,6 +16,7 @@ import com.recreo.domain.mechanic.SessionStatus;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,6 +34,9 @@ class BanditManchotTest {
     /** Toujours 0, quel que soit le tirage : deterministe pour le tirage et pour le melange. */
     private static final RandomSource TOUJOURS_ZERO = bound -> 0;
 
+    /** Assez grand pour qu'aucun test existant ne soit borne par lui : seul le vivier s'epuise. */
+    private static final int MANCHES_LARGEMENT_SUFFISANTES = 100;
+
     private static ContentSource troisManches() {
         return new ListContentSource(DESCRIPTEUR, List.of(
                 new Question(new ItemId("q1"), "un", "1", List.of("2", "3")),
@@ -39,9 +44,32 @@ class BanditManchotTest {
                 new Question(new ItemId("q3"), "trois", "3", List.of("1", "4"))));
     }
 
+    /** Contenu combinatoire, jamais epuise (ADR-0012) : ignore dejaVus, boucle sur les questions donnees. */
+    private static ContentSource sequenceInfinie(Question... questions) {
+        return new ContentSource() {
+            private int position = 0;
+
+            @Override
+            public ContentDescriptor descriptor() {
+                return DESCRIPTEUR;
+            }
+
+            @Override
+            public Optional<Item> next(RandomSource hasard, Set<ItemId> dejaVus) {
+                Question question = questions[position % questions.length];
+                position++;
+                return Optional.of(question);
+            }
+        };
+    }
+
     private static BanditManchotSession demarrer(ContentSource contenu) {
+        return demarrer(contenu, MANCHES_LARGEMENT_SUFFISANTES);
+    }
+
+    private static BanditManchotSession demarrer(ContentSource contenu, int nombreDeManches) {
         BanditManchot mecanique = new BanditManchot();
-        GameSession session = mecanique.start(contenu, TOUJOURS_ZERO);
+        GameSession session = mecanique.start(contenu, TOUJOURS_ZERO, nombreDeManches);
         return (BanditManchotSession) session;
     }
 
@@ -187,11 +215,13 @@ class BanditManchotTest {
                 new ContentDescriptor("Anglais", "CM1", "Vocabulaire", "les couleurs"),
                 List.of(new Question(new ItemId("v1"), "red", "rouge", List.of("bleu", "vert"))));
 
-        BanditManchotSession sessionMaths = (BanditManchotSession) mecanique.start(additionsMathsCP, TOUJOURS_ZERO);
+        BanditManchotSession sessionMaths = (BanditManchotSession)
+                mecanique.start(additionsMathsCP, TOUJOURS_ZERO, MANCHES_LARGEMENT_SUFFISANTES);
         assertThat(sessionMaths.status()).isEqualTo(SessionStatus.EN_COURS);
         assertThat(sessionMaths.enonceManche()).isPresent();
 
-        BanditManchotSession sessionAnglais = (BanditManchotSession) mecanique.start(vocabulaireAnglaisCM1, TOUJOURS_ZERO);
+        BanditManchotSession sessionAnglais = (BanditManchotSession)
+                mecanique.start(vocabulaireAnglaisCM1, TOUJOURS_ZERO, MANCHES_LARGEMENT_SUFFISANTES);
         assertThat(sessionAnglais.enonceManche()).contains("red");
 
         BanditManchotSession suivanteAnglais =
@@ -211,5 +241,90 @@ class BanditManchotTest {
         }
 
         assertThat(enonces).containsExactly("un", "deux", "trois");
+    }
+
+    /**
+     * ADR-0012 : la mecanique compte les manches jouees, independamment de ce que rend le
+     * contenu. AdditionsBorneesContentSource ne renvoie jamais Optional.empty() (Javadoc citee par
+     * Nadia) : seul nombreDeManches peut ici mettre fin a la partie.
+     */
+    @Test
+    void laPartieSeTermineApresLeNombreDeManchesMemeAvecUnContenuCombinatoireInfini() {
+        ContentSource combinatoire = new AdditionsBorneesContentSource(DESCRIPTEUR, 10, 3);
+        BanditManchotSession session = demarrer(combinatoire, 10);
+
+        for (int reponse = 1; reponse <= 9; reponse++) {
+            assertThat(session.status()).as("avant la reponse %d sur 10", reponse).isEqualTo(SessionStatus.EN_COURS);
+            session = jouer(session, "pas la bonne reponse");
+        }
+
+        assertThat(session.status()).isEqualTo(SessionStatus.EN_COURS);
+        session = jouer(session, "pas la bonne reponse");
+
+        assertThat(session.status()).isEqualTo(SessionStatus.TERMINEE);
+        assertThat(session.score().tentatives()).isEqualTo(10);
+        assertThat(session.enonceManche()).isEmpty();
+    }
+
+    /** DEC-0004, point 4 : aucun indice avant le seuil, meme item redonne au dela. */
+    @Test
+    void unItemRateTroisFoisEstRepresenteAvecUnIndiceLaFoisSuivante() {
+        Question question = new Question(new ItemId("q1"), "un", "1", List.of("2"), Optional.of("une astuce"));
+        BanditManchotSession session = demarrer(sequenceInfinie(question));
+
+        assertThat(session.indice()).isEmpty();
+        session = jouer(session, "mauvaise");
+        assertThat(session.indice()).isEmpty();
+        session = jouer(session, "mauvaise");
+        assertThat(session.indice()).isEmpty();
+        session = jouer(session, "mauvaise");
+        assertThat(session.indice()).contains("une astuce");
+    }
+
+    /**
+     * DEC-0004, point 4 : trois echecs consecutifs, quel que soit l'item, representent un item
+     * deja reussi ; la manche d'apres revient au tirage normal.
+     */
+    @Test
+    void troisEchecsConsecutifsRepresententUnItemDejaReussiPuisLeTirageNormalReprend() {
+        Question succes = new Question(new ItemId("reussi"), "succes", "ok", List.of("non"));
+        Question q1 = new Question(new ItemId("q1"), "un", "1", List.of("2"));
+        Question q2 = new Question(new ItemId("q2"), "deux", "2", List.of("3"));
+        Question q3 = new Question(new ItemId("q3"), "trois", "3", List.of("4"));
+        Question q4 = new Question(new ItemId("q4"), "quatre", "4", List.of("5"));
+        BanditManchotSession session = demarrer(sequenceInfinie(succes, q1, q2, q3, q4));
+
+        session = jouer(session, "ok");
+        assertThat(session.enonceManche()).contains("un");
+        session = jouer(session, "faux");
+        assertThat(session.enonceManche()).contains("deux");
+        session = jouer(session, "faux");
+        assertThat(session.enonceManche()).contains("trois");
+        session = jouer(session, "faux");
+
+        assertThat(session.enonceManche())
+                .as("troisieme echec consecutif : represente l'item deja reussi")
+                .contains("succes");
+
+        session = jouer(session, "non");
+        assertThat(session.enonceManche())
+                .as("la manche d'apres revient au tirage normal")
+                .contains("quatre");
+    }
+
+    /** DEC-0004, point 4 : sans aucun item reussi, le repli est le tirage normal, sans erreur. */
+    @Test
+    void troisEchecsConsecutifsSansAucunItemReussiSuiventLeTirageNormal() {
+        Question q1 = new Question(new ItemId("q1"), "un", "1", List.of("2"));
+        Question q2 = new Question(new ItemId("q2"), "deux", "2", List.of("3"));
+        Question q3 = new Question(new ItemId("q3"), "trois", "3", List.of("4"));
+        Question q4 = new Question(new ItemId("q4"), "quatre", "4", List.of("5"));
+        BanditManchotSession session = demarrer(sequenceInfinie(q1, q2, q3, q4));
+
+        session = jouer(session, "faux");
+        session = jouer(session, "faux");
+        session = jouer(session, "faux");
+
+        assertThat(session.enonceManche()).contains("quatre");
     }
 }

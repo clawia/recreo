@@ -83,6 +83,30 @@ class AdditionsBorneesContentSourceTest {
         assertThat(enonces).as("variete minimale sur 20 manches").hasSizeGreaterThan(1);
     }
 
+    /**
+     * S1-7 (DEC-0004, point 5) : sur 200 tirages independants a graine fixee, entre 10 et 30
+     * comportent au moins un operande nul (5 % a 15 %), contre 26 % constates et une esperance
+     * theorique de 32 % avant correction. dejaVus reste vide a chaque tirage pour isoler la
+     * correction de la logique d'evitement des doublons, deja couverte par un autre test.
+     */
+    @Test
+    void surDeuxCentsTiragesAGraineFixeeEntre10Et30OntAuMoinsUnOperandeNul() {
+        RandomSource graineFixe = new Random(2026)::nextInt;
+        int tiragesAvecOperandeNul = 0;
+
+        for (int i = 0; i < 200; i++) {
+            Question question = (Question) source.next(graineFixe, Set.<ItemId>of()).orElseThrow();
+            String[] operandes = question.enonce().split(" \\+ ");
+            if ("0".equals(operandes[0]) || "0".equals(operandes[1])) {
+                tiragesAvecOperandeNul++;
+            }
+        }
+
+        assertThat(tiragesAvecOperandeNul)
+                .as("proportion de tirages a operande nul sur 200, jamais zero")
+                .isBetween(10, 30);
+    }
+
     private Question tirer() {
         return (Question) source.next(hasard, Set.<ItemId>of()).orElseThrow();
     }
