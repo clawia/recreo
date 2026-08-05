@@ -60,7 +60,7 @@ class PartieHttpTest {
 
         Document fragment = Jsoup.parse(retour);
         assertThat(fragment.select(".signal.est-juste")).isNotEmpty();
-        assertThat(fragment.select(".score").text()).contains("1 / 1");
+        assertThat(fragment.select(".score").text()).isEqualTo("Score : 1");
     }
 
     /** Critere 3 : reponse incorrecte -> retour incorrect qui designe la bonne reponse, score inchange. */
@@ -76,7 +76,7 @@ class PartieHttpTest {
         Document fragment = Jsoup.parse(retour);
         assertThat(fragment.select(".signal.est-faux")).isNotEmpty();
         assertThat(fragment.text()).contains("1");
-        assertThat(fragment.select(".score").text()).contains("0 / 1");
+        assertThat(fragment.select(".score").text()).isEqualTo("Score : 0");
         assertThat(retour).doesNotContain("data-correct", "data-bonne", "data-solution", "data-reponse");
     }
 
@@ -93,7 +93,7 @@ class PartieHttpTest {
 
         Document fragment = Jsoup.parse(suite);
         assertThat(fragment.select(".enonce").text()).isEqualTo("deux");
-        assertThat(fragment.select(".score").text()).contains("1 / 1");
+        assertThat(fragment.select(".score").text()).isEqualTo("Score : 1");
     }
 
     @TestConfiguration

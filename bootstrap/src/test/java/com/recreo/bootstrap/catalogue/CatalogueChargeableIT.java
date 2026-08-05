@@ -36,6 +36,13 @@ class CatalogueChargeableIT {
             assertThat(session)
                     .as("ADR-0007 : %s demarre effectivement une partie", jeu.id())
                     .isNotNull();
+
+            if ("bandit-manchot-additions-cp".equals(jeu.id())) {
+                assertThat(jeu.titre())
+                        .as("S1-8 : le libelle d'accueil ne reintroduit pas le grapheme"
+                                + " 'ti' prononce /si/ de l'ancien titre 'Additions CP'")
+                        .doesNotContain("ti");
+            }
         }
     }
 }

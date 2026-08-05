@@ -250,4 +250,27 @@ class LesReglesMordentTest {
                 .hasMessageContaining("com.recreo.bootstrap.contreexemple.ChargeurSauvageContreExemple")
                 .hasMessageContaining("java.nio.file");
     }
+
+    /**
+     * ADR-0011 : une regle d'existence n'a pas de classe fautive - la faute serait une absence,
+     * meme mecanisme que uneAbstractionCiteeQuiDisparaitEstRefusee (ADR-0005).
+     */
+    @Test
+    void unePorteDErreurAbsenteEstRefusee() {
+        assertThatThrownBy(() -> GestionDesErreursTest.uneAdviceDErreurExiste
+                .check(productionSansLeContrat("com.recreo.domain.mechanic")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ADR-0011 : une porte de rendu d'erreur existe dans adapter-web")
+                .hasMessageContaining("failed to check any classes");
+    }
+
+    /** ADR-0011 : sans elle, un gestionnaire d'erreur pourrait rendre du JSON brut sans qu'aucun test ne le refuse. */
+    @Test
+    void unGestionnaireDErreurQuiRendUnCorpsBrutEstRefuse() {
+        assertThatThrownBy(() -> GestionDesErreursTest.uneErreurNeRendPasUnCorpsBrut
+                .check(contreExemples("com.recreo.adapter.web.contreexemple")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("GestionnaireErreurBruteContreExemple")
+                .hasMessageContaining("ResponseEntity");
+    }
 }

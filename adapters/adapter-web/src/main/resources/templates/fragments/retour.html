@@ -2,18 +2,18 @@
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <body>
 <div th:fragment="retour" id="jeu">
-    <p class="score" th:text="'Score : ' + ${score.reussites()} + ' / ' + ${score.tentatives()}"></p>
+    <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
     <div class="signal" th:classappend="${juste} ? 'est-juste' : 'est-faux'">
         <p th:if="${juste}" class="verdict">Bravo, c'est juste !</p>
         <p th:unless="${juste}" class="verdict">
-            Ce n'est pas ca. La bonne reponse etait <span th:text="${bonneReponse}"></span>.
+            Non, c'est <span th:text="${bonneReponse}"></span>.
         </p>
     </div>
     <form th:if="${enSuite}" th:attr="hx-get=@{'/parties/' + ${jeuId} + '/manche'}"
           hx-target="#jeu" hx-swap="innerHTML">
-        <button type="submit">Manche suivante</button>
+        <button type="submit">Encore !</button>
     </form>
-    <p th:unless="${enSuite}">La partie est terminee. Merci d'avoir joue !</p>
+    <p th:unless="${enSuite}">La partie est finie. Bravo, tu as bien joué !</p>
 </div>
 </body>
 </html>
