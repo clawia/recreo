@@ -25,7 +25,7 @@ ajouts decrits ci-dessous.
 | **Total** | **92** | **0** |
 
 Le `JAVA_HOME` explicite n'est pas decoratif : le `java` du `PATH` de ce poste est un JRE 1.8.0_202,
-et le JDK 21 est a `<JDK 21>`. Sans lui, le build ne compile pas.
+et le JDK 21 est installe ailleurs sur le poste. Sans lui, le build ne compile pas.
 
 `yanis-qa` mesurait 80 tests. Les 12 tests de plus sont ceux de ce passage : 11 tests de
 non-vacuite dans `LesReglesMordentTest` et 1 dans `AssertionsWebTest`. Aucun test existant n'a ete

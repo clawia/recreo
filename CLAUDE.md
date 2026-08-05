@@ -69,6 +69,13 @@ noms de fichiers - et sont verifiees par le `relecteur-pedagogique` :
 - Les caracteres accentues sont normaux dans le contenu redactionnel francais ; les messages de
   commit et les identifiants de code restent en ASCII.
 - Pas de commentaire qui paraphrase le code.
+- **Aucun chemin absolu de poste de travail, aucun nom d'utilisateur, aucune credential.** Le
+  depot est pousse sur GitHub : `C:\...`, `/c/...`, `~/.m2/...`, un chemin d'interpreteur ou de
+  JDK, un nom de compte n'ont rien a y faire, y compris dans un rapport de ceremonie qui cite la
+  commande qu'un agent a lancee. Ecrire la commande sous sa forme portable (`mvn -B verify`,
+  `python outils/rapport-tokens.py`) et nommer le prerequis plutot que son emplacement
+  (`JAVA_HOME` sur un JDK 21, et non le repertoire ou il est installe sur telle machine). Les
+  secrets vivent dans `.env`, jamais dans un fichier commite.
 
 Le contenu et l'interface destines a l'enfant (enonces, propositions de reponse, pictogrammes,
 signaux d'interface comme le retour juste/faux) n'entrent pas dans ce registre : ils sont

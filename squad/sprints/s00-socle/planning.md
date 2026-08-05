@@ -60,17 +60,16 @@ par `DEC-0002`. Aucun des deux ne reste ouvert a ce planning.
 **1. Obstacle de capacite / technique, deja resolu - trace ici pour que chaque developpeur en
 tienne compte.** La machine expose `java` 1.8.0_202 sur le `PATH`, et Maven 3.9.9 tourne par
 defaut sur ce JRE 8. `ADR-0001` cible Java 21 et Spring Boot 4.1.0 : rien ne compilerait avec le
-Java du `PATH`. J'ai verifie l'environnement pendant ce planning : un JDK 21 est installe a
-`<JDK 21>` (`java version "21.0.10" 2026-01-20 LTS`), et
+Java du `PATH`. J'ai verifie l'environnement pendant ce planning : un JDK 21 est bien installe
+sur le poste (`java version "21.0.10" 2026-01-20 LTS`), hors du `PATH`, et
 `spring-boot-starter-parent` 4.1.0 existe sur Maven Central - c'est meme la derniere version
-publiee, ce qui confirme l'avis de faisabilite de `theo-archi` sur ce point. Un
-`~/.m2/toochains.xml` declare bien un JDK 21, mais son nom de fichier est mal orthographie
-(`toochains` au lieu de `toolchains`) : Maven ne le lit pas, il ne faut pas compter sur les
-toolchains ce sprint.
+publiee, ce qui confirme l'avis de faisabilite de `theo-archi` sur ce point. Le fichier de
+toolchains Maven du poste declare bien un JDK 21, mais son nom est mal orthographie, donc Maven
+ne le lit pas : il ne faut pas compter sur les toolchains ce sprint.
 
 Consequence operationnelle, valable pour toute commande Maven du sprint (theo-archi, marc-dev,
-lea-dev, yanis-qa, moi) : positionner explicitement `JAVA_HOME` sur
-`<JDK 21>` avant chaque invocation de `mvn`, jamais se fier au `java` du
+lea-dev, yanis-qa, moi) : positionner explicitement `JAVA_HOME` sur un JDK 21 avant chaque
+invocation de `mvn`, jamais se fier au `java` du
 `PATH` ni au toolchains cassees. Ceci ne cree ni ne modifie aucun `ADR` : `ADR-0001` reste tel
 qu'ecrit, c'est une verification d'environnement qui confirme sa faisabilite, pas une decision
 d'architecture nouvelle.
@@ -92,7 +91,7 @@ livrables non executables (etape 5 de `squad/README.md` section 9), pas au plann
    les contrats de domaine et d'application, pour que son etape compile seule ; ecrit les huit
    classes ArchUnit avec leurs contre-exemples exiges par `ADR-0003` (couvrant `ADR-0002`,
    `ADR-0004` a `ADR-0008`), livre S0-1 (partie socle) et S0-3. Toute commande Maven avec
-   `JAVA_HOME` sur `<JDK 21>`.
+   `JAVA_HOME` sur un JDK 21.
 2. **marc-dev**, une fois le squelette de theo-archi committe et compilable : mecanique du
    bandit manchot (`com.recreo.domain.mechanics.banditmanchot`), adapter-web (templates
    htmx/Thymeleaf, fragment du retour juste/faux sans marqueur de correction avant le coup de

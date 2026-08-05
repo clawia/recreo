@@ -59,7 +59,7 @@ RE_SPRINT_DIR = re.compile(r"^(s\d+)(?:-(.*))?$")
 def encoder_chemin_projet(repo: Path) -> str:
     """Reproduit l'encodage du chemin projet utilise par Claude Code.
 
-    `<depot>` devient `<depot-encode>` : chaque `:` et chaque separateur
+    Un chemin de depot devient un identifiant plat : chaque `:` et chaque separateur
     de chemin devient un tiret.
     """
     brut = str(repo.resolve())

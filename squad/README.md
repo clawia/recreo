@@ -98,7 +98,7 @@ cloture, il agrege :
 
 `outils/rapport-tokens.py` agrege la consommation **par agent et par sprint** a partir des
 transcriptions que Claude Code ecrit sous
-`~/.claude/projects/<depot-encode>/`. Chaque sous-agent y laisse un fichier
+`~/.claude/projects/<chemin du depot encode>/`. Chaque sous-agent y laisse un fichier
 `subagents/agent-<id>.jsonl` et un `agent-<id>.meta.json` qui porte son `agentType`.
 
 Sofia le lance a chaque review :
@@ -106,6 +106,9 @@ Sofia le lance a chaque review :
 ```
 python outils/rapport-tokens.py --sprint sNN
 ```
+
+Si `python` ne resout pas un interpreteur 3.x utilisable sur le poste, appeler l'interpreteur par
+son chemin complet - un chemin local ne s'ecrit jamais dans un fichier du depot.
 
 Il ecrit `squad/sprints/sNN-<slug>/RAPPORT-tokens.md` et met a jour
 `squad/rapports/JOURNAL-tokens.md`.
