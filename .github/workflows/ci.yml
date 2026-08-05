@@ -36,6 +36,22 @@ jobs:
 
           git log --no-merges --format=%s ${RANGE} | bash .github/scripts/verifier-prefixes.sh
 
+  chemins:
+    name: Chemins de poste de travail
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # CLAUDE.md, Conventions de redaction, interdit tout chemin absolu de poste de travail ou
+      # nom de compte dans un fichier commite. ADR-0010 rend cette regle executable.
+      - name: Tester le garde-fou de chemins
+        run: bash .github/scripts/verifier-chemins-test.sh
+
+      - name: Verifier l'absence de chemins de poste de travail
+        run: |
+          git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' \
+            | bash .github/scripts/verifier-chemins.sh
+
   build:
     name: Build et tests (Java 21)
     runs-on: ubuntu-latest

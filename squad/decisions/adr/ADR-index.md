@@ -13,6 +13,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0007](ADR-0007-un-seul-chargeur-de-contenu-pilote-par-un-schema.md) | Charger tout le contenu avec un seul chargeur pilote par un schema | s00 | 2026-08-04 | Accepte |
 | [ADR-0008](ADR-0008-le-comportement-de-jeu-vit-sur-le-serveur.md) | Loger tout le comportement de jeu sur le serveur et brider le JavaScript par un budget | s00 | 2026-08-04 | Accepte |
 | [ADR-0009](ADR-0009-les-garde-fous-de-ci-sont-des-scripts-testes.md) | Extraire les garde-fous de CI dans des scripts versionnes, et leur donner des contre-exemples | s00 | 2026-08-04 | Accepte |
+| [ADR-0010](ADR-0010-refuser-les-chemins-de-poste-de-travail.md) | Refuser les chemins de poste de travail et les comptes utilisateur dans un fichier suivi, par un script teste | s00 | 2026-08-05 | Accepte |
 
 ## Amendements
 
@@ -33,7 +34,7 @@ est date dans le corps de l'ADR. Ceux du sprint 0 :
 
 ## Lecture rapide
 
-Les neuf ADR du sprint 0 forment un socle indissociable, dans cet ordre de lecture :
+Les dix ADR du sprint 0 forment un socle indissociable, dans cet ordre de lecture :
 
 1. **ADR-0001** dit ou vit le code (cinq modules) ;
 2. **ADR-0002** dit ce que le coeur n'a pas le droit de connaitre (liste blanche, pas liste noire) ;
@@ -45,4 +46,6 @@ Les neuf ADR du sprint 0 forment un socle indissociable, dans cet ordre de lectu
    precedente : l'abstraction fantome, la difficulte arithmetique imposee a toutes les matieres,
    les neuf chargeurs ;
 6. **ADR-0008** ramene le comportement de jeu la ou il est testable ;
-7. **ADR-0009** applique l'exigence d'ADR-0003 aux garde-fous qui ne sont pas en Java.
+7. **ADR-0009** applique l'exigence d'ADR-0003 aux garde-fous qui ne sont pas en Java ;
+8. **ADR-0010** applique la forme d'ADR-0009 a un nouveau motif : aucun chemin de poste de travail
+   ni compte utilisateur dans un fichier suivi.
