@@ -80,7 +80,11 @@ noms de fichiers - et sont verifiees par le `relecteur-pedagogique` :
 Le contenu et l'interface destines a l'enfant (enonces, propositions de reponse, pictogrammes,
 signaux d'interface comme le retour juste/faux) n'entrent pas dans ce registre : ils sont
 gouvernes par la porte pedagogique de `nadia-prof`, pas par cette regle de style (voir
-`DEC-0002-emoji-et-pictogrammes-contenu-enfant.md`).
+`DEC-0002-emoji-et-pictogrammes-contenu-enfant.md`). Une seule exigence de redaction leur reste
+commune, ajoutee par l'amendement du 2026-08-04 a `DEC-0002` : ce texte est redige en francais
+correct et integralement accentue, orthographe et ponctuation irreprochables, parce qu'il est lu
+par un enfant en cours d'apprentissage de la lecture. Cette exigence-la est verifiee par
+`relecteur-pedagogique` comme n'importe quelle autre regle de cette section.
 
 ## La squad
 
