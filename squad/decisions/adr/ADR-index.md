@@ -14,6 +14,8 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0008](ADR-0008-le-comportement-de-jeu-vit-sur-le-serveur.md) | Loger tout le comportement de jeu sur le serveur et brider le JavaScript par un budget | s00 | 2026-08-04 | Accepte |
 | [ADR-0009](ADR-0009-les-garde-fous-de-ci-sont-des-scripts-testes.md) | Extraire les garde-fous de CI dans des scripts versionnes, et leur donner des contre-exemples | s00 | 2026-08-04 | Accepte |
 | [ADR-0010](ADR-0010-refuser-les-chemins-de-poste-de-travail.md) | Refuser les chemins de poste de travail et les comptes utilisateur dans un fichier suivi, par un script teste | s00 | 2026-08-05 | Accepte |
+| [ADR-0011](ADR-0011-rendre-toute-erreur-imprevue-en-html-francais.md) | Rendre toute erreur imprevue en HTML francais, jamais un corps technique brut | s01 | 2026-08-05 | Accepte |
+| [ADR-0012](ADR-0012-la-longueur-de-partie-vit-dans-le-catalogue.md) | Porter la longueur d'une partie par l'entree de catalogue, jamais par le contenu | s01 | 2026-08-05 | Accepte |
 
 ## Amendements
 
@@ -33,6 +35,7 @@ est date dans le corps de l'ADR. Ceux du sprint 0 :
 | ADR-0008 | 2026-08-04 | la regle d'assertion web n'avait pas de contre-exemple ; comment contre-exemplifier une regle qui juge du code de test |
 | ADR-0009 | 2026-08-05 | la plage de commits ne resistait pas a une base reecrite et inatteignable apres un push force (`bad object`) ; ajout de `commit-atteignable.sh` et de son repli, avant la construction de la plage |
 | ADR-0010 | 2026-08-05 | **le garde-fou a mordu son propre auteur** : verifie avant que `verifier-chemins.sh` soit suivi, il n'avait jamais ete juge par lui-meme ; une fois suivi, son propre commentaire d'en-tete contenait un vrai segment reel. Commentaire corrige, pas la regle |
+| ADR-0008 | 2026-08-05 | ajout d'un renvoi vers ADR-0011 : le fragment d'erreur est du rendu serveur comme les autres, deja couvert par les regles existantes sans les modifier |
 
 ## Lecture rapide
 
@@ -51,3 +54,10 @@ Les dix ADR du sprint 0 forment un socle indissociable, dans cet ordre de lectur
 7. **ADR-0009** applique l'exigence d'ADR-0003 aux garde-fous qui ne sont pas en Java ;
 8. **ADR-0010** applique la forme d'ADR-0009 a un nouveau motif : aucun chemin de poste de travail
    ni compte utilisateur dans un fichier suivi.
+
+Sprint 1 en ajoute deux, tous deux nes du refus pedagogique de `bandit-manchot-additions-cp` :
+
+9. **ADR-0011** ferme le trou qu'ADR-0008 ne couvrait pas : le chemin d'erreur, pas seulement le
+   chemin nominal, doit rendre du HTML francais ;
+10. **ADR-0012** tranche un point qu'ADR-0006 avait explicitement laisse ouvert en le nommant a
+    l'avance : la longueur d'une partie vit dans l'entree de catalogue, jamais dans le contenu.

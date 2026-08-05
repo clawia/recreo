@@ -284,6 +284,15 @@ deja protegees de la vacuite par les `isNotEmpty()` que `yanis-qa` a ajoutes.
 detail de balisage. Interdire `java.util.regex` et fournir jsoup rend la bonne pratique la plus
 facile, mais la pertinence de l'assertion reste du ressort de Yanis en revue.
 
+**Amendement du 2026-08-05, sprint 1.** Le fragment renvoye quand une erreur survient (session
+perdue, story S1-4, motif de refus 3 de `FICHE-bandit-manchot-additions-cp.md`) est lui aussi du
+rendu serveur, et les trois gardes ci-dessus s'appliquent deja sans modification a tout nouveau
+gabarit `.html` ajoute sous `templates/` : aucun texte a ne pas changer ici. Ce que cet ADR ne
+disait pas, et que le sprint 1 a montre absent, c'est ce qui se passe **avant** qu'un fragment soit
+choisi, c'est-a-dire quand une exception non geree atteint la frontiere HTTP : c'est l'objet
+d'`ADR-0011`, qui garde specifiquement qu'aucun corps technique brut (JSON d'erreur Spring Boot par
+defaut) ne remplace un fragment HTML francais.
+
 ## Consequences
 
 - Chaque interaction coute un aller-retour HTTP. Sur un jeu de revision au tour par tour, c'est
