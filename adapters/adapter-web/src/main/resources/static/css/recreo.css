@@ -9,6 +9,14 @@
     --recreo-attention-bordure: #b45309;
 }
 
+/* Base fiable pour les cibles tactiles : min-height/min-width incluent le rembourrage,
+   jamais l'inverse (S2-1, correction du refus sur .proposition). */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: sans-serif;
     margin: 2rem;
@@ -41,26 +49,54 @@ h1 {
     font-weight: bold;
 }
 
-.proposition {
-    display: block;
-    margin: 0.5rem 0;
-    padding: 0.5rem 1rem;
-    font-size: 1.1rem;
+/* Conteneur des boutons de reponse : un ecart reel entre les boutons (S2-1, correction du
+   refus), pas une marge de bloc qui se fond avec sa voisine. */
+.propositions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 0.75rem 0;
+    padding: 0;
 }
 
-/* Boutons d'action (demarrer une partie, continuer, revenir aux jeux, recommencer apres une
-   erreur) : meme langage visuel, taille jamais laissee au defaut du navigateur (S2-1). */
+/* Boutons d'action pleins : demarrer une partie, choisir une reponse, continuer, recommencer
+   apres une erreur. Ce sont les boutons sur lesquels l'enfant doit le plus souvent appuyer :
+   ce sont eux qui doivent appeler la main (S2-1, correction du refus sur la hierarchie de
+   saillance). Taille jamais laissee au defaut du navigateur, cible tactile d'au moins 44 x 44 px. */
 .demarrer,
-.retour-accueil,
+.proposition,
 .recommencer,
 .encore {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    min-width: 2.75rem;
     font-size: 1.25rem;
+    font-weight: bold;
     color: var(--recreo-accent-texte);
     background-color: var(--recreo-accent);
     border: none;
     border-radius: 0.5rem;
     padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Bouton de sortie : reste visible et atteignable partout (S1-4), mais ne doit plus dominer
+   l'ecran de jeu ni concurrencer les boutons de reponse ou "Encore !" (S2-1, correction du
+   refus). Meme famille de couleur, contour au lieu d'un aplat : moins saillant, jamais illisible. */
+.retour-accueil {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    font-size: 1.25rem;
+    color: var(--recreo-accent);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent);
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.1rem;
     text-decoration: none;
     cursor: pointer;
 }
@@ -79,11 +115,15 @@ h1 {
     margin: 1rem 0;
 }
 
+/* Bandeaux d'attention (indice, reprise) : un cadre complet, pas seulement un liseret, pour
+   rester visibles sans distinguer les couleurs (reserve de nadia-prof sur le faible ecart de
+   luminance entre le fond ambre et le fond de page). */
 .indice {
     font-size: 1.25rem;
     color: var(--recreo-texte);
     background-color: var(--recreo-attention-fond);
-    border-left: 0.25rem solid var(--recreo-attention-bordure);
+    border: 0.125rem solid var(--recreo-attention-bordure);
+    border-radius: 0.25rem;
     padding: 0.75rem 1rem;
     margin: 0.5rem 0;
 }
@@ -105,7 +145,8 @@ h1 {
     font-size: 1.25rem;
     color: var(--recreo-texte);
     background-color: var(--recreo-attention-fond);
-    border-left: 0.25rem solid var(--recreo-attention-bordure);
+    border: 0.125rem solid var(--recreo-attention-bordure);
+    border-radius: 0.25rem;
     padding: 0.75rem 1rem;
     margin: 0 0 1rem;
 }
