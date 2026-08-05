@@ -22,6 +22,17 @@ public final class AdditionsBorneesContentSource implements ContentSource {
 
     private static final int TENTATIVES_MAX = 20;
 
+    /**
+     * S1-7 (DEC-0004, point 5) : un tirage brut comporte un operande nul environ un tiers du temps
+     * (l'un des deux operandes vaut 0, une propriete du programme qui ne demande pas de calculer).
+     * Un tirage a operande nul n'est retenu qu'une fois sur ACCEPTATION_OPERANDE_NUL_SUR, les
+     * autres sont retires : la proportion mesuree sur 200 tirages a graine fixee tombe alors entre
+     * 5 % et 15 %, jamais a zero.
+     */
+    private static final int ACCEPTATION_OPERANDE_NUL_SUR = 5;
+
+    private static final String INDICE = "Compte avec tes doigts pour t'aider.";
+
     private final ContentDescriptor descripteur;
     private final int sommeMaximale;
     private final int nombreDePropositions;
@@ -53,14 +64,27 @@ public final class AdditionsBorneesContentSource implements ContentSource {
     }
 
     private Question tirer(RandomSource hasard) {
-        int operandeA = hasard.nextInt(sommeMaximale + 1);
-        int operandeB = hasard.nextInt(sommeMaximale - operandeA + 1);
+        int operandeA;
+        int operandeB;
+        int tentative = 0;
+        do {
+            operandeA = hasard.nextInt(sommeMaximale + 1);
+            operandeB = hasard.nextInt(sommeMaximale - operandeA + 1);
+            tentative++;
+        } while (auMoinsUnOperandeNul(operandeA, operandeB)
+                && hasard.nextInt(ACCEPTATION_OPERANDE_NUL_SUR) != 0
+                && tentative < TENTATIVES_MAX);
         int somme = operandeA + operandeB;
         return new Question(
                 new ItemId("addition-" + operandeA + "-" + operandeB),
                 operandeA + " + " + operandeB,
                 String.valueOf(somme),
-                distracteurs(hasard, somme));
+                distracteurs(hasard, somme),
+                Optional.of(INDICE));
+    }
+
+    private static boolean auMoinsUnOperandeNul(int operandeA, int operandeB) {
+        return operandeA == 0 || operandeB == 0;
     }
 
     /**

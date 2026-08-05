@@ -1,0 +1,7 @@
+schema: 1
+jeux:
+  - id: jeu-sans-nombre-de-manches
+    titre: "Jeu sans nombre de manches"
+    consigne: "Choisis la bonne reponse"
+    mecanique: bandit-manchot
+    paquet: paquet-question

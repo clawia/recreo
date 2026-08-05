@@ -37,7 +37,7 @@ public final class PartieService implements PartieUseCase {
     public GameSession demarrer(String jeuId) {
         GameDefinition jeu = trouver(jeuId);
         GameMechanic mecanique = mecaniques.mecaniquePour(jeu.mecanique());
-        return mecanique.start(jeu.contenu(), hasard);
+        return mecanique.start(jeu.contenu(), hasard, jeu.nombreDeManches());
     }
 
     @Override

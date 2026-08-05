@@ -5,8 +5,10 @@ jeux:
     consigne: "Choisis la bonne reponse"
     mecanique: bandit-manchot
     paquet: paquet-question
+    nombreDeManches: 10
   - id: jeu-additions
     titre: "Jeu additions"
     consigne: "Combien ca fait ?"
     mecanique: bandit-manchot
     paquet: paquet-additions
+    nombreDeManches: 10

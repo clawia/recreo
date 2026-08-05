@@ -5,3 +5,4 @@ jeux:
     consigne: "Combien ça fait ?"
     mecanique: bandit-manchot
     paquet: cp-additions-jusqu-a-10
+    nombreDeManches: 10

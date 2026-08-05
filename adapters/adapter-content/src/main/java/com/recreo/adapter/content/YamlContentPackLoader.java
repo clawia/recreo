@@ -57,9 +57,11 @@ public final class YamlContentPackLoader implements ContentCatalogPort {
         String consigne = texte(jeu, "consigne", catalogue);
         String mecanique = texte(jeu, "mecanique", catalogue);
         String paquetId = texte(jeu, "paquet", catalogue);
+        int nombreDeManches = entier(jeu, "nombreDeManches", catalogue);
 
         ContentSource contenu = chargerPaquet(paquetId);
-        return new GameDefinition(id, titre, consigne, new MechanicId(mecanique), contenu.descriptor(), contenu);
+        return new GameDefinition(id, titre, consigne, new MechanicId(mecanique), contenu.descriptor(),
+                contenu, nombreDeManches);
     }
 
     private ContentSource chargerPaquet(String paquetId) {
@@ -119,5 +121,13 @@ public final class YamlContentPackLoader implements ContentCatalogPort {
 
     private static String texte(Map<?, ?> map, String champ, String chemin) {
         return String.valueOf(champObligatoire(map, champ, chemin));
+    }
+
+    private static int entier(Map<?, ?> map, String champ, String chemin) {
+        Object valeur = champObligatoire(map, champ, chemin);
+        if (!(valeur instanceof Integer entier)) {
+            throw new IllegalStateException(chemin + " : le champ '" + champ + "' doit etre un entier");
+        }
+        return entier;
     }
 }

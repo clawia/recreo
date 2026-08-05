@@ -2,6 +2,8 @@
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <body>
 <div th:fragment="retour" id="jeu">
+    <button type="button" class="retour-accueil" hx-post="/retour" hx-target="#jeu"
+            hx-swap="innerHTML">Retour à l'accueil</button>
     <p class="score" th:text="'Score : ' + ${score.reussites()} + ' / ' + ${score.tentatives()}"></p>
     <div class="signal" th:classappend="${juste} ? 'est-juste' : 'est-faux'">
         <span class="icone-signal" aria-hidden="true"></span>
@@ -14,7 +16,7 @@
           hx-target="#jeu" hx-swap="innerHTML">
         <button type="submit">Manche suivante</button>
     </form>
-    <p th:unless="${enSuite}">La partie est terminee. Merci d'avoir joue !</p>
+    <p th:unless="${enSuite}" class="fin-de-partie">La partie est terminee. Merci d'avoir joue !</p>
 </div>
 </body>
 </html>

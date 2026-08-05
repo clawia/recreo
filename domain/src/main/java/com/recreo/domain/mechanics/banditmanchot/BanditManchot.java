@@ -22,8 +22,8 @@ public final class BanditManchot implements GameMechanic {
     }
 
     @Override
-    public GameSession start(ContentSource contenu, RandomSource hasard) {
-        return BanditManchotSession.demarrer(contenu, hasard);
+    public GameSession start(ContentSource contenu, RandomSource hasard, int nombreDeManches) {
+        return BanditManchotSession.demarrer(contenu, hasard, nombreDeManches);
     }
 
     @Override

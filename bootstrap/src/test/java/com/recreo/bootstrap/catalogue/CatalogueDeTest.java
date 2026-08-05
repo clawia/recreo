@@ -19,6 +19,9 @@ public final class CatalogueDeTest implements ContentCatalogPort {
 
     public static final String JEU_ID = "jeu-de-test";
 
+    /** Largement suffisant : ces tests jouent au plus deux manches, portees par le vivier. */
+    private static final int NOMBRE_DE_MANCHES = 10;
+
     private static final ContentDescriptor DESCRIPTEUR =
             new ContentDescriptor("Test", "Test", "Test", "verifier le parcours HTTP");
 
@@ -28,6 +31,7 @@ public final class CatalogueDeTest implements ContentCatalogPort {
                 JEU_ID, "Jeu de test", "Choisis la bonne reponse", BanditManchot.ID, DESCRIPTEUR,
                 new ListContentSource(DESCRIPTEUR, List.of(
                         new Question(new ItemId("q1"), "un", "1", List.of("2")),
-                        new Question(new ItemId("q2"), "deux", "2", List.of("3"))))));
+                        new Question(new ItemId("q2"), "deux", "2", List.of("3")))),
+                NOMBRE_DE_MANCHES));
     }
 }
