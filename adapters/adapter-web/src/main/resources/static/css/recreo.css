@@ -49,30 +49,33 @@ h1 {
     font-weight: bold;
 }
 
-/* Conteneur des boutons de reponse : un ecart reel entre les boutons (S2-1, correction du
-   refus), pas une marge de bloc qui se fond avec sa voisine. */
+/* Conteneur des boutons de reponse : un ecart confortable entre les boutons, au-dessus du
+   plancher de 0,75rem constate en s02 (S3-5, reserve 2 de nadia-prof sur S2-1: "un ecart d'au
+   moins 1 rem laisserait plus de place a un geste d'enfant"). Proxy valide tant que les boutons
+   restent empiles dans ce conteneur flex en colonne (voir S3-5, docs/backlog/backlog.md). */
 .propositions {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
     margin: 0.75rem 0;
     padding: 0;
 }
 
 /* Boutons d'action pleins : demarrer une partie, choisir une reponse, continuer, recommencer
-   apres une erreur. Ce sont les boutons sur lesquels l'enfant doit le plus souvent appuyer :
-   ce sont eux qui doivent appeler la main (S2-1, correction du refus sur la hierarchie de
-   saillance). Taille jamais laissee au defaut du navigateur, cible tactile d'au moins 44 x 44 px. */
+   apres une erreur, sortir quand c'est la seule action possible (S3-6). Ce sont les boutons sur
+   lesquels l'enfant doit le plus souvent appuyer : ce sont eux qui doivent appeler la main (S2-1,
+   correction du refus sur la hierarchie de saillance). Taille jamais laissee au defaut du
+   navigateur, cible tactile d'au moins 44 x 44 px. */
 .demarrer,
 .proposition,
 .recommencer,
-.encore {
+.encore,
+.sortie-pleine {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-height: 2.75rem;
     min-width: 2.75rem;
-    font-size: 1.25rem;
     font-weight: bold;
     color: var(--recreo-accent-texte);
     background-color: var(--recreo-accent);
@@ -83,9 +86,28 @@ h1 {
     cursor: pointer;
 }
 
-/* Bouton de sortie : reste visible et atteignable partout (S1-4), mais ne doit plus dominer
-   l'ecran de jeu ni concurrencer les boutons de reponse ou "Encore !" (S2-1, correction du
-   refus). Meme famille de couleur, contour au lieu d'un aplat : moins saillant, jamais illisible. */
+/* Taille du texte des boutons pleins : la plupart partagent la taille commune des boutons
+   actionnables (1,25rem), mais le chiffre d'un bouton de reponse est ce que l'enfant doit
+   comparer entre les trois propositions - il doit peser au moins autant que le calcul affiche
+   (S3-4, reserve 1 de nadia-prof sur S2-1 : "le nombre doit peser plus que la barre qui le
+   porte"). */
+.demarrer,
+.recommencer,
+.encore,
+.sortie-pleine {
+    font-size: 1.25rem;
+}
+
+.proposition {
+    font-size: 2rem;
+}
+
+/* Bouton de sortie sur l'ecran de jeu et sur le retour juste/faux : reste visible et atteignable
+   partout (S1-4), mais ne doit pas dominer l'ecran ni concurrencer les boutons de reponse ou
+   "Encore !" (S2-1, correction du refus sur la hierarchie de saillance). Meme famille de couleur,
+   contour au lieu d'un aplat : moins saillant, jamais illisible. Sur l'ecran de fin de partie,
+   cette meme sortie devient la seule action possible : elle prend alors la classe
+   .sortie-pleine (S3-6), un aplat comme les autres boutons d'action plutot que ce contour. */
 .retour-accueil {
     display: inline-flex;
     align-items: center;
