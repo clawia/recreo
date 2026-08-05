@@ -241,6 +241,21 @@ class LesReglesMordentTest {
                 .hasMessageContaining("java.lang.Integer");
     }
 
+    /**
+     * ADR-0012 : la moitie "interdiction" de la decision n'a pas de regle a elle - elle s'appuie sur
+     * la regle d'ADR-0006. Ce test la pin sur le cas nomme par ADR-0012, pour qu'un assouplissement
+     * futur de cette regle au motif d'un "parametre de partie" devienne rouge en citant ADR-0012, et
+     * pas seulement la borne arithmetique.
+     */
+    @Test
+    void uneLongueurDePartieDansLeContratDeContenuEstRefusee() {
+        assertThatThrownBy(() -> DifficulteTest.leContratDeContenuNePorteQueDuTexte
+                .check(contreExemples("com.recreo.domain.content")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("com.recreo.domain.content.ReglageDeLongueurDePartieContreExemple.nombreDeManches")
+                .hasMessageContaining("int");
+    }
+
     /** ADR-0007 : le dixieme chargeur, hors de l'adaptateur de contenu. */
     @Test
     void unChargeurHorsDeLAdaptateurDeContenuEstRefuse() {

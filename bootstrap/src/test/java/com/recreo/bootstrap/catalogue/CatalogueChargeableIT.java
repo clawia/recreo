@@ -37,6 +37,12 @@ class CatalogueChargeableIT {
                     .as("ADR-0007 : %s demarre effectivement une partie", jeu.id())
                     .isNotNull();
 
+            assertThat(jeu.nombreDeManches())
+                    .as("ADR-0012 : %s porte une longueur de partie chargee depuis le catalogue."
+                            + " Combien de manches est un choix pedagogique ; qu'il y en ait au"
+                            + " moins une ne l'est pas", jeu.id())
+                    .isPositive();
+
             if ("bandit-manchot-additions-cp".equals(jeu.id())) {
                 assertThat(jeu.titre())
                         .as("S1-8 : le libelle d'accueil ne reintroduit pas le grapheme"

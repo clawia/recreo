@@ -66,10 +66,30 @@ pour cette moitie de la decision : elle existerait deja et mordrait deja.
 
 Ce que je recommande d'ajouter au tableau de contre-exemples d'ADR-0006, parce que c'est desormais
 un cas reel et non seulement synthetique : un contre-exemple
-`ReglageDeLongueurDePartieContreExemple` (record, `int nombreDeManches`, dans
-`domain.content.contreexemple`), avec son test de non-vacuite dans `LesReglesMordentTest`. Ce n'est
-pas une nouvelle regle, c'est une preuve supplementaire que la regle existante mord sur le cas
-precis que cette story a fait surgir.
+`ReglageDeLongueurDePartieContreExemple` (record, `int nombreDeManches`), avec son test de
+non-vacuite dans `LesReglesMordentTest`. Ce n'est pas une nouvelle regle, c'est une preuve
+supplementaire que la regle existante mord sur le cas precis que cette story a fait surgir.
+
+> **Amendement du 2026-08-05 (cloture de s01).** Deux corrections a ce paragraphe, faites en
+> l'appliquant.
+>
+> 1. **Erreur de paquet, corrigee.** La premiere redaction rangeait ce contre-exemple dans
+>    `domain.content.contreexemple`. C'est faux : `leContratDeContenuNePorteQueDuTexte` porte sur
+>    `resideInAPackage("com.recreo.domain.content")`, le paquet exact du contrat et non ses
+>    sous-paquets. Un contre-exemple range dans le sous-paquet aurait ete invisible pour la regle, et
+>    son test de non-vacuite aurait echoue sur `failed to check any classes` au lieu de la violation
+>    attendue - c'est-a-dire qu'il aurait ete rouge pour le mauvais motif. Il vit donc dans
+>    `bootstrap/src/test/java/com/recreo/domain/content/`, comme
+>    `ReglageArithmetiqueContreExemple` et `ReglageEnCollectionContreExemple`.
+> 2. **La recommandation est appliquee, plus recommandee.** Fichier
+>    `bootstrap/src/test/java/com/recreo/domain/content/ReglageDeLongueurDePartieContreExemple.java`,
+>    test de non-vacuite `LesReglesMordentTest.uneLongueurDePartieDansLeContratDeContenuEstRefusee`.
+>    Sa valeur exacte, sans l'exagerer : il n'ajoute aucun pouvoir de refus a la regle, qui mordait
+>    deja sur un `int` via `ReglageArithmetiqueContreExemple`. Ce qu'il ajoute est un point
+>    d'accrochage nomme : si quelqu'un assouplit un jour cette regle au motif qu'un "parametre de
+>    partie" merite un `int` dans le contrat de contenu, le test rouge citera ADR-0012 et pas
+>    seulement la borne arithmetique d'ADR-0006. Laisser une recommandation ecrite et non appliquee
+>    aurait ete, en miniature, la dette n°1 de `main`.
 
 **Le versant "ou est-ce que ca vit et est-ce vraiment applique" n'est pas encodable en ArchUnit** :
 ArchUnit voit des types et des dependances, pas qu'un compteur atteint une valeur au bon moment. Il
@@ -82,6 +102,15 @@ n'invente donc aucun mecanisme nouveau, je nomme les tests que les ADR existants
 | `PartieService.demarrer` transmet bien `GameDefinition.nombreDeManches()` a `GameMechanic.start` | `PartieServiceTest` (nouveau cas) | pratique etablie du module `application`, aucun test n'existait avant ce sprint - a creer dans le meme commit, pas une dispense |
 | Une entree de catalogue sans `nombreDeManches` echoue au chargement avec un message nommant le champ | extension du test de schema d'`adapter-content` | ADR-0007, "echec au demarrage" |
 | Le catalogue charge produit bien la valeur ecrite en YAML | extension de `CatalogueChargeableIT` | ADR-0007 |
+
+> **Amendement du 2026-08-05 (cloture de s01), sur la derniere ligne du tableau.** Elle etait la
+> seule des quatre a n'avoir pas ete honoree : `CatalogueChargeableIT` demarrait bien chaque jeu du
+> vrai catalogue mais n'avait aucune assertion sur `nombreDeManches`. Le trou etait plus etroit qu'il
+> n'y parait - un champ absent du vrai `catalogue.yaml` faisait deja echouer ce test, puisque le
+> chargeur leve avant de rendre le moindre `GameDefinition` - mais une valeur de zero, elle, serait
+> passee sans un mot et aurait produit une partie qui se termine au premier coup. L'assertion ajoutee
+> est `isPositive()`, pas une egalite : **combien** de manches est un choix pedagogique qui
+> n'appartient pas a l'architecte, alors qu'**au moins une** est une propriete de forme.
 
 ## Consequences
 
