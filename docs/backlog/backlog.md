@@ -169,12 +169,15 @@ a S1-9 couvrent les cinq reserves restantes.
 - **Competence programme visee** : transverse.
 - **Criteres d'acceptation** :
   - Etant donne une partie en cours, quand le score s'affiche a l'enfant, alors il est presente
-    sous une forme lisible sans notation fractionnaire ni barre oblique (par exemple un nombre
-    de bonnes reponses seul, ou un nombre d'etoiles ou de jetons gagnes).
+    exactement sous la forme `Score : N`, ou `N` est le nombre entier de bonnes reponses depuis
+    le debut de la partie (par exemple `Score : 3`), sans aucune barre oblique et sans aucune
+    notation `x / y`.
   - Etant donne ce meme affichage, quand l'enfant regarde l'ecran, alors le nombre d'essais
-    rates n'est plus montre sous forme de rapport au nombre de reussites.
+    rates n'apparait nulle part dans le score, ni seul ni mis en rapport avec le nombre de
+    reussites.
   - Etant donne l'enonce de la manche en cours (un calcul), quand le score s'affiche au meme
-    ecran, alors aucun symbole du score ne peut etre lu comme un signe operatoire.
+    ecran, alors le texte du score ne contient aucun des caracteres `+`, `-`, `x`, `/`.
+- **Lien decision** : `DEC-0004-textes-score-et-seuils-lever-refus-s01.md`, point 1.
 - **Agent pressenti** : a affecter au planning.
 
 ### S1-3 - Un ecran franchissable quand quelque chose tourne mal (motif de refus 3)
@@ -185,14 +188,16 @@ a S1-9 couvrent les cinq reserves restantes.
 - **Competence programme visee** : transverse.
 - **Criteres d'acceptation** :
   - Etant donne une partie que le serveur ne reconnait plus (session perdue, redemarrage), quand
-    l'enfant declenche une action de jeu, alors l'ecran affiche un message court en francais
-    correctement accentue, jamais le corps brut d'une reponse technique (pas de texte en anglais,
-    pas de code ni de donnees techniques visibles dans la zone de jeu).
-  - Etant donne ce meme ecran, quand l'enfant veut continuer, alors un bouton visible lui permet
-    de recommencer une partie sans avoir besoin de comprendre un message technique ni de recharger
-    la page manuellement.
+    l'enfant declenche une action de jeu, alors l'ecran affiche exactement le texte
+    "Oups ! Le jeu a un souci.", jamais le corps brut d'une reponse technique (pas de texte en
+    anglais, pas de code ni de donnees techniques visibles dans la zone de jeu, en particulier
+    aucune des chaines "status", "timestamp", "Internal Server Error").
+  - Etant donne ce meme ecran, quand l'enfant veut continuer, alors un bouton visible portant
+    exactement le texte "Recommencer" lui permet de repartir vers l'accueil sans avoir besoin de
+    comprendre un message technique ni de recharger la page manuellement.
 - **Note** : la story decrit ce que l'enfant doit voir. La cause et la correction techniques
   appartiennent a `theo-archi` et aux developpeurs.
+- **Lien decision** : `DEC-0004-textes-score-et-seuils-lever-refus-s01.md`, point 2.
 - **Agent pressenti** : a affecter au planning.
 
 ### S1-4 - Une partie qui a une fin et une sortie (reserve 1, priorite coeur produit)
@@ -203,15 +208,21 @@ a S1-9 couvrent les cinq reserves restantes.
 - **Competence programme visee** : transverse.
 - **Criteres d'acceptation** :
   - Etant donne une partie qui commence, quand l'enfant joue des manches successives, alors la
-    partie se termine automatiquement apres un nombre fixe et annonce de manches.
+    partie se termine automatiquement apres exactement 10 manches, ni avant ni apres.
   - Etant donne la derniere manche de la partie, quand l'enfant y repond, alors un ecran de fin
     s'affiche reellement (contrairement au constat de Nadia : le gabarit existe mais est
-    inatteignable avec le contenu actuel), avec le score final dans la forme retenue par S1-2.
+    inatteignable avec le contenu actuel), avec le score final dans la forme retenue par S1-2
+    (`Score : N`).
   - Etant donne n'importe quel ecran de jeu, quand l'enfant regarde l'ecran, alors un bouton pour
     revenir a l'accueil est visible et utilisable a tout moment, avant meme la fin de la partie.
-  - Etant donne un enfant qui recharge la page pendant une partie, quand la page se recharge,
-    alors il retrouve sa partie en cours, ou a defaut un message clair explique qu'elle a
-    recommence (reserve 7 de la fiche, traitee ici avec la reserve 1 comme le recommande Nadia).
+  - Etant donne un enfant qui recharge la page pendant que sa session HTTP est encore valide,
+    quand la page se recharge, alors il retrouve directement l'etat de sa manche en cours, sans
+    aucun message affiche (la reprise est silencieuse).
+  - Etant donne un enfant qui recharge la page alors que sa session n'est plus retrouvable
+    (session perdue ou serveur redemarre), quand la page se recharge, alors l'accueil affiche
+    exactement le texte "Ta partie s'est arrêtée. Choisis un nouveau jeu !" au-dessus de la liste
+    des jeux (reserve 7 de la fiche, traitee ici avec la reserve 1 comme le recommande Nadia).
+- **Lien decision** : `DEC-0004-textes-score-et-seuils-lever-refus-s01.md`, point 3.
 - **Agent pressenti** : a affecter au planning.
 
 ### S1-5 - Un enfant qui echoue plusieurs fois est aide, pas enferme (reserve 3, priorite coeur produit)
@@ -225,11 +236,24 @@ a S1-9 couvrent les cinq reserves restantes.
   - Etant donne un meme item auquel l'enfant repond faux a trois reprises, quand il lui est
     represente une nouvelle fois, alors l'item est presente avec un indice qu'il n'avait pas la
     premiere fois.
-  - Etant donne une serie de plusieurs manches ratees consecutives, quand le seuil est atteint,
-    alors le jeu propose une manche plus simple avant de revenir a la difficulte normale.
+  - Etant donne trois manches consecutives ratees, quel que soit l'item concerne par chacune,
+    quand la manche suivante est presentee, alors c'est un item que l'enfant a deja resolu avec
+    succes au moins une fois dans la session en cours ("manche plus simple" au sens : un item
+    deja reussi, pas un item mathematiquement plus facile), avant de revenir au tirage normal des
+    la manche d'apres.
+  - Etant donne ces trois memes echecs consecutifs alors qu'aucun item n'a encore ete reussi dans
+    la session, quand la manche suivante est presentee, alors elle suit le tirage normal, sans
+    manche plus simple et sans erreur.
   - Etant donne cette meme serie d'echecs, quand elle se poursuit, alors le bouton de sortie
     vers l'accueil (S1-4) reste visible : l'enfant n'a jamais besoin de fermer l'onglet pour
     s'arreter.
+- **Note** : le seuil de trois echecs sur le meme item (indice) et le seuil de trois echecs
+  consecutifs quel que soit l'item (manche plus simple) sont deux compteurs independants qui
+  partagent la meme valeur numerique par souci de coherence, mais ne se declenchent pas
+  necessairement ensemble ni sur le meme item. Que remontrer un item deja reussi aide reellement
+  l'enfant en difficulte est un jugement pedagogique de fond que cette story ne tranche pas :
+  `nadia-prof` en jugera l'effet a l'audit (voir `DEC-0004`, point 4).
+- **Lien decision** : `DEC-0004-textes-score-et-seuils-lever-refus-s01.md`, point 4.
 - **Agent pressenti** : a affecter au planning.
 
 ### S1-6 - Un signal juste/faux qui ne depend pas de distinguer les couleurs (reserve 4)
@@ -258,9 +282,11 @@ a S1-9 couvrent les cinq reserves restantes.
   "Calcul mental - additions dans la limite de 10" (meme ligne que S0-4,
   `squad/programme/mathematiques/competences-cp.md`).
 - **Criteres d'acceptation** :
-  - Etant donne une session de plusieurs manches jouees a la suite, quand on releve la
-    proportion d'additions dont un operande est nul, alors elle reste nettement inferieure au
-    tiers constate ce sprint (16 sur 61), sans jamais tomber a zero.
+  - Etant donne 200 tirages effectues avec une graine aleatoire fixee, quand on compte les
+    tirages dont au moins un operande est nul, alors ce compte est compris entre 10 et 30 inclus
+    (soit entre 5 % et 15 % des tirages), contre 16 sur 61 (26 %) constate ce sprint et une
+    esperance theorique de 32 % avant correction.
+- **Lien decision** : `DEC-0004-textes-score-et-seuils-lever-refus-s01.md`, point 5.
 - **Agent pressenti** : a affecter au planning.
 
 ### S1-8 - Des mots d'interface que l'enfant de CP comprend (reserve 6)
