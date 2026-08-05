@@ -2,6 +2,8 @@ package com.recreo.bootstrap.catalogue;
 
 import com.recreo.application.catalog.GameDefinition;
 import com.recreo.application.port.in.PartieUseCase;
+import com.recreo.application.port.out.MechanicRegistryPort;
+import com.recreo.domain.mechanic.GameMechanic;
 import com.recreo.domain.mechanic.GameSession;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ class CatalogueChargeableIT {
     @Autowired
     private PartieUseCase partie;
 
+    @Autowired
+    private MechanicRegistryPort mecaniques;
+
     @Test
     void leCatalogueSeChargeEtChaqueJeuDemarreUnePartie() {
         List<GameDefinition> jeux = partie.jeuxDisponibles();
@@ -42,6 +47,13 @@ class CatalogueChargeableIT {
                             + " Combien de manches est un choix pedagogique ; qu'il y en ait au"
                             + " moins une ne l'est pas", jeu.id())
                     .isPositive();
+
+            GameMechanic mecanique = mecaniques.mecaniquePour(jeu.mecanique());
+            assertThat(jeu.nombreDeManches())
+                    .as("S3-2, ADR-0013 : %s doit compter assez de manches pour que l'aide de sa"
+                            + " mecanique reste atteignable (au moins %d manches)",
+                            jeu.id(), mecanique.longueurMinimale())
+                    .isGreaterThanOrEqualTo(mecanique.longueurMinimale());
 
             if ("bandit-manchot-additions-cp".equals(jeu.id())) {
                 assertThat(jeu.titre())

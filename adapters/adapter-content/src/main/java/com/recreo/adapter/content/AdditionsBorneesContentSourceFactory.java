@@ -8,7 +8,8 @@ import java.util.Map;
 
 /**
  * ADR-0006, ADR-0007 : paquet combinatoire, type 'additions-bornees'. Les bornes vivent sous
- * 'parametres' dans le paquet YAML et ne sont lues que par cette fabrique.
+ * 'parametres' dans le paquet YAML et ne sont lues que par cette fabrique. DEC-0005, S3-3 : le
+ * texte de l'indice est un parametre du meme genre, jamais une constante du domaine.
  */
 final class AdditionsBorneesContentSourceFactory implements ContentSourceFactory {
 
@@ -20,7 +21,8 @@ final class AdditionsBorneesContentSourceFactory implements ContentSourceFactory
         }
         int sommeMaximale = entier(parametres, "sommeMaximale");
         int nombreDePropositions = entier(parametres, "nombreDePropositions");
-        return new AdditionsBorneesContentSource(descripteur, sommeMaximale, nombreDePropositions);
+        String indice = texte(parametres, "indice");
+        return new AdditionsBorneesContentSource(descripteur, sommeMaximale, nombreDePropositions, indice);
     }
 
     private int entier(Map<?, ?> parametres, String champ) {
@@ -30,5 +32,14 @@ final class AdditionsBorneesContentSourceFactory implements ContentSourceFactory
                     "champ obligatoire manquant ou non entier : 'parametres." + champ + "'");
         }
         return entier;
+    }
+
+    private String texte(Map<?, ?> parametres, String champ) {
+        Object valeur = parametres.get(champ);
+        if (!(valeur instanceof String texte)) {
+            throw new IllegalStateException(
+                    "champ obligatoire manquant ou non texte : 'parametres." + champ + "'");
+        }
+        return texte;
     }
 }

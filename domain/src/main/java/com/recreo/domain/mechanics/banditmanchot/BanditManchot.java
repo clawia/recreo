@@ -36,4 +36,9 @@ public final class BanditManchot implements GameMechanic {
         }
         return banditSession.jouer(banditMove);
     }
+
+    @Override
+    public int longueurMinimale() {
+        return BanditManchotSession.LONGUEUR_MINIMALE_POUR_AIDE;
+    }
 }

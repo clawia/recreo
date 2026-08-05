@@ -16,4 +16,12 @@ public interface GameMechanic {
     GameSession start(ContentSource contenu, RandomSource hasard, int nombreDeManches);
 
     GameSession apply(GameSession session, Move coup);
+
+    /**
+     * S3-2, ADR-0013 : longueur de partie minimale en dessous de laquelle cette mecanique ne peut
+     * jamais faire apparaitre son aide face a l'echec repete, quelle que soit la sequence de
+     * reponses. CatalogueChargeableIT compare cette valeur a nombreDeManches pour chaque jeu du
+     * catalogue reel : le perimetre vient du catalogue, la valeur de la mecanique.
+     */
+    int longueurMinimale();
 }
