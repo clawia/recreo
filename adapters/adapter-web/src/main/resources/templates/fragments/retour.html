@@ -4,6 +4,7 @@
 <div th:fragment="retour" id="jeu">
     <p class="score" th:text="'Score : ' + ${score.reussites()} + ' / ' + ${score.tentatives()}"></p>
     <div class="signal" th:classappend="${juste} ? 'est-juste' : 'est-faux'">
+        <span class="icone-signal" aria-hidden="true"></span>
         <p th:if="${juste}" class="verdict">Bravo, c'est juste !</p>
         <p th:unless="${juste}" class="verdict">
             Ce n'est pas ca. La bonne reponse etait <span th:text="${bonneReponse}"></span>.
