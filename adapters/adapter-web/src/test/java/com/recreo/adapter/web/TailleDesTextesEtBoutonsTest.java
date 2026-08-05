@@ -8,11 +8,11 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,6 +27,15 @@ import static org.assertj.core.api.Assertions.assertThat;
  * n'est plus ecrite en dur ici, elle est relevee dans les gabarits eux-memes (tout &lt;button&gt;
  * et tout &lt;a href&gt;), pour qu'un bouton nouveau ou oublie soit attrape sans qu'on pense a
  * l'ajouter a une liste.
+ *
+ * <p>Deuxieme defaut demontre par nadia-prof (meme fiche, meme forme d'erreur qu'en S1) : la
+ * premiere version de cette correction derivait la liste des boutons a verifier a partir de
+ * leurs classes CSS. Un bouton reellement rendu sans aucune classe (donc invisible pour la
+ * regle et retombant au defaut du navigateur, environ 13px) n'apparaissait dans aucune classe et
+ * passait la regle sans etre controle. La regle part maintenant des elements &lt;button&gt; et
+ * &lt;a href&gt; eux-memes ; pour chacun, elle verifie les regles CSS qui s'appliquent reellement
+ * a lui (ses classes si elles existent, la balise nue sinon), pas une classe qu'on suppose
+ * presente.
  */
 class TailleDesTextesEtBoutonsTest {
 
@@ -91,30 +100,80 @@ class TailleDesTextesEtBoutonsTest {
         return Double.parseDouble(valeur.substring(0, valeur.length() - "rem".length()));
     }
 
+    private static Optional<Double> tailleEnRemSiExiste(Map<String, String> blocs, String selecteur) {
+        String corps = blocs.get(selecteur);
+        if (corps == null) {
+            return Optional.empty();
+        }
+        int position = corps.indexOf("font-size:");
+        if (position < 0) {
+            return Optional.empty();
+        }
+        int finValeur = corps.indexOf(';', position);
+        String valeur = corps.substring(position + "font-size:".length(), finValeur).strip();
+        if (!valeur.endsWith("rem")) {
+            return Optional.empty();
+        }
+        return Optional.of(Double.parseDouble(valeur.substring(0, valeur.length() - "rem".length())));
+    }
+
+    private static Optional<Double> proprieteEnRemSiExiste(
+            Map<String, String> blocs, String selecteur, String propriete) {
+        String corps = blocs.get(selecteur);
+        if (corps == null) {
+            return Optional.empty();
+        }
+        String etiquette = propriete + ":";
+        int position = corps.indexOf(etiquette);
+        if (position < 0) {
+            return Optional.empty();
+        }
+        int finValeur = corps.indexOf(';', position);
+        String valeur = corps.substring(position + etiquette.length(), finValeur).strip();
+        if (!valeur.endsWith("rem")) {
+            return Optional.empty();
+        }
+        return Optional.of(Double.parseDouble(valeur.substring(0, valeur.length() - "rem".length())));
+    }
+
     /**
      * Tout bouton et tout lien-bouton reellement rendu par un gabarit, releve dans le balisage et
      * non dans une liste maintenue a la main (motif du refus de nadia-prof sur ce test).
      */
-    private static Set<String> classesDeBoutonsActionnables() throws IOException {
-        Set<String> classes = new TreeSet<>();
+    private static List<Element> boutonsActionnables() throws IOException {
+        List<Element> boutons = new ArrayList<>();
         for (Path gabarit : List.of(
                 TEMPLATES.resolve("accueil.html"),
                 TEMPLATES.resolve("fragments/manche.html"),
                 TEMPLATES.resolve("fragments/retour.html"),
                 TEMPLATES.resolve("fragments/erreur.html"))) {
-            Document document = Jsoup.parse(Files.readString(gabarit));
-            for (Element element : document.select("button, a[href]")) {
-                for (String classe : element.classNames()) {
-                    classes.add("." + classe);
-                }
-            }
+            Document document = Jsoup.parse(Files.readString(gabarit), gabarit.toString());
+            boutons.addAll(document.select("button, a[href]"));
         }
-        return classes;
+        return boutons;
+    }
+
+    /**
+     * Les regles CSS qui s'appliquent reellement a cet element : ses classes si l'element en
+     * porte, la balise nue sinon. Un element sans classe qui ne correspond a aucune regle de
+     * balise nue tombe au defaut du navigateur : c'est exactement ce que cette derivation doit
+     * detecter, plutot que de le laisser passer parce qu'il n'a pas de classe a controler.
+     */
+    private static List<String> selecteursApplicables(Element element) {
+        List<String> classes = element.classNames().stream().map(classe -> "." + classe).toList();
+        return classes.isEmpty() ? List.of(element.tagName()) : classes;
+    }
+
+    private static String etiquette(Element element) {
+        String description = element.classNames().isEmpty()
+                ? "<" + element.tagName() + "> sans classe"
+                : "." + String.join(".", element.classNames());
+        return description + " \"" + element.text() + "\" (" + element.ownerDocument().location() + ")";
     }
 
     @Test
     void auMoinsUnBoutonEstReleveDansLesGabarits() throws IOException {
-        assertThat(classesDeBoutonsActionnables())
+        assertThat(boutonsActionnables())
                 .as("cette regle ne prouve rien si aucun bouton n'est passe au crible")
                 .isNotEmpty();
     }
@@ -141,13 +200,21 @@ class TailleDesTextesEtBoutonsTest {
     @Test
     void toutBoutonReellementRenduEstAuMoinsAUnRemVingtCinq() throws IOException {
         Map<String, String> blocs = blocsParSelecteur();
-        Set<String> boutons = classesDeBoutonsActionnables();
+        List<Element> boutons = boutonsActionnables();
         assertThat(boutons).isNotEmpty();
 
-        for (String bouton : boutons) {
-            assertThat(tailleEnRem(blocs, bouton))
-                    .as("%s ne doit jamais retomber au defaut du navigateur (environ 13px)", bouton)
-                    .isGreaterThanOrEqualTo(1.25);
+        for (Element bouton : boutons) {
+            for (String selecteur : selecteursApplicables(bouton)) {
+                Optional<Double> taille = tailleEnRemSiExiste(blocs, selecteur);
+                assertThat(taille)
+                        .as("%s : la regle %s doit fixer une taille de police en rem, "
+                                        + "sinon le bouton retombe au defaut du navigateur (environ 13px)",
+                                etiquette(bouton), selecteur)
+                        .isPresent();
+                assertThat(taille.get())
+                        .as("%s ne doit jamais retomber au defaut du navigateur (environ 13px)", etiquette(bouton))
+                        .isGreaterThanOrEqualTo(1.25);
+            }
         }
     }
 
@@ -158,13 +225,21 @@ class TailleDesTextesEtBoutonsTest {
     @Test
     void toutBoutonReellementRenduAUneCibleTactileDAuMoinsQuaranteQuatrePixels() throws IOException {
         Map<String, String> blocs = blocsParSelecteur();
-        Set<String> boutons = classesDeBoutonsActionnables();
+        List<Element> boutons = boutonsActionnables();
         assertThat(boutons).isNotEmpty();
 
-        for (String bouton : boutons) {
-            assertThat(proprieteEnRem(blocs, bouton, "min-height"))
-                    .as("%s : la hauteur minimale doit atteindre au moins 44px (2,75rem)", bouton)
-                    .isGreaterThanOrEqualTo(CIBLE_TACTILE_REM);
+        for (Element bouton : boutons) {
+            for (String selecteur : selecteursApplicables(bouton)) {
+                Optional<Double> hauteur = proprieteEnRemSiExiste(blocs, selecteur, "min-height");
+                assertThat(hauteur)
+                        .as("%s : la regle %s doit fixer min-height en rem, sinon la cible tactile "
+                                        + "retombe au defaut du navigateur",
+                                etiquette(bouton), selecteur)
+                        .isPresent();
+                assertThat(hauteur.get())
+                        .as("%s : la hauteur minimale doit atteindre au moins 44px (2,75rem)", etiquette(bouton))
+                        .isGreaterThanOrEqualTo(CIBLE_TACTILE_REM);
+            }
         }
     }
 
