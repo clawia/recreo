@@ -1,6 +1,35 @@
+/* Palette nommee et reutilisee (S2-2) : toute couleur de l'habillage general vient d'ici, le
+   signal juste/faux reste sur ses propres couleurs, deja fixees par S1-6. */
+:root {
+    --recreo-fond: #f4f7fb;
+    --recreo-texte: #1c2733;
+    --recreo-accent: #2e6f9e;
+    --recreo-accent-texte: #ffffff;
+    --recreo-attention-fond: #fff4e5;
+    --recreo-attention-bordure: #b45309;
+}
+
 body {
     font-family: sans-serif;
     margin: 2rem;
+    background-color: var(--recreo-fond);
+    color: var(--recreo-texte);
+}
+
+/* S2-1 : le titre ne depend plus du seul comportement par defaut du navigateur pour h1. */
+h1 {
+    font-size: 2rem;
+    color: var(--recreo-accent);
+    margin: 0 0 1rem;
+}
+
+.jeux {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
 .consigne {
@@ -17,6 +46,68 @@ body {
     margin: 0.5rem 0;
     padding: 0.5rem 1rem;
     font-size: 1.1rem;
+}
+
+/* Boutons d'action (demarrer une partie, continuer, revenir aux jeux, recommencer apres une
+   erreur) : meme langage visuel, taille jamais laissee au defaut du navigateur (S2-1). */
+.demarrer,
+.retour-accueil,
+.recommencer,
+.encore {
+    display: inline-block;
+    font-size: 1.25rem;
+    color: var(--recreo-accent-texte);
+    background-color: var(--recreo-accent);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.score {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--recreo-accent);
+    margin: 0.5rem 0;
+}
+
+.fin-de-partie {
+    font-size: 1.5rem;
+    color: var(--recreo-accent);
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.indice {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    background-color: var(--recreo-attention-fond);
+    border-left: 0.25rem solid var(--recreo-attention-bordure);
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+}
+
+.erreur {
+    font-size: 1.5rem;
+    color: var(--recreo-attention-bordure);
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.pas-de-jeu {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    margin: 0.5rem 0;
+}
+
+.message-reprise {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    background-color: var(--recreo-attention-fond);
+    border-left: 0.25rem solid var(--recreo-attention-bordure);
+    padding: 0.75rem 1rem;
+    margin: 0 0 1rem;
 }
 
 .signal {

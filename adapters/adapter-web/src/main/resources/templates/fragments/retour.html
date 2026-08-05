@@ -14,7 +14,7 @@
     </div>
     <form th:if="${enSuite}" th:attr="hx-get=@{'/parties/' + ${jeuId} + '/manche'}"
           hx-target="#jeu" hx-swap="innerHTML">
-        <button type="submit">Encore !</button>
+        <button type="submit" class="encore">Encore !</button>
     </form>
     <p th:unless="${enSuite}" class="fin-de-partie">C'est fini !</p>
 </div>
