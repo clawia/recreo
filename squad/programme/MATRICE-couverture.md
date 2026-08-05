@@ -78,11 +78,24 @@ jusqu'a 10 est validee par Nadia.
 
 Etat au sprint 0, apres la porte pedagogique : `nadia-prof` a prononce **REFUSE** sur
 `squad/conformite/FICHE-bandit-manchot-additions-cp.md` (trois motifs bloquants sur le texte lu
-par l'enfant et sur un ecran d'erreur, sept reserves non bloquantes). La ligne reste donc `en
-cours` - un verdict `REFUSE` n'est pas un statut intermediaire vers `couvert-valide`, c'est un
-retour au backlog. Le contenu mathematique lui-meme est juge exact et n'a besoin d'aucune
-correction (61 manches auditees, zero faute arithmetique). Les stories correctives sont en
-`docs/backlog/backlog.md`, section "Sprint 1" (S1-1 a S1-9), et l'increment est suivi dans
+par l'enfant et sur un ecran d'erreur, sept reserves non bloquantes). Le contenu mathematique
+lui-meme etait deja juge exact et n'a jamais eu besoin de correction (61 manches auditees au
+sprint 0, zero faute arithmetique).
+
+Etat au sprint 1, apres la reprise de la porte pedagogique (2026-08-05) : les trois motifs de
+refus sont leves, `nadia-prof` prononce **VALIDE SOUS RESERVE, Done pedagogique ACCORDE**. La
+ligne **reste neanmoins `en cours`**, et non `couvert-valide` : `nadia-prof` motive explicitement
+cet ecart dans son verdict - sur 171 manches reellement jouees, 43,9 % portent sur les sommes 9 ou
+10 et 7,6 % seulement sur une somme inferieure ou egale a 4, ce qui revient a travailler surtout le
+bord superieur de l'intervalle plutot que "les additions dans la limite de 10" dans leur ensemble.
+Elle pose une condition ecrite pour que cette ligne passe a `couvert-valide` : cette repartition
+corrigee. Le sprint 2 n'a pas touche a ce point (chantier d'identite visuelle uniquement,
+`DEC-0006`) ; la condition est restee sans story jusqu'a `DEC-0007` et la story S3-1 du sprint 3
+(`docs/backlog/backlog.md`), qui l'instruisent enfin, avec le seuil chiffre que `nadia-prof` devra
+verifier a l'audit. Le statut ne passera a `couvert-valide` qu'apres ce nouvel audit ; cette ligne
+n'est jamais editee sur la seule foi d'une CI verte.
+
+L'increment est suivi (Done pedagogique, pas la ligne de matrice) dans
 `squad/validation/FILE-ATTENTE.md`.
 
 ## Mathematiques - CM1 (cycle 3)
@@ -141,7 +154,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | - | - | non couvert |
 | francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | - | - | non couvert |
 
-## Synthese au sprint 0
+## Synthese au sprint 0, toujours exacte a l'ouverture du sprint 3
 
 | Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
 |---|---|---|---|---|
@@ -151,7 +164,16 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais CM1 | 11 | 11 | 0 | 0 |
 | **Total** | **46** | **45** | **1** | **0** |
 
-Le trou le plus visible : **francais n'a encore aucune ligne `en cours`**. C'est un point a
-traiter des le sprint 1 (voir `docs/backlog/backlog.md`, section "Backlog - sprints suivants") -
-le calcul mental n'est un point de depart que si la matrice montre vite qu'il n'est pas une fin
+Ces chiffres n'ont pas bouge depuis le sprint 0 : trois sprints (s00 a s02) ont produit un seul
+jeu sur une seule competence, et cette unique ligne `en cours` n'est toujours pas
+`couvert-valide` - voir la note sous le tableau mathematiques CP ci-dessus. `DEC-0007` tranche
+que le sprint 3 est consacre a completer cette ligne (repartition des sommes) et a solder la
+dette de gouvernance qui s'est accumulee sur elle, plutot qu'a ouvrir une nouvelle ligne. Cette
+synthese sera revue a la prochaine review, en fonction du verdict que `nadia-prof` rendra sur
+l'increment corrige.
+
+Le trou le plus visible reste **francais, qui n'a encore aucune ligne `en cours`**. Il n'est pas
+traite par s03 (voir `DEC-0007`) ; c'est le candidat naturel du sprint suivant, une fois la ligne
+mathematiques CP effectivement close - le calcul mental n'est un point de depart que si la matrice
+montre vite qu'il n'est pas une fin
 en soi.

@@ -483,22 +483,288 @@ donc aucune de ces stories n'ajoute de comportement au JavaScript client `recreo
 - **Agent pressenti** : ines-design (proposition du dessin), mise en oeuvre par marc-dev / lea-dev
   / sofia-sm.
 
+## Sprint 3 - Completer la ligne mathematiques CP avant d'en ouvrir une nouvelle
+
+**Contexte et decision de perimetre** : trois sprints (s00 a s02) ont livre un seul jeu, sur une
+seule competence, dont la ligne de `squad/programme/MATRICE-couverture.md` n'est toujours pas
+`couvert-valide`. `nadia-prof` a pose en s01 une condition ecrite pour qu'elle le devienne (la
+repartition des sommes corrigee) et un second constat de fond non tranche (l'indice de S1-5
+inatteignable en jeu reel) ; s02 n'a traite ni l'un ni l'autre, absorbe par le chantier d'identite
+visuelle (`DEC-0006`). Ces deux constats ont donc chacun deja ete reportes une fois sans etre
+instruits. `DEC-0007-perimetre-s03-completer-avant-etendre.md` tranche : **s03 ne cree aucun
+contenu de matiere ou de competence nouvelle** ; il complete la competence deja engagee et solde
+la dette de gouvernance qui s'est accumulee sur elle (`squad/validation/FILE-ATTENTE.md`, reste
+deux sprints sur un verdict `REFUSE` perime, corrige a l'ouverture de ce sprint). Le detail du
+raisonnement et des motifs est dans `DEC-0007`, pas repete ici.
+
+S3-1 a S3-3 portent sur le contenu et le comportement du jeu (mathematiques CP). S3-4 a S3-7
+reprennent les cinq reserves visuelles nommees par `nadia-prof` a la cloture de s02
+(`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, points 2 bis, 3 et 4) qui n'appelaient
+aucun arbitrage produit nouveau et peuvent donc etre instruites directement en story. S3-8 traite
+le trou d'audit sous ~500 px de large signale par `nadia-prof` en s02, tranche comme perimetre
+produit par `DEC-0007` point 5. S3-9 traite une reserve plus ancienne, restee sans decision depuis
+s01 (le titre non accentue, reserve 10, tranchee par `DEC-0007` point 7). Aucune de ces neuf
+stories ne fait passer une ligne de la matrice a `couvert-valide` par elle-meme : ce statut n'est
+prononce que par `nadia-prof`, apres audit de l'increment corrige.
+
+### S3-1 - Des additions qui travaillent tout l'intervalle, pas seulement son bord superieur (condition de nadia-prof pour couvert-valide)
+
+- **Besoin** : en tant qu'enfant de CP, je veux m'entrainer sur des additions qui couvrent
+  vraiment les petites comme les grandes sommes, afin que jouer serve a apprendre l'ensemble de
+  "calculer dans la limite de 10" et pas seulement sa partie la plus proche de 10.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Nombres et calculs" -
+  "Calcul mental - additions dans la limite de 10" (meme ligne que S0-4 et S1-7,
+  `squad/programme/mathematiques/competences-cp.md`). Condition ecrite par `nadia-prof` pour que
+  cette ligne de `squad/programme/MATRICE-couverture.md` passe a `couvert-valide`.
+- **Criteres d'acceptation** :
+  - Etant donne 6500 tirages effectues avec une graine aleatoire fixee, quand on releve, pour
+    chaque somme s comprise entre 0 et 10, la proportion de tirages produisant cette somme, alors
+    chaque proportion est comprise dans la fourchette suivante (cible theorique +/- 2 points de
+    pourcentage, `DEC-0007` point 2) :
+
+    | Somme | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+    |---|---|---|---|---|---|---|---|---|---|---|---|
+    | Fourchette basse | 0 % | 1,1 % | 2,6 % | 4,2 % | 5,7 % | 7,2 % | 8,8 % | 10,3 % | 11,8 % | 13,4 % | 14,9 % |
+    | Fourchette haute | 0 % | 5,1 % | 6,6 % | 8,2 % | 9,7 % | 11,2 % | 12,8 % | 14,3 % | 15,8 % | 17,4 % | 18,9 % |
+
+  - Etant donne le meme echantillon de tirages, quand on compte les tirages produisant l'addition
+    "0 + 0", alors ce compte est exactement 0 (le couple est retire du tirage, `DEC-0007` point 2).
+  - Etant donne 50 parties completes jouees independamment avec des graines distinctes, quand on
+    releve la premiere manche de chacune, alors aucune n'est "0 + 0" (consequence directe du
+    critere precedent, verifiee explicitement parce que c'etait le cas le plus grave signale par
+    `nadia-prof`, reserve 8 du verdict s01 : "et surtout pas en premiere manche").
+  - Etant donne le seuil deja fixe par `DEC-0004` point 5 (5 % a 15 % des tirages avec au moins un
+    operande nul, sur 200 tirages a graine fixee), quand on rejoue ce test apres la correction,
+    alors il reste vert : cette story ne doit pas faire sortir la proportion d'operandes nuls de
+    la fourchette deja validee par `nadia-prof` en s01.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que cette repartition "travaille effectivement toute la competence" au sens
+    pedagogique, et pas seulement au sens statistique de la table ci-dessus. Les criteres
+    ci-dessus garantissent la forme du tirage, pas le jugement qu'un enfant de CP en tire un
+    entrainement equilibre.
+- **Lien decision** : `DEC-0007-perimetre-s03-completer-avant-etendre.md`, point 2.
+- **Agent pressenti** : a affecter au planning.
+
+### S3-2 - Un enfant qui rate trois fois de suite recoit un indice dans la partie en cours
+
+- **Besoin** : en tant qu'enfant qui vient de rater trois questions d'affilee, je veux recevoir un
+  coup de pouce sur la question suivante plutot que de continuer a rater sans aucune aide, afin de
+  ne pas rester bloque jusqu'a la fin de la partie sans comprendre.
+- **Competence programme visee** : transverse - comportement generique de la mecanique bandit
+  manchot face a l'echec repete, meme perimetre que S1-5.
+- **Criteres d'acceptation** :
+  - Etant donne trois reponses fausses consecutives dans une partie, quelle que soit la question
+    concernee par chacune (contrairement au declenchement initial de S1-5, qui exigeait le meme
+    item trois fois), quand la question suivante est presentee, alors elle est accompagnee d'un
+    indice qu'elle n'aurait pas eu sinon.
+  - Etant donne une partie de 10 manches ou l'enfant rate les trois premieres manches d'affilee,
+    quand la quatrieme manche s'affiche, alors l'indice y est visible (l'aide est donc atteignable
+    au plus tard a la quatrieme manche d'une partie qui en compte dix, contre la 14e manche
+    constatee inatteignable par `nadia-prof` avec le declenchement initial).
+  - Etant donne un enfant qui reussit une manche puis rate de nouveau trois manches consecutives
+    plus tard dans la meme partie, quand la manche suivant ce second groupe de trois echecs
+    s'affiche, alors l'indice est de nouveau present : le compteur d'echecs consecutifs se remet a
+    zero apres chaque reussite (regle deja fixee par S1-5 et `DEC-0004` point 4, inchangee ici) et
+    le declenchement de l'indice se comporte de la meme facon.
+  - Etant donne ce meme evenement (trois echecs consecutifs), quand a la fois la "manche plus
+    simple" (S1-5, item deja reussi) et l'indice se declenchent ensemble, alors les deux
+    comportements s'appliquent a la meme question suivante sans se contredire ni s'annuler l'un
+    l'autre.
+- **Note** : cette story amende le premier critere d'acceptation de S1-5 tel qu'ecrit au sprint 1
+  ("un meme item auquel l'enfant repond faux a trois reprises [...] est presente avec un indice") :
+  ce critere reposait sur une hypothese de recurrence d'un item dans une partie qui ne se verifie
+  quasiment jamais en jeu reel (mesure par `nadia-prof`, un seul retour naturel sur 24 parties). Le
+  reste des criteres de S1-5 (manche plus simple, sortie toujours visible) n'est pas modifie.
+- **Lien decision** : `DEC-0007-perimetre-s03-completer-avant-etendre.md`, point 3 ;
+  `DEC-0004-textes-score-et-seuils-lever-refus-s01.md`, point 4 (inchange sur le reste).
+- **Agent pressenti** : a affecter au planning.
+
+### S3-3 - L'indice vit dans le contenu, pas dans une constante du domaine (execution de DEC-0005)
+
+- **Besoin** (story d'enabler transverse, portee par l'equipe plutot que par un enfant) : pour que
+  l'indice puisse etre reformule sans recompiler le domaine la prochaine fois que `nadia-prof` en
+  demande une correction - ce qu'elle a deja fait une fois en s01 - le texte de l'indice doit venir
+  du meme paquet de contenu YAML que la consigne, exactement comme `DEC-0005` l'a tranche.
+- **Competence programme visee** : transverse.
+- **Criteres d'acceptation** :
+  - Etant donne `domain/src/main/java/com/recreo/domain/content/source/
+    AdditionsBorneesContentSource.java`, quand on le relit apres cette story, alors il ne contient
+    plus aucune constante de texte destine a l'enfant (en particulier l'ancienne constante
+    `INDICE`) : le texte de l'indice est recu au constructeur, au meme titre que les parametres
+    deja portes par le contenu (`ADR-0006`).
+  - Etant donne le paquet de contenu
+    `adapters/adapter-content/src/main/resources/contenu/cp-additions-jusqu-a-10.yaml`, quand on
+    le relit, alors une entree porte le texte de l'indice, au meme niveau que les parametres
+    existants.
+  - Etant donne l'application demarree avec ce paquet, quand un indice est declenche en jeu
+    (S3-2), alors le texte reellement affiche a l'enfant est identique, caractere pour caractere,
+    a celui affiche avant cette story ("Compte sur tes doigts.") : cette story deplace le texte,
+    elle ne le change pas.
+  - Etant donne le contrat de contenu deja verifie par `DifficulteTest` et les regles ArchUnit
+    existantes, quand la suite tourne apres cette story, alors elle reste verte sans qu'aucune
+    regle n'ait ete affaiblie pour la faire passer.
+- **Lien decision** : `DEC-0005-indice-s1-5-vit-dans-le-yaml-pas-dans-le-domaine.md`.
+- **Agent pressenti** : a affecter au planning.
+
+### S3-4 - Le nombre doit peser plus que le bouton qui le porte (reserve 1, S2-1)
+
+- **Besoin** : en tant qu'enfant de CP, je veux que le chiffre de chaque reponse possible soit ce
+  que je vois le plus dans le bouton, afin de comparer les propositions par ce qui les distingue
+  vraiment plutot que par la forme du bouton, identique pour les trois.
+- **Competence programme visee** : transverse - accessibilite visuelle pour le niveau CP (meme
+  categorie que S1-9, S2-1).
+- **Criteres d'acceptation** :
+  - Etant donne un bouton de reponse rendu, quand on releve la taille de police du chiffre qu'il
+    affiche, alors elle est au moins egale a 2 rem (contre 1,25 rem constate en s02), soit au
+    moins la taille du calcul affiche a l'ecran (`.enonce`).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que le rapport entre la taille du chiffre et la largeur du bouton (mesuree a
+    2 % en s02) soit desormais equilibre a l'oeil pour un enfant de CP. Le critere ci-dessus fixe
+    un plancher de taille, pas un rapport visuel jugeable par un automate ; `ines-design` reste
+    libre de grossir le chiffre, de reduire la largeur du bouton, ou les deux.
+- **Note de frontiere de mandat** : `ines-design` propose la forme retenue, elle ne tranche pas ;
+  `nadia-prof` garde seule le veto pedagogique sur ce que voit l'enfant.
+- **Lien decision** : reserve 1 de `squad/conformite/FICHE-bandit-manchot-additions-cp.md`
+  (verdict S2-1 du 2026-08-05, point 2 bis).
+- **Agent pressenti** : ines-design (proposition), mise en oeuvre par marc-dev / lea-dev /
+  sofia-sm.
+
+### S3-5 - Un ecart confortable entre deux boutons de reponse (reserve 2, S2-1)
+
+- **Besoin** : en tant qu'enfant de CP dont les gestes sont encore imprecis, je veux un espace net
+  entre deux boutons de reponse, afin qu'un doigt qui derape legerement ne touche jamais le bouton
+  voisin.
+- **Competence programme visee** : transverse - accessibilite visuelle et motrice pour le niveau
+  CP.
+- **Criteres d'acceptation** :
+  - Etant donne deux boutons de reponse consecutifs rendus, quand on mesure l'ecart reel entre
+    leurs boites, alors il est d'au moins 1 rem (16 px), contre 12 px constate en s02.
+- **Note de frontiere de mandat** : `ines-design` propose la valeur exacte au-dessus du plancher,
+  elle ne tranche pas la question pedagogique de savoir si c'est suffisant ; `nadia-prof` garde
+  seule ce veto.
+- **Lien decision** : reserve 2 de `squad/conformite/FICHE-bandit-manchot-additions-cp.md`
+  (verdict S2-1 du 2026-08-05, point 2 bis) ; `DEC-0007-perimetre-s03-completer-avant-etendre.md`,
+  point 4 (cette story est la reponse retenue a la question de l'appui rate compte comme erreur de
+  calcul, plutot qu'une mecanique de confirmation).
+- **Agent pressenti** : ines-design (proposition), mise en oeuvre par marc-dev / lea-dev /
+  sofia-sm.
+
+### S3-6 - Sur l'ecran de fin et sur l'ecran d'erreur, la sortie doit etre ce qui se voit, pas ce qui s'efface (reserve 4, S2-1 et S2-2)
+
+- **Besoin** : en tant qu'enfant arrive a la fin d'une partie ou bloque par une erreur, je veux que
+  la seule chose que je peux faire soit aussi la chose la plus visible de l'ecran, afin de savoir
+  immediatement ou appuyer plutot que de chercher un bouton discret.
+- **Competence programme visee** : transverse - hierarchie visuelle pour le niveau CP, meme
+  categorie que S2-1.
+- **Criteres d'acceptation** :
+  - Etant donne l'ecran de fin de partie, quand on releve le style du bouton de sortie, alors il
+    porte un remplissage plein (aplat de couleur), et non le style en contour retenu pour l'ecran
+    de jeu et l'ecran de retour depuis S2-1.
+  - Etant donne l'ecran d'erreur, quand on releve le style du bouton "Recommencer", alors il porte
+    le meme remplissage plein, pour la meme raison (seule action possible sur cet ecran).
+  - Etant donne l'ecran de jeu et l'ecran de retour (juste ou faux), quand on releve le style du
+    bouton de sortie apres cette story, alors il reste en contour, sans regression sur ce que
+    `nadia-prof` a accorde pour S2-1 (le bouton de sortie ne doit pas redevenir plus saillant que
+    les boutons de reponse sur ces deux ecrans).
+- **Note de frontiere de mandat** : `ines-design` propose la forme exacte du remplissage,
+  elle ne tranche pas ; `nadia-prof` garde seule le veto pedagogique.
+- **Lien decision** : reserve 4 de `squad/conformite/FICHE-bandit-manchot-additions-cp.md`
+  (verdict S2-1 du 2026-08-05, point 2 bis, qui prolonge la reserve 4 de S2-2).
+- **Agent pressenti** : ines-design (proposition), mise en oeuvre par marc-dev / lea-dev /
+  sofia-sm.
+
+### S3-7 - Une icone qui dessine un objet, pas une lettre (reserve S2-3)
+
+- **Besoin** : en tant qu'enfant qui ne lit pas encore couramment, je veux reconnaitre recreo dans
+  l'onglet de mon navigateur grace a un dessin d'objet, afin de ne pas avoir besoin de reconnaitre
+  une lettre pour retrouver l'application.
+- **Competence programme visee** : transverse - identite du produit, aucun contenu pedagogique.
+- **Criteres d'acceptation** :
+  - Etant donne le fichier d'icone livre par cette story, quand on l'inspecte, alors il repond
+    toujours 200 sur `/favicon.ico`, avec un type d'image (memes criteres techniques que S2-3,
+    inchanges).
+  - Etant donne la vignette effectivement utilisee par le navigateur a 16 px, quand on l'inspecte,
+    alors elle est dessinee pour cette taille et non obtenue par simple reduction du grand dessin
+    (constat mesure en s02 : 5 pixels blancs purs sur 256 et 122 couleurs distinctes dans la
+    vignette actuelle, signe d'une reduction floue).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que le dessin retenu represente effectivement un objet reconnaissable en un
+    coup d'oeil pour un enfant de CP ou de CM1, sans lettre ni monogramme (elle a explicitement
+    refuse cette derniere forme pour un sprint suivant). Aucun critere ci-dessus ne pretend juger
+    si le dessin "dit jeu ou ecole" a un enfant qui ne lit pas : seule `nadia-prof` le peut.
+- **Note de frontiere de mandat** : `ines-design` propose le dessin, elle ne tranche pas ;
+  `nadia-prof` garde seule le veto pedagogique.
+- **Lien decision** : reserve de `squad/conformite/FICHE-bandit-manchot-additions-cp.md` (verdict
+  S2-1 du 2026-08-05, point 2 bis, "Ce que je demande pour un sprint suivant").
+- **Agent pressenti** : ines-design (proposition du dessin), mise en oeuvre par marc-dev / lea-dev
+  / sofia-sm.
+
+### S3-8 - L'application reste jouable sur un ecran de la largeur d'un telephone tenu debout
+
+- **Besoin** : en tant qu'enfant qui joue sur la tablette ou le telephone disponible a la maison
+  plutot que sur un ordinateur, je veux que le jeu reste utilisable meme quand l'ecran est etroit
+  et tenu a la verticale, afin de pouvoir jouer sur l'appareil que j'ai sous la main.
+- **Competence programme visee** : transverse - accessibilite d'affichage, aucun contenu
+  pedagogique.
+- **Contexte** : `nadia-prof` a signale en s02 que son harnais de rendu ne peut pas juger le
+  rendu sous ~500 px de large, sans trancher si un tel support est vise par le produit.
+  `DEC-0007-perimetre-s03-completer-avant-etendre.md`, point 5, tranche : oui.
+- **Criteres d'acceptation** :
+  - Etant donne l'application chargee dans une fenetre de 375 px de large (largeur de telephone
+    courante tenu en portrait), quand on parcourt l'accueil, l'ecran de jeu, le retour juste, le
+    retour faux, la fin de partie et l'ecran d'erreur, alors aucun element ne depasse la largeur de
+    la fenetre (aucun defilement horizontal necessaire pour voir l'integralite d'un ecran).
+  - Etant donne cette meme largeur, quand on releve la position et la taille de chaque bouton
+    actionnable de chaque ecran, alors chacun reste entierement visible et atteignable sans
+    chevaucher un autre element.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof`, une fois qu'un harnais capable de rendre sous 500 px existera (question
+    d'outillage routee a `yanis-qa` et `theo-archi`, hors du mandat de cette story) : que le
+    confort de lecture reel a cette largeur (taille percue, facilite de visee tactile) convienne a
+    un enfant de CP ou de CM1. Les criteres ci-dessus garantissent l'absence de defaut structurel,
+    pas le jugement pedagogique du rendu.
+- **Lien decision** : `DEC-0007-perimetre-s03-completer-avant-etendre.md`, point 5.
+- **Agent pressenti** : a affecter au planning ; outillage de rendu sous 500 px route a
+  `yanis-qa` / `theo-archi`, hors du perimetre de cette story.
+
+### S3-9 - Le nom du jeu s'ecrit comme il se lit ("Récréo")
+
+- **Besoin** : en tant qu'enfant de CP qui dechiffre le titre a chaque fois que j'ouvre le jeu, je
+  veux que ce mot s'ecrive avec ses accents comme n'importe quel autre mot que je lis dans le jeu,
+  afin de ne pas apprendre une graphie fausse sur le premier mot que je vois.
+- **Competence programme visee** : transverse - meme exigence positive de categorie B que S1-1
+  (`DEC-0002`, amendement du 2026-08-04), appliquee ici au titre plutot qu'au texte de jeu.
+- **Criteres d'acceptation** :
+  - Etant donne l'ecran d'accueil rendu, quand on relit le titre affiche, alors il s'ecrit
+    "Récréo", accents compris, et non "Recreo".
+  - Etant donne tout autre gabarit ou fragment qui affiche le nom du produit (s'il en existe),
+    quand on le relit, alors il porte la meme orthographe accentuee, pour qu'aucune des deux
+    graphies ne cohabite dans l'application.
+- **Lien decision** : `DEC-0007-perimetre-s03-completer-avant-etendre.md`, point 7 (reserve 10 de
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict s01).
+- **Agent pressenti** : a affecter au planning.
+
 ## Backlog - sprints suivants (intentions non detaillees)
 
 Ces intentions ne sont pas des stories pretes a developper. Elles seront detaillees sprint par
 sprint, en priorite sur les trous les plus visibles de `squad/programme/MATRICE-couverture.md` -
-en particulier le fait qu'a l'issue du sprint 0, le francais n'a encore aucune ligne `en cours`.
+en particulier le fait qu'a l'issue du sprint 0, le francais n'a encore aucune ligne `en cours`,
+et que `DEC-0007` reporte volontairement l'ouverture de cette matiere apres s03 (voir ce sprint).
 
-- Elargir le contenu "additions CP" a la borne jusqu'a 20, et couvrir les soustractions et les
-  complements a 10 (meme mecanique, meme niveau) pour clore completement la premiere ligne de
-  la matrice.
+- Une fois la ligne mathematiques CP effectivement `couvert-valide` (ou, si `nadia-prof` refuse
+  encore l'increment corrige de s03, une fois son nouveau motif traite) : elargir le contenu
+  "additions CP" a la borne jusqu'a 20, et couvrir les soustractions et les complements a 10 (meme
+  mecanique, meme niveau) pour clore completement cette ligne de la matrice.
 - Ouvrir la premiere competence de francais couverte par une mecanique (a choisir en fonction de
   ce que le bandit manchot sait bien servir - probablement une competence a reponse fermee, par
   exemple les homophones grammaticaux CM1 - plutot qu'une competence orale comme la segmentation
   syllabique, qui demandera probablement une autre mecanique ou un autre mode d'interaction).
 - Introduire une deuxieme mecanique de jeu pour les competences que le bandit manchot sert mal
   (association image/mot, memory, texte a trous), en respectant le meme decouplage
-  mecanique/contenu.
+  mecanique/contenu. Le jour ou un second jeu existe, trancher la question de process laissee
+  ouverte par `DEC-0006` et rendue a `camille-po` par `nadia-prof` : une fiche de conformite
+  distincte par jeu, ou un mecanisme different pour tracer un chantier transverse a plusieurs
+  jeux.
 - Couvrir les tables de multiplication CM1, competence a forte demande et deja presente dans
   `contenu-repris/cm1-tables-multiplication.yml` comme matiere premiere a repasser devant
   `nadia-prof`.
@@ -506,8 +772,6 @@ en particulier le fait qu'a l'issue du sprint 0, le francais n'a encore aucune l
   sciences, EMC, anglais - dont de la matiere premiere existe deja dans `contenu-repris/`), ce
   qui suppose au prealable d'ecrire leurs referentiels de competences sous
   `squad/programme/<matiere>/`.
-- Suivre la file d'attente de validation pedagogique (`squad/validation/FILE-ATTENTE.md`, creee
-  et alimentee depuis le sprint 1 avec `bandit-manchot-additions-cp`) et declencher le gel du
-  contenu si elle depasse 2-3 increments non valides en attente.
-- Repasser `bandit-manchot-additions-cp` devant `nadia-prof` une fois les stories S1-1 a S1-3 du
-  sprint 1 livrees, avant d'envisager toute nouvelle competence de contenu.
+- Suivre la file d'attente de validation pedagogique (`squad/validation/FILE-ATTENTE.md`,
+  actuellement a 0 increment en attente apres correction a l'ouverture de s03) et declencher le
+  gel du contenu si elle depasse 2-3 increments non valides en attente.

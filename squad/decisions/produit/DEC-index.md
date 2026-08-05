@@ -10,6 +10,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0004 | Textes, forme du score et seuils chiffres pour lever le refus pedagogique du sprint 1 | s01 | 2026-08-05 | Acceptee |
 | DEC-0005 | L'indice de S1-5 est un contenu YAML, jamais une constante du domaine | s01 | 2026-08-05 | Acceptee |
 | DEC-0006 | Perimetre du chantier identite visuelle de s02 et statut de l'icone d'application au regard de DEC-0002 | s02 | 2026-08-05 | Acceptee |
+| DEC-0007 | Le sprint 3 complete la ligne mathematiques CP existante et solde la dette de gouvernance, il n'ouvre pas de nouvelle matiere ni de nouvelle competence | s03 | 2026-08-05 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0002` a ete amendee le 2026-08-04, a la suite de la
 relecture pedagogique de `nadia-prof` sur le refus de `bandit-manchot-additions-cp` - ajout d'une

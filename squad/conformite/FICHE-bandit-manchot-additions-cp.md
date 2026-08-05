@@ -27,8 +27,12 @@
       affichees.
 - [x] Les propositions fausses (distracteurs) sont des nombres entiers plausibles, proches de la
       bonne reponse, jamais negatifs et jamais non entiers.
-- [ ] La consigne et les retours (juste/faux) sont formules en une phrase courte, en vocabulaire
+- [x] La consigne et les retours (juste/faux) sont formules en une phrase courte, en vocabulaire
       courant de CP (pas de terme comme "somme" ; une formulation du type "combien ca fait ?").
+      Confirme satisfait par `nadia-prof` a la cloture de s01 (fiche, section "Suites hors de ma
+      main" du verdict s01 : "les quatre criteres restes non coches [...] sont, de mon point de
+      vue, satisfaits aujourd'hui"). Coche par `camille-po` a l'ouverture de s03, avec deux
+      sprints de retard sur cette confirmation - defaut de tenue a jour, pas de defaut de fond.
 - [x] Le retour juste/faux est accompagne d'un signal visuel (forme et/ou couleur) distinct du
       texte, sans emoji dans le gabarit (voir `DEC-0002`), pour un enfant qui ne dechiffre pas
       encore vite.
@@ -37,25 +41,37 @@
 - [x] Rien dans le code de la mecanique ne fait reference a "addition", "CP" ou aux bornes 0-10 :
       tout provient du contenu injecte (verifie par la regle ArchUnit de `theo-archi`, story
       S0-3 de `docs/backlog/backlog.md`).
-- [ ] Tout texte destine a l'enfant (consigne, retours juste et faux, libelles de bouton,
+- [x] Tout texte destine a l'enfant (consigne, retours juste et faux, libelles de bouton,
       messages d'etat comme la fin de partie ou l'absence de partie) est redige en francais
       correct et integralement accentue, orthographe et ponctuation irreprochables (exigence de
       categorie B ajoutee par l'amendement du 2026-08-04 a `DEC-0002`, en reaction directe au
-      premier motif de refus de ce sprint).
-- [ ] Le decompte de score affiche a l'enfant utilise une forme qu'un enfant de CP sait lire
+      premier motif de refus de ce sprint). Confirme satisfait par `nadia-prof` en s01, meme
+      remarque de retard de tenue a jour que ci-dessus.
+- [x] Le decompte de score affiche a l'enfant utilise une forme qu'un enfant de CP sait lire
       (par exemple un nombre de reussites seul, ou un nombre d'etoiles/jetons), jamais une
-      notation "x / y" ni de barre oblique (deuxieme motif de refus de ce sprint).
-- [ ] Toute erreur cote serveur (session perdue, redemarrage) affiche a l'enfant un message
+      notation "x / y" ni de barre oblique (deuxieme motif de refus de ce sprint). Confirme
+      satisfait par `nadia-prof` en s01, meme remarque de retard de tenue a jour que ci-dessus.
+- [x] Toute erreur cote serveur (session perdue, redemarrage) affiche a l'enfant un message
       court en francais avec un moyen visible de repartir, jamais le corps brut d'une erreur
-      HTTP (troisieme motif de refus de ce sprint).
-- [ ] Quand un meme item est rate a trois reprises (S1-5, `DEC-0004` point 4), l'indice affiche a
-      la representation suivante de cet item est un contenu neuf, candidat a l'audit de
-      `nadia-prof` au meme titre que la consigne ou le retour faux : sa formulation actuelle,
-      "Compte avec tes doigts pour t'aider.", n'a encore ete jugee ni juste ni fausse
-      pedagogiquement par personne. Prealable produit trouve en review et acte par `DEC-0005` :
-      ce texte doit venir du paquet de contenu YAML (comme la consigne), jamais d'une constante du
-      code du domaine ; correction de perimetre non bloquante pour le verdict de ce sprint,
-      portee au backlog de s02.
+      HTTP (troisieme motif de refus de ce sprint). Confirme satisfait par `nadia-prof` en s01,
+      meme remarque de retard de tenue a jour que ci-dessus.
+- [ ] Quand trois echecs consecutifs surviennent, quel que soit l'item concerne par chacun, la
+      question suivante presentee est accompagnee d'un indice qu'elle n'aurait pas eu autrement
+      (S1-5 tel qu'amende par `DEC-0007` point 3 - le declenchement initial, "un meme item rate
+      trois fois", n'est plus retenu : `nadia-prof` a mesure qu'il ne peut pratiquement jamais se
+      produire en partie reelle). Sa formulation, "Compte sur tes doigts.", a deja ete jugee juste
+      sur le fond et acceptee sous reserve de forme par `nadia-prof` en s01 ; ce qui reste a
+      auditer est son atteignabilite reelle en jeu, pas son texte. Doit venir du paquet de contenu
+      YAML et non d'une constante du domaine (`DEC-0005`, execution portee par la story S3-3 de
+      `docs/backlog/backlog.md`).
+- [ ] Sur un grand nombre de manches jouees (voir story S3-1 de `docs/backlog/backlog.md` pour le
+      seuil chiffre exact), la repartition des sommes proposees couvre l'ensemble de l'intervalle
+      0-10 plutot que de se concentrer sur son bord superieur : aucune somme ne doit dominer le
+      temps de jeu au point que "travailler les additions dans la limite de 10" se reduise en
+      pratique a "travailler les sommes proches de 10" (constat de fond de `nadia-prof` en s01,
+      43,9 % des manches sur les sommes 9 et 10 mesure sur l'ancien tirage). Condition ecrite par
+      `nadia-prof` pour que la ligne mathematiques CP de `squad/programme/MATRICE-couverture.md`
+      passe a `couvert-valide`.
 
 ---
 
