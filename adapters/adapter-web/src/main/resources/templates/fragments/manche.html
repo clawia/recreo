@@ -2,7 +2,7 @@
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <body>
 <div th:fragment="manche" id="jeu">
-    <p class="score" th:text="'Score : ' + ${score.reussites()} + ' / ' + ${score.tentatives()}"></p>
+    <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
     <p class="consigne" th:text="${consigne}"></p>
     <p class="enonce" th:text="${enonce}"></p>
     <form th:attr="hx-post=@{'/parties/' + ${jeuId} + '/coups'}" hx-target="#jeu" hx-swap="innerHTML">

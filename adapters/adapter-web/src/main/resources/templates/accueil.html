@@ -10,7 +10,7 @@
 <body>
 <main id="jeu">
     <h1>Recreo</h1>
-    <p class="pas-de-jeu" th:if="${jeux.isEmpty()}">Aucune partie disponible pour le moment.</p>
+    <p class="pas-de-jeu" th:if="${jeux.isEmpty()}">Il n'y a pas de jeu pour le moment.</p>
     <ul class="jeux" th:unless="${jeux.isEmpty()}">
         <li th:each="jeu : ${jeux}">
             <button type="button" class="demarrer" th:text="${jeu.titre()}"

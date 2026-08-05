@@ -74,7 +74,7 @@ class PartieControllerTest {
         Document fragment = Jsoup.parse(html);
 
         assertThat(fragment.select(".signal.est-juste")).isNotEmpty();
-        assertThat(fragment.select(".score").text()).contains("1 / 1");
+        assertThat(fragment.select(".score").text()).isEqualTo("Score : 1");
     }
 
     @Test
@@ -89,7 +89,7 @@ class PartieControllerTest {
 
         assertThat(fragment.select(".signal.est-faux")).isNotEmpty();
         assertThat(fragment.text()).contains("1");
-        assertThat(fragment.select(".score").text()).contains("0 / 1");
+        assertThat(fragment.select(".score").text()).isEqualTo("Score : 0");
     }
 
     @Test
@@ -104,6 +104,67 @@ class PartieControllerTest {
         Document fragment = Jsoup.parse(html);
 
         assertThat(fragment.select(".enonce").text()).isEqualTo("deux");
+    }
+
+    /** S1-2, DEC-0004 point 1 : aucun symbole du score ne peut se lire comme un signe operatoire. */
+    @Test
+    void leScoreNAffichePasDeSymboleOperatoire() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+
+        String html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                        .session(session).param("propositionChoisie", "1"))
+                .andReturn().getResponse().getContentAsString();
+        String score = Jsoup.parse(html).select(".score").text();
+
+        assertThat(score).doesNotContain("+", "-", "x", "/");
+    }
+
+    /** S1-1 et S1-8 : le retour faux est au present, en une phrase courte, sans faute. */
+    @Test
+    void leRetourFauxEstAuPresentEtEnUnePhraseCourte() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+
+        String html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                        .session(session).param("propositionChoisie", "2"))
+                .andReturn().getResponse().getContentAsString();
+        String verdict = Jsoup.parse(html).select(".verdict").text();
+
+        assertThat(verdict).isEqualTo("Non, c'est 1.");
+    }
+
+    /** S1-8 : le libelle du bouton de continuation n'emploie plus le mot "manche". */
+    @Test
+    void leBoutonPourContinuerNEmploiePlusLeMotManche() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+
+        String html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                        .session(session).param("propositionChoisie", "1"))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.select("form button").text()).isEqualTo("Encore !");
+        assertThat(fragment.text().toLowerCase()).doesNotContain("manche");
+    }
+
+    /** S1-1 et S1-8 : l'ecran de fin de partie est accentue et n'est plus d'un registre adulte. */
+    @Test
+    void lEcranDeFinDePartieEstAccentueEtEnRegistreEnfant() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                .session(session).param("propositionChoisie", "1"));
+
+        String html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                        .session(session).param("propositionChoisie", "2"))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.select("form")).isEmpty();
+        assertThat(fragment.text()).contains("La partie est finie. Bravo, tu as bien joué !");
+        assertThat(html).doesNotContain("Merci d'avoir");
     }
 
     @TestConfiguration
