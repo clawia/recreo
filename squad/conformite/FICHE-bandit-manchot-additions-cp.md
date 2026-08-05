@@ -8,7 +8,9 @@
   reprise telle quelle) : `contenu-repris/cp-calcul-mental.yml`.
 - **Statut global** : VALIDE SOUS RESERVE (Done pedagogique du jeu accorde le 2026-08-05 au titre de
   s01, **maintenu et non retire**). Chantier d'identite visuelle de s02 juge separement dans le meme
-  bloc de validation : **S2-2 et S2-3 accordes, S2-1 REFUSE** le 2026-08-05.
+  bloc de validation : **S2-1, S2-2 et S2-3 accordes sous reserve** le 2026-08-05. S2-1 avait ete
+  **REFUSE** sur le commit `3be5a86` ; le refus a ete **leve** sur le commit `fd16057` apres nouvelle
+  mesure. Le refus et son motif sont conserves dans le bloc de validation, non effaces.
 - **Derniere mise a jour** : 2026-08-05
 
 ## Competences visees
@@ -63,15 +65,18 @@
 
 ### Verdict courant - sprint s02, chantier identite visuelle (S2-1, S2-2, S2-3)
 
-- **Verdict** : **S2-1 REFUSE. S2-2 VALIDE SOUS RESERVE (accorde). S2-3 VALIDE SOUS RESERVE
-  (accorde).** Verdict d'ensemble du chantier : **REFUSE**, parce que S2-1 est la story qui porte
-  mes reserves 6 et 7 et qu'elle n'est pas satisfaite sur l'element le plus manipule du jeu.
-- **Date** : 2026-08-05
-- **Portee de ce verdict** : il porte sur l'increment d'identite visuelle du commit `3be5a86`, pas
-  sur le jeu. **Le Done pedagogique de `bandit-manchot-additions-cp` accorde le 2026-08-05 au titre
-  de s01 n'est ni retire ni suspendu** : le contenu mathematique, les libelles et le traitement de
-  l'erreur n'ont pas bouge, et je les ai reverifies (voir point 4 ci-dessous). Un refus sur S2-1 ne
-  redescend pas le jeu.
+- **Verdict d'ensemble du chantier, apres correction** : **ACCORDE.** S2-1 **ACCORDE SOUS RESERVE**
+  sur le commit `fd16057` - mon refus du commit `3be5a86` est **leve**, et il est conserve
+  integralement au point 2 ci-dessous parce qu'un refus efface n'a aucune valeur de preuve. S2-2
+  **VALIDE SOUS RESERVE (accorde)**. S2-3 **VALIDE SOUS RESERVE (accorde)**.
+- **Dates** : refus de S2-1 prononce le 2026-08-05 sur `3be5a86` ; refus leve le 2026-08-05 sur
+  `fd16057`. S2-2 et S2-3 accordes le 2026-08-05 et **non rouverts** par ce second passage : j'ai
+  seulement verifie que la correction de S2-1 ne les avait pas casses, et elle ne les a pas casses,
+  elle en leve meme une reserve (voir point 2 bis).
+- **Portee de ce verdict** : il porte sur l'increment d'identite visuelle, pas sur le jeu. **Le Done
+  pedagogique de `bandit-manchot-additions-cp` accorde le 2026-08-05 au titre de s01 n'a a aucun
+  moment ete retire ni suspendu** : le contenu mathematique, les libelles et le traitement de
+  l'erreur n'ont pas bouge, et je les ai reverifies aux deux passages (voir points 5 et 2 bis).
 
 #### Ou j'ecris ce verdict, et pourquoi pas dans une fiche distincte
 
@@ -104,7 +109,7 @@ le balisage exact des gabarits pour juger leur habillage, ce que je signale plut
 la manche portant l'indice (toujours inatteignable en dix manches, voir ma reserve 3 de s01, non
 traitee par ce sprint et hors de son mandat) et l'ecran de catalogue vide.
 
-#### 2. S2-1 - REFUSE
+#### 2. S2-1 sur le commit 3be5a86 - REFUSE (refus leve depuis, voir 2 bis ; conserve pour trace)
 
 **Ce qui est fait, et bien fait.** Mes reserves 6 et 7 sont levees sur tout ce qu'elles nommaient.
 Mesure a l'ecran, pas dans le fichier : "Encore !" et "Recommencer" ne sont plus du texte a 13 px ni
@@ -163,6 +168,128 @@ d'ou `.proposition` est absent - le seul bouton qui echoue. Une CI verte a donc 
 le defaut que la story voulait empecher. Je decris le symptome, la forme du garde-fou ne
 m'appartient pas ; mais `CLAUDE.md` range deja "un garde-fou annonce mais absent" parmi les dettes
 a ne pas reproduire.
+
+#### 2 bis. S2-1 rejuge sur le commit fd16057 - ACCORDE SOUS RESERVE, refus leve
+
+Saisie a nouveau sur S2-1 et sur S2-1 seulement. Second audit **non degrade**, meme protocole que le
+premier pour que les chiffres soient comparables : `JAVA_HOME` sur le JDK 21 (21.0.10), `mvn -B
+package`, fat jar lance sur le port 8099, partie rejouee de bout en bout, sept ecrans rasterises a
+900 px de large et **remesures au pixel**. Je n'ai repris aucun chiffre de l'annonce d'`ines-design`.
+
+**Mon motif principal etait la hierarchie de saillance. Il est leve, et la mesure le dit.**
+
+| Ecran de jeu | Avant refus (`3be5a86`) | Apres correction (`fd16057`) |
+|---|---|---|
+| Un bouton de reponse | 46 x 41 px, gris par defaut | **836 x 47 px, bleu plein, gras** |
+| Ecart entre deux boutons de reponse | 8 px, marges fondues | **12 px, non fusionnables** |
+| Bouton de sortie "Les jeux" | 115 x 47 px, seule zone coloree | 114 x 46 px, **contour sans aplat** |
+
+Ce que je voulais voir, je le vois : sur l'ecran de jeu, ce qui appelle la main est desormais la
+reponse. Les trois boutons de reponse sont les seuls aplats colores de l'ecran, la sortie est un
+contour discret, et le rapport de surface s'est inverse - la sortie faisait 2,9 fois la surface d'un
+bouton de reponse, elle en fait maintenant 0,13 fois. **Un enfant de CP qui ne dechiffre pas les
+libelles et se guide a la saillance est ramene vers la tache et non vers la porte.** C'etait mon
+motif, il est traite.
+
+Les deux motifs secondaires tombent aussi : `.proposition` est a 1,25 rem, plus aucun texte ni
+bouton de l'application ne passe sous la consigne ; il prend ses couleurs dans la palette (blanc sur
+`--recreo-accent`, contraste 5,41, largement au-dessus du seuil AA) et ne depend plus du defaut du
+navigateur. J'ai verifie au passage que le `box-sizing: border-box` pose en reset n'avait rien casse
+ailleurs : la coche et la croix du signal juste/faux se dessinent correctement, je les ai regardees
+sur les rendus, pas seulement dans le CSS.
+
+**Sur la cible tactile, je tranche : c'est suffisant, et je dis pourquoi et jusqu'ou.** 47 px de
+haut passent le seuil de 44 px que j'avais invoque. Mais le vrai gain n'est pas la hauteur, c'est la
+largeur : avec un bouton pleine ligne, **l'imprecision horizontale ne peut plus produire d'erreur**,
+et il ne reste qu'un axe ou se tromper. Sur cet axe, un doigt qui derape de moins de 12 px tombe
+dans le vide et ne declenche rien - ce qui est le bon comportement - et il faut deraper de plus de
+18 px pour atteindre la reponse voisine, contre 12 px avant. C'est acceptable. Je le trouve
+neanmoins au plancher et non confortable, d'ou une reserve ci-dessous.
+
+**Sur la pleine largeur, la question m'est posee et je la tranche moi-meme : je l'accepte.** Un
+bouton de reponse pleine ligne n'empeche pas l'enfant de comparer les propositions entre elles -
+elles restent dans une colonne, alignees les unes sous les autres, a la meme abscisse : le regard
+descend la colonne sans avoir a chercher. Et de grandes cibles sont exactement ce qu'il faut a un
+enfant de six ans. Ce que je n'accepte qu'en reserve, c'est le rapport entre le contenant et le
+contenu : le chiffre "9" est un glyphe de 20 px centre dans une barre de 836 px, soit l'information
+utile logee dans 2 % de l'objet qui la porte. Or c'est le **nombre** qui distingue les trois
+propositions, la barre est identique pour les trois. Ce qui doit etre le plus visible, c'est ce qui
+porte la difference. Ce n'est pas un motif de refus - le chiffre est en gras, a 1,25 rem, a 5,41 de
+contraste, parfaitement lisible - mais c'est une reserve que je nomme.
+
+**S1-4, la sortie toujours visible et atteignable : verifie, et tenu.** Je ne me suis pas contentee
+de constater qu'elle existe. Le bouton "Les jeux" est present et rendu sur les quatre ecrans ou je
+l'exigeais - manche, retour juste, retour faux, fin de partie - il mesure 114 x 46 px, donc au-dessus
+de la cible tactile, son texte est a 1,25 rem et a 5,03 de contraste, sa bordure de 2 px est au meme
+contraste : il est discret, il n'est pas invisible, et il se lit sans hesitation comme un bouton.
+**Et il marche** : je l'ai actionne, il rend bien la liste des jeux. La retrogradation ne casse pas
+S1-4. Elle leve en revanche, et c'est un vrai progres, ma reserve sur les deux boutons bleus
+identiques aux effets opposes : sur l'ecran de retour, "Encore !" est un aplat et "Les jeux" un
+contour, l'enfant n'a plus besoin de lire pour savoir lequel poursuit et lequel sort.
+
+**Le test que j'avais epingle : reellement corrige sur le defaut que j'avais montre, et je l'ai
+verifie en le cassant.** La liste n'est plus ecrite en dur, elle est derivee d'un balayage des
+quatre gabarits ; elle remonte bien cinq classes, dont `.proposition`. Le vert ne m'aurait rien
+prouve, alors j'ai mute le CSS pour remettre `.proposition` a 1,1 rem : le test passe au rouge
+(`toutBoutonReellementRenduEstAuMoinsAUnRemVingtCinq`, 1 echec sur 6). J'ai restaure le fichier
+ensuite ; l'arbre est propre. Le garde-fou attrape donc bien ce qu'il avait laisse passer.
+
+**Mais il reste un trou, que j'ai demontre et pas suppose, et c'est exactement le trou par lequel le
+defaut initial est entre.** La liste est derivee des **classes** des boutons. Un bouton qui n'a
+aucune classe ne produit aucun nom de classe, donc aucune assertion : il est invisible pour cette
+regle. C'est precisement le cas de figure de s01, ou "Encore !" etait un
+`<button type="submit">` sans classe et tombait a 13 px. Verification faite : j'ai ajoute un
+`<button type="button">Rejouer</button>` sans classe dans `fragments/retour.html`, relance la
+classe de tests, **les six tests restent verts**. Fichier restaure, arbre propre. Je decris le
+symptome et je ne prescris pas la solution, qui appartient a `yanis-qa` et `theo-archi` : la regle
+devrait partir des boutons rendus et non de leurs classes, de sorte qu'un bouton sans classe soit un
+echec et non un angle mort.
+
+**Le texte lu par l'enfant n'a toujours pas bouge.** `fd16057` ne touche au balisage que d'une
+facon : l'ajout de `class="propositions"` sur le `form` de `fragments/manche.html`. Aucun autre
+gabarit modifie, aucun caractere de texte enfant touche. Reverifie sur le HTML reellement servi par
+l'application relancee : "Recreo", "Calcul CP", "Les jeux", "Score : N", "Combien ça fait ?",
+"Bravo, c'est juste !", "Non, c'est 7.", "C'est fini !", "Encore !", "Compte sur tes doigts.",
+"Oups ! Le jeu a un souci.", "Recommencer", "Ta partie s'est arrêtée. Choisis un nouveau jeu !",
+"Il n'y a pas de jeu pour le moment." Tous intacts, accents compris.
+
+**Ce que je n'ai pas pu verifier, et que je ne pretends donc pas avoir juge.** Mon harnais de rendu
+impose une largeur de mise en page minimale d'environ 500 px : mes captures a 420 px sont un
+recadrage et non une mise en page reelle, je les ecarte. **Je ne me prononce donc pas sur le rendu
+en dessous d'environ 500 px de large**, alors qu'une tablette ou un telephone tenu debout est un
+support plausible pour cette application. A verifier par qui pourra, avant de considerer ce sujet
+clos.
+
+**Reserves attachees a S2-1, non bloquantes, pour que `camille-po` en fasse des stories.**
+
+1. **Le nombre doit peser plus que la barre qui le porte.** Un glyphe de 20 px centre dans un bouton
+   de 836 px : l'information qui distingue les trois propositions est la plus petite chose de
+   l'objet. A retravailler - grossir le chiffre, ou rapprocher la reponse de l'enonce qu'elle
+   concerne, ou reduire la largeur. Je ne prescris pas la forme, c'est le mandat d'`ines-design`.
+2. **12 px entre deux boutons de reponse, c'est le plancher et pas le confort.** Un ecart d'au moins
+   1 rem laisserait plus de place a un geste d'enfant.
+3. **Un appui rate est compte comme une erreur de calcul.** Ce n'est pas un defaut de S2-1 et je ne
+   le mets pas au debit de cette story, mais le fait demeure : le score peut sous-estimer ce que
+   l'enfant sait. C'est une question de produit pour `camille-po`.
+4. **Sur l'ecran de fin de partie, la sortie est a la fois la seule action possible et le style le
+   plus discret.** La retrogradation de `.retour-accueil` est juste sur l'ecran de jeu, ou ce bouton
+   concurrencait la reponse ; elle ne l'est pas sur l'ecran de fin, ou il n'a plus rien a
+   concurrencer et ou il est la seule chose a faire. Un meme bouton n'a pas a garder le meme poids
+   selon qu'il est une echappatoire ou l'unique suite. Cette reserve prolonge et precise ma reserve
+   4 de S2-2 sur l'alignement.
+
+**Les trois reserves qu'`ines-design` dit avoir laissees ouvertes deliberement : je les accepte
+toutes les trois en reserve, aucune ne bloque, et elle a eu raison de ne pas y toucher seule.**
+
+- *Le bleu qui dit a la fois "lis-moi" et "presse-moi"* : accepte en reserve. La correction l'a meme
+  ameliore sans le viser, puisqu'il existe maintenant deux styles de bouton distincts. "C'est fini !"
+  en bleu centre reste proche de l'aspect d'une chose sur laquelle on appuie ; a reprendre.
+- *L'alignement du message centre contre le bouton de cote sur les ecrans de fin et d'erreur* :
+  accepte en reserve, et renforce par ma reserve 4 ci-dessus.
+- *Le monogramme "R"* : accepte en reserve, et **elle a bien fait de ne pas le refaire de sa seule
+  initiative** - j'ai demande un dessin d'objet lisible a 16 px, ce qui est une proposition de
+  design a instruire dans une story, pas une retouche a glisser dans une correction de refus. S2-3
+  reste accorde en l'etat.
 
 #### 3. S2-2 - VALIDE SOUS RESERVE, accorde
 
