@@ -110,4 +110,45 @@ class HabillageDesEcransTest {
         String source = source();
         assertThat(source).doesNotContain("http://", "https://", "@font-face", "fonts.googleapis");
     }
+
+    /**
+     * S3-6 : sur l'ecran de fin de partie, la sortie devient la seule action possible et doit
+     * porter le meme aplat de couleur que les autres boutons d'action, pas le contour discret
+     * retenu pour l'ecran de jeu (nadia-prof, FICHE-bandit-manchot-additions-cp.md, reserve 4).
+     */
+    @Test
+    void laSortiePleineEstUnAplatColoreDeLaPalette() throws IOException {
+        Map<String, String> blocs = blocsParSelecteur(source());
+        String corps = blocs.get(".sortie-pleine");
+
+        assertThat(corps).as("le selecteur .sortie-pleine doit exister dans recreo.css").isNotNull();
+        assertThat(corps).contains("background-color: var(--recreo-accent)");
+        assertThat(corps).doesNotContain("transparent");
+    }
+
+    /**
+     * S3-6, 3e critere : sur l'ecran de jeu et sur le retour juste/faux, la sortie reste le
+     * contour discret accorde par nadia-prof pour S2-1 - aucune regression sur ce point.
+     */
+    @Test
+    void laSortieResteEnContourSurLEcranDeJeuEtDeRetour() throws IOException {
+        Map<String, String> blocs = blocsParSelecteur(source());
+        String corps = blocs.get(".retour-accueil");
+
+        assertThat(corps).as("le selecteur .retour-accueil doit exister dans recreo.css").isNotNull();
+        assertThat(corps).contains("transparent");
+    }
+
+    /**
+     * S3-6, 2e critere : sur l'ecran d'erreur, "Recommencer" est aussi la seule action possible et
+     * doit rester un aplat de couleur, jamais un lien discret.
+     */
+    @Test
+    void recommencerResteUnAplatColoreSurLEcranDErreur() throws IOException {
+        Map<String, String> blocs = blocsParSelecteur(source());
+        String corps = blocs.get(".recommencer");
+
+        assertThat(corps).as("le selecteur .recommencer doit exister dans recreo.css").isNotNull();
+        assertThat(corps).contains("background-color: var(--recreo-accent)");
+    }
 }

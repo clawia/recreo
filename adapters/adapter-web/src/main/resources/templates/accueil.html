@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Recreo</title>
+    <title>Récréo</title>
     <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
     <link rel="stylesheet" th:href="@{/css/recreo.css}">
     <script th:src="@{/js/htmx.min.js}"></script>
@@ -15,7 +15,7 @@
         <div th:replace="~{fragments/manche :: manche}"></div>
     </div>
     <div th:unless="${reprise}">
-        <h1>Recreo</h1>
+        <h1>Récréo</h1>
         <p class="message-reprise" th:if="${messageReprise}" th:text="${messageReprise}"></p>
         <p class="pas-de-jeu" th:if="${jeux.isEmpty()}">Il n'y a pas de jeu pour le moment.</p>
         <ul class="jeux" th:unless="${jeux.isEmpty()}">

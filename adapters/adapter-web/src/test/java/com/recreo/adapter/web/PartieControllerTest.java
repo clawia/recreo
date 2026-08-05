@@ -204,6 +204,26 @@ class PartieControllerTest {
         assertThat(html).doesNotContain("Merci d'avoir", "Bravo, tu as bien joué");
     }
 
+    /**
+     * S3-6 : sur l'ecran de fin de partie, la sortie est la seule action possible, elle doit donc
+     * etre le bouton plein (.sortie-pleine), pas le contour discret de l'ecran de jeu.
+     */
+    @Test
+    void lEcranDeFinDePartieRendLaSortieCommeUnBoutonPlein() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                .session(session).param("propositionChoisie", "1"));
+
+        String html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                        .session(session).param("propositionChoisie", "2"))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.select("button.sortie-pleine")).isNotEmpty();
+        assertThat(fragment.select("button.retour-accueil")).isEmpty();
+    }
+
     /** S1-4, 3e critere : cliquer le bouton clot la partie et revient a la liste des jeux. */
     @Test
     void leBoutonDeRetourClotLaPartieEtRevientALaListeDesJeux() throws Exception {

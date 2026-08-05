@@ -255,4 +255,29 @@ class TailleDesTextesEtBoutonsTest {
         Map<String, String> blocs = blocsParSelecteur();
         assertThat(tailleEnRem(blocs, "h1")).isGreaterThan(0);
     }
+
+    /**
+     * S3-4, reserve 1 de nadia-prof sur S2-1 : le chiffre d'un bouton de reponse est ce qui
+     * distingue les trois propositions, il doit donc peser au moins autant que le calcul affiche
+     * a l'ecran (.enonce), et non rester le detail le plus petit d'une large barre.
+     */
+    @Test
+    void leChiffreDeReponseEstAuMoinsAussiGrosQueLeCalcul() throws IOException {
+        Map<String, String> blocs = blocsParSelecteur();
+        double proposition = tailleEnRem(blocs, ".proposition");
+
+        assertThat(proposition).isGreaterThanOrEqualTo(2.0);
+        assertThat(proposition).isGreaterThanOrEqualTo(tailleEnRem(blocs, ".enonce"));
+    }
+
+    /**
+     * S3-5, reserve 2 de nadia-prof sur S2-1 : un ecart d'au moins 1 rem entre deux boutons de
+     * reponse, au-dessus du plancher de 0,75rem constate en s02, pour un geste d'enfant encore
+     * imprecis.
+     */
+    @Test
+    void lEcartEntreDeuxBoutonsDeReponseEstAuMoinsUnRem() throws IOException {
+        Map<String, String> blocs = blocsParSelecteur();
+        assertThat(proprieteEnRem(blocs, ".propositions", "gap")).isGreaterThanOrEqualTo(1.0);
+    }
 }
