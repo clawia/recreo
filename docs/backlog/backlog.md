@@ -253,7 +253,9 @@ a S1-9 couvrent les cinq reserves restantes.
   necessairement ensemble ni sur le meme item. Que remontrer un item deja reussi aide reellement
   l'enfant en difficulte est un jugement pedagogique de fond que cette story ne tranche pas :
   `nadia-prof` en jugera l'effet a l'audit (voir `DEC-0004`, point 4).
-- **Lien decision** : `DEC-0004-textes-score-et-seuils-lever-refus-s01.md`, point 4.
+- **Lien decision** : `DEC-0004-textes-score-et-seuils-lever-refus-s01.md`, point 4 ; et
+  `DEC-0005-indice-s1-5-vit-dans-le-yaml-pas-dans-le-domaine.md` pour l'origine du texte de
+  l'indice (contenu YAML, pas une constante du domaine).
 - **Agent pressenti** : a affecter au planning.
 
 ### S1-6 - Un signal juste/faux qui ne depend pas de distinguer les couleurs (reserve 4)

@@ -7,7 +7,7 @@
   Matiere premiere de reference (a repasser devant `nadia-prof` comme un contenu neuf, pas
   reprise telle quelle) : `contenu-repris/cp-calcul-mental.yml`.
 - **Statut global** : REFUSE
-- **Derniere mise a jour** : 2026-08-04
+- **Derniere mise a jour** : 2026-08-05
 
 ## Competences visees
 
@@ -44,6 +44,14 @@
 - [ ] Toute erreur cote serveur (session perdue, redemarrage) affiche a l'enfant un message
       court en francais avec un moyen visible de repartir, jamais le corps brut d'une erreur
       HTTP (troisieme motif de refus de ce sprint).
+- [ ] Quand un meme item est rate a trois reprises (S1-5, `DEC-0004` point 4), l'indice affiche a
+      la representation suivante de cet item est un contenu neuf, candidat a l'audit de
+      `nadia-prof` au meme titre que la consigne ou le retour faux : sa formulation actuelle,
+      "Compte avec tes doigts pour t'aider.", n'a encore ete jugee ni juste ni fausse
+      pedagogiquement par personne. Prealable produit trouve en review et acte par `DEC-0005` :
+      ce texte doit venir du paquet de contenu YAML (comme la consigne), jamais d'une constante du
+      code du domaine ; correction de perimetre non bloquante pour le verdict de ce sprint,
+      portee au backlog de s02.
 
 ---
 
