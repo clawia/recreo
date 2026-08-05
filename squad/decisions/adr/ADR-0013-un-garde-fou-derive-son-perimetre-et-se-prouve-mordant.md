@@ -1,0 +1,330 @@
+# ADR-0013 - Un garde-fou derive son perimetre de la source, et se prouve mordant sur un objet neuf
+
+- **Statut** : Accepte
+- **Date** : 2026-08-05
+- **Auteur** : theo-archi
+- **Sprint** : s02 (cloture)
+
+## Contexte
+
+`ADR-0003` a pose que toute regle ArchUnit qui garde une decision d'ADR doit etre accompagnee d'un
+contre-exemple qui la fait echouer. Ce principe a tenu deux sprints et il a paye : il a trouve
+qu'`ADR-0006` ne mordait pas et qu'`ADR-0012` nommait le mauvais paquet. Mais il ne vaut que pour
+les `ArchRule`, et il ne dit rien du **perimetre** d'un garde-fou. Le depot a mesure deux fois, coup
+sur coup, ce que ces deux limites laissent passer.
+
+**Fait 1, s01.** Les criteres visuels de S1-6 et S1-9 sont livres sans aucun test automatise. Releve
+nommement par `yanis-qa` dans `squad/sprints/s01-lever-refus-pedagogique/rapport-qualite.md` : *"S1-6
+et S1-9 n'ont recu aucun test alors que `theo-archi` les avait explicitement qualifies testables"*.
+Un critere sans automate ne regresse pas bruyamment : il regresse en silence.
+
+**Fait 2, s02.** Le test est cette fois ecrit, dans le meme commit que le code, comme la regle
+l'exige. Il est vert. `nadia-prof` le casse par mutation et montre que
+`TailleDesTextesEtBoutonsTest.toutBoutonActionnableEstAuMoinsAUnRemVingtCinq`, dont le nom affirme
+"tout bouton actionnable", itere en fait sur **quatre selecteurs ecrits en dur** d'ou `.proposition`
+est absent - c'est-a-dire exactement le bouton en defaut, celui pour lequel la story existait. Le
+garde-fou couvrait tout sauf le defaut qu'il devait empecher.
+
+**Fait 2 bis, le plus instructif.** Apres correction, la liste n'est plus ecrite en dur : elle est
+derivee des **classes** des boutons rendus. `nadia-prof` remesure au lieu de croire le vert. Elle
+mute `.proposition` a 1,1 rem : rouge, la regle mord. Puis elle ajoute un
+`<button type="button">Rejouer</button>` **sans classe** dans `fragments/retour.html` : les six
+tests restent verts. Un bouton sans classe ne produit aucun nom de classe, donc aucune assertion.
+C'est la forme exacte du defaut de s01, ou "Encore !" etait un `<button>` sans classe tombe au
+defaut du navigateur. Le trou n'avait pas ete ferme, il avait ete deplace d'un cran.
+
+**Fait 3, que je constate en ecrivant cet ADR et que personne n'avait releve.** Le mecanisme
+d'`ADR-0003` a lui-meme cette forme. `LesReglesMordentTest` contient vingt et une methodes ecrites a
+la main, une par regle. Rien n'oblige la vingt-deuxieme regle a en recevoir une. L'inventaire est
+tenu a chaque cloture dans `confirmation-archunit.md`, c'est-a-dire par la discipline de l'agent qui
+cloture - ce qui, selon l'axiome du depot, est un souhait. Le garde-fou de nos garde-fous enumere
+lui aussi ce qu'il verifie.
+
+Les trois faits partagent une seule propriete, et c'est elle qu'il faut nommer.
+
+### La propriete generale
+
+Tout garde-fou a deux moities : un **perimetre** (les objets qu'il juge) et un **critere** (ce qu'il
+leur reproche). Les deux peuvent etre enumeres ou derives, et les consequences ne sont pas
+symetriques.
+
+| | Enumere | Derive |
+|---|---|---|
+| **Critere** | Un motif qu'on n'a pas nomme passe. Limite visible dans le texte du test, et l'ajout d'un motif est un ajout, pas une refonte. Souvent inevitable : une liste noire ne se derive pas. | Rare et souvent impossible. |
+| **Perimetre** | **Un objet qu'on n'a pas inscrit n'est jamais juge, et rien ne le dit.** Le test est vert, son nom promet le contraire, et le rapport de CI ne mentionne pas ce qu'il n'a pas regarde. | Un objet neuf est juge du jour ou il existe. |
+
+Un perimetre enumere echoue **en silence**. C'est la seule case dangereuse du tableau, et c'est
+celle ou les trois faits se rangent. D'ou la regle, en une phrase : **le perimetre se derive, le
+critere peut s'enumerer.**
+
+Le fait 2 bis ajoute une precision que je n'aurais pas trouvee seul, et qui vient d'une mesure :
+**une derivation qui passe par une propriete facultative des membres n'est pas une derivation du
+perimetre.** `document.select("button, a[href]")` derive la population des boutons ;
+`element.classNames()` la projette sur une propriete que tous les boutons n'ont pas, et la
+projection perd sans un mot ceux qui ne l'ont pas. Une derivation doit etre **totale** : chaque
+membre de la population produit au moins une assertion, ou fait echouer le test.
+
+Et le fait 2 bis donne aussi le protocole qui distingue les deux, parce que `nadia-prof` l'a
+applique sans le nommer : **muter un objet existant prouve que le critere mord ; ajouter un objet
+neuf prouve que le perimetre derive.** Sa premiere mesure (`.proposition` a 1,1 rem) etait la
+premiere ; sa seconde (un bouton que personne n'avait inscrit nulle part) etait la seconde, et c'est
+la seconde qui a trouve le trou.
+
+## Decision
+
+**Le principe d'`ADR-0003` s'etend a tout garde-fou du depot, quelle que soit sa technologie, sous
+trois obligations.**
+
+1. **Le perimetre d'un garde-fou est derive de la source, jamais enumere.** Les gabarits balayes
+   viennent du repertoire des gabarits, les boutons controles viennent du balisage, les modules
+   parcourus viennent du pom agregateur, les fichiers juges par la CI viennent de `git ls-files`.
+   Une liste ecrite a la main d'objets **a controler** est interdite. Une liste ecrite a la main de
+   **fautes a reprocher** (vocabulaire interdit, motif refuse, tag d'agent connu) reste permise :
+   c'est un critere, et son mode de defaillance est un rouge, pas un vert.
+
+2. **La derivation est totale.** Tout membre de la population derivee produit au moins une
+   assertion. Un membre qui ne porte pas ce dont la derivation a besoin - un bouton sans classe -
+   est un echec du garde-fou, jamais un membre ignore.
+
+3. **Un garde-fou se prouve mordant sur un objet neuf.** Il possede un jeu d'artefacts fautif qui
+   contient au moins un objet **absent de la production**, et un test qui l'execute sur ce jeu en
+   exigeant le rouge. Une mutation d'un objet existant ne suffit pas : elle prouve le critere, pas
+   le perimetre.
+
+Modalites d'application :
+
+- Le jeu fautif d'un garde-fou nomme `XxxTest` vit dans
+  `<module>/src/test/resources/contreexemple/XxxTest/`. C'est le pendant, pour les artefacts, de ce
+  que les classes `...ContreExemple` sont pour les regles ArchUnit (`ADR-0003`).
+- Le garde-fou est donc ecrit comme une fonction de sa racine d'artefacts, et non cable sur
+  `src/main/resources`. C'est la seule contrainte d'ecriture que cet ADR impose.
+- Pour une `ArchRule`, l'obligation 3 est deja celle d'`ADR-0003` et ne change pas : contre-exemple
+  compile, `check` sur lui, `hasMessageContaining` sur le motif. Ce que cet ADR ajoute est que le
+  recensement des regles concernees n'est plus tenu a la main.
+
+Ce que cet ADR ne fait pas : il ne dit pas quels criteres visuels ou pedagogiques meritent un
+garde-fou. Ce qui doit etre garde est une question de produit et de qualite - `camille-po`,
+`yanis-qa`, `nadia-prof`. Cet ADR dit seulement ce qu'un garde-fou doit valoir une fois qu'on a
+decide d'en ecrire un.
+
+## Regle executable
+
+Fichier : `bootstrap/src/test/java/com/recreo/archi/LesGardeFousSontMisALEpreuveTest.java`
+
+Ce n'est pas une `ArchRule`, et j'explique pourquoi plus bas plutot que de forcer la forme. C'est un
+test JUnit qui echoue dans `mvn verify` comme n'importe quel autre.
+
+Il vit dans `bootstrap` parce qu'il doit voir **tous** les modules : un recensement place dans
+`adapter-web` aurait pour perimetre implicite `adapter-web`, et un garde-fou ecrit dans un autre
+module lui echapperait en silence - la faute meme que cet ADR interdit, commise dans la regle qui
+l'interdit. Sa liste de modules vient du pom agregateur, seul endroit du depot qui dise quels
+modules existent.
+
+Il porte deux recensements.
+
+**Recensement 1 - les garde-fous de balayage.** Population derivee : tout fichier `.java` sous
+`<module>/src/test/java` dont la source lit un artefact de production (elle contient `src/main/`).
+Pour chacun, hors dette : sa source doit contenir sa propre mise a l'epreuve, et le repertoire
+`<module>/src/test/resources/contreexemple/<NomDeClasse>/` doit exister et contenir au moins un
+fichier.
+
+```java
+    static List<String> balayagesSansMiseALEpreuve(Path racine, Set<String> dette) {
+        List<String> manquants = new ArrayList<>();
+        for (SourceDeTest balayage : balayagesDeProduction(racine)) {
+            if (dette.contains(balayage.nom())) {
+                continue;
+            }
+            Path jeuFautif = balayage.module().resolve(CONTRE_EXEMPLES).resolve(balayage.nom());
+            boolean eprouve = lire(balayage.fichier()).contains(MISE_A_L_EPREUVE)
+                    && Files.isDirectory(jeuFautif)
+                    && !estVide(jeuFautif);
+            if (!eprouve) {
+                manquants.add(balayage.nom());
+            }
+        }
+        return manquants;
+    }
+```
+
+**Recensement 2 - les regles ArchUnit.** Population derivee : toute declaration `ArchRule <nom> =`
+trouvee dans les sources de test de tous les modules. Chacune doit apparaitre quelque part dans un
+`<nom>.check(`, espaces et retours a la ligne ignores. C'est le trou du fait 3 : une regle neuve
+sans contre-exemple echoue desormais au lieu d'attendre qu'un humain la remarque.
+
+```java
+    static List<String> reglesSansMiseALEpreuve(Path racine) {
+        StringBuilder toutLeCodeDeTest = new StringBuilder();
+        for (SourceDeTest source : sourcesDeTest(racine)) {
+            toutLeCodeDeTest.append(sansEspaces(lire(source.fichier())));
+        }
+        String code = toutLeCodeDeTest.toString();
+        return toutesLesRegles(racine).stream()
+                .filter(regle -> !code.contains(regle + ".check("))
+                .toList();
+    }
+```
+
+**Le test ne s'exempte pas par une liste.** Il se retire du recensement 1 par son propre nom de
+classe (`LesGardeFousSontMisALEpreuveTest.class.getSimpleName()`), parce qu'il nomme la marque de
+balayage pour la chercher chez les autres et ne lit lui-meme aucun artefact de production. Il reste
+soumis au recensement 2.
+
+### Ce qui est prouve, mesure et non suppose
+
+Le recensement se prouve mordant sur un **depot fictif complet**, avec son propre pom agregateur, lu
+comme donnee et jamais construit :
+`bootstrap/src/test/resources/contreexemple/LesGardeFousSontMisALEpreuveTest/`.
+
+| Fichier du depot fictif | Ce qu'il doit provoquer |
+|---|---|
+| `faux-module/.../BalayageSansEpreuveContreExemple.java` | balaie la production, aucune mise a l'epreuve : **doit etre nomme** |
+| `faux-module/.../BalayageEprouveContreExemple.java` | balaie la production, mise a l'epreuve et jeu fautif presents : **ne doit pas etre nomme** |
+| `faux-module/.../RegleContreExemple.java` | declare `uneRegleEprouvee` (passee a un `check`) et `uneRegleJamaisEprouvee` (jamais) : **seule la seconde doit etre nommee** |
+| `faux-module/src/test/resources/contreexemple/BalayageEprouveContreExemple/gabarit-fautif.html` | l'objet neuf : un bouton sans classe que personne n'a inscrit nulle part |
+
+Les deux directions sont assertees par `containsExactly`, pas par `isNotEmpty` : un recensement qui
+nommerait tout le monde aurait l'air de mordre sans rien distinguer, et c'est le mode de defaillance
+que la lecon d'`ADR-0003` impose de fermer.
+
+Trois mutations du depot **reel**, mesurees puis annulees, toutes sur mon propre fichier :
+
+| Mutation | Resultat |
+|---|---|
+| Retirer `TexteAccentueDesGabaritsTest` de la dette | rouge, `aucunGardeFouDeBalayageNEchappeALaMiseALEpreuve`, sur le bon motif |
+| Inscrire dans la dette un nom qui ne designe aucun garde-fou | rouge, `laDetteNePeutNiGrandirNiPourrir` |
+| Ecrire une declaration `ArchRule uneRegleNeuveSansContreExemple =` sans aucun `check` | rouge, `aucuneRegleArchUnitNEchappeAuContreExemple`, en nommant la regle |
+
+Etat mesure du depot a l'ecriture de cet ADR : **23 regles ArchUnit declarees, 23 passees a un
+`check`** ; **6 garde-fous de balayage, 0 mis a l'epreuve**. `mvn -B clean verify` sur JDK 21.0.10 :
+BUILD SUCCESS, **139 tests, 0 echec** (31 `domain`, 7 `application`, 38 `adapter-web`,
+5 `adapter-content`, 56 + 2 `bootstrap`).
+
+### La dette, et pourquoi elle est dans le test et pas dans un document
+
+Les six garde-fous de balayage existants sont anterieurs a cet ADR et aucun n'a de jeu fautif. Les
+mettre en conformite dans ce commit reviendrait a reecrire les tests de `yanis-qa` et
+d'`ines-design` pendant qu'ils travaillent ; ce n'est ni mon mandat ni prudent dans un arbre
+partage. Ils sont donc nommes dans une liste d'exemptions **dans le test lui-meme** :
+
+```java
+    private static final Set<String> DETTE_DE_BALAYAGE = Set.of(
+            "AucunVocabulaireDeMatiereTest",
+            "FaviconTest",
+            "FrontieresDuJavaScriptTest",
+            "HabillageDesEcransTest",
+            "TailleDesTextesEtBoutonsTest",
+            "TexteAccentueDesGabaritsTest");
+
+    /** Etat au 2026-08-05. Ce nombre ne remonte jamais ; le baisser demande un diff visible. */
+    private static final int PLAFOND_DE_DETTE = 6;
+```
+
+Cette liste exempte, elle n'absout pas, et elle n'est pas un perimetre enumere deguise :
+
+- elle **ne peut pas grandir** : le plafond est asserte, un septieme garde-fou non eprouve est
+  rouge ;
+- elle **ne peut pas pourrir** : chaque nom doit designer un garde-fou qui existe reellement, sinon
+  rouge ;
+- un oubli y produit un **rouge**, jamais un vert silencieux - c'est un critere d'exemption, pas un
+  perimetre.
+
+Ce qu'elle ne garantit pas, et je le dis franchement : rien n'oblige mecaniquement le plafond a
+**descendre**. Il descendra parce que chaque cloture republie l'inventaire dans
+`confirmation-archunit.md`, et parce qu'une dette nommee dans un test que tout le monde execute est
+plus difficile a oublier qu'une phrase dans un ADR. Si le plafond est encore a 6 a la cloture de
+s04, cet ADR aura echoue sur ce point et il faudra le dire.
+
+### Ce que la correction de `yanis-qa` doit a cette regle, et ce qu'elle lui doit encore
+
+Le commit `164b662` fait deriver les boutons controles des elements `<button>` et `<a href>`
+reellement rendus, et fait retomber un bouton sans classe sur sa balise nue au lieu de le laisser
+sortir du controle. C'est l'obligation 2 tenue sur les boutons, et c'est la bonne correction : je ne
+la reecris pas et je ne la reprends pas.
+
+Deux choses restent, et elles se rangent sous les obligations 1 et 3 :
+
+- la liste des **gabarits** balayes est toujours ecrite en dur (quatre `resolve(...)`), comme l'est
+  la liste des six selecteurs de texte de `aucunTexteNePasseSousLaTailleDeLaConsigne`. Un cinquieme
+  gabarit, ou un septieme selecteur de texte, echappe encore ;
+- le garde-fou n'a pas de jeu fautif : la preuve de morsure a ete faite a la main par `nadia-prof`
+  puis par `yanis-qa`, sur l'arbre reel, et n'a pas survecu au commit.
+
+C'est pour cela que `TailleDesTextesEtBoutonsTest` est dans la dette et non hors sujet. La regle est
+au-dessus de sa correction, elle ne la remplace pas.
+
+## Ce que cette regle ne couvre pas, dit avant qu'on le decouvre
+
+- **Elle ne cree aucun garde-fou.** Le fait 1 - un critere livre sans aucun test - reste hors de sa
+  portee : on ne peut pas exiger la mise a l'epreuve d'un test qui n'existe pas. C'est la revue de
+  couverture de `yanis-qa` qui attrape ce cas, et elle l'a attrape.
+- **Elle verifie la presence de la mise a l'epreuve, pas son execution.** `bootstrap` ne voit pas le
+  classpath de test des autres modules ; il ne peut donc pas executer un garde-fou d'`adapter-web`.
+  L'execution reelle a lieu dans la suite du module proprietaire. Le recensement garantit qu'un
+  garde-fou possede un jeu fautif et s'y confronte ; il ne garantit pas que le jeu fautif soit
+  pertinent. C'est exactement le niveau de garantie d'`ADR-0003`, transpose : un contre-exemple
+  existe et fait echouer la regle, sans qu'aucun automate ne prouve qu'il couvre toutes les
+  violations imaginables.
+- **Son critere d'appartenance est textuel et deliberement large.** Est reconnu garde-fou de
+  balayage tout test dont la source contient `src/main/`. `FaviconTest`, qui juge un artefact nomme
+  et n'a aucun perimetre a deriver, est donc inclus a tort. J'assume ce sens de l'erreur : une
+  inclusion de trop coute un jeu fautif inutile et **se voit** ; une inclusion de moins ne se voit
+  pas. C'est l'application a moi-meme du tableau du contexte.
+- **Un garde-fou qui lirait la production par le classpath echapperait au recensement.** Aucun ne le
+  fait aujourd'hui ; le jour ou il y en aura un, c'est le critere d'appartenance qu'il faudra
+  elargir, pas la regle.
+- **Une declaration `ArchRule` citee dans un commentaire compte comme une declaration.** Faux rouge,
+  du bon cote.
+
+## Consequences
+
+- Un garde-fou coute desormais un repertoire de plus, comme une regle ArchUnit coute une classe de
+  plus depuis `ADR-0003`. Le cout est reel et il est tres inferieur a celui d'un garde-fou vert qui
+  couvre tout sauf le defaut vise.
+- Ecrire un garde-fou impose de le rendre parametrable par sa racine d'artefacts. C'est une
+  contrainte d'ecriture reelle, et c'est la seule facon d'executer un juge sur autre chose que la
+  production.
+- Le depot gagne un deuxieme mecanisme de recensement a cote de `LesReglesMordentTest`. Ils ne font
+  pas la meme chose : `LesReglesMordentTest` **execute** les regles sur leurs contre-exemples,
+  `LesGardeFousSontMisALEpreuveTest` **verifie que rien n'y manque**. Le second garde le premier.
+- Un renommage de classe de test peut rendre rouge un test qui n'a pas bouge (dette qui pourrit,
+  jeu fautif orphelin). C'est voulu, et le message le dit.
+- Les listes de fautes existantes (vocabulaire interdit de `AucunVocabulaireDeMatiereTest`, motifs de
+  `FrontieresDuJavaScriptTest`, tags de `verifier-prefixes.sh`, formes de chemin de
+  `verifier-chemins.sh`) ne sont pas touchees : ce sont des criteres, la regle ne les vise pas.
+
+## Alternatives considerees
+
+- **Tests de mutation automatiques (PIT).** Ecartes, et pas pour la raison d'`ADR-0003`. PIT mute du
+  bytecode Java ; les deux defauts mesures vivaient dans du CSS et du HTML, que PIT ne mute pas. Il
+  ne repond donc pas a la question posee, meme partiellement. Un jeu d'artefacts fautif commite est
+  une mutation figee, revue en diff, et applicable aux ressources.
+- **Interdire syntaxiquement la liste litterale dans un test** (refuser un litteral qui nomme un
+  gabarit de production). Ecarte : l'analyse syntaxique ne distingue pas un objet **balaye** d'un
+  objet **vise**. `TexteAccentueDesGabaritsTest` nomme legitimement `fragments/retour.html` pour
+  asserter une propriete de ce fichier-la. La regle produirait des faux rouges sur du code correct
+  et se ferait desactiver.
+- **Une annotation `@GardeFouDeBalayage` a poser sur les classes concernees.** Ecartee : une
+  annotation est declarative, celui qui oublie de la poser echappe au recensement. C'est le trou du
+  perimetre enumere, deplace dans le code source.
+- **Un recensement par module.** Ecarte pour la raison donnee plus haut : son perimetre serait le
+  module, et un module neuf lui echapperait en silence.
+- **Executer les garde-fous par reflexion depuis `bootstrap`, via un contrat
+  `static void verifier(Path)`.** Ecarte aujourd'hui : `bootstrap` n'a pas les classes de test des
+  autres modules a son classpath, et les y mettre demanderait de publier des jars de test - trop de
+  machinerie pour six garde-fous. C'est ce qui rend la garantie plus faible que celle
+  d'`ADR-0003`, et c'est dit dans la section des limites.
+- **Ecrire la regle et compter sur la revue.** Ecarte par l'axiome du depot. C'est aussi ce qui a
+  laisse `LesReglesMordentTest` enumerer son perimetre pendant deux sprints sans que personne ne le
+  remarque, moi le premier.
+
+## Ce qui me ferait changer d'avis
+
+- Si les jars de test des modules deviennent disponibles au classpath de `bootstrap` pour une autre
+  raison, je remplace le recensement textuel du garde-fou de balayage par une execution reelle sur
+  le jeu fautif, et la garantie monte au niveau d'`ADR-0003`.
+- Si le plafond de dette n'a pas baisse a la cloture de s04, c'est que la liste d'exemptions sert de
+  refuge et non de dette : je la supprime et je rends les six garde-fous rouges jusqu'a leur mise en
+  conformite, ou j'acte que l'obligation 3 est hors de portee et je la retire de cet ADR.
+- Si un jeu fautif devient plus complexe que le garde-fou qu'il eprouve, c'est le garde-fou qui est
+  mal ecrit, et c'est lui que je reecris.

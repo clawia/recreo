@@ -245,6 +245,17 @@ Ce que ce travail a revele, et qui justifie a lui seul l'exigence : **la regle c
 ne mordait pas.** Elle est corrigee, et l'ADR est amende. Aucune relecture n'avait vu le defaut ;
 le premier contre-exemple l'a montre en une execution.
 
+**Amendement du 2026-08-05, a la cloture de s02.** Ce texte disait : *"L'inventaire complet [...] est
+tenu a chaque fin de sprint dans `squad/sprints/<sprint>/confirmation-archunit.md`."* Un inventaire
+tenu a la main est exactement ce que l'axiome du depot appelle un souhait : rien n'obligeait la
+vingt-quatrieme regle a recevoir son contre-exemple, et `LesReglesMordentTest` enumerait son propre
+perimetre - vingt et une methodes ecrites une par une. Le mecanisme qui garde les regles avait donc
+le defaut qu'`ADR-0013` nomme. Depuis, `LesGardeFousSontMisALEpreuveTest` recense les `ArchRule`
+declarees dans **tous** les modules et exige que chacune soit passee a un `check` : une regle neuve
+sans contre-exemple est rouge. Verifie par mutation : une declaration
+`ArchRule uneRegleNeuveSansContreExemple =` sans `check` rend ce recensement rouge en nommant la
+regle. L'inventaire de cloture reste utile comme lecture ; il n'est plus le garde-fou.
+
 ### Les garde-fous qui ne sont pas en Java
 
 Le meme raisonnement s'applique au garde-fou de prefixes de commit, qui est en shell et non en

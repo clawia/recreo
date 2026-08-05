@@ -16,6 +16,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0010](ADR-0010-refuser-les-chemins-de-poste-de-travail.md) | Refuser les chemins de poste de travail et les comptes utilisateur dans un fichier suivi, par un script teste | s00 | 2026-08-05 | Accepte |
 | [ADR-0011](ADR-0011-rendre-toute-erreur-imprevue-en-html-francais.md) | Rendre toute erreur imprevue en HTML francais, jamais un corps technique brut | s01 | 2026-08-05 | Accepte |
 | [ADR-0012](ADR-0012-la-longueur-de-partie-vit-dans-le-catalogue.md) | Porter la longueur d'une partie par l'entree de catalogue, jamais par le contenu | s01 | 2026-08-05 | Accepte |
+| [ADR-0013](ADR-0013-un-garde-fou-derive-son-perimetre-et-se-prouve-mordant.md) | Deriver le perimetre de tout garde-fou de la source, et le prouver mordant sur un objet neuf | s02 | 2026-08-05 | Accepte |
 
 ## Amendements
 
@@ -36,6 +37,7 @@ est date dans le corps de l'ADR. Ceux du sprint 0 :
 | ADR-0009 | 2026-08-05 | la plage de commits ne resistait pas a une base reecrite et inatteignable apres un push force (`bad object`) ; ajout de `commit-atteignable.sh` et de son repli, avant la construction de la plage |
 | ADR-0010 | 2026-08-05 | **le garde-fou a mordu son propre auteur** : verifie avant que `verifier-chemins.sh` soit suivi, il n'avait jamais ete juge par lui-meme ; une fois suivi, son propre commentaire d'en-tete contenait un vrai segment reel. Commentaire corrige, pas la regle |
 | ADR-0008 | 2026-08-05 | ajout d'un renvoi vers ADR-0011 : le fragment d'erreur est du rendu serveur comme les autres, deja couvert par les regles existantes sans les modifier |
+| ADR-0003 | 2026-08-05 | **son propre mecanisme enumerait son perimetre** : l'inventaire des regles contre-exemplifiees etait tenu a la main a chaque cloture, et `LesReglesMordentTest` avait vingt et une methodes ecrites une par une. Rien n'obligeait la vingt-quatrieme regle a recevoir son contre-exemple. Recensement rendu executable par ADR-0013 |
 | ADR-0012 | 2026-08-05 | **sa section executable nommait le mauvais paquet** : un contre-exemple range dans `domain.content.contreexemple` aurait ete invisible pour la regle qu'il doit faire echouer. Paquet corrige, contre-exemple et test de non-vacuite ecrits ; et la derniere ligne de son tableau de gardes de comportement, seule des quatre a etre restee sur le papier, est honoree dans `CatalogueChargeableIT` |
 
 ## Lecture rapide
@@ -62,3 +64,11 @@ Sprint 1 en ajoute deux, tous deux nes du refus pedagogique de `bandit-manchot-a
    chemin nominal, doit rendre du HTML francais ;
 10. **ADR-0012** tranche un point qu'ADR-0006 avait explicitement laisse ouvert en le nommant a
     l'avance : la longueur d'une partie vit dans l'entree de catalogue, jamais dans le contenu.
+
+Sprint 2 en ajoute un, ne de deux mesures de `nadia-prof` sur un garde-fou vert qui ne gardait
+rien :
+
+11. **ADR-0013** generalise ADR-0003 au-dela d'ArchUnit et nomme la propriete que les deux
+    occurrences partageaient : un garde-fou qui **enumere** son perimetre ne verifie que ce qu'on a
+    pense a lui donner. Le perimetre se derive, le critere peut s'enumerer, et la preuve de morsure
+    se fait sur un objet neuf, pas sur la mutation d'un objet deja connu.

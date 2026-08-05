@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Depot fictif : il n'est jamais construit, il est lu comme donnee par
+  LesGardeFousSontMisALEpreuveTest, qui doit y trouver un garde-fou non eprouve et une regle
+  ArchUnit jamais passee a un check. Un pom agregateur est indispensable ici : le recensement
+  derive la liste des modules de ce fichier, et pas d'une liste ecrite dans le test (ADR-0013).
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.recreo.faux</groupId>
+  <artifactId>depot-fautif</artifactId>
+  <version>0</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>faux-module</module>
+  </modules>
+</project>
