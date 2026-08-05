@@ -324,6 +324,165 @@ a S1-9 couvrent les cinq reserves restantes.
     de celle constatee ce sprint (au moins 3 rem, contre 1,5 rem).
 - **Agent pressenti** : a affecter au planning.
 
+## Sprint 2 - Une application habillee, lisible par un enfant de CP, reconnaissable dans le navigateur
+
+**Contexte** : ce sprint n'est pas issu d'un refus pedagogique. Il comble un trou de backlog
+constate en rejouant l'application sur `round-two`, code et rendu a l'appui : `recreo.css`
+(`adapters/adapter-web/src/main/resources/static/css/recreo.css`) ne declare que 8 selecteurs
+(`body`, `.consigne`, `.enonce`, `.proposition`, `.signal`, `.icone-signal`, `.signal.est-juste`,
+`.signal.est-faux`). Tous les autres selecteurs utilises par les gabarits - `h1`, `.jeux`,
+`.demarrer`, `.retour-accueil`, `.score`, `.fin-de-partie`, `.indice`, `.erreur`, `.pas-de-jeu`,
+`.message-reprise`, `.recommencer`, et le bouton "Encore !" du fragment `retour.html` (un
+`<button>` sans classe) - n'ont aucune regle et tombent au comportement par defaut du navigateur.
+`/favicon.ico` repond 404. Aucune palette de couleurs, aucune typographie au-dela de `sans-serif`,
+aucune icone : l'application n'a pas d'identite visuelle.
+
+Ce trou existe parce que `ines-design` a ete creee pendant s01 (amendement 1, section "L'equipe",
+de `squad/sprints/s00-socle/retro.md`) pour un mandat large - "design d'interface et
+accessibilite visuelle (contraste, tailles de police et de signal, semantique des formes,
+ergonomie pour un enfant de CP qui lit encore peu)" - mais elle n'a ete affectee qu'aux deux
+stories qui existaient deja au backlog a ce moment-la (S1-6, S1-9). Aucune story d'identite
+visuelle, de charte graphique ou d'icone d'application n'avait jamais ete ecrite : ce n'est pas un
+manquement d'Ines, c'est un trou du backlog que je corrige ici.
+
+Une partie de ce trou etait deja nommee par `nadia-prof`, en reserve non bloquante pour s02, dans
+`squad/conformite/FICHE-bandit-manchot-additions-cp.md` (verdict `VALIDE SOUS RESERVE` du
+2026-08-05) : reserve 6 ("aucun texte lu par l'enfant ne devrait passer sous la taille de la
+consigne (1,25 rem), et les boutons 'Encore !' et de sortie ne devraient pas etre rendus a la
+taille par defaut du navigateur, environ 13 px [...] `.indice` en particulier doit etre au moins
+aussi gros que la consigne : c'est le texte destine au lecteur le plus fragile") et reserve 7
+("'Recommencer' doit ressembler a un bouton [...] un enfant de six ans ne sait pas qu'un texte
+souligne se clique"). S2-1 ci-dessous reprend ces deux reserves telles quelles.
+
+**Frontiere de mandat, valable pour les trois stories de ce sprint** : `ines-design` propose la
+forme, la couleur, le contraste et la disposition ; elle ne tranche pas. `nadia-prof` garde seule
+le veto pedagogique sur ce que voit l'enfant - aucune de ces stories ne peut passer a
+`couvert-valide` une quelconque ligne de `squad/programme/MATRICE-couverture.md`, puisqu'aucune ne
+porte de competence programme (voir champ "Competence programme visee" de chacune) : la matrice
+n'est donc pas modifiee par ce sprint.
+
+**Contraintes techniques rappelees pour les trois stories** (`CLAUDE.md`) : zero build Node, zero
+serveur front separe, tout est servi par le fat jar depuis les ressources statiques de
+`adapter-web` ; aucune ressource externe, aucun CDN, aucune police telechargee a l'execution -
+l'application doit fonctionner hors ligne ; le comportement reste sur le serveur (`ADR-0008`),
+donc aucune de ces stories n'ajoute de comportement au JavaScript client `recreo.js`.
+
+### S2-1 - Aucun texte ni bouton plus petit que la consigne du jeu (reserves 6 et 7 de la fiche bandit-manchot-additions-cp)
+
+- **Besoin** : en tant qu'enfant de CP qui lit encore lentement, je veux que tout texte que je dois
+  lire et tout bouton sur lequel j'appuie soit au moins aussi grand que la consigne du jeu, et que
+  je reconnaisse un bouton comme un bouton, afin de ne jamais devoir dechiffrer le plus petit texte
+  de l'ecran pour savoir quoi faire ni deviner qu'un texte souligne se clique.
+- **Competence programme visee** : transverse - accessibilite visuelle pour le niveau CP (meme
+  categorie que S0-5, S1-6, S1-9).
+- **Criteres d'acceptation** :
+  - Etant donne le fichier `recreo.css` livre, quand on releve la taille de police declaree pour
+    chaque selecteur qui affiche du texte lu par l'enfant ou un bouton actionnable - au minimum
+    `.score`, `.indice`, `.fin-de-partie`, `.erreur`, `.pas-de-jeu`, `.message-reprise`, le bouton
+    de la forme "Encore !" du fragment `retour.html`, `.retour-accueil`, `.demarrer` et
+    `.recommencer` - alors chacune de ces tailles est declaree explicitement et n'est jamais
+    inferieure a celle de `.consigne` (1,25rem).
+  - Etant donne n'importe quel bouton actionnable par l'enfant (demarrer une partie, continuer,
+    revenir a la liste des jeux, recommencer apres une erreur), quand on releve sa taille de police
+    declaree, alors elle est au moins egale a 1,25rem, jamais laissee au defaut du navigateur
+    (environ 13px constate ce sprint sur "Encore !" et "Recommencer").
+  - Etant donne `.indice`, le texte destine au lecteur le plus fragile (l'enfant qui vient de rater
+    trois fois le meme item), quand on releve sa taille declaree, alors elle est au moins egale a
+    celle de `.consigne`, conformement a la reserve de `nadia-prof`.
+  - Etant donne le titre `<h1>Recreo</h1>` de l'ecran d'accueil, quand on relit `recreo.css` apres
+    cette story, alors une regle de taille lui est explicitement declaree, elle ne depend plus
+    seulement du comportement par defaut du navigateur pour une balise `h1`.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que la hierarchie visuelle obtenue (quel element attire l'oeil en premier, quel
+    confort de lecture reel) convienne effectivement a un enfant de CP en train de jouer. Aucun des
+    criteres ci-dessus ne pretend mesurer cela ; ils garantissent seulement qu'aucune taille
+    declaree ne retombe sous le defaut du navigateur ou sous la consigne.
+- **Note de frontiere de mandat** : `ines-design` propose les valeurs de taille et la disposition,
+  elle ne tranche pas ; `nadia-prof` garde seule le veto pedagogique sur ce que voit l'enfant.
+- **Lien decision** : reserves 6 et 7 de `squad/conformite/FICHE-bandit-manchot-additions-cp.md`
+  (verdict du 2026-08-05).
+- **Agent pressenti** : ines-design (proposition des valeurs), mise en oeuvre par marc-dev /
+  lea-dev / sofia-sm.
+
+### S2-2 - Un habillage visuel qui fait de recreo une application, pas une suite de pages nues
+
+- **Besoin** : en tant qu'enfant, je veux que tous les ecrans du jeu - l'accueil, la manche, le
+  retour juste, le retour faux, la fin de partie, l'ecran "il n'y a pas de jeu", l'ecran
+  d'erreur - se ressemblent, avec des couleurs et un espacement soignes, afin de reconnaitre que je
+  suis dans la meme application partout, plutot que devant du texte brut sans mise en forme.
+- **Competence programme visee** : transverse - identite visuelle et ergonomie, aucun contenu
+  pedagogique.
+- **Criteres d'acceptation** :
+  - Etant donne `recreo.css` livre, quand on releve les selecteurs `h1`, `.jeux`, `.demarrer`,
+    `.retour-accueil`, `.score`, `.fin-de-partie`, `.indice`, `.erreur`, `.pas-de-jeu`,
+    `.message-reprise` et `.recommencer`, alors chacun porte au moins une regle de couleur, de fond
+    ou d'espacement explicite ; aucun ne reste sans aucune declaration comme constate ce sprint.
+  - Etant donne l'ensemble des couleurs de texte et de fond utilisees par ces ecrans (hors le
+    signal juste/faux, deja fixe par S1-6), quand on les releve dans `recreo.css`, alors elles
+    proviennent d'un ensemble limite et nomme de valeurs reutilisees a plusieurs endroits du
+    fichier, et non de couleurs ponctuelles differentes a chaque selecteur.
+  - Etant donne toute ressource visuelle ajoutee par cette story (police, image de fond, couleur),
+    quand on l'inspecte, alors elle est servie depuis les ressources statiques de `adapter-web`,
+    empaquetee dans le fat jar unique, sans reference a une police telechargee a l'execution ni a
+    un CDN (l'application reste utilisable hors ligne).
+  - Etant donne `recreo.js`, quand on le relit apres cette story, alors il n'a recu aucune ligne de
+    comportement nouveau : l'habillage passe entierement par CSS et par les gabarits Thymeleaf deja
+    rendus par le serveur (`ADR-0008`).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que l'habillage obtenu (couleurs choisies, ambiance generale, caractere
+    accueillant ou anxiogene) soit adapte a un enfant de CP ou de CM1. Aucun critere ci-dessus ne
+    pretend juger le gout ou l'adequation du rendu, seulement sa presence, sa coherence formelle
+    (palette limitee et reutilisee) et sa conformite technique (hors ligne, sans JavaScript
+    nouveau).
+- **Note de frontiere de mandat** : `ines-design` propose la palette, le contraste et la
+  disposition, elle ne tranche pas ; `nadia-prof` garde seule le veto pedagogique sur ce que voit
+  l'enfant.
+- **Agent pressenti** : ines-design (proposition de palette et de charte), mise en oeuvre par
+  marc-dev / lea-dev / sofia-sm.
+
+### S2-3 - Une icone pour reconnaitre recreo dans mon navigateur
+
+- **Besoin** : en tant qu'enfant qui a deja lance recreo une fois, je veux voir un petit dessin
+  reconnaissable dans l'onglet du navigateur ou dans mes favoris, afin de retrouver l'application
+  sans avoir besoin de lire son nom.
+- **Competence programme visee** : transverse - identite du produit, aucun contenu pedagogique.
+- **Contexte et lien avec DEC-0002** : `/favicon.ico` repond 404 aujourd'hui, verifie sur
+  l'application lancee ; l'application n'a aucune icone. Une icone d'application vue par l'enfant a
+  chaque lancement releve de la categorie B de
+  `DEC-0002-emoji-et-pictogrammes-contenu-enfant.md` ("contenu et interface destines a l'enfant
+  [...] signaux d'interface purs") et non de sa categorie A (redaction du depot, qui interdit les
+  symboles Unicode decoratifs dans le registre professionnel de la squad) : cette interdiction ne
+  vise pas le dessin d'une icone d'interface, elle vise la prose du depot. L'icone n'est donc ni
+  interdite ni autorisee par principe par cette regle de style ; elle est gouvernee par le meme
+  mecanisme que le signal juste/faux de S1-6 - `ines-design` en propose la forme, `nadia-prof` en
+  juge l'adequation a un enfant de CP ou de CM1 (exactitude, absence d'ambiguite, absence de biais)
+  au cas par cas, comme n'importe quel autre element de categorie B. Voir aussi
+  `DEC-0006-perimetre-identite-visuelle-s02.md`, qui documente cette lecture.
+- **Criteres d'acceptation** :
+  - Etant donne l'application demarree via `java -jar bootstrap/target/recreo.jar`, quand une
+    requete HTTP est envoyee sur `/favicon.ico`, alors la reponse a un code 200 (plus de 404).
+  - Etant donne cette meme reponse, quand on lit son en-tete `Content-Type`, alors elle annonce un
+    type d'image (par exemple `image/x-icon`, `image/png` ou `image/svg+xml`, choix technique
+    laisse a `theo-archi` / `marc-dev` / `lea-dev`), jamais un type generique ni une page HTML.
+  - Etant donne le fichier d'icone livre, quand on verifie son emplacement, alors il est servi
+    comme une ressource statique de `adapter-web`, empaquetee dans le fat jar unique, sans appel
+    reseau ni CDN, disponible hors ligne.
+  - Etant donne `accueil.html` (le seul document HTML complet ; les autres gabarits sont des
+    fragments), quand on le relit, alors il reference explicitement cette icone (par exemple une
+    balise `<link rel="icon" ...>`), pour ne pas dependre du seul comportement implicite
+    `/favicon.ico` du navigateur.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que le dessin retenu soit reconnaissable, non ambigu et adapte a un enfant de CP
+    ou de CM1 (comme un pictogramme de contenu, `DEC-0002`, categorie B). Les criteres ci-dessus
+    garantissent seulement que l'icone existe, repond, est du bon type et fonctionne hors ligne -
+    pas qu'elle est un bon dessin pour un enfant.
+- **Note de frontiere de mandat** : `ines-design` propose le dessin et la couleur, elle ne tranche
+  pas ; `nadia-prof` garde seule le veto pedagogique sur ce que voit l'enfant.
+- **Lien decision** : `DEC-0002-emoji-et-pictogrammes-contenu-enfant.md` (categorie B) ;
+  `DEC-0006-perimetre-identite-visuelle-s02.md`.
+- **Agent pressenti** : ines-design (proposition du dessin), mise en oeuvre par marc-dev / lea-dev
+  / sofia-sm.
+
 ## Backlog - sprints suivants (intentions non detaillees)
 
 Ces intentions ne sont pas des stories pretes a developper. Elles seront detaillees sprint par
