@@ -6,8 +6,9 @@
 - **Contenu(s)** : additions CP dont les deux operandes et la somme sont compris entre 0 et 10.
   Matiere premiere de reference (a repasser devant `nadia-prof` comme un contenu neuf, pas
   reprise telle quelle) : `contenu-repris/cp-calcul-mental.yml`.
-- **Statut global** : VALIDE SOUS RESERVE (Done pedagogique accorde le 2026-08-05, reserves nommees
-  pour s02)
+- **Statut global** : VALIDE SOUS RESERVE (Done pedagogique du jeu accorde le 2026-08-05 au titre de
+  s01, **maintenu et non retire**). Chantier d'identite visuelle de s02 juge separement dans le meme
+  bloc de validation : **S2-2 et S2-3 accordes, S2-1 REFUSE** le 2026-08-05.
 - **Derniere mise a jour** : 2026-08-05
 
 ## Competences visees
@@ -60,7 +61,216 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Verdict courant - sprint s01
+### Verdict courant - sprint s02, chantier identite visuelle (S2-1, S2-2, S2-3)
+
+- **Verdict** : **S2-1 REFUSE. S2-2 VALIDE SOUS RESERVE (accorde). S2-3 VALIDE SOUS RESERVE
+  (accorde).** Verdict d'ensemble du chantier : **REFUSE**, parce que S2-1 est la story qui porte
+  mes reserves 6 et 7 et qu'elle n'est pas satisfaite sur l'element le plus manipule du jeu.
+- **Date** : 2026-08-05
+- **Portee de ce verdict** : il porte sur l'increment d'identite visuelle du commit `3be5a86`, pas
+  sur le jeu. **Le Done pedagogique de `bandit-manchot-additions-cp` accorde le 2026-08-05 au titre
+  de s01 n'est ni retire ni suspendu** : le contenu mathematique, les libelles et le traitement de
+  l'erreur n'ont pas bouge, et je les ai reverifies (voir point 4 ci-dessous). Un refus sur S2-1 ne
+  redescend pas le jeu.
+
+#### Ou j'ecris ce verdict, et pourquoi pas dans une fiche distincte
+
+`DEC-0006` laissait ouverte la question d'ouvrir une fiche de conformite distincte pour ce chantier.
+Je tranche : **non, je consigne ici.** Trois raisons. S2-1 n'est pas une story neuve, c'est la
+transcription litterale de mes reserves 6 et 7 de cette fiche : suivre une reserve dans un fichier
+et son traitement dans un autre est exactement la perte de trace que la gouvernance cherche a
+eviter. La convention est `FICHE-<jeu>.md` et `DEC-0006` a lui-meme etabli que ces trois stories ne
+constituent pas un nouveau jeu. Enfin, tous les ecrans que j'ai traverses sont ceux de ce jeu et de
+la coquille qui l'entoure. Je passe la main a `camille-po` sur un point de process que je ne
+tranche pas : le jour ou un deuxieme jeu existera, la partie "coquille d'application" de cet
+habillage n'aura plus de fiche naturelle ou vivre. C'est une question de backlog, pas la mienne.
+
+#### 1. Audit joue - moyens, et cette fois sans degradation
+
+Audit **non degrade**, et sur le JDK de la CI cette fois : `mvn -B package` puis
+`java -jar bootstrap/target/recreo.jar` sur le port 8099, avec `JAVA_HOME` positionne sur un JDK 21
+(21.0.10). L'ecart de JDK que je signalais en s01 n'existe plus sur cet audit.
+
+Ecrans reellement servis par l'application et traverses un par un : accueil, catalogue, une manche,
+une bonne reponse, une mauvaise reponse, une partie menee jusqu'a la fin de partie, le bouton de
+sortie "Les jeux", l'ecran d'erreur (reproduit par un coup joue sans partie en cours), l'ecran de
+reprise apres perte de session (reproduit avec une session HTTP morte et le cookie marqueur encore
+present).
+
+**Je n'ai pas juge sur la declaration CSS, j'ai regarde le rendu.** Chaque ecran a ete rasterise
+dans un vrai moteur de rendu, a 900 px de large, et mesure au pixel : hauteur et largeur reelles de
+chaque bloc d'encre. Deux ecrans ne sont pas atteignables en jeu reel et ont ete reconstruits avec
+le balisage exact des gabarits pour juger leur habillage, ce que je signale plutot que de le taire :
+la manche portant l'indice (toujours inatteignable en dix manches, voir ma reserve 3 de s01, non
+traitee par ce sprint et hors de son mandat) et l'ecran de catalogue vide.
+
+#### 2. S2-1 - REFUSE
+
+**Ce qui est fait, et bien fait.** Mes reserves 6 et 7 sont levees sur tout ce qu'elles nommaient.
+Mesure a l'ecran, pas dans le fichier : "Encore !" et "Recommencer" ne sont plus du texte a 13 px ni
+un lien souligne, ce sont deux vrais boutons pleins. Le bouton de sortie passe de 66 x 21 px a
+115 x 47 px. `.score`, `.indice`, `.fin-de-partie`, `.erreur`, `.pas-de-jeu`, `.message-reprise`
+sont tous a 1,25 rem ou plus, `h1` porte enfin une regle explicite. L'indice, le texte destine au
+lecteur le plus fragile, est a 1,25 rem dans un bandeau qui se voit. Sur ce perimetre-la, le travail
+est reel et je le dis.
+
+**Motif du refus.** `.proposition` - les boutons de reponse - est declare a **1,1 rem**, en dessous
+de `.consigne` (1,25 rem), et c'est le seul element de toute l'application a rester sous cette
+barre. `ines-design` le signale elle-meme comme laisse "hors perimetre". Le perimetre ecrit ne le
+permet pas : le premier critere de S2-1 vise "**chaque** selecteur qui affiche du texte lu par
+l'enfant **ou** un bouton actionnable - **au minimum** [liste]", et "au minimum" est un plancher,
+pas une liste fermee ; le deuxieme critere vise "**n'importe quel** bouton actionnable par
+l'enfant". Un bouton de reponse affiche un nombre que l'enfant lit et se presse pour repondre : il
+tombe sous les deux criteres. Ce n'est pas moi qui deplace la barre - c'est la phrase que j'ai
+ecrite en s01 et que `camille-po` a reprise mot pour mot dans la story.
+
+**Et il y a plus grave que la taille : cet increment a inverse la hierarchie visuelle dans le
+mauvais sens.** J'ai rendu la meme manche avec le CSS d'avant (`5af6160`) et avec celui d'apres
+(`3be5a86`), et j'ai mesure les boites :
+
+| Element | Avant | Apres |
+|---|---|---|
+| Bouton de sortie "Les jeux" | 66 x 21 px, defaut navigateur | 115 x 47 px, bleu plein |
+| Un bouton de reponse | 46 x 41 px, gris par defaut | 46 x 41 px, gris par defaut, inchange |
+
+Avant ce sprint, le bouton de reponse etait l'objet cliquable le plus grand de l'ecran de jeu ; la
+sortie etait le plus petit. Apres ce sprint, la sortie occupe pres de trois fois la surface d'un
+bouton de reponse, elle est la **seule** zone coloree de l'ecran, elle est en haut, et les trois
+boutons sur lesquels l'enfant doit appuyer sont les seuls controles restes gris. Pour un enfant de
+CP qui ne dechiffre pas encore les libelles et se guide a la saillance, l'element qui appelle la
+main est desormais celui qui **fait quitter le jeu**. L'habillage n'a pas oublie un detail : il a
+mis en valeur la sortie et laisse la tache dans l'ombre. C'est un recul pedagogique produit par cet
+increment, pas une dette heritee, et c'est ce qui fait la difference entre une reserve et un refus.
+
+**Deux consequences concretes que j'ajoute au motif.** La cible tactile d'un bouton de reponse
+mesure 46 x 41 px avec 8 px entre deux boutons : c'est sous les 44 px communement retenus comme
+minimum, pour des enfants dont la motricite fine est en construction. Un doigt qui derape d'un
+demi-centimetre appuie sur la reponse du dessous, et le jeu enregistre alors une erreur de calcul
+la ou il y a eu une erreur de geste. Le score cesse de dire ce que l'enfant sait.
+
+**Ce que j'attends pour lever ce refus** (je donne le motif, pas la valeur exacte, qui appartient a
+`ines-design`) : que `.proposition` passe au moins a 1,25 rem comme tout autre bouton actionnable ;
+qu'il prenne ses couleurs dans la palette nommee comme les autres et cesse de dependre du defaut du
+navigateur ; que sa cible tactile atteigne au moins 44 x 44 px avec un espacement qui pardonne un
+geste imprecis ; et surtout que, sur l'ecran de jeu, **aucun element ne soit plus saillant que les
+boutons de reponse** - la sortie doit rester atteignable, elle ne doit pas etre ce qui attire
+l'oeil en premier.
+
+**Un point que je remonte a `yanis-qa` et `theo-archi`, sans le trancher.** Le test
+`TailleDesTextesEtBoutonsTest.toutBoutonActionnableEstAuMoinsAUnRemVingtCinq` est vert, et son nom
+affirme "tout bouton actionnable". Il parcourt en fait une liste de quatre selecteurs ecrite en dur
+d'ou `.proposition` est absent - le seul bouton qui echoue. Une CI verte a donc couvert exactement
+le defaut que la story voulait empecher. Je decris le symptome, la forme du garde-fou ne
+m'appartient pas ; mais `CLAUDE.md` range deja "un garde-fou annonce mais absent" parmi les dettes
+a ne pas reproduire.
+
+#### 3. S2-2 - VALIDE SOUS RESERVE, accorde
+
+Les ecrans nus ne le sont plus, ils se ressemblent, et je le constate a l'ecran sur les huit
+rendus : accueil, manche, retour juste, retour faux, fin de partie, indice, erreur, reprise. La
+palette est nommee et reellement reutilisee. Tout est servi depuis le fat jar, sans CDN et sans
+police telechargee : l'application marche hors ligne. `recreo.js` n'a pas recu une ligne.
+
+**Le contraste, mesure et pas suppose.** J'ai calcule le rapport de contraste WCAG de chaque couple
+texte/fond reellement employe, et non juge sur le nom des couleurs. Les douze couples passent le
+niveau AA pour du texte normal : 14,09 pour le texte courant, 5,03 pour le bleu d'accent sur le
+fond de page, 5,41 pour le blanc sur les boutons, 13,93 dans les bandeaux d'attention, 4,67 pour le
+texte d'erreur, 4,56 et 4,92 pour la coche et la croix sur leurs fonds. Aucun texte de cette
+application n'est en dessous du seuil. C'est un progres net et il faut le dire.
+
+**Ma reserve de s01 sur les luminances tient toujours, et elle s'est etendue a toute la palette.**
+Les quatre couleurs qui portent du sens - bleu d'accent #2e6f9e, ambre d'attention #b45309, vert
+juste #2e7d32, rouge faux #c62828 - ont des luminances relatives de 0,144, 0,159, 0,155 et 0,137.
+En niveaux de gris elles valent respectivement 106, 111, 109 et 103 sur 255 : **les quatre couleurs
+signifiantes de recreo sont le meme gris.** Pour le signal juste/faux ce n'est pas un probleme, je
+l'ai deja juge en s01 et je le maintiens : la coche et la croix portent le sens par leur forme. Mais
+je note le fait pour que personne ne construise a l'avenir une information sur ces contrastes de
+teinte.
+
+**Reserves nommees, pour que `camille-po` en fasse des stories.**
+
+1. **Le bandeau d'attention n'existe pas sans la couleur.** Le fond ambre #fff4e5 et le fond de page
+   #f4f7fb ont des luminances de 0,916 et 0,927, soit un rapport de 1,01 : en niveaux de gris, ou
+   pour un enfant qui percoit mal les couleurs, l'indice et le message de reprise n'ont **aucun**
+   fond distinct du reste de la page. Ce qui les sauve aujourd'hui est le liseret de 4 px a gauche,
+   qui reste sombre et visible. Le bandeau tient donc, mais par un seul canal et par un trait fin.
+   A renforcer : un liseret plus epais, ou une bordure complete, ou un ecart de clarte reel entre
+   les deux fonds.
+2. **Deux boutons rigoureusement identiques cohabitent sur l'ecran de retour.** "Les jeux" et
+   "Encore !" ont la meme couleur, la meme taille, la meme forme, le meme arrondi, et sont l'un
+   au-dessus de l'autre. L'un continue la partie, l'autre la quitte. Rien ne les distingue que le
+   texte, c'est-a-dire la seule chose qu'un enfant de CP ne fait pas vite. Une action qui poursuit
+   et une action qui sort ne devraient pas avoir le meme habit.
+3. **Le bleu dit a la fois "lis-moi" et "appuie sur moi".** #2e6f9e est la couleur du titre, du
+   score et de "C'est fini !", et c'est aussi le fond de tous les boutons. Le remplissage distingue
+   les deux, ce qui est suffisant pour un adulte ; "C'est fini !" centre en bleu reste, pour un
+   lecteur debutant, tres proche de l'aspect d'une chose sur laquelle on appuie.
+4. **La fin de partie eloigne l'enfant de la seule action possible.** "C'est fini !" est centre au
+   milieu de l'ecran, et la seule sortie, "Les jeux", est un bouton aligne a gauche tout en haut,
+   la ou l'oeil n'est plus. Meme remarque sur l'ecran d'erreur : "Oups ! Le jeu a un souci." est
+   centre, "Recommencer" est a gauche en dessous. Ce n'est pas bloquant, les deux ecrans sont
+   presque vides, mais l'alignement devrait conduire l'enfant vers ce qu'il doit faire.
+
+#### 4. S2-3, l'icone d'application - VALIDE SOUS RESERVE, accorde
+
+Les criteres techniques sont tenus et je les ai verifies sur l'application lancee : `/favicon.ico`
+repond 200 en `image/x-icon`, 4201 octets, servi depuis les ressources statiques donc disponible
+hors ligne, et `accueil.html` le reference explicitement.
+
+**Le dessin, que je juge et qui n'appartient qu'a moi** (`DEC-0002` categorie B, confirme par
+`DEC-0006`). J'ai extrait les trois tailles du fichier et je les ai regardees agrandies au pixel.
+C'est un ecusson bleu a coins arrondis portant un "R" capitale blanc. Le dessin est propre, la
+couleur est celle de la palette, il n'y a **aucun biais** : pas de personnage, pas de genre, pas de
+contexte social ou familial, rien qui presuppose quoi que ce soit de l'enfant. Rien de faux non
+plus, et rien d'ambigu au sens ou l'enfant risquerait de confondre l'application avec autre chose.
+**Je l'accorde donc**, parce que refuser un objet qui ne fait de mal a personne et qui remplit le
+critere ecrit serait un caprice, et parce que l'application n'avait aucune icone hier.
+
+**Mais je dis clairement que ce n'est pas la bonne reponse, et je le porte en reserve.** Le besoin
+ecrit dans S2-3 est : "retrouver l'application **sans avoir besoin de lire son nom**". Un monogramme
+est le nom reduit a sa premiere lettre : la reponse apportee est precisement celle que le besoin
+excluait. Elle demande a l'enfant la seule competence qu'il est en train d'acquerir et sur laquelle
+il est le plus lent. Un enfant de CP reconnait un **objet** avant une lettre, et l'ecart est enorme
+entre les deux au mois d'octobre. Second point, mesure et pas suppose : la vignette de 16 px, celle
+que le navigateur affiche reellement dans l'onglet, ne compte que **5 pixels blancs purs sur 256**
+et 122 couleurs distinctes - c'est une reduction floue du grand dessin, pas un dessin pense pour
+16 px. A la taille ou l'enfant la voit, la lettre est une tache claire dans un carre bleu.
+
+**Ce que je demande pour un sprint suivant** : une icone qui soit un dessin d'objet, lisible d'un
+coup d'oeil a 16 px, sans lettre - le champ est large et je ne l'impose pas a `ines-design`, mais
+l'objet doit dire "jeu" ou "ecole" a un enfant qui ne lit pas. Et la vignette 16 px doit etre
+dessinee pour sa taille, pas obtenue par reduction.
+
+#### 5. Le texte lu par l'enfant n'a pas bouge - verifie
+
+Je l'ai verifie de deux facons, sur le HTML reellement servi et sur le diff complet depuis
+`caa1049`, le commit qui avait applique mes reformulations de s01. Le commit `3be5a86` ne touche que
+deux lignes de gabarit : l'ajout du `<link rel="icon">` dans `accueil.html`, et l'ajout de
+`class="encore"` sur le bouton "Encore !" de `fragments/retour.html`. **Aucun caractere de texte
+destine a l'enfant n'a ete modifie.** Releves intacts a l'ecran : "Recreo", "Calcul CP",
+"Les jeux", "Score : N", "Combien ça fait ?", "Bravo, c'est juste !", "Non, c'est 7.", "C'est
+fini !", "Encore !", "Compte sur tes doigts.", "Oups ! Le jeu a un souci.", "Recommencer",
+"Ta partie s'est arrêtée. Choisis un nouveau jeu !", "Il n'y a pas de jeu pour le moment." Ce sont
+mot pour mot ceux que j'ai valides ou reformules a la cloture de s01, accents compris. Ma porte n'a
+pas ete contournee et je le note explicitement, parce qu'un controle qui ne dit rien quand tout va
+bien ne prouve rien.
+
+#### 6. Ce que ce verdict ne dit pas
+
+Mes reserves de s01 numerotees 1, 3, 4, 5, 8, 9, 10 et 11 (libelle de fin de partie deja corrige,
+indice inatteignable, repartition des sommes, "0 + 0", "Calcul CP", accentuation de "Recreo",
+catalogue vide sans action) n'etaient pas dans le mandat de ce sprint et **restent ouvertes en
+l'etat**. J'ai reverifie en jouant que l'indice demeure inatteignable en dix manches : ce n'est ni
+un progres ni un recul de s02.
+
+`squad/programme/MATRICE-couverture.md` : **aucun changement de mon fait, et aucun n'est du.** Ces
+trois stories ne portent aucune competence du referentiel, `DEC-0006` le dit deja. La ligne
+mathematiques / CP reste `en cours` pour la raison ecrite dans mon verdict de s01, qui n'a pas
+bouge : la reserve 5 n'est pas traitee.
+
+---
+
+### Verdict du sprint s01, conserve pour trace
 
 - **Verdict** : VALIDE SOUS RESERVE. **Done pedagogique ACCORDE.**
 - **Date** : 2026-08-05
