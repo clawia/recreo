@@ -118,6 +118,11 @@ class PartieServiceTest {
             public GameSession apply(GameSession session, Move coup) {
                 return new BanditManchot().apply(session, coup);
             }
+
+            @Override
+            public int longueurMinimale() {
+                return new BanditManchot().longueurMinimale();
+            }
         };
         ContentCatalogPort catalogue = () -> List.of(JEU);
         MechanicRegistryPort mecaniques = id -> mecaniqueEspion;

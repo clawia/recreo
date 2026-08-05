@@ -343,7 +343,7 @@ class PartieControllerTest {
                             10),
                     new GameDefinition(JEU_INFINI_ID, "Jeu infini", "Choisis la bonne reponse",
                             BanditManchot.ID, DESCRIPTEUR,
-                            new AdditionsBorneesContentSource(DESCRIPTEUR, 10, 3),
+                            new AdditionsBorneesContentSource(DESCRIPTEUR, 10, 3, "Compte sur tes doigts."),
                             2),
                     new GameDefinition(JEU_REPETE_ID, "Jeu repete", "Choisis la bonne reponse",
                             BanditManchot.ID, DESCRIPTEUR,

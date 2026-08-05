@@ -84,6 +84,16 @@ class BanditManchotTest {
         assertThat(new BanditManchot().id()).isEqualTo(new MechanicId("bandit-manchot"));
     }
 
+    /**
+     * S3-2, ADR-0013 : la mecanique publie la longueur minimale en dessous de laquelle son aide
+     * (manche plus simple, indice) ne peut jamais s'afficher. CatalogueChargeableIT compare cette
+     * valeur a nombreDeManches pour chaque jeu du catalogue reel plutot que de l'ecrire en dur.
+     */
+    @Test
+    void publieSaLongueurMinimalePourQueLAideResteAtteignable() {
+        assertThat(new BanditManchot().longueurMinimale()).isEqualTo(4);
+    }
+
     @Test
     void laPremiereMancheEstTireeAuDemarrage() {
         BanditManchotSession session = demarrer(troisManches());
@@ -210,7 +220,7 @@ class BanditManchotTest {
         ContentSource additionsMathsCP = new AdditionsBorneesContentSource(
                 new ContentDescriptor("Mathematiques", "CP", "Nombres et calculs",
                         "additions dans la limite de 10"),
-                10, 3);
+                10, 3, "Compte sur tes doigts.");
         ContentSource vocabulaireAnglaisCM1 = new ListContentSource(
                 new ContentDescriptor("Anglais", "CM1", "Vocabulaire", "les couleurs"),
                 List.of(new Question(new ItemId("v1"), "red", "rouge", List.of("bleu", "vert"))));
@@ -250,7 +260,7 @@ class BanditManchotTest {
      */
     @Test
     void laPartieSeTermineApresLeNombreDeManchesMemeAvecUnContenuCombinatoireInfini() {
-        ContentSource combinatoire = new AdditionsBorneesContentSource(DESCRIPTEUR, 10, 3);
+        ContentSource combinatoire = new AdditionsBorneesContentSource(DESCRIPTEUR, 10, 3, "Compte sur tes doigts.");
         BanditManchotSession session = demarrer(combinatoire, 10);
 
         for (int reponse = 1; reponse <= 9; reponse++) {
@@ -266,7 +276,10 @@ class BanditManchotTest {
         assertThat(session.enonceManche()).isEmpty();
     }
 
-    /** DEC-0004, point 4 : aucun indice avant le seuil, meme item redonne au dela. */
+    /**
+     * S3-2 (DEC-0007, point 3) : aucun indice avant trois echecs consecutifs, l'indice de la
+     * manche presentee au dela - ici, le meme item redonne puisque le contenu n'en propose qu'un.
+     */
     @Test
     void unItemRateTroisFoisEstRepresenteAvecUnIndiceLaFoisSuivante() {
         Question question = new Question(new ItemId("q1"), "un", "1", List.of("2"), Optional.of("une astuce"));
@@ -279,6 +292,82 @@ class BanditManchotTest {
         assertThat(session.indice()).isEmpty();
         session = jouer(session, "mauvaise");
         assertThat(session.indice()).contains("une astuce");
+    }
+
+    /**
+     * S3-2, 1er critere : le declencheur est un compte d'echecs consecutifs, quel que soit
+     * l'item concerne par chacun - contrairement au declenchement initial de S1-5, qui exigeait
+     * trois echecs sur le meme item et rendait l'indice inatteignable en jeu reel.
+     */
+    @Test
+    void troisEchecsConsecutifsSurDesItemsDifferentsDeclenchentAussiLIndice() {
+        Question q1 = new Question(new ItemId("q1"), "un", "1", List.of("2"), Optional.of("astuce"));
+        Question q2 = new Question(new ItemId("q2"), "deux", "2", List.of("3"), Optional.of("astuce"));
+        Question q3 = new Question(new ItemId("q3"), "trois", "3", List.of("4"), Optional.of("astuce"));
+        BanditManchotSession session = demarrer(sequenceInfinie(q1, q2, q3));
+
+        assertThat(session.indice()).isEmpty();
+        session = jouer(session, "faux");
+        assertThat(session.indice()).isEmpty();
+        session = jouer(session, "faux");
+        assertThat(session.indice()).isEmpty();
+        session = jouer(session, "faux");
+
+        assertThat(session.indice())
+                .as("trois echecs consecutifs sur trois items differents : l'indice se declenche quand meme")
+                .contains("astuce");
+    }
+
+    /**
+     * S3-2, 4e critere : quand la manche plus simple (item deja reussi) et l'indice se
+     * declenchent sur le meme evenement, les deux s'appliquent a la meme question suivante sans
+     * se contredire ni s'annuler l'un l'autre. Piege nomme par theo-archi : l'indice doit
+     * dependre de la valeur entrante d'echecsConsecutifs, pas de sa remise a zero pour la manche
+     * plus simple.
+     */
+    @Test
+    void laMancheSimplifieeEtLIndiceSeDeclenchentEnsembleSansSAnnuler() {
+        Question succes = new Question(new ItemId("reussi"), "succes", "ok", List.of("non"), Optional.of("astuce succes"));
+        Question q1 = new Question(new ItemId("q1"), "un", "1", List.of("2"));
+        Question q2 = new Question(new ItemId("q2"), "deux", "2", List.of("3"));
+        Question q3 = new Question(new ItemId("q3"), "trois", "3", List.of("4"));
+        BanditManchotSession session = demarrer(sequenceInfinie(succes, q1, q2, q3));
+
+        session = jouer(session, "ok");
+        assertThat(session.indice()).as("aucun echec consecutif : pas d'indice").isEmpty();
+        session = jouer(session, "faux");
+        session = jouer(session, "faux");
+        session = jouer(session, "faux");
+
+        assertThat(session.enonceManche()).as("manche plus simple : item deja reussi").contains("succes");
+        assertThat(session.indice()).as("indice du meme item, sur la meme manche").contains("astuce succes");
+    }
+
+    /**
+     * S3-2, 3e critere : le compteur d'echecs consecutifs se remet a zero apres chaque reussite
+     * (DEC-0004, point 4, inchange), et l'indice se declenche de nouveau sur un second groupe de
+     * trois echecs consecutifs plus tard dans la meme partie.
+     */
+    @Test
+    void lIndiceReapparaitApresUnSecondGroupeDeTroisEchecsConsecutifs() {
+        Question question = new Question(new ItemId("q1"), "un", "1", List.of("2"), Optional.of("astuce"));
+        BanditManchotSession session = demarrer(sequenceInfinie(question));
+
+        session = jouer(session, "faux");
+        session = jouer(session, "faux");
+        session = jouer(session, "faux");
+        assertThat(session.indice()).contains("astuce");
+
+        session = jouer(session, "1");
+        assertThat(session.indice()).as("reussite : le compteur d'echecs consecutifs repart a zero").isEmpty();
+        session = jouer(session, "faux");
+        session = jouer(session, "faux");
+        assertThat(session.indice()).isEmpty();
+        session = jouer(session, "faux");
+
+        assertThat(session.indice())
+                .as("second groupe de trois echecs consecutifs : l'indice reapparait")
+                .contains("astuce");
     }
 
     /**

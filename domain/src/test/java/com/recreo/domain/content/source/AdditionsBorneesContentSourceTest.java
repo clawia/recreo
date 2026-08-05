@@ -23,9 +23,11 @@ class AdditionsBorneesContentSourceTest {
     private static final ContentDescriptor DESCRIPTEUR = new ContentDescriptor(
             "Mathematiques", "CP", "Nombres et calculs", "additions dans la limite de 10");
 
+    private static final String INDICE = "Compte sur tes doigts.";
+
     private final RandomSource hasard = new Random(42)::nextInt;
     private final AdditionsBorneesContentSource source =
-            new AdditionsBorneesContentSource(DESCRIPTEUR, 10, 3);
+            new AdditionsBorneesContentSource(DESCRIPTEUR, 10, 3, INDICE);
 
     @Test
     void chaqueManchePresenteDeuxOperandesEtUneSommeEntre0Et10() {
@@ -105,6 +107,64 @@ class AdditionsBorneesContentSourceTest {
         assertThat(tiragesAvecOperandeNul)
                 .as("proportion de tirages a operande nul sur 200, jamais zero")
                 .isBetween(10, 30);
+    }
+
+    /**
+     * S3-1, 1er et 2e criteres : sur 6500 tirages, chaque somme reste dans la fourchette
+     * pedagogique de DEC-0007 point 2 (amendee le 2026-08-05, calculee sur le tirage reellement
+     * compose - tirage uniforme puis filtre d'operandes nuls), et l'addition "0 + 0" n'apparait
+     * jamais (le couple est retire du tirage). Verifie sur vingt graines declarees (ADR-0013,
+     * note de methode de theo-archi) : une seule graine ne prouve rien, elle peut passer par
+     * chance sur une cible mal calculee, comme mesure sur la table non recalculee (4 echecs sur
+     * 10 graines a 6500 tirages, contre 0 echec sur 20 une fois la table recalculee).
+     */
+    @Test
+    void surSixMilleCinqCentsTiragesChaqueSommeResteDansSaFourchettePourVingtGraines() {
+        double[] fourchetteBasse = {0, 0, 1.23, 3.16, 5.10, 7.03, 8.97, 10.90, 12.84, 14.77, 16.71};
+        double[] fourchetteHaute = {0, 3.29, 5.23, 7.16, 9.10, 11.03, 12.97, 14.90, 16.84, 18.77, 20.71};
+
+        for (int graine = 0; graine < 20; graine++) {
+            RandomSource graineFixe = new Random(graine)::nextInt;
+            int[] occurrencesParSomme = new int[11];
+            int occurrencesZeroPlusZero = 0;
+
+            for (int tirage = 0; tirage < 6500; tirage++) {
+                Question question = (Question) source.next(graineFixe, Set.<ItemId>of()).orElseThrow();
+                if ("0 + 0".equals(question.enonce())) {
+                    occurrencesZeroPlusZero++;
+                }
+                occurrencesParSomme[Integer.parseInt(question.bonneReponse())]++;
+            }
+
+            assertThat(occurrencesZeroPlusZero).as("graine %d : '0 + 0' n'apparait jamais", graine).isZero();
+            for (int somme = 0; somme <= 10; somme++) {
+                double proportion = occurrencesParSomme[somme] * 100.0 / 6500;
+                assertThat(proportion)
+                        .as("graine %d, somme %d", graine, somme)
+                        .isBetween(fourchetteBasse[somme], fourchetteHaute[somme]);
+            }
+        }
+    }
+
+    /**
+     * S3-1, 3e critere : consequence directe de l'exclusion du couple (0, 0), verifiee
+     * explicitement parce que c'etait le cas le plus grave signale par nadia-prof (reserve 8,
+     * verdict s01) : "et surtout pas en premiere manche".
+     */
+    @Test
+    void surCinquantePartiesIndependantesLaPremiereMancheNEstJamais0Plus0() {
+        for (int graine = 0; graine < 50; graine++) {
+            RandomSource graineFixe = new Random(graine)::nextInt;
+            Question premiereManche = (Question) source.next(graineFixe, Set.<ItemId>of()).orElseThrow();
+
+            assertThat(premiereManche.enonce()).as("graine %d", graine).isNotEqualTo("0 + 0");
+        }
+    }
+
+    /** S3-3 (DEC-0005) : l'indice vient du parametre recu au constructeur, jamais d'une constante. */
+    @Test
+    void lIndiceDeChaqueQuestionEstCeluiRecuAuConstructeur() {
+        assertThat(tirer().indice()).contains(INDICE);
     }
 
     private Question tirer() {

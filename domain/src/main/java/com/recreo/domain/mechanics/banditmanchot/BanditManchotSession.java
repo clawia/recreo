@@ -10,10 +10,8 @@ import com.recreo.domain.mechanic.Score;
 import com.recreo.domain.mechanic.SessionStatus;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -23,22 +21,28 @@ import java.util.Set;
  * appartient a la mecanique, pas a un moteur partage).
  *
  * <p>ADR-0012 : la partie se termine des que {@code nombreDeManches} reponses ont ete donnees,
- * independamment de ce que rend le contenu. Deux aides face a l'echec repete (DEC-0004, point 4) :
- * apres trois echecs consecutifs, quel que soit l'item, la manche suivante represente un item deja
- * reussi dans la session plutot qu'un nouveau tirage ; un item ayant deja ete rate trois fois, s'il
- * est represente a nouveau, porte l'indice que son contenu lui associe.</p>
+ * independamment de ce que rend le contenu. Deux aides face a l'echec repete se declenchent sur le
+ * meme evenement, trois echecs consecutifs quel que soit l'item (DEC-0004 point 4, S3-2) : la
+ * manche suivante represente un item deja reussi dans la session plutot qu'un nouveau tirage, et
+ * elle porte l'indice que son contenu lui associe.</p>
  */
 public final class BanditManchotSession implements GameSession {
 
     private static final int SEUIL_ECHECS_CONSECUTIFS = 3;
-    private static final int SEUIL_ECHECS_SUR_LE_MEME_ITEM = 3;
+
+    /**
+     * S3-2, ADR-0013 : longueur minimale de partie en dessous de laquelle l'aide (manche plus
+     * simple, indice) ne peut jamais s'afficher, quelle que soit la sequence de reponses - il faut
+     * SEUIL_ECHECS_CONSECUTIFS manches ratees, puis une manche de plus pour porter l'aide.
+     * CatalogueChargeableIT compare cette valeur a nombreDeManches pour chaque jeu du catalogue.
+     */
+    static final int LONGUEUR_MINIMALE_POUR_AIDE = SEUIL_ECHECS_CONSECUTIFS + 1;
 
     private final ContentSource contenu;
     private final RandomSource hasard;
     private final int nombreDeManches;
     private final Set<ItemId> dejaTirees;
     private final List<Question> reussies;
-    private final Map<ItemId, Integer> echecsParItem;
     private final int echecsConsecutifs;
     private final Question mancheCourante;
     private final List<String> propositions;
@@ -49,16 +53,14 @@ public final class BanditManchotSession implements GameSession {
 
     private BanditManchotSession(ContentSource contenu, RandomSource hasard, int nombreDeManches,
                                   Set<ItemId> dejaTirees, List<Question> reussies,
-                                  Map<ItemId, Integer> echecsParItem, int echecsConsecutifs,
-                                  Question mancheCourante, List<String> propositions,
-                                  Optional<String> indiceAffiche, Verdict dernierVerdict, Score score,
-                                  SessionStatus status) {
+                                  int echecsConsecutifs, Question mancheCourante,
+                                  List<String> propositions, Optional<String> indiceAffiche,
+                                  Verdict dernierVerdict, Score score, SessionStatus status) {
         this.contenu = contenu;
         this.hasard = hasard;
         this.nombreDeManches = nombreDeManches;
         this.dejaTirees = Set.copyOf(dejaTirees);
         this.reussies = List.copyOf(reussies);
-        this.echecsParItem = Map.copyOf(echecsParItem);
         this.echecsConsecutifs = echecsConsecutifs;
         this.mancheCourante = mancheCourante;
         this.propositions = List.copyOf(propositions);
@@ -69,8 +71,8 @@ public final class BanditManchotSession implements GameSession {
     }
 
     static BanditManchotSession demarrer(ContentSource contenu, RandomSource hasard, int nombreDeManches) {
-        return tirerManche(contenu, hasard, nombreDeManches, new HashSet<>(), List.of(), Map.of(), 0,
-                null, new Score(0, 0));
+        return tirerManche(contenu, hasard, nombreDeManches, new HashSet<>(), List.of(), 0, null,
+                new Score(0, 0));
     }
 
     BanditManchotSession jouer(BanditManchotMove coup) {
@@ -82,7 +84,6 @@ public final class BanditManchotSession implements GameSession {
         Score nouveauScore = avancer(score, juste);
 
         List<Question> reussiesSuivantes = new ArrayList<>(reussies);
-        Map<ItemId, Integer> echecsSuivants = new HashMap<>(echecsParItem);
         int echecsConsecutifsSuivants;
         if (juste) {
             if (reussiesSuivantes.stream().noneMatch(question -> question.id().equals(mancheCourante.id()))) {
@@ -90,47 +91,48 @@ public final class BanditManchotSession implements GameSession {
             }
             echecsConsecutifsSuivants = 0;
         } else {
-            echecsSuivants.merge(mancheCourante.id(), 1, Integer::sum);
             echecsConsecutifsSuivants = echecsConsecutifs + 1;
         }
 
         if (nouveauScore.tentatives() >= nombreDeManches) {
             return new BanditManchotSession(contenu, hasard, nombreDeManches, dejaTirees, reussiesSuivantes,
-                    echecsSuivants, echecsConsecutifsSuivants, null, List.of(), Optional.empty(), verdict,
-                    nouveauScore, SessionStatus.TERMINEE);
+                    echecsConsecutifsSuivants, null, List.of(), Optional.empty(), verdict, nouveauScore,
+                    SessionStatus.TERMINEE);
         }
         return tirerManche(contenu, hasard, nombreDeManches, new HashSet<>(dejaTirees), reussiesSuivantes,
-                echecsSuivants, echecsConsecutifsSuivants, verdict, nouveauScore);
+                echecsConsecutifsSuivants, verdict, nouveauScore);
     }
 
     /**
-     * Choisit la manche suivante : apres le seuil d'echecs consecutifs, un item deja reussi dans la
-     * session plutot qu'un nouveau tirage (DEC-0004, point 4), sauf si aucun item n'a encore ete
-     * reussi, auquel cas le tirage normal reprend sans erreur (repli explicite).
+     * Choisit la manche suivante. Le declencheur des deux aides est le meme, et il porte sur la
+     * valeur entrante {@code echecsConsecutifs} (S3-2, piege nomme par theo-archi) : l'obtenir
+     * apres l'avoir remise a zero pour la "manche plus simple" ferait echouer le cas ou les deux
+     * aides doivent se declencher ensemble. Un item deja reussi remplace le tirage normal (DEC-0004,
+     * point 4), sauf si aucun item n'a encore ete reussi, auquel cas le tirage normal reprend sans
+     * erreur (repli explicite) - l'indice se declenche alors sans la manche plus simple.
      */
     private static BanditManchotSession tirerManche(ContentSource contenu, RandomSource hasard,
                                                       int nombreDeManches, HashSet<ItemId> tirees,
-                                                      List<Question> reussies,
-                                                      Map<ItemId, Integer> echecsParItem,
-                                                      int echecsConsecutifs, Verdict verdict, Score score) {
+                                                      List<Question> reussies, int echecsConsecutifs,
+                                                      Verdict verdict, Score score) {
+        boolean declencheAide = echecsConsecutifs >= SEUIL_ECHECS_CONSECUTIFS;
         Question manche;
         int echecsConsecutifsApres = echecsConsecutifs;
-        if (echecsConsecutifs >= SEUIL_ECHECS_CONSECUTIFS && !reussies.isEmpty()) {
+        if (declencheAide && !reussies.isEmpty()) {
             manche = reussies.get(hasard.nextInt(reussies.size()));
             echecsConsecutifsApres = 0;
         } else {
             Optional<Item> tiree = contenu.next(hasard, tirees);
             if (tiree.isEmpty()) {
                 return new BanditManchotSession(contenu, hasard, nombreDeManches, tirees, reussies,
-                        echecsParItem, echecsConsecutifsApres, null, List.of(), Optional.empty(), verdict,
-                        score, SessionStatus.TERMINEE);
+                        echecsConsecutifsApres, null, List.of(), Optional.empty(), verdict, score,
+                        SessionStatus.TERMINEE);
             }
             manche = questionDe(tiree.orElseThrow());
         }
         tirees.add(manche.id());
-        Optional<String> indiceAffiche = echecsParItem.getOrDefault(manche.id(), 0) >= SEUIL_ECHECS_SUR_LE_MEME_ITEM
-                ? manche.indice() : Optional.empty();
-        return new BanditManchotSession(contenu, hasard, nombreDeManches, tirees, reussies, echecsParItem,
+        Optional<String> indiceAffiche = declencheAide ? manche.indice() : Optional.empty();
+        return new BanditManchotSession(contenu, hasard, nombreDeManches, tirees, reussies,
                 echecsConsecutifsApres, manche, melanger(manche, hasard), indiceAffiche, verdict, score,
                 SessionStatus.EN_COURS);
     }
@@ -166,7 +168,7 @@ public final class BanditManchotSession implements GameSession {
         return propositions;
     }
 
-    /** L'indice n'est expose qu'apres le seuil d'echecs sur ce meme item (DEC-0004, point 4). */
+    /** L'indice n'est expose qu'apres SEUIL_ECHECS_CONSECUTIFS echecs consecutifs (S3-2). */
     public Optional<String> indice() {
         return indiceAffiche;
     }

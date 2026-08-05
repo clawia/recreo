@@ -9,3 +9,4 @@ descripteur:
 parametres:
   sommeMaximale: 10
   nombreDePropositions: 3
+  indice: "Astuce de la fixture, jamais affichee a un enfant."

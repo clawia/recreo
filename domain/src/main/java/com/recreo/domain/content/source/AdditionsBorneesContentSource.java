@@ -16,32 +16,57 @@ import java.util.Set;
  * Tirage combinatoire d'additions dont les deux operandes et la somme restent dans les bornes
  * fournies. ADR-0006 : ces bornes (sommeMaximale, nombreDePropositions) vivent ici, declarees dans
  * son propre paquet YAML sous 'parametres' et lues par sa seule fabrique - aucun autre contenu ni
- * aucune mecanique ne les voit.
+ * aucune mecanique ne les voit. DEC-0005 : l'indice est de meme nature, recu au constructeur.
  */
 public final class AdditionsBorneesContentSource implements ContentSource {
 
     private static final int TENTATIVES_MAX = 20;
 
     /**
-     * S1-7 (DEC-0004, point 5) : un tirage brut comporte un operande nul environ un tiers du temps
-     * (l'un des deux operandes vaut 0, une propriete du programme qui ne demande pas de calculer).
-     * Un tirage a operande nul n'est retenu qu'une fois sur ACCEPTATION_OPERANDE_NUL_SUR, les
-     * autres sont retires : la proportion mesuree sur 200 tirages a graine fixee tombe alors entre
-     * 5 % et 15 %, jamais a zero.
+     * DEC-0007 point 2, amende le 2026-08-05 (s03) : le couple retenu est tire uniformement parmi
+     * les couples (a, b) valides (a + b <= sommeMaximale), le couple (0, 0) excepte, plutot que
+     * par le tirage en deux temps d'origine qui favorisait mecaniquement les grandes sommes.
+     *
+     * <p>S1-7 (DEC-0004, point 5) : ce tirage uniforme comporte un operande nul environ un tiers du
+     * temps (l'un des deux operandes vaut 0, une propriete du programme qui ne demande pas de
+     * calculer). Un tirage a operande nul n'est retenu qu'une fois sur ACCEPTATION_OPERANDE_NUL_SUR,
+     * les autres sont retires. Amendement du 2026-08-05 a DEC-0004 : la valeur 3 (au lieu de 5)
+     * produit la cible pedagogique de 12,9 %, et c'est la seule valeur qui tient a la fois ce
+     * seuil et la table de repartition par somme de DEC-0007 point 2, calculee sur le tirage ainsi
+     * compose.
      */
-    private static final int ACCEPTATION_OPERANDE_NUL_SUR = 5;
-
-    private static final String INDICE = "Compte sur tes doigts.";
+    private static final int ACCEPTATION_OPERANDE_NUL_SUR = 3;
 
     private final ContentDescriptor descripteur;
     private final int sommeMaximale;
     private final int nombreDePropositions;
+    private final String indice;
+    private final List<Couple> couplesValides;
 
     public AdditionsBorneesContentSource(ContentDescriptor descripteur, int sommeMaximale,
-                                          int nombreDePropositions) {
+                                          int nombreDePropositions, String indice) {
         this.descripteur = descripteur;
         this.sommeMaximale = sommeMaximale;
         this.nombreDePropositions = nombreDePropositions;
+        this.indice = indice;
+        this.couplesValides = couplesValides(sommeMaximale);
+    }
+
+    /** DEC-0007 point 2 : tous les couples (a, b) avec a + b <= sommeMaximale, sauf (0, 0). */
+    private static List<Couple> couplesValides(int sommeMaximale) {
+        List<Couple> couples = new ArrayList<>();
+        for (int a = 0; a <= sommeMaximale; a++) {
+            for (int b = 0; a + b <= sommeMaximale; b++) {
+                if (a == 0 && b == 0) {
+                    continue;
+                }
+                couples.add(new Couple(a, b));
+            }
+        }
+        return List.copyOf(couples);
+    }
+
+    private record Couple(int operandeA, int operandeB) {
     }
 
     @Override
@@ -64,23 +89,23 @@ public final class AdditionsBorneesContentSource implements ContentSource {
     }
 
     private Question tirer(RandomSource hasard) {
-        int operandeA;
-        int operandeB;
+        Couple couple;
         int tentative = 0;
         do {
-            operandeA = hasard.nextInt(sommeMaximale + 1);
-            operandeB = hasard.nextInt(sommeMaximale - operandeA + 1);
+            couple = couplesValides.get(hasard.nextInt(couplesValides.size()));
             tentative++;
-        } while (auMoinsUnOperandeNul(operandeA, operandeB)
+        } while (auMoinsUnOperandeNul(couple.operandeA(), couple.operandeB())
                 && hasard.nextInt(ACCEPTATION_OPERANDE_NUL_SUR) != 0
                 && tentative < TENTATIVES_MAX);
+        int operandeA = couple.operandeA();
+        int operandeB = couple.operandeB();
         int somme = operandeA + operandeB;
         return new Question(
                 new ItemId("addition-" + operandeA + "-" + operandeB),
                 operandeA + " + " + operandeB,
                 String.valueOf(somme),
                 distracteurs(hasard, somme),
-                Optional.of(INDICE));
+                Optional.of(indice));
     }
 
     private static boolean auMoinsUnOperandeNul(int operandeA, int operandeB) {

@@ -43,6 +43,24 @@ class YamlContentPackLoaderTest {
         GameDefinition jeuAdditions = jeu(jeux, "jeu-additions");
         Optional<Item> itemAdditions = jeuAdditions.contenu().next(borne -> 0, Set.<ItemId>of());
         assertThat(itemAdditions).isPresent();
+        assertThat(((Question) itemAdditions.orElseThrow()).indice())
+                .as("S3-3 (DEC-0005) : l'indice suit le texte du paquet, pas une constante Java")
+                .contains("Astuce de la fixture, jamais affichee a un enfant.");
+    }
+
+    /**
+     * S3-3 (DEC-0005), 3e critere : le texte reellement affiche a l'enfant par le paquet reel
+     * livre en production reste identique, caractere pour caractere, a celui de la constante Java
+     * qu'il remplace.
+     */
+    @Test
+    void lIndiceDuPaquetReelDesAdditionsCPResteIdentiqueApresSonDeplacementVersLeYaml() {
+        List<GameDefinition> jeux = new YamlContentPackLoader().games();
+
+        GameDefinition jeu = jeu(jeux, "bandit-manchot-additions-cp");
+        Question question = (Question) jeu.contenu().next(borne -> 0, Set.<ItemId>of()).orElseThrow();
+
+        assertThat(question.indice()).contains("Compte sur tes doigts.");
     }
 
     @Test
