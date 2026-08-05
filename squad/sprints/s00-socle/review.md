@@ -17,7 +17,7 @@ l'enfant, un score illisible au CP et un ecran d'erreur sans issue.
 
 - **Commande** : `JAVA_HOME=<JDK 21> mvn -B verify`
 - **Resultat** : vert. `yanis-qa` a mesure 80 tests stables sur trois executions repetees
-  (commit `cd8a808`) ; les ajouts ulterieurs de `theo-archi` (commit `0dbe146`) portent le total
+  (commit `2f93e80`) ; les ajouts ulterieurs de `theo-archi` (commit `f2bef10`) portent le total
   a **92 tests, 0 echec**, confirmes independamment par `confirmation-archunit.md`.
 - **Couvert** : les quatre criteres numeriques du contenu additions CP a graine fixe ; le parcours
   de jeu complet a trois niveaux (domaine, controleur, HTTP bout en bout) y compris que la bonne
@@ -32,7 +32,7 @@ l'enfant, un score illisible au CP et un ecran d'erreur sans issue.
   `yanis-qa`, aucun test automatise - remonte a `sofia-sm`, depuis comble par `ADR-0009` (voir
   obstacles ci-dessous) ; quatre regles ArchUnit de garde (`ADR-0005`, `ADR-0006` x3, `ADR-0007`)
   n'avaient pas de contre-exemple au moment du rapport - egalement remonte, egalement comble par
-  la suite (`0dbe146`).
+  la suite (`f2bef10`).
 - **Tests instables** : aucun. Trois executions repetees de la suite, resultat identique a chaque
   fois ; tout hasard de test recoit une graine fixe injectee, seule la production utilise un
   hasard non seede.
@@ -43,7 +43,7 @@ l'enfant, un score illisible au CP et un ecran d'erreur sans issue.
 - **Resultat** : **BUILD SUCCESS**, code de sortie 0, 92 tests, 0 echec. Second garde-fou,
   `bash .github/scripts/verifier-prefixes-test.sh` : 14 cas, tous verts.
 - **Regles ajoutees ce sprint** : aucune regle ArchUnit nouvelle (les 21 regles du depot ont
-  toutes ete ecrites au premier commit de code, `ef3fda6`). Une regle **reecrite** parce qu'elle
+  toutes ete ecrites au premier commit de code, `e91f308`). Une regle **reecrite** parce qu'elle
   ne mordait pas : `DifficulteTest.leContratDeContenuNePorteQueDuTexte` (`ADR-0006`) laissait
   passer un `int` (paquet `java.lang` en ArchUnit) et un `Set<Operation>` (`haveRawType` ignore
   les arguments generiques) - exactement les deux formes reelles de la dette n°2 de `main`.
@@ -54,7 +54,7 @@ l'enfant, un score illisible au CP et un ecran d'erreur sans issue.
 
 ## Relecture - relecteur-pedagogique
 
-- **Corrections appliquees** (commit `274c54d`) : `CLAUDE.md`, `squad/README.md` et
+- **Corrections appliquees** (commit `89f7bae`) : `CLAUDE.md`, `squad/README.md` et
   `squad/EQUIPE.md` corriges pour decrire le code livre (cinq modules dont `adapter-content`) et
   non la cible documentee au depart (`adapter-persistence`, "integration H2"), conformement a ce
   qu'`ADR-0001` et `DEC-0003` avaient deja acte ; libelle de l'etape CI aligne, sa commande restant
@@ -69,17 +69,17 @@ l'enfant, un score illisible au CP et un ecran d'erreur sans issue.
 | Description | Categorie | Agent route | Decision liee | Statut |
 |---|---|---|---|---|
 | JDK 21 absent du `PATH` (JRE 1.8 par defaut), toolchains Maven mal nommees | capacite / technique | sofia-sm | decision n°1 de `planning.md` | clos |
-| Ecart entre `CLAUDE.md` (module `adapter-persistence`, "integration H2") et `ADR-0001` / `DEC-0003` | redaction | relecteur-pedagogique | - (correction directe) | clos par `274c54d` |
-| Catalogue de repli (`CatalogueDeRepliConfiguration`) contraire au chargement eager sans repli silencieux d'`ADR-0007` | technique | lea-dev | - (correction directe) | clos par `424c402` |
-| Regles de garde sans contre-exemple, dont 4 signalees explicitement par `yanis-qa` (`ADR-0005`, `ADR-0006` x3, `ADR-0007`) et 6 autres trouvees a l'inventaire | technique | theo-archi | amendements `ADR-0001` a `ADR-0008` | clos par `0dbe146` |
-| Garde-fou de prefixe de commit non teste (script shell, aucun test automatise) | qualite puis technique | yanis-qa puis theo-archi | `ADR-0009` | clos par `0dbe146` |
-| Refus pedagogique de `bandit-manchot-additions-cp` (trois motifs bloquants) sans traduction en story ni exigence positive pour le texte de categorie B | pedagogie | camille-po | `DEC-0002` (amendee) + `docs/backlog/backlog.md` section Sprint 1 | **clos comme obstacle de routage** par `bcfae00` (`camille-po` a traduit le refus en stories S1-1 a S1-9 et amende `DEC-0002`) **et** l'increment `bandit-manchot-additions-cp` reste **non valide** pedagogiquement (verdict REFUSE), trace dans `squad/validation/FILE-ATTENTE.md` - c'est l'etat normal d'un Done pedagogique refuse, pas un obstacle ouvert |
+| Ecart entre `CLAUDE.md` (module `adapter-persistence`, "integration H2") et `ADR-0001` / `DEC-0003` | redaction | relecteur-pedagogique | - (correction directe) | clos par `89f7bae` |
+| Catalogue de repli (`CatalogueDeRepliConfiguration`) contraire au chargement eager sans repli silencieux d'`ADR-0007` | technique | lea-dev | - (correction directe) | clos par `abc8495` |
+| Regles de garde sans contre-exemple, dont 4 signalees explicitement par `yanis-qa` (`ADR-0005`, `ADR-0006` x3, `ADR-0007`) et 6 autres trouvees a l'inventaire | technique | theo-archi | amendements `ADR-0001` a `ADR-0008` | clos par `f2bef10` |
+| Garde-fou de prefixe de commit non teste (script shell, aucun test automatise) | qualite puis technique | yanis-qa puis theo-archi | `ADR-0009` | clos par `f2bef10` |
+| Refus pedagogique de `bandit-manchot-additions-cp` (trois motifs bloquants) sans traduction en story ni exigence positive pour le texte de categorie B | pedagogie | camille-po | `DEC-0002` (amendee) + `docs/backlog/backlog.md` section Sprint 1 | **clos comme obstacle de routage** par `881768a` (`camille-po` a traduit le refus en stories S1-1 a S1-9 et amende `DEC-0002`) **et** l'increment `bandit-manchot-additions-cp` reste **non valide** pedagogiquement (verdict REFUSE), trace dans `squad/validation/FILE-ATTENTE.md` - c'est l'etat normal d'un Done pedagogique refuse, pas un obstacle ouvert |
 | Trou etroit dans `leContratDeContenuNePorteQueDuTexte` reecrite : un enum arithmetique place dans le paquet de contrat lui-meme (`com.recreo.domain.content`) passe encore la regle et `leContratDeContenuEstFerme` | technique | theo-archi | - | ouvert, reporte au sprint 1 |
 | Aucun agent n'a mandat sur le design d'interface et l'accessibilite visuelle : `recreo.css` (story S0-5) ecrit par `marc-dev` hors de son mandat, puis juge par `nadia-prof` hors du sien (`FICHE-bandit-manchot-additions-cp.md`) ; les stories S1-6 et S1-9 du backlog n'ont aucun agent naturel | capacite | sofia-sm | amendement n°4 de `retro.md` - creation d'un neuvieme agent prevue au planning du sprint 1 | route - aucune definition d'agent n'existe encore dans `.claude/agents/` |
 
 Rappel : un obstacle n'est `clos` que si le fichier de decision existe physiquement. Verifie pour
-chaque ligne ci-dessus : `274c54d`, `424c402`, `0dbe146`, `ADR-0009-les-garde-fous-de-ci-sont-des-scripts-testes.md`
-et `bcfae00` existent tous sur le disque et ont ete lus avant d'ecrire ce tableau.
+chaque ligne ci-dessus : `89f7bae`, `abc8495`, `f2bef10`, `ADR-0009-les-garde-fous-de-ci-sont-des-scripts-testes.md`
+et `881768a` existent tous sur le disque et ont ete lus avant d'ecrire ce tableau.
 
 ## Porte pedagogique - nadia-prof
 

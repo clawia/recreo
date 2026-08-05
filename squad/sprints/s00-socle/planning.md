@@ -117,7 +117,7 @@ livrables non executables (etape 5 de `squad/README.md` section 9), pas au plann
 
 Ce planning affectait a l'origine les contrats de domaine et d'application a `marc-dev`
 (sequencement, etape 2 des prochaines etapes ci-dessus). Ce n'est pas ce qui s'est passe : le
-commit `a3e530b` montre que `theo-archi` les a livres lui-meme avec le squelette Maven, pour que
+commit `d2005d2` montre que `theo-archi` les a livres lui-meme avec le squelette Maven, pour que
 son etape compile seule avant que `marc-dev` ne demarre la mecanique. Corrige par `sofia-sm` a la
 review, les deux occurrences ci-dessus reformulees en consequence : le depot etant la seule
 source de verite, un planning qui decrit une affectation qui n'a pas eu lieu est faux.

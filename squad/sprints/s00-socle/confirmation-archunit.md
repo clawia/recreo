@@ -50,8 +50,8 @@ de la commande, ou le moteur ArchUnit rapporte ses regles separement des tests J
 (`DecouplageMecaniqueContenuTest`) + 3 (`DifficulteTest`) + 1 (`LesReglesMordentTest`) + 2
 (`PureteDesCouchesTest`) + 1 (`AssertionsWebTest`, module `adapter-web`).
 
-- **theo-archi, commit `ef3fda6`** : les 21 regles, avec 5 contre-exemples.
-- **yanis-qa, commit `cd8a808`** : aucune regle nouvelle. Deux contre-exemples et deux tests de
+- **theo-archi, commit `e91f308`** : les 21 regles, avec 5 contre-exemples.
+- **yanis-qa, commit `2f93e80`** : aucune regle nouvelle. Deux contre-exemples et deux tests de
   non-vacuite pour les deux regles d'ADR-0001, plus trois gardes `isNotEmpty()` contre la vacuite
   de type 1 dans `FrontieresDuJavaScriptTest`, plus `JarRecreoIT` et deux tests de comportement.
 - **theo-archi, ce passage** : aucune regle nouvelle non plus. Une regle **reecrite** parce qu'elle
@@ -72,14 +72,14 @@ sont dans `bootstrap/src/test/java/com/recreo/archi/LesReglesMordentTest.java`.
 |---|---|---|---|---|---|
 | 1 | `ArchitectureEnCouchesTest.lesDependancesVontVersLInterieur` | 0001 | `domain/contreexemple/DomaineDependantDeLApplicationContreExemple` | `leDomaineNeDoitPasDependreDeLApplication` | yanis-qa |
 | 2 | `ArchitectureEnCouchesTest.lesAdaptateursNeSeConnaissentPas` | 0001 | `adapter/web/contreexemple/AdaptateurWebDependantDuContenuContreExemple` | `deuxAdaptateursNeDoiventPasSeConnaitre` | yanis-qa |
-| 3 | `PureteDesCouchesTest.leDomaineNeDependQueDuJdk` | 0002 | `domain/contreexemple/DomainePollueContreExemple` | `laPureteDuDomaineEchoueSurUnDomaineQuiUtiliseSpring` | theo (ef3fda6) |
+| 3 | `PureteDesCouchesTest.leDomaineNeDependQueDuJdk` | 0002 | `domain/contreexemple/DomainePollueContreExemple` | `laPureteDuDomaineEchoueSurUnDomaineQuiUtiliseSpring` | theo (e91f308) |
 | 4 | `PureteDesCouchesTest.lApplicationNeDependQueDuJdkEtDuDomaine` | 0002 | `application/contreexemple/ApplicationPollueeContreExemple` | `lApplicationNeDoitPasDependreDUnFramework` | theo (ce passage) |
 | 5 | `LesReglesMordentTest.aucunContreExempleEnProduction` | 0003 | `domain/contreexemple/DomainePollueContreExemple` (reutilise) | `unContreExempleEnProductionEstRefuse` | theo (ce passage) |
 | 6 | `DecouplageMecaniqueContenuTest.leContratDeContenuEstFerme` | 0004 (1) | `domain/content/MoteurDeContenuPartageContreExemple` | `unMoteurDeContenuPartageEstRefuse` | theo (ce passage) |
-| 7 | `DecouplageMecaniqueContenuTest.leContratDeMecaniqueEstFerme` | 0004 (2) | `domain/mechanic/MoteurPartageContreExemple` | `leContratDeMecaniqueRefuseUnMoteurPartage` | theo (ef3fda6) |
-| 8 | `DecouplageMecaniqueContenuTest.uneMecaniqueNeVoitQueLesContrats` | 0004 (3) | `domain/mechanics/contreexemple/MecaniqueCoupleeContreExemple` | `uneMecaniqueQuiUtiliseUnGenerateurConcretEstRefusee` | theo (ef3fda6) |
-| 9 | `DecouplageMecaniqueContenuTest.uneMecaniqueIgnoreLaMatiere` | 0004 (4) | `domain/mechanics/contreexemple/MecaniqueCoupleeContreExemple` | `uneMecaniqueQuiLitLaMatiereEstRefusee` | theo (ef3fda6) |
-| 10 | `DecouplageMecaniqueContenuTest.leContenuIgnoreLesMecaniques` | 0004 (5) | `domain/content/contreexemple/ContenuQuiSaitJouerContreExemple` | `unContenuQuiConnaitSaMecaniqueEstRefuse` | theo (ef3fda6) |
+| 7 | `DecouplageMecaniqueContenuTest.leContratDeMecaniqueEstFerme` | 0004 (2) | `domain/mechanic/MoteurPartageContreExemple` | `leContratDeMecaniqueRefuseUnMoteurPartage` | theo (e91f308) |
+| 8 | `DecouplageMecaniqueContenuTest.uneMecaniqueNeVoitQueLesContrats` | 0004 (3) | `domain/mechanics/contreexemple/MecaniqueCoupleeContreExemple` | `uneMecaniqueQuiUtiliseUnGenerateurConcretEstRefusee` | theo (e91f308) |
+| 9 | `DecouplageMecaniqueContenuTest.uneMecaniqueIgnoreLaMatiere` | 0004 (4) | `domain/mechanics/contreexemple/MecaniqueCoupleeContreExemple` | `uneMecaniqueQuiLitLaMatiereEstRefusee` | theo (e91f308) |
+| 10 | `DecouplageMecaniqueContenuTest.leContenuIgnoreLesMecaniques` | 0004 (5) | `domain/content/contreexemple/ContenuQuiSaitJouerContreExemple` | `unContenuQuiConnaitSaMecaniqueEstRefuse` | theo (e91f308) |
 | 11 | `DecouplageMecaniqueContenuTest.uneMecaniqueVitDansSonProprePaquet` | 0004 (6) | `domain/mechanics/MecaniqueHorsPaquetContreExemple` | `uneMecaniqueHorsDeSonPaquetEstRefusee` | theo (ce passage) |
 | 12 | `DecouplageMecaniqueContenuTest.lesMecaniquesNeSeConnaissentPas` | 0004 (7) | `domain/mechanics/premiere/MecaniquePremiereContreExemple` et `domain/mechanics/seconde/MecaniqueSecondeContreExemple` | `deuxMecaniquesNeDoiventPasSeConnaitre` | theo (ce passage) |
 | 13 | `AbstractionsCiteesTest.aucunTypeNommeRuleSet` | 0005 | `domain/content/contreexemple/RuleSet` | `unTypeNommeRuleSetEstRefuse` | theo (ce passage) |

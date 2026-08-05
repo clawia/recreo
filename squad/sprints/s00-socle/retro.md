@@ -6,12 +6,12 @@
 
 - **Le sequencement serie a evite les conflits d'arbre de travail.** Les trois etapes de code
   (theo-archi puis marc-dev puis lea-dev) ne se sont jamais chevauchees : chacune n'a demarre
-  qu'une fois la precedente committee et compilable (`a3e530b`, puis `0c9c13f`, puis `424c402`).
+  qu'une fois la precedente committee et compilable (`d2005d2`, puis `d355cab`, puis `abc8495`).
   Aucun conflit de fusion, aucun `mvn verify` lance sur un module a moitie ecrit.
 - **Les ADR ecrits avant le code ont servi de specification exploitable, pas de decoration.**
   `avis-faisabilite.md` annonce, avant le premier commit de code, les cinq modules, le paquet de
   la mecanique, le paquet du contenu combinatoire et l'absence de `DifficultyConfig` - et c'est
-  exactement ce que livrent `a3e530b`, `0c9c13f` et `424c402`. Aucun ecart entre l'avis et le
+  exactement ce que livrent `d2005d2`, `d355cab` et `abc8495`. Aucun ecart entre l'avis et le
   livre n'a ete constate a la review.
 - **L'exigence de contre-exemple d'ADR-0003 a effectivement attrape des regles qui ne mordaient
   pas.** Ce n'est pas une garantie theorique : elle a trouve un vrai defaut, `leContratDeContenuNePorteQueDuTexte`
@@ -25,7 +25,7 @@ garantie annoncee dans un ADR ou un rapport, qu'aucun automate ne verifiait reel
 1. **Les cinq tests de non-vacuite d'ADR-0003 passaient sur un paquet inexistant.** ArchUnit leve
    le meme `AssertionError` ("failed to check any classes") pour une regle dont l'ensemble source
    est vide que pour une regle qui mord reellement - un test de non-vacuite mal ecrit peut donc
-   etre vert pour la mauvaise raison. Trouve et corrige par `theo-archi` (`0dbe146`), qui a du
+   etre vert pour la mauvaise raison. Trouve et corrige par `theo-archi` (`f2bef10`), qui a du
    ajouter `hasMessageContaining` sur le nom pleinement qualifie de la classe fautive, pas
    seulement sur le type d'exception, pour distinguer les deux cas.
 2. **`leContratDeContenuNePorteQueDuTexte`, presentee par ADR-0006 comme "celle qui mord
@@ -36,12 +36,12 @@ garantie annoncee dans un ADR ou un rapport, qu'aucun automate ne verifiait reel
    interdire. Decouvert uniquement parce qu'`ADR-0003` exigeait d'ecrire le contre-exemple et de
    le voir echouer - une relecture ne l'avait pas vu.
 3. **Sur 21 regles de garde, 5 seulement etaient contre-exemplifiees au premier commit du
-   sprint** (`ef3fda6`), **et `yanis-qa` n'en avait recense que 7 sur les 16 manquantes** (2
+   sprint** (`e91f308`), **et `yanis-qa` n'en avait recense que 7 sur les 16 manquantes** (2
    corrigees elle-meme pour `ADR-0001`, 5 signalees a `theo-archi` pour `ADR-0005`/`ADR-0006`/
    `ADR-0007`). Les 9 restantes - dont la purete de `application`, la regle de suffixe d'ADR-0003
    elle-meme, trois des sept regles d'ADR-0004 dont l'isolation entre mecaniques qui a menti 25
    sprints sur `main`, et la regle d'assertion web d'ADR-0008 - n'ont ete trouvees qu'a
-   l'inventaire complet que `theo-archi` a produit lui-meme en fin de sprint (`0dbe146`), pas par
+   l'inventaire complet que `theo-archi` a produit lui-meme en fin de sprint (`f2bef10`), pas par
    la relecture ni par le rapport qualite.
 
 **Cout de coordination reel** : trois etapes de code strictement en serie (theo-archi, puis

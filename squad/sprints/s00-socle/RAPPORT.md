@@ -58,11 +58,11 @@ Neuf ADR (dont un nouveau, `ADR-0009`, et huit amendes) et trois DEC (dont une a
 | Description | Agent route | Decision | Clos le |
 |---|---|---|---|
 | JDK 21 absent du `PATH`, toolchains Maven mal nommees | sofia-sm | decision n°1 de `planning.md` | 2026-08-04 |
-| Ecart `CLAUDE.md` / `ADR-0001` / `DEC-0003` sur `adapter-persistence` et "integration H2" | relecteur-pedagogique | correction directe (pas d'ADR/DEC requis) | `274c54d` |
-| Catalogue de repli (`CatalogueDeRepliConfiguration`) contraire au chargement eager sans repli silencieux d'`ADR-0007` | lea-dev | correction directe | `424c402` |
-| Regles de garde sans contre-exemple (4 signalees par `yanis-qa`, 6 trouvees a l'inventaire de `theo-archi`) | theo-archi | amendements `ADR-0001` a `ADR-0008` | `0dbe146` |
-| Garde-fou de prefixe de commit non teste (script shell sans test automatise) | yanis-qa puis theo-archi | `ADR-0009` | `0dbe146` |
-| Refus pedagogique sans traduction en story ni exigence positive pour le texte de categorie B | camille-po | `DEC-0002` amendee + `docs/backlog/backlog.md` section Sprint 1 | `bcfae00` |
+| Ecart `CLAUDE.md` / `ADR-0001` / `DEC-0003` sur `adapter-persistence` et "integration H2" | relecteur-pedagogique | correction directe (pas d'ADR/DEC requis) | `89f7bae` |
+| Catalogue de repli (`CatalogueDeRepliConfiguration`) contraire au chargement eager sans repli silencieux d'`ADR-0007` | lea-dev | correction directe | `abc8495` |
+| Regles de garde sans contre-exemple (4 signalees par `yanis-qa`, 6 trouvees a l'inventaire de `theo-archi`) | theo-archi | amendements `ADR-0001` a `ADR-0008` | `f2bef10` |
+| Garde-fou de prefixe de commit non teste (script shell sans test automatise) | yanis-qa puis theo-archi | `ADR-0009` | `f2bef10` |
+| Refus pedagogique sans traduction en story ni exigence positive pour le texte de categorie B | camille-po | `DEC-0002` amendee + `docs/backlog/backlog.md` section Sprint 1 | `881768a` |
 
 **Encore ouverts** :
 
