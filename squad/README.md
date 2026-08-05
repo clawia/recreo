@@ -20,10 +20,12 @@ cette memoire.
 
 ## 1. L'equipe
 
-Huit agents, decrits dans [`EQUIPE.md`](EQUIPE.md), definis dans `.claude/agents/`.
+Neuf agents, decrits dans [`EQUIPE.md`](EQUIPE.md), definis dans `.claude/agents/`.
 
 Trois developpeurs codent : Marc, Lea, et Sofia sous sa casquette dev. Deux agents detiennent une
-autorite exclusive : `theo-archi` sur l'architecture, `nadia-prof` sur la pedagogie.
+autorite exclusive : `theo-archi` sur l'architecture, `nadia-prof` sur la pedagogie. Un agent
+propose sans trancher : `ines-design`, sur le design d'interface et l'accessibilite visuelle, sous
+le veto pedagogique de `nadia-prof`.
 
 ## 2. Conventions de nommage
 
@@ -150,6 +152,7 @@ Format : `[TAG] <resume>`.
 | `[YAN]` | Yanis, QA |
 | `[REL]` | Relecteur pedagogique |
 | `[NAD]` | Nadia, professeure des ecoles |
+| `[INES]` | Ines, designer d'interface |
 
 Ca permet d'isoler la production d'un agent : `git log --grep='^\[NAD\]'`.
 
@@ -193,6 +196,9 @@ de Theo, corrections du relecteur, tableau des obstacles, verdict de Nadia.
   vers Theo, et ils attendent la decision ecrite.
 - Yanis n'assouplit jamais le Done technique pour tenir un calendrier.
 - Le relecteur ne modifie pas la logique du code ; il ne juge pas ce que lit un enfant.
+- Ines propose le design d'interface et l'accessibilite visuelle ; elle ne tranche ni
+  l'architecture ni le produit, ne juge pas le niveau scolaire d'un contenu, et ne reecrit pas la
+  logique metier. Son design ne se valide jamais contre l'avis de Nadia.
 - **Aucun agent, hors Nadia, ne prononce le Done pedagogique.**
 
 ## 11. Arborescence

@@ -38,7 +38,7 @@ verifier() {
 verifier "un prefixe connu est accepte" 0 '[THEO] socle
 ' "Tous les commits portent un prefixe d'agent connu."
 
-verifier "les huit prefixes de la squad sont acceptes" 0 '[CAM] a
+verifier "les neuf prefixes de la squad sont acceptes" 0 '[CAM] a
 [SOF] b
 [THEO] c
 [MARC] d
@@ -46,7 +46,11 @@ verifier "les huit prefixes de la squad sont acceptes" 0 '[CAM] a
 [YAN] f
 [REL] g
 [NAD] h
+[INES] i
 '
+
+verifier "le prefixe INES est accepte" 0 '[INES] socle du design
+' "Tous les commits portent un prefixe d'agent connu."
 
 verifier "un prefixe inconnu est refuse et le sujet est cite" 1 '[BOB] socle
 ' "::error::message sans prefixe d'agent connu : [BOB] socle"
@@ -76,7 +80,7 @@ b
 ' "2 commit(s) sans prefixe."
 
 verifier "la liste des tags valides est affichee en cas d'echec" 1 'b
-' "Tags valides : CAM, SOF, THEO, MARC, LEA, YAN, REL, NAD"
+' "Tags valides : CAM, SOF, THEO, MARC, LEA, YAN, REL, NAD, INES"
 
 verifier "une ligne vide n'est pas un commit fautif" 0 '
 [THEO] socle

@@ -6,7 +6,7 @@
 # des sujets, ce qui le rend testable hors CI par verifier-prefixes-test.sh (ADR-0003).
 set -euo pipefail
 
-TAGS='CAM|SOF|THEO|MARC|LEA|YAN|REL|NAD'
+TAGS='CAM|SOF|THEO|MARC|LEA|YAN|REL|NAD|INES'
 
 FAUTIFS=0
 sujet=""

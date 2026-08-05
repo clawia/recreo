@@ -44,8 +44,8 @@ Le decoupage exact en modules est une decision d'architecture : il est acte en `
   premier commit de code.
 - **Commits prefixes par agent** : `[CAM]` Camille (PO), `[SOF]` Sofia (SM et dev), `[THEO]`
   Theo (archi), `[MARC]` Marc (dev), `[LEA]` Lea (dev), `[YAN]` Yanis (QA), `[REL]` relecteur
-  pedagogique, `[NAD]` Nadia (professeure des ecoles). La CI **rejette** un message de commit
-  sans tag connu.
+  pedagogique, `[NAD]` Nadia (professeure des ecoles), `[INES]` Ines (designer d'interface). La
+  CI **rejette** un message de commit sans tag connu.
 - **Secrets dans `.env`, jamais commite.** `.gitignore` l'exclut. Aucun secret n'est ecrit en dur
   dans le code, dans un prompt d'agent ou dans un fichier commite.
 - **Le depot Git est la seule source de verite.** Ce qui n'est pas ecrit dans le depot n'existe
@@ -84,9 +84,10 @@ gouvernes par la porte pedagogique de `nadia-prof`, pas par cette regle de style
 
 ## La squad
 
-Huit sous-agents Claude Code (`.claude/agents/`) construisent `recreo` : `camille-po` (PO),
+Neuf sous-agents Claude Code (`.claude/agents/`) construisent `recreo` : `camille-po` (PO),
 `sofia-sm` (Scrum Master et troisieme developpeuse), `theo-archi` (architecte), `marc-dev` et
-`lea-dev` (developpeurs seniors), `yanis-qa` (QA), `relecteur-pedagogique` (relecture des
+`lea-dev` (developpeurs seniors), `yanis-qa` (QA), `ines-design` (designer d'interface et
+accessibilite visuelle, qui propose sans trancher), `relecteur-pedagogique` (relecture des
 livrables non executables) et `nadia-prof` (professeure des ecoles, **seule autorite sur le Done
 pedagogique**).
 
