@@ -32,10 +32,16 @@ class TexteAccentueDesGabaritsTest {
         }
     }
 
+    /**
+     * S02, reformulation de nadia-prof (FICHE-bandit-manchot-additions-cp.md, verdict REFUSE) :
+     * le message inconditionnel de fin de partie ne doit pas revenir, quel que soit le score.
+     */
     @Test
-    void leMessageDeFinDePartieResteAccentue() throws IOException {
+    void leMessageDeFinDePartieRefuseParNadiaNeRevientPas() throws IOException {
         String retour = Files.readString(GABARITS.resolve("fragments/retour.html"));
 
-        assertThat(retour).contains("joué");
+        assertThat(retour)
+                .contains("C'est fini !")
+                .doesNotContain("Bravo, tu as bien joué");
     }
 }

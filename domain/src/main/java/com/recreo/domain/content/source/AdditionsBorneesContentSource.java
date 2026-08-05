@@ -31,7 +31,7 @@ public final class AdditionsBorneesContentSource implements ContentSource {
      */
     private static final int ACCEPTATION_OPERANDE_NUL_SUR = 5;
 
-    private static final String INDICE = "Compte avec tes doigts pour t'aider.";
+    private static final String INDICE = "Compte sur tes doigts.";
 
     private final ContentDescriptor descripteur;
     private final int sommeMaximale;

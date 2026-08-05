@@ -3,7 +3,7 @@
 <body>
 <div th:fragment="retour" id="jeu">
     <button type="button" class="retour-accueil" hx-post="/retour" hx-target="#jeu"
-            hx-swap="innerHTML">Retour à l'accueil</button>
+            hx-swap="innerHTML">Les jeux</button>
     <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
     <div class="signal" th:classappend="${juste} ? 'est-juste' : 'est-faux'">
         <span class="icone-signal" aria-hidden="true"></span>
@@ -16,7 +16,7 @@
           hx-target="#jeu" hx-swap="innerHTML">
         <button type="submit">Encore !</button>
     </form>
-    <p th:unless="${enSuite}" class="fin-de-partie">La partie est finie. Bravo, tu as bien joué !</p>
+    <p th:unless="${enSuite}" class="fin-de-partie">C'est fini !</p>
 </div>
 </body>
 </html>

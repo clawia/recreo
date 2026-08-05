@@ -182,9 +182,13 @@ class PartieControllerTest {
         assertThat(fragment.text().toLowerCase()).doesNotContain("manche");
     }
 
-    /** S1-1 et S1-8 : l'ecran de fin de partie est accentue et n'est plus d'un registre adulte. */
+    /**
+     * S1-1 et S1-8 : l'ecran de fin de partie n'est plus d'un registre adulte. S02, reformulation
+     * de nadia-prof (FICHE-bandit-manchot-additions-cp.md, verdict REFUSE sur ce libelle) : le
+     * message de cloture ne felicite plus inconditionnellement, quel que soit le score.
+     */
     @Test
-    void lEcranDeFinDePartieEstAccentueEtEnRegistreEnfant() throws Exception {
+    void lEcranDeFinDePartieNeFeliciteJamaisInconditionnellement() throws Exception {
         MockHttpSession session = new MockHttpSession();
         mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
         mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
@@ -196,8 +200,8 @@ class PartieControllerTest {
         Document fragment = Jsoup.parse(html);
 
         assertThat(fragment.select("form")).isEmpty();
-        assertThat(fragment.text()).contains("La partie est finie. Bravo, tu as bien joué !");
-        assertThat(html).doesNotContain("Merci d'avoir");
+        assertThat(fragment.text()).contains("C'est fini !");
+        assertThat(html).doesNotContain("Merci d'avoir", "Bravo, tu as bien joué");
     }
 
     /** S1-4, 3e critere : cliquer le bouton clot la partie et revient a la liste des jeux. */
