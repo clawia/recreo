@@ -154,14 +154,35 @@ usage (il ne l'est pas, empiriquement, sur cette version de grep et ce motif pre
 neanmoins par prudence, documente comme tel, plutot que de laisser un comportement dont j'ai
 constate qu'il varie avec la longueur du motif.
 
+**Amendement du 2026-08-05 : le garde-fou a mordu son propre auteur, et c'est le piege que la
+verification initiale n'avait pas couvert.** `verifier-chemins.sh` n'etait pas encore suivi par
+git au moment ou j'ai lance `git ls-files | bash .github/scripts/verifier-chemins.sh` : le fichier
+etait absent de la liste qu'il jugeait, donc son propre commentaire d'en-tete - deux exemples
+Windows et Git Bash qui reprenaient le meme mot de repertoire reel employe dans les cas de test -
+n'a jamais ete soumis a son propre motif. Une fois le fichier suivi (commit `e68a8e9`), le
+garde-fou s'est refuse lui-meme, sur exactement le mecanisme qu'il implemente : un segment reel
+apres le separateur. La logique de segment reel n'a pas ete assouplie pour laisser passer ce cas -
+c'est le cas d'usage exact pour lequel elle a ete concue. Le commentaire a ete corrige en reprenant
+le placeholder `<compte>` deja employe pour `/home/<compte>/...` et `/Users/<compte>/...` juste en
+dessous, et que ce meme ADR emploie depuis sa version initiale.
+
+La lecon depasse ce seul fichier : **un garde-fou de contenu de fichier ne peut etre verifie
+correctement qu'apres que ses propres fichiers sont suivis par git.** Verifier son verdict sur
+`git ls-files` avant son propre commit initial est un faux negatif structurel, pas une preuve. La
+verification de non-regression de ce garde-fou doit desormais se relire une fois commise, pas
+seulement sur l'arbre de travail.
+
 ## Consequences
 
 - Le garde-fou de chemins est desormais executable et testable hors CI, comme celui de prefixes :
   `bash .github/scripts/verifier-chemins-test.sh` tourne en une seconde sur le poste d'un
   developpeur.
-- Le garde-fou passe sur le depot tel qu'il est aujourd'hui : `git ls-files -- . ':!...test.sh' |
-  bash .github/scripts/verifier-chemins.sh` rend "Aucun chemin de poste de travail ni nom de
-  compte dans les fichiers verifies." Le nettoyage prealable n'a rien laisse passer.
+- Le garde-fou passe sur le depot suivi tel qu'il est aujourd'hui, verifie **apres** que ses propres
+  fichiers y sont commis (voir l'amendement ci-dessus) : `git ls-files -- . ':!...test.sh' | bash
+  .github/scripts/verifier-chemins.sh` rend "Aucun chemin de poste de travail ni nom de compte dans
+  les fichiers verifies." Le nettoyage prealable de la ceremonie n'a rien laisse passer ; c'est le
+  garde-fou lui-meme qui, une fois suivi, a d'abord trouve une occurrence dans son propre
+  commentaire.
 - Un seul fichier est exclu du perimetre, nommement et pour une raison ecrite : le script de test
   lui-meme. Toute nouvelle exclusion future devrait justifier la meme etroitesse - un repertoire ou
   un motif de nom de fichier plus large serait un signal d'alarme, pas un raccourci a prendre.

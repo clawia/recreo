@@ -127,6 +127,26 @@ et aucun signal. Le cas est dans le script de test.
   de convention de nommage de fichiers de contenu). Elle ne vaut pas pour les etapes de CI qui ne
   font qu'invoquer un outil : `mvn verify` n'a pas besoin d'un script d'enveloppe.
 
+**Amendement du 2026-08-05 : la limite assumee ci-dessus s'est produite, et pour une raison que je
+n'avais pas nommee.** Une reecriture d'historique de `round-two` suivie d'un push force a rendu
+`github.event.before` inatteignable sans qu'il soit vide ni a zero : ce commit existait au moment
+du push, mais plus dans l'historique reecrit que la CI a fini par cloner. `git log
+${BASE}..${GITHUB_SHA}` a echoue sur `bad object`, et le job `prefixes` est devenu rouge pour un
+motif etranger a un prefixe manquant - exactement le risque que j'avais nomme ("un garde-fou qui
+juge correctement la mauvaise plage"), sauf que celui-ci ne jugeait pas du tout, il faisait
+echouer la construction de la plage elle-meme, ce que je n'avais pas distingue.
+
+Le sous-controle "cette base existe-t-elle encore dans ce depot" n'a besoin, lui, d'aucune variable
+GitHub : c'est une question a git, testable avec un vrai depot jetable. Il est donc sorti du bloc
+`run:` non teste, comme l'exige cet ADR pour tout verdict qui peut l'etre. `commit-atteignable.sh`
+sort 0 si l'argument est un commit resolvable, 1 sinon (chaine vide comprise, objet d'un autre type
+comprise) ; `commit-atteignable-test.sh` le verifie contre un depot git cree a l'execution, jamais
+commite, sur cinq cas (un ancetre atteignable, `HEAD`, un sha inconnu, une chaine vide, un objet
+existant mais qui n'est pas un commit). Le repli du workflow devient : base vide, base a zero, **ou
+base inatteignable** -> `RANGE="-1"`. La limite assumee se retrecit d'autant : ce qui reste non
+teste est la semantique de la valeur que GitHub fournit (est-ce vraiment la bonne base a comparer),
+pas sa seule existence.
+
 ## Alternatives considerees
 
 - **Laisser le shell dans le workflow et s'en remettre a la relecture.** C'est la situation qui a

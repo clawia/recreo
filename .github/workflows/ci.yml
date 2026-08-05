@@ -21,14 +21,21 @@ jobs:
       - name: Tester le garde-fou de prefixes
         run: bash .github/scripts/verifier-prefixes-test.sh
 
+      # Une reecriture d'historique suivie d'un push force peut rendre github.event.before
+      # inatteignable sans qu'il soit vide ni a zero : sans ce controle, "git log BASE..SHA"
+      # echoue sur "bad object", pour un motif etranger a un prefixe manquant.
+      - name: Tester le garde-fou de plage de commits
+        run: bash .github/scripts/commit-atteignable-test.sh
+
       - name: Verifier les prefixes
         env:
           BASE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
         run: |
           set -euo pipefail
 
-          if [ -z "${BASE}" ] || [ "${BASE}" = "0000000000000000000000000000000000000000" ]; then
-            echo "Pas de base comparable (branche neuve) : verification du dernier commit."
+          if [ -z "${BASE}" ] || [ "${BASE}" = "0000000000000000000000000000000000000000" ] \
+             || ! bash .github/scripts/commit-atteignable.sh "${BASE}"; then
+            echo "Pas de base comparable (branche neuve, ou base reecrite et inatteignable) : verification du dernier commit."
             RANGE="-1"
           else
             RANGE="${BASE}..${GITHUB_SHA}"

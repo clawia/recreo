@@ -31,6 +31,8 @@ est date dans le corps de l'ADR. Ceux du sprint 0 :
 | ADR-0006 | 2026-08-04 | **sa regle centrale ne mordait pas** : primitifs vus dans `java.lang`, arguments generiques ignores. Regle reecrite |
 | ADR-0007 | 2026-08-04 | sa regle ArchUnit n'avait pas de contre-exemple |
 | ADR-0008 | 2026-08-04 | la regle d'assertion web n'avait pas de contre-exemple ; comment contre-exemplifier une regle qui juge du code de test |
+| ADR-0009 | 2026-08-05 | la plage de commits ne resistait pas a une base reecrite et inatteignable apres un push force (`bad object`) ; ajout de `commit-atteignable.sh` et de son repli, avant la construction de la plage |
+| ADR-0010 | 2026-08-05 | **le garde-fou a mordu son propre auteur** : verifie avant que `verifier-chemins.sh` soit suivi, il n'avait jamais ete juge par lui-meme ; une fois suivi, son propre commentaire d'en-tete contenait un vrai segment reel. Commentaire corrige, pas la regle |
 
 ## Lecture rapide
 
