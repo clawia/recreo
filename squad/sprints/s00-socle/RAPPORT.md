@@ -69,7 +69,8 @@ Neuf ADR (dont un nouveau, `ADR-0009`, et huit amendes) et trois DEC (dont une a
 | Description | Agent route | Depuis | Ce qui manque |
 |---|---|---|---|
 | `leContratDeContenuNePorteQueDuTexte` (ADR-0006) admet encore un enum arithmetique s'il est place dans le paquet de contrat lui-meme (`com.recreo.domain.content`) | theo-archi | 2026-08-04 (releve a la relecture de sofia-sm en cloture de sprint) | un contre-exemple qui ferme ce trou, ou une decision explicite de l'accepter, au sprint 1 |
-| L'increment `bandit-manchot-additions-cp` reste non valide pedagogiquement (verdict REFUSE) | camille-po / nadia-prof | 2026-08-04 (sprint 0), trace dans `squad/validation/FILE-ATTENTE.md` | les stories S1-1 a S1-3 du backlog livrees, puis un nouveau passage de `nadia-prof` |
+| L'increment `bandit-manchot-additions-cp` reste non valide pedagogiquement, verdict REFUSE de `nadia-prof`, trace dans `squad/validation/FILE-ATTENTE.md` | camille-po / nadia-prof | 2026-08-04 (sprint 0) | les stories S1-1 a S1-3 du backlog livrees, puis un nouveau passage de `nadia-prof` |
+| Aucun agent n'a mandat sur le design d'interface et l'accessibilite visuelle (`recreo.css` ecrit par `marc-dev`, juge par `nadia-prof`, tous deux hors mandat) ; les stories S1-6 et S1-9 du backlog n'ont aucun agent naturel | sofia-sm | 2026-08-04 (obstacle identifie apres la retro) | la definition du neuvieme agent (design d'interface) dans `.claude/agents/`, son prefixe de commit ajoute a `verifier-prefixes.sh` et a son test, son entree dans `EQUIPE.md`, `squad/README.md` et `CLAUDE.md` - tout prevu au planning du sprint 1, rien de cela n'est encore ecrit |
 
 ## Couverture programme
 
