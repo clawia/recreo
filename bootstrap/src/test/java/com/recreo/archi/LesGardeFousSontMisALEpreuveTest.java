@@ -53,11 +53,15 @@ class LesGardeFousSontMisALEpreuveTest {
             "FaviconTest",
             "FrontieresDuJavaScriptTest",
             "HabillageDesEcransTest",
-            "TailleDesTextesEtBoutonsTest",
-            "TexteAccentueDesGabaritsTest");
+            "TailleDesTextesEtBoutonsTest");
 
-    /** Etat au 2026-08-05. Ce nombre ne remonte jamais ; le baisser demande un diff visible. */
-    private static final int PLAFOND_DE_DETTE = 6;
+    /**
+     * Etat au 2026-08-05, s03 : baisse de 6 a 5 - TexteAccentueDesGabaritsTest sort de la dette
+     * (jeu fautif et mise a l'epreuve ecrits dans le meme commit que la correction du perimetre
+     * omis, obstacle route par theo-archi depuis s02). Ce nombre ne remonte jamais ; le baisser
+     * demande un diff visible.
+     */
+    private static final int PLAFOND_DE_DETTE = 5;
 
     private record SourceDeTest(Path module, Path fichier) {
 
