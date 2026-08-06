@@ -17,8 +17,9 @@
     box-sizing: border-box;
 }
 
+/* ADR-0014 : la pile de polices systeme vient de Reboot (bootstrap.min.css, charge avant cette
+   feuille) ; plus rien a declarer ici pour la police. */
 body {
-    font-family: sans-serif;
     margin: 2rem;
     background-color: var(--recreo-fond);
     color: var(--recreo-texte);
@@ -31,9 +32,9 @@ h1 {
     margin: 0 0 1rem;
 }
 
+/* ADR-0014 : list-style et padding-left viennent desormais de .list-unstyled (gabarit), portee
+   par la classe Bootstrap plutot que redeclaree ici. */
 .jeux {
-    list-style: none;
-    padding: 0;
     margin: 1rem 0;
     display: flex;
     flex-direction: column;
@@ -65,7 +66,10 @@ h1 {
    apres une erreur, sortir quand c'est la seule action possible (S3-6). Ce sont les boutons sur
    lesquels l'enfant doit le plus souvent appuyer : ce sont eux qui doivent appeler la main (S2-1,
    correction du refus sur la hierarchie de saillance). Taille jamais laissee au defaut du
-   navigateur, cible tactile d'au moins 44 x 44 px. */
+   navigateur, cible tactile d'au moins 44 x 44 px.
+   ADR-0014 : border, border-radius, padding, text-decoration et cursor viennent maintenant de
+   .btn (classe Bootstrap portee par chaque gabarit) ; seul ce que Bootstrap ne peut pas garantir
+   - la cible tactile en rem et la couleur de la palette - reste declare ici. */
 .demarrer,
 .proposition,
 .recommencer,
@@ -79,11 +83,6 @@ h1 {
     font-weight: bold;
     color: var(--recreo-accent-texte);
     background-color: var(--recreo-accent);
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.75rem 1.25rem;
-    text-decoration: none;
-    cursor: pointer;
 }
 
 /* Taille du texte des boutons pleins : la plupart partagent la taille commune des boutons
