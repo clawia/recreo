@@ -251,3 +251,14 @@ confondus, avec la ligne homophones grammaticaux.
 Le trou qui demeure : le produit compte desormais une ligne `couvert-valide` sur 46, deux lignes
 `en cours` dont l'une correspond a un jeu refuse et retire du catalogue, et 43 lignes `non
 couvert`.
+
+## Perimetre de s05 (2026-08-06)
+
+`DEC-0011-perimetre-s05-reste-correctif.md` : le sprint 5 ne cree aucune ligne nouvelle. Les seuls
+mouvements possibles ce sprint portent sur les trois lignes deja engagees, via l'audit des
+corrections `docs/backlog/backlog.md` S5-2 a S5-7. Le motif n'est pas une regle generale (voir
+`DEC-0011`, qui se distingue explicitement de `DEC-0007`) : aucun candidat de `contenu-repris/` ne
+correspond integralement a une ligne non encore ouverte sans reproduire le defaut de couverture
+partielle deja sanctionne sur les homophones CM1. L'ouverture suivante est nommee, pas indefinie :
+sprint 6, sur `textes-trous/cm1-accords.yml` ou `textes-trous/cm1-conjugaison.yml`, deja
+identifies par `DEC-0008`.

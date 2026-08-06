@@ -901,7 +901,25 @@ corrections suivantes pour etre livree. S5-2 a S5-4 corrigent le contenu de "Le 
 depend des autres. S5-5 decrit un besoin dont la solution est un constat d'architecture (motif 5) :
 elle est routee a `theo-archi` via `sofia-sm`, pas affectee directement a un developpeur. S5-6 est
 la condition ecrite par `nadia-prof` pour que la ligne francais CM1 passe a `couvert-valide` ; S5-7
-traite une reserve distincte (variete) que S5-6 attenue mais ne clot pas necessairement seule.
+traite une reserve distincte (variete) que S5-6 attenue mais ne clot pas necessairement seule. S5-8
+corrige le titre du produit sur decision de l'utilisatrice.
+
+**Aucune des stories S5-2 a S5-5 ne remet automatiquement `bandit-manchot-le-bon-son-cp` au
+catalogue.** `DEC-0009` retire ce jeu jusqu'a ce qu'un increment corrige repasse devant
+`nadia-prof` et obtienne un nouveau Done pedagogique, constate dans une nouvelle fiche de
+conformite : corriger un motif de refus et fusionner le code ne suffit pas a lever le retrait.
+Aucune story de ce sprint n'annule S5-1 ; elle ne le sera que par une story ecrite au moment ou
+`nadia-prof` aura rendu ce nouveau verdict.
+
+**Perimetre de ce sprint** (`DEC-0011-perimetre-s05-reste-correctif.md`) : s05 reste entierement
+correctif, aucune ligne de matrice de plus n'entre `en cours`. Le motif n'est pas celui de
+`DEC-0007` (aucune regle generale n'interdit d'ouvrir une matiere avant qu'une autre ne soit
+`couvert-valide`) : la reserve de `contenu-repris/` ne contient plus, a ce jour, de candidat en
+correspondance integrale avec une ligne de referentiel non encore ouverte - les deux candidats les
+plus proches (`textes-trous/cm1-accords.yml`, `textes-trous/cm1-conjugaison.yml`) ne couvrent
+chacun qu'une partie de leur competence, exactement le defaut qui vient de bloquer `couvert-valide`
+sur les homophones CM1. Ce report est borne au sprint 6, pas indefini (voir `DEC-0011` et la
+section "Backlog - sprints suivants" plus bas).
 
 ### S5-1 - Retirer "Le bon son" de la liste des jeux jusqu'a sa correction (execution de DEC-0009)
 
@@ -926,6 +944,17 @@ traite une reserve distincte (variete) que S5-6 attenue mais ne clot pas necessa
 - **Note** : le choix technique (retirer la ligne du catalogue, la desactiver, ou tout autre
   mecanisme) appartient a `theo-archi` et aux developpeurs ; cette story decrit le comportement
   attendu, pas l'implementation.
+- **Note sur le deuxieme critere, ajoutee apres verification en jeu** : `lea-dev` a signale, sans
+  le corriger, que la reprise de session ne revalide pas l'identifiant de jeu contre le catalogue -
+  un enfant dont la session serait ouverte sur ce jeu au moment du retrait pourrait terminer une
+  manche sur le contenu refuse. `nadia-prof` juge cette suite acceptable pour l'instant
+  (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section 4.2) : le catalogue est charge
+  au demarrage et les sessions vivent en memoire, donc le redemarrage qui applique le retrait
+  detruit aussi toutes les sessions - la fenetre d'exposition est nulle aujourd'hui, pas seulement
+  petite. Elle demande explicitement que **ce deuxieme critere ne soit pas exige comme ferme avant
+  que `adapter-persistence` existe** : c'est ce module qui rendra une session capable de survivre a
+  un redemarrage, et qui transformera ce point d'hygiene en defaut reel. Ce critere reste donc
+  sciemment connu et non couvert par le code actuel, plutot que d'etre repute satisfait a tort.
 - **Lien decision** : `DEC-0009-retrait-le-bon-son-du-catalogue.md`.
 - **Agent pressenti** : a affecter au planning.
 
@@ -1026,7 +1055,7 @@ traite une reserve distincte (variete) que S5-6 attenue mais ne clot pas necessa
 ### S5-6 - Cinq couples d'homophones qui manquent a "les principaux" (condition de nadia-prof pour couvert-valide)
 
 - **Besoin** : en tant qu'eleve de CM1, je veux m'entrainer aussi sur "ce/se", "ces/ses",
-  "la/la/l'a", "mais/mes" et "peu/peut", afin de vraiment m'entrainer sur les homophones
+  "la/là/l'a", "mais/mes" et "peu/peut", afin de vraiment m'entrainer sur les homophones
   grammaticaux les plus courants et pas seulement sur une partie d'entre eux.
 - **Competence programme visee** : francais, CM1 (cycle 3), domaine "Orthographe et grammaire" -
   "Distinguer et utiliser correctement les principaux homophones grammaticaux"
@@ -1034,20 +1063,31 @@ traite une reserve distincte (variete) que S5-6 attenue mais ne clot pas necessa
   cette ligne de `squad/programme/MATRICE-couverture.md` passe a `couvert-valide`.
 - **Criteres d'acceptation** :
   - Etant donne l'ensemble des items du paquet corrige, quand on les compte par couple
-    d'homophones, alors les cinq couples deja couverts (a/a, et/est, on/ont, son/sont, ou/ou) et
-    les cinq couples ajoutes (ce/se, ces/ses, la/la/l'a, mais/mes, peu/peut) sont tous representes
-    par au moins un item, chacun dans les deux sens comme le sont deja les cinq premiers.
+    d'homophones, alors les cinq couples ajoutes (ce/se, ces/ses, la/là/l'a, mais/mes, peu/peut)
+    sont tous representes par au moins un item chacun - c'est la condition ecrite par `nadia-prof`
+    au mot pres ("ces cinq couples ajoutes au paquet"). Les cinq couples deja couverts (a/à,
+    et/est, on/ont, son/sont, ou/où) ne sont pas remis en cause par cette story.
+  - Exigence ajoutee par `camille-po`, distincte de la condition de `nadia-prof` ci-dessus : chaque
+    couple, ancien et nouveau, est represente dans les deux sens (par exemple "et" bonne reponse
+    dans un item, "est" bonne reponse dans un autre), pour rester coherent avec la forme des dix
+    items existants, qui suivent deja ce schema. Si un item ajoute ne le respecte pas pour un
+    couple donne, ce n'est pas un motif de refus au titre de la condition ecrite de `nadia-prof` -
+    seule l'absence totale d'un des cinq couples l'est.
   - Etant donne chaque item ajoute, quand on releve la position du sujet ou de l'indice
     grammatical par rapport au trou, alors il ne se trouve pas systematiquement juste avant le
     trou (meme exigence que la reserve 2 de `nadia-prof`, traitee dans le meme geste sur sa
     demande explicite) : au moins la moitie des dix nouveaux items obligent a regarder ailleurs
     dans la phrase qu'immediatement avant le trou pour trouver la bonne reponse (le modele qu'elle
-    cite elle-meme : "Papa et maman font la cuisine.").
+    cite elle-meme : "Papa et maman font la cuisine."). Le seuil "la moitie" est retenu par
+    `camille-po` pour rendre l'exigence testable ; `nadia-prof` n'a chiffre aucune proportion, elle
+    a nomme l'exigence et cite ce modele.
   - Etant donne les dix items deja existants du paquet, quand on les relit apres cette story, alors
     ils ne sont pas modifies : cette story ajoute, elle ne corrige pas les items existants.
-- **Note** : `nadia-prof` lie explicitement les deux exigences ("ces cinq couples ajoutes au
-  paquet, avec la reserve 2 traitee dans le meme geste [...] parce qu'ajouter cinq couples faciles
-  ne ferait qu'allonger un exercice de CE2") : cette story ne les separe pas.
+- **Note** : `nadia-prof` lie explicitement les deux exigences qu'elle a ecrites ("ces cinq
+  couples ajoutes au paquet, avec la reserve 2 traitee dans le meme geste [...] parce qu'ajouter
+  cinq couples faciles ne ferait qu'allonger un exercice de CE2") : cette story ne les separe pas.
+  Le critere sur les deux sens, en revanche, n'est pas d'elle : il est signale comme tel ci-dessus
+  pour ne pas laisser croire que son refus porterait sur un point qu'elle n'a pas pose.
 - **Lien decision** : "Suites hors de ma main" de
   `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`.
 - **Agent pressenti** : a affecter au planning.
@@ -1072,6 +1112,40 @@ traite une reserve distincte (variete) que S5-6 attenue mais ne clot pas necessa
 - **Lien decision** : reserve 1 de `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`.
 - **Agent pressenti** : a affecter au planning.
 
+### S5-8 - Le nom du produit s'ecrit "Recreo", sans accent (execution de DEC-0010, revert de S3-9)
+
+- **Besoin** : en tant qu'enfant qui ouvre l'application, je veux voir le nom exact du jeu tel que
+  ma famille me l'a dit ("Recreo"), afin de retrouver le meme mot partout, a l'ecran comme a
+  l'oral.
+- **Competence programme visee** : transverse - decision de perimetre sur le nom du produit, pas
+  de contenu pedagogique (`DEC-0010`).
+- **Contexte** : `DEC-0007` point 7 avait fait passer le titre a "Récréo" (story S3-9), execute
+  par `ines-design`. L'utilisatrice corrige explicitement : le produit s'appelle "Recreo", sans
+  accent. `DEC-0010` remplace le point 7 de `DEC-0007` en consequence.
+- **Criteres d'acceptation** :
+  - Etant donne l'ecran d'accueil rendu, quand on relit le titre affiche, alors il s'ecrit
+    "Recreo", sans accent, et non "Récréo".
+  - Etant donne tout autre gabarit ou fragment qui affiche le nom du produit (`<title>` inclus),
+    quand on le relit, alors il porte la meme orthographe non accentuee, pour qu'aucune des deux
+    graphies ne cohabite dans l'application.
+  - Etant donne un test automatise nouveau, quand `mvn verify` s'execute, alors il verifie que le
+    titre rendu par `accueil.html` est exactement "Recreo" - ce test n'existait pour aucune des
+    deux graphies avant cette story. `yanis-qa` avait signale ce trou en s03
+    (`squad/sprints/s03-completer-mathematiques-cp/rapport-qualite.md`, ligne 217 : "aucun test
+    automatise ne l'assertionne : une regression [...] ne serait pas attrapee par `mvn verify`"),
+    et il est toujours absent a ce jour, verifie avant l'ecriture de cette story.
+- **Note** : cette story n'est pas seulement un changement de texte. Le trou de tracabilite nomme
+  par `yanis-qa` en s03 existait deja pour "Récréo" et se reproduirait a l'identique pour "Recreo"
+  si le test n'etait pas ecrit dans le meme increment - une deuxieme regression non attrapee sur le
+  meme point serait imputable a cette story, pas seulement a S3-9.
+- **A signaler, pas a corriger par cette story** : la reserve 10 de `nadia-prof`
+  (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict s01) est enregistree par elle
+  comme tenue apres S3-9 ; ce revirement de perimetre la contredit dans les faits sans remettre en
+  cause son jugement au moment ou elle l'a rendu. `camille-po` le lui signale explicitement plutot
+  que de modifier sa fiche, qui ne lui appartient pas.
+- **Lien decision** : `DEC-0010-le-titre-reste-recreo-sans-accent.md`.
+- **Agent pressenti** : a affecter au planning.
+
 ## Backlog - sprints suivants (intentions non detaillees)
 
 Ces intentions ne sont pas des stories pretes a developper. Elles seront detaillees sprint par
@@ -1084,7 +1158,9 @@ sprint, en priorite sur les trous les plus visibles de `squad/programme/MATRICE-
   en nombre dans le groupe nominal") et `textes-trous/cm1-conjugaison.yml` (partie de "conjuguer
   [...] au present, futur et imparfait", ce fichier ne couvrant que le present) sont deja
   identifies par `DEC-0008` comme candidats directement compatibles avec la forme `Question`,
-  sans nouvel arbitrage de matiere.
+  sans nouvel arbitrage de matiere. `DEC-0011-perimetre-s05-reste-correctif.md` borne ce report au
+  sprint 6 : au moins une des deux lignes s'ouvre a ce sprint-la, meme si elle ne couvre qu'une
+  partie de sa competence - assume explicitement plutot que reporte a nouveau sans date.
 - Introduire une deuxieme mecanique de jeu pour les competences que le bandit manchot sert mal
   (association image/mot, memory, texte a trous), en respectant le meme decouplage
   mecanique/contenu. Le jour ou un second jeu existe, trancher la question de process laissee
