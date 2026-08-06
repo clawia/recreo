@@ -19,6 +19,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0013](ADR-0013-un-garde-fou-derive-son-perimetre-et-se-prouve-mordant.md) | Deriver le perimetre de tout garde-fou de la source, et le prouver mordant sur un objet neuf | s02 | 2026-08-05 | Accepte |
 | [ADR-0014](ADR-0014-vendoriser-une-bibliotheque-css-tierce-et-deriver-les-garde-fous-du-rendu.md) | Faire entrer une bibliotheque CSS tierce par vendorisation tracee, et faire deriver un garde-fou pedagogique du rendu plutot que du fichier | s03 | 2026-08-06 | Accepte |
 | [ADR-0015](ADR-0015-deriver-le-perimetre-de-la-source-qui-gouverne-le-rendu.md) | Deriver le perimetre d'un garde-fou de la source qui gouverne le rendu, et supprimer celui dont le nom promet plus que son perimetre | s03 | 2026-08-06 | Accepte |
+| [ADR-0016](ADR-0016-le-contenu-porte-l-aide-que-la-mecanique-promet.md) | Faire porter par le contenu l'aide que la mecanique promet, et deriver le perimetre du garde-fou du repertoire de contenu | s05 | 2026-08-06 | Accepte |
 
 ## Amendements
 
@@ -92,3 +93,11 @@ bibliotheque CSS embarquee :
     Un garde-fou qui juge un element rendu derive de tous les etats que cet element peut prendre, pas
     du seul etat ecrit en dur ; et un garde-fou dont le nom promet une propriete generale sur un
     fichier nomme est supprime, pas retreci.
+
+Sprint 5 en ajoute un, ne du cinquieme motif de refus de "Le bon son" :
+
+14. **ADR-0016** applique la doctrine d'ADR-0013 a une population que le depot n'avait encore jamais
+    derivee, le **contenu**. La mecanique promet une aide depuis S3-2 ; un type de contenu entier
+    etait incapable de la fournir, en silence, parce que rien ne confrontait la promesse a ce que le
+    contenu sait donner. Le perimetre du garde-fou derive du repertoire de contenu et non du
+    catalogue - DEC-0009 venait justement d'en sortir le paquet fautif.

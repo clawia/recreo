@@ -1,0 +1,18 @@
+# Jeu fautif d'ADR-0016 : un paquet neuf, jamais livre, qu'aucune liste de test ne nomme. Seul un
+# perimetre derive du repertoire de contenu peut le voir. Ses items ne portent aucun indice : le
+# garde-fou doit etre rouge dessus. Texte de fixture, jamais affiche a un enfant.
+schema: 1
+id: paquet-neuf-sans-indice
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Competence de fixture"
+items:
+  - enonce: "Enonce de fixture 1"
+    bonneReponse: "juste"
+    distracteurs: ["faux"]
+  - enonce: "Enonce de fixture 2"
+    bonneReponse: "juste"
+    distracteurs: ["faux"]

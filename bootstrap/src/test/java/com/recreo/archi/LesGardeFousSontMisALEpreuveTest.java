@@ -51,18 +51,20 @@ class LesGardeFousSontMisALEpreuveTest {
     private static final Set<String> DETTE_DE_BALAYAGE = Set.of(
             "AucunVocabulaireDeMatiereTest",
             "FaviconTest",
-            "FrontieresDuJavaScriptTest",
-            "HabillageDesEcransTest");
+            "FrontieresDuJavaScriptTest");
 
     /**
-     * Etat au 2026-08-06, s03 : baisse de 5 a 4 - TailleDesTextesEtBoutonsTest sort de la dette. Son
-     * perimetre a du etre repris pour l'entree d'une bibliotheque CSS tierce (ADR-0014) ; les deux
-     * choses qui lui manquaient - un perimetre de gabarits derive plutot que quatre chemins ecrits a
-     * la main, et un jeu fautif qui le prouve mordant sur un objet neuf - ont ete ecrites dans le
-     * meme geste. Avant cela : baisse de 6 a 5 le 2026-08-05, TexteAccentueDesGabaritsTest. Ce nombre
-     * ne remonte jamais ; le baisser demande un diff visible.
+     * Etat au 2026-08-06, ouverture de s05 : baisse de 4 a 3 - HabillageDesEcransTest sort de la
+     * dette. Je l'avais laissee ouverte en la nommant, dans le commit meme qui modifiait ce
+     * plafond : la sortir demandait plus qu'une fixture, parce que son perimetre etait une liste de
+     * onze selecteurs et qu'une mutation prouve le critere, pas le perimetre. La propriete generale
+     * que son nom promettait est desormais portee par un balayage derive des gabarits, et la liste
+     * reste comme epinglage de ce que S2-2 a livre. Avant cela : baisse de 5 a 4 le 2026-08-06
+     * (TailleDesTextesEtBoutonsTest, ADR-0014 et ADR-0015), de 6 a 5 le 2026-08-05
+     * (TexteAccentueDesGabaritsTest). Ce nombre ne remonte jamais ; le baisser demande un diff
+     * visible.
      */
-    private static final int PLAFOND_DE_DETTE = 4;
+    private static final int PLAFOND_DE_DETTE = 3;
 
     private record SourceDeTest(Path module, Path fichier) {
 

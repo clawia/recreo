@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!-- Jeu fautif d'ADR-0013 pour HabillageDesEcransTest : un gabarit neuf, jamais livre, qu'aucune
+     liste de test ne nomme. Il porte une classe qu'aucune feuille servie ne declare ; le garde-fou
+     doit etre rouge dessus. La classe .bandeau-habille, elle, est declaree dans le CSS de ce meme
+     jeu fautif : sans elle, un garde-fou rouge sur tout aurait l'air de mordre sans rien
+     distinguer. Texte de fixture, jamais affiche a un enfant. -->
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="fautif" id="jeu">
+    <p class="bandeau-habille">Texte de fixture.</p>
+    <p class="bandeau-jamais-declare">Texte de fixture.</p>
+</div>
+</body>
+</html>

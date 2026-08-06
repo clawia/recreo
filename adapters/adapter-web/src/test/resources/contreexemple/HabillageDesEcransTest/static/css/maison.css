@@ -1,0 +1,8 @@
+/* Feuille maison du jeu fautif. Elle habille .bandeau-habille et ignore .bandeau-jamais-declare,
+   pour que le garde-fou ait a distinguer les deux plutot qu'a tout refuser. Elle nomme aussi
+   .bandeau-jamais-declare dans ce commentaire : un garde-fou qui lirait les commentaires le
+   laisserait passer. */
+.bandeau-habille {
+    color: #1c2733;
+    padding: 0.75rem;
+}
