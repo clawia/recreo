@@ -40,8 +40,9 @@ class PaquetsFrancaisS04Test {
             Map.entry("son", "sont"), Map.entry("sont", "son"),
             Map.entry("ou", "où"), Map.entry("où", "ou"));
 
+    /** S5-3, motif 2 du refus : les sons s'ecrivent avec leurs lettres, sans crochet d'adulte. */
     private static final Set<String> SONS_ATTENDUS = Set.of(
-            "[an]", "[on]", "[in]", "[ou]", "[oi]", "[ch]");
+            "an", "on", "in", "ou", "oi", "ch");
 
     @Test
     void leBonSonCpNePresenteQueDesSonsConnusEtCouvreLesTroisDigraphesCitesParLeReferentiel() {
@@ -66,7 +67,29 @@ class PaquetsFrancaisS04Test {
         assertThat(sonsCouverts)
                 .as("ADR-0007, S4-2 : les trois digraphes cites en exemple par le referentiel,"
                         + " en plus des sons deja presents dans la matiere premiere")
-                .contains("[ch]", "[ou]", "[on]", "[an]", "[in]", "[oi]");
+                .contains("ch", "ou", "on", "an", "in", "oi");
+    }
+
+    /**
+     * S5-3, motif 2 du refus : les crochets de notation phonetique d'adulte ("[an]") ne sont
+     * enseignes nulle part au CP, et un enfant qui apprend a dechiffrer va essayer de les lire
+     * comme des signes.
+     */
+    @Test
+    void leBonSonCpNAfficheAucunCrochetDeNotationDAdulte() {
+        for (Question item : tousLesItems(paquet("cp-le-bon-son"))) {
+            assertThat(item.enonce())
+                    .as("enonce '%s'", item.enonce())
+                    .doesNotContain("[").doesNotContain("]");
+            assertThat(item.bonneReponse())
+                    .as("reponse du mot '%s'", item.enonce())
+                    .doesNotContain("[").doesNotContain("]");
+            for (String distracteur : item.distracteurs()) {
+                assertThat(distracteur)
+                        .as("distracteur du mot '%s'", item.enonce())
+                        .doesNotContain("[").doesNotContain("]");
+            }
+        }
     }
 
     @Test

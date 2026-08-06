@@ -61,8 +61,10 @@ class ChaquePaquetPorteUnIndiceTest {
      * (chaque nom doit designer un paquet qui existe), et un paquet neuf sans indice echoue au lieu
      * d'y entrer. Ecrire ces indices est du contenu pedagogique : il appartient aux stories S5-2 a
      * S5-6 et repasse devant nadia-prof, pas devant un test.
+     *
+     * <p>S5-5 (residuel) : "cp-le-bon-son" a ecrit ses indices (S5-5) et sort de cette dette.</p>
      */
-    private static final Set<String> DETTE_DE_CONTENU = Set.of("cm1-homophones", "cp-le-bon-son");
+    private static final Set<String> DETTE_DE_CONTENU = Set.of("cm1-homophones");
 
     /** Etat au 2026-08-06, ouverture de s05. Ce nombre ne remonte jamais. */
     private static final int PLAFOND_DE_DETTE = 2;
