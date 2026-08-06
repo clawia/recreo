@@ -784,21 +784,118 @@ prononce que par `nadia-prof`, apres audit de l'increment corrige.
   `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict s01).
 - **Agent pressenti** : a affecter au planning.
 
+## Sprint 4 - Ouvrir le francais, premiere matiere non mathematique du produit
+
+**Contexte et decision de perimetre** : l'utilisatrice renverse la priorisation de `DEC-0007`
+("completer avant etendre") - voir `DEC-0008-la-couverture-reprend-francais-cp-et-cm1.md`. Ce
+sprint ouvre le francais, en parallele de l'audit de cloture de s03 sur mathematiques CP (qui
+reste du ressort de `nadia-prof`, non affecte par cette ouverture). `DEC-0008` motive le choix du
+francais - la matiere la plus eloignee de l'arithmetique parmi celles qui ont deja un referentiel,
+donc celle qui teste le plus directement le decouplage mecanique/contenu annonce par `CLAUDE.md`
+et `ADR-0004` - et le choix des deux competences precises, sur la base d'un inventaire reel de
+`contenu-repris/` plutot que d'une intuition.
+
+**Ce que ces deux stories demandent, et ce qu'elles ne demandent pas** : les deux jeux visent
+l'unique forme d'item deja jouable par le domaine (`Question` : `enonce`, `bonneReponse`,
+`distracteurs`, `ADR-0004`) et l'unique mecanique existante (bandit manchot). Si l'avis de
+faisabilite de `theo-archi` au planning confirme que c'est bien le cas, chaque story est un
+paquet YAML au schema deja connu (`ADR-0007`, type `question`) plus une ligne de catalogue -
+**aucune ligne de code de mecanique, aucune modification du domaine**. C'est explicitement la
+demonstration que `DEC-0008` demande : si l'un des deux contenus ne rentre pas dans cette forme
+sans modification de `domain/mechanic` ou de l'interface scellee `Item`, ce n'est pas un detail
+d'implementation, c'est un signal a remonter par `theo-archi` a `sofia-sm`, qui route ensuite vers
+moi pour reformuler le perimetre de la story concernee.
+
+Aucun contenu repris n'est valide pedagogiquement par sa seule presence dans `contenu-repris/` :
+chacun des deux paquets ci-dessous repasse devant `nadia-prof` comme un contenu neuf
+(`contenu-repris/README.md`, `CLAUDE.md`).
+
+### S4-1 - Choisir le bon petit mot pour ne plus confondre les homophones grammaticaux (CM1)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux choisir le bon petit mot (par exemple "a" ou "à",
+  "et" ou "est") pour completer une phrase, afin de m'entrainer a ne plus les confondre quand
+  j'ecris.
+- **Competence programme visee** : francais, CM1 (cycle 3), domaine "Orthographe et grammaire" -
+  "Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont,
+  a/a...)" (`squad/programme/francais/competences-cm1.md`). Premiere ligne de matrice couverte
+  pour le CM1, tous jeux confondus (`DEC-0008`).
+- **Criteres d'acceptation** :
+  - Etant donne une manche generee par ce contenu, quand la question s'affiche, alors elle
+    presente une phrase a trou portant sur un des couples d'homophones grammaticaux suivants :
+    a/a, et/est, on/ont, son/sont, ou/ou - jamais un couple hors de cette liste.
+  - Etant donne les propositions affichees pour une manche, alors la bonne reponse y figure
+    exactement une fois, et l'unique distracteur est l'autre mot du meme couple d'homophones
+    (jamais un mot etranger a ce couple).
+  - Etant donne l'ensemble des items du paquet, quand on les compte par couple d'homophones,
+    alors chacun des cinq couples cites ci-dessus est represente par au moins un item (couverture
+    minimale de la competence dans son ensemble, pas seulement d'un sous-ensemble).
+  - Etant donne l'application demarree avec ce paquet, quand le test d'integration de chargement
+    du contenu s'execute (`CatalogueChargeableIT`, `ADR-0007`), alors une partie demarre sans
+    erreur sur ce paquet, avec la mecanique bandit manchot existante et sans qu'aucune ligne de
+    `domain/mechanic` ni `domain/mechanics` n'ait ete modifiee pour l'accueillir.
+  - Etant donne 20 manches jouees a la suite, quand on releve les phrases proposees, alors elles
+    ne sont pas toutes identiques.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que les phrases soient d'un niveau de vocabulaire et de longueur adapte a un
+    eleve de CM1, que les cinq couples retenus soient suffisants pour "distinguer et utiliser
+    correctement" au sens du referentiel, et la conformite du texte au francais correct et
+    integralement accentue (`DEC-0002`, amendement du 2026-08-04).
+- **Note de frontiere de mandat** : si `theo-archi` etablit au planning que cette forme de contenu
+  ne rentre pas dans `Question` sans changement du domaine, cette story est reformulee avant
+  developpement plutot que forcee dans une forme qui ne lui convient pas.
+- **Lien decision** : `DEC-0008-la-couverture-reprend-francais-cp-et-cm1.md`.
+- **Agent pressenti** : a affecter au planning.
+
+### S4-2 - Retrouver le son que fait un mot ecrit (CP)
+
+- **Besoin** : en tant qu'eleve de CP, je veux lire un mot affiche et retrouver quel son il
+  contient parmi plusieurs sons proposes, afin de m'entrainer a associer les lettres que je lis au
+  son qu'elles font.
+- **Competence programme visee** : francais, CP (cycle 2), domaine "Lecture et comprehension de
+  l'ecrit" - "Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes
+  ch, ou, on...)" (`squad/programme/francais/competences-cp.md`). Cette competence, et non
+  "identifier un son dans un mot" (domaine "Langage oral et conscience phonologique"), parce que
+  le contenu presente un mot ecrit et travaille la correspondance graphie-son, pas une
+  reconnaissance purement orale - voir l'inventaire de `DEC-0008`.
+- **Criteres d'acceptation** :
+  - Etant donne une manche generee par ce contenu, quand la question s'affiche, alors elle
+    presente un mot ecrit et un ensemble de propositions de sons, dont une seule correspond
+    effectivement a un son present dans le mot affiche.
+  - Etant donne les propositions d'une manche, alors les distracteurs sont des sons absents du
+    mot affiche, jamais le meme phoneme note deux fois sous une forme differente.
+  - Etant donne l'ensemble des items du paquet, quand on releve les sons couverts, alors les trois
+    digraphes cites en exemple par le referentiel (ch, ou, on) y figurent chacun au moins une
+    fois, en plus des autres sons deja presents dans la matiere premiere (an, in, oi).
+  - Etant donne l'application demarree avec ce paquet, quand le test d'integration de chargement
+    du contenu s'execute (`CatalogueChargeableIT`, `ADR-0007`), alors une partie demarre sans
+    erreur sur ce paquet, avec la mecanique bandit manchot existante et sans qu'aucune ligne de
+    `domain/mechanic` ni `domain/mechanics` n'ait ete modifiee pour l'accueillir.
+  - Etant donne 20 manches jouees a la suite, quand on releve les mots proposes, alors ils ne sont
+    pas tous identiques.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : si la notation des sons entre crochets (par exemple "[an]", "[on]") est lisible
+    et sans ambiguite pour un enfant de CP qui debute en lecture, si les mots ecrits en majuscules
+    dans la matiere premiere doivent etre repris tels quels ou reformules, et le choix des mots
+    eux-memes.
+- **Note de frontiere de mandat** : meme note que S4-1 sur la faisabilite technique de la forme de
+  contenu.
+- **Lien decision** : `DEC-0008-la-couverture-reprend-francais-cp-et-cm1.md`.
+- **Agent pressenti** : a affecter au planning.
+
 ## Backlog - sprints suivants (intentions non detaillees)
 
 Ces intentions ne sont pas des stories pretes a developper. Elles seront detaillees sprint par
-sprint, en priorite sur les trous les plus visibles de `squad/programme/MATRICE-couverture.md` -
-en particulier le fait qu'a l'issue du sprint 0, le francais n'a encore aucune ligne `en cours`,
-et que `DEC-0007` reporte volontairement l'ouverture de cette matiere apres s03 (voir ce sprint).
+sprint, en priorite sur les trous les plus visibles de `squad/programme/MATRICE-couverture.md`.
 
 - Une fois la ligne mathematiques CP effectivement `couvert-valide` (ou, si `nadia-prof` refuse
   encore l'increment corrige de s03, une fois son nouveau motif traite) : elargir le contenu
   "additions CP" a la borne jusqu'a 20, et couvrir les soustractions et les complements a 10 (meme
   mecanique, meme niveau) pour clore completement cette ligne de la matrice.
-- Ouvrir la premiere competence de francais couverte par une mecanique (a choisir en fonction de
-  ce que le bandit manchot sait bien servir - probablement une competence a reponse fermee, par
-  exemple les homophones grammaticaux CM1 - plutot qu'une competence orale comme la segmentation
-  syllabique, qui demandera probablement une autre mecanique ou un autre mode d'interaction).
+- Une fois S4-1 et S4-2 auditees : `textes-trous/cm1-accords.yml` (partie de "accorder en genre et
+  en nombre dans le groupe nominal") et `textes-trous/cm1-conjugaison.yml` (partie de "conjuguer
+  [...] au present, futur et imparfait", ce fichier ne couvrant que le present) sont deja
+  identifies par `DEC-0008` comme candidats directement compatibles avec la forme `Question`,
+  sans nouvel arbitrage de matiere.
 - Introduire une deuxieme mecanique de jeu pour les competences que le bandit manchot sert mal
   (association image/mot, memory, texte a trous), en respectant le meme decouplage
   mecanique/contenu. Le jour ou un second jeu existe, trancher la question de process laissee

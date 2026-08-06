@@ -126,7 +126,7 @@ Source : `squad/programme/francais/competences-cp.md`.
 | francais | CP | Langage oral et conscience phonologique | Denombrer les syllabes orales d'un mot (segmentation syllabique) | - | - | non couvert |
 | francais | CP | Langage oral et conscience phonologique | Localiser une syllabe dans un mot (debut / milieu / fin) | - | - | non couvert |
 | francais | CP | Langage oral et conscience phonologique | Identifier un son (phoneme) dans un mot | - | - | non couvert |
-| francais | CP | Lecture et comprehension de l'ecrit | Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...) | - | - | non couvert |
+| francais | CP | Lecture et comprehension de l'ecrit | Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...) | bandit-manchot-le-bon-son-cp | bandit manchot | en cours |
 | francais | CP | Lecture et comprehension de l'ecrit | Decoder un mot regulier inconnu par assemblage syllabique | - | - | non couvert |
 | francais | CP | Lecture et comprehension de l'ecrit | Lire a voix haute un texte court et simple avec fluidite croissante | - | - | non couvert |
 | francais | CP | Lecture et comprehension de l'ecrit | Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi) | - | - | non couvert |
@@ -135,6 +135,11 @@ Source : `squad/programme/francais/competences-cp.md`.
 | francais | CP | Orthographe et grammaire | Reconnaitre et utiliser les marques du pluriel les plus frequentes (-s) | - | - | non couvert |
 | francais | CP | Orthographe et grammaire | Distinguer les principaux types de mots (nom, verbe) dans une phrase tres simple | - | - | non couvert |
 | francais | CP | Vocabulaire | Utiliser des mots precis pour designer des objets, actions, sensations du quotidien | - | - | non couvert |
+
+Note sur la ligne `en cours` : `DEC-0008-la-couverture-reprend-francais-cp-et-cm1.md` ouvre cette
+competence au sprint 4, sur la matiere premiere `contenu-repris/mots/cp-le-bon-son.yml` (story
+S4-2, `docs/backlog/backlog.md`). Statut `en cours` tant que le Done technique n'est pas atteint
+et que `nadia-prof` n'a pas rendu son verdict.
 
 ## Francais - CM1 (cycle 3)
 
@@ -149,31 +154,40 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Ecriture | Relire et corriger son texte a l'aide de reperes simples (majuscules, ponctuation) | - | - | non couvert |
 | francais | CM1 | Orthographe et grammaire | Accorder le verbe avec son sujet (cas frequents, temps simples : present, futur, imparfait) | - | - | non couvert |
 | francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | - | - | non couvert |
-| francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/a...) | - | - | non couvert |
+| francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/a...) | bandit-manchot-homophones-cm1 | bandit manchot | en cours |
 | francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif | - | - | non couvert |
 | francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | - | - | non couvert |
 | francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | - | - | non couvert |
 
-## Synthese au sprint 0, toujours exacte a l'ouverture du sprint 3
+Note sur la ligne `en cours` : `DEC-0008-la-couverture-reprend-francais-cp-et-cm1.md` ouvre cette
+competence au sprint 4, sur la matiere premiere `contenu-repris/mots/cm1-homophones.yml` (story
+S4-1, `docs/backlog/backlog.md`) - premiere ligne de matrice couverte pour le CM1, tous jeux
+confondus. Statut `en cours` tant que le Done technique n'est pas atteint et que `nadia-prof` n'a
+pas rendu son verdict.
+
+## Synthese au sprint 0, mise a jour a l'ouverture du sprint 4
 
 | Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
 |---|---|---|---|---|
 | mathematiques CP | 11 | 10 | 1 | 0 |
 | mathematiques CM1 | 12 | 12 | 0 | 0 |
-| francais CP | 12 | 12 | 0 | 0 |
-| francais CM1 | 11 | 11 | 0 | 0 |
-| **Total** | **46** | **45** | **1** | **0** |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 10 | 1 | 0 |
+| **Total** | **46** | **43** | **3** | **0** |
 
-Ces chiffres n'ont pas bouge depuis le sprint 0 : trois sprints (s00 a s02) ont produit un seul
-jeu sur une seule competence, et cette unique ligne `en cours` n'est toujours pas
-`couvert-valide` - voir la note sous le tableau mathematiques CP ci-dessus. `DEC-0007` tranche
-que le sprint 3 est consacre a completer cette ligne (repartition des sommes) et a solder la
-dette de gouvernance qui s'est accumulee sur elle, plutot qu'a ouvrir une nouvelle ligne. Cette
-synthese sera revue a la prochaine review, en fonction du verdict que `nadia-prof` rendra sur
-l'increment corrige.
+Ces chiffres etaient inchanges depuis le sprint 0 apres trois sprints (s00 a s02) qui ont produit
+un seul jeu sur une seule competence, encore `en cours` a ce jour - voir la note sous le tableau
+mathematiques CP ci-dessus. `DEC-0007` avait tranche que s03 completerait cette ligne
+(repartition des sommes) plutot que d'en ouvrir une nouvelle ; l'increment corrige est fusionne,
+en attente de l'audit de cloture de `nadia-prof`. **`DEC-0008` renverse cette priorisation sur
+demande explicite de l'utilisatrice** : le sprint 4 ouvre deux lignes de plus, l'une en CP et
+l'une en CM1, toutes deux en francais (stories S4-1, S4-2, `docs/backlog/backlog.md`). Aucune des
+trois lignes `en cours` ne passe a `couvert-valide` par cette seule ouverture : ce statut n'est
+prononce que par `nadia-prof`, apres audit reel de chaque increment.
 
-Le trou le plus visible reste **francais, qui n'a encore aucune ligne `en cours`**. Il n'est pas
-traite par s03 (voir `DEC-0007`) ; c'est le candidat naturel du sprint suivant, une fois la ligne
-mathematiques CP effectivement close - le calcul mental n'est un point de depart que si la matrice
-montre vite qu'il n'est pas une fin
-en soi.
+Le trou qui restait le plus visible - **francais, qui n'avait encore aucune ligne `en cours`** -
+est celui que `DEC-0008` traite. Le CM1 sort egalement de son etat a zero ligne, tous jeux
+confondus, avec la ligne homophones grammaticaux. Le trou qui demeure, lui, inchange par cette
+decision : la ligne mathematiques CP reste la seule ou un Done technique a ete atteint sans
+qu'aucun Done pedagogique `VALIDE` (sans reserve) n'ait encore ete prononce sur l'ensemble de la
+competence.
