@@ -1,9 +1,21 @@
 # ADR-0011 - Rendre toute erreur imprevue en HTML francais, jamais un corps technique brut
 
-- **Statut** : Accepte
+- **Statut** : Accepte, complete par ADR-0018 (amendement du 2026-08-06)
 - **Date** : 2026-08-05
 - **Auteur** : theo-archi
 - **Sprint** : s01
+
+> **Amendement du 2026-08-06 (s05) - son point 3 etait faux, et il a cache un defaut de production.**
+> Le point 3 de la mise en oeuvre affirme qu'*"une exception qu'aucun `@ExceptionHandler` ne nomme
+> explicitement doit rester rare et visible"*. Mesure sur le jar de `099e750` : une reponse accentuee
+> sur `bandit-manchot-homophones-cm1` levait
+> `org.apache.tomcat.util.http.InvalidParameterException`, qui **herite d'`IllegalStateException`**
+> (verifie par `javap`). Elle etait donc attrapee par le gestionnaire nomme `partieIntrouvable()`,
+> rendue a l'enfant comme une session perdue, et **journalisee nulle part** : 21 lignes de journal,
+> toutes de demarrage. Nommer deux types n'est pas nommer deux situations - un `@ExceptionHandler`
+> attrape un type et tout son sous-arbre. Cet ADR gardait la forme de la reponse et ne disait rien de
+> sa trace. **Ce qu'il decide de l'ecran de l'enfant et du statut 200 reste vrai et n'est pas
+> touche** ; ce qui est corrige est le canal et la trace, dans `ADR-0018`.
 
 ## Contexte
 
