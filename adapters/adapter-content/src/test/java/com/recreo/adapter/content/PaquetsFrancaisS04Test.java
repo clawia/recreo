@@ -6,12 +6,18 @@ import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
+import com.recreo.domain.mechanic.GameSession;
+import com.recreo.domain.mechanic.SessionStatus;
+import com.recreo.domain.mechanics.banditmanchot.BanditManchot;
+import com.recreo.domain.mechanics.banditmanchot.BanditManchotMove;
+import com.recreo.domain.mechanics.banditmanchot.BanditManchotSession;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
 
@@ -33,6 +39,17 @@ import static org.assertj.core.api.Assertions.assertThat;
  * "cm1-homophones" (ce/se, ces/ses, la/la/l'a, mais/mes, peu/peut) ; la famille la/la/l'a pivote
  * sur deux paires distinctes plutot qu'un triplet, sur son arbitrage du 2026-08-06
  * ({@code squad/conformite/FICHE-bandit-manchot-homophones-cm1.md}).</p>
+ *
+ * <p>Defaut signale par l'utilisatrice apres livraison de S5-6 : les douze items neufs affichaient
+ * la reponse en clair dans la phrase au lieu d'un trou, alors que la consigne du jeu demande de
+ * completer une phrase. Corrige : chaque item neuf porte desormais le marqueur "___" a la place du
+ * mot attendu (garde-fou derive dans {@link ChaquePaquetATrousPorteSonTrouSurChaqueItemTest}).</p>
+ *
+ * <p>S5-5 (residuel) : les vingt-deux items de "cm1-homophones" portent desormais chacun un indice,
+ * fermant la dette de {@code ChaquePaquetPorteUnIndiceTest.DETTE_DE_CONTENU} pour ce paquet.</p>
+ *
+ * <p>S5-7 : le paquet compte davantage d'items que de manches par partie, et deux parties jouees
+ * avec des graines distinctes ne presentent pas exactement les memes phrases.</p>
  */
 class PaquetsFrancaisS04Test {
 
@@ -147,23 +164,39 @@ class PaquetsFrancaisS04Test {
     }
 
     @Test
-    void homophonesCm1NeModifiePasLesDixItemsExistants() {
+    void homophonesCm1NeModifiePasLeContenuDesDixItemsExistants() {
         List<Question> items = tousLesItems(jeu("bandit-manchot-homophones-cm1").contenu());
 
+        /*
+         * S5-5 (residuel) ajoute un indice a chacun de ces dix items, ce que S5-6 n'avait pas fait :
+         * la liste porte donc desormais les indices, mais l'enonce, la bonne reponse et le
+         * distracteur de chaque item restent ceux d'origine depuis S4.
+         */
         List<Question> dixItemsExistantsDepuisS4 = List.of(
-                new Question(new ItemId("item-0"), "Il ___ mangé une pomme.", "a", List.of("à")),
-                new Question(new ItemId("item-1"), "Je vais ___ l'école.", "à", List.of("a")),
-                new Question(new ItemId("item-2"), "Papa ___ maman font la cuisine.", "et", List.of("est")),
-                new Question(new ItemId("item-3"), "Le chat ___ noir.", "est", List.of("et")),
-                new Question(new ItemId("item-4"), "Les enfants ___ partis.", "sont", List.of("son")),
-                new Question(new ItemId("item-5"), "Il prend ___ cartable.", "son", List.of("sont")),
-                new Question(new ItemId("item-6"), "Ils ___ un chien.", "ont", List.of("on")),
-                new Question(new ItemId("item-7"), "___ joue dans la cour.", "On", List.of("Ont")),
-                new Question(new ItemId("item-8"), "___ vas-tu ?", "Où", List.of("Ou")),
-                new Question(new ItemId("item-9"), "Tu veux du thé ___ du café ?", "ou", List.of("où")));
+                new Question(new ItemId("item-0"), "Il ___ mangé une pomme.", "a", List.of("à"),
+                        Optional.of("Remplace par 'avait' : 'Il avait mangé une pomme' fonctionne, alors c'est 'a'.")),
+                new Question(new ItemId("item-1"), "Je vais ___ l'école.", "à", List.of("a"),
+                        Optional.of("Remplace par 'avait' : 'Je vais avait l'école' ne fonctionne pas, alors c'est 'à'.")),
+                new Question(new ItemId("item-2"), "Papa ___ maman font la cuisine.", "et", List.of("est"),
+                        Optional.of("Remplace par 'et puis' : 'Papa et puis maman font la cuisine' fonctionne, alors c'est 'et'.")),
+                new Question(new ItemId("item-3"), "Le chat ___ noir.", "est", List.of("et"),
+                        Optional.of("Remplace par 'était' : 'Le chat était noir' fonctionne, alors c'est 'est'.")),
+                new Question(new ItemId("item-4"), "Les enfants ___ partis.", "sont", List.of("son"),
+                        Optional.of("Remplace par 'étaient' : 'Les enfants étaient partis' fonctionne, alors c'est 'sont'.")),
+                new Question(new ItemId("item-5"), "Il prend ___ cartable.", "son", List.of("sont"),
+                        Optional.of("Remplace par 'ton' : 'Il prend ton cartable' fonctionne, alors c'est 'son'.")),
+                new Question(new ItemId("item-6"), "Ils ___ un chien.", "ont", List.of("on"),
+                        Optional.of("Remplace par 'avaient' : 'Ils avaient un chien' fonctionne, alors c'est 'ont'.")),
+                new Question(new ItemId("item-7"), "___ joue dans la cour.", "On", List.of("Ont"),
+                        Optional.of("Remplace par 'il' : 'Il joue dans la cour' fonctionne, alors c'est 'on'.")),
+                new Question(new ItemId("item-8"), "___ vas-tu ?", "Où", List.of("Ou"),
+                        Optional.of("Remplace par 'à quel endroit' : 'À quel endroit vas-tu ?' fonctionne, alors c'est 'où'.")),
+                new Question(new ItemId("item-9"), "Tu veux du thé ___ du café ?", "ou", List.of("où"),
+                        Optional.of("Remplace par 'ou bien' : 'Tu veux du thé ou bien du café ?' fonctionne, alors c'est 'ou'.")));
 
         assertThat(items)
-                .as("S5-6 : cette story ajoute des items, elle ne corrige pas les dix items existants")
+                .as("S5-6 puis S5-5 (residuel) : l'enonce, la bonne reponse et le distracteur des dix"
+                        + " items existants ne changent pas ; seul l'indice s'y ajoute")
                 .containsAll(dixItemsExistantsDepuisS4);
     }
 
@@ -172,6 +205,56 @@ class PaquetsFrancaisS04Test {
         assertThat(enoncesSurVingtTirages(jeu("bandit-manchot-homophones-cm1").contenu()))
                 .as("variete minimale sur 20 manches")
                 .hasSizeGreaterThan(1);
+    }
+
+    /**
+     * S5-7, premier critere : une partie (10 manches, {@code catalogue.yaml}) ne presente jamais
+     * l'integralite du paquet.
+     */
+    @Test
+    void homophonesCm1CompteDavantageDItemsQueDeManchesParPartie() {
+        GameDefinition jeu = jeu("bandit-manchot-homophones-cm1");
+        List<Question> items = tousLesItems(jeu.contenu());
+
+        assertThat(items)
+                .as("S5-7 : le paquet compte davantage d'items que de manches par partie (%d), sinon"
+                        + " une partie presenterait toujours l'integralite du paquet", jeu.nombreDeManches())
+                .hasSizeGreaterThan(jeu.nombreDeManches());
+    }
+
+    /**
+     * S5-7, second critere : deux parties completes jouees a la suite avec des graines distinctes
+     * ne presentent pas exactement les memes phrases. Jouee par la mecanique reelle
+     * (bandit manchot) et non par un tirage isole, pour couvrir la chaine complete traversee par un
+     * enfant.
+     */
+    @Test
+    void homophonesCm1NePresentePasLesMemesPhrasesSurDeuxPartiesAGrainesDistinctes() {
+        GameDefinition jeu = jeu("bandit-manchot-homophones-cm1");
+
+        List<String> premierePartie = phrasesDUnePartieComplete(jeu, new Random(1));
+        List<String> secondePartie = phrasesDUnePartieComplete(jeu, new Random(2));
+
+        assertThat(premierePartie)
+                .as("deux parties jouees avec des graines distinctes ne presentent pas exactement"
+                        + " les memes phrases dans le meme ordre")
+                .isNotEqualTo(secondePartie);
+    }
+
+    /** Joue une partie complete de bandit manchot et rend les enonces presentes, dans leur ordre. */
+    private static List<String> phrasesDUnePartieComplete(GameDefinition jeu, Random graine) {
+        RandomSource hasard = graine::nextInt;
+        BanditManchot mecanique = new BanditManchot();
+        BanditManchotMove reponseToujoursFausse = new BanditManchotMove("__jamais_une_bonne_reponse__");
+
+        GameSession session = mecanique.start(jeu.contenu(), hasard, jeu.nombreDeManches());
+        List<String> phrases = new ArrayList<>();
+        while (session.status() == SessionStatus.EN_COURS) {
+            BanditManchotSession mancheEnCours = (BanditManchotSession) session;
+            phrases.add(mancheEnCours.enonceManche().orElseThrow());
+            session = mecanique.apply(session, reponseToujoursFausse);
+        }
+        return phrases;
     }
 
     /** Normalise un couple observe (bonne reponse, distracteur) en la paire triee, pour le compter une fois. */

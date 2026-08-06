@@ -62,9 +62,12 @@ class ChaquePaquetPorteUnIndiceTest {
      * d'y entrer. Ecrire ces indices est du contenu pedagogique : il appartient aux stories S5-2 a
      * S5-6 et repasse devant nadia-prof, pas devant un test.
      *
-     * <p>S5-5 (residuel) : "cp-le-bon-son" a ecrit ses indices (S5-5) et sort de cette dette.</p>
+     * <p>S5-5 (residuel) : "cp-le-bon-son" et "cm1-homophones" ont ecrit leurs indices et sortent
+     * de cette dette. L'ensemble est vide, mais reste ecrit (et non supprime) : le plafond
+     * ci-dessous est la trace de cette fermeture, et une regression future y redeviendrait
+     * visible.</p>
      */
-    private static final Set<String> DETTE_DE_CONTENU = Set.of("cm1-homophones");
+    private static final Set<String> DETTE_DE_CONTENU = Set.of();
 
     /** Etat au 2026-08-06, ouverture de s05. Ce nombre ne remonte jamais. */
     private static final int PLAFOND_DE_DETTE = 2;

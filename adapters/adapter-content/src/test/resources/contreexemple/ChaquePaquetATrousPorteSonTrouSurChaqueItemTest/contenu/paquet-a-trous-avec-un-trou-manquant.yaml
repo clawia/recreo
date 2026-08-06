@@ -1,0 +1,19 @@
+# Jeu fautif d'ADR-0013 : un paquet neuf, jamais livre, qu'aucune liste de test ne nomme. Le
+# premier item utilise deja la convention du trou ("___"), le second ecrit sa reponse en clair - la
+# forme exacte du defaut signale par l'utilisatrice sur "cm1-homophones". Le garde-fou doit etre
+# rouge sur le second item. Texte de fixture, jamais affiche a un enfant.
+schema: 1
+id: paquet-a-trous-avec-un-trou-manquant
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Competence de fixture"
+items:
+  - enonce: "Il ___ mange une pomme de fixture."
+    bonneReponse: "juste"
+    distracteurs: ["faux"]
+  - enonce: "Il juste mange une pomme de fixture."
+    bonneReponse: "juste"
+    distracteurs: ["faux"]

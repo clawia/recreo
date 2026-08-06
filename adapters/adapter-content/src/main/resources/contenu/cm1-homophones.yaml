@@ -10,66 +10,88 @@ items:
   - enonce: "Il ___ mangé une pomme."
     bonneReponse: "a"
     distracteurs: ["à"]
+    indice: "Remplace par 'avait' : 'Il avait mangé une pomme' fonctionne, alors c'est 'a'."
   - enonce: "Je vais ___ l'école."
     bonneReponse: "à"
     distracteurs: ["a"]
+    indice: "Remplace par 'avait' : 'Je vais avait l'école' ne fonctionne pas, alors c'est 'à'."
   - enonce: "Papa ___ maman font la cuisine."
     bonneReponse: "et"
     distracteurs: ["est"]
+    indice: "Remplace par 'et puis' : 'Papa et puis maman font la cuisine' fonctionne, alors c'est 'et'."
   - enonce: "Le chat ___ noir."
     bonneReponse: "est"
     distracteurs: ["et"]
+    indice: "Remplace par 'était' : 'Le chat était noir' fonctionne, alors c'est 'est'."
   - enonce: "Les enfants ___ partis."
     bonneReponse: "sont"
     distracteurs: ["son"]
+    indice: "Remplace par 'étaient' : 'Les enfants étaient partis' fonctionne, alors c'est 'sont'."
   - enonce: "Il prend ___ cartable."
     bonneReponse: "son"
     distracteurs: ["sont"]
+    indice: "Remplace par 'ton' : 'Il prend ton cartable' fonctionne, alors c'est 'son'."
   - enonce: "Ils ___ un chien."
     bonneReponse: "ont"
     distracteurs: ["on"]
+    indice: "Remplace par 'avaient' : 'Ils avaient un chien' fonctionne, alors c'est 'ont'."
   - enonce: "___ joue dans la cour."
     bonneReponse: "On"
     distracteurs: ["Ont"]
+    indice: "Remplace par 'il' : 'Il joue dans la cour' fonctionne, alors c'est 'on'."
   - enonce: "___ vas-tu ?"
     bonneReponse: "Où"
     distracteurs: ["Ou"]
+    indice: "Remplace par 'à quel endroit' : 'À quel endroit vas-tu ?' fonctionne, alors c'est 'où'."
   - enonce: "Tu veux du thé ___ du café ?"
     bonneReponse: "ou"
     distracteurs: ["où"]
-  - enonce: "Pose ton cartable là, à côté du mien."
+    indice: "Remplace par 'ou bien' : 'Tu veux du thé ou bien du café ?' fonctionne, alors c'est 'ou'."
+  - enonce: "Pose ton cartable ___, à côté du mien."
     bonneReponse: "là"
     distracteurs: ["la"]
-  - enonce: "Léa cherche la règle dans sa trousse."
+    indice: "Remplace par 'à cet endroit' : 'Pose ton cartable à cet endroit' fonctionne, alors c'est 'là'."
+  - enonce: "Léa cherche ___ règle dans sa trousse."
     bonneReponse: "la"
     distracteurs: ["là"]
-  - enonce: "Tom avait perdu sa gomme ; il l'a enfin retrouvée ce matin."
+    indice: "Le mot qui suit le trou est un nom ('règle') : il faut un déterminant, 'la'."
+  - enonce: "Léa a perdu son livre depuis lundi, mais elle ___ enfin retrouvé ce matin."
     bonneReponse: "l'a"
     distracteurs: ["la"]
-  - enonce: "Il la range soigneusement dans son cartable."
+    indice: "Remplace par 'l'avait' : 'elle l'avait enfin retrouvé' fonctionne, alors c'est 'l'a'."
+  - enonce: "Il ___ range soigneusement dans son cartable."
     bonneReponse: "la"
     distracteurs: ["l'a"]
-  - enonce: "Ce cahier appartient à mon petit frère."
+    indice: "Le mot qui suit le trou est un verbe au présent ('range'), pas un participe : c'est 'la'."
+  - enonce: "___ cahier appartient à mon petit frère."
     bonneReponse: "ce"
     distracteurs: ["se"]
-  - enonce: "Après la récréation, tous les élèves se rangent devant la porte de la classe."
+    indice: "Le mot qui suit le trou est un nom ('cahier') : il faut un déterminant, 'ce'."
+  - enonce: "Après la récréation, tous les élèves ___ rangent devant la porte de la classe."
     bonneReponse: "se"
     distracteurs: ["ce"]
-  - enonce: "Regarde ces oiseaux là-bas, sur la branche !"
+    indice: "Le mot qui suit le trou est un verbe conjugué ('rangent') : il faut un pronom, 'se'."
+  - enonce: "Regarde ___ oiseaux là-bas, sur la branche !"
     bonneReponse: "ces"
     distracteurs: ["ses"]
-  - enonce: "Léa range son cahier et ses crayons avant de partir."
+    indice: "'là-bas' montre ce qu'on regarde : c'est 'ces', comme quand on désigne quelque chose."
+  - enonce: "Léa range son cahier et ___ crayons avant de partir."
     bonneReponse: "ses"
     distracteurs: ["ces"]
-  - enonce: "Il fait très froid ce matin, mais le soleil brille quand même."
+    indice: "Léa range son cahier à elle, et donc ses crayons à elle aussi : c'est 'ses'."
+  - enonce: "Il fait très froid ce matin, ___ le soleil brille quand même."
     bonneReponse: "mais"
     distracteurs: ["mes"]
-  - enonce: "J'ai rangé mes affaires avant de partir à l'école."
+    indice: "Remplace par 'pourtant' : 'il fait froid, pourtant le soleil brille' fonctionne, alors c'est 'mais'."
+  - enonce: "J'ai rangé ___ affaires avant de partir à l'école."
     bonneReponse: "mes"
     distracteurs: ["mais"]
-  - enonce: "Il reste peu de pain dans le placard de la cuisine."
+    indice: "Remplace par 'les miennes' : ce sont les affaires à moi, alors c'est 'mes'."
+  - enonce: "Il reste ___ de pain dans le placard de la cuisine."
     bonneReponse: "peu"
     distracteurs: ["peut"]
-  - enonce: "Même si le ciel est bien dégagé ce matin, il peut encore pleuvoir avant le soir."
+    indice: "Remplace par 'un peu' : 'il reste un peu de pain' fonctionne, alors c'est 'peu'."
+  - enonce: "Même si le ciel est bien dégagé ce matin, il ___ encore pleuvoir avant le soir."
     bonneReponse: "peut"
     distracteurs: ["peu"]
+    indice: "Remplace par 'pouvait' : 'il pouvait encore pleuvoir' fonctionne, alors c'est 'peut'."
