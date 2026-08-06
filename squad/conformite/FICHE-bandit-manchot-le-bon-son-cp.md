@@ -3,8 +3,11 @@
 - **Mecanique** : bandit manchot (mecanique generique, partagee avec
   `bandit-manchot-additions-cp` et `bandit-manchot-homophones-cm1`).
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cp-le-bon-son.yaml`,
-  24 items, `type: question`. Matiere premiere issue de `contenu-repris/`.
-- **Statut global** : **REFUSE** (Done pedagogique refuse le 2026-08-06, premier audit).
+  21 items depuis le lot `lea-dev` de s05 (24 a l'audit du premier refus), `type: question`.
+  Matiere premiere issue de `contenu-repris/`.
+- **Statut global** : **REFUSE** (Done pedagogique refuse le 2026-08-06, premier audit). Le refus
+  reste en vigueur : l'avis de conception ajoute en fin de fiche ne le leve pas et n'est pas un
+  audit.
 - **Derniere mise a jour** : 2026-08-06
 
 ## Competences visees
@@ -187,3 +190,250 @@ qu'un paquet `type: question` puisse porter un indice.
   la ligne en `non couvert` ; c'est le referentiel qui ment. Un referentiel qui declare couverte
   une competence qui ne l'est pas est le pire defaut qu'un referentiel puisse avoir : il fait
   disparaitre un trou. A supprimer.
+
+---
+
+### Avis de conception - le motif 3 ne peut pas etre leve par un remplacement de mots
+
+- **Nature** : **avis de conception, pas un audit et pas un verdict.** Le REFUSE ci-dessus reste
+  en vigueur, entier. Rien ici ne remet `bandit-manchot-le-bon-son-cp` au catalogue.
+- **Date** : 2026-08-06.
+- **Saisine** : `sofia-sm`, sur le blocage de S5-2 constate par `lea-dev` (commit `df963b7`).
+- **Moyens** : **audit degrade, et je le signale comme tel.** Je n'ai pas rejoue l'increment : le
+  jeu est hors catalogue depuis `DEC-0009` et l'audit joue m'est annonce pour plus tard. J'ai lu
+  le paquet corrige (21 items), `QuestionContentSourceFactory`, le referentiel CP, les stories
+  S5-2 a S5-5 et S5-9, et le planning de s05. Tout ce qui, ci-dessous, porte sur le rendu a
+  l'ecran reste a confirmer en jeu.
+
+#### 1. Le constat de lea-dev est juste, et il est plus fort qu'elle ne le dit
+
+`lea-dev` a raison sur les faits : sur les six sons du paquet, seules les trois voyelles nasales
+`an`, `on`, `in` admettent une graphie alternative courante en vocabulaire CP (`en`, `em`, `am`
+pour `an` ; `om` pour `on` ; `im`, `ain`, `ein`, `un` pour `in`). `ou`, `oi` et `ch` n'en ont pas :
+un mot de CP qui fait le son [u] s'ecrit avec `ou`, et il n'y a pas d'exception a lui montrer.
+
+Mais le probleme n'est pas une penurie de mots. **Il est dans la forme meme de la tache.** Ce jeu
+donne un mot ecrit et demande de choisir un grapheme ecrit. Tant qu'aucun son n'est emis, cette
+tache ne peut exiger le phoneme que la ou le grapheme ne suffit pas a le donner, c'est-a-dire la
+ou le son admet plusieurs graphies. **Pour un son a graphie unique, aucune reformulation de
+consigne, aucun choix de mot et aucune inversion du sens de la question ne rendra l'exercice
+autre chose qu'une recherche de lettres.** J'ai passe en revue les variantes envisageables -
+demander la position du son dans le mot, demander quel mot contient le son, demander quel mot
+fait le meme son qu'un autre - toutes restent resolubles par comparaison de chaines. La direction
+"garder `ou`, `oi` et `ch` en changeant ce qu'on demande a l'enfant" est une impasse, et je la
+ferme plutot que de la laisser ouverte : elle couterait un sprint pour revenir ici.
+
+Ce que cela veut dire pour le produit : **les digraphes transparents `ou`, `oi`, `ch` ne sont pas
+travaillables sans son.** Ils appartiennent a un jeu qui joue un fichier audio, pas a celui-ci. Le
+referentiel les cite ("digraphes `ch`, `ou`, `on`...") et ils resteront donc partiellement
+decouverts par ce jeu ; c'est un trou reel, il vaut mieux qu'il soit visible dans la matrice
+plutot que comble par des items qui ne verifient rien.
+
+#### 2. Non, mon motif ne se lit pas en "majorite des items"
+
+`camille-po` m'a traduite en "plus de la moitie, donc au moins 13 sur 24". **Ce n'est pas ce que
+j'ai ecrit, et cette traduction est doublement fausse.**
+
+Ma phrase d'origine est : "Un exercice ou 23 items sur 24 se reussissent sans la competence visee,
+**et** ou le seul item qui l'exige risque de desapprendre, ne couvre pas 'associer les graphemes
+aux phonemes'." C'est une conjonction, et je reprochais une **quasi-absence** (1 item sur 24), pas
+un defaut de majorite. Entre "presque jamais" et "plus d'une fois sur deux" il y a tout l'espace
+d'un exercice correct, et c'est la qu'il faut viser.
+
+Pire : **la majorite est une cible pedagogiquement mauvaise, pas seulement inatteignable.** Un
+enfant de CP est en train de construire la regle "ces lettres font ce son". Un paquet dont la
+majorite des items contredit cette regle ne lui enseigne pas la variation, il lui enseigne que la
+regle ne tient pas. Le cas regulier n'est pas du remplissage : c'est l'ancrage sans lequel
+l'exception n'a rien a quoi s'opposer. Si S5-2 avait ete satisfaite telle qu'ecrite, j'aurais
+refuse le resultat.
+
+**Le critere a tester, a la place de la majorite** - trois proprietes, la troisieme etant la
+seule reellement bloquante :
+
+1. **Par son, pas globalement.** Chaque son travaille par le paquet admet au moins deux graphies
+   usuelles au niveau CP, et **figure dans le paquet sous au moins deux graphies differentes**.
+   Un son present sous une seule graphie n'a rien a faire dans cet exercice.
+2. **Une part, pas une majorite.** Les items ou la graphie differe de la notation du son
+   representent **entre un tiers et la moitie** du paquet, jamais plus. Plancher, parce qu'en
+   dessous l'exercice retombe dans le defaut que j'ai refuse ; plafond, pour la raison ci-dessus.
+   La meme fourchette vaut a l'interieur de chaque son, pas seulement sur le total.
+3. **Par item, et c'est la propriete bloquante.** **Aucun item a variation n'est livre sans un
+   retour qui nomme la variation a l'enfant.** C'est la seconde moitie de mon motif 3, celle que
+   la traduction en majorite a laissee tomber. Voir le point 5.
+
+Sur la mesure : compter les lettres de la reponse dans le mot est un substitut qui se trompe dans
+les deux sens. Il compte `DENT` comme variation, ce qui est juste, mais il compterait `MAIN`
+comme regulier alors que la graphie y est `ain` et non `in`. **Le besoin est que chaque item
+declare la graphie qui porte le son** (mot `DENT`, son `an`, graphie `en`) : la propriete 2
+devient alors exactement verifiable, et c'est le meme champ qui sert au retour du point 5. Je
+decris le besoin ; le modele de contenu appartient a `theo-archi` et a `camille-po`.
+
+#### 3. Ce que ce jeu doit travailler - je tranche
+
+**Ce paquet ne travaille plus que les trois voyelles nasales : `an`, `on`, `in`.** `ou`, `oi` et
+`ch` en sortent.
+
+Composition demandee : **15 items, cinq par son, dont trois a graphie reguliere et deux a graphie
+alternative.** Soit 6 items sur 15 a variation, 40 pour cent, dans la fourchette du point 2.
+
+- `an` : reguliers `MAMAN`, `MANTEAU`, `BANC` ; variations `DENT` (`en`), `VENT` (`en`), `JAMBE`
+  ou `LAMPE` (`am`).
+- `on` : reguliers `PONT`, `BALLON`, `MONTRE` ; variations `OMBRE`, `POMPIER` ou `NOMBRE` (`om`).
+- `in` : reguliers `LAPIN`, `SAPIN`, `JARDIN` ; variations `TIMBRE` (`im`), `MAIN` ou `PAIN`
+  (`ain`), `LUNDI` (`un`).
+
+Ces mots sont des exemples de travail, pas une liste arretee : le paquet final repasse devant moi
+item par item, comme tout contenu neuf.
+
+Trois consequences favorables, que je note pour qu'elles ne soient pas re-decouvertes :
+
+- **Les trois propositions deviennent toujours les trois memes** (`an`, `on`, `in`). L'enfant
+  choisit reellement entre trois sons voisins, ce qui est une difficulte CP authentique, au lieu
+  de piocher dans six categories heterogenes. **Ma reserve 3 du refus - `ch` melange a des
+  voyelles - tombe d'elle-meme.**
+- **Les mots nasaux utiles sont courts** (`DENT`, `VENT`, `PONT`, `MAIN`, `OMBRE`, `TIMBRE`),
+  contre `BALANCOIRE` et `CHATEAU`. **Ma reserve 1 - mots trop longs pour le moment de l'annee -
+  s'attenue nettement**, sans effort particulier.
+- Le risque du double son (motif 4) diminue : deux nasales dans un meme mot court sont rares. Il
+  ne disparait pas et reste a verifier item par item.
+
+**Sur la sortie "ce jeu ne peut pas travailler la competence, il faut autre chose"** : je ne la
+prends pas. Reconnaitre que `en` fait le son [an] dans `DENT`, c'est associer un grapheme a un
+phoneme au sens le plus strict du terme - c'est meme le seul endroit ou cette association est
+autre chose qu'une evidence. Le jeu tient, a condition qu'il ne travaille que la ou il y a
+quelque chose a travailler.
+
+#### 4. La consigne (motif 1) - la source du son, c'est la voix de l'enfant
+
+Mon motif 1 disait qu'une consigne ne doit pas promettre un son que l'application ne joue pas.
+`camille-po` l'a traduit en interdiction du verbe "entendre". **C'est trop etroit et cela va
+produire une consigne contournee.**
+
+La consigne juste est : **"Dis le mot. Quel son entends-tu ?"**
+
+Cinq mots, deux phrases courtes, lisibles au CP. Elle est vraie : l'enfant dit le mot a voix
+haute, donc il l'entend. Et surtout **elle decrit la bonne operation pedagogique** - passer de
+l'ecrit a l'oral par sa propre voix est exactement le geste que la competence demande, et c'est
+lui qui rend l'exercice possible sans fichier audio. Une consigne qui evite "entendre" evacuerait
+ce geste au lieu de le prescrire.
+
+A rectifier dans le troisieme critere de S5-2, qui interdit aujourd'hui le verbe "entendre" et
+interdirait donc cette consigne. La regle est : **la consigne ne promet aucun son emis par
+l'application, et nomme ce que l'enfant doit faire pour produire le son.**
+
+Meme rectification sur les indices, qui disent tous "Le son s'entend aussi dans...". Ils
+deviennent vrais des lors que la consigne etablit que l'enfant dit les mots.
+
+#### 5. S5-9 n'est pas detachable de S5-2 : c'est sa condition
+
+`camille-po` a detache en S5-9 le retour qui explique la variation, et `DEC-0011` l'a mise hors
+perimetre de s05. Sur le plan technique le detachement est fonde, `theo-archi` a raison. **Sur le
+plan pedagogique, l'ordre qui en resulte est dangereux.**
+
+Aujourd'hui le paquet contient un seul item a variation, `DENT`, et j'ai ecrit qu'il "fait passer
+la variation pour une erreur". La recomposition du point 3 en produit **six**. Livrer six `DENT`
+sans le retour de S5-9, c'est multiplier par six le defaut exact que mon motif 3 nomme. **Un
+paquet recompose sans S5-9 est un increment que je refuserais plus durement que celui de s04**,
+et ce serait justifie : l'increment de s04 n'enseignait rien, celui-la enseignerait faux six fois
+par partie.
+
+L'indice ne remplace pas ce retour. Il arrive avant la reponse, seulement apres des echecs
+repetes, et il designe un autre mot ; le retour, lui, arrive apres la reponse et nomme les
+lettres du mot que l'enfant a sous les yeux. Ce sont deux dispositifs differents.
+
+**Donc : S5-2 recomposee et S5-9 sont un seul lot, et se livrent ensemble ou pas du tout.**
+
+**Prealable de S5-9 que je tranche ici, pour qu'elle ne me revienne pas** (son premier critere le
+demande explicitement) :
+
+- **Sur quels items** : uniquement les items a variation, ceux dont la graphie differe de la
+  notation du son. Sur un item regulier il n'y a rien a expliquer, et un texte partout dilue
+  celui qui compte.
+- **Quand** : **systematiquement, que l'enfant ait repondu juste ou faux.** Pas seulement sur
+  reponse fausse : l'enfant qui a trouve `DENT` par elimination a autant besoin de l'explication
+  que celui qui s'est trompe, et celui qui avait raison pour la bonne raison a besoin d'etre
+  conforte. Pas "une seule fois" non plus : une variation graphemique s'installe par repetition.
+- **Ce que le texte doit dire** : nommer les lettres du mot affiche et le son qu'elles font.
+  Forme attendue, a valider texte par texte : "Dans DENT, ce sont les lettres e et n qui font le
+  son an." Une phrase, le mot que l'enfant vient de lire, pas de terme de metalangage.
+
+#### 6. Ce qui est acquis dans le lot livre par lea-dev
+
+Pour ne pas le rejouer a l'audit. **Acquis sur le contenu, sous reserve de confirmation a l'ecran
+le jour de l'audit joue** - c'est la limite de l'audit degrade, pas une reticence de ma part.
+
+| Motif | Etat | Ce qui reste |
+|---|---|---|
+| **Motif 2** - crochets | **Acquis.** Les six sons s'ecrivent `an`, `on`, `in`, `ou`, `oi`, `ch` dans le paquet, sans crochet. | Confirmer le rendu a l'ecran. |
+| **Motif 4** - double reponse | **Acquis sur les 21 items actuels.** `MOUCHE`, `MOUTON`, `BALANCOIRE` retires ; j'ai repasse les 21 items restants un par un, aucun ne fait entendre deux des sons du jeu. Le retrait etait l'une des deux sorties que mon motif nommait comme actionnables. | A re-verifier sur les mots neufs de la recomposition, sur ceux-la seulement. |
+| **Motif 5** - aucune aide | **Acquis sur les deux plans.** `QuestionContentSourceFactory` lit desormais `indice` : la cause structurelle que je decrivais est traitee, un paquet `type: question` peut porter une aide. Les 21 items en portent une. | Verifier en jeu que l'indice apparait reellement apres echecs repetes, comme dans le jeu de calcul. Reserves de redaction ci-dessous. |
+| **Motif 1** - consigne | Non traite, et c'est conforme au planning : la consigne vit dans l'entree de catalogue, absente de `round-two`. Texte tranche au point 4. | Livrable avec la recomposition. |
+| **Motif 3** - appariement visuel | **Non traite, a juste titre.** Voir points 1 a 3. | Recomposition complete du paquet. |
+
+**Point hors du refus mais dans mes suites** : `squad/programme/francais/competences-cp.md` ne
+contient plus l'annotation heritee qui declarait couverte "Denombrer les syllabes orales d'un mot"
+par un jeu inexistant. **Corrige, cette suite est close.**
+
+#### 7. Reserves nouvelles sur les indices, non bloquantes
+
+Je les ecris maintenant pour qu'elles soient traitees avec la recomposition plutot que decouvertes
+a l'audit. **Aucune erreur factuelle** : les 21 mots de reference font bien le son annonce, je les
+ai verifies un par un. Trois defauts de redaction :
+
+1. **Trois indices induisent en erreur sur la position.** `PINCEAU` : "Le son s'entend au debut du
+   mot, comme dans 'lapin'." Dans `lapin` le son est a la fin. Meme defaut sur `SOURIS` (renvoi a
+   `loup`, ou le son est au milieu) et sur `ETOILE` (renvoi a `roi`, ou il est a la fin). Un enfant
+   de CP lit "au debut, comme dans" comme une seule affirmation. Soit le mot de renvoi partage la
+   position, soit on ne mentionne pas la position.
+2. **L'indice de `DENT` est le plus faible du paquet alors que c'est l'item qui compte.** Il
+   renvoie a `temps`, ou la graphie est `em` - encore une autre - et qui est difficile a lire (`p`
+   et `s` muets). Un enfant bloque sur `DENT` a besoin qu'on lui montre les lettres `e-n`, pas
+   qu'on l'envoie vers un mot plus dur. Cet indice, et ceux des items a variation en general,
+   doivent nommer les lettres.
+3. **"Le son s'entend aussi dans le mot 'X'." est lourd pour du CP.** Neuf mots, une tournure
+   pronominale passive, et des guillemets. "On entend ce son dans grand." fait le meme travail en
+   cinq mots. Je ne bloque pas la-dessus, mais la recomposition est le bon moment.
+
+#### 8. Deux points ouverts que je ferme au passage
+
+- **S5-3, marque visuelle "ceci est un son"** : mon motif 2 la laissait ouverte. **Je tranche :
+  aucune marque.** Avec les trois seules nasales du point 3, les propositions sont toujours des
+  sons et jamais des mots, la confusion que la marque devait prevenir n'a plus d'objet, et
+  ajouter un encadre ou une couleur serait de la charge visuelle sans contrepartie. Ce point ne
+  revient pas devant moi.
+- **S5-9, declencheur et perimetre d'affichage** : tranches au point 5.
+
+#### 9. Ce jeu ne peut pas etre releve pendant s05
+
+**Non, et je le dis franchement parce que `sofia-sm` en a besoin pour la cloture.**
+
+Ce que je demande n'est pas un remplacement de mots : c'est une recomposition du paquet - quels
+sons, en quelle proportion, quels mots, quinze items neufs, quinze indices neufs, six textes
+d'explication neufs, une consigne neuve. Chacun de ces textes est du contenu neuf qui passe par
+mon audit item par item. Et l'ensemble est conditionne a S5-9, que `DEC-0011` a explicitement
+sortie du perimetre de s05.
+
+**Il n'y a rien a fusionner sur ce jeu d'ici la fin de s05.** Le lot de `lea-dev` deja fusionne
+n'a pas besoin d'etre defait : les motifs 2, 4 et 5 sont acquis dessus et servent de base a la
+recomposition.
+
+**`DEC-0009` reste tenue et le jeu reste hors catalogue.** L'audit joue que `sofia-sm` m'annonce
+sur branche jetable porterait, aujourd'hui, sur un paquet dont le motif 3 est intact : je
+prononcerais REFUSE une seconde fois, sur le meme motif, ce qui ne renseignerait personne. **Je
+demande que cet audit soit reporte a la livraison du lot S5-2 recompose plus S5-9, et je
+prononcerai a ce moment-la.** Si l'equipe souhaite tout de meme me faire jouer le paquet a 21
+items pour verifier les motifs 2, 4 et 5 en conditions reelles, je le ferai volontiers et j'en
+ferai un constat de verification, pas un verdict.
+
+#### 10. Suites hors de ma main
+
+- La ligne `francais | CP | Lecture et comprehension de l'ecrit | Associer les graphemes aux
+  phonemes` de `squad/programme/MATRICE-couverture.md` **reste `en cours`**. Je n'ai pas edite ce
+  fichier, il appartient a `camille-po`.
+- Pour `camille-po`, sans que j'ecrive de story : reecrire le premier critere de S5-2 selon le
+  point 2 (par son, fourchette d'un tiers a la moitie, propriete par item) ; rectifier son
+  troisieme critere selon le point 4 ; rattacher S5-9 au meme lot que S5-2 selon le point 5 ;
+  acter que `ou`, `oi` et `ch` sortent de ce paquet et que leur couverture demande un jeu sonore.
+- Pour `theo-archi`, comme besoin et non comme conception : un item doit pouvoir declarer la
+  graphie qui porte le son, et un item a variation doit pouvoir porter un texte de retour affiche
+  apres la reponse.
