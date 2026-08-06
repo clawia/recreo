@@ -1242,6 +1242,131 @@ section "Backlog - sprints suivants" plus bas).
   sur avis de `theo-archi`.
 - **Agent pressenti** : a affecter, pas avant que `nadia-prof` ait tranche le declencheur.
 
+## Sprint 6 - Un gabarit habille (en-tete, icone, menu, contenu centre) et l'ouverture francais engagee par DEC-0011
+
+**Contexte** : l'utilisatrice revient une deuxieme fois sur le design, en citant colorlib.com comme
+inspiration visuelle et en nommant deux manques precis : un en-tete avec une icone et un menu, et un
+contenu centre dans la page plutot que colle en haut a gauche. Le constat est verifie sur le code :
+`accueil.html` est aujourd'hui un `<h1>` nu suivi d'une liste de boutons, sans aucun conteneur. Le
+lot Bootstrap de s04/s05 (`ADR-0014`) a change le rendu de base sans jamais toucher la structure de
+la page - Bootstrap 5.3.8 est deja vendorise et fournit la grille, le conteneur centre et les
+composants de barre de navigation necessaires a ce que demandent S6-1 et S6-2 ci-dessous, sans
+telechargement ni build supplementaire.
+
+`DEC-0012-rhabillage-gabarit-menu-minimal-et-ouverture-s06.md` tranche que ce chantier ouvre le
+sprint 6, aux cotes de l'ouverture francais deja engagee par `DEC-0011` (au moins une des deux lignes
+`textes-trous/cm1-accords.yml` ou `textes-trous/cm1-conjugaison.yml`, pas encore detaillee en
+story a la date de cette decision). Les deux chantiers portent sur des artefacts disjoints et
+peuvent avancer en parallele ; si la capacite du sprint ne permet pas les deux, l'ouverture francais
+garde la priorite (engagement deja pris envers l'utilisatrice sur le rythme de couverture), et c'est
+`sofia-sm` qui le constate au planning, pas `camille-po` par avance.
+
+**Contraintes non negociables, valables pour S6-1 et S6-2** (`CLAUDE.md`, `ADR-0008`, `ADR-0014`) :
+aucune ressource externe, aucun CDN, aucune police telechargee a l'execution - l'application doit
+fonctionner hors ligne, et le site cite en inspiration est une reference visuelle, pas un fichier a
+importer ; zero build Node, zero serveur front separe ; le comportement de jeu reste sur le serveur,
+et le JavaScript de Bootstrap (dont ses menus repliables) n'entre pas dans ce depot sans un ADR
+nomme qui l'ouvre explicitement (`ADR-0014` point 7) - si une entree de menu venait a exiger un
+repli anime, ce serait un besoin technique nouveau, a signaler plutot qu'a supposer acquis.
+
+**Frontiere de mandat, valable pour les deux stories** : `ines-design` propose la forme, la couleur,
+le contraste et la disposition ; elle ne tranche pas. `nadia-prof` garde seule le veto pedagogique
+sur ce que voit l'enfant. Aucune des deux stories ne porte de competence programme : elles sont
+transverses, `squad/programme/MATRICE-couverture.md` n'est pas modifiee par ce chantier.
+
+### S6-1 - Un en-tete qui porte l'identite de recreo et une unique entree de menu vers l'accueil
+
+- **Besoin** : en tant qu'enfant qui ouvre recreo, je veux voir en haut de chaque ecran un petit
+  dessin et le nom du jeu, avec un moyen de revenir a la liste des jeux toujours au meme endroit,
+  afin de reconnaitre l'application et de savoir ou revenir sans chercher un bouton different sur
+  chaque ecran.
+- **Competence programme visee** : transverse - identite et navigation du produit, aucun contenu
+  pedagogique (meme categorie que S2-2, S2-3).
+- **Decision de contenu du menu** (`DEC-0012`) : le menu contient **exactement une entree**,
+  "Accueil", equivalente au bouton "Les jeux" deja present dans chaque etat de l'ecran de jeu.
+  Aucune autre entree n'est ajoutee : l'accueil n'a nulle part ou aller depuis lui-meme, et un filtre
+  par niveau (CP / CM1) n'existe pas encore comme fonctionnalite serveur - l'ouvrir dans le menu
+  avant qu'elle existe inventerait une entree qui ne mene nulle part, ce que je m'interdis. Voir
+  `DEC-0012` pour le raisonnement complet et la reserve associee en fin de ce document ("Backlog -
+  sprints suivants").
+- **Cette story n'en retire pas une autre** : le bouton "Les jeux" deja present dans
+  `fragments/manche.html` et `fragments/retour.html` n'est pas supprime par cette story. L'entree de
+  menu s'y ajoute ; les regrouper en un seul mecanisme est un choix distinct, non decide ici.
+- **Criteres d'acceptation testables** :
+  - Etant donne `accueil.html` apres cette story, quand on relit sa structure, alors un en-tete
+    (contenant l'icone et le menu) est un frere ou un ancetre de la zone `#jeu` remplacee par htmx,
+    jamais un descendant : il n'est donc jamais efface ni recree quand `#jeu` est remplace par un
+    fragment de jeu.
+  - Etant donne cet en-tete, quand on compte ses liens ou boutons qui changent d'ecran, alors il en
+    compte exactement un, portant le texte "Accueil" et menant a l'accueil (par exemple via le meme
+    mecanisme que le bouton "Les jeux" existant).
+  - Etant donne l'icone de l'en-tete, quand on verifie son origine, alors elle est servie depuis les
+    ressources statiques de `adapter-web`, empaquetee dans le fat jar, sans reference reseau
+    (perimetre deja couvert par `RessourcesTiercesTest`, `ADR-0014`).
+  - Etant donne le dessin d'icone deja valide pour `/favicon.ico` (stories S2-3 et S3-7), quand il
+    est repris tel quel pour l'en-tete, alors aucun nouveau verdict pedagogique n'est necessaire sur
+    ce dessin. Si `ines-design` propose a la place un dessin distinct de celui du favicon, il retombe
+    sous la meme porte que tout pictogramme neuf destine a l'enfant (`DEC-0002`, categorie B) et
+    attend le verdict de `nadia-prof` avant d'etre considere acquis.
+  - Etant donne `recreo.js` apres cette story, quand on le relit, alors il n'a recu aucune ligne
+    nouvelle : une entree unique ne demande ni repli ni bascule (deja verifie mecaniquement par
+    `FrontieresDuJavaScriptTest`, `ADR-0008` ; cette puce dit l'intention plutot qu'un nouveau test).
+- **Critere non tranchable aujourd'hui, signale plutot que suppose acquis** (`ADR-0013`) : le lien
+  "Accueil" de l'en-tete doit ne jamais etre rendu plus saillant qu'un bouton de reponse (role
+  action) affiche sur le meme ecran de jeu - c'est la meme propriete que protege
+  `LActionNeDeclarePasMoinsQueLaSortieTest` (`ADR-0017`) entre un bouton de sortie et un bouton
+  d'action **d'un meme fichier de gabarit**. Cette story place le lien de menu dans `accueil.html`,
+  hors des fichiers `fragments/manche.html` et `fragments/retour.html` qui portent les boutons
+  d'action : `ADR-0017` nomme lui-meme cette frontiere comme non couverte ("aucun couple
+  action/sortie ne traverse aujourd'hui cette frontiere, mais rien ne l'empeche demain"). Ce
+  "demain" est cette story. Je ne tranche pas comment fermer ce trou (decision technique) ; je le
+  signale a `sofia-sm`, qui route vers `theo-archi`, comme prealable a instruire avant que ce critere
+  puisse etre verifie par la CI plutot que par `nadia-prof` seule en jouant l'increment.
+- **Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+  `nadia-prof`** : que l'en-tete et son unique entree soient effectivement compris par un enfant de
+  CP ou de CM1 comme "revenir a la liste des jeux" sans explication d'adulte ; que la presence
+  permanente de l'en-tete n'ajoute pas de charge visuelle genante sur l'ecran de jeu, ou que
+  l'utilisation d'un dessin distinct du favicon (si `ines-design` en propose un) soit adaptee a
+  l'enfant (categorie B de `DEC-0002`).
+- **Lien decision** : `DEC-0012-rhabillage-gabarit-menu-minimal-et-ouverture-s06.md`.
+- **Agent pressenti** : `ines-design` (proposition de la forme), `theo-archi` (avis prealable sur le
+  trou nomme ci-dessus), mise en oeuvre par `marc-dev` / `lea-dev` / `sofia-sm`.
+
+### S6-2 - Le contenu de chaque ecran est rassemble au centre de la page, pas colle en haut a gauche
+
+- **Besoin** : en tant qu'enfant qui joue sur un grand ecran, je veux que le jeu et ses boutons
+  soient rassembles au milieu de la page plutot que colles dans le coin en haut a gauche, afin de
+  regarder au centre de l'ecran comme pour une affiche, plutot que de devoir chercher le jeu dans un
+  coin.
+- **Competence programme visee** : transverse - mise en page, aucun contenu pedagogique (meme
+  categorie que S2-1, S2-2).
+- **Criteres d'acceptation testables** :
+  - Etant donne `recreo.css` et les gabarits apres cette story, quand on releve la regle qui habille
+    le conteneur principal du contenu (celui qui englobe le titre, la liste des jeux, ou le fragment
+    de jeu), alors elle declare une largeur maximale et un centrage horizontal explicite (par
+    exemple la classe Bootstrap `.container` deja vendorisee par `ADR-0014`, ou une regle maison
+    equivalente avec `margin-inline: auto`) - jamais une largeur libre calee par defaut a gauche de
+    la fenetre.
+  - Etant donne cette meme regle, quand on la relit a la largeur cible de 375 px (`DEC-0007` point
+    5, S3-8), alors elle ne fixe aucune largeur en pixels au-dela de cette cible : couverture deja
+    assuree par `ViewportEtLargeurTelephoneTest`, qui balaie tout `recreo.css` et tous les gabarits
+    sans inscription supplementaire a faire.
+  - Etant donne l'en-tete introduit par S6-1, quand on verifie sa mise en page, alors il suit le
+    meme centrage que le reste du contenu (icone et menu ne sont pas colles a un bord alors que le
+    contenu principal est centre).
+  - Etant donne les garde-fous deja acquis sur les elements de jeu (`TailleDesTextesEtBoutonsTest` -
+    cible tactile >= 2,75rem et lisibilite >= 1,25rem -, l'ecart `.propositions { gap }` >= 1rem,
+    `LActionNeDeclarePasMoinsQueLaSortieTest`), quand cette story est fusionnee, alors ils restent
+    tous verts sans qu'aucun seuil n'ait ete abaisse pour les faire passer : le centrage ne se paie
+    pas par un recul sur un plancher deja gagne par un refus pedagogique.
+- **Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+  `nadia-prof`** : que le resultat percu a l'ecran soit effectivement confortable et non anxiogene
+  pour un enfant de CP ou de CM1 (meme reserve que S2-2) ; que les marges laterales obtenues soient
+  ni trop serrees ni trop aerees pour un enfant qui vise un bouton avec le doigt.
+- **Lien decision** : `DEC-0012-rhabillage-gabarit-menu-minimal-et-ouverture-s06.md`.
+- **Agent pressenti** : `ines-design` (proposition des valeurs de mise en page), mise en oeuvre par
+  `marc-dev` / `lea-dev` / `sofia-sm`.
+
 ## Backlog - sprints suivants (intentions non detaillees)
 
 Ces intentions ne sont pas des stories pretes a developper. Elles seront detaillees sprint par
@@ -1286,3 +1411,8 @@ sprint, en priorite sur les trous les plus visibles de `squad/programme/MATRICE-
   - Commune aux deux jeux : l'accueil ne mentionne le niveau vise ("CP" ou "CM1") que pour "Calcul
     CP", pas pour "Le bon son" ni "Le bon petit mot" - un enfant peut ouvrir le jeu de l'autre
     niveau sans le savoir.
+- Le menu de l'en-tete (S6-1, `DEC-0012`) reste volontairement a une seule entree tant qu'aucune
+  deuxieme destination reelle n'existe. Un filtre par niveau (CP / CM1) est le candidat le plus
+  visible pour la reserve juste au-dessus ; il suppose d'abord un vrai filtre cote serveur (une
+  fonctionnalite a ecrire), pas seulement un lien ajoute dans le menu - ne pas ouvrir l'un sans
+  l'autre.

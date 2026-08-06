@@ -15,6 +15,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0009 | Retrait de "Le bon son" du catalogue jusqu'a sa correction | s04/s05 | 2026-08-06 | Acceptee |
 | DEC-0010 | Le titre du produit redevient "Recreo", sans accent : le point 7 de DEC-0007 est remplace | s05 | 2026-08-06 | Acceptee |
 | DEC-0011 | Le sprint 5 reste entierement correctif, l'ouverture suivante est nommee au sprint 6 | s05 | 2026-08-06 | Acceptee |
+| DEC-0012 | Le rhabillage du gabarit (en-tete, icone, menu, contenu centre) ouvre le sprint 6 ; le menu reste a une seule entree | s05/s06 | 2026-08-06 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0002` a ete amendee le 2026-08-04, a la suite de la
 relecture pedagogique de `nadia-prof` sur le refus de `bandit-manchot-additions-cp` - ajout d'une
