@@ -7,11 +7,13 @@
   Matiere premiere de reference (a repasser devant `nadia-prof` comme un contenu neuf, pas
   reprise telle quelle) : `contenu-repris/cp-calcul-mental.yml`.
 - **Statut global** : VALIDE SOUS RESERVE (Done pedagogique du jeu accorde le 2026-08-05 au titre de
-  s01, **maintenu et non retire**). Chantier d'identite visuelle de s02 juge separement dans le meme
-  bloc de validation : **S2-1, S2-2 et S2-3 accordes sous reserve** le 2026-08-05. S2-1 avait ete
-  **REFUSE** sur le commit `3be5a86` ; le refus a ete **leve** sur le commit `fd16057` apres nouvelle
-  mesure. Le refus et son motif sont conserves dans le bloc de validation, non effaces.
-- **Derniere mise a jour** : 2026-08-05
+  s01, **maintenu et non retire**). Corrections mathematiques de s03 : **VALIDE** le 2026-08-06,
+  ma condition sur la repartition des sommes est **levee**. Chantier Bootstrap hors sprint :
+  **REFUSE** le 2026-08-06 sur la saillance de l'ecran de retour, refus scope et liftable, motif
+  au bloc de validation. Chantier d'identite visuelle de s02 : **S2-1, S2-2 et S2-3 accordes sous
+  reserve** le 2026-08-05 ; S2-1 avait ete **REFUSE** sur le commit `3be5a86`, refus **leve** sur
+  `fd16057` apres nouvelle mesure. Aucun refus n'est efface de cette fiche.
+- **Derniere mise a jour** : 2026-08-06
 
 ## Competences visees
 
@@ -79,7 +81,297 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Verdict courant - sprint s02, chantier identite visuelle (S2-1, S2-2, S2-3)
+### Verdict courant - s03 et chantier Bootstrap, audit du 2026-08-06
+
+- **Deux verdicts distincts, et ils ne sont pas les memes.** On m'a soumis deux choses dans le
+  meme cycle et je refuse de les fondre en un seul avis :
+  - **Corrections mathematiques de s03 (S3-1 a S3-9)** : **VALIDE.** Done pedagogique prononce.
+    **Ma condition sur la repartition des sommes est levee**, et avec elle la ligne de matrice.
+  - **Chantier Bootstrap hors sprint (`ADR-0014`)** : **REFUSE**, sur un point precis et un seul,
+    la hierarchie de saillance de l'ecran de retour. Le reste du chantier est verifie et tient.
+- **Date** : 2026-08-06. **Commit audite** : `c801eb8` (`HEAD` de `round-two`).
+- **Moyens : audit joue, non degrade.** Fat jar construit (`mvn -B package`) et lance en local
+  sur un JDK 21.0.10 - le JDK que trois agents de s03 ont declare inexistant : il existe, il est
+  simplement declare dans un fichier de toolchains dont le nom comporte une faute de frappe, que
+  Maven ne lit donc jamais. Ce n'est pas un probleme d'environnement, c'est un fichier mal nomme.
+  - **2 600 manches jouees** sur le jeu de mathematiques (200 parties completes pour la
+    repartition, 60 pour l'exactitude), enonce par enonce, propositions relevees a chaque manche.
+  - Parties jouees en repondant faux systematiquement, juste systematiquement, et selon une
+    sequence ecrite a l'avance pour tester l'apparition et la remise a zero de l'indice.
+  - Rendu reel **mesure en pixels** au navigateur sans tete (`getBoundingClientRect` et style
+    calcule sur les gabarits reels servis par l'application), et regarde en captures d'ecran.
+    Je n'ai pas deduit les tailles de la feuille de style : `theo-archi` a eu raison de me
+    demander de remesurer plutot que de me fier au vert, et c'est la mesure qui a trouve le
+    defaut.
+
+#### 0. Question de process tranchee : une fiche par jeu
+
+`camille-po` avait laisse ouverte la question d'une fiche de conformite par jeu, et je l'avais
+renvoyee a "quand un deuxieme jeu existera". Il en existe deux de plus. **Je tranche : une fiche
+par jeu, nommee `FICHE-<id du jeu>.md`.** Elles sont creees :
+
+- `squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`
+- `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`
+
+Trois raisons, dans l'ordre de leur importance :
+
+1. **Le Done pedagogique porte sur un couple mecanique + contenu, pas sur une mecanique.** Les
+   trois jeux partagent la meme mecanique et je viens d'en valider un et d'en refuser un autre le
+   meme jour, sur le meme commit. Une fiche commune rendrait ce resultat inecrivable.
+2. **Une ligne de matrice, une competence, une fiche.** Chaque jeu porte sa propre ligne dans
+   `MATRICE-couverture.md`, avec sa propre condition de passage a `couvert-valide`. Les conditions
+   n'ont rien a voir entre elles.
+3. **Un refus ne doit pas contaminer un jeu qui n'y est pour rien.** Mon refus sur "Le bon son"
+   ne dit rien du jeu de CM1, qui est accorde.
+
+Ce qui reste **commun** aux trois jeux - l'habillage, la saillance des boutons, les formes
+juste/faux, l'ecran d'erreur - continue d'etre juge **ici**, dans cette fiche, parce que c'est ici
+que le chantier visuel a son historique depuis s00. Les fiches des deux autres jeux y renvoient
+au lieu de dupliquer. Si l'habillage devient un chantier a part entiere, il prendra sa propre
+fiche et je le dirai.
+
+---
+
+#### 1. VALIDE - les corrections mathematiques de s03
+
+##### 1.1 Ma condition principale : la repartition des sommes. Tenue.
+
+C'etait ma reserve 5 de s01 et la condition ecrite du passage de la ligne de matrice. **Verifiee
+en jouant 2 000 manches reelles**, pas en lisant le tirage :
+
+| Somme | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Manches | 26 | 56 | 131 | 147 | 183 | 212 | 266 | 295 | 316 | 368 |
+| Part mesuree | 1,3 % | 2,8 % | 6,6 % | 7,4 % | 9,2 % | 10,6 % | 13,3 % | 14,8 % | 15,8 % | 18,4 % |
+| Part annoncee | 1,3 % | 3,2 % | 5,2 % | 7,1 % | 9,0 % | 11,0 % | 12,9 % | 14,8 % | 16,8 % | 18,7 % |
+
+Les trois chiffres qui decident :
+
+| | s01, ancien tirage | s03, mesure | annonce |
+|---|---|---|---|
+| Sommes 9 et 10 | **43,9 %** | **34,2 %** | 35,5 % |
+| Sommes inferieures a 5 | **7,6 %** | **18,0 %** | 16,8 % |
+| Operande nul | 12,9 % | **13,7 %** | 12,9 % |
+
+Et surtout : **les 65 couples valides sont tous sortis, aucun ne manque** (effectif par couple
+entre 7 et 52, moyenne 30,8 sur 2 000 tirages). **`0 + 0` n'est jamais sorti sur 2 600 manches** -
+ma reserve 8 de s01 est traitee dans le meme geste. Le comportement mesure correspond a ce qui
+etait annonce, aux fluctuations d'echantillonnage pres.
+
+**Je leve ma condition.** Trois raisons, et je les ecris parce qu'un tiers doit pouvoir verifier
+que je ne me contente pas d'un progres :
+
+1. Ma reserve 5 nommait elle-meme le tirage uniforme sur les couples comme "deja une nette
+   amelioration". Il a ete livre. Je ne deplace pas mes propres poteaux apres coup : une porte
+   dont la condition change une fois remplie ne vaut pas mieux qu'une porte qui s'ouvre toujours.
+2. Mon motif de fond etait un motif de **couverture** : "le jeu ne travaille pas les additions
+   dans la limite de 10, il travaille surtout leur bord superieur". Ce motif tombe, et il tombe
+   sur une mesure : les 65 additions de l'intervalle sont toutes visitees, chacune avec la meme
+   probabilite. C'est bien "les additions dans la limite de 10".
+3. Les sommes basses sont passees de 7,6 % a 18,0 %, soit d'a peu près une manche sur treize a
+   pres d'une manche sur cinq. Un enfant fragile rencontre desormais du surcomptage a sa portee
+   plusieurs fois par partie.
+
+**Ce que je ne dis pas** : que la difficulte est bien repartie. 34,2 % des manches restent sur 9
+et 10, parce qu'un tirage uniforme sur les **faits** produit mecaniquement plus de grandes sommes
+(il y a dix facons de faire 10 et une seule de faire 1). C'est un choix defendable - drainer
+chaque fait autant que les autres vaut mieux que sur-entrainer `1 + 0` - et je ne le conteste pas.
+Mais **il n'y a toujours aucune progression a l'interieur d'une partie** : les dix manches sont
+tirees independamment, la difficulte est plate. C'etait ma reserve 3 de s00, elle reste ouverte,
+et elle n'est pas une condition de la ligne de matrice - c'est une question de sequencement de
+partie, pas de couverture de competence.
+
+##### 1.2 L'indice : atteignable, verifie en jeu, et je suis toujours la seule a l'avoir joue
+
+J'avais montre en s01 que l'indice etait mathematiquement inatteignable : il exigeait trois
+echecs sur le **meme** item, ne pouvait pas s'afficher avant la 14e manche, et une partie en dure
+dix. **Corrige et verifie en jouant une sequence ecrite a l'avance :**
+
+| Manche | Ce que je reponds | Indice affiche |
+|---|---|---|
+| 1, 2, 3 | faux | absent |
+| **4** | - | **"Compte sur tes doigts."** |
+| 4 | juste | - |
+| **5** | - | **absent : la reussite a remis le compteur a zero** |
+| 5, 6, 7 | faux | absent |
+| **8** | - | **"Compte sur tes doigts." - il revient** |
+
+Le declenchement sur trois echecs **consecutifs quel que soit l'item** fonctionne, la remise a
+zero sur une reussite fonctionne, et l'aide revient si l'enfant retombe. **C'est exactement ce que
+je demandais** : "un enfant qui rate trois fois de suite doit recevoir une aide dans la partie en
+cours". Ma reserve 3 de s01 est levee.
+
+Le texte est bien celui que j'avais reformule, "Compte sur tes doigts.", et il vit desormais dans
+`contenu/cp-additions-jusqu-a-10.yaml` ligne 12, plus dans une constante Java : la constante
+`INDICE` a disparu du domaine. Ma reserve 4 de s01 est levee.
+
+A l'ecran, l'indice est un encadre ambre a 20 px, entre l'enonce et les boutons de reponse. Il est
+vu.
+
+##### 1.3 Exactitude du contenu - 600 manches supplementaires, zero anomalie
+
+Verifie sur 600 manches, automatiquement et sur chaque manche : trois propositions, la bonne
+reponse presente exactement une fois, aucun doublon, aucune proposition negative, aucune somme
+superieure a 10. **Zero anomalie.** Position de la bonne reponse equilibree (216 / 174 / 210 en
+premiere, deuxieme, troisieme position) : aucune strategie de position n'est exploitable. Les
+distracteurs sont a un ou deux de la bonne reponse (590 et 609 occurrences), un seul a trois, sur
+un cas ou descendre plus bas sortirait des entiers positifs. Plausibles, jamais absurdes.
+
+##### 1.4 Mes cinq reserves visuelles de s02 - toutes tenues, mesurees
+
+| Reserve | Etat | Mesure |
+|---|---|---|
+| 1. Le chiffre doit peser plus que la barre qui le porte | **tenue** | `.proposition` a 32 px gras, soit la taille de l'enonce lui-meme ; le bouton fait 1200 x 62 px |
+| 2. Ecart entre boutons porte a 1 rem | **tenue** | `gap: 1rem` sur `.propositions`, boutons empiles |
+| 3. Sortie plus visible en fin de partie et sur l'ecran d'erreur | **tenue** | fin de partie : la sortie passe en aplat plein 101 x 44 px, seule action de l'ecran ; erreur : "Recommencer" est devenu un vrai bouton plein, ce n'est plus un lien souligne. Mes reserves 3 de s02 et 7 de s01 sont levees |
+| 4. Icone dessinant un objet plutot que le monogramme "R" | **tenue** | un crayon jaune a mine sombre et gomme rose sur fond bleu. Regarde a 16, 48 et 288 px : il se lit comme un crayon des 48 px. A 16 px il n'est plus qu'une diagonale jaune, mais ce n'est plus une lettre, et c'est ce que je demandais |
+| 5. Titre accentue | **tenue** | "Récréo" dans le titre de page et dans le `h1`, accents corrects a l'ecran |
+
+##### 1.5 Le texte lu par l'enfant n'a pas bouge en dehors de ce qui m'a ete soumis - verifie
+
+Verifie au diff depuis mon dernier avis (`df6b4e3`), pas sur parole. Dans les gabarits, **un seul
+texte destine a l'enfant a change** : "Recreo" est devenu "Récréo", dans le titre et dans le
+`h1`. C'est exactement ma reserve 10 de s01, tranchee par `DEC-0007`. Tout le reste du diff des
+gabarits est de l'attribut de classe et du commentaire.
+
+Dans le code de production, aucune chaine destinee a l'enfant n'a ete ajoutee ni modifiee : la
+seule disparition est la constante `INDICE`, deplacee vers le YAML comme demande. Le message de
+reprise "Ta partie s'est arrêtée. Choisis un nouveau jeu !" est inchange. Dans le contenu, les
+seuls ajouts sont l'indice du paquet de mathematiques et les deux paquets de francais, qui m'ont
+tous ete soumis explicitement.
+
+**Rien n'est passe sans moi.**
+
+---
+
+#### 2. REFUSE - le chantier Bootstrap, sur la saillance de l'ecran de retour
+
+##### 2.1 Portee du refus : ce qui est refuse, et ce qui ne l'est pas
+
+**Ce qui n'est pas refuse, et que j'ai verifie :** la vendorisation elle-meme, l'ordre des
+feuilles (la feuille maison passe bien en dernier et l'emporte a specificite egale), le passage
+de `.jeux` a `.list-unstyled`, la pile de polices de Reboot, et surtout **les formes juste/faux**.
+`theo-archi` a eu raison de me signaler que le `clip-path` maison n'a aucun equivalent Bootstrap
+et que sa lisibilite pour un CP me revenait entierement. Je les ai regardees en rendu :
+**la coche verte et la croix rouge sont intactes et parfaitement lisibles**, ce sont bien les deux
+signes qu'un enfant connait de son cahier, a 48 x 48 px, et la forme porte le sens sans la
+couleur. Rien a redire.
+
+Le retrait de CSS maison plutot que l'empilement est la bonne methode et je le dis.
+
+**Ce qui est refuse : un seul point.**
+
+##### 2.2 Motif : sur l'ecran de retour, le bouton qui fait sortir du jeu est plus gros que le bouton qui fait continuer
+
+Mesure en pixels sur le rendu reel, ecran de retour juste **et** faux, celui que l'enfant voit
+dix fois par partie :
+
+| Bouton | Role | Taille | Aire |
+|---|---|---|---|
+| "Les jeux" | **quitter** la partie | 109 x 53 px | **5 788 px2** |
+| "Encore !" | **continuer** la partie | 101 x 44 px | **4 459 px2** |
+
+**Le bouton qui quitte est 30 % plus grand que le bouton qui continue.** Il est aussi 9 px plus
+haut, 8 px plus large, place au-dessus et donc rencontre en premier.
+
+**C'est une regression introduite par ce chantier**, et elle est tracable a une ligne. Le commit
+`6c83c97` a retire `padding: 0.75rem 1.25rem` du bloc des boutons pleins - bloc qui contient
+`.encore` - au motif que `.btn` de Bootstrap fournit desormais le rembourrage. Mais `.btn` donne
+`6px 12px`, moitie moins. Or `.retour-accueil`, la sortie, declare son propre rembourrage
+`0.6rem 1.1rem` soit `9.6px 17.6px`, et **n'a pas ete touche**. Avant ce chantier l'action etait
+environ 15 % plus grande que la sortie ; apres, elle est 23 % plus petite. La hierarchie s'est
+inversee.
+
+**Pourquoi c'est un refus et pas une reserve.** Trois raisons cumulees :
+
+1. **C'est exactement l'axe sur lequel j'ai refuse S2-1 en s02** - "le bouton de sortie dominait
+   le bouton de reponse" - et `theo-archi` m'a prevenue par ecrit que Bootstrap augmentait le
+   risque sur cette saillance precise. Le risque annonce s'est realise. Un avertissement suivi
+   d'une mesure qui le confirme ne se solde pas par une reserve.
+2. **La consequence pour l'enfant n'est pas cosmetique.** La plus grosse cible de l'ecran est
+   celle qui met fin a la partie, sans confirmation, et un enfant de six ans vise avec une main
+   entiere. Une erreur de visee lui coute sa partie et son score.
+3. **L'intention est ecrite dans le code et n'est pas tenue.** Le commentaire de `.retour-accueil`
+   dit que la sortie "ne doit pas dominer l'ecran ni concurrencer les boutons de reponse ou
+   'Encore !'". Mesuree, elle le concurrence et elle gagne.
+
+**Ce qui attenue, et que je dis quand meme** : la sortie reste un contour et l'action reste un
+aplat bleu plein, donc la hierarchie de **couleur** est intacte et un enfant trouvera le bouton
+bleu. C'est pour cela que le refus est scope a un point et pas au chantier entier. Sur l'ecran de
+question, la hierarchie est d'ailleurs excellente : le bouton de reponse fait 74 400 px2 contre
+5 788 px2 pour la sortie, un rapport de 13 pour 1.
+
+##### 2.3 Comment lever ce refus
+
+Rendre au bouton d'action au moins la taille du bouton de sortie sur l'ecran de retour. Le
+critere que je verifierai, et il est mesurable : **"Encore !" doit etre au moins aussi haut et
+aussi large que "Les jeux"**, soit au minimum 109 x 53 px dans les conditions de mesure
+ci-dessus. Je ne dis pas comment le faire - rendre son rembourrage au bloc des boutons pleins
+serait le plus direct, mais c'est `ines-design` et `theo-archi` qui tranchent. Je remesurerai.
+
+##### 2.4 La question laissee ouverte pour moi : remplacer `.indice` et `.message-reprise` par `.alert-warning` ? Non.
+
+On m'a laisse ce point ouvert plutot que de le decider sans moi, et c'est la bonne facon de faire.
+**Ma reponse est non, et voici le calcul qui la fonde.**
+
+Le fond ambre de `.indice` est invisible sur le fond de page : rapport de contraste **1,01:1**
+entre `#fff4e5` et `#f4f7fb`. C'est precisement pourquoi j'avais exige "un cadre complet, pas
+seulement un liseret". Ce qui rend l'encadre visible, c'est **uniquement sa bordure** : `#b45309`
+sur 2 px, a **4,67:1** contre le fond de page.
+
+`.alert-warning` de Bootstrap donnerait :
+
+| | maison (actuel) | `.alert-warning` |
+|---|---|---|
+| Texte sur son fond | 13,93:1 | 7,21:1 |
+| **Bordure contre le fond de page** | **4,67:1 sur 2 px** | **1,15:1 sur 1 px** |
+| Fond contre le fond de page | 1,01:1 | 1,03:1 |
+| Taille du texte | 1,25 rem | 1 rem |
+
+La bordure tomberait de 4,67:1 a **1,15:1**, et de 2 px a 1 px. Comme le fond est invisible dans
+les deux cas, **l'encadre disparaitrait purement et simplement** du champ de vision de l'enfant.
+Et le texte passerait de 1,25 rem a 1 rem, sous le plancher que j'ai pose en s01 (reserve 6 :
+aucun texte lu par l'enfant sous la taille de la consigne, et `.indice` en particulier, parce que
+c'est le texte destine au lecteur le plus fragile).
+
+**Condition sous laquelle je changerais d'avis** : si `.alert-warning` est adopte **avec** une
+regle maison qui lui rend une bordure d'au moins 2 px a 4,5:1 minimum contre `#f4f7fb` et une
+taille de texte d'au moins 1,25 rem. Mais alors la classe Bootstrap n'apporte plus rien qu'on ne
+redeclare par-dessus, et l'interet du geste disparait. **Laisser `.indice` et `.message-reprise`
+en maison est le bon choix.**
+
+---
+
+#### 3. Suites hors de ma main
+
+- **`squad/programme/MATRICE-couverture.md`, ligne `mathematiques | CP | Nombres et calculs |
+  Calcul mental - additions dans la limite de 10 (puis 20)` : elle passe a `couvert-valide`.**
+  Ma condition, ecrite en s01 et reportee deux fois, est levee - motif complet au point 1.1.
+  C'est la seule chose que j'avais exigee pour cette ligne et elle est verifiee en jeu. Je n'ai
+  pas edite la ligne, elle appartient a `camille-po`.
+  Reserve attachee, qui n'est **pas** une condition : la mention "(puis 20)" de la competence
+  reste hors du perimetre de ce jeu, dont la borne est 10. La ligne est `couvert-valide` pour ce
+  qu'elle couvre ; si "puis 20" doit etre couvert, c'est une autre story et je le reverrai.
+- **Les deux nouvelles lignes de francais restent `en cours`**, chacune pour un motif different,
+  ecrit dans sa propre fiche : `FICHE-bandit-manchot-le-bon-son-cp.md` (increment refuse) et
+  `FICHE-bandit-manchot-homophones-cm1.md` (increment accorde, mais cinq couples d'homophones
+  courants manquent a la competence).
+- **Les deux criteres non coches de la section de `camille-po`** dans cette fiche sont, de mon
+  point de vue, satisfaits aujourd'hui : l'indice atteignable sur trois echecs consecutifs quel
+  que soit l'item (verifie en jeu, point 1.2) et la repartition des sommes (verifiee sur 2 000
+  manches, point 1.1). Je ne les coche pas, cette section lui appartient.
+- **Pour `sofia-sm`** : aucun `review.md` n'existe pour s03 et aucun dossier n'existe pour s04.
+  Je ne cree ni l'un ni l'autre, ce sont ses ceremonies. La conclusion a y reporter est celle-ci,
+  en trois lignes : corrections mathematiques de s03 **VALIDE** avec levee de la condition de
+  matrice ; chantier Bootstrap **REFUSE** sur la saillance de l'ecran de retour ; francais CM1
+  **VALIDE SOUS RESERVE**, francais CP **REFUSE**.
+- **Pour `camille-po`, une erreur de referentiel** : `squad/programme/francais/competences-cp.md`
+  declare couverte par un jeu de s02 une competence de syllabes dont ni le jeu ni la fiche
+  n'existent. Detail et motif dans `FICHE-bandit-manchot-le-bon-son-cp.md`.
+
+---
+
+### Verdict du sprint s02, chantier identite visuelle (S2-1, S2-2, S2-3) - conserve pour trace
 
 - **Verdict d'ensemble du chantier, apres correction** : **ACCORDE.** S2-1 **ACCORDE SOUS RESERVE**
   sur le commit `fd16057` - mon refus du commit `3be5a86` est **leve**, et il est conserve
