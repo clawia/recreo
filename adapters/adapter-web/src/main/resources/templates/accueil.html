@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Récréo</title>
+    <title>Recreo</title>
     <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
     <!-- ADR-0014 : la feuille tierce porte le rendu de base, la feuille maison passe toujours en
          dernier. C'est cet ordre qui fait qu'une regle maison de meme specificite l'emporte sur la
@@ -19,7 +19,7 @@
         <div th:replace="~{fragments/manche :: manche}"></div>
     </div>
     <div th:unless="${reprise}">
-        <h1>Récréo</h1>
+        <h1>Recreo</h1>
         <p class="message-reprise" th:if="${messageReprise}" th:text="${messageReprise}"></p>
         <p class="pas-de-jeu" th:if="${jeux.isEmpty()}">Il n'y a pas de jeu pour le moment.</p>
         <ul class="jeux list-unstyled" th:unless="${jeux.isEmpty()}">

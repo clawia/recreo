@@ -1,5 +1,7 @@
 package com.recreo.adapter.web;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -62,7 +64,8 @@ class TexteAccentueDesGabaritsTest {
             }
             assertThat(source)
                     .as("%s ne doit pas reintroduire une faute deja corrigee", gabarit)
-                    .doesNotContain("ca.", "reponse etait", "la partie est terminee", "d'avoir joue");
+                    .doesNotContain("ca.", "reponse etait", "la partie est terminee", "d'avoir joue",
+                            "Récréo");
         }
     }
 
@@ -95,5 +98,21 @@ class TexteAccentueDesGabaritsTest {
         assertThat(retour)
                 .contains("C'est fini !")
                 .doesNotContain("Bravo, tu as bien joué");
+    }
+
+    /**
+     * S5-8 (DEC-0010) : l'utilisatrice corrige le nom du produit, "Recreo" sans accent, et
+     * remplace ainsi le point 7 de DEC-0007 execute par S3-9. Un nom propre de produit n'est pas
+     * un mot de vocabulaire que l'equipe redige pour apprendre a l'enfant a lire ou a
+     * orthographier ; l'exigence d'accentuation de DEC-0002 ne le concerne pas. Vise un gabarit
+     * nomme pour une propriete qui lui est propre, ce n'est pas un balayage (ADR-0013).
+     */
+    @Test
+    void leTitreDuProduitSecritRecreoSansAccent() throws IOException {
+        String accueil = Files.readString(GABARITS_DE_PRODUCTION.resolve("accueil.html"));
+        Document page = Jsoup.parse(accueil);
+
+        assertThat(page.title()).isEqualTo("Recreo");
+        assertThat(page.select("h1").text()).isEqualTo("Recreo");
     }
 }
