@@ -897,12 +897,17 @@ elles-memes.
 
 **Priorisation** : S5-1 execute le retrait de perimetre (`DEC-0009`) et n'attend aucune des
 corrections suivantes pour etre livree. S5-2 a S5-4 corrigent le contenu de "Le bon son" (motifs
-1, 2, 3, 4 du refus) ; elles sont necessaires avant tout nouvel audit de ce jeu, mais aucune ne
-depend des autres. S5-5 decrit un besoin dont la solution est un constat d'architecture (motif 5) :
-elle est routee a `theo-archi` via `sofia-sm`, pas affectee directement a un developpeur. S5-6 est
-la condition ecrite par `nadia-prof` pour que la ligne francais CM1 passe a `couvert-valide` ; S5-7
-traite une reserve distincte (variete) que S5-6 attenue mais ne clot pas necessairement seule. S5-8
-corrige le titre du produit sur decision de l'utilisatrice.
+1, 2, 3, 4 du refus) ; elles sont necessaires avant tout nouvel audit de ce jeu. Leurs criteres
+restent independants sur le fond, mais le premier critere de S5-2 depend techniquement de S5-3 - il
+compare la reponse telle qu'affichee a l'enfant, donc sans les crochets que S5-3 retire - et doit
+donc etre livre apres elle. S5-5 decrit un besoin dont la solution est un constat d'architecture
+(motif 5) : elle est routee a `theo-archi` via `sofia-sm`, pas affectee directement a un
+developpeur. S5-6 est la condition ecrite par `nadia-prof` pour que la ligne francais CM1 passe a
+`couvert-valide` ; S5-7 traite une reserve distincte (variete) que S5-6 attenue mais ne clot pas
+necessairement seule. S5-8 corrige le titre du produit sur decision de l'utilisatrice. S5-9, ecrite
+a la suite de l'avis de faisabilite de `theo-archi`, detache du deuxieme critere de S5-2 un besoin
+qui demande un champ de contenu inexistant et une decision pedagogique non prise : elle existe au
+backlog mais n'entre pas dans le perimetre de ce sprint (`DEC-0011`).
 
 **Aucune des stories S5-2 a S5-5 ne remet automatiquement `bandit-manchot-le-bon-son-cp` au
 catalogue.** `DEC-0009` retire ce jeu jusqu'a ce qu'un increment corrige repasse devant
@@ -931,9 +936,13 @@ section "Backlog - sprints suivants" plus bas).
 - **Criteres d'acceptation** :
   - Etant donne le catalogue de jeux servi par l'application, quand l'enfant consulte la liste des
     jeux depuis l'accueil, alors "Le bon son" (`bandit-manchot-le-bon-son-cp`) n'y figure plus.
-  - Etant donne un enfant qui tente de reprendre une partie de ce jeu par tout autre moyen que la
-    liste (session existante, URL directe), alors il ne peut plus jouer aucune manche de ce jeu :
-    il est renvoye vers l'accueil.
+  - Etant donne un enfant dont la session est deja ouverte sur une manche de ce jeu au moment du
+    retrait (reprise depuis `GET /`, ou `GET /parties/{id}/manche`), quand il envoie sa reponse a
+    cette manche, alors elle n'aboutit a aucun resultat, juste ou faux, sur le contenu retire :
+    elle tombe sur l'ecran d'erreur. **Ce critere reste explicitement ouvert, il n'est pas repute
+    ferme par ce comportement** : l'ecran obtenu est un ecran d'erreur, pas l'ecran d'accueil, et
+    choisir l'ecran definitif (accueil, message de partie perdue de S1-4, ou autre) est un choix de
+    produit qui reste a faire avant de fermer ce critere.
   - Etant donne les deux autres jeux du catalogue (`bandit-manchot-additions-cp`,
     `bandit-manchot-homophones-cm1`), quand on les rejoue apres cette story, alors ils fonctionnent
     exactement comme avant : ce retrait ne touche a aucun autre jeu ni a la mecanique bandit
@@ -944,17 +953,29 @@ section "Backlog - sprints suivants" plus bas).
 - **Note** : le choix technique (retirer la ligne du catalogue, la desactiver, ou tout autre
   mecanisme) appartient a `theo-archi` et aux developpeurs ; cette story decrit le comportement
   attendu, pas l'implementation.
-- **Note sur le deuxieme critere, ajoutee apres verification en jeu** : `lea-dev` a signale, sans
-  le corriger, que la reprise de session ne revalide pas l'identifiant de jeu contre le catalogue -
-  un enfant dont la session serait ouverte sur ce jeu au moment du retrait pourrait terminer une
-  manche sur le contenu refuse. `nadia-prof` juge cette suite acceptable pour l'instant
-  (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section 4.2) : le catalogue est charge
-  au demarrage et les sessions vivent en memoire, donc le redemarrage qui applique le retrait
-  detruit aussi toutes les sessions - la fenetre d'exposition est nulle aujourd'hui, pas seulement
-  petite. Elle demande explicitement que **ce deuxieme critere ne soit pas exige comme ferme avant
-  que `adapter-persistence` existe** : c'est ce module qui rendra une session capable de survivre a
-  un redemarrage, et qui transformera ce point d'hygiene en defaut reel. Ce critere reste donc
-  sciemment connu et non couvert par le code actuel, plutot que d'etre repute satisfait a tort.
+- **Note sur le deuxieme critere, corrigee par `theo-archi` (`avis-faisabilite.md`, section S5-1)**
+  : la version precedente de cette note disait que la reprise par URL directe restait ouverte et
+  qu'un enfant "pourrait terminer une manche sur le contenu refuse". Les deux sont fausses, mesure
+  faite dans le code : le chemin par URL directe (`POST /parties/{id}`, `POST /parties/{id}/coups`)
+  etait deja ferme **avant** `DEC-0009` - les deux verifient le jeu contre le catalogue et levent
+  une exception rendue par l'ecran d'erreur - et aucun enfant ne peut terminer une manche du jeu
+  retire, par quelque chemin que ce soit : la premiere reponse envoyee echoue toujours vers l'ecran
+  d'erreur. Ce qui reste reellement ouvert, et que le critere ci-dessus decrit desormais : `GET /`
+  en reprise et `GET /parties/{id}/manche` affichent encore une question du jeu retire, jusqu'a
+  cette premiere reponse qui echoue. `nadia-prof` juge cette suite acceptable pour l'instant
+  (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section 4.2) au motif que le catalogue
+  est charge une fois au demarrage et que les sessions vivent en memoire : redemarrer pour
+  appliquer un retrait detruit toutes les sessions, la fenetre d'exposition est nulle et non
+  seulement petite. `theo-archi` confirme ce raisonnement et liste, par cout croissant, ce qui le
+  rendrait faux et devrait rouvrir ce critere - **le premier n'est pas `adapter-persistence`** :
+  (1) `server.servlet.session.persistent=true` ou tout mecanisme qui fait survivre les sessions
+  Tomcat a un redemarrage, une ligne de configuration ; (2) Spring Session (Redis, JDBC) ajoute
+  pour une autre raison ; (3) `adapter-persistence` (`ADR-0001`, `DEC-0003`), le declencheur que
+  `nadia-prof` cite, troisieme dans l'ordre de vraisemblance et non le premier ; (4) un catalogue
+  rechargeable sans redemarrage ; (5) plusieurs instances derriere un repartiteur avec un magasin
+  de sessions partage. Ce critere reste donc sciemment connu et non couvert par le code actuel,
+  plutot que d'etre repute satisfait a tort, et il se rouvre au premier de ces cinq signaux qui
+  devient vrai, pas seulement au troisieme.
 - **Lien decision** : `DEC-0009-retrait-le-bon-son-du-catalogue.md`.
 - **Agent pressenti** : a affecter au planning.
 
@@ -967,17 +988,33 @@ section "Backlog - sprints suivants" plus bas).
   l'ecrit" - "Associer les graphemes aux phonemes (...)" (meme ligne que S4-2,
   `squad/programme/francais/competences-cp.md`).
 - **Criteres d'acceptation** :
-  - Etant donne l'ensemble des items du paquet corrige, quand on verifie pour chacun si les
-    lettres de la reponse attendue figurent litteralement dans le mot ecrit, alors une majorite
-    des items (plus de la moitie) n'est pas resoluble par cette seule recherche visuelle - contre
-    1 item sur 24 avant correction.
-  - Etant donne un item ou le grapheme ecrit dans le mot differe de la transcription phonetique de
-    la reponse (comme "DENT" pour le son note "an"), quand cet item est presente, alors il est
-    accompagne d'un retour qui explique la variation plutot que de la laisser passer pour une
-    simple erreur.
-  - Etant donne qu'aucun fichier audio n'existe pour ce paquet, quand la consigne s'affiche, alors
-    elle ne contient aucune reference a un son entendu (le verbe "entendre" ou ses formes), et
-    decrit l'action de lecture reellement demandee.
+  - Etant donne l'ensemble des items du paquet corrige, quand on verifie pour chacun si la reponse
+    attendue - telle qu'elle est montree a l'enfant apres S5-3 (sans crochets, en minuscules,
+    accents rabattus) - figure litteralement dans le mot ecrit, normalise de la meme facon, alors
+    une majorite des items (plus de la moitie, donc au moins 13 sur 24) n'est pas resoluble par
+    cette seule recherche visuelle - contre 1 item sur 24 non resoluble avant correction, une fois
+    la meme normalisation appliquee (23 des 24 items sont aujourd'hui resolubles par les lettres
+    seules, `DENT` etant le seul qui resiste). Ce critere depend de S5-3 : sans le retrait des
+    crochets, la comparaison porterait sur un texte que l'enfant ne voit jamais, et serait vert
+    sans rien changer au fond.
+  - **Retire de cette story, detache en S5-9** : le besoin d'un retour qui explique la variation
+    grapheme/phoneme sur un item comme `DENT` demande un champ de contenu qui n'existe pas et une
+    decision pedagogique sur le moment ou ce texte s'affiche - ni l'un ni l'autre n'est du contenu
+    seul (`theo-archi`, `avis-faisabilite.md`, section S5-2). Voir S5-9.
+  - Etant donne qu'aucun fichier audio n'existe pour ce paquet, quand la consigne est reecrite dans
+    l'entree de catalogue qui remet ce jeu devant `nadia-prof` pour son audit (branche jetable, voir
+    le planning de s05 - la ligne de catalogue ne fusionne pas sur `round-two` avant son verdict,
+    `DEC-0009`), alors elle ne contient aucune reference a un son entendu (le verbe "entendre" ou
+    ses formes) et decrit l'action de lecture reellement demandee. Ce critere ne porte sur aucun
+    fichier de `round-two` pendant ce sprint : la consigne, comme l'entree de catalogue qui la
+    porte, n'existe plus dans le depot depuis S5-1.
+- **Relation a S5-4** : les deux stories corrigent des motifs distincts du meme paquet (motif 3
+  ici, motif 4 dans S5-4) et ne se contredisent pas sur le fond. Elles se contredisaient sur la
+  methode de verification : le premier critere ci-dessus rend la majorite des items non resolubles
+  par les lettres, ce qui rend caduque toute mesure de S5-4 qui compterait, elle aussi, des lettres
+  (`theo-archi`, `avis-faisabilite.md`, sections S5-2 et S5-4). S5-4 range donc son critere du cote
+  de la seule porte pedagogique plutot que de garder un automate par lettres. Aucune fusion : les
+  deux stories restent distinctes, chacune sur son motif.
 - **Note** : cette story revise la conception de l'exercice, pas seulement ses mots ; le contenu
   final (choix des mots, formulation exacte, retours) repasse devant `nadia-prof` avant
   integration, comme tout contenu neuf.
@@ -1010,13 +1047,22 @@ section "Backlog - sprints suivants" plus bas).
   n'attendait que l'autre, afin de ne pas apprendre a me mefier de ce que j'entends correctement.
 - **Competence programme visee** : francais, CP (cycle 2), meme ligne que S5-2.
 - **Criteres d'acceptation** :
-  - Etant donne un item du paquet corrige et l'ensemble des six sons proposes par le jeu, quand on
-    releve lesquels sont reellement presents dans le mot affiche, alors un seul son du jeu est
-    present dans le mot, jamais deux - contre trois items sur 24 avant correction (`MOUCHE`,
-    `MOUTON`, `BALANCOIRE`).
-  - Ce qui n'est pas testable par un automate : la solution retenue pour chaque item concerne
-    (retirer l'item, changer le mot, ou reformuler la consigne pour designer une position dans le
-    mot) est un choix de contenu que `nadia-prof` revoit comme tout item neuf.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof`, en jouant et en ecoutant ce qu'un mot fait reellement entendre : que chaque item
+    du paquet corrige ne fasse entendre qu'un seul des six sons du jeu, jamais deux - le defaut
+    mesure aujourd'hui sur trois items (`MOUCHE`, `MOUTON`, `BALANCOIRE`), ou deux sons du jeu sont
+    reellement audibles. Aucun automate ne peut le verifier de facon fiable : compter les lettres
+    presentes dans le mot n'est qu'un substitut qui coincide avec l'oreille tant que le grapheme
+    suit le phoneme, et il se trompe deja aujourd'hui sur `DENT` (`[an]` note `en` : zero son
+    trouve par les lettres, un par l'oreille). Il se degraderait davantage a mesure que S5-2
+    reussit a rendre le paquet moins resoluble par les lettres (`theo-archi`,
+    `avis-faisabilite.md`, section S5-4) : un automate par lettres serait vert ou rouge par
+    coincidence, pas par verification, ce qu'`ADR-0013` interdit d'ecrire.
+  - Ce qui n'est pas testable par un automate non plus : la solution retenue pour chaque item
+    concerne (retirer l'item, changer le mot, ou reformuler la consigne pour designer une position
+    dans le mot) est un choix de contenu que `nadia-prof` revoit comme tout item neuf.
+- **Relation a S5-2** : voir la note "Relation a S5-4" de S5-2. Les deux motifs (3 et 4) restent
+  distincts, cette story n'est pas fusionnee dans S5-2.
 - **Lien decision** : motif 4 de `squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`.
 - **Agent pressenti** : a affecter au planning.
 
@@ -1072,15 +1118,21 @@ section "Backlog - sprints suivants" plus bas).
     dans un item, "est" bonne reponse dans un autre), pour rester coherent avec la forme des dix
     items existants, qui suivent deja ce schema. Si un item ajoute ne le respecte pas pour un
     couple donne, ce n'est pas un motif de refus au titre de la condition ecrite de `nadia-prof` -
-    seule l'absence totale d'un des cinq couples l'est.
-  - Etant donne chaque item ajoute, quand on releve la position du sujet ou de l'indice
-    grammatical par rapport au trou, alors il ne se trouve pas systematiquement juste avant le
-    trou (meme exigence que la reserve 2 de `nadia-prof`, traitee dans le meme geste sur sa
-    demande explicite) : au moins la moitie des dix nouveaux items obligent a regarder ailleurs
-    dans la phrase qu'immediatement avant le trou pour trouver la bonne reponse (le modele qu'elle
-    cite elle-meme : "Papa et maman font la cuisine."). Le seuil "la moitie" est retenu par
-    `camille-po` pour rendre l'exigence testable ; `nadia-prof` n'a chiffre aucune proportion, elle
-    a nomme l'exigence et cite ce modele.
+    seule l'absence totale d'un des cinq couples l'est. **Pour le couple `la/là/l'a`**, ce critere
+    s'applique une fois que `nadia-prof` aura arrete le nombre de distracteurs de cet item (voir la
+    note ci-dessous) : il ne precede pas ce choix.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof`, en lisant chaque phrase : que chaque item ajoute exige de regarder ailleurs dans
+    la phrase qu'immediatement avant le trou pour trouver la bonne reponse (meme exigence que sa
+    reserve 2, traitee dans le meme geste sur sa demande explicite) - au moins la moitie des dix
+    nouveaux items, le modele qu'elle cite elle-meme etant "Papa et maman font la cuisine.".
+    Etablir ou se trouvent le sujet, l'accord ou l'indice qui leve l'ambiguite dans une phrase est
+    de l'analyse grammaticale du francais, qu'aucun garde-fou de ce depot ne fait ni ne fera pour
+    dix phrases (`theo-archi`, `avis-faisabilite.md`, section S5-6) : un substitut automatise (par
+    exemple "le mot precedant le trou n'est pas un pronom") donnerait un vert ou un rouge faux la
+    moitie du temps, ce qu'`ADR-0013` interdit d'ecrire. Le seuil "la moitie" reste celui retenu
+    par `camille-po` pour donner une mesure a `nadia-prof` en train de lire ; elle n'a chiffre
+    aucune proportion elle-meme, elle a nomme l'exigence et cite ce modele.
   - Etant donne les dix items deja existants du paquet, quand on les relit apres cette story, alors
     ils ne sont pas modifies : cette story ajoute, elle ne corrige pas les items existants.
 - **Note** : `nadia-prof` lie explicitement les deux exigences qu'elle a ecrites ("ces cinq
@@ -1088,6 +1140,15 @@ section "Backlog - sprints suivants" plus bas).
   cinq couples faciles ne ferait qu'allonger un exercice de CE2") : cette story ne les separe pas.
   Le critere sur les deux sens, en revanche, n'est pas d'elle : il est signale comme tel ci-dessus
   pour ne pas laisser croire que son refus porterait sur un point qu'elle n'a pas pose.
+- **Note sur le couple `la/là/l'a`, ajoutee apres l'avis de `theo-archi`** : ce couple est en
+  realite un triplet (trois mots, pas deux), et le test qui epingle les couples du paquet exige
+  aujourd'hui un unique distracteur par item - une propriete que `nadia-prof` porte elle-meme au
+  credit du paquet (`FICHE-bandit-manchot-homophones-cm1.md` : "aucun distracteur absurde possible,
+  et aucune devinette"). Deux sorties existent (un item a deux distracteurs, ou deux items pairwise
+  `la`/`là` puis `la`/`l'a`) et **le choix est pedagogique, pas technique** : cette story ne le
+  tranche pas, elle est routee a `nadia-prof` pour arbitrage, et l'item ou les items de ce couple
+  precis ne sont ecrits qu'une fois son avis recu. Les quatre autres couples (ce/se, ces/ses,
+  mais/mes, peu/peut) n'attendent pas cet arbitrage.
 - **Lien decision** : "Suites hors de ma main" de
   `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`.
 - **Agent pressenti** : a affecter au planning.
@@ -1145,6 +1206,41 @@ section "Backlog - sprints suivants" plus bas).
   que de modifier sa fiche, qui ne lui appartient pas.
 - **Lien decision** : `DEC-0010-le-titre-reste-recreo-sans-accent.md`.
 - **Agent pressenti** : a affecter au planning.
+
+### S5-9 - Un retour qui explique la variation grapheme/phoneme (detachee de S5-2)
+
+- **Besoin** : en tant qu'eleve de CP qui se trompe sur un item ou le grapheme ecrit differe de la
+  transcription phonetique de la bonne reponse (comme "DENT" pour le son note "an"), je veux
+  comprendre pourquoi ce mot s'ecrit autrement que ce que j'entends, afin de ne pas retenir que
+  j'ai simplement fait une erreur alors que le mot suit une regle differente.
+- **Competence programme visee** : francais, CP (cycle 2), meme ligne que S5-2 (grapheme/phoneme,
+  `squad/programme/francais/competences-cp.md`).
+- **Contexte** : ce besoin etait le deuxieme critere de S5-2. `theo-archi` a montre
+  (`avis-faisabilite.md`, section S5-2) qu'il demande un champ de contenu qui n'existe pas
+  (`Verdict` ne porte que `juste` et `bonneReponse`) et une decision pedagogique sur le moment
+  d'affichage qu'aucune story n'a encore prise : toujours sur les items a variation, seulement sur
+  reponse fausse, ou autre. Ni l'un ni l'autre n'est du contenu seul : je la detache plutot que de
+  demander a S5-2 de faire une modification de modele sans le dire.
+- **Criteres d'acceptation** :
+  - **Prealable, non code** : `nadia-prof` arrete sur quels items l'explication s'affiche
+    (seulement ceux a variation grapheme/phoneme comme `DENT`, ou tout item ou l'enfant se trompe)
+    et a quel moment (systematiquement, seulement sur reponse fausse, seulement une fois). Aucun
+    critere ci-dessous n'est ferme avant que ce choix soit ecrit dans cette story ou dans une fiche
+    de conformite.
+  - Une fois ce choix ecrit : etant donne un item portant une explication de variation dans son
+    contenu, quand la condition que `nadia-prof` aura fixee se produit, alors l'enfant lit cette
+    explication plutot que le seul retour juste/faux habituel ("Non, c'est [reponse]."). Le champ
+    et son affichage sont concus par `theo-archi` une fois cette story rouverte avec sa condition
+    ecrite (meme trajet que l'indice de S1-5, `DEC-0005`).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : le texte exact de chaque explication, item par item.
+- **Note de perimetre** : cette story n'entre pas dans le sprint 5 (`DEC-0011` : le sprint reste
+  correctif sur "Le bon son" et les homophones CM1). Elle est ecrite ici pour exister au sens du
+  depot, pas pour etre codee ce sprint.
+- **Lien decision** : motif 3 (deuxieme partie) de
+  `squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md` ; detachee du deuxieme critere de S5-2
+  sur avis de `theo-archi`.
+- **Agent pressenti** : a affecter, pas avant que `nadia-prof` ait tranche le declencheur.
 
 ## Backlog - sprints suivants (intentions non detaillees)
 
