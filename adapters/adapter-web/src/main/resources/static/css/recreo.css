@@ -18,18 +18,80 @@
 }
 
 /* ADR-0014 : la pile de polices systeme vient de Reboot (bootstrap.min.css, charge avant cette
-   feuille) ; plus rien a declarer ici pour la police. */
+   feuille) ; plus rien a declarer ici pour la police. S6-1 : la marge de page qui poussait tout
+   le contenu, en-tete compris, loin du bord de l'ecran est retiree ; l'en-tete redevient un
+   bandeau pleine largeur et .container (S6-2) porte desormais seul le centrage et les marges
+   laterales du contenu. */
 body {
-    margin: 2rem;
+    margin: 0;
     background-color: var(--recreo-fond);
     color: var(--recreo-texte);
 }
 
-/* S2-1 : le titre ne depend plus du seul comportement par defaut du navigateur pour h1. */
+/* S2-1 : le titre ne depend plus du seul comportement par defaut du navigateur pour h1. Depuis
+   S6-1, le seul h1 de la page est le nom du site dans l'en-tete (.nom-site l'ajuste au contexte
+   du bandeau colore, sans redeclarer la taille deja fixee ici). */
 h1 {
     font-size: 2rem;
     color: var(--recreo-accent);
     margin: 0 0 1rem;
+}
+
+/* S6-1 : bandeau d'identite permanent, hors de la zone #jeu remplacee par htmx (DEC-0012) - un
+   frere de #jeu dans le gabarit, jamais efface ni recree quand le jeu change d'ecran. */
+.entete {
+    background-color: var(--recreo-accent);
+    padding: 1rem 0;
+}
+
+.entete-contenu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.icone-entete {
+    width: 2.75rem;
+    height: 2.75rem;
+}
+
+.nom-site {
+    color: var(--recreo-accent-texte);
+    margin: 0;
+    margin-right: auto;
+}
+
+.menu {
+    display: flex;
+}
+
+/* S6-1 : le lien de menu quitte l'ecran en cours comme le bouton "Les jeux" (ADR-0017,
+   data-role="sortie"), et reprend deliberement les memes composantes de boite que
+   .retour-accueil - taille de police, hauteur minimale, rembourrage - pour ne jamais depasser un
+   bouton d'action, y compris sur les ecrans de jeu ou aucun garde-fou ne confronte aujourd'hui
+   l'en-tete (templates/accueil.html) aux fragments de jeu (templates/fragments/*.html) : ADR-0017,
+   section "ce que cette regle ne couvre pas", point 5, signale par DEC-0012 comme prealable a
+   instruire par theo-archi plutot que resolu ici. Contour blanc plutot que la couleur d'accent,
+   parce que le fond de l'en-tete est deja cette meme couleur. */
+.lien-accueil {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    font-size: 1.25rem;
+    color: var(--recreo-accent-texte);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent-texte);
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* S6-2 : le contenu de chaque ecran (liste des jeux ou fragment de jeu) respire au-dessus et
+   au-dessous de la zone que .container centre horizontalement. */
+.zone-jeu {
+    padding: 2rem 0;
 }
 
 /* ADR-0014 : list-style et padding-left viennent desormais de .list-unstyled (gabarit), portee
