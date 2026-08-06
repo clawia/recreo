@@ -6,12 +6,6 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-additions-jusqu-a-10
     nombreDeManches: 10
-  - id: bandit-manchot-le-bon-son-cp
-    titre: "Le bon son"
-    consigne: "Quel son entends-tu ?"
-    mecanique: bandit-manchot
-    paquet: cp-le-bon-son
-    nombreDeManches: 10
   - id: bandit-manchot-homophones-cm1
     titre: "Le bon petit mot"
     consigne: "Quel mot complète la phrase ?"

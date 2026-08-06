@@ -18,9 +18,15 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * S4-1, S4-2 (DEC-0008) : les deux paquets reels de francais charges par le catalogue de
- * production, sans qu'aucune ligne de domain/mechanic ou domain/mechanics n'ait ete touchee -
- * la meme mecanique bandit manchot que cp-additions-jusqu-a-10 joue ce contenu.
+ * S4-1, S4-2 (DEC-0008) : les deux paquets reels de francais, sans qu'aucune ligne de
+ * domain/mechanic ou domain/mechanics n'ait ete touchee - la meme mecanique bandit manchot que
+ * cp-additions-jusqu-a-10 joue ce contenu.
+ *
+ * <p>DEC-0009 : "cp-le-bon-son" n'a plus d'entree dans le catalogue de production (le jeu qui le
+ * jouait, bandit-manchot-le-bon-son-cp, est REFUSE et retire jusqu'a correction), mais le paquet
+ * lui-meme reste la matiere de travail des stories de correction et doit continuer a etre
+ * couvert : il est charge directement par {@link YamlContentPackLoader#chargerPaquet}, sans
+ * passer par le catalogue.</p>
  */
 class PaquetsFrancaisS04Test {
 
@@ -39,7 +45,7 @@ class PaquetsFrancaisS04Test {
 
     @Test
     void leBonSonCpNePresenteQueDesSonsConnusEtCouvreLesTroisDigraphesCitesParLeReferentiel() {
-        List<Question> items = tousLesItems("bandit-manchot-le-bon-son-cp");
+        List<Question> items = tousLesItems(paquet("cp-le-bon-son"));
 
         Set<String> sonsCouverts = new HashSet<>();
         for (Question item : items) {
@@ -65,14 +71,14 @@ class PaquetsFrancaisS04Test {
 
     @Test
     void leBonSonCpVarieSurVingtManchesConsecutives() {
-        assertThat(enoncesSurVingtTirages("bandit-manchot-le-bon-son-cp"))
+        assertThat(enoncesSurVingtTirages(paquet("cp-le-bon-son")))
                 .as("variete minimale sur 20 manches")
                 .hasSizeGreaterThan(1);
     }
 
     @Test
     void homophonesCm1NePresenteQueLesCinqCouplesAttendusAvecUnUniqueDistracteurApparie() {
-        List<Question> items = tousLesItems("bandit-manchot-homophones-cm1");
+        List<Question> items = tousLesItems(jeu("bandit-manchot-homophones-cm1").contenu());
 
         Set<String> couplesCouverts = new HashSet<>();
         for (Question item : items) {
@@ -99,7 +105,7 @@ class PaquetsFrancaisS04Test {
 
     @Test
     void homophonesCm1VarieSurVingtManchesConsecutives() {
-        assertThat(enoncesSurVingtTirages("bandit-manchot-homophones-cm1"))
+        assertThat(enoncesSurVingtTirages(jeu("bandit-manchot-homophones-cm1").contenu()))
                 .as("variete minimale sur 20 manches")
                 .hasSizeGreaterThan(1);
     }
@@ -110,8 +116,7 @@ class PaquetsFrancaisS04Test {
         return motConnu.compareTo(autre) <= 0 ? motConnu + "-" + autre : autre + "-" + motConnu;
     }
 
-    private static Set<String> enoncesSurVingtTirages(String jeuId) {
-        ContentSource contenu = jeu(jeuId).contenu();
+    private static Set<String> enoncesSurVingtTirages(ContentSource contenu) {
         RandomSource hasard = new Random(42)::nextInt;
         Set<String> enonces = new HashSet<>();
         for (int i = 0; i < 20; i++) {
@@ -122,8 +127,7 @@ class PaquetsFrancaisS04Test {
     }
 
     /** Enumere tous les items distincts du paquet en faisant grossir le tirage deja-vu jusqu'a epuisement. */
-    private static List<Question> tousLesItems(String jeuId) {
-        ContentSource contenu = jeu(jeuId).contenu();
+    private static List<Question> tousLesItems(ContentSource contenu) {
         RandomSource hasard = new Random(1)::nextInt;
         Set<ItemId> dejaVus = new HashSet<>();
         List<Question> items = new ArrayList<>();
@@ -141,5 +145,10 @@ class PaquetsFrancaisS04Test {
                 .filter(candidat -> candidat.id().equals(id))
                 .findFirst()
                 .orElseThrow();
+    }
+
+    /** DEC-0009 : charge un paquet retire du catalogue directement, sans passer par une entree de jeu. */
+    private static ContentSource paquet(String paquetId) {
+        return new YamlContentPackLoader().chargerPaquet(paquetId);
     }
 }

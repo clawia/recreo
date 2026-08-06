@@ -64,7 +64,8 @@ public final class YamlContentPackLoader implements ContentCatalogPort {
                 contenu, nombreDeManches);
     }
 
-    private ContentSource chargerPaquet(String paquetId) {
+    /** Visibilite de paquet : DEC-0009, tests qui doivent charger un paquet retire du catalogue. */
+    ContentSource chargerPaquet(String paquetId) {
         String chemin = racine + "/contenu/" + paquetId + ".yaml";
         Map<String, Object> corps = charger(chemin);
 
