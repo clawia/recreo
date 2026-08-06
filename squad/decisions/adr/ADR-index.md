@@ -14,13 +14,14 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0008](ADR-0008-le-comportement-de-jeu-vit-sur-le-serveur.md) | Loger tout le comportement de jeu sur le serveur et brider le JavaScript par un budget | s00 | 2026-08-04 | Accepte |
 | [ADR-0009](ADR-0009-les-garde-fous-de-ci-sont-des-scripts-testes.md) | Extraire les garde-fous de CI dans des scripts versionnes, et leur donner des contre-exemples | s00 | 2026-08-04 | Accepte |
 | [ADR-0010](ADR-0010-refuser-les-chemins-de-poste-de-travail.md) | Refuser les chemins de poste de travail et les comptes utilisateur dans un fichier suivi, par un script teste | s00 | 2026-08-05 | Accepte |
-| [ADR-0011](ADR-0011-rendre-toute-erreur-imprevue-en-html-francais.md) | Rendre toute erreur imprevue en HTML francais, jamais un corps technique brut | s01 | 2026-08-05 | Accepte |
+| [ADR-0011](ADR-0011-rendre-toute-erreur-imprevue-en-html-francais.md) | Rendre toute erreur imprevue en HTML francais, jamais un corps technique brut | s01 | 2026-08-05 | Accepte, complete par ADR-0018 |
 | [ADR-0012](ADR-0012-la-longueur-de-partie-vit-dans-le-catalogue.md) | Porter la longueur d'une partie par l'entree de catalogue, jamais par le contenu | s01 | 2026-08-05 | Accepte |
 | [ADR-0013](ADR-0013-un-garde-fou-derive-son-perimetre-et-se-prouve-mordant.md) | Deriver le perimetre de tout garde-fou de la source, et le prouver mordant sur un objet neuf | s02 | 2026-08-05 | Accepte |
 | [ADR-0014](ADR-0014-vendoriser-une-bibliotheque-css-tierce-et-deriver-les-garde-fous-du-rendu.md) | Faire entrer une bibliotheque CSS tierce par vendorisation tracee, et faire deriver un garde-fou pedagogique du rendu plutot que du fichier | s03 | 2026-08-06 | Accepte |
 | [ADR-0015](ADR-0015-deriver-le-perimetre-de-la-source-qui-gouverne-le-rendu.md) | Deriver le perimetre d'un garde-fou de la source qui gouverne le rendu, et supprimer celui dont le nom promet plus que son perimetre | s03 | 2026-08-06 | Accepte |
 | [ADR-0016](ADR-0016-le-contenu-porte-l-aide-que-la-mecanique-promet.md) | Faire porter par le contenu l'aide que la mecanique promet, et deriver le perimetre du garde-fou du repertoire de contenu | s05 | 2026-08-06 | Accepte |
 | [ADR-0017](ADR-0017-comparer-deux-boutons-dun-meme-ecran.md) | Comparer deux boutons d'un meme ecran, et dire ce que cette comparaison ne voit pas | s05 | 2026-08-06 | Accepte |
+| [ADR-0018](ADR-0018-un-defaut-ne-traverse-pas-le-serveur-en-silence.md) | Empecher qu'un defaut traverse le serveur en silence, et qu'il emprunte le canal reserve a l'attendu | s05 | 2026-08-06 | Accepte |
 
 ## Amendements
 
@@ -44,6 +45,8 @@ est date dans le corps de l'ADR. Ceux du sprint 0 :
 | ADR-0003 | 2026-08-05 | **son propre mecanisme enumerait son perimetre** : l'inventaire des regles contre-exemplifiees etait tenu a la main a chaque cloture, et `LesReglesMordentTest` avait vingt et une methodes ecrites une par une. Rien n'obligeait la vingt-quatrieme regle a recevoir son contre-exemple. Recensement rendu executable par ADR-0013 |
 | ADR-0014 | 2026-08-06 | **sa garantie centrale ne mordait pas sur la vraie bibliotheque** : `declareEnImportant` cherchait `font-size:` par sous-chaine et tombait sur `--bs-btn-font-size:`, le motif de nommage de tous les composants Bootstrap 5. Trouve par `yanis-qa`, corrige par ADR-0015. Son jeu fautif ecrivait `font-size:1rem!important` en clair, ce que Bootstrap n'ecrit jamais |
 | ADR-0014 | 2026-08-06 | **une de ses limites nommees ne gardait rien** : la puce "le garde-fou lit la classe statique du gabarit, pas la classe calculee" documentait un vert silencieux au lieu de le fermer. Mesure : retirer `.sortie-pleine` de `recreo.css` laissait la suite verte. Ferme par ADR-0015 |
+| ADR-0011 | 2026-08-06 | **son point 3 etait faux, et il a cache un defaut de production** : il affirmait qu'une exception non nommee resterait "rare et visible". `org.apache.tomcat.util.http.InvalidParameterException` herite d'`IllegalStateException` (verifie par `javap`), etait donc attrapee par le gestionnaire de la session perdue, et journalisee nulle part - 21 lignes de journal, toutes de demarrage. Nommer deux types n'est pas nommer deux situations. Corrige par ADR-0018 ; son ecran et son statut 200 restent intacts |
+| ADR-0013 | 2026-08-06 | **les donnees d'entree d'un test font partie de son perimetre**, cinquieme occurrence de la meme famille. `PartieHttpTest` joue une partie complete contre un catalogue ecrit a la main dont les propositions sont `"1"`, `"2"`, `"3"` ; `CatalogueChargeableIT` parcourt le vrai catalogue mais n'appelle jamais `jouer`. Le chemin etait couvert, les valeurs qui l'empruntent ne l'etaient pas. Obligation 1 etendue ; l'encodage de cette occurrence est le garde-fou de contenu de `lea-dev`, la generalisation reste une doctrine de revue et le dit |
 | ADR-0012 | 2026-08-05 | **sa section executable nommait le mauvais paquet** : un contre-exemple range dans `domain.content.contreexemple` aurait ete invisible pour la regle qu'il doit faire echouer. Paquet corrige, contre-exemple et test de non-vacuite ecrits ; et la derniere ligne de son tableau de gardes de comportement, seule des quatre a etre restee sur le papier, est honoree dans `CatalogueChargeableIT` |
 
 ## Lecture rapide
@@ -95,7 +98,8 @@ bibliotheque CSS embarquee :
     du seul etat ecrit en dur ; et un garde-fou dont le nom promet une propriete generale sur un
     fichier nomme est supprime, pas retreci.
 
-Sprint 5 en ajoute un, ne du cinquieme motif de refus de "Le bon son" :
+Sprint 5 en ajoute trois, les deux premiers nes du cinquieme motif de refus de "Le bon son", le
+troisieme d'un defaut de production reproduit sur le jar :
 
 14. **ADR-0016** applique la doctrine d'ADR-0013 a une population que le depot n'avait encore jamais
     derivee, le **contenu**. La mecanique promet une aide depuis S3-2 ; un type de contenu entier
@@ -108,4 +112,14 @@ Sprint 5 en ajoute un, ne du cinquieme motif de refus de "Le bon son" :
     capables de s'afficher ensemble - et il se prouve sur les trois etats reels du depot, deux qui
     doivent rougir et un, accepte par `nadia-prof`, qui doit rester vert. Il apporte aussi la
     premiere section "ce que cette regle ne couvre pas" ecrite pour etre lue par elle : une regle
-    declarative ne voit ni la largeur d'un libelle, ni une couleur, ni une position.
+    declarative ne voit ni la largeur d'un libelle, ni une couleur, ni une position ;
+16. **ADR-0018** est le seul ADR du depot ne d'un **defaut de production** plutot que d'une revue :
+    une reponse accentuee faisait planter la manche, et 200 tests verts n'ont rien vu. Il nomme la
+    faute qu'ADR-0011 avait commise sans le savoir - un `@ExceptionHandler` attrape un **type**, donc
+    tout son sous-arbre, alors que l'ADR raisonnait sur une **situation**. Une exception du conteneur
+    Tomcat, sous-classe d'`IllegalStateException`, empruntait ainsi le canal reserve a la session
+    perdue, et n'etait journalisee nulle part. Sa reponse tient en une phrase : l'enfant voit le meme
+    ecran, le journal distingue les deux causes. Il apporte la premiere preuve de morsure du depot
+    sur un **type d'exception neuf**, qu'aucun gestionnaire ne nomme, et il repond par oui a une
+    question ouverte : un garde-fou qui verifie qu'une exception imprevue laisse une trace est
+    atteignable, a condition de la faire lever pour de vrai au lieu de l'analyser statiquement.

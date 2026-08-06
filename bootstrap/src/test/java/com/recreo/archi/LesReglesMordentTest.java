@@ -288,4 +288,28 @@ class LesReglesMordentTest {
                 .hasMessageContaining("GestionnaireErreurBruteContreExemple")
                 .hasMessageContaining("ResponseEntity");
     }
+
+    /**
+     * ADR-0018 : le contre-exemple est correct sur tous les autres criteres et muet sur celui-la.
+     * C'est le gestionnaire mesure sur le jar de 099e750, qui rendait l'ecran d'erreur a l'enfant
+     * sans ecrire une ligne pour l'equipe.
+     */
+    @Test
+    void unGestionnaireDErreurQuiNeJournalisePasEstRefuse() {
+        assertThatThrownBy(() -> GestionDesErreursTest.toutGestionnaireDErreurJournalise
+                .check(contreExemples("com.recreo.adapter.web.contreexemple")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("GestionnaireMuetContreExemple")
+                .hasMessageContaining("org.slf4j.Logger");
+    }
+
+    /** ADR-0018 : sans elle, un type du JDK peut a nouveau servir de canal a l'attendu et avaler l'inattendu. */
+    @Test
+    void unGestionnaireQuiAttrapeUnTypeDuJdkEstRefuse() {
+        assertThatThrownBy(() -> GestionDesErreursTest.unGestionnaireNommeUnTypeDeRecreoOuLaCaptureGenerale
+                .check(contreExemples("com.recreo.adapter.web.contreexemple")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("GestionnaireTypeDuJdkContreExemple")
+                .hasMessageContaining("java.lang.IllegalStateException");
+    }
 }

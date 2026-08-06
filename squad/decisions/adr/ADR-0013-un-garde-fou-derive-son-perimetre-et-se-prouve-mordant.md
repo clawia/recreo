@@ -64,6 +64,36 @@ perimetre.** `document.select("button, a[href]")` derive la population des bouto
 projection perd sans un mot ceux qui ne l'ont pas. Une derivation doit etre **totale** : chaque
 membre de la population produit au moins une assertion, ou fait echouer le test.
 
+> **Amendement du 2026-08-06 (s05, cinquieme occurrence) - les donnees d'entree d'un test font
+> partie de son perimetre.**
+>
+> Le defaut d'encodage de s05 (ADR-0018) a traverse la suite entiere. Mesure sur `099e750`, en lisant
+> les tests plutot qu'en croyant le vert :
+>
+> - `PartieHttpTest` joue une partie complete de bout en bout... contre `CatalogueDeTest`, un
+>   catalogue ecrit a la main dont les trois propositions sont `"1"`, `"2"` et `"3"` ;
+> - `CatalogueChargeableIT` parcourt le **vrai** catalogue, derive du chargeur, mais n'appelle que
+>   `demarrer` - jamais `jouer`.
+>
+> Aucun test du depot n'envoie donc la reponse reelle d'un paquet reel a travers la frontiere HTTP.
+> Le chemin etait couvert ; les **donnees** qui l'empruntent ne l'etaient pas.
+>
+> C'est la meme faute que les quatre precedentes, sur une dimension que ni cet ADR ni ADR-0015
+> n'avaient nommee. Un test a deux populations : les **chemins** qu'il emprunte et les **valeurs**
+> qu'il y fait passer. Le tableau ci-dessus ne parlait implicitement que de la premiere. Le vert de
+> `PartieHttpTest` ne dit rien des caracteres qu'on n'a pas tapes, et rien dans son nom ni dans le
+> rapport de CI ne le signale. **Obligation 1 etendue : quand un garde-fou fait circuler des donnees,
+> ces donnees se derivent de la source qui les gouverne** - ici le repertoire de contenu, comme
+> ADR-0016 l'a fait pour les indices - et non d'un echantillon saisi a la main.
+>
+> **Ce que cet amendement n'encode pas, et je le dis plutot que de le farder.** Il n'existe pas de
+> regle generale executable pour "un test fait circuler des donnees representatives" : la propriete
+> porte sur l'intention du test, qu'aucun automate ne lit. L'encodage de cette occurrence-ci est le
+> garde-fou de contenu ecrit par `lea-dev` en s05, qui doit faire jouer les reponses reelles de
+> chaque paquet a travers la frontiere HTTP, et dont le perimetre derive du repertoire de contenu.
+> Ce que ce garde-fou-la couvre est reel et verifiable ; la generalisation, elle, reste une doctrine
+> de revue. Ne pas la deguiser en regle est le seul moyen de ne pas la croire acquise.
+
 Et le fait 2 bis donne aussi le protocole qui distingue les deux, parce que `nadia-prof` l'a
 applique sans le nommer : **muter un objet existant prouve que le critere mord ; ajouter un objet
 neuf prouve que le perimetre derive.** Sa premiere mesure (`.proposition` a 1,1 rem) etait la

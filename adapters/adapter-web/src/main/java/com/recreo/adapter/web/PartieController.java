@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.NoSuchElementException;
-
 /**
  * Adaptateur entrant htmx : rendu serveur, fragments HTML. Le coup de l'enfant traverse
  * PartieUseCase, jamais un appel direct a une mecanique. La session HTTP porte l'etat de partie
@@ -129,12 +127,12 @@ public class PartieController {
         return partie.jeuxDisponibles().stream()
                 .filter(jeu -> jeu.id().equals(jeuId))
                 .findFirst()
-                .orElseThrow(() -> new NoSuchElementException("jeu inconnu : " + jeuId));
+                .orElseThrow(() -> new PartieIndisponible("jeu inconnu : " + jeuId));
     }
 
     private BanditManchotSession sessionEnCours(HttpSession httpSession, String jeuId) {
         if (!jeuId.equals(httpSession.getAttribute(ATTRIBUT_JEU_ID))) {
-            throw new IllegalStateException("aucune partie en cours pour ce jeu");
+            throw new PartieIndisponible("aucune partie en cours pour le jeu " + jeuId);
         }
         return (BanditManchotSession) httpSession.getAttribute(ATTRIBUT_SESSION);
     }
