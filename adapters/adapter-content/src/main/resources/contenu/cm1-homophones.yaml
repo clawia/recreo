@@ -1,0 +1,39 @@
+schema: 1
+id: cm1-homophones
+type: question
+descripteur:
+  matiere: "Francais"
+  niveau: "CM1"
+  domaine: "Orthographe et grammaire"
+  competence: "Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/a...)"
+items:
+  - enonce: "Il ___ mangé une pomme."
+    bonneReponse: "a"
+    distracteurs: ["à"]
+  - enonce: "Je vais ___ l'école."
+    bonneReponse: "à"
+    distracteurs: ["a"]
+  - enonce: "Papa ___ maman font la cuisine."
+    bonneReponse: "et"
+    distracteurs: ["est"]
+  - enonce: "Le chat ___ noir."
+    bonneReponse: "est"
+    distracteurs: ["et"]
+  - enonce: "Les enfants ___ partis."
+    bonneReponse: "sont"
+    distracteurs: ["son"]
+  - enonce: "Il prend ___ cartable."
+    bonneReponse: "son"
+    distracteurs: ["sont"]
+  - enonce: "Ils ___ un chien."
+    bonneReponse: "ont"
+    distracteurs: ["on"]
+  - enonce: "___ joue dans la cour."
+    bonneReponse: "On"
+    distracteurs: ["Ont"]
+  - enonce: "___ vas-tu ?"
+    bonneReponse: "Où"
+    distracteurs: ["Ou"]
+  - enonce: "Tu veux du thé ___ du café ?"
+    bonneReponse: "ou"
+    distracteurs: ["où"]
