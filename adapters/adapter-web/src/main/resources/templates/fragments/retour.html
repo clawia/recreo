@@ -6,9 +6,10 @@
          ("Encore !"), et devient l'aplat le plus saillant des que c'est la fin de partie, seule
          action possible restante (nadia-prof, FICHE-bandit-manchot-additions-cp.md, reserve 4).
          La classe statique "retour-accueil" reste la valeur par defaut du gabarit source (lue
-         telle quelle par le garde-fou de taille) ; th:class la remplace au rendu reel. -->
-    <button type="button" class="retour-accueil"
-            th:class="${enSuite} ? 'retour-accueil' : 'sortie-pleine'"
+         telle quelle par le garde-fou de taille) ; th:class la remplace au rendu reel.
+         ADR-0014 : "btn" (Bootstrap) accompagne toujours la classe maison, sur les deux branches. -->
+    <button type="button" class="btn retour-accueil"
+            th:class="${enSuite} ? 'btn retour-accueil' : 'btn sortie-pleine'"
             hx-post="/retour" hx-target="#jeu" hx-swap="innerHTML">Les jeux</button>
     <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
     <div class="signal" th:classappend="${juste} ? 'est-juste' : 'est-faux'">
@@ -20,7 +21,7 @@
     </div>
     <form th:if="${enSuite}" th:attr="hx-get=@{'/parties/' + ${jeuId} + '/manche'}"
           hx-target="#jeu" hx-swap="innerHTML">
-        <button type="submit" class="encore">Encore !</button>
+        <button type="submit" class="btn encore">Encore !</button>
     </form>
     <p th:unless="${enSuite}" class="fin-de-partie">C'est fini !</p>
 </div>

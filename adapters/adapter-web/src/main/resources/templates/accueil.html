@@ -22,9 +22,9 @@
         <h1>Récréo</h1>
         <p class="message-reprise" th:if="${messageReprise}" th:text="${messageReprise}"></p>
         <p class="pas-de-jeu" th:if="${jeux.isEmpty()}">Il n'y a pas de jeu pour le moment.</p>
-        <ul class="jeux" th:unless="${jeux.isEmpty()}">
+        <ul class="jeux list-unstyled" th:unless="${jeux.isEmpty()}">
             <li th:each="jeu : ${jeux}">
-                <button type="button" class="demarrer" th:text="${jeu.titre()}"
+                <button type="button" class="btn demarrer" th:text="${jeu.titre()}"
                         th:attr="hx-post=@{'/parties/' + ${jeu.id()}}"
                         hx-target="#jeu" hx-swap="innerHTML">Jouer</button>
             </li>
