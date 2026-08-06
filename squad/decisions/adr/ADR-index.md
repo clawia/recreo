@@ -113,8 +113,9 @@ troisieme d'un defaut de production reproduit sur le jar :
     doivent rougir et un, accepte par `nadia-prof`, qui doit rester vert. Il apporte aussi la
     premiere section "ce que cette regle ne couvre pas" ecrite pour etre lue par elle : une regle
     declarative ne voit ni la largeur d'un libelle, ni une couleur, ni une position ;
-16. **ADR-0018** est le seul ADR du depot ne d'un **defaut de production** plutot que d'une revue :
-    une reponse accentuee faisait planter la manche, et 200 tests verts n'ont rien vu. Il nomme la
+16. **ADR-0018** nait d'un **defaut de production reproduit sur le jar livre**, et non d'une revue de
+    code : une reponse accentuee faisait planter la manche, et 200 tests verts n'ont rien vu. Il
+    corrige l'ADR qui aurait du l'empecher, ADR-0011, ne lui-meme d'un refus pedagogique. Il nomme la
     faute qu'ADR-0011 avait commise sans le savoir - un `@ExceptionHandler` attrape un **type**, donc
     tout son sous-arbre, alors que l'ADR raisonnait sur une **situation**. Une exception du conteneur
     Tomcat, sous-classe d'`IllegalStateException`, empruntait ainsi le canal reserve a la session
