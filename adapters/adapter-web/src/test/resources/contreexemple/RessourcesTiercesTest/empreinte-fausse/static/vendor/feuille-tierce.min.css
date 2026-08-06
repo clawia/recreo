@@ -1,0 +1,4 @@
+/* Tracee, mais retouchee apres coup : l'empreinte declaree ne correspond plus au contenu. */
+.grille {
+    display: grid;
+}

@@ -1,0 +1,5 @@
+/* Une police telechargee a l'execution : l'application ne fonctionne plus hors ligne. */
+@font-face {
+    font-family: "Ecolier";
+    src: url("https://fonts.example.org/ecolier.woff2") format("woff2");
+}

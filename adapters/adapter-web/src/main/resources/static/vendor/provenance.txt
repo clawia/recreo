@@ -1,0 +1,21 @@
+# Provenance des ressources tierces vendorisees (ADR-0014).
+#
+# Tout fichier de ce repertoire est une copie octet pour octet d'un fichier publie ailleurs. Il
+# n'est jamais retouche : le retoucher casserait l'empreinte et rendrait la mise a jour impossible
+# a relire. Les conventions de redaction de CLAUDE.md portent sur ce que ce depot ecrit, pas sur ce
+# qu'un tiers a ecrit ; bootstrap.min.css contient par exemple un tiret cadratin dans une regle de
+# citation que nous ne servons pas.
+#
+# Une ligne par fichier, quatre champs separes par une barre verticale :
+#   chemin sous static/ | origine | chemin dans l'artefact d'origine | empreinte SHA-256
+#
+# L'origine est ce qui permet de refabriquer le fichier a l'identique :
+#   - un artefact Maven est designe par ses coordonnees completes groupId:artifactId:version ;
+#   - un paquet npm est designe par npm:nom:version.
+#
+# Mettre a jour une ressource : recuperer le fichier a la version voulue depuis l'origine indiquee,
+# remplacer le fichier ici, recalculer l'empreinte, mettre la ligne a jour. RessourcesTiercesTest
+# refuse toute divergence entre ce fichier et le contenu du repertoire, dans les deux sens.
+
+vendor/bootstrap.min.css|org.webjars:bootstrap:5.3.8|META-INF/resources/webjars/bootstrap/5.3.8/css/bootstrap.min.css|d85327d99c7a3ee1f9b5d0500d1370acea3ad2db39c163c2f51f232baedbdede
+vendor/htmx.min.js|npm:htmx.org:2.0.10|dist/htmx.min.js|71ea67185bfa8c98c39d31717c6fce5d852370fcdfd129db4543774d3145c0de

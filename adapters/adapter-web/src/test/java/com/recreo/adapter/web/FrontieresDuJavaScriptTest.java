@@ -12,7 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class FrontieresDuJavaScriptTest {
 
-    private static final Path JS = Path.of("src/main/resources/static/js");
+    private static final Path STATIQUE = Path.of("src/main/resources/static");
+    private static final Path TIERS = STATIQUE.resolve("vendor");
     private static final Path GABARITS = Path.of("src/main/resources/templates");
     private static final long PLAFOND_OCTETS = 4096;
     private static final int PLAFOND_LIGNES = 100;
@@ -30,9 +31,16 @@ class FrontieresDuJavaScriptTest {
                 .filter(fichier -> fichier.getFileName().toString().endsWith(suffixe));
     }
 
+    /**
+     * ADR-0014 : ce qui distingue le JavaScript maison du JavaScript tiers n'est plus un prefixe de
+     * nom de fichier ecrit ici (htmx), c'est l'emplacement - static/vendor/ est le seul endroit ou
+     * une copie tierce a le droit de vivre, et provenance.txt dit ce qu'elle est. Le budget d'ADR-0008
+     * n'a jamais eu de sens pour une bibliotheque tierce ; il en a pour tout le reste, y compris pour
+     * un fichier maison depose ailleurs que sous js/.
+     */
     private static List<Path> javaScriptMaison() throws IOException {
-        return fichiers(JS, ".js")
-                .filter(fichier -> !fichier.getFileName().toString().startsWith("htmx"))
+        return fichiers(STATIQUE, ".js")
+                .filter(fichier -> !fichier.startsWith(TIERS))
                 .toList();
     }
 

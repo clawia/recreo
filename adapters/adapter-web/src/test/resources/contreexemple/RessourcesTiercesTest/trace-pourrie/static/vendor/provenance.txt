@@ -1,0 +1,2 @@
+# La ligne survit au fichier qu'elle decrivait : la tracabilite n'est plus qu'une apparence.
+vendor/feuille-supprimee.min.css|exemple:feuille-tierce:1.0.0|dist/feuille-tierce.min.css|0000000000000000000000000000000000000000000000000000000000000000

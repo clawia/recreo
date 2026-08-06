@@ -27,9 +27,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * fichiers sous templates/ (les fichiers directement sous ce repertoire ; ceux de
  * templates/fragments sont des fragments htmx inseres dans une page qui porte deja son propre
  * &lt;head&gt;, jamais rendus seuls, donc hors de ce perimetre par construction du repertoire et non
- * par une liste). Le balayage de largeur porte sur recreo.css entier et sur tous les gabarits, y
- * compris les fragments. Lecture directe, jamais par expression reguliere (ADR-0008,
- * AssertionsWebTest).
+ * par une liste). Le balayage de largeur porte sur toutes les feuilles maison et sur tous les
+ * gabarits, y compris les fragments ; ADR-0014 dit ce qui distingue une feuille maison d'une copie
+ * tierce. Lecture directe, jamais par expression reguliere (ADR-0008, AssertionsWebTest).
  */
 class ViewportEtLargeurTelephoneTest {
 
@@ -42,8 +42,28 @@ class ViewportEtLargeurTelephoneTest {
         return racine.resolve("templates");
     }
 
-    private static Path css(Path racine) {
-        return racine.resolve("static/css/recreo.css");
+    /**
+     * ADR-0014 : le perimetre juge ici n'est plus un fichier nomme, il est derive de la provenance.
+     * Toute feuille servie est jugee, sauf celles de static/vendor/, qui sont des copies octet pour
+     * octet de bibliotheques tierces. Deux consequences voulues : une feuille maison neuve est jugee
+     * du jour ou elle existe, sans qu'on pense a l'inscrire ; et une feuille tierce ne recoit jamais
+     * le reproche d'un choix de mise en page qui n'est pas le notre. Une bibliotheque deposee
+     * ailleurs que sous vendor/ n'echappe a rien : elle est jugee comme du CSS maison, et une
+     * largeur en pixels la fait echouer immediatement.
+     */
+    private static List<Path> feuillesMaison(Path racine) throws IOException {
+        Path statique = racine.resolve("static");
+        if (!Files.isDirectory(statique)) {
+            return List.of();
+        }
+        Path tierces = statique.resolve("vendor");
+        try (Stream<Path> arborescence = Files.walk(statique)) {
+            return arborescence.filter(Files::isRegularFile)
+                    .filter(fichier -> fichier.getFileName().toString().endsWith(".css"))
+                    .filter(fichier -> !fichier.startsWith(tierces))
+                    .sorted()
+                    .toList();
+        }
     }
 
     /**
@@ -162,8 +182,15 @@ class ViewportEtLargeurTelephoneTest {
     }
 
     static void verifierAucuneLargeurFixeeAuDelaDeLaCible(Path racine) throws IOException {
+        List<Path> feuilles = feuillesMaison(racine);
+        assertThat(feuilles)
+                .as("aucune feuille maison sous %s/static : ce garde-fou ne prouve rien", racine)
+                .isNotEmpty();
+
         List<LargeurPx> largeurs = new ArrayList<>();
-        largeurs.addAll(largeursPxDuCss(css(racine)));
+        for (Path feuille : feuilles) {
+            largeurs.addAll(largeursPxDuCss(feuille));
+        }
         largeurs.addAll(largeursPxDesGabarits(tousLesGabarits(racine)));
 
         for (LargeurPx largeur : largeurs) {

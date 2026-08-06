@@ -1,0 +1,1 @@
+vendor/feuille-tierce.min.css|exemple:feuille-tierce:1.0.0|dist/feuille-tierce.min.css|0000000000000000000000000000000000000000000000000000000000000000

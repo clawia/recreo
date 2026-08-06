@@ -17,6 +17,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0011](ADR-0011-rendre-toute-erreur-imprevue-en-html-francais.md) | Rendre toute erreur imprevue en HTML francais, jamais un corps technique brut | s01 | 2026-08-05 | Accepte |
 | [ADR-0012](ADR-0012-la-longueur-de-partie-vit-dans-le-catalogue.md) | Porter la longueur d'une partie par l'entree de catalogue, jamais par le contenu | s01 | 2026-08-05 | Accepte |
 | [ADR-0013](ADR-0013-un-garde-fou-derive-son-perimetre-et-se-prouve-mordant.md) | Deriver le perimetre de tout garde-fou de la source, et le prouver mordant sur un objet neuf | s02 | 2026-08-05 | Accepte |
+| [ADR-0014](ADR-0014-vendoriser-une-bibliotheque-css-tierce-et-deriver-les-garde-fous-du-rendu.md) | Faire entrer une bibliotheque CSS tierce par vendorisation tracee, et faire deriver un garde-fou pedagogique du rendu plutot que du fichier | s03 | 2026-08-06 | Accepte |
 
 ## Amendements
 
@@ -72,3 +73,14 @@ rien :
     occurrences partageaient : un garde-fou qui **enumere** son perimetre ne verifie que ce qu'on a
     pense a lui donner. Le perimetre se derive, le critere peut s'enumerer, et la preuve de morsure
     se fait sur un objet neuf, pas sur la mutation d'un objet deja connu.
+
+Sprint 3 en ajoute un, ne d'une demande de l'utilisateur - passer le rendu de base sur une
+bibliotheque CSS embarquee :
+
+12. **ADR-0014** dit par quel mecanisme une bibliotheque tierce entre (vendorisation tracee par
+    empreinte, jamais un webjar ni un CDN) et repond a la question que cette entree pose a
+    ADR-0013 : de quelle source un garde-fou derive-t-il son perimetre quand le CSS servi n'est plus
+    ecrit ici. La reponse n'est pas unique - un garde-fou de style juge une declaration et derive de
+    la **provenance** du fichier ; un garde-fou pedagogique juge un **element rendu** et derive du
+    balisage, le CSS n'etant pour lui qu'une matiere. D'ou la regle centrale : une garantie
+    pedagogique est toujours portee par une regle maison.

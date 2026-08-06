@@ -1,0 +1,10 @@
+/* Feuille maison qui habille tout sauf le bouton neuf : elle ne declare aucune regle applicable
+   a un bouton qui n'a que la classe de la bibliotheque tierce. */
+.consigne {
+    font-size: 1.25rem;
+}
+
+.demarrer {
+    font-size: 1.25rem;
+    min-height: 2.75rem;
+}

@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Récréo</title>
     <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+    <!-- ADR-0014 : la feuille tierce porte le rendu de base, la feuille maison passe toujours en
+         dernier. C'est cet ordre qui fait qu'une regle maison de meme specificite l'emporte sur la
+         regle tierce, donc que les planchers exiges par nadia-prof sont ceux que l'enfant voit. -->
+    <link rel="stylesheet" th:href="@{/vendor/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/recreo.css}">
-    <script th:src="@{/js/htmx.min.js}"></script>
+    <script th:src="@{/vendor/htmx.min.js}"></script>
     <script th:src="@{/js/recreo.js}"></script>
 </head>
 <body>

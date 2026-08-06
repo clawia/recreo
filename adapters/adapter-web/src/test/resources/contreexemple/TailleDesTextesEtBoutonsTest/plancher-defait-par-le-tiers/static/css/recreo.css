@@ -1,0 +1,6 @@
+/* La regle maison declare bien le plancher : elle a l'air correcte, et le garde-fou de plancher
+   passe. C'est la classe utilitaire tierce posee sur le meme bouton qui la defait au rendu. */
+.demarrer {
+    font-size: 1.5rem;
+    min-height: 3rem;
+}

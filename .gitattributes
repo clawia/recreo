@@ -1,0 +1,7 @@
+# ADR-0014 : un fichier vendorise est une copie octet pour octet d'un fichier publie ailleurs, et
+# son integrite est verifiee par empreinte SHA-256 (RessourcesTiercesTest). Sans cette ligne, un
+# poste configure en core.autocrlf=true recoit a l'extraction un fichier dont les fins de ligne ont
+# ete converties : ses octets ne sont plus ceux de l'origine, et le garde-fou passe au rouge pour un
+# motif etranger a toute alteration reelle. Mesure avant correction sur bootstrap.min.css : empreinte
+# extraite 596a918e..., empreinte declaree d85327d9....
+adapters/adapter-web/src/main/resources/static/vendor/** -text

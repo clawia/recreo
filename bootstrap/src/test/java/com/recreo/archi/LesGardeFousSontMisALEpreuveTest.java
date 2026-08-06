@@ -52,16 +52,17 @@ class LesGardeFousSontMisALEpreuveTest {
             "AucunVocabulaireDeMatiereTest",
             "FaviconTest",
             "FrontieresDuJavaScriptTest",
-            "HabillageDesEcransTest",
-            "TailleDesTextesEtBoutonsTest");
+            "HabillageDesEcransTest");
 
     /**
-     * Etat au 2026-08-05, s03 : baisse de 6 a 5 - TexteAccentueDesGabaritsTest sort de la dette
-     * (jeu fautif et mise a l'epreuve ecrits dans le meme commit que la correction du perimetre
-     * omis, obstacle route par theo-archi depuis s02). Ce nombre ne remonte jamais ; le baisser
-     * demande un diff visible.
+     * Etat au 2026-08-06, s03 : baisse de 5 a 4 - TailleDesTextesEtBoutonsTest sort de la dette. Son
+     * perimetre a du etre repris pour l'entree d'une bibliotheque CSS tierce (ADR-0014) ; les deux
+     * choses qui lui manquaient - un perimetre de gabarits derive plutot que quatre chemins ecrits a
+     * la main, et un jeu fautif qui le prouve mordant sur un objet neuf - ont ete ecrites dans le
+     * meme geste. Avant cela : baisse de 6 a 5 le 2026-08-05, TexteAccentueDesGabaritsTest. Ce nombre
+     * ne remonte jamais ; le baisser demande un diff visible.
      */
-    private static final int PLAFOND_DE_DETTE = 5;
+    private static final int PLAFOND_DE_DETTE = 4;
 
     private record SourceDeTest(Path module, Path fichier) {
 

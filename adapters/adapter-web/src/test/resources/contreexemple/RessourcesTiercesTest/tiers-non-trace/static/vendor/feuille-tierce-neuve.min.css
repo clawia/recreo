@@ -1,0 +1,5 @@
+/* Objet neuf (ADR-0013) : une feuille tierce que personne n'a inscrite dans provenance.txt.
+   Ce repertoire n'a volontairement aucun fichier de provenance. */
+.grille {
+    display: flex;
+}
