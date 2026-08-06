@@ -37,3 +37,39 @@ items:
   - enonce: "Tu veux du thé ___ du café ?"
     bonneReponse: "ou"
     distracteurs: ["où"]
+  - enonce: "Pose ton cartable là, à côté du mien."
+    bonneReponse: "là"
+    distracteurs: ["la"]
+  - enonce: "Léa cherche la règle dans sa trousse."
+    bonneReponse: "la"
+    distracteurs: ["là"]
+  - enonce: "Tom avait perdu sa gomme ; il l'a enfin retrouvée ce matin."
+    bonneReponse: "l'a"
+    distracteurs: ["la"]
+  - enonce: "Il la range soigneusement dans son cartable."
+    bonneReponse: "la"
+    distracteurs: ["l'a"]
+  - enonce: "Ce cahier appartient à mon petit frère."
+    bonneReponse: "ce"
+    distracteurs: ["se"]
+  - enonce: "Après la récréation, tous les élèves se rangent devant la porte de la classe."
+    bonneReponse: "se"
+    distracteurs: ["ce"]
+  - enonce: "Regarde ces oiseaux là-bas, sur la branche !"
+    bonneReponse: "ces"
+    distracteurs: ["ses"]
+  - enonce: "Léa range son cahier et ses crayons avant de partir."
+    bonneReponse: "ses"
+    distracteurs: ["ces"]
+  - enonce: "Il fait très froid ce matin, mais le soleil brille quand même."
+    bonneReponse: "mais"
+    distracteurs: ["mes"]
+  - enonce: "J'ai rangé mes affaires avant de partir à l'école."
+    bonneReponse: "mes"
+    distracteurs: ["mais"]
+  - enonce: "Il reste peu de pain dans le placard de la cuisine."
+    bonneReponse: "peu"
+    distracteurs: ["peut"]
+  - enonce: "Même si le ciel est bien dégagé ce matin, il peut encore pleuvoir avant le soir."
+    bonneReponse: "peut"
+    distracteurs: ["peu"]
