@@ -1,0 +1,16 @@
+/* Rien a reprocher au CSS : les trois boutons sont declares en maison et la hierarchie entre les
+   deux boutons qui portent un role est correcte. Le seul defaut est le troisieme bouton, qu'aucun
+   role ne rattache a la comparaison - le membre qui sortirait du controle en silence si la
+   derivation n'etait pas totale (ADR-0013, obligation 2). */
+.terminer {
+    font-size: 1.25rem;
+    min-height: 2.75rem;
+    padding: 0.6rem 1.1rem;
+}
+
+.continuer,
+.aide {
+    font-size: 1.25rem;
+    min-height: 2.75rem;
+    padding: 0.75rem 1.25rem;
+}

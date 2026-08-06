@@ -20,6 +20,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0014](ADR-0014-vendoriser-une-bibliotheque-css-tierce-et-deriver-les-garde-fous-du-rendu.md) | Faire entrer une bibliotheque CSS tierce par vendorisation tracee, et faire deriver un garde-fou pedagogique du rendu plutot que du fichier | s03 | 2026-08-06 | Accepte |
 | [ADR-0015](ADR-0015-deriver-le-perimetre-de-la-source-qui-gouverne-le-rendu.md) | Deriver le perimetre d'un garde-fou de la source qui gouverne le rendu, et supprimer celui dont le nom promet plus que son perimetre | s03 | 2026-08-06 | Accepte |
 | [ADR-0016](ADR-0016-le-contenu-porte-l-aide-que-la-mecanique-promet.md) | Faire porter par le contenu l'aide que la mecanique promet, et deriver le perimetre du garde-fou du repertoire de contenu | s05 | 2026-08-06 | Accepte |
+| [ADR-0017](ADR-0017-comparer-deux-boutons-dun-meme-ecran.md) | Comparer deux boutons d'un meme ecran, et dire ce que cette comparaison ne voit pas | s05 | 2026-08-06 | Accepte |
 
 ## Amendements
 
@@ -100,4 +101,11 @@ Sprint 5 en ajoute un, ne du cinquieme motif de refus de "Le bon son" :
     derivee, le **contenu**. La mecanique promet une aide depuis S3-2 ; un type de contenu entier
     etait incapable de la fournir, en silence, parce que rien ne confrontait la promesse a ce que le
     contenu sait donner. Le perimetre du garde-fou derive du repertoire de contenu et non du
-    catalogue - DEC-0009 venait justement d'en sortir le paquet fautif.
+    catalogue - DEC-0009 venait justement d'en sortir le paquet fautif ;
+15. **ADR-0017** ferme le trou que `nadia-prof` a nomme apres trois occurrences identiques : aucun
+    garde-fou ne comparait deux selecteurs **entre eux** sur un meme ecran. Il derive une population
+    de **paires** - un role inerte dans le balisage, un appariement qui ne confronte que des etats
+    capables de s'afficher ensemble - et il se prouve sur les trois etats reels du depot, deux qui
+    doivent rougir et un, accepte par `nadia-prof`, qui doit rester vert. Il apporte aussi la
+    premiere section "ce que cette regle ne couvre pas" ecrite pour etre lue par elle : une regle
+    declarative ne voit ni la largeur d'un libelle, ni une couleur, ni une position.

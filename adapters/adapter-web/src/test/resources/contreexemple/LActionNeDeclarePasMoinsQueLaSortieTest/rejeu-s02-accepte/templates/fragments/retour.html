@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="retour" id="jeu">
+    <button type="button" class="retour-accueil" data-role="sortie" hx-post="/retour" hx-target="#jeu"
+            hx-swap="innerHTML">Les jeux</button>
+    <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
+    <div class="signal" th:classappend="${juste} ? 'est-juste' : 'est-faux'">
+        <span class="icone-signal" aria-hidden="true"></span>
+        <p th:if="${juste}" class="verdict">Bravo, c'est juste !</p>
+        <p th:unless="${juste}" class="verdict">
+            Non, c'est <span th:text="${bonneReponse}"></span>.
+        </p>
+    </div>
+    <form th:if="${enSuite}" th:attr="hx-get=@{'/parties/' + ${jeuId} + '/manche'}"
+          hx-target="#jeu" hx-swap="innerHTML">
+        <button type="submit" class="encore" data-role="action">Encore !</button>
+    </form>
+    <p th:unless="${enSuite}" class="fin-de-partie">C'est fini !</p>
+</div>
+</body>
+</html>

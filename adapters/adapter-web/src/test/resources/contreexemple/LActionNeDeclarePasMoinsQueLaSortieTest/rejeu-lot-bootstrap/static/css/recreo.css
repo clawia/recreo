@@ -1,0 +1,232 @@
+/* Palette nommee et reutilisee (S2-2) : toute couleur de l'habillage general vient d'ici, le
+   signal juste/faux reste sur ses propres couleurs, deja fixees par S1-6. */
+:root {
+    --recreo-fond: #f4f7fb;
+    --recreo-texte: #1c2733;
+    --recreo-accent: #2e6f9e;
+    --recreo-accent-texte: #ffffff;
+    --recreo-attention-fond: #fff4e5;
+    --recreo-attention-bordure: #b45309;
+}
+
+/* Base fiable pour les cibles tactiles : min-height/min-width incluent le rembourrage,
+   jamais l'inverse (S2-1, correction du refus sur .proposition). */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ADR-0014 : la pile de polices systeme vient de Reboot (bootstrap.min.css, charge avant cette
+   feuille) ; plus rien a declarer ici pour la police. */
+body {
+    margin: 2rem;
+    background-color: var(--recreo-fond);
+    color: var(--recreo-texte);
+}
+
+/* S2-1 : le titre ne depend plus du seul comportement par defaut du navigateur pour h1. */
+h1 {
+    font-size: 2rem;
+    color: var(--recreo-accent);
+    margin: 0 0 1rem;
+}
+
+/* ADR-0014 : list-style et padding-left viennent desormais de .list-unstyled (gabarit), portee
+   par la classe Bootstrap plutot que redeclaree ici. */
+.jeux {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.consigne {
+    font-size: 1.25rem;
+}
+
+.enonce {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Conteneur des boutons de reponse : un ecart confortable entre les boutons, au-dessus du
+   plancher de 0,75rem constate en s02 (S3-5, reserve 2 de nadia-prof sur S2-1: "un ecart d'au
+   moins 1 rem laisserait plus de place a un geste d'enfant"). Proxy valide tant que les boutons
+   restent empiles dans ce conteneur flex en colonne (voir S3-5, docs/backlog/backlog.md). */
+.propositions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0.75rem 0;
+    padding: 0;
+}
+
+/* Boutons d'action pleins : demarrer une partie, choisir une reponse, continuer, recommencer
+   apres une erreur, sortir quand c'est la seule action possible (S3-6). Ce sont les boutons sur
+   lesquels l'enfant doit le plus souvent appuyer : ce sont eux qui doivent appeler la main (S2-1,
+   correction du refus sur la hierarchie de saillance). Taille jamais laissee au defaut du
+   navigateur, cible tactile d'au moins 44 x 44 px.
+   ADR-0014 : border, border-radius, padding, text-decoration et cursor viennent maintenant de
+   .btn (classe Bootstrap portee par chaque gabarit) ; seul ce que Bootstrap ne peut pas garantir
+   - la cible tactile en rem et la couleur de la palette - reste declare ici. */
+.demarrer,
+.proposition,
+.recommencer,
+.encore,
+.sortie-pleine {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+    font-weight: bold;
+    color: var(--recreo-accent-texte);
+    background-color: var(--recreo-accent);
+}
+
+/* Taille du texte des boutons pleins : la plupart partagent la taille commune des boutons
+   actionnables (1,25rem), mais le chiffre d'un bouton de reponse est ce que l'enfant doit
+   comparer entre les trois propositions - il doit peser au moins autant que le calcul affiche
+   (S3-4, reserve 1 de nadia-prof sur S2-1 : "le nombre doit peser plus que la barre qui le
+   porte"). */
+.demarrer,
+.recommencer,
+.encore,
+.sortie-pleine {
+    font-size: 1.25rem;
+}
+
+.proposition {
+    font-size: 2rem;
+}
+
+/* Bouton de sortie sur l'ecran de jeu et sur le retour juste/faux : reste visible et atteignable
+   partout (S1-4), mais ne doit pas dominer l'ecran ni concurrencer les boutons de reponse ou
+   "Encore !" (S2-1, correction du refus sur la hierarchie de saillance). Meme famille de couleur,
+   contour au lieu d'un aplat : moins saillant, jamais illisible. Sur l'ecran de fin de partie,
+   cette meme sortie devient la seule action possible : elle prend alors la classe
+   .sortie-pleine (S3-6), un aplat comme les autres boutons d'action plutot que ce contour. */
+.retour-accueil {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    font-size: 1.25rem;
+    color: var(--recreo-accent);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent);
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.score {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--recreo-accent);
+    margin: 0.5rem 0;
+}
+
+.fin-de-partie {
+    font-size: 1.5rem;
+    color: var(--recreo-accent);
+    text-align: center;
+    margin: 1rem 0;
+}
+
+/* Bandeaux d'attention (indice, reprise) : un cadre complet, pas seulement un liseret, pour
+   rester visibles sans distinguer les couleurs (reserve de nadia-prof sur le faible ecart de
+   luminance entre le fond ambre et le fond de page). */
+.indice {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    background-color: var(--recreo-attention-fond);
+    border: 0.125rem solid var(--recreo-attention-bordure);
+    border-radius: 0.25rem;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+}
+
+.erreur {
+    font-size: 1.5rem;
+    color: var(--recreo-attention-bordure);
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.pas-de-jeu {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    margin: 0.5rem 0;
+}
+
+.message-reprise {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    background-color: var(--recreo-attention-fond);
+    border: 0.125rem solid var(--recreo-attention-bordure);
+    border-radius: 0.25rem;
+    padding: 0.75rem 1rem;
+    margin: 0 0 1rem;
+}
+
+.signal {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+}
+
+.signal .verdict {
+    font-size: 1.25rem;
+}
+
+/* Boite de l'icone juste/faux : la forme seule doit porter le sens, la couleur n'est
+   qu'un second canal. Taille doublee par rapport au constat du sprint 0 (1,5rem -> 3rem). */
+.icone-signal {
+    position: relative;
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+}
+
+.signal.est-juste {
+    background-color: #e8f5e9;
+}
+
+.signal.est-faux {
+    background-color: #ffebee;
+}
+
+/* Coche : le signe que l'enfant connait deja de son cahier pour "juste". */
+.signal.est-juste .icone-signal {
+    background-color: #2e7d32;
+    clip-path: polygon(
+        5% 61%, 35% 86%, 46% 85%, 96% 20%, 84% 10%, 34% 75%, 45% 74%, 15% 49%
+    );
+}
+
+/* Croix : le signe que l'enfant connait deja de son cahier pour "faux",
+   deux barres croisees plutot qu'un triangle qui n'evoque rien pour un enfant de CP. */
+.signal.est-faux .icone-signal::before,
+.signal.est-faux .icone-signal::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 22%;
+    background-color: #c62828;
+    border-radius: 0.2rem;
+}
+
+.signal.est-faux .icone-signal::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.signal.est-faux .icone-signal::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
