@@ -1,0 +1,81 @@
+schema: 1
+id: cp-le-bon-son
+type: question
+descripteur:
+  matiere: "Francais"
+  niveau: "CP"
+  domaine: "Lecture et comprehension de l'ecrit"
+  competence: "Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...)"
+items:
+  - enonce: "MAMAN"
+    bonneReponse: "[an]"
+    distracteurs: ["[on]", "[in]"]
+  - enonce: "DENT"
+    bonneReponse: "[an]"
+    distracteurs: ["[oi]", "[ou]"]
+  - enonce: "PONT"
+    bonneReponse: "[on]"
+    distracteurs: ["[an]", "[ou]"]
+  - enonce: "BALLON"
+    bonneReponse: "[on]"
+    distracteurs: ["[in]", "[oi]"]
+  - enonce: "LAPIN"
+    bonneReponse: "[in]"
+    distracteurs: ["[an]", "[on]"]
+  - enonce: "JARDIN"
+    bonneReponse: "[in]"
+    distracteurs: ["[ou]", "[oi]"]
+  - enonce: "LOUP"
+    bonneReponse: "[ou]"
+    distracteurs: ["[on]", "[oi]"]
+  - enonce: "GENOU"
+    bonneReponse: "[ou]"
+    distracteurs: ["[oi]", "[an]"]
+  - enonce: "ROI"
+    bonneReponse: "[oi]"
+    distracteurs: ["[ou]", "[on]"]
+  - enonce: "BOIS"
+    bonneReponse: "[oi]"
+    distracteurs: ["[ou]", "[in]"]
+  - enonce: "CHAT"
+    bonneReponse: "[ch]"
+    distracteurs: ["[oi]", "[ou]"]
+  - enonce: "VACHE"
+    bonneReponse: "[ch]"
+    distracteurs: ["[an]", "[on]"]
+  - enonce: "SOURIS"
+    bonneReponse: "[ou]"
+    distracteurs: ["[on]", "[oi]"]
+  - enonce: "POULE"
+    bonneReponse: "[ou]"
+    distracteurs: ["[in]", "[an]"]
+  - enonce: "SAPIN"
+    bonneReponse: "[in]"
+    distracteurs: ["[on]", "[ou]"]
+  - enonce: "MONTRE"
+    bonneReponse: "[on]"
+    distracteurs: ["[an]", "[oi]"]
+  - enonce: "ÉTOILE"
+    bonneReponse: "[oi]"
+    distracteurs: ["[ou]", "[an]"]
+  - enonce: "NICHE"
+    bonneReponse: "[ch]"
+    distracteurs: ["[an]", "[on]"]
+  - enonce: "CHÂTEAU"
+    bonneReponse: "[ch]"
+    distracteurs: ["[oi]", "[in]"]
+  - enonce: "MOUCHE"
+    bonneReponse: "[ou]"
+    distracteurs: ["[an]", "[in]"]
+  - enonce: "MANTEAU"
+    bonneReponse: "[an]"
+    distracteurs: ["[oi]", "[ou]"]
+  - enonce: "BALANÇOIRE"
+    bonneReponse: "[oi]"
+    distracteurs: ["[on]", "[ou]"]
+  - enonce: "MOUTON"
+    bonneReponse: "[on]"
+    distracteurs: ["[in]", "[oi]"]
+  - enonce: "PINCEAU"
+    bonneReponse: "[in]"
+    distracteurs: ["[ou]", "[oi]"]
