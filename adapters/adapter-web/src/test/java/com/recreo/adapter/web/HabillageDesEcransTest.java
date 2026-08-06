@@ -15,6 +15,15 @@ import static org.assertj.core.api.Assertions.assertThat;
  * d'espacement, et ces couleurs viennent d'une palette nommee et reutilisee, jamais de valeurs
  * ponctuelles differentes a chaque selecteur. Lecture directe de recreo.css, jamais par expression
  * reguliere (ADR-0008, AssertionsWebTest).
+ *
+ * <p>Ce garde-fou juge des choix de style propres a ce depot : viser recreo.css par son nom est ici
+ * legitime, ce sont ses declarations a lui qui sont en cause. Une seule de ses methodes ne relevait
+ * pas de ce registre, {@code aucuneRessourceExterneNiPoliceTelechargeeALExecution} : ne rien aller
+ * chercher sur le reseau n'est pas un choix de style, c'est une condition de deploiement qui vaut
+ * pour tout octet servi. Restreinte a un fichier nomme, elle promettait par son nom bien plus
+ * qu'elle ne verifiait. Elle est supprimee par ADR-0015 au profit de
+ * {@code RessourcesTiercesTest.aucuneFeuilleNiAucunGabaritNeVaChercherQuoiQueCeSoitSurLeReseau},
+ * dont le perimetre derive de static/ entier, gabarits compris, et qui possede deux jeux fautifs.
  */
 class HabillageDesEcransTest {
 
@@ -103,12 +112,6 @@ class HabillageDesEcransTest {
         assertThat(nombreDUsagesVar)
                 .as("chaque variable doit etre reutilisee a plusieurs endroits, pas juste declaree")
                 .isGreaterThan(nombreDeVariables);
-    }
-
-    @Test
-    void aucuneRessourceExterneNiPoliceTelechargeeALExecution() throws IOException {
-        String source = source();
-        assertThat(source).doesNotContain("http://", "https://", "@font-face", "fonts.googleapis");
     }
 
     /**

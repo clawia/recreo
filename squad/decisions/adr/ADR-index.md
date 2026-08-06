@@ -18,6 +18,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0012](ADR-0012-la-longueur-de-partie-vit-dans-le-catalogue.md) | Porter la longueur d'une partie par l'entree de catalogue, jamais par le contenu | s01 | 2026-08-05 | Accepte |
 | [ADR-0013](ADR-0013-un-garde-fou-derive-son-perimetre-et-se-prouve-mordant.md) | Deriver le perimetre de tout garde-fou de la source, et le prouver mordant sur un objet neuf | s02 | 2026-08-05 | Accepte |
 | [ADR-0014](ADR-0014-vendoriser-une-bibliotheque-css-tierce-et-deriver-les-garde-fous-du-rendu.md) | Faire entrer une bibliotheque CSS tierce par vendorisation tracee, et faire deriver un garde-fou pedagogique du rendu plutot que du fichier | s03 | 2026-08-06 | Accepte |
+| [ADR-0015](ADR-0015-deriver-le-perimetre-de-la-source-qui-gouverne-le-rendu.md) | Deriver le perimetre d'un garde-fou de la source qui gouverne le rendu, et supprimer celui dont le nom promet plus que son perimetre | s03 | 2026-08-06 | Accepte |
 
 ## Amendements
 
@@ -39,6 +40,7 @@ est date dans le corps de l'ADR. Ceux du sprint 0 :
 | ADR-0010 | 2026-08-05 | **le garde-fou a mordu son propre auteur** : verifie avant que `verifier-chemins.sh` soit suivi, il n'avait jamais ete juge par lui-meme ; une fois suivi, son propre commentaire d'en-tete contenait un vrai segment reel. Commentaire corrige, pas la regle |
 | ADR-0008 | 2026-08-05 | ajout d'un renvoi vers ADR-0011 : le fragment d'erreur est du rendu serveur comme les autres, deja couvert par les regles existantes sans les modifier |
 | ADR-0003 | 2026-08-05 | **son propre mecanisme enumerait son perimetre** : l'inventaire des regles contre-exemplifiees etait tenu a la main a chaque cloture, et `LesReglesMordentTest` avait vingt et une methodes ecrites une par une. Rien n'obligeait la vingt-quatrieme regle a recevoir son contre-exemple. Recensement rendu executable par ADR-0013 |
+| ADR-0014 | 2026-08-06 | **une de ses limites nommees ne gardait rien** : la puce "le garde-fou lit la classe statique du gabarit, pas la classe calculee" documentait un vert silencieux au lieu de le fermer. Mesure : retirer `.sortie-pleine` de `recreo.css` laissait la suite verte. Ferme par ADR-0015 |
 | ADR-0012 | 2026-08-05 | **sa section executable nommait le mauvais paquet** : un contre-exemple range dans `domain.content.contreexemple` aurait ete invisible pour la regle qu'il doit faire echouer. Paquet corrige, contre-exemple et test de non-vacuite ecrits ; et la derniere ligne de son tableau de gardes de comportement, seule des quatre a etre restee sur le papier, est honoree dans `CatalogueChargeableIT` |
 
 ## Lecture rapide
@@ -83,4 +85,9 @@ bibliotheque CSS embarquee :
     ecrit ici. La reponse n'est pas unique - un garde-fou de style juge une declaration et derive de
     la **provenance** du fichier ; un garde-fou pedagogique juge un **element rendu** et derive du
     balisage, le CSS n'etant pour lui qu'une matiere. D'ou la regle centrale : une garantie
-    pedagogique est toujours portee par une regle maison.
+    pedagogique est toujours portee par une regle maison ;
+13. **ADR-0015** tranche les deux dettes que s03 avait nommees sans les fermer, et corrige la faute
+    qu'ADR-0013 ne savait pas encore attraper : deriver correctement, mais **de la mauvaise source**.
+    Un garde-fou qui juge un element rendu derive de tous les etats que cet element peut prendre, pas
+    du seul etat ecrit en dur ; et un garde-fou dont le nom promet une propriete generale sur un
+    fichier nomme est supprime, pas retreci.

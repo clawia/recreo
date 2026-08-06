@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Objet neuf, absent de la production : l'attribut class est irreprochable, mais la seconde
+     branche du th:class pose une classe qu'aucune regle maison ne declare. Le bouton rendu
+     retombe alors au defaut du navigateur, sans qu'aucun fichier CSS n'ait change. -->
+<button type="button" class="btn conforme"
+        th:class="${fini} ? 'btn conforme' : 'btn jamais-declaree'">Sortir</button>
+</body>
+</html>

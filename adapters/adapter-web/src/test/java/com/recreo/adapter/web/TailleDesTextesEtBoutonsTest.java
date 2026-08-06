@@ -58,6 +58,11 @@ class TailleDesTextesEtBoutonsTest {
 
     private static final String STATIQUE = "static";
     private static final String TIERS = "vendor";
+
+    /** Les deux attributs Thymeleaf par lesquels une classe arrive au rendu sans etre dans class. */
+    private static final String CLASSE_CALCULEE = "th:class";
+    private static final String CLASSE_AJOUTEE = "th:classappend";
+
     private static final double PLANCHER_DE_LISIBILITE_REM = 1.25;
     private static final double CIBLE_TACTILE_REM = 2.75;
 
@@ -184,56 +189,127 @@ class TailleDesTextesEtBoutonsTest {
         }
     }
 
-    /** Tout bouton et tout lien-bouton reellement rendu, releve dans le balisage. */
-    static List<Element> boutonsActionnables(Path racine) {
-        List<Element> boutons = new ArrayList<>();
-        for (Path gabarit : gabarits(racine)) {
-            Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
-            boutons.addAll(document.select("button, a[href]"));
-        }
-        return boutons;
+    /**
+     * Un bouton et l'un des jeux de classes qu'il peut porter une fois rendu. Un bouton dont la
+     * classe est conditionnelle en produit un par branche.
+     */
+    private record BoutonRendu(Element bouton, List<String> classes) {
     }
 
     /**
-     * Les regles qui s'appliquent reellement a cet element : ses classes si l'element en porte, la
-     * balise nue sinon. Un element sans classe qui ne correspond a aucune regle de balise nue tombe
-     * au defaut du navigateur : c'est exactement ce que cette derivation doit detecter, plutot que
-     * de le laisser passer parce qu'il n'a pas de classe a controler.
+     * ADR-0015 : les valeurs litterales qu'une expression Thymeleaf peut prendre. Une expression
+     * concatenee, ou qui ne contient aucun litteral, est refusee plutot qu'ignoree : on ne peut pas
+     * confronter au plancher une classe qu'on ne sait pas lire (ADR-0013 obligation 2, meme posture
+     * que RessourcesTiercesTest devant une ressource referencee par une expression calculee).
      */
-    private static List<String> selecteursApplicables(Element element) {
-        List<String> classes = element.classNames().stream().map(classe -> "." + classe).toList();
-        return classes.isEmpty() ? List.of(element.tagName()) : classes;
+    private static List<String> litteraux(Element element, String attribut) {
+        String expression = element.attr(attribut);
+        List<String> valeurs = new ArrayList<>();
+        int position = 0;
+        while ((position = expression.indexOf('\'', position)) >= 0) {
+            int fin = expression.indexOf('\'', position + 1);
+            if (fin < 0) {
+                break;
+            }
+            valeurs.add(expression.substring(position + 1, fin).strip());
+            position = fin + 1;
+        }
+        String origine = "<" + element.tagName() + "> " + attribut + "=\"" + expression + "\" ("
+                + element.ownerDocument().location() + ")";
+        assertThat(valeurs)
+                .as("%s : aucune classe litterale a lire dans cette expression ; une classe calculee "
+                        + "ne peut pas etre confrontee au plancher exige par nadia-prof", origine)
+                .isNotEmpty();
+        assertThat(expression)
+                .as("%s : une expression concatenee ne dit pas quelles classes seront rendues ; "
+                        + "ecrire chaque etat en litteral", origine)
+                .doesNotContain("+");
+        return valeurs;
+    }
+
+    private static List<String> motsDe(String litteral) {
+        return Stream.of(litteral.split("\\s+")).filter(mot -> !mot.isEmpty()).toList();
+    }
+
+    /**
+     * ADR-0015, ADR-0013 obligation 1 : le perimetre derive de la source qui gouverne le rendu.
+     * L'attribut class du gabarit source cesse d'etre cette source des qu'un th:class le remplace,
+     * et un th:classappend ajoute des classes qu'il ne porte pas non plus. Chaque branche du
+     * conditionnel donne un etat rendu, et le plancher doit tenir dans chacun.
+     */
+    private static List<List<String>> etatsDe(Element bouton) {
+        List<List<String>> etats = new ArrayList<>();
+        if (bouton.hasAttr(CLASSE_CALCULEE)) {
+            for (String litteral : litteraux(bouton, CLASSE_CALCULEE)) {
+                etats.add(new ArrayList<>(motsDe(litteral)));
+            }
+        } else {
+            etats.add(new ArrayList<>(bouton.classNames()));
+        }
+        if (bouton.hasAttr(CLASSE_AJOUTEE)) {
+            List<String> ajouts = litteraux(bouton, CLASSE_AJOUTEE).stream()
+                    .flatMap(litteral -> motsDe(litteral).stream())
+                    .toList();
+            etats.forEach(etat -> etat.addAll(ajouts));
+        }
+        return etats;
+    }
+
+    /** Tout bouton et tout lien-bouton reellement rendu, releve dans le balisage, etat par etat. */
+    static List<BoutonRendu> etatsRendus(Path racine) {
+        List<BoutonRendu> etats = new ArrayList<>();
+        for (Path gabarit : gabarits(racine)) {
+            Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
+            for (Element bouton : document.select("button, a[href]")) {
+                for (List<String> classes : etatsDe(bouton)) {
+                    etats.add(new BoutonRendu(bouton, classes));
+                }
+            }
+        }
+        return etats;
+    }
+
+    /**
+     * Les regles qui s'appliquent reellement a cet etat : ses classes s'il en porte, la balise nue
+     * sinon. Un bouton sans classe qui ne correspond a aucune regle de balise nue tombe au defaut du
+     * navigateur : c'est exactement ce que cette derivation doit detecter, plutot que de le laisser
+     * passer parce qu'il n'a pas de classe a controler.
+     */
+    private static List<String> selecteursApplicables(BoutonRendu etat) {
+        List<String> classes = etat.classes().stream().map(classe -> "." + classe).toList();
+        return classes.isEmpty() ? List.of(etat.bouton().tagName()) : classes;
     }
 
     /**
      * ADR-0014 : parmi les regles applicables a ce bouton, celles que ce depot ecrit. La liste doit
      * etre non vide - c'est la ou une bibliotheque tierce cesse de suffire.
      */
-    private static List<String> selecteursMaisonApplicables(Map<String, String> maison, Element bouton) {
-        List<String> applicables = selecteursApplicables(bouton);
+    private static List<String> selecteursMaisonApplicables(Map<String, String> maison, BoutonRendu etat) {
+        List<String> applicables = selecteursApplicables(etat);
         List<String> maisonnee = applicables.stream().filter(maison::containsKey).toList();
         assertThat(maisonnee)
                 .as("%s : aucune regle maison ne s'applique a ce bouton (selecteurs vus : %s). "
                         + "ADR-0014 : une bibliotheque tierce porte le rendu de base, elle ne porte "
                         + "jamais un plancher exige par nadia-prof - il faut une classe maison qui "
-                        + "le declare", etiquette(bouton), applicables)
+                        + "le declare", etiquette(etat), applicables)
                 .isNotEmpty();
         return maisonnee;
     }
 
-    private static String etiquette(Element element) {
-        String description = element.classNames().isEmpty()
-                ? "<" + element.tagName() + "> sans classe"
-                : "." + String.join(".", element.classNames());
-        return description + " \"" + element.text() + "\" (" + element.ownerDocument().location() + ")";
+    private static String etiquette(BoutonRendu etat) {
+        Element bouton = etat.bouton();
+        String description = etat.classes().isEmpty()
+                ? "<" + bouton.tagName() + "> sans classe"
+                : "." + String.join(".", etat.classes());
+        return description + " \"" + bouton.text() + "\" (" + bouton.ownerDocument().location() + ")";
     }
 
-    private static List<Element> boutonsPassesAuCrible(Path racine) {
-        List<Element> boutons = boutonsActionnables(racine);
-        assertThat(boutons)
+    private static List<BoutonRendu> etatsPassesAuCrible(Path racine) {
+        List<BoutonRendu> etats = etatsRendus(racine);
+        assertThat(etats)
                 .as("cette regle ne prouve rien si aucun bouton n'est passe au crible")
                 .isNotEmpty();
-        return boutons;
+        return etats;
     }
 
     /**
@@ -242,17 +318,17 @@ class TailleDesTextesEtBoutonsTest {
      */
     static void verifierPlancherDeLisibilite(Path racine) {
         Map<String, String> maison = blocsMaison(racine);
-        for (Element bouton : boutonsPassesAuCrible(racine)) {
-            for (String selecteur : selecteursMaisonApplicables(maison, bouton)) {
+        for (BoutonRendu etat : etatsPassesAuCrible(racine)) {
+            for (String selecteur : selecteursMaisonApplicables(maison, etat)) {
                 Optional<Double> taille = proprieteEnRemSiExiste(maison, selecteur, "font-size");
                 assertThat(taille)
                         .as("%s : la regle %s doit fixer une taille de police en rem, sinon le bouton "
                                 + "retombe au defaut du navigateur (environ 13px)",
-                                etiquette(bouton), selecteur)
+                                etiquette(etat), selecteur)
                         .isPresent();
                 assertThat(taille.get())
                         .as("%s ne doit jamais retomber au defaut du navigateur (environ 13px)",
-                                etiquette(bouton))
+                                etiquette(etat))
                         .isGreaterThanOrEqualTo(PLANCHER_DE_LISIBILITE_REM);
             }
         }
@@ -264,16 +340,16 @@ class TailleDesTextesEtBoutonsTest {
      */
     static void verifierCibleTactile(Path racine) {
         Map<String, String> maison = blocsMaison(racine);
-        for (Element bouton : boutonsPassesAuCrible(racine)) {
-            for (String selecteur : selecteursMaisonApplicables(maison, bouton)) {
+        for (BoutonRendu etat : etatsPassesAuCrible(racine)) {
+            for (String selecteur : selecteursMaisonApplicables(maison, etat)) {
                 Optional<Double> hauteur = proprieteEnRemSiExiste(maison, selecteur, "min-height");
                 assertThat(hauteur)
                         .as("%s : la regle %s doit fixer min-height en rem, sinon la cible tactile "
-                                + "retombe au defaut du navigateur", etiquette(bouton), selecteur)
+                                + "retombe au defaut du navigateur", etiquette(etat), selecteur)
                         .isPresent();
                 assertThat(hauteur.get())
                         .as("%s : la hauteur minimale doit atteindre au moins 44px (2,75rem)",
-                                etiquette(bouton))
+                                etiquette(etat))
                         .isGreaterThanOrEqualTo(CIBLE_TACTILE_REM);
             }
         }
@@ -289,8 +365,8 @@ class TailleDesTextesEtBoutonsTest {
      */
     static void verifierQueLeTiersNeDefaitPasLesPlanchers(Path racine) {
         Map<String, String> tiers = blocsTiers(racine);
-        for (Element bouton : boutonsPassesAuCrible(racine)) {
-            for (String selecteur : selecteursApplicables(bouton)) {
+        for (BoutonRendu etat : etatsPassesAuCrible(racine)) {
+            for (String selecteur : selecteursApplicables(etat)) {
                 String corps = tiers.get(selecteur);
                 if (corps == null) {
                     continue;
@@ -299,7 +375,7 @@ class TailleDesTextesEtBoutonsTest {
                     assertThat(declareEnImportant(corps, propriete))
                             .as("%s : la classe tierce %s impose %s en !important et prend le pas sur "
                                     + "la regle maison ; le plancher exige par nadia-prof serait "
-                                    + "declare mais pas rendu", etiquette(bouton), selecteur, propriete)
+                                    + "declare mais pas rendu", etiquette(etat), selecteur, propriete)
                             .isFalse();
                 }
             }
@@ -318,9 +394,24 @@ class TailleDesTextesEtBoutonsTest {
 
     @Test
     void auMoinsUnBoutonEstReleveDansLesGabarits() {
-        assertThat(boutonsActionnables(RACINE_PRODUCTION))
+        assertThat(etatsRendus(RACINE_PRODUCTION))
                 .as("cette regle ne prouve rien si aucun bouton n'est passe au crible")
                 .isNotEmpty();
+    }
+
+    /**
+     * ADR-0015 : la sortie de fin de partie ne porte .sortie-pleine que par la branche d'un
+     * th:class. Tant que le perimetre derivait du seul attribut class, cet etat n'etait jamais
+     * confronte au plancher. Ce test pin le fait qu'il l'est maintenant, pour qu'une regression du
+     * mecanisme de derivation redevienne rouge ici et pas seulement chez nadia-prof.
+     */
+    @Test
+    void unEtatDeBoutonNeVenantQueDUnThClassEstPasseAuCrible() {
+        assertThat(etatsRendus(RACINE_PRODUCTION).stream()
+                .flatMap(etat -> etat.classes().stream())
+                .toList())
+                .as("le perimetre doit contenir une classe qu'aucun attribut class ne porte")
+                .contains("sortie-pleine");
     }
 
     @Test
@@ -413,5 +504,34 @@ class TailleDesTextesEtBoutonsTest {
         assertThatThrownBy(() -> verifierQueLeTiersNeDefaitPasLesPlanchers(racine))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("!important");
+    }
+
+    /**
+     * ADR-0015, ADR-0013 obligation 3 : l'objet neuf est une branche de th:class que personne n'a
+     * declaree en CSS maison, sur un bouton dont l'attribut class, lui, est irreprochable. C'est la
+     * forme exacte du defaut que le perimetre precedent laissait passer en vert.
+     */
+    @Test
+    void uneBrancheDeThClassSansRegleMaisonFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("branche-conditionnelle-sans-plancher");
+        assertThatThrownBy(() -> verifierPlancherDeLisibilite(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("aucune regle maison");
+        assertThatThrownBy(() -> verifierCibleTactile(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("aucune regle maison");
+    }
+
+    /**
+     * ADR-0015 : une classe entierement calculee ne se lit pas, donc ne se prouve pas. Elle est
+     * refusee plutot qu'ignoree - sans quoi il suffirait d'ecrire th:class="${classe}" pour sortir
+     * du perimetre sans qu'aucun test ne bronche.
+     */
+    @Test
+    void uneClasseEntierementCalculeeFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("classe-calculee");
+        assertThatThrownBy(() -> verifierPlancherDeLisibilite(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("aucune classe litterale a lire");
     }
 }

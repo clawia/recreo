@@ -1,0 +1,6 @@
+/* La classe portee par l'attribut class respecte les deux planchers. Celle que pose la seconde
+   branche du th:class n'existe nulle part : c'est ce que le garde-fou doit refuser. */
+.conforme {
+    font-size: 1.25rem;
+    min-height: 2.75rem;
+}

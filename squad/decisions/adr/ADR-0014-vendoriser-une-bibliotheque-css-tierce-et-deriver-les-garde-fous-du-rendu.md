@@ -382,11 +382,18 @@ tierce puis la maison.
   selecteur tiers de specificite superieure a une classe (par exemple `#id .btn`) l'emporterait sans
   etre vu. Bootstrap n'en contient pas ; le jour ou une bibliotheque en contiendrait, c'est cette
   limite qu'il faudrait lever.
-- **Le garde-fou lit la classe statique du gabarit, pas la classe calculee.**
+- ~~**Le garde-fou lit la classe statique du gabarit, pas la classe calculee.**
   `fragments/retour.html` porte `th:class="${enSuite} ? 'retour-accueil' : 'sortie-pleine'"` : seule
   la valeur par defaut de l'attribut `class` est controlee. Limite anterieure a cet ADR, non
   aggravee par lui, et signalee ici parce qu'elle devient plus facile a rencontrer avec des classes
-  utilitaires.
+  utilitaires.~~
+  **Amendement du 2026-08-06, `ADR-0015` : cette limite est fermee.** Le perimetre derive desormais
+  de chaque branche litterale de `th:class` et de `th:classappend`, et une classe calculee est
+  refusee au lieu d'etre ignoree. Mesure faite : avant correction, retirer `.sortie-pleine` de
+  `recreo.css` laissait la suite verte. Nommer un trou dans un ADR ne le garde pas - c'est
+  exactement ce qu'`ADR-0013` interdit, et cette puce en etait une occurrence. La forme reellement
+  livree par `ines-design` porte de plus `btn` sur les deux branches, cet ADR ayant ete redige avant
+  la mise en oeuvre.
 - **`JAVASCRIPT_TIERS_REFUSE` est un critere enumere, pas un perimetre.** Un fichier renomme
   echapperait au motif. Ce qui ne lui echappe pas : il faudrait le vendoriser, donc l'inscrire dans
   `provenance.txt` avec son origine, donc le montrer en diff.

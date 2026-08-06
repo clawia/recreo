@@ -1,0 +1,5 @@
+/* Le CSS maison est irreprochable : la faute est dans le gabarit, qui rend une classe illisible. */
+.conforme {
+    font-size: 1.25rem;
+    min-height: 2.75rem;
+}

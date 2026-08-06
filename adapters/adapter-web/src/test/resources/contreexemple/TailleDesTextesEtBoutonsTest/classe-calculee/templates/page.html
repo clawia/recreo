@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Objet neuf, absent de la production : la classe rendue est entierement calculee. Rien ne
+     permet de savoir quelles regles s'appliqueront au bouton, donc rien ne permet de prouver le
+     plancher. Le garde-fou refuse au lieu d'ignorer. -->
+<button type="button" class="btn conforme" th:class="${classeDuBouton}">Sortir</button>
+</body>
+</html>
