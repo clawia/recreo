@@ -6,6 +6,11 @@
 - **Auteur** : theo-archi
 - **Remplace** : rien. **Amende** : `ADR-0014` (une de ses limites nommees est fermee ici)
 
+> **Note de perimetre.** Cet ADR tranche deux dettes de perimetre laissees ouvertes a la cloture de
+> s03, et corrige au passage un troisieme defaut, de nature differente, trouve par `yanis-qa`
+> pendant le meme cycle : une detection de `!important` aveugle au motif de nommage des variables de
+> Bootstrap 5. Les trois defauts sont dans du code dont je suis l'auteur.
+
 ## Contexte
 
 `ADR-0013` a nomme une propriete : un garde-fou qui **enumere** son perimetre ne verifie que ce
@@ -164,6 +169,32 @@ la correction. C'est la mesure qui donne son sens a cet ADR :
 |---|---|---|
 | `.sortie-pleine` retiree des deux groupes de regles de `recreo.css` (le bouton de fin de partie retombe au defaut du navigateur) | **vert** | **rouge**, `toutBoutonReellementRenduEstAuMoinsAUnRemVingtCinq` et `toutBoutonReellementRenduAUneCibleTactileDAuMoinsQuaranteQuatrePixels`, `.btn.sortie-pleine "Les jeux" (fragments/retour.html) : aucune regle maison ne s'applique a ce bouton` |
 
+**Un troisieme defaut, trouve par `yanis-qa` pendant ce meme cycle, corrige ici.** Il n'est pas un
+probleme de perimetre mais de lecture, et il defaisait la garantie centrale d'`ADR-0014` :
+`declareEnImportant` cherchait la premiere occurrence litterale de `"font-size:"` dans le corps du
+bloc. Bootstrap 5 nomme ses variables `--bs-<composant>-<propriete>`, donc
+`--bs-btn-font-size:1rem` **contient** `font-size:` et etait trouve avant la vraie declaration
+`font-size:var(--bs-btn-font-size)` du meme bloc. Le garde-fou lisait la valeur de la variable et ne
+voyait jamais la declaration reelle, `!important` compris. C'est le motif de nommage de **tous** les
+composants de la bibliotheque reellement vendorisee, pas un cas de figure invente.
+
+La recherche exige desormais un **debut de declaration** - debut du corps, ou apres un `;` - et les
+corps de blocs fusionnes sont separes par un `;` pour que la premiere declaration d'un corps ajoute
+reste reconnaissable. Les trois lecteurs de propriete du fichier passent par le meme point d'entree,
+non par gout de la factorisation mais parce que les trois portaient le meme defaut.
+
+| Mutation du depot reel | Avant | Apres |
+|---|---|---|
+| `!important` ajoute sur la seule declaration `font-size` du bloc `.btn` de `vendor/bootstrap.min.css` (la mutation exacte de `yanis-qa`) | **vert** | **rouge**, `aucuneClasseTierceNeDefaitUnPlancherSurUnBoutonRendu` : `.btn.demarrer "Jouer" (accueil.html) : la classe tierce .btn impose font-size en !important et prend le pas sur la regle maison` |
+
+Jeu fautif correspondant, sur objet neuf :
+`TailleDesTextesEtBoutonsTest/plancher-defait-derriere-une-variable`, ou le plancher est defait
+derriere une variable dont le nom contient celui de la propriete. L'ancien jeu fautif,
+`plancher-defait-par-le-tiers`, ecrit `font-size:1rem!important` en clair - ce que Bootstrap ne fait
+jamais. **C'est la lecon de ce defaut** : une fixture ecrite par l'auteur de la regle ressemble a ce
+que l'auteur imagine, pas a ce que la bibliotheque ecrit. `ADR-0013` exige un objet neuf ; il faut
+aussi que l'objet neuf ait la forme du monde reel.
+
 **Mesure de la seconde dette**, meme methode : une feuille maison neuve `static/css/theme.css`
 declarant un `@font-face` sur `fonts.gstatic.com` laisse `HabillageDesEcransTest` **vert** et fait
 echouer `RessourcesTiercesTest.aucuneFeuilleNiAucunGabaritNeVaChercherQuoiQueCeSoitSurLeReseau`, avec
@@ -177,10 +208,10 @@ exige que le perimetre releve contienne `sortie-pleine`, une classe qu'aucun att
 porte : le jour ou la derivation retombe sur le seul attribut ecrit, ce test devient rouge avant que
 qui que ce soit n'ait a s'en apercevoir a l'ecran.
 
-**Etat mesure du depot.** `mvn -B verify` sur JDK 21.0.10 : BUILD SUCCESS, **180 tests unitaires et
-2 tests d'integration, 0 echec** (38 `domain`, 7 `application`, 68 `adapter-web`, 10
-`adapter-content`, 57 + 2 `bootstrap`). `adapter-web` passe de 66 a 68 : une methode supprimee, trois
-ajoutees.
+**Etat mesure du depot.** `mvn -B clean verify` sur JDK 21.0.10 : BUILD SUCCESS, **181 tests
+unitaires et 2 tests d'integration, 0 echec** (38 `domain`, 7 `application`, 69 `adapter-web`, 10
+`adapter-content`, 57 + 2 `bootstrap`). `adapter-web` passe de 66 a 69 : une methode supprimee,
+quatre ajoutees.
 
 ## Consequences
 

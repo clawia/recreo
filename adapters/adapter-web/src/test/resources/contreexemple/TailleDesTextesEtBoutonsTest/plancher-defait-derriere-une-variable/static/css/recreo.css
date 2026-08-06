@@ -1,0 +1,7 @@
+/* Le CSS maison declare bien les deux planchers. La faute est que le bouton porte aussi une classe
+   tierce qui les impose en !important, derriere une variable dont le nom contient le nom de la
+   propriete - le motif de nommage de toutes les variables de composant de Bootstrap 5. */
+.conforme {
+    font-size: 1.25rem;
+    min-height: 2.75rem;
+}

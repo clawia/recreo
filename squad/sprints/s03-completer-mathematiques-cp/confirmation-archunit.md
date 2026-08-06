@@ -38,16 +38,16 @@ mvn -B clean verify
 |---|---|---|---|
 | `recreo-domain` | 38 | - | 0 |
 | `recreo-application` | 7 | - | 0 |
-| `recreo-adapter-web` | 68 | - | 0 |
+| `recreo-adapter-web` | 69 | - | 0 |
 | `recreo-adapter-content` | 10 | - | 0 |
 | `recreo-bootstrap` | 57 | 2 | 0 |
-| **Total** | **180** | **2** | **0** |
+| **Total** | **181** | **2** | **0** |
 
 `sofia-sm` annonce 180 tests : le chiffre est exact pour l'arbre `4c62f60`, ou `adapter-web` en
-comptait 66. Le present commit porte `adapter-web` a 68 - une methode supprimee, trois ajoutees
-(`ADR-0015`) - donc **180 unitaires + 2 d'integration** sur l'arbre que je juge, contre 178 + 2
-avant lui. Les deux chiffres 180 ne recouvrent pas le meme ensemble ; les ecrire tous deux evite
-qu'on croie plus tard que rien n'a bouge.
+comptait 66, et il compte 178 unitaires plus 2 d'integration. Mes commits portent `adapter-web` a
+69 - une methode supprimee, quatre ajoutees (`ADR-0015`) - donc **181 unitaires + 2 d'integration**
+sur l'arbre que je juge. Les deux totaux ne recouvrent pas le meme ensemble ; les ecrire tous deux
+evite qu'on croie plus tard que rien n'a bouge.
 
 ## 3. Combien de regles ArchUnit sont reellement executees, et selon quel comptage
 
@@ -191,6 +191,35 @@ Les cinq mordent toujours apres la mise en oeuvre d'`ines-design`. La premiere e
 c'est le geste qu'un developpeur ferait de bonne foi en adoptant Bootstrap, et `.btn` etant desormais
 sur **tous** les boutons, elle avait toutes les chances de s'etre emoussee. Elle ne l'est pas.
 
+### La correction que `yanis-qa` m'oppose sur `!important` est fondee, et je la prends
+
+Son rapport (`rapport-qualite.md`, section "La preuve de morsure de theo-archi sur !important") dit
+deux choses. La premiere : **aucune de mes quatre mutations d'`ADR-0014` ne portait sur
+`!important`**, ma preuve reposait sur une seule fixture. C'est exact, et le tableau ci-dessus ne
+l'efface pas : la cinquieme ligne, la mutation `.fs-6`, je viens de l'ajouter parce que son rapport
+m'a montre qu'elle manquait.
+
+La seconde est plus grave et elle est juste. `declareEnImportant` cherchait `"font-size:"` par simple
+sous-chaine ; Bootstrap 5 nomme ses variables `--bs-<composant>-<propriete>`, donc
+`--bs-btn-font-size:1rem` contient `font-size:` et etait trouve **avant** la vraie declaration
+`font-size:var(--bs-btn-font-size)` du meme bloc. J'ai reproduit sa mutation sur le fichier reel :
+`!important` ajoute sur la seule declaration `font-size` du bloc `.btn` de
+`vendor/bootstrap.min.css`, garde-fou **vert**, exactement comme il l'ecrit. C'est la garantie
+centrale d'`ADR-0014` - "une garantie pedagogique est toujours portee par une regle maison, jamais
+defaite par le tiers" - qui ne mordait pas sur la vraie bibliotheque.
+
+**Corrige dans ce commit** (`ADR-0015`), la recherche exigeant un debut de declaration, avec un jeu
+fautif neuf qui a la forme du monde reel plutot que celle que j'imaginais. Meme mutation apres
+correction : **rouge**, `.btn.demarrer "Jouer" (accueil.html) : la classe tierce .btn impose
+font-size en !important et prend le pas sur la regle maison`.
+
+Ce que ce defaut enseigne, et que j'ecris parce qu'il me vise : `ADR-0013` exige un objet neuf pour
+prouver la morsure. Ce n'est pas assez. **Une fixture ecrite par l'auteur de la regle ressemble a ce
+que l'auteur imagine, pas a ce que la bibliotheque ecrit.** Ma fixture posait
+`font-size:1rem!important` en clair - une forme que Bootstrap n'emploie jamais. La regle passait sa
+propre epreuve et echouait dans le monde. Ce n'est pas une regle decorative, c'est pire : une regle
+dont la preuve etait decorative.
+
 ### Le trou que ce rearbitrage a laisse, et il y en a un
 
 La question posee - le garde-fou de style ne juge que hors `vendor/`, le garde-fou pedagogique juge
@@ -286,7 +315,7 @@ Trois constats, dont un que je porte contre moi :
 
 Motif, sans adoucissement :
 
-- `mvn -B clean verify` est vert sur JDK 21.0.10, 180 tests unitaires et 2 d'integration, 0 echec.
+- `mvn -B clean verify` est vert sur JDK 21.0.10, 181 tests unitaires et 2 d'integration, 0 echec.
 - Les 23 regles ArchUnit s'executent et aucune n'echappe a son contre-exemple, ce qui est etabli par
   un recensement derive et non par ma parole.
 - Les quatre proprietes de Clean Architecture du `CLAUDE.md` sont tenues apres les deux fusions ; la
@@ -294,8 +323,10 @@ Motif, sans adoucissement :
   verifies.
 - Les cinq mutations d'`ADR-0014` mordent toujours sur l'arbre fusionne, y compris apres que `.btn`
   a ete pose sur tous les boutons.
-- Les deux dettes nommees sont tranchees dans ce commit, pas reportees, et la seconde l'est apres
-  avoir ete **mesuree** verte sur une mutation qui aurait du la faire rougir.
+- Les deux dettes nommees sont tranchees, pas reportees, et la seconde l'est apres avoir ete
+  **mesuree** verte sur une mutation qui aurait du la faire rougir.
+- Le defaut de detection de `!important` trouve par `yanis-qa` dans mon propre code est reproduit,
+  corrige et prouve mordant sur la mutation exacte qu'il decrit.
 
 Ce que cette porte ne dit pas, et qu'il faut lire avec elle :
 

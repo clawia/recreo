@@ -123,7 +123,7 @@ class TailleDesTextesEtBoutonsTest {
                 String selecteurs = bloc.substring(0, accolade);
                 String corps = bloc.substring(accolade + 1);
                 for (String selecteur : selecteurs.split(",")) {
-                    blocs.merge(selecteur.strip(), corps, (ancien, nouveau) -> ancien + nouveau);
+                    blocs.merge(selecteur.strip(), corps, (ancien, nouveau) -> ancien + ";" + nouveau);
                 }
             }
         }
@@ -142,14 +142,47 @@ class TailleDesTextesEtBoutonsTest {
         return proprieteEnRem(blocs, selecteur, "font-size");
     }
 
+    /**
+     * L'index de la declaration de cette propriete dans un corps de bloc, ou -1. La recherche exige
+     * un **debut de declaration** - debut du corps, ou apres un ';' - et non la premiere occurrence
+     * litterale du nom.
+     *
+     * <p>Defaut releve par yanis-qa en s03 sur le fichier vendorise reel, corrige par ADR-0015 :
+     * Bootstrap 5 nomme ses variables {@code --bs-<composant>-<propriete>}, si bien que
+     * {@code --bs-btn-font-size:1rem} contient {@code font-size:} et etait trouve avant la vraie
+     * regle {@code font-size:var(--bs-btn-font-size)} du meme bloc. Le garde-fou lisait alors la
+     * valeur de la variable et ne voyait jamais la declaration reelle, !important compris. Ce n'est
+     * pas un accident de fixture : c'est la convention de nommage de tous les composants Bootstrap.
+     */
+    private static int debutDeDeclaration(String corps, String propriete) {
+        String etiquette = propriete + ":";
+        int position = corps.indexOf(etiquette);
+        while (position >= 0) {
+            if (estDebutDeDeclaration(corps, position)) {
+                return position;
+            }
+            position = corps.indexOf(etiquette, position + 1);
+        }
+        return -1;
+    }
+
+    private static boolean estDebutDeDeclaration(String corps, int position) {
+        for (int avant = position - 1; avant >= 0; avant--) {
+            char caractere = corps.charAt(avant);
+            if (Character.isWhitespace(caractere)) {
+                continue;
+            }
+            return caractere == ';' || caractere == '{';
+        }
+        return true;
+    }
+
     private static double proprieteEnRem(Map<String, String> blocs, String selecteur, String propriete) {
         String corps = blocs.get(selecteur);
         assertThat(corps).as("le selecteur %s doit exister dans le CSS maison", selecteur).isNotNull();
-        String etiquette = propriete + ":";
-        int position = corps.indexOf(etiquette);
+        int position = debutDeDeclaration(corps, propriete);
         assertThat(position).as("%s doit declarer explicitement %s", selecteur, propriete).isNotNegative();
-        int finValeur = corps.indexOf(';', position);
-        String valeur = corps.substring(position + etiquette.length(), finValeur).strip();
+        String valeur = valeurDeclaree(corps, position, propriete);
         assertThat(valeur).as("%s : %s doit etre exprime en rem", selecteur, propriete).endsWith("rem");
         return Double.parseDouble(valeur.substring(0, valeur.length() - "rem".length()));
     }
@@ -160,17 +193,21 @@ class TailleDesTextesEtBoutonsTest {
         if (corps == null) {
             return Optional.empty();
         }
-        String etiquette = propriete + ":";
-        int position = corps.indexOf(etiquette);
+        int position = debutDeDeclaration(corps, propriete);
         if (position < 0) {
             return Optional.empty();
         }
-        int finValeur = corps.indexOf(';', position);
-        String valeur = corps.substring(position + etiquette.length(), finValeur).strip();
+        String valeur = valeurDeclaree(corps, position, propriete);
         if (!valeur.endsWith("rem")) {
             return Optional.empty();
         }
         return Optional.of(Double.parseDouble(valeur.substring(0, valeur.length() - "rem".length())));
+    }
+
+    private static String valeurDeclaree(String corps, int position, String propriete) {
+        int debut = position + propriete.length() + ":".length();
+        int fin = corps.indexOf(';', debut);
+        return corps.substring(debut, fin < 0 ? corps.length() : fin).strip();
     }
 
     /** ADR-0013 obligation 1 : les gabarits balayes viennent du repertoire, jamais d'une liste. */
@@ -383,13 +420,8 @@ class TailleDesTextesEtBoutonsTest {
     }
 
     private static boolean declareEnImportant(String corps, String propriete) {
-        int position = corps.indexOf(propriete + ":");
-        if (position < 0) {
-            return false;
-        }
-        int fin = corps.indexOf(';', position);
-        String valeur = corps.substring(position, fin < 0 ? corps.length() : fin);
-        return valeur.contains("!important");
+        int position = debutDeDeclaration(corps, propriete);
+        return position >= 0 && valeurDeclaree(corps, position, propriete).contains("!important");
     }
 
     @Test
@@ -501,6 +533,21 @@ class TailleDesTextesEtBoutonsTest {
     @Test
     void uneClasseTierceEnImportantFaitEchouerLeGardeFou() {
         Path racine = CONTRE_EXEMPLES.resolve("plancher-defait-par-le-tiers");
+        assertThatThrownBy(() -> verifierQueLeTiersNeDefaitPasLesPlanchers(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("!important");
+    }
+
+    /**
+     * ADR-0015, defaut releve par yanis-qa en s03 : la fixture precedente ecrit
+     * {@code font-size:1rem!important} en clair, ce que Bootstrap ne fait jamais. Il ecrit
+     * {@code --bs-btn-font-size:1rem;font-size:var(--bs-btn-font-size)}, et la recherche par simple
+     * sous-chaine tombait sur la variable. L'objet neuf est ce motif de nommage, celui de tous les
+     * composants de la bibliotheque reellement vendorisee.
+     */
+    @Test
+    void unPlancherDefaitDerriereUneVariableTierceFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("plancher-defait-derriere-une-variable");
         assertThatThrownBy(() -> verifierQueLeTiersNeDefaitPasLesPlanchers(racine))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("!important");
