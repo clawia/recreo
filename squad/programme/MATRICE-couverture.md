@@ -46,12 +46,18 @@ Cette matrice est reconstruite **depuis zero** au sprint 0 de `round-two`. Aucun
 d'un statut de `main` : `main` n'est pas une reference, et rien n'y a ete rejoue ni revalide sur
 cette branche.
 
-Une precision s'impose sur une ligne : le referentiel
-`squad/programme/francais/competences-cp.md` contient une annotation heritee ("couvert par le
-jeu Bandit manchot - Les syllabes, voir FICHE-francais-cp-syllabes.md, s02") qui date de `main`.
-Ce fichier de fiche, ce sprint `s02` et ce jeu n'existent pas sur `round-two`. Cette annotation
-est ignoree ici ; la ligne correspondante demarre a `non couvert` comme toutes les autres, en
-attendant qu'une story `round-two` la couvre reellement (voir `DEC-0001`).
+Une precision s'imposait sur une ligne, et elle est desormais corrigee : le referentiel
+`squad/programme/francais/competences-cp.md` portait une annotation heritee ("couvert par le
+jeu Bandit manchot - Les syllabes, voir FICHE-francais-cp-syllabes.md, s02") qui datait de `main`.
+Ce fichier de fiche, ce sprint `s02` et ce jeu n'ont jamais existe sur `round-two`. Cette
+annotation avait ete ignoree par cette matrice depuis le sprint 0 (la ligne demarrait a
+`non couvert` comme toutes les autres, voir `DEC-0001`), mais elle est restee ecrite dans le
+referentiel lui-meme jusqu'a ce que `nadia-prof` la signale nommement dans son audit du
+2026-08-06 (`squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`, "Suites hors de ma main") :
+un referentiel qui declare couverte une competence qui ne l'est pas masque exactement le trou que
+cette matrice existe pour rendre visible. L'annotation est retiree du referentiel a cette date ;
+aucune autre annotation du meme genre n'a ete trouvee dans les trois autres fichiers de
+`squad/programme/` apres relecture complete des quatre referentiels.
 
 ## Mathematiques - CP (cycle 2)
 
@@ -61,7 +67,7 @@ Source : `squad/programme/mathematiques/competences-cp.md`.
 |---|---|---|---|---|---|---|
 | mathematiques | CP | Nombres et calculs | Denombrer, lire, ecrire et decomposer les nombres jusqu'a 100 | - | - | non couvert |
 | mathematiques | CP | Nombres et calculs | Comparer et ranger des nombres jusqu'a 100 (<, >, =) | - | - | non couvert |
-| mathematiques | CP | Nombres et calculs | Calcul mental - additions dans la limite de 10 (puis 20) | bandit-manchot-additions-cp | bandit manchot | en cours |
+| mathematiques | CP | Nombres et calculs | Calcul mental - additions dans la limite de 10 (puis 20) | bandit-manchot-additions-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | - | - | non couvert |
 | mathematiques | CP | Nombres et calculs | Complements a 10 | - | - | non couvert |
 | mathematiques | CP | Nombres et calculs | Resoudre des problemes simples d'addition/soustraction en situation (1 etape) | - | - | non couvert |
@@ -92,8 +98,16 @@ Elle pose une condition ecrite pour que cette ligne passe a `couvert-valide` : c
 corrigee. Le sprint 2 n'a pas touche a ce point (chantier d'identite visuelle uniquement,
 `DEC-0006`) ; la condition est restee sans story jusqu'a `DEC-0007` et la story S3-1 du sprint 3
 (`docs/backlog/backlog.md`), qui l'instruisent enfin, avec le seuil chiffre que `nadia-prof` devra
-verifier a l'audit. Le statut ne passera a `couvert-valide` qu'apres ce nouvel audit ; cette ligne
-n'est jamais editee sur la seule foi d'une CI verte.
+verifier a l'audit.
+
+**Etat au 2026-08-06, audit de cloture de s03** : `nadia-prof` a joue 2 600 manches reelles sur
+l'increment corrige (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section 1.1). Les
+sommes 9 et 10 representent 34,2 % des manches (contre 43,9 % avant correction), les sommes
+inferieures a 5 en representent 18,0 % (contre 7,6 %), les operandes nuls 13,7 %, et les 65 couples
+valides sortent tous. **Sa condition est levee et la ligne passe a `couvert-valide`** - c'est la
+premiere ligne de la matrice a atteindre ce statut. Reserve attachee, qui n'est pas une condition :
+la mention "(puis 20)" de la competence reste hors du perimetre de ce jeu, dont la borne est 10 ;
+si "puis 20" doit etre couvert, ce sera une autre story et un nouvel audit.
 
 L'increment est suivi (Done pedagogique, pas la ligne de matrice) dans
 `squad/validation/FILE-ATTENTE.md`.
@@ -138,8 +152,18 @@ Source : `squad/programme/francais/competences-cp.md`.
 
 Note sur la ligne `en cours` : `DEC-0008-la-couverture-reprend-francais-cp-et-cm1.md` ouvre cette
 competence au sprint 4, sur la matiere premiere `contenu-repris/mots/cp-le-bon-son.yml` (story
-S4-2, `docs/backlog/backlog.md`). Statut `en cours` tant que le Done technique n'est pas atteint
-et que `nadia-prof` n'a pas rendu son verdict.
+S4-2, `docs/backlog/backlog.md`).
+
+**Etat au 2026-08-06, premier audit** : `nadia-prof` prononce **REFUSE**
+(`squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`) sur cinq motifs cumules : une consigne
+qui annonce un son qui n'est jamais joue ; des crochets phonetiques `[an]` montres a l'enfant ; 23
+items sur 24 resolubles par simple appariement visuel des lettres, sans passer par le phoneme ;
+trois items qui admettent deux reponses vraies mais n'en acceptent qu'une ; et aucune aide
+disponible dans ce jeu, motif qu'elle qualifie de structurel plutot que d'oubli de contenu (un
+paquet `type: question` ne peut porter d'indice, contrairement a `type: additions-bornees`). La
+ligne **reste `en cours`**. Le jeu est retire du catalogue jouable en attendant sa correction
+(`DEC-0009-retrait-le-bon-son-du-catalogue.md`) ; stories de correction S5-2 a S5-5 de
+`docs/backlog/backlog.md`.
 
 ## Francais - CM1 (cycle 3)
 
@@ -162,8 +186,19 @@ Source : `squad/programme/francais/competences-cm1.md`.
 Note sur la ligne `en cours` : `DEC-0008-la-couverture-reprend-francais-cp-et-cm1.md` ouvre cette
 competence au sprint 4, sur la matiere premiere `contenu-repris/mots/cm1-homophones.yml` (story
 S4-1, `docs/backlog/backlog.md`) - premiere ligne de matrice couverte pour le CM1, tous jeux
-confondus. Statut `en cours` tant que le Done technique n'est pas atteint et que `nadia-prof` n'a
-pas rendu son verdict.
+confondus.
+
+**Etat au 2026-08-06, premier audit** : `nadia-prof` prononce **VALIDE SOUS RESERVE**, Done
+pedagogique **accorde** (`squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`) : le contenu
+est exact item par item et le rattachement au referentiel est juste. La ligne **reste neanmoins
+`en cours`**, pas `couvert-valide` : elle motive l'ecart elle-meme - la competence vise "les
+**principaux** homophones grammaticaux", le paquet en couvre cinq (a/a, et/est, on/ont, son/sont,
+ou/ou), il en manque cinq parmi les plus courants (ce/se, ces/ses, la/la/l'a, mais/mes, peu/peut).
+Sa condition ecrite pour `couvert-valide` : ces cinq couples ajoutes **et**, dans le meme geste,
+des phrases qui obligent l'enfant a regarder ailleurs que juste avant le trou (profondeur CM1,
+pas CE1/CE2) - story S5-6 de `docs/backlog/backlog.md`. Reserve distincte, non bloquante pour ce
+statut mais nommee : dix items pour dix manches, donc aucune variete entre deux parties - story
+S5-7.
 
 ## Synthese au sprint 0, mise a jour a l'ouverture du sprint 4
 
@@ -187,7 +222,32 @@ prononce que par `nadia-prof`, apres audit reel de chaque increment.
 
 Le trou qui restait le plus visible - **francais, qui n'avait encore aucune ligne `en cours`** -
 est celui que `DEC-0008` traite. Le CM1 sort egalement de son etat a zero ligne, tous jeux
-confondus, avec la ligne homophones grammaticaux. Le trou qui demeure, lui, inchange par cette
-decision : la ligne mathematiques CP reste la seule ou un Done technique a ete atteint sans
-qu'aucun Done pedagogique `VALIDE` (sans reserve) n'ait encore ete prononce sur l'ensemble de la
-competence.
+confondus, avec la ligne homophones grammaticaux.
+
+## Synthese apres les verdicts du 2026-08-06 (cloture de s03, premier audit de s04)
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 10 | 0 | 1 |
+| mathematiques CM1 | 12 | 12 | 0 | 0 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 10 | 1 | 0 |
+| **Total** | **46** | **43** | **2** | **1** |
+
+`nadia-prof` a rendu son verdict le 2026-08-06 sur les trois increments soumis
+(`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, `FICHE-bandit-manchot-le-bon-son-cp.md`,
+`FICHE-bandit-manchot-homophones-cm1.md`) :
+
+- **Mathematiques CP** obtient la premiere ligne `couvert-valide` du produit : la condition posee
+  en s01 et reportee deux fois est levee.
+- **Francais CM1** (homophones grammaticaux) obtient un Done pedagogique accorde (`VALIDE SOUS
+  RESERVE`), mais la ligne reste `en cours` : cinq couples d'homophones courants manquent a "les
+  principaux" (story S5-6, `docs/backlog/backlog.md`).
+- **Francais CP** (graphemes/phonemes) est **REFUSE** sur cinq motifs, dont un structurel (un
+  paquet `type: question` ne peut porter d'indice) ; la ligne reste `en cours`, et le jeu est
+  retire du catalogue jouable jusqu'a correction (`DEC-0009-retrait-le-bon-son-du-catalogue.md`,
+  stories S5-2 a S5-5).
+
+Le trou qui demeure : le produit compte desormais une ligne `couvert-valide` sur 46, deux lignes
+`en cours` dont l'une correspond a un jeu refuse et retire du catalogue, et 43 lignes `non
+couvert`.

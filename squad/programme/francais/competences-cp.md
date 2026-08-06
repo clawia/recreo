@@ -6,8 +6,7 @@
 
 ## Langage oral et conscience phonologique
 
-- **Dénombrer les syllabes orales d'un mot** (segmentation syllabique) — *couvert par le jeu
-  « Bandit manchot — Les syllabes » (voir `FICHE-francais-cp-syllabes.md`), s02.*
+- Dénombrer les syllabes orales d'un mot (segmentation syllabique).
 - Localiser une syllabe dans un mot (début / milieu / fin).
 - Identifier un son (phonème) dans un mot.
 

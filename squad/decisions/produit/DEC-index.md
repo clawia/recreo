@@ -12,6 +12,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0006 | Perimetre du chantier identite visuelle de s02 et statut de l'icone d'application au regard de DEC-0002 | s02 | 2026-08-05 | Acceptee |
 | DEC-0007 | Le sprint 3 complete la ligne mathematiques CP existante et solde la dette de gouvernance, il n'ouvre pas de nouvelle matiere ni de nouvelle competence | s03 | 2026-08-05 | Acceptee (point 1 remplace par DEC-0008, points 2 a 8 inchanges) |
 | DEC-0008 | La couverture du programme reprend sur demande de l'utilisatrice : francais CP et CM1 entrent au backlog | s04 | 2026-08-06 | Acceptee |
+| DEC-0009 | Retrait de "Le bon son" du catalogue jusqu'a sa correction | s04/s05 | 2026-08-06 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0002` a ete amendee le 2026-08-04, a la suite de la
 relecture pedagogique de `nadia-prof` sur le refus de `bandit-manchot-additions-cp` - ajout d'une

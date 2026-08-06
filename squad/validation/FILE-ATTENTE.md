@@ -26,26 +26,32 @@ planning et qui le trace ici et dans le planning du sprint concerne.
 
 ## File actuelle
 
-**Compte actuel : 0 increment en attente.** Le seul increment qui a jamais figure dans cette file,
-`bandit-manchot-additions-cp`, a recu le Done pedagogique (`VALIDE SOUS RESERVE`, ce qui est un
-Done accorde et non une attente - voir la fiche, "Statut global" : "Done pedagogique du jeu
-accorde le 2026-08-05 au titre de s01, maintenu et non retire") ; il n'y a donc plus lieu de le
-compter comme en attente. Ses reserves non bloquantes (repartition des sommes, indice
-inatteignable, et les reserves visuelles de s02) ne sont pas un motif de reinscription dans cette
-file : elles sont suivies comme du backlog ordinaire dans `docs/backlog/backlog.md` (sprint 3,
-`DEC-0007`) et comme condition ecrite dans `squad/programme/MATRICE-couverture.md`, pas comme un
-Done pedagogique en souffrance.
+**Compte actuel : 1 increment en attente.** `bandit-manchot-le-bon-son-cp` a ete refuse par
+`nadia-prof` le 2026-08-06 sur cinq motifs
+(`squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`) et attend sa reprise apres correction
+(stories S5-2 a S5-5, `docs/backlog/backlog.md`). Il est aussi retire du catalogue jouable en
+attendant (`DEC-0009-retrait-le-bon-son-du-catalogue.md`), ce qui ne le retire pas de cette file :
+la file suit le Done pedagogique, pas l'accessibilite en jeu.
 
-Aucun increment n'est actuellement en attente d'un premier audit ou d'une reprise apres refus.
+`bandit-manchot-homophones-cm1` a recu un Done pedagogique accorde (`VALIDE SOUS RESERVE`) le
+2026-08-06 (`squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`) : comme pour
+`bandit-manchot-additions-cp`, un Done accorde sous reserve n'est pas une attente et n'entre pas
+dans cette file. Ses reserves (couples d'homophones manquants, variete du paquet, et le reste)
+sont suivies comme backlog ordinaire (stories S5-6, S5-7) et comme condition ecrite dans
+`squad/programme/MATRICE-couverture.md`, pas comme un Done pedagogique en souffrance.
+
 Bien sous le seuil de gel (2-3) : rien n'empeche d'ouvrir de nouvelles stories de contenu au
-prochain planning, sous reserve de la decision de perimetre de `DEC-0007` (s03 complete la
-competence deja engagee avant d'en ouvrir une nouvelle).
+prochain planning, mais le sprint qui vient doit d'abord traiter la reprise de
+`bandit-manchot-le-bon-son-cp` (voir la regle de gel ci-dessus, sur laquelle je reste vigilante si
+un deuxieme increment refuse venait s'y ajouter).
 
 ## Historique
 
 | Increment | Fiche | Verdict final trace ici | Entre le | Sorti le |
 |---|---|---|---|---|
 | bandit-manchot-additions-cp | `squad/conformite/FICHE-bandit-manchot-additions-cp.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE (leve depuis REFUSE) | 2026-08-04 (sprint 0, verdict REFUSE) | 2026-08-05 (sprint 1, refus leve) |
+| bandit-manchot-homophones-cm1 | `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE | 2026-08-06 (sprint 4, premier audit) | 2026-08-06 (accorde au premier audit) |
+| bandit-manchot-le-bon-son-cp | `squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md` | REFUSE - en attente de reprise | 2026-08-06 (sprint 4, premier audit) | - |
 
 Le chantier d'identite visuelle de s02 (S2-1, S2-2, S2-3) n'est pas entre dans cette file : il ne
 constitue pas un increment de contenu nouveau, `DEC-0006` l'a deja pose, et son propre refus

@@ -882,16 +882,205 @@ chacun des deux paquets ci-dessous repasse devant `nadia-prof` comme un contenu 
 - **Lien decision** : `DEC-0008-la-couverture-reprend-francais-cp-et-cm1.md`.
 - **Agent pressenti** : a affecter au planning.
 
+## Sprint 5 - Lever le refus de "Le bon son" et completer les homophones CM1
+
+**Contexte** : `nadia-prof` a rendu son verdict sur les trois increments de s04 le 2026-08-06,
+dans trois fiches distinctes : `squad/conformite/FICHE-bandit-manchot-additions-cp.md`,
+`FICHE-bandit-manchot-le-bon-son-cp.md`, `FICHE-bandit-manchot-homophones-cm1.md`. Mathematiques
+CP passe a `couvert-valide` sans qu'aucune story ne soit necessaire (l'audit porte sur
+l'increment de s03, deja fusionne). Francais CM1 est accorde sous reserve, mais cinq couples
+d'homophones manquent a "les principaux" et un couple pour dix manches interdit toute variete
+entre deux parties. Francais CP est **REFUSE** sur cinq motifs : ce jeu,
+`bandit-manchot-le-bon-son-cp` ("Le bon son"), est retire du catalogue jouable jusqu'a sa correction
+(`DEC-0009-retrait-le-bon-son-du-catalogue.md`), decision de perimetre distincte des corrections
+elles-memes.
+
+**Priorisation** : S5-1 execute le retrait de perimetre (`DEC-0009`) et n'attend aucune des
+corrections suivantes pour etre livree. S5-2 a S5-4 corrigent le contenu de "Le bon son" (motifs
+1, 2, 3, 4 du refus) ; elles sont necessaires avant tout nouvel audit de ce jeu, mais aucune ne
+depend des autres. S5-5 decrit un besoin dont la solution est un constat d'architecture (motif 5) :
+elle est routee a `theo-archi` via `sofia-sm`, pas affectee directement a un developpeur. S5-6 est
+la condition ecrite par `nadia-prof` pour que la ligne francais CM1 passe a `couvert-valide` ; S5-7
+traite une reserve distincte (variete) que S5-6 attenue mais ne clot pas necessairement seule.
+
+### S5-1 - Retirer "Le bon son" de la liste des jeux jusqu'a sa correction (execution de DEC-0009)
+
+- **Besoin** : en tant qu'eleve de CP, je ne veux pas trouver dans la liste des jeux un jeu qui me
+  demande "quel son entends-tu ?" sans qu'aucun son ne soit joue, afin de ne pas apprendre quelque
+  chose de faux en jouant, en attendant que ce jeu soit corrige.
+- **Competence programme visee** : transverse - decision de perimetre, pas de contenu
+  pedagogique.
+- **Criteres d'acceptation** :
+  - Etant donne le catalogue de jeux servi par l'application, quand l'enfant consulte la liste des
+    jeux depuis l'accueil, alors "Le bon son" (`bandit-manchot-le-bon-son-cp`) n'y figure plus.
+  - Etant donne un enfant qui tente de reprendre une partie de ce jeu par tout autre moyen que la
+    liste (session existante, URL directe), alors il ne peut plus jouer aucune manche de ce jeu :
+    il est renvoye vers l'accueil.
+  - Etant donne les deux autres jeux du catalogue (`bandit-manchot-additions-cp`,
+    `bandit-manchot-homophones-cm1`), quand on les rejoue apres cette story, alors ils fonctionnent
+    exactement comme avant : ce retrait ne touche a aucun autre jeu ni a la mecanique bandit
+    manchot.
+  - Etant donne le paquet de contenu et la fiche de conformite de ce jeu, quand on les consulte
+    apres cette story, alors ils restent presents dans le depot (rien n'est supprime, seul l'acces
+    en jeu est coupe) : ils restent la matiere de travail de S5-2 a S5-5.
+- **Note** : le choix technique (retirer la ligne du catalogue, la desactiver, ou tout autre
+  mecanisme) appartient a `theo-archi` et aux developpeurs ; cette story decrit le comportement
+  attendu, pas l'implementation.
+- **Lien decision** : `DEC-0009-retrait-le-bon-son-du-catalogue.md`.
+- **Agent pressenti** : a affecter au planning.
+
+### S5-2 - Le jeu demande reellement d'entendre un son, pas de reperer les memes lettres (motifs 1 et 3 du refus)
+
+- **Besoin** : en tant qu'eleve de CP, je veux que reussir "Le bon son" demande de reconnaitre le
+  son que fait le mot que je lis, et pas seulement de retrouver les memes lettres dans la reponse,
+  afin que jouer m'entraine vraiment a associer les graphemes aux phonemes.
+- **Competence programme visee** : francais, CP (cycle 2), domaine "Lecture et comprehension de
+  l'ecrit" - "Associer les graphemes aux phonemes (...)" (meme ligne que S4-2,
+  `squad/programme/francais/competences-cp.md`).
+- **Criteres d'acceptation** :
+  - Etant donne l'ensemble des items du paquet corrige, quand on verifie pour chacun si les
+    lettres de la reponse attendue figurent litteralement dans le mot ecrit, alors une majorite
+    des items (plus de la moitie) n'est pas resoluble par cette seule recherche visuelle - contre
+    1 item sur 24 avant correction.
+  - Etant donne un item ou le grapheme ecrit dans le mot differe de la transcription phonetique de
+    la reponse (comme "DENT" pour le son note "an"), quand cet item est presente, alors il est
+    accompagne d'un retour qui explique la variation plutot que de la laisser passer pour une
+    simple erreur.
+  - Etant donne qu'aucun fichier audio n'existe pour ce paquet, quand la consigne s'affiche, alors
+    elle ne contient aucune reference a un son entendu (le verbe "entendre" ou ses formes), et
+    decrit l'action de lecture reellement demandee.
+- **Note** : cette story revise la conception de l'exercice, pas seulement ses mots ; le contenu
+  final (choix des mots, formulation exacte, retours) repasse devant `nadia-prof` avant
+  integration, comme tout contenu neuf.
+- **Lien decision** : motifs 1 et 3 de `squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`.
+- **Agent pressenti** : a affecter au planning.
+
+### S5-3 - Les sons proposes sans notation d'adulte (motif 2 du refus)
+
+- **Besoin** : en tant qu'eleve de CP qui apprend que chaque signe ecrit correspond a un son, je
+  veux que les sons proposes comme reponse s'ecrivent comme je les lis, sans caractere que je n'ai
+  jamais appris, afin de ne pas dechiffrer du bruit a la place d'un son.
+- **Competence programme visee** : francais, CP (cycle 2), meme ligne que S5-2.
+- **Criteres d'acceptation** :
+  - Etant donne une proposition affichee a l'enfant, quand on la relit, alors elle ne contient
+    aucun caractere `[` ni `]`.
+  - Etant donne les six sons du paquet (an, on, in, ou, oi, ch), quand ils s'affichent comme
+    reponse, alors chacun s'ecrit avec exactement les lettres qui le composent, sans aucun signe
+    supplementaire.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : si une marque visuelle distinguant "ceci est un son" est necessaire, et sa forme
+    (couleur, encadre, pictogramme) - le motif 2 le laisse explicitement ouvert, cette story ne le
+    tranche pas.
+- **Lien decision** : motif 2 de `squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`.
+- **Agent pressenti** : a affecter au planning.
+
+### S5-4 - Chaque item n'admet qu'une seule reponse vraie (motif 4 du refus)
+
+- **Besoin** : en tant qu'eleve de CP qui entend correctement un son, je veux ne jamais etre compte
+  faux pour avoir entendu un son reellement present dans le mot simplement parce que le jeu
+  n'attendait que l'autre, afin de ne pas apprendre a me mefier de ce que j'entends correctement.
+- **Competence programme visee** : francais, CP (cycle 2), meme ligne que S5-2.
+- **Criteres d'acceptation** :
+  - Etant donne un item du paquet corrige et l'ensemble des six sons proposes par le jeu, quand on
+    releve lesquels sont reellement presents dans le mot affiche, alors un seul son du jeu est
+    present dans le mot, jamais deux - contre trois items sur 24 avant correction (`MOUCHE`,
+    `MOUTON`, `BALANCOIRE`).
+  - Ce qui n'est pas testable par un automate : la solution retenue pour chaque item concerne
+    (retirer l'item, changer le mot, ou reformuler la consigne pour designer une position dans le
+    mot) est un choix de contenu que `nadia-prof` revoit comme tout item neuf.
+- **Lien decision** : motif 4 de `squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`.
+- **Agent pressenti** : a affecter au planning.
+
+### S5-5 - Un enfant qui echoue plusieurs fois dans "Le bon son" recoit une aide, comme dans les autres jeux (motif 5 du refus, constat structurel)
+
+- **Besoin** : en tant qu'eleve de CP qui rate plusieurs fois de suite dans "Le bon son", je veux
+  recevoir une aide sur la question suivante, comme dans le jeu de calcul, afin de ne pas rester
+  bloque sans aucun recours jusqu'a la fin de la partie.
+- **Competence programme visee** : transverse - comportement generique de la mecanique bandit
+  manchot face a l'echec repete, meme perimetre que S1-5 et S3-2, applique ici a un type de
+  contenu qui n'en beneficie pas encore.
+- **Constat qui motive la story, pas une solution** : `nadia-prof` a joue une partie complete en
+  repondant faux a chaque manche et montre qu'aucun indice n'apparait jamais dans ce jeu, meme
+  apres dix echecs consecutifs. La cause n'est pas un oubli de contenu : c'est que
+  `QuestionContentSourceFactory` construit chaque `Question` sans champ `indice`, donc un paquet
+  `type: question` ne peut porter d'indice quel que soit ce qu'un auteur ecrit dans le YAML - a la
+  difference de `type: additions-bornees`, qui en porte un depuis S3-2/S3-3. La meme limite est
+  nommee en reserve non bloquante sur `bandit-manchot-homophones-cm1` (reserve 6 de sa fiche) : la
+  corriger beneficie aux deux jeux `type: question` existants.
+- **Criteres d'acceptation** :
+  - Etant donne un item du paquet `cp-le-bon-son` portant un indice dans son fichier de contenu,
+    quand l'enfant rate trois manches consecutives dans ce jeu, alors la manche suivante affiche
+    cet indice, exactement comme dans `bandit-manchot-additions-cp` (meme declenchement que S3-2).
+  - Etant donne le meme mecanisme applique au paquet `cm1-homophones`, quand un indice y est ecrit,
+    alors il peut lui aussi s'afficher dans les memes conditions : aucun des deux jeux ne doit
+    rester exclu du dispositif d'aide une fois qu'il existe pour les paquets `type: question`.
+- **Note de routage** : le constat est d'architecture, pas de produit. La modelisation qui
+  permettra a un paquet `type: question` de porter un indice (extension de `Question`, nouveau
+  champ, ou toute autre forme) n'est pas de mon ressort et n'est pas prescrite ici. Je remonte ce
+  besoin a `sofia-sm`, qui route vers `theo-archi`.
+- **Lien decision** : motif 5 de `squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md` ;
+  reserve 6 de `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`.
+- **Agent pressenti** : `theo-archi` (etude de faisabilite et choix de modelisation), mise en
+  oeuvre a affecter au planning apres son avis.
+
+### S5-6 - Cinq couples d'homophones qui manquent a "les principaux" (condition de nadia-prof pour couvert-valide)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux m'entrainer aussi sur "ce/se", "ces/ses",
+  "la/la/l'a", "mais/mes" et "peu/peut", afin de vraiment m'entrainer sur les homophones
+  grammaticaux les plus courants et pas seulement sur une partie d'entre eux.
+- **Competence programme visee** : francais, CM1 (cycle 3), domaine "Orthographe et grammaire" -
+  "Distinguer et utiliser correctement les principaux homophones grammaticaux"
+  (`squad/programme/francais/competences-cm1.md`). Condition ecrite par `nadia-prof` pour que
+  cette ligne de `squad/programme/MATRICE-couverture.md` passe a `couvert-valide`.
+- **Criteres d'acceptation** :
+  - Etant donne l'ensemble des items du paquet corrige, quand on les compte par couple
+    d'homophones, alors les cinq couples deja couverts (a/a, et/est, on/ont, son/sont, ou/ou) et
+    les cinq couples ajoutes (ce/se, ces/ses, la/la/l'a, mais/mes, peu/peut) sont tous representes
+    par au moins un item, chacun dans les deux sens comme le sont deja les cinq premiers.
+  - Etant donne chaque item ajoute, quand on releve la position du sujet ou de l'indice
+    grammatical par rapport au trou, alors il ne se trouve pas systematiquement juste avant le
+    trou (meme exigence que la reserve 2 de `nadia-prof`, traitee dans le meme geste sur sa
+    demande explicite) : au moins la moitie des dix nouveaux items obligent a regarder ailleurs
+    dans la phrase qu'immediatement avant le trou pour trouver la bonne reponse (le modele qu'elle
+    cite elle-meme : "Papa et maman font la cuisine.").
+  - Etant donne les dix items deja existants du paquet, quand on les relit apres cette story, alors
+    ils ne sont pas modifies : cette story ajoute, elle ne corrige pas les items existants.
+- **Note** : `nadia-prof` lie explicitement les deux exigences ("ces cinq couples ajoutes au
+  paquet, avec la reserve 2 traitee dans le meme geste [...] parce qu'ajouter cinq couples faciles
+  ne ferait qu'allonger un exercice de CE2") : cette story ne les separe pas.
+- **Lien decision** : "Suites hors de ma main" de
+  `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`.
+- **Agent pressenti** : a affecter au planning.
+
+### S5-7 - Une partie de CM1 qui ne se repete pas a l'identique (reserve 1)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que deux parties du meme jeu ne me presentent pas
+  exactement les memes dix phrases dans un ordre different, afin qu'il reste quelque chose a
+  apprendre a la deuxieme partie et pas seulement a s'en souvenir.
+- **Competence programme visee** : francais, CM1 (cycle 3), meme ligne que S5-6. Contribue a
+  `couvert-valide` sans en etre la condition ecrite (voir S5-6 pour la condition).
+- **Criteres d'acceptation** :
+  - Etant donne le paquet de contenu apres cette story, quand on compte ses items, alors il en
+    compte davantage que le nombre de manches d'une partie (10), de sorte qu'une partie ne
+    presente jamais l'integralite du paquet.
+  - Etant donne deux parties completes jouees a la suite avec des graines distinctes, quand on
+    compare les phrases presentees dans chacune, alors elles ne sont pas identiques (au moins une
+    phrase differe entre les deux parties).
+- **Note** : les dix items ajoutes par S5-6 contribuent deja a ce critere de nombre ; cette story
+  reste ecrite independamment parce que la reserve qu'elle traite (aucune variete entre deux
+  parties) subsisterait meme si S5-6 n'etait pas livree dans le meme sprint.
+- **Lien decision** : reserve 1 de `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`.
+- **Agent pressenti** : a affecter au planning.
+
 ## Backlog - sprints suivants (intentions non detaillees)
 
 Ces intentions ne sont pas des stories pretes a developper. Elles seront detaillees sprint par
 sprint, en priorite sur les trous les plus visibles de `squad/programme/MATRICE-couverture.md`.
 
-- Une fois la ligne mathematiques CP effectivement `couvert-valide` (ou, si `nadia-prof` refuse
-  encore l'increment corrige de s03, une fois son nouveau motif traite) : elargir le contenu
+- La ligne mathematiques CP est desormais `couvert-valide` (2026-08-06) : elargir le contenu
   "additions CP" a la borne jusqu'a 20, et couvrir les soustractions et les complements a 10 (meme
   mecanique, meme niveau) pour clore completement cette ligne de la matrice.
-- Une fois S4-1 et S4-2 auditees : `textes-trous/cm1-accords.yml` (partie de "accorder en genre et
+- Une fois S5-6 et S5-7 auditees : `textes-trous/cm1-accords.yml` (partie de "accorder en genre et
   en nombre dans le groupe nominal") et `textes-trous/cm1-conjugaison.yml` (partie de "conjuguer
   [...] au present, futur et imparfait", ce fichier ne couvrant que le present) sont deja
   identifies par `DEC-0008` comme candidats directement compatibles avec la forme `Question`,
@@ -910,5 +1099,18 @@ sprint, en priorite sur les trous les plus visibles de `squad/programme/MATRICE-
   qui suppose au prealable d'ecrire leurs referentiels de competences sous
   `squad/programme/<matiere>/`.
 - Suivre la file d'attente de validation pedagogique (`squad/validation/FILE-ATTENTE.md`,
-  actuellement a 0 increment en attente apres correction a l'ouverture de s03) et declencher le
-  gel du contenu si elle depasse 2-3 increments non valides en attente.
+  a 1 increment en attente depuis le premier audit de s04 - `bandit-manchot-le-bon-son-cp`) et
+  declencher le gel du contenu si elle depasse 2-3 increments non valides en attente.
+- Reserves non bloquantes restees hors des stories S5-2 a S5-7, nommees par `nadia-prof` mais qui
+  ne fondent aucun refus ni aucune condition ecrite a elles seules, a instruire quand une de ces
+  deux lignes reviendra au planning :
+  - Sur "Le bon son" : des mots trop longs pour le moment de l'annee ou cette competence se
+    travaille (`BALANCOIRE`, `CHATEAU`) ; aucune progression de difficulte dans le tirage ; le son
+    `[ch]` (consonne) mele sans distinction aux cinq autres sons (voyelles).
+  - Sur "Le bon petit mot" : aucun sujet feminin dans le paquet (`elle`, `elles` jamais employes) ;
+    l'item "Papa et maman font la cuisine." presuppose une configuration familiale (non
+    stereotypee sur les roles, signale sans en faire un motif) ; l'item "thé ou café" propose un
+    choix d'adulte plutot qu'un choix qui parle a un enfant de neuf ans.
+  - Commune aux deux jeux : l'accueil ne mentionne le niveau vise ("CP" ou "CM1") que pour "Calcul
+    CP", pas pour "Le bon son" ni "Le bon petit mot" - un enfant peut ouvrir le jeu de l'autre
+    niveau sans le savoir.
