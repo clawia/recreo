@@ -9,8 +9,9 @@
 - **Statut global** : VALIDE SOUS RESERVE (Done pedagogique du jeu accorde le 2026-08-05 au titre de
   s01, **maintenu et non retire**). Corrections mathematiques de s03 : **VALIDE** le 2026-08-06,
   ma condition sur la repartition des sommes est **levee**. Chantier Bootstrap hors sprint :
-  **REFUSE** le 2026-08-06 sur la saillance de l'ecran de retour, refus scope et liftable, motif
-  au bloc de validation. Chantier d'identite visuelle de s02 : **S2-1, S2-2 et S2-3 accordes sous
+  **REFUSE** le 2026-08-06 sur la saillance de l'ecran de retour (commit `d269cb2`) ; **refus leve
+  le 2026-08-06** sur le commit `a810fc7` apres nouvelle mesure au pixel. Le refus et son motif
+  sont conserves au bloc de validation. Chantier d'identite visuelle de s02 : **S2-1, S2-2 et S2-3 accordes sous
   reserve** le 2026-08-05 ; S2-1 avait ete **REFUSE** sur le commit `3be5a86`, refus **leve** sur
   `fd16057` apres nouvelle mesure. Aucun refus n'est efface de cette fiche.
 - **Derniere mise a jour** : 2026-08-06
@@ -89,7 +90,11 @@
     **Ma condition sur la repartition des sommes est levee**, et avec elle la ligne de matrice.
   - **Chantier Bootstrap hors sprint (`ADR-0014`)** : **REFUSE**, sur un point precis et un seul,
     la hierarchie de saillance de l'ecran de retour. Le reste du chantier est verifie et tient.
-- **Date** : 2026-08-06. **Commit audite** : `c801eb8` (`HEAD` de `round-two`).
+    **Ce refus est leve le meme jour sur le commit `a810fc7`** - voir le point 2 bis, ajoute apres
+    correction. Le refus reste ecrit integralement au point 2 : un refus efface n'a aucune valeur
+    de preuve, c'est ma regle depuis s02 et elle vaut pour mes propres refus.
+- **Date** : 2026-08-06. **Commit audite** : `c801eb8` (`HEAD` de `round-two`) pour les points 1
+  et 2 ; `fb7f4df` pour le point 2 bis et le point 4.
 - **Moyens : audit joue, non degrade.** Fat jar construit (`mvn -B package`) et lance en local
   sur un JDK 21.0.10 - le JDK que trois agents de s03 ont declare inexistant : il existe, il est
   simplement declare dans un fichier de toolchains dont le nom comporte une faute de frappe, que
@@ -342,6 +347,73 @@ en maison est le bon choix.**
 
 ---
 
+#### 2 bis. Le refus du point 2 est LEVE - remesure sur le commit `a810fc7`
+
+- **Verdict** : **refus leve. Le chantier Bootstrap est ACCORDE.**
+- **Date** : 2026-08-06, le meme jour que le refus.
+- **Commit qui corrige** : `a810fc7`. **Commit remesure** : `fb7f4df` (`HEAD` de `round-two`).
+- **Moyens** : je n'ai pas cru l'annonce. `mvn -B clean package` depuis un arbre propre, jar
+  reconstruit puis relance sur le JDK 21.0.10 reel (bytecode du jar verifie : version majeure 65,
+  donc bien Java 21). Ecrans obtenus par les memes requetes HTTP que joue l'enfant, boites lues
+  au navigateur sans tete dans **les memes conditions de mesure que mon refus** - meme fenetre de
+  1280 x 900, meme methode - sans quoi la comparaison ne voudrait rien dire.
+
+##### Ma condition est tenue, sur les deux dimensions
+
+Ma condition ecrite au point 2.3 etait : *"Encore !" doit etre au moins aussi haut et aussi large
+que "Les jeux", soit au minimum 109 x 53 px dans les conditions de mesure ci-dessus.*
+
+| Ecran de retour | Avant (`c801eb8`) | Apres (`fb7f4df`), mesure par moi | Annonce par `ines-design` |
+|---|---|---|---|
+| "Encore !" - continuer | 101 x 44 px, aire 4 459 | **117 x 56 px, aire 6 571** | 117 x 56, aire 6571 |
+| "Les jeux" - quitter | 109 x 53 px, aire 5 788 | 109 x 53 px, aire 5 788 | 109 x 53, aire 5788 |
+| Rapport action / sortie | **0,77** (inverse) | **1,14** (retabli) | - |
+
+117 >= 109 en largeur, 56 >= 53 en hauteur. **Les deux dimensions sont tenues**, et l'action
+repasse devant la sortie de 13,5 % en surface. **Les chiffres annonces par `ines-design` sont
+exactement les miens** - elle avait d'ailleurs commence par reproduire mes mesures avant de
+toucher au code, ce qui est la bonne facon de traiter un refus chiffre.
+
+Regarde et pas seulement mesure : sur la capture de l'ecran de retour, "Encore !" est desormais
+un pave bleu plein nettement plus grand que le contour "Les jeux". L'action gagne maintenant sur
+les deux canaux, la taille et la couleur. C'est ce que je demandais.
+
+##### Aucune regression ailleurs - verifie moi-meme, pas sur parole
+
+Le correctif rend le rembourrage a **tout** le bloc des boutons pleins, donc il touche cinq
+selecteurs et pas seulement `.encore`. J'ai donc remesure tous les ecrans plutot que le seul qui
+motivait mon refus :
+
+| Ecran | Constat |
+|---|---|
+| Question (maths et CM1) | `.proposition` passe de 1200 x 62 a **1200 x 74 px**, aire 74 400 -> **88 800 px2**, contre 5 788 pour la sortie. Le rapport passe de 12,9 a **15,3 pour 1** : l'ecart de saillance **s'elargit**, il ne se retrecit pas |
+| Retour juste et faux | traite ci-dessus ; coche et croix inchangees a 48 x 48 px |
+| Fin de partie | `.sortie-pleine` a 117 x 56 px, seule action de l'ecran, aplat plein. Conforme a ma reserve 3 de s02 |
+| Accueil | `.demarrer` a 56 px de haut. Deux jeux depuis `DEC-0009` |
+| Erreur | "Recommencer" reste un vrai bouton plein |
+| **Telephone, 360 x 640** | verifie parce que les boutons ont grandi de 12 px chacun : l'ecran le plus charge - sortie, score, consigne, enonce, **indice** et les trois reponses - tient encore **entierement au-dessus de la ligne de flottaison**. Pas de regression |
+
+`.indice` et `.message-reprise` sont intacts : 20 px de texte, bordure 2 px `#b45309`, rembourrage
+12 px / 16 px. **Mon refus chiffre sur `.alert-warning` est respecte** et n'a pas ete contourne.
+
+##### Ce que cette affaire dit, et que je note pour `theo-archi`
+
+C'est la troisieme fois dans ce projet qu'un defaut visible par un enfant traverse une CI
+entierement verte. La cause est la meme a chaque fois et `ines-design` l'ecrit elle-meme sans
+essayer de l'improviser : **aucun garde-fou de ce depot ne compare deux selecteurs entre eux sur
+un meme ecran.** Les regles existantes verifient qu'une declaration est presente ou qu'une valeur
+depasse un plancher ; aucune ne verifie qu'un bouton est plus gros qu'un autre, parce que c'est un
+rapport de surfaces mesure sur un rendu, pas une declaration.
+
+Je ne demande pas une regle ArchUnit - ce n'est pas mon perimetre et je ne sais pas si c'est
+faisable. Je formule le besoin, `theo-archi` en fait ce qu'il veut : **quand une regle maison
+existe pour garantir qu'un bouton d'action appelle la main plus qu'un bouton de sortie, la
+supprimer ou la deleguer a une bibliotheque tierce ne devrait pas pouvoir passer sans que
+quelqu'un remesure.** Tant que ce garde-fou n'existe pas, c'est moi le garde-fou, et je le suis
+en jouant.
+
+---
+
 #### 3. Suites hors de ma main
 
 - **`squad/programme/MATRICE-couverture.md`, ligne `mathematiques | CP | Nombres et calculs |
@@ -368,6 +440,55 @@ en maison est le bon choix.**
 - **Pour `camille-po`, une erreur de referentiel** : `squad/programme/francais/competences-cp.md`
   declare couverte par un jeu de s02 une competence de syllabes dont ni le jeu ni la fiche
   n'existent. Detail et motif dans `FICHE-bandit-manchot-le-bon-son-cp.md`.
+
+#### 4. Suivi de mes trois demandes, verifie sur `fb7f4df`
+
+Ajoute apres coup, au meme titre que le point 2 bis. Je ne rouvre ni le point 1 ni le bloc 3 :
+je constate ce qui a ete fait de mes demandes et je reponds a la seule question qui m'est posee.
+
+##### 4.1 Le retrait du jeu refuse est effectif - verifie en jouant
+
+`DEC-0009` a retire `bandit-manchot-le-bon-son-cp` du catalogue. Verifie sur l'application lancee,
+pas dans le YAML : **l'accueil ne propose plus que deux jeux**, "Calcul CP" et "Le bon petit mot".
+Et le jeu retire est injoignable par toutes ses portes - demarrage, coup, manche suivante -
+chacune rendant l'ecran d'erreur avec son bouton "Recommencer" fonctionnel, jamais une erreur
+brute. C'est le bon comportement.
+
+Le paquet `cp-le-bon-son.yaml` et sa fiche restent en place comme matiere de correction : c'est
+exactement ce qu'il faut. Mon refus portait sur ce qu'un enfant voit, pas sur l'existence du
+fichier, et les cinq motifs doivent rester lisibles pour celui qui reprendra le contenu.
+
+##### 4.2 La reprise de session ne revalide pas l'identifiant - suite acceptable, et voici pourquoi
+
+`lea-dev` a trouve et signale, sans le coder, que le chemin de reprise ne revalide pas
+l'identifiant de jeu contre le catalogue : un enfant dont la session serait ouverte sur "Le bon
+son" au moment du retrait pourrait finir une manche sur un contenu que j'ai refuse. Elle a bien
+fait de le signaler plutot que de le corriger en passant.
+
+**Ma reponse : cela ne change rien a mon verdict de retrait, et c'est une suite acceptable.** Le
+motif n'est pas de la complaisance, il est verifiable : le catalogue est charge **au demarrage**,
+donc un retrait ne prend effet qu'au redemarrage de l'application ; et les sessions vivent en
+memoire - il n'existe ni module de persistance ni magasin de sessions dans ce depot, les cinq
+modules sont `domain`, `application`, `adapter-web`, `adapter-content` et `bootstrap` - donc **le
+redemarrage qui applique le retrait detruit du meme coup toutes les sessions**. La fenetre
+d'exposition d'un enfant est nulle aujourd'hui, pas petite : nulle.
+
+**Ce qui doit etre note, parce que ce sera vrai demain et pas aujourd'hui** : le jour ou
+`adapter-persistence` existera et ou une session survivra a un redemarrage - c'est une cible
+annoncee du produit, `ADR-0001` et `DEC-0003` -, cette fenetre cessera d'etre theorique. Un
+contenu que j'ai refuse pourrait alors rester jouable apres son retrait. Je ne demande pas de
+correctif maintenant ; je demande que **le second critere de S5-1 ne soit pas ferme avant
+`adapter-persistence`**, parce que c'est ce module qui transformera ce point d'hygiene en defaut
+reel. A `camille-po` d'en faire ce qu'elle veut du backlog.
+
+##### 4.3 Mes deux autres demandes
+
+- **Ligne mathematiques CP passee `couvert-valide`** dans `MATRICE-couverture.md`, la premiere du
+  produit. C'est ma condition, elle est levee, la ligne est juste. Rien a ajouter.
+- **Referentiel corrige** : l'annotation qui declarait la competence syllabes couverte par un jeu
+  inexistant est retiree, et `camille-po` a verifie les trois autres referentiels sans en trouver
+  d'autre. C'est la bonne facon de traiter ce genre de signalement - ne pas se contenter de
+  corriger l'occurrence trouvee, mais aller chercher les autres.
 
 ---
 
