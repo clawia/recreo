@@ -67,9 +67,17 @@ h1 {
    lesquels l'enfant doit le plus souvent appuyer : ce sont eux qui doivent appeler la main (S2-1,
    correction du refus sur la hierarchie de saillance). Taille jamais laissee au defaut du
    navigateur, cible tactile d'au moins 44 x 44 px.
-   ADR-0014 : border, border-radius, padding, text-decoration et cursor viennent maintenant de
-   .btn (classe Bootstrap portee par chaque gabarit) ; seul ce que Bootstrap ne peut pas garantir
-   - la cible tactile en rem et la couleur de la palette - reste declare ici. */
+   ADR-0014 : border, border-radius, text-decoration et cursor viennent de .btn (classe Bootstrap
+   portee par chaque gabarit). Le rembourrage y avait ete delegue aussi (commit 6c83c97), mais
+   nadia-prof a mesure sur le rendu reel que le "6px 12px" de .btn, applique seulement a ce bloc
+   et pas a .retour-accueil qui garde son propre rembourrage, inversait la hierarchie de saillance
+   sur l'ecran de retour : "Les jeux" (109 x 53 px) devenait plus grand que "Encore !" (101 x
+   44 px), alors que c'est ce dernier que l'enfant doit presser dix fois par partie
+   (squad/conformite/FICHE-bandit-manchot-additions-cp.md, refus du 2026-08-06). Le rembourrage
+   n'est pas une generosite de mise en page que Bootstrap peut fournir a l'identique : sur ces
+   boutons precisement, c'est ce qui fait gagner la saillance a l'action plutot qu'a la sortie, et
+   cette garantie ne se delegue pas plus qu'une couleur ou une taille de police (ADR-0014, point 6
+   de la decision). Il redevient donc une regle maison, comme avant ce commit. */
 .demarrer,
 .proposition,
 .recommencer,
@@ -80,6 +88,7 @@ h1 {
     justify-content: center;
     min-height: 2.75rem;
     min-width: 2.75rem;
+    padding: 0.75rem 1.25rem;
     font-weight: bold;
     color: var(--recreo-accent-texte);
     background-color: var(--recreo-accent);
