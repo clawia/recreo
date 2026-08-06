@@ -1,0 +1,13 @@
+/* Meme feuille irreprochable que bouton-sans-role. Le defaut est dans le gabarit : un role calcule
+   sortirait le bouton du controle sans qu'aucun attribut ne manque a la lecture. */
+.terminer {
+    font-size: 1.25rem;
+    min-height: 2.75rem;
+    padding: 0.6rem 1.1rem;
+}
+
+.continuer {
+    font-size: 1.25rem;
+    min-height: 2.75rem;
+    padding: 0.75rem 1.25rem;
+}

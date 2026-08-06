@@ -66,10 +66,16 @@ class TailleDesTextesEtBoutonsTest {
     private static final double PLANCHER_DE_LISIBILITE_REM = 1.25;
     private static final double CIBLE_TACTILE_REM = 2.75;
 
-    /** Les proprietes dont depend une garantie donnee par nadia-prof sur un bouton. */
-    private static final List<String> PROPRIETES_GARDEES = List.of("font-size", "min-height");
+    /**
+     * Les proprietes dont depend une garantie donnee par nadia-prof sur un bouton. padding entre par
+     * ADR-0017 : c'est la composante de boite par laquelle la hierarchie de saillance s'est inversee
+     * au lot Bootstrap, et une classe tierce en !important la defairait de la meme facon que les deux
+     * autres.
+     */
+    private static final List<String> PROPRIETES_GARDEES =
+            List.of("font-size", "min-height", "padding");
 
-    private static String lire(Path fichier) {
+    static String lire(Path fichier) {
         try {
             return Files.readString(fichier);
         } catch (IOException echec) {
@@ -154,7 +160,7 @@ class TailleDesTextesEtBoutonsTest {
      * valeur de la variable et ne voyait jamais la declaration reelle, !important compris. Ce n'est
      * pas un accident de fixture : c'est la convention de nommage de tous les composants Bootstrap.
      */
-    private static int debutDeDeclaration(String corps, String propriete) {
+    static int debutDeDeclaration(String corps, String propriete) {
         String etiquette = propriete + ":";
         int position = corps.indexOf(etiquette);
         while (position >= 0) {
@@ -204,14 +210,14 @@ class TailleDesTextesEtBoutonsTest {
         return Optional.of(Double.parseDouble(valeur.substring(0, valeur.length() - "rem".length())));
     }
 
-    private static String valeurDeclaree(String corps, int position, String propriete) {
+    static String valeurDeclaree(String corps, int position, String propriete) {
         int debut = position + propriete.length() + ":".length();
         int fin = corps.indexOf(';', debut);
         return corps.substring(debut, fin < 0 ? corps.length() : fin).strip();
     }
 
     /** ADR-0013 obligation 1 : les gabarits balayes viennent du repertoire, jamais d'une liste. */
-    private static List<Path> gabarits(Path racine) {
+    static List<Path> gabarits(Path racine) {
         Path repertoire = racine.resolve("templates");
         if (!Files.isDirectory(repertoire)) {
             return List.of();

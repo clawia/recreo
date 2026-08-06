@@ -1,0 +1,14 @@
+/* Un ecran que personne n'a inscrit nulle part, ou tout est declare en maison et ou chaque plancher
+   de TailleDesTextesEtBoutonsTest est tenu : la seule faute est le rapport entre les deux boutons.
+   La sortie est plus large que l'action, alors que les deux s'affichent ensemble. */
+.terminer {
+    font-size: 1.25rem;
+    min-height: 2.75rem;
+    padding: 0.75rem 2rem;
+}
+
+.continuer {
+    font-size: 1.25rem;
+    min-height: 2.75rem;
+    padding: 0.75rem 1.25rem;
+}
