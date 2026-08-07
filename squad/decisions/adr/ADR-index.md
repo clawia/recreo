@@ -22,6 +22,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0016](ADR-0016-le-contenu-porte-l-aide-que-la-mecanique-promet.md) | Faire porter par le contenu l'aide que la mecanique promet, et deriver le perimetre du garde-fou du repertoire de contenu | s05 | 2026-08-06 | Accepte, amende le 2026-08-07 |
 | [ADR-0017](ADR-0017-comparer-deux-boutons-dun-meme-ecran.md) | Comparer deux boutons d'un meme ecran, et dire ce que cette comparaison ne voit pas | s05 | 2026-08-06 | Accepte, amende le 2026-08-07 |
 | [ADR-0018](ADR-0018-un-defaut-ne-traverse-pas-le-serveur-en-silence.md) | Empecher qu'un defaut traverse le serveur en silence, et qu'il emprunte le canal reserve a l'attendu | s05 | 2026-08-06 | Accepte |
+| [ADR-0019](ADR-0019-un-cycle-lire-calculer-ecrire-sur-la-session-est-indivisible.md) | Rendre indivisible tout cycle lire-calculer-ecrire sur l'etat de partie, et cesser de demander un coup a une partie terminee | s05 | 2026-08-07 | Accepte |
 
 ## Amendements
 
@@ -100,8 +101,9 @@ bibliotheque CSS embarquee :
     du seul etat ecrit en dur ; et un garde-fou dont le nom promet une propriete generale sur un
     fichier nomme est supprime, pas retreci.
 
-Sprint 5 en ajoute trois, les deux premiers nes du cinquieme motif de refus de "Le bon son", le
-troisieme d'un defaut de production reproduit sur le jar :
+Sprint 5 en ajoute quatre : les deux premiers nes du cinquieme motif de refus de "Le bon son", le
+troisieme d'un defaut de production reproduit sur le jar, le quatrieme d'un symptome signale par
+l'utilisatrice en jouant :
 
 14. **ADR-0016** applique la doctrine d'ADR-0013 a une population que le depot n'avait encore jamais
     derivee, le **contenu**. La mecanique promet une aide depuis S3-2 ; un type de contenu entier
@@ -125,4 +127,14 @@ troisieme d'un defaut de production reproduit sur le jar :
     ecran, le journal distingue les deux causes. Il apporte la premiere preuve de morsure du depot
     sur un **type d'exception neuf**, qu'aucun gestionnaire ne nomme, et il repond par oui a une
     question ouverte : un garde-fou qui verifie qu'une exception imprevue laisse une trace est
-    atteignable, a condition de la faire lever pour de vrai au lieu de l'analyser statiquement.
+    atteignable, a condition de la faire lever pour de vrai au lieu de l'analyser statiquement ;
+17. **ADR-0019** nait du symptome que l'utilisatrice avait signale en jouant - "le score ne
+    s'incremente pas toujours" - reproduit par `yanis-qa` a 14 pertes sur 40. Deux defauts distincts
+    partagent le meme declencheur, le double appui, et le meme cycle lire-calculer-ecrire sur la
+    session HTTP : une course qui perd un point gagne, et un coup rejoue sur une partie terminee qui
+    rend l'ecran d'erreur. Sa conclusion qui commande tout le reste est que **corriger le premier
+    seul aggrave le second** - le verrou rend systematique l'ecran d'erreur qui n'etait
+    qu'occasionnel. Il apporte aussi la premiere extension de la doctrine d'ADR-0013 au
+    **parallelisme** : un test qui n'envoie qu'une requete a la fois a un perimetre qui exclut la
+    concurrence, et un test de course a une seule tentative serait vert deux fois sur trois sur un
+    depot casse, donc decoratif.

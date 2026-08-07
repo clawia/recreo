@@ -345,3 +345,54 @@ Ce que cette porte **ne dit pas**, et qu'il ne faut pas lui faire dire : rien ic
 le rendu vu par un enfant. La saillance rendue depend de la couleur, de la position et de la largeur
 des libelles, qu'aucune de mes regles ne mesure (`ADR-0017`, points 1 a 3 de sa section de limites).
 Le Done pedagogique appartient a `nadia-prof`, en jouant, et a elle seule.
+
+## 8. Complement du 2026-08-07 - ADR-0019, la course sur le score
+
+Ajoute apres la fusion du lot `yanis-qa` sur `round-two` (`40c2230`), sur routage de `sofia-sm`.
+
+**Ce que j'ai tranche.** La synchronisation du cycle lire-calculer-ecrire sur la session HTTP, et
+avec elle le coup rejoue sur une partie terminee. Les deux defauts partagent le declencheur (un
+double appui) et le lieu (le meme cycle), mais ce sont deux fautes : la seconde est atteignable avec
+des requetes strictement sequentielles. Le point qui a commande la correction est que **fermer la
+premiere seule aggrave la seconde** - le verrou rend systematique l'ecran d'erreur qui n'etait
+qu'occasionnel. Un seul geste, deux clauses. Motif complet dans `ADR-0019`.
+
+**Ce que je n'ai pas tranche.** Ce que l'enfant voit apres un double appui sur la derniere manche.
+Le depot tient, en attendant l'avis de `nadia-prof`, le comportement le moins surprenant : il revoit
+l'ecran de fin de partie que son premier appui venait de produire, au lieu de "Oups ! Le jeu a un
+souci.". Epingle par un test nomme pour qu'un changement d'avis se voie dans un diff.
+
+**Commande, et son resultat.** `mvn -B clean verify`, sous `JAVA_HOME` positionne sur un JDK 21
+(`java -version` : `21.0.10` ; le fichier de toolchains de l'utilisatrice porte un nom fautif que
+Maven ne lit jamais, deja releve par `yanis-qa`).
+
+**BUILD SUCCESS. 238 tests, 0 echec, 0 test ignore.**
+
+| Module | Tests | Ecart avec le rapport de `yanis-qa` |
+|---|---|---|
+| `recreo-domain` | 38 | inchange |
+| `recreo-application` | 7 | inchange |
+| `recreo-adapter-web` | 103 | +7 dont 5 de ce commit (3 `EtatDePartieEnSessionTest`, 1 `DeuxCoupsSimultanesTest`, 1 `PartieControllerTest`) |
+| `recreo-adapter-content` | 21 | inchange |
+| `recreo-bootstrap` (unitaires) | 66 | +5 de ce commit (2 regles ArchUnit, 2 tests de morsure, 1 test de contexte) |
+| `recreo-bootstrap` (integration, failsafe) | 3 | inchange |
+
+**Morsure verifiee par mutation, pas supposee**, avant que les tests ne soient gardes :
+
+| Mutation appliquee | Ce qui rougit |
+|---|---|
+| verrou remplace par un objet neuf a chaque appel | `EtatDePartieEnSessionTest.deuxCoupsSimultanesSurLaMemeSessionSontComptesTousLesDeux` (immediat, deterministe) et `DeuxCoupsSimultanesTest` (19 pertes sur 60 essais) |
+| clause du coup rejoue retiree | `EtatDePartieEnSessionTest.unCoupRecuSurUnePartieTermineeNeRejoueRienEtRendLEtatFinal` et `PartieControllerTest.unSecondAppuiSurLaDerniereMancheRevoitLEcranDeFinDePartie` |
+| contre-exemple `ControleurQuiToucheLaSessionContreExemple` | `AccesALEtatDeSessionTest.unSeulTypeToucheLaSessionHttp` |
+
+**Aucune de ces mutations n'a fait rougir un test anterieur a ce commit.** C'est la mesure du trou :
+avant `ADR-0019`, aucun automate du depot ne couvrait la concurrence sur une session.
+
+**Les autres routes ont-elles la meme forme ?** Non, et c'est verifie plutot qu'affirme. Apres ce
+commit, `jakarta.servlet.http.HttpSession` n'est nomme que par `EtatDePartieEnSession`, et la regle
+ArchUnit l'y maintient. Plus large : **le code de production des cinq modules ne contient aucun champ
+non final**. La session HTTP etait le seul etat mutable que deux requetes pouvaient modifier
+ensemble.
+
+**Aucune instance de l'application n'a tourne pendant ce passage**, et je n'en ai lance aucune : la
+reproduction et la preuve tiennent entierement dans la suite de tests.

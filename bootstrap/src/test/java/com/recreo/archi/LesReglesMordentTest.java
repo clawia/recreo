@@ -312,4 +312,32 @@ class LesReglesMordentTest {
                 .hasMessageContaining("GestionnaireTypeDuJdkContreExemple")
                 .hasMessageContaining("java.lang.IllegalStateException");
     }
+
+    /**
+     * ADR-0019 : la route neuve qui refait le cycle lire-calculer-ecrire a la main, dans sa forme la
+     * plus discrete - la session tiree de la requete, jamais declaree en parametre.
+     */
+    @Test
+    void unControleurQuiToucheLaSessionHttpEstRefuse() {
+        assertThatThrownBy(() -> AccesALEtatDeSessionTest.unSeulTypeToucheLaSessionHttp
+                .check(contreExemples("com.recreo.adapter.web.contreexemple")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining(
+                        "com.recreo.adapter.web.contreexemple.ControleurQuiToucheLaSessionContreExemple")
+                .hasMessageContaining("jakarta.servlet.http.HttpSession");
+    }
+
+    /**
+     * ADR-0019 : une regle d'existence n'a pas de classe fautive - la faute serait une absence, meme
+     * mecanisme que uneAbstractionCiteeQuiDisparaitEstRefusee (ADR-0005).
+     */
+    @Test
+    void unPorteurDEtatDeSessionAbsentEstRefuse() {
+        assertThatThrownBy(() -> AccesALEtatDeSessionTest.leSeulPorteurDEtatDeSessionExiste
+                .check(productionSansLeContrat("com.recreo.domain.mechanic")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining(
+                        "ADR-0019 : EtatDePartieEnSession existe et n'est visible que de son paquet")
+                .hasMessageContaining("failed to check any classes");
+    }
 }

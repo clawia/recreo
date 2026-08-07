@@ -9,7 +9,6 @@ import com.recreo.domain.mechanics.banditmanchot.Verdict;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,13 +25,15 @@ import org.springframework.web.bind.annotation.RequestParam;
  * pour distinguer, sur GET /, une reprise silencieuse (session HTTP encore valide) d'une partie
  * perdue (session HTTP disparue alors que le cookie, lui, survit). Le cookie est efface a chaque
  * fin de partie et sur le retour explicite a l'accueil.</p>
+ *
+ * <p>ADR-0019 : ce controleur ne touche jamais la session HTTP directement. Il passe par
+ * EtatDePartieEnSession, qui rend chaque lecture-calcul-ecriture indivisible pour une meme session.
+ * Un double appui envoie deux requetes qui se recouvrent, et le cycle non protege perdait un
+ * increment de score une fois sur trois.</p>
  */
 @Controller
 public class PartieController {
 
-    private static final String ATTRIBUT_JEU_ID = "recreo.jeuId";
-    private static final String ATTRIBUT_CONSIGNE = "recreo.consigne";
-    private static final String ATTRIBUT_SESSION = "recreo.session";
     private static final String COOKIE_PARTIE_EN_COURS = "recreo-partie-en-cours";
     private static final String MESSAGE_PARTIE_PERDUE = "Ta partie s'est arrêtée. Choisis un nouveau jeu !";
 
@@ -43,15 +44,12 @@ public class PartieController {
     }
 
     @GetMapping("/")
-    public String accueil(Model modele, HttpSession httpSession, HttpServletRequest requete,
-                           HttpServletResponse reponse) {
-        String jeuId = (String) httpSession.getAttribute(ATTRIBUT_JEU_ID);
-        BanditManchotSession session = (BanditManchotSession) httpSession.getAttribute(ATTRIBUT_SESSION);
+    public String accueil(Model modele, HttpServletRequest requete, HttpServletResponse reponse) {
+        EtatDePartie etat = new EtatDePartieEnSession(requete).lire();
 
-        if (jeuId != null && session != null && session.status() == SessionStatus.EN_COURS) {
-            String consigne = (String) httpSession.getAttribute(ATTRIBUT_CONSIGNE);
+        if (etat.portePartieEnCours()) {
             modele.addAttribute("reprise", true);
-            mancheModele(modele, jeuId, consigne, session);
+            mancheModele(modele, etat.jeuId(), etat.consigne(), etat.session());
             return "accueil";
         }
 
@@ -64,24 +62,20 @@ public class PartieController {
     }
 
     @PostMapping("/retour")
-    public String retour(HttpSession httpSession, HttpServletResponse reponse, Model modele) {
-        httpSession.removeAttribute(ATTRIBUT_JEU_ID);
-        httpSession.removeAttribute(ATTRIBUT_CONSIGNE);
-        httpSession.removeAttribute(ATTRIBUT_SESSION);
+    public String retour(HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
+        new EtatDePartieEnSession(requete).abandonner();
         effacerMarqueurDePartie(reponse);
         modele.addAttribute("jeux", partie.jeuxDisponibles());
         return "accueil :: zoneAccueil";
     }
 
     @PostMapping("/parties/{jeuId}")
-    public String demarrer(@PathVariable String jeuId, HttpSession httpSession, HttpServletResponse reponse,
-                            Model modele) {
+    public String demarrer(@PathVariable String jeuId, HttpServletRequest requete,
+                            HttpServletResponse reponse, Model modele) {
         GameDefinition jeu = jeuOuEchec(jeuId);
         BanditManchotSession session = (BanditManchotSession) partie.demarrer(jeuId);
 
-        httpSession.setAttribute(ATTRIBUT_JEU_ID, jeuId);
-        httpSession.setAttribute(ATTRIBUT_CONSIGNE, jeu.consigne());
-        httpSession.setAttribute(ATTRIBUT_SESSION, session);
+        new EtatDePartieEnSession(requete).demarrer(jeuId, jeu.consigne(), session);
         synchroniserMarqueurDePartie(session, reponse);
 
         return mancheModele(modele, jeuId, jeu.consigne(), session);
@@ -89,12 +83,10 @@ public class PartieController {
 
     @PostMapping("/parties/{jeuId}/coups")
     public String jouer(@PathVariable String jeuId, @RequestParam String propositionChoisie,
-                         HttpSession httpSession, HttpServletResponse reponse, Model modele) {
-        BanditManchotSession sessionActuelle = sessionEnCours(httpSession, jeuId);
-
-        BanditManchotSession suivante = (BanditManchotSession) partie.jouer(
-                jeuId, sessionActuelle, new BanditManchotMove(propositionChoisie));
-        httpSession.setAttribute(ATTRIBUT_SESSION, suivante);
+                         HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
+        BanditManchotSession suivante = new EtatDePartieEnSession(requete).jouer(jeuId,
+                actuelle -> (BanditManchotSession) partie.jouer(
+                        jeuId, actuelle, new BanditManchotMove(propositionChoisie)));
         synchroniserMarqueurDePartie(suivante, reponse);
 
         Verdict verdict = suivante.dernierVerdict().orElseThrow();
@@ -107,10 +99,12 @@ public class PartieController {
     }
 
     @GetMapping("/parties/{jeuId}/manche")
-    public String continuer(@PathVariable String jeuId, HttpSession httpSession, Model modele) {
-        BanditManchotSession session = sessionEnCours(httpSession, jeuId);
-        String consigne = (String) httpSession.getAttribute(ATTRIBUT_CONSIGNE);
-        return mancheModele(modele, jeuId, consigne, session);
+    public String continuer(@PathVariable String jeuId, HttpServletRequest requete, Model modele) {
+        EtatDePartie etat = new EtatDePartieEnSession(requete).lire();
+        if (!etat.porte(jeuId)) {
+            throw new PartieIndisponible("aucune partie en cours pour le jeu " + jeuId);
+        }
+        return mancheModele(modele, jeuId, etat.consigne(), etat.session());
     }
 
     private String mancheModele(Model modele, String jeuId, String consigne, BanditManchotSession session) {
@@ -128,13 +122,6 @@ public class PartieController {
                 .filter(jeu -> jeu.id().equals(jeuId))
                 .findFirst()
                 .orElseThrow(() -> new PartieIndisponible("jeu inconnu : " + jeuId));
-    }
-
-    private BanditManchotSession sessionEnCours(HttpSession httpSession, String jeuId) {
-        if (!jeuId.equals(httpSession.getAttribute(ATTRIBUT_JEU_ID))) {
-            throw new PartieIndisponible("aucune partie en cours pour le jeu " + jeuId);
-        }
-        return (BanditManchotSession) httpSession.getAttribute(ATTRIBUT_SESSION);
     }
 
     private static boolean partieSignaleeEnCours(HttpServletRequest requete) {

@@ -205,6 +205,32 @@ class PartieControllerTest {
     }
 
     /**
+     * ADR-0019 : le second appui d'un double appui tombe sur une partie deja terminee. Avant cette
+     * decision, il rendait "Oups ! Le jeu a un souci." a l'enfant. Il revoit desormais l'ecran de fin
+     * de partie que son premier appui venait de produire, score compris. Ce que l'enfant doit voir
+     * dans ce cas est une question pedagogique, adressee a nadia-prof ; en attendant son avis, c'est
+     * le comportement le moins surprenant, et le seul qui ne perde rien.
+     */
+    @Test
+    void unSecondAppuiSurLaDerniereMancheRevoitLEcranDeFinDePartie() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                .session(session).param("propositionChoisie", "1"));
+        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                .session(session).param("propositionChoisie", "2"));
+
+        String html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                        .session(session).param("propositionChoisie", "2"))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.text()).doesNotContain("Oups ! Le jeu a un souci.");
+        assertThat(fragment.select(".fin-de-partie").text()).isEqualTo("C'est fini !");
+        assertThat(fragment.select(".score").text()).isEqualTo("Score : 2");
+    }
+
+    /**
      * S3-6 : sur l'ecran de fin de partie, la sortie est la seule action possible, elle doit donc
      * etre le bouton plein (.sortie-pleine), pas le contour discret de l'ecran de jeu.
      */
