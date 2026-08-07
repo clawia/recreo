@@ -86,7 +86,7 @@ items:
   - enonce: "J'ai rangé ___ affaires avant de partir à l'école."
     bonneReponse: "mes"
     distracteurs: ["mais"]
-    indice: "Remplace par 'les miennes' : ce sont les affaires à moi, alors c'est 'mes'."
+    indice: "Remplace par 'tes' : 'J'ai rangé tes affaires' fonctionne, alors c'est 'mes'."
   - enonce: "Il reste ___ de pain dans le placard de la cuisine."
     bonneReponse: "peu"
     distracteurs: ["peut"]
@@ -95,3 +95,11 @@ items:
     bonneReponse: "peut"
     distracteurs: ["peu"]
     indice: "Remplace par 'pouvait' : 'il pouvait encore pleuvoir' fonctionne, alors c'est 'peut'."
+  - enonce: "Tom cherchait sa gomme depuis le début du cours, et son voisin ___ enfin repérée sous la table."
+    bonneReponse: "l'a"
+    distracteurs: ["la"]
+    indice: "Remplace par 'l'avait' : 'son voisin l'avait enfin repérée sous la table' fonctionne, alors c'est 'l'a'."
+  - enonce: "Après cette longue randonnée en montagne, le vieux chien ne ___ plus vraiment courir comme avant."
+    bonneReponse: "peut"
+    distracteurs: ["peu"]
+    indice: "Remplace par 'pouvait' : 'le vieux chien ne pouvait plus vraiment courir comme avant' fonctionne, alors c'est 'peut'."

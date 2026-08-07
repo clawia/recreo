@@ -50,6 +50,17 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * <p>S5-7 : le paquet compte davantage d'items que de manches par partie, et deux parties jouees
  * avec des graines distinctes ne presentent pas exactement les memes phrases.</p>
+ *
+ * <p>S6-3 (DEC-0013) : ouverture d'un troisieme paquet, "cm1-conjugaison-present" (present de
+ * l'indicatif uniquement), sans qu'aucune ligne de domain/mechanic ni domain/mechanics n'ait ete
+ * touchee. Douze items, deux par personne grammaticale, chaque distracteur etant une autre forme
+ * conjuguee au present du meme verbe que la bonne reponse.</p>
+ *
+ * <p>S6-4 : deux items neufs ajoutes a "cm1-homophones", dans les familles la/l'a et peu/peut, dont
+ * le mot decisif n'est pas voisin du trou (condition chiffree par nadia-prof le 2026-08-07, section
+ * 3, point 1). S6-5 : l'indice de l'item dont la bonne reponse est "mes" est corrige pour montrer
+ * une phrase de substitution qui est elle-meme du francais correct (meme verdict, section 3, point
+ * 2).</p>
  */
 class PaquetsFrancaisS04Test {
 
@@ -77,6 +88,39 @@ class PaquetsFrancaisS04Test {
     /** S5-3, motif 2 du refus : les sons s'ecrivent avec leurs lettres, sans crochet d'adulte. */
     private static final Set<String> SONS_ATTENDUS = Set.of(
             "an", "on", "in", "ou", "oi", "ch");
+
+    /**
+     * S6-3 : chaque forme conjuguee du paquet "cm1-conjugaison-present" pointe vers le verbe
+     * qu'elle conjugue au present. Un distracteur doit pointer vers le meme verbe que la bonne
+     * reponse de son item - jamais un verbe different, jamais une forme d'un autre temps.
+     */
+    private static final Map<String, String> VERBE_DE_LA_FORME = Map.ofEntries(
+            Map.entry("vais", "aller"), Map.entry("vas", "aller"), Map.entry("va", "aller"),
+            Map.entry("allons", "aller"), Map.entry("allez", "aller"), Map.entry("vont", "aller"),
+            Map.entry("lis", "lire"), Map.entry("lit", "lire"), Map.entry("lisons", "lire"),
+            Map.entry("lisez", "lire"), Map.entry("lisent", "lire"),
+            Map.entry("mange", "manger"), Map.entry("manges", "manger"), Map.entry("mangeons", "manger"),
+            Map.entry("mangez", "manger"), Map.entry("mangent", "manger"),
+            Map.entry("fais", "faire"), Map.entry("fait", "faire"), Map.entry("faisons", "faire"),
+            Map.entry("faites", "faire"), Map.entry("font", "faire"),
+            Map.entry("joue", "jouer"), Map.entry("joues", "jouer"), Map.entry("jouons", "jouer"),
+            Map.entry("jouez", "jouer"), Map.entry("jouent", "jouer"),
+            Map.entry("dessine", "dessiner"), Map.entry("dessines", "dessiner"),
+            Map.entry("dessinons", "dessiner"), Map.entry("dessinez", "dessiner"),
+            Map.entry("dessinent", "dessiner"),
+            Map.entry("cherche", "chercher"), Map.entry("cherches", "chercher"),
+            Map.entry("cherchons", "chercher"), Map.entry("cherchez", "chercher"),
+            Map.entry("cherchent", "chercher"),
+            Map.entry("finis", "finir"), Map.entry("finit", "finir"), Map.entry("finissons", "finir"),
+            Map.entry("finissez", "finir"), Map.entry("finissent", "finir"),
+            Map.entry("range", "ranger"), Map.entry("ranges", "ranger"), Map.entry("rangeons", "ranger"),
+            Map.entry("rangez", "ranger"), Map.entry("rangent", "ranger"),
+            Map.entry("cours", "courir"), Map.entry("court", "courir"), Map.entry("courons", "courir"),
+            Map.entry("courez", "courir"), Map.entry("courent", "courir"),
+            Map.entry("prends", "prendre"), Map.entry("prend", "prendre"), Map.entry("prenons", "prendre"),
+            Map.entry("prenez", "prendre"), Map.entry("prennent", "prendre"),
+            Map.entry("chante", "chanter"), Map.entry("chantes", "chanter"), Map.entry("chantons", "chanter"),
+            Map.entry("chantez", "chanter"), Map.entry("chantent", "chanter"));
 
     @Test
     void leBonSonCpNePresenteQueDesSonsConnusEtCouvreLesTroisDigraphesCitesParLeReferentiel() {
@@ -239,6 +283,162 @@ class PaquetsFrancaisS04Test {
                 .as("deux parties jouees avec des graines distinctes ne presentent pas exactement"
                         + " les memes phrases dans le meme ordre")
                 .isNotEqualTo(secondePartie);
+    }
+
+    /**
+     * S6-4 : deux items neufs dont le mot decisif n'est pas voisin du trou, dans les familles
+     * la/l'a et peu/peut (condition chiffree par nadia-prof le 2026-08-07, section 3, point 1).
+     * S6-5 : l'indice de l'item dont la bonne reponse est "mes" est corrige pour montrer une phrase
+     * de substitution qui est elle-meme du francais correct, sur le modele de l'indice de l'item
+     * "son" (meme verdict, section 3, point 2). Les treize autres items de ce lot (herites de S5-6)
+     * restent inchanges : ce test les reprend tous pour le prouver, pas seulement celui qui bouge.
+     */
+    @Test
+    void homophonesCm1PorteLesQuatorzeDerniersItemsAvecLIndiceDeMesCorrige() {
+        List<Question> items = tousLesItems(jeu("bandit-manchot-homophones-cm1").contenu());
+
+        List<Question> quatorzeDerniersItemsAttendus = List.of(
+                new Question(new ItemId("item-10"), "Pose ton cartable ___, à côté du mien.", "là", List.of("la"),
+                        Optional.of("Remplace par 'à cet endroit' : 'Pose ton cartable à cet endroit' fonctionne, alors c'est 'là'.")),
+                new Question(new ItemId("item-11"), "Léa cherche ___ règle dans sa trousse.", "la", List.of("là"),
+                        Optional.of("Le mot qui suit le trou est un nom ('règle') : il faut un déterminant, 'la'.")),
+                new Question(new ItemId("item-12"), "Léa a perdu son livre depuis lundi, mais elle ___ enfin retrouvé ce matin.", "l'a", List.of("la"),
+                        Optional.of("Remplace par 'l'avait' : 'elle l'avait enfin retrouvé' fonctionne, alors c'est 'l'a'.")),
+                new Question(new ItemId("item-13"), "Il ___ range soigneusement dans son cartable.", "la", List.of("l'a"),
+                        Optional.of("Le mot qui suit le trou est un verbe au présent ('range'), pas un participe : c'est 'la'.")),
+                new Question(new ItemId("item-14"), "___ cahier appartient à mon petit frère.", "ce", List.of("se"),
+                        Optional.of("Le mot qui suit le trou est un nom ('cahier') : il faut un déterminant, 'ce'.")),
+                new Question(new ItemId("item-15"), "Après la récréation, tous les élèves ___ rangent devant la porte de la classe.", "se", List.of("ce"),
+                        Optional.of("Le mot qui suit le trou est un verbe conjugué ('rangent') : il faut un pronom, 'se'.")),
+                new Question(new ItemId("item-16"), "Regarde ___ oiseaux là-bas, sur la branche !", "ces", List.of("ses"),
+                        Optional.of("'là-bas' montre ce qu'on regarde : c'est 'ces', comme quand on désigne quelque chose.")),
+                new Question(new ItemId("item-17"), "Léa range son cahier et ___ crayons avant de partir.", "ses", List.of("ces"),
+                        Optional.of("Léa range son cahier à elle, et donc ses crayons à elle aussi : c'est 'ses'.")),
+                new Question(new ItemId("item-18"), "Il fait très froid ce matin, ___ le soleil brille quand même.", "mais", List.of("mes"),
+                        Optional.of("Remplace par 'pourtant' : 'il fait froid, pourtant le soleil brille' fonctionne, alors c'est 'mais'.")),
+                new Question(new ItemId("item-19"), "J'ai rangé ___ affaires avant de partir à l'école.", "mes", List.of("mais"),
+                        Optional.of("Remplace par 'tes' : 'J'ai rangé tes affaires' fonctionne, alors c'est 'mes'.")),
+                new Question(new ItemId("item-20"), "Il reste ___ de pain dans le placard de la cuisine.", "peu", List.of("peut"),
+                        Optional.of("Remplace par 'un peu' : 'il reste un peu de pain' fonctionne, alors c'est 'peu'.")),
+                new Question(new ItemId("item-21"), "Même si le ciel est bien dégagé ce matin, il ___ encore pleuvoir avant le soir.", "peut", List.of("peu"),
+                        Optional.of("Remplace par 'pouvait' : 'il pouvait encore pleuvoir' fonctionne, alors c'est 'peut'.")),
+                new Question(new ItemId("item-22"), "Tom cherchait sa gomme depuis le début du cours, et son voisin ___ enfin repérée sous la table.", "l'a", List.of("la"),
+                        Optional.of("Remplace par 'l'avait' : 'son voisin l'avait enfin repérée sous la table' fonctionne, alors c'est 'l'a'.")),
+                new Question(new ItemId("item-23"), "Après cette longue randonnée en montagne, le vieux chien ne ___ plus vraiment courir comme avant.", "peut", List.of("peu"),
+                        Optional.of("Remplace par 'pouvait' : 'le vieux chien ne pouvait plus vraiment courir comme avant' fonctionne, alors c'est 'peut'.")));
+
+        assertThat(items)
+                .as("S6-4 : deux items neufs ajoutes en fin de paquet ; S6-5 : seul l'indice de 'mes'"
+                        + " change, les treize autres items de ce lot restent inchanges")
+                .containsAll(quatorzeDerniersItemsAttendus);
+    }
+
+    /**
+     * S6-3, deuxieme critere : chaque distracteur est une autre forme conjuguee au present du meme
+     * verbe que la bonne reponse - jamais un verbe different, jamais une forme d'un autre temps.
+     */
+    @Test
+    void conjugaisonPresentCm1NePresenteQueDesFormesDuMemeVerbeAuPresent() {
+        List<Question> items = tousLesItems(jeu("bandit-manchot-conjugaison-present-cm1").contenu());
+
+        for (Question item : items) {
+            String bonneReponse = item.bonneReponse().toLowerCase();
+            String verbe = VERBE_DE_LA_FORME.get(bonneReponse);
+            assertThat(verbe)
+                    .as("la phrase '%s' porte une bonne reponse dont le verbe est connu", item.enonce())
+                    .isNotNull();
+
+            assertThat(item.distracteurs())
+                    .as("la phrase '%s' porte au moins un distracteur", item.enonce())
+                    .isNotEmpty();
+            for (String distracteur : item.distracteurs()) {
+                assertThat(distracteur.equalsIgnoreCase(bonneReponse))
+                        .as("le distracteur '%s' de '%s' n'est pas la bonne reponse elle-meme",
+                                distracteur, item.enonce())
+                        .isFalse();
+                assertThat(VERBE_DE_LA_FORME.get(distracteur.toLowerCase()))
+                        .as("le distracteur '%s' de '%s' est une autre forme du meme verbe '%s' au"
+                                        + " present, jamais un verbe different ni une forme d'un autre temps",
+                                distracteur, item.enonce(), verbe)
+                        .isEqualTo(verbe);
+            }
+        }
+    }
+
+    /**
+     * S6-3, troisieme critere : chacune des six personnes grammaticales est representee par au
+     * moins un item du paquet.
+     */
+    @Test
+    void conjugaisonPresentCm1RepresenteChacuneDesSixPersonnesGrammaticales() {
+        List<Question> items = tousLesItems(jeu("bandit-manchot-conjugaison-present-cm1").contenu());
+
+        Set<String> personnesRepresentees = new HashSet<>();
+        for (Question item : items) {
+            personnesRepresentees.add(personneGrammaticale(item.enonce()));
+        }
+
+        assertThat(personnesRepresentees)
+                .as("S6-3 : chacune des six personnes grammaticales est representee par au moins"
+                        + " un item")
+                .containsExactlyInAnyOrder("je", "tu", "il/elle", "nous", "vous", "ils/elles");
+    }
+
+    /**
+     * S6-3, quatrieme critere : le paquet compte plus d'items que de manches par partie (le paquet
+     * repris n'en comptait que six, exactement le minimum, ce qui aurait termine la partie avant
+     * l'heure sans qu'aucun garde-fou ne le voie).
+     */
+    @Test
+    void conjugaisonPresentCm1CompteDavantageDItemsQueDeManchesParPartie() {
+        GameDefinition jeu = jeu("bandit-manchot-conjugaison-present-cm1");
+        List<Question> items = tousLesItems(jeu.contenu());
+
+        assertThat(items)
+                .as("S6-3 : le paquet compte davantage d'items que de manches par partie (%d), sinon"
+                        + " une partie presenterait toujours l'integralite du paquet", jeu.nombreDeManches())
+                .hasSizeGreaterThan(jeu.nombreDeManches());
+    }
+
+    /** S6-3, sixieme critere : 20 manches jouees a la suite ne presentent pas toutes la meme phrase. */
+    @Test
+    void conjugaisonPresentCm1VarieSurVingtManchesConsecutives() {
+        assertThat(enoncesSurVingtTirages(jeu("bandit-manchot-conjugaison-present-cm1").contenu()))
+                .as("variete minimale sur 20 manches")
+                .hasSizeGreaterThan(1);
+    }
+
+    /**
+     * Determine la personne grammaticale d'un item a partir du pronom sujet ecrit dans sa phrase.
+     * Leve une exception si aucun des six pronoms attendus n'est trouve, plutot que de rendre une
+     * valeur qui masquerait une phrase mal formee.
+     */
+    private static String personneGrammaticale(String enonce) {
+        for (String mot : enonce.toLowerCase().split("[^a-zàâäéèêëïîôöùûüçœ]+")) {
+            switch (mot) {
+                case "je" -> {
+                    return "je";
+                }
+                case "tu" -> {
+                    return "tu";
+                }
+                case "il", "elle" -> {
+                    return "il/elle";
+                }
+                case "nous" -> {
+                    return "nous";
+                }
+                case "vous" -> {
+                    return "vous";
+                }
+                case "ils", "elles" -> {
+                    return "ils/elles";
+                }
+                default -> {
+                }
+            }
+        }
+        throw new IllegalStateException("aucun sujet reconnu dans : " + enonce);
     }
 
     /** Joue une partie complete de bandit manchot et rend les enonces presentes, dans leur ordre. */
