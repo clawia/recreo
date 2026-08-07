@@ -5,7 +5,7 @@ descripteur:
   matiere: "Francais"
   niveau: "CM1"
   domaine: "Orthographe et grammaire"
-  competence: "Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/a...)"
+  competence: "Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...)"
 items:
   - enonce: "Il ___ mangé une pomme."
     bonneReponse: "a"

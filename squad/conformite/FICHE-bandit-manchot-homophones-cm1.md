@@ -12,7 +12,7 @@
 
 | Matiere | Niveau | Domaine | Competence | Reference au referentiel |
 |---|---|---|---|---|
-| francais | CM1 (cycle 3) | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/a...) | `squad/programme/francais/competences-cm1.md` |
+| francais | CM1 (cycle 3) | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | `squad/programme/francais/competences-cm1.md` |
 
 ## Criteres pedagogiques attendus - camille-po
 
