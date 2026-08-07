@@ -234,6 +234,16 @@ body:has(.ecran-de-jeu) .lien-accueil {
     margin: 1rem 0;
 }
 
+/* ADR-0024, S6-7 : le texte qui nomme la variation graphemique d'un item, sur l'ecran de retour.
+   Meme plancher de lisibilite que .score et .indice (nadia-prof, planchers non negociables) :
+   texte lu par un enfant de CP en train de dechiffrer une exception a une regle qu'il vient
+   d'apprendre. */
+.explication {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    margin: 0.5rem 0;
+}
+
 /* Bandeaux d'attention (indice, reprise) : un cadre complet, pas seulement un liseret, pour
    rester visibles sans distinguer les couleurs (reserve de nadia-prof sur le faible ecart de
    luminance entre le fond ambre et le fond de page). */

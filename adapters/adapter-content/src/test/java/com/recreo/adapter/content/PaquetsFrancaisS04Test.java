@@ -90,9 +90,14 @@ class PaquetsFrancaisS04Test {
             Map.entry("mais", Set.of("mes")), Map.entry("mes", Set.of("mais")),
             Map.entry("peu", Set.of("peut")), Map.entry("peut", Set.of("peu")));
 
-    /** S5-3, motif 2 du refus : les sons s'ecrivent avec leurs lettres, sans crochet d'adulte. */
-    private static final Set<String> SONS_ATTENDUS = Set.of(
-            "an", "on", "in", "ou", "oi", "ch");
+    /**
+     * S5-3, motif 2 du refus : les sons s'ecrivent avec leurs lettres, sans crochet d'adulte.
+     * S6-6/S6-7 : resserre a trois voyelles nasales, seule composition tranchee par nadia-prof
+     * (avis de conception du 2026-08-06, point 3) - "ou", "oi" et "ch" sortent du paquet, faute de
+     * graphie alternative courante au niveau CP qui les rendrait travaillables sans phoneme audio.
+     * La liste reste ecrite plutot que supprimee : elle continue de refuser un quatrieme son.
+     */
+    private static final Set<String> SONS_ATTENDUS = Set.of("an", "on", "in");
 
     /**
      * S6-3 : chaque forme conjuguee du paquet "cm1-conjugaison-present" pointe vers le verbe
@@ -127,8 +132,13 @@ class PaquetsFrancaisS04Test {
             Map.entry("chante", "chanter"), Map.entry("chantes", "chanter"), Map.entry("chantons", "chanter"),
             Map.entry("chantez", "chanter"), Map.entry("chantent", "chanter"));
 
+    /**
+     * S6-6/S6-7 : recomposition a trois voyelles nasales (avis de conception du 2026-08-06, point
+     * 3). Remplace l'ancienne couverture a six sons ("ch", "ou", "on", "an", "in", "oi") : ces
+     * trois-la sortent du paquet, la propriete qui reste est qu'aucun quatrieme son n'entre.
+     */
     @Test
-    void leBonSonCpNePresenteQueDesSonsConnusEtCouvreLesTroisDigraphesCitesParLeReferentiel() {
+    void leBonSonCpNePresenteQueLesTroisNasalesAttendues() {
         List<Question> items = tousLesItems(paquet("cp-le-bon-son"));
 
         Set<String> sonsCouverts = new HashSet<>();
@@ -148,9 +158,8 @@ class PaquetsFrancaisS04Test {
         }
 
         assertThat(sonsCouverts)
-                .as("ADR-0007, S4-2 : les trois digraphes cites en exemple par le referentiel,"
-                        + " en plus des sons deja presents dans la matiere premiere")
-                .contains("ch", "ou", "on", "an", "in", "oi");
+                .as("S6-6 : les trois voyelles nasales tranchees par nadia-prof, ni plus ni moins")
+                .containsExactlyInAnyOrder("an", "on", "in");
     }
 
     /**
