@@ -18,3 +18,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-conjugaison-present
     nombreDeManches: 10
+  - id: bandit-manchot-le-bon-son-cp
+    titre: "Le bon son"
+    consigne: "Dis le mot. Quel son entends-tu ?"
+    mecanique: bandit-manchot
+    paquet: cp-le-bon-son
+    nombreDeManches: 10
