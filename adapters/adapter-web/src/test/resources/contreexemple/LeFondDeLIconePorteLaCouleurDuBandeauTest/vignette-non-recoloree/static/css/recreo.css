@@ -1,0 +1,11 @@
+/* La feuille est correcte : le bandeau pointe bien vers la variable neuve. C'est favicon.ico, dans
+   ce jeu fautif, qui n'a pas ete recolore - il porte encore l'ancien accent dans ses trois
+   vignettes. */
+:root {
+    --recreo-accent: #2e6f9e;
+    --recreo-entete-fond: #1d4b6b;
+}
+
+.entete {
+    background-color: var(--recreo-entete-fond);
+}

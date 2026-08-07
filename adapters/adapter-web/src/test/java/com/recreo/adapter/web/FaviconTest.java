@@ -81,8 +81,23 @@ class FaviconTest {
                 .isLessThanOrEqualTo(16);
     }
 
+    /**
+     * Les tailles carrees declarees par l'en-tete ICONDIR, dans l'ordre du fichier. Partage avec
+     * LeFondDeLIconePorteLaCouleurDuBandeauTest : le perimetre des vignettes a controler se derive
+     * du fichier lui-meme, jamais d'une liste ecrite dans un test (ADR-0013).
+     */
+    static java.util.List<Integer> taillesDeclarees(byte[] ico) {
+        java.util.List<Integer> tailles = new java.util.ArrayList<>();
+        int nombreEntrees = entierPetitBoutienSurDeuxOctets(ico, 4);
+        for (int i = 0; i < nombreEntrees; i++) {
+            int base = 6 + i * 16;
+            tailles.add(normaliserTailleIco(Byte.toUnsignedInt(ico[base])));
+        }
+        return tailles;
+    }
+
     /** Lit l'entree carree de la taille demandee dans un fichier .ico (format Microsoft ICONDIR). */
-    private static BufferedImage entreeIco(byte[] ico, int taille) throws IOException {
+    static BufferedImage entreeIco(byte[] ico, int taille) throws IOException {
         int nombreEntrees = entierPetitBoutienSurDeuxOctets(ico, 4);
         for (int i = 0; i < nombreEntrees; i++) {
             int base = 6 + i * 16;

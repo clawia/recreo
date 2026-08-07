@@ -7,6 +7,13 @@
     --recreo-accent-texte: #ffffff;
     --recreo-attention-fond: #fff4e5;
     --recreo-attention-bordure: #b45309;
+    /* S6-10 : nuance distincte de --recreo-accent, reservee au bandeau d'en-tete (arbitrage de
+       nadia-prof du 2026-08-07, squad/conformite/FICHE-bandit-manchot-additions-cp.md) - le
+       bandeau ne doit plus etre le meme aplat que les boutons d'action. Plancher : plus sombre
+       coute le crayon de favicon.ico, dont le contour et la mine tombent deja sous 3:1 sur cette
+       valeur. Le fond opaque des trois vignettes de favicon.ico est recolore a l'identique
+       (LeFondDeLIconePorteLaCouleurDuBandeauTest). */
+    --recreo-entete-fond: #1d4b6b;
 }
 
 /* Base fiable pour les cibles tactiles : min-height/min-width incluent le rembourrage,
@@ -40,7 +47,7 @@ h1 {
 /* S6-1 : bandeau d'identite permanent, hors de la zone #jeu remplacee par htmx (DEC-0012) - un
    frere de #jeu dans le gabarit, jamais efface ni recree quand le jeu change d'ecran. */
 .entete {
-    background-color: var(--recreo-accent);
+    background-color: var(--recreo-entete-fond);
     padding: 1rem 0;
 }
 
