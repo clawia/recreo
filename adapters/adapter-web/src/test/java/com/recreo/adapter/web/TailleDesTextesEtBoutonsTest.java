@@ -459,7 +459,8 @@ class TailleDesTextesEtBoutonsTest {
         assertThat(consigne).isEqualTo(PLANCHER_DE_LISIBILITE_REM);
 
         for (String selecteur : new String[] {
-                ".score", ".indice", ".fin-de-partie", ".erreur", ".pas-de-jeu", ".message-reprise"
+                ".score", ".indice", ".fin-de-partie", ".erreur", ".pas-de-jeu", ".message-reprise",
+                ".explication"
         }) {
             assertThat(tailleEnRem(blocs, selecteur))
                     .as("%s ne doit jamais passer sous la consigne (%.2frem)", selecteur, consigne)

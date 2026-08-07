@@ -10,84 +10,81 @@ items:
   - enonce: "MAMAN"
     bonneReponse: "an"
     distracteurs: ["on", "in"]
-    indice: "Le son s'entend aussi dans le mot 'grand'."
-  - enonce: "DENT"
-    bonneReponse: "an"
-    distracteurs: ["oi", "ou"]
-    indice: "Le son s'entend aussi dans le mot 'temps'."
+    graphie: "an"
+    indice: "On entend aussi ce son dans le mot grand."
   - enonce: "MANTEAU"
     bonneReponse: "an"
-    distracteurs: ["oi", "ou"]
-    indice: "Le son s'entend aussi dans le mot 'maman'."
+    distracteurs: ["on", "in"]
+    graphie: "an"
+    indice: "On entend aussi ce son dans le mot maman."
+  - enonce: "BANC"
+    bonneReponse: "an"
+    distracteurs: ["on", "in"]
+    graphie: "an"
+    indice: "On entend aussi ce son dans le mot manteau."
+  - enonce: "DENT"
+    bonneReponse: "an"
+    distracteurs: ["on", "in"]
+    graphie: "en"
+    indice: "Regarde : les lettres e et n font ce son."
+    explication: "Dans DENT, ce sont les lettres e et n qui font le son an."
+  - enonce: "VENT"
+    bonneReponse: "an"
+    distracteurs: ["on", "in"]
+    graphie: "en"
+    indice: "Regarde : les lettres e et n font ce son."
+    explication: "Dans VENT, ce sont les lettres e et n qui font le son an."
   - enonce: "PONT"
     bonneReponse: "on"
-    distracteurs: ["an", "ou"]
-    indice: "Le son s'entend aussi dans le mot 'bonbon'."
+    distracteurs: ["an", "in"]
+    graphie: "on"
+    indice: "On entend aussi ce son dans le mot bonbon."
   - enonce: "BALLON"
     bonneReponse: "on"
-    distracteurs: ["in", "oi"]
-    indice: "Le son s'entend aussi dans le mot 'melon'."
+    distracteurs: ["an", "in"]
+    graphie: "on"
+    indice: "On entend aussi ce son dans le mot pont."
   - enonce: "MONTRE"
     bonneReponse: "on"
-    distracteurs: ["an", "oi"]
-    indice: "Le son s'entend aussi dans le mot 'pont'."
+    distracteurs: ["an", "in"]
+    graphie: "on"
+    indice: "On entend aussi ce son dans le mot ballon."
+  - enonce: "OMBRE"
+    bonneReponse: "on"
+    distracteurs: ["an", "in"]
+    graphie: "om"
+    indice: "Regarde : les lettres o et m font ce son."
+    explication: "Dans OMBRE, ce sont les lettres o et m qui font le son on."
+  - enonce: "NOMBRE"
+    bonneReponse: "on"
+    distracteurs: ["an", "in"]
+    graphie: "om"
+    indice: "Regarde : les lettres o et m font ce son."
+    explication: "Dans NOMBRE, ce sont les lettres o et m qui font le son on."
   - enonce: "LAPIN"
     bonneReponse: "in"
     distracteurs: ["an", "on"]
-    indice: "Le son s'entend aussi dans le mot 'jardin'."
-  - enonce: "JARDIN"
-    bonneReponse: "in"
-    distracteurs: ["ou", "oi"]
-    indice: "Le son s'entend aussi dans le mot 'lapin'."
+    graphie: "in"
+    indice: "On entend aussi ce son dans le mot jardin."
   - enonce: "SAPIN"
     bonneReponse: "in"
-    distracteurs: ["on", "ou"]
-    indice: "Le son s'entend aussi dans le mot 'matin'."
-  - enonce: "PINCEAU"
+    distracteurs: ["an", "on"]
+    graphie: "in"
+    indice: "On entend aussi ce son dans le mot lapin."
+  - enonce: "JARDIN"
     bonneReponse: "in"
-    distracteurs: ["ou", "oi"]
-    indice: "Le son s'entend au début du mot, comme dans 'lapin'."
-  - enonce: "LOUP"
-    bonneReponse: "ou"
-    distracteurs: ["on", "oi"]
-    indice: "Le son s'entend aussi dans le mot 'genou'."
-  - enonce: "GENOU"
-    bonneReponse: "ou"
-    distracteurs: ["oi", "an"]
-    indice: "Le son s'entend aussi dans le mot 'loup'."
-  - enonce: "SOURIS"
-    bonneReponse: "ou"
-    distracteurs: ["on", "oi"]
-    indice: "Le son s'entend au début du mot, comme dans 'loup'."
-  - enonce: "POULE"
-    bonneReponse: "ou"
-    distracteurs: ["in", "an"]
-    indice: "Le son s'entend aussi dans le mot 'roue'."
-  - enonce: "ROI"
-    bonneReponse: "oi"
-    distracteurs: ["ou", "on"]
-    indice: "Le son s'entend aussi dans le mot 'bois'."
-  - enonce: "BOIS"
-    bonneReponse: "oi"
-    distracteurs: ["ou", "in"]
-    indice: "Le son s'entend aussi dans le mot 'roi'."
-  - enonce: "ÉTOILE"
-    bonneReponse: "oi"
-    distracteurs: ["ou", "an"]
-    indice: "Le son s'entend au milieu du mot, comme dans 'roi'."
-  - enonce: "CHAT"
-    bonneReponse: "ch"
-    distracteurs: ["oi", "ou"]
-    indice: "Le son s'entend aussi dans le mot 'vache'."
-  - enonce: "VACHE"
-    bonneReponse: "ch"
     distracteurs: ["an", "on"]
-    indice: "Le son s'entend aussi dans le mot 'chat'."
-  - enonce: "NICHE"
-    bonneReponse: "ch"
+    graphie: "in"
+    indice: "On entend aussi ce son dans le mot sapin."
+  - enonce: "TIMBRE"
+    bonneReponse: "in"
     distracteurs: ["an", "on"]
-    indice: "Le son s'entend aussi dans le mot 'vache'."
-  - enonce: "CHÂTEAU"
-    bonneReponse: "ch"
-    distracteurs: ["oi", "in"]
-    indice: "Le son s'entend au début du mot, comme dans 'chat'."
+    graphie: "im"
+    indice: "Regarde : les lettres i et m font ce son."
+    explication: "Dans TIMBRE, ce sont les lettres i et m qui font le son in."
+  - enonce: "LUNDI"
+    bonneReponse: "in"
+    distracteurs: ["an", "on"]
+    graphie: "un"
+    indice: "Regarde : les lettres u et n font ce son."
+    explication: "Dans LUNDI, ce sont les lettres u et n qui font le son in."

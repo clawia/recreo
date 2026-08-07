@@ -26,6 +26,12 @@
             Non, c'est <span th:text="${bonneReponse}"></span>.
         </p>
     </div>
+    <!-- ADR-0024, S6-7 : l'explication de l'item joue, posee au modele sous "explication" par
+         PartieController, vide quand le contenu n'en porte pas (ecrite par ChaquePaquetExpliqueSesItemsAVariationTest
+         sur les seuls items dont la graphie differe de la reponse attendue). Affichee systematiquement,
+         que la reponse soit juste ou fausse - nadia-prof, arbitrage du 2026-08-06, S5-9 : "l'enfant qui
+         a trouve DENT par elimination a autant besoin de l'explication que celui qui s'est trompe". -->
+    <p class="explication" th:if="${explication != null}" th:text="${explication}"></p>
     <form th:if="${enSuite}" th:attr="hx-get=@{'/parties/' + ${jeuId} + '/manche'}"
           hx-target="#jeu" hx-swap="innerHTML">
         <button type="submit" class="btn encore" data-role="action">Encore !</button>
