@@ -1367,6 +1367,395 @@ transverses, `squad/programme/MATRICE-couverture.md` n'est pas modifiee par ce c
 - **Agent pressenti** : `ines-design` (proposition des valeurs de mise en page), mise en oeuvre par
   `marc-dev` / `lea-dev` / `sofia-sm`.
 
+**Contexte du reste du sprint** (`DEC-0013-perimetre-sprint-6.md`) : le sprint 6 porte deux autres
+chantiers en plus du rhabillage ci-dessus. **Chantier 1** (S6-3 a S6-5) ouvre la ligne francais CM1
+engagee par `DEC-0011` sur `textes-trous/cm1-conjugaison.yml`, motif du choix dans `DEC-0013`, et
+solde les deux points chiffres par `nadia-prof` le 2026-08-07 pour la ligne homophones CM1.
+**Chantier 2** (S6-6, S6-7) sort "Le bon son" de quarantaine par un lot indivisible, tranche par
+`nadia-prof` elle-meme (avis de conception du 2026-08-06,
+`squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`). **Chantier 3** (S6-8 a S6-14) instruit
+la dette de forme et d'outillage laissee ouverte par s05. Un obstacle nomme par `nadia-prof`
+(`GET /parties/{id}/manche` sur une partie terminee, ecran mort sans chemin d'acces trouve) n'est
+volontairement pas ecrit en story ici : il reste route a `theo-archi` via `sofia-sm` comme prealable
+technique a instruire (`DEC-0013`, point 3).
+
+### S6-3 - Choisir la bonne forme d'un verbe frequent au present pour completer une phrase (CM1)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux choisir la forme correcte d'un verbe frequent
+  conjugue au present pour completer une phrase, afin de m'entrainer a conjuguer sans hesiter au
+  temps que j'utilise le plus souvent en ecrivant.
+- **Competence programme visee** : francais, CM1 (cycle 3), domaine "Orthographe et grammaire" -
+  "Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif"
+  (`squad/programme/francais/competences-cm1.md`). Deuxieme ligne de matrice ouverte pour le CM1 en
+  conjugaison de phrase (apres les homophones grammaticaux), sur le present uniquement - le futur et
+  l'imparfait restent explicitement non couverts (`DEC-0013-perimetre-sprint-6.md`).
+- **Criteres d'acceptation** :
+  - Etant donne une manche generee par ce contenu, quand la question s'affiche, alors elle presente
+    une phrase a trou dont la bonne reponse est un verbe frequent conjugue au present de
+    l'indicatif, jamais a un autre temps.
+  - Etant donne les propositions affichees pour une manche, alors la bonne reponse y figure
+    exactement une fois, et chaque distracteur est une autre forme conjuguee du meme verbe au
+    present (jamais un verbe different, jamais une forme d'un autre temps).
+  - Etant donne l'ensemble des items du paquet, quand on les releve par personne grammaticale
+    (je, tu, il/elle, nous, vous, ils/elles), alors chacune des six personnes est representee par au
+    moins un item.
+  - Etant donne l'application demarree avec ce paquet, quand le test d'integration de chargement du
+    contenu s'execute (`CatalogueChargeableIT`, `ADR-0007`), alors une partie demarre sans erreur sur
+    ce paquet, avec la mecanique bandit manchot existante et sans qu'aucune ligne de
+    `domain/mechanic` ni `domain/mechanics` n'ait ete modifiee pour l'accueillir.
+  - Etant donne 20 manches jouees a la suite, quand on releve les phrases proposees, alors elles ne
+    sont pas toutes identiques.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que les phrases soient d'un niveau de vocabulaire adapte a un eleve de CM1, que
+    les verbes retenus soient effectivement "frequents" au sens du referentiel, la conformite du
+    texte au francais correct et integralement accentue (`DEC-0002`, amendement du 2026-08-04), et
+    le jugement sur le fait qu'une competence a trois temps nommes, couverte ici sur un seul,
+    justifie de rester `en cours` sans confusion possible avec une couverture complete.
+- **Note de frontiere de mandat** : si `theo-archi` etablit au planning que cette forme de contenu
+  (plusieurs distracteurs par item, comme dans la matiere premiere) ne rentre pas dans `Question`
+  sans changement du domaine, cette story est reformulee avant developpement plutot que forcee dans
+  une forme qui ne lui convient pas.
+- **Lien decision** : `DEC-0008-la-couverture-reprend-francais-cp-et-cm1.md` (inventaire de la
+  matiere premiere) ; `DEC-0011-perimetre-s05-reste-correctif.md` (engagement d'ouverture au sprint
+  6) ; `DEC-0013-perimetre-sprint-6.md` (choix du paquet, part de competence assumee non couverte).
+- **Agent pressenti** : a affecter au planning.
+
+### S6-4 - Deux phrases de plus qui obligent a regarder au-dela du mot voisin du trou (condition chiffree de nadia-prof, homophones CM1)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que davantage de phrases m'obligent a chercher
+  l'indice ailleurs que juste a cote du trou, afin de vraiment reflechir plutot que de deviner par la
+  seule position du mot dans la phrase.
+- **Competence programme visee** : francais, CM1 (cycle 3), meme ligne que S5-6 et S6-3
+  ("Distinguer et utiliser correctement les principaux homophones grammaticaux",
+  `squad/programme/francais/competences-cm1.md`). Condition ecrite par `nadia-prof` pour que cette
+  ligne passe a `couvert-valide`, chiffree une seconde fois le 2026-08-07.
+- **Criteres d'acceptation** :
+  - Etant donne le paquet `cm1-homophones` apres cette story, quand on compte les items dont le mot
+    decisif n'est pas voisin immediat du trou, alors ce compte atteint au moins 6 items sur les 12
+    items ajoutes par S5-6 (contre 5 mesures a l'audit du 2026-08-07) : "deux items neufs de plus
+    dont le mot decisif n'est pas voisin du trou, pris dans `la/l'a`, `ces/ses` ou `peu/peut`"
+    (`squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`, verdict du 2026-08-07, section 3,
+    point 1 - cite au mot pres, non redurci ni affaibli).
+  - Etant donne les vingt-deux items existants a l'ouverture de cette story (dix d'origine, douze de
+    S5-6), quand on les relit apres cette story, alors ils ne sont pas modifies : cette story ajoute
+    deux items, elle ne retouche aucun des vingt-deux existants.
+  - Etant donne les deux items ajoutes, quand on verifie leur couple d'homophones, alors chacun
+    respecte les regles deja ecrites par `nadia-prof` pour sa famille dans l'arbitrage du 2026-08-06
+    (par exemple, pour `ces/ses` : une designation explicite pour `ces`, un possesseur nomme pour
+    `ses` ; pour `peu/peut` : aucun sujet `je` ni `tu` ; pour `la/l'a` : un test de sens contre un
+    test de temps) - regles deja fixees par S5-6, non redefinies ici.
+  - Etant donne le contrat deja verifie par le test qui compte les couples du paquet (cite comme
+    `PaquetsFrancaisS04Test` dans l'arbitrage de `nadia-prof` du 2026-08-06), quand la suite tourne
+    apres cette story, alors elle reste verte sans qu'aucune regle n'ait ete affaiblie pour la faire
+    passer.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que le mot decisif de chaque nouvel item soit reellement hors de portee d'une
+    lecture superficielle, et l'exactitude grammaticale de chaque phrase nouvelle (aucune des deux
+    lectures ne doit passer, meme exigence que le point 4 de sa condition).
+- **Lien decision** : `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`, verdict du
+  2026-08-07, section 3, point 1 ; poursuite de S5-6.
+- **Agent pressenti** : `marc-dev` (auteur des items de S5-6).
+
+### S6-5 - Un indice qui reste du francais quand il montre la phrase substituee (condition chiffree de nadia-prof, homophones CM1)
+
+- **Besoin** : en tant qu'eleve de CM1 qui vient de se tromper trois fois de suite, je veux que
+  l'aide qu'on me montre soit elle-meme ecrite dans un francais correct, afin de ne pas apprendre une
+  phrase fausse au moment precis ou je cherche de l'aide.
+- **Competence programme visee** : francais, CM1 (cycle 3), meme ligne que S6-4. Second et dernier
+  point chiffre par `nadia-prof` pour que cette ligne passe a `couvert-valide`.
+- **Criteres d'acceptation** :
+  - Etant donne l'indice de l'item "J'ai rangé ___ affaires avant de partir à l'école." apres cette
+    story, quand on le relit, alors la phrase de substitution qu'il donne en exemple est elle-meme
+    du francais correct - contre "J'ai rangé les miennes affaires" avant cette story, phrase que
+    `nadia-prof` a nommee comme n'existant pas en francais
+    (`squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`, verdict du 2026-08-07, section 3,
+    point 2).
+  - Etant donne ce meme indice, quand on le compare au modele deja retenu par `nadia-prof`, alors il
+    suit la meme forme que l'indice de l'item dont la bonne reponse est "son" : "Remplace par 'tes' :
+    'J'ai rangé tes affaires' fonctionne, alors c'est 'mes'." - modele cite au mot pres.
+  - Etant donne les vingt et un autres indices du paquet, quand on les relit apres cette story, alors
+    ils restent inchanges : cette story corrige une ligne, elle n'en retouche aucune autre.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : la confirmation, en jouant, que l'indice corrige tient le meme role pedagogique
+    que le modele auquel il s'aligne.
+- **Lien decision** : `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`, verdict du
+  2026-08-07, section 3, point 2.
+- **Agent pressenti** : `marc-dev`.
+
+### S6-6 - "Le bon son" ne travaille plus que les trois nasales an/on/in, en quinze items (recomposition, supersede S5-2)
+
+- **Besoin** : en tant qu'eleve de CP, je veux dire un mot a voix haute et retrouver lequel des trois
+  sons `an`, `on` ou `in` il contient, afin de m'entrainer a associer ce que j'entends a ce que je
+  lis, meme sans fichier audio dans le jeu.
+- **Competence programme visee** : francais, CP (cycle 2), domaine "Lecture et comprehension de
+  l'ecrit" - "Associer les graphemes aux phonemes (...)" (meme ligne que S4-2 et l'ex-S5-2,
+  `squad/programme/francais/competences-cp.md`).
+- **Contexte** : cette story remplace S5-2 dans sa forme ecrite au sprint 5, sur la base de l'avis de
+  conception de `nadia-prof` du 2026-08-06
+  (`squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`, section "Avis de conception") : le
+  premier critere de S5-2 ("majorite des items non resolubles par les lettres") est retire, remplace
+  par les criteres chiffres ci-dessous, qui sont les siens, cites et non reinterpretes.
+- **Criteres d'acceptation** :
+  - Etant donne le paquet recompose, quand on compte ses items, alors il en compte exactement 15,
+    cinq pour chacun des trois sons `an`, `on`, `in` - les sons `ou`, `oi` et `ch` sortent du paquet
+    ("Ce paquet ne travaille plus que les trois voyelles nasales : an, on, in.", avis de conception
+    du 2026-08-06, section 3).
+  - Etant donne les cinq items de chaque son, quand on releve la graphie qui porte le son dans le mot
+    affiche, alors trois items portent la graphie reguliere du son et deux portent une graphie
+    alternative courante au CP (par exemple `en`/`em`/`am` pour `an`, `om` pour `on`,
+    `im`/`ain`/`ein`/`un` pour `in`) - "15 items, cinq par son, dont trois a graphie reguliere et deux
+    a graphie alternative", cite au mot pres (meme avis, section 3).
+  - Etant donne chaque item, quand on verifie s'il declare la graphie qui porte le son (le mot, le
+    son, la graphie), alors ce champ existe et permet de determiner automatiquement si l'item est
+    regulier ou a variation, sans avoir a compter les lettres du mot - besoin que `nadia-prof` signale
+    explicitement a `theo-archi` (avis de conception, section 2 : "le besoin est que chaque item
+    declare la graphie qui porte le son").
+  - Etant donne les trois propositions affichees pour chaque manche, alors elles sont toujours les
+    trois memes, `an`, `on`, `in`, sans crochet ni autre notation d'adulte (motif 2 du refus initial,
+    deja acquis, a preserver).
+  - Etant donne la consigne servie avec ce paquet, quand on la relit, alors elle est exactement
+    "Dis le mot. Quel son entends-tu ?" (avis de conception, section 4), et non l'ancienne
+    formulation qui interdisait le verbe "entendre".
+  - Etant donne un item quelconque du paquet, quand on verifie s'il fait entendre un second son du
+    jeu que celui attendu, alors ce n'est jamais le cas (motif 4 du refus initial, deja acquis sur
+    les 21 items existants, a reverifier item par item sur les mots neufs).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : le choix exact des quinze mots (des exemples de travail sont donnes par
+    `nadia-prof` dans son avis, pas une liste arretee), la justesse phonetique de chaque item, et
+    trois defauts de redaction qu'elle a nommes sur les indices actuels (position du son dans le mot
+    de renvoi incoherente, indice de `DENT` trop faible, tournure "Le son s'entend aussi dans..."
+    trop lourde pour du CP) - a traiter avec cette recomposition plutot que redecouverts a l'audit.
+- **Relation a S6-7** : cette story et S6-7 (retour explicatif) forment **un seul lot indivisible**,
+  tranche par `nadia-prof` elle-meme : "S5-2 recomposee et S5-9 sont un seul lot, et se livrent
+  ensemble ou pas du tout." (avis de conception, section 5). Aucune des deux ne remet
+  `bandit-manchot-le-bon-son-cp` au catalogue a elle seule : `DEC-0009` reste en vigueur jusqu'a un
+  nouveau Done pedagogique constate dans une nouvelle fiche de conformite.
+- **Lien decision** : avis de conception de `nadia-prof` du 2026-08-06
+  (`squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`) ; `DEC-0009-retrait-le-bon-son-du-catalogue.md`
+  (reste en vigueur) ; remplace S5-2.
+- **Agent pressenti** : `theo-archi` (modelisation du champ de graphie, besoin qu'il a lui-meme a
+  instruire selon `nadia-prof`), mise en oeuvre par `lea-dev` / `marc-dev`.
+
+### S6-7 - Un retour qui nomme les lettres et le son qu'elles font, sur chaque item a variation (finalise S5-9, prealable tranche par nadia-prof)
+
+- **Besoin** : en tant qu'eleve de CP qui vient de lire un mot ou le son s'ecrit autrement que sa
+  graphie habituelle (comme `DENT` pour le son `an`), je veux qu'on me montre les lettres qui font ce
+  son, que j'aie repondu juste ou faux, afin de comprendre la variation plutot que de la vivre comme
+  une erreur.
+- **Competence programme visee** : francais, CP (cycle 2), meme ligne que S6-6
+  (`squad/programme/francais/competences-cp.md`).
+- **Contexte** : cette story reprend S5-9, dont le prealable ("sur quels items, a quel moment, quel
+  texte") est desormais tranche par `nadia-prof` elle-meme dans son avis de conception du 2026-08-06
+  (section 5), a sa demande explicite de le faire pour qu'elle ne lui revienne pas. Les criteres
+  ci-dessous citent ce prealable, ils ne l'inventent pas.
+- **Criteres d'acceptation** :
+  - **Sur quels items** : "uniquement les items a variation, ceux dont la graphie differe de la
+    notation du son. Sur un item regulier il n'y a rien a expliquer" (avis de conception, section 5).
+    Etant donne un des six items a graphie alternative de S6-6, quand l'enfant repond a la manche
+    correspondante, alors l'ecran de retour affiche un texte qui nomme les lettres du mot et le son
+    qu'elles font, a la place du seul retour juste/faux habituel. Etant donne un des neuf items a
+    graphie reguliere, quand l'enfant y repond, alors aucun texte d'explication de variation ne
+    s'affiche.
+  - **Quand** : "systematiquement, que l'enfant ait repondu juste ou faux [...] Pas 'une seule fois'
+    non plus" (meme section). Etant donne un item a variation, que la reponse de l'enfant soit juste
+    ou fausse, et quel que soit le nombre de fois ou cet item a deja ete rencontre dans la partie,
+    alors le texte d'explication s'affiche a chaque occurrence.
+  - **Ce que le texte doit dire** : "nommer les lettres du mot affiche et le son qu'elles font. Forme
+    attendue, a valider texte par texte : 'Dans DENT, ce sont les lettres e et n qui font le son an.'
+    Une phrase, le mot que l'enfant vient de lire, pas de terme de metalangage." (meme section).
+    Etant donne le champ qui porte ce texte dans le contenu, quand on relit le paquet, alors chaque
+    item a variation porte son propre texte, distinct par item, dans cette forme.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : le texte exact de chaque explication, item par item.
+- **Relation a S6-6** : meme lot indivisible, voir S6-6.
+- **Lien decision** : avis de conception de `nadia-prof` du 2026-08-06
+  (`squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`, section 5) ; detachee a l'origine du
+  deuxieme critere de S5-2 sur avis de `theo-archi` (s05) ; `DEC-0011-perimetre-s05-reste-correctif.md`
+  (sortie hors perimetre s05, close par son entree en s06).
+- **Agent pressenti** : `theo-archi` (modelisation du champ et de son affichage), mise en oeuvre par
+  `lea-dev` / `marc-dev`.
+
+### S6-8 - Une marge laterale qui ne disparait plus sous 1200 px (reserve 1 chiffree du rhabillage)
+
+- **Besoin** : en tant qu'enfant de CP qui joue sur un ecran etroit (tablette ou telephone), je veux
+  que la consigne, l'enonce et les boutons de reponse gardent une marge par rapport aux bords de
+  l'ecran, afin de ne jamais lire ma premiere lettre collee au bord.
+- **Competence programme visee** : transverse - accessibilite visuelle, meme categorie que S2-1,
+  S3-8.
+- **Criteres d'acceptation** :
+  - Etant donne `recreo.css` apres cette story, quand on mesure le rembourrage lateral du conteneur
+    de la zone de jeu a une largeur de fenetre de 360 px, alors il n'est plus nul - contre
+    `padding-left: 0` et `padding-right: 0` mesures ce sprint sur `main.container`
+    (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-07, section A.2,
+    point 1).
+  - Etant donne cette meme mesure a 360 px, quand on la compare a celle de l'en-tete au meme instant,
+    alors les deux rembourrages laterals ne sont plus disproportionnes : l'en-tete mesurait 12 px de
+    marge quand le contenu en avait 0. Le contenu retrouve au moins ce meme plancher de 12 px sur ses
+    deux cotes.
+  - Etant donne les garde-fous deja acquis (`ViewportEtLargeurTelephoneTest`,
+    `TailleDesTextesEtBoutonsTest`), quand cette story est fusionnee, alors ils restent verts sans
+    qu'aucun seuil n'ait ete abaisse pour les faire passer.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : elle remesurera a 360 px, comme elle l'annonce elle-meme dans son verdict.
+- **Lien decision** : `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-07,
+  section A.2, point 1 ; `DEC-0012-rhabillage-gabarit-menu-minimal-et-ouverture-s06.md`, amendement du
+  2026-08-07.
+- **Agent pressenti** : `ines-design` (proposition du correctif), mise en oeuvre par `marc-dev` /
+  `lea-dev` / `theo-archi`.
+
+### S6-9 - Une seule sortie par ecran de jeu, avec un mot que le CP peut lire (reserves 2 et 3 du rhabillage)
+
+- **Besoin** : en tant qu'enfant de CP qui joue une manche, je veux ne voir qu'un seul bouton pour
+  repartir vers la liste des jeux, ecrit avec un mot que je sais dechiffrer, afin de ne pas devoir
+  choisir entre deux portes qui font la meme chose.
+- **Competence programme visee** : transverse - navigation et lisibilite pour le niveau CP, meme
+  categorie que S1-8, S6-1.
+- **Decision de contenu, precisant sans la rouvrir `DEC-0012` point 2** : le libelle retenu pour
+  l'unique sortie visible sur un ecran de jeu (manche, retour) est **"Les jeux"**, deja dechiffrable
+  au CP et deja en place dans les fragments. `DEC-0012` tranchait qu'il y a une entree de menu unique,
+  elle ne tranchait pas encore son libelle au regard de la reserve 3 ci-dessous, connue seulement
+  depuis le verdict du 2026-08-07. Je ne retiens pas "Accueil" pour cette sortie : `nadia-prof` a
+  elle-meme signale que ce choix rendrait sa reserve 3 bloquante ("Si la reserve 2 est traitee en
+  gardant 'Accueil' et en retirant 'Les jeux', alors ce point devient bloquant").
+- **Criteres d'acceptation** :
+  - Etant donne l'ecran de manche ou de retour rendu apres cette story, quand on compte les liens ou
+    boutons qui ramenent a la liste des jeux, alors il en existe visuellement un seul portant un
+    texte lisible - contre deux libelles differents pour la meme action mesures ce sprint ("Accueil"
+    et "Les jeux", surface cumulee superieure de 70 % a celle de l'action sur l'ecran de retour,
+    `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-07, section A.2,
+    point 2).
+  - Etant donne ce lien unique, quand on relit son texte, alors il est "Les jeux".
+  - Etant donne l'ecran d'accueil, ou aucune sortie de fragment ne cohabite avec le lien de l'en-tete,
+    quand on le relit, alors le lien de l'en-tete porte le meme texte "Les jeux", pour qu'un seul mot
+    circule sur tous les ecrans.
+  - Etant donne le garde-fou `LActionNeDeclarePasMoinsQueLaSortieTest` (`ADR-0017`), quand cette
+    story est fusionnee, alors il reste vert : la fusion des deux sorties ne doit pas rendre le
+    bouton d'action moins saillant que le lien restant.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que "Les jeux" reste effectivement dechiffrable et suffisant comme unique sortie,
+    en jouant.
+- **Lien decision** : `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-07,
+  section A.2, points 2 et 3 ; precise `DEC-0012-rhabillage-gabarit-menu-minimal-et-ouverture-s06.md`
+  point 2 sans le rouvrir.
+- **Agent pressenti** : `ines-design` (proposition de la disposition a une seule sortie), mise en
+  oeuvre par `marc-dev` / `lea-dev` ; `theo-archi` si le retrait du bouton duplique touche le trou de
+  frontiere deja route sur `ADR-0017`.
+
+### S6-10 - Le bouton d'action reste seul de sa couleur sur l'ecran de retour (reserve 4 du rhabillage)
+
+- **Besoin** : en tant qu'enfant de CP qui vient de repondre, je veux que le bouton sur lequel
+  j'appuie pour continuer reste la seule chose bleue et pleine de l'ecran, afin de le reperer du
+  premier coup d'oeil meme quand un bandeau de la meme couleur occupe le haut de la page.
+- **Competence programme visee** : transverse - hierarchie visuelle pour le niveau CP, meme categorie
+  que S3-6.
+- **Criteres d'acceptation** :
+  - Etant donne l'ecran de retour (juste ou faux) rendu apres cette story, quand on releve la couleur
+    de fond du bandeau d'en-tete et celle du bouton d'action "Encore !", alors elles ne sont plus
+    identiques - contre `#2e6f9e` mesure des deux cotes ce sprint, le bandeau occupant seize fois la
+    surface du bouton (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du
+    2026-08-07, section A.2, point 4).
+  - Cette story retient l'une des deux solutions nommees par `nadia-prof`, au choix d'`ines-design` :
+    soit le bandeau porte une nuance distincte de la couleur d'action, soit le bouton d'action
+    grandit sur l'ecran de retour precisement (le plus pauvre en signal selon elle).
+  - Etant donne les mesures deja acquises au point A.1 de la meme fiche (117 >= 109 >= 102 en largeur
+    entre l'action et les deux sorties), quand cette story est fusionnee, alors elles restent
+    verifiees telles quelles.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que le bleu redevienne percu comme le signal exclusif "appuie ici" par un enfant
+    de CP.
+- **Lien decision** : `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-07,
+  section A.2, point 4.
+- **Agent pressenti** : `ines-design` (proposition de la solution retenue), mise en oeuvre par
+  `marc-dev` / `lea-dev`.
+
+### S6-11 - Une zone de jeu qui garde un identifiant unique apres chaque echange htmx
+
+- **Besoin** : en tant qu'enfant qui utilise une aide technique (lecteur d'ecran) pour naviguer dans
+  la page, je veux que chaque zone porte un identifiant unique, afin que mon outil puisse
+  reellement me dire dans quelle zone je me trouve plutot que d'en trouver deux qui portent le meme
+  nom.
+- **Competence programme visee** : transverse - accessibilite, meme categorie que S1-6.
+- **Criteres d'acceptation** :
+  - Etant donne n'importe quel ecran de jeu rendu apres un echange htmx (manche, retour, fin de
+    partie, erreur), quand on compte les elements portant l'identifiant `jeu` dans le HTML final,
+    alors il y en a exactement un, jamais deux - contre le `main` du gabarit et le `div` du fragment
+    recu, tous deux portant `id="jeu"`, constate par `nadia-prof`
+    (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-07, section E,
+    point 1).
+  - Etant donne ce meme HTML corrige, quand le garde-fou qui protege la frontiere `hx-target`
+    (`ADR-0017`) s'execute, alors il continue de reperer la zone remplacee sans modification de sa
+    logique.
+- **Lien decision** : constat de `nadia-prof`, `squad/conformite/FICHE-bandit-manchot-additions-cp.md`,
+  verdict du 2026-08-07, section E.
+- **Agent pressenti** : `theo-archi` (diagnostic puis correction).
+
+### S6-12 - Un contre-exemple de garde-fou qui ne peut jamais s'executer dans l'application reellement servie
+
+- **Besoin** : en tant qu'enfant qui joue a recreo, je ne veux jamais qu'un code ecrit pour demontrer
+  un mauvais comportement puisse un jour s'executer reellement a la place du bon, afin que l'ecran
+  d'erreur que je vois reste toujours celui que le jeu me promet.
+- **Competence programme visee** : transverse - fiabilite du chemin d'erreur, meme perimetre que
+  S1-3.
+- **Criteres d'acceptation** :
+  - Etant donne tout `@SpringBootTest` complet du module `bootstrap`, quand le contexte applicatif
+    demarre, alors `GestionnaireErreurBruteContreExemple` (contre-exemple d'`ADR-0011`) n'est jamais
+    enregistre comme un bean Spring reel - contre le comportement constate ce sprint, ou
+    `scanBasePackages = "com.recreo"` le charge malgre lui et il intercepte l'exception avant
+    `GestionnaireDesErreurs`, rendant un 500 a corps brut (trouve par `lea-dev`, commit `94a1a8f`,
+    `squad/sprints/s05-lever-le-refus-du-bon-son/review.md`, tableau des obstacles).
+  - Etant donne une erreur imprevue provoquee dans un tel test, quand elle traverse le serveur, alors
+    c'est `GestionnaireDesErreurs` qui la traite, jamais le contre-exemple.
+  - Etant donne `PropositionsAccentueesJouablesIT` (le test qui a revele cette fuite), quand la suite
+    tourne apres cette story, alors il reste vert pour la raison qui le rend deja mordant (decodage
+    tolerant du corps de requete), sans dependre de cette fuite pour rester vert par accident.
+- **Note** : le choix technique (deplacement hors du classpath de production scanne, ou resserrement
+  du scan de composants) appartient a `theo-archi`.
+- **Lien decision** : constat de `lea-dev`, commit `94a1a8f` ;
+  `squad/sprints/s05-lever-le-refus-du-bon-son/review.md`, tableau des obstacles.
+- **Agent pressenti** : `theo-archi`.
+
+### S6-13 - Un script qui verifie la lignee d'un worktree avant tout travail
+
+- **Besoin** (story d'enabler transverse, portee par l'equipe plutot que par un enfant) : pour que
+  chaque agent qui ouvre un worktree neuf verifie automatiquement qu'il descend bien de `round-two`
+  avant d'ecrire une ligne, sans dependre de sa memoire d'une consigne recopiee sprint apres sprint -
+  dixieme occurrence d'un provisionnement fautif constatee en s05
+  (`squad/sprints/s05-lever-le-refus-du-bon-son/retro.md`, point 4).
+- **Competence programme visee** : transverse.
+- **Criteres d'acceptation** :
+  - Etant donne un worktree provisionne sur une branche qui n'est pas un descendant de `round-two`,
+    quand `outils/verifier-lignee.sh` est execute, alors il se termine par un code de sortie non nul
+    et affiche un message explicite nommant la branche fautive, sans jamais imprimer de chemin
+    absolu de poste de travail.
+  - Etant donne un worktree correctement provisionne sur `round-two` ou un descendant, quand le
+    script est execute, alors il se termine par un code de sortie 0.
+  - Etant donne ce script, quand il est lui-meme teste (meme doctrine que les garde-fous d'`ADR-0009`),
+    alors sa suite de test couvre les deux cas ci-dessus.
+- **Note de routage** : la mise a jour de `squad/README.md` section 9 pour renvoyer vers ce script
+  plutot que vers une commande recopiee en prose appartient a `sofia-sm`, pas a moi.
+- **Lien decision** : `squad/sprints/s05-lever-le-refus-du-bon-son/retro.md`, "Amendements au
+  process", ligne 1.
+- **Agent pressenti** : `sofia-sm`.
+
+### S6-14 - Un script qui verifie la presence d'un JDK 21 sans se fier au seul nom d'un fichier
+
+- **Besoin** (story d'enabler transverse, portee par l'equipe plutot que par un enfant) : pour que la
+  presence d'un JDK 21 ne soit plus jugee a tort absente a cause d'un fichier de toolchains mal
+  nomme sur le poste de l'utilisatrice - quatre agents concernes rien qu'en s05, meme cause qu'en
+  s03 (`squad/sprints/s05-lever-le-refus-du-bon-son/retro.md`, point 5).
+- **Competence programme visee** : transverse.
+- **Criteres d'acceptation** :
+  - Etant donne `outils/verifier-jdk.sh` execute sur un poste donne, quand il tourne, alors il
+    imprime la sortie de `java -version`, la valeur de `JAVA_HOME`, et le nom exact du fichier de
+    toolchains trouve sous le depot Maven local - sans jamais imprimer de chemin absolu destine a
+    etre commite dans un fichier du depot.
+  - Etant donne la sortie de ce script, quand un agent rapporte le resultat de `mvn verify` dans
+    `rapport-qualite.md` ou `confirmation-archunit.md`, alors elle est collee telle quelle a la place
+    d'une description en prose de la verification.
+- **Lien decision** : `squad/sprints/s05-lever-le-refus-du-bon-son/retro.md`, "Amendements au
+  process", ligne "Nouveau : outils/verifier-jdk.sh".
+- **Agent pressenti** : `sofia-sm`.
+
 ## Backlog - sprints suivants (intentions non detaillees)
 
 Ces intentions ne sont pas des stories pretes a developper. Elles seront detaillees sprint par
@@ -1375,13 +1764,14 @@ sprint, en priorite sur les trous les plus visibles de `squad/programme/MATRICE-
 - La ligne mathematiques CP est desormais `couvert-valide` (2026-08-06) : elargir le contenu
   "additions CP" a la borne jusqu'a 20, et couvrir les soustractions et les complements a 10 (meme
   mecanique, meme niveau) pour clore completement cette ligne de la matrice.
-- Une fois S5-6 et S5-7 auditees : `textes-trous/cm1-accords.yml` (partie de "accorder en genre et
-  en nombre dans le groupe nominal") et `textes-trous/cm1-conjugaison.yml` (partie de "conjuguer
-  [...] au present, futur et imparfait", ce fichier ne couvrant que le present) sont deja
-  identifies par `DEC-0008` comme candidats directement compatibles avec la forme `Question`,
-  sans nouvel arbitrage de matiere. `DEC-0011-perimetre-s05-reste-correctif.md` borne ce report au
-  sprint 6 : au moins une des deux lignes s'ouvre a ce sprint-la, meme si elle ne couvre qu'une
-  partie de sa competence - assume explicitement plutot que reporte a nouveau sans date.
+- `textes-trous/cm1-conjugaison.yml` ouvre la ligne conjugaison CM1 au sprint 6 (S6-3,
+  `DEC-0013-perimetre-sprint-6.md`), sur le present de l'indicatif uniquement. `textes-trous/
+  cm1-accords.yml` (partie de "accorder en genre et en nombre dans le groupe nominal", l'accord de
+  l'adjectif seul, determinant et nom deja fixes dans chaque phrase) reste le candidat non retenu
+  cette fois, toujours identifie par `DEC-0008` comme directement compatible avec la forme
+  `Question` sans nouvel arbitrage de matiere : a instruire pour un sprint suivant, sans date fixee.
+  Le futur et l'imparfait de la ligne conjugaison CM1, laisses dehors par S6-3, restent eux aussi a
+  instruire, comme deux extensions distinctes du meme jeu.
 - Introduire une deuxieme mecanique de jeu pour les competences que le bandit manchot sert mal
   (association image/mot, memory, texte a trous), en respectant le meme decouplage
   mecanique/contenu. Le jour ou un second jeu existe, trancher la question de process laissee

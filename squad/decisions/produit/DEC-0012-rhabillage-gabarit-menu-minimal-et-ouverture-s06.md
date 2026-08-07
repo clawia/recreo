@@ -129,3 +129,43 @@ que par `nadia-prof` seule en jouant.
 - Que les deux chantiers du sprint 6 (rhabillage, ouverture francais) tiennent effectivement dans la
   meme fenetre de sprint est un engagement de planification, pas une garantie : voir la meme reserve
   posee par `DEC-0011`.
+
+## Amendement du 2026-08-07 (s06) - S6-1 et S6-2 ont ete livrees et auditees dans s05, sans amendement au moment des faits
+
+**Ce que je constate, sans reecrire l'histoire.** Le point 1 de cette decision place S6-1 et S6-2
+au sprint 6. Dans les faits, `ines-design` les a livrees pendant s05 (commits tagues `s06` :
+`2b15279`, fusionne par `a325af9`), et `nadia-prof` les a auditees dans le meme cycle que le reste
+de s05, sur le meme jar, le 2026-08-07 (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`,
+section "Verdict courant - s05, en-tete permanent et correctifs du score"). Ce deplacement n'a fait
+l'objet d'aucune nouvelle ceremonie de planning ni d'aucun amendement ecrit au moment ou il s'est
+produit : `sofia-sm` l'a constate a la review de s05 comme l'anomalie qu'il est
+(`squad/sprints/s05-lever-le-refus-du-bon-son/review.md`, point 3 de "Ce que ce sprint a reellement
+ete") et l'a route en amendement de process dans `retro.md` de ce meme dossier ("Amendements au
+process", derniere ligne du tableau). Je l'acte ici, comme cette retro le demande.
+
+**Le motif pratique, tel que rapporte, n'est pas conteste** : `nadia-prof` reconstruisait de toute
+facon le jar pour auditer "Le bon petit mot" et devait de toute facon relancer une instance sur son
+port habituel ; auditer le rhabillage dans le meme geste evitait un second cycle complet de
+construction et d'audit pour un chantier deja pret. Un motif pratique n'est pas une decision ecrite,
+et c'est precisement ce que cet amendement corrige a retardement.
+
+**Ce qui a ete livre et quand** :
+
+- S6-1 (en-tete, icone, unique entree de menu "Accueil") et S6-2 (contenu centre) : livrees par
+  `ines-design` pendant s05, fusionnees par `theo-archi` (`a325af9`).
+- Auditees par `nadia-prof` le 2026-08-07, verdict **VALIDE SOUS RESERVE** (Done pedagogique
+  accorde, troisieme passage de ce chantier devant elle et le premier qu'elle n'a pas refuse).
+
+**Ce qui en reste ouvert** : les quatre reserves chiffrees de `nadia-prof`
+(`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-07, section A.2) - la
+regression de rembourrage lateral sous 1200 px, la cohabitation de deux sorties au libelle
+different sur un meme ecran de jeu, le libelle "Accueil" non dechiffrable au CP tant que la reserve
+precedente n'est pas traitee, et le bandeau a la meme couleur que le bouton d'action. Ces quatre
+reserves sont reprises en story dans le chantier 3 du sprint 6 (`docs/backlog/backlog.md`, S6-8 a
+S6-10 ; `DEC-0013-perimetre-sprint-6.md`).
+
+**Ce que cet amendement ne fait pas** : il ne rouvre pas le contenu des points 1 a 4 de la decision
+d'origine (l'entree de menu unique "Accueil", le raisonnement sur son contenu) ; il ne remet pas en
+cause le Done pedagogique accorde par `nadia-prof` sur l'increment livre ; il ne pretend pas que le
+deplacement etait illegitime sur le fond - seulement qu'il aurait du etre acte par ecrit au moment
+ou il s'est produit, pas seulement constate a la cloture du sprint suivant.

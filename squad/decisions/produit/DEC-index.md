@@ -15,7 +15,8 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0009 | Retrait de "Le bon son" du catalogue jusqu'a sa correction | s04/s05 | 2026-08-06 | Acceptee |
 | DEC-0010 | Le titre du produit redevient "Recreo", sans accent : le point 7 de DEC-0007 est remplace | s05 | 2026-08-06 | Acceptee |
 | DEC-0011 | Le sprint 5 reste entierement correctif, l'ouverture suivante est nommee au sprint 6 | s05 | 2026-08-06 | Acceptee |
-| DEC-0012 | Le rhabillage du gabarit (en-tete, icone, menu, contenu centre) ouvre le sprint 6 ; le menu reste a une seule entree | s05/s06 | 2026-08-06 | Acceptee |
+| DEC-0012 | Le rhabillage du gabarit (en-tete, icone, menu, contenu centre) ouvre le sprint 6 ; le menu reste a une seule entree | s05/s06 | 2026-08-06 | Acceptee, amendee le 2026-08-07 (constat de l'absorption de S6-1/S6-2 dans s05) |
+| DEC-0013 | Perimetre du sprint 6 : trois chantiers actes, choix de textes-trous/cm1-conjugaison.yml pour l'ouverture francais engagee par DEC-0011 | s06 | 2026-08-07 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0002` a ete amendee le 2026-08-04, a la suite de la
 relecture pedagogique de `nadia-prof` sur le refus de `bandit-manchot-additions-cp` - ajout d'une
@@ -58,3 +59,12 @@ ni rouverte ni corrigee par cet amendement : elle est signalee a `nadia-prof`, p
 ligne de matrice de plus n'entre `en cours` ce sprint), pour un motif specifique a l'etat de la
 reserve de contenu et non pour reconduire la regle generale de `DEC-0007` : voir `DEC-0011` pour
 la distinction.
+
+Amendement (pas une nouvelle reference) : `DEC-0012` a ete amendee le 2026-08-07, pour acter par
+ecrit que ses stories S6-1 et S6-2 (rhabillage du gabarit) ont ete livrees et auditees pendant s05,
+en dehors de la fenetre que la decision leur assignait, sans amendement au moment des faits - suite
+directe a l'amendement de process propose dans
+`squad/sprints/s05-lever-le-refus-du-bon-son/retro.md`. Le contenu des points 1 a 4 de `DEC-0012`
+n'est pas rouvert ; seul le constat du deplacement et l'etat des quatre reserves restantes sont
+ajoutes. Voir la section "Amendement du 2026-08-07 (s06)" dans
+`DEC-0012-rhabillage-gabarit-menu-minimal-et-ouverture-s06.md`.

@@ -179,14 +179,21 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Orthographe et grammaire | Accorder le verbe avec son sujet (cas frequents, temps simples : present, futur, imparfait) | - | - | non couvert |
 | francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | - | - | non couvert |
 | francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | bandit-manchot-homophones-cm1 | bandit manchot | en cours |
-| francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif | - | - | non couvert |
+| francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif | bandit-manchot-conjugaison-present-cm1 | bandit manchot | en cours |
 | francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | - | - | non couvert |
 | francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | - | - | non couvert |
 
-Note sur la ligne `en cours` : `DEC-0008-la-couverture-reprend-francais-cp-et-cm1.md` ouvre cette
-competence au sprint 4, sur la matiere premiere `contenu-repris/mots/cm1-homophones.yml` (story
-S4-1, `docs/backlog/backlog.md`) - premiere ligne de matrice couverte pour le CM1, tous jeux
+Note sur la ligne `en cours` (homophones) : `DEC-0008-la-couverture-reprend-francais-cp-et-cm1.md`
+ouvre cette competence au sprint 4, sur la matiere premiere `contenu-repris/mots/cm1-homophones.yml`
+(story S4-1, `docs/backlog/backlog.md`) - premiere ligne de matrice couverte pour le CM1, tous jeux
 confondus.
+
+Note sur la ligne `en cours` (conjugaison), ouverte au sprint 6 : `DEC-0013-perimetre-sprint-6.md`
+ouvre cette competence sur `textes-trous/cm1-conjugaison.yml` (story S6-3,
+`docs/backlog/backlog.md`), **sur le present de l'indicatif uniquement**. Le futur et l'imparfait,
+les deux autres temps nommes par cette meme ligne, restent explicitement `non couvert` par ce
+paquet : la part non couverte est assumee des l'ouverture, pas decouverte a l'audit (voir `DEC-0013`
+pour le motif du choix entre les deux candidats de `textes-trous/`).
 
 **Etat au 2026-08-06, premier audit** : `nadia-prof` prononce **VALIDE SOUS RESERVE**, Done
 pedagogique **accorde** (`squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`) : le contenu
@@ -199,6 +206,15 @@ des phrases qui obligent l'enfant a regarder ailleurs que juste avant le trou (p
 pas CE1/CE2) - story S5-6 de `docs/backlog/backlog.md`. Reserve distincte, non bloquante pour ce
 statut mais nommee : dix items pour dix manches, donc aucune variete entre deux parties - story
 S5-7.
+
+**Etat au 2026-08-07, audit de l'increment de s05** : `nadia-prof` reconduit et elargit le Done
+pedagogique (**VALIDE SOUS RESERVE**) aux douze items neufs et aux vingt-deux indices
+(`squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`, verdict du 2026-08-07). **La condition
+n'est PAS levee, la ligne reste `en cours`.** Quatre des six points de sa condition sont tenus ; il
+manque deux items neufs de plus dont le mot decisif n'est pas voisin du trou, et la correction d'un
+indice qui instruit une substitution qui n'est pas du francais - chiffres exacts a la section 3 du
+meme verdict, repris sans les redurcir ni les affaiblir dans les stories S6-4 et S6-5
+(`docs/backlog/backlog.md`).
 
 ## Synthese au sprint 0, mise a jour a l'ouverture du sprint 4
 
@@ -262,3 +278,35 @@ correspond integralement a une ligne non encore ouverte sans reproduire le defau
 partielle deja sanctionne sur les homophones CM1. L'ouverture suivante est nommee, pas indefinie :
 sprint 6, sur `textes-trous/cm1-accords.yml` ou `textes-trous/cm1-conjugaison.yml`, deja
 identifies par `DEC-0008`.
+
+## Perimetre de s06 (2026-08-07)
+
+`DEC-0013-perimetre-sprint-6.md` : le sprint 6 ouvre une ligne de plus, sur `textes-trous/
+cm1-conjugaison.yml` (story S6-3, `docs/backlog/backlog.md`) - **la ligne
+`francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et
+imparfait de l'indicatif` passe `en cours` par ce planning**, jeu et mecanique renseignes
+ci-dessus. Ce paquet ne couvre que le present de l'indicatif ; le futur et l'imparfait restent
+`non couvert` par construction, assumes des l'ouverture (`DEC-0013`, qui motive ce choix face a
+l'autre candidat, `textes-trous/cm1-accords.yml`, non retenu ce sprint). **Aucune ligne ne passe a
+`couvert-valide` par ce planning** : ce statut n'est prononce que par `nadia-prof`, apres audit
+reel de l'increment - y compris pour la ligne homophones CM1, dont les deux points restants
+(S6-4, S6-5) visent a lever la condition deja ecrite, sans prejuger du verdict.
+
+Le sprint 6 porte par ailleurs le rhabillage du gabarit (S6-1, S6-2, deja livre et audite en s05,
+`DEC-0012` amendee en consequence), la sortie de quarantaine de "Le bon son" (S6-6, S6-7, lot
+indivisible) et une dette de forme et d'outillage (S6-8 a S6-14) : aucune de ces stories ne porte
+de competence programme, elles n'ont donc pas d'impact sur cette matrice.
+
+## Synthese apres l'ouverture de s06 (2026-08-07)
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 10 | 0 | 1 |
+| mathematiques CM1 | 12 | 12 | 0 | 0 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 9 | 2 | 0 |
+| **Total** | **46** | **42** | **3** | **1** |
+
+Une ligne de plus qu'a la cloture de s05 : francais CM1 passe de une a deux lignes `en cours`
+(homophones grammaticaux, conjugaison au present). Aucune ligne ne passe `couvert-valide` par ce
+planning ; ce mouvement attend l'audit de `nadia-prof` sur les increments de s06.
