@@ -17,7 +17,10 @@
   Rhabillage du gabarit de s05 (en-tete, icone, menu, centrage) : **VALIDE SOUS RESERVE** le
   2026-08-07, quatre reserves chiffrees, aucun refus. Comportement du double appui (`ADR-0019`) :
   **VALIDE** le 2026-08-07. Correctifs du score (accent, course de session) : **VALIDE** le
-  2026-08-07, rejoues.
+  2026-08-07, rejoues. **Arbitrage prealable au developpement de S6-9** (une seule sortie par ecran
+  de jeu) : rendu le 2026-08-07, story **confirmee sur son principe et refusee sur sa forme**,
+  `sortie-pleine` conserve. Ce n'est pas un Done pedagogique : celui de S6-9 sera prononce en jouant
+  l'increment livre.
 - **Derniere mise a jour** : 2026-08-07
 
 ## Competences visees
@@ -85,6 +88,189 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Arbitrage prealable au developpement - S6-9, une seule sortie par ecran de jeu, du 2026-08-07
+
+**Ce bloc n'est pas un Done pedagogique.** C'est un arbitrage demande avant que le sprint 6 soit
+gele, par `sofia-sm`, sur signalement de `theo-archi` (`squad/sprints/s06-ouvrir-la-conjugaison-et-solder-la-dette/avis-faisabilite.md`,
+section S6-9). Il est ecrit apres le verdict de s05 du meme jour et ne le modifie pas. Le Done
+pedagogique de S6-9 sera prononce plus tard, en jouant l'increment livre.
+
+#### Le verdict, en une phrase
+
+**S6-9 est confirmee sur son principe - une seule sortie par ecran de jeu, et le mot est "Les
+jeux" - et refusee sur la forme qu'elle donne a ce principe : la sortie qui survit sur un ecran de
+jeu est le bouton de la zone de contenu, pas le lien de l'en-tete, et `sortie-pleine` est conserve
+tel quel sur l'ecran de fin de partie.**
+
+#### Ce que le developpeur doit livrer, ecran par ecran
+
+| Ecran | Sortie dans la zone de contenu | Entree de menu de l'en-tete | Ce que l'enfant peut presser |
+|---|---|---|---|
+| Accueil (liste des jeux) | aucune, rien a changer | **visible**, forme `.lien-accueil` inchangee | les titres de jeux, et l'entree de menu |
+| Manche | **conservee telle quelle** : `.btn retour-accueil`, contour, "Les jeux" | **non visible** | les propositions (aplats), et "Les jeux" (contour) |
+| Retour juste ou faux, partie en cours (`enSuite` vrai) | **conservee telle quelle** : `.btn retour-accueil`, contour, "Les jeux" | **non visible** | "Encore !" (aplat), et "Les jeux" (contour) |
+| Retour, fin de partie (`enSuite` faux) | **conservee telle quelle, non negociable** : `.btn sortie-pleine`, aplat plein, "Les jeux" | **non visible** | "Les jeux" seul, en aplat plein |
+| Erreur | aucune sortie ajoutee ; "Recommencer" reste seul et reste un aplat plein | **non visible** | "Recommencer" seul |
+
+Traduit en travail, cela fait trois gestes et pas un de plus :
+
+1. **Le libelle de l'entree de menu passe de "Accueil" a "Les jeux".** C'est le seul changement de
+   texte que j'autorise sur cette story. Ma reserve 3 du meme jour est levee par ce geste.
+2. **L'entree de menu de l'en-tete n'est pas visible sur les cinq etats de l'ecran de jeu**
+   (manche, retour juste, retour faux, fin de partie, erreur). Elle ne l'est que sur l'ecran
+   d'accueil. Je decris ce que l'enfant doit voir ; **comment l'obtenir sans casser l'en-tete
+   permanent de `DEC-0012` est une question technique qui appartient a `theo-archi`**, et je ne la
+   tranche pas.
+3. **Les deux branches du `th:class` de `fragments/retour.html` et le bouton de
+   `fragments/manche.html` ne sont pas touches.** Ni retires, ni renommes, ni redimensionnes.
+
+#### Le motif, sur ce que voit et comprend l'enfant
+
+**J'ai joue avant de trancher.** Jar reconstruit depuis un arbre propre sur le JDK 21 designe par
+`JAVA_HOME`, lance sur un port dedie, partie complete des additions CP jouee jusqu'a la dixieme
+manche en me trompant a chaque fois. HTML reellement servi releve sur les cinq etats. Le seul
+processus Java que j'ai arrete en fin d'audit etait le mien.
+
+Ce que la mesure donne sur l'ecran de fin de partie, aujourd'hui : la zone de contenu contient
+`<button class="btn sortie-pleine" data-role="sortie">Les jeux</button>`, le score, le signal
+juste/faux et "C'est fini !". **Ce bouton est la seule chose pressable de la zone de contenu**, et
+c'est exactement ce que S3-6 avait demande et que j'avais valide en jouant : quand il ne reste
+qu'une chose a faire, cette chose est la plus visible de l'ecran.
+
+**Si S6-9 est developpee telle qu'elle est ecrite, l'enfant qui termine une partie n'a plus rien a
+presser dans la zone qu'il regarde.** Sa seule porte devient le lien de l'en-tete, que j'ai mesure
+le meme jour a 102 x 53 px, en contour blanc, a x=1088 y=16 sur grand ecran et x=246 y=16 en
+360 px - c'est-a-dire dans le coin, loin du score et du "C'est fini !" qu'il vient de lire, et dans
+un bandeau dont j'ai ecrit qu'il n'invite pas au geste. La barre que j'avais posee en S3-6 etait
+"la seule chose que je peux faire est aussi la chose la plus visible de l'ecran". Un contour de
+102 x 53 dans un coin, contre un aplat de 117 x 56 au milieu du texte qu'on lit, ne tient pas cette
+barre. **Ce serait un cul-de-sac : un ecran qui dit "C'est fini !" sans montrer par ou sortir.** Un
+enfant de six ans qui ne trouve pas la sortie n'en cherche pas une seconde, il attend un adulte.
+
+**A l'inverse, retirer le bouton du fragment sur la manche et sur le retour en cours de partie ne
+coute rien a l'enfant et lui rapporte deux choses.** Sur ces deux ecrans, une autre action existe
+dans la zone de contenu - les propositions, "Encore !" - et elle reste l'aplat le plus saillant.
+Retirer la sortie dupliquee fait tomber les 11 215 px2 de sorties cumulees que j'avais mesures sur
+l'ecran de retour a 5 788 px2, contre 6 571 px2 pour "Encore !" : **l'action redevient majoritaire
+en surface, et non minoritaire de 70 %**. Et un seul mot circule sur toute l'application.
+
+**Pourquoi la sortie de l'en-tete, et pas celle du fragment.** Trois raisons, dans cet ordre :
+
+1. **La position ne bouge pas.** Avec mon arbitrage, la sortie est au meme endroit sur les cinq
+   etats de l'ecran de jeu : en haut de la zone de contenu. Elle change de forme a la fin de la
+   partie - contour, puis aplat plein - et c'est la grammaire deja validee en S3-6. Avec S6-9 telle
+   qu'ecrite, la sortie serait dans le coin pendant la partie puis devrait grossir dans ce meme
+   coin a la fin : **une sortie qui change de place est plus couteuse a apprendre qu'une sortie qui
+   change de taille**, a six ans.
+2. **Le bandeau est deja le point faible de cet ecran, ce n'est pas la que doit vivre la seule
+   action.** Ma reserve 4 du meme jour dit que le bandeau porte exactement la couleur d'action sur
+   107 677 px2, seize fois le bouton "Encore !". Y loger la seule chose pressable de l'ecran de fin
+   de partie aggraverait ce point au lieu de le traiter, et croiserait S6-10 de face.
+3. **Cela n'enleve a l'enfant aucune porte.** `DEC-0012` ecrit elle-meme que l'entree de menu est
+   "equivalente au bouton 'Les jeux' existant". Je ne retire donc pas une sortie, je retire un
+   doublon - ce que ma reserve 2 demandait, mot pour mot : "sur un ecran de jeu il en faut un, pas
+   deux".
+
+#### Je ne deplace pas mes poteaux, et je dis ce que ma reserve 2 demandait vraiment
+
+Ma reserve 2 du 2026-08-07 se termine par : "Je ne tranche pas lequel des deux doit partir - c'est
+une question produit pour `camille-po` - je dis que sur un ecran de jeu il en faut un, pas deux."
+**La barre est inchangee : un, pas deux.** `camille-po` a choisi dans le perimetre que je lui avais
+laisse, et son choix est defendable sur le papier. Ce que je corrige n'est pas la barre, c'est le
+perimetre du choix que je lui avais donne : **je le croyais neutre pedagogiquement, il ne l'est
+pas**, parce que l'une des deux branches supprime un etat que j'ai valide en jouant. Je ferme donc
+cette branche et je nomme laquelle des deux sorties part. C'est la correction d'une erreur a moi,
+pas un durcissement d'exigence a elle.
+
+**Cet arbitrage ne defait rien de ce que j'ai valide.** Je l'ai verifie story par story plutot que
+de l'affirmer :
+
+- **S3-6** (la sortie de fin de partie est un aplat plein) : intacte, c'est le but de l'arbitrage.
+- **S3-6, troisieme critere** (sur la manche et sur le retour, la sortie reste en contour et ne
+  domine pas les boutons de reponse) : tenu, et mieux que tenu - la sortie disparait de ces deux
+  ecrans, elle ne peut donc plus dominer.
+- **S1-4** (une sortie visible et atteignable depuis n'importe quel etat) : tenu sur les cinq
+  etats, par le bouton du fragment sur quatre d'entre eux et par "Recommencer" sur l'ecran
+  d'erreur.
+- **S6-1 et `DEC-0012` point 2** (l'en-tete permanent porte exactement une entree de menu), que
+  j'ai validee le meme jour : l'entree existe toujours, avec sa forme et son unicite. Elle perd sa
+  fonction de doublon, elle ne perd pas son existence. Je me suis explicitement interdit de
+  demander sa suppression : ce serait faire a S6-1 ce que je reproche a S6-9 de faire a S3-6.
+
+#### Ce que cet arbitrage change pour les garde-fous - symptomes decrits, causes laissees a theo-archi
+
+`theo-archi` avait chiffre trois consequences sur `LActionNeDeclarePasMoinsQueLaSortieTest` pour
+S6-9 telle qu'ecrite. Mon arbitrage en annule deux et en cree une nouvelle :
+
+1. `leLienDeLEnTeteEstConfronteAuxActionsDesEcransDeJeu` epingle deux chaines finissant par
+   `.btn.lien-accueil "Accueil"` : **rouge**, comme il l'annoncait, puisque je confirme le
+   changement de libelle. Mise a jour legitime.
+2. `surLEcranDeRetourLaSortieEstConfronteeAEncoreMaisPasDansSonEtatDeFinDePartie` exige un couple
+   contenant `.btn.retour-accueil` : **reste vert sans reecriture**, puisque ce bouton reste. Le
+   couple que le lot Bootstrap avait inverse reste epingle.
+3. `noneMatch(couple -> couple.contains("sortie-pleine"))` : **garde son objet**, puisque
+   `sortie-pleine` reste rendu. Le vert decoratif qu'il redoutait n'arrive pas.
+4. **Ce qui devient sans objet, en revanche, c'est son extension du 2026-08-07** : le lien de
+   l'en-tete ne s'affiche plus en meme temps que les boutons d'action des ecrans de jeu, donc les
+   confronter ne mesure plus une situation que l'enfant rencontre. Je le signale comme symptome et
+   je ne propose pas de correctif : c'est la meme famille de defaut qu'il nomme lui-meme, un
+   appariement qui survit a la disparition de son sujet. **A instruire par `theo-archi`.**
+
+#### Les proprietes dont je reste seule garde apres cette story
+
+Je les nomme pour que personne ne croie couvert ce qui ne l'est pas :
+
+- **que l'entree de menu soit reellement invisible sur les cinq etats de l'ecran de jeu.** Aucun
+  automate du depot ne mesure aujourd'hui la visibilite d'un element. Je le verifierai en jouant,
+  etat par etat, y compris l'ecran d'erreur.
+- **que "Les jeux" soit dechiffrable et suffisant comme unique sortie.** Mon avis honnete, et il
+  n'est pas parfait : `eu` est un digraphe travaille au CP, mais le `x` final muet de "jeux" ne se
+  deduit pas, et le referentiel `squad/programme/francais/competences-cp.md` ne liste pas ce
+  grapheme - il ne pretend pas etre exhaustif. Ce qui fait tenir le mot, c'est qu'il nomme ce que
+  l'enfant est en train de faire, la ou "Accueil" nomme un lieu abstrait. Je le tiens pour
+  acceptable et je le rejugerai en jouant, sur le libelle rendu.
+- **que le bandeau bleu ne soit pas percu comme pressable** (ma reserve 4, story S6-10). Aucun
+  automate ne lit une couleur.
+- **l'ordre des elements dans la zone de contenu**, nouveau constat ci-dessous.
+
+#### Trois constats neufs du 2026-08-07, trouves en jouant aujourd'hui, qui ne conditionnent pas S6-9
+
+Je les date et je les separe de l'arbitrage : ce ne sont pas des exigences ajoutees a S6-9, ce sont
+des motifs pour `camille-po`, a traiter quand elle voudra.
+
+1. **Sur les cinq etats de l'ecran de jeu, la sortie est le premier element de la zone de
+   contenu**, au-dessus du score, de la consigne, de l'enonce et du verdict. Sur l'ecran de fin de
+   partie, cela veut dire que la chose la plus grande et la plus bleue de l'ecran invite l'enfant a
+   partir **avant** qu'il ait lu s'il avait juste. C'est un probleme d'ordre, pas de saillance : il
+   se corrige en descendant ce bouton sous "C'est fini !", pas en le retirant. **Je n'en fais pas
+   une condition de S6-9** parce que S6-9 ne parle pas d'ordre et que je viens de le decouvrir.
+2. **Sur l'ecran d'accueil, l'entree de menu mene a l'ecran deja affiche.** `DEC-0012` l'ecrit
+   elle-meme en excluant cette forme : "un lien vers l'accueil depuis l'accueil est un ornement (on
+   y est deja)". Apres mon arbitrage, l'accueil devient le seul ecran ou cette entree est visible,
+   donc le seul ou elle ne mene nulle part. Un bouton qui ne repond pas apprend a un enfant de six
+   ans que les boutons ne repondent pas. La suite coherente serait de la retirer, ce qui rouvre
+   `DEC-0012` point 2 et defait une partie de S6-1 : **c'est une decision produit, elle appartient
+   a `camille-po`, et je ne la prends pas a sa place.**
+3. **Sur l'ecran d'erreur, "Recommencer" n'est pas plus dechiffrable au CP que "Accueil" ne
+   l'etait.** Onze lettres, deux nasales, un `c` doux. Ce mot est anterieur a S6-9 et j'avais
+   valide cet ecran en s01 : je ne reviens pas dessus et je ne le rouvre pas ici. Je l'enregistre
+   parce que je l'ai relu aujourd'hui et que ce serait malhonnete de le taire au moment meme ou je
+   demande un mot lisible ailleurs.
+
+#### Ce que je corrige de mes propres constats, verifie avant de m'appuyer dessus
+
+- **Mon tableau A.1 du 2026-08-07 est exact sur la fin de partie** : la sortie y est bien portee par
+  `.sortie-pleine` en aplat plein, et l'action y est bien absente. Relu sur le HTML servi
+  aujourd'hui, pas suppose.
+- **Je n'ai pas remesure les pixels aujourd'hui, et je le dis** : `recreo.css` est inchange depuis
+  le commit que j'avais mesure, et les quatre gabarits n'ont recu depuis que des commentaires plus
+  le `th:block` d'`ADR-0020`. Je reprends donc mon tableau de mesures au lieu de le refaire.
+  **Sur la geometrie, ce controle est un report ; sur le balisage reellement servi, il est joue.**
+- **Le second symptome technique de mon point E de s05 est clos** : demander une manche sur une
+  partie terminee ne rend plus un ecran mort, elle rend l'ecran de fin de partie. Verifie en
+  jouant, sur la meme session. Ce qui a pour consequence directe, et qui compte ici, que
+  `sortie-pleine` est desormais le seul bouton de deux chemins distincts vers cet ecran.
 
 ### Verdict courant - s05, en-tete permanent et correctifs du score, audit du 2026-08-07
 
