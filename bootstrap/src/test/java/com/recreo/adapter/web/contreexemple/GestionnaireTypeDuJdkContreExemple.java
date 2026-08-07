@@ -2,7 +2,6 @@ package com.recreo.adapter.web.contreexemple;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /**
@@ -11,8 +10,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
  * org.apache.tomcat.util.http.InvalidParameterException, sous-classe d'IllegalStateException, s'est
  * fait passer pour une session perdue. Existe pour etre refuse par
  * GestionDesErreursTest.unGestionnaireNommeUnTypeDeRecreoOuLaCaptureGenerale.
+ *
+ * <p>ADR-0021 : plus de {@code @ControllerAdvice} sur la classe, meme motif que
+ * GestionnaireErreurBruteContreExemple.</p>
  */
-@ControllerAdvice
 public final class GestionnaireTypeDuJdkContreExemple {
 
     private static final Logger JOURNAL = LoggerFactory.getLogger(GestionnaireTypeDuJdkContreExemple.class);

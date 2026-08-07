@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <body>
-<div th:fragment="erreur" id="jeu">
+<!-- ADR-0020 : ce fragment ne porte pas l'identifiant de la zone qui le recoit. -->
+<div th:fragment="erreur">
     <p class="erreur">Oups ! Le jeu a un souci.</p>
     <a class="btn recommencer" data-role="action" href="/">Recommencer</a>
 </div>

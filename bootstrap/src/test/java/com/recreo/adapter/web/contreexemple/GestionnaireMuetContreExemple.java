@@ -1,7 +1,6 @@
 package com.recreo.adapter.web.contreexemple;
 
 import com.recreo.adapter.web.PartieIndisponible;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /**
@@ -9,8 +8,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
  * exacte du gestionnaire mesure sur le jar de 099e750 - correct sur tous les autres criteres, muet
  * sur celui-la. Existe pour etre refuse par
  * GestionDesErreursTest.toutGestionnaireDErreurJournalise.
+ *
+ * <p>ADR-0021 : plus de {@code @ControllerAdvice} sur la classe, meme motif que
+ * GestionnaireErreurBruteContreExemple - la regle porte sur la methode annotee @ExceptionHandler.</p>
  */
-@ControllerAdvice
 public final class GestionnaireMuetContreExemple {
 
     @ExceptionHandler(PartieIndisponible.class)

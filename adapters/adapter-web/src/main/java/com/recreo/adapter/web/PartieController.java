@@ -89,13 +89,7 @@ public class PartieController {
                         jeuId, actuelle, new BanditManchotMove(propositionChoisie)));
         synchroniserMarqueurDePartie(suivante, reponse);
 
-        Verdict verdict = suivante.dernierVerdict().orElseThrow();
-        modele.addAttribute("jeuId", jeuId);
-        modele.addAttribute("score", suivante.score());
-        modele.addAttribute("juste", verdict.juste());
-        modele.addAttribute("bonneReponse", verdict.bonneReponse());
-        modele.addAttribute("enSuite", suivante.enonceManche().isPresent());
-        return "fragments/retour :: retour";
+        return retourModele(modele, jeuId, suivante);
     }
 
     @GetMapping("/parties/{jeuId}/manche")
@@ -107,7 +101,18 @@ public class PartieController {
         return mancheModele(modele, jeuId, etat.consigne(), etat.session());
     }
 
+    /**
+     * ADR-0020 : une partie terminee n'a plus de manche a montrer. Le controle est ici, dans le seul
+     * point de passage de l'ecran de jeu, et non dans chaque route : toute route qui demande cet
+     * ecran - celles d'aujourd'hui comme celles de demain - obtient l'ecran de fin de partie a la
+     * place de l'ecran mort (consigne rendue, enonce vide, aucune proposition) que rendait
+     * {@code GET /parties/{jeuId}/manche} sur une partie terminee. Symetrique du choix d'ADR-0019,
+     * qui a ferme le meme cas cote commande.
+     */
     private String mancheModele(Model modele, String jeuId, String consigne, BanditManchotSession session) {
+        if (session.status() == SessionStatus.TERMINEE) {
+            return retourModele(modele, jeuId, session);
+        }
         modele.addAttribute("jeuId", jeuId);
         modele.addAttribute("consigne", consigne);
         modele.addAttribute("enonce", session.enonceManche().orElse(""));
@@ -115,6 +120,22 @@ public class PartieController {
         modele.addAttribute("score", session.score());
         modele.addAttribute("indice", session.indice().orElse(null));
         return "fragments/manche :: manche";
+    }
+
+    /**
+     * L'ecran de retour juste/faux, qui est aussi l'ecran de fin de partie quand plus aucune manche
+     * ne suit. Le verdict est obligatoire : une partie sans aucune manche jouee n'existe pas, et si
+     * elle existait, c'est un defaut qui doit partir en ERROR avec sa pile (ADR-0018) plutot que de
+     * rendre un ecran a moitie nourri.
+     */
+    private String retourModele(Model modele, String jeuId, BanditManchotSession session) {
+        Verdict verdict = session.dernierVerdict().orElseThrow();
+        modele.addAttribute("jeuId", jeuId);
+        modele.addAttribute("score", session.score());
+        modele.addAttribute("juste", verdict.juste());
+        modele.addAttribute("bonneReponse", verdict.bonneReponse());
+        modele.addAttribute("enSuite", session.enonceManche().isPresent());
+        return "fragments/retour :: retour";
     }
 
     private GameDefinition jeuOuEchec(String jeuId) {

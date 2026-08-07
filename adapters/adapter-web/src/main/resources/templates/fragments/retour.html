@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <body>
-<div th:fragment="retour" id="jeu">
+<!-- ADR-0020 : ce fragment ne porte pas l'identifiant de la zone qui le recoit. -->
+<div th:fragment="retour">
     <!-- S3-6 : sur ce meme ecran, la sortie est un contour discret tant qu'une autre action existe
          ("Encore !"), et devient l'aplat le plus saillant des que c'est la fin de partie, seule
          action possible restante (nadia-prof, FICHE-bandit-manchot-additions-cp.md, reserve 4).

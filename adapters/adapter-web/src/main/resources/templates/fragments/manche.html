@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <body>
-<div th:fragment="manche" id="jeu">
+<!-- ADR-0020 : ce fragment ne porte pas l'identifiant de la zone qui le recoit. hx-swap="innerHTML"
+     l'insere DANS #jeu ; le reprendre ici donnait deux elements du meme identifiant dans le document
+     assemble, donc une cible hx-target indeterminee. -->
+<div th:fragment="manche">
     <!-- ADR-0017 : data-role dit ce que le bouton fait du point de vue de l'enfant - avancer dans le
          jeu ou en sortir. C'est ce que le garde-fou de saillance relative compare, et il refuse tout
          bouton qui ne le porte pas. Attribut inerte : aucun CSS ni aucun script ne s'en sert. -->

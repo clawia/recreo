@@ -28,7 +28,12 @@
         </nav>
     </div>
 </header>
-<main id="jeu" class="container zone-jeu" th:fragment="zoneAccueil">
+<!-- ADR-0020 : ce <main> est le seul porteur de l'identifiant de la zone echangee, dans tout le
+     depot. Le fragment "zoneAccueil" que /retour renvoie est porte par un th:block, qui ne rend
+     aucune balise : reinjecter le <main> dans lui-meme doublait son identifiant et empilait deux
+     fois .container et .zone-jeu, donc deux fois leur rembourrage. -->
+<main id="jeu" class="container zone-jeu">
+<th:block th:fragment="zoneAccueil">
     <div th:if="${reprise}">
         <div th:replace="~{fragments/manche :: manche}"></div>
     </div>
@@ -43,6 +48,7 @@
             </li>
         </ul>
     </div>
+</th:block>
 </main>
 </body>
 </html>

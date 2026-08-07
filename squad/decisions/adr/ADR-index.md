@@ -23,6 +23,8 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0017](ADR-0017-comparer-deux-boutons-dun-meme-ecran.md) | Comparer deux boutons d'un meme ecran, et dire ce que cette comparaison ne voit pas | s05 | 2026-08-06 | Accepte, amende le 2026-08-07 |
 | [ADR-0018](ADR-0018-un-defaut-ne-traverse-pas-le-serveur-en-silence.md) | Empecher qu'un defaut traverse le serveur en silence, et qu'il emprunte le canal reserve a l'attendu | s05 | 2026-08-06 | Accepte |
 | [ADR-0019](ADR-0019-un-cycle-lire-calculer-ecrire-sur-la-session-est-indivisible.md) | Rendre indivisible tout cycle lire-calculer-ecrire sur l'etat de partie, et cesser de demander un coup a une partie terminee | s05 | 2026-08-07 | Accepte |
+| [ADR-0020](ADR-0020-l-unite-de-verification-d-un-ecran-est-le-document-assemble.md) | Juger un ecran sur le document assemble apres l'echange htmx, et non sur le fragment ni sur la page entiere | s06 | 2026-08-07 | Accepte |
+| [ADR-0021](ADR-0021-un-contre-exemple-de-garde-fou-n-est-jamais-un-bean-de-l-application.md) | Interdire a un contre-exemple de garde-fou de porter un stereotype Spring, et verifier qu'aucun n'est un bean du contexte assemble | s06 | 2026-08-07 | Accepte |
 
 ## Amendements
 
@@ -138,3 +140,29 @@ l'utilisatrice en jouant :
     **parallelisme** : un test qui n'envoie qu'une requete a la fois a un perimetre qui exclut la
     concurrence, et un test de course a une seule tentative serait vert deux fois sur trois sur un
     depot casse, donc decoratif.
+
+Sprint 6 en ajoute deux, tous deux nes d'obstacles laisses ouverts a la cloture de s05 et tous deux
+portant sur la meme faute de fond - **un automate vert qui ne regardait pas le bon objet** :
+
+18. **ADR-0020** repond a la question que ni les tests de controleur ni les tests d'integration ne
+    posaient : quel est l'objet a juger quand un ecran est assemble par htmx dans le navigateur ? Ni
+    le fragment seul, ni la page avant echange, mais le **document assemble** - et les deux defauts
+    qu'il ferme vivaient tous les deux dans cet ecart. Il apporte deux choses au depot. D'abord la
+    demonstration qu'un defaut signale comme unique pouvait avoir **deux chemins** : l'identifiant
+    duplique venait du fragment qui reprenait l'identifiant de sa zone, **et** du gabarit qui se
+    reinjectait dans lui-meme, le second n'ayant jamais ete nomme par personne. Ensuite une reponse
+    ecrite a une question d'atteignabilite : le chemin de l'ecran mort n'existe pas en un seul onglet,
+    il existe des qu'un ecran deja rendu survit a un changement d'etat de la session - donc
+    l'inatteignabilite reposait sur une hypothese de comportement d'utilisateur, que rien ne peut
+    garder. Trois lignes valent mieux qu'une hypothese non gardable ;
+19. **ADR-0021** remplit un silence d'ADR-0003, qui disait ce qu'un contre-exemple doit faire sans
+    jamais dire ce qu'il n'a pas le droit de faire. Six faux depots ecrits pour etre refuses par un
+    automate s'etaient mis a s'executer dans le produit sous test, dont un qui rendait l'ecran
+    d'erreur a la place du gestionnaire reel : l'inversion complete de la doctrine. Il tranche en
+    attaquant la cause - un contre-exemple ne porte aucun stereotype Spring, sa faute vit dans la
+    structure que sa regle examine - plutot que le symptome, et il refuse pour cela les deux voies
+    que la story proposait (resserrer le scan, deplacer les contre-exemples), l'une parce qu'elle
+    fabrique un perimetre enumere, l'autre parce que l'emplacement d'un contre-exemple fait sa
+    valeur. Il apporte au depot le premier couple de garde-fous **explicitement non recouvrants** :
+    une regle ArchUnit qui voit une cause sans demarrer de contexte, un `@SpringBootTest` qui voit
+    une propriete qu'aucune analyse statique n'atteint.
