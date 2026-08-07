@@ -102,9 +102,16 @@ body:has(.ecran-de-jeu) .lien-accueil {
 }
 
 /* S6-2 : le contenu de chaque ecran (liste des jeux ou fragment de jeu) respire au-dessus et
-   au-dessous de la zone que .container centre horizontalement. */
+   au-dessous de la zone que .container centre horizontalement.
+   S6-8, correction proposee par ines-design (squad/sprints/s06-ouvrir-la-conjugaison-et-solder-la-dette/proposition-ines-s6-8-s6-10.md) :
+   le raccourci "padding: 2rem 0" fixait aussi padding-left/padding-right a 0, et l'emportait sur
+   le rembourrage lateral inconditionnel de .container (Bootstrap, 0,75rem) charge avant cette
+   feuille (ADR-0014 point 5) - a toute largeur d'ecran, la marge laterale du contenu disparaissait.
+   Ne plus rien declarer sur les deux axes laterales laisse la regle de .container s'appliquer
+   telle quelle. Garde-fou : LeConteneurTierGardeSonRembourrageLateralTest. */
 .zone-jeu {
-    padding: 2rem 0;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 /* ADR-0014 : list-style et padding-left viennent desormais de .list-unstyled (gabarit), portee

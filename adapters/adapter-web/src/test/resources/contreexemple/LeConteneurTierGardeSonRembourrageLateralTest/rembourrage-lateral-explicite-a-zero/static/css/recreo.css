@@ -1,0 +1,5 @@
+/* padding-right explicite a 0, sans raccourci : la meme faute, ecrite autrement. */
+.contenu-etroit {
+    padding-top: 1rem;
+    padding-right: 0;
+}
