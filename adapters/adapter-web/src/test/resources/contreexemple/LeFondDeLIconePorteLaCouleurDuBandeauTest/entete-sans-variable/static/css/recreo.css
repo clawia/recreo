@@ -1,0 +1,11 @@
+/* L'icone est correctement recoloree, mais .entete est revenu (ou n'a jamais bouge) sur
+   --recreo-accent : le couplage que ce garde-fou controle ne dirait alors plus rien du bandeau
+   reellement rendu. */
+:root {
+    --recreo-accent: #2e6f9e;
+    --recreo-entete-fond: #1d4b6b;
+}
+
+.entete {
+    background-color: var(--recreo-accent);
+}
