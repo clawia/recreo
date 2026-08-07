@@ -111,7 +111,7 @@ class BanditManchotTest {
 
         BanditManchotSession suivante = jouer(premiere, "1");
 
-        assertThat(suivante.dernierVerdict()).contains(new Verdict(true, "1"));
+        assertThat(suivante.dernierVerdict()).contains(new Verdict(true, "1", Optional.empty()));
         assertThat(suivante.score()).isEqualTo(new Score(1, 1));
         assertThat(suivante.status()).isEqualTo(SessionStatus.EN_COURS);
         assertThat(suivante.enonceManche()).contains("deux");
@@ -125,11 +125,67 @@ class BanditManchotTest {
 
         BanditManchotSession troisieme = jouer(deuxieme, "3");
 
-        assertThat(troisieme.dernierVerdict()).contains(new Verdict(false, "2"));
+        assertThat(troisieme.dernierVerdict()).contains(new Verdict(false, "2", Optional.empty()));
         assertThat(troisieme.score()).isEqualTo(new Score(1, 2));
         assertThat(troisieme.status()).isEqualTo(SessionStatus.EN_COURS);
         assertThat(troisieme.enonceManche()).contains("trois");
         assertThat(troisieme.propositions()).containsExactly("1", "4", "3");
+    }
+
+    /**
+     * ADR-0024 : l'explication de l'item joue voyage dans le verdict, juste ou faux, et un item qui
+     * n'en porte pas n'en fait pas apparaitre une. Le texte est ici volontairement absurde : la
+     * mecanique le transporte sans le lire, et un test dont le texte serait une phrase plausible ne
+     * distinguerait pas le transport d'une fabrication.
+     */
+    @Test
+    void leVerdictPorteLExplicationDeLItemJoueEtRienQuandLItemNEnPorteAucune() {
+        String texteQueLaMecaniqueNeComprendPas = "xyzzy 42 - ceci n'est pas une phrase";
+        ContentSource contenu = new ListContentSource(DESCRIPTEUR, List.of(
+                new Question(new ItemId("q1"), "un", "1", List.of("2"), Optional.empty(),
+                        Optional.of(texteQueLaMecaniqueNeComprendPas)),
+                new Question(new ItemId("q2"), "deux", "2", List.of("3"))));
+        BanditManchotSession session = demarrer(contenu);
+
+        BanditManchotSession apresUneReponseJuste = jouer(session, "1");
+        assertThat(apresUneReponseJuste.dernierVerdict().orElseThrow().explication())
+                .as("reponse juste : l'explication de l'item joue voyage telle quelle")
+                .contains(texteQueLaMecaniqueNeComprendPas);
+
+        BanditManchotSession apresUneReponseFausse = jouer(apresUneReponseJuste, "pas 2");
+        assertThat(apresUneReponseFausse.dernierVerdict().orElseThrow().explication())
+                .as("ADR-0024 : un item sans explication n'en fait pas apparaitre une")
+                .isEmpty();
+    }
+
+    /**
+     * ADR-0024, exigence de nadia-prof citee par S6-7 : "systematiquement [...] Pas 'une seule fois'
+     * non plus." L'aide de S3-2 represente un item deja reussi ; ce second passage porte la meme
+     * explication que le premier, sans qu'aucun etat "deja montre" n'existe nulle part.
+     */
+    @Test
+    void unItemRepresenteApresTroisEchecsPorteEncoreSonExplication() {
+        Question succes = new Question(new ItemId("reussi"), "succes", "ok", List.of("non"),
+                Optional.empty(), Optional.of("explication de l'item revu"));
+        Question q1 = new Question(new ItemId("q1"), "un", "1", List.of("2"));
+        Question q2 = new Question(new ItemId("q2"), "deux", "2", List.of("3"));
+        Question q3 = new Question(new ItemId("q3"), "trois", "3", List.of("4"));
+        BanditManchotSession session = demarrer(sequenceInfinie(succes, q1, q2, q3));
+
+        session = jouer(session, "ok");
+        assertThat(session.dernierVerdict().orElseThrow().explication())
+                .as("premier passage sur l'item")
+                .contains("explication de l'item revu");
+        session = jouer(session, "faux");
+        session = jouer(session, "faux");
+        session = jouer(session, "faux");
+        assertThat(session.enonceManche()).as("l'item deja reussi est represente").contains("succes");
+
+        session = jouer(session, "ok");
+        assertThat(session.dernierVerdict().orElseThrow().explication())
+                .as("second passage sur le meme item : la meme explication, aucune memoire des"
+                        + " occurrences precedentes")
+                .contains("explication de l'item revu");
     }
 
     @Test
@@ -140,7 +196,7 @@ class BanditManchotTest {
         session = jouer(session, "3");
 
         assertThat(session.score()).isEqualTo(new Score(2, 3));
-        assertThat(session.dernierVerdict()).contains(new Verdict(true, "3"));
+        assertThat(session.dernierVerdict()).contains(new Verdict(true, "3", Optional.empty()));
     }
 
     @Test
@@ -236,7 +292,7 @@ class BanditManchotTest {
 
         BanditManchotSession suivanteAnglais =
                 (BanditManchotSession) mecanique.apply(sessionAnglais, new BanditManchotMove("rouge"));
-        assertThat(suivanteAnglais.dernierVerdict()).contains(new Verdict(true, "rouge"));
+        assertThat(suivanteAnglais.dernierVerdict()).contains(new Verdict(true, "rouge", Optional.empty()));
         assertThat(suivanteAnglais.score()).isEqualTo(new Score(1, 1));
     }
 

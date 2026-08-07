@@ -1,0 +1,10 @@
+schema: 1
+# ADR-0013 : catalogue fautif, jamais servi. Le cas limite exact - autant d'items que de manches -
+# parce que c'est lui qui distingue une inegalite stricte d'une inegalite large.
+jeux:
+  - id: jeu-aussi-court-que-sa-partie
+    titre: "Jeu de contre-exemple"
+    consigne: "Consigne de contre-exemple"
+    mecanique: bandit-manchot
+    paquet: paquet-de-trois-items
+    nombreDeManches: 3

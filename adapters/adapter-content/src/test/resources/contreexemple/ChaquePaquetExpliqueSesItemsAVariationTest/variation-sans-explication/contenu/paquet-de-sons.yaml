@@ -1,0 +1,19 @@
+schema: 1
+id: paquet-de-sons
+type: question
+# ADR-0013 : paquet fautif, jamais livre. Premier bord du critere - l'item a variation n'a pas son
+# explication, ce qu'un auteur produit en ecrivant les items avant les textes.
+descripteur:
+  matiere: "Contre-exemple"
+  niveau: "Contre-exemple"
+  domaine: "Contre-exemple"
+  competence: "Contre-exemple"
+items:
+  - enonce: "DENT"
+    bonneReponse: "an"
+    distracteurs: ["on", "in"]
+    graphie: "en"
+  - enonce: "BANC"
+    bonneReponse: "an"
+    distracteurs: ["on", "in"]
+    graphie: "an"

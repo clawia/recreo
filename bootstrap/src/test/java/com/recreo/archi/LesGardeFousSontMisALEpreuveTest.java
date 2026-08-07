@@ -49,12 +49,14 @@ class LesGardeFousSontMisALEpreuveTest {
      * un rouge, jamais un vert silencieux.
      */
     private static final Set<String> DETTE_DE_BALAYAGE = Set.of(
-            "AucunVocabulaireDeMatiereTest",
             "FaviconTest",
             "FrontieresDuJavaScriptTest");
 
     /**
-     * Etat au 2026-08-06, ouverture de s05 : baisse de 4 a 3 - HabillageDesEcransTest sort de la
+     * Etat au 2026-08-07, s06 : baisse de 3 a 2 - AucunVocabulaireDeMatiereTest sort de la dette
+     * (ADR-0024). Il recoit deux arbres de sources fautifs, un par perimetre, et son critere s'etend
+     * dans le meme geste aux types de contenu partages ; le plafond vaut donc exactement la taille de
+     * la dette, deux noms, et pas une place de libre. Avant cela : baisse de 4 a 3 - HabillageDesEcransTest sort de la
      * dette. Je l'avais laissee ouverte en la nommant, dans le commit meme qui modifiait ce
      * plafond : la sortir demandait plus qu'une fixture, parce que son perimetre etait une liste de
      * onze selecteurs et qu'une mutation prouve le critere, pas le perimetre. La propriete generale
@@ -64,7 +66,7 @@ class LesGardeFousSontMisALEpreuveTest {
      * (TexteAccentueDesGabaritsTest). Ce nombre ne remonte jamais ; le baisser demande un diff
      * visible.
      */
-    private static final int PLAFOND_DE_DETTE = 3;
+    private static final int PLAFOND_DE_DETTE = 2;
 
     private record SourceDeTest(Path module, Path fichier) {
 

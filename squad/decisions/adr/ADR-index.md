@@ -26,6 +26,8 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0020](ADR-0020-l-unite-de-verification-d-un-ecran-est-le-document-assemble.md) | Juger un ecran sur le document assemble apres l'echange htmx, et non sur le fragment ni sur la page entiere | s06 | 2026-08-07 | Accepte |
 | [ADR-0021](ADR-0021-un-contre-exemple-de-garde-fou-n-est-jamais-un-bean-de-l-application.md) | Interdire a un contre-exemple de garde-fou de porter un stereotype Spring, et verifier qu'aucun n'est un bean du contexte assemble | s06 | 2026-08-07 | Accepte |
 | [ADR-0022](ADR-0022-un-habillage-permanent-declare-son-masquage-et-l-ecran-son-marqueur.md) | Rendre la visibilite d'un habillage permanent dependante d'un marqueur d'etat pose par le serveur, et retirer d'un appariement les boutons qui ne se montrent plus ensemble | s06 | 2026-08-07 | Accepte |
+| [ADR-0023](ADR-0023-un-paquet-offre-strictement-plus-d-items-que-sa-partie-n-a-de-manches.md) | Exiger de tout jeu du catalogue qu'il offre strictement plus d'items que sa partie n'a de manches, et deriver ce controle du catalogue | s06 | 2026-08-07 | Accepte |
+| [ADR-0024](ADR-0024-le-verdict-porte-l-explication-de-l-item-joue-la-graphie-reste-au-paquet.md) | Faire porter l'explication d'un item par le verdict de la manche jouee, et laisser la graphie qui la justifie dans le paquet qui la declare | s06 | 2026-08-07 | Accepte |
 
 ## Amendements
 
@@ -142,7 +144,7 @@ l'utilisatrice en jouant :
     concurrence, et un test de course a une seule tentative serait vert deux fois sur trois sur un
     depot casse, donc decoratif.
 
-Sprint 6 en ajoute trois, tous nes d'obstacles ou d'arbitrages recus pendant le sprint, et tous
+Sprint 6 en ajoute cinq, tous nes d'obstacles ou d'arbitrages recus pendant le sprint, et tous
 portant sur la meme faute de fond - **un automate vert qui ne regardait pas le bon objet** :
 
 18. **ADR-0020** repond a la question que ni les tests de controleur ni les tests d'integration ne
@@ -179,4 +181,27 @@ portant sur la meme faute de fond - **un automate vert qui ne regardait pas le b
     corrige donc un amendement du meme jour, supprime l'epinglage qui affirmait un co-affichage
     disparu, et garde le mecanisme sous-jacent en disant franchement que sa population de production
     est momentanement vide - un mecanisme juste et eprouve sur objet neuf n'est pas decoratif, mais
-    l'epinglage qui pretendait que la production l'exerce l'etait.
+    l'epinglage qui pretendait que la production l'exerce l'etait ;
+21. **ADR-0023** ferme un trou que j'avais moi-meme nomme sans le refermer, et il le ferme au bon
+    endroit : la propriete "un paquet offre plus d'items que la partie n'a de manches" etait verifiee
+    par deux methodes qui nommaient chacune leur paquet dans leur titre, donc par un perimetre
+    enumere - la faute qu'ADR-0013 interdit nommement. Le sprint en a fourni la demonstration : une
+    entree de catalogue neuve a du recevoir sa propre methode, ecrite a la main par son auteur. Le
+    perimetre devient le **catalogue**, la seule source qui porte `nombreDeManches` (ADR-0012), et
+    l'inegalite est stricte parce que l'egalite est le second des deux defauts - non pas la partie qui
+    s'arrete avant l'heure, mais celle qui ne varie jamais. Il apporte au depot la premiere **relecture
+    adverse d'inegalite executee** : le jeu fautif porte l'egalite exacte, et remplacer `>` par `>=`
+    fait echouer le contre-exemple. C'est la lecon du plafond de dette d'ADR-0016 encodee au lieu
+    d'etre racontee ;
+22. **ADR-0024** tranche la decision que le lot "Le bon son" attendait, et la lecture du code y a
+    corrige mon inclination : je penchais pour un porteur par un argument de semantique, la raison
+    reelle est structurelle - apres `jouer`, la session ne tient plus l'item joue, le verdict en est la
+    seule trace, et un accesseur separe aurait exige un champ parallele a tenir en phase, la forme
+    exacte du defaut d'ADR-0016. Il apporte deux choses au depot. D'abord une **frontiere de matiere**
+    devenue executable : le texte generique traverse le domaine, la graphie qui le justifie reste dans
+    le paquet qui la declare, et un automate refuse desormais tout mot de matiere sur les types que
+    toutes les matieres traversent - la dette 2 de la version precedente rendue impossible dans son
+    sens inverse. Ensuite un garde-fou dont les **deux cles se gardent l'une l'autre** : puisque le
+    chargeur ignore toujours en silence une cle inconnue, c'est le croisement qui rend la faute de
+    frappe rouge, et l'ADR dit franchement quelle dette il laisse ouverte et quel second usage la
+    fermerait.

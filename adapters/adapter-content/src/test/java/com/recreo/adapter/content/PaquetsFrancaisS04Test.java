@@ -48,8 +48,13 @@ import static org.assertj.core.api.Assertions.assertThat;
  * <p>S5-5 (residuel) : les vingt-deux items de "cm1-homophones" portent desormais chacun un indice,
  * fermant la dette de {@code ChaquePaquetPorteUnIndiceTest.DETTE_DE_CONTENU} pour ce paquet.</p>
  *
- * <p>S5-7 : le paquet compte davantage d'items que de manches par partie, et deux parties jouees
- * avec des graines distinctes ne presentent pas exactement les memes phrases.</p>
+ * <p>S5-7 : deux parties jouees avec des graines distinctes ne presentent pas exactement les memes
+ * phrases. Le premier critere de S5-7 (davantage d'items que de manches par partie) vivait aussi ici,
+ * dans une methode qui nommait son paquet ; il est desormais tenu pour <b>toutes</b> les entrees du
+ * catalogue par {@link ChaqueJeuDuCatalogueOffrePlusDItemsQueDeManchesTest} (ADR-0023), avec le
+ * quatrieme critere de S6-3 qui etait la meme propriete ecrite une seconde fois. Les deux methodes
+ * enumerees sont supprimees plutot que laissees en double : un perimetre enumere qui coexiste avec un
+ * perimetre derive n'ajoute rien et laisse croire que la propriete se verifie paquet par paquet.</p>
  *
  * <p>S6-3 (DEC-0013) : ouverture d'un troisieme paquet, "cm1-conjugaison-present" (present de
  * l'indicatif uniquement), sans qu'aucune ligne de domain/mechanic ni domain/mechanics n'ait ete
@@ -252,21 +257,6 @@ class PaquetsFrancaisS04Test {
     }
 
     /**
-     * S5-7, premier critere : une partie (10 manches, {@code catalogue.yaml}) ne presente jamais
-     * l'integralite du paquet.
-     */
-    @Test
-    void homophonesCm1CompteDavantageDItemsQueDeManchesParPartie() {
-        GameDefinition jeu = jeu("bandit-manchot-homophones-cm1");
-        List<Question> items = tousLesItems(jeu.contenu());
-
-        assertThat(items)
-                .as("S5-7 : le paquet compte davantage d'items que de manches par partie (%d), sinon"
-                        + " une partie presenterait toujours l'integralite du paquet", jeu.nombreDeManches())
-                .hasSizeGreaterThan(jeu.nombreDeManches());
-    }
-
-    /**
      * S5-7, second critere : deux parties completes jouees a la suite avec des graines distinctes
      * ne presentent pas exactement les memes phrases. Jouee par la mecanique reelle
      * (bandit manchot) et non par un tirage isole, pour couvrir la chaine complete traversee par un
@@ -382,22 +372,6 @@ class PaquetsFrancaisS04Test {
                 .as("S6-3 : chacune des six personnes grammaticales est representee par au moins"
                         + " un item")
                 .containsExactlyInAnyOrder("je", "tu", "il/elle", "nous", "vous", "ils/elles");
-    }
-
-    /**
-     * S6-3, quatrieme critere : le paquet compte plus d'items que de manches par partie (le paquet
-     * repris n'en comptait que six, exactement le minimum, ce qui aurait termine la partie avant
-     * l'heure sans qu'aucun garde-fou ne le voie).
-     */
-    @Test
-    void conjugaisonPresentCm1CompteDavantageDItemsQueDeManchesParPartie() {
-        GameDefinition jeu = jeu("bandit-manchot-conjugaison-present-cm1");
-        List<Question> items = tousLesItems(jeu.contenu());
-
-        assertThat(items)
-                .as("S6-3 : le paquet compte davantage d'items que de manches par partie (%d), sinon"
-                        + " une partie presenterait toujours l'integralite du paquet", jeu.nombreDeManches())
-                .hasSizeGreaterThan(jeu.nombreDeManches());
     }
 
     /** S6-3, sixieme critere : 20 manches jouees a la suite ne presentent pas toutes la meme phrase. */

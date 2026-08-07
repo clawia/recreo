@@ -59,6 +59,32 @@ section "Arbitrage prealable au developpement - S6-9") : la condition que j'avai
 `ADR-0022` et livrees dans le meme commit que cette mise a jour. S6-9 passe donc de "faisable sous
 condition" a **faisable**, sa part technique etant close.
 
+**Seconde mise a jour du 2026-08-07, a l'ouverture des lots (commit lu : `cf48cae`).** Deux
+engagements de cet avis sont tenus, et une de ses mesures est corrigee.
+
+1. **Le trou de garde-fou que j'avais nomme sans le refermer** (section S6-3, "un trou de garde-fou que
+   cette story met en lumiere") est ferme par **`ADR-0023`** et
+   `ChaqueJeuDuCatalogueOffrePlusDItemsQueDeManchesTest`. Le perimetre est le catalogue, pas une liste
+   de paquets : l'entree neuve `bandit-manchot-conjugaison-present-cm1` y est jugee sans y avoir ete
+   inscrite, et les deux methodes enumerees de `PaquetsFrancaisS04Test` sont supprimees. La condition
+   que j'avais posee ("il n'a de sens qu'attache au critere qui tranche entre 6 manches et plus
+   d'items") est levee : le produit a tranche, douze items pour dix manches.
+2. **La decision d'architecture que S6-7 attendait** est prise : **`ADR-0024`**. `Verdict` porte
+   l'explication de l'item joue, la graphie reste une declaration du paquet. **Je corrige ici mon
+   propre raisonnement** : je penchais pour `Verdict` par un argument de semantique (deux moments
+   d'affichage distincts), qui tient mais n'est pas le bon. La raison est structurelle - apres
+   `jouer`, la session ne tient plus l'item joue, donc un accesseur separe aurait exige un champ
+   parallele au verdict, la forme exacte du defaut d'`ADR-0016`. S6-6 et S6-7 passent de "non faisable
+   / faisable sous condition" a **faisables**, la part architecture etant close ; ce qui reste a
+   `lea-dev` est enumere dans la section "Ce qui reste au lot de `lea-dev`" d'`ADR-0024`.
+3. **Correction de chiffre.** Cet avis annonce **42 sites `new Question(`**, mesures a `095547c`. A
+   `cf48cae` ils sont **56** (meme methode : `git grep -o "new Question(" -- "*/src/main/*"
+   "*/src/test/*"` sur les cinq modules du pom agregateur). Les quatorze d'ecart viennent
+   entierement du lot de `marc-dev` fusionne depuis - douze items de conjugaison et deux items
+   d'homophones epingles dans `PaquetsFrancaisS04Test`. La conclusion que j'en tirais ne change pas,
+   elle se renforce : le constructeur de commodite a cinq arguments est indispensable, et il est
+   livre.
+
 ---
 
 ## Chantier 1 - ouverture conjugaison CM1 et solde des homophones

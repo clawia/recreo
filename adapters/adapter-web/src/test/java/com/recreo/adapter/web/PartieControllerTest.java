@@ -101,6 +101,31 @@ class PartieControllerTest {
         assertThat(fragment.select(".score").text()).isEqualTo("Score : 0");
     }
 
+    /**
+     * ADR-0024 : l'ecran de retour recoit l'explication de l'item joue sous "explication", et rien
+     * quand cet item n'en porte pas. Ce test s'arrete au modele, pas au HTML : l'affichage est livre
+     * par la story qui ecrit le contenu, et c'est son propre test de rendu qui le prouvera. Ce qui est
+     * garde ici est la plomberie - le texte franchit la frontiere du domaine vers la vue - et elle est
+     * la moitie qui manquait pour que la decision soit executable.
+     */
+    @Test
+    void lEcranDeRetourRecoitLExplicationDeLItemJoueEtRienQuandIlNEnPorteAucune() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+
+        MvcResult premierRetour = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                .session(session).param("propositionChoisie", "1")).andReturn();
+        assertThat(premierRetour.getModelAndView().getModel())
+                .containsEntry("explication", "explication de q1");
+
+        MvcResult secondRetour = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                .session(session).param("propositionChoisie", "2")).andReturn();
+        assertThat(secondRetour.getModelAndView().getModel())
+                .as("l'item suivant n'en porte pas : l'attribut est present et vide, comme l'indice de"
+                        + " l'ecran de manche, et rien n'est invente")
+                .containsEntry("explication", null);
+    }
+
     @Test
     void laMancheSuivanteAfficheUneNouvelleQuestionEtConserveLeScoreCumule() throws Exception {
         MockHttpSession session = new MockHttpSession();
@@ -384,7 +409,8 @@ class PartieControllerTest {
                     new GameDefinition(JEU_ID, "Un jeu", "Choisis la bonne reponse", BanditManchot.ID,
                             DESCRIPTEUR,
                             new ListContentSource(DESCRIPTEUR, List.of(
-                                    new Question(new ItemId("q1"), "un", "1", List.of("2")),
+                                    new Question(new ItemId("q1"), "un", "1", List.of("2"),
+                                            Optional.empty(), Optional.of("explication de q1")),
                                     new Question(new ItemId("q2"), "deux", "2", List.of("3")))),
                             10),
                     new GameDefinition(JEU_INFINI_ID, "Jeu infini", "Choisis la bonne reponse",

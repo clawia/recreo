@@ -1,0 +1,21 @@
+schema: 1
+id: paquet-de-sons
+type: question
+# Second bord : l'item regulier porte une explication, ce qu'un critere ecrit sur la seule presence
+# laisserait passer.
+descripteur:
+  matiere: "Contre-exemple"
+  niveau: "Contre-exemple"
+  domaine: "Contre-exemple"
+  competence: "Contre-exemple"
+items:
+  - enonce: "DENT"
+    bonneReponse: "an"
+    distracteurs: ["on", "in"]
+    graphie: "en"
+    explication: "Dans DENT, ce sont les lettres e et n qui font le son an."
+  - enonce: "BANC"
+    bonneReponse: "an"
+    distracteurs: ["on", "in"]
+    graphie: "an"
+    explication: "Dans BANC, ce sont les lettres a et n qui font le son an."
