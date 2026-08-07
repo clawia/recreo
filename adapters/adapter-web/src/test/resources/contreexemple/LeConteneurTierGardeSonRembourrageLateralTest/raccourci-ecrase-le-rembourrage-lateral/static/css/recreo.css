@@ -1,0 +1,6 @@
+/* La classe maison a l'air de ne parler que de haut et de bas ; le raccourci "2rem 0" fixe aussi
+   padding-left et padding-right a 0, qui l'emporte sur .enveloppe-tierce (meme specificite, feuille
+   maison chargee apres). */
+.contenu-large {
+    padding: 2rem 0;
+}
