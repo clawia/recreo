@@ -14,7 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.net.CookieManager;
 import java.net.URI;
-import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -40,11 +39,30 @@ import static org.assertj.core.api.Assertions.assertThat;
  * importe, comme CatalogueChargeableIT), et pour chaque proposition non-ASCII trouvee dans un
  * paquet reel, rejoue un coup par une vraie requete HTTP contre le serveur embarque - seul niveau
  * ou le decodage en cause s'exerce.</p>
+ *
+ * <p>Amendement de l'ADR-0013 (2026-08-06) - le corps envoye fait partie du perimetre. La premiere
+ * version de cette IT pourcent-encodait tout le corps avec {@code URLEncoder.encode(proposition,
+ * UTF_8)} : un octet non-ASCII devient alors une sequence percent-encodee toujours valide
+ * ("a" -&gt; "%C3%A0"), que le decodeur strict de Tomcat accepte sans jamais lever - la propriete
+ * que ce test pretendait garantir n'avait donc jamais ete cassee, ni avant ni apres le correctif.
+ * Mesure sur le serveur reel (filtre desactive puis reactive) : ni un octet non-ASCII pose tel quel
+ * (UTF-8 valide, non pourcent-encode) ni sa forme pourcent-encodee ne declenchent le defaut - seule
+ * une sequence d'octets **invalide** en UTF-8 le fait, exactement ce que documentent deja
+ * RequeteFormulaireDecodeeEnUtf8 et son test unitaire (l'octet isole 0xE0). Cette forme-la existe
+ * cote client des qu'un navigateur ou un proxy encode le corps en Latin-1/Windows-1252 au lieu
+ * d'UTF-8 : chaque caractere accentue du francais y devient un unique octet haut (0xE0 pour "a",
+ * par exemple) qui n'est jamais une sequence UTF-8 valide. C'est cette forme que cette IT
+ * reproduit : le corps garde son pourcent-encodage sur les seuls octets structurants du format
+ * (espace, "&amp;", "=", "+", "%"), mais chaque caractere accentue est pose tel quel et encode en
+ * Latin-1 par le publisher du corps - jamais en UTF-8, jamais pourcent-encode. Aucun octet n'est
+ * fabrique a la main : chaque proposition vient, comme avant, du catalogue reel.</p>
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PropositionsAccentueesJouablesIT {
 
     private static final String ECRAN_ERREUR = "Oups ! Le jeu a un souci.";
+    /** application/x-www-form-urlencoded : ces cinq octets restent structurants, tout le reste passe brut. */
+    private static final String OCTETS_ASCII_A_ENCODER = " &=+%";
 
     @Value("${local.server.port}")
     private int port;
@@ -78,17 +96,53 @@ class PropositionsAccentueesJouablesIT {
                         .build(),
                 HttpResponse.BodyHandlers.discarding());
 
-        String corps = "propositionChoisie=" + URLEncoder.encode(proposition, StandardCharsets.UTF_8);
+        String corps = corpsFormulaireAvecUnCaractereAccentueEnLatin1(proposition);
         HttpResponse<String> coup = client.send(
                 HttpRequest.newBuilder(URI.create(base() + "/parties/" + jeuId + "/coups"))
                         .header("Content-Type", "application/x-www-form-urlencoded")
-                        .POST(HttpRequest.BodyPublishers.ofString(corps))
+                        .POST(HttpRequest.BodyPublishers.ofString(corps, StandardCharsets.ISO_8859_1))
                         .build(),
                 HttpResponse.BodyHandlers.ofString());
 
+        // ADR-0011 : GestionnaireDesErreurs force le statut 200 sur toute exception, precisement
+        // pour que htmx substitue le fragment "Oups" dans la zone de jeu au lieu d'un swap qui
+        // echoue. Une reponse en 500 est donc, elle aussi, une manche qui a plante - meme si son
+        // corps ne contient pas le texte ECRAN_ERREUR. Necessaire ici : un defaut de perimetre
+        // distinct, hors mandat de cette IT, fait que GestionnaireErreurBruteContreExemple
+        // (bootstrap/src/test/java/.../contreexemple, un contre-exemple d'ADR-0011 destine a etre
+        // refuse par GestionDesErreursTest) se retrouve enregistre comme vrai bean Spring des que
+        // le contexte complet demarre ici (scanBasePackages = "com.recreo" sur RecreoApplication
+        // couvre aussi le classpath de test) et intercepte l'IllegalStateException de Tomcat avant
+        // GestionnaireDesErreurs, avec un statut 500 et un corps brut. Route a sofia-sm.
+        assertThat(coup.statusCode())
+                .as("%s : la proposition \"%s\" doit rester jouable, jamais planter la manche (statut HTTP)",
+                        jeuId, proposition)
+                .isEqualTo(200);
         assertThat(coup.body())
                 .as("%s : la proposition \"%s\" doit rester jouable, jamais planter la manche", jeuId, proposition)
                 .doesNotContain(ECRAN_ERREUR);
+    }
+
+    /**
+     * Pourcent-encode les seuls octets structurants du format ; pose chaque caractere accentue tel
+     * quel, pour que HttpRequest.BodyPublishers.ofString(..., ISO_8859_1) l'encode en un unique
+     * octet Latin-1 - jamais en UTF-8, jamais pourcent-encode. C'est cet unique octet, invalide en
+     * UTF-8, que le decodeur strict de Tomcat refuse.
+     */
+    private static String corpsFormulaireAvecUnCaractereAccentueEnLatin1(String proposition) {
+        StringBuilder corps = new StringBuilder("propositionChoisie=");
+        for (int i = 0; i < proposition.length(); i++) {
+            char caractere = proposition.charAt(i);
+            if (caractere < 128 && OCTETS_ASCII_A_ENCODER.indexOf(caractere) >= 0) {
+                corps.append('%').append(String.format("%02X", (int) caractere));
+            } else if (caractere <= 0xFF) {
+                corps.append(caractere);
+            } else {
+                throw new IllegalStateException(
+                        "caractere hors Latin-1, cette IT ne sait pas le reproduire : \"" + proposition + "\"");
+            }
+        }
+        return corps.toString();
     }
 
     private String base() {
