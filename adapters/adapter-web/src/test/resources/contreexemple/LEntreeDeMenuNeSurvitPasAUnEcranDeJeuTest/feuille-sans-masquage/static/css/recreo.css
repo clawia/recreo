@@ -1,0 +1,10 @@
+/* Second jeu fautif d'ADR-0022 : la feuille maison a perdu sa regle de masquage. Elle habille
+   encore .lien-accueil exactement comme la production, si bien que rien d'autre ne change - et
+   l'entree de menu de l'en-tete permanent redeviendrait visible sur les cinq etats de l'ecran de
+   jeu, sans qu'aucun gabarit n'ait bouge. C'est la forme de la regression qui ne se voit pas dans
+   un diff de gabarit, et elle est jugee avec les gabarits de la production. */
+.lien-accueil {
+    min-height: 2.75rem;
+    font-size: 1.25rem;
+    padding: 0.6rem 1.1rem;
+}

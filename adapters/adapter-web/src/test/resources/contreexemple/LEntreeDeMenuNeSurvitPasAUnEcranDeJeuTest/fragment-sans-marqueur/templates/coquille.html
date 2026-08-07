@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Jeu fautif d'ADR-0022, coquille permanente. Elle porte un habillage de sortie hors de la zone
+     echangee, exactement comme l'en-tete de recreo, et la feuille de ce jeu declare son masquage. -->
+<header class="bandeau">
+    <nav class="menu-fautif">
+        <a class="lien-sortie" data-role="sortie" href="/">Sortir</a>
+    </nav>
+</header>
+<main id="jeu">
+<th:block th:fragment="zone">
+    <button type="button" class="ouvrir" data-role="action"
+            hx-post="/ouvrir" hx-target="#jeu" hx-swap="innerHTML">Ouvrir</button>
+</th:block>
+</main>
+</body>
+</html>

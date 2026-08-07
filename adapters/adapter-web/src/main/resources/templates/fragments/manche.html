@@ -3,8 +3,11 @@
 <body>
 <!-- ADR-0020 : ce fragment ne porte pas l'identifiant de la zone qui le recoit. hx-swap="innerHTML"
      l'insere DANS #jeu ; le reprendre ici donnait deux elements du meme identifiant dans le document
-     assemble, donc une cible hx-target indeterminee. -->
-<div th:fragment="manche">
+     assemble, donc une cible hx-target indeterminee.
+     ADR-0022 : "ecran-de-jeu" est le marqueur d'etat que le serveur pose sur la zone de contenu. Il
+     ne porte aucun style propre : il dit a la feuille maison que l'entree de menu de l'en-tete
+     permanent ne doit pas s'afficher sur cet ecran (arbitrage de nadia-prof du 2026-08-07, S6-9). -->
+<div th:fragment="manche" class="ecran-de-jeu">
     <!-- ADR-0017 : data-role dit ce que le bouton fait du point de vue de l'enfant - avancer dans le
          jeu ou en sortir. C'est ce que le garde-fou de saillance relative compare, et il refuse tout
          bouton qui ne le porte pas. Attribut inerte : aucun CSS ni aucun script ne s'en sert. -->

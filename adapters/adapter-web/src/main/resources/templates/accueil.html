@@ -16,15 +16,18 @@
 <body>
 <!-- S6-1 : l'en-tete est un frere de #jeu, jamais un descendant - hx-swap="innerHTML" ne remplace
      que le contenu de #jeu, jamais #jeu lui-meme, donc l'en-tete survit a chaque fragment de jeu
-     rendu (DEC-0012). ADR-0017 : le lien "Accueil" porte data-role="sortie", au meme titre que le
-     bouton "Les jeux" qu'il double sans le remplacer (cette story n'en retire pas une autre). -->
+     rendu (DEC-0012). ADR-0017 : le lien porte data-role="sortie".
+     ADR-0022 / S6-9 : son libelle est "Les jeux", le seul mot de sortie de l'application, et il
+     n'est pas visible sur un ecran de jeu - la feuille maison le masque des que la zone de contenu
+     porte le marqueur "ecran-de-jeu". L'element reste permanent dans le document : c'est sa
+     visibilite qui depend de l'etat, jamais sa presence (DEC-0012, S6-1). -->
 <header class="entete">
     <div class="container entete-contenu">
         <img th:src="@{/favicon.ico}" alt="" class="icone-entete">
         <h1 class="nom-site">Recreo</h1>
         <nav class="menu" aria-label="Menu principal">
             <a class="btn lien-accueil" data-role="sortie" href="/"
-               hx-post="/retour" hx-target="#jeu" hx-swap="innerHTML">Accueil</a>
+               hx-post="/retour" hx-target="#jeu" hx-swap="innerHTML">Les jeux</a>
         </nav>
     </div>
 </header>

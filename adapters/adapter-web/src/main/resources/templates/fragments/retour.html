@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <body>
-<!-- ADR-0020 : ce fragment ne porte pas l'identifiant de la zone qui le recoit. -->
-<div th:fragment="retour">
+<!-- ADR-0020 : ce fragment ne porte pas l'identifiant de la zone qui le recoit.
+     ADR-0022 : marqueur d'etat "ecran-de-jeu", voir fragments/manche.html. Il vaut pour les trois
+     etats que ce fragment rend - retour juste, retour faux, fin de partie. -->
+<div th:fragment="retour" class="ecran-de-jeu">
     <!-- S3-6 : sur ce meme ecran, la sortie est un contour discret tant qu'une autre action existe
          ("Encore !"), et devient l'aplat le plus saillant des que c'est la fin de partie, seule
          action possible restante (nadia-prof, FICHE-bandit-manchot-additions-cp.md, reserve 4).

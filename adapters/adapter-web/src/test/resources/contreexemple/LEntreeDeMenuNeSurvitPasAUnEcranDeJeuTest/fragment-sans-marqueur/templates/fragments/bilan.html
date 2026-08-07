@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- La faute de ce jeu : cet ecran est insere dans #jeu comme etape.html, mais il oublie le
+     marqueur "ecran-de-jeu". L'habillage de sortie de la coquille y resterait donc visible, alors
+     que la feuille declare qu'il doit disparaitre sur les ecrans inseres. C'est la faute qu'un
+     fragment neuf commettra. -->
+<div th:fragment="bilan">
+    <button type="button" class="continuer" data-role="action"
+            hx-post="/bilan" hx-target="#jeu" hx-swap="innerHTML">Continuer</button>
+</div>
+</body>
+</html>

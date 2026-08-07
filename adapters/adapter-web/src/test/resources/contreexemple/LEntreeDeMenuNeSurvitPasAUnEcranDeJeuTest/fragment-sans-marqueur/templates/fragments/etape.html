@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Ecran insere dans #jeu qui declare bien son marqueur : il n'est pas la faute de ce jeu. Il est
+     la pour que la faute de bilan.html soit la seule difference entre deux ecrans du meme jeu. -->
+<div th:fragment="etape" class="ecran-de-jeu">
+    <button type="button" class="continuer" data-role="action"
+            hx-post="/etape" hx-target="#jeu" hx-swap="innerHTML">Continuer</button>
+</div>
+</body>
+</html>

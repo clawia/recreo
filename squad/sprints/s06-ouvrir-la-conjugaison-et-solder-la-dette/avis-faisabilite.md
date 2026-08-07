@@ -40,7 +40,7 @@
 | S6-6 | **Faisable sous condition** : le troisieme critere demande un **champ neuf** (`graphie`), et le chargeur **ignore silencieusement** toute cle qu'aucune fabrique ne lit | **oui, un ADR** - le meme geste que S6-7, voir plus bas | `PaquetsFrancaisS04Test` (`SONS_ATTENDUS` epingle six sons, la recomposition en garde trois), `ChaquePaquetPorteUnIndiceTest` (21 indices a reecrire pour 15 items) |
 | S6-7 | **Non faisable sans decision d'architecture prealable** : le texte doit traverser `Question`, la mecanique et l'ecran de retour, et `Verdict` ne porte rien de tel | **oui, ADR conjoint avec S6-6** | `LesGardeFousSontMisALEpreuveTest` : `DETTE_DE_BALAYAGE` est **pleine (3/3)**, le garde-fou neuf ne peut pas y etre exempte. Cout chiffre plus bas |
 | S6-8 | **Faisable en l'etat** | aucun | `ViewportEtLargeurTelephoneTest`, `TailleDesTextesEtBoutonsTest`, `HabillageDesEcransTest` (une classe orpheline y est rouge) |
-| S6-9 | **Faisable sous condition, et la condition est pedagogique, pas technique** : la story efface l'etat `sortie-pleine` que `nadia-prof` a valide en S3-6. Le garde-fou reste mordant, mais **deux de ses trois epinglages deviennent rouges et un troisieme devient vide de sens** | aucun de mon fait ; **arbitrage `nadia-prof` requis avant developpement** | `LActionNeDeclarePasMoinsQueLaSortieTest` (`ADR-0017`) - analyse detaillee plus bas |
+| S6-9 | **Condition levee le 2026-08-07 : `nadia-prof` a tranche.** Faisable ; les deux questions techniques qu'elle m'a rendues sont tranchees et livrees dans ce commit (`ADR-0022`). Ce qui reste est son verdict en jouant | **ADR-0022**, plus le second amendement d'`ADR-0017` | `LActionNeDeclarePasMoinsQueLaSortieTest` amende (un epinglage supprime avec motif, un ajoute), `LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest` (neuf) |
 | S6-10 | **Faisable en l'etat** | aucun | `LActionNeDeclarePasMoinsQueLaSortieTest` reste vert par construction (il ne lit aucune couleur) ; c'est justement sa limite nommee |
 | S6-11 | **Tranchee et livree dans ce commit** : `ADR-0020`. Le defaut est reel, sa cause est trouvee | **ADR-0020, ecrit avec son garde-fou dans le meme geste** | `ToutEcranEchangeEstUnDocumentJouableTest` (neuf) |
 | S6-12 | **Tranchee et livree dans ce commit** : `ADR-0021` | **ADR-0021, ecrit avec ses deux garde-fous dans le meme geste** | `ScanDeComposantsTest` et `AucunContreExempleNEstUnBeanDeLApplicationTest` (neufs) |
@@ -49,9 +49,15 @@
 
 **Deux stories ne sont pas faisables telles qu'ecrites** : S6-7 sans decision d'architecture
 prealable (que j'ecris ci-dessous avec S6-6), et S6-14 dont un critere se contredit avec `ADR-0010`.
-**Trois sont faisables sous condition nommee** (S6-3, S6-6, S6-9). **Deux sont livrees dans ce
+**Deux sont faisables sous condition nommee** (S6-3, S6-6). **Deux sont livrees dans ce
 commit** (S6-11, S6-12), parce qu'elles m'etaient routees comme prealables techniques et non comme
 stories a coder par un autre.
+
+**Mise a jour du 2026-08-07, apres l'arbitrage de `nadia-prof` sur S6-9** (`FICHE-bandit-manchot-additions-cp.md`,
+section "Arbitrage prealable au developpement - S6-9") : la condition que j'avais posee sur S6-9 est
+**levee**, elle a tranche. Les deux questions techniques qu'elle m'a rendues sont tranchees par
+`ADR-0022` et livrees dans le meme commit que cette mise a jour. S6-9 passe donc de "faisable sous
+condition" a **faisable**, sa part technique etant close.
 
 ---
 
@@ -281,10 +287,54 @@ rouge utile, pas un obstacle - je le signale pour que le lot ne croie pas avoir 
 
 ### S6-9 - Une seule sortie par ecran de jeu
 
-**Avis : faisable sous condition, et la condition n'est pas technique. Le garde-fou d'`ADR-0017`
-reste mordant apres cette story - c'est la question qui m'est posee, et la reponse est oui - mais
-deux de ses epinglages deviennent rouges, un troisieme devient vide de sens, et la story efface au
-passage un etat que `nadia-prof` a valide en jouant.**
+> **Reecrit le 2026-08-07, apres l'arbitrage de `nadia-prof`.** La condition que j'avais posee est
+> **levee** : elle a tranche. Le developpeur affecte doit lire cette section-ci et non la version
+> d'avant, conservee plus bas sous "Etat de mon avis avant l'arbitrage" pour que la trace du
+> raisonnement reste lisible.
+
+**Avis apres arbitrage : faisable, et la part technique est deja tranchee et livree dans ce commit
+(`ADR-0022`). Ce qui reste a S6-9 est du contenu de gabarit et de feuille, plus le verdict
+pedagogique.**
+
+`nadia-prof` confirme le principe (une seule sortie par ecran de jeu, mot "Les jeux") et **refuse la
+forme** : la sortie qui survit sur un ecran de jeu est le bouton de la zone de contenu, pas le lien de
+l'en-tete, et `sortie-pleine` est conserve tel quel. Trois gestes, pas un de plus - libelle du lien de
+menu a "Les jeux", lien de menu non visible sur les cinq etats de l'ecran de jeu, fragments non
+touches.
+
+**Les deux questions techniques qu'elle m'a rendues sont tranchees par `ADR-0022`** :
+
+1. **L'invisibilite du lien de menu sur un en-tete permanent** : un couple declaratif. Le serveur pose
+   le marqueur `ecran-de-jeu` sur la racine de chaque fragment insere dans `#jeu` ; la feuille maison
+   porte `body:has(.ecran-de-jeu) .lien-accueil { display: none }`. L'element **reste present** dans
+   le document, seule sa visibilite depend de l'etat : `DEC-0012` et le critere de S6-1 sont tenus a
+   la lettre, l'en-tete n'est ni efface ni recree. Aucun JavaScript, aucun `hx-swap-oob` - ce dernier
+   aurait declenche la dette explicite d'`ADR-0020` sur l'assemblage du document. Ce choix ne rouvre
+   pas le defaut d'identifiant : il n'ajoute aucun identifiant, et `ToutEcranEchangeEstUnDocumentJouableTest`
+   reste vert.
+2. **Le sort de mon extension du 2026-08-07** : amendee, pas supprimee ; l'epinglage qui en dependait
+   est supprime avec son motif ecrit et remplace. Detail dans `ADR-0022` et dans le second amendement
+   d'`ADR-0017`.
+
+**Ce que le lot doit encore livrer** : rien sur les garde-fous - ils sont livres et prouves mordants -
+et rien sur les fragments, que l'arbitrage interdit de toucher. Le lot est donc reduit a ce qui est
+deja dans ce commit, plus la remesure de `nadia-prof` en jouant. Deux proprietes restent d'elle seule
+et aucun automate ne les prend : que le lien soit reellement invisible sur les cinq etats, et que
+"Les jeux" soit dechiffrable au CP.
+
+**Le seul point de vigilance qui reste, et il est reel** : le masquage repose sur le selecteur
+relationnel `:has()`. Un navigateur qui ne le connait pas ignore la regle entiere et l'entree
+redevient visible sur les ecrans de jeu, **sans aucun signal**. La degradation ramene exactement
+l'etat que `nadia-prof` vient d'auditer, pas un ecran casse, et la ligne de base de Bootstrap 5.3.8
+deja vendorise est de la meme generation. Nomme en consequence dans `ADR-0022` plutot que decouvert
+plus tard.
+
+#### Etat de mon avis avant l'arbitrage, conserve
+
+Ce qui suit est ma lecture du 2026-08-07 **avant** que `nadia-prof` tranche. Deux des trois
+consequences que j'y chiffrais sont annulees par l'arbitrage - `.retour-accueil` et `sortie-pleine`
+restent, donc les points 2 et 3 ne se produisent pas. Le point 1 s'est produit, et une quatrieme
+consequence que je n'avais pas vue est apparue, celle de mon extension.
 
 #### Le garde-fou reste-t-il mordant ? Oui, et voici par quoi
 
@@ -502,8 +552,7 @@ C'est la sortie de cet avis qui demande une action d'elle, pas de moi.
 | S6-3 (absent) | rien sur l'indice | `ADR-0016` rend le paquet **rouge** sans six indices ecrits ; la story ne les commande pas | ajouter le critere, et prevoir la relecture pedagogique des six textes |
 | S6-6, 3e | "ce champ existe et permet de determiner automatiquement si l'item est regulier" | rien : le chargeur ignore silencieusement toute cle qu'aucune fabrique ne lit | garder le critere, mais le lot doit livrer la lecture du champ **et** son garde-fou, pas seulement le YAML |
 | S6-7 (absent) | rien sur le garde-fou | `DETTE_DE_BALAYAGE` est pleine : le jeu fautif est obligatoire, pas optionnel | nommer le garde-fou et son jeu fautif dans la story, comme S5-5 l'avait fait |
-| S6-9, 4e | "`LActionNeDeclarePasMoinsQueLaSortieTest` reste vert" | il reste vert **apres mise a jour de deux epinglages** ; l'un de ses asserts devient vide de sens | ecrire "reste vert, et ses epinglages sont reecrits sur le nouveau couple ; l'assertion sur `sortie-pleine` est supprimee avec un motif" |
-| S6-9 (absent) | rien sur `sortie-pleine` | la story defait un etat valide par `nadia-prof` en S3-6 sans le nommer | trancher avec `nadia-prof` ce que devient la sortie en fin de partie |
+| S6-9, 4e et absents | ~~"`LActionNeDeclarePasMoinsQueLaSortieTest` reste vert", rien sur `sortie-pleine`~~ | **sans objet depuis l'arbitrage du 2026-08-07** : `sortie-pleine` et `.retour-accueil` sont conserves, `camille-po` reecrit les criteres | aucune de mon fait ; les garde-fous sont livres (`ADR-0022`) |
 | S6-14, 1er et 2e | une sortie sans chemin absolu, collee dans un fichier commite | `JAVA_HOME` **est** un chemin de poste ; les deux criteres se contredisent | separer diagnostic (sortie d'erreur, libre) et constat citable (sortie standard, sans chemin) |
 
 ## Ce que ce commit contient
@@ -521,26 +570,34 @@ C'est la sortie de cet avis qui demande une action d'elle, pas de moi.
 du `PATH` de ce poste est un JRE 8 qui ne compile pas) : **BUILD SUCCESS**, les cinq modules du pom
 agregateur en SUCCESS, 56,7 s.
 
-**250 tests, 0 echec, 0 erreur, 0 ignore.** Methode de ce comptage, parce que celui de s05 a du etre
+**254 tests, 0 echec, 0 erreur, 0 ignore.** Methode de ce comptage, parce que celui de s05 a du etre
 corrige deux fois faute de l'avoir ecrite : somme de l'attribut `tests` de la balise racine
-`<testsuite>` des **46 rapports XML** produits par la commande - 43 sous `target/surefire-reports/`
-et 3 sous `target/failsafe-reports/`, soit 247 tests unitaires et 3 tests d'integration. Je ne compte
+`<testsuite>` des **47 rapports XML** produits par la commande - 44 sous `target/surefire-reports/`
+et 3 sous `target/failsafe-reports/`, soit 251 tests unitaires et 3 tests d'integration. Je ne compte
 pas les rapports texte : c'est la source qui avait fait divergier 29 et 25 en s05, parce que deux
-moteurs JUnit tournent et que le rapport texte n'en garde qu'un. Repartition : `adapter-web` 110,
+moteurs JUnit tournent et que le rapport texte n'en garde qu'un. Le comptage est fait apres un
+`clean` : des rapports laisses par une execution mutee anterieure feraient un total juste avec des
+echecs faux, et je m'y suis pris une fois pendant ce sprint. Repartition : `adapter-web` 114,
 `bootstrap` 71 + 3, `domain` 38, `adapter-content` 21, `application` 7.
 
-**28 `ArchRule` declarees.** Methode : expression `ArchRule <identifiant> =` cherchee sous
-`src/test/java` des **cinq** modules declares dans `<modules>` du pom agregateur - la meme derivation
-que `LesGardeFousSontMisALEpreuveTest.toutesLesRegles` applique, et non une liste de fichiers ecrite a
-la main. Exclu explicitement : le faux depot de
+Progression sur le sprint : **238 a la cloture de s05 -> 250 apres ADR-0020 et ADR-0021 -> 254 apres
+ADR-0022**, les quatre derniers etant `LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest`.
+
+**28 `ArchRule` declarees, inchange depuis `ADR-0021`.** Methode : expression
+`ArchRule <identifiant> =` cherchee sous `src/test/java` des **cinq** modules declares dans
+`<modules>` du pom agregateur - la meme derivation que
+`LesGardeFousSontMisALEpreuveTest.toutesLesRegles` applique, et non une liste de fichiers ecrite a la
+main. Exclu explicitement : le faux depot de
 `bootstrap/src/test/resources/contreexemple/LesGardeFousSontMisALEpreuveTest/`, qui contient des
 `ArchRule` jamais compilees ni executees - c'est lui qui gonflait le compte de s05. Repartition : 27
 dans `bootstrap`, 1 dans `adapter-web`. Progression depuis la cloture de s05 : **27 -> 28**, la
 nouvelle etant `ScanDeComposantsTest.aucuneClasseDeTestSurLeClasspathDeLApplicationNePorteDeStereotype`
-(`ADR-0021`). `ADR-0020` n'ajoute aucune `ArchRule` et l'ADR dit pourquoi : ArchUnit ne rend pas une
-vue.
+(`ADR-0021`). Ni `ADR-0020` ni `ADR-0022` n'ajoutent d'`ArchRule`, et les deux ADR disent pourquoi :
+ArchUnit ne rend pas une vue et ne lit pas une feuille de style.
 
-Les preuves de morsure des trois garde-fous neufs, mutations et resultats mesures, sont dans
-`ADR-0020` et `ADR-0021`. Les trois mutations d'`ADR-0020` et celle d'`ADR-0021` ont chacune ete
-relancee **avec le garde-fou neuf retire de l'arbre** : `BUILD SUCCESS` a chaque fois, ce qui mesure
-l'angle mort que ces garde-fous ferment.
+Les preuves de morsure des quatre garde-fous neufs et du garde-fou amende, mutations et resultats
+mesures, sont dans `ADR-0020`, `ADR-0021` et `ADR-0022`. Les trois mutations d'`ADR-0020` et celle
+d'`ADR-0021` ont chacune ete relancee **avec le garde-fou neuf retire de l'arbre** : `BUILD SUCCESS` a
+chaque fois, ce qui mesure l'angle mort que ces garde-fous ferment. Les trois mutations d'`ADR-0022`
+n'admettent pas cette mesure et l'ADR le dit : deux d'entre elles portent sur un mecanisme qui
+n'existait pas avant ce commit, il n'y a donc pas d'etat anterieur auquel les comparer.

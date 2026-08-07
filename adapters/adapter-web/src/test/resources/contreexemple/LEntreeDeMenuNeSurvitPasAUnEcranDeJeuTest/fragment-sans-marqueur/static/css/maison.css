@@ -1,0 +1,23 @@
+/* Feuille maison du jeu fautif d'ADR-0022. Elle declare le masquage sous sa forme contractuelle :
+   c'est donc bien l'oubli du marqueur dans un gabarit qui est juge, et non l'absence de la regle. */
+body:has(.ecran-de-jeu) .lien-sortie {
+    display: none;
+}
+
+.lien-sortie {
+    min-height: 2.75rem;
+    font-size: 1.25rem;
+    padding: 0.6rem 1.1rem;
+}
+
+.ouvrir {
+    min-height: 2.75rem;
+    font-size: 1.25rem;
+    padding: 0.6rem 1.1rem;
+}
+
+.continuer {
+    min-height: 2.75rem;
+    font-size: 1.25rem;
+    padding: 0.6rem 1.1rem;
+}

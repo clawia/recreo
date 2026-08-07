@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <body>
-<!-- ADR-0020 : ce fragment ne porte pas l'identifiant de la zone qui le recoit. -->
-<div th:fragment="erreur">
+<!-- ADR-0020 : ce fragment ne porte pas l'identifiant de la zone qui le recoit.
+     ADR-0022 : marqueur d'etat "ecran-de-jeu", voir fragments/manche.html. Sur cet ecran
+     "Recommencer" reste la seule chose pressable (arbitrage de nadia-prof du 2026-08-07). -->
+<div th:fragment="erreur" class="ecran-de-jeu">
     <p class="erreur">Oups ! Le jeu a un souci.</p>
     <a class="btn recommencer" data-role="action" href="/">Recommencer</a>
 </div>

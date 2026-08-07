@@ -18,6 +18,9 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 
+import static com.recreo.adapter.web.LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.Masquage;
+import static com.recreo.adapter.web.LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.masqueSur;
+import static com.recreo.adapter.web.LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.masquages;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.blocsMaison;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.debutDeDeclaration;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.gabarits;
@@ -291,8 +294,18 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
      * donc les boutons de tous les ecrans et se compare a eux. C'etait la limite 5 d'ADR-0017,
      * inoffensive tant qu'aucun bouton ne vivait hors de la zone, devenue portante le jour ou
      * l'en-tete permanent a pose un lien de sortie sur tous les ecrans (S6-1).
+     *
+     * <p>Amendement du 2026-08-07, ADR-0022 : "hors de la zone echangee" ne veut pas dire "visible
+     * sur tous les ecrans". Un habillage permanent que la feuille maison masque sur un ecran n'y est
+     * pas affiche, donc il n'y accompagne aucun bouton d'action, donc il ne s'y compare a rien. Les
+     * ecrans ou il reste visible sont derives des masquages declares par la feuille - la source qui
+     * gouverne ce rendu (ADR-0015) - et non d'une liste ecrite ici. Sans cet amendement,
+     * l'appariement survivrait a la disparition de son sujet : c'est le symptome que nadia-prof a
+     * nomme dans son arbitrage de S6-9, et la famille de defaut que la retro de s05 a sanctionnee
+     * deux fois.
      */
-    private static List<Etat> etats(Path racineDesGabarits, Set<String> defauts) {
+    private static List<Etat> etats(Path racineDesGabarits, List<Masquage> masquages,
+                                    Set<String> defauts) {
         Map<String, Document> documents = new LinkedHashMap<>();
         for (Path gabarit : gabarits(racineDesGabarits)) {
             String source = racineDesGabarits.relativize(gabarit).toString().replace('\\', '/');
@@ -319,17 +332,18 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
                         ? branches(origine, bouton.attr(CLASSE_AJOUTEE), defauts)
                         : List.of(new Branche(List.of(), List.of()));
                 List<Contrainte> heritees = contraintesHeritees(bouton);
-                Collection<String> ecrans = zone.isEmpty() || estDans(bouton, zone)
-                        ? List.of(source)
-                        : documents.keySet();
-                for (String ecran : ecrans) {
-                    for (Branche classe : parClasse) {
-                        for (Branche ajout : parAjout) {
-                            List<String> classes = new ArrayList<>(classe.classes());
-                            classes.addAll(ajout.classes());
-                            List<Contrainte> contraintes = new ArrayList<>(heritees);
-                            contraintes.addAll(classe.contraintes());
-                            contraintes.addAll(ajout.contraintes());
+                boolean dansLaZone = zone.isEmpty() || estDans(bouton, zone);
+                for (Branche classe : parClasse) {
+                    for (Branche ajout : parAjout) {
+                        List<String> classes = new ArrayList<>(classe.classes());
+                        classes.addAll(ajout.classes());
+                        List<Contrainte> contraintes = new ArrayList<>(heritees);
+                        contraintes.addAll(classe.contraintes());
+                        contraintes.addAll(ajout.contraintes());
+                        Collection<String> ecrans = dansLaZone
+                                ? List.of(source)
+                                : ecransOuIlResteVisible(documents, classes, masquages);
+                        for (String ecran : ecrans) {
                             etats.add(new Etat(ecran, source, bouton, role, classes, contraintes));
                         }
                     }
@@ -337,6 +351,28 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
             }
         }
         return etats;
+    }
+
+    /**
+     * Les ecrans ou un habillage ecrit hors de la zone echangee reste effectivement visible.
+     *
+     * <p>Un masquage declare par la feuille maison retire cet habillage des ecrans qui portent son
+     * marqueur d'etat (ADR-0022). Le doute joue dans le sens de la comparaison : un habillage qu'aucun
+     * masquage ne nomme reste confronte a tous les ecrans, comme avant cet amendement.
+     */
+    private static List<String> ecransOuIlResteVisible(Map<String, Document> documents,
+                                                      List<String> classes,
+                                                      List<Masquage> masquages) {
+        List<String> visibles = new ArrayList<>();
+        for (Map.Entry<String, Document> ecran : documents.entrySet()) {
+            boolean masque = masquages.stream()
+                    .anyMatch(masquage -> classes.contains(masquage.habillage())
+                            && masqueSur(ecran.getValue(), masquage));
+            if (!masque) {
+                visibles.add(ecran.getKey());
+            }
+        }
+        return visibles;
     }
 
     /**
@@ -432,7 +468,7 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
                                                               Path racineDesFeuilles) {
         Set<String> defauts = new LinkedHashSet<>();
         Map<String, String> maison = blocsMaison(racineDesFeuilles);
-        List<Etat> etats = etats(racineDesGabarits, defauts);
+        List<Etat> etats = etats(racineDesGabarits, masquages(racineDesFeuilles), defauts);
 
         List<Boite> boites = etats.stream()
                 .map(etat -> new Boite(etat, COMPOSANTES.stream()
@@ -470,8 +506,8 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
                 .isEmpty();
     }
 
-    static List<String> couplesConfrontes(Path racineDesGabarits) {
-        List<Etat> etats = etats(racineDesGabarits, new LinkedHashSet<>());
+    static List<String> couplesConfrontes(Path racineDesGabarits, Path racineDesFeuilles) {
+        List<Etat> etats = etats(racineDesGabarits, masquages(racineDesFeuilles), new LinkedHashSet<>());
         return appariements(etats).stream()
                 .map(couple -> "ecran " + etats.get(couple[0]).ecran() + " : "
                         + etats.get(couple[0]).etiquette() + " contre " + etats.get(couple[1]).etiquette())
@@ -493,7 +529,7 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
      */
     @Test
     void surLEcranDeRetourLaSortieEstConfronteeAEncoreMaisPasDansSonEtatDeFinDePartie() {
-        List<String> couples = couplesConfrontes(RACINE_PRODUCTION);
+        List<String> couples = couplesConfrontes(RACINE_PRODUCTION, RACINE_PRODUCTION);
 
         assertThat(couples)
                 .as("le couple que le lot Bootstrap a inverse doit etre confronte")
@@ -507,23 +543,40 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
     }
 
     /**
-     * Epinglage de la frontiere fermee : le lien de l'en-tete est ecrit dans {@code accueil.html} et
-     * les boutons d'action de l'ecran de jeu dans {@code fragments/*.html}. S'il cessait d'etre
-     * confronte a eux - parce que quelqu'un le deplacerait dans la zone echangee, ou renommerait la
-     * cible htmx - ce test devient rouge, au lieu de laisser la frontiere se rouvrir en silence.
+     * Remplace {@code leLienDeLEnTeteEstConfronteAuxActionsDesEcransDeJeu}, epinglage du 2026-08-07
+     * supprime le meme jour. <b>Motif ecrit de la suppression</b>, exige par ADR-0013 : cet epinglage
+     * affirmait que le lien de l'en-tete est confronte a {@code .proposition} et a {@code .encore}.
+     * L'arbitrage de nadia-prof du 2026-08-07 sur S6-9 rend ce lien invisible sur les cinq etats de
+     * l'ecran de jeu (`FICHE-bandit-manchot-additions-cp.md`). Ces boutons ne s'affichent donc plus
+     * jamais ensemble : maintenir l'epinglage aurait exige de mesurer un ecran que l'enfant ne
+     * rencontre jamais, c'est-a-dire de garder vert un appariement sans objet - le defaut que la
+     * retro de s05 a sanctionne deux fois. Il n'est pas affaibli, il est <b>deplace sur son objet
+     * reel</b>.
+     *
+     * <p>Cet objet reel est l'accueil : c'est le seul ecran ou le lien se montre, et il y accompagne
+     * les boutons de titre de jeu. La propriete d'ADR-0017 y vaut pleinement - un enfant qui regarde
+     * la liste des jeux ne doit pas voir la sortie plus saillante qu'un jeu a ouvrir.
+     *
+     * <p>La seconde assertion est celle qui empeche cette suppression d'etre une capitulation : elle
+     * exige que le lien ne soit <b>plus</b> confronte aux actions des ecrans de jeu. Elle rougirait si
+     * quelqu'un retirait la regle de masquage tout en gardant le lien dans l'en-tete, c'est-a-dire si
+     * l'arbitrage etait defait en silence. Les deux assertions se tiennent donc par les deux bouts :
+     * l'une interdit que le couple restant disparaisse, l'autre interdit que les couples retires
+     * reviennent.
      */
     @Test
-    void leLienDeLEnTeteEstConfronteAuxActionsDesEcransDeJeu() {
-        List<String> couples = couplesConfrontes(RACINE_PRODUCTION);
+    void leLienDeLEnTeteEstConfronteAuxSeulesActionsDeLAccueil() {
+        List<String> couples = couplesConfrontes(RACINE_PRODUCTION, RACINE_PRODUCTION);
 
         assertThat(couples)
-                .as("le lien de l'en-tete reste affiche pendant une manche, il se compare a la reponse")
-                .contains("ecran templates/fragments/manche.html : .btn.proposition \"\" contre "
-                        + ".btn.lien-accueil \"Accueil\"");
+                .as("le lien de l'en-tete se montre sur l'accueil, il s'y compare aux jeux a ouvrir")
+                .contains("ecran templates/accueil.html : .btn.demarrer \"Jouer\" contre "
+                        + ".btn.lien-accueil \"Les jeux\"");
         assertThat(couples)
-                .as("il reste affiche sur le retour juste/faux, il se compare a \"Encore !\"")
-                .contains("ecran templates/fragments/retour.html : .btn.encore \"Encore !\" contre "
-                        + ".btn.lien-accueil \"Accueil\"");
+                .as("ADR-0022 : masque sur les ecrans de jeu, ce lien n'y accompagne plus aucune "
+                        + "action ; l'y confronter mesurerait un ecran que l'enfant ne voit jamais")
+                .noneMatch(couple -> couple.contains(".btn.lien-accueil")
+                        && (couple.contains(".btn.proposition") || couple.contains(".btn.encore")));
     }
 
     /**

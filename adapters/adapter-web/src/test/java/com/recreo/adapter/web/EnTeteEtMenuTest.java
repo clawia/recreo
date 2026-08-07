@@ -23,14 +23,17 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  * test n'entre pas dans le recensement de {@code LesGardeFousSontMisALEpreuveTest} - il vise une
  * propriete du gabarit d'accueil rendu, pas une population derivee du systeme de fichiers.
  *
- * <p>Ce que ce test ne prouve pas : que le lien "Accueil" reste moins saillant qu'un bouton de
- * reponse ou "Encore !" une fois les deux affiches ensemble sur l'ecran de jeu. Cette propriete-la
- * est desormais gardee ailleurs - {@link LActionNeDeclarePasMoinsQueLaSortieTest} confronte le lien
- * d'{@code accueil.html} aux boutons d'action de {@code fragments/manche.html} et de
- * {@code fragments/retour.html} depuis l'amendement du 2026-08-07 a ADR-0017, qui ferme le point 5
- * signale par DEC-0012. Ce qui reste hors de portee de la CI et n'appartient qu'a nadia-prof, en
- * jouant : la saillance rendue, qui depend de la couleur, de la position et de la largeur des
- * libelles (ADR-0017, points 1 a 3 de la meme section).
+ * <p>Ce que ce test ne prouve pas : que l'entree de menu reste moins saillante qu'un bouton de
+ * reponse ou "Encore !". Depuis l'arbitrage de nadia-prof du 2026-08-07 sur S6-9, cette entree n'est
+ * plus visible sur les cinq etats de l'ecran de jeu, et la question ne se pose donc plus que sur
+ * l'accueil - ou {@link LActionNeDeclarePasMoinsQueLaSortieTest} la confronte a {@code .demarrer}
+ * (ADR-0022, second amendement du meme jour a ADR-0017). Ce test-ci verifie que l'entree
+ * <b>existe</b> et qu'elle est unique, jamais qu'elle est visible : une visibilite est une propriete
+ * du rendu. Le couple declaratif qui la produit est garde par
+ * {@link LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest}. Ce qui reste hors de portee de la CI et
+ * n'appartient qu'a nadia-prof, en jouant : la saillance rendue, qui depend de la couleur, de la
+ * position et de la largeur des libelles (ADR-0017, points 1 a 3 de la meme section), et
+ * l'invisibilite effective de l'entree sur les cinq etats de l'ecran de jeu.
  */
 @WebMvcTest(PartieController.class)
 @Import(PartieControllerTest.JeuDeTestConfiguration.class)
@@ -80,7 +83,11 @@ class EnTeteEtMenuTest {
         assertThat(liensDeNavigation)
                 .as("DEC-0012 : le menu de l'en-tete contient exactement une entree")
                 .hasSize(1);
-        assertThat(liensDeNavigation.first().text()).isEqualTo("Accueil");
+        assertThat(liensDeNavigation.first().text())
+                .as("ADR-0022 / S6-9 : le libelle est \"Les jeux\", et c'est le geste par lequel "
+                        + "nadia-prof leve sa reserve 3 du 2026-08-07 ; l'entree existe toujours, "
+                        + "elle a cesse d'etre un doublon")
+                .isEqualTo("Les jeux");
     }
 
     @Test

@@ -1,6 +1,7 @@
 # ADR-0017 - Comparer deux boutons d'un meme ecran, et dire ce que cette comparaison ne voit pas
 
-- **Statut** : Accepte
+- **Statut** : Accepte, amende deux fois le 2026-08-07 (le second amendement corrige le premier ;
+  decision complete dans ADR-0022)
 - **Sprint** : s05
 - **Date** : 2026-08-06
 - **Auteur** : `theo-archi`
@@ -205,6 +206,40 @@ reponse ne sera pas de reduire les couples, mais de regrouper les messages.
 Le lien de S6-1 passe cette comparaison sans rien changer a la feuille de `ines-design` : elle
 l'avait deja aligne sur `.retour-accueil`. La difference est qu'auparavant cette propriete tenait a
 son attention, et qu'elle tient maintenant a un test.
+
+### Amendement du 2026-08-07, second du meme jour : un bouton hors zone n'est pas visible partout
+
+**Corrige l'amendement precedent, ecrit quelques heures plus tot dans ce meme ADR.** La decision
+complete est dans `ADR-0022` ; ce qui suit dit ce qu'elle change ici et pourquoi.
+
+**L'hypothese implicite qui etait fausse.** L'amendement ci-dessus attribue a un bouton ecrit hors de
+la zone echangee un etat **par ecran du depot**, au motif qu'il survit a un changement de fragment.
+Survivre au changement et **etre visible** ne sont pas la meme chose, et je ne l'avais pas distingue.
+L'arbitrage de `nadia-prof` du 2026-08-07 sur S6-9
+(`squad/conformite/FICHE-bandit-manchot-additions-cp.md`) rend l'entree de menu de l'en-tete invisible
+sur les cinq etats de l'ecran de jeu : le lien reste dans le document, il ne s'affiche plus avec
+`.proposition` ni avec `.encore`. **Les confronter mesurerait un ecran que l'enfant ne rencontre
+jamais** - un appariement qui survit a la disparition de son sujet, la famille de defaut que la retro
+de s05 a sanctionnee deux fois. C'est `nadia-prof` qui a nomme le symptome, pas moi.
+
+**Ce qui change dans le code.** Les ecrans attribues a un bouton hors zone sont derives des masquages
+declares par la feuille maison : tous les ecrans **ou aucun masquage ne le cache**. Le doute joue dans
+le sens de la comparaison - un habillage qu'aucun masquage ne nomme reste confronte a tous les ecrans,
+exactement comme avant. La comparaison elle-meme ne bouge toujours pas.
+
+**Un epinglage supprime, avec son motif.** `leLienDeLEnTeteEstConfronteAuxActionsDesEcransDeJeu`, cite
+en exemple quelques lignes plus haut dans la trace de morsure, est supprime : il affirmait un
+co-affichage qui n'existe plus. Il est remplace par
+`leLienDeLEnTeteEstConfronteAuxSeulesActionsDeLAccueil`, qui exige a la fois que le couple restant -
+l'accueil, ou le lien se montre avec les boutons de titre de jeu - existe, et que les couples retires
+ne reviennent pas. La trace de morsure de l'amendement precedent reste exacte pour
+`uneSortieDHabillageQuiDepasseLActionDUnAutreFichierFaitEchouerLeGardeFou`, qui est desormais le seul
+des deux a l'exercer.
+
+**Ce que je ne cache pas** : le mecanisme de traversee de frontiere que l'amendement precedent a
+introduit **n'a plus aucun objet en production**, le seul bouton hors zone etant maintenant confronte
+a un bouton du meme fichier. Il est garde parce qu'il reste correct et reste eprouve par son jeu
+fautif ; le motif complet est dans `ADR-0022`, section "L'epinglage supprime".
 
 ### Ce qui change dans `TailleDesTextesEtBoutonsTest`
 

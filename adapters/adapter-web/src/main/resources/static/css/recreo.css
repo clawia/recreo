@@ -68,11 +68,11 @@ h1 {
 /* S6-1 : le lien de menu quitte l'ecran en cours comme le bouton "Les jeux" (ADR-0017,
    data-role="sortie"), et reprend deliberement les memes composantes de boite que
    .retour-accueil - taille de police, hauteur minimale, rembourrage - pour ne jamais depasser un
-   bouton d'action, y compris sur les ecrans de jeu. Ce choix ne s'appuie plus sur un trou de
-   couverture : le point 5 d'ADR-0017 est ferme depuis l'amendement du 2026-08-07, et ce lien est
-   desormais confronte a .proposition et a .encore, qui vivent dans templates/fragments/. Contour
-   blanc plutot que la couleur d'accent, parce que le fond de l'en-tete est deja cette meme
-   couleur. */
+   bouton d'action sur l'ecran ou il s'affiche. Contour blanc plutot que la couleur d'accent, parce
+   que le fond de l'en-tete est deja cette meme couleur.
+   ADR-0022 : depuis S6-9 ce lien ne s'affiche que sur l'accueil, ou il est confronte a .demarrer.
+   Il n'est plus confronte a .proposition ni a .encore : la regle de masquage ci-dessous fait qu'il
+   ne se montre jamais en meme temps qu'elles. */
 .lien-accueil {
     display: inline-flex;
     align-items: center;
@@ -86,6 +86,19 @@ h1 {
     padding: 0.6rem 1.1rem;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* ADR-0022 / S6-9 : une seule sortie par ecran de jeu, et c'est celle de la zone de contenu
+   (arbitrage de nadia-prof du 2026-08-07 : retirer le bouton du fragment laisserait la fin de
+   partie sans porte visible la ou l'enfant regarde). Le serveur ne rend que la zone #jeu, jamais
+   l'en-tete qui en est le frere : c'est donc le marqueur d'etat pose sur le contenu qui commande la
+   visibilite du lien, par un selecteur relationnel. Aucun JavaScript n'entre ici (ADR-0008,
+   ADR-0014 point 7), et l'element reste present dans le document (DEC-0012).
+   La forme de cette regle est un contrat lu par LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest :
+   body:has(.<marqueur>) .<habillage> { display: none }. La changer sans changer le garde-fou le
+   rend rouge. */
+body:has(.ecran-de-jeu) .lien-accueil {
+    display: none;
 }
 
 /* S6-2 : le contenu de chaque ecran (liste des jeux ou fragment de jeu) respire au-dessus et
