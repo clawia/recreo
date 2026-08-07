@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- La sortie de cet habillage est plus petite que l'action ecrite dans le meme fichier : la
+     comparaison au sein d'un fichier, seule chose que le garde-fou savait faire avant, la laisse
+     passer. Elle domine en revanche l'action du fragment qui vient s'afficher dans #zone. -->
+<header>
+    <a class="sortir" data-role="sortie" href="/" hx-target="#zone">Sortir</a>
+</header>
+<main id="zone">
+    <button type="button" class="commencer" data-role="action" hx-target="#zone">Commencer</button>
+</main>
+</body>
+</html>

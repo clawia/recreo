@@ -69,8 +69,15 @@ class ChaquePaquetPorteUnIndiceTest {
      */
     private static final Set<String> DETTE_DE_CONTENU = Set.of();
 
-    /** Etat au 2026-08-06, ouverture de s05. Ce nombre ne remonte jamais. */
-    private static final int PLAFOND_DE_DETTE = 2;
+    /**
+     * Ouverture de s05 : 2. Porte a 0 le 2026-08-07, a la confirmation de la porte architecture,
+     * comme le planning de s05 le demandait au cas ou les deux lots fermeraient chacun leur part.
+     * L'ensemble etait deja vide, mais le plafond etait reste a 2 : un paquet neuf sans indice
+     * pouvait encore etre exempte en silence, et le commentaire ci-dessus disait donc faux quand il
+     * appelait ce plafond "la trace de cette fermeture". Ce nombre ne remonte jamais ; a 0, la seule
+     * facon d'exempter un paquet est de modifier cette ligne, ce qui se voit dans un diff.
+     */
+    private static final int PLAFOND_DE_DETTE = 0;
 
     /** ADR-0013 obligation 1 : les paquets viennent du repertoire, jamais d'une liste. */
     static List<String> paquets(Path racine) {

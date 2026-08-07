@@ -172,6 +172,18 @@ Ce que je dis franchement, comme pour la dette d'`ADR-0013` : rien n'oblige meca
 plafond a descendre. Ce qui l'y pousse est que la reserve 6 de la fiche CM1 et le motif 5 de la
 fiche CP le demandent tous les deux nommement, et qu'ils sont convertis en stories.
 
+> **Amendement du 2026-08-07 (porte architecture de s05) - la dette est fermee, et le plafond ne
+> l'etait pas.** `lea-dev` a ecrit les 24 indices de `cp-le-bon-son`, `marc-dev` ceux de
+> `cm1-homophones` ; `DETTE_DE_CONTENU` est `Set.of()` et les deux seuls paquets `type: question` du
+> depot passent la regle sur tous leurs items. Le paragraphe ci-dessus avait raison : rien n'a
+> oblige le plafond a descendre, et il **n'est pas descendu tout seul**. Il est reste a 2 alors que
+> l'ensemble etait deja vide, ce qui laissait deux places libres pour exempter en silence un paquet
+> neuf sans indice - exactement le vert silencieux que le cliquet existe pour fermer. Le commentaire
+> du champ, qui presentait ce plafond comme "la trace de cette fermeture", disait donc faux. Plafond
+> porte a **0** dans le meme geste que cette confirmation. C'est la seule chose que le planning de
+> s05 me demandait de confirmer ici et que ma premiere `confirmation-archunit.md` avait omise ;
+> l'ecart m'a ete signale par le `relecteur-pedagogique`, pas trouve par moi.
+
 ## Ce que cette regle ne couvre pas, dit avant qu'on le decouvre
 
 - **Elle ne juge pas la qualite de l'indice.** `"aaa"` la satisfait. Un indice qui donne la reponse,

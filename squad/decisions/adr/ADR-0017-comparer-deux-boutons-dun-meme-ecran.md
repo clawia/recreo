@@ -7,6 +7,18 @@
 - **Regle executable** :
   `adapters/adapter-web/src/test/java/com/recreo/adapter/web/LActionNeDeclarePasMoinsQueLaSortieTest.java`
 
+> **Amendement du 2026-08-07 (porte architecture de s05, apres la fusion de S6-1) - la limite 5
+> etait la bonne, et elle s'est ouverte le sprint suivant.** J'avais ecrit *"un ecran est un fichier
+> de gabarit"* et *"aucun couple action/sortie ne traverse aujourd'hui cette frontiere, mais rien ne
+> l'empeche demain"*. Demain, c'etait S6-1 : l'en-tete permanent pose un lien `data-role="sortie"`
+> dans `accueil.html`, hors de la zone que htmx echange, donc affiche par-dessus les boutons
+> d'action de `fragments/manche.html` et de `fragments/retour.html`. `ines-design` a rendu ce lien
+> metriquement inferieur a tout bouton d'action et l'a ecrit dans sa feuille, mais **rien ne gardait
+> cette propriete** : sa regle, la mienne, restait verte quoi qu'il arrive a `.lien-accueil`.
+> C'etait le quatrieme defaut de forme visible par un enfant que la CI aurait laisse passer. La
+> limite est fermee ci-dessous ; le detail est dans la section "Ce que cette regle ne couvre pas",
+> point 5.
+
 ## Contexte
 
 Trois fois de suite, un defaut de hierarchie visible par un enfant a traverse une CI entierement
@@ -99,12 +111,14 @@ etroit que "la hierarchie de saillance est respectee". Une saillance est un rapp
 un rendu ; ce qui est lu ici est declaratif. Le garde-fou promet exactement ce qu'il verifie :
 l'action ne declare pas moins que la sortie.
 
-Huit tests :
+Dix tests, dont deux ajoutes par l'amendement du 2026-08-07 :
 
 | Test | Ce qu'il tient |
 |---|---|
 | `aucuneSortieNeDeclarePlusQuUneActionDuMemeEcran` | la propriete, sur la production |
 | `surLEcranDeRetourLaSortieEstConfronteeAEncoreMaisPasDansSonEtatDeFinDePartie` | epinglage de l'appariement : le couple que `6c83c97` a inverse est bien confronte, la sortie de fin de partie ne l'est pas |
+| `leLienDeLEnTeteEstConfronteAuxActionsDesEcransDeJeu` | epinglage de la frontiere fermee : le lien d'`accueil.html` est confronte a `.proposition` et a `.encore`, qui vivent dans `fragments/` |
+| `uneSortieDHabillageQuiDepasseLActionDUnAutreFichierFaitEchouerLeGardeFou` | `ADR-0013` obligation 3 sur la frontiere : jeu fautif ou la comparaison au sein d'un fichier reste verte et ou seule la traversee rougit |
 | `unEcranNeufOuLaSortieDepasseLActionFaitEchouerLeGardeFou` | `ADR-0013` obligation 3, objet neuf |
 | `unBoutonSansRoleFaitEchouerLeGardeFou` | `ADR-0013` obligation 2 |
 | `unRoleCalculeFaitEchouerLeGardeFou` | `ADR-0013` obligation 2 |
@@ -158,6 +172,40 @@ les deux axes, et **sans** nommer `.sortie-pleine` - la sortie de fin de partie 
 d'action a concurrencer sur son ecran. C'est la forme exacte de ce que le garde-fou doit voir et de
 ce qu'il doit laisser passer.
 
+### Amendement du 2026-08-07 : la frontiere entre fichiers de gabarit
+
+**Ce qui change dans le code.** Un ecran n'est plus un fichier. `etats()` lit d'abord la cible htmx
+declaree par les gabarits (`hx-target`), puis, pour chaque bouton, decide s'il appartient a la zone
+echangee ou a l'habillage qui l'entoure. Un bouton d'habillage produit un etat **par ecran du
+depot** ; un bouton de la zone echangee produit un etat pour son seul fichier. La comparaison, elle,
+ne bouge pas.
+
+Deux traces sont distinguees dans les messages, parce qu'elles ne servent pas la meme personne : un
+defaut de **lecture** nomme le fichier source - c'est la qu'on corrige - un defaut de **comparaison**
+nomme l'ecran - c'est la que l'enfant voit les deux boutons ensemble.
+
+**Ce que la regle interdit reellement.** Le jeu fautif
+`contreexemple/LActionNeDeclarePasMoinsQueLaSortieTest/entete-permanente-plus-grosse/` est construit
+pour qu'un garde-fou qui n'aurait pas ferme cette frontiere le laisse passer : la sortie de
+l'habillage y est **plus petite** que l'action ecrite dans le meme fichier, et **plus grosse** que
+celle du fragment. Verifie et pas suppose - en revenant a l'ancienne semantique, un ecran = un
+fichier, ce jeu fautif redevient vert et le test qui l'exige rouge echoue :
+
+```
+LActionNeDeclarePasMoinsQueLaSortieTest.uneSortieDHabillageQuiDepasseLActionDUnAutreFichierFaitEchouerLeGardeFou
+LActionNeDeclarePasMoinsQueLaSortieTest.leLienDeLEnTeteEstConfronteAuxActionsDesEcransDeJeu
+Tests run: 10, Failures: 2
+```
+
+**Ce que ca coute.** La population de couples grandit avec le nombre de gabarits : chaque bouton
+d'habillage est confronte a chaque bouton d'action du depot. Sur quatre gabarits c'est negligeable.
+Sur quarante, un defaut de style d'habillage produira une liste de messages tres redondante. La
+reponse ne sera pas de reduire les couples, mais de regrouper les messages.
+
+Le lien de S6-1 passe cette comparaison sans rien changer a la feuille de `ines-design` : elle
+l'avait deja aligne sur `.retour-accueil`. La difference est qu'auparavant cette propriete tenait a
+son attention, et qu'elle tient maintenant a un test.
+
 ### Ce qui change dans `TailleDesTextesEtBoutonsTest`
 
 `padding` entre dans `PROPRIETES_GARDEES` : une classe tierce en `!important` defairait un
@@ -187,9 +235,15 @@ garde-fou, sinon elle relachera sa vigilance sur ce que la CI pretend couvrir.
 4. **La regle ne voit pas ce qui se calcule.** Un rembourrage exprime en `calc()`, en `%`, en `em`
    ou par une variable CSS n'est pas compare - il produit un rouge explicite plutot qu'un vert, mais
    la comparaison n'a pas lieu. Idem pour un raccourci `padding` a trois ou quatre valeurs.
-5. **Un ecran est un fichier de gabarit.** `accueil.html` inclut `manche.html` par `th:replace` ;
-   les boutons des deux fichiers s'affichent alors ensemble sans etre confrontes entre eux. Aucun
-   couple action/sortie ne traverse aujourd'hui cette frontiere, mais rien ne l'empeche demain.
+5. **~~Un ecran est un fichier de gabarit.~~ Ferme le 2026-08-07.** Un ecran est desormais la zone
+   que htmx echange, plus tout ce qui l'entoure et lui survit. Le garde-fou lit `hx-target` dans les
+   gabarits ; un bouton ecrit **hors** de cette zone, dans le fichier qui la contient, est confronte
+   aux boutons de **tous** les ecrans, y compris ceux d'un autre fichier. La lecture reste derivee :
+   la cible n'est pas ecrite dans le test, elle est lue dans les gabarits, et **plusieurs cibles
+   distinctes sont un echec** plutot qu'un choix arbitraire - le garde-fou ne saurait plus dire ce
+   qui survit a un changement d'ecran. Ce qui reste hors de portee : un habillage qui ne serait pas
+   un frere de la zone echangee dans le meme fichier (une inclusion serveur de second niveau, par
+   exemple). Ce cas n'existe pas dans le depot et je n'ecris pas de regle sur un cas jamais constate.
 6. **Une meme regle maison qui declarerait deux fois la meme propriete est mal lue** : le garde-fou
    prend la premiere declaration, le navigateur applique la derniere.
 7. **La regle ne dit rien de ce qui est juste.** Elle interdit l'inversion, pas la quasi-egalite :

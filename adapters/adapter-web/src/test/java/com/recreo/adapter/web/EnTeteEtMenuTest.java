@@ -23,14 +23,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  * test n'entre pas dans le recensement de {@code LesGardeFousSontMisALEpreuveTest} - il vise une
  * propriete du gabarit d'accueil rendu, pas une population derivee du systeme de fichiers.
  *
- * <p>Ce que ce test ne prouve pas, et que la CI ne peut pas prouver a sa place (ADR-0017) : que le
- * lien "Accueil" reste moins saillant qu'un bouton de reponse ou "Encore !" une fois les deux
- * affiches ensemble sur l'ecran de jeu. Aucun garde-fou du depot ne confronte aujourd'hui un
- * bouton d'{@code accueil.html} a un bouton de {@code fragments/manche.html} ou
- * {@code fragments/retour.html} - DEC-0012 le signale comme prealable technique a instruire par
- * theo-archi. Le choix de style de {@code .lien-accueil} (memes composantes de boite que
- * {@code .retour-accueil}, deja plus petites que celles de tout bouton d'action) est fait pour ne
- * pas s'appuyer sur ce trou, mais seule nadia-prof, en jouant, en verifie le rendu reel.
+ * <p>Ce que ce test ne prouve pas : que le lien "Accueil" reste moins saillant qu'un bouton de
+ * reponse ou "Encore !" une fois les deux affiches ensemble sur l'ecran de jeu. Cette propriete-la
+ * est desormais gardee ailleurs - {@link LActionNeDeclarePasMoinsQueLaSortieTest} confronte le lien
+ * d'{@code accueil.html} aux boutons d'action de {@code fragments/manche.html} et de
+ * {@code fragments/retour.html} depuis l'amendement du 2026-08-07 a ADR-0017, qui ferme le point 5
+ * signale par DEC-0012. Ce qui reste hors de portee de la CI et n'appartient qu'a nadia-prof, en
+ * jouant : la saillance rendue, qui depend de la couleur, de la position et de la largeur des
+ * libelles (ADR-0017, points 1 a 3 de la meme section).
  */
 @WebMvcTest(PartieController.class)
 @Import(PartieControllerTest.JeuDeTestConfiguration.class)

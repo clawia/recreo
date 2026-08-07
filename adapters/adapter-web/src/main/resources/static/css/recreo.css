@@ -68,11 +68,11 @@ h1 {
 /* S6-1 : le lien de menu quitte l'ecran en cours comme le bouton "Les jeux" (ADR-0017,
    data-role="sortie"), et reprend deliberement les memes composantes de boite que
    .retour-accueil - taille de police, hauteur minimale, rembourrage - pour ne jamais depasser un
-   bouton d'action, y compris sur les ecrans de jeu ou aucun garde-fou ne confronte aujourd'hui
-   l'en-tete (templates/accueil.html) aux fragments de jeu (templates/fragments/*.html) : ADR-0017,
-   section "ce que cette regle ne couvre pas", point 5, signale par DEC-0012 comme prealable a
-   instruire par theo-archi plutot que resolu ici. Contour blanc plutot que la couleur d'accent,
-   parce que le fond de l'en-tete est deja cette meme couleur. */
+   bouton d'action, y compris sur les ecrans de jeu. Ce choix ne s'appuie plus sur un trou de
+   couverture : le point 5 d'ADR-0017 est ferme depuis l'amendement du 2026-08-07, et ce lien est
+   desormais confronte a .proposition et a .encore, qui vivent dans templates/fragments/. Contour
+   blanc plutot que la couleur d'accent, parce que le fond de l'en-tete est deja cette meme
+   couleur. */
 .lien-accueil {
     display: inline-flex;
     align-items: center;

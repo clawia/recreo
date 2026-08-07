@@ -3,10 +3,13 @@ package com.recreo.adapter.web;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
@@ -75,6 +78,9 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
     private static final String RENDU_SI = "th:if";
     private static final String RENDU_SAUF_SI = "th:unless";
 
+    /** L'attribut htmx qui designe la zone remplacee quand l'enfant passe d'un ecran a l'autre. */
+    private static final String ZONE_ECHANGEE = "hx-target";
+
     private static final String UNITE = "rem";
 
     /**
@@ -101,8 +107,14 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
     private record Contrainte(String condition, boolean attendue) {
     }
 
-    /** Un bouton dans l'un des etats qu'il peut prendre au rendu, sur un ecran donne. */
-    private record Etat(String ecran, Element bouton, String role, List<String> classes,
+    /**
+     * Un bouton dans l'un des etats qu'il peut prendre au rendu, sur un ecran donne. {@code source}
+     * est le gabarit ou le bouton est ecrit ; il differe d'{@code ecran} pour un bouton d'habillage
+     * permanent, qui est ecrit une fois et s'affiche sur tous les ecrans. Les defauts de lecture
+     * nomment la source - c'est la qu'on va corriger ; les defauts de comparaison nomment l'ecran -
+     * c'est la que l'enfant voit les deux boutons ensemble.
+     */
+    private record Etat(String ecran, String source, Element bouton, String role, List<String> classes,
                         List<Contrainte> contraintes) {
 
         String etiquette() {
@@ -236,14 +248,65 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
         return role;
     }
 
-    /** ADR-0013 obligation 1 : les ecrans viennent du repertoire, les boutons viennent du balisage. */
+    /**
+     * Le selecteur de la zone que htmx echange d'un ecran a l'autre, lu dans les gabarits. Vide
+     * quand aucun gabarit ne declare de cible : un depot sans echange de fragment n'a qu'un ecran
+     * par fichier, qui est le modele d'origine d'ADR-0017. Plusieurs cibles distinctes sont un
+     * defaut et non un choix arbitraire - le garde-fou ne saurait plus dire ce qui survit a un
+     * changement d'ecran.
+     */
+    private static Optional<String> zoneEchangee(Collection<Document> documents, Set<String> defauts) {
+        Set<String> cibles = new LinkedHashSet<>();
+        for (Document document : documents) {
+            for (Element porteur : document.select("[" + ZONE_ECHANGEE + "]")) {
+                cibles.add(porteur.attr(ZONE_ECHANGEE).strip());
+            }
+        }
+        if (cibles.size() > 1) {
+            defauts.add("les gabarits echangent plusieurs zones " + cibles + " ; le garde-fou ne sait "
+                    + "plus quels boutons survivent a un changement d'ecran, donc lesquels accompagnent "
+                    + "les boutons de tous les autres ecrans");
+            return Optional.empty();
+        }
+        return cibles.stream().findFirst();
+    }
+
+    /** Comparaison d'identite : deux elements jsoup distincts peuvent porter le meme balisage. */
+    private static boolean estDans(Element bouton, Elements zone) {
+        for (Element noeud = bouton; noeud != null; noeud = noeud.parent()) {
+            for (Element candidate : zone) {
+                if (noeud == candidate) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * ADR-0013 obligation 1 : les ecrans viennent du repertoire, les boutons viennent du balisage.
+     *
+     * <p>Un ecran n'est plus un fichier de gabarit. Un bouton ecrit hors de la zone echangee, dans
+     * le gabarit qui contient cette zone, reste affiche quand le fragment change : il accompagne
+     * donc les boutons de tous les ecrans et se compare a eux. C'etait la limite 5 d'ADR-0017,
+     * inoffensive tant qu'aucun bouton ne vivait hors de la zone, devenue portante le jour ou
+     * l'en-tete permanent a pose un lien de sortie sur tous les ecrans (S6-1).
+     */
     private static List<Etat> etats(Path racineDesGabarits, Set<String> defauts) {
-        List<Etat> etats = new ArrayList<>();
+        Map<String, Document> documents = new LinkedHashMap<>();
         for (Path gabarit : gabarits(racineDesGabarits)) {
-            String ecran = racineDesGabarits.relativize(gabarit).toString().replace('\\', '/');
-            Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
+            String source = racineDesGabarits.relativize(gabarit).toString().replace('\\', '/');
+            documents.put(source, Jsoup.parse(lire(gabarit), gabarit.toString()));
+        }
+        Optional<String> zoneEchangee = zoneEchangee(documents.values(), defauts);
+
+        List<Etat> etats = new ArrayList<>();
+        for (Map.Entry<String, Document> gabarit : documents.entrySet()) {
+            String source = gabarit.getKey();
+            Document document = gabarit.getValue();
+            Elements zone = zoneEchangee.map(document::select).orElseGet(Elements::new);
             for (Element bouton : document.select("button, a[href]")) {
-                String origine = "ecran " + ecran + ", <" + bouton.tagName() + "> \"" + bouton.text()
+                String origine = "ecran " + source + ", <" + bouton.tagName() + "> \"" + bouton.text()
                         + "\"";
                 String role = role(origine, bouton, defauts);
                 if (role == null) {
@@ -256,14 +319,19 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
                         ? branches(origine, bouton.attr(CLASSE_AJOUTEE), defauts)
                         : List.of(new Branche(List.of(), List.of()));
                 List<Contrainte> heritees = contraintesHeritees(bouton);
-                for (Branche classe : parClasse) {
-                    for (Branche ajout : parAjout) {
-                        List<String> classes = new ArrayList<>(classe.classes());
-                        classes.addAll(ajout.classes());
-                        List<Contrainte> contraintes = new ArrayList<>(heritees);
-                        contraintes.addAll(classe.contraintes());
-                        contraintes.addAll(ajout.contraintes());
-                        etats.add(new Etat(ecran, bouton, role, classes, contraintes));
+                Collection<String> ecrans = zone.isEmpty() || estDans(bouton, zone)
+                        ? List.of(source)
+                        : documents.keySet();
+                for (String ecran : ecrans) {
+                    for (Branche classe : parClasse) {
+                        for (Branche ajout : parAjout) {
+                            List<String> classes = new ArrayList<>(classe.classes());
+                            classes.addAll(ajout.classes());
+                            List<Contrainte> contraintes = new ArrayList<>(heritees);
+                            contraintes.addAll(classe.contraintes());
+                            contraintes.addAll(ajout.contraintes());
+                            etats.add(new Etat(ecran, source, bouton, role, classes, contraintes));
+                        }
                     }
                 }
             }
@@ -323,7 +391,7 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
                 .filter(maison::containsKey)
                 .filter(selecteur -> debutDeDeclaration(maison.get(selecteur), composante.propriete()) >= 0)
                 .toList();
-        String prefixe = "ecran " + etat.ecran() + " : " + etat.etiquette();
+        String prefixe = "ecran " + etat.source() + " : " + etat.etiquette();
         if (porteurs.isEmpty()) {
             defauts.add(prefixe + " ne recoit " + composante.propriete() + " d'aucune regle maison "
                     + "(selecteurs vus : " + applicables + ") ; sa boite depend alors d'une bibliotheque "
@@ -436,6 +504,43 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
         assertThat(couples)
                 .as("l'ecran de jeu confronte la reponse a la sortie")
                 .anyMatch(couple -> couple.contains(".btn.proposition"));
+    }
+
+    /**
+     * Epinglage de la frontiere fermee : le lien de l'en-tete est ecrit dans {@code accueil.html} et
+     * les boutons d'action de l'ecran de jeu dans {@code fragments/*.html}. S'il cessait d'etre
+     * confronte a eux - parce que quelqu'un le deplacerait dans la zone echangee, ou renommerait la
+     * cible htmx - ce test devient rouge, au lieu de laisser la frontiere se rouvrir en silence.
+     */
+    @Test
+    void leLienDeLEnTeteEstConfronteAuxActionsDesEcransDeJeu() {
+        List<String> couples = couplesConfrontes(RACINE_PRODUCTION);
+
+        assertThat(couples)
+                .as("le lien de l'en-tete reste affiche pendant une manche, il se compare a la reponse")
+                .contains("ecran templates/fragments/manche.html : .btn.proposition \"\" contre "
+                        + ".btn.lien-accueil \"Accueil\"");
+        assertThat(couples)
+                .as("il reste affiche sur le retour juste/faux, il se compare a \"Encore !\"")
+                .contains("ecran templates/fragments/retour.html : .btn.encore \"Encore !\" contre "
+                        + ".btn.lien-accueil \"Accueil\"");
+    }
+
+    /**
+     * L'en-tete permanent de S6-1 pose un lien de sortie hors de la zone echangee : il s'affiche
+     * avec les boutons de tous les ecrans, y compris ceux qui vivent dans un autre fichier. Ce jeu
+     * fautif est construit pour que la comparaison au sein d'un fichier reste verte - la sortie y
+     * est plus petite que l'action ecrite a cote d'elle - et que seule la traversee de la frontiere
+     * la rende rouge. Un garde-fou qui n'aurait pas ferme la limite 5 d'ADR-0017 passerait ici.
+     */
+    @Test
+    void uneSortieDHabillageQuiDepasseLActionDUnAutreFichierFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("entete-permanente-plus-grosse");
+        assertThatThrownBy(() -> verifierQueLActionNeDeclarePasMoinsQueLaSortie(racine, racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ecran templates/fragments/etape.html : la sortie .sortir "
+                        + "\"Sortir\" declare taille de police a 1,50rem quand l'action .continuer "
+                        + "\"Continuer\" se contente de 1,25rem");
     }
 
     /**
