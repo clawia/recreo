@@ -20,7 +20,11 @@
   2026-08-07, rejoues. **Arbitrage prealable au developpement de S6-9** (une seule sortie par ecran
   de jeu) : rendu le 2026-08-07, story **confirmee sur son principe et refusee sur sa forme**,
   `sortie-pleine` conserve. Ce n'est pas un Done pedagogique : celui de S6-9 sera prononce en jouant
-  l'increment livre.
+  l'increment livre. **Arbitrage prealable au developpement de S6-10** (couleur du bandeau et sort du
+  carre de fond de l'icone) : rendu le 2026-08-07, bandeau **confirme a `#1d4b6b`**, qui est aussi le
+  plancher que je valide, et **recolorage exige** du fond de l'icone a la meme valeur dans les trois
+  vignettes du `.ico`, plus un garde-fou sur ce couplage. Pas davantage un Done pedagogique : celui
+  de S6-10 sera prononce en jouant l'increment livre.
 - **Derniere mise a jour** : 2026-08-07
 
 ## Competences visees
@@ -88,6 +92,206 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Arbitrage prealable au developpement - S6-10, couleur du bandeau et sort du carre de l'icone, du 2026-08-07
+
+**Ce bloc n'est pas un Done pedagogique.** C'est le second arbitrage prealable du sprint 6, apres
+celui de S6-9 du meme jour, qu'il ne modifie pas. Il repond a la question qu'`ines-design` me
+renvoie explicitement sans la trancher
+(`squad/sprints/s06-ouvrir-la-conjugaison-et-solder-la-dette/proposition-ines-s6-8-s6-10.md`,
+section S6-10, "Un point que je remonte plutot que de le trancher") : si le bandeau change de
+couleur, que devient le carre de fond de l'icone, dont j'ai valide en s05 qu'il disparaissait dans
+le bandeau. Le Done pedagogique de S6-10 sera prononce plus tard, en jouant l'increment livre.
+
+#### Le verdict, en une phrase
+
+**Le bandeau prend bien `#1d4b6b`, et le bloc de fond de l'icone est recolore a cette meme valeur
+dans les trois vignettes du fichier `.ico`, dans le meme commit : "accepter le retour du carre
+visible" n'est pas une sortie que j'ouvre, et recolorer la seule vignette de 48 px n'en est pas une
+non plus.**
+
+#### Ce que j'ai fait pour trancher, et ce que je n'ai pas pu faire
+
+J'ai joue. Jar reconstruit depuis mon arbre dedie sur le JDK 21 designe par `JAVA_HOME` le temps de
+la commande (`outils/verifier-jdk.sh` donne le constat : `java` du PATH en 1.8, JDK de compilation
+en 21.0.10, fichier de toolchains non lu par Maven), lance sur un port dedie, une manche des
+additions CP jouee et ratee volontairement pour obtenir l'ecran de retour. **L'icone servie par
+l'application est identique octet pour octet au fichier source** (1021 octets) : ce que j'ai mesure
+est bien ce que l'enfant recoit, pas une copie.
+
+**Ce que je n'ai pas pu faire, et c'est un audit degrade que je declare :** le changement n'est pas
+encore ecrit (`lea-dev` travaille en parallele), je n'ai donc pas vu le bandeau modifie dans un
+navigateur. J'ai compose les octets reels de l'icone sur les deux couleurs de bandeau candidates et
+je l'ai regardee **a 44 px**, la taille exacte a laquelle `.icone-entete` l'affiche (`2.75rem`),
+puis en niveaux de gris a la meme taille, puis a **16 px** sur un fond d'onglet clair et sur un fond
+d'onglet sombre. Ce que j'ai juge est une composition d'octets reels et de valeurs CSS reelles, pas
+une capture d'ecran de navigateur. **Je reverifierai sur le rendu reel avant de prononcer le Done
+pedagogique de S6-10.**
+
+#### Je corrige mon propre constat de s05 avant de m'appuyer dessus
+
+Mon constat du 2026-08-07, section A.1 : *"Son fond bleu est exactement la couleur du bandeau, donc
+le carre disparait et le crayon flotte."* La couleur est exacte, je le confirme a l'octet. Mais
+**j'ai decrit une image la ou le fichier en contient trois**, et `ines-design` a herite de cette
+sous-description en ne mesurant que la vignette de 48 px :
+
+| Vignette | Pixels | Pixels exactement `rgba(46,111,158,255)` | Pixels transparents | Couleurs distinctes |
+|---|---|---|---|---|
+| 16 x 16 | 256 | **105** | 6 | 8 |
+| 32 x 32 | 1024 | **532** | 20 | 8 |
+| 48 x 48 | 2304 | **1218** | 42 | 8 |
+
+Les 1218 pixels qu'elle annonce sont exacts ; ils ne sont que **1218 des 1855** pixels de la couleur
+d'accent que porte le fichier. Ni elle ni moi n'avions tort sur le fondu : nous avons tous les deux
+parle du fichier comme s'il ne portait qu'un dessin.
+
+Seconde correction, sur la forme : **j'ai ecrit "carre", ce n'en est pas un.** Les coins **haut
+gauche et bas droit** sont coupes en biseau a 45 degres, dans l'axe du crayon, sur 6 px de
+profondeur dans la vignette de 48 px (21 + 21 = 42 pixels transparents). Les deux autres coins sont
+pleins. Cette precision compte pour la consigne ci-dessous : ce biseau est une partie de la forme,
+pas un defaut d'encodage.
+
+#### 1. Le bandeau : `#1d4b6b` est confirme, et c'est aussi un plancher
+
+J'ai regarde l'ecran de retour a 360 px et a 1280 px de large. A 1280 px, la ou le defaut etait le
+pire (le bandeau occupe seize fois la surface du bouton), le gain est net : le bandeau devient
+franchement un autre bleu et **le seul aplat de la couleur d'action qui reste sur l'ecran est le
+bouton "Encore !"**. C'est ce que la story demande.
+
+Ce que je mesure, et que j'assume :
+
+| Ce qui est confronte | Sur `#2e6f9e` | Sur `#1d4b6b` |
+|---|---|---|
+| Blanc du nom du site et de l'entree de menu | 5,41:1 | **9,25:1** |
+| Jaune du corps du crayon | 3,32:1 | **5,67:1** |
+| Gris de la virole | 3,41:1 | **5,84:1** |
+| Rose de la gomme | 2,83:1 | **4,84:1** |
+| Contour marine du crayon | 2,48:1 | **1,45:1** |
+| Bois brun de la pointe | 2,54:1 | **1,49:1** |
+| Mine noire | 3,15:1 | **1,84:1** |
+
+Les deux bleus ne s'ecartent que de **1,71:1** entre eux. C'est un pas modeste, et je le dis plutot
+que de le farder : ce n'est pas la teinte seule qui fait le travail, c'est qu'un bandeau pleine
+largeur n'a jamais la forme d'un bouton. Je l'accepte pour cette raison, et **parce qu'aller plus
+sombre couterait le crayon** : les trois parties sombres du dessin (contour, bois, mine) tombent
+deja sous 3:1 sur `#1d4b6b`. J'ai regarde a 44 px, et en niveaux de gris a 44 px : la silhouette est
+portee par les parties claires, qui toutes gagnent, et la pointe reste un bloc sombre et chaud
+distinct du bleu froid. **Cela passe. Cela ne passerait pas plus sombre.**
+
+**`#1d4b6b` est donc le bandeau le plus sombre que je valide.** Une story ulterieure qui voudrait
+descendre plus bas doit d'abord faire redessiner l'extremite sombre du crayon : c'est une story de
+design, pas un changement de valeur. Ce plancher est nouveau et date de ce jour ; il ne durcit
+aucune reserve anterieure.
+
+#### 2. Le carre de l'icone : recolore, et pas seulement la vignette de 48 px
+
+**Je n'ouvre pas la seconde sortie qu'`ines-design` propose** (garder l'icone telle quelle et
+accepter le retour du carre visible). Je l'ai regarde a 44 px avant de le refuser, pas sur la
+description : sur le bandeau sombre, l'ancien bleu ne fait pas une nuance discrete, il fait une
+pastille collee sur la barre. Ce que l'enfant reconnait de cette application, c'est **un crayon**,
+pas une tuile bleue : remettre la tuile ajoute une forme qui ne veut rien dire et defait un acquis
+que j'ai constate moi-meme il y a un jour.
+
+**Pourquoi les trois vignettes et pas la seule de 48 px.** L'element est un `<img>` affiche a 44 px,
+et le fichier propose trois dessins de tailles differentes. **Je ne sais pas laquelle le navigateur
+decode**, et cela peut dependre de la densite de l'ecran : je ne parie pas le fondu sur cette
+supposition. Recolorer les trois le rend independant de ce choix. Deuxieme raison, verifiee
+celle-la : l'enfant voit la meme icone dans l'onglet et dans le bandeau, et un fichier qui porterait
+deux bleus de fond differents selon la taille est un piege pour la personne suivante.
+
+**Pourquoi pas la transparence**, la troisieme sortie que personne n'avait nommee et que j'ai
+examinee : rendre le fond transparent garantirait le fondu pour toujours, sans coupler un binaire a
+une variable CSS. Je l'ecarte, mesures en main : sans son champ bleu, le corps jaune du crayon se
+retrouve a **1,24:1** sur un fond d'onglet clair, la virole a 1,58:1 et la gomme a 1,91:1 sur blanc.
+**Dans l'onglet, le carre bleu gagne sa place**, et il la gagne mieux en `#1d4b6b` qu'en `#2e6f9e`
+(4,12:1 -> 7,05:1 sur un onglet clair). Sur un onglet sombre il descend de 2,98:1 a 1,74:1, mais ce
+qui identifie l'application y est la diagonale jaune, a tres fort contraste sur un fond sombre, et
+je l'ai regardee a 16 px : le badge reste lisible.
+
+#### 3. La consigne executable - aucune question a me reposer
+
+**Feuille de style** (`recreo.css`), rien de plus, rien de moins :
+
+| Selecteur | Avant | Apres |
+|---|---|---|
+| `:root` | (variable absente) | `--recreo-entete-fond: #1d4b6b;` |
+| `.entete` | `background-color: var(--recreo-accent);` | `background-color: var(--recreo-entete-fond);` |
+
+`--recreo-accent` reste `#2e6f9e` et **aucun autre selecteur ne change** : `.demarrer`,
+`.proposition`, `.recommencer`, `.encore` et `.sortie-pleine` gardent cet aplat ; `h1`, `.score`,
+`.fin-de-partie` gardent cette couleur de texte ; `.retour-accueil` garde ce texte et ce contour ;
+`.lien-accueil` garde son contour blanc, qui gagne au change (5,41:1 -> 9,25:1) et qu'il ne faut
+surtout pas "corriger" au passage. Aucune dimension de bouton n'est touchee : mes mesures du
+2026-08-07 en A.1 (117 >= 109 >= 102 en largeur, 56 >= 53 en hauteur, l'action seule en aplat)
+doivent rester vraies telles quelles.
+
+**Icone** (`favicon.ico`, 1021 octets, trois vignettes, chacune un PNG embarque en RGBA) :
+
+1. Dans **chacune des trois vignettes**, remplacer tout pixel valant exactement
+   `rgba(46, 111, 158, 255)` par `rgba(29, 75, 107, 255)`, soit `#1d4b6b`.
+2. Nombre de pixels a remplacer, a retrouver exactement : **105** sur 256 dans la vignette de
+   16 px, **532** sur 1024 dans celle de 32 px, **1218** sur 2304 dans celle de 48 px. **1855** au
+   total. Un compte different signifie que l'outil a fait autre chose que ce que je demande.
+3. **Ne toucher a rien d'autre.** Les sept autres couleurs restent identiques a l'octet :
+   `#f5c518` (corps jaune), `#13314a` (contour marine), `#c9ced3` (virole grise), `#3a2a1a` (bois
+   brun), `#1c1c1c` (mine), `#f2a7b7` (gomme rose), et le transparent.
+4. **Les pixels transparents restent totalement transparents** (`alpha` a 0) : 6 dans la vignette
+   de 16 px, 20 dans celle de 32 px, 42 dans celle de 48 px. **Ne pas aplatir l'icone sur un fond
+   opaque** : ce sont les biseaux des coins haut gauche et bas droit, et les aplatir ferait
+   reapparaitre un carre visible sur le bandeau quelle que soit sa couleur - le defaut que cette
+   consigne cherche justement a eviter.
+5. Apres le changement, **chaque vignette contient encore exactement 8 couleurs distinctes**, et le
+   fichier garde ses **trois entrees a 16, 32 et 48 px**, chacune un PNG decodable. Aucun
+   reechantillonnage, aucun anticrenelage, aucun redessin : le dessin ne bouge pas d'un pixel. Le
+   garde-fou existant `FaviconTest.laVignetteSeizePixelsEstDessineeAPlatEtNonReduiteDUnGrandDessin`
+   (16 couleurs au plus) mordra si l'outil reencode en flou, et le lecteur `entreeIco` du meme test
+   a besoin que l'entree de 16 px survive.
+
+#### 4. Le garde-fou que j'exige dans le meme commit
+
+Ce que je viens d'arbitrer couple **1855 pixels d'un binaire a une variable CSS**. Ce couplage est
+invisible dans une relecture de diff : personne ne voit la couleur d'un `.ico` en lisant un commit.
+Sans garde-fou, ma decision d'aujourd'hui est une verification manuelle a usage unique, et le
+prochain qui touchera au bandeau refera exactement l'erreur que ce sprint vient de faire trois fois.
+
+**La propriete a rendre mecanique** : *le fond opaque de chacune des trois vignettes de
+`favicon.ico` porte exactement la couleur declaree par `--recreo-entete-fond` dans `recreo.css`, et
+aucun pixel n'y porte plus `--recreo-accent`.* Je nomme la propriete ; **comment l'ecrire appartient
+a `theo-archi` et a `lea-dev`**, et `FaviconTest` sait deja decoder les vignettes, donc la matiere
+existe.
+
+Cette exigence est neuve et attachee a une story neuve : elle ne durcit aucune reserve anterieure.
+Si `theo-archi` juge qu'elle ne tient pas dans ce commit, **le recolorage se fait quand meme** et le
+garde-fou devient une reserve nommee, a instruire par `camille-po` : dans ce cas je reste seule
+garde de la propriete, et l'equipe doit savoir qu'elle n'est pas couverte.
+
+#### 5. Ce dont je reste seule garde, quoi qu'il arrive
+
+Pour qu'on ne croie pas couvert ce qui ne l'est pas :
+
+1. **Que le crayon se lise encore comme un crayon a 44 px sur un bandeau plus sombre.** Aucun test
+   ne le dira. Je l'ai regarde aujourd'hui sur une composition ; je le reverifierai sur le rendu.
+2. **Que l'enfant trouve "Encore !" du premier coup d'oeil** avec un ecart de 1,71:1 entre les deux
+   bleus. C'est le point que la story me reserve explicitement, et il se juge en jouant.
+3. **Que le badge de l'onglet reste reconnaissable** en `#1d4b6b`, y compris sur un theme sombre ou
+   il descend a 1,74:1.
+4. **Que les trois parties sombres du crayon sous 3:1 ne genent pas un enfant qui distingue mal les
+   couleurs.** J'ai fait le controle en niveaux de gris a 44 px et la silhouette tient, mais un
+   ecran bon marche ou une lumiere du jour forte n'entrent dans aucune de mes mesures.
+
+#### 6. Un constat de moi-meme que je corrige, et qui ne conditionne pas S6-10
+
+Trouve en jouant aujourd'hui, sans rapport avec S6-10, et je le separe donc de l'arbitrage.
+
+**Ma reserve 5 de s02, enregistree "tenue" avec pour preuve "Récréo dans le titre de page et dans
+le `h1`, accents corrects a l'ecran", est aujourd'hui perimee** : l'application servie affiche
+`<title>Recreo</title>` et `<h1 class="nom-site">Recreo</h1>`, sans accent. Ce n'est pas un defaut
+et je ne rouvre rien : `DEC-0010` du 2026-08-06 a rendu la decision a la proprietaire du produit,
+qui ecrit son nom sans accent, et c'est exactement l'arbitrage de marque que j'avais moi-meme refuse
+de trancher en s01. Je ne retire pas la ligne de mon tableau de s02 - rien ne s'efface ici - mais
+elle ne doit plus etre lue comme un acquis a preserver. **L'exigence de `DEC-0002` categorie B reste
+entiere pour tout le reste du texte lu par l'enfant** : consignes, retours, messages restent
+integralement accentues, et je continue de les verifier a chaque passage.
 
 ### Arbitrage prealable au developpement - S6-9, une seule sortie par ecran de jeu, du 2026-08-07
 
