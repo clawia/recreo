@@ -1639,35 +1639,55 @@ technique a instruire (`DEC-0013`, point 3).
 - **Competence programme visee** : transverse - navigation et lisibilite pour le niveau CP, meme
   categorie que S1-8, S6-1.
 - **Decision de contenu, precisant sans la rouvrir `DEC-0012` point 2** : le libelle retenu pour
-  l'unique sortie visible sur un ecran de jeu (manche, retour) est **"Les jeux"**, deja dechiffrable
-  au CP et deja en place dans les fragments. `DEC-0012` tranchait qu'il y a une entree de menu unique,
-  elle ne tranchait pas encore son libelle au regard de la reserve 3 ci-dessous, connue seulement
-  depuis le verdict du 2026-08-07. Je ne retiens pas "Accueil" pour cette sortie : `nadia-prof` a
-  elle-meme signale que ce choix rendrait sa reserve 3 bloquante ("Si la reserve 2 est traitee en
-  gardant 'Accueil' et en retirant 'Les jeux', alors ce point devient bloquant").
-- **Criteres d'acceptation** :
-  - Etant donne l'ecran de manche ou de retour rendu apres cette story, quand on compte les liens ou
-    boutons qui ramenent a la liste des jeux, alors il en existe visuellement un seul portant un
-    texte lisible - contre deux libelles differents pour la meme action mesures ce sprint ("Accueil"
-    et "Les jeux", surface cumulee superieure de 70 % a celle de l'action sur l'ecran de retour,
-    `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-07, section A.2,
-    point 2).
-  - Etant donne ce lien unique, quand on relit son texte, alors il est "Les jeux".
-  - Etant donne l'ecran d'accueil, ou aucune sortie de fragment ne cohabite avec le lien de l'en-tete,
-    quand on le relit, alors le lien de l'en-tete porte le meme texte "Les jeux", pour qu'un seul mot
-    circule sur tous les ecrans.
+  l'entree de menu de l'en-tete devient **"Les jeux"**, deja dechiffrable au CP et deja en place dans
+  les fragments. Je ne retiens pas "Accueil" : `nadia-prof` a signale que ce choix rendrait sa
+  reserve 3 bloquante ("Si la reserve 2 est traitee en gardant 'Accueil' et en retirant 'Les jeux',
+  alors ce point devient bloquant").
+- **Arbitrage prealable de `nadia-prof` (2026-08-07), qui remplace la forme initiale de cette
+  story** : le principe (une seule sortie par ecran de jeu, mot "Les jeux") est confirme, mais pas la
+  forme que cette story lui donnait. Elle a joue l'increment avant de trancher
+  (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Arbitrage prealable au
+  developpement - S6-9") : retirer le bouton du fragment sur l'ecran de fin de partie y aurait laisse
+  "C'est fini !" sans aucune porte visible dans la zone de contenu que l'enfant regarde, la seule
+  sortie restante etant un contour de 102 x 53 px dans un bandeau qu'elle a mesure comme n'invitant
+  pas au geste - ce qui aurait defait l'etat que `nadia-prof` avait valide en jouant pour S3-6. C'est
+  donc **le bouton de la zone de contenu qui survit sur les ecrans de jeu, pas le lien de l'en-tete**.
+  Elle precise aussi le perimetre de sa reserve 2 du meme jour : cette reserve laissait ouvert lequel
+  des deux boutons partait, en la croyant neutre pedagogiquement ; elle ne l'etait pas, et elle ferme
+  elle-meme cette branche plutot que de me laisser un choix qui ne l'etait pas vraiment. La barre "un,
+  pas deux" ne change pas.
+- **Criteres d'acceptation**, ecran par ecran, repris de son arbitrage :
+  - Etant donne l'ecran d'accueil rendu apres cette story, quand on relit l'entree de menu de
+    l'en-tete, alors elle est visible et porte le texte "Les jeux" (contre "Accueil" avant cette
+    story) - seul changement de texte que cette story introduit.
+  - Etant donne chacun des cinq etats de l'ecran de jeu (manche, retour juste en cours de partie,
+    retour faux en cours de partie, retour en fin de partie, erreur), quand on relit l'en-tete rendu,
+    alors son entree de menu n'y est pas visible : sur ces cinq etats, la seule sortie vers la liste
+    des jeux visible par l'enfant est celle deja portee par le fragment.
+  - Etant donne l'ecran de manche et l'ecran de retour en cours de partie (`enSuite` vrai), quand on
+    relit le fragment rendu apres cette story, alors le bouton `.btn.retour-accueil` portant "Les
+    jeux" n'est ni retire, ni renomme, ni redimensionne par rapport a son etat actuel.
+  - Etant donne l'ecran de retour en fin de partie (`enSuite` faux), quand on le relit apres cette
+    story, alors le bouton `.btn.sortie-pleine` portant "Les jeux" en aplat plein n'est ni retire, ni
+    renomme, ni redimensionne : il reste la seule chose pressable de la zone de contenu, l'etat
+    valide par `nadia-prof` en S3-6.
+  - Etant donne l'ecran d'erreur, quand on le relit apres cette story, alors aucune sortie n'y est
+    ajoutee : "Recommencer" reste seul et reste un bouton plein.
   - Etant donne le garde-fou `LActionNeDeclarePasMoinsQueLaSortieTest` (`ADR-0017`), quand cette
-    story est fusionnee, alors il reste vert : la fusion des deux sorties ne doit pas rendre le
-    bouton d'action moins saillant que le lien restant.
+    story est fusionnee, alors il reste vert.
   - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
-    `nadia-prof` : que "Les jeux" reste effectivement dechiffrable et suffisant comme unique sortie,
-    en jouant.
-- **Lien decision** : `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-07,
-  section A.2, points 2 et 3 ; precise `DEC-0012-rhabillage-gabarit-menu-minimal-et-ouverture-s06.md`
-  point 2 sans le rouvrir.
-- **Agent pressenti** : `ines-design` (proposition de la disposition a une seule sortie), mise en
-  oeuvre par `marc-dev` / `lea-dev` ; `theo-archi` si le retrait du bouton duplique touche le trou de
-  frontiere deja route sur `ADR-0017`.
+    `nadia-prof`, qui le verifiera en jouant : que l'entree de menu soit reellement invisible sur les
+    cinq etats de l'ecran de jeu (aucun automate du depot ne mesure une visibilite aujourd'hui) ; que
+    "Les jeux" reste dechiffrable et suffisant comme unique sortie du fragment.
+- **Note technique, non tranchee ici** : comment obtenir l'invisibilite de l'entree de menu sur les
+  cinq etats sans casser l'en-tete permanent de `DEC-0012` est une question technique que
+  `nadia-prof` decrit et laisse expressement a `theo-archi`, qui l'instruit en parallele de ce
+  planning.
+- **Lien decision** : `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, arbitrage prealable du
+  2026-08-07 (S6-9) et verdict du 2026-08-07, section A.2, points 2 et 3 ; precise
+  `DEC-0012-rhabillage-gabarit-menu-minimal-et-ouverture-s06.md` point 2 sans le rouvrir.
+- **Agent pressenti** : `theo-archi` (mecanisme d'invisibilite de l'entree de menu sur les cinq
+  etats), mise en oeuvre par `marc-dev` / `lea-dev`.
 
 ### S6-10 - Le bouton d'action reste seul de sa couleur sur l'ecran de retour (reserve 4 du rhabillage)
 
@@ -1848,4 +1868,23 @@ sprint, en priorite sur les trous les plus visibles de `squad/programme/MATRICE-
   deuxieme destination reelle n'existe. Un filtre par niveau (CP / CM1) est le candidat le plus
   visible pour la reserve juste au-dessus ; il suppose d'abord un vrai filtre cote serveur (une
   fonctionnalite a ecrire), pas seulement un lien ajoute dans le menu - ne pas ouvrir l'un sans
-  l'autre.
+  l'autre. **Constat date du 2026-08-07, nomme par `nadia-prof` en instruisant l'arbitrage prealable
+  de S6-9** (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, meme section) : une fois
+  l'entree masquee sur les cinq etats de l'ecran de jeu (S6-9), l'accueil devient le seul ecran ou
+  elle reste visible, donc le seul ou elle ne mene nulle part - exactement le cas que `DEC-0012`
+  exclut elle-meme ("un lien vers l'accueil depuis l'accueil est un ornement"). La suite coherente
+  serait de la retirer partout, ce qui rouvrirait `DEC-0012` point 2 et deferait une partie de S6-1.
+  **Je ne l'amende pas a ce tour** : la question de ce que porte un en-tete sans aucune destination
+  reelle a offrir tant qu'une deuxieme n'existe pas merite d'etre instruite pour elle-meme, avec
+  `ines-design` et `theo-archi`, plutot que tranchee au fil d'une story qui corrige un defaut
+  different (S6-9 traite la duplication de sortie, pas la fonction du menu). Reserve conservee ici,
+  au meme rang que le filtre par niveau, jusqu'a instruction.
+- Deux autres constats non bloquants, nommes le meme jour par `nadia-prof` dans la meme section, a
+  instruire quand cette ligne de dette de forme reviendra au planning :
+  - Sur les cinq etats de l'ecran de jeu, la sortie du fragment est le premier element affiche dans
+    la zone de contenu, avant le score et le verdict : sur l'ecran de fin de partie, cela invite a
+    partir avant d'avoir lu si la reponse etait juste. Un correctif d'ordre (afficher la sortie sous
+    "C'est fini !"), pas de saillance : elle ne le retire donc pas de S6-9.
+  - "Recommencer" (ecran d'erreur) n'est pas plus dechiffrable au CP que ne l'etait "Accueil" avant
+    S6-9. Cet ecran a deja ete valide en s01 et `nadia-prof` ne le rouvre pas par ce constat ; elle
+    le nomme par honnetete au moment ou une lisibilite comparable est demandee ailleurs.
