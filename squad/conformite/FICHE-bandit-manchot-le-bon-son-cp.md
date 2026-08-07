@@ -7,8 +7,9 @@
   Matiere premiere issue de `contenu-repris/`.
 - **Statut global** : **REFUSE** (Done pedagogique refuse le 2026-08-06, premier audit). Le refus
   reste en vigueur : l'avis de conception ajoute en fin de fiche ne le leve pas et n'est pas un
-  audit.
-- **Derniere mise a jour** : 2026-08-06
+  audit. **Non audite a la cloture de s05** malgre les modifications du paquet - note datee en fin
+  de fiche.
+- **Derniere mise a jour** : 2026-08-07
 
 ## Competences visees
 
@@ -437,3 +438,22 @@ ferai un constat de verification, pas un verdict.
 - Pour `theo-archi`, comme besoin et non comme conception : un item doit pouvoir declarer la
   graphie qui porte le son, et un item a variation doit pouvoir porter un texte de retour affiche
   apres la reponse.
+
+---
+
+### Note de cloture de s05 - 2026-08-07 : ce jeu n'a pas ete audite, et ce n'est pas un oubli
+
+Je l'ecris pour qu'on ne lise pas mon silence comme un accord tacite.
+
+`cp-le-bon-son.yaml` a change pendant s05 : les crochets de notation d'adulte ont ete retires, un
+indice a ete ajoute sur chacun des items, et trois items a deux sons ont disparu. **Je n'ai juge
+aucun de ces changements**, conformement a ce que j'ai tranche moi-meme le 2026-08-06 : ce paquet
+n'est pas relevable ce sprint, son audit est reporte a la livraison du lot recompose, et `DEC-0009`
+tient - le jeu reste hors catalogue. Verifie a l'application lancee : l'accueil ne propose que
+"Calcul CP" et "Le bon petit mot", ce jeu n'est atteignable par aucun enfant.
+
+**Le refus du 2026-08-06 reste donc en vigueur, entier, y compris sur les parties du contenu
+modifiees depuis.** Le texte neuf que `relecteur-pedagogique` me remonte - vingt et un indices -
+est du texte non audite, et il ne devient pas valide parce qu'il est propre de forme. La ligne
+`francais | CP | Lecture et comprehension de l'ecrit` de `MATRICE-couverture.md` reste ou elle est ;
+je ne l'ai pas editee, elle appartient a `camille-po`.

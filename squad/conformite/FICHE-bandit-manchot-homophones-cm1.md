@@ -3,10 +3,13 @@
 - **Mecanique** : bandit manchot (mecanique generique, partagee avec
   `bandit-manchot-additions-cp` et `bandit-manchot-le-bon-son-cp`).
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cm1-homophones.yaml`,
-  10 items, `type: question`. Matiere premiere issue de `contenu-repris/`.
-- **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique accorde le 2026-08-06, premier
-  audit). C'est le premier contenu de CM1 du produit.
-- **Derniere mise a jour** : 2026-08-06
+  22 items, `type: question`, chacun porteur d'un indice. Matiere premiere issue de
+  `contenu-repris/`.
+- **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique accorde le 2026-08-06, reconduit
+  le 2026-08-07 sur l'increment de s05). C'est le premier contenu de CM1 du produit.
+- **Ligne de matrice** : **reste `en cours`.** Ma condition de `couvert-valide` n'est pas levee -
+  motif au verdict du 2026-08-07, section 3.
+- **Derniere mise a jour** : 2026-08-07
 
 ## Competences visees
 
@@ -333,3 +336,180 @@ Pour que je fasse passer la ligne francais CM1 de `MATRICE-couverture.md` a `cou
 Rien d'autre. Ce qui n'est pas dans cette liste - dont `c'est`/`s'est` - ne bloque pas
 `couvert-valide` et ne pourra pas m'etre oppose comme l'ayant bloque. Je n'ai edite ni le backlog,
 ni la matrice, ni le referentiel : ce sont les fichiers de `camille-po`.
+
+---
+
+### Verdict du sprint s05 - audit du 2026-08-07, le paquet a 22 items
+
+- **Verdict sur l'increment** : **VALIDE SOUS RESERVE.** Le Done pedagogique accorde en s04 est
+  reconduit et elargi aux douze items neufs et aux vingt-deux indices. Ce jeu peut etre mis devant
+  une classe de CM1, et il est nettement meilleur qu'a mon audit precedent.
+- **Verdict sur la ligne de matrice** : **la condition n'est PAS levee. La ligne
+  `francais | CM1 | Orthographe et grammaire | ... homophones grammaticaux` reste `en cours`.**
+  Deux points precis manquent, section 3.
+- **Commit audite** : `c0b5241` (`HEAD` de `round-two`).
+- **Moyens** : audit **joue**, non degrade. `mvn -B clean package` depuis un arbre propre sous un
+  `JAVA_HOME` sur le JDK 21 reel du poste (`java -version` : `21.0.10`), jar relance en local sur
+  un port distinct de celui de l'utilisatrice. Parties completes jouees : une en repondant juste
+  de bout en bout (score 10 sur 10), une en me trompant a chaque manche, une en enchainant les
+  echecs pour faire venir l'aide. Ecrans mesures au navigateur sans tete en 1280 x 900 et en
+  360 x 640, dans les memes conditions que mes refus precedents.
+
+#### 1. Le defaut signale par l'utilisatrice est corrige - verifie en jeu
+
+Les phrases n'affichent plus la reponse. Les vingt-deux enonces portent un trou `___`, et je l'ai
+vu a l'ecran manche apres manche, pas seulement dans le fichier. C'etait le defaut le plus grave
+possible pour ce jeu : un exercice a trou sans trou ne demande rien a l'enfant.
+
+Effet secondaire mesure et reel : **une partie tire dix items distincts sur vingt-deux**, et deux
+parties consecutives ne presentent pas les memes phrases. **Ma reserve 1 est levee** - l'enfant ne
+voit plus l'integralite du paquet a chaque partie, il lui reste quelque chose a apprendre a la
+deuxieme.
+
+#### 2. Ma condition en six points, verifiee point par point en jouant
+
+| Point de ma condition | Verdict |
+|---|---|
+| 1. Les cinq familles manquantes sont ajoutees (`ce/se`, `ces/ses`, `la/là/l'a`, `mais/mes`, `peu/peut`) | **tenu** - les cinq sont la, jouees a l'ecran |
+| 2. `la/là/l'a` en deux paires pivotant sur `la`, un seul distracteur par item | **tenu** - `la`/`là` et `la`/`l'a`, jamais `là`/`l'a`, deux propositions par item partout |
+| 3. Chaque paire, ancienne et nouvelle, dans les deux sens | **tenu** - onze paires, vingt-deux items, `la` bonne reponse deux fois |
+| 4. Aucun item n'admet deux lectures correctes | **tenu** - detail ci-dessous |
+| 5. Au moins la moitie des items neufs oblige a regarder ailleurs que juste avant le trou | **NON TENU** - 5 items sur 12, il en faut 6 |
+| 6. J'aurai joue l'increment | **tenu** |
+
+##### Point 4 - mes trois risques nommes, leves un par un
+
+**`ces`/`ses`, celui que j'annoncais comme le plus dangereux : les deux items passent mon seuil.**
+Je les ai regardes un par un, en cherchant l'autre lecture plutot qu'en la supposant absente.
+
+- "Regarde ___ oiseaux là-bas, sur la branche !" -> `ces`. La designation explicite que j'exigeais
+  est presente deux fois, par `là-bas` et par l'exclamation. Et `ses` n'est licencie par rien :
+  aucun possesseur n'est nomme dans la phrase, donc le possessif y pend dans le vide. Un adulte
+  trouve l'autre lecture incongrue, pas seulement moins probable. C'est mon seuil, il est atteint.
+- "Léa range son cahier et ___ crayons avant de partir." -> `ses`. Le possesseur est nomme
+  (`Léa`), et le parallele avec `son cahier` verrouille la coordination. `ces` demanderait un
+  geste de designation que rien ne porte. Tenu.
+
+Les deux items respectent ma regle **dans les deux sens** : `ces` n'est retenu que la ou il y a
+designation, `ses` que la ou il y a un possesseur nomme. C'est exactement ce que je demandais et
+c'est le point que je craignais le plus.
+
+**`peu`/`peut` : aucun sujet `je` ni `tu`.** Les deux items ont `il` pour sujet ("Il reste ___ de
+pain...", "...il ___ encore pleuvoir..."). `peux` n'est jamais la vraie reponse cachee. Tenu.
+
+**`mais`/`mes` : aucun contexte du verbe *mettre*.** Les deux items emploient `brille` et `rangé`.
+Ni `mets`, ni `met`, ni `m'est` ne sont la vraie reponse d'un item. Tenu.
+
+J'ajoute les deux autres familles, verifiees au meme titre : `ce`/`se` evite le piege `ce sera` /
+`se sera` que j'avais nomme ; `la`/`l'a` distingue proprement `range` (present) de `retrouvé`
+(participe). **Zero erreur factuelle sur les vingt-deux enonces.**
+
+##### Point 5 - l'ecart signale par marc-dev : son motif est recevable a moitie, ma condition tient
+
+`marc-dev` me signale de lui-meme que seuls 4 de ses 12 items exigent de regarder au-dela du mot
+voisin du trou. **Qu'il le signale plutot que de le masquer est ce qui permet de trancher au lieu
+de decouvrir**, et je le porte a son credit.
+
+Mon propre comptage en donne 5 et non 4 - je compte "Pose ton cartable ___, à côté du mien." parce
+que le voisin de droite est une virgule et que la levee vient de `à côté du mien`. Que ce soit 4
+ou 5 ne change rien : **il en faut 6.**
+
+**Son motif est vrai la ou il le dit.** Pour `ce`/`se`, et pour le versant determinant de
+`mais`/`mes` et de `la`/`là`, la discrimination *est* determinant contre verbe, ou determinant
+contre conjonction : le diagnostic porte sur le mot voisin par nature de la categorie
+grammaticale. Les indices l'ecrivent d'ailleurs eux-memes ("Le mot qui suit le trou est un nom
+('cahier')"). Forcer ces items-la a regarder plus loin fabriquerait de la complexite postiche, et
+il a raison de dire que ce serait courir vers l'ambiguite, c'est-a-dire vers mon point 4, qui est
+bloquant. **Je ne lui demanderai pas cela.**
+
+**Mais son motif ne couvre pas tout le paquet, et il le prouve lui-meme.** Quatre de ses items -
+"...elle ___ enfin retrouvé...", "Regarde ___ oiseaux là-bas...", "...son cahier et ___
+crayons...", "...il ___ encore pleuvoir..." - obligent bel et bien a regarder plus loin, et ils
+sont excellents. Ils sortent de `la/l'a`, de `ces/ses` et de `peu/peut`, c'est-a-dire des familles
+ou la place du mot decisif est libre. **Ce qui est possible trois fois l'est cinq fois.** Le motif
+"c'est intrinsequement local" est donc vrai pour certaines familles et pas pour celles-la.
+
+**Je ne leve donc pas le point 5, et je le retrecis pour qu'il soit tenable** : je ne demande pas
+que six items quelconques deviennent non locaux, je demande **deux items neufs de plus dont le mot
+decisif n'est pas voisin du trou, pris dans `la`/`l'a`, `ces`/`ses` ou `peu`/`peut`** - les trois
+familles ou marc-dev a deja montre que cela se fait sans forcer. `ce`/`se` et le versant
+determinant de `mais`/`mes` sont explicitement dispenses. Cela porte le paquet a 24 items, ce qui
+va dans le sens de ma reserve 1.
+
+Je precise pourquoi je ne cede pas alors que l'ecart est d'un item ou deux. Ma condition a ete
+ecrite avant le sprint, l'equipe s'est engagee dessus, et j'ai refuse pour ce motif d'y ajouter
+`c'est`/`s'est` en cours de route. Une condition qui ne grossit pas apres coup ne retrecit pas non
+plus parce que ce serait plus rapide. Ce que je fais en revanche, c'est nommer exactement le
+reste a faire pour qu'il soit petit, borne et actionnable sans me redemander ce que je voulais.
+
+#### 3. Ce qui manque pour `couvert-valide`, exactement, et rien de plus
+
+Deux points. Ils sont les seuls.
+
+1. **Deux items neufs de plus dont le mot decisif n'est pas voisin du trou**, pris dans
+   `la`/`l'a`, `ces`/`ses` ou `peu`/`peut` (point 5 ci-dessus). Les cinq items neufs deja non
+   locaux comptent, il ne s'agit pas de tout reecrire.
+2. **L'indice de "J'ai rangé ___ affaires avant de partir à l'école." est a corriger.** Il dit
+   *"Remplace par 'les miennes' : ce sont les affaires à moi, alors c'est 'mes'."* C'est le seul
+   des quinze indices de substitution du paquet qui **ne montre pas la phrase substituee**, et il
+   ne la montre pas parce qu'elle n'existe pas : un enfant qui applique l'instruction obtient
+   *"J'ai rangé les miennes affaires"*, qui n'est pas du francais. La conclusion de l'indice est
+   juste, sa methode ne l'est pas. Or l'indice est **le seul endroit de ce jeu ou l'on enseigne
+   quelque chose** - tout le reste est un choix entre deux boutons - et il est servi a l'enfant qui
+   vient d'echouer trois fois de suite, celui qui est le moins en etat de reperer que l'aide est
+   fausse. La correction tient en une ligne et le modele est deja dans le paquet, a l'item `son` :
+   *"Remplace par 'tes' : 'J'ai rangé tes affaires' fonctionne, alors c'est 'mes'."*
+
+Une fois ces deux points faits, je rejoue et je fais passer la ligne. Rien d'autre ne bloque : les
+points 1, 2, 3, 4 et 6 de ma condition sont tenus et ne seront pas rouverts.
+
+#### 4. Ce qui est bon et que je dis, parce qu'un controle qui ne dit rien quand ca va bien ne prouve rien
+
+- **Les vingt et un autres indices sont justes et bien tournes.** La manipulation est nommee, la
+  phrase substituee est montree, la conclusion suit. "Remplace par 'à cet endroit'", "Remplace par
+  'l'avait'", "'là-bas' montre ce qu'on regarde" : c'est de l'enseignement, pas de la correction.
+  C'etait exactement ce que ma reserve 6 appelait, et elle est levee.
+- **L'aide se declenche a la bonne manche.** Joue reellement : trois echecs consecutifs, l'indice
+  apparait a la quatrieme et pas avant. **Ma reserve 6 est levee.**
+- **Les phrases neuves sont d'un autre calibre que les anciennes** : huit a treize mots, des
+  subordonnees ("Même si le ciel est bien dégagé ce matin..."), des propositions coordonnees. Le
+  vocabulaire reste entierement accessible a un CM1 et l'effort porte ou il doit porter.
+- **Les distracteurs restent tous des homophones de la bonne reponse.** Aucune devinette, aucun
+  distracteur absurde, sur les vingt-deux items.
+- **Aucun biais nouveau.** Les items neufs font apparaitre `Léa` quatre fois comme sujet agissant,
+  ce qui corrige en partie mon desequilibre de la reserve 3 sans qu'on me l'ait demande. Aucune
+  configuration familiale presupposee dans les douze items neufs, aucun stereotype de role.
+
+#### 5. Reserves nouvelles - a convertir en stories par camille-po, non bloquantes
+
+9. **"___ cahier appartient à mon petit frère." propose `ce` et `se` en minuscules en tete de
+   phrase.** Les deux autres items qui commencent par le trou capitalisent leurs propositions
+   (`On`/`Ont`, `Où`/`Ou`). C'est la seule incoherence interne du paquet. L'enfant ne lit jamais la
+   phrase reconstituee, donc il ne voit pas de majuscule manquante, mais dans un exercice
+   d'orthographe on ne propose pas comme bonne reponse un mot mal capitalise pour sa place.
+   Capitaliser les deux propositions, comme aux deux autres items.
+10. **L'indice donne la reponse en plus de la methode.** "...alors c'est 'peu'." Apres trois
+    echecs, montrer le raisonnement complet est defendable, et je ne le refuse pas ; mais la
+    manche portant l'indice devient un point gratuit. Si le score doit un jour mesurer quelque
+    chose, l'indice devra s'arreter a la manipulation et laisser l'enfant l'appliquer.
+11. **L'indice de "Il ___ range soigneusement dans son cartable." emploie "un participe"**, sans
+    "passe". C'est le mot le plus abstrait des vingt-deux indices, et l'item est deja le plus
+    subtil du paquet puisque tout se joue sur un accent absent. Il reste au niveau, mais il est en
+    haut de la fourchette CM1 : "ce n'est pas 'rangé', donc ce n'est pas 'l'a'" dirait la meme
+    chose avec un mot de moins.
+12. **Le pronom `la` de "Il ___ range soigneusement dans son cartable." n'a aucun antecedent.**
+    L'enfant ne peut pas verifier ce que `la` remplace. Ce n'est pas faux et cela n'empeche pas de
+    repondre, mais une phrase isolee qui emploie un pronom sans referent apprend une tournure
+    bancale.
+
+Mes reserves 2, 3, 4, 5, 7 et 8 de l'audit precedent restent ouvertes en l'etat, sauf la 3 que les
+items neufs ameliorent sans la fermer. Les reserves 1 et 6 sont levees, dites ci-dessus.
+
+#### 6. Habillage et correctifs communs aux deux jeux
+
+Le rhabillage du gabarit (en-tete, menu, centrage) et les deux correctifs fonctionnels du score
+concernent les trois jeux et pas celui-ci en propre. **Je les tranche dans
+`FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-07**, qui est depuis s02 le lieu ou
+j'ecris l'habillage commun. Resume, pour qu'on n'ait pas a chercher : l'en-tete est **accorde sous
+reserves**, le comportement du double appui est **valide**, et **aucun de ces verdicts ne remet en
+cause le Done pedagogique accorde ici**.

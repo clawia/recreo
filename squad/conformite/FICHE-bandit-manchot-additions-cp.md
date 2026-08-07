@@ -14,7 +14,11 @@
   sont conserves au bloc de validation. Chantier d'identite visuelle de s02 : **S2-1, S2-2 et S2-3 accordes sous
   reserve** le 2026-08-05 ; S2-1 avait ete **REFUSE** sur le commit `3be5a86`, refus **leve** sur
   `fd16057` apres nouvelle mesure. Aucun refus n'est efface de cette fiche.
-- **Derniere mise a jour** : 2026-08-06
+  Rhabillage du gabarit de s05 (en-tete, icone, menu, centrage) : **VALIDE SOUS RESERVE** le
+  2026-08-07, quatre reserves chiffrees, aucun refus. Comportement du double appui (`ADR-0019`) :
+  **VALIDE** le 2026-08-07. Correctifs du score (accent, course de session) : **VALIDE** le
+  2026-08-07, rejoues.
+- **Derniere mise a jour** : 2026-08-07
 
 ## Competences visees
 
@@ -81,6 +85,203 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Verdict courant - s05, en-tete permanent et correctifs du score, audit du 2026-08-07
+
+- **Trois verdicts distincts. Je ne les fonds pas.**
+  - **Le rhabillage du gabarit (en-tete, icone, menu, centrage - S6-1, S6-2, `DEC-0012`)** :
+    **VALIDE SOUS RESERVE.** Done pedagogique accorde. C'est le troisieme passage de ce chantier
+    devant moi et le premier que je n'ai pas a refuser.
+  - **Ce que voit l'enfant qui appuie deux fois sur la derniere manche (`ADR-0019`, clause 3)** :
+    **VALIDE.** Le choix de `theo-archi` est le bon, motif ecrit au point C.
+  - **Les deux correctifs fonctionnels du score** (manche plantee par une reponse accentuee,
+    increment perdu par course sur la session) : **VALIDE**, rejoues tous les deux.
+- **Commit audite** : `c0b5241` (`HEAD` de `round-two`).
+- **Moyens : audit joue, non degrade.** `mvn -B clean package` depuis un arbre propre sous un
+  `JAVA_HOME` sur le JDK 21 reel du poste (`21.0.10`), jar relance en local. **Une instance de
+  l'utilisatrice occupait le port 8080 et tenait `recreo.jar` verrouille** : je l'ai arretee pour
+  pouvoir reconstruire, j'ai audite sur un autre port, et je l'ai relancee sur 8080 avec le jar de
+  ce commit avant de rendre la main. Je le dis plutot que de le taire.
+  - Parties completes jouees sur les deux jeux, en repondant juste, en me trompant a chaque
+    manche, et en enchainant les echecs pour faire venir l'aide.
+  - Ecrans **mesures en pixels** au navigateur sans tete (`getBoundingClientRect` et style calcule
+    sur les gabarits reellement servis, en-tete assemble au fragment comme htmx le fait), en
+    **1280 x 900 et en 360 x 640**, dans les memes conditions que mes deux refus precedents - sans
+    quoi la comparaison ne voudrait rien dire - et regardes en captures d'ecran.
+  - Double appui rejoue reellement, en sequence et en concurrence.
+
+#### A. Le rhabillage - ACCORDE SOUS RESERVES
+
+##### A.1 Mon axe de refus est tenu, et je le mesure avant de dire quoi que ce soit d'autre
+
+J'ai refuse deux fois sur le meme axe : la sortie ne doit pas dominer l'action. Le critere que
+j'avais ecrit au point 2.3 est *"le bouton d'action doit etre au moins aussi haut et aussi large
+que le bouton de sortie"*. Un en-tete permanent ajoute une **seconde sortie sur chaque ecran**, y
+compris pendant une manche : je l'ai donc remesure contre les deux.
+
+| Ecran | Action | Sortie du fragment | Sortie de l'en-tete |
+|---|---|---|---|
+| Retour juste et faux | "Encore !" **117 x 56**, aire 6 571, aplat bleu | "Les jeux" 109 x 53, aire 5 788, contour | "Accueil" 102 x 53, aire 5 427, contour |
+| Manche CP et CM1 | reponse **1140 x 74**, aire 84 360, aplat bleu | "Les jeux" 109 x 53 | "Accueil" 102 x 53 |
+| Accueil | "Calcul CP" 129 x 56 / "Le bon petit mot" 199 x 56, aplats | - | "Accueil" 102 x 53 |
+| Fin de partie | - | "Les jeux" 117 x 56, aplat plein | "Accueil" 102 x 53 |
+
+117 >= 109 >= 102 en largeur, 56 >= 53 en hauteur. **L'action reste devant les deux sorties sur
+les deux dimensions, et elle reste la seule a etre un aplat plein : les deux sorties sont des
+contours.** Le lien de menu reprend deliberement les composantes de boite de `.retour-accueil`,
+c'est ecrit dans la feuille et c'est verifie a la mesure. Sur l'ecran de manche, l'ecart est de
+15,5 pour 1. **Mon critere est tenu, je ne refuse pas.**
+
+Position, que je regarde parce qu'elle a compte dans mon refus de s03 : "Accueil" est a x=1088,
+y=16, dans le coin haut droit, tres loin des boutons de reponse (x=62, y=326 et au-dela). En
+360 px de large il reste a x=246, y=16, quand les reponses sont a y=326 et plus bas. **Le risque
+qu'un enfant qui vise une reponse perde sa partie par erreur de visee n'augmente pas.** C'etait ma
+crainte principale et elle ne se realise pas.
+
+L'icone : le crayon jaune que j'avais valide en s03 est affiche a 44 px sur le bandeau. Son fond
+bleu est exactement la couleur du bandeau, donc le carre disparait et le crayon flotte - regarde
+en capture, c'est propre et cela se lit comme un crayon. `alt=""` est le bon choix, le nom du
+produit est a cote. Rien a redire.
+
+##### A.2 Ce que je refuserais si c'etait plus grave, et pourquoi ce sont des reserves
+
+Quatre points. Aucun n'inverse la hierarchie action/sortie, aucun n'empeche l'enfant de jouer ni
+d'apprendre. Ils sont ranges du plus concret au moins concret.
+
+1. **Sur un ecran etroit, le texte et les boutons touchent les deux bords de l'ecran. C'est une
+   regression, et elle vient de ce sprint.** `.zone-jeu { padding: 2rem 0 }` ecrase le rembourrage
+   lateral que `.container` apporte, pendant que l'en-tete, lui, garde ses 12 px. Mesure a 360 px :
+   `main.container` a `padding-left: 0` et `padding-right: 0`, la consigne, l'enonce et les
+   boutons de reponse partent de x=0 et vont jusqu'au bord droit. Avant ce sprint,
+   `body { margin: 2rem }` donnait 32 px de tous les cotes sur toutes les tailles ; le sprint a
+   remplace cette marge par `margin: 0` en comptant sur `.container`, qui ne la rend qu'au-dessus
+   de 1200 px de large. **Un enfant de six ans qui apprend a lire n'a plus aucune marge a gauche
+   de sa premiere lettre**, et l'en-tete garde la sienne juste au-dessus, ce qui se voit. Sur un
+   grand ecran, rien de tout cela n'est visible - c'est pourquoi personne ne l'a vu, et c'est
+   exactement le genre de defaut que ma porte existe pour attraper : CI verte, ArchUnit vert, et
+   `leContenuDeLAccueilEstCentreDansUneLargeurMaximale` vert. Le correctif est d'une ligne et je ne
+   dis pas laquelle : c'est `ines-design` et `theo-archi` qui tranchent. **Je remesurerai a
+   360 px.**
+2. **Deux sorties sur chaque ecran de jeu, avec deux libelles differents pour la meme action.**
+   "Accueil" et "Les jeux" envoient tous deux `POST /retour` et ramenent tous deux a la liste. Sur
+   l'ecran de retour, la surface cumulee des deux sorties (11 215 px2) depasse de 70 % celle de la
+   seule action (6 571 px2). Pris bouton par bouton mon critere tient, et c'est pourquoi ce n'est
+   pas un motif ; mais faire cohabiter deux mots pour une meme porte est un cout de comprehension
+   gratuit. Je ne tranche pas lequel des deux doit partir - c'est une question produit pour
+   `camille-po` - je dis que sur un ecran de jeu il en faut un, pas deux.
+3. **"Accueil" n'est pas dechiffrable par un CP.** `ueil` est l'un des groupes de lettres les plus
+   tardifs du francais et il n'est pas au programme de CP. Un enfant de six ans ne lit pas ce mot ;
+   il le reconnaitra a la rigueur par sa forme, apres qu'un adulte le lui aura dit. Ce n'est pas
+   un motif de refus **uniquement parce que la sortie lisible existe a cote** : "Les jeux" est
+   dechiffrable des le CP et fait le meme travail. Si la reserve 2 est traitee en gardant
+   "Accueil" et en retirant "Les jeux", alors ce point devient bloquant et je le dis maintenant
+   pour qu'on ne le decouvre pas apres.
+4. **Le bandeau est exactement la couleur des boutons d'action** (`#2e6f9e` des deux cotes), sur
+   1264 x 85 px, soit 107 677 px2 - **seize fois la surface du bouton "Encore !"**, dans la meme
+   couleur, en haut de chaque ecran. J'avais explicitement porte au credit de l'habillage, en s03,
+   que "l'action reste un aplat bleu plein, donc un enfant trouvera le bouton bleu". Cet appui est
+   affaibli : le bleu n'est plus le signal exclusif de "appuie ici". Il n'est pas detruit - le
+   bandeau va d'un bord a l'autre, sans coin arrondi ni ombre, et aucun enfant n'appuie sur un
+   bandeau - et c'est pourquoi c'est une reserve. Ce que je demande a `ines-design` d'instruire :
+   soit le bandeau prend une nuance distincte de la couleur d'action, soit l'action grandit sur
+   l'ecran de retour, qui est le plus pauvre en signal et que l'enfant voit dix fois par partie.
+
+##### A.3 Ce que le garde-fou de theo-archi ne garde pas, verifie plutot que suppose
+
+`theo-archi` ecrit lui-meme que sa regle fermee compare desormais l'en-tete aux ecrans de jeu mais
+ne mesure ni la couleur, ni la position, ni la largeur. Il a raison, et c'est exactement ou tombent
+mes reserves 1, 2 et 4 : aucune n'aurait pu rougir. **Qu'il ait ecrit la limite de sa propre regle
+plutot que de me laisser la trouver est ce qui rend cette porte utilisable** - j'ai su ou chercher.
+Tant qu'aucun automate ne mesure un rendu, c'est moi le garde-fou, et je le reste en jouant.
+
+#### B. Le texte lu par l'enfant n'a pas bouge en dehors de ce qui m'est soumis - verifie
+
+Diff complet des gabarits depuis `c801eb8`, le commit de mon audit precedent, plus le HTML
+reellement servi. **Trois changements de texte, tous les trois soumis a cette porte, aucun autre :**
+le titre, le `h1` deplace dans l'en-tete, et le libelle "Accueil". Intacts, mot pour mot et accent
+pour accent : "Les jeux", "Score : N", "Combien ça fait ?", "Quel mot complète la phrase ?",
+"Bravo, c'est juste !", "Non, c'est N.", "C'est fini !", "Encore !", "Compte sur tes doigts.",
+"Oups ! Le jeu a un souci.", "Recommencer", "Ta partie s'est arrêtée. Choisis un nouveau jeu !",
+"Il n'y a pas de jeu pour le moment." **Ma porte n'a pas ete contournee.**
+
+**`DEC-0010`, le titre "Recreo" sans accent : j'en prends acte et je ne le rouvre pas.** Ma
+reserve 10 de s01, que j'avais enregistree comme tenue apres S3-9, ne l'est plus. C'est une
+decision de l'utilisatrice sur le nom de son produit, et j'avais moi-meme renvoye ce point comme
+une question de marque plutot que de la trancher. `camille-po` distingue proprement les deux
+registres et ne pretend pas que la decision efface le constat : je note donc, sans en faire une
+reserve puisque je n'ai rien a demander, que le cout reste ce qu'il etait - un enfant de CP qui
+dechiffre "Recreo" lit /rəkrəo/, et le nom du produit est le seul mot non accentue qu'il rencontre.
+Ce cout est assume par la proprietaire du produit, c'est son droit, et il ne m'appartient pas.
+
+#### C. Le double appui - je tranche, et je valide le choix de theo-archi
+
+**La question**, qu'il m'a laissee ouverte plutot que de la decider sans moi : que voit l'enfant
+qui appuie deux fois sur la derniere manche ? Il voyait "Oups ! Le jeu a un souci." Il revoit
+desormais l'ecran de fin de partie, avec son score.
+
+**Ma reponse : c'est le bon choix. Valide, et je ne demande rien d'autre.**
+
+Le motif, et il tient a une idee : **un double appui n'est pas une erreur de l'enfant.** C'est une
+habitude motrice, et elle est frequente a six ans. Un geste involontaire ne doit pas produire une
+consequence que l'enfant devra interpreter. Les trois autres possibilites que `theo-archi` liste
+echouent toutes sur ce point :
+
+- un **retour a la liste des jeux** lui arracherait son score avant qu'il ait fini de le lire.
+  C'est la pire des quatre, et de loin ;
+- un **message "la partie est finie"** se lit comme un reproche pour un geste qu'il n'a pas voulu,
+  et ajoute un texte a dechiffrer au moment ou il n'y a plus rien a apprendre ;
+- un **ecran de fin different du premier** lui apprend que son second appui a fait quelque chose,
+  alors qu'il n'a rien fait. C'est faux, et c'est precisement ce qu'il ne faut pas enseigner.
+
+Montrer le meme ecran dit la verite : le geste n'a rien change. C'est ce que fait un bouton qui se
+comporte bien.
+
+**J'ai verifie le point qui aurait pu rendre ce choix mauvais, et il tient.** Le second appui
+transporte une proposition ; si elle basculait le verdict affiche, l'enfant verrait son "Bravo,
+c'est juste !" se transformer en "Non, c'est ...". Rejoue dans les deux sens sur le jar reel :
+juste puis appui faux, l'ecran reste "Score : 10 / Bravo, c'est juste ! / C'est fini !" ; faux puis
+appui juste, l'ecran reste "Score : 9 / Non, c'est a. / C'est fini !". **L'ecran est gele, a
+l'octet pres, au troisieme appui comme au deuxieme.** C'est cela qui fait que le choix est bon, et
+pas seulement commode.
+
+Qu'il ait epingle ce comportement par un test nomme pour qu'un changement d'avis se voie dans un
+diff est la bonne facon de me rendre une decision : si je change d'avis, cela se verra.
+
+#### D. Les deux correctifs du score - rejoues, tous les deux tiennent
+
+- **La manche plantee par une reponse accentuee est corrigee.** Verifie sur le jar reel dans les
+  trois formes possibles du corps de requete - octets UTF-8 bruts, pourcent-encode, et un octet
+  invalide isole. **Aucune ne rend l'ecran d'erreur** ; les trois rendent un verdict normal. Joue
+  aussi en partie complete : les reponses `à`, `où`, `là`, `l'a` sont jouables et comptent.
+- **L'increment perdu par double appui est corrige.** Mon premier protocole ne prouvait rien - avec
+  le verrou, deux appuis simultanes dont un faux donnent legitimement zero une fois sur deux, selon
+  l'ordre d'arrivee, et j'aurais lu ce zero comme une perte. J'ai donc mesure l'invariant qui
+  discrimine reellement : **aucun appui ne doit disparaitre.** Cinq paires d'appuis simultanes sur
+  la meme session, vingt-cinq parties independantes : **la partie se termine apres exactement dix
+  appuis, vingt-cinq fois sur vingt-cinq.** Aucun appui perdu. Ce que l'utilisatrice signalait -
+  "le score ne s'incremente pas toujours" - ne se reproduit plus.
+
+#### E. Suites hors de ma main
+
+- **`squad/programme/MATRICE-couverture.md`** : rien a changer de mon fait ce sprint. La ligne
+  `mathematiques | CP | ... additions dans la limite de 10 (puis 20)` reste `couvert-valide`, rien
+  de ce sprint ne la remet en cause - je l'ai rejouee. La ligne francais CM1 **reste `en cours`**,
+  motif dans `FICHE-bandit-manchot-homophones-cm1.md`, verdict du 2026-08-07. Je n'edite pas ce
+  fichier, il appartient a `camille-po`.
+- **Deux symptomes techniques, decrits sans que j'en cherche la cause, pour `theo-archi`** :
+  1. apres chaque echange htmx, la page porte **deux elements d'identifiant `jeu`** - le `main` du
+     gabarit et le `div` du fragment qu'il recoit. La page continue de fonctionner ; je le signale
+     parce qu'un identifiant en double est un defaut d'accessibilite et que je l'ai constate a la
+     mesure, pas suppose ;
+  2. sur une partie terminee, une demande de manche rend un **ecran mort** - la consigne "Quel mot
+     complète la phrase ?", aucun enonce, aucun bouton de reponse. **Je n'ai trouve aucun chemin
+     pour qu'un enfant y arrive** : l'ecran de fin ne porte pas "Encore !". Je le note comme un
+     ecran qui existe et que personne ne devrait pouvoir atteindre, pas comme un defaut constate en
+     jeu.
+- **`ines-design`** : mes quatre reserves du point A.2, dont la premiere est chiffree et
+  remesurable.
+
+---
 
 ### Verdict courant - s03 et chantier Bootstrap, audit du 2026-08-06
 
