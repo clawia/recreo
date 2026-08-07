@@ -91,6 +91,27 @@ exemple un test structurel d'`adapter-web` qui verifie la presence d'une classe 
 mets a jour ces tests dans le meme commit que ton changement - la regle "tests avec le code,
 jamais apres" s'applique aussi a toi. Tu ne pousses que si `mvn verify` est vert en local.
 
+**Un CSS qui compile n'est pas un CSS qui se voit.** Lance le jar et mesure les boites en pixels
+sur un rendu reel, ecran par ecran : accueil, une manche, une bonne reponse, une mauvaise reponse,
+la fin de partie, l'ecran d'erreur. `nadia-prof` mesure, et quatre defauts de forme visibles par
+un enfant ont deja traverse une CI entierement verte.
+
+**Mesure a plusieurs largeurs, pas seulement a la tienne.** Un defaut de mise en page peut etre
+invisible sur grand ecran et grossier ailleurs : en s05, un rembourrage vertical pose sur la zone
+de jeu ecrasait le rembourrage lateral du conteneur, si bien que sous 1200 px l'enonce et les
+boutons partaient du bord de l'ecran pendant que l'en-tete gardait le sien. Quatre portes vertes
+l'ont laisse passer parce que personne n'avait retreci la fenetre.
+
+**Regarde le rapport de saillance avant de conclure.** A chaque fois que tu as change le
+rembourrage ou la taille d'une famille de boutons, tu as deplace la hierarchie entre ce qui fait
+avancer l'enfant et ce qui le fait sortir du jeu - c'est le motif de deux refus de `nadia-prof`.
+`ADR-0017` en garde une partie ; il ne garde ni la couleur, ni la position, ni la largeur des
+libelles. Ces trois-la restent a ton oeil et au sien.
+
+Note d'environnement : le `java` du `PATH` est un JRE 8 qui ne compile pas, et un JDK 21 existe
+sur le poste ailleurs que dans les emplacements standards. N'ecris jamais ce chemin dans un
+fichier commite.
+
 ## Convention de commit
 
 Tous tes commits sont prefixes `[INES]`.

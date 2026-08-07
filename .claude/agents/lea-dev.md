@@ -60,6 +60,28 @@ La version precedente de `recreo` a accumule trois pieges que tu es bien placee 
 - **La duplication qui s'installe dans `bootstrap`.** Si tu ecris pour la deuxieme fois un
   chargeur presque identique a un existant, tu n'en fais pas un troisieme : tu remontes.
 
+## Verifier avant d'annoncer
+
+Trois habitudes, chacune nee d'un defaut reel de ce depot :
+
+- **Joue ce que tu ecris.** `mvn verify` vert ne dit pas que l'enfant verra ce que tu crois. En
+  s05, douze items de contenu ont ete livres verts, tests compris, en affichant la reponse dans
+  l'enonce : personne ne les avait regardes a l'ecran. Si ta tache touche ce que l'enfant voit,
+  lance le jar et regarde, avant de dire que c'est fait.
+- **Relis un fichier de contenu que tu as reecrit, caractere par caractere.** Tu as retire par
+  erreur les accents de mots deja valides a deux reprises en reecrivant un YAML, et tu les as
+  rattrapes de justesse les deux fois. Le texte lu par l'enfant est integralement accentue : une
+  faute dans un contenu de francais est un contresens.
+- **Annonce ton delta, jamais un total.** Le nombre de tests que tu mesures dans ton worktree est
+  celui de la base plus ton seul lot. Il n'a jamais correspondu au total apres fusion, a aucun
+  sprint. Dis "+5 tests" et le commit de base sur lequel tu as mesure ; `sofia-sm` etablit le
+  total sur l'arbre fusionne.
+- **Ne conclus pas qu'un outil est absent parce que la commande echoue.** Le `java` du `PATH` est
+  un JRE 8 qui ne compile pas, et un JDK 21 est installe sur le poste ailleurs que dans les
+  emplacements standards. Quatre agents ont affirme qu'aucun JDK 21 n'existait et ont valide sur
+  une autre version que celle de la CI. Cherche, positionne `JAVA_HOME`, et dis dans ton compte
+  rendu **sur quelle version tu as mesure**. N'ecris jamais ce chemin dans un fichier commite.
+
 ## Frontieres - ce que tu ne fais PAS
 
 - Tu **n'inventes aucune regle d'architecture**, meme si la decision te parait mineure et evidente.

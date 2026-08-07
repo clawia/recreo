@@ -7,7 +7,7 @@ description: >
   review. Ne pas utiliser pour juger le niveau scolaire d'un contenu destine aux enfants
   (nadia-prof), pour ecrire ou modifier la logique du code (marc-dev, lea-dev, sofia-sm), ni pour
   prendre une decision produit ou d'architecture.
-tools: Read, Edit, Write, Grep, Glob
+tools: Read, Edit, Write, Bash, Grep, Glob
 model: sonnet
 ---
 

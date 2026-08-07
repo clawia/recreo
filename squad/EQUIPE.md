@@ -7,13 +7,13 @@ fichier en est le miroir humain. **En cas de divergence, `.claude/agents/` fait 
 
 | Agent | Prenom | Role | Tag | Modele | Outils |
 |---|---|---|---|---|---|
-| `camille-po` | Camille | Product Owner | `[CAM]` | sonnet | Read, Write, Edit, Grep, Glob |
+| `camille-po` | Camille | Product Owner | `[CAM]` | sonnet | Read, Write, Edit, Bash, Grep, Glob |
 | `sofia-sm` | Sofia | Scrum Master + dev | `[SOF]` | sonnet | + Bash |
 | `theo-archi` | Theo | Architecte | `[THEO]` | **opus** | + Bash |
 | `marc-dev` | Marc | Dev senior Java | `[MARC]` | sonnet | + Bash |
 | `lea-dev` | Lea | Dev senior Java | `[LEA]` | sonnet | + Bash |
 | `yanis-qa` | Yanis | QA | `[YAN]` | sonnet | + Bash |
-| `relecteur-pedagogique` | - | Relecteur / QA de contenu | `[REL]` | sonnet | Read, Write, Edit, Grep, Glob |
+| `relecteur-pedagogique` | - | Relecteur / QA de contenu | `[REL]` | sonnet | Read, Write, Edit, Bash, Grep, Glob |
 | `nadia-prof` | Nadia | Professeure des ecoles | `[NAD]` | **opus** | + Bash (lecture / execution) |
 | `ines-design` | Ines | Designer d'interface | `[INES]` | sonnet | + Bash |
 
