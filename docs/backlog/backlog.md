@@ -1399,6 +1399,17 @@ technique a instruire (`DEC-0013`, point 3).
   - Etant donne l'ensemble des items du paquet, quand on les releve par personne grammaticale
     (je, tu, il/elle, nous, vous, ils/elles), alors chacune des six personnes est representee par au
     moins un item.
+  - Etant donne le paquet livre, quand on compare son nombre d'items a la valeur de
+    `nombreDeManches` retenue pour ce jeu dans l'entree de catalogue, alors le paquet compte
+    strictement plus d'items que de manches par partie (meme propriete deja exigee sur
+    `cm1-homophones`) : le paquet repris n'en compte que six, un par personne grammaticale, et ne
+    suffit pas en l'etat a remplir une partie sans repeter deux fois le meme item avant son terme.
+    Ecrire les formes supplementaires necessaires fait partie de cette story, `contenu-repris/`
+    n'etant que de la matiere premiere (`contenu-repris/README.md`).
+  - Etant donne chaque item du paquet livre, quand on le relit, alors il porte un champ indice,
+    texte destine a l'enfant en francais correct et integralement accentue (`DEC-0002`, amendement
+    du 2026-08-04) : le paquet repris n'en porte aucun, et `ADR-0016` interdit qu'un paquet de
+    production entre sans indice sur chacun de ses items (plafond de dette a 0 depuis le 2026-08-07).
   - Etant donne l'application demarree avec ce paquet, quand le test d'integration de chargement du
     contenu s'execute (`CatalogueChargeableIT`, `ADR-0007`), alors une partie demarre sans erreur sur
     ce paquet, avec la mecanique bandit manchot existante et sans qu'aucune ligne de
@@ -1406,11 +1417,15 @@ technique a instruire (`DEC-0013`, point 3).
   - Etant donne 20 manches jouees a la suite, quand on releve les phrases proposees, alors elles ne
     sont pas toutes identiques.
   - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
-    `nadia-prof` : que les phrases soient d'un niveau de vocabulaire adapte a un eleve de CM1, que
-    les verbes retenus soient effectivement "frequents" au sens du referentiel, la conformite du
-    texte au francais correct et integralement accentue (`DEC-0002`, amendement du 2026-08-04), et
-    le jugement sur le fait qu'une competence a trois temps nommes, couverte ici sur un seul,
-    justifie de rester `en cours` sans confusion possible avec une couverture complete.
+    `nadia-prof` : que les phrases et les indices soient d'un niveau de vocabulaire adapte a un
+    eleve de CM1, que les verbes retenus soient effectivement "frequents" au sens du referentiel, la
+    conformite du texte au francais correct et integralement accentue (`DEC-0002`, amendement du
+    2026-08-04), et le jugement sur le fait qu'une competence a trois temps nommes, couverte ici sur
+    un seul, justifie de rester `en cours` sans confusion possible avec une couverture complete.
+- **Note** : premiere ecriture de cette story silencieuse sur deux points mesures par `theo-archi`
+  sur le paquet repris (`squad/sprints/s06-ouvrir-la-conjugaison-et-solder-la-dette/
+  avis-faisabilite.md`, section S6-3) - six items pour dix manches, aucun indice. Les deux criteres
+  ci-dessus les rendent explicites plutot que de les laisser decouvrir a l'audit.
 - **Note de frontiere de mandat** : si `theo-archi` etablit au planning que cette forme de contenu
   (plusieurs distracteurs par item, comme dans la matiere premiere) ne rentre pas dans `Question`
   sans changement du domaine, cette story est reformulee avant developpement plutot que forcee dans
@@ -1525,6 +1540,12 @@ technique a instruire (`DEC-0013`, point 3).
     trois defauts de redaction qu'elle a nommes sur les indices actuels (position du son dans le mot
     de renvoi incoherente, indice de `DENT` trop faible, tournure "Le son s'entend aussi dans..."
     trop lourde pour du CP) - a traiter avec cette recomposition plutot que redecouverts a l'audit.
+- **Condition de faisabilite, a lire avant developpement** : `theo-archi` a mesure que le champ
+  demande par le troisieme critere ci-dessus n'est lu par aucune fabrique aujourd'hui - le chargeur
+  ignore silencieusement toute cle inconnue - et qu'un ADR est requis, conjoint avec S6-7
+  (`squad/sprints/s06-ouvrir-la-conjugaison-et-solder-la-dette/avis-faisabilite.md`, section S6-6).
+  Le lot doit livrer la lecture de ce champ et son garde-fou dans le meme geste que le contenu YAML,
+  pas seulement le YAML.
 - **Relation a S6-7** : cette story et S6-7 (retour explicatif) forment **un seul lot indivisible**,
   tranche par `nadia-prof` elle-meme : "S5-2 recomposee et S5-9 sont un seul lot, et se livrent
   ensemble ou pas du tout." (avis de conception, section 5). Aucune des deux ne remet
@@ -1567,6 +1588,13 @@ technique a instruire (`DEC-0013`, point 3).
     item a variation porte son propre texte, distinct par item, dans cette forme.
   - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
     `nadia-prof` : le texte exact de chaque explication, item par item.
+- **Condition de faisabilite, a lire avant developpement** : `theo-archi` declare cette story non
+  faisable avant une decision d'architecture, qu'il tranche a l'ouverture du lot avec la personne qui
+  ecrit les textes, pas en amont dans un fichier
+  (`squad/sprints/s06-ouvrir-la-conjugaison-et-solder-la-dette/avis-faisabilite.md`, section S6-7) :
+  le texte doit traverser `Question`, la mecanique et l'ecran de retour, et `Verdict` ne porte
+  aujourd'hui rien de tel. Il chiffre aussi que son garde-fou n'est pas optionnel : la dette de
+  balayage de `LesGardeFousSontMisALEpreuveTest` est pleine, un jeu fautif est donc du dans le lot.
 - **Relation a S6-6** : meme lot indivisible, voir S6-6.
 - **Lien decision** : avis de conception de `nadia-prof` du 2026-08-06
   (`squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`, section 5) ; detachee a l'origine du
@@ -1745,13 +1773,28 @@ technique a instruire (`DEC-0013`, point 3).
   s03 (`squad/sprints/s05-lever-le-refus-du-bon-son/retro.md`, point 5).
 - **Competence programme visee** : transverse.
 - **Criteres d'acceptation** :
-  - Etant donne `outils/verifier-jdk.sh` execute sur un poste donne, quand il tourne, alors il
-    imprime la sortie de `java -version`, la valeur de `JAVA_HOME`, et le nom exact du fichier de
-    toolchains trouve sous le depot Maven local - sans jamais imprimer de chemin absolu destine a
-    etre commite dans un fichier du depot.
-  - Etant donne la sortie de ce script, quand un agent rapporte le resultat de `mvn verify` dans
-    `rapport-qualite.md` ou `confirmation-archunit.md`, alors elle est collee telle quelle a la place
-    d'une description en prose de la verification.
+  - Etant donne `outils/verifier-jdk.sh` execute sur un poste donne, quand il tourne, alors il ecrit
+    sur la sortie d'erreur un diagnostic libre destine a l'agent qui debloque son poste (sortie de
+    `java -version`, valeur de `JAVA_HOME`, nom et emplacement du fichier de toolchains trouve sous
+    le depot Maven local) : ce canal peut nommer un chemin de poste, il n'est jamais destine a etre
+    commite.
+  - Etant donne ce meme script, quand il tourne, alors il ecrit sur la sortie standard, separement
+    du diagnostic, un constat citable qui ne porte que des faits, jamais un emplacement : la version
+    rendue par `java -version`, la version du JDK effectivement retenu pour la compilation, si
+    `JAVA_HOME` est renseignee ou non (jamais sa valeur), et si un fichier de toolchains est lu ou
+    non par Maven (jamais son nom ni son emplacement).
+  - Etant donne ce constat citable, quand on l'examine quelle que soit la situation du poste, alors
+    il ne contient jamais de `/`, jamais de `\`, jamais de lettre de lecteur suivie de `:` - c'est le
+    test qui compte, et il est negatif.
+  - Etant donne la sortie standard de ce script (le constat citable, jamais la sortie d'erreur),
+    quand un agent rapporte le resultat de `mvn verify` dans `rapport-qualite.md` ou
+    `confirmation-archunit.md`, alors c'est elle qui est collee telle quelle a la place d'une
+    description en prose de la verification.
+- **Note** : premiere ecriture de cette story invalidee par `theo-archi`, ses deux criteres se
+  contredisaient avec `ADR-0010` (`JAVA_HOME` renseignee est un chemin de poste ; le second critere
+  demandait de la coller dans un fichier commite). Version ci-dessus corrigee sur la base de son avis
+  de faisabilite (`squad/sprints/s06-ouvrir-la-conjugaison-et-solder-la-dette/avis-faisabilite.md`,
+  section S6-14) : deux canaux distincts, le besoin ne change pas.
 - **Lien decision** : `squad/sprints/s05-lever-le-refus-du-bon-son/retro.md`, "Amendements au
   process", ligne "Nouveau : outils/verifier-jdk.sh".
 - **Agent pressenti** : `sofia-sm`.
