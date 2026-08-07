@@ -84,6 +84,16 @@ decision ecrite, obstacle clos" serait perdue.
 Regle de cloture : un fichier de ceremonie n'est complet que s'il contient une section
 `## Decisions prises` **non vide**, ou l'enonce explicite qu'aucune decision n'a ete prise.
 
+**Methode de comptage obligatoire (amendement s06, retro de s05).** Tout chiffre de comptage cite
+dans `rapport-qualite.md` ou `confirmation-archunit.md` (nombre de tests, nombre de regles ArchUnit,
+nombre d'items de contenu) porte sa methode dans le meme paragraphe que le chiffre : perimetre
+parcouru, source de la liste, ce qui est explicitement exclu. Un chiffre sans methode ne se compare
+a rien, meme quand il est juste - en s05, `theo-archi` a du corriger un meme chiffre trois fois
+("29" puis "25" puis "27" regles ArchUnit) faute de l'avoir ecrite la premiere fois. **Le comptage
+se fait apres un `clean`** : un rapport laisse par une execution mutee anterieure produit un total
+juste avec des echecs faux, et `theo-archi` s'y est lui-meme repris une fois en s06 en le
+verifiant.
+
 ## 5. La synthese de sprint - `RAPPORT.md`
 
 C'est le document qu'on lit en premier pour savoir ce qui s'est passe. Ecrit par Sofia a la
@@ -138,6 +148,15 @@ Les deux sont independants. Un increment techniquement irreprochable peut etre r
 pedagogiquement, et c'est un fonctionnement normal, pas un incident. Un refus renvoie l'increment
 a Camille, qui en fait du backlog ; il ne bloque pas le sprint suivant.
 
+**Gouvernance d'une story absorbee en cours de route (amendement s06, retro de s05).** Une story ou
+une decision de perimetre qu'un sprint absorbe en cours de route depuis un autre sprint -
+deplacement d'une story planifiee ailleurs, execution anticipee d'un chantier prevu au sprint
+suivant - est actee par un amendement ecrit a la decision d'origine, dans le meme geste que sa
+fusion sur `round-two`, jamais seulement constatee a la review du sprint qui suit. En s05,
+`DEC-0012` placait explicitement le rhabillage du gabarit au sprint 6 ; il a ete livre et audite
+dans s05 sans qu'aucun amendement ecrit ne le dise au moment des faits, et l'anomalie n'a ete
+constatee qu'a la cloture du sprint suivant.
+
 ## 8. Prefixes de commit par agent
 
 Format : `[TAG] <resume>`.
@@ -164,7 +183,12 @@ etait annonce dans la documentation et n'existait pas dans le workflow.
 
 **1. Planning.** Camille ecrit ou affine les stories et met a jour la matrice. Theo donne un avis
 de faisabilite ecrit sur chacune et ouvre un `ADR` si la story en appelle un. Sofia gele
-l'objectif, affecte nominativement, ecrit `planning.md` avec l'horodatage de debut.
+l'objectif, affecte nominativement, ecrit `planning.md` avec l'horodatage de debut. **Avant tout
+commit dans un worktree neuf, chaque agent verifie que sa branche descend de `round-two`**
+(amendement s06, retro de s05) : `outils/verifier-lignee.sh`, plutot qu'une commande recopiee en
+prose dans chaque `planning.md`. Tant que ce script n'est pas encore sur le disque, la verification
+reste tenue a la main (`git rev-parse --abbrev-ref HEAD` puis
+`git merge-base --is-ancestor round-two HEAD`).
 
 **2. Developpement.** Marc, Lea et Sofia codent, tests dans le meme commit. Yanis traduit les
 criteres d'acceptation en tests et fait tourner la suite. Tout obstacle va a Sofia, qui classe,
@@ -173,7 +197,11 @@ route, attend la decision **ecrite**, debloque.
 **3. Daily.** Sofia collecte et route. Pas de fichier.
 
 **4. Porte technique.** `mvn verify` vert. Yanis produit le rapport qualite, Theo confirme
-ArchUnit avec le resultat de la commande.
+ArchUnit avec le resultat de la commande. **Un garde-fou cite comme fermant un refus pedagogique ou
+une dette nommee n'est declare complet, dans le `review.md` qui le cite, qu'une fois la preuve de
+morsure decrite explicitement** (amendement s06, retro de s05) - mutation reelle du code, relecture
+adverse de l'inegalite qu'il verifie, ou tout autre moyen nomme. "Il est vert" ne suffit jamais
+comme preuve de morsure, y compris quand l'auteur lui-meme le croit.
 
 **5. Relecture.** Le `relecteur-pedagogique` passe sur les livrables non executables. Il corrige
 ce qui est sans ambiguite, signale le reste.
@@ -188,6 +216,25 @@ de Theo, corrections du relecteur, tableau des obstacles, verdict de Nadia.
 **8. Cloture.** Sofia lance le rapport de tokens et ecrit `RAPPORT.md`.
 
 **9. Retro.** Sofia anime, ecrit `retro.md`, et amende ce README si le process doit evoluer.
+
+**Outils permanents (amendement s06, retro de s05).** Deux scripts testes selon la doctrine
+d'`ADR-0009` outillent les etapes 1 et 4 ci-dessus :
+
+- `outils/verifier-lignee.sh` (etape 1) : verifie qu'un worktree descend de `round-two`, code de
+  sortie non nul et message explicite nommant la branche fautive sinon, sans jamais imprimer de
+  chemin absolu de poste.
+- `outils/verifier-jdk.sh` (etape 4) : separe un diagnostic libre (sortie d'erreur, peut nommer un
+  chemin de poste) d'un constat citable (sortie standard, jamais un chemin) sur le JDK utilise pour
+  compiler. C'est ce second bloc qui se colle tel quel dans `rapport-qualite.md` ou
+  `confirmation-archunit.md`, a la place d'une description en prose de la verification.
+
+Ce paragraphe acte la regle ; ni l'un ni l'autre script n'existe encore sur le disque a l'ouverture
+du sprint 6, les stories qui les livrent le font. Jusqu'a leur fusion, les etapes 1 et 4 restent
+tenues par la commande recopiee a la main et par la prose du rapport qualite. Le besoin qui motive
+`outils/verifier-jdk.sh` est reel et pas seulement une question de forme : verifie le 2026-08-07, un
+JDK 21.0.10 est installe et compile sur un poste ou le fichier de toolchains Maven declare bien
+trois JDK dont un 21 sous un nom que Maven ne lit pas - quatre agents avaient conclu a tort en s05
+qu'aucun JDK 21 n'y etait disponible, une erreur de fond et non seulement de methode.
 
 ## 10. Frontieres entre agents
 
