@@ -1,0 +1,25 @@
+schema: 1
+id: paquet-de-trois-items
+type: question
+descripteur:
+  matiere: "Contre-exemple"
+  niveau: "Contre-exemple"
+  domaine: "Contre-exemple"
+  competence: "Contre-exemple"
+items:
+  - enonce: "Premier item"
+    bonneReponse: "un"
+    distracteurs: ["deux"]
+    indice: "Indice du premier item."
+  - enonce: "Deuxieme item"
+    bonneReponse: "deux"
+    distracteurs: ["un"]
+    indice: "Indice du deuxieme item."
+  - enonce: "Troisieme item"
+    bonneReponse: "trois"
+    distracteurs: ["un"]
+    indice: "Indice du troisieme item."
+  - enonce: "Quatrieme item"
+    bonneReponse: "quatre"
+    distracteurs: ["un"]
+    indice: "Indice du quatrieme item."

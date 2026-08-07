@@ -127,6 +127,10 @@ public class PartieController {
      * ne suit. Le verdict est obligatoire : une partie sans aucune manche jouee n'existe pas, et si
      * elle existait, c'est un defaut qui doit partir en ERROR avec sa pile (ADR-0018) plutot que de
      * rendre un ecran a moitie nourri.
+     *
+     * <p>ADR-0024 : l'explication de l'item joue est posee au modele sous "explication", vide quand
+     * le contenu n'en porte pas. Le controleur ne decide pas si elle merite d'etre affichee, il ne
+     * lit pas son texte, et il n'en fabrique jamais : il transmet ce que le verdict porte.</p>
      */
     private String retourModele(Model modele, String jeuId, BanditManchotSession session) {
         Verdict verdict = session.dernierVerdict().orElseThrow();
@@ -134,6 +138,7 @@ public class PartieController {
         modele.addAttribute("score", session.score());
         modele.addAttribute("juste", verdict.juste());
         modele.addAttribute("bonneReponse", verdict.bonneReponse());
+        modele.addAttribute("explication", verdict.explication().orElse(null));
         modele.addAttribute("enSuite", session.enonceManche().isPresent());
         return "fragments/retour :: retour";
     }

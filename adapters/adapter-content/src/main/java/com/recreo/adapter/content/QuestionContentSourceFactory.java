@@ -15,6 +15,14 @@ import java.util.Optional;
  * ADR-0007 : paquet enumere, type 'question'. Les items sont ecrits a la main dans le YAML sous
  * 'items' ; l'identifiant de chaque item est derive de sa position, le schema n'en porte pas.
  *
+ * <p>ADR-0024 : cette fabrique lit deux textes optionnels et rien de plus, 'indice' et
+ * 'explication'. Une cle qu'elle ne connait pas est toujours ignoree sans un mot - c'est la dette que
+ * l'ADR nomme et n'a pas fermee. En particulier, la cle 'graphie' que le paquet cp-le-bon-son declare
+ * pour son propre compte n'arrive jamais jusqu'ici et n'a pas a y arriver : elle est une declaration
+ * d'auteur, relue par {@code ChaquePaquetExpliqueSesItemsAVariationTest}, jamais une donnee de jeu.
+ * La faire entrer dans cette fabrique, partagee par toutes les matieres, obligerait chaque paquet de
+ * mathematiques a connaitre un mot de francais.</p>
+ *
  * <p>ADR-0016 : chaque item porte son propre indice, sous la cle 'indice'. Cette fabrique
  * construisait jusqu'ici ses items avec le constructeur a quatre arguments, celui qui laisse
  * l'indice vide : un paquet 'question' ne pouvait donc porter aucune aide, quoi qu'un auteur ecrive
@@ -51,8 +59,10 @@ final class QuestionContentSourceFactory implements ContentSourceFactory {
         }
         List<String> distracteursTexte = distracteurs.stream().map(String::valueOf).toList();
         Object indice = item.get("indice");
+        Object explication = item.get("explication");
         return new Question(new ItemId("item-" + position), enonce, bonneReponse, distracteursTexte,
-                indice == null ? Optional.empty() : Optional.of(String.valueOf(indice)));
+                indice == null ? Optional.empty() : Optional.of(String.valueOf(indice)),
+                explication == null ? Optional.empty() : Optional.of(String.valueOf(explication)));
     }
 
     private String texte(Map<?, ?> item, String champ, int position) {

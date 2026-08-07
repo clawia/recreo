@@ -80,7 +80,13 @@ public final class BanditManchotSession implements GameSession {
             throw new IllegalStateException("la partie est terminee, plus aucune manche a jouer");
         }
         boolean juste = mancheCourante.bonneReponse().equals(coup.propositionChoisie());
-        Verdict verdict = new Verdict(juste, mancheCourante.bonneReponse());
+        /*
+         * ADR-0024 : l'explication est celle de l'item qui vient d'etre joue, prise ici parce que
+         * c'est le seul instant ou la session le tient encore. Elle voyage a chaque manche jouee,
+         * juste ou fausse, et sans memoire des occurrences precedentes : un item revu (aide de S3-2)
+         * la represente donc, ce qui est ce que nadia-prof demande explicitement.
+         */
+        Verdict verdict = new Verdict(juste, mancheCourante.bonneReponse(), mancheCourante.explication());
         Score nouveauScore = avancer(score, juste);
 
         List<Question> reussiesSuivantes = new ArrayList<>(reussies);

@@ -1,0 +1,21 @@
+schema: 1
+id: paquet-de-sons
+type: question
+# Le meme paquet, corrige : l'item a variation porte un texte qui nomme son mot, l'item regulier n'en
+# porte aucun. Cette moitie epingle l'autre borne du critere - un garde-fou qui exigerait un texte
+# partout, ou qui refuserait le mot en majuscules, refuserait ce corrige.
+descripteur:
+  matiere: "Contre-exemple"
+  niveau: "Contre-exemple"
+  domaine: "Contre-exemple"
+  competence: "Contre-exemple"
+items:
+  - enonce: "DENT"
+    bonneReponse: "an"
+    distracteurs: ["on", "in"]
+    graphie: "en"
+    explication: "Dans DENT, ce sont les lettres e et n qui font le son an."
+  - enonce: "BANC"
+    bonneReponse: "an"
+    distracteurs: ["on", "in"]
+    graphie: "an"

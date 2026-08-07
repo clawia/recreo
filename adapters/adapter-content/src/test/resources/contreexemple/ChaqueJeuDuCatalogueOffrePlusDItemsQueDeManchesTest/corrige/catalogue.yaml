@@ -1,0 +1,11 @@
+schema: 1
+# Le meme catalogue, un item de plus dans le paquet, le meme nombre de manches : il doit passer.
+# Cette moitie epingle l'autre borne de l'inegalite - un garde-fou ecrit avec une marge la
+# refuserait.
+jeux:
+  - id: jeu-aussi-court-que-sa-partie
+    titre: "Jeu de contre-exemple"
+    consigne: "Consigne de contre-exemple"
+    mecanique: bandit-manchot
+    paquet: paquet-de-trois-items
+    nombreDeManches: 3

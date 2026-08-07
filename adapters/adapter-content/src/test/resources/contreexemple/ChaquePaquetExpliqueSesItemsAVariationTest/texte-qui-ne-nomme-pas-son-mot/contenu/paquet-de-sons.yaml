@@ -1,0 +1,20 @@
+schema: 1
+id: paquet-de-sons
+type: question
+# Troisieme bord : un texte present, mais le meme pour tous les items, qui ne nomme aucun mot. C'est
+# le texte que produit un copier-coller, et il satisferait un critere ecrit sur la seule presence.
+descripteur:
+  matiere: "Contre-exemple"
+  niveau: "Contre-exemple"
+  domaine: "Contre-exemple"
+  competence: "Contre-exemple"
+items:
+  - enonce: "DENT"
+    bonneReponse: "an"
+    distracteurs: ["on", "in"]
+    graphie: "en"
+    explication: "Ces deux lettres font le son an."
+  - enonce: "BANC"
+    bonneReponse: "an"
+    distracteurs: ["on", "in"]
+    graphie: "an"
