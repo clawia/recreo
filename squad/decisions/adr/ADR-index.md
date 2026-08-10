@@ -28,6 +28,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0022](ADR-0022-un-habillage-permanent-declare-son-masquage-et-l-ecran-son-marqueur.md) | Rendre la visibilite d'un habillage permanent dependante d'un marqueur d'etat pose par le serveur, et retirer d'un appariement les boutons qui ne se montrent plus ensemble | s06 | 2026-08-07 | Accepte |
 | [ADR-0023](ADR-0023-un-paquet-offre-strictement-plus-d-items-que-sa-partie-n-a-de-manches.md) | Exiger de tout jeu du catalogue qu'il offre strictement plus d'items que sa partie n'a de manches, et deriver ce controle du catalogue | s06 | 2026-08-07 | Accepte |
 | [ADR-0024](ADR-0024-le-verdict-porte-l-explication-de-l-item-joue-la-graphie-reste-au-paquet.md) | Faire porter l'explication d'un item par le verdict de la manche jouee, et laisser la graphie qui la justifie dans le paquet qui la declare | s06 | 2026-08-07 | Accepte |
+| [ADR-0025](ADR-0025-une-mesure-de-rendu-porte-sa-commande-le-debordement-reste-non-gardable.md) | Rendre toute mesure de rendu rejouable par une commande versionnee, et declarer non gardable le debordement de mise en page | s06 | 2026-08-10 | Accepte |
 
 ## Amendements
 
@@ -144,7 +145,7 @@ l'utilisatrice en jouant :
     concurrence, et un test de course a une seule tentative serait vert deux fois sur trois sur un
     depot casse, donc decoratif.
 
-Sprint 6 en ajoute cinq, tous nes d'obstacles ou d'arbitrages recus pendant le sprint, et tous
+Sprint 6 en ajoute six, tous nes d'obstacles ou d'arbitrages recus pendant le sprint, et tous
 portant sur la meme faute de fond - **un automate vert qui ne regardait pas le bon objet** :
 
 18. **ADR-0020** repond a la question que ni les tests de controleur ni les tests d'integration ne
@@ -204,4 +205,18 @@ portant sur la meme faute de fond - **un automate vert qui ne regardait pas le b
     sens inverse. Ensuite un garde-fou dont les **deux cles se gardent l'une l'autre** : puisque le
     chargeur ignore toujours en silence une cle inconnue, c'est le croisement qui rend la faute de
     frappe rouge, et l'ADR dit franchement quelle dette il laisse ouverte et quel second usage la
-    fermerait.
+    fermerait ;
+23. **ADR-0025** est le seul du depot dont la decision principale est un **refus de garder**, et c'est
+    ce qui le rend utile a relire. Un obstacle de mesure - le plancher de largeur de Chrome headless -
+    avait fabrique un symptome qui n'existait pas, et la question routee etait de savoir si le trou de
+    `ViewportEtLargeurTelephoneTest` (une population faite de largeurs declarees, ou un debordement de
+    flex n'apparait jamais) etait gardable. Il le coupe en deux. La propriete de **rendu** est declaree
+    non gardable par un automate de ce depot et confiee a `nadia-prof`, avec les trois raisons chiffrees
+    d'ecarter aujourd'hui le protocole DevTools et le declencheur qui rouvrirait la question ; la cause
+    racine, elle, est fermee - une mesure dont la commande n'est ecrite nulle part n'est pas rejouable,
+    donc la commande entre au depot et **refuse elle-meme** les deux invocations trompeuses etablies. Il
+    apporte au depot deux choses qui valent au-dela de son sujet : la trace ecrite d'un garde-fou
+    **refuse avec son chiffre** (une regle sur le repli des rangees flex serait rouge sur trois blocs de
+    production le jour de son ecriture, donc reclamerait de changer la mise en page servie a un enfant
+    pour satisfaire un test), et le constat que deux juges purs ecrits en s06 n'etaient lances par aucun
+    automate - la CI balaie desormais `outils/*-test.sh`.
