@@ -115,6 +115,22 @@ class LAnimationRetardeMaisNeDetermineRienTest {
      */
     private static final String PROPRIETE_DE_TEXTE = "content";
 
+    /**
+     * Amendement du 2026-08-10 a ADR-0027 section 5 : la propriete qui decoupe geometriquement une
+     * boite. Elle ne fabrique aucun texte, et c'est pourquoi la clause 7 ne la voit pas - mais
+     * appliquee a l'element qui <b>porte</b> le texte, elle en retranche une partie, et un mot
+     * retranche peut etre un autre mot. Sur {@code cm1-homophones}, dont les deux propositions
+     * mesurees par ADR-0026 sont {@code sont} et {@code son}, une decoupe laterale transforme la bonne
+     * reponse en la fausse.
+     */
+    private static final String PROPRIETE_DE_DECOUPE = "clip-path";
+
+    /** Les pseudo-elements decoratifs : une boite generee a cote du texte, jamais le texte lui-meme. */
+    private static final List<String> PSEUDO_ELEMENTS_DECORATIFS = List.of("::before", "::after");
+
+    /** La propriete par laquelle un retard s'ecrit hors du raccourci {@code animation}. */
+    private static final String PROPRIETE_DE_RETARD = "animation-delay";
+
     /** Une regle CSS, avec la pile de regles-@ dans laquelle elle est ecrite. */
     private record Regle(String fichier, String contexte, String selecteur, String corps) {
 
@@ -278,6 +294,40 @@ class LAnimationRetardeMaisNeDetermineRienTest {
     }
 
     /**
+     * Le <b>sujet</b> d'un selecteur, c'est-a-dire son dernier compose : l'element sur lequel la regle
+     * s'applique reellement. Les combinateurs sont cherches hors des crochets, parce qu'un selecteur
+     * d'attribut peut contenir un blanc ou un {@code ~} qui ne coupe rien.
+     */
+    private static String sujet(String selecteur) {
+        int coupure = -1;
+        int profondeur = 0;
+        for (int position = 0; position < selecteur.length(); position++) {
+            char caractere = selecteur.charAt(position);
+            if (caractere == '[') {
+                profondeur++;
+            } else if (caractere == ']') {
+                profondeur--;
+            } else if (profondeur == 0
+                    && (Character.isWhitespace(caractere) || caractere == '>' || caractere == '+'
+                            || caractere == '~')) {
+                coupure = position;
+            }
+        }
+        return selecteur.substring(coupure + 1);
+    }
+
+    /**
+     * Vrai si la regle porte sur un pseudo-element decoratif et non sur l'element qui affiche le texte
+     * du serveur. Seule la forme a deux deux-points est reconnue : une forme heritee a un seul
+     * deux-points est refusee plutot que lue charitablement, comme la forme litterale du repli de
+     * mouvement (ADR-0026 clause 2) et pour la meme raison.
+     */
+    private static boolean porteSurUnPseudoElementDecoratif(String selecteur) {
+        String sujet = sujet(selecteur);
+        return PSEUDO_ELEMENTS_DECORATIFS.stream().anyMatch(sujet::endsWith);
+    }
+
+    /**
      * Clause 1 - une animation qui ne s'arrete jamais cesse de retarder et se met a determiner :
      * l'enfant n'atteint jamais l'etat ou la proposition est lisible et choisissable.
      */
@@ -425,6 +475,7 @@ class LAnimationRetardeMaisNeDetermineRienTest {
      */
     static void verifierQueChaqueAnimationTientDansLaBarreDeDuree(Path racine) {
         List<String> defauts = new ArrayList<>();
+        double dureeMaximale = 0;
         for (Regle regle : animations(racine)) {
             List<Double> temps = secondesDeclarees(regle, defauts);
             if (temps.isEmpty()) {
@@ -432,6 +483,7 @@ class LAnimationRetardeMaisNeDetermineRienTest {
             }
             double duree = temps.get(0);
             double retard = temps.size() > 1 ? temps.get(1) : 0;
+            dureeMaximale = Math.max(dureeMaximale, duree);
             if (duree < DUREE_MINIMALE_S) {
                 defauts.add(regle.origine() + " : duree de " + duree + "s, sous le plancher de "
                         + DUREE_MINIMALE_S + "s. En dessous ce n'est plus un defilement, c'est un "
@@ -448,10 +500,83 @@ class LAnimationRetardeMaisNeDetermineRienTest {
                         + "fois (nadia-prof, arbitrage du 2026-08-10, section 2)");
             }
         }
+        verifierLesRetardsEcritsAPart(racine, dureeMaximale, defauts);
         assertThat(defauts)
                 .as("ADR-0027 : toute animation maison tient entre %ss et %ss, retard compris",
                         DUREE_MINIMALE_S, DUREE_MAXIMALE_S)
                 .isEmpty();
+    }
+
+    /**
+     * Le meme plafond, sur les retards qui ne sont pas ecrits dans la regle qui anime.
+     *
+     * <p><b>Correction du 2026-08-10, sur le garde-fou de ma main et par la faute que ce depot m'a
+     * deja apprise.</b> Le jeu fautif {@code decalage-trop-grand} ecrit son retard dans le raccourci
+     * {@code animation}, parce que c'est la forme que j'imaginais en l'ecrivant. Ce n'est pas la forme
+     * que le monde ecrit : un decalage <b>par colonne</b> ne peut pas vivre dans un raccourci partage,
+     * il s'ecrit dans une regle par colonne, en {@code animation-delay}. Ces regles-la ne declarent pas
+     * {@code animation:} et ne sont donc pas dans la population des animations - la clause ne les
+     * voyait pas, et {@code animation-delay: 3s} en production passait vert (mesure : mutation reelle
+     * de {@code recreo.css}, 149 cas verts sur 149 avant cette correction).
+     *
+     * <p>Le plafond est confronte a la <b>somme des maximums</b> - duree la plus longue plus retard le
+     * plus long, meme s'ils ne sont pas dans la meme regle. C'est une borne superieure : le doute joue
+     * dans le sens du controle (ADR-0013 obligation 2), et c'est exactement ce que le chiffre de
+     * {@code nadia-prof} veut dire - le temps entre l'appui de l'enfant et l'arret de la derniere
+     * colonne.
+     */
+    private static void verifierLesRetardsEcritsAPart(
+            Path racine, double dureeMaximale, List<String> defauts) {
+        double retardMaximal = 0;
+        for (Regle regle : reglesMaison(racine)) {
+            if (regle.dansDesImagesCles() || regle.sousMouvementReduit()) {
+                continue;
+            }
+            int position = debutDeDeclaration(regle.corps(), PROPRIETE_DE_RETARD);
+            if (position < 0) {
+                continue;
+            }
+            Double retard = secondes(
+                    valeurDeclaree(regle.corps(), position, PROPRIETE_DE_RETARD), regle, defauts);
+            if (retard == null) {
+                continue;
+            }
+            retardMaximal = Math.max(retardMaximal, retard);
+            if (retard > RETARD_MAXIMAL_S) {
+                defauts.add(regle.origine() + " : retard de " + retard + "s, au-dela du decalage maximal "
+                        + "de " + RETARD_MAXIMAL_S + "s entre la premiere et la derniere colonne "
+                        + "(nadia-prof, arbitrage du 2026-08-10, section 2)");
+            }
+        }
+        if (dureeMaximale + retardMaximal > DUREE_MAXIMALE_S) {
+            defauts.add("duree la plus longue + retard le plus long = " + (dureeMaximale + retardMaximal)
+                    + "s, au-dela du plafond de " + DUREE_MAXIMALE_S + "s entre l'appui de l'enfant et "
+                    + "l'arret de la derniere colonne (ADR-0027)");
+        }
+    }
+
+    /**
+     * Une duree en secondes, ou null apres avoir inscrit le defaut. Une valeur qu'on ne sait pas lire
+     * est un defaut et non une valeur ignoree : on ne confronte pas a une barre un chiffre qu'on ne lit
+     * pas (ADR-0013 obligation 2).
+     */
+    private static Double secondes(String valeur, Regle regle, List<String> defauts) {
+        String texte = valeur.strip();
+        try {
+            if (texte.endsWith("ms")) {
+                return Double.parseDouble(texte.substring(0, texte.length() - 2)) / 1000;
+            }
+            if (texte.endsWith("s")) {
+                return Double.parseDouble(texte.substring(0, texte.length() - 1));
+            }
+        } catch (NumberFormatException illisible) {
+            defauts.add(regle.origine() + " : \"" + texte + "\" n'est pas un temps lisible ; une valeur "
+                    + "calculee ne se confronte a aucune barre (ADR-0027)");
+            return null;
+        }
+        defauts.add(regle.origine() + " : \"" + texte + "\" n'est pas exprime en secondes ; une valeur "
+                + "qu'on ne lit pas ne se confronte a aucune barre (ADR-0027)");
+        return null;
     }
 
     /**
@@ -528,6 +653,66 @@ class LAnimationRetardeMaisNeDetermineRienTest {
                 .isEmpty();
     }
 
+    /**
+     * Clause 8 (amendement du 2026-08-10 a ADR-0027 section 5) - <b>aucune regle maison permanente ne
+     * retranche une partie du texte que le serveur a envoye.</b>
+     *
+     * <p>ADR-0027 annoncait "jamais un autre mot" gardee sur ses deux formes realisables, un leurre
+     * rendu par le serveur et un mot fabrique par {@code content}. S7-1 en a livre une troisieme que je
+     * n'avais pas nommee : le voile du rouleau est confine par {@code clip-path}, et cette propriete
+     * appliquee non plus au voile mais au bouton qui <b>porte</b> le mot en retranche une partie. Ce
+     * n'est pas une hypothese de laboratoire : sur {@code cm1-homophones}, dont ADR-0026 a mesure les
+     * deux propositions {@code sont} et {@code son}, une decoupe laterale rend la bonne reponse
+     * identique a la fausse. Un seul caractere separe la production de ce defaut - le {@code ::after}
+     * du selecteur - et rien ne le tenait : mutation reelle mesuree, 149 cas verts sur 149.
+     *
+     * <p>Ce que la clause laisse passer, et c'est voulu : la meme propriete sur un pseudo-element
+     * decoratif, qui est la forme retenue par S7-1 et la seule qui decoupe une boite sans texte. Le jeu
+     * fautif corrige le prouve, sans quoi la clause serait une interdiction de {@code clip-path}
+     * deguisee en clause de lisibilite.
+     */
+    static void verifierQuAucuneRegleNeRogneLeTexteDUneAction(Path racine) {
+        Set<String> classesDActions = classesDesActions(racine);
+        assertThat(classesDActions)
+                .as("ADR-0003 : cette clause ne prouve rien si aucun element [%s=%s] ne porte de "
+                        + "classe dans les gabarits de %s", ATTRIBUT_DE_ROLE, ACTION, racine)
+                .isNotEmpty();
+
+        List<Regle> examinees = new ArrayList<>();
+        List<String> defauts = new ArrayList<>();
+        for (Regle regle : reglesMaison(racine)) {
+            if (regle.dansDesImagesCles()
+                    || debutDeDeclaration(regle.corps(), PROPRIETE_DE_DECOUPE) < 0) {
+                continue;
+            }
+            Set<String> visees = classesDuSelecteur(regle.selecteur());
+            visees.retainAll(classesDActions);
+            if (visees.isEmpty()) {
+                continue;
+            }
+            examinees.add(regle);
+            if (!porteSurUnPseudoElementDecoratif(regle.selecteur())) {
+                defauts.add(regle.origine() + " : cette regle declare " + PROPRIETE_DE_DECOUPE + " sur "
+                        + visees + ", des classes que porte un bouton d'action, et son sujet est "
+                        + "l'element lui-meme et non un pseudo-element decoratif " + PSEUDO_ELEMENTS_DECORATIFS
+                        + ". Elle retranche donc une partie du mot que le serveur a envoye, et un mot "
+                        + "retranche peut etre un autre mot : sur cm1-homophones, une decoupe laterale "
+                        + "transforme \"sont\" en \"son\", c'est-a-dire la bonne reponse en la fausse "
+                        + "(ADR-0027, amendement du 2026-08-10)");
+            }
+        }
+        assertThat(examinees)
+                .as("ADR-0003 : cette clause ne prouve rien si aucune regle maison ne declare %s sur une "
+                        + "classe d'action. Une le fait aujourd'hui, le voile du rouleau de S7-1 sur "
+                        + ".proposition::after ; le jour ou elle disparait, cette clause perd son objet "
+                        + "et c'est ce message qui le dit", PROPRIETE_DE_DECOUPE)
+                .isNotEmpty();
+        assertThat(defauts)
+                .as("ADR-0027 : aucune regle maison ne retranche une partie du texte que le serveur a "
+                        + "envoye")
+                .isEmpty();
+    }
+
     @Test
     void chaqueAnimationDeLaFeuilleMaisonSeTermine() {
         verifierQueChaqueAnimationSeTermine(RACINE_PRODUCTION);
@@ -546,6 +731,11 @@ class LAnimationRetardeMaisNeDetermineRienTest {
     @Test
     void aucuneRegleMaisonNeFabriqueDuTexte() {
         verifierQuAucuneRegleNeFabriqueDuTexte(RACINE_PRODUCTION);
+    }
+
+    @Test
+    void aucuneRegleMaisonNeRogneLeTexteDUneAction() {
+        verifierQuAucuneRegleNeRogneLeTexteDUneAction(RACINE_PRODUCTION);
     }
 
     @Test
@@ -688,6 +878,43 @@ class LAnimationRetardeMaisNeDetermineRienTest {
         assertThatThrownBy(() -> verifierQuAucuneRegleNeFabriqueDuTexte(racine))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("cette regle fabrique du texte");
+    }
+
+    /**
+     * ADR-0027, clause 6, sur la forme que la production ecrit reellement : le retard n'est pas dans le
+     * raccourci mais dans une regle par colonne. C'est le jeu fautif que
+     * {@code decalage-trop-grand} aurait du etre et n'etait pas - il ecrivait le retard la ou je
+     * l'imaginais, pas la ou un decalage par colonne s'ecrit.
+     */
+    @Test
+    void unRetardEcritHorsDeLaRegleQuiAnimeFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("retard-ecrit-a-part");
+        assertThatThrownBy(() -> verifierQueChaqueAnimationTientDansLaBarreDeDuree(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("au-dela du decalage maximal de 0.25s");
+    }
+
+    /**
+     * Amendement du 2026-08-10, clause 8. L'objet neuf est une decoupe permanente posee sur le bouton
+     * qui porte le mot - la production a un caractere pres, {@code ::after} retire du selecteur.
+     */
+    @Test
+    void uneDecoupePermanenteDuTexteDUneActionFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("texte-de-l-action-rogne");
+        assertThatThrownBy(() -> verifierQuAucuneRegleNeRogneLeTexteDUneAction(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("transforme \"sont\" en \"son\"");
+    }
+
+    /**
+     * La meme decoupe, deplacee sur le pseudo-element decoratif : c'est la forme que S7-1 a retenue, et
+     * elle doit passer. Sans ce cas, la clause 8 serait une interdiction de {@code clip-path} deguisee,
+     * et aucun jeu fautif ne le dirait - la lecon de la seconde mutation d'ADR-0025.
+     */
+    @Test
+    void laMemeDecoupeSurUnPseudoElementDecoratifResteVerte() {
+        verifierQuAucuneRegleNeRogneLeTexteDUneAction(
+                CONTRE_EXEMPLES.resolve("voile-rogne-sans-toucher-le-texte"));
     }
 
     @Test

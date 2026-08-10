@@ -146,8 +146,22 @@ Sa question directe, et voici la reponse en trois parties.
 **Non, `ADR-0026` ne couvrait pas cette propriete.** Sa clause 3 interdit un etat permanent qui rend
 une proposition inactionnable ; elle ne dit rien du texte affiche.
 
-**Oui, elle est gardable sur les deux seules formes qu'un rouleau reel peut prendre**, et les deux
-sont desormais gardees :
+**Amendement du 2026-08-10, porte technique de s07 : "les deux seules formes" en etaient trois, et
+c'est le lot de `lea-dev` qui a livre la troisieme.** Le texte ci-dessous disait "les deux seules
+formes qu'un rouleau reel peut prendre" et enumerait un leurre rendu par le serveur et un mot
+fabrique par `content`. S7-1 a retenu une troisieme voie que je n'avais pas nommee : le voile est
+confine par `clip-path`. La propriete ne fabrique aucun texte - la clause 7 ne la voit donc pas -
+mais appliquee non plus au voile et a l'element qui **porte** le mot, elle en retranche une partie,
+et **un mot retranche peut etre un autre mot**. Ce n'est pas une hypothese : sur `cm1-homophones`,
+dont la section "mesure" d'`ADR-0026` releve les deux propositions `sont` et `son`, une decoupe
+laterale rend la bonne reponse identique a la fausse. Un seul caractere separait la production de ce
+defaut, le `::after` du selecteur, et rien ne le tenait - mesure par mutation reelle de `recreo.css`
+au commit `d53181b` : **149 cas verts sur 149**. La clause 8 de la regle 2 le ferme, et
+l'enumeration "deux formes" ci-dessous devient **trois**. Le residu du dernier paragraphe, lui, ne
+bouge pas.
+
+**Oui, elle est gardable sur les trois formes qu'un rouleau reel peut prendre**, et les trois sont
+desormais gardees :
 
 1. **un mot leurre rendu par le serveur** - la bande de faces intermediaires, la forme classique. Ce
    sont des elements que le serveur envoie dans le conteneur de propositions. La clause verifie, sur la
@@ -159,16 +173,32 @@ sont desormais gardees :
    de la croix du signal faux l'emploient deja : ce sont ces deux regles qui rendent la clause non
    vide des aujourd'hui.
 
-Une troisieme forme, un mot produit par du JavaScript, etait deja fermee par `ADR-0026` regle 2
+3. **un mot retranche par une decoupe geometrique** - `clip-path` sur l'element qui porte le texte,
+   la forme que S7-1 a rendue atteignable en confinant le voile par cette propriete. La clause 8
+   refuse `clip-path` sur toute regle maison permanente qui nomme une classe d'action et dont le
+   **sujet** - son dernier compose - n'est pas un pseudo-element decoratif `::before` ou `::after`.
+   Une boite generee a cote du texte n'est pas le texte : la forme de S7-1 reste autorisee, et un jeu
+   fautif corrige le prouve.
+
+Une quatrieme forme, un mot produit par du JavaScript, etait deja fermee par `ADR-0026` regle 2
 (`proposition` et `colonne` interdits dans le JavaScript maison).
 
 **Le residu, et il reste a `nadia-prof`** : un mot **peint dans une image** (fond `background-image`,
-SVG en `data:`, sprite vendorise) echappe aux deux clauses, et la question de savoir si un mot reste
+SVG en `data:`, sprite vendorise) echappe aux trois clauses, et la question de savoir si un mot reste
 lisible **pendant** qu'il glisse est une propriete du rendu qu'aucun automate de ce depot ne produit
 (`ADR-0025`). Je ne l'elargis pas a la presence du texte dans une image : ce serait une regle contre
 un defaut que le depot n'a pas etabli, et elle interdirait au passage tout pictogramme legitime.
 
-Sa liste des huit choses dont elle reste seule garde en compte donc **six** apres cet ADR : ses points
+**Ce que la clause 8 ne ferme pas, dit avant qu'on le decouvre.** Elle ne porte que sur `clip-path`,
+la propriete que S7-1 a fait entrer. Deux voisines restent ouvertes, chacune pour un motif ecrit :
+`overflow: hidden` sur une proposition, parce qu'`ADR-0026` accorde nommement a `ines-design` la
+latitude d'une fenetre a `overflow: hidden` avec une bande qui glisse, et la fermer ici retirerait une
+latitude que j'ai donnee ; et une largeur ou un `text-overflow` qui tronquerait le mot, qui est la
+famille de debordement qu'`ADR-0025` a declaree non gardable parce qu'elle se joue en pixels rendus.
+Le declencheur qui rouvrirait la premiere : le jour ou une proposition porte `overflow: hidden` sans
+etre un habillage, la latitude et la clause se contredisent et c'est la latitude qui doit ceder.
+
+Sa liste des huit choses dont elle reste seule garde en comptait **six** apres cet ADR : ses points
 1 (partiellement : la courbe et le rebond, plus la duree), 2, 3, 4 (partiellement : le residu en
 image), 5 (partiellement : le residu en image), 6 et 7. Son point 8 - "le mouvement ne se declenche
 jamais sans geste" - **lui est rendu par un automate**, et c'est l'objet principal de cet ADR.
@@ -228,6 +258,26 @@ Trois clauses s'ajoutent aux quatre d'`ADR-0026`.
   confronte pas a une barre un chiffre qu'on ne lit pas.
 - **Clause 7** : aucune regle maison ne declare `content` avec autre chose que la chaine vide ou
   `none`.
+- **Clause 8, ajoutee par l'amendement du 2026-08-10** : aucune regle maison permanente ne declare
+  `clip-path` sur une classe d'action dont le sujet du selecteur n'est pas `::before` ou `::after`.
+  Seule la forme a deux deux-points est reconnue comme pseudo-element : une forme heritee a un seul
+  deux-points est refusee plutot que lue charitablement, comme la forme litterale du repli
+  (`ADR-0026` clause 2) et pour la meme raison.
+
+**Deux corrections apportees a cette regle le 2026-08-10, a la porte technique de s07, sur mon propre
+garde-fou.** Aucune n'a ete trouvee par relecture de mon texte : les deux l'ont ete en mutant la
+production reelle que `lea-dev` a livree, ce que ma propre lecon de s05 prescrit et que mes jeux
+fautifs ne faisaient pas.
+
+| Ce qui ne mordait pas | Pourquoi | Ce qui le ferme, et sa morsure mesuree |
+|---|---|---|
+| **La clause 6 ne voyait pas les retards de production.** Un decalage **par colonne** ne peut pas vivre dans un raccourci `animation` partage : il s'ecrit dans une regle par colonne, en `animation-delay`. Ces regles ne declarent pas `animation:`, donc n'entraient pas dans la population des animations | Mon jeu fautif `decalage-trop-grand` ecrit son retard **dans le raccourci** - la forme que j'imaginais, pas celle que le monde ecrit. Troisieme occurrence de la lecon de s05 sur les fixtures de la main de l'auteur | `verifierLesRetardsEcritsAPart` lit tout `animation-delay` d'une feuille maison hors `@keyframes` et hors repli, confronte chacun a 0,25 s, et confronte **duree la plus longue + retard le plus long** au plafond de 1,2 s - une borne superieure, le doute jouant dans le sens du controle. Morsure : `animation-delay: 3s` sur la quatrieme colonne de `recreo.css` passait **vert sur 149 cas** ; il rend maintenant **2 defauts** dans la meme assertion, le retard (`3.0s`) et la somme (`3.6s`) |
+| **La clause "jamais un autre mot" ne tenait pas la decoupe geometrique.** `clip-path` sur `.proposition` au lieu de `.proposition::after` retranche une partie du mot du serveur | La clause 7 ne lit que `content`, et la clause 3 n'enumere que quatre proprietes d'inactionnabilite. Une decoupe ne cache pas le bouton et ne fabrique aucun texte : elle passait entre les deux | Clause 8. Morsure : `.proposition { clip-path: inset(0 45% 0 0) }` ajoute a `recreo.css` passait **vert sur 149 cas** ; il rougit maintenant en nommant la classe, le sujet du selecteur et la consequence sur `sont`/`son`. Le jeu fautif corrige `voile-rogne-sans-toucher-le-texte` prouve que la forme de S7-1 reste verte |
+
+Trois jeux fautifs neufs sous
+`adapters/adapter-web/src/test/resources/contreexemple/LAnimationRetardeMaisNeDetermineRienTest/` :
+`retard-ecrit-a-part` (clause 6 rouge sur le decalage), `texte-de-l-action-rogne` (clause 8 rouge) et
+`voile-rogne-sans-toucher-le-texte` (clause 8 verte sur la forme retenue).
 
 Les clauses 5 et 6 partagent la population des clauses 1 et 2 d'`ADR-0026`, **vide en production
 aujourd'hui**, et donc couvertes par l'epinglage `aucuneAnimationNEstEncoreDeclareeEnProduction` qui
@@ -354,6 +404,13 @@ Comptage brut 30, moins les 2 declarations du faux module de test-ressources de
 `LesGardeFousSontMisALEpreuveTest`, qui n'est jamais compile comme regle du depot. Reste **28**,
 inchange : cet ADR n'ajoute ni ne retire aucune `ArchRule`. Un balayage du disque apres `verify` en
 rendrait 32, les copies de `target/` : c'est ce perimetre-la qu'il faut, et pas un autre.
+
+**Amendement du 2026-08-10.** Les deux corrections de la regle 2 sont verifiees sur l'arbre fusionne
+du sprint, `round-two` a `d53181b`, plus le commit qui les porte. Chiffres et methode dans
+`squad/sprints/s07-machine-a-sous/confirmation-archunit.md` : `adapter-web` passe de **149 a 153** cas
+(un cas de production pour la clause 8, trois cas de morsure), le total du depot de **310 a 314**, et le
+compte de regles ArchUnit reste **28** - cet amendement n'en ajoute aucune, pour la raison ecrite
+ci-dessus.
 
 **Mesure de rendu.** Les deux chiffres corriges d'`ADR-0026` (101 px de colonne, 16 px d'ecart) sont
 remesures a mi-hauteur de la boite sur la capture produite par `outils/mesurer-rendu.sh 360 <url>

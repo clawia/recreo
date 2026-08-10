@@ -1,0 +1,16 @@
+/* Le meme jeu que texte-de-l-action-rogne, la decoupe deplacee sur le pseudo-element decoratif :
+   c'est la forme retenue par S7-1, et elle doit passer. Une boite generee a cote du texte n'est pas
+   le texte : la decoupe confine le voile, elle ne retranche aucun mot. Sans ce cas, la clause 8
+   serait une interdiction de clip-path deguisee en clause de lisibilite, et aucun jeu fautif ne le
+   dirait. */
+.propositions {
+    display: flex;
+    gap: 1rem;
+}
+
+.proposition::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    clip-path: inset(0 0 100% 0);
+}

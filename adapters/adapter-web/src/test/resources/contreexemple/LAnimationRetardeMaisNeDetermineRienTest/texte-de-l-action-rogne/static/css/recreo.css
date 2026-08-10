@@ -1,0 +1,12 @@
+/* Jeu fautif de l'amendement du 2026-08-10 a ADR-0027 section 5 : la decoupe du voile posee sur le
+   bouton qui porte le mot au lieu du pseudo-element decoratif. C'est la production a un caractere
+   pres - le "::after" retire du selecteur. Le mot du serveur est alors retranche sur sa droite, et
+   sur un paquet d'homophones "sont" devient "son", c'est-a-dire la bonne reponse devient la fausse. */
+.propositions {
+    display: flex;
+    gap: 1rem;
+}
+
+.proposition {
+    clip-path: inset(0 45% 0 0);
+}

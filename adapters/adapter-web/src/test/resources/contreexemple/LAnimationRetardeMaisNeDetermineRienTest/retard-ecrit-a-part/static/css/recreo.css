@@ -1,0 +1,26 @@
+/* Jeu fautif d'ADR-0027, clause 6, sur la forme que la production ecrit reellement : un decalage
+   par colonne ne peut pas vivre dans un raccourci partage, il s'ecrit dans une regle par colonne.
+   La regle qui anime est irreprochable - 0,6 s, la valeur conseillee - et le retard de la derniere
+   colonne, ecrit a part, fait attendre l'enfant plus de trois secondes apres son appui.
+   Le jeu fautif decalage-trop-grand ne couvrait pas cette forme : il ecrivait le retard dans le
+   raccourci, la ou l'auteur de la regle l'imaginait. */
+@keyframes rouleau-glisse {
+    from { clip-path: inset(0 0 80% 0); }
+    to   { clip-path: inset(80% 0 0 0); }
+}
+
+.propositions {
+    display: flex;
+    gap: 1rem;
+}
+
+[data-arrivee=par-un-geste] .proposition::after {
+    animation: rouleau-glisse 0.6s ease-out 1;
+}
+
+[data-arrivee=par-un-geste] .proposition:nth-child(2)::after { animation-delay: 0.08s; }
+[data-arrivee=par-un-geste] .proposition:nth-child(3)::after { animation-delay: 3s; }
+
+@media (prefers-reduced-motion: reduce) {
+    [data-arrivee=par-un-geste] .proposition::after { animation: none }
+}
