@@ -47,6 +47,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * <p>Perimetre derive du repertoire de contenu (ADR-0013, meme forme que
  * {@link ChaquePaquetPorteUnIndiceTest}), pas d'une liste de paquets : un paquet neuf portant un
  * indice general dementi par un autre de ses items est juge des qu'il existe.</p>
+ *
+ * <p>Dette ouverte par theo-archi a la porte technique de s07
+ * ({@code squad/sprints/s07-machine-a-sous/confirmation-archunit.md}, section 4) : la correction
+ * du meme commit a fait disparaitre la forme fautive des cinq indices qu'elle visait, si bien que
+ * la clause de production ci-dessous balaie desormais une population vide sur les quatre paquets
+ * du depot, sans qu'aucun signal ne distingue "aucune contradiction trouvee" de "aucun indice
+ * examine" (ADR-0003). {@link #aucunIndiceDeProductionNeCorrespondALaFormeGeneraleAujourdHui()}
+ * ferme ce trou par un epinglage de l'etat reel, sur le modele que theo-archi avait ecrit pour les
+ * clauses 1 et 2 d'ADR-0026 ({@code aucuneAnimationNEstEncoreDeclareeEnProduction}) : le plafond
+ * vaut exactement la taille de la dette, zero, et le message dit de le supprimer le jour ou ce
+ * n'est plus vrai.</p>
  */
 class AucunIndiceNeContreditUnAutreItemDuMemePaquetTest {
 
@@ -213,5 +224,43 @@ class AucunIndiceNeContreditUnAutreItemDuMemePaquetTest {
     void leMemePaquetUneFoisSonIndiceCorrigePasseLeGardeFou() {
         verifierQuAucunIndiceNeContreditUnAutreItem(
                 CONTRE_EXEMPLE.resolve("corrige"), CONTRE_EXEMPLE_CLASSPATH + "/corrige", Set.of());
+    }
+
+    /** Le nombre d'indices de production dont le texte matche la forme generale non temperee. */
+    private static int nombreDIndicesReconnusParLaFormeGenerale(Path racine, String racineClasspath) {
+        int compte = 0;
+        for (String paquet : paquets(racine)) {
+            for (Question item : itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet))) {
+                if (REGLE_GENERALE_NON_TEMPEREE.matcher(item.indice().orElse("")).find()) {
+                    compte++;
+                }
+            }
+        }
+        return compte;
+    }
+
+    /**
+     * Epinglage de l'etat reel (ADR-0026, ADR-0003) : {@code aucunIndiceDeProductionNeContreditUnAutreItemDuMemePaquet}
+     * balaie une population qui vaut aujourd'hui zero sur les quatre paquets du depot, puisque la
+     * correction du meme commit a remplace les cinq indices qui matchaient {@code
+     * REGLE_GENERALE_NON_TEMPEREE} par la forme qui nomme le verbe. Sans cet epinglage, cette clause
+     * serait verte a vide et rien ne distinguerait "aucune contradiction trouvee" de "aucun indice
+     * examine".
+     *
+     * <p>Le plafond vaut exactement la taille de la dette : zero, pas "quelques-uns". Le jour ou un
+     * indice de production correspond de nouveau a cette forme - une regression, ou un paquet neuf
+     * qui y retombe puis passe la clause principale - cette assertion rougit la premiere : supprime
+     * ce test, la clause de production porte alors sur un objet reel.</p>
+     */
+    @Test
+    void aucunIndiceDeProductionNeCorrespondALaFormeGeneraleAujourdHui() {
+        assertThat(nombreDIndicesReconnusParLaFormeGenerale(CONTENU_DE_PRODUCTION, ""))
+                .as("epinglage de l'etat reel (ADR-0026, ADR-0003) : la forme generale non temperee"
+                        + " que reconnait REGLE_GENERALE_NON_TEMPEREE ne doit correspondre a aucun"
+                        + " indice de production aujourd'hui, la correction du meme commit l'ayant"
+                        + " fait disparaitre des cinq indices fautifs. Si cette assertion rougit,"
+                        + " supprime ce test : aucunIndiceDeProductionNeContreditUnAutreItemDuMemePaquet"
+                        + " porte desormais sur un objet reel")
+                .isEqualTo(0);
     }
 }
