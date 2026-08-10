@@ -37,6 +37,14 @@ public class PartieController {
     private static final String COOKIE_PARTIE_EN_COURS = "recreo-partie-en-cours";
     private static final String MESSAGE_PARTIE_PERDUE = "Ta partie s'est arrêtée. Choisis un nouveau jeu !";
 
+    /**
+     * ADR-0027 : l'ecran de jeu declare s'il a ete demande par un geste de l'enfant. Deux constantes
+     * nommees plutot que deux litteraux booleens aux points d'appel, parce que c'est le sens qui doit
+     * se lire sur l'appel et non la valeur.
+     */
+    private static final boolean PAR_UN_GESTE = true;
+    private static final boolean SANS_GESTE = false;
+
     private final PartieUseCase partie;
 
     public PartieController(PartieUseCase partie) {
@@ -49,7 +57,7 @@ public class PartieController {
 
         if (etat.portePartieEnCours()) {
             modele.addAttribute("reprise", true);
-            mancheModele(modele, etat.jeuId(), etat.consigne(), etat.session());
+            mancheModele(modele, etat.jeuId(), etat.consigne(), etat.session(), SANS_GESTE);
             return "accueil";
         }
 
@@ -78,7 +86,7 @@ public class PartieController {
         new EtatDePartieEnSession(requete).demarrer(jeuId, jeu.consigne(), session);
         synchroniserMarqueurDePartie(session, reponse);
 
-        return mancheModele(modele, jeuId, jeu.consigne(), session);
+        return mancheModele(modele, jeuId, jeu.consigne(), session, PAR_UN_GESTE);
     }
 
     @PostMapping("/parties/{jeuId}/coups")
@@ -98,7 +106,7 @@ public class PartieController {
         if (!etat.porte(jeuId)) {
             throw new PartieIndisponible("aucune partie en cours pour le jeu " + jeuId);
         }
-        return mancheModele(modele, jeuId, etat.consigne(), etat.session());
+        return mancheModele(modele, jeuId, etat.consigne(), etat.session(), PAR_UN_GESTE);
     }
 
     /**
@@ -108,8 +116,18 @@ public class PartieController {
      * place de l'ecran mort (consigne rendue, enonce vide, aucune proposition) que rendait
      * {@code GET /parties/{jeuId}/manche} sur une partie terminee. Symetrique du choix d'ADR-0019,
      * qui a ferme le meme cas cote commande.
+     *
+     * <p>ADR-0027 : {@code arriveeParUnGeste} dit si l'enfant a presse quelque chose pour obtenir cet
+     * ecran. Le serveur est le seul a le savoir : une fois le fragment insere, le document assemble est
+     * le meme qu'il vienne d'un echange htmx ou du chargement complet de la page de reprise, donc
+     * aucun selecteur CSS ne peut les distinguer. C'est un <b>parametre</b> et non un attribut pose a
+     * cote, pour que le compilateur oblige chaque point d'appel - ceux d'aujourd'hui comme ceux de
+     * demain - a se prononcer : la derivation est totale parce que ce point de passage est unique
+     * (meme raison qu'ADR-0020 ci-dessus). Le mode de defaillance d'un oubli est l'immobilite, jamais
+     * un mouvement que l'enfant n'a pas demande.</p>
      */
-    private String mancheModele(Model modele, String jeuId, String consigne, BanditManchotSession session) {
+    private String mancheModele(Model modele, String jeuId, String consigne,
+                                BanditManchotSession session, boolean arriveeParUnGeste) {
         if (session.status() == SessionStatus.TERMINEE) {
             return retourModele(modele, jeuId, session);
         }
@@ -119,6 +137,7 @@ public class PartieController {
         modele.addAttribute("propositions", session.propositions());
         modele.addAttribute("score", session.score());
         modele.addAttribute("indice", session.indice().orElse(null));
+        modele.addAttribute("arriveeParUnGeste", arriveeParUnGeste);
         return "fragments/manche :: manche";
     }
 

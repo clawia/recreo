@@ -18,10 +18,19 @@ class FrontieresDuJavaScriptTest {
     private static final long PLAFOND_OCTETS = 4096;
     private static final int PLAFOND_LIGNES = 100;
 
+    /**
+     * Amendement ADR-0026 : {@code proposition} et {@code colonne} rejoignent la liste. ADR-0008
+     * interdisait le vocabulaire du <b>verdict</b> ; il ne disait rien du vocabulaire du
+     * <b>tirage</b>, et un rouleau ecrit en JavaScript n'a besoin d'aucun des onze mots precedents -
+     * il lui suffit de relire {@code .propositions} et de decider laquelle arrive dans quelle
+     * colonne. Ces deux mots-la nomment exactement ce que le serveur doit avoir decide avant que le
+     * fragment ne le quitte, et ils sont absents de {@code recreo.js} au jour de cet amendement.
+     */
     private static final List<String> INTERDITS_JS = List.of(
             "fetch(", "XMLHttpRequest", "JSON.parse", "JSON.stringify",
             "localStorage", "sessionStorage", "eval(",
-            "score", "correct", "bonneReponse", "reponse");
+            "score", "correct", "bonneReponse", "reponse",
+            "proposition", "colonne");
 
     private static final List<String> MARQUEURS_DE_CORRECTION = List.of(
             "data-correct", "data-bonne", "data-solution", "data-reponse");

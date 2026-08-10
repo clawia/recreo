@@ -29,6 +29,8 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0023](ADR-0023-un-paquet-offre-strictement-plus-d-items-que-sa-partie-n-a-de-manches.md) | Exiger de tout jeu du catalogue qu'il offre strictement plus d'items que sa partie n'a de manches, et deriver ce controle du catalogue | s06 | 2026-08-07 | Accepte |
 | [ADR-0024](ADR-0024-le-verdict-porte-l-explication-de-l-item-joue-la-graphie-reste-au-paquet.md) | Faire porter l'explication d'un item par le verdict de la manche jouee, et laisser la graphie qui la justifie dans le paquet qui la declare | s06 | 2026-08-07 | Accepte |
 | [ADR-0025](ADR-0025-une-mesure-de-rendu-porte-sa-commande-le-debordement-reste-non-gardable.md) | Rendre toute mesure de rendu rejouable par une commande versionnee, et declarer non gardable le debordement de mise en page | s06 | 2026-08-10 | Accepte |
+| [ADR-0026](ADR-0026-une-animation-retarde-mais-ne-determine-rien-le-levier-n-est-pas-un-bouton-de-plus.md) | Autoriser une animation qui retarde et interdire une animation qui determine ; faire du levier l'apparence du bouton qui ouvre deja une manche | s07 | 2026-08-10 | Accepte |
+| [ADR-0027](ADR-0027-un-ecran-de-jeu-declare-comment-il-est-arrive-le-mouvement-suit-le-geste.md) | Faire declarer par le serveur comment un ecran de jeu est arrive, et n'autoriser un mouvement que sur un geste de l'enfant | s07 | 2026-08-10 | Accepte |
 
 ## Amendements
 
@@ -56,6 +58,11 @@ est date dans le corps de l'ADR. Ceux du sprint 0 :
 | ADR-0013 | 2026-08-06 | **les donnees d'entree d'un test font partie de son perimetre**, cinquieme occurrence de la meme famille. `PartieHttpTest` joue une partie complete contre un catalogue ecrit a la main dont les propositions sont `"1"`, `"2"`, `"3"` ; `CatalogueChargeableIT` parcourt le vrai catalogue mais n'appelle jamais `jouer`. Le chemin etait couvert, les valeurs qui l'empruntent ne l'etaient pas. Obligation 1 etendue ; l'encodage de cette occurrence est le garde-fou de contenu de `lea-dev`, la generalisation reste une doctrine de revue et le dit |
 | ADR-0016 | 2026-08-07 | **sa dette etait fermee, son plafond ne l'etait pas** : `DETTE_DE_CONTENU` etait deja `Set.of()` mais `PLAFOND_DE_DETTE` etait reste a 2, laissant deux places pour exempter en silence un paquet neuf sans indice. Le commentaire du champ appelait ce plafond "la trace de cette fermeture" ; c'etait faux. Plafond porte a 0. Ecart signale par le `relecteur-pedagogique`, pas trouve par moi |
 | ADR-0017 | 2026-08-07 | **une de ses limites nommees s'est ouverte le sprint suivant** : son point 5 disait "un ecran est un fichier de gabarit" et "rien ne l'empeche demain". Demain, c'etait S6-1 - l'en-tete permanent pose un lien `data-role="sortie"` hors de la zone echangee par htmx, donc affiche par-dessus les boutons d'action de `fragments/`, sans qu'aucun couple ne les confronte. Un ecran est desormais la zone `hx-target` plus ce qui lui survit ; la cible est lue dans les gabarits, pas ecrite dans le test, et plusieurs cibles distinctes sont un echec. Verifie et pas suppose : en revenant a l'ancienne semantique, le jeu fautif redevient vert |
+| ADR-0008 | 2026-08-10 | **sa liste de mots interdits couvrait le verdict et pas le tirage** : un rouleau ecrit en JavaScript n'a besoin d'aucun des onze mots refuses, il lui suffit de relire `.propositions` et de decider laquelle arrive dans quelle colonne. `proposition` et `colonne` rejoignent la liste (ADR-0026). Morsure mesuree par mutation reelle de `recreo.js` : la premiere ligne qu'ecrirait un rouleau client passait vert avant l'amendement |
+| ADR-0017 | 2026-08-10 | pas une correction mais une **confirmation mesuree** : l'arrivee du levier et des colonnes ne l'oblige a rien. Le levier est `.demarrer` ou `.encore`, deja `data-role="action"` ; la proposition reste `.btn.proposition`. L'ensemble ferme `{action, sortie}` n'a pas a s'ouvrir et les trois epinglages de couples restent verts sans qu'une ligne change (ADR-0026, regle 4) |
+| ADR-0026 | 2026-08-10 | **sa section 2 keyait le mouvement sur la mauvaise propriete** : "une animation demarre quand l'element entre dans le document" est exact, mais un element entre aussi dans le document quand le navigateur charge une page entiere, et `accueil.html` rend la manche en clair sur la branche de reprise de S1-4. Un enfant qui recharge sa page verrait les colonnes tourner sans avoir rien touche. Troisieme occurrence de ma propre famille de faute, apres ADR-0022 et la limite 5 d'ADR-0017 : une propriete structurelle prise pour la propriete qui compte. Trouve par `nadia-prof` en lisant les gabarits, cause et correction par ADR-0027 |
+| ADR-0026 | 2026-08-10 | **deux de ses chiffres de rendu etaient lus dans les angles arrondis** : colonne annoncee a 99 px et ecart a 18 px, mesures sur une ligne prise a 6 px du bord haut. A mi-hauteur, la colonne fait **101 px** et l'ecart **16 px** exactement. Aucune conclusion ne bouge, mais le plancher d'ecart de S3-5 est tenu **a l'egalite exacte** : il n'y a aucune marge de 2 px a recuperer, ce que le chiffre annonce laissait croire. Trouve par `nadia-prof`, remesure par un critere different |
+| ADR-0026 | 2026-08-10 | **sa clause "la duree n'est pas gardable" etait juste et a cesse de l'etre** : elle valait tant qu'aucun seuil n'existait. `nadia-prof` en donne trois (0,3 s a 1,2 s, decalage 0,25 s au plus), et la clause passe de son jugement a un automate. Ce qui lui reste est ce qu'une feuille de style ne dit pas : la courbe, le rebond, le lien percu avec le geste (ADR-0027 decision 4) |
 | ADR-0012 | 2026-08-05 | **sa section executable nommait le mauvais paquet** : un contre-exemple range dans `domain.content.contreexemple` aurait ete invisible pour la regle qu'il doit faire echouer. Paquet corrige, contre-exemple et test de non-vacuite ecrits ; et la derniere ligne de son tableau de gardes de comportement, seule des quatre a etre restee sur le papier, est honoree dans `CatalogueChargeableIT` |
 
 ## Lecture rapide
@@ -219,4 +226,41 @@ portant sur la meme faute de fond - **un automate vert qui ne regardait pas le b
     **refuse avec son chiffre** (une regle sur le repli des rangees flex serait rouge sur trois blocs de
     production le jour de son ecriture, donc reclamerait de changer la mise en page servie a un enfant
     pour satisfaire un test), et le constat que deux juges purs ecrits en s06 n'etaient lances par aucun
-    automate - la CI balaie desormais `outils/*-test.sh`.
+    automate - la CI balaie desormais `outils/*-test.sh` ;
+24. **ADR-0026** est saisi de la dette n°1 reproduite - une mecanique nommee "bandit manchot" qui rend
+    un questionnaire a choix multiple - et il tranche d'abord une frontiere : **une animation retarde ce
+    que l'enfant voit, elle ne determine rien**, la ligne se tracant sur une propriete verifiable du
+    document servi, qui reste jouable sans CSS et sans JavaScript. Il apporte trois choses qui valent
+    au-dela de son sujet. La premiere est **une decision moins chere apres lecture du code qu'avant** :
+    je cherchais une nouvelle route pour le levier et l'ilot JavaScript d'`ADR-0008` a ouvrir, alors
+    qu'une animation CSS demarre a l'insertion de l'element et que le bouton qui ouvre une manche existe
+    deja dans les deux branches que `camille-po` peut trancher - cout architectural nul dans les deux
+    cas. La deuxieme est un **vert silencieux ferme et prouve par execution** : la regle d'ecart entre
+    deux boutons de reponse ne lisait que `gap`, et `gap: 1rem; column-gap: 0.5rem` la faisait passer
+    en lisant 1,0rem, ce que le rejeu de l'ancienne lecture sur le jeu fautif a confirme - l'axe que le
+    doigt de l'enfant franchit des que les propositions sont cote a cote etait le seul non garde. La
+    troisieme est un **epinglage de population vide assume** : deux de ses quatre clauses ne portent
+    encore sur rien, et plutot qu'un commentaire, un test affirme que le compte d'animations de
+    production vaut exactement zero et dit quoi faire le jour ou ce n'est plus vrai. Il refuse enfin un
+    garde-fou tentant avec la mesure qui le refute (`oreille`, 7 caracteres, tient dans une colonne de
+    99 px ; `mangez`, 6 caracteres, n'y tient pas : le budget est une largeur de glyphes, pas un nombre
+    de caracteres) et remonte a `camille-po` une contradiction entre `DEC-0014` et la mise en page en
+    rouleaux, plutot que de la trancher a sa place ;
+25. **ADR-0027** corrige `ADR-0026` du sprint precedent - le meme jour - sur le defaut que
+    `nadia-prof` a trouve **en lisant les gabarits**, pas en jouant : le mecanisme keyait le mouvement
+    sur "l'element entre dans le document", et un element entre aussi dans le document quand le
+    navigateur charge une page, ce que la reprise silencieuse de S1-4 fait sans aucun geste. Il vaut
+    d'etre relu pour quatre choses. La premiere est un aveu utile : c'est la **troisieme occurrence de
+    la meme famille de faute de ma main** - une propriete structurelle prise pour la propriete qui
+    compte - apres `ADR-0022` et la limite 5 d'`ADR-0017`, et l'ADR l'inscrit comme telle plutot que
+    comme un oubli. La deuxieme est une contrainte et non un choix : le document assemble est identique
+    sur les deux chemins, donc **aucun selecteur CSS ne peut les distinguer** et seul le serveur peut
+    poser la difference. La troisieme est le seul endroit de ce chantier ou une derivation totale
+    s'obtient du **compilateur** plutot que d'un test - le point de passage de l'ecran de jeu est
+    unique, la declaration y est un parametre, une route neuve qui l'oublierait ne compile pas. La
+    quatrieme est un mouvement de frontiere dans le bon sens : la duree du defilement, qu'`ADR-0026`
+    declarait non gardable, **cesse de l'etre le jour ou son destinataire donne un chiffre**, et trois
+    des seuils de `nadia-prof` passent de son jugement a un automate. Il note enfin qu'un garde-fou d'un
+    autre lot l'a corrige avant la revue - une classe posee sans regle servie est refusee, ce qui a
+    fait choisir un attribut plutot qu'une regle CSS decorative - et il rend explicitement a
+    `nadia-prof` le residu qu'aucun automate n'atteint, dont un mot peint dans une image.

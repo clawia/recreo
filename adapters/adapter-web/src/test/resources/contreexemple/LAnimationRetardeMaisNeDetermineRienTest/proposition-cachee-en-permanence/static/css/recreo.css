@@ -1,0 +1,11 @@
+/* Jeu fautif d'ADR-0026, clause 3 : l'etat de depart de l'animation est pose en dur sur le bouton au
+   lieu de vivre dans les images cles. La proposition reste invisible quelle que soit l'animation, et
+   aucun test de comportement serveur ne bronche - le serveur, lui, a tout rendu correctement. */
+.propositions {
+    display: flex;
+    gap: 1rem;
+}
+
+.proposition {
+    opacity: 0;
+}

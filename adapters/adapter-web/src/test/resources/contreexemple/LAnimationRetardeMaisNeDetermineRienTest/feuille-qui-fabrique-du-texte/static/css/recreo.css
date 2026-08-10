@@ -1,0 +1,10 @@
+/* Jeu fautif d'ADR-0027, clause 7 : une face de rouleau qui porte un mot ecrit dans la feuille de
+   style. Sur un jeu d'homophones, l'enfant lirait la forme fausse a chaque manche. */
+.propositions {
+    display: flex;
+    gap: 1rem;
+}
+
+.proposition::before {
+    content: "son";
+}
