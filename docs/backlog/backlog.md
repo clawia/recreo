@@ -1819,6 +1819,124 @@ technique a instruire (`DEC-0013`, point 3).
   process", ligne "Nouveau : outils/verifier-jdk.sh".
 - **Agent pressenti** : `sofia-sm`.
 
+## Sprint 7 - Une vraie machine a sous, pas un questionnaire empile
+
+**Contexte et decision de perimetre** : l'utilisatrice a joue l'application et constate que "les
+jeux existants ne reposent pas sur un bandit manchot. C'est une machine avec les reponses
+proposees dans les colonnes." Verifie contre le code : `fragments/manche.html` rend un
+questionnaire a choix multiple (boutons empiles verticalement), et aucun fichier du depot ne
+contient de vocabulaire de machine a sous (rouleau, colonne, levier), alors que "bandit manchot"
+nomme la mecanique dans 25 `ADR`, dans le catalogue, dans les trois fiches de conformite et dans
+quatre lignes de `squad/programme/MATRICE-couverture.md`. C'est la dette n. 1 de `CLAUDE.md`
+reproduite (une abstraction citee partout, absente du code). `DEC-0015-sprint-7-la-vraie-machine-
+a-sous-ferme-la-dette-1.md` tranche : le sprint 7 construit la mecanique de machine a sous decrite
+par l'utilisatrice (l'enfant tire un levier, trois colonnes defilent puis s'arretent chacune sur
+une proposition, il choisit la colonne juste), en remplacement du rendu actuel, sans toucher aux
+contrats de decouplage deja actes (`ADR-0004`, `ADR-0008`).
+
+**Ces quatre stories sont transverses** : aucune ne porte de competence programme, aucune ne fait
+bouger une ligne de la matrice. Ce sprint reconstruit une mecanique deja jouee, il n'ouvre aucun
+contenu nouveau. Les questions techniques que la reconstruction souleve (mecanisme d'animation
+compatible `ADR-0008` et `ADR-0014` point 7, sort de la reponse au clavier, disposition a 360-375
+px) sont routees a `theo-archi` et ne sont pas presupposees par les criteres ci-dessous. Les
+acquis pedagogiques que ce chantier touche potentiellement (cible tactile, lisibilite, ecart entre
+boutons, hierarchie de saillance `ADR-0017`, etat `sortie-pleine` d'`ADR-0022`) sont signales a
+`nadia-prof` pour un arbitrage prealable avant developpement (`squad/README.md` section 10),
+liste complete dans `DEC-0015`.
+
+### S7-1 - Une vraie machine a sous, pas un choix de bouton empile
+
+- **Besoin** : en tant qu'enfant qui joue au bandit manchot, je veux tirer un levier qui fait
+  tourner des colonnes de reponses possibles, puis choisir la colonne qui affiche la bonne
+  reponse, pour vivre le jeu comme une vraie machine a sous plutot que comme une liste de boutons
+  empiles.
+- **Competence programme visee** : transverse - mecanique de jeu, aucun contenu pedagogique
+  (`ADR-0004` : la mecanique ne connait aucune matiere).
+- **Criteres d'acceptation** :
+  - Etant donne un ecran de manche affiche, quand l'enfant le regarde avant d'agir, alors les
+    propositions ne sont plus presentees comme une liste verticale de boutons empiles (l'etat
+    actuel de `fragments/manche.html`), mais comme des colonnes distinctes, une par proposition.
+  - Etant donne l'ecran de manche, quand l'enfant tire le levier, alors une seule action suffit a
+    declencher le tour (voir S7-4 : pas de geste ajoute par rapport a l'actuel bouton de
+    proposition).
+  - Etant donne le resultat du tour, quand l'enfant doit choisir, alors chaque colonne affiche
+    exactement une proposition parmi celles fournies par le contenu, sans doublon ni proposition
+    manquante par rapport a ce qui est affiche aujourd'hui par les boutons.
+  - Etant donne le contrat mecanique/contenu deja en vigueur (`ADR-0004`, `ADR-0008`), quand cette
+    story est livree, alors le verdict juste/faux et la designation de la colonne juste restent
+    calcules et detenus par le serveur uniquement ; aucun marqueur de correction n'atteint le
+    client avant le choix de l'enfant (contrainte existante, non renegociee ici).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que le choix par colonne reste aussi comprehensible pour un enfant de CP que
+    l'etait le bouton, et que le jeu ne devienne pas plus difficile a comprendre du seul fait de sa
+    nouvelle forme.
+- **Lien decision** : `DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`.
+- **Agent pressenti** : a affecter au planning (avis de faisabilite de `theo-archi` requis avant
+  developpement).
+
+### S7-2 - Le nombre de colonnes suit le nombre de propositions du contenu, jamais fige a trois
+
+- **Besoin** (story d'enabler transverse, portee par l'equipe plutot que par un enfant) : pour que
+  la machine a sous puisse un jour jouer un contenu a deux, trois ou quatre propositions sans
+  reecrire la mecanique, le nombre de colonnes affichees doit venir du contenu, jamais d'une
+  constante de la mecanique.
+- **Competence programme visee** : transverse.
+- **Criteres d'acceptation** :
+  - Etant donne un contenu qui fournit trois propositions (par exemple "additions CP"), quand la
+    manche s'affiche, alors trois colonnes sont rendues, ni plus ni moins.
+  - Etant donne un contenu qui fournirait un nombre different de propositions (par exemple les
+    quatre propositions de "Le bon verbe", `squad/conformite/FICHE-bandit-manchot-conjugaison-
+    present-cm1.md`, section 4), quand la manche s'affiche, alors le nombre de colonnes rendues
+    correspond exactement au nombre de propositions fournies par ce contenu, sans modification de
+    la mecanique elle-meme.
+  - Etant donne la regle de decouplage mecanique/contenu deja en vigueur (`ADR-0004`, S0-3), quand
+    on relit le code de la machine a sous, alors aucune constante ni aucun test ne fige le nombre
+    "trois" comme un invariant de la mecanique.
+- **Lien decision** : `DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`, arbitrage 3.
+- **Agent pressenti** : a affecter au planning.
+
+### S7-3 - Lire la question avant que les colonnes ne s'arretent
+
+- **Besoin** : en tant qu'enfant de CP qui lit encore lentement, je veux voir et pouvoir lire la
+  question avant que les colonnes ne s'arretent de tourner et que je doive choisir, afin d'avoir le
+  temps de comprendre ce qui est demande avant de decider.
+- **Competence programme visee** : transverse - accessibilite et lisibilite pour le niveau CP
+  (meme categorie que S0-5, S1-9, S2-1).
+- **Criteres d'acceptation** :
+  - Etant donne une manche qui commence, quand l'enonce s'affiche, alors il est visible et lisible
+    avant meme que le levier ne soit tire (il n'attend pas l'arret des colonnes pour apparaitre).
+  - Etant donne le defilement des colonnes, quand il est en cours, alors l'enonce reste affiche a
+    l'identique, sans animation ni modification, pendant toute la duree du defilement.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que la duree et le rythme du defilement laissent effectivement a un enfant de CP
+    le temps de lire l'enonce et de se preparer a choisir.
+- **Lien decision** : `DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`, arbitrage 2.
+- **Agent pressenti** : a affecter au planning.
+
+### S7-4 - Tirer le levier n'ajoute aucun geste a ce que l'enfant fait deja
+
+- **Besoin** : en tant qu'enfant de CP, je veux que tirer le levier soit le meme geste que celui
+  qui me fait deja avancer aujourd'hui (demarrer une partie, passer a la question suivante), afin
+  de ne pas avoir un geste de plus a comprendre a chaque question.
+- **Competence programme visee** : transverse.
+- **Criteres d'acceptation** :
+  - Etant donne l'enchainement actuel apres une manche (le bouton "Encore !"), quand il est
+    remplace par le geste de tirer le levier, alors ce geste declenche a lui seul a la fois
+    l'affichage de la question suivante et le defilement des colonnes, sans etape intermediaire qui
+    n'existait pas avant.
+  - Etant donne le demarrage d'une partie, quand l'enfant lance le jeu, alors le meme principe
+    s'applique : tirer le levier est ce qui demarre la partie, il ne s'ajoute pas au bouton
+    "Demarrer" deja existant.
+  - Etant donne l'aide de S1-5/S3-2 (indice apres trois echecs consecutifs) et la "manche plus
+    simple", quand elles se declenchent, alors elles s'affichent et se comportent exactement comme
+    avant : le changement de forme du levier ne modifie aucune de leurs conditions de
+    declenchement.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'un enfant de CP comprenne intuitivement le geste de tirer le levier sans
+    explication d'un adulte.
+- **Lien decision** : `DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`, arbitrage 1.
+- **Agent pressenti** : a affecter au planning.
+
 ## Backlog - sprints suivants (intentions non detaillees)
 
 Ces intentions ne sont pas des stories pretes a developper. Elles seront detaillees sprint par
@@ -1831,6 +1949,61 @@ A l'exception de cette story, prete a developper des maintenant : le refus de `n
 correctif borne, et `DEC-0014-retrait-le-bon-verbe-du-catalogue.md` le route ici plutot que de le
 laisser en simple intention. Son entree au planning et l'affectation d'un developpeur restent une
 decision de capacite qui appartient a `sofia-sm`, pas a moi.
+
+**Position sur l'entree au sprint 7 (`DEC-0015`, amendee le 2026-08-10)** : le developpement de
+cette correction peut entrer au sprint 7. Elle ne touche qu'un contenu YAML
+(`cm1-conjugaison-present.yaml`), pas la mecanique ni le gabarit ; elle est independante des quatre
+stories du chantier machine a sous (S7-1 a S7-4) et deja prete a developper. Seul point de
+vigilance que je remonte a `sofia-sm` : si S7-1 modifie le rendu de `.indice` dans
+`fragments/manche.html`, les deux chantiers touchent la meme zone du meme fichier, et un ordre de
+sequencement peut eviter un conflit inutile - c'est une question de capacite et d'ordonnancement,
+pas de perimetre, elle reste donc a `sofia-sm`.
+
+**Mais un nouveau Done pedagogique sur les indices ne suffit pas a remettre "Le bon verbe" au
+catalogue.** L'amendement du 2026-08-10 a `DEC-0015` (avis de faisabilite de `theo-archi`,
+`ADR-0026`) mesure qu'a la largeur cible de 375 px (`DEC-0007` point 5), les quatre colonnes que
+"Le bon verbe" exigerait sous la machine a sous debordent, alors que trois colonnes tiennent sans
+abaisser aucun plancher pedagogique. C'est une seconde condition, independante de la premiere
+(indices corriges) : tant qu'elle n'est pas fermee, la reintegration au catalogue n'a pas lieu,
+meme si la correction textuelle est validee par `nadia-prof`.
+
+**`nadia-prof` a depuis rendu l'arbitrage prealable sur la reduction a trois propositions
+(`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`), et sa mesure ferme cette
+sortie sur la question de largeur.** Elle accepte la reduction, avec les douze triplets qu'elle
+fixe nommement, mais sur son propre motif - la quatrieme proposition etait deja sous le pli a
+360 x 640, independamment de tout probleme de colonnes. Elle a mesure qu'a trois colonnes et 360 px,
+neuf items sur douze debordent encore et que deux d'entre eux affichent deux propositions
+distinctes avec les memes lettres visibles, donc sans reponse identifiable : "personne ne doit
+vendre cette reduction comme la reponse au probleme de largeur." La reduction a trois est donc
+**acquise sur le fond pedagogique et insuffisante sur la largeur** : elle ne compte plus comme une
+sortie qui fermerait a elle seule la condition de remise au catalogue. Il ne reste que deux sorties
+possibles, chacune relevant d'une autorite distincte - replier la mise en page au-dela de trois
+colonnes, proposition de forme d'`ines-design` jugee ensuite par `nadia-prof` en jouant
+l'increment ; ou reporter le jeu hors de ce sprint, decision de perimetre qui m'appartiendrait si
+elle s'imposait. La troisieme sortie, assumer le debordement a 375 px, reste exclue : elle
+reviendrait a reculer sur `DEC-0007` point 5 sans aucune contrainte qui l'impose. Voir
+`DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`, sections "Amendement du
+2026-08-10" et "Second amendement du 2026-08-10".
+
+**`nadia-prof` a depuis eteint sa propre acceptation de la reduction : elle n'est plus une sortie du
+tout, meme insuffisante.** Son motif d'origine visait une cause fausse - elle avait lie le defaut du
+pli au passage a quatre propositions, puis a mesure "Le bon petit mot" (jeu catalogue, deux
+propositions) et y trouve le meme defaut sur 3 items sur 24 : la cause reelle est la longueur de
+l'enonce, pas le nombre de propositions. Elle refuse d'inventer un motif de remplacement - quatre
+propositions homophones servent mieux la competence que trois, elle l'avait ecrit elle-meme le matin
+meme. Les douze triplets restent ecrits dans sa fiche comme trace d'une decision eteinte ; ils ne
+sont plus a executer, et le paquet garde ses quatre propositions par item. **`ines-design` a par
+ailleurs trouve le repli de mise en page (deux colonnes par rangee a partir de la quatrieme
+proposition), que `nadia-prof` a remesure et confirme** : 160 px par colonne a 360 px, 167-168 px a
+375 px, ecart tenu, aucune troncature. Ma condition de remise au catalogue n'a donc plus qu'une
+sortie candidate, et elle n'est pas encore fermee : le repli est confirme sur une maquette jetable,
+non sur le code livre - `nadia-prof` le dit elle-meme, si ce qui est livre differe de sa mesure elle
+reexamine. "Le bon verbe" rejoint le catalogue quand, et seulement quand, les cinq indices sont
+corriges et valides (condition independante, inchangee, `DEC-0014`) **et** que l'increment livre le
+repli en deux rangees tel que mesure, reverifie par `nadia-prof` sur le rendu reel. Si l'increment
+livre ne reproduit pas cette mesure, le report du jeu hors du sprint redevient la seule sortie. Voir
+`DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`, section "Quatrieme amendement du
+2026-08-10".
 
 - **Besoin** : en tant qu'eleve de CM1 qui vient de se tromper trois fois de suite sur "Le bon
   verbe", je veux que l'aide qui m'est montree m'enseigne une regle de conjugaison vraie, afin de
@@ -1872,6 +2045,19 @@ decision de capacite qui appartient a `sofia-sm`, pas a moi.
 
 ### Autres intentions
 
+- **Constat neuf du 2026-08-10 sur "Le bon petit mot" (jeu catalogue, Done accorde, ligne
+  `couvert-valide`, inchanges par ce constat)** : sur 3 de ses 24 items, l'affichage de l'indice
+  pousse les deux boutons de reponse sous le pli d'un ecran de 360 x 640 (sur l'item 24, plus rien
+  n'est visible) ; 0 item sur 24 n'est en defaut sans l'indice. La cause est la longueur de l'enonce
+  a 2 rem qui se replie sur cinq ou six lignes, pas le nombre de propositions ni la mise en page en
+  colonnes (`squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`, constat du 2026-08-10).
+  `nadia-prof` ne fait pas de ce constat un motif de refus, et dit explicitement qu'il ne doit pas
+  ralentir le chantier machine a sous en cours. `DEC-0016-hauteur-de-viewport-de-reference-et-
+  contenu-au-dessus-du-pli.md` fixe la regle et le viewport de reference (360 x 640) que ce
+  correctif devra respecter, sans trancher entre les deux pistes possibles : raccourcir les cinq
+  enonces les plus longs (jugement pedagogique, `nadia-prof`) ou traiter la hauteur de l'ecran par
+  la mise en page (`theo-archi`, `ines-design`). Non affecte a un sprint ; a instruire quand
+  `sofia-sm` juge la capacite disponible.
 - La ligne mathematiques CP est desormais `couvert-valide` (2026-08-06) : elargir le contenu
   "additions CP" a la borne jusqu'a 20, et couvrir les soustractions et les complements a 10 (meme
   mecanique, meme niveau) pour clore completement cette ligne de la matrice.
