@@ -67,7 +67,7 @@ memoire plutot que comme un defaut a trancher :
   fichier source, precisement pour ne pas faire rougir `verifier-chemins.sh` sur leur propre fixture
   de test) - conformes a l'intention documentee de ces deux scripts.
 - **`.github/scripts/verifier-chemins.sh` outrepasse** : verifie a la main au-dela de ce que ce
-  script couvre (formes `C:\`, `/c/Users/`, noms de compte litteraux) plutot que de me fier a son
+  script couvre (formes `C:\...`, `/c/...`, noms de compte litteraux) plutot que de me fier a son
   vert.
 - **Coherence terminologique du renommage "Accueil" -> "Les jeux"** : le libelle est identique partout
   ou il apparait apres l'arbitrage de `nadia-prof` du 2026-08-07 - `ADR-0022`, backlog S6-9, la fiche
