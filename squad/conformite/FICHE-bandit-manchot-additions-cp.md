@@ -28,6 +28,13 @@
   **S6-9 et S6-10, Done pedagogique prononce le 2026-08-10 apres remesure sur le rendu reel :
   les deux sont VALIDE.** Mon audit degrade du 2026-08-07 sur S6-10 est leve : les trois comptes de
   pixels sont exacts a l'unite et j'ai regarde le bandeau modifie dans un navigateur.
+  **Arbitrage prealable au developpement du chantier machine a sous (S7-1 a S7-4)** : rendu le
+  2026-08-10, **direction acceptee, metaphore acceptee seulement diminuee** de tout ce qui en fait un
+  jeu d'argent, **duree de defilement bornee a 0,3 s - 1,2 s**, **lisibilite dans une colonne de
+  101 px validee sur mesure** pour les trois jeux du catalogue, **deux colonnes acceptees**, six
+  acquis maintenus sans exception. Ce n'est pas un Done pedagogique, et **cet arbitrage est degrade** :
+  le chantier n'est pas ecrit, huit points seront reverifies sur le rendu livre. Ce bloc vaut pour les
+  quatre jeux du bandit manchot.
 - **Derniere mise a jour** : 2026-08-10
 
 ## Competences visees
@@ -326,6 +333,386 @@ Ma liste du 2026-08-07 en comptait quatre. Deux sont retirees, deux restent, et 
 - Pour `camille-po`, nouveau : une regle sur ce qui doit rester au-dessus du pli, et sur quel
   viewport de reference, serait la bonne reponse a mon point 6.5. Je decris le besoin, je n'ecris
   pas la story.
+
+### Arbitrage prealable au developpement - chantier machine a sous (S7-1 a S7-4), du 2026-08-10
+
+**Ce bloc n'est pas un Done pedagogique.** C'est le troisieme arbitrage prealable que j'ecris, apres
+S6-9 et S6-10 du 2026-08-07, qu'il ne modifie ni l'un ni l'autre. Il est rendu au titre de
+`squad/README.md` section 10 (amendement de la retro s06) : `DEC-0015` signale six acquis
+pedagogiques que le chantier touche, et `ADR-0026` me route nommement cinq questions. Le Done
+pedagogique du chantier sera prononce plus tard, en jouant l'increment livre.
+
+**Ce bloc vaut pour les quatre jeux du bandit manchot**, catalogues ou non : la mecanique est
+commune. Les fiches `FICHE-bandit-manchot-le-bon-son-cp.md` et
+`FICHE-bandit-manchot-homophones-cm1.md` y renvoient. La part qui touche le contenu de "Le bon
+verbe" - le nombre de propositions du paquet - est tranchee dans
+`FICHE-bandit-manchot-conjugaison-present-cm1.md` et pas ici, parce que c'est du contenu et non de
+l'habillage.
+
+**La direction n'est pas rediscutee.** L'utilisatrice a tranche : une vraie machine a sous. Je ne
+reouvre pas ce choix, et rien de ce bloc ne le conditionne. Ce que je tranche, c'est ce que cette
+direction vaut pour l'enfant et sous quelles conditions.
+
+#### Le verdict, en une phrase
+
+**La forme convient a l'enfant, la metaphore non : je valide qu'une seule pression fasse apparaitre
+les reponses en mouvement dans des colonnes, et je refuse tout ce qui fait de cet ecran une machine
+a sous - aucun mot, aucune image, aucun son de jeu d'argent (mise, gain, jackpot, piece,
+alignement gagnant), parce que le message propre d'une machine a sous est que le hasard decide du
+resultat, et c'est exactement l'inverse de ce qu'un exercice doit apprendre a un enfant de 6 ou de
+9 ans.**
+
+#### Comment j'ai regarde, et ce que je declare degrade
+
+**Audit degrade, et je le declare avant tout le reste, comme pour S6-10 le 2026-08-07 :** le
+chantier n'est pas ecrit. Il n'existe aucune machine a sous a jouer, donc je n'ai pas joue de
+machine a sous, et **rien de ce bloc ne peut valoir comme Done pedagogique.**
+
+Ce que j'ai pu faire, et qui n'est pas une lecture de description :
+
+- **j'ai mesure du rendu reel.** Maquette jetable hors du depot, non commitee, batie sur les deux
+  feuilles reellement servies (`vendor/bootstrap.min.css` puis `css/recreo.css`, dans cet ordre) et
+  sur la structure reelle de `fragments/manche.html`, avec pour seul delta
+  `.propositions { flex-direction: row }` et `.proposition { flex: 1 1 0 }` - le delta qu'`ADR-0026`
+  decrit. Captures a une largeur de viewport reellement de 360 px par la commande versionnee du
+  depot, `outils/mesurer-rendu.sh 360 <url> <png>`, navigateur designe par la variable `CHROME`.
+  Largeurs et hauteurs relevees au pixel par balayage des aplats de `--recreo-accent` (`#2e6f9e`)
+  sur l'image ;
+- **j'ai regarde deux ecrans de manche complets** en colonnes, avec leur bouton de sortie, leur
+  score, leur consigne, leur enonce et leur indice : "Le bon son" sur l'item `MANTEAU`
+  (propositions `an`, `on`, `in`) et "Calcul CP" sur `6 + 4` (`10`, `7`, `9`) ;
+- **j'ai mesure les douze items de "Le bon verbe" ramenes a trois propositions**, ce qui est la
+  sortie qu'on me demande d'accepter ou de refuser ;
+- **j'ai lu les gabarits et la feuille de style servis**, et c'est comme cela que j'ai trouve le
+  defaut de la section 6, qui n'est dans aucun des deux lots.
+
+**Ce que je n'ai pas pu juger, et que je reverifierai sur le rendu livre** : tout ce qui bouge. Une
+duree, une courbe, un decalage entre colonnes, la lisibilite d'un mot pendant qu'il glisse, le fait
+qu'un enfant relie le mouvement a son propre geste - rien de tout cela ne se juge sur une capture
+immobile. La liste exacte est en section 9, et **aucun Done pedagogique ne sera prononce avant que
+je l'aie epuisee.**
+
+#### Je corrige deux chiffres avant de m'appuyer dessus
+
+Les mesures de largeur d'`ADR-0026` sont justes, et deux de ses nombres meritent une precision que
+je donne parce que quelqu'un les recopiera.
+
+| Chiffre annonce par `ADR-0026` | Ce que je mesure | Lecture |
+|---|---|---|
+| colonne de 99, 100, 99 px a 3 colonnes | **101, 102, 101 px** a mi-hauteur ; 99, 100, 99 px sur une ligne prise a 6 px du bord haut | les deux sont vrais : la ligne haute traverse les angles arrondis. La boite fait 101 px |
+| ecart rendu de 18 px | **16 px exactement** a mi-hauteur | les 18 px sont eux aussi une lecture sur la ligne haute. L'ecart rendu est le `gap: 1rem` declare, ni plus ni moins |
+| hauteur de 74 px | **74 px** | confirme a l'unite |
+
+Cela ne deplace aucun plancher et ne corrige aucune conclusion : la marge sur la cible tactile est
+un peu meilleure que celle qu'`ADR-0026` s'accorde. Je le note pour une seule raison : le plancher
+d'ecart de S3-5 est tenu **a l'egalite exacte**, et un rapport qui annoncerait 18 px de rendu
+laisserait croire a 2 px de marge qui n'existent pas. Le jour ou quelqu'un voudra "recuperer 2 px",
+il n'y en a pas a recuperer.
+
+#### 1. La metaphore : ce que j'accepte, ce que je refuse, et pourquoi personne ne me l'avait demande
+
+On me pose enfin la question, et elle est la bonne. Une machine a sous est une machine de jeu
+d'argent. Ce qui me gene n'est pas le mauvais gout, c'est un enjeu d'apprentissage precis.
+
+**Le message propre d'une machine a sous est que le resultat ne depend pas de toi.** On tire, les
+rouleaux tournent seuls, le hasard tranche. Un exercice scolaire doit enseigner exactement l'inverse :
+ce que tu obtiens depend de ce que tu sais. Un enfant de CP qui rate trois fois de suite cherche
+toujours une cause, et un ecran qui lui montre des rouleaux qui tournent tout seuls lui en offre une
+tres commode - "je n'ai pas eu de chance". C'est le seul motif de fond que je porte, et il est
+serieux : c'est celui qui remonterait a l'utilisatrice si la forme retenue ne s'en separait pas.
+
+**Elle s'en separe, et c'est pour cela que je ne refuse pas la direction.** Dans la forme decrite,
+la machine ne decide rien : elle **distribue** les reponses, puis l'enfant choisit. Le tirage n'est
+pas le resultat, c'est la donne. La difference est entierement dans ce que l'ecran raconte, donc
+elle est entierement dans ce que je tranche ici.
+
+**Ce que j'exige, et qui est executable sans me redemander quoi que ce soit :**
+
+1. **Aucun vocabulaire ni imagerie de jeu d'argent dans ce que l'enfant lit, voit ou entend.** Sont
+   refuses, sur tout texte rendu a l'ecran, tout `alt`, tout `aria-label`, tout `title` et tout
+   titre de page : `machine a sous`, `bandit`, `manchot`, `jackpot`, `mise`, `miser`, `gain`,
+   `gagner de l'argent`, `casino`, `piece`, `jeton`, `credit`, `bandit manchot`. Verifie
+   aujourd'hui : aucun de ces mots n'atteint l'enfant, les trois jeux du catalogue s'appellent
+   "Calcul CP", "Le bon petit mot" et "Le bon son", et `bandit-manchot` n'est qu'un identifiant
+   interne. **Cet etat est un acquis et je le porte desormais comme tel** : le chantier ne doit pas
+   faire remonter le nom de la mecanique a la surface au motif qu'il devient enfin exact.
+2. **Aucun signal de gain a l'arret des colonnes.** Pas d'alignement lumineux, pas d'eclair, pas de
+   fanfare, pas de piece qui tombe, pas de colonne qui se colore differemment des autres. Motif
+   operationnel et pas seulement de principe : dans une machine a sous, l'arret **est** le
+   resultat. Si l'arret ressemble a un resultat, un enfant de CP croira que le tour est fini et ne
+   comprendra pas qu'il doit encore choisir. L'arret est neutre : les trois colonnes s'arretent avec
+   le meme aspect, et rien ne se passe jusqu'a ce que l'enfant presse.
+3. **Le seul retour de resultat du jeu reste celui qui existe** : la coche ou la croix de
+   `fragments/retour.html`, apres le choix de l'enfant. Le chantier n'ajoute aucun second canal de
+   verdict.
+4. **Aucun compteur autre que le score existant.** Pas de serie, pas de multiplicateur, pas de
+   "3 d'affilee" : ce sont des mecaniques de machine a sous, et elles transforment un exercice en
+   pari.
+
+Sous ces quatre conditions, la metaphore est acceptable au CP comme au CM1. Sans elles, elle ne
+l'est pas, et le motif ne serait pas negociable.
+
+#### 2. La duree du defilement : ce que j'autorise, ce que je refuse
+
+`ADR-0026` assume que cette duree vit dans une feuille de style et qu'aucun test ne la juge, et
+`theo-archi` cite lui-meme un defilement de huit secondes qui passerait la CI verte. Voici la barre,
+et elle est chiffree.
+
+**Le calcul qui la fixe.** Une partie compte dix manches (`catalogue.yaml`, `nombreDeManches: 10`).
+Le defilement est donc paye **dix fois par partie**. C'est ce facteur dix qui commande, pas le
+ressenti d'un seul tour.
+
+| Grandeur | Valeur |
+|---|---|
+| **Duree autorisee**, de l'appui de l'enfant jusqu'a l'arret de la **derniere** colonne | **0,3 s au minimum, 1,2 s au maximum** |
+| Valeur que je conseille | **0,6 s** (soit 6 s d'attente sur une partie de dix manches) |
+| Decalage entre l'arret de la premiere colonne et celui de la derniere | **0,25 s au maximum**, et il est **compris** dans le budget ci-dessus |
+
+**Ce que je refuse, nommement :**
+
+- **tout defilement dont la derniere colonne s'arrete apres 1,2 s.** A 1,2 s, une partie coute deja
+  12 s d'attente ; a 2 s elle en coute 20, et un enfant impatient presse avant l'arret. Les huit
+  secondes citees par `ADR-0026` sont refusees sans discussion, et 1,5 s l'est aussi ;
+- **tout defilement de moins de 0,3 s.** En dessous, ce n'est plus un defilement, c'est un
+  clignotement : desagreable, et sans aucun des benefices pour lesquels on l'ajoute ;
+- **tout rebond, depassement ou oscillation apres l'arret.** La position finale est atteinte une
+  fois et n'est plus quittee. Un mot qui se stabilise en tremblant est illisible pour un enfant de CP
+  qui dechiffre ;
+- **tout arret brutal depuis la pleine vitesse.** Le mouvement ralentit avant de s'arreter, sinon
+  l'enfant ne sait pas si c'est fini ;
+- **tout clignotement, stroboscope ou variation de luminosite repetee plus de trois fois par seconde,
+  n'importe ou sur l'ecran.** Un glissement continu est autorise a toute vitesse ; une substitution
+  brutale d'une face par une autre, en place, ne l'est pas ;
+- **toute animation qui rejoue sans que l'enfant ait presse quelque chose** (voir section 6) ;
+- **toute animation sur l'ecran de fin de partie.** Cet ecran n'a rien a tirer.
+
+**Et l'exigence qui me tient le plus a coeur, parce qu'elle protege l'orthographe :** a chaque
+instant du defilement, **une colonne montre soit sa propre proposition, soit aucun texte** - jamais
+un autre mot. Deux motifs independants, tous deux serieux :
+
+1. **la memoire orthographique de l'enfant est visuelle.** Sur "Le bon petit mot", faire defiler
+   `son` et `sont` dix fois dans chaque colonne, a chaque manche, c'est faire lire a l'enfant la
+   forme fausse plus souvent que la juste. Sur un jeu d'homophones, c'est un contresens complet ;
+2. **ce que l'enfant voit doit etre ce qu'il envoie.** Si une bande glisse derriere une fenetre et
+   qu'un enfant presse en cours de route, il envoie la valeur du bouton et non la face qu'il avait
+   sous le doigt. `ADR-0026` garde le bouton pressable en permanence, a raison : il ne faut donc
+   jamais qu'il affiche autre chose que lui-meme.
+
+**Forme que je conseille a `ines-design`, sans l'imposer** : le mot reste lisible du debut a la fin
+et seul un element decoratif passe devant (voile, reflet, volet, flou). C'est celle des deux
+latitudes qu'`ADR-0026` lui laisse qui ne pose aucun des deux problemes ci-dessus. **La variante
+autorisee** : le mot apparait a l'arret, l'etat cache vivant dans les `@keyframes` comme
+`ADR-0026` le lui permet, les faces qui defilent ne portant alors **aucun texte** (couleur, hachure,
+pictogramme, flou). Je nomme le residu de cette variante plutot que de le taire : un enfant qui
+presse pendant le defilement presse une case muette. Avec 0,6 s de defilement la fenetre est etroite,
+et c'est moins grave que de lui montrer une valeur qu'il n'obtiendra pas. Je le regarderai en jouant.
+
+#### 3. La lisibilite dans la colonne : mesure, et verdict
+
+C'est la question qu'aucun plancher ne repond, et je la tranche sur une mesure.
+
+| Jeu | Propositions rendues | Colonnes | Largeur mesuree | Verdict de lisibilite |
+|---|---|---|---|---|
+| Calcul CP | `10`, `7`, `9` | 3 | 101 px | **confortable**. Le chiffre est centre, en gras, a 2 rem, avec beaucoup d'air autour |
+| Le bon son (CP) | `an`, `on`, `in` | 3 | 101 px | **confortable**. Ce sont les deux jeux de CP, et ce sont les deux cas les plus favorables |
+| Le bon petit mot (CM1) | `sont`, `son`, jusqu'a `mais`, `peut`, `l'a` | 2 | 158 px | **confortable**, et de loin |
+| Le bon verbe (hors catalogue) | jusqu'a `dessinent`, `chantent` | 4 | 70 px | **illisible : le mot sort de sa boite.** Meme ramene a 3 colonnes, il en sort encore - voir section 4 |
+
+**Verdict : pour les trois jeux du catalogue, une proposition lue dans une colonne de 101 px convient
+a un enfant de CP, et je le dis sur du rendu, pas sur un plancher.** Les propositions de ces trois
+paquets sont courtes par nature - un son, un chiffre, un homophone grammatical - et c'est une
+propriete du contenu, pas une chance.
+
+**Les six conditions qui rendent ce verdict durable.** Elles portent toutes sur la tentation de
+rapetisser le mot pour le faire tenir, qui est ce que fera la prochaine personne pressee :
+
+1. **une proposition tient sur une seule ligne, entiere, a 2 rem au moins.** Un mot coupe sur deux
+   lignes est un piege de dechiffrage pour un lecteur de CP qui apprend justement ou s'arretent les
+   mots ;
+2. **aucune troncature, jamais** : ni `text-overflow: ellipsis`, ni `overflow: hidden` sur le texte
+   de la proposition, ni un mot qui sort de son aplat. Un mot tronque n'est pas seulement laid : sur
+   "Le bon verbe" a 3 colonnes, `cherche` et `cherches` s'affichent tous les deux `cherche`, et
+   l'item devient sans reponse ;
+3. **aucune reduction de `font-size` de `.proposition` sous 2 rem** pour faire tenir une mise en page.
+   Ce point-la est deja garde par `leChiffreDeReponseEstAuMoinsAussiGrosQueLeCalcul`, et je lui rends
+   la garde ;
+4. **aucune compression du glyphe** : pas de `letter-spacing` negatif, pas de `transform: scale` sous
+   1, pas de police condensee, pas de `font-stretch` reduit ;
+5. **pas de cesure** : aucune `hyphens`, aucun `word-break` sur une proposition ;
+6. **pas de texte vertical** : aucun `writing-mode` autre que l'horizontal sur une proposition.
+
+**Un gain reel que personne n'a compte, et qui est a porter au credit du chantier.** En colonnes,
+trois propositions occupent une seule rangee de 74 px au lieu de trois rangees de 74 px separees par
+deux ecarts de 16 px, soit **180 px liberes** sur la hauteur de l'ecran (arithmetique sur mes deux
+mesures). C'est exactement la reponse a mon propre constat 6.5 du 2026-08-10 - "que ce qui compte
+sur un ecran soit au-dessus du pli". Sur un telephone de 360 x 640, cette mise en page rend le pli
+confortable la ou il etait juste. Je le dis parce qu'un chantier qui touche six acquis merite qu'on
+compte aussi ce qu'il rend.
+
+#### 4. Le nombre de colonnes varie d'un jeu a l'autre : verdict
+
+**Deux colonnes gardent leur sens, et je n'y vois aucune objection pedagogique.** Sur "Le bon petit
+mot", l'exercice **est** binaire : `son` ou `sont`, `a` ou `à`. Deux colonnes disent la verite de
+l'exercice. Que ce ne soit pas fidele a une machine a sous reelle ne m'interesse pas : ce n'est pas
+la fidelite de la metaphore qui apprend a lire, et la section 1 dit deja que je veux cette metaphore
+diminuee plutot que fidele.
+
+**Ce que je refuse, et c'est le seul point :** **jamais de colonne vide, muette ou desactivee pour
+atteindre trois.** Un enfant de CP presse ce qui ressemble a un bouton. Une troisieme colonne vide
+sur un item a deux propositions est une reponse qu'il essaiera, qui ne fera rien, et qui lui
+apprendra que l'ecran ne repond pas toujours. Le nombre de colonnes suit le contenu, exactement comme
+`DEC-0015` arbitrage 3 et `ADR-0026` section 4 le tranchent - sur ce point je suis d'accord avec eux
+et je ne fais que fermer la porte de sortie facile.
+
+**Et aucun texte lu par l'enfant ne nomme un nombre de colonnes ou de rouleaux.** Une consigne qui
+dirait "regarde les trois colonnes" serait fausse sur "Le bon petit mot". Verifie : aucune consigne
+du catalogue ne le fait aujourd'hui.
+
+#### 5. Le geste : un enfant de CP comprend-il qu'il tire un levier ?
+
+**Reponse courte : il n'a pas besoin de le comprendre, et c'est pour cela que je ne refuse pas la
+forme retenue.** Ce que l'enfant doit comprendre, c'est "j'appuie ici et le jeu avance". Il le
+comprend aujourd'hui parce que le bouton porte un **mot** : "Encore !", "Jouer".
+
+**Ce que j'exige, et c'est la seule chose :**
+
+1. **le levier garde son mot ecrit.** "Encore !" reste "Encore !", le titre du jeu reste le titre du
+   jeu sur l'accueil. Un levier dessine sans texte est **refuse au CP** : un enfant qui lit peu perd
+   l'indication au moment ou il en a le plus besoin, au premier tour ;
+2. **ce mot reste a 1,25 rem au moins** et le bouton garde sa cible tactile de 2,75 rem. La
+   decoration se pose autour du mot, jamais a sa place, jamais en le retrecissant ;
+3. **le levier ne suggere aucun geste autre qu'un appui simple.** Pas de fleche vers le bas, pas de
+   manette a demi baissee qui attend qu'on la tire, pas de glissement. Deux motifs : un enfant de CP
+   qui essaie de tirer et voit que rien ne se passe se croit en faute ; et un geste de glissement est
+   un obstacle de motricite fine que je ne veux pas sur le bouton le plus presse de l'application ;
+4. **le levier reste l'action la plus saillante de son ecran** (`ADR-0017`), et **il n'apparait jamais
+   sur l'ecran de fin de partie** (section 7, acquis 6).
+
+**Ce que je ne peux pas trancher sans jouer, et que je nomme franchement.** Dans la forme retenue par
+`ADR-0026` section 3, le levier est le bouton "Encore !" de `fragments/retour.html` : il est donc sur
+l'ecran **precedent**, et il disparait a l'instant ou les colonnes tournent sur l'ecran suivant. La
+cause et l'effet ne sont jamais sur le meme ecran. `ADR-0026` nomme lui-meme ce risque et ecrit le
+chemin de sortie ; je ne le declenche pas aujourd'hui, parce que je ne fabrique pas une barre sur une
+deduction. **C'est le premier point que je regarderai sur le rendu livre** (section 9, point 1), et
+je dis d'avance ce que je jugerai : que l'enfant attribue le mouvement a son propre appui. Si ce
+n'est pas le cas, le motif sera celui-la, ecrit et date, et pas un durcissement de ce bloc.
+
+#### 6. Un defaut que j'ai trouve en lisant, et qui n'est dans aucun des deux lots
+
+`accueil.html` rend le fragment de manche directement, sans htmx et sans aucun geste de l'enfant, sur
+la branche de reprise de partie :
+
+```
+<div th:if="${reprise}">
+    <div th:replace="~{fragments/manche :: manche}"></div>
+</div>
+```
+
+Une animation CSS demarre quand l'element qui la porte entre dans le document. Sur ce chemin,
+l'element entre dans le document **au chargement de la page**. Consequence : **un enfant qui revient
+sur le jeu, ou qui recharge simplement sa page, voit les colonnes tourner sans avoir rien touche.**
+
+Ce n'est pas un detail de rendu, c'est le contraire exact de ce que la section 1 exige : une machine
+qui bouge toute seule est precisement l'image dont je veux separer cet ecran. Et si l'enfant apprend
+que les colonnes tournent sans lui, l'argument qui sauve la metaphore tombe.
+
+**Je decris le symptome, je ne prescris pas la cause** : le mouvement ne doit se produire que quand
+l'enfant a presse quelque chose. Comment l'obtenir - un marqueur pose par le serveur sur le fragment
+selon le chemin qui le rend, ou autre chose - appartient a `theo-archi`. Je remonte le symptome a
+`sofia-sm` pour qu'il lui soit route, avec cette section comme piece.
+
+#### 7. Les six acquis de `DEC-0015` : ce que j'exige nommement
+
+`theo-archi` affirme qu'aucun plancher n'est abaisse et il a mesure. J'ai reverifie ses chiffres
+(section "Je corrige deux chiffres") et sa conclusion tient. Je reprends donc les six acquis un par
+un, et je dis pour chacun ce que j'exige et qui le garde.
+
+| Acquis | Origine | Ce que j'exige | Qui le garde |
+|---|---|---|---|
+| 1. cible tactile >= 2,75 rem | mon refus de S2-1 | inchange. Mesure : 101 x 74 px par colonne a 360 px, contre 44 x 44 exiges | `TailleDesTextesEtBoutonsTest`, mecanique |
+| 2. lisibilite >= 1,25 rem, `.indice` et `.score` compris | mes reserves 6 et 7 | inchange, **y compris sur le mot du levier** (section 5, point 2) | `TailleDesTextesEtBoutonsTest`, mecanique |
+| 3. chiffre de proposition >= 2 rem, au moins aussi gros que l'enonce | ma reserve 1, devenue S3-4 | inchange, et **c'est lui que la mise en page en colonnes tentera de rogner** (section 3, conditions 1 a 6) | `leChiffreDeReponseEstAuMoinsAussiGrosQueLeCalcul` pour la taille declaree ; **moi seule** pour la troncature et la compression |
+| 4. `.propositions { gap }` >= 1 rem | ma reserve 2, devenue S3-5 | inchange, **sur les deux axes**. Tenu a l'egalite exacte, 16 px declares et 16 px rendus : il n'y a aucune marge a recuperer | `TailleDesTextesEtBoutonsTest` amende par `ADR-0026` regle 3 - l'axe lateral cessait d'etre un angle mort, et c'est le bon amendement |
+| 5. hierarchie de saillance action/sortie (`ADR-0017`) | mon refus du 2026-08-06 | inchangee. Le levier est `data-role="action"` et ne declare jamais moins que "Les jeux" | `LActionNeDeclarePasMoinsQueLaSortieTest`, mecanique |
+| 6. l'etat `sortie-pleine` | mon arbitrage du 2026-08-07 sur S6-9 | inchange, **et je le repete parce que c'est celui qu'un chantier de mecanique defait par accident** : sur l'ecran de fin de partie, **aucun levier, aucune colonne, aucun rouleau, aucun decor de machine, aucune animation.** "Les jeux" en aplat plein reste la seule chose a presser, et il reste le plus saillant. Un decor de levier sur cet ecran est une chose que l'enfant essaiera de presser | le garde-fou de saillance n'oppose que des etats simultanes : **c'est moi seule** qui garde qu'aucun decor n'y soit ajoute |
+
+**Aucun de ces six acquis n'est abaisse, et j'ajoute que je ne les releve pas non plus.** La barre
+que j'avais ecrite est celle qui s'applique. Les exigences des sections 1 a 6 sont des **exigences
+nouvelles et datees du 2026-08-10**, portant sur un ecran qui n'existait pas quand j'ai ecrit les
+anciennes : elles ne durcissent aucune reserve anterieure et personne ne pourra me les opposer comme
+un deplacement de poteaux.
+
+#### 8. Ce dont je reste seule garde sur ce chantier
+
+Pour qu'on ne croie pas couvert ce qui ne l'est pas. `ADR-0026` en nomme quatre ; ma liste en compte
+huit, et les quatre siennes y sont.
+
+1. **La duree, la courbe et le decalage du defilement.** Ecrits dans une feuille de style, vus par
+   aucun test. Un defilement de huit secondes passe la CI verte, `ADR-0026` le dit lui-meme. La barre
+   est en section 2 ; c'est moi qui la constate.
+2. **Qu'un mot tienne dans sa colonne.** `ADR-0025` l'a declare non gardable et a eu raison : le
+   budget est une largeur de glyphes, pas un nombre de caracteres. `oreille` tient, `mangez` ne tient
+   pas. Aucun automate ne le verra jamais.
+3. **Qu'une proposition ne soit ni tronquee, ni coupee, ni comprimee.** Les six conditions de la
+   section 3 : aucune n'est gardee, sauf la taille declaree (condition 3).
+4. **Que ce que l'enfant voit dans une colonne soit ce qu'il envoie.** Rien ne le verifie.
+5. **Qu'aucun mot faux ne defile devant les yeux d'un enfant.** Rien ne le verifie, et c'est le point
+   ou un jeu d'homophones peut apprendre l'inverse de ce qu'il enseigne.
+6. **Que le geste se comprenne, et que l'enfant relie le mouvement a son appui.**
+7. **Qu'aucun decor de machine n'atterrisse sur l'ecran de fin de partie**, ou le garde-fou de
+   saillance n'a par construction rien a comparer.
+8. **Que le mouvement ne se declenche jamais sans geste de l'enfant** (section 6). Tant qu'il n'y a
+   pas de garde-fou pour ce chemin, c'est moi.
+
+Le focus visible sur une colonne, qu'`ADR-0026` me renvoie aussi, je le prends : il n'etait garde par
+rien avant ce chantier et je ne demande pas qu'on ecrive une regle contre un defaut que le depot n'a
+pas etabli.
+
+#### 9. Ce que je reverifierai sur le rendu livre, avant tout Done pedagogique
+
+Liste fermee. Ce qui n'y est pas ne bloquera pas le Done et ne pourra pas m'etre oppose comme
+l'ayant bloque.
+
+1. **Que l'enfant relie le mouvement a son propre appui** (section 5). Jouer une partie complete des
+   additions CP, en regardant le raccord entre l'appui sur "Encore !" et le demarrage des colonnes.
+2. **La duree reelle, chronometree sur le rendu**, contre la barre de 0,3 s a 1,2 s de la section 2 :
+   duree de la derniere colonne, decalage entre premiere et derniere, presence d'un ralentissement,
+   absence de rebond.
+3. **Qu'aucun autre mot que le sien ne passe dans une colonne**, verifie sur "Le bon petit mot" -
+   le jeu ou le defaut serait le plus grave.
+4. **Que l'ecran reste jouable et lisible immobile**, avec le reglage d'accessibilite de reduction
+   des animations actif dans un vrai navigateur. `ADR-0026` regle 1 clause 2 garde la **forme**
+   litterale du repli ; elle ne garde pas que l'ecran obtenu soit lisible et jouable. C'est ma part,
+   et je la ferai sur le rendu, pas sur la feuille de style.
+5. **Les trois ecrans de manche du catalogue a 360 px**, sur les items aux propositions les plus
+   longues de chaque paquet, sans troncature ni coupure (section 3, conditions 1 a 6).
+6. **L'ecran de fin de partie**, sur lequel je verifierai qu'aucun levier, colonne, decor ni
+   animation n'est apparu, et que `sortie-pleine` est toujours seule et pleine (acquis 6).
+7. **Le chemin de reprise** (section 6) : recharger la page en cours de partie et verifier que rien
+   ne bouge.
+8. **Une partie ratee trois fois de suite**, pour voir arriver l'indice sur un ecran ou les colonnes
+   defilent : que l'indice soit lisible, stable, et qu'il n'ait pas ete pousse sous le pli par la
+   nouvelle mise en page.
+
+#### 10. Suites hors de ma main
+
+- **Pour `camille-po`** : le sort de "Le bon verbe" face aux colonnes est tranche pour la part qui
+  m'appartient - le nombre de propositions du paquet - dans
+  `FICHE-bandit-manchot-conjugaison-present-cm1.md`, arbitrage du 2026-08-10. **Ma decision n'y suffit
+  pas** : j'y montre, mesure, que trois colonnes ne font pas tenir ce paquet non plus. Le choix de
+  disposition reste sa saisine, avec `theo-archi`.
+- **Pour `camille-po`** : les quatre conditions de la section 1 et les six de la section 3 sont des
+  motifs, pas des stories. A elle d'en faire des criteres d'acceptation sur S7-1 et S7-3 si elle le
+  juge utile ; je n'ecris pas le backlog.
+- **Pour `sofia-sm`** : le defaut de la section 6 est a router a `theo-archi`. Je decris le symptome,
+  pas la cause.
+- **Pour `ines-design`** : les sections 2 et 5 sont ma latitude sous veto, exercee. La duree lui reste
+  ouverte entre 0,3 s et 1,2 s, la courbe lui reste ouverte pourvu qu'elle ralentisse et ne rebondisse
+  pas, la forme du rouleau et du levier lui reste entiere sous les quatre conditions de la section 1
+  et les quatre de la section 5.
+- **`squad/programme/MATRICE-couverture.md` ne bouge pas** sur cet arbitrage : ce chantier ne porte
+  aucune competence, et il n'y a donc rien a confronter au referentiel. C'est la premiere fois que
+  l'etape 2 de ma methode est sans objet, et je le dis plutot que de la simuler.
 
 ### Arbitrage prealable au developpement - S6-10, couleur du bandeau et sort du carre de l'icone, du 2026-08-07
 

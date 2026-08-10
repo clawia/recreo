@@ -17,6 +17,12 @@
 - **Statut global** : **REFUSE** (Done pedagogique refuse le 2026-08-10, premier audit). Motif
   unique et suffisant : cinq des douze indices enoncent une regle de conjugaison fausse, et trois
   d'entre elles sont dementies par un autre item du meme paquet.
+  **Arbitrage prealable au developpement du 2026-08-10** : la reduction de ce paquet a **trois
+  propositions par item est ACCEPTEE**, sur son propre motif - la quatrieme proposition est sous le pli
+  a 360 x 640 - avec les douze triplets exacts fixes nommement. **Cette reduction ne fait pas tenir ce
+  paquet en colonnes** : mesure sur le rendu, neuf items sur douze debordent encore a trois colonnes, et
+  deux y rendent deux propositions indiscernables. Ce n'est pas un Done pedagogique, et le refus des
+  cinq indices reste entier : il faut **les deux** corrections. `DEC-0014` n'est pas leve.
 - **Ligne de matrice** : **reste `en cours`.** Elle ne pouvait de toute facon pas atteindre
   `couvert-valide` sur cet increment (un temps sur trois, `DEC-0013`) ; elle ne l'atteint pas
   davantage, et le Done pedagogique lui-meme n'est pas accorde.
@@ -273,3 +279,154 @@ Elles ne fondent pas le refus et elles ne le grossissent pas.
   couples personne/forme et les sept indices justes sont acquis et servent de base a la correction.
 - Rien de ce refus ne concerne l'habillage commun aux jeux : je le tranche dans
   `FICHE-bandit-manchot-additions-cp.md`, qui est depuis s02 le lieu ou je l'ecris.
+
+---
+
+### Arbitrage prealable au developpement - ramener ce paquet a trois propositions, du 2026-08-10
+
+**Ce bloc n'est pas un Done pedagogique**, et il ne modifie pas le refus du 2026-08-10, qui reste
+entier : les cinq indices fautifs doivent etre corriges, quel que soit le sort de cette question.
+`DEC-0014` reste en vigueur, ce jeu reste hors du catalogue, et il n'y rentrera pas sans un nouveau
+Done pedagogique que je prononcerai en jouant.
+
+**Saisine.** `theo-archi` (`ADR-0026`) et `camille-po` (`DEC-0015`) me routent une contradiction entre
+deux stories du sprint 7 : le nombre de colonnes de la machine a sous suit le contenu, et ce paquet
+est le seul du depot a quatre propositions. Une des sorties possibles est de le ramener a trois, ce
+qui est un changement de contenu, donc ma main. L'habillage commun est tranche dans
+`FICHE-bandit-manchot-additions-cp.md`, arbitrage du 2026-08-10.
+
+#### Le verdict, en deux phrases parce qu'il en faut deux
+
+**J'accepte de ramener ce paquet a trois propositions par item, et je l'accepte pour son propre motif -
+la quatrieme proposition est deja sous le pli aujourd'hui, je l'ai mesure moi-meme le 2026-08-10 - et
+non pour faire tenir une mise en page.** Et je constate, mesure sur le rendu, que **cette reduction ne
+suffit pas a faire tenir ce paquet en colonnes** : neuf des douze items debordent encore a trois
+colonnes, donc personne ne doit la vendre comme la reponse au probleme de largeur.
+
+#### La mesure qui fonde la seconde phrase
+
+Maquette jetable hors du depot, non commitee, sur les deux feuilles reellement servies et la structure
+reelle de `fragments/manche.html`, seul delta `.propositions { flex-direction: row }` et
+`.proposition { flex: 1 1 0 }`. Capture a une largeur de viewport reellement de 360 px par
+`outils/mesurer-rendu.sh 360 <url> <png>`, navigateur designe par la variable `CHROME`. Les douze items
+sont rendus avec leur bonne reponse et deux de leurs distracteurs, en trois colonnes de 101 px.
+
+| Item | Trois propositions rendues | A 3 colonnes, 360 px |
+|---|---|---|
+| 1 `va` | va, vais, vont | tient |
+| 2 `lisons` | lisons, lisent, lis | tient |
+| 3 `mangez` | mangez, mangeons, mangent | **deborde** - et `mangez` est la bonne reponse, donc irretirable |
+| 4 `fais` | fais, fait, font | tient |
+| 5 `jouent` | jouent, joue, jouons | **deborde**, `jouent` et `jouons` touchent les bords |
+| 6 `dessines` | dessines, dessine, dessinent | **deborde** ; `dessines` et `dessinent` s'affichent tous deux tronques |
+| 7 `cherche` | cherche, cherches, cherchent | **deborde** ; `cherche` et `cherches` s'affichent **identiques** |
+| 8 `finis` | finis, finit, finissent | **deborde** sur `finissent` |
+| 9 `range` | range, ranges, rangent | **deborde** sur `rangent` |
+| 10 `courons` | courons, courent, cours | **deborde** sur `courons` et `courent` |
+| 11 `prenez` | prenez, prenons, prennent | **deborde** sur `prenez` et `prennent` |
+| 12 `chantent` | chantent, chante, chantons | **deborde** sur `chantent` |
+
+**Trois items sur douze tiennent. Neuf ne tiennent pas.** Et les items 6 et 7 sont pires que
+disgracieux : deux propositions differentes s'y affichent avec les memes lettres visibles, donc l'item
+n'a plus de reponse identifiable. **Un item dont deux propositions sont indiscernables a l'ecran est un
+motif de refus a lui seul**, et il le sera si l'increment est livre ainsi.
+
+La reduction a trois n'est donc pas la reponse au probleme de largeur. Ce qu'elle change, c'est
+qu'elle en retire une cause aggravante ; la cause principale est la longueur des formes verbales, et
+elle ne bougera pas : `dessinent`, `chantent`, `courons`, `prennent` sont le contenu de la competence.
+Le choix de disposition reste la saisine de `camille-po` et de `theo-archi`, et je n'empiete pas.
+
+#### Pourquoi j'accepte quand meme la reduction, sur son propre motif
+
+Mon constat du 2026-08-10, section 4 de mon refus ci-dessus, mesure a 360 x 640 : **la quatrieme
+proposition est sous le pli, 2 pixels visibles sur 69.** Comme l'ordre des propositions est tire a
+chaque manche, la bonne reponse est parfois cette quatrieme, et l'enfant repond alors sans savoir
+qu'elle existait. C'est un defaut deja etabli, deja ecrit, deja date, et anterieur au chantier machine
+a sous. La reduction a trois le ferme.
+
+Je repete ce que j'avais ecrit alors, pour ne pas etre lue comme deplacant mes poteaux : ce constat
+**n'etait pas et ne devient pas un motif de refus**, parce qu'aucune decision du depot ne fixe de
+hauteur de viewport minimale. Il est ce qu'il etait : un constat a instruire. Ce qui change
+aujourd'hui, c'est qu'on me demande explicitement si j'accepte la reduction, et je reponds oui, en
+citant ce constat comme la raison qui la rend bonne independamment de toute mise en page.
+
+#### Le prix pedagogique, chiffre, et pourquoi je l'accepte
+
+**La probabilite de reussir au hasard passe de 25 % a 33 %.** C'est reel et je ne le minimise pas.
+Trois raisons pour lesquelles je l'accepte a ce niveau et sur ce paquet :
+
+1. **trois propositions est la norme des deux autres paquets du depot** et une forme parfaitement
+   courante au cycle 3. Ce n'est pas une derogation, c'est l'alignement ;
+2. **le distracteur que je fais retirer est le moins discriminant des trois**, voir le tableau
+   ci-dessous. Le pouvoir de discrimination de l'item **augmente** pendant que la chance augmente :
+   l'enfant qui ne sait pas garde trois formes homophones ou quasi homophones entre lesquelles il ne
+   peut pas trancher a l'oreille, ce qui est exactement la difficulte de la competence. Je juge le
+   solde neutre a positif ;
+3. **le score de ce jeu ne mesure encore rien** - c'est ma reserve 2 de la section 6 ci-dessus, non
+   levee : l'indice donne la reponse. Ce n'est donc pas un instrument d'evaluation dont je degraderais
+   la fiabilite.
+
+**Ce que je n'accepte pas** : que cette reduction devienne une regle generale. Elle vaut pour **ce
+paquet et ces douze items**. Un futur paquet a quatre propositions repassera devant moi comme un
+contenu neuf, et je ne raboterai pas d'avance.
+
+#### La consigne executable : les douze triplets exacts, aucune question a me reposer
+
+La regle que j'applique : **on garde la bonne reponse et les deux formes les plus proches d'elle a
+l'oreille ; on retire celle qui s'en distingue le plus nettement.** Le motif est celui du point 2
+ci-dessus. Voici le resultat item par item ; ce sont ces valeurs-la que je valide, et pas un choix
+libre de l'auteur.
+
+| Item | Enonce | Bonne reponse | Distracteurs **conserves** | Distracteur **retire** |
+|---|---|---|---|---|
+| 1 | "Tous les jours, il ___ à l'école." | `va` | `vais`, `vont` | `allez` |
+| 2 | "Nous ___ une histoire." | `lisons` | `lisent`, `lis` | `lit` (homophone de `lis`, donc redondant) |
+| 3 | "Vous ___ du chocolat." | `mangez` | `mangeons`, `mangent` | `mange` (homophone de `mangent`) |
+| 4 | "Je ___ mes devoirs." | `fais` | `fait`, `font` | `faisons` |
+| 5 | "Elles ___ dans le jardin." | `jouent` | `joue`, `jouons` | `jouez` |
+| 6 | "Tu ___ un dessin." | `dessines` | `dessine`, `dessinent` | `dessinez` |
+| 7 | "Je ___ mon cahier dans mon sac." | `cherche` | `cherches`, `cherchent` | `cherchons` |
+| 8 | "Tu ___ ton exercice avant la récréation." | `finis` | `finit`, `finissent` | `finissons` |
+| 9 | "Elle ___ toujours ses affaires avant de partir en récréation." | `range` | `ranges`, `rangent` | `rangeons` |
+| 10 | "Nous ___ dans la cour pendant la récréation." | `courons` | `courent`, `cours` | `court` (homophone de `cours`, donc redondant) |
+| 11 | "Vous ___ vos cahiers avant de commencer." | `prenez` | `prenons`, `prennent` | `prend` |
+| 12 | "Ils ___ une chanson en rentrant de l'école." | `chantent` | `chante`, `chantons` | `chantez` |
+
+**Ce que j'ai verifie sur ces douze triplets, un par un :**
+
+- **aucun item n'admet deux reponses correctes** apres le retrait. Verifie sur les douze ;
+- **les douze enonces ne changent pas**, ni leur ponctuation, ni leurs accents. Le refus du 2026-08-10
+  ne portait pas sur eux et ne les rouvre pas ;
+- **les six personnes grammaticales restent representees deux fois chacune** : retirer un distracteur
+  ne touche pas le sujet de l'enonce ;
+- **les trois groupes restent travailles**, et les cinq verbes irreguliers frequents restent ;
+- **la difficulte homophonique reste sur les items du premier groupe** : `dessines`/`dessine`/
+  `dessinent` (6), `cherche`/`cherches`/`cherchent` (7), `range`/`ranges`/`rangent` (9),
+  `chantent`/`chante` (12), `jouent`/`joue` (5). C'est la propriete que je portais au credit du paquet
+  le 2026-08-10 et elle est intacte ;
+- **les douze indices ne sont pas touches par cette reduction.** Le refus du 2026-08-10 les concerne,
+  cette reduction non : ce sont deux corrections independantes du meme paquet, et il faut les deux.
+
+#### Ce dont je reste seule garde sur ce point
+
+1. **Que ces douze triplets soient ceux-la.** `PaquetsFrancaisS04Test` epingle que les propositions
+   sont des formes du meme verbe au present ; il ne dira jamais **lesquelles** ni combien. Le choix du
+   distracteur retire est un jugement pedagogique et il n'a aucun automate.
+2. **Qu'aucune proposition ne soit tronquee a l'ecran.** Non gardable par un automate de ce depot
+   (`ADR-0025`, `ADR-0026` section 6), et sur ce paquet ce n'est pas theorique : neuf items sur douze
+   debordent aujourd'hui a trois colonnes, deux rendent deux propositions indiscernables.
+3. **Que la reduction ne soit pas etendue a un autre paquet sans repasser devant moi.**
+
+#### Suites hors de ma main
+
+- **`DEC-0014` n'est pas leve par cet arbitrage.** Ce jeu reste hors du catalogue. Il y rentrera quand
+  j'aurai joue un increment portant **les deux** corrections - les cinq indices, et les trois
+  propositions - et prononce un Done pedagogique.
+- **Pour `camille-po`** : la disposition qui fait tenir ce paquet en colonnes reste sa saisine avec
+  `theo-archi`, et ma mesure ci-dessus est la piece qui montre que la reduction a trois n'y suffit pas.
+  Je ne choisis pas entre repli des colonnes, report du jeu et recul sur la cible de largeur.
+- **`squad/programme/MATRICE-couverture.md`** : la ligne `francais | CM1 | Orthographe et grammaire |
+  Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif` **reste `en cours`**.
+  Cet arbitrage ne la fait pas bouger et je ne l'ai pas editee.
+- **La barre pour `couvert-valide` reste celle de la section 5 de mon refus du 2026-08-10**, mot pour
+  mot. Rien de cet arbitrage ne s'y ajoute.

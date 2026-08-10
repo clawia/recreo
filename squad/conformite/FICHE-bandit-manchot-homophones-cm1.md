@@ -10,6 +10,11 @@
   produit.
 - **Ligne de matrice** : **passe a `couvert-valide`.** Ma condition en six points est **levee** au
   2026-08-10 - motif au verdict du meme jour. C'est la deuxieme ligne du produit a l'atteindre.
+  **Arbitrage prealable au developpement du chantier machine a sous du 2026-08-10** (bloc en fin de
+  fiche, arbitrage complet dans `FICHE-bandit-manchot-additions-cp.md`) : **deux colonnes validees**,
+  158 px chacune, aucune reserve ; **jamais de troisieme colonne vide** ; et l'exigence qui vise ce jeu
+  nommement, **aucune colonne ne fait defiler un mot autre que le sien**. Ce n'est pas un Done
+  pedagogique et le VALIDE du 2026-08-10 n'est pas touche.
 - **Derniere mise a jour** : 2026-08-10
 
 ## Competences visees
@@ -693,3 +698,25 @@ qu'aucun test ne dit, et que je porte seule :**
   ouvert ; il n'a pas bloque `couvert-valide` et n'aurait pas du.
 - Les dix reserves de la section 5 sont du backlog pour `camille-po`. Aucune ne conditionne le
   statut de la ligne.
+
+---
+
+### Arbitrage prealable au developpement - chantier machine a sous (S7-1 a S7-4), du 2026-08-10
+
+**Ce bloc n'est pas un Done pedagogique et il ne touche pas au verdict VALIDE du 2026-08-10.**
+L'arbitrage complet est ecrit une seule fois, dans `FICHE-bandit-manchot-additions-cp.md`, arbitrage
+du 2026-08-10 : la mecanique est commune aux quatre jeux et je ne recopie pas dix pages dans quatre
+fichiers. Ce qui concerne **ce jeu-ci** en particulier :
+
+1. **Deux colonnes, et c'est valide.** Les 24 items de ce paquet portent une bonne reponse et un seul
+   distracteur. Deux colonnes ne trahissent rien : l'exercice **est** binaire, `son` ou `sont`, `a` ou
+   `à`. Mesure sur le rendu a 360 px : **158 px par colonne**, tres confortable pour des mots de deux a
+   quatre lettres. Aucune reserve.
+2. **Jamais de troisieme colonne vide** pour atteindre trois. Un enfant presse ce qui ressemble a un
+   bouton ; une case muette est une reponse qu'il essaiera.
+3. **L'exigence qui vise ce jeu nommement, et c'est sur lui qu'elle compte le plus : aucune colonne ne
+   doit faire defiler un mot autre que le sien.** Faire passer `son` et `sont` en boucle dans chaque
+   colonne, dix fois par partie, c'est faire lire a l'enfant la forme fausse plus souvent que la juste.
+   La memoire orthographique est visuelle. Sur un jeu d'homophones, c'est un contresens complet, et
+   aucun automate ne le verra : **je reste seule garde de ce point**, et c'est sur ce jeu que je le
+   verifierai en priorite sur le rendu livre.
