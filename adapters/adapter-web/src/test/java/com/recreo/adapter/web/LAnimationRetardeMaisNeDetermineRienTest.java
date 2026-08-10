@@ -47,11 +47,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *       contrat n'est pas lue de travers, elle n'est pas lue du tout, et le garde-fou echoue faute
  *       de repli. Le doute joue toujours dans le sens du controle : une classe surcollectee produit
  *       une verification de plus, jamais une de moins ;</li>
- *   <li><b>mise a l'epreuve</b> : quatre jeux fautifs neufs, un par clause, plus l'epinglage de
- *       l'etat reel du depot au moment ou cette regle est ecrite (aucune animation en production).
- *       Cet epinglage est ce qui empeche les deux clauses d'animation de rester vertes a vide sans
- *       que personne ne le sache : leur population de production est vide aujourd'hui, et le jour ou
- *       elle cesse de l'etre, c'est ce test-la qui le dit.</li>
+ *   <li><b>mise a l'epreuve</b> : des jeux fautifs neufs, un par clause. Un epinglage de l'etat
+ *       reel du depot ("aucune animation en production") a vecu ici tant que les deux clauses de
+ *       mouvement etaient vertes a vide ; il est supprime depuis S7-1, le rouleau de
+ *       {@code .proposition::after} leur donnant un objet reel a controler.</li>
  * </ul>
  */
 class LAnimationRetardeMaisNeDetermineRienTest {
@@ -564,25 +563,12 @@ class LAnimationRetardeMaisNeDetermineRienTest {
         verifierQuAucunGabaritNeDesactiveUnBouton(RACINE_PRODUCTION);
     }
 
-    /**
-     * Epinglage de l'etat reel du depot le jour ou cette regle est ecrite, exige par ADR-0003 : les
-     * deux clauses de mouvement ont une population de production <b>vide</b>, puisque aucune feuille
-     * maison n'anime encore quoi que ce soit. Elles sont donc vertes a vide, et ce test est ce qui
-     * empeche cet etat de passer pour une preuve. Le jour ou la premiere animation entre, ce test
-     * devient rouge et son message dit quoi faire : le supprimer, parce que les deux clauses
-     * deviennent alors portantes sur un objet reel.
-     *
-     * <p>Le plafond de cet epinglage vaut exactement la taille de la dette - zero animation, pas
-     * "quelques-unes" (lecon du plafond de dette d'ADR-0016).
-     */
-    @Test
-    void aucuneAnimationNEstEncoreDeclareeEnProduction() {
-        assertThat(animations(RACINE_PRODUCTION))
-                .as("ADR-0026 : la premiere animation maison vient d'entrer dans le depot. Les deux "
-                        + "clauses de mouvement de cette classe cessent d'etre vertes a vide : "
-                        + "supprime cet epinglage, elles portent desormais sur un objet reel")
-                .isEmpty();
-    }
+    // S7-1 : l'epinglage qui vivait ici ("aucune animation n'est encore declaree en production")
+    // est supprime, exactement comme son propre message le prescrivait. Le rouleau de
+    // .proposition::after est la premiere animation maison du depot (recreo.css) : les deux
+    // clauses de mouvement (chaqueAnimationDeLaFeuilleMaisonSeTermine,
+    // chaqueAnimationDeLaFeuilleMaisonAUnRepliDeMouvement) portent desormais sur un objet reel,
+    // elles ne sont plus vertes a vide.
 
     /**
      * ADR-0013 obligation 3 : l'objet neuf est une feuille que personne n'a inscrite nulle part, ou
