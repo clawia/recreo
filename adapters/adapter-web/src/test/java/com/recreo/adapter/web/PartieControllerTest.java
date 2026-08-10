@@ -17,6 +17,7 @@ import com.recreo.domain.mechanics.banditmanchot.BanditManchot;
 import jakarta.servlet.http.Cookie;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
@@ -46,6 +47,7 @@ class PartieControllerTest {
     private static final String JEU_ID = "un-jeu";
     private static final String JEU_INFINI_ID = "jeu-infini";
     private static final String JEU_REPETE_ID = "jeu-repete";
+    private static final String JEU_QUATRE_PROPOSITIONS_ID = "jeu-quatre-propositions";
 
     @Autowired
     private MockMvc mockMvc;
@@ -363,6 +365,26 @@ class PartieControllerTest {
         assertThat(Jsoup.parse(html).select(".message-reprise")).isEmpty();
     }
 
+    /**
+     * S7-2 : le nombre de colonnes rendues suit exactement le nombre de propositions du contenu,
+     * jamais une constante de la mecanique. Trois contenus distincts (deux, trois et quatre
+     * propositions) sont confrontes dans le meme test pour qu'aucun des trois ne puisse passer
+     * pour la seule valeur que la mecanique sait rendre.
+     */
+    @Test
+    void leNombreDePropositionsRenduSuitExactementLeContenuQuelQueSoitLeNombre() throws Exception {
+        assertThat(propositionsRendues(JEU_ID)).hasSize(2);
+        assertThat(propositionsRendues(JEU_INFINI_ID)).hasSize(3);
+        assertThat(propositionsRendues(JEU_QUATRE_PROPOSITIONS_ID)).hasSize(4);
+    }
+
+    private Elements propositionsRendues(String jeuId) throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        String html = mockMvc.perform(post("/parties/{jeuId}", jeuId).session(session))
+                .andReturn().getResponse().getContentAsString();
+        return Jsoup.parse(html).select(".proposition");
+    }
+
     /** S1-5, 1er critere : un item rate trois fois est represente avec l'indice de son contenu. */
     @Test
     void unIndiceApparaitApresTroisEchecsSurLeMemeItem() throws Exception {
@@ -421,6 +443,14 @@ class PartieControllerTest {
                             BanditManchot.ID, DESCRIPTEUR,
                             contenuRepete(new Question(new ItemId("q-repete"), "repete", "bonne",
                                     List.of("mauvaise"), Optional.of("une astuce"))),
+                            10),
+                    // S7-2 : un contenu a quatre propositions, pour prouver que le rendu ne fige
+                    // jamais "trois" comme un invariant de la mecanique.
+                    new GameDefinition(JEU_QUATRE_PROPOSITIONS_ID, "Jeu a quatre propositions",
+                            "Choisis la bonne reponse", BanditManchot.ID, DESCRIPTEUR,
+                            new ListContentSource(DESCRIPTEUR, List.of(
+                                    new Question(new ItemId("q-quatre"), "question", "bonne",
+                                            List.of("faux1", "faux2", "faux3")))),
                             10));
             MechanicRegistryPort mecaniques = id -> new BanditManchot();
             RandomSource hasard = bound -> 0;

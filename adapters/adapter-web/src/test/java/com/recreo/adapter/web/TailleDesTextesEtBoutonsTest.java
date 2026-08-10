@@ -650,6 +650,32 @@ class TailleDesTextesEtBoutonsTest {
     }
 
     /**
+     * S7-1/S7-2 (ADR-0026 section 4, proposition-ines-machine-a-sous.md section 5) : le repli en
+     * deux rangees ne doit s'activer qu'a partir de la quatrieme proposition. Le selecteur
+     * {@code .proposition:nth-child(4)} ne matche que si une quatrieme proposition existe : ce
+     * test verifie que la regle est bien scopee a ce cas, pas que le rendu tienne (propriete du
+     * rendu, hors de portee d'un automate de ce depot - ADR-0025 -, mesuree par nadia-prof).
+     */
+    @Test
+    void leReplniEnDeuxRangeesEstScopeALaQuatriemePropositionSeulement() {
+        Map<String, String> blocs = blocsMaison(RACINE_PRODUCTION);
+
+        String bascule = blocs.get(".propositions:has(.proposition:nth-child(4))");
+        assertThat(bascule)
+                .as("le repli en deux rangees doit exister et n'etre declenche qu'a partir de la "
+                        + "quatrieme proposition")
+                .isNotNull();
+        assertThat(bascule).contains("flex-wrap: wrap");
+
+        String colonne = blocs.get(".propositions:has(.proposition:nth-child(4)) .proposition");
+        assertThat(colonne)
+                .as("chaque colonne doit passer a une largeur de moitie de rangee a partir de la "
+                        + "quatrieme proposition")
+                .isNotNull();
+        assertThat(colonne).contains("calc(50% - 0.5rem)");
+    }
+
+    /**
      * ADR-0013 obligation 3 : l'objet neuf est un bouton que personne n'a inscrit nulle part, habille
      * par la seule bibliotheque tierce. C'est la forme que prendrait le defaut le jour ou quelqu'un
      * s'appuierait sur Bootstrap pour habiller un bouton, et c'est le mode de defaillance que

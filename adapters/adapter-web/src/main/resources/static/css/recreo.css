@@ -141,14 +141,93 @@ body:has(.ecran-de-jeu) .lien-accueil {
 
 /* Conteneur des boutons de reponse : un ecart confortable entre les boutons, au-dessus du
    plancher de 0,75rem constate en s02 (S3-5, reserve 2 de nadia-prof sur S2-1: "un ecart d'au
-   moins 1 rem laisserait plus de place a un geste d'enfant"). Proxy valide tant que les boutons
-   restent empiles dans ce conteneur flex en colonne (voir S3-5, docs/backlog/backlog.md). */
+   moins 1 rem laisserait plus de place a un geste d'enfant").
+   S7-1/ADR-0026 : les propositions deviennent des colonnes cote a cote plutot qu'une liste
+   empilee. Aucun element d'habillage n'est ajoute autour de .proposition (ADR-0026 section 5) :
+   la colonne est le bouton lui-meme, mis en ligne par ce conteneur. S7-2 : rien ici ne fige un
+   nombre de colonnes - flex-direction: row et flex: 1 1 0 s'appliquent a autant de boutons que
+   th:each en rend, que le contenu en fournisse deux, trois ou quatre (ADR-0026 section 4). */
 .propositions {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
     margin: 0.75rem 0;
     padding: 0;
+}
+
+.proposition {
+    flex: 1 1 0;
+}
+
+/* Repli au-dela de trois colonnes (latitude ouverte par ADR-0026 section 4, proposition
+   d'ines-design section 5, remesuree et confirmee par nadia-prof le 2026-08-10, section 2 de son
+   second arbitrage) : deux colonnes par rangee a partir de la quatrieme proposition seulement.
+   :has() ne cree aucune classe, il s'appuie sur .propositions et .proposition deja existantes -
+   deja utilise par body:has(.ecran-de-jeu) .lien-accueil depuis S6-9. .proposition:nth-child(4)
+   ne matche que si une quatrieme proposition existe : les cas a deux et trois propositions
+   n'entrent jamais dans ce bloc et restent donc inchanges. */
+.propositions:has(.proposition:nth-child(4)) {
+    flex-wrap: wrap;
+}
+
+.propositions:has(.proposition:nth-child(4)) .proposition {
+    flex: 1 1 calc(50% - 0.5rem);
+}
+
+/* Le rouleau : un voile qui glisse devant un bouton immobile, jamais une bande de mots qui
+   defile (ADR-0026 section 1 ; nadia-prof, arbitrage du 2026-08-10, section 2 : "le mot reste
+   lisible du debut a la fin [...] seul un element decoratif passe devant"). Le texte reel du
+   bouton n'est jamais efface ni remplace : clip-path maintient le voile dans la boite du bouton
+   a chaque instant (nadia-prof, second arbitrage du 2026-08-10, section 1 : "le voile reste dans
+   la boite du bouton a chaque instant"), ce qui rend inutile toute regle de decoupe sur
+   .proposition - son texte n'est donc jamais rogne. content: "" est la seule valeur declaree,
+   comme les deux barres de la croix du signal faux (ADR-0027 clause 7). */
+.proposition {
+    position: relative;
+}
+
+.proposition::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    /* Noir a 20 %, la valeur que nadia-prof mesure elle-meme comme acceptable (second arbitrage
+       du 2026-08-10, section 1) : assombrir augmente le contraste du texte blanc au lieu de le
+       reduire (7,48:1 mesure, contre 5,41:1 au repos). La variante blanche a 45 % proposee par
+       ines-design delavait le mot jusqu'a 2,29:1 sous le plancher de 4,5:1 et est refusee pour
+       cette raison. */
+    background-color: rgba(0, 0, 0, 0.2);
+    /* Bande masquee au repos (0 0 100% 0 : rien n'est visible) - etat que retrouvent aussi les
+       ecrans sans geste et le repli de mouvement, faute d'animation qui s'applique. */
+    clip-path: inset(0 0 100% 0);
+}
+
+/* ADR-0027 clause 5 : seul un ecran arrive par un geste anime - jamais la reprise silencieuse de
+   S1-4. Duree, courbe et decalage choisis par ines-design (proposition-ines-machine-a-sous.md,
+   section 2) dans les bornes chiffrees de nadia-prof (0,3s a 1,2s, decalage 0,25s au plus) :
+   0,6s en ease-out, 0,08s de decalage cumulatif par colonne, un seul passage (ADR-0026 clause 1 :
+   jamais infinite). */
+[data-arrivee=par-un-geste] .proposition::after {
+    animation: rouleau-glisse 0.6s ease-out 1;
+}
+
+[data-arrivee=par-un-geste] .proposition:nth-child(2)::after { animation-delay: 0.08s; }
+[data-arrivee=par-un-geste] .proposition:nth-child(3)::after { animation-delay: 0.16s; }
+[data-arrivee=par-un-geste] .proposition:nth-child(4)::after { animation-delay: 0.24s; }
+
+/* Bande de 20 % de hauteur glissant du haut vers le bas, entierement confinee dans la boite a
+   chaque instant : top et bottom varient ensemble, l'un de 0 a 80 %, l'autre de 80 % a 0,
+   jamais au-dela. */
+@keyframes rouleau-glisse {
+    from { clip-path: inset(0 0 80% 0); }
+    to   { clip-path: inset(80% 0 0 0); }
+}
+
+/* ADR-0026 clause 2 : repli de mouvement, forme litterale exigee par le garde-fou. Un enfant qui
+   a besoin d'un ecran immobile voit un bouton net : sans animation, clip-path retombe a sa valeur
+   de repos (0 0 100% 0, voile entierement invisible). */
+@media (prefers-reduced-motion: reduce) {
+    [data-arrivee=par-un-geste] .proposition::after { animation: none }
 }
 
 /* Boutons d'action pleins : demarrer une partie, choisir une reponse, continuer, recommencer
@@ -197,6 +276,38 @@ body:has(.ecran-de-jeu) .lien-accueil {
 
 .proposition {
     font-size: 2rem;
+}
+
+/* S7-4 : le levier n'est pas un bouton de plus, c'est l'apparence de .demarrer et .encore, les
+   deux boutons qui ouvrent deja une manche (ADR-0026 section 3) - zero route, zero etat de
+   session, zero data-role nouveau. Bouton-poussoir rond plutot qu'une manette : nadia-prof pose
+   un veto nomme sur tout geste de traction (arbitrage du 2026-08-10, section 5 ; confirme dans
+   son second arbitrage, section 3) - aucune fleche, aucune manette a demi baissee, aucun
+   glissement. border-radius et box-shadow ne changent ni la taille ni la cible tactile. Scope a
+   .demarrer et .encore seulement, jamais a .recommencer ni .sortie-pleine : c'est ce qui garantit
+   qu'aucun decor de levier n'atteint l'ecran de fin de partie (acquis 6 de nadia-prof). */
+.demarrer,
+.encore {
+    position: relative;
+    border-radius: 999px;
+    box-shadow:
+        inset 0 -0.25rem 0 rgba(0, 0, 0, 0.18),
+        0 0.125rem 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Disque decoratif seul, un reflet de "capuchon" de bouton-poussoir - jamais un second mot,
+   jamais une fleche. content: "" est la seule valeur declaree (ADR-0027 clause 7). */
+.demarrer::before,
+.encore::before {
+    content: "";
+    position: absolute;
+    top: 0.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.55);
 }
 
 /* Bouton de sortie sur l'ecran de jeu et sur le retour juste/faux : reste visible et atteignable
