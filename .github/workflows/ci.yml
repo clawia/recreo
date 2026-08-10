@@ -59,6 +59,26 @@ jobs:
           git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' \
             | bash .github/scripts/verifier-chemins.sh
 
+  outils:
+    name: Juges purs des outils de poste
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # ADR-0009 : un garde-fou dont le test n'est lance par personne n'est pas un garde-fou. Les
+      # trois outils de outils/ portent chacun un juge pur teste par des entrees fabriquees, sans
+      # aucune dependance au poste - ils s'executent donc ici comme n'importe quel test. Les
+      # enveloppes, elles, touchent le poste (git, java, un navigateur) et ne sont pas executees ici :
+      # leur preuve est manuelle et nommee dans chaque script. Ajoute par ADR-0025, qui constate que
+      # verifier-lignee-test.sh et verifier-jdk-test.sh n'etaient lances par aucun automate.
+      - name: Tester les juges purs de outils/
+        run: |
+          set -euo pipefail
+          for test in outils/*-test.sh; do
+            echo "--- ${test}"
+            bash "${test}"
+          done
+
   build:
     name: Build et tests (Java 21)
     runs-on: ubuntu-latest

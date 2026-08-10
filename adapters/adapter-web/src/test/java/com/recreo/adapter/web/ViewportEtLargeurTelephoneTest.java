@@ -30,6 +30,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * par une liste). Le balayage de largeur porte sur toutes les feuilles maison et sur tous les
  * gabarits, y compris les fragments ; ADR-0014 dit ce qui distingue une feuille maison d'une copie
  * tierce. Lecture directe, jamais par expression reguliere (ADR-0008, AssertionsWebTest).
+ *
+ * <p><b>Ce que ce garde-fou ne peut pas voir, et qui n'est pas un oubli (ADR-0025).</b> Sa population
+ * est celle des <b>largeurs declarees en pixels</b>. Un element pousse hors du cadre visible par la
+ * mise en page - une rangee flex sans repli, dont les elements additionnes depassent la largeur
+ * disponible - ne declare aucune largeur : il n'entre donc dans aucune population de ce test, et le
+ * vert de ce fichier ne dit rien de lui. Ce n'est pas un perimetre a elargir : le debordement est une
+ * propriete du <b>rendu</b>, que les memes declarations produisent ou non selon la police, la longueur
+ * du texte et l'algorithme de mise en page. ADR-0025 la declare non gardable par un automate de ce
+ * depot et la confie a nadia-prof, avec la methode de mesure que ce constat exige
+ * ({@code outils/mesurer-rendu.sh}).</p>
  */
 class ViewportEtLargeurTelephoneTest {
 
