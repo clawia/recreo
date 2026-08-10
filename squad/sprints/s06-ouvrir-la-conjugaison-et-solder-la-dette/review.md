@@ -86,12 +86,12 @@ rendu versionnee (`ADR-0025`) equipent desormais le sprint suivant.
   indices/explications, coherence arithmetique de la matrice, exactitude technique des `ADR` contre
   le code livre.
 - **Correction supplementaire, trouvee a la porte technique et non par elle** : sa propre citation
-  d'exemple dans `relecture.md` ("`/c/Users/`") faisait rougir `verifier-chemins.sh` qu'elle
-  discute au meme endroit - un segment reel ("Users") suit la forme citee, contrairement a la
-  convention `/c/...` de `CLAUDE.md`. Corrigee par `sofia-sm` lors de la verification finale
-  (commit `86ea06d`) plutot que renvoyee pour un second cycle de relecture, parce que le
-  changement est mecanique et sans ambiguite (meme regle que celle qui autorise le relecteur
-  lui-meme a corriger sans arbitrage).
+  d'exemple dans `relecture.md` (une forme Git Bash de chemin de poste) faisait rougir
+  `verifier-chemins.sh` qu'elle discute au meme endroit - un segment reel suit la forme citee,
+  contrairement a la convention tronquee de `CLAUDE.md`. Corrigee par `sofia-sm` lors de la
+  verification finale (commit `86ea06d`) plutot que renvoyee pour un second cycle de relecture,
+  parce que le changement est mecanique et sans ambiguite (meme regle que celle qui autorise le
+  relecteur lui-meme a corriger sans arbitrage).
 
 ## Obstacles du sprint
 
