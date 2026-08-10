@@ -257,3 +257,71 @@ alors que deux sorties plus sures existent.
 - Aucune story de S7-1 a S7-4 n'est modifiee sur le fond : aucune ne dependait d'une reponse sur
   "Le bon verbe".
 - `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee (pas une nouvelle reference).
+
+## Second amendement du 2026-08-10 (arbitrage prealable de nadia-prof) - la reduction a trois est
+acquise sur le fond, la condition de remise au catalogue reste ouverte
+
+`nadia-prof` a rendu l'arbitrage prealable saisi ci-dessus et par `ADR-0026` (branche `s07-nadia`,
+commit `04c6b53`, quatre fiches de `squad/conformite/`, non fusionnee). Elle repond a la septieme
+question que je posais dans l'amendement precedent, et sa reponse ferme la premiere des deux
+sorties que j'y nommais.
+
+**Ce qu'elle accepte, et sur quel motif.** Elle accepte de ramener "Le bon verbe" a trois
+propositions par item, et elle fixe nommement les douze triplets
+(`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, section "Arbitrage prealable
+au developpement"). Elle l'accepte sur son propre motif, pas sur le mien : sa mesure du 2026-08-10
+montrait deja que la quatrieme proposition est sous le pli a 360 x 640 (2 px visibles sur 69), donc
+inaccessible a un enfant sans qu'il sache qu'elle existait. Sa regle de reduction - garder la bonne
+reponse et les deux distracteurs les plus proches a l'oreille, retirer le plus distant - augmente le
+pouvoir discriminant de chaque item pendant que la chance de reussir au hasard passe de 25 % a
+33 %. Elle precise que cette reduction ne vaut que pour ce paquet et ces douze items, pas comme
+regle generale.
+
+**Ce que sa mesure ferme.** Elle a verifie que cette reduction ne fait pas tenir le paquet en
+colonnes : a trois colonnes et 360 px de large, neuf items sur douze debordent encore, et deux
+d'entre eux (`cherche`/`cherches`, item 7) affichent deux propositions distinctes avec les memes
+lettres visibles, ce qui rend l'item sans reponse identifiable. Sa phrase, reprise telle quelle :
+"personne ne doit vendre cette reduction comme la reponse au probleme de largeur."
+
+**Ma correction.** L'amendement precedent nommait deux sorties pour fermer la condition de remise
+au catalogue et en excluait une troisieme. La reduction a trois propositions est desormais **acquise
+sur le fond pedagogique et insuffisante sur la largeur** : elle vaut par elle-meme, parce qu'elle
+ferme le constat du pli deja etabli par `nadia-prof` le 2026-08-10, pas parce qu'elle repondrait au
+probleme de colonnes. Elle ne ferme donc plus, seule, la condition de remise au catalogue posee dans
+l'amendement precedent - cette condition **reste ouverte**. Les sorties qui peuvent encore la
+fermer sont desormais au nombre de deux, non trois : le repli de la mise en page au-dela de trois
+colonnes (proposition d'`ines-design`, jugee par `nadia-prof` en jouant), ou le report du jeu hors
+du sprint 7 (decision de perimetre, la mienne, si elle s'impose). Le debordement assume a 375 px
+reste exclu, pour le motif deja ecrit : ce serait reculer sur `DEC-0007` point 5 sans aucune
+contrainte qui l'impose, alors que des sorties plus sures existent.
+
+Je ne tranche pas entre ces deux sorties restantes ici : le repli de mise en page appartient a
+`ines-design` sous le jugement de `nadia-prof`, et rien ne m'oblige a decider aujourd'hui entre lui
+et un report. Si un report s'impose, je l'ecrirai comme une decision de perimetre distincte, avec la
+motivation qui va avec.
+
+**Deux autres faits de cet arbitrage, verifies contre S7-1 a S7-4 sans y trouver rien a corriger :**
+
+- `nadia-prof` refuse la metaphore de machine a sous telle quelle et l'accepte seulement diminuee de
+  tout ce qui en fait un jeu d'argent, sous quatre conditions executables
+  (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section 1) : aucun vocabulaire ni
+  imagerie de jeu d'argent dans ce que l'enfant lit, voit ou entend ; aucun signal de gain a l'arret
+  des colonnes ; le seul retour de resultat reste la coche ou la croix existante ; aucun compteur
+  autre que le score existant. J'ai relu S7-1 a S7-4 : aucun de leurs criteres ne nomme ni ne
+  presuppose un mot, une image, un son de jeu d'argent, ni un signal de gain a l'arret. Aucune des
+  quatre stories n'est corrigee par ce constat.
+- Elle refuse une colonne vide pour atteindre un compte fixe de trois, et confirme que deux colonnes
+  gardent leur sens propre pour un contenu binaire comme les homophones
+  (`squad/conformite/FICHE-bandit-manchot-homophones-cm1.md` : deux colonnes validees, jamais de
+  troisieme colonne vide). Cela conforte l'arbitrage 3 de cette decision (S7-2) tel qu'il est deja
+  ecrit, sans le modifier.
+
+### Impact de ce second amendement
+
+- `docs/backlog/backlog.md`, section "Backlog - sprints suivants" : la note de la story des cinq
+  indices fautifs est corrigee une seconde fois - elle ne nomme plus la reduction a trois comme
+  premiere sortie candidate pour la largeur, puisque cette sortie est desormais fermee sur ce point
+  precis par la mesure de `nadia-prof`.
+- Aucune story de S7-1 a S7-4 n'est modifiee : verifiees contre les quatre conditions de la
+  metaphore, aucune n'y contrevient.
+- `squad/decisions/produit/DEC-index.md` : note d'amendement mise a jour.

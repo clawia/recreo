@@ -18,7 +18,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0012 | Le rhabillage du gabarit (en-tete, icone, menu, contenu centre) ouvre le sprint 6 ; le menu reste a une seule entree | s05/s06 | 2026-08-06 | Acceptee, amendee le 2026-08-07 (constat de l'absorption de S6-1/S6-2 dans s05) |
 | DEC-0013 | Perimetre du sprint 6 : trois chantiers actes, choix de textes-trous/cm1-conjugaison.yml pour l'ouverture francais engagee par DEC-0011 | s06 | 2026-08-07 | Acceptee |
 | DEC-0014 | Retrait de "Le bon verbe" du catalogue jusqu'a sa correction | s06/s07 | 2026-08-10 | Acceptee |
-| DEC-0015 | Le sprint 7 construit la vraie machine a sous et ferme la dette n. 1 de CLAUDE.md | s07 | 2026-08-10 | Acceptee, amendee le 2026-08-10 (contradiction S7-2 / reintegration de "Le bon verbe", routee par theo-archi) |
+| DEC-0015 | Le sprint 7 construit la vraie machine a sous et ferme la dette n. 1 de CLAUDE.md | s07 | 2026-08-10 | Acceptee, amendee deux fois le 2026-08-10 (contradiction S7-2 / reintegration de "Le bon verbe", routee par theo-archi ; puis arbitrage prealable de nadia-prof, reduction a trois acquise et insuffisante sur la largeur) |
 
 Amendement (pas une nouvelle reference) : `DEC-0002` a ete amendee le 2026-08-04, a la suite de la
 relecture pedagogique de `nadia-prof` sur le refus de `bandit-manchot-additions-cp` - ajout d'une
@@ -82,3 +82,18 @@ propositions (jugement pedagogique, a `nadia-prof`) ou un repli de mise en page 
 `ines-design`) n'a pas ete choisi ; le debordement assume a 375 px est explicitement exclu. Voir la
 section "Amendement du 2026-08-10" dans
 `DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`.
+
+Amendement (pas une nouvelle reference) : `DEC-0015` a ete amendee une seconde fois le 2026-08-10,
+sur l'arbitrage prealable de `nadia-prof` (branche `s07-nadia`, commit `04c6b53`,
+`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md` et
+`FICHE-bandit-manchot-additions-cp.md`). Elle accepte de ramener "Le bon verbe" a trois
+propositions, sur son propre motif (le pli deja mesure a 360 x 640), et fixe nommement les douze
+triplets ; mais elle mesure que cette reduction ne fait pas tenir le paquet en colonnes (neuf items
+sur douze debordent encore a 360 px, deux rendent des propositions indiscernables). `DEC-0015`
+corrige en consequence : la reduction a trois est acquise sur le fond pedagogique et insuffisante
+sur la largeur, elle ne ferme donc plus a elle seule la condition de remise au catalogue ; seuls le
+repli de mise en page (`ines-design`, jugee par `nadia-prof`) ou un report du jeu peuvent encore la
+fermer. Confirme aussi que la metaphore de machine a sous est acceptee seulement diminuee sous
+quatre conditions executables et qu'aucune colonne vide n'est acceptee pour completer un compte
+fixe - verifie sans y trouver rien a corriger contre S7-1 a S7-4. Voir la section "Second amendement
+du 2026-08-10" dans `DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`.

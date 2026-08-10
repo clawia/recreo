@@ -1965,14 +1965,25 @@ catalogue.** L'amendement du 2026-08-10 a `DEC-0015` (avis de faisabilite de `th
 "Le bon verbe" exigerait sous la machine a sous debordent, alors que trois colonnes tiennent sans
 abaisser aucun plancher pedagogique. C'est une seconde condition, independante de la premiere
 (indices corriges) : tant qu'elle n'est pas fermee, la reintegration au catalogue n'a pas lieu,
-meme si la correction textuelle est validee par `nadia-prof`. Deux sorties la ferment, chacune
-relevant d'une autorite distincte - reduire les propositions de "Le bon verbe" a trois est un
-changement de contenu pedagogique, tranche par `nadia-prof` ; replier la mise en page au-dela de
-trois colonnes est une proposition de forme d'`ines-design`, jugee ensuite par `nadia-prof` en
-jouant l'increment. La troisieme sortie possible, assumer le debordement a 375 px, est exclue :
-elle reviendrait a reculer sur `DEC-0007` point 5 sans aucune contrainte qui l'impose. Voir
-`DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`, section "Amendement du
-2026-08-10".
+meme si la correction textuelle est validee par `nadia-prof`.
+
+**`nadia-prof` a depuis rendu l'arbitrage prealable sur la reduction a trois propositions
+(`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`), et sa mesure ferme cette
+sortie sur la question de largeur.** Elle accepte la reduction, avec les douze triplets qu'elle
+fixe nommement, mais sur son propre motif - la quatrieme proposition etait deja sous le pli a
+360 x 640, independamment de tout probleme de colonnes. Elle a mesure qu'a trois colonnes et 360 px,
+neuf items sur douze debordent encore et que deux d'entre eux affichent deux propositions
+distinctes avec les memes lettres visibles, donc sans reponse identifiable : "personne ne doit
+vendre cette reduction comme la reponse au probleme de largeur." La reduction a trois est donc
+**acquise sur le fond pedagogique et insuffisante sur la largeur** : elle ne compte plus comme une
+sortie qui fermerait a elle seule la condition de remise au catalogue. Il ne reste que deux sorties
+possibles, chacune relevant d'une autorite distincte - replier la mise en page au-dela de trois
+colonnes, proposition de forme d'`ines-design` jugee ensuite par `nadia-prof` en jouant
+l'increment ; ou reporter le jeu hors de ce sprint, decision de perimetre qui m'appartiendrait si
+elle s'imposait. La troisieme sortie, assumer le debordement a 375 px, reste exclue : elle
+reviendrait a reculer sur `DEC-0007` point 5 sans aucune contrainte qui l'impose. Voir
+`DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`, sections "Amendement du
+2026-08-10" et "Second amendement du 2026-08-10".
 
 - **Besoin** : en tant qu'eleve de CM1 qui vient de se tromper trois fois de suite sur "Le bon
   verbe", je veux que l'aide qui m'est montree m'enseigne une regle de conjugaison vraie, afin de
