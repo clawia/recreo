@@ -25,7 +25,10 @@
   plancher que je valide, et **recolorage exige** du fond de l'icone a la meme valeur dans les trois
   vignettes du `.ico`, plus un garde-fou sur ce couplage. Pas davantage un Done pedagogique : celui
   de S6-10 sera prononce en jouant l'increment livre.
-- **Derniere mise a jour** : 2026-08-07
+  **S6-9 et S6-10, Done pedagogique prononce le 2026-08-10 apres remesure sur le rendu reel :
+  les deux sont VALIDE.** Mon audit degrade du 2026-08-07 sur S6-10 est leve : les trois comptes de
+  pixels sont exacts a l'unite et j'ai regarde le bandeau modifie dans un navigateur.
+- **Derniere mise a jour** : 2026-08-10
 
 ## Competences visees
 
@@ -92,6 +95,237 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Verdict courant - s06, S6-10 et S6-9 prononces sur le rendu reel, audit du 2026-08-10
+
+- **Verdict S6-10** (bandeau `#1d4b6b`, recolorage du fond de l'icone) : **VALIDE.** Done
+  pedagogique accorde.
+- **Verdict S6-9** (une seule sortie par ecran de jeu) : **VALIDE.** Done pedagogique accorde.
+- **Date** : 2026-08-10.
+- **Commit audite** : `be60b10` (`HEAD` de `round-two`).
+- **Moyens** : audit **joue**, et cette fois **non degrade** - c'est le point de cette section. Fat
+  jar reconstruit depuis un worktree dedie hors de l'arbre du depot, lignee verifiee
+  (`outils/verifier-lignee.sh`), JDK constate par `outils/verifier-jdk.sh` (`java du PATH :
+  1.8.0_202 | JDK de compilation : 21.0.10 | JAVA_HOME : vide | toolchains lu par Maven : non
+  (fichier present sous un nom non lu)`), `JAVA_HOME` pointe sur ce JDK 21 le temps de la commande
+  et jamais ecrit dans un fichier commite. Jar lance sur un port dedie. Parties jouees sur les
+  additions CP jusqu'a l'ecran de fin. **Cinq etats de l'ecran de jeu regardes dans un navigateur**
+  a 1280 px et a une largeur de viewport reellement de 360 px, plus l'ecran d'accueil.
+
+#### 0. Je leve mon propre audit degrade, et je dis comment j'ai regarde
+
+Le 2026-08-07 j'ai ecrit : *"le changement n'est pas encore ecrit, je n'ai donc pas vu le bandeau
+modifie dans un navigateur. Je reverifierai sur le rendu livre avant de prononcer le Done
+pedagogique de S6-10."* C'est fait, et voici la methode, parce qu'elle a une limite que je declare.
+
+Les ecrans de jeu ne sont pas atteignables par une simple adresse : ils naissent d'un echange htmx.
+Pour les regarder dans un navigateur, j'ai assemble, **a partir des seuls octets servis par
+l'application**, la page telle que htmx la construit : la coquille complete rendue par `GET /`, dont
+l'interieur de `main#jeu` est remplace par le fragment que le serveur renvoie pour l'etat voulu -
+c'est-a-dire exactement ce que declarent `hx-target="#jeu"` et `hx-swap="innerHTML"`. Les deux
+feuilles de style, le script et l'icone sont ceux telecharges depuis l'application. Aucun octet
+n'est de moi.
+
+**La limite** : je n'ai pas fait cliquer un vrai navigateur sur les boutons ; j'ai reconstitue le
+resultat de ces clics au point de raccord que le balisage declare. Pour tout ce qui est couleur,
+taille, position et pli, cela ne change rien - c'est le meme DOM et la meme cascade. Je le dis
+quand meme, parce qu'une methode non dite est une methode qu'on ne peut pas contredire.
+
+#### 1. S6-10 : les 1855 pixels sont exacts a l'unite, et je les ai recomptes moi-meme
+
+J'avais ecrit qu'un compte different signifierait que l'outil a fait autre chose que ce que je
+demandais. J'ai donc recompte, sur **l'icone telechargee depuis l'application** et non sur le
+fichier source - les deux sont d'ailleurs identiques octet pour octet, 1014 octets, verifie.
+
+| Vignette | Pixels | `#2e6f9e` restants | `#1d4b6b` | Attendu par mon arbitrage | Alpha a 0 | Attendu | Couleurs distinctes |
+|---|---|---|---|---|---|---|---|
+| 16 x 16 | 256 | **0** | **105** | 105 | **6** | 6 | **8** |
+| 32 x 32 | 1024 | **0** | **532** | 532 | **20** | 20 | **8** |
+| 48 x 48 | 2304 | **0** | **1218** | 1218 | **42** | 42 | **8** |
+| **total** | | **0** | **1855** | 1855 | **68** | 68 | |
+
+Les cinq points de ma consigne executable sont tenus, un par un :
+
+1. le remplacement porte sur **les trois vignettes**, pas seulement celle de 48 px ;
+2. les comptes sont **exacts a l'unite**, 105 / 532 / 1218, total 1855 ;
+3. **les sept autres couleurs sont identiques a l'octet** - `#f5c518`, `#13314a`, `#c9ced3`,
+   `#3a2a1a`, `#1c1c1c`, `#f2a7b7` et le transparent, aucune autre valeur n'apparait ;
+4. **les pixels transparents sont restes totalement transparents** (alpha exactement 0, aux comptes
+   6 / 20 / 42) : l'icone n'a pas ete aplatie sur un fond opaque, donc les biseaux des coins tiennent
+   et aucun carre ne reapparait sur le bandeau ;
+5. **huit couleurs distinctes par vignette**, trois entrees a 16, 32 et 48 px, chacune un PNG
+   decodable, **et zero pixel a alpha partiel** - donc aucun reechantillonnage, aucun anticrenelage,
+   aucun redessin. Le dessin n'a pas bouge d'un pixel.
+
+Cote feuille de style, `:root` declare `--recreo-entete-fond: #1d4b6b;` et `.entete` l'utilise ;
+`--recreo-accent` reste `#2e6f9e` et sert toujours `.demarrer`, `.proposition`, `.encore`,
+`.sortie-pleine`, la couleur de texte de `.score` et de `.fin-de-partie`, et le contour de
+`.retour-accueil`. Rien d'autre n'a change, comme je l'avais demande.
+
+#### 2. Ce que j'ai vu a l'ecran, et qui est ce que je ne pouvais pas juger le 7
+
+Les deux points sur lesquels je m'etais reservee, tranches sur le rendu :
+
+- **Le crayon se lit comme un crayon a 44 px sur le bandeau sombre.** Mesure : `.icone-entete` fait
+  bien 44 x 44 px, a x=12 y=21 a 360 px comme a 1280 px. Le fond bleu du dessin est indiscernable du
+  bandeau : ce que je vois est un crayon jaune en diagonale, pointe en bas a gauche, gomme en haut a
+  droite, et **pas une pastille collee sur la barre**. Le fondu que j'avais constate en s05 sur
+  `#2e6f9e` est conserve sur `#1d4b6b`. **C'est ce que le recolorage devait obtenir, et il l'obtient.**
+- **"Encore !" se trouve du premier coup d'oeil, malgre l'ecart modeste de 1,71:1 entre les deux
+  bleus.** Sur l'ecran de retour en cours de partie, le seul aplat de la couleur d'action est le
+  bouton "Encore !", pose juste sous le bandeau de retour rouge que l'enfant vient de lire ; la
+  sortie est un contour, et le bandeau d'en-tete est un autre bleu, plus sombre, en haut de l'ecran
+  et sur toute sa largeur. **Ce que j'avais parie tient, et je dis pourquoi : ce n'est pas la teinte
+  qui fait le travail, c'est qu'un bandeau pleine largeur n'a jamais la forme d'un bouton.** Ma
+  reserve 4 du 2026-08-07 - le bandeau portait exactement la couleur d'action sur 107 677 px2, seize
+  fois la surface du bouton - **est levee**.
+
+**`#1d4b6b` reste le bandeau le plus sombre que je valide.** Ce plancher, pose le 2026-08-07, est
+confirme sur le rendu et n'est pas durci : les trois parties sombres du crayon (contour, bois, mine)
+sont deja sous 3:1 sur cette valeur, et j'ai regarde la silhouette a 44 px sur la capture reelle -
+elle est portee par les parties claires. Descendre plus bas demande d'abord de faire redessiner
+l'extremite sombre du crayon.
+
+#### 3. Le garde-fou que j'exigeais existe, et je lui rends la garde
+
+Mon arbitrage demandait, dans le meme commit, une propriete mecanique : *le fond opaque de chacune
+des trois vignettes porte exactement la couleur declaree par `--recreo-entete-fond`, et aucun pixel
+n'y porte plus `--recreo-accent`*. Elle est ecrite dans
+`LeFondDeLIconePorteLaCouleurDuBandeauTest`, elle lit les deux valeurs dans le CSS plutot que de les
+recopier, et elle porte deux contre-exemples qui montrent qu'elle mord - une vignette laissee a
+l'ancien accent, et une feuille qui ne pointe plus vers la variable.
+
+**Je ne suis donc plus seule garde de ce couplage**, et c'est le resultat que je cherchais : ma
+verification d'aujourd'hui n'etait pas destinee a etre refaite a la main au prochain changement de
+bandeau.
+
+#### 4. S6-9 : verifie ecran par ecran sur le HTML servi et sur le rendu, et non sur la parole
+
+`lea-dev` m'annonce que mon arbitrage etait deja satisfait par `ADR-0022` et que S6-9 n'a demande
+aucun code. **Je l'ai verifie moi-meme, etat par etat, plutot que de la croire.** Mon tableau du
+2026-08-07 contre ce que l'application sert :
+
+| Ecran | Sortie dans la zone de contenu - attendu | Constate | Entree de menu de l'en-tete - attendu | Constate |
+|---|---|---|---|---|
+| Accueil | aucune | aucune | **visible** | **visible**, `.btn.lien-accueil` "Les jeux", a droite du bandeau |
+| Manche | `.btn retour-accueil`, contour, "Les jeux" | conforme | **non visible** | **`display: none`** mesure sur le rendu |
+| Retour, partie en cours | `.btn retour-accueil`, contour, "Les jeux" | conforme | **non visible** | non visible |
+| Retour, fin de partie | `.btn sortie-pleine`, aplat plein, "Les jeux" | conforme, et c'est la seule chose pressable de l'ecran | **non visible** | non visible |
+| Erreur | aucune sortie ajoutee, "Recommencer" seul et aplat plein | conforme (`<a class="btn recommencer" data-role="action">Recommencer</a>`, seul element pressable) | **non visible** | non visible - le fragment d'erreur porte bien `ecran-de-jeu` |
+
+Les trois gestes que j'avais autorises, et pas un de plus :
+
+1. **le libelle est "Les jeux"** partout - dans l'en-tete, sur la manche, sur le retour, sur la fin
+   de partie. Un seul mot de sortie circule dans toute l'application. **Ma reserve 3 du 2026-08-07
+   est levee** par ce geste, comme annonce.
+2. **l'entree de menu n'est pas visible sur les cinq etats de l'ecran de jeu**, et elle l'est sur
+   l'accueil. Mesure au navigateur et non deduite de la feuille : sur un ecran de jeu a 360 px,
+   `.menu a` rend `display: none` et une boite de largeur 0 ; sur l'accueil a la meme largeur, elle
+   rend une boite de 109 x 53 px a x=239, entierement dans le cadre.
+3. **les deux branches du `th:class` de `fragments/retour.html` et le bouton de
+   `fragments/manche.html` ne sont pas touches.** L'ecran de fin de partie rend bien
+   `sortie-pleine`, en aplat plein - l'etat que j'avais valide en S3-6 et que je refusais de perdre.
+
+**Le cul-de-sac que je craignais n'existe pas** : l'ecran qui dit "C'est fini !" montre par ou sortir,
+et il le montre par l'element le plus visible de la zone que l'enfant regarde. La sortie est au meme
+endroit sur les cinq etats et ne change que de forme. **Done pedagogique de S6-9 accorde.**
+
+Et l'element reste permanent dans le document sur tous les etats : `S6-1` et `DEC-0012` point 2 - une
+entree de menu, dans un en-tete permanent - ne sont pas defaits, comme je m'etais engagee a le
+verifier. La propriete est par ailleurs epinglee par
+`LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest` : je ne suis pas seule garde de celle-la non plus.
+
+#### 5. Le debordement de l'entree de menu a 360 px : je ne le reproduis pas, et voici ma methode
+
+J'avais inscrit cette verification a 360 px dans ma liste de remesures. `sofia-sm` a sorti la story
+du sprint au motif que l'obstacle n'etait pas etabli. **Ce que je constate confirme cette decision.**
+
+**Ma methode, puisqu'elle est le coeur de l'affaire.** Je n'ai pas employe
+`chrome --headless --window-size=360,...`, dont `yanis-qa` a etabli qu'il impose un plancher de
+**exactement 500 px** de largeur de contenu et qu'il **decoupe** au lieu de mettre a l'echelle. J'ai
+charge la page reelle dans un cadre `iframe` dont je fixe la largeur en CSS, la fenetre Chrome
+parente faisant 900 px - donc hors plancher -, et j'ai lu des nombres plutot qu'estime des pixels :
+un script de mesure (`getBoundingClientRect` sur le bandeau, l'icone, le nom du site, le menu et son
+entree, la zone de jeu) injecte dans **une copie** de la page, jamais dans un fichier du depot.
+Controle que la mesure porte bien sur la largeur voulue : la page rend `window.innerWidth = 360` et
+`document.documentElement.scrollWidth = 360`.
+
+**A une largeur de viewport reellement de 360 px, sur l'ecran d'accueil, il n'y a aucun
+debordement :**
+
+| Element | x | largeur | bord droit | dans le cadre de 360 px ? |
+|---|---|---|---|---|
+| bandeau | 0 | 360 | 360 | oui, fond `rgb(29, 75, 107)` = `#1d4b6b` |
+| icone | 12 | 44 | 56 | oui |
+| nom du site | 72 | 99 | 171 | oui |
+| entree de menu "Les jeux" | 239 | 109 | **348** | **oui, 12 px de marge** |
+| zone de jeu | 0 | 360 | 360 | oui |
+
+`scrollWidth` du document egale `innerWidth` : **rien ne sort du cadre visible**, et "Les jeux" est
+entierement lisible sur la capture, sur une seule ligne.
+
+**J'ai pousse plus bas pour savoir comment le dessin cede**, parce qu'un dessin qui tient a 360 px
+sans marge de securite n'est pas la meme chose qu'un dessin qui tient :
+
+- **a 320 px** : toujours aucun debordement ;
+- **a 300 px** : toujours aucun debordement. Le libelle se replie sur deux lignes a l'interieur du
+  bouton ("Les" / "jeux"), le bandeau passe de 85 a 115 px de haut, et le bord droit de l'entree
+  reste a 288 px pour 300 px disponibles.
+
+Donc le dessin **degrade en se repliant, il ne deborde pas** - et il ne deborde deja plus a 60 px
+sous la cible. Le repli a 300 px est laid et je ne le valide pas comme etat souhaitable, mais 300 px
+est sous le plancher de 375 px de `DEC-0007` et ce n'est pas un defaut a la largeur visee.
+
+**Ce que je conclus, et je le separe de ce qui n'est pas de moi.** Sur mon environnement, avec une
+methode dont j'ai verifie qu'elle mesure bien la largeur qu'elle annonce, **le debordement n'existe
+pas.** Je ne conclus pas pour autant que la mesure d'origine etait de mauvaise foi : `ines-design` a
+montre que la marge du dessin est etroite et depend de la pile de polices du poste, et le symptome
+decrit ("Les jeux" absent du bandeau) est exactement ce que produit le decoupage a 500 px que
+`yanis-qa` a caracterise. **Ma remesure est close et je n'en fais ni une reserve ni un motif.** Ce
+qui reste, et qui n'est pas de mon ressort : la robustesse du dessin de l'en-tete ne repose
+aujourd'hui sur aucune regle de repli, et `ines-design` en a propose une. Que cette proposition soit
+retenue ou non est une question produit pour `camille-po`, pas une exigence de ma part.
+
+**Je porte au credit de `sofia-sm` d'avoir sorti cette story en refusant de fabriquer un motif de
+remplacement.** Un obstacle non etabli qu'on garde pour ne pas perdre la face coute plus cher qu'un
+obstacle abandonne.
+
+#### 6. Ce dont je reste seule garde apres cette remesure
+
+Ma liste du 2026-08-07 en comptait quatre. Deux sont retirees, deux restent, et j'en ajoute une.
+
+1. **Que le crayon se lise comme un crayon a 44 px** - **je m'en dessaisis pour le couplage de
+   couleur**, desormais mecanique (section 3), mais **je reste seule garde de la lisibilite du dessin
+   lui-meme** : aucun test ne dira qu'un crayon ressemble a un crayon. Verifie aujourd'hui sur le
+   rendu, a refaire si le dessin change.
+2. **Que l'enfant trouve "Encore !" du premier coup d'oeil.** Verifie aujourd'hui en jouant. Reste
+   ma charge : la saillance relative est epinglee par `LActionNeDeclarePasMoinsQueLaSortieTest` sur
+   des tailles et des roles, pas sur ce qu'un enfant remarque.
+3. **Que le badge de l'onglet reste reconnaissable en `#1d4b6b`, y compris sur un theme sombre.**
+   **Toujours degrade, et je le declare** : un navigateur sans tete ne rend pas la barre d'onglets.
+   J'ai juge sur les octets composes a 16 px, pas sur un onglet reel. C'est la seule partie de mon
+   arbitrage du 2026-08-07 que je n'ai pas pu porter au rendu.
+4. **Que les trois parties sombres du crayon sous 3:1 ne genent pas un enfant qui distingue mal les
+   couleurs.** Le controle en niveaux de gris a 44 px tient sur le rendu reel. Restent hors de toutes
+   mes mesures : un ecran bon marche, une forte lumiere du jour.
+5. **Nouveau, date du 2026-08-10 : que ce qui compte sur un ecran soit au-dessus du pli.** Aucune
+   decision du depot ne fixe de hauteur de viewport minimale - `DEC-0007` ne parle que de largeur -
+   et j'ai trouve aujourd'hui, sur `bandit-manchot-conjugaison-present-cm1`, un ecran ou la
+   quatrieme proposition est sous le pli a 360 x 640. Les ecrans de ce jeu-ci tiennent tous
+   au-dessus du pli, verifie ; mais tant qu'aucune regle n'existe, c'est moi le garde-fou. Constat
+   ecrit dans `FICHE-bandit-manchot-conjugaison-present-cm1.md`, section 4 du verdict du
+   2026-08-10.
+
+#### 7. Suites hors de ma main
+
+- Aucun mouvement de `squad/programme/MATRICE-couverture.md` sur ce verdict : S6-9 et S6-10 sont de
+  l'habillage, pas de la couverture de competence. La ligne `mathematiques | CP | Nombres et
+  calculs | Calcul mental` n'est pas touchee par cet audit.
+- Pour `camille-po` : le repli de l'en-tete propose par `ines-design` reste une question produit
+  ouverte (section 5). Je n'en fais pas une exigence.
+- Pour `camille-po`, nouveau : une regle sur ce qui doit rester au-dessus du pli, et sur quel
+  viewport de reference, serait la bonne reponse a mon point 6.5. Je decris le besoin, je n'ecris
+  pas la story.
 
 ### Arbitrage prealable au developpement - S6-10, couleur du bandeau et sort du carre de l'icone, du 2026-08-07
 
