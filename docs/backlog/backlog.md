@@ -1827,7 +1827,7 @@ proposees dans les colonnes." Verifie contre le code : `fragments/manche.html` r
 questionnaire a choix multiple (boutons empiles verticalement), et aucun fichier du depot ne
 contient de vocabulaire de machine a sous (rouleau, colonne, levier), alors que "bandit manchot"
 nomme la mecanique dans 25 `ADR`, dans le catalogue, dans les trois fiches de conformite et dans
-quatre lignes de `squad/programme/MATRICE-couverture.md`. C'est la dette n. 1 de `CLAUDE.md`
+quatre lignes de `squad/programme/MATRICE-couverture.md`. C'est la dette n°1 de `CLAUDE.md`
 reproduite (une abstraction citee partout, absente du code). `DEC-0015-sprint-7-la-vraie-machine-
 a-sous-ferme-la-dette-1.md` tranche : le sprint 7 construit la mecanique de machine a sous decrite
 par l'utilisatrice (l'enfant tire un levier, trois colonnes defilent puis s'arretent chacune sur
