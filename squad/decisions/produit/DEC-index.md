@@ -18,6 +18,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0012 | Le rhabillage du gabarit (en-tete, icone, menu, contenu centre) ouvre le sprint 6 ; le menu reste a une seule entree | s05/s06 | 2026-08-06 | Acceptee, amendee le 2026-08-07 (constat de l'absorption de S6-1/S6-2 dans s05) |
 | DEC-0013 | Perimetre du sprint 6 : trois chantiers actes, choix de textes-trous/cm1-conjugaison.yml pour l'ouverture francais engagee par DEC-0011 | s06 | 2026-08-07 | Acceptee |
 | DEC-0014 | Retrait de "Le bon verbe" du catalogue jusqu'a sa correction | s06/s07 | 2026-08-10 | Acceptee |
+| DEC-0015 | Le sprint 7 construit la vraie machine a sous et ferme la dette n. 1 de CLAUDE.md | s07 | 2026-08-10 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0002` a ete amendee le 2026-08-04, a la suite de la
 relecture pedagogique de `nadia-prof` sur le refus de `bandit-manchot-additions-cp` - ajout d'une
