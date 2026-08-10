@@ -334,6 +334,252 @@ Ma liste du 2026-08-07 en comptait quatre. Deux sont retirees, deux restent, et 
   viewport de reference, serait la bonne reponse a mon point 6.5. Je decris le besoin, je n'ecris
   pas la story.
 
+### Arbitrage sur la proposition de forme d'ines-design - second arbitrage du 2026-08-10
+
+**Ce bloc n'est pas un Done pedagogique.** Il repond a
+`squad/sprints/s07-machine-a-sous/proposition-ines-machine-a-sous.md` (branche `s07-ines-design`,
+commit `f4cc598`), qui respecte mes bornes de duree et me renvoie trois questions de rendu. Il
+s'ajoute a mon arbitrage du chantier machine a sous du meme jour, ci-dessous, **qu'il ne durcit
+pas** : les deux exigences nouvelles de ce bloc portent sur une forme qui n'existait pas quand j'ai
+ecrit l'autre.
+
+#### Les trois verdicts, en une phrase chacun
+
+1. **Le voile translucide devant un bouton immobile est la bonne forme, et sa valeur est refusee :**
+   a 45 % de blanc, le contraste du mot blanc tombe a **2,29:1** pendant que le voile le traverse,
+   sous le plancher de 4,5:1 et sous l'etat servi aujourd'hui qui est a 5,41:1.
+2. **Le repli en deux rangees tient, je l'ai remesure et je le confirme** - 160 px de colonne a
+   360 px, ecart de 16 px sur les deux axes, aucune troncature - avec une reserve chiffree : sur le
+   pire item reel du paquet, qui n'est pas celui qu'`ines-design` a teste, il ne reste que **3 px
+   d'air** a droite du mot.
+3. **Je confirme mon refus de la manette**, c'est bien un veto de moi et non une lecture
+   d'`ines-design`, et le bouton-poussoir rond est accepte.
+
+#### 1. Le voile : bonne forme, mauvaise valeur, et voici la mesure
+
+**La forme est la bonne, et je le dis franchement parce que c'est celle que je conseillais.** Un
+bouton qui ne bouge jamais, avec son texte reel toujours present, rend impossible par construction
+la violation de mon exigence "jamais un autre mot" - c'est mieux qu'un test, et c'est mieux que ma
+propre variante ou le mot apparaissait a l'arret. Sur ce point, `ines-design` a raison et je retire
+la preference que j'exprimais pour un mot cache pendant le defilement : sa forme est superieure a
+celle que je conseillais.
+
+**La valeur, elle, est refusee.** J'ai fige son voile en travers du mot et j'ai mesure la couleur
+composee sur le rendu, puis calcule le contraste. Mesure a 360 px par
+`outils/mesurer-rendu.sh`, echantillon pris hors glyphe dans la bande du voile :
+
+| Etat | Fond composite mesure | Contraste du mot blanc | Verdict |
+|---|---|---|---|
+| aucun voile, etat servi aujourd'hui | `rgb(46, 111, 158)` | **5,41:1** | c'est la reference |
+| **voile blanc a 45 %**, la valeur proposee | `rgb(140, 176, 202)` | **2,29:1** | **refuse** |
+| voile blanc a 8 % | `rgb(62, 122, 166)` | 4,63:1 | acceptable |
+| voile noir a 20 % | `rgb(37, 89, 126)` | 7,48:1 | acceptable, et meilleur que la reference |
+
+**Ce que cela fait a l'enfant, et je l'ai regarde et pas seulement calcule** : le voile est blanc,
+le texte du bouton est blanc, donc le voile efface le mot en le delavant au lieu de passer derriere
+lui. Sur la capture, le bas des lettres de `an`, `on` et `in` se dissout dans la bande claire. Un
+enfant de CP est en train de dechiffrer ces lettres ; un mot qui palit au moment ou il le lit est un
+mot qu'il relit, et le defilement cesse d'etre un plaisir pour devenir un obstacle.
+
+**Et ce defaut ne touche pas le paquet hors catalogue, il touche les trois jeux du catalogue**, `an`
+/ `on` / `in` et les chiffres du CP compris, parce que le voile porte sur `.proposition` partout.
+C'est ce qui en fait une condition bloquante et non une remarque.
+
+**La regle que je pose, sur la propriete et pas sur la valeur** - pour qu'`ines-design` garde sa
+latitude :
+
+> **A chaque instant de l'animation, le contraste entre le texte d'une proposition et ce qui est
+> compose derriere lui reste au moins a 4,5:1.**
+
+Trois facons de la satisfaire, toutes trois autorisees, aucune imposee : un voile clair **a 8 % au
+plus** (mesure : 4,63:1) ; un voile **assombrissant** plutot qu'eclaircissant, qui augmente le
+contraste au lieu de le reduire (noir a 20 % : 7,48:1, et c'est la voie que je trouve la plus
+simple) ; ou un decor qui **ne traverse pas le mot** - un liseret, un reflet cantonne au bord, un
+volet qui s'arrete avant les glyphes.
+
+**Deuxieme point sur le voile, et celui-la est une exigence de forme.** `ines-design` ajoute
+`overflow: hidden` sur `.proposition`, et son tableau de confrontation affirme que cet
+`overflow: hidden` "porte sur le pseudo-element decoratif, pas sur le libelle". **C'est inexact, et
+je l'ai mis a l'epreuve plutot que de le supposer** : `overflow` decoupe tout le contenu de
+l'element, texte compris. Capture a 360 px sur `cherche` / `cherches` / `cherchent` en trois
+colonnes de 101 px, avec et sans sa regle :
+
+| Etat | Ce que l'ecran montre |
+|---|---|
+| sans `overflow: hidden` | les glyphes **sortent de l'aplat bleu** : le defaut se voit et se signale de lui-meme |
+| avec son `overflow: hidden` | le mot est **coupe net au bord de la boite** : le defaut a l'air voulu, et plus personne ne le signale |
+
+Les deux sont inutilisables, et la seconde est la pire des deux : **une troncature propre est une
+troncature que personne ne remonte.** Ma condition 2 du meme jour ("aucune troncature, jamais : ni
+`text-overflow: ellipsis`, ni `overflow: hidden` sur le texte de la proposition") **tient telle
+quelle** ; je ne l'ai pas ecrite contre un cas theorique.
+
+Ce n'est pas un obstacle pour `ines-design` : son `overflow: hidden` n'est la que pour retenir un
+voile qui part de `translateY(-140%)` et finit a `translateY(140%)`, donc hors de la boite aux deux
+bouts. **La propriete que j'exige a la place : le voile reste dans la boite du bouton a chaque
+instant**, ce qui rend toute regle de decoupe inutile. Comment l'obtenir est a elle et a `lea-dev` ;
+je nomme la propriete, pas la declaration.
+
+#### 2. Le repli en deux rangees : remesure, confirme, et une reserve chiffree
+
+**Je n'ai pas repris ses chiffres, je les ai refaits.** Maquette jetable hors du depot, non
+commitee, deux feuilles reellement servies, structure reelle, ses deux regles `:has()` ajoutees au
+delta d'`ADR-0026`. Captures a 360 px et a 375 px par `outils/mesurer-rendu.sh`, mesure au pixel
+**a mi-hauteur** des boites.
+
+| Ce qu'elle annonce | Ce que je mesure | Verdict |
+|---|---|---|
+| colonnes de 160 px a 360 px | **160 px** (x = 12 a 171 et 188 a 347) | exact |
+| ecart de 16 px sur les deux axes | **16 px** lateral, **16 px** vertical (rangee 1 : 58-131, rangee 2 : 148-...) | exact |
+| 74 px de hauteur par rangee | **74 px** | exact |
+| 167 a 168 px a 375 px | conforme | exact |
+| aucune troncature sur les deux items testes | **aucune**, verifie a l'oeil sur la capture | exact |
+| les cas a deux et trois propositions inchanges | **inchanges** : temoins a 101 px et 158 px rendus a l'identique dans la meme capture | exact |
+
+**Sa mesure est juste. La reserve porte sur son choix de pire cas.** Elle ecrit avoir teste "les deux
+cas les plus defavorables (...) les mots les plus longs du paquet, neuf lettres" - donc choisis au
+**nombre de lettres**. C'est le raisonnement exact qu'`ADR-0026` a refute en refusant d'ecrire une
+regle en caracteres. J'ai mesure l'air restant autour du mot dans sa boite de 160 px :
+
+| Mot | Largeur des glyphes | Air a gauche | Air a droite |
+|---|---|---|---|
+| `finissent` (9 lettres, son cas 1) | 124 px | 18 px | 18 px |
+| `dessinent` (9 lettres, son cas 2) | 140 px | 10 px | 10 px |
+| **`mangeons` (8 lettres, non teste)** | **152 px** | **5 px** | **3 px** |
+
+**Le pire item du paquet est l'item 3, qu'elle n'a pas teste, et il ne reste que 3 px.** Le
+rembourrage declare de `.proposition` est de 1,25rem, soit 20 px de chaque cote : `mangeons` a donc
+deja franchi son rembourrage de 32 px et ne tient dans l'aplat que de justesse. Ce n'est pas "de
+l'air visible de part et d'autre du mot" comme son document le dit.
+
+**Ce que j'en conclus, et ce que je n'en conclus pas.** Je ne refuse pas : rien ne deborde, rien
+n'est tronque, aucun plancher ne bouge, et le repli fait exactement ce qu'elle annonce. Mais **3 px
+de marge sur une largeur de glyphes, avec une pile de polices systeme qui change d'un appareil a
+l'autre** (elle vient de Reboot, donc du systeme, `ADR-0014`), ce n'est pas une marge : c'est un
+resultat qui tient sur cette machine-la. Je le porte comme reserve chiffree et non comme motif, et
+je l'ajoute a ce dont je reste seule garde.
+
+#### 3. La manette : oui, c'est mon veto, et je l'assume nommement
+
+**`ines-design` a lu mon arbitrage correctement et je confirme son refus comme etant le mien.** Le
+bouton-poussoir rond est accepte : `border-radius`, `box-shadow` et un disque decoratif ne touchent ni
+la taille, ni la cible tactile, ni le mot ecrit, et sa decision de ne cabler ces regles que sur
+`.demarrer` et `.encore` - jamais sur `.sortie-pleine` ni `.recommencer` - fait tenir mon acquis 6
+par la structure du selecteur plutot que par une consigne. C'est mieux que ce que je demandais.
+
+**Et je dis ce que ce veto coute, parce que ca doit etre trace comme mien.** L'utilisatrice avait
+demande que **l'enfant tire un levier**. Apres mon arbitrage, il ne reste de cette phrase ni la
+manette, ni le geste de traction : l'enfant **presse**, et les colonnes bougent. Le mot "levier"
+survit comme nom interne, pas comme geste.
+
+**Mes deux motifs, inchanges depuis ce matin et je ne les grossis pas** : un enfant de CP qui essaie
+de tirer une manette et voit que rien ne se passe se croit en faute ; et un geste de glissement est
+un obstacle de motricite fine sur le bouton le plus presse de l'application, en plus d'etre un
+obstacle pour un enfant qui utilise une aide technique.
+
+**Ce que je remonte plutot que de le decider** : c'est le dernier element litteral de la demande
+d'origine qui tombe, et il tombe par ma main. L'utilisatrice est en droit de le savoir et de le
+contester ; ce n'est pas a moi de juger si elle tient a la manette. Je le route a `sofia-sm` pour
+remontee, avec les deux motifs ci-dessus. **Si l'utilisatrice tranche qu'elle veut la manette
+malgre eux, mon veto ne survit pas a sa decision** - je ne detiens pas la porte produit, et je
+prefere l'ecrire que de laisser croire que je la detiens.
+
+#### 4. Un defaut que j'ai trouve en mesurant celui-ci, et qui est plus grave que lui
+
+Voici ce que je cherchais, et ce que j'ai trouve a la place.
+
+Je voulais savoir si le repli d'`ines-design` eteint le motif du pli qui fondait ma reduction de
+"Le bon verbe". J'ai donc mesure un **ecran de manche complet** - bandeau, "Les jeux", score,
+consigne, enonce, indice, propositions - et non des rangees de boutons isolees. Mesure a 360 px,
+pli lu a 640 px.
+
+| Item mesure, ecran complet avec indice | Ou tombent les propositions | Le mot est-il lisible ? |
+|---|---|---|
+| "Le bon verbe" item 8, enonce court, repli d'`ines-design` | rangee 1 : 495-568 ; rangee 2 : 585-658 | **oui**, glyphes a 611-634, 6 px de garde sous le pli |
+| "Le bon verbe" item 9, enonce le plus long du paquet | rangee 1 : **783-856** ; rangee 2 : **873-946** | **non, aucune des quatre** |
+| **"Le bon petit mot" item 24, enonce le plus long, DEUX propositions, jeu du catalogue** | **717-790** | **non, aucune des deux** |
+
+**La troisieme ligne est le defaut, et il ne concerne ni le repli, ni le nombre de propositions.**
+Sur un jeu **catalogue**, dont j'ai accorde le Done pedagogique et laisse passer la ligne de matrice
+a `couvert-valide` ce matin, un item met **ses deux boutons de reponse entierement sous le pli** a
+360 x 640. La cause est l'enonce a 2 rem qui se replie sur six lignes, pas les colonnes : le meme
+item est sous le pli dans la disposition empilee d'aujourd'hui comme dans les colonnes.
+
+**Je corrige donc un de mes propres constats avant de m'appuyer dessus.** Le 2026-08-10, section 4
+de mon refus de "Le bon verbe", j'ai ecrit :
+
+> *"Sur le meme viewport, "Le bon son" (trois propositions) tient entierement au-dessus du pli,
+> verifie par la meme mesure - le defaut est bien lie au passage a quatre propositions et non a
+> l'habillage en general."*
+
+**Cette inference etait fausse, et c'est moi qui l'ai faite.** J'avais teste "Le bon son", dont les
+enonces sont des mots seuls en capitales, et j'ai generalise d'un paquet a une cause. Le defaut
+n'est pas lie au nombre de propositions : il est lie a **la longueur de l'enonce**, et il frappe un
+paquet a deux propositions aussi durement qu'un paquet a quatre. Retirer une proposition ne l'a
+jamais adresse.
+
+**Ce n'est pas un motif de refus et je ne retire aucun verdict.** Aucune decision du depot ne fixe de
+hauteur de viewport minimale - `DEC-0007` ne parle que de largeur - et je l'ai ecrit deux fois
+aujourd'hui. Un defaut que je n'ai pas voulu opposer au paquet que j'ai refuse, je ne vais
+certainement pas l'opposer apres coup au paquet que j'ai valide. **Le Done pedagogique de "Le bon
+petit mot" reste accorde et sa ligne de matrice reste `couvert-valide`.** C'est un **constat neuf,
+date du 2026-08-10**, ecrit dans sa propre fiche, a instruire par `camille-po`.
+
+Ce qui change tout de meme : mon constat 6.5 de ce matin, que je croyais viser un paquet hors
+catalogue, vise en realite un jeu que des enfants peuvent ouvrir aujourd'hui. Sa priorite n'est pas
+la meme, et c'est `camille-po` qui la fixe, pas moi.
+
+#### 5. Ce que je declare degrade sur ce bloc
+
+- **Le chantier n'est toujours pas ecrit.** Aucune animation n'a tourne devant moi : la duree, la
+  courbe, le decalage de 0,08 s par colonne et le repli de mouvement restent entierement a
+  reverifier. Les huit points de ma section 9 ci-dessous tiennent tous.
+- **J'ai mesure le voile fige, pas en mouvement.** Un voile qui traverse un mot en 0,6 s ne se lit
+  pas comme un voile arrete dessus : le contraste de 2,29:1 est exact a l'instant du passage, et
+  combien de temps le mot reste sous ce contraste depend de la hauteur de la bande et de la courbe.
+  Ma regle de 4,5:1 vaut a chaque instant, donc elle est plus severe que ce que j'ai mesure ; je
+  reverifierai en jouant, et **si la valeur corrigee passe mon plancher, je ne rouvrirai pas ce
+  point**.
+- **Je n'ai mesure le pli que sur trois items**, sur les trois paquets concernes. Les 23 autres items
+  de "Le bon petit mot" ne sont pas mesures : je ne sais pas combien d'items du catalogue sont
+  touches, seulement qu'au moins un l'est.
+- **Je n'ai pas mesure N = 5 colonnes**, la limite qu'`ines-design` nomme elle-meme. Aucun paquet du
+  depot n'en a cinq ; je ne juge pas ce qui n'existe pas.
+- **La police est celle de ma machine.** Les 3 px d'air de `mangeons` et les 6 px de garde de
+  l'item 8 dependent de la pile de polices systeme. Aucune de mes mesures ne dit ce que rend un autre
+  appareil, et c'est exactement la famille qu'`ADR-0025` m'a confiee.
+
+#### 6. Ce que j'ajoute a ce dont je reste seule garde
+
+En plus des huit points de mon arbitrage de ce matin :
+
+9. **Que le contraste du mot ne tombe jamais sous 4,5:1 pendant l'animation.** Aucun automate de ce
+   depot ne compose une couleur d'animation ni ne calcule un contraste ; `TailleDesTextesEtBoutonsTest`
+   lit des tailles, pas des couleurs composees.
+10. **Que 3 px d'air suffisent sur un autre appareil que le mien**, pour `mangeons` comme pour tout
+    mot futur.
+11. **Que ce qui compte reste au-dessus du pli quand l'enonce est long** - desormais sur un jeu du
+    catalogue et plus seulement sur un paquet retire.
+
+#### 7. Suites hors de ma main
+
+- **Pour `ines-design`** : la forme du voile est acceptee, sa valeur est a corriger sous la regle de
+  4,5:1, et le `overflow: hidden` sur `.proposition` est a remplacer par un voile qui reste dans la
+  boite. Le bouton-poussoir est accepte tel quel. Rien d'autre de sa proposition n'est touche.
+- **Pour `sofia-sm`** : deux remontees. La chute du geste de traction, qui est mon veto et que
+  l'utilisatrice doit pouvoir contester (section 3). Et le fait qu'`ines-design` a choisi son pire
+  cas au nombre de lettres, ce qui est le raisonnement qu'`ADR-0026` refute - a lui signaler pour
+  ses prochaines mesures, sans que ca retire rien a la qualite de celle-ci.
+- **Pour `camille-po`** : le constat du pli sur "Le bon petit mot" est ecrit dans
+  `FICHE-bandit-manchot-homophones-cm1.md`, date du 2026-08-10. Je decris le besoin, je n'ecris pas
+  la story, et je ne fixe pas sa priorite.
+- **Pour `camille-po`, et c'est le point qu'elle attend** : ma reduction de "Le bon verbe" a trois
+  propositions est **eteinte**. Motif et consequences dans
+  `FICHE-bandit-manchot-conjugaison-present-cm1.md`, arbitrage du 2026-08-10, second bloc. Son choix
+  entre le repli de mise en page et le report du jeu reste entier ; je viens seulement de retirer
+  une troisieme sortie qui n'en etait pas une.
+- **`squad/programme/MATRICE-couverture.md` ne bouge pas**, et aucun verdict anterieur n'est retire.
+
 ### Arbitrage prealable au developpement - chantier machine a sous (S7-1 a S7-4), du 2026-08-10
 
 **Ce bloc n'est pas un Done pedagogique.** C'est le troisieme arbitrage prealable que j'ecris, apres
