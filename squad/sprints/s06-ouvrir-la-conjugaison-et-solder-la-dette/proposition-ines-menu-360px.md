@@ -83,7 +83,7 @@ precisement dans mon propre environnement (le calcul montre que ca tient, de peu
 pas cela en doute contre la mesure de `lea-dev`, faite sur Chrome headless reel elle aussi - je
 constate que la marge est si faible qu'une pile de polices differente (une autre plateforme, un
 Chrome sans "Segoe UI" disponible, repli plus loin dans la chaine de polices systeme que
-`ADR-0014` impose) suffit a faire basculer le meme dessin dans le debordement. **C'est exactly le
+`ADR-0014` impose) suffit a faire basculer le meme dessin dans le debordement. **C'est exactement le
 type de defaut qu'un repli en dur (une largeur fixe ou tout rentre pile) ne resout pas : il ne
 fait que deplacer le point de rupture vers un autre nombre, tout aussi fragile.** C'est pour cette
 raison que ma proposition ne fixe aucune largeur de bascule dans la feuille.
@@ -125,7 +125,7 @@ raison que ma proposition ne fixe aucune largeur de bascule dans la feuille.
 | **360 px** (largeur demandee par cette tache) | une ligne dans mon environnement, deux lignes dans un environnement a police plus large - dans les deux cas, "Les jeux" est entierement visible, jamais coupe | c'est la propriete qui compte : peu importe ou la bascule tombe reellement, rien ne deborde plus jamais |
 
 **Le point precis de bascule (308/305 px) est propre a mon environnement et je ne le fige pas** -
-c'est tout le sens de na pas ecrire de largeur de media query : sur un poste ou la police de repli
+c'est tout le sens de ne pas ecrire de largeur de media query : sur un poste ou la police de repli
 est plus large que la mienne (cas probable de l'environnement ou `lea-dev` a trouve le defaut a
 360 px), la bascule se produirait plus tot, disons vers 340 ou 350 px, et le resultat serait
 identique - deux lignes propres, rien qui deborde. **C'est une propriete que je peux garantir

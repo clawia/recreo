@@ -114,7 +114,7 @@ body:has(.ecran-de-jeu) .lien-accueil {
    le raccourci "padding: 2rem 0" fixait aussi padding-left/padding-right a 0, et l'emportait sur
    le rembourrage lateral inconditionnel de .container (Bootstrap, 0,75rem) charge avant cette
    feuille (ADR-0014 point 5) - a toute largeur d'ecran, la marge laterale du contenu disparaissait.
-   Ne plus rien declarer sur les deux axes laterales laisse la regle de .container s'appliquer
+   Ne plus rien declarer sur les deux axes lateraux laisse la regle de .container s'appliquer
    telle quelle. Garde-fou : LeConteneurTierGardeSonRembourrageLateralTest. */
 .zone-jeu {
     padding-top: 2rem;
