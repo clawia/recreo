@@ -30,9 +30,23 @@
   entierement lisible. **Les douze triplets ne sont plus applicables, le paquet garde ses quatre
   propositions, aucun distracteur n'est retire.** Ils restent ecrits comme trace, jamais effaces. La
   seule correction attendue sur ce paquet reste celle des cinq indices fautifs.
+  **Second audit, increment livre en s07 (commit `10dd74d`) : VALIDE SOUS RESERVE, Done pedagogique
+  accorde le 2026-08-10. Le REFUSE du 2026-08-10 est LEVE** : les douze indices sont desormais vrais et
+  aucun ne dementit un autre item, verifie un par un et vu en jeu. Le refus n'est pas efface, il reste
+  lisible plus bas avec son motif. Jeu joue sur une **branche jetable, jamais fusionnee et detruite**,
+  qui n'ajoutait que la ligne de catalogue : `DEC-0014` n'est pas leve par mon audit. Le **repli en
+  deux rangees est reproduit sur le code livre** et remesure (160 px, ecart de 16 px sur les deux axes,
+  aucune troncature, les quatre propositions au-dessus du pli sans l'indice) - c'est la mesure que
+  demandait la seconde condition de `camille-po`, qui reste la seule a pouvoir la fermer. Deux
+  reserves neuves : `mangeons` tient a **2,0 px** de chaque cote de sa boite, et cinq items sur douze
+  mettent la seconde rangee sous le pli quand l'indice s'affiche (`DEC-0016`, pas un motif).
+  **Ma reference sur les modeles d'indice etait fautive et je la corrige** : le modele "nommer le
+  groupe" n'existait pas dans le paquet, `marc-dev` a eu raison de ne pas l'appliquer.
 - **Ligne de matrice** : **reste `en cours`.** Elle ne pouvait de toute facon pas atteindre
-  `couvert-valide` sur cet increment (un temps sur trois, `DEC-0013`) ; elle ne l'atteint pas
-  davantage, et le Done pedagogique lui-meme n'est pas accorde.
+  `couvert-valide` sur cet increment (un temps sur trois, `DEC-0013`) ; le Done pedagogique est
+  desormais accorde, mais la barre que j'ai ecrite moi-meme pour `couvert-valide` - ouvrir le futur et
+  l'imparfait, refus du 2026-08-10 section 5 - est inchangee et non atteinte. **La ligne ne bouge pas
+  sur le verdict du second audit.**
 - **Derniere mise a jour** : 2026-08-10
 
 ## Competences visees
@@ -71,6 +85,206 @@ entree/sortie observables.
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Verdict courant - second audit, increment livre en s07, du 2026-08-10
+
+- **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mon refus du 2026-08-10 est
+  leve** : son motif unique - cinq indices enoncant une regle de conjugaison fausse - est traite, et
+  je l'ai verifie en jouant. Le refus n'est pas efface : il reste lisible plus bas avec sa date et son
+  motif, parce qu'un refus efface n'a aucune valeur de preuve.
+- **Date** : 2026-08-10.
+- **Commit audite** : `10dd74d`, `HEAD` de `round-two`.
+- **Moyens** : audit **joue**, non degrade. Meme installation que le verdict transverse
+  (`FICHE-bandit-manchot-additions-cp.md`, section Moyens) : worktree dedie hors de l'arbre du depot,
+  lignee et JDK verifies par les outils du depot, fat jar reconstruit, lance sur un port dedie,
+  `mvn -B verify` vert (315 tests). **Ce jeu est hors catalogue** (`DEC-0014`) : pour le jouer, j'ai
+  ouvert une branche jetable qui n'ajoutait que la ligne de catalogue retiree par `6060d32`, reprise
+  au caractere depuis l'historique plutot que reecrite. **Cette branche n'a jamais ete fusionnee et
+  elle est detruite**, et le fichier `catalogue.yaml` de mon lot est identique a celui de
+  `round-two`. C'est le mecanisme qui tient `DEC-0014` a la lettre : le jeu a ete joue sans rejoindre
+  le catalogue. **Trois parties completes** de dix manches, ratees a chaque manche pour faire venir
+  l'aide, plus un balayage jusqu'a voir les douze items, a 360 x 640.
+- **Done technique** : acquis.
+- **Ligne de matrice** : **reste `en cours`**, et pas a cause de mes reserves. La barre pour
+  `couvert-valide` est celle que j'ai ecrite moi-meme au refus du 2026-08-10, section 5, et elle est
+  inchangee : le futur et l'imparfait doivent etre ouverts. Ce paquet couvre un temps sur trois. Je ne
+  la deplace ni dans un sens ni dans l'autre. Je n'ai pas edite cette ligne, elle appartient a
+  `camille-po`.
+
+#### 1. Le motif du refus est leve, et voici la verification item par item
+
+`marc-dev` a applique la troisieme des formes que j'avais nommees - nommer le verbe - aux cinq
+indices fautifs. J'ai relu les **douze** indices du paquet, pas seulement les cinq, et je les ai vus
+s'afficher en jeu.
+
+| Item | Indice servi aujourd'hui | Vrai ? | Dementi par un autre item du paquet ? |
+|---|---|---|---|
+| 1 `va` | "Le verbe 'aller' est irrégulier : avec 'il' ou 'elle', il devient 'va' au présent." | oui | non |
+| 2 `lisons` | "Avec 'nous', le verbe se termine **presque toujours** par '-ons'..." | oui, tempere | non |
+| 3 `mangez` | "Avec 'vous', le verbe se termine **presque toujours** par '-ez'..." | oui, tempere | non |
+| 4 `fais` | "Le verbe 'faire' est irrégulier : avec 'je', il devient 'fais' au présent." | oui | non |
+| 5 `jouent` | "Avec 'ils' ou 'elles', **le verbe 'jouer'** se termine par '-ent'..." | oui | non |
+| 6 `dessines` | "Avec 'tu', **le verbe 'dessiner'** se termine par '-es'..." | oui | non - l'item 8 parle de `finir`, pas de `dessiner` |
+| 7 `cherche` | "Avec 'je', **le verbe 'chercher'** se termine par '-e'..." | oui | non - l'item 4 parle de `faire` |
+| 8 `finis` | "Avec 'tu', le verbe 'finir' se termine par '-is'..." | oui | non |
+| 9 `range` | "Avec 'il' ou 'elle', **le verbe 'ranger'** se termine par '-e'..." | oui | non - l'item 1 parle de `aller` |
+| 10 `courons` | "Avec 'nous', le verbe 'courir' se termine par '-ons'..." | oui | non |
+| 11 `prenez` | "Avec 'vous', le verbe 'prendre' se termine par '-ez'..." | oui | non |
+| 12 `chantent` | "Avec 'ils' ou 'elles', **le verbe 'chanter'** se termine par '-ent'..." | oui | non |
+
+**Plus aucun indice de ce paquet n'affirme d'une terminaison qu'elle vaut pour "le verbe" sans
+restriction.** C'etait mon exigence, mot pour mot, et elle est satisfaite. Les deux formulations
+temperees des items 2 et 3 sont conservees, ce qui est juste : elles etaient deja correctes et il n'y
+avait rien a y toucher.
+
+**Et je l'ai vu en jeu, pas seulement dans le fichier.** J'ai fait venir l'indice de l'item 7 apres
+trois echecs et lu a l'ecran : *"Avec 'je', le verbe 'chercher' se termine par '-e' au présent : c'est
+'cherche'."* La contradiction que j'avais vue se produire en deux minutes le 2026-08-10 - "avec tu, le
+verbe se termine par -es" a la septieme manche puis `finis` a la dixieme - **ne peut plus se produire**,
+parce que chaque enonce de regle est desormais borne au verbe qu'il nomme. Un enfant qui rate trois
+fois de suite recoit maintenant une aide vraie. C'est tout ce que je demandais.
+
+#### 2. Ma reference etait fautive sur un point, et `marc-dev` a raison
+
+Il a verifie mes trois modeles d'indice et en a trouve un inexistant. **Je ne maintiens pas ma
+reference, je la corrige.** J'avais ecrit : *"La correction est petite, exacte, et ses trois modeles
+sont **deja dans le paquet**."* C'est faux pour le modele 2. Verifie par moi sur le paquet
+d'avant correction : les douze indices employaient exactement deux formes attestees - temperer
+("presque toujours", items 2 et 3) et nommer le verbe (items 1, 4, 8, 10, 11). **Aucun indice ne
+nommait un groupe.** Le modele 2 etait de mon invention, presente a tort comme un modele existant.
+
+Trois consequences, que je pose nettement pour qu'on n'ait pas a me redemander ce que je voulais dire :
+
+1. **`marc-dev` a bien fait de n'appliquer que les deux formes attestees.** Suivre une consigne dont
+   un tiers est invente aurait ete suivre mon erreur.
+2. **Je maintiens que nommer le groupe aurait ete pedagogiquement acceptable**, et je maintiens ce que
+   j'en disais : les cinq items concernes sont bien tous du premier groupe, je l'ai reverifie
+   (`jouer`, `dessiner`, `chercher`, `ranger`, `chanter`). Ce qui tombe est ma phrase de fait, pas mon
+   jugement de valeur sur la forme.
+3. **Mon exigence n'a jamais ete "prends une de ces trois formes".** Elle etait : *"qu'aucun indice de
+   ce paquet n'affirme d'une terminaison qu'elle vaut pour 'le verbe' sans restriction"*, et j'avais
+   ecrit explicitement que je ne choisissais pas laquelle. Le choix de `marc-dev` satisfait
+   l'exigence ; les trois modeles n'etaient qu'une aide, dont un etait errone.
+
+Je le note aussi parce que c'est la troisieme fois qu'un fait que j'avais moi-meme enregistre se
+revele inexact quand quelqu'un le verifie. Verifier ce que j'ai ecrit avant de m'appuyer dessus fait
+partie de ma methode, et ici c'est un autre qui l'a fait a ma place.
+
+#### 3. Le repli en deux rangees, remesure sur le code livre
+
+Ce n'est **pas** ma condition - c'est la seconde condition de `camille-po` (`DEC-0015`, quatrieme
+amendement, point 2), et c'est elle qui la ferme. Ma part est la mesure, et je la rends.
+
+Balayage des **douze** items, indice non affiche, a 360 x 640 :
+
+| Ce que j'avais confirme sur maquette | Ce que je mesure sur le code livre |
+|---|---|
+| deux colonnes par rangee a partir de la quatrieme proposition | conforme : `4 colonnes de 160 px`, deux rangees de deux |
+| 160 px par colonne a 360 px | **160,0 px**, sur les douze items |
+| ecart de 16 px sur les deux axes | **16 px** : rangee 1 a 365-439, rangee 2 a 455-529 ; 336 px de conteneur pour 2 x 160 px |
+| aucune troncature | **aucune**, sur les douze items : aucun mot ne sort de sa boite, aucun sur deux lignes, police a 32 px partout |
+| la quatrieme proposition entierement lisible au-dessus du pli | **oui, sur les douze items** : le glyphe le plus bas du paquet est a 561 px, soit 79 px au-dessus du pli |
+| les cas a deux et trois colonnes inchanges | **inchanges** : les trois jeux du catalogue mesures separement, aucune regression |
+
+Les cinq mots les plus larges du paquet, mesures sur le rendu :
+
+| Mot | Largeur du mot | Air de chaque cote dans 160 px |
+|---|---|---|
+| `mangeons` | **156,0 px** | **2,0 px** |
+| `cherchons` | 152,2 px | 3,9 px |
+| `cherchent` | 148,3 px | 5,8 px |
+| `dessinent` | 142,9 px | 8,6 px |
+| `rangeons` | 139,4 px | 10,3 px |
+
+**Aucun n'est tronque, et les six conditions de ma section 3 sont satisfaites sur le rendu.** Je
+corrige au passage un de mes propres chiffres, a mon desavantage : j'avais ecrit qu'il restait "3 px
+d'air a droite de mangeons" ; il en reste **2,0**. Le mot tient, mais il tient a 2 px, et c'est la
+marge la plus etroite du depot. Voir la reserve 1.
+
+**Et ce que ce repli demontre au-dela de sa propre mesure** : `cherche` et `cherches` sont a l'ecran
+en meme temps, dans des colonnes de 160 px, **parfaitement distinguables** - je les ai lus. C'etait
+le defaut que ma reduction a trois propositions creait, et son extinction du 2026-08-10 est confirmee
+par le rendu. Les quatre propositions homophones du premier groupe sont bien la, et elles travaillent
+la difficulte que cette competence doit faire travailler. Ce que j'avais ecrit au credit du paquet le
+matin tient.
+
+#### 4. Constat neuf, mesure, qui ne fonde PAS ce Done et ne le retire pas
+
+**Cinq items sur douze mettent la seconde rangee de propositions entierement sous le pli quand
+l'indice s'affiche.** Mesure sur le code livre, a 360 x 640, indice affiche :
+
+| Enonce | Lignes d'enonce | Bas de l'indice | Rangee 1 | Rangee 2 | Etat |
+|---|---|---|---|---|---|
+| "Elle ___ toujours ses affaires avant de partir en récréation." | 3 | 531 | 543-617 | **633-707** | rangee 2 sous le pli |
+| "Je ___ mon cahier dans mon sac." | 2 | 483 | 495-569 | **585-659** | rangee 2 sous le pli |
+| "Ils ___ une chanson en rentrant de l'école." | 2 | 483 | 495-569 | **585-659** | rangee 2 sous le pli |
+| "Tous les jours, il ___ à l'école." | 2 | 483 | 495-569 | **585-659** | rangee 2 sous le pli |
+| "Vous ___ vos cahiers avant de commencer." | 2 | 483 | 495-569 | **585-659** | rangee 2 sous le pli |
+| les sept autres, indice affiche | 1 | 435 | 447-521 | 537-611 | au-dessus du pli |
+| les douze, **sans** indice | 1 a 3 | - | - | - | **tous** au-dessus du pli |
+
+**Pourquoi ce n'est pas un motif, et pourquoi je m'y tiens.** C'est exactement le defaut de
+`DEC-0016`, dont j'ai etabli moi-meme le 2026-08-10 que la cause est la longueur de l'enonce a 2 rem
+et non le nombre de propositions ni la mise en page. Je l'ai mesure le meme jour sur "Le bon petit
+mot", jeu du catalogue dont le Done est accorde, et j'ai **refuse** d'en faire un motif la-bas. Je ne
+peux pas l'opposer ici sans appliquer deux barres differentes a deux paquets pour un seul defaut - ce
+qui est precisement l'incoherence que j'ai refusee ce matin-la. Le traitement est donc le meme :
+constat neuf et date, destinataire `camille-po`, sous `DEC-0016`, et le Done reste accorde.
+
+**Ce que j'ajoute quand meme, parce que c'est le meme mecanisme et qu'il faut le compter une fois pour
+toutes** : le defaut ne se declenche que quand l'enfant vient d'echouer trois fois et recoit son
+aide. Sur ce paquet il touche **cinq items sur douze**, soit plus de la moitie des items a enonce de
+deux lignes ou plus. Sur "Le bon petit mot" il touche cinq items sur vingt-quatre. Ce n'est pas une
+question de paquet, c'est une question de hauteur d'ecran, et `DEC-0016` a raison de la traiter comme
+transverse.
+
+#### 5. Reserves - a convertir en stories par `camille-po`, non bloquantes
+
+Les six reserves de mon refus du 2026-08-10 (section 6 de ce bloc) **restent ouvertes et inchangees**,
+et je ne les reformule pas : sujet toujours pronominal et colle au trou, indice qui donne la reponse
+en plus de la methode, douze items pour dix manches, la seule fille sujet qui range ses affaires,
+"recreation" dans trois items, et le niveau non annonce sur l'accueil. Aucune n'a ete traitee par ce
+sprint, aucune n'etait censee l'etre.
+
+J'en ajoute deux, datees du 2026-08-10 :
+
+1. **`mangeons` tient a 2,0 px de chaque cote de sa boite.** Ce n'est pas une troncature et je ne le
+   traite pas comme telle. C'est un plancher atteint : **tout mot plus large que 156 px sortira de sa
+   colonne**, et aucun test ne le verra jamais - `ADR-0025` a etabli que le budget est une largeur de
+   glyphes rendus. Le jour ou ce paquet gagne un `finissaient` ou un `apprendraient` - ce qui est
+   exactement ce que demande l'ouverture du futur et de l'imparfait de ma section 5 - la mise en page
+   ne tiendra plus. Je le dis maintenant plutot qu'au sprint ou cela arrivera.
+2. **La seconde rangee sous le pli avec l'indice**, section 4 ci-dessus, sous `DEC-0016`.
+
+#### 6. Ce dont je reste seule garde sur ce jeu
+
+- **La verite de ce qui est enseigne dans un indice.** Inchange, et ce sprint le confirme dans les
+  deux sens : la CI etait verte sur les cinq indices faux, et elle est verte sur les cinq corriges.
+  `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest` epingle desormais qu'un indice ne dementit pas un
+  autre item du meme paquet, et c'est un vrai gain sur la **coherence interne** - c'etait la moitie de
+  mon motif. L'autre moitie, "cette regle de grammaire est-elle vraie dans la langue", reste hors de
+  portee d'un automate et reste ma charge.
+- **Qu'un mot tienne dans sa colonne** (reserve 1 ci-dessus), et qu'il ne soit ni tronque, ni coupe, ni
+  comprime.
+- **Tout ce que garde le verdict transverse** de `FICHE-bandit-manchot-additions-cp.md`, section 12, y
+  compris ma reserve sur la fin du mouvement, qui vaut sur ce jeu comme sur les trois autres.
+
+#### 7. Suites hors de ma main
+
+- **Pour `camille-po`** : ma condition 1 de `DEC-0015` (quatrieme amendement) est **remplie** - les
+  cinq indices sont corriges et j'accorde un nouveau Done pedagogique. Sa condition 2, le repli, est
+  **reproduite sur le code livre** et je rends la mesure en section 3 ; c'est elle qui la ferme, pas
+  moi. La remise au catalogue est sa decision et je n'en dis pas plus : je ne repriorise pas et je
+  n'ecris pas le backlog.
+- **Pour `camille-po`** : le constat de la section 4 et les deux reserves de la section 5 sont des
+  motifs, pas des stories.
+- **`squad/programme/MATRICE-couverture.md`** : la ligne `francais | CM1 | Orthographe et grammaire |
+  Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif` **reste `en cours`**,
+  pour la raison ecrite au verdict "Ligne de matrice" ci-dessus. Elle ne bouge pas sur ce verdict.
+- **Je n'efface rien** : le refus du 2026-08-10 et ses deux arbitrages du meme jour, dont la reduction
+  a trois propositions que j'ai eteinte moi-meme, restent lisibles plus bas dans l'ordre.
+
+---
 
 ### Verdict - premier audit, increment livre en s06
 

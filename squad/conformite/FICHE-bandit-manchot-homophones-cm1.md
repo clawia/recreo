@@ -22,6 +22,14 @@
   de hauteur de viewport minimale - **le Done pedagogique reste accorde et la ligne reste
   `couvert-valide`**. A instruire par `camille-po`. Ce constat corrige une inference fausse que j'avais
   faite le meme jour dans `FICHE-bandit-manchot-conjugaison-present-cm1.md`.
+  **Chantier machine a sous, Done pedagogique prononce le 2026-08-10 sur l'increment livre (commit
+  `10dd74d`) : VALIDE SOUS RESERVE** - verdict transverse complet dans
+  `FICHE-bandit-manchot-additions-cp.md`. C'est sur ce jeu que j'ai verifie, image par image sur
+  l'animation reelle, qu'**aucune colonne ne montre jamais un mot autre que le sien** : l'exigence qui
+  visait ce jeu nommement est tenue. **Le comptage du defaut de pli est corrige : cinq items sur 24, et
+  non trois** - mesure en jouant, 41 etats d'item balayes ; et **le passage en colonnes n'a rien gagne
+  sur ce defaut**, contrairement au credit que je lui avais accorde. Ni l'un ni l'autre n'est un motif :
+  **le Done reste accorde et la ligne reste `couvert-valide`.**
 - **Derniere mise a jour** : 2026-08-10
 
 ## Competences visees
@@ -41,6 +49,65 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Verdict courant - chantier machine a sous (S7-1 a S7-4), du 2026-08-10
+
+- **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique du chantier accorde. Le verdict complet et
+  son unique reserve sont dans `FICHE-bandit-manchot-additions-cp.md`, bloc "Verdict courant -
+  chantier machine a sous". **Il vaut pour ce jeu.** Le Done pedagogique du contenu de ce jeu, accorde
+  le 2026-08-10, n'est pas modifie et sa ligne de matrice reste `couvert-valide`.
+- **Date** : 2026-08-10. **Commit audite** : `10dd74d`. Audit **joue**, non degrade.
+- **Ce que j'ai verifie sur ce jeu precisement** : c'est ici que j'ai fait la verification du point 3
+  de ma liste, "aucun autre mot que le sien ne passe dans une colonne", parce que c'est le jeu ou le
+  defaut serait le plus grave. Animation reelle figee et deplacee image par image sur l'item `là` /
+  `la` : **a aucun instant une colonne ne montre autre chose que son propre mot**, ni un mot vide. Le
+  detail est en section 3 du verdict transverse.
+
+| Point | Mesure sur ce jeu |
+|---|---|
+| colonnes | 2 colonnes de **160 px** a 360 px |
+| mot le plus large du paquet | `sont`, **65,5 px** dans 160 px |
+| troncature, coupure, compression | **aucune**, sur les 24 items |
+| duree du defilement | **778 ms**, decalage de 167 ms entre les deux colonnes |
+| ecran immobile | lisible et jouable, voile entierement invisible |
+
+#### Je corrige mon propre comptage du defaut de pli : cinq items sur 24, et non trois
+
+`yanis-qa` confirme sur le code livre que le defaut persiste, et il a raison. En le remesurant, je
+trouve **plus** que ce que j'avais compte. Balayage de 41 etats d'item distincts sur huit parties, a
+360 x 640, indice affiche :
+
+| Enonce (debut) | Lignes | Bas de l'indice | Boites de reponse | Etat |
+|---|---|---|---|---|
+| "Après cette longue randonnée en montagne..." | 6 | 705 | **717-791** | les deux boutons entierement sous le pli |
+| "Tom cherchait sa gomme depuis le début du cours..." | 5 | 641 | 653-727 | les deux entierement sous le pli |
+| "Après la récréation, tous les élèves ___ rangent..." | 4 | 579 | 591-665 | les deux mots sous le pli |
+| "Léa a perdu son livre depuis lundi, mais elle ___..." | 4 | 579 | 591-665 | les deux mots sous le pli |
+| "Même si le ciel est bien dégagé ce matin, il ___..." | 4 | 579 | 591-665 | les deux mots sous le pli |
+| les 19 autres items | 1 a 3 | - | - | au-dessus du pli |
+| les 24 items **sans** l'indice | - | - | - | **aucun** en defaut |
+
+J'avais ecrit trois items le 2026-08-10, en mesurant depuis les enonces. **Il y en a cinq**, mesures en
+jouant. C'est une correction d'un de mes propres constats, dans le sens de la gravite.
+
+**Et je corrige aussi un credit que j'avais accorde au chantier a tort.** J'avais ecrit que la mise en
+page en colonnes "rend le pli confortable la ou il etait juste". C'est faux ici : les colonnes ne
+remontent pas la premiere rangee de boutons, dont la position ne depend que de la hauteur de l'enonce
+et de l'indice. Mesure sur l'item le plus long : les deux boutons sont a **717-791** sur le code livre,
+exactement la ou j'avais releve 717-790 avant le chantier. **Le passage en colonnes n'a rien gagne sur
+ce defaut**, et personne ne doit croire qu'il l'a traite. Le detail et la part que je declare degradee
+sur cette comparaison sont en section 10, point D, du verdict transverse.
+
+**Rien de tout cela n'est un motif, et je ne change pas d'avis.** J'avais choisi de ne pas l'opposer a
+un jeu dont j'avais accorde le Done, parce qu'aucune decision du depot ne fixait de hauteur de
+viewport et que je ne fabrique pas une barre en cours d'audit. `DEC-0016` fixe maintenant la regle, ce
+qui est le bon endroit pour elle - mais elle est posterieure a l'increment, et l'opposer a ce jeu
+aujourd'hui serait exactement le deplacement de poteaux que je refuse. **Le Done pedagogique reste
+accorde, la ligne reste `couvert-valide`, et le chiffre corrige part chez `camille-po`.**
+
+- **Ligne de matrice** : **inchangee**, `couvert-valide`. Ce chantier ne porte aucune competence.
+
+---
 
 ### Verdict - premier audit, contenu livre en s04
 
