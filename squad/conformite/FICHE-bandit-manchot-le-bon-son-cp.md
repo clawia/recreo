@@ -3,13 +3,16 @@
 - **Mecanique** : bandit manchot (mecanique generique, partagee avec
   `bandit-manchot-additions-cp` et `bandit-manchot-homophones-cm1`).
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cp-le-bon-son.yaml`,
-  21 items depuis le lot `lea-dev` de s05 (24 a l'audit du premier refus), `type: question`.
-  Matiere premiere issue de `contenu-repris/`.
-- **Statut global** : **REFUSE** (Done pedagogique refuse le 2026-08-06, premier audit). Le refus
-  reste en vigueur : l'avis de conception ajoute en fin de fiche ne le leve pas et n'est pas un
-  audit. **Non audite a la cloture de s05** malgre les modifications du paquet - note datee en fin
-  de fiche.
-- **Derniere mise a jour** : 2026-08-07
+  **15 items depuis la recomposition de s06** (21 apres le lot `lea-dev` de s05, 24 a l'audit du
+  premier refus), `type: question`, chacun porteur d'un indice, et les six items a variation
+  porteur d'une explication. Matiere premiere issue de `contenu-repris/`.
+- **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique accorde le 2026-08-10). **Le REFUSE
+  du 2026-08-06 est leve** : ses cinq motifs sont traites et verifies en jeu. Le refus n'est pas
+  efface - il reste lisible ci-dessous avec sa date, et l'histoire de ce jeu se lit dans l'ordre.
+- **Ligne de matrice** : **reste `en cours`.** Le Done pedagogique est accorde, mais la competence
+  du referentiel nomme plus que ce que ce paquet travaille - barre ecrite au verdict du 2026-08-10,
+  section 6.
+- **Derniere mise a jour** : 2026-08-10
 
 ## Competences visees
 
@@ -457,3 +460,253 @@ modifiees depuis.** Le texte neuf que `relecteur-pedagogique` me remonte - vingt
 est du texte non audite, et il ne devient pas valide parce qu'il est propre de forme. La ligne
 `francais | CP | Lecture et comprehension de l'ecrit` de `MATRICE-couverture.md` reste ou elle est ;
 je ne l'ai pas editee, elle appartient a `camille-po`.
+
+---
+
+### Verdict du sprint s06 - audit du 2026-08-10 : le REFUSE est leve
+
+- **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. Le refus du 2026-08-06 est leve
+  sur ses cinq motifs. Ce jeu peut etre mis devant une classe de CP.
+- **Verdict sur la ligne de matrice** : **reste `en cours`.** Barre ecrite en section 6.
+- **Date** : 2026-08-10.
+- **Commit audite** : `12990eb`, branche jetable `s06-lea-son-cp-jouable-jetable`, qui n'ajoute au
+  contenu deja fusionne sur `round-two` (`be60b10`) que l'entree de catalogue. J'ai verifie que le
+  paquet `cp-le-bon-son.yaml` de cette branche est **identique a celui de `round-two`** : ce que
+  j'ai joue est bien le contenu fusionne, la branche ne le modifie pas.
+- **`DEC-0009` est tenue, je l'ai constate moi-meme** : sur `round-two`, l'accueil servi ne propose
+  que "Calcul CP", "Le bon petit mot" et "Le bon verbe". Ce jeu n'est atteignable par aucun enfant
+  aujourd'hui. La confirmation de `sofia-sm` est exacte.
+- **Moyens** : audit **joue**, non degrade. Worktree dedie hors de l'arbre du depot. JDK constate
+  par `outils/verifier-jdk.sh` : `java du PATH : 1.8.0_202 | JDK de compilation : 21.0.10 |
+  JAVA_HOME : vide | toolchains lu par Maven : non (fichier present sous un nom non lu)` ;
+  `JAVA_HOME` pointe sur ce JDK 21 le temps de la commande, jamais ecrit dans un fichier commite.
+  Fat jar construit depuis la branche jetable et lance sur un port dedie. **Huit parties completes
+  jouees** - une juste de bout en bout (score 10 sur 10), sept fausses a chaque manche, dont six
+  pour faire sortir du tirage les quinze items. **Les quinze items et les six explications ont ete
+  vus a l'ecran.** Rendu reel mesure au navigateur sans tete a 1280 px et a une largeur et une
+  hauteur de viewport reellement de 360 x 640 (methode du rapport qualite de `yanis-qa`).
+
+#### 1. Les cinq motifs de mon refus, leves un par un, en jeu
+
+| Motif du 2026-08-06 | Etat | Ce que j'ai vu a l'ecran |
+|---|---|---|
+| **1** - la consigne annonce un son qui n'existe pas | **leve** | La consigne servie est **"Dis le mot. Quel son entends-tu ?"**, le texte que j'avais dicte au mot pres. Elle est vraie : c'est l'enfant qui produit le son, et elle prescrit le geste au lieu de l'evacuer. |
+| **2** - les crochets sont montres a l'enfant | **leve** | Les trois boutons affichent `an`, `on`, `in`. Aucun crochet, verifie sur le rendu au navigateur et pas seulement dans le YAML. |
+| **3** - le contenu ne travaille pas la competence annoncee | **leve** | Detail en section 2 : c'etait le motif de fond, et c'est celui qui demandait une recomposition. |
+| **4** - trois items posent une question a deux reponses vraies | **leve** | Les quinze mots repasses un par un : **aucun ne fait entendre deux des trois nasales du jeu**. Les mots courts choisis rendent le cas presque impossible, comme je l'avais anticipe. |
+| **5** - aucune aide n'existe dans ce jeu | **leve** | Les quinze items portent un indice, et **l'aide apparait a la quatrieme manche apres trois echecs consecutifs**, verifie en jouant, comme dans le jeu de calcul. |
+
+#### 2. Le motif 3, le seul qui demandait une conception : leve, et je le detaille
+
+Mon critere du 2026-08-06 avait trois proprietes. Les trois sont tenues.
+
+**Propriete 1 - par son, chaque son figure sous au moins deux graphies.** Tenu :
+
+| Son | Items reguliers | Items a variation | Graphies presentes |
+|---|---|---|---|
+| `an` | MAMAN, MANTEAU, BANC | DENT (`en`), VENT (`en`) | `an`, `en` |
+| `on` | PONT, BALLON, MONTRE | OMBRE (`om`), NOMBRE (`om`) | `on`, `om` |
+| `in` | LAPIN, SAPIN, JARDIN | TIMBRE (`im`), LUNDI (`un`) | `in`, `im`, `un` |
+
+**Propriete 2 - une part, entre un tiers et la moitie, par son et au total.** Tenu exactement :
+**6 items a variation sur 15, soit 40 pour cent au total, et 2 sur 5 dans chacun des trois sons.**
+
+**Propriete 3, la seule bloquante - aucun item a variation n'est livre sans un retour qui nomme la
+variation a l'enfant.** Tenu, et verifie sur les deux branches que j'avais exigees le 2026-08-06 :
+
+- **le retour existe et il est affiche apres la reponse.** Sur l'ecran de retour, sous le signal
+  juste/faux : *"Dans DENT, ce sont les lettres e et n qui font le son an."* C'est la forme que
+  j'avais dictee, une phrase, les lettres nommees, le mot que l'enfant vient de lire, aucun terme de
+  metalangage. Les six textes sont sur ce modele et je les ai tous vus a l'ecran.
+- **il s'affiche que l'enfant ait repondu juste ou faux.** C'etait le point precis que j'avais
+  tranche et il aurait ete facile de ne le faire que sur l'erreur. J'ai joue les deux cas : sur
+  bonne reponse ("Bravo, c'est juste !") l'explication est la ; sur mauvaise reponse ("Non, c'est
+  an.") elle est la aussi.
+- **il ne s'affiche que sur les items a variation.** Aucun des neuf items reguliers n'en porte, ce
+  qui est ce que j'avais demande : sur un item regulier il n'y a rien a expliquer, et un texte
+  partout dilue celui qui compte.
+
+**Et je verifie ce qui fondait vraiment mon motif : plus aucun item a variation n'est resoluble par
+appariement visuel.** Repasse lettre par lettre sur les six : aucune des chaines `an`, `on`, `in`
+n'apparait dans DENT, VENT, OMBRE, NOMBRE, TIMBRE ni LUNDI. L'enfant ne peut pas retrouver les
+lettres de la reponse dans le mot ; il faut passer par le son. Symetriquement, aucun des quinze mots
+ne contient les lettres d'un **mauvais** son du jeu, donc il n'y a pas de piege visuel a l'envers.
+C'est le contraire de l'increment de s04, ou 23 items sur 24 se reussissaient sans phoneme.
+
+**Consequence favorable que je note** : les propositions sont desormais toujours les trois memes,
+`an`, `on`, `in`, verifie sur huit parties. L'enfant choisit entre trois sons voisins, ce qui est une
+difficulte de CP authentique. **Ma reserve 3 du refus - `ch`, consonne, melange a des voyelles - tombe
+d'elle-meme**, comme je l'avais annonce.
+
+#### 3. MAIN et PAIN ecartes : je valide l'ecart a mes propres exemples
+
+`lea-dev` a ecarte **MAIN** et **PAIN**, que je citais moi-meme en exemple pour le son `in`, et mis
+**TIMBRE** (`im`) et **LUNDI** (`un`) a leur place. Son motif : ces deux mots contiennent
+litteralement la sous-chaine "in" et restent donc resolubles par appariement visuel.
+
+**Je valide, et son motif est le bon. Elle a corrige une contradiction interne a mon propre avis, et
+elle l'a tranchee du bon cote.**
+
+Le detail, parce qu'il compte pour la suite. Dans le meme avis du 2026-08-06, j'ecrivais deja, au
+point 2, que compter les lettres de la reponse dans le mot "compterait MAIN comme regulier alors que
+la graphie y est `ain` et non `in`". Je l'avais donc vu comme un defaut de **mesure**, et je n'en ai
+pas tire la consequence sur ma **liste d'exemples**, ou j'ai laisse MAIN et PAIN. Les deux passages
+de mon avis se contredisaient. Ce qui lie l'equipe est la propriete - mon motif 3 - et non ma liste,
+que j'avais moi-meme qualifiee d'"exemples de travail, pas une liste arretee". `lea-dev` a garde la
+propriete et jete l'exemple : c'est l'ordre juste.
+
+**J'ajoute un second motif, qui est de moi et qui va dans le meme sens** : la forme d'explication que
+j'ai imposee ne fonctionne pas sur `ain`. Elle dirait *"ce sont les lettres a, i et n qui font le son
+in"* - trois lettres, dont un `a` place juste avant le "in" que l'enfant voit. On lui montrerait un
+appariement a deux lettres tout en lui affirmant que le son en demande trois. `im` et `un` prennent
+la forme a deux lettres proprement.
+
+**Ce que cela coute et que j'assume** : le son `in` n'est plus illustre par ses graphies les plus
+frequentes en vocabulaire de CP (`ain` de "main", "pain") mais par `im` et `un`, plus rares. C'est le
+prix de la propriete, et je le prefere a deux items qui ne verifient rien. `ain` reste travaillable
+le jour ou un jeu jouera un son.
+
+**Une limite que je nomme sur LUNDI, non bloquante, parce que c'est moi qui l'ai mis dans la liste** :
+la graphie `un` note un timbre qui, pour une partie des locuteurs, n'est pas celui de `in` - la fusion
+est majoritaire en France aujourd'hui et les manuels de CP rangent bien "un, lundi, brun" avec le son
+`in`, mais dans certaines classes un enfant entendra une autre voyelle et l'explication lui paraitra
+fausse. Je ne le retire pas et je ne le compte pas contre l'increment : je le signale pour que
+`camille-po` sache qu'un remplacement par `im` ou `am` est disponible si le cas se presente.
+
+#### 4. Ce qui est bon et que je dis
+
+- **Les quinze indices sont justes, et les trois defauts de redaction que j'avais nommes le
+  2026-08-06 sont corriges.** **Aucun indice ne parle plus de position** : le defaut de PINCEAU,
+  SOURIS et ETOILE ("le son s'entend au debut, comme dans lapin", ou il est a la fin) a disparu avec
+  les mots. **L'indice des items a variation nomme les lettres** - *"Regarde : les lettres e et n
+  font ce son."* - au lieu d'envoyer l'enfant vers un mot plus dur, ce qui etait mon reproche le plus
+  precis sur l'ancien indice de DENT et son renvoi a "temps". Et la tournure lourde *"Le son s'entend
+  aussi dans le mot 'X'."* est devenue **"On entend aussi ce son dans le mot grand."** - sept mots,
+  pas de guillemets, tournure active. Les neuf mots de renvoi (grand, maman, manteau, bonbon, pont,
+  ballon, jardin, lapin, sapin) font tous le son annonce, verifies un par un, et sont tous de graphie
+  reguliere, donc ils ancrent au lieu de brouiller.
+- **L'indice ne donne pas la reponse.** Sur les items a variation, "les lettres e et n font ce son"
+  montre ou regarder sans dire quel son c'est : l'enfant garde le travail a faire. C'est mieux que ce
+  que fait le jeu des homophones, ou l'indice conclut a la place de l'enfant, et c'est a porter au
+  credit de ce paquet.
+- **Les mots sont nettement plus courts.** MAMAN, BANC, DENT, VENT, PONT, OMBRE remplacent
+  BALANÇOIRE (10 lettres, une cedille), PINCEAU et CHÂTEAU. **Ma reserve 1 s'attenue fortement**,
+  comme je l'avais anticipe, sans avoir ete traitee en propre.
+- **Accents et orthographe irreprochables** sur les quinze mots, les quinze indices et les six
+  explications, verifies sur la reponse HTTP et sur le rendu, pas seulement dans le fichier.
+- **Biais et ton** : rien a signaler. Des noms d'objets, d'animaux et un jour de la semaine ; aucun
+  prenom, aucune situation familiale, sociale ou culturelle presupposee.
+- **Rendu reel a 360 x 640** - le format le plus probable pour un enfant de CP sur un telephone :
+  consigne, mot et les trois propositions tiennent **entierement au-dessus du pli**, sans
+  defilement. Verifie a une largeur et une hauteur de viewport reellement de 360 x 640.
+
+#### 5. Reserves - a convertir en stories par camille-po, non bloquantes
+
+Les trois que j'avais nommees comme non bloquantes en 2026-08-06 restent ouvertes et hors perimetre
+de ce sprint. Je ne les transforme pas en motifs : elles etaient non bloquantes quand je les ai
+ecrites, elles le restent.
+
+1. **Mots trop longs pour le moment de l'annee** : fortement attenuee (section 4), non fermee.
+   TIMBRE, MONTRE, NOMBRE et MANTEAU restent au-dessus de six lettres.
+2. **Aucune progression de difficulte dans le tirage** - et je peux maintenant en nommer la
+   consequence exacte, observee en jeu : **a ma premiere partie, la premiere manche a tire VENT**,
+   c'est-a-dire que l'enfant rencontre l'exception `en` avant d'avoir jamais vu la regle `an`. Le
+   tirage peut aussi presenter les deux variations d'un son avant aucun de ses reguliers. Mon avis du
+   2026-08-06 disait que le cas regulier est "l'ancrage sans lequel l'exception n'a rien a quoi
+   s'opposer" ; le tirage aleatoire peut donc inverser l'ordre d'apprentissage. **Ce n'est pas
+   bloquant, et pour une raison que je verifie plutot que je suppose** : l'explication apparait
+   immediatement et nomme les lettres, donc l'enfant n'est pas laisse a conclure que la regle ne
+   tient pas. Mais c'est desormais la premiere story a instruire sur ce jeu.
+3. **Le son `[ch]`** : disparait de fait avec la recomposition, comme je l'avais ecrit. Reserve
+   close, sans travail.
+4. **L'accueil ne dit pas a quel niveau s'adresse le jeu.** Toujours ouverte, et elle empire : quand
+   ce jeu rejoindra le catalogue, l'accueil proposera deux jeux de CM1 et deux jeux de CP, dont un
+   seul porte une mention de niveau. Question produit pour `camille-po`.
+
+Reserves nouvelles, datees du 2026-08-10, non bloquantes :
+
+5. **Quatre des six items a variation sont deux paires de mots rimant, sur une seule graphie et une
+   seule position.** DENT et VENT sont tous deux en `-ENT` final ; OMBRE et NOMBRE tous deux en
+   `-OMBRE`. L'enfant risque d'apprendre deux formes de mots ("ENT fait an", "OMBRE fait on") plutot
+   que les graphemes `en` et `om` la ou ils se presentent. Ma propriete 1 n'exigeait qu'au moins deux
+   graphies par son, elle est tenue, et je n'en fais donc pas un motif - ce serait poser une barre
+   apres coup. La correction est deja dans ma liste d'exemples du 2026-08-06 et ne demande aucun
+   arbitrage neuf : remplacer VENT par **LAMPE** ou **JAMBE** (`am`, autre graphie, autre position) et
+   NOMBRE par **POMPIER** (`om` en position non finale). Le son `in`, avec `im` et `un`, est deja le
+   mieux servi des trois.
+6. **L'explication n'est pas distinguee visuellement de la consigne.** A l'ecran, *"Dans DENT, ce
+   sont les lettres e et n qui font le son an."* est du texte courant place sous le bandeau rouge
+   "Non, c'est an." Un enfant de CP lit peu et lentement, et ce qui l'arrete est le bloc colore ;
+   c'est justement la phrase la plus importante de l'ecran qui est la moins signalee. Question de
+   mise en forme pour `ines-design`, pas de contenu : je decris ce que l'enfant ne verra pas, je ne
+   propose pas de dessin.
+7. **L'explication reprend presque mot pour mot l'indice du meme item** ("les lettres e et n font ce
+   son" / "ce sont les lettres e et n qui font le son an"). Ce n'est pas un defaut - une variation
+   graphemique s'installe par repetition, je l'ai ecrit moi-meme - mais l'enfant qui vient de lire
+   l'indice puis l'explication lit deux fois la meme phrase, et la seconde n'ajoute rien. Le jour ou
+   ce jeu sera retouche, l'explication pourrait pointer un second mot de la meme graphie ("comme dans
+   VENT") plutot que se repeter.
+
+#### 6. Ou est la barre pour `couvert-valide`, et pourquoi elle n'est pas atteinte aujourd'hui
+
+Le Done pedagogique et la matrice ne disent pas la meme chose : le Done porte sur l'increment, la
+matrice porte sur la couverture d'une competence. La ligne du referentiel est **"Associer les
+graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...)"**. Ce paquet
+travaille **trois voyelles nasales et leurs variantes**, et rien d'autre : ni les voyelles simples,
+ni les consonnes simples, ni les digraphes `ch`, `ou`, `oi`. C'est une part de la competence, pas la
+competence.
+
+**Ma condition pour que je fasse passer cette ligne a `couvert-valide`** - et elle est ecrite pour ne
+pas etre rejouee a chaque sprint :
+
+1. **les voyelles simples et les consonnes simples sont couvertes**, par ce jeu ou par un autre. Une
+   correspondance grapheme-phoneme simple ne se travaille pas par un choix entre trois notations de
+   son : c'est probablement un autre jeu, et ce n'est pas a moi de le concevoir ;
+2. **les digraphes `ou`, `oi` et `ch` sont couverts par un jeu qui emet un son.** J'ai tranche le
+   2026-08-06 qu'ils ne sont pas travaillables sans audio, et je ne rouvre pas ce point : sans son,
+   un digraphe transparent ne peut donner lieu qu'a une recherche de lettres. Tant qu'aucun jeu
+   sonore n'existe, cette part de la ligne reste un trou reel, et il vaut mieux qu'il soit visible
+   dans la matrice que comble par des items qui ne verifient rien ;
+3. **les trois nasales gardent les proprietes acquises aujourd'hui** : au moins deux graphies par
+   son, entre un tiers et la moitie d'items a variation, une explication sur chaque item a variation,
+   aucun item resoluble par appariement visuel ;
+4. et **j'aurai joue l'increment** avant de le dire.
+
+Rien d'autre. Ce qui n'est pas dans cette liste - dont les sept reserves de la section 5 - ne bloque
+pas `couvert-valide` et ne pourra pas m'etre oppose comme l'ayant bloque. Je dis franchement que
+cette barre est loin : elle demande au moins un jeu qui n'existe pas. C'est la mesure honnete de
+l'ecart, et elle est preferable a un `couvert-valide` qui ferait disparaitre le trou.
+
+#### 7. Ce dont je reste seule garde sur ce jeu
+
+`ChaquePaquetExpliqueSesItemsAVariationTest` epingle desormais qu'un item dont la graphie differe de
+la reponse porte une explication, `ChaquePaquetPorteUnIndiceTest` qu'aucun item n'est livre sans
+indice, et `PaquetsFrancaisS04Test` que le paquet ne presente que les trois nasales, sans crochet, et
+qu'il varie sur vingt manches. C'est beaucoup, et c'est neuf depuis mon refus. **Ce qu'aucun test ne
+dit, et que je porte seule :**
+
+1. **Que le mot fasse reellement le son annonce, et un seul des trois.** Mon motif 4. Aucun test ne
+   sait prononcer.
+2. **Que la graphie declaree soit la bonne** - qu'on ecrive bien `en` pour DENT et non `an`. Le champ
+   `graphie` est la donnee sur laquelle les garde-fous s'appuient ; s'il mentait, ils seraient verts
+   sur un paquet faux. C'est moi qui le lis.
+3. **Que le texte de l'explication soit vrai et lisible par un enfant de six ans.** Un test peut
+   verifier qu'il existe, pas qu'il dit vrai ni qu'il est comprehensible.
+4. **Que le mot de renvoi de l'indice fasse le meme son que l'item.** Verifie a la main sur les
+   neuf, et rien ne le surveille.
+
+#### 8. Suites hors de ma main
+
+- **L'entree de catalogue de la branche jetable `s06-lea-son-cp-jouable-jetable` peut rejoindre
+  `round-two`** : mon verdict est VALIDE SOUS RESERVE, donc la condition posee par `sofia-sm` est
+  remplie. Je ne fusionne pas et je n'ai pas touche a `catalogue.yaml` : ce fichier n'est pas le
+  mien.
+- `squad/programme/MATRICE-couverture.md`, ligne `francais | CP | Lecture et comprehension de
+  l'ecrit | Associer les graphemes aux phonemes` : **reste `en cours`**, avec la barre de la
+  section 6. Je n'ai pas edite cette ligne, elle appartient a `camille-po`.
+- Pour `camille-po`, sans que j'ecrive de story : la reserve 2 (progression du tirage) est la
+  premiere a instruire sur ce jeu ; la reserve 5 (deux paires de mots rimant) se corrige avec des
+  mots deja listes dans mon avis du 2026-08-06 ; la reserve 4 (niveau annonce sur l'accueil) est
+  commune aux quatre jeux et n'est toujours pas traitee.
+- Pour `ines-design`, comme symptome et non comme conception : l'explication qui suit la reponse est
+  aujourd'hui moins signalee que le bandeau juste/faux qui la precede (reserve 6).

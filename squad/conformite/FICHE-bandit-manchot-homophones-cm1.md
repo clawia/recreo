@@ -3,13 +3,14 @@
 - **Mecanique** : bandit manchot (mecanique generique, partagee avec
   `bandit-manchot-additions-cp` et `bandit-manchot-le-bon-son-cp`).
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cm1-homophones.yaml`,
-  22 items, `type: question`, chacun porteur d'un indice. Matiere premiere issue de
-  `contenu-repris/`.
-- **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique accorde le 2026-08-06, reconduit
-  le 2026-08-07 sur l'increment de s05). C'est le premier contenu de CM1 du produit.
-- **Ligne de matrice** : **reste `en cours`.** Ma condition de `couvert-valide` n'est pas levee -
-  motif au verdict du 2026-08-07, section 3.
-- **Derniere mise a jour** : 2026-08-07
+  24 items depuis s06 (22 a l'audit de s05, 10 a celui de s04), `type: question`, chacun porteur
+  d'un indice. Matiere premiere issue de `contenu-repris/`.
+- **Statut global** : **VALIDE** (Done pedagogique accorde le 2026-08-06, reconduit le 2026-08-07,
+  **verdict VALIDE sans reserve bloquante le 2026-08-10**). C'est le premier contenu de CM1 du
+  produit.
+- **Ligne de matrice** : **passe a `couvert-valide`.** Ma condition en six points est **levee** au
+  2026-08-10 - motif au verdict du meme jour. C'est la deuxieme ligne du produit a l'atteindre.
+- **Derniere mise a jour** : 2026-08-10
 
 ## Competences visees
 
@@ -513,3 +514,182 @@ concernent les trois jeux et pas celui-ci en propre. **Je les tranche dans
 j'ecris l'habillage commun. Resume, pour qu'on n'ait pas a chercher : l'en-tete est **accorde sous
 reserves**, le comportement du double appui est **valide**, et **aucun de ces verdicts ne remet en
 cause le Done pedagogique accorde ici**.
+
+---
+
+### Verdict du sprint s06 - audit du 2026-08-10, le paquet a 24 items : ma condition est levee
+
+- **Verdict sur l'increment** : **VALIDE.** Done pedagogique accorde, sans reserve bloquante. Les
+  reserves qui restent ouvertes sont nommees en section 5 et aucune ne conditionne quoi que ce soit.
+- **Verdict sur la ligne de matrice** : **ma condition en six points est LEVEE. La ligne
+  `francais | CM1 | Orthographe et grammaire | ... homophones grammaticaux` passe a
+  `couvert-valide`.** `camille-po` peut editer la ligne.
+- **Commit audite** : `be60b10` (`HEAD` de `round-two`).
+- **Moyens** : audit **joue**, non degrade. Worktree dedie hors de l'arbre du depot, lignee
+  verifiee (`outils/verifier-lignee.sh`). JDK constate par `outils/verifier-jdk.sh` : `java du
+  PATH : 1.8.0_202 | JDK de compilation : 21.0.10 | JAVA_HOME : vide | toolchains lu par Maven :
+  non (fichier present sous un nom non lu)` ; `JAVA_HOME` pointe sur ce JDK 21 le temps de la
+  commande, jamais ecrit dans un fichier commite. Fat jar reconstruit, lance sur un port dedie.
+  **Treize parties completes jouees** - cinq en me trompant a chaque manche pour faire venir l'aide,
+  puis huit de plus dans le seul but de faire sortir du tirage les items que je devais lire a
+  l'ecran. Les vingt-quatre enonces ont ete vus a l'ecran, et vingt-trois des vingt-quatre indices.
+
+#### 1. Les deux items neufs que je demandais : tenus, un par un
+
+Ma condition du 2026-08-07 demandait, au chiffre pres, **deux items neufs de plus dont le mot
+decisif n'est pas voisin du trou**, pris dans `la`/`l'a`, `ces`/`ses` ou `peu`/`peut`. Les deux sont
+livres, et ils sont pris dans deux des trois familles que j'avais nommees.
+
+**Item 23, famille `la`/`l'a`** : *"Tom cherchait sa gomme depuis le début du cours, et son voisin
+___ enfin repérée sous la table."* -> `l'a`.
+
+- Le voisin de gauche est `voisin`, un nom : il ne tranche pas, puisque `la` derriere un nom sujet
+  est parfaitement possible comme pronom ("son voisin la regarde").
+- Le voisin de droite est `enfin`, un adverbe : il elimine la lecture determinant, mais **pas** la
+  lecture pronom.
+- **Le mot decisif est `repérée`**, un participe passe, qui exige l'auxiliaire. Il est separe du trou
+  par `enfin`. C'est exactement la structure de l'item 13 que j'avais deja creditee en s05
+  ("...elle ___ enfin retrouvé ce matin"). **Tenu.**
+- Exactitude : l'accord de `repérée` au feminin est juste, le pronom `l'` a un antecedent explicite
+  (`sa gomme`) - ce qui repond au passage, sans qu'on me l'ait demande, au defaut que je signalais en
+  reserve 12. Le melange imparfait / passe compose est du francais correct.
+
+**Item 24, famille `peu`/`peut`** : *"Après cette longue randonnée en montagne, le vieux chien ne
+___ plus vraiment courir comme avant."* -> `peut`.
+
+- **Le mot decisif est `courir`**, un infinitif, separe du trou par `plus vraiment`. C'est la
+  structure de l'item 22 que j'avais deja creditee en s05 ("...il ___ encore pleuvoir avant le
+  soir"). **Tenu.**
+- Exactitude : le sujet n'est ni `je` ni `tu`, donc `peux` n'est pas la vraie reponse cachee - ma
+  regle du 2026-08-06 sur cette famille est respectee. L'indice montre la phrase substituee en
+  entier et elle est du francais : *"Remplace par 'pouvait' : 'le vieux chien ne pouvait plus
+  vraiment courir comme avant' fonctionne, alors c'est 'peut'."*
+
+**Le compte est donc de sept items neufs non locaux sur quatorze** (les cinq de s05 plus ces deux).
+Il en fallait sept. **Point 5 de ma condition : tenu.**
+
+##### Une limite de mon propre critere, que je nomme et qui ne bloque rien
+
+Je l'ecris parce que je l'ai vue en relisant l'item 24 et qu'il serait malhonnete de la taire.
+
+Dans "ne ___ plus", **le mot `ne`, immediatement a gauche du trou, exige a lui seul un verbe** et
+suffit donc a exclure `peu`. Mon critere, tel que je l'ai ecrit ("le mot decisif n'est pas voisin du
+trou"), regarde ou se trouve le mot qui licencie la reponse ; ici c'est `courir`, et le critere est
+tenu. Mais il existe un indice local qui permet de s'en passer.
+
+**Cette limite ne peut pas servir a refuser l'item 24, parce qu'elle vaut a l'identique pour
+l'item 22 que j'ai deja credite** : dans "il ___ encore pleuvoir", le `il` immediatement a gauche
+exige lui aussi un verbe. Refuser l'un en gardant l'autre serait relever ma barre apres coup, et
+rendrait ma condition inatteignable dans cette famille apres que l'equipe s'y est engagee. **Je ne
+deplace pas mes poteaux : les deux items comptent.**
+
+Ce que j'en fais a la place : **une remarque neuve et datee du 2026-08-10**, pour une story
+ulterieure si `camille-po` veut aller plus loin - une version plus exigeante du critere demanderait
+qu'aucun mot voisin du trou, meme un mot grammatical, ne suffise a trancher. Je ne l'exige pas
+aujourd'hui, et elle ne pourra pas etre presentee comme ayant bloque `couvert-valide`.
+
+#### 2. L'indice de "J'ai rangé ___ affaires" : corrige, et lu a l'ecran
+
+Le second des deux points qui manquaient. L'indice servi par l'application est desormais :
+
+> Remplace par 'tes' : 'J'ai rangé tes affaires' fonctionne, alors c'est 'mes'.
+
+C'est **le texte que j'avais dicte, au mot pres**, et je l'ai lu sur la reponse HTTP apres l'avoir
+fait apparaitre en jeu, pas seulement dans le fichier YAML. La methode est desormais applicable : un
+enfant qui substitue `tes` obtient une phrase francaise, ce qui n'etait pas le cas de *"les miennes
+affaires"*. Les quinze indices de substitution du paquet montrent maintenant tous la phrase
+substituee. **Point tenu.**
+
+#### 3. Ma condition en six points, recapitulee et close
+
+| Point de ma condition du 2026-08-06 | Verdict au 2026-08-10 |
+|---|---|
+| 1. Les cinq familles manquantes sont ajoutees | **tenu** (acquis en s05) |
+| 2. `la/là/l'a` en deux paires pivotant sur `la`, un seul distracteur par item | **tenu** (acquis en s05) |
+| 3. Chaque paire, ancienne et nouvelle, dans les deux sens | **tenu** - onze paires, les deux sens partout ; les items 23 et 24 ne font que renforcer `l'a` et `peut` |
+| 4. Aucun item n'admet deux lectures correctes | **tenu** - re-verifie sur les deux items neufs, section 1 |
+| 5. Au moins la moitie des items neufs oblige a regarder ailleurs que juste avant le trou | **tenu** - 7 sur 14 |
+| 6. J'aurai joue l'increment | **tenu** - treize parties |
+
+**Cette condition est close. Elle ne sera pas rouverte, et rien ne s'y ajoute.** Le
+`couvert-valide` que je prononce porte sur les dix familles que j'avais listees le 2026-08-06, avec
+la limite que j'avais nommee ce jour-la et que je re-nomme ici pour qu'elle reste visible :
+**`c'est`/`s'est` (et `sait`/`sais`) n'y est pas.** Il satisfait mes quatre criteres et c'est l'une
+des fautes les plus frequentes au CM1 ; je ne l'ai pas ajoute a ma condition parce qu'une condition
+qui grossit apres avoir ete engagee n'est plus une condition. Il reste le premier candidat d'une
+story ulterieure. `couvert-valide` veut donc dire ici : **les dix familles principales sont
+travaillees dans les deux sens, avec une profondeur de CM1 sur la moitie des items neufs** - pas
+"tous les homophones grammaticaux du francais".
+
+#### 4. Ce que j'ai verifie en plus, et qui tient
+
+Un controle qui ne dit rien quand ca va bien ne prouve rien.
+
+- **Zero erreur factuelle sur les vingt-quatre enonces**, dont les deux neufs, re-verifies un par
+  un. Chaque phrase n'admet qu'une seule lecture grammaticalement correcte.
+- **Les vingt-quatre distracteurs sont tous des homophones de la bonne reponse.** Aucune devinette.
+- **Le tirage fonctionne** : sur cinq parties consecutives j'ai vu vingt-deux enonces distincts sur
+  vingt-quatre, et aucune partie ne repetait la precedente. Ma reserve 1, levee en s05, le reste, et
+  vingt-quatre items pour dix manches est la bonne proportion.
+- **L'aide se declenche a la bonne manche** : trois echecs consecutifs, indice a la quatrieme, verifie
+  a nouveau en jeu.
+- **Accents intacts a l'ecran** sur les deux items neufs (`repérée`, `randonnée`), verifies sur la
+  reponse HTTP et sur le rendu au navigateur, pas seulement dans le fichier.
+- **Aucun biais nouveau.** Les deux items neufs introduisent `Tom` comme sujet et un chien age ;
+  aucune configuration familiale presupposee, aucun stereotype de role.
+- **Rendu reel** : a 1280 px comme a une largeur de viewport reellement de 360 px, l'enonce, les deux
+  propositions et l'indice tiennent au-dessus du pli, et l'entree de menu de l'en-tete est bien
+  masquee sur les ecrans de jeu (voir `FICHE-bandit-manchot-additions-cp.md`, verdict S6-9 du
+  2026-08-10).
+
+#### 5. Reserves ouvertes - aucune n'est bloquante, aucune ne l'a jamais ete
+
+Elles restent a convertir en stories par `camille-po`. Je les recapitule pour qu'on n'ait pas a
+reconstituer l'historique : **2** (les phrases anciennes restent locales), **3** (desequilibre des
+sujets, ameliore mais non ferme), **4** ("Papa ___ maman" presuppose une configuration familiale),
+**5** (deux propositions donnent une chance sur deux, le score ne mesure pas grand-chose), **7**
+(l'accueil ne dit pas le niveau), **8** ("du thé ou du café" est un choix d'adulte), **9** (`ce`/`se`
+proposes en minuscules en tete de phrase, seule incoherence interne du paquet), **10** (l'indice
+donne la reponse en plus de la methode), **11** ("un participe" est le mot le plus abstrait des
+indices), **12** (le pronom `la` de l'item 14 n'a aucun antecedent). Les reserves 1 et 6 sont
+levees depuis s05.
+
+Reserve nouvelle, datee du 2026-08-10, non bloquante :
+
+13. **La distribution des vingt-quatre items n'est plus equilibree entre les deux sens.** Avec les
+    items 23 et 24, `l'a` est la bonne reponse deux fois contre une pour `la` dans cette paire, et
+    `peut` deux fois contre une pour `peu`. Mon point 3 exigeait la presence des deux sens, pas leur
+    egalite, donc il est tenu ; mais un enfant qui joue dix manches a desormais un peu plus de
+    chances de rencontrer le membre verbal que le membre determinant de ces deux paires. Un item de
+    plus dans chacun des deux sens manquants remettrait le paquet a plat, a vingt-six items. Sans
+    consequence sur ce que le jeu enseigne.
+
+#### 6. Ce dont je reste seule garde sur ce jeu
+
+`PaquetsFrancaisS04Test` epingle les couples, l'unicite du distracteur apparie, la variete sur vingt
+manches, la non-regression des dix items d'origine et le texte corrige de l'indice `mes`. **Ce
+qu'aucun test ne dit, et que je porte seule :**
+
+1. **Qu'aucun item n'admette deux lectures correctes.** C'est mon point 4, le plus dangereux du
+   paquet sur `ces`/`ses`, et il se juge phrase par phrase par un adulte qui cherche l'autre
+   lecture. Aucun garde-fou ne peut le faire.
+2. **Que le mot decisif ne soit pas voisin du trou.** Mon point 5 est un jugement sur la syntaxe de
+   chaque phrase ; `marc-dev` et moi l'avons compte differemment (4 contre 5) sur le meme paquet, ce
+   qui montre bien qu'il n'est pas mecanisable en l'etat.
+3. **Que les indices enseignent une manipulation applicable.** L'indice `mes` est desormais epingle
+   par un test, mais seulement dans sa lettre : rien n'empeche un indice futur d'instruire une
+   substitution qui n'est pas du francais. Le refus que je prononce le meme jour sur
+   `bandit-manchot-conjugaison-present-cm1` porte exactement sur ce point-la.
+
+#### 7. Suites hors de ma main
+
+- `squad/programme/MATRICE-couverture.md`, ligne `francais | CM1 | Orthographe et grammaire |
+  Distinguer et utiliser correctement les principaux homophones grammaticaux` : **passe de
+  `en cours` a `couvert-valide`**, sur ce verdict. Je n'ai pas edite cette ligne, elle appartient a
+  `camille-po`, et le texte de la note de matrice doit dire ce que la section 3 dit : dix familles,
+  `c'est`/`s'est` nomme et hors perimetre.
+- `squad/programme/francais/competences-cm1.md` gagnerait toujours a porter la liste des dix
+  familles a la place de ses points de suspension. Point deja remonte le 2026-08-06 et toujours
+  ouvert ; il n'a pas bloque `couvert-valide` et n'aurait pas du.
+- Les dix reserves de la section 5 sont du backlog pour `camille-po`. Aucune ne conditionne le
+  statut de la ligne.
