@@ -1,0 +1,20 @@
+# Le meme paquet fautif, une fois son indice general remplace par la forme qui nomme le verbe
+# (le meme modele que l'indice de l'item "finis" ci-dessous, deja dans le paquet original). Texte
+# de fixture, jamais affiche a un enfant.
+schema: 1
+id: paquet-indice-general-dementi
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Competence de fixture"
+items:
+  - enonce: "Tu ___ un dessin."
+    bonneReponse: "dessines"
+    distracteurs: ["dessine", "dessinent", "dessinez"]
+    indice: "Avec 'tu', le verbe 'dessiner' se termine par '-es' au présent : c'est 'dessines'."
+  - enonce: "Tu ___ ton exercice avant la récréation."
+    bonneReponse: "finis"
+    distracteurs: ["finit", "finissons", "finissent"]
+    indice: "Avec 'tu', le verbe 'finir' se termine par '-is' au présent : c'est 'finis'."

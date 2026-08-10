@@ -26,15 +26,15 @@ items:
   - enonce: "Elles ___ dans le jardin."
     bonneReponse: "jouent"
     distracteurs: ["joue", "jouons", "jouez"]
-    indice: "Avec 'ils' ou 'elles', le verbe se termine par '-ent' au présent : c'est 'jouent'."
+    indice: "Avec 'ils' ou 'elles', le verbe 'jouer' se termine par '-ent' au présent : c'est 'jouent'."
   - enonce: "Tu ___ un dessin."
     bonneReponse: "dessines"
     distracteurs: ["dessine", "dessinent", "dessinez"]
-    indice: "Avec 'tu', le verbe se termine par '-es' au présent : c'est 'dessines'."
+    indice: "Avec 'tu', le verbe 'dessiner' se termine par '-es' au présent : c'est 'dessines'."
   - enonce: "Je ___ mon cahier dans mon sac."
     bonneReponse: "cherche"
     distracteurs: ["cherches", "cherchons", "cherchent"]
-    indice: "Avec 'je', le verbe se termine par '-e' au présent : c'est 'cherche'."
+    indice: "Avec 'je', le verbe 'chercher' se termine par '-e' au présent : c'est 'cherche'."
   - enonce: "Tu ___ ton exercice avant la récréation."
     bonneReponse: "finis"
     distracteurs: ["finit", "finissons", "finissent"]
@@ -42,7 +42,7 @@ items:
   - enonce: "Elle ___ toujours ses affaires avant de partir en récréation."
     bonneReponse: "range"
     distracteurs: ["ranges", "rangeons", "rangent"]
-    indice: "Avec 'il' ou 'elle', le verbe se termine par '-e' au présent : c'est 'range'."
+    indice: "Avec 'il' ou 'elle', le verbe 'ranger' se termine par '-e' au présent : c'est 'range'."
   - enonce: "Nous ___ dans la cour pendant la récréation."
     bonneReponse: "courons"
     distracteurs: ["cours", "court", "courent"]
@@ -54,4 +54,4 @@ items:
   - enonce: "Ils ___ une chanson en rentrant de l'école."
     bonneReponse: "chantent"
     distracteurs: ["chante", "chantons", "chantez"]
-    indice: "Avec 'ils' ou 'elles', le verbe se termine par '-ent' au présent : c'est 'chantent'."
+    indice: "Avec 'ils' ou 'elles', le verbe 'chanter' se termine par '-ent' au présent : c'est 'chantent'."
