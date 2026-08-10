@@ -177,9 +177,10 @@ d'arcade - un objet qu'on presse, jamais qu'on tire.
 - Le petit disque translucide en haut du bouton est **purement decoratif** (`content: ""`, la
   meme regle qu'ailleurs dans ce document) : un reflet de "capuchon" de bouton-poussoir, jamais un
   second mot, jamais une fleche.
-- Mesure sur rendu reel a 360 px (voir section 7 pour la methode) : le disque se place a 0,4rem du
-  bord haut du bouton et ne touche a aucun moment le texte, qui reste centre par le
-  `display: inline-flex; align-items: center` deja en place. Capture jointe en section 7.
+- Mesure sur rendu reel a 360 px (methode en section 7) : le disque se place a 0,4rem du bord
+  haut du bouton et ne touche a aucun moment le texte, qui reste centre par le
+  `display: inline-flex; align-items: center` deja en place. Maquette jetable, supprimee apres
+  la mesure, comme celles de la section 5.
 
 **Ce que je ne touche pas** : `.demarrer` et `.encore` gardent leur `min-height: 2,75rem`,
 `min-width: 2,75rem`, `padding: 0.75rem 1.25rem` et `font-size: 1,25rem` inchanges (le mot du
