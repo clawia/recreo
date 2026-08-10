@@ -1,0 +1,362 @@
+# ADR-0027 - Faire declarer par le serveur comment un ecran de jeu est arrive, et n'autoriser un mouvement que sur un geste de l'enfant
+
+- **Statut** : Accepte
+- **Date** : 2026-08-10
+- **Auteur** : theo-archi
+- **Sprint** : s07
+- **Amende** : `ADR-0026` section 2
+
+## Contexte
+
+`nadia-prof` valide le mecanisme d'`ADR-0026` et me route un defaut qu'il contient (arbitrage
+prealable du 2026-08-10, `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section 6). Elle
+decrit le symptome et ne prescrit pas la cause. La voici.
+
+### Le defaut
+
+`accueil.html` rend le fragment de manche en clair, sans htmx et sans aucun geste, sur la branche de
+reprise silencieuse de S1-4 :
+
+```
+<div th:if="${reprise}">
+    <div th:replace="~{fragments/manche :: manche}"></div>
+</div>
+```
+
+Un enfant qui recharge sa page pendant que sa session est valide verrait donc les colonnes tourner
+sans avoir rien touche. `nadia-prof` l'interdit nommement, et c'est une de ses quatre conditions non
+negociables : le message qu'un ecran doit porter est que l'enfant agit, pas que la machine tourne
+toute seule. Si l'enfant apprend que les colonnes tournent sans lui, l'argument qui sauve la
+metaphore tombe - c'est elle qui l'ecrit, et l'argument est le sien.
+
+### La cause reelle, et elle est dans mon propre texte
+
+`ADR-0026` section 2 dit : "une animation CSS demarre quand l'element qui la porte entre dans le
+document. htmx insere le fragment de manche dans `#jeu`. Une declaration `animation` sur les colonnes
+suffit donc."
+
+La premiere phrase est exacte. La troisieme est fausse, et la deuxieme explique pourquoi je ne l'ai
+pas vu : **j'ai pris "entrer dans le document" pour la propriete qui m'interessait, alors que la
+propriete qui m'interesse est "avoir ete demande par un geste".** Ce sont deux choses differentes,
+parce qu'un element entre dans le document de deux facons :
+
+1. par un echange htmx, qui est toujours la reponse a un appui de l'enfant ;
+2. par l'analyse d'une page entiere que le navigateur charge, ce qu'aucun appui dans l'application ne
+   declenche - une navigation, un rechargement, un signet.
+
+J'ai confondu une propriete **structurelle** avec la propriete **qui compte**, et j'ai ecrit
+"insertion" en pensant "htmx" parce que htmx etait le seul chemin que j'avais sous les yeux. C'est
+exactement la famille de faute que ce depot a deja actee deux fois de ma main : `ADR-0022` a du
+corriger "hors de la zone echangee" pris pour "visible sur tous les ecrans", et la limite 5
+d'`ADR-0017` disait "un ecran est un fichier de gabarit" jusqu'a ce qu'un en-tete permanent la
+demente. Troisieme occurrence, meme forme, et je l'inscris comme telle plutot que comme un oubli.
+
+### Pourquoi le CSS ne peut pas rattraper cela, et pourquoi ce n'est pas un choix
+
+Une fois le fragment insere, **le document assemble est exactement le meme dans les deux cas** : meme
+arbre, memes classes, meme place dans `<main id="jeu">`. Aucun selecteur CSS ne peut donc distinguer
+les deux chemins, et `:has()` n'y change rien. La distinction n'a **aucune existence possible** si le
+serveur ne la pose pas. Ce n'est pas une preference de conception, c'est une contrainte, et elle
+determine seule la forme de la solution.
+
+## Decision
+
+### 1. Le serveur declare, sur chaque ecran de jeu qu'il rend, comment cet ecran est arrive
+
+`fragments/manche.html` porte desormais un second marqueur d'etat, a cote de celui d'`ADR-0022` :
+
+```
+<div th:fragment="manche" class="ecran-de-jeu"
+     th:attr="data-arrivee=${arriveeParUnGeste} ? 'par-un-geste' : 'sans-geste'">
+```
+
+Les deux marqueurs ne disent pas la meme chose, et c'est pourquoi il en faut deux : `ecran-de-jeu`
+dit **ou** l'enfant est, `data-arrivee` dit **comment** il y est arrive.
+
+**Un attribut et non une classe.** J'ai ecrit la classe d'abord, et un garde-fou existant l'a
+refusee : `HabillageDesEcransTest.aucuneClassePoseeSurUnElementNEstOrpheline` exige que toute classe
+posee sur un element soit nommee par une regle servie. Comme aucune animation n'existe encore, la
+satisfaire aurait demande une regle CSS qui ne style rien - decorative, et refusee ici comme partout
+ailleurs dans ce depot. Le refus etait juste, et il pointe l'idiome que le depot possede deja :
+`ADR-0017` a choisi `data-role` precisement parce que ce qu'il declare n'est pas un habillage. Un
+selecteur d'attribut, `[data-arrivee=par-un-geste]`, s'accroche aussi bien le jour ou une animation
+existe. **Ce garde-fou m'a corrige avant la revue, et c'est la troisieme fois que celui d'un autre
+lot le fait ; je le note plutot que de presenter le choix final comme le premier.**
+
+### 2. La declaration est un parametre, pour que le compilateur rende la derivation totale
+
+`PartieController.mancheModele` est le **seul point de passage** de l'ecran de jeu - sa Javadoc le
+disait deja, `ADR-0020` s'y appuie. Il recoit donc un parametre `boolean arriveeParUnGeste`, et non un
+attribut de modele pose a cote :
+
+| Appelant | Ce que l'enfant a fait | Valeur |
+|---|---|---|
+| `accueil()`, branche de reprise | rien : le navigateur a charge une page | `SANS_GESTE` |
+| `demarrer()`, `POST /parties/{jeuId}` | presse le titre d'un jeu | `PAR_UN_GESTE` |
+| `continuer()`, `GET /parties/{jeuId}/manche` | presse "Encore !" | `PAR_UN_GESTE` |
+
+**Un parametre parce que le compilateur oblige alors chaque point d'appel a se prononcer**, ceux
+d'aujourd'hui comme ceux de demain. Une route neuve qui rendrait l'ecran de jeu ne peut pas oublier de
+declarer son arrivee : elle ne compile pas. C'est la meme raison qui a fait mettre le controle de fin
+de partie dans ce point de passage unique plutot que dans chaque route (`ADR-0020`), et c'est le seul
+endroit du chantier ou une derivation totale s'obtient du compilateur plutot que d'un test.
+
+**Le mode de defaillance est l'immobilite, jamais un mouvement non demande.** Un marqueur oublie, mal
+ecrit, ou une future version d'htmx qui changerait de comportement : dans tous ces cas le selecteur ne
+correspond a rien et rien ne bouge. C'est le bon sens de defaillance, et c'est ce qui rend ce
+mecanisme preferable a la lecture d'un en-tete `HX-Request` (voir alternatives).
+
+### 3. Aucune animation n'est atteignable hors du marqueur de geste
+
+Toute regle maison qui anime quelque chose nomme `[data-arrivee=par-un-geste]` dans son selecteur.
+`ADR-0026` regle 1 est donc etendu : une animation qui ne le nomme pas tournerait sur la reprise, et
+c'est le defaut lui-meme.
+
+**Consequence que j'ai verifiee plutot qu'esperee** : le marqueur n'est pose que sur l'ecran de
+manche, jamais sur `fragments/retour.html`. **Aucune animation ne peut donc atteindre l'ecran de
+retour, ecran de fin de partie compris**, ce qui satisfait structurellement l'acquis 6 de
+`nadia-prof` - aucun levier, aucune colonne, aucun decor, aucune animation sur cet ecran. Je nomme
+tout de suite la limite de cette bonne nouvelle : elle cesse d'etre structurelle le jour ou quelqu'un
+pose le marqueur sur l'ecran de retour, ce qui serait legitime en soi puisque cet ecran arrive
+toujours par un geste. **A cet instant l'acquis 6 redevient garde par `nadia-prof` seule**, et le
+garde-fou de saillance n'a par construction rien a comparer sur un ecran ou un seul bouton s'affiche.
+Personne ne doit croire cet acquis garde pour toujours.
+
+### 4. La duree du defilement cesse d'etre non gardable, parce qu'elle a maintenant un chiffre
+
+`ADR-0026` a declare la duree non gardable et l'a confiee a `nadia-prof`. **C'etait juste tant
+qu'aucun seuil n'existait, et ca ne l'est plus** : son arbitrage en donne trois. Une clause devient
+gardable le jour ou son destinataire donne un nombre, et c'est le mouvement le plus utile de cet ADR.
+
+| Ce qu'elle fixe | Valeur | Garde |
+|---|---|---|
+| duree de l'appui a l'arret de la derniere colonne | **0,3 s a 1,2 s** | automate, clause 6 |
+| valeur conseillee | 0,6 s | conseil, non garde |
+| decalage entre premiere et derniere colonne, compris dans le budget | **0,25 s au plus** | automate, clause 6 |
+| rebond, oscillation, arret brutal, stroboscope au-dela de 3/s | refuses | **`nadia-prof` seule** |
+
+Ce qui reste a `nadia-prof` est ce qu'une feuille de style ne dit pas : la courbe percue, le rebond
+obtenu par une suite d'images cles, et le lien percu entre le geste et le mouvement. Ce qui passe a
+l'automate est ce qu'elle a chiffre.
+
+### 5. "Jamais un autre mot" : gardee sur ses deux formes realisables, le residu lui reste
+
+Sa question directe, et voici la reponse en trois parties.
+
+**Non, `ADR-0026` ne couvrait pas cette propriete.** Sa clause 3 interdit un etat permanent qui rend
+une proposition inactionnable ; elle ne dit rien du texte affiche.
+
+**Oui, elle est gardable sur les deux seules formes qu'un rouleau reel peut prendre**, et les deux
+sont desormais gardees :
+
+1. **un mot leurre rendu par le serveur** - la bande de faces intermediaires, la forme classique. Ce
+   sont des elements que le serveur envoie dans le conteneur de propositions. La clause verifie, sur la
+   sortie reelle du serveur, que **tout texte porte a l'interieur de `.propositions` est l'une des
+   propositions**. Une bande de leurres la fait rougir ;
+2. **un mot fabrique par la feuille de style** - `content` sur un pseudo-element, la seule propriete
+   CSS qui produit du texte. La clause refuse toute valeur de `content` autre que la chaine vide ou
+   `none`. La chaine vide reste autorisee parce que c'est de la decoration pure et que les deux barres
+   de la croix du signal faux l'emploient deja : ce sont ces deux regles qui rendent la clause non
+   vide des aujourd'hui.
+
+Une troisieme forme, un mot produit par du JavaScript, etait deja fermee par `ADR-0026` regle 2
+(`proposition` et `colonne` interdits dans le JavaScript maison).
+
+**Le residu, et il reste a `nadia-prof`** : un mot **peint dans une image** (fond `background-image`,
+SVG en `data:`, sprite vendorise) echappe aux deux clauses, et la question de savoir si un mot reste
+lisible **pendant** qu'il glisse est une propriete du rendu qu'aucun automate de ce depot ne produit
+(`ADR-0025`). Je ne l'elargis pas a la presence du texte dans une image : ce serait une regle contre
+un defaut que le depot n'a pas etabli, et elle interdirait au passage tout pictogramme legitime.
+
+Sa liste des huit choses dont elle reste seule garde en compte donc **six** apres cet ADR : ses points
+1 (partiellement : la courbe et le rebond, plus la duree), 2, 3, 4 (partiellement : le residu en
+image), 5 (partiellement : le residu en image), 6 et 7. Son point 8 - "le mouvement ne se declenche
+jamais sans geste" - **lui est rendu par un automate**, et c'est l'objet principal de cet ADR.
+
+## Regles executables
+
+### Regle 1 - `LEcranDeJeuDeclareCommentIlEstArriveTest`, la moitie serveur
+
+Fichier :
+`adapters/adapter-web/src/test/java/com/recreo/adapter/web/LEcranDeJeuDeclareCommentIlEstArriveTest.java`
+
+`@WebMvcTest` sur la sortie reelle du serveur, corpus produit en jouant une partie de bout en bout.
+Perimetre derive : les routes viennent de `RequestMappingHandlerMapping` comme dans
+`ToutEcranEchangeEstUnDocumentJouableTest`, et **ce qui distingue un document complet d'un fragment
+est lu dans la reponse elle-meme** - un `<!doctype` et un element `<html>` - jamais dans une liste de
+routes ecrite dans le test. C'est le seul critere qui ne se perime pas : un fragment est par
+definition ce que htmx echange, un document complet est par definition ce que le navigateur charge.
+
+Cinq clauses, dont **quatre ont une population de production non vide aujourd'hui** :
+
+1. **aucun ecran de jeu arrivant dans un document complet ne declare `par-un-geste`**, et il declare
+   bien `sans-geste` plutot que rien ;
+2. **tout ecran de jeu echange par htmx declare `par-un-geste`**, et le marqueur ne prend qu'une des
+   deux valeurs connues. Sans cette clause, ne jamais poser le marqueur rendrait la clause 1 verte a
+   vide et aucun rouleau ne tournerait jamais : les deux clauses se tiennent par les deux bouts ;
+3. **chaque route du controleur est exercee** ;
+4. **le corpus porte les deux populations**, et les documents complets sont ceux du navigateur et eux
+   seuls ;
+5. **epinglage du chemin fautif** : la reprise rend bien un ecran de jeu dans un document complet. Si
+   `camille-po` decide que la reprise ne rend plus la manche en clair, ce test devient rouge et son
+   message dit que la clause 1 perd son objet - le defaut aurait disparu, et cet ADR devrait etre
+   repris plutot que laisse vert a vide.
+
+Plus la clause "jamais un autre mot", versant serveur : **aucun texte autre que les propositions
+n'entre dans le conteneur de propositions.**
+
+**Preuves de morsure, par trois mutations reelles de la production.** Chacune relancee, production
+restauree et suite reverifiee verte apres coup.
+
+| Mutation | Attendu | Mesure |
+|---|---|---|
+| `accueil()` passe `PAR_UN_GESTE` : le defaut, reintroduit tel quel | clause 1 rouge | **2 echecs sur 6 cas**. Message : "sur \"accueil pendant une partie en cours (reprise silencieuse)\" (GET /), le serveur rend un ecran de jeu dans un document complet [...] et il declare `data-arrivee="par-un-geste"`. Les colonnes tourneraient devant un enfant qui a seulement recharge sa page" |
+| polarite du marqueur inversee dans le gabarit (relecture adverse) | les deux clauses rouges, chacune de son cote | **3 echecs sur 6 cas** : la clause 1 sur la reprise, la clause 2 sur les deux echanges htmx. C'est la mutation qui prouve que les deux bouts sont tenus - une seule des deux clauses aurait laisse passer l'inversion |
+| le marqueur disparait du gabarit | l'ecran muet est refuse, pas ignore | **3 echecs sur 6 cas**, dont "cet ecran de jeu ne declare pas comment il est arrive" et "declare `data-arrivee="<aucune>"` au lieu de `par-un-geste`" |
+
+La deuxieme est celle qui compte le plus. Elle etablit qu'aucune des deux clauses ne suffit seule, ce
+qu'aucun cas nominal ne dit : la clause 1 est verte sur un depot ou rien ne bouge jamais, la clause 2
+est verte sur un depot ou tout bouge tout le temps.
+
+### Regle 2 - `LAnimationRetardeMaisNeDetermineRienTest` etendu, la moitie CSS
+
+Trois clauses s'ajoutent aux quatre d'`ADR-0026`.
+
+- **Clause 5** : toute animation nomme `[data-arrivee=par-un-geste]` dans son selecteur.
+- **Clause 6** : duree entre 0,3 s et 1,2 s, retard au plus 0,25 s, duree plus retard au plus 1,2 s.
+  Une regle qui anime sans declarer de duree lisible est un echec et non un cas ignore : on ne
+  confronte pas a une barre un chiffre qu'on ne lit pas.
+- **Clause 7** : aucune regle maison ne declare `content` avec autre chose que la chaine vide ou
+  `none`.
+
+Les clauses 5 et 6 partagent la population des clauses 1 et 2 d'`ADR-0026`, **vide en production
+aujourd'hui**, et donc couvertes par l'epinglage `aucuneAnimationNEstEncoreDeclareeEnProduction` qui
+existe deja et qui affirme que ce compte vaut exactement zero. **La clause 7, elle, a une population
+non vide des aujourd'hui** : deux regles maison declarent `content`, les deux barres de la croix du
+signal faux, et une assertion l'exige explicitement pour que la clause ne passe pas a vide.
+
+**Preuves de morsure, cinq jeux fautifs neufs plus une relecture adverse** :
+
+| Jeu fautif | Attendu | Mesure |
+|---|---|---|
+| `animation-sans-marqueur-de-geste` : animation correcte par ailleurs, sans le marqueur | clause 5 rouge | rouge, "ne nomme pas `[data-arrivee=par-un-geste]`" |
+| `animation-trop-longue` : 1,5 s, refusee nommement par `nadia-prof` | clause 6 rouge sur le plafond | rouge, "au-dela du plafond de 1.2s" |
+| `animation-trop-courte` : 0,2 s | clause 6 rouge sur le plancher | rouge, "sous le plancher de 0.3s" |
+| `decalage-trop-grand` : 0,6 s de duree, 0,7 s de retard | clause 6 rouge sur le decalage | rouge, "au-dela du decalage maximal de 0.25s" |
+| `feuille-qui-fabrique-du-texte` : `content: "son"` sur une face | clause 7 rouge | rouge, "cette regle fabrique du texte" |
+| **relecture adverse** : `animation-avec-repli`, qui declare 0,6 s, la valeur que `nadia-prof` conseille | **vert** | vert. Sans ce cas, une inegalite au mauvais sens rejetterait la seule valeur qu'elle recommande et aucun jeu fautif ne le dirait |
+
+Le dernier cas est le pendant exact de ce qu'`ADR-0025` a appris a ce depot : une barre dont on ne
+verifie que le mauvais cote est une interdiction deguisee.
+
+### Ce qui n'est garde par aucun automate, avec son destinataire
+
+- **Que l'ecran obtenu sous reduction de mouvement soit lisible et jouable.** La clause 2 d'`ADR-0026`
+  garde la **forme** litterale du repli, pas son resultat. `nadia-prof` le dit elle-meme (son point 4
+  de la liste de reverification) et je le confirme : c'est sa part.
+- **Le rebond, la courbe, le stroboscope, et le lien percu entre le geste et le mouvement.**
+  `nadia-prof`.
+- **Un mot peint dans une image**, et la lisibilite d'un mot pendant qu'il glisse. `nadia-prof`.
+- **Qu'aucun decor de machine n'atterrisse sur l'ecran de fin de partie** une fois que le marqueur y
+  serait pose. `nadia-prof`, et la section 3 dit a quel instant precis cela redevient vrai.
+- **Que la reprise silencieuse reste un comportement souhaitable.** Ce n'est pas une question
+  technique : `camille-po`. Si elle decidait que la reprise ne rend plus l'ecran de jeu en clair, le
+  defaut de cet ADR disparaitrait a la racine, et la clause 5 de la regle 1 le dirait.
+
+### Pourquoi rien de tout cela n'est une `ArchRule`
+
+ArchUnit lit du bytecode. Ni un attribut de gabarit rendu, ni une declaration CSS, ni une reponse HTTP
+n'y sont visibles. **Le compte de regles ArchUnit du depot est inchange a 28**, methode dans la section
+Verification.
+
+## Consequences
+
+- Le mouvement suit le geste, et cela se verifie sur la sortie reelle du serveur plutot que sur une
+  intention ecrite dans un ADR.
+- La duree du defilement quitte la colonne "non gardable" et entre dans la CI, avec les trois chiffres
+  de `nadia-prof`. C'est un bon echange : elle garde le jugement, l'automate garde le seuil.
+- **Le depot gagne un idiome reutilisable** : un ecran rendu declare non seulement ou l'enfant est
+  (`ADR-0022`) mais comment il y est arrive. Toute propriete future qui depend du chemin d'arrivee -
+  et il y en aura - a maintenant un endroit.
+- **Mauvaise consequence assumee, la premiere** : deux marqueurs sur le meme element, dont les noms se
+  ressemblent. Quelqu'un confondra `ecran-de-jeu` et `data-arrivee`. Le commentaire du gabarit dit la
+  difference en deux phrases, et c'est tout ce que je peux faire.
+- **Mauvaise consequence assumee, la deuxieme** : la clause 5 interdit aujourd'hui toute animation sur
+  l'ecran de retour, y compris une apparition de la coche que `nadia-prof` n'a jamais refusee. C'est
+  plus strict que ce qu'elle demande. Le prix est faible et la sortie est ecrite : poser le marqueur
+  sur cet ecran, en sachant que l'acquis 6 lui revient alors entierement.
+- **Mauvaise consequence assumee, la troisieme** : `mancheModele` prend un cinquieme parametre, et une
+  signature a cinq parametres est le debut d'un mauvais chemin. Je le prefere a un attribut de modele
+  pose a cote, parce que le compilateur est le seul mecanisme qui rende cette derivation totale sans
+  test. Ce qui me ferait changer d'avis : un sixieme parametre du meme genre, qui serait le signe qu'un
+  objet "contexte de rendu" est du.
+- La duree lisible est celle du raccourci `animation` ou des proprietes explicites. Une duree calculee
+  par une variable CSS ne se lit pas, et la clause 6 la refuse plutot que de l'ignorer. C'est brutal
+  et voulu, comme la liste de mots d'`ADR-0008`.
+
+## Alternatives considerees
+
+- **Lire l'en-tete `HX-Request` que htmx envoie sur chaque requete.** Techniquement juste et sans
+  changement de gabarit. Ecartee pour deux raisons : elle fait dependre une garantie pedagogique d'un
+  detail de comportement d'une bibliotheque tierce, ce qu'`ADR-0014` point 6 refuse nommement ; et
+  elle est moins totale que le parametre, parce que rien n'oblige une route neuve a la consulter. Le
+  parametre a un avantage qu'aucun en-tete n'a : **le compilateur refuse l'oubli.**
+- **Faire poser la classe par `recreo.js` sur `htmx:afterSwap`.** Le fichier ecoute deja cet
+  evenement, et `ADR-0008` autorise nommement le basculement d'une classe. Ecartee : la propriete "le
+  mouvement suit le geste" serait alors detenue par un fichier que la CI ne juge que par son poids et
+  ses mots interdits, alors qu'elle est parfaitement calculable sur le serveur. C'est l'inverse de la
+  doctrine d'`ADR-0008`, dans l'ADR qui la prolonge.
+- **Utiliser les classes que htmx pose pendant un echange** (`htmx-added`, `htmx-settling`). Meme
+  objection tierce que l'en-tete, en pire : ce sont des details d'implementation d'une version
+  vendorisee, et le mode de defaillance d'un changement serait un mouvement non demande plutot qu'une
+  immobilite.
+- **Supprimer le rendu en clair de la manche sur la branche de reprise.** C'est la solution qui
+  supprime le defaut a la racine, et elle ne m'appartient pas : la reprise silencieuse est un
+  comportement produit de S1-4. Routee a `camille-po`, avec la clause 5 de la regle 1 comme detecteur
+  du jour ou elle disparaitrait.
+- **Un marqueur negatif** (`arrivee-sans-geste` seul, l'animation etant l'etat par defaut). Ecartee
+  sur le mode de defaillance : oublier un marqueur negatif produit un mouvement que l'enfant n'a pas
+  demande, c'est-a-dire le defaut. Oublier le marqueur positif produit l'immobilite. Le doute doit
+  toujours jouer du cote de l'immobilite.
+- **Ecrire la duree comme une clause de revue plutot qu'un test.** Ecartee : `nadia-prof` a donne trois
+  chiffres, et laisser un chiffre a la revue quand un automate peut le lire est exactement ce que ce
+  role ne fait pas.
+
+## Ce qui me ferait changer d'avis
+
+- **`camille-po` retire le rendu en clair de la manche sur la reprise.** Le defaut disparait, la
+  clause 1 perd sa population, et cet ADR doit etre repris - probablement pour garder le marqueur, qui
+  reste utile, mais sans pretendre garder un defaut qui n'existe plus.
+- **Un troisieme chemin d'arrivee** qui ne soit ni un echange htmx ni un chargement de page (un
+  `hx-trigger="load"`, une redirection). Le booleen deviendrait insuffisant et il faudrait nommer les
+  chemins, pas seulement les compter.
+- **`nadia-prof` constate en jouant que sa barre de duree est mal placee.** Les trois constantes
+  bougent avec son arbitrage, jamais sans lui, et elles sont a un seul endroit du code pour ca.
+- **Un besoin d'animation sur l'ecran de retour** valide par elle : le marqueur s'y pose, et l'acquis
+  6 lui revient entierement. Ecrit d'avance pour que ce ne soit pas une surprise.
+
+## Verification
+
+`mvn -B clean verify` sur un JDK 21.0.10 designe par `JAVA_HOME` le temps de la commande, dans le
+worktree dedie `theo-s07-machine-a-sous` descendant de `round-two` (`outils/verifier-lignee.sh` vert).
+Constat rendu par `outils/verifier-jdk.sh` : `java` du `PATH` 1.8.0_202, JDK de compilation 21.0.10,
+`JAVA_HOME` vide hors de la commande, toolchains non lu par Maven.
+
+**Resultat : BUILD SUCCESS**, les six modules du pom agregateur en SUCCESS.
+
+**Compte de cas de test et sa methode.** Perimetre : les rapports XML de `*/target/surefire-reports/`
+et `*/target/failsafe-reports/`, **apres un `clean`**, somme de l'attribut `tests` de chaque
+`<testsuite>`. XML et non texte, parce que deux moteurs JUnit tournent dans ce depot et que le rapport
+texte n'en garde qu'un.
+
+**Compte de regles ArchUnit et sa methode.** `git ls-files '*.java'`, critere `static final ArchRule`.
+Comptage brut 30, moins les 2 declarations du faux module de test-ressources de
+`LesGardeFousSontMisALEpreuveTest`, qui n'est jamais compile comme regle du depot. Reste **28**,
+inchange : cet ADR n'ajoute ni ne retire aucune `ArchRule`. Un balayage du disque apres `verify` en
+rendrait 32, les copies de `target/` : c'est ce perimetre-la qu'il faut, et pas un autre.
+
+**Mesure de rendu.** Les deux chiffres corriges d'`ADR-0026` (101 px de colonne, 16 px d'ecart) sont
+remesures a mi-hauteur de la boite sur la capture produite par `outils/mesurer-rendu.sh 360 <url>
+<png>`, par un critere different de celui de `nadia-prof` - suites de pixels non-fond plutot qu'aplats
+de couleur d'accent - et les deux methodes concordent. La geometrie declaree les confirme a la
+decimale : 336 px moins 2 x 16 px font 304 px, soit 101,33 px par colonne.

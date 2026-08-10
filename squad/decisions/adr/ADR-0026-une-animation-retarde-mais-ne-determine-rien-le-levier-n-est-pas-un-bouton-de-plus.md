@@ -192,24 +192,38 @@ les chiffres ci-dessous rapportent.
 **Resultat.** Zone de contenu mesuree : `x = 12` a `x = 347`, soit **336 px** - les 360 px moins les
 2 x 12 px de rembourrage lateral de `.container` (Bootstrap, `ADR-0014` point 5).
 
+**Amendement du 2026-08-10, deux chiffres corriges. Trouve par `nadia-prof`, remesure par moi.** Les
+valeurs de largeur de colonne et d'ecart publiees ici la premiere fois etaient lues sur une ligne
+prise a 6 px du bord haut de la boite, c'est-a-dire **dans les angles arrondis**. La colonne y parait
+plus etroite et l'ecart plus large qu'ils ne sont. Remesure a **mi-hauteur exacte** de la boite, par
+un critere different du sien - elle a releve les aplats de `--recreo-accent`, j'ai releve les suites
+de pixels qui ne sont pas le fond de page `#f4f7fb`, ce qui rend la boite entiere glyphes blancs
+compris plutot que l'aplat entre les glyphes - les deux methodes concordent. Le tableau ci-dessous est
+corrige ; **aucune conclusion de cet ADR ne bouge**, et la marge sur la cible tactile est meme
+meilleure que celle que je m'accordais.
+
 | Cas | Colonnes | Largeur par colonne | Ecart mesure | Hauteur | Verdict |
 |---|---|---|---|---|---|
-| `cp-additions-jusqu-a-10` (`10`, `7`, `9`) | 3 | 99, 100, 99 px | 18 px | 74 px | tient |
-| `cp-le-bon-son` (`an`, `on`, `in`) | 3 | 99, 100, 99 px | 18 px | 74 px | tient |
-| `cm1-homophones` (`sont`, `son`) | 2 | 158, 158 px | 18 px | 74 px | tient |
-| `cm1-conjugaison-present` (`mangez`... ) | 4 | 70 px | 18 px | 74 px | **texte hors de la boite** |
+| `cp-additions-jusqu-a-10` (`10`, `7`, `9`) | 3 | **101 px** | **16 px** | 74 px | tient |
+| `cp-le-bon-son` (`an`, `on`, `in`) | 3 | **101 px** | **16 px** | 74 px | tient |
+| `cm1-homophones` (`sont`, `son`) | 2 | **161 px** | **16 px** | 74 px | tient |
+| `cm1-conjugaison-present` (`mangez`... ) | 4 | **72 px** | **16 px** | 74 px | **texte hors de la boite** |
 
-Les 18 px mesures sont les 16 px de `gap: 1rem` plus un pixel d'anticrenelage de part et d'autre de
-chaque angle arrondi ; le rembourrage de `.container` et l'ecart declare sont donc rendus tels quels.
+La geometrie declaree confirme la mesure a la decimale : 336 px de contenu moins 2 x 16 px d'ecart
+font 304 px pour trois colonnes, soit **101,33 px** chacune. Les relevés donnent 101 ou 102 px selon
+que le pixel de bord anticrenele est compte. **L'ecart rendu vaut exactement le `gap: 1rem` declare,
+16 px, ni plus ni moins** : il n'y a donc **aucune marge de 2 px a recuperer** le jour ou quelqu'un
+la cherchera, et c'est la raison pour laquelle `nadia-prof` a corrige ce chiffre plutot que de le
+laisser passer.
 
 **Confrontation aux planchers, aucun n'est abaisse ni approche par le bas** :
 
 | Plancher | Valeur exigee | Valeur mesuree a 3 colonnes | Marge |
 |---|---|---|---|
-| cible tactile (largeur) | 2,75rem = 44 px | 99 px | x 2,25 |
+| cible tactile (largeur) | 2,75rem = 44 px | **101 px** | x 2,30 |
 | cible tactile (hauteur) | 2,75rem = 44 px | 74 px | x 1,68 |
 | lisibilite du bouton | 1,25rem = 20 px | 2rem = 32 px inchange | x 1,6 |
-| ecart entre deux reponses | 1rem = 16 px | 16 px declares, 18 px rendus | au plancher exactement |
+| ecart entre deux reponses | 1rem = 16 px | 16 px declares, **16 px rendus** | **au plancher exactement, sans marge** |
 
 **Trois colonnes a 360 px tiennent donc sans abaisser un seul plancher.** Le plancher d'ecart est
 tenu a l'egalite exacte, ce qui est son etat depuis s03 et l'etat que `nadia-prof` a accepte ; l'ADR
@@ -218,7 +232,7 @@ regle 3).
 
 **Le cas a quatre colonnes, lui, ne tient pas** : chaque colonne tombe a 70 px, la cible tactile est
 encore respectee mais le mot deborde de son aplat et les glyphes de deux colonnes voisines se
-touchent. Le budget reel est le contenu de la colonne, soit `99 - 2 x 20 = 59 px` a trois colonnes.
+touchent. Le budget reel est le contenu de la colonne, soit `101 - 2 x 20 = 61 px` a trois colonnes.
 Mesure de la borne, sur la meme commande : `1`, `10`, `100`, `sont`, `ouil`, `ouill`, `oreill`,
 `oreille`, `lisons`, `lisent` et `allez` tiennent ; `mmmmmm`, `mangez`, `mangeons` et `dessinent` ne
 tiennent pas. C'est bien une largeur de glyphes et non un nombre de caracteres.
@@ -339,7 +353,7 @@ chantier fait bouger, et cinq d'entre eux ne bougent pas du tout.
 | Garde-fou | Sort | Pourquoi |
 |---|---|---|
 | `ADR-0017` / `LActionNeDeclarePasMoinsQueLaSortieTest` | **inchange** | le levier est `.demarrer` ou `.encore`, deja `data-role="action"` ; la proposition reste `.btn.proposition`, deja `data-role="action"`. L'ensemble ferme `{action, sortie}` n'a pas a s'ouvrir, et les trois epinglages de couples restent verts sans qu'une ligne change. Le role du levier est **`action`** : il fait avancer le jeu |
-| `TailleDesTextesEtBoutonsTest`, planchers | **inchanges, mesures tenus** | 99 px x 74 px par colonne a 360 px, contre 44 px exiges ; `font-size: 2rem` inchange. **Aucun seuil ne s'abaisse pour faire tenir une mise en page** |
+| `TailleDesTextesEtBoutonsTest`, planchers | **inchanges, mesures tenus** | 101 px x 74 px par colonne a 360 px (chiffres corriges le 2026-08-10), contre 44 px exiges ; `font-size: 2rem` inchange. **Aucun seuil ne s'abaisse pour faire tenir une mise en page** |
 | `TailleDesTextesEtBoutonsTest`, ecart `.propositions` | **amende**, regle 3 | l'axe lateral cesse d'etre un angle mort |
 | `ADR-0020` / `ToutEcranEchangeEstUnDocumentJouableTest` | **inchange**, contrainte enoncee | les colonnes portent des classes, jamais d'identifiants ; et une colonne n'est pas un `<p>`, donc la clause du paragraphe vide reste sans objet |
 | `ADR-0022` / `LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest` | **inchange** | le fragment de manche garde `class="ecran-de-jeu"` sur sa racine. Si le chantier ajoutait un fragment - il n'en a pas besoin - le garde-fou l'exigerait de lui-meme, son perimetre etant derive du repertoire |
@@ -381,7 +395,7 @@ lui reste.
 
 **A `nadia-prof`**, seule autorite sur le Done pedagogique : la duree acceptable d'un defilement
 devant un enfant de CP ; le fait qu'un enfant qui a besoin de temps ne soit pas presse par un
-mouvement ; le fait qu'une proposition reste lisible dans une colonne de 99 px ; le fait que le geste
+mouvement ; le fait qu'une proposition reste lisible dans une colonne de 101 px ; le fait que le geste
 du levier se comprenne sans explication ; et le fait qu'une machine a sous a deux ou a quatre
 rouleaux garde son sens. La technique lui doit deux choses et les lui livre : un ecran qui reste
 jouable immobile pour l'enfant qui en a besoin (`prefers-reduced-motion`, garde par la clause 2), et

@@ -7,7 +7,20 @@
      ADR-0022 : "ecran-de-jeu" est le marqueur d'etat que le serveur pose sur la zone de contenu. Il
      ne porte aucun style propre : il dit a la feuille maison que l'entree de menu de l'en-tete
      permanent ne doit pas s'afficher sur cet ecran (arbitrage de nadia-prof du 2026-08-07, S6-9). -->
-<div th:fragment="manche" class="ecran-de-jeu">
+<!-- ADR-0027 : data-arrivee est le second marqueur d'etat de cet ecran, et il ne dit pas la meme chose
+     que "ecran-de-jeu". Le premier dit ou l'enfant est ; celui-ci dit comment il y est arrive - en
+     pressant quelque chose, ou par un chargement de page qu'il n'a pas demande (la reprise silencieuse
+     de S1-4, que accueil.html rend sans aucun echange htmx). Seule une regle d'animation le lira, et
+     c'est lui seul qui autorise un mouvement : un mouvement que l'enfant n'a pas declenche est refuse
+     (nadia-prof, arbitrage du 2026-08-10, section 6).
+     Attribut et non classe, pour la meme raison qu'ADR-0017 a choisi data-role : ce qu'il declare
+     n'est pas un habillage. Une classe aurait du etre nommee par une regle servie
+     (HabillageDesEcransTest, qui a effectivement refuse la premiere version de ce marqueur), donc
+     aurait exige aujourd'hui une regle qui ne style rien - decorative, et refusee ici comme ailleurs.
+     Un selecteur d'attribut, [data-arrivee=par-un-geste], s'accroche aussi bien le jour ou une
+     animation existe. -->
+<div th:fragment="manche" class="ecran-de-jeu"
+     th:attr="data-arrivee=${arriveeParUnGeste} ? 'par-un-geste' : 'sans-geste'">
     <!-- ADR-0017 : data-role dit ce que le bouton fait du point de vue de l'enfant - avancer dans le
          jeu ou en sortir. C'est ce que le garde-fou de saillance relative compare, et il refuse tout
          bouton qui ne le porte pas. Attribut inerte : aucun CSS ni aucun script ne s'en sert. -->

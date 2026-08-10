@@ -1,0 +1,21 @@
+/* Jeu fautif d'ADR-0027, clause 6 : 1,5 s, refuse nommement par nadia-prof. Le marqueur de
+   geste et le repli sont presents, pour que seule la duree fasse rougir. */
+@keyframes defilement {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+.propositions {
+    display: flex;
+    gap: 1rem;
+}
+
+[data-arrivee=par-un-geste] .proposition {
+    animation: defilement 1.5s ease-out 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-arrivee=par-un-geste] .proposition {
+        animation: none;
+    }
+}

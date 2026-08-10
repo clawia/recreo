@@ -1,0 +1,21 @@
+/* Jeu fautif d'ADR-0027, clause 5 : l'animation ne nomme pas le marqueur de geste, elle
+   tournerait donc aussi sur la reprise silencieuse, sans que l'enfant ait rien presse. */
+@keyframes defilement {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+.propositions {
+    display: flex;
+    gap: 1rem;
+}
+
+.proposition {
+    animation: defilement 0.6s ease-out 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .proposition {
+        animation: none;
+    }
+}

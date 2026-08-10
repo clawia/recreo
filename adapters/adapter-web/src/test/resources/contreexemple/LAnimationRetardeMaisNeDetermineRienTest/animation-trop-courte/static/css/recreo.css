@@ -1,0 +1,21 @@
+/* Jeu fautif d'ADR-0027, clause 6, autre bord : 0,2 s n'est plus un defilement mais un
+   clignotement. */
+@keyframes defilement {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+.propositions {
+    display: flex;
+    gap: 1rem;
+}
+
+[data-arrivee=par-un-geste] .proposition {
+    animation: defilement 0.2s ease-out 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-arrivee=par-un-geste] .proposition {
+        animation: none;
+    }
+}

@@ -92,6 +92,30 @@ class LAnimationRetardeMaisNeDetermineRienTest {
     private static final List<String> DECLARATIONS_D_ANIMATION = List.of(
             "animation", "animation-name", "animation-duration", "animation-iteration-count");
 
+    /**
+     * ADR-0027 : le marqueur qu'un mouvement exige. Pose par le serveur sur l'ecran de jeu quand
+     * l'enfant a presse quelque chose pour l'obtenir, absent quand l'ecran arrive par un chargement de
+     * page. Une animation qui ne le nomme pas tournerait aussi sur la reprise silencieuse de S1-4.
+     */
+    private static final String MARQUEUR_DE_GESTE = "[data-arrivee=par-un-geste]";
+
+    /**
+     * Les bornes de duree de {@code nadia-prof} (arbitrage du 2026-08-10, section 2), en secondes. Ce
+     * n'etait pas gardable quand ADR-0026 a ete ecrit, parce qu'aucun chiffre n'existait ; il l'est
+     * depuis qu'elle en a donne un. Le plafond porte sur duree + retard, c'est-a-dire sur ce que
+     * l'enfant attend entre son appui et l'arret de la derniere colonne.
+     */
+    private static final double DUREE_MINIMALE_S = 0.3;
+    private static final double DUREE_MAXIMALE_S = 1.2;
+    private static final double RETARD_MAXIMAL_S = 0.25;
+
+    /**
+     * ADR-0027, propriete "jamais un autre mot" : {@code content} donne du texte a lire sur un
+     * pseudo-element. La chaine vide est de la decoration pure et reste autorisee - la croix du signal
+     * juste/faux l'utilise deja ; une chaine non vide est un mot que l'enfant lit.
+     */
+    private static final String PROPRIETE_DE_TEXTE = "content";
+
     /** Une regle CSS, avec la pile de regles-@ dans laquelle elle est ecrite. */
     private record Regle(String fichier, String contexte, String selecteur, String corps) {
 
@@ -191,6 +215,36 @@ class LAnimationRetardeMaisNeDetermineRienTest {
             }
         }
         return classes;
+    }
+
+    /** La meme chaine sans aucun blanc : un selecteur d'attribut peut etre ecrit espace ou non. */
+    private static String sansEspaces(String texte) {
+        StringBuilder compact = new StringBuilder(texte.length());
+        for (int position = 0; position < texte.length(); position++) {
+            char caractere = texte.charAt(position);
+            if (!Character.isWhitespace(caractere)) {
+                compact.append(caractere);
+            }
+        }
+        return compact.toString();
+    }
+
+    /** Les mots d'une valeur declaree, separes par des blancs. Jamais par expression reguliere. */
+    private static List<String> mots(String valeur) {
+        List<String> mots = new ArrayList<>();
+        StringBuilder mot = new StringBuilder();
+        for (int position = 0; position <= valeur.length(); position++) {
+            char caractere = position < valeur.length() ? valeur.charAt(position) : ' ';
+            if (Character.isWhitespace(caractere)) {
+                if (mot.length() > 0) {
+                    mots.add(mot.toString());
+                }
+                mot.setLength(0);
+            } else {
+                mot.append(caractere);
+            }
+        }
+        return mots;
     }
 
     private static List<String> motsDeClasse(String texte) {
@@ -341,9 +395,158 @@ class LAnimationRetardeMaisNeDetermineRienTest {
                 .isEmpty();
     }
 
+    /**
+     * Clause 5 (ADR-0027) - un mouvement n'est autorise que sur un ecran que l'enfant a demande. Le
+     * serveur pose le marqueur ; cette clause verifie que la feuille le lit, c'est-a-dire qu'aucune
+     * animation n'est atteignable en dehors de lui. C'est la moitie CSS du garde-fou dont
+     * {@code LEcranDeJeuDeclareCommentIlEstArriveTest} tient la moitie serveur.
+     */
+    static void verifierQueChaqueAnimationExigeLeMarqueurDeGeste(Path racine) {
+        List<String> defauts = new ArrayList<>();
+        for (Regle regle : animations(racine)) {
+            if (!sansEspaces(regle.selecteur()).contains(MARQUEUR_DE_GESTE)) {
+                defauts.add(regle.origine() + " : cette animation ne nomme pas \"" + MARQUEUR_DE_GESTE
+                        + "\" dans son selecteur, elle tournerait donc aussi quand l'ecran de jeu arrive "
+                        + "sans geste de l'enfant - la reprise silencieuse de S1-4, que accueil.html "
+                        + "rend sans aucun echange htmx (ADR-0027)");
+            }
+        }
+        assertThat(defauts)
+                .as("ADR-0027 : toute animation maison n'est atteignable que sous \"%s\"",
+                        MARQUEUR_DE_GESTE)
+                .isEmpty();
+    }
+
+    /**
+     * Clause 6 (ADR-0027) - la duree tient dans la barre chiffree de {@code nadia-prof}. ADR-0026
+     * declarait cette propriete non gardable, et il avait raison tant qu'aucun seuil n'existait : une
+     * clause devient gardable le jour ou son destinataire donne un chiffre, et c'est ce qui vient
+     * d'arriver. Ce qui lui reste est ce qu'une feuille de style ne dit pas - la courbe, le rebond, le
+     * lien percu avec le geste.
+     */
+    static void verifierQueChaqueAnimationTientDansLaBarreDeDuree(Path racine) {
+        List<String> defauts = new ArrayList<>();
+        for (Regle regle : animations(racine)) {
+            List<Double> temps = secondesDeclarees(regle, defauts);
+            if (temps.isEmpty()) {
+                continue;
+            }
+            double duree = temps.get(0);
+            double retard = temps.size() > 1 ? temps.get(1) : 0;
+            if (duree < DUREE_MINIMALE_S) {
+                defauts.add(regle.origine() + " : duree de " + duree + "s, sous le plancher de "
+                        + DUREE_MINIMALE_S + "s. En dessous ce n'est plus un defilement, c'est un "
+                        + "clignotement (nadia-prof, arbitrage du 2026-08-10, section 2)");
+            }
+            if (retard > RETARD_MAXIMAL_S) {
+                defauts.add(regle.origine() + " : retard de " + retard + "s, au-dela du decalage maximal "
+                        + "de " + RETARD_MAXIMAL_S + "s entre la premiere et la derniere colonne");
+            }
+            if (duree + retard > DUREE_MAXIMALE_S) {
+                defauts.add(regle.origine() + " : duree + retard = " + (duree + retard) + "s, au-dela du "
+                        + "plafond de " + DUREE_MAXIMALE_S + "s entre l'appui de l'enfant et l'arret de "
+                        + "la derniere colonne. Une partie compte dix manches : ce temps est paye dix "
+                        + "fois (nadia-prof, arbitrage du 2026-08-10, section 2)");
+            }
+        }
+        assertThat(defauts)
+                .as("ADR-0027 : toute animation maison tient entre %ss et %ss, retard compris",
+                        DUREE_MINIMALE_S, DUREE_MAXIMALE_S)
+                .isEmpty();
+    }
+
+    /**
+     * Les temps declares par une regle d'animation, en secondes, dans l'ordre du raccourci CSS : duree
+     * puis retard. Une duree qu'on ne sait pas lire est un defaut et non une valeur ignoree
+     * (ADR-0013 obligation 2) : on ne confronte pas a une barre un chiffre qu'on ne lit pas.
+     */
+    private static List<Double> secondesDeclarees(Regle regle, List<String> defauts) {
+        List<Double> temps = new ArrayList<>();
+        int position = debutDeDeclaration(regle.corps(), "animation");
+        List<String> mots = position >= 0
+                ? mots(valeurDeclaree(regle.corps(), position, "animation"))
+                : List.of();
+        for (String mot : mots) {
+            if (mot.endsWith("ms")) {
+                temps.add(Double.parseDouble(mot.substring(0, mot.length() - 2)) / 1000);
+            } else if (mot.endsWith("s")) {
+                temps.add(Double.parseDouble(mot.substring(0, mot.length() - 1)));
+            }
+        }
+        for (String propriete : List.of("animation-duration", "animation-delay")) {
+            int explicite = debutDeDeclaration(regle.corps(), propriete);
+            if (explicite < 0) {
+                continue;
+            }
+            String valeur = valeurDeclaree(regle.corps(), explicite, propriete).strip();
+            double secondes = valeur.endsWith("ms")
+                    ? Double.parseDouble(valeur.substring(0, valeur.length() - 2)) / 1000
+                    : Double.parseDouble(valeur.substring(0, valeur.length() - 1));
+            int rang = "animation-duration".equals(propriete) ? 0 : 1;
+            while (temps.size() <= rang) {
+                temps.add(0.0);
+            }
+            temps.set(rang, secondes);
+        }
+        if (temps.isEmpty()) {
+            defauts.add(regle.origine() + " : cette regle anime quelque chose sans declarer de duree "
+                    + "lisible ; une duree qu'on ne lit pas ne se confronte a aucune barre (ADR-0027)");
+        }
+        return temps;
+    }
+
+    /**
+     * Clause 7 (ADR-0027) - aucune regle maison ne donne a lire un mot que le serveur n'a pas envoye.
+     * {@code content} est la seule propriete CSS qui fabrique du texte ; la chaine vide reste
+     * autorisee, parce que c'est de la decoration pure et que la croix du signal juste/faux l'emploie
+     * deja. Une chaine non vide est un mot, et un mot leurre devant un enfant qui apprend
+     * l'orthographe est refuse (nadia-prof, arbitrage du 2026-08-10, section 2).
+     */
+    static void verifierQuAucuneRegleNeFabriqueDuTexte(Path racine) {
+        List<Regle> porteuses = new ArrayList<>();
+        List<String> defauts = new ArrayList<>();
+        for (Regle regle : reglesMaison(racine)) {
+            int position = debutDeDeclaration(regle.corps(), PROPRIETE_DE_TEXTE);
+            if (position < 0) {
+                continue;
+            }
+            porteuses.add(regle);
+            String valeur = valeurDeclaree(regle.corps(), position, PROPRIETE_DE_TEXTE).strip();
+            if (!valeur.equals("\"\"") && !valeur.equals("''") && !valeur.equals("none")) {
+                defauts.add(regle.origine() + " : cette regle fabrique du texte (" + PROPRIETE_DE_TEXTE
+                        + ": " + valeur + "). Ce que l'enfant lit vient du serveur, jamais d'une feuille "
+                        + "de style : sur un jeu d'homophones, un mot leurre lui ferait voir la forme "
+                        + "fausse plus souvent que la juste (ADR-0027)");
+            }
+        }
+        assertThat(porteuses)
+                .as("ADR-0003 : cette clause ne prouve rien si aucune regle maison ne declare %s. "
+                        + "Deux le font aujourd'hui, sur les deux barres de la croix du signal faux",
+                        PROPRIETE_DE_TEXTE)
+                .isNotEmpty();
+        assertThat(defauts)
+                .as("ADR-0027 : aucune regle maison ne donne a lire un mot que le serveur n'a pas envoye")
+                .isEmpty();
+    }
+
     @Test
     void chaqueAnimationDeLaFeuilleMaisonSeTermine() {
         verifierQueChaqueAnimationSeTermine(RACINE_PRODUCTION);
+    }
+
+    @Test
+    void chaqueAnimationExigeLeMarqueurDeGeste() {
+        verifierQueChaqueAnimationExigeLeMarqueurDeGeste(RACINE_PRODUCTION);
+    }
+
+    @Test
+    void chaqueAnimationTientDansLaBarreDeDureeDeNadia() {
+        verifierQueChaqueAnimationTientDansLaBarreDeDuree(RACINE_PRODUCTION);
+    }
+
+    @Test
+    void aucuneRegleMaisonNeFabriqueDuTexte() {
+        verifierQuAucuneRegleNeFabriqueDuTexte(RACINE_PRODUCTION);
     }
 
     @Test
@@ -438,6 +641,67 @@ class LAnimationRetardeMaisNeDetermineRienTest {
     void leMemeEtatEcritDansDesImagesClesResteVert() {
         verifierQuAucuneRegleNeRendUneActionInactionnable(
                 CONTRE_EXEMPLES.resolve("proposition-cachee-dans-des-images-cles"));
+    }
+
+    /**
+     * ADR-0027, clause 5. L'objet neuf est une animation ecrite sans le marqueur de geste - la forme
+     * exacte que le mecanisme d'ADR-0026 rendait naturelle, puisque son texte faisait demarrer
+     * l'animation a l'insertion de l'element sans distinguer par quoi.
+     */
+    @Test
+    void uneAnimationQuiNExigePasLeMarqueurDeGesteFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("animation-sans-marqueur-de-geste");
+        assertThatThrownBy(() -> verifierQueChaqueAnimationExigeLeMarqueurDeGeste(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ne nomme pas \"[data-arrivee=par-un-geste]\"");
+    }
+
+    /**
+     * ADR-0027, clause 6, les trois bords de la barre de {@code nadia-prof}. 1,5 s est refuse
+     * nommement par son arbitrage ; 0,2 s est sous son plancher ; un retard de 0,7 s depasse le
+     * decalage de 0,25 s et fait aussi passer duree + retard au-dela du plafond.
+     */
+    @Test
+    void uneDureeHorsDeLaBarreFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifierQueChaqueAnimationTientDansLaBarreDeDuree(
+                CONTRE_EXEMPLES.resolve("animation-trop-longue")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("au-dela du plafond de 1.2s");
+        assertThatThrownBy(() -> verifierQueChaqueAnimationTientDansLaBarreDeDuree(
+                CONTRE_EXEMPLES.resolve("animation-trop-courte")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("sous le plancher de 0.3s");
+        assertThatThrownBy(() -> verifierQueChaqueAnimationTientDansLaBarreDeDuree(
+                CONTRE_EXEMPLES.resolve("decalage-trop-grand")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("au-dela du decalage maximal de 0.25s");
+    }
+
+    /**
+     * Relecture adverse des deux bords : la valeur que {@code nadia-prof} <b>conseille</b> doit passer,
+     * et c'est ce qui empeche la barre d'etre une interdiction deguisee. Sans ce cas, une inegalite au
+     * mauvais sens rejetterait la seule valeur qu'elle recommande, et aucun cas fautif ne le dirait.
+     */
+    @Test
+    void laDureeConseilleeParNadiaEstAcceptee() {
+        Path racine = CONTRE_EXEMPLES.resolve("animation-avec-repli");
+        verifierQueChaqueAnimationTientDansLaBarreDeDuree(racine);
+        assertThat(animations(racine))
+                .as("ce jeu declare bien une animation de 0,6s, la valeur conseillee")
+                .isNotEmpty();
+    }
+
+    /**
+     * ADR-0027, clause 7. L'objet neuf est une face de rouleau dont le texte est ecrit dans la feuille
+     * de style - la seule facon d'afficher un mot que le serveur n'a pas envoye sans passer par du
+     * JavaScript, que la regle 2 d'ADR-0026 ferme deja.
+     */
+    @Test
+    void uneFeuilleQuiFabriqueUnMotFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("feuille-qui-fabrique-du-texte");
+        assertThatThrownBy(() -> verifierQuAucuneRegleNeFabriqueDuTexte(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("cette regle fabrique du texte");
     }
 
     @Test
