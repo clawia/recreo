@@ -10,6 +10,18 @@
   produit.
 - **Ligne de matrice** : **passe a `couvert-valide`.** Ma condition en six points est **levee** au
   2026-08-10 - motif au verdict du meme jour. C'est la deuxieme ligne du produit a l'atteindre.
+  **Arbitrage prealable au developpement du chantier machine a sous du 2026-08-10** (bloc en fin de
+  fiche, arbitrage complet dans `FICHE-bandit-manchot-additions-cp.md`) : **deux colonnes validees**,
+  158 px chacune, aucune reserve ; **jamais de troisieme colonne vide** ; et l'exigence qui vise ce jeu
+  nommement, **aucune colonne ne fait defiler un mot autre que le sien**. Ce n'est pas un Done
+  pedagogique et le VALIDE du 2026-08-10 n'est pas touche.
+  **Constat neuf du 2026-08-10, mesure** (bloc en fin de fiche) : sur **3 des 24 items**, l'affichage
+  de l'indice pousse les **deux** boutons de reponse sous le pli a 360 x 640, et sur l'item 24 il n'en
+  reste rien a l'ecran ; **0 sur 24 sans l'indice**. Cause : la longueur de l'enonce a 2 rem, ni le
+  nombre de propositions ni les colonnes. **Ce n'est pas un motif** - aucune decision du depot ne fixe
+  de hauteur de viewport minimale - **le Done pedagogique reste accorde et la ligne reste
+  `couvert-valide`**. A instruire par `camille-po`. Ce constat corrige une inference fausse que j'avais
+  faite le meme jour dans `FICHE-bandit-manchot-conjugaison-present-cm1.md`.
 - **Derniere mise a jour** : 2026-08-10
 
 ## Competences visees
@@ -693,3 +705,144 @@ qu'aucun test ne dit, et que je porte seule :**
   ouvert ; il n'a pas bloque `couvert-valide` et n'aurait pas du.
 - Les dix reserves de la section 5 sont du backlog pour `camille-po`. Aucune ne conditionne le
   statut de la ligne.
+
+---
+
+### Arbitrage prealable au developpement - chantier machine a sous (S7-1 a S7-4), du 2026-08-10
+
+**Ce bloc n'est pas un Done pedagogique et il ne touche pas au verdict VALIDE du 2026-08-10.**
+L'arbitrage complet est ecrit une seule fois, dans `FICHE-bandit-manchot-additions-cp.md`, arbitrage
+du 2026-08-10 : la mecanique est commune aux quatre jeux et je ne recopie pas dix pages dans quatre
+fichiers. Ce qui concerne **ce jeu-ci** en particulier :
+
+1. **Deux colonnes, et c'est valide.** Les 24 items de ce paquet portent une bonne reponse et un seul
+   distracteur. Deux colonnes ne trahissent rien : l'exercice **est** binaire, `son` ou `sont`, `a` ou
+   `à`. Mesure sur le rendu a 360 px : **158 px par colonne**, tres confortable pour des mots de deux a
+   quatre lettres. Aucune reserve.
+2. **Jamais de troisieme colonne vide** pour atteindre trois. Un enfant presse ce qui ressemble a un
+   bouton ; une case muette est une reponse qu'il essaiera.
+3. **L'exigence qui vise ce jeu nommement, et c'est sur lui qu'elle compte le plus : aucune colonne ne
+   doit faire defiler un mot autre que le sien.** Faire passer `son` et `sont` en boucle dans chaque
+   colonne, dix fois par partie, c'est faire lire a l'enfant la forme fausse plus souvent que la juste.
+   La memoire orthographique est visuelle. Sur un jeu d'homophones, c'est un contresens complet, et
+   aucun automate ne le verra : **je reste seule garde de ce point**, et c'est sur ce jeu que je le
+   verifierai en priorite sur le rendu livre.
+
+---
+
+### Constat neuf, mesure, du 2026-08-10 - l'indice pousse les deux reponses sous le pli sur trois items
+
+**Ce bloc ne retire rien.** Le Done pedagogique du 2026-08-10 **reste accorde**, la ligne de matrice
+**reste `couvert-valide`**, et aucun de mes verdicts anterieurs sur ce jeu n'est modifie. C'est un
+constat neuf et date, a instruire par `camille-po`, et je dis en fin de bloc pourquoi ce n'est pas un
+motif.
+
+#### Le symptome, en deux phrases
+
+**Sur trois des vingt-quatre items de ce paquet, quand l'indice s'affiche, les deux boutons de
+reponse descendent sous la ligne de flottaison d'un telephone de 360 x 640, et sur l'item 24 il n'en
+reste rien du tout a l'ecran.** La cause n'est ni le nombre de propositions ni la mise en page en
+colonnes : c'est l'enonce a 2 rem qui se replie sur cinq ou six lignes, et le defaut existe donc a
+l'identique dans la disposition empilee servie aujourd'hui.
+
+#### La mesure
+
+Ecrans de manche complets - bandeau, "Les jeux", score, consigne, enonce, indice, propositions -
+construits sur les deux feuilles reellement servies et la structure reelle de
+`fragments/manche.html`. Un ecran par item, les vingt-quatre items du paquet avec leurs enonces,
+leurs propositions et leurs indices reels. Captures a une largeur de viewport reellement de 360 px
+par `outils/mesurer-rendu.sh 360 <url> <png>`, navigateur designe par la variable `CHROME`. Pli lu a
+640 px. Position des boites relevee au pixel par balayage des aplats de `--recreo-accent`, position du
+mot par balayage des glyphes clairs a l'interieur de la boite.
+
+**Resultat : 3 items sur 24 avec l'indice affiche, 0 sur 24 sans l'indice.**
+
+| Item | Enonce | Boite des reponses | Bas du mot | Ce que l'enfant voit |
+|---|---|---|---|---|
+| 22 | "Même si le ciel est bien dégagé ce matin, il ___ encore pleuvoir avant le soir." | 591 - 664 | 647 | boutons visibles, **le mot est coupe** |
+| 23 | "Tom cherchait sa gomme depuis le début du cours, et son voisin ___ enfin repérée sous la table." | 639 - 712 | 688 | **2 px de bouton sur 74**, aucun mot |
+| 24 | "Après cette longue randonnée en montagne, le vieux chien ne ___ plus vraiment courir comme avant." | 717 - 790 | 773 | **rien du tout**, 0 px sur 74 |
+| 13 et 16 | les deux enonces longs suivants | 591 - 664 | **640 exactement** | au bord exact du pli |
+
+Les 21 autres items tiennent, le plus bas a 599. Il n'y a donc pas de defaut general sur ce paquet :
+il y a une queue de cinq items longs, dont trois franchissent et deux touchent le bord.
+
+**Et voici ce qui rend ce constat serieux plutot que cosmetique.** J'ai remesure les cinq items
+limites **sans l'indice**, c'est-a-dire dans l'etat ou ils s'affichent avant trois echecs
+consecutifs :
+
+| Item | Bas du mot sans indice | Bas du mot avec indice |
+|---|---|---|
+| 13 | 510 | 640 |
+| 16 | 510 | 640 |
+| 22 | 517 | **647** |
+| 23 | 558 | **688** |
+| 24 | 613 | **773** |
+
+**Aucun des cinq ne franchit le pli sans l'indice. Trois le franchissent avec.** Le defaut ne se
+declenche donc qu'au moment ou l'enfant vient d'echouer trois fois de suite et recoit son aide :
+l'ecran lui donne son indice **et lui retire ses boutons de reponse dans le meme geste**. Il lit
+l'aide, puis il ne trouve plus ou repondre.
+
+C'est exactement la structure aggravante de mon refus des cinq indices fautifs de "Le bon verbe" du
+meme jour : le defaut est servi a l'enfant le moins en etat de le surmonter. Sur ce jeu-ci, la
+consequence est plus benigne - l'enfant peut faire defiler la page, il n'apprend rien de faux - mais
+la structure est la meme et je la nomme.
+
+#### Je corrige un de mes propres constats avant de m'appuyer sur celui-ci
+
+Le 2026-08-10, dans `FICHE-bandit-manchot-conjugaison-present-cm1.md`, section 4 de mon refus, j'ai
+ecrit :
+
+> *"Sur le meme viewport, "Le bon son" (trois propositions) tient entierement au-dessus du pli,
+> verifie par la meme mesure - le defaut est bien lie au passage a quatre propositions et non a
+> l'habillage en general."*
+
+**L'inference etait fausse, et elle est de moi.** J'avais verifie "Le bon son", dont les enonces sont
+des mots seuls en capitales et tiennent tous sur une ligne, et j'en ai conclu une cause. La cause
+n'est pas le nombre de propositions : c'est la longueur de l'enonce. Un paquet a **deux**
+propositions perd ses deux boutons sous le pli la ou "Le bon verbe" en perdait un sur quatre. La
+mesure ci-dessus est le demenagement de cette erreur, et elle a une consequence directe sur ma
+propre decision du meme jour, que je tire dans
+`FICHE-bandit-manchot-conjugaison-present-cm1.md`, second arbitrage du 2026-08-10.
+
+#### Pourquoi ce n'est pas un motif de refus
+
+Trois raisons, et la premiere suffit.
+
+1. **Aucune decision du depot ne fixe de hauteur de viewport minimale.** `DEC-0007` point 5 ne parle
+   que de largeur. Je l'ai ecrit deux fois le 2026-08-10, une fois pour refuser de faire de ce defaut
+   un motif contre "Le bon verbe" que je refusais par ailleurs. **Un defaut que je n'ai pas voulu
+   opposer au paquet que j'ai refuse, je ne vais pas l'opposer apres coup au paquet que j'ai valide.**
+   Ce serait deplacer mes poteaux, et dans le sens le plus indefendable.
+2. **Le Done pedagogique de ce jeu a ete prononce en jouant**, et rien de ce que j'ai joue n'est
+   demenati : les enonces sont exacts, les indices sont justes, la competence est celle annoncee.
+3. **L'enfant n'apprend rien de faux et n'est pas bloque** : la page defile. C'est une gene reelle,
+   pas une erreur d'enseignement.
+
+#### Le destinataire, nomme
+
+**`camille-po`.** C'est le meme besoin que celui que j'ai decrit ce matin au point 6.5 de mon verdict
+courant dans `FICHE-bandit-manchot-additions-cp.md` - "une regle sur ce qui doit rester au-dessus du
+pli, et sur quel viewport de reference" - avec une difference qui change sa priorite et pas sa nature :
+**je le croyais limite a un paquet retire du catalogue, il touche un jeu qu'un enfant peut ouvrir
+aujourd'hui.** Je decris le besoin, je n'ecris pas la story et je ne fixe pas sa priorite.
+
+Deux pistes existent et je n'en choisis aucune, parce qu'aucune n'est de mon ressort : reduire la
+longueur des enonces de la queue de cinq items, ce qui serait du contenu et reviendrait donc devant
+moi ; ou traiter la hauteur de l'ecran, ce qui serait de l'habillage et passerait par `theo-archi` et
+`ines-design`. La seconde traite la cause, la premiere traite un symptome sur un paquet.
+
+**Rien de ceci n'est un obstacle au chantier machine a sous.** Le passage en colonnes **ameliore**
+cette situation de 180 px sur les paquets a trois et quatre propositions ; sur celui-ci, a deux
+propositions, il ne change rien ni en bien ni en mal, une rangee de deux occupant la meme hauteur
+qu'avant. Ce constat n'est pas une raison de ralentir S7-1.
+
+#### Ce dont je reste seule garde sur ce point
+
+- **Que ce qui compte reste au-dessus du pli quand l'enonce est long.** Aucun automate de ce depot ne
+  voit une position rendue, et `ADR-0025` a deja etabli pourquoi.
+- **Audit degrade a declarer** : j'ai mesure a 360 x 640, sur la pile de polices systeme de ma
+  machine, avec un pli lu a 640 px qui n'est fixe par aucune decision. Un appareil plus court, une
+  police plus large, une barre d'adresse plus haute deplacent tous les nombres ci-dessus. Ce que je
+  tiens pour etabli : la queue de cinq items longs existe, et l'indice est ce qui la fait basculer.

@@ -12,6 +12,11 @@
 - **Ligne de matrice** : **reste `en cours`.** Le Done pedagogique est accorde, mais la competence
   du referentiel nomme plus que ce que ce paquet travaille - barre ecrite au verdict du 2026-08-10,
   section 6.
+  **Arbitrage prealable au developpement du chantier machine a sous du 2026-08-10** (bloc en fin de
+  fiche, arbitrage complet dans `FICHE-bandit-manchot-additions-cp.md`) : **trois colonnes de 101 px
+  validees sur mesure**, `an`, `on`, `in` confortables sur l'ecran de manche complet a 360 px ; a
+  reverifier sur le rendu livre que l'indice et l'explication ne passent pas sous le pli. Ce n'est pas
+  un Done pedagogique et le VALIDE SOUS RESERVE du 2026-08-10 n'est pas touche.
 - **Derniere mise a jour** : 2026-08-10
 
 ## Competences visees
@@ -710,3 +715,26 @@ dit, et que je porte seule :**
   commune aux quatre jeux et n'est toujours pas traitee.
 - Pour `ines-design`, comme symptome et non comme conception : l'explication qui suit la reponse est
   aujourd'hui moins signalee que le bandeau juste/faux qui la precede (reserve 6).
+
+---
+
+### Arbitrage prealable au developpement - chantier machine a sous (S7-1 a S7-4), du 2026-08-10
+
+**Ce bloc n'est pas un Done pedagogique et il ne touche ni au VALIDE SOUS RESERVE du 2026-08-10 ni au
+refus du 2026-08-06, qui restent lisibles ci-dessus.** L'arbitrage complet est ecrit une seule fois,
+dans `FICHE-bandit-manchot-additions-cp.md`, arbitrage du 2026-08-10 : la mecanique est commune aux
+quatre jeux. Ce qui concerne **ce jeu-ci** en particulier :
+
+1. **Trois colonnes de 101 px, et c'est valide.** Mesure sur le rendu a 360 px, sur l'ecran de manche
+   complet de l'item `MANTEAU` avec son score, sa consigne, son enonce et son indice : `an`, `on`, `in`
+   se lisent de facon confortable, centres, en gras, a 2 rem, avec beaucoup d'air autour. C'est avec
+   "Calcul CP" le cas le plus favorable du catalogue, et c'est un jeu de CP, donc le plus exigeant en
+   lisibilite. Aucune reserve sur ce point.
+2. **La condition qui vise ce jeu : l'explication et l'indice ne doivent pas passer sous le pli.** Ce
+   paquet est le seul a porter une `explication` en plus de l'indice, et l'ecran de manche gagne
+   pourtant 180 px en passant en colonnes - le pli devrait devenir plus confortable, pas moins. Je le
+   verifierai sur le rendu livre, sur un item a variation (`DENT`, `OMBRE`, `TIMBRE`, `LUNDI`) et apres
+   trois echecs consecutifs pour faire venir l'indice.
+3. **Aucune colonne ne fait defiler un son autre que le sien.** Meme motif que sur les homophones : un
+   enfant de CP qui apprend a associer un grapheme a un phoneme n'a rien a gagner a voir `on` passer
+   dans la colonne de `an`.
