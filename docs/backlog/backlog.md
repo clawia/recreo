@@ -1824,6 +1824,54 @@ technique a instruire (`DEC-0013`, point 3).
 Ces intentions ne sont pas des stories pretes a developper. Elles seront detaillees sprint par
 sprint, en priorite sur les trous les plus visibles de `squad/programme/MATRICE-couverture.md`.
 
+### Story de correction - Cinq indices fautifs de "Le bon verbe" (execution de DEC-0014)
+
+A l'exception de cette story, prete a developper des maintenant : le refus de `nadia-prof` du
+2026-08-10 (`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`) porte sur un
+correctif borne, et `DEC-0014-retrait-le-bon-verbe-du-catalogue.md` le route ici plutot que de le
+laisser en simple intention. Son entree au planning et l'affectation d'un developpeur restent une
+decision de capacite qui appartient a `sofia-sm`, pas a moi.
+
+- **Besoin** : en tant qu'eleve de CM1 qui vient de se tromper trois fois de suite sur "Le bon
+  verbe", je veux que l'aide qui m'est montree m'enseigne une regle de conjugaison vraie, afin de
+  ne pas apprendre a ecrire des formes fausses comme "je prende" ou "il alle" au moment precis ou
+  je cherche de l'aide.
+- **Competence programme visee** : francais, CM1 (cycle 3), meme ligne que S6-3 ("Conjuguer les
+  verbes frequents au present, futur et imparfait de l'indicatif",
+  `squad/programme/francais/competences-cm1.md`).
+- **Criteres d'acceptation**, repris au mot pres du motif de refus
+  (`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, verdict du 2026-08-10,
+  section 2) :
+  - Etant donne les cinq indices des items dont la bonne reponse est `jouent`, `dessines`,
+    `cherche`, `range` et `chantent`, quand on les relit apres cette story, alors aucun n'affirme
+    plus qu'"avec [telle personne], le verbe se termine par [telle terminaison] au present" sans
+    restriction, alors que cette regle n'est vraie pour aucune de ces cinq personnes prise sans
+    restriction (contre-exemples deja dans le paquet : `il va`, `ils vont`, `je fais`).
+  - Etant donne chacun de ces cinq indices corriges, quand on verifie sa forme, alors il suit l'un
+    des trois modeles deja presents ailleurs dans le meme paquet, au choix de l'auteur du contenu :
+    temperer par "presque toujours" (modele des items 2 et 3) ; nommer le groupe concerne, par
+    exemple "les verbes en -er" (le plus juste des trois pour ces cinq items, tous du premier
+    groupe) ; ou nommer le verbe precis, comme aux items 8, 10 et 11.
+  - Etant donne l'ensemble des douze indices du paquet apres cette story, quand on les compare deux
+    a deux sur une meme personne grammaticale, alors aucun n'est dementi par un autre item du meme
+    paquet - en particulier l'indice de l'item `tu` corrige n'est plus contredit par l'item 8
+    ("Tu ___ ton exercice", reponse `finis`), et l'indice de l'item `je` corrige n'est plus dementi
+    par l'item 4 ("Je ___ mes devoirs", reponse `fais`).
+  - Etant donne les sept indices deja justes du paquet (items 1, 2, 3, 4, 8, 10, 11), quand on les
+    relit apres cette story, alors ils ne sont pas modifies.
+  - Etant donne les douze enonces et leurs propositions, quand on les relit apres cette story,
+    alors ils ne sont pas modifies : le refus ne porte que sur les indices, pas sur le contenu
+    grammatical lui-meme, deja juge exact par `nadia-prof`.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue l'increment et prononce un nouveau Done pedagogique avant que ce
+    jeu ne puisse rejoindre le catalogue (`DEC-0014`).
+- **Lien decision** : `DEC-0014-retrait-le-bon-verbe-du-catalogue.md` ;
+  `squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, verdict du 2026-08-10,
+  section 2.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### Autres intentions
+
 - La ligne mathematiques CP est desormais `couvert-valide` (2026-08-06) : elargir le contenu
   "additions CP" a la borne jusqu'a 20, et couvrir les soustractions et les complements a 10 (meme
   mecanique, meme niveau) pour clore completement cette ligne de la matrice.
@@ -1853,17 +1901,62 @@ sprint, en priorite sur les trous les plus visibles de `squad/programme/MATRICE-
   declencher le gel du contenu si elle depasse 2-3 increments non valides en attente.
 - Reserves non bloquantes restees hors des stories S5-2 a S5-7, nommees par `nadia-prof` mais qui
   ne fondent aucun refus ni aucune condition ecrite a elles seules, a instruire quand une de ces
-  deux lignes reviendra au planning :
+  deux lignes reviendra au planning. **Revues au 2026-08-10 a la lumiere de la recomposition de
+  "Le bon son" en s06** (`squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`, verdict du
+  2026-08-10, section 5) :
   - Sur "Le bon son" : des mots trop longs pour le moment de l'annee ou cette competence se
-    travaille (`BALANCOIRE`, `CHATEAU`) ; aucune progression de difficulte dans le tirage ; le son
-    `[ch]` (consonne) mele sans distinction aux cinq autres sons (voyelles).
+    travaille - **attenuee par la recomposition (mots courts comme `DENT`, `PONT`) mais pas
+    fermee** : `TIMBRE`, `MONTRE`, `NOMBRE` et `MANTEAU` restent au-dessus de six lettres ;
+    **aucune progression de difficulte dans le tirage - premiere story a instruire sur ce jeu**,
+    `nadia-prof` ayant observe en jeu que la premiere manche d'une partie peut tirer une exception
+    (`VENT`, graphie `en`) avant que l'enfant ait vu la regle (`an`) ; **le son `[ch]` (consonne)
+    mele sans distinction aux cinq autres sons (voyelles) - reserve close, elle disparait de fait
+    avec la recomposition puisque `ch` sort du paquet.**
   - Sur "Le bon petit mot" : aucun sujet feminin dans le paquet (`elle`, `elles` jamais employes) ;
     l'item "Papa et maman font la cuisine." presuppose une configuration familiale (non
     stereotypee sur les roles, signale sans en faire un motif) ; l'item "thé ou café" propose un
     choix d'adulte plutot qu'un choix qui parle a un enfant de neuf ans.
-  - Commune aux deux jeux : l'accueil ne mentionne le niveau vise ("CP" ou "CM1") que pour "Calcul
-    CP", pas pour "Le bon son" ni "Le bon petit mot" - un enfant peut ouvrir le jeu de l'autre
-    niveau sans le savoir.
+  - Commune aux quatre jeux : l'accueil ne mentionne le niveau vise ("CP" ou "CM1") que pour
+    "Calcul CP", pas pour "Le bon son", "Le bon petit mot" ni "Le bon verbe" - un enfant peut
+    ouvrir le jeu d'un autre niveau sans le savoir. Constat qui empire a chaque jeu de francais
+    ajoute (`nadia-prof`, verdict du 2026-08-10 sur "Le bon verbe", reserve 6 de sa fiche) : la
+    moitie des jeux du catalogue porte cette mention, l'autre moitie non.
+  - Reserves nouvelles sur "Le bon son", datees du 2026-08-10, non bloquantes
+    (`squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`, verdict du 2026-08-10, section 5) :
+    quatre des six items a variation forment deux paires de mots rimant sur une seule graphie et
+    une seule position (`DENT`/`VENT` en `-ENT`, `OMBRE`/`NOMBRE` en `-OMBRE`) - la correction est
+    deja nommee par `nadia-prof` et ne demande aucun arbitrage neuf : remplacer `VENT` par `LAMPE`
+    ou `JAMBE` (graphie `am`) et `NOMBRE` par `POMPIER` (graphie `om` en position non finale) ;
+    l'explication qui suit la reponse n'est pas distinguee visuellement de la consigne (question de
+    mise en forme pour `ines-design`) ; l'explication reprend presque mot pour mot l'indice du meme
+    item (sans consequence pedagogique selon elle, a corriger si ce jeu est retouche).
+- **Trou de decision produit, constate le 2026-08-10 par `nadia-prof` en auditant "Le bon verbe"**
+  (`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, verdict du 2026-08-10,
+  section 4) : a une largeur et une hauteur de viewport reellement de 360 x 640, la quatrieme
+  proposition de ce jeu (premier jeu du produit a quatre propositions au lieu de trois) est sous le
+  pli, 2 px visibles sur 69. Comme l'ordre des propositions est tire, la bonne reponse sera parfois
+  celle-la. `nadia-prof` refuse d'en faire un motif de refus, au motif honnete qu'**aucune decision
+  du depot ne fixe de hauteur de viewport minimale** - `DEC-0007` point 5 ne fixe qu'une largeur
+  cible (375 px), jamais une hauteur. A instruire : une decision produit sur une hauteur de
+  viewport cible, sur le meme modele que `DEC-0007` point 5, avant qu'un jeu a quatre propositions
+  ou plus revienne au planning.
+- **Limite du critere de `nadia-prof` sur les homophones CM1, nommee par elle-meme le 2026-08-10**
+  (`squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`, verdict du 2026-08-10, section 1) :
+  dans l'item "...ne ___ plus vraiment courir...", le mot `ne`, immediatement a gauche du trou,
+  suffit a lui seul a exclure `peu` sans avoir besoin d'aller chercher le mot decisif plus loin.
+  Elle ne s'en sert pas pour refuser (la meme limite existe deja sur un item qu'elle a credite en
+  s05, et elle ne deplace pas ses poteaux apres coup), mais elle nomme une version plus exigeante
+  possible du critere pour une story ulterieure : qu'aucun mot voisin du trou, meme un mot
+  grammatical, ne suffise a trancher.
+- **Candidat neuf pour une future extension des homophones CM1, nomme par `nadia-prof` le
+  2026-08-06 et confirme au verdict du 2026-08-10** : `c'est`/`s'est` (et `sait`/`sais`) satisfait
+  ses quatre criteres de "principal" et compte parmi les fautes les plus frequentes au CM1. Elle ne
+  l'a pas ajoute a sa condition de `couvert-valide` pour ne pas la faire grossir apres l'engagement
+  de l'equipe ; elle le nomme comme premier candidat d'une story ulterieure. Elle signale par
+  ailleurs que `squad/programme/francais/competences-cm1.md` gagnerait a porter la liste des dix
+  familles retenues (a/à, et/est, son/sont, on/ont, ou/où, ce/se, ces/ses, la/là/l'a, mais/mes,
+  peu/peut) a la place de ses points de suspension - remonte une premiere fois le 2026-08-06,
+  toujours ouvert, non traite ici.
 - Le menu de l'en-tete (S6-1, `DEC-0012`) reste volontairement a une seule entree tant qu'aucune
   deuxieme destination reelle n'existe. Un filtre par niveau (CP / CM1) est le candidat le plus
   visible pour la reserve juste au-dessus ; il suppose d'abord un vrai filtre cote serveur (une

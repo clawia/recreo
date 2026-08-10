@@ -165,6 +165,20 @@ ligne **reste `en cours`**. Le jeu est retire du catalogue jouable en attendant 
 (`DEC-0009-retrait-le-bon-son-du-catalogue.md`) ; stories de correction S5-2 a S5-5 de
 `docs/backlog/backlog.md`.
 
+**Etat au 2026-08-10, audit de cloture de s06** : `nadia-prof` prononce **VALIDE SOUS RESERVE**,
+Done pedagogique accorde (`squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`, verdict du
+2026-08-10). **Le REFUSE du 2026-08-06 est leve sur ses cinq motifs**, apres recomposition
+integrale du paquet (S6-6, S6-7) autour des seules trois voyelles nasales `an`, `on`, `in`. La
+ligne **reste `en cours`** : la competence du referentiel nomme aussi les voyelles simples, les
+consonnes simples et les digraphes `ch`, `ou`, `oi`, que ce paquet ne travaille pas et ne peut pas
+travailler sans qu'un son soit reellement joue (`nadia-prof` ferme elle-meme cette piste le
+2026-08-06 : "sans son, un digraphe transparent ne peut donner lieu qu'a une recherche de
+lettres"). Sa condition ecrite pour `couvert-valide` (meme fiche, verdict du 2026-08-10, section
+6) : les voyelles et consonnes simples couvertes par ce jeu ou un autre ; `ou`, `oi` et `ch`
+couverts par un jeu qui emet un son ; les trois nasales gardent les proprietes deja acquises. Le
+jeu peut rejoindre le catalogue (`DEC-0009` est levee de fait par ce verdict, `sofia-sm` fusionne
+l'entree de catalogue).
+
 ## Francais - CM1 (cycle 3)
 
 Source : `squad/programme/francais/competences-cm1.md`.
@@ -178,7 +192,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Ecriture | Relire et corriger son texte a l'aide de reperes simples (majuscules, ponctuation) | - | - | non couvert |
 | francais | CM1 | Orthographe et grammaire | Accorder le verbe avec son sujet (cas frequents, temps simples : present, futur, imparfait) | - | - | non couvert |
 | francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | - | - | non couvert |
-| francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | bandit-manchot-homophones-cm1 | bandit manchot | en cours |
+| francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | bandit-manchot-homophones-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif | bandit-manchot-conjugaison-present-cm1 | bandit manchot | en cours |
 | francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | - | - | non couvert |
 | francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | - | - | non couvert |
@@ -215,6 +229,30 @@ manque deux items neufs de plus dont le mot decisif n'est pas voisin du trou, et
 indice qui instruit une substitution qui n'est pas du francais - chiffres exacts a la section 3 du
 meme verdict, repris sans les redurcir ni les affaiblir dans les stories S6-4 et S6-5
 (`docs/backlog/backlog.md`).
+
+**Etat au 2026-08-10, audit de cloture de s06** : `nadia-prof` prononce **VALIDE**, Done
+pedagogique accorde sans reserve bloquante, sur le paquet porte a 24 items par S6-4 et S6-5
+(`squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`, verdict du 2026-08-10). **Sa condition
+en six points du 2026-08-06 est levee : la ligne passe a `couvert-valide`.** C'est la deuxieme
+ligne du produit a atteindre ce statut, et la premiere en francais. Le perimetre exact de ce
+`couvert-valide` est nomme par elle-meme pour ne pas etre confondu avec une couverture totale :
+dix familles d'homophones (`a/à`, `et/est`, `son/sont`, `on/ont`, `ou/où`, `ce/se`, `ces/ses`,
+`la/là/l'a`, `mais/mes`, `peu/peut`), chacune travaillee dans les deux sens, avec une profondeur de
+CM1 sur la moitie des items neufs. **`c'est`/`s'est` (et `sait`/`sais`) n'y est pas** : elle
+satisfait ses quatre criteres de "principal" et c'est l'une des fautes les plus frequentes au CM1,
+mais `nadia-prof` refuse de grossir une condition deja engagee par l'equipe - elle la nomme comme
+premier candidat d'une story ulterieure (voir "Backlog - sprints suivants").
+
+**Etat au 2026-08-10, premier audit de la ligne conjugaison** : `nadia-prof` prononce **REFUSE**
+sur `bandit-manchot-conjugaison-present-cm1`
+(`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, verdict du 2026-08-10). Motif
+unique et suffisant : cinq des douze indices du paquet enoncent une regle de conjugaison fausse, et
+trois d'entre elles sont dementies par un autre item du meme paquet. Les douze enonces eux-memes
+sont exacts et bien equilibres (les six personnes grammaticales representees deux fois chacune,
+les trois groupes travailles). La ligne **reste `en cours`** - elle ne pouvait de toute facon pas
+atteindre `couvert-valide` sur cet increment, qui ne couvre qu'un temps sur trois (`DEC-0013`). Le
+jeu est retire du catalogue jouable en attendant sa correction
+(`DEC-0014-retrait-le-bon-verbe-du-catalogue.md`).
 
 ## Synthese au sprint 0, mise a jour a l'ouverture du sprint 4
 
@@ -310,3 +348,34 @@ de competence programme, elles n'ont donc pas d'impact sur cette matrice.
 Une ligne de plus qu'a la cloture de s05 : francais CM1 passe de une a deux lignes `en cours`
 (homophones grammaticaux, conjugaison au present). Aucune ligne ne passe `couvert-valide` par ce
 planning ; ce mouvement attend l'audit de `nadia-prof` sur les increments de s06.
+
+## Synthese apres les verdicts du sprint 6 (2026-08-10)
+
+`nadia-prof` a rendu trois verdicts a la cloture de s06, sur les fiches
+`FICHE-bandit-manchot-conjugaison-present-cm1.md`, `FICHE-bandit-manchot-homophones-cm1.md` et
+`FICHE-bandit-manchot-le-bon-son-cp.md` :
+
+- **Francais CM1 (homophones grammaticaux)** obtient **`couvert-valide`** : sa condition en six
+  points du 2026-08-06 est levee. Deuxieme ligne du produit a atteindre ce statut, premiere en
+  francais.
+- **Francais CM1 (conjugaison au present)** est **REFUSE** : cinq indices sur douze enoncent une
+  regle de conjugaison fausse, trois dementies par un autre item du meme paquet. La ligne reste
+  `en cours`. Le jeu, jouable au moment de l'audit, est retire du catalogue
+  (`DEC-0014-retrait-le-bon-verbe-du-catalogue.md`).
+- **Francais CP (graphemes/phonemes, "Le bon son")** obtient **VALIDE SOUS RESERVE** : le REFUSE du
+  2026-08-06 est leve sur ses cinq motifs, apres recomposition complete du paquet autour des trois
+  voyelles nasales. La ligne reste `en cours` : la competence nomme aussi les voyelles et consonnes
+  simples et les digraphes `ch`, `ou`, `oi`, qu'aucun jeu ne couvre encore.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 10 | 0 | 1 |
+| mathematiques CM1 | 12 | 12 | 0 | 0 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 9 | 1 | 1 |
+| **Total** | **46** | **42** | **2** | **2** |
+
+Le produit compte desormais deux lignes `couvert-valide` sur 46 (contre une a la cloture de s05),
+deux lignes `en cours` dont l'une correspond a un jeu refuse et retire du catalogue
+(conjugaison CM1), et 42 lignes `non couvert`, chiffre inchange : aucune ligne nouvelle n'a ete
+ouverte ce sprint, le mouvement porte uniquement sur les deux lignes deja engagees.
