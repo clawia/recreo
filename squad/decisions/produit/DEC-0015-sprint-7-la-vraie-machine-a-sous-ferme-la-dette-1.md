@@ -325,3 +325,63 @@ motivation qui va avec.
 - Aucune story de S7-1 a S7-4 n'est modifiee : verifiees contre les quatre conditions de la
   metaphore, aucune n'y contrevient.
 - `squad/decisions/produit/DEC-index.md` : note d'amendement mise a jour.
+
+## Troisieme amendement du 2026-08-10 (ADR-0027 de theo-archi) - le rendu en clair de la reprise
+silencieuse reste en l'etat pour ce sprint
+
+**Le defaut et sa fermeture technique.** `nadia-prof` a trouve que `accueil.html` rend le fragment
+de manche en clair, sans htmx et sans aucun geste, sur la branche de reprise silencieuse de S1-4 :
+un enfant qui recharge sa page verrait les colonnes tourner sans avoir rien touche, ce qu'elle
+interdit nommement. `theo-archi` l'a ferme dans `ADR-0027` : le serveur declare desormais, sur
+chaque ecran de jeu qu'il rend, comment il est arrive (`data-arrivee="par-un-geste"` ou
+`"sans-geste"`), aucune animation ne peut s'accrocher au second, et la clause qui le garde a mordu
+sur trois mutations reelles de la production. Je n'ai rien a decider pour que cette fermeture
+tienne : elle tient deja.
+
+**Ce qu'il me route.** Il note que si je retirais le rendu en clair de la manche sur la reprise, le
+defaut disparaitrait a la racine plutot que d'etre neutralise par un marqueur, et que sa clause 5
+deviendrait alors rouge en le disant - signe attendu, pas un echec. Trois lectures se defendent :
+ne rien changer (le marqueur suffit, la redondance des deux protections est un cout accepte) ;
+retirer le rendu en clair et le remplacer par un chemin htmx qui garde la reprise silencieuse au
+sens de S1-4 (a verifier techniquement avec `theo-archi` avant de l'ecrire en critere) ; ou le
+retirer sans remplacement, ce qui change ce que voit l'enfant qui recharge, defait le critere de
+S1-4, et exige l'arbitrage prealable de `nadia-prof` (`squad/README.md` section 10).
+
+**Mon arbitrage : je ne change rien ce sprint.** Le marqueur de `theo-archi` est un garde-fou
+verifie, avec sa preuve de morsure sur trois mutations reelles ; le defaut que `nadia-prof` a
+signale est deja ferme par lui, pas seulement masque. Retirer le rendu en clair a la racine serait
+un geste de reduction de dette pour sa propre elegance, pas une reponse a un defaut ouvert - et ce
+sprint porte deja deux fronts d'arbitrage pedagogique en cours (les indices de "Le bon verbe" et le
+nombre de ses colonnes). Je ne vois pas de necessite qui justifie d'en ouvrir un troisieme
+aujourd'hui.
+
+**Ce que je ne tranche pas, et que je laisse a qui de droit.** Je ne demande pas a `theo-archi` de
+verifier la faisabilite d'un chemin htmx de remplacement (deuxieme lecture) : rien ne presse cette
+verification tant que le premier chemin reste un choix defendable. Je ne saisis pas `nadia-prof`
+d'un arbitrage prealable sur le retrait sans remplacement (troisieme lecture) : ce serait defaire un
+acquis accepte de S1-4 sans y etre contraint, au moment meme ou elle est deja saisie de la question
+des colonnes de "Le bon verbe". Si `theo-archi` ou `sofia-sm` estiment un jour que la redondance des
+deux protections vaut la peine d'etre levee, la question peut revenir au planning d'un sprint
+suivant, avec sa verification technique et son arbitrage pedagogique dans l'ordre que
+`squad/README.md` section 10 impose.
+
+**Pour memoire.** `theo-archi` inscrit la cause de ce defaut comme la troisieme occurrence d'une
+meme famille de faute de sa main dans ce chantier (une propriete structurelle prise pour la
+propriete qui compte, `ADR-0022` et la limite 5 d'`ADR-0017` l'avaient deja actee deux fois) : ce
+chantier a produit trois `ADR` sur cette seule mecanique, dont deux corrigent le premier. Je ne
+juge pas ce fait, je le nomme pour qui relira cette decision.
+
+**Etat non modifie par cet amendement.** La contradiction sur les quatre colonnes de "Le bon verbe"
+reste ouverte (second amendement ci-dessus) : `ines-design` est saisie de la seule sortie qui reste
+a instruire, le repli de mise en page, avec consigne de dire si aucun repli ne respecte les
+planchers. Je n'anticipe pas sa mesure ; si sa reponse est negative, le report du jeu hors du
+sprint 7 deviendra la seule sortie restante, et j'en deciderai alors comme d'une decision de
+perimetre distincte.
+
+### Impact de ce troisieme amendement
+
+- Aucune story de S7-1 a S7-4 n'est modifiee, aucune story nouvelle n'est ouverte : le defaut route
+  par `theo-archi` est ferme techniquement, et je ne prescris ni verification technique
+  supplementaire ni arbitrage pedagogique supplementaire ce sprint.
+- `docs/backlog/backlog.md` : inchange par cet amendement.
+- `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee.
