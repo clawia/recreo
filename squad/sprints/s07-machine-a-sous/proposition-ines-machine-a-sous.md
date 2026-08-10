@@ -39,8 +39,8 @@ texte a copier.
    partie visible de sa colonne pendant le defilement, et le navigateur fait alors defiler la page
    pour ramener le focus a l'ecran - un mouvement de page que personne n'a demande, au moment
    precis ou `nadia-prof` interdit tout mouvement non voulu. Un bouton qui ne bouge jamais ferme
-   cette question a la racine plutot que de la geser au cas par cas.
-2. Nadia-prof formule elle-meme sa preference (section 2 de son arbitrage) : *"le mot reste
+   cette question a la racine plutot que de la gerer au cas par cas.
+2. `nadia-prof` formule elle-meme sa preference (section 2 de son arbitrage) : *"le mot reste
    lisible du debut a la fin et seul un element decoratif passe devant (voile, reflet, volet,
    flou)."* C'est exactement la forme que je retiens, et elle ecrit que c'est celle des deux
    latitudes qui ne pose aucun des deux problemes qu'elle nomme (mot faux vu plus souvent que le
@@ -136,7 +136,7 @@ barre. A completer par qui ecrira ce paquet.
 
 ## 3. La forme du levier : un gros bouton-poussoir rond, jamais une manette a tirer
 
-**Je ne dessine pas de manette.** Nadia-prof interdit nommement toute forme qui suggere un geste
+**Je ne dessine pas de manette.** `nadia-prof` interdit nommement toute forme qui suggere un geste
 autre qu'un appui simple - "pas de fleche vers le bas, pas de manette a demi baissee qui attend
 qu'on la tire, pas de glissement" (section 5). Un enfant de CP n'a jamais besoin de comprendre
 qu'il "tire un levier" : il doit seulement comprendre "j'appuie ici et le jeu avance", et il le

@@ -1,4 +1,4 @@
-# DEC-0015 - Le sprint 7 construit la vraie machine a sous et ferme la dette n. 1 de CLAUDE.md
+# DEC-0015 - Le sprint 7 construit la vraie machine a sous et ferme la dette n°1 de CLAUDE.md
 
 - **Type** : portee
 - **Date** : 2026-08-10
@@ -21,7 +21,7 @@ column; ... }` dans `recreo.css`). C'est un questionnaire a choix multiple. Aucu
 depot - Java, HTML, CSS ou JavaScript - ne contient un mot du vocabulaire de machine a sous
 (rouleau, colonne, levier).
 
-**C'est la dette n. 1 de `CLAUDE.md` reproduite.** Sur `main`, `RuleSet` etait cite dans
+**C'est la dette n°1 de `CLAUDE.md` reproduite.** Sur `main`, `RuleSet` etait cite dans
 `CLAUDE.md` et dans quatre prompts d'agents sans exister dans aucun fichier Java (`ADR-0005` a
 acte son abandon pour cette raison precise). Ici, "bandit manchot" nomme la mecanique dans 25
 `ADR`, dans `adapters/adapter-content/src/main/resources/catalogue.yaml`, dans les trois fiches de
@@ -55,7 +55,7 @@ trancher. Ces questions sont techniques : elles vont a `theo-archi`, saisi en pa
 **Le sprint 7 construit la mecanique de machine a sous decrite par l'utilisatrice, en remplacement
 du rendu actuel de boutons empiles, sans toucher aux contrats de decouplage deja actes
 (`ADR-0004`, `ADR-0008`) : le serveur reste seul detenteur de l'etat et du verdict, la mecanique
-reste ignorante de la matiere et du niveau.** C'est le choix qui ferme la dette n. 1 : l'abstraction
+reste ignorante de la matiere et du niveau.** C'est le choix qui ferme la dette n°1 : l'abstraction
 "bandit manchot" existera dans le code, plutot que d'etre abandonnee par un `ADR` comme `RuleSet`
 l'a ete.
 

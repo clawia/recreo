@@ -81,7 +81,7 @@ ce planning.
 Deux lots de developpement, independants l'un de l'autre, aucune histoire de dependance entre eux :
 
 1. **Chantier mecanique (S7-1 a S7-4) - priorite la plus haute, ne cede pas.** C'est la demande
-   explicite de l'utilisatrice et la fermeture de la dette n. 1 de `CLAUDE.md`. L'avis de
+   explicite de l'utilisatrice et la fermeture de la dette n°1 de `CLAUDE.md`. L'avis de
    faisabilite prealable de `theo-archi` (etape 1 de `squad/README.md` section 9) est deja rendu,
    sous forme de deux `ADR` plutot que d'un simple avis en prose : `ADR-0026` chiffre la mise en
    page et les regles executables, `ADR-0027` ferme le defaut de la reprise silencieuse qu'il
