@@ -1,0 +1,15 @@
+/* Jeu fautif d'ADR-0026, clause 2 : l'animation se termine bien, mais rien ne la neutralise pour un
+   enfant qui a besoin d'un ecran immobile. */
+@keyframes defilement {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+.propositions {
+    display: flex;
+    gap: 1rem;
+}
+
+.proposition {
+    animation: defilement 0.6s linear 1;
+}

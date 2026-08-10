@@ -1,0 +1,7 @@
+/* L'autre forme du meme defaut : le raccourci a deux valeurs, dont la seconde gouverne l'axe lateral.
+   La regle precedente ne lisait que la premiere. */
+.propositions {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem 0.5rem;
+}

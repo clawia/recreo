@@ -1,0 +1,9 @@
+/* Jeu fautif d'ADR-0026 : le vert silencieux que l'amendement ferme. "gap: 1rem" est ce que la regle
+   precedente lisait et acceptait ; "column-gap: 0.5rem" l'emporte au rendu sur l'axe lateral, celui
+   que le doigt de l'enfant franchit des que les propositions sont cote a cote. */
+.propositions {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    column-gap: 0.5rem;
+}

@@ -1,0 +1,6 @@
+/* Relecture adverse de l'inegalite, bord haut : 0,99rem doit etre refuse quand 1rem est accepte. */
+.propositions {
+    display: flex;
+    flex-direction: row;
+    gap: 0.99rem;
+}

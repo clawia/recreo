@@ -1,0 +1,12 @@
+/* Le meme etat, mais ecrit ou il doit l'etre : dans des images cles. C'est une etape d'animation,
+   pas un etat permanent, et ADR-0026 ne l'interdit pas. Ce cas empeche la clause 3 d'etre plus large
+   que la decision. */
+@keyframes arrivee {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.propositions {
+    display: flex;
+    gap: 1rem;
+}

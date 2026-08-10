@@ -1,0 +1,21 @@
+/* Le meme jeu fautif que animation-sans-repli, corrige par le seul ajout du repli sous la forme du
+   contrat d'ADR-0026. Il prouve que les deux clauses de mouvement sont satisfiables. */
+@keyframes defilement {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+.propositions {
+    display: flex;
+    gap: 1rem;
+}
+
+.proposition {
+    animation: defilement 0.6s linear 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .proposition {
+        animation: none;
+    }
+}

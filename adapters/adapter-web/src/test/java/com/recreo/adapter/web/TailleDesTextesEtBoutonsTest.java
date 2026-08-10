@@ -67,6 +67,13 @@ class TailleDesTextesEtBoutonsTest {
     private static final double CIBLE_TACTILE_REM = 2.75;
 
     /**
+     * S3-5, reserve 2 de nadia-prof : l'ecart minimal entre deux boutons de reponse. Un plancher gagne
+     * par un refus pedagogique, jamais une variable de mise en page - aucune contrainte de largeur ne
+     * l'abaisse (ADR-0026).
+     */
+    private static final double ECART_MINIMAL_REM = 1.0;
+
+    /**
      * Les proprietes dont depend une garantie donnee par nadia-prof sur un bouton. padding entre par
      * ADR-0017 : c'est la composante de boite par laquelle la hierarchie de saillance s'est inversee
      * au lot Bootstrap, et une classe tierce en !important la defairait de la meme facon que les deux
@@ -84,7 +91,7 @@ class TailleDesTextesEtBoutonsTest {
     }
 
     /** Un commentaire CSS peut contenir des virgules ; il ne doit jamais entrer dans un selecteur. */
-    private static String sansCommentaires(String source) {
+    static String sansCommentaires(String source) {
         StringBuilder resultat = new StringBuilder();
         int position = 0;
         while (position < source.length()) {
@@ -138,6 +145,16 @@ class TailleDesTextesEtBoutonsTest {
 
     static Map<String, String> blocsMaison(Path racine) {
         return blocsParSelecteur(feuilles(racine, false));
+    }
+
+    /**
+     * Les feuilles que ce depot ecrit : tout {@code static/} hors {@code static/vendor/} (ADR-0014).
+     * Exposee parce qu'ADR-0026 lit les memes feuilles que celle-ci, avec leur structure de regles-@
+     * plutot qu'aplaties en blocs par selecteur - deux lectures du meme perimetre, qui doit donc
+     * n'etre derive qu'une fois.
+     */
+    static List<Path> feuillesMaison(Path racine) {
+        return feuilles(racine, false);
     }
 
     static Map<String, String> blocsTiers(Path racine) {
@@ -513,11 +530,123 @@ class TailleDesTextesEtBoutonsTest {
      * S3-5, reserve 2 de nadia-prof sur S2-1 : un ecart d'au moins 1 rem entre deux boutons de
      * reponse, au-dessus du plancher de 0,75rem constate en s02, pour un geste d'enfant encore
      * imprecis.
+     *
+     * <p><b>Amendement ADR-0026.</b> Cette regle ne lisait que {@code gap}, et son commentaire dans
+     * {@code recreo.css} disait la limite a voix haute : "proxy valide tant que les boutons restent
+     * empiles dans ce conteneur flex en colonne". Le jour ou les propositions deviennent des colonnes
+     * cote a cote, l'ecart que l'enfant doit franchir du doigt change d'axe, et deux formes le
+     * defaisaient sans faire rougir quoi que ce soit :
+     * <ul>
+     *   <li>{@code gap: 1rem 0.5rem} - le raccourci a deux valeurs, dont seule la premiere etait
+     *       lue ;</li>
+     *   <li>{@code gap: 1rem; column-gap: 0.5rem} - une declaration ulterieure qui l'emporte, et que
+     *       {@code debutDeDeclaration} ne confond pas avec {@code gap} (le caractere qui la precede
+     *       est un tiret), donc ne voyait pas du tout. <b>Vert silencieux.</b></li>
+     * </ul>
+     * Les deux axes sont desormais resolus separement et confrontes au meme plancher. Le plancher
+     * lui-meme ne bouge pas : c'est un acquis d'un refus pedagogique, pas une variable de mise en
+     * page (ADR-0026).
      */
     @Test
-    void lEcartEntreDeuxBoutonsDeReponseEstAuMoinsUnRem() {
-        Map<String, String> blocs = blocsMaison(RACINE_PRODUCTION);
-        assertThat(proprieteEnRem(blocs, ".propositions", "gap")).isGreaterThanOrEqualTo(1.0);
+    void lEcartEntreDeuxBoutonsDeReponseEstAuMoinsUnRemSurLesDeuxAxes() {
+        verifierEcartEntreBoutonsDeReponse(RACINE_PRODUCTION);
+    }
+
+    /** Les deux axes de {@code gap} sur un conteneur, raccourci resolu puis surcharges appliquees. */
+    private record Ecart(double vertical, double horizontal) {
+    }
+
+    private static Ecart ecartDe(Map<String, String> blocs, String selecteur) {
+        String corps = blocs.get(selecteur);
+        assertThat(corps).as("le selecteur %s doit exister dans le CSS maison", selecteur).isNotNull();
+
+        List<Double> raccourci = valeursEnRem(corps, "gap", selecteur);
+        assertThat(raccourci)
+                .as("%s doit declarer gap, l'ecart entre deux boutons de reponse", selecteur)
+                .isNotEmpty();
+        double vertical = raccourci.get(0);
+        double horizontal = raccourci.size() > 1 ? raccourci.get(1) : raccourci.get(0);
+
+        List<Double> surchargeVerticale = valeursEnRem(corps, "row-gap", selecteur);
+        List<Double> surchargeHorizontale = valeursEnRem(corps, "column-gap", selecteur);
+        return new Ecart(
+                surchargeVerticale.isEmpty() ? vertical : surchargeVerticale.get(0),
+                surchargeHorizontale.isEmpty() ? horizontal : surchargeHorizontale.get(0));
+    }
+
+    /** Les composantes d'une declaration, chacune exigee en rem : une unite qui ne se compare pas au
+     * plancher est un defaut, jamais une valeur ignoree (ADR-0013 obligation 2). */
+    private static List<Double> valeursEnRem(String corps, String propriete, String selecteur) {
+        int position = debutDeDeclaration(corps, propriete);
+        if (position < 0) {
+            return List.of();
+        }
+        List<Double> valeurs = new ArrayList<>();
+        for (String brute : motsDe(valeurDeclaree(corps, position, propriete))) {
+            assertThat(brute)
+                    .as("%s : %s doit s'exprimer en rem pour se comparer au plancher de nadia-prof",
+                            selecteur, propriete)
+                    .endsWith("rem");
+            valeurs.add(Double.parseDouble(brute.substring(0, brute.length() - "rem".length())));
+        }
+        return valeurs;
+    }
+
+    static void verifierEcartEntreBoutonsDeReponse(Path racine) {
+        Ecart ecart = ecartDe(blocsMaison(racine), ".propositions");
+        assertThat(ecart.vertical())
+                .as(".propositions : l'ecart vertical entre deux boutons de reponse doit valoir au "
+                        + "moins 1rem, pour un geste d'enfant encore imprecis")
+                .isGreaterThanOrEqualTo(ECART_MINIMAL_REM);
+        assertThat(ecart.horizontal())
+                .as(".propositions : l'ecart lateral entre deux boutons de reponse doit valoir au "
+                        + "moins 1rem. C'est l'axe qui porte le geste des que les propositions sont "
+                        + "cote a cote, et le plancher y est le meme (ADR-0026)")
+                .isGreaterThanOrEqualTo(ECART_MINIMAL_REM);
+    }
+
+    /**
+     * ADR-0026 : le vert silencieux que l'amendement ferme. Le jeu fautif declare {@code gap: 1rem}
+     * - ce que la regle precedente lisait, et acceptait - puis {@code column-gap: 0.5rem}, qui
+     * l'emporte au rendu. L'ecart vertical reste conforme : seul l'axe lateral est defait, donc seul
+     * l'axe lateral doit faire rougir.
+     */
+    @Test
+    void unEcartLateralSousLePlancherFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("ecart-lateral-defait");
+        assertThatThrownBy(() -> verifierEcartEntreBoutonsDeReponse(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("l'ecart lateral entre deux boutons de reponse");
+    }
+
+    /**
+     * L'autre forme du meme defaut : le raccourci a deux valeurs, dont la seconde gouverne l'axe
+     * lateral. La regle precedente ne lisait pas cette seconde valeur - elle tombait sur une
+     * exception de format plutot que sur un motif lisible.
+     */
+    @Test
+    void unRaccourciDontLaSecondeValeurEstSousLePlancherFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("raccourci-a-deux-valeurs");
+        assertThatThrownBy(() -> verifierEcartEntreBoutonsDeReponse(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("l'ecart lateral entre deux boutons de reponse");
+    }
+
+    /**
+     * Relecture adverse de l'inegalite, sur le bord exact : la production declare {@code gap: 1rem},
+     * c'est-a-dire la valeur du plancher elle-meme. Une inegalite stricte rejetterait l'etat que
+     * nadia-prof a accepte, et aucun cas nominal ne le dirait (lecon de la seconde mutation
+     * d'ADR-0025). Ce cas epingle le bord bas comme accepte, l'autre bord comme refuse.
+     */
+    @Test
+    void unEcartExactementEgalAuPlancherEstAccepteEtUnPoilMoinsEstRefuse() {
+        assertThat(ecartDe(blocsMaison(RACINE_PRODUCTION), ".propositions").horizontal())
+                .as("la production est exactement au plancher : c'est ce bord que l'inegalite accepte")
+                .isEqualTo(ECART_MINIMAL_REM);
+        assertThatThrownBy(() ->
+                verifierEcartEntreBoutonsDeReponse(CONTRE_EXEMPLES.resolve("un-poil-sous-le-plancher")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("au moins 1rem");
     }
 
     /**

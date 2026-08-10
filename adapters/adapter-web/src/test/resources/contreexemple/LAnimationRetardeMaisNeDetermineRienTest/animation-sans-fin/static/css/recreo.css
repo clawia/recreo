@@ -1,0 +1,22 @@
+/* Jeu fautif d'ADR-0026, clause 1 : le rouleau tourne sans fin. L'enfant voit du mouvement et
+   n'atteint jamais l'etat que le serveur a decide. Le repli de mouvement est present, pour que ce
+   soit bien l'infinite qui fasse rougir et rien d'autre. */
+@keyframes defilement {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+.propositions {
+    display: flex;
+    gap: 1rem;
+}
+
+.proposition {
+    animation: defilement 0.6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .proposition {
+        animation: none;
+    }
+}
