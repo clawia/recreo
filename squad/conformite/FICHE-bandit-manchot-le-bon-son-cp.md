@@ -17,6 +17,12 @@
   validees sur mesure**, `an`, `on`, `in` confortables sur l'ecran de manche complet a 360 px ; a
   reverifier sur le rendu livre que l'indice et l'explication ne passent pas sous le pli. Ce n'est pas
   un Done pedagogique et le VALIDE SOUS RESERVE du 2026-08-10 n'est pas touche.
+  **Chantier machine a sous, Done pedagogique prononce le 2026-08-10 sur l'increment livre (commit
+  `10dd74d`) : VALIDE SOUS RESERVE** - verdict transverse complet dans
+  `FICHE-bandit-manchot-additions-cp.md`. Le point que je m'etais reserve sur ce jeu est **verifie et
+  leve** : sur les 15 items, indice affiche, l'indice est a 317-405 et les colonnes a 417-491, donc
+  **les deux restent au-dessus du pli** a 360 x 640. Colonnes mesurees a **101,3 px**, mot le plus
+  large `on` a 38,9 px, aucune troncature.
 - **Derniere mise a jour** : 2026-08-10
 
 ## Competences visees
@@ -36,6 +42,35 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Verdict courant - chantier machine a sous (S7-1 a S7-4), du 2026-08-10
+
+- **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique du chantier accorde. Le verdict complet,
+  ses treize sections et son unique reserve sont dans
+  `FICHE-bandit-manchot-additions-cp.md`, bloc "Verdict courant - chantier machine a sous", qui est
+  depuis s02 le lieu ou je tranche l'habillage commun. **Il vaut pour ce jeu sans reserve
+  supplementaire.** Le Done pedagogique du contenu de ce jeu, accorde le 2026-08-10, n'est pas
+  modifie.
+- **Date** : 2026-08-10. **Commit audite** : `10dd74d`. Audit **joue**, non degrade.
+- **Ce que j'ai verifie sur ce jeu precisement**, en plus des huit points transverses :
+
+| Point | Mesure sur ce jeu |
+|---|---|
+| colonnes | 3 colonnes de **101,3 px** a 360 px, cible tactile de 74 px de haut |
+| mot le plus large du paquet | `on`, **38,9 px** dans 101,3 px, soit 31,2 px d'air de chaque cote |
+| troncature, coupure, compression | **aucune**, sur les 15 items |
+| police de la proposition | **32 px**, soit 2 rem, jamais rognee |
+| duree du defilement | **778 ms** de l'appui a l'arret de la derniere colonne, decalage de 167 ms |
+| ecran immobile, reduction d'animations active | **lisible et jouable** : partie enchainee de bout en bout sans animation, voile entierement invisible |
+| indice apres trois echecs | a 317-405, colonnes a 417-491, **les deux au-dessus du pli** sur les 15 items |
+| fin de partie | aucun levier, aucune colonne, aucun decor, aucune animation, `sortie-pleine` seule |
+| chemin de reprise | rechargement en pleine partie : manche restauree, **0 animation**, jeu jouable |
+
+- **Ligne de matrice** : **inchangee**, elle reste `en cours` pour la raison ecrite a mon verdict du
+  2026-08-10 (section 6 de ce bloc). Ce chantier ne porte aucune competence et ne peut faire bouger
+  aucune ligne.
+
+---
 
 ### Verdict - premier audit, contenu livre en s04
 

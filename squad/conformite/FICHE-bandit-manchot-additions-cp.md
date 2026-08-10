@@ -35,6 +35,16 @@
   acquis maintenus sans exception. Ce n'est pas un Done pedagogique, et **cet arbitrage est degrade** :
   le chantier n'est pas ecrit, huit points seront reverifies sur le rendu livre. Ce bloc vaut pour les
   quatre jeux du bandit manchot.
+  **Chantier machine a sous (S7-1 a S7-4), Done pedagogique prononce le 2026-08-10 sur l'increment
+  livre (commit `10dd74d`) : VALIDE SOUS RESERVE.** Mon audit degrade de l'arbitrage prealable est
+  **leve** : j'ai joue, chronometre l'animation dans le navigateur et epuise mes huit points de
+  reverification, un par un. Les quatre conditions non negociables sur la metaphore sont tenues. **Une
+  seule reserve** : la fin du mouvement n'est pas continue - le voile s'arrete contre le bord bas du
+  bouton et disparait en une image, 13 px encore visibles a la derniere image, trente fois par partie.
+  Trois de mes huit points de garde solitaire sont **reellement fermes** par ce chantier. Quatre de mes
+  propres constats sont corriges, dont deux a mon desavantage : un credit que j'avais accorde a tort
+  aux colonnes sur le defaut de pli, et le comptage de ce defaut sur "Le bon petit mot", qui est de
+  cinq items sur 24 et non de trois. Ce bloc vaut pour les quatre jeux du bandit manchot.
 - **Derniere mise a jour** : 2026-08-10
 
 ## Competences visees
@@ -103,7 +113,426 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Verdict courant - s06, S6-10 et S6-9 prononces sur le rendu reel, audit du 2026-08-10
+### Verdict courant - chantier machine a sous (S7-1 a S7-4), prononce sur l'increment livre, du 2026-08-10
+
+- **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. Une reserve, chiffree, en
+  section 11.
+- **Portee** : ce verdict est **transverse**. Il vaut pour la mecanique du bandit manchot et donc
+  pour les quatre jeux, catalogues ou non. Les fiches
+  `FICHE-bandit-manchot-le-bon-son-cp.md`, `FICHE-bandit-manchot-homophones-cm1.md` et
+  `FICHE-bandit-manchot-conjugaison-present-cm1.md` y renvoient.
+- **Date** : 2026-08-10. C'est le troisieme bloc que j'ecris ce jour-la sur ce chantier ; les deux
+  premiers etaient des arbitrages prealables et le disaient. **Celui-ci est le Done pedagogique**,
+  et il est rendu apres avoir joue.
+- **Commit audite** : `10dd74d`, `HEAD` de `round-two` au moment de l'audit. Mon worktree y a ete
+  amene par avance rapide, sans fusion : mes trois blocs anterieurs en sont deja des ancetres.
+  `round-two` etait a `eff5767` quand ce travail m'a ete confie ; le seul commit intervenu depuis,
+  `10dd74d` avec `8639960`, est un epinglage de vacuite sur un garde-fou de contenu et ne change
+  rien a ce que l'enfant voit. Je l'ai neanmoins audite dans l'etat le plus complet plutot que dans
+  l'etat annonce, et je le dis.
+- **Moyens** : audit **joue**, **non degrade** sur les huit points de ma liste fermee. Worktree
+  dedie hors de l'arbre du depot, lignee verifiee par `outils/verifier-lignee.sh` ("le worktree sur
+  la branche '<ma branche>' descend de la lignee de round-two"). JDK constate par
+  `outils/verifier-jdk.sh` : `java du PATH : 1.8.0_202 | JDK de compilation : 21.0.10 | JAVA_HOME :
+  vide | toolchains lu par Maven : non (fichier present sous un nom non lu)` ; `JAVA_HOME` pointe
+  sur ce JDK 21 le temps de la commande, jamais ecrit dans un fichier commite. Fat jar reconstruit,
+  lance sur un port dedie. **Cinq parties completes de dix manches jouees jusqu'a l'ecran de fin**,
+  dont trois ratees a chaque manche pour faire venir l'aide, plus des balayages repetes pour voir
+  tous les items de chaque paquet. Rendu observe a une largeur de viewport reellement de 360 px et
+  une hauteur de 640 px, la reference que `DEC-0016` vient de fixer.
+- **Done technique** : acquis, verifie par moi avant de juger - `mvn -B verify` vert sur ce commit,
+  315 tests, aucun echec. Je ne prononce pas de Done pedagogique sur un increment qui plante.
+
+#### 0. Comment j'ai joue, et ce qui m'a manque
+
+Ce que j'ai fait, et qui n'est pas une lecture de feuille de style : j'ai pilote un vrai navigateur,
+j'ai **presse les boutons** comme l'enfant les presse, et j'ai enregistre dans le navigateur
+l'instant de mon appui et l'instant ou chaque colonne s'arrete. C'est ce qui rend la section 2
+chiffree plutot que deduite. J'ai aussi fige l'animation reelle et je l'ai deplacee image par image
+pour regarder ce que l'enfant a sous les yeux au milieu du mouvement, ce qu'une capture apres coup ne
+montre jamais.
+
+**Ce qui reste hors de ma portee, et que je ne presente donc pas comme verifie** : je n'ai pas joue
+sur un ecran tactile, ni fait jouer un enfant. Mes verdicts portent sur ce que l'ecran fait, pas sur
+ce qu'une main de six ans en fait. C'est une limite permanente de mes audits, pas un manque de ce
+sprint.
+
+**Un point de la section 10 est declare degrade** et l'est nommement : ma comparaison avec la mise
+en page empilee d'avant le chantier. Voir la section 10, point D.
+
+#### 1. Point 1 - l'enfant attribue-t-il le mouvement a son propre appui ?
+
+**Oui, et le raccord est serre.** Mesure, sur l'accueil des additions CP :
+
+| Ce que j'ai mesure | Valeur |
+|---|---|
+| animations en cours sur l'accueil, avant tout geste | **0** |
+| delai entre mon appui sur le titre du jeu et le demarrage de la premiere colonne | **28 a 32 ms** |
+| marqueur pose par le serveur sur l'ecran obtenu par un appui | `data-arrivee="par-un-geste"` |
+| marqueur pose sur l'ecran obtenu par un rechargement de page | `data-arrivee="sans-geste"` |
+| animations sur cet ecran-la | **0**, `animation-name: none`, voile a son etat de repos |
+
+Trente millisecondes, c'est en dessous de ce qu'un enfant separe en deux evenements. Le mouvement
+part sous son doigt. **Je leve le risque que j'avais nomme le matin** - "la cause et l'effet ne sont
+jamais sur le meme ecran, le levier est sur l'ecran precedent" - parce que le raccord mesure est trop
+serre pour que la question se pose : l'enfant presse, l'ecran change et bouge dans le meme
+battement de paupiere. Je l'avais annonce comme le premier point que je regarderais et comme le
+motif que j'ecrirais s'il tombait ; il ne tombe pas, et je le dis aussi clairement que je l'aurais
+dit dans l'autre sens.
+
+**Et le defaut que j'avais trouve en lisant est ferme.** Mon arbitrage prealable, section 6,
+signalait qu'`accueil.html` rend le fragment de manche sans aucun geste sur la branche de reprise, et
+donc que les colonnes tourneraient au rechargement. Joue : le rechargement en pleine partie rend la
+manche, ne declenche **aucune** animation, et laisse le jeu jouable. Le symptome que j'avais decrit
+n'existe plus dans le livre. C'est `ADR-0027` qui l'a traite, et je le porte au credit de
+`theo-archi` et de `lea-dev` : j'avais decrit un symptome sans prescrire de cause, et la cause a ete
+traitee.
+
+#### 2. Point 2 - la duree, chronometree
+
+Mesure faite dans le navigateur, en enregistrant l'horodatage de mon appui puis celui de chaque
+`animationend`. Ce sont donc des millisecondes reelles, pas les valeurs declarees dans une feuille.
+
+| Grandeur | Ma barre du matin | 3 colonnes (Calcul CP) | 4 colonnes (Le bon verbe) |
+|---|---|---|---|
+| de l'appui a l'arret de la **derniere** colonne | 0,3 s a 1,2 s | **778 ms** | **861 ms** |
+| decalage entre le premier arret et le dernier | 0,25 s au plus | **167 ms** | **234 ms** |
+| aller-retour reseau avant le premier mouvement | - | 28 ms | 32 ms |
+| cout d'attente sur une partie de dix manches | - | **7,8 s** | 8,6 s |
+
+**Les deux cas sont dans mes bornes.** La valeur retenue par `ines-design`, 0,6 s de glissement et
+0,08 s de decalage cumulatif, est celle que je conseillais, et le total paye par l'enfant reste sous
+la seconde.
+
+**Le ralentissement existe, et je l'ai mesure plutot que cru.** Progression du voile sur la premiere
+colonne, lue sur le rendu, par pas de 60 ms : 12,8 - 11,8 - 11,0 - 10,1 - 9,1 - 8,0 - 6,8 - 5,4 -
+3,6 % de la hauteur du bouton. **Strictement decroissante d'un bout a l'autre.** Le mouvement ralentit
+avant de s'arreter, comme je l'exigeais, et il n'y a **aucun depassement** : la bande ne franchit
+jamais 80 % et ne revient jamais en arriere. Un seul passage, jamais rejoue.
+
+**Ce que ces chiffres ne couvrent pas, et qui devient une remarque nouvelle et datee** : sur un
+paquet a quatre colonnes, le decalage est a **234 ms de mon plafond de 250 ms**. Il tient, et je ne
+touche pas au plafond. Mais le retard est **cumulatif de 80 ms par colonne** : une cinquieme colonne
+porterait le decalage a 314 ms et creverait ma borne, sans qu'aucun test ne le voie. Ce n'est pas un
+motif aujourd'hui - aucun paquet n'a cinq propositions - c'est un constat neuf du 2026-08-10 pour
+`camille-po`, a joindre a la premiere story qui ouvrirait un paquet a cinq propositions.
+
+#### 3. Point 3 - aucun autre mot ne defile, verifie sur les homophones d'abord
+
+**C'est le point que je tenais le plus, et il est tenu.** J'ai fige l'animation reelle sur "Le bon
+petit mot", item `là` / `la`, et je l'ai regardee image par image.
+
+| Instant du mouvement | Ce que la colonne 1 montre | Ce que la colonne 2 montre |
+|---|---|---|
+| 0 ms | `là`, entier | `la`, entier |
+| 100 ms | `là`, entier | `la`, entier |
+| 200 ms | `là`, entier, une bande sombre le traverse | `la`, entier, bande plus haut |
+| 300 ms | `là`, entier | `la`, entier |
+| 500 ms | `là`, entier | `la`, entier |
+| 599 ms | `là`, entier | `la`, entier |
+
+**A aucun instant une colonne ne montre autre chose que son propre mot, ni un mot vide.** La forme
+retenue le rend structurellement vrai : ce qui bouge est un voile decoratif pose en `::after`, et le
+texte du bouton n'est ni efface, ni remplace, ni rogne. Verifie sur le style calcule de
+`.proposition` sur le rendu, et non dans le fichier : `overflow: visible`, `clip-path: none`,
+`text-overflow: clip`, `letter-spacing: normal`, `transform: none`, `font-stretch: 100%`,
+`hyphens: manual`, `word-break: normal`, `writing-mode: horizontal-tb`, `font-size: 32px`. **Les six
+conditions de ma section 3 du matin sont satisfaites sur le rendu, une par une.**
+
+**Le second critere de S7-3, que `theo-archi` me signale comme vrai en fait et garde par personne :
+l'enonce reste-t-il immobile pendant le defilement ?** Il me revient, je l'ai pris. Positions
+relevees a cinq instants du mouvement, sur un ecran a quatre colonnes :
+
+| t | consigne | enonce | score | boite de la colonne 1 |
+|---|---|---|---|---|
+| 0 ms | 207-237 | 253-301 | 169-199 | 317-391 |
+| 150 ms | 207-237 | 253-301 | 169-199 | 317-391 |
+| 300 ms | 207-237 | 253-301 | 169-199 | 317-391 |
+| 450 ms | 207-237 | 253-301 | 169-199 | 317-391 |
+| 599 ms | 207-237 | 253-301 | 169-199 | 317-391 |
+
+**Immobiles au pixel, aux cinq instants.** Et j'ai verifie la cible de **toutes** les animations du
+document plutot que de le supposer : elles sont quatre, toutes sur `.proposition::after`, aucune
+ailleurs. Rien d'autre que les colonnes ne bouge sur cet ecran.
+
+**Je dis aussi ce que j'ai appris de `theo-archi` sur ce point, parce que ma propre exigence etait a
+un caractere de la production.** La decoupe qui confine le voile aurait, posee sur `.proposition` au
+lieu de `::after`, transforme `sont` en `son` - la bonne reponse en la fausse - et son garde-fou
+rendait 149 verts sur 149. La forme livree est saine ; la propriete que je detiens ne l'etait pas, et
+elle l'est maintenant. Je le note parce que c'est exactement le genre d'ecart que ma seule lecture du
+matin n'aurait pas attrape.
+
+#### 4. Point 4 - l'ecran immobile est-il lisible ET jouable ?
+
+`ADR-0026` garde la **forme** litterale du repli de mouvement ; il ne garde pas le resultat. C'etait
+ma part et je l'ai faite dans un vrai navigateur, reduction d'animations activee au niveau du
+systeme, pas simulee dans la feuille.
+
+| Ce que j'ai verifie | Constat |
+|---|---|
+| `prefers-reduced-motion: reduce` reellement actif | oui, confirme par le navigateur |
+| animations sur l'ecran de manche | **0**, `animation-name: none` |
+| etat du voile | `inset(0px 0px 100%)`, donc **entierement invisible** |
+| lisibilite des trois colonnes | nette, aucune bande, aucun residu |
+| jouable : choisir une reponse | oui, verdict rendu ("Non, c'est on.") |
+| jouable : enchainer la manche suivante | oui, "Encore !" fonctionne, manche suivante servie |
+
+**L'ecran obtenu n'est pas un ecran degrade, c'est un ecran propre.** Un enfant qui a besoin
+d'immobilite voit exactement le jeu, sans rien perdre : ni un mot, ni un bouton, ni une etape. C'est
+le bon comportement, et je ne l'aurais pas su sans le jouer - une regle `animation: none` peut tres
+bien laisser un element fige dans un etat a moitie efface. Ici elle le laisse a son etat de repos, et
+l'etat de repos a ete choisi invisible. C'est ce choix-la qui fait le resultat, et il est juste.
+
+#### 5. Point 5 - les trois ecrans du catalogue a 360 px, sur les items les plus longs
+
+Balaye jeu par jeu, en jouant assez de parties pour voir tous les items de chaque paquet. Colonnes de
+101 px a trois propositions, de 160 px a deux, exactement les largeurs que j'avais mesurees sur
+maquette.
+
+| Jeu | Mot le plus large du paquet | Largeur du mot | Air de chaque cote | Lignes | Police | Tronque ? |
+|---|---|---|---|---|---|---|
+| Calcul CP | `10` | 36,8 px dans 101,3 px | 32,3 px | 1 | 32 px | non |
+| Le bon son (CP) | `on` | 38,9 px dans 101,3 px | 31,2 px | 1 | 32 px | non |
+| Le bon petit mot (CM1) | `sont` | 65,5 px dans 160 px | 47,3 px | 1 | 32 px | non |
+
+**Aucune troncature, aucune coupure, aucun mot sur deux lignes, aucune police sous 2 rem, sur aucun
+item des trois paquets du catalogue.** Le verdict de lisibilite que j'avais rendu sur maquette se
+verifie sur le livre, et il se verifie largement : le plus serre des trois jeux du catalogue garde
+31 px d'air de chaque cote de son mot.
+
+#### 6. Point 6 - l'ecran de fin de partie
+
+Verifie a la fin des cinq parties, sur les quatre jeux.
+
+| Ce que j'ai cherche | Constat |
+|---|---|
+| un levier, un bouton "Encore !" | **absent** |
+| une colonne, une proposition | **aucune** |
+| un decor de bouton-poussoir (rond, ombre, pastille) | **aucun** - l'habillage du levier est porte par `.demarrer` et `.encore` seulement, et ni l'un ni l'autre n'existe sur cet ecran |
+| une animation | **0** |
+| `sortie-pleine` | present, seul, en aplat plein, 117 x 56 px |
+
+**Mon acquis 6 est tenu**, et il est tenu par construction plutot que par chance : l'habillage du
+levier est attache aux deux boutons qui ouvrent une manche, jamais a la sortie. C'est le bon choix de
+portee et je le note, parce que c'est precisement l'acquis qu'un chantier de mecanique defait par
+accident. Il n'y a rien a presser sur cet ecran qui ne mene pas dehors.
+
+#### 7. Point 7 - le chemin de reprise
+
+Joue : partie en cours sur "Le bon son", item `MANTEAU`, puis **rechargement complet de la page**,
+comme un enfant qui revient ou qui recharge sans le vouloir.
+
+| Ce que j'ai mesure | Constat |
+|---|---|
+| ecran obtenu | la manche en cours, item `MANTEAU`, la partie n'est pas perdue |
+| marqueur d'arrivee | `sans-geste` |
+| animations declenchees | **0** |
+| `animation-name` du voile | `none` |
+| voile | a l'etat de repos, invisible |
+| jouable depuis cet ecran | oui, reponse acceptee, manche suivante servie et animee normalement |
+
+**Rien ne bouge, et rien n'est perdu.** C'est le comportement exact que je demandais : le mode de
+defaillance choisi est l'immobilite, jamais un mouvement que l'enfant n'a pas demande. Ce que je
+gardais seule sur ce chemin est desormais couvert par le serveur ; je le dis en section 12.
+
+#### 8. Point 8 - l'indice sur un ecran qui defile, apres trois echecs
+
+Joue trois parties ratees a chaque manche, sur les trois jeux du catalogue, pour faire venir l'aide.
+
+| Jeu | Position de l'indice | Position des colonnes | Au-dessus du pli a 640 ? |
+|---|---|---|---|
+| Calcul CP | 317-375 | 387-461 | oui, les deux |
+| Le bon son | 317-405 | 417-491 | oui, les deux |
+| Le bon petit mot, item court | 317-435 | 447-521 | oui, les deux |
+| Le bon petit mot, 5 items sur 24 | jusqu'a 557-705 | jusqu'a 717-791 | **non** |
+
+**L'indice est lisible et stable** : cadre complet, 1,25 rem, immobile pendant que les colonnes
+bougent (section 3), et il n'est jamais traverse par le voile, qui reste dans la boite des boutons.
+
+**Et il n'a pas ete pousse sous le pli par la nouvelle mise en page** : la position du haut de
+l'indice ne depend que de la hauteur de l'enonce, que ce chantier ne touche pas. Le defaut de pli de
+"Le bon petit mot" est reel, il persiste, `yanis-qa` a raison de le confirmer sur le code livre, et
+**il n'est pas imputable a ce chantier**. Je le traite en section 10, point C, avec une correction de
+mon propre comptage, et je ne l'oppose pas a ce chantier : ce serait lui faire porter un defaut dont
+j'ai moi-meme etabli le matin que la cause est ailleurs.
+
+#### 9. Les quatre conditions non negociables de ma section 1
+
+Elles conditionnaient l'acceptabilite de la metaphore. Verifiees une par une, sur ce que l'enfant
+lit, voit et entend.
+
+**Condition 1 - aucun vocabulaire ni imagerie de jeu d'argent.** Releve exhaustif sur les trois
+ecrans (accueil, manche, retour) : le titre de la page est `Recreo` ; le seul `alt` du document est
+vide, sur l'icone decorative ; le seul `aria-label` est `Menu principal` ; le seul contenu genere par
+la feuille de style est la chaine vide, sur le voile et sur la pastille du levier ; les textes
+visibles sont les titres des jeux, `Les jeux`, `Score`, les consignes, les enonces, les propositions,
+`Bravo, c'est juste !`, `Non, c'est ...`, `Encore !`, `C'est fini !`. **Aucun des treize mots que
+j'avais interdits n'apparait nulle part**, et je les ai cherches sur le texte assemble plutot que
+dans les gabarits. J'ai aussi verifie l'absence de `rouleau`, `levier`, `tirage`, `hasard`, `chance`,
+`serie`, `multiplicateur` : absents. Le son : **le produit ne contient aucun element audio ni video,
+zero**. Je le dis ainsi plutot que de pretendre avoir ecoute. **L'acquis que je portais tient : le
+nom de la mecanique n'est pas remonte a la surface**, alors que c'etait la tentation exacte de ce
+sprint, ou il devenait enfin exact.
+
+**Condition 2 - aucun signal de gain a l'arret.** Etat des trois colonnes une fois arretees, releve
+sur le rendu :
+
+| | colonne 1 | colonne 2 | colonne 3 |
+|---|---|---|---|
+| fond | `rgb(46, 111, 158)` | `rgb(46, 111, 158)` | `rgb(46, 111, 158)` |
+| couleur du mot | blanc | blanc | blanc |
+| bordure, ombre, contour | aucune | aucune | aucune |
+| filtre, opacite, transformation | aucun, 1, aucune | aucun, 1, aucune | aucun, 1, aucune |
+| voile | invisible | invisible | invisible |
+
+**Rigoureusement identiques.** Aucune colonne ne se distingue des autres a l'arret, rien ne s'allume,
+rien ne se colore, et rien ne se passe jusqu'a ce que l'enfant presse. L'arret n'est pas un resultat,
+c'est une donne - ce qui etait le motif operationnel de cette condition, et il est satisfait.
+
+**Condition 3 - un seul canal de verdict.** L'ecran de retour porte un `.signal` unique : la forme
+(coche ou croix), sa couleur, et une phrase. C'est le canal qui existait avant ce chantier, inchange.
+**Le chantier n'a ajoute aucun second canal** : rien sur l'ecran de manche ne dit si la reponse
+precedente etait juste, et l'arret des colonnes ne dit rien du tout (condition 2).
+
+**Condition 4 - aucun compteur de serie.** Le seul compteur present a l'ecran est `Score : N`. Aucune
+serie, aucun multiplicateur, aucun "d'affilee", aucun compteur d'echecs visible - alors qu'il en
+existe un cote serveur, celui qui declenche l'indice, et qu'il aurait ete facile de l'afficher. Il ne
+l'est pas.
+
+**Les quatre conditions sont tenues. La metaphore diminuee est celle qui est livree**, et la machine
+ne decide rien : elle distribue, l'enfant choisit.
+
+#### 10. Ce que je corrige de mes propres constats, avant qu'on s'appuie dessus
+
+Quatre points, et deux sont des corrections a mon desavantage.
+
+**A. Ma valeur de voile est celle qui est livree, et je la reverifie a l'oeil et au pixel.** Lu sur
+l'image rendue : sous le voile `rgb(36, 88, 126)`, hors voile `rgb(46, 111, 158)`. C'est exactement
+un noir a 20 % sur l'aplat d'accent. Contraste du mot blanc que je recalcule sur ces pixels-la :
+**7,57:1 sous le voile contre 5,41:1 au repos.** J'avais annonce 7,48:1 - la valeur juste est 7,57:1,
+l'ecart vient de ce que j'avais calcule sur la composition theorique et non sur le pixel rendu. Dans
+les deux cas, **assombrir augmente le contraste** au lieu de le reduire, et le blanc a 45 % que
+j'avais refuse l'aurait fait tomber a 2,29:1. `lea-dev` a suivi mon arbitrage plutot que la
+proposition d'`ines-design` sur ce point, et c'est la bonne valeur qui est a l'ecran.
+
+**B. `mangeons` a 2 px d'air, pas 3.** J'avais ecrit dans mon second arbitrage qu'il ne restait
+"que 3 px d'air a droite de mangeons". Mesure sur le code livre : le mot fait **156 px dans une boite
+de 160 px, soit 2,0 px de chaque cote**. Mon chiffre etait optimiste de 1 px. Le mot **n'est pas
+tronque** et ma condition tient, mais la marge est celle-la et pas une autre. Le detail est dans
+`FICHE-bandit-manchot-conjugaison-present-cm1.md`, parce que c'est un mot de ce paquet.
+
+**C. Sur "Le bon petit mot", ce sont CINQ items sur 24, et non trois.** Correction d'un de mes
+propres constats, dans le sens de la gravite. Balayage de 41 etats d'item distincts sur huit parties,
+mesure a 360 x 640 sur le code livre :
+
+| Enonce (debut) | Lignes d'enonce | Bas de l'indice | Boites de reponse | Etat |
+|---|---|---|---|---|
+| "Après cette longue randonnée en montagne..." | 6 | 705 | **717-791** | les deux boutons entierement sous le pli |
+| "Tom cherchait sa gomme depuis le début du cours..." | 5 | 641 | 653-727 | les deux entierement sous le pli |
+| "Après la récréation, tous les élèves ___ rangent..." | 4 | 579 | 591-665 | les deux mots sous le pli |
+| "Léa a perdu son livre depuis lundi, mais elle ___..." | 4 | 579 | 591-665 | les deux mots sous le pli |
+| "Même si le ciel est bien dégagé ce matin, il ___..." | 4 | 579 | 591-665 | les deux mots sous le pli |
+| les 19 autres items | 1 a 3 | - | - | au-dessus du pli |
+| les 24 items **sans** l'indice | - | - | - | **aucun** en defaut |
+
+J'avais compte trois items ; il y en a cinq. Mon comptage du matin etait fait sur une lecture des
+enonces, celui-ci est fait en jouant. **Rien de ce constat ne change mon verdict** : ce n'est pas un
+motif, le Done pedagogique de "Le bon petit mot" reste accorde, sa ligne de matrice reste
+`couvert-valide`, et `DEC-0016` gouverne desormais la regle. Ce qui change, c'est le chiffre que
+`camille-po` doit instruire.
+
+**D. Et je corrige un credit que j'avais accorde a ce chantier a tort.** J'avais ecrit que la mise en
+page en colonnes libere 180 px et "rend le pli confortable la ou il etait juste". **C'est faux pour un
+enonce long, et l'erreur est de moi.** Les colonnes ne remontent pas la **premiere** rangee de
+boutons : sa position depend de la hauteur de l'enonce et de l'indice, qui sont au-dessus d'elle.
+Mesure sur l'item le plus long du paquet des homophones, indice affiche : les deux boutons sont a
+**717-791**, exactement la ou j'avais releve 717-790 le matin. Les colonnes n'ont rien gagne sur cet
+item. Ce qu'elles gagnent reellement, et qui est mesure, c'est de **remonter les propositions de la
+deuxieme rangee** : sur "Le bon verbe", la quatrieme proposition passe de 638-707 empilee a 407-481,
+455-529 ou 543-617 selon l'item. Le gain est reel, il est important, et il ne porte pas ou j'avais
+dit qu'il portait. **Ce point est declare degrade sur un aspect** : je n'ai pas pu remesurer la mise
+en page empilee d'avant le chantier sur le code livre, parce qu'on ne l'obtient pas en changeant une
+seule propriete - `flex: 1 1 0` change de sens sur l'autre axe et donne des boutons de 44 px au lieu
+de 74. Les 180 px et les 90 px sont donc de l'arithmetique sur mes deux mesures, pas une mesure de
+l'ancienne mise en page. Les 717-791 de l'item long, eux, sont mesures.
+
+#### 11. Ma reserve, et c'est la seule
+
+**Le voile ne quitte pas le bouton : il s'y arrete et disparait d'un seul coup.** C'est un constat
+neuf, date du 2026-08-10, sur un ecran qui n'existait pas quand j'ai ecrit ma liste de refus. Mesure
+image par image sur la derniere image du mouvement :
+
+| Instant | Bande sombre rendue dans un bouton de 74 px |
+|---|---|
+| 520 ms | lignes 57 a 70 |
+| 560 ms | lignes 58 a 71 |
+| 580 ms | lignes 59 a 71 |
+| 599 ms | **lignes 59 a 71**, soit 13 px encore visibles au bas du bouton |
+| 600 ms | **plus rien** |
+
+A la derniere image, chaque bouton porte donc une barre sombre de 13 px collee a son bord bas, et
+cette barre s'efface en une image. Sur un ecran a trois colonnes, cela fait **trois disparitions
+decalees de 80 ms** a la fin de chaque manche, soit trente par partie.
+
+**Pourquoi c'est une reserve et pas un motif.** Aucun de mes refus nommes n'est enfreint, et je les
+reprends un par un plutot que d'en etirer un : ce n'est pas un rebond (la bande ne revient jamais en
+arriere), ce n'est pas un arret brutal depuis la pleine vitesse (le mouvement a ralenti a 3,6 % par
+60 ms avant de s'arreter), ce n'est pas un clignotement repete plus de trois fois par seconde
+(chaque colonne ne disparait qu'une fois), et ce n'est pas un signal de gain (les colonnes sont
+rigoureusement identiques, section 9). **Je ne durcis donc aucune de mes clauses apres coup** : je
+nomme un defaut que je n'avais pas prevu, et je l'ouvre comme reserve datee.
+
+**Pourquoi c'en est quand meme une.** Le regard d'un enfant est attire par une disparition brusque, et
+elle se produit exactement a l'instant ou l'ecran devient actionnable - donc a l'instant ou son
+attention devrait aller au mot, pas au bas du bouton. Trente fois par partie, ce n'est plus un detail.
+
+**Ce que j'attends, en propriete et non en solution** : que le mouvement se termine sans discontinuite
+visible, c'est-a-dire que la bande soit sortie de la boite avant que l'animation ne rende la main.
+Comment l'obtenir n'est pas ma decision : c'est de la forme, donc `ines-design` propose et
+`theo-archi` tranche la mise en oeuvre. Je regarderai le resultat, pas la regle.
+
+#### 12. Ce dont je reste seule garde apres cet audit
+
+Ma liste du matin en comptait huit. Trois en sortent, cinq restent, une entre.
+
+| Point | Etat apres cet audit |
+|---|---|
+| 1. duree, courbe, decalage du defilement | **reste ma garde.** Les valeurs sont bonnes aujourd'hui ; rien n'empeche de les changer. `ADR-0026` a ferme deux trous - la decoupe laterale, et le retard ecrit dans une regle par colonne - et c'est acquis. Le **cumul** au-dela de quatre colonnes reste hors garde-fou (section 2) |
+| 2. qu'un mot tienne dans sa colonne | **reste ma garde**, et la marge la plus etroite du depot est desormais chiffree : 2,0 px sur `mangeons` |
+| 3. qu'une proposition ne soit ni tronquee, ni coupee, ni comprimee | **reste ma garde** pour cinq des six conditions. Verifiees sur le rendu cette fois, pas sur la feuille |
+| 4. que ce que l'enfant voit soit ce qu'il envoie | **sort de ma garde en pratique** : la forme retenue rend le texte du bouton intouchable, et `ADR-0026` garde maintenant que la decoupe reste dans le pseudo-element. Je le surveille encore comme risque de regression de forme, plus comme risque courant |
+| 5. qu'aucun mot faux ne defile | **sort de ma garde** : plus aucun mot ne defile du tout. Verifie image par image sur les homophones |
+| 6. que l'enfant relie le mouvement a son appui | **sort de ma garde comme risque** : 30 ms mesures, `ADR-0027` garde le marqueur. Je le reverifierai si le chemin de rendu change |
+| 7. qu'aucun decor de machine n'atteigne l'ecran de fin de partie | **reste ma garde.** Le garde-fou de saillance n'oppose que des etats simultanes ; c'est la portee de la regle d'habillage qui protege aujourd'hui, et une portee peut s'elargir sans qu'aucun test ne rougisse |
+| 8. que le mouvement ne se declenche jamais sans geste | **sort de ma garde** : `ADR-0027` pose le marqueur cote serveur et un oubli de point d'appel se traduit par l'immobilite. Le mode de defaillance est le bon |
+| **9. NOUVEAU - que la fin du mouvement soit continue** | **ma garde**, et c'est ma reserve de la section 11. Aucun test ne regarde la derniere image d'une animation |
+
+Je le dis pour qu'on ne croie pas couvert ce qui ne l'est pas, et aussi pour rendre la garde de ce qui
+l'est desormais : ce sprint a **reellement** ferme trois de mes huit points, ce qui n'etait jamais
+arrive.
+
+#### 13. Suites hors de ma main
+
+- **`squad/programme/MATRICE-couverture.md` ne bouge pas.** Ce chantier ne porte **aucune** competence
+  du programme : il n'y a aucune ligne a confronter au referentiel, et **aucune ligne ne change quel
+  que soit mon verdict**. C'est la seconde fois que l'etape 2 de ma methode est sans objet, et je le
+  dis plutot que de la simuler.
+- **Pour `camille-po`** : ma reserve de la section 11 est a convertir en story. Trois constats neufs
+  et dates du 2026-08-10 s'y ajoutent, et ils ne bloquent rien : le cumul du decalage au-dela de
+  quatre colonnes (section 2), le comptage corrige a cinq items sur "Le bon petit mot" (section 10,
+  point C), et la correction du credit que j'avais accorde a tort aux colonnes (section 10, point D) -
+  ce dernier importe parce qu'il retire une raison de croire le defaut de `DEC-0016` deja adresse.
+- **Pour `ines-design`** : la duree, la courbe et la valeur du voile qu'elle a choisies sont validees
+  sur le rendu. La fin du mouvement (section 11) lui revient, sous la meme latitude et le meme veto.
+- **Pour `sofia-sm`** : ce bloc est ma conclusion. Je n'ecris pas dans `squad/sprints/`, la revue de
+  sprint n'est pas mon fichier.
+- **Je n'efface rien.** Mes deux arbitrages prealables du meme jour restent lisibles plus bas, avec
+  leurs dates, y compris la reduction que j'ai eteinte moi-meme. L'histoire de ce chantier se lit dans
+  l'ordre.
+
+---
+
+### Verdict - s06, S6-10 et S6-9 prononces sur le rendu reel, audit du 2026-08-10
 
 - **Verdict S6-10** (bandeau `#1d4b6b`, recolorage du fond de l'icone) : **VALIDE.** Done
   pedagogique accorde.
