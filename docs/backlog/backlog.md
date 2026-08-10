@@ -1950,13 +1950,29 @@ correctif borne, et `DEC-0014-retrait-le-bon-verbe-du-catalogue.md` le route ici
 laisser en simple intention. Son entree au planning et l'affectation d'un developpeur restent une
 decision de capacite qui appartient a `sofia-sm`, pas a moi.
 
-**Position sur l'entree au sprint 7 (`DEC-0015`)** : rien ne s'y oppose de mon point de vue. Cette
-story ne touche qu'un contenu YAML (`cm1-conjugaison-present.yaml`), pas la mecanique ni le
-gabarit ; elle est independante des quatre stories du chantier machine a sous (S7-1 a S7-4) et deja
-prete a developper. Seul point de vigilance que je remonte a `sofia-sm` : si S7-1 modifie le rendu
-de `.indice` dans `fragments/manche.html`, les deux chantiers touchent la meme zone du meme
-fichier, et un ordre de sequencement peut eviter un conflit inutile - c'est une question de
-capacite et d'ordonnancement, pas de perimetre, elle reste donc a `sofia-sm`.
+**Position sur l'entree au sprint 7 (`DEC-0015`, amendee le 2026-08-10)** : le developpement de
+cette correction peut entrer au sprint 7. Elle ne touche qu'un contenu YAML
+(`cm1-conjugaison-present.yaml`), pas la mecanique ni le gabarit ; elle est independante des quatre
+stories du chantier machine a sous (S7-1 a S7-4) et deja prete a developper. Seul point de
+vigilance que je remonte a `sofia-sm` : si S7-1 modifie le rendu de `.indice` dans
+`fragments/manche.html`, les deux chantiers touchent la meme zone du meme fichier, et un ordre de
+sequencement peut eviter un conflit inutile - c'est une question de capacite et d'ordonnancement,
+pas de perimetre, elle reste donc a `sofia-sm`.
+
+**Mais un nouveau Done pedagogique sur les indices ne suffit pas a remettre "Le bon verbe" au
+catalogue.** L'amendement du 2026-08-10 a `DEC-0015` (avis de faisabilite de `theo-archi`,
+`ADR-0026`) mesure qu'a la largeur cible de 375 px (`DEC-0007` point 5), les quatre colonnes que
+"Le bon verbe" exigerait sous la machine a sous debordent, alors que trois colonnes tiennent sans
+abaisser aucun plancher pedagogique. C'est une seconde condition, independante de la premiere
+(indices corriges) : tant qu'elle n'est pas fermee, la reintegration au catalogue n'a pas lieu,
+meme si la correction textuelle est validee par `nadia-prof`. Deux sorties la ferment, chacune
+relevant d'une autorite distincte - reduire les propositions de "Le bon verbe" a trois est un
+changement de contenu pedagogique, tranche par `nadia-prof` ; replier la mise en page au-dela de
+trois colonnes est une proposition de forme d'`ines-design`, jugee ensuite par `nadia-prof` en
+jouant l'increment. La troisieme sortie possible, assumer le debordement a 375 px, est exclue :
+elle reviendrait a reculer sur `DEC-0007` point 5 sans aucune contrainte qui l'impose. Voir
+`DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`, section "Amendement du
+2026-08-10".
 
 - **Besoin** : en tant qu'eleve de CM1 qui vient de se tromper trois fois de suite sur "Le bon
   verbe", je veux que l'aide qui m'est montree m'enseigne une regle de conjugaison vraie, afin de

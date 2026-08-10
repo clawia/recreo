@@ -183,3 +183,77 @@ touches.
   ni a un autre statut.
 - Elle ne rouvre aucun jeu retire du catalogue (`DEC-0009`, `DEC-0014`) : ces retraits restent en
   vigueur jusqu'a un nouveau Done pedagogique propre a chacun.
+
+## Amendement du 2026-08-10 (avis de faisabilite de theo-archi, ADR-0026) - "Le bon verbe" ne
+rejoint pas le catalogue en rouleaux tant que son nombre de propositions ou la mise en page n'est
+pas tranche
+
+`theo-archi` valide la direction et converge, sans avoir lu cette `DEC`, sur l'arbitrage 1
+ci-dessus (le levier est l'apparence du bouton qui ouvre deja une manche, zero geste ajoute) et sur
+l'arbitrage 3 (le nombre de colonnes derive du contenu). Il route une contradiction que je n'avais
+pas vue entre l'arbitrage 3 et ma position sur la story des indices fautifs de "Le bon verbe"
+ci-dessus, et il refuse explicitement de la trancher a ma place.
+
+**Le fait mesure, sur `outils/mesurer-rendu.sh`, aux deux feuilles reellement servies.** Trois
+colonnes tiennent, a 360 px comme a 375 px (la largeur cible actee par `DEC-0007` point 5, pas
+360 px qui n'est que la largeur d'audit de `nadia-prof` - precision de `theo-archi` que je reprends
+telle quelle) : 99 px par colonne a 360 px sur les paquets a trois propositions
+(`cp-additions-jusqu-a-10`, `cp-le-bon-son`), 158 px sur le paquet a deux propositions
+(`cm1-homophones`), aucun plancher pedagogique approche par le bas. **Quatre colonnes ne tiennent
+pas** : `cm1-conjugaison-present` ("Le bon verbe"), seul paquet du depot a quatre propositions,
+tombe a 70 px par colonne et le texte deborde de son aplat, identiquement a 375 px. `theo-archi` a
+par ailleurs mesure et refuse d'ecrire un garde-fou en nombre de caracteres : `oreille` (7
+caracteres) tient, `mangez` (6) ne tient pas - le budget est une largeur de glyphes, pas un compte
+de caracteres, et je n'ecris donc aucun critere d'acceptation sur un nombre de caracteres.
+
+**La contradiction, dans mes propres mots.** L'arbitrage 3 ci-dessus (le nombre de colonnes suit le
+contenu, jamais fige a trois) et ma position affirmant que "rien n'empeche" la story de correction
+de "Le bon verbe" d'entrer au sprint 7 ne peuvent pas etre tenus ensemble jusqu'au bout : une fois
+"Le bon verbe" corrige et revalide par `nadia-prof`, le remettre au catalogue sans autre geste le
+ferait rendre par la machine a sous en quatre colonnes qui debordent a la largeur cible. Je corrige
+donc ma position ci-dessus, qui ne portait que sur le developpement de la correction (un contenu
+YAML), pas sur ce qui suit une fois cette correction validee.
+
+**Mon arbitrage, en deux phrases.** Le chantier mecanique (S7-1 a S7-4) et le developpement de la
+correction des cinq indices continuent sans changement dans ce sprint : aucun des deux ne depend de
+l'autre, et aucun n'exige que "Le bon verbe" soit servi en rouleaux des ce sprint. En revanche, je
+ne remets pas "Le bon verbe" au catalogue tant que l'une de deux questions - reduire ses
+propositions a trois, ou replier ses colonnes sur plusieurs rangees - n'a pas ete tranchee par qui
+en a l'autorite ; j'exclus explicitement la troisieme sortie possible, assumer le debordement a
+375 px, parce que ce serait reculer sur `DEC-0007` point 5 sans aucune contrainte qui l'impose,
+alors que deux sorties plus sures existent.
+
+**Ce que je tranche, et ce que je laisse explicitement a qui de droit :**
+
+- Je tranche que le sprint 7 ne force aucune des deux sorties pour tenir un calendrier. Aucune
+  story de ce sprint ne presuppose que "Le bon verbe" aura trois propositions, ni qu'il aura une
+  mise en page a deux rangees.
+- Je tranche que "Le bon verbe" ne rejoint pas le catalogue tant que cette question n'est pas
+  fermee, meme si sa correction textuelle obtient un nouveau Done pedagogique entre-temps :
+  corriger le motif de refus de `DEC-0014` ne suffisait deja pas a lever le retrait pour ce motif
+  seul, et la question de rendu s'ajoute maintenant comme une seconde condition, independante de la
+  premiere.
+- Je laisse a `nadia-prof` la question de savoir si reduire "Le bon verbe" a trois propositions
+  (retirer un distracteur) preserve ce que cette competence doit tester : c'est un changement de
+  contenu pedagogique, pas une question de forme, et je n'ai pas autorite pour la trancher seule.
+  Je la nomme comme premiere sortie candidate parce qu'elle ne coute aucun developpement
+  supplementaire a la mecanique, pas parce que je la recommande sur le fond pedagogique.
+- Je laisse a `ines-design` la question de savoir si un repli de la mise en page au-dela de trois
+  colonnes (deux rangees, ou toute autre forme) reste lisible et comprehensible pour un enfant de
+  CM1 : c'est une question de forme, elle propose, `nadia-prof` juge en jouant comme pour tout ce
+  qu'elle propose.
+- Je saisis `nadia-prof`, dans la meme saisine que l'arbitrage prealable sur les six acquis
+  pedagogiques nommes plus haut, de cette septieme question : le nombre de propositions de "Le bon
+  verbe" est-il un choix pedagogique intangible, ou une variable qu'elle peut arbitrer a la baisse
+  sans denaturer la competence testee ("Conjuguer les verbes frequents au present, futur et
+  imparfait de l'indicatif") ?
+
+### Impact de cet amendement
+
+- `docs/backlog/backlog.md`, section "Backlog - sprints suivants" : la note "Position sur l'entree
+  au sprint 7" de la story des cinq indices fautifs est corrigee - la correction textuelle peut
+  toujours entrer au sprint 7, la reintegration au catalogue ne le peut pas tant que cette question
+  n'est pas fermee.
+- Aucune story de S7-1 a S7-4 n'est modifiee sur le fond : aucune ne dependait d'une reponse sur
+  "Le bon verbe".
+- `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee (pas une nouvelle reference).

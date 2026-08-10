@@ -18,7 +18,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0012 | Le rhabillage du gabarit (en-tete, icone, menu, contenu centre) ouvre le sprint 6 ; le menu reste a une seule entree | s05/s06 | 2026-08-06 | Acceptee, amendee le 2026-08-07 (constat de l'absorption de S6-1/S6-2 dans s05) |
 | DEC-0013 | Perimetre du sprint 6 : trois chantiers actes, choix de textes-trous/cm1-conjugaison.yml pour l'ouverture francais engagee par DEC-0011 | s06 | 2026-08-07 | Acceptee |
 | DEC-0014 | Retrait de "Le bon verbe" du catalogue jusqu'a sa correction | s06/s07 | 2026-08-10 | Acceptee |
-| DEC-0015 | Le sprint 7 construit la vraie machine a sous et ferme la dette n. 1 de CLAUDE.md | s07 | 2026-08-10 | Acceptee |
+| DEC-0015 | Le sprint 7 construit la vraie machine a sous et ferme la dette n. 1 de CLAUDE.md | s07 | 2026-08-10 | Acceptee, amendee le 2026-08-10 (contradiction S7-2 / reintegration de "Le bon verbe", routee par theo-archi) |
 
 Amendement (pas une nouvelle reference) : `DEC-0002` a ete amendee le 2026-08-04, a la suite de la
 relecture pedagogique de `nadia-prof` sur le refus de `bandit-manchot-additions-cp` - ajout d'une
@@ -70,3 +70,15 @@ directe a l'amendement de process propose dans
 n'est pas rouvert ; seul le constat du deplacement et l'etat des quatre reserves restantes sont
 ajoutes. Voir la section "Amendement du 2026-08-07 (s06)" dans
 `DEC-0012-rhabillage-gabarit-menu-minimal-et-ouverture-s06.md`.
+
+Amendement (pas une nouvelle reference) : `DEC-0015` a ete amendee le 2026-08-10, sur avis de
+faisabilite de `theo-archi` (`ADR-0026`), qui mesure qu'a la largeur cible de `DEC-0007` point 5
+(375 px), trois colonnes tiennent sans abaisser aucun plancher mais que les quatre propositions de
+"Le bon verbe" debordent, et route la contradiction entre l'arbitrage 3 de `DEC-0015` (le nombre
+de colonnes suit le contenu, jamais fige a trois) et la reintegration de "Le bon verbe" au
+catalogue. `DEC-0015` maintient ses quatre arbitrages et ses quatre stories inchanges, et tranche
+que "Le bon verbe" ne rejoint pas le catalogue en rouleaux tant que la reduction de son nombre de
+propositions (jugement pedagogique, a `nadia-prof`) ou un repli de mise en page (forme, a
+`ines-design`) n'a pas ete choisi ; le debordement assume a 375 px est explicitement exclu. Voir la
+section "Amendement du 2026-08-10" dans
+`DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`.
