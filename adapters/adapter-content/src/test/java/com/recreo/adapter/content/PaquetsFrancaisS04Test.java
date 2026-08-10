@@ -338,7 +338,8 @@ class PaquetsFrancaisS04Test {
      */
     @Test
     void conjugaisonPresentCm1NePresenteQueDesFormesDuMemeVerbeAuPresent() {
-        List<Question> items = tousLesItems(jeu("bandit-manchot-conjugaison-present-cm1").contenu());
+        // DEC-0014 : "Le bon verbe" est retire du catalogue (REFUSE), paquet charge directement.
+        List<Question> items = tousLesItems(paquet("cm1-conjugaison-present"));
 
         for (Question item : items) {
             String bonneReponse = item.bonneReponse().toLowerCase();
@@ -370,7 +371,8 @@ class PaquetsFrancaisS04Test {
      */
     @Test
     void conjugaisonPresentCm1RepresenteChacuneDesSixPersonnesGrammaticales() {
-        List<Question> items = tousLesItems(jeu("bandit-manchot-conjugaison-present-cm1").contenu());
+        // DEC-0014 : "Le bon verbe" est retire du catalogue (REFUSE), paquet charge directement.
+        List<Question> items = tousLesItems(paquet("cm1-conjugaison-present"));
 
         Set<String> personnesRepresentees = new HashSet<>();
         for (Question item : items) {
@@ -386,7 +388,8 @@ class PaquetsFrancaisS04Test {
     /** S6-3, sixieme critere : 20 manches jouees a la suite ne presentent pas toutes la meme phrase. */
     @Test
     void conjugaisonPresentCm1VarieSurVingtManchesConsecutives() {
-        assertThat(enoncesSurVingtTirages(jeu("bandit-manchot-conjugaison-present-cm1").contenu()))
+        // DEC-0014 : "Le bon verbe" est retire du catalogue (REFUSE), paquet charge directement.
+        assertThat(enoncesSurVingtTirages(paquet("cm1-conjugaison-present")))
                 .as("variete minimale sur 20 manches")
                 .hasSizeGreaterThan(1);
     }
