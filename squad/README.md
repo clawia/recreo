@@ -92,7 +92,21 @@ a rien, meme quand il est juste - en s05, `theo-archi` a du corriger un meme chi
 ("29" puis "25" puis "27" regles ArchUnit) faute de l'avoir ecrite la premiere fois. **Le comptage
 se fait apres un `clean`** : un rapport laisse par une execution mutee anterieure produit un total
 juste avec des echecs faux, et `theo-archi` s'y est lui-meme repris une fois en s06 en le
-verifiant.
+verifiant. **Piege nomme pour un futur comptage de `ArchRule`** : compter les annotations
+`@ArchTest` sous-estime le total d'une unite des lors qu'une regle est executee par un `.check()`
+explicite plutot que par ce mecanisme (28 `ArchRule` pour 27 `@ArchTest` en s06,
+`ScanDeComposantsTest`) - les deux nombres avaient coincide en s05, ce qui n'aurait rien signale.
+
+**Methode de mesure de rendu obligatoire (amendement s06, retro de s06).** La meme exigence
+s'etend a toute mesure de **rendu** (largeur affichee, debordement, contraste, position d'un
+element) citee dans un rapport, une fiche de conformite ou un `ADR` : la commande exacte qui l'a
+produite est citee dans le meme paragraphe que le resultat, jamais decrite en prose seule
+("verifie a 360 px" sans dire comment). En s06, trois agents (`lea-dev`, `ines-design`,
+`yanis-qa`) ont mesure la meme propriete de rendu par trois methodes distinctes et obtenu trois
+resultats differents, sans qu'aucun n'ait menti - le depot ne portait aucune methode reproductible
+sous 500 px (le plancher de `chrome --headless --window-size`) et aucune des deux mesures d'origine
+n'avait laisse de commande citable. `outils/mesurer-rendu.sh` (`ADR-0025`) porte desormais cette
+commande pour toute mesure sous ce plancher.
 
 ## 5. La synthese de sprint - `RAPPORT.md`
 
@@ -188,7 +202,16 @@ commit dans un worktree neuf, chaque agent verifie que sa branche descend de `ro
 (amendement s06, retro de s05) : `outils/verifier-lignee.sh`, plutot qu'une commande recopiee en
 prose dans chaque `planning.md`. Tant que ce script n'est pas encore sur le disque, la verification
 reste tenue a la main (`git rev-parse --abbrev-ref HEAD` puis
-`git merge-base --is-ancestor round-two HEAD`).
+`git merge-base --is-ancestor round-two HEAD`). **Tout agent qui ecrit dans le depot ouvre un
+worktree dedie avant sa premiere ecriture, sans exception** (amendement s06, retro de s06) : y
+compris un agent qui ne produit que des fichiers de decision et jamais de code. En s06,
+`camille-po` a travaille directement dans le depot principal, sous une consigne de fusion ambigue
+("ne pousse rien, ne fusionne pas") lue defendablement comme "ne commite pas" ; son travail est
+reste non commite pendant que `sofia-sm` fusionnait en parallele sous sa casquette dev dans ce
+meme depot. Rien n'a ete perdu uniquement parce que les deux perimetres ne se recouvraient pas -
+un nettoyage d'arbre aurait efface son travail sans qu'aucun commit n'en garde trace. La consigne
+de non-fusion reste valide pour tous les autres agents parce que chacun travaillait deja dans son
+propre worktree ; `camille-po` etait seule a ne pas en avoir ouvert.
 
 **2. Developpement.** Marc, Lea et Sofia codent, tests dans le meme commit. Yanis traduit les
 criteres d'acceptation en tests et fait tourner la suite. Tout obstacle va a Sofia, qui classe,
@@ -202,6 +225,14 @@ une dette nommee n'est declare complet, dans le `review.md` qui le cite, qu'une 
 morsure decrite explicitement** (amendement s06, retro de s05) - mutation reelle du code, relecture
 adverse de l'inegalite qu'il verifie, ou tout autre moyen nomme. "Il est vert" ne suffit jamais
 comme preuve de morsure, y compris quand l'auteur lui-meme le croit.
+
+**Un script livre avec sa propre suite de tests n'est declare "teste" qu'une fois qu'une etape de
+`.github/workflows/ci.yml` l'execute reellement** (amendement s06, retro de s06) - la presence du
+fichier `*-test.sh` dans le depot ne suffit pas. `outils/verifier-lignee-test.sh` et
+`outils/verifier-jdk-test.sh` ont ete livres en s06 comme des garde-fous testes selon la doctrine
+d'`ADR-0009`, et aucun automate ne les executait : seule la main d'un agent le faisait. Trouve par
+`theo-archi` en ecrivant le sien (`outils/mesurer-rendu-test.sh`), qui a ajoute l'etape de CI
+manquante, perimetre derive du repertoire `outils/*-test.sh` plutot qu'une liste de trois noms.
 
 **5. Relecture.** Le `relecteur-pedagogique` passe sur les livrables non executables. Il corrige
 ce qui est sans ambiguite, signale le reste.
@@ -247,6 +278,15 @@ qu'aucun JDK 21 n'y etait disponible, une erreur de fond et non seulement de met
   l'architecture ni le produit, ne juge pas le niveau scolaire d'un contenu, et ne reecrit pas la
   logique metier. Son design ne se valide jamais contre l'avis de Nadia.
 - **Aucun agent, hors Nadia, ne prononce le Done pedagogique.**
+- **Toute story qui modifierait un ecran, un texte ou un comportement deja accorde par Nadia est
+  signalee pour un arbitrage prealable avant developpement, pas seulement auditee apres coup**
+  (amendement s06, retro de s06). En s06, cinq stories ou constats auraient defait un acquis sans
+  que personne ne l'ait relie a l'avance (S6-9 contre l'etat `sortie-pleine` de S3-6, S6-10 contre
+  le fondu du favicon valide en s05, S6-14 contre `ADR-0010`, un epinglage de Theo devenu sans
+  objet, les exemples de Nadia elle-meme contredits par son propre motif de refus) : aucune
+  n'aurait ete vue par une CI verte. Deux arbitrages prealables (S6-9, S6-10) ont fonctionne
+  exactement comme prevu ce sprint, avant que le code ne soit ecrit ; cette regle generalise la
+  pratique plutot que de la laisser dependre de la memoire de qui route l'obstacle.
 
 ## 11. Arborescence
 
