@@ -18,7 +18,8 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0012 | Le rhabillage du gabarit (en-tete, icone, menu, contenu centre) ouvre le sprint 6 ; le menu reste a une seule entree | s05/s06 | 2026-08-06 | Acceptee, amendee le 2026-08-07 (constat de l'absorption de S6-1/S6-2 dans s05) |
 | DEC-0013 | Perimetre du sprint 6 : trois chantiers actes, choix de textes-trous/cm1-conjugaison.yml pour l'ouverture francais engagee par DEC-0011 | s06 | 2026-08-07 | Acceptee |
 | DEC-0014 | Retrait de "Le bon verbe" du catalogue jusqu'a sa correction | s06/s07 | 2026-08-10 | Acceptee |
-| DEC-0015 | Le sprint 7 construit la vraie machine a sous et ferme la dette n. 1 de CLAUDE.md | s07 | 2026-08-10 | Acceptee, amendee trois fois le 2026-08-10 (contradiction S7-2 / reintegration de "Le bon verbe", routee par theo-archi ; arbitrage prealable de nadia-prof, reduction a trois acquise et insuffisante sur la largeur ; rendu en clair de la reprise silencieuse laisse en l'etat face a ADR-0027) |
+| DEC-0015 | Le sprint 7 construit la vraie machine a sous et ferme la dette n. 1 de CLAUDE.md | s07 | 2026-08-10 | Acceptee, amendee quatre fois le 2026-08-10 (contradiction S7-2 / reintegration de "Le bon verbe", routee par theo-archi ; arbitrage prealable de nadia-prof, reduction a trois acquise puis insuffisante sur la largeur ; rendu en clair de la reprise silencieuse laisse en l'etat face a ADR-0027 ; nadia-prof eteint sa reduction, repli confirme mais non livre) |
+| DEC-0016 | Une hauteur de viewport de reference, et ce qui doit rester au-dessus du pli sur un ecran de manche | s07 | 2026-08-10 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0002` a ete amendee le 2026-08-04, a la suite de la
 relecture pedagogique de `nadia-prof` sur le refus de `bandit-manchot-additions-cp` - ajout d'une
@@ -109,3 +110,17 @@ necessite etablie, qui exigerait soit une verification technique de `theo-archi`
 remplacement htmx) soit un arbitrage prealable de `nadia-prof` (retrait sans remplacement, qui
 defait un acquis de S1-4) - ni l'un ni l'autre n'est saisi ce sprint. Voir la section "Troisieme
 amendement du 2026-08-10" dans `DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`.
+
+Amendement (pas une nouvelle reference) : `DEC-0015` a ete amendee une quatrieme fois le
+2026-08-10. `nadia-prof` eteint sa propre acceptation de reduire "Le bon verbe" a trois
+propositions - son motif visait une cause fausse (elle a mesure le meme defaut de pli sur "Le bon
+petit mot", paquet a deux propositions et jeu du catalogue), et elle refuse d'inventer un motif de
+remplacement. `ines-design` a par ailleurs trouve le repli de mise en page (deux colonnes par
+rangee des la quatrieme proposition), que `nadia-prof` remesure et confirme sur le fond, mais sur
+une maquette jetable, non sur le code livre. `DEC-0015` en tire que sa condition de remise au
+catalogue n'a plus qu'une seule sortie candidate (le repli, une fois livre et reverifie par
+`nadia-prof` sur le rendu reel), et qu'elle ne se ferme pas aujourd'hui. Un second constat de
+`nadia-prof` a cette occasion - un trou de decision produit sur la hauteur de viewport de reference
+et sur ce qui doit rester au-dessus du pli, qui touche cette fois un jeu deja catalogue ("Le bon
+petit mot") - est traite separement dans `DEC-0016`. Voir la section "Quatrieme amendement du
+2026-08-10" dans `DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`.

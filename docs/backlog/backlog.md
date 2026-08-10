@@ -1985,6 +1985,26 @@ reviendrait a reculer sur `DEC-0007` point 5 sans aucune contrainte qui l'impose
 `DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`, sections "Amendement du
 2026-08-10" et "Second amendement du 2026-08-10".
 
+**`nadia-prof` a depuis eteint sa propre acceptation de la reduction : elle n'est plus une sortie du
+tout, meme insuffisante.** Son motif d'origine visait une cause fausse - elle avait lie le defaut du
+pli au passage a quatre propositions, puis a mesure "Le bon petit mot" (jeu catalogue, deux
+propositions) et y trouve le meme defaut sur 3 items sur 24 : la cause reelle est la longueur de
+l'enonce, pas le nombre de propositions. Elle refuse d'inventer un motif de remplacement - quatre
+propositions homophones servent mieux la competence que trois, elle l'avait ecrit elle-meme le matin
+meme. Les douze triplets restent ecrits dans sa fiche comme trace d'une decision eteinte ; ils ne
+sont plus a executer, et le paquet garde ses quatre propositions par item. **`ines-design` a par
+ailleurs trouve le repli de mise en page (deux colonnes par rangee a partir de la quatrieme
+proposition), que `nadia-prof` a remesure et confirme** : 160 px par colonne a 360 px, 167-168 px a
+375 px, ecart tenu, aucune troncature. Ma condition de remise au catalogue n'a donc plus qu'une
+sortie candidate, et elle n'est pas encore fermee : le repli est confirme sur une maquette jetable,
+non sur le code livre - `nadia-prof` le dit elle-meme, si ce qui est livre differe de sa mesure elle
+reexamine. "Le bon verbe" rejoint le catalogue quand, et seulement quand, les cinq indices sont
+corriges et valides (condition independante, inchangee, `DEC-0014`) **et** que l'increment livre le
+repli en deux rangees tel que mesure, reverifie par `nadia-prof` sur le rendu reel. Si l'increment
+livre ne reproduit pas cette mesure, le report du jeu hors du sprint redevient la seule sortie. Voir
+`DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`, section "Quatrieme amendement du
+2026-08-10".
+
 - **Besoin** : en tant qu'eleve de CM1 qui vient de se tromper trois fois de suite sur "Le bon
   verbe", je veux que l'aide qui m'est montree m'enseigne une regle de conjugaison vraie, afin de
   ne pas apprendre a ecrire des formes fausses comme "je prende" ou "il alle" au moment precis ou
@@ -2025,6 +2045,19 @@ reviendrait a reculer sur `DEC-0007` point 5 sans aucune contrainte qui l'impose
 
 ### Autres intentions
 
+- **Constat neuf du 2026-08-10 sur "Le bon petit mot" (jeu catalogue, Done accorde, ligne
+  `couvert-valide`, inchanges par ce constat)** : sur 3 de ses 24 items, l'affichage de l'indice
+  pousse les deux boutons de reponse sous le pli d'un ecran de 360 x 640 (sur l'item 24, plus rien
+  n'est visible) ; 0 item sur 24 n'est en defaut sans l'indice. La cause est la longueur de l'enonce
+  a 2 rem qui se replie sur cinq ou six lignes, pas le nombre de propositions ni la mise en page en
+  colonnes (`squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`, constat du 2026-08-10).
+  `nadia-prof` ne fait pas de ce constat un motif de refus, et dit explicitement qu'il ne doit pas
+  ralentir le chantier machine a sous en cours. `DEC-0016-hauteur-de-viewport-de-reference-et-
+  contenu-au-dessus-du-pli.md` fixe la regle et le viewport de reference (360 x 640) que ce
+  correctif devra respecter, sans trancher entre les deux pistes possibles : raccourcir les cinq
+  enonces les plus longs (jugement pedagogique, `nadia-prof`) ou traiter la hauteur de l'ecran par
+  la mise en page (`theo-archi`, `ines-design`). Non affecte a un sprint ; a instruire quand
+  `sofia-sm` juge la capacite disponible.
 - La ligne mathematiques CP est desormais `couvert-valide` (2026-08-06) : elargir le contenu
   "additions CP" a la borne jusqu'a 20, et couvrir les soustractions et les complements a 10 (meme
   mecanique, meme niveau) pour clore completement cette ligne de la matrice.

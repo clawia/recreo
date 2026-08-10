@@ -385,3 +385,69 @@ perimetre distincte.
   supplementaire ni arbitrage pedagogique supplementaire ce sprint.
 - `docs/backlog/backlog.md` : inchange par cet amendement.
 - `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee.
+
+## Quatrieme amendement du 2026-08-10 (nadia-prof eteint sa propre reduction, ines-design et
+nadia-prof confirment le repli) - la condition de remise au catalogue n'a plus qu'une sortie
+candidate, pas encore fermee
+
+**`nadia-prof` eteint sa propre acceptation de reduire "Le bon verbe" a trois propositions**
+(`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, second arbitrage du
+2026-08-10). Les quatre propositions restent, ses douze triplets ne sont plus applicables - ils
+demeurent ecrits dans sa fiche comme trace d'une decision eteinte, elle n'efface jamais un verdict,
+mais aucun developpeur ne les execute.
+
+**Son motif n'etait pas celui que j'avais imagine, et il est plus fort qu'une simple insuffisance de
+largeur : son motif d'origine visait une cause fausse.** Elle avait ecrit que le defaut du pli etait
+lie au passage a quatre propositions ; elle a depuis mesure les vingt-quatre items de "Le bon petit
+mot", paquet a **deux** propositions et jeu du catalogue, et y trouve trois items sur vingt-quatre en
+defaut avec l'indice affiche, zero sans. La cause est la longueur de l'enonce a 2 rem, pas le nombre
+de propositions. Elle refuse explicitement d'inventer un motif de remplacement - elle avait
+elle-meme ecrit, le matin du meme jour, que quatre propositions homophones servent mieux cette
+competence que trois - ce qui serait fabriquer une raison apres coup pour sauver une decision.
+
+**`ines-design` a par ailleurs trouve le repli, que `nadia-prof` a remesure et confirme** : deux
+colonnes par rangee a partir de la quatrieme proposition seulement, 160 px par colonne a 360 px,
+167-168 px a 375 px, ecart de 16 px tenu sur les deux axes, aucune troncature, aucun plancher
+abaisse - sous les conditions d'implementation qui restent celles d'`ines-design` (contraste
+suffisant pendant l'animation, voile confine dans la boite).
+
+**Ce que devient ma condition.** Je l'avais posee ainsi : "Le bon verbe" ne rejoint pas le catalogue
+tant que l'une des deux questions - reduire les propositions, ou replier la mise en page - n'a pas
+ete tranchee par qui en a l'autorite. Les deux le sont desormais, mais pas au meme titre : la
+reduction est **eteinte**, elle n'est plus une sortie du tout, pas meme une sortie insuffisante ; le
+repli est **confirme sur le fond**, mais sur une maquette jetable, non sur le code livre -
+`nadia-prof` le dit elle-meme : "si ce qui est livre differe, mes chiffres ne valent plus et cette
+extinction est a reexaminer", et "le chantier n'est pas ecrit". Je ne ferme donc pas ma condition
+aujourd'hui, et je ne la ferme pas plus largement que ce que ces deux verdicts autorisent : elle
+n'a plus qu'**une seule sortie candidate**, et cette sortie reste a verifier sur l'increment reel.
+
+**Ma condition, dans sa forme desormais definitive.** "Le bon verbe" rejoint le catalogue quand, et
+seulement quand, les deux conditions suivantes sont remplies ensemble - elles restent independantes
+l'une de l'autre, comme deja ecrit :
+
+1. les cinq indices fautifs sont corriges et `nadia-prof` accorde un nouveau Done pedagogique
+   (`DEC-0014`, inchangee, entiere) ;
+2. l'increment livre rend les quatre propositions selon le repli en deux rangees tel que mesure par
+   `ines-design` et confirme par `nadia-prof`, et `nadia-prof` reverifie cette mesure sur le rendu
+   reel du code livre, pas sur la maquette jetable.
+
+**Si l'increment livre ne reproduit pas la mesure confirmee**, la sortie candidate tombe et le
+report du jeu hors du sprint redevient la seule option restante ; je le trancherais alors comme une
+decision de perimetre distincte, le moment venu. Je n'anticipe pas cet echec.
+
+**Pour memoire, sans y toucher** : aucun developpeur n'a commence de travail sur le sprint 7
+(`round-two` est toujours a `28a419f`), donc il n'y a rien a defaire du cote du retrait de
+distracteurs que la reduction eteinte aurait pu declencher.
+
+### Impact de ce quatrieme amendement
+
+- `docs/backlog/backlog.md`, section "Backlog - sprints suivants" : la note de la story des cinq
+  indices fautifs est corrigee une troisieme fois - elle ne presente plus la reduction a trois comme
+  une sortie, elle nomme la sortie unique restante (le repli, confirme mais non livre) et la
+  condition en deux points ci-dessus.
+- Aucune story de S7-1 a S7-4 n'est modifiee.
+- `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee.
+- Un trou de decision produit distinct, signale par `nadia-prof` a cette occasion (ce qui doit
+  rester au-dessus du pli et sur quel viewport de reference), est traite separement dans
+  `DEC-0016-hauteur-de-viewport-de-reference-et-contenu-au-dessus-du-pli.md`, parce qu'il depasse ce
+  seul chantier et ce seul jeu.
