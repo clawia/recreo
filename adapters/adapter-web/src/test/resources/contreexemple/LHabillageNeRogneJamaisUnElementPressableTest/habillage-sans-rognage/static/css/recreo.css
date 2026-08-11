@@ -1,0 +1,28 @@
+/* Le meme habillage, corrige par le seul retrait de la propriete de rognage : il doit redevenir vert.
+   Sans ce jeu d'artefacts, la clause serait une interdiction du cabinet deguisee en clause de focus -
+   le cadre, le fond, les coins arrondis, le bandeau et le socle restent tous la, et c'est bien le
+   rognage seul qui etait en cause. */
+.cabinet {
+    display: flex;
+    flex-direction: column;
+    background-color: #1d4b6b;
+    border: 0.5rem solid #1d4b6b;
+    border-radius: 0.75rem;
+}
+
+.cabinet > .propositions {
+    margin: 0;
+}
+
+.cabinet-bandeau {
+    height: 2rem;
+}
+
+.cabinet-socle {
+    height: 1rem;
+}
+
+.propositions {
+    display: flex;
+    gap: 1rem;
+}

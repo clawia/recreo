@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Jeu fautif d'ADR-0030 : la structure proposee pour le cabinet, recopiee telle qu'ines-design
+     l'ecrit (proposition-ines-cabinet.md, section 1). C'est ce gabarit qui fait entrer "cabinet" dans
+     la population des ancetres de pressables ; le defaut est dans la feuille voisine. -->
+<div class="ecran-de-jeu">
+    <button type="button" class="btn sortir" data-role="sortie" hx-post="/retour" hx-target="#jeu">Les jeux</button>
+    <div class="cabinet">
+        <div class="cabinet-bandeau" aria-hidden="true"></div>
+        <form class="propositions">
+            <button type="submit" class="btn proposition" data-role="action">an</button>
+            <button type="submit" class="btn proposition" data-role="action">on</button>
+            <button type="submit" class="btn proposition" data-role="action">in</button>
+        </form>
+        <div class="cabinet-socle" aria-hidden="true"></div>
+    </div>
+</div>
+</body>
+</html>

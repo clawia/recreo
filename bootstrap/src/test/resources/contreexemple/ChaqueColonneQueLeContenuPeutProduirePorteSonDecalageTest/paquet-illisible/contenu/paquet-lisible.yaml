@@ -1,0 +1,16 @@
+# Le paquet lisible qui accompagne le fautif : sans lui, ce jeu d'artefacts n'aurait aucun paquet
+# capable de deux colonnes, et le garde-fou s'arreterait sur son propre controle de non-vacuite
+# (ADR-0003) au lieu de rougir sur la forme inconnue. Trois colonnes, donc dans ce que la feuille
+# voisine couvre : le seul defaut de ce jeu d'artefacts est bien celui qu'il annonce.
+schema: 1
+id: paquet-lisible
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CM1"
+  domaine: "Nombres et calculs"
+  competence: "jeu fautif de garde-fou, jamais servi a un enfant"
+items:
+  - enonce: "Combien font 8 + 4 ?"
+    bonneReponse: "12"
+    distracteurs: ["11", "13"]

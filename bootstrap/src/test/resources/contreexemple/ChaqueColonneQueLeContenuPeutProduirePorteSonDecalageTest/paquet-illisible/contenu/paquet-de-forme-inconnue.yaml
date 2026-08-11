@@ -1,0 +1,14 @@
+# Jeu fautif d'ADR-0029, obligation 2 d'ADR-0013 : une troisieme forme de paquet, qui ne dit son
+# nombre de propositions ni par des items ni par parametres.nombreDePropositions. Le garde-fou doit
+# rougir dessus au lieu de l'ignorer : un paquet dont on ne sait pas combien de colonnes il produit
+# fait sortir sa propre population du controle.
+schema: 1
+id: paquet-de-forme-inconnue
+type: forme-que-personne-n-a-encore-ecrite
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CM1"
+  domaine: "Nombres et calculs"
+  competence: "jeu fautif de garde-fou, jamais servi a un enfant"
+parametres:
+  sommeMaximale: 10

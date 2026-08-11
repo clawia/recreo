@@ -1,0 +1,29 @@
+/* Jeu fautif d'ADR-0030 clause 10, et ce n'est pas une invention : c'est la feuille telle que S7-1
+   l'a livree, valeurs comprises. L'etat de repos du voile ne couvre rien (inset(0 0 100% 0)) et
+   l'animation termine sur inset(80% 0 0 0), soit un cinquieme de la boite encore sombre. Le voile
+   disparait donc par la fin de l'animation et non par sa progression. Seul le releve image par image
+   de nadia-prof l'avait vu : 13 px mesures, 14,8 px declares. */
+.proposition {
+    position: relative;
+}
+
+.proposition::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    clip-path: inset(0 0 100% 0);
+}
+
+[data-arrivee=par-un-geste] .proposition::after {
+    animation: rouleau-glisse 0.6s ease-out 1;
+}
+
+@keyframes rouleau-glisse {
+    from { clip-path: inset(0 0 80% 0); }
+    to   { clip-path: inset(80% 0 0 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-arrivee=par-un-geste] .proposition::after { animation: none }
+}

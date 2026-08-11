@@ -1,0 +1,19 @@
+# Jeu fautif d'ADR-0029, et rien d'autre : aucun catalogue ne le reference, aucun enfant ne le joue.
+# Un seul delta avec un paquet reel du depot : son item le plus large porte quatre distracteurs, donc
+# cinq propositions, donc cinq colonnes. C'est la forme exacte que prendrait le contenu le jour ou une
+# cinquieme colonne arriverait - la story S7-2 acte que ce nombre suit le contenu et n'est jamais fige.
+schema: 1
+id: paquet-a-cinq-propositions
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CM1"
+  domaine: "Nombres et calculs"
+  competence: "jeu fautif de garde-fou, jamais servi a un enfant"
+items:
+  - enonce: "Combien font 12 + 13 ?"
+    bonneReponse: "25"
+    distracteurs: ["24", "26", "35", "15"]
+  - enonce: "Combien font 10 + 10 ?"
+    bonneReponse: "20"
+    distracteurs: ["21", "19"]

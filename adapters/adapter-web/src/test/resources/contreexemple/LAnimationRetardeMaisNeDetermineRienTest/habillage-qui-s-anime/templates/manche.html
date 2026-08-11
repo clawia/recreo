@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Jeu fautif d'ADR-0030 clause 9. La structure est celle que propose ines-design : un conteneur
+     d'habillage entoure les colonnes, avec deux bandes decoratives. Rien n'est fautif ici ; le defaut
+     est dans la feuille voisine, qui anime le conteneur. -->
+<div class="ecran-de-jeu" data-arrivee="par-un-geste">
+    <button type="button" class="btn sortir" data-role="sortie" hx-post="/retour" hx-target="#jeu">Les jeux</button>
+    <div class="cabinet">
+        <div class="cabinet-bandeau" aria-hidden="true"></div>
+        <form class="propositions">
+            <button type="submit" class="btn proposition" data-role="action">an</button>
+            <button type="submit" class="btn proposition" data-role="action">on</button>
+            <button type="submit" class="btn proposition" data-role="action">in</button>
+        </form>
+        <div class="cabinet-socle" aria-hidden="true"></div>
+    </div>
+</div>
+</body>
+</html>

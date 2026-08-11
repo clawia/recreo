@@ -1,0 +1,32 @@
+/* Jeu fautif d'ADR-0029 : le bloc du rouleau recopie tel que S7-1 l'a livre, valeurs comprises, avec
+   ses trois rangs de colonne (2, 3, 4). Rien n'y est fautif en soi - c'est la feuille de production ;
+   le defaut nait de sa rencontre avec un paquet a cinq colonnes, et c'est precisement ce que ce jeu
+   fautif met en presence. */
+.proposition::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    clip-path: inset(0 0 100% 0);
+}
+
+[data-arrivee=par-un-geste] .proposition::after {
+    animation: rouleau-glisse 0.6s ease-out 1;
+}
+
+[data-arrivee=par-un-geste] .proposition:nth-child(2)::after { animation-delay: 0.08s; }
+[data-arrivee=par-un-geste] .proposition:nth-child(3)::after { animation-delay: 0.16s; }
+[data-arrivee=par-un-geste] .proposition:nth-child(4)::after { animation-delay: 0.24s; }
+
+@keyframes rouleau-glisse {
+    from { clip-path: inset(0 0 80% 0); }
+    to   { clip-path: inset(80% 0 0 0); }
+}
+
+/* Le piege pose expres a ce garde-fou : la cinquieme colonne EST nommee ici, mais sous le repli de
+   mouvement, c'est-a-dire dans le seul contexte ou aucune animation ne tourne. Cette declaration ne
+   couvre donc rien, et le garde-fou doit rester rouge sur la colonne 5 malgre elle. Sans ce bloc, le
+   filtre de contexte du garde-fou serait vert a vide et personne ne le saurait. */
+@media (prefers-reduced-motion: reduce) {
+    [data-arrivee=par-un-geste] .proposition::after { animation: none }
+    [data-arrivee=par-un-geste] .proposition:nth-child(5)::after { animation-delay: 0.32s; }
+}
