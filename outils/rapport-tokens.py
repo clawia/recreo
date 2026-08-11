@@ -35,9 +35,9 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-# Les 8 agents de la squad. Un agent absent des transcriptions apparait quand meme
-# dans le rapport, avec la mention "aucune invocation mesuree" plutot qu'un zero
-# qui laisserait croire a une mesure.
+# Les 9 agents de la squad, alignes sur .claude/agents/ et squad/EQUIPE.md. Un agent absent
+# des transcriptions apparait quand meme dans le rapport, avec la mention "aucune invocation
+# mesuree" plutot qu'un zero qui laisserait croire a une mesure.
 AGENTS_SQUAD = [
     "camille-po",
     "sofia-sm",
@@ -47,6 +47,7 @@ AGENTS_SQUAD = [
     "yanis-qa",
     "relecteur-pedagogique",
     "nadia-prof",
+    "ines-design",
 ]
 
 FIL_PRINCIPAL = "orchestrateur (fil principal)"
