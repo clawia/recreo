@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Jeu fautif d'ADR-0031, coquille permanente : un habillage hors de la zone echangee, comme
+     l'en-tete de recreo, et la zone qui recoit un ecran a la fois. Ce depot fictif ne porte aucun
+     nom du depot reel : c'est ce qui prouve que le perimetre du garde-fou est derive et non enumere. -->
+<header class="bandeau">
+    <nav class="menu-fautif">
+        <a class="lien-sortie" href="/">Sortir</a>
+    </nav>
+</header>
+<main id="zone" class="cadre">
+<th:block th:fragment="zone">
+    <button type="button" class="ouvrir"
+            hx-post="/ouvrir" hx-target="#zone" hx-swap="innerHTML">Ouvrir</button>
+</th:block>
+</main>
+</body>
+</html>

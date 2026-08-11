@@ -34,6 +34,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0028](ADR-0028-outiller-le-pli-le-contenu-au-dessus-du-pli-reste-non-gardable.md) | Outiller la mesure du pli par un parametre de hauteur, et declarer non gardable le contenu au-dessus du pli | s08 | 2026-08-11 | Accepte |
 | [ADR-0029](ADR-0029-toute-colonne-que-le-contenu-peut-produire-porte-son-decalage.md) | Faire porter un decalage declare a toute colonne que le contenu peut produire, et laisser la borne de duree a la clause qui la garde deja | s08 | 2026-08-11 | Accepte |
 | [ADR-0030](ADR-0030-un-habillage-entoure-sans-rogner-et-toute-animation-finit-sur-son-etat-de-repos.md) | Interdire a un habillage de rogner un ancetre de bouton et d'animer autre chose que ce qu'on presse, et exiger que la derniere image d'une animation soit l'etat de repos | s08 | 2026-08-11 | Accepte |
+| [ADR-0031](ADR-0031-un-ecran-ne-gouverne-jamais-l-apparence-d-un-autre.md) | Refuser tout selecteur maison qui reunit des jetons de deux ecrans que le serveur ne rend jamais ensemble, et fermer ainsi le canal de feuille de la condition C4 | s08 | 2026-08-11 | Accepte |
 
 ## Amendements
 
@@ -273,8 +274,9 @@ les deux ADR de s07 etaient ranges sous le paragraphe de s06, corrige a l'ecritu
     fait choisir un attribut plutot qu'une regle CSS decorative - et il rend explicitement a
     `nadia-prof` le residu qu'aucun automate n'atteint, dont un mot peint dans une image.
 
-Sprint 8 en ajoute trois : les deux premiers nes des obstacles restes ouverts a la cloture de s07, le
-troisieme de la faisabilite du cabinet de la machine :
+Sprint 8 en ajoute quatre : les deux premiers nes des obstacles restes ouverts a la cloture de s07, le
+troisieme de la faisabilite du cabinet de la machine, le quatrieme de la dette de test que ce
+troisieme avait nommee sans la fermer :
 
 26. **ADR-0028** tranche le mecanisme de garde de `DEC-0016` en deux moities opposees, et c'est ce
     couple qui vaut d'etre relu : la hauteur devient un **parametre** de la commande de mesure, et
@@ -320,3 +322,17 @@ troisieme de la faisabilite du cabinet de la machine :
     clause tentante avec le chiffre qui la refute : interdire un `font-size` sur un ancetre de bouton ne
     protege rien, les quinze blocs qui declarent une taille la declarent tous en `rem`, unite relative
     a la racine et non a l'ancetre.
+29. **ADR-0031** ferme le canal de feuille de la condition C4 qu'`ADR-0030` avait refuse d'ecrire, et
+    il vaut d'etre relu pour la facon dont le refus est leve : non pas en nommant enfin `.cabinet`
+    puisque la classe existe, mais en changeant de propriete. Ce qui est juge n'est plus "cette
+    classe-la est-elle conditionnee au verdict" mais **"ce selecteur peut-il s'appliquer"** - la zone
+    `hx-target` recoit un ecran a la fois, donc un selecteur qui melange le verdict d'un ecran et
+    l'habillage d'un autre est soit mort, soit l'intention que C4 interdit. Aucun nom de classe n'est
+    ecrit dans le test, et les deux fragments apparaissent **derives** dans le message d'echec. Il
+    apporte trois choses au-dela de son sujet : une alternative ecartee avec sa mesure (la forme
+    enumeree de S8-3 serait **verte** sur `body:has(.est-juste) .cabinet-bandeau`, faute d'y trouver
+    ses sous-chaines - et elle reste pourtant juste la ou elle est, sur un couplage intra-ecran
+    qu'aucune structure ne tranche) ; **deux limites mesurees plutot que supposees**, dont un vert
+    assume - le verdict peut encore colorer la coquille permanente, et le canal du gabarit reste
+    ouvert, donc la dette C4 est dite **reduite et non fermee** ; et une clause de plus qui n'est
+    **pas** une regle ArchUnit, le compte restant a 28 avec sa methode.

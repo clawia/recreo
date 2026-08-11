@@ -1,0 +1,66 @@
+/* Le meme jeu que verdict-qui-colore-la-machine, a une seule difference : la regle qui faisait
+   dependre le bandeau de l'habillage de tirage.html du marqueur de bilan.html a ete retiree, et
+   rien d'autre n'a bouge. L'habillage, le marqueur conditionnel et les regles qui colorent le
+   pictogramme du bilan sont tous les trois encore la. Sans ce jeu, la clause d'ADR-0031 pourrait
+   etre une interdiction du decor ou du signal juste/faux deguisee en clause de C4, et aucun jeu
+   fautif ne le dirait. */
+.coffret {
+    display: flex;
+    flex-direction: column;
+    border: 0.5rem solid #1565c0;
+}
+
+.coffret-bandeau {
+    height: 2rem;
+}
+
+.coffret > .colonnes {
+    margin: 0;
+}
+
+.colonne {
+    font-size: 2rem;
+}
+
+/* Le verdict colore ce qui vit sur son propre ecran : c'est la coche du cahier, et cette regle-la
+   est legitime. Elle est ici pour que le jeu fautif ne differe du jeu correct que par la regle
+   fautive. */
+.bilan.est-gagne .pictogramme {
+    background-color: #2e7d32;
+}
+
+.bilan.est-perdu .pictogramme {
+    background-color: #c62828;
+}
+
+.annonce {
+    font-size: 1.25rem;
+}
+
+.bandeau {
+    padding: 0.75rem;
+}
+
+.lien-sortie {
+    font-size: 1.25rem;
+}
+
+.ouvrir {
+    font-size: 1.25rem;
+}
+
+.rejouer {
+    font-size: 1.25rem;
+}
+
+.cadre {
+    padding: 0.75rem;
+}
+
+.menu-fautif {
+    display: flex;
+}
+
+.ecran-de-jeu {
+    display: block;
+}
