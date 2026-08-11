@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -131,8 +132,21 @@ class LAnimationRetardeMaisNeDetermineRienTest {
     /** La propriete par laquelle un retard s'ecrit hors du raccourci {@code animation}. */
     private static final String PROPRIETE_DE_RETARD = "animation-delay";
 
-    /** Une regle CSS, avec la pile de regles-@ dans laquelle elle est ecrite. */
-    private record Regle(String fichier, String contexte, String selecteur, String corps) {
+    /**
+     * ADR-0030 : les selecteurs d'image finale d'un {@code @keyframes}. {@code to} et {@code 100%}
+     * sont la meme chose ; les deux formes sont lues, aucune n'est privilegiee.
+     */
+    private static final List<String> IMAGE_FINALE = List.of("to", "100%");
+
+    /** ADR-0030 : la propriete de decoupe, seule dont ce depot compare la geometrie et non le texte. */
+    private static final String DECOUPE = "clip-path";
+
+    /**
+     * Une regle CSS, avec la pile de regles-@ dans laquelle elle est ecrite. Visible dans le paquet
+     * depuis ADR-0030 : {@code LHabillageNeRogneJamaisUnElementPressableTest} lit les memes regles, et
+     * un second decoupage de blocs CSS dans le meme module serait une duplication sans motif.
+     */
+    record Regle(String fichier, String contexte, String selecteur, String corps) {
 
         String origine() {
             return fichier + " : " + (contexte.isEmpty() ? selecteur : contexte + " { " + selecteur);
@@ -153,7 +167,7 @@ class LAnimationRetardeMaisNeDetermineRienTest {
      * l'expression reguliere dans ce module (ADR-0008), et une regle-@ imbriquee n'est de toute facon
      * pas une chose qu'une expression reguliere lit correctement.
      */
-    private static List<Regle> reglesMaison(Path racine) {
+    static List<Regle> reglesMaison(Path racine) {
         List<Regle> regles = new ArrayList<>();
         for (Path feuille : feuillesMaison(racine)) {
             String nom = feuille.getFileName().toString();
@@ -711,6 +725,359 @@ class LAnimationRetardeMaisNeDetermineRienTest {
                 .as("ADR-0027 : aucune regle maison ne retranche une partie du texte que le serveur a "
                         + "envoye")
                 .isEmpty();
+    }
+
+    /**
+     * Clause 9 (ADR-0030) - <b>une animation s'applique a ce que l'enfant presse, jamais a
+     * l'habillage qui l'entoure.</b>
+     *
+     * <p>C'est la moitie gardable de la condition C3 de {@code nadia-prof} (arbitrage prealable du
+     * 2026-08-11) : "aucune animation, aucun clignotement, aucun changement de couleur, aucune lumiere
+     * sur le cabinet lui-meme, a aucun moment. Le mouvement appartient aux colonnes et a elles
+     * seules." Elle ecrit elle-meme que ce point est le sien parce qu'"un {@code @keyframes} sur une
+     * regle d'habillage passerait une CI verte" : ce n'est plus vrai a partir d'ici.
+     *
+     * <p>La propriete est derivee et non enumeree : le <b>sujet</b> du selecteur anime doit nommer une
+     * classe que porte un element {@code [data-role=action]} dans un gabarit. Aucun nom de classe
+     * d'habillage n'est ecrit ici - un cabinet, un bandeau, un socle, ou tout autre habillage a venir
+     * echoue par le fait qu'aucun element pressable ne porte sa classe, pas par le fait d'etre nomme.
+     *
+     * <p>Ce que cette clause ne garde pas, et qui reste a {@code nadia-prof} : un changement de couleur
+     * obtenu autrement qu'en animant - un etat au survol, une transition, une lumiere peinte dans une
+     * image. Sa condition C3 est plus large que sa moitie declarative.
+     */
+    static void verifierQueChaqueAnimationPorteSurUnElementPressable(Path racine) {
+        Set<String> classesDActions = classesDesActions(racine);
+        assertThat(classesDActions)
+                .as("ADR-0003 : cette clause ne prouve rien si aucun element [%s=%s] ne porte de "
+                        + "classe dans les gabarits de %s", ATTRIBUT_DE_ROLE, ACTION, racine)
+                .isNotEmpty();
+
+        List<String> defauts = new ArrayList<>();
+        for (Regle regle : animations(racine)) {
+            Set<String> visees = classesDuSelecteur(sujet(regle.selecteur()));
+            visees.retainAll(classesDActions);
+            if (visees.isEmpty()) {
+                defauts.add(regle.origine() + " : le sujet de ce selecteur ne porte aucune classe "
+                        + "d'un element pressable. Cette animation anime donc de l'habillage, et le "
+                        + "mouvement appartient aux colonnes et a elles seules - une machine qui "
+                        + "s'anime toute seule agit, une machine immobile est un meuble que l'enfant "
+                        + "actionne (nadia-prof, arbitrage prealable du 2026-08-11, condition C3)");
+            }
+        }
+        assertThat(defauts)
+                .as("ADR-0030 : toute animation maison s'applique a un element pressable ou a son "
+                        + "pseudo-element decoratif, jamais a un habillage")
+                .isEmpty();
+    }
+
+    /**
+     * Clause 10 (ADR-0030) - <b>la derniere image d'une animation est l'etat de repos de ce qu'elle
+     * anime.</b>
+     *
+     * <p>C'est la famille entiere du defaut que {@code nadia-prof} a trouve en s07 et qui a traverse
+     * {@code lea-dev}, moi et {@code yanis-qa} : l'animation du voile terminait sur
+     * {@code inset(80% 0 0 0)}, soit un cinquieme de la boite encore couvert, alors que l'etat de
+     * repos ne couvre rien. Le voile disparaissait par la <b>fin</b> de l'animation et non par sa
+     * progression. Elle avait ecrit la raison pour laquelle personne ne l'avait vu : <b>aucun test ne
+     * regarde la derniere image d'une animation</b>. Or cette derniere image est declarative - c'est le
+     * bloc {@code to} ou {@code 100%} du {@code @keyframes} - donc lisible ici.
+     *
+     * <p><b>Pourquoi la comparaison n'est pas textuelle, et c'est tout l'interet de cette clause.</b>
+     * {@code inset(100% 0 0 0)} et {@code inset(0 0 100% 0)} sont deux chaines differentes qui rendent
+     * la meme image : rien de visible. La premiere est la valeur d'arrivee corrigee, la seconde l'etat
+     * de repos ecrit depuis S7-1. Une egalite de chaines aurait donc rougi sur la <b>correction juste</b>,
+     * et la seule facon de la verdir aurait ete de reecrire l'etat de repos pour qu'il ressemble a la
+     * derniere image - c'est-a-dire de changer ce qu'un enfant voit pour satisfaire un automate, ce
+     * qu'ADR-0025 a deja refuse. {@code clip-path: inset()} est donc compare par la <b>geometrie qu'il
+     * decrit</b>, calculee sur les nombres declares : deux decoupes sont equivalentes si elles
+     * decrivent le meme rectangle, ou si toutes deux sont vides.
+     *
+     * <p><b>Limite nommee.</b> Pour toute autre propriete, la comparaison est textuelle apres
+     * normalisation des blancs. Deux valeurs equivalentes ecrites differemment produiraient donc un
+     * rouge ; le remede est de les ecrire a l'identique, ce qui ne coute rien et rend l'egalite lisible.
+     * {@code clip-path} recoit un traitement reel parce que ses deux formes de "rien de visible" sont
+     * toutes deux naturelles et <b>toutes deux presentes dans ce depot</b> - ce n'est pas une hypothese.
+     *
+     * <p>Trois autres choses deviennent rouges par la meme lecture, chacune un vert silencieux
+     * aujourd'hui : une animation qui nomme des images cles inexistantes, un {@code @keyframes} sans
+     * image finale, et une propriete d'image finale dont l'etat de repos n'est declare nulle part -
+     * on ne compare pas a un etat qu'on ne lit pas (ADR-0013 obligation 2).
+     */
+    static void verifierQueLaDerniereImageEgaleLEtatDeRepos(Path racine) {
+        List<Regle> regles = reglesMaison(racine);
+        Set<String> imagesClesDeclarees = new LinkedHashSet<>();
+        for (Regle regle : regles) {
+            nomDesImagesCles(regle.contexte()).ifPresent(imagesClesDeclarees::add);
+        }
+
+        List<Regle> animees = animations(racine);
+        assertThat(animees)
+                .as("ADR-0003 : cette clause ne prouve rien si aucune feuille maison de %s ne declare "
+                        + "d'animation", racine)
+                .isNotEmpty();
+
+        List<String> defauts = new ArrayList<>();
+        for (Regle animation : animees) {
+            Optional<String> nomme = nomAnime(animation, imagesClesDeclarees);
+            if (nomme.isEmpty()) {
+                defauts.add(animation.origine() + " : cette regle anime quelque chose sans nommer "
+                        + "d'images cles declarees par une feuille maison " + imagesClesDeclarees
+                        + ". Une animation dont les images cles n'existent pas ne joue rien, et rien "
+                        + "aujourd'hui ne le dit (ADR-0030)");
+                continue;
+            }
+            String nom = nomme.orElseThrow();
+            List<Regle> finales = regles.stream()
+                    .filter(regle -> nomDesImagesCles(regle.contexte())
+                            .filter(nom::equals).isPresent())
+                    .filter(regle -> IMAGE_FINALE.contains(regle.selecteur().strip().toLowerCase(Locale.ROOT)))
+                    .toList();
+            if (finales.isEmpty()) {
+                defauts.add(animation.origine() + " : les images cles \"" + nom + "\" ne declarent "
+                        + "aucune image finale (" + IMAGE_FINALE + "). Sans elle, l'etat ou l'animation "
+                        + "rend la main n'est ecrit nulle part et ne se compare a rien (ADR-0030)");
+                continue;
+            }
+            String sujetAnime = sujet(animation.selecteur());
+            for (Regle finale : finales) {
+                for (String propriete : proprietesDeclarees(finale.corps())) {
+                    comparerALEtatDeRepos(regles, animation, sujetAnime, nom, propriete,
+                            valeurDe(finale.corps(), propriete), defauts);
+                }
+            }
+        }
+        assertThat(defauts)
+                .as("ADR-0030 : la derniere image de toute animation maison est l'etat de repos de ce "
+                        + "qu'elle anime")
+                .isEmpty();
+    }
+
+    /**
+     * L'etat de repos d'une propriete pour un sujet : la <b>derniere</b> declaration de la feuille, hors
+     * images cles, hors repli de mouvement, et hors des regles qui animent - une regle qui anime declare
+     * le mouvement, pas le repos. La cascade par specificite n'est pas calculee : c'est l'ordre du
+     * document qui tranche, limite nommee et sans effet sur la production, ou une seule regle declare la
+     * decoupe de repos.
+     */
+    private static void comparerALEtatDeRepos(List<Regle> regles, Regle animation, String sujetAnime,
+                                               String nomDesImagesCles, String propriete,
+                                               String valeurFinale, List<String> defauts) {
+        String repos = null;
+        for (Regle regle : regles) {
+            if (regle.dansDesImagesCles() || regle.sousMouvementReduit() || declareUneAnimation(regle)) {
+                continue;
+            }
+            if (!sujet(regle.selecteur()).equals(sujetAnime)) {
+                continue;
+            }
+            if (debutDeDeclaration(regle.corps(), propriete) >= 0) {
+                repos = valeurDe(regle.corps(), propriete);
+            }
+        }
+        if (repos == null) {
+            defauts.add(animation.origine() + " : l'image finale de \"" + nomDesImagesCles + "\" declare "
+                    + propriete + ", et aucune regle maison ne declare l'etat de repos de cette "
+                    + "propriete pour \"" + sujetAnime + "\". On ne compare pas une valeur d'arrivee a un "
+                    + "etat de repos qu'on ne lit pas : declare-le, ou etends cette clause (ADR-0013 "
+                    + "obligation 2, ADR-0030)");
+            return;
+        }
+        if (equivalentes(propriete, valeurFinale, repos)) {
+            return;
+        }
+        defauts.add(animation.origine() + " : l'image finale de \"" + nomDesImagesCles + "\" laisse "
+                + propriete + ": " + valeurFinale + " alors que l'etat de repos de \"" + sujetAnime
+                + "\" est " + propriete + ": " + repos + ". L'animation rend donc la main sur un autre "
+                + "etat que celui qui la suit : ce qui disparait a cet instant disparait par la fin de "
+                + "l'animation et non par sa progression, et l'enfant voit une discontinuite "
+                + "(nadia-prof, reserve du 2026-08-10 precisee le 2026-08-11 ; ADR-0030)");
+    }
+
+    /** Le nom des images cles d'un contexte de regles-@, ou vide si ce n'en est pas un. */
+    private static Optional<String> nomDesImagesCles(String contexte) {
+        String compact = String.join(" ", mots(contexte));
+        if (!compact.toLowerCase(Locale.ROOT).startsWith(IMAGES_CLES)) {
+            return Optional.empty();
+        }
+        List<String> mots = mots(compact.substring(IMAGES_CLES.length()));
+        return mots.isEmpty() ? Optional.empty() : Optional.of(mots.get(0));
+    }
+
+    /**
+     * Le nom d'images cles qu'une regle d'animation declenche. Il n'est pas devine par sa position dans
+     * le raccourci - l'ordre y est libre - mais <b>derive</b> : c'est celui de ses mots qui nomme des
+     * images cles reellement declarees par une feuille maison.
+     */
+    private static Optional<String> nomAnime(Regle animation, Set<String> imagesClesDeclarees) {
+        for (String propriete : List.of("animation", "animation-name")) {
+            int position = debutDeDeclaration(animation.corps(), propriete);
+            if (position < 0) {
+                continue;
+            }
+            for (String mot : mots(valeurDeclaree(animation.corps(), position, propriete))) {
+                if (imagesClesDeclarees.contains(mot)) {
+                    return Optional.of(mot);
+                }
+            }
+        }
+        return Optional.empty();
+    }
+
+    /** Les noms de proprietes qu'un corps de regle declare, dans l'ordre. */
+    private static List<String> proprietesDeclarees(String corps) {
+        List<String> proprietes = new ArrayList<>();
+        for (String declaration : corps.split(";")) {
+            int deuxPoints = declaration.indexOf(':');
+            if (deuxPoints < 0) {
+                continue;
+            }
+            String nom = declaration.substring(0, deuxPoints).strip().toLowerCase(Locale.ROOT);
+            if (!nom.isEmpty() && !proprietes.contains(nom)) {
+                proprietes.add(nom);
+            }
+        }
+        return proprietes;
+    }
+
+    private static String valeurDe(String corps, String propriete) {
+        int position = debutDeDeclaration(corps, propriete);
+        return position < 0 ? "" : String.join(" ", mots(valeurDeclaree(corps, position, propriete)));
+    }
+
+    /**
+     * Deux valeurs decrivent-elles le meme rendu ? Pour {@code clip-path: inset()}, la comparaison est
+     * geometrique et non textuelle (voir la Javadoc de la clause 10) ; pour tout le reste, textuelle
+     * apres normalisation des blancs.
+     */
+    private static boolean equivalentes(String propriete, String finale, String repos) {
+        if (DECOUPE.equals(propriete)) {
+            Optional<double[]> boiteFinale = rectangleDecoupe(finale);
+            Optional<double[]> boiteRepos = rectangleDecoupe(repos);
+            if (boiteFinale.isPresent() && boiteRepos.isPresent()) {
+                return memeRectangle(boiteFinale.orElseThrow(), boiteRepos.orElseThrow());
+            }
+        }
+        return finale.equals(repos);
+    }
+
+    /**
+     * Le rectangle visible qu'un {@code inset(haut droite bas gauche)} en pourcentages laisse voir, sous
+     * la forme {@code {haut, droite, bas, gauche}} des bords. Vide si la valeur n'est pas un
+     * {@code inset()} de quatre pourcentages - dans ce cas la comparaison retombe sur le texte, plutot
+     * que de deviner une geometrie.
+     */
+    private static Optional<double[]> rectangleDecoupe(String valeur) {
+        String texte = valeur.strip().toLowerCase(Locale.ROOT);
+        if (!texte.startsWith("inset(") || !texte.endsWith(")")) {
+            return Optional.empty();
+        }
+        List<String> composantes = mots(texte.substring("inset(".length(), texte.length() - 1));
+        if (composantes.size() != 4) {
+            return Optional.empty();
+        }
+        double[] bords = new double[4];
+        for (int rang = 0; rang < 4; rang++) {
+            Optional<Double> pourcentage = pourcentage(composantes.get(rang));
+            if (pourcentage.isEmpty()) {
+                return Optional.empty();
+            }
+            bords[rang] = pourcentage.orElseThrow();
+        }
+        return Optional.of(bords);
+    }
+
+    /** Un pourcentage, ou {@code 0} ecrit sans unite comme le CSS l'autorise. Vide sinon. */
+    private static Optional<Double> pourcentage(String composante) {
+        try {
+            if (composante.endsWith("%")) {
+                return Optional.of(Double.parseDouble(composante.substring(0, composante.length() - 1)));
+            }
+            return Double.parseDouble(composante) == 0 ? Optional.of(0.0) : Optional.empty();
+        } catch (NumberFormatException illisible) {
+            return Optional.empty();
+        }
+    }
+
+    /**
+     * Deux decoupes sont equivalentes si elles laissent voir le meme rectangle, ou si toutes deux ne
+     * laissent rien voir - une hauteur ou une largeur nulle ne montre rien, quelle que soit la facon de
+     * l'ecrire. C'est exactement ce qui distingue {@code inset(100% 0 0 0)} de {@code inset(80% 0 0 0)}
+     * face a un repos de {@code inset(0 0 100% 0)}.
+     */
+    private static boolean memeRectangle(double[] premiere, double[] seconde) {
+        boolean videPremiere = premiere[0] + premiere[2] >= 100 || premiere[1] + premiere[3] >= 100;
+        boolean videSeconde = seconde[0] + seconde[2] >= 100 || seconde[1] + seconde[3] >= 100;
+        if (videPremiere || videSeconde) {
+            return videPremiere && videSeconde;
+        }
+        for (int rang = 0; rang < 4; rang++) {
+            if (premiere[rang] != seconde[rang]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Test
+    void chaqueAnimationPorteSurUnElementPressable() {
+        verifierQueChaqueAnimationPorteSurUnElementPressable(RACINE_PRODUCTION);
+    }
+
+    @Test
+    void derniereImageDeChaqueAnimationEgaleLEtatDeRepos() {
+        verifierQueLaDerniereImageEgaleLEtatDeRepos(RACINE_PRODUCTION);
+    }
+
+    /**
+     * ADR-0030, clause 9. L'objet neuf est un cabinet qui pulse en attendant - la forme exacte que
+     * {@code nadia-prof} nomme comme faisant tomber son avis ("le jour ou le cabinet pulse en
+     * attendant, l'argument qui sauve la metaphore tombe, et mon avis avec lui").
+     */
+    @Test
+    void uneAnimationSurUnHabillageFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("habillage-qui-s-anime");
+        assertThatThrownBy(() -> verifierQueChaqueAnimationPorteSurUnElementPressable(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ne porte aucune classe d'un element pressable");
+    }
+
+    /**
+     * ADR-0030, clause 10. L'objet neuf n'est pas invente : c'est la feuille <b>telle que S7-1 l'a
+     * livree</b>, avec sa valeur d'arrivee a 80 % et son etat de repos a
+     * {@code inset(0 0 100% 0)}. C'est le defaut que seul le releve image par image de
+     * {@code nadia-prof} avait vu.
+     */
+    @Test
+    void uneDerniereImageHorsDeLEtatDeReposFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("derniere-image-hors-du-repos");
+        assertThatThrownBy(() -> verifierQueLaDerniereImageEgaleLEtatDeRepos(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("rend donc la main sur un autre etat que celui qui la suit");
+    }
+
+    /**
+     * Le meme jeu fautif corrige par la seule valeur d'arrivee, <b>ecrite autrement que l'etat de
+     * repos</b> : {@code inset(100% 0 0 0)} contre {@code inset(0 0 100% 0)}. Ce cas est celui qui
+     * empeche la clause 10 d'etre une egalite de chaines deguisee en propriete de rendu - sans lui, la
+     * correction juste serait refusee et aucun jeu fautif ne le dirait.
+     */
+    @Test
+    void laMemeAnimationCorrigeeEtEcriteAutrementResteVerte() {
+        verifierQueLaDerniereImageEgaleLEtatDeRepos(
+                CONTRE_EXEMPLES.resolve("derniere-image-ecrite-autrement"));
+    }
+
+    /**
+     * ADR-0030, clause 10, second vert silencieux ferme : une animation dont les images cles n'existent
+     * pas. Elle ne joue rien du tout, et aucune des huit clauses precedentes ne le voyait.
+     */
+    @Test
+    void uneAnimationSansImagesClesFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("images-cles-inexistantes");
+        assertThatThrownBy(() -> verifierQueLaDerniereImageEgaleLEtatDeRepos(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("sans nommer d'images cles declarees");
     }
 
     @Test

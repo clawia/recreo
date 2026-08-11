@@ -215,12 +215,20 @@ body:has(.ecran-de-jeu) .lien-accueil {
 [data-arrivee=par-un-geste] .proposition:nth-child(3)::after { animation-delay: 0.16s; }
 [data-arrivee=par-un-geste] .proposition:nth-child(4)::after { animation-delay: 0.24s; }
 
-/* Bande de 20 % de hauteur glissant du haut vers le bas, entierement confinee dans la boite a
-   chaque instant : top et bottom varient ensemble, l'un de 0 a 80 %, l'autre de 80 % a 0,
-   jamais au-dela. */
+/* Bande glissant du haut vers le bas, entierement confinee dans la boite a chaque instant.
+   S8-2 : la valeur d'arrivee de top passe de 80 % a 100 %. Avec 80 %, top et bottom progressaient au
+   meme rythme et la bande gardait une hauteur constante de 20 % jusqu'a la derniere image : le voile
+   disparaissait par la fin de l'animation et non par sa progression, ce qui rendait la main avec un
+   cinquieme de la boite encore sombre (13 px mesures par nadia-prof le 2026-08-10, 14,8 px declares
+   - sa reserve unique de s07). Avec 100 %, la hauteur visible vaut 20 % x (1 - t) : elle atteint 0
+   sur la derniere image, et l'image finale est celle du repos (inset(0 0 100% 0), rien de visible).
+   Valeur et verification numerique de la courbe par ines-design (proposition-ines-cabinet.md,
+   section 4) : 0 px sur la derniere image, chute maximale de 0,60 px sur les 150 dernieres ms contre
+   un plafond de 3 px. Le releve image par image sur le rendu livre reste a nadia-prof. La propriete
+   est desormais gardee : derniereImageDeChaqueAnimationEgaleLEtatDeRepos (ADR-0030). */
 @keyframes rouleau-glisse {
     from { clip-path: inset(0 0 80% 0); }
-    to   { clip-path: inset(80% 0 0 0); }
+    to   { clip-path: inset(100% 0 0 0); }
 }
 
 /* ADR-0026 clause 2 : repli de mouvement, forme litterale exigee par le garde-fou. Un enfant qui

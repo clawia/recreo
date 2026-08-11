@@ -33,6 +33,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0027](ADR-0027-un-ecran-de-jeu-declare-comment-il-est-arrive-le-mouvement-suit-le-geste.md) | Faire declarer par le serveur comment un ecran de jeu est arrive, et n'autoriser un mouvement que sur un geste de l'enfant | s07 | 2026-08-10 | Accepte |
 | [ADR-0028](ADR-0028-outiller-le-pli-le-contenu-au-dessus-du-pli-reste-non-gardable.md) | Outiller la mesure du pli par un parametre de hauteur, et declarer non gardable le contenu au-dessus du pli | s08 | 2026-08-11 | Accepte |
 | [ADR-0029](ADR-0029-toute-colonne-que-le-contenu-peut-produire-porte-son-decalage.md) | Faire porter un decalage declare a toute colonne que le contenu peut produire, et laisser la borne de duree a la clause qui la garde deja | s08 | 2026-08-11 | Accepte |
+| [ADR-0030](ADR-0030-un-habillage-entoure-sans-rogner-et-toute-animation-finit-sur-son-etat-de-repos.md) | Interdire a un habillage de rogner un ancetre de bouton et d'animer autre chose que ce qu'on presse, et exiger que la derniere image d'une animation soit l'etat de repos | s08 | 2026-08-11 | Accepte |
 
 ## Amendements
 
@@ -272,7 +273,8 @@ les deux ADR de s07 etaient ranges sous le paragraphe de s06, corrige a l'ecritu
     fait choisir un attribut plutot qu'une regle CSS decorative - et il rend explicitement a
     `nadia-prof` le residu qu'aucun automate n'atteint, dont un mot peint dans une image.
 
-Sprint 8 en ajoute deux, tous deux nes des obstacles restes ouverts a la cloture de s07 :
+Sprint 8 en ajoute trois : les deux premiers nes des obstacles restes ouverts a la cloture de s07, le
+troisieme de la faisabilite du cabinet de la machine :
 
 26. **ADR-0028** tranche le mecanisme de garde de `DEC-0016` en deux moities opposees, et c'est ce
     couple qui vaut d'etre relu : la hauteur devient un **parametre** de la commande de mesure, et
@@ -300,3 +302,21 @@ Sprint 8 en ajoute deux, tous deux nes des obstacles restes ouverts a la cloture
     ne sert que trois colonnes, la quatrieme vit dans un paquet hors catalogue dont les deux
     conditions de remise sont remplies), et un **epinglage refuse avec son motif** - figer le
     plafond de colonnes rougirait sur l'arrivee legitime d'un contenu, pas sur ce qui manque.
+28. **ADR-0030** juge la faisabilite du cabinet de la machine et vaut d'etre relu pour la lecon de sa
+    cinquieme section, qui depasse le chantier : **une propriete de rendu peut etre gardable et
+    l'egalite de chaines ne pas etre cette propriete.** `inset(100% 0 0 0)` et `inset(0 0 100% 0)` sont
+    deux ecritures differentes de "rien de visible" ; une comparaison textuelle aurait rougi sur la
+    correction juste, mesure a l'appui (deux cas en echec, dont la production corrigee), et la seule
+    facon de la verdir aurait ete de reecrire ce que voit l'enfant pour satisfaire l'automate. La
+    clause compare donc la geometrie declaree, et elle attrape la famille entiere du defaut que seul le
+    releve image par image de `nadia-prof` avait vu en s07 - une animation qui rend la main sur un autre
+    etat que celui qui la suit - alors que trois de mes clauses passaient dessus sans regarder **ou**
+    l'animation finit. Il apporte deux autres choses : un refus tranche sur un fait du depot plutot que
+    sur un principe (l'anneau de focus clavier est une **ombre portee**, la bibliotheque vendorisee
+    declarant `outline: 0` sur `.btn:focus-visible`, donc tout rognage d'un ancetre le supprime - ce qui
+    rend `overflow: hidden` inacceptable sur le cabinet et **etablit** le defaut que je disais non
+    etabli en s07) ; et une regle ecrite **avant** l'implementation, dont la population d'ancetres est
+    derivee des gabarits pour que le cabinet y entre sans que personne y pense. Il refuse enfin une
+    clause tentante avec le chiffre qui la refute : interdire un `font-size` sur un ancetre de bouton ne
+    protege rien, les quinze blocs qui declarent une taille la declarent tous en `rem`, unite relative
+    a la racine et non a l'ancetre.

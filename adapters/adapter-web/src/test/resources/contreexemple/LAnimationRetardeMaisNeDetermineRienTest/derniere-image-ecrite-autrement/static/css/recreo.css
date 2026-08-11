@@ -1,0 +1,31 @@
+/* Le meme jeu fautif que derniere-image-hors-du-repos, corrige par la seule valeur d'arrivee, et
+   ecrite AUTREMENT que l'etat de repos : inset(100% 0 0 0) contre inset(0 0 100% 0). Les deux chaines
+   sont differentes, les deux images sont identiques - rien de visible. C'est ce jeu d'artefacts qui
+   empeche la clause 10 d'etre une egalite de chaines : une comparaison textuelle rougirait ici, sur la
+   correction juste, et la seule facon de la verdir serait de reecrire l'etat de repos pour qu'il
+   ressemble a la derniere image, c'est-a-dire de changer ce qu'un enfant voit pour satisfaire un
+   automate (ce qu'ADR-0025 a deja refuse). */
+.proposition {
+    position: relative;
+}
+
+.proposition::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    clip-path: inset(0 0 100% 0);
+}
+
+[data-arrivee=par-un-geste] .proposition::after {
+    animation: rouleau-glisse 0.6s ease-out 1;
+}
+
+@keyframes rouleau-glisse {
+    from { clip-path: inset(0 0 80% 0); }
+    to   { clip-path: inset(100% 0 0 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-arrivee=par-un-geste] .proposition::after { animation: none }
+}

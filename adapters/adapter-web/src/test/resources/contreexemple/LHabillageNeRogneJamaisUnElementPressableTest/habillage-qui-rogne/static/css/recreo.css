@@ -1,0 +1,30 @@
+/* Jeu fautif d'ADR-0030, et ce n'est pas une invention : c'est la feuille proposee pour le cabinet,
+   recopiee telle qu'ines-design l'ecrit (proposition-ines-cabinet.md, section 1), overflow: hidden
+   compris. Elle le pose pour que les coins arrondis rognent les enfants du conteneur ; ce faisant elle
+   rogne aussi l'ombre portee qui sert d'anneau de focus clavier a la bibliotheque vendorisee, et fait
+   du cabinet un conteneur de defilement. Tout le reste de cette feuille est irreprochable. */
+.cabinet {
+    display: flex;
+    flex-direction: column;
+    background-color: #1d4b6b;
+    border: 0.5rem solid #1d4b6b;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.cabinet > .propositions {
+    margin: 0;
+}
+
+.cabinet-bandeau {
+    height: 2rem;
+}
+
+.cabinet-socle {
+    height: 1rem;
+}
+
+.propositions {
+    display: flex;
+    gap: 1rem;
+}

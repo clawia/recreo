@@ -1,0 +1,28 @@
+/* Jeu fautif d'ADR-0030 clause 10, second vert silencieux : l'animation nomme des images cles que
+   personne ne declare - un renommage du @keyframes, une faute de frappe, une regle supprimee. Elle ne
+   joue donc rien du tout. Les huit clauses precedentes la laissaient passer : elle finit (aucun
+   "infinite"), elle a son repli de mouvement, elle nomme le marqueur de geste, et sa duree tient dans
+   la barre. */
+.proposition {
+    position: relative;
+}
+
+.proposition::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    clip-path: inset(0 0 100% 0);
+}
+
+[data-arrivee=par-un-geste] .proposition::after {
+    animation: rouleau-glisse 0.6s ease-out 1;
+}
+
+@keyframes rouleau-glisse-renomme {
+    from { clip-path: inset(0 0 80% 0); }
+    to   { clip-path: inset(100% 0 0 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-arrivee=par-un-geste] .proposition::after { animation: none }
+}
