@@ -14,7 +14,20 @@
   `bandit-manchot-conjugaison-present-cm1`, titre "Le bon verbe", 10 manches. Six items repris de
   `contenu-repris/textes-trous/cm1-conjugaison.yml`, six rediges en s06 ; les douze indices sont
   neufs.
-- **Statut global** : **REFUSE** (Done pedagogique refuse le 2026-08-10, premier audit). Motif
+- **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique accorde le 2026-08-11, quatrieme
+  audit, sur l'increment corrige de S8-5, commit `bd9a8f0`). Le **REFUSE du 2026-08-11 (troisieme
+  audit) est LEVE** : son motif unique - `mangeons` a 156,02 px de glyphes dans une boite de
+  152,00 px, ecrit sur la paroi du cabinet - est ferme. Mesure par moi sur le rendu servi, en Chrome
+  reel a 360 x 640 px exactement : **zero** proposition qui deborde, **zero** sous 2,0 px d'air,
+  minimum du paquet **2,86 px** sur `mangeons`, sur **les 100 emplacements de proposition** des 25
+  items. Mes **sept conditions** du meme jour sont tenues, verifiees une par une, dont deux mises a
+  l'epreuve sur la feuille de production plutot que lues. Le verdict est **sous reserve** pour une
+  seule raison, qui n'est pas un motif : le defaut de pli, 24 items sur 25 quand l'indice s'affiche.
+  **La ligne de matrice francais CM1 conjugaison doit passer a `couvert-valide`** (condition de
+  `DEC-0018` section 4 remplie) ; je ne l'edite pas, elle appartient a `camille-po`. Le refus n'est
+  pas efface : il reste lisible plus bas avec son motif et sa date.
+  **Historique des verdicts anterieurs, conserve entier :**
+  **REFUSE** (Done pedagogique refuse le 2026-08-10, premier audit). Motif
   unique et suffisant : cinq des douze indices enoncent une regle de conjugaison fausse, et trois
   d'entre elles sont dementies par un autre item du meme paquet.
   **Arbitrage prealable au developpement du 2026-08-10** : la reduction de ce paquet a **trois
@@ -64,6 +77,19 @@
   qui se realise. **Je reponds au point d'interpretation de `marc-dev`** : le 2e groupe absent de
   l'imparfait ne viole pas mon point 1, tel que je l'ai ecrit. **Le defaut de pli, 24 items sur 25,
   n'est PAS le motif** et je dis pourquoi.
+- **Quatrieme audit, increment corrige de S8-5, du 2026-08-11, prononce sur l'increment livre
+  (`bd9a8f0`) : VALIDE SOUS RESERVE, Done pedagogique accorde. Le REFUSE du 2026-08-11 est LEVE.**
+  Audit joue, non degrade : 22 parties, 220 etats mesures, les 25 items vus et les 25 vus avec leur
+  indice, **les 100 emplacements de proposition mesures sur le rendu servi** en Chrome reel a
+  360 x 640 px exactement. Mon motif est ferme : zero debordement, zero sous 2,0 px, minimum
+  **2,86 px** sur `mangeons`, et sur la capture le mot est entier dans son bouton avec du bleu de
+  chaque cote. **Mes sept conditions sont tenues**, dont les conditions 2 et 3 mises a l'epreuve sur
+  la feuille de production (1,8125 rem rougit, `calc` rougit) plutot que crues. **Je corrige deux de
+  mes propres corrections du matin** : mon chiffre de refus -2,02 px etait exact et ma "correction" a
+  -2,01 px etait fausse. **Le pli reste hors motif** et c'est lui, et lui seul, qui fait de ce Done un
+  Done **sous reserve**. **La ligne de matrice doit passer a `couvert-valide`** ; je ne l'edite pas.
+- **Note du 2026-08-11 sur le bullet "Ligne de matrice" ci-dessus** : il date du second audit et
+  n'est plus l'etat courant. Il reste ecrit, non efface. L'etat courant est celui du quatrieme audit.
 - **Derniere mise a jour** : 2026-08-11
 
 ## Competences visees
@@ -102,6 +128,305 @@ entree/sortie observables.
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Verdict courant - quatrieme audit, increment corrige de S8-5, du 2026-08-11
+
+- **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique **accorde**. **Le REFUSE du 2026-08-11
+  (troisieme audit) est LEVE** : son motif unique est ferme, mesure par moi sur le rendu servi. Le
+  refus n'est pas efface et n'est pas retire, il reste lisible plus bas avec sa date et son motif -
+  un refus efface n'a aucune valeur de preuve. Mes trois verdicts anterieurs restent egalement en
+  place.
+- **Date** : 2026-08-11.
+- **Commit audite** : `bd9a8f0`, tete de `round-two` (fusion du lot `lea-dev`, S8-5).
+- **Done technique** : acquis, et je ne le rediscute pas. `mvn -B clean verify` relance depuis mon
+  propre worktree : **BUILD SUCCESS, 344 tests, 0 echec, 0 erreur**.
+- **Pourquoi SOUS RESERVE et pas VALIDE sec** : la seule raison est le defaut de pli, chiffre en
+  section 4. Ce n'est **pas** un motif - je l'ai moi-meme exclu, `DEC-0016` amende, `DEC-0017` et
+  `DEC-0018` l'excluent aussi - mais je ne signe pas un VALIDE sec sur un ecran ou, sur **24 items
+  sur 25**, l'arrivee de l'aide emporte la moitie des reponses sous le bas de l'ecran. Un VALIDE sec
+  dirait que je n'ai rien trouve a corriger, et ce serait faux. Le Done est ouvert, la reserve est
+  nommee.
+- **Ligne de matrice** : la condition que `camille-po` a posee en section 4 de `DEC-0018` - "au
+  premier verdict de `nadia-prof` sur l'increment corrige de `S8-5` qui n'est pas un `REFUSE`" - est
+  **remplie**. La ligne `francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents
+  au present, futur et imparfait de l'indicatif` **doit passer de `en cours` a `couvert-valide`**,
+  sans que ma barre de six points soit rouverte : elle est levee depuis le 2026-08-11 et je ne la
+  reaudite pas. **Je n'edite pas cette ligne** : `squad/programme/MATRICE-couverture.md`, section
+  "Qui la met a jour", nomme `camille-po` et personne d'autre, et je ne repriorise pas. Je le dis
+  donc ici sous une forme qu'elle peut executer sans rien me redemander, et je nomme le risque :
+  **si personne ne l'execute, c'est exactement le mode de defaillance de s04 que `camille-po` cite
+  elle-meme dans `DEC-0018`** - une decision ecrite et jamais executee. La trace est ici pour que ce
+  ne soit pas perdu.
+- **Ce que ce Done ne dit pas** : que le jeu est confortable a 360 px. Il dit que la reponse ne sort
+  plus de la chose qu'il faut presser, ce qui etait mon motif, et que les sept conditions de mon
+  acceptation du matin sont tenues. Voir R1, en section 6, que je ne convertis pas en motif.
+
+#### 0. Comment j'ai joue, et ce que je ne declare PAS degrade
+
+**Audit joue, non degrade.** Le jeu est au catalogue et je l'ai atteint depuis l'accueil, comme un
+enfant, sans branche jetable.
+
+Worktree dedie `s08-nadia-verdict-2`, forke de `round-two` a `bd9a8f0`, lignee verifiee par
+`outils/verifier-lignee.sh` ("le worktree sur la branche 's08-nadia-verdict-2' descend de la lignee
+de round-two"). JDK constate par `outils/verifier-jdk.sh` (`java` du `PATH` en 1.8.0_202, JDK de
+compilation 21.0.10, fichier de toolchains du poste present sous un nom que Maven ne lit pas),
+`JAVA_HOME` pose sur le JDK 21 le temps des commandes Maven, fat jar reconstruit depuis ce worktree
+et lance sur un port dedie.
+
+- **22 parties completes** jouees par les vraies routes HTTP, ratees a chaque manche pour faire venir
+  l'aide, jusqu'a l'ecran "C'est fini !" ;
+- **220 etats d'ecran mesures**, **les 25 items vus**, et **les 25 vus aussi avec leur indice**,
+  obtenu par des echecs consecutifs reels et non en lisant le YAML ;
+- **880 propositions mesurees**, soit **les 100 emplacements de proposition du paquet** (97 chaines
+  distinctes : `aidait`, `aidera` et `avaient` apparaissent chacune dans deux items). **Ce n'est plus
+  une substitution de libelles comme dans mon arbitrage du matin** : chaque proposition a ete
+  mesuree telle qu'un tirage reel l'a servie ;
+- **Chrome reel, viewport 360 x 640 px exactement**, force par la surcharge de metriques du
+  navigateur - qui n'est pas soumise au plancher de fenetre de `ADR-0025` -, verifie a chaque etat
+  (`innerWidth` = 360, `innerHeight` = 640 sur les 220) ;
+- geometrie relevee au centieme de pixel **sur les glyphes eux-memes** (boite du noeud de texte)
+  contre la boite du bouton, jamais sur une valeur declaree ;
+- captures a 360 x 640 des trois items ou le defaut se logeait, avec et sans indice, **et je les ai
+  regardees**.
+
+**Une limite, et une seule, que je nomme** : pas de doigt sur un ecran tactile, ni de lecteur
+d'ecran. Je mesure ce que l'oeil recoit et ce que le clic produit, pas le geste.
+
+**Un constat de jeu sans consequence, que je signale parce que je l'ai rencontre** : revenir sur `/`
+avec une partie en cours restitue la partie plutot que le catalogue (le fragment porte
+`data-arrivee="sans-geste"`, c'est donc un etat connu et marque) ; le bouton "Les jeux" de l'ecran de
+jeu ramene bien au catalogue. Aucun enfant n'est bloque. Ce n'est ni une reserve ni un motif.
+
+#### 0 bis. Ce que je corrige de mes propres constats, avant de m'appuyer dessus
+
+**A. Ma "correction" B1 du matin etait fausse, et c'est mon chiffre de refus qui avait raison.**
+Dans l'arbitrage du matin, section B1, j'ai corrige `mangeons` de **-2,02 px** a **-2,01 px** et
+j'ai credite `ines-design` de la bonne valeur. **Je me suis corrigee a tort.** J'ai remis 2 rem sur
+le seul selecteur du repli, sur le rendu reellement servi, et remesure les memes items : `mangeons`
+mesure **156,02 px** de glyphes dans une boite de **152,00 px**, soit **-2,02 px** d'air de chaque
+cote. Meme chose sur `cherchent` : mon refus disait **+1,84 px**, ma correction du matin disait
++1,85 px, et la mesure d'aujourd'hui donne **+1,84 px**. **Mes deux corrections du matin etaient
+fausses dans le meme sens ; les chiffres de mon refus etaient exacts.** Cela ne change aucun motif
+et aucune conclusion - c'est un centieme de pixel - mais je ne laisse pas un chiffre faux dans une
+fiche de conformite, et je ne laisse surtout pas un credit mal attribue : sur ce point, personne
+n'avait tort avant moi.
+
+**B. Ce que ma section B2 du matin disait tient, verifie par la meme mesure.** A 2 rem, sur le rendu
+reel : **deux** propositions sortent de leur boite (`mangeons` -2,02 px, `cherchons` -0,09 px) et
+**trois** sont sous les 2,0 px d'air (`cherchent` +1,84 px). Trois propositions, deux items. C'etait
+le bon perimetre.
+
+**C. Ma condition 4 annoncait un minimum de 2,87 px ; le chiffre honnete est 2,86 px.** Les deux
+cotes du mot ne sont pas symetriques au centieme : `mangeons` a **2,86 px** d'un cote et **2,87 px**
+de l'autre. Je retiens **2,86 px**, le plus etroit des deux. Ma condition 4 exigeait "au moins
+2,0 px", pas 2,87 : elle est tenue, et je le dis avant qu'on me le demande.
+
+**D. Le point 1 de ma section E n'est plus a moi seule, et c'est une bonne nouvelle que je dois
+enregistrer.** J'avais ecrit : *"la taille de police effective sous le repli a quatre colonnes.
+Aucun test ne la lit."* **Un test la lit maintenant**, et je l'ai mis a l'epreuve plutot que de le
+croire (section 2). Ce point sort de ma liste de garde.
+
+#### 1. Les mesures de `lea-dev`, verifiees et non crues
+
+Elle a declare sept mesures. Je les ai refaites, sans regarder les siennes pendant que je mesurais.
+**Elles sont exactes.** Les seuls ecarts sont au centieme et ne changent rien :
+
+| Ce qu'elle declare | Ce que je mesure | Ecart |
+|---|---|---|
+| minimum du paquet **2,86 px** sur `mangeons` | **2,86 px** | aucun |
+| `cherchons` a **4,67 px** | **4,66 px** | 0,01 px |
+| `cherchent` a **6,48 px** | **6,48 px** | aucun |
+| **0** debordement, **0** sous le seuil | **0** et **0**, sur les 100 emplacements | aucun |
+| boutons a **152,00 x 71,00 px** sous le repli | **152,00 x 71,00 px**, sur les 880 | aucun |
+| `font-size: 1.875rem` litteral | litteral, ni variable ni `calc` | aucun |
+| les trois autres jeux inchanges | inchanges, au pixel et a la police | aucun |
+
+**Je releve ce qu'elle n'a pas fait et qu'elle aurait pu faire** : rien. Elle a mesure ce que ma
+condition 4 demandait, sur le rendu, et elle a annonce le chiffre le plus defavorable pour elle
+(2,86 et non 2,87). C'est la troisieme fois de ce sprint qu'un developpeur me rend une mesure que je
+peux refaire et retrouver ; c'est ce qui rend un audit possible en une seule passe.
+
+#### 2. Mes sept conditions, une par une
+
+**Condition 1 - portee. SATISFAITE.** Mesure sur les quatre jeux du catalogue, joues chacun par
+leurs vraies routes :
+
+| Jeu | Propositions | `font-size` | Boite du bouton |
+|---|---|---|---|
+| Calcul CP | 3 | **32 px** | 96,00 x **74,00 px** |
+| Le bon petit mot | 2 | **32 px** | 152,00 x **74,00 px** |
+| Le bon son | 3 | **32 px** | 96,00 x **74,00 px** |
+| **Le bon verbe** | **4** | **30 px** | 152,00 x **71,00 px** |
+
+Aucun des trois autres ne bouge d'un pixel ni d'un point de police. Et ce n'est pas seulement un
+constat : la seule modification fonctionnelle de tout le lot est **une declaration** placee dans un
+selecteur qui exige une quatrieme `.proposition`. Aucun paquet du catalogue ne peut en produire
+quatre - `cp-additions-jusqu-a-10` porte `nombreDePropositions: 3`, `cm1-homophones` un distracteur
+par item, `cp-le-bon-son` deux - verifie dans les paquets, pas suppose.
+
+**Condition 2 - 30 px est un plancher, pas le debut d'une pente. SATISFAITE, et mieux que ce que je
+demandais.** Le contre-exemple neuf porte **exactement 1,8125 rem**, la valeur que j'avais nommement
+mesuree et refusee, et non une valeur arbitraire. **Je ne me suis pas contentee de le lire** : j'ai
+mis **1,8125 rem dans la feuille de production reellement servie** et relance la classe de tests.
+Elle rougit, et sur le bon test :
+
+```
+laPoliceDuRepliAQuatreColonnesEstUneExceptionAuPlancherGeneralDeDeuxRem
+[.propositions:has(.proposition:nth-child(4)) .proposition doit rester litteralement 1,875rem]
+expected: 1.875
+ but was: 1.8125
+```
+
+J'ai remis la feuille en etat ; rien de cette epreuve n'est commite. **Le garde-fou est une egalite
+sur la production, pas seulement un plancher** : toute valeur autre que 1,875 rem rougit, vers le bas
+comme vers le haut. C'est plus que ce que ma condition 2 exigeait, et c'est le bon choix.
+
+**Condition 3 - la valeur est ecrite en clair. SATISFAITE, et gardee dans sa forme.**
+`font-size: 1.875rem` litteral dans le bloc `:has()` deja existant, ni variable ni `calc`. **Et la
+forme est gardee, pas seulement respectee** : j'ai mis `calc(2rem * 0.9375)` - qui calcule exactement
+les memes 30 px et serait donc invisible a l'oeil - dans la feuille de production, et le test rougit
+avec "`font-size` doit etre exprime en rem". C'est precisement le symptome que ma condition 3
+nommait : un changement qui deplace la valeur sans que personne le voie. Il ne passe pas.
+
+**Condition 4 - air strictement positif et au moins 2,0 px sur les 100 propositions. SATISFAITE.**
+Mesure sur les 880 propositions servies, soit les 100 emplacements du paquet :
+
+| | Resultat |
+|---|---|
+| propositions qui debordent de leur boite | **0 / 100** |
+| propositions sous 2,0 px d'air | **0 / 100** |
+| minimum du paquet | **2,86 px** sur `mangeons` (146,27 px de glyphes dans 152,00 px) |
+| deuxieme plus etroit | **4,66 px** sur `cherchons` (142,67 px) |
+| troisieme | **6,48 px** sur `cherchent` (139,03 px) |
+| quatrieme | **9,03 px** sur `dessinent` (133,94 px) |
+
+Et les six conditions de non-troncature du 2026-08-10, verifiees sur les 880 et non sur un
+echantillon : **une seule ligne de texte** par proposition (880 / 880), `overflow: visible`,
+`text-overflow: clip` jamais engage, `hyphens: manual`, `letter-spacing: normal`,
+`font-stretch: 100%`, `writing-mode: horizontal-tb`, `transform: none`. **Rien n'est coupe, rien
+n'est comprime, rien n'est coupe en deux, rien n'est couche.**
+
+**Condition 5 - aucun second payeur. SATISFAITE.** Le cadre du cabinet est un
+`border: 0.5rem solid` : cabinet mesure a **336,00 px** de large, interieur a **320,00 px**, soit
+**8,00 px** de chaque cote, C1 intact. `gap` mesure a **16,00 px sur les deux axes** sur les quatre
+jeux (acquis 4). Rembourrage calcule de `.proposition` : **12 px / 20 px**, soit 0,75 rem / 1,25 rem,
+**identique sur les quatre jeux**, celui-ci compris (acquis 7). `min-height` a 44 px intact. **La
+largeur n'a ete payee qu'une fois, sur la police, et sur ce seul repli.**
+
+**Condition 6 - la cible tactile. SATISFAITE, et je peux enfin la chiffrer proprement.** Mesure
+controlee sur le meme rendu, en remettant 2 rem sur le seul selecteur du repli :
+
+| Etat | Boite du bouton | Hauteur du cabinet |
+|---|---|---|
+| 2 rem (avant S8-5) | 152,00 x **74,00 px** | **228,00 px** |
+| 1,875 rem (livre) | 152,00 x **71,00 px** | **222,00 px** |
+
+Les 6 px sortent **exactement** des boutons : 2 rangees x 3 px. C'est ce que j'avais decrit, et c'est
+maintenant mesure comme un avant/apres et non deduit. **71 px reste tres au-dessus de mon acquis 1**
+(44 px), qui demeure le plancher dur. **Aucune autre perte de hauteur ne l'accompagne** : je l'avais
+pose comme clause, et la mesure la confirme.
+
+**Condition 7 - l'exception doit etre lisible la ou on la cherchera. SATISFAITE.**
+`leChiffreDeReponseEstAuMoinsAussiGrosQueLeCalcul` n'a pas ete touche, et ses deux assertions
+restent sur le selecteur litteral `.proposition` a 2 rem. `lea-dev` a juge qu'il lit bien ce
+selecteur-la et qu'il reste vert a bon droit : **c'est la bonne lecture**, et c'est celle que j'avais
+ecrite. Elle a ajoute un test distinct qui affirme **les deux planchers comme deux planchers
+differents**, et qui nomme l'exception au mot ; la feuille porte la meme chose en commentaire, a la
+regle. **Je n'ai decide ni le test ni sa forme - ce n'etait pas a moi** ; je juge le resultat, et le
+symptome que je refusais est ferme aux deux endroits ou un lecteur regarde : la feuille et le test.
+
+#### 3. Ce que l'enfant voit, parce que c'est la seule chose que je ne peux pas deleguer
+
+J'ai regarde les captures a 360 x 640, pas seulement les nombres.
+
+Sur **"Vous ___ du chocolat."**, `mangeons` est **entierement a l'interieur de son bouton**, avec un
+filet de bleu clair visible de chaque cote. Son dernier `s` n'est plus sur la paroi bleu sombre du
+cabinet. Dans la colonne de gauche comme dans celle de droite. **Le mot ne traverse plus la paroi de
+la machine.** C'etait mon motif, mot pour mot, et il est ferme.
+
+Sur **"Je ___ mon cahier dans mon sac."**, `cherchons` et `cherchent` sont tous les deux dans leur
+boite, sur une ligne, entiers.
+
+**Et la perte de taille ne se voit pas.** J'avais ecrit le matin qu'un enfant de CM1 lit `mangeons`
+a 30 px exactement comme a 32 px, et que la difference ne se verrait pas. Je l'ai verifie sur le
+rendu livre : je ne la vois pas. 30 px reste du gras blanc sur aplat plein, presque le double d'un
+texte courant. **Entre les deux etats, l'enfant qui lit mieux est celui de 30 px**, et c'est le seul
+motif de fond de mon acceptation.
+
+#### 4. La reserve qui fait de ce Done un Done sous reserve : le pli
+
+Mesure sur les 220 etats joues, pli a `y = 640` :
+
+| Etat | Une rangee de reponses sous le pli | Items concernes |
+|---|---|---|
+| 66 etats **sans** indice | **0 / 66** | 0 |
+| 154 etats **avec** indice | **144 / 154** | **24 / 25** |
+
+**Les 6 px rendus par la reduction n'en ont rachete aucun.** Des que l'indice s'affiche - c'est-a-dire
+apres trois echecs consecutifs, au moment ou l'enfant en a le plus besoin - deux des quatre reponses
+passent sous le bas de l'ecran, sur 24 items sur 25. Je l'ai vu sur la capture, pas seulement dans
+les nombres.
+
+**Ce n'est pas un motif, et je ne le rouvre pas comme tel.** Je l'ai exclu de ma main au troisieme
+audit, pour une raison qui n'a pas change : c'est le defaut de `DEC-0016`, il frappe aussi "Le bon
+petit mot" dont le Done est accorde, et je ne peux pas appliquer deux barres a deux paquets pour un
+seul defaut. `camille-po` a amende `DEC-0016` et ouvert une story commune aux deux jeux : c'est le
+bon chemin, et il est ouvert.
+
+**Mais c'est la raison pour laquelle mon verdict est SOUS RESERVE et non VALIDE sec.** Et je redis ce
+que j'ai ecrit au refus, parce que rien ne l'a rendu faux : **si `camille-po` veut savoir ce qui gene
+le plus l'enfant sur cet ecran, c'est cette ligne-la, pas mes 2 px.** Mes 2 px sont ce que je pouvais
+refuser sans me contredire ; le pli est ce qui fait le plus de mal.
+
+#### 5. Ce dont je reste seule garde apres ce verdict
+
+Je le remets a jour, parce qu'une liste de garde perimee fait croire couvert ce qui ne l'est pas.
+
+**Ce qui sort de ma liste** : la taille de police effective sous le repli a quatre colonnes. Un test
+la lit desormais, en egalite, sur la feuille de production, et je l'ai mis a l'epreuve dans les deux
+sens (valeur et forme). Je l'avais annoncee non gardable ; elle est gardee.
+
+**Ce dont je reste seule garde, et personne ne doit croire le contraire :**
+
+1. **L'air de chaque cote des glyphes dans la boite, sur les 25 items.** Aucun test ne mesure une
+   largeur de glyphe rendu - `ADR-0025` l'a etabli. C'est le seul chiffre qui dit si le defaut est
+   ferme, et c'est celui qui a mordu au troisieme audit. **Il mordra de nouveau** le jour ou une
+   forme est ajoutee au paquet : a 2,86 px il n'y a plus de place, et le cadre est deja a son
+   plancher. Toute forme nouvelle dans ce paquet revient devant moi, et c'est moi qui la mesure.
+2. **Le rapport de taille entre la proposition et l'enonce tel que l'enfant le voit.** La forme
+   declaree dit 2 rem >= 2 rem et reste verte a bon droit ; l'enfant voit **30 px contre 32 px** sur
+   ce repli. J'ai accepte cette inversion le matin, en connaissance, et j'ai verifie sur la capture
+   que les propositions restent de tres loin la chose la plus saillante de l'ecran. Mais **rien ne
+   garde le rapport effectif**, et si un jour l'enonce grossit, personne ne le verra sauf moi.
+3. **Le pli**, section 4. Aucun garde-fou de CI ne le mesure.
+
+#### 6. Reserves - a convertir en stories par `camille-po`, non bloquantes
+
+**Toutes les reserves ouvertes de mes verdicts anterieurs le restent**, et je ne les reformule pas.
+Deux precisions, demandees et dues :
+
+**R1 - "quatre colonnes de ce paquet ne sont pas confortables a 360 px, a aucune taille que
+j'accepterais" : reste une reserve, et je refuse de la convertir en motif.** Ses chiffres tiennent
+exactement, remesures aujourd'hui : le mot le plus large fait **146,27 px**, ma propre definition
+d'une colonne lisible en demande 146,27 + 40 = **186,27 px** pour **152,00 px** disponibles, et l'air
+reel est de **2,86 px** la ou ma definition en demande 20. **C'est un inconfort present, ce n'est pas
+un defaut present** : le mot est dans sa boite, sur une ligne, en gras blanc de 30 px sur aplat
+plein, et je l'ai regarde - un enfant de CM1 le lit. La transformer en motif un jour apres l'avoir
+ecrite comme reserve, ce serait deplacer mes poteaux, et je ne le fais pas. Elle reste ce qu'elle
+etait : le signe que la reponse durable est ailleurs - des formes plus courtes, ou une disposition
+qui n'est pas un 2x2 a 360 px.
+
+**R2 - "un paquet futur a quatre propositions heriterait de 30 px en silence" : reste un risque
+futur, pas un defaut present.** Reverifie dans les paquets aujourd'hui : aucun autre paquet du
+catalogue ne rend quatre propositions. Le jour ou l'un le fera, cela revient devant moi - et il
+entrera dans ce selecteur sans qu'aucune ligne rougisse, avec des mots dont personne n'aura mesure
+la largeur.
+
+**Ce que je ne rouvre pas, et je le dis pour que ce soit ferme** : le defaut de pli comme motif
+(section 4), la reserve de contraste cadre/colonnes a 1,71:1 (au backlog par `DEC-0018`, avec la
+proposition chiffree d'`ines-design`), ma barre fermee de six points (levee le 2026-08-11, non
+reauditee), et le verdict du cabinet (deja rendu, valide sous reserve). Aucun de ces quatre n'a pese
+sur ce verdict, et aucun ne pourra m'etre oppose comme l'ayant pese.
 
 ### Arbitrage prealable au developpement - la police des propositions dans le repli a quatre colonnes (S8-5), du 2026-08-11
 
