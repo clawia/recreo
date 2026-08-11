@@ -193,7 +193,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Orthographe et grammaire | Accorder le verbe avec son sujet (cas frequents, temps simples : present, futur, imparfait) | - | - | non couvert |
 | francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | - | - | non couvert |
 | francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | bandit-manchot-homophones-cm1 | bandit manchot | couvert-valide |
-| francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif | bandit-manchot-conjugaison-present-cm1 | bandit manchot | en cours |
+| francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif | bandit-manchot-conjugaison-present-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | - | - | non couvert |
 | francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | - | - | non couvert |
 
@@ -276,13 +276,33 @@ par point, et le contenu de S8-4 est valide. `DEC-0018` tranche que le jeu reste
 pendant la correction de cette disposition (story `S8-5`), a la difference du precedent
 `DEC-0014`, et fixe le denouement des deux issues possibles du prochain audit.
 
-**La ligne reste `en cours`.** La barre en six points levee autorise le passage a
+**La ligne restait `en cours` a ce stade.** La barre en six points levee autorise le passage a
 `couvert-valide`, mais je choisis de ne pas le faire tant que le verdict global inscrit sur cette
 fiche, pour ce commit, est `REFUSE` : voir `DEC-0018`, section "Decision" point 4, pour le motif
 complet. La ligne passera a `couvert-valide` au premier verdict qui n'est pas un `REFUSE` sur
 l'increment corrige de `S8-5`, sans que la barre en six points soit rouverte a cette occasion ; si
 ce verdict est de nouveau `REFUSE`, la ligne reste `en cours` et le jeu sort du catalogue
 (`DEC-0018`, section "Decision" point 3).
+
+**Etat au 2026-08-11, quatrieme audit, sur l'increment corrige de S8-5 (commit `bd9a8f0`)** :
+`nadia-prof` prononce **VALIDE SOUS RESERVE**, Done pedagogique **accorde**
+(`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, verdict du 2026-08-11,
+"quatrieme audit"). **Le REFUSE du 2026-08-11 (troisieme audit) est LEVE** : son motif unique -
+`mangeons` a 156,02 px de glyphes dans une boite de 152,00 px, ecrit sur la paroi du cabinet - est
+ferme, mesure sur 880 propositions dans 220 etats et 22 parties reelles, minimum du paquet
+2,86 px sur `mangeons`, zero proposition qui deborde et zero sous 2,0 px d'air. **La ligne passe
+de `en cours` a `couvert-valide`**, conformement a la condition posee par `DEC-0018` section 4 :
+le premier verdict sur l'increment corrige de `S8-5` qui n'est pas un `REFUSE`. La barre en six
+points de S8-4, levee depuis le troisieme audit, n'est pas rouverte ni reauditee a cette occasion.
+
+Le verdict est **sous reserve**, pour une seule raison que `nadia-prof` nomme explicitement comme
+n'etant pas un motif : le defaut de pli (24 items sur 25 avec l'indice affiche), regi par
+`DEC-0016` amende, traite comme story commune aux deux jeux concernes et non comme une condition
+de cette ligne. Deux reserves non bloquantes, distinctes du pli, sont versees au backlog
+(`docs/backlog/backlog.md`, section "Autres intentions") : l'inconfort des quatre colonnes de ce
+paquet a 360 px (aucune taille acceptable par `nadia-prof` ne le rend confortable, 2,86 px d'air
+reel contre 20 px demandes par sa propre definition d'une colonne lisible) et le risque qu'un
+futur paquet a quatre propositions herite de 30 px sans qu'aucune ligne de test ne le signale.
 
 ## Synthese au sprint 0, mise a jour a l'ouverture du sprint 4
 
@@ -433,3 +453,31 @@ Ce second audit ne deplace aucun chiffre du tableau de synthese ci-dessus : la l
 remettre ce jeu au catalogue jouable, qui suppose en plus la seconde condition de `DEC-0015`
 (quatrieme amendement) sur le repli de mise en page, est tranchee par `DEC-0017` et non par cette
 matrice, qui ne porte que l'etat des competences.
+
+## Synthese apres les verdicts du sprint 8 (2026-08-11)
+
+`DEC-0017` ouvre au sprint 8 l'extension de "Le bon verbe" au futur et a l'imparfait (S8-4), sur
+la barre en six points close par `nadia-prof` le 2026-08-10. Cette extension a traverse quatre
+audits sur la meme fiche (`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`) :
+levee de la barre en six points au troisieme audit, puis REFUSE sur un motif distinct (largeur des
+colonnes du cabinet a 360 px), corrige par S8-5 (`DEC-0018`), puis quatrieme audit sur l'increment
+corrige.
+
+- **Francais CM1 (conjugaison au present, futur, imparfait)** obtient **`couvert-valide`** :
+  `nadia-prof` prononce **VALIDE SOUS RESERVE**, Done pedagogique accorde, sur le quatrieme audit
+  (commit `bd9a8f0`). Sa barre en six points, levee au troisieme audit et non rouverte, est la
+  seule condition qui gouvernait ce statut ; elle est tenue. La reserve qui rend ce Done "sous
+  reserve" - le defaut de pli - n'est pas une condition de cette ligne (voir la note detaillee
+  ci-dessus, "Etat au 2026-08-11, quatrieme audit").
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 10 | 0 | 1 |
+| mathematiques CM1 | 12 | 12 | 0 | 0 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 9 | 0 | 2 |
+| **Total** | **46** | **42** | **1** | **3** |
+
+Le produit compte desormais trois lignes `couvert-valide` sur 46 (contre deux a la cloture de s06
+et s07), une seule ligne `en cours` (francais CP, graphemes/phonemes), et 42 lignes `non couvert`,
+chiffre inchange : `DEC-0017` gele l'objectif du sprint et aucune ligne nouvelle n'est ouverte.
