@@ -31,6 +31,8 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0025](ADR-0025-une-mesure-de-rendu-porte-sa-commande-le-debordement-reste-non-gardable.md) | Rendre toute mesure de rendu rejouable par une commande versionnee, et declarer non gardable le debordement de mise en page | s06 | 2026-08-10 | Accepte |
 | [ADR-0026](ADR-0026-une-animation-retarde-mais-ne-determine-rien-le-levier-n-est-pas-un-bouton-de-plus.md) | Autoriser une animation qui retarde et interdire une animation qui determine ; faire du levier l'apparence du bouton qui ouvre deja une manche | s07 | 2026-08-10 | Accepte |
 | [ADR-0027](ADR-0027-un-ecran-de-jeu-declare-comment-il-est-arrive-le-mouvement-suit-le-geste.md) | Faire declarer par le serveur comment un ecran de jeu est arrive, et n'autoriser un mouvement que sur un geste de l'enfant | s07 | 2026-08-10 | Accepte |
+| [ADR-0028](ADR-0028-outiller-le-pli-le-contenu-au-dessus-du-pli-reste-non-gardable.md) | Outiller la mesure du pli par un parametre de hauteur, et declarer non gardable le contenu au-dessus du pli | s08 | 2026-08-11 | Accepte |
+| [ADR-0029](ADR-0029-toute-colonne-que-le-contenu-peut-produire-porte-son-decalage.md) | Faire porter un decalage declare a toute colonne que le contenu peut produire, et laisser la borne de duree a la clause qui la garde deja | s08 | 2026-08-11 | Accepte |
 
 ## Amendements
 
@@ -229,6 +231,9 @@ portant sur la meme faute de fond - **un automate vert qui ne regardait pas le b
     production le jour de son ecriture, donc reclamerait de changer la mise en page servie a un enfant
     pour satisfaire un test), et le constat que deux juges purs ecrits en s06 n'etaient lances par aucun
     automate - la CI balaie desormais `outils/*-test.sh` ;
+Sprint 7 en ajoute deux, le second corrigeant le premier le jour meme (cet intertitre manquait :
+les deux ADR de s07 etaient ranges sous le paragraphe de s06, corrige a l'ecriture d'ADR-0028) :
+
 24. **ADR-0026** est saisi de la dette n°1 reproduite - une mecanique nommee "bandit manchot" qui rend
     un questionnaire a choix multiple - et il tranche d'abord une frontiere : **une animation retarde ce
     que l'enfant voit, elle ne determine rien**, la ligne se tracant sur une propriete verifiable du
@@ -266,3 +271,32 @@ portant sur la meme faute de fond - **un automate vert qui ne regardait pas le b
     autre lot l'a corrige avant la revue - une classe posee sans regle servie est refusee, ce qui a
     fait choisir un attribut plutot qu'une regle CSS decorative - et il rend explicitement a
     `nadia-prof` le residu qu'aucun automate n'atteint, dont un mot peint dans une image.
+
+Sprint 8 en ajoute deux, tous deux nes des obstacles restes ouverts a la cloture de s07 :
+
+26. **ADR-0028** tranche le mecanisme de garde de `DEC-0016` en deux moities opposees, et c'est ce
+    couple qui vaut d'etre relu : la hauteur devient un **parametre** de la commande de mesure, et
+    "la reponse est au-dessus du pli" est **declaree non gardable** par un automate de ce depot.
+    C'est le second refus de garder du depot, ecrit sur le patron d'`ADR-0025` dont aucune des trois
+    raisons n'a change en un sprint, et il montre ce que coute de ne fermer que la moitie qui plait :
+    `yanis-qa` avait du mesurer le pli a la main a la porte technique de s07 parce que la clause
+    "non gardable" avait ete donnee sans l'outil. Il apporte au depot une mesure que personne ne
+    pouvait obtenir avant - sur l'item le plus long de `cm1-homophones` avec son indice affiche, a
+    un viewport reel de 360 x 640, les deux boutons de reponse sont a `y = 717` a `y = 790`, donc
+    entierement sous le pli, et absents de la capture. Le defaut que `nadia-prof` avait mesure a la
+    main est desormais reproductible par une commande versionnee ; le verdict reste le sien, et
+    l'ADR ne le prononce pas. Il note aussi la limite neuve qu'un outil de capture ne peut pas
+    franchir seul : un ecran de manche s'obtient par un POST ;
+27. **ADR-0029** ferme le trou du decalage inter-colonnes cumulatif, et il vaut d'etre relu pour la
+    forme de la solution : **une pince de deux clauses dont aucune ne recopie le seuil de l'autre**.
+    La borne de 250 ms de `nadia-prof` restait gardee la ou elle l'etait deja ; ce qu'aucune
+    population ne collectait, c'est **le nombre de colonnes que le contenu peut produire**. Une
+    cinquieme colonne sans sa regle fait rougir la clause neuve, une cinquieme colonne obtenue en
+    prolongeant le pas de 0,08 s fait rougir l'ancienne - les deux machoires mesurees par mutation
+    reelle des fichiers de production, pas racontees. Le seul chemin vert est donc de **revoir** le
+    decalage, decision de forme qui repart a `ines-design` sous arbitrage de `nadia-prof`. Il
+    apporte deux choses au-dela de son sujet : un perimetre **deliberement plus large que le
+    catalogue**, avec la raison chiffree qui le distingue du choix inverse d'`ADR-0023` (le catalogue
+    ne sert que trois colonnes, la quatrieme vit dans un paquet hors catalogue dont les deux
+    conditions de remise sont remplies), et un **epinglage refuse avec son motif** - figer le
+    plafond de colonnes rougirait sur l'arrivee legitime d'un contenu, pas sur ce qui manque.
