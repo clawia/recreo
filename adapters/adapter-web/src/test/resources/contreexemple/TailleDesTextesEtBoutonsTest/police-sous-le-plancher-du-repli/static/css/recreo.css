@@ -1,0 +1,7 @@
+/* S8-5 : la valeur que nadia-prof a elle-meme mesuree et refusee (arbitrage prealable du
+   2026-08-11, condition 2) - "1,8125rem (29px) [...] il donne plus d'air, il n'est pas approuve".
+   Ce jeu fautif porte cette valeur exacte sous le repli a quatre colonnes, jamais 1,875rem. */
+.propositions:has(.proposition:nth-child(4)) .proposition {
+    flex: 1 1 calc(50% - 0.5rem);
+    font-size: 1.8125rem;
+}
