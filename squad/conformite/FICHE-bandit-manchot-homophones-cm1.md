@@ -30,7 +30,14 @@
   non trois** - mesure en jouant, 41 etats d'item balayes ; et **le passage en colonnes n'a rien gagne
   sur ce defaut**, contrairement au credit que je lui avais accorde. Ni l'un ni l'autre n'est un motif :
   **le Done reste accorde et la ligne reste `couvert-valide`.**
-- **Derniere mise a jour** : 2026-08-10
+  **Arbitrage prealable au developpement du cabinet visible du 2026-08-11** (bloc en fin de fiche,
+  arbitrage complet dans `FICHE-bandit-manchot-additions-cp.md`) : cabinet **compatible avec mon veto
+  sous six proprietes verifiables**, **plancher de colonne de 106 px** pour ce paquet a deux
+  colonnes, `gap` de 1 rem **refuse comme payeur du cadre**, et **cabinet refuse sur l'ecran de
+  retour**. Ce n'est pas un Done pedagogique, il est degrade, et le VALIDE SOUS RESERVE du
+  2026-08-10 n'est pas touche. **Le defaut de pli de ce jeu n'est pas rouvert** : mon Done est
+  maintenu et je ne deplace pas mes poteaux.
+- **Derniere mise a jour** : 2026-08-11
 
 ## Competences visees
 
@@ -49,6 +56,26 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Arbitrage prealable au developpement - cabinet visible de la machine, du 2026-08-11
+
+**Ce bloc n'est pas un Done pedagogique et il est degrade** : le cabinet n'est pas ecrit. Il ne
+touche aucun verdict anterieur. L'arbitrage complet est ecrit une seule fois, dans
+`FICHE-bandit-manchot-additions-cp.md`, bloc du 2026-08-11. Ce qui concerne **ce jeu-ci** :
+
+1. **Ce jeu est le cas a deux colonnes, et son plancher de largeur est de 106 px** a 360 px : le mot
+   le plus large est `sont`, mesure a 65,5 px, plus les 2 x 20 px de rembourrage declare. Un cadre de
+   8 px de chaque cote ramene les colonnes de 160 a **152 px**, donc largement au-dessus.
+2. **Deux colonnes restent validees**, comme le 2026-08-10 : l'exercice **est** binaire et deux
+   colonnes disent la verite de l'exercice. **Un cabinet ne change rien a cela** : je refuse
+   toujours toute colonne vide, muette ou desactivee ajoutee pour atteindre trois, y compris si le
+   cadre paraissait mieux rempli a trois. La fidelite de la metaphore n'apprend pas a lire.
+3. **C'est ce jeu qui garde le `gap` a l'egalite exacte**, et c'est ici que je le repete : le `gap`
+   de 1 rem est **refuse comme payeur du cadre**, sur les deux axes. 16 px declares, 16 px rendus,
+   remesures le 2026-08-11. Il n'y a pas 2 px a recuperer.
+4. **Le cabinet ne va pas sur l'ecran de retour** ni sur l'ecran de fin de partie.
+5. **Le defaut de pli de ce jeu reste hors perimetre**, comme demande : mon Done du 2026-08-10 est
+   maintenu, y compris le comptage corrige a cinq items sur 24, et je ne le rouvre pas ici.
 
 ### Verdict courant - chantier machine a sous (S7-1 a S7-4), du 2026-08-10
 

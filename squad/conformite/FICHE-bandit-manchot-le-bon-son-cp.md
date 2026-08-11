@@ -23,7 +23,14 @@
   leve** : sur les 15 items, indice affiche, l'indice est a 317-405 et les colonnes a 417-491, donc
   **les deux restent au-dessus du pli** a 360 x 640. Colonnes mesurees a **101,3 px**, mot le plus
   large `on` a 38,9 px, aucune troncature.
-- **Derniere mise a jour** : 2026-08-10
+  **Arbitrage prealable au developpement du cabinet visible du 2026-08-11** (bloc en fin de fiche,
+  arbitrage complet dans `FICHE-bandit-manchot-additions-cp.md`) : cabinet **compatible avec mon veto
+  sous six proprietes verifiables**, **plancher de colonne de 79 px** pour ce paquet, **budget
+  vertical de 150 px** mesure sur son ecran de manche avec indice, **cabinet refuse sur l'ecran de
+  retour** et **ma reserve 6 sur la distinction de l'explication precisee en cinq proprietes**. Ce
+  n'est pas un Done pedagogique, il est degrade, et le VALIDE SOUS RESERVE du 2026-08-10 n'est pas
+  touche.
+- **Derniere mise a jour** : 2026-08-11
 
 ## Competences visees
 
@@ -42,6 +49,40 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Arbitrage prealable au developpement - cabinet visible de la machine, du 2026-08-11
+
+**Ce bloc n'est pas un Done pedagogique et il est degrade** : le cabinet n'est pas ecrit. Il ne
+touche ni au VALIDE SOUS RESERVE du 2026-08-10, ni au refus du 2026-08-06, qui restent lisibles
+ci-dessous. L'arbitrage complet - six proprietes verifiables du cabinet, budget chiffre, sort du
+disque decoratif, precision de ma reserve de s07 sur la fin du mouvement, douze acquis a maintenir,
+quatorze points a reverifier - est ecrit une seule fois, dans
+`FICHE-bandit-manchot-additions-cp.md`, bloc du 2026-08-11 : la mecanique et l'ecran de retour sont
+communs aux quatre jeux. Ce qui concerne **ce jeu-ci** en particulier :
+
+1. **Le plancher de largeur de colonne de ce paquet est de 79 px** a 360 px : le mot le plus large
+   est `on`, mesure a 38,9 px, plus les 2 x 20 px de rembourrage declare de `.proposition`. Un cadre
+   de 8 px de chaque cote ramene les colonnes de 101 a **96 px**, donc tres au-dessus. Ce plancher
+   est derive du paquet d'aujourd'hui : un item neuf a proposition plus large le releve.
+2. **Le budget vertical du cabinet est mesure sur cet ecran-ci**, parce que c'est le cas le plus
+   charge du catalogue. Joue aujourd'hui, trois echecs consecutifs, item `JARDIN`, indice affiche :
+   les colonnes vont de `y = 417` a `y = 490` a 360 x 640, il reste **150 px** jusqu'au pli. Cela
+   confirme a 1 px ma mesure du 2026-08-10 (417-491). Le cabinet n'ajoute pas plus de 150 px, et je
+   conseille de rester sous 100 px pour que son socle soit visiblement dans l'ecran.
+3. **Ma reserve 6 du 2026-08-10 - l'explication n'est pas distinguee visuellement de la consigne -
+   est precisee en cinq proprietes verifiables**, et je corrige au passage un de mes propres
+   constats : l'explication n'est pas plus petite que le verdict, elle est a 1,25 rem comme lui.
+   C'est un defaut de **signalement**, pas de taille. Les cinq proprietes sont en section 6 du bloc
+   transverse : signal non textuel (aplat ou cadre complet, jamais un simple liseret), aplat
+   **neutre** identique apres juste et apres faux, ordre de lecture conserve, verdict non affadi,
+   plancher de 1,25 rem tenu et tout au-dessus du pli.
+4. **Le cabinet ne va pas sur l'ecran de retour.** C'est l'ecran ou l'enfant apprend, et je refuse
+   d'y ajouter un decor qui concurrencerait la phrase que je viens de demander qu'on signale mieux.
+   Cout que j'assume et que je nomme : la machine disparait entre chaque manche, dix fois par partie.
+5. **Ma propriete acquise "aucun item resoluble par appariement visuel" commande la clause 2 de C5**
+   du bloc transverse : les images du cabinet ne varient **ni avec l'item, ni avec la colonne**. Une
+   image qui varie avec le contenu est un indice, et aucun indice de ce jeu n'a ete valide sous cette
+   forme. C'est, sur ce jeu, mon point de garde le plus important du chantier.
 
 ### Verdict courant - chantier machine a sous (S7-1 a S7-4), du 2026-08-10
 

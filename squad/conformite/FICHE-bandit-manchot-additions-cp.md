@@ -45,7 +45,23 @@
   propres constats sont corriges, dont deux a mon desavantage : un credit que j'avais accorde a tort
   aux colonnes sur le defaut de pli, et le comptage de ce defaut sur "Le bon petit mot", qui est de
   cinq items sur 24 et non de trois. Ce bloc vaut pour les quatre jeux du bandit manchot.
-- **Derniere mise a jour** : 2026-08-10
+  **Arbitrage prealable au developpement du cabinet visible de la machine** : rendu le 2026-08-11.
+  **Un cabinet visible est compatible avec mon veto**, qui portait sur ce que la machine raconte et
+  non sur l'idee de machine, **a six proprietes verifiables** (un seul objet dont l'enfant peut
+  montrer le tour, contenant les reponses et rien d'autre qui se presse, immobile en toute
+  circonstance, identique apres juste et apres faux, images fixes sur la carrosserie et jamais dans
+  une colonne, aucun code de jeu d'argent). **Le budget horizontal est epuise a 360 px** (336 px =
+  3 x 101,33 + 2 x 16) : le cadre se paye sur la largeur des colonnes, **jamais** sur le `gap` ni sur
+  le rembourrage de `.proposition`. **Le disque decoratif quitte `.demarrer` et `.encore`** - reserve
+  nouvelle datee du 2026-08-11, ouverte sur mon propre manquement, puisque j'avais approuve cette
+  portee nommement le 2026-08-10 ; ni refus, ni retrait de Done. **Ma reserve unique de s07 sur la
+  fin du mouvement est confirmee et precisee en trois mesures**, non relevee. **Reserve 6 de "Le bon
+  son" sur la distinction de l'explication : cinq proprietes ecrites**, et **le cabinet ne va pas sur
+  l'ecran de retour** ni sur l'ecran de fin de partie. Douze acquis dont j'exige nommement le
+  maintien. Ce n'est pas un Done pedagogique, et **cet arbitrage est degrade** : le cabinet n'est pas
+  ecrit, quatorze points seront reverifies sur le rendu livre. Ce bloc vaut pour les quatre jeux du
+  bandit manchot.
+- **Derniere mise a jour** : 2026-08-11
 
 ## Competences visees
 
@@ -112,6 +128,472 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Arbitrage prealable au developpement - cabinet visible, sort du disque decoratif, fin du mouvement, distinction de l'explication, du 2026-08-11
+
+**Ce bloc n'est pas un Done pedagogique.** C'est le quatrieme arbitrage prealable que j'ecris, au
+titre de `squad/README.md` section 10. Il ne modifie ni mon Done pedagogique du 2026-08-10, qui
+reste le verdict courant ci-dessous, ni mes deux arbitrages prealables du meme jour. Le Done
+pedagogique du cabinet sera prononce plus tard, en jouant l'increment livre.
+
+**Ce bloc vaut pour les quatre jeux du bandit manchot** : la mecanique et l'ecran de retour sont
+communs. Les trois autres fiches y renvoient.
+
+**Ce qui m'est demande, et que je ne rediscute pas.** L'utilisatrice a joue l'increment de s07 et a
+tranche le degre : une machine **reconnaissable, customisee avec des images pour enfants, sans les
+codes du jeu d'argent**. Elle lit mon veto du 2026-08-10 comme visant la mise, le gain, le jackpot,
+la piece, l'alignement gagnant et le signal de gain, non l'idee de machine. **Cette lecture est
+exacte et je la confirme comme mienne** : j'avais ecrit que dans la forme retenue la machine ne
+decide rien, qu'elle distribue et que l'enfant choisit ensuite, et que c'est cette difference qui la
+sauve. Ce que je tranche ici, c'est ce qu'un cabinet visible vaut pour l'enfant et sous quelles
+conditions.
+
+#### 0. Comment j'ai regarde, et ce que je declare degrade
+
+**Audit degrade, et je le declare avant tout le reste, pour la quatrieme fois** : le cabinet n'est
+pas ecrit. Il n'existe aucune machine a regarder, donc je n'ai pas joue de machine, et **rien de ce
+bloc ne peut valoir comme Done pedagogique.** La liste de ce que je reverifierai est en section 10,
+et aucun Done ne sera prononce avant que je l'aie epuisee.
+
+**Ce qui, en revanche, n'est pas degrade, parce que l'artefact existe deja.** Le disque decoratif,
+les colonnes, le pli et l'ecran de retour sont livres depuis s07 : je les ai regardes sur le rendu
+reel d'aujourd'hui, pas sur une description.
+
+- lignee verifiee par `outils/verifier-lignee.sh` : "le worktree sur la branche '<ma branche>'
+  descend de la lignee de round-two". `round-two` a `f29a2b0` ;
+- JDK constate par `outils/verifier-jdk.sh` : `java du PATH : 1.8.0_202 | JDK de compilation :
+  21.0.10 | JAVA_HOME : vide | toolchains lu par Maven : non (fichier present sous un nom non lu)`.
+  `JAVA_HOME` pointe sur ce JDK 21 le temps de la commande, jamais ecrit dans un fichier commite ;
+- fat jar de `f29a2b0` lance sur un port dedie, et **feuille servie verifiee** : la reponse de
+  `/css/recreo.css` porte bien la regle du disque ;
+- **partie de "Le bon son" reellement jouee** contre l'application, session portee par un bocal a
+  temoins, jusqu'a trois echecs consecutifs pour faire venir l'indice ;
+- **trois captures a une largeur de viewport reellement de 360 px**, par la commande versionnee du
+  depot `outils/mesurer-rendu.sh 360 <url> <png>`, navigateur designe par la variable `CHROME` :
+  l'accueil servi directement, puis l'ecran de manche avec indice et l'ecran de retour avec
+  explication. Mesures relevees au pixel par balayage des aplats de `--recreo-accent` (`#2e6f9e`).
+
+**La limite exacte de ma methode d'aujourd'hui, que je nomme plutot que de la laisser deviner.**
+Les deux ecrans de jeu ont ete obtenus en demandant au serveur ses vrais fragments, puis en les
+posant dans une page qui charge les **deux feuilles reellement servies** et le vrai en-tete. La
+mise en page, les couleurs et les tailles sont donc celles de l'application. Ce qui n'est **pas**
+exerce par la, c'est l'echange htmx : je n'ai **rien remesure aujourd'hui de ce qui bouge** - duree,
+courbe, decalage, derniere image du voile. Pour tout cela je m'appuie sur ma chronometrie du
+2026-08-10, faite au navigateur pilote, et je la redonnerai a l'epreuve sur le rendu livre.
+
+#### 0 bis. Ce que je corrige de mes propres constats, avant de m'appuyer dessus
+
+**A. J'ai approuve le disque sur `.demarrer` moi-meme, nommement, et je le dis avant de demander
+son retrait.** Mon second arbitrage du 2026-08-10, section 3 : "le bouton-poussoir rond est accepte
+[...] et sa decision de ne cabler ces regles que sur `.demarrer` et `.encore` - jamais sur
+`.sortie-pleine` ni `.recommencer` - fait tenir mon acquis 6 par la structure du selecteur plutot
+que par une consigne. C'est mieux que ce que je demandais." **`ines-design` a donc fait exactement
+ce que j'avais approuve, en propres termes.** Je n'avais regarde cette portee que par la lunette de
+mon acquis 6 - ce qui n'atteint pas l'ecran de fin de partie - et jamais par celle de ce que
+l'accueil raconte. La section 4 est donc une **reserve nouvelle et datee du 2026-08-11**, ouverte
+par moi et sur mon propre manquement. **Ce n'est ni un refus, ni un retrait de Done, ni un
+durcissement d'une clause anterieure**, et personne ne pourra me l'opposer comme un deplacement de
+poteaux.
+
+**B. Mon chiffre de 13 px tient, et j'en donne la cause declaree.** La regle servie termine son
+mouvement sur `clip-path: inset(80% 0 0 0)`, soit **un cinquieme de la boite encore couvert** -
+14,8 px nominaux sur un bouton de 74 px - tandis que l'etat de repos, lui, ne couvre **rien**
+(`inset(0 0 100% 0)`). Mes 13 px mesures sur le rendu et ces 14,8 px declares disent la meme chose,
+a l'arrondi des angles pres : **l'animation rend la main avec un cinquieme de la boite encore
+sombre.** Le defaut n'est donc pas un artefact de ma mesure, il est ecrit dans la regle.
+
+**C. Je reverifie mes trois chiffres de largeur avant de les faire porter un budget.** Remesures
+aujourd'hui a mi-hauteur des colonnes, sur "Le bon son" a trois propositions : **101, 102, 101 px**,
+**16 px** d'ecart entre colonnes, **74 px** de hauteur, groupe de `x = 12` a `x = 347`. Identiques a
+l'unite a ce que j'avais mesure le 2026-08-10. Je peux m'appuyer dessus.
+
+#### 1. Le cabinet : ma reponse, en une phrase
+
+**Oui, un cabinet visible est compatible avec mon veto - parce que mon veto portait sur ce que la
+machine *raconte* (mise, gain, jackpot, piece, alignement gagnant, signal de gain) et non sur le
+fait qu'il y ait une machine - et je le valide a quatre conditions que l'enfant doit pouvoir
+constater lui-meme : qu'il puisse en montrer le tour du doigt, qu'elle contienne les reponses et
+rien d'autre qui se presse, qu'elle ne bouge jamais d'elle-meme, et qu'elle soit rigoureusement la
+meme qu'il ait juste ou faux.**
+
+Le motif de fond n'a pas change d'un mot depuis le 2026-08-10 : le message propre d'une machine a
+sous est que le resultat ne depend pas de toi, et un exercice doit enseigner l'inverse. Un cadre
+autour des colonnes ne porte pas ce message ; un cadre qui s'allume, qui compte ou qui felicite le
+porte. C'est cette frontiere-la que les sections 2 et 3 rendent mesurable.
+
+**Et je dis pourquoi la demande de l'utilisatrice est juste sur le fond, pas seulement recevable.**
+J'ai regarde l'ecran de manche a 360 px aujourd'hui : trois aplats bleus de 101 x 74 px poses sur
+une page blanche, sans rien autour. Ce que l'enfant a devant lui n'est pas une machine, ce sont
+trois boutons. Le mouvement du voile, que j'ai valide, s'applique donc a des objets dont rien ne dit
+qu'ils appartiennent ensemble a quelque chose. **Le cabinet ne repare pas un defaut de gout : il
+donne au mouvement l'objet qui le rend intelligible.** Sans lui, l'enfant voit trois boutons qui
+s'assombrissent tour a tour et n'a aucune raison d'y lire une distribution.
+
+#### 2. Le critere positif : a quoi je reconnais que l'enfant a une machine devant lui
+
+On me demande le critere positif plutot qu'une liste d'interdits, et c'est la bonne demande : la
+liste des interdits est deja ecrite (arbitrage du 2026-08-10, section 1, quatre conditions non
+negociables, **inchangees et toutes maintenues**). Voici les six proprietes, chacune verifiable sur
+une capture a 360 px ou en jouant, sans avoir a me redemander ce que j'ai voulu dire.
+
+**C1 - Un seul objet, dont l'enfant peut montrer le tour.** Un contour ferme et continu entoure le
+groupe des colonnes **sur ses quatre cotes**, d'une epaisseur d'au moins **0,5 rem (8 px)** sur
+chacun des quatre. *Verification* : sur une capture a 360 px, un balayage horizontal a mi-hauteur
+des colonnes rencontre le cadre a gauche et a droite du groupe ; un balayage vertical au centre de
+chaque colonne le rencontre au-dessus et au-dessous ; les quatre cotes sont dans l'image, aucun
+n'est coupe par le bord de l'ecran ni par le pli. *Motif* : un enfant de 6 ans reconnait un objet a
+son pourtour. Un cadre ouvert sur un cote, ou dont les flancs sortent de l'ecran, n'est pas un objet,
+c'est une texture de fond - et une texture de fond n'explique pas le mouvement. Un trait de 1 ou
+2 px est une bordure, pas une paroi : c'est pourquoi je chiffre le plancher.
+
+**C2 - L'objet contient les reponses, et rien d'autre qui se presse.** A l'interieur du contour de
+C1, les seuls elements pressables sont les propositions. `Les jeux` reste dehors. *Verification* :
+sur la capture, la boite de `Les jeux` et le contour de C1 ne se recouvrent pas ; dans le document
+servi, aucun element portant `data-role="sortie"` n'est a l'interieur du cadre. *Motif* : si la
+sortie est dans la machine, l'enfant presse la machine pour partir, et le cadre cesse de vouloir
+dire "voici tes reponses". La consigne et l'enonce, eux, peuvent etre dedans ou dehors : c'est de la
+forme, et je le laisse a `ines-design` (section 8).
+
+**C3 - La machine attend, elle ne decide pas.** **Aucune animation, aucun clignotement, aucun
+changement de couleur, aucune lumiere sur le cabinet lui-meme, a aucun moment.** Le mouvement
+appartient aux colonnes et a elles seules. *Verification* : capture au repos avant tout appui,
+capture 2 secondes apres l'arret de la derniere colonne, capture pendant le defilement - les pixels
+du cabinet sont **identiques** sur les trois. *Motif* : c'est la charniere de tout mon avis. Une
+machine qui s'anime toute seule agit ; une machine immobile est un meuble que l'enfant actionne. Le
+jour ou le cabinet pulse en attendant, l'argument qui sauve la metaphore tombe, et mon avis avec
+lui.
+
+**C4 - La machine ne dit jamais le resultat.** Le cabinet est rigoureusement identique apres une
+bonne et apres une mauvaise reponse. *Verification* : deux captures de l'ecran de retour, l'une
+apres un coup juste, l'autre apres un coup faux, sur le meme item ; les pixels du cabinet sont
+identiques. *Motif* : c'est la forme mesurable de ma condition 2 du 2026-08-10 - dans une machine a
+sous, l'etat de la machine **est** le resultat. Ici le seul canal de verdict reste la coche ou la
+croix de `fragments/retour.html`, apres le choix de l'enfant.
+
+**C5 - Les images enfantines sont sur la carrosserie, et elles ne varient jamais.** Deux clauses,
+et la seconde est celle a laquelle je tiens le plus de tout ce bloc :
+
+1. **aucune image, aucun pictogramme, aucun aplat decoratif a l'interieur d'une boite de
+   proposition**, ni derriere son texte. *Verification* : le mot le plus large de chacun des trois
+   paquets du catalogue garde autour de lui le meme espace libre qu'aujourd'hui, mesure a 360 px
+   (31 px de chaque cote a 101 px de colonne, 47 px a 160 px), et rien ne s'y superpose ;
+2. **le jeu d'images du cabinet est fixe : il ne depend ni de l'item tire, ni du numero de la
+   colonne, ni de la reponse attendue.** *Verification* : capture de dix manches consecutives ; les
+   images du cabinet sont les memes sur les dix, et les memes au-dessus des trois colonnes.
+
+*Motif* : j'ai deja refuse, sur "Le bon son", tout item resoluble par appariement visuel, et cette
+propriete est acquise. Une image posee au-dessus d'une colonne, ou qui change avec l'item, la
+detruit d'un coup : un enfant de CP qui a le choix entre dechiffrer `an` et regarder un dessin
+regarde le dessin. **Une illustration qui varie avec le contenu n'est plus une decoration, c'est un
+indice** - et un indice que personne n'a valide. Les images restent donc la peau de la machine,
+jamais son contenu.
+
+**C6 - Aucun code du jeu d'argent, y compris ceux que seul un cabinet peut apporter.** Mes quatre
+conditions du 2026-08-10 section 1 sont maintenues sans exception. J'y ajoute, parce que le cabinet
+est une surface neuve ou ces objets se posent naturellement : **pas de fente a piece, pas de
+recepteur de gain ni de coupelle, pas d'afficheur de credit ou de compteur, pas de manette ni de
+bras lateral (mon veto sur tout geste de traction, confirme deux fois), et aucun des symboles
+canoniques de la machine a sous** - cerise, citron, cloche, couronne, diamant, barre, `BAR`, sept,
+`777`. *Verification* : lecture du gabarit et de la feuille servis, plus la capture.
+
+**Le cabinet n'a pas besoin d'etre fidele pour etre reconnaissable, et c'est heureux.** Une caisse
+avec une fenetre et un bouton suffit a un enfant de 6 ans. J'ai deja ecrit que je veux cette
+metaphore diminuee plutot que fidele ; C1 a C6 sont la version mesurable de cette phrase.
+
+#### 3. Le budget, chiffre : ce que le cadre coute et qui le paye
+
+C'est le point qu'aucune proposition de forme ne peut ignorer, et je le pose avant qu'`ines-design`
+dessine, parce que sinon le cadre sera dessine puis paye en douce sur un de mes planchers.
+
+**L'axe horizontal est deja epuise a 360 px.** Mesure aujourd'hui : la zone de contenu fait
+**336 px** (`x` de 12 a 347), et `336 = 3 x 101,33 + 2 x 16`. Il n'y a **pas un pixel libre** a
+gauche ni a droite du groupe de colonnes. Un cadre lateral doit donc etre paye. Voici les trois
+payeurs possibles et mon verdict sur chacun :
+
+| Payeur possible | Verdict |
+|---|---|
+| **la largeur des colonnes** | **autorise**, c'est le bon payeur. Un cadre de 8 px de chaque cote ramene les colonnes de 101 a **96 px** a trois colonnes (`(336 - 16 - 32) / 3`) et de 160 a **152 px** a deux. Les deux restent tres au-dessus du plancher que je fixe ci-dessous |
+| **le `gap` de `.propositions`** | **refuse, sans discussion.** C'est mon acquis 4, tenu a l'egalite exacte : 16 px declares, 16 px rendus, remesures aujourd'hui. J'ai deja ecrit qu'il n'y a pas 2 px a recuperer, et il n'y en a toujours pas |
+| **le rembourrage lateral de `.proposition`** (1,25 rem) | **refuse.** C'est l'air autour du mot, et c'est aussi ce sur quoi repose mon acquis de saillance depuis mon refus du 2026-08-06. Ce n'est pas une generosite de mise en page ou l'on se sert |
+| **le rembourrage lateral de `.container`** (12 px de chaque cote) | **utilisable pour de la decoration, mais jamais comme unique payeur d'un flanc.** Un cabinet dont les deux flancs occupent ces 12 px touche les deux bords de l'ecran : C1 n'est plus tenu, l'enfant ne voit plus le tour de l'objet. Et ce rembourrage porte deja un garde-fou qui n'est pas de moi (`LeConteneurTierGardeSonRembourrageLateralTest`) : je ne le revendique pas, je dis seulement ce que sa consommation couterait a C1 |
+
+**Le plancher de largeur de colonne que je fixe, et son arithmetique.** Une colonne garde son
+rembourrage declare (1,25 rem de chaque cote, soit 40 px) **plus** le mot le plus large de son
+paquet, sur une seule ligne :
+
+| Jeu | Mot le plus large, mesure | Plancher de colonne a 360 px | Largeur avec un cadre de 8 px |
+|---|---|---|---|
+| Calcul CP (3 colonnes) | `10`, 36,8 px | **77 px** | 96 px |
+| Le bon son (3 colonnes) | `on`, 38,9 px | **79 px** | 96 px |
+| Le bon petit mot (2 colonnes) | `sont`, 65,5 px | **106 px** | 152 px |
+
+Ce plancher est **derive des paquets d'aujourd'hui** : un paquet neuf portant une proposition plus
+large le releve mecaniquement, et c'est au moment ou ce paquet arrive qu'il faut le recalculer, pas
+au moment ou le cadre se dessine. "Le bon verbe" reste hors de ce tableau : sa disposition est une
+saisine de `camille-po` avec `theo-archi`, et je ne la rouvre pas ici.
+
+**L'axe vertical, mesure sur le cas le plus charge du catalogue.** Joue aujourd'hui : "Le bon son",
+trois echecs consecutifs, item `JARDIN`, l'indice affiche. A 360 x 640, la rangee de colonnes va de
+`y = 417` a `y = 490`. Il reste donc **150 px** entre le bas des colonnes et le pli.
+
+**Le cabinet n'ajoute pas plus de 150 px de hauteur totale a l'ecran de manche**, bandeau haut et
+socle bas compris, et c'est une limite dure et non une cible : a 150 px exactement, le bas du
+cabinet tombe **sur** le pli, donc C1 n'est plus tenu (le quatrieme cote sort de l'image). Je
+conseille de rester sous 100 px pour que le socle soit visiblement dans l'ecran. Sur l'ecran de
+retour, la contrainte equivalente est en section 6.
+
+#### 4. Le disque decoratif : je le retire des deux boutons, et je dis pourquoi des deux
+
+**Ma decision : le disque quitte `.demarrer` et il quitte aussi `.encore`.** La forme ronde et
+l'ombre de relief, elles, **restent sur les deux** - je les ai validees le 2026-08-10 pour un motif
+qui tient toujours (elles disent d'appuyer et non de tirer), et leur portee limitee a `.demarrer` et
+`.encore` est ce qui fait tenir mon acquis 6 par la structure du selecteur. Je ne touche pas a ca.
+Ce qui disparait est le seul disque : la regle qui le produit aujourd'hui, `.demarrer::before,
+.encore::before`.
+
+**Ce que j'ai mesure avant de trancher, parce que le motif n'est pas celui qu'on attendrait.** Sur
+le rendu de `f29a2b0` a 360 px :
+
+| Bouton | Boite | Disque rendu | Distance au haut du bouton | Espace libre entre le disque et le haut des lettres |
+|---|---|---|---|---|
+| `Calcul CP` (accueil) | 129 x 56 px | 9 px de diametre, centre | 8 px | **10 px** |
+| `Encore !` (retour) | 117 x 56 px | 9 px de diametre, centre | 8 px | **10 px** |
+
+**Le disque ne touche aucun mot, ne rogne aucune cible tactile et ne coute aucune lisibilite.** Je
+le dis clairement : **mon motif n'est pas un motif de lisibilite**, et je ne fabrique pas une mesure
+pour habiller une preference. Il est de sens, et il est verifiable :
+
+1. **le disque est le seul signe de machine de toute l'application, et il n'est sur aucun ecran ou
+   la machine se trouvera.** J'ai verifie les gabarits servis : `.demarrer` n'existe que sur
+   l'accueil, `.encore` que sur l'ecran de retour. **Ni l'un ni l'autre ne porte de colonne.** La
+   machine, elle, sera sur l'ecran de manche, ou ne se trouve aucun de ces deux boutons. Un signe de
+   machine pose partout sauf sur la machine ne construit pas la metaphore, il la dilue ;
+2. **l'accueil ne sera jamais une machine** - c'est une liste de jeux, et cela m'est donne comme
+   acquis. Un signe sans referent, sur le seul ecran ou l'enfant **choisit**, est du bruit a
+   l'endroit ou il faut le moins en mettre. Ce que l'enfant doit lire sur `.demarrer`, c'est le titre
+   du jeu, et c'est tout ;
+3. **et c'est la condition C1 qui rend le disque inutile.** Si le cabinet est reconnaissable comme
+   je l'exige, l'enfant n'a aucun besoin d'une pastille de 9 px sur un autre ecran pour comprendre
+   qu'il a une machine devant lui. Si le cabinet n'est pas reconnaissable, aucune pastille ne le
+   rattrapera.
+
+**Je tranche aussi l'hypothese qui m'est soumise, et je la corrige sur un fait.** L'hypothese etait
+que le disque quitte l'accueil et reste sur l'ecran de jeu, ou la machine l'expliquera. Elle repose
+sur une inexactitude que je verifie plutot que de la laisser passer : **le bouton `Encore !` n'est
+pas sur l'ecran ou seront les colonnes.** Il est sur l'ecran de retour, qui porte le verdict et
+l'explication et aucune proposition. La machine n'y sera pas non plus - je refuse en section 6 d'y
+mettre le cabinet, pour proteger l'explication. Il n'existe donc aucun ecran ou le disque cotoie la
+machine, et l'hypothese ne se realise pas.
+
+**Ce que je nomme comme cout de ma decision, parce que ca doit etre trace comme mien.** Il ne reste
+plus rien du bouton-poussoir sur l'accueil : c'est le second element de l'habillage de levier que je
+fais tomber par ma main, apres la manette. Un lecteur de cette fiche doit pouvoir constater que ma
+porte a coute deux fois quelque chose a la forme voulue, et non zero fois.
+
+**Et j'ai verifie qu'aucun garde-fou n'exige ce disque** avant de demander son retrait : aucun test
+servi ne l'epingle. **Comment** on le retire n'est pas ma decision - je dis ce que l'enfant ne doit
+plus voir, `theo-archi` tranche la mise en oeuvre.
+
+#### 5. La fin du mouvement : ma reserve unique de s07, precisee et non deplacee
+
+**Je confirme la propriete que j'avais ecrite le 2026-08-10** - "que le mouvement se termine sans
+discontinuite visible, c'est-a-dire que la bande soit sortie de la boite avant que l'animation ne
+rende la main" - **et je la precise en deux mesures**, parce qu'une propriete qu'on ne sait pas
+mesurer se declare tenue trop vite. C'est une precision de ma propre barre, pas un relevement : les
+deux mesures ci-dessous sont la meme exigence, rendues verifiables.
+
+1. **Sur la derniere image de l'animation, la hauteur de voile visible est de 0 px.** Aujourd'hui :
+   13 px mesures, 14,8 px declares par le dernier `@keyframes` (section 0 bis, point B) ;
+2. **la derniere image de l'animation et l'etat de repos qui la suit rendent la meme image** : aucun
+   pixel ne change a l'instant ou l'animation rend la main ;
+3. **et la decroissance est progressive** : sur les 150 dernieres millisecondes, la plus grande
+   baisse de hauteur visible entre deux images consecutives ne depasse pas **3 px**. Aujourd'hui :
+   13 px en une seule image.
+
+**Ce que cette propriete ne vise pas, et je l'ecris pour eviter un travail inutile.** Le **debut**
+du mouvement n'est pas concerne. La bande apparait en une image au haut de la boite, et c'est sans
+consequence : a cet instant l'enfant recoit un ecran entierement neuf, rien ne "disparait" sous ses
+yeux. Ma reserve visait la fin, et elle continue de ne viser que la fin.
+
+**Ce qu'un cabinet y change : rien, et je ferme d'avance une facon de croire qu'il change quelque
+chose.** Si le cadre donne a la colonne un bord bas visible, la tentation sera de **recouvrir** les
+derniers pixels du voile par le cadre plutot que de les faire disparaitre. **Je refuse cette
+satisfaction de la propriete** : elle supprime le symptome en cachant des pixels, pas en terminant
+le mouvement, et elle recouvre une partie de la boite que l'enfant presse. Le voile continue par
+ailleurs de rester **dans la boite du bouton a chaque instant** - il ne passe jamais sur le cadre.
+Et si le cabinet est ajoute, la reserve **s'aggrave** plutot qu'elle ne s'attenue : une barre sombre
+qui claque au bas de chaque colonne dans un cadre est plus visible qu'a nu.
+
+**Le reste de ce que j'ai valide le 2026-08-10 sur le mouvement ne bouge pas** : duree bornee a
+0,3 s - 1,2 s, valeur de 0,6 s validee sur le rendu, decalage de 0,08 s par colonne dans un plafond
+de 0,25 s, un seul passage, pas de rebond, voile noir a 20 %. `ines-design` garde sa latitude a
+l'interieur de ces bornes.
+
+#### 6. Reserve 6 de "Le bon son" : ce que j'attends de la distinction de l'explication
+
+Ma reserve 6 du 2026-08-10 disait le defaut sans dire la barre. Je la dis, et je la dis maintenant
+parce qu'un cabinet changerait la disposition autour de cette phrase.
+
+**Ce que j'ai revu sur le rendu aujourd'hui, et une correction de mon propre constat.** Sur l'ecran
+de retour d'un coup faux sur `NOMBRE` : le verdict "Non, c'est on." est dans un aplat rose avec une
+croix rouge de 3 rem ; l'explication "Dans NOMBRE, ce sont les lettres o et m qui font le son on."
+est du texte courant sur deux lignes, sans aplat, sans cadre, sans icone. **Correction** : j'avais
+laisse entendre que l'explication etait "la moins signalee" ; elle est bien la moins signalee, mais
+**pas la plus petite** - elle est a 1,25 rem, exactement comme le verdict. Le defaut est un defaut
+de signalement, pas de taille, et il faut le traiter comme tel.
+
+**Les cinq proprietes que j'attends**, verifiables sur deux captures a 360 x 640 :
+
+1. **l'explication porte un signal non textuel qui la distingue du corps de page** : un aplat de
+   fond, ou un cadre complet. **Pas un simple liseret lateral** - meme motif que pour `.indice`, ou
+   j'ai deja refuse le liseret au profit du cadre complet : un enfant qui distingue mal les couleurs
+   ne voit pas un liseret ;
+2. **l'aplat de l'explication est neutre : il est identique apres un coup juste et apres un coup
+   faux.** *Verification* : deux captures, pixels du bloc d'explication identiques. *Motif* : c'est
+   la phrase qui enseigne, elle n'est pas un verdict. Une explication sur fond rouge apprend a
+   l'enfant que comprendre est une punition, et j'ai deja tranche qu'elle s'affiche dans les deux cas
+   parce que celui qui a trouve par elimination en a autant besoin ;
+3. **l'explication reste apres le verdict**, jamais avant : l'enfant lit d'abord si c'est juste,
+   ensuite pourquoi ;
+4. **le verdict ne perd rien** : la distinction s'obtient en signalant l'explication, pas en
+   affadissant le bandeau juste/faux. Son aplat et son icone de 3 rem sont conserves ;
+5. **le plancher de 1,25 rem est tenu sur les deux**, et l'ensemble verdict + explication +
+   `Encore !` reste **entierement au-dessus du pli** a 360 x 640, sans defilement.
+
+**Et je tranche le cabinet sur cet ecran, puisque la question est posee : il n'y va pas.** L'ecran
+de retour ne porte aucune colonne ; il porte le moment ou l'enfant apprend. C'est le seul ecran de
+l'application dont la nudite est un avantage, et je ne lui ajoute pas un decor qui viendrait
+concurrencer la phrase que je viens de demander qu'on signale mieux. **Consequence a ecrire noir sur
+blanc pour un developpeur** : le cabinet ne doit apparaitre ni sur la branche `Encore !` ni sur la
+branche fin de partie de `fragments/retour.html`. C'est aussi ce qui protege mon acquis 6 : un
+selecteur accroche a la racine du fragment, ou a `ecran-de-jeu`, poserait le cabinet sur l'ecran de
+fin de partie, et c'est exactement l'accident que j'ai nomme trois fois.
+
+**Ce que l'enfant perd, et pourquoi je l'accepte.** La machine disparait entre chaque manche, dix
+fois par partie, puis revient. Un objet qui va et vient n'est pas tout a fait un objet. Je pese les
+deux et je tranche pour l'explication : ce qui enseigne passe devant ce qui decore. Je le nomme comme
+un cout de ma decision, et non comme un detail, pour qu'on puisse me le contester.
+
+#### 7. Les acquis dont j'exige nommement le maintien
+
+Aucune story de ce chantier ne doit en defaire un sans le nommer - c'est arrive cinq fois en s06, et
+c'est pourquoi cette regle existe. Les six premiers sont ceux de `DEC-0015` ; **je ne les releve
+pas**, c'est la barre que j'avais ecrite qui s'applique. J'en ajoute cinq que ce chantier-ci touche
+et qui n'etaient pas dans cette liste.
+
+| # | Acquis | Ce que j'exige, chiffre | Qui le garde |
+|---|---|---|---|
+| 1 | cible tactile >= 2,75 rem (44 px) | inchange. 101 x 74 px aujourd'hui ; 96 x 74 avec un cadre de 8 px ; **jamais sous les planchers de la section 3** | `TailleDesTextesEtBoutonsTest` |
+| 2 | lisibilite >= 1,25 rem | inchange, `.indice`, `.score`, `.explication` et le mot de `.encore` compris | `TailleDesTextesEtBoutonsTest` |
+| 3 | proposition >= 2 rem, au moins aussi grosse que l'enonce | inchange. **C'est ce qu'un cadre a payer tentera de rogner en premier** | `leChiffreDeReponseEstAuMoinsAussiGrosQueLeCalcul` pour la taille declaree ; **moi seule** pour la troncature et la compression |
+| 4 | `.propositions { gap }` >= 1 rem | inchange, **sur les deux axes**. 16 px remesures aujourd'hui, a l'egalite exacte. **Payeur refuse** (section 3) | `TailleDesTextesEtBoutonsTest` amende par `ADR-0026` regle 3 |
+| 5 | hierarchie de saillance action / sortie (`ADR-0017`) | inchangee. Le cabinet ne rend ni `Les jeux` plus saillant, ni les colonnes moins | `LActionNeDeclarePasMoinsQueLaSortieTest` |
+| 6 | `sortie-pleine` et l'ecran de fin de partie nu | inchange : **aucun cabinet, aucun cadre, aucune colonne, aucun levier, aucun disque, aucune animation, aucune image de machine.** `Les jeux` en aplat plein reste la seule chose a presser, 117 x 56 px remesures | **moi seule** : le garde-fou de saillance n'oppose que des etats simultanes |
+| 7 | rembourrage declare de `.proposition` (0,75 rem / 1,25 rem) | inchange. C'est l'air autour du mot et le socle de mon acquis 5. **Payeur refuse** | **moi seule** |
+| 8 | les six conditions de non-troncature du 2026-08-10 | inchangees : une ligne, aucune troncature, aucun `overflow: hidden` sur le texte, aucune compression de glyphe, aucune cesure, aucun texte vertical | condition 3 par un test ; **les cinq autres, moi seule** |
+| 9 | le repli de mouvement reste lisible **et jouable** | inchange. Avec le cabinet et `prefers-reduced-motion: reduce` actif, l'ecran immobile reste lisible et jouable | forme litterale par `ADR-0026` regle 1 clause 2 ; **le resultat, moi seule** |
+| 10 | aucun mouvement sans geste de l'enfant (`data-arrivee`) | inchange. Le cabinet n'introduit aucune animation, donc rien de neuf a declencher (C3) | `ADR-0027` cote serveur ; **la partie CSS, moi** |
+| 11 | le nom interne de la mecanique n'atteint jamais l'enfant | inchange : ni `machine a sous`, ni `bandit`, ni `manchot`, ni `jackpot`, ni `mise`, ni `piece`, ni `jeton`, ni `credit`, sur aucun texte, `alt`, `aria-label`, `title` ou titre de page. **Un cabinet est precisement l'occasion de le faire remonter au motif qu'il devient exact** | **moi seule** |
+| 12 | aucun item resoluble par appariement visuel ("Le bon son") | inchange, et **C5 clause 2 en est la consequence directe** : une image qui varie avec l'item est un indice non valide | **moi seule** |
+
+#### 8. Ce que je laisse a `ines-design`, et ce que je ne lui laisse pas
+
+Elle propose **apres** cet arbitrage, et je nomme les deux listes pour qu'elle n'ait pas a deviner
+ou est ma porte.
+
+**Sa latitude, entiere, sous C1 a C6** : la forme du cabinet et de sa fenetre, ses couleurs (sous
+les planchers de contraste deja acquis), sa matiere, **quelles** images enfantines et combien,
+l'epaisseur du cadre au-dela des 8 px, la presence de la consigne et de l'enonce a l'interieur ou a
+l'exterieur du cadre, la repartition du budget vertical entre bandeau haut et socle, la facon de
+rendre la fin du mouvement continue (section 5), la facon de signaler l'explication (section 6), et
+la duree comme la courbe dans les bornes du 2026-08-10.
+
+**Ce que je ne lui laisse pas** : les quatre conditions du 2026-08-10 section 1 ; les six proprietes
+C1 a C6 ; les planchers et les payeurs de la section 3 ; les douze acquis de la section 7 ; le sort
+du disque, qui est tranche et n'est pas a reinstaller ; l'absence de cabinet sur l'ecran de retour
+et sur l'ecran de fin de partie ; toute animation sur le cabinet ; toute image qui varie avec l'item
+ou avec la colonne ; et le recouvrement des derniers pixels du voile par le cadre.
+
+#### 9. Ce dont je reste seule garde apres cet arbitrage
+
+Ma liste de s07 en comptait neuf, dont cinq restaient miennes. **Six entrent avec ce chantier**, et
+je les nomme pour qu'on ne croie pas couvert ce qui ne l'est pas - c'est un chantier entierement
+visuel, et l'habillage est precisement la ou aucun test ne regarde.
+
+1. **Que le contour du cabinet soit ferme et visible sur ses quatre cotes** (C1). Aucun automate ne
+   voit une forme.
+2. **Que rien ne s'anime sur le cabinet** (C3). Un `@keyframes` sur une regle d'habillage passerait
+   une CI verte ; seul le pseudo-element du voile est aujourd'hui epingle.
+3. **Que le cabinet soit identique apres un coup juste et un coup faux** (C4).
+4. **Que les images ne varient ni avec l'item ni avec la colonne** (C5 clause 2). C'est mon point de
+   garde le plus important de ce chantier : c'est celui ou un jeu de lecture peut devenir un jeu
+   d'images sans qu'une seule ligne rougisse.
+5. **Que le budget horizontal soit paye sur la largeur des colonnes et non sur le `gap` ni sur le
+   rembourrage** (section 3). Le `gap` a un garde-fou ; le plancher de largeur de colonne, non.
+6. **Que la fin du mouvement soit continue** (section 5, ma reserve de s07, toujours ouverte). Aucun
+   test ne regarde la derniere image d'une animation.
+
+Et les cinq de s07 qui restent miennes ne bougent pas : duree et courbe du defilement ; qu'un mot
+tienne dans sa colonne (marge la plus etroite du depot : 2,0 px sur `mangeons`) ; qu'une proposition
+ne soit ni tronquee ni coupee ni comprimee ; qu'aucun decor n'atteigne l'ecran de fin de partie ;
+et desormais la distinction de l'explication (section 6), qu'aucun test ne mesure.
+
+#### 10. Ce que je reverifierai sur le rendu livre, avant tout Done pedagogique
+
+Liste fermee. Ce qui n'y est pas ne bloquera pas le Done et ne pourra pas m'etre oppose comme
+l'ayant bloque. Tout se fait a une largeur **et** une hauteur de viewport reellement de 360 x 640,
+sur les **trois** jeux du catalogue.
+
+1. **C1** : contour ferme, 8 px au moins sur chacun des quatre cotes, aucun cote coupe par le bord
+   de l'ecran ni par le pli.
+2. **C2** : `Les jeux` hors du cadre, aucun autre pressable dedans.
+3. **C3** : trois captures - au repos, pendant le defilement, 2 s apres l'arret - pixels du cabinet
+   identiques.
+4. **C4** : deux captures de l'ecran de retour, apres juste et apres faux, cabinet identique.
+5. **C5** : dix manches consecutives, images du cabinet identiques et identiques au-dessus des trois
+   colonnes ; aucune image dans une boite de proposition.
+6. **C6** et les quatre conditions du 2026-08-10 : lecture des gabarits et de la feuille servis.
+7. **Le budget** : largeur de colonne et `gap` remesures au pixel sur les trois jeux, contre les
+   planchers de la section 3 ; item le plus large de chaque paquet, sans troncature, sans coupure,
+   sans police sous 2 rem.
+8. **Le pli** : "Le bon son" avec l'indice, trois echecs consecutifs joues pour le faire venir ;
+   puis l'ecran de retour avec explication.
+9. **La fin du mouvement** : image par image a 40 ms ou mieux - 0 px sur la derniere image, pas plus
+   de 3 px de baisse entre deux images sur les 150 dernieres millisecondes, aucun rebond, duree et
+   decalage toujours dans les bornes.
+10. **Le disque** : absent de l'accueil et de `Encore !` ; forme ronde et ombre toujours presentes.
+11. **L'explication** : les cinq proprietes de la section 6.
+12. **L'ecran de fin de partie** : acquis 6, rien de neuf, `sortie-pleine` seule et pleine.
+13. **Le repli de mouvement** : `prefers-reduced-motion: reduce` actif dans un vrai navigateur,
+    ecran avec cabinet lisible et jouable.
+14. **Et je jouerai**, cette fois au navigateur pilote et non par fragments reassembles : cinq
+    parties completes, dont trois ratees a chaque manche.
+
+#### 11. Suites hors de ma main
+
+- **Pour `camille-po`** : les six proprietes C1 a C6, les planchers de la section 3, les cinq
+  proprietes de la section 6 et le retrait du disque de la section 4 sont des **motifs, pas des
+  stories**. A elle d'en faire des criteres d'acceptation. Le retrait du disque est une **reserve
+  nouvelle datee du 2026-08-11**, ouverte sur mon propre manquement (section 0 bis, point A) : ce
+  n'est pas un refus et cela ne retire aucun Done. Ma reserve de s07 sur la fin du mouvement reste
+  la meme reserve, precisee et non relevee.
+- **Pour `ines-design`** : sections 2, 3, 5, 6 et 8. Sa proposition vient apres ce bloc.
+- **Pour `theo-archi`**, comme symptomes et non comme conception : le retrait de la regle du disque ;
+  la portee du selecteur du cabinet, qui doit exclure les deux branches de `fragments/retour.html` ;
+  et le fait que la discontinuite de fin de mouvement a sa cause ecrite dans le dernier `@keyframes`
+  (section 0 bis, point B). Je decris, je ne prescris pas.
+- **Pour `sofia-sm`** : le **defaut de pli de "Le bon petit mot" n'est pas rouvert ici**, comme
+  demande. Mon Done est maintenu, je ne deplace pas mes poteaux, et l'arbitrage entre raccourcir les
+  enonces et traiter la hauteur par la mise en page reste a instruire ailleurs.
+- **`squad/programme/MATRICE-couverture.md` ne bouge pas.** Ce chantier ne porte aucune competence
+  du programme : aucune ligne a confronter au referentiel, aucune ligne ne change quel que soit mon
+  avis. C'est la troisieme fois que l'etape 2 de ma methode est sans objet, et je le dis plutot que
+  de la simuler.
+- **Je n'ai touche ni `docs/backlog/backlog.md`, ni `MATRICE-couverture.md`, ni aucun `ADR`, ni
+  aucun fichier de ceremonie, ni le code.** Je n'efface rien : mes quatre blocs anterieurs restent
+  lisibles plus bas, avec leurs dates.
+
+---
 
 ### Verdict courant - chantier machine a sous (S7-1 a S7-4), prononce sur l'increment livre, du 2026-08-10
 

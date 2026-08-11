@@ -47,7 +47,13 @@
   desormais accorde, mais la barre que j'ai ecrite moi-meme pour `couvert-valide` - ouvrir le futur et
   l'imparfait, refus du 2026-08-10 section 5 - est inchangee et non atteinte. **La ligne ne bouge pas
   sur le verdict du second audit.**
-- **Derniere mise a jour** : 2026-08-10
+- **Arbitrage prealable au developpement du cabinet visible du 2026-08-11** (bloc en fin de fiche,
+  arbitrage complet dans `FICHE-bandit-manchot-additions-cp.md`) : cabinet **compatible avec mon veto
+  sous six proprietes verifiables**. **Ce jeu est explicitement hors du tableau de planchers de
+  largeur** : il n'est pas au catalogue et sa disposition reste une saisine de `camille-po` avec
+  `theo-archi`. Ce n'est pas un Done pedagogique, il est degrade, et aucun verdict de cette fiche
+  n'est touche.
+- **Derniere mise a jour** : 2026-08-11
 
 ## Competences visees
 
@@ -85,6 +91,25 @@ entree/sortie observables.
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Arbitrage prealable au developpement - cabinet visible de la machine, du 2026-08-11
+
+**Ce bloc n'est pas un Done pedagogique et il est degrade** : le cabinet n'est pas ecrit. Il ne
+touche aucun verdict de cette fiche. L'arbitrage complet est ecrit une seule fois, dans
+`FICHE-bandit-manchot-additions-cp.md`, bloc du 2026-08-11 - il vaut pour la mecanique, donc pour ce
+jeu si un jour il entre au catalogue. Ce qui concerne **ce jeu-ci** :
+
+1. **Je le laisse volontairement hors de mon tableau de planchers de largeur de colonne.** Ce tableau
+   chiffre les trois jeux du catalogue ; ce jeu-ci n'y est pas, et sa disposition - quatre
+   propositions, repli en deux rangees - reste une saisine de `camille-po` avec `theo-archi`. Je ne
+   la rouvre pas et je ne fabrique pas un plancher pour un cas dont la disposition n'est pas arretee.
+2. **Ce que je dis quand meme, parce que ca se saura au moment du dessin** : c'est le cas le plus
+   contraint du depot. `mangeons` tient a **2,0 px** de chaque cote de sa boite - la marge la plus
+   etroite que j'aie mesuree. **Tout cadre lateral paye sur la largeur des colonnes tronque ce mot.**
+   Un cabinet et ce paquet en quatre colonnes ne tiennent pas ensemble a 360 px, et il vaut mieux le
+   savoir avant qu'apres.
+3. **Ma reserve du 2026-08-10 sur le cumul du decalage au-dela de quatre colonnes reste ouverte** et
+   reste ma garde. Un cabinet n'y change rien.
 
 ### Verdict courant - second audit, increment livre en s07, du 2026-08-10
 
