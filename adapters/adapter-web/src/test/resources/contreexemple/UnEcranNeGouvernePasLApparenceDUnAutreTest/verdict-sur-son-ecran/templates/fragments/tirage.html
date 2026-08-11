@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- L'ecran de tirage : son habillage entoure les colonnes de reponses, et il n'existe que dans ce
+     fragment. C'est la structure qui tient la condition C4 - l'habillage n'atteint pas l'ecran de
+     bilan parce que son balisage n'y est pas. -->
+<div th:fragment="tirage" class="ecran-de-jeu">
+    <div class="coffret">
+        <div class="coffret-bandeau" aria-hidden="true"></div>
+        <form class="colonnes" hx-post="/coups" hx-target="#zone" hx-swap="innerHTML">
+            <button type="submit" class="colonne" th:each="mot : ${mots}" th:text="${mot}"></button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -144,7 +144,12 @@ class LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest {
         return !ecran.select("." + masquage.marqueur()).isEmpty();
     }
 
-    private static Map<String, Document> documents(Path racineDesGabarits) {
+    /**
+     * Les gabarits analyses, indexes par leur chemin relatif. Visible dans le paquet depuis ADR-0031 :
+     * {@code UnEcranNeGouvernePasLApparenceDUnAutreTest} derive sa composition des memes documents, et
+     * un second balayage du repertoire de gabarits serait une duplication sans motif.
+     */
+    static Map<String, Document> documents(Path racineDesGabarits) {
         Map<String, Document> documents = new LinkedHashMap<>();
         for (Path gabarit : gabarits(racineDesGabarits)) {
             String source = racineDesGabarits.relativize(gabarit).toString().replace('\\', '/');
@@ -153,7 +158,12 @@ class LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest {
         return documents;
     }
 
-    private static Optional<String> zoneEchangee(Iterable<Document> documents, Set<String> defauts) {
+    /**
+     * La zone que les echanges htmx remplacent, unique dans tout le depot. Visible dans le paquet
+     * depuis ADR-0031, qui identifie la coquille par la meme derivation : c'est elle qui dit quels
+     * jetons sont permanents et lesquels appartiennent a un ecran echange.
+     */
+    static Optional<String> zoneEchangee(Iterable<Document> documents, Set<String> defauts) {
         Set<String> cibles = new LinkedHashSet<>();
         for (Document document : documents) {
             for (Element porteur : document.select("[" + ZONE_ECHANGEE + "]")) {

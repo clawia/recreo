@@ -293,8 +293,12 @@ class LAnimationRetardeMaisNeDetermineRienTest {
         return mots;
     }
 
-    /** Les classes qu'un selecteur nomme, sans juger sa structure : tout ce qui suit un point. */
-    private static Set<String> classesDuSelecteur(String selecteur) {
+    /**
+     * Les classes qu'un selecteur nomme, sans juger sa structure : tout ce qui suit un point.
+     * Visible dans le paquet depuis ADR-0031 : {@code UnEcranNeGouvernePasLApparenceDUnAutreTest} lit
+     * les memes classes dans les memes selecteurs.
+     */
+    static Set<String> classesDuSelecteur(String selecteur) {
         Set<String> classes = new LinkedHashSet<>();
         int position = 0;
         while ((position = selecteur.indexOf('.', position)) >= 0) {

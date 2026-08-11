@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- L'ecran de bilan : le seul qui dise le resultat, par un marqueur conditionnel pose sur son
+     propre bandeau. Ce marqueur est legitime ici ; ce qui ne l'est pas, c'est qu'une regle de la
+     feuille s'en serve pour colorer l'habillage de l'ecran de tirage. -->
+<div th:fragment="bilan" class="ecran-de-jeu">
+    <div class="bilan" th:classappend="${gagne} ? 'est-gagne' : 'est-perdu'">
+        <span class="pictogramme" aria-hidden="true"></span>
+        <p class="annonce" th:text="${annonce}"></p>
+    </div>
+    <button type="button" class="rejouer" hx-post="/rejouer" hx-target="#zone" hx-swap="innerHTML">Rejouer</button>
+</div>
+</body>
+</html>

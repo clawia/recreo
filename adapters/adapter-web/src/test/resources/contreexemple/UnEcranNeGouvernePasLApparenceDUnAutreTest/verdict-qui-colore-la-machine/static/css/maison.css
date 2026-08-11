@@ -1,0 +1,69 @@
+/* Feuille maison du jeu fautif d'ADR-0031. Tout y est legitime sauf une regle : le marqueur de
+   partie gagnee, pose sur l'ecran de bilan, y colore le bandeau de l'habillage de l'ecran de
+   tirage. Aucun document ne porte les deux a la fois - la zone echangee recoit un ecran a la fois -
+   donc cette regle est soit morte, soit l'intention meme que la condition C4 de nadia-prof
+   interdit : la machine dirait le resultat. */
+body:has(.est-gagne) .coffret-bandeau {
+    background-color: #ffd54f;
+}
+
+.coffret {
+    display: flex;
+    flex-direction: column;
+    border: 0.5rem solid #1565c0;
+}
+
+.coffret-bandeau {
+    height: 2rem;
+}
+
+.coffret > .colonnes {
+    margin: 0;
+}
+
+.colonne {
+    font-size: 2rem;
+}
+
+/* Le verdict colore ce qui vit sur son propre ecran : c'est la coche du cahier, et cette regle-la
+   est legitime. Elle est ici pour que le jeu fautif ne differe du jeu correct que par la regle
+   fautive. */
+.bilan.est-gagne .pictogramme {
+    background-color: #2e7d32;
+}
+
+.bilan.est-perdu .pictogramme {
+    background-color: #c62828;
+}
+
+.annonce {
+    font-size: 1.25rem;
+}
+
+.bandeau {
+    padding: 0.75rem;
+}
+
+.lien-sortie {
+    font-size: 1.25rem;
+}
+
+.ouvrir {
+    font-size: 1.25rem;
+}
+
+.rejouer {
+    font-size: 1.25rem;
+}
+
+.cadre {
+    padding: 0.75rem;
+}
+
+.menu-fautif {
+    display: flex;
+}
+
+.ecran-de-jeu {
+    display: block;
+}
