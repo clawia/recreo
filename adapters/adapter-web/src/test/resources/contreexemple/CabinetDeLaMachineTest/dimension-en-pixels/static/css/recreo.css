@@ -1,0 +1,33 @@
+/* ADR-0013 obligation 3 : jeu fautif de CabinetDeLaMachineTest.verifierAucunePixelSurLeCabinet -
+   la meme feuille de cabinet que la production, avec une seule dimension du bandeau ecrite en
+   pixels plutot qu'en rem (contre le critere d'acceptation de S8-1). */
+.cabinet {
+    display: flex;
+    flex-direction: column;
+    background-color: #1d4b6b;
+    border: 0.5rem solid #1d4b6b;
+    border-radius: 0.75rem;
+}
+
+.cabinet > .propositions {
+    margin: 0;
+}
+
+.cabinet-bandeau {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cabinet-bandeau::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.cabinet-socle {
+    height: 1rem;
+}
