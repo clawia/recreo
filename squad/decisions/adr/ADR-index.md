@@ -232,7 +232,8 @@ portant sur la meme faute de fond - **un automate vert qui ne regardait pas le b
     **refuse avec son chiffre** (une regle sur le repli des rangees flex serait rouge sur trois blocs de
     production le jour de son ecriture, donc reclamerait de changer la mise en page servie a un enfant
     pour satisfaire un test), et le constat que deux juges purs ecrits en s06 n'etaient lances par aucun
-    automate - la CI balaie desormais `outils/*-test.sh` ;
+    automate - la CI balaie desormais `outils/*-test.sh`.
+
 Sprint 7 en ajoute deux, le second corrigeant le premier le jour meme (cet intertitre manquait :
 les deux ADR de s07 etaient ranges sous le paragraphe de s06, corrige a l'ecriture d'ADR-0028) :
 

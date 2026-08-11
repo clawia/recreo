@@ -141,7 +141,7 @@ le plus contraint, et la piste tient aux deux largeurs.
 
 **Point technique que je remonte a `theo-archi`, pas que je tranche.** Si cette ligne est ajoutee
 comme un **second** bloc CSS portant le meme selecteur litteral plutot que fusionnee dans le bloc
-existant, `leReplniEnDeuxRangeesEstScopeALaQuatriemePropositionSeulement`
+existant, `leRepliEnDeuxRangeesEstScopeALaQuatriemePropositionSeulement`
 (`TailleDesTextesEtBoutonsTest`) risque de ne plus lire le bon corps de regle si son analyseur
 indexe les blocs par selecteur dans une table associative (un second bloc au meme selecteur
 ecraserait alors le premier). La fusionner dans le bloc existant, comme ecrit ci-dessus, evite la

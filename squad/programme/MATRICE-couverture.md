@@ -213,8 +213,8 @@ pour le motif du choix entre les deux candidats de `textes-trous/`).
 pedagogique **accorde** (`squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`) : le contenu
 est exact item par item et le rattachement au referentiel est juste. La ligne **reste neanmoins
 `en cours`**, pas `couvert-valide` : elle motive l'ecart elle-meme - la competence vise "les
-**principaux** homophones grammaticaux", le paquet en couvre cinq (a/a, et/est, on/ont, son/sont,
-ou/ou), il en manque cinq parmi les plus courants (ce/se, ces/ses, la/la/l'a, mais/mes, peu/peut).
+**principaux** homophones grammaticaux", le paquet en couvre cinq (a/à, et/est, on/ont, son/sont,
+ou/où), il en manque cinq parmi les plus courants (ce/se, ces/ses, la/là/l'a, mais/mes, peu/peut).
 Sa condition ecrite pour `couvert-valide` : ces cinq couples ajoutes **et**, dans le meme geste,
 des phrases qui obligent l'enfant a regarder ailleurs que juste avant le trou (profondeur CM1,
 pas CE1/CE2) - story S5-6 de `docs/backlog/backlog.md`. Reserve distincte, non bloquante pour ce

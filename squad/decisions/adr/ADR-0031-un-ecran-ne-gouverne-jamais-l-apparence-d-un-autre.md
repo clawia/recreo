@@ -11,7 +11,7 @@
 cabinet est rigoureusement identique apres une bonne et apres une mauvaise reponse"* - comme une dette
 de test, avec un motif de refus explicite : la seule forme alors disponible aurait enumere
 `.cabinet`, `.signal.est-juste` et `.signal.est-faux`, c'est-a-dire un perimetre enumere (`ADR-0013`)
-et, pire, des noms cites dans un test alors qu'aucun fichier du depot ne les portait - la dette n. 1
+et, pire, des noms cites dans un test alors qu'aucun fichier du depot ne les portait - la dette n°1
 de `CLAUDE.md`. Le planning de s08 a inscrit cette dette comme **non fermee**, a rouvrir des que S8-1
 serait livre.
 
