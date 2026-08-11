@@ -976,7 +976,7 @@ class TailleDesTextesEtBoutonsTest {
      * rendu, hors de portee d'un automate de ce depot - ADR-0025 -, mesuree par nadia-prof).
      */
     @Test
-    void leReplniEnDeuxRangeesEstScopeALaQuatriemePropositionSeulement() {
+    void leRepliEnDeuxRangeesEstScopeALaQuatriemePropositionSeulement() {
         Map<String, String> blocs = blocsMaison(RACINE_PRODUCTION);
 
         String bascule = blocs.get(".propositions:has(.proposition:nth-child(4))");

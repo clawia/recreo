@@ -817,12 +817,12 @@ chacun des deux paquets ci-dessous repasse devant `nadia-prof` comme un contenu 
   j'ecris.
 - **Competence programme visee** : francais, CM1 (cycle 3), domaine "Orthographe et grammaire" -
   "Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont,
-  a/a...)" (`squad/programme/francais/competences-cm1.md`). Premiere ligne de matrice couverte
+  a/à...)" (`squad/programme/francais/competences-cm1.md`). Premiere ligne de matrice couverte
   pour le CM1, tous jeux confondus (`DEC-0008`).
 - **Criteres d'acceptation** :
   - Etant donne une manche generee par ce contenu, quand la question s'affiche, alors elle
     presente une phrase a trou portant sur un des couples d'homophones grammaticaux suivants :
-    a/a, et/est, on/ont, son/sont, ou/ou - jamais un couple hors de cette liste.
+    a/à, et/est, on/ont, son/sont, ou/où - jamais un couple hors de cette liste.
   - Etant donne les propositions affichees pour une manche, alors la bonne reponse y figure
     exactement une fois, et l'unique distracteur est l'autre mot du meme couple d'homophones
     (jamais un mot etranger a ce couple).

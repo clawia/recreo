@@ -87,7 +87,7 @@ prochain planning.
 | bandit-manchot-conjugaison-present-cm1 | `squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE (leve depuis REFUSE) | 2026-08-10 (sprint 6, premier audit) | 2026-08-10 (sprint 7, second audit, refus leve) |
 | bandit-manchot-conjugaison-present-cm1 | `squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE (leve depuis REFUSE) | 2026-08-11 (sprint 8, troisieme audit) | 2026-08-11 (sprint 8, quatrieme audit, refus leve) |
 
-**Correction de s08 - ce fichier etait perime depuis sa cloture de sprint 7.** Le sprint 7 a levé
+**Correction de s08 - ce fichier etait perime depuis sa cloture de sprint 7.** Le sprint 7 a leve
 le refus ci-dessus le 2026-08-10 (meme jour que l'ouverture du refus, sur un increment livre
 ulterieurement dans le sprint) ; ce fichier n'a ete mis a jour qu'a l'ouverture du sprint 8, comme
 constate au recensement de `camille-po`. Meme defaut que la correction de s03 plus haut : un

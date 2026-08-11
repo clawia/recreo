@@ -31,7 +31,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * <p><b>Pourquoi cette forme, et pas une clause qui nomme le cabinet.</b> ADR-0030 avait refuse
  * d'ecrire C4 en test parce que la seule forme alors disponible etait d'enumerer
  * {@code .cabinet, .signal.est-juste, .signal.est-faux} - un perimetre enumere (ADR-0013), et des
- * noms cites dans un test alors que le code ne les portait pas encore (dette n. 1 de CLAUDE.md).
+ * noms cites dans un test alors que le code ne les portait pas encore (dette n°1 de CLAUDE.md).
  * Ce fichier ne cite aucun de ces noms. Il constate ce que le depot dit deja : la zone echangee
  * recoit <b>un</b> ecran a la fois, donc les jetons de deux ecrans inseres ne coexistent jamais dans
  * un document. Un selecteur qui melange le verdict d'un ecran et l'habillage d'un autre ne peut donc
