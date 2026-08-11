@@ -53,6 +53,17 @@
   largeur** : il n'est pas au catalogue et sa disposition reste une saisine de `camille-po` avec
   `theo-archi`. Ce n'est pas un Done pedagogique, il est degrade, et aucun verdict de cette fiche
   n'est touche.
+- **Troisieme audit, chantier de la conjugaison etendue (S8-4 et activation au catalogue), du
+  2026-08-11, prononce sur l'increment livre (`533967d`) : REFUSE.** Audit joue, non degrade : douze
+  parties, les vingt-cinq items vus, chacun aussi avec son indice. **Ma barre fermee de six points est
+  LEVEE** - le contenu de S8-4 les satisfait toutes les six, et c'est la seule chose qui gouverne
+  `couvert-valide`. **Ce qui est refuse est l'activation de ce jeu au catalogue**, sur un motif unique
+  et neuf : a 360 px, dans le cabinet, les quatre colonnes mesurent **152,00 px** et deux propositions
+  du paquet sont plus larges que leur boite - `mangeons` a **156,02 px** sort de **2,02 px** de chaque
+  cote et vient s'ecrire sur la paroi du cabinet. C'est ma reserve 1 du 2026-08-10, ecrite de ma main,
+  qui se realise. **Je reponds au point d'interpretation de `marc-dev`** : le 2e groupe absent de
+  l'imparfait ne viole pas mon point 1, tel que je l'ai ecrit. **Le defaut de pli, 24 items sur 25,
+  n'est PAS le motif** et je dis pourquoi.
 - **Derniere mise a jour** : 2026-08-11
 
 ## Competences visees
@@ -92,6 +103,427 @@ entree/sortie observables.
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
+### Verdict courant - troisieme audit, chantier de la conjugaison etendue (S8-4 et activation au catalogue), du 2026-08-11
+
+- **Verdict** : **REFUSE.** Done pedagogique **non accorde** sur cet increment. Le refus porte sur
+  **l'activation de "Le bon verbe" au catalogue**, pas sur le contenu des treize items neufs, que je
+  valide et dont je dis le bien en section 6. Mes deux verdicts anterieurs ne sont pas effaces et ne
+  sont pas retires : ils restent lisibles plus bas avec leurs dates.
+- **Date** : 2026-08-11.
+- **Commit audite** : `533967d`, tete de `round-two`.
+- **Done technique** : acquis, et je ne le rediscute pas. Un increment techniquement irreprochable
+  peut etre refuse pedagogiquement, et c'est le cas ici.
+- **Ma barre fermee de six points : LEVEE.** Les six points que j'avais ecrits moi-meme au refus du
+  2026-08-10, section 5, sont satisfaits, je les verifie un par un en section 1, et j'avais ecrit
+  *"Rien d'autre. Ce qui n'est pas dans cette liste ne bloquera pas `couvert-valide` et ne pourra pas
+  m'etre oppose comme l'ayant bloque."* Je m'y tiens.
+- **Ligne de matrice** : la ligne `francais | CM1 | Orthographe et grammaire | Conjuguer les verbes
+  frequents au present, futur et imparfait de l'indicatif` **peut passer a `couvert-valide`**, parce
+  que ma barre est levee et que c'est elle seule qui l'autorisait. Je n'edite pas cette ligne, elle
+  appartient a `camille-po`. **Et je dis nettement ce que cela veut dire et ce que cela ne veut pas
+  dire** : la competence est couverte et le contenu est valide ; le jeu, tel qu'il est servi
+  aujourd'hui, est refuse. Ce ne sont pas deux jugements contradictoires, ce sont deux objets
+  differents - le premier porte sur ce que le paquet enseigne, le second sur ce que l'enfant voit a
+  l'ecran. **Garder ou non un jeu refuse au catalogue pendant la correction est la decision de
+  `camille-po`**, pas la mienne : je ne repriorise pas et je n'ecris pas le backlog.
+
+#### 0. Comment j'ai joue, et ce que je ne declare PAS degrade
+
+**Audit joue, non degrade.** Ce jeu est desormais **au catalogue** : contrairement a mon audit de s07,
+je n'ai eu besoin d'aucune branche jetable pour l'atteindre. C'est precisement ce qui change la nature
+de ce que je juge - un enfant peut y arriver depuis l'accueil.
+
+Meme installation que le verdict transverse du meme jour (`FICHE-bandit-manchot-additions-cp.md`,
+section 0) : worktree dedie sur `s08-nadia-verdicts`, lignee verifiee par `outils/verifier-lignee.sh`,
+JDK constate par `outils/verifier-jdk.sh`, fat jar reconstruit et lance sur un port dedie. Pour **ce
+jeu** :
+
+- **12 parties completes** jouees par les vraies routes de l'application, ratees a chaque manche pour
+  faire venir l'aide, plus **24 parties** supplementaires (12 en repondant toujours juste, 12 toujours
+  faux) pour verifier le tirage ;
+- **les 25 items vus**, et **chacun des 25 vu aussi avec son indice**, obtenu par trois echecs
+  consecutifs reels et non en lisant le YAML. 33 etats d'ecran distincts mesures ;
+- geometrie relevee au centieme de pixel a **360 px de largeur reelle et 640 px de hauteur reelle**,
+  sur les glyphes eux-memes et non sur des valeurs declarees ;
+- capture a 360 x 640 par la commande versionnee du depot, et **je l'ai regardee**.
+
+#### 0 bis. Ce que je corrige de mes propres constats, avant de m'appuyer dessus
+
+**A. J'ai failli corriger a tort ma reserve 3, et je dis ce que j'ai verifie.** Ma reserve 3 disait
+*"Douze items pour dix manches : une partie montre dix items sur douze."* En jouant 15 parties, j'ai
+vu un item repete dans 7 d'entre elles et j'ai d'abord conclu que le tirage etait avec remise, ce qui
+aurait fait tomber ma reserve. **J'ai verifie avant d'ecrire, et ma premiere conclusion etait
+fausse** : le tirage est sans remise (`ListContentSource.next` ecarte les items deja tires), et 24
+parties jouees sans jamais varier ne contiennent aucune repetition. Les repetitions venaient de la
+**"manche plus simple" de `DEC-0004`**, qui reserve un item **deja reussi** apres trois echecs
+consecutifs - un comportement valide. **Ma reserve tient donc, avec la nuance que je n'y avais pas
+mise** : le paquet passe de 12 a 25 items pour dix manches, ce qui l'ameliore nettement, et la
+repetition qui reste est celle de l'aide, pas celle du tirage.
+
+**B. Ma reserve 1 de largeur etait chiffree contre 160 px, et la colonne n'en fait plus 160.** J'avais
+ecrit : *"tout mot plus large que 156 px sortira de sa colonne"*, sur une colonne de 160 px. Le
+cabinet, que j'ai autorise le meme jour, ramene la colonne a **152 px**. Mon seuil de 156 px n'est
+donc plus le bon seuil : il est desormais de **152 px**, et deux mots du paquet le depassent. Je le
+dis avant de m'appuyer dessus, parce que le chiffre a bouge sous ma propre decision.
+
+**C. `marc-dev` annonce des marges superieures ou egales a 13 px, et je mesure 11,95 px.** Sur les
+formes neuves, la plus large est `faisaient` a **128,09 px** de glyphes, qui laisse **11,95 px** d'air
+de chaque cote dans une colonne de 152 px. Son chiffre a ete pris sur une colonne de 160 px (ou l'air
+serait de 15,95 px), avant que le cabinet n'existe. **Ce n'est pas une faute de sa part** : les deux
+lots ont ete developpes en parallele et sa mesure etait exacte sur l'etat qu'il avait sous les yeux.
+Je corrige le chiffre, pas l'intention. **Aucune forme neuve ne sort de sa boite** : les 13 items de
+S8-4 sont tous a l'interieur, la plus etroite marge etant ces 11,95 px.
+
+#### 1. Ma barre fermee, les six points un par un
+
+Les six points sont ceux de mon refus du 2026-08-10, section 5, cites au mot. Je ne les releve pas et
+je ne les assouplis pas.
+
+**Point 1 - "le futur de l'indicatif et l'imparfait de l'indicatif sont ajoutes, avec les six
+personnes chacun, sur des verbes frequents des trois groupes comme le present les a deja". SATISFAIT.**
+
+| Temps | Six personnes ? | Verbes, et leurs groupes |
+|---|---|---|
+| futur | **oui** : `jouerai` (je), `aideras` (tu), `finira` (elle), `ferons` (nous), `irez` (vous), `auront` (ils) | jouer et aider (1er), **finir (2e)**, faire, aller et avoir (3e) |
+| imparfait | **oui** : `jouais` (je), `aidais` (tu), `faisait` (il), `étions` (nous), `aviez` (vous), `aimaient` (ils) | jouer, aider et aimer (1er), faire, être et avoir (3e) - **aucun 2e groupe** |
+
+Les six personnes y sont pour chacun des deux temps, ce qui etait la seule chose que le mot "chacun"
+distribuait dans ma phrase. Les trois groupes sont presents sur l'ensemble ajoute. Les verbes sont
+frequents, tous du vocabulaire d'un enfant de CM1.
+
+#### 2. Ma reponse au point d'interpretation que `marc-dev` me soumet
+
+Il a satisfait mon point 1 sur l'ensemble futur+imparfait et non temps par temps : le 2e groupe
+n'apparait qu'au futur (`finir`), volontairement absent de l'imparfait pour eviter les formes en
+`-iss-` dont j'avais moi-meme nomme la largeur a risque. Il ne tranche pas et me laisse lire ma barre.
+**Je la lis, et ma reponse est : oui, son interpretation est la bonne, et ce n'est pas une faveur.**
+
+Trois raisons, et je les donne dans l'ordre de leur force :
+
+1. **Ma phrase place "chacun" sur les six personnes, et sur rien d'autre.** J'ai ecrit "avec les six
+   personnes **chacun**, sur des verbes frequents des trois groupes" : le distributif porte sur les
+   personnes, la clause des groupes n'en porte aucun. Si j'avais voulu les trois groupes par temps, je
+   devais l'ecrire, et je ne l'ai pas ecrit. **Le lire aujourd'hui comme une exigence par temps serait
+   deplacer mes poteaux apres coup**, ce que je m'interdis.
+2. **Ma propre clause de reference le dit encore plus clairement : "comme le present les a deja".**
+   J'ai verifie ce que le present a deja, et il faut le regarder en face : sur ses douze items, le 2e
+   groupe est porte par **un seul verbe**, `finir` (item 8). **L'etalon que j'ai designe moi-meme est
+   un temps ou le 2e groupe tient sur un item.** Le futur en a exactement autant. Exiger davantage de
+   l'imparfait que de l'etalon que j'ai nomme serait incoherent.
+3. **Et son motif de fond est juste, ma mesure d'aujourd'hui le prouve.** J'avais nomme
+   `finissaient` et `apprendraient` comme les formes qui feraient tomber la mise en page. La colonne
+   fait aujourd'hui 152 px et `mangeons`, a 156,02 px, en sort deja. `finissaient` compte deux
+   caracteres de plus que `faisaient`, qui mesure 128,09 px : il aurait tres probablement franchi la
+   paroi comme `mangeons`. **Lui refuser sa lecture, c'etait lui demander d'ecrire le mot dont
+   j'avais moi-meme dit qu'il casserait l'ecran.** Il a evite le piege que j'avais signale, et il a
+   eu raison.
+
+**Ce que je fais du fond pedagogique, puisqu'il existe et que je ne le nie pas.** L'imparfait des
+verbes du 2e groupe est le seul endroit ou apparait l'infixe `-iss-` (`nous finissions`, `ils
+finissaient`), et c'est une vraie difficulte de CM1 - la plus vraie du chapitre, meme. Un paquet
+d'imparfait sans un seul 2e groupe laisse cette difficulte entierement de cote. **Ce n'est pas un
+motif, parce que ma barre ne le demandait pas ; c'est une reserve nouvelle et datee du 2026-08-11**,
+reserve 1 de la section 8, ouverte sur ma propre redaction et non sur le travail de `marc-dev`. Elle
+ne pourra pas etre presentee comme ayant bloque quoi que ce soit.
+
+#### 3. Points 2 et 3 : l'opposition des temps et la marque dans la phrase
+
+**Point 2 - "au moins un item par temps oppose deux temps entre eux". SATISFAIT, et depasse.**
+
+| Temps | Item | Bonne reponse | Distracteur d'un autre temps |
+|---|---|---|---|
+| futur | "Demain, ils ___ une récréation plus longue." | `auront` | **`avaient`** (imparfait) |
+| imparfait | "Autrefois, ils ___ ce dessin animé chaque mercredi." | `aimaient` | **`aimeront`** (futur) |
+| present | "Maintenant, elle ___ son frère avant l'école." | `aide` | **`aidait`** (imparfait) **et `aidera`** (futur) |
+
+Le troisieme ne m'etait pas du : ma barre demandait le futur et l'imparfait, et un treizieme item de
+present a ete ajoute pour que le temps deja couvert soit lui aussi mis en concurrence. C'est plus que
+ce que je demandais, et c'est le bon geste : *"un enfant qui n'a jamais eu a choisir entre deux temps
+n'a jamais eu a identifier le temps demande"*, et cela valait pour le present comme pour les autres.
+
+**Point 3 - "la marque du temps est reperable dans la phrase plutot que devinable". SATISFAIT.** Les
+six items de futur ouvrent sur `Demain,`, les six d'imparfait sur `Autrefois,`, le treizieme de
+present sur `Maintenant,`. La marque est un complement de temps explicite, en tete de phrase, lu avant
+le sujet. Sur les trois items ou le temps doit reellement etre choisi, c'est elle et elle seule qui
+tranche - et elle est la.
+
+#### 4. Point 4 : les vingt-cinq items relus un par un, par moi
+
+J'avais ecrit *"j'auditerai ces items un par un"*. `marc-dev` l'a fait a la main de son cote parce que
+ce n'est pas automatisable ; j'ai refait la lecture moi-meme, sur les vingt-cinq items, et je l'ai vue
+en jeu. **Aucun item n'admet deux lectures correctes.**
+
+| Item neuf | Bonne reponse | Ce qui exclut chaque distracteur | Double lecture ? |
+|---|---|---|---|
+| "Demain, je ___ dans le jardin." | `jouerai` | `joueras`, `jouera`, `joueront` : personne | non |
+| "Demain, tu ___ tes camarades en classe." | `aideras` | `aiderai`, `aidera`, `aideront` : personne | non |
+| "Demain, elle ___ son dessin avant le goûter." | `finira` | `finirai`, `finirons`, `finiront` : personne | non |
+| "Demain, nous ___ un gâteau pour la fête." | `ferons` | `ferai`, `fera`, `feront` : personne | non |
+| "Demain, vous ___ à la piscine avec la classe." | `irez` | `irai`, `ira`, `iront` : personne | non |
+| "Demain, ils ___ une récréation plus longue." | `auront` | `aurai`, `aura` : personne ; **`avaient` : temps**, exclu par `Demain` | non |
+| "Autrefois, je ___ tous les jours dans le jardin." | `jouais` | `jouait`, `jouions`, `jouaient` : personne | non |
+| "Autrefois, tu ___ tes camarades en classe." | `aidais` | `aidait`, `aidions`, `aidaient` : personne | non |
+| "Autrefois, il ___ du vélo le dimanche." | `faisait` | `faisais`, `faisions`, `faisaient` : personne | non |
+| "Autrefois, nous ___ toujours les premiers à l'école." | `étions` | `étais`, `était`, `étaient` : personne | non |
+| "Autrefois, vous ___ moins de devoirs." | `aviez` | `avais`, `avait`, `avaient` : personne | non |
+| "Autrefois, ils ___ ce dessin animé chaque mercredi." | `aimaient` | `aimais`, `aimait` : personne ; **`aimeront` : temps**, exclu par `Autrefois` | non |
+| "Maintenant, elle ___ son frère avant l'école." | `aide` | `aidez` : personne ; **`aidait` et `aidera` : temps**, exclus par `Maintenant` | non |
+
+**Les deux items sur lesquels je me suis arretee le plus longtemps, parce que c'est la que le risque
+que j'avais annonce se logeait.**
+
+1. **"Demain, ils ___ une récréation plus longue." avec `avaient` en distracteur.** `avaient`
+   s'accorde avec `ils` en personne et en nombre : le seul discriminant est `Demain`. C'est
+   exactement ce que mon point 2 demandait, et c'est aussi le cas ou une seconde lecture pourrait se
+   glisser. J'ai cherche celle-la : *"Demain, ils avaient une récréation plus longue"* existe en
+   francais litteraire, en discours indirect libre, dans un recit au passe. **Ce n'est pas disponible
+   au CM1 et ce n'est pas la norme scolaire** : je ne la compte pas comme une lecture correcte. Le
+   risque que j'avais annonce - "hier" avec un present de narration - **n'a pas ete pris** : aucun
+   item ne melange un complement de temps avec un temps qui ne lui correspond pas.
+2. **"Maintenant, elle ___ son frère avant l'école."** Trois temps sont en concurrence sur un seul
+   item, et il faut donc que `Maintenant` exclue nettement les deux autres. Il les exclut.
+
+**Les distracteurs sont tous plausibles, et c'est une qualite que je releve.** Sur les vingt-cinq
+items, chaque distracteur est une forme **reelle du meme verbe**. Aucun n'est absurde, donc aucun item
+ne se resout par elimination du ridicule. C'est la difference entre un exercice et une devinette, et
+elle est tenue.
+
+**Et une reussite de conception que je nomme parce qu'elle est rare.** Les couples
+`Demain, tu aideras tes camarades en classe.` / `Autrefois, tu aidais tes camarades en classe.` et
+`Demain, je jouerai dans le jardin.` / `Autrefois, je jouais tous les jours dans le jardin.` sont des
+paires minimales : meme verbe, meme complement, meme personne, seul le temps change. **Un enfant qui
+tombe sur les deux dans la meme partie voit la marque du temps toute seule**, sans qu'aucune consigne
+n'ait a le lui dire. Personne ne me l'avait demande et c'est de la bonne pedagogie.
+
+#### 5. Point 5 : ma propre redaction est ambigue, et je le dis avant de m'en servir
+
+Mon point 5 disait : *"les indices de ces items nomment la marque du temps et ne se contentent pas de
+nommer la personne"*. **Il se lit de deux facons, et je ne vais pas choisir celle qui arrange ma
+conclusion sans dire que l'autre existe.**
+
+- **Lecture A** - "la marque du temps" designe le complement de la phrase, au sens que je lui donne
+  moi-meme au point 3 ("un complement comme 'hier', 'demain', 'tous les jours'"). Alors **8 des 13
+  indices neufs la citent** : les six de l'imparfait, celui de `auront`, celui de `aide` ("Le mot
+  'autrefois' annonce l'imparfait", "Le mot 'demain' annonce le futur", "Le mot 'maintenant' annonce
+  le present"). **Les cinq autres indices de futur ne la citent pas** : ils disent "Au futur, avec
+  'je', le verbe 'jouer' se termine par '-erai'".
+- **Lecture B** - le contraste que ma phrase pose elle-meme est avec "se contenter de nommer la
+  personne". Alors **les 13 la satisfont** : chacun nomme son temps explicitement, aucun ne se
+  contente de la personne.
+
+**J'adopte la lecture B, et le motif est pedagogique, pas commode.** Au point 3 j'avais ecrit que la
+marque dans la phrase *"est ce qui rend le point 2 jouable sans ambiguite"* : elle sert la ou l'enfant
+doit **choisir** un temps. Or sur les cinq items de futur qui ne citent pas `Demain`, **les quatre
+propositions sont toutes au futur** : le temps n'est pas en jeu, seule la personne l'est, et citer
+`Demain` n'aiderait aucun enfant a choisir entre `jouerai` et `joueras`. Sur les **trois** items ou le
+temps est reellement en jeu, la marque est nommee, sur les trois. **La fonction de mon point 5 est
+donc servie exactement la ou elle mord.**
+
+**Point 5 : SATISFAIT.** Et l'ambiguite est la mienne : c'est ma redaction qui aurait du distinguer
+les items ou le temps se choisit de ceux ou il est donne. Je l'inscris en reserve 3 de la section 8,
+sans en faire un motif, et je ne l'opposerai a personne.
+
+**Point 6 - "j'aurai joue l'increment".** Joue : douze parties, les vingt-cinq items, chacun avec son
+indice apres trois echecs reels, jusqu'a l'ecran de fin de partie.
+
+**J'ai aussi verifie ce que mon point 5 ne demandait pas mais que je garde seule : la verite de ce qui
+est enseigne.** Les treize indices neufs sont vrais et chacun est borne au verbe qu'il nomme - le
+motif de mon refus du 2026-08-10 n'est pas reintroduit. **Une imprecision cependant, que je nomme
+parce qu'elle est de mon ressort** : trois indices d'imparfait disent "le verbe 'faire' / 'être' /
+'avoir' est irrégulier : il devient 'faisait' / 'étions' / 'aviez'". Ces phrases ne sont pas fausses -
+ces verbes **sont** irreguliers - mais elles laissent croire que l'irregularite explique la forme,
+alors qu'a l'imparfait les terminaisons `-ais -ais -ait -ions -iez -aient` sont **les memes pour tous
+les verbes** : c'est le radical qui change, jamais la terminaison. C'est justement ce qui rend
+l'imparfait apprenable, et ces trois indices le cachent. Reserve 2 de la section 8, non bloquante :
+rien de faux n'est enseigne, une regularite utile est seulement laissee de cote.
+
+#### 6. Ce que je credite au contenu de S8-4, avant de dire ce que je refuse
+
+Je le mets avant le motif, comme au refus du 2026-08-10, parce que le refus ne porte pas sur cela.
+
+- **Les treize items neufs sont exacts, un par un** : vingt-cinq couples personne/forme corrects,
+  soixante-quinze distracteurs tous formes reelles du meme verbe, treize indices vrais et bornes.
+- **Ma barre de six points est atteinte** sans qu'aucun de ses termes ait ete tire vers le bas, et
+  depassee sur le point 2.
+- **Le paquet passe de 12 a 25 items pour dix manches**, ce qui ameliore materiellement ma reserve 3.
+- **Deux paires minimales de temps** apparaissent, que personne n'avait demandees (section 4).
+- Et `marc-dev` a **evite le piege que j'avais moi-meme signale** au lieu de suivre ma consigne a la
+  lettre au prix de la mise en page. C'est la seconde fois qu'il verifie une de mes references plutot
+  que de l'appliquer les yeux fermes, et les deux fois il a eu raison.
+
+#### 7. Le motif du refus, et ce qui n'en fait pas partie
+
+**Le motif, unique, chiffre, neuf, et dont je suis la seule garde.**
+
+A 360 px de largeur reelle, dans le cabinet livre le meme jour, les quatre colonnes de ce paquet
+mesurent **152,00 px** (`(336 - 16 de cadre - 16 de gap) / 2` par rangee). Deux propositions du paquet
+sont **plus larges que leur propre boite** :
+
+| Proposition | Largeur des glyphes | Boite du bouton | Air de chaque cote |
+|---|---|---|---|
+| `mangeons` | **156,02 px** | 152,00 px | **-2,02 px** |
+| `cherchons` | **152,17 px** | 152,00 px | **-0,09 px** |
+| `cherchent` | 148,30 px | 152,00 px | +1,84 px |
+
+**Ce que l'enfant voit, et je l'ai regarde sur la capture, pas seulement dans les nombres.** Sur
+l'item "Vous ___ du chocolat.", `mangeons` s'ecrit **2,02 px au-dela de chaque bord de son bouton**.
+Dans la colonne de droite, son dernier `s` est pose sur la paroi bleu sombre du cabinet et non sur le
+bouton bleu clair auquel il appartient. Le mot **traverse la paroi de la machine**. Dans la colonne de
+gauche, il la traverse de l'autre cote.
+
+**Pourquoi c'est un motif et pas une reserve.**
+
+1. **Ce n'est pas une troncature et je ne le presente pas comme telle** - rien n'est coupe, rien n'est
+   comprime, `overflow` est bien `visible` et le mot reste lisible. **C'est une reponse qui sort de la
+   chose qu'il faut presser.** Mon acquis 3 et mon acquis 8, dont j'ai exige nommement le maintien
+   dans mon arbitrage du matin (section 7), portent sur ce que l'enfant lit **dans** sa colonne. Ici
+   il le lit a cheval sur la colonne et sur le cadre.
+2. **C'est le seul point de tout ce sprint ou une propriete que je garde seule a effectivement
+   mordu.** Je l'avais ecrite de ma main le 2026-08-10, reserve 1 de cette fiche : *"tout mot plus
+   large que 156 px sortira de sa colonne, et aucun test ne le verra jamais - `ADR-0025` a etabli que
+   le budget est une largeur de glyphes rendus."* Elle a mordu, et aucun test ne l'a vue. **Si je ne
+   la fais pas valoir aujourd'hui, elle n'a jamais rien voulu dire.**
+3. **C'est le cabinet et l'activation ensemble qui le produisent, et personne n'a mesure la
+   rencontre.** Sans le cabinet, la colonne fait 160 px et `mangeons` tient a 2,0 px. Sans
+   l'activation, aucun enfant n'atteint ce paquet a quatre colonnes. Les deux lots ont ete routes au
+   planning comme n'ayant "aucune dependance de fichier entre eux" - **et c'est exact, ils n'en
+   avaient aucune.** La dependance etait sur le budget de 360 px, et ce budget n'appartient a aucun
+   fichier : il n'appartient qu'a moi. **Je l'avais meme ecrit noir sur blanc** dans cette fiche, le
+   matin meme : *"Un cabinet et ce paquet en quatre colonnes ne tiennent pas ensemble a 360 px, et il
+   vaut mieux le savoir avant qu'apres."* Cela a ete su avant, et l'activation a eu lieu quand meme.
+4. **Le refus est actionnable sans avoir a me redemander ce que je veux dire** : il faut que chaque
+   proposition de ce paquet tienne dans une colonne de 152 px, glyphes compris, a 2 rem, sans
+   troncature ni compression. Deux propositions ne le font pas. **Comment** on y arrive n'est pas ma
+   decision : reduire le paquet a des formes plus courtes, ne pas mettre quatre colonnes dans le
+   cabinet a 360 px, ou retirer le jeu du catalogue le temps de trancher sa disposition - ce dernier
+   choix appartient a `camille-po`, les deux autres a `theo-archi`. Je decris, je ne prescris pas.
+
+**Ce qui ne fait PAS partie du motif : le pli. Et je dois etre honnete sur le fait que c'est le
+defaut le plus grave de cet ecran.**
+
+Mesure sur les 33 etats joues, pli a `y = 640` :
+
+| Etat | Bas du cabinet | Quatrieme cote sous le pli | Une rangee de reponses sous le pli |
+|---|---|---|---|
+| 8 etats sans indice | 540..636 px | **0 / 8** | **0 / 8** |
+| 25 etats avec indice | 636..792 px | **24 / 25** | **24 / 25** |
+
+Autrement dit : **des que l'indice s'affiche - c'est-a-dire exactement apres trois echecs consecutifs,
+au moment ou l'enfant en a le plus besoin - deux des quatre reponses sont coupees par le bas de
+l'ecran, et le cabinet n'a plus de fond visible. Sur 24 items sur 25.** L'aide arrive et emporte la
+moitie des reponses avec elle.
+
+**Un lecteur trouvera etrange que je refuse sur 2 px et pas sur cela, et il aura raison de le
+trouver etrange. Voici pourquoi je m'y tiens quand meme :**
+
+- c'est le defaut de `DEC-0016`, dont j'ai etabli moi-meme le 2026-08-10 que la cause est la longueur
+  de l'enonce a 2 rem, pas le nombre de propositions ni la mise en page ;
+- je l'ai **refuse comme motif sur "Le bon petit mot"**, jeu du catalogue dont le Done est accorde, et
+  qui le porte encore aujourd'hui sur 11 etats sur 30. **Je ne peux pas appliquer deux barres a deux
+  paquets pour un seul defaut** - c'est l'incoherence que j'ai refusee ce matin-la, et elle ne devient
+  pas acceptable parce qu'elle m'arrangerait ;
+- `DEC-0017` l'a explicitement laisse hors du perimetre de ce sprint, et mon propre arbitrage du matin
+  a ecrit que je ne le rouvrais pas ;
+- et **une part de son aggravation est mon erreur** : le cabinet y ajoute 40 px contre une limite de
+  150 px que j'avais posee sur "Le bon son" en le croyant a tort le cas le plus charge du catalogue.
+
+**Donc : constat neuf, date, chiffre, destinataire `camille-po`, sous `DEC-0016` - et pas un motif.**
+Mais je dis clairement ce que cela implique, pour qu'on ne se trompe pas sur ma porte : **si
+`camille-po` veut savoir ce qui rend vraiment ce jeu inutilisable a 360 px, c'est cette ligne-la et
+non mes 2 px.** Mes 2 px sont ce que je peux refuser sans me contredire ; le pli est ce qui fait le
+plus de mal a l'enfant. Les deux doivent etre traites, et `DEC-0016` devrait cesser d'etre une
+intention non ouverte au backlog.
+
+#### 8. Reserves - a convertir en stories par `camille-po`, non bloquantes
+
+**Les six reserves de mon refus du 2026-08-10 et les deux du 2026-08-10 second audit restent
+ouvertes**, et je ne les reformule pas. Deux evoluent, et je le dis :
+
+- **reserve 3 (douze items pour dix manches)** : **materiellement amelioree**, le paquet est a 25
+  items. Elle reste ouverte pour la seule part qui subsiste, la repetition due a la "manche plus
+  simple" (section 0 bis, point A) ;
+- **reserve 1 (`mangeons` a 2,0 px)** : elle n'est plus une reserve, **elle est devenue le motif de ce
+  refus** (section 7). Elle sort donc de cette liste, non parce qu'elle est traitee mais parce qu'elle
+  a mordu.
+
+**Reserve 6 (le niveau non annonce sur l'accueil) empire, et je le chiffre** : l'accueil propose
+desormais **trois** jeux de CM1 non marques a cote d'un seul jeu de CP marque (`Calcul CP`). Un enfant
+de CP qui lit "Le bon verbe" n'a aucun moyen de savoir que ce n'est pas pour lui. Toujours une question
+produit, toujours pas un motif.
+
+**J'en ajoute quatre, datees du 2026-08-11.**
+
+1. **L'imparfait ne porte aucun verbe du 2e groupe.** Section 2. C'est le temps ou apparait l'infixe
+   `-iss-` (`nous finissions`, `ils finissaient`), et c'est la difficulte principale de l'imparfait au
+   CM1 : elle est entierement absente du paquet. **Ma barre ne la demandait pas et je ne la lui
+   oppose pas** ; elle est ouverte sur ma propre redaction. Elle ne peut pas etre traitee avant que
+   la largeur de colonne soit reglee - `finissais` est la forme la plus courte disponible et le motif
+   de la section 7 montre que la marge est deja nulle.
+2. **Trois indices d'imparfait appellent "irregulier" ce qui ne l'est pas au niveau ou l'enfant
+   regarde.** Section 5, fin. `faire`, `être` et `avoir` sont bien des verbes irreguliers, mais a
+   l'imparfait les six terminaisons sont les memes pour tous les verbes ; seul le radical change. Ces
+   indices masquent la regularite qui rend le temps apprenable. Rien de faux n'est enseigne, une
+   occasion est perdue.
+3. **Ma propre redaction du point 5 etait ambigue.** Section 5. Elle ne distinguait pas les items ou
+   le temps se choisit de ceux ou il est donne. Consequence concrete et petite : sur les cinq items de
+   futur qui ne citent pas `Demain`, un enfant n'apprend pas par l'indice que c'est `Demain` qui
+   annonce le futur. La correction est de deux mots par indice.
+4. **La marque du temps est toujours le premier mot de la phrase, et elle est totalement predictive.**
+   `Demain,` sur les six items de futur, `Autrefois,` sur les six d'imparfait, `Maintenant,` sur le
+   treizieme de present : 13 items sur 13. Un enfant peut donc trier le temps sur le premier mot
+   **sans lire ni le verbe ni la phrase** - c'est le meme raccourci que ma reserve 1 du 2026-08-10
+   (le sujet toujours pronominal et colle au trou), a un autre endroit. Mon point 3 demandait que la
+   marque soit reperable, elle l'est, donc cela ne bloque rien ; mais une marque en fin de phrase, ou
+   un item sur trois sans marque explicite, ferait travailler la meme competence plus haut.
+
+**Et un constat mesure, qui n'est ni un motif ni une reserve, parce qu'il porte sur le tirage et non
+sur le paquet** : seuls **3 items sur 25** opposent deux temps entre eux. Le tirage etant sans remise,
+la probabilite qu'une partie de dix manches n'en contienne **aucun** est de
+`C(22,10) / C(25,10)` = **19,8 %**. Environ **une partie sur cinq** ne demande donc jamais a l'enfant
+d'identifier un temps. Ma barre parlait du paquet et elle est satisfaite ; je donne le chiffre parce
+qu'il dit ou est la marge de progres, et parce que je preferais le calculer que le supposer.
+
+#### 9. Ce dont je reste seule garde sur ce jeu
+
+- **La verite de ce qui est enseigne dans un indice.** Inchange. `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest`
+  garde la coherence interne, et il est reste vert sur les treize indices neufs - ce qui est un vrai
+  gain. Mais "cette regle de grammaire est-elle vraie, et enseigne-t-elle la bonne chose" reste hors
+  de portee d'un automate : c'est ce qui m'a permis de voir la reserve 2 ci-dessus, qu'aucune CI ne
+  pouvait voir.
+- **Qu'aucun item n'admette deux lectures correctes.** Non automatisable, verifie a la main sur les
+  vingt-cinq items par `marc-dev` puis par moi, separement. C'est la bonne facon de faire pour un
+  critere de cette nature, et je la note comme telle.
+- **Qu'un mot tienne dans sa colonne.** **Ce point vient de mordre** (section 7). C'est le seul de mes
+  points de garde solitaire qui ait produit un refus ce sprint, et il l'a produit dix heures apres que
+  j'aie ecrit qu'il le produirait.
+- **Que le quatrieme cote du cabinet soit dans l'ecran** (C1), qui ne l'est pas sur 24 items sur 25 :
+  aucun automate ne voit une forme, et `ADR-0025` a etabli que ce budget n'est pas gardable en CI.
+- **Tout ce que garde le verdict transverse** du meme jour (`FICHE-bandit-manchot-additions-cp.md`,
+  section 9), dont l'acquis 11 sur le lexique de jeu d'argent, que j'ai scanne moi-meme sur le rendu
+  parce que personne d'autre ne le fait.
+
+#### 10. Suites hors de ma main
+
+- **Pour `camille-po`** : le motif de la section 7 est un **motif, pas une story** ; les quatre
+  reserves neuves de la section 8 et le constat de pli le sont aussi. **Ma barre est levee** : la ligne
+  de la matrice peut passer a `couvert-valide`, et c'est le seul changement de statut que ce sprint
+  autorise (`DEC-0017`, objectif gele). **Je n'ai pas edite cette ligne.** Le sort du jeu au catalogue
+  pendant la correction est sa decision. Et je repete ce que la section 7 dit : `DEC-0016` merite mieux
+  qu'une intention non ouverte au backlog.
+- **Pour `theo-archi`**, comme symptomes et non comme conception : quatre colonnes de 152 px ne
+  contiennent pas les glyphes de ce paquet a 2 rem ; le budget vertical du cabinet doit etre repose sur
+  ce jeu et sur "Le bon petit mot", pas sur "Le bon son" ou je l'avais pose a tort.
+- **Pour `marc-dev`, et je le dis parce que c'est utile** : son interpretation de mon point 1 est
+  retenue, ses treize items sont exacts, sa relecture manuelle des points 4 et 5 etait la bonne
+  methode, et sa mesure de largeur etait juste sur l'etat qu'il avait sous les yeux. **Le refus ne
+  porte sur rien de ce qu'il a ecrit dans le paquet.** Il porte sur la mise au catalogue d'un jeu dont
+  la disposition n'a jamais ete arretee - une question que j'avais moi-meme laissee ouverte.
+- **Un refus renvoie l'increment a `camille-po`, qui en fait du backlog. Il ne bloque pas le sprint
+  suivant**, et rien du contenu fusionne n'a besoin d'etre defait : les vingt-cinq items, les
+  soixante-quinze distracteurs et les vingt-cinq indices sont acquis.
+- **Je n'efface rien** : mon refus du 2026-08-10, mon Done du second audit et mes arbitrages
+  prealables restent lisibles plus bas, dans l'ordre, avec leurs dates.
+
 ### Arbitrage prealable au developpement - cabinet visible de la machine, du 2026-08-11
 
 **Ce bloc n'est pas un Done pedagogique et il est degrade** : le cabinet n'est pas ecrit. Il ne
@@ -111,7 +543,7 @@ jeu si un jour il entre au catalogue. Ce qui concerne **ce jeu-ci** :
 3. **Ma reserve du 2026-08-10 sur le cumul du decalage au-dela de quatre colonnes reste ouverte** et
    reste ma garde. Un cabinet n'y change rien.
 
-### Verdict courant - second audit, increment livre en s07, du 2026-08-10
+### Verdict - second audit, increment livre en s07, du 2026-08-10
 
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mon refus du 2026-08-10 est
   leve** : son motif unique - cinq indices enoncant une regle de conjugaison fausse - est traite, et

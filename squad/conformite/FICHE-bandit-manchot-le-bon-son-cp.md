@@ -50,6 +50,31 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
+### Verdict courant - chantier du cabinet (S8-1, S8-2, S8-3), du 2026-08-11 : VALIDE SOUS RESERVE
+
+**Le verdict complet est ecrit une seule fois, dans `FICHE-bandit-manchot-additions-cp.md`, bloc du
+2026-08-11** : la mecanique, l'habillage, l'ecran de retour et l'ecran de fin de partie sont communs
+aux quatre jeux du bandit manchot, et je n'en ecris pas quatre versions. **Audit joue, non degrade.**
+Ce qui concerne **ce jeu-ci**, mesure sur le rendu livre a 360 x 640, apres cinq parties jouees et
+les quinze items vus, chacun aussi avec son indice obtenu par trois echecs consecutifs reels :
+
+1. **C1 tenue sans reserve sur ce jeu.** Le quatrieme cote du cabinet est dans l'ecran sur **les 19
+   etats mesures** (14 avec indice, 5 sans) : bas du cabinet a `y = 450` sans indice et `y = 546`
+   avec, soit **94 px au-dessus du pli** dans le pire cas. C'est le seul jeu de francais, avec
+   "Calcul CP", ou ma reserve 1 de pli ne mord pas.
+2. **Le budget est tenu largement.** Colonnes a **96,00 px** contre le plancher de 79 px que j'avais
+   fixe pour ce paquet ; `on`, le mot le plus large, fait 38,92 px et garde **28,53 px d'air** de
+   chaque cote. Aucune troncature, aucune coupure, police a 32 px sur les quinze items.
+3. **Ma reserve 6 est LEVEE.** C'est sur ce jeu que je l'avais ouverte : l'explication d'une variation
+   graphemique porte desormais un aplat `#eaf1f7` et un cadre complet de 2 px sur les quatre cotes,
+   **identique apres un coup juste et apres un coup faux** au pixel, apres le verdict, sans rien
+   retirer au bandeau juste/faux, et l'ensemble tient a 174 px au-dessus du pli. Les cinq proprietes
+   que j'avais ecrites sont tenues une par une (section 5 de l'autre fiche).
+4. **Mon acquis 12 tient : aucun item n'est resoluble par appariement visuel.** Le cabinet porte une
+   seule image, une etoile de 20 x 20 px, **la meme sur les quinze items**, sur le bandeau et jamais
+   au-dessus d'une colonne. Aucune image dans une boite de proposition. C'etait le risque que je
+   nommais comme mon point de garde le plus important de ce chantier, et il n'a pas ete pris.
+
 ### Arbitrage prealable au developpement - cabinet visible de la machine, du 2026-08-11
 
 **Ce bloc n'est pas un Done pedagogique et il est degrade** : le cabinet n'est pas ecrit. Il ne
