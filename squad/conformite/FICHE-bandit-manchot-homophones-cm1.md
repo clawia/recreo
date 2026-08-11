@@ -57,6 +57,30 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
+### Verdict courant - chantier du cabinet (S8-1, S8-2, S8-3), du 2026-08-11 : VALIDE SOUS RESERVE
+
+**Le verdict complet est ecrit une seule fois, dans `FICHE-bandit-manchot-additions-cp.md`, bloc du
+2026-08-11** : la mecanique et l'habillage sont communs aux quatre jeux du bandit manchot. **Audit
+joue, non degrade** : onze parties de ce jeu, les vingt-quatre items vus, vingt-deux d'entre eux aussi
+avec leur indice obtenu par trois echecs consecutifs reels, mesures a 360 x 640. Ce qui concerne **ce
+jeu-ci** :
+
+1. **Le budget horizontal est tenu largement.** Colonnes a **152,00 px** contre le plancher de 106 px
+   que j'avais fixe pour ce paquet a deux colonnes ; `mais` fait 69,70 px et garde **41,14 px d'air**
+   de chaque cote. Aucune troncature, aucune coupure, police a 32 px sur les vingt-quatre items.
+   **Mon Done du 2026-08-06 n'est pas atteint par le cabinet.**
+2. **Ma reserve 1 de la section 8 de l'autre fiche mord ici, et c'est le jeu ou elle mord le plus
+   longtemps.** Le quatrieme cote du cabinet passe sous le pli sur **11 etats sur 30** : 9 des 22
+   etats avec indice et 2 des 8 sans. Bas du cabinet mesure de `y = 450` a `y = 846`.
+   **Ce n'est pas un motif de refus, et je dis pourquoi plutot que de le laisser deviner** : c'est le
+   defaut de pli de `DEC-0016`, que j'ai etabli moi-meme en s07 sur ce jeu precisement (deux boutons a
+   `y = 717` et `y = 790`), que j'ai refuse d'opposer a ce Done a l'epoque, et que `DEC-0017` a laisse
+   hors du perimetre de ce sprint. Le cabinet l'aggrave de **40 px** - et ma limite de 150 px avait
+   ete posee sur "Le bon son", le jeu le plus court, ce qui est mon erreur et non celle d'un
+   developpeur. Je ne deplace pas mes poteaux : je maintiens mon Done et j'inscris le chiffre.
+3. **Mes reserves de contenu du 2026-08-06 restent ouvertes et inchangees**, aucune n'a ete traitee ce
+   sprint et aucune n'etait censee l'etre.
+
 ### Arbitrage prealable au developpement - cabinet visible de la machine, du 2026-08-11
 
 **Ce bloc n'est pas un Done pedagogique et il est degrade** : le cabinet n'est pas ecrit. Il ne

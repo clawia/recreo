@@ -61,6 +61,18 @@
   maintien. Ce n'est pas un Done pedagogique, et **cet arbitrage est degrade** : le cabinet n'est pas
   ecrit, quatorze points seront reverifies sur le rendu livre. Ce bloc vaut pour les quatre jeux du
   bandit manchot.
+  **Chantier du cabinet (S8-1, S8-2, S8-3), Done pedagogique prononce le 2026-08-11 sur l'increment
+  livre (commit `533967d`) : VALIDE SOUS RESERVE.** Mon audit degrade de l'arbitrage prealable est
+  **leve** : j'ai joue, releve l'animation image par image et epuise mes quatorze points de
+  reverification, un par un. **C1 a C6 sont tenues** sur "Calcul CP" et "Le bon son". **Mes deux
+  reserves ouvertes sont LEVEES** : la fin du mouvement se termine a 0 px sur la derniere image (mes
+  13 px de s07 ont disparu), et l'explication porte un aplat et un cadre complet identiques apres
+  juste et apres faux. **Deux reserves nouvelles et datees, aucune n'est un refus** : le quatrieme
+  cote du cabinet passe sous le pli sur "Le bon petit mot" et sur "Le bon verbe", et le contraste
+  entre le cadre et les colonnes est de 1,71:1. **Je corrige une erreur qui est la mienne** : mon
+  budget vertical de l'arbitrage prealable a ete mesure sur "Le bon son", que j'avais appele "le cas
+  le plus charge du catalogue" alors qu'il ne l'est pas. Ce bloc vaut pour les quatre jeux du bandit
+  manchot.
 - **Derniere mise a jour** : 2026-08-11
 
 ## Competences visees
@@ -128,6 +140,369 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Verdict courant - chantier du cabinet (S8-1, S8-2, S8-3), prononce sur l'increment livre, du 2026-08-11
+
+- **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mes deux reserves ouvertes sont
+  levees** : la reserve unique de s07 sur la fin du mouvement, et la reserve 6 de "Le bon son" sur la
+  distinction de l'explication. Deux reserves nouvelles et datees sont ouvertes en section 8. Aucun
+  verdict anterieur n'est efface : ils restent lisibles plus bas avec leurs dates.
+- **Date** : 2026-08-11.
+- **Commit audite** : `533967d`, tete de `round-two`.
+- **Perimetre de ce verdict** : S8-1 (le cabinet, le disque qui quitte l'accueil), S8-2 (la fin du
+  mouvement) et S8-3 (la distinction de l'explication). **L'increment de la conjugaison (S8-4 et
+  l'activation de "Le bon verbe") ne fait pas partie de ce verdict** : je le juge separement dans
+  `FICHE-bandit-manchot-conjugaison-present-cm1.md`, et il n'est pas valide.
+- **Done technique** : acquis, et je ne le rediscute pas.
+- **Ligne de matrice** : **aucune ne change sur ce verdict.** Ce chantier ne porte aucune competence
+  du programme : il n'y a aucune ligne a confronter au referentiel. C'est la quatrieme fois que
+  l'etape 2 de ma methode est sans objet sur ce chantier d'habillage, et je le dis plutot que de la
+  simuler.
+
+#### 0. Comment j'ai joue, et ce que je ne declare PAS degrade cette fois
+
+**Audit joue, non degrade.** L'arbitrage prealable du meme jour etait degrade parce que le cabinet
+n'etait pas ecrit ; il l'est, je l'ai regarde, et j'ai epuise ma liste fermee de quatorze points.
+
+- worktree dedie hors de l'arbre du depot, lignee verifiee par `outils/verifier-lignee.sh` : "le
+  worktree sur la branche 's08-nadia-verdicts' descend de la lignee de round-two". **Et je nomme mon
+  propre manquement du matin** : mon arbitrage prealable (`cb4f40e`) a ete ecrit directement sur
+  `round-two`, sans branche ni worktree, ce que `sofia-sm` a constate au planning. C'est ma faute,
+  elle est reelle, et ce verdict-ci est ecrit dans un worktree dedie ;
+- JDK constate par `outils/verifier-jdk.sh` : `java du PATH : 1.8.0_202 | JDK de compilation :
+  21.0.10 | JAVA_HOME : vide | toolchains lu par Maven : non (fichier present sous un nom non lu)`.
+  `JAVA_HOME` pointe sur ce JDK 21 le temps de la commande, jamais ecrit dans un fichier commite ;
+- fat jar reconstruit depuis mon worktree et lance sur un port dedie, sur ce JDK 21 ;
+- **parties reellement jouees contre l'application**, session portee par un bocal a temoins, en
+  parlant a ses vraies routes (`/parties/<jeu>`, `/parties/<jeu>/coups`, `/parties/<jeu>/manche`) :
+  **1 partie de "Calcul CP", 5 de "Le bon son", 11 de "Le bon petit mot", 12 de "Le bon verbe"**,
+  ratees a chaque manche pour faire venir l'indice, plus des parties jouees juste pour comparer les
+  deux ecrans de retour, plus 24 parties supplementaires pour verifier le tirage. **Les quatre ecrans
+  de fin de partie ont ete atteints en jouant, pas fabriques** ;
+- **balayage exhaustif des items** : les **25** items de "Le bon verbe", les **24** de "Le bon petit
+  mot", les **15** de "Le bon son" ont tous ete vus, **chacun aussi avec son indice** obtenu par
+  trois echecs consecutifs reels. 203 fragments distincts mesures ;
+- **mesures a 360 px de largeur reelle et 640 px de hauteur reelle**, fragments servis par le serveur
+  et poses sous les **deux feuilles reellement servies** dans un iframe de 360 x 640 exactement,
+  jamais une fenetre de 360 px (`ADR-0025` : sous 516 px Chrome met la page en page pour 500 px et la
+  decoupe). Geometrie relevee au centieme de pixel sur les boites rendues et sur les glyphes eux-memes
+  (`Range.getBoundingClientRect`), pas sur des valeurs declarees ;
+- **captures a 360 x 640 par la commande versionnee du depot** (`outils/mesurer-rendu.sh 360 <url>
+  <png> 640`), qui rend bien "invocation valide (largeur CSS mesuree : 360 px | hauteur CSS mesuree :
+  640 px, pli a y = 640 px)" ;
+- **l'animation relevee image par image** sur le rendu reel, 91 releves sur 900 ms, hauteur de voile
+  visible calculee a chaque image sur les trois colonnes ;
+- **le repli de mouvement joue dans un vrai navigateur** avec `prefers-reduced-motion: reduce` actif.
+
+**La seule limite de ma methode, et je la nomme plutot que de la laisser deviner.** Les ecrans ont
+ete obtenus en demandant au serveur ses vrais fragments par ses vraies routes, puis en les posant
+sous les vraies feuilles. La mecanique, le contenu, le tirage, les aides et les verdicts sont donc
+ceux de l'application. Ce que je n'exerce pas par la, c'est le remplacement de la zone `#jeu` par
+htmx lui-meme : je verifie ce que le serveur envoie et ce que le navigateur en fait, pas la
+plomberie de l'echange. Aucun de mes quatorze points ne porte sur cette plomberie.
+
+#### 0 bis. Ce que je corrige de mes propres constats, avant de m'appuyer dessus
+
+**A. Mon budget vertical a ete mesure sur le mauvais jeu, et c'est ma faute.** Section 3 de mon
+arbitrage prealable : *"L'axe vertical, mesure sur le cas le plus charge du catalogue. Joue
+aujourd'hui : 'Le bon son' [...] Il reste donc 150 px entre le bas des colonnes et le pli."* **"Le
+bon son" n'est pas le cas le plus charge du catalogue, et je le savais** : mon propre constat de s07
+(`DEC-0016`) mesurait deja deux boutons de "Le bon petit mot" a `y = 717` et `y = 790`, sous le pli.
+J'ai donc chiffre une limite de 150 px sur le jeu le plus court au lieu du plus long. Le cabinet
+respecte la limite que j'ai ecrite - il ajoute **40 px** - et ma limite etait posee sur le mauvais
+cas. La consequence est en section 8, reserve 1 : elle est **mienne**, pas celle de `lea-dev`.
+
+**B. Mon propre instrument a lu -1,79 px la ou le rendu vaut 0, et je le dis avant d'annoncer un
+chiffre.** A `t = 590 ms`, mon releve donne une hauteur de voile visible de **-1,79 px**. Ce n'est
+pas un etat rendu - une hauteur negative n'existe pas a l'ecran. C'est mon expression reguliere qui a
+lu `inset(100% 0px 2.41864e-07%)` en prenant `2.41864` pour la valeur du bas au lieu de
+`2.41864e-07`. La valeur reelle du bas est nulle a la septieme decimale : la hauteur visible de cette
+image est **0 px**. Le chiffre que j'annonce en section 4 est donc 0 px, apres correction de mon
+instrument et non apres arrondi du resultat.
+
+**C. J'ai failli corriger a tort ma reserve 3 sur ce jeu, et je dis ce que j'ai verifie.** En jouant
+15 parties, j'ai vu un item repete dans 7 d'entre elles, et j'ai d'abord conclu que le tirage etait
+avec remise - ce qui aurait fait tomber ma reserve *"une partie montre dix items sur douze"*. **J'ai
+verifie avant d'ecrire, et ma conclusion etait fausse.** Le tirage est bien sans remise
+(`ListContentSource.next` ecarte les items deja tires) : 24 parties jouees sans jamais rater ni
+jamais reussir ne contiennent **aucune** repetition. Les repetitions que j'avais vues viennent de la
+"manche plus simple" de `DEC-0004`, qui **reserve un item deja reussi** apres trois echecs
+consecutifs - un comportement valide, pas un defaut de tirage. Ma reserve tient, avec cette nuance
+que je n'y avais pas mise.
+
+#### 1. C1 a C6, une par une, sur le rendu joue
+
+Chiffres releves a 360 px de largeur reelle, sur les quatre jeux du catalogue.
+
+**C1 - un seul objet dont l'enfant peut montrer le tour. TENUE sur l'epaisseur et le contour, PAS
+sur le pli de deux jeux.**
+
+| Ce que j'exigeais | Ce que je mesure |
+|---|---|
+| contour ferme sur les quatre cotes | **ferme** : `.cabinet` va de `x = 12` a `x = 348`, cadre continu de la meme couleur sur les quatre cotes, coins arrondis de 12 px |
+| au moins 8 px sur chacun des quatre | **8 px exactement** a gauche, a droite, en haut et en bas (`border-*-width: 8px` x 4), **plus** un bandeau de 32 px en haut et un socle de 16 px en bas, de la meme couleur : la paroi visible fait **40 px** en haut, **24 px** en bas, **8 px** de chaque cote |
+| aucun cote coupe par le bord de l'ecran | **aucun** : le cabinet est a 12 px de chaque bord lateral sur les quatre jeux |
+| aucun cote coupe par le pli | **tenu sur "Calcul CP" (0 etat sur 10) et "Le bon son" (0 sur 19). NON tenu sur "Le bon petit mot" (11 etats sur 30) et sur "Le bon verbe" (24 sur 33)** |
+
+**Et j'ai regarde l'image, pas seulement les nombres.** Sur "Le bon son", le cabinet se lit comme un
+coffret bleu sombre a coins arrondis, avec une etoile blanche centree en haut et trois cases bleu
+clair dedans. **Un enfant de 6 ans peut en faire le tour du doigt.** C'est ce que je demandais et je
+ne l'avais pas ; l'ecran de s07 etait trois aplats poses sur une page blanche. Le cabinet ne repare
+pas un defaut de gout : il donne au mouvement l'objet qui le rend intelligible, et il le fait.
+
+**C2 - l'objet contient les reponses, et rien d'autre qui se presse. TENUE, sur les quatre jeux.**
+Les seuls elements pressables a l'interieur du contour sont les propositions, verifie sur les 203
+fragments : aucun `data-role="sortie"`, aucun autre bouton, aucun lien. `Les jeux` est a
+`y = 102..156`, le cabinet commence au plus haut a `y = 312` - ils ne se recouvrent jamais. Consigne,
+enonce et indice restent au-dessus, hors du cadre.
+
+**C3 - la machine attend, elle ne decide pas. TENUE.** `animation-name: none` sur `.cabinet`, sur
+`.cabinet-bandeau` et sur `.cabinet-socle`. J'ai balaye **tous** les elements de **tous** les
+fragments a la recherche d'un `animation-name` autre que `none` en dehors de `.proposition` : la
+liste est **vide** sur les 203. Le cabinet est pixel pour pixel le meme au repos, pendant le
+defilement et 2 s apres l'arret - il n'a aucune regle capable de le changer. C'est la charniere de
+tout mon avis, et elle tient.
+
+**C4 - la machine ne dit jamais le resultat. TENUE, par absence.** Le cabinet **n'existe pas** sur
+l'ecran de retour : verifie dans le HTML servi de chaque fragment de retour joue, juste et faux. La
+propriete est donc tenue de la seule maniere qui ne puisse pas se defaire par accident. **La dette de
+test que `theo-archi` a inscrite au planning sur C4 n'a pas besoin d'etre fermee par un test de
+couplage** : il n'y a rien a decoupler, puisque le balisage du cabinet ne vit que dans
+`fragments/manche.html`. Ce qui reste a garder, c'est **cette absence**, et c'est moi qui la garde.
+
+**C5 - les images sont sur la carrosserie et ne varient jamais. TENUE, et c'est mon point de garde le
+plus important de ce chantier.** Sur les 203 fragments, y compris les 25 items de "Le bon verbe" et
+les 24 de "Le bon petit mot" :
+
+1. **aucune image, aucun pictogramme, aucun aplat decoratif dans une boite de proposition.** Le seul
+   pseudo-element d'une proposition est le voile de mouvement, deja valide ;
+2. **un seul jeu d'images observe, une seule fois** : une etoile a cinq branches, `content: ""`,
+   **20 x 20 px**, blanche, **une seule valeur de `clip-path`**, centree sur le bandeau. Un seul
+   couple de hauteurs bandeau/socle, `(32, 16)`. **Elle ne depend ni de l'item, ni du numero de
+   colonne, ni de la reponse attendue** : elle est dessinee par une regle statique sur un
+   pseudo-element du bandeau, elle ne peut structurellement pas varier. Jamais au-dessus d'une
+   colonne : une seule etoile pour tout le cabinet.
+
+C'etait le point ou un jeu de lecture pouvait devenir un jeu d'images sans qu'une ligne rougisse. Il
+ne l'est pas devenu.
+
+**C6 - aucun code du jeu d'argent. TENUE, et c'est l'acquis 11 dont je suis desormais la seule
+garde.** `lea-dev` n'a ecrit aucun scan de lexique, au motif que son cabinet ne porte aucun texte -
+deux `div` `aria-hidden` vides. **J'ai verifie ce motif** : le texte total des deux bandes du cabinet
+est la chaine vide, sur les 203 fragments. Mais son motif ne couvre que le cabinet, alors que mon
+acquis 11 porte sur tout ce que l'enfant lit. **J'ai donc fait le scan moi-meme, sur le rendu** :
+**298 textes distincts** rendus par les 203 fragments, plus **tous** les attributs `alt`,
+`aria-label`, `title` et `placeholder` (un seul dans toute l'application : `aria-label=Menu
+principal`). Recherche de `machine a sous`, `bandit`, `manchot`, `jackpot`, `mise`, `piece`, `jeton`,
+`credit`, `gain`, `levier`, `manette`, `fente`, `coupelle`, `pari`, `tirage`, et des symboles
+canoniques `cerise`, `citron`, `cloche`, `couronne`, `diamant`, `BAR`, `777` : **aucune occurrence.**
+Aucune fente a piece, aucune coupelle, aucun afficheur de credit, aucun bras lateral ; la seule forme
+decorative est une etoile. **Personne d'autre ne verifie ce point, et je l'ai verifie en jouant.**
+
+#### 2. Le budget, remesure au pixel : le bon payeur a paye
+
+C'etait le point qu'aucune proposition de forme ne pouvait ignorer. Il a ete tenu.
+
+| Jeu | colonnes | largeur mesuree | plancher que j'avais fixe | air minimale autour du mot |
+|---|---|---|---|---|
+| Calcul CP | 3 | **96,00 px** | 77 px | 29,59 px (`10`, 36,81 px) |
+| Le bon son | 3 | **96,00 px** | 79 px | 28,53 px (`on`, 38,92 px) |
+| Le bon petit mot | 2 | **152,00 px** | 106 px | 41,14 px (`mais`, 69,70 px) |
+| Le bon verbe | 4 | **152,00 px** | (hors de mon tableau) | **-2,02 px** (`mangeons`, 156,02 px) |
+
+- **96 px a trois colonnes et 152 px a deux : exactement les deux chiffres que j'avais calcules**
+  dans mon arbitrage. Le cadre s'est paye sur la largeur des colonnes, et sur rien d'autre.
+- **`gap` : 16 px**, mesure sur les quatre jeux, a l'egalite exacte de mon acquis 4. Payeur refuse,
+  non preleve.
+- **rembourrage lateral de `.proposition` : 20 px** de chaque cote, mesure, inchange. Payeur refuse,
+  non preleve.
+- **`.container` : 12 px** de chaque cote, intacts - le cabinet ne touche aucun bord d'ecran.
+- **Taille de police des propositions : 32 px** partout, mon acquis 3 tenu ; cible tactile
+  **96 x 74** ou **152 x 74 px**, tres au-dessus de 44 px.
+
+**La derniere ligne de ce tableau est un defaut, et il n'appartient pas a ce verdict.** `mangeons`
+sort de sa boite de 2,02 px de chaque cote. **Le payeur est correct** - c'est bien la largeur des
+colonnes qui a paye, comme je l'avais autorise. Ce qui n'a pas ete verifie, c'est la rencontre entre
+ce payeur et un paquet que j'avais explicitement laisse **hors** de mon tableau de planchers. Ce
+defaut n'apparait que sur "Le bon verbe", il est le motif de mon second verdict, et je le traite
+la-bas : `FICHE-bandit-manchot-conjugaison-present-cm1.md`, verdict du 2026-08-11. **Je ne le
+retiens pas contre `lea-dev`** : elle a tenu la lettre et l'esprit du budget que j'avais ecrit, sur
+les trois jeux dont j'avais chiffre les planchers.
+
+#### 3. Le pli : ce que j'ai mesure, et pourquoi ce n'est pas un motif ici
+
+Le quatrieme cote du cabinet doit etre dans l'image (C1). Mesure sur chaque etat joue, pli a
+`y = 640` :
+
+| Jeu | etats sans indice | etats avec indice | quatrieme cote sous le pli |
+|---|---|---|---|
+| Calcul CP | 10, bas du cabinet 450..516 | - | **0 / 10** |
+| Le bon son | 5, bas 450 | 14, bas 546 | **0 / 19** |
+| Le bon petit mot | 8, bas 450..690 | 22, bas 546..846 | **11 / 30** |
+| Le bon verbe | 8, bas 540..636 | 25, bas 636..792 | **24 / 33** |
+
+**Le cabinet ajoute 40 px de hauteur totale**, bandeau et socle compris, contre la limite dure de
+150 px et la cible de 100 px que j'avais ecrites. Il respecte mon budget vertical declare. **Le
+defaut n'est pas dans le cabinet, il est dans ma limite** : je l'avais posee sur "Le bon son" en le
+croyant le cas le plus charge (section 0 bis, point A).
+
+**Je ne fais pas du pli un motif de refus sur ce verdict**, et je m'en tiens a ce que j'ai ecrit en
+s07 : c'est le defaut de `DEC-0016`, transverse, dont j'ai etabli moi-meme que la cause est la
+longueur de l'enonce a 2 rem, que j'ai refuse d'opposer a "Le bon petit mot" dont le Done est
+accorde, et que `DEC-0017` a explicitement laisse hors du perimetre de ce sprint. **Je ne peux pas
+l'opposer a un jeu et pas a l'autre pour un seul defaut.** Il devient la reserve 1 de la section 8,
+datee, chiffree, aggravee de 40 px par ce chantier.
+
+#### 4. S8-2 : ma reserve unique de s07 est LEVEE, releve image par image
+
+`theo-archi` a change une seule valeur d'arrivee, `inset(80% 0 0 0)` en `inset(100% 0 0 0)`. Je l'ai
+verifie en jouant, pas dans la feuille : 91 releves sur 900 ms, hauteur de voile visible calculee a
+chaque image sur les trois colonnes d'un bouton de 74 px.
+
+| Ce que j'exigeais | Aujourd'hui | Etat |
+|---|---|---|
+| 0 px de voile visible sur la derniere image | derniere valeur non nulle **0,021 px** a `t = 580 ms`, puis **0 px** ; contre **13 px** en s07 | **tenu** |
+| derniere image identique a l'etat de repos | derniere image `inset(100% 0px 2.4e-07%)` = 0 px visible, repos `inset(0px 0px 100%)` = 0 px visible : **la meme image** | **tenu** |
+| pas plus de 3 px de baisse entre deux images sur les 150 dernieres ms | **0,27 px** au maximum (colonne 1 : 1,384 - 1,118 - 0,876 - 0,659 - 0,469 - 0,308 - 0,178 - 0,081 - 0,021 - 0) ; **0,26 px** sur la colonne 3 | **tenu, avec onze fois de marge** |
+
+Le reste de ce que j'avais valide ne bouge pas et je l'ai remesure : duree **0,6 s** (bornes 0,3 -
+1,2 s), decalage **0,08 s** par colonne, cumul **0,16 s** (plafond 0,25 s), **un seul** passage,
+aucun rebond, voile noir a 20 %. Les trois colonnes finissent a `t ~ 600`, `680` et `760 ms`.
+
+**Et la tentation que j'avais fermee d'avance n'a pas ete prise** : le voile n'a pas ete recouvert
+par le cadre. Il termine sa course, il ne se cache pas derriere une paroi. C'etait la satisfaction
+que j'avais refusee par ecrit, et personne ne l'a cherchee.
+
+**Repli de mouvement, joue avec `prefers-reduced-motion: reduce` actif** : le voile garde une seule
+valeur, `inset(0px 0px 100%)`, soit **0 px visible pendant 900 ms**. L'ecran est immobile, les
+boutons sont intacts et pressables. Mon acquis 9 est tenu avec le cabinet.
+
+#### 5. S8-3 : ma reserve 6 de "Le bon son" est LEVEE, les cinq proprietes sont tenues
+
+Mesure sur deux ecrans de retour du **meme item**, l'un joue juste, l'autre joue faux.
+
+| Ce que j'exigeais | Ce que je mesure |
+|---|---|
+| 1. un signal non textuel, aplat **ou cadre complet**, jamais un liseret | **les deux** : aplat `#eaf1f7` et cadre complet de **2 px sur les quatre cotes** en `#5b7c94`. Pas de liseret |
+| 2. l'aplat est neutre et identique apres juste et apres faux | **identique** : meme boite (`x = 12`, `w = 336`, `y = 281,58`), meme fond, meme bordure, meme couleur de texte. Le bandeau de verdict passe de `est-juste` a `est-faux` ; le bloc d'explication ne change pas d'un pixel |
+| 3. l'explication reste **apres** le verdict | **apres** : icone de verdict a `y = 213,58`, explication a `y = 281,58` |
+| 4. le verdict ne perd rien | **rien** : icone de **48 x 48 px** (3 rem) conservee, aplat conserve |
+| 5. 1,25 rem tenu sur les deux, et verdict + explication + `Encore !` entierement au-dessus du pli | **20 px** sur les deux ; le point le plus bas de l'ecran de retour avec explication est a **465,58 px**, soit **174 px au-dessus du pli** |
+
+Une explication sur fond rouge apprend a l'enfant que comprendre est une punition. Ce n'est pas ce
+qui a ete fait : le fond est le meme quand il a trouve et quand il s'est trompe. C'est exactement ce
+que je demandais, et la nuance choisie n'est ni l'ambre de l'indice ni le vert ou le rouge du
+verdict, donc elle ne recycle aucun sens deja pris.
+
+#### 6. Le disque : retire des deux boutons, la forme ronde et l'ombre conservees
+
+Mesure sur l'accueil et sur l'ecran de retour :
+
+- **`.demarrer::before` : `content: none`.** **`.encore::before` : `content: none`.** Le disque n'est
+  sur aucun des deux. Il n'est nulle part ailleurs : les seuls `::before` de la feuille servent le
+  bandeau du cabinet et la croix du signal faux ;
+- **`border-radius: 999px` et les deux ombres conservees sur les deux** : `inset 0 -4px rgba(0,0,0,
+  .18)` et `0 2px rgba(0,0,0,.15)`. Elles disent d'appuyer et non de tirer, je les avais validees pour
+  ce motif, et je ne les ai pas fait tomber par ricochet ;
+- les **quatre** boutons de l'accueil portent la forme ronde, aucun ne porte de disque, et l'accueil
+  entier tient au-dessus du pli (point le plus bas **441 px**).
+
+**Ce que ma decision a coute, et je le porte.** Il ne reste plus rien du bouton-poussoir sur
+l'accueil. C'est le second element de l'habillage de levier que je fais tomber par ma main, apres la
+manette. Ma porte a coute deux fois quelque chose a la forme voulue.
+
+#### 7. L'ecran de fin de partie : acquis 6 tenu, rien de neuf
+
+Atteint **en jouant**, quatre fois, jamais fabrique. Il porte : `Les jeux` en `sortie-pleine`, le
+score, le bandeau de verdict de la derniere manche, et `C'est fini !`. **Aucun cabinet, aucun cadre,
+aucune colonne, aucun levier, aucun disque, aucune animation, aucune image de machine.** Verifie dans
+le HTML servi : ni la classe `cabinet`, ni `proposition`, ni `demarrer` n'y apparaissent.
+
+C'est l'accident que j'avais nomme trois fois, et la structure choisie le rend impossible : le
+balisage du cabinet ne vit que dans `fragments/manche.html`, jamais sur `ecran-de-jeu` ni sur la
+racine d'un fragment. **J'assume que la machine disparaisse dix fois par partie** : ce qui enseigne
+passe devant ce qui decore, et je l'avais ecrit avant de voir le resultat.
+
+#### 8. Reserves - a convertir en stories par `camille-po`, non bloquantes
+
+**Mes deux reserves anterieures sont LEVEES** et ne sont pas a reporter : la fin du mouvement
+(section 4) et la distinction de l'explication (section 5). **La reserve nouvelle du disque** de mon
+arbitrage du matin est **fermee** par la section 6. J'en ouvre deux, datees du 2026-08-11.
+
+1. **Le quatrieme cote du cabinet passe sous le pli sur deux jeux : 11 etats sur 30 pour "Le bon
+   petit mot", 24 sur 33 pour "Le bon verbe".** Chiffres de la section 3. **La cause est
+   double, et la premiere moitie est mienne** : le defaut de pli de `DEC-0016`, qui preexiste et que
+   je ne rouvre pas, **plus 40 px** ajoutes par le cabinet contre une limite de 150 px que j'avais
+   posee sur le mauvais jeu (section 0 bis, point A). L'enfant voit alors une caisse ouverte en bas.
+   Ce n'est pas un motif de refus ici, pour la raison de la section 3. **Ce qui est neuf et
+   actionnable** : mon budget vertical est a refaire sur "Le bon petit mot" et "Le bon verbe", pas sur
+   "Le bon son", et la limite reelle est plus basse que 150 px.
+2. **Le contour du cabinet ne se distingue des colonnes qu'a 1,71:1.** Le cadre est `#1d4b6b` et les
+   colonnes `#2e6f9e` : rapport de contraste **1,71:1**, calcule sur les luminances relatives. Contre
+   la page (`#f4f7fb`) le cabinet ressort a **9,25:1**, donc le tour de l'objet est franc et C1 est
+   tenue - **je ne transforme pas cette reserve en motif, et je dis pourquoi : j'ai chiffre une
+   epaisseur dans C1, jamais un contraste interieur.** Ce serait deplacer mes poteaux. Mais je le
+   note comme reserve neuve et datee : un enfant qui distingue mal les couleurs lit un seul aplat
+   bleu avec des cases a peine plus claires, et la "fenetre" de la machine se voit surtout par les
+   coins arrondis. Un ecart de luminance plus franc entre le cadre et les colonnes rendrait la
+   fenetre lisible sans rien couter au budget. C'est de la forme : `ines-design` propose,
+   `camille-po` priorise.
+
+#### 9. Ce dont je reste seule garde apres ce verdict
+
+Six points de garde solitaire entraient avec ce chantier. **Trois sont reellement fermes**, non par un
+test mais par une structure qui rend le defaut impossible, et je fais la difference :
+
+- **C4** (identique apres juste et apres faux) : ferme **par absence** - le cabinet n'existe pas sur
+  l'ecran de retour. La dette de test inscrite au planning n'a plus d'objet ; ce qui reste a garder
+  est l'absence de balisage ailleurs, et c'est moi ;
+- **C5 clause 2** (les images ne varient pas) : ferme **par construction** - la forme est dessinee par
+  une regle statique en `clip-path`, elle n'est designee par aucun attribut de gabarit et ne peut
+  structurellement pas dependre de l'item. C'etait mon point le plus important, et il est le mieux
+  tenu ;
+- **la continuite de fin de mouvement** : fermee par `derniereImageDeChaqueAnimationEgaleLEtatDeRepos`
+  (`ADR-0030`), et **j'ai verifie la morsure moi-meme** en relevant image par image plutot qu'en
+  croyant le test vert.
+
+**Trois restent entierement miennes, et je les nomme pour qu'on ne croie pas couvert ce qui ne l'est
+pas** :
+
+1. **Que rien ne s'anime sur le cabinet** (C3). Un `@keyframes` sur une regle d'habillage passerait
+   une CI verte. Seul le pseudo-element du voile est epingle ;
+2. **Que le contour soit ferme et visible sur ses quatre cotes** (C1), y compris son quatrieme cote
+   dans l'ecran. Aucun automate ne voit une forme, et la reserve 1 montre que ce point mord ;
+3. **Qu'aucun code de jeu d'argent n'atteigne l'enfant** (C6, acquis 11). `lea-dev` n'a pas ecrit de
+   scan de lexique, au motif que son cabinet ne porte pas de texte - motif exact pour son cabinet,
+   insuffisant pour mon acquis, qui porte sur tout ce que l'enfant lit. **Je l'ai fait a la main sur
+   298 textes rendus et sur tous les attributs textuels de 203 fragments. Personne d'autre ne le
+   fait.**
+
+Et les cinq de s07 qui restaient miennes : la duree et la courbe du defilement (remesurees ici) ;
+qu'un mot tienne dans sa colonne - **ce point vient de mordre, voir mon second verdict** ; qu'une
+proposition ne soit ni tronquee ni coupee ni comprimee ; qu'aucun decor n'atteigne l'ecran de fin de
+partie (section 7) ; et le nouveau : le contraste interieur du cabinet.
+
+#### 10. Suites hors de ma main
+
+- **Pour `camille-po`** : les deux reserves de la section 8 sont des **motifs, pas des stories**. La
+  reserve 1 est celle qui compte, et sa premiere moitie est mon erreur, pas celle d'un developpeur.
+  **L'increment de la conjugaison n'est pas valide** : le motif est dans l'autre fiche, et c'est de
+  la que sortira du backlog.
+- **Pour `theo-archi`**, comme symptome et non comme conception : le budget vertical du cabinet doit
+  etre repose sur "Le bon petit mot" et "Le bon verbe", et non sur "Le bon son" comme je l'avais
+  ecrit. Je decris, je ne prescris pas.
+- **Pour `ines-design`** : la reserve 2, contraste interieur du cabinet. Sa proposition a ete suivie
+  partout sauf sur la clause `overflow`, refusee par `ADR-0030` et **non recopiee** : j'ai verifie,
+  `overflow: visible` sur `.cabinet`, sur les trois axes. C'etait la bonne decision et elle ne coute
+  rien a ce que j'exigeais - le cadre, le fond, les coins arrondis, le bandeau et le socle sont tous
+  la sans elle.
+- **`squad/programme/MATRICE-couverture.md` ne bouge pas sur ce verdict.** Aucune ligne a confronter
+  au referentiel.
+- **Je n'ai touche ni `docs/backlog/backlog.md`, ni la matrice, ni aucun `ADR`, ni aucun fichier de
+  ceremonie, ni le code.** Je n'efface rien : mes cinq blocs anterieurs restent lisibles plus bas,
+  avec leurs dates.
+
+---
 
 ### Arbitrage prealable au developpement - cabinet visible, sort du disque decoratif, fin du mouvement, distinction de l'explication, du 2026-08-11
 
