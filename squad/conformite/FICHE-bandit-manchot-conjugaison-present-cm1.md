@@ -103,6 +103,195 @@ entree/sortie observables.
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
+### Arbitrage prealable au developpement - la police des propositions dans le repli a quatre colonnes (S8-5), du 2026-08-11
+
+**Ce bloc n'est pas un Done pedagogique et il ne leve pas le refus qui suit.** `lea-dev` n'a rien
+ecrit : il n'y a aucun increment a jouer, donc **aucun verdict a rendre**. Mon refus du meme jour
+reste entier, avec son motif, jusqu'a ce que je joue l'increment corrige. Ce bloc repond a **une
+seule question**, celle qu'`ines-design` me route dans `proposition-ines-largeur-du-cabinet.md`
+section 7 : est-ce que j'accepte **1,875 rem (30 px) au lieu de 2 rem, pour `.proposition` et
+seulement dans le repli a quatre colonnes** ?
+
+**Reponse : OUI, SOUS CONDITION.** Les conditions sont en section C, elles sont sept, et elles sont
+toutes verifiables sans me redemander ce que j'ai voulu dire.
+
+**Ce que je ne traite pas ici**, parce que `DEC-0018` borne `S8-5` a la seule largeur : ma reserve de
+contraste interieur du cabinet (1,71:1), et la nuance dediee qu'`ines-design` propose en section 6 de
+sa proposition. Elle n'est pas abandonnee, elle est au backlog, et je la reprendrai la.
+
+#### A. Comment j'ai mesure, et la limite de ma mesure
+
+**Mesure, pas estimation - mais mesure d'un candidat, pas d'un livre.** Worktree dedie
+`s08-nadia-arbitrage-largeur`, forke de `round-two` a `f958dbf`, lignee verifiee par
+`outils/verifier-lignee.sh` ("le worktree sur la branche 's08-nadia-arbitrage-largeur' descend de la
+lignee de round-two"). JDK constate par `outils/verifier-jdk.sh` (`java` du `PATH` en 1.8.0_202, JDK
+de compilation 21.0.10), `JAVA_HOME` pose sur le JDK 21 le temps du `mvn -B -DskipTests clean
+package`, fat jar lance sur un port dedie. J'ai **joue** le jeu par ses vraies routes jusqu'a tirer
+l'item en cause ("Vous ___ du chocolat.", bonne reponse `mangez`, distracteurs `mange`, `mangeons`,
+`mangent`), et c'est ce fragment servi que j'ai mesure, dans la vraie structure de page et sous les
+deux feuilles reellement servies, a 360 px de largeur CSS exacte et 640 px de hauteur, en Chrome
+reel. Glyphes par `Range.getBoundingClientRect()` sur le noeud de texte, boite par
+`getBoundingClientRect()` sur le bouton.
+
+**Trois limites, que je nomme plutot que de les laisser deviner :**
+
+1. **je n'ai pas joue l'increment**, il n'existe pas. J'ai mesure une **copie** de la feuille servie
+   a laquelle j'ai ajoute la regle proposee, dans un dossier de travail hors du depot, jamais
+   commitee. Ce bloc est donc **degrade** au sens de ma methode, et il le reste par nature ;
+2. **pas d'echange htmx, pas de clavier, pas d'animation** : les scripts sont retires de la page
+   mesuree, donc je mesure l'**etat de repos**. C'est l'etat que l'enfant lit, mais ce n'est pas tout
+   ce qu'il traverse ;
+3. **le balayage des 25 items est une substitution, pas 25 tirages reels** : j'ai remplace les quatre
+   libelles dans la structure reellement rendue, item apres item. La geometrie mesuree est la vraie ;
+   le tirage, non. Je le dis parce que c'est exactement le genre de raccourci que je reproche aux
+   autres.
+
+#### B. Ce que je corrige de mes propres constats, avant de m'appuyer dessus
+
+**B1. Mon chiffre sur `mangeons` etait faux d'un centieme.** Mon refus du meme jour ecrit
+**-2,02 px** d'air de chaque cote. Remesure aujourd'hui, meme methode, meme item, meme largeur :
+**-2,01 px**. `ines-design` avait reproduit -2,01, et c'est elle qui a raison. Sur `cherchons` mon
+chiffre tient : **-0,09 px** (152,17 px de glyphes dans 152,00 px). Ce n'est pas un chiffre qui change
+mon motif, c'est un chiffre que je ne veux pas laisser faux dans une fiche de conformite.
+
+**B2. Mon refus sous-estimait la surface du defaut, et c'est plus important que B1.** J'y nommais
+**deux** propositions. J'ai balaye aujourd'hui **les 100 propositions des 25 items** du paquet, et il
+y en a **trois** sous les 2,0 px d'air que j'ai moi-meme au dossier comme la marge la plus etroite
+jamais acceptee dans ce depot :
+
+| Proposition | Item | Air de chaque cote a 2 rem | Etat |
+|---|---|---|---|
+| `mangeons` | 3 | **-2,01 px** | sort de sa boite |
+| `cherchons` | 7 | **-0,09 px** | sort de sa boite |
+| `cherchent` | 7 | **+1,85 px** | dans sa boite, mais sous ma propre marge de reference |
+
+`cherchent` ne deborde pas : mon motif de refus, qui portait sur un mot **hors** de sa boite, n'en est
+pas change. Mais le defaut porte sur **trois propositions et deux items**, pas sur deux propositions,
+et je le corrige avant de m'appuyer sur mon propre constat.
+
+#### C. Ma reponse, et les sept conditions
+
+**J'accepte 1,875 rem (30 px). Motif, et il tient en une phrase : ce n'est pas une question de
+lisibilite, c'est un chiffre que je garderais contre sa propre raison.**
+
+**Le fond, d'abord, parce que c'est la seule chose que je peux juger et que personne ne peut juger a
+ma place.** Un enfant de CM1 lit `mangeons` a 30 px exactement comme il le lit a 32 px. J'ai regarde
+les deux captures a 360 x 640, cote a cote, et la difference de taille ne se voit pas ; ce qui se voit,
+c'est qu'a 32 px le `m` et le `s` de `mangeons` sont **ecrits sur la paroi sombre du cabinet**, et
+qu'a 30 px le mot est entier a l'interieur de son bouton avec un filet de bleu visible des deux
+cotes. Entre les deux etats, l'enfant qui lit mieux est celui de 30 px. 30 px reste presque le double
+d'un texte courant, en gras, blanc sur aplat plein.
+
+**La raison pour laquelle je ne tiens pas mon chiffre.** Mon plancher de 2 rem est la condition 3 des
+six que j'ai ecrites le 2026-08-10, et je l'ai ecrite ainsi : *"aucune reduction de `font-size` de
+`.proposition` sous 2 rem **pour faire tenir une mise en page**"*. Elle existe pour proteger les
+conditions 1 et 2 de la meme liste - le mot entier, sur une ligne, ni tronque ni coupe ni comprime,
+**dans** sa boite. Aujourd'hui la lettre de ma condition 3 est tenue et mes conditions 1 et 2 sont
+rompues. La piste retenue inverse exactement cela : elle coute 6,25 % d'un nombre et rachete la chose
+pour laquelle ce nombre existait. **Garder 32 px, ce serait garder ma figure et perdre ma raison**, et
+ce n'est pas ce que j'appelle tenir une barre.
+
+**Et je nomme la brèche qu'`ines-design` n'a pas chiffree, parce qu'elle est double.** Mon acquis 3
+n'est pas un chiffre, c'est **deux clauses** : `.proposition` >= 2 rem, **et**
+`.proposition` >= `.enonce`. `ines-design` a chiffre la premiere (6,25 %). J'ai mesure la seconde : `.enonce` est a
+**32 px** et le reste, donc a 30 px **la reponse devient plus petite que la question** sur ce repli.
+**Les deux clauses cedent, pas une.** J'accepte aussi la seconde, et voici pourquoi : cette clause
+existe pour que la reponse ne soit pas visuellement subordonnee a l'enonce (ma reserve 1 sur S2-1,
+"le nombre doit peser plus que la barre qui le porte"). Ce qui porte ce poids n'est pas 2 px de
+glyphe : c'est l'aplat bleu plein, le gras, les 20 px de rembourrage et les 71 px de cible, contre du
+texte noir sur le fond de page. Sur ma capture a 30 px, les quatre propositions restent de tres loin
+la chose la plus saillante de l'ecran. **Cette clause perd sa lettre et garde son objet.** Je l'ecris
+ici, date, pour que personne ne le decouvre au second verdict.
+
+**Les sept conditions de mon acceptation.** Elles sont fermees : ce qui n'y est pas ne bloquera pas
+le Done et ne pourra pas m'etre oppose comme l'ayant bloque.
+
+1. **Portee.** La reduction ne vit que sous `.propositions:has(.proposition:nth-child(4))
+   .proposition`, c'est-a-dire **le seul repli a quatre colonnes**. `.enonce`, `.consigne`,
+   `.indice`, `.explication`, les autres boutons, et `.proposition` dans les cas a deux et a trois
+   colonnes restent a leur taille d'aujourd'hui. **Verifie par moi dans le contenu, pas suppose** :
+   "Le bon petit mot" rend 2 propositions par item, "Le bon son" 3, "Calcul CP" 3
+   (`nombreDePropositions: 3`) - aucun autre paquet du catalogue ne peut entrer dans ce selecteur, et
+   mes mesures sur les trois ne bougent d'aucun pixel.
+2. **30 px est un plancher, pas le debut d'une pente.** J'accepte **1,875 rem** et rien en dessous.
+   J'ai mesure 1,8125 rem (29 px) : il donne plus d'air, il n'est **pas** approuve. Toute valeur sous
+   30 px revient devant moi.
+3. **La valeur est ecrite en clair.** `font-size: 1.875rem` litteral dans la regle, pas derriere une
+   variable ni un `calc` qu'un changement ulterieur deplacerait sans que personne le voie. C'est la
+   forme, pas l'architecture : si ce n'est pas realisable ainsi, c'est `theo-archi` qui tranche le
+   moyen, et je juge le resultat.
+4. **Ce que la reduction doit acheter, chiffre.** A 360 px de largeur reelle, **les 100 propositions
+   des 25 items** du paquet ont un air **strictement positif de chaque cote de leur boite, et au
+   moins 2,0 px** - les 2,0 px etant la marge la plus etroite jamais acceptee dans ce depot, mon
+   propre chiffre au dossier et non une barre neuve. Mesure a 30 px : **zero** proposition qui
+   deborde, **zero** sous 2 px, minimum du paquet **2,87 px** sur `mangeons`. La condition est donc
+   deja satisfaite par la piste telle que chiffree ; je l'ecris pour que le second verdict ait un
+   critere et pas une impression.
+5. **Ce qui ne doit surtout pas payer une seconde fois.** Le cadre reste a **0,5 rem** (C1 intact),
+   le `gap` reste a **1 rem sur les deux axes** (acquis 4), le rembourrage declare de `.proposition`
+   reste **0,75 rem / 1,25 rem** (acquis 7), et les six conditions de non-troncature du 2026-08-10
+   restent entieres : une ligne, aucune troncature, aucun `overflow: hidden` sur le texte, aucune
+   compression de glyphe, aucune cesure, aucun texte vertical. **Si la largeur est payee une seconde
+   fois sur l'un de ces postes, mon acceptation ne vaut plus.**
+6. **La cible tactile, que personne n'a nommee et que j'ai mesuree.** La baisse de 6 px de hauteur du
+   cabinet ne vient pas du cabinet : elle sort **des boutons eux-memes**, dont la boite passe de
+   **152,00 x 74,00 px a 152,00 x 71,00 px**, deux rangees, soit les 6 px. C'est un effet a connaitre
+   et non un cadeau. **Je l'accepte** : 71 px reste tres au-dessus de mon acquis 1 (2,75 rem, 44 px),
+   qui demeure le plancher dur. Aucune autre perte de hauteur du bouton ne l'accompagne.
+7. **L'exception doit etre lisible la ou on la cherchera.**
+   `leChiffreDeReponseEstAuMoinsAussiGrosQueLeCalcul` lit la taille declaree du selecteur litteral
+   `.proposition` : ses **deux** assertions resteront vertes alors que l'enfant verra 30 px sous le
+   repli, et donc moins que `.enonce`. `ines-design` a raison de le remonter, et **je ne decide ni le
+   test ni la forme de sa trace** - c'est `theo-archi`. Ce que je pose, c'est le symptome que je
+   refuse : qu'un lecteur de la feuille ou du test croie 2 rem encore garde dans tous les cas. **Mon
+   acceptation couvre le repli a quatre colonnes de ce paquet ; elle n'est pas une licence generale
+   d'ecrire 1,875 rem ailleurs.**
+
+**Ce que je n'autorise pas, et qui aurait pu passer pour une facon elegante de reparer la seconde
+clause :** faire descendre `.enonce` a 30 px pour retablir le rapport. `DEC-0018` borne `S8-5` a la
+largeur, l'enonce est ce que l'enfant lit sur les quatre jeux, et sa taille est aussi la cause du
+defaut de pli que `DEC-0016` regit. Si quelqu'un veut retablir le rapport par ce chemin, c'est une
+question neuve et elle revient devant moi.
+
+#### D. Deux reserves neuves, datees du 2026-08-11, qui ne sont pas un durcissement
+
+Elles ne bloquent rien, elles ne sont pas dans `S8-5`, et elles ne relevent ni ne durcissent une
+barre anterieure. Ce sont des **motifs pour `camille-po`**, qui en fait des stories si elle le juge.
+
+**R1 - a 360 px, quatre colonnes de ce paquet ne sont pas confortables, a aucune taille que
+j'accepterais.** Ma propre definition d'une colonne lisible est ecrite : le mot le plus large **plus**
+le rembourrage declare de 1,25 rem de chaque cote, soit 40 px. Sur ce paquet a 30 px, cela vaut
+`146,27 + 40 = 186,27 px`, pour **152,00 px** disponibles - et 152 px est le maximum atteignable, le
+cadre etant deja a son plancher. L'air reel autour du mot le plus large sera de **2,87 px** la ou ma
+definition en demande 20. **La piste retenue met fin a un defaut ; elle ne rend pas la colonne
+confortable, et je ne veux pas qu'on lise mon oui comme si elle le faisait.** La reponse durable est
+ailleurs - des formes plus courtes dans le paquet, ou une disposition qui n'est pas un 2x2 a 360 px -
+et elle n'est pas dans `S8-5`. J'ecris ceci comme une reserve neuve et datee, pas comme un
+relevement : `S8-5` reste borne a ce que `DEC-0018` a borne, et je le jugerai sur les conditions de
+la section C, sur rien d'autre.
+
+**R2 - un paquet futur a quatre propositions heriterait de 30 px en silence.** `nombreDePropositions`
+est un parametre de contenu : le jour ou un paquet neuf en demande 4, ou qu'un item porte trois
+distracteurs, il entre dans ce selecteur sans qu'aucune ligne rougisse, avec des mots dont personne
+n'a mesure la largeur. Aucun paquet du catalogue ne le fait aujourd'hui, je l'ai verifie. **Le jour
+ou l'un le fera, cela revient devant moi.**
+
+#### E. Ce dont je reste seule garde apres cet arbitrage
+
+Trois choses, et je les nomme pour qu'on ne croie pas couvert ce qui ne l'est pas - c'est un chantier
+entierement visuel, et quatre defauts visibles par un enfant ont deja traverse une CI verte sur ce
+jeu :
+
+1. **la taille de police effective sous le repli a quatre colonnes.** Aucun test ne la lit ; celui qui
+   existe restera vert a 1,875 rem (condition 7) ;
+2. **l'air de chaque cote des glyphes dans la boite, sur les 25 items.** Aucun test ne le mesure.
+   C'est le seul chiffre qui dit si le defaut est reellement ferme, et c'est ma condition 4 ;
+3. **le rapport de taille entre la proposition et l'enonce tel que l'enfant le voit**, maintenant que
+   sa forme declaree et sa forme effective divergent sur un cas.
+
+Et rien de ce bloc n'accorde de Done : je jouerai l'increment corrige, par les vraies routes, avant
+d'ecrire quoi que ce soit d'autre.
+
 ### Verdict courant - troisieme audit, chantier de la conjugaison etendue (S8-4 et activation au catalogue), du 2026-08-11
 
 - **Verdict** : **REFUSE.** Done pedagogique **non accorde** sur cet increment. Le refus porte sur
