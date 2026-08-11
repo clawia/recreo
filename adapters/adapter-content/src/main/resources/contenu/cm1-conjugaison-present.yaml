@@ -55,3 +55,55 @@ items:
     bonneReponse: "chantent"
     distracteurs: ["chante", "chantons", "chantez"]
     indice: "Avec 'ils' ou 'elles', le verbe 'chanter' se termine par '-ent' au présent : c'est 'chantent'."
+  - enonce: "Demain, je ___ dans le jardin."
+    bonneReponse: "jouerai"
+    distracteurs: ["joueras", "jouera", "joueront"]
+    indice: "Au futur, avec 'je', le verbe 'jouer' se termine par '-erai' : c'est 'jouerai'."
+  - enonce: "Demain, tu ___ tes camarades en classe."
+    bonneReponse: "aideras"
+    distracteurs: ["aiderai", "aidera", "aideront"]
+    indice: "Au futur, avec 'tu', le verbe 'aider' se termine par '-eras' : c'est 'aideras'."
+  - enonce: "Demain, elle ___ son dessin avant le goûter."
+    bonneReponse: "finira"
+    distracteurs: ["finirai", "finirons", "finiront"]
+    indice: "Au futur, avec 'il' ou 'elle', le verbe 'finir' se termine par '-ira' : c'est 'finira'."
+  - enonce: "Demain, nous ___ un gâteau pour la fête."
+    bonneReponse: "ferons"
+    distracteurs: ["ferai", "fera", "feront"]
+    indice: "Au futur, avec 'nous', le verbe 'faire' est irrégulier : il devient 'ferons'."
+  - enonce: "Demain, vous ___ à la piscine avec la classe."
+    bonneReponse: "irez"
+    distracteurs: ["irai", "ira", "iront"]
+    indice: "Au futur, avec 'vous', le verbe 'aller' est irrégulier : il devient 'irez'."
+  - enonce: "Demain, ils ___ une récréation plus longue."
+    bonneReponse: "auront"
+    distracteurs: ["avaient", "aurai", "aura"]
+    indice: "Le mot 'demain' annonce le futur : avec 'ils' ou 'elles', le verbe 'avoir' devient 'auront', jamais 'avaient', qui est à l'imparfait."
+  - enonce: "Autrefois, je ___ tous les jours dans le jardin."
+    bonneReponse: "jouais"
+    distracteurs: ["jouait", "jouions", "jouaient"]
+    indice: "Le mot 'autrefois' annonce l'imparfait : avec 'je', le verbe 'jouer' se termine par '-ais' : c'est 'jouais'."
+  - enonce: "Autrefois, tu ___ tes camarades en classe."
+    bonneReponse: "aidais"
+    distracteurs: ["aidait", "aidions", "aidaient"]
+    indice: "Le mot 'autrefois' annonce l'imparfait : avec 'tu', le verbe 'aider' se termine par '-ais' : c'est 'aidais'."
+  - enonce: "Autrefois, il ___ du vélo le dimanche."
+    bonneReponse: "faisait"
+    distracteurs: ["faisais", "faisions", "faisaient"]
+    indice: "Le mot 'autrefois' annonce l'imparfait : avec 'il' ou 'elle', le verbe 'faire' est irrégulier : il devient 'faisait'."
+  - enonce: "Autrefois, nous ___ toujours les premiers à l'école."
+    bonneReponse: "étions"
+    distracteurs: ["étais", "était", "étaient"]
+    indice: "Le mot 'autrefois' annonce l'imparfait : avec 'nous', le verbe 'être' est irrégulier : il devient 'étions'."
+  - enonce: "Autrefois, vous ___ moins de devoirs."
+    bonneReponse: "aviez"
+    distracteurs: ["avais", "avait", "avaient"]
+    indice: "Le mot 'autrefois' annonce l'imparfait : avec 'vous', le verbe 'avoir' est irrégulier : il devient 'aviez'."
+  - enonce: "Autrefois, ils ___ ce dessin animé chaque mercredi."
+    bonneReponse: "aimaient"
+    distracteurs: ["aimeront", "aimais", "aimait"]
+    indice: "Le mot 'autrefois' annonce l'imparfait, jamais le futur : avec 'ils' ou 'elles', le verbe 'aimer' devient 'aimaient', pas 'aimeront'."
+  - enonce: "Maintenant, elle ___ son frère avant l'école."
+    bonneReponse: "aide"
+    distracteurs: ["aidait", "aidera", "aidez"]
+    indice: "Le mot 'maintenant' annonce le présent : avec 'il' ou 'elle', le verbe 'aider' se termine par '-e' : c'est 'aide'."
