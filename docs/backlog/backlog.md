@@ -1937,12 +1937,224 @@ liste complete dans `DEC-0015`.
 - **Lien decision** : `DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`, arbitrage 1.
 - **Agent pressenti** : a affecter au planning.
 
+## Sprint 8 - La machine retrouve son contexte, trois verites du depot corrigees
+
+**Contexte et decision de perimetre** : l'utilisatrice a joue l'increment du sprint 7 et fait deux
+constats, le meme defaut vu sous deux angles. D'abord, les boutons de choix de jeu de l'accueil
+portent le decor de levier (`recreo.css`, regle S7-4, `.demarrer::before`) alors que l'accueil
+n'est pas une machine, c'est une liste de jeux - le decor n'aurait jamais du deborder de `.encore`
+sur `.demarrer`. Ensuite : "il manque une machine dans le contexte (...) sinon on ne comprend pas"
+- les colonnes n'ont ni cabinet ni objet qui les encadre, et la metaphore n'est pas lisible sans ce
+contexte. `DEC-0017-perimetre-sprint-8-la-machine-retrouve-son-contexte-et-trois-verites-corrigees.md`
+tranche que le sprint 8 construit ce contexte - une machine reconnaissable, customisee avec des
+images pour enfants, sans les codes du jeu d'argent, degre tranche par l'utilisatrice - sous le
+veto pedagogique deja pose par `nadia-prof` le 2026-08-10, qui reste entier. Le meme sprint porte
+aussi l'ouverture du futur et de l'imparfait de la conjugaison au present, sur la barre chiffree et
+close que `nadia-prof` a ecrite elle-meme.
+
+**Trois verites du depot corrigees hors backlog** (chantier 2 de `DEC-0017`, sans story dediee) :
+`catalogue.yaml` remet "Le bon verbe" au catalogue (execution routee a un developpeur par
+`sofia-sm`, les deux conditions de `DEC-0015` etant remplies) ;
+`squad/programme/MATRICE-couverture.md` et `squad/validation/FILE-ATTENTE.md` sont corriges pour
+refleter la levee du refus de "Le bon verbe" prononcee au sprint 7, qu'ils ne portaient plus a
+jour.
+
+### S8-1 - Un cabinet reconnaissable autour des rouleaux, et le levier quitte l'accueil
+
+- **Besoin** : en tant qu'enfant qui joue au bandit manchot, je veux voir les colonnes de reponses
+  a l'interieur d'un vrai cabinet qui ressemble a une machine, avec des images faites pour moi,
+  afin de comprendre que je suis devant une machine et non une simple liste de boutons qui bougent.
+- **Competence programme visee** : transverse - habillage de la mecanique, aucun contenu
+  pedagogique (`ADR-0004` : la mecanique ne connait aucune matiere).
+- **Criteres d'acceptation** :
+  - Etant donne l'ecran de manche affiche, quand l'enfant le regarde, alors les colonnes de
+    propositions sont entourees d'un element de decor unique (le cabinet) qui les contient toutes
+    ensemble et qui est visuellement distinct du reste de l'ecran (une bordure, un fond ou une
+    forme dediee, pas seulement la couleur de fond commune a toute la page).
+  - Etant donne le cabinet affiche, quand on releve tout texte, `alt`, `aria-label`, `title` ou
+    titre de page qu'il porte, alors aucun des mots interdits par le veto de `nadia-prof` du
+    2026-08-10 (`FICHE-bandit-manchot-additions-cp.md`, section 1 : "machine a sous", "bandit",
+    "manchot", "jackpot", "mise", "miser", "gain", "gagner de l'argent", "casino", "piece",
+    "jeton", "credit", "bandit manchot") n'y figure, et aucune image ne represente une piece, un
+    jackpot, un symbole de monnaie ou tout autre signe de jeu d'argent.
+  - Etant donne les images decoratives que ce chantier ajoute, quand elles sont servies, alors
+    elles sont vendorisees et servies depuis `adapter-web`, sans ressource externe ni CDN, et
+    l'application reste utilisable hors ligne (`RessourcesTiercesTest`).
+  - Etant donne le decor du cabinet, quand on relit `recreo.js`, alors aucune ligne n'y est
+    ajoutee ; le decor est implemente en CSS par `clip-path`, comme la coche et la croix
+    existantes, et aucune ligne de JavaScript ne devient responsable de `proposition` ou de
+    `colonne`.
+  - Etant donne les quatre planchers non negociables (cible tactile 2,75 rem, lisibilite
+    1,25 rem, chiffre de proposition 2 rem, `gap` 1 rem sur les deux axes), quand le cabinet est
+    ajoute, alors aucun des quatre ne recule, mesure a l'egalite exacte : pas de marge de 2 px a
+    recuperer.
+  - Etant donne les dimensions du decor ajoute, quand on les relit, alors elles sont exprimees en
+    `rem` ou en `%`, jamais en pixels.
+  - Etant donne l'ecran de fin de partie, quand il s'affiche, alors il ne porte ni levier, ni
+    colonne, ni decor de cabinet, ni animation (acquis 6 de `nadia-prof`, deja tenu et a ne pas
+    defaire).
+  - Etant donne l'ecran d'accueil (liste des jeux), quand un bouton de choix de jeu (`.demarrer`)
+    est affiche, alors il ne porte plus l'apparence de levier de machine a sous (le disque
+    decoratif pose aujourd'hui par la regle S7-4 de `recreo.css`) : ce n'est pas une machine,
+    c'est une liste de jeux. Le bouton "Encore !" (`.encore`), qui relance bien une manche, n'est
+    pas concerne par cette correction.
+  - Ce que cette story ne tranche pas : si l'apparence retiree de l'accueil reste sur `.encore` et
+    sur l'ecran de manche, ou si elle est absorbee par le cabinet lui-meme, n'est pas decide ici -
+    c'est une question de forme qu'`ines-design` propose et que `theo-archi` met en oeuvre, sous
+    le jugement de `nadia-prof`.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'un enfant de CP ou de CM1, en regardant l'ecran de manche, reconnaisse
+    effectivement une machine plutot qu'un decor abstrait ou incomprehensible ; que les images
+    choisies soient percues comme faites pour un enfant et non comme un symbole de jeu d'argent
+    qu'aucune liste de mots ne peut epuiser ; et qu'aucune combinaison de forme, de couleur ou
+    d'image n'evoque malgre tout un signal de gain a l'arret des colonnes (condition 2 du veto),
+    ce qui ne peut etre verifie que sur le rendu reel, en jouant.
+- **Lien decision** :
+  `DEC-0017-perimetre-sprint-8-la-machine-retrouve-son-contexte-et-trois-verites-corrigees.md`,
+  chantier 1 ; veto de `nadia-prof` du 2026-08-10, `FICHE-bandit-manchot-additions-cp.md`,
+  section 1.
+- **Agent pressenti** : a affecter au planning (avis de faisabilite de `theo-archi` requis,
+  proposition de forme d'`ines-design`, arbitrage prealable de `nadia-prof` avant developpement).
+
+### S8-2 - La fin du mouvement des colonnes se termine sans discontinuite visible
+
+- **Besoin** : en tant qu'enfant qui vient d'appuyer sur le bouton de la machine, je veux que les
+  colonnes s'arretent completement au lieu de laisser un morceau de voile disparaitre d'un coup,
+  afin que mon attention aille au mot affiche plutot qu'a une disparition brusque au bas du
+  bouton.
+- **Competence programme visee** : transverse.
+- **Criteres d'acceptation** :
+  - Etant donne le voile decoratif qui traverse chaque colonne pendant le defilement, quand
+    l'animation se termine, alors le mouvement se termine sans discontinuite visible, c'est-a-dire
+    que la bande soit sortie de la boite avant que l'animation ne rende la main (propriete reprise
+    au mot pres de `nadia-prof`, `FICHE-bandit-manchot-additions-cp.md`, section 11).
+  - Etant donne le constat mesure par `nadia-prof` avant cette story (13 px de bande encore
+    visibles au bas du bouton a 599 ms, plus rien a 600 ms, trois disparitions decalees de 80 ms
+    par manche sur un paquet a trois colonnes, soit trente par partie), quand cette story est
+    livree et mesuree par la meme methode (image par image sur le rendu reel), alors aucune image
+    du mouvement ne montre plus de bande partiellement sortie de la boite au moment ou l'animation
+    rend la main.
+  - Etant donne les proprietes deja acquises sur ce mouvement (ralentissement progressif, aucun
+    depassement, aucun rebond, une colonne montre toujours sa propre proposition ou aucun texte),
+    quand cette story est livree, alors aucune d'elles n'est degradee. Comment obtenir la fin
+    continue du mouvement n'est pas prescrit ici : c'est une question de forme, propose par
+    `ines-design`, mise en oeuvre par `theo-archi`.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue l'increment et confirme que la disparition brusque a disparu, sur
+    le rendu reel et non sur une valeur declaree dans une feuille de style.
+- **Lien decision** :
+  `DEC-0017-perimetre-sprint-8-la-machine-retrouve-son-contexte-et-trois-verites-corrigees.md`,
+  chantier 1 ; `FICHE-bandit-manchot-additions-cp.md`, section 11.
+- **Agent pressenti** : a affecter au planning.
+
+### S8-3 - L'explication d'une variation graphemique se distingue visuellement de la consigne
+
+- **Besoin** : en tant qu'enfant de CP qui vient de repondre sur "Le bon son", je veux que
+  l'explication qui m'apprend une nouvelle facon d'ecrire un son se remarque autant que le
+  bandeau juste/faux qui la precede, afin de ne pas manquer la phrase la plus importante de
+  l'ecran.
+- **Competence programme visee** : transverse - lisibilite et accessibilite pour un enfant de CP
+  qui lit peu et lentement (meme categorie que S0-5, S1-9, S2-1, S7-3). Cette story ne modifie
+  aucun contenu pedagogique et ne fait bouger aucune ligne de
+  `squad/programme/MATRICE-couverture.md`.
+- **Criteres d'acceptation** :
+  - Etant donne l'ecran de retour sur un item a variation du paquet "Le bon son" (les six items
+    dont la graphie differe du son, par exemple `DENT`), quand la reponse est donnee, juste ou
+    fausse, alors l'explication qui nomme la variation ("Dans DENT, ce sont les lettres e et n
+    qui font le son an.") est affichee avec une propriete visuelle qui la distingue du texte
+    courant et du bandeau juste/faux qui la precede, plutot que d'apparaitre comme du texte de
+    paragraphe ordinaire sous ce bandeau.
+  - Etant donne les items reguliers du meme paquet, sans explication, quand l'ecran de retour
+    s'affiche, alors rien de nouveau n'y est ajoute : cette story ne change que la presentation de
+    l'explication existante.
+  - Etant donne le texte de l'explication lui-meme, quand cette story est livree, alors il n'est
+    pas modifie : la reserve visee porte sur la presentation, pas sur le contenu deja juge exact
+    par `nadia-prof`.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que cette distinction visuelle attire effectivement l'oeil d'un enfant de CP
+    vers la phrase la plus importante de l'ecran, comme elle l'a decrit elle-meme ("ce qui
+    l'arrete est le bloc colore ; c'est justement la phrase la plus importante de l'ecran qui est
+    la moins signalee").
+- **Lien decision** :
+  `DEC-0017-perimetre-sprint-8-la-machine-retrouve-son-contexte-et-trois-verites-corrigees.md`,
+  chantier 1 ; `FICHE-bandit-manchot-le-bon-son-cp.md`, reserve 6 du 2026-08-10.
+- **Agent pressenti** : a affecter au planning.
+
+### S8-4 - Etendre "Le bon verbe" au futur et a l'imparfait de l'indicatif
+
+- **Besoin** : en tant qu'eleve de CM1, je veux choisir la forme correcte d'un verbe frequent
+  conjugue au present, au futur ou a l'imparfait pour completer une phrase, en distinguant
+  vraiment quel temps est employe, afin de m'entrainer a reconnaitre et a produire les trois
+  temps que j'utilise le plus souvent en ecrivant.
+- **Competence programme visee** : francais, CM1 (cycle 3), domaine "Orthographe et grammaire" -
+  "Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif"
+  (`squad/programme/francais/competences-cm1.md`). Cette story vise a faire passer cette ligne de
+  `en cours` a `couvert-valide`, sous la barre que `nadia-prof` a ecrite elle-meme et declaree
+  close.
+- **Criteres d'acceptation**, repris au mot pres des six points de la barre fermee ecrite par
+  `nadia-prof` (`FICHE-bandit-manchot-conjugaison-present-cm1.md`, refus du 2026-08-10,
+  section 5 : "Rien d'autre. Ce qui n'est pas dans cette liste ne bloquera pas `couvert-valide` et
+  ne pourra pas m'etre oppose comme l'ayant bloque.") :
+  1. Etant donne le paquet `cm1-conjugaison-present`, quand cette story est livree, alors "le
+     futur de l'indicatif et l'imparfait de l'indicatif sont ajoutes, avec les six personnes
+     chacun, sur des verbes frequents des trois groupes comme le present les a deja."
+  2. Etant donne l'ensemble des items du paquet apres cette story, quand on les relit temps par
+     temps, alors "au moins un item par temps oppose deux temps entre eux et pas seulement deux
+     personnes d'un meme temps" : au moins un item par temps propose, parmi ses distracteurs, une
+     forme conjuguee a un autre temps que la bonne reponse, de sorte que l'enfant doive
+     identifier le temps demande et pas seulement choisir entre des formes toutes au meme temps
+     (defaut actuel : les quatre propositions sont aujourd'hui toujours au present, le temps est
+     donne, jamais choisi).
+  3. Etant donne chacun de ces items qui oppose deux temps, quand on relit sa phrase, alors "la
+     marque du temps est reperable dans la phrase (un complement comme 'hier', 'demain', 'tous
+     les jours') plutot que devinable."
+  4. Etant donne l'ensemble des items du paquet apres cette story, quand on les relit un par un,
+     alors "aucun item n'admet deux lectures correctes", y compris sur les items qui melangent
+     les temps (par exemple un "hier" combine a un present de narration).
+  5. Etant donne les indices des items ajoutes ou modifies par cette story, quand on les relit,
+     alors "les indices de ces items nomment la marque du temps" et ne se contentent pas de
+     nommer la personne.
+  6. "Et j'aurai joue l'increment avant de le dire" : le Done pedagogique de cette ligne n'est
+     prononce par `nadia-prof` qu'apres qu'elle a joue l'increment livre, jamais sur la seule
+     lecture du contenu.
+  - Deux reserves neuves du 2026-08-10, sur le meme paquet, entrent aussi dans les criteres de
+    cette story :
+    - Etant donne les mots ajoutes par le futur et l'imparfait, quand on mesure leur largeur de
+      glyphes rendus dans une colonne de 160 px, alors aucun ne sort de sa colonne, sachant que la
+      marge la plus etroite du paquet aujourd'hui est de 2,0 px sur `mangeons` (156,0 px de large)
+      et que tout mot plus large que 156 px en sortira (`FICHE-bandit-manchot-conjugaison-
+      present-cm1.md`, reserve 1 du 2026-08-10) - ce qui concerne nommement des formes comme
+      `finissaient` ou `apprendraient`, plus larges que les formes au present deja mesurees.
+    - Etant donne le pli mesure a 360 x 640 quand l'indice s'affiche (aujourd'hui cinq items sur
+      douze mettent la seconde rangee de propositions entierement sous le pli,
+      `FICHE-bandit-manchot-conjugaison-present-cm1.md`, section 4, sous `DEC-0016`), quand des
+      items neufs sont ajoutes par cette story, alors leur proportion d'items en defaut ne
+      s'aggrave pas par rapport a celle mesuree sur le paquet actuel.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que les phrases, les verbes retenus et les indices soient d'un niveau de
+    vocabulaire adapte a un eleve de CM1 ; la conformite du texte au francais correct et
+    integralement accentue (`DEC-0002`, amendement du 2026-08-04) ; et les six points ci-dessus
+    eux-memes, qui restent son jugement au-dela des deux reserves qu'elle a chiffrees.
+- **Lien decision** :
+  `DEC-0017-perimetre-sprint-8-la-machine-retrouve-son-contexte-et-trois-verites-corrigees.md`,
+  chantier 4 ; `FICHE-bandit-manchot-conjugaison-present-cm1.md`, refus du 2026-08-10, section 5.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
 ## Backlog - sprints suivants (intentions non detaillees)
 
 Ces intentions ne sont pas des stories pretes a developper. Elles seront detaillees sprint par
 sprint, en priorite sur les trous les plus visibles de `squad/programme/MATRICE-couverture.md`.
 
 ### Story de correction - Cinq indices fautifs de "Le bon verbe" (execution de DEC-0014)
+
+**Etat au sprint 8 : livree et validee, conservee ici comme trace.** `nadia-prof` a joue
+l'increment livre en s07 (commit `10dd74d`) et prononce **VALIDE SOUS RESERVE**, Done pedagogique
+accorde ; le REFUSE du 2026-08-10 decrit ci-dessous est leve
+(`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, verdict "second audit,
+increment livre en s07"). La seconde condition de remise au catalogue (le repli en deux rangees)
+est elle aussi remplie et reverifiee sur le rendu reel. Les deux conditions de `DEC-0015` (quatrieme
+amendement) etant remplies ensemble, `DEC-0017` tranche la remise de "Le bon verbe" au catalogue
+au sprint 8. Le texte qui suit reste tel qu'ecrit au moment du refus, pour l'historique.
 
 A l'exception de cette story, prete a developper des maintenant : le refus de `nadia-prof` du
 2026-08-10 (`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`) porte sur un

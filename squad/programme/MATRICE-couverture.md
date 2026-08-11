@@ -254,6 +254,18 @@ atteindre `couvert-valide` sur cet increment, qui ne couvre qu'un temps sur troi
 jeu est retire du catalogue jouable en attendant sa correction
 (`DEC-0014-retrait-le-bon-verbe-du-catalogue.md`).
 
+**Etat au 2026-08-10, second audit, increment livre en s07** : `nadia-prof` prononce **VALIDE SOUS
+RESERVE**, Done pedagogique **accorde**, sur le commit `10dd74d` (`HEAD` de `round-two`)
+(`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, verdict "second audit,
+increment livre en s07"). **Le REFUSE du 2026-08-10 est leve** : les douze indices sont desormais
+vrais et aucun ne dementit plus un autre item du meme paquet, verifie un par un et vu en jeu. La
+ligne **reste `en cours`**, et le second audit ne change rien a cet etat : la barre qu'elle a
+ecrite elle-meme pour `couvert-valide` (ouvrir le futur et l'imparfait, voir le refus du
+2026-08-10, section 5) est inchangee et non atteinte, ce paquet ne couvrant qu'un temps sur trois.
+Ce Done pedagogique leve, a lui seul, ne remet pas le jeu au catalogue : voir `DEC-0017` pour la
+decision de remise, qui verifie en plus la seconde condition posee par `DEC-0015` (quatrieme
+amendement) sur le repli de mise en page.
+
 ## Synthese au sprint 0, mise a jour a l'ouverture du sprint 4
 
 | Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
@@ -361,7 +373,8 @@ planning ; ce mouvement attend l'audit de `nadia-prof` sur les increments de s06
 - **Francais CM1 (conjugaison au present)** est **REFUSE** : cinq indices sur douze enoncent une
   regle de conjugaison fausse, trois dementies par un autre item du meme paquet. La ligne reste
   `en cours`. Le jeu, jouable au moment de l'audit, est retire du catalogue
-  (`DEC-0014-retrait-le-bon-verbe-du-catalogue.md`).
+  (`DEC-0014-retrait-le-bon-verbe-du-catalogue.md`). **Ce REFUSE est leve au sprint 7** : voir la
+  section "Synthese apres les verdicts du sprint 7" ci-dessous.
 - **Francais CP (graphemes/phonemes, "Le bon son")** obtient **VALIDE SOUS RESERVE** : le REFUSE du
   2026-08-06 est leve sur ses cinq motifs, apres recomposition complete du paquet autour des trois
   voyelles nasales. La ligne reste `en cours` : la competence nomme aussi les voyelles et consonnes
@@ -379,3 +392,26 @@ Le produit compte desormais deux lignes `couvert-valide` sur 46 (contre une a la
 deux lignes `en cours` dont l'une correspond a un jeu refuse et retire du catalogue
 (conjugaison CM1), et 42 lignes `non couvert`, chiffre inchange : aucune ligne nouvelle n'a ete
 ouverte ce sprint, le mouvement porte uniquement sur les deux lignes deja engagees.
+
+## Synthese apres les verdicts du sprint 7 (2026-08-10)
+
+Le sprint 7 (`DEC-0015`) est transverse - la mecanique de machine a sous, pas un contenu
+pedagogique - et n'ouvre aucune ligne nouvelle. Il porte neanmoins un second audit sur une ligne
+deja engagee : `nadia-prof` a rejoue `bandit-manchot-conjugaison-present-cm1` sur le commit
+`10dd74d` (`HEAD` de `round-two`) apres la correction de ses cinq indices fautifs, sur une branche
+jetable qui n'ajoutait que l'entree de catalogue retiree par `DEC-0014` (le jeu reste hors
+catalogue, cet audit ne l'y remet pas) (`squad/conformite/FICHE-bandit-manchot-conjugaison-
+present-cm1.md`, verdict "second audit, increment livre en s07").
+
+- **Francais CM1 (conjugaison au present)** : le REFUSE du 2026-08-10 (premier audit, cinq indices
+  fautifs) est **leve**. `nadia-prof` prononce **VALIDE SOUS RESERVE**, Done pedagogique
+  **accorde**. La ligne **reste `en cours`** : elle ne pouvait de toute facon pas atteindre
+  `couvert-valide` sur cet increment (un temps sur trois, `DEC-0013`), et la barre qu'elle a
+  ecrite elle-meme pour ce statut (ouvrir le futur et l'imparfait) est inchangee et non atteinte.
+  Ce chantier fait l'objet de la story de chantier 4 de `DEC-0017`.
+
+Ce second audit ne deplace aucun chiffre du tableau de synthese ci-dessus : la ligne reste
+`en cours` avant comme apres, et aucune autre ligne n'est touchee par le sprint 7. La decision de
+remettre ce jeu au catalogue jouable, qui suppose en plus la seconde condition de `DEC-0015`
+(quatrieme amendement) sur le repli de mise en page, est tranchee par `DEC-0017` et non par cette
+matrice, qui ne porte que l'etat des competences.
