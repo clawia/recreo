@@ -66,6 +66,15 @@ import static org.assertj.core.api.Assertions.assertThat;
  * 3, point 1). S6-5 : l'indice de l'item dont la bonne reponse est "mes" est corrige pour montrer
  * une phrase de substitution qui est elle-meme du francais correct (meme verdict, section 3, point
  * 2).</p>
+ *
+ * <p>S8-4 (DEC-0017, chantier 4) : "cm1-conjugaison-present" s'etend au futur et a l'imparfait de
+ * l'indicatif, treize items ajoutes en fin de paquet, sous les six points de la barre fermee ecrite
+ * par nadia-prof (squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md, refus du
+ * 2026-08-10, section 5). Les douze items de present restent inchanges. Six personnes pour le
+ * futur, six pour l'imparfait ; un item par temps (futur "auront", imparfait "aimaient", et un
+ * treizieme item de present "aide") oppose sa bonne reponse a un distracteur d'un autre temps du
+ * meme verbe, portant une marque temporelle reperable dans la phrase ("demain", "autrefois",
+ * "maintenant") plutot que devinable.</p>
  */
 class PaquetsFrancaisS04Test {
 
@@ -130,7 +139,42 @@ class PaquetsFrancaisS04Test {
             Map.entry("prends", "prendre"), Map.entry("prend", "prendre"), Map.entry("prenons", "prendre"),
             Map.entry("prenez", "prendre"), Map.entry("prennent", "prendre"),
             Map.entry("chante", "chanter"), Map.entry("chantes", "chanter"), Map.entry("chantons", "chanter"),
-            Map.entry("chantez", "chanter"), Map.entry("chantent", "chanter"));
+            Map.entry("chantez", "chanter"), Map.entry("chantent", "chanter"),
+            /*
+             * S8-4 : le futur et l'imparfait ajoutent des formes des memes verbes ("jouer", "faire",
+             * "aller", "finir", "chanter" restent du paquet de present) et de trois verbes neufs pour
+             * ce paquet ("aider", "etre", "aimer"). La propriete verifiee par ce garde-fou ne regarde
+             * pas le temps d'une forme, seulement son verbe : un distracteur au futur ou a l'imparfait
+             * reste une forme du meme verbe que la bonne reponse, jamais un verbe different.
+             */
+            Map.entry("jouerai", "jouer"), Map.entry("joueras", "jouer"), Map.entry("jouera", "jouer"),
+            Map.entry("jouerons", "jouer"), Map.entry("jouerez", "jouer"), Map.entry("joueront", "jouer"),
+            Map.entry("jouais", "jouer"), Map.entry("jouait", "jouer"), Map.entry("jouions", "jouer"),
+            Map.entry("jouiez", "jouer"), Map.entry("jouaient", "jouer"),
+            Map.entry("aide", "aider"), Map.entry("aides", "aider"), Map.entry("aidons", "aider"),
+            Map.entry("aidez", "aider"), Map.entry("aident", "aider"),
+            Map.entry("aiderai", "aider"), Map.entry("aideras", "aider"), Map.entry("aidera", "aider"),
+            Map.entry("aiderons", "aider"), Map.entry("aiderez", "aider"), Map.entry("aideront", "aider"),
+            Map.entry("aidais", "aider"), Map.entry("aidait", "aider"), Map.entry("aidions", "aider"),
+            Map.entry("aidiez", "aider"), Map.entry("aidaient", "aider"),
+            Map.entry("finirai", "finir"), Map.entry("finiras", "finir"), Map.entry("finira", "finir"),
+            Map.entry("finirons", "finir"), Map.entry("finirez", "finir"), Map.entry("finiront", "finir"),
+            Map.entry("ferai", "faire"), Map.entry("feras", "faire"), Map.entry("fera", "faire"),
+            Map.entry("ferons", "faire"), Map.entry("ferez", "faire"), Map.entry("feront", "faire"),
+            Map.entry("faisais", "faire"), Map.entry("faisait", "faire"), Map.entry("faisions", "faire"),
+            Map.entry("faisiez", "faire"), Map.entry("faisaient", "faire"),
+            Map.entry("irai", "aller"), Map.entry("iras", "aller"), Map.entry("ira", "aller"),
+            Map.entry("irons", "aller"), Map.entry("irez", "aller"), Map.entry("iront", "aller"),
+            Map.entry("aurai", "avoir"), Map.entry("auras", "avoir"), Map.entry("aura", "avoir"),
+            Map.entry("aurons", "avoir"), Map.entry("aurez", "avoir"), Map.entry("auront", "avoir"),
+            Map.entry("avais", "avoir"), Map.entry("avait", "avoir"), Map.entry("avions", "avoir"),
+            Map.entry("aviez", "avoir"), Map.entry("avaient", "avoir"),
+            Map.entry("étais", "être"), Map.entry("était", "être"), Map.entry("étions", "être"),
+            Map.entry("étiez", "être"), Map.entry("étaient", "être"),
+            Map.entry("aimerai", "aimer"), Map.entry("aimeras", "aimer"), Map.entry("aimera", "aimer"),
+            Map.entry("aimerons", "aimer"), Map.entry("aimerez", "aimer"), Map.entry("aimeront", "aimer"),
+            Map.entry("aimais", "aimer"), Map.entry("aimait", "aimer"), Map.entry("aimions", "aimer"),
+            Map.entry("aimiez", "aimer"), Map.entry("aimaient", "aimer"));
 
     /**
      * S6-6/S6-7 : recomposition a trois voyelles nasales (avis de conception du 2026-08-06, point
@@ -333,12 +377,18 @@ class PaquetsFrancaisS04Test {
     }
 
     /**
-     * S6-3, deuxieme critere : chaque distracteur est une autre forme conjuguee au present du meme
-     * verbe que la bonne reponse - jamais un verbe different, jamais une forme d'un autre temps.
+     * S6-3, deuxieme critere, etendu par S8-4 : chaque distracteur est une autre forme conjuguee du
+     * meme verbe que la bonne reponse - jamais un verbe different. S6-3 excluait aussi "une forme
+     * d'un autre temps" ; S8-4 leve cette seconde moitie a dessein (barre de nadia-prof, point 2) :
+     * trois items opposent desormais leur bonne reponse a un distracteur du meme verbe pris a un
+     * autre temps, verifie item par item dans
+     * {@link #conjugaisonCm1OpposeUnItemParTempsAUneAutreFormeDuMemeVerbe()}. Ce que ce garde-fou
+     * continue de verifier, sur les vingt-cinq items : jamais un verbe different.
      */
     @Test
-    void conjugaisonPresentCm1NePresenteQueDesFormesDuMemeVerbeAuPresent() {
-        // DEC-0014 : "Le bon verbe" est retire du catalogue (REFUSE), paquet charge directement.
+    void conjugaisonCm1NePresenteQueDesFormesDuMemeVerbe() {
+        // DEC-0017 restitue "Le bon verbe" au catalogue (chantier 2) ; ce test continue de charger
+        // le paquet directement, comme les autres verifications de contenu de ce fichier.
         List<Question> items = tousLesItems(paquet("cm1-conjugaison-present"));
 
         for (Question item : items) {
@@ -357,8 +407,8 @@ class PaquetsFrancaisS04Test {
                                 distracteur, item.enonce())
                         .isFalse();
                 assertThat(VERBE_DE_LA_FORME.get(distracteur.toLowerCase()))
-                        .as("le distracteur '%s' de '%s' est une autre forme du meme verbe '%s' au"
-                                        + " present, jamais un verbe different ni une forme d'un autre temps",
+                        .as("le distracteur '%s' de '%s' est une autre forme du meme verbe '%s',"
+                                        + " jamais un verbe different",
                                 distracteur, item.enonce(), verbe)
                         .isEqualTo(verbe);
             }
@@ -371,7 +421,8 @@ class PaquetsFrancaisS04Test {
      */
     @Test
     void conjugaisonPresentCm1RepresenteChacuneDesSixPersonnesGrammaticales() {
-        // DEC-0014 : "Le bon verbe" est retire du catalogue (REFUSE), paquet charge directement.
+        // DEC-0017 restitue "Le bon verbe" au catalogue (chantier 2) ; ce test continue de charger
+        // le paquet directement, comme les autres verifications de contenu de ce fichier.
         List<Question> items = tousLesItems(paquet("cm1-conjugaison-present"));
 
         Set<String> personnesRepresentees = new HashSet<>();
@@ -388,10 +439,100 @@ class PaquetsFrancaisS04Test {
     /** S6-3, sixieme critere : 20 manches jouees a la suite ne presentent pas toutes la meme phrase. */
     @Test
     void conjugaisonPresentCm1VarieSurVingtManchesConsecutives() {
-        // DEC-0014 : "Le bon verbe" est retire du catalogue (REFUSE), paquet charge directement.
+        // DEC-0017 restitue "Le bon verbe" au catalogue (chantier 2) ; ce test continue de charger
+        // le paquet directement, comme les autres verifications de contenu de ce fichier.
         assertThat(enoncesSurVingtTirages(paquet("cm1-conjugaison-present")))
                 .as("variete minimale sur 20 manches")
                 .hasSizeGreaterThan(1);
+    }
+
+    /**
+     * S8-4, point 1 de la barre de nadia-prof : le futur et l'imparfait sont ajoutes avec les six
+     * personnes chacun. Identifie les items ajoutes par leur bonne reponse (les douze items de
+     * present, inchanges, ne portent aucune de ces formes) et verifie que les six personnes
+     * grammaticales sont chacune representee dans le lot du futur, puis dans celui de l'imparfait.
+     */
+    @Test
+    void conjugaisonCm1AjouteLeFuturEtLImparfaitAvecLesSixPersonnesChacun() {
+        List<Question> items = tousLesItems(paquet("cm1-conjugaison-present"));
+
+        Set<String> bonnesReponsesFutur = Set.of("jouerai", "aideras", "finira", "ferons", "irez", "auront");
+        Set<String> bonnesReponsesImparfait =
+                Set.of("jouais", "aidais", "faisait", "étions", "aviez", "aimaient");
+
+        Set<String> personnesAuFutur = new HashSet<>();
+        Set<String> personnesALImparfait = new HashSet<>();
+        for (Question item : items) {
+            if (bonnesReponsesFutur.contains(item.bonneReponse())) {
+                personnesAuFutur.add(personneGrammaticale(item.enonce()));
+            }
+            if (bonnesReponsesImparfait.contains(item.bonneReponse())) {
+                personnesALImparfait.add(personneGrammaticale(item.enonce()));
+            }
+        }
+
+        assertThat(personnesAuFutur)
+                .as("S8-4, point 1 : les six personnes grammaticales sont representees au futur")
+                .containsExactlyInAnyOrder("je", "tu", "il/elle", "nous", "vous", "ils/elles");
+        assertThat(personnesALImparfait)
+                .as("S8-4, point 1 : les six personnes grammaticales sont representees a l'imparfait")
+                .containsExactlyInAnyOrder("je", "tu", "il/elle", "nous", "vous", "ils/elles");
+    }
+
+    /**
+     * S8-4, point 2 de la barre de nadia-prof : au moins un item par temps oppose sa bonne reponse a
+     * un distracteur du meme verbe pris a un autre temps, pas seulement a une autre personne du meme
+     * temps - faute de quoi le temps demande resterait toujours donne par les propositions plutot que
+     * choisi par l'enfant. Trois items designes nommement, un par temps : "auront" (futur, oppose a
+     * "avaient", imparfait), "aimaient" (imparfait, oppose a "aimeront", futur) et "aide" (present,
+     * oppose a "aidait" et "aidera", imparfait et futur).
+     */
+    @Test
+    void conjugaisonCm1OpposeUnItemParTempsAUneAutreFormeDuMemeVerbe() {
+        List<Question> items = tousLesItems(paquet("cm1-conjugaison-present"));
+
+        Question itemFutur = itemALaBonneReponse(items, "auront");
+        Question itemImparfait = itemALaBonneReponse(items, "aimaient");
+        Question itemPresent = itemALaBonneReponse(items, "aide");
+
+        assertThat(itemFutur.distracteurs())
+                .as("S8-4, point 2 : l'item futur 'auront' oppose une forme de l'imparfait du meme verbe")
+                .contains("avaient");
+        assertThat(itemImparfait.distracteurs())
+                .as("S8-4, point 2 : l'item imparfait 'aimaient' oppose une forme du futur du meme verbe")
+                .contains("aimeront");
+        assertThat(itemPresent.distracteurs())
+                .as("S8-4, point 2 : l'item present 'aide' oppose une forme de l'imparfait et une du"
+                        + " futur du meme verbe")
+                .contains("aidait", "aidera");
+    }
+
+    /**
+     * S8-4, point 3 de la barre de nadia-prof : chacun des trois items qui opposent deux temps porte
+     * une marque temporelle reperable dans sa phrase plutot que devinable.
+     */
+    @Test
+    void conjugaisonCm1LesItemsQuiOpposentDeuxTempsPortentUneMarqueTemporelleDansLEnonce() {
+        List<Question> items = tousLesItems(paquet("cm1-conjugaison-present"));
+
+        assertThat(itemALaBonneReponse(items, "auront").enonce())
+                .as("S8-4, point 3 : marque temporelle du futur")
+                .contains("Demain");
+        assertThat(itemALaBonneReponse(items, "aimaient").enonce())
+                .as("S8-4, point 3 : marque temporelle de l'imparfait")
+                .contains("Autrefois");
+        assertThat(itemALaBonneReponse(items, "aide").enonce())
+                .as("S8-4, point 3 : marque temporelle du present")
+                .contains("Maintenant");
+    }
+
+    /** Le seul item du paquet dont la bonne reponse est celle demandee, ou echoue si aucun ne l'est. */
+    private static Question itemALaBonneReponse(List<Question> items, String bonneReponse) {
+        return items.stream()
+                .filter(item -> item.bonneReponse().equals(bonneReponse))
+                .findFirst()
+                .orElseThrow(() -> new AssertionError(
+                        "aucun item du paquet n'a pour bonne reponse '" + bonneReponse + "'"));
     }
 
     /**
