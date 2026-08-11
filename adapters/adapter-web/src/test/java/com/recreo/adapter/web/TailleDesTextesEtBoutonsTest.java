@@ -67,6 +67,20 @@ class TailleDesTextesEtBoutonsTest {
     private static final double CIBLE_TACTILE_REM = 2.75;
 
     /**
+     * S8-5 : plancher accepte par nadia-prof pour .proposition, sous le seul repli a quatre
+     * colonnes (arbitrage prealable du 2026-08-11, FICHE-bandit-manchot-conjugaison-present-cm1.md,
+     * section C, condition 2 : "1,875rem et rien en dessous [...] un plancher, pas une pente").
+     * Ce plancher est distinct de celui que verifie leChiffreDeReponseEstAuMoinsAussiGrosQueLeCalcul
+     * (2rem, sur le selecteur litteral .proposition) : il ne le remplace pas, il ne s'applique
+     * que sous SELECTEUR_REPLI_QUATRE_COLONNES.
+     */
+    private static final double PLANCHER_REPLI_QUATRE_COLONNES_REM = 1.875;
+
+    /** ADR-0026, S7-1/S7-2 : le selecteur deja existant du repli en deux rangees a quatre colonnes. */
+    private static final String SELECTEUR_REPLI_QUATRE_COLONNES =
+            ".propositions:has(.proposition:nth-child(4)) .proposition";
+
+    /**
      * S3-5, reserve 2 de nadia-prof : l'ecart minimal entre deux boutons de reponse. Un plancher gagne
      * par un refus pedagogique, jamais une variable de mise en page - aucune contrainte de largeur ne
      * l'abaisse (ADR-0026).
@@ -524,6 +538,67 @@ class TailleDesTextesEtBoutonsTest {
 
         assertThat(proposition).isGreaterThanOrEqualTo(2.0);
         assertThat(proposition).isGreaterThanOrEqualTo(tailleEnRem(blocs, ".enonce"));
+    }
+
+    /**
+     * S8-5, condition 7 de l'arbitrage prealable de nadia-prof du 2026-08-11
+     * (FICHE-bandit-manchot-conjugaison-present-cm1.md, section C) : le test ci-dessus continue de
+     * lire le selecteur litteral {@code .proposition} et reste vert a bon droit - son plancher
+     * general de 2rem n'a pas change. Mais nadia-prof refuse qu'un lecteur croie ce chiffre encore
+     * garde dans tous les cas, alors qu'un enfant voit desormais 1,875rem sous le repli a quatre
+     * colonnes, et moins que {@code .enonce} sur ce seul cas (elle accepte les deux clauses de son
+     * acquis 3 : la valeur et le rapport a l'enonce). Ce test encode l'exception au mot pres :
+     * {@code .proposition} garde son plancher general de 2rem partout ailleurs, et
+     * {@link #SELECTEUR_REPLI_QUATRE_COLONNES} porte un plancher distinct, strictement plus bas,
+     * jamais une degradation silencieuse du premier.
+     */
+    @Test
+    void laPoliceDuRepliAQuatreColonnesEstUneExceptionAuPlancherGeneralDeDeuxRem() {
+        Map<String, String> blocs = blocsMaison(RACINE_PRODUCTION);
+
+        assertThat(tailleEnRem(blocs, ".proposition"))
+                .as(".proposition, hors du repli a quatre colonnes, reste au plancher general de "
+                        + "2rem : cette exception ne le degrade pas")
+                .isEqualTo(2.0);
+
+        double exception = tailleEnRem(blocs, SELECTEUR_REPLI_QUATRE_COLONNES);
+        assertThat(exception)
+                .as("%s doit rester litteralement 1,875rem (condition 3 de nadia-prof : ni "
+                        + "variable, ni calc)", SELECTEUR_REPLI_QUATRE_COLONNES)
+                .isEqualTo(PLANCHER_REPLI_QUATRE_COLONNES_REM);
+        assertThat(exception)
+                .as("le plancher du repli a quatre colonnes doit rester strictement sous le "
+                        + "plancher general de .proposition, sinon ce n'est plus l'exception "
+                        + "nommee mais une confusion des deux selecteurs")
+                .isLessThan(2.0);
+    }
+
+    /**
+     * S8-5 : verification partagee du plancher de la condition 2 de nadia-prof, sous le repli a
+     * quatre colonnes. Distincte de {@code verifierPlancherDeLisibilite} (1,25rem, tout texte) et
+     * du plancher general de {@code .proposition} (2rem) : celle-ci ne porte que sur
+     * {@link #SELECTEUR_REPLI_QUATRE_COLONNES}.
+     */
+    static void verifierPlancherDuRepliAQuatreColonnes(Path racine) {
+        double taille = tailleEnRem(blocsMaison(racine), SELECTEUR_REPLI_QUATRE_COLONNES);
+        assertThat(taille)
+                .as("%s : nadia-prof accepte 1,875rem et rien en dessous (condition 2, arbitrage "
+                        + "prealable du 2026-08-11 sur S8-5) - un plancher, pas une pente",
+                        SELECTEUR_REPLI_QUATRE_COLONNES)
+                .isGreaterThanOrEqualTo(PLANCHER_REPLI_QUATRE_COLONNES_REM);
+    }
+
+    /**
+     * nadia-prof a elle-meme mesure et rejete 1,8125rem (29px) : "il donne plus d'air, il n'est
+     * pas approuve" (meme section). Ce contre-exemple porte exactement la valeur qu'elle a nommee
+     * comme refusee, pas une valeur arbitraire sous le plancher.
+     */
+    @Test
+    void unePoliceSousUnRemHuitCentSoixanteQuinzeSousLeRepliFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("police-sous-le-plancher-du-repli");
+        assertThatThrownBy(() -> verifierPlancherDuRepliAQuatreColonnes(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("rien en dessous");
     }
 
     /**

@@ -179,8 +179,20 @@ body:has(.ecran-de-jeu) .lien-accueil {
     flex-wrap: wrap;
 }
 
+/* S8-5 : deux propositions du paquet de conjugaison sortaient de leur colonne a 360 px
+   (mangeons a -2,01 px, cherchons a -0,09 px d'air de chaque cote - DEC-0018,
+   FICHE-bandit-manchot-conjugaison-present-cm1.md, verdict du 2026-08-11). Piste retenue par
+   nadia-prof (meme fiche, arbitrage prealable du meme jour, section C, sept conditions) :
+   1,875rem, scope au seul repli a quatre colonnes par ce meme selecteur, litteral - ni variable
+   ni calc (condition 3). C'est un plancher, pas une pente (condition 2) : rien sous 1,875rem
+   n'est accepte ici, et cette regle ne s'applique jamais aux replis a deux ou trois colonnes,
+   ou .proposition reste a 2rem. Voir TailleDesTextesEtBoutonsTest,
+   laPoliceDuRepliAQuatreColonnesEstUneExceptionAuPlancherGeneralDeDeuxRem, qui encode l'exception
+   au mot pres (condition 7 : leChiffreDeReponseEstAuMoinsAussiGrosQueLeCalcul lit le selecteur
+   litteral .proposition et reste vert a bon droit, ce plancher-la general n'a pas change). */
 .propositions:has(.proposition:nth-child(4)) .proposition {
     flex: 1 1 calc(50% - 0.5rem);
+    font-size: 1.875rem;
 }
 
 /* S8-1 : le cabinet visible qui entoure les colonnes de reponses (nadia-prof, arbitrage prealable
