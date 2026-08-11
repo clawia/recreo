@@ -1,0 +1,18 @@
+/* Jeu fautif de theo-archi (s08, dernier mot sur la condition 7 de nadia-prof). Les deux regles
+   que nadia-prof a nommees sont ici a leur valeur exacte, 2rem et 1,875rem, et le plancher de
+   lisibilite de 1,25rem est respecte : les deux tests de S8-5 sont verts sur cette feuille. Seule
+   une troisieme regle, qui n'a jamais ete soumise a nadia-prof, donne aux propositions une
+   troisieme taille dans un autre contexte. C'est exactement ce que le reste du fichier laissait
+   passer. */
+.proposition {
+    font-size: 2rem;
+}
+
+.propositions:has(.proposition:nth-child(4)) .proposition {
+    flex: 1 1 calc(50% - 0.5rem);
+    font-size: 1.875rem;
+}
+
+.cabinet .proposition {
+    font-size: 1.5rem;
+}
