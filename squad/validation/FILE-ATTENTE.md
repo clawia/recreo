@@ -26,9 +26,10 @@ planning et qui le trace ici et dans le planning du sprint concerne.
 
 ## File actuelle
 
-**Compte actuel : 0 increment en attente.** Ce fichier portait encore, a l'ouverture du sprint 8,
-le REFUSE du 2026-08-10 sur `bandit-manchot-conjugaison-present-cm1` sans la levee prononcee au
-sprint 7 : correction faite ci-dessous.
+**Compte actuel : 1 increment en attente** (voir la correction du 2026-08-11 ci-dessous). Ce
+fichier portait encore, a l'ouverture du sprint 8, le REFUSE du 2026-08-10 sur
+`bandit-manchot-conjugaison-present-cm1` sans la levee prononcee au sprint 7 : correction faite
+ci-dessous.
 
 `bandit-manchot-conjugaison-present-cm1` a ete refuse par `nadia-prof` le 2026-08-10 (premier
 audit) sur un motif unique et suffisant (cinq indices sur douze enoncent une regle de conjugaison
@@ -52,9 +53,18 @@ sa condition de matrice etant elle-meme levee (`squad/conformite/FICHE-bandit-ma
 comme pour `bandit-manchot-additions-cp`, ce n'etait pas une attente et il n'est jamais entre dans
 cette file au titre du Done pedagogique.
 
-Bien sous le seuil de gel (2-3), et la file est vide : rien n'empeche d'ouvrir de nouvelles
-stories de contenu au prochain planning, et aucune reprise de Done pedagogique n'est due en
-priorite pour ce seul motif.
+**Correction du 2026-08-11, meme sprint** : `nadia-prof` a rendu un troisieme audit sur
+`bandit-manchot-conjugaison-present-cm1`, sur l'increment livre le meme jour (commit `533967d`,
+chantier 2 de `DEC-0017` puis S8-4) : **REFUSE**
+(`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, verdict du 2026-08-11). Le
+refus porte sur l'activation au catalogue (deux propositions plus larges que leur colonne a
+360 px), pas sur les treize items neufs, qu'elle valide. `DEC-0018-activation-de-le-bon-verbe-
+corrigee-dans-le-sprint-et-denouement-d-un-second-refus.md` tranche que le jeu reste au catalogue
+pendant la correction (S8-5), a la difference du precedent de `DEC-0014`. **Cet increment rentre
+dans cette file, en attente de sa reprise** : compte actuel, **1 increment en attente**.
+
+Bien sous le seuil de gel (2-3) : rien n'empeche d'ouvrir de nouvelles stories de contenu au
+prochain planning, et cette seule entree ne declenche pas la regle de gel.
 
 ## Historique
 
@@ -64,6 +74,7 @@ priorite pour ce seul motif.
 | bandit-manchot-homophones-cm1 | `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE | 2026-08-06 (sprint 4, premier audit) | 2026-08-06 (accorde au premier audit) |
 | bandit-manchot-le-bon-son-cp | `squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE (leve depuis REFUSE) | 2026-08-06 (sprint 4, premier audit) | 2026-08-10 (sprint 6, refus leve apres recomposition) |
 | bandit-manchot-conjugaison-present-cm1 | `squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE (leve depuis REFUSE) | 2026-08-10 (sprint 6, premier audit) | 2026-08-10 (sprint 7, second audit, refus leve) |
+| bandit-manchot-conjugaison-present-cm1 | `squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md` | REFUSE (activation au catalogue) - en attente de reprise | 2026-08-11 (sprint 8, troisieme audit) | - |
 
 **Correction de s08 - ce fichier etait perime depuis sa cloture de sprint 7.** Le sprint 7 a levé
 le refus ci-dessus le 2026-08-10 (meme jour que l'ouverture du refus, sur un increment livre

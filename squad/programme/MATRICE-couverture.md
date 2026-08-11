@@ -266,6 +266,24 @@ Ce Done pedagogique leve, a lui seul, ne remet pas le jeu au catalogue : voir `D
 decision de remise, qui verifie en plus la seconde condition posee par `DEC-0015` (quatrieme
 amendement) sur le repli de mise en page.
 
+**Etat au 2026-08-11, troisieme audit, sur l'increment livre en s08 (S8-4, commit `533967d`)** :
+`nadia-prof` prononce **REFUSE**
+(`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, verdict du 2026-08-11). Ce
+refus porte sur l'activation de "Le bon verbe" au catalogue (deux propositions plus larges que
+leur colonne de 152 px a 360 px, dans le cabinet livre le meme jour), pas sur le contenu : **sa
+barre fermee de six points pour l'ouverture du futur et de l'imparfait est LEVEE**, verifiee point
+par point, et le contenu de S8-4 est valide. `DEC-0018` tranche que le jeu reste au catalogue
+pendant la correction de cette disposition (story `S8-5`), a la difference du precedent
+`DEC-0014`, et fixe le denouement des deux issues possibles du prochain audit.
+
+**La ligne reste `en cours`.** La barre en six points levee autorise le passage a
+`couvert-valide`, mais je choisis de ne pas le faire tant que le verdict global inscrit sur cette
+fiche, pour ce commit, est `REFUSE` : voir `DEC-0018`, section "Decision" point 4, pour le motif
+complet. La ligne passera a `couvert-valide` au premier verdict qui n'est pas un `REFUSE` sur
+l'increment corrige de `S8-5`, sans que la barre en six points soit rouverte a cette occasion ; si
+ce verdict est de nouveau `REFUSE`, la ligne reste `en cours` et le jeu sort du catalogue
+(`DEC-0018`, section "Decision" point 3).
+
 ## Synthese au sprint 0, mise a jour a l'ouverture du sprint 4
 
 | Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |

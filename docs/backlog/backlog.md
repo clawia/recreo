@@ -2140,6 +2140,50 @@ jour.
   chantier 4 ; `FICHE-bandit-manchot-conjugaison-present-cm1.md`, refus du 2026-08-10, section 5.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`.
 
+### S8-5 - Deux propositions du paquet de conjugaison sortent de leur colonne dans le cabinet a 360 px
+
+- **Contexte et decision de perimetre** : `DEC-0018-activation-de-le-bon-verbe-corrigee-dans-le-
+  sprint-et-denouement-d-un-second-refus.md` tranche la direction (deja arretee par l'utilisatrice) :
+  le sprint corrige la disposition plutot que de retirer "Le bon verbe" du catalogue. Cette story en
+  est l'execution.
+- **Besoin** : en tant qu'eleve de CM1 qui joue a "Le bon verbe", je veux que chaque mot propose en
+  reponse tienne entierement a l'interieur de son bouton, afin de pouvoir le lire et le choisir sans
+  qu'il s'ecrive sur la paroi de la machine.
+- **Competence programme visee** : transverse - habillage de la mecanique (colonne et cabinet),
+  aucun contenu pedagogique nouveau (`ADR-0004`). Cette story ne porte aucune ligne de
+  `squad/programme/MATRICE-couverture.md` ; elle leve un blocage d'activation qui empeche la ligne
+  francais CM1 (conjugaison) d'etre servie sans reserve, voir `DEC-0018`.
+- **Criteres d'acceptation** :
+  - Etant donne les 25 items du paquet `cm1-conjugaison-present.yaml` et leurs propositions,
+    mesures a 360 px de largeur reelle dans le cabinet livre (`outils/mesurer-rendu.sh 360 <url>
+    <png> 640`), quand on releve la largeur des glyphes rendus de chaque proposition, alors
+    aucune ne depasse sa colonne de 152,00 px : en particulier `mangeons` (156,02 px mesures le
+    2026-08-11, deborde de 2,02 px de chaque cote) et `cherchons` (152,17 px, deborde de 0,09 px)
+    tiennent desormais a l'interieur de leur bouton, glyphes compris, sans troncature ni
+    compression (`FICHE-bandit-manchot-conjugaison-present-cm1.md`, verdict du 2026-08-11,
+    section 7).
+  - Etant donne les propositions deja conformes du meme paquet (`cherchent`, 148,30 px et moins),
+    quand on les remesure apres cette story, alors leur marge ne se degrade pas.
+  - Etant donne les six points de la barre fermee de `nadia-prof` du 2026-08-10, deja satisfaits et
+    non rouverts par le troisieme audit du 2026-08-11 (`FICHE-bandit-manchot-conjugaison-
+    present-cm1.md`, section 1), quand cette story est livree, alors aucun n'est degrade : ni les
+    six personnes par temps, ni l'opposition d'au moins un temps entre eux, ni la marque du temps
+    dans la phrase, ni l'exactitude des indices.
+  - Ce que cette story ne tranche pas : le moyen d'obtenir ce resultat (raccourcir des formes,
+    revoir le budget de colonne du cabinet, tout autre moyen) est une question technique et de
+    forme, a `theo-archi` et a `ines-design`, saisis par `sofia-sm` avant developpement comme pour
+    toute story qui touche un ecran deja arbitre par `nadia-prof` (`squad/README.md` section 10).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que l'increment corrige, rejoue en entier, ne reintroduise aucun des motifs
+    qu'elle a deja leves, et son verdict sur l'activation renouvelee de "Le bon verbe" au
+    catalogue.
+- **Lien decision** : `DEC-0018-activation-de-le-bon-verbe-corrigee-dans-le-sprint-et-denouement-
+  d-un-second-refus.md` ; `FICHE-bandit-manchot-conjugaison-present-cm1.md`, verdict du
+  2026-08-11, section 7.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`. Le chiffrage des pistes de largeur
+  et l'implementation sont deja engages au moment ou j'ecris cette story ; leur affectation
+  nominative reste une decision de capacite de `sofia-sm`, pas la mienne.
+
 ## Backlog - sprints suivants (intentions non detaillees)
 
 Ces intentions ne sont pas des stories pretes a developper. Elles seront detaillees sprint par
@@ -2318,7 +2362,10 @@ livre ne reproduit pas cette mesure, le report du jeu hors du sprint redevient l
     "Calcul CP", pas pour "Le bon son", "Le bon petit mot" ni "Le bon verbe" - un enfant peut
     ouvrir le jeu d'un autre niveau sans le savoir. Constat qui empire a chaque jeu de francais
     ajoute (`nadia-prof`, verdict du 2026-08-10 sur "Le bon verbe", reserve 6 de sa fiche) : la
-    moitie des jeux du catalogue porte cette mention, l'autre moitie non.
+    moitie des jeux du catalogue porte cette mention, l'autre moitie non. **Reaggrave, chiffre par
+    `nadia-prof` au troisieme audit du 2026-08-11** (`squad/conformite/FICHE-bandit-manchot-
+    conjugaison-present-cm1.md`, verdict du 2026-08-11, section 8, reserve 6) : l'accueil propose
+    desormais trois jeux de CM1 non marques a cote d'un seul jeu de CP marque.
   - Reserves nouvelles sur "Le bon son", datees du 2026-08-10, non bloquantes
     (`squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`, verdict du 2026-08-10, section 5) :
     quatre des six items a variation forment deux paires de mots rimant sur une seule graphie et
@@ -2379,3 +2426,39 @@ livre ne reproduit pas cette mesure, le report du jeu hors du sprint redevient l
   - "Recommencer" (ecran d'erreur) n'est pas plus dechiffrable au CP que ne l'etait "Accueil" avant
     S6-9. Cet ecran a deja ete valide en s01 et `nadia-prof` ne le rouvre pas par ce constat ; elle
     le nomme par honnetete au moment ou une lisibilite comparable est demandee ailleurs.
+- **Reserves nouvelles du 2026-08-11, chantier du cabinet (S8-1 a S8-3),
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-11, section 8** :
+  - Le contour du cabinet ne se distingue des colonnes qu'a un rapport de contraste de 1,71:1
+    (`#1d4b6b` contre `#2e6f9e`) - contre la page il ressort a 9,25:1, donc le tour de l'objet reste
+    net et rien n'est refuse, mais un enfant qui distingue mal les couleurs lit surtout un aplat
+    bleu uniforme. `ines-design` propose un ecart de luminance plus franc entre le cadre et les
+    colonnes ; `camille-po` priorise. Non bloquant, a instruire pour les quatre jeux du bandit
+    manchot.
+  - Le defaut de pli du quatrieme cote du cabinet (voir `DEC-0016`, amendement du 2026-08-11) est
+    aggrave de 40 px par le cabinet sur "Le bon petit mot" et sur "Le bon verbe" : le budget
+    vertical pose par `camille-po` sur "Le bon son" (le cas le moins charge du catalogue et non le
+    plus charge, erreur nommee par `nadia-prof`) doit etre repose sur ces deux jeux. Traite par la
+    story ouverte a l'amendement du 2026-08-11 de `DEC-0016`, pas ici.
+- **Reserves nouvelles du 2026-08-11, chantier de la conjugaison etendue (S8-4),
+  `squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, verdict du 2026-08-11,
+  section 8** :
+  - **Amelioration des indices ajoutes par S8-4, non bloquante, deux corrections bornees et
+    petites** : trois indices d'imparfait ("faire", "etre", "avoir" irreguliers) laissent croire que
+    l'irregularite du verbe explique sa forme, alors qu'a l'imparfait les six terminaisons sont les
+    memes pour tous les verbes - rien de faux n'est enseigne, une regularite utile est laissee de
+    cote ; et cinq indices de futur ("Demain, ...") ne nomment pas le mot "Demain" comme marque du
+    temps, a la difference des indices d'imparfait et de present. Prete a developper (correction de
+    quelques mots par indice, sans toucher aux enonces ni aux propositions), non affectee a un
+    sprint, a instruire quand `sofia-sm` juge la capacite disponible.
+  - **L'imparfait du paquet ne porte aucun verbe du deuxieme groupe**, alors que c'est le temps ou
+    apparait l'infixe `-iss-` (`nous finissions`, `ils finissaient`), la difficulte principale de
+    l'imparfait au CM1. `nadia-prof` ne l'oppose a rien (sa barre du 2026-08-10 ne le demandait pas)
+    et note elle-meme que la forme la plus courte disponible (`finissais`) ne peut pas etre ajoutee
+    avant que la largeur de colonne du paquet soit reglee (S8-5) : la marge y est deja nulle. A
+    instruire seulement apres S8-5, jamais avant.
+  - **Constat mesure, ni motif ni reserve** : seuls 3 items sur 25 opposent deux temps entre eux ;
+    le tirage etant sans remise, une partie de dix manches n'en tire aucun dans 19,8 % des cas
+    (`C(22,10) / C(25,10)`). Une partie sur cinq environ ne demande donc jamais a l'enfant
+    d'identifier le temps employe. Candidat pour une future extension du paquet (ajouter des items
+    qui opposent deux temps, ou deplacer la marque temporelle hors du premier mot de la phrase, qui
+    est aujourd'hui totalement predictif sur les 13 items neufs) ; non affecte a un sprint.

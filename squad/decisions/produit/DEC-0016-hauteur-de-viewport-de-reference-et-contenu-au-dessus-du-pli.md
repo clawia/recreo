@@ -108,3 +108,76 @@ propriete a garder, qu'elle a demandee et pas choisie elle-meme.
 - Elle ne retire aucun jeu du catalogue et ne modifie aucun Done pedagogique deja prononce.
 - Elle n'affecte aucune story a un sprint : cette decision est de perimetre et de regle, pas de
   capacite.
+
+## Amendement du 2026-08-11 (s08) - le meme defaut mesure sur deux jeux a des severites tres differentes, une story ouverte au backlog, pas de seuil chiffre
+
+`nadia-prof` a remesure ce defaut sur le chantier du cabinet (S8-1 a S8-3) et sur l'increment de
+la conjugaison etendue (S8-4), tous deux livres le 2026-08-11
+(`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-11, section 8,
+reserve 1 ; `squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, verdict du
+2026-08-11, section 7). Elle refuse d'en faire un motif de refus sur l'un ou l'autre jeu, pour la
+raison qu'elle a posee elle-meme a l'ouverture de cette decision : elle ne peut pas appliquer deux
+barres a un seul defaut. Elle ecrit neanmoins que c'est cette ligne, et non un ecart de largeur de
+quelques pixels par ailleurs mesure le meme jour, qui fait le plus de mal a l'enfant, et que cette
+decision "merite mieux qu'une intention non ouverte au backlog".
+
+**Les chiffres, corriges avant d'etre compares.** Les deux fiches ne comptent pas sur la meme
+base, et je ne les compare pas telles quelles :
+
+| Jeu | Etats sans indice, en defaut | Etats avec indice, en defaut | Sur l'ensemble des etats |
+|---|---|---|---|
+| "Le bon petit mot" (24 items, jeu catalogue, Done accorde) | 0 / 8 | 11 / 22 | 11 / 30 |
+| "Le bon verbe" (25 items, activation refusee, voir `DEC-0018`) | 0 / 8 | 24 / 25 | 24 / 33 |
+
+Le defaut ne survient jamais sans indice, sur aucun des deux jeux (mesure confirmee) : la seule
+base comparable est donc "etats avec indice", puisque c'est elle seule que le defaut touche. Sur
+cette base, "Le bon petit mot" est en defaut sur la moitie de ses etats avec indice (50 %), "Le bon
+verbe" sur la quasi-totalite des siens (96 %). L'ecart est reel et vaut environ un facteur deux, ce
+qui n'est pas rien pour un enfant qui joue - mais ce n'est pas l'ordre de grandeur qu'une lecture
+rapide des deux fractions publiees ailleurs (11 sur 30, 24 sur 25) peut laisser croire : ces deux
+fractions n'utilisent pas le meme denominateur, l'une comptant tous les etats d'une partie et
+l'autre seulement ceux ou l'indice s'affiche. Je le corrige ici pour que personne ne compare deux
+choses qui ne se comparent pas.
+
+**Ma decision : une story au backlog, pas un seuil chiffre.**
+
+Je n'ecris pas de seuil chiffre (par exemple "motif de refus au-dela de X % d'etats avec indice en
+defaut") pour trancher a l'avenir si un cas comme celui-ci doit ou non devenir un motif. Deux
+raisons :
+
+1. **Ce jugement n'est pas le mien.** `DEC-0016` le dit deja au point 3 : "le jugement sur ce qui
+   constitue une aggravation pedagogique reste entierement le sien [`nadia-prof`]". Un seuil que
+   je fixerais unilateralement reviendrait a prejuger, a sa place, du point ou un defaut d'affichage
+   devient inacceptable pour un enfant qui vient d'echouer trois fois - une decision pedagogique,
+   pas une decision de perimetre.
+2. **Un seuil chiffre invite a le viser plutot qu'a corriger la cause.** `nadia-prof` a nomme
+   ailleurs (s05) le risque qu'une formulation commode a mesurer ("majorite des items") se
+   substitue a l'intention qu'elle protege. Un seuil en pourcentage sur ce defaut precis courrait
+   le meme risque : il recompenserait qui passe juste sous la barre plutot que qui corrige la
+   longueur de l'enonce ou le budget vertical de l'ecran, les deux causes que `DEC-0016` a deja
+   nommees.
+
+A la place, j'ouvre une story au backlog (`docs/backlog/backlog.md`, section "Backlog - sprints
+suivants", "Autres intentions") qui porte les deux jeux ensemble, puisque la cause est commune :
+la longueur de l'enonce a 2 rem, pas le nombre de propositions ni la mise en page en colonnes
+(constat d'origine de cette decision, confirme depuis). Elle n'est pas affectee a un sprint -
+l'objectif de s08 reste gele (`DEC-0017`) - et reste, comme au point 3 de cette decision, ouverte
+entre les deux pistes (raccourcir les enonces, jugement de `nadia-prof` ; ou agrandir le budget
+vertical par la mise en page, `theo-archi` et `ines-design`).
+
+**Ce que je maintiens, assume par ecrit : aucun des deux jeux n'est refuse sur ce seul defaut,
+aujourd'hui.** Je ne le decide pas a la place de `nadia-prof` - elle l'a deja decide, sur "Le bon
+petit mot" comme sur "Le bon verbe" - je le note pour qu'il soit clair que ce silence sur un motif
+est une position tenue, pas un oubli. Le motif qui pese aujourd'hui sur l'activation de "Le bon
+verbe" est distinct (l'ecart de largeur de quelques pixels, `DEC-0018`) et le repli en deux
+rangees qui l'entoure n'est pas repris ici.
+
+### Impact de cet amendement
+
+- `docs/backlog/backlog.md`, section "Backlog - sprints suivants", "Autres intentions" : intention
+  neuve, portant les deux jeux, ouverte a l'instruction quand `sofia-sm` juge la capacite
+  disponible.
+- `squad/programme/MATRICE-couverture.md` : inchangee, cette decision ne porte toujours aucun
+  contenu pedagogique.
+- `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee.
+- Aucun Done pedagogique ni statut de catalogue n'est modifie par cet amendement.
