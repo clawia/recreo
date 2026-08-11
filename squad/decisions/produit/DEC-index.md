@@ -19,8 +19,9 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0013 | Perimetre du sprint 6 : trois chantiers actes, choix de textes-trous/cm1-conjugaison.yml pour l'ouverture francais engagee par DEC-0011 | s06 | 2026-08-07 | Acceptee |
 | DEC-0014 | Retrait de "Le bon verbe" du catalogue jusqu'a sa correction | s06/s07 | 2026-08-10 | Acceptee |
 | DEC-0015 | Le sprint 7 construit la vraie machine a sous et ferme la dette n°1 de CLAUDE.md | s07 | 2026-08-10 | Acceptee, amendee quatre fois le 2026-08-10 (contradiction S7-2 / reintegration de "Le bon verbe", routee par theo-archi ; arbitrage prealable de nadia-prof, reduction a trois acquise puis insuffisante sur la largeur ; rendu en clair de la reprise silencieuse laisse en l'etat face a ADR-0027 ; nadia-prof eteint sa reduction, repli confirme mais non livre) |
-| DEC-0016 | Une hauteur de viewport de reference, et ce qui doit rester au-dessus du pli sur un ecran de manche | s07 | 2026-08-10 | Acceptee |
+| DEC-0016 | Une hauteur de viewport de reference, et ce qui doit rester au-dessus du pli sur un ecran de manche | s07 | 2026-08-10 | Acceptee, amendee le 2026-08-11 (chiffres corriges sur deux jeux, story ouverte au backlog, pas de seuil chiffre) |
 | DEC-0017 | Perimetre du sprint 8 : la machine retrouve son contexte, trois verites du depot corrigees, l'ouverture du futur et de l'imparfait de la conjugaison | s08 | 2026-08-11 | Acceptee |
+| DEC-0018 | L'activation de "Le bon verbe" est corrigee dans le sprint plutot que retiree, denouement d'un second refus, et sort de la ligne de matrice | s08 | 2026-08-11 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0002` a ete amendee le 2026-08-04, a la suite de la
 relecture pedagogique de `nadia-prof` sur le refus de `bandit-manchot-additions-cp` - ajout d'une
@@ -125,3 +126,16 @@ catalogue n'a plus qu'une seule sortie candidate (le repli, une fois livre et re
 et sur ce qui doit rester au-dessus du pli, qui touche cette fois un jeu deja catalogue ("Le bon
 petit mot") - est traite separement dans `DEC-0016`. Voir la section "Quatrieme amendement du
 2026-08-10" dans `DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`.
+
+Amendement (pas une nouvelle reference) : `DEC-0016` a ete amendee le 2026-08-11, sur remesure de
+`nadia-prof` du meme defaut sur "Le bon petit mot" (jeu catalogue) et "Le bon verbe" (activation
+refusee, `DEC-0018`). Corrige un ecart de denominateur entre les deux fractions publiees ailleurs
+(11 sur 30, sur l'ensemble des etats d'une partie ; 24 sur 25, sur les seuls etats avec indice) :
+ramenees a la meme base (etats avec indice, seule base pertinente puisque le defaut n'existe
+jamais sans indice), l'ecart reel est de 50 % contre 96 %, un facteur deux et non un ordre de
+grandeur. `DEC-0016` ouvre une story au backlog portant les deux jeux ensemble, sans fixer de
+seuil chiffre : ce jugement pedagogique reste celui de `nadia-prof`, comme le point 3 de la
+decision d'origine le posait deja, et un seuil que je fixerais unilateralement recompenserait qui
+le contourne plutot que qui corrige la cause. Aucun des deux jeux n'est refuse sur ce seul defaut,
+maintien assume par ecrit. Voir la section "Amendement du 2026-08-11 (s08)" dans
+`DEC-0016-hauteur-de-viewport-de-reference-et-contenu-au-dessus-du-pli.md`.
