@@ -11,9 +11,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -79,6 +81,39 @@ class TailleDesTextesEtBoutonsTest {
     /** ADR-0026, S7-1/S7-2 : le selecteur deja existant du repli en deux rangees a quatre colonnes. */
     private static final String SELECTEUR_REPLI_QUATRE_COLONNES =
             ".propositions:has(.proposition:nth-child(4)) .proposition";
+
+    /**
+     * S8-5, dernier mot de theo-archi sur la condition 7 de nadia-prof : les seules regles maison qui
+     * ont le droit de fixer la taille d'une proposition, et la valeur exacte de chacune. Ce n'est pas
+     * une liste d'exemptions mais une enumeration complete - toute autre regle qui fixe cette taille
+     * fait echouer {@link #verifierQueLesTaillesDePropositionSontToutesNommees}, et chacune de ces
+     * deux-ci doit exister vraiment. C'est ce qui rend vraie la phrase "2rem partout, sauf sous le
+     * repli a quatre colonnes ou c'est 1,875rem" : sans elle, les deux planchers sont deux valeurs
+     * epinglees au milieu d'un nombre inconnu d'autres.
+     */
+    private static final Map<String, Double> TAILLES_NOMMEES_DES_PROPOSITIONS = Map.of(
+            ".proposition", 2.0,
+            SELECTEUR_REPLI_QUATRE_COLONNES, PLANCHER_REPLI_QUATRE_COLONNES_REM);
+
+    /**
+     * Les pseudo-classes dont l'argument decrit un autre element que le sujet - une condition sur un
+     * descendant, une exclusion. {@code :is()} et {@code :where()} n'y sont pas : leur argument
+     * <b>est</b> le sujet, et {@code .quelque-chose:is(.proposition)} habille donc bien une
+     * proposition. Sans cette distinction, {@code .propositions:has(.proposition:nth-child(4))}
+     * passerait pour une regle de taille des propositions alors qu'elle habille leur conteneur - la
+     * meme forme d'erreur que la sous-chaine {@code font-size:} trouvee dans une variable Bootstrap
+     * (ADR-0015).
+     */
+    private static final List<String> PSEUDOS_QUI_NE_DECRIVENT_PAS_LE_SUJET = List.of(":has(", ":not(");
+
+    /**
+     * La classe qui porte une proposition. Elle est toujours cherchee comme <b>jeton</b>, jamais comme
+     * sous-chaine : {@code .propositions} contient {@code .proposition} et n'en est pas un. Pas
+     * d'expression reguliere ici - ADR-0008 les interdit dans ce module, et le meme fichier resout
+     * deja la meme difficulte a la main pour {@code font-size:} trouve dans une variable Bootstrap
+     * (ADR-0015, {@link #debutDeDeclaration}).
+     */
+    private static final String CLASSE_PROPOSITION = ".proposition";
 
     /**
      * S3-5, reserve 2 de nadia-prof : l'ecart minimal entre deux boutons de reponse. Un plancher gagne
@@ -227,9 +262,15 @@ class TailleDesTextesEtBoutonsTest {
     private static Optional<Double> proprieteEnRemSiExiste(
             Map<String, String> blocs, String selecteur, String propriete) {
         String corps = blocs.get(selecteur);
-        if (corps == null) {
-            return Optional.empty();
-        }
+        return corps == null ? Optional.empty() : proprieteEnRemSiExiste(corps, propriete);
+    }
+
+    /**
+     * La valeur litterale en rem que ce corps de regle declare, ou vide. Vide couvre trois cas que
+     * l'appelant ne distingue pas : la propriete est absente, ou sa valeur n'est pas exprimee en rem
+     * - une variable et un {@code calc()} n'en sont pas, meme s'ils rendent les memes pixels.
+     */
+    static Optional<Double> proprieteEnRemSiExiste(String corps, String propriete) {
         int position = debutDeDeclaration(corps, propriete);
         if (position < 0) {
             return Optional.empty();
@@ -530,6 +571,14 @@ class TailleDesTextesEtBoutonsTest {
      * S3-4, reserve 1 de nadia-prof sur S2-1 : le chiffre d'un bouton de reponse est ce qui
      * distingue les trois propositions, il doit donc peser au moins autant que le calcul affiche
      * a l'ecran (.enonce), et non rester le detail le plus petit d'une large barre.
+     *
+     * <p><b>Amendement S8-5, condition 7 de nadia-prof.</b> Ce que ce test lit n'est plus vrai
+     * partout : sous le repli a quatre colonnes, l'enfant voit une proposition a 1,875rem, donc plus
+     * petite que {@code .enonce} (2rem). nadia-prof a accorde cette entaille a son acquis 3
+     * nommement, une fois, sur ce seul cas. Ce test-ci ne la voit pas et n'a pas a la voir : il lit le
+     * selecteur litteral {@code .proposition}, dont le plancher general n'a pas bouge. Ce qui garantit
+     * qu'il n'y a pas de deuxieme entaille est
+     * {@link #lesSeulesTaillesDePropositionSontLesDeuxReglesNommees}, et non ce test.
      */
     @Test
     void leChiffreDeReponseEstAuMoinsAussiGrosQueLeCalcul() {
@@ -599,6 +648,201 @@ class TailleDesTextesEtBoutonsTest {
         assertThatThrownBy(() -> verifierPlancherDuRepliAQuatreColonnes(racine))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("rien en dessous");
+    }
+
+    /** Une regle CSS telle qu'elle est ecrite : d'ou elle vient, ce qu'elle habille, ce qu'elle dit. */
+    private record RegleEcrite(String origine, String selecteur, String corps) {
+    }
+
+    /**
+     * Toutes les regles de style des feuilles maison, chaque selecteur rendu separement, les regles
+     * nichees dans une regle-@ comprises.
+     *
+     * <p>Ce balayage existe parce que {@link #blocsMaison} ne peut pas porter cette clause-ci.
+     * blocsMaison aplatit la feuille en une table selecteur -&gt; corps : il fusionne les voisins
+     * d'une liste separee par des virgules, et attribue le corps d'une regle nichee sous
+     * {@code @media} a la cle {@code "@media (...)"}. C'est assez pour lire un plancher declare a un
+     * selecteur qu'on nomme - ce que fait tout le reste de ce fichier -, jamais pour prouver
+     * qu'<b>aucune autre</b> regle n'en declare un. La feuille de production porte deja deux regles-@
+     * ({@code @keyframes} et {@code @media (prefers-reduced-motion: reduce)}) : le canal est ouvert,
+     * pas hypothetique.
+     */
+    private static List<RegleEcrite> reglesEcritesMaison(Path racine) {
+        List<RegleEcrite> regles = new ArrayList<>();
+        for (Path feuille : feuillesMaison(racine)) {
+            String source = sansCommentaires(lire(feuille));
+            List<String> preludes = new ArrayList<>();
+            StringBuilder tampon = new StringBuilder();
+            for (int position = 0; position < source.length(); position++) {
+                char caractere = source.charAt(position);
+                if (caractere == '{') {
+                    preludes.add(tampon.toString().strip());
+                    tampon.setLength(0);
+                } else if (caractere == '}') {
+                    String prelude = preludes.isEmpty() ? "" : preludes.remove(preludes.size() - 1);
+                    if (!prelude.startsWith("@")) {
+                        String origine = preludes.isEmpty()
+                                ? feuille.toString()
+                                : feuille + " sous " + String.join(" ", preludes);
+                        for (String selecteur : prelude.split(",")) {
+                            regles.add(new RegleEcrite(origine, selecteur.strip(), tampon.toString()));
+                        }
+                    }
+                    tampon.setLength(0);
+                } else {
+                    tampon.append(caractere);
+                }
+            }
+        }
+        return regles;
+    }
+
+    /**
+     * Le sujet d'un selecteur : son dernier compose, le seul element qu'il habille reellement.
+     * {@code .propositions:has(.proposition:nth-child(4)) .proposition} a pour sujet
+     * {@code .proposition} ; {@code .propositions:has(.proposition:nth-child(4))} a pour sujet le
+     * conteneur, jamais la proposition qu'il cite. Les combinateurs ne sont lus qu'au niveau zero de
+     * parenthese, sans quoi une espace interieure a un {@code :has()} couperait le selecteur en deux.
+     */
+    static String sujetDuSelecteur(String selecteur) {
+        int profondeur = 0;
+        int debut = 0;
+        for (int position = 0; position < selecteur.length(); position++) {
+            char caractere = selecteur.charAt(position);
+            if (caractere == '(') {
+                profondeur++;
+            } else if (caractere == ')') {
+                profondeur--;
+            } else if (profondeur == 0 && (Character.isWhitespace(caractere)
+                    || caractere == '>' || caractere == '+' || caractere == '~')) {
+                debut = position + 1;
+            }
+        }
+        return selecteur.substring(debut).strip();
+    }
+
+    private static String sansArgumentsConditionnels(String selecteur) {
+        String reste = selecteur;
+        for (String pseudo : PSEUDOS_QUI_NE_DECRIVENT_PAS_LE_SUJET) {
+            int debut;
+            while ((debut = reste.indexOf(pseudo)) >= 0) {
+                int position = debut + pseudo.length();
+                int profondeur = 1;
+                while (position < reste.length() && profondeur > 0) {
+                    char caractere = reste.charAt(position);
+                    if (caractere == '(') {
+                        profondeur++;
+                    } else if (caractere == ')') {
+                        profondeur--;
+                    }
+                    position++;
+                }
+                reste = reste.substring(0, debut) + reste.substring(position);
+            }
+        }
+        return reste;
+    }
+
+    /** Un caractere qui prolonge un nom de classe CSS : tant qu'il en vient un, le jeton continue. */
+    private static boolean prolongeUnNomDeClasse(char caractere) {
+        return Character.isLetterOrDigit(caractere) || caractere == '-' || caractere == '_';
+    }
+
+    /** Cette regle habille-t-elle une proposition, et non son conteneur ni son voisinage ? */
+    static boolean habilleUneProposition(String selecteur) {
+        String sujet = sansArgumentsConditionnels(sujetDuSelecteur(selecteur));
+        int position = sujet.indexOf(CLASSE_PROPOSITION);
+        while (position >= 0) {
+            int apres = position + CLASSE_PROPOSITION.length();
+            if (apres >= sujet.length() || !prolongeUnNomDeClasse(sujet.charAt(apres))) {
+                return true;
+            }
+            position = sujet.indexOf(CLASSE_PROPOSITION, position + 1);
+        }
+        return false;
+    }
+
+    /**
+     * S8-5, dernier mot de theo-archi sur la condition 7 de nadia-prof (arbitrage prealable du
+     * 2026-08-11, FICHE-bandit-manchot-conjugaison-present-cm1.md, section C).
+     *
+     * <p>Sa condition demande que l'exception soit lisible, parce qu'elle refuse qu'un lecteur croie
+     * 2rem encore garde partout. Les deux tests qui precedent la rendent lisible, et la mordent la ou
+     * elle est ecrite. Il leur manquait la seule propriete qui rende la phrase vraie : que l'exception
+     * soit <b>unique</b>. Ils epinglent deux valeurs a deux selecteurs nommes ; ils ne disent rien
+     * d'une troisieme regle qui abaisserait la taille d'une proposition ailleurs. Une telle regle
+     * passe aujourd'hui verte de bout en bout - elle reste au-dessus du plancher de lisibilite de
+     * 1,25rem, elle ne touche ni {@code .proposition} ni {@link #SELECTEUR_REPLI_QUATRE_COLONNES} -
+     * et l'enfant verrait alors une troisieme taille qu'aucun arbitrage n'a accordee. Cette clause
+     * enumere : la feuille maison porte exactement les deux regles de
+     * {@link #TAILLES_NOMMEES_DES_PROPOSITIONS}, a leur valeur exacte, et aucune autre.
+     */
+    static void verifierQueLesTaillesDePropositionSontToutesNommees(Path racine) {
+        List<RegleEcrite> regles = reglesEcritesMaison(racine);
+        assertThat(regles)
+                .as("aucune regle maison relevee sous %s : ce garde-fou ne prouve rien", racine)
+                .isNotEmpty();
+
+        Set<String> nommees = new LinkedHashSet<>();
+        for (RegleEcrite regle : regles) {
+            if (!habilleUneProposition(regle.selecteur())
+                    || debutDeDeclaration(regle.corps(), "font-size") < 0) {
+                continue;
+            }
+            Double attendue = TAILLES_NOMMEES_DES_PROPOSITIONS.get(regle.selecteur());
+            assertThat(attendue)
+                    .as("%s : la regle %s fixe la taille d'une proposition sans etre l'une des deux "
+                            + "que nadia-prof a nommees. Elle n'a accorde qu'une seule exception aux "
+                            + "2rem, sous le repli a quatre colonnes (condition 7, arbitrage "
+                            + "prealable du 2026-08-11) - une deuxieme est un arbitrage a lui "
+                            + "demander, pas une ligne de feuille a ajouter",
+                            regle.origine(), regle.selecteur())
+                    .isNotNull();
+            assertThat(proprieteEnRemSiExiste(regle.corps(), "font-size"))
+                    .as("%s : la regle %s doit declarer %srem, litteralement - ni variable, ni calc, "
+                            + "meme a pixels rendus identiques (condition 3 de nadia-prof)",
+                            regle.origine(), regle.selecteur(), attendue)
+                    .contains(attendue);
+            nommees.add(regle.selecteur());
+        }
+
+        assertThat(nommees)
+                .as("les deux regles nommees doivent etre celles que la feuille porte vraiment : une "
+                        + "enumeration dont un membre a disparu n'enumere plus rien")
+                .containsExactlyInAnyOrderElementsOf(TAILLES_NOMMEES_DES_PROPOSITIONS.keySet());
+    }
+
+    @Test
+    void lesSeulesTaillesDePropositionSontLesDeuxReglesNommees() {
+        verifierQueLesTaillesDePropositionSontToutesNommees(RACINE_PRODUCTION);
+    }
+
+    /**
+     * Le jeu fautif porte les deux regles nommees a leur valeur exacte et respecte le plancher de
+     * lisibilite : les deux tests de S8-5 y sont verts. Seule une troisieme regle, jamais soumise a
+     * nadia-prof, abaisse la taille des propositions dans un autre contexte. C'est la mesure de ce
+     * que cette clause interdit et que le reste du fichier laissait passer.
+     */
+    @Test
+    void uneTroisiemeRegleDeTailleSurLesPropositionsFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("troisieme-taille-de-proposition");
+        assertThatThrownBy(() -> verifierQueLesTaillesDePropositionSontToutesNommees(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining(".cabinet .proposition");
+    }
+
+    /**
+     * Meme abaissement, mais niche dans une requete de media - le canal par lequel blocsMaison ne
+     * voit rien, parce qu'il attribue ce corps a la cle {@code @media (...)}. Ce jeu fautif prouve que
+     * le balayage descend dans les regles-@ ; sans lui, la clause tiendrait sa promesse au premier
+     * niveau de la feuille seulement.
+     */
+    @Test
+    void uneTailleDePropositionNicheeDansUneRequeteDeMediaFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("taille-de-proposition-sous-media");
+        assertThatThrownBy(() -> verifierQueLesTaillesDePropositionSontToutesNommees(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("sous @media");
     }
 
     /**

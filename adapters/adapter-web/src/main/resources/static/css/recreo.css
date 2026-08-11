@@ -189,7 +189,12 @@ body:has(.ecran-de-jeu) .lien-accueil {
    ou .proposition reste a 2rem. Voir TailleDesTextesEtBoutonsTest,
    laPoliceDuRepliAQuatreColonnesEstUneExceptionAuPlancherGeneralDeDeuxRem, qui encode l'exception
    au mot pres (condition 7 : leChiffreDeReponseEstAuMoinsAussiGrosQueLeCalcul lit le selecteur
-   litteral .proposition et reste vert a bon droit, ce plancher-la general n'a pas change). */
+   litteral .proposition et reste vert a bon droit, ce plancher-la general n'a pas change).
+   Amendement de theo-archi, meme sprint : cette exception est la seule accordee, et
+   lesSeulesTaillesDePropositionSontLesDeuxReglesNommees le tient. Une troisieme regle qui fixerait
+   la taille d'une proposition dans un autre contexte - requete de media comprise - rougit ici, quelle
+   que soit sa valeur. La deuxieme exception se demande a nadia-prof, elle ne s'ajoute pas a cette
+   feuille. */
 .propositions:has(.proposition:nth-child(4)) .proposition {
     flex: 1 1 calc(50% - 0.5rem);
     font-size: 1.875rem;

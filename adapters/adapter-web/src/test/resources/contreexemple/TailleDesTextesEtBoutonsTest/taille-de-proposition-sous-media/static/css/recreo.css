@@ -1,0 +1,18 @@
+/* Jeu fautif de theo-archi (s08, meme clause). Le meme abaissement que le jeu voisin, mais niche
+   dans une requete de media : c'est le canal que blocsMaison ne voit pas, parce qu'il attribue ce
+   corps a la cle "@media (...)" et non a .proposition. La feuille de production porte deja deux
+   regles-@, le canal n'est donc pas hypothetique. */
+.proposition {
+    font-size: 2rem;
+}
+
+.propositions:has(.proposition:nth-child(4)) .proposition {
+    flex: 1 1 calc(50% - 0.5rem);
+    font-size: 1.875rem;
+}
+
+@media (max-width: 400px) {
+    .proposition {
+        font-size: 1.5rem;
+    }
+}
