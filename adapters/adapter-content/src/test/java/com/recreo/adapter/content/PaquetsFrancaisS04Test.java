@@ -338,7 +338,8 @@ class PaquetsFrancaisS04Test {
      */
     @Test
     void conjugaisonPresentCm1NePresenteQueDesFormesDuMemeVerbeAuPresent() {
-        // DEC-0014 : "Le bon verbe" est retire du catalogue (REFUSE), paquet charge directement.
+        // DEC-0017 restitue "Le bon verbe" au catalogue (chantier 2) ; ce test continue de charger
+        // le paquet directement, comme les autres verifications de contenu de ce fichier.
         List<Question> items = tousLesItems(paquet("cm1-conjugaison-present"));
 
         for (Question item : items) {
@@ -371,7 +372,8 @@ class PaquetsFrancaisS04Test {
      */
     @Test
     void conjugaisonPresentCm1RepresenteChacuneDesSixPersonnesGrammaticales() {
-        // DEC-0014 : "Le bon verbe" est retire du catalogue (REFUSE), paquet charge directement.
+        // DEC-0017 restitue "Le bon verbe" au catalogue (chantier 2) ; ce test continue de charger
+        // le paquet directement, comme les autres verifications de contenu de ce fichier.
         List<Question> items = tousLesItems(paquet("cm1-conjugaison-present"));
 
         Set<String> personnesRepresentees = new HashSet<>();
@@ -388,7 +390,8 @@ class PaquetsFrancaisS04Test {
     /** S6-3, sixieme critere : 20 manches jouees a la suite ne presentent pas toutes la meme phrase. */
     @Test
     void conjugaisonPresentCm1VarieSurVingtManchesConsecutives() {
-        // DEC-0014 : "Le bon verbe" est retire du catalogue (REFUSE), paquet charge directement.
+        // DEC-0017 restitue "Le bon verbe" au catalogue (chantier 2) ; ce test continue de charger
+        // le paquet directement, comme les autres verifications de contenu de ce fichier.
         assertThat(enoncesSurVingtTirages(paquet("cm1-conjugaison-present")))
                 .as("variete minimale sur 20 manches")
                 .hasSizeGreaterThan(1);
