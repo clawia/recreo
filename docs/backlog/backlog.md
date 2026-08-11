@@ -2462,3 +2462,31 @@ livre ne reproduit pas cette mesure, le report du jeu hors du sprint redevient l
     d'identifier le temps employe. Candidat pour une future extension du paquet (ajouter des items
     qui opposent deux temps, ou deplacer la marque temporelle hors du premier mot de la phrase, qui
     est aujourd'hui totalement predictif sur les 13 items neufs) ; non affecte a un sprint.
+- **Reserves du 2026-08-11, quatrieme audit de "Le bon verbe" sur l'increment corrige de S8-5**
+  (`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, verdict du 2026-08-11,
+  "quatrieme audit", section 6). Toutes deux nommees par `nadia-prof` elle-meme comme des reserves,
+  pas des motifs, et non converties en motif malgre la tentation : le Done pedagogique de ce jeu est
+  accorde et la ligne de matrice passe a `couvert-valide` (voir `squad/programme/
+  MATRICE-couverture.md`) independamment de ces deux points.
+  - **R1 - les quatre colonnes de ce paquet ne sont confortables a aucune taille que `nadia-prof`
+    accepterait, a 360 px.** Sa propre definition d'une colonne lisible (le mot le plus large plus
+    1,25 rem de rembourrage de chaque cote, soit 40 px) demande `146,27 + 40 = 186,27 px` pour
+    152,00 px disponibles - 152 px etant deja le maximum atteignable, le cadre du cabinet etant a
+    son plancher. L'air reel autour du mot le plus large (`mangeons`) est de 2,86 px la ou cette
+    definition en demande 20. Ce n'est pas un defaut : le mot tient entierement dans sa boite, sur
+    une ligne, et `nadia-prof` l'a verifie sur capture. C'est un inconfort, et la reponse durable
+    qu'elle nomme est ailleurs - des formes plus courtes dans le paquet (jugement pedagogique, elle-
+    meme), ou une disposition qui n'est pas un 2x2 a 360 px (`theo-archi`, `ines-design`). Non
+    affectee a un sprint, a instruire quand ce paquet ou cette disposition revient au planning.
+  - **R2 - un paquet futur a quatre propositions heriterait de 30 px en silence.**
+    `nombreDePropositions` est un parametre de contenu ; le selecteur qui reduit `.proposition` a
+    1,875 rem sous le repli a quatre colonnes (S8-5) s'applique a tout paquet qui en declare quatre,
+    sans qu'aucun garde-fou de CI ne mesure la largeur des mots qui y entreraient. Verifie par
+    `nadia-prof` le 2026-08-11 : aucun paquet du catalogue autre que celui-ci n'en declare quatre
+    aujourd'hui. Elle nomme explicitement qu'un tel paquet devra revenir devant elle avant d'entrer
+    dans ce selecteur. A instruire au moment ou une story propose un paquet a quatre propositions
+    (ou un item a trois distracteurs), pas avant : ce n'est pas un defaut actuel du catalogue.
+  - `nadia-prof` signale aussi qu'elle reste seule garde de l'air des glyphes dans la boite sur ce
+    paquet (aucun test ne mesure une largeur de glyphe rendu, `ADR-0025`), et qu'a 2,86 px de marge
+    restante, ce defaut reviendra des qu'une forme est ajoutee au paquet. A connaitre pour toute
+    story future qui etend ce contenu, sans qu'aucune story ne soit ouverte ici pour ce seul motif.
