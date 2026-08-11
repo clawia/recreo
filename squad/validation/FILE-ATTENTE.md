@@ -26,14 +26,19 @@ planning et qui le trace ici et dans le planning du sprint concerne.
 
 ## File actuelle
 
-**Compte actuel : 1 increment en attente.** `bandit-manchot-conjugaison-present-cm1` a ete refuse
-par `nadia-prof` le 2026-08-10 sur un motif unique et suffisant (cinq indices sur douze enoncent
-une regle de conjugaison fausse, trois dementies par un autre item du meme paquet)
-(`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`) et attend sa reprise apres
-correction (story de correction routee via `DEC-0014`, `docs/backlog/backlog.md`, section
-"Backlog - sprints suivants"). Il est aussi retire du catalogue jouable en attendant
-(`DEC-0014-retrait-le-bon-verbe-du-catalogue.md`), ce qui ne le retire pas de cette file : la file
-suit le Done pedagogique, pas l'accessibilite en jeu.
+**Compte actuel : 0 increment en attente.** Ce fichier portait encore, a l'ouverture du sprint 8,
+le REFUSE du 2026-08-10 sur `bandit-manchot-conjugaison-present-cm1` sans la levee prononcee au
+sprint 7 : correction faite ci-dessous.
+
+`bandit-manchot-conjugaison-present-cm1` a ete refuse par `nadia-prof` le 2026-08-10 (premier
+audit) sur un motif unique et suffisant (cinq indices sur douze enoncent une regle de conjugaison
+fausse, trois dementies par un autre item du meme paquet)
+(`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`). **Ce refus est leve au
+sprint 7** : sur le commit `10dd74d` (`HEAD` de `round-two`), `nadia-prof` prononce **VALIDE SOUS
+RESERVE**, Done pedagogique **accorde** (meme fiche, verdict "second audit, increment livre en
+s07"). Il sort donc de cette file au titre du Done pedagogique. Le jeu reste retire du catalogue
+jouable (`DEC-0014-retrait-le-bon-verbe-du-catalogue.md`) : sa remise au catalogue est une
+decision distincte, tranchee par `DEC-0017`, qui ne porte pas sur cette file.
 
 `bandit-manchot-le-bon-son-cp` a recu un Done pedagogique accorde (`VALIDE SOUS RESERVE`) le
 2026-08-10 : le REFUSE du 2026-08-06 est leve sur ses cinq motifs
@@ -47,10 +52,9 @@ sa condition de matrice etant elle-meme levee (`squad/conformite/FICHE-bandit-ma
 comme pour `bandit-manchot-additions-cp`, ce n'etait pas une attente et il n'est jamais entre dans
 cette file au titre du Done pedagogique.
 
-Bien sous le seuil de gel (2-3) : rien n'empeche d'ouvrir de nouvelles stories de contenu au
-prochain planning, mais le sprint qui vient doit d'abord traiter la reprise de
-`bandit-manchot-conjugaison-present-cm1` (voir la regle de gel ci-dessus, sur laquelle je reste
-vigilante si un deuxieme increment refuse venait s'y ajouter).
+Bien sous le seuil de gel (2-3), et la file est vide : rien n'empeche d'ouvrir de nouvelles
+stories de contenu au prochain planning, et aucune reprise de Done pedagogique n'est due en
+priorite pour ce seul motif.
 
 ## Historique
 
@@ -59,7 +63,13 @@ vigilante si un deuxieme increment refuse venait s'y ajouter).
 | bandit-manchot-additions-cp | `squad/conformite/FICHE-bandit-manchot-additions-cp.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE (leve depuis REFUSE) | 2026-08-04 (sprint 0, verdict REFUSE) | 2026-08-05 (sprint 1, refus leve) |
 | bandit-manchot-homophones-cm1 | `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE | 2026-08-06 (sprint 4, premier audit) | 2026-08-06 (accorde au premier audit) |
 | bandit-manchot-le-bon-son-cp | `squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE (leve depuis REFUSE) | 2026-08-06 (sprint 4, premier audit) | 2026-08-10 (sprint 6, refus leve apres recomposition) |
-| bandit-manchot-conjugaison-present-cm1 | `squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md` | REFUSE - en attente de reprise | 2026-08-10 (sprint 6, premier audit) | - |
+| bandit-manchot-conjugaison-present-cm1 | `squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE (leve depuis REFUSE) | 2026-08-10 (sprint 6, premier audit) | 2026-08-10 (sprint 7, second audit, refus leve) |
+
+**Correction de s08 - ce fichier etait perime depuis sa cloture de sprint 7.** Le sprint 7 a levé
+le refus ci-dessus le 2026-08-10 (meme jour que l'ouverture du refus, sur un increment livre
+ulterieurement dans le sprint) ; ce fichier n'a ete mis a jour qu'a l'ouverture du sprint 8, comme
+constate au recensement de `camille-po`. Meme defaut que la correction de s03 plus haut : un
+fichier qui n'est pas tenu a jour a chaque review n'est pas la memoire fiable qu'il pretend etre.
 
 Le chantier d'identite visuelle de s02 (S2-1, S2-2, S2-3) n'est pas entre dans cette file : il ne
 constitue pas un increment de contenu nouveau, `DEC-0006` l'a deja pose, et son propre refus
