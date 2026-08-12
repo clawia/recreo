@@ -324,15 +324,15 @@ que j'exige :
   ou l'enfant est bloque.** C'est le seul changement qui repare le defaut que la section 2 mesure,
   et la decision produit est ce qui le rend possible : tant qu'une mauvaise reponse changeait de
   question, l'indice ne *pouvait pas* se rattacher a la question ratee ;
-- **le seuil.** `DEC-0004` a fixe trois echecs consecutifs, avec ce motif : *"un seuil plus bas
-  (deux, un seul echec) risque de traiter une erreur isolee et normale dans un apprentissage comme
-  un signal d'alerte."* Ce motif est le mien et je le garde. Mais l'unite change : trois echecs
-  **repartis sur une partie** et deux echecs **sur la meme question** ne disent pas la meme chose.
-  Une erreur sur une question est isolee et normale ; **deux erreurs de suite sur la meme question
-  ne sont pas une erreur isolee, c'est un enfant bloque.** Je retiens donc **le deuxieme echec sur
-  la meme question**, et je le presente comme ce qu'il est : non pas un abaissement de mon seuil,
-  mais le meme jugement applique a une unite qui a change de nature. Le chiffre de `DEC-0004` reste
-  vrai pour ce qu'il comptait ;
+- **le seuil : le premier echec sur la question.** Voir la correction en 2 bis - j'avais d'abord
+  ecrit le deuxieme, et l'arithmetique du catalogue montre qu'au deuxieme echec l'indice arrive trop
+  tard pour servir a quoi que ce soit. `DEC-0004` avait fixe trois echecs consecutifs, avec ce motif :
+  *"un seuil plus bas (deux, un seul echec) risque de traiter une erreur isolee et normale dans un
+  apprentissage comme un signal d'alerte."* **Ce motif est le mien, je le garde, et il ne vise pas ce
+  seuil-ci** : ce qu'il protegeait, c'est la **reaction lourde** - changer la question que l'enfant a
+  sous les yeux pour lui en remontrer une autre. Afficher une phrase d'aide sur la question ou il est
+  reste n'est pas une reaction lourde, c'est ce que fait n'importe quel adulte assis a cote de lui. Le
+  chiffre de `DEC-0004` reste vrai pour ce qu'il comptait, et il comptait autre chose ;
 - **et je note le gain, parce qu'il est chiffre** : aujourd'hui l'aide exige au minimum quatre
   manches (`LONGUEUR_MINIMALE_POUR_AIDE = 4`) et n'atteint la question ratee sur aucun jeu.
   Rattachee a la question courante, elle est atteignable **des la premiere question de chaque
@@ -350,15 +350,43 @@ en trouvant lui-meme, soit en pressant la reponse qu'on lui a montree, donc il n
 une question sur un echec sec. **Je juge l'echange favorable a l'enfant, et je le juge en connaissant
 ce qu'il coute.**
 
+#### 2 bis. Je corrige mon propre seuil avant que quiconque construise dessus
+
+**J'ai ecrit "a partir du deuxieme echec sur la question" dans la premiere ecriture de ce bloc, ce
+matin (commit `6432eab`), et c'est faux. Je le corrige ici plutot que de le reecrire en silence.**
+
+Le motif de la correction est arithmetique, et il vient de la marque de M9 : une proposition deja
+essayee est marquee, donc l'enfant sait laquelle il a deja tentee. Comptons les propositions
+disponibles apres chaque echec, sur les trois formats du catalogue :
+
+| Format | Apres le 1er echec | Apres le 2e echec |
+|---|---|---|
+| 3 propositions (6 jeux sur 8) | 2 candidates restantes | **1 seule candidate : c'est la bonne** |
+| 4 propositions ("Le bon verbe") | 3 candidates restantes | 2 candidates restantes |
+| 2 propositions ("Le bon petit mot") | **1 seule candidate : c'est la bonne** | sans objet |
+
+**Sur les six jeux a trois propositions, un indice qui arrive au deuxieme echec arrive quand il ne
+reste plus qu'une seule reponse possible : il n'enseigne plus rien, il commente une reponse que
+l'enfant va donner de toute facon.** C'est exactement le defaut que je reproche a l'aide actuelle en
+section 2 - une aide qui n'atteint pas l'enfant au moment ou il est bloque - et je venais de le
+reproduire sous une autre forme. Au **premier** echec, sur ces memes six jeux, il reste deux
+candidates et l'indice sert reellement a choisir.
+
+**Ce que je concede en le corrigeant** : un enfant peut apprendre qu'une erreur fait venir une aide,
+et se tromper expres pour l'obtenir. Le risque est reel, il existe dans toutes les classes, et je le
+prefere de loin a une aide qui arrive trop tard. Il reste dans ma liste de la section 9, a regarder
+en jouant.
+
 **Conditions M1, M2 et M3.**
 
-**M1 - l'indice porte sur la question ou l'enfant est bloque, et il arrive au deuxieme echec.**
-L'indice de l'item est affiche **a partir du deuxieme echec compte sur cette question**, et il reste
+**M1 - l'indice porte sur la question ou l'enfant est bloque, et il arrive des le premier echec.**
+L'indice de l'item est affiche **des le premier echec compte sur cette question**, et il reste
 affiche pour les essais restants de cette question. Il apparait **sous le meuble, avec le message**,
 jamais au-dessus du meuble. *Verification* : sur une question a trois propositions, l'enfant se
-trompe une premiere fois - aucun indice ; une deuxieme fois - l'indice de cet item, mot pour mot
-celui de son paquet, sous le meuble. Sur les huit jeux. *Motif* : c'est la section 2, mesuree sur
-deux parties jouees. *Pourquoi sous le meuble et pas au-dessus* : un indice qui apparait au-dessus du
+trompe une premiere fois - le message **et** l'indice de cet item, mot pour mot celui de son paquet,
+sous le meuble ; il se trompe une deuxieme fois - le meme indice est toujours la, il n'en arrive pas
+un second. Sur les huit jeux. *Motif* : c'est la section 2, mesuree sur deux parties jouees, et le
+seuil est celui de 2 bis. *Pourquoi sous le meuble et pas au-dessus* : un indice qui apparait au-dessus du
 cabinet pousse les colonnes vers le bas **pendant** que l'enfant a le doigt dessus (c'est ainsi que
 le bas du cabinet passe de 540 a 636 px sur "Le bon verbe", mon releve du 2026-08-11). Rien ne doit
 bouger au-dessus du point ou l'enfant appuie (M8).
@@ -367,7 +395,7 @@ bouger au-dessus du point ou l'enfant appuie (M8).
 jour : `cm1-conjugaison-present` **25 indices sur 25** et `cm1-homophones` **22 sur 24** nomment la
 bonne reponse entre guillemets ; les six paquets de CP, **aucun**. *Consequence directe et que
 j'assume* : sous M1, ces deux jeux ne peuvent pas afficher leur indice sur la question courante -
-sinon le deuxieme echec **donne la reponse**, ce que M5 refuse. Sur ces deux jeux, l'enfant garde le
+sinon le premier echec **donne la reponse**, ce que M5 refuse. Sur ces deux jeux, l'enfant garde le
 message, l'essai supplementaire, la marque de M9 et la revelation de M5, et il n'a pas d'indice
 jusqu'a ce que les 47 textes soient reecrits. *Verification* : pour chaque item de chaque paquet, le
 texte de l'indice ne contient pas la bonne reponse. *Motif* : un indice qui donne la reponse n'est
@@ -448,7 +476,7 @@ je le dirai comme une reserve nouvelle et datee, jamais comme un durcissement de
 la seule de ce bloc que je qualifie ainsi.** Le message, l'indice de M1 et la revelation de M5 sont
 **entierement au-dessus du pli** (`y = 640`), sous le meuble, dans tous les etats de tous les jeux.
 *Verification* : capture par `outils/mesurer-rendu.sh 360 <url> <png> 640`, sur chaque jeu, dans
-l'etat "premier echec", "deuxieme echec avec indice" et "revelation". *Motif, et il n'est pas
+l'etat "premier echec avec indice", "deuxieme echec" et "revelation avec explication". *Motif, et il n'est pas
 theorique* : mon releve du 2026-08-11 donne le bas du cabinet a **540..636 px sans indice** et
 **636..792 px avec indice** sur "Le bon verbe", et **450..690 / 546..846 px** sur "Le bon petit mot".
 **Sur ces deux jeux, il n'y a aujourd'hui aucune place sous le meuble au-dessus du pli** : le message
@@ -755,7 +783,7 @@ comme l'ayant bloque. Une seule est **bloquante par elle-meme** (M4).
 
 | # | Condition | Ou elle se verifie | Cout technique nomme par `theo-archi` |
 |---|---|---|---|
-| M1 | L'indice porte sur la question bloquante, a partir du deuxieme echec, sous le meuble | en jouant, sur les 8 jeux | remplace l'aide de S3-2, `ADR` a ecrire sur son sort |
+| M1 | L'indice porte sur la question bloquante, des le premier echec, sous le meuble (seuil corrige en 2 bis) | en jouant, sur les 8 jeux | remplace l'aide de S3-2, `ADR` a ecrire sur son sort |
 | M2 | Un indice rattache a la question ne nomme jamais la reponse | par lecture des 8 paquets | aucun ; 47 textes CM1 a reecrire (reserve A) |
 | M3 | La partie presente le nombre de questions annonce et ne finit jamais au milieu d'une question | en jouant une partie tout en echecs | amendement d'`ADR-0012` |
 | M4 | **Bloquante.** Message, indice et revelation entierement au-dessus du pli, sur les 8 jeux | `outils/mesurer-rendu.sh 360 <url> <png> 640` | depend de la reserve 1 (`DEC-0016`) |
@@ -804,7 +832,9 @@ Liste fermee. Aucun Done ne sera prononce avant que je l'aie epuisee.
    parle de la question precedente ;
 5. le double appui sur une proposition, et le double appui sur deux propositions differentes ;
 6. le repli `prefers-reduced-motion: reduce`, avec le message et l'indice affiches ;
-7. mes douze acquis du 2026-08-11 : aucun ne doit avoir ete paye pour financer ce chantier.
+7. mes douze acquis du 2026-08-11 : aucun ne doit avoir ete paye pour financer ce chantier ;
+8. **le risque que je concede en 2 bis** : un enfant se trompe-t-il expres pour faire venir l'indice ?
+   C'est la seule chose que je ne peux voir qu'en jouant plusieurs parties de suite.
 
 #### 10. Reserves nouvelles et datees du 2026-08-12
 
