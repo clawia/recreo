@@ -141,6 +141,152 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
+### Arbitrage prealable au developpement - la silhouette du manche, le relief et le contraste du cabinet (s10), du 2026-08-12
+
+**Ce bloc n'est pas un Done pedagogique et n'en contient aucun.** C'est le cinquieme arbitrage
+prealable que j'ecris, au titre de `squad/README.md` section 10. **Rien n'est code** : aucun
+increment n'existe, donc aucun verdict d'increment n'est prononce ici, et aucun de mes verdicts
+anterieurs n'est modifie ni efface.
+
+- **Date** : 2026-08-12.
+- **Objet** : quatre questions posees avant qu'une ligne de feuille de style soit ecrite, sur
+  `proposition-ines-manche-et-relief.md` (branche `s10-ines-design`, non fusionnee) et
+  `avis-faisabilite.md` + `ADR-0033` (branche `s10-theo-archi`, non fusionnee). J'ai lu les trois par
+  `git show`, sans les amener dans mon arbre.
+- **Ce que je ne rouvre pas** : les trois elements ecartes par l'utilisatrice (pas de reprise de la
+  meme question apres une mauvaise reponse, manche dessine et immobile plutot qu'actionne, aucun
+  second canal de verdict). Ma condition 3 du 2026-08-10 et ma condition C4 tiennent, et je n'ai pas
+  a les defendre : elles sont acquises. Je ne rouvre pas non plus le defaut de pli comme motif
+  (`DEC-0016`), ni ma barre fermee de six points, ni le verdict du cabinet du 2026-08-11.
+- **Lignee** : worktree dedie sur `s10-nadia-arbitrage`, descend de `round-two` a `b15bda1`, verifie
+  par `bash outils/verifier-lignee.sh` ("le worktree sur la branche 's10-nadia-arbitrage' descend de
+  la lignee de round-two"). Je ne fusionne pas et je ne pousse pas.
+
+#### Les quatre reponses, en une phrase chacune
+
+| Question | Reponse |
+|---|---|
+| 1. La silhouette franchit-elle la frontiere manche dessine / manette ? | voir section 1 |
+| 2. Le fronton peut-il porter deux formes fixes plutot qu'une ? | **OUI.** Mon mot "unique" interdisait la variation, il ne comptait pas les formes - et je le dis contre mon propre vocabulaire, pas contre celui d'`ines-design` |
+| 3. Un pixel de hauteur est-il acceptable ? | voir section 3 |
+| 4. Quelle est la valeur absolue du contraste cadre/page ? | **8,61:1, et c'est `ines-design` qui a raison. Mon 9,25:1 etait faux, et j'ai trouve exactement pourquoi** |
+
+#### 2. Le fronton porte deux formes fixes : accepte, et voici ce que mon mot "unique" voulait dire
+
+**La question est bien posee et elle porte sur mon propre ecrit, pas sur la proposition.** J'ai ecrit
+C5 clause 2 le 2026-08-11 : *"le jeu d'images du cabinet est fixe : il ne depend ni de l'item tire,
+ni du numero de la colonne, ni de la reponse attendue"*. Et le commentaire de production de
+`recreo.css` (S8-1, `.cabinet-bandeau`) a repris le mot autrement : *"porte l'unique image fixe du
+cabinet"*. Ce mot-la est de moi, il est passe dans le code, et il faut donc que je dise ce qu'il
+gouvernait.
+
+**Il interdisait la variation, il n'a jamais compte les formes.** La preuve est dans ma propre
+redaction, et je la cite plutot que de l'affirmer : ma clause dit **"le jeu d'images"**, au singulier
+collectif, et ce qu'elle interdit est nomme trois fois - dependre de l'item, de la colonne, de la
+reponse attendue. Aucune des trois n'est un compte. Mon motif ecrit le confirme mot pour mot : *"une
+illustration qui varie avec le contenu n'est plus une decoration, c'est un indice - et un indice que
+personne n'a valide"*. Ce que je protegeais est l'acquis 12 - aucun item resoluble par appariement
+visuel - et une seconde forme immobile ne l'entame pas d'un pixel. **Deux etoiles identiques auraient
+ete acceptables le 2026-08-11 ; une etoile et un manche le sont pour la meme raison.**
+
+**Ce que je verifie avant d'accepter, parce que ma clause a une seconde exigence que le compte de
+formes ne couvre pas** : que la forme neuve soit dessinee par une regle statique, non designee par un
+attribut de gabarit, et donc structurellement incapable de dependre de l'item. Verifie sur le
+candidat : `.cabinet-bandeau::after` avec `content: ""`, dimensions en `rem`, `clip-path` en
+pourcentages, couleur prise a `--recreo-accent-texte` - **aucun de ces cinq elements ne peut etre
+conditionne par le contenu**, et `fragments/manche.html` n'est pas touche (`ADR-0033` point 7.b, avis
+de faisabilite section 4). C'est la meme structure qui m'a fait ecrire, le 2026-08-11, que C5 clause 2
+etait "ferme par construction" - **c'etait mon point de garde le plus important du chantier, et il
+reste ferme de la meme facon**.
+
+**Ce que j'ajoute, et qui n'est pas un durcissement mais la portee reelle de ma clause sur un fronton
+qui porte desormais deux formes** : ma clause parlait d'un jeu d'images, donc elle gouverne
+l'ensemble, quel que soit son cardinal. Elle ne devient ni plus large ni plus etroite avec deux
+formes. **Et je refuse d'en profiter pour ajouter une exigence de nombre que je n'avais pas ecrite** :
+poser aujourd'hui un plafond de deux formes serait deplacer mes poteaux, et je ne le fais pas. Si un
+jour une troisieme forme est proposee, elle revient devant moi pour ce qu'elle est - une question de
+lisibilite et d'encombrement du fronton, mesurable, section 1 - jamais parce qu'elle serait la
+troisieme.
+
+**Le seul chiffre que je regarde sur ce point, et il est tenu** : les deux formes ne se touchent pas
+et ne se genent pas. `ines-design` mesure l'etoile a `x = 173..186` et le manche a `x = 312..331` a
+360 px, soit **126 px** entre elles, et **133 px** a 375 px. C'est un fronton de 320 px de large
+portant deux objets de 14 et 20 px : il reste vide sur plus de 88 % de sa longueur. **Aucun
+encombrement, aucun chevauchement, et rien qui puisse se lire comme une paire a apparier.** Ce
+dernier point est celui qui m'importe : deux formes **differentes** l'une de l'autre, separees de la
+moitie du fronton, ne fabriquent pas la figure "deux images qui vont ensemble" qu'un enfant pourrait
+essayer de mettre en rapport avec les colonnes.
+
+**Reponse : OUI, le fronton peut porter deux formes fixes.** Ma condition C5 est tenue dans ses deux
+clauses, et le mot "unique" du commentaire de production est une imprecision de ma main qu'il faut
+corriger dans le meme lot que le manche, pour qu'un lecteur futur ne prenne pas mon vocabulaire pour
+une regle de nombre. C'est ma condition N4, section 5.
+
+#### 4. La valeur absolue du contraste : `ines-design` a raison, mon 9,25:1 etait faux, et voici la cause exacte
+
+**Je corrige mon propre constat avant que quiconque s'appuie dessus, et cette fois la correction est
+entierement a mon desavantage.**
+
+J'ai recalcule les quatre paires moi-meme, a la main puis par une sonde jetable non commitee (Pillow
+n'y sert pas : ce calcul ne lit aucune image), en partant **des valeurs hexadecimales declarees dans
+`recreo.css`** et non d'un pixel echantillonne. Methode : normalisation de chaque canal sur 255,
+linearisation sRGB par seuil (`c <= 0,03928` : `c / 12,92` ; sinon `((c + 0,055) / 1,055) ^ 2,4`),
+`L = 0,2126 R + 0,7152 G + 0,0722 B`, rapport `(L_clair + 0,05) / (L_sombre + 0,05)`. Valeurs lues
+dans la feuille servie : `--recreo-fond: #f4f7fb`, `--recreo-accent: #2e6f9e`,
+`--recreo-entete-fond: #1d4b6b`, `--recreo-accent-texte: #ffffff`.
+
+| Paire | `ines-design` | Ma remesure | Verdict |
+|---|---|---|---|
+| cadre `#1d4b6b` vs colonnes `#2e6f9e` | 1,71:1 | **1,7101:1** | concordant |
+| cabinet neuf `#081c2c` vs colonnes | 3,20:1 | **3,2022:1** | concordant |
+| cadre `#1d4b6b` vs page `#f4f7fb` | 8,61:1 | **8,6059:1** | **elle a raison** |
+| cabinet neuf `#081c2c` vs page | 16,11:1 | **16,1148:1** | concordant |
+| plinthe `#061420` vs cabinet neuf | 1,07:1 | **1,0745:1** | concordant |
+
+**La cause de l'ecart n'est pas celle qu'elle suppose, et je peux la nommer exactement.** Son
+hypothese - un echantillonnage sur capture de mon cote, sujet a l'antialiasing et a la compression -
+est raisonnable mais fausse. J'ai cherche quelle couleur claire rend `9,25:1` contre `#1d4b6b`, et la
+reponse tombe juste : **`#ffffff`, le blanc pur, donne 9,2471:1**, soit mon `9,25:1` a deux decimales.
+**J'ai calcule le contraste du cadre contre le blanc pur au lieu du fond de page `#f4f7fb`.** Ce
+n'est pas une derive de mesure, c'est une substitution de valeur : j'ai pris
+`--recreo-accent-texte` la ou il fallait `--recreo-fond`, deux variables voisines de la meme feuille.
+Une capture n'y est pour rien - le chiffre est reproductible au millieme sans jamais ouvrir une image.
+
+**Ce que cela change, et ce que cela ne change pas.**
+
+- **Les valeurs absolues qui entrent dans une fiche sont celles d'`ines-design`** : 1,71:1 sur
+  cadre/colonnes, **8,61:1** sur cadre/page, 3,20:1 et 16,11:1 avec `#081c2c`. Je les valide comme
+  miennes desormais.
+- **Ma reserve 2 du 2026-08-11 contenait donc un chiffre faux**, et je le corrige sans la reformuler :
+  elle disait *"contre la page le cabinet ressort a 9,25:1, donc le tour de l'objet est franc et C1
+  est tenue"*. La bonne valeur est **8,61:1**. **La conclusion ne bouge pas** - 8,61:1 reste tres
+  au-dessus de tout seuil qui rendrait un contour difficile a suivre, C1 restait et reste tenue - mais
+  le chiffre qui la portait etait faux, et un tiers qui l'aurait recopie aurait propage mon erreur.
+- **Le rapport relatif que j'avais lu ne bouge pas non plus** : le passage de 1,71:1 a 3,20:1 sur
+  cadre/colonnes est une multiplication par **1,87**, et c'est bien le fait acquis de cette section.
+  `ines-design` recommande de le lire comme tel ; je suis d'accord, et j'ajoute que la valeur absolue
+  est desormais reconciliee, donc plus rien n'oblige a se replier sur le seul rapport relatif.
+- **`#081c2c` a `3,20:1` contre les colonnes : je l'accepte comme valeur, et je dis a quel titre.**
+  Ce n'est pas un seuil WCAG - il n'y en a pas pour deux aplats decoratifs adjacents dont aucun ne
+  porte de texte, et je ne vais pas fabriquer un seuil que la norme ne pose pas. Mon motif est celui
+  que j'avais ecrit en reserve 2, inchange : un enfant qui distingue mal les couleurs lisait *"un seul
+  aplat bleu avec des cases a peine plus claires"*, et la fenetre de la machine ne se voyait que par
+  les coins arrondis. A 3,20:1 la fenetre existe. **Je ne demande pas mieux et je ne demanderai pas
+  mieux plus tard** : 3,20:1 est la barre que je leve ici, elle est atteinte, et la relever apres coup
+  ferait de ma porte un caprice.
+- **La plinthe a `1,07:1` ne me gene pas**, et pour le motif exact qu'`ines-design` ecrit : deux
+  aplats tres sombres separes pour faire un relief, ni texte ni signal. Je l'ai verifie sur son
+  chiffre plutot que sur sa parole - `#061420` est bien chaque canal de `#081c2c` multiplie par un
+  facteur voisin de 0,73, donc une teinte uniformement plus sombre et non une nuance differente. **Le
+  jour ou un texte se poserait sur la plinthe, ce chiffre redevient un motif** ; aujourd'hui il n'en
+  est pas un.
+- **`--recreo-entete-fond` n'est pas touchee**, et c'est la bonne decision : elle porte le plancher du
+  crayon de `favicon.ico` (S6-10), que j'ai chiffre moi-meme, et cette proposition ne le rouvre pas.
+
+**Ce que je retiens de mon erreur pour la suite, et je l'ecris parce que ca vaut plus que le
+chiffre** : `ines-design` a nomme un ecart entre nous deux plutot que de l'arrondir ou de le laisser
+passer, deux sprints de suite. C'est ce qui a permis de le resoudre. **L'ecart etait le mien.**
+
 ### Verdict courant - chantier du cabinet (S8-1, S8-2, S8-3), prononce sur l'increment livre, du 2026-08-11
 
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mes deux reserves ouvertes sont
