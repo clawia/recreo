@@ -715,6 +715,112 @@ en deux epaisseurs et non un objet uniformement plus sombre. Le +1 px de hauteur
 accepte le 2026-08-11 sous ma condition N6, il est remesure a l'identique, et il reste le **seul** pixel
 vertical que ce lot depense.
 
+#### 6. Question 6 - l'enseigne dans un sous-arbre masque : aucune des quatre structures ne passe
+
+**Verdict en une phrase : le nom de l'enseigne ne doit pas etre annonce, et les quatre structures
+inventoriees l'annoncent toutes les quatre.** Je dis les deux structures que j'accepterais.
+
+##### 6.a Ce que je declare degrade, en premier et sans le diluer
+
+`theo-archi` me laisse *"l'ecoute reelle d'un lecteur d'ecran"* et il a raison de dire qu'aucun automate
+de ce depot ne l'a jamais faite. **Je ne l'ai pas faite non plus aujourd'hui.** Je n'ai pas ecoute
+Narrator ni aucun autre lecteur d'ecran sur cet ecran, et je ne le presente pas comme une mesure. C'est
+la seule des six questions ou il me manque le geste qui compte, et je le nomme plutot que de le
+maquiller en jugement.
+
+**Ce que j'ai fait a la place, et qui est verifiable** : j'ai relu l'ordre de lecture du document dans
+`fragments/manche.html`, dans le depot, a `b15bda1`. Il est celui-ci, et il n'est pas indifferent :
+
+```
+Les jeux (bouton de sortie) - score - consigne - enonce - indice - [ CABINET : fronton -> propositions ]
+```
+
+Le fronton est **entre l'enonce et la premiere proposition**. Un enfant qui utilise un lecteur d'ecran
+entend donc, dans cet ordre : la question, puis le nom de la machine, puis ses reponses. Et
+`hx-swap="innerHTML"` reconstruit ce fragment **a chaque manche** : sur une partie de dix manches, le nom
+est annonce dix fois, chaque fois glisse entre la question et les reponses.
+
+##### 6.b Pourquoi je refuse que le nom soit annonce
+
+**Ce nom n'apporte rien a la tache et il coute a l'endroit le plus cher de l'ecran.** Ce que je protege
+n'est pas une preference d'ergonomie, c'est la meme chose que je protege depuis M8 : **rien ne s'insere
+entre l'enfant et sa reponse.** Pour un enfant qui voit, le fronton est au-dessus des boutons et son oeil
+le saute ; pour un enfant qui ecoute, il n'y a pas de "au-dessus", il n'y a qu'un *avant*, et un decor
+place avant les reponses est un decor qu'il faut traverser a chaque question. Quatre mots dix fois par
+partie, entre une question de conjugaison de CM1 et les quatre formes verbales a comparer, ce n'est pas
+un enrichissement : c'est du bruit place au pire endroit.
+
+**Et c'est precisement l'usage pour lequel `aria-hidden` existe.** Masquer un decor de l'arbre
+d'accessibilite n'est pas une negligence a corriger : c'est la bonne pratique. L'etoile de S8-1 etait
+masquee a bon droit, le visage doit l'etre a bon droit, et **le nom de la boutique est du meme ordre que
+l'etoile** : c'est de la peinture sur la carrosserie, pas une information de jeu.
+
+##### 6.c Les quatre structures de `theo-archi`, jugees une par une
+
+Sa lecture du defaut est exacte et je la reprends sans reserve : `aria-hidden` etait accroche au
+**conteneur** parce que son contenu d'hier etait decoratif, et un attribut qui decrit un etat devient faux
+sans que personne le relise. C'est un vrai defaut, ce n'est pas celui qu'on croit resoudre ici.
+
+| Structure | Ce qu'elle fait du nom | Mon verdict |
+|---|---|---|
+| **1.** le bandeau cesse d'etre masque | annonce, entre l'enonce et les propositions | **refusee** |
+| **2.** le masque se resserre sur `.cabinet-visage` (sa recommandation) | annonce, entre l'enonce et les propositions | **refusee sur ce point precis, et acceptee sur le reste** |
+| **3.** l'enseigne sort du bandeau | annonce, entre l'enonce et les propositions, **et 4 px de budget vertical** | **refusee deux fois** |
+| **4.** un texte de rechange masque visuellement | annonce, **et le nom existe deux fois dans le document** | **refusee** |
+
+**Les quatre annoncent le nom** : c'est ce qu'elles ont en commun, et c'est exactement ce que je refuse.
+La structure 3 est la pire des quatre pour une raison qui n'est pas d'accessibilite : elle depense du
+budget vertical, et ma condition M4 est **la seule condition bloquante** de mon arbitrage de mecanique. On
+ne finance pas un decor avec les 4 px qui separent du pli l'etat le plus serre du catalogue.
+
+**Ce que je retiens de la structure 2, et qui est juste.** Deplacer le masque du conteneur vers le decor
+lui-meme est le bon geste, pour la raison exacte que `theo-archi` donne : *"le masque nomme le decor et non
+un conteneur"*. Il reste juste le jour ou quelqu'un met du texte dans le visage. **Je l'accepte comme
+principe** ; ce que je refuse est la consequence qu'on en tire ici, a savoir que le nom devienne un texte
+annonce.
+
+##### 6.d Ce que j'accepterais - F11 et F12, et la reponse que `theo-archi` me demande
+
+Je lui rends le fait pedagogique qu'il attend, et il porte sur son `ADR-0035` :
+
+**`ADR-0035` a raison sur son motif et il est trop large d'une clause.** Sa regle - *aucun texte rendu par
+le serveur ne vit dans un sous-arbre masque* - est **exactement juste pour tout texte que l'enfant doit
+lire pour jouer** : un enonce, une consigne, un indice, une explication, un message d'erreur, le nom d'un
+jeu dans le catalogue. Un enfant a qui l'on cache la question ne joue pas. Je l'endosse pour ce cas, et je
+suis contente qu'un garde-fou existe : c'est le genre de defaut qui traverse une CI verte, et il y en a
+deja eu quatre sur ce depot.
+
+**Mais la regle, telle qu'elle est ecrite, rend impossible le seul usage correct d'`aria-hidden`.** Un
+decor textuel deliberement masque n'est pas le defaut que l'`ADR` decrit : c'en est le contraire exact.
+En interdisant les deux d'un seul mouvement, la regle **force le decor dans l'oreille de l'enfant** - elle
+obtient sur ce cas l'inverse de ce qu'elle cherche. Ce que je demande, sans ecrire son `ADR` a sa place :
+que la regle distingue le texte **que l'enfant doit lire pour jouer** du texte **de decor dont le masque
+est voulu et ecrit comme tel**. Un masque intentionnel se declare ; c'est meme la seule facon de
+l'empecher de redevenir faux au prochain retouchage, qui est son propre motif.
+
+**Deux structures m'iraient, et je ne choisis pas entre elles - c'est de l'architecture :**
+
+- **une cinquieme structure** : le nom vit dans le fronton, en texte, dans un sous-arbre masque
+  **nomme comme decoratif** et couvert par l'exception ci-dessus. C'est celle que je prefere, parce que
+  l'enfant qui voit a son enseigne et l'enfant qui ecoute a sa question sans detour ;
+- **a defaut, le fronton ne porte aucun texte ce sprint.** Le visage y reste seul, dessine et masque, et
+  le nom - s'il en faut un - va sur l'ecran d'accueil, ou il est **dit une fois** et ou c'est un titre et
+  non un ornement. Cette option ne coute rien, ne demande aucune exception, et ne retire a personne ce
+  qu'il a deja : le fronton d'aujourd'hui ne porte pas de nom.
+
+**Ce que je refuse dans tous les cas** : que le nom soit annonce entre l'enonce et les propositions, et
+que le nom existe deux fois dans le document (structure 4) - un texte lu par un enfant qui vit a deux
+endroits est un texte qu'une correction future ne corrigera qu'a un seul, et c'est ma faute d'avance si je
+l'accepte aujourd'hui.
+
+**Ce dont je reste seule garde ici, et je le dis pour que rien ne paraisse couvert.** `ADR-0035` garantit
+qu'aucun texte ne se cache dans un masque. **Il ne garantit rien sur ce qu'un enfant entend
+reellement** : ni l'ordre dans lequel il l'entend, ni la longueur de ce qu'il traverse avant sa reponse,
+ni si le visage sans nom accessible ajoute ou non du bruit. Personne dans cette equipe n'a jamais ecoute
+cet ecran, moi comprise. **Aucun Done pedagogique ne sera prononce sur l'enseigne avant que cette ecoute
+ait eu lieu**, et si elle n'est techniquement pas faisable sur nos postes, je le dirai ainsi plutot que de
+valider en supposant.
+
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mes deux reserves ouvertes sont
   levees** : la reserve unique de s07 sur la fin du mouvement, et la reserve 6 de "Le bon son" sur la
   distinction de l'explication. Deux reserves nouvelles et datees sont ouvertes en section 8. Aucun
