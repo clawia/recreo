@@ -374,6 +374,115 @@ reessai est cense lui apporter. **Le prix technique est un amendement d'`ADR-001
 l'a chiffre, et je le prefere sans hesiter au symptome. La preuve de terminaison, elle, est fournie
 par le plafond d'essais de M5 : elle ne disparait pas, elle change de porteur.
 
+#### 3. Question 1 - ce que dit le message, et quand la reponse est revelee
+
+`camille-po` demande si le message revele la bonne reponse, et quand. `theo-archi` inventorie quatre
+places pour cette revelation. **Je retiens la deuxieme : sur la question, apres un nombre borne
+d'essais.** Elle est aussi, comme il l'ecrit, la seule qui garde a la fois le critere d'origine S0-2
+et la preuve de terminaison - mais ce n'est pas pour cette raison que je la retiens, c'est pour
+celle-ci : **reveler la reponse et demander de reessayer dans le meme message sont deux consignes
+contradictoires, et un enfant de CP obeit a la premiere qu'il lit.** S'il lit "C'est an", il n'a plus
+de raison de chercher, et l'essai suivant n'apprend rien. La borne resout la contradiction en la
+mettant dans le temps : d'abord on cherche, ensuite on montre.
+
+**Les trois autres places, et mon motif de refus sur chacune.**
+
+- **Nulle part, l'enfant reessaie jusqu'a trouver.** Refusee. Un enfant de CP qui ne comprend pas
+  n'apprend rien a presser au hasard jusqu'a tomber juste, et il peut ne jamais tomber juste. Ma
+  methode dit qu'un enfant bloque doit pouvoir avancer ; ici il ne peut pas.
+- **En recapitulatif de fin de partie.** Refusee **pour le CP, et je le dis comme information
+  produit et non comme veto** : dix explications et dix reponses en fin de partie forment un bloc de
+  texte qu'un enfant de six ans ne lit pas, et qui arrive dix minutes apres l'erreur qu'il explique.
+  Pour du CM1 la forme serait discutable ; pour du CP elle est inutilisable quelle que soit sa mise
+  en page. Elle a en plus un cout technique que `theo-archi` nomme (le premier etat de session dont
+  la taille depend du deroulement), et je ne demande pas qu'on le paie pour un ecran que l'enfant ne
+  lira pas.
+- **Immediatement dans le message.** Refusee, c'est la contradiction ci-dessus, et `theo-archi` la
+  nomme deja comme contraire a la decision produit.
+
+**Le plafond que je fixe : trois essais comptes par question.** L'arithmetique, sur les huit jeux du
+catalogue, comptee ce jour dans les fichiers servis :
+
+| Jeu | Propositions par question | Mauvaises propositions disponibles |
+|---|---|---|
+| Le bon petit mot (homophones) | 2 | 1 |
+| Calcul CP, Le bon son, Les petites soustractions, Petits problemes, Compare les nombres, Les complements a 10 | 3 | 2 |
+| Le bon verbe (conjugaison) | 4 | 3 |
+
+- **A trois propositions**, un enfant qui se trompe deux fois a epuise les deux mauvaises reponses :
+  son troisieme essai est la bonne, et il y arrive **lui-meme**, avec l'indice de M1 sous les yeux.
+  La revelation ne se declenche que s'il represse une proposition qu'il a deja essayee.
+- **A quatre propositions**, il peut se tromper trois fois : la revelation se declenche reellement, et
+  c'est ce jeu qui la rend necessaire.
+- **A deux propositions**, se tromper une fois designe la bonne reponse par pure logique : le reessai
+  n'y est pas une epreuve. **Je le signale a `camille-po` comme une information sur le contenu et non
+  comme un defaut de ce chantier** : un item a deux propositions est un tirage a pile ou face, et le
+  reessai ne peut rien y ajouter. Cela concerne les 24 items de "Le bon petit mot" et rien d'autre au
+  catalogue.
+
+**Trois, et pas deux ni quatre.** Deux essais ne laisseraient pas a un enfant a trois propositions la
+possibilite d'arriver seul au bout de son elimination. Quatre allongent la partie du plus faible : a
+trois essais, un enfant qui echoue partout traverse trente ecrans au lieu de vingt aujourd'hui, et
+c'est deja le maximum que j'accepte pour une attention de six ans. **Ce chiffre-la, je l'accepte a
+priori et je me reserve de le juger en jouant** : si la partie du plus faible devient trop longue,
+je le dirai comme une reserve nouvelle et datee, jamais comme un durcissement de cette condition-ci.
+
+**Conditions M4, M5 et M6.**
+
+**M4 - le message est vu sans defiler, sur les huit jeux, a 360 x 640. Condition bloquante, et c'est
+la seule de ce bloc que je qualifie ainsi.** Le message, l'indice de M1 et la revelation de M5 sont
+**entierement au-dessus du pli** (`y = 640`), sous le meuble, dans tous les etats de tous les jeux.
+*Verification* : capture par `outils/mesurer-rendu.sh 360 <url> <png> 640`, sur chaque jeu, dans
+l'etat "premier echec", "deuxieme echec avec indice" et "revelation". *Motif, et il n'est pas
+theorique* : mon releve du 2026-08-11 donne le bas du cabinet a **540..636 px sans indice** et
+**636..792 px avec indice** sur "Le bon verbe", et **450..690 / 546..846 px** sur "Le bon petit mot".
+**Sur ces deux jeux, il n'y a aujourd'hui aucune place sous le meuble au-dessus du pli** : le message
+y serait invisible. Et je n'ai pas mesure les quatre jeux de s09 ; par derivation - annoncee comme
+derivation - "Petits problemes" est le cas a regarder d'abord, ses enonces faisant **56 caracteres en
+mediane et 67 au plus long**, contre 40 et 61 pour "Le bon verbe" que j'ai mesure sous le pli, et
+c'est un jeu de **CP**. *Ce que je refuse, et pourquoi c'est plus grave que ce que ca en a l'air* :
+aujourd'hui, sur une mauvaise reponse, l'enfant recoit un ecran entier qui lui dit ce qui s'est
+passe. Apres ce chantier, il recevra une ligne sous un meuble. **Si cette ligne est sous le pli, le
+jeu devient muet sur l'erreur** - l'enfant presse, rien ne change a l'ecran qu'il voit, et il ne sait
+meme pas que sa reponse a ete prise en compte. Un increment dans cet etat est refuse, et le motif ne
+sera pas negociable. La cause est identifiee depuis s07 et elle n'est pas de ce chantier : c'est le
+defaut de `DEC-0016` que je porte en reserve 1 depuis le 2026-08-11 (longueur de l'enonce a 2 rem).
+**Ce chantier la rend bloquante la ou elle n'etait qu'une reserve, et je l'ecris comme un fait
+nouveau du 2026-08-12, pas comme un durcissement de ma reserve.**
+
+**M5 - la revelation n'a lieu qu'au troisieme echec compte sur la question, et elle laisse l'enfant
+agir.** Trois essais comptes au maximum par question. Aux deux premiers echecs, ni le message, ni
+l'indice, ni aucune marque ne nomme la bonne reponse. **Au troisieme echec, le jeu nomme la reponse
+et l'enfant la presse pour continuer** : la question passe dans un etat ou plus aucun essai n'est
+compte, ou le message ne change plus, et ou le seul appui qui fait avancer est celui sur la reponse
+ecrite a l'ecran. *Verification* : sur "Le bon verbe", se tromper trois fois ; le message nomme la
+reponse ; presser une quatrieme mauvaise proposition ne change rien a l'ecran et n'avance pas la
+partie ; presser la reponse nommee charge la question suivante. *Motif* : je veux que l'enfant
+**fasse** le geste juste une fois avant de passer a autre chose - il lit la reponse, il la retrouve
+parmi les propositions, il appuie dessus. C'est le minimum de trace qu'une question ratee doit
+laisser, et c'est aussi ce qui garantit qu'il ne quitte jamais une question sur un echec sec. *Et
+c'est cet etat terminal qui porte la preuve de terminaison* : le compteur d'essais d'une question est
+borne a trois, donc le nombre d'essais comptes d'une partie est borne par trois fois le nombre de
+questions.
+
+**M6 - un seul endroit ou le jeu parle de la reponse de l'enfant, et ce n'est jamais le meuble.**
+C'est ma condition 3 du 2026-08-10 reecrite pour le nouveau flux, et elle n'exige rien de plus
+qu'elle. Deux clauses :
+
+1. **un seul emplacement** porte ce que le jeu dit de la reponse - verdict, message, indice,
+   revelation, explication. Il est sous le meuble, hors du cadre du cabinet. Il n'y a jamais deux
+   messages a la fois, ni un message a deux endroits ;
+2. **le meuble est rigoureusement identique** avant la reponse, apres une mauvaise reponse, avec
+   l'indice affiche et sur l'ecran de revelation : cadre, bandeau, socle, etoile, decors, visage
+   souriant de `DEC-0023` point 5, tout. *Verification* : quatre captures du meme item dans ces
+   quatre etats ; les pixels du cabinet sont identiques sur les quatre. C'est C4 mise a jour, et
+   **C4 change de forme de verification, pas d'exigence** : elle etait tenue "par absence" parce que
+   le cabinet n'existait pas sur l'ecran de retour ; le cabinet est desormais present au moment ou
+   le jeu rend son verdict, donc l'absence ne la tient plus et il faut la mesurer. **C'est le point
+   de garde le plus important de ce chantier, et c'est moi qui le garde** : le jour ou le meuble
+   change d'aspect selon la reponse, l'argument qui sauve la metaphore de la machine tombe, et mon
+   avis avec lui.
+
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mes deux reserves ouvertes sont
   levees** : la reserve unique de s07 sur la fin du mouvement, et la reserve 6 de "Le bon son" sur la
   distinction de l'explication. Deux reserves nouvelles et datees sont ouvertes en section 8. Aucun
