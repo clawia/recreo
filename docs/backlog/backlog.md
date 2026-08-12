@@ -2297,10 +2297,12 @@ contenu neuf, le niveau scolaire et la qualite pedagogique restant entierement d
   pas dans son perimetre, differe par `DEC-0019` pour un motif de risque de largeur non verifie,
   distinct du motif d'exclusion visuelle des lignes denombrement et monnaie.
 - **Criteres d'acceptation** :
-  - Etant donne le paquet, quand on lit chaque item, alors son enonce presente deux nombres entiers
-    distincts compris entre 0 et 100 inclus, separes par un espace a completer (par exemple
-    "38 ___ 52"), et les trois propositions possibles sont toujours exactement les trois signes
-    "<", ">", "=" - jamais un nombre en proposition.
+  - Etant donne le paquet, quand on lit chaque item, alors son enonce presente deux nombres
+    entiers, chacun compris entre 0 et 100 inclus et ecrit separement de l'autre (les deux valeurs
+    peuvent etre egales : c'est le cas requis par le critere sur "=" ci-dessous, par exemple
+    "58 ___ 58"), separes par un espace a completer (par exemple "38 ___ 52"), et les trois
+    propositions possibles sont toujours exactement les trois signes "<", ">", "=" - jamais un
+    nombre en proposition.
   - Etant donne l'ensemble des items, quand on releve le signe correct de chacun, alors chacun des
     trois signes est la bonne reponse d'au moins un tiers des items - repartition equilibree entre
     `<`, `>` et `=`, pour eviter qu'un enfant reussisse en devinant toujours le meme signe.

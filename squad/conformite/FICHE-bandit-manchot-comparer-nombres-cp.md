@@ -24,9 +24,11 @@ passer la ligne de matrice a `couvert-valide` sans une extension ulterieure sur 
 
 ## Criteres pedagogiques attendus - camille-po
 
-- [ ] Chaque enonce presente deux nombres entiers distincts compris entre 0 et 100 inclus, separes
-  par un espace a completer, et les trois propositions sont toujours exactement les trois signes
-  "<", ">", "=" (jamais un nombre en proposition).
+- [ ] Chaque enonce presente deux nombres entiers, chacun compris entre 0 et 100 inclus et ecrit
+  separement de l'autre (les deux valeurs peuvent etre egales : c'est le cas requis par le critere
+  sur "=" ci-dessous, par exemple "58 ___ 58"), separes par un espace a completer, et les trois
+  propositions sont toujours exactement les trois signes "<", ">", "=" (jamais un nombre en
+  proposition).
 - [ ] Chacun des trois signes est la bonne reponse d'au moins un tiers des items (repartition
   equilibree, pour eviter qu'un enfant reussisse en devinant toujours le meme signe).
 - [ ] Les items dont la bonne reponse est "=" representent au moins 20 % du paquet (l'egalite entre
