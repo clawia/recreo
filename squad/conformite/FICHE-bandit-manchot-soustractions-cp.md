@@ -209,20 +209,41 @@ insatisfaisant et gele par l'utilisatrice. Je n'ai mesure aucun pixel ce sprint.
 Le correctif est fusionne et la CI reste verte, mais **aucun garde-fou neuf ne couvre les proprietes
 qui ont laisse passer les 48 fautes.** Je le redis, sinon l'equipe croira couvert ce qui ne l'est pas.
 
+**Correction de fait du 2026-08-12, portant sur cette liste et sur aucun verdict.** J'avais ecrit
+ici, et au meme endroit du premier verdict plus bas, qu'aucun test ne verifiait l'exactitude
+arithmetique des items de ce paquet. **C'etait faux.**
+`PaquetCpSoustractionsS9Test.chaqueEnonceEstUneSoustractionDeTermesEtDeResultatEntre0Et10SansResultatNegatif`
+extrait les deux termes de l'enonce par expression reguliere, lit la bonne reponse de l'item et
+affirme qu'elle vaut `premierTerme - secondTerme`. Etabli par la mutation de `yanis-qa` (section 4 de
+`squad/sprints/s09-mathematiques-cp-nombres-et-calculs/rapport-qualite.md` : bonne reponse de
+`9 - 5 = ?` passee de `4` a `3`, test rouge), signale par `sofia-sm`, puis relu par moi dans le
+fichier de test avant d'ecrire cette correction - je ne reprends pas un fait sur parole apres m'etre
+deja trompee sur celui-la. Le point 2 ci-dessous est corrige en consequence et sort de ce dont je
+reste seule garde ; je conserve son numero pour ne decaler aucun renvoi deja ecrit.
+
+**Mon constat de fond est inchange, et cette correction le rend plus exact, pas plus faible** : ce
+que la suite ne garde pas, c'est ce que l'enfant **lit** - l'orthographe, la verite d'un indice, la
+validite semantique d'une situation, le niveau de vocabulaire. C'est bien l'arithmetique, et elle
+seule, qui etait deja tenue.
+
 1. **L'orthographe et l'accentuation du texte destine a l'enfant.** Toujours aucun test. Les 371
    tests etaient verts pendant les 48 fautes et ils sont verts apres : leur couleur n'a rien dit sur
    cette propriete, ni avant ni maintenant. `PropositionsAccentueesJouablesIT` verifie qu'une
    proposition accentuee reste **jouable**, pas qu'un mot est bien ecrit, et il ne lit jamais les
    indices. **C'est moi, et en jouant.**
-2. **L'exactitude arithmetique de chaque item.** Aucun test ne calcule `a - b == reponse`. Fait a la
-   main, 24 fois, deux fois maintenant.
+2. **L'exactitude arithmetique de chaque item : propriete gardee, je n'en suis pas le garde**
+   (point corrige le 2026-08-12, voir ci-dessus). `PaquetCpSoustractionsS9Test` calcule bien
+   `a - b == reponse` sur chaque item du paquet. Je l'ai verifiee a la main 24 fois, deux fois
+   maintenant, mais contrairement aux autres points de cette liste, un test la referait si le fichier
+   changeait sans moi.
 3. **L'exactitude et la pertinence de chaque indice** - qu'il decrive une methode menant vraiment a
    la reponse.
 4. **La plausibilite d'un distracteur.**
 5. **La coherence entre la consigne d'un jeu et la forme de ses enonces** (reserve 1).
 6. **Le fait que tous les items d'un paquet soient reellement atteignables** et que les propositions
    servies soient celles du fichier. Je l'ai verifie moi-meme sur 600 coups faute de garde-fou ; c'est
-   la seule des six qui serait facile a tenir par un test, et je la signale comme telle a `camille-po`
+   la seule des cinq qui restent sur ma main qui serait facile a tenir par un test, et je la signale
+   comme telle a `camille-po`
    sans prescrire la solution technique - c'est `theo-archi` qui tranche.
 
 ### Verdict du premier audit - S9-1, prononce sur l'increment livre, du 2026-08-12 (REFUSE, leve le meme jour au second audit ; conserve, jamais efface)
@@ -390,9 +411,13 @@ que l'enfant lit.**
    accentuee reste **jouable** sans planter la manche - une robustesse d'encodage, pas une correction
    de langue - et il ne lit jamais les indices. **C'est la propriete qui a laisse passer ce
    defaut.** Tant qu'aucun garde-fou n'existe, c'est moi, et en jouant.
-2. **L'exactitude arithmetique de chaque item.** Aucun test ne calcule `a - b == reponse` ;
-   `PaquetCpSoustractionsS9Test` verifie la structure et la couverture des resultats, pas la verite
-   du calcul. Fait a la main, 24 fois.
+2. **L'exactitude arithmetique de chaque item - point faux, corrige le 2026-08-12.** J'avais ecrit
+   ici qu'aucun test ne calculait `a - b == reponse` et que `PaquetCpSoustractionsS9Test` ne verifiait
+   que la structure et la couverture des resultats. **C'est inexact** : ce test lit aussi la bonne
+   reponse de l'item et affirme qu'elle vaut `premierTerme - secondTerme`. Voir la correction datee de
+   la section "Ce dont je reste seule garde apres ce second verdict" pour ce qui l'a etablie. Je
+   laisse ce point a sa place et sous son numero, corrige et non efface. Je l'avais par ailleurs fait
+   a la main, 24 fois.
 3. **L'exactitude de chaque indice** - qu'il decrive une methode menant vraiment a la reponse.
    `ChaquePaquetPorteUnIndiceTest` verifie qu'un indice existe et n'est pas vide ;
    `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest` verifie une coherence interne. Ni l'un ni
