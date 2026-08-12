@@ -142,3 +142,59 @@ meme geste que cette decision, comme pour tout contenu neuf.
 - Elle ne ferme pas les lignes 1 et 6 : elles restent au programme, differees avec un motif ecrit,
   pas abandonnees.
 - Elle ne rouvre ni ne cadre le chantier de rendu CSS que l'utilisatrice a nomme insatisfaisant.
+
+## Amendement du 2026-08-12 - motifs des lignes 1 et 6 corriges sur avis de theo-archi
+
+`theo-archi` a rendu son avis de faisabilite
+(`squad/sprints/s09-mathematiques-cp-nombres-et-calculs/avis-faisabilite.md`, sections 1 et 6) apres
+l'ecriture de cette decision. Il contredit **le motif technique** que j'avais donne pour differer les
+lignes 1 et 6, pas la conclusion de les differer. Comme convenu, son avis prime le mien en cas de
+contradiction sur la faisabilite ; je corris donc les deux motifs sur leur base reelle, ce qui n'est
+pas la meme chose que rouvrir les deux lignes.
+
+**Ligne 1 - Denombrer.** J'avais ecrit "aucune ecriture textuelle ne teste ce verbe". C'est faux tel
+que formule : un pictogramme-caractere (une face de de, un glyphe repete) represente une quantite non
+comptee dans une chaine YAML ordinaire, sans code ni gabarit neuf - `theo-archi` le montre sur
+`contenu-repris/memory/memory-quantite-cp.yml`, et `DEC-0002` place ce registre (categorie B, contenu
+destine a l'enfant) hors de la regle de redaction du depot, ni interdit ni autorise par principe. Ce
+qui reste vrai, et que je retiens comme motif corrige : la recevabilite pedagogique d'un tel
+pictogramme (est-ce un support fiable et non ambigu pour denombrer, au sens du programme, pour un
+enfant de CP) et la fiabilite de son rendu (un glyphe qui s'affiche differemment selon la police ou
+l'appareil fait plus qu'une difference esthetique quand l'enfant doit le compter - une erreur de rendu
+devient une reponse fausse, pas seulement un defaut visuel) sont deux jugements que `theo-archi`
+lui-meme route a `nadia-prof` et non a l'architecture. Aucun des deux n'est rendu. La ligne reste donc
+`non couvert` ce sprint, sur ce motif corrige - pas parce que le texte ne peut rien porter, mais parce
+que ce que le texte pourrait porter n'a pas encore ete juge.
+
+**Ligne 6 - Monnaie.** Mon motif d'origine distinguait deja les deux verbes de cette competence :
+"utiliser" (arithmetique sur des montants nommes, entierement textuel) et "reconnaitre" (apparence
+d'une piece ou d'un billet, visuelle par definition). J'avais deja verifie `contenu-repris/quiz/
+cp-monnaie.yml` et conclu qu'il ne travaille que "utiliser". `theo-archi` ne contredit pas cette
+distinction : il **la confirme et la renforce** en etablissant que ce materiau est prouve, textuel de
+bout en bout, et deja joue en production sur `main` (huit items). Le motif de cette decision reste
+donc exact sur le fond ; seule sa formulation dans `squad/programme/MATRICE-couverture.md` etait
+imprecise en appliquant aux deux verbes de la ligne 6 la meme reserve visuelle qui ne vaut que pour
+"reconnaitre" - corrige dans le meme geste que cet amendement (voir Impact ci-dessous). La ligne reste
+`non couvert` : ouvrir "utiliser" seul reproduirait le motif de couverture partielle deja sanctionne
+sur ce produit (un cinquieme jeu de calcul addition/soustraction habille en euros, qui ne travaillerait
+jamais "reconnaitre").
+
+**Ce que je ne fais pas ici.** Je n'ouvre aucune des deux lignes ce sprint : aucune capacite n'y est
+affectee (les trois developpeurs disponibles portent S9-1, S9-3, S9-4), et le gel de rendu decide par
+l'utilisatrice reste en vigueur. Je ne demande pas non plus, a ce stade, un arbitrage prealable de
+`nadia-prof` sur le pictogramme de denombrement ou sur l'ouverture isolee de "utiliser" : cet arbitrage
+n'aurait de sens que pour debloquer un developpeur qui attend, et aucun n'attend sur ces deux lignes
+ce sprint - a la difference de `S9-2` (voir `DEC-0020`). Je recommande seulement que, si le sprint 10
+ou un sprint ulterieur envisage d'ouvrir l'une des deux lignes, cet arbitrage soit demande **avant**
+que du contenu ne soit ecrit, pour ne pas reproduire le cout d'un refus decouvert en review sur une
+forme jamais eprouvee sur ce produit.
+
+### Impact de cet amendement
+
+- `squad/programme/MATRICE-couverture.md` : le paragraphe "Note sur les deux lignes qui restent
+  `non couvert`" est corrige pour ne plus appliquer la reserve visuelle aux deux verbes de la ligne 6
+  indistinctement, et pour nommer le pictogramme-caractere comme piste technique ouverte mais non
+  jugee sur la ligne 1.
+- Aucun changement a `docs/backlog/backlog.md` : aucune story n'est ouverte ni fermee par cet
+  amendement.
+- Aucun changement de statut sur les deux lignes : elles restent `non couvert`.

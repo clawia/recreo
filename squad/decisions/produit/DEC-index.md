@@ -22,7 +22,8 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0016 | Une hauteur de viewport de reference, et ce qui doit rester au-dessus du pli sur un ecran de manche | s07 | 2026-08-10 | Acceptee, amendee le 2026-08-11 (chiffres corriges sur deux jeux, story ouverte au backlog, pas de seuil chiffre) |
 | DEC-0017 | Perimetre du sprint 8 : la machine retrouve son contexte, trois verites du depot corrigees, l'ouverture du futur et de l'imparfait de la conjugaison | s08 | 2026-08-11 | Acceptee, correction documentaire le 2026-08-12 (numerotation des chantiers, aucun contenu rouvert) |
 | DEC-0018 | L'activation de "Le bon verbe" est corrigee dans le sprint plutot que retiree, denouement d'un second refus, et sort de la ligne de matrice | s08 | 2026-08-11 | Acceptee |
-| DEC-0019 | Perimetre du sprint 9 : quatre lignes textuelles de mathematiques CP ouvertes, denombrement et monnaie differes sous le gel de rendu | s09 | 2026-08-12 | Acceptee |
+| DEC-0019 | Perimetre du sprint 9 : quatre lignes textuelles de mathematiques CP ouvertes, denombrement et monnaie differes sous le gel de rendu | s09 | 2026-08-12 | Acceptee, amendee le 2026-08-12 (motifs des lignes denombrement et monnaie corriges sur avis de theo-archi, conclusion inchangee) |
+| DEC-0020 | S9-2 debloquee : nombreDeManches abaisse a 7 pour bandit-manchot-complements-10-cp, plutot qu'un elargissement des formes d'items | s09 | 2026-08-12 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0002` a ete amendee le 2026-08-04, a la suite de la
 relecture pedagogique de `nadia-prof` sur le refus de `bandit-manchot-additions-cp` - ajout d'une
@@ -150,3 +151,14 @@ decision d'origine le posait deja, et un seuil que je fixerais unilateralement r
 le contourne plutot que qui corrige la cause. Aucun des deux jeux n'est refuse sur ce seul defaut,
 maintien assume par ecrit. Voir la section "Amendement du 2026-08-11 (s08)" dans
 `DEC-0016-hauteur-de-viewport-de-reference-et-contenu-au-dessus-du-pli.md`.
+
+Amendement (pas une nouvelle reference) : `DEC-0019` a ete amendee le 2026-08-12, sur avis de
+faisabilite de `theo-archi` rendu apres son ecriture. Son avis contredit le motif technique donne pour
+differer les lignes 1 (denombrer) et 6 (monnaie) - un pictogramme-caractere de quantite est
+techniquement portable sans code, et la matiere premiere de la monnaie ("utiliser" seul) est prouvee
+par du contenu deja joue en production sur `main` - sans contredire la conclusion : les deux lignes
+restent `non couvert` ce sprint, sur un motif desormais pedagogique (recevabilite et fiabilite de
+rendu d'un pictogramme, risque de couverture partielle si "utiliser" ouvrait seul) et non plus
+technique. Aucune ligne n'est ouverte, aucune capacite n'y est affectee. Voir la section "Amendement
+du 2026-08-12" dans
+`DEC-0019-perimetre-sprint-9-quatre-lignes-textuelles-de-mathematiques-cp-denombrement-et-monnaie-differes.md`.

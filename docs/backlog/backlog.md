@@ -2264,7 +2264,13 @@ contenu neuf, le niveau scolaire et la qualite pedagogique restant entierement d
   - Etant donne les distracteurs de chaque item, quand on les examine, alors au moins un des deux
     correspond a une erreur frequente identifiable (par exemple le nombre de depart lui-meme, ou le
     complement a 9 plutot qu'a 10).
-  - Etant donne le paquet complet, quand on compte ses items, alors il en compte au moins 20.
+  - Etant donne le paquet complet, quand on compte ses items, alors il en compte au moins 9 -
+    strictement plus que les 7 manches declarees pour ce jeu au catalogue (`ADR-0023`), un plancher
+    different des trois autres paquets du sprint parce que l'espace des complements a 10 sous forme
+    canonique est fini a onze valeurs (0 a 10 inclus) - voir `DEC-0020` pour le calcul complet.
+  - Etant donne l'entree de ce jeu dans `catalogue.yaml`, quand on lit `nombreDeManches`, alors elle
+    vaut 7 (et non 10 comme les trois autres jeux ouverts ce sprint), decision assumee dans
+    `DEC-0020`.
   - Etant donne chaque item, quand on verifie qu'il porte un indice, alors ce champ est rempli et
     non vide (`ADR-0016`).
   - Etant donne le paquet, quand on le charge au demarrage de l'application, alors il valide le
@@ -2273,9 +2279,11 @@ contenu neuf, le niveau scolaire et la qualite pedagogique restant entierement d
   - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
     `nadia-prof` : idem S9-1.
 - **Lien decision** :
-  `DEC-0019-perimetre-sprint-9-quatre-lignes-textuelles-de-mathematiques-cp-denombrement-et-monnaie-differes.md`.
-- **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
-  requis avant affectation).
+  `DEC-0019-perimetre-sprint-9-quatre-lignes-textuelles-de-mathematiques-cp-denombrement-et-monnaie-differes.md`,
+  `DEC-0020-s9-2-debloquee-nombre-de-manches-abaisse-pour-les-complements-a-10.md` (deblocage,
+  criteres corriges).
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, desormais possible sans obstacle
+  bloquant (`DEC-0020` leve le blocage nomme par `theo-archi` dans son avis de faisabilite).
 
 ### S9-3 - Comparer deux nombres avec les signes <, > et =
 

@@ -88,13 +88,33 @@ Note sur les lignes `en cours` (soustractions, complements a 10, problemes) : `D
 au sprint 9 sur `docs/backlog/backlog.md`, stories S9-1, S9-2, S9-4, chacune sur un contenu neuf en
 `type: question`, sans matiere premiere de `contenu-repris/` identifiee pour ces trois lignes.
 
+Precision sur la ligne "complements a 10" (S9-2) : cette ligne a ete bloquee en planning, puis
+debloquee par `DEC-0020-s9-2-debloquee-nombre-de-manches-abaisse-pour-les-complements-a-10.md`.
+L'espace de la forme canonique de cette competence est fini a onze items au maximum (`ADR-0032`),
+contre dix manches declarees pour les trois autres jeux du sprint : le jeu qui la couvre declare
+`nombreDeManches: 7` au lieu de 10, une asymetrie de duree de partie assumee par cette decision
+plutot qu'un elargissement des formes d'items, qui aurait ete une decision pedagogique.
+
 Note sur les deux lignes qui restent `non couvert` (denombrer, monnaie) : `DEC-0019` les differe
-explicitement plutot que de les laisser en silence. Chacune nomme un verbe ("denombrer",
-"reconnaitre") qui designe une reconnaissance visuelle qu'aucun texte seul ne peut porter ; les
-couvrir sur leur seul volet textuel aurait reproduit le motif de couverture partielle deja
-sanctionne sur ce produit (additions "jusqu'a 10 (puis 20)", homophones "principaux", conjugaison
-"un temps sur trois"). Voir `DEC-0019` pour le detail, y compris la revue de `contenu-repris/quiz/
-cp-monnaie.yml`, matiere premiere conservee pour une story future.
+explicitement plutot que de les laisser en silence, sur un motif corrige le 2026-08-12 (amendement
+de `DEC-0019`, suite a l'avis de faisabilite de `theo-archi`) :
+
+- **Denombrer** : un pictogramme-caractere (une face de de, un glyphe repete) est techniquement
+  portable dans une chaine YAML ordinaire, sans code ni gabarit neuf, et `DEC-0002` place ce
+  registre hors de la regle de redaction du depot. Ce qui reste non tranche, et qui garde cette
+  ligne `non couvert` ce sprint, est pedagogique : la recevabilite d'un tel pictogramme pour tester
+  reellement "denombrer" et la fiabilite de son rendu (un glyphe qui varie selon la police ou
+  l'appareil devient une reponse fausse, pas seulement un defaut visuel) sont des jugements de
+  `nadia-prof`, non encore rendus.
+- **Monnaie** : le verbe "reconnaitre" designe une reconnaissance visuelle qu'aucun texte seul ne
+  peut porter. Le verbe "utiliser", lui, est entierement textuel et prouve par du contenu deja joue
+  en production sur `main` (`contenu-repris/quiz/cp-monnaie.yml`). Couvrir "utiliser" seul
+  reproduirait neanmoins le motif de couverture partielle deja sanctionne sur ce produit (additions
+  "jusqu'a 10 (puis 20)", homophones "principaux", conjugaison "un temps sur trois") : ce jeu
+  n'exercerait jamais "reconnaitre". La ligne reste donc `non couvert` dans son ensemble.
+
+Voir `DEC-0019` (decision d'origine et amendement du 2026-08-12) pour le detail complet, y compris
+la revue de `contenu-repris/quiz/cp-monnaie.yml`, matiere premiere conservee pour une story future.
 
 Note sur la ligne `en cours` (calcul mental additions) : le referentiel regroupe "jusqu'a 10 (puis
 20)" en une seule competence. Le sprint 0 ne couvre que la borne jusqu'a 10 ; la borne jusqu'a 20
@@ -516,6 +536,21 @@ monnaie) : chacune nomme un verbe de reconnaissance visuelle que le gel de rendu
 portee ce sprint. **Aucune ligne ne passe a `couvert-valide` par ce planning** : ce statut n'est
 prononce que par `nadia-prof`, apres audit reel de chaque increment, sur les quatre fiches de
 conformite ouvertes dans le meme geste que `DEC-0019`.
+
+**Correction du 2026-08-12, apres l'avis de faisabilite de `theo-archi`.** Deux arbitrages
+supplementaires, tous deux traites sous `DEC-0019` (amendee) et `DEC-0020` :
+
+- la story `S9-2` (complements a 10), bloquee au planning par un obstacle technique (`ADR-0023`
+  contre un espace d'items fini), est debloquee par `DEC-0020` : le jeu qui la couvre declare
+  `nombreDeManches: 7` plutot que 10, voir la note sous le tableau mathematiques CP ci-dessus ;
+- le motif "reconnaissance visuelle qu'aucun texte seul ne peut porter", ecrit ci-dessus pour les
+  deux lignes differees, s'est revele imprecis pour la ligne monnaie (son verbe "utiliser" est
+  entierement textuel, prouve par du contenu deja joue en production) et incomplet pour la ligne
+  denombrement (un pictogramme-caractere y est techniquement portable) - corrige dans la note sous
+  le tableau mathematiques CP ci-dessus. Les deux lignes restent `non couvert`, sur un motif
+  desormais pedagogique et non plus technique.
+
+Aucun de ces deux points ne deplace un chiffre du tableau de synthese ci-dessous.
 
 ## Synthese apres l'ouverture de s09 (2026-08-12)
 
