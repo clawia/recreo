@@ -1,20 +1,27 @@
 /* ADR-0013 obligation 3 : jeu fautif de CabinetDeLaMachineTest.verifierAucunePixelSurLeCabinet -
-   la meme feuille de cabinet que la production, avec une seule dimension du bandeau ecrite en
-   pixels plutot qu'en rem (contre le critere d'acceptation de S8-1). */
+   la meme feuille de cabinet que la production, ou CHAQUE selecteur epingle par
+   SELECTEURS_DU_CABINET porte une dimension en pixels plutot qu'en rem (contre le critere
+   d'acceptation de S8-1).
+
+   Chacun et pas un seul : le garde-fou rassemble tous les fautifs avant d'echouer, et le
+   contre-exemple exige que le message les nomme tous. Un selecteur ajoute a la liste sans recevoir
+   ici son bloc fautif fait rougir chaqueSelecteurEpingleEstEprouveParLeJeuFautif, en le nommant.
+   C'est la seule facon qu'un selecteur n'entre pas dans le perimetre sans y etre eprouve, et l'ordre
+   de la liste n'y change rien (ADR-0033 point 7.a). */
 .cabinet {
     display: flex;
     flex-direction: column;
     background-color: #1d4b6b;
-    border: 0.5rem solid #1d4b6b;
+    border: 8px solid #1d4b6b;
     border-radius: 0.75rem;
 }
 
 .cabinet > .propositions {
-    margin: 0;
+    margin: 4px;
 }
 
 .cabinet-bandeau {
-    height: 2rem;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,5 +36,5 @@
 }
 
 .cabinet-socle {
-    height: 1rem;
+    height: 16px;
 }

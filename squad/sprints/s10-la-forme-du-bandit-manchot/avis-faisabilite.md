@@ -56,26 +56,29 @@ pas etre cite comme s'il l'etait.
 compare les deux par leur sujet : c'est ce qui la fait fonctionner, et non un hasard d'ecriture. Le lot
 du manche ne touche aucune des trois.
 
-## 2. `CabinetDeLaMachineTest` et le sixieme selecteur - le piege a ne pas manquer
+## 2. `CabinetDeLaMachineTest` : entrer un selecteur dans le perimetre epingle
 
-`SELECTEURS_DU_CABINET` epingle cinq selecteurs et exige zero `px` sur chacun. Le manche en est un
-sixieme et ses dimensions doivent y entrer. Mais `verifierAucunePixelSurLeCabinet` asserte
-`isNotNull()` sur chaque selecteur **avant** de chercher `px`, et le jeu fautif
-`contreexemple/CabinetDeLaMachineTest/dimension-en-pixels/` ne porte pas `.cabinet-bandeau::after`.
-Deux issues, les deux mauvaises :
+**Corrige apres mesure, et la version precedente de cette section etait le piege qu'elle pretendait
+nommer.** Elle demandait que le jeu fautif recoive le bloc du selecteur neuf avec sa dimension en
+pixels, et s'arretait la. Applique a la lettre, selecteur ajoute apres `.cabinet-bandeau::before` :
+`Tests run: 8, Failures: 0`. Vert, et le selecteur neuf jamais eprouve - la boucle echouait au premier
+fautif rencontre et `hasMessageContaining` epinglait ce nom-la en clair. Une contrainte dont le
+resultat depend d'un ordre est une contrainte qu'un developpeur applique de travers sans le savoir.
 
-- selecteur ajoute **avant** `.cabinet-bandeau::before` : le jeu fautif rougit sur `isNotNull()`, avec
-  un message que `hasMessageContaining` n'attend pas - test rouge, pour la mauvaise raison ;
-- selecteur ajoute **apres** : le rouge attendu tombe sur `.cabinet-bandeau::before`, qui porte deja
-  `px` dans ce jeu. Le test reste **vert** et le sixieme selecteur n'est **jamais eprouve** - un
-  garde-fou qui ne prouve plus ce qu'il annonce, exactement la forme de defaut que la retro de s09 a
-  routee vers moi sur un autre fichier.
+Le garde-fou a donc change de forme plutot que la consigne de formulation : `CabinetDeLaMachineTest`
+rassemble tous les selecteurs fautifs avant d'echouer, et `chaqueSelecteurEpingleEstEprouveParLeJeuFautif`
+derive son attente de `SELECTEURS_DU_CABINET`. Detail, obligations et mesures de morsure : `ADR-0033`
+point 7.a.
 
-**Contrainte pour le lot** : le jeu fautif recoit le meme bloc `.cabinet-bandeau::after` que la
-production, et c'est **ce bloc-la** qui porte la dimension en pixels. C'est la seule facon que le rouge
-nomme le selecteur neuf. Je ne l'ecris pas moi-meme : la regle n'a d'objet que le jour ou la regle de
+**Contrainte pour le lot, quels que soient les selecteurs livres et leur nombre** : tout selecteur
+ajoute a `SELECTEURS_DU_CABINET` existe aussi dans
+`contreexemple/CabinetDeLaMachineTest/dimension-en-pixels/`, ou il porte une dimension en pixels. Rien
+d'autre a ecrire, et la position dans la liste n'a aucun effet. L'oubli est rouge et nomme le
+selecteur oublie ; ce n'est plus une consigne a suivre, c'est un garde-fou a satisfaire.
+
+Je n'ajoute moi-meme aucun nom de selecteur : la regle n'a d'objet que le jour ou la regle de
 production existe, et je n'ecris pas un nom de selecteur dans un test avant que le code ne le porte
-(dette n°1 de la version precedente).
+(dette n°1 de la version precedente). Ce que j'ai livre est la forme qui rend l'ajout sur.
 
 ## 3. La clause d'immobilite : `ADR-0033`, et non un amendement d'`ADR-0030`
 
@@ -91,16 +94,26 @@ renversement loge dans le fichier qui portait le refus n'apparait pas dans l'ind
 `ADR-0030` inchange. `ADR-0030` reste `Accepte`, son entree d'index porte desormais la mention du
 renversement.
 
-## 4. Faisabilite du manche
+## 4. Faisabilite d'un habillage dessine
+
+**Le perimetre a change depuis la redaction de cette section, et je le note plutot que de laisser lire
+une liste perimee.** `nadia-prof` a refuse le manche du fronton apres l'avoir vu rendu, et demande un
+levier a boule sur le flanc du meuble, un visage souriant et une enseigne nommee sur le fronton. C'est
+son arbitrage, pas le mien. Ce qui suit reste vrai en tant que **faisabilite d'un habillage dessine et
+immobile** ; ce qui demande un avis neuf, le jour ou les stories seront ecrites, est le decoupage de
+ces trois decors et leur cout en pixels sous le pli - la contrainte de cout, elle, n'a pas bouge d'un
+pixel.
 
 **Faisable en l'etat, sans `ADR` supplementaire**, sous trois contraintes, toutes tenues par un
 garde-fou existant apres ce commit :
 
-1. selecteur court `.cabinet-bandeau::after` (constat 1, corollaire) ;
-2. `position: relative` sur `.cabinet-bandeau` est le seul ancrage a ajouter, et il ne change aucune
-   dimension ;
-3. le sixieme selecteur de `CabinetDeLaMachineTest` arrive **avec** son bloc dans le jeu fautif
-   (section 2).
+1. selecteur court, et qui ne nomme aucune classe ancetre d'un pressable : un decor decoupe ne pend
+   pas de `.cabinet` (constat 1, corollaire, et constat 2) - cela vaut pour le levier de flanc autant
+   que pour le fronton ;
+2. `position: relative` sur le bloc qui porte le pseudo-element est le seul ancrage a ajouter, et il ne
+   change aucune dimension ;
+3. tout selecteur qui entre dans `SELECTEURS_DU_CABINET` arrive **avec** son bloc dans le jeu fautif
+   (section 2), quel que soit leur nombre.
 
 Et rien d'autre : ni `overflow` (`ADR-0030` point 2), ni `transition` ni pseudo-classe interactive
 (`ADR-0033`), ni `content` autre que la chaine vide (`ADR-0027` clause 7), ni image chargee
