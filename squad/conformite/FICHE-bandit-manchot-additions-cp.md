@@ -619,6 +619,102 @@ l'enfant ne peut pas dechiffrer, et il l'essaiera quand meme. Je ne juge pas la 
 feuille de style, pas de mon ressort - j'exige la propriete : **le nom est entier a l'ecran, sur une seule
 ligne, a 360 px, dans tous les etats du meuble et sur les huit jeux.**
 
+#### 5. Question 5 - les boutons colores : ni decor ni indice, un FAUX indice. REFUSE sur deux teintes
+
+**Verdict en une phrase : la question qu'on me pose a deux reponses possibles et la bonne est la
+troisieme.** `ines-design` demande si ces couleurs sont du decor ou un indice. **Le raisonnement qu'elle
+tient pour ecarter l'indice est juste** : la couleur suit la position, la position de la bonne reponse
+varie, donc **aucune information ne fuite**. Je le confirme, et C5 n'est pas violee au sens de sa clause 2
+- le jeu d'images du cabinet ne depend ni de l'item, ni de la colonne, ni de la reponse attendue.
+
+**Mais un decor qui ne dit rien et qu'un enfant lit comme s'il disait quelque chose est pire qu'un
+indice : c'est un faux indice.** Et j'ai mesure que deux des quatre teintes sont exactement dans ce cas.
+
+##### 5.a Le rouge et le vert sont les couleurs du verdict de cette application
+
+Ce n'est pas une impression, c'est la feuille servie. `recreo.css` fixe depuis S1-6 :
+`.signal.est-juste .icone-signal { background-color: #2e7d32 }` (la coche) et
+`.signal.est-faux .icone-signal::before/::after { background-color: #c62828 }` (la croix). Les teintes
+proposees pour les boutons sont `#1f7a3d` (vert) et `#c0392b` (rouge). Contraste entre elles :
+
+| Paire | Contraste |
+|---|---|
+| coche du verdict `#2e7d32` **contre** bouton vert propose `#1f7a3d` | **1,05:1** |
+| croix du verdict `#c62828` **contre** bouton rouge propose `#c0392b` | **1,03:1** |
+
+**A 1,03:1 et 1,05:1, ce sont les memes couleurs.** Aucun oeil, et surtout aucun oeil d'enfant de 6 ans,
+ne distingue le vert du bouton du vert de la coche.
+
+**Ce que ca fait a l'enfant, et c'est mesurable dans sa reussite.** Un enfant de CP a appris, dans ce jeu
+et dans son cahier, que le vert veut dire *juste* et le rouge *faux*. On lui presente ensuite quatre
+propositions dont l'une est verte et l'autre rouge. Il ne lira pas "quatrieme bouton d'arcade" ; il lira
+"celle-la est bonne, celle-la est mauvaise". Et il aura tort **trois fois sur quatre** a quatre colonnes,
+**deux fois sur trois** a trois colonnes. Un decor qui suggere une reponse et se trompe la plupart du
+temps n'est pas neutre : il enseigne a l'enfant que se fier a ce qu'il voit ne marche pas. C'est le seul
+apprentissage garanti de cette rangee de couleurs.
+
+**Et le second canal ne sauve pas ce cas, contrairement a ce qu'on pourrait m'objecter.** La regle du
+second canal protege un enfant qui **ne voit pas** la couleur. Ici le probleme est l'enfant qui **la voit
+tres bien** et qui lui donne le sens que l'application lui a appris ailleurs. Ajouter une forme
+n'arrangerait rien ; la seule correction est de ne pas reprendre les deux couleurs du verdict.
+
+##### 5.b Le violet et l'ambre : un plancher que sa table ne mesure pas
+
+Sa table de contraste mesure les quatre teintes **contre le blanc du texte**, et les quatre passent
+(5,44 / 5,37 / 5,76 / 7,21:1). C'est le bon controle pour la lisibilite du mot. **Ce n'est pas le controle
+qui dit si l'enfant voit qu'il y a un bouton.** Un bouton se voit par son bord, donc par son contraste
+contre la surface sur laquelle il est pose - et cette surface change dans la meme proposition, puisque le
+corps du cabinet passe a `#081c2c`. Mesure (ma methode redonne son `3,20:1` au centieme, donc elle mesure
+la meme chose qu'elle) :
+
+| Teinte de bouton | Contre le corps du cabinet `#081c2c` |
+|---|---|
+| vert `#1f7a3d` | 3,22:1 |
+| accent actuel `#2e6f9e`, pour reference | 3,20:1 |
+| rouge `#c0392b` | 3,18:1 |
+| ambre `#8a5d00` | **3,01:1** |
+| violet `#6c3fa8` | **2,40:1** |
+
+**Aucune des quatre n'est une regression** par rapport a l'etat livre (1,71:1 sur l'ancienne teinte unique
+de cabinet), et je le dis avant mes reserves : le corps en deux tons ameliore reellement ce que l'enfant
+voit, et c'est la meilleure part de cette proposition. Mais **le violet a 2,40:1 est sous 3:1**, et 3:1
+est le plancher que j'applique a tout element d'interface non textuel depuis mon refus du 2026-08-06 sur
+la saillance. Un bouton violet sur un corps presque noir est un bouton dont le bord se devine. L'ambre a
+3,01:1 passe le plancher de 0,01 : ce n'est pas une marge, c'est une coincidence.
+
+##### 5.c Ce que j'accepte - F9 et F10
+
+**Le principe est accepte : une rangee de boutons de couleurs differentes est du decor legitime.** Un
+enfant de 6 ans reconnait une machine a ses boutons colores, et je n'ai jamais exige l'uniformite. Ce que
+je refuse est ce jeu de quatre teintes-la.
+
+Ce que j'accepterais, sans dessiner la palette :
+
+- **aucune teinte de bouton n'est confondable avec une couleur de verdict de cette application** : au
+  moins **3:1** de distance avec `#2e7d32` et avec `#c62828`. C'est un critere mecanique, et il exclut le
+  vert et le rouge proposes. Il n'exclut pas *toute* famille chaude ou froide : il exclut ces deux
+  valeurs-la et leurs voisines immediates ;
+- **chaque teinte garde au moins 4,5:1 contre le blanc de son texte** (les quatre proposees le font, cette
+  clause ne coute rien) **et au moins 3:1 contre le corps du cabinet** (le violet ne le fait pas) ;
+- **la marque de M9 est lisible sur les quatre teintes.** C'est la clause que j'ajoute et que personne
+  n'a vue : M1 a M12 exigent qu'une proposition deja essayee porte une marque visible qui ne nomme aucune
+  reponse. Cette marque sera dessinee dans un lot ou les boutons sont tous du meme bleu ; si les fonds
+  deviennent quatre, elle doit se lire sur les quatre. Une marque qui disparait sur le fond ambre rend M9
+  faux sans qu'aucun test ne bouge. **Les deux lots doivent etre mesures ensemble, ou le second refait la
+  mesure du premier.**
+
+**Les deux etoiles du socle : acceptees, rien a dire.** Forme fixe, `clip-path` en pourcentages, meme
+geometrie que l'etoile deja validee en S8-1, opacifiees, sur un bloc qui n'est ancetre d'aucun pressable.
+C5 clause 2 tenue par construction, cout mesure a 0 px. Je ne fabrique pas une reserve pour avoir l'air
+d'avoir travaille dessus.
+
+**Le corps en deux tons : accepte, et je leve la confusion de sa proposition precedente.** La bordure
+garde `--recreo-entete-fond` (8,61:1 contre la page, valeur que j'ai moi-meme corrigee le 2026-08-11) et
+seul le corps passe a `#081c2c` (16,11:1 contre la page, 3,20:1 contre les colonnes). C'est bien un objet
+en deux epaisseurs et non un objet uniformement plus sombre. Le +1 px de hauteur est celui que j'ai
+accepte le 2026-08-11 sous ma condition N6, il est remesure a l'identique, et il reste le **seul** pixel
+vertical que ce lot depense.
+
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mes deux reserves ouvertes sont
   levees** : la reserve unique de s07 sur la fin du mouvement, et la reserve 6 de "Le bon son" sur la
   distinction de l'explication. Deux reserves nouvelles et datees sont ouvertes en section 8. Aucun
