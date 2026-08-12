@@ -509,4 +509,138 @@ Quatre structures possibles, mesurees. Le choix est a `nadia-prof` ; les couts s
 quatre structures ; elle refuse exactement la cinquieme, celle que la proposition ecrit aujourd'hui.
 **Le jeu fautif est le balisage d'`ines-design`, repris tel quel** - pas une fixture de ma main.
 
+## 10. Deux enchainements coexistants : le chiffrage, et mon avis franc
+
+L'utilisatrice a sorti "Le bon petit mot" du sprint : les sept autres jeux recoivent le nouvel
+enchainement, celui-la garde l'ancien. Le depot n'a jamais eu deux enchainements de jeu coexistants.
+
+### 10.a Ou vit le choix - quatre emplacements, un seul tenable
+
+| Emplacement | Cout mesure | Ce qu'il fait entrer, et ou |
+|---|---|---|
+| **Le paquet de contenu** (`contenu/*.yaml`) | 1 champ x 8 paquets | Un **vocabulaire de comportement dans le contenu**, miroir exact de ce qu'`AucunVocabulaireDeMatiereTest` refuse dans l'autre sens. Et pire, **mesure** : le schema de paquet **n'est pas ferme** - le chargeur valide `schema`, `type` et les champs obligatoires, et ne refuse **aucun champ inconnu**. Un `enchainement:` pose dans un paquet ne serait donc refuse par rien. **Refuse** |
+| **L'entree de catalogue** | +1 composant sur `GameDefinition` : **10 sites de construction** a faire se prononcer (`new GameDefinition(` apparait 10 fois dans 6 fichiers), 8 entrees YAML, 1 champ au chargeur | Rien dans le contenu. Le precedent est **exact** : `nombreDeManches` est deja un attribut de l'association mecanique + paquet (`ADR-0012`), et il descend jusqu'a la mecanique par le meme trajet |
+| **Une seconde mecanique** (`MechanicId`) | `BanditManchotSession` fait **195 lignes**, dont **une dizaine** changent d'un enchainement a l'autre | Rien nulle part - au prix d'un dilemme sans troisieme terme : **195 lignes dupliquees pour en varier dix** (dette n. 3 de `CLAUDE.md`, les neuf chargeurs quasi identiques), ou un moteur partage et deux coquilles, c'est-a-dire le piege que mon propre mandat me demande de ne pas creuser. **Refuse sur ce dilemme** |
+| **Nulle part** : aucune coexistence | zero | voir 10.d |
+
+**Reponse a la question 1 : l'entree de catalogue, et a trois conditions dures.**
+
+1. **Un type enumere ferme**, jamais un booleen, jamais une chaine. Le motif n'est pas esthetique, il
+   est mesure ce sprint : un garde-fou ne derive un perimetre **total** que sur un ensemble fini
+   enumerable, et c'est exactement ce qui a rendu la clause d'`ADR-0034` possible - le verdict est un
+   booleen, donc deux valeurs, donc total par construction. Un booleen d'enchainement marcherait
+   aujourd'hui et mentirait au troisieme enchainement.
+2. **Un `switch` exhaustif** dans le domaine, en expression : le compilateur refuse alors une valeur
+   non traitee, et le troisieme enchainement ne peut pas etre ajoute sans que chaque site se prononce.
+   C'est la meme mecanique que le parametre `arriveeParUnGeste` d'`ADR-0027`, qui a deja servi.
+3. **Un cliquet** : *exactement un* jeu du catalogue declare l'ancien enchainement. Plafond egal a la
+   taille exacte de la dette, jamais "quelques-uns" - la lecon du plafond d'`ADR-0016`, appliquee ici.
+
+### 10.b Ce que la coexistence coute a `fragments/retour.html` et a mes clauses
+
+**Le fichier survit de toute facon** : il porte l'ecran de fin de partie, qui existe dans les deux
+enchainements. Ce qui survit **en plus** avec la coexistence, c'est la branche `enSuite=true`, le bouton
+`.encore`, et la route `GET /parties/{jeuId}/manche` qui garde un appelant.
+
+**Effet secondaire mesure, et il joue en faveur de la coexistence** : les **3 rouges** que j'avais
+mesures a la suppression de `.encore` n'arrivent pas - dont
+`leRejeuDuLotBootstrapFaitEchouerLeGardeFou`, la preuve de morsure d'`ADR-0017`. La coexistence
+**epargne** ce retaillage. Je le dis parce que c'est vrai, et je dis aussi que c'est un mauvais marche :
+on garde un chemin de code vivant pour un seul jeu, indefiniment, afin d'eviter un retaillage unique.
+
+**Mes deux clauses neuves ne deviennent ni fausses ni vides. Elles cessent d'etre totales, et c'est
+pire, parce que ca ne se voit pas.** Elles exigent qu'un ecran du corpus porte `est-juste` et un autre
+`est-faux`, marqueurs lus dans `retour.html`. Or sur le nouvel enchainement, l'ecran d'une reponse
+fausse est un **ecran de manche** : il ne porte **aucun** des deux marqueurs. La clause resterait donc
+verte, satisfaite par le seul jeu de l'ancien enchainement et par les fins de partie. **Ma clause
+serait verte par l'exemption** - la forme de defaut que je viens de sanctionner deux fois dans ce meme
+sprint. Le perimetre doit passer du verdict au **produit** verdict x enchainement, soit 4 etats, et il
+n'est derivable que si l'enchainement est un enum (condition 1).
+
+**Et le flux est invisible aux deux perimetres derives par route** : les deux enchainements empruntent
+**les memes routes**. C'est la **troisieme** occurrence de la meme cecite dans ce sprint - la route ne
+dit pas l'etat (`ADR-0034`), et elle ne dit pas davantage l'enchainement.
+
+**Le cout de test le plus lourd n'est pas dans les corpus, il est dans les fixtures.** Les **10 sites de
+construction** de `GameDefinition` devront chacun declarer un enchainement, dont ceux de
+`LExplicationDUnItemReelAtteintLEcranDeRetourTest`, de `PartieControllerTest` et de `CatalogueDeTest`.
+**Le choix par defaut le plus commode - l'ancien enchainement, celui qui laisse les tests verts sans
+les reecrire - est exactement celui qui vide les clauses.** C'est la pente reelle de cette option, et
+aucun enum ne la corrige : seul le cliquet du point 3, applique **aux jeux de test comme au catalogue
+de production**, l'arrete.
+
+**Deux garde-fous existants traversent les deux enchainements gratuitement** :
+`CatalogueChargeableIT` et `ChaqueJeuDuCatalogueOffrePlusDItemsQueDeManchesTest` parcourent les 8
+entrees reelles. C'est une bonne nouvelle, avec une contrainte : toute propriete qui ne vaut que pour le
+nouvel enchainement devra y etre filtree **par l'enum**, jamais par un identifiant de jeu.
+
+### 10.c Sept sur huit : clause, ou exemption nommee ?
+
+Ma propre regle, appliquee a moi : **une exemption doit nommer quelque chose de reel, et son plafond
+doit valoir exactement la taille de la dette.**
+
+- Filtree **par l'enum**, la portee n'est pas une exemption : c'est une **clause avec un domaine**, et
+  le domaine est une propriete declaree du jeu. Legitime, et c'est la seule forme legitime.
+- Ecrite `sauf bandit-manchot-homophones-cm1`, c'est une exemption qui nomme un jeu. Elle n'est
+  acceptable qu'avec le cliquet a **1** et un motif qui expire, sans quoi "sept sur huit" devient
+  "cinq sur huit" sans qu'aucun rouge le dise.
+- Le message du cliquet doit nommer **le sprint ou la dette est censee se fermer**, pas seulement le
+  nombre. Sinon personne ne decouvre avant six mois que "provisoire" voulait dire "definitif".
+
+**Le total, si la coexistence est retenue** : 1 `ADR` neuf (l'enchainement devient un attribut de
+catalogue), **4 amendements** au lieu de 3 (`ADR-0026` clauses 3 et 4, `ADR-0027` clause 2, `ADR-0012`,
+plus la clause d'`ADR-0034` a porter sur le produit verdict x enchainement), 1 cliquet, 10 sites de
+construction, 8 entrees de catalogue, 2 corpus a etendre. Chacun des 3 amendements passe de "une
+clause" a "une clause, son domaine, et son cliquet" : **9 pieces la ou il y en avait 3**.
+
+### 10.d Mon avis franc : la coexistence est une mauvaise idee, et il existe un cinquieme choix
+
+**Les trois chemins vers la coexistence tombent chacun sur une dette nommee de `CLAUDE.md`.** Le paquet
+sur la dette 2 (une configuration qui deborde de son domaine), et sans meme un schema ferme pour
+l'arreter. La seconde mecanique sur la dette 3 (195 lignes dupliquees pour en varier dix), ou sur le
+piege des coquilles. Le catalogue est le moins mauvais des trois, et il a quand meme un cout de
+principe qu'il faut dire : **il fait passer le catalogue d'une description de contenu a une
+configuration de comportement.** `nombreDeManches` est une **quantite** ; un enchainement est un
+**comportement**. Le jour ou ce bouton existe, la prochaine demande par jeu - "ce jeu montre
+l'explication, celui-la non" - se pose sur le meme bouton, et le motif de refus sera plus faible qu'
+aujourd'hui puisque le precedent existera.
+
+**Et ce depot a deja repondu deux fois a cette classe de probleme, pour zero architecture.**
+`DEC-0009` a retire "Le bon son" du catalogue jouable, `DEC-0014` a retire "Le bon verbe" ; les deux
+sont revenus apres correction de leur contenu. Mecanisme reellement employe : **l'absence d'une entree
+dans `catalogue.yaml`**. Aucun drapeau, aucun chemin mort, aucune exemption dans une clause. `DEC-0014`
+ecrit meme que le choix du mecanisme m'appartient.
+
+**Ce cinquieme choix n'a peut-etre pas ete presente a l'utilisatrice, et il n'est pas equivalent aux
+quatre autres. Je dois etre juste sur la difference** : `DEC-0009` et `DEC-0014` retiraient des jeux
+dont le contenu **enseignait quelque chose de faux**. Ici le contenu est correct et valide ; il est
+seulement trop long pour la nouvelle mise en page. Retirer le jeu coute donc la jouabilite d'un jeu
+valide pour un motif de presentation - une perte pedagogique reelle sur les homophones CM1, et pas le
+meme motif. Ce n'est pas a moi d'en juger.
+
+**Et l'observation qui manque, celle qui change la question** : le choix de l'utilisatrice et l'issue
+qu'elle a ecartee - raccourcir le contenu - sont **le meme travail, dans un ordre different**. La
+coexistence n'evite pas le raccourcissement, elle le differe en payant des interets : un second chemin
+de code vivant, 9 pieces de garde-fou au lieu de 3, et un enfant qui rencontre deux comportements selon
+le jeu. Sa propre formulation le dit - "jusqu'a ce que son contenu soit traite". Si le contenu sera
+traite de toute facon, la seule question est **si le jeu reste jouable pendant l'attente**, et c'est
+exactement la question que `DEC-0009` et `DEC-0014` ont tranchee deux fois, dans l'autre sens.
+
+**Mon classement, et ce n'est pas un veto :**
+
+1. **Retirer "Le bon petit mot" du catalogue jouable** jusqu'a ce que ses enonces les plus longs soient
+   raccourcis (le defaut est deja suivi sous `DEC-0016`). Cout : une entree absente de
+   `catalogue.yaml`, une note de matrice, **zero architecture, zero exemption, zero second chemin**.
+   Deux precedents. C'est ce que je ferais.
+2. **Si le retrait est refuse pedagogiquement** - et il peut legitimement l'etre : la coexistence par
+   un **enum de catalogue**, avec le cliquet a 1 et son sprint de fermeture nomme. Faisable, chiffree
+   ci-dessus, et je l'ecrirai sans reserve si c'est la decision.
+3. **Jamais le paquet, jamais une seconde mecanique.**
+
+**Ce que je n'ecris pas aujourd'hui, et pourquoi.** Aucun `ADR` sur l'enchainement : la decision n'est
+pas prise et elle n'est pas mienne. Sa regle est specifiee assez precisement ci-dessus (enum ferme,
+switch exhaustif, cliquet a 1) pour etre ecrite **dans le meme geste** que la decision, ce que mon
+premier principe exige. Ecrire le cliquet maintenant serait ecrire un garde-fou sur un type imaginaire,
+le defaut que ce sprint a deja sanctionne trois fois.
+
 `mvn -B verify` sur l'arbre de ce lot, JDK 21.0.10 : **BUILD SUCCESS, 378 tests, 0 echec.**
