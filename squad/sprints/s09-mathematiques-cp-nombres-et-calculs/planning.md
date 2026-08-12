@@ -66,14 +66,16 @@ contenu neuf ; les quatre lignes correspondantes de `squad/programme/MATRICE-cou
 passent de `non couvert` a `couvert-valide` si et seulement si `nadia-prof` leve elle-meme la
 barre apres avoir joue chaque increment. Aucune ligne de rendu ne bouge.**
 
-**Gele** : le denombrement et la monnaie restent `non couvert` ce sprint (voir obstacle ouvert
-ci-dessous). Le "ranger" de la ligne comparaison reste differe. `S9-2` ne s'ouvre en developpement
-qu'apres l'arbitrage de `camille-po` sur `nombreDeManches` (voir obstacle bloquant ci-dessous).
+**Gele** : le denombrement et la monnaie restent `non couvert` ce sprint (voir obstacle leve
+ci-dessous, recommandation ecrite pour un sprint ulterieur). Le "ranger" de la ligne comparaison
+reste differe. `S9-2` s'ouvre en developpement : `camille-po` a tranche `nombreDeManches` par
+`DEC-0020` (voir obstacle leve ci-dessous et section suivante).
 
 ## Sequencement et arbitrage de capacite
 
-Trois stories independantes en fichiers (chacune son propre paquet YAML sous `contenu/`), plus une
-quatrieme bloquee :
+Quatre stories independantes en fichiers (chacune son propre paquet YAML sous `contenu/`) ; la
+quatrieme a ete bloquee a l'ouverture du sprint, debloquee en cours de sprint par `DEC-0020` (voir
+point 2) :
 
 1. **S9-1, S9-3, S9-4 - ne dependent d'aucun arbitrage, demarrent maintenant.** Chacune ajoute un
    fichier YAML neuf et une ligne dans `catalogue.yaml`. Seul point de vigilance de sequencement :
@@ -81,13 +83,22 @@ quatrieme bloquee :
    de fusion mineur, pas de blocage : chaque agent ajoute sa ligne en fin de fichier dans son
    propre commit, je fusionne les trois lots l'un apres l'autre et resous un eventuel conflit
    trivial d'ajout de ligne moi-meme en review.
-2. **S9-2 - bloquee avant tout developpement.** Les quatre entrees du catalogue declarent
-   `nombreDeManches: 10`, donc onze items distincts exiges par `ADR-0023` ; la forme canonique
-   `a + ? = 10` n'en admet que onze (neuf hors cas degeneres). `theo-archi` a ferme la troisieme
-   sortie (completer par des copies, desormais rouge par `ADR-0032`). Deux sorties restent
-   ouvertes, routees a `camille-po` : baisser `nombreDeManches` pour ce jeu (plancher technique 4)
-   ou elargir les formes d'items admises (decision alors pedagogique, `nadia-prof`). **Aucune
-   capacite de developpement n'est engagee sur S9-2 avant cette decision.**
+2. **S9-2 - etait bloquee avant tout developpement, debloquee par `DEC-0020`.** Les quatre entrees
+   du catalogue declarent `nombreDeManches: 10`, donc onze items distincts exiges par `ADR-0023` ;
+   la forme canonique `a + ? = 10` n'en admet que onze (neuf hors cas degeneres). `theo-archi` a
+   ferme la troisieme sortie (completer par des copies, desormais rouge par `ADR-0032`). Deux
+   sorties restaient ouvertes, routees a `camille-po` : baisser `nombreDeManches` pour ce jeu
+   (plancher technique 4) ou elargir les formes d'items admises (decision alors pedagogique,
+   `nadia-prof`). `camille-po` a tranche par `DEC-0020` : `nombreDeManches` baisse a **7**
+   (marge d'un item de plus que le plancher, pour tenir si `nadia-prof` retire les deux cas
+   degeneres `0 + ? = 10` et `10 + ? = 0` en jouant l'increment), sans elargir les formes d'items -
+   asymetrie de duree de partie avec les autres jeux du catalogue assumee par ecrit dans la
+   decision. Elle a aussi corrige le critere qu'elle avait ecrit elle-meme et qui etait
+   mathematiquement impossible ("au moins 20 items" sur un espace canonique qui en offre onze au
+   maximum), remplace par "au moins 9 items". **S9-2 est affectee a `marc-dev`, sur une seconde
+   branche `s09-marc-dev-complements` independante de son lot S9-1** : je le dispatche sans
+   attendre une prochaine ceremonie, la casquette dev et la casquette Scrum Master ne se cumulant
+   jamais chez moi.
 
 ## Contrainte transverse a rappeler a chaque developpeur
 
@@ -104,10 +115,10 @@ d'exemple a une cinquieme colonne.
 | S9-1 | S'entrainer aux petites soustractions en jouant | mathematiques, CP, "Calcul mental - soustractions dans la limite de 10" | `marc-dev` | demarre maintenant |
 | S9-3 | Comparer deux nombres avec les signes <, > et = | mathematiques, CP, "Comparer et ranger des nombres jusqu'a 100 (<, >, =)", limitee a la comparaison de deux nombres | `lea-dev` | demarre maintenant |
 | S9-4 | Resoudre un petit probleme d'addition ou de soustraction | mathematiques, CP, "Resoudre des problemes simples d'addition/soustraction en situation (1 etape)" | `sofia-sm` (casquette dev) | demarre maintenant |
-| S9-2 | Trouver le complement a 10 | mathematiques, CP, "Complements a 10" | **non affecte** | bloquee, attend l'arbitrage de `camille-po` |
+| S9-2 | Trouver le complement a 10 | mathematiques, CP, "Complements a 10" | `marc-dev`, sur une seconde branche `s09-marc-dev-complements` | demarre maintenant, debloquee par `DEC-0020` |
 
-`yanis-qa` traduit chaque critere d'acceptation retenu en test au fil des commits des trois
-worktrees et fait tourner la suite. `theo-archi` reste disponible tout le sprint pour tout
+`yanis-qa` traduit chaque critere d'acceptation retenu en test au fil des commits des worktrees et
+fait tourner la suite. `theo-archi` reste disponible tout le sprint pour tout
 obstacle technique remonte en cours de developpement, en particulier sur `ADR-0032` et sur la
 contrainte des quatre propositions.
 
@@ -115,8 +126,8 @@ contrainte des quatre propositions.
 
 | Description | Categorie | Destinataire | Statut |
 |---|---|---|---|
-| Blocage reel sur S9-2 : les quatre entrees du catalogue declarent `nombreDeManches: 10`, donc onze items distincts exiges par `ADR-0023` ; la forme canonique n'en admet que onze (neuf hors cas degeneres) | technique / produit, sorties nommees par `theo-archi` | `camille-po` | **ouvert, bloquant** - aucun developpement sur S9-2 avant sa decision (baisser `nombreDeManches`, plancher 4, ou elargir les formes d'items admises) |
-| Contradiction entre `DEC-0019` (denombrement et monnaie differes pour motif de reconnaissance visuelle) et l'avis de `theo-archi` (les deux lignes sont faisables en texte, la monnaie est prouvee par du contenu deja joue en production sur `main`) ; ce qui reste de l'objection de `camille-po` n'est pas technique mais pedagogique - reconnaitre une piece nommee plutot que montree, denombrer une quantite decrite plutot que montree | produit, avec une question pedagogique sous-jacente que `theo-archi` route explicitement a `nadia-prof` | `camille-po` (avec possibilite d'arbitrage prealable de `nadia-prof`) | **ouvert, non bloquant pour ce sprint** - les quatre lignes retenues n'en dependent pas ; je ne tranche pas ce point, je le route tel que recu |
+| Blocage reel sur S9-2 : les quatre entrees du catalogue declarent `nombreDeManches: 10`, donc onze items distincts exiges par `ADR-0023` ; la forme canonique n'en admet que onze (neuf hors cas degeneres) | technique / produit, sorties nommees par `theo-archi` | `camille-po` | **leve** - `DEC-0020` (2026-08-12) : `nombreDeManches` baisse a 7, formes d'items non elargies, criteres corriges. S9-2 affectee a `marc-dev` sur `s09-marc-dev-complements` |
+| Contradiction entre `DEC-0019` (denombrement et monnaie differes pour motif de reconnaissance visuelle) et l'avis de `theo-archi` (les deux lignes sont faisables en texte, la monnaie est prouvee par du contenu deja joue en production sur `main`) ; ce qui reste de l'objection de `camille-po` n'est pas technique mais pedagogique - reconnaitre une piece nommee plutot que montree, denombrer une quantite decrite plutot que montree | produit, avec une question pedagogique sous-jacente que `theo-archi` route explicitement a `nadia-prof` | `camille-po` (avec possibilite d'arbitrage prealable de `nadia-prof`) | **referme pour ce sprint par l'amendement du 2026-08-12 a `DEC-0019`** - la contradiction reelle ne portait que sur le denombrement (motif corrige : le pictogramme-caractere est techniquement possible en texte, sa recevabilite pedagogique et la fiabilite de son rendu restent non jugees) ; sur la monnaie, `theo-archi` **ne contredisait pas** `camille-po`, dont le motif distinguait deja "utiliser" (textuel, prouve) de "reconnaitre" (visuel) - motif confirme et formulation de `MATRICE-couverture.md` corrigee. Les deux lignes restent `non couvert` ce sprint, aucun arbitrage prealable de `nadia-prof` n'est demande maintenant faute de developpeur en attente, mais `camille-po` recommande par ecrit qu'il le soit avant qu'un sprint ulterieur n'ouvre l'une des deux lignes |
 | Risque mineur de conflit de fusion sur `catalogue.yaml` entre les trois lots paralleles (S9-1, S9-3, S9-4), chacun y ajoutant une ligne | capacite / sequencement | `sofia-sm` (moi) | **non bloquant** - resolu par sequencement des fusions et resolution triviale en review, pas par une reaffectation |
 
 ## Decisions prises
@@ -126,18 +137,22 @@ anterieurs et deja sur le disque, fusionnes ci-dessus. Les decisions prises ici 
 tant que Scrum Master et n'ouvrent ni `ADR` ni `DEC` :
 
 1. **Les affectations nominatives** de la section "Stories et gestes retenus" ci-dessus : `marc-dev`
-   porte S9-1, `lea-dev` porte S9-3, `sofia-sm` (casquette dev) porte S9-4. Aucune capacite n'est
-   engagee sur S9-2 avant l'arbitrage de `camille-po`.
+   porte S9-1, `lea-dev` porte S9-3, `sofia-sm` (casquette dev) porte S9-4.
 2. **L'ordre de fusion des lots de developpement** n'est pas fige d'avance : les trois lots sont
    independants en dehors de `catalogue.yaml`, je fusionne dans l'ordre de livraison et resous un
    conflit d'ajout de ligne trivial moi-meme.
-3. **Le point de contradiction denombrement/monnaie n'est pas tranche ici** : il est route a
-   `camille-po`, avec la possibilite qu'elle demande l'arbitrage prealable de `nadia-prof`, note
-   comme obstacle ouvert non bloquant.
+3. **Le point de contradiction denombrement/monnaie n'est pas tranche ici** : il a ete route a
+   `camille-po`, qui a repondu par l'amendement du 2026-08-12 a `DEC-0019` (voir obstacle
+   ci-dessus). Je ne le tranche pas moi-meme, je route sa reponse telle que recue.
+4. **S9-2, debloquee par `DEC-0020`, est affectee a `marc-dev`**, sur une seconde branche
+   `s09-marc-dev-complements` independante de son lot S9-1 - decision de capacite qui m'appartient
+   comme Scrum Master. Je la dispatche sans attendre une nouvelle ceremonie : je portais la
+   casquette developpeuse au moment ou l'obstacle s'est leve, et les deux casquettes ne se
+   cumulent jamais.
 
 ## Prochaines etapes
 
-**Demarrent maintenant**, une fois `camille-po` prevenue de l'obstacle bloquant sur S9-2 :
+**Demarrent maintenant**, l'obstacle sur S9-2 etant leve par `DEC-0020` :
 
 - `marc-dev` ouvre un worktree dedie, verifie sa lignee, ecrit le paquet YAML de S9-1
   (soustractions) et sa ligne de `catalogue.yaml`, tests dans le meme commit, sous `ADR-0032` et la
@@ -147,5 +162,8 @@ tant que Scrum Master et n'ouvrent ni `ADR` ni `DEC` :
 - `sofia-sm`, casquette dev, ouvre un worktree dedie, verifie sa lignee, ecrit le paquet YAML de
   S9-4 (problemes additifs) et sa ligne de `catalogue.yaml`, tests dans le meme commit, memes
   contraintes.
-- `yanis-qa` traduit chaque critere en test au fil des commits des trois worktrees.
-- S9-2 reste sans worktree ouvert jusqu'a la decision de `camille-po`.
+- `yanis-qa` traduit chaque critere en test au fil des commits des worktrees.
+- `marc-dev` ouvre un second worktree dedie sur `s09-marc-dev-complements`, independant de son
+  worktree S9-1, verifie sa lignee, ecrit le paquet YAML de S9-2 (complements a 10, onze items,
+  `nombreDeManches: 7`) et sa ligne de `catalogue.yaml`, tests dans le meme commit, sous
+  `ADR-0032`, `ADR-0023` et `DEC-0020`.
