@@ -37,6 +37,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0031](ADR-0031-un-ecran-ne-gouverne-jamais-l-apparence-d-un-autre.md) | Refuser tout selecteur maison qui reunit des jetons de deux ecrans que le serveur ne rend jamais ensemble, et fermer ainsi le canal de feuille de la condition C4 | s08 | 2026-08-11 | Accepte |
 | [ADR-0032](ADR-0032-deux-items-d-un-meme-paquet-ne-presentent-jamais-le-meme-ecran.md) | Refuser que deux items d'un meme paquet fini presentent le meme ecran, et fermer ainsi le trou de morsure d'ADR-0023 | s09 | 2026-08-12 | Accepte |
 | [ADR-0034](ADR-0034-un-corpus-d-ecrans-exerce-les-deux-verdicts.md) | Exiger que tout corpus d'ecrans exerce les deux verdicts, et lire leurs marqueurs dans le gabarit plutot que dans le test | s10 | 2026-08-12 | Accepte |
+| [ADR-0035](ADR-0035-aucun-texte-rendu-ne-vit-dans-un-sous-arbre-masque.md) | Refuser tout texte rendu a l'interieur d'un sous-arbre `aria-hidden`, et accrocher le masque au decor plutot qu'au conteneur | s10 | 2026-08-12 | Accepte |
 
 ## Amendements
 
@@ -368,3 +369,15 @@ troisieme avait nommee sans la fermer :
     et le fait que `LesGardeFousSontMisALEpreuveTest` a attrape **son propre auteur** en train
     d'ajouter une lecture de production sans jeu fautif, dans le lot ou il reprochait a deux corpus
     d'etre aveugles. Ce n'est pas une regle ArchUnit, le compte reste a 28 avec sa methode.
+32. **ADR-0035** est le premier garde-fou de ce depot **ecrit avant son objet**, et le premier dont le
+    contre-exemple **n'est pas de la main de son auteur** : c'est le balisage qu'`ines-design` a
+    reellement propose (`proposition-ines-meuble.md`, section 2.2), repris tel quel. Il vaut d'etre relu
+    pour la forme du defaut qu'il nomme : `aria-hidden` etait pose sur un **conteneur** parce que, le
+    jour ou il a ete ecrit, tout son contenu etait decoratif - une declaration qui decrit un **etat**
+    la ou elle devrait decrire une **intention**, donc une declaration qui devient fausse sans qu'aucune
+    ligne ne change de sens. Meme famille que le plafond survivant a sa dette d'`ADR-0016`. Il apporte
+    deux choses au-dela de son sujet : il gouverne **egalement** les quatre structures que `nadia-prof`
+    peut choisir, donc il n'attend pas son arbitrage et ne le prejuge pas ; et il refuse d'imposer une
+    forme (interdire `aria-hidden` sur un conteneur) pour ne refuser que le defaut (du texte inaudible),
+    parce que la forme aurait ete fausse en general. Ce n'est pas une regle ArchUnit, le compte reste a
+    28 avec sa methode.

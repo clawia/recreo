@@ -295,19 +295,40 @@ Et dans le cas a quatre propositions, qui est celui de "Le bon verbe", au catalo
 | **D. Le levier couche sous le socle** | **336 px** | zero | Cout en **hauteur**, et la hauteur est deja pleine : releve de `nadia-prof` du 2026-08-11, pli a `y = 640`, bas du cadre a **540..636 px** sur les 8 etats sans indice. **4 px** separent le plus serre de ces etats du pli. Une bande de 12 a 24 px l'y fait passer |
 | **E. Le levier dans le cadre de 8 px du cabinet** | **8,00 px** | **zero** | Reste entierement dans la boite du cabinet, ne deborde rien. Les dimensions entrent dans les cinq selecteurs a zero `px` de `CabinetDeLaMachineTest`, avec le piege d'ordre que j'ai deja documente (un selecteur ajoute avant `.cabinet-bandeau::before` rend le jeu fautif rouge pour la mauvaise raison) |
 
-Cout de la piste B, chiffre sur le cas le plus serre reellement servi - `mangeons` de "Le bon verbe",
-**156,02 px de glyphes dans une boite de 152,00 px**, soit **-2,01 px** de chaque cote, qui est la
-**seule reserve** que `nadia-prof` ait maintenue sur ce chantier :
+**Amendement du 2026-08-12, deux de mes chiffres corriges. Trouve en reconciliant avec
+`proposition-ines-meuble.md`, sur ma propre erreur.** Ce tableau portait deux fautes distinctes, et
+elles allaient dans le meme sens - elles noircissaient la piste B.
 
-| N cede au flanc | 3 colonnes | 2 par rangee | Marge sur `mangeons` |
+1. **Erreur d'arithmetique.** Je retranchais `N/2` a la marge **par cote**, alors qu'un retrecissement
+   de boite de `N/2` se partage entre les **deux** cotes : la marge par cote perd `N/4`. Mes trois
+   valeurs de marge etaient donc surestimees d'un facteur 2. Les largeurs de colonne, elles, etaient
+   justes - `ines-design` les a remesurees sur un rendu Chrome reel et trouve exactement mes valeurs
+   derivees.
+2. **Erreur de fait, plus grave.** Le `-2,01 px` que je donnais comme etat courant et comme "seule
+   reserve maintenue" est **perime depuis le 2026-08-11**. `nadia-prof` a leve ce motif a son quatrieme
+   audit : *"zero debordement, zero sous 2,0 px, minimum 2,86 px sur `mangeons`"*, apres la correction
+   de S8-5 (l'exception de police a 1,875 rem). La reserve qu'elle maintient est **le pli**, et lui
+   seul. J'ai cite un chiffre refuse comme s'il etait l'etat livre.
+
+**Etat courant, verifie a la source** (`FICHE-bandit-manchot-additions-cp.md`, quatrieme audit, releve
+de `nadia-prof` a 360 x 640) : `mangeons` mesure **146,27 px de glyphes dans une boite de 152,00 px**,
+soit **+2,86 px** de chaque cote. C'est le minimum des **100 emplacements de proposition** des 25 items
+de "Le bon verbe", donc le cas le plus serre du catalogue.
+
+Tableau corrige. La marge par cote vaut `(boite - 146,27) / 2` ; la boite a deux par rangee vaut
+`160 - b` ou `b` est l'epaisseur d'un flanc, celle a trois colonnes `(336 - 2b - 32) / 3`.
+
+| Flanc `b` | 3 colonnes | 2 par rangee | Marge sur `mangeons` |
 |---|---|---|---|
-| 0 (etat livre) | 96,00 px | 152,00 px | **-2,01 px** |
-| 12 px | 92,00 px | 146,00 px | **-8,01 px** |
-| 20 px (largeur de la forme deja refusee comme illisible) | 89,33 px | 142,00 px | **-12,01 px** |
-| 32 px (2 rem, la hauteur du bandeau) | 85,33 px | 136,00 px | **-20,01 px** |
+| 8 px (etat livre) | 96,00 px | 152,00 px | **+2,86 px** |
+| 14 px | 92,00 px | 146,00 px | **-0,14 px** |
+| **20 px (1,25 rem, propose par `ines-design`)** | **88,00 px** | **140,00 px** | **-3,13 px** |
+| 26 px | 84,00 px | 134,00 px | **-6,13 px** |
+| 33,5 px (2,09 rem, plafond annonce) | 79,00 px | 126,50 px | **-9,88 px** |
 
 Le plancher de cible tactile (44 px) survit a tous ces cas ; ce n'est pas lui qui borne. **Ce qui borne
-est un debordement de glyphes deja negatif, que la piste B multiplie par 4 a 10.**
+est une marge de 2,86 px que le sprint 8 a paye un increment entier pour obtenir, et que la piste B
+depense en entier a partir de 14 px de flanc.**
 
 ### 6.c Ce que je recommande d'examiner, et pourquoi ce n'est pas la meme forme
 
@@ -322,11 +343,17 @@ n'est pas une question d'architecture**, et `ADR-0025` a deja declare cette fami
 automate de ce depot. Elle est a `ines-design` pour la forme et a `nadia-prof` pour le verdict. Ce que
 j'apporte est le budget, et le fait que **c'est le seul budget disponible sans payeur**.
 
-**Deux refus fermes, sur des chiffres et non sur un gout** : la piste B, parce qu'elle aggrave de 4 a
-10 fois le seul debordement que `nadia-prof` a nomme ; la piste D, parce que 4 px separent le pli de
-l'etat le plus serre qui le respecte encore. La piste C est refusee aussi, et son motif est different :
-elle vole l'appui d'une colonne **et aucun garde-fou ne le dirait**. Si elle etait retenue malgre tout,
-elle demanderait une clause neuve avant la premiere ligne de CSS.
+**Deux refus fermes, sur des chiffres et non sur un gout** : la piste B au-dela de 14 px de flanc,
+parce qu'elle depense la marge de 2,86 px que le sprint 8 a payee et remet `mangeons` en debordement ;
+la piste D, parce que 4 px separent le pli de l'etat le plus serre qui le respecte encore. La piste C
+est refusee aussi, et son motif est different : elle vole l'appui d'une colonne **et aucun garde-fou ne
+le dirait**. Si elle etait retenue malgre tout, elle demanderait une clause neuve avant la premiere
+ligne de CSS.
+
+**Section 8 ci-dessous : cette recommandation A + E est retiree le meme jour, apres lecture de
+`proposition-ines-meuble.md`.** Elle ne repondait pas au refus de `nadia-prof`, et la piste
+d'`ines-design` - le levier a l'interieur d'une bordure elargie - est meilleure que la mienne sur ce
+point precis. Ce qui subsiste de mon apport est le **budget**, pas le mecanisme.
 
 ## 7. Verdict de faisabilite
 
@@ -343,4 +370,143 @@ elle demanderait une clause neuve avant la premiere ligne de CSS.
   qu'aucun automate de ce depot ne jugera.
 - **Ne pas coder la mecanique avant l'arbitrage.** Ce lot ne modifie aucun fichier de `src/main`.
 
-`mvn -B verify` sur l'arbre de ce lot, JDK 21.0.10 : **BUILD SUCCESS, 374 tests, 0 echec.**
+## 8. Reconciliation avec `proposition-ines-meuble.md` (2026-08-12) - son mecanisme, mon budget
+
+`ines-design` propose une piste que mon inventaire ne contenait pas, et il faut lui rendre ce qui lui
+revient : **elargir la bordure de `.cabinet` sur les flancs seulement, le levier vivant a l'interieur de
+cette epaisseur, sans jamais depasser le bord exterieur peint.** Elle le verifie au pixel : boule a
+`x = 346`, bord exterieur a `x = 347`, page a `x = 348`.
+
+### 8.a Son mecanisme est meilleur que le mien, et je retire A + E
+
+Ma piste A faisait du rembourrage du `.container` le **payeur unique** d'un flanc, ce que `nadia-prof`
+refuse (C1). Je recommandais A + E en presentant les 8 px de cadre comme un second payeur. **C'est
+faux, et je le corrige** : E n'enleve pas un seul pixel au debordement dans le rembourrage. Le refus de
+`nadia-prof` porte sur l'effet rendu - le contenu qui touche le bord de l'ecran sur un flanc - et non
+sur une comptabilite. A + E ne repond donc pas a son refus, et **il n'existe aucun second payeur a
+360 px**, pour la raison demontree en 6.a : les 360 px se referment sans reste.
+
+Sa piste, elle, ne touche pas le rembourrage **du tout** : le levier occupe une zone que `.cabinet`
+peint deja. Elle repond au refus au lieu de le contourner. **Je retiens son mecanisme.**
+
+### 8.b Ses chiffres et les miens parlent du meme etat, et sa valeur ne passe pas
+
+Sa formule et la mienne sont la meme, et ses deux mesures Chrome confirment ma derivation **au
+centieme** : a `b = 20 px`, trois colonnes donnent 88,00 px et deux par rangee 140,00 px. Aucun
+desaccord de methode.
+
+Le desaccord est sur **ce que 140,00 px fait au mot le plus large du catalogue**, et c'est la cellule
+qu'elle a laissee vide dans son propre tableau ("Le bon verbe... hors tableau de `nadia-prof`") :
+
+- `mangeons` mesure **146,27 px de glyphes** (chiffre de `nadia-prof`, quatrieme audit) ;
+- dans une boite de **140,00 px**, il sort donc de **3,13 px de chaque cote** ;
+- `nadia-prof` a **REFUSE** l'increment le 2026-08-11 au matin pour un debordement de **2,02 px**.
+
+**Reponse a la question posee : non, `mangeons` ne survit pas a 140 px.** La piste, a `1,25rem` sur les
+deux flancs, recree le defaut pour lequel l'increment a ete refuse, **1,55 fois plus grand**, sur le mot
+que `nadia-prof` a nomme et sur l'etat de reference qu'`ines-design` a elle-meme choisi.
+
+**Et son plafond de 2,09 rem est derive du mauvais plancher.** 33,5 px est exactement la valeur qui
+amene trois colonnes a 79,00 px, le plancher de "Le bon son". Ce calcul est juste, mais il porte sur la
+disposition **a trois colonnes**, qui n'est pas la contrainte serree : la contrainte est la disposition
+**a quatre propositions en 2 x 2**, que `nadia-prof` a explicitement laissee hors de son tableau de
+planchers en la renvoyant a une saisine de `camille-po` avec moi. Le plafond reel est **quatre fois plus
+bas** que celui qu'elle annonce.
+
+### 8.c Le budget reel, sous les deux lectures possibles du critere de `nadia-prof`
+
+Sa phrase de cloture est *"zero debordement, zero sous 2,0 px, minimum 2,86 px"*. Le `2,0 px` y est
+soit un **plancher** qu'elle applique, soit un **constat** de ce qui a deja ete accepte. Les deux
+lectures donnent des budgets differents, et c'est a elle de dire laquelle est la bonne - je chiffre les
+deux.
+
+| Contrainte | Flanc maximal, **les deux flancs** | Flanc maximal, **un seul flanc** |
+|---|---|---|
+| marge >= 2,0 px (lecture "plancher") | **9,73 px** (0,608 rem) | **11,46 px** (0,716 rem) |
+| marge >= 0 (lecture "constat", aucun debordement) | **13,73 px** (0,858 rem) | **19,46 px** (1,216 rem) |
+| valeur demandee par `ines-design` | 20,00 px (1,25 rem) | - |
+
+Trois colonnes restent au-dessus de leur plancher dans **tous** ces cas (92,18 px au pire contre 79 px
+exige, marge 13,18 px) : la disposition a trois colonnes n'est jamais ce qui borne.
+
+### 8.d La troisieme piste : un seul flanc, et la valeur vient de la contrainte
+
+**Son levier vit sur le flanc droit** (`right: -1.25rem`). Le flanc gauche elargi ne porte rien.
+**12 px des 24 px qu'elle demande n'achetent aucun levier** - c'est le seul point de son chiffrage qui
+soit un pur gaspillage, et le corriger double la largeur disponible pour un cout de colonnes identique.
+
+Ma recommandation, donc :
+
+1. **Elargir un seul flanc** - `border-right-width`, `border-left-width` inchange. C'est son mecanisme,
+   a la moitie du prix.
+2. **Prendre la valeur de la contrainte, pas d'un plancher voisin.** Sous la lecture "plancher" :
+   `0,716rem` (11,46 px). Sous la lecture "constat" : `1,216rem` (19,46 px), et la marge de `mangeons`
+   tombe alors a **0,00 px** exactement - les glyphes affleurent le bord de leur boite. Aucune valeur
+   au-dessus n'est disponible sans toucher a autre chose.
+3. **Consequence sur sa boule** : elle la dessine a 1,125 rem (18 px). Sous la lecture "constat", **sa
+   boule passe telle quelle** dans les 19,46 px. Sous la lecture "plancher", elle doit descendre a
+   environ 10 px, et c'est la que sa question de lisibilite se repose - avec, cette fois, les 80 px de
+   hauteur que le flanc lui donne et que le fronton n'avait pas.
+
+**Une quatrieme voie existe, et elle n'est ni la sienne ni la mienne** : le mot. La saisine ouverte par
+`nadia-prof` sur la disposition de "Le bon verbe" est adressee a `camille-po` et a moi. **Si le mot le
+plus large de ce paquet descend a 136,00 px** au lieu de 146,27, l'elargissement symetrique a `1,25rem`
+d'`ines-design` passe integralement, avec 2,0 px de marge. `mangeons` est **10,27 px trop large**, et
+c'est tout ce qui separe sa proposition complete de l'acceptation. Ce n'est pas une decision
+d'architecture : c'est un arbitrage de contenu, et je le remonte avec le chiffre.
+
+### 8.e Reponse sur les selecteurs (son point 4.3)
+
+**Oui pour les trois entrees**, `.cabinet-levier`, `.cabinet-levier::before` et
+`.cabinet-levier::after`, dans `SELECTEURS_DU_CABINET`. Trois precisions, dont une qui bloque son CSS
+tel qu'ecrit :
+
+1. **La regle de morsure refondue sur mon lot `s10-theo-archi` rend l'ordre sans effet** : les
+   selecteurs fautifs sont desormais rassembles avant l'echec, et `chaqueSelecteurEpingleEstEprouveParLeJeuFautif`
+   derive son attente de la liste. Le piege que j'avais documente est ferme, **et il se retourne en
+   obligation** : un selecteur ajoute a la liste sans son bloc fautif rend le test rouge en le nommant.
+   Les trois selecteurs entrent donc avec **trois blocs a ajouter au jeu fautif**
+   `contreexemple/CabinetDeLaMachineTest/dimension-en-pixels/`, dans le meme geste.
+2. **Son `.cabinet-levier::before` ne passe pas en l'etat** : il declare `border-radius: 999px`. La
+   regle refuse toute sous-chaine `px` dans le corps d'un selecteur epingle - c'est un rouge, pas une
+   nuance. `border-radius: 0,1875rem` (la moitie de la largeur declaree du fut) donne la meme forme
+   d'extremites arrondies. Sa verification "aucune sous-chaine `px`" portait sur `.cabinet`, pas sur ses
+   pseudo-elements.
+3. **La liste est enumeree, et elle est en train de se perimer** : son visage, son enseigne et ses
+   etoiles de socle ajoutent **six** selecteurs de decor de cabinet (`.cabinet-visage` et ses deux
+   pseudo-elements, `.cabinet-enseigne`, `.cabinet-socle::before`, `::after`) qui, hors de la liste,
+   echapperaient au controle sans qu'aucun rouge le dise. Le bon correctif n'est pas de les ajouter un
+   par un : c'est de **deriver la liste** - toute regle maison dont le selecteur nomme une classe
+   commencant par `cabinet`. Je ne l'ecris pas dans ce lot : `CabinetDeLaMachineTest.java` est modifie
+   par mon lot `s10-theo-archi` deja rendu, et le toucher ici creerait un conflit entre deux de mes
+   propres lots. **Je le route a la story du levier**, avec sa forme exacte ci-dessus.
+
+**Ce qui ne demande rien** : `1,25rem` (ou la valeur retenue) sur `border-left/right-width` est en
+`rem`, donc conforme ; `.cabinet-levier` est un frere de `.propositions` et non son ancetre, donc hors
+de la population de `LHabillageNeRogneJamaisUnElementPressableTest` ; et il entre **automatiquement**
+dans celle d'`ADR-0033` le jour ou le gabarit le pose, par derivation en complementaire - sa
+verification manuelle de l'absence de `transition`, d'`animation` et de pseudo-classe interactive sera
+donc refaite par la CI, sans qu'une ligne de test change.
+
+## 9. L'enseigne et le masque : l'inventaire des structures, et la regle qui les gouverne toutes
+
+Sa reserve d'accessibilite est exacte, et le defaut structurel n'est pas l'attribut : c'est **ce a quoi
+il est accroche**. `aria-hidden="true"` est pose sur le **conteneur** `.cabinet-bandeau` parce que, le
+jour ou il a ete ecrit, tout ce que ce conteneur portait etait decoratif. Le jour ou du texte y entre,
+l'attribut devient faux **sans qu'aucune ligne ne change de sens**.
+
+Quatre structures possibles, mesurees. Le choix est a `nadia-prof` ; les couts sont a moi.
+
+| Structure | Cout technique | Ce qu'elle expose, ce qu'elle tait |
+|---|---|---|
+| **1. Le bandeau cesse d'etre masque** | **zero en pixels et en balisage.** Ce que je verifie dans le depot : le visage est un `<span>` **sans aucun texte**, entierement dessine par des pseudo-elements dont le `content` est la chaine vide. Ce que je n'ai pas mesure et que je ne presente donc pas comme mesure : le comportement d'un lecteur d'ecran reel devant un element sans nom accessible. La specification ARIA veut qu'il n'apporte rien a l'arbre ; **une ecoute reelle appartient a `nadia-prof`**, aucun automate de ce depot ne l'a jamais faite | Le nom est annonce. Si la specification dit vrai, aucun bruit n'est ajoute, et l'attribut ne protegeait donc d'aucun bavardage reel |
+| **2. Le masque se resserre sur le decor** : `aria-hidden` quitte le bandeau et va sur `.cabinet-visage` | **zero**, un attribut deplace | Identique a 1 en resultat, **superieur en intention** : le masque nomme desormais ce qui est decoratif au lieu de nommer un conteneur. Il reste juste si quelqu'un met un jour du texte dans le visage. **C'est la structure que je recommande** |
+| **3. L'enseigne sort du bandeau** | **cout en hauteur** : un frere de `.cabinet-bandeau` dans le cabinet est un enfant flex de plus, donc sa hauteur s'ajoute. 4 px separent du pli l'etat le plus serre qui le respecte encore (releve du 2026-08-11) | Le nom est annonce, et le bandeau reste un decor pur - mais c'est la seule des quatre qui touche le budget vertical, celui qui n'a plus de marge |
+| **4. Un texte de rechange masque visuellement**, le bandeau restant `aria-hidden` | 1 classe neuve avec sa regle de feuille (`HabillageDesEcransTest`), **et le nom existe deux fois dans le document** | Le nom est annonce. Prix reel : un texte pedagogique duplique, que `TexteAccentueDesGabaritsTest` verifiera deux fois et qu'une correction future devra changer aux deux endroits |
+
+**Et cette question n'attend pas l'arbitrage pour etre gardee.** Voir `ADR-0035`, livre dans ce lot :
+*aucun texte rendu par le serveur ne vit dans un sous-arbre `aria-hidden`*. La regle est vraie sous les
+quatre structures ; elle refuse exactement la cinquieme, celle que la proposition ecrit aujourd'hui.
+**Le jeu fautif est le balisage d'`ines-design`, repris tel quel** - pas une fixture de ma main.
+
+`mvn -B verify` sur l'arbre de ce lot, JDK 21.0.10 : **BUILD SUCCESS, 378 tests, 0 echec.**

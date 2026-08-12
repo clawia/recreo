@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- ADR-0035, jeu fautif : le balisage de la section 2.2 de proposition-ines-meuble.md, repris tel
+     quel. L'enseigne - le nom de la machine, un texte que nadia-prof pourrait juger porteur de sens -
+     est posee par th:text a l'interieur du bandeau, qui porte aria-hidden="true" depuis S8-1. Le
+     masque etait juste sur le contenu d'hier (une etoile) et devient faux sans qu'aucune ligne ne
+     change de sens. C'est le materiau reel de la question, pas une fixture de ma main. -->
+<div th:fragment="manche" class="ecran-de-jeu"
+     th:attr="data-arrivee=${arriveeParUnGeste} ? 'par-un-geste' : 'sans-geste'">
+    <button type="button" class="btn retour-accueil" data-role="sortie" hx-post="/retour"
+            hx-target="#jeu" hx-swap="innerHTML">Les jeux</button>
+    <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
+    <p class="consigne" th:text="${consigne}"></p>
+    <p class="enonce" th:text="${enonce}"></p>
+    <div class="cabinet">
+        <div class="cabinet-bandeau" aria-hidden="true">
+            <span class="cabinet-visage"></span>
+            <span class="cabinet-enseigne" th:text="${nomEnseigne}"></span>
+        </div>
+        <form class="propositions" th:attr="hx-post=@{'/parties/' + ${jeuId} + '/coups'}"
+              hx-target="#jeu" hx-swap="innerHTML">
+            <button type="submit" class="btn proposition" data-role="action"
+                    th:each="proposition : ${propositions}"
+                    name="propositionChoisie" th:value="${proposition}" th:text="${proposition}"></button>
+        </form>
+        <div class="cabinet-socle" aria-hidden="true"></div>
+    </div>
+</div>
+</body>
+</html>
