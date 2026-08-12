@@ -141,7 +141,97 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Verdict courant - chantier du cabinet (S8-1, S8-2, S8-3), prononce sur l'increment livre, du 2026-08-11
+### Arbitrage prealable au developpement - la forme du meuble : visage, enseigne, boutons colores, levier de flanc, du 2026-08-12
+
+**Ce bloc n'est pas un Done pedagogique.** C'est mon sixieme arbitrage prealable, au titre de
+`squad/README.md` section 10. Rien de ce chantier n'est code : je ne prononce aucun verdict
+d'increment et je n'efface aucun verdict anterieur.
+
+**Ce bloc vaut pour les huit jeux du catalogue** : le meuble est commun. Il porte des mesures qui
+n'existent que sur "Le bon verbe" (le paquet de conjugaison), et celles-la sont reprises dans
+`FICHE-bandit-manchot-conjugaison-present-cm1.md`.
+
+**Mon arbitrage de mecanique du meme jour n'est pas rouvert ici.** Ses douze conditions M1 a M12
+tiennent, sans exception, et aucune n'est renumerotee. Les conditions de ce bloc portent le prefixe
+**F** (forme) et non M : un developpeur qui lit `F3` sait qu'il s'agit de la forme, et aucun numero
+n'est reutilise d'une serie a l'autre.
+
+**Ce que j'arbitre, et ce que je n'arbitre pas.** `DEC-0023` a tranche qu'il y a un levier, un visage
+et une enseigne : je ne rediscute pas cela, je ne detiens pas la porte produit. Ce que je tranche est
+la **forme** de ces trois objets, le texte que l'enfant y lit, et ce que cette forme coute a ce que
+l'enfant lisait deja.
+
+#### 0. Comment j'ai regarde, et ce que je declare degrade
+
+**Degrade sur un point, precis, et je le nomme avant mes chiffres.** Je n'ai pas lance
+l'application aujourd'hui. Rien de ce chantier n'est code : il n'y a aucun meuble redessine a jouer,
+aucun levier a toucher, aucune enseigne a lire a l'ecran. Tout ce que je dis est dit sur des
+proprietes et sur des **candidats que j'ai rendus moi-meme**, jamais sur l'increment.
+
+**Pas degrade** : je n'ai juge aucune de ces six questions sur la description qu'on m'en fait. J'ai
+rendu chaque candidat et je l'ai regarde.
+
+- worktree dedie hors de l'arbre du depot, lignee verifiee par `outils/verifier-lignee.sh` : "le
+  worktree sur la branche 's10-nadia-forme' descend de la lignee de round-two (ancetre commun trouve
+  dans son historique)". `round-two` a `b15bda1` ;
+- **pages candidates rendues a 360 px** par `outils/mesurer-rendu.sh 360 <url> <png>`, chargeant les
+  **deux feuilles reelles du depot** (`vendor/bootstrap.min.css` puis `css/recreo.css`, copiees sans
+  modification) et reproduisant le balisage de `fragments/manche.html` tel qu'il est ecrit dans le
+  depot. Six variantes : la proposition d'`ines-design` telle qu'ecrite, les deux lectures chiffrees
+  par `theo-archi`, et trois traitements du levier hors du mur ;
+- **mesures dans le rendu, jamais a l'oeil** : largeurs de glyphes par `Range.getBoundingClientRect`
+  a la police reelle des propositions a quatre colonnes (30 px, poids 700, pile de polices de Reboot),
+  largeurs de boite par `getBoundingClientRect`, contrastes par la formule WCAG appliquee aux valeurs
+  de la feuille ;
+- **formes jugees sur agrandissement au pixel** (x6, sans interpolation) : le visage, le levier a
+  18 px et a 10 px, la rangee de boutons colores ;
+- **ordre de lecture du document** relu dans `fragments/manche.html` et non suppose ;
+- **le paquet de conjugaison relu item par item** dans son fichier servi, pour les formes verbales
+  disponibles sur les deux items en cause.
+
+**La limite exacte de ma methode d'aujourd'hui, que je nomme plutot que de la laisser deviner.**
+`ines-design` a rendu ses candidats sur le fragment **reellement servi** par l'application ;
+j'ai rendu les miens sur une copie du balisage **lu dans le gabarit**. C'est un cran de moins qu'elle,
+et je le dis. La contre-epreuve que j'ai faite a la place : mes chiffres de largeur de glyphes
+reproduisent **exactement** ceux que `lea-dev` a mesures sur le rendu servi et que j'ai moi-meme
+verifies le 2026-08-11 sur l'application - `mangeons` 146,27 px, `cherchons` 142,67 px, `cherchent`
+139,03 px, `dessinent` 133,94 px, boite de bouton 71,00 px de haut, police 30 px. Quatre valeurs sur
+quatre a la deuxieme decimale. Mon contraste du corps sombre contre l'accent redonne le **3,20:1**
+d'`ines-design` au centieme. Mon banc mesure donc ce que l'application mesure ; il ne remplace pas
+d'avoir joue, et aucun Done ne sortira de ce bloc.
+
+#### 0 bis. Ce que je corrige de mes propres constats, avant de m'appuyer dessus
+
+**A. J'ai failli refuser un nom d'enseigne sur un chiffre faux, et c'est moi qui l'avais estime.**
+En instruisant la question 4, j'ai d'abord ecrit que "La Boite a Bonnes Reponses" ne tiendrait pas
+dans le fronton a une taille lisible. **Mesure faite : elle tient.** A 1,25 rem gras, ce nom fait
+**260,47 px** pour **266 px** libres dans le fronton a bordure de 8 px, visage et rembourrage
+deduits : il passe, avec 5,53 px de reste. Je refuse ce nom en question 4, mais **sur son sens et non
+sur sa largeur**, et je dis le chiffre que j'etais en train de me tromper d'invoquer.
+
+**B. Je ne "corrige" pas mon propre chiffre de 2,86 px vers le haut.** Le 2026-08-11 j'ai mesure les
+deux cotes de `mangeons` separement - **2,86 px** d'un cote, **2,87 px** de l'autre - et j'ai retenu
+**2,86 px**, le plus etroit. Mon banc d'aujourd'hui calcule l'air symetrique et affiche **2,87 px**.
+C'est le meme fait a un arrondi pres, pas une amelioration : **je continue de citer 2,86 px**, la
+valeur la plus defavorable, comme je l'ai ecrite. Un chiffre de garde ne se relit pas a la hausse le
+jour ou il arrange.
+
+**C. Je confirme la correction que `theo-archi` fait de mon chiffre, parce qu'elle est de moi.** Le
+`-2,01 px` qu'il citait comme etat courant est bien **ma "correction" fautive du matin du 2026-08-11**,
+que j'ai moi-meme annulee le meme jour : mon chiffre de refus, `-2,02 px`, etait exact. L'etat courant
+n'est ni l'un ni l'autre : c'est **+2,86 px**, mesure au quatrieme audit sur `bd9a8f0` et remesure
+aujourd'hui. Il a raison de le dire, et ce n'est pas une erreur de sa part : c'est la mienne qui a
+survecu une demi-journee dans une fiche.
+
+**D. Un fait de ma propre condition C1 que je dois relire avant qu'on m'oppose son contraire.** Le
+2026-08-11 j'ai ecrit que le rembourrage lateral de `.container` est "**utilisable pour de la
+decoration, mais jamais comme unique payeur d'un flanc**". `theo-archi` a lu cette phrase comme
+refusant qu'un decor deborde du flanc - et il note lui-meme, dans son constat 2, que ce motif-la
+"n'est pas un fait du depot mais une consequence de mise en page". **La phrase est de moi, donc je dis
+ce qu'elle veut dire** : ce qui est refuse, c'est que la **paroi** du meuble soit faite de ces 12 px,
+parce qu'alors le meuble touche les bords de l'ecran et l'enfant ne voit plus le tour de l'objet. Un
+**ornement** accroche a la paroi n'est pas la paroi. Cette relecture n'assouplit rien : la paroi reste
+interdite de s'y installer, et je le remesure en question 2.
 
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mes deux reserves ouvertes sont
   levees** : la reserve unique de s07 sur la fin du mouvement, et la reserve 6 de "Le bon son" sur la
