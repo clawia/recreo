@@ -233,6 +233,112 @@ parce qu'alors le meuble touche les bords de l'ecran et l'enfant ne voit plus le
 **ornement** accroche a la paroi n'est pas la paroi. Cette relecture n'assouplit rien : la paroi reste
 interdite de s'y installer, et je le remesure en question 2.
 
+#### 1. Question 1 - le visage et la silhouette du levier
+
+**Verdict en une phrase : le visage est accepte dans son principe et REFUSE dans son dessin ; le
+levier est accepte dans son principe et REFUSE dans la forme proposee.** Je dis pour chacun ce que
+j'accepterais, et j'ai regarde les deux plutot que de les lire.
+
+##### 1.a Le visage : ce que j'ai vu en agrandissant, et ce n'est pas un visage
+
+`ines-design` ecrit avoir verifie "en zoomant sur le rendu reel (agrandissement x12)" que le visage
+"se lit sans ambiguite comme deux yeux surmontant des joues rosees, un sourire dessous". **J'ai refait
+ce zoom sur mon propre rendu de sa regle, et je ne vois pas cela.** Trois constats, chacun mesurable
+dans sa regle telle qu'elle l'a ecrite :
+
+1. **Les joues sont plus grosses que les yeux, et de loin.** L'oeil est un disque de `0,3125rem`
+   (5 px). La joue est **la meme forme avec un `spread` de `0,125rem`**, soit 5 + 2 + 2 = **9 px**.
+   Une joue de 9 px sous un oeil de 5 px, en rose vif a 9,27:1 contre le fronton, ne se lit pas comme
+   une joue : elle se lit comme la forme principale, et l'oeil comme un reflet pose dessus. A 360 px,
+   l'objet lu est **deux grosses billes roses a pastille blanche**, pas un visage.
+2. **La bouche est presque invisible.** C'est un arc de bordure de `0,09375rem` (1,5 px) sur 9 px de
+   large, en blanc, entre les deux billes roses. Un trait de 1,5 px est ce que j'ai moi-meme refuse
+   comme "bordure et non paroi" en C1 ; c'est aussi trop peu pour porter le seul element qui fait
+   qu'un visage sourit.
+3. **La joue droite sort de sa propre boite et vient toucher l'enseigne.** `.cabinet-visage` declare
+   `width: 0.9375rem` (15 px), mais la copie d'ombre la plus a droite est posee a `0,9375rem` avec un
+   `spread` de `0,125rem` : elle occupe donc jusqu'a **22 px**, soit **7 px hors de la boite
+   declaree**. Le `gap` du fronton est de 8 px : il en reste **1 px** entre le rose et la premiere
+   lettre du nom. Sur mon agrandissement, le rose touche le jambage du `L` de "Le". Ce n'est pas une
+   question de gout : c'est un decor qui mange l'espace d'un texte que l'enfant doit lire.
+
+**Ce que j'accepte, et c'est la condition F4.** Le visage reste sur le fronton, dessine et immobile.
+Mais l'oeil est **au moins aussi grand que la joue**, la boite declaree du visage **contient toutes
+ses copies d'ombre** pour que l'enseigne garde son `gap` entier, et la bouche est assez epaisse pour
+etre vue a 360 px sans agrandissement. Je rejuge sur une capture, comme aujourd'hui.
+
+**Et je dis pourquoi son immobilite n'est pas un pis-aller.** Un enfant qui echoue trois fois de suite
+devant une machine qui sourit - c'est la premiere objection qu'on pourrait me faire, et elle tombe pour
+une raison precise : **un visage qui ne change jamais ne commente rien.** C'est le visage qui *change*
+qui juge. Un sourire fixe est un trait de carrosserie, comme le sourire d'une locomotive de livre
+d'images. L'immobilite exigee par C4, par M6 clause 2 et par `DEC-0023` point 5 n'est donc pas une
+restriction subie par le visage : **c'est la seule chose qui le rend acceptable**, et le jour ou
+quelqu'un proposera de le faire reagir, ma reponse est deja ecrite.
+
+**Ce que j'ajoute et que personne ne m'a demande : aucun marqueur de genre.** Le visage de la machine
+n'a ni cils, ni noeud, ni cheveux, ni sourcils, ni bouche coloree. Ce n'est pas une precaution
+abstraite : un meuble d'arcade genre est un meuble avec lequel une partie des enfants se reconnait
+moins qu'une autre, pour rien. La regle d'`ines-design` telle qu'ecrite n'en porte aucun, et c'est
+bien ; je l'ecris comme condition pour que ca reste vrai apres le prochain retouchage.
+
+##### 1.b Le levier : mon motif n'est pas leve, et voici ce que j'exige
+
+**Je redis d'abord ce qui est leve et ce qui ne l'est pas, pour que personne n'ait a le reconstituer.**
+Ma condition C6 interdisait toute manette ou bras lateral. `DEC-0023` point 3 leve cette condition,
+par decision de l'utilisatrice, en citant mon propre principe - je ne detiens pas la porte produit.
+**Mon second motif est eteint** par l'immobilite : il n'y a pas de geste de glissement a executer, donc
+pas d'obstacle de motricite fine. **Mon premier motif n'est pas eteint, et `DEC-0023` l'ecrit
+lui-meme** : *"un enfant peut tenter de toucher ou de tirer une forme qui ressemble a un levier, et
+rien ne se passera. Ce risque residuel n'est pas tranche par cette decision."* C'est donc bien a moi,
+et voici ma reponse.
+
+**Ce qui fabrique la faute n'est pas que le levier soit immobile : c'est qu'il soit important.** Un
+enfant de 6 ans n'attribue pas un echec a un objet qu'il a a peine remarque. Il l'attribue a l'objet
+que la machine lui a designe comme etant *la chose a manipuler*. Et c'est exactement ce que la regle
+proposee fait, mesure sur mon rendu :
+
+| Objet du meuble | Contraste contre le corps du cabinet `#081c2c` |
+|---|---|
+| **le levier, en `--recreo-accent-texte` (blanc pur)** | **17,32:1** |
+| un bouton de reponse vert `#1f7a3d` | 3,22:1 |
+| un bouton de reponse rouge `#c0392b` | 3,18:1 |
+| un bouton de reponse aujourd'hui (`--recreo-accent`) | 3,20:1 |
+| un bouton de reponse ambre `#8a5d00` | 3,01:1 |
+| un bouton de reponse violet `#6c3fa8` | 2,40:1 |
+
+**Le seul objet du meuble qui ne fait rien serait cinq fois plus contraste que ceux qui font tout.**
+Le blanc de `--recreo-accent-texte` n'est pas une couleur libre dans cette application : c'est le blanc
+du texte des boutons, celui de l'etoile du fronton, celui de la coche du verdict. Le donner a une forme
+inerte, c'est lui promettre l'importance de tout ce qui est blanc ailleurs. C'est un motif de refus a
+lui seul, et il est chiffre.
+
+**Et j'ai regarde la silhouette, aux deux tailles.** Rendu a 360 px puis agrandi x6, sans
+interpolation :
+
+| Ce que j'ai rendu | Ce que je lis |
+|---|---|
+| boule 18 px sur fut 6 px, blanche, **dans la paroi elargie** | une **epingle** plantee dans le flanc, ou le curseur rond d'une barre de defilement. Une tete ronde sur une tige fine, sur fond de paroi : c'est la silhouette universelle d'une poignee qui **glisse** |
+| boule 10 px sur fut 4 px, blanche, **dans la paroi au plancher** | un **thermometre**, ou une aiguille. La boule ne fait plus que 2,5 fois le fut : il n'y a plus de tete, il y a un renflement |
+| boule 18 px sur fut 8 px, teinte acier, **hors de la paroi** | une **poignee**. La boule fait 2,25 fois le fut, elle est posee au bout d'un bras qui sort du meuble, et l'objet se lit comme quelque chose qu'on attrape |
+
+Je ne donne pas ces trois lignes comme un cahier des charges de dessin - ce n'est pas mon metier et je
+ne dicte pas un rapport de diametres. Je les donne comme **la seule donnee qui existe aujourd'hui** sur
+la question qu'`ines-design` et `theo-archi` se posent tous les deux sans pouvoir y repondre : personne
+n'avait regarde une boule de 10 px. Je l'ai regardee, et elle ne se lit pas comme un levier.
+
+**Le pire des trois est l'epingle, et c'est celui qui a le plus de chances d'etre livre.** Une tete
+ronde sur une tige, verticale, blanche, contre une paroi : c'est un curseur de defilement. Un enfant
+qui prend cet objet pour un curseur ne va pas *presser* et attendre, il va **glisser le doigt** - le
+geste exact dont j'avais fait mon second motif, et qui revient par la forme apres avoir ete evacue par
+l'immobilite. C'est la raison pour laquelle je ne me contente pas de la teinte et j'exige aussi la
+silhouette.
+
+**Conditions F1 a F3, et ce dont je reste seule juge.** Aucun automate de ce depot ne voit une
+silhouette (`ADR-0025`, et `theo-archi` l'ecrit lui-meme : *"Ce que je ne dis pas : que le manche
+ressemble a un manche, qu'il soit lisible a 360 px, ou qu'un enfant comprenne qu'on n'y touche
+pas"*). Sur ce point je suis le garde-fou, et je le suis en regardant une capture. Je m'engage a
+rejuger sur capture avant tout Done, et non a redemander un dessin indefiniment.
+
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mes deux reserves ouvertes sont
   levees** : la reserve unique de s07 sur la fin du mouvement, et la reserve 6 de "Le bon son" sur la
   distinction de l'explication. Deux reserves nouvelles et datees sont ouvertes en section 8. Aucun
