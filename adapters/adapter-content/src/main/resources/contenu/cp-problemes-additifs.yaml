@@ -35,7 +35,7 @@ items:
     bonneReponse: "9"
     distracteurs: ["1", "5"]
     indice: "Elle avait des jetons et elle en gagne d'autres : additionne 4 et 5."
-  - enonce: "Le clown a 7 ballons et en gonfle 2. Combien en a-t-il ?"
+  - enonce: "Le clown a 7 ballons et en gonfle 2 de plus. Combien en a-t-il ?"
     bonneReponse: "9"
     distracteurs: ["5", "2"]
     indice: "Il avait des ballons et il en gonfle d'autres : additionne 7 et 2."
@@ -47,7 +47,7 @@ items:
     bonneReponse: "9"
     distracteurs: ["7", "1"]
     indice: "Il avait des cartes et il en gagne une de plus : additionne 8 et 1."
-  - enonce: "Le jardinier a 6 fleurs et en plante 2. Combien en a-t-il ?"
+  - enonce: "Le jardinier a 6 fleurs et en plante 2 de plus. Combien en a-t-il ?"
     bonneReponse: "8"
     distracteurs: ["4", "2"]
     indice: "Il avait des fleurs et il en plante d'autres : additionne 6 et 2."
