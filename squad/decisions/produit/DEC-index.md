@@ -25,6 +25,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0019 | Perimetre du sprint 9 : quatre lignes textuelles de mathematiques CP ouvertes, denombrement et monnaie differes sous le gel de rendu | s09 | 2026-08-12 | Acceptee, amendee le 2026-08-12 (motifs des lignes denombrement et monnaie corriges sur avis de theo-archi, conclusion inchangee) |
 | DEC-0020 | S9-2 debloquee : nombreDeManches abaisse a 7 pour bandit-manchot-complements-10-cp, plutot qu'un elargissement des formes d'items | s09 | 2026-08-12 | Acceptee |
 | DEC-0021 | La regularite de magnitude des additions de "resoudre un probleme" (reserve de refus sur S9-4) est reportee en story de backlog, pas un geste de ce sprint | s09 | 2026-08-12 | Acceptee |
+| DEC-0022 | Perimetre du sprint 10 : le manche du bandit manchot est dessine et immobile, trois demandes de l'utilisatrice ecartees avec leurs declencheurs de reouverture | s10 | 2026-08-12 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0002` a ete amendee le 2026-08-04, a la suite de la
 relecture pedagogique de `nadia-prof` sur le refus de `bandit-manchot-additions-cp` - ajout d'une

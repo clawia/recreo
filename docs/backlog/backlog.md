@@ -2832,3 +2832,185 @@ instruire pour un sprint futur, une fois le correctif en cours livre et le fichi
   unitaire, regle ArchUnit ou autre) ni un seuil quelconque ne sont de mon ressort - ici il n'y a meme
   pas de seuil a fixer, la propriete attendue est une egalite stricte entre ce que le fichier declare
   et ce que la mecanique sert.
+
+## Sprint 10 - Le manche du bandit manchot est dessine et immobile, chantier visuel borne a une seule feuille de style
+
+**Contexte et decision de perimetre** : l'utilisatrice avait fait arreter tout travail de design a
+l'ouverture du sprint 9 (voir "Autres intentions" ci-dessus) apres avoir juge insatisfaisant le
+rendu CSS de l'increment du sprint 8. Elle rouvre ce chantier et le dedie a la forme du bandit
+manchot. `DEC-0022-perimetre-sprint-10-le-manche-est-dessine-et-immobile-trois-demandes-ecartees.md`
+tranche que, sur les cinq elements de sa demande initiale, deux sont deja livres (la machine
+dessinee au centre avec la question au-dessus depuis S8-1, les rouleaux qui balaient a la question
+suivante depuis s07) et que les trois autres sont ecartes - reessayer la meme question apres une
+mauvaise reponse, un manche qui s'actionne a la bonne reponse, un message d'erreur sous la machine
+- chacun avec son declencheur de reouverture ecrit dans la decision. Le perimetre technique retenu
+tient dans un seul fichier de production,
+`adapters/adapter-web/src/main/resources/static/css/recreo.css` ; `fragments/manche.html` n'est pas
+modifie par ce sprint.
+
+**Le fait qui commande le dimensionnement de S10-1, repris dans ses criteres** : `nadia-prof` a
+mesure le 2026-08-11 que le cabinet ajoute 40 px de hauteur, sous sa cible de 100 px et sa limite
+dure de 150 px - mais sa reserve 1 (defaut de pli, `DEC-0016`) est deja serree : le bas du cadre
+passe sous le pli sur 11 etats sur 30 de "Le bon petit mot" et 24 sur 33 de "Le bon verbe", soit
+4 px de marge sur le meilleur etat du pire jeu. Aucune des quatre stories de ce sprint n'aggrave
+cette reserve.
+
+### S10-1 - Un manche dessine et immobile sur le fronton de la machine
+
+- **Besoin** : en tant qu'enfant qui joue au bandit manchot, je veux voir un manche dessine sur le
+  fronton de la machine, afin de mieux reconnaitre que je suis devant une vraie machine, sans
+  qu'elle ait besoin de bouger toute seule pour me le montrer.
+- **Competence programme visee** : transverse - habillage de la mecanique, aucun contenu
+  pedagogique (`ADR-0004` : la mecanique ne connait aucune matiere).
+- **Criteres d'acceptation** :
+  - Etant donne les fichiers modifies par cette story, quand on relit le diff livre, alors un seul
+    fichier de production change,
+    `adapters/adapter-web/src/main/resources/static/css/recreo.css` ; `fragments/manche.html` n'est
+    pas modifie.
+  - Etant donne le manche, quand on relit la feuille de style, alors il est declare sur un
+    pseudo-element de `.cabinet-bandeau` (`::after` ou equivalent), en `position: absolute`, donc
+    hors du flux du document.
+  - Etant donne la hauteur et la largeur totales que le cabinet ajoute a l'ecran de manche
+    (mesurees par `nadia-prof` le 2026-08-11 a 40 px de hauteur sur les quatre jeux du catalogue),
+    quand on les remesure apres cette story par `outils/mesurer-rendu.sh` sur les memes quatre
+    jeux, alors elles sont strictement identiques : le manche ajoute 0 px de hauteur et 0 px de
+    largeur au document rendu. C'est un critere d'acceptation et non une intention, motive par la
+    reserve 1 de `nadia-prof` (4 px de marge sur le meilleur etat du pire jeu, voir le contexte de
+    ce sprint).
+  - Etant donne la forme dessinee (embase, fut, tete), quand on la mesure sur une capture a 360 px,
+    alors elle est geometriquement symetrique par rapport a un axe vertical central : pour tout
+    point du dessin a une distance *d* a gauche de cet axe, un point symetrique existe a la meme
+    hauteur et a la meme distance *d* a droite. *Motif* : cette symetrie rend geometriquement
+    impossible la lecture "manette a demi baissee", une manette abaissee etant par nature
+    dissymetrique.
+  - Etant donne l'embase du manche, quand on la mesure, alors elle est pleine et continue sur toute
+    sa largeur (aucune ouverture, aucun segment manquant) et centree sur le fronton, sans depasser
+    lateralement du cabinet. *Motif* : une embase pleine et centree interdit la lecture "bras
+    lateral", qui se lirait comme une piece rattachee sur le cote et non au centre.
+  - Etant donne le manche, quand on relit la feuille de style, alors aucune regle ne lui declare
+    `animation`, `transition`, ni de pseudo-classe `:hover`, `:focus` ou `:active` propre (condition
+    C3 de `nadia-prof`, "la machine attend, elle ne decide pas",
+    `FICHE-bandit-manchot-additions-cp.md`, arbitrage du 2026-08-11, section 2 - sa propre
+    "charniere de tout [son] avis").
+  - Ce que cette story ne tranche pas : la forme exacte du manche au-dela des deux contraintes
+    geometriques ci-dessus (`ines-design` propose) ; la clause exacte du garde-fou qui protegera
+    cette propriete dans le temps (S10-4, `theo-archi`) ; et le jugement final sur la silhouette,
+    qui appartient a `nadia-prof` en arbitrage prealable avant toute ligne de code
+    (`squad/README.md` section 10, cet ecran etant deja accorde).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que la silhouette du manche soit effectivement reconnue comme un manche par un
+    enfant sans suggerer un geste de traction (veto deja pose sur tout geste de traction, confirme
+    deux fois le 2026-08-10) ; que l'ajout serve la comprehension de la machine sans distraire de la
+    lecture des propositions.
+- **Lien decision** :
+  `DEC-0022-perimetre-sprint-10-le-manche-est-dessine-et-immobile-trois-demandes-ecartees.md` ;
+  `FICHE-bandit-manchot-additions-cp.md`, arbitrage du 2026-08-11 (condition C3) et veto du
+  2026-08-10 (geste de traction).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (proposition de forme d'`ines-design`
+  requise, arbitrage prealable de `nadia-prof` avant developpement).
+
+### S10-2 - Renforcer l'aspect machine du cabinet, a cout nul en hauteur
+
+- **Besoin** : en tant qu'enfant qui joue au bandit manchot, je veux que la machine ait un peu de
+  relief (une ombre, une arete, un socle plus marque), afin de mieux la reconnaitre comme un vrai
+  objet plutot que comme un simple aplat de couleur.
+- **Competence programme visee** : transverse - habillage de la mecanique, aucun contenu
+  pedagogique (`ADR-0004`).
+- **Criteres d'acceptation** :
+  - Etant donne le cabinet affiche, quand on le relit dans la feuille de style, alors il porte une
+    ombre externe a decalage vertical seul (aucun decalage horizontal) sur `.cabinet`.
+  - Etant donne le fronton (bandeau haut) du cabinet, quand on le mesure, alors une arete basse
+    marque visuellement sa limite inferieure, sans que la hauteur du bandeau change (32 px
+    aujourd'hui, conservee).
+  - Etant donne le socle (bande basse) du cabinet, quand on le mesure, alors il porte une plinthe
+    visuellement plus sombre que le reste du socle, sans que la hauteur du socle change (16 px
+    aujourd'hui, conservee).
+  - Etant donne la hauteur totale que le cabinet ajoute a l'ecran de manche, quand on la remesure
+    apres cette story sur les quatre jeux du catalogue, alors elle reste strictement egale a 40 px :
+    aucun des trois ajouts (ombre, arete, plinthe) ne coute un pixel de hauteur ni de largeur.
+  - Etant donne le contour ferme du cabinet deja valide par `nadia-prof` (C1, epaisseur d'au moins
+    8 px sur chacun des quatre cotes), quand on le remesure apres cette story, alors il n'est pas
+    reduit.
+  - Ce que cette story ne tranche pas : le rendu exact (couleurs, valeurs d'ombre, forme de
+    l'arete et de la plinthe) - `ines-design` propose, `nadia-prof` juge.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que ce relief renforce effectivement la lecture "objet" plutot que "decor plat"
+    pour un enfant de CP ou de CM1.
+- **Lien decision** :
+  `DEC-0022-perimetre-sprint-10-le-manche-est-dessine-et-immobile-trois-demandes-ecartees.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (proposition de forme d'`ines-design`
+  requise).
+
+### S10-3 - Le contour du cabinet se distingue nettement des colonnes (reserve 2 de nadia-prof)
+
+- **Besoin** : en tant qu'enfant qui distingue mal les couleurs, je veux que le contour de la
+  machine se voie clairement, different des cases de reponse a l'interieur, afin de reconnaitre la
+  fenetre de la machine et pas seulement un aplat bleu uniforme.
+- **Competence programme visee** : transverse - lisibilite et accessibilite visuelle, aucun contenu
+  pedagogique (meme categorie que S0-5, S1-9, S2-1, S7-3, S8-3). Cette story ne fait bouger aucune
+  ligne de `squad/programme/MATRICE-couverture.md`.
+- **Criteres d'acceptation**, repris de la reserve 2 de `nadia-prof`
+  (`FICHE-bandit-manchot-additions-cp.md`, arbitrage du 2026-08-11, section 8) :
+  - Etant donne la couleur du cadre du cabinet et celle des colonnes, quand on calcule le rapport de
+    contraste entre les deux sur leurs luminances relatives, alors il est d'au moins 3,20:1 (contre
+    1,71:1 mesure par `nadia-prof` le 2026-08-11 entre `#1d4b6b` et `#2e6f9e`).
+  - Etant donne la nouvelle variable `--recreo-cabinet-fond` introduite par cette story, quand on
+    relit son usage dans la feuille de style, alors elle est distincte de `--recreo-entete-fond` et
+    ne la remplace pas : aucune regle qui utilise `--recreo-entete-fond` n'est modifiee par cette
+    story, pour ne pas rouvrir la contrainte du crayon de `favicon.ico`.
+  - Etant donne la geometrie des colonnes mesuree par `nadia-prof` le 2026-08-11 (largeur de 96 px
+    ou 152 px selon le jeu, `gap` de 16 px sur les deux axes, hauteur de 74 px, rembourrage lateral
+    de 20 px), quand on la remesure apres cette story sur les quatre jeux du catalogue, alors elle
+    est strictement identique : cette story ne change qu'une couleur.
+  - Etant donne le contraste du cabinet contre la page (`#f4f7fb`), mesure par `nadia-prof` a
+    9,25:1, quand on le remesure apres cette story, alors il ne diminue pas.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que la nouvelle couleur du cadre reste percue comme une machine par un enfant, et
+    que le contraste corrige rende effectivement la "fenetre" du cabinet lisible pour un enfant qui
+    distingue mal les couleurs.
+- **Lien decision** :
+  `DEC-0022-perimetre-sprint-10-le-manche-est-dessine-et-immobile-trois-demandes-ecartees.md` ;
+  `FICHE-bandit-manchot-additions-cp.md`, arbitrage du 2026-08-11, section 8, reserve 2.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (proposition de forme d'`ines-design`
+  requise pour la valeur de couleur retenue).
+
+### S10-4 - Un garde-fou neuf empeche qu'un habillage change d'etat par transition ou par survol
+
+- **Besoin** : en tant qu'enfant qui joue au bandit manchot aujourd'hui et dans les mois qui
+  suivent, je veux que la machine reste un meuble immobile chaque fois que j'y reviens, meme si
+  l'application a change entretemps, afin qu'elle ne se mette jamais a agir toute seule sans que
+  quelqu'un l'ait decide et fait valider par ma maitresse.
+- **Competence programme visee** : transverse - garde-fou de non-regression sur un acquis
+  pedagogique deja accorde, aucun contenu pedagogique nouveau.
+- **Criteres d'acceptation** :
+  - Etant donne la feuille de style servie aujourd'hui, quand le garde-fou neuf
+    `UnHabillageNeChangeJamaisDEtatTest` s'execute, alors il constate qu'aucune regle maison ne
+    declare de `transition`, de `:hover`, de `:focus` ni d'`:active` propre sur une classe
+    d'habillage (une classe qui n'est ni un element pressable ni son pseudo-element decoratif) :
+    constat nul aujourd'hui, et le garde-fou l'epingle comme tel plutot que de le laisser passer en
+    silence, sur le meme modele que les clauses a population vide d'`ADR-0026`.
+  - Etant donne une mutation qui ajoute une regle `transition` ou une pseudo-classe interactive
+    changeant une propriete visuelle sur une classe d'habillage (le cabinet, son bandeau, son
+    socle, ou le manche ajoute par S10-1), quand `mvn -B verify` s'execute, alors
+    `UnHabillageNeChangeJamaisDEtatTest` echoue, avec un message qui nomme la classe et la
+    propriete fautives.
+  - Etant donne les regles existantes sur les elements pressables (`.btn`, `.proposition`) et sur
+    leur pseudo-element decoratif (le voile de mouvement des colonnes), quand ce garde-fou
+    s'execute, alors il ne les fait pas echouer : seule une classe d'habillage est visee, jamais un
+    element pressable ni son pseudo-element decoratif.
+  - Etant donne le compte de regles ArchUnit et le compte de cas de test du depot avant cette
+    story, quand cette story est livree, alors le premier est inchange (ce garde-fou n'est pas une
+    `ArchRule`, meme raison qu'`ADR-0026` et `ADR-0030`, ni le CSS ni le gabarit ne sont visibles au
+    bytecode) et le second augmente du nombre de cas neufs, mesure et non estime.
+  - Ce que cette story ne tranche pas : le nom exact des clauses au-dela du nom du fichier deja
+    fixe, leur perimetre derive precis, et la question de savoir si ce garde-fou est une classe
+    neuve ou un amendement d'un test existant - decisions de `theo-archi`.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que le cabinet et le manche restent effectivement percus comme immobiles sur le
+    rendu reel, en jouant (condition C3).
+- **Lien decision** :
+  `DEC-0022-perimetre-sprint-10-le-manche-est-dessine-et-immobile-trois-demandes-ecartees.md` ;
+  motif technique dans `ADR-0030` (clause 9 attrape un habillage anime, pas un habillage qui change
+  d'etat par `transition` ou par pseudo-classe interactive).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite et ecriture de la
+  regle par `theo-archi`).
