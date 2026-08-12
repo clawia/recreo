@@ -1,0 +1,67 @@
+/* Jeu fautif d'ADR-0033, second defaut : le trou de la clause 9 d'ADR-0030, ecrit tel quel.
+
+   La population des animations de la clause 9 ecarte les regles ecrites sous prefers-reduced-motion -
+   il fallait bien qu'elle les ecarte, c'est la qu'un repli declare "animation: none" (ADR-0026 clause
+   2). Consequence non voulue : un habillage qui clignote UNIQUEMENT pour l'enfant qui a demande un
+   ecran immobile echappe entierement a la clause 9, et aussi aux clauses 1, 2, 5 et 6 qui partagent la
+   meme population. Le test qui accompagne ce jeu le mesure dans les deux sens : la clause 9 reste
+   verte dessus, celle d'ADR-0033 rougit.
+
+   Le manche lui-meme est ici identique a manche-immobile. */
+.cabinet {
+    display: flex;
+    flex-direction: column;
+    background-color: #1d4b6b;
+    border: 0.5rem solid #1d4b6b;
+    border-radius: 0.75rem;
+}
+
+.cabinet > .propositions {
+    margin: 0;
+}
+
+.cabinet-bandeau {
+    position: relative;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cabinet-bandeau::before {
+    content: "";
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: #ffffff;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.cabinet-bandeau::after {
+    content: "";
+    position: absolute;
+    right: 0.25rem;
+    top: 0.25rem;
+    width: 0.5rem;
+    height: 1.5rem;
+    background-color: #ffffff;
+    clip-path: polygon(35% 100%, 65% 100%, 65% 30%, 100% 15%, 100% 0%, 0% 0%, 0% 15%, 35% 30%);
+}
+
+@keyframes manche-clignote {
+    from { background-color: #ffffff; }
+    to   { background-color: #ffffff; }
+}
+
+/* La regle de trop : elle ne s'applique qu'a l'enfant qui a demande un ecran immobile. */
+@media (prefers-reduced-motion: reduce) {
+    .cabinet-bandeau::after { animation: manche-clignote 0.6s ease-out 1; }
+}
+
+.cabinet-socle {
+    height: 1rem;
+}
+
+.propositions {
+    display: flex;
+    gap: 1rem;
+}

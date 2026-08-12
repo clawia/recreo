@@ -1,0 +1,66 @@
+/* Jeu fautif d'ADR-0033. Le manche du sprint 10 tel qu'il est decide - dessine, immobile, sur
+   .cabinet-bandeau::after en position absolue, donc a cout nul en largeur comme en hauteur - plus une
+   seule regle de trop : il s'eclaire sous le doigt, et la transition adoucit l'eclairage.
+
+   C'est nommement le cas dont nadia-prof ecrit qu'il fait tomber son avis avec lui (condition C3 :
+   "aucun changement de couleur, aucune lumiere sur le cabinet lui-meme, a aucun moment"), et c'est le
+   cas le plus tentant de tous : un manche qui reagit au survol a l'air d'un manche qui fonctionne.
+   Aucune des 28 clauses anterieures ne le voit - la clause 9 d'ADR-0030 ne regarde que les regles qui
+   declarent une animation, et celle-ci n'en declare aucune. */
+.cabinet {
+    display: flex;
+    flex-direction: column;
+    background-color: #1d4b6b;
+    border: 0.5rem solid #1d4b6b;
+    border-radius: 0.75rem;
+}
+
+.cabinet > .propositions {
+    margin: 0;
+}
+
+/* position: relative est le seul ancrage dont le manche a besoin ; il ne change aucune dimension. */
+.cabinet-bandeau {
+    position: relative;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cabinet-bandeau::before {
+    content: "";
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: #ffffff;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+/* Le manche : une tige et son pommeau, dessines en clip-path comme l'etoile du bandeau. En position
+   absolue, il ne pousse ni le bandeau ni le socle - zero pixel de plus en hauteur, ce que la mesure du
+   pli exige (4 px de marge sur le meilleur etat du pire jeu). */
+.cabinet-bandeau::after {
+    content: "";
+    position: absolute;
+    right: 0.25rem;
+    top: 0.25rem;
+    width: 0.5rem;
+    height: 1.5rem;
+    background-color: #ffffff;
+    clip-path: polygon(35% 100%, 65% 100%, 65% 30%, 100% 15%, 100% 0%, 0% 0%, 0% 15%, 35% 30%);
+}
+
+/* La regle de trop, et la seule. */
+.cabinet-bandeau:hover::after {
+    background-color: #ffd54f;
+    transition: background-color 0.3s ease-in;
+}
+
+.cabinet-socle {
+    height: 1rem;
+}
+
+.propositions {
+    display: flex;
+    gap: 1rem;
+}

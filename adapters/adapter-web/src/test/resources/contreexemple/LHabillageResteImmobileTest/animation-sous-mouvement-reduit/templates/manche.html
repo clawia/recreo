@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Le gabarit du troisieme jeu d'ADR-0033, identique aux deux autres. Les boutons portent
+     data-role="action" parce que la clause 9 d'ADR-0030 est evaluee sur ce meme jeu, et que sa clause
+     de non-vacuite exige un element [data-role=action] porteur de classe : c'est ce qui rend son vert
+     significatif ici, et non obtenu par une population vide. -->
+<div class="ecran-de-jeu">
+    <button type="button" class="btn sortir" data-role="sortie" hx-post="/retour" hx-target="#jeu">Les jeux</button>
+    <div class="cabinet">
+        <div class="cabinet-bandeau" aria-hidden="true"></div>
+        <form class="propositions">
+            <button type="submit" class="btn proposition" data-role="action">an</button>
+            <button type="submit" class="btn proposition" data-role="action">on</button>
+            <button type="submit" class="btn proposition" data-role="action">in</button>
+        </form>
+        <div class="cabinet-socle" aria-hidden="true"></div>
+    </div>
+</div>
+</body>
+</html>

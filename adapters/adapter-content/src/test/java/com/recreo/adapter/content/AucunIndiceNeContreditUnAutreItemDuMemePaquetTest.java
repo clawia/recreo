@@ -48,16 +48,35 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * {@link ChaquePaquetPorteUnIndiceTest}), pas d'une liste de paquets : un paquet neuf portant un
  * indice general dementi par un autre de ses items est juge des qu'il existe.</p>
  *
- * <p>Dette ouverte par theo-archi a la porte technique de s07
- * ({@code squad/sprints/s07-machine-a-sous/confirmation-archunit.md}, section 4) : la correction
- * du meme commit a fait disparaitre la forme fautive des cinq indices qu'elle visait, si bien que
- * la clause de production ci-dessous balaie desormais une population vide sur les quatre paquets
- * du depot, sans qu'aucun signal ne distingue "aucune contradiction trouvee" de "aucun indice
- * examine" (ADR-0003). {@link #aucunIndiceDeProductionNeCorrespondALaFormeGeneraleAujourdHui()}
- * ferme ce trou par un epinglage de l'etat reel, sur le modele que theo-archi avait ecrit pour les
- * clauses 1 et 2 d'ADR-0026 ({@code aucuneAnimationNEstEncoreDeclareeEnProduction}) : le plafond
- * vaut exactement la taille de la dette, zero, et le message dit de le supprimer le jour ou ce
- * n'est plus vrai.</p>
+ * <p><b>Correction du 2026-08-12 par theo-archi (retro de s09, point 1), sur la forme de la
+ * non-vacuite et non sur la propriete.</b> La clause de production parcourait bien les paquets, mais
+ * son assertion etait enfermee dans un {@code if} sur {@link #REGLE_GENERALE_NON_TEMPEREE}, et sa
+ * clause de non-vacuite verifiait que la liste des <b>paquets</b> n'etait pas vide - jamais qu'un
+ * <b>indice</b> avait ete examine. Elle gardait la mauvaise population : le corps de la comparaison
+ * ne s'executait sur aucun contenu reel, et rien dans le fichier ne le disait a l'endroit ou on le
+ * lit. Trois fiches de conformite de {@code nadia-prof} ont credite ce garde-fou d'une coherence
+ * entre items qu'il ne tenait pas, jusqu'a ce qu'elle lise le fichier de test elle-meme.</p>
+ *
+ * <p>Trois changements, aucun sur la propriete verifiee :</p>
+ * <ul>
+ *   <li>{@link #verifierQuAucunIndiceNeContreditUnAutreItem} <b>rend</b> le nombre d'indices
+ *       reellement examines. C'est la population de la clause, et c'est desormais elle que les
+ *       appelants confrontent a un chiffre ;</li>
+ *   <li>le cliquet de l'etat reel est porte par ce nombre-la, dans le meme test que la clause
+ *       ({@link #aucunIndiceDeProductionNeContreditUnAutreItemDuMemePaquet()}) et non plus par un
+ *       second parcours qui relisait le meme motif a cote. Deux lectures pouvaient s'ecarter l'une de
+ *       l'autre ; il n'y en a plus qu'une. Le plafond vaut exactement la taille de la dette - zero -
+ *       et le message dit quoi faire le jour ou ce n'est plus vrai ;</li>
+ *   <li>un troisieme jeu d'artefacts ({@code general-tenu}) etablit que ce compteur n'est pas
+ *       coince a zero pour une raison de code : sur un paquet qui <b>porte</b> la forme generale sans
+ *       la dementir, il vaut 1 et la clause passe. Sans lui, "zero indice examine en production" et
+ *       "compteur en panne" seraient le meme vert.</li>
+ * </ul>
+ *
+ * <p>Ce que cette correction ne fait pas, et il faut le dire : elle ne rend pas la clause mordante
+ * sur le contenu livre. Elle rend <b>visible et chiffree</b> le fait qu'elle ne l'est pas. Le
+ * garde-fou reste ecrit pour la regression - un paquet neuf qui retomberait dans la forme fautive du
+ * refus - exactement comme la clause de rognage d'ADR-0030 a ete ecrite avant le cabinet.</p>
  */
 class AucunIndiceNeContreditUnAutreItemDuMemePaquetTest {
 
@@ -165,16 +184,22 @@ class AucunIndiceNeContreditUnAutreItemDuMemePaquetTest {
         };
     }
 
-    static void verifierQuAucunIndiceNeContreditUnAutreItem(Path racine, String racineClasspath, Set<String> dette) {
+    /**
+     * Rend le nombre d'indices <b>examines</b> : ceux dont le texte porte la forme generale non
+     * temperee et qui ont donc ete confrontes a chaque autre item de leur paquet. Ce nombre est la
+     * population de cette clause, la seule dont la non-vacuite dit quelque chose sur elle - la liste
+     * des paquets, elle, ne dit que ce que le repertoire contient (ADR-0003, correction du 2026-08-12).
+     */
+    static int verifierQuAucunIndiceNeContreditUnAutreItem(Path racine, String racineClasspath) {
         List<String> paquets = paquets(racine);
         assertThat(paquets)
-                .as("ce garde-fou ne prouve rien s'il ne trouve aucun paquet sous %s", racine)
+                .as("le balayage ne trouve aucun paquet sous %s : il n'y a rien a lire, et ce n'est pas "
+                        + "la meme chose qu'une verification passee. Ce que cette clause prouve se lit "
+                        + "sur le nombre d'indices examines qu'elle rend, pas ici", racine)
                 .isNotEmpty();
 
+        int indicesExamines = 0;
         for (String paquet : paquets) {
-            if (dette.contains(paquet)) {
-                continue;
-            }
             List<Question> items = itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet));
 
             for (Question itemPortantLIndice : items) {
@@ -182,6 +207,7 @@ class AucunIndiceNeContreditUnAutreItemDuMemePaquetTest {
                 if (!regle.find()) {
                     continue;
                 }
+                indicesExamines++;
                 Set<String> personnesVisees = new HashSet<>();
                 personnesVisees.add(canonicaliserPersonne(regle.group(1)));
                 if (regle.group(2) != null) {
@@ -203,64 +229,81 @@ class AucunIndiceNeContreditUnAutreItemDuMemePaquetTest {
                 }
             }
         }
+        return indicesExamines;
     }
 
+    /**
+     * La clause de production, <b>et son cliquet dans le meme test</b>. Les deux vont ensemble : la
+     * premiere assertion dit qu'aucune contradiction n'a ete trouvee, la seconde dit sur combien
+     * d'indices elle l'a cherchee. Separees, la premiere se lisait comme une garantie de coherence
+     * alors qu'elle ne parcourait aucun indice ; ensemble, elles ne peuvent plus etre lues l'une sans
+     * l'autre.
+     *
+     * <p>Le plafond vaut exactement la taille de la dette - <b>zero</b>, pas "quelques-uns" - parce
+     * que la correction de s07 a remplace les cinq indices fautifs par la forme qui nomme le verbe. Le
+     * jour ou ce chiffre monte, cette assertion rougit la premiere : retire-la, la clause porte alors
+     * sur un objet reel et c'est une bonne nouvelle.
+     */
     @Test
     void aucunIndiceDeProductionNeContreditUnAutreItemDuMemePaquet() {
-        verifierQuAucunIndiceNeContreditUnAutreItem(CONTENU_DE_PRODUCTION, "", Set.of());
+        int indicesExamines =
+                verifierQuAucunIndiceNeContreditUnAutreItem(CONTENU_DE_PRODUCTION, "");
+
+        assertThat(indicesExamines)
+                .as("cliquet de l'etat reel (ADR-0003, retro de s09 point 1) : la clause ci-dessus"
+                        + " n'examine aujourd'hui aucun indice de production, parce qu'aucun ne porte"
+                        + " plus la forme generale non temperee que reconnait"
+                        + " REGLE_GENERALE_NON_TEMPEREE. Elle est donc verte sans rien avoir compare,"
+                        + " et c'est ce chiffre-la qui le dit - pas la liste des paquets, qui n'est"
+                        + " jamais vide. Si cette assertion rougit, retire-la : la clause porte"
+                        + " desormais sur un objet reel")
+                .isEqualTo(0);
     }
 
     /** ADR-0013 obligation 3 : l'objet neuf est un paquet reproduisant la contradiction manche 7 / manche 10. */
     @Test
     void unPaquetPortantLaContradictionDuRefusFaitEchouerLeGardeFou() {
         assertThatThrownBy(() -> verifierQuAucunIndiceNeContreditUnAutreItem(
-                CONTRE_EXEMPLE, CONTRE_EXEMPLE_CLASSPATH, Set.of()))
+                CONTRE_EXEMPLE, CONTRE_EXEMPLE_CLASSPATH))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("dement");
     }
 
-    /** Le meme paquet, une fois son indice general corrige, ne doit plus rien reprocher. */
+    /**
+     * Le meme paquet, une fois son indice general corrige, ne doit plus rien reprocher - et il n'examine
+     * alors plus aucun indice, puisque la correction consiste precisement a quitter la forme generale.
+     * Ce vert-la ne prouve donc rien a lui seul : c'est {@link
+     * #unPaquetDontLaRegleGeneraleEstTenueEstExamineEtPasse()} qui prouve qu'un indice peut etre examine
+     * et passer.
+     */
     @Test
     void leMemePaquetUneFoisSonIndiceCorrigePasseLeGardeFou() {
-        verifierQuAucunIndiceNeContreditUnAutreItem(
-                CONTRE_EXEMPLE.resolve("corrige"), CONTRE_EXEMPLE_CLASSPATH + "/corrige", Set.of());
-    }
-
-    /** Le nombre d'indices de production dont le texte matche la forme generale non temperee. */
-    private static int nombreDIndicesReconnusParLaFormeGenerale(Path racine, String racineClasspath) {
-        int compte = 0;
-        for (String paquet : paquets(racine)) {
-            for (Question item : itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet))) {
-                if (REGLE_GENERALE_NON_TEMPEREE.matcher(item.indice().orElse("")).find()) {
-                    compte++;
-                }
-            }
-        }
-        return compte;
+        assertThat(verifierQuAucunIndiceNeContreditUnAutreItem(
+                CONTRE_EXEMPLE.resolve("corrige"), CONTRE_EXEMPLE_CLASSPATH + "/corrige"))
+                .as("la correction retire la forme generale : plus aucun indice n'est examine, et c'est"
+                        + " exactement pourquoi ce vert ne suffit pas")
+                .isZero();
     }
 
     /**
-     * Epinglage de l'etat reel (ADR-0026, ADR-0003) : {@code aucunIndiceDeProductionNeContreditUnAutreItemDuMemePaquet}
-     * balaie une population qui vaut aujourd'hui zero sur les quatre paquets du depot, puisque la
-     * correction du meme commit a remplace les cinq indices qui matchaient {@code
-     * REGLE_GENERALE_NON_TEMPEREE} par la forme qui nomme le verbe. Sans cet epinglage, cette clause
-     * serait verte a vide et rien ne distinguerait "aucune contradiction trouvee" de "aucun indice
-     * examine".
+     * <b>Le cas qui distingue "aucun indice examine" de "compteur en panne"</b> (correction du
+     * 2026-08-12, retro de s09 point 1). Le paquet porte la forme generale non temperee - "avec 'tu',
+     * le verbe se termine par '-es'" - et <b>aucun</b> de ses items ne la dement. La clause doit donc
+     * passer <b>en ayant compare</b>, et le nombre qu'elle rend doit valoir 1.
      *
-     * <p>Le plafond vaut exactement la taille de la dette : zero, pas "quelques-uns". Le jour ou un
-     * indice de production correspond de nouveau a cette forme - une regression, ou un paquet neuf
-     * qui y retombe puis passe la clause principale - cette assertion rougit la premiere : supprime
-     * ce test, la clause de production porte alors sur un objet reel.</p>
+     * <p>Sans ce jeu d'artefacts, un compteur qui rendrait toujours zero - un {@code if} mal place, un
+     * motif casse par une retouche de formulation - satisferait le cliquet de la clause de production
+     * aussi bien que la verite. C'est la meme faute que ce depot m'a deja apprise : une fixture qui
+     * ressemble a ce que j'imagine, et un garde-fou qui passe sa propre epreuve en echouant dans le
+     * monde.
      */
     @Test
-    void aucunIndiceDeProductionNeCorrespondALaFormeGeneraleAujourdHui() {
-        assertThat(nombreDIndicesReconnusParLaFormeGenerale(CONTENU_DE_PRODUCTION, ""))
-                .as("epinglage de l'etat reel (ADR-0026, ADR-0003) : la forme generale non temperee"
-                        + " que reconnait REGLE_GENERALE_NON_TEMPEREE ne doit correspondre a aucun"
-                        + " indice de production aujourd'hui, la correction du meme commit l'ayant"
-                        + " fait disparaitre des cinq indices fautifs. Si cette assertion rougit,"
-                        + " supprime ce test : aucunIndiceDeProductionNeContreditUnAutreItemDuMemePaquet"
-                        + " porte desormais sur un objet reel")
-                .isEqualTo(0);
+    void unPaquetDontLaRegleGeneraleEstTenueEstExamineEtPasse() {
+        assertThat(verifierQuAucunIndiceNeContreditUnAutreItem(
+                CONTRE_EXEMPLE.resolve("general-tenu"), CONTRE_EXEMPLE_CLASSPATH + "/general-tenu"))
+                .as("ce paquet porte la forme generale et ne la dement pas : la clause doit passer"
+                        + " apres avoir examine exactement un indice. Si ce nombre vaut zero, ce n'est"
+                        + " pas le contenu qui est en cause, c'est la lecture")
+                .isEqualTo(1);
     }
 }
