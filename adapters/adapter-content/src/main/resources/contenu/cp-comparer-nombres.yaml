@@ -1,0 +1,105 @@
+schema: 1
+id: cp-comparer-nombres
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Comparer deux nombres entiers jusqu'à 100 (<, >, =)"
+items:
+  - enonce: "8 ___ 15"
+    bonneReponse: "<"
+    distracteurs: [">", "="]
+    indice: "8 n'a qu'un chiffre, 15 en a deux : 8 est plus petit que 15."
+  - enonce: "23 ___ 47"
+    bonneReponse: "<"
+    distracteurs: [">", "="]
+    indice: "Compare les dizaines : 2 dizaines, c'est moins que 4 dizaines."
+  - enonce: "56 ___ 60"
+    bonneReponse: "<"
+    distracteurs: [">", "="]
+    indice: "56 vient juste avant 60 quand on compte : il est plus petit."
+  - enonce: "3 ___ 78"
+    bonneReponse: "<"
+    distracteurs: [">", "="]
+    indice: "3 n'a qu'un chiffre, 78 en a deux : 3 est plus petit que 78."
+  - enonce: "41 ___ 90"
+    bonneReponse: "<"
+    distracteurs: [">", "="]
+    indice: "Compare les dizaines : 4 dizaines, c'est moins que 9 dizaines."
+  - enonce: "67 ___ 72"
+    bonneReponse: "<"
+    distracteurs: [">", "="]
+    indice: "Compare les dizaines : 6 dizaines, c'est moins que 7 dizaines."
+  - enonce: "19 ___ 33"
+    bonneReponse: "<"
+    distracteurs: [">", "="]
+    indice: "Compare les dizaines : 1 dizaine, c'est moins que 3 dizaines."
+  - enonce: "84 ___ 99"
+    bonneReponse: "<"
+    distracteurs: [">", "="]
+    indice: "Compare les dizaines : 8 dizaines, c'est moins que 9 dizaines."
+  - enonce: "52 ___ 38"
+    bonneReponse: ">"
+    distracteurs: ["<", "="]
+    indice: "Compare les dizaines : 5 dizaines, c'est plus que 3 dizaines."
+  - enonce: "91 ___ 9"
+    bonneReponse: ">"
+    distracteurs: ["<", "="]
+    indice: "91 a deux chiffres, 9 n'en a qu'un : 91 est plus grand que 9."
+  - enonce: "45 ___ 40"
+    bonneReponse: ">"
+    distracteurs: ["<", "="]
+    indice: "Les deux ont 4 dizaines : regarde les unités, 5 unités c'est plus que 0 unité."
+  - enonce: "70 ___ 22"
+    bonneReponse: ">"
+    distracteurs: ["<", "="]
+    indice: "Compare les dizaines : 7 dizaines, c'est plus que 2 dizaines."
+  - enonce: "88 ___ 79"
+    bonneReponse: ">"
+    distracteurs: ["<", "="]
+    indice: "Compare les dizaines : 8 dizaines, c'est plus que 7 dizaines."
+  - enonce: "17 ___ 6"
+    bonneReponse: ">"
+    distracteurs: ["<", "="]
+    indice: "17 a deux chiffres, 6 n'en a qu'un : 17 est plus grand que 6."
+  - enonce: "63 ___ 12"
+    bonneReponse: ">"
+    distracteurs: ["<", "="]
+    indice: "Compare les dizaines : 6 dizaines, c'est plus que 1 dizaine."
+  - enonce: "100 ___ 85"
+    bonneReponse: ">"
+    distracteurs: ["<", "="]
+    indice: "100 a trois chiffres, 85 n'en a que deux : 100 est plus grand que 85."
+  - enonce: "14 ___ 14"
+    bonneReponse: "="
+    distracteurs: ["<", ">"]
+    indice: "14 et 14, c'est le même nombre : ils sont égaux."
+  - enonce: "58 ___ 58"
+    bonneReponse: "="
+    distracteurs: ["<", ">"]
+    indice: "58 et 58, c'est le même nombre : ils sont égaux."
+  - enonce: "0 ___ 0"
+    bonneReponse: "="
+    distracteurs: ["<", ">"]
+    indice: "0 et 0, c'est le même nombre : ils sont égaux."
+  - enonce: "100 ___ 100"
+    bonneReponse: "="
+    distracteurs: ["<", ">"]
+    indice: "100 et 100, c'est le même nombre : ils sont égaux."
+  - enonce: "73 ___ 73"
+    bonneReponse: "="
+    distracteurs: ["<", ">"]
+    indice: "73 et 73, c'est le même nombre : ils sont égaux."
+  - enonce: "36 ___ 36"
+    bonneReponse: "="
+    distracteurs: ["<", ">"]
+    indice: "36 et 36, c'est le même nombre : ils sont égaux."
+  - enonce: "9 ___ 9"
+    bonneReponse: "="
+    distracteurs: ["<", ">"]
+    indice: "9 et 9, c'est le même nombre : ils sont égaux."
+  - enonce: "82 ___ 82"
+    bonneReponse: "="
+    distracteurs: ["<", ">"]
+    indice: "82 et 82, c'est le même nombre : ils sont égaux."
