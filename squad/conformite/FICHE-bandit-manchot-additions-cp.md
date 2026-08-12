@@ -341,71 +341,6 @@ clauses, et le mot "unique" du commentaire de production est une imprecision de 
 corriger dans le meme lot que le manche, pour qu'un lecteur futur ne prenne pas mon vocabulaire pour
 une regle de nombre. C'est ma condition N4, section 5.
 
-#### 4. La valeur absolue du contraste : `ines-design` a raison, mon 9,25:1 etait faux, et voici la cause exacte
-
-**Je corrige mon propre constat avant que quiconque s'appuie dessus, et cette fois la correction est
-entierement a mon desavantage.**
-
-J'ai recalcule les quatre paires moi-meme, a la main puis par une sonde jetable non commitee (Pillow
-n'y sert pas : ce calcul ne lit aucune image), en partant **des valeurs hexadecimales declarees dans
-`recreo.css`** et non d'un pixel echantillonne. Methode : normalisation de chaque canal sur 255,
-linearisation sRGB par seuil (`c <= 0,03928` : `c / 12,92` ; sinon `((c + 0,055) / 1,055) ^ 2,4`),
-`L = 0,2126 R + 0,7152 G + 0,0722 B`, rapport `(L_clair + 0,05) / (L_sombre + 0,05)`. Valeurs lues
-dans la feuille servie : `--recreo-fond: #f4f7fb`, `--recreo-accent: #2e6f9e`,
-`--recreo-entete-fond: #1d4b6b`, `--recreo-accent-texte: #ffffff`.
-
-| Paire | `ines-design` | Ma remesure | Verdict |
-|---|---|---|---|
-| cadre `#1d4b6b` vs colonnes `#2e6f9e` | 1,71:1 | **1,7101:1** | concordant |
-| cabinet neuf `#081c2c` vs colonnes | 3,20:1 | **3,2022:1** | concordant |
-| cadre `#1d4b6b` vs page `#f4f7fb` | 8,61:1 | **8,6059:1** | **elle a raison** |
-| cabinet neuf `#081c2c` vs page | 16,11:1 | **16,1148:1** | concordant |
-| plinthe `#061420` vs cabinet neuf | 1,07:1 | **1,0745:1** | concordant |
-
-**La cause de l'ecart n'est pas celle qu'elle suppose, et je peux la nommer exactement.** Son
-hypothese - un echantillonnage sur capture de mon cote, sujet a l'antialiasing et a la compression -
-est raisonnable mais fausse. J'ai cherche quelle couleur claire rend `9,25:1` contre `#1d4b6b`, et la
-reponse tombe juste : **`#ffffff`, le blanc pur, donne 9,2471:1**, soit mon `9,25:1` a deux decimales.
-**J'ai calcule le contraste du cadre contre le blanc pur au lieu du fond de page `#f4f7fb`.** Ce
-n'est pas une derive de mesure, c'est une substitution de valeur : j'ai pris
-`--recreo-accent-texte` la ou il fallait `--recreo-fond`, deux variables voisines de la meme feuille.
-Une capture n'y est pour rien - le chiffre est reproductible au millieme sans jamais ouvrir une image.
-
-**Ce que cela change, et ce que cela ne change pas.**
-
-- **Les valeurs absolues qui entrent dans une fiche sont celles d'`ines-design`** : 1,71:1 sur
-  cadre/colonnes, **8,61:1** sur cadre/page, 3,20:1 et 16,11:1 avec `#081c2c`. Je les valide comme
-  miennes desormais.
-- **Ma reserve 2 du 2026-08-11 contenait donc un chiffre faux**, et je le corrige sans la reformuler :
-  elle disait *"contre la page le cabinet ressort a 9,25:1, donc le tour de l'objet est franc et C1
-  est tenue"*. La bonne valeur est **8,61:1**. **La conclusion ne bouge pas** - 8,61:1 reste tres
-  au-dessus de tout seuil qui rendrait un contour difficile a suivre, C1 restait et reste tenue - mais
-  le chiffre qui la portait etait faux, et un tiers qui l'aurait recopie aurait propage mon erreur.
-- **Le rapport relatif que j'avais lu ne bouge pas non plus** : le passage de 1,71:1 a 3,20:1 sur
-  cadre/colonnes est une multiplication par **1,87**, et c'est bien le fait acquis de cette section.
-  `ines-design` recommande de le lire comme tel ; je suis d'accord, et j'ajoute que la valeur absolue
-  est desormais reconciliee, donc plus rien n'oblige a se replier sur le seul rapport relatif.
-- **`#081c2c` a `3,20:1` contre les colonnes : je l'accepte comme valeur, et je dis a quel titre.**
-  Ce n'est pas un seuil WCAG - il n'y en a pas pour deux aplats decoratifs adjacents dont aucun ne
-  porte de texte, et je ne vais pas fabriquer un seuil que la norme ne pose pas. Mon motif est celui
-  que j'avais ecrit en reserve 2, inchange : un enfant qui distingue mal les couleurs lisait *"un seul
-  aplat bleu avec des cases a peine plus claires"*, et la fenetre de la machine ne se voyait que par
-  les coins arrondis. A 3,20:1 la fenetre existe. **Je ne demande pas mieux et je ne demanderai pas
-  mieux plus tard** : 3,20:1 est la barre que je leve ici, elle est atteinte, et la relever apres coup
-  ferait de ma porte un caprice.
-- **La plinthe a `1,07:1` ne me gene pas**, et pour le motif exact qu'`ines-design` ecrit : deux
-  aplats tres sombres separes pour faire un relief, ni texte ni signal. Je l'ai verifie sur son
-  chiffre plutot que sur sa parole - `#061420` est bien chaque canal de `#081c2c` multiplie par un
-  facteur voisin de 0,73, donc une teinte uniformement plus sombre et non une nuance differente. **Le
-  jour ou un texte se poserait sur la plinthe, ce chiffre redevient un motif** ; aujourd'hui il n'en
-  est pas un.
-- **`--recreo-entete-fond` n'est pas touchee**, et c'est la bonne decision : elle porte le plancher du
-  crayon de `favicon.ico` (S6-10), que j'ai chiffre moi-meme, et cette proposition ne le rouvre pas.
-
-**Ce que je retiens de mon erreur pour la suite, et je l'ecris parce que ca vaut plus que le
-chiffre** : `ines-design` a nomme un ecart entre nous deux plutot que de l'arrondir ou de le laisser
-passer, deux sprints de suite. C'est ce qui a permis de le resoudre. **L'ecart etait le mien.**
-
 #### 3. Le pixel de relief : accepte, il ne fait basculer aucun etat, et la marge est de 4 rangees
 
 **D'abord une attribution que je corrige, parce qu'elle est de ma main et qu'elle circule.**
@@ -502,6 +437,71 @@ au defaut de `DEC-0016`. Un enfant de CM1 qui rate trois fois voit toujours l'ai
 deux reponses sous le bas de l'ecran. **Ce pixel rend le cabinet plus lisible ; il ne rend pas le jeu
 jouable au moment ou l'enfant en a le plus besoin.** Les deux chantiers n'ont pas la meme importance,
 et ce n'est pas celui-ci le plus important.
+
+#### 4. La valeur absolue du contraste : `ines-design` a raison, mon 9,25:1 etait faux, et voici la cause exacte
+
+**Je corrige mon propre constat avant que quiconque s'appuie dessus, et cette fois la correction est
+entierement a mon desavantage.**
+
+J'ai recalcule les quatre paires moi-meme, a la main puis par une sonde jetable non commitee (Pillow
+n'y sert pas : ce calcul ne lit aucune image), en partant **des valeurs hexadecimales declarees dans
+`recreo.css`** et non d'un pixel echantillonne. Methode : normalisation de chaque canal sur 255,
+linearisation sRGB par seuil (`c <= 0,03928` : `c / 12,92` ; sinon `((c + 0,055) / 1,055) ^ 2,4`),
+`L = 0,2126 R + 0,7152 G + 0,0722 B`, rapport `(L_clair + 0,05) / (L_sombre + 0,05)`. Valeurs lues
+dans la feuille servie : `--recreo-fond: #f4f7fb`, `--recreo-accent: #2e6f9e`,
+`--recreo-entete-fond: #1d4b6b`, `--recreo-accent-texte: #ffffff`.
+
+| Paire | `ines-design` | Ma remesure | Verdict |
+|---|---|---|---|
+| cadre `#1d4b6b` vs colonnes `#2e6f9e` | 1,71:1 | **1,7101:1** | concordant |
+| cabinet neuf `#081c2c` vs colonnes | 3,20:1 | **3,2022:1** | concordant |
+| cadre `#1d4b6b` vs page `#f4f7fb` | 8,61:1 | **8,6059:1** | **elle a raison** |
+| cabinet neuf `#081c2c` vs page | 16,11:1 | **16,1148:1** | concordant |
+| plinthe `#061420` vs cabinet neuf | 1,07:1 | **1,0745:1** | concordant |
+
+**La cause de l'ecart n'est pas celle qu'elle suppose, et je peux la nommer exactement.** Son
+hypothese - un echantillonnage sur capture de mon cote, sujet a l'antialiasing et a la compression -
+est raisonnable mais fausse. J'ai cherche quelle couleur claire rend `9,25:1` contre `#1d4b6b`, et la
+reponse tombe juste : **`#ffffff`, le blanc pur, donne 9,2471:1**, soit mon `9,25:1` a deux decimales.
+**J'ai calcule le contraste du cadre contre le blanc pur au lieu du fond de page `#f4f7fb`.** Ce
+n'est pas une derive de mesure, c'est une substitution de valeur : j'ai pris
+`--recreo-accent-texte` la ou il fallait `--recreo-fond`, deux variables voisines de la meme feuille.
+Une capture n'y est pour rien - le chiffre est reproductible au millieme sans jamais ouvrir une image.
+
+**Ce que cela change, et ce que cela ne change pas.**
+
+- **Les valeurs absolues qui entrent dans une fiche sont celles d'`ines-design`** : 1,71:1 sur
+  cadre/colonnes, **8,61:1** sur cadre/page, 3,20:1 et 16,11:1 avec `#081c2c`. Je les valide comme
+  miennes desormais.
+- **Ma reserve 2 du 2026-08-11 contenait donc un chiffre faux**, et je le corrige sans la reformuler :
+  elle disait *"contre la page le cabinet ressort a 9,25:1, donc le tour de l'objet est franc et C1
+  est tenue"*. La bonne valeur est **8,61:1**. **La conclusion ne bouge pas** - 8,61:1 reste tres
+  au-dessus de tout seuil qui rendrait un contour difficile a suivre, C1 restait et reste tenue - mais
+  le chiffre qui la portait etait faux, et un tiers qui l'aurait recopie aurait propage mon erreur.
+- **Le rapport relatif que j'avais lu ne bouge pas non plus** : le passage de 1,71:1 a 3,20:1 sur
+  cadre/colonnes est une multiplication par **1,87**, et c'est bien le fait acquis de cette section.
+  `ines-design` recommande de le lire comme tel ; je suis d'accord, et j'ajoute que la valeur absolue
+  est desormais reconciliee, donc plus rien n'oblige a se replier sur le seul rapport relatif.
+- **`#081c2c` a `3,20:1` contre les colonnes : je l'accepte comme valeur, et je dis a quel titre.**
+  Ce n'est pas un seuil WCAG - il n'y en a pas pour deux aplats decoratifs adjacents dont aucun ne
+  porte de texte, et je ne vais pas fabriquer un seuil que la norme ne pose pas. Mon motif est celui
+  que j'avais ecrit en reserve 2, inchange : un enfant qui distingue mal les couleurs lisait *"un seul
+  aplat bleu avec des cases a peine plus claires"*, et la fenetre de la machine ne se voyait que par
+  les coins arrondis. A 3,20:1 la fenetre existe. **Je ne demande pas mieux et je ne demanderai pas
+  mieux plus tard** : 3,20:1 est la barre que je leve ici, elle est atteinte, et la relever apres coup
+  ferait de ma porte un caprice.
+- **La plinthe a `1,07:1` ne me gene pas**, et pour le motif exact qu'`ines-design` ecrit : deux
+  aplats tres sombres separes pour faire un relief, ni texte ni signal. Je l'ai verifie sur son
+  chiffre plutot que sur sa parole - `#061420` est bien chaque canal de `#081c2c` multiplie par un
+  facteur voisin de 0,73, donc une teinte uniformement plus sombre et non une nuance differente. **Le
+  jour ou un texte se poserait sur la plinthe, ce chiffre redevient un motif** ; aujourd'hui il n'en
+  est pas un.
+- **`--recreo-entete-fond` n'est pas touchee**, et c'est la bonne decision : elle porte le plancher du
+  crayon de `favicon.ico` (S6-10), que j'ai chiffre moi-meme, et cette proposition ne le rouvre pas.
+
+**Ce que je retiens de mon erreur pour la suite, et je l'ecris parce que ca vaut plus que le
+chiffre** : `ines-design` a nomme un ecart entre nous deux plutot que de l'arrondir ou de le laisser
+passer, deux sprints de suite. C'est ce qui a permis de le resoudre. **L'ecart etait le mien.**
 
 #### 5. Mes conditions, numerotees pour etre mesurees une par une
 
