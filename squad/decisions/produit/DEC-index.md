@@ -25,7 +25,8 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0019 | Perimetre du sprint 9 : quatre lignes textuelles de mathematiques CP ouvertes, denombrement et monnaie differes sous le gel de rendu | s09 | 2026-08-12 | Acceptee, amendee le 2026-08-12 (motifs des lignes denombrement et monnaie corriges sur avis de theo-archi, conclusion inchangee) |
 | DEC-0020 | S9-2 debloquee : nombreDeManches abaisse a 7 pour bandit-manchot-complements-10-cp, plutot qu'un elargissement des formes d'items | s09 | 2026-08-12 | Acceptee |
 | DEC-0021 | La regularite de magnitude des additions de "resoudre un probleme" (reserve de refus sur S9-4) est reportee en story de backlog, pas un geste de ce sprint | s09 | 2026-08-12 | Acceptee |
-| DEC-0022 | Perimetre du sprint 10 : le manche du bandit manchot est dessine et immobile, trois demandes de l'utilisatrice ecartees avec leurs declencheurs de reouverture | s10 | 2026-08-12 | Acceptee |
+| DEC-0022 | Perimetre du sprint 10 : le manche du bandit manchot est dessine et immobile, trois demandes de l'utilisatrice ecartees avec leurs declencheurs de reouverture | s10 | 2026-08-12 | Acceptee, deux des trois exclusions (points 1 et 3) remplacees par DEC-0023 le meme jour, point 2 inchange |
+| DEC-0023 | Le perimetre du sprint 10 est repris sur les references de l'utilisatrice : la machine est redessinee en CSS pur, le veto de nadia-prof sur la manette est leve, l'ecran intermediaire est questionne | s10 | 2026-08-12 | Acceptee sur les points 1 a 5, point 6 ouvert en attente d'arbitrage prealable de nadia-prof |
 
 Amendement (pas une nouvelle reference) : `DEC-0002` a ete amendee le 2026-08-04, a la suite de la
 relecture pedagogique de `nadia-prof` sur le refus de `bandit-manchot-additions-cp` - ajout d'une
@@ -164,3 +165,13 @@ rendu d'un pictogramme, risque de couverture partielle si "utiliser" ouvrait seu
 technique. Aucune ligne n'est ouverte, aucune capacite n'y est affectee. Voir la section "Amendement
 du 2026-08-12" dans
 `DEC-0019-perimetre-sprint-9-quatre-lignes-textuelles-de-mathematiques-cp-denombrement-et-monnaie-differes.md`.
+
+`DEC-0022` n'est pas amendee : elle est partiellement remplacee le meme jour par `DEC-0023`, apres
+que l'utilisatrice a vu la silhouette du manche rendue dans l'application reelle et l'a refusee,
+puis fourni deux images de reference et pris six decisions neuves. Deux des trois exclusions de
+`DEC-0022` tombent - le point 1 (reessayer la meme question) revient par le point 6 de `DEC-0023`,
+le point 3 (message d'erreur sous la machine) est exactement ce que ce meme point 6 introduit - et
+la troisieme, le point 2 (manche immobile, jamais actionne), tient toujours mais change de place :
+du fronton au flanc du meuble. `DEC-0022` reste au depot, non effacee, pour que l'historique de ce
+qui a ete ecarte puis reouvert soit lisible. Voir `DEC-0023-perimetre-sprint-10-repris-sur-
+references-utilisatrice-veto-manette-leve-ecran-intermediaire-questionne.md`.
