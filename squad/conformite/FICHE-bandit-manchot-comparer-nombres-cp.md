@@ -259,7 +259,14 @@ comparaison elle-meme, et elle seule, qui etait deja tenue par un test.
    toujours tenue par rien.** `ChaquePaquetPorteUnIndiceTest` verifie qu'un indice existe et n'est pas
    vide ; `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest` verifie une coherence **entre** items.
    Aucun des deux ne verifie qu'un indice dit quelque chose de **vrai**, et aucun ne pourrait le faire
-   pour une affirmation comme "56 vient juste avant 60". C'est moi, et en jouant.
+   pour une affirmation comme "56 vient juste avant 60". C'est moi, et en jouant. **Precision du
+   2026-08-12, dans le sens defavorable** : la coherence entre items que je credite au second est
+   elle-meme vide sur le contenu servi aujourd'hui. Verifie dans le fichier de test a l'occasion de la
+   correction ci-dessus : sa clause de production,
+   `aucunIndiceDeProductionNeCorrespondALaFormeGeneraleAujourdHui`, epingle a **zero** le nombre
+   d'indices de production qu'elle reconnait, et son message demande de la supprimer le jour ou ce
+   compte change. Ce garde-fou ne juge donc aucun indice d'aucun paquet servi a un enfant, et l'indice
+   faux de ce paquet ne pouvait de toute facon pas lui echapper : il n'etait pas regarde.
 2. **L'exactitude de chaque comparaison : propriete gardee, je n'en suis pas le garde** (point corrige
    le 2026-08-12, voir ci-dessus). `PaquetCpComparerNombresTest` compare bien les deux nombres de
    l'enonce au signe attendu. Je l'ai aussi faite a la main, 24 fois, deux fois maintenant, mais un
@@ -454,7 +461,9 @@ l'utilisatrice.
    `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest` verifie une coherence **entre** items. Aucun
    des deux ne verifie qu'un indice dit quelque chose de **vrai**, et aucun ne pourrait le faire pour
    une affirmation comme "56 vient juste avant 60". Tant qu'aucun garde-fou n'existe, c'est moi, et
-   en jouant.
+   en jouant. **Precision du 2026-08-12** : la coherence entre items que je credite au second est
+   elle-meme vide sur le contenu servi aujourd'hui, sa clause de production epinglant a zero le nombre
+   d'indices qu'elle reconnait. Voir le point 1 de la section du second verdict.
 2. **L'exactitude de chaque comparaison - point faux, corrige le 2026-08-12.** J'avais ecrit ici
    qu'aucun test ne comparait les deux nombres de l'enonce au signe attendu et que
    `PaquetCpComparerNombresTest` ne verifiait que la structure, la repartition des signes et la forme

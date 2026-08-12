@@ -237,7 +237,12 @@ seule, qui etait deja tenue.
    maintenant, mais contrairement aux autres points de cette liste, un test la referait si le fichier
    changeait sans moi.
 3. **L'exactitude et la pertinence de chaque indice** - qu'il decrive une methode menant vraiment a
-   la reponse.
+   la reponse. **Precision du 2026-08-12, dans le sens defavorable** : j'ecris plus bas, au premier
+   verdict, que `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest` tient au moins une coherence
+   interne. Verifie dans le fichier de test a l'occasion de la correction ci-dessus : sa clause de
+   production epingle a **zero** le nombre d'indices de production qu'elle reconnait, et son message
+   demande de la supprimer le jour ou ce compte change. Elle ne juge donc aujourd'hui aucun indice
+   d'aucun paquet servi a un enfant. Rien du tout n'est tenu sur ce point.
 4. **La plausibilite d'un distracteur.**
 5. **La coherence entre la consigne d'un jeu et la forme de ses enonces** (reserve 1).
 6. **Le fait que tous les items d'un paquet soient reellement atteignables** et que les propositions
@@ -421,7 +426,10 @@ que l'enfant lit.**
 3. **L'exactitude de chaque indice** - qu'il decrive une methode menant vraiment a la reponse.
    `ChaquePaquetPorteUnIndiceTest` verifie qu'un indice existe et n'est pas vide ;
    `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest` verifie une coherence interne. Ni l'un ni
-   l'autre ne verifie qu'un indice est **vrai**.
+   l'autre ne verifie qu'un indice est **vrai**. **Precision du 2026-08-12** : la coherence interne que
+   je credite au second est elle-meme vide sur le contenu servi aujourd'hui, sa clause de production
+   epinglant a zero le nombre d'indices qu'elle reconnait. Voir le point 3 de la section du second
+   verdict.
 4. **La plausibilite d'un distracteur** - qu'il corresponde a une erreur qu'un enfant commet, et non
    a un nombre pris au hasard.
 5. **La coherence entre la consigne d'un jeu et la forme de ses enonces** (reserve 1).

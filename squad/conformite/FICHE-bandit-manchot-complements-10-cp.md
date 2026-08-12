@@ -215,7 +215,12 @@ la verite d'un indice, le niveau de vocabulaire.
 2. **L'exactitude de chaque indice** - qu'il decrive une methode qui mene vraiment a la reponse.
    `ChaquePaquetPorteUnIndiceTest` verifie qu'un indice existe et n'est pas vide ;
    `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest` verifie une coherence interne. **Ni l'un ni
-   l'autre ne verifie qu'un indice est vrai.**
+   l'autre ne verifie qu'un indice est vrai.** **Precision du 2026-08-12, dans le sens defavorable** :
+   la coherence interne que je credite au second est elle-meme vide sur le contenu servi aujourd'hui.
+   Verifie dans le fichier de test a l'occasion de la correction ci-dessus : sa clause de production,
+   `aucunIndiceDeProductionNeCorrespondALaFormeGeneraleAujourdHui`, epingle a **zero** le nombre
+   d'indices de production qu'elle reconnait, et son message demande de la supprimer le jour ou ce
+   compte change. Elle ne juge donc aucun indice d'aucun paquet servi a un enfant.
 3. **L'orthographe et l'accentuation du texte que l'enfant lit.**
    `PropositionsAccentueesJouablesIT` ne couvre pas cette propriete : il verifie qu'une proposition
    accentuee reste **jouable** sans planter la manche, ce qui est une robustesse d'encodage, pas une
