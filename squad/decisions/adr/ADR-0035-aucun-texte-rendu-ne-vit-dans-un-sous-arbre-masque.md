@@ -38,6 +38,48 @@ la tient.
 `aria-hidden="true"`.** Le texte compte sous ses deux formes : ecrit en clair dans le gabarit, ou pose
 au rendu par `th:text` ou `th:utext`.
 
+### 1 bis. Amendement du 2026-08-12 - la reserve H de `nadia-prof`, et elle avait raison
+
+**Elle endosse la regle et la declare trop large d'une clause**, et son argument est juste : *"En
+interdisant les deux d'un seul mouvement, la regle force le decor dans l'oreille de l'enfant - elle
+obtient sur ce cas l'inverse de ce qu'elle cherche."* Masquer un decor **est** le bon usage
+d'`aria-hidden` ; ma regle le rendait impossible.
+
+Sa condition de fond, qui n'etait pas celle que j'avais anticipee : **le nom de l'enseigne ne doit pas
+etre annonce**, et les quatre structures que j'avais inventoriees l'annoncent toutes les quatre. Ce
+n'est pas l'attribut qui la gene, ni que le nom soit annonce : c'est **ou** il l'est - le fronton vit
+entre l'enonce et la premiere proposition, et *"pour un enfant qui ecoute, il n'y a pas de au-dessus, il
+n'y a qu'un avant"*.
+
+**La regle amendee, en trois clauses qui se tiennent l'une l'autre :**
+
+1. Un texte sous un masque est refuse, **sauf** si l'element qui le porte declare `data-decor` avec un
+   motif non vide.
+2. La declaration vit **sur l'element qui porte le texte**, jamais sur un ancetre. Sur un ancetre, elle
+   reconstituerait exactement le defaut de cet `ADR` - une declaration posee sur un conteneur, qui
+   devient fausse des que son contenu change.
+3. **Tout element qui declare `data-decor` vit sous un masque.** Sans cette clause, la reserve serait
+   une porte : un decor declare mais non masque est **annonce**, donc sa declaration dit le contraire de
+   ce que le document fait. C'est cette clause-la qui tient la condition de `nadia-prof` par la
+   structure, et non par la relecture.
+
+`data-decor` est un attribut et non une classe, pour la raison d'`ADR-0017` (`data-role`) et
+d'`ADR-0027` (`data-arrivee`) : ce qu'il declare n'est pas un habillage. Sa valeur est le motif, en
+clair - **une declaration sans motif est un contournement, pas une intention**, et le vide est refuse.
+
+**Le plafond.** La population de production vaut **zero** a ce jour, et un test l'epingle a zero. Le
+jour ou l'enseigne y entre, ce nombre passe a 1 et le test le dit : la hausse est un acte delibere,
+gagne devant `nadia-prof`, jamais une derive. C'est la lecon du plafond d'`ADR-0016` appliquee a ma
+propre exemption.
+
+**Pourquoi j'amende maintenant plutot que d'inscrire le declencheur.** Ma doctrine dit qu'une
+abstraction se justifie sur un usage constate. J'allais donc reporter, avec un argument que je croyais
+solide : aucun decor textuel n'existe dans ce depot, tout le decor etant dessine par `content: ""`
+(`ADR-0027` clause 7). **Cet argument etait faux, et c'est `nadia-prof` qui le rend faux** : la
+cinquieme structure qu'elle **prefere** est precisement un texte de decor masque. L'usage n'est pas
+anticipe, il est demande par l'autorite pedagogique, en toutes lettres, et elle nomme le nom retenu ("Le
+Copain Malin"). Reporter aurait ete refuser d'ecrire la regle du chemin qu'on va prendre.
+
 ### 2. Ce que la regle ne decide pas, et qui appartient a `nadia-prof`
 
 Elle ne dit **pas** ou l'enseigne doit vivre. Elle rend les quatre structures possibles egales devant
@@ -80,6 +122,8 @@ avec son motif plutot que de le laisser vert a vide.
 | `enseigne-dans-le-bandeau-masque` : le balisage de la section 2.2 de `proposition-ines-meuble.md`, **repris tel quel** | rouge, en nommant l'element, l'attribut et le porteur du masque | rouge, "span.cabinet-enseigne porte th:text dans le sous-arbre masque de div.cabinet-bandeau" |
 | `enseigne-en-clair` : le meme nom ecrit en clair dans le gabarit | rouge, par l'autre branche de la lecture | rouge, "ecrit du texte dans le sous-arbre masque" |
 | Production a `b15bda1` | vert, sur une population de trois masques | vert |
+| **Amendement** `enseigne-declaree-comme-decor` : la cinquieme structure que `nadia-prof` prefere - le nom en texte, sous le masque, l'element declarant son motif | **vert**, et le jeu porte bien un decor declare | vert, 1 decor declare. Sans ce cas vert, une clause impossible a satisfaire passerait pour une clause exigeante (lecon du jeu `animation-avec-repli` d'`ADR-0026`) |
+| **Amendement** `decor-declare-hors-du-masque` : le motif declare, aucun masque au-dessus | rouge : la declaration ne remplace pas le masque | rouge, "span.cabinet-enseigne" |
 
 **Le premier jeu fautif n'est pas de ma main, et c'est le point.** La lecon de s05 dit qu'une fixture
 ecrite par l'auteur d'une regle ressemble a ce qu'il imagine. Ici, le contre-exemple est le balisage
@@ -137,7 +181,18 @@ types. Le compte de regles ArchUnit du depot reste **28**, methode inchangee (vo
 - Si une valeur de masque calculee apparait, la selection litterale devient trop etroite et doit etre
   elargie, avec un jeu fautif de plus.
 
+## Ce que cet `ADR` ne garantit pas, et `nadia-prof` l'ecrit mieux que moi
+
+*"`ADR-0035` garantit qu'aucun texte ne se cache dans un masque. Il ne garantit rien sur ce qu'un enfant
+entend. Personne dans cette equipe n'a jamais ecoute cet ecran, moi comprise."*
+
+Trois clauses executables ne remplacent pas une ecoute. Ce que les miennes tiennent est **structurel** :
+un texte de jeu n'est jamais masque, un decor masque l'est deliberement et par ecrit, et un decor declare
+n'est jamais annonce. Ce qu'elles ne peuvent pas dire : ce que le lecteur d'ecran prononce reellement,
+dans quel ordre, et si le visage sans nom accessible ajoute du bruit. **Aucun Done pedagogique ne sera
+prononce sur l'enseigne avant cette ecoute**, et cette phrase est d'elle, pas de moi.
+
 ## Verification
 
-`mvn -B verify` sur l'arbre de ce lot, `JAVA_HOME` sur un JDK 21.0.10 : **BUILD SUCCESS, 378 tests,
-0 echec** (374 avant cet ADR, 371 avant ce lot).
+`mvn -B verify` sur l'arbre de ce lot, `JAVA_HOME` sur un JDK 21.0.10 : **BUILD SUCCESS, 382 tests,
+0 echec** (371 avant ce lot).

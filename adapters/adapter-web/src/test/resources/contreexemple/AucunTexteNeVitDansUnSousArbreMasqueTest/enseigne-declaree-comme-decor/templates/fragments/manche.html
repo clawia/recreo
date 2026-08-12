@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="manche" class="ecran-de-jeu"
+     th:attr="data-arrivee=${arriveeParUnGeste} ? 'par-un-geste' : 'sans-geste'">
+    <button type="button" class="btn retour-accueil" data-role="sortie" hx-post="/retour"
+            hx-target="#jeu" hx-swap="innerHTML">Les jeux</button>
+    <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
+    <p class="enonce" th:text="${enonce}"></p>
+    <div class="cabinet">
+        <!-- ADR-0035, reserve H, cas vert : la cinquieme structure que nadia-prof prefere. Le nom vit dans
+             le fronton, en texte, sous un masque, et c'est l'element qui porte le texte - jamais un
+             ancetre - qui declare pourquoi il est masque. L'enfant qui voit a son enseigne, l'enfant qui
+             ecoute a sa question sans detour. -->
+        <div class="cabinet-bandeau" aria-hidden="true">
+            <span class="cabinet-visage"></span>
+            <span class="cabinet-enseigne" data-decor="nom peint sur le meuble, sans role de jeu"
+                  th:text="${nomEnseigne}"></span>
+        </div>
+        <form class="propositions" th:attr="hx-post=@{'/parties/' + ${jeuId} + '/coups'}"
+              hx-target="#jeu" hx-swap="innerHTML">
+            <button type="submit" class="btn proposition" data-role="action"
+                    th:each="proposition : ${propositions}"
+                    name="propositionChoisie" th:value="${proposition}" th:text="${proposition}"></button>
+        </form>
+        <div class="cabinet-socle" aria-hidden="true"></div>
+    </div>
+</div>
+</body>
+</html>

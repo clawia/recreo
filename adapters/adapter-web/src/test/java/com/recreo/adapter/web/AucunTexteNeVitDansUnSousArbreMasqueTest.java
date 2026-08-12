@@ -58,6 +58,14 @@ class AucunTexteNeVitDansUnSousArbreMasqueTest {
     private static final String MASQUE = "aria-hidden";
 
     /**
+     * ADR-0035, amendement du 2026-08-12 (reserve H de nadia-prof) : la declaration d'un masquage
+     * <b>voulu</b>. Un attribut et non une classe, pour la raison d'ADR-0017 et d'ADR-0027 : ce qu'il
+     * declare n'est pas un habillage. Sa valeur est le motif, en clair, et elle n'est jamais vide -
+     * une declaration sans motif est un contournement, pas une intention.
+     */
+    private static final String DECOR_DECLARE = "data-decor";
+
+    /**
      * Les deux attributs par lesquels Thymeleaf pose du texte au rendu. Un sous-arbre masque qui n'en
      * porte aucun et n'ecrit rien en clair est muet pour tout le monde, ce qui est le cas normal d'un
      * decor.
@@ -104,10 +112,23 @@ class AucunTexteNeVitDansUnSousArbreMasqueTest {
         return classes.isEmpty() ? element.tagName() : element.tagName() + "." + classes;
     }
 
+    /**
+     * ADR-0035, reserve H : un texte de decor deliberement masque est declare <b>sur l'element qui le
+     * porte</b>, jamais sur un ancetre. Le tolerer sur un ancetre reconstituerait exactement le defaut
+     * que cet ADR ferme - une declaration posee sur un conteneur, qui devient fausse des que son
+     * contenu change sans que personne la relise.
+     */
+    private static boolean declareSonDecor(Element element) {
+        return !element.attr(DECOR_DECLARE).isBlank();
+    }
+
     static List<String> textesDansUnSousArbreMasque(Path racine) {
         List<String> fautifs = new ArrayList<>();
         for (Masque masque : masques(racine)) {
             for (Element noeud : masque.porteur().getAllElements()) {
+                if (declareSonDecor(noeud)) {
+                    continue;
+                }
                 if (!noeud.ownText().isBlank()) {
                     fautifs.add(masque.gabarit().getFileName() + " : " + designer(noeud)
                             + " ecrit du texte dans le sous-arbre masque de "
@@ -153,6 +174,62 @@ class AucunTexteNeVitDansUnSousArbreMasqueTest {
     }
 
     /**
+     * ADR-0035, reserve H, le versant qui empeche la reserve d'etre une porte : un decor declare qui ne
+     * vit <b>pas</b> sous un masque est annonce a l'enfant, donc sa declaration dit le contraire de ce
+     * que le document fait. C'est la clause qui tient la condition de nadia-prof - "le nom de l'enseigne
+     * ne doit pas etre annonce" - par la structure et non par la relecture.
+     */
+    static void verifierQueToutDecorDeclareEstMasque(Path racine) {
+        List<String> fautifs = new ArrayList<>();
+        for (Path gabarit : gabarits(racine)) {
+            Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
+            for (Element porteur : document.select("[" + DECOR_DECLARE + "]")) {
+                if (porteur.closest("[" + MASQUE + "=true]") == null) {
+                    fautifs.add(gabarit.getFileName() + " : " + designer(porteur));
+                }
+            }
+        }
+        assertThat(fautifs)
+                .as("ADR-0035 : un element declare son texte comme decoratif (%s) mais aucun %s=\"true\" "
+                        + "ne le couvre. Il est donc annonce a l'enfant, et sa declaration dit le "
+                        + "contraire de ce que le document fait", DECOR_DECLARE, MASQUE)
+                .isEmpty();
+    }
+
+    @Test
+    void toutDecorDeclareVitDansUnSousArbreMasque() {
+        verifierQueToutDecorDeclareEstMasque(RACINE_PRODUCTION);
+    }
+
+    /** Les textes de decor declares, dont le nombre est le plafond de la reserve H. */
+    static List<String> decorsTextuelsDeclares(Path racine) {
+        List<String> declares = new ArrayList<>();
+        for (Path gabarit : gabarits(racine)) {
+            Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
+            for (Element porteur : document.select("[" + DECOR_DECLARE + "]")) {
+                declares.add(gabarit.getFileName() + " : " + designer(porteur));
+            }
+        }
+        return declares;
+    }
+
+    /**
+     * ADR-0016, la lecon du plafond : une exemption dont le plafond depasse la dette n'est pas une
+     * exemption. La reserve H est ouverte et sa population de production vaut <b>zero</b> a ce jour. Le
+     * jour ou l'enseigne y entre, ce nombre passe a 1 et ce test le dit - la hausse est alors un acte
+     * delibere, pas une derive.
+     */
+    @Test
+    void leNombreDeDecorsTextuelsDeclaresEstEpingle() {
+        assertThat(decorsTextuelsDeclares(RACINE_PRODUCTION))
+                .as("ADR-0035, reserve H : la production declare un texte de decor masque. Ce n'est pas "
+                        + "interdit - c'est le seul usage correct du masquage - mais chaque entree se "
+                        + "gagne devant nadia-prof, avec son motif ecrit dans l'attribut. Mets ce "
+                        + "plafond a la taille exacte de ce que le depot porte, jamais au-dela")
+                .isEmpty();
+    }
+
+    /**
      * ADR-0013 obligation 3, sur du materiau reel : le balisage de la section 2.2 de
      * {@code proposition-ines-meuble.md}, repris tel quel - l'enseigne posee par {@code th:text} dans
      * le bandeau masque. C'est un texte que le modele fournit, donc invisible a une lecture qui ne
@@ -165,6 +242,35 @@ class AucunTexteNeVitDansUnSousArbreMasqueTest {
                 .hasMessageContaining("span.cabinet-enseigne")
                 .hasMessageContaining("th:text")
                 .hasMessageContaining("div.cabinet-bandeau");
+    }
+
+    /**
+     * ADR-0035, reserve H : le cas <b>vert</b>, et il est indispensable. Sans lui, une clause
+     * impossible a satisfaire passerait pour une clause exigeante - c'est la lecon du jeu
+     * "animation-avec-repli" d'ADR-0026. C'est la cinquieme structure que nadia-prof prefere : le nom
+     * vit dans le fronton, en texte, sous un masque, et son element declare son motif.
+     */
+    @Test
+    void uneEnseigneDeclareeCommeDecorSousSonMasqueEstAcceptee() {
+        Path acceptee = CONTRE_EXEMPLE.resolve("enseigne-declaree-comme-decor");
+
+        verifier(acceptee);
+        verifierQueToutDecorDeclareEstMasque(acceptee);
+        assertThat(decorsTextuelsDeclares(acceptee))
+                .as("ce jeu doit vraiment porter le decor declare, sinon il ne prouve rien")
+                .hasSize(1);
+    }
+
+    /**
+     * ADR-0035, reserve H : un decor declare mais non masque. La declaration ne suffit pas - sans
+     * masque, le nom est annonce, ce que nadia-prof refuse dans tous les cas.
+     */
+    @Test
+    void unDecorDeclareHorsDUnMasqueFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifierQueToutDecorDeclareEstMasque(
+                CONTRE_EXEMPLE.resolve("decor-declare-hors-du-masque")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("span.cabinet-enseigne");
     }
 
     /**

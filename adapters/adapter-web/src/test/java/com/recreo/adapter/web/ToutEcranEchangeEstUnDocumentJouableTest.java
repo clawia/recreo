@@ -5,6 +5,7 @@ import org.jsoup.nodes.Attribute;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.junit.jupiter.api.Test;
+import com.recreo.domain.mechanic.SessionStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Import;
@@ -76,6 +77,12 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
 
     /** La proposition fausse de l'item de {@code JEU_REPETE_ID} (PartieControllerTest). */
     private static final String PROPOSITION_FAUSSE = "mauvaise";
+
+    /**
+     * ADR-0034, amendement : deux manches et un contenu combinatoire (PartieControllerTest), donc une
+     * partie que deux reponses fausses terminent sur un verdict faux.
+     */
+    private static final String JEU_INFINI_ID = "jeu-infini";
 
     private static final String ATTRIBUT_DE_CIBLE = "hx-target";
 
@@ -154,6 +161,8 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
                 "POST /parties/{jeuId}/coups",
                 assembler(corps(post("/parties/{jeuId}/coups", JEU_ID).session(partie)
                         .param("propositionChoisie", "2")))));
+        ecrans.add(new Ecran("fin de partie sur une reponse fausse", "POST /parties/{jeuId}/coups",
+                assembler(corpsDUneFinDePartieFaussee())));
         ecrans.add(new Ecran("lecture d'une manche sur une partie terminee",
                 "GET /parties/{jeuId}/manche",
                 assembler(corps(get("/parties/{jeuId}/manche", JEU_ID).session(partie)))));
@@ -176,6 +185,42 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
         corps(post("/parties/{jeuId}", JEU_REPETE_ID).session(partieFaussee));
         return corps(post("/parties/{jeuId}/coups", JEU_REPETE_ID).session(partieFaussee)
                 .param("propositionChoisie", PROPOSITION_FAUSSE));
+    }
+
+    /**
+     * ADR-0034, amendement : la derniere manche jouee faux, donc une partie qui se termine sur un
+     * verdict faux. Le jeu a deux items ne peut pas la produire - ses deux manches se terminent sur la
+     * bonne reponse ou pas du tout - et le jeu a item repete demanderait dix coups. Le jeu infini a
+     * deux manches la produit en deux.
+     */
+    private String corpsDUneFinDePartieFaussee() throws Exception {
+        MockHttpSession partie = new MockHttpSession();
+        corps(post("/parties/{jeuId}", JEU_INFINI_ID).session(partie));
+        corps(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                .param("propositionChoisie", PROPOSITION_FAUSSE));
+        return corps(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                .param("propositionChoisie", PROPOSITION_FAUSSE));
+    }
+
+    /**
+     * Le marqueur que le gabarit de retour ecrit sur la branche sans suite, lu dans le gabarit comme
+     * les deux marqueurs de verdict : la classe de l'element porte par la negation de {@code enSuite}.
+     */
+    static String marqueurDeFinDePartie() throws IOException {
+        Document gabarit = Jsoup.parse(GABARIT_DE_RETOUR.toFile(), "UTF-8");
+        List<String> marqueurs = new ArrayList<>();
+        for (Element porteur : gabarit.getAllElements()) {
+            if (porteur.hasAttr("th:unless") && porteur.attr("th:unless").contains("${enSuite}")) {
+                marqueurs.add(porteur.className().strip());
+            }
+        }
+        assertThat(marqueurs)
+                .as("ADR-0034 : le marqueur de fin de partie se lit dans %s, sur l'element que la "
+                        + "negation de ${enSuite} rend. Un seul est attendu ; si le gabarit exprime "
+                        + "desormais la fin de partie autrement, c'est ici qu'il faut re-deriver la "
+                        + "lecture", GABARIT_DE_RETOUR)
+                .hasSize(1);
+        return marqueurs.get(0);
     }
 
     /**
@@ -392,16 +437,31 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
      * exemption possible. Les marqueurs qui les distinguent sont lus dans le gabarit.</p>
      */
     @Test
-    void leCorpusExerceLesDeuxVerdicts() throws Exception {
+    void leCorpusExerceChaqueCoupleDeVerdictEtDeSuite() throws Exception {
         List<Ecran> ecrans = ecrans();
+        String finDePartie = marqueurDeFinDePartie();
 
-        for (String marqueur : marqueursDeVerdict()) {
-            assertThat(ecrans)
-                    .as("ADR-0034 : aucun ecran de ce corpus ne porte \"%s\". Une clause de cette classe "
-                            + "ne juge que les etats que le corpus produit : sans cet ecran, tout ce que "
-                            + "le serveur rend sur ce verdict echappe aux deux clauses ci-dessus",
-                            marqueur)
-                    .anyMatch(ecran -> !ecran.document().select("." + marqueur).isEmpty());
+        assertThat(SessionStatus.values())
+                .as("ADR-0034 : ce garde-fou croise le verdict avec le statut de session, et il ne sait "
+                        + "traduire que deux statuts en ecran - la partie continue, ou elle est finie. Un "
+                        + "statut de plus doit lui apprendre quel ecran il rend, sans quoi il le "
+                        + "confondrait en silence avec la partie qui continue")
+                .hasSize(2);
+
+        for (String verdict : marqueursDeVerdict()) {
+            for (SessionStatus statut : SessionStatus.values()) {
+                boolean termineeAttendue = statut == SessionStatus.TERMINEE;
+                assertThat(ecrans)
+                        .as("ADR-0034 : aucun ecran de ce corpus ne joint \"%s\" a un statut %s. Une "
+                                + "clause de cette classe ne juge que les etats que le corpus produit ; "
+                                + "sans cet ecran, tout ce que le serveur rend dans cet etat echappe aux "
+                                + "deux clauses ci-dessus. Si cet etat n'a plus d'ecran a lui - parce que "
+                                + "le verdict a cesse d'avoir le sien - c'est le marqueur de cet etat "
+                                + "qu'il faut re-deriver ici, pas cette clause qu'il faut affaiblir",
+                                verdict, statut)
+                        .anyMatch(ecran -> !ecran.document().select("." + verdict).isEmpty()
+                                && !ecran.document().select("." + finDePartie).isEmpty() == termineeAttendue);
+            }
         }
     }
 

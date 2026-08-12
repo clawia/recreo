@@ -44,19 +44,45 @@ route est derivee ; l'etat ne l'etait pas, et rien ne le disait.
 
 ## Decision
 
-### 1. Tout corpus d'ecrans exerce les deux verdicts, et le prouve
+### 1. Tout corpus d'ecrans exerce chaque couple de verdict et de suite, et le prouve
 
-Toute classe de test qui construit un corpus d'ecrans pour y appliquer des clauses **exerce les deux
-valeurs du verdict**, et porte une clause qui echoue quand l'une manque. Le verdict est un booleen :
-son perimetre est **total par construction**, deux valeurs, sans exemption possible et sans plafond a
-tenir a jour.
+**Amendement du 2026-08-12, le meme jour : cette clause disait "les deux verdicts" et c'etait deja
+insuffisant.** Je l'ai constate en chiffrant la disparition de l'ecran intermediaire, sur ma propre
+clause ecrite le matin.
 
-### 2. Les marqueurs des deux verdicts sont lus dans le gabarit, jamais ecrits dans le test
+Le verdict n'avait un ecran a lui que parce que l'ecran de retour existait. Des que la bonne reponse
+charge directement la question suivante, l'ecran d'une reponse fausse est un **ecran de manche** : il ne
+porte **ni** l'un **ni** l'autre des deux marqueurs. La clause d'origine serait restee **verte**,
+satisfaite par les seules fins de partie - donc sur une population qui n'a plus rien a voir avec ce
+qu'elle pretend garder. C'est le defaut que cet `ADR` ferme, reproduit dans l'`ADR` qui le ferme, et
+c'est la quatrieme fois de ce sprint que je le rencontre.
+
+**La regle corrigee.** Toute classe de test qui construit un corpus d'ecrans **exerce chaque couple
+(verdict, statut de session)**, et porte une clause qui echoue quand l'un manque. Le perimetre est le
+**produit** de deux ensembles totaux par construction : le verdict est un booleen, `SessionStatus` est
+une enumeration. Quatre couples, aucune exemption possible.
+
+**Ce que le produit apporte et que le verdict seul n'apportait pas** : il distingue "faux, la partie
+continue" de "faux, la partie est finie". Ce sont deux ecrans differents aujourd'hui, et ils resteront
+deux ecrans differents apres le changement d'enchainement - c'est meme la seule paire qui survit
+intacte. Une clause portee sur le verdict seul confond les deux ; portee sur le couple, elle ne peut
+plus.
+
+**Le nombre de statuts est epingle** a 2, avec son motif : ce garde-fou ne sait traduire que deux
+statuts en ecran, et un troisieme se confondrait **en silence** avec la partie qui continue. Le message
+demande de lui apprendre le nouvel ecran, jamais d'affaiblir la clause.
+
+### 2. Les marqueurs sont lus dans le gabarit, jamais ecrits dans le test
 
 Le couple de classes qui distingue un verdict juste d'un verdict faux est lu dans
 `fragments/retour.html`, sur l'attribut qui choisit entre deux litteraux selon `${juste}` (`ADR-0015` :
 deriver le perimetre de la source qui gouverne le rendu). Deux noms de classe recopies dans un test
 auraient survecu a leur propre disparition du gabarit ; ici, ils n'y survivent pas.
+
+**Amendement du 2026-08-12** : le marqueur de fin de partie se lit de la meme facon, sur la classe de
+l'element que la negation de `${enSuite}` rend. Meme motif, meme mode de defaillance : si le gabarit
+cesse d'exprimer la fin de partie ainsi, la lecture echoue bruyamment au lieu de chercher une classe
+qui n'existe plus.
 
 Corollaire, et c'est ce que le jeu fautif prouve : si le gabarit cesse d'exprimer le verdict par une
 paire de litteraux - par exemple parce que les deux noms de classe demenagent dans le modele - la
@@ -118,6 +144,7 @@ compte de regles ArchUnit du depot reste donc **28**, methode inchangee (voir `A
 | **Le meme defaut, apres** : corpus etendu, production mutee a l'identique | rouge, sur l'ecran nomme | **1 echec sur 15**, `aucunEcranNeRendUnParagrapheVide`, message : "sur l'ecran \"retour faux, la partie continue\" (POST /parties/{jeuId}/coups), un paragraphe est rendu sans texte" |
 | **Jeu fautif** : `retour.html` dont `th:classappend` lit deux variables du modele au lieu de deux litteraux | la lecture echoue, elle ne rend pas une liste vide | rouge, "les deux marqueurs du verdict se lisent dans..." |
 | **Le corpus lui-meme** : `mvn -B verify` complet | vert | **374 tests, 0 echec** (371 + 3) |
+| **Amendement, morsure de la clause elargie** : corpus prive de l'ecran "fin de partie sur une reponse fausse", clause portee sur le couple | rouge, en nommant le couple manquant | **1 echec sur 9**, "aucun ecran de ce corpus ne joint \"est-faux\" a un statut TERMINEE". La clause d'origine, elle, etait **verte** sur ce meme corpus : ce couple n'avait jamais ete exerce, meme apres la correction du matin |
 
 Le premier et le deuxieme cas sont le meme octet de production juge par deux corpus : c'est la mesure
 qui etablit que l'angle mort etait reel et qu'il est ferme, et non que la clause est exigeante en
@@ -190,8 +217,18 @@ a l'epreuve, dans le meme lot ou il reprochait a deux corpus d'etre aveugles.
   `fragments/retour.html`. La lecture rougira alors, et c'est le comportement voulu : elle demande a
   etre re-derivee sur la source qui exprime desormais le verdict, pas a etre contournee.
 
+## Ce que l'amendement du 2026-08-12 laisse ouvert, et pour qui
+
+La clause elargie reste juste apres la disparition de l'ecran intermediaire, mais **elle ne suffira pas
+a couvrir les deux ecrans de manche**. Sur le nouvel enchainement, "juste, la partie continue" et "faux,
+la partie continue" sont deux ecrans de manche que rien ne distingue par un marqueur de verdict : leur
+seul discriminant sera **le message sous le meuble**, qui n'existe pas encore. La clause deviendra donc
+**rouge** le jour du changement, sur le couple faux + `EN_COURS`, et c'est voulu : son message dit de
+re-deriver le marqueur de cet etat, jamais d'affaiblir la clause. **C'est la charge du lot qui
+implementera la mecanique**, et elle est nommee ici pour qu'elle ne se decouvre pas.
+
 ## Verification
 
-`mvn -B verify` sur l'arbre de ce lot, `JAVA_HOME` sur un JDK 21.0.10 : **BUILD SUCCESS**, 374 tests,
-0 echec (43 + 7 + 181 + 63 + 77 + 3). Baseline avant ce lot, meme commande, meme JDK : 371 tests,
-0 echec. Les trois tests d'ecart sont les trois clauses de cet ADR.
+`mvn -B verify` sur l'arbre de ce lot, `JAVA_HOME` sur un JDK 21.0.10 : **BUILD SUCCESS**, 382 tests,
+0 echec. Baseline avant ce lot, meme commande, meme JDK : 371 tests, 0 echec. Les onze tests d'ecart
+sont les clauses de cet `ADR` et d'`ADR-0035`, amendements compris.

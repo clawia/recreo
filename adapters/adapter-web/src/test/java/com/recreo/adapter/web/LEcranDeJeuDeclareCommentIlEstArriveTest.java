@@ -1,5 +1,6 @@
 package com.recreo.adapter.web;
 
+import com.recreo.domain.mechanic.SessionStatus;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -74,6 +75,12 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
     /** La proposition fausse de l'item de {@code JEU_REPETE_ID} (PartieControllerTest). */
     private static final String PROPOSITION_FAUSSE = "mauvaise";
 
+    /**
+     * ADR-0034, amendement : deux manches et un contenu combinatoire (PartieControllerTest), donc une
+     * partie que deux reponses fausses terminent sur un verdict faux.
+     */
+    private static final String JEU_INFINI_ID = "jeu-infini";
+
     /** Le marqueur d'ecran de jeu d'ADR-0022, qui dit ou l'enfant est. */
     private static final String ECRAN_DE_JEU = "ecran-de-jeu";
 
@@ -126,6 +133,8 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
                         .param("propositionChoisie", "1")));
         reponses.add(reponse("retour faux, la partie continue", "POST /parties/{jeuId}/coups",
                 coupFaux()));
+        reponses.add(reponse("fin de partie sur une reponse fausse", "POST /parties/{jeuId}/coups",
+                finDePartieFaussee()));
         reponses.add(reponse("manche 2, demandee par un appui sur Encore", "GET /parties/{jeuId}/manche",
                 get("/parties/{jeuId}/manche", JEU_ID).session(partie)));
         reponses.add(reponse("retour de la derniere manche, fin de partie", "POST /parties/{jeuId}/coups",
@@ -154,6 +163,19 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
     }
 
     /**
+     * ADR-0034, amendement : la derniere manche jouee faux. Le jeu infini a deux manches la produit en
+     * deux coups, la ou le jeu a item repete en demanderait dix.
+     */
+    private MockHttpServletRequestBuilder finDePartieFaussee() throws Exception {
+        MockHttpSession partie = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_INFINI_ID).session(partie));
+        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                .param("propositionChoisie", PROPOSITION_FAUSSE));
+        return post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                .param("propositionChoisie", PROPOSITION_FAUSSE);
+    }
+
+    /**
      * ADR-0034 : ce corpus ne jouait que des bonnes reponses, et son perimetre derive par route ne
      * pouvait pas le dire - {@code POST /parties/{jeuId}/coups} y figurait deja. Les cinq clauses de
      * cette classe, dont celle qui refuse un mot leurre dans le conteneur de propositions, ne voyaient
@@ -165,14 +187,23 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
      * point 3).</p>
      */
     @Test
-    void leCorpusExerceLesDeuxVerdicts() throws Exception {
+    void leCorpusExerceChaqueCoupleDeVerdictEtDeSuite() throws Exception {
         List<Reponse> reponses = reponses();
+        String finDePartie = ToutEcranEchangeEstUnDocumentJouableTest.marqueurDeFinDePartie();
 
-        for (String marqueur : ToutEcranEchangeEstUnDocumentJouableTest.marqueursDeVerdict()) {
-            assertThat(reponses)
-                    .as("ADR-0034 : aucune reponse de ce corpus ne porte \"%s\". Tout ce que le serveur "
-                            + "rend sur ce verdict echappe alors aux clauses de cette classe", marqueur)
-                    .anyMatch(reponse -> !Jsoup.parse(reponse.corps()).select("." + marqueur).isEmpty());
+        for (String verdict : ToutEcranEchangeEstUnDocumentJouableTest.marqueursDeVerdict()) {
+            for (SessionStatus statut : SessionStatus.values()) {
+                boolean termineeAttendue = statut == SessionStatus.TERMINEE;
+                assertThat(reponses)
+                        .as("ADR-0034 : aucune reponse de ce corpus ne joint \"%s\" a un statut %s. Tout "
+                                + "ce que le serveur rend dans cet etat echappe alors aux clauses de "
+                                + "cette classe", verdict, statut)
+                        .anyMatch(reponse -> {
+                            Document rendu = Jsoup.parse(reponse.corps());
+                            return !rendu.select("." + verdict).isEmpty()
+                                    && !rendu.select("." + finDePartie).isEmpty() == termineeAttendue;
+                        });
+            }
         }
     }
 

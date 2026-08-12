@@ -643,4 +643,131 @@ switch exhaustif, cliquet a 1) pour etre ecrite **dans le meme geste** que la de
 premier principe exige. Ecrire le cliquet maintenant serait ecrire un garde-fou sur un type imaginaire,
 le defaut que ce sprint a deja sanctionne trois fois.
 
-`mvn -B verify` sur l'arbre de ce lot, JDK 21.0.10 : **BUILD SUCCESS, 378 tests, 0 echec.**
+## 11. L'enseigne : la cinquieme structure, et ce que j'ai trouve en la cherchant
+
+`nadia-prof` refuse mes quatre structures pour un motif que je n'avais pas anticipe : **les quatre
+annoncent le nom**, et le fronton vit entre l'enonce et la premiere proposition. Elle a raison, et elle a
+raison une seconde fois sur `ADR-0035`, qui interdisait du meme mouvement le defaut et le seul usage
+correct du masquage. **Les deux corrections sont livrees dans ce lot** (`ADR-0035`, amendement 1 bis).
+
+### 11.a La cinquieme structure existe, et c'est la sienne
+
+**Le nom vit dans le fronton, en texte, sous le masque, et l'element qui porte le texte declare son
+motif.** Le nom n'est alors **jamais annonce** - donc son rang dans l'ordre de lecture ne se pose plus.
+C'est desormais garde par trois clauses qui se tiennent : un texte de jeu n'est jamais masque ; un decor
+masque se declare **sur l'element du texte** et jamais sur un ancetre ; **un decor declare vit toujours
+sous un masque**, sans quoi il serait annonce et sa declaration mentirait. Cout : 0 px, 0 hauteur, un
+attribut. Plafond epingle a zero aujourd'hui ; l'enseigne le fera passer a 1, delibere et devant elle.
+
+### 11.b L'hypothese `order` : elle marche techniquement, et elle est refusee par le motif
+
+Deux objections m'etaient donnees ; la seconde est la bonne, et elle rend la premiere sans objet.
+
+- **`order` ne peut pas faire ce qu'on lui demande la ou on le met.** Le fronton est un enfant flex de
+  `.cabinet` ; `order` sur l'enseigne **a l'interieur** du fronton ne la deplace que par rapport au
+  visage. Pour deplacer l'**annonce** apres les propositions, il faut deplacer l'enseigne **dans le
+  DOM** apres `.propositions`, puis la remonter visuellement - et alors `order` ne suffit plus, il faut
+  un positionnement absolu, sans quoi le bloc coute de la hauteur (les 4 px du pli).
+- **Et cela ne repond pas au motif.** Sa condition n'est pas *"le nom est annonce trop tot"*, c'est
+  *"le nom ne doit pas etre annonce"*. Une structure qui deplace l'annonce reste une structure qui
+  annonce : elle serait refusee au meme titre que mes quatre. La premiere objection - divorcer l'ordre
+  de lecture de l'ordre visuel est en soi un defaut - est donc juste **et sans objet** : la piste tombe
+  avant, sur le motif.
+
+### 11.c Ce que la structure ne change pas, et ce que j'ai trouve en le verifiant
+
+L'objection *"htmx remplace tout l'ecran, donc tout est relu"* m'a fait lire ce que le depot fait
+vraiment. **Deux mesures, dans le depot a `b15bda1` :**
+
+1. **`<main id="jeu">` ne porte ni `aria-live` ni `role`.** Un echange htmx ne produit donc, par
+   lui-meme, **aucune annonce**. "Dix fois par partie" n'est pas une consequence du remplacement.
+2. **Les huit lignes de `recreo.js` deplacent le focus apres chaque echange - mais seulement si le
+   fragment recu contient `.signal`.** Or `.signal` n'existe que dans `fragments/retour.html`.
+
+**Consequence, et elle depasse la question de l'enseigne.** Sur le nouvel enchainement, l'ecran echange
+apres un coup est un ecran de **manche** : il n'a pas de `.signal`, donc **aucun focus n'est pose**. Le
+bouton que l'enfant venait de presser a ete retire du document, donc le focus retombe sur `<body>`, et
+il faut reparcourir l'ecran depuis le haut. **Ce qui produit la relecture n'est pas le rang de
+l'enseigne, c'est l'absence d'un point de focus sur le nouvel ecran.**
+
+Et le premier arret de tabulation de l'ecran de manche est **"Les jeux"**, le bouton qui quitte le jeu -
+il ouvre le fragment, avant le score et l'enonce. Aujourd'hui, apres un coup, le focus va sur le verdict
+et la tabulation suivante donne "Encore !". Demain, sans point de focus, **la premiere touche apres
+chaque reponse mene a la sortie du jeu.** Le meme defaut existe deja aujourd'hui sur le chemin
+"Encore !" - le bouton presse disparait et rien ne rattrape le focus - mais l'ecran de retour, lui,
+avait le sien.
+
+**Ce n'est pas une question d'enseigne, c'est une condition manquante de la mecanique**, et je la remonte
+telle quelle : **le nouvel ecran de manche doit declarer son point de focus**, sur le modele exact de
+`data-arrivee` d'`ADR-0027` - le serveur declare, la feuille et le script obeissent. **Quel** element le
+recoit (l'enonce ? le message ? la premiere proposition ?) est un choix pedagogique qui appartient a
+`nadia-prof` : c'est pourquoi je n'ecris pas la clause aujourd'hui, elle figerait ce choix. Elle doit
+entrer dans ses conditions **avant** que la mecanique soit codee, sans quoi elle sera decouverte a
+l'ecoute qu'elle exige, c'est-a-dire trop tard.
+
+### 11.d Les autres pistes, pour que l'inventaire soit honnete
+
+| Piste | Ce qu'elle donne | Cout |
+|---|---|---|
+| **Le nom dans la coquille permanente** (en-tete), annonce une fois au chargement | le nom existe, dit une fois, jamais reannonce | Il quitte le fronton : ce n'est plus une enseigne peinte sur le meuble mais un titre d'application, et `recreo` en a deja un (`DEC-0010`). Deux titres concurrents pour un enfant qui ecoute |
+| **Le meuble porte un nom accessible unique** (`aria-label` sur `.cabinet`) | le nom est annonce **une fois**, a l'entree du meuble, et non entre l'enonce et les propositions | Refusee par son motif : c'est encore une annonce, et elle est **avant** les propositions puisque le cabinet les contient. Techniquement seduisante, pedagogiquement identique aux quatre refusees |
+| **Le fronton ne porte aucun texte ce sprint** (son repli) | zero exception, zero risque | Le fronton garde le visage seul. C'est ce qui se passe si l'ecoute reste impossible ce sprint, et cela ne retire rien a personne |
+| **La cinquieme structure** (11.a) | l'enfant qui voit a son enseigne, l'enfant qui ecoute a sa question sans detour | Un attribut, un plafond a tenir |
+
+**Et le fait qu'elle demande d'ecrire, parce qu'il est vrai** : aucune de ces structures ne satisfait sa
+condition **prouvee**. La cinquieme la satisfait *par construction du document* - le nom n'est pas dans
+l'arbre d'accessibilite - et c'est tout ce qu'un automate de ce depot peut etablir. Ce qu'un enfant
+entend reellement, y compris si le visage sans nom ajoute du bruit, **n'a jamais ete ecoute par
+personne**, elle comprise. Mes trois clauses ne remplacent pas cette ecoute et ne la simulent pas.
+
+## 12. Les deux points a ne pas perdre
+
+### 12.a Le schema de paquet n'est pas ferme : report ecrit, avec son declencheur - et une mesure qui corrige mon propre constat
+
+**Mesure d'abord, parce que mon constat du tour precedent etait incomplet.** Mutation reelle, appliquee
+puis retiree : `indice:` renomme `indce:` sur un item de `cp-le-bon-son.yaml`, c'est-a-dire la faute de
+frappe exacte que le schema ouvert laisserait passer. Resultat : `mvn -B verify` rend
+`ChaquePaquetPorteUnIndiceTest` **rouge**, en nommant le paquet et l'item.
+
+**Le champ inconnu n'est donc pas silencieux : c'est sa consequence qui est gardee.** Le depot ne
+verifie pas le schema, il verifie la **promesse** - un item doit porter un indice, un item a variation
+doit porter une explication (`ChaquePaquetExpliqueSesItemsAVariationTest`), un paquet doit offrir plus
+d'items que de manches (`ADR-0023`), et les champs vraiment obligatoires font echouer le chargeur. Le
+perimetre reellement silencieux est donc **le complementaire** : un champ optionnel dont la perte n'a
+aucun garde-fou de consequence.
+
+**Verdict : report ecrit, pas de clause maintenant.** Le motif n'est pas que le risque soit nul, c'est
+que la population est vide **et gardee par ailleurs**, et que fermer le schema est un changement de
+**production** dans `adapter-content` - donc du code, dans un lot d'avis, sur un chemin qu'aucun defaut
+mesure ne reclame aujourd'hui.
+
+**Le declencheur, nomme pour qu'il ne se decouvre pas** : le **premier champ optionnel ajoute au schema
+de paquet dont la perte n'est gardee par aucune clause de consequence**. Ce jour-la, le chargeur doit
+refuser les champs inconnus, avec son jeu fautif. Destinataire : la story qui ajoute ce champ ; arbitre
+de son existence : `theo-archi`. Et le signe avant-coureur a surveiller : un paquet ecrit par quelqu'un
+qui n'est pas l'auteur du chargeur.
+
+### 12.b `SELECTEURS_DU_CABINET` : a qui, et sous quelle forme
+
+**A `sofia-sm`, comme critere d'acceptation de la premiere story qui ajoute un selecteur de decor de
+cabinet** - celle du visage et de l'enseigne, ou celle du levier, la premiere qui atterrit. Pas a une
+branche : entre onze branches, un correctif route a "la story du levier" se perd si le levier glisse.
+Ecrit dans les criteres de la story, il ne se perd pas.
+
+**Forme exacte, pour qu'elle n'ait pas a etre redecouverte** : remplacer la liste de cinq noms par une
+**derivation** - toute regle maison dont le selecteur nomme une classe commencant par `cabinet`. Motif :
+la proposition d'`ines-design` ajoute **six** selecteurs de decor (`.cabinet-visage` et ses deux
+pseudo-elements, `.cabinet-enseigne`, `.cabinet-socle::before`, `::after`) et le levier **trois** ; hors
+de la liste, les neuf echapperaient au controle des dimensions en pixels **sans qu'aucun rouge le dise**.
+
+**Et le cout a dimensionner dans la story, parce qu'il n'est pas nul** :
+`chaqueSelecteurEpingleEstEprouveParLeJeuFautif` derive son attente de la liste, donc **chaque** selecteur
+derive exige son bloc fautif dans `contreexemple/CabinetDeLaMachineTest/dimension-en-pixels/`. Neuf
+selecteurs neufs, neuf blocs. C'est le prix de la derivation, et c'est le bon prix : il est paye une fois,
+la ou l'enumeration se paye a chaque oubli.
+
+**Pourquoi pas moi, pas ici** : `CabinetDeLaMachineTest.java` est modifie par mon lot `s10-theo-archi`,
+deja rendu. Le toucher ici creerait un conflit entre deux de mes propres lots, que `sofia-sm` devrait
+resoudre sur un fichier de test dense.
+
+`mvn -B verify` sur l'arbre de ce lot, JDK 21.0.10 : **BUILD SUCCESS, 382 tests, 0 echec.**
