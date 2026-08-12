@@ -199,6 +199,19 @@ nom suggere - le defaut mesure d'`ADR-0015`, et je ne vais pas le refaire dans l
 - La CI gagne une etape et environ deux secondes ; trois juges purs qui n'etaient lances par personne
   le sont a chaque push.
 
+**Amendement du 2026-08-12 (s10) : l'outil que tout le monde utilise avait un mode de defaillance
+silencieux, sur le seul de ses trois chemins que personne n'avait converti.** Invoque avec un chemin
+de PNG relatif, `mesurer-rendu.sh` rendait "aucune capture (code 0)" et n'ecrivait rien. Trouve par
+`nadia-prof`. Le chemin de sortie est desormais rendu absolu par une fonction pure (`resoudre_png`),
+puis converti par `cygpath` comme le conteneur et le profil l'etaient deja ; un dossier de sortie
+absent est refuse explicitement avant tout lancement, au lieu de produire le meme silence. Aucune
+mesure deja ecrite dans le depot ne change : les deux formes de chemin absolu passent inchangees, et
+la geometrie rendue est identique (verifiee a la main apres correction, sur un chemin relatif :
+capture de 600 x 1400 px, contenu jusqu'a x = 359 et y = 639, fond rouge a x = 361 et y = 641). La
+lecon de doctrine - une enveloppe dont le collaborateur de poste est designe par une variable
+d'environnement a un cablage testable - est portee par l'amendement du meme jour a `ADR-0009`, avec
+ses cas et sa mesure de morsure.
+
 ## Alternatives considerees
 
 **Elargir le perimetre de `ViewportEtLargeurTelephoneTest` aux debordements.** Impossible, et pas par
