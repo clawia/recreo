@@ -1,0 +1,53 @@
+schema: 1
+id: cp-complements-10
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Compléments à 10"
+items:
+  - enonce: "0 + ? = 10"
+    bonneReponse: "10"
+    distracteurs: ["0", "9"]
+    indice: "Garde tes mains fermées : il manque tes 10 doigts pour arriver à 10."
+  - enonce: "1 + ? = 10"
+    bonneReponse: "9"
+    distracteurs: ["1", "8"]
+    indice: "Lève 1 doigt, puis compte ceux qui manquent pour arriver à 10."
+  - enonce: "2 + ? = 10"
+    bonneReponse: "8"
+    distracteurs: ["2", "7"]
+    indice: "Lève 2 doigts, puis compte ceux qui manquent pour arriver à 10."
+  - enonce: "3 + ? = 10"
+    bonneReponse: "7"
+    distracteurs: ["3", "6"]
+    indice: "Lève 3 doigts, puis compte ceux qui manquent pour arriver à 10."
+  - enonce: "4 + ? = 10"
+    bonneReponse: "6"
+    distracteurs: ["4", "5"]
+    indice: "Lève 4 doigts, puis compte ceux qui manquent pour arriver à 10."
+  - enonce: "5 + ? = 10"
+    bonneReponse: "5"
+    distracteurs: ["4", "6"]
+    indice: "Lève 5 doigts d'une main, puis compte ceux de l'autre main : il en reste 5 pour arriver à 10."
+  - enonce: "6 + ? = 10"
+    bonneReponse: "4"
+    distracteurs: ["6", "3"]
+    indice: "Lève 6 doigts, puis compte ceux qui manquent pour arriver à 10."
+  - enonce: "7 + ? = 10"
+    bonneReponse: "3"
+    distracteurs: ["7", "2"]
+    indice: "Lève 7 doigts, puis compte ceux qui manquent pour arriver à 10."
+  - enonce: "8 + ? = 10"
+    bonneReponse: "2"
+    distracteurs: ["8", "1"]
+    indice: "Lève 8 doigts, puis compte ceux qui manquent pour arriver à 10."
+  - enonce: "9 + ? = 10"
+    bonneReponse: "1"
+    distracteurs: ["9", "0"]
+    indice: "Lève 9 doigts, puis compte celui qui manque pour arriver à 10."
+  - enonce: "10 + ? = 10"
+    bonneReponse: "0"
+    distracteurs: ["10", "1"]
+    indice: "Lève tes 10 doigts : il n'en manque plus aucun pour arriver à 10."
