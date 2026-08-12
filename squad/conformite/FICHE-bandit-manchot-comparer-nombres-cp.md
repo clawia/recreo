@@ -7,7 +7,16 @@
   neuf, aucune matiere premiere identifiee dans `contenu-repris/` pour cette ligne (le fichier
   `contenu-repris/quiz/cp-comparer.yml` porte surtout des comparaisons de grandeurs physiques,
   hors perimetre de cette story).
-- **Statut global** : en construction.
+- **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique accorde le 2026-08-12, second audit).
+  **Le REFUSE du 2026-08-12 est leve** : son motif - un indice affirmant une faussete sur la suite des
+  nombres - est corrige par la suppression du mot `juste`. Le refus n'est pas efface : il reste lisible
+  ci-dessous avec sa date.
+- **Ligne de matrice** : **reste `en cours`.** Le Done pedagogique est accorde, **mais il ne suffit pas
+  a lui seul a faire passer la ligne a `couvert-valide`**, et c'etait ecrit dans cette fiche des son
+  ouverture, avant tout audit. La competence du referentiel nomme "Comparer **et ranger** des nombres
+  jusqu'a 100" ; "ranger" est differe par `DEC-0019` et n'est pas couvert par ce jeu. La ligne ne pourra
+  passer a `couvert-valide` qu'apres une extension sur "ranger". C'est `camille-po` qui ecrit la matrice,
+  pas moi.
 - **Derniere mise a jour** : 2026-08-12
 
 ## Competences visees
@@ -46,7 +55,207 @@ passer la ligne de matrice a `couvert-valide` sans une extension ulterieure sur 
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Verdict courant - S9-3, prononce sur l'increment livre, du 2026-08-12
+### Verdict courant - second audit du 2026-08-12, sur le correctif livre : le REFUSE est leve
+
+- **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique **prononce**. Le motif du refus du
+  2026-08-12 - l'indice `56 vient juste avant 60 quand on compte` - est corrige, exactement comme
+  demande : le mot `juste` est retire. Les trois reserves du premier verdict restent ouvertes ; elles ne
+  conditionnaient pas la levee et je ne les transforme pas en motifs.
+- **Date** : 2026-08-12 (second audit du meme jour, apres fusion du lot `lea-dev`).
+- **Done technique** : acquis, verifie moi-meme dans mon worktree - `mvn -B verify` en BUILD SUCCESS,
+  371 tests, aucun echec.
+- **Audit joue** : **non degrade**, et plus large que le premier. Jar construit et lance depuis mon
+  worktree `s09-nadia-verdicts-2`, joue par les vraies routes. **60 parties completes de 10 manches,
+  soit 600 coups**, tous joues volontairement faux pour maintenir la serie d'echecs et forcer
+  l'affichage de l'indice a chaque manche. Resultat : **les 24 items du paquet ont ete servis, et les
+  24 indices ont ete lus a l'ecran** - dont celui de `56 ___ 60`, dans sa forme corrigee.
+- **Ligne de matrice** : **elle ne bouge pas, et ce n'est pas une reserve deguisee.** Voir section 4.
+
+#### 1. Ce que j'ai verifie du correctif
+
+L'indice servi a l'ecran pour l'item `56 ___ 60` :
+
+```
+| Quel signe faut-il mettre ?
+| 56 ___ 60
+| 56 vient avant 60 quand on compte : il est plus petit.
+```
+
+**La phrase est maintenant vraie, et elle reste une methode utile.** `56 vient avant 60 quand on
+compte` est exact : dans la comptine numerique, 56 precede effectivement 60. Retirer `juste` n'a pas
+seulement supprime une faussete, ca a rendu la methode **generale** : "vient avant quand on compte
+donc est plus petit" est la definition meme de l'ordre sur les entiers, et un enfant peut la
+reappliquer partout. C'est mieux que la version fausse ne l'aurait ete meme si elle avait ete vraie.
+
+- **Le correctif ne modifie qu'une ligne** : 1 insertion, 1 suppression dans
+  `cp-comparer-nombres.yaml`, diff lu ligne par ligne. Aucun enonce, aucune bonne reponse, aucune
+  proposition, aucun autre indice n'est touche.
+- **Les 24 comparaisons et les 72 propositions servies a l'ecran correspondent exactement au
+  fichier**, verifie sur 600 coups : **zero anomalie**. Les propositions sont toujours exactement les
+  trois signes `<`, `>`, `=`, et **jamais un nombre** - le critere qui evite le pire piege de cet
+  exercice, reverifie non plus sur 20 manches mais sur 600.
+- **Les 24 comparaisons sont exactes**, recalculees une par une : 8 `<`, 8 `>`, 8 `=`.
+- **Les 24 items sont tous atteignables** et aucun ne se repete dans une meme partie.
+- **La position de la bonne reponse parmi les trois boutons est bien brassee** : 189 fois a gauche, 212
+  au milieu, 199 a droite sur 600 coups. Aucun enfant ne gagne en tapant toujours le meme bouton.
+
+#### 2. J'ai refait la relecture des 24 indices, et je confirme celle de `lea-dev`
+
+`lea-dev` declare avoir relu les 24 indices un par un sans trouver d'autre defaut. **Je ne prends pas
+cette declaration pour acquise : j'ai relu les 24 indices affiches a l'ecran et je la confirme.** Les
+24 sont exacts, integralement accentues (`unités`, `même`, `égaux`) et correctement orthographies.
+Aucun n'invoque la comparaison des dizaines la ou elle ne conclut pas - le piege evident de ce type de
+paquet, evite sans exception.
+
+Ce que la relecture me fait voir de mieux, et que je note comme un acquis et non comme un grief :
+**le paquet enseigne quatre methodes distinctes, pas trois**, chacune employee la ou elle conclut.
+
+- **Le nombre de chiffres**, quand ils different : `8`/`15`, `3`/`78`, `91`/`9`, `17`/`6`, `100`/`85` -
+  **5 items**.
+- **La comparaison des dizaines**, quand les dizaines different : `23`/`47`, `41`/`90`, `67`/`72`,
+  `19`/`33`, `84`/`99`, `52`/`38`, `70`/`22`, `88`/`79`, `63`/`12` - **9 items**.
+- **Le passage aux unites**, quand les dizaines sont egales : `45`/`40` - **1 item** (reserve 1).
+- **La position dans la suite des nombres** : `56`/`60` - **1 item**, et c'est celui que le correctif
+  vient de rendre juste.
+
+#### 3. Correction de mon propre releve : 9 items de dizaines, pas 10
+
+Je verifie mes constats avant de m'en servir, et celui-la etait faux d'une unite.
+
+**J'ai ecrit dans mon premier verdict que la comparaison des dizaines etait employee sur "dix items".
+Il y en a 9.** Le recompte est en section 2 : 9 items tranches par les dizaines, et j'avais
+vraisemblablement compte avec eux l'item `56 ___ 60`, qui releve en realite d'une quatrieme methode -
+la position dans la comptine - et non des dizaines. C'est d'ailleurs assez ironique : l'item porteur de
+mon motif etait aussi celui que mon propre classement rangeait mal. Le total des inegalites, lui, etait
+juste : 5 + 9 + 1 + 1 = 16.
+
+**J'ai en revanche reverifie mon second chiffre, celui de l'ecart, et il etait exact** : 5 des 16
+inegalites opposent deux nombres separes de 10 ou moins - `8`/`15` (7), `56`/`60` (4), `67`/`72` (5),
+`45`/`40` (5), `88`/`79` (9) - soit 31 %, au-dessus du quart exige par `camille-po`. Les 16 ecarts ont
+ete recalcules un par un.
+
+Aucune de ces deux corrections ne change un verdict. Je les ecris parce qu'un constat inexact laisse
+dans une fiche devient une fausse reference pour le prochain qui la lit.
+
+#### 4. La ligne de matrice ne bouge pas, et c'etait ecrit avant l'audit
+
+**Je le dis d'emblee pour qu'on ne le lise pas comme une reserve deguisee ni comme un refus
+partiel** : le Done pedagogique de ce jeu est **accorde sans restriction sur son perimetre**. Ce qui
+empeche la ligne de matrice de passer a `couvert-valide` n'est pas la qualite de cet increment, c'est
+son perimetre, et ce perimetre etait pose **avant tout audit**.
+
+- La competence du referentiel s'appelle "Comparer **et ranger** des nombres jusqu'a 100 (`<`, `>`,
+  `=`)". Ce jeu couvre "comparer" - choisir le bon signe entre deux nombres - et il le couvre bien.
+- "Ranger" - ordonner une suite de trois nombres ou plus - est **differe par `DEC-0019`**, pour un motif
+  de rendu et non de principe.
+- **L'entete de cette fiche l'annoncait des son ouverture** : "Un Done pedagogique accorde ici ne peut
+  donc pas, a lui seul, faire passer la ligne de matrice a `couvert-valide` sans une extension
+  ulterieure sur ranger." Je l'avais redit dans mon premier verdict. **Je ne deplace donc aucun
+  poteau : je tiens celui qui etait plante avant que je joue.**
+
+**Ce que `camille-po` peut ecrire** : la ligne "Comparer et ranger des nombres jusqu'a 100 (<, >, =)"
+reste `en cours`, avec la mention que "comparer" est desormais **valide pedagogiquement** et que seul
+"ranger" manque. Une ligne qui reste `en cours` alors que la moitie de sa competence est validee
+merite de le dire, sinon la matrice perd de l'information que cette fiche detient.
+
+### Ce qui a ete verifie - second audit du 2026-08-12
+
+- **Ancrage au programme** : "Comparer et ranger des nombres jusqu'à 100 (`<`, `>`, `=`)",
+  `squad/programme/mathematiques/competences-cp.md`, retrouvee au mot. C'est bien **cette** competence
+  que l'increment travaille, sur sa moitie "comparer" : l'enfant choisit un signe, jamais un nombre, donc
+  il compare et ne calcule pas. Les valeurs restent dans 0-100 bornes incluses, `0` et `100` presents et
+  servis a l'ecran. **Perimetre partiel assume** (section 4).
+- **Lisibilite au niveau vise** : consigne `Quel signe faut-il mettre ?` - cinq mots, et `signe` est du
+  vocabulaire de CP. Les enonces font cinq a onze caracteres. Le trou est note `___`, notation scolaire
+  habituelle que la consigne explicite. Rien a redire, reverifie a l'ecran sur les 24 items.
+- **Vocabulaire** : les 24 indices n'emploient que `chiffre`, `dizaine`, `unité`, `nombre`, `compte`,
+  `plus grand`, `plus petit`, `égaux`. Tout ce lexique est celui du CP. Aucun mot du registre abstrait
+  (`inferieur`, `superieur`, `ordonner`) n'apparait, et c'est bien.
+- **Charge cognitive** : la plus faible des quatre jeux du sprint, et c'est adapte. Deux nombres a
+  regarder, trois signes, aucun calcul, aucun texte de situation.
+- **Progression** : tirage sans remise verifie sur 60 parties - aucun item repete dans une partie - et
+  **les trois signes arrivent melanges, jamais en bloc**, malgre l'ordre groupe du fichier (8 `<`, puis
+  8 `>`, puis 8 `=`). Cet ordre aurait ete un defaut grave avec un tirage sequentiel ; je l'ai verifie
+  plutot que suppose, sur 60 parties cette fois et non 2. **Je ne releve pas de symptome de difficulte
+  constante sur ce jeu** - c'est le perimetre exact que `camille-po` a etabli en relisant mes fiches, et
+  je le confirme : ici les quatre methodes de comparaison ont des exigences reellement differentes, un
+  item a dizaines egales n'est pas de meme difficulte qu'un item a nombres de chiffres differents, et le
+  vivier n'est donc pas plat comme il l'est sur les soustractions. Les deux manques de progression que je
+  releve sont d'un autre ordre et restent en reserves 1 et 2.
+- **Traitement de l'erreur** : reverifie sur 600 coups. `Non, c'est =.` puis indice apres trois echecs
+  consecutifs, maintenu tant que la serie continue. **Et la seule phrase fausse du paquet, qui etait
+  reservee a celui qui echoue, n'existe plus.** C'etait tout mon motif.
+- **Exactitude du contenu** : **24 comparaisons reverifiees une par une, toutes exactes** ; 72
+  propositions verifiees contre le fichier sur 600 coups, toujours les trois signes, jamais un nombre ;
+  **24 indices reverifies un par un, et les 24 sont maintenant exacts.** Aucune fuite de la reponse dans
+  l'enonce - impossible ici, la reponse etant un signe absent de l'enonce.
+- **Biais et ton** : inchange. Paquet purement numerique, aucun prenom, aucun personnage, aucune
+  situation, aucun stereotype possible. Les indices donnent une methode et ne commentent jamais l'enfant.
+
+### Motif - second audit
+
+**Le refus est leve.** Le mot `juste` est retire de l'indice de l'item `56 ___ 60`, qui dit desormais
+`56 vient avant 60 quand on compte : il est plus petit.` La phrase est vraie - 56 precede bien 60 dans
+la comptine numerique - et elle est meilleure que ce que je demandais : debarrassee de `juste`, la
+methode devient generale et reapplicable, "vient avant quand on compte donc est plus petit" etant la
+definition de l'ordre sur les entiers. J'ai lu cet indice **a l'ecran**, servi par les vraies routes,
+ainsi que les 23 autres, sur 60 parties et 600 coups joues faux pour forcer leur affichage. J'ai refait
+moi-meme la relecture des 24 indices que `lea-dev` declare avoir menee et je la confirme : les 24 sont
+exacts, integralement accentues, et aucun n'invoque les dizaines la ou elles ne concluent pas. Le
+correctif ne touche qu'une ligne : les 24 comparaisons, les 72 propositions - toujours les trois signes
+et jamais un nombre - et les 23 autres indices sont intacts, verifies contre le texte servi, zero
+anomalie sur 600 coups. Le Done technique est acquis (`mvn -B verify` en BUILD SUCCESS, 371 tests). Done
+pedagogique **prononce**, sous les reserves ci-dessous. **La ligne "Comparer et ranger des nombres
+jusqu'a 100 (<, >, =)" de `squad/programme/MATRICE-couverture.md` reste `en cours` et ne peut pas passer
+a `couvert-valide`** : "ranger" est differe par `DEC-0019` et hors perimetre de ce jeu. C'etait ecrit
+dans cette fiche avant tout audit, ce n'est pas une condition ajoutee apres coup, et `camille-po` gagne
+a noter sur la matrice que la moitie "comparer" est desormais validee.
+
+### Reserves - au 2026-08-12, second audit
+
+Les trois reserves du premier verdict sont **reprises telles quelles et toujours ouvertes**. Elles sont
+au backlog. Ce second audit n'en ajoute aucune.
+
+1. **Un seul item sur les 16 inegalites demande de comparer les unites a dizaines egales** (`45 ___
+   40`). Reprise sans changement, et reverifiee : le correctif ne touche aucun enonce. A ajouter trois ou
+   quatre items a dizaines egales (`58 ___ 52`, `37 ___ 34`, `71 ___ 79`).
+2. **Aucun item n'oppose deux nombres formes des memes chiffres inverses** (`24 ___ 42`, `35 ___ 53`).
+   Reprise sans changement. C'est l'erreur la plus caracteristique du CP sur la numeration decimale.
+3. **Un tiers du paquet est repondable sans comparer, et ce n'est la faute de personne** : les 8 items
+   d'egalite ont tous la forme `n ___ n`. Reprise sans changement, avec la meme conclusion : c'est
+   structurel dans le cadre pose, le seuil de 20 % d'egalites de `camille-po` est legitime, et la seule
+   facon de rendre `=` non trivial serait de comparer une ecriture a un calcul (`3 + 2 ___ 5`), ce qui est
+   une extension de perimetre a decider et non un defaut de `lea-dev`. Chiffre reverifie sur 60 parties :
+   le vivier etant 8/8/8, environ 3 manches par partie de 10 se gagnent par simple appariement visuel.
+
+Deux points de contexte que je n'ouvre pas, position inchangee depuis le sprint 8 : **le pli** (non
+mesure ce sprint, capacite de design gelee, `DEC-0016` amendee le 2026-08-11 l'assume, `ADR-0028` le
+declare non gardable - reserve et jamais motif) et **le rendu CSS**, connu insatisfaisant et gele par
+l'utilisatrice. Je n'ai mesure aucun pixel ce sprint.
+
+### Ce dont je reste seule garde apres ce second verdict
+
+Le correctif est fusionne et la CI reste verte, mais **aucun garde-fou neuf ne couvre les proprietes
+qui ont laisse passer ce refus.**
+
+1. **La verite de chaque indice. C'est la propriete qui a laisse passer ce refus, et elle n'est
+   toujours tenue par rien.** `ChaquePaquetPorteUnIndiceTest` verifie qu'un indice existe et n'est pas
+   vide ; `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest` verifie une coherence **entre** items.
+   Aucun des deux ne verifie qu'un indice dit quelque chose de **vrai**, et aucun ne pourrait le faire
+   pour une affirmation comme "56 vient juste avant 60". C'est moi, et en jouant.
+2. **L'exactitude de chaque comparaison.** `PaquetCpComparerNombresTest` verifie la structure, la
+   repartition des signes et la forme des propositions, pas la verite de la comparaison. Faite a la
+   main, 24 fois, deux fois maintenant.
+3. **La pertinence de la methode enseignee par un indice** - qu'elle soit applicable au cas presente,
+   par exemple ne pas invoquer les dizaines quand elles sont egales. Tenue ici sur les 24 items, mais par
+   l'attention de `lea-dev`, par aucun garde-fou.
+4. **La couverture des erreurs caracteristiques du niveau** (reserves 1 et 2) : aucun test ne sait
+   qu'un CP confond `24` et `42`.
+5. **Le fait qu'un item soit repondable sans mobiliser la competence** (reserve 3).
+6. **Le fait que tous les items d'un paquet soient reellement atteignables** et que les propositions
+   servies soient celles du fichier : verifie moi-meme sur 600 coups, faute de garde-fou.
+
+### Verdict du premier audit - S9-3, prononce sur l'increment livre, du 2026-08-12 (REFUSE, leve le meme jour au second audit ; conserve, jamais efface)
 
 - **Verdict** : **REFUSE.** Done pedagogique **non** prononce. Motif en section 1 : un indice affirme
   une faussete sur la suite des nombres, dans le jeu dont la suite des nombres est precisement

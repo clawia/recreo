@@ -5,7 +5,13 @@
 - **Contenu(s)** : `adapters/adapter-content/src/main/resources/contenu/cp-soustractions.yaml` (a
   creer, `type: question`, au moins 20 items), story `S9-1` (`docs/backlog/backlog.md`). Contenu
   neuf, aucune matiere premiere identifiee dans `contenu-repris/` pour cette ligne.
-- **Statut global** : en construction.
+- **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique accorde le 2026-08-12, second audit).
+  **Le REFUSE du 2026-08-12 est leve** : son motif unique - l'orthographe des 24 indices - est
+  corrige et verifie en jeu. Le refus n'est pas efface : il reste lisible ci-dessous avec sa date, et
+  l'histoire de ce jeu se lit dans l'ordre.
+- **Ligne de matrice** : **peut passer a `couvert-valide`** (ligne "Calcul mental - soustractions
+  dans la limite de 10", `squad/programme/MATRICE-couverture.md`). C'est `camille-po` qui l'ecrit, pas
+  moi. Aucune reserve ouverte ne restreint la couverture de la competence nommee par le referentiel.
 - **Derniere mise a jour** : 2026-08-12
 
 ## Competences visees
@@ -38,7 +44,188 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Verdict courant - S9-1, prononce sur l'increment livre, du 2026-08-12
+### Verdict courant - second audit du 2026-08-12, sur le correctif livre : le REFUSE est leve
+
+- **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique **prononce**. Le motif du refus du
+  2026-08-12 - les 24 indices ecrits dans un francais fautif - est corrige, et je l'ai verifie a
+  l'ecran sur les 24 indices, pas dans le fichier. Les trois reserves du premier verdict restent
+  ouvertes et sont deja au backlog ; elles ne conditionnaient pas la levee, je l'avais ecrit, et je
+  ne les transforme pas en motifs maintenant.
+- **Date** : 2026-08-12 (second audit du meme jour, apres fusion du lot `marc-dev`).
+- **Done technique** : acquis, verifie moi-meme dans mon worktree - `mvn -B verify` en BUILD SUCCESS,
+  371 tests (43 + 7 + 178 + 63 + 77 + 3), aucun echec. Je ne juge pas un increment qui plante.
+- **Audit joue** : **non degrade**, et plus large que le premier. Jar construit et lance depuis mon
+  worktree `s09-nadia-verdicts-2`, joue par les vraies routes. **60 parties completes de 10 manches,
+  soit 600 coups**, tous joues volontairement faux pour maintenir la serie d'echecs et forcer
+  l'affichage de l'indice a chaque manche. Resultat : **les 24 items du paquet ont ete servis, et les
+  24 indices ont ete lus a l'ecran**, aucun laisse au fichier.
+
+#### 1. Ce que j'ai verifie du correctif, indice par indice
+
+`marc-dev` declare trois choses. Je les ai verifiees a l'ecran, sur le texte servi par les routes, et
+je les confirme toutes les trois.
+
+1. **`Leve` -> `Lève`, 24 sur 24.** Les 24 indices lus a l'ecran portent l'accent grave. Aucune
+   exception.
+2. **`baisse-en` -> `baisses-en`, 23 sur 23 occurrences.** Verifie sur les 23 indices concernes,
+   affiches.
+3. **Le 24e indice, celui de `10 - 0 = ?`, est laisse tel quel, et `marc-dev` a raison de le
+   laisser.** Il ecrit `Lève 10 doigts, et n'en baisse aucun : ils restent tous levés.` Le `s`
+   euphonique de l'imperatif n'apparait que devant les pronoms *en* et *y* **enclitiques**, c'est-a-dire
+   soudes derriere le verbe (`baisses-en`). Ici `en` est **proclitique** : il precede le verbe dans une
+   negation (`n'en baisse aucun`), il n'y a aucune liaison a soutenir, et la forme correcte est
+   `baisse` sans `s`. C'est ce que j'avais compte a part dans mon releve sans l'expliciter ;
+   l'explication de `marc-dev` est exacte et je l'inscris ici pour qu'elle ne se reperde pas.
+
+**Et il a trouve une faute que mon releve ne pouvait pas voir, sur ce meme 24e indice** : `leves` ->
+`levés`, participe passe accorde avec les doigts. Verifie a l'ecran : `ils restent tous levés`.
+
+#### 2. Correction de mon propre releve : il y avait 48 fautes, pas 47
+
+Je m'appuie sur mes constats, donc je les verifie avant de m'en servir, et celui-la etait incomplet.
+
+**J'ai ecrit dans mon premier verdict que "371 tests verts et 28 regles ArchUnit n'ont pas vu 47
+fautes de francais".** Le compte etait 24 (`Leve`) + 23 (`baisse-en`) = 47. Il manquait `leves` dans
+`ils restent tous leves`. **Le chiffre juste est 48.** La raison de mon angle mort est instructive et
+je l'ecris pour qu'on ne me croie pas exhaustive la ou je ne l'etais pas : **j'avais cherche sur
+`Leve` avec une majuscule**, parce que le mot ouvre chaque indice, et un participe passe en bas de
+casse au milieu d'une phrase echappait a cette recherche. Un releve mene sur une forme capitalisee ne
+couvre pas les autres formes du meme mot. `marc-dev` a lu, lui, et il a mieux vu que moi.
+
+Je ne me servais pas de ce chiffre pour fonder le refus - le refus tenait sur 24 sur 24 - mais un
+constat inexact que je laisse dans une fiche devient une fausse reference pour le prochain qui la
+lit.
+
+#### 3. Ce que le correctif n'a pas touche, et que j'ai reverifie plutot que suppose
+
+Mon premier verdict disait "la correction attendue est purement orthographique. Aucun item, aucun
+distracteur, aucune methode d'indice n'est a revoir." Il fallait donc verifier que rien d'autre n'a
+bouge, et que rien n'a casse en chemin.
+
+- **Le correctif ne modifie que les 24 lignes d'indice** : 24 insertions, 24 suppressions dans
+  `cp-soustractions.yaml`, diff lu ligne par ligne. Aucun `enonce`, aucune `bonneReponse`, aucun
+  `distracteurs` n'est touche.
+- **Les 24 soustractions et les 48 distracteurs servis a l'ecran correspondent exactement au
+  fichier**, verifie sur les 600 coups : sur chaque manche, l'ensemble des trois propositions servies
+  est bien la bonne reponse plus ses deux distracteurs. **Zero anomalie.**
+- **Les 24 items sont tous atteignables** : les 24 ont ete servis. Aucun item mort dans le paquet.
+- **Les 11 resultats de 0 a 10 restent couverts**, bornes incluses, comme au premier audit.
+- **Les indices restent stables d'une occurrence a l'autre** : le meme item affiche toujours le meme
+  indice sur les 60 parties. Aucun melange d'indice entre items.
+- **La position de la bonne reponse parmi les trois boutons est bien brassee** : sur 600 coups, elle
+  tombe 200 fois a gauche, 201 fois au milieu, 199 fois a droite. Un enfant ne peut donc pas gagner en
+  tapant toujours le meme bouton. Je le note comme un constat mesure de ce second audit, pas comme une
+  exigence que j'aurais posee avant.
+
+#### 4. Pourquoi je leve, et pourquoi je ne relève pas la barre
+
+**La barre que j'avais ecrite est atteinte au mot** : "deux substitutions dans un seul fichier,
+`Leve` -> `Lève` et `baisse-en` -> `baisses-en`". Elles sont faites, sur la totalite des occurrences,
+et une troisieme que je n'avais pas vue est faite en plus. Je leve.
+
+**Je n'ajoute aucune condition apres coup.** Mes trois reserves du premier verdict - la consigne
+`Combien en reste-t-il ?` au-dessus d'un enonce chiffre, l'absence de distracteur sur l'inversion des
+termes, la difficulte constante dans une partie - etaient ecrites comme des reserves, avec la mention
+explicite qu'elles ne conditionnaient pas la levee. Elles sont au backlog. Les convertir en motifs
+maintenant ferait de ma porte un caprice, et c'est exactement ce que je me suis interdit au sprint 8.
+
+Je vois cependant une chose de plus depuis ce second audit. Je l'ecris comme une **reserve nouvelle
+et datee**, pas comme un durcissement de l'ancienne, et **elle ne conditionne rien** : voir reserve 4.
+
+### Ce qui a ete verifie - second audit du 2026-08-12
+
+- **Ancrage au programme** : inchange et reverifie. "Calcul mental - soustractions dans la limite de
+  10", `squad/programme/mathematiques/competences-cp.md`, retrouvee au mot. Le correctif ne deplace pas
+  la competence : il ne touche aucun enonce.
+- **Lisibilite au niveau vise** : les 24 indices font une phrase et une seule, et cette phrase est
+  maintenant du francais correct. C'etait le seul point qui restait ouvert au premier audit ; il est
+  ferme. Un point mineur nouveau en reserve 4.
+- **Vocabulaire** : `Lève`, `doigts`, `baisses-en`, `un par un`, `il n'en reste plus aucun`,
+  `seul`, `ils restent tous levés`. Tout est accessible a un CP. Aucun mot du registre scolaire
+  abstrait (`decomposer`, `difference`, `terme`) n'est employe, et c'est bien.
+- **Accentuation** : je suis passee sur les 24 indices affiches en cherchant tout mot qui exigerait un
+  accent et n'en porterait pas. **Il n'en reste aucun.** Les seuls mots accentuables du corpus sont
+  `Lève` et `levés`, et les deux sont accentues.
+- **Charge cognitive** : inchangee, bonne.
+- **Progression** : inchangee. Le tirage est sans remise dans une partie - aucune repetition observee
+  sur 60 parties - et la difficulte ne monte pas a l'interieur d'une partie. Ce symptome est celui que
+  je nomme sur ce jeu et sur les problemes additifs, que je juge sans objet sur les complements a 10 et
+  que je ne releve pas sur la comparaison. Il est route a `theo-archi` avec ce perimetre exact ; ce
+  n'est pas un motif ici, et ce n'est pas ce paquet.
+- **Traitement de l'erreur** : reverifie sur 600 coups. Coup faux -> `Non, c'est 4.`, la bonne reponse
+  donnee sans juger l'enfant. Trois echecs consecutifs -> l'indice s'affiche, et tant que la serie
+  d'echecs continue il reste affiche a chaque manche. **C'est le comportement que je voulais voir** :
+  l'enfant qui decroche recoit une methode, et cette methode est desormais ecrite dans une langue
+  juste. Un enfant bloque peut donc avancer.
+- **Exactitude du contenu** : 24 soustractions, 48 distracteurs et 24 indices reverifies, cette fois
+  sur le texte servi. Tout est exact, langue comprise.
+- **Biais et ton** : inchange, rien a reprocher. Aucun prenom, aucun personnage, aucune situation. Le
+  seul contexte est le corps de l'enfant.
+
+### Motif - second audit
+
+**Le refus est leve.** Les 24 indices de `cp-soustractions.yaml` ecrivent desormais `Lève` avec son
+accent grave (24 sur 24) et `baisses-en` avec son `s` euphonique (23 sur 23 occurrences enclitiques),
+et le 24e indice, correctement laisse en `n'en baisse aucun` puisque le pronom y est proclitique,
+accorde en plus son participe (`ils restent tous levés`). J'ai lu les 24 indices **a l'ecran**, servis
+par les vraies routes sur 60 parties et 600 coups joues faux pour forcer leur affichage, et non dans
+le fichier. Le correctif ne touche que les lignes d'indice : les 24 soustractions, les 48 distracteurs
+et la couverture des 11 resultats de 0 a 10 sont intacts, verifies contre le texte servi, zero
+anomalie sur 600 coups. Le Done technique est acquis (`mvn -B verify` en BUILD SUCCESS, 371 tests).
+Done pedagogique **prononce**, sous les reserves ci-dessous, qui ne conditionnaient pas la levee et
+que je ne convertis pas en motifs. **La ligne "Calcul mental - soustractions dans la limite de 10" de
+`squad/programme/MATRICE-couverture.md` peut passer a `couvert-valide`** - c'est `camille-po` qui
+l'ecrit.
+
+### Reserves - au 2026-08-12, second audit
+
+Les reserves 1 a 3 sont celles du premier verdict, **reprises telles quelles et toujours ouvertes**.
+Elles sont deja au backlog. La reserve 4 est nouvelle et datee de ce second audit.
+
+1. **La consigne du jeu ne colle pas a la forme des enonces** (`Combien en reste-t-il ?` au-dessus de
+   `7 - 7 = ?`, ou le pronom "en" n'a aucun referent a l'ecran). Reprise sans changement du premier
+   verdict. Toujours pas un motif.
+2. **Aucun distracteur n'attaque l'inversion des termes.** Reprise sans changement.
+3. **La difficulte est constante a l'interieur d'une partie.** Reprise sans changement, cause dans la
+   mecanique et non dans ce paquet, routee a `theo-archi`.
+4. **Nouvelle, 2026-08-12 : trois indices ecrivent `baisses-en 1 seul` avec le chiffre 1 la ou le mot
+   se lit mieux.** Items `9 - 1`, `10 - 1` et `6 - 1` : `Lève 9 doigts, puis baisses-en 1 seul.` Ce
+   n'est pas une faute, et je ne la traite pas comme telle : `1 seul` est une quantite, coherente avec
+   les chiffres du reste de l'indice. Mais dans l'expression `un seul`, le mot fonctionne comme un
+   determinant plus que comme un compte, et un lecteur debutant butte sur un chiffre place la ou il
+   attend un mot - il lit `baisses-en 1` puis doit revenir sur `seul`. `baisses-en un seul` se dechiffre
+   d'un trait. **Je le pose explicitement comme une reserve nouvelle et non comme un durcissement du
+   motif d'orthographe** : je ne l'avais pas relevee au premier audit alors que j'avais lu les 24
+   indices, elle n'a donc jamais fait partie de la barre, et elle ne conditionne evidemment pas une
+   levee deja prononcee. A traiter quand `camille-po` rouvrira ce fichier, pas avant.
+
+Deux points de contexte que je n'ouvre pas, position inchangee depuis le sprint 8 : **le pli** (non
+mesure ce sprint, capacite de design gelee, `DEC-0016` amendee le 2026-08-11 l'assume, `ADR-0028` le
+declare non gardable - ce reste une reserve et jamais un motif) et **le rendu CSS**, connu
+insatisfaisant et gele par l'utilisatrice. Je n'ai mesure aucun pixel ce sprint.
+
+### Ce dont je reste seule garde apres ce second verdict
+
+Le correctif est fusionne et la CI reste verte, mais **aucun garde-fou neuf ne couvre les proprietes
+qui ont laisse passer les 48 fautes.** Je le redis, sinon l'equipe croira couvert ce qui ne l'est pas.
+
+1. **L'orthographe et l'accentuation du texte destine a l'enfant.** Toujours aucun test. Les 371
+   tests etaient verts pendant les 48 fautes et ils sont verts apres : leur couleur n'a rien dit sur
+   cette propriete, ni avant ni maintenant. `PropositionsAccentueesJouablesIT` verifie qu'une
+   proposition accentuee reste **jouable**, pas qu'un mot est bien ecrit, et il ne lit jamais les
+   indices. **C'est moi, et en jouant.**
+2. **L'exactitude arithmetique de chaque item.** Aucun test ne calcule `a - b == reponse`. Fait a la
+   main, 24 fois, deux fois maintenant.
+3. **L'exactitude et la pertinence de chaque indice** - qu'il decrive une methode menant vraiment a
+   la reponse.
+4. **La plausibilite d'un distracteur.**
+5. **La coherence entre la consigne d'un jeu et la forme de ses enonces** (reserve 1).
+6. **Le fait que tous les items d'un paquet soient reellement atteignables** et que les propositions
+   servies soient celles du fichier. Je l'ai verifie moi-meme sur 600 coups faute de garde-fou ; c'est
+   la seule des six qui serait facile a tenir par un test, et je la signale comme telle a `camille-po`
+   sans prescrire la solution technique - c'est `theo-archi` qui tranche.
+
+### Verdict du premier audit - S9-1, prononce sur l'increment livre, du 2026-08-12 (REFUSE, leve le meme jour au second audit ; conserve, jamais efface)
 
 - **Verdict** : **REFUSE.** Done pedagogique **non** prononce. Le Done technique est acquis, la
   mathematique du paquet est irreprochable, et je refuse quand meme : le motif est en section 1.

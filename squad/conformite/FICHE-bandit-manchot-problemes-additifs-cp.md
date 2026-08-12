@@ -7,7 +7,15 @@
   neuf, aucune matiere premiere identifiee dans `contenu-repris/` pour cette ligne (le fichier
   `contenu-repris/quiz/cp-monnaie.yml` a un format proche mais porte sur la monnaie, ligne
   explicitement differee par `DEC-0019` - a ne pas reprendre ici).
-- **Statut global** : en construction.
+- **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique accorde le 2026-08-12, second audit).
+  **Le REFUSE du 2026-08-12 est leve** : son motif - deux enonces dont la reponse attendue contredisait
+  la lecture correcte - est corrige sur la formulation que j'avais moi-meme ecrite. Le refus n'est pas
+  efface : il reste lisible ci-dessous avec sa date.
+- **Ligne de matrice** : **peut passer a `couvert-valide`** (ligne "Resoudre des problemes simples
+  d'addition/soustraction en situation (1 etape)", `squad/programme/MATRICE-couverture.md`). C'est
+  `camille-po` qui l'ecrit, pas moi. **A lire avec les reserves ouvertes** : `couvert-valide` dit que la
+  competence nommee par le referentiel est travaillee et validee, pas que ce paquet est sans reserve -
+  celle de `DEC-0021` sur la regularite de magnitude reste ouverte et differee hors sprint.
 - **Derniere mise a jour** : 2026-08-12
 
 ## Competences visees
@@ -40,7 +48,212 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Verdict courant - S9-4, prononce sur l'increment livre, du 2026-08-12
+### Verdict courant - second audit du 2026-08-12, sur le correctif livre : le REFUSE est leve
+
+- **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique **prononce**. Le motif du refus du
+  2026-08-12 - deux items dont la reponse attendue contredisait la lecture naturelle de leur propre
+  enonce - est corrige, exactement sur la formulation que j'avais ecrite dans le refus. Les quatre
+  reserves du premier verdict restent ouvertes ; elles ne conditionnaient pas la levee, je l'avais
+  ecrit, et je ne les transforme pas en motifs maintenant.
+- **Date** : 2026-08-12 (second audit du meme jour, apres fusion du lot `sofia-sm` dev).
+- **Done technique** : acquis, verifie moi-meme dans mon worktree - `mvn -B verify` en BUILD SUCCESS,
+  371 tests, aucun echec.
+- **Audit joue** : **non degrade**, et plus large que le premier. Jar construit et lance depuis mon
+  worktree `s09-nadia-verdicts-2`, joue par les vraies routes. **60 parties completes de 10 manches,
+  soit 600 coups**, tous joues volontairement faux pour maintenir la serie d'echecs et forcer
+  l'affichage de l'indice a chaque manche. Resultat : **les 22 items du paquet ont ete servis, et les
+  22 indices ont ete lus a l'ecran.** Les deux items corriges - le clown et le jardinier - ont ete lus
+  a l'ecran dans leur forme neuve.
+
+#### 1. Ce que j'ai verifie du correctif
+
+Les deux enonces servis a l'ecran sont exactement ceux que j'avais demandes, au caractere :
+
+```
+| Lis bien, puis trouve la reponse !
+| Le clown a 7 ballons et en gonfle 2 de plus. Combien en a-t-il ?
+| Il avait des ballons et il en gonfle d'autres : additionne 7 et 2.
+```
+
+```
+| Le jardinier a 6 fleurs et en plante 2 de plus. Combien en a-t-il ?
+| Il avait des fleurs et il en plante d'autres : additionne 6 et 2.
+```
+
+**Le defaut est ferme, et il l'est pour la bonne raison.** `de plus` est un quantifieur additif : il
+force la lecture incrementale du groupe et neutralise la lecture partitive de `en`. `il en gonfle 2 de
+plus` ne peut plus se lire "il gonfle 2 de ses 7 ballons" ; il se lit "2 ballons s'ajoutent". La
+reponse a `Combien en a-t-il ?` est donc bien 9 pour le clown et 8 pour le jardinier, et l'enfant qui
+lit correctement trouve maintenant sa reponse parmi les boutons. Le mot `d'autres` des indices, qui
+etait la preuve du defaut parce qu'il reparait l'enonce, est devenu coherent avec l'enonce : les
+indices n'ajoutent plus rien que le texte ne dise.
+
+**C'est la solution deja employee par l'item de Mamie** (`et en fait 4 de plus`), que j'avais validee
+au premier audit pour cette raison exacte. Le paquet est donc homogene sur ce point, et non rapiece.
+
+- **Le correctif ne modifie que les deux lignes d'enonce** : 2 insertions, 2 suppressions dans
+  `cp-problemes-additifs.yaml`, diff lu ligne par ligne. Bonnes reponses, distracteurs et indices
+  inchanges, comme `sofia-sm` le declare, et comme mon refus le demandait.
+- **Les 22 operations et les 44 distracteurs servis a l'ecran correspondent exactement au fichier**,
+  verifie sur 600 coups : **zero anomalie**. 11 additions, 11 soustractions, toutes arithmetiquement
+  exactes, recalculees une par une.
+- **Les 22 items sont tous atteignables** et aucun ne se repete dans une meme partie.
+- **La position de la bonne reponse parmi les trois boutons est bien brassee** : 198 fois a gauche,
+  194 au milieu, 208 a droite sur 600 coups. Constat mesure de ce second audit, pas une exigence
+  anterieure.
+
+#### 2. Je confirme la relecture de `sofia-sm` sur le pronom `en`, en la refaisant
+
+`sofia-sm` declare avoir repasse les 22 items au crible du pronom `en`, et conclut que seuls `gonfle`
+et `plante` portaient sur des objets deja possedes. **Je ne prends pas cette declaration pour acquise :
+je l'ai refaite, verbe par verbe, et je la confirme.**
+
+- **Additions (11)** : `gagne` (billes), `reçoit` (bonbons), `achète` (crayons), `trouve` (images),
+  `gagne` (gommes), `adopte` (chat), `gagne` (jetons), `fait 4 de plus` (gateaux), `gagne` (cartes) -
+  neuf verbes qui font tous entrer dans la possession du personnage un objet qui n'y etait pas. Aucune
+  ambiguite partitive possible : on ne peut pas gagner, recevoir, acheter, trouver ni adopter un objet
+  qu'on possede deja. `gonfle` et `plante` etaient les deux seuls a agir sur des objets deja possedes,
+  et ce sont exactement les deux items qui portaient mon motif.
+- **Soustractions (11)** : `perd`, `mange`, `casse`, `donne`, `perd`, `partent`, `perd`, `s'envolent`,
+  `on en mange`, `perd`, `fanent` - onze verbes qui retirent tous des objets deja possedes, ce qui est
+  precisement la lecture juste pour une soustraction. Aucun n'a le defaut symetrique.
+
+Le diagnostic de `sofia-sm` est donc exact et son perimetre est le bon. Le defaut etait localise a deux
+items, il l'est reste, et rien d'autre dans le paquet ne le porte.
+
+#### 3. La longueur : je verifie mon propre constat avant de m'en servir, et je ne bouge pas ma barre
+
+`sofia-sm` signale que l'item du jardinier passe a **67 caracteres**, au-dela des **64** que j'avais
+mesures comme maximum du paquet, et note que j'avais moi-meme calcule et accepte cet ecart. **Elle a
+raison, et je le confirme en chiffres remesures :**
+
+- Avant correctif : maximum **64**, minimum 49, moyenne **56,1** (somme 1235 sur 22 items). Ce sont les
+  chiffres de mon premier verdict, et je viens de les recalculer : ils etaient exacts.
+- Apres correctif : maximum **67** (`Le jardinier a 6 fleurs et en plante 2 de plus. Combien en
+  a-t-il ?`), minimum 49, moyenne **56,9** (somme 1251). Le clown est a **64** exactement, soit le
+  maximum d'avant.
+- **L'allongement est de 8 caracteres par item corrige.** J'avais ecrit dans le refus, mot pour mot :
+  "`de plus` leve l'ambiguite **sans allonger la phrase de plus de huit caracteres**". C'est
+  exactement 8. **L'ecart tient dans ce que j'avais autorise moi-meme, au caractere pres.**
+
+**Je ne fais donc de ces 67 caracteres ni un motif ni meme une reserve, et je dis pourquoi
+explicitement** : ce serait relever une barre apres coup, sur un depassement que ma propre phrase
+avait borne d'avance. Une equipe qui atteint la barre que j'ai ecrite voit sa reserve levee, meme si je
+vois desormais mieux. La structure qui fonde mon jugement de lisibilite est d'ailleurs intacte : deux
+phrases courtes, une situation puis une question, aucune subordonnee, deux nombres a retenir. Les 3
+caracteres de plus tombent dans la premiere phrase, pas dans la question.
+
+**Ce que je note comme constat, pas comme reserve** : le nouveau maximum du paquet est 67 et la
+nouvelle moyenne 56,9. Que ces chiffres soient ecrits ici evitera qu'un futur audit croie trouver une
+derive en comparant a mes 64 d'avant-correctif.
+
+### Ce qui a ete verifie - second audit du 2026-08-12
+
+- **Ancrage au programme** : "Résoudre des problèmes simples d'addition/soustraction en situation
+  (1 étape)", `squad/programme/mathematiques/competences-cp.md`, retrouvee au mot. **Et c'est maintenant
+  bien cette competence que les 22 items travaillent, y compris les deux corriges** : au premier audit
+  deux items sur 22 exercaient l'inverse de la competence en sanctionnant la lecture correcte ; ils ne
+  le font plus. Une seule etape, aucune operation ecrite, l'enfant choisit l'operation. Aucun enonce ne
+  mentionne piece, billet ni euro : le perimetre de la ligne "monnaie" differee par `DEC-0019` reste
+  respecte, reverifie sur les 22 enonces servis.
+- **Lisibilite au niveau vise** : bonne, section 3. Deux phrases courtes, present de l'indicatif, aucune
+  subordonnee. Les reserves de vocabulaire (`fanent`) et de virgule restent ouvertes.
+- **Vocabulaire** : reverifie sur les 22 enonces affiches. `gonfle` et `plante` sont tous deux du
+  lexique de CP et restent transparents avec `de plus`. `fanent` ne l'est pas, et c'est toujours une
+  reserve (reserve 2).
+- **Charge cognitive** : inchangee et bien calibree. Deux nombres, une operation a choisir, trois
+  propositions. Le texte reste affiche pendant le choix - reverifie a l'ecran - donc l'enfant n'a pas a
+  le retenir pendant qu'il calcule.
+- **Progression** : tirage sans remise verifie sur 60 parties, aucun item repete dans une partie,
+  additions et soustractions melangees et jamais en bloc. L'enfant rechoisit l'operation a chaque
+  manche, ce qui est l'objectif. **Pas de montee en difficulte a l'interieur d'une partie** : meme
+  symptome que sur les soustractions, meme cause dans la mecanique, route a `theo-archi` avec le
+  perimetre exact etabli par `camille-po` (nomme ici et sur les soustractions, sans objet sur les
+  complements a 10, non releve sur la comparaison). Ce n'est pas un motif.
+- **Traitement de l'erreur** : reverifie sur 600 coups. `Non, c'est 7.` puis indice apres trois echecs
+  consecutifs, maintenu tant que la serie continue. **Et le retournement que je decrivais au premier
+  audit a disparu** : sur les deux items corriges, l'enfant qui lit bien n'est plus contredit par la
+  machine. C'etait le coeur de mon refus.
+- **Exactitude du contenu** : 22 operations, 44 distracteurs et 22 indices reverifies sur le texte
+  servi. Toutes les operations exactes, tous les distracteurs entiers, distincts de la bonne reponse et
+  rattachables a une erreur identifiable. **Et les 22 indices sont maintenant tous exacts sans rien
+  ajouter a leur enonce** - c'etait le point precis qui rendait mon refus certain plutot
+  qu'interpretable.
+- **Biais et ton** : inchange. Prenoms varies et bien repartis (Léa, Mia, Zoé, Tom, Nino, Léo, Ali). Ton
+  neutre. **La reserve sur les adultes reste entiere** : le correctif ne pouvait pas la traiter, il ne
+  touche que deux verbes (reserve 3).
+
+### Motif - second audit
+
+**Le refus est leve.** Les deux enonces fautifs sont corriges en `Le clown a 7 ballons et en gonfle 2
+de plus. Combien en a-t-il ?` et `Le jardinier a 6 fleurs et en plante 2 de plus. Combien en a-t-il ?`,
+soit exactement les deux formulations que j'avais ecrites dans mon refus pour qu'il n'y ait rien a me
+redemander. `de plus` est un quantifieur additif : il neutralise la lecture partitive de `en`, la
+reponse attendue devient celle de la lecture correcte, et l'enfant qui modelise bien trouve desormais
+sa reponse parmi les propositions. Le mot `d'autres` des indices, qui etait la preuve du defaut parce
+qu'il reparait l'enonce, est devenu coherent avec lui. J'ai lu les deux items **a l'ecran**, servis par
+les vraies routes, ainsi que les 22 enonces et les 22 indices du paquet, sur 60 parties et 600 coups.
+J'ai par ailleurs refait moi-meme la relecture des 22 verbes au crible du pronom `en` et je confirme
+que le defaut etait localise a ces deux items et n'existe nulle part ailleurs. Le correctif ne touche
+que les deux lignes d'enonce : bonnes reponses, distracteurs et indices sont intacts, verifies contre
+le texte servi, zero anomalie sur 600 coups. L'allongement de 8 caracteres tient au caractere pres dans
+la limite que j'avais moi-meme ecrite, je n'en fais donc rien. Le Done technique est acquis (`mvn -B
+verify` en BUILD SUCCESS, 371 tests). Done pedagogique **prononce**, sous les reserves ci-dessous.
+**La ligne "Resoudre des problemes simples d'addition/soustraction en situation (1 etape)" de
+`squad/programme/MATRICE-couverture.md` peut passer a `couvert-valide`** - c'est `camille-po` qui
+l'ecrit, et avec la reserve `DEC-0021` ouverte, dite explicitement en tete de fiche.
+
+### Reserves - au 2026-08-12, second audit
+
+Les quatre reserves du premier verdict sont **reprises telles quelles et toujours ouvertes**. Aucune
+n'est nouvelle : ce second audit n'en ajoute pas.
+
+1. **Sur les 11 items d'addition, la bonne reponse est 11 fois sur 11 le plus grand des trois nombres
+   proposes.** Toujours vraie apres correctif - je l'ai reverifiee, le correctif ne touche aucune
+   proposition. **Tranchee par `camille-po` en `DEC-0021` : differee hors sprint, story ouverte au
+   backlog reprenant mes criteres au mot.** Je prends acte de cet arbitrage et je ne le rouvre pas : la
+   reserve ne conditionnait pas la levee, je l'avais ecrit, et le fichier etait deja touche par le
+   correctif borne. Elle reste **la reserve la plus consequente de ce paquet** - un enfant qui remarque
+   la regularite reussit la moitie des items sans calculer - et c'est pour cela que je redis qu'elle est
+   ouverte alors que la ligne de matrice passe.
+2. **Le mot `fanent` n'est pas du vocabulaire de CP.** Reprise sans changement.
+3. **Les trois metiers du paquet sont tous masculins, et la seule adulte est une grand-mere qui fait
+   des gateaux.** Reprise sans changement. Le correctif ne pouvait rien y faire.
+4. **Deux enonces sont construits sur une virgule dont la seconde proposition commence par un
+   chiffre** (`Le fermier a 5 chats, 2 partent.`, `Le clown a 8 ballons, 4 s'envolent.`). Reprise sans
+   changement.
+
+Deux points de contexte que je n'ouvre pas, position inchangee depuis le sprint 8 : **le pli** (non
+mesure ce sprint, capacite de design gelee, `DEC-0016` amendee le 2026-08-11 l'assume, `ADR-0028` le
+declare non gardable - reserve et jamais motif) et **le rendu CSS**, connu insatisfaisant et gele par
+l'utilisatrice. Je n'ai mesure aucun pixel ce sprint : les chiffres de la section 3 sont des comptes de
+caracteres, pas des mesures de rendu.
+
+### Ce dont je reste seule garde apres ce second verdict
+
+Le correctif est fusionne et la CI reste verte, mais **aucun garde-fou neuf ne couvre les proprietes
+qui ont laisse passer ce refus.**
+
+1. **La validite semantique d'une situation** - qu'un enonce, lu correctement, mene bien a la reponse
+   attendue. **C'est la propriete qui a laisse passer ce refus, et elle n'est pas gardable
+   automatiquement** : aucun test ne peut lire une histoire et decider si `en gonfle 2` ajoute des
+   ballons ou non, ni que `de plus` change cela. Je ne demande pas qu'on essaie. C'est moi, et en
+   jouant.
+2. **La coherence entre un enonce et son indice.** Toujours rien ne compare un indice a **son propre**
+   enonce ; `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest` compare les indices **entre** items.
+   C'est ce que j'ai lu a la main pour constater que `d'autres` est redevenu coherent.
+3. **La regularite de magnitude entre bonne reponse et distracteurs** (reserve 1). Celle-ci **serait
+   gardable** par un test qui compte les items ou la bonne reponse est le maximum des propositions.
+   `DEC-0021` la differe hors sprint ; tant qu'aucun test n'existe, elle n'est tenue par rien du tout, et
+   je le dis pour que `couvert-valide` ne soit pas lu comme une couverture de cette propriete.
+4. **Le niveau de vocabulaire des enonces** (reserve 2) : aucun garde-fou ne connait le lexique de CP.
+5. **Les stereotypes de genre, d'origine et de milieu** (reserve 3).
+6. **L'exactitude arithmetique de chaque item** et **la plausibilite de chaque distracteur** :
+   verifiees a la main, 22 et 44 fois, deux fois maintenant.
+7. **Le fait que tous les items d'un paquet soient reellement atteignables** et que les propositions
+   servies soient celles du fichier : verifie moi-meme sur 600 coups, faute de garde-fou.
+
+### Verdict du premier audit - S9-4, prononce sur l'increment livre, du 2026-08-12 (REFUSE, leve le meme jour au second audit ; conserve, jamais efface)
 
 - **Verdict** : **REFUSE.** Done pedagogique **non** prononce. Motif en section 1 : deux items dont
   la reponse attendue contredit la lecture naturelle de leur propre enonce, et dont la reponse juste
