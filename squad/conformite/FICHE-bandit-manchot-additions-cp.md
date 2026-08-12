@@ -73,7 +73,25 @@
   budget vertical de l'arbitrage prealable a ete mesure sur "Le bon son", que j'avais appele "le cas
   le plus charge du catalogue" alors qu'il ne l'est pas. Ce bloc vaut pour les quatre jeux du bandit
   manchot.
-- **Derniere mise a jour** : 2026-08-11
+  **Arbitrage prealable au developpement de la forme du meuble (visage, enseigne, boutons colores,
+  levier de flanc), du 2026-08-12 : REFUSE sur la proposition telle qu'ecrite**, quatre motifs mesures,
+  le principe des cinq elements accepte. Ce n'est pas un Done pedagogique et il n'en retire aucun.
+  **Douze conditions F1 a F12**, qui se lisent a la suite des douze conditions M1 a M12 de l'arbitrage
+  de mecanique du meme jour, sans en renumeroter aucune ; **F5 et F9 sont bloquantes**. Les quatre
+  motifs : `mangeons` ressort de sa boite de **3,13 px** par cote sous l'elargissement symetrique ; les
+  boutons rouge et vert sont a **1,03:1 et 1,05:1** des couleurs du verdict de l'application ; le levier
+  en blanc pur est a **17,32:1** contre le corps du cabinet la ou un bouton de reponse est a 3,20:1 ;
+  l'enseigne a 0,875 rem serait le seul texte de recreo sous 20 px. **Les 2,0 px d'air de `mangeons` sont
+  un PLANCHER**, comme ma condition 4 du 2026-08-11 l'ecrit, et je ne le releve pas a 2,86 px. **La
+  quatrieme voie - retailler le contenu pour gagner 10,27 px - est refusee**, et son chiffre est
+  incomplet : trois propositions sont au-dessus du seuil, dans deux items, et l'un des deux est
+  impossible sans changer de verbe. **Nom d'enseigne retenu : "Le Copain Malin"** ; les deux autres
+  refuses sur leur sens. **Le nom ne doit jamais etre annonce entre l'enonce et les propositions** :
+  aucune des quatre structures de `theo-archi` ne passe, et je demande une reserve d'`ADR-0035` pour le
+  texte de decor deliberement masque. Corps en deux tons et etoiles du socle **acceptes tels quels**.
+  **Cet arbitrage est degrade sur un point nomme** : je n'ai pas ecoute de lecteur d'ecran. Trois
+  reserves nouvelles et datees (F, G, H). Ce bloc vaut pour les huit jeux du catalogue.
+- **Derniere mise a jour** : 2026-08-12
 
 ## Competences visees
 
