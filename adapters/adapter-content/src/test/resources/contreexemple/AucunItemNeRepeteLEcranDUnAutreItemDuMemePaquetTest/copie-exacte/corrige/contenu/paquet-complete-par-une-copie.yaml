@@ -1,0 +1,25 @@
+schema: 1
+id: paquet-complete-par-une-copie
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Paquet fautif d'ADR-0032, corrige, jamais servi a un enfant"
+items:
+  - enonce: "9 - 4"
+    bonneReponse: "5"
+    distracteurs: ["4", "6"]
+    indice: "Enleve 4 a 9."
+  - enonce: "8 - 3"
+    bonneReponse: "5"
+    distracteurs: ["4", "6"]
+    indice: "Enleve 3 a 8."
+  - enonce: "7 - 2"
+    bonneReponse: "5"
+    distracteurs: ["4", "6"]
+    indice: "Enleve 2 a 7."
+  - enonce: "10 - 6"
+    bonneReponse: "4"
+    distracteurs: ["3", "5"]
+    indice: "Enleve 6 a 10."
