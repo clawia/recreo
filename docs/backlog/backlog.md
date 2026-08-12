@@ -2788,7 +2788,9 @@ instruire pour un sprint futur, une fois le correctif en cours livre et le fichi
 - **Constat de `nadia-prof` qui depasse le sprint 9 (2026-08-12), a router a `theo-archi` pour
   faisabilite** (`squad/conformite/FICHE-bandit-manchot-soustractions-cp.md`, verdict du
   2026-08-12, section "Ce dont je reste seule garde apres ce verdict") : 371 tests verts et 28
-  regles ArchUnit n'ont pas vu les 47 fautes de francais qui motivent ce refus, parce qu'aucun
+  regles ArchUnit n'ont pas vu les 48 fautes de francais qui motivent ce refus (correction du
+  2026-08-12, second audit de la meme fiche : son releve initial disait 47, il manquait `leves` en
+  bas de casse dans `ils restent tous leves`, trouve par `marc-dev`), parce qu'aucun
   garde-fou existant ne lit un indice comme du francais ni ne verifie qu'il est vrai
   (`PropositionsAccentueesJouablesIT` verifie qu'une proposition accentuee reste jouable, une
   robustesse d'encodage, pas une correction de langue ; `ChaquePaquetPorteUnIndiceTest` verifie
@@ -2804,3 +2806,29 @@ instruire pour un sprint futur, une fois le correctif en cours livre et le fichi
   arithmetique d'un item, la plausibilite d'un distracteur, la validite semantique d'une situation)
   ne sont pas nommees gardables par elle et ne sont pas routees ici pour cette raison : elle reste
   seule garde de chacune, en jouant.
+- **Reserve nouvelle du 2026-08-12, second audit de `bandit-manchot-soustractions-cp`**
+  (`squad/conformite/FICHE-bandit-manchot-soustractions-cp.md`, verdict "second audit", reserve 4) :
+  trois indices ecrivent `baisses-en 1 seul` avec le chiffre `1` la ou le mot se lirait mieux (items
+  `9 - 1`, `10 - 1`, `6 - 1` - par exemple `Lève 9 doigts, puis baisses-en 1 seul.`). Dans
+  l'expression "un seul", le mot fonctionne comme un determinant plus que comme un compte, et un
+  lecteur debutant lit `baisses-en 1` puis doit revenir sur `seul`, la ou `baisses-en un seul` se
+  dechiffre d'un trait. `nadia-prof` la pose explicitement **comme une reserve nouvelle et non comme
+  un durcissement du motif d'orthographe** du refus du 2026-08-12 : elle ne l'avait pas relevee au
+  premier audit alors qu'elle avait deja lu les 24 indices, elle n'a donc jamais fait partie de la
+  barre qui a leve ce refus. Non affectee a un sprint, a instruire quand ce fichier
+  (`cp-soustractions.yaml`) sera rouvert.
+- **Constat testable du 2026-08-12, second audit sur les trois paquets corriges du sprint 9, a
+  router a `theo-archi` pour faisabilite** (`squad/conformite/FICHE-bandit-manchot-soustractions-
+  cp.md`, `FICHE-bandit-manchot-comparer-nombres-cp.md`, `FICHE-bandit-manchot-problemes-additifs-
+  cp.md`, sections "Ce dont je reste seule garde apres ce second verdict") : sur 1800 coups joues
+  volontairement faux pour forcer l'affichage de l'indice a chaque manche (60 parties par jeu, trois
+  jeux), `nadia-prof` a verifie elle-meme que **tous les items d'un paquet sont reellement
+  atteignables et que les trois propositions servies a l'ecran sont bien celles du fichier** - zero
+  anomalie sur les trois paquets. Aucun test ne tient cette propriete aujourd'hui. Elle la nomme
+  explicitement comme **la seule des proprietes dont elle reste seule garde qui serait facile a
+  tenir par un test** (formulation reprise de son verdict sur les soustractions), au meme titre que
+  la regularite de magnitude deja routee ci-dessus et differee par `DEC-0021`. Je la route a
+  `theo-archi` pour un avis de faisabilite, sans cadrer le garde-fou moi-meme : ni le mecanisme (test
+  unitaire, regle ArchUnit ou autre) ni un seuil quelconque ne sont de mon ressort - ici il n'y a meme
+  pas de seuil a fixer, la propriete attendue est une egalite stricte entre ce que le fichier declare
+  et ce que la mecanique sert.
