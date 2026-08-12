@@ -2482,6 +2482,43 @@ livre ne reproduit pas cette mesure, le report du jeu hors du sprint redevient l
   section 2.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`.
 
+### Story de correction differee - La bonne reponse n'est plus systematiquement le plus grand nombre propose sur les additions de "Resoudre un petit probleme" (reserve de refus S9-4)
+
+**Non affectee a un sprint, reportee hors du sprint 9 par `DEC-0021-magnitude-des-additifs-de-
+problemes-additifs-reportee-hors-sprint.md`.** Cette reserve ne conditionne pas la levee du refus du
+2026-08-12 sur `bandit-manchot-problemes-additifs-cp`
+(`squad/conformite/FICHE-bandit-manchot-problemes-additifs-cp.md`), qui se leve par la seule
+correction des deux enonces "ballons"/"fleurs" (section 1 du meme verdict). Elle est neuf a
+instruire pour un sprint futur, une fois le correctif en cours livre et le fichier stabilise.
+
+- **Besoin** : en tant qu'eleve de CP, je veux devoir vraiment calculer pour trouver la bonne
+  reponse d'un probleme d'addition, afin de ne pas pouvoir gagner en devinant toujours le plus
+  grand nombre propose.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Nombres et calculs",
+  "Resoudre des problemes simples d'addition/soustraction en situation (1 etape)"
+  (`squad/programme/mathematiques/competences-cp.md`).
+- **Criteres d'acceptation**, repris au mot pres de la reserve 1 de `nadia-prof`
+  (`squad/conformite/FICHE-bandit-manchot-problemes-additifs-cp.md`, verdict du 2026-08-12,
+  section "Reserves") :
+  - Etant donne les items du paquet dont la bonne reponse s'obtient par une addition, quand on
+    compare cette bonne reponse aux deux distracteurs proposes, alors elle n'est pas, sur
+    l'ensemble du paquet, systematiquement le plus grand des trois nombres : au moins plusieurs de
+    ces items portent un distracteur superieur a la bonne reponse, plausible par une erreur de
+    raisonnement identifiable (par exemple un surcomptage), et non un nombre pris au hasard.
+  - Etant donne les 11 items de soustraction du paquet, quand on les relit apres cette story, alors
+    ils ne sont pas modifies : la reserve ne porte que sur les items d'addition, et `nadia-prof` a
+    deja constate qu'elle ne s'y reproduit pas.
+  - Etant donne les deux enonces "ballons"/"fleurs" corriges par le correctif du refus du
+    2026-08-12, quand on les relit apres cette story, alors ils ne sont pas modifies une seconde
+    fois par ce travail : les deux corrections sont independantes.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que chaque nouveau distracteur corresponde a une erreur de raisonnement
+    plausible pour un enfant de CP, et non a un nombre arbitraire.
+- **Lien decision** : `DEC-0021-magnitude-des-additifs-de-problemes-additifs-reportee-hors-
+  sprint.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, une fois le correctif en cours du
+  sprint 9 livre sur le meme fichier (`cp-problemes-additifs.yaml`).
+
 ### Autres intentions
 
 - **Constat neuf du 2026-08-10 sur "Le bon petit mot" (jeu catalogue, Done accorde, ligne
@@ -2704,3 +2741,66 @@ livre ne reproduit pas cette mesure, le report du jeu hors du sprint redevient l
     larges que celles deja mesurees sur le catalogue (`mangeons`, 156 px) ; a instruire dès qu'une
     mesure de largeur (`outils/mesurer-rendu.sh`, outil existant) confirme que ces suites tiennent
     dans la colonne actuelle, ou dès la levee du gel de rendu.
+- **Reserves nouvelles du 2026-08-12, verdicts de `nadia-prof` sur les paquets du sprint 9**
+  (`squad/conformite/FICHE-bandit-manchot-soustractions-cp.md`,
+  `FICHE-bandit-manchot-comparer-nombres-cp.md`,
+  `FICHE-bandit-manchot-problemes-additifs-cp.md`). Aucune de ces reserves ne conditionne la levee
+  des trois refus du sprint, qui se leve chacun par la seule correction bornee ecrite par
+  `nadia-prof` dans sa fiche. Non affectees a un sprint, a instruire quand `sofia-sm` juge la
+  capacite disponible.
+  - Sur `bandit-manchot-soustractions-cp` : la consigne du catalogue (`Combien en reste-t-il ?`)
+    surmonte un enonce purement chiffre ou le pronom "en" n'a aucun referent a l'ecran (aucun objet
+    ni quantite nommee), a la difference du jeu des additions (`Combien ça fait ?`), exact pour une
+    ecriture chiffree - a trancher entre changer la consigne ou assumer ce cadrage. Et aucun
+    distracteur du paquet n'attaque l'inversion des termes (`3 - 5` traite comme `5 - 3`), pourtant
+    citee comme erreur attendue par le critere de la story S9-1.
+  - Sur `bandit-manchot-comparer-nombres-cp` : un seul item sur les 16 inegalites compare des
+    unites a dizaines egales (`45 ___ 40`) ; a completer par trois ou quatre items de ce type
+    (`58 ___ 52`, `37 ___ 34`, `71 ___ 79`). Aucune paire n'oppose deux nombres formes des memes
+    chiffres inverses (`24 ___ 42`, `35 ___ 53`), erreur caracteristique de la numeration decimale
+    au CP ; a completer par deux items de ce type.
+  - Sur `bandit-manchot-comparer-nombres-cp`, constat structurel et non imputable a `lea-dev` : les
+    huit egalites du paquet ont toutes la forme `n ___ n`, repondables par simple appariement
+    visuel sans mobiliser aucune comparaison de grandeurs. `nadia-prof` ne demande pas de retirer
+    les egalites - le seuil de 20 % pose par la story S9-3 reste legitime, `=` doit exister comme
+    reponse - mais nomme la seule sortie qui rendrait `=` non trivial : comparer une ecriture a un
+    calcul, par exemple `3 + 2 ___ 5`. C'est une extension de perimetre qui m'appartient, pas un
+    defaut de developpement ; non ouverte ici, a instruire si cette ligne revient au planning
+    au-dela de son perimetre actuel ("comparer" seul, "ranger" deja differe par `DEC-0019`).
+  - Sur `bandit-manchot-problemes-additifs-cp` : le mot "fanent" (`Le jardinier a 8 fleurs et 5
+    fanent.`) n'est pas du vocabulaire de CP, aussi difficile a decoder qu'a comprendre - a
+    remplacer par un verbe transparent ; meme examen, plus leger, sur "adopte". Les trois metiers du
+    paquet (fermier, clown, jardinier) sont tous masculins et la seule figure adulte feminine
+    (Mamie) est en cuisine, alors que les prenoms d'enfants sont bien equilibres - a corriger en
+    feminisant un ou deux metiers. Deux enonces ouvrent leur seconde proposition par une virgule
+    suivie d'un chiffre (`Le fermier a 5 chats, 2 partent.`, `Le clown a 8 ballons, 4 s'envolent.`),
+    difficile a phraser pour un lecteur debutant - a reecrire avec "et", comme les 20 autres items.
+  - Sur `bandit-manchot-soustractions-cp` et `bandit-manchot-problemes-additifs-cp`, explicitement
+    nomme par `nadia-prof` sur ces deux fiches : la difficulte est constante a l'interieur d'une
+    partie, chaque manche etant tiree du meme vivier sans ordre croissant. Meme mecanique de tirage
+    sur les deux autres paquets du sprint, mais nuance a garder : `nadia-prof` juge ce point sans
+    objet sur `bandit-manchot-complements-10-cp` (les onze cases de la table ne se hierarchisent
+    pas assez nettement pour qu'un ordre vaille mieux que le hasard) et ne le releve pas sur
+    `bandit-manchot-comparer-nombres-cp`. Symptome signale, cause dans la mecanique du bandit
+    manchot et non dans un contenu particulier - route a `theo-archi` pour avis de faisabilite,
+    sans solution technique
+    prescrite ici.
+- **Constat de `nadia-prof` qui depasse le sprint 9 (2026-08-12), a router a `theo-archi` pour
+  faisabilite** (`squad/conformite/FICHE-bandit-manchot-soustractions-cp.md`, verdict du
+  2026-08-12, section "Ce dont je reste seule garde apres ce verdict") : 371 tests verts et 28
+  regles ArchUnit n'ont pas vu les 47 fautes de francais qui motivent ce refus, parce qu'aucun
+  garde-fou existant ne lit un indice comme du francais ni ne verifie qu'il est vrai
+  (`PropositionsAccentueesJouablesIT` verifie qu'une proposition accentuee reste jouable, une
+  robustesse d'encodage, pas une correction de langue ; `ChaquePaquetPorteUnIndiceTest` verifie
+  qu'un indice existe et n'est pas vide ; `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest`
+  compare des indices entre eux, jamais un indice a la verite). Sur les proprietes qu'elle nomme
+  ainsi non couvertes par la CI, elle en nomme une seule comme gardable et refuse d'en prescrire la
+  solution : **la regularite de magnitude entre la bonne reponse et les distracteurs d'un item se
+  compte, donc peut se tester automatiquement** - un garde-fou pourrait par exemple compter, par
+  paquet, la proportion d'items ou la bonne reponse est le maximum des propositions, et refuser
+  au-dela d'un seuil. Je le route a `theo-archi` pour un avis de faisabilite, sans cadrer le
+  garde-fou moi-meme : ni le seuil, ni le mecanisme (test unitaire, regle ArchUnit ou autre)
+  ne sont de mon ressort. Les autres proprietes qu'elle nomme (la verite d'un indice, l'exactitude
+  arithmetique d'un item, la plausibilite d'un distracteur, la validite semantique d'une situation)
+  ne sont pas nommees gardables par elle et ne sont pas routees ici pour cette raison : elle reste
+  seule garde de chacune, en jouant.
