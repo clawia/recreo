@@ -166,10 +166,128 @@ anterieurs n'est modifie ni efface.
 
 | Question | Reponse |
 |---|---|
-| 1. La silhouette franchit-elle la frontiere manche dessine / manette ? | voir section 1 |
+| 1. La silhouette franchit-elle la frontiere manche dessine / manette ? | **NON, elle ne la franchit pas. La silhouette est ACCEPTEE**, sous les conditions N1 a N7 de la section 5. Elle ne suggere aucun geste de traction, et je l'ai mesuree plutot que regardee de loin |
 | 2. Le fronton peut-il porter deux formes fixes plutot qu'une ? | **OUI.** Mon mot "unique" interdisait la variation, il ne comptait pas les formes - et je le dis contre mon propre vocabulaire, pas contre celui d'`ines-design` |
 | 3. Un pixel de hauteur est-il acceptable ? | voir section 3 |
 | 4. Quelle est la valeur absolue du contraste cadre/page ? | **8,61:1, et c'est `ines-design` qui a raison. Mon 9,25:1 etait faux, et j'ai trouve exactement pourquoi** |
+
+#### 0. Comment j'ai regarde, et ce que je declare degrade
+
+**Rien n'est code : cet arbitrage ne peut donc pas etre un audit joue d'increment, et je ne le
+presente pas comme tel.** Mais je ne me suis pas contentee de lire un polygone, parce que juger une
+forme sur ses coordonnees est exactement la faute que je reproche quand on me la fait.
+
+**Ce que j'ai fait, et c'est reproductible.** J'ai lance l'application reelle
+(`java -jar bootstrap/target/recreo.jar`, JDK 21 designe par `JAVA_HOME` le temps de la commande - le
+`java` du `PATH` de ce poste est un JRE 8), joue "Le bon verbe" et les sept autres jeux du catalogue
+en repondant faux volontairement pour faire venir les indices, et **reassemble chaque ecran servi dans
+la page complete que l'enfant recoit** (en-tete, `main#jeu`, feuille tierce puis feuille maison dans
+cet ordre reel). Sur cette page-la, je n'ai ajoute qu'**une seule feuille supplementaire** portant le
+candidat d'`ines-design`, mot pour mot, sans toucher a `recreo.css`. Capture par
+`outils/mesurer-rendu.sh 360 <url> <png> 640`, Chrome designe par la variable `CHROME` (aucun
+navigateur n'est sur le `PATH` de ce poste). **Ce n'est donc pas une maquette synthetique : c'est le
+HTML que l'application sert, avec le candidat par-dessus.** Puis mesure pixel par pixel et
+agrandissement au voisin le plus proche - je regarde les pixels reellement rendus, pas une
+interpolation qui lisserait ce que je dois juger.
+
+**Ce que je declare degrade, en trois points, parce qu'ils sont reels** :
+
+1. **je juge un candidat, pas un livre**. Ce que le lot ecrira peut differer de ce que j'ai capture ;
+   mes conditions N1 a N7 sont ecrites pour etre mesurables sur le livre, une par une ;
+2. **un enfant n'a pas vu cet ecran.** Je juge une forme contre une frontiere que j'ai ecrite, ce qui
+   est ma competence, mais aucun enfant n'a designe cette forme du doigt ;
+3. **je n'ai pas mesure a 375 px ni au-dela.** Les chiffres d'`ines-design` a 375 px sont repris tels
+   quels et non reverifies ; ceux a 360 px sont tous refaits par moi.
+
+**Un defaut d'outillage trouve en chemin, et je le remonte plutot que de le garder** :
+`outils/mesurer-rendu.sh` avec un chemin de PNG **relatif** rend "le navigateur n'a produit aucune
+capture (code 0)" et n'ecrit rien, alors que le meme appel avec un chemin absolu fonctionne. Le
+script convertit deja le chemin du conteneur et du profil pour le binaire natif, mais pas celui de la
+capture. C'est un symptome, pas une conception : je le route a `theo-archi`.
+
+#### 1. La silhouette : elle ne franchit pas ma frontiere, et voici la mesure qui le dit
+
+**Ma frontiere, rappelee au mot pres avant de juger.** C6 : *"pas de manette ni de bras lateral (mon
+veto sur tout geste de traction, confirme deux fois)"*. Point 3 du 2026-08-10 : *"le levier ne suggere
+aucun geste autre qu'un appui simple. Pas de fleche vers le bas, pas de manette a demi baissee qui
+attend qu'on la tire, pas de glissement."* C'est cela que je mesure, et rien d'autre : je ne juge pas
+si la forme est jolie, ni si elle est la meilleure possible.
+
+**Ce que la forme rendue est, mesure ligne par ligne sur la capture** (etat reel de "Le bon verbe",
+enonce *"Autrefois, tu ___ tes camarades en classe."*, 360 x 640, boite du manche isolee par sa
+couleur `#ffffff`) :
+
+| Rangee | Largeur du blanc | Centre |
+|---|---|---|
+| `y = 426` (sommet) | 6 px | `x = 321,5` |
+| `y = 430` | 16 px | `x = 321,5` |
+| `y = 436` | 20 px | `x = 321,5` |
+| `y = 436..448` (13 rangees, le bas) | **20 px, constante** | `x = 321,5` |
+
+**Quatre proprietes, chacune mesuree et non deduite du polygone :**
+
+1. **La symetrie gauche/droite est exacte sur chaque rangee sans exception** : le centre du blanc vaut
+   `x = 321,5` sur les 23 rangees, du sommet a la base. C'est le fait qui tue la lecture "en cours de
+   course" : une manette a demi baissee est asymetrique, son axe penche, et un enfant lit
+   l'inclinaison avant la forme. Ici il n'y a pas d'inclinaison a lire, et ce n'est pas une intention
+   d'`ines-design` que je relaie, c'est un releve.
+2. **Les flancs sont strictement paralleles sur les 13 dernieres rangees** et la largeur ne depasse
+   jamais 20 px. Aucun evasement, aucune jupe : la forme ne s'ouvre pas vers le bas.
+3. **La base est une arete horizontale pleine de 20 px**, sur toute la largeur de la boite. C'est
+   l'argument d'`ines-design` - la forme est **montee sur** le fronton et non suspendue - et je le
+   confirme par la mesure au lieu de le croire. Une forme dont le bas est plein et poser a plat ne se
+   lit pas comme un bras qui pend : elle n'a pas de point d'attache en haut, et un bras lateral se
+   reconnait precisement a cela.
+4. **Rien ne sort du fronton, et rien n'approche le coin arrondi.** Le fronton occupe
+   `y = 421..452` a l'interieur du cabinet ; le manche occupe `y = 426..448`, donc 5 px de garde en
+   haut et 4 px en bas. Son bord droit est a `x = 331` pour un bord interieur de cabinet a `x = 339` :
+   **8 px de degagement**. La forme est **contenue**, ce qui compte pour ma frontiere : ce qui deborde
+   d'un cadre se lit comme un appendice, et un appendice lateral est exactement ce que C6 refuse.
+
+**Le cout est nul, et je l'ai verifie sur un etat reel plutot que sur trois colonnes synthetiques.**
+Cabinet **sans** le candidat : `y = 413..634`, `x = 12..347`. Cabinet **avec** : `y = 413..634`,
+`x = 12..347`. **Identique au pixel dans les deux dimensions**, sur un etat de "Le bon verbe" a quatre
+propositions en deux rangees - c'est-a-dire sur le jeu le plus contraint du catalogue, et non sur le
+plus confortable.
+
+**Les deux formes du fronton ne se genent pas** : etoile a `x = 173..186`, manche a `x = 312..331`,
+**126 px** entre elles, verifie par moi. Voir section 2.
+
+**Ce que la forme rendue raconte, et je le dis franchement parce que personne d'autre ne le dira.**
+Zoomee, cette silhouette ne se lit pas comme une poignee : elle se lit comme **une arche, une porte
+arrondie, une borne**. Ce n'est pas un motif de refus - ma frontiere porte sur ce que la forme
+**suggere de faire**, pas sur ce qu'elle represente, et une arche ne suggere aucune traction. Mais il
+faut que ce soit ecrit avant le lot et non decouvert apres : **l'utilisatrice a demande un manche
+dessine, et ce qui sera livre se lira comme un bloc arrondi.** Si c'est acceptable pour elle, tant
+mieux, le sprint continue ; si elle attendait une forme reconnaissable comme une poignee, elle doit
+pouvoir le dire maintenant, quand cela coute un briefing. Je le route a `sofia-sm` pour remontee, sans
+en faire une condition : ce n'est pas ma porte, c'est la sienne.
+
+**Le risque de forme que je trouve, moi, et qui est actionnable : la cloche.** `cloche` est sur ma
+liste d'interdits C6, au titre des symboles canoniques de la machine a sous. La silhouette actuelle
+n'en est pas une, et je peux dire exactement pourquoi grace au releve ci-dessus : une cloche
+**s'evase** vers le bas et porte souvent un bouton au sommet. Ici les flancs sont paralleles et le
+sommet est un arc nu. **Mais deux modifications minuscules la feraient basculer** - elargir la base
+au-dela de la largeur du corps, ou ajouter une pastille sur le sommet - et aucune CI ne le verrait.
+C'est ma condition N2.
+
+**Sur le repli en `border-radius` de sa section 1.4, que `ines-design` me laisse activer : je ne
+l'active pas, et j'ai une raison mesuree.** Je l'ai rendu et mesure comme l'autre. Sa courbe est plus
+lisse, c'est exact. Mais son bas est **arrondi** : largeur 18 px a `y = 444`, 14 px a `y = 445`, la ou
+le candidat en polygone garde 20 px pleins jusqu'a sa derniere rangee. **Le repli perd donc l'embase
+plate, c'est-a-dire precisement la propriete qui fait passer le candidat principal** - une forme dont
+le bas s'arrondit flotte, et ce qui flotte peut se lire comme suspendu. Ce n'est pas un refus du
+repli, c'est une consequence a connaitre : **si le lot bascule sur le repli, il revient devant moi**
+(condition N3). Je ne juge pas non plus son ombre interne ici : voir la section 3 et la condition N5,
+qui tranchent ce que C3 dit d'un relief peint.
+
+**Verdict de la question 1 : la silhouette ne franchit pas la frontiere. Elle est acceptee**, sous les
+conditions N1 a N7 de la section 5. **Ce que j'accepterais a la place n'a donc pas a etre invente** -
+et je note pour trace que la piste ecartee par `ines-design`, la boule sur tige etroite, aurait ete
+refusee par moi aussi, pour un motif qui n'est pas le sien : une tige etroite sous une tete large est
+la silhouette meme d'une manette, et son etranglement est le point ou une main se ferme. Elle l'a
+ecartee parce qu'elle se lit comme un trou de serrure ; je l'aurais ecartee parce qu'elle se lit comme
+une prise. **Les deux motifs tiennent, et le second est celui qui aurait arrete le sprint.**
 
 #### 2. Le fronton porte deux formes fixes : accepte, et voici ce que mon mot "unique" voulait dire
 
