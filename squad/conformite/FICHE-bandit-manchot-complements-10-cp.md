@@ -184,18 +184,51 @@ Deux points de contexte, qui ne sont pas des reserves de ce jeu et que je n'ouvr
 ### Ce dont je reste seule garde apres ce verdict
 
 A dire explicitement, sinon l'equipe croira couvert ce qui ne l'est pas. Aucun garde-fou de la CI
-ne tient les proprietes suivantes sur ce paquet :
+ne tient les proprietes suivantes sur ce paquet.
 
-1. **L'exactitude arithmetique de chaque item** (que la reponse annoncee soit bien le complement).
-   Aucun test ne calcule `a + reponse == 10` : `PaquetCpComplements10S9Test` verifie la structure et
-   la couverture des valeurs de depart, pas la verite du calcul. Je l'ai fait a la main, onze fois.
+**Correction de fait du 2026-08-12, portant sur cette liste et sur aucun verdict.** Deux des quatre
+points ci-dessous etaient inexacts, et je les corrige sur place plutot que de les effacer.
+
+- **Point 1, l'exactitude arithmetique : faux, cette propriete est gardee.** J'avais ecrit qu'aucun
+  test ne calculait `a + reponse == 10` et que `PaquetCpComplements10S9Test` ne verifiait que la
+  structure et la couverture des valeurs de depart. En realite,
+  `chaqueEnonceDemandeLeComplementA10DUnNombreEntre0Et10Inclus` extrait le nombre de depart de
+  l'enonce, lit la bonne reponse de l'item, et affirme que leur somme vaut exactement 10. Etabli par
+  la mutation de `yanis-qa` (section 4 de
+  `squad/sprints/s09-mathematiques-cp-nombres-et-calculs/rapport-qualite.md` : bonne reponse de
+  `7 + ? = 10` passee de `3` a `2`, test rouge), puis relu par moi dans le fichier de test.
+- **Point 4, la plausibilite d'un distracteur : partiellement gardee, ce que je n'avais pas vu.**
+  Trouve par ma propre relecture du test a l'occasion de cette correction, et non signale par un
+  tiers. `auMoinsUnDistracteurParItemEstUneErreurFrequenteIdentifiable` exige que **au moins un** des
+  deux distracteurs de chaque item soit l'une des deux erreurs frequentes nommees : le nombre de
+  depart recopie tel quel, ou le complement a 9. Ce n'est pas rien, et je ne peux plus ecrire que
+  cette propriete n'est tenue par rien. Ce qui reste sur ma main est enonce dans le point 4 reecrit.
+
+Je conserve les numeros d'origine pour ne decaler aucun renvoi deja ecrit. **Mon constat de fond ne
+bouge pas** : ce que la suite ne garde toujours pas, c'est ce que l'enfant **lit** - l'orthographe,
+la verite d'un indice, le niveau de vocabulaire.
+
+1. **L'exactitude arithmetique de chaque item : propriete gardee, je n'en suis pas le garde** (point
+   corrige le 2026-08-12, voir ci-dessus). `PaquetCpComplements10S9Test` calcule bien
+   `a + reponse == 10` sur chaque item. Je l'ai aussi fait a la main, onze fois, mais un test le
+   referait si le fichier changeait sans moi.
 2. **L'exactitude de chaque indice** - qu'il decrive une methode qui mene vraiment a la reponse.
    `ChaquePaquetPorteUnIndiceTest` verifie qu'un indice existe et n'est pas vide ;
    `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest` verifie une coherence interne. **Ni l'un ni
-   l'autre ne verifie qu'un indice est vrai.**
+   l'autre ne verifie qu'un indice est vrai.** **Precision du 2026-08-12, dans le sens defavorable** :
+   la coherence interne que je credite au second est elle-meme vide sur le contenu servi aujourd'hui.
+   Verifie dans le fichier de test a l'occasion de la correction ci-dessus : sa clause de production,
+   `aucunIndiceDeProductionNeCorrespondALaFormeGeneraleAujourdHui`, epingle a **zero** le nombre
+   d'indices de production qu'elle reconnait, et son message demande de la supprimer le jour ou ce
+   compte change. Elle ne juge donc aucun indice d'aucun paquet servi a un enfant.
 3. **L'orthographe et l'accentuation du texte que l'enfant lit.**
    `PropositionsAccentueesJouablesIT` ne couvre pas cette propriete : il verifie qu'une proposition
    accentuee reste **jouable** sans planter la manche, ce qui est une robustesse d'encodage, pas une
    correction de langue. Aucun test ne lit les indices comme du francais.
-4. **La plausibilite d'un distracteur** - qu'il corresponde a une erreur qu'un enfant commet
-   reellement, et non a un nombre pris au hasard.
+4. **La plausibilite du second distracteur, et la pertinence pedagogique des deux** (point corrige et
+   restreint le 2026-08-12, voir ci-dessus). Le test tient deja qu'au moins un distracteur par item
+   soit le nombre de depart recopie ou le complement a 9. Il ne dit rien du second distracteur, qui
+   peut rester un nombre pris au hasard dans 0-10, et il ne dit rien du fait que les deux erreurs
+   qu'il liste soient bien celles qu'un enfant de CP commet devant cette table - c'est mon jugement
+   qui l'a etabli, pas le test, et un autre paquet pourrait lister deux erreurs mal choisies en
+   restant vert.

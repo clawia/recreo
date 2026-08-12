@@ -234,14 +234,41 @@ caracteres, pas des mesures de rendu.
 Le correctif est fusionne et la CI reste verte, mais **aucun garde-fou neuf ne couvre les proprietes
 qui ont laisse passer ce refus.**
 
+**Relecture de cette liste du 2026-08-12, apres une erreur de fait trouvee dans mes trois autres
+fiches de ce sprint.** J'y avais ecrit que l'exactitude arithmetique des items n'etait tenue par
+aucun test ; c'etait faux pour les trois paquets concernes, qui portent chacun un test dedie le
+faisant. J'ai donc reverifie cette liste-ci, point par point, dans les fichiers de test. Deux
+resultats, en sens opposes.
+
+- **Le point 6 est exact, et il l'est pour une raison qu'il faut nommer** : `cp-problemes-additifs`
+  est le seul paquet neuf de ce sprint **sans test dedie** (`git` ne porte aucun
+  `PaquetCpProblemesAdditifsTest`), et aucun garde-fou generique ne verifie une operation. Ce que
+  `yanis-qa` chiffre en section 7 de
+  `squad/sprints/s09-mathematiques-cp-nombres-et-calculs/rapport-qualite.md` : "aucun test, generique
+  ou existant, ne verifie que les 22 operations de `cp-problemes-additifs` sont arithmetiquement
+  exactes". Mon point 6 est donc a lire comme propre a ce paquet et non comme un constat sur le
+  depot - les soustractions, les complements a 10 et la comparaison de nombres, eux, sont gardes.
+- **Le point 2 me creditait un garde-fou de plus qu'il n'en fait, et je le corrige dans ce sens
+  aussi** : voir le point 2 reecrit. Une liste inexacte est inutile dans les deux sens, pas seulement
+  quand elle sous-estime.
+
 1. **La validite semantique d'une situation** - qu'un enonce, lu correctement, mene bien a la reponse
    attendue. **C'est la propriete qui a laisse passer ce refus, et elle n'est pas gardable
    automatiquement** : aucun test ne peut lire une histoire et decider si `en gonfle 2` ajoute des
    ballons ou non, ni que `de plus` change cela. Je ne demande pas qu'on essaie. C'est moi, et en
    jouant.
-2. **La coherence entre un enonce et son indice.** Toujours rien ne compare un indice a **son propre**
-   enonce ; `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest` compare les indices **entre** items.
-   C'est ce que j'ai lu a la main pour constater que `d'autres` est redevenu coherent.
+2. **La coherence entre un enonce et son indice, et - correction du 2026-08-12 - la coherence entre
+   items elle-meme, que j'avais creditee a tort.** Rien ne compare un indice a **son propre** enonce :
+   cela n'a pas change. Mais j'ecrivais aussi, ici et dans mes trois autres fiches, que
+   `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest` comparait les indices **entre** items, comme si
+   cette moitie-la etait couverte. **Sur le contenu servi aujourd'hui, elle ne l'est pas** : la clause
+   de production de ce test, `aucunIndiceDeProductionNeCorrespondALaFormeGeneraleAujourdHui`, epingle
+   a **zero** le nombre d'indices de production reconnus par la forme qu'elle sait juger, et son
+   message demande de la supprimer le jour ou ce compte cesse de valoir zero. Autrement dit ce
+   garde-fou ne juge aucun indice d'aucun paquet de production a ce jour ; il ne mord que sur son
+   contre-exemple de test. Trouve par ma propre relecture du fichier de test, pas signale par un
+   tiers. La coherence des indices de ce paquet, c'est donc entierement moi, et c'est ce que j'ai lu a
+   la main pour constater que `d'autres` est redevenu coherent.
 3. **La regularite de magnitude entre bonne reponse et distracteurs** (reserve 1). Celle-ci **serait
    gardable** par un test qui compte les items ou la bonne reponse est le maximum des propositions.
    `DEC-0021` la differe hors sprint ; tant qu'aucun test n'existe, elle n'est tenue par rien du tout, et
@@ -444,7 +471,10 @@ l'utilisatrice.
    automatiquement, et je ne demande pas qu'on essaie : c'est moi, et en jouant.
 2. **La coherence entre un enonce et son indice** - ici l'indice ajoute un mot que l'enonce ne dit
    pas. `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest` compare les indices **entre items** ; rien
-   ne compare un indice a **son propre** enonce.
+   ne compare un indice a **son propre** enonce. **Correction du 2026-08-12** : la premiere moitie de
+   cette phrase me creditait trop. Sur le contenu de production servi aujourd'hui, ce garde-fou ne
+   juge aucun indice - sa clause de production epingle a zero le nombre d'indices qu'elle reconnait.
+   Voir la correction datee de la section "Ce dont je reste seule garde apres ce second verdict".
 3. **La regularite de magnitude entre bonne reponse et distracteurs** (reserve 1). Celle-ci, a la
    difference de la 1re, **serait gardable** : un test peut compter les items ou la bonne reponse est
    le maximum des propositions et refuser au-dela d'un seuil. Je le signale a `camille-po` comme une
