@@ -2519,6 +2519,87 @@ instruire pour un sprint futur, une fois le correctif en cours livre et le fichi
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, une fois le correctif en cours du
   sprint 9 livre sur le meme fichier (`cp-problemes-additifs.yaml`).
 
+### Story de raccourcissement - Les enonces les plus longs de "Le bon petit mot" tiennent au-dessus du pli (execution de DEC-0024)
+
+**Non affectee a un sprint.** `DEC-0024-retrait-le-bon-petit-mot-contenu-valide-ecran-trop-court.md`
+retire "Le bon petit mot" (`bandit-manchot-homophones-cm1`) du catalogue jouable : son contenu
+(`cm1-homophones.yaml`) reste pedagogiquement valide - Done pedagogique **VALIDE**, accorde le
+2026-08-10, non rouvert par ce retrait - mais son enonce le plus long ne tient pas au-dessus du
+pli sur l'ecran que le sprint 10 construit pour les sept autres jeux du catalogue
+(`mesure-ines-budget-vertical-m4.md`, branche `s10-ines-meuble`).
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue a "Le bon petit mot", je veux voir la question, ma
+  reponse et l'aide entierement sur l'ecran sans avoir a faire defiler la page, afin de pouvoir
+  jouer une partie sans perdre de vue les boutons de reponse au moment ou j'en ai besoin.
+- **Competence programme visee** : francais, CM1 (cycle 3), "Distinguer et utiliser correctement
+  les principaux homophones grammaticaux (et/est, son/sont, a/à...)"
+  (`squad/programme/francais/competences-cm1.md`) - meme ligne que la story d'ouverture S4-1, une
+  reouverture du meme paquet, pas une competence neuve.
+- **Criteres d'acceptation**, la forme d'abord, executable et non fondee sur un compte de
+  caracteres (`DEC-0016` l'interdit nommement) :
+  - Etant donne l'enonce le plus long du paquet raccourci, quand il est rendu a 360 px de large
+    avec les feuilles reellement servies et mesure par
+    `outils/mesurer-rendu.sh 360 <url> <png> 640` sur chacun des trois etats sous le meuble
+    (message d'echec, indice, revelation), alors les propositions de reponse restent entierement
+    visibles au-dessus du pli sur les trois etats - la meme methode et le meme viewport de
+    reference qu'`ines-design` a appliques aux sept autres jeux du catalogue.
+  - Etant donne l'ensemble des 24 items du paquet, quand chacun est mesure de la meme facon, alors
+    aucun n'est en defaut, y compris l'item aujourd'hui le plus long ("Apres cette longue
+    randonnee en montagne, le vieux chien ne ___ plus vraiment courir comme avant.", 97
+    caracteres) : le raccourcissement porte sur autant d'items que necessaire pour atteindre ce
+    resultat, pas seulement sur le plus long.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : un paquet raccourci est un contenu modifie, il repasse devant elle comme un
+    contenu neuf sur sa barre en six points deja ecrite pour ce paquet
+    (`squad/programme/MATRICE-couverture.md`, ligne francais CM1 homophones), pas seulement sur le
+    critere de forme ci-dessus. Le retour au catalogue suppose les deux : la mesure de forme **et**
+    un Done pedagogique accorde sur le paquet raccourci.
+- **Lien decision** : `DEC-0024-retrait-le-bon-petit-mot-contenu-valide-ecran-trop-court.md` ;
+  `mesure-ines-budget-vertical-m4.md` (branche `s10-ines-meuble`) pour la mesure d'origine.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, avec `nadia-prof` pour le
+  raccourcissement lui-meme (jugement pedagogique sur quels enonces reduire et comment).
+
+### Story de correction - Les indices de "Le bon verbe" nomment la manipulation, pas la reponse (M2, arbitrage de mecanique de nadia-prof)
+
+**Non affectee a un sprint.** `nadia-prof` a mesure, dans son arbitrage prealable de mecanique du
+sprint 10 (`FICHE-bandit-manchot-additions-cp.md`, branche `s10-nadia-mecanique`, section 0 bis
+point A), que **25 indices sur 25** de `cm1-conjugaison-present.yaml` se terminent en nommant la
+forme conjuguee attendue (par exemple : *"Avec 'ils' ou 'elles', le verbe 'jouer' se termine par
+'-ent' au present : c'est 'jouent'."*), alors que sa condition **M2** (un indice rattache a la
+question ne nomme jamais la reponse) s'applique aux huit jeux du catalogue. Elle nomme elle-meme
+son manquement : ces textes avaient ete valides en verifiant qu'ils etaient vrais, jamais qu'ils
+revelaient plutot que d'aider. "Le bon verbe" reste au catalogue et ne necessite aucun
+raccourcissement ; c'est pourquoi cette story lui est propre et distincte de celle qui precede,
+qui rouvre integralement `cm1-homophones.yaml` pour un motif different et pourra corriger ses 22
+indices fautifs dans le meme geste que le raccourcissement de ses enonces.
+
+- **Besoin** : en tant qu'eleve de CM1 qui vient de se tromper trois fois de suite sur "Le bon
+  verbe", je veux que l'aide qui m'est montree m'aide a trouver la bonne forme du verbe par
+  moi-meme, afin de ne pas simplement recopier une reponse qu'on m'a deja donnee.
+- **Competence programme visee** : francais, CM1 (cycle 3), "Conjuguer les verbes frequents au
+  present, futur et imparfait de l'indicatif" (`squad/programme/francais/competences-cm1.md`) -
+  meme ligne que S6-3 et `DEC-0014`, deja `couvert-valide`, non rouverte par cette story.
+- **Criteres d'acceptation**, repris au mot pres du motif nomme par `nadia-prof` (M2) :
+  - Etant donne chacun des 25 indices du paquet, quand on le relit apres cette story, alors il ne
+    se termine plus par la formule "c'est '<forme conjuguee>'" ni par aucune autre formulation qui
+    nomme explicitement la reponse attendue de la manche.
+  - Etant donne chacun de ces 25 indices corriges, quand on verifie sa forme, alors il continue de
+    porter la manipulation qui menait a la reponse (la personne grammaticale et la regle ou
+    l'exception de terminaison), seulement ampute de sa conclusion : par exemple, l'indice cite
+    ci-dessus devient utilisable en s'arretant a "... se termine par '-ent' au present", sans les
+    quatre derniers mots.
+  - Etant donne les 25 enonces et leurs propositions, quand on les relit apres cette story, alors
+    ils ne sont pas modifies : la story ne porte que sur le texte des indices, pas sur le contenu
+    grammatical deja juge exact par `nadia-prof`.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue l'increment et confirme que chaque indice raccourci aide encore
+    reellement l'enfant a trouver la forme, plutot que de simplement lui retirer sa derniere
+    phrase.
+- **Lien decision** : `FICHE-bandit-manchot-additions-cp.md` (branche `s10-nadia-mecanique`),
+  arbitrage de mecanique du 2026-08-12, section 0 bis point A et condition M2 ;
+  `DEC-0024-retrait-le-bon-petit-mot-contenu-valide-ecran-trop-court.md`, point 5.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
 ### Autres intentions
 
 - **Constat neuf du 2026-08-10 sur "Le bon petit mot" (jeu catalogue, Done accorde, ligne
@@ -2533,7 +2614,19 @@ instruire pour un sprint futur, une fois le correctif en cours livre et le fichi
   correctif devra respecter, sans trancher entre les deux pistes possibles : raccourcir les cinq
   enonces les plus longs (jugement pedagogique, `nadia-prof`) ou traiter la hauteur de l'ecran par
   la mise en page (`theo-archi`, `ines-design`). Non affecte a un sprint ; a instruire quand
-  `sofia-sm` juge la capacite disponible.
+  `sofia-sm` juge la capacite disponible. **Devenu bloquant au sprint 10** : voir
+  `DEC-0024-retrait-le-bon-petit-mot-contenu-valide-ecran-trop-court.md`, qui retire ce jeu du
+  catalogue plutot que de le raccourcir dans ce sprint.
+- **Risque de sprint 10, nomme et non ferme : la marge de "Le bon verbe" sous le pli tient a un
+  seul pixel.** `ines-design` fait tenir ce jeu sous la condition M4 de `nadia-prof` apres
+  resserrement des marges de forme, mais a 1 px de marge avant le pli sur son item le plus charge
+  (`mesure-ines-budget-vertical-m4.md`, branche `s10-ines-meuble`, section 3) - elle le nomme
+  elle-meme comme "un passage, pas une marge de securite". Ce n'est pas une story : rien n'est
+  a developper ici, et la ligne de matrice conjugaison CM1 n'est pas touchee. C'est un point de
+  vigilance pour `yanis-qa` et pour le prochain contenu ajoute a ce paquet, puisqu'aucun automate
+  du depot ne garde cette propriete (`ADR-0025`, `ADR-0028`) : un enonce ou une reponse ne
+  serait-ce qu'un mot plus long que l'actuel plus long du paquet ferait repasser cet etat sous le
+  pli sans qu'aucun test ne rougisse.
 - La ligne mathematiques CP (calcul mental additions) est `couvert-valide` (2026-08-06) sur la
   borne jusqu'a 10 uniquement : elargir son contenu a la borne jusqu'a 20 (meme mecanique, meme
   jeu) reste a instruire. **Correction du 2026-08-12** : cette puce conflait a tort trois lignes

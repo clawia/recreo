@@ -243,7 +243,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Ecriture | Relire et corriger son texte a l'aide de reperes simples (majuscules, ponctuation) | - | - | non couvert |
 | francais | CM1 | Orthographe et grammaire | Accorder le verbe avec son sujet (cas frequents, temps simples : present, futur, imparfait) | - | - | non couvert |
 | francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | - | - | non couvert |
-| francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | bandit-manchot-homophones-cm1 | bandit manchot | couvert-valide |
+| francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | bandit-manchot-homophones-cm1 | bandit manchot | en cours |
 | francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif | bandit-manchot-conjugaison-present-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | - | - | non couvert |
 | francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | - | - | non couvert |
@@ -293,6 +293,19 @@ CM1 sur la moitie des items neufs. **`c'est`/`s'est` (et `sait`/`sais`) n'y est 
 satisfait ses quatre criteres de "principal" et c'est l'une des fautes les plus frequentes au CM1,
 mais `nadia-prof` refuse de grossir une condition deja engagee par l'equipe - elle la nomme comme
 premier candidat d'une story ulterieure (voir "Backlog - sprints suivants").
+
+**Etat au 2026-08-12, retrait du catalogue jouable (sprint 10)** : le Done pedagogique du
+2026-08-10 ci-dessus **n'est pas rouvert** - il n'y a aucun nouvel audit, aucun REFUSE. La ligne
+**redescend neanmoins de `couvert-valide` a `en cours`**, sur un motif qui n'est pas pedagogique :
+"Le bon petit mot" (`bandit-manchot-homophones-cm1`) quitte le catalogue jouable, son enonce le
+plus long ne tenant pas au-dessus du pli sur l'ecran que le sprint 10 construit pour les sept
+autres jeux (`DEC-0024-retrait-le-bon-petit-mot-contenu-valide-ecran-trop-court.md`). Un contenu
+pedagogiquement valide qu'aucun jeu jouable ne sert n'est pas une couverture reelle du programme :
+`couvert-valide` decrirait un enfant capable d'ouvrir l'application et de travailler cette
+competence aujourd'hui, ce qui n'est plus le cas. La ligne remontera a `couvert-valide` quand le
+paquet raccourci aura ete rejuge par `nadia-prof` (nouveau Done pedagogique, la barre en six points
+ci-dessus n'etant pas rouverte pour autant) et que le jeu sera revenu au catalogue - voir `DEC-0024`
+pour la condition de forme executable qui conditionne ce retour.
 
 **Etat au 2026-08-10, premier audit de la ligne conjugaison** : `nadia-prof` prononce **REFUSE**
 sur `bandit-manchot-conjugaison-present-cm1`
@@ -666,3 +679,20 @@ partiel empeche de toute facon `couvert-valide` sur cet increment ; et francais 
 phonemes, restee ouverte depuis s06) et 38 lignes `non couvert`, chiffre inchange : aucune ligne
 nouvelle n'est ouverte par ce second tour d'audit, le mouvement porte uniquement sur les trois
 lignes deja engagees ce sprint.
+
+## Synthese apres le retrait du sprint 10 (2026-08-12)
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 |
+| mathematiques CM1 | 12 | 12 | 0 | 0 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 9 | 1 | 1 |
+| **Total** | **46** | **38** | **3** | **5** |
+
+Un seul mouvement, sur une seule ligne : francais CM1 (homophones grammaticaux) redescend de
+`couvert-valide` a `en cours` (`DEC-0024-retrait-le-bon-petit-mot-contenu-valide-ecran-trop-court.md`).
+Aucun autre chiffre ne bouge - ni la ligne conjugaison CM1, dont les douze conditions de mecanique
+et de forme du sprint 10 ne sont pas rouvertes, ni aucune ligne de mathematiques ou de francais CP.
+Ce n'est pas un audit pedagogique : aucun Done n'est ni accorde ni retire par ce mouvement, c'est un
+constat que le produit livre aujourd'hui ne sert plus cette competence par aucun jeu jouable.
