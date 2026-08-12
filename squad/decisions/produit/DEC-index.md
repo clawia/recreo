@@ -20,8 +20,9 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0014 | Retrait de "Le bon verbe" du catalogue jusqu'a sa correction | s06/s07 | 2026-08-10 | Acceptee |
 | DEC-0015 | Le sprint 7 construit la vraie machine a sous et ferme la dette n°1 de CLAUDE.md | s07 | 2026-08-10 | Acceptee, amendee quatre fois le 2026-08-10 (contradiction S7-2 / reintegration de "Le bon verbe", routee par theo-archi ; arbitrage prealable de nadia-prof, reduction a trois acquise puis insuffisante sur la largeur ; rendu en clair de la reprise silencieuse laisse en l'etat face a ADR-0027 ; nadia-prof eteint sa reduction, repli confirme mais non livre) |
 | DEC-0016 | Une hauteur de viewport de reference, et ce qui doit rester au-dessus du pli sur un ecran de manche | s07 | 2026-08-10 | Acceptee, amendee le 2026-08-11 (chiffres corriges sur deux jeux, story ouverte au backlog, pas de seuil chiffre) |
-| DEC-0017 | Perimetre du sprint 8 : la machine retrouve son contexte, trois verites du depot corrigees, l'ouverture du futur et de l'imparfait de la conjugaison | s08 | 2026-08-11 | Acceptee |
+| DEC-0017 | Perimetre du sprint 8 : la machine retrouve son contexte, trois verites du depot corrigees, l'ouverture du futur et de l'imparfait de la conjugaison | s08 | 2026-08-11 | Acceptee, correction documentaire le 2026-08-12 (numerotation des chantiers, aucun contenu rouvert) |
 | DEC-0018 | L'activation de "Le bon verbe" est corrigee dans le sprint plutot que retiree, denouement d'un second refus, et sort de la ligne de matrice | s08 | 2026-08-11 | Acceptee |
+| DEC-0019 | Perimetre du sprint 9 : quatre lignes textuelles de mathematiques CP ouvertes, denombrement et monnaie differes sous le gel de rendu | s09 | 2026-08-12 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0002` a ete amendee le 2026-08-04, a la suite de la
 relecture pedagogique de `nadia-prof` sur le refus de `bandit-manchot-additions-cp` - ajout d'une
@@ -126,6 +127,16 @@ catalogue n'a plus qu'une seule sortie candidate (le repli, une fois livre et re
 et sur ce qui doit rester au-dessus du pli, qui touche cette fois un jeu deja catalogue ("Le bon
 petit mot") - est traite separement dans `DEC-0016`. Voir la section "Quatrieme amendement du
 2026-08-10" dans `DEC-0015-sprint-7-la-vraie-machine-a-sous-ferme-la-dette-1.md`.
+
+Correction documentaire (pas un amendement de fond) : `DEC-0017` numerote ses chantiers 1, 2 et 4,
+sans jamais ecrire de chantier 3 - signale a l'ouverture du sprint 9. Verifie contre le depot avant
+d'ecrire cette ligne : aucun livrable n'est manquant, le backlog du sprint 8 porte exactement les
+stories S8-1 a S8-5 (S8-5 ajoutee ensuite par `DEC-0018`, hors numerotation de chantier de
+`DEC-0017`), et aucune ligne de `squad/programme/MATRICE-couverture.md` ne depend d'un chantier 3
+qui n'existerait pas. Un paragraphe de clarification est ajoute a `DEC-0017` a cette date ; son
+contenu (chantiers 1, 2 et 4) n'est pas rouvert. Voir la section "Correction documentaire du
+2026-08-12" dans
+`DEC-0017-perimetre-sprint-8-la-machine-retrouve-son-contexte-et-trois-verites-corrigees.md`.
 
 Amendement (pas une nouvelle reference) : `DEC-0016` a ete amendee le 2026-08-11, sur remesure de
 `nadia-prof` du meme defaut sur "Le bon petit mot" (jeu catalogue) et "Le bon verbe" (activation

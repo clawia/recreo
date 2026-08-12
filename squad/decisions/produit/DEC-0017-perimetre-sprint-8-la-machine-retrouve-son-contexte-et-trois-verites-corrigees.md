@@ -187,3 +187,13 @@ tout contenu neuf.
 - Elle ne fait passer aucune ligne de `squad/programme/MATRICE-couverture.md` a `couvert-valide`.
 - Elle ne rouvre pas le defaut de pli de "Le bon petit mot" ni aucun referentiel de matiere non
   encore ouvert.
+
+## Correction documentaire du 2026-08-12
+
+Signale a l'ouverture du sprint 9 : cette decision numerote ses chantiers 1, 2 et 4, sans jamais
+ecrire de chantier 3. Verifie contre le depot avant d'ecrire ce paragraphe : c'est un ecart de
+numerotation, pas un chantier perdu. Le backlog du sprint 8 porte exactement les stories S8-1 a
+S8-5 - S8-1 a S8-3 sous le chantier 1, S8-4 sous le chantier 4, et S8-5 ajoutee ensuite par
+`DEC-0018` sans etre rattachee a un numero de chantier de cette decision. Aucune ligne de
+`squad/programme/MATRICE-couverture.md` ni aucun livrable ne depend d'un chantier 3 qui n'aurait
+jamais existe. Le contenu des chantiers 1, 2 et 4 n'est pas rouvert par ce paragraphe.

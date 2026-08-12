@@ -66,21 +66,40 @@ Source : `squad/programme/mathematiques/competences-cp.md`.
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
 | mathematiques | CP | Nombres et calculs | Denombrer, lire, ecrire et decomposer les nombres jusqu'a 100 | - | - | non couvert |
-| mathematiques | CP | Nombres et calculs | Comparer et ranger des nombres jusqu'a 100 (<, >, =) | - | - | non couvert |
+| mathematiques | CP | Nombres et calculs | Comparer et ranger des nombres jusqu'a 100 (<, >, =) | bandit-manchot-comparer-nombres-cp | bandit manchot | en cours |
 | mathematiques | CP | Nombres et calculs | Calcul mental - additions dans la limite de 10 (puis 20) | bandit-manchot-additions-cp | bandit manchot | couvert-valide |
-| mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | - | - | non couvert |
-| mathematiques | CP | Nombres et calculs | Complements a 10 | - | - | non couvert |
-| mathematiques | CP | Nombres et calculs | Resoudre des problemes simples d'addition/soustraction en situation (1 etape) | - | - | non couvert |
+| mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | bandit-manchot-soustractions-cp | bandit manchot | en cours |
+| mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp | bandit manchot | en cours |
+| mathematiques | CP | Nombres et calculs | Resoudre des problemes simples d'addition/soustraction en situation (1 etape) | bandit-manchot-problemes-additifs-cp | bandit manchot | en cours |
 | mathematiques | CP | Nombres et calculs | Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets | - | - | non couvert |
 | mathematiques | CP | Grandeurs et mesures | Comparer des longueurs, des masses, des contenances (sans instrument gradue) | - | - | non couvert |
 | mathematiques | CP | Grandeurs et mesures | Se reperer dans la journee, la semaine ; lire l'heure pleine sur une horloge | - | - | non couvert |
 | mathematiques | CP | Espace et geometrie | Se reperer et decrire des deplacements sur un quadrillage simple | - | - | non couvert |
 | mathematiques | CP | Espace et geometrie | Reconnaitre et nommer quelques figures planes (carre, rectangle, triangle, cercle) | - | - | non couvert |
 
-Note sur la ligne `en cours` : le referentiel regroupe "jusqu'a 10 (puis 20)" en une seule
-competence. Le sprint 0 ne couvre que la borne jusqu'a 10 ; la borne jusqu'a 20 reste a traiter
-et ne suffit pas a elle seule a faire passer la ligne en `couvert-valide` meme si la partie
-jusqu'a 10 est validee par Nadia.
+Note sur la ligne `en cours` (comparer et ranger) : `DEC-0019-perimetre-sprint-9-quatre-lignes-
+textuelles-de-mathematiques-cp-denombrement-et-monnaie-differes.md` ouvre cette ligne au sprint 9
+sur la seule comparaison de deux nombres par un signe (story S9-3, `docs/backlog/backlog.md`). Le
+"ranger" nomme par cette meme competence (ordonner une suite de trois nombres ou plus) reste hors
+du perimetre de ce jeu et ne suffit donc pas, a lui seul, a faire passer cette ligne en
+`couvert-valide` meme si "comparer" est valide par `nadia-prof`.
+
+Note sur les lignes `en cours` (soustractions, complements a 10, problemes) : `DEC-0019` les ouvre
+au sprint 9 sur `docs/backlog/backlog.md`, stories S9-1, S9-2, S9-4, chacune sur un contenu neuf en
+`type: question`, sans matiere premiere de `contenu-repris/` identifiee pour ces trois lignes.
+
+Note sur les deux lignes qui restent `non couvert` (denombrer, monnaie) : `DEC-0019` les differe
+explicitement plutot que de les laisser en silence. Chacune nomme un verbe ("denombrer",
+"reconnaitre") qui designe une reconnaissance visuelle qu'aucun texte seul ne peut porter ; les
+couvrir sur leur seul volet textuel aurait reproduit le motif de couverture partielle deja
+sanctionne sur ce produit (additions "jusqu'a 10 (puis 20)", homophones "principaux", conjugaison
+"un temps sur trois"). Voir `DEC-0019` pour le detail, y compris la revue de `contenu-repris/quiz/
+cp-monnaie.yml`, matiere premiere conservee pour une story future.
+
+Note sur la ligne `en cours` (calcul mental additions) : le referentiel regroupe "jusqu'a 10 (puis
+20)" en une seule competence. Le sprint 0 ne couvre que la borne jusqu'a 10 ; la borne jusqu'a 20
+reste a traiter et ne suffit pas a elle seule a faire passer la ligne en `couvert-valide` meme si
+la partie jusqu'a 10 est validee par Nadia.
 
 Etat au sprint 0, apres la porte pedagogique : `nadia-prof` a prononce **REFUSE** sur
 `squad/conformite/FICHE-bandit-manchot-additions-cp.md` (trois motifs bloquants sur le texte lu
@@ -481,3 +500,33 @@ corrige.
 Le produit compte desormais trois lignes `couvert-valide` sur 46 (contre deux a la cloture de s06
 et s07), une seule ligne `en cours` (francais CP, graphemes/phonemes), et 42 lignes `non couvert`,
 chiffre inchange : `DEC-0017` gele l'objectif du sprint et aucune ligne nouvelle n'est ouverte.
+
+## Perimetre de s09 (2026-08-12)
+
+`DEC-0019-perimetre-sprint-9-quatre-lignes-textuelles-de-mathematiques-cp-denombrement-et-monnaie-
+differes.md` : sur demande de l'utilisatrice, le sprint 9 attaque mathematiques CP, domaine
+"Nombres et calculs", sous un gel de tout travail de rendu (aucune mesure, aucun garde-fou CSS,
+aucun arbitrage visuel). Quatre lignes entrent au sprint, toutes exprimables dans l'enveloppe
+`type: question` existante sans code neuf (`ADR-0007`) - comparer deux nombres par un signe (S9-3,
+partielle, "ranger" exclu), soustractions dans la limite de 10 (S9-1), complements a 10 (S9-2), et
+resoudre un probleme simple d'addition ou de soustraction (S9-4). **Ces quatre lignes passent
+`en cours` par ce planning**, jeu et mecanique renseignes dans le tableau mathematiques CP
+ci-dessus. Deux lignes restent `non couvert`, differees avec un motif ecrit (denombrement,
+monnaie) : chacune nomme un verbe de reconnaissance visuelle que le gel de rendu met hors de
+portee ce sprint. **Aucune ligne ne passe a `couvert-valide` par ce planning** : ce statut n'est
+prononce que par `nadia-prof`, apres audit reel de chaque increment, sur les quatre fiches de
+conformite ouvertes dans le meme geste que `DEC-0019`.
+
+## Synthese apres l'ouverture de s09 (2026-08-12)
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 4 | 1 |
+| mathematiques CM1 | 12 | 12 | 0 | 0 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 9 | 0 | 2 |
+| **Total** | **46** | **38** | **5** | **3** |
+
+Quatre lignes de plus qu'a la cloture de s08 passent `en cours` (toutes en mathematiques CP), pour
+un total de cinq lignes `en cours` sur le produit. Aucune ligne ne passe `couvert-valide` par cette
+seule ouverture ; ce mouvement attend l'audit de `nadia-prof` sur les increments du sprint 9.
