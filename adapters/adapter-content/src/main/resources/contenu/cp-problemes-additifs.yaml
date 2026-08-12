@@ -1,0 +1,97 @@
+schema: 1
+id: cp-problemes-additifs
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Resoudre des problemes simples d'addition/soustraction en situation (1 etape)"
+items:
+  - enonce: "Léa a 3 billes et en gagne 2. Combien en a-t-elle ?"
+    bonneReponse: "5"
+    distracteurs: ["1", "2"]
+    indice: "Elle avait des billes et elle en gagne d'autres : additionne 3 et 2."
+  - enonce: "Tom a 4 bonbons et en reçoit 3. Combien en a-t-il ?"
+    bonneReponse: "7"
+    distracteurs: ["1", "3"]
+    indice: "Il avait des bonbons et il en reçoit d'autres : additionne 4 et 3."
+  - enonce: "Nino a 5 crayons et en achète 2. Combien en a-t-il ?"
+    bonneReponse: "7"
+    distracteurs: ["3", "2"]
+    indice: "Il avait des crayons et il en achète d'autres : additionne 5 et 2."
+  - enonce: "Mia a 6 images et en trouve 3. Combien en a-t-elle ?"
+    bonneReponse: "9"
+    distracteurs: ["3", "6"]
+    indice: "Elle avait des images et elle en trouve d'autres : additionne 6 et 3."
+  - enonce: "Léo a 2 gommes et en gagne 5. Combien en a-t-il ?"
+    bonneReponse: "7"
+    distracteurs: ["3", "5"]
+    indice: "Il avait des gommes et il en gagne d'autres : additionne 2 et 5."
+  - enonce: "Le fermier a 1 chat et en adopte 2. Combien en a-t-il ?"
+    bonneReponse: "3"
+    distracteurs: ["1", "2"]
+    indice: "Il avait un chat et il en adopte d'autres : additionne 1 et 2."
+  - enonce: "Zoé a 4 jetons et en gagne 5. Combien en a-t-elle ?"
+    bonneReponse: "9"
+    distracteurs: ["1", "5"]
+    indice: "Elle avait des jetons et elle en gagne d'autres : additionne 4 et 5."
+  - enonce: "Le clown a 7 ballons et en gonfle 2. Combien en a-t-il ?"
+    bonneReponse: "9"
+    distracteurs: ["5", "2"]
+    indice: "Il avait des ballons et il en gonfle d'autres : additionne 7 et 2."
+  - enonce: "Mamie a 3 gâteaux et en fait 4 de plus. Combien en a-t-elle ?"
+    bonneReponse: "7"
+    distracteurs: ["1", "4"]
+    indice: "Elle avait des gâteaux et elle en fait d'autres : additionne 3 et 4."
+  - enonce: "Ali a 8 cartes et en gagne 1. Combien en a-t-il ?"
+    bonneReponse: "9"
+    distracteurs: ["7", "1"]
+    indice: "Il avait des cartes et il en gagne une de plus : additionne 8 et 1."
+  - enonce: "Le jardinier a 6 fleurs et en plante 2. Combien en a-t-il ?"
+    bonneReponse: "8"
+    distracteurs: ["4", "2"]
+    indice: "Il avait des fleurs et il en plante d'autres : additionne 6 et 2."
+  - enonce: "Léa a 8 billes et en perd 3. Combien lui en reste-t-il ?"
+    bonneReponse: "5"
+    distracteurs: ["11", "3"]
+    indice: "Elle avait des billes et elle en perd : soustrais 3 de 8."
+  - enonce: "Tom a 9 bonbons et en mange 4. Combien lui en reste-t-il ?"
+    bonneReponse: "5"
+    distracteurs: ["13", "4"]
+    indice: "Il avait des bonbons et il en mange : soustrais 4 de 9."
+  - enonce: "Nino a 7 crayons et en casse 2. Combien lui en reste-t-il ?"
+    bonneReponse: "5"
+    distracteurs: ["9", "2"]
+    indice: "Il avait des crayons et il en casse : soustrais 2 de 7."
+  - enonce: "Mia a 10 images et en donne 6. Combien lui en reste-t-il ?"
+    bonneReponse: "4"
+    distracteurs: ["16", "6"]
+    indice: "Elle avait des images et elle en donne : soustrais 6 de 10."
+  - enonce: "Léo a 6 gommes et en perd 1. Combien lui en reste-t-il ?"
+    bonneReponse: "5"
+    distracteurs: ["7", "1"]
+    indice: "Il avait des gommes et il en perd : soustrais 1 de 6."
+  - enonce: "Le fermier a 5 chats, 2 partent. Combien lui en reste-t-il ?"
+    bonneReponse: "3"
+    distracteurs: ["7", "2"]
+    indice: "Il avait des chats et certains partent : soustrais 2 de 5."
+  - enonce: "Zoé a 9 jetons et en perd 5. Combien lui en reste-t-il ?"
+    bonneReponse: "4"
+    distracteurs: ["14", "5"]
+    indice: "Elle avait des jetons et elle en perd : soustrais 5 de 9."
+  - enonce: "Le clown a 8 ballons, 4 s'envolent. Combien lui en reste-t-il ?"
+    bonneReponse: "4"
+    distracteurs: ["12", "8"]
+    indice: "Il avait des ballons et certains s'envolent : soustrais 4 de 8."
+  - enonce: "Mamie a 7 gâteaux et on en mange 3. Combien lui en reste-t-il ?"
+    bonneReponse: "4"
+    distracteurs: ["10", "3"]
+    indice: "Elle avait des gâteaux et on en mange : soustrais 3 de 7."
+  - enonce: "Ali a 9 cartes et en perd 2. Combien lui en reste-t-il ?"
+    bonneReponse: "7"
+    distracteurs: ["11", "2"]
+    indice: "Il avait des cartes et il en perd : soustrais 2 de 9."
+  - enonce: "Le jardinier a 8 fleurs et 5 fanent. Combien lui en reste-t-il ?"
+    bonneReponse: "3"
+    distracteurs: ["13", "5"]
+    indice: "Il avait des fleurs et certaines fanent : soustrais 5 de 8."
