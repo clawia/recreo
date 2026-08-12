@@ -528,6 +528,97 @@ n'est pas negociable :
 Elle a ete atteinte, je l'ai levee le 2026-08-11, et elle reste levee. Ce que je dis en F6 ne s'applique
 qu'aux items **effectivement modifies**, et seulement a eux.
 
+#### 4. Question 4 - le nom de l'enseigne : je retiens "Le Copain Malin"
+
+**Verdict en une phrase : "Le Copain Malin" est retenu, les deux autres sont refuses, et aucun n'est
+refuse sur sa largeur.**
+
+C'est un texte lu par un enfant de CP : je le juge comme n'importe quel contenu, c'est-a-dire sur le
+dechiffrage, sur le vocabulaire, et sur ce que le mot promet a l'enfant. `camille-po` a verifie la liste
+interdite de `DEC-0023` point 4 et je confirme : aucun des trois ne porte `bandit`, `manchot`, `machine a
+sous`, `jackpot`, `mise`, `piece`, `jeton`, `credit`, `gain`, `levier`, `manette`, `fente`, `coupelle`,
+`pari`, `tirage`. Cette liste n'est donc pas ce qui les separe.
+
+##### 4.a "La Boite a Bonnes Reponses" - REFUSE, et c'est le plus grave des trois
+
+Le nom **dit que la machine contient les bonnes reponses**. Trois consequences, et la deuxieme est
+disqualifiante a elle seule :
+
+1. **Il est faux, et l'enfant peut le constater.** Sur les quatre boutons de "Le bon verbe", **trois sont
+   des mauvaises reponses**. La boite n'est pas une boite a bonnes reponses ; c'est une boite ou il y a
+   une bonne reponse et des pieges. Un enonce faux sur la carrosserie d'un jeu scolaire est une erreur de
+   contenu, pas une maladresse de ton.
+2. **Il fait parler le meuble de la reponse, et c'est exactement ce que j'interdis depuis quatre
+   arbitrages.** C4 : *"la machine ne dit jamais le resultat"*. M6 : *"un seul endroit ou le jeu parle de
+   la reponse de l'enfant, et ce n'est jamais le meuble"*. Ecrire "bonnes reponses" **sur le fronton, au
+   dessus des colonnes**, c'est mettre le mot "reponse" dans la seule zone de l'ecran d'ou je l'ai
+   bannie. Que le nom soit fixe et ne designe aucune colonne n'y change rien : ce que je protege, c'est
+   que l'enfant n'attende pas du meuble qu'il lui dise quelque chose sur sa reponse.
+3. **27 caracteres et 5 mots a dechiffrer pour un lecteur de CP**, sur un objet qui n'apporte rien a la
+   tache. Ce n'est pas le motif principal, mais c'est le troisieme cout d'un nom qui n'a aucun benefice.
+
+**Et il ne tient pas sur la largeur : cette phrase-la est fausse et c'est moi qui l'avais ecrite.** Voir
+0 bis, point A : mesure, ce nom fait **260,47 px** a 1,25 rem gras pour 266 px libres. Il tient. Je le
+refuse sur son sens.
+
+##### 4.b "Tourne-Cervelle" - REFUSE
+
+1. **Le mot *cervelle* n'est pas dans le registre qu'on emploie devant un enfant de CP a propos de sa
+   propre tete.** En francais courant, "cervelle" est soit un aliment, soit un mot d'insulte ("cervelle
+   d'oiseau", "sans cervelle"). Le mot que l'ecole emploie est *tete*, ou *cerveau*. Un nom de machine
+   qui traite la tete de l'enfant en abats n'a rien a faire dans une application scolaire, meme par
+   plaisanterie - et un enfant de 6 ans ne lit pas la plaisanterie, il lit le mot.
+2. **Le dechiffrage est hors de portee du CP** : un compose a trait d'union, avec une finale `-elle`
+   apres un `v`, et un mot inconnu de son vocabulaire. Un enfant qui ne peut pas dechiffrer un mot ecrit
+   en grand sur l'ecran ne l'ignore pas : il bute dessus.
+3. **"Tourne" dit que la machine tourne toute seule**, ce qui contredit C3 - *"la machine attend, elle ne
+   decide pas"*. C'est la charniere de tout mon avis sur la metaphore : le mouvement appartient a l'appui
+   de l'enfant, jamais a la machine. Le nom ne peut pas dire le contraire du reste.
+
+##### 4.c "Le Copain Malin" - RETENU
+
+- **Trois mots, 13 lettres, tous dechiffrables au CP.** `copain` porte le digraphe `ain`, `malin` le
+  digraphe `in` : les deux sont au programme de CP, et ce sont les deux seules difficultes du nom.
+- **Aucune promesse fausse.** Le nom ne dit rien de la reponse, rien du resultat, rien du hasard. Il dit
+  ce que le meuble est du point de vue de l'enfant : un objet familier a cote de lui.
+- **Il s'accorde avec le visage** plutot que de le contredire, et c'est ce que `DEC-0023` point 4 avait
+  vu.
+- **La reserve que je nomme sans en faire un refus** : *malin* attribue l'intelligence a la machine, et
+  un enfant qui echoue trois fois devant "Le Copain Malin" pourrait comprendre que le malin, c'est
+  l'autre. Je pese ce risque comme faible - *malin* dit ici "sympathique et un peu farceur" bien plus que
+  "plus intelligent que toi" - et surtout, il est **borne par M6 et par C4** : la machine ne commente
+  jamais la reponse, donc elle n'a aucune occasion de faire la maligne. Si un jour le meuble se met a
+  parler du resultat, ce nom devient un probleme, et alors ce sera M6 qui aura cede avant lui.
+- **Je n'en propose pas un quatrieme**, alors que `DEC-0023` m'y autorise. Celui-la fait ce qu'on lui
+  demande ; changer pour changer ferait perdre un tour a l'equipe sans rien apprendre a l'enfant.
+
+##### 4.d Ce que j'exige sur la forme du nom a l'ecran - F8
+
+**Le texte de l'enseigne est le plus petit texte de toute l'application dans la proposition, et de
+loin.** Mesure dans la feuille servie : la plus petite valeur de `font-size` de tout `recreo.css` est
+**1,25 rem (20 px)** - c'est le plancher de fait de cette application depuis le sprint 2, et il vaut pour
+le score, la consigne, l'indice, l'explication, le verdict, l'entree de menu. `ines-design` propose
+l'enseigne a **0,875 rem (14 px)**. Ce serait **le seul texte de recreo sous 20 px**, et il serait lu par
+un enfant de CP.
+
+**Je n'accepte pas 14 px.** Le motif est celui que j'applique a tout texte de cette application depuis le
+debut : un enfant de CP dechiffre lentement et lettre par lettre, et un texte plus petit que tous les
+autres est un texte qu'il ne lira pas - ou qu'il essaiera de lire en s'approchant de l'ecran, ce qui est
+le symptome, pas le confort. Un decor illisible n'est pas un decor discret, c'est un obstacle.
+
+**Et j'ai verifie que ma condition est tenable avant de la poser**, plutot que de laisser l'equipe
+decouvrir qu'elle ne l'est pas : a **1,25 rem gras**, "Le Copain Malin" fait **150,92 px** pour **266 px**
+libres dans le fronton (interieur de 320 px, moins 24 px de rembourrage, moins le visage et son `gap`).
+Il tient avec **115 px de reste**, dans une bande de 2 rem de haut qui accueille un texte de 20 px sans
+grandir. **Cout : 0 px, dans les deux dimensions**, et cela vaut aussi sous la route de la section 2.c,
+qui ne touche pas la largeur interieure du fronton.
+
+**J'ajoute une clause qui n'est pas cosmetique : l'ellipse ne doit jamais s'engager.** La regle proposee
+porte `overflow: hidden; text-overflow: ellipsis`. Un nom tronque en "Le Copain Ma..." est un mot que
+l'enfant ne peut pas dechiffrer, et il l'essaiera quand meme. Je ne juge pas la declaration - c'est de la
+feuille de style, pas de mon ressort - j'exige la propriete : **le nom est entier a l'ecran, sur une seule
+ligne, a 360 px, dans tous les etats du meuble et sur les huit jeux.**
+
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mes deux reserves ouvertes sont
   levees** : la reserve unique de s07 sur la fin du mouvement, et la reserve 6 de "Le bon son" sur la
   distinction de l'explication. Deux reserves nouvelles et datees sont ouvertes en section 8. Aucun
