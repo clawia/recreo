@@ -166,7 +166,7 @@ anterieurs n'est modifie ni efface.
 
 | Question | Reponse |
 |---|---|
-| 1. La silhouette franchit-elle la frontiere manche dessine / manette ? | **NON, elle ne la franchit pas. La silhouette est ACCEPTEE**, sous les conditions N1 a N7 de la section 5. Elle ne suggere aucun geste de traction, et je l'ai mesuree plutot que regardee de loin |
+| 1. La silhouette franchit-elle la frontiere manche dessine / manette ? | **NON, elle ne la franchit pas. La silhouette est ACCEPTEE**, sous les conditions N1 a N8 de la section 5. Elle ne suggere aucun geste de traction, et je l'ai mesuree plutot que regardee de loin |
 | 2. Le fronton peut-il porter deux formes fixes plutot qu'une ? | **OUI.** Mon mot "unique" interdisait la variation, il ne comptait pas les formes - et je le dis contre mon propre vocabulaire, pas contre celui d'`ines-design` |
 | 3. Un pixel de hauteur est-il acceptable ? | **OUI, et il ne fait basculer aucun etat sous le pli - je l'ai mesure au lieu de l'estimer.** La marge restante est de **4 rangees libres** sur l'etat le plus bas du catalogue, et non de 3 : mon propre chiffre du 2026-08-11 etait 2 px trop severe |
 | 4. Quelle est la valeur absolue du contraste cadre/page ? | **8,61:1, et c'est `ines-design` qui a raison. Mon 9,25:1 etait faux, et j'ai trouve exactement pourquoi** |
@@ -193,7 +193,7 @@ interpolation qui lisserait ce que je dois juger.
 **Ce que je declare degrade, en trois points, parce qu'ils sont reels** :
 
 1. **je juge un candidat, pas un livre**. Ce que le lot ecrira peut differer de ce que j'ai capture ;
-   mes conditions N1 a N7 sont ecrites pour etre mesurables sur le livre, une par une ;
+   mes conditions N1 a N8 sont ecrites pour etre mesurables sur le livre, une par une ;
 2. **un enfant n'a pas vu cet ecran.** Je juge une forme contre une frontiere que j'ai ecrite, ce qui
    est ma competence, mais aucun enfant n'a designe cette forme du doigt ;
 3. **je n'ai pas mesure a 375 px ni au-dela.** Les chiffres d'`ines-design` a 375 px sont repris tels
@@ -283,7 +283,7 @@ repli, c'est une consequence a connaitre : **si le lot bascule sur le repli, il 
 qui tranchent ce que C3 dit d'un relief peint.
 
 **Verdict de la question 1 : la silhouette ne franchit pas la frontiere. Elle est acceptee**, sous les
-conditions N1 a N7 de la section 5. **Ce que j'accepterais a la place n'a donc pas a etre invente** -
+conditions N1 a N8 de la section 5. **Ce que j'accepterais a la place n'a donc pas a etre invente** -
 et je note pour trace que la piste ecartee par `ines-design`, la boule sur tige etroite, aurait ete
 refusee par moi aussi, pour un motif qui n'est pas le sien : une tige etroite sous une tete large est
 la silhouette meme d'une manette, et son etranglement est le point ou une main se ferme. Elle l'a
@@ -933,7 +933,13 @@ arbitrage du matin est **fermee** par la section 6. J'en ouvre deux, datees du 2
 2. **Le contour du cabinet ne se distingue des colonnes qu'a 1,71:1.** Le cadre est `#1d4b6b` et les
    colonnes `#2e6f9e` : rapport de contraste **1,71:1**, calcule sur les luminances relatives. Contre
    la page (`#f4f7fb`) le cabinet ressort a **9,25:1**, donc le tour de l'objet est franc et C1 est
-   tenue - **je ne transforme pas cette reserve en motif, et je dis pourquoi : j'ai chiffre une
+   tenue
+   > **Correction du 2026-08-12, ajoutee sans rien effacer** : ce `9,25:1` est **faux**. La bonne
+   > valeur est **8,61:1**. Mon `9,25:1` est le contraste du cadre contre le **blanc pur** `#ffffff`,
+   > que j'avais pris a la place du fond de page `#f4f7fb`. La conclusion de cette reserve ne change
+   > pas - 8,61:1 reste franc et C1 restait tenue - mais le chiffre ne doit plus etre recopie. Detail
+   > de la mesure et des trois autres paires : bloc du 2026-08-12, section 4, condition N8. Le
+   > `1,71:1` de cette reserve, lui, est exact et reverifie. - **je ne transforme pas cette reserve en motif, et je dis pourquoi : j'ai chiffre une
    epaisseur dans C1, jamais un contraste interieur.** Ce serait deplacer mes poteaux. Mais je le
    note comme reserve neuve et datee : un enfant qui distingue mal les couleurs lit un seul aplat
    bleu avec des cases a peine plus claires, et la "fenetre" de la machine se voit surtout par les

@@ -57,6 +57,30 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
+### Arbitrage prealable au developpement - silhouette du manche, relief et contraste du cabinet (s10), du 2026-08-12
+
+**Ce bloc n'est pas un Done pedagogique et ne touche aucun verdict de cette fiche.** L'arbitrage
+complet est ecrit une seule fois, dans `FICHE-bandit-manchot-additions-cp.md`, bloc du 2026-08-12.
+**Rien n'est code.** Ce qui concerne **ce jeu-ci**, mesure sur lui aujourd'hui - 29 etats distincts
+joues, 360 x 640 :
+
+1. **Le pixel de relief ne coute aucun etat sur ce jeu.** Bas du cabinet reellement observe : 454,
+   502, 550, 580, 598, **628**, puis 676, 694, 724, 772. Entre le dernier bas visible (**628**) et le
+   premier bas coupe (676) il y a **48 px** : **aucun etat n'a son bas entre 629 et 639**, donc un
+   decalage d'1 px n'en fait basculer aucun. C'est ce jeu qui a la marge la plus confortable des deux
+   jeux exposes, et ce n'est donc pas sur lui que le pixel se mesure (condition N6, mesuree sur "Le
+   bon verbe").
+2. **Je corrige mes chiffres du 2026-08-11 sur ce jeu, sans les effacer.** J'avais ecrit un bas de
+   cabinet de `y = 450` a `y = 846` ; je remesure aujourd'hui **454** au plus haut et **772** au plus
+   bas sur mon echantillon, soit **+4 px** sur la borne basse. L'ecart va dans l'autre sens que celui
+   de "Le bon verbe" (-2 px) : ce n'est donc pas un decalage systematique de methode, et **je ne sais
+   pas reconstituer la cause**. Ce sont les chiffres d'aujourd'hui qui doivent etre cites.
+3. **Le point 2 du verdict ci-dessous n'est pas atteint dans son sens** : 11 etats sur 30 hier, **5 sur
+   29** sur mon echantillon d'aujourd'hui, qui n'est pas la meme population (je n'ai pas revu les 30
+   etats un par un ce jour-la). Le defaut de `DEC-0016` est le meme, il n'est ni aggrave ni reduit par
+   ce lot, et je ne le rouvre pas comme barre.
+4. **Rien de ce lot ne touche la largeur des colonnes** : 152 px par colonne, inchange, condition N7.
+
 ### Verdict courant - chantier du cabinet (S8-1, S8-2, S8-3), du 2026-08-11 : VALIDE SOUS RESERVE
 
 **Le verdict complet est ecrit une seule fois, dans `FICHE-bandit-manchot-additions-cp.md`, bloc du
