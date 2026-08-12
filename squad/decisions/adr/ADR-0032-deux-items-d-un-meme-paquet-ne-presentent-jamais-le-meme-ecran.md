@@ -196,9 +196,13 @@ c'est la lecon de s05 que je m'applique.
 
 **Mauvaises, et je les assume.**
 
-- **Un garde-fou de plus a lire pour un auteur de contenu.** Le module en compte desormais six qui
-  jugent les paquets servis. Le cout est reel et je ne le minimise pas ; il est paye une fois, a
-  l'ecriture du paquet.
+- **Un garde-fou de plus a lire pour un auteur de contenu.** Le module en compte desormais **cinq** qui
+  balaient le repertoire de contenu servi (methode : recherche de `src/main/resources` dans les classes
+  de test de `adapters/adapter-content`, celui-ci inclus), auxquels s'ajoutent
+  `ChaqueJeuDuCatalogueOffrePlusDItemsQueDeManchesTest`, dont le perimetre est le catalogue et non le
+  repertoire, `PaquetsFrancaisS04Test`, qui nomme ses paquets, et
+  `ChaqueColonneQueLeContenuPeutProduirePorteSonDecalageTest`, qui vit dans `bootstrap`. Le cout est
+  reel et je ne le minimise pas ; il est paye une fois, a l'ecriture du paquet.
 - **Le budget de 500 tirages par paquet est un cout de suite fixe**, paye sur chaque paquet
   combinatoire pour rien puisqu'il est ensuite exclu. Mesure : le fichier de test complet s'execute
   en 0,7 s environ. Si un jour ce cout devenait sensible, la sortie serait de plafonner le budget par
