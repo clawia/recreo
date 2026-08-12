@@ -41,8 +41,10 @@
   disparait) : ecrit dans `FICHE-bandit-manchot-additions-cp.md`, bloc de validation, section
   "Arbitrage prealable au developpement - la mecanique apres la disparition de l'ecran
   intermediaire". **Il vaut pour ce jeu comme pour les huit du catalogue**, la mecanique etant
-  commune : conditions M1 a M12, dont M4 bloquante (le message d'erreur doit etre vu sans defiler a
-  360 x 640). Ce n'est pas un Done pedagogique, rien n'est code.
+  commune : conditions M1 a M13, dont **deux bloquantes** - M4 (le message d'erreur doit etre vu
+  sans defiler a 360 x 640) et la clause 1 de M13 (apres une reponse, le focus ne va jamais sur la
+  sortie, qui detruit la partie sans confirmation). Ce n'est pas un Done pedagogique, rien n'est
+  code.
   **Ce jeu est vise nommement par trois points** : la **reserve A** du 2026-08-12 - **22 de ses 24
   indices** nomment la bonne reponse entre guillemets -, la condition **M2** qui lui interdit donc
   d'afficher son indice sur la question courante en l'etat, et la **reserve C** - ses items n'ont que

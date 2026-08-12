@@ -79,9 +79,11 @@
   verdict, et l'exclusion de la reprise. **J'accepte la disparition des deux aides de S3-2 a la
   condition qu'elles soient remplacees correctement adressees** : mesure sur deux parties jouees ce
   jour, un enfant qui rate neuf manches sur dix recoit deux aides, et les deux portent sur le seul
-  item qu'il avait reussi. **Douze conditions M1 a M12**, dont **une bloquante** (M4 : le message doit
-  etre vu sans defiler, or le bas du cabinet est deja a 636 px sur "Le bon verbe" pour un pli a
-  640 px). **Une mise en oeuvre declaree inacceptable au CP quelle que soit sa forme** : retirer la
+  item qu'il avait reussi. **Treize conditions M1 a M13**, dont **deux bloquantes** : M4 (le message
+  doit etre vu sans defiler, or le bas du cabinet est deja a 636 px sur "Le bon verbe" pour un pli a
+  640 px) et la clause 1 de M13 (**la premiere touche pressee apres chaque reponse menerait a "Les
+  jeux", qui detruit la partie sans confirmation** - M13 est ajoutee le meme jour, sur une mesure de
+  `theo-archi`, et elle manquait a mes douze). **Une mise en oeuvre declaree inacceptable au CP quelle que soit sa forme** : retirer la
   proposition fautive du rendu, parce qu'un appui peut alors tomber sur une reponse que l'enfant n'a
   pas choisie. **Un point que les trois questions ne nommaient pas** : le jeu devient muet sur la
   reussite et bavard sur l'echec, et M11 le corrige. **Je corrige un manquement qui est le mien** :
@@ -776,10 +778,105 @@ enfant : ils sont en francais integralement accentue, orthographe et ponctuation
 - **Aucun de ces textes ne contient un mot de la liste interdite** de `DEC-0023` point 4 et de mon
   acquis 11 : verifie mot par mot sur les trois.
 
-#### 7. Mes douze conditions, en une page
+#### 6 bis. La treizieme condition, ajoutee le 2026-08-12 : ou va le focus apres une reponse
+
+**Cette condition manquait a mes douze, et je ne l'avais pas vue.** Elle vient d'une mesure de
+`theo-archi` qui cherchait autre chose, et elle est routee vers moi parce que le choix de l'element
+qui recoit le focus est pedagogique. Il refuse d'en ecrire la clause avant que je tranche, et il a
+raison de le refuser.
+
+**Les trois faits, que j'ai verifies moi-meme dans les fichiers servis avant de m'appuyer dessus.**
+
+1. **`<main id="jeu" class="container zone-jeu">` ne porte ni `aria-live` ni `role`** : un echange
+   htmx n'annonce rien par lui-meme. Lu dans `accueil.html`.
+2. **Les huit lignes de `static/js/recreo.js` ne deplacent le focus que si le fragment recu contient
+   `.signal`**, classe qui n'existe que dans `fragments/retour.html`. Lu dans les deux fichiers.
+3. **Le premier element focalisable d'un ecran de manche est le bouton "Les jeux"**, qui porte
+   `data-role="sortie"`. Verifie dans `fragments/manche.html` : il est le premier enfant du fragment,
+   avant le score, la consigne et l'enonce. Le lien de sortie de l'en-tete, lui, est bien hors course -
+   `body:has(.ecran-de-jeu) .lien-accueil { display: none }`, et `display: none` retire de la
+   tabulation, ce que j'ai verifie plutot que suppose.
+
+**Et j'ajoute le quatrieme fait, celui qui fait de ce defaut autre chose qu'un defaut de confort.**
+`POST /retour` appelle `abandonner()`, qui **retire les trois attributs de session** : le jeu, la
+consigne et la partie. Il n'y a **aucune confirmation** et **aucune persistance** dans ce depot. Donc
+presser "Les jeux" **detruit la partie en cours, irreversiblement**.
+
+**Consequence, en une phrase et sans adoucissement : apres ce chantier, la premiere touche pressee
+apres chaque reponse, juste ou fausse, mene a la destruction de la partie, dix fois par partie.**
+Aujourd'hui, le focus va sur le verdict et la touche suivante mene a "Encore !" - c'est-a-dire a
+l'action qui fait avancer le jeu. Le chantier retournerait exactement cette propriete.
+
+**"Un enfant de CP ne navigue pas au clavier" - je reponds a l'objection plutot que de l'ignorer.**
+C'est vrai de la plupart des enfants qui joueront a `recreo` avec un doigt ou une souris, et c'est
+precisement pour cela que ce defaut ne se verrait jamais en usage ordinaire et resterait la. Il
+compte pour trois raisons dont aucune n'est theorique. **Un** : un enfant qui utilise une aide
+technique - clavier, contacteur, lecteur d'ecran - n'a pas d'autre chemin que celui-la, et je porte ce
+motif depuis mon veto sur la manette, ou j'ecrivais qu'un obstacle de motricite fine "est en plus un
+obstacle pour un enfant qui utilise une aide technique". **Deux** : un enfant sur un ordinateur
+portable presse Entree, Espace et Tabulation par curiosite - c'est un enfant de six ans, il presse
+tout. **Trois** : la consequence n'est pas un desagrement, c'est la perte de sa partie sans
+confirmation. **Je ne ferme donc pas la question, et j'aurais eu tort de la fermer.**
+
+**Ce que je tranche, et le principe qui commande les quatre cas** : le focus va la ou l'attention de
+l'enfant doit etre pour continuer a jouer, jamais sur ce qui le ferait sortir, et il ne se pose
+jamais sur une reponse qu'il n'a pas choisie tant que cette reponse n'est pas devenue publique.
+
+**Condition M13.**
+
+**M13 - apres une reponse, le focus va sur le jeu et jamais sur la sortie.** Cinq clauses, chacune
+verifiable en une manipulation.
+
+1. **Jamais la sortie, sur aucun chemin.** Apres une reponse, quel qu'en soit le verdict, l'element
+   focalise **n'est jamais** un element portant `data-role="sortie"`, et **la premiere tabulation
+   depuis cet element ne mene pas non plus a la sortie**. *Verification* : apres une bonne reponse et
+   apres une mauvaise, presser Tabulation une fois, puis Entree ; la partie doit toujours etre en
+   cours. C'est la clause dure de M13 : une partie qu'un enfant detruit en deux touches n'est pas
+   acceptable, et ce motif ne sera pas negociable.
+2. **Apres une mauvaise reponse avec des essais restants : la proposition que l'enfant vient de
+   presser**, celle qui porte desormais la marque de M9. *Motif* : c'est la ou etaient sa main et son
+   attention, la tabulation suivante l'amene sur les autres propositions, et la sortie se retrouve
+   **derriere** lui et non devant. C'est le prolongement de M8 - je refuse que la mise en page bouge
+   au-dessus de son doigt, je refuse pour la meme raison que son attention soit deplacee en haut de
+   l'ecran.
+3. **Aucun anneau de focus ne se pose sur une proposition que l'enfant n'a pas pressee**, tant que la
+   reponse n'a pas ete revelee par M5. *Motif, et c'est la clause dont je suis la plus sure* : sur les
+   six jeux a trois propositions, "la premiere proposition non essayee" **est la bonne reponse** des
+   le deuxieme echec. Un anneau de focus pose dessus fait pointer le jeu sur la reponse, sans qu'aucun
+   texte ne l'ait dite. Ce serait une revelation deguisee, et elle contredirait M5 en passant par un
+   canal que personne ne surveille.
+4. **Apres une bonne reponse : l'enonce de la question neuve.** *Motif* : la question a change, et
+   c'est la premiere chose que l'enfant doit lire ou entendre ; depuis l'enonce, la tabulation descend
+   sur les propositions et la sortie reste derriere. **Pas la premiere proposition** : un enfant qui
+   ecoute arriverait sur une reponse a choisir sans avoir entendu la question.
+5. **Sur l'ecran de revelation de M5 : la proposition qui porte la reponse revelee.** *Motif* : a cet
+   instant la reponse est publique - le message vient de la nommer - donc la clause 3 ne s'applique
+   plus, et le geste que M5 demande a l'enfant ("Appuie sur `<reponse>`") doit etre atteignable sans
+   traverser la sortie. **Sur l'ecran de fin de partie, rien ne change** : le focus va sur le signal
+   comme aujourd'hui, et la sortie y est la seule action restante, ce que j'ai valide le 2026-08-07.
+
+**Et la clause que je ne peux pas ecrire toute seule, parce qu'elle porte sur ce que l'enfant
+entend.** Les quatre cas ci-dessus disent ou l'enfant **arrive** ; ils ne disent pas comment il
+**apprend** que sa reponse etait fausse, puisque `#jeu` n'annonce rien (fait 1). Un enfant qui
+n'entend pas le message ne sait pas pourquoi la meme question est encore la. Ce que j'exige comme
+propriete - et le moyen appartient a `theo-archi`, pas a moi : **ce que le jeu dit de la reponse
+(message, indice, revelation, "Bravo !") atteint l'enfant qui ne voit pas l'ecran, au moment ou ce
+texte apparait, sans qu'il ait a partir a sa recherche et sans que son focus quitte les
+propositions.** Si le moyen retenu deplace le focus sur le message plutot que d'annoncer sans le
+deplacer, alors les propositions doivent etre atteignables **en avancant** depuis le message, jamais
+en passant par la sortie - et la clause 1 continue de s'appliquer.
+
+**Ce que M13 ne ferme pas, et je le dis parce que c'est le meme sujet.** Ma reserve H de l'arbitrage
+de forme du meme jour dit que **je n'ai jamais ecoute ce qu'un enfant entend** de cette application.
+M13 est ecrite sur la mesure de quelqu'un d'autre et sur ma lecture des fichiers, pas sur une ecoute.
+`theo-archi` ecrit que ses trois clauses d'`ADR-0035` ne remplacent pas cette ecoute, et il a raison :
+**M13 ne la remplace pas davantage.** Ecouter les quatre cas de M13 - et pas seulement les regarder -
+entre dans ma liste de la section 9 comme un point a part.
+
+#### 7. Mes treize conditions, en une page
 
 Elles sont **fermees** : ce qui n'y est pas ne bloquera pas le Done et ne pourra pas m'etre oppose
-comme l'ayant bloque. Une seule est **bloquante par elle-meme** (M4).
+comme l'ayant bloque. **Deux** sont bloquantes par elles-memes : M4, et la clause 1 de M13.
 
 | # | Condition | Ou elle se verifie | Cout technique nomme par `theo-archi` |
 |---|---|---|---|
@@ -795,6 +892,7 @@ comme l'ayant bloque. Une seule est **bloquante par elle-meme** (M4).
 | M10 | Les colonnes ne rejouent aucun mouvement sur une question inchangee | capture avant/apres appui | amendement d'`ADR-0027` + selecteur |
 | M11 | Signal positif immediat au meme endroit ; une question revelee n'est pas une reussite | en jouant | 1 etat de question deja compte en M5 |
 | M12 | Les textes exacts, accentues ; toute variante revient devant moi | document servi | aucun |
+| M13 | **Clause 1 bloquante.** Le focus ne va jamais sur la sortie ; quatre points d'arrivee nommes ; aucun anneau sur une proposition non pressee | Tabulation puis Entree apres chaque reponse, sur les 8 jeux | l'ecran declare son point de focus, sur le modele de `data-arrivee` |
 
 #### 8. Ce dont je reste la seule garde, et je le dis pour que rien ne paraisse couvert
 
@@ -817,13 +915,20 @@ que moi ne verifie** sur ce chantier :
 6. **que le plancher de quatre manches ne reste pas vert en mentant.** Sous M1, il devient sans objet.
    Je ne demande pas sa valeur - ce n'est pas mon domaine - je demande qu'il soit **corrige ou retire
    avec son `ADR`**, jamais laisse vert en ne verifiant plus rien. Un garde-fou qui ne mord plus est
-   pire qu'un garde-fou absent : il fait croire couvert ce qui ne l'est pas.
+   pire qu'un garde-fou absent : il fait croire couvert ce qui ne l'est pas ;
+7. **ce que l'enfant entend** (M13, derniere clause, et ma reserve H de l'arbitrage de forme du meme
+   jour). C'est le seul point de cette liste ou je dois reconnaitre que je ne suis pas encore une
+   garde : **je ne l'ai jamais fait.** Le defaut de focus de M13 est reste dans le depot depuis S1-4
+   sans que personne le voie, et il n'a ete trouve qu'en cherchant autre chose. Un anneau de focus et
+   un texte annonce ne se voient sur aucune capture : ils ne se constatent qu'en pressant Tabulation
+   et en ecoutant. Personne ne le fait aujourd'hui, moi comprise, et je l'ecris plutot que de laisser
+   croire que la porte pedagogique couvre ce cote-la.
 
 #### 9. Ce que je reverifierai en jouant, avant tout Done sur ce chantier
 
 Liste fermee. Aucun Done ne sera prononce avant que je l'aie epuisee.
 
-1. les douze conditions M1 a M12, une par une, sur les **huit** jeux ;
+1. les treize conditions M1 a M13, une par une, sur les **huit** jeux ;
 2. le pli sur les huit jeux, dans les trois etats de M4, y compris les quatre jeux de s09 que je n'ai
    jamais mesures ;
 3. une partie entiere jouee **tout en echecs** sur chacun des huit jeux : nombre de questions vues,
@@ -834,7 +939,13 @@ Liste fermee. Aucun Done ne sera prononce avant que je l'aie epuisee.
 6. le repli `prefers-reduced-motion: reduce`, avec le message et l'indice affiches ;
 7. mes douze acquis du 2026-08-11 : aucun ne doit avoir ete paye pour financer ce chantier ;
 8. **le risque que je concede en 2 bis** : un enfant se trompe-t-il expres pour faire venir l'indice ?
-   C'est la seule chose que je ne peux voir qu'en jouant plusieurs parties de suite.
+   C'est la seule chose que je ne peux voir qu'en jouant plusieurs parties de suite ;
+9. **les quatre points d'arrivee de M13, au clavier** : Tabulation puis Entree apres une bonne
+   reponse, apres une mauvaise, sur l'ecran de revelation et sur l'ecran de fin de partie, sur les
+   huit jeux. La partie doit etre encore en cours dans les trois premiers cas ;
+10. **les quatre memes cas, en ecoutant** et non en regardant : ce que le lecteur d'ecran annonce a
+    l'arrivee du message, de l'indice, de la revelation et de "Bravo !". **C'est la premiere fois que
+    je l'inscris, et c'est la reserve H qui me l'a fait ecrire.**
 
 #### 10. Reserves nouvelles et datees du 2026-08-12
 
