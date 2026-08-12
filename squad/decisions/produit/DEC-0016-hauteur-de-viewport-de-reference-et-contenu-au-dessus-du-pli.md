@@ -181,3 +181,39 @@ rangees qui l'entoure n'est pas repris ici.
   contenu pedagogique.
 - `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee.
 - Aucun Done pedagogique ni statut de catalogue n'est modifie par cet amendement.
+
+## Amendement du 2026-08-12 (s10) - correction d'attribution et de chiffres sur le meme constat, aucun changement de sens
+
+Pendant l'arbitrage prealable du sprint 10, `nadia-prof` rejoue les deux jeux (60 manches sur "Le
+bon verbe", 40 sur "Le bon petit mot") et remesure ce constat sur le rendu
+(`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section 3, verdict du 2026-08-12). Elle
+corrige deux choses qu'elle avait ecrites elle-meme le 2026-08-11, sans que le constat d'origine
+change de sens.
+
+**Correction d'attribution.** Une story de sprint a designe ce constat comme "sa reserve 1", au
+risque de le confondre avec la reserve 1 de
+`squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, qui est un fait distinct
+(`mangeons` a 2,0 px, devenue le motif du refus du 2026-08-11, denoue par `DEC-0018`). Ce que le
+present amendement traite reste ce que l'amendement du 2026-08-11 fixait deja : un constat sous
+`DEC-0016`, explicitement pas une reserve qui se leverait un jour.
+
+**Correction de chiffres.** Ses propres releves du 2026-08-11 etaient inexacts dans les deux sens :
+
+| Jeu | Etats coupes par le pli (etait) | Bas de cabinet sans indice (etait) |
+|---|---|---|
+| "Le bon petit mot" | 5 / 29 (etait 11 / 30) | 454..694 (etait 450..690) |
+| "Le bon verbe" | 16 / 34, tous avec indice (etait 24 / 33) | 538..634 (etait 540..636) |
+
+Elle ecrit elle-meme ne pas savoir reconstituer la cause de l'ecart entre ses deux mesures - je le
+rapporte tel quel plutot que d'en inventer une. **Le sens du constat ne change pas** : sur les deux
+jeux, l'indice continue d'emporter une partie substantielle des etats ou il s'affiche, et la story
+ouverte a l'amendement du 2026-08-11 (backlog, "Autres intentions", non affectee a un sprint) reste
+ouverte dans les memes termes, sans seuil chiffre.
+
+### Impact de cet amendement
+
+- `docs/backlog/backlog.md` : aucune figure de pli n'y etait recopiee au niveau de `round-two` a
+  cette date ; la meme correction reste due, dans le meme geste que sa fusion, sur toute branche non
+  fusionnee qui aurait recopie les chiffres du 2026-08-11 avant cet amendement.
+- `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee.
+- Aucun Done pedagogique ni statut de catalogue n'est modifie par cet amendement.

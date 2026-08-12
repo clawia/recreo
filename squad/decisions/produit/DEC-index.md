@@ -19,7 +19,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0013 | Perimetre du sprint 6 : trois chantiers actes, choix de textes-trous/cm1-conjugaison.yml pour l'ouverture francais engagee par DEC-0011 | s06 | 2026-08-07 | Acceptee |
 | DEC-0014 | Retrait de "Le bon verbe" du catalogue jusqu'a sa correction | s06/s07 | 2026-08-10 | Acceptee |
 | DEC-0015 | Le sprint 7 construit la vraie machine a sous et ferme la dette n°1 de CLAUDE.md | s07 | 2026-08-10 | Acceptee, amendee quatre fois le 2026-08-10 (contradiction S7-2 / reintegration de "Le bon verbe", routee par theo-archi ; arbitrage prealable de nadia-prof, reduction a trois acquise puis insuffisante sur la largeur ; rendu en clair de la reprise silencieuse laisse en l'etat face a ADR-0027 ; nadia-prof eteint sa reduction, repli confirme mais non livre) |
-| DEC-0016 | Une hauteur de viewport de reference, et ce qui doit rester au-dessus du pli sur un ecran de manche | s07 | 2026-08-10 | Acceptee, amendee le 2026-08-11 (chiffres corriges sur deux jeux, story ouverte au backlog, pas de seuil chiffre) |
+| DEC-0016 | Une hauteur de viewport de reference, et ce qui doit rester au-dessus du pli sur un ecran de manche | s07 | 2026-08-10 | Acceptee, amendee le 2026-08-11 (chiffres corriges sur deux jeux, story ouverte au backlog, pas de seuil chiffre) et le 2026-08-12 (attribution et chiffres de pli corriges, meme sens) |
 | DEC-0017 | Perimetre du sprint 8 : la machine retrouve son contexte, trois verites du depot corrigees, l'ouverture du futur et de l'imparfait de la conjugaison | s08 | 2026-08-11 | Acceptee, correction documentaire le 2026-08-12 (numerotation des chantiers, aucun contenu rouvert) |
 | DEC-0018 | L'activation de "Le bon verbe" est corrigee dans le sprint plutot que retiree, denouement d'un second refus, et sort de la ligne de matrice | s08 | 2026-08-11 | Acceptee |
 | DEC-0019 | Perimetre du sprint 9 : quatre lignes textuelles de mathematiques CP ouvertes, denombrement et monnaie differes sous le gel de rendu | s09 | 2026-08-12 | Acceptee, amendee le 2026-08-12 (motifs des lignes denombrement et monnaie corriges sur avis de theo-archi, conclusion inchangee) |
@@ -151,6 +151,16 @@ seuil chiffre : ce jugement pedagogique reste celui de `nadia-prof`, comme le po
 decision d'origine le posait deja, et un seuil que je fixerais unilateralement recompenserait qui
 le contourne plutot que qui corrige la cause. Aucun des deux jeux n'est refuse sur ce seul defaut,
 maintien assume par ecrit. Voir la section "Amendement du 2026-08-11 (s08)" dans
+`DEC-0016-hauteur-de-viewport-de-reference-et-contenu-au-dessus-du-pli.md`.
+
+Amendement (pas une nouvelle reference) : `DEC-0016` a ete amendee une seconde fois le 2026-08-12,
+pendant l'arbitrage prealable du sprint 10. `nadia-prof` corrige une attribution (ce constat n'est
+pas la reserve 1 de `squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`, qui est un
+fait distinct - `mangeons` a 2,0 px) et ses propres chiffres du 2026-08-11, inexacts dans les deux
+sens apres nouvelle mesure sur le rendu : 5 / 29 etats coupes par le pli sur "Le bon petit mot"
+(etait 11 / 30) et 16 / 34 sur "Le bon verbe" (etait 24 / 33). Le sens du constat ne change pas et
+la story ouverte au backlog reste ouverte dans les memes termes. Voir la section "Amendement du
+2026-08-12 (s10)" dans
 `DEC-0016-hauteur-de-viewport-de-reference-et-contenu-au-dessus-du-pli.md`.
 
 Amendement (pas une nouvelle reference) : `DEC-0019` a ete amendee le 2026-08-12, sur avis de
