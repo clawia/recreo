@@ -12,6 +12,12 @@
 - **Ligne de matrice** : **peut passer a `couvert-valide`** (ligne "Calcul mental - soustractions
   dans la limite de 10", `squad/programme/MATRICE-couverture.md`). C'est `camille-po` qui l'ecrit, pas
   moi. Aucune reserve ouverte ne restreint la couverture de la competence nommee par le referentiel.
+- **Arbitrage prealable de mecanique du 2026-08-12** (`DEC-0023` point 6 : l'ecran intermediaire
+  disparait) : ecrit dans `FICHE-bandit-manchot-additions-cp.md`, bloc de validation, section
+  "Arbitrage prealable au developpement - la mecanique apres la disparition de l'ecran
+  intermediaire". **Il vaut pour ce jeu comme pour les huit du catalogue**, la mecanique etant
+  commune : conditions M1 a M12, dont M4 bloquante (le message d'erreur doit etre vu sans defiler a
+  360 x 640). Ce n'est pas un Done pedagogique, rien n'est code.
 - **Derniere mise a jour** : 2026-08-12
 
 ## Competences visees

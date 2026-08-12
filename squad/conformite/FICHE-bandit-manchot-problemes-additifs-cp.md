@@ -16,6 +16,16 @@
   `camille-po` qui l'ecrit, pas moi. **A lire avec les reserves ouvertes** : `couvert-valide` dit que la
   competence nommee par le referentiel est travaillee et validee, pas que ce paquet est sans reserve -
   celle de `DEC-0021` sur la regularite de magnitude reste ouverte et differee hors sprint.
+- **Arbitrage prealable de mecanique du 2026-08-12** (`DEC-0023` point 6 : l'ecran intermediaire
+  disparait) : ecrit dans `FICHE-bandit-manchot-additions-cp.md`, bloc de validation, section
+  "Arbitrage prealable au developpement - la mecanique apres la disparition de l'ecran
+  intermediaire". **Il vaut pour ce jeu comme pour les huit du catalogue**, la mecanique etant
+  commune : conditions M1 a M12, dont M4 bloquante (le message d'erreur doit etre vu sans defiler a
+  360 x 640). Ce n'est pas un Done pedagogique, rien n'est code.
+  **Ce jeu est vise nommement par la condition M4** : ses enonces font **56 caracteres en mediane et
+  67 au plus long**, contre 40 et 61 pour "Le bon verbe" dont j'ai mesure le cabinet sous le pli. Par
+  derivation - annoncee comme derivation, je ne l'ai jamais mesure - c'est le jeu de CP a regarder en
+  premier pour savoir si le message d'erreur y sera visible sans defiler.
 - **Derniere mise a jour** : 2026-08-12
 
 ## Competences visees
