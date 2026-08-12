@@ -559,6 +559,107 @@ DENT sont sur le meme ecran que DENT ; DENT reussi du premier coup - l'ecran sui
 ci-dessus), et un texte sur le mot precedent pose au-dessus du mot suivant est illisible pour un
 enfant qui dechiffre.
 
+#### 5. Question 3 - la proposition fautive : elle reste cliquable, et elle porte une marque
+
+**Ma reponse est la premiere des trois, celle qui ne coute aucun amendement, et ce n'est pas pour
+cette raison que je la choisis : c'est la seule des trois qui ne fabrique pas un nouveau probleme
+sous le doigt de l'enfant.** Elle reste cliquable, elle reste a sa place, elle ne change pas de
+taille, et elle porte une marque qui dit "tu l'as deja essayee".
+
+**Pourquoi je refuse qu'elle ne soit plus rendue du tout, et c'est mon refus le plus ferme des
+trois.** `theo-archi` a mesure le reflux : sur "Le bon verbe", perdre une proposition fait passer les
+colonnes de **deux rangees de 152,00 px a une rangee de 96,00 px**, et la police de **1,875 rem a
+2 rem**. Ce que cela veut dire pour l'enfant, en clair : **au moment ou il se trompe, les quatre
+boutons disparaissent et trois autres apparaissent ailleurs, plus petits, avec des lettres plus
+grosses.**
+
+1. **Un appui qui arrive une fraction de seconde trop tard tombe sur un autre bouton que celui que
+   l'enfant visait, et enregistre une reponse qu'il n'a pas choisie.** J'ai deja ecrit qu'un double
+   appui ne doit pas produire une consequence que l'enfant devra interpreter ; ici la consequence
+   n'est pas a interpreter, c'est **un essai perdu sur une reponse qu'il n'a pas lue**. C'est le seul
+   endroit de ce chantier ou je vois le jeu pouvoir mentir sur ce que l'enfant a fait.
+2. **Il doit relire les trois propositions restantes a chaque erreur**, dans un nouvel ordre spatial
+   et une nouvelle taille. Un enfant de CP lit lentement : on lui fait payer son erreur deux fois,
+   une fois par le message et une fois par une relecture complete.
+3. **A trois propositions, la deuxieme erreur laisse un seul bouton a l'ecran**, necessairement la
+   bonne reponse. Le jeu se termine alors sur un ecran a un seul choix, ce qui n'est plus un
+   exercice.
+
+**Cette mise en oeuvre est inacceptable pour un enfant de CP quelle que soit sa forme, et je le dis
+comme une information produit** : il n'y a pas de dessin, pas de transition et pas de reglage qui
+rende acceptable qu'un appui puisse tomber sur une reponse que l'enfant n'a pas choisie.
+
+**Pourquoi je refuse aussi qu'elle devienne inactive.** Le motif n'est pas le cout - deux clauses
+d'`ADR-0026` a amender, deux jeux de contre-exemple a retailler, un critere discriminant neuf a
+trouver - c'est `theo-archi` qui l'a chiffre et ce n'est pas moi qui le paie. **Le motif est celui,
+mot pour mot, que j'ai ecrit contre la manette** : *"un enfant de CP qui essaie de tirer une manette
+et voit que rien ne se passe se croit en faute."* Un bouton eteint sous son doigt produit exactement
+la meme chose, sur l'element le plus presse de l'application. Mon veto sur la manette a ete leve par
+l'utilisatrice, et c'etait sa decision ; **le motif, lui, n'a pas ete leve, et il vaut ici ou aucune
+decision produit ne le contredit.** Je note d'ailleurs que ce refus-la epargne a l'equipe le seul
+amendement lourd des trois options.
+
+**Ce que la marque doit dire, et ce qu'elle ne doit pas dire.** Une proposition qui reste cliquable
+et identique laisse un enfant presser vingt fois le meme mauvais bouton sans comprendre : c'est pour
+cela que la marque est une condition et non un ornement. Elle dit **"deja essayee"** et rien de plus.
+Elle ne dit pas "faux" - c'est le message qui le dit -, elle ne dit pas ou est la bonne reponse, et
+elle ne nomme aucune reponse. `theo-archi` confirme qu'un marqueur de cette nature ne tombe sous
+aucune des trois interdictions existantes.
+
+**Et je nomme la consequence que la marque a par elle-meme, pour qu'on ne la decouvre pas apres
+coup** : marquer les mauvaises reponses deja essayees revele progressivement la bonne par
+elimination. A deux propositions, la premiere marque **designe** la reponse. Je l'accepte, parce
+qu'a deux propositions le message "ce n'est pas ca" la designait deja par pure logique : la marque
+n'ajoute aucune information, elle evite seulement a l'enfant d'avoir a s'en souvenir.
+
+**Conditions M8, M9 et M10.**
+
+**M8 - rien ne bouge au-dessus du point ou l'enfant appuie.** Entre deux essais sur la meme question,
+les propositions gardent **le meme nombre, le meme ordre, la meme position au pixel, la meme taille
+de boite et la meme taille de police**. Aucune proposition n'est retiree, aucune n'est desactivee,
+aucune n'est reordonnee. La consigne, l'enonce et le cabinet ne bougent pas non plus : tout ce que le
+jeu ajoute apparait **sous** le meuble. *Verification* : deux captures a 360 px du meme item, avant
+et apres un premier echec ; les boites des propositions ont les memes coordonnees et les memes
+dimensions au centieme de pixel, et les propositions apparaissent dans le meme ordre. *Motif* : les
+trois points ci-dessus, dont le premier suffit a lui seul.
+
+**M9 - la proposition deja essayee porte une marque visible qui ne nomme aucune reponse.** Cinq
+clauses, toutes mesurables :
+
+1. elle est distinguable **autrement que par la seule couleur** (un contour, un motif, un signe -
+   `ines-design` propose la forme, je juge le resultat) ;
+2. elle **ne change ni la boite, ni la police, ni la position** de la proposition (M8), et laisse la
+   cible tactile **au-dessus de 44 px** (mon acquis 1, plancher dur) ;
+3. le texte de la proposition **reste entierement lisible** : une proposition grisee jusqu'a
+   l'illisibilite est refusee, l'enfant doit pouvoir relire ce qu'il a essaye ;
+4. elle **reste pressable**, et un nouvel appui dessus produit le meme message que le premier, jamais
+   un ecran ou un comportement different ;
+5. **aucune marque, sur aucune proposition, ne designe la bonne reponse** avant la revelation de M5.
+   *Verification* : dans le document servi, aucun attribut, aucune classe et aucun texte ne distingue
+   la bonne reponse des propositions non essayees.
+
+**M10 - les colonnes ne rejouent aucun mouvement sur une question que l'enfant n'a pas changee.**
+`theo-archi` me signale que la CI **accepte deja** qu'une question inchangee rebalaie ses colonnes,
+et me demande de dire si je le refuse. **Je le refuse, et j'accepte le cout de l'amendement.** Trois
+motifs :
+
+1. **le mouvement des colonnes veut dire quelque chose, et c'est moi qui l'ai fait dire.** J'ai
+   valide le defilement au motif que la machine **distribue** les reponses et que l'enfant choisit
+   ensuite - c'est la phrase exacte qui sauve la metaphore. Rejouer le defilement sur des
+   propositions qui n'ont pas change fait dire au mouvement quelque chose de faux : rien n'a ete
+   distribue ;
+2. **un enfant de CP qui voit les colonnes tourner croit que la question a change** et relit tout,
+   alors que la consigne du message est justement de reessayer la meme ;
+3. **le prix en attente** : 0,6 s par defilement, jusqu'a trois essais par question, dix questions -
+   jusqu'a 18 s d'attente ajoutee pour l'enfant qui se trompe le plus, c'est-a-dire celui dont
+   l'attention est la plus courte. C'est le facteur que j'avais deja utilise pour borner la duree du
+   defilement le 2026-08-10, applique a un nouveau multiplicateur.
+
+*Verification* : sur un reessai, aucune proposition ne porte de mouvement ; les pixels des colonnes
+sont identiques entre l'ecran d'avant l'appui et l'ecran de reessai. *Ce que je n'exige pas* : que
+l'ecran de reessai soit immobile en tout. L'apparition du message est un changement, et c'en est
+justement le signal ; c'est le **mouvement des colonnes** que je refuse, pas la venue du message.
+
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mes deux reserves ouvertes sont
   levees** : la reserve unique de s07 sur la fin du mouvement, et la reserve 6 de "Le bon son" sur la
   distinction de l'explication. Deux reserves nouvelles et datees sont ouvertes en section 8. Aucun
