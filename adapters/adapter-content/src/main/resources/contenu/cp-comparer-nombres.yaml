@@ -18,7 +18,7 @@ items:
   - enonce: "56 ___ 60"
     bonneReponse: "<"
     distracteurs: [">", "="]
-    indice: "56 vient juste avant 60 quand on compte : il est plus petit."
+    indice: "56 vient avant 60 quand on compte : il est plus petit."
   - enonce: "3 ___ 78"
     bonneReponse: "<"
     distracteurs: [">", "="]
