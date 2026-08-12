@@ -149,7 +149,7 @@ meme geste que cette decision, comme pour tout contenu neuf.
 (`squad/sprints/s09-mathematiques-cp-nombres-et-calculs/avis-faisabilite.md`, sections 1 et 6) apres
 l'ecriture de cette decision. Il contredit **le motif technique** que j'avais donne pour differer les
 lignes 1 et 6, pas la conclusion de les differer. Comme convenu, son avis prime le mien en cas de
-contradiction sur la faisabilite ; je corris donc les deux motifs sur leur base reelle, ce qui n'est
+contradiction sur la faisabilite ; je corrige donc les deux motifs sur leur base reelle, ce qui n'est
 pas la meme chose que rouvrir les deux lignes.
 
 **Ligne 1 - Denombrer.** J'avais ecrit "aucune ecriture textuelle ne teste ce verbe". C'est faux tel
