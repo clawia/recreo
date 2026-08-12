@@ -483,6 +483,82 @@ qu'elle. Deux clauses :
    change d'aspect selon la reponse, l'argument qui sauve la metaphore de la machine tombe, et mon
    avis avec lui.
 
+#### 4. Question 2 - l'explication : elle survit, et elle perd sa symetrie
+
+**Ce que j'ai tranche le 2026-08-06, et que `theo-archi` a raison de dire intenable en l'etat** :
+l'explication est affichee **systematiquement, juste ou faux**, avec ce motif que je maintiens mot
+pour mot - *"l'enfant qui a trouve DENT par elimination a autant besoin de l'explication que celui
+qui s'est trompe, et celui qui avait raison pour la bonne raison a besoin d'etre conforte."*
+`theo-archi` etablit qu'il n'existe pas de troisieme voie technique : toute solution rend
+l'explication asymetrique, ou la reporte en fin de partie. **Je le confirme apres avoir regarde le
+contenu, et je tranche.**
+
+**Un fait mesure ce jour, qui commande la reponse et qui n'avait pas ete verse au dossier.** Les
+explications n'existent que sur un paquet, `cp-le-bon-son`, et il y en a **six**. Les voici toutes :
+
+| Item | Explication servie | Bonne reponse |
+|---|---|---|
+| DENT | "Dans DENT, ce sont les lettres e et n qui font le son an." | `an` |
+| VENT | "Dans VENT, ce sont les lettres e et n qui font le son an." | `an` |
+| OMBRE | "Dans OMBRE, ce sont les lettres o et m qui font le son on." | `on` |
+| NOMBRE | "Dans NOMBRE, ce sont les lettres o et m qui font le son on." | `on` |
+| TIMBRE | "Dans TIMBRE, ce sont les lettres i et m qui font le son in." | `in` |
+| LUNDI | "Dans LUNDI, ce sont les lettres u et n qui font le son in." | `in` |
+
+**Les six nomment la bonne reponse, par construction : c'est moi qui ai dicte cette forme** le
+2026-08-06 ("nommer les lettres du mot affiche **et le son qu'elles font**"). Donc **l'explication ne
+peut structurellement pas etre affichee tant que l'enfant peut encore repondre.** Ce n'est pas une
+preference de placement, c'est une impossibilite du contenu tel que je l'ai moi-meme exige. Toute
+place "sur la question pendant les essais" est donc fermee, et elle l'est par mon propre texte.
+
+**Ma decision, en trois lignes.**
+
+1. **Chemin faux : l'explication accompagne la revelation de M5**, au troisieme echec, sous le
+   meuble, apres la reponse nommee. C'est la place ou elle sert le mieux depuis qu'elle existe :
+   l'item est encore sous les yeux de l'enfant, ce qui n'etait pas vrai sur l'ecran de retour.
+2. **Chemin juste : l'explication disparait**, sauf sur la derniere question de la partie, ou l'ecran
+   de fin de partie la porte encore telle qu'aujourd'hui.
+3. **Ma regle du 2026-08-06 perd donc sa symetrie, et je l'ecris comme une perte, pas comme une mise
+   a jour.**
+
+**Les deux places que j'aurais pu prendre pour la garder, et mon motif de refus sur chacune.**
+
+- **En tete de la question suivante, sur le chemin juste.** Refusee, sur deux motifs dont le premier
+  est mesure. **Mesure** : l'ecran de manche est deja plein sur l'axe vertical - le bas du cabinet
+  atteint 636 px sur "Le bon verbe" et 690 px sur "Le bon petit mot" a un pli de 640, releve du
+  2026-08-11 - et une ligne de plus au-dessus du cabinet pousse les colonnes et le message de M4 plus
+  bas encore. Ajouter du texte au-dessus du cabinet est exactement ce que M4 ne peut pas payer.
+  **De lecture** : l'ecran porterait alors, de haut en bas, une explication sur le mot **precedent**
+  puis un enonce portant le mot **suivant**. Un enfant de CP qui dechiffre lit les deux comme un seul
+  bloc et cherche les lettres de DENT dans MONTRE. C'est pire que de ne rien afficher.
+- **En recapitulatif de fin de partie.** Refusee pour le motif deja ecrit en section 3 : un bloc de
+  dix textes qu'un enfant de six ans ne lit pas.
+
+**Ce que cette perte coute exactement, chiffre pour que `camille-po` en fasse une story et non une
+impression.** Elle porte sur **6 items d'un seul jeu sur huit**, et seulement sur les parties ou
+l'enfant repond juste a ces items. Sur ma partie de "Le bon son" jouee ce jour, DENT et OMBRE sont
+tombes et leurs deux explications ont ete servies sur le chemin faux : sous le nouveau flux, elles
+auraient ete servies au troisieme echec, donc conservees dans ce cas precis. Ce qui disparait est le
+cas que j'avais nomme moi-meme : **l'enfant qui trouve DENT du premier coup, par elimination, et qui
+ne saura pas pourquoi.** Je le maintiens comme un vrai manque, et c'est la reserve B de la section 10.
+
+**Et je dis ce que je ne demande pas, pour qu'on ne me le prete pas.** Je ne demande pas qu'on
+retarde d'une demi-seconde le chargement de la question suivante pour glisser l'explication au
+passage : ce serait l'ecran intermediaire remis par la fenetre, et un delai que l'enfant subit sans
+l'avoir demande. La decision produit est prise, je ne la contourne pas.
+
+**Condition M7.**
+
+**M7 - l'explication n'apparait qu'apres que la reponse est acquise, et jamais au-dessus d'une
+question neuve.** Elle est affichee dans le meme emplacement que le message (M6, clause 1), soit avec
+la revelation de M5, soit sur l'ecran de fin de partie. Elle n'est jamais affichee pendant qu'un
+essai reste possible sur la question, et jamais sur un ecran qui porte deja l'enonce d'une autre
+question. *Verification* : sur "Le bon son", DENT rate trois fois - la revelation et l'explication de
+DENT sont sur le meme ecran que DENT ; DENT reussi du premier coup - l'ecran suivant porte MONTRE et
+**aucun** texte parlant de DENT. *Motif* : les six explications nomment la reponse (tableau
+ci-dessus), et un texte sur le mot precedent pose au-dessus du mot suivant est illisible pour un
+enfant qui dechiffre.
+
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mes deux reserves ouvertes sont
   levees** : la reserve unique de s07 sur la fin du mouvement, et la reserve 6 de "Le bon son" sur la
   distinction de l'explication. Deux reserves nouvelles et datees sont ouvertes en section 8. Aucun
