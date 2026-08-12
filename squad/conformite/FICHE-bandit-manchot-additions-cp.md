@@ -821,6 +821,124 @@ cet ecran, moi comprise. **Aucun Done pedagogique ne sera prononce sur l'enseign
 ait eu lieu**, et si elle n'est techniquement pas faisable sur nos postes, je le dirai ainsi plutot que de
 valider en supposant.
 
+#### 7. Mes douze conditions de forme, en une page
+
+Elles portent le prefixe **F** et se lisent **a la suite** des douze conditions M1 a M12 de mon arbitrage
+de mecanique du meme jour : aucune M n'est renumerotee, aucun numero n'est reutilise, et un developpeur qui
+lit `F5` sait qu'il s'agit de la forme du meuble et non de la mecanique.
+
+Elles sont **fermees** : ce qui n'y est pas ne bloquera pas le Done et ne pourra pas m'etre oppose comme
+l'ayant bloque. **Deux sont bloquantes par elles-memes** : F5 et F9.
+
+| # | Condition | Ou elle se verifie |
+|---|---|---|
+| F1 | **Le levier se lit comme une poignee**, et jamais comme un curseur de defilement, une epingle, un clou ou un thermometre. Dessine au repos, fut vertical, boule au sommet, embase au flanc (`DEC-0023` point 3) | capture a 360 px, agrandie, **jugee par moi** avant tout Done |
+| F2 | **Le levier n'est pas l'objet le plus voyant du meuble.** Sa teinte n'est pas `--recreo-accent-texte`, et son contraste contre chaque surface qu'il croise (corps du cabinet, bordure, fond de page) ne depasse pas celui d'un bouton de reponse contre le corps du cabinet (**3,20:1**) | calcul WCAG sur les valeurs de la feuille servie |
+| F3 | **Le levier ne fabrique aucune faute.** Jamais un `button` ni un `a`, aucun `data-role`, hors du parcours clavier, aucun nom accessible, aucune reaction au toucher (ni surbrillance de tape, ni `:hover`, `:active`, `:focus`), aucun texte de l'ecran n'y renvoie, et il ne recouvre aucun pixel d'une proposition | document servi + capture avant/apres appui |
+| F4 | **Le visage se lit comme un visage a 360 px** : l'oeil est au moins aussi grand que la joue, la boite declaree du visage contient toutes ses copies d'ombre pour que l'enseigne garde son `gap` entier, la bouche est visible sans agrandissement. Aucun cil, noeud, cheveu, sourcil ni bouche coloree - **rien qui genre la machine**. Identique dans les quatre etats (C4, M6 clause 2) | capture a 360 px agrandie, **jugee par moi** |
+| F5 | **Bloquante. Les 2,0 px sont un plancher.** Aucune colonne de "Le bon verbe" ne descend sous **150,27 px** ; l'air de chaque proposition de ce paquet reste **strictement positif et au moins 2,0 px par cote** sur les 100 emplacements. Aucune colonne des autres jeux ne descend sous son plancher de mon tableau du 2026-08-11 (77 / 79 / 106 px) | rendu a 360 px, mesure par `Range` sur les 100 emplacements |
+| F6 | **Aucun item ni distracteur n'est remplace pour gagner de la largeur.** Un remplacement se motive par le contenu, repasse devant moi comme un contenu neuf sur ma barre de six points et les trois criteres du paquet, et **aucun lot de forme ne se planifie en supposant qu'il aura lieu** | message de commit et fichier de paquet ; arbitrage par moi |
+| F7 | **Le nom de l'enseigne est "Le Copain Malin".** Toute autre valeur, y compris une variante d'orthographe ou de casse, revient devant moi | fichier ou modele qui porte le nom |
+| F8 | **L'enseigne n'est jamais le plus petit texte de l'application** : au moins **1,25 rem**, gras autorise, une seule ligne, **entiere sans troncature ni ellipse**, a 360 px, dans tous les etats du meuble et sur les huit jeux | capture a 360 px sur les huit jeux |
+| F9 | **Bloquante. Aucune teinte de proposition n'est confondable avec une couleur de verdict** : au moins **3:1** de distance avec `#2e7d32` et avec `#c62828`. Cela exclut `#1f7a3d` (1,05:1) et `#c0392b` (1,03:1) | calcul WCAG sur les valeurs de la feuille servie |
+| F10 | **Chaque teinte de proposition garde au moins 4,5:1 contre le blanc de son texte et au moins 3:1 contre le corps du cabinet.** Cela exclut `#6c3fa8` (2,40:1). **Et la marque de M9 est lisible sur chacune des teintes retenues** | calcul WCAG + capture d'une proposition deja essayee sur chaque teinte |
+| F11 | **Le nom de l'enseigne n'est jamais annonce entre l'enonce et les propositions**, et il n'existe jamais deux fois dans le document | ordre de lecture du gabarit + **ecoute reelle d'un lecteur d'ecran**, par moi |
+| F12 | **Aucun texte que l'enfant doit lire pour jouer ne vit dans un sous-arbre masque** (`ADR-0035`, endosse). Le texte de **decor** dont le masque est voulu en est distingue et son masque est ecrit comme tel | `AucunTexteNeVitDansUnSousArbreMasqueTest`, apres reserve du cas du decor |
+
+#### 8. Les deux faits qu'on me donne sans arbitrage, et ce que j'en fais
+
+**A. L'ordre de ce qui tombe si le sprint deborde.** Je l'endosse, et j'y apporte un seul changement, qui
+n'est pas une preference : sous la route de la section 2.c, **le levier cesse d'etre le poste le plus cher
+du lot**. Il ne coute plus une colonne, plus un pixel de hauteur, plus un arbitrage de contenu - il ne
+coute qu'un element de gabarit et un dessin que je dois regarder. S'il tombe quand meme, rien ne regresse
+par rapport a s08 et je n'en ferai pas un motif. Mais il ne tombe plus **parce qu'il est cher** ; il
+tomberait parce que le temps manque, ce qui n'est pas la meme conversation.
+
+**B. La mesure de M4 sur les huit jeux.** Ma condition M4 est inchangee, et cet arbitrage-ci ne la touche
+pas : je confirme que **rien de ce que je valide ici ne depense un pixel vertical** au-dela du +1 px du
+corps en deux tons, deja accepte sous ma condition N6 le 2026-08-11. Le levier suspendu, le visage,
+l'enseigne a 1,25 rem, les teintes de boutons et les etoiles du socle sont tous a **0 px de hauteur** dans
+mes rendus. Et je redis ce que j'ai ecrit : **si la mesure de M4 est negative, M4 bloque, et cet arbitrage
+de forme passe apres.** Il n'y a pas de forme a arbitrer sur un ecran dont le message et l'indice sont sous
+le pli. La seule chose que j'ajoute est negative aussi : la structure 3 de la question 6, qui aurait pris
+4 px de hauteur, est refusee - je ne vais pas aggraver M4 pendant qu'on mesure si elle tient.
+
+**C. Les arcs-en-ciel ecartes.** Je ne les avais pas demandes, je ne les demande pas, et le motif
+qu'`ines-design` ecrit - ne pas bacler un cinquieme decor dans un lot deja charge sur son point le plus
+disputable - est le bon. Il n'y a rien a arbitrer et je ne fabrique pas une reserve pour l'occasion.
+
+#### 9. Ce dont je reste la seule garde apres cet arbitrage
+
+Quatre defauts visibles par un enfant ont deja traverse une CI entierement verte sur ce depot. Voici, sur
+la **forme**, ce que personne d'autre que moi ne verifie - et `theo-archi` l'ecrit lui-meme : *"Ce que je
+ne dis pas : que le manche ressemble a un manche, qu'il soit lisible a 360 px, ou qu'un enfant comprenne
+qu'on n'y touche pas."*
+
+1. **qu'une silhouette ressemble a ce qu'elle pretend etre.** F1 et F4 n'ont aucun automate et n'en auront
+   pas (`ADR-0025`). Je suis le garde-fou, et je le suis en regardant une capture agrandie ;
+2. **qu'un enfant ne se croie pas en faute devant le levier.** Aucun test ne mesure ce qu'un enfant fait de
+   ses doigts. F2 et F3 reduisent le risque, elles ne l'annulent pas, et **`DEC-0023` a explicitement laisse
+   ce risque residuel ouvert** ;
+3. **qu'une couleur ne mente pas.** F9 est mecanique, mais rien dans ce depot ne compare une teinte
+   d'habillage aux couleurs du verdict. Ce lien-la n'existe que dans ma fiche ;
+4. **que la marque de M9 survive a quatre fonds.** Deux lots differents, deux sprints peut-etre, aucun test
+   qui les confronte. Si personne ne les mesure ensemble, M9 deviendra faux en restant vert ;
+5. **ce qu'un enfant entend reellement.** Voir la section 6.d : personne dans cette equipe ne l'a jamais
+   ecoute, moi comprise, et `ADR-0035` ne le garantit pas ;
+6. **que le nom de l'enseigne reste "Le Copain Malin".** F7 est un texte enfant, et le seul controle
+   existant sur les textes enfants porte sur l'accentuation, pas sur le choix du mot.
+
+#### 10. Reserves nouvelles et datees du 2026-08-12 (forme)
+
+Aucune n'est un refus et aucune ne bloque le sprint. Elles sont ecrites pour que `camille-po` en fasse des
+stories.
+
+**Reserve F - `mangeons` a 2,86 px d'air reste un inconfort, et il n'est pas ferme par cet arbitrage.**
+J'ai ecrit le 2026-08-11 que *"le confort reel est de 2,86 px la ou ma definition en demande 20"*. Ce que
+je demande n'a pas change et ne change pas ici : que la disposition de "Le bon verbe" soit instruite pour
+elle-meme - saisine deja ouverte a `camille-po` et `theo-archi` - **et non pour financer une bordure**.
+F6 dit comment ; cette reserve dit que la question reste ouverte.
+
+**Reserve G - les quatre couleurs de boutons et la marque de M9 doivent etre mesurees dans le meme
+geste.** Si les deux lots sortent separement, celui qui arrive en second refait la mesure du premier, sur
+les quatre fonds. Je le demande maintenant parce que c'est le genre de dependance qu'on decouvre apres.
+
+**Reserve H - `ADR-0035` demande une reserve pour le texte de decor deliberement masque.** Motif complet
+en section 6.d. Ce n'est ni un refus de l'`ADR` ni une demande de le retirer : c'est le fait pedagogique
+que `theo-archi` m'a demande, rendu sous la forme d'une demande d'amendement, et il lui appartient.
+
+#### 11. Ce que cet arbitrage ne tranche pas
+
+- **Aucune route technique.** L'elargissement de bordure, le levier suspendu, la place du texte de
+  l'enseigne, les entrees de `SELECTEURS_DU_CABINET`, les gardes-fous : tout cela appartient a
+  `theo-archi`. Je decris des proprietes et je refuse des resultats mesures, jamais un moyen.
+- **Aucune palette.** Je refuse quatre valeurs nommees et je pose deux planchers ; le choix des teintes
+  qui les respectent est a `ines-design`.
+- **Le backlog.** Je produis six verdicts, douze conditions et trois reserves ; `camille-po` en fait des
+  stories.
+- **Aucun Done pedagogique.** Rien n'est code, aucun increment n'est evaluable, et ma liste fermee de
+  reverification est celle de la section 9 plus les douze F.
+- **Aucune ligne de `squad/programme/MATRICE-couverture.md`** ne bouge : ce chantier d'habillage ne porte
+  aucune competence du programme. C'est la cinquieme fois que l'etape 2 de ma methode est sans objet sur ce
+  chantier, et je le dis plutot que de la simuler.
+- **Mes douze conditions M1 a M12 ne sont pas rouvertes**, et ma barre de six points sur le paquet de
+  conjugaison reste levee.
+
+- **Verdict de cet arbitrage prealable** : **REFUSE sur la proposition telle qu'ecrite**, sur quatre motifs
+  mesures et chacun actionnable - `mangeons` ressort de sa boite de **3,13 px** par cote sous
+  l'elargissement symetrique (F5) ; les boutons rouge et vert sont a **1,03:1 et 1,05:1** des couleurs du
+  verdict de l'application (F9) ; le levier en blanc pur est a **17,32:1** contre le corps du cabinet la ou
+  un bouton de reponse est a 3,20:1, et il se lit comme un curseur (F1, F2) ; l'enseigne a **0,875 rem**
+  serait le seul texte de recreo sous 20 px (F8). **Le principe de chacun des cinq elements est accepte**,
+  et les douze conditions F disent ce que j'accepterais. Le corps en deux tons et les etoiles du socle sont
+  acceptes sans reserve, tels quels.
+- **Date** : 2026-08-12.
+- **Commit de reference** : `b15bda1`, tete de `round-two`. Proposition jugee :
+  `proposition-ines-meuble.md` sur `s10-ines-meuble` ; avis de faisabilite de `theo-archi` sur
+  `s10-theo-archi` et `s10-theo-domaine` ; `DEC-0023` sur `s10-camille-perimetre-2`.
+- **Done technique** : sans objet, rien n'est code.
+- **Ce bloc n'est pas un Done pedagogique** et n'en retire aucun.
+
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mes deux reserves ouvertes sont
   levees** : la reserve unique de s07 sur la fin du mouvement, et la reserve 6 de "Le bon son" sur la
   distinction de l'explication. Deux reserves nouvelles et datees sont ouvertes en section 8. Aucun
