@@ -432,6 +432,102 @@ a ce que l'enfant lit. Mon verdict ne prescrit aucune route : il refuse toute ro
 colonne de "Le bon verbe" sous **150,27 px** (`146,27 + 2 x 2,00`), et il en existe au moins une qui n'y
 touche pas.
 
+#### 3. Question 3 - la quatrieme voie : REFUSEE, et le chiffre qui la porte est incomplet
+
+**Verdict en une phrase : je refuse de retailler un contenu valide pour gagner des pixels de decor, et
+avant meme cet arbitrage, le chiffre de 10,27 px sur lequel repose la proposition ne suffit pas.**
+
+##### 3.a Le chiffre : ce n'est pas un mot, c'est trois, et le second item est impossible
+
+`theo-archi` ecrit : *"Si le mot le plus large de ce paquet descend a 136,00 px au lieu de 146,27,
+l'elargissement symetrique a 1,25 rem d'`ines-design` passe integralement, avec 2,0 px de marge.
+`mangeons` est 10,27 px trop large, et c'est tout ce qui separe sa proposition complete de
+l'acceptation."* **L'arithmetique est juste et la conclusion est fausse, parce que `mangeons` n'est pas
+seul au-dessus de 136,00 px.** Les chiffres sont dans ma propre fiche depuis le quatrieme audit, je les
+ai remesures aujourd'hui, et ce sont les miens :
+
+| Proposition | Glyphes | Item du paquet | Sous 136,00 px ? |
+|---|---|---|---|
+| `mangeons` | **146,27 px** | "Vous ___ du chocolat." (distracteur) | **non**, -10,27 px |
+| `cherchons` | **142,67 px** | "Je ___ ..." (distracteur) | **non**, -6,67 px |
+| `cherchent` | **139,03 px** | "Je ___ ..." (distracteur) | **non**, -3,03 px |
+| `dessinent` | 133,94 px | "___ dessinent..." | oui, de 2,06 px |
+
+**Trois propositions, deux items.** Et le second des deux est un mur, pas un ajustement. Voici les
+formes du present de *chercher* disponibles pour cet item, mesurees a la police reelle des propositions
+a quatre colonnes :
+
+| Forme | Glyphes | Role possible |
+|---|---|---|
+| `cherche` | 109,22 px | c'est la **bonne reponse** de l'item |
+| `cherches` | 122,41 px | distracteur, deja utilise |
+| `cherchez` | 123,58 px | distracteur, disponible |
+| `cherchons` | 142,67 px | **au-dessus de 136,00 px** |
+| `cherchent` | 139,03 px | **au-dessus de 136,00 px** |
+
+L'item a besoin de **trois** distracteurs, et il n'existe que **deux** formes de *chercher* sous
+136,00 px (`cherches` et `cherchez`). Or le critere de ce paquet, ecrit par `camille-po` et que j'ai
+valide, exige que *"chaque distracteur est une autre forme conjuguee du meme verbe au present (jamais un
+verbe different)"*. **Il est donc arithmetiquement impossible de tenir cet item sous 136,00 px sans
+changer le verbe de l'item.** Ce n'est plus "remplacer un item", c'est le reecrire, choisir un autre
+verbe frequent, et rejuger si ce verbe est frequent au sens du referentiel.
+
+L'item de `mangeons`, lui, se corrigerait sans changer de verbe (`mange` 96,58, `manges` 109,78,
+`mangent` 126,41 px sont tous sous le seuil). Mais un seul des deux se corrige, et il faut les deux.
+
+**Je ne retiens pas cette erreur contre `theo-archi`.** Il a chiffre le mot le plus large, ce qui est la
+question qu'il pouvait se poser depuis sa place ; savoir qu'un item de conjugaison n'a que cinq formes
+disponibles et qu'on ne peut pas en fabriquer une sixieme, c'est mon metier, pas le sien. Et il a
+lui-meme qualifie le point d'"arbitrage de contenu" et l'a remonte avec son chiffre plutot que de le
+trancher, ce qui est exactement la bonne conduite.
+
+##### 3.b Le refus, et son motif de fond
+
+Meme si le chiffre avait tenu, ma reponse serait la meme, et je l'ecris pour qu'elle ne se rejoue pas au
+prochain ornement.
+
+**Le contenu est ce que l'enfant vient apprendre ; le meuble est ce qui rend ce contenu lisible.** Le
+jour ou on choisit un verbe parce que sa forme en *nous* est etroite, ce n'est plus le programme qui
+choisit les items, c'est la carrosserie. Et ce n'est pas un geste isole : il installe dans le depot une
+contrainte que personne n'a ecrite - *"aucune proposition au-dela de 136 px"* - qui gouvernerait ensuite
+tous les paquets futurs sans figurer dans aucun referentiel. C'est la dette 2 de la version precedente
+dans une autre tenue : une contrainte d'un seul sous-systeme imposee a tout le contenu.
+
+**Et c'est le sens exact de ce que j'ai ecrit le 2026-08-11 en fixant mes planchers de colonne** :
+*"Ce plancher est derive des paquets d'aujourd'hui : un paquet neuf portant une proposition plus large
+le releve mecaniquement, et c'est au moment ou ce paquet arrive qu'il faut le recalculer, pas au moment
+ou le cadre se dessine."* Le sens de la dependance est ecrit noir sur blanc : **le meuble suit le
+contenu.** Refuser ici n'est pas un caprice neuf, c'est appliquer la phrase.
+
+**Ce qu'on achete, enfin, ne vaut pas ce qu'on paye.** La quatrieme voie ne finance pas le levier - la
+route de la section 2.c le finance a cout nul. Elle finance **l'elargissement symetrique** de la paroi
+gauche, c'est-a-dire 12 px de paroi dont `theo-archi` a montre qu'ils "n'achetent aucun levier". On me
+demande de rouvrir un contenu de CM1 valide pour obtenir une symetrie de decor. Non.
+
+##### 3.c Ce que j'accepterais, et a quel prix - F6
+
+Je ne ferme pas la porte a une correction de ce paquet, parce que j'ai moi-meme enregistre que
+`mangeons` a 2,86 px est **un inconfort present** (verdict du 2026-08-11). Mais l'ordre des raisons
+n'est pas negociable :
+
+1. **Le motif du remplacement est un motif de contenu, jamais une largeur.** Si `camille-po` juge qu'un
+   item est meilleur autrement - un verbe plus frequent, une phrase plus claire, un distracteur plus
+   instructif - c'est une story de contenu ordinaire. Le gain de pixels en est alors une **consequence**,
+   et le message de commit ne dit pas "pour gagner 10 px".
+2. **Tout item ou distracteur touche repasse devant moi comme un contenu neuf**, sur les six points de
+   ma barre du 2026-08-10, plus les trois criteres du paquet (une seule bonne reponse, distracteurs du
+   meme verbe au meme temps, les six personnes representees). C'est ce que `contenu-repris/README.md` et
+   `CLAUDE.md` imposent a tout contenu, et un item reecrit n'y echappe pas parce que le paquet est deja
+   valide.
+3. **Aucun lot de forme ne se planifie en supposant que ce remplacement arrivera.** Le levier ne se
+   construit pas sur une largeur qu'un arbitrage de contenu doit encore accorder. C'est la seule clause
+   qui bloque quelque chose ici : elle empeche qu'une story de decor soit ecrite avec une dependance
+   silencieuse sur une story de contenu qui n'existe pas.
+
+**Ma barre de six points sur ce paquet n'est pas rouverte par cet arbitrage**, et je ne la durcis pas.
+Elle a ete atteinte, je l'ai levee le 2026-08-11, et elle reste levee. Ce que je dis en F6 ne s'applique
+qu'aux items **effectivement modifies**, et seulement a eux.
+
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mes deux reserves ouvertes sont
   levees** : la reserve unique de s07 sur la fin du mouvement, et la reserve 6 de "Le bon son" sur la
   distinction de l'explication. Deux reserves nouvelles et datees sont ouvertes en section 8. Aucun
