@@ -69,7 +69,7 @@ Source : `squad/programme/mathematiques/competences-cp.md`.
 | mathematiques | CP | Nombres et calculs | Comparer et ranger des nombres jusqu'a 100 (<, >, =) | bandit-manchot-comparer-nombres-cp | bandit manchot | en cours |
 | mathematiques | CP | Nombres et calculs | Calcul mental - additions dans la limite de 10 (puis 20) | bandit-manchot-additions-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | bandit-manchot-soustractions-cp | bandit manchot | en cours |
-| mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp | bandit manchot | en cours |
+| mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Resoudre des problemes simples d'addition/soustraction en situation (1 etape) | bandit-manchot-problemes-additifs-cp | bandit manchot | en cours |
 | mathematiques | CP | Nombres et calculs | Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets | - | - | non couvert |
 | mathematiques | CP | Grandeurs et mesures | Comparer des longueurs, des masses, des contenances (sans instrument gradue) | - | - | non couvert |
@@ -565,3 +565,46 @@ Aucun de ces deux points ne deplace un chiffre du tableau de synthese ci-dessous
 Quatre lignes de plus qu'a la cloture de s08 passent `en cours` (toutes en mathematiques CP), pour
 un total de cinq lignes `en cours` sur le produit. Aucune ligne ne passe `couvert-valide` par cette
 seule ouverture ; ce mouvement attend l'audit de `nadia-prof` sur les increments du sprint 9.
+
+## Synthese apres les verdicts du sprint 9 (2026-08-12)
+
+`nadia-prof` a rendu quatre verdicts sur les quatre fiches ouvertes par `DEC-0019`
+(`squad/conformite/FICHE-bandit-manchot-complements-10-cp.md`,
+`FICHE-bandit-manchot-soustractions-cp.md`, `FICHE-bandit-manchot-problemes-additifs-cp.md`,
+`FICHE-bandit-manchot-comparer-nombres-cp.md`) :
+
+- **Mathematiques CP (complements a 10)** obtient **`couvert-valide`** : `nadia-prof` prononce
+  **VALIDE**, Done pedagogique accorde sans reserve bloquante, les onze items verifies un par un
+  (`DEC-0020`, deux items degeneres gardes sur motif pedagogique explicite, sept manches
+  confirmees suffisantes pour que l'aide reste atteignable). Quatrieme ligne `couvert-valide` du
+  produit, deuxieme en mathematiques CP.
+- **Mathematiques CP (soustractions)** est **REFUSE** : les 24 indices du paquet ecrivent "Leve"
+  au lieu de "Lève", et 23 sur 24 ecrivent "baisse-en" au lieu de "baisses-en" - un mot mal
+  orthographie affiche a l'enfant qui a echoue trois fois de suite. La mathematique et la methode
+  des indices sont exactes ; seule la langue est fautive. La ligne reste `en cours`.
+- **Mathematiques CP (resoudre un probleme simple d'addition/soustraction)** est **REFUSE** : deux
+  items sur 22 (le clown et ses ballons, le jardinier et ses fleurs) attendent une reponse qui
+  contredit la lecture correcte de leur propre enonce (le "en" partitif), et la reponse juste sous
+  cette lecture n'est proposee dans aucun des deux cas. Les 20 autres items sont bons. La ligne
+  reste `en cours`.
+- **Mathematiques CP (comparer deux nombres)** est **REFUSE** : l'indice de l'item `56 ___ 60`
+  affirme que 56 vient juste avant 60 dans la suite des nombres, ce qui est faux (59 est son
+  predecesseur immediat) - une faussete sur exactement ce que le jeu construit. Les 24
+  comparaisons et les 23 autres indices sont exacts. La ligne reste `en cours`, et n'aurait de
+  toute facon pas pu passer `couvert-valide` sur cet increment : le perimetre reste partiel,
+  "ranger" restant differe par `DEC-0019`.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 3 | 2 |
+| mathematiques CM1 | 12 | 12 | 0 | 0 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 9 | 0 | 2 |
+| **Total** | **46** | **38** | **4** | **4** |
+
+Le produit compte desormais quatre lignes `couvert-valide` sur 46 (contre trois a la cloture de
+s08), quatre lignes `en cours` (trois refus de ce sprint plus la ligne francais CP restee ouverte
+depuis s06) et 38 lignes `non couvert`, chiffre inchange. Les trois refus sont en cours de
+correction sur la seule correction bornee que `nadia-prof` a ecrite dans chaque fiche ; leurs
+lignes ne passeront a `couvert-valide` que si `nadia-prof` rejoue l'increment corrige et prononce un
+verdict `VALIDE`.
