@@ -238,14 +238,32 @@ l'utilisatrice. Je n'ai mesure aucun pixel ce sprint.
 Le correctif est fusionne et la CI reste verte, mais **aucun garde-fou neuf ne couvre les proprietes
 qui ont laisse passer ce refus.**
 
+**Correction de fait du 2026-08-12, portant sur cette liste et sur aucun verdict.** J'avais ecrit
+ici, et au meme endroit du premier verdict plus bas, que `PaquetCpComparerNombresTest` ne verifiait
+pas la verite de la comparaison. **C'etait faux.**
+`leSigneDeChaqueItemEstLeSigneMathematiquementCorrect` decoupe l'enonce sur le marqueur de trou,
+recalcule le signe attendu depuis les deux nombres et le compare a la bonne reponse de l'item.
+Etabli par la mutation de `yanis-qa` (section 4 de
+`squad/sprints/s09-mathematiques-cp-nombres-et-calculs/rapport-qualite.md` : bonne reponse de
+`56 ___ 60` passee de `<` a `>`, test rouge), signale par `sofia-sm`, puis relu par moi dans le
+fichier de test - je ne reprends pas un fait sur parole apres m'etre deja trompee sur celui-la. Le
+point 2 ci-dessous est corrige en consequence et sort de ce dont je reste seule garde ; je conserve
+son numero pour ne decaler aucun renvoi deja ecrit. J'ai relu les cinq autres points a cette
+occasion : aucun n'est garde, et le point 1 reste bien la propriete qui a laisse passer le refus.
+
+**Mon constat de fond est inchange, et cette correction le rend plus exact** : ce que la suite ne
+garde pas, c'est ce que l'enfant **lit** - la verite d'un indice au premier chef, ici. C'est bien la
+comparaison elle-meme, et elle seule, qui etait deja tenue par un test.
+
 1. **La verite de chaque indice. C'est la propriete qui a laisse passer ce refus, et elle n'est
    toujours tenue par rien.** `ChaquePaquetPorteUnIndiceTest` verifie qu'un indice existe et n'est pas
    vide ; `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest` verifie une coherence **entre** items.
    Aucun des deux ne verifie qu'un indice dit quelque chose de **vrai**, et aucun ne pourrait le faire
    pour une affirmation comme "56 vient juste avant 60". C'est moi, et en jouant.
-2. **L'exactitude de chaque comparaison.** `PaquetCpComparerNombresTest` verifie la structure, la
-   repartition des signes et la forme des propositions, pas la verite de la comparaison. Faite a la
-   main, 24 fois, deux fois maintenant.
+2. **L'exactitude de chaque comparaison : propriete gardee, je n'en suis pas le garde** (point corrige
+   le 2026-08-12, voir ci-dessus). `PaquetCpComparerNombresTest` compare bien les deux nombres de
+   l'enonce au signe attendu. Je l'ai aussi faite a la main, 24 fois, deux fois maintenant, mais un
+   test la referait si le fichier changeait sans moi.
 3. **La pertinence de la methode enseignee par un indice** - qu'elle soit applicable au cas presente,
    par exemple ne pas invoquer les dizaines quand elles sont egales. Tenue ici sur les 24 items, mais par
    l'attention de `lea-dev`, par aucun garde-fou.
@@ -437,9 +455,13 @@ l'utilisatrice.
    des deux ne verifie qu'un indice dit quelque chose de **vrai**, et aucun ne pourrait le faire pour
    une affirmation comme "56 vient juste avant 60". Tant qu'aucun garde-fou n'existe, c'est moi, et
    en jouant.
-2. **L'exactitude de chaque comparaison.** Aucun test ne compare les deux nombres de l'enonce au
-   signe attendu ; `PaquetCpComparerNombresTest` verifie la structure, la repartition des signes et la
-   forme des propositions, pas la verite de la comparaison. Fait a la main, 24 fois.
+2. **L'exactitude de chaque comparaison - point faux, corrige le 2026-08-12.** J'avais ecrit ici
+   qu'aucun test ne comparait les deux nombres de l'enonce au signe attendu et que
+   `PaquetCpComparerNombresTest` ne verifiait que la structure, la repartition des signes et la forme
+   des propositions. **C'est inexact** : ce test recalcule aussi le signe attendu depuis les deux
+   nombres et le compare a la bonne reponse de l'item. Voir la correction datee de la section "Ce dont
+   je reste seule garde apres ce second verdict" pour ce qui l'a etablie. Je laisse ce point a sa
+   place et sous son numero, corrige et non efface. Je l'avais par ailleurs fait a la main, 24 fois.
 3. **La pertinence de la methode enseignee par un indice** - qu'elle soit applicable au cas presente
    (ne pas invoquer les dizaines quand elles sont egales). Tenu ici sur les 24 items, mais par
    l'attention de l'auteure, par aucun garde-fou.
