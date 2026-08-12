@@ -36,6 +36,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0030](ADR-0030-un-habillage-entoure-sans-rogner-et-toute-animation-finit-sur-son-etat-de-repos.md) | Interdire a un habillage de rogner un ancetre de bouton et d'animer autre chose que ce qu'on presse, et exiger que la derniere image d'une animation soit l'etat de repos | s08 | 2026-08-11 | Accepte |
 | [ADR-0031](ADR-0031-un-ecran-ne-gouverne-jamais-l-apparence-d-un-autre.md) | Refuser tout selecteur maison qui reunit des jetons de deux ecrans que le serveur ne rend jamais ensemble, et fermer ainsi le canal de feuille de la condition C4 | s08 | 2026-08-11 | Accepte |
 | [ADR-0032](ADR-0032-deux-items-d-un-meme-paquet-ne-presentent-jamais-le-meme-ecran.md) | Refuser que deux items d'un meme paquet fini presentent le meme ecran, et fermer ainsi le trou de morsure d'ADR-0023 | s09 | 2026-08-12 | Accepte |
+| [ADR-0034](ADR-0034-un-corpus-d-ecrans-exerce-les-deux-verdicts.md) | Exiger que tout corpus d'ecrans exerce les deux verdicts, et lire leurs marqueurs dans le gabarit plutot que dans le test | s10 | 2026-08-12 | Accepte |
 
 ## Amendements
 
@@ -353,3 +354,17 @@ troisieme avait nommee sans la fermer :
     est un defaut pire que celui qu'elle corrige (deriver l'`ItemId` du contenu ferait disparaitre un
     item **en silence** dans `ListContentSource`). Ce n'est pas une regle ArchUnit, le compte reste a
     28 avec sa methode.
+31. **ADR-0034** ne corrige aucune clause : il corrige un **corpus**, et c'est pour cela qu'il vaut
+    d'etre relu. `ADR-0020` et `ADR-0027` derivent leur perimetre par route, obligation 1 d'`ADR-0013`
+    satisfaite, et `POST /parties/{jeuId}/coups` y figurait ; mais cette route rend **deux etats** et
+    les deux corpus n'en jouaient qu'un - les deux coups qu'ils envoient sont les bonnes reponses des
+    deux items du jeu de test. Sept clauses ne voyaient donc jamais l'ecran d'une reponse fausse.
+    Mesure des deux cotes du meme octet de production : un paragraphe vide ajoute sur la seule branche
+    fausse passait **vert sur 13 tests** et rend maintenant un rouge qui nomme l'ecran. Il apporte
+    trois choses au-dela de son sujet : la variante de defaut que je n'avais pas nommee en huit ADR -
+    **un perimetre derive de la bonne source peut rester aveugle a une dimension entiere** ; une
+    clause de refus d'ecriture qui va contre l'usage (les deux marqueurs sont lus dans le gabarit, et
+    la lecture echoue plutot que de rendre une liste vide, sans quoi la clause serait verte a vide) ;
+    et le fait que `LesGardeFousSontMisALEpreuveTest` a attrape **son propre auteur** en train
+    d'ajouter une lecture de production sans jeu fautif, dans le lot ou il reprochait a deux corpus
+    d'etre aveugles. Ce n'est pas une regle ArchUnit, le compte reste a 28 avec sa methode.
