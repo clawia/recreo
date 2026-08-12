@@ -339,6 +339,99 @@ ressemble a un manche, qu'il soit lisible a 360 px, ou qu'un enfant comprenne qu
 pas"*). Sur ce point je suis le garde-fou, et je le suis en regardant une capture. Je m'engage a
 rejuger sur capture avant tout Done, et non a redemander un dessin indefiniment.
 
+#### 2. Question 2 - les 2,0 px sont un PLANCHER, et le choix qu'on me presente est un faux dilemme
+
+**Reponse en une phrase : c'est un plancher, et je n'ai pas a en decider aujourd'hui parce que je
+l'ai deja ecrit comme tel.**
+
+##### 2.a Pourquoi c'est un plancher, et ce n'est pas mon avis d'aujourd'hui
+
+`theo-archi` pose la bonne question et il a raison de ne pas la trancher a ma place. Mais la reponse ne
+demande pas un arbitrage neuf : elle est ecrite dans ma **condition 4 du 2026-08-11**, mot pour mot -
+
+> **Condition 4 - air strictement positif et au moins 2,0 px sur les 100 propositions.**
+
+"Au moins 2,0 px" est la formule d'un plancher, pas d'un constat. Et je l'ai confirmee le meme jour, au
+quatrieme audit, en refusant de la relever quand la mesure est tombee plus haut : *"Ma condition 4
+exigeait 'au moins 2,0 px', pas 2,87 : elle est tenue, et je le dis avant qu'on me le demande."* Cette
+phrase-la est la preuve que le 2,86 px n'a jamais ete une barre. **Le plancher est 2,0 px ; les 2,86 px
+sont l'etat courant au-dessus du plancher.** Je ne releve pas le plancher a 2,86 aujourd'hui - ce serait
+deplacer mes poteaux le jour ou une equipe vient s'appuyer dessus - et je ne l'abaisse pas a zero, ce
+qui serait le supprimer.
+
+**La lecture "constat" est un plancher a 0 px, et 0 px n'est pas une marge.** Sous cette lecture, la
+marge de `mangeons` tombe a **0,00 px exactement** : les glyphes affleurent le bord de leur boite. Je
+l'ai rendu et regarde - c'est ma variante B, bordure droite a 1,216 rem, colonne mesuree a 146,50 px,
+air **0,12 px**. Le mot ne touche pas encore la paroi du meuble, mais il touche le bord de son bouton
+sur toute sa hauteur. Trois raisons de refuser, dont une seule suffirait :
+
+1. **J'ai refuse `-2,02 px` par ecrit le 2026-08-11**, et la seule chose qui separe `0,00` de `-2,02`
+   est le sens de l'arrondi de la prochaine police de repli. Un mot a `0,00 px` est un mot qui deborde
+   sur le premier poste ou une police manque.
+2. **Un mot colle au bord de son cadre est plus dur a lire**, et c'est vrai pour n'importe quel
+   lecteur ; pour un enfant de CM1 qui doit comparer quatre formes verbales voisines, l'air autour du
+   mot est ce qui fait qu'on voit ou le mot commence et ou il finit. Ma definition de plancher de
+   colonne demandait **20 px** de rembourrage ; j'ai deja concede que le confort reel est de 2,86 px
+   sur ce mot, et j'ai ecrit le 2026-08-11 que **"c'est un inconfort present"**. On ne finance pas un
+   ornement avec le dernier pixel d'un inconfort deja enregistre.
+3. **Le budget aurait ete depense pour rien.** Sous la lecture "constat", ce qu'on achete avec les
+   2,86 px de `mangeons` est le droit de garder une boule de 18 px **dans la paroi** - c'est-a-dire
+   exactement la silhouette que je refuse en question 1 comme se lisant "epingle" ou "curseur".
+
+##### 2.b Les trois lectures, remesurees par moi sur un rendu et non recopiees
+
+Rendu a 360 px, quatre propositions de "Le bon verbe" en 2x2, item "Vous ___ du chocolat." dont
+`mangeons` est un distracteur :
+
+| Variante rendue | Bordure | Colonne mesuree | Air de `mangeons` par cote | Verdict |
+|---|---|---|---|---|
+| etat livre, `bd9a8f0` | 8 px / 8 px | 152,00 px | **+2,87 px** (2,86 retenu) | l'etat courant, ma condition 4 tenue |
+| **`ines-design` telle qu'ecrite** | 20 px / 20 px | **140,00 px** | **-3,13 px** | **REFUSE. Le mot ressort de sa boite, davantage que les -2,02 px que j'ai refuses le 2026-08-11** |
+| lecture "constat" (`theo-archi`) | 8 px / 19,46 px | 146,50 px | **+0,12 px** (0,00 a la valeur exacte) | **REFUSE**, section 2.a |
+| lecture "plancher" (`theo-archi`) | 8 px / 11,46 px | 150,50 px | **+2,12 px** | **le plancher est tenu**, et c'est la seule des trois qui le tient |
+
+**Le chiffre le plus important de ce tableau est le `-3,13 px`, et personne ne l'avait mesure.**
+`ines-design` a compare sa colonne de 140 px a mon **tableau de planchers de colonne** du 2026-08-11,
+ou "Le bon verbe" est explicitement marque "hors tableau" - elle a donc conclu, correctement au regard
+de ce tableau-la, qu'il n'y avait rien a verifier. Mais ce paquet n'est pas gouverne par ce tableau : il
+est gouverne par ma **condition 4**, qui porte sur les 100 propositions de "Le bon verbe" et qui est en
+vigueur depuis le quatrieme audit. **Je ne le retiens pas contre elle** : le fait que mes exigences sur
+ce paquet vivent dans une autre fiche que mon tableau de planchers est un defaut de ma propre tenue de
+dossier, et c'est la raison pour laquelle je recopie F5 dans
+`FICHE-bandit-manchot-conjugaison-present-cm1.md` a la fin de ce bloc.
+
+##### 2.c Ce qui rend la question moins lourde qu'elle n'est posee : un troisieme payeur
+
+`theo-archi` m'ecrit que "le levier ne peut vivre que dans une bordure elargie". **Ce n'est pas exact,
+et l'erreur vient de ma phrase, pas de la sienne** (0 bis, point D). Le levier est un **ornement**, et
+j'ai autorise le rembourrage lateral de `.container` pour de la decoration des le 2026-08-11. Un
+ornement accroche a l'exterieur du flanc ne prend rien a personne.
+
+**Je l'ai rendu plutot que de le supposer.** Trois variantes, levier suspendu dans le rembourrage droit
+de `.container`, bordure du cabinet **inchangee a 8 px des deux cotes** :
+
+| Ce que je mesure sur le rendu | Valeur |
+|---|---|
+| contour du cabinet | `x = 12,00 .. 348,00`, **336,00 px, inchange sur ses quatre cotes** (C1 intacte) |
+| colonne de "Le bon verbe" | **152,00 px, inchangee** |
+| air de `mangeons` | **+2,87 px, inchange** |
+| levier | `x = 338,00 .. 358,00`, boule de **18 px**, entierement hors de la paroi, 2 px avant le bord de l'ecran |
+| cout sur une colonne, un `gap`, un rembourrage de bouton | **0 px** |
+
+**Sous cette route, la question 2 ne se pose plus et la question 3 devient inutile** : la boule garde
+ses 18 px, `mangeons` garde ses 2,86 px, et aucun contenu n'est touche. Le levier cesse meme d'etre le
+poste le plus cher du lot d'`ines-design`, ce qui change l'ordre de ce qui tombe si le sprint deborde.
+
+**Ce que je ne fais pas, et je le borne explicitement.** Je ne choisis pas la route technique et je
+n'ecris pas de CSS : `theo-archi` a lui-meme note que l'argument du "payeur unique" etait un
+raisonnement sur le rendu et non un fait garde, et c'est a lui de dire ce que cette route coute en
+garde-fous - `.cabinet-levier` reste un frere de `.propositions`, sa classe n'est ancetre d'aucun
+pressable, il ne declare aucun `clip-path` ni aucun `overflow`, mais **c'est lui qui le certifie, pas
+moi**. Ce que je certifie est ce que j'ai mesure : cette route existe, elle rend, et elle ne coute rien
+a ce que l'enfant lit. Mon verdict ne prescrit aucune route : il refuse toute route qui descend une
+colonne de "Le bon verbe" sous **150,27 px** (`146,27 + 2 x 2,00`), et il en existe au moins une qui n'y
+touche pas.
+
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mes deux reserves ouvertes sont
   levees** : la reserve unique de s07 sur la fin du mouvement, et la reserve 6 de "Le bon son" sur la
   distinction de l'explication. Deux reserves nouvelles et datees sont ouvertes en section 8. Aucun
