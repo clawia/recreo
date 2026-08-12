@@ -1,0 +1,12 @@
+schema: 1
+id: paquet-combinatoire
+type: additions-bornees
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Paquet combinatoire d'ADR-0032, hors perimetre, jamais servi a un enfant"
+parametres:
+  sommeMaximale: 10
+  nombreDePropositions: 3
+  indice: "Compte sur tes doigts."

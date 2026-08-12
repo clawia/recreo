@@ -1,0 +1,21 @@
+schema: 1
+id: paquet-de-comparaisons
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Paquet licite d'ADR-0032, jamais servi a un enfant"
+items:
+  - enonce: "Quel nombre est le plus grand ?"
+    bonneReponse: "47"
+    distracteurs: ["38", "29"]
+    indice: "Regarde d'abord le chiffre des dizaines."
+  - enonce: "Quel nombre est le plus grand ?"
+    bonneReponse: "62"
+    distracteurs: ["58", "35"]
+    indice: "Regarde d'abord le chiffre des dizaines."
+  - enonce: "Quel nombre est le plus petit ?"
+    bonneReponse: "24"
+    distracteurs: ["42", "31"]
+    indice: "Regarde d'abord le chiffre des dizaines."

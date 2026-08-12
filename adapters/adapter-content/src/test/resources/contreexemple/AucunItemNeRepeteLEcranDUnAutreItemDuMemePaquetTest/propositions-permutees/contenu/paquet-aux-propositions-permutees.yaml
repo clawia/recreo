@@ -1,0 +1,21 @@
+schema: 1
+id: paquet-aux-propositions-permutees
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Paquet fautif d'ADR-0032, jamais servi a un enfant"
+items:
+  - enonce: "7 + ___ = 10"
+    bonneReponse: "3"
+    distracteurs: ["2", "4"]
+    indice: "Compte de 7 jusqu'a 10."
+  - enonce: "7 + ___ = 10"
+    bonneReponse: "3"
+    distracteurs: ["4", "2"]
+    indice: "Compte de 7 jusqu'a 10."
+  - enonce: "6 + ___ = 10"
+    bonneReponse: "4"
+    distracteurs: ["3", "5"]
+    indice: "Compte de 6 jusqu'a 10."

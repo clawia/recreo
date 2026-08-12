@@ -35,6 +35,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0029](ADR-0029-toute-colonne-que-le-contenu-peut-produire-porte-son-decalage.md) | Faire porter un decalage declare a toute colonne que le contenu peut produire, et laisser la borne de duree a la clause qui la garde deja | s08 | 2026-08-11 | Accepte |
 | [ADR-0030](ADR-0030-un-habillage-entoure-sans-rogner-et-toute-animation-finit-sur-son-etat-de-repos.md) | Interdire a un habillage de rogner un ancetre de bouton et d'animer autre chose que ce qu'on presse, et exiger que la derniere image d'une animation soit l'etat de repos | s08 | 2026-08-11 | Accepte |
 | [ADR-0031](ADR-0031-un-ecran-ne-gouverne-jamais-l-apparence-d-un-autre.md) | Refuser tout selecteur maison qui reunit des jetons de deux ecrans que le serveur ne rend jamais ensemble, et fermer ainsi le canal de feuille de la condition C4 | s08 | 2026-08-11 | Accepte |
+| [ADR-0032](ADR-0032-deux-items-d-un-meme-paquet-ne-presentent-jamais-le-meme-ecran.md) | Refuser que deux items d'un meme paquet fini presentent le meme ecran, et fermer ainsi le trou de morsure d'ADR-0023 | s09 | 2026-08-12 | Accepte |
 
 ## Amendements
 
@@ -337,3 +338,18 @@ troisieme avait nommee sans la fermer :
     assume - le verdict peut encore colorer la coquille permanente, et le canal du gabarit reste
     ouvert, donc la dette C4 est dite **reduite et non fermee** ; et une clause de plus qui n'est
     **pas** une regle ArchUnit, le compte restant a 28 avec sa methode.
+30. **ADR-0032** ne ferme aucun defaut livre : il ferme un **trou de morsure dans une regle deja
+    acceptee**, et c'est pour cela qu'il vaut d'etre relu. `ADR-0023` exige plus d'items que de
+    manches et son garde-fou compte des `ItemId` ; ces identifiants sont derives de la **position**
+    dans le YAML, donc deux items rigoureusement identiques comptent pour deux et un paquet trop court
+    se verdit par des copies. La pression n'est pas imaginee, elle est calculee : les quatre entrees
+    de catalogue declarent dix manches, et "Complements a 10" n'admet que onze items canoniques, neuf
+    sans les cas degeneres. Il apporte trois choses au-dela de son sujet : un critere **volontairement
+    plus faible que le plus evident** (l'ecran, pas l'enonce) parce que le critere fort aurait refuse
+    une forme legitime de la competence de comparaison - et la verification que le critere fort
+    n'aurait rien attrape de plus sur les 397 items reels du depot ; une **exclusion de perimetre
+    prouvee necessaire par mutation** plutot que concedee (juger les paquets combinatoires rend la
+    clause rouge sur le paquet d'additions reellement servi) ; et une alternative ecartee dont le motif
+    est un defaut pire que celui qu'elle corrige (deriver l'`ItemId` du contenu ferait disparaitre un
+    item **en silence** dans `ListContentSource`). Ce n'est pas une regle ArchUnit, le compte reste a
+    28 avec sa methode.
