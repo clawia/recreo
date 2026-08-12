@@ -2184,6 +2184,179 @@ jour.
   et l'implementation sont deja engages au moment ou j'ecris cette story ; leur affectation
   nominative reste une decision de capacite de `sofia-sm`, pas la mienne.
 
+## Sprint 9 - Quatre lignes de mathematiques CP en pur contenu, sans aucun travail de rendu
+
+**Contexte et decision de perimetre** : l'utilisatrice a joue l'increment du sprint 8 et tranche
+deux choses - le sprint 9 attaque la couverture de mathematiques CP, domaine "Nombres et calculs" ;
+et elle n'est pas satisfaite du rendu CSS actuel, donc aucun travail de rendu ce sprint, ni mesure
+ni garde-fou CSS neuf ni arbitrage visuel sur des pixels.
+`DEC-0019-perimetre-sprint-9-quatre-lignes-textuelles-de-mathematiques-cp-denombrement-et-monnaie-differes.md`
+tranche que quatre des six lignes encore `non couvert` de ce domaine entrent au sprint, toutes
+exprimables dans l'enveloppe `type: question` deja existante (`ADR-0007`) sans une ligne de Java, de
+gabarit ni de feuille de style neuve : soustractions, complements a 10, comparaison de deux nombres
+par un signe, et un probleme simple d'addition ou de soustraction. Les deux lignes restantes
+(denombrement, monnaie) sont differees : chacune nomme un verbe ("denombrer", "reconnaitre") qui
+designe une reconnaissance visuelle qu'aucun texte ne peut porter, et les couvrir sur leur seul
+volet textuel reproduirait le motif de couverture partielle deja sanctionne a plusieurs reprises sur
+ce produit (voir `DEC-0019` pour le detail et pour la revue de `contenu-repris/quiz/cp-monnaie.yml`).
+Le "ranger" de la ligne comparaison est differe pour un motif distinct, de risque de largeur non
+verifie plutot que d'impossibilite textuelle - voir `DEC-0019`.
+
+Chaque story ouvre une fiche de conformite sous `squad/conformite/`, remplie a l'exception du bloc
+de validation reserve a `nadia-prof` : le contenu de ce sprint repasse devant elle comme tout
+contenu neuf, le niveau scolaire et la qualite pedagogique restant entierement de son ressort.
+
+### S9-1 - S'entrainer aux petites soustractions en jouant
+
+- **Besoin** : en tant qu'eleve de CP, je veux m'entrainer a calculer une soustraction dont le
+  resultat reste petit, afin de savoir combien il en reste quand j'en enleve quelques-unes.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Nombres et calculs",
+  "Calcul mental - soustractions dans la limite de 10" (`squad/programme/mathematiques/
+  competences-cp.md`).
+- **Criteres d'acceptation** :
+  - Etant donne le paquet de contenu de ce jeu, quand on lit chaque item, alors son enonce est une
+    soustraction ecrite en chiffres (par exemple "9 - 4 = ?") dont le premier terme, le second
+    terme et le resultat sont chacun un nombre entier compris entre 0 et 10 inclus, et le second
+    terme n'est jamais superieur au premier (aucun resultat negatif).
+  - Etant donne l'ensemble des items, quand on releve le resultat de chacun, alors chaque valeur
+    entiere de 0 a 10 apparait au moins une fois parmi les resultats - aucune borne de l'intervalle
+    n'est absente, a la difference du defaut deja corrige sur les additions par `DEC-0007`.
+  - Etant donne chaque item, quand on compte ses propositions, alors il y en a exactement trois :
+    la bonne reponse et deux distracteurs numeriques, chacun different de la bonne reponse et
+    compris dans le meme intervalle 0-10.
+  - Etant donne les distracteurs de chaque item, quand on les examine, alors au moins un des deux
+    correspond a une erreur frequente identifiable (par exemple le resultat de l'addition des deux
+    termes plutot que de leur soustraction, ou le resultat obtenu en inversant l'ordre des termes) :
+    un distracteur n'est jamais un nombre choisi sans rapport avec l'item.
+  - Etant donne le paquet complet, quand on compte ses items, alors il en compte au moins 20, pour
+    eviter le defaut deja releve sur "Le bon son" (trop peu d'items pour dix manches).
+  - Etant donne chaque item, quand on verifie qu'il porte un indice (`indice`), alors ce champ est
+    rempli et non vide, comme l'exige la mecanique bandit manchot pour tout paquet du produit
+    (`ADR-0016`).
+  - Etant donne le paquet, quand on le charge au demarrage de l'application, alors il valide le
+    schema `type: question` d'`ADR-0007` : un fichier YAML et une ligne de catalogue, zero ligne de
+    Java, zero gabarit ni feuille de style neuve.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : l'exactitude et la clarte de chaque enonce et de chaque indice pour un enfant de
+    CP, la plausibilite des distracteurs, et si ce contenu entraine reellement le calcul mental
+    plutot qu'un exercice de lecture.
+- **Lien decision** :
+  `DEC-0019-perimetre-sprint-9-quatre-lignes-textuelles-de-mathematiques-cp-denombrement-et-monnaie-differes.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
+  requis avant affectation, comme pour toute story neuve).
+
+### S9-2 - Trouver le complement a 10
+
+- **Besoin** : en tant qu'eleve de CP, je veux trouver combien il manque pour arriver a 10, afin de
+  construire des reperes solides sur les nombres qui vont ensemble jusqu'a 10.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Nombres et calculs",
+  "Complements a 10" (`squad/programme/mathematiques/competences-cp.md`).
+- **Criteres d'acceptation** :
+  - Etant donne le paquet, quand on lit chaque item, alors son enonce demande le complement a 10
+    d'un nombre entier compris entre 0 et 10 inclus (par exemple "Combien pour arriver a 10, en
+    partant de 6 ?"), et la bonne reponse est l'entier qui, ajoute au nombre de l'enonce, fait
+    exactement 10.
+  - Etant donne l'ensemble des items, quand on releve le nombre de depart de chacun, alors chaque
+    valeur entiere de 0 a 10 apparait au moins une fois - couverture complete de la table des
+    complements a 10, pas seulement ses valeurs les plus faciles (5, 9).
+  - Etant donne chaque item, quand on compte ses propositions, alors il y en a exactement trois :
+    la bonne reponse et deux distracteurs numeriques distincts, dans l'intervalle 0-10.
+  - Etant donne les distracteurs de chaque item, quand on les examine, alors au moins un des deux
+    correspond a une erreur frequente identifiable (par exemple le nombre de depart lui-meme, ou le
+    complement a 9 plutot qu'a 10).
+  - Etant donne le paquet complet, quand on compte ses items, alors il en compte au moins 20.
+  - Etant donne chaque item, quand on verifie qu'il porte un indice, alors ce champ est rempli et
+    non vide (`ADR-0016`).
+  - Etant donne le paquet, quand on le charge au demarrage de l'application, alors il valide le
+    schema `type: question` d'`ADR-0007`, zero ligne de Java, zero gabarit ni feuille de style
+    neuve.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : idem S9-1.
+- **Lien decision** :
+  `DEC-0019-perimetre-sprint-9-quatre-lignes-textuelles-de-mathematiques-cp-denombrement-et-monnaie-differes.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
+  requis avant affectation).
+
+### S9-3 - Comparer deux nombres avec les signes <, > et =
+
+- **Besoin** : en tant qu'eleve de CP, je veux dire si un nombre est plus grand, plus petit ou egal
+  a un autre, afin de savoir lire et utiliser les signes `<`, `>` et `=` entre deux nombres jusqu'a
+  100.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Nombres et calculs",
+  "Comparer et ranger des nombres jusqu'a 100 (`<`, `>`, `=`)" (`squad/programme/mathematiques/
+  competences-cp.md`). **Story limitee explicitement a la comparaison de deux nombres par un
+  signe** : le "ranger" de cette competence (ordonner une suite de trois nombres ou plus) n'entre
+  pas dans son perimetre, differe par `DEC-0019` pour un motif de risque de largeur non verifie,
+  distinct du motif d'exclusion visuelle des lignes denombrement et monnaie.
+- **Criteres d'acceptation** :
+  - Etant donne le paquet, quand on lit chaque item, alors son enonce presente deux nombres entiers
+    distincts compris entre 0 et 100 inclus, separes par un espace a completer (par exemple
+    "38 ___ 52"), et les trois propositions possibles sont toujours exactement les trois signes
+    "<", ">", "=" - jamais un nombre en proposition.
+  - Etant donne l'ensemble des items, quand on releve le signe correct de chacun, alors chacun des
+    trois signes est la bonne reponse d'au moins un tiers des items - repartition equilibree entre
+    `<`, `>` et `=`, pour eviter qu'un enfant reussisse en devinant toujours le meme signe.
+  - Etant donne les items dont la bonne reponse est "=", quand on les compte, alors ils
+    representent au moins 20 % des items : l'egalite entre deux ecritures d'un meme nombre doit
+    etre reellement travaillee, pas seulement presente comme un cas limite anecdotique.
+  - Etant donne les paires de nombres des items dont la bonne reponse est "<" ou ">", quand on
+    releve l'ecart entre les deux nombres, alors cet ecart n'est pas systematiquement large : au
+    moins un quart de ces items oppose deux nombres separes de 10 ou moins, pour eviter que la
+    comparaison se reduise a "le nombre le plus long gagne" sans lire les chiffres.
+  - Etant donne le paquet complet, quand on compte ses items, alors il en compte au moins 20.
+  - Etant donne chaque item, quand on verifie qu'il porte un indice, alors ce champ est rempli et
+    non vide (`ADR-0016`).
+  - Etant donne le paquet, quand on le charge au demarrage de l'application, alors il valide le
+    schema `type: question` d'`ADR-0007`, zero ligne de Java, zero gabarit ni feuille de style
+    neuve - les propositions sont des signes a un seul caractere, largeur triviale au regard des
+    planchers de colonne deja mesures sur le catalogue.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : idem S9-1.
+- **Lien decision** :
+  `DEC-0019-perimetre-sprint-9-quatre-lignes-textuelles-de-mathematiques-cp-denombrement-et-monnaie-differes.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
+  requis avant affectation).
+
+### S9-4 - Resoudre un petit probleme d'addition ou de soustraction
+
+- **Besoin** : en tant qu'eleve de CP, je veux lire une petite histoire avec des nombres et trouver
+  la reponse, afin de savoir quand additionner et quand soustraire dans une situation de tous les
+  jours.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Nombres et calculs",
+  "Resoudre des problemes simples d'addition/soustraction en situation (1 etape)"
+  (`squad/programme/mathematiques/competences-cp.md`).
+- **Criteres d'acceptation** :
+  - Etant donne le paquet, quand on lit chaque item, alors son enonce decrit une situation concrete
+    en une ou deux phrases, sans notation mathematique explicite (pas de signe "+" ni "-" dans
+    l'enonce), qui se resout par une seule operation d'addition ou de soustraction, et la bonne
+    reponse est le nombre entier resultat de cette operation.
+  - Etant donne l'ensemble des items, quand on compte ceux qui se resolvent par une addition et
+    ceux qui se resolvent par une soustraction, alors chaque categorie represente au moins un tiers
+    des items - les deux operations sont reellement melangees, l'enfant doit choisir laquelle
+    appliquer, pas seulement l'executer.
+  - Etant donne chaque enonce, quand on verifie son contexte, alors il ne fait reference a aucune
+    piece, aucun billet ni aucune valeur en euros : perimetre distinct de la ligne "monnaie",
+    differee par `DEC-0019`. Un enonce sur des billes, des bonbons, des images ou des animaux
+    convient ; un enonce sur l'argent n'entre pas dans cette story.
+  - Etant donne chaque item, quand on compte ses propositions, alors il y en a exactement trois,
+    toutes numeriques, dont deux distracteurs correspondant a une erreur de raisonnement
+    identifiable (par exemple le resultat de l'operation inverse de celle attendue par la situation,
+    ou un des deux nombres de l'enonce recopie sans calcul).
+  - Etant donne le paquet complet, quand on compte ses items, alors il en compte au moins 20.
+  - Etant donne chaque item, quand on verifie qu'il porte un indice, alors ce champ est rempli et
+    non vide (`ADR-0016`).
+  - Etant donne le paquet, quand on le charge au demarrage de l'application, alors il valide le
+    schema `type: question` d'`ADR-0007`, zero ligne de Java, zero gabarit ni feuille de style
+    neuve.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : si la situation racontee est comprehensible et vraisemblable pour un enfant de
+    CP, et si devoir choisir l'operation constitue reellement ce que le referentiel nomme "resoudre
+    un probleme" plutot qu'un calcul mental deguise - en plus des points communs a S9-1.
+- **Lien decision** :
+  `DEC-0019-perimetre-sprint-9-quatre-lignes-textuelles-de-mathematiques-cp-denombrement-et-monnaie-differes.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
+  requis avant affectation).
+
 ## Backlog - sprints suivants (intentions non detaillees)
 
 Ces intentions ne sont pas des stories pretes a developper. Elles seront detaillees sprint par
@@ -2314,9 +2487,14 @@ livre ne reproduit pas cette mesure, le report du jeu hors du sprint redevient l
   enonces les plus longs (jugement pedagogique, `nadia-prof`) ou traiter la hauteur de l'ecran par
   la mise en page (`theo-archi`, `ines-design`). Non affecte a un sprint ; a instruire quand
   `sofia-sm` juge la capacite disponible.
-- La ligne mathematiques CP est desormais `couvert-valide` (2026-08-06) : elargir le contenu
-  "additions CP" a la borne jusqu'a 20, et couvrir les soustractions et les complements a 10 (meme
-  mecanique, meme niveau) pour clore completement cette ligne de la matrice.
+- La ligne mathematiques CP (calcul mental additions) est `couvert-valide` (2026-08-06) sur la
+  borne jusqu'a 10 uniquement : elargir son contenu a la borne jusqu'a 20 (meme mecanique, meme
+  jeu) reste a instruire. **Correction du 2026-08-12** : cette puce conflait a tort trois lignes
+  distinctes de la matrice (additions, soustractions, complements a 10) comme si elargir la
+  premiere suffisait a clore les deux autres - ce n'est pas le cas, chacune est sa propre ligne.
+  Les soustractions et les complements a 10 sont desormais des stories a part entiere, S9-1 et
+  S9-2, `DEC-0019-perimetre-sprint-9-quatre-lignes-textuelles-de-mathematiques-cp-denombrement-et-
+  monnaie-differes.md`.
 - `textes-trous/cm1-conjugaison.yml` ouvre la ligne conjugaison CM1 au sprint 6 (S6-3,
   `DEC-0013-perimetre-sprint-6.md`), sur le present de l'indicatif uniquement. `textes-trous/
   cm1-accords.yml` (partie de "accorder en genre et en nombre dans le groupe nominal", l'accord de
@@ -2490,3 +2668,29 @@ livre ne reproduit pas cette mesure, le report du jeu hors du sprint redevient l
     paquet (aucun test ne mesure une largeur de glyphe rendu, `ADR-0025`), et qu'a 2,86 px de marge
     restante, ce defaut reviendra des qu'une forme est ajoutee au paquet. A connaitre pour toute
     story future qui etend ce contenu, sans qu'aucune story ne soit ouverte ici pour ce seul motif.
+- **Le rendu CSS actuel est juge insatisfaisant par l'utilisatrice (constat du 2026-08-11, a
+  l'ouverture du sprint 9).** Elle ne veut plus de cycle de design pour l'instant : ni nouvelle
+  mesure de rendu, ni nouveau garde-fou CSS, ni arbitrage visuel d'`ines-design` ou de `nadia-prof`
+  sur des pixels - c'est le motif du sprint 9 tout en contenu (`DEC-0019`). Je n'ouvre ni story ni
+  cadrage de solution ici : ce sera une decision separee, quand elle decidera de rouvrir un chantier
+  visuel. Ce point est inscrit pour que la squad ne re-instruise pas la question ni ne reprenne un
+  travail de rendu de sa propre initiative en attendant.
+- **Trois lignes de mathematiques CP restent hors perimetre du sprint 9, differees par `DEC-0019`
+  (perimetre-sprint-9-quatre-lignes-textuelles-de-mathematiques-cp-denombrement-et-monnaie-
+  differes.md) :**
+  - **Denombrer, lire, ecrire et decomposer les nombres jusqu'a 100** - "denombrer" designe compter
+    une quantite presentee, un verbe qu'aucun texte ne peut porter ; couvrir seulement "lire,
+    ecrire, decomposer" reproduirait le motif de couverture partielle deja sanctionne sur ce
+    produit. A instruire, avec un support visuel (objets a compter), quand le gel de rendu sera
+    leve.
+  - **Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets** -
+    "reconnaitre" designe l'apparence d'une piece ou d'un billet, egalement hors de portee du texte
+    seul. `contenu-repris/quiz/cp-monnaie.yml` (huit questions, matiere premiere non cablee) ne
+    travaille que le volet "utiliser" en toutes lettres et jamais "reconnaitre" ; conserve comme
+    candidat pour une story future explicitement scopee sur "utiliser" seul, ou pour une story
+    complete une fois des visuels de pieces et billets a portee.
+  - **"Ranger" une suite de trois nombres ou plus, volet de la ligne comparaison** - exprimable
+    dans le schema existant sans code neuf, mais sur des propositions (des suites de nombres) plus
+    larges que celles deja mesurees sur le catalogue (`mangeons`, 156 px) ; a instruire dès qu'une
+    mesure de largeur (`outils/mesurer-rendu.sh`, outil existant) confirme que ces suites tiennent
+    dans la colonne actuelle, ou dès la levee du gel de rendu.
