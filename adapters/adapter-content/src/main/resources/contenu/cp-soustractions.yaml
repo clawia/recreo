@@ -10,96 +10,96 @@ items:
   - enonce: "7 - 7 = ?"
     bonneReponse: "0"
     distracteurs: ["7", "1"]
-    indice: "Leve 7 doigts, puis baisse-en 7 un par un : il n'en reste plus aucun."
+    indice: "Lève 7 doigts, puis baisses-en 7 un par un : il n'en reste plus aucun."
   - enonce: "5 - 5 = ?"
     bonneReponse: "0"
     distracteurs: ["5", "1"]
-    indice: "Leve 5 doigts, puis baisse-en 5 un par un : il n'en reste plus aucun."
+    indice: "Lève 5 doigts, puis baisses-en 5 un par un : il n'en reste plus aucun."
   - enonce: "3 - 2 = ?"
     bonneReponse: "1"
     distracteurs: ["5", "2"]
-    indice: "Leve 3 doigts, puis baisse-en 2 un par un."
+    indice: "Lève 3 doigts, puis baisses-en 2 un par un."
   - enonce: "6 - 5 = ?"
     bonneReponse: "1"
     distracteurs: ["6", "2"]
-    indice: "Leve 6 doigts, puis baisse-en 5 un par un."
+    indice: "Lève 6 doigts, puis baisses-en 5 un par un."
   - enonce: "5 - 3 = ?"
     bonneReponse: "2"
     distracteurs: ["8", "3"]
-    indice: "Leve 5 doigts, puis baisse-en 3 un par un."
+    indice: "Lève 5 doigts, puis baisses-en 3 un par un."
   - enonce: "9 - 7 = ?"
     bonneReponse: "2"
     distracteurs: ["9", "3"]
-    indice: "Leve 9 doigts, puis baisse-en 7 un par un."
+    indice: "Lève 9 doigts, puis baisses-en 7 un par un."
   - enonce: "7 - 4 = ?"
     bonneReponse: "3"
     distracteurs: ["7", "2"]
-    indice: "Leve 7 doigts, puis baisse-en 4 un par un."
+    indice: "Lève 7 doigts, puis baisses-en 4 un par un."
   - enonce: "8 - 5 = ?"
     bonneReponse: "3"
     distracteurs: ["5", "4"]
-    indice: "Leve 8 doigts, puis baisse-en 5 un par un."
+    indice: "Lève 8 doigts, puis baisses-en 5 un par un."
   - enonce: "6 - 2 = ?"
     bonneReponse: "4"
     distracteurs: ["8", "2"]
-    indice: "Leve 6 doigts, puis baisse-en 2 un par un."
+    indice: "Lève 6 doigts, puis baisses-en 2 un par un."
   - enonce: "9 - 5 = ?"
     bonneReponse: "4"
     distracteurs: ["9", "3"]
-    indice: "Leve 9 doigts, puis baisse-en 5 un par un."
+    indice: "Lève 9 doigts, puis baisses-en 5 un par un."
   - enonce: "8 - 3 = ?"
     bonneReponse: "5"
     distracteurs: ["8", "6"]
-    indice: "Leve 8 doigts, puis baisse-en 3 un par un."
+    indice: "Lève 8 doigts, puis baisses-en 3 un par un."
   - enonce: "9 - 4 = ?"
     bonneReponse: "5"
     distracteurs: ["4", "6"]
-    indice: "Leve 9 doigts, puis baisse-en 4 un par un."
+    indice: "Lève 9 doigts, puis baisses-en 4 un par un."
   - enonce: "9 - 3 = ?"
     bonneReponse: "6"
     distracteurs: ["9", "5"]
-    indice: "Leve 9 doigts, puis baisse-en 3 un par un."
+    indice: "Lève 9 doigts, puis baisses-en 3 un par un."
   - enonce: "10 - 4 = ?"
     bonneReponse: "6"
     distracteurs: ["4", "7"]
-    indice: "Leve 10 doigts, puis baisse-en 4 un par un."
+    indice: "Lève 10 doigts, puis baisses-en 4 un par un."
   - enonce: "10 - 3 = ?"
     bonneReponse: "7"
     distracteurs: ["10", "6"]
-    indice: "Leve 10 doigts, puis baisse-en 3 un par un."
+    indice: "Lève 10 doigts, puis baisses-en 3 un par un."
   - enonce: "9 - 2 = ?"
     bonneReponse: "7"
     distracteurs: ["2", "8"]
-    indice: "Leve 9 doigts, puis baisse-en 2 un par un."
+    indice: "Lève 9 doigts, puis baisses-en 2 un par un."
   - enonce: "10 - 2 = ?"
     bonneReponse: "8"
     distracteurs: ["10", "7"]
-    indice: "Leve 10 doigts, puis baisse-en 2 un par un."
+    indice: "Lève 10 doigts, puis baisses-en 2 un par un."
   - enonce: "9 - 1 = ?"
     bonneReponse: "8"
     distracteurs: ["10", "1"]
-    indice: "Leve 9 doigts, puis baisse-en 1 seul."
+    indice: "Lève 9 doigts, puis baisses-en 1 seul."
   - enonce: "10 - 1 = ?"
     bonneReponse: "9"
     distracteurs: ["1", "8"]
-    indice: "Leve 10 doigts, puis baisse-en 1 seul."
+    indice: "Lève 10 doigts, puis baisses-en 1 seul."
   - enonce: "10 - 0 = ?"
     bonneReponse: "10"
     distracteurs: ["0", "9"]
-    indice: "Leve 10 doigts, et n'en baisse aucun : ils restent tous leves."
+    indice: "Lève 10 doigts, et n'en baisse aucun : ils restent tous levés."
   - enonce: "8 - 6 = ?"
     bonneReponse: "2"
     distracteurs: ["8", "3"]
-    indice: "Leve 8 doigts, puis baisse-en 6 un par un."
+    indice: "Lève 8 doigts, puis baisses-en 6 un par un."
   - enonce: "7 - 5 = ?"
     bonneReponse: "2"
     distracteurs: ["7", "1"]
-    indice: "Leve 7 doigts, puis baisse-en 5 un par un."
+    indice: "Lève 7 doigts, puis baisses-en 5 un par un."
   - enonce: "10 - 6 = ?"
     bonneReponse: "4"
     distracteurs: ["6", "5"]
-    indice: "Leve 10 doigts, puis baisse-en 6 un par un."
+    indice: "Lève 10 doigts, puis baisses-en 6 un par un."
   - enonce: "6 - 1 = ?"
     bonneReponse: "5"
     distracteurs: ["7", "1"]
-    indice: "Leve 6 doigts, puis baisse-en 1 seul."
+    indice: "Lève 6 doigts, puis baisses-en 1 seul."
