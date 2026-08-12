@@ -50,7 +50,7 @@ items:
   - enonce: "45 ___ 40"
     bonneReponse: ">"
     distracteurs: ["<", "="]
-    indice: "Les deux ont 4 dizaines : regarde les unités, 5 unités c'est plus que 0 unité."
+    indice: "Les deux ont 4 dizaines : regarde les unités, 5 unités, c'est plus que 0 unité."
   - enonce: "70 ___ 22"
     bonneReponse: ">"
     distracteurs: ["<", "="]
