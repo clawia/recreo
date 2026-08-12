@@ -68,9 +68,9 @@ Source : `squad/programme/mathematiques/competences-cp.md`.
 | mathematiques | CP | Nombres et calculs | Denombrer, lire, ecrire et decomposer les nombres jusqu'a 100 | - | - | non couvert |
 | mathematiques | CP | Nombres et calculs | Comparer et ranger des nombres jusqu'a 100 (<, >, =) | bandit-manchot-comparer-nombres-cp | bandit manchot | en cours |
 | mathematiques | CP | Nombres et calculs | Calcul mental - additions dans la limite de 10 (puis 20) | bandit-manchot-additions-cp | bandit manchot | couvert-valide |
-| mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | bandit-manchot-soustractions-cp | bandit manchot | en cours |
+| mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | bandit-manchot-soustractions-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp | bandit manchot | couvert-valide |
-| mathematiques | CP | Nombres et calculs | Resoudre des problemes simples d'addition/soustraction en situation (1 etape) | bandit-manchot-problemes-additifs-cp | bandit manchot | en cours |
+| mathematiques | CP | Nombres et calculs | Resoudre des problemes simples d'addition/soustraction en situation (1 etape) | bandit-manchot-problemes-additifs-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets | - | - | non couvert |
 | mathematiques | CP | Grandeurs et mesures | Comparer des longueurs, des masses, des contenances (sans instrument gradue) | - | - | non couvert |
 | mathematiques | CP | Grandeurs et mesures | Se reperer dans la journee, la semaine ; lire l'heure pleine sur une horloge | - | - | non couvert |
@@ -83,6 +83,18 @@ sur la seule comparaison de deux nombres par un signe (story S9-3, `docs/backlog
 "ranger" nomme par cette meme competence (ordonner une suite de trois nombres ou plus) reste hors
 du perimetre de ce jeu et ne suffit donc pas, a lui seul, a faire passer cette ligne en
 `couvert-valide` meme si "comparer" est valide par `nadia-prof`.
+
+**Etat au 2026-08-12, second audit** : `nadia-prof` leve son refus du 2026-08-12 sur
+`bandit-manchot-comparer-nombres-cp` (`squad/conformite/FICHE-bandit-manchot-comparer-nombres-cp.md`,
+verdict "second audit") et prononce **VALIDE SOUS RESERVE**, Done pedagogique **accorde sans
+restriction sur son perimetre**. **La ligne reste `en cours`** : ce n'etait deja pas une condition
+posee a l'audit, mais un perimetre pose a l'ouverture de la fiche, avant tout audit - "ranger" reste
+differe par `DEC-0019` et hors de ce que ce jeu couvre. Elle demande explicitement que cette note le
+dise, pour que la matrice ne perde pas une information que la fiche detient : **la moitie
+"comparer" de cette competence est desormais validee pedagogiquement ; seule la moitie "ranger"
+manque encore.** Aucun statut autre que `en cours` n'existe dans la nomenclature de cette matrice
+pour porter cette nuance ; elle est donc ecrite en toutes lettres ici plutot que par un statut
+invente.
 
 Note sur les lignes `en cours` (soustractions, complements a 10, problemes) : `DEC-0019` les ouvre
 au sprint 9 sur `docs/backlog/backlog.md`, stories S9-1, S9-2, S9-4, chacune sur un contenu neuf en
@@ -608,3 +620,49 @@ depuis s06) et 38 lignes `non couvert`, chiffre inchange. Les trois refus sont e
 correction sur la seule correction bornee que `nadia-prof` a ecrite dans chaque fiche ; leurs
 lignes ne passeront a `couvert-valide` que si `nadia-prof` rejoue l'increment corrige et prononce un
 verdict `VALIDE`.
+
+## Synthese apres les seconds verdicts du sprint 9 (2026-08-12)
+
+`nadia-prof` a rejoue les trois increments corriges des trois refus ci-dessus, sur les branches de
+correctif fusionnees le meme jour (`squad/conformite/FICHE-bandit-manchot-soustractions-cp.md`,
+`FICHE-bandit-manchot-problemes-additifs-cp.md`, `FICHE-bandit-manchot-comparer-nombres-cp.md`,
+sections "Verdict courant - second audit du 2026-08-12"). Audit non degrade et plus large que le
+premier : 60 parties completes par jeu, soit 1800 coups au total, tous joues volontairement faux
+pour forcer l'affichage de l'indice a chaque manche, donc la totalite des items et des indices des
+trois paquets lus a l'ecran et non au fichier.
+
+- **Mathematiques CP (soustractions)** obtient **`couvert-valide`** : le REFUSE du 2026-08-12 est
+  **leve**, `nadia-prof` prononce **VALIDE SOUS RESERVE**, Done pedagogique accorde. Sa barre
+  ecrite au premier audit (deux substitutions orthographiques dans `cp-soustractions.yaml`) est
+  tenue au mot, plus une troisieme correction trouvee par `marc-dev` et confirmee par elle
+  (`leves` -> `levés`). Cinquieme ligne `couvert-valide` du produit, troisieme en mathematiques CP.
+- **Mathematiques CP (resoudre un probleme simple d'addition/soustraction)** obtient
+  **`couvert-valide`** : le REFUSE du 2026-08-12 est **leve**, `nadia-prof` prononce **VALIDE SOUS
+  RESERVE**, Done pedagogique accorde, sur les deux enonces corriges exactement dans la forme
+  qu'elle avait ecrite dans son refus (le clown, le jardinier). **A lire avec la reserve `DEC-0021`
+  ouverte** : cette ligne dit que la competence est travaillee et validee, pas que le paquet est
+  sans reserve - la regularite de magnitude sur les additions (reserve 1 de son premier audit) reste
+  ouverte et differee hors sprint par `DEC-0021`. Sixieme ligne `couvert-valide` du produit,
+  quatrieme en mathematiques CP.
+- **Mathematiques CP (comparer deux nombres)** obtient un Done pedagogique **accorde** (**VALIDE
+  SOUS RESERVE**) sur l'indice corrige de l'item `56 ___ 60` (le mot "juste" retire). **La ligne
+  reste `en cours`** : ce n'est pas une consequence du verdict, c'est le perimetre pose a
+  l'ouverture de la fiche, avant tout audit - "ranger" reste hors de ce que ce jeu couvre et differe
+  par `DEC-0019`. Voir la note dediee sous le tableau mathematiques CP ci-dessus : la moitie
+  "comparer" de cette competence est desormais validee pedagogiquement, seule la moitie "ranger"
+  manque.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 |
+| mathematiques CM1 | 12 | 12 | 0 | 0 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 9 | 0 | 2 |
+| **Total** | **46** | **38** | **2** | **6** |
+
+Le produit compte desormais six lignes `couvert-valide` sur 46 (contre quatre a la cloture du
+premier audit de ce sprint), deux lignes `en cours` (comparer deux nombres, dont le perimetre
+partiel empeche de toute facon `couvert-valide` sur cet increment ; et francais CP, graphemes/
+phonemes, restee ouverte depuis s06) et 38 lignes `non couvert`, chiffre inchange : aucune ligne
+nouvelle n'est ouverte par ce second tour d'audit, le mouvement porte uniquement sur les trois
+lignes deja engagees ce sprint.
