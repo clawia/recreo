@@ -90,7 +90,19 @@
   Done **sous reserve**. **La ligne de matrice doit passer a `couvert-valide`** ; je ne l'edite pas.
 - **Note du 2026-08-11 sur le bullet "Ligne de matrice" ci-dessus** : il date du second audit et
   n'est plus l'etat courant. Il reste ecrit, non efface. L'etat courant est celui du quatrieme audit.
-- **Derniere mise a jour** : 2026-08-11
+- **Arbitrage prealable de mecanique du 2026-08-12** (`DEC-0023` point 6 : l'ecran intermediaire
+  disparait) : ecrit dans `FICHE-bandit-manchot-additions-cp.md`, bloc de validation, section
+  "Arbitrage prealable au developpement - la mecanique apres la disparition de l'ecran
+  intermediaire". **Il vaut pour ce jeu comme pour les huit du catalogue**, la mecanique etant
+  commune : conditions M1 a M13, dont **deux bloquantes** - M4 (le message d'erreur doit etre vu
+  sans defiler a 360 x 640) et la clause 1 de M13 (apres une reponse, le focus ne va jamais sur la
+  sortie, qui detruit la partie sans confirmation). Ce n'est pas un Done pedagogique, rien n'est
+  code.
+  **Ce jeu est vise nommement par deux points** : la **reserve A** du 2026-08-12 - ses **25 indices
+  sur 25** nomment la bonne reponse entre guillemets, manquement que je nomme comme le mien puisque
+  je les avais valides sans verifier ce point - et la condition **M2**, qui lui interdit d'afficher
+  son indice sur la question courante tant que ces textes ne sont pas reecrits.
+- **Derniere mise a jour** : 2026-08-12
 
 ## Competences visees
 

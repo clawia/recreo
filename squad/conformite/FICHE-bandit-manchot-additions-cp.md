@@ -73,7 +73,24 @@
   budget vertical de l'arbitrage prealable a ete mesure sur "Le bon son", que j'avais appele "le cas
   le plus charge du catalogue" alors qu'il ne l'est pas. Ce bloc vaut pour les quatre jeux du bandit
   manchot.
-- **Derniere mise a jour** : 2026-08-11
+  **Arbitrage prealable du 2026-08-12 - la mecanique apres la disparition de l'ecran intermediaire
+  (`DEC-0023` point 6).** Ce n'est pas un Done pedagogique et rien n'est code. **Mes deux ecrits que
+  la decision produit fait tomber sont nommes** : ma condition 3 du 2026-08-10 sur le second canal de
+  verdict, et l'exclusion de la reprise. **J'accepte la disparition des deux aides de S3-2 a la
+  condition qu'elles soient remplacees correctement adressees** : mesure sur deux parties jouees ce
+  jour, un enfant qui rate neuf manches sur dix recoit deux aides, et les deux portent sur le seul
+  item qu'il avait reussi. **Treize conditions M1 a M13**, dont **deux bloquantes** : M4 (le message
+  doit etre vu sans defiler, or le bas du cabinet est deja a 636 px sur "Le bon verbe" pour un pli a
+  640 px) et la clause 1 de M13 (**la premiere touche pressee apres chaque reponse menerait a "Les
+  jeux", qui detruit la partie sans confirmation** - M13 est ajoutee le meme jour, sur une mesure de
+  `theo-archi`, et elle manquait a mes douze). **Une mise en oeuvre declaree inacceptable au CP quelle que soit sa forme** : retirer la
+  proposition fautive du rendu, parce qu'un appui peut alors tomber sur une reponse que l'enfant n'a
+  pas choisie. **Un point que les trois questions ne nommaient pas** : le jeu devient muet sur la
+  reussite et bavard sur l'echec, et M11 le corrige. **Je corrige un manquement qui est le mien** :
+  j'ai valide 47 indices de CM1 sans verifier qu'ils nomment la bonne reponse - ils la nomment tous
+  les 47. Trois reserves nouvelles et datees, aucune bloquante. Ce bloc vaut pour les huit jeux du
+  catalogue.
+- **Derniere mise a jour** : 2026-08-12
 
 ## Competences visees
 
@@ -633,6 +650,832 @@ pas** :
 - **Je n'ai touche ni le code, ni un `ADR`, ni un `DEC`, ni le backlog, ni la matrice, ni un fichier
   de ceremonie.** Je n'efface aucun verdict : les six blocs anterieurs de cette fiche restent lisibles
   plus bas, avec leurs dates. **Je ne fusionne pas et je ne pousse pas.**
+
+### Arbitrage prealable au developpement - la mecanique apres la disparition de l'ecran intermediaire, du 2026-08-12
+
+**Ce bloc n'est pas un Done pedagogique.** C'est mon cinquieme arbitrage prealable, au titre de
+`squad/README.md` section 10. Rien de ce chantier n'est code : je ne prononce aucun verdict
+d'increment et je n'efface aucun verdict anterieur. Le Done pedagogique de ce chantier sera
+prononce plus tard, en jouant.
+
+**Ce bloc vaut pour les huit jeux du catalogue** : la mecanique est commune. Les sept autres fiches
+y renvoient.
+
+**Ce qui m'est demande, et que je ne rediscute pas.** L'utilisatrice a tranche que l'ecran
+intermediaire disparait : bonne reponse, la question suivante se charge ; mauvaise reponse, l'enfant
+reste sur l'ecran de la machine et un message s'affiche sous le meuble (`DEC-0023` point 6). Deux de
+mes ecrits tombent par cette decision, et je le dis en section 1 plutot que de le faire dire par
+quelqu'un d'autre. **Ce que j'arbitre ici, c'est comment on met cette decision en oeuvre sans
+retirer a l'enfant ce qui le protege.** Je ne juge ni la forme du meuble, ni l'enseigne, ni la
+silhouette du levier : ce sera un arbitrage separe quand `ines-design` aura rendu.
+
+#### 0. Comment j'ai regarde, et ce que je declare degrade
+
+**Degrade sur un point, et non sur l'autre. Je separe les deux, parce qu'ils ne valent pas la meme
+chose.**
+
+**Degrade** : l'increment n'existe pas. Il n'y a aucun message sous le meuble a lire, aucun essai a
+reprendre, aucune marque de proposition a regarder. Tout ce que je dis du chantier a venir est dit
+sur des proprietes, jamais sur un rendu. Aucun Done ne sortira de ce bloc, et la liste de ce que je
+reverifierai en jouant est en section 9.
+
+**Pas degrade** : la mecanique d'aujourd'hui, celle dont on me demande de mesurer la perte, **je
+l'ai jouee contre l'application reelle ce jour**, et c'est de la que sortent mes chiffres de la
+section 2.
+
+- worktree dedie hors de l'arbre du depot, lignee verifiee par `outils/verifier-lignee.sh` : "le
+  worktree sur la branche 's10-nadia-mecanique' descend de la lignee de round-two". `round-two` a
+  `b15bda1` ;
+- JDK constate par `outils/verifier-jdk.sh` : `java du PATH : 1.8.0_202 | JDK de compilation :
+  21.0.10 | JAVA_HOME : vide | toolchains lu par Maven : non (fichier present sous un nom non lu)`.
+  `JAVA_HOME` pointe sur ce JDK 21 le temps de la commande, jamais ecrit dans un fichier commite ;
+- fat jar reconstruit depuis mon worktree et lance sur un port dedie, sur ce JDK 21 ;
+- **parties reellement jouees contre l'application**, session portee par un bocal a temoins, en
+  parlant a ses vraies routes (`POST /parties/<jeu>`, `POST /parties/<jeu>/coups`,
+  `GET /parties/<jeu>/manche`) : une partie de "Le bon petit mot" **ratee sur les dix manches**, et
+  une partie de "Le bon son" **reussie a la premiere manche puis ratee sur les neuf suivantes**. Ce
+  sont ces deux parties qui portent la section 2, et elles ont ete jouees, pas deduites ;
+- **les huit paquets du catalogue relus item par item** dans leur fichier servi : 145 items, leurs
+  145 indices, leurs 6 explications, et la longueur de chaque enonce.
+
+**La limite exacte de ma methode d'aujourd'hui, que je nomme plutot que de la laisser deviner** :
+**je n'ai remesure aucun pixel aujourd'hui.** Les chiffres de geometrie que je cite en section 4
+sont ceux de mon releve du 2026-08-11, fait au navigateur a 360 x 640 sur `533967d`, et **ils ne
+couvrent que quatre jeux sur huit** : les quatre jeux ajoutes en s09 ("Les petites soustractions",
+"Petits problemes", "Compare les nombres", "Les complements a 10") n'ont jamais ete mesures par moi
+au pli. C'est la raison pour laquelle ma condition M4 exige la mesure sur les huit, et non la
+reconduction de mes quatre.
+
+#### 0 bis. Ce que je corrige de mes propres constats, avant de m'appuyer dessus
+
+**A. J'ai credite 47 indices comme bons sans verifier qu'ils ne donnent pas la reponse, et c'est un
+manquement de ma part, pas une decouverte de circonstance.** En s08, sur "Le bon verbe", j'ai passe
+les 25 indices un par un et j'ai verifie deux choses : qu'ils sont **vrais**, et qu'aucun n'est
+**dementi par un autre item du meme paquet** (tableau de `FICHE-bandit-manchot-conjugaison-present-cm1.md`).
+Je n'ai pas verifie la troisieme, qui est aujourd'hui la seule qui compte : **est-ce que l'indice
+nomme la reponse ?** Compte fait ce jour sur les fichiers servis, indice par indice, en cherchant la
+bonne reponse entre guillemets dans le texte de l'indice :
+
+| Paquet | Items | Indices qui nomment la reponse entre guillemets |
+|---|---|---|
+| `cm1-conjugaison-present` | 25 | **25 sur 25** |
+| `cm1-homophones` | 24 | **22 sur 24** |
+| `cp-le-bon-son` | 15 | 0 |
+| `cp-comparer-nombres` | 24 | 0 |
+| `cp-soustractions` | 24 | 0 |
+| `cp-problemes-additifs` | 22 | 0 |
+| `cp-complements-10` | 11 | 0 |
+| `cp-additions-jusqu-a-10` | genere | 0 (un indice unique, "Compte sur tes doigts.") |
+
+**Les six paquets de CP n'en ont aucun ; les deux paquets de CM1 en ont 47 sur 49.** Exemple joue ce
+jour, tel que l'enfant le lit avant de repondre : *"Remplace par 'ou bien' : 'Tu veux du the ou bien
+du cafe ?' fonctionne, alors c'est 'ou'."* - et la bonne reponse attendue est `ou`. Ce fait n'est pas
+neutre pour ce chantier : il decide la condition M2, et il ouvre une reserve nouvelle et datee
+(section 10, reserve A) qui ne depend pas du tout de la decision produit.
+
+**B. Mon constat du 2026-08-06 etait juste et je n'en ai jamais tire la consequence.** J'ecrivais
+alors, dans `FICHE-bandit-manchot-le-bon-son-cp.md` : *"L'indice ne remplace pas ce retour. Il
+arrive avant la reponse, seulement apres des echecs repetes, et **il designe un autre mot**."* C'est
+exact, je l'ai ecrit il y a six jours, et je n'en ai fait ni une reserve ni un motif. La section 2
+mesure ce que ce "autre mot" coute reellement. **Ce n'est donc pas un poteau que je deplace a
+l'occasion d'un chantier : c'est mon propre constat que je n'avais pas instruit.**
+
+**C. Je verifie ce que je vais opposer a l'equipe avant de l'opposer.** Les chiffres de geometrie de
+la section 4 sont recopies de mon releve du 2026-08-11 (tableau du pli, section 3 de mon verdict de
+ce jour-la), et je les annonce comme **recopies d'une mesure datee** et non comme mesures du jour.
+Les longueurs d'enonce de la section 4 sont, elles, comptees ce jour dans les fichiers servis.
+
+#### 1. Ce qui tombe de mes ecrits, et je le dis avant de reconstruire
+
+**Deux de mes ecrits ne survivent pas a la decision produit. Ils ne sont pas effaces, ils tombent, et
+je le nomme.**
+
+1. **Ma condition 3 du 2026-08-10** - *"Le seul retour de resultat du jeu reste celui qui existe : la
+   coche ou la croix de `fragments/retour.html`, apres le choix de l'enfant. Le chantier n'ajoute
+   aucun second canal de verdict"* - **tombe dans sa lettre.** Un message sous le meuble **est** un
+   second canal, nommement. `DEC-0023` a raison de l'ecrire ainsi.
+2. **L'exclusion de la reprise** (`DEC-0022` point 1, ecartee sur mon avis) **tombe** : l'enfant
+   reste sur la meme question apres une mauvaise reponse.
+
+**Ce que je ne fais pas : je ne les remplace pas par des conditions plus dures.** Ma condition 3
+avait un objet, et cet objet-la survit tres bien a la disparition de son support : ce que je
+protegeais, c'est que **la machine ne dise jamais le resultat** - dans une machine a sous, l'etat de
+la machine *est* le resultat, et c'est la seule raison pour laquelle j'ai accepte la metaphore. Je
+reecris donc cette condition sous une forme qui vaut pour le nouveau flux (M6), et **elle n'exige
+rien de plus** : un seul endroit ou le jeu parle de la reponse de l'enfant, et ce n'est jamais le
+meuble.
+
+Et je redis ce que j'ai ecrit le 2026-08-11 sur la manette, parce que c'est le meme principe et
+qu'il vaut dans les deux sens : je ne detiens pas la porte produit. Une decision de l'utilisatrice
+fait tomber mes conditions ; elle ne fait pas tomber mes motifs, et mes motifs restent disponibles
+pour arbitrer les questions que sa decision ouvre. C'est exactement ce que fait la section 5.
+
+#### 2. La perte de l'aide : ce que j'exige a la place
+
+C'est le coeur de ce qui m'est demande, et je commence par le mesurer plutot que par en debattre.
+`theo-archi` a etabli que les deux aides de S3-2 se declenchent **a l'interieur de `tirerManche`**,
+donc qu'elles deviennent inatteignables si une mauvaise reponse ne tire plus de manche. Exact, j'ai
+lu le code. Mais avant de dire ce que je veux a la place, il faut savoir ce que l'aide fait
+aujourd'hui, **en jeu**, et personne ne l'avait mesure.
+
+**Partie de "Le bon son" jouee ce jour : reussie a la manche 1 (BANC), ratee sur les neuf
+suivantes.** Voici les dix manches telles que l'application les a servies :
+
+| Manche | Enonce servi | Indice affiche |
+|---|---|---|
+| 1 | BANC | aucun |
+| 2 | MONTRE | aucun |
+| 3 | DENT | aucun |
+| 4 | SAPIN | aucun |
+| 5 | **BANC** (item deja reussi, represente) | **"On entend aussi ce son dans le mot manteau."** |
+| 6 | MANTEAU | aucun |
+| 7 | OMBRE | aucun |
+| 8 | **BANC** (item deja reussi, represente) | **"On entend aussi ce son dans le mot manteau."** |
+| 9 | BALLON | aucun |
+| 10 | PONT | aucun |
+
+**Lisez la colonne de droite. Un enfant qui a rate neuf manches sur dix a recu deux aides, et les
+deux portaient sur le seul item qu'il avait reussi.** Aucun des neuf items qu'il a rates - MONTRE,
+DENT, SAPIN, MANTEAU, OMBRE, BALLON, PONT - n'a jamais porte son indice. Et il a vu trois fois le
+meme mot, BANC, celui qu'il savait deja lire.
+
+**Seconde partie jouee, "Le bon petit mot", ratee sur les dix manches** : aucune reussite, donc
+aucun item a representer, donc le repli de `DEC-0004` s'applique et le tirage normal reprend.
+L'indice apparait a partir de la manche 4 et sur **toutes** les manches suivantes - sept manches sur
+dix. Sur chacune, il porte sur l'item que l'enfant **n'a pas encore essaye**, et sur ce paquet il
+**nomme sa reponse** (0 bis, point A). L'aide consiste donc, sur ce jeu, a donner la reponse d'une
+question que l'enfant n'a pas encore lue.
+
+**Mon verdict sur la perte, en une phrase : ce qui disparait n'est pas l'aide a l'enfant en
+difficulte, c'est une aide qui n'atteignait pas l'enfant en difficulte.** Je l'avais ecrit moi-meme
+le 2026-08-06 sans en tirer la consequence (0 bis, point B) ; je la tire aujourd'hui, sur deux
+parties jouees.
+
+**J'accepte donc que les deux aides de S3-2 disparaissent dans leur forme actuelle, et je ne
+l'accepte qu'a la condition qu'elles soient remplacees par la meme aide correctement adressee.** Ce
+que j'exige :
+
+- **l'indice n'est plus une propriete de la manche suivante, il est une propriete de la question
+  ou l'enfant est bloque.** C'est le seul changement qui repare le defaut que la section 2 mesure,
+  et la decision produit est ce qui le rend possible : tant qu'une mauvaise reponse changeait de
+  question, l'indice ne *pouvait pas* se rattacher a la question ratee ;
+- **le seuil : le premier echec sur la question.** Voir la correction en 2 bis - j'avais d'abord
+  ecrit le deuxieme, et l'arithmetique du catalogue montre qu'au deuxieme echec l'indice arrive trop
+  tard pour servir a quoi que ce soit. `DEC-0004` avait fixe trois echecs consecutifs, avec ce motif :
+  *"un seuil plus bas (deux, un seul echec) risque de traiter une erreur isolee et normale dans un
+  apprentissage comme un signal d'alerte."* **Ce motif est le mien, je le garde, et il ne vise pas ce
+  seuil-ci** : ce qu'il protegeait, c'est la **reaction lourde** - changer la question que l'enfant a
+  sous les yeux pour lui en remontrer une autre. Afficher une phrase d'aide sur la question ou il est
+  reste n'est pas une reaction lourde, c'est ce que fait n'importe quel adulte assis a cote de lui. Le
+  chiffre de `DEC-0004` reste vrai pour ce qu'il comptait, et il comptait autre chose ;
+- **et je note le gain, parce qu'il est chiffre** : aujourd'hui l'aide exige au minimum quatre
+  manches (`LONGUEUR_MINIMALE_POUR_AIDE = 4`) et n'atteint la question ratee sur aucun jeu.
+  Rattachee a la question courante, elle est atteignable **des la premiere question de chaque
+  partie, sur les huit jeux**, et sur la question qui bloque.
+
+**La "manche plus simple" - un item deja reussi represente apres une serie d'echecs - je la laisse
+partir, et je dis ce qui la remplace.** Elle avait un objet reel, ecrit dans `DEC-0004` a partir de
+mon propre constat de s01 : *ne pas laisser vingt echecs d'affilee sans aucune reaction du jeu*. Cet
+objet est **mieux** servi par le nouveau flux que par elle : le jeu reagit desormais **a chaque
+erreur, immediatement, sur la question ou l'enfant est**, au lieu de reagir une fois sur trois
+echecs en changeant de sujet. Ce que je perds avec elle, et que je nomme pour que personne ne le
+decouvre plus tard : **l'experience de reussite recente** qu'elle redonnait a un enfant en serie
+d'echecs. Le nouveau flux la remplace autrement - un enfant qui se trompe finit chaque question soit
+en trouvant lui-meme, soit en pressant la reponse qu'on lui a montree, donc il ne quitte plus jamais
+une question sur un echec sec. **Je juge l'echange favorable a l'enfant, et je le juge en connaissant
+ce qu'il coute.**
+
+#### 2 bis. Je corrige mon propre seuil avant que quiconque construise dessus
+
+**J'ai ecrit "a partir du deuxieme echec sur la question" dans la premiere ecriture de ce bloc, ce
+matin (commit `6432eab`), et c'est faux. Je le corrige ici plutot que de le reecrire en silence.**
+
+Le motif de la correction est arithmetique, et il vient de la marque de M9 : une proposition deja
+essayee est marquee, donc l'enfant sait laquelle il a deja tentee. Comptons les propositions
+disponibles apres chaque echec, sur les trois formats du catalogue :
+
+| Format | Apres le 1er echec | Apres le 2e echec |
+|---|---|---|
+| 3 propositions (6 jeux sur 8) | 2 candidates restantes | **1 seule candidate : c'est la bonne** |
+| 4 propositions ("Le bon verbe") | 3 candidates restantes | 2 candidates restantes |
+| 2 propositions ("Le bon petit mot") | **1 seule candidate : c'est la bonne** | sans objet |
+
+**Sur les six jeux a trois propositions, un indice qui arrive au deuxieme echec arrive quand il ne
+reste plus qu'une seule reponse possible : il n'enseigne plus rien, il commente une reponse que
+l'enfant va donner de toute facon.** C'est exactement le defaut que je reproche a l'aide actuelle en
+section 2 - une aide qui n'atteint pas l'enfant au moment ou il est bloque - et je venais de le
+reproduire sous une autre forme. Au **premier** echec, sur ces memes six jeux, il reste deux
+candidates et l'indice sert reellement a choisir.
+
+**Ce que je concede en le corrigeant** : un enfant peut apprendre qu'une erreur fait venir une aide,
+et se tromper expres pour l'obtenir. Le risque est reel, il existe dans toutes les classes, et je le
+prefere de loin a une aide qui arrive trop tard. Il reste dans ma liste de la section 9, a regarder
+en jouant.
+
+**Conditions M1, M2 et M3.**
+
+**M1 - l'indice porte sur la question ou l'enfant est bloque, et il arrive des le premier echec.**
+L'indice de l'item est affiche **des le premier echec compte sur cette question**, et il reste
+affiche pour les essais restants de cette question. Il apparait **sous le meuble, avec le message**,
+jamais au-dessus du meuble. *Verification* : sur une question a trois propositions, l'enfant se
+trompe une premiere fois - le message **et** l'indice de cet item, mot pour mot celui de son paquet,
+sous le meuble ; il se trompe une deuxieme fois - le meme indice est toujours la, il n'en arrive pas
+un second. Sur les huit jeux. *Motif* : c'est la section 2, mesuree sur deux parties jouees, et le
+seuil est celui de 2 bis. *Pourquoi sous le meuble et pas au-dessus* : un indice qui apparait au-dessus du
+cabinet pousse les colonnes vers le bas **pendant** que l'enfant a le doigt dessus (c'est ainsi que
+le bas du cabinet passe de 540 a 636 px sur "Le bon verbe", mon releve du 2026-08-11). Rien ne doit
+bouger au-dessus du point ou l'enfant appuie (M8).
+
+**M2 - un indice rattache a la question courante ne nomme jamais la reponse attendue.** Mesure du
+jour : `cm1-conjugaison-present` **25 indices sur 25** et `cm1-homophones` **22 sur 24** nomment la
+bonne reponse entre guillemets ; les six paquets de CP, **aucun**. *Consequence directe et que
+j'assume* : sous M1, ces deux jeux ne peuvent pas afficher leur indice sur la question courante -
+sinon le premier echec **donne la reponse**, ce que M5 refuse. Sur ces deux jeux, l'enfant garde le
+message, l'essai supplementaire, la marque de M9 et la revelation de M5, et il n'a pas d'indice
+jusqu'a ce que les 47 textes soient reecrits. *Verification* : pour chaque item de chaque paquet, le
+texte de l'indice ne contient pas la bonne reponse. *Motif* : un indice qui donne la reponse n'est
+pas une aide, c'est une revelation, et une revelation qui arrive avant la fin des essais contredit
+la demande de reessayer. La reecriture des 47 textes est une story pour `camille-po` (reserve A), pas
+une condition de ce chantier.
+
+**M3 - la partie presente le nombre de questions annonce, et ne se termine jamais au milieu d'une
+question.** Une partie de `nombreDeManches` questions presente `nombreDeManches` questions
+**distinctes**, quel que soit le nombre d'essais depenses. Une partie ne s'arrete jamais sur un essai
+faux. *Verification* : une partie jouee en ratant trois fois chaque question montre autant de
+questions distinctes qu'une partie jouee juste du premier coup, et son dernier ecran est un ecran de
+fin de partie, jamais un message d'erreur sur une question en cours. *Motif* : `theo-archi` a mesure
+qu'en comptant les essais, un enfant qui se trompe trois fois sur la premiere question voit sept
+questions au lieu de dix, et que la partie peut se terminer **sur un essai faux**. Je refuse les
+deux, et le second plus fermement que le premier : arracher a un enfant de six ans la question qu'il
+etait en train de reprendre, pour lui annoncer que c'est fini, est exactement l'inverse de ce que le
+reessai est cense lui apporter. **Le prix technique est un amendement d'`ADR-0012`**, `theo-archi`
+l'a chiffre, et je le prefere sans hesiter au symptome. La preuve de terminaison, elle, est fournie
+par le plafond d'essais de M5 : elle ne disparait pas, elle change de porteur.
+
+#### 3. Question 1 - ce que dit le message, et quand la reponse est revelee
+
+`camille-po` demande si le message revele la bonne reponse, et quand. `theo-archi` inventorie quatre
+places pour cette revelation. **Je retiens la deuxieme : sur la question, apres un nombre borne
+d'essais.** Elle est aussi, comme il l'ecrit, la seule qui garde a la fois le critere d'origine S0-2
+et la preuve de terminaison - mais ce n'est pas pour cette raison que je la retiens, c'est pour
+celle-ci : **reveler la reponse et demander de reessayer dans le meme message sont deux consignes
+contradictoires, et un enfant de CP obeit a la premiere qu'il lit.** S'il lit "C'est an", il n'a plus
+de raison de chercher, et l'essai suivant n'apprend rien. La borne resout la contradiction en la
+mettant dans le temps : d'abord on cherche, ensuite on montre.
+
+**Les trois autres places, et mon motif de refus sur chacune.**
+
+- **Nulle part, l'enfant reessaie jusqu'a trouver.** Refusee. Un enfant de CP qui ne comprend pas
+  n'apprend rien a presser au hasard jusqu'a tomber juste, et il peut ne jamais tomber juste. Ma
+  methode dit qu'un enfant bloque doit pouvoir avancer ; ici il ne peut pas.
+- **En recapitulatif de fin de partie.** Refusee **pour le CP, et je le dis comme information
+  produit et non comme veto** : dix explications et dix reponses en fin de partie forment un bloc de
+  texte qu'un enfant de six ans ne lit pas, et qui arrive dix minutes apres l'erreur qu'il explique.
+  Pour du CM1 la forme serait discutable ; pour du CP elle est inutilisable quelle que soit sa mise
+  en page. Elle a en plus un cout technique que `theo-archi` nomme (le premier etat de session dont
+  la taille depend du deroulement), et je ne demande pas qu'on le paie pour un ecran que l'enfant ne
+  lira pas.
+- **Immediatement dans le message.** Refusee, c'est la contradiction ci-dessus, et `theo-archi` la
+  nomme deja comme contraire a la decision produit.
+
+**Le plafond que je fixe : trois essais comptes par question.** L'arithmetique, sur les huit jeux du
+catalogue, comptee ce jour dans les fichiers servis :
+
+| Jeu | Propositions par question | Mauvaises propositions disponibles |
+|---|---|---|
+| Le bon petit mot (homophones) | 2 | 1 |
+| Calcul CP, Le bon son, Les petites soustractions, Petits problemes, Compare les nombres, Les complements a 10 | 3 | 2 |
+| Le bon verbe (conjugaison) | 4 | 3 |
+
+- **A trois propositions**, un enfant qui se trompe deux fois a epuise les deux mauvaises reponses :
+  son troisieme essai est la bonne, et il y arrive **lui-meme**, avec l'indice de M1 sous les yeux.
+  La revelation ne se declenche que s'il represse une proposition qu'il a deja essayee.
+- **A quatre propositions**, il peut se tromper trois fois : la revelation se declenche reellement, et
+  c'est ce jeu qui la rend necessaire.
+- **A deux propositions**, se tromper une fois designe la bonne reponse par pure logique : le reessai
+  n'y est pas une epreuve. **Je le signale a `camille-po` comme une information sur le contenu et non
+  comme un defaut de ce chantier** : un item a deux propositions est un tirage a pile ou face, et le
+  reessai ne peut rien y ajouter. Cela concerne les 24 items de "Le bon petit mot" et rien d'autre au
+  catalogue.
+
+**Trois, et pas deux ni quatre.** Deux essais ne laisseraient pas a un enfant a trois propositions la
+possibilite d'arriver seul au bout de son elimination. Quatre allongent la partie du plus faible : a
+trois essais, un enfant qui echoue partout traverse trente ecrans au lieu de vingt aujourd'hui, et
+c'est deja le maximum que j'accepte pour une attention de six ans. **Ce chiffre-la, je l'accepte a
+priori et je me reserve de le juger en jouant** : si la partie du plus faible devient trop longue,
+je le dirai comme une reserve nouvelle et datee, jamais comme un durcissement de cette condition-ci.
+
+**Conditions M4, M5 et M6.**
+
+**M4 - le message est vu sans defiler, sur les huit jeux, a 360 x 640. Condition bloquante, et c'est
+la seule de ce bloc que je qualifie ainsi.** Le message, l'indice de M1 et la revelation de M5 sont
+**entierement au-dessus du pli** (`y = 640`), sous le meuble, dans tous les etats de tous les jeux.
+*Verification* : capture par `outils/mesurer-rendu.sh 360 <url> <png> 640`, sur chaque jeu, dans
+l'etat "premier echec avec indice", "deuxieme echec" et "revelation avec explication". *Motif, et il n'est pas
+theorique* : mon releve du 2026-08-11 donne le bas du cabinet a **540..636 px sans indice** et
+**636..792 px avec indice** sur "Le bon verbe", et **450..690 / 546..846 px** sur "Le bon petit mot".
+**Sur ces deux jeux, il n'y a aujourd'hui aucune place sous le meuble au-dessus du pli** : le message
+y serait invisible. Et je n'ai pas mesure les quatre jeux de s09 ; par derivation - annoncee comme
+derivation - "Petits problemes" est le cas a regarder d'abord, ses enonces faisant **56 caracteres en
+mediane et 67 au plus long**, contre 40 et 61 pour "Le bon verbe" que j'ai mesure sous le pli, et
+c'est un jeu de **CP**. *Ce que je refuse, et pourquoi c'est plus grave que ce que ca en a l'air* :
+aujourd'hui, sur une mauvaise reponse, l'enfant recoit un ecran entier qui lui dit ce qui s'est
+passe. Apres ce chantier, il recevra une ligne sous un meuble. **Si cette ligne est sous le pli, le
+jeu devient muet sur l'erreur** - l'enfant presse, rien ne change a l'ecran qu'il voit, et il ne sait
+meme pas que sa reponse a ete prise en compte. Un increment dans cet etat est refuse, et le motif ne
+sera pas negociable. La cause est identifiee depuis s07 et elle n'est pas de ce chantier : c'est le
+defaut de `DEC-0016` que je porte en reserve 1 depuis le 2026-08-11 (longueur de l'enonce a 2 rem).
+**Ce chantier la rend bloquante la ou elle n'etait qu'une reserve, et je l'ecris comme un fait
+nouveau du 2026-08-12, pas comme un durcissement de ma reserve.**
+
+**M5 - la revelation n'a lieu qu'au troisieme echec compte sur la question, et elle laisse l'enfant
+agir.** Trois essais comptes au maximum par question. Aux deux premiers echecs, ni le message, ni
+l'indice, ni aucune marque ne nomme la bonne reponse. **Au troisieme echec, le jeu nomme la reponse
+et l'enfant la presse pour continuer** : la question passe dans un etat ou plus aucun essai n'est
+compte, ou le message ne change plus, et ou le seul appui qui fait avancer est celui sur la reponse
+ecrite a l'ecran. *Verification* : sur "Le bon verbe", se tromper trois fois ; le message nomme la
+reponse ; presser une quatrieme mauvaise proposition ne change rien a l'ecran et n'avance pas la
+partie ; presser la reponse nommee charge la question suivante. *Motif* : je veux que l'enfant
+**fasse** le geste juste une fois avant de passer a autre chose - il lit la reponse, il la retrouve
+parmi les propositions, il appuie dessus. C'est le minimum de trace qu'une question ratee doit
+laisser, et c'est aussi ce qui garantit qu'il ne quitte jamais une question sur un echec sec. *Et
+c'est cet etat terminal qui porte la preuve de terminaison* : le compteur d'essais d'une question est
+borne a trois, donc le nombre d'essais comptes d'une partie est borne par trois fois le nombre de
+questions.
+
+**M6 - un seul endroit ou le jeu parle de la reponse de l'enfant, et ce n'est jamais le meuble.**
+C'est ma condition 3 du 2026-08-10 reecrite pour le nouveau flux, et elle n'exige rien de plus
+qu'elle. Deux clauses :
+
+1. **un seul emplacement** porte ce que le jeu dit de la reponse - verdict, message, indice,
+   revelation, explication. Il est sous le meuble, hors du cadre du cabinet. Il n'y a jamais deux
+   messages a la fois, ni un message a deux endroits ;
+2. **le meuble est rigoureusement identique** avant la reponse, apres une mauvaise reponse, avec
+   l'indice affiche et sur l'ecran de revelation : cadre, bandeau, socle, etoile, decors, visage
+   souriant de `DEC-0023` point 5, tout. *Verification* : quatre captures du meme item dans ces
+   quatre etats ; les pixels du cabinet sont identiques sur les quatre. C'est C4 mise a jour, et
+   **C4 change de forme de verification, pas d'exigence** : elle etait tenue "par absence" parce que
+   le cabinet n'existait pas sur l'ecran de retour ; le cabinet est desormais present au moment ou
+   le jeu rend son verdict, donc l'absence ne la tient plus et il faut la mesurer. **C'est le point
+   de garde le plus important de ce chantier, et c'est moi qui le garde** : le jour ou le meuble
+   change d'aspect selon la reponse, l'argument qui sauve la metaphore de la machine tombe, et mon
+   avis avec lui.
+
+#### 4. Question 2 - l'explication : elle survit, et elle perd sa symetrie
+
+**Ce que j'ai tranche le 2026-08-06, et que `theo-archi` a raison de dire intenable en l'etat** :
+l'explication est affichee **systematiquement, juste ou faux**, avec ce motif que je maintiens mot
+pour mot - *"l'enfant qui a trouve DENT par elimination a autant besoin de l'explication que celui
+qui s'est trompe, et celui qui avait raison pour la bonne raison a besoin d'etre conforte."*
+`theo-archi` etablit qu'il n'existe pas de troisieme voie technique : toute solution rend
+l'explication asymetrique, ou la reporte en fin de partie. **Je le confirme apres avoir regarde le
+contenu, et je tranche.**
+
+**Un fait mesure ce jour, qui commande la reponse et qui n'avait pas ete verse au dossier.** Les
+explications n'existent que sur un paquet, `cp-le-bon-son`, et il y en a **six**. Les voici toutes :
+
+| Item | Explication servie | Bonne reponse |
+|---|---|---|
+| DENT | "Dans DENT, ce sont les lettres e et n qui font le son an." | `an` |
+| VENT | "Dans VENT, ce sont les lettres e et n qui font le son an." | `an` |
+| OMBRE | "Dans OMBRE, ce sont les lettres o et m qui font le son on." | `on` |
+| NOMBRE | "Dans NOMBRE, ce sont les lettres o et m qui font le son on." | `on` |
+| TIMBRE | "Dans TIMBRE, ce sont les lettres i et m qui font le son in." | `in` |
+| LUNDI | "Dans LUNDI, ce sont les lettres u et n qui font le son in." | `in` |
+
+**Les six nomment la bonne reponse, par construction : c'est moi qui ai dicte cette forme** le
+2026-08-06 ("nommer les lettres du mot affiche **et le son qu'elles font**"). Donc **l'explication ne
+peut structurellement pas etre affichee tant que l'enfant peut encore repondre.** Ce n'est pas une
+preference de placement, c'est une impossibilite du contenu tel que je l'ai moi-meme exige. Toute
+place "sur la question pendant les essais" est donc fermee, et elle l'est par mon propre texte.
+
+**Ma decision, en trois lignes.**
+
+1. **Chemin faux : l'explication accompagne la revelation de M5**, au troisieme echec, sous le
+   meuble, apres la reponse nommee. C'est la place ou elle sert le mieux depuis qu'elle existe :
+   l'item est encore sous les yeux de l'enfant, ce qui n'etait pas vrai sur l'ecran de retour.
+2. **Chemin juste : l'explication disparait**, sauf sur la derniere question de la partie, ou l'ecran
+   de fin de partie la porte encore telle qu'aujourd'hui.
+3. **Ma regle du 2026-08-06 perd donc sa symetrie, et je l'ecris comme une perte, pas comme une mise
+   a jour.**
+
+**Les deux places que j'aurais pu prendre pour la garder, et mon motif de refus sur chacune.**
+
+- **En tete de la question suivante, sur le chemin juste.** Refusee, sur deux motifs dont le premier
+  est mesure. **Mesure** : l'ecran de manche est deja plein sur l'axe vertical - le bas du cabinet
+  atteint 636 px sur "Le bon verbe" et 690 px sur "Le bon petit mot" a un pli de 640, releve du
+  2026-08-11 - et une ligne de plus au-dessus du cabinet pousse les colonnes et le message de M4 plus
+  bas encore. Ajouter du texte au-dessus du cabinet est exactement ce que M4 ne peut pas payer.
+  **De lecture** : l'ecran porterait alors, de haut en bas, une explication sur le mot **precedent**
+  puis un enonce portant le mot **suivant**. Un enfant de CP qui dechiffre lit les deux comme un seul
+  bloc et cherche les lettres de DENT dans MONTRE. C'est pire que de ne rien afficher.
+- **En recapitulatif de fin de partie.** Refusee pour le motif deja ecrit en section 3 : un bloc de
+  dix textes qu'un enfant de six ans ne lit pas.
+
+**Ce que cette perte coute exactement, chiffre pour que `camille-po` en fasse une story et non une
+impression.** Elle porte sur **6 items d'un seul jeu sur huit**, et seulement sur les parties ou
+l'enfant repond juste a ces items. Sur ma partie de "Le bon son" jouee ce jour, DENT et OMBRE sont
+tombes et leurs deux explications ont ete servies sur le chemin faux : sous le nouveau flux, elles
+auraient ete servies au troisieme echec, donc conservees dans ce cas precis. Ce qui disparait est le
+cas que j'avais nomme moi-meme : **l'enfant qui trouve DENT du premier coup, par elimination, et qui
+ne saura pas pourquoi.** Je le maintiens comme un vrai manque, et c'est la reserve B de la section 10.
+
+**Et je dis ce que je ne demande pas, pour qu'on ne me le prete pas.** Je ne demande pas qu'on
+retarde d'une demi-seconde le chargement de la question suivante pour glisser l'explication au
+passage : ce serait l'ecran intermediaire remis par la fenetre, et un delai que l'enfant subit sans
+l'avoir demande. La decision produit est prise, je ne la contourne pas.
+
+**Condition M7.**
+
+**M7 - l'explication n'apparait qu'apres que la reponse est acquise, et jamais au-dessus d'une
+question neuve.** Elle est affichee dans le meme emplacement que le message (M6, clause 1), soit avec
+la revelation de M5, soit sur l'ecran de fin de partie. Elle n'est jamais affichee pendant qu'un
+essai reste possible sur la question, et jamais sur un ecran qui porte deja l'enonce d'une autre
+question. *Verification* : sur "Le bon son", DENT rate trois fois - la revelation et l'explication de
+DENT sont sur le meme ecran que DENT ; DENT reussi du premier coup - l'ecran suivant porte MONTRE et
+**aucun** texte parlant de DENT. *Motif* : les six explications nomment la reponse (tableau
+ci-dessus), et un texte sur le mot precedent pose au-dessus du mot suivant est illisible pour un
+enfant qui dechiffre.
+
+#### 5. Question 3 - la proposition fautive : elle reste cliquable, et elle porte une marque
+
+**Ma reponse est la premiere des trois, celle qui ne coute aucun amendement, et ce n'est pas pour
+cette raison que je la choisis : c'est la seule des trois qui ne fabrique pas un nouveau probleme
+sous le doigt de l'enfant.** Elle reste cliquable, elle reste a sa place, elle ne change pas de
+taille, et elle porte une marque qui dit "tu l'as deja essayee".
+
+**Pourquoi je refuse qu'elle ne soit plus rendue du tout, et c'est mon refus le plus ferme des
+trois.** `theo-archi` a mesure le reflux : sur "Le bon verbe", perdre une proposition fait passer les
+colonnes de **deux rangees de 152,00 px a une rangee de 96,00 px**, et la police de **1,875 rem a
+2 rem**. Ce que cela veut dire pour l'enfant, en clair : **au moment ou il se trompe, les quatre
+boutons disparaissent et trois autres apparaissent ailleurs, plus petits, avec des lettres plus
+grosses.**
+
+1. **Un appui qui arrive une fraction de seconde trop tard tombe sur un autre bouton que celui que
+   l'enfant visait, et enregistre une reponse qu'il n'a pas choisie.** J'ai deja ecrit qu'un double
+   appui ne doit pas produire une consequence que l'enfant devra interpreter ; ici la consequence
+   n'est pas a interpreter, c'est **un essai perdu sur une reponse qu'il n'a pas lue**. C'est le seul
+   endroit de ce chantier ou je vois le jeu pouvoir mentir sur ce que l'enfant a fait.
+2. **Il doit relire les trois propositions restantes a chaque erreur**, dans un nouvel ordre spatial
+   et une nouvelle taille. Un enfant de CP lit lentement : on lui fait payer son erreur deux fois,
+   une fois par le message et une fois par une relecture complete.
+3. **A trois propositions, la deuxieme erreur laisse un seul bouton a l'ecran**, necessairement la
+   bonne reponse. Le jeu se termine alors sur un ecran a un seul choix, ce qui n'est plus un
+   exercice.
+
+**Cette mise en oeuvre est inacceptable pour un enfant de CP quelle que soit sa forme, et je le dis
+comme une information produit** : il n'y a pas de dessin, pas de transition et pas de reglage qui
+rende acceptable qu'un appui puisse tomber sur une reponse que l'enfant n'a pas choisie.
+
+**Pourquoi je refuse aussi qu'elle devienne inactive.** Le motif n'est pas le cout - deux clauses
+d'`ADR-0026` a amender, deux jeux de contre-exemple a retailler, un critere discriminant neuf a
+trouver - c'est `theo-archi` qui l'a chiffre et ce n'est pas moi qui le paie. **Le motif est celui,
+mot pour mot, que j'ai ecrit contre la manette** : *"un enfant de CP qui essaie de tirer une manette
+et voit que rien ne se passe se croit en faute."* Un bouton eteint sous son doigt produit exactement
+la meme chose, sur l'element le plus presse de l'application. Mon veto sur la manette a ete leve par
+l'utilisatrice, et c'etait sa decision ; **le motif, lui, n'a pas ete leve, et il vaut ici ou aucune
+decision produit ne le contredit.** Je note d'ailleurs que ce refus-la epargne a l'equipe le seul
+amendement lourd des trois options.
+
+**Ce que la marque doit dire, et ce qu'elle ne doit pas dire.** Une proposition qui reste cliquable
+et identique laisse un enfant presser vingt fois le meme mauvais bouton sans comprendre : c'est pour
+cela que la marque est une condition et non un ornement. Elle dit **"deja essayee"** et rien de plus.
+Elle ne dit pas "faux" - c'est le message qui le dit -, elle ne dit pas ou est la bonne reponse, et
+elle ne nomme aucune reponse. `theo-archi` confirme qu'un marqueur de cette nature ne tombe sous
+aucune des trois interdictions existantes.
+
+**Et je nomme la consequence que la marque a par elle-meme, pour qu'on ne la decouvre pas apres
+coup** : marquer les mauvaises reponses deja essayees revele progressivement la bonne par
+elimination. A deux propositions, la premiere marque **designe** la reponse. Je l'accepte, parce
+qu'a deux propositions le message "ce n'est pas ca" la designait deja par pure logique : la marque
+n'ajoute aucune information, elle evite seulement a l'enfant d'avoir a s'en souvenir.
+
+**Conditions M8, M9 et M10.**
+
+**M8 - rien ne bouge au-dessus du point ou l'enfant appuie.** Entre deux essais sur la meme question,
+les propositions gardent **le meme nombre, le meme ordre, la meme position au pixel, la meme taille
+de boite et la meme taille de police**. Aucune proposition n'est retiree, aucune n'est desactivee,
+aucune n'est reordonnee. La consigne, l'enonce et le cabinet ne bougent pas non plus : tout ce que le
+jeu ajoute apparait **sous** le meuble. *Verification* : deux captures a 360 px du meme item, avant
+et apres un premier echec ; les boites des propositions ont les memes coordonnees et les memes
+dimensions au centieme de pixel, et les propositions apparaissent dans le meme ordre. *Motif* : les
+trois points ci-dessus, dont le premier suffit a lui seul.
+
+**M9 - la proposition deja essayee porte une marque visible qui ne nomme aucune reponse.** Cinq
+clauses, toutes mesurables :
+
+1. elle est distinguable **autrement que par la seule couleur** (un contour, un motif, un signe -
+   `ines-design` propose la forme, je juge le resultat) ;
+2. elle **ne change ni la boite, ni la police, ni la position** de la proposition (M8), et laisse la
+   cible tactile **au-dessus de 44 px** (mon acquis 1, plancher dur) ;
+3. le texte de la proposition **reste entierement lisible** : une proposition grisee jusqu'a
+   l'illisibilite est refusee, l'enfant doit pouvoir relire ce qu'il a essaye ;
+4. elle **reste pressable**, et un nouvel appui dessus produit le meme message que le premier, jamais
+   un ecran ou un comportement different ;
+5. **aucune marque, sur aucune proposition, ne designe la bonne reponse** avant la revelation de M5.
+   *Verification* : dans le document servi, aucun attribut, aucune classe et aucun texte ne distingue
+   la bonne reponse des propositions non essayees.
+
+**M10 - les colonnes ne rejouent aucun mouvement sur une question que l'enfant n'a pas changee.**
+`theo-archi` me signale que la CI **accepte deja** qu'une question inchangee rebalaie ses colonnes,
+et me demande de dire si je le refuse. **Je le refuse, et j'accepte le cout de l'amendement.** Trois
+motifs :
+
+1. **le mouvement des colonnes veut dire quelque chose, et c'est moi qui l'ai fait dire.** J'ai
+   valide le defilement au motif que la machine **distribue** les reponses et que l'enfant choisit
+   ensuite - c'est la phrase exacte qui sauve la metaphore. Rejouer le defilement sur des
+   propositions qui n'ont pas change fait dire au mouvement quelque chose de faux : rien n'a ete
+   distribue ;
+2. **un enfant de CP qui voit les colonnes tourner croit que la question a change** et relit tout,
+   alors que la consigne du message est justement de reessayer la meme ;
+3. **le prix en attente** : 0,6 s par defilement, jusqu'a trois essais par question, dix questions -
+   jusqu'a 18 s d'attente ajoutee pour l'enfant qui se trompe le plus, c'est-a-dire celui dont
+   l'attention est la plus courte. C'est le facteur que j'avais deja utilise pour borner la duree du
+   defilement le 2026-08-10, applique a un nouveau multiplicateur.
+
+*Verification* : sur un reessai, aucune proposition ne porte de mouvement ; les pixels des colonnes
+sont identiques entre l'ecran d'avant l'appui et l'ecran de reessai. *Ce que je n'exige pas* : que
+l'ecran de reessai soit immobile en tout. L'apparition du message est un changement, et c'en est
+justement le signal ; c'est le **mouvement des colonnes** que je refuse, pas la venue du message.
+
+#### 6. Ce sur quoi personne ne m'a interroge et qui me parait plus grave que les trois questions
+
+**Apres ce chantier, le jeu ne dit plus rien a l'enfant quand il a raison.**
+
+Je le pose comme un fait de flux, verifiable sur les trois documents qui me sont donnes. Bonne
+reponse : la question suivante se charge directement. Il n'y a donc plus d'ecran qui porte la coche,
+l'aplat vert et le texte "Bravo, c'est juste !" - ce signal existe aujourd'hui, je l'ai valide, j'ai
+mesure son icone a **48 x 48 px** et son aplat le 2026-08-11, et il disparait avec l'ecran. Mauvaise
+reponse : un message apparait sous le meuble. **Le jeu devient donc bavard sur l'echec et muet sur la
+reussite.** Pour un enfant de six ans, c'est exactement a l'envers, et aucune des trois questions de
+`camille-po` ne le nomme.
+
+Ce n'est pas un motif contre la decision produit : le meme emplacement qui porte le message peut
+porter le signal positif, au meme endroit et sous la meme forme, sans ecran supplementaire et sans
+delai. **C'est donc une condition, pas une objection.**
+
+**Le risque que cette solution porte, et que je nomme parce que je le juge acceptable plutot que nul.**
+Le signal positif s'affichera sous le meuble d'un ecran qui porte deja la **question suivante** : la
+coche parle de la reponse precedente, l'enonce parle de la nouvelle question. C'est de la meme famille
+que ce que j'ai refuse pour l'explication en section 4, et je ne le refuse pas ici, pour deux raisons
+que je veux ecrites. **Un** : la coche apparait a l'instant meme de l'appui de l'enfant, et ce lien de
+temps est le plus fort indice qu'un enfant de six ans utilise - il sait de quoi on lui parle parce que
+ca arrive quand il appuie. **Deux** : l'explication est une phrase entiere sur un mot precis, qui entre
+en concurrence de lecture avec l'enonce ; un signe et un mot ne le font pas. **Je le verifierai en
+jouant, et si un enfant rapporte la coche a la nouvelle question, je le dirai comme une reserve
+nouvelle et datee** - la solution de repli existe et je la nomme d'avance pour ne pas avoir a
+l'inventer sous pression : le signal positif reste sur l'ecran de la question qui vient d'etre
+reussie, et c'est l'appui suivant qui charge la question suivante.
+
+**Conditions M11 et M12.**
+
+**M11 - le chemin juste garde un signal immediat, au meme endroit et de meme force que le chemin
+faux.** Quatre clauses :
+
+1. **un signal non textuel** - la coche existante, son aplat et ses 48 x 48 px - accompagne le texte,
+   dans le meme emplacement que le message de M6, avec la meme geometrie de boite que le signal
+   d'echec. *C'est mes cinq proprietes du 2026-08-11 reconduites, et je ne demande rien de plus* ;
+2. il apparait **sur l'ecran qui suit immediatement l'appui**, et disparait des l'appui suivant. Il
+   n'est jamais present sur la premiere question d'une partie ;
+3. **une question fermee par la revelation de M5 n'est pas une reussite** : elle ne recoit pas le
+   signal positif, elle ne fait pas monter le score, et le jeu ne felicite pas l'enfant d'avoir presse
+   la reponse qu'on venait de lui donner. *Motif* : un enfant remarque tres bien qu'on le felicite de
+   quelque chose qu'il n'a pas trouve, et ce qu'il en apprend, c'est que le jeu dit n'importe quoi ;
+4. **une question trouvee au deuxieme ou au troisieme essai est une reussite** : elle recoit le signal
+   positif et fait monter le score. *Motif* : le reessai existe pour que l'enfant trouve ; le punir
+   d'avoir eu besoin d'un essai de plus retirerait au reessai sa raison d'etre. *Verification* : une
+   partie ou toutes les questions sont trouvees au second essai finit avec le score plein ; une partie
+   ou toutes sont revelees finit a zero. **Ce point est un choix pedagogique et je le tranche ; la
+   forme du compteur appartient a `camille-po` et a `theo-archi`.**
+
+**M12 - les textes exacts, et toute variante revient devant moi.** Ce sont des textes lus par un
+enfant : ils sont en francais integralement accentue, orthographe et ponctuation irreprochables
+(`DEC-0002` amende). Je les ecris ici pour qu'aucun developpeur n'ait a les inventer.
+
+| Etat | Texte exact | Longueur |
+|---|---|---|
+| Bonne reponse | **"Bravo !"** | 1 mot |
+| Premier et deuxieme echec, essais restants | **"Ce n'est pas ça. Essaie encore !"** | 6 mots |
+| Troisieme echec, revelation | **"C'est `<reponse>`. Appuie sur `<reponse>`."** | 5 mots et la reponse deux fois |
+
+- **"Bravo !" et non "Bravo, c'est juste !"**, et le motif est precis : le texte de trois mots a ete
+  valide par moi pour un ecran qui ne portait **que** ce verdict. Sur un ecran qui porte deja la
+  question suivante, "c'est juste" peut se lire comme une affirmation sur la question affichee. Un
+  texte valide dans un contexte ne l'est pas automatiquement dans un autre, et c'est a moi de le dire.
+- **"Ce n'est pas ça."** : quatre mots courts et tres frequents, dont "ça" que la consigne de "Calcul
+  CP" emploie deja ("Combien ça fait ?"). Le message ne nomme pas la reponse (M5), ne dit pas "faux"
+  et ne dit pas "erreur" ; il dit ou l'enfant en est et ce qu'il doit faire.
+- **La reponse est repetee dans la revelation**, et c'est voulu : "C'est 5. Appuie sur 5." ne laisse
+  aucune ambiguite sur ce qu'il faut presser, la ou "Appuie dessus" obligerait l'enfant a deviner sur
+  quoi. La repetition est aussi une lecture de plus du mot juste.
+- **Aucun de ces textes ne contient un mot de la liste interdite** de `DEC-0023` point 4 et de mon
+  acquis 11 : verifie mot par mot sur les trois.
+
+#### 6 bis. La treizieme condition, ajoutee le 2026-08-12 : ou va le focus apres une reponse
+
+**Cette condition manquait a mes douze, et je ne l'avais pas vue.** Elle vient d'une mesure de
+`theo-archi` qui cherchait autre chose, et elle est routee vers moi parce que le choix de l'element
+qui recoit le focus est pedagogique. Il refuse d'en ecrire la clause avant que je tranche, et il a
+raison de le refuser.
+
+**Les trois faits, que j'ai verifies moi-meme dans les fichiers servis avant de m'appuyer dessus.**
+
+1. **`<main id="jeu" class="container zone-jeu">` ne porte ni `aria-live` ni `role`** : un echange
+   htmx n'annonce rien par lui-meme. Lu dans `accueil.html`.
+2. **Les huit lignes de `static/js/recreo.js` ne deplacent le focus que si le fragment recu contient
+   `.signal`**, classe qui n'existe que dans `fragments/retour.html`. Lu dans les deux fichiers.
+3. **Le premier element focalisable d'un ecran de manche est le bouton "Les jeux"**, qui porte
+   `data-role="sortie"`. Verifie dans `fragments/manche.html` : il est le premier enfant du fragment,
+   avant le score, la consigne et l'enonce. Le lien de sortie de l'en-tete, lui, est bien hors course -
+   `body:has(.ecran-de-jeu) .lien-accueil { display: none }`, et `display: none` retire de la
+   tabulation, ce que j'ai verifie plutot que suppose.
+
+**Et j'ajoute le quatrieme fait, celui qui fait de ce defaut autre chose qu'un defaut de confort.**
+`POST /retour` appelle `abandonner()`, qui **retire les trois attributs de session** : le jeu, la
+consigne et la partie. Il n'y a **aucune confirmation** et **aucune persistance** dans ce depot. Donc
+presser "Les jeux" **detruit la partie en cours, irreversiblement**.
+
+**Consequence, en une phrase et sans adoucissement : apres ce chantier, la premiere touche pressee
+apres chaque reponse, juste ou fausse, mene a la destruction de la partie, dix fois par partie.**
+Aujourd'hui, le focus va sur le verdict et la touche suivante mene a "Encore !" - c'est-a-dire a
+l'action qui fait avancer le jeu. Le chantier retournerait exactement cette propriete.
+
+**"Un enfant de CP ne navigue pas au clavier" - je reponds a l'objection plutot que de l'ignorer.**
+C'est vrai de la plupart des enfants qui joueront a `recreo` avec un doigt ou une souris, et c'est
+precisement pour cela que ce defaut ne se verrait jamais en usage ordinaire et resterait la. Il
+compte pour trois raisons dont aucune n'est theorique. **Un** : un enfant qui utilise une aide
+technique - clavier, contacteur, lecteur d'ecran - n'a pas d'autre chemin que celui-la, et je porte ce
+motif depuis mon veto sur la manette, ou j'ecrivais qu'un obstacle de motricite fine "est en plus un
+obstacle pour un enfant qui utilise une aide technique". **Deux** : un enfant sur un ordinateur
+portable presse Entree, Espace et Tabulation par curiosite - c'est un enfant de six ans, il presse
+tout. **Trois** : la consequence n'est pas un desagrement, c'est la perte de sa partie sans
+confirmation. **Je ne ferme donc pas la question, et j'aurais eu tort de la fermer.**
+
+**Ce que je tranche, et le principe qui commande les quatre cas** : le focus va la ou l'attention de
+l'enfant doit etre pour continuer a jouer, jamais sur ce qui le ferait sortir, et il ne se pose
+jamais sur une reponse qu'il n'a pas choisie tant que cette reponse n'est pas devenue publique.
+
+**Condition M13.**
+
+**M13 - apres une reponse, le focus va sur le jeu et jamais sur la sortie.** Cinq clauses, chacune
+verifiable en une manipulation.
+
+1. **Jamais la sortie, sur aucun chemin.** Apres une reponse, quel qu'en soit le verdict, l'element
+   focalise **n'est jamais** un element portant `data-role="sortie"`, et **la premiere tabulation
+   depuis cet element ne mene pas non plus a la sortie**. *Verification* : apres une bonne reponse et
+   apres une mauvaise, presser Tabulation une fois, puis Entree ; la partie doit toujours etre en
+   cours. C'est la clause dure de M13 : une partie qu'un enfant detruit en deux touches n'est pas
+   acceptable, et ce motif ne sera pas negociable.
+2. **Apres une mauvaise reponse avec des essais restants : la proposition que l'enfant vient de
+   presser**, celle qui porte desormais la marque de M9. *Motif* : c'est la ou etaient sa main et son
+   attention, la tabulation suivante l'amene sur les autres propositions, et la sortie se retrouve
+   **derriere** lui et non devant. C'est le prolongement de M8 - je refuse que la mise en page bouge
+   au-dessus de son doigt, je refuse pour la meme raison que son attention soit deplacee en haut de
+   l'ecran.
+3. **Aucun anneau de focus ne se pose sur une proposition que l'enfant n'a pas pressee**, tant que la
+   reponse n'a pas ete revelee par M5. *Motif, et c'est la clause dont je suis la plus sure* : sur les
+   six jeux a trois propositions, "la premiere proposition non essayee" **est la bonne reponse** des
+   le deuxieme echec. Un anneau de focus pose dessus fait pointer le jeu sur la reponse, sans qu'aucun
+   texte ne l'ait dite. Ce serait une revelation deguisee, et elle contredirait M5 en passant par un
+   canal que personne ne surveille.
+4. **Apres une bonne reponse : l'enonce de la question neuve.** *Motif* : la question a change, et
+   c'est la premiere chose que l'enfant doit lire ou entendre ; depuis l'enonce, la tabulation descend
+   sur les propositions et la sortie reste derriere. **Pas la premiere proposition** : un enfant qui
+   ecoute arriverait sur une reponse a choisir sans avoir entendu la question.
+5. **Sur l'ecran de revelation de M5 : la proposition qui porte la reponse revelee.** *Motif* : a cet
+   instant la reponse est publique - le message vient de la nommer - donc la clause 3 ne s'applique
+   plus, et le geste que M5 demande a l'enfant ("Appuie sur `<reponse>`") doit etre atteignable sans
+   traverser la sortie. **Sur l'ecran de fin de partie, rien ne change** : le focus va sur le signal
+   comme aujourd'hui, et la sortie y est la seule action restante, ce que j'ai valide le 2026-08-07.
+
+**Et la clause que je ne peux pas ecrire toute seule, parce qu'elle porte sur ce que l'enfant
+entend.** Les quatre cas ci-dessus disent ou l'enfant **arrive** ; ils ne disent pas comment il
+**apprend** que sa reponse etait fausse, puisque `#jeu` n'annonce rien (fait 1). Un enfant qui
+n'entend pas le message ne sait pas pourquoi la meme question est encore la. Ce que j'exige comme
+propriete - et le moyen appartient a `theo-archi`, pas a moi : **ce que le jeu dit de la reponse
+(message, indice, revelation, "Bravo !") atteint l'enfant qui ne voit pas l'ecran, au moment ou ce
+texte apparait, sans qu'il ait a partir a sa recherche et sans que son focus quitte les
+propositions.** Si le moyen retenu deplace le focus sur le message plutot que d'annoncer sans le
+deplacer, alors les propositions doivent etre atteignables **en avancant** depuis le message, jamais
+en passant par la sortie - et la clause 1 continue de s'appliquer.
+
+**Ce que M13 ne ferme pas, et je le dis parce que c'est le meme sujet.** Ma reserve H de l'arbitrage
+de forme du meme jour dit que **je n'ai jamais ecoute ce qu'un enfant entend** de cette application.
+M13 est ecrite sur la mesure de quelqu'un d'autre et sur ma lecture des fichiers, pas sur une ecoute.
+`theo-archi` ecrit que ses trois clauses d'`ADR-0035` ne remplacent pas cette ecoute, et il a raison :
+**M13 ne la remplace pas davantage.** Ecouter les quatre cas de M13 - et pas seulement les regarder -
+entre dans ma liste de la section 9 comme un point a part.
+
+#### 7. Mes treize conditions, en une page
+
+Elles sont **fermees** : ce qui n'y est pas ne bloquera pas le Done et ne pourra pas m'etre oppose
+comme l'ayant bloque. **Deux** sont bloquantes par elles-memes : M4, et la clause 1 de M13.
+
+| # | Condition | Ou elle se verifie | Cout technique nomme par `theo-archi` |
+|---|---|---|---|
+| M1 | L'indice porte sur la question bloquante, des le premier echec, sous le meuble (seuil corrige en 2 bis) | en jouant, sur les 8 jeux | remplace l'aide de S3-2, `ADR` a ecrire sur son sort |
+| M2 | Un indice rattache a la question ne nomme jamais la reponse | par lecture des 8 paquets | aucun ; 47 textes CM1 a reecrire (reserve A) |
+| M3 | La partie presente le nombre de questions annonce et ne finit jamais au milieu d'une question | en jouant une partie tout en echecs | amendement d'`ADR-0012` |
+| M4 | **Bloquante.** Message, indice et revelation entierement au-dessus du pli, sur les 8 jeux | `outils/mesurer-rendu.sh 360 <url> <png> 640` | depend de la reserve 1 (`DEC-0016`) |
+| M5 | Trois essais comptes au maximum ; revelation au troisieme ; l'enfant presse la reponse pour avancer | en jouant "Le bon verbe" | 1 champ de session, 4 sites d'appel |
+| M6 | Un seul endroit ou le jeu parle de la reponse ; le meuble identique dans les 4 etats | 4 captures du meme item | aucun |
+| M7 | L'explication n'apparait qu'apres que la reponse est acquise, jamais au-dessus d'une question neuve | en jouant "Le bon son" | aucun |
+| M8 | Rien ne bouge au-dessus du point ou l'enfant appuie | 2 captures du meme item au centieme de pixel | aucun |
+| M9 | La proposition deja essayee est marquee, pressable, lisible, et ne nomme aucune reponse | document servi et capture | aucun sur `ADR-0026` |
+| M10 | Les colonnes ne rejouent aucun mouvement sur une question inchangee | capture avant/apres appui | amendement d'`ADR-0027` + selecteur |
+| M11 | Signal positif immediat au meme endroit ; une question revelee n'est pas une reussite | en jouant | 1 etat de question deja compte en M5 |
+| M12 | Les textes exacts, accentues ; toute variante revient devant moi | document servi | aucun |
+| M13 | **Clause 1 bloquante.** Le focus ne va jamais sur la sortie ; quatre points d'arrivee nommes ; aucun anneau sur une proposition non pressee | Tabulation puis Entree apres chaque reponse, sur les 8 jeux | l'ecran declare son point de focus, sur le modele de `data-arrivee` |
+
+#### 8. Ce dont je reste la seule garde, et je le dis pour que rien ne paraisse couvert
+
+`theo-archi` a mesure que la CI accepte deja la reanimation d'une question inchangee, et que deux
+epinglages resteraient **verts en mentant** si l'aide changeait de place - le plancher de quatre
+manches et sa verification sur chaque jeu du catalogue. Quatre defauts visibles par un enfant ont
+deja traverse une CI entierement verte sur ce depot. Voici donc, nommement, ce que **personne d'autre
+que moi ne verifie** sur ce chantier :
+
+1. **que l'enfant comprenne le message** - qu'il lise "Ce n'est pas ça. Essaie encore !" comme une
+   invitation et non comme une sanction. Aucun automate ne lit un ton ;
+2. **que la marque de M9 se lise comme "deja essayee"** et non comme "interdite" ou "fausse" ;
+3. **que la coche de M11 ne soit pas rapportee a la question suivante** (section 6) ;
+4. **que le meuble ne dise jamais le resultat** (M6 clause 2). C4 etait tenue par absence ; elle ne
+   l'est plus, et il n'existe aucun test de ce depot qui compare les pixels du cabinet entre deux
+   verdicts ;
+5. **que l'indice arrive au bon moment et sur le bon item** : la mesure de la section 2 - deux aides
+   servies sur le seul item reussi, neuf items rates sans aucune aide - n'a rougi aucun test, et n'en
+   rougirait aucun demain ;
+6. **que le plancher de quatre manches ne reste pas vert en mentant.** Sous M1, il devient sans objet.
+   Je ne demande pas sa valeur - ce n'est pas mon domaine - je demande qu'il soit **corrige ou retire
+   avec son `ADR`**, jamais laisse vert en ne verifiant plus rien. Un garde-fou qui ne mord plus est
+   pire qu'un garde-fou absent : il fait croire couvert ce qui ne l'est pas ;
+7. **ce que l'enfant entend** (M13, derniere clause, et ma reserve H de l'arbitrage de forme du meme
+   jour). C'est le seul point de cette liste ou je dois reconnaitre que je ne suis pas encore une
+   garde : **je ne l'ai jamais fait.** Le defaut de focus de M13 est reste dans le depot depuis S1-4
+   sans que personne le voie, et il n'a ete trouve qu'en cherchant autre chose. Un anneau de focus et
+   un texte annonce ne se voient sur aucune capture : ils ne se constatent qu'en pressant Tabulation
+   et en ecoutant. Personne ne le fait aujourd'hui, moi comprise, et je l'ecris plutot que de laisser
+   croire que la porte pedagogique couvre ce cote-la.
+
+#### 9. Ce que je reverifierai en jouant, avant tout Done sur ce chantier
+
+Liste fermee. Aucun Done ne sera prononce avant que je l'aie epuisee.
+
+1. les treize conditions M1 a M13, une par une, sur les **huit** jeux ;
+2. le pli sur les huit jeux, dans les trois etats de M4, y compris les quatre jeux de s09 que je n'ai
+   jamais mesures ;
+3. une partie entiere jouee **tout en echecs** sur chacun des huit jeux : nombre de questions vues,
+   ecran final, duree ressentie ;
+4. une partie entiere jouee **tout juste** : que le signal positif arrive dix fois et que rien ne
+   parle de la question precedente ;
+5. le double appui sur une proposition, et le double appui sur deux propositions differentes ;
+6. le repli `prefers-reduced-motion: reduce`, avec le message et l'indice affiches ;
+7. mes douze acquis du 2026-08-11 : aucun ne doit avoir ete paye pour financer ce chantier ;
+8. **le risque que je concede en 2 bis** : un enfant se trompe-t-il expres pour faire venir l'indice ?
+   C'est la seule chose que je ne peux voir qu'en jouant plusieurs parties de suite ;
+9. **les quatre points d'arrivee de M13, au clavier** : Tabulation puis Entree apres une bonne
+   reponse, apres une mauvaise, sur l'ecran de revelation et sur l'ecran de fin de partie, sur les
+   huit jeux. La partie doit etre encore en cours dans les trois premiers cas ;
+10. **les quatre memes cas, en ecoutant** et non en regardant : ce que le lecteur d'ecran annonce a
+    l'arrivee du message, de l'indice, de la revelation et de "Bravo !". **C'est la premiere fois que
+    je l'inscris, et c'est la reserve H qui me l'a fait ecrire.**
+
+#### 10. Reserves nouvelles et datees du 2026-08-12
+
+Ni l'une ni l'autre n'est un refus, et aucune ne bloque le sprint. Elles sont ecrites pour que
+`camille-po` en fasse des stories.
+
+**Reserve A - 47 indices sur 49 des deux paquets de CM1 nomment la bonne reponse.**
+`cm1-conjugaison-present` 25 sur 25, `cm1-homophones` 22 sur 24 (0 bis, point A). Elle est
+**independante de ce chantier** : deja aujourd'hui, un enfant qui echoue trois fois recoit, sur la
+question suivante, un indice qui lui donne sa reponse - joue et constate ce jour. Ce que je demande :
+que ces 47 textes soient reecrits pour porter la **manipulation** sans la conclusion. Les indices de
+`cm1-homophones` la portent deja, il n'y a qu'a couper la fin : *"Remplace par 'avait' : 'Il avait
+mange une pomme' fonctionne"* est un indice complet sans les quatre derniers mots. **Mon manquement
+est nomme en 0 bis, point A : j'ai valide ces 47 textes sans verifier ce point.**
+
+**Reserve B - l'enfant qui trouve du premier coup n'a plus son explication.** Perte assumee en section
+4, portant sur les 6 items a variation de `cp-le-bon-son`. Ce que je demande : que `camille-po` cherche
+une place pour l'explication sur le chemin juste, en sachant que les deux places techniquement
+disponibles sont refusees par moi pour des motifs ecrits. Si aucune place n'existe, cette reserve
+restera ouverte et je l'ecrirai ainsi plutot que de la fermer par commodite.
+
+**Reserve C - un item a deux propositions ne peut pas etre reessaye.** Les 24 items de "Le bon petit
+mot" (section 3) : se tromper une fois y designe la reponse par logique. Le reessai n'y apporte rien.
+Ce que je signale : ce jeu tirerait un benefice reel d'une troisieme proposition, et c'est une
+question de contenu, pas de mecanique.
+
+#### 11. Ce que cet arbitrage ne tranche pas
+
+- **La forme du meuble, l'enseigne, le levier, le visage** : arbitrage separe quand `ines-design` aura
+  rendu. Les trois noms d'enseigne proposes par `DEC-0023` point 4 ne sont pas juges ici.
+- **Aucun choix technique** : le nombre de champs de session, la place de l'etat, les amendements
+  d'`ADR-0012`, d'`ADR-0026` et d'`ADR-0027`, le sort du bouton "Encore !" et de la preuve de morsure
+  d'`ADR-0017` appartiennent a `theo-archi`. Je decris des symptomes et des proprietes, jamais un
+  moyen.
+- **Le backlog** : je produis des motifs et trois reserves, `camille-po` en fait des stories.
+- **Aucun Done pedagogique** : rien n'est code, aucun increment n'est evaluable.
+- **Aucune ligne de `squad/programme/MATRICE-couverture.md`** ne bouge par cet arbitrage.
 
 ### Verdict courant - chantier du cabinet (S8-1, S8-2, S8-3), prononce sur l'increment livre, du 2026-08-11
 

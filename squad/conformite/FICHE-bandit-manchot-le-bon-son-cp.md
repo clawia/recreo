@@ -30,7 +30,20 @@
   retour** et **ma reserve 6 sur la distinction de l'explication precisee en cinq proprietes**. Ce
   n'est pas un Done pedagogique, il est degrade, et le VALIDE SOUS RESERVE du 2026-08-10 n'est pas
   touche.
-- **Derniere mise a jour** : 2026-08-11
+- **Arbitrage prealable de mecanique du 2026-08-12** (`DEC-0023` point 6 : l'ecran intermediaire
+  disparait) : ecrit dans `FICHE-bandit-manchot-additions-cp.md`, bloc de validation, section
+  "Arbitrage prealable au developpement - la mecanique apres la disparition de l'ecran
+  intermediaire". **Il vaut pour ce jeu comme pour les huit du catalogue**, la mecanique etant
+  commune : conditions M1 a M13, dont **deux bloquantes** - M4 (le message d'erreur doit etre vu
+  sans defiler a 360 x 640) et la clause 1 de M13 (apres une reponse, le focus ne va jamais sur la
+  sortie, qui detruit la partie sans confirmation). Ce n'est pas un Done pedagogique, rien n'est
+  code.
+  **Ce jeu est vise nommement par deux points** : la **reserve B** du 2026-08-12 - ses **six**
+  explications sont les seules du catalogue, elles nomment toutes la bonne reponse par la forme que
+  j'ai moi-meme dictee le 2026-08-06, et l'enfant qui trouve du premier coup ne les verra plus - et
+  la condition **M7**. C'est aussi sur ce jeu que j'ai joue la partie qui mesure le defaut de l'aide
+  actuelle : neuf manches ratees, deux aides servies, les deux sur le seul item reussi.
+- **Derniere mise a jour** : 2026-08-12
 
 ## Competences visees
 
