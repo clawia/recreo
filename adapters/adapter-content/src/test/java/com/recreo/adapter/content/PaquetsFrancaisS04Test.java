@@ -1,6 +1,5 @@
 package com.recreo.adapter.content;
 
-import com.recreo.application.catalog.GameDefinition;
 import com.recreo.domain.content.ContentSource;
 import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
@@ -75,8 +74,20 @@ import static org.assertj.core.api.Assertions.assertThat;
  * treizieme item de present "aide") oppose sa bonne reponse a un distracteur d'un autre temps du
  * meme verbe, portant une marque temporelle reperable dans la phrase ("demain", "autrefois",
  * "maintenant") plutot que devinable.</p>
+ *
+ * <p>DEC-0024 : "cm1-homophones" n'a plus d'entree dans le catalogue de production (le jeu qui le
+ * jouait, bandit-manchot-homophones-cm1, quitte le catalogue jouable - contenu valide, ecran trop
+ * court), mais le paquet lui-meme reste couvert par ce fichier, sur le meme principe que
+ * "cp-le-bon-son" sous DEC-0009 : charge directement par {@link YamlContentPackLoader#chargerPaquet},
+ * sans passer par le catalogue.</p>
  */
 class PaquetsFrancaisS04Test {
+
+    /**
+     * DEC-0024 : nombreDeManches que portait l'entree de catalogue retiree, conserve ici pour
+     * jouer une partie complete sur ce paquet sans dependre du catalogue de production.
+     */
+    private static final int ANCIEN_NOMBRE_DE_MANCHES_HOMOPHONES_CM1 = 10;
 
     private static final Set<String> COUPLES_HOMOPHONES_AUTORISES = Set.of(
             "a", "à", "et", "est", "on", "ont", "son", "sont", "ou", "où",
@@ -237,7 +248,7 @@ class PaquetsFrancaisS04Test {
 
     @Test
     void homophonesCm1NePresenteQueLesCouplesAttendusAvecUnUniqueDistracteurApparie() {
-        List<Question> items = tousLesItems(jeu("bandit-manchot-homophones-cm1").contenu());
+        List<Question> items = tousLesItems(paquet("cm1-homophones"));
 
         Set<String> couplesCouverts = new HashSet<>();
         for (Question item : items) {
@@ -267,7 +278,7 @@ class PaquetsFrancaisS04Test {
 
     @Test
     void homophonesCm1NeModifiePasLeContenuDesDixItemsExistants() {
-        List<Question> items = tousLesItems(jeu("bandit-manchot-homophones-cm1").contenu());
+        List<Question> items = tousLesItems(paquet("cm1-homophones"));
 
         /*
          * S5-5 (residuel) ajoute un indice a chacun de ces dix items, ce que S5-6 n'avait pas fait :
@@ -304,7 +315,7 @@ class PaquetsFrancaisS04Test {
 
     @Test
     void homophonesCm1VarieSurVingtManchesConsecutives() {
-        assertThat(enoncesSurVingtTirages(jeu("bandit-manchot-homophones-cm1").contenu()))
+        assertThat(enoncesSurVingtTirages(paquet("cm1-homophones")))
                 .as("variete minimale sur 20 manches")
                 .hasSizeGreaterThan(1);
     }
@@ -317,10 +328,11 @@ class PaquetsFrancaisS04Test {
      */
     @Test
     void homophonesCm1NePresentePasLesMemesPhrasesSurDeuxPartiesAGrainesDistinctes() {
-        GameDefinition jeu = jeu("bandit-manchot-homophones-cm1");
+        ContentSource contenu = paquet("cm1-homophones");
+        int nombreDeManches = ANCIEN_NOMBRE_DE_MANCHES_HOMOPHONES_CM1;
 
-        List<String> premierePartie = phrasesDUnePartieComplete(jeu, new Random(1));
-        List<String> secondePartie = phrasesDUnePartieComplete(jeu, new Random(2));
+        List<String> premierePartie = phrasesDUnePartieComplete(contenu, nombreDeManches, new Random(1));
+        List<String> secondePartie = phrasesDUnePartieComplete(contenu, nombreDeManches, new Random(2));
 
         assertThat(premierePartie)
                 .as("deux parties jouees avec des graines distinctes ne presentent pas exactement"
@@ -338,7 +350,7 @@ class PaquetsFrancaisS04Test {
      */
     @Test
     void homophonesCm1PorteLesQuatorzeDerniersItemsAvecLIndiceDeMesCorrige() {
-        List<Question> items = tousLesItems(jeu("bandit-manchot-homophones-cm1").contenu());
+        List<Question> items = tousLesItems(paquet("cm1-homophones"));
 
         List<Question> quatorzeDerniersItemsAttendus = List.of(
                 new Question(new ItemId("item-10"), "Pose ton cartable ___, à côté du mien.", "là", List.of("la"),
@@ -569,12 +581,13 @@ class PaquetsFrancaisS04Test {
     }
 
     /** Joue une partie complete de bandit manchot et rend les enonces presentes, dans leur ordre. */
-    private static List<String> phrasesDUnePartieComplete(GameDefinition jeu, Random graine) {
+    private static List<String> phrasesDUnePartieComplete(ContentSource contenu, int nombreDeManches,
+            Random graine) {
         RandomSource hasard = graine::nextInt;
         BanditManchot mecanique = new BanditManchot();
         BanditManchotMove reponseToujoursFausse = new BanditManchotMove("__jamais_une_bonne_reponse__");
 
-        GameSession session = mecanique.start(jeu.contenu(), hasard, jeu.nombreDeManches());
+        GameSession session = mecanique.start(contenu, hasard, nombreDeManches);
         List<String> phrases = new ArrayList<>();
         while (session.status() == SessionStatus.EN_COURS) {
             BanditManchotSession mancheEnCours = (BanditManchotSession) session;
@@ -613,13 +626,6 @@ class PaquetsFrancaisS04Test {
             dejaVus.add(question.id());
         }
         return items;
-    }
-
-    private static GameDefinition jeu(String id) {
-        return new YamlContentPackLoader().games().stream()
-                .filter(candidat -> candidat.id().equals(id))
-                .findFirst()
-                .orElseThrow();
     }
 
     /** DEC-0009 : charge un paquet retire du catalogue directement, sans passer par une entree de jeu. */
