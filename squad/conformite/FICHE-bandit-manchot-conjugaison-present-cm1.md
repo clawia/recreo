@@ -193,6 +193,52 @@ entree/sortie observables.
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
+### Verdict courant - chantier du bandit manchot (mecanique, forme, M10), du 2026-08-13 : REFUSE
+
+- **Verdict** : **REFUSE.** Aucun Done pedagogique sur ce jeu.
+- **Le verdict complet, ses mesures et mes trente-deux conditions une par une sont dans**
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`,
+  section "Verdict courant - chantier du bandit manchot (mecanique, forme, M10) (...) du
+  2026-08-13". Le meuble et la mecanique sont communs aux sept jeux du catalogue : je ne recopie pas
+  le raisonnement, j'ecris ici ce qui est propre a ce jeu.
+- **Increment audite** : `round-two` a `2d34a15`. Done technique acquis.
+- **Mes deux motifs de refus, tous deux bloquants** :
+  - **M4, bloquante, et c'est ici le pire cas du catalogue** : le bas du bloc de message est a
+    **891,19 px**, soit **251,19 px sous le pli**, en echec avec indice ; **813,19 px** sur
+    l'ecran de revelation (**173,19 px** dessous) ; et **le "Bravo !" lui-meme est a 659,19 px,
+    soit 19,19 px sous le pli**. Sur ce jeu, **ni l'erreur ni la reussite ne produisent quoi
+    que ce soit de visible**. La capture
+    `squad/conformite/releves-s10/captures/le-bon-verbe-echec-1-message-hors-ecran.png` est
+    l'ecran reel apres une mauvaise reponse : le seul changement visible est le mot barre.
+    Cause visible : les quatre propositions sont en **deux rangees de deux** (152 x 71 px), ce
+    qui porte le meuble a **222 px** de haut au lieu de 138.
+  - **M2** : ce jeu **affiche** son indice sur la question courante, des le premier echec, et
+    ses **25 indices sur 25 nomment la bonne reponse** - *"Au futur, avec 'nous', le verbe
+    'faire' est irregulier : il devient 'ferons'."* Ma condition M2 du 2026-08-12 disait
+    explicitement que ce jeu **ne peut pas afficher son indice** tant que les 47 textes de CM1
+    ne sont pas reecrits (reserve A, non rouverte et non durcie). Il l'affiche. Consequence :
+    **M5 est videe de son sens sur ce jeu**, puisque la reponse est donnee au premier echec au
+    lieu du troisieme.
+  - **M13 clause 1** : apres une bonne comme apres une mauvaise reponse, le focus reste sur
+    `BODY`, **une seule Tabulation atteint le bouton "Les jeux"** (`data-role="sortie"`) et
+    Entree **detruit la partie sans confirmation**. Verifie au clavier sur ce jeu. Cause :
+    `recreo.js` est charge dans le `<head>` et leve
+    `TypeError: Cannot read properties of null (reading 'addEventListener')`, donc l'ecouteur
+    qui deplace le focus n'est **jamais enregistre** et `data-focus` est un attribut mort.
+- **Ce qui est tenu et que je ferme sur ce jeu** : F16 (la marque "deja essayee" est un mot barre a
+  **9,55:1 au minimum** sur les quatre teintes, contre un plancher de 3:1), F9, F10 y compris sa
+  clause 3 que je n'avais pas pu fermer le 2026-08-13, F13 a F15 (le levier vit dans ses 20 px et
+  n'intercepte aucun appui), F17, F18, F19, M6 (le meuble est identique au pixel dans les quatre
+  etats), M8, M9, M10 et M12.
+- **Condition neuve M14, datee du 2026-08-13** : apres la revelation, un appui sur une autre
+  proposition doit la barrer comme n'importe quelle proposition deja essayee, sans compter d'essai,
+  sans changer le message, sans mouvement et sans desactivation. Motif complet en section 6 du
+  verdict de reference.
+- **Aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge.**
+
+**Ce jeu porte donc trois motifs et non deux**, et c'est le plus touche du catalogue.
+
+
 ### Verdict courant - quatrieme audit, increment corrige de S8-5, du 2026-08-11
 
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique **accorde**. **Le REFUSE du 2026-08-11

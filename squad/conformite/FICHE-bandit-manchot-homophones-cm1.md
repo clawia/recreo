@@ -70,6 +70,27 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
+### Note d'audit - ce jeu n'a pas ete joue au chantier du bandit manchot, du 2026-08-13
+
+- **Aucun verdict neuf, et ce n'est pas un oubli.** "Le bon petit mot" est **retire du catalogue par
+  `DEC-0024`** : il n'apparait pas dans les sept jeux servis, je n'ai donc pas pu le jouer, et je
+  n'invente pas un verdict sur un jeu absent.
+- **Rien de ce qui existait sur ce jeu n'est rouvert.** Son contenu reste `couvert-valide`, ses
+  conditions anterieures ne sont ni rouvertes ni durcies, et le refus du chantier du bandit manchot
+  prononce ce jour sur les sept autres fiches **ne porte pas sur celle-ci**.
+- **Ce que je signale pour le jour ou ce jeu reviendra**, et qui n'est pas une condition neuve :
+  - **M4 sera son obstacle**, et c'est le motif meme de son retrait par `DEC-0024`. Mon releve du
+    2026-08-11 donnait le bas du cabinet a **546..846 px** avec indice sur ce jeu, le pire du
+    catalogue. Le chantier livre place le message **sous** le meuble : sur ce jeu il serait plus bas
+    encore que les 251 px de deficit mesures aujourd'hui sur "Le bon verbe".
+  - **M2 le concerne aussi** : ses **22 indices sur 24** nomment la bonne reponse (reserve A du
+    2026-08-12, non rouverte). Ils sont les plus faciles a corriger du lot - il n'y a que la fin de
+    la phrase a couper.
+  - **Ma reserve C reste ouverte** : un item a deux propositions ne peut pas etre reessaye, se
+    tromper une fois y designe la reponse par logique, et le reessai que la mecanique livree apporte
+    n'y sert a rien. Ce jeu tirerait un benefice reel d'une troisieme proposition.
+- **Aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge.**
+
 ### Arbitrage prealable au developpement - silhouette du manche, relief et contraste du cabinet (s10), du 2026-08-12
 
 **Ce bloc n'est pas un Done pedagogique et ne touche aucun verdict de cette fiche.** L'arbitrage
