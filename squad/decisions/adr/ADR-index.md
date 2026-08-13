@@ -39,6 +39,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0033](ADR-0033-un-habillage-ne-change-pas-d-etat-sous-le-doigt-de-l-enfant.md) | Interdire a tout habillage de declarer une transition ou une animation et d'etre conditionne par une pseudo-classe interactive, et renverser le refus d'ADR-0030 sur la moitie non animee de C3 | s10 | 2026-08-12 | Accepte |
 | [ADR-0034](ADR-0034-un-corpus-d-ecrans-exerce-les-deux-verdicts.md) | Exiger que tout corpus d'ecrans exerce les deux verdicts, et lire leurs marqueurs dans le gabarit plutot que dans le test | s10 | 2026-08-12 | Accepte |
 | [ADR-0035](ADR-0035-aucun-texte-rendu-ne-vit-dans-un-sous-arbre-masque.md) | Refuser tout texte rendu a l'interieur d'un sous-arbre `aria-hidden`, et accrocher le masque au decor plutot qu'au conteneur | s10 | 2026-08-12 | Accepte |
+| [ADR-0036](ADR-0036-une-image-maison-entre-par-son-chemin-un-garde-fou-ne-lit-pas-un-binaire-comme-du-texte.md) | Faire entrer une image maison par son chemin litteral et non par une empreinte, deriver le perimetre d'une reference de ressource de l'attribut, et retirer les binaires du garde-fou de chemins | s10 | 2026-08-13 | Accepte |
 
 ## Amendements
 
@@ -79,6 +80,8 @@ est date dans le corps de l'ADR. Ceux du sprint 0 :
 | ADR-0035 | 2026-08-12 | **il etait trop large d'une clause, et c'est `nadia-prof` qui le montre** (sa reserve H) : en interdisant tout texte masque, il rendait impossible le seul usage correct d'`aria-hidden` et forcait le decor dans l'oreille de l'enfant. Un decor textuel se declare desormais par `data-decor` **sur l'element du texte**, et la clause symetrique - tout decor declare vit sous un masque - empeche la reserve d'etre une porte. Plafond epingle a zero. Amende le jour meme plutot que reporte, parce que la cinquieme structure qu'elle **prefere** est le premier membre de cette population : l'usage n'etait pas anticipe, il etait demande |
 | ADR-0012 | 2026-08-05 | **sa section executable nommait le mauvais paquet** : un contre-exemple range dans `domain.content.contreexemple` aurait ete invisible pour la regle qu'il doit faire echouer. Paquet corrige, contre-exemple et test de non-vacuite ecrits ; et la derniere ligne de son tableau de gardes de comportement, seule des quatre a etre restee sur le papier, est honoree dans `CatalogueChargeableIT` |
 | ADR-0027 | 2026-08-13 | **sa clause 2 forcait le defaut qu'elle croyait interdire, et elle exigeait ce defaut sans exception** : "tout ecran de jeu echange par htmx declare `par-un-geste`" etait juste tant qu'un echange htmx renouvelait toujours la question. Depuis le cycle de manche de S10, trois etats rendent le meme tirage - echec avec des essais restants, entree en revelation, appui a cote apres la revelation - et les colonnes y rebalaient. `nadia-prof` le refuse (condition M10) sur un motif mesure : le mouvement dit que la machine distribue alors que rien n'a ete distribue, et le prix est jusqu'a 18 s d'attente pour l'enfant qui se trompe le plus. **Cause : je n'avais jamais ecrit le sujet de `data-arrivee`.** C'est le tirage que les colonnes montrent, pas la reponse HTTP - quatrieme occurrence de ma famille de faute, apres ADR-0022, la limite 5 d'ADR-0017 et la section 2 d'ADR-0026. Clause devenue un "si et seulement si", condition calculee dans le point de passage unique et non a la route fautive, donc aucune route exemptee. Morsure : la production d'avant l'amendement rend **2 echecs sur 10 cas** et la clause nomme les trois etats ; le troisieme n'etait pas dans le corpus et y entre. Le vert silencieux de la lecture - une marque d'essai introuvable annulerait tout l'amendement - est ferme par un jeu fautif que **mon propre garde-fou de balayage a exige avant la revue** |
+| ADR-0014 | 2026-08-13 | **sa garantie hors ligne ne regardait aucun gabarit, depuis s06** : la branche gabarits selectionnait `link[th\:href]` et `script[th\:src]`, et sur la version de jsoup que ce build utilise reellement (1.23.1, verifiee par `dependency:build-classpath`) la forme echappee du deux-points ne selectionne **zero element**. Les cinq references de production etant toutes ecrites en Thymeleaf, aucune n'etait verifiee : ni distante, ni absente. Mesure sur `2d34a15` : l'icone d'en-tete pointee vers un CDN **et** la feuille vendorisee pointee vers un fichier inexistant laissent les 12 cas verts. Son jeu fautif `gabarit-sur-cdn` ecrivait un `href` en attribut simple, forme que la production n'ecrit nulle part - sixieme occurrence de la lecon de s05, et la premiere qui coute une garantie entiere et non une clause. Perimetre derive de l'attribut et selectionne par `hasAttr`, plus une clause anti-vacuite ancree sur le texte du gabarit (ADR-0036) |
+| ADR-0010 | 2026-08-13 | **son garde-fou lisait les binaires comme du texte, et inventait des fautes** : la forme a lettre de lecteur tient en quatre octets, que les octets compresses d'une image contiennent tot ou tard. Mesure sur 21 PNG de 72 ko a 500 ko : **4 refuses**, sur un motif sans aucun rapport avec un chemin ; `favicon.ico` y echappait par sa seule petitesse. Le jour ou la premiere illustration entre, la CI avait environ une chance sur cinq de rougir a tort, et le tirage se refaisait a chaque image. `grep -I` retire les binaires par leur contenu et non par une liste d'extensions. Deuxieme fois que cet ADR mord son propre auteur : mon commentaire d'explication du correctif citait la sequence fautive en clair (ADR-0036) |
 
 ## Lecture rapide
 
@@ -402,3 +405,23 @@ troisieme avait nommee sans la fermer :
     forme (interdire `aria-hidden` sur un conteneur) pour ne refuser que le defaut (du texte inaudible),
     parce que la forme aurait ete fausse en general. Ce n'est pas une regle ArchUnit, le compte reste a
     28 avec sa methode.
+34. **ADR-0036** est le seul `ADR` de ce depot ecrit pour dire qu'une decision **n'avait pas besoin de
+    lui**, et il vaut d'etre relu pour ce que la mesure a trouve a la place. La question posee etait
+    "quel `ADR` autorise les fichiers image", et la reponse est : aucun, rien ne les interdisait, une
+    image binaire est servie et affichee depuis s06 (`favicon.ico`, posee par un `img`). En le
+    mesurant, deux garde-fous se sont reveles faux dans des directions opposees - l'un ne regardait
+    rien (`ADR-0014` sur les gabarits, **zero element** selectionne parce que jsoup 1.23.1 ne comprend
+    pas le deux-points echappe, et une fixture ecrite en attribut simple le cachait), l'autre
+    inventait des fautes (`ADR-0010`, 4 PNG refuses sur 21 pour une sequence de quatre octets). Il
+    apporte trois choses au-dela de son sujet : la premiere occurrence ou **la lecon de s05 sur les
+    fixtures coute une garantie entiere** et non une clause ; un refus de clause **motive et mesure**
+    - pas de plafond de poids, parce qu'un nombre absolu est une cible produit, qu'un plafond relatif
+    ferait dependre le verdict d'une image du poids d'une bibliotheque, et qu'un cliquet doit valoir
+    exactement la dette, qui vaut 1 014 octets et interdirait donc la premiere illustration ; et une
+    propriete **pedagogique** qui cesse d'etre structurelle (la condition C5 de `nadia-prof`) et qu'un
+    critere deja ecrit mais jamais contre-exemplifie garde desormais pour de bon. Ce ne sont pas des
+    regles ArchUnit, le compte reste a **28**. Methode de ce compte : declarations `ArchRule <nom> =`
+    sous `src/test/java` des six modules du pom agregateur, ce que recense
+    `LesGardeFousSontMisALEpreuveTest.toutesLesRegles` ; un balayage plus large de `src/test` en rend
+    30, les deux de plus etant celles du faux depot de contre-exemple, qui ne sont pas des regles de ce
+    depot.

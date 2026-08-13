@@ -35,6 +35,16 @@ HOME_UNIX="${CTX}/home/${SEGMENT}"
 HOME_MAC="${CTX}/Users/${SEGMENT}"
 REGEX="${DRIVE_WIN}|${DRIVE_GITBASH}|${HOME_UNIX}|${HOME_MAC}"
 
+# ADR-0036 : -I retire les fichiers binaires du perimetre, et le retire par leur contenu (grep les
+# reconnait a leurs octets nuls) et non par une liste d'extensions qui echouerait par omission au
+# premier .woff ou .pdf. Motif mesure : sans -I, une image quelconque fait rougir ce garde-fou par
+# coincidence, parce que ses octets compresses contiennent tot ou tard une sequence de quatre octets
+# que la regex lit comme un chemin a lettre de lecteur - lettre, deux-points, antislash, caractere
+# alphanumerique, sans qu'aucun de ces octets ait le moindre rapport avec un chemin. Sur un lot de 21
+# PNG de 72 ko a 500 ko fabriques pour la mesure, 4 sont refuses ; le premier en portait deux, aux
+# offsets 102745 et 105396. Un binaire n'a pas de contenu redactionnel : ce que ce garde-fou protege -
+# un depot lisible et portable - n'existe pas dans ses octets.
+#
 # Tous les fichiers dans un seul appel a grep, plutot qu'un appel par fichier : sur un poste
 # Windows, le cout de lancement d'un processus se compte en dizaines de millisecondes, et se
 # voit dans le temps total sur plusieurs centaines de fichiers.
@@ -50,7 +60,7 @@ if [ "${#FICHIERS[@]}" -gt 0 ]; then
   # Un fichier de la liste qui n'existe plus (suppression en cours, chemin invalide) n'est ni une
   # occurrence ni une erreur : grep signale l'absence sur stderr (coupe) pour ce seul fichier et
   # continue les autres ; "|| true" absorbe le code de sortie global.
-  trouvailles="$(grep -nEH "${REGEX}" "${FICHIERS[@]}" 2>/dev/null || true)"
+  trouvailles="$(grep -I -nEH "${REGEX}" "${FICHIERS[@]}" 2>/dev/null || true)"
 
   while IFS= read -r trouvaille || [ -n "${trouvaille}" ]; do
     [ -z "${trouvaille}" ] && continue

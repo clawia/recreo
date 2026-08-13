@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- ADR-0036 : le chemin est local et litteral, mais aucun fichier ne vit au bout. C'est le cas d'un
+     fichier renomme, ou d'un gabarit ecrit avant que l'image n'arrive : l'enfant voit un cadre vide,
+     et rien dans la suite ne le disait avant cette clause. -->
+<div class="cabinet">
+    <div class="cabinet-bandeau" aria-hidden="true">
+        <img th:src="@{/images/fronton.png}" alt="">
+    </div>
+</div>
+</body>
+</html>

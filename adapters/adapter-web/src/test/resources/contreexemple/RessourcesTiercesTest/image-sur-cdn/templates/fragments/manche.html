@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- ADR-0036 : la facon la plus courante d'installer une illustration, et celle que ce depot refuse.
+     Le meuble s'afficherait sur le poste du developpeur, qui a du reseau, et pas dans la classe. -->
+<div class="cabinet">
+    <div class="cabinet-bandeau" aria-hidden="true">
+        <img src="https://cdn.example.org/arcade/fronton.png" alt="">
+    </div>
+</div>
+</body>
+</html>
