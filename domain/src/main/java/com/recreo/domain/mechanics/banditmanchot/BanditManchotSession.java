@@ -98,9 +98,15 @@ public final class BanditManchotSession implements GameSession {
     /**
      * M5, M9, M11 : trois branches. Sur une manche revelee, seul un appui sur la reponse nommee
      * fait avancer la partie (et ne compte pas comme une reussite) ; tout autre appui ne change
-     * rien. Sur une manche non revelee, une reponse correcte la resout ; une reponse fausse
-     * utilise un essai, marque la proposition et, au troisieme echec, revele la reponse sans
-     * resoudre la manche.
+     * rien - {@code this} est renvoye tel quel, sans essai compte ni proposition marquee. Sur une
+     * manche non revelee, une reponse correcte la resout ; une reponse fausse utilise un essai,
+     * marque la proposition et, au troisieme echec, revele la reponse sans resoudre la manche.
+     *
+     * <p>M14 (nadia-prof, 2026-08-13) : un appui a cote apres la revelation doit malgre tout
+     * recevoir la marque barree de M9 a l'affichage, sans que rien d'autre ne bouge ici - avis de
+     * faisabilite de theo-archi, s10, correction 2. Plutot que d'ajouter un champ a cette classe
+     * pour un seul geste sans consequence de jeu, {@code PartieController.propositionsEssayeesAffichees}
+     * duplique la condition {@code revelee && !choix.equals(bonneReponse)} pour l'affichage seul.</p>
      */
     BanditManchotSession jouer(BanditManchotMove coup) {
         if (mancheCourante == null) {
