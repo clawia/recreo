@@ -12,15 +12,15 @@
      pressant quelque chose, ou par un chargement de page qu'il n'a pas demande (la reprise silencieuse
      de S1-4, que accueil.html rend sans aucun echange htmx). Seule une regle d'animation le lira, et
      c'est lui seul qui autorise un mouvement : un mouvement que l'enfant n'a pas declenche est refuse
-     (nadia-prof, arbitrage du 2026-08-10, section 6).
-     Attribut et non classe, pour la meme raison qu'ADR-0017 a choisi data-role : ce qu'il declare
-     n'est pas un habillage. Une classe aurait du etre nommee par une regle servie
-     (HabillageDesEcransTest, qui a effectivement refuse la premiere version de ce marqueur), donc
-     aurait exige aujourd'hui une regle qui ne style rien - decorative, et refusee ici comme ailleurs.
-     Un selecteur d'attribut, [data-arrivee=par-un-geste], s'accroche aussi bien le jour ou une
-     animation existe. -->
+     (nadia-prof, arbitrage du 2026-08-10, section 6). -->
+<!-- S10, M13 : data-focus est un troisieme marqueur, sur le meme modele que data-arrivee - le serveur
+     declare ou doit aller le focus apres cet echange, jamais un script qui le devine. "enonce" designe
+     l'enonce (manche fraiche : premiere manche d'une partie, ou manche qui suit une reussite) ; l'autre
+     valeur designe le bouton porteur de data-focus-cible ci-dessous (celui que l'enfant vient de
+     presser sur un echec, celui qui porte la reponse revelee au troisieme echec). Jamais la sortie,
+     sur aucune des deux valeurs : c'est la clause bloquante de M13. -->
 <div th:fragment="manche" class="ecran-de-jeu"
-     th:attr="data-arrivee=${arriveeParUnGeste} ? 'par-un-geste' : 'sans-geste'">
+     th:attr="data-arrivee=${arriveeParUnGeste} ? 'par-un-geste' : 'sans-geste', data-focus=${focus}">
     <!-- ADR-0017 : data-role dit ce que le bouton fait du point de vue de l'enfant - avancer dans le
          jeu ou en sortir. C'est ce que le garde-fou de saillance relative compare, et il refuse tout
          bouton qui ne le porte pas. Attribut inerte : aucun CSS ni aucun script ne s'en sert. -->
@@ -29,12 +29,10 @@
     <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
     <p class="consigne" th:text="${consigne}"></p>
     <p class="enonce" th:text="${enonce}"></p>
-    <p class="indice" th:if="${indice != null}" th:text="${indice}"></p>
-    <!-- S8-1 : le cabinet entoure les colonnes de reponses, jamais la consigne, l'enonce ni
-         l'indice, qui restent au-dessus, hors du cadre (nadia-prof, arbitrage prealable du
-         2026-08-11, section 2 ; proposition-ines-cabinet.md, section 1). Deux freres purement
-         decoratifs, aria-hidden parce qu'ils ne portent aucune information que le texte de
-         l'ecran ne porte deja.
+    <!-- S8-1 : le cabinet entoure les colonnes de reponses, jamais la consigne ni l'enonce, qui
+         restent au-dessus, hors du cadre (nadia-prof, arbitrage prealable du 2026-08-11, section 2 ;
+         proposition-ines-cabinet.md, section 1). Deux freres purement decoratifs, aria-hidden parce
+         qu'ils ne portent aucune information que le texte de l'ecran ne porte deja.
          ADR-0030 point 1.a : les trois classes portent chacune une regle de recreo.css. Point 1.c :
          aucun th:if ni th:unless sur le cabinet, pour ne pas faire entrer une condition dans
          l'appariement de saillance des boutons qu'il contient. Point 1.d : ce balisage vit
@@ -44,11 +42,36 @@
     <div class="cabinet">
         <div class="cabinet-bandeau" aria-hidden="true"></div>
         <form class="propositions" th:attr="hx-post=@{'/parties/' + ${jeuId} + '/coups'}" hx-target="#jeu" hx-swap="innerHTML">
+            <!-- S10, M9 : "deja-essayee" marque une proposition deja pressee sur cette manche - elle
+                 reste cliquable, a sa place, de la meme taille (M8) : la classe ne nomme que la marque,
+                 son habillage visuel est laisse au lot qui porte le meuble.
+                 M13 clause 2 et 5 : data-focus-cible designe le bouton que ce fragment declare comme
+                 point de focus quand data-focus ne vaut pas "enonce" - la proposition que l'enfant
+                 vient de presser sur un echec, ou celle qui porte la reponse revelee. -->
             <button type="submit" class="btn proposition" data-role="action"
                     th:each="proposition : ${propositions}"
+                    th:classappend="${propositionsEssayees.contains(proposition)} ? 'deja-essayee' : ''"
+                    th:attr="data-focus-cible=${focusCibles.contains(proposition)}"
                     name="propositionChoisie" th:value="${proposition}" th:text="${proposition}"></button>
         </form>
         <div class="cabinet-socle" aria-hidden="true"></div>
+    </div>
+    <!-- S10, M1, M6, M9, M11, M12 : le seul emplacement ou le jeu parle de la reponse de l'enfant,
+         sous le meuble, hors du cadre du cabinet - jamais au-dessus (M1, M4). "message-jeu" est le
+         bloc que ce chantier pose pour le second lot : sa forme (fond, espacement) lui revient, sa
+         presence conditionnelle et son contenu sont ceux que M1-M13 fixent.
+         M11 clause 1 : le signal non textuel (icone, aplat) accompagne le texte, sur le meme
+         balisage .signal/.icone-signal que l'ancien ecran de retour - meme geometrie de boite,
+         juste ou faux. M11 clause 3 et M7 : une manche resolue par revelation n'affiche jamais ce
+         signal comme une reussite, et l'explication n'apparait qu'avec la revelation, jamais sur une
+         question neuve. -->
+    <div class="message-jeu" role="status" th:if="${message != null}">
+        <div class="signal" th:classappend="${signalJuste} ? 'est-juste' : 'est-faux'">
+            <span class="icone-signal" aria-hidden="true"></span>
+            <p class="verdict" th:text="${message}"></p>
+        </div>
+        <p class="explication" th:if="${explication != null}" th:text="${explication}"></p>
+        <p class="indice" th:if="${indice != null}" th:text="${indice}"></p>
     </div>
 </div>
 </body>

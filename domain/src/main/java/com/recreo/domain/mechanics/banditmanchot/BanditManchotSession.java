@@ -11,135 +11,147 @@ import com.recreo.domain.mechanic.SessionStatus;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
 /**
- * L'etat d'une partie de bandit manchot : la manche en attente de reponse, le verdict de la
- * derniere manche jouee, le score cumule et le tirage deja vu (ADR-0004 : l'etat de session
- * appartient a la mecanique, pas a un moteur partage).
+ * L'etat d'une partie de bandit manchot : la manche en attente de reponse, les essais deja
+ * joues sur cette manche, le verdict de la derniere manche resolue, le score cumule et le
+ * tirage deja vu (ADR-0004 : l'etat de session appartient a la mecanique, pas a un moteur
+ * partage).
  *
- * <p>ADR-0012 : la partie se termine des que {@code nombreDeManches} reponses ont ete donnees,
- * independamment de ce que rend le contenu. Deux aides face a l'echec repete se declenchent sur le
- * meme evenement, trois echecs consecutifs quel que soit l'item (DEC-0004 point 4, S3-2) : la
- * manche suivante represente un item deja reussi dans la session plutot qu'un nouveau tirage, et
- * elle porte l'indice que son contenu lui associe.</p>
+ * <p>S10, arbitrage de mecanique de nadia-prof (conditions M1 a M13 de sa fiche de conformite) :
+ * une mauvaise reponse ne tire plus la manche suivante, elle laisse l'enfant reessayer la meme
+ * manche. Trois consequences de fond sur cette classe :</p>
+ *
+ * <ul>
+ *   <li><b>M3, amendement d'ADR-0012.</b> {@link Score#tentatives()} compte desormais les
+ *   <b>manches resolues</b>, jamais les essais bruts : une partie de {@code nombreDeManches}
+ *   manches en presente {@code nombreDeManches} distinctes, quel que soit le nombre d'essais
+ *   depenses sur chacune, et ne se termine jamais au milieu d'une question ;</li>
+ *   <li><b>M5.</b> Trois essais au maximum par manche. Aux deux premiers echecs, la manche reste
+ *   la meme. Au troisieme, elle entre en revelation : le jeu nomme la bonne reponse et seul un
+ *   appui dessus la resout - un geste qui ne compte pas comme une reussite (M11 clause 3) ;</li>
+ *   <li><b>M1, remplacement de l'aide de S3-2 (DEC-0004 point 4).</b> L'ancienne aide - indice
+ *   apres trois echecs consecutifs sur des items differents, manche simplifiee representant un
+ *   item deja reussi - se declenchait dans le tirage de la manche suivante ; elle devient
+ *   inatteignable des qu'une reponse fausse ne tire plus de manche (avis de faisabilite de
+ *   theo-archi, s10, section 2.b). Elle disparait : l'indice est desormais une propriete de la
+ *   manche bloquante elle-meme, affiche des le premier echec sur cette manche et jusqu'a sa
+ *   resolution. Il n'y a plus de "manche plus simple".</li>
+ * </ul>
  */
 public final class BanditManchotSession implements GameSession {
 
-    private static final int SEUIL_ECHECS_CONSECUTIFS = 3;
+    /** M5 : nombre d'essais au maximum sur une manche avant que la reponse ne soit revelee. */
+    private static final int ESSAIS_AVANT_REVELATION = 3;
 
     /**
-     * S3-2, ADR-0013 : longueur minimale de partie en dessous de laquelle l'aide (manche plus
-     * simple, indice) ne peut jamais s'afficher, quelle que soit la sequence de reponses - il faut
-     * SEUIL_ECHECS_CONSECUTIFS manches ratees, puis une manche de plus pour porter l'aide.
-     * CatalogueChargeableIT compare cette valeur a nombreDeManches pour chaque jeu du catalogue.
+     * M1 : l'indice se declenche des le premier echec sur la manche courante - une partie d'une
+     * seule manche peut deja le montrer. CatalogueChargeableIT compare cette valeur a
+     * nombreDeManches pour chaque jeu du catalogue reel plutot que de l'ecrire en dur.
      */
-    static final int LONGUEUR_MINIMALE_POUR_AIDE = SEUIL_ECHECS_CONSECUTIFS + 1;
+    static final int LONGUEUR_MINIMALE_POUR_AIDE = 1;
 
     private final ContentSource contenu;
     private final RandomSource hasard;
     private final int nombreDeManches;
     private final Set<ItemId> dejaTirees;
-    private final List<Question> reussies;
-    private final int echecsConsecutifs;
     private final Question mancheCourante;
     private final List<String> propositions;
-    private final Optional<String> indiceAffiche;
-    private final Verdict dernierVerdict;
+    private final int essaisSurLaManche;
+    private final Set<String> propositionsEssayees;
+    private final Optional<String> derniereTentative;
+    private final boolean revelee;
+    private final Optional<Verdict> dernierVerdict;
     private final Score score;
     private final SessionStatus status;
 
     private BanditManchotSession(ContentSource contenu, RandomSource hasard, int nombreDeManches,
-                                  Set<ItemId> dejaTirees, List<Question> reussies,
-                                  int echecsConsecutifs, Question mancheCourante,
-                                  List<String> propositions, Optional<String> indiceAffiche,
-                                  Verdict dernierVerdict, Score score, SessionStatus status) {
+                                  Set<ItemId> dejaTirees, Question mancheCourante,
+                                  List<String> propositions, int essaisSurLaManche,
+                                  Set<String> propositionsEssayees, Optional<String> derniereTentative,
+                                  boolean revelee, Optional<Verdict> dernierVerdict, Score score,
+                                  SessionStatus status) {
         this.contenu = contenu;
         this.hasard = hasard;
         this.nombreDeManches = nombreDeManches;
         this.dejaTirees = Set.copyOf(dejaTirees);
-        this.reussies = List.copyOf(reussies);
-        this.echecsConsecutifs = echecsConsecutifs;
         this.mancheCourante = mancheCourante;
         this.propositions = List.copyOf(propositions);
-        this.indiceAffiche = indiceAffiche;
+        this.essaisSurLaManche = essaisSurLaManche;
+        this.propositionsEssayees = Set.copyOf(propositionsEssayees);
+        this.derniereTentative = derniereTentative;
+        this.revelee = revelee;
         this.dernierVerdict = dernierVerdict;
         this.score = score;
         this.status = status;
     }
 
     static BanditManchotSession demarrer(ContentSource contenu, RandomSource hasard, int nombreDeManches) {
-        return tirerManche(contenu, hasard, nombreDeManches, new HashSet<>(), List.of(), 0, null,
+        return tirerManche(contenu, hasard, nombreDeManches, new HashSet<>(), Optional.empty(),
                 new Score(0, 0));
     }
 
+    /**
+     * M5, M9, M11 : trois branches. Sur une manche revelee, seul un appui sur la reponse nommee
+     * fait avancer la partie (et ne compte pas comme une reussite) ; tout autre appui ne change
+     * rien. Sur une manche non revelee, une reponse correcte la resout ; une reponse fausse
+     * utilise un essai, marque la proposition et, au troisieme echec, revele la reponse sans
+     * resoudre la manche.
+     */
     BanditManchotSession jouer(BanditManchotMove coup) {
         if (mancheCourante == null) {
             throw new IllegalStateException("la partie est terminee, plus aucune manche a jouer");
         }
-        boolean juste = mancheCourante.bonneReponse().equals(coup.propositionChoisie());
-        /*
-         * ADR-0024 : l'explication est celle de l'item qui vient d'etre joue, prise ici parce que
-         * c'est le seul instant ou la session le tient encore. Elle voyage a chaque manche jouee,
-         * juste ou fausse, et sans memoire des occurrences precedentes : un item revu (aide de S3-2)
-         * la represente donc, ce qui est ce que nadia-prof demande explicitement.
-         */
-        Verdict verdict = new Verdict(juste, mancheCourante.bonneReponse(), mancheCourante.explication());
-        Score nouveauScore = avancer(score, juste);
+        String choix = coup.propositionChoisie();
+        boolean estLaBonneReponse = mancheCourante.bonneReponse().equals(choix);
 
-        List<Question> reussiesSuivantes = new ArrayList<>(reussies);
-        int echecsConsecutifsSuivants;
-        if (juste) {
-            if (reussiesSuivantes.stream().noneMatch(question -> question.id().equals(mancheCourante.id()))) {
-                reussiesSuivantes.add(mancheCourante);
-            }
-            echecsConsecutifsSuivants = 0;
-        } else {
-            echecsConsecutifsSuivants = echecsConsecutifs + 1;
+        if (revelee) {
+            return estLaBonneReponse ? resoudre(false) : this;
+        }
+        if (estLaBonneReponse) {
+            return resoudre(true);
         }
 
-        if (nouveauScore.tentatives() >= nombreDeManches) {
-            return new BanditManchotSession(contenu, hasard, nombreDeManches, dejaTirees, reussiesSuivantes,
-                    echecsConsecutifsSuivants, null, List.of(), Optional.empty(), verdict, nouveauScore,
-                    SessionStatus.TERMINEE);
-        }
-        return tirerManche(contenu, hasard, nombreDeManches, new HashSet<>(dejaTirees), reussiesSuivantes,
-                echecsConsecutifsSuivants, verdict, nouveauScore);
+        int essaisSuivants = essaisSurLaManche + 1;
+        Set<String> essayeesSuivantes = new LinkedHashSet<>(propositionsEssayees);
+        essayeesSuivantes.add(choix);
+        return new BanditManchotSession(contenu, hasard, nombreDeManches, dejaTirees, mancheCourante,
+                propositions, essaisSuivants, essayeesSuivantes, Optional.of(choix),
+                essaisSuivants >= ESSAIS_AVANT_REVELATION, dernierVerdict, score, SessionStatus.EN_COURS);
     }
 
     /**
-     * Choisit la manche suivante. Le declencheur des deux aides est le meme, et il porte sur la
-     * valeur entrante {@code echecsConsecutifs} (S3-2, piege nomme par theo-archi) : l'obtenir
-     * apres l'avoir remise a zero pour la "manche plus simple" ferait echouer le cas ou les deux
-     * aides doivent se declencher ensemble. Un item deja reussi remplace le tirage normal (DEC-0004,
-     * point 4), sauf si aucun item n'a encore ete reussi, auquel cas le tirage normal reprend sans
-     * erreur (repli explicite) - l'indice se declenche alors sans la manche plus simple.
+     * Resout la manche courante - juste ou par revelation - et tire la suivante, ou termine la
+     * partie. M3 : c'est ce geste, et lui seul, qui fait avancer {@link Score#tentatives()}.
      */
+    private BanditManchotSession resoudre(boolean juste) {
+        Verdict verdict = new Verdict(juste, mancheCourante.bonneReponse(), mancheCourante.explication());
+        Score nouveauScore = new Score(score.reussites() + (juste ? 1 : 0), score.tentatives() + 1);
+        if (nouveauScore.tentatives() >= nombreDeManches) {
+            return new BanditManchotSession(contenu, hasard, nombreDeManches, dejaTirees, null,
+                    List.of(), 0, Set.of(), Optional.empty(), false, Optional.of(verdict), nouveauScore,
+                    SessionStatus.TERMINEE);
+        }
+        return tirerManche(contenu, hasard, nombreDeManches, new HashSet<>(dejaTirees),
+                Optional.of(verdict), nouveauScore);
+    }
+
     private static BanditManchotSession tirerManche(ContentSource contenu, RandomSource hasard,
                                                       int nombreDeManches, HashSet<ItemId> tirees,
-                                                      List<Question> reussies, int echecsConsecutifs,
-                                                      Verdict verdict, Score score) {
-        boolean declencheAide = echecsConsecutifs >= SEUIL_ECHECS_CONSECUTIFS;
-        Question manche;
-        int echecsConsecutifsApres = echecsConsecutifs;
-        if (declencheAide && !reussies.isEmpty()) {
-            manche = reussies.get(hasard.nextInt(reussies.size()));
-            echecsConsecutifsApres = 0;
-        } else {
-            Optional<Item> tiree = contenu.next(hasard, tirees);
-            if (tiree.isEmpty()) {
-                return new BanditManchotSession(contenu, hasard, nombreDeManches, tirees, reussies,
-                        echecsConsecutifsApres, null, List.of(), Optional.empty(), verdict, score,
-                        SessionStatus.TERMINEE);
-            }
-            manche = questionDe(tiree.orElseThrow());
+                                                      Optional<Verdict> verdict, Score score) {
+        Optional<Item> tiree = contenu.next(hasard, tirees);
+        if (tiree.isEmpty()) {
+            return new BanditManchotSession(contenu, hasard, nombreDeManches, tirees, null, List.of(),
+                    0, Set.of(), Optional.empty(), false, verdict, score, SessionStatus.TERMINEE);
         }
+        Question manche = questionDe(tiree.orElseThrow());
         tirees.add(manche.id());
-        Optional<String> indiceAffiche = declencheAide ? manche.indice() : Optional.empty();
-        return new BanditManchotSession(contenu, hasard, nombreDeManches, tirees, reussies,
-                echecsConsecutifsApres, manche, melanger(manche, hasard), indiceAffiche, verdict, score,
+        return new BanditManchotSession(contenu, hasard, nombreDeManches, tirees, manche,
+                melanger(manche, hasard), 0, Set.of(), Optional.empty(), false, verdict, score,
                 SessionStatus.EN_COURS);
     }
 
@@ -147,10 +159,6 @@ public final class BanditManchotSession implements GameSession {
         return switch (item) {
             case Question question -> question;
         };
-    }
-
-    private static Score avancer(Score score, boolean juste) {
-        return new Score(score.reussites() + (juste ? 1 : 0), score.tentatives() + 1);
     }
 
     private static List<String> melanger(Question question, RandomSource hasard) {
@@ -174,13 +182,47 @@ public final class BanditManchotSession implements GameSession {
         return propositions;
     }
 
-    /** L'indice n'est expose qu'apres SEUIL_ECHECS_CONSECUTIFS echecs consecutifs (S3-2). */
+    /**
+     * M1 : l'indice de la manche bloquante, affiche des le premier echec sur cette manche et
+     * jusqu'a sa resolution. Vide sur une manche fraiche, comme sur une partie terminee.
+     */
     public Optional<String> indice() {
-        return indiceAffiche;
+        return essaisSurLaManche > 0 ? mancheCourante.indice() : Optional.empty();
+    }
+
+    /** M9 : les propositions deja essayees sur la manche courante - marquees, jamais retirees. */
+    public Set<String> propositionsEssayees() {
+        return propositionsEssayees;
+    }
+
+    /** M13 : la derniere proposition pressee sur la manche courante, pour son point de focus. */
+    public Optional<String> derniereTentative() {
+        return derniereTentative;
+    }
+
+    /** M5 : vrai des le troisieme echec sur la manche courante - la reponse est desormais revelee. */
+    public boolean revelee() {
+        return revelee;
+    }
+
+    /**
+     * M5, M9 clause 5 : la bonne reponse de la manche courante, exposee seulement une fois
+     * revelee. Avant ce moment, aucune methode de cette classe ne la designe.
+     */
+    public Optional<String> reponseRevelee() {
+        return revelee ? Optional.of(mancheCourante.bonneReponse()) : Optional.empty();
+    }
+
+    /**
+     * M7 : l'explication de la manche courante survit du cote faux avec la revelation - exposee
+     * seulement une fois revelee, jamais avant, comme {@link #reponseRevelee()}.
+     */
+    public Optional<String> explicationRevelee() {
+        return revelee ? mancheCourante.explication() : Optional.empty();
     }
 
     public Optional<Verdict> dernierVerdict() {
-        return Optional.ofNullable(dernierVerdict);
+        return dernierVerdict;
     }
 
     @Override

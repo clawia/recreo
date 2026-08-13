@@ -232,3 +232,32 @@ implementera la mecanique**, et elle est nommee ici pour qu'elle ne se decouvre 
 `mvn -B verify` sur l'arbre de ce lot, `JAVA_HOME` sur un JDK 21.0.10 : **BUILD SUCCESS**, 382 tests,
 0 echec. Baseline avant ce lot, meme commande, meme JDK : 371 tests, 0 echec. Les onze tests d'ecart
 sont les clauses de cet `ADR` et d'`ADR-0035`, amendements compris.
+
+> **Amendement du 2026-08-13 (s10, marc-dev) - la clause a rougi comme annonce, et voici sa
+> re-derivation.**
+>
+> Confirme exactement : implementer l'arbitrage de mecanique de nadia-prof
+> (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, conditions M1-M13) a rendu
+> `leCorpusExerceChaqueCoupleDeVerdictEtDeSuite` rouge sur le couple faux + `EN_COURS`, dans les deux
+> classes qui la portent. `fragments/retour.html` ne rend plus qu'un seul etat - la fin de partie -
+> puisque le cycle de manche absorbe desormais la reponse juste comme la fausse tant que la partie
+> continue ; sa branche "la partie continue" (`${enSuite}`, "Encore !") a disparu avec
+> `GET /parties/{jeuId}/manche`, son seul appelant.
+>
+> **Ce que cela change pour la lecture du marqueur de fin de partie.** `marqueurDeFinDePartie()`
+> lisait la classe portee par l'element que la negation de `${enSuite}` rend - il n'y a plus de
+> condition `${enSuite}` a lire, `fragments/retour.html` n'ayant plus qu'un seul etat a exprimer. La
+> lecture est re-derivee sur ce que ce gabarit garde d'unique et de stable : la classe de l'element
+> dont le texte fixe est "C'est fini !" - un litteral que ce depot traite deja comme une source de
+> verite ailleurs (`TexteAccentueDesGabaritsTest.leMessageDeFinDePartieRefuseParNadiaNeRevientPas`).
+> Le corpus des deux classes est etendu d'un ecran neuf ("manche en revelation, la partie continue")
+> pour que M5 soit lui aussi exerce, sans quoi rien ne distinguerait plus un echec ordinaire d'une
+> revelation dans ce corpus.
+>
+> **Ce qui n'a pas bouge** : la clause elle-meme, `marqueursDeVerdict()` (toujours lus sur
+> `${juste}`), et le principe que ce corpus derive ses marqueurs du gabarit plutot que de les
+> recopier (ADR-0015). Aucune des deux classes n'a ete exemptee ni affaiblie.
+>
+> Fichiers : `adapters/adapter-web/src/test/java/com/recreo/adapter/web/ToutEcranEchangeEstUnDocumentJouableTest.java`,
+> `adapters/adapter-web/src/test/java/com/recreo/adapter/web/LEcranDeJeuDeclareCommentIlEstArriveTest.java`,
+> `adapters/adapter-web/src/main/resources/templates/fragments/retour.html`.

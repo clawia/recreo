@@ -78,10 +78,11 @@ class EtatDePartieEnSessionTest {
     void unCoupRecuSurUnePartieTermineeNeRejoueRienEtRendLEtatFinal() {
         MockHttpServletRequest requete = requeteAvecPartieEnCours(1);
         EtatDePartieEnSession etat = new EtatDePartieEnSession(requete);
-        BanditManchotSession terminee = etat.jouer(JEU_ID, EtatDePartieEnSessionTest::coup);
+        BanditManchotSession terminee = etat.jouer(JEU_ID, EtatDePartieEnSessionTest::coup).session();
         assertThat(terminee.status()).isEqualTo(SessionStatus.TERMINEE);
 
-        BanditManchotSession apresLeSecondAppui = etat.jouer(JEU_ID, EtatDePartieEnSessionTest::coup);
+        BanditManchotSession apresLeSecondAppui =
+                etat.jouer(JEU_ID, EtatDePartieEnSessionTest::coup).session();
 
         assertThat(apresLeSecondAppui).isSameAs(terminee);
         assertThat(apresLeSecondAppui.score().tentatives()).isEqualTo(1);

@@ -139,6 +139,11 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
     /**
      * Le corpus d'ecrans, produit en jouant une vraie partie de bout en bout puis en lisant ce que
      * les routes rendent une fois cette partie terminee. Chaque entree est un document assemble.
+     *
+     * <p>S10 : depuis que le cycle de manche absorbe la reponse juste comme la fausse, {@code POST
+     * /parties/{jeuId}/coups} rend un ecran de manche tant que la partie continue - juste ou faux -
+     * et ne rend l'ecran de retour que sur la fin de partie. {@code GET /parties/{jeuId}/manche} a
+     * disparu avec son seul appelant ("Encore !") : aucun ecran de ce corpus n'y fait plus appel.</p>
      */
     private List<Ecran> ecrans() throws Exception {
         List<Ecran> ecrans = new ArrayList<>();
@@ -150,22 +155,20 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
                 assembler(corps(post("/parties/{jeuId}", JEU_ID).session(partie)))));
         ecrans.add(new Ecran("accueil pendant une partie en cours (reprise)", "GET /",
                 Jsoup.parse(corps(get("/").session(partie)))));
-        ecrans.add(new Ecran("retour juste, la partie continue", "POST /parties/{jeuId}/coups",
+        ecrans.add(new Ecran("manche apres une reponse juste, la partie continue",
+                "POST /parties/{jeuId}/coups",
                 assembler(corps(post("/parties/{jeuId}/coups", JEU_ID).session(partie)
                         .param("propositionChoisie", "1")))));
-        ecrans.add(new Ecran("retour faux, la partie continue", "POST /parties/{jeuId}/coups",
-                assembler(corpsDUnCoupFaux())));
-        ecrans.add(new Ecran("manche 2, lue apres un retour", "GET /parties/{jeuId}/manche",
-                assembler(corps(get("/parties/{jeuId}/manche", JEU_ID).session(partie)))));
+        ecrans.add(new Ecran("manche apres une reponse fausse, la partie continue",
+                "POST /parties/{jeuId}/coups", assembler(corpsDUnCoupFaux())));
+        ecrans.add(new Ecran("manche en revelation, la partie continue",
+                "POST /parties/{jeuId}/coups", assembler(corpsDUneRevelation())));
         ecrans.add(new Ecran("retour de la derniere manche, fin de partie",
                 "POST /parties/{jeuId}/coups",
                 assembler(corps(post("/parties/{jeuId}/coups", JEU_ID).session(partie)
                         .param("propositionChoisie", "2")))));
         ecrans.add(new Ecran("fin de partie sur une reponse fausse", "POST /parties/{jeuId}/coups",
                 assembler(corpsDUneFinDePartieFaussee())));
-        ecrans.add(new Ecran("lecture d'une manche sur une partie terminee",
-                "GET /parties/{jeuId}/manche",
-                assembler(corps(get("/parties/{jeuId}/manche", JEU_ID).session(partie)))));
         ecrans.add(new Ecran("retour explicite a la liste des jeux", "POST /retour",
                 assembler(corps(post("/retour").session(partie)))));
         ecrans.add(new Ecran("ecran d'erreur, partie introuvable", "POST /parties/{jeuId}/coups",
@@ -176,9 +179,8 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
     }
 
     /**
-     * Une reponse fausse jouee sur une partie qui continue. Elle vit sur sa propre session : la partie
-     * a deux items ne peut pas porter a la fois un retour faux et un retour juste qui la laissent en
-     * cours.
+     * Une reponse fausse jouee sur une partie qui continue, avec des essais restants (M5) : la
+     * manche ne bouge pas, elle vit sur sa propre session.
      */
     private String corpsDUnCoupFaux() throws Exception {
         MockHttpSession partieFaussee = new MockHttpSession();
@@ -188,37 +190,69 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
     }
 
     /**
-     * ADR-0034, amendement : la derniere manche jouee faux, donc une partie qui se termine sur un
-     * verdict faux. Le jeu a deux items ne peut pas la produire - ses deux manches se terminent sur la
-     * bonne reponse ou pas du tout - et le jeu a item repete demanderait dix coups. Le jeu infini a
-     * deux manches la produit en deux.
+     * M5 : trois echecs sur la meme manche declenchent la revelation - la manche continue, sur sa
+     * propre session.
      */
-    private String corpsDUneFinDePartieFaussee() throws Exception {
-        MockHttpSession partie = new MockHttpSession();
-        corps(post("/parties/{jeuId}", JEU_INFINI_ID).session(partie));
-        corps(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+    private String corpsDUneRevelation() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        corps(post("/parties/{jeuId}", JEU_REPETE_ID).session(session));
+        corps(post("/parties/{jeuId}/coups", JEU_REPETE_ID).session(session)
                 .param("propositionChoisie", PROPOSITION_FAUSSE));
-        return corps(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+        corps(post("/parties/{jeuId}/coups", JEU_REPETE_ID).session(session)
+                .param("propositionChoisie", PROPOSITION_FAUSSE));
+        return corps(post("/parties/{jeuId}/coups", JEU_REPETE_ID).session(session)
                 .param("propositionChoisie", PROPOSITION_FAUSSE));
     }
 
     /**
-     * Le marqueur que le gabarit de retour ecrit sur la branche sans suite, lu dans le gabarit comme
-     * les deux marqueurs de verdict : la classe de l'element porte par la negation de {@code enSuite}.
+     * ADR-0034, amendement : la derniere manche resolue par revelation, donc une partie qui se
+     * termine sur un verdict faux (M11 clause 3 : une manche resolue par revelation n'est pas une
+     * reussite). Le jeu infini, a hasard fixe, represente toujours la meme addition (0 + 1) - sa
+     * bonne reponse, "1", est connue sans lire aucune proposition rendue. Chacune de ses deux
+     * manches est resolue par trois echecs puis la reponse revelee.
+     */
+    private String corpsDUneFinDePartieFaussee() throws Exception {
+        MockHttpSession partie = new MockHttpSession();
+        corps(post("/parties/{jeuId}", JEU_INFINI_ID).session(partie));
+        String derniere = "";
+        for (int manche = 0; manche < 2; manche++) {
+            corps(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                    .param("propositionChoisie", "0"));
+            corps(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                    .param("propositionChoisie", "0"));
+            corps(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                    .param("propositionChoisie", "0"));
+            derniere = corps(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                    .param("propositionChoisie", "1"));
+        }
+        return derniere;
+    }
+
+    /**
+     * Le marqueur que le gabarit de retour ecrit sur son unique etat, lu dans le gabarit comme les
+     * deux marqueurs de verdict (ADR-0015).
+     *
+     * <p>S10, amendement : depuis que le cycle de manche absorbe la reponse juste comme la fausse,
+     * {@code fragments/retour.html} ne rend plus qu'un seul etat - la fin de partie - et n'a donc
+     * plus de condition a lire pour le distinguer (la branche "la partie continue", "Encore !", a
+     * disparu avec son seul appelant). Le marqueur se lit desormais sur l'element dont le texte fixe
+     * est "C'est fini !" (deja un litteral stable pour ce depot : TexteAccentueDesGabaritsTest le lit
+     * de la meme facon).</p>
      */
     static String marqueurDeFinDePartie() throws IOException {
         Document gabarit = Jsoup.parse(GABARIT_DE_RETOUR.toFile(), "UTF-8");
         List<String> marqueurs = new ArrayList<>();
         for (Element porteur : gabarit.getAllElements()) {
-            if (porteur.hasAttr("th:unless") && porteur.attr("th:unless").contains("${enSuite}")) {
+            if ("C'est fini !".equals(porteur.ownText().strip())) {
                 marqueurs.add(porteur.className().strip());
             }
         }
         assertThat(marqueurs)
-                .as("ADR-0034 : le marqueur de fin de partie se lit dans %s, sur l'element que la "
-                        + "negation de ${enSuite} rend. Un seul est attendu ; si le gabarit exprime "
-                        + "desormais la fin de partie autrement, c'est ici qu'il faut re-deriver la "
-                        + "lecture", GABARIT_DE_RETOUR)
+                .as("ADR-0034 : le marqueur de fin de partie se lit dans %s, sur l'element dont le "
+                        + "texte fixe est \"C'est fini !\" - ce gabarit ne rend plus qu'un seul etat, "
+                        + "donc plus aucune condition a lire pour le distinguer. Un seul est attendu ; "
+                        + "si le gabarit exprime desormais la fin de partie autrement, c'est ici qu'il "
+                        + "faut re-deriver la lecture", GABARIT_DE_RETOUR)
                 .hasSize(1);
         return marqueurs.get(0);
     }
@@ -394,35 +428,6 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
         assertThat(paragraphesVides(manche))
                 .as("un enonce que le modele n'a pas nourri doit rendre ce garde-fou rouge")
                 .isNotEmpty();
-    }
-
-    /**
-     * ADR-0020, clause 2, versant positif : ce que la lecture d'une partie terminee rend a la place
-     * de l'ecran mort. ADR-0019 avait ferme ce cas cote commande (un coup rejoue rend l'ecran de fin
-     * de partie) ; ce chemin-ci est en lecture et l'ignorait.
-     */
-    @Test
-    void laLectureDUneMancheSurUnePartieTermineeRendLEcranDeFinDePartie() throws Exception {
-        MockHttpSession partie = new MockHttpSession();
-        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(partie));
-        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID).session(partie)
-                .param("propositionChoisie", "1"));
-        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID).session(partie)
-                .param("propositionChoisie", "2"));
-
-        Document ecran = Jsoup.parseBodyFragment(
-                corps(get("/parties/{jeuId}/manche", JEU_ID).session(partie)));
-
-        assertThat(ecran.select(".fin-de-partie").text()).isEqualTo("C'est fini !");
-        assertThat(ecran.select(".score").text())
-                .as("le score de la partie terminee est celui qu'elle avait, la lecture ne le refait pas")
-                .isEqualTo("Score : 2");
-        assertThat(ecran.select(".proposition"))
-                .as("une partie terminee ne propose plus de reponse a choisir")
-                .isEmpty();
-        assertThat(ecran.text())
-                .as("ADR-0011 : ce n'est pas un defaut, l'ecran d'erreur n'a rien a faire ici")
-                .doesNotContain("Oups ! Le jeu a un souci.");
     }
 
     /**

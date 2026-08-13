@@ -154,3 +154,46 @@ n'invente donc aucun mecanisme nouveau, je nomme les tests que les ADR existants
 - Si le nombre de parametres de partie portes par `start` depassait deux ou trois, ce serait le
   signe qu'il faut les regrouper dans un petit type dedie du contrat de mecanique (toujours un
   record, jamais une classe concrete) plutot que d'allonger indefiniment la signature.
+
+> **Amendement du 2026-08-13 (s10, marc-dev) - M3, arbitrage de mecanique de nadia-prof
+> (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`) : `nombreDeManches` compte les manches
+> resolues, jamais les essais.**
+>
+> Contexte : le meme arbitrage supprime l'ecran de retour intermediaire - une mauvaise reponse ne
+> tire plus la manche suivante, elle laisse l'enfant reessayer la meme manche jusqu'a trois echecs,
+> puis la revele (M5). `Score.tentatives()` comptait jusqu'ici chaque coup joue, juste ou faux ;
+> avec le reessai, ce compteur peut desormais avancer plusieurs fois sur la **meme** manche, ce que
+> le critere d'origine de cet ADR ("`nombreDeManches` manches, pas `nombreDeManches` coups") ne
+> permet pas. `theo-archi` l'a chiffre dans son avis de faisabilite de s10 (section 2.a) : compter
+> chaque essai romprait la promesse de cet ADR de deux facons a la fois - une partie de dix manches
+> ou l'enfant se trompe trois fois sur la premiere en verrait sept au lieu de dix, et elle pourrait
+> se terminer **au milieu** d'une question, sur un essai faux. `nadia-prof` refuse les deux, le
+> second plus fermement que le premier : arracher a un enfant de six ans la question qu'il etait en
+> train de reprendre, pour lui annoncer que c'est fini, contredit exactement ce que le reessai est
+> cense lui apporter.
+>
+> **La decision reste celle de cet ADR, sa mise en oeuvre change d'un mot.** `Score.tentatives()`
+> compte desormais les manches **resolues** - une reponse correcte, ou la revelation du troisieme
+> echec suivie de l'appui sur la reponse nommee (M5, M11 clause 3) - jamais un essai qui laisse la
+> manche en cours. Une manche non resolue (un ou deux echecs, essais restants) ne fait donc avancer
+> ni `tentatives()` ni `reussites()` : elle reste comptee une seule fois, au moment ou elle se
+> resout, quel que soit le nombre d'essais qu'elle a coute a l'enfant. La preuve de terminaison que
+> cet ADR exigeait tient toujours - `BanditManchotSessionTest` (devenu `BanditManchotTest`) porte le
+> cas `laPartiePresenteExactementLeNombreDeManchesAnnonceMemeEnEchouantToutesLesQuestions`, qui
+> verifie les deux proprietes ensemble : le compte exact de manches distinctes vues, et qu'aucune
+> d'elles n'est interrompue en cours de route.
+>
+> **Deuxieme consequence, routee ici parce qu'elle partage la meme cause.** L'aide de S3-2
+> (`DEC-0004` point 4 : indice apres trois echecs consecutifs sur des items differents, manche
+> simplifiee representant un item deja reussi) se declenchait dans le tirage de la manche suivante.
+> Une reponse fausse ne tirant plus de manche, elle devenait inatteignable (avis de faisabilite de
+> s10, section 2.b). Elle disparait, et `BanditManchotSession.LONGUEUR_MINIMALE_POUR_AIDE` passe de
+> 4 a 1 : l'indice est desormais une propriete de la manche bloquante elle-meme (M1), affiche des le
+> premier echec sur cette manche et jusqu'a sa resolution - une partie d'une seule manche peut donc
+> deja le montrer. `CatalogueChargeableIT` continue de comparer cette valeur a `nombreDeManches`
+> pour chaque jeu du catalogue reel (`isGreaterThanOrEqualTo`, jamais une egalite) : elle reste
+> vraie pour toute partie d'au moins une manche, ce qu'`ADR-0012` exige deja par ailleurs
+> (`isPositive`).
+>
+> Rien dans la decision d'origine ne bouge : `nombreDeManches` reste une donnee de catalogue,
+> transmise a la mecanique au demarrage, et le contrat `GameMechanic.start` est inchange.

@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Set;
+
 /**
  * Adaptateur entrant htmx : rendu serveur, fragments HTML. Le coup de l'enfant traverse
  * PartieUseCase, jamais un appel direct a une mecanique. La session HTTP porte l'etat de partie
@@ -30,12 +32,22 @@ import org.springframework.web.bind.annotation.RequestParam;
  * EtatDePartieEnSession, qui rend chaque lecture-calcul-ecriture indivisible pour une meme session.
  * Un double appui envoie deux requetes qui se recouvrent, et le cycle non protege perdait un
  * increment de score une fois sur trois.</p>
+ *
+ * <p>S10, arbitrage de mecanique de nadia-prof : bonne reponse, la manche suivante se charge dans le
+ * meme echange ; mauvaise reponse, l'enfant reste sur la meme manche, message sous le meuble
+ * (M1-M13). L'ecran intermediaire disparait donc de ce cycle : {@code POST /parties/{jeuId}/coups}
+ * ne rend plus jamais l'ecran de retour tant que la partie continue, il rend toujours un ecran de
+ * manche. L'ecran de retour ({@code fragments/retour.html}) ne sert plus que la fin de partie.</p>
  */
 @Controller
 public class PartieController {
 
     private static final String COOKIE_PARTIE_EN_COURS = "recreo-partie-en-cours";
     private static final String MESSAGE_PARTIE_PERDUE = "Ta partie s'est arrêtée. Choisis un nouveau jeu !";
+
+    /** M12 : les trois textes exacts, voulus par nadia-prof, ecrits ici pour ne pas etre reinventes. */
+    private static final String MESSAGE_BRAVO = "Bravo !";
+    private static final String MESSAGE_ECHEC = "Ce n'est pas ça. Essaie encore !";
 
     /**
      * ADR-0027 : l'ecran de jeu declare s'il a ete demande par un geste de l'enfant. Deux constantes
@@ -44,6 +56,22 @@ public class PartieController {
      */
     private static final boolean PAR_UN_GESTE = true;
     private static final boolean SANS_GESTE = false;
+
+    /**
+     * M13 : les deux points de focus qu'un ecran de manche peut declarer. "enonce" est le repli par
+     * defaut - la premiere manche d'une partie, ou toute manche fraiche sans reussite immediate a
+     * signaler - et le point que M13 clause 4 nomme apres une bonne reponse. L'autre, {@code
+     * FOCUS_BOUTON}, designe le bouton que {@code focusCibles} porte : la proposition que l'enfant
+     * vient de presser (clause 2), ou celle qui porte la reponse revelee (clause 5).
+     */
+    private static final String FOCUS_ENONCE = "enonce";
+
+    /**
+     * ADR-0008 amendement d'ADR-0026 : le vocabulaire du tirage ("proposition", "colonne") est
+     * interdit dans le JavaScript maison, qui lit cette valeur pour choisir l'element a focaliser
+     * (recreo.js). "bouton" en est le synonyme neutre qui ne heurte pas cette liste.
+     */
+    private static final String FOCUS_BOUTON = "bouton";
 
     private final PartieUseCase partie;
 
@@ -92,30 +120,19 @@ public class PartieController {
     @PostMapping("/parties/{jeuId}/coups")
     public String jouer(@PathVariable String jeuId, @RequestParam String propositionChoisie,
                          HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
-        BanditManchotSession suivante = new EtatDePartieEnSession(requete).jouer(jeuId,
+        EtatDePartie etat = new EtatDePartieEnSession(requete).jouer(jeuId,
                 actuelle -> (BanditManchotSession) partie.jouer(
                         jeuId, actuelle, new BanditManchotMove(propositionChoisie)));
-        synchroniserMarqueurDePartie(suivante, reponse);
+        synchroniserMarqueurDePartie(etat.session(), reponse);
 
-        return retourModele(modele, jeuId, suivante);
-    }
-
-    @GetMapping("/parties/{jeuId}/manche")
-    public String continuer(@PathVariable String jeuId, HttpServletRequest requete, Model modele) {
-        EtatDePartie etat = new EtatDePartieEnSession(requete).lire();
-        if (!etat.porte(jeuId)) {
-            throw new PartieIndisponible("aucune partie en cours pour le jeu " + jeuId);
-        }
         return mancheModele(modele, jeuId, etat.consigne(), etat.session(), PAR_UN_GESTE);
     }
 
     /**
      * ADR-0020 : une partie terminee n'a plus de manche a montrer. Le controle est ici, dans le seul
      * point de passage de l'ecran de jeu, et non dans chaque route : toute route qui demande cet
-     * ecran - celles d'aujourd'hui comme celles de demain - obtient l'ecran de fin de partie a la
-     * place de l'ecran mort (consigne rendue, enonce vide, aucune proposition) que rendait
-     * {@code GET /parties/{jeuId}/manche} sur une partie terminee. Symetrique du choix d'ADR-0019,
-     * qui a ferme le meme cas cote commande.
+     * ecran obtient l'ecran de fin de partie a la place d'un ecran mort. Symetrique du choix
+     * d'ADR-0019, qui a ferme le meme cas cote commande.
      *
      * <p>ADR-0027 : {@code arriveeParUnGeste} dit si l'enfant a presse quelque chose pour obtenir cet
      * ecran. Le serveur est le seul a le savoir : une fois le fragment insere, le document assemble est
@@ -125,6 +142,10 @@ public class PartieController {
      * demain - a se prononcer : la derivation est totale parce que ce point de passage est unique
      * (meme raison qu'ADR-0020 ci-dessus). Le mode de defaillance d'un oubli est l'immobilite, jamais
      * un mouvement que l'enfant n'a pas demande.</p>
+     *
+     * <p>M1, M5, M6, M9, M11, M12, M13 : le message sous le meuble, l'indice, la revelation et le
+     * point de focus sont tous calcules ici, a partir du seul etat de la manche courante - jamais
+     * d'un champ neuf sur la session (avis de faisabilite de theo-archi, s10, correction 2).</p>
      */
     private String mancheModele(Model modele, String jeuId, String consigne,
                                 BanditManchotSession session, boolean arriveeParUnGeste) {
@@ -138,14 +159,47 @@ public class PartieController {
         modele.addAttribute("score", session.score());
         modele.addAttribute("indice", session.indice().orElse(null));
         modele.addAttribute("arriveeParUnGeste", arriveeParUnGeste);
+        modele.addAttribute("propositionsEssayees", session.propositionsEssayees());
+
+        boolean fraiche = session.propositionsEssayees().isEmpty();
+        String message = null;
+        boolean signalJuste = false;
+        String explication = null;
+        String focus = FOCUS_ENONCE;
+        Set<String> focusCibles = Set.of();
+
+        if (session.revelee()) {
+            String reponse = session.reponseRevelee().orElseThrow();
+            message = "C'est " + reponse + ". Appuie sur " + reponse + ".";
+            explication = session.explicationRevelee().orElse(null);
+            focus = FOCUS_BOUTON;
+            focusCibles = Set.of(reponse);
+        } else if (!fraiche) {
+            message = MESSAGE_ECHEC;
+            focus = FOCUS_BOUTON;
+            focusCibles = session.derniereTentative().map(Set::of).orElse(Set.of());
+        } else if (session.dernierVerdict().map(Verdict::juste).orElse(false)) {
+            message = MESSAGE_BRAVO;
+            signalJuste = true;
+        }
+
+        modele.addAttribute("message", message);
+        modele.addAttribute("signalJuste", signalJuste);
+        modele.addAttribute("explication", explication);
+        modele.addAttribute("focus", focus);
+        modele.addAttribute("focusCibles", focusCibles);
         return "fragments/manche :: manche";
     }
 
     /**
-     * L'ecran de retour juste/faux, qui est aussi l'ecran de fin de partie quand plus aucune manche
-     * ne suit. Le verdict est obligatoire : une partie sans aucune manche jouee n'existe pas, et si
-     * elle existait, c'est un defaut qui doit partir en ERROR avec sa pile (ADR-0018) plutot que de
-     * rendre un ecran a moitie nourri.
+     * L'ecran de fin de partie. Depuis que le cycle de manche absorbe la reponse juste comme la
+     * fausse (ci-dessus), ce gabarit ne sert plus qu'a cet unique etat : le verdict est celui de la
+     * toute derniere manche resolue, juste ou par revelation (M11 clause 3 : une manche resolue par
+     * revelation n'est pas une reussite, et son verdict porte {@code juste = false}).
+     *
+     * <p>Le verdict est obligatoire : une partie sans aucune manche jouee n'existe pas, et si elle
+     * existait, c'est un defaut qui doit partir en ERROR avec sa pile (ADR-0018) plutot que de
+     * rendre un ecran a moitie nourri.</p>
      *
      * <p>ADR-0024 : l'explication de l'item joue est posee au modele sous "explication", vide quand
      * le contenu n'en porte pas. Le controleur ne decide pas si elle merite d'etre affichee, il ne
@@ -158,7 +212,6 @@ public class PartieController {
         modele.addAttribute("juste", verdict.juste());
         modele.addAttribute("bonneReponse", verdict.bonneReponse());
         modele.addAttribute("explication", verdict.explication().orElse(null));
-        modele.addAttribute("enSuite", session.enonceManche().isPresent());
         return "fragments/retour :: retour";
     }
 

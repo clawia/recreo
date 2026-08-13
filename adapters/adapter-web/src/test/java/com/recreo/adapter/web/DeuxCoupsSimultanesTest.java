@@ -95,9 +95,15 @@ class DeuxCoupsSimultanesTest {
         };
     }
 
-    /** L'etat qui fait foi, relu apres coup, et non l'ecran rendu au moment de la reponse. */
+    /**
+     * L'etat qui fait foi, relu apres coup, et non l'ecran rendu au moment de la reponse.
+     *
+     * <p>S10 : {@code GET /parties/{jeuId}/manche} a disparu avec "Encore !", son seul appelant. La
+     * reprise silencieuse de {@code GET /} lit le meme etat de session sans le muter (elle ne passe
+     * jamais par {@code EtatDePartieEnSession.jouer}) : c'est une relecture tout aussi neutre.</p>
+     */
     private int scoreQuiFaitFoi(MockHttpSession session) throws Exception {
-        String html = mockMvc.perform(get("/parties/{jeuId}/manche", JEU_ID).session(session))
+        String html = mockMvc.perform(get("/").session(session))
                 .andReturn().getResponse().getContentAsString();
         String affiche = Jsoup.parse(html).select(".score").text();
         return Integer.parseInt(affiche.replace("Score : ", "").strip());

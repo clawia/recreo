@@ -80,15 +80,21 @@ class PartieHttpTest {
         assertThat(retour).doesNotContain("data-correct", "data-bonne", "data-solution", "data-reponse");
     }
 
-    /** Critere 4 : la manche suivante s'affiche et le score cumule reste visible. */
+    /**
+     * Critere 4 : la manche suivante s'affiche et le score cumule reste visible.
+     *
+     * <p>S10 : l'ecran intermediaire disparait (arbitrage de mecanique de nadia-prof) -
+     * {@code POST /parties/{jeuId}/coups} charge directement la manche suivante sur une reponse
+     * juste, dans le meme echange. {@code GET /parties/{jeuId}/manche} a disparu avec son seul
+     * appelant ("Encore !").</p>
+     */
     @Test
     void laMancheSuivanteAfficheUneNouvelleQuestionEtLeScoreCumule() throws Exception {
         MockHttpSession session = new MockHttpSession();
         mockMvc.perform(post("/parties/{jeuId}", CatalogueDeTest.JEU_ID).session(session));
-        mockMvc.perform(post("/parties/{jeuId}/coups", CatalogueDeTest.JEU_ID)
-                .session(session).param("propositionChoisie", "1"));
 
-        String suite = mockMvc.perform(get("/parties/{jeuId}/manche", CatalogueDeTest.JEU_ID).session(session))
+        String suite = mockMvc.perform(post("/parties/{jeuId}/coups", CatalogueDeTest.JEU_ID)
+                        .session(session).param("propositionChoisie", "1"))
                 .andReturn().getResponse().getContentAsString();
 
         Document fragment = Jsoup.parse(suite);

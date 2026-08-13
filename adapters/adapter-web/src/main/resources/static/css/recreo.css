@@ -322,26 +322,27 @@ body:has(.ecran-de-jeu) .lien-accueil {
     [data-arrivee=par-un-geste] .proposition::after { animation: none }
 }
 
-/* Boutons d'action pleins : demarrer une partie, choisir une reponse, continuer, recommencer
-   apres une erreur, sortir quand c'est la seule action possible (S3-6). Ce sont les boutons sur
-   lesquels l'enfant doit le plus souvent appuyer : ce sont eux qui doivent appeler la main (S2-1,
+/* Boutons d'action pleins : demarrer une partie, choisir une reponse, recommencer apres une
+   erreur, sortir quand c'est la seule action possible (S3-6). Ce sont les boutons sur lesquels
+   l'enfant doit le plus souvent appuyer : ce sont eux qui doivent appeler la main (S2-1,
    correction du refus sur la hierarchie de saillance). Taille jamais laissee au defaut du
    navigateur, cible tactile d'au moins 44 x 44 px.
    ADR-0014 : border, border-radius, text-decoration et cursor viennent de .btn (classe Bootstrap
    portee par chaque gabarit). Le rembourrage y avait ete delegue aussi (commit 6c83c97), mais
    nadia-prof a mesure sur le rendu reel que le "6px 12px" de .btn, applique seulement a ce bloc
    et pas a .retour-accueil qui garde son propre rembourrage, inversait la hierarchie de saillance
-   sur l'ecran de retour : "Les jeux" (109 x 53 px) devenait plus grand que "Encore !" (101 x
-   44 px), alors que c'est ce dernier que l'enfant doit presser dix fois par partie
-   (squad/conformite/FICHE-bandit-manchot-additions-cp.md, refus du 2026-08-06). Le rembourrage
-   n'est pas une generosite de mise en page que Bootstrap peut fournir a l'identique : sur ces
-   boutons precisement, c'est ce qui fait gagner la saillance a l'action plutot qu'a la sortie, et
-   cette garantie ne se delegue pas plus qu'une couleur ou une taille de police (ADR-0014, point 6
-   de la decision). Il redevient donc une regle maison, comme avant ce commit. */
+   sur l'ecran de retour (squad/conformite/FICHE-bandit-manchot-additions-cp.md, refus du
+   2026-08-06). Le rembourrage n'est pas une generosite de mise en page que Bootstrap peut fournir
+   a l'identique : sur ces boutons precisement, c'est ce qui fait gagner la saillance a l'action
+   plutot qu'a la sortie, et cette garantie ne se delegue pas plus qu'une couleur ou une taille de
+   police (ADR-0014, point 6 de la decision). Il redevient donc une regle maison, comme avant ce
+   commit.
+   S10 : ".encore" quitte cette liste avec le bouton qui le portait - fragments/retour.html ne rend
+   plus qu'un seul etat (fin de partie), et la disparition de l'ecran intermediaire (arbitrage de
+   mecanique de nadia-prof) fait de "Encore !" un bouton sans plus aucune route qui le pose. */
 .demarrer,
 .proposition,
 .recommencer,
-.encore,
 .sortie-pleine {
     display: inline-flex;
     align-items: center;
@@ -361,7 +362,6 @@ body:has(.ecran-de-jeu) .lien-accueil {
    porte"). */
 .demarrer,
 .recommencer,
-.encore,
 .sortie-pleine {
     font-size: 1.25rem;
 }
@@ -370,17 +370,24 @@ body:has(.ecran-de-jeu) .lien-accueil {
     font-size: 2rem;
 }
 
-/* S7-4 : le levier n'est pas un bouton de plus, c'est l'apparence de .demarrer et .encore, les
-   deux boutons qui ouvrent deja une manche (ADR-0026 section 3) - zero route, zero etat de
-   session, zero data-role nouveau. Bouton-poussoir rond plutot qu'une manette : nadia-prof pose
-   un veto nomme sur tout geste de traction (arbitrage du 2026-08-10, section 5 ; confirme dans
-   son second arbitrage, section 3) - aucune fleche, aucune manette a demi baissee, aucun
-   glissement. border-radius et box-shadow ne changent ni la taille ni la cible tactile. Scope a
-   .demarrer et .encore seulement, jamais a .recommencer ni .sortie-pleine : c'est ce qui garantit
-   qu'aucun decor de levier n'atteint l'ecran de fin de partie (acquis 6 de nadia-prof).
-   S8-1 : la forme ronde et l'ombre de relief restent sur les deux boutons - nadia-prof les a
-   validees pour un motif qui tient toujours, elles disent d'appuyer et non de tirer (arbitrage du
-   2026-08-11, section 4). Seul le disque decoratif ci-dessous disparait, des deux boutons. */
+/* S7-4 : le levier n'est pas un bouton de plus, c'est l'apparence de .demarrer, le bouton qui
+   ouvre deja une manche (ADR-0026 section 3) - zero route, zero etat de session, zero data-role
+   nouveau. Bouton-poussoir rond plutot qu'une manette : nadia-prof pose un veto nomme sur tout
+   geste de traction (arbitrage du 2026-08-10, section 5 ; confirme dans son second arbitrage,
+   section 3) - aucune fleche, aucune manette a demi baissee, aucun glissement. border-radius et
+   box-shadow ne changent ni la taille ni la cible tactile. Scope a .demarrer seulement, jamais a
+   .recommencer ni .sortie-pleine : c'est ce qui garantit qu'aucun decor de levier n'atteint
+   l'ecran de fin de partie (acquis 6 de nadia-prof).
+   S8-1 : la forme ronde et l'ombre de relief restent sur ce bouton - nadia-prof les a validees
+   pour un motif qui tient toujours, elles disent d'appuyer et non de tirer (arbitrage du
+   2026-08-11, section 4).
+   S10 : ".encore" a quitte les trois autres selecteurs de ce fichier avec le bouton qu'il
+   decorait (fragments/retour.html ne le rend plus), mais reste ici : CabinetDeLaMachineTest
+   (lot theo-archi, s10) epingle nommement que .encore garde sa forme ronde et son ombre de
+   relief, et ce fichier de test n'est pas le mien a modifier (il l'ecrit explicitement dans son
+   propre lot). Retirer .encore d'ici rendrait ce garde-fou rouge pour un motif qu'il n'a pas
+   choisi de garder - CSS mort qu'un garde-fou defend, nomme comme tel plutot que corrige en
+   silence ; a router au lot qui porte l'habillage du meuble (voir compte rendu de ce lot). */
 .demarrer,
 .encore {
     position: relative;
@@ -390,12 +397,12 @@ body:has(.ecran-de-jeu) .lien-accueil {
         0 0.125rem 0 rgba(0, 0, 0, 0.15);
 }
 
-/* Bouton de sortie sur l'ecran de jeu et sur le retour juste/faux : reste visible et atteignable
-   partout (S1-4), mais ne doit pas dominer l'ecran ni concurrencer les boutons de reponse ou
-   "Encore !" (S2-1, correction du refus sur la hierarchie de saillance). Meme famille de couleur,
-   contour au lieu d'un aplat : moins saillant, jamais illisible. Sur l'ecran de fin de partie,
-   cette meme sortie devient la seule action possible : elle prend alors la classe
-   .sortie-pleine (S3-6), un aplat comme les autres boutons d'action plutot que ce contour. */
+/* Bouton de sortie sur l'ecran de jeu : reste visible et atteignable partout (S1-4), mais ne doit
+   pas dominer l'ecran ni concurrencer les boutons de reponse (S2-1, correction du refus sur la
+   hierarchie de saillance). Meme famille de couleur, contour au lieu d'un aplat : moins saillant,
+   jamais illisible. Sur l'ecran de fin de partie, cette meme sortie devient la seule action
+   possible : elle prend alors la classe .sortie-pleine (S3-6), un aplat comme les autres boutons
+   d'action plutot que ce contour. */
 .retour-accueil {
     display: inline-flex;
     align-items: center;
@@ -537,4 +544,28 @@ body:has(.ecran-de-jeu) .lien-accueil {
 
 .signal.est-faux .icone-signal::after {
     transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* S10 : structure posee par le lot mecanique, habillage laisse au lot qui porte le meuble.
+   ".message-jeu" est le bloc unique sous le meuble ou le jeu parle de la reponse de l'enfant -
+   signal, indice, revelation, explication (M1, M6 clause 1). Aucune propriete ici : sa forme
+   revient au lot qui porte le meuble. */
+.message-jeu {
+}
+
+/* ".deja-essayee" marque une proposition deja pressee sur la manche courante (M9 clause 1),
+   toujours composee avec .proposition (jamais seule) pour que TailleDesTextesEtBoutonsTest
+   continue de lire la taille de police et la cible tactile sur .proposition : cette regle ne
+   declare ni l'un ni l'autre, conformement a M9 clause 2 (elle ne change ni la boite, ni la
+   police, ni la position).
+   F16 (condition bloquante de nadia-prof, lot lea-dev/ines-design) : un mot barre, jamais une
+   couleur seule - le blanc maison tombe a 1,54:1 sur les quatre fonds pastels des propositions et
+   la marque y devenait un fantome. Mesure et acceptee a 9,55:1 au minimum sur ces memes fonds ;
+   regle recue de lea-dev (s10-lea-forme) et posee ici dans le meme commit que le cablage de la
+   classe (ADR-0031 : une regle ne nommant aucun jeton pose par un gabarit ne mord pas). */
+.proposition.deja-essayee {
+    text-decoration: line-through;
+    text-decoration-color: var(--recreo-texte);
+    text-decoration-thickness: 0.1875rem;
+    text-decoration-skip-ink: none;
 }
