@@ -28,6 +28,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0022 | Perimetre du sprint 10 : le manche du bandit manchot est dessine et immobile, trois demandes de l'utilisatrice ecartees avec leurs declencheurs de reouverture | s10 | 2026-08-12 | Acceptee, deux des trois exclusions (points 1 et 3) remplacees par DEC-0023 le meme jour, point 2 inchange |
 | DEC-0023 | Le perimetre du sprint 10 est repris sur les references de l'utilisatrice : la machine est redessinee en CSS pur, le veto de nadia-prof sur la manette est leve, l'ecran intermediaire est questionne | s10 | 2026-08-12 | Acceptee sur les points 1 a 5, point 6 ferme par DEC-0024 |
 | DEC-0024 | "Le bon petit mot" quitte le catalogue jouable : contenu valide, ecran trop court, condition de retour executable | s10 | 2026-08-12 | Acceptee |
+| DEC-0025 | Levee de la condition M4 de nadia-prof : le sprint 10 est livre avec un defaut de pli assume par ecrit | s10 | 2026-08-13 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0023` a ete amendee le 2026-08-12, sur son point 6
 (disparition de l'ecran intermediaire), laisse ouvert et route a `nadia-prof` pour arbitrage
