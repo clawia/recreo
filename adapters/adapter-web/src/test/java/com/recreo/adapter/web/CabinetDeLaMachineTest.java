@@ -8,10 +8,14 @@ import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
+import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.classesDuSelecteur;
+import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.reglesMaison;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.blocsMaison;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.debutDeDeclaration;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.gabarits;
@@ -37,10 +41,40 @@ class CabinetDeLaMachineTest {
     private static final Path CONTRE_EXEMPLES =
             Path.of("src/test/resources/contreexemple/CabinetDeLaMachineTest");
 
-    /** Les cinq selecteurs que le cabinet livre par S8-1 et sur lesquels aucun pixel n'est admis. */
-    private static final List<String> SELECTEURS_DU_CABINET = List.of(
-            ".cabinet", ".cabinet > .propositions", ".cabinet-bandeau",
-            ".cabinet-bandeau::before", ".cabinet-socle");
+    /**
+     * Le prefixe qui derive la population du cabinet (correctif S10, theo-archi) : toute classe qui
+     * commence par ce mot vit sous le controle "aucun pixel", sans qu'une liste ecrite a la main ait
+     * besoin d'etre tenue a jour a chaque decor ajoute.
+     */
+    private static final String PREFIXE_CABINET = "cabinet";
+
+    /**
+     * Les selecteurs du cabinet, derives (ADR-0013 obligation 1) et non plus enumeres : toute regle
+     * maison dont le selecteur nomme une classe commencant par {@link #PREFIXE_CABINET}.
+     *
+     * <p>Jusqu'a S10, cette population etait une liste Java ecrite a la main (S8-1 en avait livre
+     * cinq). Un decor ajoute au cabinet sans qu'on pense a l'ajouter a cette liste - le visage, son
+     * enseigne, le levier de flanc et ses etoiles de socle en ont ajoute dix d'un coup - echappait au
+     * controle "aucun pixel" sans qu'aucun rouge ne le dise. La derivation ferme ce trou : elle relit
+     * la feuille maison a chaque appel, donc un decor neuf entre dans le controle des que son
+     * selecteur y est ecrit, sans que ce fichier change.
+     *
+     * <p>Toujours derivee de {@link #RACINE_PRODUCTION}, quelle que soit la racine sur laquelle
+     * {@link #verifierAucunePixelSurLeCabinet} est ensuite appelee : c'est ce qui permet de
+     * reutiliser la meme reference de selecteurs pour eprouver un jeu fautif (obligation 3) sans que
+     * ce jeu, en se relisant lui-meme, se contente de confirmer sa propre liste.
+     */
+    static List<String> selecteursDuCabinet(Path racine) {
+        Set<String> selecteurs = new LinkedHashSet<>();
+        for (LAnimationRetardeMaisNeDetermineRienTest.Regle regle : reglesMaison(racine)) {
+            boolean visePrefixeCabinet = classesDuSelecteur(regle.selecteur()).stream()
+                    .anyMatch(classe -> classe.startsWith(PREFIXE_CABINET));
+            if (visePrefixeCabinet) {
+                selecteurs.add(regle.selecteur());
+            }
+        }
+        return List.copyOf(selecteurs);
+    }
 
     private static Path gabarit(String nomFichier) {
         return gabarits(RACINE_PRODUCTION).stream()
@@ -110,8 +144,9 @@ class CabinetDeLaMachineTest {
 
     /**
      * Critere d'acceptation S8-1 : les dimensions du decor ajoute sont exprimees en rem ou en %,
-     * jamais en pixels. ADR-0013 : perimetre derive de {@link #SELECTEURS_DU_CABINET}, methode
-     * parametree par une racine pour se mettre a l'epreuve sur un jeu fautif.
+     * jamais en pixels. ADR-0013 : perimetre derive de {@link #selecteursDuCabinet}, methode
+     * parametree par une racine pour se mettre a l'epreuve sur un jeu fautif - la reference des
+     * selecteurs a verifier, elle, vient toujours de {@link #RACINE_PRODUCTION} (voir sa Javadoc).
      *
      * <p>Tous les selecteurs fautifs sont rassembles avant d'echouer, et cela n'est pas un confort de
      * lecture. Ecrite en echec au premier fautif, cette boucle ne laissait le jeu fautif prouver qu'un
@@ -123,7 +158,7 @@ class CabinetDeLaMachineTest {
     static void verifierAucunePixelSurLeCabinet(Path racine) {
         Map<String, String> maison = blocsMaison(racine);
         List<String> motifs = new ArrayList<>();
-        for (String selecteur : SELECTEURS_DU_CABINET) {
+        for (String selecteur : selecteursDuCabinet(RACINE_PRODUCTION)) {
             String corps = maison.get(selecteur);
             if (corps == null) {
                 motifs.add("le selecteur " + selecteur + " doit exister dans le CSS maison");
@@ -145,17 +180,22 @@ class CabinetDeLaMachineTest {
      * ADR-0013 obligation 3 : l'objet neuf est la meme feuille de cabinet, ou chaque selecteur epingle
      * porte une dimension en pixels.
      *
-     * <p>L'attente est derivee de {@link #SELECTEURS_DU_CABINET}, jamais ecrite en clair : un
-     * selecteur ajoute a la liste sans recevoir son bloc fautif rend ce test rouge, en le nommant, et
-     * c'est ce qui empeche un selecteur d'entrer dans le perimetre sans y etre eprouve (ADR-0033
-     * point 7.a).
+     * <p>L'attente est derivee de {@link #selecteursDuCabinet}, jamais ecrite en clair : un selecteur
+     * ajoute a la production sans recevoir son bloc fautif rend ce test rouge, en le nommant, et c'est
+     * ce qui empeche un selecteur d'entrer dans le perimetre sans y etre eprouve (ADR-0033 point 7.a).
      */
     @Test
     void chaqueSelecteurEpingleEstEprouveParLeJeuFautif() {
+        List<String> selecteurs = selecteursDuCabinet(RACINE_PRODUCTION);
+        assertThat(selecteurs)
+                .as("ADR-0003 : cette clause ne prouve rien si aucune regle maison de %s ne nomme "
+                        + "une classe commencant par \"%s\"", RACINE_PRODUCTION, PREFIXE_CABINET)
+                .isNotEmpty();
+
         var echec = assertThatThrownBy(() -> verifierAucunePixelSurLeCabinet(
                 CONTRE_EXEMPLES.resolve("dimension-en-pixels")))
                 .isInstanceOf(AssertionError.class);
-        for (String selecteur : SELECTEURS_DU_CABINET) {
+        for (String selecteur : selecteurs) {
             echec.hasMessageContaining(selecteur + " ne doit declarer aucune dimension en pixels");
         }
     }

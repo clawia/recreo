@@ -23,6 +23,18 @@
        boutons d'action, pour ne pas laisser croire que l'explication est elle-meme pressable. */
     --recreo-explication-fond: #eaf1f7;
     --recreo-explication-bordure: #5b7c94;
+    /* S10 (forme du meuble, DEC-0023) : le corps du cabinet passe a un second ton, plus sombre que
+       la bordure qui reste --recreo-entete-fond (nadia-prof, arbitrage prealable du 2026-08-12,
+       section 1 - proposition-ines-meuble.md section 1 : "seul le corps derriere le bandeau et le
+       socle passe a --recreo-cabinet-fond [...] l'objet se lit desormais en deux epaisseurs
+       distinctes"). Contraste mesure : 16,11:1 contre la page, 3,20:1 contre --recreo-accent. */
+    --recreo-cabinet-fond: #081c2c;
+    /* S10 : teinte "acier" du levier de flanc, choisie et non devinee (nadia-prof, meme arbitrage,
+       section 2.c ; proposition-ines-meuble-v2.md section 2). Plafonnee par F2 : son contraste ne
+       depasse celui d'un bouton de reponse contre le corps du cabinet (3,20:1) sur aucune surface
+       qu'elle croise reellement - 2,82:1 contre la bordure, 3,05:1 contre le fond de page (v4,
+       proposition-ines-v4-correction-arbitrage-2026-08-13.md, section 1). */
+    --recreo-levier-teinte: #8e8e8e;
 }
 
 /* Base fiable pour les cibles tactiles : min-height/min-width incluent le rembourrage,
@@ -215,13 +227,22 @@ body:has(.ecran-de-jeu) .lien-accueil {
    valeur autre que visible. L'anneau de focus clavier de la bibliotheque vendorisee est une ombre
    portee hors de la boite du bouton (.btn:focus-visible supprime outline) ; un rognage la rendrait
    invisible sur la premiere et la derniere colonne, en plus de faire du cabinet un conteneur de
-   defilement. Garde par LHabillageNeRogneJamaisUnElementPressableTest. */
+   defilement. Garde par LHabillageNeRogneJamaisUnElementPressableTest.
+
+   S10 : le corps passe a --recreo-cabinet-fond (deux tons, section ci-dessus), la bordure reste
+   --recreo-entete-fond, inchangee en largeur (F5 bloquante de nadia-prof : aucune colonne ne paye
+   ce lot, l'elargissement de bordure envisage puis abandonne - proposition-ines-meuble-v2.md,
+   section 2). Le box-shadow ajoute un filet de relief accepte sans cout mesure (+1 px de hauteur,
+   deja accorde par nadia-prof le 2026-08-12). position: relative ancre .cabinet-levier
+   (ADR-0033 point 7.b : l'ancrage est position: relative sur le bloc qui porte l'element ancre). */
 .cabinet {
+    position: relative;
     display: flex;
     flex-direction: column;
-    background-color: var(--recreo-entete-fond);
+    background-color: var(--recreo-cabinet-fond);
     border: 0.5rem solid var(--recreo-entete-fond);
     border-radius: 0.75rem;
+    box-shadow: 0 0.0625rem 0 0 rgba(0, 0, 0, 0.4);
 }
 
 /* Le rembourrage vertical de .propositions (0,75rem, S3-5) reste utile hors du cabinet ; ici c'est
@@ -230,32 +251,176 @@ body:has(.ecran-de-jeu) .lien-accueil {
     margin: 0;
 }
 
-/* Bandeau haut : 2 rem (32 px), porte l'unique image fixe du cabinet - C5 clause 2 de nadia-prof :
-   "le jeu d'images du cabinet ne depend ni de l'item tire, ni du numero de la colonne, ni de la
-   reponse attendue", son point de garde le plus important de ce chantier. */
+/* Bandeau haut : 2 rem (32 px). Portait l'unique image fixe du cabinet jusqu'a S8-1 (une etoile) ;
+   S10 la remplace par un visage souriant et une enseigne, cote a cote (nadia-prof, arbitrage
+   prealable du 2026-08-12 puis troisieme arbitrage du 2026-08-13 - proposition-ines-meuble-v2.md
+   section 1 : "je la retire et je mets a sa place, dans la meme bande, a la meme hauteur
+   declaree, un visage et une enseigne"). C5 clause 2 de nadia-prof reste tenue : ce jeu d'images
+   ne depend ni de l'item tire, ni du numero de la colonne, ni de la reponse attendue - le visage
+   ne peut structurellement pas varier, le cabinet n'existant pas sur l'ecran de retour. */
 .cabinet-bandeau {
+    position: relative;
     height: 2rem;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding: 0 0.75rem;
+    box-shadow: inset 0 -0.0625rem 0 rgba(0, 0, 0, 0.35);
 }
 
-/* Etoile a cinq branches, dessinee en clip-path comme la coche et la croix du signal juste/faux
-   (ADR-0027 clause 7 : content: "" est la seule valeur declaree). Forme dessinee par une regle
-   statique, jamais chargee ni designee par un attribut de gabarit (ADR-0030 section 3) : elle ne
-   peut structurellement pas varier avec l'item, aucun fichier a vendoriser, rien ne va sur le
-   reseau. */
+/* L'etoile de S8-1 est retiree : le visage la remplace dans la meme bande (ADR-0027 clause 7 :
+   content reste limite a une valeur statique, ici son absence). */
 .cabinet-bandeau::before {
+    content: none;
+}
+
+/* Le visage : deux yeux, deux joues rosees, un sourire - un seul pseudo-element pour chaque paire
+   (nadia-prof, F4 tenue au troisieme arbitrage du 2026-08-13, proposition-ines-meuble-v2.md
+   section 1). ::before porte le premier oeil ; chaque box-shadow en ajoute une copie decalee de la
+   meme forme - un second oeil et deux joues plus petites, spread negatif, de part et d'autre.
+   ::after est la bouche : un rectangle sans fond dont seule la bordure basse est visible et
+   arrondie - le trace d'un sourire, sans clip-path. Aucun cil, noeud, cheveu, sourcil ni bouche
+   coloree (nadia-prof : rien qui genre la machine). Statique et immobile : aucune regle ne
+   conditionne ce dessin a .signal.est-juste ni .signal.est-faux, et le cabinet n'existe de toute
+   facon pas sur l'ecran de retour (C4, ADR-0030 point 1.d). */
+.cabinet-visage {
+    position: relative;
+    width: 1.375rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+}
+
+.cabinet-visage::before {
     content: "";
-    width: 1.25rem;
-    height: 1.25rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
     background-color: var(--recreo-accent-texte);
+    box-shadow:
+        0.75rem 0 0 0 var(--recreo-accent-texte),
+        0 0.5rem 0 -0.0625rem #f7a8b8,
+        0.625rem 0.5rem 0 -0.0625rem #f7a8b8;
+}
+
+.cabinet-visage::after {
+    content: "";
+    position: absolute;
+    top: 0.6875rem;
+    left: 0.3125rem;
+    width: 0.75rem;
+    height: 0.375rem;
+    border-bottom: 0.1875rem solid var(--recreo-accent-texte);
+    border-radius: 0 0 50% 50%;
+}
+
+/* L'enseigne : la bande est dessinee ici, le mot ne l'est pas encore. F7/F8 tenues (nadia-prof,
+   troisieme arbitrage du 2026-08-13) : "Le Copain Malin" tient sur une seule ligne sans ellipse
+   dans les huit jeux du catalogue, a cette taille - qui n'est jamais la plus petite police de
+   l'application. content reste limite a la chaine vide partout ailleurs (ADR-0027 clause 7) : ce
+   texte-la est rendu par le serveur, jamais dessine, donc soumis a l'exigence de francais
+   integralement accentue de DEC-0002. Regle non cablee dans fragments/manche.html : F11 (l'
+   emplacement accessible de l'enseigne) reste bloquee par ADR-0035 tant qu'une ecoute reelle de
+   lecteur d'ecran n'a pas eu lieu (nadia-prof, aucun Done ne sera prononce avant). */
+.cabinet-enseigne {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--recreo-accent-texte);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Socle bas : 1 rem (16 px), plein - le pied du coffret. S10 : second ton du corps en deux tons
+   (nadia-prof, arbitrage du 2026-08-12, section 1) et deux etoiles fixes, plus petites et
+   opacifiees que celle retiree du fronton, ancrees sur ce bloc et non sur .cabinet (un decor
+   decoupe ne pend jamais d'un ancetre de pressable - ADR-0033, mutation mesuree sur
+   .cabinet::after). position: relative les ancre (ADR-0033 point 7.b). */
+.cabinet-socle {
+    position: relative;
+    height: 1rem;
+    background-color: #061420;
+}
+
+.cabinet-socle::before,
+.cabinet-socle::after {
+    content: "";
+    position: absolute;
+    top: 0.25rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: var(--recreo-accent-texte);
+    opacity: 0.55;
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
 
-/* Socle bas : 1 rem (16 px), plein, sans image - le pied du coffret. */
-.cabinet-socle {
-    height: 1rem;
+.cabinet-socle::before { left: 0.5rem; }
+.cabinet-socle::after { right: 0.5rem; }
+
+/* Le levier a boule sur le flanc (DEC-0023 point 3) : platine ramenee dans les 20 px de flanc
+   disponibles a 360 px (F13), zero pixel pose sur le corps du cabinet (F14), donc aucune
+   interception d'appui (F15) - nadia-prof, v4, proposition-ines-v4-correction-arbitrage-2026-08-13.md
+   section 1. Frere de .propositions, jamais son ancetre : sa classe n'entre donc jamais dans la
+   population des ancetres de pressables (ADR-0033). Position de repos, jamais a mi-course :
+   aucune transition, aucune pseudo-classe interactive (ADR-0033). Ancre par bottom: 0 contre la
+   plinthe - c'est cet ancrage, etabli par la comparaison E/F d'ines-design et confirme par
+   nadia-prof le 2026-08-13, qui coupe la lecture de curseur de defilement, pas la teinte ni la
+   forme compacte seules. */
+.cabinet-levier {
+    position: absolute;
+    right: -1.25rem;
+    width: 1.25rem;
+    bottom: 0;
+    height: 2.25rem;
+}
+
+/* La platine : rebord visible (filet clair en haut, filet sombre en bas), plus large que la boule
+   - ce qui la fait lire comme une fixation et non comme la butee d'une piste. */
+.cabinet-levier-embase {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 1.25rem;
+    height: 0.75rem;
+    transform: translateX(-50%);
+    background-color: var(--recreo-levier-teinte);
+    border-radius: 0.125rem;
+    box-shadow:
+        inset 0 0.0625rem 0 rgba(255, 255, 255, 0.25),
+        inset 0 -0.0625rem 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Le fut : un moignon court fixe sur la platine. border-radius en rem, assez grand pour depasser
+   la moitie de la largeur du fut et se plafonner en pilule (regle du modele de boite CSS) - jamais
+   en px, a la difference du meme geste ecrit ailleurs sur .demarrer et .encore (hors du perimetre
+   du cabinet). */
+.cabinet-levier::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0.75rem;
+    width: 0.4375rem;
+    transform: translateX(-50%);
+    background-color: var(--recreo-levier-teinte);
+    border-radius: 999rem;
+}
+
+/* La boule : au sommet du fut, toujours en position de repos. */
+.cabinet-levier::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -1.125rem;
+    width: 1.125rem;
+    height: 1.125rem;
+    transform: translateX(-50%);
+    background-color: var(--recreo-levier-teinte);
+    border-radius: 50%;
+    box-shadow: inset 0 -0.1875rem 0 rgba(0, 0, 0, 0.18);
 }
 
 /* Le rouleau : un voile qui glisse devant un bouton immobile, jamais une bande de mots qui
@@ -369,6 +534,22 @@ body:has(.ecran-de-jeu) .lien-accueil {
 .proposition {
     font-size: 2rem;
 }
+
+/* S10 : quatre teintes cycliques sur les boutons de reponse plutot que le seul --recreo-accent -
+   le corps en deux tons du cabinet ferme la porte a un texte blanc lisible dessus (nadia-prof,
+   troisieme arbitrage du 2026-08-13, demonstration d'impossibilite en luminances relatives : aucune
+   teinte reelle ne peut tenir F9, F10 et un texte blanc a la fois). Texte --recreo-texte, mesure au
+   minimum a 9,55:1 contre les quatre fonds - le gain de lisibilite le plus net de ce chantier, sur
+   le mot que l'enfant doit lire. F18 : la quatrieme teinte (nth-child(4n+2)) est un sarcelle pale,
+   hors de la famille de l'ambre de --recreo-attention-fond/bordure, deja charge du sens "tu as
+   besoin d'aide". La couleur suit la position, jamais la reponse attendue - un decor, pas un
+   second indice (C5 clause 2, nadia-prof section 3). Ce changement d'aspect vaut pour toute
+   l'application - .demarrer, .encore et .sortie-pleine restent pleins a texte blanc (F19) : un
+   bouton qu'on choisit ne ressemble plus a un bouton qui fait avancer le jeu. */
+.propositions .proposition:nth-child(4n+1) { background-color: #bdd2ef; color: var(--recreo-texte); }
+.propositions .proposition:nth-child(4n+2) { background-color: #a9dcd8; color: var(--recreo-texte); }
+.propositions .proposition:nth-child(4n+3) { background-color: #dcc8ed; color: var(--recreo-texte); }
+.propositions .proposition:nth-child(4n+4) { background-color: #eec1d8; color: var(--recreo-texte); }
 
 /* S7-4 : le levier n'est pas un bouton de plus, c'est l'apparence de .demarrer et .encore, les
    deux boutons qui ouvrent deja une manche (ADR-0026 section 3) - zero route, zero etat de
