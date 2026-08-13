@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- ADR-0035, second jeu fautif : la meme faute sous son autre forme. Le nom de la machine est ecrit
+     en clair dans le gabarit au lieu d'etre pose par le modele. La clause doit le refuser de la meme
+     facon, sans quoi elle serait une regle sur Thymeleaf et non sur le masquage. -->
+<div th:fragment="manche" class="ecran-de-jeu"
+     th:attr="data-arrivee=${arriveeParUnGeste} ? 'par-un-geste' : 'sans-geste'">
+    <button type="button" class="btn retour-accueil" data-role="sortie" hx-post="/retour"
+            hx-target="#jeu" hx-swap="innerHTML">Les jeux</button>
+    <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
+    <div class="cabinet">
+        <div class="cabinet-bandeau" aria-hidden="true">
+            <span class="cabinet-enseigne">La Boîte à Bonnes Réponses</span>
+        </div>
+        <form class="propositions" th:attr="hx-post=@{'/parties/' + ${jeuId} + '/coups'}"
+              hx-target="#jeu" hx-swap="innerHTML">
+            <button type="submit" class="btn proposition" data-role="action"
+                    th:each="proposition : ${propositions}"
+                    name="propositionChoisie" th:value="${proposition}" th:text="${proposition}"></button>
+        </form>
+        <div class="cabinet-socle" aria-hidden="true"></div>
+    </div>
+</div>
+</body>
+</html>

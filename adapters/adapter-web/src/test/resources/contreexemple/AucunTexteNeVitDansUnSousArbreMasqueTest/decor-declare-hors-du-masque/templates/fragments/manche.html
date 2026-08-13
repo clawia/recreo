@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="manche" class="ecran-de-jeu"
+     th:attr="data-arrivee=${arriveeParUnGeste} ? 'par-un-geste' : 'sans-geste'">
+    <button type="button" class="btn retour-accueil" data-role="sortie" hx-post="/retour"
+            hx-target="#jeu" hx-swap="innerHTML">Les jeux</button>
+    <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
+    <p class="enonce" th:text="${enonce}"></p>
+    <div class="cabinet">
+        <!-- ADR-0035, reserve H, jeu fautif : l'element declare son motif de decor mais rien ne le masque.
+             Le nom est donc annonce a l'enfant, entre l'enonce et la premiere proposition, ce que
+             nadia-prof refuse dans tous les cas. La declaration ne remplace pas le masque. -->
+        <div class="cabinet-bandeau">
+            <span class="cabinet-visage"></span>
+            <span class="cabinet-enseigne" data-decor="nom peint sur le meuble, sans role de jeu"
+                  th:text="${nomEnseigne}"></span>
+        </div>
+        <form class="propositions" th:attr="hx-post=@{'/parties/' + ${jeuId} + '/coups'}"
+              hx-target="#jeu" hx-swap="innerHTML">
+            <button type="submit" class="btn proposition" data-role="action"
+                    th:each="proposition : ${propositions}"
+                    name="propositionChoisie" th:value="${proposition}" th:text="${proposition}"></button>
+        </form>
+        <div class="cabinet-socle" aria-hidden="true"></div>
+    </div>
+</div>
+</body>
+</html>

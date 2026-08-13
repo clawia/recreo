@@ -1,9 +1,11 @@
 package com.recreo.adapter.web;
 
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Attribute;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.junit.jupiter.api.Test;
+import com.recreo.domain.mechanic.SessionStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Import;
@@ -13,6 +15,8 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -22,6 +26,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
@@ -62,7 +67,32 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
     /** Deux items, donc deux coups suffisent a terminer la partie (PartieControllerTest). */
     private static final String JEU_ID = "un-jeu";
 
+    /**
+     * ADR-0034 : le meme item redonne indefiniment sur une partie de dix manches
+     * (PartieControllerTest). C'est le seul jeu du catalogue de test sur lequel une reponse fausse
+     * laisse la partie en cours, ce que la partie a deux items ne permet pas : sa deuxieme manche est
+     * aussi sa derniere.
+     */
+    private static final String JEU_REPETE_ID = "jeu-repete";
+
+    /** La proposition fausse de l'item de {@code JEU_REPETE_ID} (PartieControllerTest). */
+    private static final String PROPOSITION_FAUSSE = "mauvaise";
+
+    /**
+     * ADR-0034, amendement : deux manches et un contenu combinatoire (PartieControllerTest), donc une
+     * partie que deux reponses fausses terminent sur un verdict faux.
+     */
+    private static final String JEU_INFINI_ID = "jeu-infini";
+
     private static final String ATTRIBUT_DE_CIBLE = "hx-target";
+
+    /** Le gabarit qui rend le verdict, et donc la source qui gouverne ses deux marqueurs. */
+    private static final Path GABARIT_DE_RETOUR =
+            Path.of("src/main/resources/templates/fragments/retour.html");
+
+    /** ADR-0013 : le jeu fautif de la lecture des marqueurs de verdict. */
+    private static final Path CONTRE_EXEMPLE =
+            Path.of("src/test/resources/contreexemple/ToutEcranEchangeEstUnDocumentJouableTest");
 
     @Autowired
     private MockMvc mockMvc;
@@ -123,12 +153,16 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
         ecrans.add(new Ecran("retour juste, la partie continue", "POST /parties/{jeuId}/coups",
                 assembler(corps(post("/parties/{jeuId}/coups", JEU_ID).session(partie)
                         .param("propositionChoisie", "1")))));
+        ecrans.add(new Ecran("retour faux, la partie continue", "POST /parties/{jeuId}/coups",
+                assembler(corpsDUnCoupFaux())));
         ecrans.add(new Ecran("manche 2, lue apres un retour", "GET /parties/{jeuId}/manche",
                 assembler(corps(get("/parties/{jeuId}/manche", JEU_ID).session(partie)))));
         ecrans.add(new Ecran("retour de la derniere manche, fin de partie",
                 "POST /parties/{jeuId}/coups",
                 assembler(corps(post("/parties/{jeuId}/coups", JEU_ID).session(partie)
                         .param("propositionChoisie", "2")))));
+        ecrans.add(new Ecran("fin de partie sur une reponse fausse", "POST /parties/{jeuId}/coups",
+                assembler(corpsDUneFinDePartieFaussee())));
         ecrans.add(new Ecran("lecture d'une manche sur une partie terminee",
                 "GET /parties/{jeuId}/manche",
                 assembler(corps(get("/parties/{jeuId}/manche", JEU_ID).session(partie)))));
@@ -139,6 +173,89 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
                         .session(new MockHttpSession()).param("propositionChoisie", "1")))));
 
         return ecrans;
+    }
+
+    /**
+     * Une reponse fausse jouee sur une partie qui continue. Elle vit sur sa propre session : la partie
+     * a deux items ne peut pas porter a la fois un retour faux et un retour juste qui la laissent en
+     * cours.
+     */
+    private String corpsDUnCoupFaux() throws Exception {
+        MockHttpSession partieFaussee = new MockHttpSession();
+        corps(post("/parties/{jeuId}", JEU_REPETE_ID).session(partieFaussee));
+        return corps(post("/parties/{jeuId}/coups", JEU_REPETE_ID).session(partieFaussee)
+                .param("propositionChoisie", PROPOSITION_FAUSSE));
+    }
+
+    /**
+     * ADR-0034, amendement : la derniere manche jouee faux, donc une partie qui se termine sur un
+     * verdict faux. Le jeu a deux items ne peut pas la produire - ses deux manches se terminent sur la
+     * bonne reponse ou pas du tout - et le jeu a item repete demanderait dix coups. Le jeu infini a
+     * deux manches la produit en deux.
+     */
+    private String corpsDUneFinDePartieFaussee() throws Exception {
+        MockHttpSession partie = new MockHttpSession();
+        corps(post("/parties/{jeuId}", JEU_INFINI_ID).session(partie));
+        corps(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                .param("propositionChoisie", PROPOSITION_FAUSSE));
+        return corps(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                .param("propositionChoisie", PROPOSITION_FAUSSE));
+    }
+
+    /**
+     * Le marqueur que le gabarit de retour ecrit sur la branche sans suite, lu dans le gabarit comme
+     * les deux marqueurs de verdict : la classe de l'element porte par la negation de {@code enSuite}.
+     */
+    static String marqueurDeFinDePartie() throws IOException {
+        Document gabarit = Jsoup.parse(GABARIT_DE_RETOUR.toFile(), "UTF-8");
+        List<String> marqueurs = new ArrayList<>();
+        for (Element porteur : gabarit.getAllElements()) {
+            if (porteur.hasAttr("th:unless") && porteur.attr("th:unless").contains("${enSuite}")) {
+                marqueurs.add(porteur.className().strip());
+            }
+        }
+        assertThat(marqueurs)
+                .as("ADR-0034 : le marqueur de fin de partie se lit dans %s, sur l'element que la "
+                        + "negation de ${enSuite} rend. Un seul est attendu ; si le gabarit exprime "
+                        + "desormais la fin de partie autrement, c'est ici qu'il faut re-deriver la "
+                        + "lecture", GABARIT_DE_RETOUR)
+                .hasSize(1);
+        return marqueurs.get(0);
+    }
+
+    /**
+     * Les deux marqueurs que le gabarit de retour ecrit selon le verdict, lus <b>dans le gabarit</b> et
+     * non ecrits ici (ADR-0015 : le perimetre se derive de la source qui gouverne le rendu). Le jour ou
+     * le verdict cesse de s'exprimer par une paire de litteraux sur {@code ${juste}}, ce garde-fou
+     * rougit avec la marche a suivre plutot que de chercher une classe qui n'existe plus.
+     */
+    static List<String> marqueursDeVerdict() throws IOException {
+        return marqueursDeVerdict(GABARIT_DE_RETOUR);
+    }
+
+    static List<String> marqueursDeVerdict(Path chemin) throws IOException {
+        Document gabarit = Jsoup.parse(chemin.toFile(), "UTF-8");
+        List<String> marqueurs = new ArrayList<>();
+        for (Element porteur : gabarit.getAllElements()) {
+            for (Attribute attribut : porteur.attributes()) {
+                String valeur = attribut.getValue();
+                if (!valeur.contains("${juste}")) {
+                    continue;
+                }
+                String[] morceaux = valeur.split("'");
+                for (int i = 1; i < morceaux.length; i += 2) {
+                    marqueurs.add(morceaux[i].strip());
+                }
+            }
+        }
+        assertThat(marqueurs)
+                .as("ADR-0034 : les deux marqueurs du verdict se lisent dans %s, sur l'attribut qui "
+                        + "choisit entre deux litteraux selon ${juste}. Deux valeurs exactement sont "
+                        + "attendues - une par verdict. Si le gabarit exprime desormais le verdict "
+                        + "autrement, c'est ici qu'il faut re-deriver la lecture, pas ailleurs qu'il "
+                        + "faut ecrire les classes a la main", chemin)
+                .hasSize(2);
+        return marqueurs;
     }
 
     /** Les identifiants portes plus d'une fois par le meme document, avec leur nombre d'occurrences. */
@@ -306,6 +423,62 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
         assertThat(ecran.text())
                 .as("ADR-0011 : ce n'est pas un defaut, l'ecran d'erreur n'a rien a faire ici")
                 .doesNotContain("Oups ! Le jeu a un souci.");
+    }
+
+    /**
+     * ADR-0034 : un perimetre derive par route ne dit rien des <b>etats</b> qu'une route rend. Les deux
+     * clauses ci-dessus jugeaient neuf ecrans sans qu'aucun ne vienne d'une reponse fausse, alors que
+     * {@code POST /parties/{jeuId}/coups} en rend un - la moitie du jeu, et celle ou l'enfant se
+     * trompe, ne passait devant aucun automate de cette classe. Mesure a {@code b15bda1} :
+     * {@code propositionChoisie=1} et {@code =2} sont les bonnes reponses des deux items du jeu de
+     * test.
+     *
+     * <p>Le verdict est un booleen : son perimetre est total par construction, deux valeurs, sans
+     * exemption possible. Les marqueurs qui les distinguent sont lus dans le gabarit.</p>
+     */
+    @Test
+    void leCorpusExerceChaqueCoupleDeVerdictEtDeSuite() throws Exception {
+        List<Ecran> ecrans = ecrans();
+        String finDePartie = marqueurDeFinDePartie();
+
+        assertThat(SessionStatus.values())
+                .as("ADR-0034 : ce garde-fou croise le verdict avec le statut de session, et il ne sait "
+                        + "traduire que deux statuts en ecran - la partie continue, ou elle est finie. Un "
+                        + "statut de plus doit lui apprendre quel ecran il rend, sans quoi il le "
+                        + "confondrait en silence avec la partie qui continue")
+                .hasSize(2);
+
+        for (String verdict : marqueursDeVerdict()) {
+            for (SessionStatus statut : SessionStatus.values()) {
+                boolean termineeAttendue = statut == SessionStatus.TERMINEE;
+                assertThat(ecrans)
+                        .as("ADR-0034 : aucun ecran de ce corpus ne joint \"%s\" a un statut %s. Une "
+                                + "clause de cette classe ne juge que les etats que le corpus produit ; "
+                                + "sans cet ecran, tout ce que le serveur rend dans cet etat echappe aux "
+                                + "deux clauses ci-dessus. Si cet etat n'a plus d'ecran a lui - parce que "
+                                + "le verdict a cesse d'avoir le sien - c'est le marqueur de cet etat "
+                                + "qu'il faut re-deriver ici, pas cette clause qu'il faut affaiblir",
+                                verdict, statut)
+                        .anyMatch(ecran -> !ecran.document().select("." + verdict).isEmpty()
+                                && !ecran.document().select("." + finDePartie).isEmpty() == termineeAttendue);
+            }
+        }
+    }
+
+    /**
+     * ADR-0013 obligation 3, mise a l'epreuve de la lecture des marqueurs : un gabarit qui rend encore
+     * le verdict mais dont les deux noms de classe ont demenage dans le modele. La lecture n'a plus
+     * rien a lire, et elle doit le dire au lieu de rendre une liste incomplete - avec une liste vide,
+     * {@code leCorpusExerceLesDeuxVerdicts} passerait vert sans avoir rien verifie.
+     */
+    @Test
+    void unGabaritQuiNExprimePlusLeVerdictParUnePaireDeMarqueursFaitEchouerLaLecture() {
+        Path fautif = CONTRE_EXEMPLE
+                .resolve("verdict-sans-paire-de-marqueurs/templates/fragments/retour.html");
+
+        assertThatThrownBy(() -> marqueursDeVerdict(fautif))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("les deux marqueurs du verdict se lisent dans");
     }
 
     /** Le corpus doit vraiment contenir des ecrans a juger, sinon les deux clauses passent a vide. */

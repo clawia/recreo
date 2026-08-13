@@ -1,5 +1,6 @@
 package com.recreo.adapter.web;
 
+import com.recreo.domain.mechanic.SessionStatus;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -64,6 +65,22 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
     /** Deux items, donc deux coups suffisent a terminer la partie (PartieControllerTest). */
     private static final String JEU_ID = "un-jeu";
 
+    /**
+     * ADR-0034 : le meme item redonne indefiniment sur une partie de dix manches
+     * (PartieControllerTest), seul jeu du catalogue de test sur lequel une reponse fausse laisse la
+     * partie en cours.
+     */
+    private static final String JEU_REPETE_ID = "jeu-repete";
+
+    /** La proposition fausse de l'item de {@code JEU_REPETE_ID} (PartieControllerTest). */
+    private static final String PROPOSITION_FAUSSE = "mauvaise";
+
+    /**
+     * ADR-0034, amendement : deux manches et un contenu combinatoire (PartieControllerTest), donc une
+     * partie que deux reponses fausses terminent sur un verdict faux.
+     */
+    private static final String JEU_INFINI_ID = "jeu-infini";
+
     /** Le marqueur d'ecran de jeu d'ADR-0022, qui dit ou l'enfant est. */
     private static final String ECRAN_DE_JEU = "ecran-de-jeu";
 
@@ -114,6 +131,10 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
         reponses.add(reponse("retour juste, la partie continue", "POST /parties/{jeuId}/coups",
                 post("/parties/{jeuId}/coups", JEU_ID).session(partie)
                         .param("propositionChoisie", "1")));
+        reponses.add(reponse("retour faux, la partie continue", "POST /parties/{jeuId}/coups",
+                coupFaux()));
+        reponses.add(reponse("fin de partie sur une reponse fausse", "POST /parties/{jeuId}/coups",
+                finDePartieFaussee()));
         reponses.add(reponse("manche 2, demandee par un appui sur Encore", "GET /parties/{jeuId}/manche",
                 get("/parties/{jeuId}/manche", JEU_ID).session(partie)));
         reponses.add(reponse("retour de la derniere manche, fin de partie", "POST /parties/{jeuId}/coups",
@@ -128,6 +149,62 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
                         .param("propositionChoisie", "1")));
 
         return reponses;
+    }
+
+    /**
+     * Une reponse fausse jouee sur une partie qui continue, sur sa propre session : la partie a deux
+     * items ne peut pas porter a la fois un retour faux et un retour juste qui la laissent en cours.
+     */
+    private MockHttpServletRequestBuilder coupFaux() throws Exception {
+        MockHttpSession partieFaussee = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_REPETE_ID).session(partieFaussee));
+        return post("/parties/{jeuId}/coups", JEU_REPETE_ID).session(partieFaussee)
+                .param("propositionChoisie", PROPOSITION_FAUSSE);
+    }
+
+    /**
+     * ADR-0034, amendement : la derniere manche jouee faux. Le jeu infini a deux manches la produit en
+     * deux coups, la ou le jeu a item repete en demanderait dix.
+     */
+    private MockHttpServletRequestBuilder finDePartieFaussee() throws Exception {
+        MockHttpSession partie = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_INFINI_ID).session(partie));
+        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                .param("propositionChoisie", PROPOSITION_FAUSSE));
+        return post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                .param("propositionChoisie", PROPOSITION_FAUSSE);
+    }
+
+    /**
+     * ADR-0034 : ce corpus ne jouait que des bonnes reponses, et son perimetre derive par route ne
+     * pouvait pas le dire - {@code POST /parties/{jeuId}/coups} y figurait deja. Les cinq clauses de
+     * cette classe, dont celle qui refuse un mot leurre dans le conteneur de propositions, ne voyaient
+     * donc jamais l'ecran que le serveur rend quand l'enfant se trompe.
+     *
+     * <p>La lecture des deux marqueurs est celle de {@code ToutEcranEchangeEstUnDocumentJouableTest},
+     * appelee et non recopiee : deux lectures libres de diverger laisseraient un verdict sortir du
+     * corpus d'ici et de celui de la-bas, donc controle par ni l'un ni l'autre (meme raison qu'ADR-0033
+     * point 3).</p>
+     */
+    @Test
+    void leCorpusExerceChaqueCoupleDeVerdictEtDeSuite() throws Exception {
+        List<Reponse> reponses = reponses();
+        String finDePartie = ToutEcranEchangeEstUnDocumentJouableTest.marqueurDeFinDePartie();
+
+        for (String verdict : ToutEcranEchangeEstUnDocumentJouableTest.marqueursDeVerdict()) {
+            for (SessionStatus statut : SessionStatus.values()) {
+                boolean termineeAttendue = statut == SessionStatus.TERMINEE;
+                assertThat(reponses)
+                        .as("ADR-0034 : aucune reponse de ce corpus ne joint \"%s\" a un statut %s. Tout "
+                                + "ce que le serveur rend dans cet etat echappe alors aux clauses de "
+                                + "cette classe", verdict, statut)
+                        .anyMatch(reponse -> {
+                            Document rendu = Jsoup.parse(reponse.corps());
+                            return !rendu.select("." + verdict).isEmpty()
+                                    && !rendu.select("." + finDePartie).isEmpty() == termineeAttendue;
+                        });
+            }
+        }
     }
 
     /** Les ecrans de jeu que cette reponse porte, au sens du marqueur d'ADR-0022. */

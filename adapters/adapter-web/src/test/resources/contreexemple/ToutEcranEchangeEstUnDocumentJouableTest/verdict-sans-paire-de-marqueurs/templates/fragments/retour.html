@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- ADR-0034, jeu fautif : le verdict est encore rendu, mais son marqueur ne vient plus du gabarit -
+     il est calcule dans le modele et pose par une variable. La lecture des deux marqueurs n'a alors
+     plus rien a lire ici, et c'est exactement le cas ou elle doit echouer bruyamment plutot que de
+     chercher une classe qui n'existe pas. C'est la derive plausible : deplacer deux noms de classe du
+     gabarit vers le controleur. -->
+<div th:fragment="retour" class="ecran-de-jeu">
+    <button type="button" class="btn retour-accueil" data-role="sortie"
+            hx-post="/retour" hx-target="#jeu" hx-swap="innerHTML">Les jeux</button>
+    <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
+    <div class="signal" th:classappend="${juste} ? ${classeDuJuste} : ${classeDuFaux}">
+        <span class="icone-signal" aria-hidden="true"></span>
+        <p th:if="${juste}" class="verdict">Bravo, c'est juste !</p>
+        <p th:unless="${juste}" class="verdict">
+            Non, c'est <span th:text="${bonneReponse}"></span>.
+        </p>
+    </div>
+    <p th:unless="${enSuite}" class="fin-de-partie">C'est fini !</p>
+</div>
+</body>
+</html>

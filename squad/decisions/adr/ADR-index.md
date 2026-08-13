@@ -37,6 +37,8 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0031](ADR-0031-un-ecran-ne-gouverne-jamais-l-apparence-d-un-autre.md) | Refuser tout selecteur maison qui reunit des jetons de deux ecrans que le serveur ne rend jamais ensemble, et fermer ainsi le canal de feuille de la condition C4 | s08 | 2026-08-11 | Accepte |
 | [ADR-0032](ADR-0032-deux-items-d-un-meme-paquet-ne-presentent-jamais-le-meme-ecran.md) | Refuser que deux items d'un meme paquet fini presentent le meme ecran, et fermer ainsi le trou de morsure d'ADR-0023 | s09 | 2026-08-12 | Accepte |
 | [ADR-0033](ADR-0033-un-habillage-ne-change-pas-d-etat-sous-le-doigt-de-l-enfant.md) | Interdire a tout habillage de declarer une transition ou une animation et d'etre conditionne par une pseudo-classe interactive, et renverser le refus d'ADR-0030 sur la moitie non animee de C3 | s10 | 2026-08-12 | Accepte |
+| [ADR-0034](ADR-0034-un-corpus-d-ecrans-exerce-les-deux-verdicts.md) | Exiger que tout corpus d'ecrans exerce les deux verdicts, et lire leurs marqueurs dans le gabarit plutot que dans le test | s10 | 2026-08-12 | Accepte |
+| [ADR-0035](ADR-0035-aucun-texte-rendu-ne-vit-dans-un-sous-arbre-masque.md) | Refuser tout texte rendu a l'interieur d'un sous-arbre `aria-hidden`, et accrocher le masque au decor plutot qu'au conteneur | s10 | 2026-08-12 | Accepte |
 
 ## Amendements
 
@@ -73,6 +75,8 @@ est date dans le corps de l'ADR. Ceux du sprint 0 :
 | ADR-0027 | 2026-08-10 | **son "jamais un autre mot" ne tenait pas la decoupe geometrique** : je l'annoncais gardee sur "les deux seules formes qu'un rouleau reel peut prendre", et S7-1 en a livre une troisieme en confinant le voile par `clip-path`. La meme propriete deplacee du pseudo-element vers le bouton retranche une partie du mot du serveur, et sur `cm1-homophones` transforme `sont` en `son`, c'est-a-dire la bonne reponse en la fausse. Un caractere separait la production du defaut et rien ne le tenait : vert sur 149 cas. Clause 8 ajoutee, avec le jeu fautif corrige qui prouve que la forme de S7-1 reste verte |
 | ADR-0009 | 2026-08-12 | **"l'enveloppe est prouvee une fois a la main" laissait son cablage hors de portee, et c'est un defaut de cablage qui s'est produit** : `mesurer-rendu.sh` convertissait le conteneur et le profil, et passait le PNG de sortie brut - un chemin relatif rendait "aucune capture (code 0)" et n'ecrivait rien. Trouve par `nadia-prof`. Une enveloppe ne touche pas le poste d'un seul bloc : quand son collaborateur est designe par une variable d'environnement (`CHROME`), son cablage est fabricable et doit etre teste. Le faux navigateur reproduit le silence constate du vrai plutot que le comportement du shell, sans quoi il serait vert sur le script fautif. 23 a 36 cas, morsure mesuree sur la mutation exacte du defaut ; les neuf cas de fonction pure y restent verts |
 | ADR-0025 | 2026-08-12 | **l'outil de mesure que toute la squad utilise avait un mode de defaillance silencieux** : chemin de PNG de sortie rendu absolu puis converti comme les deux autres chemins, dossier de sortie absent refuse explicitement. Aucune mesure deja citee dans le depot ne change ; geometrie remesuree a la main apres correction. Doctrine portee par l'amendement du meme jour a ADR-0009 |
+| ADR-0034 | 2026-08-12 | **sa clause disait "les deux verdicts" et c'etait deja insuffisant, le jour meme** : le verdict n'a un ecran a lui que parce que l'ecran de retour existe. Des que la bonne reponse charge la question suivante, l'ecran d'une reponse fausse est un ecran de manche qui ne porte aucun des deux marqueurs, et la clause resterait **verte** sur les seules fins de partie. Le perimetre passe au **produit** verdict x statut de session, quatre couples totaux par construction. Morsure mesuree : le couple faux + TERMINEE n'avait **jamais** ete exerce, meme apres la correction du matin |
+| ADR-0035 | 2026-08-12 | **il etait trop large d'une clause, et c'est `nadia-prof` qui le montre** (sa reserve H) : en interdisant tout texte masque, il rendait impossible le seul usage correct d'`aria-hidden` et forcait le decor dans l'oreille de l'enfant. Un decor textuel se declare desormais par `data-decor` **sur l'element du texte**, et la clause symetrique - tout decor declare vit sous un masque - empeche la reserve d'etre une porte. Plafond epingle a zero. Amende le jour meme plutot que reporte, parce que la cinquieme structure qu'elle **prefere** est le premier membre de cette population : l'usage n'etait pas anticipe, il etait demande |
 | ADR-0012 | 2026-08-05 | **sa section executable nommait le mauvais paquet** : un contre-exemple range dans `domain.content.contreexemple` aurait ete invisible pour la regle qu'il doit faire echouer. Paquet corrige, contre-exemple et test de non-vacuite ecrits ; et la derniere ligne de son tableau de gardes de comportement, seule des quatre a etre restee sur le papier, est honoree dans `CatalogueChargeableIT` |
 
 ## Lecture rapide
@@ -371,3 +375,29 @@ troisieme avait nommee sans la fermer :
     `ADR-0027` et `ADR-0030` ne voient rien de ce qui est ecrit sous `prefers-reduced-motion`, ce que
     cet `ADR` ferme pour l'habillage seulement et laisse ouvert pour le pressable, en dette explicite.
     Ce n'est pas une regle ArchUnit, le compte reste a 28 avec sa methode.
+32. **ADR-0034** ne corrige aucune clause : il corrige un **corpus**, et c'est pour cela qu'il vaut
+    d'etre relu. `ADR-0020` et `ADR-0027` derivent leur perimetre par route, obligation 1 d'`ADR-0013`
+    satisfaite, et `POST /parties/{jeuId}/coups` y figurait ; mais cette route rend **deux etats** et
+    les deux corpus n'en jouaient qu'un - les deux coups qu'ils envoient sont les bonnes reponses des
+    deux items du jeu de test. Sept clauses ne voyaient donc jamais l'ecran d'une reponse fausse.
+    Mesure des deux cotes du meme octet de production : un paragraphe vide ajoute sur la seule branche
+    fausse passait **vert sur 13 tests** et rend maintenant un rouge qui nomme l'ecran. Il apporte
+    trois choses au-dela de son sujet : la variante de defaut que je n'avais pas nommee en huit ADR -
+    **un perimetre derive de la bonne source peut rester aveugle a une dimension entiere** ; une
+    clause de refus d'ecriture qui va contre l'usage (les deux marqueurs sont lus dans le gabarit, et
+    la lecture echoue plutot que de rendre une liste vide, sans quoi la clause serait verte a vide) ;
+    et le fait que `LesGardeFousSontMisALEpreuveTest` a attrape **son propre auteur** en train
+    d'ajouter une lecture de production sans jeu fautif, dans le lot ou il reprochait a deux corpus
+    d'etre aveugles. Ce n'est pas une regle ArchUnit, le compte reste a 28 avec sa methode.
+33. **ADR-0035** est le premier garde-fou de ce depot **ecrit avant son objet**, et le premier dont le
+    contre-exemple **n'est pas de la main de son auteur** : c'est le balisage qu'`ines-design` a
+    reellement propose (`proposition-ines-meuble.md`, section 2.2), repris tel quel. Il vaut d'etre relu
+    pour la forme du defaut qu'il nomme : `aria-hidden` etait pose sur un **conteneur** parce que, le
+    jour ou il a ete ecrit, tout son contenu etait decoratif - une declaration qui decrit un **etat**
+    la ou elle devrait decrire une **intention**, donc une declaration qui devient fausse sans qu'aucune
+    ligne ne change de sens. Meme famille que le plafond survivant a sa dette d'`ADR-0016`. Il apporte
+    deux choses au-dela de son sujet : il gouverne **egalement** les quatre structures que `nadia-prof`
+    peut choisir, donc il n'attend pas son arbitrage et ne le prejuge pas ; et il refuse d'imposer une
+    forme (interdire `aria-hidden` sur un conteneur) pour ne refuser que le defaut (du texte inaudible),
+    parce que la forme aurait ete fausse en general. Ce n'est pas une regle ArchUnit, le compte reste a
+    28 avec sa methode.
