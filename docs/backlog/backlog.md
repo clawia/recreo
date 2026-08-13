@@ -2832,3 +2832,250 @@ instruire pour un sprint futur, une fois le correctif en cours livre et le fichi
   unitaire, regle ArchUnit ou autre) ni un seuil quelconque ne sont de mon ressort - ici il n'y a meme
   pas de seuil a fixer, la propriete attendue est une egalite stricte entre ce que le fichier declare
   et ce que la mecanique sert.
+
+## Sprint 10 - La machine est redessinee sur les references de l'utilisatrice, le veto sur la manette est leve, l'ecran intermediaire reste a arbitrer
+
+**Contexte et decision de perimetre** : `DEC-0022` avait acte un manche dessine sur le fronton,
+valide par `nadia-prof` en arbitrage prealable. L'utilisatrice a vu ce rendu dans l'application
+reelle et l'a refuse - a cette taille, la forme se lit comme un petit rectangle blanc arrondi ou,
+agrandie, comme une arche, jamais comme une poignee, constat que `nadia-prof` avait deja ecrit
+elle-meme sans en faire un motif de refus. Elle a fourni deux images de reference (un meuble
+d'arcade illustre, versions CP et CM1) et pris six decisions neuves, actees par
+`DEC-0023-perimetre-sprint-10-repris-sur-references-utilisatrice-veto-manette-leve-ecran-
+intermediaire-questionne.md`, qui remplace partiellement `DEC-0022` : le point 2 de `DEC-0022`
+(manche immobile, jamais actionne) tient et change de place, du fronton au flanc ; les points 1 et
+3 (reessayer la meme question, message d'erreur sous la machine) tombent, le point 6 ci-dessous
+les rouvrant tous les deux a la fois.
+
+**Le fait qui commande le budget de pixels de ce sprint** : la reserve de pli, tracee sous
+`DEC-0016` et remesuree par `nadia-prof` le 2026-08-12, reste serree : le bas du cadre passe sous
+le pli sur **5 etats sur 29** de "Le bon petit mot" et **16 sur 34** de "Le bon verbe". Ce n'est
+pas une reserve nommee de `nadia-prof` prise isolement, c'est un constat de mesure trace sous
+`DEC-0016` - correction portee ici apres l'avoir propage a tort comme telle. Aucune des quatre
+stories de developpement de ce sprint n'aggrave ce constat : chacune est budgetee a 0 px de
+hauteur et de largeur ajoutes au cabinet rendu.
+
+Le perimetre technique tient dans un seul fichier de production,
+`adapters/adapter-web/src/main/resources/static/css/recreo.css` ; `fragments/manche.html` n'est
+pas modifie par les stories S10-1 a S10-4. Chacune d'elles modifie un ecran deja accorde par
+`nadia-prof` et suit donc la regle de `squad/README.md` section 10 : proposition de forme
+d'`ines-design`, puis arbitrage prealable de `nadia-prof` avant toute ligne de code.
+
+### S10-1 - Un levier a boule, dessine et immobile, sur le flanc du meuble
+
+- **Besoin** : en tant qu'enfant qui joue au bandit manchot, je veux voir un levier a boule dessine
+  sur le cote de la machine, afin de mieux reconnaitre que je suis devant une vraie machine
+  d'arcade, sans qu'il bouge ni reagisse a ce que je fais.
+- **Competence programme visee** : transverse - habillage de la mecanique, aucun contenu
+  pedagogique (`ADR-0004`).
+- **Criteres d'acceptation** :
+  - Etant donne le levier, quand on relit la feuille de style, alors il est declare sur un
+    pseudo-element decoratif porte par une classe du flanc du cabinet, en `position: absolute`,
+    donc hors du flux du document.
+  - Etant donne la hauteur et la largeur totales que le cabinet ajoute a l'ecran de manche, quand
+    on les remesure apres cette story par `outils/mesurer-rendu.sh` sur les quatre jeux du
+    catalogue, alors elles sont strictement identiques a celles mesurees avant cette story : le
+    levier ajoute 0 px de hauteur et 0 px de largeur au document rendu. *Motif* : la reserve de
+    pli tracee sous `DEC-0016` (5 etats sur 29 et 16 sur 34 deja sous le pli) ne tolere aucun ajout.
+  - Etant donne le levier, quand on relit la feuille de style, alors aucune regle ne lui declare
+    `animation`, `transition`, ni de pseudo-classe `:hover`, `:focus` ou `:active` propre (condition
+    C3 de `nadia-prof`, "la machine attend, elle ne decide pas",
+    `FICHE-bandit-manchot-additions-cp.md`, arbitrage du 2026-08-11).
+  - Etant donne le document servi, quand on relit son balisage, alors le levier n'est porte par
+    aucun `<button>` ni par aucun element portant `data-role` : il n'entre pas dans la derivation
+    `button, a[href]` d'`ADR-0017`, et le bouton qui fait avancer le jeu reste `.demarrer` ou
+    `.encore`, inchange.
+  - Etant donne la geometrie du levier (fut et boule), quand on la mesure sur une capture a 360 px,
+    alors elle est dessinee en position de repos, verticale, sans inclinaison ni troncature qui
+    suggererait un mouvement en cours ou a mi-course.
+  - Ce que cette story ne tranche pas : la forme exacte du fut et de la boule (`ines-design`
+    propose), et le jugement sur la silhouette, qui appartient a `nadia-prof` en arbitrage
+    prealable avant toute ligne de code (`squad/README.md` section 10).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que la silhouette soit reconnue comme un levier sans qu'un enfant cherche a la
+    tirer en s'attendant a un effet - risque residuel nomme par `DEC-0023` et non tranche par la
+    levee de son veto sur la manette.
+- **Lien decision** :
+  `DEC-0023-perimetre-sprint-10-repris-sur-references-utilisatrice-veto-manette-leve-ecran-
+  intermediaire-questionne.md`, point 3 (levee nommee du veto de `nadia-prof` sur la manette,
+  arbitrages du 2026-08-10 et du 2026-08-11).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (proposition de forme d'`ines-design`
+  requise, arbitrage prealable de `nadia-prof` avant developpement).
+
+### S10-2 - L'habillage du meuble est redessine en CSS pur, a partir des references de l'utilisatrice
+
+- **Besoin** : en tant qu'enfant qui joue au bandit manchot, je veux que la machine ressemble a un
+  vrai meuble d'arcade colore, avec du relief et des decorations sur les cotes, afin de mieux la
+  reconnaitre comme un objet plutot que comme un aplat de couleur.
+- **Competence programme visee** : transverse - habillage de la mecanique, aucun contenu
+  pedagogique (`ADR-0004`).
+- **Criteres d'acceptation** :
+  - Etant donne le depot a l'issue de cette story, quand on cherche une reference a un fichier
+    image ajoute par elle, alors il n'y en a aucune : `RessourcesTiercesTest` reste vert sans
+    modification, et le garde-fou qui interdit toute ressource tierce n'est pas amende.
+  - Etant donne le corps du cabinet, quand on le relit dans la feuille de style, alors il est
+    rendu en deux tons distincts, porte une ombre externe a decalage vertical seul (aucun
+    decalage horizontal), et ses coins sont arrondis (`border-radius` non nul).
+  - Etant donne les flancs du cabinet, quand on les relit, alors ils portent des decorations
+    (etoiles, arcs-en-ciel) declarees par des pseudo-elements ou des degrades, fixes : elles ne
+    dependent ni de l'item tire, ni du numero de la colonne, ni de la reponse attendue (condition
+    C5 de `nadia-prof`, deuxieme clause).
+  - Etant donne la zone sous les rouleaux, quand on la relit, alors une rangee de boutons colores
+    y est dessinee en decoration (pseudo-elements ou aplats), sans qu'aucun de ces boutons dessines
+    ne porte `data-role` ni ne soit un `<button>` : ce sont des motifs, pas des controles.
+  - Etant donne la hauteur et la largeur totales que le cabinet ajoute a l'ecran de manche, quand
+    on les remesure apres cette story sur les quatre jeux du catalogue, alors elles restent
+    strictement identiques a celles mesurees avant cette story : aucun des ajouts (tons, ombre,
+    coins, decorations de flanc, rangee de boutons) ne coute un pixel de hauteur ni de largeur.
+  - Etant donne le contour ferme du cabinet deja valide par `nadia-prof` (epaisseur d'au moins
+    8 px sur chacun des quatre cotes), quand on le remesure apres cette story, alors il n'est pas
+    reduit.
+  - Ce que cette story ne tranche pas : le rendu exact (couleurs, formes des etoiles et des arcs-
+    en-ciel, valeur d'ombre) - `ines-design` propose, `nadia-prof` juge en arbitrage prealable
+    avant toute ligne de code.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que cet habillage renforce effectivement la lecture "meuble d'arcade" pour un
+    enfant de CP ou de CM1, sans distraire de la lecture des propositions.
+- **Lien decision** :
+  `DEC-0023-perimetre-sprint-10-repris-sur-references-utilisatrice-veto-manette-leve-ecran-
+  intermediaire-questionne.md`, point 1.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (proposition de forme d'`ines-design`
+  requise, arbitrage prealable de `nadia-prof` avant developpement).
+
+### S10-3 - Une enseigne nommee et un visage souriant sur le fronton
+
+- **Besoin** : en tant qu'enfant qui joue au bandit manchot, je veux voir un nom et un visage
+  souriant sur le fronton de la machine, afin qu'elle ressemble a un vrai jeu d'arcade avec son
+  propre nom, plutot qu'a un meuble anonyme.
+- **Competence programme visee** : transverse pour le visage (habillage, `ADR-0004`). Le nom de
+  l'enseigne est un texte destine a l'enfant et suit a ce titre la porte pedagogique ordinaire de
+  tout contenu enfant (francais correct et integralement accentue, aucun mot de la liste interdite
+  ci-dessous) - `nadia-prof` le valide comme n'importe quel texte, cette story ne le decide pas.
+- **Criteres d'acceptation** :
+  - Etant donne le nom retenu pour l'enseigne, quand on le relit, alors il ne contient aucun des
+    mots suivants, sous aucune forme fléchie : `bandit`, `manchot`, `machine a sous`, `jackpot`,
+    `mise`, `piece`, `jeton`, `credit`, `gain`, `levier`, `manette`, `fente`, `coupelle`, `pari`,
+    `tirage`.
+  - Etant donne ce meme nom, quand le `relecteur-pedagogique` l'audite, alors il est en francais
+    correct, integralement accentue, sans faute d'orthographe ni de ponctuation.
+  - Etant donne le visage souriant, quand on capture l'ecran de retour apres une bonne reponse et
+    apres une mauvaise reponse sur le meme item, alors les pixels du visage sont identiques sur
+    les deux captures (meme construction que la condition C4 de `nadia-prof`, "la machine ne dit
+    jamais le resultat") : le visage ne devient jamais un second canal de verdict.
+  - Etant donne la hauteur et la largeur totales que le cabinet ajoute a l'ecran de manche, quand
+    on les remesure apres cette story, alors elles restent strictement identiques a celles
+    mesurees avant cette story.
+  - Ce que cette story ne tranche pas : le nom retenu (trois candidats proposes par `camille-po`
+    dans `DEC-0023` - "Le Copain Malin", "Tourne-Cervelle", "La Boite a Bonnes Reponses" -,
+    `nadia-prof` choisit ou en propose un autre) et le dessin exact du visage (`ines-design`
+    propose).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que le nom retenu soit comprehensible et approprie pour un enfant de CP comme
+    de CM1, et que le visage soit lu comme un visage plutot que comme un decor abstrait.
+- **Lien decision** :
+  `DEC-0023-perimetre-sprint-10-repris-sur-references-utilisatrice-veto-manette-leve-ecran-
+  intermediaire-questionne.md`, points 4 et 5.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (proposition de forme d'`ines-design`
+  requise, validation du nom et arbitrage prealable de `nadia-prof` avant developpement).
+
+### S10-4 - Un garde-fou neuf protege l'immobilite de tout l'habillage ajoute ce sprint
+
+- **Besoin** : en tant qu'enfant qui joue au bandit manchot aujourd'hui et dans les mois qui
+  suivent, je veux que la machine (levier, boutons dessines, decorations, visage) reste un meuble
+  immobile chaque fois que j'y reviens, meme si l'application a change entretemps, afin qu'elle ne
+  se mette jamais a agir toute seule sans que quelqu'un l'ait decide et fait valider par ma
+  maitresse.
+- **Competence programme visee** : transverse - garde-fou de non-regression sur un acquis
+  pedagogique deja accorde (condition C3 de `nadia-prof`), aucun contenu pedagogique nouveau.
+- **Criteres d'acceptation** :
+  - Etant donne la feuille de style servie a l'issue de S10-1 a S10-3, quand le garde-fou neuf
+    s'execute, alors il fait echouer toute regle maison dont le sujet nomme une classe d'habillage
+    (le cabinet, son bandeau, son socle, le levier de S10-1, les decorations et les boutons
+    dessines de S10-2, le visage et l'enseigne de S10-3) et qui declare `transition` ou `animation`,
+    ou qui est conditionnee par une pseudo-classe interactive (`:hover`, `:active`, `:focus`,
+    `:focus-visible`, `:focus-within`, `:target`) - meme regle qu'`ADR-0033`, dont le perimetre est
+    etendu ici aux elements neufs de ce sprint.
+  - Etant donne une mutation qui ajoute une telle regle sur un de ces elements neufs, quand
+    `mvn -B verify` s'execute, alors ce garde-fou echoue, avec un message qui nomme la classe et la
+    propriete fautives.
+  - Etant donne les regles existantes sur les elements pressables (`.btn`, `.proposition`) et sur
+    leur pseudo-element decoratif (le voile de mouvement des colonnes), quand ce garde-fou
+    s'execute, alors il ne les fait pas echouer : seule une classe d'habillage est visee, jamais un
+    element pressable ni son pseudo-element decoratif.
+  - Etant donne le compte de regles ArchUnit et le compte de cas de test du depot avant cette
+    story, quand cette story est livree, alors le premier est inchange (ni le CSS ni le gabarit ne
+    sont visibles au bytecode) et le second augmente du nombre de cas neufs, mesure et non estime.
+  - Ce que cette story ne tranche pas : si ce garde-fou etend `ADR-0033` (deja ecrit par
+    `theo-archi` pour le manche du fronton, non encore fusionne sur `round-two`) ou en cree un
+    distinct pour le perimetre neuf de ce sprint - decision de `theo-archi`.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que le cabinet et tout son habillage restent effectivement percus comme
+    immobiles sur le rendu reel, en jouant (condition C3).
+- **Lien decision** :
+  `DEC-0023-perimetre-sprint-10-repris-sur-references-utilisatrice-veto-manette-leve-ecran-
+  intermediaire-questionne.md` ; `ADR-0033-un-habillage-ne-change-pas-d-etat-sous-le-doigt-de-l-
+  enfant.md`, ecrit par `theo-archi` pour le meme motif sur le perimetre du manche seul.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite et ecriture ou
+  extension de la regle par `theo-archi`).
+
+### S10-5 - Le contour du cabinet se distingue nettement des colonnes (reserve 2 de nadia-prof)
+
+- **Besoin** : en tant qu'enfant qui distingue mal les couleurs, je veux que le contour de la
+  machine se voie clairement, different des cases de reponse a l'interieur, afin de reconnaitre la
+  fenetre de la machine et pas seulement un aplat bleu uniforme.
+- **Competence programme visee** : transverse - lisibilite et accessibilite visuelle, aucun contenu
+  pedagogique (meme categorie que S0-5, S1-9, S2-1, S7-3, S8-3). Cette story ne fait bouger aucune
+  ligne de `squad/programme/MATRICE-couverture.md`.
+- **Criteres d'acceptation**, repris de la reserve 2 de `nadia-prof`
+  (`FICHE-bandit-manchot-additions-cp.md`, arbitrage du 2026-08-11, section 8) :
+  - Etant donne la couleur du cadre du cabinet et celle des colonnes, quand on calcule le rapport de
+    contraste entre les deux sur leurs luminances relatives, alors il est d'au moins 3,20:1 (contre
+    1,71:1 mesure par `nadia-prof` le 2026-08-11 entre `#1d4b6b` et `#2e6f9e`).
+  - Etant donne la nouvelle variable `--recreo-cabinet-fond` introduite par cette story, quand on
+    relit son usage dans la feuille de style, alors elle est distincte de `--recreo-entete-fond` et
+    ne la remplace pas : aucune regle qui utilise `--recreo-entete-fond` n'est modifiee par cette
+    story, pour ne pas rouvrir la contrainte du crayon de `favicon.ico`.
+  - Etant donne la geometrie des colonnes mesuree par `nadia-prof` le 2026-08-11 (largeur de 96 px
+    ou 152 px selon le jeu, `gap` de 16 px sur les deux axes, hauteur de 74 px, rembourrage lateral
+    de 20 px), quand on la remesure apres cette story sur les quatre jeux du catalogue, alors elle
+    est strictement identique : cette story ne change qu'une couleur.
+  - Etant donne le contraste du cabinet contre la page (`#f4f7fb`), mesure par `nadia-prof` a
+    **8,61:1** (chiffre corrige - la valeur `9,25:1` publiee au sprint 8 mesurait le contraste
+    contre le blanc pur `--recreo-accent-texte` et non contre le fond de page), quand on le
+    remesure apres cette story, alors il ne diminue pas.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que la nouvelle couleur du cadre reste percue comme une machine par un enfant, et
+    que le contraste corrige rende effectivement la "fenetre" du cabinet lisible pour un enfant qui
+    distingue mal les couleurs.
+- **Lien decision** :
+  `DEC-0023-perimetre-sprint-10-repris-sur-references-utilisatrice-veto-manette-leve-ecran-
+  intermediaire-questionne.md` (reconduction, independante des six points de cette decision) ;
+  `FICHE-bandit-manchot-additions-cp.md`, arbitrage du 2026-08-11, section 8, reserve 2.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (proposition de forme d'`ines-design`
+  requise pour la valeur de couleur retenue).
+
+### En attente d'arbitrage prealable - le point 6 de DEC-0023 : l'ecran intermediaire disparait
+
+**Aucune story de developpement n'est ouverte sur ce point.** Bonne reponse : la question suivante
+se chargerait directement. Mauvaise reponse : l'enfant resterait sur l'ecran de la machine, et un
+message s'afficherait sous le meuble. Ce changement modifierait un ecran deja accorde par
+`nadia-prof` depuis le sprint 1 (`fragments/retour.html`) et contredit nommement, en l'etat, sa
+condition 3 du 2026-08-10 ("le chantier n'ajoute aucun second canal de verdict") et sa condition
+C4 du 2026-08-11 ("la machine ne dit jamais le resultat"). `squad/README.md` section 10 impose un
+arbitrage prealable avant toute ligne de code sur un ecran deja accorde ; il n'a pas eu lieu.
+
+Trois questions sont routees a `nadia-prof` par `sofia-sm`, ecrites dans `DEC-0023` :
+
+1. Que dit le message sous le meuble sur une mauvaise reponse - revele-t-il la bonne reponse
+   immediatement, jamais, ou apres un certain nombre d'essais, et selon quelle articulation avec
+   le seuil de trois echecs consecutifs qui declenche deja un indice (`DEC-0004`, S1-5) ?
+2. L'explication, affichee aujourd'hui systematiquement juste ou faux (arbitrage du 2026-08-06 de
+   `nadia-prof`), survit-elle a la disparition de l'ecran de retour pour une bonne reponse, et sur
+   quel ecran s'affiche-t-elle alors ?
+3. Si l'enfant reste sur la meme question apres une mauvaise reponse, la proposition fautive
+   devient-elle inactive - ce qu'`ADR-0026` interdit aujourd'hui par ses clauses 3 et 4 - ou reste-
+   t-elle cliquable ?
+
+Une fois ces trois questions arbitrees, cette section devient une ou plusieurs stories numerotees,
+avec des criteres d'acceptation testables repris au mot pres de l'arbitrage de `nadia-prof`, sur le
+meme modele que les stories correctives du sprint 1.
