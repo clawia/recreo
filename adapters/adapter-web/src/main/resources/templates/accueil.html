@@ -11,7 +11,13 @@
     <link rel="stylesheet" th:href="@{/vendor/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/recreo.css}">
     <script th:src="@{/vendor/htmx.min.js}"></script>
-    <script th:src="@{/js/recreo.js}"></script>
+    <!-- S10 : recreo.js appelle document.body dans son corps, execute des sa lecture (pas de wrapper
+         DOMContentLoaded). Charge nu dans le <head>, <body> n'existe pas encore : document.body vaut
+         null, l'appel leve une TypeError et l'ecouteur n'est jamais enregistre - le focus de M13 n'a
+         donc jamais bouge, y compris avant ce sprint. "defer" reporte l'execution a la fin de
+         l'analyse du document, quand <body> existe deja, sans changer l'ordre de chargement ni
+         sortir le script du <head>. -->
+    <script defer th:src="@{/js/recreo.js}"></script>
 </head>
 <body>
 <!-- S6-1 : l'en-tete est un frere de #jeu, jamais un descendant - hx-swap="innerHTML" ne remplace
