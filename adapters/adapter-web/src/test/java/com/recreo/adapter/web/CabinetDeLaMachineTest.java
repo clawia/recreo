@@ -7,6 +7,7 @@ import org.jsoup.select.Elements;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -111,16 +112,28 @@ class CabinetDeLaMachineTest {
      * Critere d'acceptation S8-1 : les dimensions du decor ajoute sont exprimees en rem ou en %,
      * jamais en pixels. ADR-0013 : perimetre derive de {@link #SELECTEURS_DU_CABINET}, methode
      * parametree par une racine pour se mettre a l'epreuve sur un jeu fautif.
+     *
+     * <p>Tous les selecteurs fautifs sont rassembles avant d'echouer, et cela n'est pas un confort de
+     * lecture. Ecrite en echec au premier fautif, cette boucle ne laissait le jeu fautif prouver qu'un
+     * seul selecteur - celui que l'ordre de la liste faisait rencontrer d'abord - et un selecteur
+     * ajoute apres lui n'etait jamais eprouve, sans qu'aucun rouge le dise (ADR-0033 point 7.a, ecart
+     * mesure). En rassemblant, le message nomme chaque fautif, ce qui rend l'ordre de la liste sans
+     * effet sur ce que le contre-exemple prouve.
      */
     static void verifierAucunePixelSurLeCabinet(Path racine) {
         Map<String, String> maison = blocsMaison(racine);
+        List<String> motifs = new ArrayList<>();
         for (String selecteur : SELECTEURS_DU_CABINET) {
             String corps = maison.get(selecteur);
-            assertThat(corps).as("le selecteur %s doit exister dans le CSS maison", selecteur).isNotNull();
-            assertThat(corps.toLowerCase(Locale.ROOT))
-                    .as("%s ne doit declarer aucune dimension en pixels", selecteur)
-                    .doesNotContain("px");
+            if (corps == null) {
+                motifs.add("le selecteur " + selecteur + " doit exister dans le CSS maison");
+            } else if (corps.toLowerCase(Locale.ROOT).contains("px")) {
+                motifs.add(selecteur + " ne doit declarer aucune dimension en pixels");
+            }
         }
+        assertThat(motifs)
+                .as("le cabinet se dimensionne en rem ou en pourcent, jamais en pixels (S8-1)")
+                .isEmpty();
     }
 
     @Test
@@ -129,16 +142,22 @@ class CabinetDeLaMachineTest {
     }
 
     /**
-     * ADR-0013 obligation 3 : l'objet neuf est la meme feuille de cabinet, avec une seule dimension
-     * du bandeau ecrite en pixels plutot qu'en rem.
+     * ADR-0013 obligation 3 : l'objet neuf est la meme feuille de cabinet, ou chaque selecteur epingle
+     * porte une dimension en pixels.
+     *
+     * <p>L'attente est derivee de {@link #SELECTEURS_DU_CABINET}, jamais ecrite en clair : un
+     * selecteur ajoute a la liste sans recevoir son bloc fautif rend ce test rouge, en le nommant, et
+     * c'est ce qui empeche un selecteur d'entrer dans le perimetre sans y etre eprouve (ADR-0033
+     * point 7.a).
      */
     @Test
-    void uneDimensionDuCabinetEnPixelsFaitEchouerLeGardeFou() {
-        assertThatThrownBy(() -> verifierAucunePixelSurLeCabinet(
+    void chaqueSelecteurEpingleEstEprouveParLeJeuFautif() {
+        var echec = assertThatThrownBy(() -> verifierAucunePixelSurLeCabinet(
                 CONTRE_EXEMPLES.resolve("dimension-en-pixels")))
-                .isInstanceOf(AssertionError.class)
-                .hasMessageContaining(".cabinet-bandeau::before ne doit declarer aucune dimension en "
-                        + "pixels");
+                .isInstanceOf(AssertionError.class);
+        for (String selecteur : SELECTEURS_DU_CABINET) {
+            echec.hasMessageContaining(selecteur + " ne doit declarer aucune dimension en pixels");
+        }
     }
 
     /**

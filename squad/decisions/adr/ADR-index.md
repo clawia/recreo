@@ -33,9 +33,10 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0027](ADR-0027-un-ecran-de-jeu-declare-comment-il-est-arrive-le-mouvement-suit-le-geste.md) | Faire declarer par le serveur comment un ecran de jeu est arrive, et n'autoriser un mouvement que sur un geste de l'enfant | s07 | 2026-08-10 | Accepte |
 | [ADR-0028](ADR-0028-outiller-le-pli-le-contenu-au-dessus-du-pli-reste-non-gardable.md) | Outiller la mesure du pli par un parametre de hauteur, et declarer non gardable le contenu au-dessus du pli | s08 | 2026-08-11 | Accepte |
 | [ADR-0029](ADR-0029-toute-colonne-que-le-contenu-peut-produire-porte-son-decalage.md) | Faire porter un decalage declare a toute colonne que le contenu peut produire, et laisser la borne de duree a la clause qui la garde deja | s08 | 2026-08-11 | Accepte |
-| [ADR-0030](ADR-0030-un-habillage-entoure-sans-rogner-et-toute-animation-finit-sur-son-etat-de-repos.md) | Interdire a un habillage de rogner un ancetre de bouton et d'animer autre chose que ce qu'on presse, et exiger que la derniere image d'une animation soit l'etat de repos | s08 | 2026-08-11 | Accepte |
+| [ADR-0030](ADR-0030-un-habillage-entoure-sans-rogner-et-toute-animation-finit-sur-son-etat-de-repos.md) | Interdire a un habillage de rogner un ancetre de bouton et d'animer autre chose que ce qu'on presse, et exiger que la derniere image d'une animation soit l'etat de repos | s08 | 2026-08-11 | Accepte, un de ses refus renverse par ADR-0033 |
 | [ADR-0031](ADR-0031-un-ecran-ne-gouverne-jamais-l-apparence-d-un-autre.md) | Refuser tout selecteur maison qui reunit des jetons de deux ecrans que le serveur ne rend jamais ensemble, et fermer ainsi le canal de feuille de la condition C4 | s08 | 2026-08-11 | Accepte |
 | [ADR-0032](ADR-0032-deux-items-d-un-meme-paquet-ne-presentent-jamais-le-meme-ecran.md) | Refuser que deux items d'un meme paquet fini presentent le meme ecran, et fermer ainsi le trou de morsure d'ADR-0023 | s09 | 2026-08-12 | Accepte |
+| [ADR-0033](ADR-0033-un-habillage-ne-change-pas-d-etat-sous-le-doigt-de-l-enfant.md) | Interdire a tout habillage de declarer une transition ou une animation et d'etre conditionne par une pseudo-classe interactive, et renverser le refus d'ADR-0030 sur la moitie non animee de C3 | s10 | 2026-08-12 | Accepte |
 
 ## Amendements
 
@@ -353,3 +354,18 @@ troisieme avait nommee sans la fermer :
     est un defaut pire que celui qu'elle corrige (deriver l'`ItemId` du contenu ferait disparaitre un
     item **en silence** dans `ListContentSource`). Ce n'est pas une regle ArchUnit, le compte reste a
     28 avec sa methode.
+31. **ADR-0033** est le premier `ADR` de ce depot qui **renverse un refus ecrit par son auteur dans un
+    `ADR` anterieur**, et c'est pour cela qu'il porte un numero au lieu d'etre un amendement :
+    `ADR-0030` refusait de garder la moitie non animee de la condition C3 au motif qu'elle "n'a
+    aujourd'hui aucune population dans la feuille maison", alors qu'il acceptait sa propre clause de
+    rognage en ecrivant l'inverse a deux pages d'ecart. La population d'une interdiction n'est pas
+    l'ensemble de ses violations mais celui des sujets qu'elle gouverne, et cet ensemble valait deja 33
+    regles. Il apporte trois choses au-dela de son sujet : un perimetre derive **par complementaire**
+    (habillage = classes posees moins classes pressables), dont la limite est nommee comme jouant dans
+    le mauvais sens - la surcollecte Thymeleaf y **retranche** du controle au lieu d'y ajouter, un jeton
+    mesure aujourd'hui ; une **exclusion mesuree et cliquetee** (`transform` reste autorise, parce que
+    l'inclure rougirait la croix du signal faux, et un test epingle les deux faits dont l'exclusion
+    depend) ; et un **trou nomme sans etre ferme** - les cinq clauses de mouvement d'`ADR-0026`,
+    `ADR-0027` et `ADR-0030` ne voient rien de ce qui est ecrit sous `prefers-reduced-motion`, ce que
+    cet `ADR` ferme pour l'habillage seulement et laisse ouvert pour le pressable, en dette explicite.
+    Ce n'est pas une regle ArchUnit, le compte reste a 28 avec sa methode.

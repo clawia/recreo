@@ -315,8 +315,15 @@ class LAnimationRetardeMaisNeDetermineRienTest {
      * Le <b>sujet</b> d'un selecteur, c'est-a-dire son dernier compose : l'element sur lequel la regle
      * s'applique reellement. Les combinateurs sont cherches hors des crochets, parce qu'un selecteur
      * d'attribut peut contenir un blanc ou un {@code ~} qui ne coupe rien.
+     *
+     * <p>Visible dans le paquet depuis ADR-0033, pour le meme motif que {@code reglesMaison} l'a ete a
+     * ADR-0030 et {@code classesDuSelecteur} a ADR-0031 : {@code LHabillageResteImmobileTest} doit
+     * decouper le sujet d'un selecteur exactement comme la clause 9 le decoupe. Un second decoupage
+     * dans le meme module ne serait pas une duplication sans consequence - les deux garde-fous
+     * finiraient par ne plus s'accorder sur ce qu'une regle habille, et c'est precisement l'accord que
+     * la clause d'immobilite doit tenir avec la clause d'animation.
      */
-    private static String sujet(String selecteur) {
+    static String sujet(String selecteur) {
         int coupure = -1;
         int profondeur = 0;
         for (int position = 0; position < selecteur.length(); position++) {
@@ -928,8 +935,17 @@ class LAnimationRetardeMaisNeDetermineRienTest {
         return Optional.empty();
     }
 
-    /** Les noms de proprietes qu'un corps de regle declare, dans l'ordre. */
-    private static List<String> proprietesDeclarees(String corps) {
+    /**
+     * Les noms de proprietes qu'un corps de regle declare, dans l'ordre.
+     *
+     * <p>Visible dans le paquet depuis ADR-0033. La clause d'immobilite ne cherche pas une liste de
+     * noms de proprietes ecrite a la main : elle refuse <b>tout</b> nom declare qui commence par
+     * {@code transition} ou par {@code animation}, ce qui lui fait attraper aussi les proprietes que
+     * je ne connais pas - {@code transition-behavior}, {@code animation-timeline} - et celles qu'un
+     * navigateur ajoutera. Cela exige de lire les noms reellement declares, pas de tester la presence
+     * de noms devines.
+     */
+    static List<String> proprietesDeclarees(String corps) {
         List<String> proprietes = new ArrayList<>();
         for (String declaration : corps.split(";")) {
             int deuxPoints = declaration.indexOf(':');

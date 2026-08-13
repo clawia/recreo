@@ -76,8 +76,16 @@ class LHabillageNeRogneJamaisUnElementPressableTest {
     private static final Path CONTRE_EXEMPLES =
             Path.of("src/test/resources/contreexemple/LHabillageNeRogneJamaisUnElementPressableTest");
 
-    /** Le pressable, derive comme dans LActionNeDeclarePasMoinsQueLaSortieTest. */
-    private static final String PRESSABLES = "button, a[href]";
+    /**
+     * Le pressable, derive comme dans LActionNeDeclarePasMoinsQueLaSortieTest.
+     *
+     * <p>Visible dans le paquet depuis ADR-0033 : {@code LHabillageResteImmobileTest} definit
+     * l'habillage comme le <b>complementaire</b> du pressable, et deux garde-fous qui n'appelleraient
+     * pas "pressable" la meme chose se contrediraient sans que rien ne le dise - une classe sortie de
+     * la population des ancetres ici et absente de l'habillage la-bas ne serait gardee par ni l'un ni
+     * l'autre. Un seul litteral, lu par les deux.
+     */
+    static final String PRESSABLES = "button, a[href]";
 
     /** Les proprietes dont une valeur peut rogner ce qui depasse d'une boite. */
     private static final List<String> PROPRIETES_DE_ROGNAGE =
@@ -109,8 +117,15 @@ class LHabillageNeRogneJamaisUnElementPressableTest {
      * Les classes qu'un element peut porter au rendu, en clair ou par Thymeleaf. La surcollecte des
      * expressions Thymeleaf est voulue et sans danger : elle ajoute des verifications, jamais n'en
      * retire, et son mode de defaillance est un rouge.
+     *
+     * <p>Visible dans le paquet depuis ADR-0033, meme motif que {@link #PRESSABLES} : la clause
+     * d'immobilite lit les classes d'un element exactement comme celle-ci, sans quoi les deux
+     * populations d'habillage seraient calculees par deux lectures libres de diverger. La phrase
+     * ci-dessus sur l'innocuite de la surcollecte ne vaut d'ailleurs que <b>pour ce fichier</b>, ou
+     * elle grossit une population interdite : ADR-0033 la reprend en sens inverse, ou elle retranche
+     * de l'habillage, et l'y traite comme une limite nommee.
      */
-    private static Set<String> motsDeClasse(Element element) {
+    static Set<String> motsDeClasse(Element element) {
         Set<String> classes = new LinkedHashSet<>(element.classNames());
         for (String porteur : List.of("th:class", "th:classappend")) {
             String valeur = element.attr(porteur);

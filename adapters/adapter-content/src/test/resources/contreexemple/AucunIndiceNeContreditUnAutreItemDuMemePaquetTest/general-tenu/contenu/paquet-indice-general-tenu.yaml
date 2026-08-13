@@ -1,0 +1,27 @@
+# Troisieme jeu d'artefacts de ce garde-fou (correction du 2026-08-12, retro de s09 point 1). Il
+# porte la forme generale non temperee - "avec 'tu', le verbe se termine par '-es'" - et aucun de ses
+# items ne la dement : les deux bonnes reponses des items en 'tu' se terminent bien par '-es'. La
+# clause doit donc passer APRES avoir compare, et le nombre d'indices examines qu'elle rend doit
+# valoir 1.
+#
+# C'est ce jeu qui distingue "aucun indice examine en production" de "compteur en panne" : sans lui,
+# une lecture cassee rendant toujours zero satisferait le cliquet aussi bien que la verite.
+#
+# Texte de fixture, jamais affiche a un enfant.
+schema: 1
+id: paquet-indice-general-tenu
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Competence de fixture"
+items:
+  - enonce: "Tu ___ un dessin."
+    bonneReponse: "dessines"
+    distracteurs: ["dessine", "dessinent", "dessinez"]
+    indice: "Avec 'tu', le verbe se termine par '-es' au présent : c'est 'dessines'."
+  - enonce: "Tu ___ la porte du couloir."
+    bonneReponse: "fermes"
+    distracteurs: ["ferme", "ferment", "fermez"]
+    indice: "Avec 'tu', le verbe 'fermer' se termine par '-es' au présent : c'est 'fermes'."

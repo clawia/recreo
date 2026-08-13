@@ -1,0 +1,58 @@
+/* Le jumeau corrige du jeu fautif, par le seul retrait de la regle .cabinet-bandeau:hover::after.
+   Rien d'autre ne change : le manche garde son content, sa position absolue, sa decoupe, sa couleur et
+   ses dimensions.
+
+   Sans ce jeu-ci, la clause d'ADR-0033 serait une interdiction du manche deguisee en clause
+   d'immobilite, et aucun jeu fautif ne le dirait - c'est la lecon de la seconde mutation d'ADR-0025 et
+   de habillage-sans-rognage a ADR-0030. */
+.cabinet {
+    display: flex;
+    flex-direction: column;
+    background-color: #1d4b6b;
+    border: 0.5rem solid #1d4b6b;
+    border-radius: 0.75rem;
+}
+
+.cabinet > .propositions {
+    margin: 0;
+}
+
+/* position: relative est le seul ancrage dont le manche a besoin ; il ne change aucune dimension. */
+.cabinet-bandeau {
+    position: relative;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cabinet-bandeau::before {
+    content: "";
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: #ffffff;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+/* Le manche : une tige et son pommeau, dessines en clip-path comme l'etoile du bandeau. En position
+   absolue, il ne pousse ni le bandeau ni le socle - zero pixel de plus en hauteur, ce que la mesure du
+   pli exige (4 px de marge sur le meilleur etat du pire jeu). */
+.cabinet-bandeau::after {
+    content: "";
+    position: absolute;
+    right: 0.25rem;
+    top: 0.25rem;
+    width: 0.5rem;
+    height: 1.5rem;
+    background-color: #ffffff;
+    clip-path: polygon(35% 100%, 65% 100%, 65% 30%, 100% 15%, 100% 0%, 0% 0%, 0% 15%, 35% 30%);
+}
+
+.cabinet-socle {
+    height: 1rem;
+}
+
+.propositions {
+    display: flex;
+    gap: 1rem;
+}
