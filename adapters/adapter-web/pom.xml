@@ -52,5 +52,12 @@
       <groupId>com.tngtech.archunit</groupId>
       <artifactId>archunit-junit5</artifactId>
     </dependency>
+    <!-- Test seulement : moteur JavaScript pur JVM, sans navigateur ni build Node (CLAUDE.md,
+         ADR-0008), pour executer reellement recreo.js dans un test - RecreoJsDeplaceLeFocusTest. -->
+    <dependency>
+      <groupId>org.openjdk.nashorn</groupId>
+      <artifactId>nashorn-core</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 </project>

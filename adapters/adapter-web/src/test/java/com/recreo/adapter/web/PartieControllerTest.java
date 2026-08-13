@@ -407,6 +407,46 @@ class PartieControllerTest {
         assertThat(Jsoup.parse(html).select(".indice").text()).isEqualTo("une astuce");
     }
 
+    /**
+     * M14 (nadia-prof, arbitrage du 2026-08-13) : sur un appui a cote apres la revelation, la
+     * proposition pressee recoit la marque barree de M9, et seulement elle - rien d'autre ne
+     * change, alors que {@code BanditManchotSession.jouer} ne l'ajoute pas a
+     * {@code propositionsEssayees} pour ce geste precis (voir son javadoc, branche {@code revelee}).
+     * "faux1" est presse trois fois pour atteindre la revelation sans jamais essayer "faux2", qui
+     * recoit ensuite l'appui a cote que M14 gouverne.
+     */
+    @Test
+    void unAppuiACoteApresLaRevelationMarqueSeulementLaPropositionPresseeCommeDejaEssayee() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_QUATRE_PROPOSITIONS_ID).session(session));
+
+        // M5 : trois echecs sur "faux1", jamais sur "faux2", pour atteindre la revelation en
+        // laissant "faux2" non essaye - c'est lui que M14 gouverne ensuite.
+        for (int essai = 0; essai < 2; essai++) {
+            mockMvc.perform(post("/parties/{jeuId}/coups", JEU_QUATRE_PROPOSITIONS_ID)
+                    .session(session).param("propositionChoisie", "faux1"));
+        }
+        String htmlRevelation = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_QUATRE_PROPOSITIONS_ID)
+                        .session(session).param("propositionChoisie", "faux1"))
+                .andReturn().getResponse().getContentAsString();
+        String messageDeRevelation = Jsoup.parse(htmlRevelation).select(".verdict").text();
+        assertThat(messageDeRevelation).isEqualTo("C'est bonne. Appuie sur bonne.");
+
+        String html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_QUATRE_PROPOSITIONS_ID)
+                        .session(session).param("propositionChoisie", "faux2"))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.select("button.proposition[value=faux2]"))
+                .as("M14 : la proposition pressee a cote recoit la marque barree de M9")
+                .hasSize(1)
+                .allMatch(bouton -> bouton.hasClass("deja-essayee"));
+        assertThat(fragment.select(".verdict").text())
+                .as("M14 : le message ne change pas")
+                .isEqualTo(messageDeRevelation);
+        assertThat(fragment.select(".score").text()).as("M14 : aucun essai compte").isEqualTo("Score : 0");
+    }
+
     @TestConfiguration
     static class JeuDeTestConfiguration {
 

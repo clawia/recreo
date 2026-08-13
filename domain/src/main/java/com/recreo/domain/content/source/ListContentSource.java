@@ -17,10 +17,18 @@ public final class ListContentSource implements ContentSource {
 
     private final ContentDescriptor descripteur;
     private final List<Item> items;
+    private final boolean indicesNommentLaReponse;
 
     public ListContentSource(ContentDescriptor descripteur, List<? extends Item> items) {
+        this(descripteur, items, false);
+    }
+
+    /** M21 : {@code indicesNommentLaReponse} vaut pour l'ensemble du paquet, voir ContentSource. */
+    public ListContentSource(ContentDescriptor descripteur, List<? extends Item> items,
+                              boolean indicesNommentLaReponse) {
         this.descripteur = descripteur;
         this.items = List.copyOf(items);
+        this.indicesNommentLaReponse = indicesNommentLaReponse;
     }
 
     @Override
@@ -35,5 +43,10 @@ public final class ListContentSource implements ContentSource {
             return Optional.empty();
         }
         return Optional.of(restants.get(hasard.nextInt(restants.size())));
+    }
+
+    @Override
+    public boolean indicesNommentLaReponse() {
+        return indicesNommentLaReponse;
     }
 }

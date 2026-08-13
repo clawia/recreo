@@ -29,6 +29,11 @@ import java.util.Optional;
  * dans son YAML, alors que la mecanique bandit manchot en promet une depuis S3-2. Le champ est lu
  * ici ; qu'il soit present sur tous les items est garde par
  * {@code ChaquePaquetPorteUnIndiceTest}.</p>
+ *
+ * <p>M21 (arbitrage de nadia-prof du 2026-08-13) : la cle facultative 'indicesNommentLaReponse',
+ * au niveau du paquet et non d'un item, declare que les indices de ce paquet nomment la bonne
+ * reponse - la mecanique ne les affichera alors jamais. Absente, elle vaut faux : un paquet neuf
+ * n'a rien a declarer pour porter des indices utilisables.</p>
  */
 final class QuestionContentSourceFactory implements ContentSourceFactory {
 
@@ -44,7 +49,8 @@ final class QuestionContentSourceFactory implements ContentSourceFactory {
             questions.add(question(itemBrut, position));
             position++;
         }
-        return new ListContentSource(descripteur, questions);
+        boolean indicesNommentLaReponse = Boolean.TRUE.equals(corps.get("indicesNommentLaReponse"));
+        return new ListContentSource(descripteur, questions, indicesNommentLaReponse);
     }
 
     private Question question(Object itemBrut, int position) {

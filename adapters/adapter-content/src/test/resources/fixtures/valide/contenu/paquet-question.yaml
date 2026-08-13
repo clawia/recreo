@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Formes"
   competence: "reconnaitre les formes"
+indicesNommentLaReponse: true
 items:
   - enonce: "Combien de cotes a un triangle ?"
     bonneReponse: "3"

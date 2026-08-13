@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -130,7 +131,8 @@ public class PartieController {
                         jeuId, actuelle, new BanditManchotMove(propositionChoisie)));
         synchroniserMarqueurDePartie(etat.session(), reponse);
 
-        return mancheModele(modele, jeuId, etat.consigne(), etat.session(), PAR_UN_GESTE);
+        return mancheModele(modele, jeuId, etat.consigne(), etat.session(), PAR_UN_GESTE,
+                propositionChoisie);
     }
 
     /**
@@ -164,6 +166,25 @@ public class PartieController {
      */
     private String mancheModele(Model modele, String jeuId, String consigne,
                                 BanditManchotSession session, boolean gesteDeLEnfant) {
+        return mancheModele(modele, jeuId, consigne, session, gesteDeLEnfant, null);
+    }
+
+    /**
+     * M14 (nadia-prof, arbitrage du 2026-08-13) : sur un appui a cote apres la revelation (M5), la
+     * proposition pressee recoit la marque barree de M9 - et seulement elle, aucun essai compte,
+     * aucun message different, aucun mouvement. {@code BanditManchotSession.jouer} ne l'ajoute pas
+     * a {@code propositionsEssayees} dans cette branche precise, puisque rien d'autre n'y bouge
+     * (voir son commentaire sur la branche {@code revelee}) ; la meme condition -
+     * {@code revelee() && !propositionFraichementPressee.equals(reponseRevelee())} - est donc
+     * dupliquee ici, pour l'affichage seul, sans ajouter le moindre champ a la session
+     * (avis de faisabilite de theo-archi, s10, correction 2). {@code propositionFraichementPressee}
+     * vaut {@code null} pour tout point d'appel qui ne vient pas d'un coup ({@code
+     * accueil}, {@code demarrer}) : theo-archi a refuse une comparaison par identite de reference
+     * comme protocole non documente entre les deux surcharges, d'ou ce parametre explicite.
+     */
+    private String mancheModele(Model modele, String jeuId, String consigne,
+                                BanditManchotSession session, boolean gesteDeLEnfant,
+                                String propositionFraichementPressee) {
         if (session.status() == SessionStatus.TERMINEE) {
             return retourModele(modele, jeuId, session);
         }
@@ -177,7 +198,8 @@ public class PartieController {
         // M10 : le produit des deux facteurs, jamais le seul geste. Retirer "&& fraiche" rend a
         // l'enfant qui se trompe un rebalayage de colonnes par essai (nadia-prof, condition M10).
         modele.addAttribute("arriveeParUnGeste", gesteDeLEnfant && fraiche);
-        modele.addAttribute("propositionsEssayees", session.propositionsEssayees());
+        modele.addAttribute("propositionsEssayees", propositionsEssayeesAffichees(
+                session, propositionFraichementPressee));
 
         String message = null;
         boolean signalJuste = false;
@@ -230,6 +252,19 @@ public class PartieController {
         modele.addAttribute("bonneReponse", verdict.bonneReponse());
         modele.addAttribute("explication", verdict.explication().orElse(null));
         return "fragments/retour :: retour";
+    }
+
+    /** M14 : voir le commentaire de {@code mancheModele} sur cette meme condition. */
+    private static Set<String> propositionsEssayeesAffichees(BanditManchotSession session,
+                                                              String propositionFraichementPressee) {
+        Set<String> propositionsEssayees = session.propositionsEssayees();
+        if (session.revelee() && propositionFraichementPressee != null
+                && !propositionFraichementPressee.equals(session.reponseRevelee().orElseThrow())) {
+            Set<String> avecLaPressee = new LinkedHashSet<>(propositionsEssayees);
+            avecLaPressee.add(propositionFraichementPressee);
+            return avecLaPressee;
+        }
+        return propositionsEssayees;
     }
 
     private GameDefinition jeuOuEchec(String jeuId) {
