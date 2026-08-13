@@ -20,7 +20,15 @@
   sans defiler a 360 x 640) et la clause 1 de M13 (apres une reponse, le focus ne va jamais sur la
   sortie, qui detruit la partie sans confirmation). Ce n'est pas un Done pedagogique, rien n'est
   code.
-- **Derniere mise a jour** : 2026-08-12
+- **Second verdict du 2026-08-13 sur le lot de cloture du sprint 10 (`643c6f4`)** : **REFUSE**,
+  aucun Done pedagogique, **un seul motif bloquant** - **M13 clause 1 sur l'ecran de revelation de
+  M5**. **Constate sur ce jeu** : reponse revelee en derniere position, la partie a ete detruite en
+  deux touches. **M4 est fermee sur ce jeu** par le resserrement de marges. Le verdict complet et
+  l'etat de mes trente-huit conditions sont dans
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Second verdict du 2026-08-13". **Le
+  refus du matin est corrige sur ses quatorze cas** et les clauses 2, 3, 4 et 5 de M13 sont tenues pour
+  la premiere fois. **M4 ne bloque plus**, levee par `DEC-0025`, et mon constat n'est pas retire.
+- **Derniere mise a jour** : 2026-08-13
 
 ## Competences visees
 
@@ -51,6 +59,38 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+
+### Second verdict du 2026-08-13 sur le lot de cloture du sprint 10 : REFUSE
+
+- **Verdict** : **REFUSE.** Aucun Done pedagogique sur ce jeu.
+- **Le verdict complet, ses mesures et l'etat de mes trente-huit conditions sont dans**
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Second verdict du 2026-08-13". Le
+  meuble et la mecanique sont communs aux sept jeux du catalogue : je ne recopie pas le raisonnement,
+  j'ecris ici ce qui est propre a ce jeu.
+- **Increment audite** : `round-two` a `643c6f4`, jar **reconstruit depuis mon worktree** et correctif
+  verifie dans le HTML servi. `mvn -B verify` : BUILD SUCCESS. Done technique acquis.
+- **Mon motif de refus sur ce jeu, unique et bloquant - M13 clause 1 sur l'ecran de revelation** :
+  - **Constate directement sur ce jeu** : revelation atteinte, reponse revelee en **position 3 sur 3**,
+    focus sur cette proposition, **une seule Tabulation atteint "Les jeux"** et Entree **detruit la
+    partie sans confirmation**.
+  - C'est exactement le defaut de mon refus du matin, deplace sur l'ecran de revelation.
+- **M4 sur ce jeu, mesuree apres le resserrement de marges** (pire cas de 37 etats de message et de
+  5 ecrans de revelation, 360 x 640, pli a `y = 640`) :
+  - echec avec indice, pire cas : **607,19 px**, soit **32,81 px au-dessus du pli** ;
+  - ecran de revelation, pire cas : **579,19 px**, 60,81 px au-dessus ;
+  - "Bravo !" : 495,19 px, 144,81 px au-dessus.
+  - **M4 est TENUE sur ce jeu.** Elle etait a 651,19 px ce matin : **le resserrement de marges la
+    ferme**, et ce jeu est l'un des trois qu'il ferme reellement.
+- **Ce qui est corrige sur ce jeu et que je credite** : apres une bonne comme apres une mauvaise
+  reponse, Tabulation puis Entree laisse **la partie en cours** ; le focus va sur l'**enonce** de la
+  question neuve apres une bonne reponse (clause 4) et sur la **proposition pressee, barree**, apres une
+  mauvaise (clause 2) ; sur l'ecran de revelation il va sur la **proposition qui porte la reponse
+  revelee** (clause 5). Les quatre clauses sont tenues sur ce jeu, mesurees au clavier.
+- **Ce qui est propre a ce jeu** : ses indices restent affiches et exacts, y compris le cas
+  *"Lève 7 doigts, puis baisses-en 7 un par un : il n'en reste plus aucun."* Le nombre qui y apparait
+  est un operande, pas la conclusion - mon chiffre corrige du matin tient.
+- **Aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge.**
 
 ### Verdict courant - chantier du bandit manchot (mecanique, forme, M10), du 2026-08-13 : REFUSE
 

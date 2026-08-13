@@ -43,7 +43,15 @@
   j'ai moi-meme dictee le 2026-08-06, et l'enfant qui trouve du premier coup ne les verra plus - et
   la condition **M7**. C'est aussi sur ce jeu que j'ai joue la partie qui mesure le defaut de l'aide
   actuelle : neuf manches ratees, deux aides servies, les deux sur le seul item reussi.
-- **Derniere mise a jour** : 2026-08-12
+- **Second verdict du 2026-08-13 sur le lot de cloture du sprint 10 (`643c6f4`)** : **REFUSE**,
+  aucun Done pedagogique, **un seul motif bloquant** - **M13 clause 1 sur l'ecran de revelation de
+  M5**. **Constate sur ce jeu** : reponse revelee en derniere position, la partie a ete detruite en
+  deux touches. **M4 reste NON TENUE** : son ecran de revelation deborde de 23,19 px, contrairement
+  a ce que `DEC-0025` affirme. Le verdict complet et l'etat de mes trente-huit conditions sont dans
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Second verdict du 2026-08-13". **Le
+  refus du matin est corrige sur ses quatorze cas** et les clauses 2, 3, 4 et 5 de M13 sont tenues pour
+  la premiere fois. **M4 ne bloque plus**, levee par `DEC-0025`, et mon constat n'est pas retire.
+- **Derniere mise a jour** : 2026-08-13
 
 ## Competences visees
 
@@ -62,6 +70,44 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+
+### Second verdict du 2026-08-13 sur le lot de cloture du sprint 10 : REFUSE
+
+- **Verdict** : **REFUSE.** Aucun Done pedagogique sur ce jeu.
+- **Le verdict complet, ses mesures et l'etat de mes trente-huit conditions sont dans**
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Second verdict du 2026-08-13". Le
+  meuble et la mecanique sont communs aux sept jeux du catalogue : je ne recopie pas le raisonnement,
+  j'ecris ici ce qui est propre a ce jeu.
+- **Increment audite** : `round-two` a `643c6f4`, jar **reconstruit depuis mon worktree** et correctif
+  verifie dans le HTML servi. `mvn -B verify` : BUILD SUCCESS. Done technique acquis.
+- **Mon motif de refus sur ce jeu, unique et bloquant - M13 clause 1 sur l'ecran de revelation** :
+  - **Constate directement sur ce jeu** : revelation atteinte, reponse revelee en **position 3 sur 3**,
+    focus sur cette proposition, **une seule Tabulation atteint "Les jeux"** et Entree **detruit la
+    partie sans confirmation**.
+- **M4 sur ce jeu, mesuree apres le resserrement de marges** (pire cas de 38 etats de message et de
+  6 ecrans de revelation, 360 x 640, pli a `y = 640`) :
+  - echec avec indice, pire cas : **607,19 px**, 32,81 px au-dessus du pli - **cet etat est ferme** par
+    le resserrement de marges, il etait a 651,19 px ce matin ;
+  - **ecran de revelation, pire cas : 663,19 px, soit 23,19 px SOUS le pli** ;
+  - "Bravo !" : 495,19 px, 144,81 px au-dessus.
+  - **M4 reste NON TENUE sur ce jeu, sur son ecran de revelation.** `DEC-0025` nomme ce jeu comme l'un
+    des deux que le resserrement ferme : **ma mesure dit le contraire**, et le point 2 de cette
+    decision n'etait appuye par aucune mesure - `marc-dev` avait ecrit qu'il n'avait pas rejoue celle
+    d'`ines-design`.
+  - **La cause est un texte, pas une mise en page** : sur cet ecran, l'explication et l'indice disent
+    la meme chose deux fois - *"C'est in. Appuie sur in. Dans LUNDI, ce sont les lettres u et n qui
+    font le son in. Regarde : les lettres u et n font ce son."* Raccourcir l'un des deux ferme un
+    defaut de lisibilite **et** ce defaut de pli dans le meme geste (**reserve V**).
+- **Ce qui est corrige sur ce jeu et que je credite** : apres une bonne comme apres une mauvaise
+  reponse, Tabulation puis Entree laisse **la partie en cours** ; le focus va sur l'**enonce** de la
+  question neuve apres une bonne reponse (clause 4) et sur la **proposition pressee, barree**, apres une
+  mauvaise (clause 2) ; sur l'ecran de revelation il va sur la **proposition qui porte la reponse
+  revelee** (clause 5). Les quatre clauses sont tenues sur ce jeu, mesurees au clavier.
+- **Ce qui est propre a ce jeu** : c'est le seul paquet du catalogue qui porte des explications, et
+  c'est ce qui le fait deborder a la revelation. Un enfant de CP lit peu et lentement : deux phrases
+  pour une seule information, c'est une phrase de trop.
+- **Aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge.**
 
 ### Verdict courant - chantier du bandit manchot (mecanique, forme, M10), du 2026-08-13 : REFUSE
 
