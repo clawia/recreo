@@ -141,6 +141,499 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
+### Arbitrage prealable au developpement - la silhouette du manche, le relief et le contraste du cabinet (s10), du 2026-08-12
+
+**Ce bloc n'est pas un Done pedagogique et n'en contient aucun.** C'est le cinquieme arbitrage
+prealable que j'ecris, au titre de `squad/README.md` section 10. **Rien n'est code** : aucun
+increment n'existe, donc aucun verdict d'increment n'est prononce ici, et aucun de mes verdicts
+anterieurs n'est modifie ni efface.
+
+- **Date** : 2026-08-12.
+- **Objet** : quatre questions posees avant qu'une ligne de feuille de style soit ecrite, sur
+  `proposition-ines-manche-et-relief.md` (branche `s10-ines-design`, non fusionnee) et
+  `avis-faisabilite.md` + `ADR-0033` (branche `s10-theo-archi`, non fusionnee). J'ai lu les trois par
+  `git show`, sans les amener dans mon arbre.
+- **Ce que je ne rouvre pas** : les trois elements ecartes par l'utilisatrice (pas de reprise de la
+  meme question apres une mauvaise reponse, manche dessine et immobile plutot qu'actionne, aucun
+  second canal de verdict). Ma condition 3 du 2026-08-10 et ma condition C4 tiennent, et je n'ai pas
+  a les defendre : elles sont acquises. Je ne rouvre pas non plus le defaut de pli comme motif
+  (`DEC-0016`), ni ma barre fermee de six points, ni le verdict du cabinet du 2026-08-11.
+- **Lignee** : worktree dedie sur `s10-nadia-arbitrage`, descend de `round-two` a `b15bda1`, verifie
+  par `bash outils/verifier-lignee.sh` ("le worktree sur la branche 's10-nadia-arbitrage' descend de
+  la lignee de round-two"). Je ne fusionne pas et je ne pousse pas.
+
+#### Les quatre reponses, en une phrase chacune
+
+| Question | Reponse |
+|---|---|
+| 1. La silhouette franchit-elle la frontiere manche dessine / manette ? | **NON, elle ne la franchit pas. La silhouette est ACCEPTEE**, sous les conditions N1 a N8 de la section 5. Elle ne suggere aucun geste de traction, et je l'ai mesuree plutot que regardee de loin |
+| 2. Le fronton peut-il porter deux formes fixes plutot qu'une ? | **OUI.** Mon mot "unique" interdisait la variation, il ne comptait pas les formes - et je le dis contre mon propre vocabulaire, pas contre celui d'`ines-design` |
+| 3. Un pixel de hauteur est-il acceptable ? | **OUI, et il ne fait basculer aucun etat sous le pli - je l'ai mesure au lieu de l'estimer.** La marge restante est de **4 rangees libres** sur l'etat le plus bas du catalogue, et non de 3 : mon propre chiffre du 2026-08-11 etait 2 px trop severe |
+| 4. Quelle est la valeur absolue du contraste cadre/page ? | **8,61:1, et c'est `ines-design` qui a raison. Mon 9,25:1 etait faux, et j'ai trouve exactement pourquoi** |
+
+#### 0. Comment j'ai regarde, et ce que je declare degrade
+
+**Rien n'est code : cet arbitrage ne peut donc pas etre un audit joue d'increment, et je ne le
+presente pas comme tel.** Mais je ne me suis pas contentee de lire un polygone, parce que juger une
+forme sur ses coordonnees est exactement la faute que je reproche quand on me la fait.
+
+**Ce que j'ai fait, et c'est reproductible.** J'ai lance l'application reelle
+(`java -jar bootstrap/target/recreo.jar`, JDK 21 designe par `JAVA_HOME` le temps de la commande - le
+`java` du `PATH` de ce poste est un JRE 8), joue "Le bon verbe" et les sept autres jeux du catalogue
+en repondant faux volontairement pour faire venir les indices, et **reassemble chaque ecran servi dans
+la page complete que l'enfant recoit** (en-tete, `main#jeu`, feuille tierce puis feuille maison dans
+cet ordre reel). Sur cette page-la, je n'ai ajoute qu'**une seule feuille supplementaire** portant le
+candidat d'`ines-design`, mot pour mot, sans toucher a `recreo.css`. Capture par
+`outils/mesurer-rendu.sh 360 <url> <png> 640`, Chrome designe par la variable `CHROME` (aucun
+navigateur n'est sur le `PATH` de ce poste). **Ce n'est donc pas une maquette synthetique : c'est le
+HTML que l'application sert, avec le candidat par-dessus.** Puis mesure pixel par pixel et
+agrandissement au voisin le plus proche - je regarde les pixels reellement rendus, pas une
+interpolation qui lisserait ce que je dois juger.
+
+**Ce que je declare degrade, en trois points, parce qu'ils sont reels** :
+
+1. **je juge un candidat, pas un livre**. Ce que le lot ecrira peut differer de ce que j'ai capture ;
+   mes conditions N1 a N8 sont ecrites pour etre mesurables sur le livre, une par une ;
+2. **un enfant n'a pas vu cet ecran.** Je juge une forme contre une frontiere que j'ai ecrite, ce qui
+   est ma competence, mais aucun enfant n'a designe cette forme du doigt ;
+3. **je n'ai pas mesure a 375 px ni au-dela.** Les chiffres d'`ines-design` a 375 px sont repris tels
+   quels et non reverifies ; ceux a 360 px sont tous refaits par moi.
+
+**Un defaut d'outillage trouve en chemin, et je le remonte plutot que de le garder** :
+`outils/mesurer-rendu.sh` avec un chemin de PNG **relatif** rend "le navigateur n'a produit aucune
+capture (code 0)" et n'ecrit rien, alors que le meme appel avec un chemin absolu fonctionne. Le
+script convertit deja le chemin du conteneur et du profil pour le binaire natif, mais pas celui de la
+capture. C'est un symptome, pas une conception : je le route a `theo-archi`.
+
+#### 1. La silhouette : elle ne franchit pas ma frontiere, et voici la mesure qui le dit
+
+**Ma frontiere, rappelee au mot pres avant de juger.** C6 : *"pas de manette ni de bras lateral (mon
+veto sur tout geste de traction, confirme deux fois)"*. Point 3 du 2026-08-10 : *"le levier ne suggere
+aucun geste autre qu'un appui simple. Pas de fleche vers le bas, pas de manette a demi baissee qui
+attend qu'on la tire, pas de glissement."* C'est cela que je mesure, et rien d'autre : je ne juge pas
+si la forme est jolie, ni si elle est la meilleure possible.
+
+**Ce que la forme rendue est, mesure ligne par ligne sur la capture** (etat reel de "Le bon verbe",
+enonce *"Autrefois, ils ___ ce dessin anime chaque mercredi."*, sans indice - c'est l'un des cinq
+etats les plus bas du catalogue, section 3 -, 360 x 640, boite du manche isolee par sa couleur
+`#ffffff`) :
+
+| Rangee | Largeur du blanc | Centre |
+|---|---|---|
+| `y = 426` (sommet) | 6 px | `x = 321,5` |
+| `y = 430` | 16 px | `x = 321,5` |
+| `y = 436` | 20 px | `x = 321,5` |
+| `y = 436..448` (13 rangees, le bas) | **20 px, constante** | `x = 321,5` |
+
+**Quatre proprietes, chacune mesuree et non deduite du polygone :**
+
+1. **La symetrie gauche/droite est exacte sur chaque rangee sans exception** : le centre du blanc vaut
+   `x = 321,5` sur les 23 rangees, du sommet a la base. C'est le fait qui tue la lecture "en cours de
+   course" : une manette a demi baissee est asymetrique, son axe penche, et un enfant lit
+   l'inclinaison avant la forme. Ici il n'y a pas d'inclinaison a lire, et ce n'est pas une intention
+   d'`ines-design` que je relaie, c'est un releve.
+2. **Les flancs sont strictement paralleles sur les 13 dernieres rangees** et la largeur ne depasse
+   jamais 20 px. Aucun evasement, aucune jupe : la forme ne s'ouvre pas vers le bas.
+3. **La base est une arete horizontale pleine de 20 px**, sur toute la largeur de la boite. C'est
+   l'argument d'`ines-design` - la forme est **montee sur** le fronton et non suspendue - et je le
+   confirme par la mesure au lieu de le croire. Une forme dont le bas est plein et poser a plat ne se
+   lit pas comme un bras qui pend : elle n'a pas de point d'attache en haut, et un bras lateral se
+   reconnait precisement a cela.
+4. **Rien ne sort du fronton, et rien n'approche le coin arrondi.** Le fronton occupe
+   `y = 421..452` a l'interieur du cabinet ; le manche occupe `y = 426..448`, donc 5 px de garde en
+   haut et 4 px en bas. Son bord droit est a `x = 331` pour un bord interieur de cabinet a `x = 339` :
+   **8 px de degagement**. La forme est **contenue**, ce qui compte pour ma frontiere : ce qui deborde
+   d'un cadre se lit comme un appendice, et un appendice lateral est exactement ce que C6 refuse.
+
+**Le cout est nul, et je l'ai verifie sur un etat reel plutot que sur trois colonnes synthetiques.**
+Cabinet **sans** le candidat : `y = 413..634`, `x = 12..347`. Cabinet **avec** : `y = 413..634`,
+`x = 12..347`. **Identique au pixel dans les deux dimensions**, sur un etat de "Le bon verbe" a quatre
+propositions en deux rangees - c'est-a-dire sur le jeu le plus contraint du catalogue, et non sur le
+plus confortable.
+
+**Les deux formes du fronton ne se genent pas** : etoile a `x = 173..186`, manche a `x = 312..331`,
+**126 px** entre elles, verifie par moi. Voir section 2.
+
+**Ce que la forme rendue raconte, et je le dis franchement parce que personne d'autre ne le dira.**
+Zoomee, cette silhouette ne se lit pas comme une poignee : elle se lit comme **une arche, une porte
+arrondie, une borne**. Ce n'est pas un motif de refus - ma frontiere porte sur ce que la forme
+**suggere de faire**, pas sur ce qu'elle represente, et une arche ne suggere aucune traction. Mais il
+faut que ce soit ecrit avant le lot et non decouvert apres : **l'utilisatrice a demande un manche
+dessine, et ce qui sera livre se lira comme un bloc arrondi.** Si c'est acceptable pour elle, tant
+mieux, le sprint continue ; si elle attendait une forme reconnaissable comme une poignee, elle doit
+pouvoir le dire maintenant, quand cela coute un briefing. Je le route a `sofia-sm` pour remontee, sans
+en faire une condition : ce n'est pas ma porte, c'est la sienne.
+
+**Le risque de forme que je trouve, moi, et qui est actionnable : la cloche.** `cloche` est sur ma
+liste d'interdits C6, au titre des symboles canoniques de la machine a sous. La silhouette actuelle
+n'en est pas une, et je peux dire exactement pourquoi grace au releve ci-dessus : une cloche
+**s'evase** vers le bas et porte souvent un bouton au sommet. Ici les flancs sont paralleles et le
+sommet est un arc nu. **Mais deux modifications minuscules la feraient basculer** - elargir la base
+au-dela de la largeur du corps, ou ajouter une pastille sur le sommet - et aucune CI ne le verrait.
+C'est ma condition N2.
+
+**Sur le repli en `border-radius` de sa section 1.4, que `ines-design` me laisse activer : je ne
+l'active pas, et j'ai une raison mesuree.** Je l'ai rendu et mesure comme l'autre. Sa courbe est plus
+lisse, c'est exact. Mais son bas est **arrondi** : largeur 18 px a `y = 444`, 14 px a `y = 445`, la ou
+le candidat en polygone garde 20 px pleins jusqu'a sa derniere rangee. **Le repli perd donc l'embase
+plate, c'est-a-dire precisement la propriete qui fait passer le candidat principal** - une forme dont
+le bas s'arrondit flotte, et ce qui flotte peut se lire comme suspendu. Ce n'est pas un refus du
+repli, c'est une consequence a connaitre : **si le lot bascule sur le repli, il revient devant moi**
+(condition N3). Je ne juge pas non plus son ombre interne ici : voir la section 3 et la condition N5,
+qui tranchent ce que C3 dit d'un relief peint.
+
+**Verdict de la question 1 : la silhouette ne franchit pas la frontiere. Elle est acceptee**, sous les
+conditions N1 a N8 de la section 5. **Ce que j'accepterais a la place n'a donc pas a etre invente** -
+et je note pour trace que la piste ecartee par `ines-design`, la boule sur tige etroite, aurait ete
+refusee par moi aussi, pour un motif qui n'est pas le sien : une tige etroite sous une tete large est
+la silhouette meme d'une manette, et son etranglement est le point ou une main se ferme. Elle l'a
+ecartee parce qu'elle se lit comme un trou de serrure ; je l'aurais ecartee parce qu'elle se lit comme
+une prise. **Les deux motifs tiennent, et le second est celui qui aurait arrete le sprint.**
+
+#### 2. Le fronton porte deux formes fixes : accepte, et voici ce que mon mot "unique" voulait dire
+
+**La question est bien posee et elle porte sur mon propre ecrit, pas sur la proposition.** J'ai ecrit
+C5 clause 2 le 2026-08-11 : *"le jeu d'images du cabinet est fixe : il ne depend ni de l'item tire,
+ni du numero de la colonne, ni de la reponse attendue"*. Et le commentaire de production de
+`recreo.css` (S8-1, `.cabinet-bandeau`) a repris le mot autrement : *"porte l'unique image fixe du
+cabinet"*. Ce mot-la est de moi, il est passe dans le code, et il faut donc que je dise ce qu'il
+gouvernait.
+
+**Il interdisait la variation, il n'a jamais compte les formes.** La preuve est dans ma propre
+redaction, et je la cite plutot que de l'affirmer : ma clause dit **"le jeu d'images"**, au singulier
+collectif, et ce qu'elle interdit est nomme trois fois - dependre de l'item, de la colonne, de la
+reponse attendue. Aucune des trois n'est un compte. Mon motif ecrit le confirme mot pour mot : *"une
+illustration qui varie avec le contenu n'est plus une decoration, c'est un indice - et un indice que
+personne n'a valide"*. Ce que je protegeais est l'acquis 12 - aucun item resoluble par appariement
+visuel - et une seconde forme immobile ne l'entame pas d'un pixel. **Deux etoiles identiques auraient
+ete acceptables le 2026-08-11 ; une etoile et un manche le sont pour la meme raison.**
+
+**Ce que je verifie avant d'accepter, parce que ma clause a une seconde exigence que le compte de
+formes ne couvre pas** : que la forme neuve soit dessinee par une regle statique, non designee par un
+attribut de gabarit, et donc structurellement incapable de dependre de l'item. Verifie sur le
+candidat : `.cabinet-bandeau::after` avec `content: ""`, dimensions en `rem`, `clip-path` en
+pourcentages, couleur prise a `--recreo-accent-texte` - **aucun de ces cinq elements ne peut etre
+conditionne par le contenu**, et `fragments/manche.html` n'est pas touche (`ADR-0033` point 7.b, avis
+de faisabilite section 4). C'est la meme structure qui m'a fait ecrire, le 2026-08-11, que C5 clause 2
+etait "ferme par construction" - **c'etait mon point de garde le plus important du chantier, et il
+reste ferme de la meme facon**.
+
+**Ce que j'ajoute, et qui n'est pas un durcissement mais la portee reelle de ma clause sur un fronton
+qui porte desormais deux formes** : ma clause parlait d'un jeu d'images, donc elle gouverne
+l'ensemble, quel que soit son cardinal. Elle ne devient ni plus large ni plus etroite avec deux
+formes. **Et je refuse d'en profiter pour ajouter une exigence de nombre que je n'avais pas ecrite** :
+poser aujourd'hui un plafond de deux formes serait deplacer mes poteaux, et je ne le fais pas. Si un
+jour une troisieme forme est proposee, elle revient devant moi pour ce qu'elle est - une question de
+lisibilite et d'encombrement du fronton, mesurable, section 1 - jamais parce qu'elle serait la
+troisieme.
+
+**Le seul chiffre que je regarde sur ce point, et il est tenu** : les deux formes ne se touchent pas
+et ne se genent pas. `ines-design` mesure l'etoile a `x = 173..186` et le manche a `x = 312..331` a
+360 px, soit **126 px** entre elles, et **133 px** a 375 px. C'est un fronton de 320 px de large
+portant deux objets de 14 et 20 px : il reste vide sur plus de 88 % de sa longueur. **Aucun
+encombrement, aucun chevauchement, et rien qui puisse se lire comme une paire a apparier.** Ce
+dernier point est celui qui m'importe : deux formes **differentes** l'une de l'autre, separees de la
+moitie du fronton, ne fabriquent pas la figure "deux images qui vont ensemble" qu'un enfant pourrait
+essayer de mettre en rapport avec les colonnes.
+
+**Reponse : OUI, le fronton peut porter deux formes fixes.** Ma condition C5 est tenue dans ses deux
+clauses, et le mot "unique" du commentaire de production est une imprecision de ma main qu'il faut
+corriger dans le meme lot que le manche, pour qu'un lecteur futur ne prenne pas mon vocabulaire pour
+une regle de nombre. C'est ma condition N4, section 5.
+
+#### 3. Le pixel de relief : accepte, il ne fait basculer aucun etat, et la marge est de 4 rangees
+
+**D'abord une attribution que je corrige, parce qu'elle est de ma main et qu'elle circule.**
+`ines-design` (section 2.1) et `ADR-0033` (Contexte) citent tous les deux "la reserve 1 de
+`nadia-prof`" pour les 4 px de marge et les chiffres `540..636`. **Ce n'est pas ma reserve 1 de la
+fiche de conjugaison** : celle-la est `mangeons` a 2,0 px de chaque cote, et c'est elle qui est
+devenue le motif de mon refus du 2026-08-11. Les chiffres de pli sont un **constat neuf, date du
+2026-08-11**, ecrit en section 7 du troisieme audit de
+`FICHE-bandit-manchot-conjugaison-present-cm1.md` et en section 3 du verdict du meme jour de cette
+fiche-ci, adresse a `camille-po` sous `DEC-0016` - **explicitement pas un motif, explicitement pas
+une reserve**. La distinction n'est pas une coquetterie : une reserve se leve, un constat sous
+`DEC-0016` se traite ailleurs, et ce que j'ai refuse de transformer en barre ne doit pas redevenir une
+barre par un glissement de vocabulaire. Dans cette fiche, la reserve 1 du 2026-08-11 est bien le
+constat de pli - ce qui explique la confusion et ne l'excuse pas : les deux fiches n'emploient pas le
+meme mot pour la meme chose, et c'est ma redaction qui est en cause.
+
+**Ensuite je remesure, parce que le chiffre qui borne ce choix est le mien et qu'il ne faut pas
+s'appuyer dessus sans le verifier.** Methode : jeu reel, 60 manches sur "Le bon verbe" et 40 sur "Le
+bon petit mot", en repondant faux volontairement pour faire venir les indices ; chaque ecran servi
+reassemble dans la page complete ; capture a 360 px, une fois a 640 px de haut (ce que l'enfant voit)
+et une seconde fois a 900 px pour les etats coupes par le pli (pour connaitre leur bas reel) ; bas du
+cabinet lu comme **la derniere rangee portant la couleur exacte de l'aplat**, sur `x = 12..347`.
+
+| Jeu | etats distincts mesures | Bas du cabinet, valeurs reellement observees | Etats coupes par le pli |
+|---|---|---|---|
+| Le bon verbe | 34 (17 sans indice, 17 avec) | **538, 586, 634**, puis 664, 712, 742, 760, 790 | **16 / 34**, tous avec indice |
+| Le bon petit mot | 29 | **454, 502, 550, 580, 598, 628**, puis 676, 694, 724, 772 | **5 / 29** |
+
+**Le fait qui repond a la question, et personne ne l'avait** : entre le dernier bas visible et le
+premier bas coupe, il y a **30 px de trou sur "Le bon verbe"** (634 puis 664) et **48 px sur "Le bon
+petit mot"** (628 puis 676). **Aucun etat, sur aucun des deux jeux, n'a son bas entre 635 et 639.**
+Un decalage d'1 px ne peut donc faire basculer **aucun** etat d'au-dessus du pli a en-dessous. C'est
+exactement la verification qu'`ines-design` laissait ouverte (sa section 4, point 3) et qu'elle avait
+raison de ne pas trancher : elle n'avait que mes plages agregees.
+
+**Et le motif structurel qui ferme le trou de mon echantillon, parce que je n'ai pas enumere les 25
+items dans les deux etats** : les increments de hauteur de cet ecran sont des **lignes de texte
+entieres** - 48 px pour une ligne d'enonce a 2 rem, 30 px pour une ligne d'indice a 1,25 rem. Aucun
+element de cet ecran n'a une hauteur de 1 a 5 px. **Un bas de cabinet ne peut donc pas se poser a
+635, 636, 637, 638 ni 639** : il n'existe aucun increment qui y menerait depuis 634. C'est un
+argument de quantum, pas d'exhaustivite, et je le nomme comme tel plutot que de pretendre avoir joue
+les 50 etats possibles.
+
+**Le pixel, mesure sur le rendu et non deduit de la syntaxe `spread = 0`.** J'ai applique les trois
+gestes de relief d'`ines-design` (ombre externe, arete interne du fronton, plinthe) puis le lot
+complet (relief + manche + `#081c2c`) sur les **deux** etats les plus bas de "Le bon verbe", et
+mesure la derniere rangee qui n'est pas le fond de page :
+
+| Etat | Reference | Relief seul | Lot complet |
+|---|---|---|---|
+| "Autrefois, ils ___ ce dessin anime chaque mercredi.", sans indice | **634** | **635** | **635** |
+| "Je ___ mes devoirs.", avec indice | **634** | **635** | **635** |
+
+- **+1 px exactement, et pas 2** : le lot complet ne coute pas plus que l'ombre seule. L'aplat du
+  cabinet reste a `y = 413..634`, **222 px**, et `x = 12..347`, **336 px**, dans les trois cas -
+  identique au pixel, y compris avec la nuance `#081c2c` et le manche.
+- **0 px sur les flancs, verifie autrement que par la syntaxe** : la silhouette de la rangee 635 avec
+  ombre (`x = 19..340`) est identique a celle de la rangee 634 sans ombre (`x = 19..340`), et la
+  rangee au-dessus de chacune vaut `x = 17..342` dans les deux cas. L'ombre recopie le bord, coin
+  arrondi compris, une rangee plus bas. Elle n'elargit rien.
+- **Ce qui reste libre sous le cabinet sur l'etat le plus bas du catalogue** : les rangees 636, 637,
+  638 et 639, soit **4 rangees**. `ines-design` annoncait 3 en partant de mon chiffre de 636 ; il y
+  en a 4, parce que **mon chiffre du 2026-08-11 etait 2 px trop severe**.
+
+**Je corrige donc mes propres chiffres du 2026-08-11 avant qu'on s'appuie dessus.** J'avais ecrit un
+bas de cabinet `540..636` sur "Le bon verbe" et `450..690` sur "Le bon petit mot" ; je mesure
+aujourd'hui `538..634` et `454..694`. Les ecarts sont de **-2 px** sur l'un et **+4 px** sur l'autre,
+donc pas un decalage systematique de methode que je pourrais nommer, et **je ne sais pas reconstituer
+la cause** - je le dis plutot que d'en inventer une. Ce qui est sur : les chiffres de ce bloc sont
+lus par balayage de la couleur exacte de l'aplat, la derniere rangee qui la porte, sur des captures
+que j'ai refaites aujourd'hui. **Ce sont ceux-la qui doivent etre cites**, et le sens du constat de
+`DEC-0016` ne change pas d'un pixel : l'indice emporte encore la moitie des reponses sous le bas de
+l'ecran, remesure aujourd'hui a 16 etats sur 34 pour "Le bon verbe" et 5 sur 29 pour "Le bon petit
+mot".
+
+**Ma reponse : le pixel est acceptable.** Trois motifs, dans l'ordre ou ils comptent :
+
+1. **il ne coute aucun etat** - c'est mesure ci-dessus, pas estime ;
+2. **il ne touche ni la largeur des colonnes ni la hauteur de l'aplat**, donc aucun de mes planchers
+   n'est paye en douce, ce qui etait ma crainte ecrite depuis le budget du 2026-08-11 ;
+3. **il achete quelque chose que je peux nommer** : le cabinet se detache de la page au lieu d'y
+   flotter, et C1 - "un enfant de 6 ans reconnait un objet a son pourtour" - est la propriete que je
+   defends depuis le debut de ce chantier.
+
+**Et l'etat sur lequel j'exige qu'il soit mesure avant d'etre accepte est nomme, pas decrit** :
+"Le bon verbe", enonce **"Autrefois, ils ___ ce dessin anime chaque mercredi."**, **sans indice**, a
+**360 x 640**. Derniere rangee non-fond attendue : **635**, contre 634 sans le lot. **C'est ma
+condition N6.** Si un jour cet enonce quitte le paquet, l'etat de reference devient le plus bas des
+etats non coupes du catalogue, mesure et non suppose - et si cette valeur descend a 639, le lot
+revient devant moi.
+
+**Ce que ce pixel ne repare pas, et je le redis pour que personne ne s'y trompe** : il ne touche pas
+au defaut de `DEC-0016`. Un enfant de CM1 qui rate trois fois voit toujours l'aide arriver et emporter
+deux reponses sous le bas de l'ecran. **Ce pixel rend le cabinet plus lisible ; il ne rend pas le jeu
+jouable au moment ou l'enfant en a le plus besoin.** Les deux chantiers n'ont pas la meme importance,
+et ce n'est pas celui-ci le plus important.
+
+#### 4. La valeur absolue du contraste : `ines-design` a raison, mon 9,25:1 etait faux, et voici la cause exacte
+
+**Je corrige mon propre constat avant que quiconque s'appuie dessus, et cette fois la correction est
+entierement a mon desavantage.**
+
+J'ai recalcule les quatre paires moi-meme, a la main puis par une sonde jetable non commitee (Pillow
+n'y sert pas : ce calcul ne lit aucune image), en partant **des valeurs hexadecimales declarees dans
+`recreo.css`** et non d'un pixel echantillonne. Methode : normalisation de chaque canal sur 255,
+linearisation sRGB par seuil (`c <= 0,03928` : `c / 12,92` ; sinon `((c + 0,055) / 1,055) ^ 2,4`),
+`L = 0,2126 R + 0,7152 G + 0,0722 B`, rapport `(L_clair + 0,05) / (L_sombre + 0,05)`. Valeurs lues
+dans la feuille servie : `--recreo-fond: #f4f7fb`, `--recreo-accent: #2e6f9e`,
+`--recreo-entete-fond: #1d4b6b`, `--recreo-accent-texte: #ffffff`.
+
+| Paire | `ines-design` | Ma remesure | Verdict |
+|---|---|---|---|
+| cadre `#1d4b6b` vs colonnes `#2e6f9e` | 1,71:1 | **1,7101:1** | concordant |
+| cabinet neuf `#081c2c` vs colonnes | 3,20:1 | **3,2022:1** | concordant |
+| cadre `#1d4b6b` vs page `#f4f7fb` | 8,61:1 | **8,6059:1** | **elle a raison** |
+| cabinet neuf `#081c2c` vs page | 16,11:1 | **16,1148:1** | concordant |
+| plinthe `#061420` vs cabinet neuf | 1,07:1 | **1,0745:1** | concordant |
+
+**La cause de l'ecart n'est pas celle qu'elle suppose, et je peux la nommer exactement.** Son
+hypothese - un echantillonnage sur capture de mon cote, sujet a l'antialiasing et a la compression -
+est raisonnable mais fausse. J'ai cherche quelle couleur claire rend `9,25:1` contre `#1d4b6b`, et la
+reponse tombe juste : **`#ffffff`, le blanc pur, donne 9,2471:1**, soit mon `9,25:1` a deux decimales.
+**J'ai calcule le contraste du cadre contre le blanc pur au lieu du fond de page `#f4f7fb`.** Ce
+n'est pas une derive de mesure, c'est une substitution de valeur : j'ai pris
+`--recreo-accent-texte` la ou il fallait `--recreo-fond`, deux variables voisines de la meme feuille.
+Une capture n'y est pour rien - le chiffre est reproductible au millieme sans jamais ouvrir une image.
+
+**Ce que cela change, et ce que cela ne change pas.**
+
+- **Les valeurs absolues qui entrent dans une fiche sont celles d'`ines-design`** : 1,71:1 sur
+  cadre/colonnes, **8,61:1** sur cadre/page, 3,20:1 et 16,11:1 avec `#081c2c`. Je les valide comme
+  miennes desormais.
+- **Ma reserve 2 du 2026-08-11 contenait donc un chiffre faux**, et je le corrige sans la reformuler :
+  elle disait *"contre la page le cabinet ressort a 9,25:1, donc le tour de l'objet est franc et C1
+  est tenue"*. La bonne valeur est **8,61:1**. **La conclusion ne bouge pas** - 8,61:1 reste tres
+  au-dessus de tout seuil qui rendrait un contour difficile a suivre, C1 restait et reste tenue - mais
+  le chiffre qui la portait etait faux, et un tiers qui l'aurait recopie aurait propage mon erreur.
+- **Le rapport relatif que j'avais lu ne bouge pas non plus** : le passage de 1,71:1 a 3,20:1 sur
+  cadre/colonnes est une multiplication par **1,87**, et c'est bien le fait acquis de cette section.
+  `ines-design` recommande de le lire comme tel ; je suis d'accord, et j'ajoute que la valeur absolue
+  est desormais reconciliee, donc plus rien n'oblige a se replier sur le seul rapport relatif.
+- **`#081c2c` a `3,20:1` contre les colonnes : je l'accepte comme valeur, et je dis a quel titre.**
+  Ce n'est pas un seuil WCAG - il n'y en a pas pour deux aplats decoratifs adjacents dont aucun ne
+  porte de texte, et je ne vais pas fabriquer un seuil que la norme ne pose pas. Mon motif est celui
+  que j'avais ecrit en reserve 2, inchange : un enfant qui distingue mal les couleurs lisait *"un seul
+  aplat bleu avec des cases a peine plus claires"*, et la fenetre de la machine ne se voyait que par
+  les coins arrondis. A 3,20:1 la fenetre existe. **Je ne demande pas mieux et je ne demanderai pas
+  mieux plus tard** : 3,20:1 est la barre que je leve ici, elle est atteinte, et la relever apres coup
+  ferait de ma porte un caprice.
+- **La plinthe a `1,07:1` ne me gene pas**, et pour le motif exact qu'`ines-design` ecrit : deux
+  aplats tres sombres separes pour faire un relief, ni texte ni signal. Je l'ai verifie sur son
+  chiffre plutot que sur sa parole - `#061420` est bien chaque canal de `#081c2c` multiplie par un
+  facteur voisin de 0,73, donc une teinte uniformement plus sombre et non une nuance differente. **Le
+  jour ou un texte se poserait sur la plinthe, ce chiffre redevient un motif** ; aujourd'hui il n'en
+  est pas un.
+- **`--recreo-entete-fond` n'est pas touchee**, et c'est la bonne decision : elle porte le plancher du
+  crayon de `favicon.ico` (S6-10), que j'ai chiffre moi-meme, et cette proposition ne le rouvre pas.
+
+**Ce que je retiens de mon erreur pour la suite, et je l'ecris parce que ca vaut plus que le
+chiffre** : `ines-design` a nomme un ecart entre nous deux plutot que de l'arrondir ou de le laisser
+passer, deux sprints de suite. C'est ce qui a permis de le resoudre. **L'ecart etait le mien.**
+
+#### 5. Mes conditions, numerotees pour etre mesurees une par une
+
+Comme les sept du sprint 8 : chacune est verifiable sur une capture a 360 px ou sur la feuille servie,
+sans avoir a me redemander ce que j'ai voulu dire. **Elles portent sur le lot du manche et du relief,
+et sur rien d'autre.**
+
+**N1 - la silhouette reste symetrique et ses flancs ne s'ecartent pas.** Sur une capture a 360 px, le
+centre de la forme rendue (balayage de sa couleur exacte, rangee par rangee) est le meme sur toutes
+ses rangees a 0,5 px pres, et sa largeur ne decroit sur aucune rangee en descendant. *Mesure de
+reference sur le candidat* : centre `x = 321,5` sur les 23 rangees, largeur 6 -> 20 px, constante a
+20 px sur les 13 dernieres. *Motif* : la symetrie est ce qui rend impossible la lecture "manette a
+demi baissee", et c'est le seul fait qui fait tenir mon acceptation.
+
+**N2 - la base ne s'evase pas et le sommet ne porte rien.** La rangee la plus basse de la forme est
+sa rangee la plus large, aucune rangee n'est plus large qu'elle, et aucune forme distincte n'est
+posee au-dessus de l'arc. *Motif* : `cloche` est sur ma liste d'interdits C6 au titre des symboles
+canoniques de la machine a sous. Un evasement du bas ou une pastille au sommet transforment cette
+arche en cloche, et **aucun garde-fou ne verrait la difference**.
+
+**N3 - le repli en `border-radius` de la section 1.4 d'`ines-design` n'est pas active.** Le lot ecrit
+le candidat en `clip-path`. *Motif mesure* : le bas du repli s'arrondit - 18 px puis 14 px sur ses
+deux dernieres rangees, contre 20 px pleins jusqu'a la derniere pour le candidat - donc il perd
+l'embase plate, qui est precisement la propriete par laquelle la forme se lit "montee sur le fronton"
+plutot que "suspendue". Si le lot le prefere quand meme, **il revient devant moi avant d'etre ecrit**,
+et ce sera une question de forme, pas une reouverture de C6.
+
+**N4 - le commentaire "porte l'unique image fixe du cabinet" de `recreo.css` est corrige dans le meme
+lot.** Ce mot est de moi et il devient faux avec deux formes. Ce que ma clause C5 dit doit rester
+lisible dans le code : le jeu d'images du cabinet **ne varie pas** ; il n'est **pas limite en
+nombre**. *Verification* : lecture de la feuille servie. *Motif* : un lecteur futur qui trouve
+"unique" dans le code croira que j'ai pose un plafond de formes, et refusera un dessin pour une regle
+que je n'ai jamais ecrite.
+
+**N5 - un relief peint est autorise ; un changement d'etat ne l'est pas.** C'est ma lecture de C3, et
+je la rends explicite parce que le lot en a besoin avant d'ecrire : quand C3 refuse *"aucun changement
+de couleur, aucune lumiere sur le cabinet lui-meme, a aucun moment"*, elle refuse ce qui **apparait,
+varie ou pulse**, et sa verification est ecrite dans la meme phrase - *les pixels du cabinet sont
+identiques* sur trois captures : au repos avant tout appui, pendant le defilement, 2 secondes apres
+l'arret de la derniere colonne. **Une ombre, une arete ou un aplat declares une fois pour toutes
+passent cette verification par construction** : ils sont, ils ne se produisent pas. Sont refuses, et
+c'est desormais rouge en CI par `ADR-0033` : toute regle du cabinet conditionnee par `:hover`,
+`:active`, `:focus`, `:focus-visible`, `:focus-within` ou `:target`, et toute declaration dont le nom
+commence par `transition` ou `animation`. *Motif* : sans cette phrase, soit le lot n'ose aucun relief
+et le chantier n'a plus d'objet, soit il en ose un et personne ne sait si je l'accepte.
+
+**N6 - le cout vertical total du lot est de 1 px, et il se mesure sur un etat nomme.** "Le bon
+verbe", enonce **"Autrefois, ils ___ ce dessin anime chaque mercredi."**, **sans indice**, capture
+360 x 640 : derniere rangee non-fond a **y = 635** (contre 634 sans le lot), aplat du cabinet a
+`y = 413..634` et `x = 12..347` **inchange au pixel**, et **4 rangees libres** sous le cabinet. Le
+cout lateral est de **0 px** : la silhouette de la derniere rangee vaut `x = 19..340`, celle de la
+rangee au-dessus `x = 17..342`, identiques a la reference.
+
+**N7 - la largeur des colonnes ne change pas.** 96 px par colonne a trois colonnes, 152 px a deux,
+cabinet a 336 px (`x = 12..347`) a 360 px de large. *Motif* : c'est mon plancher de s08, il a deja ete
+paye une fois par les colonnes, et un habillage ne le repaye pas.
+
+**N8 - la valeur du contraste cadre/page ecrite dans tout livrable est 8,61:1**, avec la paire nommee
+(`--recreo-entete-fond` contre `--recreo-fond`) et la methode de la section 4. **Mon 9,25:1 ne doit
+plus etre recopie** : il vaut le contraste contre le blanc pur, qui n'est pas le fond de la page. Les
+autres valeurs qui entrent dans une fiche : 1,71:1 sur cadre/colonnes aujourd'hui, **3,20:1** avec
+`#081c2c`, 16,11:1 sur `#081c2c` contre la page.
+
+#### 6. Reserves neuves, datees du 2026-08-12, et ce qui n'en est pas une
+
+**Aucune de mes reserves ouvertes n'est levee ici et aucune n'est durcie** - rien n'est code, il n'y a
+rien a lever. J'en ouvre une seule, et je nomme deux choses qui n'en sont pas.
+
+1. **Reserve neuve** : **la forme rendue ne se lit pas comme une poignee, mais comme une arche.** Ce
+   n'est pas un motif (section 1) et ce n'est pas une condition : c'est une information qui appartient
+   a l'utilisatrice, qui a demande un manche dessine. Destinataire : `sofia-sm` pour remontee, puis
+   `camille-po` si elle en fait une story. **Le sprint n'attend pas cette reponse pour continuer.**
+2. **Ce qui n'est pas une reserve** : les 16 etats sur 34 et 5 sur 29 coupes par le pli. C'est le
+   constat de `DEC-0016`, remesure aujourd'hui, et je ne le rouvre pas comme barre - pour la meme
+   raison que les trois fois precedentes.
+3. **Ce qui n'est pas une reserve non plus** : `3,20:1` entre le cabinet et les colonnes. C'est la
+   barre que je leve, elle est atteinte, et je ne la releverai pas plus tard.
+
+#### 7. Ce dont je reste seule garde apres cet arbitrage
+
+**Ce qui sort de ma liste, et c'est un vrai gain** : le point 1 de ma liste du 2026-08-11 -
+*"que rien ne s'anime sur le cabinet (C3) : un `@keyframes` sur une regle d'habillage passerait une CI
+verte"*. `ADR-0033` le ferme du cote declaratif, et **il ferme plus large que ce que je demandais** :
+un changement de couleur au survol, une transition, un habillage qui clignote uniquement sous
+`prefers-reduced-motion` - donc uniquement pour l'enfant qui a demande un ecran immobile - etaient
+tous verts avant lui. Je n'avais pas vu le troisieme. **Je lui rends la garde de cette moitie**, et je
+note que `theo-archi` a etabli que le motif de refus d'`ADR-0030` sur ce point etait faux, ce qui est
+plus honnete que de le laisser vivre.
+
+**Ce qui reste entierement mien, et que je nomme pour qu'on ne croie pas couvert ce qui ne l'est
+pas** :
+
+1. **La silhouette elle-meme.** Aucun automate ne voit une forme (`ADR-0025`). Que le manche soit
+   symetrique, sans evasement et sans pastille au sommet - N1 et N2 - est mesurable par moi et par
+   personne d'autre dans la CI. `CabinetDeLaMachineTest` verifiera qu'il n'y a pas de `px` dans ses
+   dimensions ; il ne dira jamais si c'est une cloche.
+2. **Que les couleurs rendues du cabinet soient identiques au repos, pendant le defilement et apres
+   l'arret** - la moitie de rendu de C3, qu'`ADR-0033` point 6 me rend explicitement. Un relief peint
+   en degrade qui suggererait une lumiere allumee passerait toute la CI.
+3. **Le cout vertical d'un habillage.** Rien en CI ne mesure un pixel d'ombre. N6 est une mesure de
+   moi, sur un etat que j'ai nomme.
+4. **Le pli**, inchange, et **le contraste interieur du cabinet**, dont la valeur est desormais fixee
+   par N8.
+5. Et celles de s07 et s08 qui restent : la duree et la courbe du defilement ; qu'un mot tienne dans
+   sa colonne ; qu'une proposition ne soit ni tronquee ni coupee ni comprimee ; qu'aucun decor
+   n'atteigne l'ecran de fin de partie ; qu'aucun code de jeu d'argent n'atteigne l'enfant (C6,
+   acquis 11) - et **ce dernier point s'elargit avec ce lot** : une forme dessinee peut porter un
+   symbole de machine a sous sans qu'aucun mot soit ecrit. C'est N2.
+
+#### 8. Suites hors de ma main
+
+- **Pour `camille-po`** : la reserve 1 de la section 6 est un motif a instruire, pas une story deja
+  ecrite. Rien dans cet arbitrage ne bloque le sprint. Et `DEC-0018` porte mon `9,25:1` errone au
+  backlog : **la valeur a corriger est 8,61:1** (N8).
+- **Pour `ines-design`** : sa methode de contraste est validee et la mienne etait fausse ; ses quatre
+  rapports sont repris tels quels. Son argument de symetrie et d'embase est confirme par ma mesure, pas
+  seulement accepte. Le repli de sa section 1.4 n'est pas active, avec le motif mesure de N3, et sa
+  section 4 point 3 est **fermee** : aucun etat ne bascule.
+- **Pour `theo-archi`**, comme symptomes et non comme conception : `outils/mesurer-rendu.sh` avec un
+  chemin de PNG relatif rend "aucune capture (code 0)" et n'ecrit rien, la conversion de chemin
+  manquant sur cet argument seul (section 0) ; et la contrainte du sixieme selecteur de
+  `CabinetDeLaMachineTest` qu'il a lui-meme nommee est celle dont je verrai la consequence si elle est
+  manquee - un garde-fou qui reste vert sans eprouver le manche.
+- **Pour `sofia-sm`** : la reserve 1 de la section 6, a remonter a l'utilisatrice. Elle a arbitre que
+  le manche serait dessine ; elle n'a pas arbitre qu'il ressemblerait a une arche.
+- **`squad/programme/MATRICE-couverture.md` ne bouge pas.** Aucune competence du programme n'est en
+  jeu dans un habillage : c'est la cinquieme fois que l'etape 2 de ma methode est sans objet sur ce
+  chantier, et je le dis plutot que de la simuler.
+- **Je n'ai touche ni le code, ni un `ADR`, ni un `DEC`, ni le backlog, ni la matrice, ni un fichier
+  de ceremonie.** Je n'efface aucun verdict : les six blocs anterieurs de cette fiche restent lisibles
+  plus bas, avec leurs dates. **Je ne fusionne pas et je ne pousse pas.**
+
 ### Verdict courant - chantier du cabinet (S8-1, S8-2, S8-3), prononce sur l'increment livre, du 2026-08-11
 
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique accorde. **Mes deux reserves ouvertes sont
@@ -440,7 +933,13 @@ arbitrage du matin est **fermee** par la section 6. J'en ouvre deux, datees du 2
 2. **Le contour du cabinet ne se distingue des colonnes qu'a 1,71:1.** Le cadre est `#1d4b6b` et les
    colonnes `#2e6f9e` : rapport de contraste **1,71:1**, calcule sur les luminances relatives. Contre
    la page (`#f4f7fb`) le cabinet ressort a **9,25:1**, donc le tour de l'objet est franc et C1 est
-   tenue - **je ne transforme pas cette reserve en motif, et je dis pourquoi : j'ai chiffre une
+   tenue
+   > **Correction du 2026-08-12, ajoutee sans rien effacer** : ce `9,25:1` est **faux**. La bonne
+   > valeur est **8,61:1**. Mon `9,25:1` est le contraste du cadre contre le **blanc pur** `#ffffff`,
+   > que j'avais pris a la place du fond de page `#f4f7fb`. La conclusion de cette reserve ne change
+   > pas - 8,61:1 reste franc et C1 restait tenue - mais le chiffre ne doit plus etre recopie. Detail
+   > de la mesure et des trois autres paires : bloc du 2026-08-12, section 4, condition N8. Le
+   > `1,71:1` de cette reserve, lui, est exact et reverifie. - **je ne transforme pas cette reserve en motif, et je dis pourquoi : j'ai chiffre une
    epaisseur dans C1, jamais un contraste interieur.** Ce serait deplacer mes poteaux. Mais je le
    note comme reserve neuve et datee : un enfant qui distingue mal les couleurs lit un seul aplat
    bleu avec des cases a peine plus claires, et la "fenetre" de la machine se voit surtout par les

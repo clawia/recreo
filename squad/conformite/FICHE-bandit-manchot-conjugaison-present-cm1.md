@@ -1038,6 +1038,33 @@ qu'il dit ou est la marge de progres, et parce que je preferais le calculer que 
 - **Je n'efface rien** : mon refus du 2026-08-10, mon Done du second audit et mes arbitrages
   prealables restent lisibles plus bas, dans l'ordre, avec leurs dates.
 
+### Arbitrage prealable au developpement - silhouette du manche, relief et contraste du cabinet (s10), du 2026-08-12
+
+**Ce bloc n'est pas un Done pedagogique et ne touche aucun verdict de cette fiche.** L'arbitrage
+complet est ecrit une seule fois, dans `FICHE-bandit-manchot-additions-cp.md`, bloc du 2026-08-12 : il
+porte sur la mecanique, donc sur ce jeu-ci. **Rien n'est code.** Ce qui concerne **ce jeu-ci**, et qui
+est mesure sur lui plutot que sur un autre :
+
+1. **C'est sur ce paquet que se mesure le pixel de relief**, parce qu'il porte l'etat le plus bas du
+   catalogue. Etat de reference que j'ai nomme, condition N6 : enonce **"Autrefois, ils ___ ce dessin
+   anime chaque mercredi."**, **sans indice**, 360 x 640. Derniere rangee non-fond attendue apres le
+   lot : **635**, contre **634** aujourd'hui. Il reste **4 rangees libres** sous le cabinet, et le lot
+   complet ne coute pas plus que l'ombre seule.
+2. **Je corrige mes chiffres de pli du 2026-08-11 sur ce jeu, sans les effacer.** J'avais ecrit un bas
+   de cabinet `540..636` ; je remesure aujourd'hui **`538..634`** sur 34 etats distincts joues (17 sans
+   indice, 17 avec), soit **-2 px**. Je ne sais pas reconstituer la cause de l'ecart et je le dis.
+   Les valeurs reellement observees sont 538, 586, 634, puis 664, 712, 742, 760, 790.
+3. **Le fait neuf, et il ferme une question qu'`ines-design` laissait ouverte** : **aucun etat de ce
+   jeu n'a son bas entre 635 et 639.** Entre le dernier bas visible (634) et le premier bas coupe
+   (664) il y a 30 px. Un decalage d'1 px ne fait donc basculer **aucun** etat sous le pli.
+4. **Le defaut de `DEC-0016` reste ce qui fait le plus de mal sur cet ecran**, remesure aujourd'hui a
+   **16 etats coupes sur 34**, tous avec indice. Le pixel de relief n'y change rien, et je ne le
+   rouvre pas comme barre - pour la quatrieme fois, et pour la meme raison.
+5. **Ma reserve 1 de cette fiche n'est pas le constat de pli.** Elle est `mangeons` a 2,0 px, devenue
+   le motif de mon refus du 2026-08-11. Le constat de pli est un constat neuf sous `DEC-0016`,
+   section 7 du troisieme audit. `ines-design` et `ADR-0033` citent l'un pour l'autre ; la confusion
+   vient de ma redaction et je la corrige la ou elle circule.
+
 ### Arbitrage prealable au developpement - cabinet visible de la machine, du 2026-08-11
 
 **Ce bloc n'est pas un Done pedagogique et il est degrade** : le cabinet n'est pas ecrit. Il ne
