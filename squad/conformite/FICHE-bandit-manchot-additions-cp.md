@@ -124,6 +124,22 @@
   le rendu et retiree, et mon premier rendu de ce jour etait faux - j'etais tombee dans le plancher de
   fenetre de 516 px que `outils/mesurer-rendu.sh` documente en tete de fichier. Ce n'est pas un Done
   pedagogique et aucun verdict de cette fiche n'est touche.
+- **Reponse de principe du 2026-08-13 sur le lieu de l'indice** (bloc en tete du bloc de validation) :
+  **le lieu "sous le meuble" portait quatre choses et aucune n'est ce que M1 protege** - la garantie de
+  M8, la clause 1 de M6, l'ordre vertical du verdict et de l'aide, et **aucun pixel**. M1 tient tout
+  entier au **rattachement a la question qui bloque et au premier echec** : l'indice peut remonter
+  au-dessus du meuble. **C'est M6 clause 1 qui cede**, sur une erreur de categorie qui est la mienne -
+  verifie sur les **146 indices des huit paquets servis, aucun ne parle de la reponse de l'enfant** ;
+  la clause 2, le meuble identique, n'est pas touchee. **M4 ne retrecit pas a deux elements : elle se
+  scinde**, trois elements au-dessus du pli mesures chacun la ou il vit, parce qu'une M4 verte obtenue
+  en sortant l'indice du bloc mesure serait verte sans qu'un pixel ait bouge pour l'enfant. **M1, M4 et
+  M8 perdent chacune leur clause de lieu, aucune ne perd sa barre.** Une condition neuve **M15** et une
+  reserve neuve **Q** : la direction choisie deplace un defaut d'une condition bloquante (M4) vers une
+  qui ne l'est pas (M8), et je ne rends pas M8 bloquante apres coup. **Derivation annoncee comme telle,
+  a confirmer par `ines-design`** : sur un flux vertical de blocs, remonter l'indice rend **0 px** au
+  message et enfonce la ligne de verdict de 65 a 155 px. Ce n'est pas un Done pedagogique, mon refus du
+  2026-08-13 tient entier, et cet arbitrage est degrade sur un point nomme : je n'ai pas joue l'indice
+  remonte, il n'existe nulle part.
 - **Derniere mise a jour** : 2026-08-13
 
 ## Competences visees
@@ -586,6 +602,253 @@ Je le dis explicitement, sinon l'equipe croira couvert ce qui ne l'est pas.
 - **F5 sur les 100 emplacements.** Je ne l'ai pas faite et je ne la declare pas faite.
 - **Aucune ligne de `squad/programme/MATRICE-couverture.md`.** Le Done pedagogique est refuse ;
   rien ne passe a `couvert-valide`.
+### Reponse de principe - ce que le lieu "sous le meuble" portait pour l'indice (M1), du 2026-08-13
+
+**Ce bloc n'est pas un Done pedagogique et n'en contient aucun.** Une seule question m'est posee, et
+elle porte sur ma propre condition M1 : le lieu "sous le meuble" portait-il quelque chose, ou seul le
+rattachement a la question qui bloque comptait ?
+
+- **Date** : 2026-08-13.
+- **Ce que je ne fais pas ici** : je ne rejuge pas l'increment - **mon refus du 2026-08-13 tient,
+  entier, sur M4 et sur M13 clause 1**. Je ne rouvre aucune des vingt-sept conditions tenues. Je ne
+  tranche pas ce qui doit payer si remonter l'indice ne suffit pas : cette question viendra avec les
+  mesures d'`ines-design`, et ce n'est pas celle-ci.
+- **Lignee** : worktree dedie sur `s10-nadia-lieu-indice`, descend de `round-two` a `2d34a15`,
+  verifie par `bash outils/verifier-lignee.sh` ("le worktree sur la branche 's10-nadia-lieu-indice'
+  descend de la lignee de round-two"). Cinquieme branche de mon sprint ; cette section s'empile, elle
+  ne reecrit rien. Je ne fusionne pas et je ne pousse pas.
+
+#### La reponse, en une phrase
+
+**Le lieu portait quatre choses, et aucune des quatre n'est ce que M1 protege** : M1 tient tout
+entier au rattachement et au moment, l'indice peut donc remonter au-dessus du meuble sans qu'aucune
+de mes exigences pedagogiques ne cede - **mais le lieu ne portait aucun pixel**, et c'est M6 clause 1
+qui cede, pas M1.
+
+#### 0. Comment j'ai regarde, et ce que je declare degrade
+
+**Ce que j'ai fait** : lu le gabarit servi (`fragments/manche.html`) et la feuille servie
+(`recreo.css`) pour etablir la structure reelle du flux vertical ; relu le gabarit d'avant ce sprint
+(`git show 533967d:...manche.html`) pour verifier d'ou mon arbitrage avait deplace l'indice ; relu
+les **huit paquets YAML servis** pour verifier de quoi les 146 indices parlent ; repris la mesure
+d'`ines-design` (`mesure-ines-budget-vertical-m4.md`, section 1) et mes propres relevees du
+2026-08-11 et du 2026-08-13.
+
+**Degrade, et je le nomme avant mes conclusions : je n'ai pas joue l'indice remonte.** Il n'existe
+nulle part - le rendre demanderait de modifier un gabarit ou une feuille de style, ce que je ne fais
+pas. Tout ce que j'ecris en section 2 est donc une **derivation** sur la structure du flux et sur des
+chiffres deja mesures, annoncee comme telle, et c'est la mesure d'`ines-design` sur le rendu reel qui
+la confirme ou l'infirme. **Ma reponse de principe, sections 1 et 3 a 6, ne depend pas de ce
+chiffre-la.**
+
+#### 0 bis. Ce que je corrige de mes propres ecrits, avant de m'appuyer dessus
+
+**Mon parenthese de M1 disait le motif du lieu, et elle en disait un seul, alors qu'il y en avait
+quatre.** J'avais ecrit : *"Pourquoi sous le meuble et pas au-dessus : un indice qui apparait
+au-dessus du cabinet pousse les colonnes vers le bas pendant que l'enfant a le doigt dessus (...).
+Rien ne doit bouger au-dessus du point ou l'enfant appuie (M8)."* Ce motif est le bon, il est mesure,
+et il n'est pas le seul que le lieu servait : **M6 clause 1 et l'ordre vertical du verdict et de
+l'aide y etaient aussi**, sans que je l'ecrive. Je le dis parce qu'on m'interroge sur ce que le lieu
+portait, et qu'un motif ecrit ne fait pas l'inventaire.
+
+**Je verifie le fait sur lequel je vais m'appuyer, et il est exact.** Avant ce sprint, l'indice etait
+bien `<p class="indice" th:if="${indice != null}">` **immediatement apres l'enonce et au-dessus du
+cabinet** (gabarit a `533967d`, ligne 32), et il etait **conditionnel** : son apparition poussait
+donc reellement le cabinet vers le bas. Mon releve du 2026-08-11 chiffrait ce mouvement a **96 px sur
+"Le bon verbe"** (bas du cabinet de 540 a 636 px) ; `ines-design` le chiffre a **65 a 155 px selon le
+jeu**. Les deux disent la meme chose et sa mesure est plus complete que la mienne.
+
+#### 1. Ce que le lieu portait - quatre choses, et ce que M1 en avait besoin
+
+| Ce que le lieu portait | Reel ? | M1 en a-t-elle besoin ? |
+|---|---|---|
+| **1. La garantie de M8** : rien ne bouge au-dessus du point ou l'enfant appuie. Sous le meuble, l'apparition de l'indice ne deplace aucune proposition | **oui, mesure** : 65 a 155 px de deplacement des colonnes dans l'autre position | **non.** C'est une exigence sur les colonnes, ecrite dans M1 par commodite de redaction. Elle vit dans M8 et elle y reste |
+| **2. M6 clause 1** : un seul emplacement porte ce que le jeu dit | **oui** : je l'y avais nommement enumere | **non.** C'est une exigence sur le nombre d'endroits, pas sur l'indice |
+| **3. L'ordre vertical** : le verdict au-dessus de l'aide, donc le verdict le plus haut du bloc et le premier a echapper au pli | **oui**, et personne ne l'avait ecrit, moi comprise | **non.** C'est une exigence de M4, sur ce qui est vu en premier |
+| **4. Des pixels** | **non - zero, voir section 2** | sans objet |
+| **Le rattachement a la question qui bloque, et le premier echec comme moment** | c'est la substance de M1 | **oui, et c'est tout ce dont elle a besoin** |
+
+**Donc : seul le rattachement comptait pour M1, et le lieu portait tout de meme trois choses reelles,
+qui appartiennent a M8, a M6 et a M4.** La demonstration est courte et je la donne parce qu'elle est
+verifiable : **le defaut que mon arbitrage corrigeait n'a jamais ete le lieu.** Avant ce sprint
+l'indice etait deja au-dessus du meuble, et ce que j'ai refuse le 2026-08-12 n'etait pas sa position -
+c'etait qu'il n'atteignait pas l'enfant au moment ou il etait bloque : *"un enfant qui rate neuf
+manches sur dix recoit deux aides, et les deux portent sur le seul item qu'il avait reussi."* Un
+indice remonte au-dessus du meuble **et rattache a la question qui bloque, des le premier echec sur
+cette question**, corrige ce defaut exactement comme un indice place dessous. **Le retour au lieu
+d'avant ce sprint n'est pas un retour a l'etat d'avant ce sprint**, et il ne faut pas les confondre :
+c'est le rattachement qui faisait le travail, et il ne se paie pas en geometrie.
+
+#### 2. Le lieu ne porte aucun pixel - derivation, et le chiffre que j'annonce faux
+
+**C'est le point ou je dois contredire une premisse, et je le fais avec les chiffres d'`ines-design`
+plutot qu'avec les miens.** L'attente est que remonter l'indice rende les 65 a 155 px que sa descente
+avait liberes. **La structure servie ne le permet pas.**
+
+Le gabarit rend **un seul flux vertical de blocs** : `.consigne`, `.enonce`, `.cabinet`, puis
+`.message-jeu` dont `.indice` est le dernier enfant. `.message-jeu` **ne porte aucune propriete** dans
+`recreo.css` (regle vide, l'habillage n'a jamais ete pose) : `.indice` a donc **sa propre boite**
+(fond ambre, bordure de 0,125 rem, `padding: 0.75rem 1rem`, `margin: 0.5rem 0`) que ce soit au-dessus
+ou en dessous du meuble. Deplacer un bloc d'un bout a l'autre d'un flux vertical **ne change pas la
+hauteur totale du flux**. La position du bas du dernier element est donc inchangee, aux quelques
+pixels de fusion de marges pres.
+
+**L'arithmetique sur "Le bon verbe", ma mesure du 2026-08-13 et la sienne du meme sprint :**
+
+| | indice sous le meuble (etat livre) | indice au-dessus (direction choisie) |
+|---|---|---|
+| bas du cabinet | 582 px (`ines-design`, s. 1) | 737 px (+155 px, sa meme mesure) |
+| boite `.indice` | 736..891 px | 582..737 px |
+| bloc du verdict (`.signal`) | 673..736 px | **828..891 px** |
+| bas de tout ce que le jeu dit | **891 px** (ma mesure) | **891 px** |
+| ce que l'enfant voit au-dessus de 640 px | **ni le verdict, ni l'indice** | **les deux premieres lignes de l'indice sur trois** (58 px de la boite), et toujours pas le verdict |
+
+**Ce que la direction choisie rend : 0 px.** Ce qu'elle change est **lequel des deux textes est
+sacrifie** - elle rend une partie de l'indice visible, et elle enfonce la ligne de verdict de la
+hauteur entiere de la boite d'indice, soit 65 a 155 px selon le jeu. Les 65 a 155 px de la mesure
+d'`ines-design` sont reels, mais ils sont **gagnes par le cabinet et repris au bloc du dessous dans
+le meme mouvement** : c'est la meme hauteur comptee deux fois si on l'attend des deux cotes.
+
+**Je dis ce que cette derivation vaut et ce qu'elle ne vaut pas.** Elle repose sur trois faits
+verifiables (le flux est un flux de blocs ; `.message-jeu` est vide de proprietes ; `.indice` porte sa
+propre boite) et sur deux chiffres deja mesures. Elle **suppose** que rien d'autre ne change dans le
+meme geste - or le resserrement de marges qu'`ines-design` proposait en section 3 de sa mesure, lui,
+rend reellement des pixels, et il n'a jamais ete pose dans la feuille servie. **Si sa mesure sur le
+rendu reel contredit ma derivation, c'est sa mesure qui vaut**, et je le dirai comme une correction de
+mon propre constat, pas comme un durcissement.
+
+#### 3. M6 s'y oppose, et c'est M6 qui cede - sur une erreur de categorie qui est la mienne
+
+**Oui, M6 s'y oppose, litteralement et sans echappatoire.** Ma clause 1 dit : *"un seul emplacement
+porte ce que le jeu dit de la reponse - verdict, message, indice, revelation, explication. Il est sous
+le meuble (...). Il n'y a jamais deux messages a la fois, ni un message a deux endroits."* J'y ai
+enumere l'indice moi-meme. Un indice au-dessus et un message en dessous font deux endroits.
+
+**C'est M6 clause 1 qui cede, et pas parce que la geometrie l'exige - parce que mon enumeration etait
+fausse.** M6 parle de *ce que le jeu dit de la reponse de l'enfant*. **L'indice ne parle jamais de la
+reponse de l'enfant : il parle de la question.** Verifie ce jour sur les huit paquets servis, 146
+indices, un par un : **aucun** ne mentionne ce que l'enfant a presse - ni "tu as choisi", ni "ta
+reponse", ni "tu viens de". Ils disent *"Compte sur tes doigts."*, *"On entend aussi ce son dans le
+mot grand."*, *"Compare les dizaines : 2 dizaines, c'est moins que 4 dizaines."* Ce sont des phrases
+sur l'enonce, pas sur l'essai. **J'avais range l'indice avec le verdict parce qu'il arrive au meme
+moment, et arriver au meme moment n'est pas parler de la meme chose.** La correction est la mienne, je
+l'aurais faite meme sans cette question, et elle rend M6 plus juste et non plus laxiste.
+
+**Ce que M6 garde, integralement** : un seul emplacement pour le **verdict, le message, la revelation
+et l'explication** ; jamais deux verdicts a la fois ; jamais un verdict a deux endroits. Et **la
+clause 2 n'est pas touchee d'un pixel** - le meuble rigoureusement identique dans les quatre etats,
+que j'ai appelee le point de garde le plus important de ce chantier et qui est tenue au pixel dans
+l'increment livre.
+
+**Ce que la cession coute, et je ne le cache pas.** Au premier echec, l'enfant a desormais deux
+textes qui apparaissent en meme temps a deux endroits separes par le meuble entier. Pour un enfant de
+six ans c'est un cout d'attention reel, et c'est precisement ce que ma clause 1 evitait. **Je ne
+l'accepte pas gratuitement** : il est paye par la condition M15 de la section 6, qui exige que
+l'indice se lise comme une partie de la question et non comme un second message.
+
+#### 4. M4 ne retrecit pas a deux elements : elle se scinde. Meme barre, moins un lieu
+
+**Non, M4 ne perd pas un tiers de sa portee, et ce refus-la est le coeur de ma reponse.** Ma condition
+dit : *"Le message, l'indice de M1 et la revelation de M5 sont entierement au-dessus du pli (`y = 640`),
+sous le meuble, dans tous les etats de tous les jeux."* Il y a deux choses dans cette phrase : **une
+barre** (trois elements au-dessus du pli) et **un lieu** (sous le meuble). C'est le lieu qui tombe,
+pas la barre.
+
+- **Je retire de M4 les mots "sous le meuble".** C'est un **allegement** de ma condition, pas un
+  durcissement : elle exigeait une position dans la page en plus d'une position par rapport au pli,
+  elle n'exige plus que la seconde.
+- **La barre reste a trois elements**, chacun mesure la ou il vit desormais : le message et la
+  revelation sous le meuble, **l'indice la ou il est remonte**. La verification ne change pas de
+  nature, elle change d'ordonnee de depart.
+
+**Pourquoi je refuse la lecture a deux elements, et le motif n'est pas formel.** Une M4 qui ne
+compterait plus l'indice deviendrait verte, sur plusieurs jeux, **le jour ou l'indice sort du bloc
+mesure - c'est-a-dire sans qu'un seul pixel ait bouge pour l'enfant** (section 2). Ce serait une
+condition satisfaite par un changement de perimetre de mesure. J'ai deja refuse cette forme de vert
+deux fois ce sprint - sur M10, ou j'ai exige un temoin dans la meme execution, et sur M13 clause 3,
+que j'ai comptee non tenue parce qu'elle n'etait tenue que par la panne qui cassait ses voisines.
+**Je ne l'accepte pas davantage ici, et pas contre ma propre condition.**
+
+**Et la barre ne peut pas ceder sur l'un des trois, parce qu'aucun des trois n'est couvert
+ailleurs** :
+
+- **la revelation** est le seul endroit qui nomme la reponse et qui dit a l'enfant sur quoi appuyer ;
+  invisible, elle laisse l'enfant dans un etat terminal ou plus aucun appui n'avance la partie. C'est
+  un cul-de-sac, et c'est le pire des trois ;
+- **le message** est le seul endroit qui dit "essaie encore" ; la marque barree de M9 dit "pas
+  celui-la, et ton appui a compte", elle ne dit pas d'y retourner ;
+- **l'indice** est la seule chose qui apprend quelque chose au moment ou l'enfant est bloque.
+  Invisible, il reproduit exactement le defaut que j'ai refuse le 2026-08-12 : une aide qui n'atteint
+  pas l'enfant.
+
+#### 5. M8 : le lieu portait sa garantie, elle survit dans son propre texte
+
+**M8 dit deja tout ce qu'il faut** : *"les propositions gardent le meme nombre, le meme ordre, la meme
+position au pixel"* entre deux essais sur la meme question. Un indice qui apparait au-dessus du meuble
+au premier echec deplace les colonnes de **65 a 155 px** vers le bas, pendant que l'enfant a le doigt
+dessus : **M8 est violee, par son propre texte, sans que j'aie un mot a y ajouter.**
+
+Je retire de M8 la seule phrase de lieu qu'elle contient - *"tout ce que le jeu ajoute apparait sous le
+meuble"* - pour la meme raison qu'en section 4, et **je ne touche pas a la clause de position au
+pixel**. La tenir dans la nouvelle geometrie demande que **la place de l'indice soit tenue des le
+premier rendu de la question**, remplie au premier echec sans rien deplacer. Le comment est technique
+et ne m'appartient pas.
+
+**M8 n'etait pas bloquante et je ne la rends pas bloquante** - ce serait deplacer mes poteaux apres
+coup. Mais je signale ce que la direction choisie fait au dispositif : elle **deplace un defaut d'une
+condition bloquante (M4) vers une condition qui ne l'est pas (M8)**. Je l'ecris comme une **reserve
+neuve et datee, la reserve Q**, a la suite de mes reserves L a P du meme jour, et non comme un
+durcissement de M8.
+
+#### 6. Condition M15, neuve et datee du 2026-08-13
+
+Elle ne durcit ni M1, ni M4, ni M6 : elle est le prix de la cession de M6 clause 1, et elle n'existe
+que parce que l'indice change de place. **Deux clauses, sur ce que l'enfant lit.**
+
+1. **L'indice se lit comme une partie de la question, jamais comme un second verdict.** Il est
+   au-dessus du meuble, apres l'enonce, et il ne partage **aucun** signe visuel avec le bloc du
+   verdict : ni l'icone de M11, ni l'aplat vert ou rouge de `.signal`. Il garde son identite propre -
+   aujourd'hui l'ambre de `--recreo-attention-fond`, dont F18 a verifie qu'il ne se confond avec
+   aucune teinte de proposition et qu'il garde son sens "tu as besoin d'aide". *Verification* : sur
+   l'ecran de premier echec, les deux textes ne peuvent pas etre lus comme un seul message coupe en
+   deux.
+2. **Un seul indice a la fois, celui de la question courante, et il disparait avec elle.** Aucun
+   indice ne survit au passage a la question suivante. *Motif* : c'est la substance de M1, et elle est
+   la seule chose que ce deplacement ne doit pas perdre.
+
+#### 7. Etat de mes conditions apres cette reponse
+
+| # | Etat | Ce qui change |
+|---|---|---|
+| **M1** | **maintenue, substance intacte** | perd sa clause de lieu ("sous le meuble, jamais au-dessus"). Le rattachement a la question qui bloque et le premier echec comme moment sont **inchanges** et restent la substance entiere de la condition |
+| **M4** | **maintenue, bloquante, et toujours NON TENUE** | perd sa clause de lieu ("sous le meuble"). **Se scinde, ne retrecit pas** : trois elements au-dessus du pli, mesures chacun la ou il vit. Barre inchangee. Mon refus du 2026-08-13 n'est pas leve d'un pixel |
+| **M6** | **clause 1 amendee, clause 2 intacte** | l'indice **sort** de l'enumeration de la clause 1, sur ma propre erreur de categorie, verifiee sur 146 textes. La clause 1 continue de tenir un seul emplacement pour le verdict, le message, la revelation et l'explication. La clause 2 - le meuble identique dans les quatre etats - n'est pas touchee et reste tenue |
+| M8 | **maintenue, non bloquante** | perd sa clause de lieu. La clause de position au pixel devient le garde-fou reel de ce deplacement (section 5, reserve Q) |
+| **M15** | **neuve** | section 6 |
+
+#### 8. Ce dont je reste la seule garde apres cette reponse
+
+Inchange depuis mon verdict du meme jour, avec un point de plus qui nait de ce deplacement :
+
+- **qu'un texte que l'enfant doit lire soit sur l'ecran** : aucun test ne compare une ordonnee au pli,
+  et il en faudra desormais **deux mesures et non une** - le bloc du verdict, et l'indice la ou il
+  vit ;
+- **que l'apparition de l'indice ne deplace pas les colonnes sous le doigt de l'enfant** : aucun test
+  ne compare deux rendus successifs de la meme question. C'est la reserve Q, et tant qu'elle n'a pas
+  de garde-fou, c'est moi le garde-fou, et je le suis en jouant.
+
+#### 9. Ce que cette reponse ne tranche pas
+
+- **Ce qui doit payer si remonter l'indice ne suffit pas.** Ce sera une autre question, avec les
+  chiffres d'`ines-design`. Je n'ai choisi ni de reduire un texte, ni de raccourcir un contenu, ni de
+  revenir a quatre colonnes etroites, et je ne le fais pas ici.
+- **La repartition du budget vertical d'un ecran a 360 x 640.** Ma reserve P dit que personne ne la
+  tient. **Cette reponse-ci l'appelle** - un flux a somme nulle ne se pilote pas texte par texte -
+  mais je ne l'ecris pas : `ines-design` la proposera avec ses mesures, et je l'arbitrerai.
+- **Aucune route technique.** Ou et comment la place de l'indice est tenue des le premier rendu
+  appartient a `theo-archi`.
+- **Aucun verdict de cette fiche.** Mon refus tient, aucun Done n'est prononce, aucune ligne de
+  `squad/programme/MATRICE-couverture.md` ne bouge.
 
 ### Arbitrage prealable au developpement - la silhouette du manche, le relief et le contraste du cabinet (s10), du 2026-08-12
 
