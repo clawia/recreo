@@ -151,13 +151,22 @@ body:has(.ecran-de-jeu) .lien-accueil {
     gap: 0.75rem;
 }
 
+/* S10 : resserrement de marge verticale (ines-design, s10-ines-meuble,
+   mesure-ines-budget-vertical-m4.md, section 3), jamais porte par aucun lot jusqu'ici. Remplace le
+   rembourrage par defaut de Bootstrap sur un <p> (1rem) : mesure comme necessaire, avec le
+   resserrement ci-dessous de .indice/.explication/.signal, pour que "Petits problemes" et "Le bon
+   verbe" tiennent au-dessus du pli de M4 (nadia-prof reste seule a juger si ce resserrement reste
+   assez respirant). Ne ferme pas M4 a lui seul : "Le bon petit mot" ne peut pas etre rachete par un
+   geste de forme (meme mesure, section 3, cause nommee sous DEC-0016). */
 .consigne {
     font-size: 1.25rem;
+    margin-bottom: 0.25rem;
 }
 
 .enonce {
     font-size: 2rem;
     font-weight: bold;
+    margin-bottom: 0.25rem;
 }
 
 /* Conteneur des boutons de reponse : un ecart confortable entre les boutons, au-dessus du
@@ -622,27 +631,31 @@ body:has(.ecran-de-jeu) .lien-accueil {
    liseret au profit du cadre complet (arbitrage du 2026-08-11, section 6). Neutre et identique
    apres une reponse juste et apres une reponse fausse : aucune regle ne conditionne .explication a
    .signal.est-juste ou .signal.est-faux, la couleur est la meme par construction. */
+/* S10 : rembourrage et marge resserres (ines-design, meme mesure que .consigne/.enonce ci-dessus) -
+   0.75rem 1rem / 0.5rem 0 avant ce resserrement. Seul le haut porte une marge : ce bloc est deja le
+   dernier sous le meuble sur les deux etats ou il coexiste avec .indice. */
 .explication {
     font-size: 1.25rem;
     color: var(--recreo-texte);
     background-color: var(--recreo-explication-fond);
     border: 0.125rem solid var(--recreo-explication-bordure);
     border-radius: 0.25rem;
-    padding: 0.75rem 1rem;
-    margin: 0.5rem 0;
+    padding: 0.5rem 0.75rem;
+    margin: 0.25rem 0 0;
 }
 
 /* Bandeaux d'attention (indice, reprise) : un cadre complet, pas seulement un liseret, pour
    rester visibles sans distinguer les couleurs (reserve de nadia-prof sur le faible ecart de
-   luminance entre le fond ambre et le fond de page). */
+   luminance entre le fond ambre et le fond de page).
+   S10 : rembourrage et marge resserres (ines-design), meme motif que .explication ci-dessus. */
 .indice {
     font-size: 1.25rem;
     color: var(--recreo-texte);
     background-color: var(--recreo-attention-fond);
     border: 0.125rem solid var(--recreo-attention-bordure);
     border-radius: 0.25rem;
-    padding: 0.75rem 1rem;
-    margin: 0.5rem 0;
+    padding: 0.5rem 0.75rem;
+    margin: 0.25rem 0 0;
 }
 
 .erreur {
@@ -668,11 +681,13 @@ body:has(.ecran-de-jeu) .lien-accueil {
     margin: 0 0 1rem;
 }
 
+/* S10 : rembourrage vertical resserre (ines-design), meme motif que .explication/.indice - ce bloc
+   est toujours le premier sous le meuble, jamais de marge a lui donner. */
 .signal {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.75rem;
+    padding: 0.5rem 0.75rem;
 }
 
 .signal .verdict {
@@ -730,7 +745,11 @@ body:has(.ecran-de-jeu) .lien-accueil {
 /* S10 : structure posee par le lot mecanique, habillage laisse au lot qui porte le meuble.
    ".message-jeu" est le bloc unique sous le meuble ou le jeu parle de la reponse de l'enfant -
    signal, indice, revelation, explication (M1, M6 clause 1). Aucune propriete ici : sa forme
-   revient au lot qui porte le meuble. */
+   revient au lot qui porte le meuble.
+   S10, cloture : le resserrement de marge d'ines-design (mesure-ines-budget-vertical-m4.md,
+   section 3) porte sur .signal/.indice/.explication ci-dessus, les boites qui portent aujourd'hui
+   le rembourrage reel - ce wrapper-ci reste sans propriete tant qu'aucun lot ne l'a fait porter la
+   forme visuelle unique que sa proposition decrit. */
 .message-jeu {
 }
 
