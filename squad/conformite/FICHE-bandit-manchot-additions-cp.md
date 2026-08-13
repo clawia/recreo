@@ -160,6 +160,21 @@
   disqualifierait a tort deux indices de CP. Deux reserves neuves **R** et **S**. Ce n'est pas un Done
   pedagogique, et cet arbitrage est degrade sur trois points nommes, dont celui-ci : **je n'ai pas
   observe d'enfant**, et c'est la question qui decide.
+- **Second verdict du 2026-08-13 sur le lot de cloture du sprint 10 (`643c6f4`)** : **REFUSE**, aucun
+  Done pedagogique, **un seul motif bloquant** - **M13 clause 1 sur l'ecran de revelation de M5** :
+  quand la reponse revelee est la derniere proposition, Tabulation puis Entree detruit la partie sans
+  confirmation. **10 fois sur 25 revelations mesurees**, sur les sept jeux, a une frequence qui suit la
+  position tiree de la bonne reponse. **Mon refus du matin est corrige sur ses quatorze cas** (bonne et
+  mauvaise reponse, sept jeux, 14 sur 14 verts) et **les clauses 2, 3, 4 et 5 de M13 sont tenues pour la
+  premiere fois**. **M4 ne bloque plus**, levee par `DEC-0025`, et mon constat de refus n'est pas
+  retire : mesure apres le resserrement, elle est **NON TENUE sur trois jeux sur sept** au lieu de six -
+  **le resserrement ferme trois jeux, pas deux, et pas ceux que `DEC-0025` nomme**, dont l'affirmation
+  n'etait appuyee par aucune mesure. **M21 TENUE** (aucun indice sur "Le bon verbe", cle de paquet, 25
+  items verifies exacts), **M18 TENUE**, **M14 tenue sur quatre clauses sur cinq** (la marque n'est pas
+  cumulative apres la revelation), **accent peint du fronton ACCEPTE** a cout nul confirme par ma
+  mesure. **Ma reserve L est LEVEE** : un test execute reellement `recreo.js`. Trois reserves neuves
+  **T**, **U**, **V**. Degrade sur un point inchange : **je n'ai toujours pas ecoute cette
+  application**, F11 et la derniere clause de M13 restent ouvertes.
 - **Derniere mise a jour** : 2026-08-13
 
 ## Competences visees
@@ -227,6 +242,323 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Second verdict du 2026-08-13, prononce sur le lot de cloture du sprint 10 - le plus recent de cette fiche
+
+- **Verdict** : **REFUSE.** Aucun Done pedagogique. **Un seul motif bloquant**, et il est etroit :
+  **M13 clause 1 sur l'ecran de revelation de M5**. Tout le reste de ce que j'avais nomme est tenu ou
+  ne bloque plus.
+- **Increment audite** : `round-two` a `643c6f4`. **J'ai reconstruit le jar depuis mon propre
+  worktree** (`s10-nadia-verdict-2`, descendant verifie de `round-two`) plutot que de me fier a un
+  binaire deja present, et j'ai verifie que le serveur servait bien le correctif avant de mesurer :
+  le HTML rendu porte `<script defer src="/js/recreo.js...">`. `mvn -B verify` : **BUILD SUCCESS** sur
+  les six modules du reacteur, aucun test en echec. **Done technique acquis.**
+- **Ce que ce refus ne fait pas** : il ne rouvre aucune condition anterieure, il ne durcit rien, il ne
+  bloque pas le sprint 11. Il renvoie un defaut nomme a `camille-po`, qui en fait une story.
+- **Ce refus ne porte pas sur M4.** M4 est **levee par `DEC-0025`**, decision de l'utilisatrice, et je
+  n'ai pas la porte produit. Mon constat de refus du matin reste entier et non conteste - la levee
+  autorise a livrer malgre lui, elle ne le transforme pas en acceptation. Je mesure M4 dans ce verdict
+  parce que personne ne l'avait fait apres le resserrement, pas pour bloquer avec elle.
+- **Aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge.**
+
+#### 0. Comment j'ai joue, et ce que je declare degrade
+
+**Jar reconstruit, et c'est deliberé.** `marc-dev` a produit un faux negatif ce sprint en mesurant sur
+un jar perime, et j'ai moi-meme mesure hier une session laissee par une instance precedente. J'ai donc
+reconstruit, verifie la presence du correctif dans le HTML servi, et ouvert un profil de navigateur
+**neuf a chaque mesure**.
+
+**Ce que j'ai joue, en volumes** : navigateur pilote a 360 x 640 (`window.innerHeight` 640 verifie),
+sept jeux, en me trompant volontairement.
+
+- **14 manipulations Tabulation puis Entree** apres une bonne et apres une mauvaise reponse, sept jeux
+  - la mesure exacte de mon premier refus, rejouee ;
+- **25 ecrans de revelation** atteints en epuisant les essais, chacun suivi de Tabulation puis Entree
+  - mesure que je n'avais **pas** faite le matin ;
+- **261 etats porteurs d'un bloc de message** mesures au pli, 36 a 40 par jeu, pour le pire cas de
+  M4 ;
+- **35 ecrans de revelation** mesures au pli, 4 a 6 items par jeu ;
+- **deux appuis a cote successifs** apres la revelation, pour M14.
+
+Releves : `releve-m13-clavier-verdict-2.json`, `releve-m13-revelation-verdict-2.json`,
+`releve-m13-frequence-revelation.json`, `releve-m4-pire-cas-par-jeu.json`,
+`releve-m4-pli-revelation.json`, `releve-m4-pli-apres-resserrement.json`,
+`releve-m14-appuis-a-cote.json`, tous dans `squad/conformite/releves-s10/`.
+
+**Degrade, et je le nomme avant mes chiffres, comme le matin.** Les appuis sur les propositions sont
+programmes, pas produits par un doigt sur une dalle : la surbrillance de tape et le retard tactile ne
+sont pas juges ici. Les touches de M13 sont de vraies touches. **Et je n'ai toujours pas ecoute cette
+application** : F11 reste bloquee et la derniere clause de M13 reste ouverte, exactement comme ce
+matin.
+
+#### 1. Le motif bloquant - M13 clause 1 n'est pas tenue sur l'ecran de revelation de M5
+
+**Le fait.** Sur l'ecran de revelation, le focus va bien sur la proposition qui porte la reponse
+revelee - c'est ma clause 5, et elle est tenue. Mais **quand cette proposition est la derniere de
+l'ordre de tabulation, la premiere tabulation depuis elle atteint le bouton "Les jeux", et Entree
+detruit la partie sans confirmation.** C'est mot pour mot le defaut que j'ai refuse ce matin, sur un
+autre ecran.
+
+**La loi, verifiee sur 25 revelations sans une exception** : la partie est detruite **si et seulement
+si** la proposition revelee occupe la derniere position de l'ordre des propositions. Aucune autre
+variable n'intervient - ni le jeu, ni le contenu, ni le nombre d'essais.
+
+| Mesure | revelations | revelee en derniere position | Tabulation vers la sortie | partie detruite |
+|---|---|---|---|---|
+| une revelation par jeu, sept jeux | 7 | 3 | 3 | **3** |
+| Calcul CP, revelations repetees | 10 | 5 | 5 | **5** |
+| Le bon verbe, revelations repetees | 8 | 2 | 2 | **2** |
+| **total** | **25** | **10** | **10** | **10** |
+
+Les trois jeux ou je l'ai constate au premier tirage sont "Les complements a 10", "Le bon son" et
+"Soustractions CP" (revelee en position 3 sur 3). Ce ne sont **pas** trois jeux defectueux : sur
+"Calcul CP", le meme defaut apparait cinq fois sur dix parties. **Les sept jeux sont concernes**, a une
+frequence qui suit la position tiree de la bonne reponse.
+
+**Ce que ca fait a l'enfant, et pourquoi je ne negocie pas.** L'ecran de revelation est le moment ou
+l'enfant a epuise ses essais : c'est celui ou il est le plus en difficulte, et celui ou le jeu lui
+demande explicitement un geste ("Appuie sur 8."). Un enfant qui navigue au clavier presse Tabulation
+pour aller chercher ce bouton, presse Entree, et **perd sa partie et son score**. J'ai ecrit dans la
+clause 1 : *"une partie qu'un enfant detruit en deux touches n'est pas acceptable, et ce motif ne sera
+pas negociable."* Il ne l'est pas davantage aujourd'hui qu'hier, et il ne le devient pas parce que le
+sprint se termine.
+
+**Je ne deplace pas mes poteaux, et voici pourquoi.** Ma clause 1 dit *"Jamais la sortie, **sur aucun
+chemin**. Apres une reponse, **quel qu'en soit le verdict**"*, et ma clause 5 ajoute que sur l'ecran de
+revelation *"le geste que M5 demande a l'enfant doit etre atteignable sans traverser la sortie - et la
+clause 1 continue de s'appliquer."* Le chemin etait donc ecrit. **Ce qui manquait, c'est ma mesure** :
+j'ai ecrit "quatorze cas sur quatorze" et j'ai mesure quatorze cas, pas vingt-cinq. Je le dis
+clairement pour que personne n'ait a le deviner : `marc-dev` ne pouvait pas lire ce defaut dans mon
+releve, il pouvait le lire dans ma clause.
+
+**Ce que je demande, et je ne choisis pas le remede.** La propriete est inchangee : depuis le point de
+focus, **la premiere tabulation ne mene pas a la sortie**, sur l'ecran de revelation comme sur les
+autres. Le moyen appartient a `theo-archi` - ordre du document, ordre de tabulation, place du bouton de
+sortie, confirmation avant d'abandonner : je n'en designe aucun.
+
+#### 2. Ce que la correction du focus a reellement obtenu, et que je credite sans reserve
+
+**Les quatorze cas de mon refus du matin sont tous verts.** Apres une bonne reponse et apres une
+mauvaise, sur les sept jeux, Tabulation puis Entree laisse **la partie en cours** (`ecran-de-jeu`), 14
+sur 14. Le defaut que j'avais mesure est bel et bien corrige, et il l'est par un attribut.
+
+**Et pour la premiere fois de ce projet, les quatre autres clauses de M13 sont tenues, mesurees :**
+
+| Clause | Ce que j'exigeais | Mesure |
+|---|---|---|
+| **2** | apres une mauvaise reponse, le focus est sur la proposition pressee, celle qui porte la marque de M9 | **tenue 7 jeux sur 7** - focus sur `button.proposition.deja-essayee`, valeur egale a la proposition pressee |
+| **3** | aucun anneau de focus sur une proposition non pressee avant la revelation | **tenue** - sur tous les etats d'echec mesures, le focus est sur une proposition pressee, jamais sur une autre |
+| **4** | apres une bonne reponse, le focus est sur l'enonce de la question neuve | **tenue 7 jeux sur 7** - focus sur `p.enonce`, portant le texte de la question suivante |
+| **5** | sur l'ecran de revelation, le focus est sur la proposition qui porte la reponse revelee | **tenue 25 revelations sur 25** |
+
+**Ma reserve L est LEVEE.** J'avais ecrit : *"aucun test de ce depot n'execute `recreo.js`, et c'est
+ainsi qu'une fonction morte a traverse 390 tests verts."* `RecreoJsDeplaceLeFocusTest` execute
+maintenant reellement le fichier, reproduit la panne historique, et **dit lui-meme ce qu'il ne couvre
+pas**, dont "la clause 1 de M13 reste verifiee au clavier, dans un vrai navigateur, hors de la CI".
+C'est la barre que j'avais posee, elle est atteinte, je leve. **Cette levee tient meme si mon verdict
+du jour est un refus** : c'est le clavier reel qui a trouve le defaut restant, exactement la ou ce test
+declare son angle mort. Un garde-fou qui nomme sa propre limite a fait son travail.
+
+#### 3. Ce que je corrige de mes propres constats, avant de m'appuyer dessus
+
+**A. Un champ faux dans mon propre releve, et je ne l'efface pas.**
+`releve-m13-revelation-verdict-2.json` contient `clause5_focus_est_la_revelee: false` sur six jeux.
+**C'est faux, et c'est mon erreur d'instrument** : mon script extrayait la reponse revelee du message
+en coupant apres "Appuie sur", et il emportait l'indice qui suit dans la meme phrase - il comparait
+donc `10` a `10. Compte sur tes doigts`. La verification faite a la main sur les 25 revelations donne
+**clause 5 tenue 25 fois sur 25**. Je laisse le fichier tel quel, avec cette correction ecrite a cote :
+un releve corrige en silence ne prouve plus rien.
+
+**B. Je n'avais pas mesure l'ecran de revelation ce matin.** Mon "quatorze cas sur quatorze" etait
+exact sur son perimetre et incomplet sur celui de ma propre clause. Section 1.
+
+**C. Ce que `DEC-0025` affirme du resserrement de marges n'est appuye par aucune mesure, et il est
+faux dans les deux sens.** Section 4. Je le dis sans reproche a personne : `marc-dev` a ecrit qu'il
+n'avait pas rejoue la mesure, et il avait raison de l'ecrire.
+
+#### 4. La mesure du resserrement de marges, que personne n'avait rejouee
+
+**Protocole identique a celui de mon refus du matin** - 360 x 640, bas du bloc `.message-jeu` en
+coordonnees de page, pli a `y = 640` - applique cette fois au **pire cas de chaque jeu** et non a un
+echantillon de quatre coups : 261 etats de message et 35 ecrans de revelation.
+
+| Jeu | pire echec | pire revelation | pire "Bravo !" | verdict |
+|---|---|---|---|---|
+| Calcul CP (additions) | 577,19 (**+62,81**) | 549,19 (+90,81) | 495,19 (+144,81) | **ferme** |
+| Comparer les nombres | 607,19 (**+32,81**) | 579,19 (+60,81) | 495,19 (+144,81) | **ferme** |
+| Les complements a 10 | 637,19 (**+2,81**) | 579,19 (+60,81) | 495,19 (+144,81) | **ferme de 2,81 px** |
+| Soustractions CP | 607,19 (**+32,81**) | 579,19 (+60,81) | 495,19 (+144,81) | **ferme** |
+| Le bon son | 607,19 (+32,81) | **663,19 (-23,19)** | 495,19 (+144,81) | **NON ferme** |
+| Petits problemes | **703,19 (-63,19)** | **723,19 (-83,19)** | 591,19 (+48,81) | **NON ferme** |
+| Le bon verbe | **703,19 (-63,19)** | **703,19 (-63,19)** | **675,19 (-35,19)** | **NON ferme** |
+
+**Reponse a la question posee : le resserrement ferme trois jeux, pas deux, et pas ceux que
+`DEC-0025` nomme.**
+
+- Il ferme **"Comparer les nombres", "Les complements a 10" et "Soustractions CP"**, qui etaient tous
+  les trois a 651,19 px dans mon releve du matin.
+- **"Calcul CP" n'est pas ferme par lui : il l'etait deja.** Mon propre tableau du matin le donne a
+  621,19 px, seul jeu au-dessus du pli. Le resserrement lui ajoute de la marge, il ne lui en donne pas.
+- **"Le bon son" n'est pas ferme.** Son etat d'echec passe (607,19), mais son **ecran de revelation
+  deborde de 23,19 px** sur les items ou l'explication et l'indice s'additionnent : *"C'est in. Appuie
+  sur in. Dans LUNDI, ce sont les lettres u et n qui font le son in. Regarde : les lettres u et n font
+  ce son."* Deux textes qui disent la meme chose, et qui ensemble sortent de l'ecran.
+
+**Etat reel de M4 apres le lot de cloture : NON TENUE sur trois jeux sur sept**, contre six sur sept
+ce matin. C'est un progres reel de trois jeux, obtenu par un geste de forme, et je l'inscris comme tel.
+
+**Deux precautions sur mes propres chiffres, parce qu'un minorant n'est pas un maximum.** Ces valeurs
+sont le pire de ce que **j'ai tire**, pas le pire **possible** : les items sont tires au hasard et je
+n'ai pas balaye les 25 items de chaque paquet. **"Les complements a 10" passe a 2,81 px** - je le
+declare ferme sur les 36 etats mesures et je ne garantis rien sur les items que je n'ai pas tires.
+Cette fragilite-la est de la meme famille que le "1 px" qu'`ines-design` avait refuse de vendre comme
+un passage sur, et elle lui donne raison une seconde fois.
+
+#### 5. M21 - l'indice qui nommait la reponse a disparu de "Le bon verbe" : TENUE
+
+**Ce que j'ai verifie.** Sur `cm1-conjugaison-present`, aucun indice n'est rendu : ni au premier echec,
+ni au deuxieme, ni sur l'ecran de revelation. Les six autres jeux gardent les leurs, sans exception
+dans mes mesures. **La plainte de l'utilisatrice est fermee** : la bonne reponse n'est plus donnee des
+le premier echec.
+
+**Le perimetre est porte comme je l'avais exige** : une cle du paquet (`indicesNommentLaReponse`),
+fausse par defaut, jamais un identifiant de jeu compare en dur. Un paquet neuf n'a rien a declarer pour
+porter des indices utilisables. C'est exactement ce que demandait mon point sur la comparaison
+litterale, qui disqualifiait a tort deux indices de CP parfaitement sains.
+
+**Ce que je dois dire, et qui n'est pas un reproche a l'implementation.** M21 telle que je l'ai ecrite
+parlait de l'ampoule. L'ampoule n'existe pas encore - elle est reportee au sprint 11 sous mes six
+conditions. Ce qui est livre applique la meme regle a l'indice automatique : c'est **M2 devenue tenue a
+l'ecran sur ce jeu**, et c'est bien ce que M2 demandait. Je credite l'elargissement, il va dans le sens
+que j'avais ecrit.
+
+**Le prix, que je nomme parce que personne ne le paiera a ma place.** Sur "Le bon verbe", un enfant de
+CM1 qui se trompe recoit desormais *"Ce n'est pas ça. Essaie encore !"* et **rien d'autre**. A la
+revelation, il recoit *"C'est étions. Appuie sur étions."* et rien qui explique pourquoi. **Ce jeu
+n'enseigne plus rien sur l'erreur** : il sanctionne et il nomme. C'etait le moindre des deux maux -
+donner la reponse des le premier echec etait pire - mais c'est un pis-aller, pas un etat souhaitable.
+Les **25 indices a reecrire** restent ma reserve la plus lourde sur ce jeu, et elle est maintenant la
+seule chose qui separe "Le bon verbe" d'un jeu qui apprend quelque chose.
+
+**Exactitude du contenu, verifiee item par item sur les 25.** Les 25 enonces, leurs bonnes reponses et
+leurs 75 distracteurs sont **justes** : accords de personne corrects, marqueurs temporels
+("Demain", "Autrefois", "Maintenant", "Tous les jours") coherents avec le temps attendu, distracteurs
+tous plausibles - aucun distracteur absurde, aucune forme inventee. La competence declaree,
+*"Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif"*, est **retrouvee mot
+pour mot** dans `squad/programme/francais/competences-cm1.md`, et c'est bien **celle-la** que
+l'increment travaille. Une seule maladresse de langue, mineure et hors du champ de mes conditions :
+l'item *"Tu ___ un dessin."* attend `dessines`, donc "tu dessines un dessin".
+
+#### 6. M14 - l'appui a cote apres la revelation : quatre clauses sur cinq
+
+**Ce qui est tenu, mesure.** Un appui a cote apres la revelation marque bien la proposition pressee, et
+rien d'autre ne bouge : le message de revelation reste affiche mot pour mot, la question ne change pas,
+aucune proposition ne se deplace ni ne disparait, et la reponse nommee reste le seul appui qui fait
+avancer la partie. **Clauses 1, 2, 3 et 4 tenues.**
+
+**Clause 5 NON TENUE, et le defaut se voit sur "Le bon verbe".** Ma clause 5 dit : *"le fragment rendu
+differe de celui d'avant l'appui par cette seule marque."* Or **la marque n'est pas cumulative** :
+
+| Geste | propositions marquees |
+|---|---|
+| revelation atteinte, "aimait" essaye | `aimait` |
+| appui a cote sur "aimeront" | `aimait`, `aimeront` |
+| appui a cote sur "aimais" | `aimait`, **`aimais`** - `aimeront` **a perdu sa marque** |
+
+Le fragment differe donc par **deux** changements : une marque posee et une marque retiree. Un enfant
+qui tatonne apres la revelation voit **la trace de son essai precedent s'effacer**, et c'est
+exactement ce que M9 interdit ailleurs ("marquees, jamais retirees"). Le defaut n'est observable que
+sur un jeu a quatre propositions - sur les six jeux a trois propositions, il n'existe qu'un seul appui
+a cote possible, et il est donc invisible. C'est le seul jeu a quatre propositions du catalogue.
+
+**Ce n'est pas bloquant** : rien n'est detruit, l'enfant peut toujours avancer, et le defaut suppose
+deux appuis a cote successifs. **Reserve T**, ci-dessous.
+
+#### 7. L'accent peint du fronton - ACCEPTE
+
+**Le cout nul est confirme par ma propre mesure, pas seulement annonce.** La hauteur du cabinet est
+identique au pixel avant et apres l'image : **138 px** sur les jeux a trois propositions, **222 px** sur
+"Le bon verbe". Le bas du cabinet ne descend sur aucun jeu - il **remonte** de 24 px partout, effet du
+resserrement de marges, et de 24 px aussi sur "Le bon verbe" a enonce comparable. **M18 est tenue.**
+L'image est servie (`200`, `image/svg+xml`, 1 883 octets), le bandeau reste `aria-hidden`, l'accent ne
+porte aucun texte et ne varie avec aucun contenu de jeu (C5 clause 2 respectee). **Le visage, le
+levier, les deux tons du corps et les etoiles du socle sont intacts** : je les ai regardes a l'ecran, ils
+sont la ou ils etaient. Rien de ce que j'avais accepte n'est abandonne.
+
+**Ce que j'en pense comme enseignante** : c'est discret, sombre sur sombre, et ca ne dit rien a
+l'enfant - ce qui est exactement ce qu'on attend d'un decor. Il n'attire pas l'oeil loin des
+propositions, il ne ressemble pas a un bouton, il n'ajoute rien a lire. **Aucune de mes conditions ne
+s'y oppose et je n'en ajoute pas.**
+
+**Une observation, qui n'est pas une condition.** La proposition d'`ines-design` decrit un fondu "pour
+se fondre avec le fond du bandeau sans coupure visible". A l'ecran, **il y a une coupure** : le fondu
+est du mauvais cote. Mesure au pixel sur le bandeau de 320 px, ligne haute, capture
+`releves-s10/captures/fronton-accent-peint-bandeau.png` : `x = 255` vaut `(8, 28, 44)`, le fond uni du
+cabinet, et `x = 256` vaut `(16, 46, 66)`. Un saut net, une arete verticale a 64 px du bord droit,
+exactement ou l'image commence. C'est invisible a moins d'un metre et parfaitement inoffensif pour
+l'enfant. Je le signale a `ines-design` parce que c'est le contraire de son intention ecrite, et parce
+que je prefere le dire que la laisser croire que son fondu fonctionne. **Reserve U.**
+
+#### 8. Etat de mes trente-huit conditions - seules celles qui bougent
+
+| # | Etat | Ce qui change |
+|---|---|---|
+| **M2** | **substance inchangee, effet a l'ecran neutralise sur "Le bon verbe"** | l'indice n'est plus present sur ce paquet (M21). Les 25 textes nomment toujours la reponse et restent a reecrire : c'est le contournement qui est livre, pas la reparation |
+| **M4** | **NON TENUE sur 3 jeux sur 7** (etait 6 sur 7), **levee par `DEC-0025`, ne bloque plus** | "Le bon son" (revelation, -23,19), "Petits problemes" (-63,19 et -83,19), "Le bon verbe" (-63,19, et son "Bravo !" a -35,19). Trois jeux fermes par le resserrement. **Mon constat de refus du matin n'est pas retire** : il est leve par la porte produit, que je ne detiens pas |
+| **M11** | **tenue, et toujours invisible sur "Le bon verbe"** | son "Bravo !" reste a 35,19 px sous le pli sur les items a enonce long. Inchange depuis ce matin |
+| **M13** | **clause 1 NON TENUE sur l'ecran de revelation - seule condition bloquante de ce verdict. Clauses 2, 3, 4 et 5 TENUES pour la premiere fois** | section 1 et section 2. La clause 1 est tenue sur les 14 cas que j'avais mesures et fausse sur 10 revelations sur 25. La derniere clause (ce que l'enfant entend) **reste ouverte**, je n'ai pas ecoute |
+| **M14** | **clauses 1 a 4 tenues, clause 5 NON TENUE**, non bloquante | la marque n'est pas cumulative : un second appui a cote efface la marque du premier. Visible sur "Le bon verbe" seulement. Reserve T |
+| **M18** | **TENUE** | mesuree avant et apres l'image : hauteur du cabinet identique (138 et 222 px), bas du cabinet remonte de 24 px, ne descend sur aucun jeu |
+| **M21** | **TENUE** | section 5. Portee par une cle du paquet, fausse par defaut, et non par un identifiant de jeu en dur |
+| **M16, M17, M19, M20** | **sans objet sur cet increment** | l'ampoule est reportee au sprint 11. Mes six conditions restent entieres et intactes, **M17 bloquante**, et elles seront verifiees sur l'increment qui la livrera |
+| **M1, M3, M5 a M10, M12, M15** | **inchangees** | rien de ce lot ne les touche. M5 continue d'etre debarrassee de la revelation deguisee par M21 |
+| **F1 a F19** | **inchangees. F11 reste bloquee** | aucun element de ce lot ne les touche. F11 ne sera pas levee sur une lecture d'arbre, y compris la mienne |
+| **C2, C5** | **inchangees, et l'accent peint les respecte** | l'image est hors de tout element pressable et ne varie avec aucun contenu |
+| **Reserve L** | **LEVEE** | un test execute reellement `recreo.js`. Section 2 |
+
+**Compte** : sur mes trente-huit conditions, **trente-cinq sont tenues ou sans objet**, une est levee
+par la porte produit sans etre reparee (M4), une porte un defaut non bloquant (M14 clause 5), et **une
+seule bloque** (M13 clause 1).
+
+#### 9. Reserves neuves, datees du 2026-08-13, second verdict
+
+**Reserve T - la marque de M9 n'est pas cumulative apres la revelation.** Motif et mesure en section 6.
+Ce que je demande a `camille-po` d'en faire : une story qui rend la marque cumulative apres la
+revelation, comme elle l'est avant. Verification : sur "Le bon verbe", atteindre la revelation en
+n'essayant qu'une seule proposition, puis presser les deux autres l'une apres l'autre ; les trois
+marques doivent etre presentes ensemble a la fin.
+
+**Reserve U - le fondu de l'accent peint est du mauvais cote et produit l'arete qu'il devait
+eviter.** Mesure en section 7. Pour `ines-design`, aucune urgence, aucune consequence pour l'enfant.
+
+**Reserve V - "Le bon son" dit deux fois la meme chose sur son ecran de revelation, et c'est ce qui l'y
+fait deborder.** *"Dans LUNDI, ce sont les lettres u et n qui font le son in. Regarde : les lettres u et
+n font ce son."* L'explication et l'indice se repetent. Un enfant de CP lit peu et lentement : deux
+phrases pour une seule information, c'est une phrase de trop, et c'est aussi les 23,19 px qui sortent
+de l'ecran. Raccourcir l'une des deux ferme un defaut de lisibilite **et** un defaut de pli, sur le
+meme geste. C'est la seule de mes trois reserves neuves qui a un effet pedagogique direct.
+
+**Reserve P, rappelee et non modifiee.** Le budget vertical n'est toujours reparti par personne. Le
+resserrement de marges l'a entame par le bon cote, sans le trancher.
+
+#### 10. Ce dont je reste la seule garde, et qu'il ne faut pas croire couvert
+
+Je l'ecris parce qu'une CI verte a laisse passer quatre defauts visibles par un enfant, et parce qu'un
+projet qui croit couvert ce qui ne l'est pas mesure moins bien qu'un projet qui sait qu'il ne l'est pas.
+
+1. **La clause 1 de M13 au clavier reel.** `RecreoJsDeplaceLeFocusTest` le dit lui-meme : il ne couvre
+   ni le focus clavier d'un navigateur, ni l'ordre de tabulation reel, ni l'evenement d'echange tel
+   qu'htmx le declenche. **C'est exactement la ou j'ai trouve le defaut de ce verdict.** Tant qu'aucun
+   garde-fou ne parcourt un ordre de tabulation reel, ce chemin n'est garde que par mes doigts.
+2. **Le pli de M4 sur les items non tires.** Mes chiffres sont le pire de ce que j'ai tire. Aucun test
+   ne mesure la hauteur d'un rendu reel contre un pli.
+3. **Ce que l'enfant entend.** Inchange, et toujours a zero : je n'ai pas de lecteur d'ecran ici.
+4. **Le lien entre un paquet et le droit d'offrir son indice** (M21). La cle est declarative : rien ne
+   verifie qu'un paquet qui nomme ses reponses la porte. Un garde-fou est possible, sa forme
+   appartient a `theo-archi` et a `yanis-qa`, et **la comparaison litterale est fausse**.
+5. **Le francais de ce que l'enfant lit.** "tu dessines un dessin" a traverse toutes les relectures.
+
+---
 
 ### Verdict courant - chantier du bandit manchot (mecanique, forme, M10), prononce sur l'increment livre, du 2026-08-13
 
