@@ -5,6 +5,11 @@
 - **Auteur** : theo-archi
 - **Sprint** : s07
 - **Amende** : `ADR-0026` section 2
+- **Amende le 2026-08-13 (s10)** : sa clause 2 exigeait qu'un ecran echange par htmx declare le geste
+  **sans exception**. Elle etait juste tant qu'un echange htmx renouvelait toujours la question, et le
+  cycle de manche de S10 l'a rendue fausse sur trois etats. Elle devient un "si et seulement si", et le
+  sujet du marqueur - le tirage, pas la reponse HTTP - est enfin nomme (condition M10 de `nadia-prof`,
+  acceptee par avance : "je refuse, et j'accepte le cout de l'amendement")
 
 ## Contexte
 
@@ -100,6 +105,57 @@ d'aujourd'hui comme ceux de demain. Une route neuve qui rendrait l'ecran de jeu 
 declarer son arrivee : elle ne compile pas. C'est la meme raison qui a fait mettre le controle de fin
 de partie dans ce point de passage unique plutot que dans chaque route (`ADR-0020`), et c'est le seul
 endroit du chantier ou une derivation totale s'obtient du compilateur plutot que d'un test.
+
+**Amendement du 2026-08-13 : un geste ne suffit pas, et le tableau ci-dessus etait complet sans etre
+juste.** Il enumere correctement les trois points d'appel de s07, et c'est bien la valeur que chacun
+declare. Ce qui etait faux est la phrase implicite qui les relie - "un geste, donc un mouvement" -
+tenable tant qu'un echange htmx renouvelait toujours la question, et fausse depuis le cycle de manche
+de S10. `POST /parties/{jeuId}/coups` rend maintenant un ecran de manche sur **cinq** etats, dont
+trois laissent l'enfant sur la meme question : un echec avec des essais restants, l'entree en
+revelation, un appui a cote apres la revelation. Sur ces trois-la, un geste a bien eu lieu et rien
+n'est arrive.
+
+Le motif du refus est celui de `nadia-prof` (condition M10 de sa fiche, `FICHE-bandit-manchot-
+additions-cp.md`), et il est mesure plutot qu'esthetique : elle a valide le defilement au motif que la
+machine **distribue** les reponses, ce qui est la phrase qui sauve la metaphore ; rejoue sur des
+propositions inchangees, le mouvement dit que quelque chose a ete distribue alors que rien ne l'a ete,
+un enfant de CP croit que la question a change et relit tout, et le prix est de 0,6 s par defilement,
+jusqu'a trois essais par question, dix questions - **jusqu'a 18 s d'attente ajoutee pour l'enfant qui
+se trompe le plus**. Elle a accepte cet amendement par avance et dans les memes mots : "je refuse, et
+j'accepte le cout de l'amendement".
+
+**Ce qui change : le sujet du marqueur, enfin nomme.** `data-arrivee` repond a la question "comment
+cet ecran est-il arrive ?", et je n'avais jamais ecrit **ce qui** arrive. La reponse est **le tirage
+que les colonnes montrent**, pas la reponse HTTP. Sur un echec, la reponse HTTP arrive et le tirage
+n'arrive pas : rien n'est distribue, et le marqueur reste ferme. Cette precision est du meme genre que
+celle qui a fonde cet ADR - une propriete prise pour une autre, faute d'avoir ecrit de quoi on parle -
+et c'est la quatrieme occurrence de ma famille de faute, apres `ADR-0022`, la limite 5 d'`ADR-0017` et
+la section 2 d'`ADR-0026`.
+
+**Ou la condition est calculee, et pourquoi pas au point d'appel.** `marc-dev` proposait
+`arriveeParUnGeste = session.propositionsEssayees().isEmpty()` dans `jouer()`. La valeur est juste ; le
+placement, non - il exempterait une route de la regle generale, et la route suivante qui rendrait
+l'ecran de jeu declarerait de nouveau un geste nu. La condition est donc le **produit de deux
+facteurs**, et chacun vit la ou il est connu :
+
+| Facteur | Qui le connait | Ou il est ecrit |
+|---|---|---|
+| un geste de l'enfant a demande cette reponse | le point d'appel, lui seul | parametre `gesteDeLEnfant`, une valeur par appelant, le compilateur exige qu'elle soit donnee |
+| ce geste a fait arriver un tirage neuf | la session de la mecanique, la meme pour tous les appelants | `mancheModele`, en un seul endroit : `gesteDeLEnfant && fraiche` |
+
+Le second facteur est **la valeur que ce point de passage calculait deja** pour le message et le point
+de focus (`fraiche`, M12 et M13) : l'amendement n'ajoute aucun etat, aucun champ, aucun parametre. Il
+ajoute un `&&`. Le mode de defaillance ne change pas de sens : un facteur oublie ferme le marqueur et
+rend l'immobilite, jamais un mouvement non demande.
+
+**Ce que je n'ai pas renomme, et le cout de ce choix.** Les deux valeurs restent `par-un-geste` et
+`sans-geste`. Elles nomment la cause qui autorise le mouvement, pas la condition complete, et
+quelqu'un les lira comme "cette reponse vient d'un appui". Les renommer toucherait 6 declarations de
+`recreo.css`, 2 lectures de `LAnimationRetardeMaisNeDetermineRienTest`, et **16 jeux fautifs de trois
+autres lots** dont ce n'est pas le sujet, pour ne rien changer a ce que l'automate interdit. Le prix du
+malentendu est un commentaire de gabarit ; le prix du renommage est un chantier transverse. Ce qui me
+ferait changer d'avis : un troisieme etat d'arrivee, qui obligerait de toute facon a nommer les chemins
+au lieu de les compter (deja ecrit plus bas).
 
 **Le mode de defaillance est l'immobilite, jamais un mouvement non demande.** Un marqueur oublie, mal
 ecrit, ou une future version d'htmx qui changerait de comportement : dans tous ces cas le selecteur ne
@@ -235,6 +291,60 @@ Cinq clauses, dont **quatre ont une population de production non vide aujourd'hu
 Plus la clause "jamais un autre mot", versant serveur : **aucun texte autre que les propositions
 n'entre dans le conteneur de propositions.**
 
+#### Amendement du 2026-08-13 : la clause 2 devient un "si et seulement si", et la clause 1 en devient un cas
+
+**La formulation retenue.** *Un ecran de jeu declare `par-un-geste` si et seulement si un geste de
+l'enfant a fait arriver le tirage que ses colonnes montrent.* Les deux clauses ne sont plus deux
+regles differentes mais **les deux populations d'un meme calcul**, ecrit une seule fois
+(`arriveeAttendue(echangeParHtmx, tirageNeuf)`) : la clause 1 est la population ou le premier facteur
+est faux, la clause 2 celle ou les deux sont vrais. Deux calculs libres de diverger laisseraient un
+ecran juge par ni l'un ni l'autre, ce qu'`ADR-0033` point 3 a deja etabli sur un autre couple de
+clauses.
+
+**Ce que la clause interdit, et je l'ai verifie plutot qu'espere** : les trois etats que la condition
+M10 nomme - echec avec des essais restants, entree en revelation, appui a cote apres la revelation -
+sont refuses s'ils declarent le marqueur, et **le troisieme n'etait pas dans le corpus** ; il y entre.
+Sans lui, une correction qui n'aurait ferme que les deux premiers passait verte, et c'est la lecon
+qu'`ADR-0034` a apprise a ce depot il y a deux jours - un perimetre derive par route ne dit rien des
+**etats** qu'une route rend.
+
+**Comment "le tirage est neuf" est lu, et pourquoi pas autrement.** La tentation etait de comparer
+l'ecran a celui d'avant : deux echanges qui rendent les memes colonnes n'ont rien renouvele. **Cette
+lecture est impossible, et c'est un fait et non une preference** : deux manches d'un meme item rendent
+un enonce et des propositions identiques, ce que `jeu-repete` fait exactement, donc la comparaison ne
+distingue pas une question neuve d'une question inchangee. Ce qui distingue les deux est la **trace
+d'un essai deja fait sur ce tirage** - la marque que le serveur pose sur une proposition deja pressee
+(M9). Elle est lue **dans le gabarit** et non ecrite dans le test (`ADR-0015`), sur l'attribut qui
+choisit un litteral selon `${propositionsEssayees}`.
+
+**Le vert silencieux que cette lecture ouvrirait, et sa fermeture.** Si la marque devient introuvable
+- renommee, calculee dans le modele, retiree - tout ecran passerait pour un tirage neuf, le "si et
+seulement si" redeviendrait le "tout echange declare le geste" d'avant, et **aucun test ne rougirait**.
+La lecture echoue donc au lieu de rendre une marque vide, et un jeu fautif l'etablit
+(`marque-d-essai-sans-litteral`). C'est la contrainte que mon propre garde-fou de balayage m'a imposee
+avant la revue : en lisant un fichier de `src/main/`, cette classe est entree dans la population
+d'`ADR-0013` et devait un jeu fautif. **Quatrieme fois que le garde-fou d'un autre lot, ou le mien,
+me corrige avant la revue, et je le note plutot que de presenter le resultat comme la premiere
+ecriture.**
+
+**Preuves de morsure de l'amendement, sur la production reelle et sur des objets neufs.**
+
+| Mise a l'epreuve | Attendu | Mesure |
+|---|---|---|
+| **mutation de la production** : `mancheModele` repose `gesteDeLEnfant` seul, c'est-a-dire l'etat du depot la veille de cet amendement | la clause 2 rouge, sur les trois etats | **2 echecs sur 10 cas**. La clause 2 nomme les trois : "manche apres une reponse fausse", "manche en revelation", "appui a cote apres la revelation", chacun avec le motif de M10 et la valeur exigee |
+| **objet neuf, sens "seulement si"** : l'ecran d'un echec tel que le serveur le rend, dont le seul marqueur est mute a `par-un-geste` | un ecart, et son jumeau corrige vert | rouge, "l'enfant a deja essaye une proposition de ce tirage" ; la meme sortie non mutee rend **zero** ecart |
+| **objet neuf, mode de defaillance d'origine** : l'ecran de la reprise silencieuse, mute a `par-un-geste` | un ecart, sur son propre motif et jamais celui de M10 | rouge, "Le navigateur a charge une page entiere" ; la reprise non mutee rend **zero** ecart. **C'est la mesure qui etablit que l'amendement n'a pas rouvert le defaut d'origine** |
+| **jeu fautif** `marque-d-essai-sans-litteral` : la marque calculee dans le modele | la lecture refuse au lieu de rendre une marque introuvable | rouge, "la marque d'un essai deja fait se lit dans" |
+
+Les deux mises a l'epreuve sur objet neuf mutent **la sortie reelle du serveur** et non une fixture
+ecrite de ma main : la lecon de s05 s'applique a mon propre amendement comme aux autres.
+
+**Ce que cette clause ne garde toujours pas.** Qu'un mouvement soit **percu** comme lie au geste reste
+a `nadia-prof` (deja ecrit plus bas). Et le marqueur ne dit rien de ce qui **change** sur l'ecran d'un
+echec : le message apparait, et c'en est justement le signal - `nadia-prof` l'ecrit elle-meme dans son
+"ce que je n'exige pas". Cette clause ne rend donc pas l'ecran d'un echec immobile en tout, et ce
+n'est pas un manque.
+
 **Preuves de morsure, par trois mutations reelles de la production.** Chacune relancee, production
 restauree et suite reverifiee verte apres coup.
 
@@ -285,6 +395,14 @@ existe deja et qui affirme que ce compte vaut exactement zero. **La clause 7, el
 non vide des aujourd'hui** : deux regles maison declarent `content`, les deux barres de la croix du
 signal faux, et une assertion l'exige explicitement pour que la clause ne passe pas a vide.
 
+**Ce paragraphe a cesse d'etre vrai, et je le date plutot que de le corriger en silence** (constat du
+2026-08-13). La population des clauses 5 et 6 n'est plus vide : `recreo.css` porte **5 declarations de
+mouvement** en production, mesurees en collectant toute regle maison qui declare `animation`,
+`animation-name`, `animation-delay` ou `transition`, commentaires retires. **Les 5 sont scopees sous
+`[data-arrivee=par-un-geste]`**, et l'epinglage cite ci-dessus a ete supprime par le lot qui les a
+livrees (`confirmation-archunit.md` de s07, point verifie). Cette mesure est ce qui rend l'amendement
+de la clause 2 non theorique : le rebalayage refuse par M10 est celui de ces declarations-la.
+
 **Preuves de morsure, cinq jeux fautifs neufs plus une relecture adverse** :
 
 | Jeu fautif | Attendu | Mesure |
@@ -331,6 +449,20 @@ Verification.
 - **Mauvaise consequence assumee, la premiere** : deux marqueurs sur le meme element, dont les noms se
   ressemblent. Quelqu'un confondra `ecran-de-jeu` et `data-arrivee`. Le commentaire du gabarit dit la
   difference en deux phrases, et c'est tout ce que je peux faire.
+
+Consequences ajoutees par l'amendement du 2026-08-13 :
+
+- **La clause 2 ne peut plus etre lue sans lire la marque de M9.** Ce garde-fou et la mecanique de
+  reessai sont desormais couples par un fait de rendu : si `nadia-prof` ou `camille-po` retirent la
+  marque des propositions deja essayees, la lecture rougit et cet amendement doit etre repris. C'est un
+  couplage reel, assume, et epingle par un jeu fautif plutot que laisse a la memoire de quelqu'un.
+- **Mauvaise consequence assumee** : les valeurs du marqueur, `par-un-geste` et `sans-geste`, nomment
+  desormais moins que ce qu'elles decident. Un ecran d'echec **est** arrive par un geste et declare
+  `sans-geste`. Le cout du renommage est ecrit en section 2 ; je prefere un nom etroit a un chantier
+  transverse, et je le note plutot que de le laisser decouvrir.
+- **Un bon effet non cherche** : le message d'echec, lui, apparait toujours. La clause ne rend pas
+  l'ecran de reessai immobile en tout, ce qui est exactement la frontiere que `nadia-prof` trace dans
+  son "ce que je n'exige pas". Il n'y a donc rien a arbitrer de ce cote.
 - **Mauvaise consequence assumee, la deuxieme** : la clause 5 interdit aujourd'hui toute animation sur
   l'ecran de retour, y compris une apparition de la coche que `nadia-prof` n'a jamais refusee. C'est
   plus strict que ce qu'elle demande. Le prix est faible et la sortie est ecrite : poser le marqueur
@@ -417,3 +549,75 @@ remesures a mi-hauteur de la boite sur la capture produite par `outils/mesurer-r
 <png>`, par un critere different de celui de `nadia-prof` - suites de pixels non-fond plutot qu'aplats
 de couleur d'accent - et les deux methodes concordent. La geometrie declaree les confirme a la
 decimale : 336 px moins 2 x 16 px font 304 px, soit 101,33 px par colonne.
+
+## Verification de l'amendement du 2026-08-13
+
+`mvn -B clean verify` sur un JDK 21.0.10 designe par `JAVA_HOME` le temps de la commande, dans le
+worktree dedie `s10-theo-mouvement` descendant de `round-two` a `7032624`. Constat rendu par
+`outils/verifier-jdk.sh` : `java` du `PATH` 1.8.0_202, JDK de compilation 21.0.10, `JAVA_HOME` vide
+hors de la commande, toolchains present sous un nom non lu par Maven.
+
+**Resultat : BUILD SUCCESS**, les six modules du pom agregateur en SUCCESS. **Avec une exclusion, et
+elle est nommee** : `-Dsurefire.excludesFile` sur `**/PaquetsFrancaisS04Test.java`. Ce test
+d'`adapter-content` ne termine pas sur `round-two` - il boucle contre une manche revelee et epuise la
+memoire - et sa correction vit sur une branche non fusionnee. **Sur `round-two` tel quel, la suite
+complete est donc rouge, et je ne conclus pas l'inverse.** L'exclusion est un fichier de perimetre et
+non `-Dtest` : mesure a l'appui, `-Dtest=!PaquetsFrancaisS04Test` remplace les inclusions par defaut de
+surefire, tire les classes `*IT` dans la phase `test` - donc avant `package` - et fait echouer
+`JarRecreoIT` sur un jar absent. C'est un artefact de l'instrument, pas un defaut du depot.
+
+| Mesure | Valeur | Perimetre |
+|---|---|---|
+| `round-two` a `7032624`, meme exclusion | **373** cas, BUILD SUCCESS | reference |
+| cette branche, meme exclusion | **376** cas, BUILD SUCCESS | +3, tous dans `adapter-web` (192 a 195) |
+| `adapter-content` avec la correction de `marc-dev` (`2b910e9`), sans exclusion | 49 a **63** cas | le test exclu en vaut **14** |
+| suite complete reconstituee | **387** sur `round-two` + `2b910e9`, **390** avec ce lot | somme des deux mesures |
+
+Le 387 reconstitue est exactement le chiffre que `marc-dev` annonce sur sa branche : deux methodes
+independantes concordent, ce qui est la seule raison de citer une somme plutot qu'une seule mesure.
+
+**Methode du compte de cas** : rapports XML de `*/target/surefire-reports/` et
+`*/target/failsafe-reports/`, apres un `clean`, somme de l'attribut `tests` de chaque `<testsuite>`.
+XML et non texte, pour la raison ecrite plus haut. Les trois cas de `failsafe` de `bootstrap` sont
+compris dans les totaux.
+
+**Compte de regles ArchUnit** : **28**, inchange. Meme methode que ci-dessus - `git ls-files '*.java'`,
+critere `static final ArchRule`, comptage brut 30 moins les 2 declarations du faux module de
+test-ressources. Cet amendement n'ajoute aucune `ArchRule` : rien de ce qu'il garde n'est visible dans
+du bytecode.
+
+**Mesure de rendu, sur le jar empaquete** (`ADR-0025` : une mesure de rendu porte sa commande). La
+propriete a etablir est que les colonnes ne rebalaient pas sur un echec avec des essais restants. Elle
+est mesuree en deux faits, chacun par sa commande, et la conclusion est leur produit.
+
+1. **Ce que le serveur envoie reellement.** `mvn -B clean verify` produit `bootstrap/target/recreo.jar`
+   (20,6 Mo) ; l'application est lancee par `java -jar bootstrap/target/recreo.jar --server.port=<port>`
+   et une vraie session HTTP est jouee sur `bandit-manchot-additions-cp` - `GET /`, puis
+   `POST /parties/{jeuId}`, puis `POST /parties/{jeuId}/coups` avec une proposition fausse calculee a
+   partir de l'enonce rendu. Releve :
+
+   | Ecran | `data-arrivee` |
+   |---|---|
+   | manche neuve, demandee par un appui (enonce "7 + 3") | `par-un-geste` |
+   | apres un echec avec des essais restants, message "Ce n'est pas ca. Essaie encore !" | **`sans-geste`** |
+   | reprise silencieuse, `GET /` sur la meme session | `sans-geste` |
+
+   Le bloc `.propositions` passe de 1202 a 1214 octets, et le diff porte sur **la seule proposition
+   pressee** : `deja-essayee` ajoutee (M9) et `data-focus-cible` passe a `true` (M13). Meme nombre de
+   propositions, meme ordre, memes valeurs - M8 tenue sur la sortie du serveur.
+
+2. **Ce que la feuille peut faire de ce marqueur.** Les declarations de mouvement de `recreo.css` sont
+   collectees en retirant les commentaires puis en gardant toute regle maison qui declare `animation`,
+   `animation-name`, `animation-delay` ou `transition`. Il y en a **5**, et **les 5 sont scopees sous
+   `[data-arrivee=par-un-geste]`** (liste dans la section de la regle 2 ci-dessus).
+
+Un ecran qui declare `sans-geste` ne satisfait aucune des 5 : **aucune colonne ne peut bouger sur un
+reessai**, et le critere de `nadia-prof` - "les pixels des colonnes sont identiques entre l'ecran
+d'avant l'appui et l'ecran de reessai" - est tenu par construction plutot que par reglage.
+
+**Ce que cette mesure n'etablit pas, et il faut le dire ici.** Ce n'est pas une capture. Une capture
+fixe ne peut pas trancher cette propriete : `outils/mesurer-rendu.sh` prend une URL et fixe son budget
+de temps virtuel a 4000 ms, donc il ne sait ni enchainer les deux `POST` d'un reessai, ni echantillonner
+une image pendant que l'animation court - et apres 0,6 s l'ecran est au repos **que l'animation ait
+tourne ou non**. Une capture aurait donc ete verte dans les deux cas, avant comme apres cet amendement,
+et l'aurait ete a tort. Le releve image par image reste a `nadia-prof` (`ADR-0025`).

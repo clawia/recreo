@@ -50,9 +50,14 @@ public class PartieController {
     private static final String MESSAGE_ECHEC = "Ce n'est pas ça. Essaie encore !";
 
     /**
-     * ADR-0027 : l'ecran de jeu declare s'il a ete demande par un geste de l'enfant. Deux constantes
-     * nommees plutot que deux litteraux booleens aux points d'appel, parce que c'est le sens qui doit
-     * se lire sur l'appel et non la valeur.
+     * ADR-0027 : chaque point d'appel de l'ecran de jeu declare si un geste de l'enfant a demande
+     * cette reponse. Deux constantes nommees plutot que deux litteraux booleens aux points d'appel,
+     * parce que c'est le sens qui doit se lire sur l'appel et non la valeur.
+     *
+     * <p>ADR-0027, amendement du 2026-08-13 (M10) : ce que le point d'appel declare n'est plus la
+     * valeur du marqueur, c'est <b>l'un de ses deux facteurs</b> - celui que lui seul connait.
+     * L'autre, "ce geste a-t-il renouvele le tirage", est calcule dans {@code mancheModele} pour
+     * tous les points d'appel a la fois.</p>
      */
     private static final boolean PAR_UN_GESTE = true;
     private static final boolean SANS_GESTE = false;
@@ -134,34 +139,46 @@ public class PartieController {
      * ecran obtient l'ecran de fin de partie a la place d'un ecran mort. Symetrique du choix
      * d'ADR-0019, qui a ferme le meme cas cote commande.
      *
-     * <p>ADR-0027 : {@code arriveeParUnGeste} dit si l'enfant a presse quelque chose pour obtenir cet
-     * ecran. Le serveur est le seul a le savoir : une fois le fragment insere, le document assemble est
-     * le meme qu'il vienne d'un echange htmx ou du chargement complet de la page de reprise, donc
+     * <p>ADR-0027 : {@code gesteDeLEnfant} dit si l'enfant a presse quelque chose pour obtenir cette
+     * reponse. Le serveur est le seul a le savoir : une fois le fragment insere, le document assemble
+     * est le meme qu'il vienne d'un echange htmx ou du chargement complet de la page de reprise, donc
      * aucun selecteur CSS ne peut les distinguer. C'est un <b>parametre</b> et non un attribut pose a
      * cote, pour que le compilateur oblige chaque point d'appel - ceux d'aujourd'hui comme ceux de
      * demain - a se prononcer : la derivation est totale parce que ce point de passage est unique
      * (meme raison qu'ADR-0020 ci-dessus). Le mode de defaillance d'un oubli est l'immobilite, jamais
      * un mouvement que l'enfant n'a pas demande.</p>
      *
+     * <p><b>ADR-0027, amendement du 2026-08-13 (condition M10 de nadia-prof).</b> Le sujet de
+     * {@code data-arrivee} est <b>le tirage que les colonnes montrent</b>, pas la reponse HTTP. Un
+     * geste suffisait a poser le marqueur ; il ne suffit plus, parce qu'un geste ne renouvelle pas
+     * toujours le tirage : un echec avec des essais restants, l'entree en revelation et un appui a
+     * cote apres la revelation rendent le meme tirage, sur lequel un mouvement dirait que la machine
+     * vient de distribuer alors que rien n'a ete distribue. La condition est donc le produit des deux
+     * facteurs, et le second - "ce tirage est neuf pour l'enfant" - est calcule <b>ici</b> et non aux
+     * points d'appel : c'est le seul placement qui n'exempte aucune route et qui couvre les points
+     * d'appel de demain comme ceux d'aujourd'hui.</p>
+     *
      * <p>M1, M5, M6, M9, M11, M12, M13 : le message sous le meuble, l'indice, la revelation et le
      * point de focus sont tous calcules ici, a partir du seul etat de la manche courante - jamais
      * d'un champ neuf sur la session (avis de faisabilite de theo-archi, s10, correction 2).</p>
      */
     private String mancheModele(Model modele, String jeuId, String consigne,
-                                BanditManchotSession session, boolean arriveeParUnGeste) {
+                                BanditManchotSession session, boolean gesteDeLEnfant) {
         if (session.status() == SessionStatus.TERMINEE) {
             return retourModele(modele, jeuId, session);
         }
+        boolean fraiche = session.propositionsEssayees().isEmpty();
         modele.addAttribute("jeuId", jeuId);
         modele.addAttribute("consigne", consigne);
         modele.addAttribute("enonce", session.enonceManche().orElse(""));
         modele.addAttribute("propositions", session.propositions());
         modele.addAttribute("score", session.score());
         modele.addAttribute("indice", session.indice().orElse(null));
-        modele.addAttribute("arriveeParUnGeste", arriveeParUnGeste);
+        // M10 : le produit des deux facteurs, jamais le seul geste. Retirer "&& fraiche" rend a
+        // l'enfant qui se trompe un rebalayage de colonnes par essai (nadia-prof, condition M10).
+        modele.addAttribute("arriveeParUnGeste", gesteDeLEnfant && fraiche);
         modele.addAttribute("propositionsEssayees", session.propositionsEssayees());
 
-        boolean fraiche = session.propositionsEssayees().isEmpty();
         String message = null;
         boolean signalJuste = false;
         String explication = null;
