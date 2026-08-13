@@ -1,0 +1,250 @@
+{
+ "bandit-manchot-additions-cp": {
+  "revelee": "8",
+  "message_revelation": "C'est 8. Appuie sur 8. Compte sur tes doigts.",
+  "etat_0_props": [
+   "6*",
+   "7",
+   "8"
+  ],
+  "etat_0_marques": [
+   "6"
+  ],
+  "etat_0_score": "Score : 0",
+  "a_cote_disponibles": [
+   "7"
+  ],
+  "appuis_a_cote": [
+   {
+    "appui": 1,
+    "pressee": "7",
+    "props": [
+     "6*",
+     "7*",
+     "8"
+    ],
+    "marques": [
+     "6",
+     "7"
+    ],
+    "message": "C'est 8. Appuie sur 8. Compte sur tes doigts.",
+    "enonce_inchange": true,
+    "score": "Score : 0",
+    "enJeu": true
+   }
+  ],
+  "apres_appui_sur_revelee": {
+   "enonce_change": true,
+   "message": null,
+   "props": [
+    "4",
+    "5",
+    "6"
+   ]
+  }
+ },
+ "bandit-manchot-comparer-nombres-cp": {
+  "revelee": "<",
+  "message_revelation": "C'est <. Appuie sur <. 56 vient avant 60 quand on compte : il est plus petit.",
+  "etat_0_props": [
+   "=*",
+   ">",
+   "<"
+  ],
+  "etat_0_marques": [
+   "="
+  ],
+  "etat_0_score": "Score : 0",
+  "a_cote_disponibles": [
+   ">"
+  ],
+  "appuis_a_cote": [
+   {
+    "appui": 1,
+    "pressee": ">",
+    "props": [
+     "=*",
+     ">*",
+     "<"
+    ],
+    "marques": [
+     "=",
+     ">"
+    ],
+    "message": "C'est <. Appuie sur <. 56 vient avant 60 quand on compte : il est plus petit.",
+    "enonce_inchange": true,
+    "score": "Score : 0",
+    "enJeu": true
+   }
+  ],
+  "apres_appui_sur_revelee": {
+   "enonce_change": true,
+   "message": null,
+   "props": [
+    "<",
+    ">",
+    "="
+   ]
+  }
+ },
+ "bandit-manchot-complements-10-cp": {
+  "revelee": "8",
+  "message_revelation": "C'est 8. Appuie sur 8. Lève 2 doigts, puis compte ceux qui manquent pour arriver à 10.",
+  "etat_0_props": [
+   "7*",
+   "2",
+   "8"
+  ],
+  "etat_0_marques": [
+   "7"
+  ],
+  "etat_0_score": "Score : 0",
+  "a_cote_disponibles": [
+   "2"
+  ],
+  "appuis_a_cote": [
+   {
+    "appui": 1,
+    "pressee": "2",
+    "props": [
+     "7*",
+     "2*",
+     "8"
+    ],
+    "marques": [
+     "7",
+     "2"
+    ],
+    "message": "C'est 8. Appuie sur 8. Lève 2 doigts, puis compte ceux qui manquent pour arriver à 10.",
+    "enonce_inchange": true,
+    "score": "Score : 0",
+    "enJeu": true
+   }
+  ],
+  "apres_appui_sur_revelee": {
+   "enonce_change": true,
+   "message": null,
+   "props": [
+    "3",
+    "4",
+    "6"
+   ]
+  }
+ },
+ "bandit-manchot-conjugaison-present-cm1": {
+  "revelee": "aimaient",
+  "message_revelation": "C'est aimaient. Appuie sur aimaient.",
+  "etat_0_props": [
+   "aimait*",
+   "aimeront",
+   "aimaient",
+   "aimais"
+  ],
+  "etat_0_marques": [
+   "aimait"
+  ],
+  "etat_0_score": "Score : 0",
+  "a_cote_disponibles": [
+   "aimeront",
+   "aimais"
+  ],
+  "appuis_a_cote": [
+   {
+    "appui": 1,
+    "pressee": "aimeront",
+    "props": [
+     "aimait*",
+     "aimeront*",
+     "aimaient",
+     "aimais"
+    ],
+    "marques": [
+     "aimait",
+     "aimeront"
+    ],
+    "message": "C'est aimaient. Appuie sur aimaient.",
+    "enonce_inchange": true,
+    "score": "Score : 0",
+    "enJeu": true
+   },
+   {
+    "appui": 2,
+    "pressee": "aimais",
+    "props": [
+     "aimait*",
+     "aimeront",
+     "aimaient",
+     "aimais*"
+    ],
+    "marques": [
+     "aimait",
+     "aimais"
+    ],
+    "message": "C'est aimaient. Appuie sur aimaient.",
+    "enonce_inchange": true,
+    "score": "Score : 0",
+    "enJeu": true
+   }
+  ],
+  "apres_appui_sur_revelee": {
+   "enonce_change": true,
+   "message": null,
+   "props": [
+    "étions",
+    "était",
+    "étais",
+    "étaient"
+   ]
+  }
+ },
+ "bandit-manchot-le-bon-son-cp": {
+  "revelee": "in",
+  "message_revelation": "C'est in. Appuie sur in. On entend aussi ce son dans le mot lapin.",
+  "etat_0_props": [
+   "on*",
+   "an",
+   "in"
+  ],
+  "etat_0_marques": [
+   "on"
+  ],
+  "etat_0_score": "Score : 0",
+  "a_cote_disponibles": [
+   "an"
+  ],
+  "appuis_a_cote": [
+   {
+    "appui": 1,
+    "pressee": "an",
+    "props": [
+     "on*",
+     "an*",
+     "in"
+    ],
+    "marques": [
+     "on",
+     "an"
+    ],
+    "message": "C'est in. Appuie sur in. On entend aussi ce son dans le mot lapin.",
+    "enonce_inchange": true,
+    "score": "Score : 0",
+    "enJeu": true
+   }
+  ],
+  "apres_appui_sur_revelee": {
+   "enonce_change": true,
+   "message": null,
+   "props": [
+    "in",
+    "an",
+    "on"
+   ]
+  }
+ },
+ "bandit-manchot-problemes-additifs-cp": {
+  "echec_montage": "aucune fausse trouvee"
+ },
+ "bandit-manchot-soustractions-cp": {
+  "echec_montage": "aucune fausse trouvee"
+ }
+}
