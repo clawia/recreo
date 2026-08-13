@@ -267,6 +267,13 @@ body:has(.ecran-de-jeu) .lien-accueil {
    declaree, un visage et une enseigne"). C5 clause 2 de nadia-prof reste tenue : ce jeu d'images
    ne depend ni de l'item tire, ni du numero de la colonne, ni de la reponse attendue - le visage
    ne peut structurellement pas varier, le cabinet n'existant pas sur l'ecran de retour. */
+/* Proposition ines-meuble-illustre (s10, ADR-0036) : un accent peint remplace l'aplat uni sur la
+   partie droite du bandeau, la ou rien d'autre ne vit - le visage et l'emplacement de l'enseigne
+   restent sur le seul fond uni, inchange. background-color reste declare explicitement (identique
+   a la teinte de .cabinet visible par transparence jusqu'ici) : si l'image ne se charge pas, le
+   bandeau garde exactement l'aplat d'aujourd'hui. Chemin litteral, jamais calcule (ADR-0036 point
+   1). Hauteur, position et cible tactile inchangees : aucune propriete de boite n'est touchee ici,
+   seul le remplissage visuel change. */
 .cabinet-bandeau {
     position: relative;
     height: 2rem;
@@ -275,6 +282,11 @@ body:has(.ecran-de-jeu) .lien-accueil {
     justify-content: flex-start;
     gap: 0.5rem;
     padding: 0 0.75rem;
+    background-color: var(--recreo-cabinet-fond);
+    background-image: url('/images/cabinet-fronton.svg');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: auto 100%;
     box-shadow: inset 0 -0.0625rem 0 rgba(0, 0, 0, 0.35);
 }
 
