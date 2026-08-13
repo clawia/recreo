@@ -1,0 +1,89 @@
+{
+ "bandit-manchot-additions-cp": {
+  "bonne_trouvee": "8",
+  "A_focus_apres_bonne": "BODY||-|Recreo\n        \n            Les jeux\n   ",
+  "A_msg": "Bravo !",
+  "A_focus_apres_tab": "BUTTON|btn retour-accueil|sortie|Les jeux",
+  "A_partie_en_cours_apres_entree": false,
+  "A_ecran": "",
+  "erreur": "RuntimeError('{\"exceptionId\": 4, \"text\": \"Uncaught\", \"lineNumber\": 0, \"columnNumber\": 50, \"scriptId\": \"20\", \"stackTrace\": {\"callFrames\": [{\"functionName\": \"\", \"scriptId\": \"20\", \"url\": \"\", \"lineNumber\": 0, \"columnNumber\": 50}]}, \"exception\": {\"type\": \"object\", \"subtype\": \"error\", \"className\": \"TypeEr"
+ },
+ "bandit-manchot-comparer-nombres-cp": {
+  "bonne_trouvee": "<",
+  "A_focus_apres_bonne": "BODY||-|Recreo\n        \n            Les jeux\n   ",
+  "A_msg": "Bravo !",
+  "A_focus_apres_tab": "BUTTON|btn retour-accueil|sortie|Les jeux",
+  "A_partie_en_cours_apres_entree": false,
+  "A_ecran": "",
+  "mauvaise_trouvee": "<",
+  "B_focus_apres_mauvaise": "BODY||-|Recreo\n        \n            Les jeux\n   ",
+  "B_msg": "Ce n'est pas ça. Essaie encore !\n        \n        \n        Compare les dizaines : 5 dizaines, c'est plus que 3 dizaines.",
+  "B_focus_cible_est_pressee": false,
+  "B_focus_apres_tab": "BUTTON|btn retour-accueil|sortie|Les jeux",
+  "B_partie_en_cours_apres_entree": false,
+  "B_ecran": ""
+ },
+ "bandit-manchot-complements-10-cp": {
+  "bonne_trouvee": "4",
+  "A_focus_apres_bonne": "BODY||-|Recreo\n        \n            Les jeux\n   ",
+  "A_msg": "Bravo !",
+  "A_focus_apres_tab": "BUTTON|btn retour-accueil|sortie|Les jeux",
+  "A_partie_en_cours_apres_entree": false,
+  "A_ecran": "",
+  "erreur": "RuntimeError('{\"exceptionId\": 4, \"text\": \"Uncaught\", \"lineNumber\": 0, \"columnNumber\": 49, \"scriptId\": \"19\", \"stackTrace\": {\"callFrames\": [{\"functionName\": \"\", \"scriptId\": \"19\", \"url\": \"\", \"lineNumber\": 0, \"columnNumber\": 49}]}, \"exception\": {\"type\": \"object\", \"subtype\": \"error\", \"className\": \"TypeEr"
+ },
+ "bandit-manchot-conjugaison-present-cm1": {
+  "bonne_trouvee": "ferons",
+  "A_focus_apres_bonne": "BODY||-|Recreo\n        \n            Les jeux\n   ",
+  "A_msg": "",
+  "A_focus_apres_tab": "BUTTON|btn retour-accueil|sortie|Les jeux",
+  "A_partie_en_cours_apres_entree": false,
+  "A_ecran": "",
+  "erreur": "RuntimeError('{\"exceptionId\": 4, \"text\": \"Uncaught\", \"lineNumber\": 0, \"columnNumber\": 53, \"scriptId\": \"9\", \"stackTrace\": {\"callFrames\": [{\"functionName\": \"\", \"scriptId\": \"9\", \"url\": \"\", \"lineNumber\": 0, \"columnNumber\": 53}]}, \"exception\": {\"type\": \"object\", \"subtype\": \"error\", \"className\": \"TypeErro"
+ },
+ "bandit-manchot-le-bon-son-cp": {
+  "bonne_trouvee": "on",
+  "A_focus_apres_bonne": "BODY||-|Recreo\n        \n            Les jeux\n   ",
+  "A_msg": "Bravo !",
+  "A_focus_apres_tab": "BUTTON|btn retour-accueil|sortie|Les jeux",
+  "A_partie_en_cours_apres_entree": false,
+  "A_ecran": "",
+  "mauvaise_trouvee": "in",
+  "B_focus_apres_mauvaise": "BODY||-|Recreo\n        \n            Les jeux\n   ",
+  "B_msg": "Ce n'est pas ça. Essaie encore !\n        \n        \n        On entend aussi ce son dans le mot ballon.",
+  "B_focus_cible_est_pressee": false,
+  "B_focus_apres_tab": "BUTTON|btn retour-accueil|sortie|Les jeux",
+  "B_partie_en_cours_apres_entree": false,
+  "B_ecran": ""
+ },
+ "bandit-manchot-problemes-additifs-cp": {
+  "bonne_trouvee": "7",
+  "A_focus_apres_bonne": "BODY||-|Recreo\n        \n            Les jeux\n   ",
+  "A_msg": "Bravo !",
+  "A_focus_apres_tab": "BUTTON|btn retour-accueil|sortie|Les jeux",
+  "A_partie_en_cours_apres_entree": false,
+  "A_ecran": "",
+  "mauvaise_trouvee": "1",
+  "B_focus_apres_mauvaise": "BODY||-|Recreo\n        \n            Les jeux\n   ",
+  "B_msg": "Ce n'est pas ça. Essaie encore !\n        \n        \n        Il avait des cartes et il en gagne une de plus : additionne 8 et 1.",
+  "B_focus_cible_est_pressee": false,
+  "B_focus_apres_tab": "BUTTON|btn retour-accueil|sortie|Les jeux",
+  "B_partie_en_cours_apres_entree": false,
+  "B_ecran": ""
+ },
+ "bandit-manchot-soustractions-cp": {
+  "bonne_trouvee": "10",
+  "A_focus_apres_bonne": "BODY||-|Recreo\n        \n            Les jeux\n   ",
+  "A_msg": "Bravo !",
+  "A_focus_apres_tab": "BUTTON|btn retour-accueil|sortie|Les jeux",
+  "A_partie_en_cours_apres_entree": false,
+  "A_ecran": "",
+  "mauvaise_trouvee": "1",
+  "B_focus_apres_mauvaise": "BODY||-|Recreo\n        \n            Les jeux\n   ",
+  "B_msg": "Ce n'est pas ça. Essaie encore !\n        \n        \n        Lève 10 doigts, puis baisses-en 1 seul.",
+  "B_focus_cible_est_pressee": false,
+  "B_focus_apres_tab": "BUTTON|btn retour-accueil|sortie|Les jeux",
+  "B_partie_en_cours_apres_entree": false,
+  "B_ecran": ""
+ }
+}

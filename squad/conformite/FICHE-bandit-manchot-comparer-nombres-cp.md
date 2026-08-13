@@ -63,6 +63,37 @@ passer la ligne de matrice a `couvert-valide` sans une extension ulterieure sur 
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
+### Verdict courant - chantier du bandit manchot (mecanique, forme, M10), du 2026-08-13 : REFUSE
+
+- **Verdict** : **REFUSE.** Aucun Done pedagogique sur ce jeu.
+- **Le verdict complet, ses mesures et mes trente-deux conditions une par une sont dans**
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`,
+  section "Verdict courant - chantier du bandit manchot (mecanique, forme, M10) (...) du
+  2026-08-13". Le meuble et la mecanique sont communs aux sept jeux du catalogue : je ne recopie pas
+  le raisonnement, j'ecris ici ce qui est propre a ce jeu.
+- **Increment audite** : `round-two` a `2d34a15`. Done technique acquis.
+- **Mes deux motifs de refus, tous deux bloquants** :
+  - **M4, bloquante** : le bas du bloc de message est a **651,19 px**, soit **11,19 px sous le
+    pli** de 640 px, dans l'etat "echec avec indice". L'enfant qui se trompe ne voit ni le
+    message, ni l'indice, sans defiler.
+  - **M13 clause 1** : apres une bonne comme apres une mauvaise reponse, le focus reste sur
+    `BODY`, **une seule Tabulation atteint le bouton "Les jeux"** (`data-role="sortie"`) et
+    Entree **detruit la partie sans confirmation**. Verifie au clavier sur ce jeu. Cause :
+    `recreo.js` est charge dans le `<head>` et leve
+    `TypeError: Cannot read properties of null (reading 'addEventListener')`, donc l'ecouteur
+    qui deplace le focus n'est **jamais enregistre** et `data-focus` est un attribut mort.
+- **Ce qui est tenu et que je ferme sur ce jeu** : F16 (la marque "deja essayee" est un mot barre a
+  **9,55:1 au minimum** sur les quatre teintes, contre un plancher de 3:1), F9, F10 y compris sa
+  clause 3 que je n'avais pas pu fermer le 2026-08-13, F13 a F15 (le levier vit dans ses 20 px et
+  n'intercepte aucun appui), F17, F18, F19, M6 (le meuble est identique au pixel dans les quatre
+  etats), M8, M9, M10 et M12.
+- **Condition neuve M14, datee du 2026-08-13** : apres la revelation, un appui sur une autre
+  proposition doit la barrer comme n'importe quelle proposition deja essayee, sans compter d'essai,
+  sans changer le message, sans mouvement et sans desactivation. Motif complet en section 6 du
+  verdict de reference.
+- **Aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge.**
+
+
 ### Verdict courant - second audit du 2026-08-12, sur le correctif livre : le REFUSE est leve
 
 - **Verdict** : **VALIDE SOUS RESERVE.** Done pedagogique **prononce**. Le motif du refus du

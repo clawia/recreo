@@ -192,6 +192,401 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
+### Verdict courant - chantier du bandit manchot (mecanique, forme, M10), prononce sur l'increment livre, du 2026-08-13
+
+- **Verdict** : **REFUSE.** Aucun Done pedagogique. **Deux de mes conditions bloquantes ne sont pas
+  tenues** : **M4** sur six jeux sur sept, et **M13 clause 1** sur les sept. La troisieme condition
+  bloquante de ce chantier, **F16, est tenue** et je la ferme.
+- **Increment audite** : `round-two` a `2d34a15`, arbre propre, 390 tests, 28 regles ArchUnit. Done
+  technique acquis, et il l'est reellement - rien n'a plante pendant cet audit.
+- **Ce que ce refus ne fait pas** : il ne bloque pas le sprint suivant, il ne rouvre aucune de mes
+  conditions anterieures, il ne durcit rien. Il renvoie l'increment a `camille-po`, qui en fait du
+  backlog. **Vingt-sept de mes trente-deux conditions sont tenues**, dont les quatre du meuble que
+  j'avais refusees le 2026-08-13 et qui sont corrigees. Le travail de ce sprint n'est pas perdu :
+  il est bloque par deux defauts nommes, dont un est une ligne de JavaScript.
+- **Aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge.**
+
+#### 0. Comment j'ai joue, et ce que je declare degrade
+
+**Je n'ai pas juge sur des descriptions.** J'ai lance `bootstrap/target/recreo.jar`, ouvert
+l'application dans un navigateur pilote a **360 x 640** (`window.innerWidth` 360,
+`window.innerHeight` 640, verifies et non supposes), et joue les sept jeux en me trompant
+volontairement : un echec, deux echecs, trois echecs jusqu'a la revelation, puis l'appui sur la
+reponse nommee, puis une partie entiere jusqu'a l'ecran de fin.
+
+**Les trois verifications qui n'appartiennent qu'a moi, et ce qu'elles ont donne** :
+
+1. **Les quatre cas de M13 au clavier : faite.** Tabulation puis Entree apres une bonne et apres
+   une mauvaise reponse, sur les sept jeux, soit **quatorze manipulations**. Resultat en section 2.
+   C'est la premiere fois que ce projet fait cette verification, et elle est rouge.
+2. **Le releve image par image de M10 : faite**, avec son temoin dans la meme execution.
+   Echantillonnage des animations en cours toutes les **25 ms** pendant 1,5 s. Resultat en
+   section 3. Elle est verte, et je peux dire pourquoi ce vert veut dire quelque chose.
+3. **Les quatre memes en ecoutant : NON FAITE, et c'est un manque de ce projet, pas un oubli de ma
+   part.** Section 5. Je n'ai pas de lecteur d'ecran ici. Je n'ai pas remplace cette ecoute par
+   une lecture d'arbre d'accessibilite en pretendant que c'etait la meme chose - j'ai fait la
+   lecture, elle apporte un fait utile, et elle ne ferme pas la question. **F11 reste bloquee et
+   la derniere clause de M13 reste ouverte.**
+
+**Degrade, et je le nomme avant mes chiffres.** Les appuis sur les propositions ont ete produits
+par un appui programme sur le bouton, pas par un doigt sur une dalle. Ce qui en depend - la
+surbrillance de tape, le retard tactile - n'est pas juge ici. Les touches de M13, en revanche, sont
+de vraies touches (`Tab`, `Entree` envoyees comme evenements clavier), et c'etait le point.
+
+#### 0 bis. Ce que je corrige de mes propres constats, avant de m'appuyer dessus
+
+**A. Mon premier instrument etait faux, et il m'a fait voir deux defauts qui n'existent pas.** Une
+instance de navigateur laissee derriere par une erreur gardait le port de debogage ; la suivante s'y
+rattachait et mesurait **la session HTTP de la precedente**. J'ai cru voir, et j'ai failli ecrire,
+que "Bravo !" s'affichait sur la premiere question d'une partie neuve (M11 clause 2) et qu'une
+question fermee par la revelation faisait monter le score (M11 clause 3). **Les deux sont faux.**
+Apres isolement - un port et un profil neufs par mesure, et un auto-controle qui verifie que
+`GET /` rend bien le catalogue avant de commencer - une partie neuve demarre propre et une question
+revelee ne rapporte rien. **M11 est tenue.** Je l'ecris parce qu'un verdict qui s'appuie sur un
+instrument non verifie ne vaut rien, et parce que j'ai deja eu tort de cette maniere.
+
+**B. Mon "aucun" du 2026-08-12 sur les indices de CP etait inexact, et c'est moi qui l'avais
+mesure.** J'avais ecrit dans M2 : *"les six paquets de CP, aucun"* indice ne nomme la bonne
+reponse. En les relisant un par un : **quatre le contiennent** - `cp-complements-10` deux
+(`0 + ? = 10` et `5 + ? = 10`), `cp-problemes-additifs` un (les 8 ballons dont 4 s'envolent),
+`cp-soustractions` un (`10 - 0 = ?`). **Les quatre sont des coincidences arithmetiques sur un
+operande** : l'indice de `10 - 0 = ?` dit *"Leve 10 doigts, et n'en baisse aucun"*, et le 10 y est
+l'operande, pas une conclusion. Aucun de ces quatre ne donne la reponse comme reponse. **Je
+maintiens donc la substance de M2 pour le CP et je corrige mon chiffre** : ce n'est pas "aucun",
+c'est "quatre, tous sans consequence", et la difference compte parce qu'un jour quelqu'un
+m'opposera le contraire de ce que j'ai ecrit.
+
+**C. Je ne me sers pas de mon propre plafond F2 comme d'une echappatoire, dans l'autre sens.** F2
+plafonne le levier au contraste d'un bouton de reponse contre le corps du cabinet, **et j'avais
+verrouille la valeur litterale a 3,20:1 dans F14** en prevoyant exactement ce qui est arrive : les
+boutons sont passes a 11:1. Le plafond reste **3,20:1**, le levier est a 3,05:1 et 2,82:1, il passe.
+Il aurait aussi passe sous la lecture relative, mais je n'avais pas a en profiter.
+
+#### 1. M4 - condition bloquante, NON TENUE sur six jeux sur sept
+
+**Le fait, mesure a 360 x 640, bas du bloc de message en coordonnees de page, pli a `y = 640` :**
+
+| Jeu | etat | bas du message | verdict |
+|---|---|---|---|
+| Calcul CP (additions) | echec avec indice | 621,19 | **au-dessus du pli, marge 18,81 px** |
+| Comparer les nombres | echec avec indice | 651,19 | sous le pli de **11,19 px** |
+| Complements a 10 | echec avec indice | 651,19 | sous le pli de **11,19 px** |
+| Le bon son | echec avec indice | 651,19 | sous le pli de **11,19 px** |
+| Soustractions CP | echec avec indice | 651,19 | sous le pli de **11,19 px** |
+| Petits problemes | echec avec indice | 747,19 | sous le pli de **107,19 px** |
+| Le bon verbe | echec avec indice | **891,19** | sous le pli de **251,19 px** |
+| Le bon verbe | revelation | 813,19 | sous le pli de **173,19 px** |
+| Le bon verbe | **"Bravo !"** | 659,19 | sous le pli de **19,19 px** |
+| Petits problemes | revelation | 749,19 | sous le pli de **109,19 px** |
+| Complements a 10 | revelation | 653,19 | sous le pli de **13,19 px** |
+
+**Un seul jeu sur sept tient M4**, et il ne la tient que parce que son indice fait une ligne
+(*"Compte sur tes doigts."*). Le releve complet est dans
+`squad/conformite/releves-s10/releve-m4-pli.json`.
+
+**Ce que ca fait a l'enfant, et c'est exactement ce que j'avais decrit le 2026-08-12.** La capture
+`squad/conformite/releves-s10/captures/le-bon-verbe-echec-1-message-hors-ecran.png` est l'ecran
+reel d'un enfant de CM1 qui vient de se tromper sur "Le bon verbe". Sur cet ecran il y a : le titre,
+"Les jeux", le score, la consigne, l'enonce, le meuble et ses quatre mots dont un barre. **Il n'y a
+rien qui dise qu'il s'est trompe.** Ni le message, ni l'indice, ni l'icone : tout est a 251 px
+sous le bord de l'ecran. Mes mots du 2026-08-12, que je n'ai pas a reecrire : *"le jeu devient muet
+sur l'erreur - l'enfant presse, rien ne change a l'ecran qu'il voit, et il ne sait meme pas que sa
+reponse a ete prise en compte."* Le seul indice visible est le mot barre - c'est-a-dire la marque
+de F16, qui fait le travail que le message devait faire, et qui ne dit pas *pourquoi*.
+
+**Et le cas que personne n'avait prevu : sur "Le bon verbe", meme le "Bravo !" est sous le pli.**
+Un enfant qui reussit sur ce jeu ne recoit aucun retour visible. M11 est tenue dans le document et
+invisible a l'ecran. C'est le defaut de M4 applique au chemin juste, et il est pire que sur le
+chemin faux : sur le chemin faux, la question reste au moins la.
+
+**Ce que je dis a `ines-design`, et ce n'est pas un reproche.** Elle avait mesure que cinq jeux
+tenaient, que "Petits problemes" etait recupere avec 47 px de marge et que "Le bon verbe" ne passait
+qu'a 1 px. Elle a **refuse de presenter ce 1 px comme un passage sur** et l'a signale comme fragile.
+Elle avait raison de le signaler et elle avait raison de ne pas le vendre : le rendu livre donne
+**-251 px** sur ce jeu et **-107 px** sur "Petits problemes". L'ecart entre sa mesure et la mienne
+n'est pas une erreur de sa part sur ce qu'elle mesurait ; c'est que le rendu livre n'est pas la
+maquette qu'elle mesurait. **Le point de sa mesure qui s'est verifie, c'est le mot "fragile".**
+
+**La cause visible, et je la decris en symptome parce que la cause technique n'est pas la mienne.**
+Sur "Le bon verbe", les quatre propositions sont disposees **en deux rangees de deux** (boites de
+152 x 71 px aux abscisses 20 et 188, aux ordonnees 405 et 492), et non en quatre colonnes. Le meuble
+mesure de ce fait **222 px de haut** au lieu de 138 px pour un jeu a trois propositions. Ces 84 px
+sont exactement ce qui pousse le message hors de l'ecran. Cette disposition est aussi ce qui donne a
+F5 son air confortable (24,66 px par cote au lieu des 2,0 px du plancher). **Le budget vertical a
+ete depense pour acheter du confort horizontal dont je n'avais pas besoin, et il manque la ou j'en
+avais fait une condition bloquante.** Le remede appartient a `theo-archi` et a `ines-design` ; je ne
+choisis pas entre reduire le meuble, remonter le message, raccourcir les indices ou revenir a quatre
+colonnes etroites. Je dis seulement que **F5 avait 12 fois sa marge et que M4 est en dessous de
+zero**, et que ce n'est pas l'arbitrage que j'avais rendu.
+
+#### 2. M13 clause 1 - condition bloquante, NON TENUE sur les sept jeux
+
+**La mesure, sur les sept jeux, apres une bonne reponse et apres une mauvaise - quatorze cas :**
+
+| Jeu | apres une BONNE reponse | apres une MAUVAISE reponse |
+|---|---|---|
+| les sept | focus sur `BODY` | focus sur `BODY` |
+| les sept | 1 Tabulation -> `button.retour-accueil[data-role="sortie"]` | idem |
+| les sept | Entree -> **partie detruite** | Entree -> **partie detruite** |
+
+`partie_en_cours` apres `Tab` puis `Entree` : **faux dans les quatorze cas**. Releve complet dans
+`squad/conformite/releves-s10/releve-m13-clavier.json`.
+
+**C'est mot pour mot ce que ma clause 1 interdit** : *"apres une bonne reponse et apres une
+mauvaise, presser Tabulation une fois, puis Entree ; la partie doit toujours etre en cours. C'est la
+clause dure de M13 (...) et ce motif ne sera pas negociable."* Il ne l'est pas.
+
+**La cause, que j'ai isolee au lieu de la supposer.** `recreo.js` est charge dans le `<head>`
+(`accueil.html`, ligne 14), avant que `<body>` existe. Sa premiere instruction est
+`document.body.addEventListener(...)`. `document.body` vaut donc `null`, et le fichier leve
+**`TypeError: Cannot read properties of null (reading 'addEventListener')`**, capture dans la
+console au chargement de la page d'accueil. **L'ecouteur n'est jamais enregistre.**
+
+Consequences, et elles vont plus loin que la clause 1 :
+
+- **`data-focus` et `data-focus-cible` sont des attributs morts.** Le gabarit les pose
+  correctement - j'ai verifie qu'ils portent les bonnes valeurs dans les quatre cas, y compris
+  `data-focus-cible="true"` sur la proposition que l'enfant vient de presser et sur la reponse
+  revelee. **Rien ne les lit.** Les clauses 2, 4 et 5 de M13 ne sont pas seulement fausses a
+  l'ecran : elles ne sont pas executees du tout.
+- **La clause 3 est tenue par accident** : aucun anneau de focus ne se pose sur une proposition non
+  pressee, parce qu'aucun anneau ne se pose nulle part. Je la compte comme non tenue avec les
+  autres, parce qu'une clause tenue par la panne qui casse ses voisines n'est pas tenue.
+- **Le defaut n'est pas de ce chantier, et il est aggrave par lui.** L'ecouteur deplacait aussi le
+  focus sur `.signal` de l'ancien ecran de retour : il ne le faisait pas non plus. Mais avant ce
+  chantier, la premiere touche apres une reponse menait vers l'ecran de retour et son bouton
+  "Encore !". Depuis ce chantier, elle mene a la destruction de la partie. **La propriete que je
+  decrivais le 2026-08-12 - "la premiere touche pressee apres chaque reponse mene a la destruction
+  de la partie, dix fois par partie" - est le comportement livre.**
+
+**Je redis pourquoi ca compte pour un enfant de six ans qui joue au doigt**, parce que l'objection
+viendra. Un enfant qui utilise un clavier, un contacteur ou un lecteur d'ecran n'a pas d'autre
+chemin que celui-la. Un enfant sur un portable presse Entree et Tabulation par curiosite. Et la
+consequence n'est pas un desagrement : `POST /retour` appelle `abandonner()`, qui retire les trois
+attributs de session, **sans confirmation et sans persistance**. La partie est perdue.
+
+**Ce que je retiens en faveur de `marc-dev`, et je le retiens vraiment.** Il n'avait pas d'outil
+graphique, il l'a **dit** plutot que de supposer que sa verification structurelle valait la mienne,
+et il a fait ce qu'il pouvait faire : verifier que rien de focalisable ne suit la derniere
+proposition - ce que j'ai confirme, l'arbre d'accessibilite ne montre qu'un seul "Les jeux"
+focalisable, le lien d'en-tete etant bien retire par `display: none`. **Sa verification etait juste
+et elle ne pouvait pas voir ce defaut** : elle porte sur l'ordre du document, et le defaut est que
+le script qui devait s'en servir ne s'execute jamais. C'est la difference exacte entre verifier une
+structure et jouer. Je ne compte pas ce defaut contre lui.
+
+#### 3. M10 - TENUE, et voici pourquoi ce vert-la veut dire quelque chose
+
+`theo-archi` a etabli que l'outil de mesure ne savait ni enchainer les deux requetes d'un reessai,
+ni echantillonner pendant l'animation, et qu'apres 0,6 s l'ecran est au repos que l'animation ait
+tourne ou non - *"une capture aurait ete verte dans les deux cas, avant comme apres mon correctif,
+et a tort."* Il a raison, et c'est pour ca que je n'ai pas pris de capture.
+
+**Ce que j'ai fait** : echantillonnage de `document.getAnimations()` **toutes les 25 ms pendant
+1,5 s**, declenche juste avant l'appui, sur l'ecran de reessai.
+
+- **Sur un reessai (question inchangee)** : aucune animation, a aucun des echantillons.
+- **Le temoin, dans la meme execution et sans changer d'instrument** : sur une **question neuve**,
+  l'echantillonnage voit `rouleau-glisse` sur les trois propositions a t = 28, 51, 83, 105, 132 et
+  151 ms.
+
+**C'est le temoin qui donne sa valeur au constat** : mon instrument detecte le mouvement quand il a
+lieu, dans la meme execution ou il ne le detecte pas sur un reessai. Un vert obtenu sans ce temoin
+n'aurait rien prouve, et c'est exactement ce que `theo-archi` avait annonce. **M10 est tenue, la
+clause 2 amendee d'`ADR-0027` fait ce qu'elle annonce, et le correctif de `theo-archi` est verifie
+et non presume.**
+
+#### 4. Mes trente-deux conditions, une par une, sans arrondir
+
+**Mecanique.**
+
+| # | etat | ce que la mesure a donne |
+|---|---|---|
+| M1 | **tenue** | le bloc `indice` est present des le premier echec, sous le meuble, sur la question courante. Tenue en tant que mecanisme ; sur six jeux l'enfant ne le voit pas, et c'est M4 qui porte ce defaut, pas M1 |
+| M2 | **NON TENUE** | "Le bon verbe" **affiche** son indice sur la question courante, des le premier echec, et ses **25 indices sur 25 nomment la reponse** : *"Au futur, avec 'nous', le verbe 'faire' est irregulier : il devient 'ferons'."* Ma condition disait que ce jeu ne peut pas afficher son indice avant que les 47 textes soient reecrits. Ils ne le sont pas, et il l'affiche |
+| M3 | **tenue** | partie jouee jusqu'au bout : **10 questions annoncees, 10 presentees**, ecran de fin atteint, jamais de fin au milieu d'une question |
+| **M4** | **NON TENUE - bloquante** | section 1. Six jeux sur sept, jusqu'a **251,19 px** sous le pli |
+| M5 | **tenue mecaniquement** | trois essais comptes (y compris en represssant la meme proposition), revelation au troisieme, l'appui sur la reponse nommee charge la question suivante. **Videe de son sens sur "Le bon verbe"** par M2 : l'indice y donne la reponse au premier echec |
+| M6 | **tenue** | un seul emplacement parle de la reponse. Et le point de garde que j'avais nomme le plus important : `.cabinet-bandeau`, `.cabinet-socle` et `.cabinet-levier` sont **identiques au pixel** dans les quatre etats (question neuve, echec 1, echec 2, revelation) - une empreinte unique par zone sur les quatre captures |
+| M7 | **tenue** | le bloc `explication` n'apparait **que** sur l'ecran de revelation (`[signal, indice]` aux echecs, `[signal, explication, indice]` a la revelation), jamais sur une question neuve |
+| M8 | **tenue** | entre deux essais : meme nombre, meme ordre, memes abscisses et ordonnees, memes boites (96 x 74 et 152 x 71), meme police (32 px et 30 px). Aucune proposition retiree, desactivee ni reordonnee |
+| M9 | **tenue**, cinq clauses | marque = **mot barre** (autre que la couleur seule) ; ne change ni boite, ni police, ni position ; cibles 96 x 74 et 152 x 71, au-dessus du plancher de 44 px ; texte lisible a **9,55:1 au minimum** ; reste pressable et redonne le meme message ; aucune marque ne designe la bonne reponse avant la revelation |
+| M10 | **tenue** | section 3, avec son temoin |
+| M11 | **tenue**, quatre clauses | `signal est-juste` avec son icone, meme balisage et meme boite que `est-faux` ; absent sur la premiere question d'une partie ; **une question revelee ne rapporte rien** (score 0 -> 0 et 2 -> 2) et ne recoit aucun signal positif ; une question trouvee au 2e essai fait monter le score. **C'est le constat que j'avais faux et que j'ai corrige** (0 bis, A). Reste que sur "Le bon verbe" ce signal est sous le pli (M4) |
+| M12 | **tenue** | les trois textes au mot : **"Bravo !"**, **"Ce n'est pas ça. Essaie encore !"**, **"C'est `<reponse>`. Appuie sur `<reponse>`."** Accentues, ponctuation juste. Aucun mot de la liste interdite |
+| **M13** | **NON TENUE - clause 1 bloquante** | section 2. Quatorze cas sur quatorze. Clauses 2, 4 et 5 non executees ; clause 3 tenue par la meme panne |
+
+**Forme.**
+
+| # | etat | ce que la mesure a donne |
+|---|---|---|
+| F1 | **tenue** | la geometrie livree est celle de la variante E que j'ai jugee le 2026-08-13 : platine 20 x 12 px a filets clair et sombre, fut de 7 px, boule de 18 px, ancrage `bottom: 0` sur la plinthe. **Je ne rejuge pas un dessin que j'ai accepte** ; ce serait deplacer mes poteaux |
+| F2 | **tenue** | levier `#8e8e8e` : **3,05:1** contre le fond de page, **2,82:1** contre la bordure du cabinet. Plafond litteral **3,20:1** tenu (0 bis, C) |
+| F3 | **tenue** | `div`, `aria-hidden="true"`, aucun `data-role`, aucun `tabindex`, absent de la liste des focalisables, **aucune regle `:hover`, `:active` ni `:focus`**, aucun texte n'y renvoie, et **0 pixel sur une proposition** (section F13) |
+| F4 | **tenue** | oeil **8 px**, joue **6 px** : l'oeil est plus grand, ce qui etait mon premier motif de refus. Bouche = arc de **3 px** (au lieu de 1,5), visible sans agrandissement. Toutes les copies d'ombre tiennent dans la boite declaree de 22 x 18 px, donc l'enseigne garde son `gap` : mon troisieme motif. Aucun cil, noeud, cheveu, sourcil ; bouche blanche, non coloree. **Les trois defauts que j'avais refuses le 2026-08-13 sont corriges** |
+| F5 | **tenue sur ce que j'ai mesure, NON CLOSE** | 4 colonnes : boites 152 x 71 px, air minimal **24,66 px** par cote. 3 colonnes : 96 x 74 px, air **38,80 px**. Douze fois le plancher de 2,0 px, et au-dessus de mes planchers de 150,27 / 77 / 79 / 106 px. **Mais j'ai regarde 7 emplacements, pas les 100.** Je ne la ferme pas et je ne pretends pas l'avoir fait |
+| F6 | **tenue** | aucun fichier de paquet n'a ete touche pour gagner de la largeur ; les 24 items de `cp-soustractions`, 22 de `cp-problemes-additifs`, 25 de `cm1-conjugaison-present` sont ceux que j'avais vus |
+| F7 | **sans objet** | l'enseigne n'est pas cablee. Aucune valeur n'est servie, donc aucun nom a juger. Le nom reste "Le Copain Malin" pour le jour ou elle le sera |
+| F8 | **sans objet** | meme motif. La regle existe a `1.25rem` dans la feuille, rien ne la rend |
+| F9 | **tenue - bloquante** | distance minimale aux couleurs de verdict : **3,24:1** contre `#2e7d32` et **3,55:1** contre `#c62828`, sur le rose, la plus juste des quatre. Plancher 3:1 tenu sur les huit valeurs |
+| F10 | **tenue**, trois clauses | clause 1, lue comme le plancher de lisibilite du mot et non comme l'obligation d'un texte blanc (ma lecture ecrite du 2026-08-13) : **9,82 / 10,03 / 9,75 / 9,55:1**, plus du double du plancher. Clause 2 : **10,93:1** au pire contre le corps du cabinet. **Clause 3, que je n'avais pas pu fermer le 2026-08-13, je la ferme aujourd'hui** : la marque de M9 est lisible sur les quatre teintes, mesuree et vue |
+| F11 | **tenue par abstention, et TOUJOURS OUVERTE** | l'enseigne **n'est pas cablee**, et le commentaire du gabarit dit qu'elle ne l'est pas parce que F11 la bloque. **L'equipe a respecte ma condition plutot que de la contourner, et je le dis.** Mais F11 ne sera levee que par une ecoute, et **je n'ai pas ecoute** (section 5) |
+| F12 | **tenue** | `AucunTexteNeVitDansUnSousArbreMasqueTest` existe avec ses contre-exemples. L'icone du signal est `aria-hidden`, le visage et le levier aussi : du decor, masque comme tel |
+| F13 | **tenue** | mesuree par **difference de deux rendus**, avec et sans le levier : ses pixels occupent exactement **x 340..359, largeur 20**, sur un ecran a **quatre** colonnes **et** un a **trois**. **0 pixel** a gauche du bord droit des propositions (340) |
+| F14 | **tenue** | la meme difference dit sous quelles surfaces il vit : **460 px de `#f4f7fb`** (fond de page) et **240 px de `#1d4b6b`** (bordure du cabinet, large de 8 px), plus 3 pixels d'anticrenelage. **Aucun pixel de `#081c2c`**, le corps du cabinet. C'est exactement ce que la condition demandait |
+| F15 | **tenue** | 0 pixel de recouvrement, et `elementFromPoint` sur le **bord droit** de chacune des quatre propositions rend `BUTTON.btn proposition`, jamais le levier. Aucune cible pressable n'est devenue inerte |
+| F16 | **tenue - bloquante, et je la ferme** | la marque n'est pas blanche : c'est un **mot barre** a l'encre du texte, epaisseur 3 px, `text-decoration-skip-ink: none`. **9,82 / 10,03 / 9,75 / 9,55:1** sur les quatre teintes, contre un plancher de 3:1 - **trois fois la marge**. Vue a taille reelle sur le bleu ("10") et sur le bleu pale ("jouait"). Le fantome a 1,54:1 a disparu |
+| F17 | **tenue** | mot sous le voile du rouleau : **6,25 / 6,37 / 6,21 / 6,07:1**. Ma table du 2026-08-13 se reproduit au centieme. Plancher 4,5:1 tenu |
+| F18 | **tenue** | les quatre teintes sont bleu `#bdd2ef`, sarcelle `#a9dcd8`, lilas `#dcc8ed`, rose `#eec1d8`. **Aucune n'est dans la famille de `--recreo-attention-fond` `#fff4e5` ni de `--recreo-attention-bordure` `#b45309`.** Verifie sur l'ecran ou l'indice s'affiche, boite ambre et boutons ensemble. L'ambre garde son sens "tu as besoin d'aide" |
+| F19 | **tenue** | reponse : fond pale, encre sombre. Action : `.demarrer` et `.sortie-pleine` pleins a `rgb(46, 111, 158)`, encre blanche. Un bouton qu'on choisit ne ressemble plus a un bouton qui fait avancer le jeu |
+
+**Compte : 27 tenues (dont 2 sans objet et 1 non close), 3 non tenues (M2, M4, M13), dont deux
+bloquantes.**
+
+#### 5. L'ecoute : ce que je n'ai pas pu faire, et le fait utile que j'ai quand meme
+
+**Je n'ai pas ecoute.** Pas de lecteur d'ecran ici. C'est la deuxieme fois que je l'ecris, et c'est
+une information sur ce que ce projet ne sait pas encore verifier, pas une excuse.
+
+**Ce que j'ai fait a la place, et ce que ca vaut.** J'ai lu l'arbre d'accessibilite pendant qu'un
+message etait affiche. Le bloc `.message-jeu` porte `role="status"`, et l'arbre le calcule bien en
+**`live: polite, atomic: true, relevant: additions text`**. La condition structurelle existe donc,
+et personne ne l'avait verifiee : c'est un fait neuf et il est favorable.
+
+**Et voici pourquoi il ne ferme pas la question, avec le motif technique nomme en symptome.**
+`#jeu` est remplace **en entier** a chaque echange htmx. La region live n'est donc pas *modifiee* :
+elle est **detruite et recreee**. Une region live recreee n'est pas annoncee de facon fiable - c'est
+le cas ou un arbre vert et un silence reel coexistent. **Je ne peux pas dire si l'enfant entend
+"Ce n'est pas ça" ; je peux dire que le seul indice dont je dispose est ambigu, et par quel
+mecanisme.** Le moyen appartient a `theo-archi`.
+
+**Consequence tres concrete, et c'est ce qui rend l'ecoute urgente plutot que souhaitable.** Sur les
+six jeux qui echouent M4, l'enfant qui **voit** l'ecran ne recoit rien : le message est hors champ.
+Si l'enfant qui **n'entend pas** ne recoit rien non plus, alors sur ces six jeux le retour d'erreur
+n'atteint personne par aucun canal. Les deux defauts ne sont pas independants, ils se recouvrent.
+
+**F11 reste bloquee. La derniere clause de M13 reste ouverte.** Aucune des deux ne sera levee sur
+une lecture d'arbre, y compris la mienne d'aujourd'hui.
+
+#### 6. Ma reponse a la question que l'implementation a fait apparaitre : l'appui a cote
+
+**Le fait, que j'ai reproduit moi-meme sur deux jeux avant de trancher.** Apres la revelation, un
+appui sur une autre proposition rend un fragment **identique octet pour octet** a celui d'avant
+l'appui : meme message, meme indice, memes marques - la proposition pressee **n'est pas marquee**.
+La session ne garde aucune trace de cet appui. La mesure de `marc-dev` est exacte.
+
+**Je tranche : cet appui doit produire quelque chose, et je dis quoi.** C'est le motif meme par
+lequel j'ai refuse de desactiver une proposition - *"il presse, rien ne se passe, il se croit en
+faute"* - et celui qui fondait mon veto sur la manette. **Ma condition M5 n'avait pas dit ce qui
+devait arriver si l'enfant presse ailleurs, et c'est mon manque, pas celui de l'implementation.**
+L'implementation a reproduit le defaut par un autre chemin parce que je n'avais pas ferme ce cas.
+
+**Condition M14, nouvelle et datee du 2026-08-13.** Elle ne durcit ni M5 ni M9 : elle comble un cas
+que je n'avais pas traite. Cinq clauses.
+
+1. **La proposition pressee recoit la marque barree de M9**, exactement celle qu'elle aurait recue
+   avant la revelation. Rien d'autre n'apparait.
+2. **Le compteur d'essais ne bouge pas, le message ne change pas** : la revelation reste affichee et
+   continue de nommer la reponse. Ce n'est pas un quatrieme essai.
+3. **Aucun mouvement de colonne, aucune desactivation, aucune proposition retiree**, boite et police
+   inchangees (M8, M9 clause 2). Les deux contraintes que `theo-archi` a posees sont respectees par
+   construction.
+4. **La reponse nommee reste pressable et reste le seul appui qui fait avancer la partie.**
+5. **Le fragment rendu differe de celui d'avant l'appui par cette seule marque**, et c'est ainsi
+   qu'on verifie la condition.
+
+**Pourquoi cette reponse et pas une autre.** Elle reutilise **la seule grammaire de retour que
+l'enfant a deja apprise dans ce jeu** : dans ce jeu, presser un mot le barre. Il n'y a aucun signe
+neuf a comprendre, au moment precis ou l'enfant est le plus en difficulte. Elle n'invente aucun
+message - donc rien de plus a lire sous un meuble dont je viens de refuser qu'il deborde. Et elle ne
+coute aucun etat neuf : l'ensemble des propositions deja essayees existe deja et **survit deja a la
+revelation** - je l'ai mesure, la marque de l'essai fautif est toujours la sur l'ecran de
+revelation. Il s'agit d'y ajouter une entree, pas de creer quoi que ce soit.
+
+**Ce que j'accepte de payer, en le nommant.** `theo-archi` dit que distinguer ce cas **duplique
+dans l'adaptateur une branche du domaine**, acceptable avec un commentaire qui les relie, pas
+gratuit. **J'accepte ce prix et je prends l'arbitrage a mon compte** : un enfant qui appuie et a qui
+rien ne repond apprend qu'il a mal fait quelque chose, et ce cout-la est plus eleve. J'endosse aussi
+son refus de la troisieme voie par identite de reference : un protocole non documente qui tient a
+une egalite de reference se casserait en silence, et c'est precisement la famille de defauts que
+cet audit vient de trouver deux fois.
+
+#### 7. Reserves nouvelles et datees du 2026-08-13
+
+Aucune n'est un refus, aucune ne bloque le sprint suivant. Elles sont ecrites pour que
+`camille-po` en fasse des stories.
+
+**Reserve L - aucun test de ce depot n'execute `recreo.js`, et c'est ainsi qu'une fonction
+entierement morte a traverse 390 tests verts.** Les quatre clauses de M13 sont "couvertes" par des
+attributs qu'un gabarit pose correctement et que **rien ne lit**. Le defaut n'est pas que le test
+manque : c'est que la CI ne peut pas distinguer *"l'attribut est pose"* de *"l'attribut a un
+effet"*. Tant que rien n'execute ce fichier, **toute propriete de focus de cette application est
+garantie par moi seule, a la main**, et je le dis pour que personne ne croie le contraire.
+
+**Reserve M - l'ecran de fin de partie dit encore "Bravo, c'est juste !" alors que le jeu dit
+"Bravo !".** L'enfant rencontre desormais **deux formules d'eloge differentes** pour le meme
+evenement. Je n'en fais pas un manquement a M12 : ma table de M12 couvre trois etats de manche, pas
+l'ecran de fin, que j'ai valide le 2026-08-07 avec ce texte. Mais le motif qui m'a fait raccourcir
+le texte en jeu - *"un texte valide dans un contexte ne l'est pas automatiquement dans un autre"* -
+vaut aussi dans ce sens-la : c'est a moi de dire quel texte porte l'ecran de fin, et je ne l'ai pas
+encore fait.
+
+**Reserve N - "Encore !" a disparu de l'ecran de fin, et la seule action restante est de sortir.**
+L'ecran de fin ne porte plus que "Les jeux" (`.sortie-pleine`). Un enfant qui vient de finir une
+partie et veut recommencer doit repasser par le catalogue. J'avais valide cet ecran **avec**
+"Encore !" le 2026-08-07. Ce n'est pas un manquement a une condition de ce chantier - le sort de
+"Encore !" avait ete explicitement laisse a `theo-archi` par mon arbitrage du 2026-08-12 - mais
+c'est un retrait de ce que l'enfant peut faire, et il n'est passe devant personne.
+
+**Reserve O - `GET /` pendant une partie rend l'ecran de jeu, jamais le catalogue.** Mesure :
+avant toute partie, 7 boutons de demarrage ; pendant une partie, **0**. La reprise est plutot une
+bonne chose en soi. Ce que je signale est l'autre face : **il n'existe aucun chemin vers le
+catalogue qui ne detruise pas la partie.** Recharger ne suffit pas, revenir en arriere ne suffit
+pas ; le seul chemin est "Les jeux", qui appelle `abandonner()` sans confirmation. C'est le meme
+enjeu que M13 clause 1, vu depuis la souris au lieu du clavier, et M13 ne le couvre pas.
+
+**Reserve P - le budget vertical a ete depense du cote ou j'avais douze fois ma marge.** F5 est
+tenue avec 24,66 px d'air quand elle en demandait 2,0 ; M4 est en dessous de zero sur six jeux. La
+disposition en deux rangees de deux achete l'un et coute l'autre. Ce que je demande a instruire :
+**quel est le budget vertical total d'un ecran de jeu a 360 x 640, et qui le repartit ?** Personne
+ne tient ce compte, et c'est le troisieme sprint ou la hauteur du meuble decide de la lisibilite
+d'un texte que l'enfant doit lire. Accessoirement, quatre propositions **en deux rangees** ne sont
+plus des colonnes, et la metaphore du bandit manchot que j'ai validee parlait de colonnes qui
+distribuent.
+
+#### 8. Ce dont je reste la seule garde apres ce verdict
+
+Je le dis explicitement, sinon l'equipe croira couvert ce qui ne l'est pas.
+
+1. **Que le texte qui dit a l'enfant ce qui s'est passe soit sur l'ecran.** Aucun test ne mesure une
+   ordonnee contre le pli. M4 est tombee de 47 px de marge annoncee a 251 px de deficit **sans
+   qu'aucun garde-fou ne bouge**. Tant qu'un test ne compare pas le bas du bloc de message a
+   `y = 640` sur les sept jeux, c'est moi le garde-fou, et je le suis en jouant.
+2. **Que le focus aille ou je l'ai dit.** Reserve L. Rien n'execute le script.
+3. **Qu'un indice n'annonce pas la reponse.** M2 est tombee parce qu'un jeu affiche un indice que
+   j'avais interdit d'afficher. Aucune regle ne relie un paquet a l'autorisation d'afficher son
+   indice.
+4. **Qu'une marque d'etat se voie sur le fond qu'on lui donne.** Inchange depuis le 2026-08-13 :
+   F16 est tenue aujourd'hui, et rien ne compare la couleur d'une marque au fond sous elle. Au
+   prochain changement de palette, M9 peut redevenir faux en restant vert.
+5. **Qu'une silhouette ressemble a ce qu'elle pretend etre.** F1 et F4, sans automate, comme prevu.
+6. **Ce que l'enfant entend.** Section 5. Personne dans cette equipe ne l'a jamais entendu, moi
+   comprise.
+
+#### 9. Ce que ce verdict ne tranche pas
+
+- **Aucune route technique.** Le remede a M13 (ou et quand enregistrer l'ecouteur), le remede a M4
+  (reduire le meuble, remonter le message, raccourcir les indices, revenir a des colonnes etroites)
+  et le moyen d'annoncer un message a qui ne voit pas l'ecran appartiennent a `theo-archi`. Je
+  decris des symptomes et des proprietes.
+- **Le backlog et les priorites.** Je produis des motifs, une condition neuve (M14) et cinq
+  reserves ; `camille-po` en fait des stories.
+- **La reecriture des 47 indices de CM1** reste la reserve A du 2026-08-12, non rouverte et non
+  durcie. Ce que M2 exige d'ici la est seulement que "Le bon verbe" **n'affiche pas** l'indice qu'il
+  affiche.
+- **F5 sur les 100 emplacements.** Je ne l'ai pas faite et je ne la declare pas faite.
+- **Aucune ligne de `squad/programme/MATRICE-couverture.md`.** Le Done pedagogique est refuse ;
+  rien ne passe a `couvert-valide`.
+
 ### Arbitrage prealable au developpement - la silhouette du manche, le relief et le contraste du cabinet (s10), du 2026-08-12
 
 **Ce bloc n'est pas un Done pedagogique et n'en contient aucun.** C'est le cinquieme arbitrage
