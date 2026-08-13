@@ -6,6 +6,9 @@ descripteur:
   niveau: "CM1"
   domaine: "Orthographe et grammaire"
   competence: "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif"
+# M21 (nadia-prof, 2026-08-13) : les indices de ce paquet nomment la conjugaison attendue
+# ("c'est 'finira'"), donc la bonne reponse - la mecanique ne doit jamais les afficher.
+indicesNommentLaReponse: true
 items:
   - enonce: "Tous les jours, il ___ à l'école."
     bonneReponse: "va"

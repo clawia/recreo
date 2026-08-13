@@ -39,6 +39,9 @@ class YamlContentPackLoaderTest {
         Optional<Item> item = contenuQuestion.next(borne -> 0, Set.<ItemId>of());
         assertThat(item).isPresent();
         assertThat(((Question) item.orElseThrow()).enonce()).isNotBlank();
+        assertThat(contenuQuestion.indicesNommentLaReponse())
+                .as("M21 : 'indicesNommentLaReponse: true' du paquet doit atteindre le ContentSource")
+                .isTrue();
 
         GameDefinition jeuAdditions = jeu(jeux, "jeu-additions");
         Optional<Item> itemAdditions = jeuAdditions.contenu().next(borne -> 0, Set.<ItemId>of());
@@ -46,6 +49,24 @@ class YamlContentPackLoaderTest {
         assertThat(((Question) itemAdditions.orElseThrow()).indice())
                 .as("S3-3 (DEC-0005) : l'indice suit le texte du paquet, pas une constante Java")
                 .contains("Astuce de la fixture, jamais affichee a un enfant.");
+        assertThat(jeuAdditions.contenu().indicesNommentLaReponse())
+                .as("M21 : sans la cle, le paquet ne declare rien - faux par defaut")
+                .isFalse();
+    }
+
+    /**
+     * M21 (arbitrage de nadia-prof du 2026-08-13) : le paquet reel derriere "Le bon verbe" nomme la
+     * conjugaison attendue dans ses vingt-cinq indices sur vingt-cinq ("c'est 'finira'"). C'est le
+     * cas reel qui a fait trancher M21 ; ce paquet doit le declarer pour que la mecanique ne montre
+     * plus jamais ces indices.
+     */
+    @Test
+    void lePaquetConjugaisonPresentDeclareQueSesIndicesNommentLaReponse() {
+        List<GameDefinition> jeux = new YamlContentPackLoader().games();
+
+        GameDefinition jeu = jeu(jeux, "bandit-manchot-conjugaison-present-cm1");
+
+        assertThat(jeu.contenu().indicesNommentLaReponse()).isTrue();
     }
 
     /**

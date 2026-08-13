@@ -376,6 +376,24 @@ class BanditManchotTest {
     }
 
     /**
+     * M21 (arbitrage de nadia-prof du 2026-08-13) : sur un paquet qui declare que ses indices
+     * nomment la bonne reponse, aucun indice n'apparait, quel que soit le nombre d'echecs sur la
+     * manche - le repli habituel de M1 reste inatteignable pour ce paquet-la.
+     */
+    @Test
+    void aucunIndiceNApparaitSurUnPaquetDontLesIndicesNommentLaReponse() {
+        Question question = new Question(new ItemId("q1"), "un", "1", List.of("2"), Optional.of("c'est 1"));
+        ContentSource paquetRevelateur = new ListContentSource(DESCRIPTEUR, List.of(question), true);
+        BanditManchotSession session = demarrer(paquetRevelateur);
+
+        session = jouer(session, "2");
+        assertThat(session.indice())
+                .as("M21 : ce paquet declare que ses indices nomment la reponse, aucun indice ne doit "
+                        + "jamais apparaitre, meme apres un echec")
+                .isEmpty();
+    }
+
+    /**
      * M5 : au troisieme echec sur la manche, la reponse est revelee - la manche n'est pas pour
      * autant resolue, et aucune manche resolue ne fait bouger le score (M3).
      */

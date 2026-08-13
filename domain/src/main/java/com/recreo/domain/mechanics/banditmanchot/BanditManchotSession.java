@@ -185,9 +185,16 @@ public final class BanditManchotSession implements GameSession {
     /**
      * M1 : l'indice de la manche bloquante, affiche des le premier echec sur cette manche et
      * jusqu'a sa resolution. Vide sur une manche fraiche, comme sur une partie terminee.
+     *
+     * <p>M21 : vide egalement, quel que soit le nombre d'echecs, quand {@link
+     * ContentSource#indicesNommentLaReponse()} vaut vrai pour ce paquet - un indice qui nomme la
+     * reponse n'est pas une aide, il est une revelation deguisee des le premier essai.</p>
      */
     public Optional<String> indice() {
-        return essaisSurLaManche > 0 ? mancheCourante.indice() : Optional.empty();
+        if (essaisSurLaManche == 0 || contenu.indicesNommentLaReponse()) {
+            return Optional.empty();
+        }
+        return mancheCourante.indice();
     }
 
     /** M9 : les propositions deja essayees sur la manche courante - marquees, jamais retirees. */
