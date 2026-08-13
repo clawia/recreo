@@ -90,6 +90,24 @@
   j'ai valide 47 indices de CM1 sans verifier qu'ils nomment la bonne reponse - ils la nomment tous
   les 47. Trois reserves nouvelles et datees, aucune bloquante. Ce bloc vaut pour les huit jeux du
   catalogue.
+  **Arbitrage prealable au developpement de la forme du meuble (visage, enseigne, boutons colores,
+  levier de flanc), du 2026-08-12 : REFUSE sur la proposition telle qu'ecrite**, quatre motifs mesures,
+  le principe des cinq elements accepte. Ce n'est pas un Done pedagogique et il n'en retire aucun.
+  **Douze conditions F1 a F12**, qui se lisent a la suite des douze conditions M1 a M12 de l'arbitrage
+  de mecanique du meme jour, sans en renumeroter aucune ; **F5 et F9 sont bloquantes**. Les quatre
+  motifs : `mangeons` ressort de sa boite de **3,13 px** par cote sous l'elargissement symetrique ; les
+  boutons rouge et vert sont a **1,03:1 et 1,05:1** des couleurs du verdict de l'application ; le levier
+  en blanc pur est a **17,32:1** contre le corps du cabinet la ou un bouton de reponse est a 3,20:1 ;
+  l'enseigne a 0,875 rem serait le seul texte de recreo sous 20 px. **Les 2,0 px d'air de `mangeons` sont
+  un PLANCHER**, comme ma condition 4 du 2026-08-11 l'ecrit, et je ne le releve pas a 2,86 px. **La
+  quatrieme voie - retailler le contenu pour gagner 10,27 px - est refusee**, et son chiffre est
+  incomplet : trois propositions sont au-dessus du seuil, dans deux items, et l'un des deux est
+  impossible sans changer de verbe. **Nom d'enseigne retenu : "Le Copain Malin"** ; les deux autres
+  refuses sur leur sens. **Le nom ne doit jamais etre annonce entre l'enonce et les propositions** :
+  aucune des quatre structures de `theo-archi` ne passe, et je demande une reserve d'`ADR-0035` pour le
+  texte de decor deliberement masque. Corps en deux tons et etoiles du socle **acceptes tels quels**.
+  **Cet arbitrage est degrade sur un point nomme** : je n'ai pas ecoute de lecteur d'ecran. Trois
+  reserves nouvelles et datees (F, G, H). Ce bloc vaut pour les huit jeux du catalogue.
 - **Derniere mise a jour** : 2026-08-12
 
 ## Competences visees
@@ -1476,6 +1494,804 @@ question de contenu, pas de mecanique.
 - **Le backlog** : je produis des motifs et trois reserves, `camille-po` en fait des stories.
 - **Aucun Done pedagogique** : rien n'est code, aucun increment n'est evaluable.
 - **Aucune ligne de `squad/programme/MATRICE-couverture.md`** ne bouge par cet arbitrage.
+
+### Arbitrage prealable au developpement - la forme du meuble : visage, enseigne, boutons colores, levier de flanc, du 2026-08-12
+
+**Ce bloc n'est pas un Done pedagogique.** C'est mon sixieme arbitrage prealable, au titre de
+`squad/README.md` section 10. Rien de ce chantier n'est code : je ne prononce aucun verdict
+d'increment et je n'efface aucun verdict anterieur.
+
+**Ce bloc vaut pour les huit jeux du catalogue** : le meuble est commun. Il porte des mesures qui
+n'existent que sur "Le bon verbe" (le paquet de conjugaison), et celles-la sont reprises dans
+`FICHE-bandit-manchot-conjugaison-present-cm1.md`.
+
+**Mon arbitrage de mecanique du meme jour n'est pas rouvert ici.** Ses douze conditions M1 a M12
+tiennent, sans exception, et aucune n'est renumerotee. Les conditions de ce bloc portent le prefixe
+**F** (forme) et non M : un developpeur qui lit `F3` sait qu'il s'agit de la forme, et aucun numero
+n'est reutilise d'une serie a l'autre.
+
+**Ce que j'arbitre, et ce que je n'arbitre pas.** `DEC-0023` a tranche qu'il y a un levier, un visage
+et une enseigne : je ne rediscute pas cela, je ne detiens pas la porte produit. Ce que je tranche est
+la **forme** de ces trois objets, le texte que l'enfant y lit, et ce que cette forme coute a ce que
+l'enfant lisait deja.
+
+#### 0. Comment j'ai regarde, et ce que je declare degrade
+
+**Degrade sur un point, precis, et je le nomme avant mes chiffres.** Je n'ai pas lance
+l'application aujourd'hui. Rien de ce chantier n'est code : il n'y a aucun meuble redessine a jouer,
+aucun levier a toucher, aucune enseigne a lire a l'ecran. Tout ce que je dis est dit sur des
+proprietes et sur des **candidats que j'ai rendus moi-meme**, jamais sur l'increment.
+
+**Pas degrade** : je n'ai juge aucune de ces six questions sur la description qu'on m'en fait. J'ai
+rendu chaque candidat et je l'ai regarde.
+
+- worktree dedie hors de l'arbre du depot, lignee verifiee par `outils/verifier-lignee.sh` : "le
+  worktree sur la branche 's10-nadia-forme' descend de la lignee de round-two (ancetre commun trouve
+  dans son historique)". `round-two` a `b15bda1` ;
+- **pages candidates rendues a 360 px** par `outils/mesurer-rendu.sh 360 <url> <png>`, chargeant les
+  **deux feuilles reelles du depot** (`vendor/bootstrap.min.css` puis `css/recreo.css`, copiees sans
+  modification) et reproduisant le balisage de `fragments/manche.html` tel qu'il est ecrit dans le
+  depot. Six variantes : la proposition d'`ines-design` telle qu'ecrite, les deux lectures chiffrees
+  par `theo-archi`, et trois traitements du levier hors du mur ;
+- **mesures dans le rendu, jamais a l'oeil** : largeurs de glyphes par `Range.getBoundingClientRect`
+  a la police reelle des propositions a quatre colonnes (30 px, poids 700, pile de polices de Reboot),
+  largeurs de boite par `getBoundingClientRect`, contrastes par la formule WCAG appliquee aux valeurs
+  de la feuille ;
+- **formes jugees sur agrandissement au pixel** (x6, sans interpolation) : le visage, le levier a
+  18 px et a 10 px, la rangee de boutons colores ;
+- **ordre de lecture du document** relu dans `fragments/manche.html` et non suppose ;
+- **le paquet de conjugaison relu item par item** dans son fichier servi, pour les formes verbales
+  disponibles sur les deux items en cause.
+
+**La limite exacte de ma methode d'aujourd'hui, que je nomme plutot que de la laisser deviner.**
+`ines-design` a rendu ses candidats sur le fragment **reellement servi** par l'application ;
+j'ai rendu les miens sur une copie du balisage **lu dans le gabarit**. C'est un cran de moins qu'elle,
+et je le dis. La contre-epreuve que j'ai faite a la place : mes chiffres de largeur de glyphes
+reproduisent **exactement** ceux que `lea-dev` a mesures sur le rendu servi et que j'ai moi-meme
+verifies le 2026-08-11 sur l'application - `mangeons` 146,27 px, `cherchons` 142,67 px, `cherchent`
+139,03 px, `dessinent` 133,94 px, boite de bouton 71,00 px de haut, police 30 px. Quatre valeurs sur
+quatre a la deuxieme decimale. Mon contraste du corps sombre contre l'accent redonne le **3,20:1**
+d'`ines-design` au centieme. Mon banc mesure donc ce que l'application mesure ; il ne remplace pas
+d'avoir joue, et aucun Done ne sortira de ce bloc.
+
+#### 0 bis. Ce que je corrige de mes propres constats, avant de m'appuyer dessus
+
+**A. J'ai failli refuser un nom d'enseigne sur un chiffre faux, et c'est moi qui l'avais estime.**
+En instruisant la question 4, j'ai d'abord ecrit que "La Boite a Bonnes Reponses" ne tiendrait pas
+dans le fronton a une taille lisible. **Mesure faite : elle tient.** A 1,25 rem gras, ce nom fait
+**260,47 px** pour **266 px** libres dans le fronton a bordure de 8 px, visage et rembourrage
+deduits : il passe, avec 5,53 px de reste. Je refuse ce nom en question 4, mais **sur son sens et non
+sur sa largeur**, et je dis le chiffre que j'etais en train de me tromper d'invoquer.
+
+**B. Je ne "corrige" pas mon propre chiffre de 2,86 px vers le haut.** Le 2026-08-11 j'ai mesure les
+deux cotes de `mangeons` separement - **2,86 px** d'un cote, **2,87 px** de l'autre - et j'ai retenu
+**2,86 px**, le plus etroit. Mon banc d'aujourd'hui calcule l'air symetrique et affiche **2,87 px**.
+C'est le meme fait a un arrondi pres, pas une amelioration : **je continue de citer 2,86 px**, la
+valeur la plus defavorable, comme je l'ai ecrite. Un chiffre de garde ne se relit pas a la hausse le
+jour ou il arrange.
+
+**C. Je confirme la correction que `theo-archi` fait de mon chiffre, parce qu'elle est de moi.** Le
+`-2,01 px` qu'il citait comme etat courant est bien **ma "correction" fautive du matin du 2026-08-11**,
+que j'ai moi-meme annulee le meme jour : mon chiffre de refus, `-2,02 px`, etait exact. L'etat courant
+n'est ni l'un ni l'autre : c'est **+2,86 px**, mesure au quatrieme audit sur `bd9a8f0` et remesure
+aujourd'hui. Il a raison de le dire, et ce n'est pas une erreur de sa part : c'est la mienne qui a
+survecu une demi-journee dans une fiche.
+
+**D. Un fait de ma propre condition C1 que je dois relire avant qu'on m'oppose son contraire.** Le
+2026-08-11 j'ai ecrit que le rembourrage lateral de `.container` est "**utilisable pour de la
+decoration, mais jamais comme unique payeur d'un flanc**". `theo-archi` a lu cette phrase comme
+refusant qu'un decor deborde du flanc - et il note lui-meme, dans son constat 2, que ce motif-la
+"n'est pas un fait du depot mais une consequence de mise en page". **La phrase est de moi, donc je dis
+ce qu'elle veut dire** : ce qui est refuse, c'est que la **paroi** du meuble soit faite de ces 12 px,
+parce qu'alors le meuble touche les bords de l'ecran et l'enfant ne voit plus le tour de l'objet. Un
+**ornement** accroche a la paroi n'est pas la paroi. Cette relecture n'assouplit rien : la paroi reste
+interdite de s'y installer, et je le remesure en question 2.
+
+#### 1. Question 1 - le visage et la silhouette du levier
+
+**Verdict en une phrase : le visage est accepte dans son principe et REFUSE dans son dessin ; le
+levier est accepte dans son principe et REFUSE dans la forme proposee.** Je dis pour chacun ce que
+j'accepterais, et j'ai regarde les deux plutot que de les lire.
+
+##### 1.a Le visage : ce que j'ai vu en agrandissant, et ce n'est pas un visage
+
+`ines-design` ecrit avoir verifie "en zoomant sur le rendu reel (agrandissement x12)" que le visage
+"se lit sans ambiguite comme deux yeux surmontant des joues rosees, un sourire dessous". **J'ai refait
+ce zoom sur mon propre rendu de sa regle, et je ne vois pas cela.** Trois constats, chacun mesurable
+dans sa regle telle qu'elle l'a ecrite :
+
+1. **Les joues sont plus grosses que les yeux, et de loin.** L'oeil est un disque de `0,3125rem`
+   (5 px). La joue est **la meme forme avec un `spread` de `0,125rem`**, soit 5 + 2 + 2 = **9 px**.
+   Une joue de 9 px sous un oeil de 5 px, en rose vif a 9,27:1 contre le fronton, ne se lit pas comme
+   une joue : elle se lit comme la forme principale, et l'oeil comme un reflet pose dessus. A 360 px,
+   l'objet lu est **deux grosses billes roses a pastille blanche**, pas un visage.
+2. **La bouche est presque invisible.** C'est un arc de bordure de `0,09375rem` (1,5 px) sur 9 px de
+   large, en blanc, entre les deux billes roses. Un trait de 1,5 px est ce que j'ai moi-meme refuse
+   comme "bordure et non paroi" en C1 ; c'est aussi trop peu pour porter le seul element qui fait
+   qu'un visage sourit.
+3. **La joue droite sort de sa propre boite et vient toucher l'enseigne.** `.cabinet-visage` declare
+   `width: 0.9375rem` (15 px), mais la copie d'ombre la plus a droite est posee a `0,9375rem` avec un
+   `spread` de `0,125rem` : elle occupe donc jusqu'a **22 px**, soit **7 px hors de la boite
+   declaree**. Le `gap` du fronton est de 8 px : il en reste **1 px** entre le rose et la premiere
+   lettre du nom. Sur mon agrandissement, le rose touche le jambage du `L` de "Le". Ce n'est pas une
+   question de gout : c'est un decor qui mange l'espace d'un texte que l'enfant doit lire.
+
+**Ce que j'accepte, et c'est la condition F4.** Le visage reste sur le fronton, dessine et immobile.
+Mais l'oeil est **au moins aussi grand que la joue**, la boite declaree du visage **contient toutes
+ses copies d'ombre** pour que l'enseigne garde son `gap` entier, et la bouche est assez epaisse pour
+etre vue a 360 px sans agrandissement. Je rejuge sur une capture, comme aujourd'hui.
+
+**Et je dis pourquoi son immobilite n'est pas un pis-aller.** Un enfant qui echoue trois fois de suite
+devant une machine qui sourit - c'est la premiere objection qu'on pourrait me faire, et elle tombe pour
+une raison precise : **un visage qui ne change jamais ne commente rien.** C'est le visage qui *change*
+qui juge. Un sourire fixe est un trait de carrosserie, comme le sourire d'une locomotive de livre
+d'images. L'immobilite exigee par C4, par M6 clause 2 et par `DEC-0023` point 5 n'est donc pas une
+restriction subie par le visage : **c'est la seule chose qui le rend acceptable**, et le jour ou
+quelqu'un proposera de le faire reagir, ma reponse est deja ecrite.
+
+**Ce que j'ajoute et que personne ne m'a demande : aucun marqueur de genre.** Le visage de la machine
+n'a ni cils, ni noeud, ni cheveux, ni sourcils, ni bouche coloree. Ce n'est pas une precaution
+abstraite : un meuble d'arcade genre est un meuble avec lequel une partie des enfants se reconnait
+moins qu'une autre, pour rien. La regle d'`ines-design` telle qu'ecrite n'en porte aucun, et c'est
+bien ; je l'ecris comme condition pour que ca reste vrai apres le prochain retouchage.
+
+##### 1.b Le levier : mon motif n'est pas leve, et voici ce que j'exige
+
+**Je redis d'abord ce qui est leve et ce qui ne l'est pas, pour que personne n'ait a le reconstituer.**
+Ma condition C6 interdisait toute manette ou bras lateral. `DEC-0023` point 3 leve cette condition,
+par decision de l'utilisatrice, en citant mon propre principe - je ne detiens pas la porte produit.
+**Mon second motif est eteint** par l'immobilite : il n'y a pas de geste de glissement a executer, donc
+pas d'obstacle de motricite fine. **Mon premier motif n'est pas eteint, et `DEC-0023` l'ecrit
+lui-meme** : *"un enfant peut tenter de toucher ou de tirer une forme qui ressemble a un levier, et
+rien ne se passera. Ce risque residuel n'est pas tranche par cette decision."* C'est donc bien a moi,
+et voici ma reponse.
+
+**Ce qui fabrique la faute n'est pas que le levier soit immobile : c'est qu'il soit important.** Un
+enfant de 6 ans n'attribue pas un echec a un objet qu'il a a peine remarque. Il l'attribue a l'objet
+que la machine lui a designe comme etant *la chose a manipuler*. Et c'est exactement ce que la regle
+proposee fait, mesure sur mon rendu :
+
+| Objet du meuble | Contraste contre le corps du cabinet `#081c2c` |
+|---|---|
+| **le levier, en `--recreo-accent-texte` (blanc pur)** | **17,32:1** |
+| un bouton de reponse vert `#1f7a3d` | 3,22:1 |
+| un bouton de reponse rouge `#c0392b` | 3,18:1 |
+| un bouton de reponse aujourd'hui (`--recreo-accent`) | 3,20:1 |
+| un bouton de reponse ambre `#8a5d00` | 3,01:1 |
+| un bouton de reponse violet `#6c3fa8` | 2,40:1 |
+
+**Le seul objet du meuble qui ne fait rien serait cinq fois plus contraste que ceux qui font tout.**
+Le blanc de `--recreo-accent-texte` n'est pas une couleur libre dans cette application : c'est le blanc
+du texte des boutons, celui de l'etoile du fronton, celui de la coche du verdict. Le donner a une forme
+inerte, c'est lui promettre l'importance de tout ce qui est blanc ailleurs. C'est un motif de refus a
+lui seul, et il est chiffre.
+
+**Et j'ai regarde la silhouette, aux deux tailles.** Rendu a 360 px puis agrandi x6, sans
+interpolation :
+
+| Ce que j'ai rendu | Ce que je lis |
+|---|---|
+| boule 18 px sur fut 6 px, blanche, **dans la paroi elargie** | une **epingle** plantee dans le flanc, ou le curseur rond d'une barre de defilement. Une tete ronde sur une tige fine, sur fond de paroi : c'est la silhouette universelle d'une poignee qui **glisse** |
+| boule 10 px sur fut 4 px, blanche, **dans la paroi au plancher** | un **thermometre**, ou une aiguille. La boule ne fait plus que 2,5 fois le fut : il n'y a plus de tete, il y a un renflement |
+| boule 18 px sur fut 8 px, teinte acier, **hors de la paroi** | une **poignee**. La boule fait 2,25 fois le fut, elle est posee au bout d'un bras qui sort du meuble, et l'objet se lit comme quelque chose qu'on attrape |
+
+Je ne donne pas ces trois lignes comme un cahier des charges de dessin - ce n'est pas mon metier et je
+ne dicte pas un rapport de diametres. Je les donne comme **la seule donnee qui existe aujourd'hui** sur
+la question qu'`ines-design` et `theo-archi` se posent tous les deux sans pouvoir y repondre : personne
+n'avait regarde une boule de 10 px. Je l'ai regardee, et elle ne se lit pas comme un levier.
+
+**Le pire des trois est l'epingle, et c'est celui qui a le plus de chances d'etre livre.** Une tete
+ronde sur une tige, verticale, blanche, contre une paroi : c'est un curseur de defilement. Un enfant
+qui prend cet objet pour un curseur ne va pas *presser* et attendre, il va **glisser le doigt** - le
+geste exact dont j'avais fait mon second motif, et qui revient par la forme apres avoir ete evacue par
+l'immobilite. C'est la raison pour laquelle je ne me contente pas de la teinte et j'exige aussi la
+silhouette.
+
+**Conditions F1 a F3, et ce dont je reste seule juge.** Aucun automate de ce depot ne voit une
+silhouette (`ADR-0025`, et `theo-archi` l'ecrit lui-meme : *"Ce que je ne dis pas : que le manche
+ressemble a un manche, qu'il soit lisible a 360 px, ou qu'un enfant comprenne qu'on n'y touche
+pas"*). Sur ce point je suis le garde-fou, et je le suis en regardant une capture. Je m'engage a
+rejuger sur capture avant tout Done, et non a redemander un dessin indefiniment.
+
+#### 2. Question 2 - les 2,0 px sont un PLANCHER, et le choix qu'on me presente est un faux dilemme
+
+**Reponse en une phrase : c'est un plancher, et je n'ai pas a en decider aujourd'hui parce que je
+l'ai deja ecrit comme tel.**
+
+##### 2.a Pourquoi c'est un plancher, et ce n'est pas mon avis d'aujourd'hui
+
+`theo-archi` pose la bonne question et il a raison de ne pas la trancher a ma place. Mais la reponse ne
+demande pas un arbitrage neuf : elle est ecrite dans ma **condition 4 du 2026-08-11**, mot pour mot -
+
+> **Condition 4 - air strictement positif et au moins 2,0 px sur les 100 propositions.**
+
+"Au moins 2,0 px" est la formule d'un plancher, pas d'un constat. Et je l'ai confirmee le meme jour, au
+quatrieme audit, en refusant de la relever quand la mesure est tombee plus haut : *"Ma condition 4
+exigeait 'au moins 2,0 px', pas 2,87 : elle est tenue, et je le dis avant qu'on me le demande."* Cette
+phrase-la est la preuve que le 2,86 px n'a jamais ete une barre. **Le plancher est 2,0 px ; les 2,86 px
+sont l'etat courant au-dessus du plancher.** Je ne releve pas le plancher a 2,86 aujourd'hui - ce serait
+deplacer mes poteaux le jour ou une equipe vient s'appuyer dessus - et je ne l'abaisse pas a zero, ce
+qui serait le supprimer.
+
+**La lecture "constat" est un plancher a 0 px, et 0 px n'est pas une marge.** Sous cette lecture, la
+marge de `mangeons` tombe a **0,00 px exactement** : les glyphes affleurent le bord de leur boite. Je
+l'ai rendu et regarde - c'est ma variante B, bordure droite a 1,216 rem, colonne mesuree a 146,50 px,
+air **0,12 px**. Le mot ne touche pas encore la paroi du meuble, mais il touche le bord de son bouton
+sur toute sa hauteur. Trois raisons de refuser, dont une seule suffirait :
+
+1. **J'ai refuse `-2,02 px` par ecrit le 2026-08-11**, et la seule chose qui separe `0,00` de `-2,02`
+   est le sens de l'arrondi de la prochaine police de repli. Un mot a `0,00 px` est un mot qui deborde
+   sur le premier poste ou une police manque.
+2. **Un mot colle au bord de son cadre est plus dur a lire**, et c'est vrai pour n'importe quel
+   lecteur ; pour un enfant de CM1 qui doit comparer quatre formes verbales voisines, l'air autour du
+   mot est ce qui fait qu'on voit ou le mot commence et ou il finit. Ma definition de plancher de
+   colonne demandait **20 px** de rembourrage ; j'ai deja concede que le confort reel est de 2,86 px
+   sur ce mot, et j'ai ecrit le 2026-08-11 que **"c'est un inconfort present"**. On ne finance pas un
+   ornement avec le dernier pixel d'un inconfort deja enregistre.
+3. **Le budget aurait ete depense pour rien.** Sous la lecture "constat", ce qu'on achete avec les
+   2,86 px de `mangeons` est le droit de garder une boule de 18 px **dans la paroi** - c'est-a-dire
+   exactement la silhouette que je refuse en question 1 comme se lisant "epingle" ou "curseur".
+
+##### 2.b Les trois lectures, remesurees par moi sur un rendu et non recopiees
+
+Rendu a 360 px, quatre propositions de "Le bon verbe" en 2x2, item "Vous ___ du chocolat." dont
+`mangeons` est un distracteur :
+
+| Variante rendue | Bordure | Colonne mesuree | Air de `mangeons` par cote | Verdict |
+|---|---|---|---|---|
+| etat livre, `bd9a8f0` | 8 px / 8 px | 152,00 px | **+2,87 px** (2,86 retenu) | l'etat courant, ma condition 4 tenue |
+| **`ines-design` telle qu'ecrite** | 20 px / 20 px | **140,00 px** | **-3,13 px** | **REFUSE. Le mot ressort de sa boite, davantage que les -2,02 px que j'ai refuses le 2026-08-11** |
+| lecture "constat" (`theo-archi`) | 8 px / 19,46 px | 146,50 px | **+0,12 px** (0,00 a la valeur exacte) | **REFUSE**, section 2.a |
+| lecture "plancher" (`theo-archi`) | 8 px / 11,46 px | 150,50 px | **+2,12 px** | **le plancher est tenu**, et c'est la seule des trois qui le tient |
+
+**Le chiffre le plus important de ce tableau est le `-3,13 px`, et personne ne l'avait mesure.**
+`ines-design` a compare sa colonne de 140 px a mon **tableau de planchers de colonne** du 2026-08-11,
+ou "Le bon verbe" est explicitement marque "hors tableau" - elle a donc conclu, correctement au regard
+de ce tableau-la, qu'il n'y avait rien a verifier. Mais ce paquet n'est pas gouverne par ce tableau : il
+est gouverne par ma **condition 4**, qui porte sur les 100 propositions de "Le bon verbe" et qui est en
+vigueur depuis le quatrieme audit. **Je ne le retiens pas contre elle** : le fait que mes exigences sur
+ce paquet vivent dans une autre fiche que mon tableau de planchers est un defaut de ma propre tenue de
+dossier, et c'est la raison pour laquelle je recopie F5 dans
+`FICHE-bandit-manchot-conjugaison-present-cm1.md` a la fin de ce bloc.
+
+##### 2.c Ce qui rend la question moins lourde qu'elle n'est posee : un troisieme payeur
+
+`theo-archi` m'ecrit que "le levier ne peut vivre que dans une bordure elargie". **Ce n'est pas exact,
+et l'erreur vient de ma phrase, pas de la sienne** (0 bis, point D). Le levier est un **ornement**, et
+j'ai autorise le rembourrage lateral de `.container` pour de la decoration des le 2026-08-11. Un
+ornement accroche a l'exterieur du flanc ne prend rien a personne.
+
+**Je l'ai rendu plutot que de le supposer.** Trois variantes, levier suspendu dans le rembourrage droit
+de `.container`, bordure du cabinet **inchangee a 8 px des deux cotes** :
+
+| Ce que je mesure sur le rendu | Valeur |
+|---|---|
+| contour du cabinet | `x = 12,00 .. 348,00`, **336,00 px, inchange sur ses quatre cotes** (C1 intacte) |
+| colonne de "Le bon verbe" | **152,00 px, inchangee** |
+| air de `mangeons` | **+2,87 px, inchange** |
+| levier | `x = 338,00 .. 358,00`, boule de **18 px**, entierement hors de la paroi, 2 px avant le bord de l'ecran |
+| cout sur une colonne, un `gap`, un rembourrage de bouton | **0 px** |
+
+**Sous cette route, la question 2 ne se pose plus et la question 3 devient inutile** : la boule garde
+ses 18 px, `mangeons` garde ses 2,86 px, et aucun contenu n'est touche. Le levier cesse meme d'etre le
+poste le plus cher du lot d'`ines-design`, ce qui change l'ordre de ce qui tombe si le sprint deborde.
+
+**Ce que je ne fais pas, et je le borne explicitement.** Je ne choisis pas la route technique et je
+n'ecris pas de CSS : `theo-archi` a lui-meme note que l'argument du "payeur unique" etait un
+raisonnement sur le rendu et non un fait garde, et c'est a lui de dire ce que cette route coute en
+garde-fous - `.cabinet-levier` reste un frere de `.propositions`, sa classe n'est ancetre d'aucun
+pressable, il ne declare aucun `clip-path` ni aucun `overflow`, mais **c'est lui qui le certifie, pas
+moi**. Ce que je certifie est ce que j'ai mesure : cette route existe, elle rend, et elle ne coute rien
+a ce que l'enfant lit. Mon verdict ne prescrit aucune route : il refuse toute route qui descend une
+colonne de "Le bon verbe" sous **150,27 px** (`146,27 + 2 x 2,00`), et il en existe au moins une qui n'y
+touche pas.
+
+#### 3. Question 3 - la quatrieme voie : REFUSEE, et le chiffre qui la porte est incomplet
+
+**Verdict en une phrase : je refuse de retailler un contenu valide pour gagner des pixels de decor, et
+avant meme cet arbitrage, le chiffre de 10,27 px sur lequel repose la proposition ne suffit pas.**
+
+##### 3.a Le chiffre : ce n'est pas un mot, c'est trois, et le second item est impossible
+
+`theo-archi` ecrit : *"Si le mot le plus large de ce paquet descend a 136,00 px au lieu de 146,27,
+l'elargissement symetrique a 1,25 rem d'`ines-design` passe integralement, avec 2,0 px de marge.
+`mangeons` est 10,27 px trop large, et c'est tout ce qui separe sa proposition complete de
+l'acceptation."* **L'arithmetique est juste et la conclusion est fausse, parce que `mangeons` n'est pas
+seul au-dessus de 136,00 px.** Les chiffres sont dans ma propre fiche depuis le quatrieme audit, je les
+ai remesures aujourd'hui, et ce sont les miens :
+
+| Proposition | Glyphes | Item du paquet | Sous 136,00 px ? |
+|---|---|---|---|
+| `mangeons` | **146,27 px** | "Vous ___ du chocolat." (distracteur) | **non**, -10,27 px |
+| `cherchons` | **142,67 px** | "Je ___ ..." (distracteur) | **non**, -6,67 px |
+| `cherchent` | **139,03 px** | "Je ___ ..." (distracteur) | **non**, -3,03 px |
+| `dessinent` | 133,94 px | "___ dessinent..." | oui, de 2,06 px |
+
+**Trois propositions, deux items.** Et le second des deux est un mur, pas un ajustement. Voici les
+formes du present de *chercher* disponibles pour cet item, mesurees a la police reelle des propositions
+a quatre colonnes :
+
+| Forme | Glyphes | Role possible |
+|---|---|---|
+| `cherche` | 109,22 px | c'est la **bonne reponse** de l'item |
+| `cherches` | 122,41 px | distracteur, deja utilise |
+| `cherchez` | 123,58 px | distracteur, disponible |
+| `cherchons` | 142,67 px | **au-dessus de 136,00 px** |
+| `cherchent` | 139,03 px | **au-dessus de 136,00 px** |
+
+L'item a besoin de **trois** distracteurs, et il n'existe que **deux** formes de *chercher* sous
+136,00 px (`cherches` et `cherchez`). Or le critere de ce paquet, ecrit par `camille-po` et que j'ai
+valide, exige que *"chaque distracteur est une autre forme conjuguee du meme verbe au present (jamais un
+verbe different)"*. **Il est donc arithmetiquement impossible de tenir cet item sous 136,00 px sans
+changer le verbe de l'item.** Ce n'est plus "remplacer un item", c'est le reecrire, choisir un autre
+verbe frequent, et rejuger si ce verbe est frequent au sens du referentiel.
+
+L'item de `mangeons`, lui, se corrigerait sans changer de verbe (`mange` 96,58, `manges` 109,78,
+`mangent` 126,41 px sont tous sous le seuil). Mais un seul des deux se corrige, et il faut les deux.
+
+**Je ne retiens pas cette erreur contre `theo-archi`.** Il a chiffre le mot le plus large, ce qui est la
+question qu'il pouvait se poser depuis sa place ; savoir qu'un item de conjugaison n'a que cinq formes
+disponibles et qu'on ne peut pas en fabriquer une sixieme, c'est mon metier, pas le sien. Et il a
+lui-meme qualifie le point d'"arbitrage de contenu" et l'a remonte avec son chiffre plutot que de le
+trancher, ce qui est exactement la bonne conduite.
+
+##### 3.b Le refus, et son motif de fond
+
+Meme si le chiffre avait tenu, ma reponse serait la meme, et je l'ecris pour qu'elle ne se rejoue pas au
+prochain ornement.
+
+**Le contenu est ce que l'enfant vient apprendre ; le meuble est ce qui rend ce contenu lisible.** Le
+jour ou on choisit un verbe parce que sa forme en *nous* est etroite, ce n'est plus le programme qui
+choisit les items, c'est la carrosserie. Et ce n'est pas un geste isole : il installe dans le depot une
+contrainte que personne n'a ecrite - *"aucune proposition au-dela de 136 px"* - qui gouvernerait ensuite
+tous les paquets futurs sans figurer dans aucun referentiel. C'est la dette 2 de la version precedente
+dans une autre tenue : une contrainte d'un seul sous-systeme imposee a tout le contenu.
+
+**Et c'est le sens exact de ce que j'ai ecrit le 2026-08-11 en fixant mes planchers de colonne** :
+*"Ce plancher est derive des paquets d'aujourd'hui : un paquet neuf portant une proposition plus large
+le releve mecaniquement, et c'est au moment ou ce paquet arrive qu'il faut le recalculer, pas au moment
+ou le cadre se dessine."* Le sens de la dependance est ecrit noir sur blanc : **le meuble suit le
+contenu.** Refuser ici n'est pas un caprice neuf, c'est appliquer la phrase.
+
+**Ce qu'on achete, enfin, ne vaut pas ce qu'on paye.** La quatrieme voie ne finance pas le levier - la
+route de la section 2.c le finance a cout nul. Elle finance **l'elargissement symetrique** de la paroi
+gauche, c'est-a-dire 12 px de paroi dont `theo-archi` a montre qu'ils "n'achetent aucun levier". On me
+demande de rouvrir un contenu de CM1 valide pour obtenir une symetrie de decor. Non.
+
+##### 3.c Ce que j'accepterais, et a quel prix - F6
+
+Je ne ferme pas la porte a une correction de ce paquet, parce que j'ai moi-meme enregistre que
+`mangeons` a 2,86 px est **un inconfort present** (verdict du 2026-08-11). Mais l'ordre des raisons
+n'est pas negociable :
+
+1. **Le motif du remplacement est un motif de contenu, jamais une largeur.** Si `camille-po` juge qu'un
+   item est meilleur autrement - un verbe plus frequent, une phrase plus claire, un distracteur plus
+   instructif - c'est une story de contenu ordinaire. Le gain de pixels en est alors une **consequence**,
+   et le message de commit ne dit pas "pour gagner 10 px".
+2. **Tout item ou distracteur touche repasse devant moi comme un contenu neuf**, sur les six points de
+   ma barre du 2026-08-10, plus les trois criteres du paquet (une seule bonne reponse, distracteurs du
+   meme verbe au meme temps, les six personnes representees). C'est ce que `contenu-repris/README.md` et
+   `CLAUDE.md` imposent a tout contenu, et un item reecrit n'y echappe pas parce que le paquet est deja
+   valide.
+3. **Aucun lot de forme ne se planifie en supposant que ce remplacement arrivera.** Le levier ne se
+   construit pas sur une largeur qu'un arbitrage de contenu doit encore accorder. C'est la seule clause
+   qui bloque quelque chose ici : elle empeche qu'une story de decor soit ecrite avec une dependance
+   silencieuse sur une story de contenu qui n'existe pas.
+
+**Ma barre de six points sur ce paquet n'est pas rouverte par cet arbitrage**, et je ne la durcis pas.
+Elle a ete atteinte, je l'ai levee le 2026-08-11, et elle reste levee. Ce que je dis en F6 ne s'applique
+qu'aux items **effectivement modifies**, et seulement a eux.
+
+#### 4. Question 4 - le nom de l'enseigne : je retiens "Le Copain Malin"
+
+**Verdict en une phrase : "Le Copain Malin" est retenu, les deux autres sont refuses, et aucun n'est
+refuse sur sa largeur.**
+
+C'est un texte lu par un enfant de CP : je le juge comme n'importe quel contenu, c'est-a-dire sur le
+dechiffrage, sur le vocabulaire, et sur ce que le mot promet a l'enfant. `camille-po` a verifie la liste
+interdite de `DEC-0023` point 4 et je confirme : aucun des trois ne porte `bandit`, `manchot`, `machine a
+sous`, `jackpot`, `mise`, `piece`, `jeton`, `credit`, `gain`, `levier`, `manette`, `fente`, `coupelle`,
+`pari`, `tirage`. Cette liste n'est donc pas ce qui les separe.
+
+##### 4.a "La Boite a Bonnes Reponses" - REFUSE, et c'est le plus grave des trois
+
+Le nom **dit que la machine contient les bonnes reponses**. Trois consequences, et la deuxieme est
+disqualifiante a elle seule :
+
+1. **Il est faux, et l'enfant peut le constater.** Sur les quatre boutons de "Le bon verbe", **trois sont
+   des mauvaises reponses**. La boite n'est pas une boite a bonnes reponses ; c'est une boite ou il y a
+   une bonne reponse et des pieges. Un enonce faux sur la carrosserie d'un jeu scolaire est une erreur de
+   contenu, pas une maladresse de ton.
+2. **Il fait parler le meuble de la reponse, et c'est exactement ce que j'interdis depuis quatre
+   arbitrages.** C4 : *"la machine ne dit jamais le resultat"*. M6 : *"un seul endroit ou le jeu parle de
+   la reponse de l'enfant, et ce n'est jamais le meuble"*. Ecrire "bonnes reponses" **sur le fronton, au
+   dessus des colonnes**, c'est mettre le mot "reponse" dans la seule zone de l'ecran d'ou je l'ai
+   bannie. Que le nom soit fixe et ne designe aucune colonne n'y change rien : ce que je protege, c'est
+   que l'enfant n'attende pas du meuble qu'il lui dise quelque chose sur sa reponse.
+3. **27 caracteres et 5 mots a dechiffrer pour un lecteur de CP**, sur un objet qui n'apporte rien a la
+   tache. Ce n'est pas le motif principal, mais c'est le troisieme cout d'un nom qui n'a aucun benefice.
+
+**Et il ne tient pas sur la largeur : cette phrase-la est fausse et c'est moi qui l'avais ecrite.** Voir
+0 bis, point A : mesure, ce nom fait **260,47 px** a 1,25 rem gras pour 266 px libres. Il tient. Je le
+refuse sur son sens.
+
+##### 4.b "Tourne-Cervelle" - REFUSE
+
+1. **Le mot *cervelle* n'est pas dans le registre qu'on emploie devant un enfant de CP a propos de sa
+   propre tete.** En francais courant, "cervelle" est soit un aliment, soit un mot d'insulte ("cervelle
+   d'oiseau", "sans cervelle"). Le mot que l'ecole emploie est *tete*, ou *cerveau*. Un nom de machine
+   qui traite la tete de l'enfant en abats n'a rien a faire dans une application scolaire, meme par
+   plaisanterie - et un enfant de 6 ans ne lit pas la plaisanterie, il lit le mot.
+2. **Le dechiffrage est hors de portee du CP** : un compose a trait d'union, avec une finale `-elle`
+   apres un `v`, et un mot inconnu de son vocabulaire. Un enfant qui ne peut pas dechiffrer un mot ecrit
+   en grand sur l'ecran ne l'ignore pas : il bute dessus.
+3. **"Tourne" dit que la machine tourne toute seule**, ce qui contredit C3 - *"la machine attend, elle ne
+   decide pas"*. C'est la charniere de tout mon avis sur la metaphore : le mouvement appartient a l'appui
+   de l'enfant, jamais a la machine. Le nom ne peut pas dire le contraire du reste.
+
+##### 4.c "Le Copain Malin" - RETENU
+
+- **Trois mots, 13 lettres, tous dechiffrables au CP.** `copain` porte le digraphe `ain`, `malin` le
+  digraphe `in` : les deux sont au programme de CP, et ce sont les deux seules difficultes du nom.
+- **Aucune promesse fausse.** Le nom ne dit rien de la reponse, rien du resultat, rien du hasard. Il dit
+  ce que le meuble est du point de vue de l'enfant : un objet familier a cote de lui.
+- **Il s'accorde avec le visage** plutot que de le contredire, et c'est ce que `DEC-0023` point 4 avait
+  vu.
+- **La reserve que je nomme sans en faire un refus** : *malin* attribue l'intelligence a la machine, et
+  un enfant qui echoue trois fois devant "Le Copain Malin" pourrait comprendre que le malin, c'est
+  l'autre. Je pese ce risque comme faible - *malin* dit ici "sympathique et un peu farceur" bien plus que
+  "plus intelligent que toi" - et surtout, il est **borne par M6 et par C4** : la machine ne commente
+  jamais la reponse, donc elle n'a aucune occasion de faire la maligne. Si un jour le meuble se met a
+  parler du resultat, ce nom devient un probleme, et alors ce sera M6 qui aura cede avant lui.
+- **Je n'en propose pas un quatrieme**, alors que `DEC-0023` m'y autorise. Celui-la fait ce qu'on lui
+  demande ; changer pour changer ferait perdre un tour a l'equipe sans rien apprendre a l'enfant.
+
+##### 4.d Ce que j'exige sur la forme du nom a l'ecran - F8
+
+**Le texte de l'enseigne est le plus petit texte de toute l'application dans la proposition, et de
+loin.** Mesure dans la feuille servie : la plus petite valeur de `font-size` de tout `recreo.css` est
+**1,25 rem (20 px)** - c'est le plancher de fait de cette application depuis le sprint 2, et il vaut pour
+le score, la consigne, l'indice, l'explication, le verdict, l'entree de menu. `ines-design` propose
+l'enseigne a **0,875 rem (14 px)**. Ce serait **le seul texte de recreo sous 20 px**, et il serait lu par
+un enfant de CP.
+
+**Je n'accepte pas 14 px.** Le motif est celui que j'applique a tout texte de cette application depuis le
+debut : un enfant de CP dechiffre lentement et lettre par lettre, et un texte plus petit que tous les
+autres est un texte qu'il ne lira pas - ou qu'il essaiera de lire en s'approchant de l'ecran, ce qui est
+le symptome, pas le confort. Un decor illisible n'est pas un decor discret, c'est un obstacle.
+
+**Et j'ai verifie que ma condition est tenable avant de la poser**, plutot que de laisser l'equipe
+decouvrir qu'elle ne l'est pas : a **1,25 rem gras**, "Le Copain Malin" fait **150,92 px** pour **266 px**
+libres dans le fronton (interieur de 320 px, moins 24 px de rembourrage, moins le visage et son `gap`).
+Il tient avec **115 px de reste**, dans une bande de 2 rem de haut qui accueille un texte de 20 px sans
+grandir. **Cout : 0 px, dans les deux dimensions**, et cela vaut aussi sous la route de la section 2.c,
+qui ne touche pas la largeur interieure du fronton.
+
+**J'ajoute une clause qui n'est pas cosmetique : l'ellipse ne doit jamais s'engager.** La regle proposee
+porte `overflow: hidden; text-overflow: ellipsis`. Un nom tronque en "Le Copain Ma..." est un mot que
+l'enfant ne peut pas dechiffrer, et il l'essaiera quand meme. Je ne juge pas la declaration - c'est de la
+feuille de style, pas de mon ressort - j'exige la propriete : **le nom est entier a l'ecran, sur une seule
+ligne, a 360 px, dans tous les etats du meuble et sur les huit jeux.**
+
+#### 5. Question 5 - les boutons colores : ni decor ni indice, un FAUX indice. REFUSE sur deux teintes
+
+**Verdict en une phrase : la question qu'on me pose a deux reponses possibles et la bonne est la
+troisieme.** `ines-design` demande si ces couleurs sont du decor ou un indice. **Le raisonnement qu'elle
+tient pour ecarter l'indice est juste** : la couleur suit la position, la position de la bonne reponse
+varie, donc **aucune information ne fuite**. Je le confirme, et C5 n'est pas violee au sens de sa clause 2
+- le jeu d'images du cabinet ne depend ni de l'item, ni de la colonne, ni de la reponse attendue.
+
+**Mais un decor qui ne dit rien et qu'un enfant lit comme s'il disait quelque chose est pire qu'un
+indice : c'est un faux indice.** Et j'ai mesure que deux des quatre teintes sont exactement dans ce cas.
+
+##### 5.a Le rouge et le vert sont les couleurs du verdict de cette application
+
+Ce n'est pas une impression, c'est la feuille servie. `recreo.css` fixe depuis S1-6 :
+`.signal.est-juste .icone-signal { background-color: #2e7d32 }` (la coche) et
+`.signal.est-faux .icone-signal::before/::after { background-color: #c62828 }` (la croix). Les teintes
+proposees pour les boutons sont `#1f7a3d` (vert) et `#c0392b` (rouge). Contraste entre elles :
+
+| Paire | Contraste |
+|---|---|
+| coche du verdict `#2e7d32` **contre** bouton vert propose `#1f7a3d` | **1,05:1** |
+| croix du verdict `#c62828` **contre** bouton rouge propose `#c0392b` | **1,03:1** |
+
+**A 1,03:1 et 1,05:1, ce sont les memes couleurs.** Aucun oeil, et surtout aucun oeil d'enfant de 6 ans,
+ne distingue le vert du bouton du vert de la coche.
+
+**Ce que ca fait a l'enfant, et c'est mesurable dans sa reussite.** Un enfant de CP a appris, dans ce jeu
+et dans son cahier, que le vert veut dire *juste* et le rouge *faux*. On lui presente ensuite quatre
+propositions dont l'une est verte et l'autre rouge. Il ne lira pas "quatrieme bouton d'arcade" ; il lira
+"celle-la est bonne, celle-la est mauvaise". Et il aura tort **trois fois sur quatre** a quatre colonnes,
+**deux fois sur trois** a trois colonnes. Un decor qui suggere une reponse et se trompe la plupart du
+temps n'est pas neutre : il enseigne a l'enfant que se fier a ce qu'il voit ne marche pas. C'est le seul
+apprentissage garanti de cette rangee de couleurs.
+
+**Et le second canal ne sauve pas ce cas, contrairement a ce qu'on pourrait m'objecter.** La regle du
+second canal protege un enfant qui **ne voit pas** la couleur. Ici le probleme est l'enfant qui **la voit
+tres bien** et qui lui donne le sens que l'application lui a appris ailleurs. Ajouter une forme
+n'arrangerait rien ; la seule correction est de ne pas reprendre les deux couleurs du verdict.
+
+##### 5.b Le violet et l'ambre : un plancher que sa table ne mesure pas
+
+Sa table de contraste mesure les quatre teintes **contre le blanc du texte**, et les quatre passent
+(5,44 / 5,37 / 5,76 / 7,21:1). C'est le bon controle pour la lisibilite du mot. **Ce n'est pas le controle
+qui dit si l'enfant voit qu'il y a un bouton.** Un bouton se voit par son bord, donc par son contraste
+contre la surface sur laquelle il est pose - et cette surface change dans la meme proposition, puisque le
+corps du cabinet passe a `#081c2c`. Mesure (ma methode redonne son `3,20:1` au centieme, donc elle mesure
+la meme chose qu'elle) :
+
+| Teinte de bouton | Contre le corps du cabinet `#081c2c` |
+|---|---|
+| vert `#1f7a3d` | 3,22:1 |
+| accent actuel `#2e6f9e`, pour reference | 3,20:1 |
+| rouge `#c0392b` | 3,18:1 |
+| ambre `#8a5d00` | **3,01:1** |
+| violet `#6c3fa8` | **2,40:1** |
+
+**Aucune des quatre n'est une regression** par rapport a l'etat livre (1,71:1 sur l'ancienne teinte unique
+de cabinet), et je le dis avant mes reserves : le corps en deux tons ameliore reellement ce que l'enfant
+voit, et c'est la meilleure part de cette proposition. Mais **le violet a 2,40:1 est sous 3:1**, et 3:1
+est le plancher que j'applique a tout element d'interface non textuel depuis mon refus du 2026-08-06 sur
+la saillance. Un bouton violet sur un corps presque noir est un bouton dont le bord se devine. L'ambre a
+3,01:1 passe le plancher de 0,01 : ce n'est pas une marge, c'est une coincidence.
+
+##### 5.c Ce que j'accepte - F9 et F10
+
+**Le principe est accepte : une rangee de boutons de couleurs differentes est du decor legitime.** Un
+enfant de 6 ans reconnait une machine a ses boutons colores, et je n'ai jamais exige l'uniformite. Ce que
+je refuse est ce jeu de quatre teintes-la.
+
+Ce que j'accepterais, sans dessiner la palette :
+
+- **aucune teinte de bouton n'est confondable avec une couleur de verdict de cette application** : au
+  moins **3:1** de distance avec `#2e7d32` et avec `#c62828`. C'est un critere mecanique, et il exclut le
+  vert et le rouge proposes. Il n'exclut pas *toute* famille chaude ou froide : il exclut ces deux
+  valeurs-la et leurs voisines immediates ;
+- **chaque teinte garde au moins 4,5:1 contre le blanc de son texte** (les quatre proposees le font, cette
+  clause ne coute rien) **et au moins 3:1 contre le corps du cabinet** (le violet ne le fait pas) ;
+- **la marque de M9 est lisible sur les quatre teintes.** C'est la clause que j'ajoute et que personne
+  n'a vue : M1 a M12 exigent qu'une proposition deja essayee porte une marque visible qui ne nomme aucune
+  reponse. Cette marque sera dessinee dans un lot ou les boutons sont tous du meme bleu ; si les fonds
+  deviennent quatre, elle doit se lire sur les quatre. Une marque qui disparait sur le fond ambre rend M9
+  faux sans qu'aucun test ne bouge. **Les deux lots doivent etre mesures ensemble, ou le second refait la
+  mesure du premier.**
+
+**Les deux etoiles du socle : acceptees, rien a dire.** Forme fixe, `clip-path` en pourcentages, meme
+geometrie que l'etoile deja validee en S8-1, opacifiees, sur un bloc qui n'est ancetre d'aucun pressable.
+C5 clause 2 tenue par construction, cout mesure a 0 px. Je ne fabrique pas une reserve pour avoir l'air
+d'avoir travaille dessus.
+
+**Le corps en deux tons : accepte, et je leve la confusion de sa proposition precedente.** La bordure
+garde `--recreo-entete-fond` (8,61:1 contre la page, valeur que j'ai moi-meme corrigee le 2026-08-11) et
+seul le corps passe a `#081c2c` (16,11:1 contre la page, 3,20:1 contre les colonnes). C'est bien un objet
+en deux epaisseurs et non un objet uniformement plus sombre. Le +1 px de hauteur est celui que j'ai
+accepte le 2026-08-11 sous ma condition N6, il est remesure a l'identique, et il reste le **seul** pixel
+vertical que ce lot depense.
+
+#### 6. Question 6 - l'enseigne dans un sous-arbre masque : aucune des quatre structures ne passe
+
+**Verdict en une phrase : le nom de l'enseigne ne doit pas etre annonce, et les quatre structures
+inventoriees l'annoncent toutes les quatre.** Je dis les deux structures que j'accepterais.
+
+##### 6.a Ce que je declare degrade, en premier et sans le diluer
+
+`theo-archi` me laisse *"l'ecoute reelle d'un lecteur d'ecran"* et il a raison de dire qu'aucun automate
+de ce depot ne l'a jamais faite. **Je ne l'ai pas faite non plus aujourd'hui.** Je n'ai pas ecoute
+Narrator ni aucun autre lecteur d'ecran sur cet ecran, et je ne le presente pas comme une mesure. C'est
+la seule des six questions ou il me manque le geste qui compte, et je le nomme plutot que de le
+maquiller en jugement.
+
+**Ce que j'ai fait a la place, et qui est verifiable** : j'ai relu l'ordre de lecture du document dans
+`fragments/manche.html`, dans le depot, a `b15bda1`. Il est celui-ci, et il n'est pas indifferent :
+
+```
+Les jeux (bouton de sortie) - score - consigne - enonce - indice - [ CABINET : fronton -> propositions ]
+```
+
+Le fronton est **entre l'enonce et la premiere proposition**. Un enfant qui utilise un lecteur d'ecran
+entend donc, dans cet ordre : la question, puis le nom de la machine, puis ses reponses. Et
+`hx-swap="innerHTML"` reconstruit ce fragment **a chaque manche** : sur une partie de dix manches, le nom
+est annonce dix fois, chaque fois glisse entre la question et les reponses.
+
+##### 6.b Pourquoi je refuse que le nom soit annonce
+
+**Ce nom n'apporte rien a la tache et il coute a l'endroit le plus cher de l'ecran.** Ce que je protege
+n'est pas une preference d'ergonomie, c'est la meme chose que je protege depuis M8 : **rien ne s'insere
+entre l'enfant et sa reponse.** Pour un enfant qui voit, le fronton est au-dessus des boutons et son oeil
+le saute ; pour un enfant qui ecoute, il n'y a pas de "au-dessus", il n'y a qu'un *avant*, et un decor
+place avant les reponses est un decor qu'il faut traverser a chaque question. Quatre mots dix fois par
+partie, entre une question de conjugaison de CM1 et les quatre formes verbales a comparer, ce n'est pas
+un enrichissement : c'est du bruit place au pire endroit.
+
+**Et c'est precisement l'usage pour lequel `aria-hidden` existe.** Masquer un decor de l'arbre
+d'accessibilite n'est pas une negligence a corriger : c'est la bonne pratique. L'etoile de S8-1 etait
+masquee a bon droit, le visage doit l'etre a bon droit, et **le nom de la boutique est du meme ordre que
+l'etoile** : c'est de la peinture sur la carrosserie, pas une information de jeu.
+
+##### 6.c Les quatre structures de `theo-archi`, jugees une par une
+
+Sa lecture du defaut est exacte et je la reprends sans reserve : `aria-hidden` etait accroche au
+**conteneur** parce que son contenu d'hier etait decoratif, et un attribut qui decrit un etat devient faux
+sans que personne le relise. C'est un vrai defaut, ce n'est pas celui qu'on croit resoudre ici.
+
+| Structure | Ce qu'elle fait du nom | Mon verdict |
+|---|---|---|
+| **1.** le bandeau cesse d'etre masque | annonce, entre l'enonce et les propositions | **refusee** |
+| **2.** le masque se resserre sur `.cabinet-visage` (sa recommandation) | annonce, entre l'enonce et les propositions | **refusee sur ce point precis, et acceptee sur le reste** |
+| **3.** l'enseigne sort du bandeau | annonce, entre l'enonce et les propositions, **et 4 px de budget vertical** | **refusee deux fois** |
+| **4.** un texte de rechange masque visuellement | annonce, **et le nom existe deux fois dans le document** | **refusee** |
+
+**Les quatre annoncent le nom** : c'est ce qu'elles ont en commun, et c'est exactement ce que je refuse.
+La structure 3 est la pire des quatre pour une raison qui n'est pas d'accessibilite : elle depense du
+budget vertical, et ma condition M4 est **la seule condition bloquante** de mon arbitrage de mecanique. On
+ne finance pas un decor avec les 4 px qui separent du pli l'etat le plus serre du catalogue.
+
+**Ce que je retiens de la structure 2, et qui est juste.** Deplacer le masque du conteneur vers le decor
+lui-meme est le bon geste, pour la raison exacte que `theo-archi` donne : *"le masque nomme le decor et non
+un conteneur"*. Il reste juste le jour ou quelqu'un met du texte dans le visage. **Je l'accepte comme
+principe** ; ce que je refuse est la consequence qu'on en tire ici, a savoir que le nom devienne un texte
+annonce.
+
+##### 6.d Ce que j'accepterais - F11 et F12, et la reponse que `theo-archi` me demande
+
+Je lui rends le fait pedagogique qu'il attend, et il porte sur son `ADR-0035` :
+
+**`ADR-0035` a raison sur son motif et il est trop large d'une clause.** Sa regle - *aucun texte rendu par
+le serveur ne vit dans un sous-arbre masque* - est **exactement juste pour tout texte que l'enfant doit
+lire pour jouer** : un enonce, une consigne, un indice, une explication, un message d'erreur, le nom d'un
+jeu dans le catalogue. Un enfant a qui l'on cache la question ne joue pas. Je l'endosse pour ce cas, et je
+suis contente qu'un garde-fou existe : c'est le genre de defaut qui traverse une CI verte, et il y en a
+deja eu quatre sur ce depot.
+
+**Mais la regle, telle qu'elle est ecrite, rend impossible le seul usage correct d'`aria-hidden`.** Un
+decor textuel deliberement masque n'est pas le defaut que l'`ADR` decrit : c'en est le contraire exact.
+En interdisant les deux d'un seul mouvement, la regle **force le decor dans l'oreille de l'enfant** - elle
+obtient sur ce cas l'inverse de ce qu'elle cherche. Ce que je demande, sans ecrire son `ADR` a sa place :
+que la regle distingue le texte **que l'enfant doit lire pour jouer** du texte **de decor dont le masque
+est voulu et ecrit comme tel**. Un masque intentionnel se declare ; c'est meme la seule facon de
+l'empecher de redevenir faux au prochain retouchage, qui est son propre motif.
+
+**Deux structures m'iraient, et je ne choisis pas entre elles - c'est de l'architecture :**
+
+- **une cinquieme structure** : le nom vit dans le fronton, en texte, dans un sous-arbre masque
+  **nomme comme decoratif** et couvert par l'exception ci-dessus. C'est celle que je prefere, parce que
+  l'enfant qui voit a son enseigne et l'enfant qui ecoute a sa question sans detour ;
+- **a defaut, le fronton ne porte aucun texte ce sprint.** Le visage y reste seul, dessine et masque, et
+  le nom - s'il en faut un - va sur l'ecran d'accueil, ou il est **dit une fois** et ou c'est un titre et
+  non un ornement. Cette option ne coute rien, ne demande aucune exception, et ne retire a personne ce
+  qu'il a deja : le fronton d'aujourd'hui ne porte pas de nom.
+
+**Ce que je refuse dans tous les cas** : que le nom soit annonce entre l'enonce et les propositions, et
+que le nom existe deux fois dans le document (structure 4) - un texte lu par un enfant qui vit a deux
+endroits est un texte qu'une correction future ne corrigera qu'a un seul, et c'est ma faute d'avance si je
+l'accepte aujourd'hui.
+
+**Ce dont je reste seule garde ici, et je le dis pour que rien ne paraisse couvert.** `ADR-0035` garantit
+qu'aucun texte ne se cache dans un masque. **Il ne garantit rien sur ce qu'un enfant entend
+reellement** : ni l'ordre dans lequel il l'entend, ni la longueur de ce qu'il traverse avant sa reponse,
+ni si le visage sans nom accessible ajoute ou non du bruit. Personne dans cette equipe n'a jamais ecoute
+cet ecran, moi comprise. **Aucun Done pedagogique ne sera prononce sur l'enseigne avant que cette ecoute
+ait eu lieu**, et si elle n'est techniquement pas faisable sur nos postes, je le dirai ainsi plutot que de
+valider en supposant.
+
+#### 7. Mes douze conditions de forme, en une page
+
+Elles portent le prefixe **F** et se lisent **a la suite** des douze conditions M1 a M12 de mon arbitrage
+de mecanique du meme jour : aucune M n'est renumerotee, aucun numero n'est reutilise, et un developpeur qui
+lit `F5` sait qu'il s'agit de la forme du meuble et non de la mecanique.
+
+Elles sont **fermees** : ce qui n'y est pas ne bloquera pas le Done et ne pourra pas m'etre oppose comme
+l'ayant bloque. **Deux sont bloquantes par elles-memes** : F5 et F9.
+
+| # | Condition | Ou elle se verifie |
+|---|---|---|
+| F1 | **Le levier se lit comme une poignee**, et jamais comme un curseur de defilement, une epingle, un clou ou un thermometre. Dessine au repos, fut vertical, boule au sommet, embase au flanc (`DEC-0023` point 3) | capture a 360 px, agrandie, **jugee par moi** avant tout Done |
+| F2 | **Le levier n'est pas l'objet le plus voyant du meuble.** Sa teinte n'est pas `--recreo-accent-texte`, et son contraste contre chaque surface qu'il croise (corps du cabinet, bordure, fond de page) ne depasse pas celui d'un bouton de reponse contre le corps du cabinet (**3,20:1**) | calcul WCAG sur les valeurs de la feuille servie |
+| F3 | **Le levier ne fabrique aucune faute.** Jamais un `button` ni un `a`, aucun `data-role`, hors du parcours clavier, aucun nom accessible, aucune reaction au toucher (ni surbrillance de tape, ni `:hover`, `:active`, `:focus`), aucun texte de l'ecran n'y renvoie, et il ne recouvre aucun pixel d'une proposition | document servi + capture avant/apres appui |
+| F4 | **Le visage se lit comme un visage a 360 px** : l'oeil est au moins aussi grand que la joue, la boite declaree du visage contient toutes ses copies d'ombre pour que l'enseigne garde son `gap` entier, la bouche est visible sans agrandissement. Aucun cil, noeud, cheveu, sourcil ni bouche coloree - **rien qui genre la machine**. Identique dans les quatre etats (C4, M6 clause 2) | capture a 360 px agrandie, **jugee par moi** |
+| F5 | **Bloquante. Les 2,0 px sont un plancher.** Aucune colonne de "Le bon verbe" ne descend sous **150,27 px** ; l'air de chaque proposition de ce paquet reste **strictement positif et au moins 2,0 px par cote** sur les 100 emplacements. Aucune colonne des autres jeux ne descend sous son plancher de mon tableau du 2026-08-11 (77 / 79 / 106 px) | rendu a 360 px, mesure par `Range` sur les 100 emplacements |
+| F6 | **Aucun item ni distracteur n'est remplace pour gagner de la largeur.** Un remplacement se motive par le contenu, repasse devant moi comme un contenu neuf sur ma barre de six points et les trois criteres du paquet, et **aucun lot de forme ne se planifie en supposant qu'il aura lieu** | message de commit et fichier de paquet ; arbitrage par moi |
+| F7 | **Le nom de l'enseigne est "Le Copain Malin".** Toute autre valeur, y compris une variante d'orthographe ou de casse, revient devant moi | fichier ou modele qui porte le nom |
+| F8 | **L'enseigne n'est jamais le plus petit texte de l'application** : au moins **1,25 rem**, gras autorise, une seule ligne, **entiere sans troncature ni ellipse**, a 360 px, dans tous les etats du meuble et sur les huit jeux | capture a 360 px sur les huit jeux |
+| F9 | **Bloquante. Aucune teinte de proposition n'est confondable avec une couleur de verdict** : au moins **3:1** de distance avec `#2e7d32` et avec `#c62828`. Cela exclut `#1f7a3d` (1,05:1) et `#c0392b` (1,03:1) | calcul WCAG sur les valeurs de la feuille servie |
+| F10 | **Chaque teinte de proposition garde au moins 4,5:1 contre le blanc de son texte et au moins 3:1 contre le corps du cabinet.** Cela exclut `#6c3fa8` (2,40:1). **Et la marque de M9 est lisible sur chacune des teintes retenues** | calcul WCAG + capture d'une proposition deja essayee sur chaque teinte |
+| F11 | **Le nom de l'enseigne n'est jamais annonce entre l'enonce et les propositions**, et il n'existe jamais deux fois dans le document | ordre de lecture du gabarit + **ecoute reelle d'un lecteur d'ecran**, par moi |
+| F12 | **Aucun texte que l'enfant doit lire pour jouer ne vit dans un sous-arbre masque** (`ADR-0035`, endosse). Le texte de **decor** dont le masque est voulu en est distingue et son masque est ecrit comme tel | `AucunTexteNeVitDansUnSousArbreMasqueTest`, apres reserve du cas du decor |
+
+#### 8. Les deux faits qu'on me donne sans arbitrage, et ce que j'en fais
+
+**A. L'ordre de ce qui tombe si le sprint deborde.** Je l'endosse, et j'y apporte un seul changement, qui
+n'est pas une preference : sous la route de la section 2.c, **le levier cesse d'etre le poste le plus cher
+du lot**. Il ne coute plus une colonne, plus un pixel de hauteur, plus un arbitrage de contenu - il ne
+coute qu'un element de gabarit et un dessin que je dois regarder. S'il tombe quand meme, rien ne regresse
+par rapport a s08 et je n'en ferai pas un motif. Mais il ne tombe plus **parce qu'il est cher** ; il
+tomberait parce que le temps manque, ce qui n'est pas la meme conversation.
+
+**B. La mesure de M4 sur les huit jeux.** Ma condition M4 est inchangee, et cet arbitrage-ci ne la touche
+pas : je confirme que **rien de ce que je valide ici ne depense un pixel vertical** au-dela du +1 px du
+corps en deux tons, deja accepte sous ma condition N6 le 2026-08-11. Le levier suspendu, le visage,
+l'enseigne a 1,25 rem, les teintes de boutons et les etoiles du socle sont tous a **0 px de hauteur** dans
+mes rendus. Et je redis ce que j'ai ecrit : **si la mesure de M4 est negative, M4 bloque, et cet arbitrage
+de forme passe apres.** Il n'y a pas de forme a arbitrer sur un ecran dont le message et l'indice sont sous
+le pli. La seule chose que j'ajoute est negative aussi : la structure 3 de la question 6, qui aurait pris
+4 px de hauteur, est refusee - je ne vais pas aggraver M4 pendant qu'on mesure si elle tient.
+
+**C. Les arcs-en-ciel ecartes.** Je ne les avais pas demandes, je ne les demande pas, et le motif
+qu'`ines-design` ecrit - ne pas bacler un cinquieme decor dans un lot deja charge sur son point le plus
+disputable - est le bon. Il n'y a rien a arbitrer et je ne fabrique pas une reserve pour l'occasion.
+
+#### 9. Ce dont je reste la seule garde apres cet arbitrage
+
+Quatre defauts visibles par un enfant ont deja traverse une CI entierement verte sur ce depot. Voici, sur
+la **forme**, ce que personne d'autre que moi ne verifie - et `theo-archi` l'ecrit lui-meme : *"Ce que je
+ne dis pas : que le manche ressemble a un manche, qu'il soit lisible a 360 px, ou qu'un enfant comprenne
+qu'on n'y touche pas."*
+
+1. **qu'une silhouette ressemble a ce qu'elle pretend etre.** F1 et F4 n'ont aucun automate et n'en auront
+   pas (`ADR-0025`). Je suis le garde-fou, et je le suis en regardant une capture agrandie ;
+2. **qu'un enfant ne se croie pas en faute devant le levier.** Aucun test ne mesure ce qu'un enfant fait de
+   ses doigts. F2 et F3 reduisent le risque, elles ne l'annulent pas, et **`DEC-0023` a explicitement laisse
+   ce risque residuel ouvert** ;
+3. **qu'une couleur ne mente pas.** F9 est mecanique, mais rien dans ce depot ne compare une teinte
+   d'habillage aux couleurs du verdict. Ce lien-la n'existe que dans ma fiche ;
+4. **que la marque de M9 survive a quatre fonds.** Deux lots differents, deux sprints peut-etre, aucun test
+   qui les confronte. Si personne ne les mesure ensemble, M9 deviendra faux en restant vert ;
+5. **ce qu'un enfant entend reellement.** Voir la section 6.d : personne dans cette equipe ne l'a jamais
+   ecoute, moi comprise, et `ADR-0035` ne le garantit pas ;
+6. **que le nom de l'enseigne reste "Le Copain Malin".** F7 est un texte enfant, et le seul controle
+   existant sur les textes enfants porte sur l'accentuation, pas sur le choix du mot.
+
+#### 10. Reserves nouvelles et datees du 2026-08-12 (forme)
+
+Aucune n'est un refus et aucune ne bloque le sprint. Elles sont ecrites pour que `camille-po` en fasse des
+stories.
+
+**Reserve F - `mangeons` a 2,86 px d'air reste un inconfort, et il n'est pas ferme par cet arbitrage.**
+J'ai ecrit le 2026-08-11 que *"le confort reel est de 2,86 px la ou ma definition en demande 20"*. Ce que
+je demande n'a pas change et ne change pas ici : que la disposition de "Le bon verbe" soit instruite pour
+elle-meme - saisine deja ouverte a `camille-po` et `theo-archi` - **et non pour financer une bordure**.
+F6 dit comment ; cette reserve dit que la question reste ouverte.
+
+**Reserve G - les quatre couleurs de boutons et la marque de M9 doivent etre mesurees dans le meme
+geste.** Si les deux lots sortent separement, celui qui arrive en second refait la mesure du premier, sur
+les quatre fonds. Je le demande maintenant parce que c'est le genre de dependance qu'on decouvre apres.
+
+**Reserve H - `ADR-0035` demande une reserve pour le texte de decor deliberement masque.** Motif complet
+en section 6.d. Ce n'est ni un refus de l'`ADR` ni une demande de le retirer : c'est le fait pedagogique
+que `theo-archi` m'a demande, rendu sous la forme d'une demande d'amendement, et il lui appartient.
+
+#### 11. Ce que cet arbitrage ne tranche pas
+
+- **Aucune route technique.** L'elargissement de bordure, le levier suspendu, la place du texte de
+  l'enseigne, les entrees de `SELECTEURS_DU_CABINET`, les gardes-fous : tout cela appartient a
+  `theo-archi`. Je decris des proprietes et je refuse des resultats mesures, jamais un moyen.
+- **Aucune palette.** Je refuse quatre valeurs nommees et je pose deux planchers ; le choix des teintes
+  qui les respectent est a `ines-design`.
+- **Le backlog.** Je produis six verdicts, douze conditions et trois reserves ; `camille-po` en fait des
+  stories.
+- **Aucun Done pedagogique.** Rien n'est code, aucun increment n'est evaluable, et ma liste fermee de
+  reverification est celle de la section 9 plus les douze F.
+- **Aucune ligne de `squad/programme/MATRICE-couverture.md`** ne bouge : ce chantier d'habillage ne porte
+  aucune competence du programme. C'est la cinquieme fois que l'etape 2 de ma methode est sans objet sur ce
+  chantier, et je le dis plutot que de la simuler.
+- **Mes douze conditions M1 a M12 ne sont pas rouvertes**, et ma barre de six points sur le paquet de
+  conjugaison reste levee.
+
+- **Verdict de cet arbitrage prealable** : **REFUSE sur la proposition telle qu'ecrite**, sur quatre motifs
+  mesures et chacun actionnable - `mangeons` ressort de sa boite de **3,13 px** par cote sous
+  l'elargissement symetrique (F5) ; les boutons rouge et vert sont a **1,03:1 et 1,05:1** des couleurs du
+  verdict de l'application (F9) ; le levier en blanc pur est a **17,32:1** contre le corps du cabinet la ou
+  un bouton de reponse est a 3,20:1, et il se lit comme un curseur (F1, F2) ; l'enseigne a **0,875 rem**
+  serait le seul texte de recreo sous 20 px (F8). **Le principe de chacun des cinq elements est accepte**,
+  et les douze conditions F disent ce que j'accepterais. Le corps en deux tons et les etoiles du socle sont
+  acceptes sans reserve, tels quels.
+- **Date** : 2026-08-12.
+- **Commit de reference** : `b15bda1`, tete de `round-two`. Proposition jugee :
+  `proposition-ines-meuble.md` sur `s10-ines-meuble` ; avis de faisabilite de `theo-archi` sur
+  `s10-theo-archi` et `s10-theo-domaine` ; `DEC-0023` sur `s10-camille-perimetre-2`.
+- **Done technique** : sans objet, rien n'est code.
+- **Ce bloc n'est pas un Done pedagogique** et n'en retire aucun.
 
 ### Verdict courant - chantier du cabinet (S8-1, S8-2, S8-3), prononce sur l'increment livre, du 2026-08-11
 

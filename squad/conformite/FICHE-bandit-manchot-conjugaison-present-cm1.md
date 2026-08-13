@@ -102,6 +102,33 @@
   sur 25** nomment la bonne reponse entre guillemets, manquement que je nomme comme le mien puisque
   je les avais valides sans verifier ce point - et la condition **M2**, qui lui interdit d'afficher
   son indice sur la question courante tant que ces textes ne sont pas reecrits.
+- **Arbitrage prealable de forme du 2026-08-12, deux conditions qui portent nommement sur ce paquet.**
+  L'arbitrage complet est dans `FICHE-bandit-manchot-additions-cp.md` (bloc du 2026-08-12, "la forme du
+  meuble") ; ce n'est pas un Done pedagogique et il ne touche aucun verdict de cette fiche. Ce qui
+  concerne ce paquet, et que je recopie ici parce que c'est ici qu'on viendra le chercher :
+  **F5 - les 2,0 px de ma condition 4 du quatrieme audit sont un PLANCHER, pas un constat.** Aucune
+  colonne de ce jeu ne descend sous **150,27 px** (`146,27 + 2 x 2,00`) ; l'air de chaque proposition
+  reste strictement positif et **au moins 2,0 px par cote** sur les 100 emplacements. Je ne releve pas
+  ce plancher a l'etat courant de 2,86 px. Trois candidats d'elargissement de paroi ont ete rendus a
+  360 px et mesures : l'elargissement symetrique a 1,25 rem ramene la colonne a **140,00 px** et fait
+  **ressortir `mangeons` de 3,13 px par cote** - davantage que les -2,02 px que j'ai refuses le
+  2026-08-11 - donc il est refuse ; la lecture "constat" ramene la colonne a 146,50 px pour **0,12 px**
+  d'air, refusee ; seule la lecture "plancher" (bordure droite seule) laisse 150,50 px et **+2,12 px**.
+  Il existe par ailleurs une route qui ne coute rien du tout a ce paquet, mesuree en section 2.c de
+  l'arbitrage.
+  **F6 - aucun item ni distracteur de ce paquet n'est remplace pour gagner de la largeur.** La
+  "quatrieme voie" - descendre le mot le plus large a 136,00 px - est **refusee**, et son chiffre est
+  incomplet : **trois** propositions depassent ce seuil (`mangeons` 146,27, `cherchons` 142,67,
+  `cherchent` 139,03 px), dans **deux** items, et l'item de *chercher* est **impossible** a tenir sous
+  136,00 px sans changer de verbe - il n'existe que deux formes du present de ce verbe sous le seuil
+  (`cherches` 122,41, `cherchez` 123,58) pour trois distracteurs a fournir. Un remplacement se motive
+  par le contenu, jamais par une largeur, et tout item touche repasse devant moi comme un contenu neuf
+  sur ma barre de six points et les trois criteres du paquet. **Ma barre de six points n'est pas
+  rouverte par cet arbitrage et reste levee.**
+  **Reserve F, nouvelle et datee du 2026-08-12** : `mangeons` a 2,86 px d'air reste l'inconfort que
+  j'ai enregistre le 2026-08-11 (*"le confort reel est de 2,86 px la ou ma definition en demande 20"*).
+  La saisine sur la disposition de ce jeu doit etre instruite **pour elle-meme**, jamais pour financer
+  une bordure.
 - **Derniere mise a jour** : 2026-08-12
 
 ## Competences visees
