@@ -3195,3 +3195,119 @@ meme modele que les stories correctives du sprint 1.
   silhouette suggere (traction), pas sur sa lecture comme forme - mais que l'utilisatrice a demande
   un manche dessine et doit pouvoir contester cette lecture. Routee a `sofia-sm` pour remontee ;
   n'attend aucune reponse pour que le sprint continue.
+
+## Dette ouverte par DEC-0025 - le pli du bandit manchot, sprint 10 livre avec un defaut assume
+
+`nadia-prof` refuse l'increment du sprint 10 sur deux conditions bloquantes : M4 (message, indice
+et revelation au-dessus du pli a 360 x 640, non tenue sur six jeux sur sept) et M13 clause 1 (une
+panne technique, hors de cette section). L'utilisatrice a joue l'increment et decide de le livrer,
+en assumant le defaut de M4 par ecrit -
+`DEC-0025-levee-de-la-condition-m4-le-sprint-10-est-livre-avec-un-defaut-de-pli-assume.md`. Les
+trois stories suivantes portent la dette que cette decision ouvre.
+
+### Story de correction - Les enonces et indices des six jeux en defaut de pli sont raccourcis (M4, bloquante, DEC-0025)
+
+**Non affectee a un sprint.**
+
+- **Besoin** : en tant qu'eleve de CP ou de CM1 qui vient de repondre, je veux voir le message qui
+  me dit ce qui s'est passe, l'indice et la reponse revelee sans avoir a faire defiler l'ecran,
+  afin de savoir tout de suite que ma reponse a compte et ce que je dois faire ensuite.
+- **Competence programme visee** : transverse - lisibilite et accessibilite de l'ecran de jeu,
+  aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge : les six paquets vises
+  (`cp-comparer-nombres`, `cp-complements-10`, `cp-le-bon-son`, `cp-soustractions`,
+  `cp-problemes-additifs`, `cm1-conjugaison-present`) restent ceux deja juges exacts par
+  `nadia-prof`, seule leur longueur de texte change.
+- **Criteres d'acceptation**, repris de la condition M4 de `nadia-prof` et des mesures qui
+  l'accompagnent (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-13 ;
+  `mesure-ines-hauteur-de-pli.md` et `mesure-ines-plancher-indice-explication.md`, branches
+  `s10-ines-hauteur` et `s10-ines-pli`) :
+  - Etant donne l'item le plus charge de chacun des six paquets (enonce et indice les plus longs du
+    paquet reellement servi), quand on mesure `getBoundingClientRect().bottom` du dernier enfant
+    visible de `.message-jeu` a 360 x 640, alors cette valeur est **inferieure ou egale a 640 px**,
+    sur les quatre etats (1er/2e echec, revelation, reussite).
+  - Etant donne ce meme item, quand on relit son enonce et son indice apres cette story, alors la
+    manipulation, le contenu arithmetique ou grammatical, et l'exactitude de la reponse restent
+    ceux deja juges exacts par `nadia-prof` : seule la longueur du texte change, jamais son sens.
+  - Etant donne les items d'un meme paquet qui ne sont pas les plus charges, quand on les remesure
+    apres cette story, alors leur position ne se degrade pas par rapport a l'etat mesure avant
+    cette story.
+  - Etant donne les indices de `cm1-conjugaison-present` deja vises par la story de correction M2
+    ci-dessous, quand les deux stories sont livrees, alors les deux corrections (raccourcir,
+    cesser de nommer la reponse) sont compatibles sur les memes textes - une seule reecriture,
+    pas deux passes contradictoires.
+  - Ce que cette story ne tranche pas : quels enonces ou indices raccourcir et comment formuler la
+    version raccourcie (jugement pedagogique, `nadia-prof`) ; si un repli de mise en page
+    supplementaire (colonnes, marges) complete le raccourcissement plutot que de le remplacer
+    (`theo-archi`, `ines-design`).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que la version raccourcie reste comprehensible et pedagogiquement equivalente
+    pour l'enfant vise. Elle rejoue l'increment avant tout Done, comme toujours.
+- **Lien decision** :
+  `DEC-0025-levee-de-la-condition-m4-le-sprint-10-est-livre-avec-un-defaut-de-pli-assume.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, avec `nadia-prof` pour le
+  raccourcissement lui-meme.
+
+### Priorite relevee - la story de correction des indices de "Le bon verbe" (M2) devient ce qui rend ce jeu enseignable
+
+La story "Les indices de 'Le bon verbe' nomment la manipulation, pas la reponse (M2, arbitrage de
+mecanique de nadia-prof)", deja au backlog ci-dessus, non affectee a un sprint, voit sa priorite
+relevee par `DEC-0025`. `nadia-prof` l'ecrit elle-meme dans sa reserve S du 2026-08-13
+(`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, arbitrage prealable de l'ampoule,
+branche `s10-nadia-ampoule`) : tant que ces 25 indices ne sont pas reecrits, "Le bon verbe" ne peut
+recevoir l'ampoule (M21) et ne porte par ailleurs aucune explication de revelation - un enfant qui
+rate trois fois y recoit donc la reponse et rien d'autre. Ses mots : *"la reserve A - reecrire les
+25 indices de `cm1-conjugaison-present` - cesse d'etre une amelioration et devient ce qui rend ce
+jeu enseignable. Priorite a `camille-po`."* Je la reprends telle quelle : cette story n'est pas
+recrite ici, seule sa priorite change.
+
+### Story - Une aide appelee par l'enfant (une ampoule), sous les conditions M16 a M21 de nadia-prof - reportee au sprint 11
+
+**Reportee au sprint 11, non livree ce sprint.**
+
+- **Besoin** : en tant qu'eleve qui vient de me tromper, je veux pouvoir demander de l'aide
+  moi-meme en appuyant sur une ampoule qui se marque quand je suis bloque, afin de recevoir un
+  signal des mon premier echec sans que l'indice ne pousse hors de l'ecran le message qui me dit
+  que je me suis trompe.
+- **Competence programme visee** : transverse - mecanique du jeu, aucun contenu pedagogique
+  nouveau (`ADR-0004`). S'applique aux jeux du catalogue qui portent un indice utilisable ; "Le bon
+  verbe" en est exclu par M21 tant que ses 25 indices nomment la reponse (voir story ci-dessus).
+- **Criteres d'acceptation**, repris au mot pres des conditions M16 a M21 de `nadia-prof`
+  (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, arbitrage prealable du 2026-08-13,
+  branche `s10-nadia-ampoule`) :
+  - **M16** : l'ampoule est presente et pressable des le premier rendu de chaque question, avant
+    tout essai ; des le premier echec compte sur la question, elle porte une marque non textuelle
+    qu'elle ne portait pas avant, au meme endroit, sans deplacer un seul pixel de la page, et cette
+    marque disparait avec la question.
+  - **M17 - clause bloquante** : un appui sur l'ampoule affiche l'indice entierement au-dessus du
+    pli (`y = 640`, 360 px de large), sans jamais recouvrir les propositions ; sur l'ecran de
+    revelation, l'indice s'affiche de lui-meme, sans etre demande.
+  - **M18** : l'ampoule ne se paie pas avec les pixels du message - le bas du cabinet ne descend
+    sur aucun jeu par rapport a son rendu actuel.
+  - **M19** : le mot visible porte par l'ampoule est "Aide" (jamais "Indice" ni un mot seul en
+    anglais, toute variante revient devant `nadia-prof`) ; un pictogramme peut l'accompagner,
+    jamais le remplacer, et il est `aria-hidden` ; le texte est au moins a 1,25 rem ; la cible
+    pressable fait au moins 44 x 44 px.
+  - **M20** : l'ampoule est hors du contour du cabinet ; l'ouvrir ne compte pas comme un essai, ne
+    fait pas avancer la question, ne touche pas au score et ne change pas le message affiche ;
+    l'ouvrir ne deplace aucune proposition ; une fois ouvert, l'indice reste ouvert pour les essais
+    restants de la question et disparait avec elle ; l'ampoule ne recoit pas le focus apres une
+    reponse, et un appui sur Tabulation puis Entree ne detruit jamais la partie (meme defaut que
+    M13 clause 1 - cette clause ne peut pas etre tenue tant que M13 clause 1 reste non corrigee).
+  - **M21** : sur un paquet dont les indices nomment la bonne reponse, l'ampoule n'est pas rendue
+    du tout - ni grisee, ni inerte.
+  - Ce que cette story ne tranche pas : la forme de l'ampoule (`ines-design` propose,
+    `nadia-prof` arbitre, deja fait dans son principe) ; la route technique - ou vit l'etat
+    "ouvert", par quel echange il change (`theo-archi`).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'une aide appelee montre effectivement quelque chose a l'enfant qui l'appelle
+    (M17 clause 1) et qu'une ampoule se marque quand l'enfant est bloque (M16 clause 2) - elle les
+    verifie en jouant. Et sa **reserve R**, non tranchee : un enfant de six ans en difficulte
+    appelle-t-il reellement une aide qu'il doit demander ? Elle demande une observation d'un enfant
+    du niveau vise une fois l'ampoule livree ; si l'observation dit le contraire de son jugement de
+    metier, elle allegera M16 clause 2 elle-meme, comme une correction de son constat.
+- **Lien decision** :
+  `DEC-0025-levee-de-la-condition-m4-le-sprint-10-est-livre-avec-un-defaut-de-pli-assume.md` ;
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, arbitrage prealable du 2026-08-13.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, pour le sprint 11 - proposition de
+  forme d'`ines-design` requise (l'arbitrage de principe de `nadia-prof` est deja rendu, sous les
+  six conditions ci-dessus).
