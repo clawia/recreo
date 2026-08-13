@@ -147,6 +147,51 @@ base inatteignable** -> `RANGE="-1"`. La limite assumee se retrecit d'autant : c
 teste est la semantique de la valeur que GitHub fournit (est-ce vraiment la bonne base a comparer),
 pas sa seule existence.
 
+**Amendement du 2026-08-12 (s10) : "l'enveloppe est prouvee une fois a la main" laissait son
+cablage hors de portee, et c'est precisement un defaut de cablage qui s'est produit.**
+`nadia-prof` a constate que `outils/mesurer-rendu.sh`, invoque avec un chemin de PNG relatif, rendait
+"aucune capture (code 0)" et n'ecrivait rien, nulle part. Cause : l'enveloppe convertissait le
+conteneur HTML et le profil par `cygpath` avant de les passer au navigateur, et passait le PNG de
+sortie tel que l'appelant l'avait ecrit. Un binaire natif ne partage pas le repertoire courant du
+shell qui l'a lance : il resolvait le relatif contre un repertoire que l'appelant n'avait pas choisi,
+ecrivait son refus sur une sortie d'erreur que l'enveloppe jette, et sortait avec le code 0.
+
+Cette decoupe - juge pur teste, enveloppe prouvee a la main - repartissait donc mal une partie du
+risque. Le juge pur d'un outil peut etre irreprochable et n'etre appele par personne ; c'etait ici
+plus fort encore, puisque la transformation manquante n'existait pas du tout. **Ce que cet ADR
+n'avait pas distingue : une enveloppe ne touche pas le poste d'un seul bloc.** Quand le seul
+collaborateur de poste qu'elle invoque est designe par une variable d'environnement - ici `CHROME` -
+son cablage est fabricable, donc testable, et il doit l'etre. Ce qui reste hors de portee est ce
+qu'un simulacre ne peut pas rendre : que les options passees soient les bonnes, et que l'image
+produite montre quelque chose.
+
+Un simulacre porte cependant sa propre facon de mentir a son auteur, et c'est la partie qui compte.
+Un faux navigateur ecrit en shell resoudrait un chemin relatif comme le shell le resout, donc il
+serait **vert sur le script fautif** : la fixture aurait ressemble a ce que j'imagine et non a ce que
+le poste fait. Le faux navigateur reproduit donc le comportement constate du vrai - il refuse tout
+chemin non absolu, en se taisant exactement comme le vrai se taisait, rien d'ecrit et code de sortie
+0 - et cette fidelite est verifiee par mutation, pas supposee.
+
+Regle executable, dans `outils/mesurer-rendu-test.sh`, dont le compte passe de 23 a 36 cas (mesure :
+`bash outils/mesurer-rendu-test.sh | grep -c '^ok '`, sur ce fichier seul, ligne de bilan finale
+exclue puisqu'elle ne commence pas par `ok`) :
+
+- neuf cas de fonction pure sur `resoudre_png`, dont les deux formes deja absolues qui ne doivent pas
+  changer (un prefixage aveugle du repertoire courant casserait un chemin Windows, qui fonctionnait) ;
+- quatre cas d'enveloppe executes contre le faux navigateur, sur les trois formes de chemin plus le
+  dossier de sortie absent.
+
+Non-vacuite mesuree sur la mutation exacte du defaut - `resoudre_png` presente et juste, l'enveloppe
+repassant l'argument brut au navigateur, et le refus de dossier absent retire :
+
+| Mutation du script | Cas qui devient rouge |
+|---|---|
+| l'enveloppe passe `"$3"` au lieu du chemin resolu | un PNG relatif est ecrit dans le repertoire d'ou la commande est lancee |
+| le refus de dossier de sortie absent est retire | un dossier de sortie inexistant est refuse explicitement |
+
+Les neuf cas de fonction pure restent **verts** sur cette mutation, et c'est le fait qui justifie
+l'amendement : ecrits seuls, ils auraient laisse passer le defaut qu'ils sont censes fermer.
+
 ## Alternatives considerees
 
 - **Laisser le shell dans le workflow et s'en remettre a la relecture.** C'est la situation qui a

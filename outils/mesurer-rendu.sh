@@ -18,9 +18,15 @@
 #     fenetre parente et la valeur du profil, et rend un verdict sans lancer aucune commande. C'est
 #     elle que mesurer-rendu-test.sh met a l'epreuve, avec des entrees fabriquees, y compris aux deux
 #     bords du plancher.
+#   - resoudre_png est une fonction pure. Elle recoit le chemin de PNG tel que l'appelant l'a ecrit
+#     et le repertoire depuis lequel il a lance la commande, et rend un chemin absolu sans toucher au
+#     disque. Meme forme d'epreuve, avec des entrees fabriquees.
 #   - l'enveloppe, en bas de ce fichier, est la seule partie qui touche le poste. Que ses options
 #     Chrome soient les bonnes est prouve une fois a la main, sur l'application reelle, et non
-#     suppose (meme limite assumee qu'ADR-0009 pour la plage de commits).
+#     suppose (meme limite assumee qu'ADR-0009 pour la plage de commits). Un point precis fait
+#     exception depuis s10 et n'est plus seulement prouve a la main : que l'enveloppe passe bien au
+#     navigateur un chemin de PNG absolu est eprouve par un faux navigateur, parce qu'une fonction
+#     pure correcte que l'enveloppe n'appellerait pas serait exactement le defaut qui a ete corrige.
 #
 # Prerequis nomme, jamais son emplacement (ADR-0010) : un Chrome ou Chromium accessible, soit sur le
 # PATH, soit designe par la variable d'environnement CHROME. La ligne rendue sur la sortie standard
@@ -112,6 +118,55 @@ juger_invocation() {
   return 0
 }
 
+# resoudre_png <chemin_png> <repertoire_courant>
+#   chemin_png         : troisieme argument de l'enveloppe, tel que l'appelant l'a ecrit.
+#   repertoire_courant : repertoire depuis lequel l'appelant a lance la commande.
+# Rend 0 et un chemin absolu sur la sortie standard, 1 et un motif sur la sortie d'erreur si l'entree
+# est vide. Ne lance aucune commande et ne touche pas au disque : ni l'existence du dossier parent ni
+# le droit d'y ecrire ne sont de son ressort, c'est l'enveloppe qui les constate.
+#
+# Pourquoi cette fonction existe (symptome remonte par nadia-prof en s10). Un chemin de PNG relatif
+# rendait "aucune capture (code 0)" et n'ecrivait rien, nulle part. Le navigateur est un binaire natif
+# et ne partage pas le repertoire courant du shell qui l'a lance : il resout un chemin relatif contre
+# un repertoire que l'appelant n'a pas choisi - constate sur ce poste, un repertoire ou l'ecriture est
+# refusee, depuis deux repertoires courants differents tous deux inscriptibles. Il ecrit alors
+# "Failed to write file <nom> : acces refuse" sur sa sortie d'erreur, que l'enveloppe jette, et sort
+# tout de meme avec le code 0. Le chemin est donc rendu absolu ici, avant toute conversion de forme.
+#
+# Un chemin absolu, lui, arrivait deja a destination, et il faut savoir pourquoi pour ne pas le
+# casser : un shell POSIX pose sur Windows convertit de lui-meme un argument de la forme
+# "--option=/chemin/absolu" en chemin Windows avant de le passer a un binaire natif, conversion qu'il
+# ne fait jamais sur un relatif. C'est cette conversion implicite qui masquait le defaut, et sur
+# laquelle l'enveloppe ne s'appuie plus : elle convertit desormais le PNG par cygpath comme elle le
+# fait deja du conteneur et du profil.
+resoudre_png() {
+  chemin_png="$1"
+  repertoire_courant="$2"
+
+  if [ -z "${chemin_png}" ]; then
+    echo "aucun fichier de sortie fourni : le troisieme argument est le PNG a ecrire." >&2
+    return 1
+  fi
+  # Deja absolu, sous l'une ou l'autre forme : rendu tel quel. Y toucher casserait les invocations
+  # qui passent un chemin Windows, qui fonctionnent aujourd'hui.
+  case "${chemin_png}" in
+    /* | [A-Za-z]:[\\/]*)
+      printf '%s\n' "${chemin_png}"
+      return 0
+      ;;
+  esac
+  if [ -z "${repertoire_courant}" ]; then
+    echo "repertoire courant inconnu : un chemin de PNG relatif ne peut pas etre rendu absolu." >&2
+    return 1
+  fi
+  chemin_png="${chemin_png#./}"
+  case "${repertoire_courant}" in
+    */) printf '%s%s\n' "${repertoire_courant}" "${chemin_png}" ;;
+    *) printf '%s/%s\n' "${repertoire_courant}" "${chemin_png}" ;;
+  esac
+  return 0
+}
+
 # --- enveloppe : la seule partie qui touche le poste, non testee (meme limite qu'ADR-0009) ---
 if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
   if [ "$#" -lt 3 ] || [ "$#" -gt 4 ]; then
@@ -120,8 +175,15 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
   fi
   largeur_demandee="$1"
   url="$2"
-  png="$3"
+  png="$(resoudre_png "$3" "${PWD}")" || exit 2
   hauteur_demandee="${4:-${HAUTEUR_FENETRE_PX}}"
+
+  # Sans ce refus, un dossier de sortie absent rendrait le meme silence que celui qui vient d'etre
+  # corrige : le navigateur n'ecrirait rien et sortirait avec le code 0.
+  if [ ! -d "$(dirname "${png}")" ]; then
+    echo "le dossier de sortie du PNG demande n'existe pas : cree-le avant de mesurer." >&2
+    exit 2
+  fi
 
   navigateur="${CHROME:-}"
   if [ -z "${navigateur}" ]; then
@@ -162,17 +224,22 @@ HTML
   # la capture est produite, non vide, et uniformement grise : la page n'a jamais ete chargee, et le
   # code de sortie du navigateur reste 0. C'est le genre de faux positif qu'aucune fonction pure ne
   # peut attraper, d'ou la preuve manuelle exigee par ADR-0009.
+  # Le PNG de sortie avait echappe a ce traitement, et une seule des trois formes de chemin en
+  # souffrait, ce qui l'a garde invisible : un relatif n'etait converti par personne (voir
+  # resoudre_png). Il est desormais converti comme les deux autres.
   if command -v cygpath >/dev/null 2>&1; then
     url_conteneur="file:///$(cygpath -m "${conteneur}")"
     profil_navigateur="$(cygpath -w "${profil}")"
+    png_navigateur="$(cygpath -w "${png}")"
   else
     url_conteneur="file://${conteneur}"
     profil_navigateur="${profil}"
+    png_navigateur="${png}"
   fi
 
   "${navigateur}" --headless=new --disable-gpu --no-first-run --no-default-browser-check \
     --hide-scrollbars --virtual-time-budget=4000 --user-data-dir="${profil_navigateur}" \
-    --window-size="${largeur_fenetre},${HAUTEUR_FENETRE_PX}" --screenshot="${png}" "${url_conteneur}" >/dev/null 2>&1
+    --window-size="${largeur_fenetre},${HAUTEUR_FENETRE_PX}" --screenshot="${png_navigateur}" "${url_conteneur}" >/dev/null 2>&1
   code=$?
   if [ "${code}" -ne 0 ] || [ ! -s "${png}" ]; then
     echo "le navigateur n'a produit aucune capture (code ${code})." >&2
