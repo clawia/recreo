@@ -59,7 +59,12 @@ final class EtatDePartieEnSession {
 
     /**
      * Lit l'etat, calcule le suivant et l'ecrit sans qu'aucune autre requete de la meme session ne
-     * puisse s'intercaler.
+     * puisse s'intercaler. Rend l'instantane complet - session et consigne - et non la seule
+     * session : {@code PartieController.mancheModele} a besoin de la consigne pour rendre l'ecran
+     * de jeu, et elle n'est lisible que sous ce meme verrou (S10, avis de faisabilite de
+     * theo-archi, section 1, correction 4). Un second {@code lire()} hors de ce verrou aurait
+     * fonctionne mais rouvert un second acces a la session HTTP pour une donnee que ce cycle tient
+     * deja.
      *
      * <p>Un coup recu sur une partie deja terminee ne rejoue rien et rend l'etat final tel quel.
      * C'est le second appui d'un double appui sur la derniere manche : la mecanique refuse a juste
@@ -67,7 +72,7 @@ final class EtatDePartieEnSession {
      * demander. Consequence visible par l'enfant, a juger par nadia-prof : il revoit l'ecran de fin
      * de partie que son premier appui a produit, au lieu de l'ecran d'erreur.</p>
      */
-    BanditManchotSession jouer(String jeuId, UnaryOperator<BanditManchotSession> coup) {
+    EtatDePartie jouer(String jeuId, UnaryOperator<BanditManchotSession> coup) {
         synchronized (verrou()) {
             EtatDePartie etat = instantane();
             if (!etat.porte(jeuId)) {
@@ -75,11 +80,11 @@ final class EtatDePartieEnSession {
             }
             BanditManchotSession actuelle = etat.session();
             if (actuelle.status() == SessionStatus.TERMINEE) {
-                return actuelle;
+                return etat;
             }
             BanditManchotSession suivante = coup.apply(actuelle);
             httpSession.setAttribute(ATTRIBUT_SESSION, suivante);
-            return suivante;
+            return new EtatDePartie(etat.jeuId(), etat.consigne(), suivante);
         }
     }
 

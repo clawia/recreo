@@ -520,25 +520,35 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
     }
 
     /**
-     * Epinglage du seul point ou l'appariement fait un choix : sur l'ecran de retour, la sortie et
-     * "Encore !" dependent du meme {@code ${enSuite}}. Ils sont confrontes quand la partie continue -
-     * c'est le couple que le lot Bootstrap a inverse - et ne le sont pas a la fin de partie, ou la
-     * sortie devient la seule action possible et doit legitimement dominer (S3-6). Si quelqu'un
-     * dissocie ces deux conditions, ce test devient rouge au lieu de laisser l'appariement se
-     * defaire en silence.
+     * S10, remplace {@code surLEcranDeRetourLaSortieEstConfronteeAEncoreMaisPasDansSonEtatDeFinDePartie}
+     * (epinglage du couple sortie/"Encore !", supprime le meme jour). <b>Motif ecrit du
+     * remplacement</b>, exige par ADR-0013 : la disparition de l'ecran intermediaire (arbitrage de
+     * mecanique de nadia-prof) absorbe la reponse juste comme la fausse dans le cycle de manche ;
+     * {@code fragments/retour.html} ne rend plus qu'un seul etat, la fin de partie, et "Encore !" a
+     * disparu avec {@code GET /parties/{jeuId}/manche}, son seul appelant. L'ecran de retour ne
+     * porte donc plus aucun bouton {@code data-role="action"} : le couple que le lot Bootstrap avait
+     * inverse ne peut plus etre reconstitue, parce que son second terme n'existe plus. Maintenir
+     * l'epinglage sur ce couple aurait exige de mesurer un ecran que l'enfant ne rencontre plus - le
+     * defaut que la retro de s05 a sanctionne deux fois.
+     *
+     * <p>Ce qui reste a garder, et que ce test garde desormais : que l'ecran de retour ne confronte
+     * plus jamais rien a sa sortie (elle y est seule, {@code .sortie-pleine}, S3-6), et que l'ecran
+     * de jeu, lui, continue de confronter la reponse a la sortie - la preuve que la disparition du
+     * premier couple ne vide pas silencieusement la liste entiere.</p>
      */
     @Test
-    void surLEcranDeRetourLaSortieEstConfronteeAEncoreMaisPasDansSonEtatDeFinDePartie() {
+    void surLEcranDeRetourAucuneActionNEstPlusConfronteeALaSortieDepuisLaDisparitionDEncore() {
         List<String> couples = couplesConfrontes(RACINE_PRODUCTION, RACINE_PRODUCTION);
 
         assertThat(couples)
-                .as("le couple que le lot Bootstrap a inverse doit etre confronte")
-                .anyMatch(couple -> couple.contains(".btn.encore") && couple.contains(".btn.retour-accueil"));
+                .as("l'ecran de retour ne porte plus aucun bouton d'action : sa sortie n'y est "
+                        + "confrontee a rien, ni a \"Encore !\" ni a un autre")
+                .noneMatch(couple -> couple.contains("templates/fragments/retour.html"));
         assertThat(couples)
                 .as("la sortie de fin de partie n'a aucun bouton d'action a concurrencer sur son ecran")
                 .noneMatch(couple -> couple.contains("sortie-pleine"));
         assertThat(couples)
-                .as("l'ecran de jeu confronte la reponse a la sortie")
+                .as("l'ecran de jeu confronte toujours la reponse a la sortie")
                 .anyMatch(couple -> couple.contains(".btn.proposition"));
     }
 
@@ -628,24 +638,30 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
     }
 
     /**
-     * Troisieme occurrence, lot Bootstrap (commit 6c83c97). Le rembourrage maison est retire du bloc
-     * des boutons pleins au profit de celui de .btn, mais pas de .retour-accueil qui n'etait pas dans
-     * ce bloc ; le bouton qui quitte redevient 30 % plus grand que celui qui continue et toute la
-     * suite reste verte.
+     * S10 : retiree. Troisieme occurrence, lot Bootstrap (commit 6c83c97) - le rembourrage maison
+     * etait retire du bloc des boutons pleins au profit de celui de .btn, mais pas de
+     * .retour-accueil qui n'etait pas dans ce bloc ; le bouton qui quittait redevenait 30 % plus
+     * grand que celui qui continuait. Cette preuve de morsure rejouait la feuille fautive de ce
+     * commit contre les <b>gabarits de production</b>, en s'appuyant sur le fait que "Encore !"
+     * existait encore dans {@code fragments/retour.html}.
      *
-     * <p>La feuille de ce jeu d'artefacts est le fichier de ce commit, octet pour octet. Les gabarits
-     * sont ceux de la production : ils n'ont pas change entre ce commit et aujourd'hui, hors
-     * l'attribut de role que cette regle introduit. Ce n'est donc pas une fixture qui ressemble a ce
-     * que j'imagine, c'est l'etat qui est passe.
+     * <p><b>Motif ecrit de la suppression</b>, exige par ADR-0013 : la disparition de l'ecran
+     * intermediaire (arbitrage de mecanique de nadia-prof) retire "Encore !" des gabarits de
+     * production - {@code fragments/retour.html} ne rend plus qu'un seul etat, la fin de partie, et
+     * ce bouton n'a plus aucun appelant. La feuille fautive de ce commit ne peut donc plus rencontrer
+     * l'element qu'elle visait : rejouee contre les gabarits d'aujourd'hui, elle ne reproduit plus la
+     * regression historique, elle en reproduirait une autre (le rembourrage manquant de
+     * {@code .btn.sortie-pleine} sur l'ecran de retour), qui n'est pas celle que ce test nommait et
+     * documentait. Garder l'epinglage tel quel l'aurait laisse rouge pour un motif different de celui
+     * qu'il annoncait - une preuve de morsure qui ment sur ce qu'elle prouve.
+     *
+     * <p>La regle generale ({@code aucuneSortieNeDeclarePlusQuUneActionDuMemeEcran}) reste gardee par
+     * les deux autres rejeux de regressions reelles ci-dessous
+     * ({@code leRejeuDuRefusDeSDeuxFaitEchouerLeGardeFou},
+     * {@code leRejeuDeLEtatAccepteEnSDeuxResteVert}) et par les deux objets neufs. Aucune regression
+     * de la forme exacte que ce test nommait n'est possible aujourd'hui, puisque son sujet n'existe
+     * plus.</p>
      */
-    @Test
-    void leRejeuDuLotBootstrapFaitEchouerLeGardeFou() {
-        Path feuilles = CONTRE_EXEMPLES.resolve("rejeu-lot-bootstrap");
-        assertThatThrownBy(
-                () -> verifierQueLActionNeDeclarePasMoinsQueLaSortie(RACINE_PRODUCTION, feuilles))
-                .isInstanceOf(AssertionError.class)
-                .hasMessageContaining(".btn.encore \"Encore !\" ne recoit padding d'aucune regle maison");
-    }
 
     /**
      * Premiere occurrence, refus de S2-1 en s02 (commit 3be5a86) : le bouton de sortie passe a

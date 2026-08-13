@@ -104,42 +104,56 @@ class PartieControllerTest {
     }
 
     /**
-     * ADR-0024 : l'ecran de retour recoit l'explication de l'item joue sous "explication", et rien
-     * quand cet item n'en porte pas. Ce test s'arrete au modele, pas au HTML : l'affichage est livre
-     * par la story qui ecrit le contenu, et c'est son propre test de rendu qui le prouvera. Ce qui est
-     * garde ici est la plomberie - le texte franchit la frontiere du domaine vers la vue - et elle est
-     * la moitie qui manquait pour que la decision soit executable.
+     * M7 : l'explication n'apparait qu'apres que la reponse est acquise, jamais sur le chemin juste
+     * - meme quand l'item joue en porte une (perte assumee par nadia-prof, reserve B de son
+     * arbitrage de mecanique : l'ancienne regle d'ADR-0024, "systematiquement, juste ou faux", ne
+     * peut plus etre tenue sans l'ecran de retour intermediaire).
      */
     @Test
-    void lEcranDeRetourRecoitLExplicationDeLItemJoueEtRienQuandIlNEnPorteAucune() throws Exception {
+    void lExplicationDisparaitSurLeCheminJusteMemeQuandLItemEnPorteUne() throws Exception {
         MockHttpSession session = new MockHttpSession();
         mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
 
-        MvcResult premierRetour = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+        MvcResult juste = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
                 .session(session).param("propositionChoisie", "1")).andReturn();
-        assertThat(premierRetour.getModelAndView().getModel())
-                .containsEntry("explication", "explication de q1");
 
-        MvcResult secondRetour = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
-                .session(session).param("propositionChoisie", "2")).andReturn();
-        assertThat(secondRetour.getModelAndView().getModel())
-                .as("l'item suivant n'en porte pas : l'attribut est present et vide, comme l'indice de"
-                        + " l'ecran de manche, et rien n'est invente")
+        assertThat(juste.getModelAndView().getModel())
+                .as("q1 porte une explication ; la reussite immediate ne l'affiche pas")
                 .containsEntry("explication", null);
+    }
+
+    /**
+     * M7 : l'explication survit du cote faux, avec la revelation du troisieme echec - c'est la
+     * seule place ou "systematiquement, juste ou faux" devient "juste ou faux" tout court.
+     */
+    @Test
+    void lExplicationSurvitDuCoteFauxAvecLaRevelation() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                .session(session).param("propositionChoisie", "2"));
+        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                .session(session).param("propositionChoisie", "2"));
+
+        MvcResult revelation = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                .session(session).param("propositionChoisie", "2")).andReturn();
+
+        assertThat(revelation.getModelAndView().getModel())
+                .containsEntry("explication", "explication de q1");
     }
 
     @Test
     void laMancheSuivanteAfficheUneNouvelleQuestionEtConserveLeScoreCumule() throws Exception {
         MockHttpSession session = new MockHttpSession();
         mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
-        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
-                .session(session).param("propositionChoisie", "1"));
 
-        String html = mockMvc.perform(get("/parties/{jeuId}/manche", JEU_ID).session(session))
+        String html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                        .session(session).param("propositionChoisie", "1"))
                 .andReturn().getResponse().getContentAsString();
         Document fragment = Jsoup.parse(html);
 
         assertThat(fragment.select(".enonce").text()).isEqualTo("deux");
+        assertThat(fragment.select(".score").text()).isEqualTo("Score : 1");
     }
 
     /** S1-4, 3e critere : le bouton de retour est visible sur n'importe quel ecran de jeu. */
@@ -180,9 +194,9 @@ class PartieControllerTest {
         assertThat(score).doesNotContain("+", "-", "x", "/");
     }
 
-    /** S1-1 et S1-8 : le retour faux est au present, en une phrase courte, sans faute. */
+    /** M12 : le texte exact d'un echec avec des essais restants, sans reveler la bonne reponse. */
     @Test
-    void leRetourFauxEstAuPresentEtEnUnePhraseCourte() throws Exception {
+    void leMessageDEchecEstLeTexteExactDeNadiaProfEtNeRevelePasLaBonneReponse() throws Exception {
         MockHttpSession session = new MockHttpSession();
         mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
 
@@ -191,22 +205,7 @@ class PartieControllerTest {
                 .andReturn().getResponse().getContentAsString();
         String verdict = Jsoup.parse(html).select(".verdict").text();
 
-        assertThat(verdict).isEqualTo("Non, c'est 1.");
-    }
-
-    /** S1-8 : le libelle du bouton de continuation n'emploie plus le mot "manche". */
-    @Test
-    void leBoutonPourContinuerNEmploiePlusLeMotManche() throws Exception {
-        MockHttpSession session = new MockHttpSession();
-        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
-
-        String html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
-                        .session(session).param("propositionChoisie", "1"))
-                .andReturn().getResponse().getContentAsString();
-        Document fragment = Jsoup.parse(html);
-
-        assertThat(fragment.select("form button").text()).isEqualTo("Encore !");
-        assertThat(fragment.text().toLowerCase()).doesNotContain("manche");
+        assertThat(verdict).isEqualTo("Ce n'est pas ça. Essaie encore !");
     }
 
     /**
@@ -292,24 +291,34 @@ class PartieControllerTest {
     }
 
     /**
-     * S1-4, 1er et 2e criteres : la partie se termine exactement au nombre de manches annonce,
-     * meme si le contenu est combinatoire et ne s'epuise jamais, et l'ecran de fin est atteint.
+     * S1-4, 1er et 2e criteres, M3 : la partie se termine exactement au nombre de manches annonce,
+     * meme si le contenu est combinatoire et ne s'epuise jamais, et meme si l'enfant echoue toutes
+     * les manches - jamais au milieu d'une question (M3), toujours par la revelation du troisieme
+     * echec (M5). Le jeu infini, a hasard fixe, represente toujours la meme addition (0 + 1) : sa
+     * bonne reponse, "1", resout chaque manche par revelation.
      */
     @Test
     void unEcranDeFinSAfficheReellementApresLeNombreDeManchesMemeAvecUnContenuInfini() throws Exception {
         MockHttpSession session = new MockHttpSession();
         mockMvc.perform(post("/parties/{jeuId}", JEU_INFINI_ID).session(session));
-        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_INFINI_ID)
-                .session(session).param("propositionChoisie", "peu importe"));
 
-        String html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_INFINI_ID)
-                        .session(session).param("propositionChoisie", "peu importe"))
-                .andReturn().getResponse().getContentAsString();
+        String html = "";
+        for (int manche = 0; manche < 2; manche++) {
+            mockMvc.perform(post("/parties/{jeuId}/coups", JEU_INFINI_ID)
+                    .session(session).param("propositionChoisie", "0"));
+            mockMvc.perform(post("/parties/{jeuId}/coups", JEU_INFINI_ID)
+                    .session(session).param("propositionChoisie", "0"));
+            mockMvc.perform(post("/parties/{jeuId}/coups", JEU_INFINI_ID)
+                    .session(session).param("propositionChoisie", "0"));
+            html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_INFINI_ID)
+                            .session(session).param("propositionChoisie", "1"))
+                    .andReturn().getResponse().getContentAsString();
+        }
         Document fragment = Jsoup.parse(html);
 
         assertThat(fragment.select(".fin-de-partie")).isNotEmpty();
-        // Les deux coups sont faux : le score final ne compte que les reussites (S1-2, DEC-0004),
-        // il ne montre plus le nombre de tentatives.
+        // Les deux manches sont resolues par revelation, jamais par une reussite (M11 clause 3) :
+        // le score final ne compte que les reussites, il vaut donc zero.
         assertThat(fragment.select(".score").text()).isEqualTo("Score : 0");
     }
 
@@ -385,23 +394,17 @@ class PartieControllerTest {
         return Jsoup.parse(html).select(".proposition");
     }
 
-    /** S1-5, 1er critere : un item rate trois fois est represente avec l'indice de son contenu. */
+    /** M1 : l'indice de la manche bloquante apparait des le premier echec, pas apres trois. */
     @Test
-    void unIndiceApparaitApresTroisEchecsSurLeMemeItem() throws Exception {
+    void unIndiceApparaitDesLePremierEchecSurLaMancheBloquante() throws Exception {
         MockHttpSession session = new MockHttpSession();
         mockMvc.perform(post("/parties/{jeuId}", JEU_REPETE_ID).session(session));
-        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_REPETE_ID)
-                .session(session).param("propositionChoisie", "mauvaise"));
-        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_REPETE_ID)
-                .session(session).param("propositionChoisie", "mauvaise"));
 
-        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_REPETE_ID)
-                .session(session).param("propositionChoisie", "mauvaise"));
-
-        String suite = mockMvc.perform(get("/parties/{jeuId}/manche", JEU_REPETE_ID).session(session))
+        String html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_REPETE_ID)
+                        .session(session).param("propositionChoisie", "mauvaise"))
                 .andReturn().getResponse().getContentAsString();
 
-        assertThat(Jsoup.parse(suite).select(".indice").text()).isEqualTo("une astuce");
+        assertThat(Jsoup.parse(html).select(".indice").text()).isEqualTo("une astuce");
     }
 
     @TestConfiguration

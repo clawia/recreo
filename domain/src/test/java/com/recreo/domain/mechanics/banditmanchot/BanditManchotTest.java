@@ -15,6 +15,7 @@ import com.recreo.domain.mechanic.Score;
 import com.recreo.domain.mechanic.SessionStatus;
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -25,6 +26,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 /**
  * Test de comportement exige par ADR-0008 : le nom exact de la classe est verifie par
  * ToutesLesMecaniquesSontTesteesTest. Graine fixe, sans navigateur.
+ *
+ * <p>S10 : reecrit pour l'arbitrage de mecanique de nadia-prof (M1-M13,
+ * {@code squad/conformite/FICHE-bandit-manchot-additions-cp.md}). Une reponse fausse ne tire plus
+ * la manche suivante ; plusieurs tests qui avancaient dans la partie en repondant faux, parce que
+ * c'etait le moyen le plus court, sont reecrits pour repondre juste. L'aide de S3-2 (indice apres
+ * trois echecs consecutifs sur des items differents, manche simplifiee representant un item deja
+ * reussi) a disparu : elle se declenchait dans le tirage de la manche suivante et devenait
+ * inatteignable des qu'une reponse fausse cesse d'en tirer une (avis de faisabilite de theo-archi,
+ * s10, section 2.b) ; l'indice est desormais une propriete de la manche bloquante elle-meme.</p>
  */
 class BanditManchotTest {
 
@@ -85,13 +95,13 @@ class BanditManchotTest {
     }
 
     /**
-     * S3-2, ADR-0013 : la mecanique publie la longueur minimale en dessous de laquelle son aide
-     * (manche plus simple, indice) ne peut jamais s'afficher. CatalogueChargeableIT compare cette
-     * valeur a nombreDeManches pour chaque jeu du catalogue reel plutot que de l'ecrire en dur.
+     * M1 : l'indice se declenche des le premier echec sur la manche courante - une partie d'une
+     * seule manche peut deja le montrer. CatalogueChargeableIT compare cette valeur a
+     * nombreDeManches pour chaque jeu du catalogue reel plutot que de l'ecrire en dur.
      */
     @Test
     void publieSaLongueurMinimalePourQueLAideResteAtteignable() {
-        assertThat(new BanditManchot().longueurMinimale()).isEqualTo(4);
+        assertThat(new BanditManchot().longueurMinimale()).isEqualTo(1);
     }
 
     @Test
@@ -103,6 +113,10 @@ class BanditManchotTest {
         assertThat(session.propositions()).containsExactly("2", "3", "1");
         assertThat(session.score()).isEqualTo(new Score(0, 0));
         assertThat(session.dernierVerdict()).isEmpty();
+        assertThat(session.indice()).as("aucun echec encore : pas d'indice").isEmpty();
+        assertThat(session.propositionsEssayees()).isEmpty();
+        assertThat(session.derniereTentative()).isEmpty();
+        assertThat(session.revelee()).isFalse();
     }
 
     @Test
@@ -116,100 +130,89 @@ class BanditManchotTest {
         assertThat(suivante.status()).isEqualTo(SessionStatus.EN_COURS);
         assertThat(suivante.enonceManche()).contains("deux");
         assertThat(suivante.propositions()).containsExactly("3", "2");
-    }
-
-    @Test
-    void unChoixIncorrectEstJugeFauxDesigneLaBonneReponseEtNAvancePasLeScore() {
-        BanditManchotSession premiere = demarrer(troisManches());
-        BanditManchotSession deuxieme = jouer(premiere, "1");
-
-        BanditManchotSession troisieme = jouer(deuxieme, "3");
-
-        assertThat(troisieme.dernierVerdict()).contains(new Verdict(false, "2", Optional.empty()));
-        assertThat(troisieme.score()).isEqualTo(new Score(1, 2));
-        assertThat(troisieme.status()).isEqualTo(SessionStatus.EN_COURS);
-        assertThat(troisieme.enonceManche()).contains("trois");
-        assertThat(troisieme.propositions()).containsExactly("1", "4", "3");
+        assertThat(suivante.propositionsEssayees()).as("manche fraiche : aucun essai encore").isEmpty();
     }
 
     /**
-     * ADR-0024 : l'explication de l'item joue voyage dans le verdict, juste ou faux, et un item qui
-     * n'en porte pas n'en fait pas apparaitre une. Le texte est ici volontairement absurde : la
-     * mecanique le transporte sans le lire, et un test dont le texte serait une phrase plausible ne
-     * distinguerait pas le transport d'une fabrication.
+     * M5, M9 : un echec ne resout plus la manche. Elle reste la meme, l'essai est marque, et la
+     * bonne reponse n'est pas revelee.
+     */
+    @Test
+    void unChoixIncorrectResteSurLaMemeMancheSansRevelerLaBonneReponse() {
+        BanditManchotSession premiere = demarrer(troisManches());
+
+        BanditManchotSession apresLEchec = jouer(premiere, "3");
+
+        assertThat(apresLEchec.enonceManche()).as("la manche n'a pas avance").contains("un");
+        assertThat(apresLEchec.propositions())
+                .as("M8 : les propositions gardent le meme ordre")
+                .containsExactly("2", "3", "1");
+        assertThat(apresLEchec.status()).isEqualTo(SessionStatus.EN_COURS);
+        assertThat(apresLEchec.score())
+                .as("aucune manche resolue : le score ne bouge pas (M3)")
+                .isEqualTo(new Score(0, 0));
+        assertThat(apresLEchec.propositionsEssayees()).containsExactly("3");
+        assertThat(apresLEchec.derniereTentative()).contains("3");
+        assertThat(apresLEchec.revelee()).as("un seul echec : pas encore de revelation").isFalse();
+    }
+
+    /**
+     * ADR-0024 : l'explication de l'item joue voyage dans le verdict qui resout sa manche, que la
+     * resolution vienne d'une reussite immediate ou d'une revelation (M7 : elle survit du cote
+     * faux). Un item sans explication n'en fait pas apparaitre une.
      */
     @Test
     void leVerdictPorteLExplicationDeLItemJoueEtRienQuandLItemNEnPorteAucune() {
-        String texteQueLaMecaniqueNeComprendPas = "xyzzy 42 - ceci n'est pas une phrase";
+        String explicationQ1 = "xyzzy 42 - ceci n'est pas une phrase";
         ContentSource contenu = new ListContentSource(DESCRIPTEUR, List.of(
                 new Question(new ItemId("q1"), "un", "1", List.of("2"), Optional.empty(),
-                        Optional.of(texteQueLaMecaniqueNeComprendPas)),
+                        Optional.of(explicationQ1)),
                 new Question(new ItemId("q2"), "deux", "2", List.of("3"))));
         BanditManchotSession session = demarrer(contenu);
 
         BanditManchotSession apresUneReponseJuste = jouer(session, "1");
         assertThat(apresUneReponseJuste.dernierVerdict().orElseThrow().explication())
-                .as("reponse juste : l'explication de l'item joue voyage telle quelle")
-                .contains(texteQueLaMecaniqueNeComprendPas);
+                .as("reussite immediate : l'explication de l'item joue voyage telle quelle")
+                .contains(explicationQ1);
 
-        BanditManchotSession apresUneReponseFausse = jouer(apresUneReponseJuste, "pas 2");
-        assertThat(apresUneReponseFausse.dernierVerdict().orElseThrow().explication())
+        // q2 n'a pas d'explication ; trois echecs puis la revelation la resolvent (M5, M7).
+        BanditManchotSession apresTroisEchecs = apresUneReponseJuste;
+        for (int echec = 0; echec < 3; echec++) {
+            apresTroisEchecs = jouer(apresTroisEchecs, "pas 2");
+        }
+        assertThat(apresTroisEchecs.revelee()).isTrue();
+
+        BanditManchotSession apresRevelation = jouer(apresTroisEchecs, "2");
+        assertThat(apresRevelation.dernierVerdict().orElseThrow().juste())
+                .as("M11 clause 3 : une manche resolue par revelation n'est pas une reussite")
+                .isFalse();
+        assertThat(apresRevelation.dernierVerdict().orElseThrow().explication())
                 .as("ADR-0024 : un item sans explication n'en fait pas apparaitre une")
                 .isEmpty();
-    }
-
-    /**
-     * ADR-0024, exigence de nadia-prof citee par S6-7 : "systematiquement [...] Pas 'une seule fois'
-     * non plus." L'aide de S3-2 represente un item deja reussi ; ce second passage porte la meme
-     * explication que le premier, sans qu'aucun etat "deja montre" n'existe nulle part.
-     */
-    @Test
-    void unItemRepresenteApresTroisEchecsPorteEncoreSonExplication() {
-        Question succes = new Question(new ItemId("reussi"), "succes", "ok", List.of("non"),
-                Optional.empty(), Optional.of("explication de l'item revu"));
-        Question q1 = new Question(new ItemId("q1"), "un", "1", List.of("2"));
-        Question q2 = new Question(new ItemId("q2"), "deux", "2", List.of("3"));
-        Question q3 = new Question(new ItemId("q3"), "trois", "3", List.of("4"));
-        BanditManchotSession session = demarrer(sequenceInfinie(succes, q1, q2, q3));
-
-        session = jouer(session, "ok");
-        assertThat(session.dernierVerdict().orElseThrow().explication())
-                .as("premier passage sur l'item")
-                .contains("explication de l'item revu");
-        session = jouer(session, "faux");
-        session = jouer(session, "faux");
-        session = jouer(session, "faux");
-        assertThat(session.enonceManche()).as("l'item deja reussi est represente").contains("succes");
-
-        session = jouer(session, "ok");
-        assertThat(session.dernierVerdict().orElseThrow().explication())
-                .as("second passage sur le meme item : la meme explication, aucune memoire des"
-                        + " occurrences precedentes")
-                .contains("explication de l'item revu");
     }
 
     @Test
     void lEnchainementDesManchesConserveLeScoreCumule() {
         BanditManchotSession session = demarrer(troisManches());
         session = jouer(session, "1");
-        session = jouer(session, "3");
-        session = jouer(session, "3");
+        session = jouer(session, "2");
 
-        assertThat(session.score()).isEqualTo(new Score(2, 3));
-        assertThat(session.dernierVerdict()).contains(new Verdict(true, "3", Optional.empty()));
+        assertThat(session.score()).isEqualTo(new Score(2, 2));
+        assertThat(session.dernierVerdict()).contains(new Verdict(true, "2", Optional.empty()));
+        assertThat(session.enonceManche()).contains("trois");
     }
 
     @Test
     void laPartieSeTermineQuandLeVivierEstEpuise() {
         BanditManchotSession session = demarrer(troisManches());
         session = jouer(session, "1");
-        session = jouer(session, "3");
+        session = jouer(session, "2");
         session = jouer(session, "3");
 
         assertThat(session.status()).isEqualTo(SessionStatus.TERMINEE);
         assertThat(session.enonceManche()).isEmpty();
         assertThat(session.propositions()).isEmpty();
-        assertThat(session.score()).isEqualTo(new Score(2, 3));
+        assertThat(session.score()).isEqualTo(new Score(3, 3));
     }
 
     @Test
@@ -299,177 +302,234 @@ class BanditManchotTest {
     @Test
     void leTirageExcluBienLesManchesDejaVues() {
         BanditManchotSession session = demarrer(troisManches());
-        Set<String> enonces = new java.util.LinkedHashSet<>();
+        Set<String> enonces = new LinkedHashSet<>();
         enonces.add(session.enonceManche().orElseThrow());
-        for (int i = 0; i < 2; i++) {
-            session = jouer(session, "peu importe");
-            session.enonceManche().ifPresent(enonces::add);
-        }
+
+        session = jouer(session, "1");
+        enonces.add(session.enonceManche().orElseThrow());
+        session = jouer(session, "2");
+        enonces.add(session.enonceManche().orElseThrow());
 
         assertThat(enonces).containsExactly("un", "deux", "trois");
     }
 
     /**
-     * ADR-0012 : la mecanique compte les manches jouees, independamment de ce que rend le
-     * contenu. AdditionsBorneesContentSource ne renvoie jamais Optional.empty() (Javadoc citee par
-     * Nadia) : seul nombreDeManches peut ici mettre fin a la partie.
+     * M3, amendement d'ADR-0012 : la mecanique compte les manches <b>resolues</b>, jamais les
+     * essais, et le contenu combinatoire d'AdditionsBorneesContentSource ne renvoie jamais
+     * Optional.empty() (Javadoc citee par nadia-prof) : avec un hasard fixe, il represente
+     * toujours la meme addition (0 + 1) - seul nombreDeManches peut ici mettre fin a la partie.
      */
     @Test
     void laPartieSeTermineApresLeNombreDeManchesMemeAvecUnContenuCombinatoireInfini() {
         ContentSource combinatoire = new AdditionsBorneesContentSource(DESCRIPTEUR, 10, 3, "Compte sur tes doigts.");
         BanditManchotSession session = demarrer(combinatoire, 10);
 
-        for (int reponse = 1; reponse <= 9; reponse++) {
-            assertThat(session.status()).as("avant la reponse %d sur 10", reponse).isEqualTo(SessionStatus.EN_COURS);
-            session = jouer(session, "pas la bonne reponse");
+        for (int manche = 1; manche <= 9; manche++) {
+            assertThat(session.status()).as("avant la manche %d sur 10", manche).isEqualTo(SessionStatus.EN_COURS);
+            session = jouer(session, "1");
         }
 
         assertThat(session.status()).isEqualTo(SessionStatus.EN_COURS);
-        session = jouer(session, "pas la bonne reponse");
+        session = jouer(session, "1");
 
         assertThat(session.status()).isEqualTo(SessionStatus.TERMINEE);
         assertThat(session.score().tentatives()).isEqualTo(10);
+        assertThat(session.score().reussites()).isEqualTo(10);
         assertThat(session.enonceManche()).isEmpty();
     }
 
     /**
-     * S3-2 (DEC-0007, point 3) : aucun indice avant trois echecs consecutifs, l'indice de la
-     * manche presentee au dela - ici, le meme item redonne puisque le contenu n'en propose qu'un.
+     * M1 : l'indice de la manche bloquante apparait des le premier echec sur cette manche, et
+     * reste affiche pour les essais restants - il n'attend plus trois echecs consecutifs sur des
+     * items differents comme l'ancienne aide de S3-2.
      */
     @Test
-    void unItemRateTroisFoisEstRepresenteAvecUnIndiceLaFoisSuivante() {
+    void unIndiceApparaitDesLePremierEchecSurLaMancheBloquante() {
         Question question = new Question(new ItemId("q1"), "un", "1", List.of("2"), Optional.of("une astuce"));
         BanditManchotSession session = demarrer(sequenceInfinie(question));
 
         assertThat(session.indice()).isEmpty();
-        session = jouer(session, "mauvaise");
-        assertThat(session.indice()).isEmpty();
-        session = jouer(session, "mauvaise");
-        assertThat(session.indice()).isEmpty();
-        session = jouer(session, "mauvaise");
-        assertThat(session.indice()).contains("une astuce");
-    }
-
-    /**
-     * S3-2, 1er critere : le declencheur est un compte d'echecs consecutifs, quel que soit
-     * l'item concerne par chacun - contrairement au declenchement initial de S1-5, qui exigeait
-     * trois echecs sur le meme item et rendait l'indice inatteignable en jeu reel.
-     */
-    @Test
-    void troisEchecsConsecutifsSurDesItemsDifferentsDeclenchentAussiLIndice() {
-        Question q1 = new Question(new ItemId("q1"), "un", "1", List.of("2"), Optional.of("astuce"));
-        Question q2 = new Question(new ItemId("q2"), "deux", "2", List.of("3"), Optional.of("astuce"));
-        Question q3 = new Question(new ItemId("q3"), "trois", "3", List.of("4"), Optional.of("astuce"));
-        BanditManchotSession session = demarrer(sequenceInfinie(q1, q2, q3));
-
-        assertThat(session.indice()).isEmpty();
-        session = jouer(session, "faux");
-        assertThat(session.indice()).isEmpty();
-        session = jouer(session, "faux");
-        assertThat(session.indice()).isEmpty();
-        session = jouer(session, "faux");
-
+        session = jouer(session, "2");
         assertThat(session.indice())
-                .as("trois echecs consecutifs sur trois items differents : l'indice se declenche quand meme")
-                .contains("astuce");
+                .as("premier echec sur la manche courante : l'indice apparait immediatement")
+                .contains("une astuce");
+        session = jouer(session, "2");
+        assertThat(session.indice()).as("deuxieme echec : le meme indice, pas un second").contains("une astuce");
     }
 
-    /**
-     * S3-2, 4e critere : quand la manche plus simple (item deja reussi) et l'indice se
-     * declenchent sur le meme evenement, les deux s'appliquent a la meme question suivante sans
-     * se contredire ni s'annuler l'un l'autre. Piege nomme par theo-archi : l'indice doit
-     * dependre de la valeur entrante d'echecsConsecutifs, pas de sa remise a zero pour la manche
-     * plus simple.
-     */
+    /** M1 : l'indice est une propriete de la manche courante ; une manche fraiche n'en porte pas. */
     @Test
-    void laMancheSimplifieeEtLIndiceSeDeclenchentEnsembleSansSAnnuler() {
-        Question succes = new Question(new ItemId("reussi"), "succes", "ok", List.of("non"), Optional.of("astuce succes"));
-        Question q1 = new Question(new ItemId("q1"), "un", "1", List.of("2"));
-        Question q2 = new Question(new ItemId("q2"), "deux", "2", List.of("3"));
-        Question q3 = new Question(new ItemId("q3"), "trois", "3", List.of("4"));
-        BanditManchotSession session = demarrer(sequenceInfinie(succes, q1, q2, q3));
+    void lIndiceDisparaitSurUneMancheFraicheEtReapparaitApresUnNouvelEchec() {
+        Question q1 = new Question(new ItemId("q1"), "un", "1", List.of("2"), Optional.of("astuce un"));
+        Question q2 = new Question(new ItemId("q2"), "deux", "2", List.of("3"), Optional.of("astuce deux"));
+        BanditManchotSession session = demarrer(sequenceInfinie(q1, q2));
 
-        session = jouer(session, "ok");
-        assertThat(session.indice()).as("aucun echec consecutif : pas d'indice").isEmpty();
-        session = jouer(session, "faux");
-        session = jouer(session, "faux");
-        session = jouer(session, "faux");
-
-        assertThat(session.enonceManche()).as("manche plus simple : item deja reussi").contains("succes");
-        assertThat(session.indice()).as("indice du meme item, sur la meme manche").contains("astuce succes");
-    }
-
-    /**
-     * S3-2, 3e critere : le compteur d'echecs consecutifs se remet a zero apres chaque reussite
-     * (DEC-0004, point 4, inchange), et l'indice se declenche de nouveau sur un second groupe de
-     * trois echecs consecutifs plus tard dans la meme partie.
-     */
-    @Test
-    void lIndiceReapparaitApresUnSecondGroupeDeTroisEchecsConsecutifs() {
-        Question question = new Question(new ItemId("q1"), "un", "1", List.of("2"), Optional.of("astuce"));
-        BanditManchotSession session = demarrer(sequenceInfinie(question));
-
-        session = jouer(session, "faux");
-        session = jouer(session, "faux");
-        session = jouer(session, "faux");
-        assertThat(session.indice()).contains("astuce");
+        session = jouer(session, "2");
+        assertThat(session.indice()).contains("astuce un");
 
         session = jouer(session, "1");
-        assertThat(session.indice()).as("reussite : le compteur d'echecs consecutifs repart a zero").isEmpty();
-        session = jouer(session, "faux");
-        session = jouer(session, "faux");
-        assertThat(session.indice()).isEmpty();
-        session = jouer(session, "faux");
+        assertThat(session.enonceManche()).as("reussite : manche suivante").contains("deux");
+        assertThat(session.indice()).as("manche fraiche : aucun indice avant le premier echec").isEmpty();
 
-        assertThat(session.indice())
-                .as("second groupe de trois echecs consecutifs : l'indice reapparait")
-                .contains("astuce");
+        session = jouer(session, "3");
+        assertThat(session.indice()).contains("astuce deux");
     }
 
     /**
-     * DEC-0004, point 4 : trois echecs consecutifs, quel que soit l'item, representent un item
-     * deja reussi ; la manche d'apres revient au tirage normal.
+     * M5 : au troisieme echec sur la manche, la reponse est revelee - la manche n'est pas pour
+     * autant resolue, et aucune manche resolue ne fait bouger le score (M3).
      */
     @Test
-    void troisEchecsConsecutifsRepresententUnItemDejaReussiPuisLeTirageNormalReprend() {
-        Question succes = new Question(new ItemId("reussi"), "succes", "ok", List.of("non"));
-        Question q1 = new Question(new ItemId("q1"), "un", "1", List.of("2"));
-        Question q2 = new Question(new ItemId("q2"), "deux", "2", List.of("3"));
-        Question q3 = new Question(new ItemId("q3"), "trois", "3", List.of("4"));
-        Question q4 = new Question(new ItemId("q4"), "quatre", "4", List.of("5"));
-        BanditManchotSession session = demarrer(sequenceInfinie(succes, q1, q2, q3, q4));
+    void troisEchecsSurLaMemeMancheDeclenchentLaRevelationSansResoudreLaManche() {
+        BanditManchotSession session = demarrer(troisManches());
 
-        session = jouer(session, "ok");
-        assertThat(session.enonceManche()).contains("un");
-        session = jouer(session, "faux");
-        assertThat(session.enonceManche()).contains("deux");
-        session = jouer(session, "faux");
-        assertThat(session.enonceManche()).contains("trois");
-        session = jouer(session, "faux");
+        session = jouer(session, "3");
+        assertThat(session.revelee()).isFalse();
+        session = jouer(session, "3");
+        assertThat(session.revelee()).isFalse();
+        session = jouer(session, "3");
 
-        assertThat(session.enonceManche())
-                .as("troisieme echec consecutif : represente l'item deja reussi")
-                .contains("succes");
-
-        session = jouer(session, "non");
-        assertThat(session.enonceManche())
-                .as("la manche d'apres revient au tirage normal")
-                .contains("quatre");
+        assertThat(session.revelee()).isTrue();
+        assertThat(session.enonceManche()).as("la manche n'a toujours pas avance").contains("un");
+        assertThat(session.status()).isEqualTo(SessionStatus.EN_COURS);
+        assertThat(session.score()).isEqualTo(new Score(0, 0));
+        assertThat(session.propositionsEssayees()).containsExactly("3");
     }
 
-    /** DEC-0004, point 4 : sans aucun item reussi, le repli est le tirage normal, sans erreur. */
+    /**
+     * M5 : sur une manche revelee, un appui sur une autre proposition que la reponse nommee ne
+     * change rien - ni essai compte, ni etat modifie.
+     */
     @Test
-    void troisEchecsConsecutifsSansAucunItemReussiSuiventLeTirageNormal() {
+    void unAppuiSurUneAutrePropositionQueLaReponseReveleeNeChangeRien() {
+        BanditManchotSession session = demarrer(troisManches());
+        session = jouer(session, "3");
+        session = jouer(session, "3");
+        session = jouer(session, "3");
+        assertThat(session.revelee()).isTrue();
+
+        BanditManchotSession apresUnAppuiIgnore = jouer(session, "2");
+
+        assertThat(apresUnAppuiIgnore.enonceManche()).contains("un");
+        assertThat(apresUnAppuiIgnore.score()).isEqualTo(new Score(0, 0));
+        assertThat(apresUnAppuiIgnore.revelee()).isTrue();
+        assertThat(apresUnAppuiIgnore.propositionsEssayees())
+                .as("l'appui ignore ne marque pas une proposition de plus")
+                .containsExactly("3");
+    }
+
+    /**
+     * M5, M11 clause 3 : presser la reponse revelee fait avancer la partie, mais ne compte pas
+     * comme une reussite - le score de reussites ne monte pas, seul le compte de manches resolues
+     * avance (M3).
+     */
+    @Test
+    void presserLaReponseReveleeAvanceLaPartieSansCompterCommeUneReussite() {
+        BanditManchotSession session = demarrer(troisManches());
+        session = jouer(session, "3");
+        session = jouer(session, "3");
+        session = jouer(session, "3");
+
+        BanditManchotSession apresRevelation = jouer(session, "1");
+
+        assertThat(apresRevelation.enonceManche()).as("la manche a enfin avance").contains("deux");
+        assertThat(apresRevelation.dernierVerdict().orElseThrow().juste()).isFalse();
+        assertThat(apresRevelation.score()).isEqualTo(new Score(0, 1));
+        assertThat(apresRevelation.revelee()).as("la manche neuve n'est pas revelee").isFalse();
+        assertThat(apresRevelation.propositionsEssayees()).isEmpty();
+    }
+
+    /**
+     * M9 : un echec repete sur la meme proposition consomme quand meme un essai - c'est ce qui
+     * rend la revelation atteignable sur un jeu a quatre propositions (fiche de nadia-prof,
+     * section "2 bis") sans exiger que l'enfant epuise chaque distracteur distinct.
+     */
+    @Test
+    void unEchecRepeteSurLaMemePropositionCompteCommeUnEssaiDePlus() {
+        Question quatrePropositions = new Question(new ItemId("q1"), "question", "bonne",
+                List.of("faux1", "faux2", "faux3"));
+        BanditManchotSession session = demarrer(sequenceInfinie(quatrePropositions));
+
+        session = jouer(session, "faux1");
+        session = jouer(session, "faux1");
+        assertThat(session.revelee()).as("deux essais, meme proposition : pas encore revele").isFalse();
+        assertThat(session.propositionsEssayees())
+                .as("une seule proposition distincte a ete essayee")
+                .containsExactly("faux1");
+
+        session = jouer(session, "faux1");
+        assertThat(session.revelee()).as("trois essais, la revelation se declenche").isTrue();
+    }
+
+    /**
+     * M3 : la partie presente exactement le nombre de manches annonce, jamais moins, jamais plus,
+     * et ne se termine jamais au milieu d'une question - meme quand l'enfant echoue les trois
+     * essais de chacune et n'avance que par la revelation.
+     */
+    @Test
+    void laPartiePresenteExactementLeNombreDeManchesAnnonceMemeEnEchouantToutesLesQuestions() {
         Question q1 = new Question(new ItemId("q1"), "un", "1", List.of("2"));
         Question q2 = new Question(new ItemId("q2"), "deux", "2", List.of("3"));
         Question q3 = new Question(new ItemId("q3"), "trois", "3", List.of("4"));
-        Question q4 = new Question(new ItemId("q4"), "quatre", "4", List.of("5"));
-        BanditManchotSession session = demarrer(sequenceInfinie(q1, q2, q3, q4));
+        BanditManchotSession session = demarrer(sequenceInfinie(q1, q2, q3), 3);
+        List<String> enoncesDistincts = new java.util.ArrayList<>();
+        enoncesDistincts.add(session.enonceManche().orElseThrow());
 
-        session = jouer(session, "faux");
-        session = jouer(session, "faux");
-        session = jouer(session, "faux");
+        for (int question = 0; question < 3; question++) {
+            String bonneReponse = String.valueOf(question + 1);
+            for (int echec = 0; echec < 3; echec++) {
+                session = jouer(session, "pas la bonne reponse");
+                assertThat(session.status())
+                        .as("jamais termine au milieu d'une question (M3)")
+                        .isEqualTo(SessionStatus.EN_COURS);
+            }
+            assertThat(session.revelee()).isTrue();
+            session = jouer(session, bonneReponse);
+            session.enonceManche().ifPresent(enoncesDistincts::add);
+        }
 
-        assertThat(session.enonceManche()).contains("quatre");
+        assertThat(enoncesDistincts).containsExactly("un", "deux", "trois");
+        assertThat(session.status()).isEqualTo(SessionStatus.TERMINEE);
+        assertThat(session.score().tentatives()).isEqualTo(3);
+        assertThat(session.score().reussites()).as("les trois ont ete resolues par revelation").isEqualTo(0);
+    }
+
+    /**
+     * M5, M9 clause 5, M7 : la bonne reponse et l'explication de la manche courante ne sont
+     * exposees qu'une fois la manche revelee - jamais avant, sur aucune des deux methodes.
+     */
+    @Test
+    void laReponseEtLExplicationNeSontExposeesQuUneFoisLaMancheRevelee() {
+        ContentSource contenu = new ListContentSource(DESCRIPTEUR, List.of(
+                new Question(new ItemId("q1"), "un", "1", List.of("2"), Optional.empty(),
+                        Optional.of("explication de q1"))));
+        BanditManchotSession session = demarrer(contenu);
+
+        assertThat(session.reponseRevelee()).isEmpty();
+        assertThat(session.explicationRevelee()).isEmpty();
+
+        session = jouer(session, "2");
+        session = jouer(session, "2");
+        assertThat(session.reponseRevelee()).as("deux echecs : toujours pas revelee").isEmpty();
+        assertThat(session.explicationRevelee()).isEmpty();
+
+        session = jouer(session, "2");
+        assertThat(session.revelee()).isTrue();
+        assertThat(session.reponseRevelee()).contains("1");
+        assertThat(session.explicationRevelee()).contains("explication de q1");
+    }
+
+    /** M13 : la derniere tentative sert au point de focus ; elle est neuve sur chaque manche. */
+    @Test
+    void laDerniereTentativeEstReinitialiseeSurUneMancheFraiche() {
+        BanditManchotSession session = demarrer(troisManches());
+
+        session = jouer(session, "3");
+        assertThat(session.derniereTentative()).contains("3");
+
+        session = jouer(session, "1");
+        assertThat(session.derniereTentative())
+                .as("manche resolue : la manche suivante est fraiche")
+                .isEmpty();
     }
 }

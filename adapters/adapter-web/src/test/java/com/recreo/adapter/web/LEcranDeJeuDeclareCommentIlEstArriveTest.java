@@ -118,6 +118,11 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
      * Le corpus, produit en jouant une vraie partie de bout en bout. Chaque route du controleur y
      * passe au moins une fois, et la branche de reprise - celle qui porte le defaut - y est exercee
      * avec une partie reellement en cours.
+     *
+     * <p>S10 : depuis que le cycle de manche absorbe la reponse juste comme la fausse, {@code POST
+     * /parties/{jeuId}/coups} rend un ecran de manche tant que la partie continue - juste, faux, ou
+     * en revelation - et ne rend l'ecran de retour que sur la fin de partie. {@code GET
+     * /parties/{jeuId}/manche} a disparu avec son seul appelant ("Encore !").</p>
      */
     private List<Reponse> reponses() throws Exception {
         List<Reponse> reponses = new ArrayList<>();
@@ -128,20 +133,19 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
                 post("/parties/{jeuId}", JEU_ID).session(partie)));
         reponses.add(reponse("accueil pendant une partie en cours (reprise silencieuse)", "GET /",
                 get("/").session(partie)));
-        reponses.add(reponse("retour juste, la partie continue", "POST /parties/{jeuId}/coups",
+        reponses.add(reponse("manche apres une reponse juste, la partie continue",
+                "POST /parties/{jeuId}/coups",
                 post("/parties/{jeuId}/coups", JEU_ID).session(partie)
                         .param("propositionChoisie", "1")));
-        reponses.add(reponse("retour faux, la partie continue", "POST /parties/{jeuId}/coups",
-                coupFaux()));
+        reponses.add(reponse("manche apres une reponse fausse, la partie continue",
+                "POST /parties/{jeuId}/coups", coupFaux()));
+        reponses.add(reponse("manche en revelation, la partie continue",
+                "POST /parties/{jeuId}/coups", revelation()));
         reponses.add(reponse("fin de partie sur une reponse fausse", "POST /parties/{jeuId}/coups",
                 finDePartieFaussee()));
-        reponses.add(reponse("manche 2, demandee par un appui sur Encore", "GET /parties/{jeuId}/manche",
-                get("/parties/{jeuId}/manche", JEU_ID).session(partie)));
         reponses.add(reponse("retour de la derniere manche, fin de partie", "POST /parties/{jeuId}/coups",
                 post("/parties/{jeuId}/coups", JEU_ID).session(partie)
                         .param("propositionChoisie", "2")));
-        reponses.add(reponse("lecture d'une manche sur une partie terminee",
-                "GET /parties/{jeuId}/manche", get("/parties/{jeuId}/manche", JEU_ID).session(partie)));
         reponses.add(reponse("retour explicite a la liste des jeux", "POST /retour",
                 post("/retour").session(partie)));
         reponses.add(reponse("ecran d'erreur, partie introuvable", "POST /parties/{jeuId}/coups",
@@ -152,8 +156,8 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
     }
 
     /**
-     * Une reponse fausse jouee sur une partie qui continue, sur sa propre session : la partie a deux
-     * items ne peut pas porter a la fois un retour faux et un retour juste qui la laissent en cours.
+     * Une reponse fausse jouee sur une partie qui continue, avec des essais restants (M5) : la
+     * manche ne bouge pas, sur sa propre session.
      */
     private MockHttpServletRequestBuilder coupFaux() throws Exception {
         MockHttpSession partieFaussee = new MockHttpSession();
@@ -162,17 +166,42 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
                 .param("propositionChoisie", PROPOSITION_FAUSSE);
     }
 
+    /** M5 : trois echecs sur la meme manche declenchent la revelation, sur sa propre session. */
+    private MockHttpServletRequestBuilder revelation() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_REPETE_ID).session(session));
+        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_REPETE_ID).session(session)
+                .param("propositionChoisie", PROPOSITION_FAUSSE));
+        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_REPETE_ID).session(session)
+                .param("propositionChoisie", PROPOSITION_FAUSSE));
+        return post("/parties/{jeuId}/coups", JEU_REPETE_ID).session(session)
+                .param("propositionChoisie", PROPOSITION_FAUSSE);
+    }
+
     /**
-     * ADR-0034, amendement : la derniere manche jouee faux. Le jeu infini a deux manches la produit en
-     * deux coups, la ou le jeu a item repete en demanderait dix.
+     * ADR-0034, amendement : la derniere manche resolue par revelation, donc une partie qui se
+     * termine sur un verdict faux (M11 clause 3). Le jeu infini, a hasard fixe, represente toujours
+     * la meme addition (0 + 1) - sa bonne reponse, "1", est connue sans lire aucune proposition
+     * rendue. Chacune de ses deux manches est resolue par trois echecs puis la reponse revelee.
      */
     private MockHttpServletRequestBuilder finDePartieFaussee() throws Exception {
         MockHttpSession partie = new MockHttpSession();
         mockMvc.perform(post("/parties/{jeuId}", JEU_INFINI_ID).session(partie));
-        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
-                .param("propositionChoisie", PROPOSITION_FAUSSE));
-        return post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
-                .param("propositionChoisie", PROPOSITION_FAUSSE);
+        for (int manche = 0; manche < 2; manche++) {
+            mockMvc.perform(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                    .param("propositionChoisie", "0"));
+            mockMvc.perform(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                    .param("propositionChoisie", "0"));
+            mockMvc.perform(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                    .param("propositionChoisie", "0"));
+            if (manche == 1) {
+                return post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                        .param("propositionChoisie", "1");
+            }
+            mockMvc.perform(post("/parties/{jeuId}/coups", JEU_INFINI_ID).session(partie)
+                    .param("propositionChoisie", "1"));
+        }
+        throw new IllegalStateException("inatteignable");
     }
 
     /**
