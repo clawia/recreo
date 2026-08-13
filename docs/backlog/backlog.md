@@ -2654,11 +2654,18 @@ instruire pour un sprint futur, une fois le correctif en cours livre et le fichi
 - **Reserves nouvelles du 2026-08-11, chantier du cabinet (S8-1 a S8-3),
   `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-11, section 8** :
   - Le contour du cabinet ne se distingue des colonnes qu'a un rapport de contraste de 1,71:1
-    (`#1d4b6b` contre `#2e6f9e`) - contre la page il ressort a 9,25:1, donc le tour de l'objet reste
+    (`#1d4b6b` contre `#2e6f9e`) - contre la page il ressort a 8,61:1, donc le tour de l'objet reste
     net et rien n'est refuse, mais un enfant qui distingue mal les couleurs lit surtout un aplat
     bleu uniforme. `ines-design` propose un ecart de luminance plus franc entre le cadre et les
     colonnes ; `camille-po` priorise. Non bloquant, a instruire pour les quatre jeux du bandit
-    manchot.
+    manchot. **Correction du 2026-08-12** : cette puce portait `9,25:1`, une valeur fausse.
+    `nadia-prof` a recalcule les cinq paires de contraste pendant l'arbitrage prealable du sprint 10
+    (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section 4, verdict du 2026-08-12) et
+    trouve la cause exacte de son erreur : `9,25:1` est le contraste du cadre contre le blanc pur
+    `--recreo-accent-texte`, pas contre le fond de page `--recreo-fond`. La valeur juste, contre la
+    page, est `8,61:1` - le chiffre qu'`ines-design` avait avance au sprint 8. Le rapport
+    cadre/colonnes (1,71:1 ci-dessus) ne bouge pas, et la reserve reste non bloquante : elle l'ecrit
+    elle-meme, la conclusion ne change pas, seul le chiffre qui la portait etait faux.
   - Le defaut de pli du quatrieme cote du cabinet (voir `DEC-0016`, amendement du 2026-08-11) est
     aggrave de 40 px par le cabinet sur "Le bon petit mot" et sur "Le bon verbe" : le budget
     vertical pose par `camille-po` sur "Le bon son" (le cas le moins charge du catalogue et non le
@@ -3079,3 +3086,11 @@ Trois questions sont routees a `nadia-prof` par `sofia-sm`, ecrites dans `DEC-00
 Une fois ces trois questions arbitrees, cette section devient une ou plusieurs stories numerotees,
 avec des criteres d'acceptation testables repris au mot pres de l'arbitrage de `nadia-prof`, sur le
 meme modele que les stories correctives du sprint 1.
+
+- **Reserve nouvelle du 2026-08-12, arbitrage prealable du sprint 10**
+  (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-12, section 6) : la
+  forme rendue du manche se lit comme une arche, pas comme une poignee. `nadia-prof` precise
+  explicitement que ce n'est pas un motif de refus - sa frontiere porte sur le geste que la
+  silhouette suggere (traction), pas sur sa lecture comme forme - mais que l'utilisatrice a demande
+  un manche dessine et doit pouvoir contester cette lecture. Routee a `sofia-sm` pour remontee ;
+  n'attend aucune reponse pour que le sprint continue.
