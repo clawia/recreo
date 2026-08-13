@@ -90,7 +90,32 @@
   Done **sous reserve**. **La ligne de matrice doit passer a `couvert-valide`** ; je ne l'edite pas.
 - **Note du 2026-08-11 sur le bullet "Ligne de matrice" ci-dessus** : il date du second audit et
   n'est plus l'etat courant. Il reste ecrit, non efface. L'etat courant est celui du quatrieme audit.
-- **Derniere mise a jour** : 2026-08-11
+- **Troisieme arbitrage prealable de forme du 2026-08-13, deux conditions mesurees sur ce paquet.**
+  L'arbitrage complet est dans `FICHE-bandit-manchot-additions-cp.md` (bloc du 2026-08-13) ; ce n'est
+  pas un Done pedagogique et il ne touche aucun verdict de cette fiche. Ce qui concerne ce paquet, et
+  que je recopie ici parce que c'est ici qu'on viendra le chercher - les deux mesures ont ete faites
+  sur l'item *"Vous ___ du chocolat."* de ce paquet, servi par les vraies routes :
+  **F13 - le flanc droit n'offre que 20 px hors des colonnes, et ce paquet est celui qui le prouve.**
+  A 360 px, sur le repli a quatre colonnes de ce jeu, entre le bord droit de la quatrieme proposition
+  (`x = 339`) et le bord droit de l'ecran (`x = 359`) il y a **8 px de bordure + 12 px de fond de
+  page**. Le levier propose par `ines-design` (variante E) fait 24 px de large : sa boule recouvre
+  **34 px de la quatrieme proposition** (`x = 337..339`, `y = 479..492`, boite du bouton
+  `x = 188..339`, `y = 444..514`) et cette bande de 3 x 14 px est **morte au toucher**, le levier
+  etant un frere absolu place au-dessus sans `pointer-events: none`. Toute partie du levier plus large
+  que 20 px recouvre necessairement une proposition, le corps du cabinet, ou sort de l'ecran. La meme
+  variante replacee dans les 20 px recouvre **zero pixel** a l'interieur du cabinet, sur ce jeu comme
+  sur un jeu de CP a trois colonnes, et garde sa lecture. **Aucune largeur de colonne n'est touchee** :
+  contour du cabinet `12..347` / `317..538`, identique avec et sans levier, donc **F5 n'est pas
+  rouverte et le plancher de 150,27 px n'est pas entame**.
+  **F17 - le voile du rouleau a cesse d'aider ce paquet et a commence a lui couter.** Avec le texte
+  sombre sur pastel accepte le meme jour, le mot d'une proposition passe de **9,55:1 au repos a
+  6,07:1 sous le voile** (noir a 20 %), alors que sur le bouton bleu actuel le voile **augmentait** le
+  contraste (5,41 vers 7,48:1). Le resultat reste au-dessus de 4,5:1 et **ce n'est donc pas un motif**,
+  mais la marge n'est plus celle qu'elle etait : toute teinte plus claire ou tout voile plus opaque
+  ferait passer un mot de ce paquet sous mon plancher sans qu'aucun test ne bouge.
+  **Ma barre de six points n'est pas rouverte par cet arbitrage et reste levee**, et la reserve F du
+  2026-08-12 sur les 2,86 px d'air de `mangeons` reste ouverte, inchangee.
+- **Derniere mise a jour** : 2026-08-13
 
 ## Competences visees
 
