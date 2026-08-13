@@ -32,7 +32,7 @@
     <p class="indice" th:if="${indice != null}" th:text="${indice}"></p>
     <!-- S8-1 : le cabinet entoure les colonnes de reponses, jamais la consigne, l'enonce ni
          l'indice, qui restent au-dessus, hors du cadre (nadia-prof, arbitrage prealable du
-         2026-08-11, section 2 ; proposition-ines-cabinet.md, section 1). Deux freres purement
+         2026-08-11, section 2 ; proposition-ines-cabinet.md, section 1). Freres purement
          decoratifs, aria-hidden parce qu'ils ne portent aucune information que le texte de
          l'ecran ne porte deja.
          ADR-0030 point 1.a : les trois classes portent chacune une regle de recreo.css. Point 1.c :
@@ -40,14 +40,23 @@
          l'appariement de saillance des boutons qu'il contient. Point 1.d : ce balisage vit
          uniquement ici, jamais sur "ecran-de-jeu" ni sur la racine d'un fragment - c'est cette
          absence ailleurs qui garantit que le cabinet n'atteint ni l'ecran de retour ni l'ecran de
-         fin de partie (nadia-prof, section 6 de son arbitrage). -->
+         fin de partie (nadia-prof, section 6 de son arbitrage).
+         S10 : le visage (aucun texte, hors du masque de .cabinet-bandeau il resterait quand meme
+         muet) et le levier de flanc, frere de .propositions et non son ancetre (ADR-0033).
+         L'enseigne n'est pas cablee ici : F11 et ADR-0035 bloquent son emplacement accessible tant
+         qu'une ecoute reelle de lecteur d'ecran n'a pas eu lieu (nadia-prof). -->
     <div class="cabinet">
-        <div class="cabinet-bandeau" aria-hidden="true"></div>
+        <div class="cabinet-bandeau" aria-hidden="true">
+            <span class="cabinet-visage"></span>
+        </div>
         <form class="propositions" th:attr="hx-post=@{'/parties/' + ${jeuId} + '/coups'}" hx-target="#jeu" hx-swap="innerHTML">
             <button type="submit" class="btn proposition" data-role="action"
                     th:each="proposition : ${propositions}"
                     name="propositionChoisie" th:value="${proposition}" th:text="${proposition}"></button>
         </form>
+        <div class="cabinet-levier" aria-hidden="true">
+            <span class="cabinet-levier-embase"></span>
+        </div>
         <div class="cabinet-socle" aria-hidden="true"></div>
     </div>
 </div>

@@ -1,13 +1,14 @@
 /* ADR-0013 obligation 3 : jeu fautif de CabinetDeLaMachineTest.verifierAucunePixelSurLeCabinet -
-   la meme feuille de cabinet que la production, ou CHAQUE selecteur epingle par
-   SELECTEURS_DU_CABINET porte une dimension en pixels plutot qu'en rem (contre le critere
-   d'acceptation de S8-1).
+   la meme feuille de cabinet que la production, ou CHAQUE selecteur derive par
+   CabinetDeLaMachineTest.selecteursDuCabinet(RACINE_PRODUCTION) porte une dimension en pixels
+   plutot qu'en rem (contre le critere d'acceptation de S8-1).
 
    Chacun et pas un seul : le garde-fou rassemble tous les fautifs avant d'echouer, et le
-   contre-exemple exige que le message les nomme tous. Un selecteur ajoute a la liste sans recevoir
-   ici son bloc fautif fait rougir chaqueSelecteurEpingleEstEprouveParLeJeuFautif, en le nommant.
-   C'est la seule facon qu'un selecteur n'entre pas dans le perimetre sans y etre eprouve, et l'ordre
-   de la liste n'y change rien (ADR-0033 point 7.a). */
+   contre-exemple exige que le message les nomme tous. Depuis le correctif S10 (derivation plutot
+   qu'enumeration), un selecteur ajoute a la production sans recevoir ici son bloc fautif fait
+   rougir chaqueSelecteurEpingleEstEprouveParLeJeuFautif, en le nommant. C'est la seule facon qu'un
+   selecteur n'entre pas dans le perimetre sans y etre eprouve, et l'ordre n'y change rien
+   (ADR-0033 point 7.a). */
 .cabinet {
     display: flex;
     flex-direction: column;
@@ -37,4 +38,53 @@
 
 .cabinet-socle {
     height: 16px;
+}
+
+/* S10 : les dix selecteurs de decor ajoutes par la forme du meuble (visage, enseigne, levier et
+   ses etoiles de socle), chacun avec sa dimension en pixels - le meme geste que ci-dessus, paye
+   une fois par la derivation plutot que par une liste tenue a jour a la main. */
+.cabinet-visage {
+    width: 22px;
+    height: 18px;
+}
+
+.cabinet-visage::before {
+    width: 8px;
+    height: 8px;
+}
+
+.cabinet-visage::after {
+    width: 12px;
+    height: 6px;
+}
+
+.cabinet-enseigne {
+    font-size: 20px;
+}
+
+.cabinet-levier {
+    width: 20px;
+    height: 36px;
+}
+
+.cabinet-levier::before {
+    width: 7px;
+}
+
+.cabinet-levier::after {
+    width: 18px;
+    height: 18px;
+}
+
+.cabinet-levier-embase {
+    width: 20px;
+    height: 12px;
+}
+
+.cabinet-socle::before {
+    left: 8px;
+}
+
+.cabinet-socle::after {
+    right: 8px;
 }
