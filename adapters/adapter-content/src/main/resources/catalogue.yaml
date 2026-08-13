@@ -6,12 +6,6 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-additions-jusqu-a-10
     nombreDeManches: 10
-  - id: bandit-manchot-homophones-cm1
-    titre: "Le bon petit mot"
-    consigne: "Quel mot complète la phrase ?"
-    mecanique: bandit-manchot
-    paquet: cm1-homophones
-    nombreDeManches: 10
   - id: bandit-manchot-conjugaison-present-cm1
     titre: "Le bon verbe"
     consigne: "Quel verbe complète la phrase ?"

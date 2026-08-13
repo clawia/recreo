@@ -2995,6 +2995,14 @@ d'`ines-design`, puis arbitrage prealable de `nadia-prof` avant toute ligne de c
     `nadia-prof` : que la silhouette soit reconnue comme un levier sans qu'un enfant cherche a la
     tirer en s'attendant a un effet - risque residuel nomme par `DEC-0023` et non tranche par la
     levee de son veto sur la manette.
+  - **Correctif route par `theo-archi` (avis de faisabilite du sprint 10)** : le levier ajoute le
+    premier selecteur de decor du sprint a `CabinetDeLaMachineTest`, et
+    `SELECTEURS_DU_CABINET` y est aujourd'hui une liste enumeree a la main - le visage, l'enseigne
+    et les etoiles du socle des stories suivantes en ajouteraient neuf de plus sans qu'aucun rouge
+    ne le signale si elle reste enumeree. Etant donne cette story, quand on relit
+    `CabinetDeLaMachineTest`, alors `SELECTEURS_DU_CABINET` n'est plus une liste ecrite a la main
+    mais **derivee** de la feuille maison : toute regle dont le selecteur nomme une classe
+    commencant par `cabinet` y entre automatiquement, le nouveau selecteur du levier compris.
 - **Lien decision** :
   `DEC-0023-perimetre-sprint-10-repris-sur-references-utilisatrice-veto-manette-leve-ecran-
   intermediaire-questionne.md`, point 3 (levee nommee du veto de `nadia-prof` sur la manette,
