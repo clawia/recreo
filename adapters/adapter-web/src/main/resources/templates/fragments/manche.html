@@ -8,11 +8,17 @@
      ne porte aucun style propre : il dit a la feuille maison que l'entree de menu de l'en-tete
      permanent ne doit pas s'afficher sur cet ecran (arbitrage de nadia-prof du 2026-08-07, S6-9). -->
 <!-- ADR-0027 : data-arrivee est le second marqueur d'etat de cet ecran, et il ne dit pas la meme chose
-     que "ecran-de-jeu". Le premier dit ou l'enfant est ; celui-ci dit comment il y est arrive - en
-     pressant quelque chose, ou par un chargement de page qu'il n'a pas demande (la reprise silencieuse
-     de S1-4, que accueil.html rend sans aucun echange htmx). Seule une regle d'animation le lira, et
-     c'est lui seul qui autorise un mouvement : un mouvement que l'enfant n'a pas declenche est refuse
-     (nadia-prof, arbitrage du 2026-08-10, section 6). -->
+     que "ecran-de-jeu". Le premier dit ou l'enfant est ; celui-ci dit comment le tirage que les
+     colonnes montrent est arrive. Seule une regle d'animation le lira, et c'est lui seul qui autorise
+     un mouvement : un mouvement que l'enfant n'a pas declenche est refuse (nadia-prof, arbitrage du
+     2026-08-10, section 6).
+     ADR-0027, amendement du 2026-08-13 (M10) : son sujet est le tirage, pas la reponse HTTP. Il vaut
+     "par-un-geste" quand un geste de l'enfant a fait arriver un tirage neuf, et "sans-geste" dans les
+     deux autres cas - un chargement de page que l'enfant n'a pas demande (la reprise silencieuse de
+     S1-4, que accueil.html rend sans aucun echange htmx), et un geste qui le laisse sur la meme
+     question (echec avec des essais restants, entree en revelation, appui a cote apres la
+     revelation). Rejouer le defilement sur une question inchangee ferait dire au mouvement que la
+     machine vient de distribuer alors que rien n'a ete distribue (nadia-prof, condition M10). -->
 <!-- S10, M13 : data-focus est un troisieme marqueur, sur le meme modele que data-arrivee - le serveur
      declare ou doit aller le focus apres cet echange, jamais un script qui le devine. "enonce" designe
      l'enonce (manche fraiche : premiere manche d'une partie, ou manche qui suit une reussite) ; l'autre

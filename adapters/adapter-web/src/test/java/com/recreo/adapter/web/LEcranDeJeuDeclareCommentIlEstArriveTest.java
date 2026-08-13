@@ -2,6 +2,7 @@ package com.recreo.adapter.web;
 
 import com.recreo.domain.mechanic.SessionStatus;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Attribute;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.junit.jupiter.api.Test;
@@ -14,18 +15,22 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 /**
- * ADR-0027 : tout ecran de jeu rendu par le serveur declare s'il a ete demande par un geste de
- * l'enfant, et seul un ecran arrive par un geste porte le marqueur qui autorise un mouvement.
+ * ADR-0027 : tout ecran de jeu rendu par le serveur declare comment le tirage que ses colonnes
+ * montrent est arrive, et seul un tirage qu'un geste de l'enfant a fait arriver porte le marqueur qui
+ * autorise un mouvement.
  *
  * <p><b>Le defaut que ce garde-fou ferme, et il etait dans le mecanisme d'ADR-0026 lui-meme.</b>
  * ADR-0026 section 2 fait demarrer l'animation a l'insertion de l'element dans le document, en
@@ -42,6 +47,27 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  * d'existence possible que si le serveur la pose. Ce n'est pas un choix de conception, c'est une
  * contrainte.
  *
+ * <p><b>Amendement du 2026-08-13, condition M10 de {@code nadia-prof} : un geste ne suffit pas, et le
+ * sujet du marqueur est le tirage.</b> La clause d'origine exigeait que <i>tout</i> ecran de jeu
+ * echange par htmx declare {@code par-un-geste}, sans exception. Elle etait juste tant qu'un echange
+ * htmx renouvelait toujours la question ; le cycle de manche de S10 l'a rendue fausse. Un echec avec
+ * des essais restants, l'entree en revelation et un appui a cote apres la revelation sont trois
+ * echanges demandes par un vrai geste qui rendent <b>le meme tirage</b>. Les colonnes y rejouaient
+ * leur defilement, ce que {@code nadia-prof} refuse nommement : le mouvement dit que la machine
+ * distribue, et rien n'a ete distribue ; un enfant de CP croit alors que la question a change et relit
+ * tout ; le prix est jusqu'a 18 s d'attente ajoutee pour celui qui se trompe le plus. La propriete
+ * gardee devient donc un <b>si et seulement si</b> : un ecran declare le marqueur exactement quand un
+ * geste de l'enfant a fait arriver un tirage neuf. Ce n'est pas une route qui est exemptee - aucune ne
+ * l'est - c'est le sujet de {@code data-arrivee} qui est enfin nomme : ce qui arrive, ou n'arrive pas,
+ * est le tirage que les colonnes montrent, pas la reponse HTTP.
+ *
+ * <p><b>Ce que ce sujet ne peut pas etre.</b> "Le tirage a change" ne se lit pas en comparant l'ecran
+ * a celui d'avant : deux manches d'un meme item rendent un enonce et des propositions identiques
+ * (c'est ce que fait {@code jeu-repete}), donc la comparaison ne distingue pas une question neuve
+ * d'une question inchangee. Ce qui se lit, et qui est exactement la propriete voulue, est <b>la trace
+ * d'un essai deja fait sur ce tirage</b> : la marque que le serveur pose sur une proposition deja
+ * pressee. Elle est lue dans le gabarit et non ecrite ici.
+ *
  * <p>ADR-0013, les trois obligations :
  * <ul>
  *   <li><b>perimetre derive</b> : la liste des routes vient de {@code RequestMappingHandlerMapping}
@@ -50,12 +76,16 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  *       reponse elle-meme</b> - la presence d'un element {@code <html>} - jamais dans une liste de
  *       routes ecrite ici. C'est le seul critere qui ne se perime pas : un fragment est par definition
  *       ce que htmx echange, un document complet est par definition ce que le navigateur charge ;</li>
- *   <li><b>derivation totale</b> : un ecran de jeu qui ne porte aucun des deux marqueurs, ou les deux
- *       a la fois, est un echec et non un cas ignore. Le compilateur ferme l'autre moitie : le
- *       parametre {@code arriveeParUnGeste} de {@code PartieController.mancheModele} oblige chaque
- *       point d'appel a se prononcer ;</li>
- *   <li><b>mise a l'epreuve</b> : sur la sortie reelle du serveur, par mutation du seul point d'appel
- *       fautif, et par relecture adverse de la polarite du marqueur (voir ADR-0027).</li>
+ *   <li><b>derivation totale</b> : un ecran de jeu qui ne porte aucun des deux marqueurs, ou l'une de
+ *       leurs valeurs, est un echec et non un cas ignore - la comparaison porte sur la valeur exacte
+ *       attendue, jamais sur une liste de valeurs tolerees. Le compilateur ferme une moitie du produit :
+ *       le parametre {@code gesteDeLEnfant} de {@code PartieController.mancheModele} oblige chaque
+ *       point d'appel a se prononcer sur le facteur que lui seul connait. L'autre facteur ne vit a
+ *       aucun point d'appel : il est calcule dans ce point de passage unique, donc aucune route
+ *       existante ou future ne peut l'oublier ni y echapper ;</li>
+ *   <li><b>mise a l'epreuve</b> : sur la sortie reelle du serveur, mutee - un ecran d'echec qui
+ *       declare le geste, et une reprise silencieuse qui le declare. Les deux jumeaux corriges sont la
+ *       meme sortie telle qu'elle part, et restent verts (voir ADR-0027).</li>
  * </ul>
  */
 @WebMvcTest(PartieController.class)
@@ -92,6 +122,21 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
     private static final String ATTRIBUT_D_ARRIVEE = "data-arrivee";
     private static final String PAR_UN_GESTE = "par-un-geste";
     private static final String SANS_GESTE = "sans-geste";
+
+    /** Le gabarit de l'ecran de jeu, donc la source qui gouverne ses marqueurs (ADR-0015). */
+    private static final Path GABARIT_DE_MANCHE =
+            Path.of("src/main/resources/templates/fragments/manche.html");
+
+    /** ADR-0013 : le jeu fautif de la lecture de la marque d'un essai deja fait. */
+    private static final Path CONTRE_EXEMPLE =
+            Path.of("src/test/resources/contreexemple/LEcranDeJeuDeclareCommentIlEstArriveTest");
+
+    /**
+     * L'attribut de modele par lequel le controleur transmet au gabarit les propositions deja
+     * essayees sur la manche courante. C'est le seul nom ecrit ici : la marque qui en decoule est lue
+     * dans le gabarit.
+     */
+    private static final String MODELE_DES_ESSAIS = "propositionsEssayees";
 
     @Autowired
     private MockMvc mockMvc;
@@ -141,6 +186,8 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
                 "POST /parties/{jeuId}/coups", coupFaux()));
         reponses.add(reponse("manche en revelation, la partie continue",
                 "POST /parties/{jeuId}/coups", revelation()));
+        reponses.add(reponse("appui a cote apres la revelation, la manche ne bouge pas",
+                "POST /parties/{jeuId}/coups", appuiACoteApresLaRevelation()));
         reponses.add(reponse("fin de partie sur une reponse fausse", "POST /parties/{jeuId}/coups",
                 finDePartieFaussee()));
         reponses.add(reponse("retour de la derniere manche, fin de partie", "POST /parties/{jeuId}/coups",
@@ -160,20 +207,39 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
      * manche ne bouge pas, sur sa propre session.
      */
     private MockHttpServletRequestBuilder coupFaux() throws Exception {
-        MockHttpSession partieFaussee = new MockHttpSession();
-        mockMvc.perform(post("/parties/{jeuId}", JEU_REPETE_ID).session(partieFaussee));
-        return post("/parties/{jeuId}/coups", JEU_REPETE_ID).session(partieFaussee)
-                .param("propositionChoisie", PROPOSITION_FAUSSE);
+        return unEchec(sessionApresDesEchecs(0));
     }
 
     /** M5 : trois echecs sur la meme manche declenchent la revelation, sur sa propre session. */
     private MockHttpServletRequestBuilder revelation() throws Exception {
+        return unEchec(sessionApresDesEchecs(2));
+    }
+
+    /**
+     * M5 : sur une manche revelee, un appui sur une autre proposition que la reponse nommee ne
+     * change rien - ni essai compte, ni etat modifie. C'est le troisieme des trois etats que la
+     * condition M10 nomme, et le corpus ne le portait pas : sans lui, une clause qui n'aurait ferme
+     * que les deux premiers serait passee verte.
+     */
+    private MockHttpServletRequestBuilder appuiACoteApresLaRevelation() throws Exception {
+        return unEchec(sessionApresDesEchecs(3));
+    }
+
+    /**
+     * Une session dont la manche courante a deja essuye {@code echecs} echecs, sur le seul jeu du
+     * catalogue de test qu'une reponse fausse ne termine pas. Trois echecs la laissent en revelation
+     * (M5) ; un quatrieme appui a cote ne change plus rien.
+     */
+    private MockHttpSession sessionApresDesEchecs(int echecs) throws Exception {
         MockHttpSession session = new MockHttpSession();
         mockMvc.perform(post("/parties/{jeuId}", JEU_REPETE_ID).session(session));
-        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_REPETE_ID).session(session)
-                .param("propositionChoisie", PROPOSITION_FAUSSE));
-        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_REPETE_ID).session(session)
-                .param("propositionChoisie", PROPOSITION_FAUSSE));
+        for (int essai = 0; essai < echecs; essai++) {
+            mockMvc.perform(unEchec(session));
+        }
+        return session;
+    }
+
+    private static MockHttpServletRequestBuilder unEchec(MockHttpSession session) {
         return post("/parties/{jeuId}/coups", JEU_REPETE_ID).session(session)
                 .param("propositionChoisie", PROPOSITION_FAUSSE);
     }
@@ -267,34 +333,141 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
     }
 
     /**
-     * Clause 1, celle qui ferme le defaut : un ecran de jeu qui arrive dans un document complet n'a
-     * ete demande par aucun geste, donc ne porte jamais le marqueur qui autorise un mouvement.
+     * La marque que le serveur pose sur une proposition deja pressee sur la manche courante (M9),
+     * lue <b>dans le gabarit</b> et non ecrite ici (ADR-0015 : le perimetre se derive de la source
+     * qui gouverne le rendu). C'est le seul fait de la sortie du serveur qui dise que l'enfant a deja
+     * repondu sur ce tirage, et donc que le geste suivant n'en a pas fait arriver un neuf.
+     *
+     * <p>Le jour ou cette marque cesse d'exister, ou d'etre gouvernee par {@code
+     * propositionsEssayees}, cette lecture rougit avec la marche a suivre plutot que de rendre une
+     * marque introuvable - avec laquelle tout ecran passerait pour un tirage neuf et l'amendement de
+     * M10 s'annulerait en silence.
+     */
+    static String marqueurDEssaiDejaFait() throws IOException {
+        return marqueurDEssaiDejaFait(GABARIT_DE_MANCHE);
+    }
+
+    static String marqueurDEssaiDejaFait(Path chemin) throws IOException {
+        Document gabarit = Jsoup.parse(chemin.toFile(), "UTF-8");
+        List<String> marqueurs = new ArrayList<>();
+        for (Element porteur : gabarit.getAllElements()) {
+            for (Attribute attribut : porteur.attributes()) {
+                if (!attribut.getValue().contains("${" + MODELE_DES_ESSAIS)) {
+                    continue;
+                }
+                String[] morceaux = attribut.getValue().split("'");
+                for (int i = 1; i < morceaux.length; i += 2) {
+                    if (!morceaux[i].isBlank()) {
+                        marqueurs.add(morceaux[i].strip());
+                    }
+                }
+            }
+        }
+        assertThat(marqueurs)
+                .as("ADR-0027, amendement du 2026-08-13 : la marque d'un essai deja fait se lit dans "
+                        + "%s, sur l'attribut qui choisit un litteral selon ${%s}. Une seule est "
+                        + "attendue. Si le gabarit exprime desormais cet etat autrement, c'est ici "
+                        + "qu'il faut re-deriver la lecture, pas ailleurs qu'il faut ecrire un nom de "
+                        + "classe a la main", chemin, MODELE_DES_ESSAIS)
+                .hasSize(1);
+        return marqueurs.get(0);
+    }
+
+    /**
+     * ADR-0013 obligation 3, mise a l'epreuve de la lecture elle-meme : un gabarit qui marque encore
+     * les propositions deja essayees, mais dont la classe est calculee dans le modele au lieu d'etre un
+     * litteral du gabarit. C'est le mode de defaillance qui compte le plus pour cet amendement : avec
+     * une marque introuvable, tout ecran passerait pour un tirage neuf, le "si et seulement si"
+     * redeviendrait le "tout echange declare le geste" d'avant, et aucun test ne rougirait.
+     */
+    @Test
+    void unGabaritQuiNExprimePlusLaMarqueDUnEssaiFaitEchouerLaLecture() {
+        Path fautif = CONTRE_EXEMPLE
+                .resolve("marque-d-essai-sans-litteral/templates/fragments/manche.html");
+
+        assertThatThrownBy(() -> marqueurDEssaiDejaFait(fautif))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("la marque d'un essai deja fait se lit dans");
+    }
+
+    /**
+     * Le tirage que ces colonnes montrent est-il neuf pour l'enfant ? Vrai quand aucune proposition ne
+     * porte la marque d'un essai deja fait.
+     */
+    private static boolean tirageNeuf(Element ecran, String marqueurDEssai) {
+        return ecran.select("." + marqueurDEssai).isEmpty();
+    }
+
+    /**
+     * ADR-0027, clause amendee : la valeur que le serveur doit declarer sur cet ecran. Un seul endroit
+     * la calcule pour les deux populations, parce que les deux clauses ci-dessous ne sont que les deux
+     * moities du meme "si et seulement si" - deux calculs libres de diverger laisseraient un ecran juge
+     * par ni l'un ni l'autre (meme raison qu'ADR-0033 point 3).
+     */
+    private static String arriveeAttendue(boolean echangeParHtmx, boolean tirageNeuf) {
+        return echangeParHtmx && tirageNeuf ? PAR_UN_GESTE : SANS_GESTE;
+    }
+
+    /** Pourquoi cette valeur, dans les mots du refus qui l'exige. */
+    private static String motifDArrivee(boolean echangeParHtmx, boolean tirageNeuf) {
+        if (!echangeParHtmx) {
+            return "Le navigateur a charge une page entiere, sans qu'aucun geste de l'enfant ne l'ait "
+                    + "demandee : les colonnes tourneraient devant un enfant qui a seulement recharge "
+                    + "sa page (nadia-prof, arbitrage du 2026-08-10, section 6).";
+        }
+        if (!tirageNeuf) {
+            return "Un geste a bien demande cet echange, mais l'enfant a deja essaye une proposition de "
+                    + "ce tirage : ce geste ne l'a pas renouvele. Un mouvement dirait ici que la machine "
+                    + "vient de distribuer alors que rien n'a ete distribue, un enfant de CP croirait "
+                    + "que la question a change et relirait tout, et le rebalayage coute jusqu'a 18 s "
+                    + "d'attente a celui qui se trompe le plus (nadia-prof, condition M10).";
+        }
+        return "Un geste de l'enfant a fait arriver un tirage neuf : c'est le seul cas ou une colonne a "
+                + "le droit de bouger, et sans lui aucune ne bougerait jamais.";
+    }
+
+    /**
+     * Les ecarts entre ce que cette reponse declare et ce que le "si et seulement si" exige, un par
+     * ecran fautif. Un marqueur absent ou d'une troisieme valeur est un ecart comme un autre : la
+     * comparaison porte sur la valeur exacte attendue, jamais sur une liste de valeurs tolerees.
+     */
+    private static List<String> ecartsDArrivee(Reponse reponse, String marqueurDEssai) {
+        List<String> ecarts = new ArrayList<>();
+        boolean echange = !reponse.documentComplet();
+        for (Element ecran : ecransAnimables(reponse)) {
+            boolean neuf = tirageNeuf(ecran, marqueurDEssai);
+            String attendue = arriveeAttendue(echange, neuf);
+            if (declare(ecran, attendue)) {
+                continue;
+            }
+            ecarts.add(String.format(
+                    "ADR-0027 : sur \"%s\" (%s), cet ecran de jeu declare %s=\"%s\" et doit declarer "
+                            + "\"%s\". %s",
+                    reponse.nom(), reponse.route(), ATTRIBUT_D_ARRIVEE, arrivee(ecran), attendue,
+                    motifDArrivee(echange, neuf)));
+        }
+        return ecarts;
+    }
+
+    /**
+     * Clause 1, celle qui ferme le defaut d'origine : un ecran de jeu qui arrive dans un document
+     * complet n'a ete demande par aucun geste, donc ne porte jamais le marqueur qui autorise un
+     * mouvement.
      */
     @Test
     void aucunEcranDeJeuArrivantDansUnDocumentCompletNAutoriseUnMouvement() throws Exception {
+        String marqueurDEssai = marqueurDEssaiDejaFait();
         List<String> juges = new ArrayList<>();
+        List<String> ecarts = new ArrayList<>();
         for (Reponse reponse : reponses()) {
             if (!reponse.documentComplet()) {
                 continue;
             }
-            for (Element ecran : ecransAnimables(reponse)) {
-                juges.add(reponse.nom());
-                assertThat(declare(ecran, PAR_UN_GESTE))
-                        .as("ADR-0027 : sur \"%s\" (%s), le serveur rend un ecran de jeu dans un "
-                                + "document complet - donc au chargement de la page, sans qu'aucun "
-                                + "geste de l'enfant ne l'ait demande - et il declare %s=\"%s\". Les "
-                                + "colonnes tourneraient devant un enfant qui a seulement recharge sa "
-                                + "page (nadia-prof, arbitrage du 2026-08-10, section 6)",
-                                reponse.nom(), reponse.route(), ATTRIBUT_D_ARRIVEE, PAR_UN_GESTE)
-                        .isFalse();
-                assertThat(declare(ecran, SANS_GESTE))
-                        .as("ADR-0027 : sur \"%s\" (%s), cet ecran de jeu ne declare pas comment il est "
-                                + "arrive. Un ecran muet est un ecran qu'aucune regle d'animation ne "
-                                + "saura distinguer, et le doute joue alors du mauvais cote",
-                                reponse.nom(), reponse.route())
-                        .isTrue();
-            }
+            ecransAnimables(reponse).forEach(ecran -> juges.add(reponse.nom()));
+            ecarts.addAll(ecartsDArrivee(reponse, marqueurDEssai));
         }
+
+        assertThat(ecarts).as("ADR-0027 clause 1").isEmpty();
         assertThat(juges)
                 .as("ADR-0003 : cette clause ne prouve rien si aucun ecran de jeu n'est rendu dans un "
                         + "document complet. La branche de reprise de accueil.html en rend un ; si elle "
@@ -303,37 +476,116 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
     }
 
     /**
-     * Clause 2, l'autre bout : un ecran de jeu echange par htmx a bien ete demande par un appui, et il
-     * porte le marqueur. Sans cette clause, il suffirait de ne jamais poser le marqueur pour rendre la
-     * clause 1 verte a vide - et plus aucun rouleau ne tournerait jamais.
+     * Clause 2, l'autre bout, amendee le 2026-08-13 par la condition M10 : un ecran de jeu echange par
+     * htmx autorise le mouvement <b>si et seulement si</b> le geste qui l'a demande a fait arriver un
+     * tirage neuf. Les deux sens comptent, et chacun ferme un defaut different :
+     *
+     * <ul>
+     *   <li>sans le sens "seulement si", les trois echanges qui laissent l'enfant sur la meme question
+     *       rebalaient leurs colonnes - c'est l'etat du depot la veille de cet amendement, et le refus
+     *       de {@code nadia-prof} porte precisement dessus ;</li>
+     *   <li>sans le sens "si", il suffirait de ne jamais poser le marqueur pour rendre la clause 1
+     *       verte a vide, et plus aucun rouleau ne tournerait jamais.</li>
+     * </ul>
      */
     @Test
-    void toutEcranDeJeuEchangeParHtmxAutoriseLeMouvement() throws Exception {
-        List<String> juges = new ArrayList<>();
+    void unEcranEchangeAutoriseLeMouvementSiEtSeulementSiSonTirageEstNeuf() throws Exception {
+        String marqueurDEssai = marqueurDEssaiDejaFait();
+        List<String> tiragesNeufs = new ArrayList<>();
+        List<String> tiragesDejaEssayes = new ArrayList<>();
+        List<String> ecarts = new ArrayList<>();
         for (Reponse reponse : reponses()) {
             if (reponse.documentComplet()) {
                 continue;
             }
             for (Element ecran : ecransAnimables(reponse)) {
-                juges.add(reponse.nom());
-                assertThat(declare(ecran, PAR_UN_GESTE))
-                        .as("ADR-0027 : sur \"%s\" (%s), le serveur echange un ecran de jeu en reponse a "
-                                + "un appui de l'enfant, et cet ecran declare %s=\"%s\" au lieu de "
-                                + "\"%s\". Aucune colonne ne tournerait jamais : le garde-fou de la "
-                                + "clause 1 resterait vert et le mouvement n'existerait nulle part",
-                                reponse.nom(), reponse.route(), ATTRIBUT_D_ARRIVEE, arrivee(ecran),
-                                PAR_UN_GESTE)
-                        .isTrue();
-                assertThat(arrivee(ecran))
-                        .as("ADR-0027 : sur \"%s\" (%s), le marqueur d'arrivee ne prend qu'une des deux "
-                                + "valeurs connues", reponse.nom(), reponse.route())
-                        .isIn(PAR_UN_GESTE, SANS_GESTE);
+                (tirageNeuf(ecran, marqueurDEssai) ? tiragesNeufs : tiragesDejaEssayes)
+                        .add(reponse.nom());
             }
+            ecarts.addAll(ecartsDArrivee(reponse, marqueurDEssai));
         }
-        assertThat(juges)
-                .as("ADR-0003 : cette clause ne prouve rien si aucun ecran de jeu n'est echange par "
-                        + "htmx")
+
+        assertThat(ecarts).as("ADR-0027 clause 2, amendee").isEmpty();
+        assertThat(tiragesNeufs)
+                .as("ADR-0003 : sans un seul echange qui fait arriver un tirage neuf, le sens \"si\" de "
+                        + "cette clause est vide et elle resterait verte sur un depot ou aucune colonne "
+                        + "ne bouge jamais")
                 .isNotEmpty();
+        assertThat(tiragesDejaEssayes)
+                .as("ADR-0003 : sans un seul echange qui laisse l'enfant sur une question qu'il a deja "
+                        + "essayee, le sens \"seulement si\" est vide et l'amendement du 2026-08-13 ne "
+                        + "prouve rien - c'est exactement la population que la clause d'origine "
+                        + "acceptait a tort")
+                .isNotEmpty();
+    }
+
+    /**
+     * La meme reponse, avec la valeur du marqueur remplacee sur chacun de ses ecrans de jeu. L'objet
+     * mis a l'epreuve est ainsi la sortie reelle du serveur et non une fixture ecrite de ma main
+     * (lecon de s05, reprise par ADR-0015).
+     */
+    private static Reponse declarant(Reponse reponse, String valeur) {
+        Document mute = Jsoup.parse(reponse.corps());
+        mute.select("." + ECRAN_DE_JEU).forEach(ecran -> ecran.attr(ATTRIBUT_D_ARRIVEE, valeur));
+        return new Reponse(reponse.nom(), reponse.route(), mute.outerHtml(), reponse.documentComplet());
+    }
+
+    /**
+     * ADR-0013 obligation 3, mise a l'epreuve du sens "seulement si" que l'amendement du 2026-08-13
+     * ajoute, sur un objet neuf : l'ecran que le serveur rend reellement sur un echec avec des essais
+     * restants, dont le seul marqueur d'arrivee est mute. Son jumeau corrige est cette meme sortie
+     * telle qu'elle part, et il reste vert - sans quoi cette epreuve ne dirait pas ce qu'elle croit
+     * dire.
+     */
+    @Test
+    void unEcranQuiDeclareLeGesteSurUneQuestionInchangeeFaitEchouerLeGardeFou() throws Exception {
+        String marqueurDEssai = marqueurDEssaiDejaFait();
+        Reponse jumeauCorrige = reponse("manche apres une reponse fausse, la partie continue",
+                "POST /parties/{jeuId}/coups", coupFaux());
+        List<Element> ecrans = ecransAnimables(jumeauCorrige);
+
+        assertThat(ecrans).as("l'objet de cette epreuve est un ecran de jeu unique").hasSize(1);
+        assertThat(tirageNeuf(ecrans.get(0), marqueurDEssai))
+                .as("cet ecran porte bien la marque d'un essai deja fait, sans quoi il n'eprouve pas "
+                        + "le sens \"seulement si\"")
+                .isFalse();
+        assertThat(ecartsDArrivee(jumeauCorrige, marqueurDEssai))
+                .as("le jumeau corrige est la sortie telle que le serveur l'envoie : elle reste verte")
+                .isEmpty();
+
+        assertThat(ecartsDArrivee(declarant(jumeauCorrige, PAR_UN_GESTE), marqueurDEssai))
+                .as("un ecran qui declare le geste sur une question que l'enfant n'a pas changee doit "
+                        + "rendre ce garde-fou rouge")
+                .hasSize(1)
+                .allSatisfy(ecart -> assertThat(ecart)
+                        .contains("l'enfant a deja essaye une proposition de ce tirage")
+                        .contains("doit declarer \"" + SANS_GESTE + "\""));
+    }
+
+    /**
+     * ADR-0013 obligation 3, sur le mode de defaillance que la clause d'origine visait : il ne doit pas
+     * se rouvrir par l'amendement. L'ecran de la reprise silencieuse, mute pour declarer le geste, est
+     * le defaut d'origine repose octet pour octet sur la sortie reelle du serveur - il rougit encore, et
+     * pour son propre motif, jamais celui de M10.
+     */
+    @Test
+    void unEcranDeRepriseQuiDeclareLeGesteFaitEchouerEncoreLeGardeFou() throws Exception {
+        String marqueurDEssai = marqueurDEssaiDejaFait();
+        MockHttpSession partie = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(partie));
+        Reponse reprise = reponse("reprise silencieuse", "GET /", get("/").session(partie));
+
+        assertThat(ecartsDArrivee(reprise, marqueurDEssai))
+                .as("le jumeau corrige - la reprise telle que le serveur la rend - reste vert")
+                .isEmpty();
+
+        assertThat(ecartsDArrivee(declarant(reprise, PAR_UN_GESTE), marqueurDEssai))
+                .as("une reprise silencieuse qui declare le geste doit rendre ce garde-fou rouge, et "
+                        + "l'amendement de M10 ne doit pas avoir rouvert ce chemin")
+                .hasSize(1)
+                .allSatisfy(ecart -> assertThat(ecart)
+                        .contains("Le navigateur a charge une page entiere")
+                        .contains("doit declarer \"" + SANS_GESTE + "\""));
     }
 
     /**

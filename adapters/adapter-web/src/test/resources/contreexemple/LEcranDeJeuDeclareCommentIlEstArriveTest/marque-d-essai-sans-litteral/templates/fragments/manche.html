@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- ADR-0013, jeu fautif de LEcranDeJeuDeclareCommentIlEstArriveTest, amendement du 2026-08-13.
+     Ce gabarit marque encore les propositions deja essayees - le rendu de l'enfant serait identique -
+     mais le nom de la classe est calcule dans le modele au lieu d'etre un litteral du gabarit. La
+     lecture d'ADR-0015 n'a donc plus rien a lire, et elle doit le dire plutot que de rendre une marque
+     introuvable : avec une marque introuvable, tout ecran passerait pour un tirage neuf, le "si et
+     seulement si" de la clause 2 redeviendrait le "tout echange declare le geste" d'avant l'amendement,
+     et le rebalayage que nadia-prof refuse (condition M10) reviendrait sans qu'aucun test ne rougisse. -->
+<div th:fragment="manche" class="ecran-de-jeu"
+     th:attr="data-arrivee=${arriveeParUnGeste} ? 'par-un-geste' : 'sans-geste', data-focus=${focus}">
+    <p class="enonce" th:text="${enonce}"></p>
+    <form class="propositions" th:attr="hx-post=@{'/parties/' + ${jeuId} + '/coups'}" hx-target="#jeu" hx-swap="innerHTML">
+        <button type="submit" class="btn proposition" data-role="action"
+                th:each="proposition : ${propositions}"
+                th:classappend="${marqueDEssai}"
+                name="propositionChoisie" th:value="${proposition}" th:text="${proposition}"></button>
+    </form>
+</div>
+</body>
+</html>
