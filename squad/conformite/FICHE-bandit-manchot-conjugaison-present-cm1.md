@@ -102,6 +102,22 @@
   sur 25** nomment la bonne reponse entre guillemets, manquement que je nomme comme le mien puisque
   je les avais valides sans verifier ce point - et la condition **M2**, qui lui interdit d'afficher
   son indice sur la question courante tant que ces textes ne sont pas reecrits.
+- **Arbitrage prealable du 2026-08-13 sur l'indice appele par l'enfant (une ampoule) - ce jeu est le
+  seul vise nommement.** L'arbitrage complet est dans `FICHE-bandit-manchot-additions-cp.md`, bloc de
+  validation, section "Arbitrage prealable au developpement - l'indice appele par l'enfant (une
+  ampoule), du 2026-08-13" : **accepte dans son principe, six conditions M16 a M21, M17 bloquante**.
+  Ce n'est pas un Done pedagogique et il ne touche aucun verdict de cette fiche ; **mon refus du
+  2026-08-13 tient**. Ce qui concerne ce paquet, et que je recopie ici parce que c'est ici qu'on
+  viendra le chercher :
+  **M21 - ce jeu ne portera pas d'ampoule.** Ses **25 indices sur 25** nomment la bonne reponse,
+  reverifie sur le paquet servi ce jour ; l'utilisatrice l'a constate en jouant - un seul appui faux
+  suffit pour que l'indice donne la reponse. Une aide a la demande n'est pas une porte de sortie a
+  **M2** : l'ampoule n'est pas rendue du tout sur ce paquet, ni grisee ni inerte, tant que les textes
+  ne sont pas reecrits (**reserve A**).
+  **Consequence que j'accepte et que je nomme (reserve S)** : sur ce jeu, un enfant qui rate trois
+  fois recevra **la reponse et rien d'autre**. Ce paquet ne porte aucun champ `explication` -
+  `cp-le-bon-son` est le seul du catalogue qui en porte. **La reserve A cesse d'etre une amelioration
+  et devient ce qui rend ce jeu enseignable.**
 - **Arbitrage prealable de forme du 2026-08-12, deux conditions qui portent nommement sur ce paquet.**
   L'arbitrage complet est dans `FICHE-bandit-manchot-additions-cp.md` (bloc du 2026-08-12, "la forme du
   meuble") ; ce n'est pas un Done pedagogique et il ne touche aucun verdict de cette fiche. Ce qui

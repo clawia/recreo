@@ -124,6 +124,26 @@
   le rendu et retiree, et mon premier rendu de ce jour etait faux - j'etais tombee dans le plancher de
   fenetre de 516 px que `outils/mesurer-rendu.sh` documente en tete de fichier. Ce n'est pas un Done
   pedagogique et aucun verdict de cette fiche n'est touche.
+- **Arbitrage prealable du 2026-08-13 - l'indice appele par l'enfant (une ampoule)** (bloc en tete du
+  bloc de validation) : **ACCEPTE dans son principe, sous six conditions M16 a M21, dont M17
+  bloquante.** **Je cede l'affichage automatique de l'indice sur les essais 1 et 2, et je garde deux
+  morceaux de M1** : l'ampoule **se marque** des le premier echec sur la question qui bloque (M16
+  clause 2), et l'indice **s'affiche de lui-meme sur l'ecran de revelation** (M17 clause 2), ou il
+  n'y a plus rien a divulguer et ou il est **la seule chose qui explique quoi que ce soit sur six des
+  sept jeux**. **Ce n'est pas un remede a M4, et mon refus n'est pas leve d'un pixel** : mesure ce
+  jour sur 57 etats joues, l'ampoule rend **96 a 156 px** et fait passer **cinq jeux sur sept** dans
+  les etats d'essai, mais laisse **+11,19 px** sur "Petits problemes", **+95,19 px** sur "Le bon
+  verbe", **jusqu'a +67,19 px** sur son "Bravo !" - que jamais aucun indice n'a alourdi, donc **je ne credite
+  rien a M11 de l'espace libere** - et tous les ecrans de revelation. **Le fait de l'utilisatrice est
+  reproduit** : un seul appui faux sur "Le bon verbe" et l'indice nomme la reponse, 25 indices sur 25
+  du paquet servi ; M2 et la reserve A restent entieres, et M21 interdit l'ampoule sur un paquet dont
+  les indices nomment la reponse. **Je corrige trois de mes propres constats** : mon 251,19 px etait
+  le pire cas d'un jeu dont le deficit depend de l'item (125,19 a 251,19) ; **un seul paquet sur huit
+  porte des explications** (`cp-le-bon-son`, 6 items sur 15), donc six jeux sur sept revelent la
+  reponse sans rien expliquer ; et un garde-fou litteral *"l'indice contient la reponse"*
+  disqualifierait a tort deux indices de CP. Deux reserves neuves **R** et **S**. Ce n'est pas un Done
+  pedagogique, et cet arbitrage est degrade sur trois points nommes, dont celui-ci : **je n'ai pas
+  observe d'enfant**, et c'est la question qui decide.
 - **Derniere mise a jour** : 2026-08-13
 
 ## Competences visees
@@ -191,6 +211,332 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Arbitrage prealable au developpement - l'indice appele par l'enfant (une ampoule), du 2026-08-13
+
+**Ce bloc n'est pas un Done pedagogique et n'en contient aucun.** Une proposition m'est adressee, et
+elle touche ma condition M1 : l'indice ne s'afficherait plus de lui-meme, l'enfant l'appellerait -
+une boite qu'on ouvre, ou une ampoule.
+
+- **Verdict** : **ACCEPTE dans son principe, sous six conditions M16 a M21**, dont **M17 est
+  bloquante**. Je garde deux morceaux de M1 et je cede le troisieme. **Ce bloc vaut pour les sept
+  jeux du catalogue**, la mecanique etant commune ; seul "Le bon verbe" est vise nommement, par M21,
+  et un renvoi est ecrit dans sa fiche.
+- **Date** : 2026-08-13.
+- **Ce que je ne fais pas ici** : je ne rejuge pas l'increment - **mon refus du 2026-08-13 tient,
+  entier, sur M4 et sur M13 clause 1**. Je ne rouvre aucune des vingt-sept conditions tenues. Je ne
+  decide pas de la forme de l'ampoule : `ines-design` la proposera, je l'arbitrerai comme le reste.
+- **Numerotation** : M14 est nee dans mon verdict du 2026-08-13, M15 dans ma reponse du meme jour sur
+  le lieu de l'indice. Je numerote donc **a partir de M16**, et je ne renumerote rien. Mes reserves
+  vont de A a Q ; les deux miennes de ce jour sont **R** et **S**.
+- **Lignee** : worktree dedie sur `s10-nadia-ampoule`, descend de `round-two` a `2d34a15`, verifie
+  par `bash outils/verifier-lignee.sh` ("le worktree sur la branche 's10-nadia-ampoule' descend de la
+  lignee de round-two"). Sixieme branche de mon sprint ; cette section s'empile, elle ne reecrit
+  rien. Je ne fusionne pas et je ne pousse pas.
+
+#### La reponse, en une phrase
+
+**J'accepte que l'enfant appelle l'indice, et je garde deux des trois choses que M1 disait** :
+l'aide **s'annonce** a l'enfant au moment ou il est bloque, meme s'il doit l'ouvrir d'un appui, et
+elle **s'affiche d'elle-meme sur l'ecran de revelation**, ou il n'y a plus rien a divulguer.
+**Ce n'est pas un remede a M4** : mesure ce jour, l'ampoule rend M4 tenue sur **cinq jeux sur sept**
+dans les etats d'essai, et laisse **11,19 px** sous le pli sur "Petits problemes", **95,19 px** sur
+"Le bon verbe", **jusqu'a 67,19 px** sur son "Bravo !" - que jamais aucun indice n'a alourdi - et tous les
+ecrans de revelation.
+
+#### 0. Comment j'ai joue, et ce que je declare degrade
+
+**J'ai joue avant de repondre, et sur l'increment refuse, pas sur une description.**
+`bootstrap/target/recreo.jar` bati sur cet arbre, navigateur pilote, **viewport verifie a
+360 x 640** (`window.innerWidth` 360, `window.innerHeight` 640, lus et non supposes), autocontrole
+avant chaque jeu (`GET /` rend bien les 7 boutons de demarrage). J'ai joue les **sept jeux** en me
+trompant volontairement : un echec, deux echecs, trois echecs jusqu'a la revelation, puis l'appui sur
+la reponse nommee. **49 etats releves**, plus **8 ecrans de revelation** de "Le bon verbe", dans
+`squad/conformite/releves-s10/releve-ampoule-pli.json`.
+
+**Je verifie que l'application que je juge est bien celle-la** : les quatre fichiers servis qui
+decident de ce que l'enfant voit (`manche.html`, `accueil.html`, `recreo.css`, `recreo.js`) sont
+identiques octet pour octet entre le jar joue et l'arbre a `2d34a15`, empreintes comparees.
+
+**Degrade, et je le nomme avant mes conclusions.**
+
+1. **Les appuis sont programmes, pas faits au doigt.** Ce qui en depend - retard tactile,
+   surbrillance - n'est pas juge ici.
+2. **Je n'ai pas joue l'ampoule : elle n'existe nulle part.** Tout ce que j'ecris sur ce qu'elle
+   rendrait en pixels est une **soustraction sur un rendu reel** (le bas du dernier bloc qui reste
+   quand la boite d'indice quitte le flux), pas une mesure d'un ecran qui existe. C'est une
+   derivation, elle est annoncee comme telle, et si la mesure d'`ines-design` sur le rendu reel la
+   contredit, **c'est sa mesure qui vaut** et je le dirai comme une correction de mon constat.
+3. **Je n'ai pas observe d'enfant.** C'est la limite qui compte le plus dans cette reponse-ci,
+   parce que la question posee est un fait sur les enfants et non sur des pixels. Section 2 et
+   reserve R.
+
+#### 0 bis. Ce que je corrige de mes propres constats, avant de m'appuyer dessus
+
+**A. Mon chiffre de "251,19 px sous le pli sur Le bon verbe" est le pire cas, et ma table le
+presentait comme l'etat du jeu.** Sur ce jeu le deficit **depend de l'item tire** : selon que
+l'enonce tient sur deux lignes ou trois et que l'indice fait deux, trois ou quatre lignes, le bas du
+bloc de message est a **765,19 / 843,19 / 891,19 px**, soit **125,19 a 251,19 px** sous le pli. Ma
+mesure du matin etait juste ; sa presentation laissait croire a une valeur unique. La correction ne
+change aucun verdict - **tous ces etats sont sous le pli** - mais un chiffre unique m'aurait ete
+oppose le jour ou quelqu'un en mesure un autre.
+
+**B. Mon "aucun bloc d'explication" implicite, et un fait que je n'avais pas etabli.** Ma ligne M7
+decrivait la revelation comme `[signal, explication, indice]`. **Verifie ce jour dans les huit
+paquets servis : un seul contient des explications, `cp-le-bon-son`, et pour 6 items sur 15.** Sur
+les six autres jeux du catalogue, **l'ecran de revelation ne porte aucune explication** : il porte
+"C'est `<reponse>`. Appuie sur `<reponse>`." et l'indice, rien d'autre. Ma ligne M7 etait vraie de
+"Le bon son" et je l'avais ecrite comme si elle valait partout. **Ce fait pese directement sur cette
+reponse-ci** : si l'indice disparait derriere une ampoule que l'enfant n'ouvre pas, il n'existe plus
+rien qui explique quoi que ce soit a un enfant qui a rate trois fois. C'est le motif de la clause 2
+de M17.
+
+**C. Je reverifie ma correction du matin sur les indices de CP, et elle tient - mais le test
+mecanique evident est faux.** J'avais corrige mon "aucun" en "quatre, tous sans consequence". Une
+recherche litterale de la bonne reponse dans le texte de l'indice en trouve **six** sur les paquets
+apparies. Deux des six sont des artefacts de sous-chaine et **ne nomment rien** : `9 + ? = 10`
+(reponse `1`, l'indice contient `10`) et `10 + ? = 10` (reponse `0`, meme cause). **Ma correction du
+matin reste la bonne** : deux dans `cp-complements-10`, un dans `cp-problemes-additifs`, un dans
+`cp-soustractions`, tous des coincidences arithmetiques sur un operande. Je l'ecris parce qu'un
+garde-fou naif *"l'indice contient la bonne reponse"* **disqualifierait deux indices de CP
+parfaitement sains**, et que quelqu'un va l'ecrire si je ne le dis pas.
+
+#### 1. Ce que l'utilisatrice a constate, et ce que j'ai reproduit moi-meme
+
+**Le fait, reproduit par moi sur "Le bon verbe" a 360 x 640 :** enonce *"Tous les jours, il ___ à
+l'école."*, **un seul appui faux**, et l'indice repond *"Le verbe 'aller' est irrégulier : avec 'il'
+ou 'elle', il devient 'va' au présent."* La bonne reponse est donnee, au premier essai, sans que
+l'enfant l'ait demandee. **Deuxieme appui sur la meme mauvaise proposition** : le fragment est
+identique - meme message, meme indice, meme marque - donc rien de neuf n'est revele.
+
+**Le compte sur le paquet servi, refait ce jour : `cm1-conjugaison-present`, 25 items, 25 indices sur
+25 nomment la bonne reponse.** C'est ma reserve A du 2026-08-12 et ma condition M2, comptee non
+tenue le matin, **constatee independamment par l'utilisatrice en jouant**. Je note ce qui compte pour
+la suite du projet : **ce defaut n'a ete vu que par deux personnes qui jouaient**, et aucune des 390
+epreuves vertes ne le voit. C'est le troisieme de ce sprint dans cette famille.
+
+#### 2. La question qui decide, et elle n'est pas une question de pixels
+
+**Un enfant de six ans en difficulte appelle-t-il une aide qu'il doit demander ?** Mon jugement de
+metier, et je le donne comme tel : **le plus souvent, non.** En classe, l'enfant qui leve la main est
+celui qui a deja compris qu'il lui manque une chose precise ; celui qui est perdu ne demande rien -
+il attend, il recopie son voisin, ou il presse au hasard. C'est pour cette raison, et pas une autre,
+que j'avais ecrit "l'indice **s'affiche**" : mon motif d'origine etait qu'une aide qui n'atteint pas
+l'enfant bloque ne sert a rien, mesure sur deux parties jouees le 2026-08-12 - *"un enfant qui rate
+neuf manches sur dix recoit deux aides, et les deux portent sur le seul item qu'il avait reussi."*
+
+**Et voici les trois faits qui me font accepter quand meme, tous mesures aujourd'hui.**
+
+1. **Sur "Le bon verbe", l'aide automatique n'est pas une aide, c'est la reponse** (section 1).
+   L'affichage que j'exigeais y est aujourd'hui nuisible : il vide M5 de son sens au premier essai.
+2. **L'aide automatique coute a l'enfant le texte qui lui dit qu'il s'est trompe.** La boite
+   d'indice pese **58 a 148 px** dans le flux ; c'est elle qui pousse "Ce n'est pas ça. Essaie
+   encore !" sous le pli sur quatre jeux qui l'auraient sinon garde a l'ecran (section 3). Entre les
+   deux textes, celui qui doit rester est celui qui dit ou l'enfant en est : sans lui, l'enfant ne
+   sait meme pas que son appui a compte. **Mon propre dispositif fait aujourd'hui disparaitre le plus
+   necessaire des deux au profit du second, et c'est moi qui l'ai ecrit.**
+3. **A charge cognitive egale, un texte a la fois vaut mieux que deux.** Au premier echec, l'enfant
+   de CP recoit aujourd'hui **deux blocs de texte en meme temps**, 100 px de message et 58 a 148 px
+   d'indice. Un enfant qui lit lentement lit le premier et abandonne le second, ou n'en lit aucun.
+
+**Ce que je refuse en consequence, et c'est le coeur de ma reponse : une aide seulement
+*disponible*.** Une ampoule muette laisse l'enfant bloque exactement ou il etait le 2026-08-12. **Je
+cede l'affichage, je ne cede pas le moment** : au premier echec sur la question qui bloque, quelque
+chose doit venir a l'enfant, et ce quelque chose peut etre l'ampoule elle-meme qui se marque au lieu
+du texte de l'indice. C'est un affaiblissement de M1 **d'un appui**, et je le dis comme un
+affaiblissement, pas comme un equivalent.
+
+#### 3. Ce que l'ampoule rend reellement en pixels - ma soustraction, chiffree
+
+**Lecture : deficit positif = sous le pli, donc invisible sans defiler.** `sans indice` = bas du
+dernier bloc qui reste si la boite d'indice quitte le flux par defaut.
+
+| Jeu | etat | bas du bloc, indice affiche | deficit | bas sans l'indice | deficit |
+|---|---|---|---|---|---|
+| Calcul CP | echec | 621,19 | **-18,81** | 555,19 | **-84,81** |
+| Comparer les nombres | echec | 651,19 / 681,19 | +11,19 / +41,19 | 555,19 | **-84,81** |
+| Complements a 10 | echec | 651,19 / 681,19 | +11,19 / +41,19 | 555,19 | **-84,81** |
+| Le bon son | echec | 651,19 | +11,19 | 555,19 | **-84,81** |
+| Soustractions CP | echec | 651,19 | +11,19 | 555,19 | **-84,81** |
+| Petits problemes | echec | 747,19 / 777,19 | +107,19 / +137,19 | 651,19 | **+11,19** |
+| Le bon verbe | echec, enonce court | 765,19 | +125,19 | 639,19 | **-0,81** |
+| Le bon verbe | echec, enonce long | 891,19 | +251,19 | 735,19 | **+95,19** |
+| Le bon verbe | revelation | 765,19 a 891,19 | +125,19 a +251,19 | 639,19 a 735,19 | **-0,81 a +95,19** |
+| Le bon verbe | **"Bravo !"**, enonce long | 707,19 | **+67,19** | 707,19 | **+67,19** |
+| Le bon verbe | "Bravo !", enonce court | 611,19 | -28,81 | 611,19 | -28,81 |
+| Petits problemes | "Bravo !" | 623,19 | -16,81 | 623,19 | -16,81 |
+
+**Ce que la proposition rend, exactement** : elle rend **96 a 156 px** dans les etats d'essai, et
+c'est reel - **quatre jeux passent de +11,19 / +41,19 a -84,81 px**, soit **cinq jeux sur sept**
+tenus dans ces etats au lieu d'un seul.
+
+**Ce qu'elle ne rend pas, et il faut le dire aussi net** :
+
+- **"Petits problemes" reste a +11,19 px** et **"Le bon verbe" a +95,19 px** sur ses items a enonce
+  long. Le "1 px" qu'`ines-design` avait refuse de vendre comme un passage sur, je le retrouve ici :
+  **-0,81 px** sur les items a enonce court du meme jeu. Elle avait raison de l'appeler fragile ;
+  c'est un passage qui depend de l'item tire.
+- **Le "Bravo !" de "Le bon verbe" reste sous le pli sur ses items a enonce long, a +67,19 px** -
+  et au-dessus, a -28,81 px, sur ses items a enonce court, comme le reste de ce jeu ; c'est encore un
+  etat qui depend de l'item, et aucun indice n'a jamais pese
+  dessus. **Je ne credite donc rien a M11 de l'espace libere** : la place que l'ampoule rend n'est
+  pas celle qui manque au chemin juste. La question posee sur ce point recoit une reponse mesuree, et
+  c'est non.
+- **Les ecrans de revelation gardent l'indice** (clause 2 de M17), donc ils gardent son poids :
+  +125,19 a +251,19 px sur "Le bon verbe", +109,19 px sur "Petits problemes", +13,19 px sur
+  "Complements a 10" (ma mesure du matin). **L'ampoule ne les touche pas.**
+
+**Conclusion de cette section : l'ampoule est un allegement reel et ce n'est pas un remede a M4.**
+Mon refus n'est pas leve, et le budget vertical d'un ecran a 360 x 640 - ma reserve P - reste le
+vrai sujet.
+
+#### 4. Conditions M16 a M21
+
+Elles ne durcissent aucune condition existante : elles sont le prix d'une modification de M1 qui m'a
+ete demandee, comme M15 etait le prix de la cession de M6 clause 1.
+
+**M16 - l'aide est appelee par l'enfant, et elle s'annonce a lui des le premier echec.** Deux
+clauses, et la seconde est celle a laquelle je tiens :
+
+1. **l'ampoule est presente et pressable des le premier rendu de chaque question**, avant tout essai,
+   sur tous les jeux qui en portent une (M21). *Motif* : c'est un gain que l'affichage automatique
+   n'avait pas - un enfant bloque **avant** d'avoir repondu peut demander de l'aide au lieu de presser
+   au hasard ;
+2. **des le premier echec compte sur la question, l'ampoule porte une marque qu'elle ne portait pas
+   avant cet echec** : non textuelle, au meme endroit, sans deplacer un seul pixel de la page, et
+   elle disparait avec la question. *Verification* : capture de la question neuve et capture du
+   premier echec ; l'ampoule differe, **et rien d'autre ne bouge**. *Motif* : c'est ce qui remplace
+   le mot "s'affiche" de M1. Une aide disponible et muette retombe dans le defaut que j'ai refuse le
+   2026-08-12.
+
+**M17 - un appui sur l'ampoule montre l'indice a l'enfant, sur l'ecran ou il vient d'appuyer.** Deux
+clauses. **Clause bloquante, et c'est la seule de ce bloc.**
+
+1. **l'indice ouvert est entierement au-dessus du pli** (`y = 640`), sur tous les jeux qui portent
+   une ampoule, a 360 x 640. *Motif* : un enfant qui presse une aide et ne voit rien apparaitre
+   apprend que demander de l'aide ne sert a rien - c'est le motif exact par lequel j'ai refuse de
+   desactiver une proposition et par lequel j'ai ecrit M14. **Je refuse les deux echappatoires** :
+   un indice qui s'ouvre sous le pli, et un indice qui s'ouvre en recouvrant les propositions - un
+   indice sert a etre lu **en regardant les choix**, pas a la place d'eux ;
+2. **sur l'ecran de revelation, l'indice s'affiche de lui-meme, sans etre demande.** *Motif* :
+   l'enfant a epuise ses essais et la reponse vient de lui etre nommee ; il n'y a plus rien a
+   divulguer, et l'indice est **la seule chose qui explique quoi que ce soit** sur six des sept jeux
+   (0 bis, B). Ce n'est pas une barre neuve : M1 exigeait deja l'indice sur les essais restants de la
+   question, revelation comprise. **Je cede l'affichage sur les essais 1 et 2 ; je le garde ici.**
+
+**M18 - l'ampoule ne se paie pas avec les pixels du message.** Le **bas du cabinet ne descend sur
+aucun jeu** par rapport au rendu de `2d34a15`, que j'ai mesure ce jour et que j'inscris pour qu'on
+puisse comparer : **539,19 et 635,19 px** sur "Le bon verbe" selon la longueur de l'enonce,
+**551,19 px** sur "Petits problemes", **455,19 px** sur les cinq jeux a trois propositions - trois
+valeurs mesurees, pas deduites, et constantes d'un item a l'autre sauf sur "Le bon verbe".
+*Verification* : meme mesure avant et apres, sur les sept jeux, dans l'etat "question neuve".
+*Motif* : une ampoule posee dans le flux au-dessus du meuble rendrait d'une main ce qu'elle reprend
+de l'autre, et sur "Le bon verbe" il ne reste que **5 px** entre le bas du cabinet et le pli.
+
+**M19 - l'ampoule porte son mot ecrit, et ce mot est "Aide".** Un pictogramme seul ne dit rien a un
+enfant qui ne lit pas encore une consigne, et c'est le motif par lequel j'ai deja exige qu'un levier
+dessine porte son mot. Quatre clauses :
+
+1. **le mot visible est "Aide"** - quatre lettres, mot frequent, dechiffrable au CP. Pas "Indice",
+   pas "Coup de pouce", pas de mot seul en anglais. **Toute variante revient devant moi**, comme
+   pour les textes de M12 ;
+2. **un pictogramme peut accompagner le mot, jamais le remplacer** ; il est `aria-hidden` comme tout
+   decor (F12) et le nom accessible du bouton est le mot visible ;
+3. **le texte est au moins a 20 px** (1,25 rem, le plancher de fait de cette application) ;
+4. **la cible pressable fait au moins 44 x 44 px** (mon acquis 1, plancher dur).
+
+**M20 - l'ampoule est hors du cadre, et ce n'est jamais une reponse.** Cinq clauses, toutes des
+reconductions :
+
+1. **elle est a l'exterieur du contour du cabinet** : C2 dit qu'a l'interieur du contour, les seuls
+   elements pressables sont les propositions, et je ne l'ouvre pas d'un cran ;
+2. **l'ouvrir ne compte pas comme un essai**, ne fait pas avancer la question, ne touche pas au score
+   et ne change pas le message affiche ;
+3. **l'ouvrir ne deplace aucune proposition** : meme nombre, meme ordre, meme position au pixel
+   (M8, clause de position, que ma reponse du meme jour sur le lieu n'a pas touchee) ;
+4. **une fois ouvert, l'indice reste ouvert pour les essais restants de la question**, et il
+   disparait avec elle. Aucun indice ne survit au passage a la question suivante ;
+5. **l'ampoule ne recoit pas le focus apres une reponse** - M13 clause 2 designe la proposition
+   pressee, et je n'y touche pas - et **un appui sur Tabulation puis Entree ne detruit jamais la
+   partie**, M13 clause 1, qui est aujourd'hui non tenue.
+
+**M21 - pas d'ampoule la ou il n'y a pas d'indice utilisable.** Sur un paquet dont les indices
+nomment la bonne reponse, **l'ampoule n'est pas rendue du tout** - ni grisee, ni inerte. *Verifie ce
+jour* : `cm1-conjugaison-present`, **25 sur 25**. **Ce n'est pas une condition neuve, c'est M2
+transposee au nouveau mecanisme** : M2 dit deja que ce jeu ne peut pas presenter son indice sur la
+question courante tant que les textes ne sont pas reecrits, et une aide a la demande n'est pas une
+porte de sortie - un enfant qui ouvre l'ampoule sur "Le bon verbe" recoit la reponse, et il apprend
+en trois manches que l'ampoule gagne la partie. *Motif de l'absence plutot que de l'inertie* : un
+bouton present sur lequel on appuie sans effet est le defaut que je refuse depuis M14.
+
+**Ce que M21 ne dit pas, et ce qu'il faut pour le tenir sans moi.** Le lien entre un paquet et le
+droit d'offrir son indice est aujourd'hui **garde par moi seule** (mon point 3 du matin). Un
+garde-fou est possible - il compare le texte de l'indice a la bonne reponse de son item - mais
+**la comparaison litterale est fausse** : elle disqualifie deux indices de CP parfaitement sains
+(0 bis, C). Sa forme appartient a `theo-archi` et a `yanis-qa` ; je decris la propriete, pas le test.
+
+#### 5. Etat de mes conditions apres cette reponse
+
+| # | Etat | Ce qui change |
+|---|---|---|
+| **M1** | **amendee, affaiblie d'un appui, substance conservee** | la clause **"l'indice est affiche des le premier echec"** est remplacee par M16 : l'ampoule est la des le premier rendu et **se marque** au premier echec, et l'enfant l'ouvre d'un appui. **Le rattachement a la question qui bloque et le premier echec comme moment sont intacts.** La clause de lieu avait deja ete retiree par ma reponse du meme jour sur le lieu de l'indice, et cette section-ci n'y revient pas |
+| **M2** | **NON TENUE, inchangee** | l'ampoule ne la repare pas et n'en dispense pas. M21 est sa transposition |
+| **M4** | **NON TENUE, bloquante, inchangee** | l'ampoule la rend tenue dans les etats d'essai de cinq jeux sur sept, et **ne la rend pas tenue** : +11,19 px sur "Petits problemes", +95,19 px sur "Le bon verbe", jusqu'a +67,19 px sur son "Bravo !", et tous les ecrans de revelation. **Mon refus n'est pas leve d'un pixel** |
+| **M5** | inchangee | cesse d'etre videe de son sens sur "Le bon verbe" du fait de M21 : sans ampoule sur ce paquet, la reponse n'est plus donnee au premier essai |
+| **M11** | **tenue, et toujours invisible sur "Le bon verbe"** | **je ne lui credite rien de l'espace libere** : son "Bravo !" est a +67,19 px sous le pli sur les items a enonce long, sans qu'aucun indice n'y soit pour rien |
+| **M13** | NON TENUE, inchangee | M20 clause 5 ajoute l'ampoule a ce que sa clause 1 doit couvrir |
+| **M15** | **applicable a l'indice ouvert** | ses deux clauses valent quand l'indice est affiche, quel que soit le geste qui l'ouvre |
+| **M16 a M21** | **neuves** | section 4. **M17 bloquante** |
+| C2, C5, F1 a F19 | **inchangees** | rien de cette reponse ne les touche. M20 clause 1 est C2 reconduite, pas elargie |
+
+#### 6. Reserves neuves, datees du 2026-08-13
+
+**Reserve R - personne dans cette squad n'a vu un enfant jouer a ceci, et c'est la question qui
+decide.** Ma clause 2 de M16 existe parce que **je juge** qu'un enfant de six ans en difficulte
+n'appelle pas une aide. C'est un jugement de metier, il n'est pas mesure, et il est le seul point de
+cette reponse que je ne peux pas etayer par un chiffre. Ce que je demande a instruire : **une
+observation d'un enfant du niveau vise, une fois l'ampoule livree.** Si l'observation dit qu'il
+l'appelle de lui-meme, la clause 2 de M16 pourra etre allegee, et je l'ecrirai comme une correction
+de mon constat, pas comme une faveur. Si elle dit le contraire, la clause 2 devient le coeur du
+dispositif.
+
+**Reserve S - l'interface cesse d'etre la meme d'un jeu a l'autre, et "Le bon verbe" reste sans
+aucune aide.** M21 fait disparaitre l'ampoule sur ce jeu ; **0 bis (B)** etablit qu'aucune
+explication n'y existe non plus. Un enfant de CM1 qui rate trois fois y recevra donc **la reponse et
+rien d'autre**, et un enfant qui joue deux jeux de suite rencontrera deux interfaces. **J'accepte ces
+deux couts et je les nomme** : ils sont moins graves que de donner la reponse au premier essai. Ce
+que je demande a instruire : **la reserve A - reecrire les 25 indices de `cm1-conjugaison-present` -
+cesse d'etre une amelioration et devient ce qui rend ce jeu enseignable.** Priorite a `camille-po`.
+
+#### 7. Ce dont je reste la seule garde apres cette reponse
+
+Mes six points du matin sont inchanges. Cette reponse en ajoute deux, et je les ecris pour que
+personne ne croie couvert ce qui ne l'est pas :
+
+1. **Qu'une aide appelee montre quelque chose a l'enfant qui l'appelle** (M17 clause 1). Aucun test
+   ne compare une ordonnee au pli, et aucun ne saura dire qu'un bloc ouvert est hors champ. C'est moi
+   le garde-fou, et je le suis en jouant.
+2. **Qu'une ampoule se marque quand l'enfant est bloque** (M16 clause 2). Rien ne compare deux
+   rendus successifs de la meme question ; c'est la meme famille que ma reserve Q.
+
+#### 8. Ce que cette reponse ne tranche pas
+
+- **La forme de l'ampoule** : dessin, place exacte, teinte, forme ouverte ou fermee. `ines-design`
+  propose, j'arbitre. Mes seules contraintes sont M17 a M20, et elles sont chiffrees.
+- **Aucune route technique.** Comment la place de l'indice est tenue, ou l'etat "ouvert" vit, et par
+  quel echange il s'ouvre appartiennent a `theo-archi`.
+- **Le budget vertical** - ma reserve P. Cette reponse le rend plus urgent et ne le remplace pas :
+  apres l'ampoule il reste **11,19 a 95,19 px** a payer sur deux jeux, et **jusqu'a 67,19 px** sur le chemin
+  juste de "Le bon verbe".
+- **Le backlog.** Je produis six conditions et deux reserves ; `camille-po` en fait des stories.
+- **L'ouverture du depot aux fichiers image.** Elle ne me dispense d'aucune condition : mes
+  planchers, l'absence d'animation sur l'habillage (C3), l'invariance du jeu d'images (C5 clause 2)
+  et l'interdiction des codes du jeu d'argent (C6) continuent de s'appliquer. **Si C5 clause 2 cesse
+  d'etre tenue par construction, elle doit devenir une clause executable** - c'est celle a laquelle
+  je tiens le plus de tout le bloc du cabinet, et un pictogramme d'aide qui varierait avec l'item
+  serait exactement l'indice non valide qu'elle interdit.
+- **Aucun verdict de cette fiche.** Mon refus du 2026-08-13 tient, aucun Done pedagogique n'est
+  prononce, aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge.
 
 ### Arbitrage prealable au developpement - la silhouette du manche, le relief et le contraste du cabinet (s10), du 2026-08-12
 
