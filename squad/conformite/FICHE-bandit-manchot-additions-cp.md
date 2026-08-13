@@ -108,7 +108,23 @@
   texte de decor deliberement masque. Corps en deux tons et etoiles du socle **acceptes tels quels**.
   **Cet arbitrage est degrade sur un point nomme** : je n'ai pas ecoute de lecteur d'ecran. Trois
   reserves nouvelles et datees (F, G, H). Ce bloc vaut pour les huit jeux du catalogue.
-- **Derniere mise a jour** : 2026-08-12
+- **Troisieme arbitrage prealable de forme du 2026-08-13** (bloc en tete du bloc de validation) :
+  **le visage v2 est ACCEPTE** (mes trois mesures de refus fermees, F4 tenue) ; **les quatre pastels
+  a texte sombre sont ACCEPTES**, changement d'aspect de toute l'application compris, parce que
+  le mot d'une proposition passe de 5,41:1 a 9,55:1 au minimum et qu'aucune couleur ne peut tenir F9,
+  F10 et un texte blanc a la fois - demonstration refaite par moi ; **la forme du levier variante E
+  est ACCEPTEE et son ancrage tel que rendu est REFUSE** sur deux mesures - 34 px de la quatrieme
+  proposition recouverts et morts au toucher (F3), 63 px de platine sur le corps du cabinet a 5,29:1
+  (F2). **Ce n'est pas un troisieme echec du levier** : la meme variante replacee dans les **20 px**
+  reellement disponibles hors des colonnes garde exactement sa lecture et tient F1, F2 et F3, rendue
+  et mesuree par moi sur un ecran a quatre colonnes et un a trois. **Sept conditions F13 a F19**, dont
+  **F16 bloquante** : une marque de M9 en blanc tomberait de 5,41:1 a **1,54:1** sur ces fonds, ce qui
+  rendrait M9 faux en laissant la CI verte. **Trois reserves neuves I, J, K.** **Je corrige deux de mes
+  propres constats** : ma prediction du 2026-08-12 sur la silhouette "hors de la paroi" est infirmee par
+  le rendu et retiree, et mon premier rendu de ce jour etait faux - j'etais tombee dans le plancher de
+  fenetre de 516 px que `outils/mesurer-rendu.sh` documente en tete de fichier. Ce n'est pas un Done
+  pedagogique et aucun verdict de cette fiche n'est touche.
+- **Derniere mise a jour** : 2026-08-13
 
 ## Competences visees
 
@@ -2292,6 +2308,568 @@ que `theo-archi` m'a demande, rendu sous la forme d'une demande d'amendement, et
   `s10-theo-archi` et `s10-theo-domaine` ; `DEC-0023` sur `s10-camille-perimetre-2`.
 - **Done technique** : sans objet, rien n'est code.
 - **Ce bloc n'est pas un Done pedagogique** et n'en retire aucun.
+
+### Troisieme arbitrage prealable de forme - levier variante E, visage v2, quatre pastels a texte sombre, du 2026-08-13
+
+**Ce n'est pas un Done pedagogique** et ce bloc ne touche aucun verdict de cette fiche. Rien n'est
+code : j'arbitre trois formes proposees, sur mon propre rendu.
+
+**Mes trois reponses en une phrase chacune.**
+
+1. **Le levier, variante E : sa forme est ACCEPTEE, son ancrage tel que rendu est REFUSE.** Elle ne
+   se lit plus comme une barre de defilement - `ines-design` a raison et je le confirme sur ma
+   capture - mais telle qu'elle est ecrite elle recouvre **34 px de la quatrieme proposition** et
+   pose **63 px de sa platine sur le corps du cabinet a 5,29:1**, au-dessus du plafond de ma
+   condition F2. **Ce n'est pas un troisieme echec du levier** : j'ai rendu la meme variante
+   deplacee de 2 px et sa platine ramenee de 24 a 20 px, elle garde exactement la meme lecture et
+   elle tient F1, F2 et F3 ensemble, cout nul, sur un ecran a quatre colonnes comme sur un ecran a
+   trois.
+2. **Le visage v2 : ACCEPTE.** Mes trois mesures de refus sont fermees, chacune verifiee sur mon
+   rendu et non sur sa regle - oeil de 8 px strictement plus grand que la joue de 6 px, bouche de
+   3 px visible sans agrandissement, et le rose s'arrete a `x = 47` quand l'enseigne commence a
+   `x = 62`. **F4 est tenue. Je juge que c'est un visage.**
+3. **Les quatre pastels et le texte sombre : ACCEPTES**, y compris le changement d'aspect dans
+   toute l'application, et j'ai refait sa demonstration d'impossibilite avant de m'appuyer dessus :
+   elle est exacte au quatre-millieme pres. Le mot d'une proposition passe de **5,41:1 a 9,55:1 au
+   minimum** : c'est le gain de lisibilite le plus net de tout ce chantier. **Trois conditions
+   neuves** l'accompagnent, dont une bloquante sur la marque de M9.
+
+**Sept conditions neuves, F13 a F19**, qui se lisent a la suite de F1 a F12 sans en renumeroter ni
+en rouvrir aucune. **F16 est bloquante.** **Trois reserves neuves et datees, I, J et K** - aucune
+n'est un refus.
+
+**Ce que je ferme de la reserve G, et ce que je ne peux pas fermer.** La marque "deja essayee" de
+M9 **n'existe dans aucun fichier de ce depot** : je ne peux donc pas la mesurer, et la reserve G
+reste ouverte. Mais j'ai mesure ce qui la rendait dangereuse, et le chiffre est net : le **blanc**,
+qui est la couleur maison de **toutes** les marques de cette application - l'etoile du fronton, la
+coche du verdict, la croix du verdict, la bordure de "Encore !" -, passe de **5,41:1** sur le bouton
+bleu actuel a **1,54:1 au mieux** sur les quatre pastels. Rendu et regarde : sur le bouton bleu la
+marque se voit, sur les pastels c'est un fantome. **C'est exactement le "M9 devient faux en restant
+vert" que j'annoncais le 2026-08-12**, et il est desormais chiffre plutot que redoute.
+
+#### 0. Comment j'ai rendu, et la faute de methode que je corrige avant tout le reste
+
+**J'ai rendu, pas lu.** Fat jar reconstruit depuis mon worktree dedie `s10-nadia-forme-2`, lignee
+verifiee, application lancee sur un port dedie, `JAVA_HOME` pose sur un JDK 21 le temps des
+commandes Maven (le `java` du `PATH` de ce poste est un JRE 8). Les etats mesures sont des etats
+**reellement servis**, obtenus par les vraies routes HTTP :
+
+- l'item que tout le monde cite, *"Vous ___ du chocolat."*, propositions `mangez` / `mangeons` /
+  `mange` / `mangent`, obtenu au treizieme tirage et non fabrique ;
+- **l'ecran avec l'indice**, obtenu par **trois echecs consecutifs reels** sur la vraie route de
+  manche suivante, item *"Tu ___ ton exercice avant la recreation."* - personne n'avait regarde cet
+  etat-la, et c'est celui qui porte mon constat le plus important sur la palette ;
+- un ecran de **CP a trois colonnes** ("5 + 1"), parce que la palette a quatre teintes doit aussi
+  tenir a trois.
+
+**La faute de methode, et c'est la mienne : mon premier rendu de ce jour etait faux, et je l'ai
+jete.** J'ai capture avec `--window-size=360` sur la fenetre, et j'ai obtenu une page mise en page
+pour 500 px, decoupee a gauche - les quatre propositions sortaient de l'ecran et le levier
+n'apparaissait meme pas. **Le plancher de fenetre de 516 px est ecrit noir sur blanc en tete de
+`outils/mesurer-rendu.sh`**, avec la cause racine et le nom de qui l'a mesure. Je suis tombee
+exactement dans le trou que ce fichier existe pour boucher, parce que j'ai ecrit ma commande au lieu
+de lire l'outil. Toutes les mesures ci-dessous sont refaites par la technique de cet outil : la
+largeur CSS de 360 px est portee par une **iframe**, jamais par la fenetre, dans une fenetre parente
+de 600 x 1400 px avec profil isole. Je le dis parce qu'un rendu faux qui n'est pas signale
+contamine tout ce qui s'appuie dessus, et parce que j'ai reproche a d'autres de deduire au lieu de
+regarder.
+
+**Et une precaution que j'ai prise contre le defaut de fabrication qu'on m'a signale.** Le rendu
+qu'on m'a transmis portait un bouton en bleu a texte blanc au lieu du pastel, parce qu'une feuille
+jetable contenait des fragments orphelins ayant avale la premiere regle de couleur. **Je n'ai
+recopie aucune feuille de production.** Ma page candidate pointe les deux feuilles servies par leur
+URL sur l'application qui tourne, et mon bloc candidat est ajoute en dernier, purement additif. Ce
+mode de defaillance ne peut structurellement pas m'atteindre, et c'est verifiable sur mes captures :
+les quatre pastels y sont, les quatre bons.
+
+**Geometrie relevee par balayage de couleur exacte** (Pillow), et surtout par **difference de deux
+rendus** - le meme ecran avec et sans le levier -, ce qui donne non pas "ou est le levier" mais
+**sur quelle surface chacun de ses pixels se pose**. C'est cette methode-la qui a trouve les deux
+defauts de la variante E, et aucun balayage de bbox ne les aurait vus.
+
+**Ce que je declare degrade, et ce que je ne declare pas.** Ce n'est pas un audit de jeu : rien
+n'est code, je n'ai pas joue un increment livre. Aucun doigt sur un ecran tactile, aucun lecteur
+d'ecran - **la condition F11 sur l'ecoute reste donc entiere et l'enseigne reste hors de cet
+arbitrage**, comme `theo-archi` l'a inventorie. Je n'ai pas verifie les huit jeux : deux, un a
+quatre colonnes et un a trois.
+
+#### 0 bis. Ce que je corrige de mes propres constats, avant de m'appuyer dessus
+
+**A. Ma prediction sur la silhouette du levier etait fausse, et c'est le rendu qui l'a dite.** Le
+2026-08-12, section 1.b, j'ai ecrit qu'une "boule 18 px sur fut 8 px, teinte acier, hors de la
+paroi" se lisait comme **une poignee**, et j'ai accepte cette forme sur cette base. Rendue a 360 px
+et regardee, elle se lit comme **un curseur de defilement** - la lecture exacte que je refusais pour
+la variante dans la paroi. **Je retire cette ligne de mon tableau des trois silhouettes.** Elle
+reste ecrite la ou je l'ai ecrite, je n'efface rien, mais elle ne fonde plus rien. Et la cause est
+ironique et interessante : c'est **la baisse de contraste que j'exigeais moi-meme** en F2, pour que
+l'ornement ne domine pas les boutons, qui donne a l'objet l'aspect gris et plat d'un element
+d'interface. Ma condition de teinte et ma condition de silhouette se combattent, et personne ne
+l'avait vu, moi comprise.
+
+**Consequence que j'en tire sur ma propre autorite** : mes lectures de silhouette sont faillibles et
+il y en a maintenant une de mesuree comme fausse. Je continue a juger F1 et F4, parce qu'aucun
+automate de ce depot ne voit une forme et que `theo-archi` l'ecrit lui-meme, mais je ne les juge
+plus que **sur un rendu que j'ai produit**, jamais par deduction a partir d'un rapport de diametres.
+C'est ce que j'ai fait aujourd'hui, et c'est ce qui m'a permis de trouver les deux defauts de E.
+
+**B. `ines-design` a mieux travaille que moi sur un point, et je le dis.** Sa comparaison E/F -
+la meme forme compacte a deux hauteurs - **isole une variable** et etablit que c'est l'ancrage
+contre la plinthe, et non la forme compacte seule, qui casse la lecture de barre de defilement.
+C'est de la methode, pas de la presentation, et cela repond a une question que ni elle ni
+`theo-archi` ne pouvaient trancher avant. Mon refus de son ancrage ne porte pas la-dessus.
+
+**C. Sa demonstration d'impossibilite est exacte, verifiee par moi et non crue.** Refaite en
+luminances relatives depuis les valeurs de la feuille servie : le texte blanc a 4,5:1 impose
+`L <= 0,1833` ; F9 impose `L >= 0,5644` ou `L <= 0,0123` ; le corps du cabinet a 3:1 impose
+`L >= 0,1319`. La fenetre `[0,1319 ; 0,0123]` est **vide**. Aucune couleur reelle ne satisfait F9,
+F10 et un texte blanc en meme temps. Ses quatre chiffres sont les miens ; son `0,1318` est mon
+`0,1319`, arrondi, sans consequence. Je ne lui demande pas de corriger cela.
+
+**D. Une chose que je credite dans sa v2 et qui la condamne dans sa v3, et c'est elle qui l'a
+ecrite.** Elle avait nomme le risque en propres termes : *"si une implementation future
+positionnait le levier autrement, au point de le faire peindre sur le remplissage sombre de
+l'interieur, cette teinte-la (5,29:1) ne tiendrait plus la reference de nadia-prof."* **La variante
+E est cette implementation**, et elle n'a pas refait ce controle-la pour elle. Ce n'est pas un
+reproche de forme : c'est la preuve que son avertissement etait juste et qu'il faut le lire comme
+une condition, pas comme une note de bas de page. Je le transforme en F14.
+
+#### 1. Le levier, variante E - la forme passe, l'ancrage ne passe pas, et le levier n'est pas mort
+
+##### 1.a Ce que je lis sur ma capture, et je commence par ce qui est acquis
+
+Rendu a 360 px, agrandi x6 sans interpolation. **Je lis une boule posee sur une courte tige,
+elle-meme fixee sur une plaque a rebord - une piece de quincaillerie montee sur le meuble.** Pas de
+piste, pas de rail, pas de butee : la plaque se lit comme une **fixation**. Aucune des quatre
+lectures que F1 interdit ne s'applique :
+
+| Lecture interdite par F1 | Ce que je vois sur E |
+|---|---|
+| curseur de defilement | non. Aucun rail, et la plaque est plus large que la boule - une butee de piste ne l'est jamais |
+| epingle | non. Le fut fait 14 px de haut pour 7 px de large ; une epingle a une tige longue et fine, et pas de socle |
+| clou | non. Un clou n'a pas de platine et sa tige s'affine |
+| thermometre | non. Le renflement est en haut, pas en bas, et le fut est court |
+
+**F1 est tenue.** Est-ce que E crie "levier" ? Non, et je ne le demande pas : F1 exige une poignee,
+c'est-a-dire un objet qu'on attrape, pas une manette identifiable. A 18 px de flanc, une boule sur
+platine est ce que la place permet, et ca suffit a F1. **Je ne deplace pas ce poteau-la** : la barre
+que j'ai ecrite le 2026-08-12 est atteinte.
+
+##### 1.b Le premier defaut : 34 px d'une proposition sont recouverts, et ils sont morts au toucher
+
+Mesure par difference de deux rendus du meme ecran, avec et sans le levier, sur le lot complet
+(corps en deux tons et pastels compris, puisque les deux sont acceptes et vivent dans le meme lot) :
+
+| Surface d'origine | Pixels que le levier E recouvre | Ou |
+|---|---|---|
+| bordure du cabinet `#1d4b6b` | 341 px | `x = 339..347` |
+| fond de page `#f4f7fb` | 230 px | `x = 348..357` |
+| **corps du cabinet `#081c2c`** | **63 px** | `x = 334..339`, `y = 519..530` |
+| **quatrieme proposition `#eec1d8`** | **34 px** | `x = 337..339`, `y = 479..492` |
+
+La boite de la quatrieme proposition est `x = 188..339`, `y = 444..514`. La **boule** du levier
+(18 px, `x = 337..354`) est a la hauteur `y = 476..494`, c'est-a-dire **en plein milieu vertical de
+ce bouton**, et son bord gauche entre de **3 colonnes** dans le bouton. Verifie ligne par ligne : de
+`y = 479` a `y = 492`, sans exception.
+
+**F3 dit "il ne recouvre aucun pixel d'une proposition". 34 pixels sont recouverts.** C'est une
+condition a tolerance zero, ecrite le 2026-08-12, et elle n'est pas tenue.
+
+**Pourquoi la verification d'`ines-design` ne l'a pas vu, et ce n'est pas de la negligence.** Elle
+ecrit : *"aux rangees ou la plaque atteint sa largeur maximale (`y = 522` a `528`), aucune
+proposition n'est plus rendue a cet endroit"*. **C'est exact, et je le confirme au pixel** : de
+`y = 519` a `y = 530` il n'y a aucun pixel de bouton. Son controle est juste ; il porte sur la
+**plaque**, l'objet qu'elle venait d'elargir et donc celui dont elle se mefiait. C'est la **boule**,
+qu'elle n'avait pas touchee entre la v2 et la v3, qui recouvre le bouton - et elle le recouvre
+maintenant alors qu'elle ne le recouvrait pas en v2, parce que l'ancrage `bottom: 0` l'a descendue
+de mi-hauteur jusqu'a la hauteur de la derniere rangee. **Le defaut est ne du changement d'ancrage,
+et le controle n'a pas suivi le changement.**
+
+**Et ce que ces 34 px font a un enfant, parce que c'est la seule chose qui compte.** Le levier est
+un `div` frere posterieur, en `position: absolute`, sans `pointer-events: none` : il **peint
+par-dessus** le bouton et il **intercepte l'appui**. Une bande de 3 x 14 px sur le bord droit de la
+quatrieme reponse ne repond a rien. Je dis honnetement l'ordre de grandeur plutot que de le gonfler :
+42 px sur une cible de 152 x 71 px, soit **0,4 %** du bouton. Aucun enfant ne ratera "mangent" a
+cause de ca. **Mon motif n'est donc pas que l'enfant echouera** : c'est que F3 est une condition
+mecanique a zero, que je l'ai ecrite ainsi exprès - un seuil du genre "moins de 1 % du bouton" n'est
+verifiable par personne et derive au premier retouchage -, et que la correction coute 2 px. Refuser
+ici est proportionne parce que le remede est minuscule ; c'est precisement pour ces cas qu'une
+condition a zero existe.
+
+##### 1.c Le second defaut : la platine peint sur le corps du cabinet, et c'est l'avertissement d'`ines-design` qui se realise
+
+63 px de la platine se posent sur `#081c2c`, a **5,29:1**. Ma condition F2 plafonne le contraste du
+levier *sur chaque surface qu'il croise*, et elle nomme le corps du cabinet dans sa liste.
+
+**Ma redaction est ambigue et je le dis avant de m'en servir.** F2 dit : *"ne depasse pas celui d'un
+bouton de reponse contre le corps du cabinet (**3,20:1**)"*. Deux lectures :
+
+- **lecture litterale** : le plafond est **3,20:1**. La platine a 5,29:1 le depasse. F2 rompue.
+- **lecture relative** : le plafond est "ce que vaut un bouton de reponse". Avec les pastels
+  acceptes, un bouton de reponse contre le corps vaut **10,92:1 au minimum** (mesure : 11,24 / 10,92
+  / 11,15 / 10,93). Le plafond monterait a 10,92:1 et la platine a 5,29:1 passerait largement.
+
+**Je prends la lecture litterale, et je dis pourquoi.** Un plafond qui monte chaque fois que les
+boutons s'eclaircissent n'est plus un plafond : il autorise a un objet inerte de devenir de plus en
+plus visible, palette apres palette, sans qu'aucune ligne ne soit rouverte. Le chiffre que j'ai mis
+entre parentheses le 2026-08-12 est la barre, et je le fige. **Ce n'est pas un durcissement** : c'est
+la meme decision que j'ai prise le 2026-08-12 sur les 2,0 px de F5, ou j'ai tranche que le nombre
+etait un plancher et non un constat qui suit l'etat courant. Je traite mon plafond comme j'ai traite
+mon plancher.
+
+**Et je verifie que cette lecture ne coute rien avant de la retenir**, parce qu'une regle stricte
+qui interdit la seule solution possible n'est pas de la rigueur, c'est un caprice : la geometrie
+replacee de la section 1.d ne touche **jamais** le corps, et ses deux seules surfaces sont la
+bordure a **2,82:1** et le fond de page a **3,05:1**, toutes deux **sous 3,20:1**. La lecture
+litterale et la lecture relative donnent donc le meme verdict sur la forme corrigee. **Je fige mon
+chiffre sans rien fermer.**
+
+**Ce que dit l'intention de F2, pour etre complete** : l'objet inerte ne doit pas dominer les objets
+qui font tout. Avec les pastels, les boutons sont a 10,92:1 et le levier a 3,05:1 au plus - il est
+**trois fois moins visible que le moins visible des boutons**. Confirme a l'oeil sur ma capture a
+taille reelle : c'est un petit bouton gris dans un coin, et les quatre pastilles de couleur emportent
+tout le regard. L'intention de F2 est satisfaite plus largement qu'avant ce lot.
+
+##### 1.d Le budget reel du flanc, chiffre - et la variante E replacee, que j'ai rendue
+
+**Voici le chiffre que personne n'avait, et il repond a la question de l'utilisatrice.** A 360 px,
+entre le bord droit d'une proposition et le bord droit de l'ecran, il y a exactement :
+
+- **8 px** de bordure du cabinet (`x = 340..347`) ;
+- **12 px** de fond de page (`x = 348..359`).
+
+**Vingt pixels. C'est tout le flanc disponible.** Toute partie du levier plus large que 20 px
+recouvre necessairement soit une proposition, soit le corps du cabinet, soit sort de l'ecran. La
+platine d'`ines-design` fait **24 px** : elle deborde de 4 px, et c'est la seule cause des deux
+defauts. **Le probleme de la variante E est arithmetique, pas plastique.**
+
+**Alors j'ai rendu la meme variante dans les 20 px, plutot que de renvoyer la question.** Platine
+ramenee de 24 a 20 px, ensemble decale de 2 px vers l'exterieur - `width: 1.25rem` et
+`right: -1.25rem`, boule, fut, teinte, ancrage `bottom: 0` et biseau **inchanges**. Mesure par
+difference de rendus, sur l'ecran CM1 a quatre colonnes **et** sur l'ecran CP a trois colonnes :
+
+| | variante E telle qu'ecrite | variante E replacee dans 20 px |
+|---|---|---|
+| pixels recouverts sur une proposition | **34** | **0** |
+| pixels poses sur le corps du cabinet | **63** | **0** |
+| surfaces reellement croisees | corps 5,29:1, bordure 2,82:1, page 3,05:1 | bordure **2,82:1**, page **3,05:1** |
+| contour du cabinet | `12..347`, `317..538` | `12..347`, `317..538`, identique sans levier |
+| pixels recouverts a l'interieur du cabinet, CM1 4 colonnes | 97 | **0** |
+| pixels recouverts a l'interieur du cabinet, CP 3 colonnes | non mesure par elle | **0** |
+
+**Et surtout, la lecture survit.** Agrandie x6 : boule, moignon, platine a rebord visiblement plus
+large que le fut. **Je lis la meme piece de quincaillerie montee sur le meuble.** Les 4 px retires a
+la platine ne lui font pas perdre son role de fixation - elle reste plus large que la boule.
+
+**Une propriete que le replacement gagne en prime, et qui n'est pas un detail** : a `x >= 340`, le
+levier est hors de la boite de rembourrage du cabinet **quelle que soit la hauteur du meuble**. Il
+ne peut donc pas recouvrir une proposition sur un jeu a deux, trois ou quatre colonnes, ni sur un
+jeu dont l'enonce est plus long. La geometrie d'`ines-design`, elle, depend de la hauteur du cabinet
+pour savoir si la boule tombe a hauteur de bouton - c'est-a-dire qu'elle serait juste sur un jeu et
+fausse sur un autre. **Le replacement rend la propriete structurelle au lieu de la rendre
+chanceuse.** C'est le motif principal pour lequel je fixe le budget des 20 px en condition (F13) et
+pas seulement le zero-recouvrement.
+
+##### 1.e Ce que je reponds a la question franche qu'on me pose
+
+On me demande de dire franchement si trois tentatives ont etabli qu'un levier reconnaissable n'entre
+pas dans ce que le flanc permet. **Non, et ce serait faux de le laisser croire.** Voici ce que les
+trois tentatives ont reellement etabli :
+
+1. la **teinte** n'est pas le probleme - inchangee sur les six variantes, et elle tient F2 ;
+2. la **position** seule ne suffit pas (A a D) et la **forme compacte** seule ne suffit pas (F) :
+   c'est la demonstration d'`ines-design`, et elle tient ;
+3. leur **combinaison suffit** - E ne se lit plus comme une barre de defilement, et je le confirme
+   sur mon propre rendu ;
+4. il reste **une contrainte de 20 px** que personne n'avait chiffree, et E la depasse de 4 px.
+
+**Un levier reconnaissable entre donc dans ce que le flanc permet.** Si l'utilisatrice choisit
+malgre tout de l'abandonner, ce sera un choix de produit qui lui appartient - et je n'ai pas de voix
+la-dessus -, mais **ce ne sera pas parce que je l'ai declare impossible.** Je ne demande pas une
+septieme variante : `ines-design` a raison de dire qu'elle n'en a pas, et elle n'en a pas besoin. Je
+demande **4 px de moins sur une plaque**.
+
+#### 2. Le visage v2 - accepte, et je dis sur quoi je me suis prononcee
+
+**Mes trois defauts du 2026-08-12 sont fermes, chacun verifie sur mon rendu :**
+
+| Mon defaut du 2026-08-12 | Ce que je mesure le 2026-08-13 |
+|---|---|
+| joue de 9 px sous un oeil de 5 px | oeil `0,5rem` = **8 px**, `spread: 0` ; joue = le meme cercle avec un `spread` **negatif** de `-0,0625rem` = **6 px**. L'oeil est strictement plus grand **par construction**, pas par reglage. Visible a x12 : les disques blancs dominent les roses |
+| bouche de 1,5 px | **3 px**, le double, sur 12 px de large. Je la vois **sans agrandissement** sur ma capture a 360 px |
+| la copie d'ombre sort de 7 px et le rose touche le `L` de "Le" | rose mesure `x = 34..47`, boite declaree jusqu'a `x = 53`, premiere lettre de l'enseigne a `x = 62`. **15 px d'air**, le `gap` est entier, aucune copie ne sort |
+
+**Aucun marqueur de genre** : ni cils, ni noeud, ni cheveux, ni sourcils, ni bouche coloree. Verifie
+sur le rendu, pas sur la regle.
+
+**Ma lecture, et c'est celle qui tranche.** A x12 je vois deux yeux blancs, deux joues roses plus
+petites posees en dessous et vers l'interieur, et un arc blanc franc. **C'est un visage souriant.**
+A taille reelle sur l'ecran de 360 px, je distingue encore les deux yeux et le sourire ; les joues
+se lisent comme deux points roses.
+
+**On m'a transmis un avis contraire** - *"a 22 x 18 px le visage reste une petite tache blanche et
+rose"* - donne explicitement pour ce qu'il vaut, avec la consigne que j'en juge sur le rendu. **Je
+n'y souscris pas.** J'ai refuse la v1 sur trois mesures, les trois sont corrigees et mesurees, et je
+n'ai pas de quatrieme mesure a produire. Inventer un motif de remplacement apres avoir vu ma barre
+atteinte serait exactement le deplacement de poteaux que je m'interdis. **F4 est tenue. Le visage
+est accepte.**
+
+**Et je note ce que le visage remplace, pour que personne ne le decouvre apres.** `content: none`
+sur `.cabinet-bandeau::before` **retire l'etoile du fronton** validee en S8-1. Ce n'est pas une
+perte que je conteste - remplacer l'unique image fixe du fronton par un visage et un nom est
+l'objet meme de ce chantier, dont j'ai accepte le principe. C5 clause 2 reste tenue : le visage ne
+depend ni de l'item, ni de la colonne, ni de la reponse attendue, et il n'a nulle part ou varier
+puisque le cabinet n'existe pas sur l'ecran de retour.
+
+**L'enseigne, pour la seule part qui est de la forme.** "Le Copain Malin", mot pour mot, F7 tenue.
+A `1,25rem` : mesure sur mon rendu, le texte occupe `x = 62..210` dans un bandeau dont la zone de
+texte va jusqu'a `x = 327`. **117 px d'air, aucune ellipse engagee**, une seule ligne. Et cette
+propriete ne depend d'aucun jeu : le nom est une constante, la largeur du bandeau est une constante,
+donc F8 est tenue sur les huit jeux **par construction** et non par echantillonnage - je le dis
+plutot que de pretendre avoir regarde huit ecrans. **F11 et la reserve H restent entieres** :
+l'emplacement accessible de l'enseigne n'est pas dans cet arbitrage.
+
+#### 3. Les quatre pastels et le texte sombre - acceptes, et voici ce que j'ai regarde
+
+##### 3.a Le changement d'aspect dans toute l'application : j'arbitre, et je l'accepte
+
+C'est ce qu'on me demande de trancher, et `ines-design` a bien fait de le nommer au lieu de le
+glisser dans une liste de teintes. **Je l'accepte, sur trois motifs.**
+
+1. **Il n'y a pas d'alternative, et c'est demontre, pas affirme.** Sa preuve est refaite par moi en
+   section 0 bis C : la fenetre de luminance est vide. Le texte blanc sur les boutons de reponse est
+   **incompatible avec F9**, point. Refuser le texte sombre reviendrait a refuser F9, que j'ai
+   ecrite, ou a garder le rouge et le vert du verdict, que j'ai refuses en mesurant 1,03:1 et
+   1,05:1. Je ne peux pas avoir les trois.
+2. **Le mot que l'enfant doit lire devient nettement plus lisible.** De **5,41:1** (blanc sur
+   `#2e6f9e`) a **9,82 / 9,55 / 9,75 / 9,55:1**. C'est le gain le plus net de tout ce chantier, sur
+   la chose la plus importante de l'ecran, et sur un ecran de CP ou l'enfant lit peu et lentement.
+   Je ne l'echange pas contre l'uniformite d'une couleur de texte.
+3. **La distinction qui en resulte est un gain, pas un accident.** Apres ce changement, un bouton
+   qu'on **choisit** (pastel clair, texte sombre) ne ressemble plus a un bouton qui **fait avancer
+   le jeu** ("Encore !", "Demarrer", bleu a texte blanc). Un enfant de 6 ans distingue ainsi deux
+   familles d'objets sans avoir a lire. Personne ne l'a presente comme un benefice ; c'en est un, et
+   je le verrouille en F19 pour qu'un retouchage ulterieur ne le defasse pas par symetrie.
+
+**Ce que ce changement n'est pas** : une decision de produit qui m'appartient. Je dis qu'il est
+pedagogiquement bon et qu'il est mecaniquement force. **Que l'application change d'aspect reste un
+choix visible pour l'utilisatrice**, et `ines-design` a raison de le lui remonter par `camille-po`.
+
+##### 3.b F9 et F10, remesurees par moi sur les valeurs de la feuille candidate
+
+| Teinte | vs `#2e7d32` | vs `#c62828` | vs corps `#081c2c` | vs texte `#1c2733` |
+|---|---|---|---|---|
+| bleu `#bdd2ef` | 3,33:1 | 3,65:1 | 11,24:1 | 9,82:1 |
+| ambre `#e7cb7f` | **3,23:1** | 3,55:1 | 10,92:1 | 9,55:1 |
+| lavande `#dcc8ed` | 3,30:1 | 3,62:1 | 11,15:1 | 9,75:1 |
+| rose `#eec1d8` | 3,24:1 | 3,55:1 | 10,93:1 | 9,55:1 |
+
+Sa table est exacte au centieme, les seize valeurs. **F9 est tenue** sur les quatre, marge la plus
+juste 0,23. **F10 clause 2 est tenue** trois fois et demie au-dessus du plancher.
+
+**F10 clause 1, et je dis quelle lecture je prends.** Elle est ecrite *"au moins 4,5:1 contre le
+blanc de son texte"*. Le texte n'est plus blanc : la clause telle qu'ecrite est sans objet. **Je la
+lis comme un plancher de lisibilite sur le texte du bouton, quel qu'il soit**, et non comme
+l'obligation que ce texte soit blanc. Ce n'est pas une facilite : la clause etait la pour que le mot
+se lise, la valeur mesuree est **9,55:1 au minimum**, soit plus du **double** de mon plancher. La
+propriete que je protegeais est mieux tenue qu'avant. Si j'avais lu la clause a la lettre, j'aurais
+interdit une amelioration au nom d'une couleur - ce n'est pas ce que ma condition disait.
+
+**F10 clause 3 ne peut pas etre fermee aujourd'hui**, section 3.d.
+
+##### 3.c Le constat que personne n'avait fait : le voile du rouleau sur un fond clair
+
+Le rouleau est un voile **noir a 20 %** qui passe devant le bouton (`.proposition::after`). J'ai
+moi-meme motive cette valeur le 2026-08-10 par le fait qu'**assombrir augmente** le contraste d'un
+texte blanc : 5,41:1 au repos, **7,48:1** sous le voile. Sur un fond clair a texte sombre,
+l'arithmetique s'inverse : assombrir le fond **rapproche** le fond du texte.
+
+| Teinte | mot au repos | mot sous le voile | perte |
+|---|---|---|---|
+| bleu | 9,82:1 | 6,25:1 | -3,57 |
+| ambre | 9,55:1 | **6,07:1** | -3,48 |
+| lavande | 9,75:1 | 6,21:1 | -3,54 |
+| rose | 9,55:1 | 6,07:1 | -3,49 |
+
+**Le voile fait perdre un tiers du contraste, et le resultat reste au-dessus de 4,5:1** - 6,07:1 au
+pire, sur l'ambre. Ma condition du 2026-08-10 (*"le mot reste lisible du debut a la fin"*) est
+tenue, et le mot pendant le rouleau reste **plus lisible que le mot au repos sur le bouton
+d'aujourd'hui** (6,07 contre 5,41). **Ce n'est donc pas un motif, et je ne le convertis pas en
+reserve** : je le mesure et je le ferme. Mais je l'ecris en F17, parce que la marge n'est plus celle
+qu'elle etait : le voile a cesse d'aider et il a commence a couter. Une cinquieme teinte plus claire
+ou un voile plus opaque ferait passer un mot sous 4,5:1 sans qu'aucun test ne bouge, et personne ne
+saurait qu'il faut regarder la.
+
+##### 3.d Reserve G : ce que je ferme, ce que je ne peux pas fermer, et le chiffre qui manquait
+
+**La marque "deja essayee" de M9 n'existe dans aucun fichier de ce depot.** Je l'ai cherchee dans le
+CSS, les gabarits et le Java : rien. **Je ne peux donc pas la mesurer, et la reserve G reste
+ouverte** - je ne la declare pas fermee parce que le lot des couleurs arrive en premier.
+
+**Mais j'ai mesure ce qui la rendait dangereuse, et je l'ai rendu.** La couleur maison de toute
+marque dessinee dans cette application est le **blanc** (`--recreo-accent-texte`) : l'etoile du
+fronton, la coche du verdict, la croix du verdict, les etoiles du socle, la bordure de "Encore !".
+C'est ce que quelqu'un choisira par defaut.
+
+| Fond de la marque | Marque blanche |
+|---|---|
+| bouton bleu actuel `#2e6f9e` | **5,41:1** - elle se voit |
+| pastel bleu `#bdd2ef` | **1,54:1** |
+| pastel lavande `#dcc8ed` | 1,55:1 |
+| pastel rose `#eec1d8` | 1,58:1 |
+| pastel ambre `#e7cb7f` | 1,59:1 |
+
+**Rendu et regarde**, un disque blanc de 12 px sur le coin d'un bouton, sur les deux palettes, agrandi
+x3 : sur le bleu actuel la marque est franche ; sur les quatre pastels c'est un fantome qu'il faut
+chercher, et a taille reelle il n'y a plus rien. **M9 exige qu'une proposition deja essayee soit
+marquee ; une marque blanche sur ces fonds ne marque rien, et aucun test de ce depot ne le verrait.**
+C'est l'exemple exact du "faux en restant vert" que j'annoncais, et il est maintenant chiffre.
+
+**F16 est bloquante** et donne le remede avec son chiffre : la marque n'est pas blanche, et elle
+tient **3:1 sur chacune des quatre teintes**. En texte sombre `#1c2733` elle serait a **9,55:1 au
+minimum** - la contrainte est facile a satisfaire, elle est juste facile a rater.
+
+##### 3.e Une reserve neuve que je n'avais pas vue, et je la donne comme neuve et non comme un durcissement
+
+**L'ambre de cette application veut deja dire "tu as besoin d'aide", et ce n'est pas moi qui l'ai
+decide : c'est ecrit dans la feuille de production.** Le commentaire de `recreo.css` qui motive la
+couleur de la boite d'explication dit, mot pour mot, que l'ambre de
+`--recreo-attention-fond/bordure` est *"deja charge du sens 'tu as besoin d'aide'"*, et que c'est
+pour cette raison que l'explication ne la reprend pas - sinon *"l'enfant apprend que comprendre est
+une punition"*. L'equipe a donc **reserve une teinte a un sens**, avec un motif pedagogique explicite.
+
+**Cette proposition depense cette teinte en decor.** Le bouton `4n+2` est ambre en permanence, sur
+tous les items, sur les huit jeux. Et j'ai rendu l'etat que personne n'avait regarde : **l'ecran ou
+l'indice s'affiche**. La boite d'indice `#fff4e5` bordee de `#b45309` se trouve immediatement
+au-dessus du cabinet, et le premier bouton de la premiere rangee, juste dessous, est `#e7cb7f`.
+Contraste entre les deux : **1,46:1**.
+
+**Ce que je conclus, et je pese honnetement.** A l'oeil, sur ma capture, la boite est presque creme
+et le bouton est un ambre franc : **un enfant ne prendra pas le bouton pour la boite d'aide.** Mon
+inquietude n'est pas la confusion des deux objets, c'est autre chose : **le signal d'aide cesse
+d'etre la seule chose ambre de l'ecran**, donc il ressort moins au moment exact ou il doit ressortir
+- apres trois echecs, quand l'enfant est le plus en difficulte. Et ce n'est pas un mecanisme de
+verdict, donc **F9 n'est pas violee** : il n'y a aucune fuite d'information sur la bonne reponse, la
+couleur suit la position et la position varie.
+
+**Je ne rouvre donc pas F9 et je ne refuse pas la palette.** Trois des quatre teintes sont
+irreprochables, le gain de lisibilite est reel, et refuser quatre teintes pour une serait
+disproportionne. **J'en fais la condition F18 et la reserve J, datees du 2026-08-13**, avec une
+sortie a deux branches : soit la quatrieme teinte n'est pas dans la famille de l'ambre de l'aide,
+soit `camille-po` acte par ecrit que l'ambre cesse de signifier "aide" dans cette application - ce
+qui est son arbitrage, pas le mien, et qui aurait des consequences ailleurs.
+
+**Et je verifie que ma condition n'est pas une demande impossible avant de l'ecrire**, parce que
+c'est la discipline que je me suis imposee le 2026-08-12 en mesurant moi-meme la troisieme route
+d'un dilemme qu'on me presentait a deux branches. Quatre candidats calcules par moi, tous en dehors
+de la famille de l'ambre et de celles du rouge et du vert :
+
+| Candidat | vs `#2e7d32` | vs `#c62828` | vs corps | vs texte sombre |
+|---|---|---|---|---|
+| sarcelle pale `#a9dcd8` | 3,40:1 | 3,73:1 | 11,47:1 | 10,03:1 |
+| pervenche `#c5cdf0` | 3,26:1 | 3,58:1 | 11,02:1 | 9,63:1 |
+| turquoise pale `#aedde6` | 3,49:1 | 3,82:1 | 11,78:1 | 10,30:1 |
+| gris-bleu pale `#c3cdd6` | 3,18:1 | 3,49:1 | 10,74:1 | 9,39:1 |
+
+**Les quatre tiennent F9 et F10 mieux que l'ambre propose.** Je ne choisis pas la teinte - ce n'est
+pas mon metier et `ines-design` doit la rendre et la regarder - je constate que la place existe.
+
+##### 3.f Ce que je verifie aussi, et qui ne pose pas de probleme
+
+- **A trois colonnes (CP).** Rendu sur "5 + 1", propositions `5` / `8` / `6` : bleu, ambre,
+  lavande. Les chiffres sont grands et nets en texte sombre, les trois boutons se distinguent
+  franchement. La palette tient a trois colonnes.
+- **Aucune fuite d'information.** La couleur est attachee a la position (`nth-child`), la position
+  de la bonne reponse varie d'un item a l'autre : C5 clause 2 tenue par construction, comme sur la
+  version refusee. Je le redis parce que c'est le point que j'avais valide dans son raisonnement et
+  que je ne rouvre pas.
+- **Les etoiles du socle et le corps en deux tons** sont acceptes depuis le 2026-08-12 et
+  `ines-design` ne les a pas retouches. Je les ai inclus dans mon rendu final pour verifier qu'ils
+  ne rencontrent pas le levier - ils vivent dans le socle, a l'interieur du rembourrage, et le
+  levier replace vit hors de lui : aucun contact. Ce n'etait pas verifie et ca l'est.
+- **L'ecran de retour** ne porte pas de `.propositions` : la palette ne l'atteint pas, la coche et
+  la croix du verdict gardent leur blanc et leurs couleurs. Rien a arbitrer.
+
+#### 4. Mes sept conditions neuves, F13 a F19
+
+Elles se lisent **a la suite** de F1 a F12 du 2026-08-12 et de M1 a M13 de l'arbitrage de mecanique.
+**Aucune condition anterieure n'est renumerotee, rouverte ni durcie.** **Une seule est bloquante par
+elle-meme : F16.**
+
+| # | Condition | Comment on la verifie |
+|---|---|---|
+| F13 | **Toutes les parties du levier vivent dans les 20 px hors des colonnes** : a 360 px, entre le bord droit d'une proposition (`x = 339`) et le bord droit de l'ecran (`x = 359`). Aucune partie plus large que 20 px. C'est ce qui rend le zero-recouvrement **structurel** au lieu de dependre de la hauteur du meuble, donc vrai sur les huit jeux et a deux, trois ou quatre colonnes | difference de deux rendus a 360 px, avec et sans le levier, sur un ecran a quatre colonnes **et** un a trois |
+| F14 | **Le levier ne pose aucun pixel sur le corps du cabinet.** Ses seules surfaces sont la bordure (2,82:1) et le fond de page (3,05:1). Le plafond de F2 reste **3,20:1 en valeur litterale** et ne monte pas avec la palette | balayage par difference de rendus, surface d'origine de chaque pixel change |
+| F15 | **Le levier n'intercepte aucun appui destine a une proposition.** Aucun pixel de cible pressable ne devient inerte a cause de lui : ni recouvrement, ni interception d'evenement | F13 + appui reel a l'emplacement du levier et sur le bord de la proposition voisine, avant/apres capture |
+| F16 | **Bloquante. La marque "deja essayee" de M9 n'est pas blanche et tient au moins 3:1 sur chacune des quatre teintes retenues.** Le blanc maison est a **1,54:1** au mieux : il est exclu nommement. Si le lot des couleurs sort avant celui de la marque, c'est le second qui refait cette mesure sur les quatre fonds livres | calcul WCAG sur les valeurs de la feuille servie **et** capture d'une proposition deja essayee sur chacune des quatre teintes, a taille reelle |
+| F17 | **Le mot d'une proposition reste au moins 4,5:1 pendant tout le passage du voile du rouleau, sur chacune des quatre teintes.** Le voile a cesse d'aider et s'est mis a couter : etat courant 6,07:1 au pire. Toute teinte plus claire ou tout voile plus opaque repasse devant moi | calcul WCAG sur le fond composite (teinte sous voile noir a 20 %) contre la couleur du texte, sur les quatre teintes |
+| F18 | **La quatrieme teinte n'est pas dans la famille de l'ambre de l'aide** (`--recreo-attention-fond` / `--recreo-attention-bordure`), a moins que `camille-po` n'acte par ecrit que l'ambre cesse de signifier "tu as besoin d'aide" dans cette application. Au moins quatre teintes satisfaisant F9 et F10 existent hors de cette famille, mesurees en section 3.e : la contrainte est satisfaisable | capture de **l'ecran ou l'indice s'affiche**, boite d'aide et boutons ensemble, a 360 px |
+| F19 | **Un bouton de reponse ne reprend pas l'aspect d'un bouton qui fait avancer le jeu.** Apres ce lot, la reponse est claire a texte sombre et l'action ("Encore !", "Demarrer") est pleine a texte blanc : cette distinction est un acquis, elle n'est pas defaite par symetrie dans un lot ulterieur | capture de l'ecran de jeu et de l'ecran de retour, cote a cote |
+
+**Ce que ces sept conditions ne disent pas** : qu'un enfant comprendra qu'on ne touche pas le
+levier. F3, F13, F14 et F15 reduisent le risque, elles ne l'annulent pas, et `DEC-0023` a
+explicitement laisse ce risque residuel ouvert. Il reste a moi.
+
+#### 5. Reserves nouvelles et datees du 2026-08-13
+
+Aucune n'est un refus, aucune ne bloque le sprint. Elles sont ecrites pour que `camille-po` en fasse
+des stories.
+
+**Reserve I - la baisse de contraste que j'exige en F2 est ce qui fait ressembler le levier a un
+element d'interface, et cette tension n'est pas resolue.** Elle est constatee, pas theorique : c'est
+la cause mesuree de l'echec de la variante v2, et c'est ma propre condition qui la produit. La
+variante E la contourne par la **forme** (platine large, ancrage sur une limite reelle) plutot que
+par la teinte, et ca marche. Mais si un jour la forme est simplifiee, la tension reviendra intacte.
+Je la nomme pour qu'on sache que le levier tient par sa platine, et pas par sa couleur.
+
+**Reserve J - l'ambre de l'aide est depense en decor, et il faut le decider plutot que le subir.**
+Motif complet en section 3.e, chiffre a 1,46:1 contre la boite d'indice. F18 dit comment ; cette
+reserve dit que la question de fond - **combien de sens cette application accroche-t-elle a ses
+couleurs, et lesquelles sont deja prises** - n'a jamais ete instruite pour elle-meme. Le rouge, le
+vert et l'ambre le sont deja ; personne n'en tient la liste, et c'est ainsi qu'on redecouvre a
+chaque lot qu'une teinte etait prise.
+
+**Reserve K - la marque de M9 est concue apres les fonds sur lesquels elle doit se voir, et c'est
+l'ordre le plus couteux.** Ma reserve G du 2026-08-12 demandait que les deux lots soient mesures
+dans le meme geste ; l'ordre retenu est l'inverse. F16 rattrape le cas connu, mais la lecon vaut
+au-dela : **tout signal d'etat dessine par-dessus une surface dont la couleur est decidee ailleurs
+doit nommer son plancher de contraste au moment ou il est concu**, ou il devient faux en silence.
+C'est le troisieme lot de ce sprint ou le probleme se presente.
+
+#### 6. Ce dont je reste seule garde apres cet arbitrage
+
+Je le dis explicitement, sinon l'equipe croira couvert ce qui ne l'est pas.
+
+1. **Qu'une silhouette ressemble a ce qu'elle pretend etre.** F1 et F4 n'ont aucun automate et n'en
+   auront pas. Je suis le garde-fou, et depuis aujourd'hui je le suis **en produisant moi-meme le
+   rendu**, jamais en deduisant d'un rapport de diametres - une de mes lectures a ete mesuree comme
+   fausse et c'est ce qui a change ma methode.
+2. **Qu'une marque d'etat se voie sur le fond qu'on lui donne.** F16 est mecanique, mais rien dans
+   ce depot ne compare la couleur d'une marque a la couleur du fond sous elle. Tant que ce
+   garde-fou n'existe pas, M9 peut redevenir faux en restant vert au premier changement de palette.
+3. **Qu'une couleur ne dise pas deux choses a la fois.** F9 couvre les deux couleurs de verdict et
+   F18 couvre l'ambre de l'aide, nommement. Aucune regle ne tient la liste des teintes deja
+   chargees de sens, et rien n'empechera la prochaine de reprendre celle de l'explication ou celle
+   du bandeau.
+4. **Qu'un decor inerte n'avale pas un appui.** F15 se verifie a la main. Aucun test ne mesure si un
+   pixel de cible pressable est devenu mort a cause d'un frere absolu place au-dessus.
+5. **Qu'un texte lu par un enfant tienne dans sa boite sur les huit jeux.** F8 tient par
+   construction sur l'enseigne, mais aucun automate ne le prouve, et j'ai regarde deux jeux sur huit.
+
+#### 7. Ce que cet arbitrage ne tranche pas
+
+- **Aucune route technique, aucun choix d'architecture.** La geometrie replacee de la section 1.d
+  est une **mesure**, pas une specification de dessin : elle prouve que mes conditions laissent de
+  la place, et le dessin appartient a `ines-design`, la structure a `theo-archi`. Si une autre
+  geometrie tient F13 a F15, elle me convient.
+- **L'emplacement accessible de l'enseigne**, bloque par F11 tant qu'une ecoute reelle de lecteur
+  d'ecran n'a pas eu lieu. `theo-archi` a inventorie cinq structures et aucune ne satisfait F11
+  sans cette ecoute. Rien ici ne le debloque, et je n'ai pas ecoute.
+- **Le nombre de teintes, l'ordre des couleurs, la valeur exacte de la quatrieme.** F18 dit quelle
+  famille est exclue et pourquoi ; elle ne designe pas de remplacante.
+- **Le perimetre du sprint et la priorite de ces stories.** Je produis des motifs, `camille-po` en
+  fait des stories.
+- **Aucun Done pedagogique.** Rien n'est code. Les conditions se verifient sur l'increment livre,
+  et je rejugerai F1, F4, F13 a F19 sur un rendu, comme aujourd'hui.
 
 ### Verdict courant - chantier du cabinet (S8-1, S8-2, S8-3), prononce sur l'increment livre, du 2026-08-11
 
