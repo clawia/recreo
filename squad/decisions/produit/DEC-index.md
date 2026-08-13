@@ -26,7 +26,15 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0020 | S9-2 debloquee : nombreDeManches abaisse a 7 pour bandit-manchot-complements-10-cp, plutot qu'un elargissement des formes d'items | s09 | 2026-08-12 | Acceptee |
 | DEC-0021 | La regularite de magnitude des additions de "resoudre un probleme" (reserve de refus sur S9-4) est reportee en story de backlog, pas un geste de ce sprint | s09 | 2026-08-12 | Acceptee |
 | DEC-0022 | Perimetre du sprint 10 : le manche du bandit manchot est dessine et immobile, trois demandes de l'utilisatrice ecartees avec leurs declencheurs de reouverture | s10 | 2026-08-12 | Acceptee, deux des trois exclusions (points 1 et 3) remplacees par DEC-0023 le meme jour, point 2 inchange |
-| DEC-0023 | Le perimetre du sprint 10 est repris sur les references de l'utilisatrice : la machine est redessinee en CSS pur, le veto de nadia-prof sur la manette est leve, l'ecran intermediaire est questionne | s10 | 2026-08-12 | Acceptee sur les points 1 a 5, point 6 ouvert en attente d'arbitrage prealable de nadia-prof |
+| DEC-0023 | Le perimetre du sprint 10 est repris sur les references de l'utilisatrice : la machine est redessinee en CSS pur, le veto de nadia-prof sur la manette est leve, l'ecran intermediaire est questionne | s10 | 2026-08-12 | Acceptee sur les points 1 a 5, point 6 ferme par DEC-0024 |
+| DEC-0024 | "Le bon petit mot" quitte le catalogue jouable : contenu valide, ecran trop court, condition de retour executable | s10 | 2026-08-12 | Acceptee |
+
+Amendement (pas une nouvelle reference) : `DEC-0023` a ete amendee le 2026-08-12, sur son point 6
+(disparition de l'ecran intermediaire), laisse ouvert et route a `nadia-prof` pour arbitrage
+prealable. Ce point est ferme par deux arbitrages successifs de `nadia-prof` (mecanique, conditions
+M1 a M12 ; forme, conditions F1 a F12, verdict REFUSE sur la proposition telle qu'ecrite mais
+principe accepte) et par les mesures d'`ines-design` et de `theo-archi` qui les entourent. Voir la
+section "Ce que cette decision ferme du point 6 de DEC-0023" dans `DEC-0024`.
 
 Amendement (pas une nouvelle reference) : `DEC-0002` a ete amendee le 2026-08-04, a la suite de la
 relecture pedagogique de `nadia-prof` sur le refus de `bandit-manchot-additions-cp` - ajout d'une
