@@ -55,6 +55,9 @@ class RessourcesTiercesTest {
      */
     private static final List<String> JAVASCRIPT_TIERS_REFUSE = List.of("bootstrap");
 
+    /** Ce qu'un gabarit ecrit quand il demande une ressource par une expression Thymeleaf. */
+    private static final List<String> ATTRIBUTS_THYMELEAF = List.of("th:src=", "th:href=");
+
     private record Ressource(String chemin, String origine, String cheminSource, String empreinte) {
     }
 
@@ -264,16 +267,54 @@ class RessourcesTiercesTest {
 
         for (Path gabarit : gabarits(racine)) {
             Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
-            for (Element reference : document.select("link[href], link[th\\:href], script[src], script[th\\:src]")) {
+            for (Element reference : referencesDeRessource(document)) {
                 verifierCibleLocale(racine, gabarit, cheminDeGabarit(gabarit, reference), gabarit.toString());
             }
         }
     }
 
     /**
+     * Les elements d'un gabarit qui font aller chercher un fichier de static/, selectionnes par
+     * presence d'attribut et non par un selecteur CSS : mesure sur la version de jsoup qu'utilise ce
+     * build (1.23.1), {@code script[th\:src]} ne selectionne <b>aucun</b> element, alors que
+     * {@code attr("th:src")} rend bien la valeur. La forme echappee du deux-points n'est pas comprise
+     * par l'analyseur de selecteurs ; elle l'etait peut-etre dans une version anterieure, elle ne
+     * l'est pas ici. Toute la production ecrivant ses cinq references en Thymeleaf, la branche
+     * gabarits de ce garde-fou ne regardait donc rien du tout avant ADR-0036 - un vert silencieux, que
+     * son propre jeu fautif ne pouvait pas reveler puisqu'il etait ecrit en attribut simple.
+     *
+     * <p>Le critere porte sur l'attribut et non sur une liste de balises. Un {@code src} designe
+     * toujours une ressource que le navigateur va chercher, sur n'importe quel element - image,
+     * script, cadre, son, video ; un {@code href} n'en designe une que sur {@code link}, puisque sur
+     * {@code a} il designe une route de l'application, qui n'est pas un fichier de static/. Une liste
+     * de balises aurait echoue par omission, et elle l'avait deja fait : elle nommait {@code link} et
+     * {@code script}, et laissait dehors l'unique {@code img} de la production, l'icone d'en-tete
+     * servie depuis static/ depuis S6-1.
+     */
+    private static List<Element> referencesDeRessource(Document document) {
+        List<Element> references = new ArrayList<>();
+        for (Element element : document.getAllElements()) {
+            boolean ressource = element.hasAttr("src") || element.hasAttr("th:src")
+                    || ("link".equals(element.normalName())
+                        && (element.hasAttr("href") || element.hasAttr("th:href")));
+            if (ressource) {
+                references.add(element);
+            }
+        }
+        return references;
+    }
+
+    /**
      * Le chemin qu'un gabarit demande au navigateur. Thymeleaf l'ecrit dans th:href ou th:src, sous
      * la forme @{/chemin}. Une expression calculee est refusee plutot qu'ignoree : on ne peut pas
      * prouver hors ligne ce qu'on ne sait pas lire (ADR-0013 obligation 2).
+     *
+     * <p>ADR-0036 : depuis que le perimetre couvre {@code src}, ce refus porte aussi la condition C5
+     * de nadia-prof - le jeu d'images du cabinet ne depend ni de l'item tire, ni du numero de la
+     * colonne, ni de la reponse attendue. Tant que les formes du meuble etaient dessinees par des
+     * regles statiques, cette propriete etait tenue par construction. Une image designee par un
+     * attribut de gabarit, elle, peut varier : c'est exactement ce qu'un chemin calcule ferait, et
+     * c'est ici que cela devient rouge.
      */
     private static String cheminDeGabarit(Path gabarit, Element reference) {
         String brut = reference.hasAttr("th:href") ? reference.attr("th:href")
@@ -362,6 +403,36 @@ class RessourcesTiercesTest {
         verifierAucuneRessourceExterne(RACINE_PRODUCTION);
     }
 
+    /**
+     * ADR-0036, clause anti-vacuite. Elle ne se prouve pas sur une fixture mais sur le materiau reel,
+     * et son ancre est independante de ce qu'elle verifie : le <b>texte</b> du gabarit dit qu'une
+     * reference Thymeleaf y est ecrite, la selection <b>DOM</b> doit donc en trouver au moins une. La
+     * clause precedente pouvait etre verte en ne regardant aucun element ; celle-ci rougit dans ce
+     * cas-la.
+     */
+    @Test
+    void aucuneReferenceEcriteEnThymeleafNEchappeALaSelection() {
+        List<Path> gabaritsAvecThymeleaf = new ArrayList<>();
+        for (Path gabarit : gabarits(RACINE_PRODUCTION)) {
+            String source = lire(gabarit);
+            if (ATTRIBUTS_THYMELEAF.stream().noneMatch(source::contains)) {
+                continue;
+            }
+            gabaritsAvecThymeleaf.add(gabarit);
+            assertThat(referencesDeRessource(Jsoup.parse(source, gabarit.toString())))
+                    .as("ADR-0036 : %s ecrit une reference de ressource en Thymeleaf, et la selection "
+                            + "de ce garde-fou n'en voit aucune ; un selecteur qui ne comprend pas la "
+                            + "forme reellement ecrite rend cette regle verte sans rien verifier",
+                            gabarit)
+                    .isNotEmpty();
+        }
+
+        assertThat(gabaritsAvecThymeleaf)
+                .as("ADR-0003 : cette clause ne prouve rien si aucun gabarit de production n'ecrit de "
+                        + "reference de ressource en Thymeleaf")
+                .isNotEmpty();
+    }
+
     @Test
     void laFeuilleMaisonEstChargeeApresLaFeuilleTierce() {
         verifierFeuilleMaisonChargeeEnDernier(RACINE_PRODUCTION);
@@ -410,6 +481,35 @@ class RessourcesTiercesTest {
                 verifierAucuneRessourceExterne(CONTRE_EXEMPLES.resolve("gabarit-sur-cdn")))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("sur le reseau");
+    }
+
+    @Test
+    void uneImageChargeeDepuisUnCdnFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() ->
+                verifierAucuneRessourceExterne(CONTRE_EXEMPLES.resolve("image-sur-cdn")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("sur le reseau");
+    }
+
+    @Test
+    void uneImageQueAucunFichierNeSertFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() ->
+                verifierAucuneRessourceExterne(CONTRE_EXEMPLES.resolve("image-absente")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("n'est servi par aucun fichier");
+    }
+
+    /**
+     * ADR-0036 : ce jeu fautif est le seul a mettre a l'epreuve le refus des chemins calcules. Le
+     * critere existait depuis ADR-0014 et n'avait jamais rencontre de contre-exemple ; il porte
+     * desormais la condition C5, qui cesse d'etre tenue par construction des qu'une image entre.
+     */
+    @Test
+    void uneImageDesigneeParUnCheminCalculeFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() ->
+                verifierAucuneRessourceExterne(CONTRE_EXEMPLES.resolve("image-calculee")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("expression calculee");
     }
 
     @Test

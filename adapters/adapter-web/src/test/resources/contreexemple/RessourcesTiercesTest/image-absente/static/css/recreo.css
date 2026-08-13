@@ -1,0 +1,5 @@
+/* ADR-0036 : static/ existe et porte bien une feuille, pour que le rouge du jeu fautif voisin dise
+   "ce fichier-la manque" et non "il n'y a rien a servir du tout". */
+.cabinet-bandeau {
+    height: 2rem;
+}

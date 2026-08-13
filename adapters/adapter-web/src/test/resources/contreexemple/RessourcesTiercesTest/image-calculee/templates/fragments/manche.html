@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- ADR-0036 : le fronton change avec la question posee. C'est la violation de la condition C5 de
+     nadia-prof - le jeu d'images ne depend ni de l'item tire, ni du numero de la colonne, ni de la
+     reponse attendue - et c'est aussi une cible que rien ne peut prouver servie hors ligne, puisque
+     personne ne sait, en lisant le gabarit, quels chemins elle produit. -->
+<div class="cabinet">
+    <div class="cabinet-bandeau" aria-hidden="true">
+        <img th:src="@{'/images/fronton-' + ${enonce} + '.png'}" alt="">
+    </div>
+</div>
+</body>
+</html>

@@ -117,6 +117,27 @@ verifier "citer /home/... sans segment reel n'est pas une occurrence" 0 \
   'motif interdit : /home/...
 '
 
+# --- ADR-0036 : un binaire n'est pas lu comme du texte ---
+#
+# Les deux cas portent la meme chaine de caracteres. Seul le premier est un fichier binaire, et
+# c'est bien cela, et non un affaiblissement de la regex, qui fait la difference de verdict.
+
+fichier="${TMPDIR_CAS}/ressource-binaire"
+printf 'PNG\x00\x00\x00 C:\\Users\\alice\\projet \x00\x00 fin' > "${fichier}"
+sortie="$(printf '%s\n' "${fichier}" | bash "${SCRIPT}" 2>&1)"
+code=$?
+if [ "${code}" != 0 ]; then
+  echo "ECHEC un fichier binaire n'est pas juge comme du texte : code ${code}"
+  echo "  sortie : ${sortie}"
+  ECHECS=$((ECHECS + 1))
+else
+  echo "ok un fichier binaire n'est pas juge comme du texte"
+fi
+
+verifier "les memes octets sans octet nul, donc en texte, restent refuses" 1 \
+  'PNG    C:\Users\alice\projet    fin
+' "chemin de poste de travail ou compte utilisateur dans"
+
 # --- cas limites deja vus sur le garde-fou de prefixes, reproduits ici ---
 
 verifier "un fichier sans chemin de poste de travail est accepte" 0 \
