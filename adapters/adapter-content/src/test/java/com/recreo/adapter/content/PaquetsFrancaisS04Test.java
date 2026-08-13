@@ -580,7 +580,23 @@ class PaquetsFrancaisS04Test {
         throw new IllegalStateException("aucun sujet reconnu dans : " + enonce);
     }
 
-    /** Joue une partie complete de bandit manchot et rend les enonces presentes, dans leur ordre. */
+    /**
+     * Joue une partie complete de bandit manchot et rend les enonces presentes, dans leur ordre -
+     * chacun une seule fois, au moment ou sa manche est fraiche.
+     *
+     * <p>S10, arbitrage de mecanique de nadia-prof (M5) : une reponse fausse ne resout plus la
+     * manche, elle laisse l'enfant reessayer jusqu'a trois echecs, puis la revele - seul un appui
+     * sur la reponse nommee la fait alors avancer. Un bot qui presse toujours la meme reponse fausse
+     * force donc chaque manche jusqu'a sa revelation ; il presse ensuite la reponse revelee pour ne
+     * pas boucler indefiniment sur une manche qui n'accepte plus que ce geste-la
+     * ({@code BanditManchotSession.jouer}, clause "sur une manche revelee"). Sans cela, la boucle
+     * ci-dessous ne termine jamais et {@code phrases} grossit sans fin (OutOfMemoryError constate,
+     * reproduit deux fois par `sofia-sm`).</p>
+     *
+     * <p>Une manche fraiche - {@code propositionsEssayees()} encore vide - n'a essuye aucun echec :
+     * c'est le seul moment ou son enonce est ajoute, pour que deux manches echouees trois fois de
+     * suite n'entrent pas trois fois dans la liste que ce test compare.</p>
+     */
     private static List<String> phrasesDUnePartieComplete(ContentSource contenu, int nombreDeManches,
             Random graine) {
         RandomSource hasard = graine::nextInt;
@@ -591,8 +607,13 @@ class PaquetsFrancaisS04Test {
         List<String> phrases = new ArrayList<>();
         while (session.status() == SessionStatus.EN_COURS) {
             BanditManchotSession mancheEnCours = (BanditManchotSession) session;
-            phrases.add(mancheEnCours.enonceManche().orElseThrow());
-            session = mecanique.apply(session, reponseToujoursFausse);
+            if (mancheEnCours.propositionsEssayees().isEmpty()) {
+                phrases.add(mancheEnCours.enonceManche().orElseThrow());
+            }
+            BanditManchotMove coup = mancheEnCours.revelee()
+                    ? new BanditManchotMove(mancheEnCours.reponseRevelee().orElseThrow())
+                    : reponseToujoursFausse;
+            session = mecanique.apply(session, coup);
         }
         return phrases;
     }
