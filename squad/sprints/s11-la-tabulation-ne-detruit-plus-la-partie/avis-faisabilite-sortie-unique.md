@@ -8,8 +8,8 @@
   Garder "uniquement celle de l'en-tete" suppose de lever
   `body:has(.ecran-de-jeu) .lien-accueil { display: none }` : les deux gestes sont instruits ensemble.
 
-> Ce fichier vit dans un repertoire `s11` sans slug : nommer le sprint appartient a `sofia-sm`. A
-> renommer avec le repertoire quand elle l'ouvre.
+> Ce fichier vivait dans un repertoire `s11` sans slug ; `sofia-sm` l'a range dans
+> `s11-la-tabulation-ne-detruit-plus-la-partie` en ouvrant le planning du sprint.
 
 ## Verdict
 
