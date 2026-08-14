@@ -104,6 +104,12 @@ Un oubli de declaration produit un **rouge**, jamais un vert silencieux. C'est l
 tout un paquet.** Le fichier exact que l'application sert, copie octet pour octet, sous
 `adapters/adapter-web/src/main/resources/static/vendor/`, et **rien d'autre du paquet d'origine**.
 
+> **Amendement du 2026-08-14, `ADR-0037`** : ce point parle de **dependances**, et se lisait donc
+> comme s'il gouvernait toute dependance Maven de ce depot - y compris un outil de test qui n'est
+> servi a personne. Le perimetre de cet ADR est **l'octet servi au navigateur**. Une dependance de
+> portee `test` n'en releve pas ; une dependance qui apporte un octet servi en releve et est refusee.
+> C'est `ADR-0037` qui dit cette frontiere et qui l'encode.
+
 **2. `static/vendor/` est le seul emplacement tiers du depot.** Tout le reste de `static/` est
 maison et juge comme tel.
 
@@ -485,6 +491,11 @@ que `nadia-prof` a mesure. Cela passe par une story et par elle, pas par une sub
   Bootstrap intranchable, et il place le CSS tiers hors de l'arbre, donc hors de portee de toute
   derivation de perimetre. Ses avantages reels - mise a jour triviale, integrite geree par Maven -
   sont recuperes en partie par `provenance.txt`.
+  **Amendement du 2026-08-14, `ADR-0037`** : cet ecart etait argumente et **jamais encode**. Rien
+  n'empechait un webjar d'entrer, et `RessourcesTiercesTest` ne pouvait pas le voir - son perimetre
+  descend de l'arbre `static/` d'un module, ou un webjar n'atterrit jamais. Nommer un trou dans un
+  ADR ne le garde pas, ce que cet ADR reprochait lui-meme a une autre de ses puces : le refus est
+  desormais porte par `LeLivrableNeSertQueLesRessourcesDeSesModulesIT`, qui lit le livrable produit.
 - **CDN.** Ecarte par le `CLAUDE.md` : l'application doit fonctionner hors ligne. Un jeu fautif
   reproduit ce cas et exige le rouge, parce que c'est la facon la plus courante d'installer
   Bootstrap et donc la plus probable a etre proposee un jour.

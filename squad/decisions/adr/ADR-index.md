@@ -40,6 +40,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0034](ADR-0034-un-corpus-d-ecrans-exerce-les-deux-verdicts.md) | Exiger que tout corpus d'ecrans exerce les deux verdicts, et lire leurs marqueurs dans le gabarit plutot que dans le test | s10 | 2026-08-12 | Accepte |
 | [ADR-0035](ADR-0035-aucun-texte-rendu-ne-vit-dans-un-sous-arbre-masque.md) | Refuser tout texte rendu a l'interieur d'un sous-arbre `aria-hidden`, et accrocher le masque au decor plutot qu'au conteneur | s10 | 2026-08-12 | Accepte |
 | [ADR-0036](ADR-0036-une-image-maison-entre-par-son-chemin-un-garde-fou-ne-lit-pas-un-binaire-comme-du-texte.md) | Faire entrer une image maison par son chemin litteral et non par une empreinte, deriver le perimetre d'une reference de ressource de l'attribut, et retirer les binaires du garde-fou de chemins | s10 | 2026-08-13 | Accepte |
+| [ADR-0037](ADR-0037-une-dependance-de-test-n-est-pas-une-ressource-servie.md) | Distinguer une dependance de test d'une ressource servie, et refuser tout octet servi qui n'est pas vendorise | s10 | 2026-08-14 | Accepte |
 
 ## Amendements
 
@@ -82,6 +83,7 @@ est date dans le corps de l'ADR. Ceux du sprint 0 :
 | ADR-0027 | 2026-08-13 | **sa clause 2 forcait le defaut qu'elle croyait interdire, et elle exigeait ce defaut sans exception** : "tout ecran de jeu echange par htmx declare `par-un-geste`" etait juste tant qu'un echange htmx renouvelait toujours la question. Depuis le cycle de manche de S10, trois etats rendent le meme tirage - echec avec des essais restants, entree en revelation, appui a cote apres la revelation - et les colonnes y rebalaient. `nadia-prof` le refuse (condition M10) sur un motif mesure : le mouvement dit que la machine distribue alors que rien n'a ete distribue, et le prix est jusqu'a 18 s d'attente pour l'enfant qui se trompe le plus. **Cause : je n'avais jamais ecrit le sujet de `data-arrivee`.** C'est le tirage que les colonnes montrent, pas la reponse HTTP - quatrieme occurrence de ma famille de faute, apres ADR-0022, la limite 5 d'ADR-0017 et la section 2 d'ADR-0026. Clause devenue un "si et seulement si", condition calculee dans le point de passage unique et non a la route fautive, donc aucune route exemptee. Morsure : la production d'avant l'amendement rend **2 echecs sur 10 cas** et la clause nomme les trois etats ; le troisieme n'etait pas dans le corpus et y entre. Le vert silencieux de la lecture - une marque d'essai introuvable annulerait tout l'amendement - est ferme par un jeu fautif que **mon propre garde-fou de balayage a exige avant la revue** |
 | ADR-0014 | 2026-08-13 | **sa garantie hors ligne ne regardait aucun gabarit, depuis s06** : la branche gabarits selectionnait `link[th\:href]` et `script[th\:src]`, et sur la version de jsoup que ce build utilise reellement (1.23.1, verifiee par `dependency:build-classpath`) la forme echappee du deux-points ne selectionne **zero element**. Les cinq references de production etant toutes ecrites en Thymeleaf, aucune n'etait verifiee : ni distante, ni absente. Mesure sur `2d34a15` : l'icone d'en-tete pointee vers un CDN **et** la feuille vendorisee pointee vers un fichier inexistant laissent les 12 cas verts. Son jeu fautif `gabarit-sur-cdn` ecrivait un `href` en attribut simple, forme que la production n'ecrit nulle part - sixieme occurrence de la lecon de s05, et la premiere qui coute une garantie entiere et non une clause. Perimetre derive de l'attribut et selectionne par `hasAttr`, plus une clause anti-vacuite ancree sur le texte du gabarit (ADR-0036) |
 | ADR-0010 | 2026-08-13 | **son garde-fou lisait les binaires comme du texte, et inventait des fautes** : la forme a lettre de lecteur tient en quatre octets, que les octets compresses d'une image contiennent tot ou tard. Mesure sur 21 PNG de 72 ko a 500 ko : **4 refuses**, sur un motif sans aucun rapport avec un chemin ; `favicon.ico` y echappait par sa seule petitesse. Le jour ou la premiere illustration entre, la CI avait environ une chance sur cinq de rougir a tort, et le tirage se refaisait a chaque image. `grep -I` retire les binaires par leur contenu et non par une liste d'extensions. Deuxieme fois que cet ADR mord son propre auteur : mon commentaire d'explication du correctif citait la sequence fautive en clair (ADR-0036) |
+| ADR-0014 | 2026-08-14 | **son point 1 parlait de dependances, pas d'octets servis, et son refus du webjar n'etait ecrit que dans ses alternatives** - donc rien ne l'appliquait. Pris a la lettre, ce point se lisait comme s'il gouvernait toute dependance Maven, y compris un outil de test que personne ne sert : c'est ce qui a rendu l'arbitrage de `nashorn-core` impossible a ranger au sprint 10. Perimetre dit (l'octet servi), et refus du webjar desormais encode par `ADR-0037` sur le livrable produit - `RessourcesTiercesTest` ne pouvait pas le voir, son perimetre descendant de l'arbre `static/` d'un module ou un webjar n'atterrit jamais |
 
 ## Lecture rapide
 
@@ -425,3 +427,18 @@ troisieme avait nommee sans la fermer :
     `LesGardeFousSontMisALEpreuveTest.toutesLesRegles` ; un balayage plus large de `src/test` en rend
     30, les deux de plus etant celles du faux depot de contre-exemple, qui ne sont pas des regles de ce
     depot.
+35. **ADR-0037** repond a une question de gouvernance - "ou est ecrit l'arbitrage qui autorise
+    `nashorn-core` ?" - et vaut d'etre relu pour ce que la verification a trouve a cote. La lecture de
+    `yanis-qa` etait exacte : dependance de portee `test`, absente des 43 archives du livrable, hors du
+    perimetre d'`ADR-0014`. Mais en verifiant **le texte** d'`ADR-0014` plutot que la conclusion, son
+    point 1 parle de *dependances* et non d'octets servis, et son refus du webjar vit dans ses
+    alternatives, sans regle - donc **rien n'empechait un webjar d'entrer**, et le garde-fou de
+    provenance ne pouvait pas le voir : son perimetre descend de l'arbre `static/` d'un module, ou un
+    webjar n'atterrit jamais. Il apporte deux choses au-dela de son sujet : une decision qui declare
+    explicitement que sa **moitie permissive n'a rien a encoder** (rien n'interdit une dependance de
+    test, donc rien ne le verifie) et n'encode que sa moitie restrictive ; et un garde-fou dont l'objet
+    est **le livrable produit** et non le pom ni le classpath de test - les deux formes que j'ai
+    ecartees sur mesure, la premiere parce que la portee effective d'`archunit-junit5` n'est pas dans
+    le pom du module qui la declare, la seconde parce que sa population contiendrait les outils de test
+    que cet `ADR` declare libres. Ce n'est pas une regle ArchUnit - une analyse de bytecode ne voit pas
+    une entree d'archive - le compte reste a **28** avec sa methode ; les tests passent de 403 a 406.
