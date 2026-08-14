@@ -31,6 +31,8 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0025 | Levee de la condition M4 de nadia-prof : le sprint 10 est livre avec un defaut de pli assume par ecrit | s10 | 2026-08-13 | Acceptee, amendee le 2026-08-14 (chiffres du resserrement de marges corriges, trois jeux fermes et non deux, aucun n'est celui nomme a l'origine ; conclusion inchangee) |
 | DEC-0026 | Levee de la clause 1 de M13 de nadia-prof, bornee au seul ecran de revelation de M5 : le sprint 10 est livre avec une perte de partie sans confirmation, assumee par ecrit | s10 (cloture) | 2026-08-14 | Acceptee, amendee le 2026-08-14 (l'etendue mesuree couvre aussi l'ecran de reprise, pas seulement la revelation ; la levee et le declencheur de reouverture sont etendus aux deux ecrans) ; declencheur non satisfait a la cloture de s11 (conditions 2 et 4 sans preuve), reconduite a s12 sur decision de l'utilisatrice du 2026-08-14 (premier report sur cette decision) |
 | DEC-0027 | Le retrait du bouton de sortie du fragment de manche reouvre l'arbitrage valide de S6-9 / ADR-0022 : arbitrage prealable de nadia-prof requis avant developpement | s11 | 2026-08-14 | Acceptee, amendee le 2026-08-14 (arbitrage prealable rendu par nadia-prof : principe accepte sous six conditions, forme instruite refusee ; perimetre corrige a trois ecrans et non un, chiffre du 2026-08-07 corrige) |
+| DEC-0028 | Abandon de la persistance : recreo ne conserve aucune partie entre deux sessions | s12 | 2026-08-14 | Acceptee |
+| DEC-0029 | Perimetre du sprint 12 : trois lignes de mathematiques CM1 ouvertes, cinq differees dont deux sous reserve d'arbitrage prealable | s12 | 2026-08-14 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0023` a ete amendee le 2026-08-12, sur son point 6
 (disparition de l'ecran intermediaire), laisse ouvert et route a `nadia-prof` pour arbitrage
@@ -234,6 +236,15 @@ ecrit pour que le prochain manque, s'il se produit, coute plus qu'un simple repo
 d'origine et le premier amendement de `DEC-0026` restent tels qu'ecrits, non effaces. Voir la
 section "Report du 2026-08-14 (s11, cloture)" dans
 `DEC-0026-levee-m13-clause-1-ecran-de-revelation-perte-de-partie-sans-confirmation.md`.
+
+Note (ni un amendement, ni une nouvelle reference sur les textes cites) : `DEC-0028` ferme, sur
+decision explicite de l'utilisatrice du 2026-08-14, le declencheur conditionnel nomme par
+`ADR-0001-decoupage-en-modules-maven.md` (section "Ce qui me ferait changer d'avis") et repris par
+`DEC-0003-critere-integration-sans-persistence-sprint-0.md` (section "Engagement pour la suite") :
+aucune story ne demandera plus de conserver la progression d'un enfant entre deux sessions.
+`ADR-0001` et `DEC-0003` ne sont pas modifies par cette note - ils restent tels qu'ecrits a leur date
+- et l'amendement d'`ADR-0001` que cette fermeture appelle reste a `theo-archi`, route par
+`sofia-sm`. Voir `DEC-0028-abandon-de-la-persistance-recreo-ne-conserve-aucune-partie.md`.
 
 Amendement (pas une nouvelle reference) : `DEC-0027` a ete amendee le 2026-08-14, sur l'arbitrage
 prealable de `nadia-prof` que son point 2 exigeait. Deux corrections : le perimetre ecrit dans la
