@@ -28,7 +28,8 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0022 | Perimetre du sprint 10 : le manche du bandit manchot est dessine et immobile, trois demandes de l'utilisatrice ecartees avec leurs declencheurs de reouverture | s10 | 2026-08-12 | Acceptee, deux des trois exclusions (points 1 et 3) remplacees par DEC-0023 le meme jour, point 2 inchange |
 | DEC-0023 | Le perimetre du sprint 10 est repris sur les references de l'utilisatrice : la machine est redessinee en CSS pur, le veto de nadia-prof sur la manette est leve, l'ecran intermediaire est questionne | s10 | 2026-08-12 | Acceptee sur les points 1 a 5, point 6 ferme par DEC-0024 |
 | DEC-0024 | "Le bon petit mot" quitte le catalogue jouable : contenu valide, ecran trop court, condition de retour executable | s10 | 2026-08-12 | Acceptee |
-| DEC-0025 | Levee de la condition M4 de nadia-prof : le sprint 10 est livre avec un defaut de pli assume par ecrit | s10 | 2026-08-13 | Acceptee |
+| DEC-0025 | Levee de la condition M4 de nadia-prof : le sprint 10 est livre avec un defaut de pli assume par ecrit | s10 | 2026-08-13 | Acceptee, amendee le 2026-08-14 (chiffres du resserrement de marges corriges, trois jeux fermes et non deux, aucun n'est celui nomme a l'origine ; conclusion inchangee) |
+| DEC-0026 | Levee de la clause 1 de M13 de nadia-prof, bornee au seul ecran de revelation de M5 : le sprint 10 est livre avec une perte de partie sans confirmation, assumee par ecrit | s10 (cloture) | 2026-08-14 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0023` a ete amendee le 2026-08-12, sur son point 6
 (disparition de l'ecran intermediaire), laisse ouvert et route a `nadia-prof` pour arbitrage
@@ -194,3 +195,15 @@ la troisieme, le point 2 (manche immobile, jamais actionne), tient toujours mais
 du fronton au flanc du meuble. `DEC-0022` reste au depot, non effacee, pour que l'historique de ce
 qui a ete ecarte puis reouvert soit lisible. Voir `DEC-0023-perimetre-sprint-10-repris-sur-
 references-utilisatrice-veto-manette-leve-ecran-intermediaire-questionne.md`.
+
+Amendement (pas une nouvelle reference) : `DEC-0025` a ete amendee le 2026-08-14, pendant le
+second verdict de `nadia-prof` sur le lot de cloture du sprint 10. Elle rejoue la mesure du
+resserrement de marges que personne n'avait rejouee depuis sa premiere mesure, et corrige deux
+affirmations fausses de `DEC-0025` : le resserrement ne ferme pas "Calcul CP" (deja ferme avant ce
+levier) ni "Le bon son" (son ecran de revelation deborde de 23,19 px, pour une cause de contenu) ;
+il ferme en realite "Comparer les nombres", "Soustractions CP" et "Les complements a 10" (a
+2,81 px pres). L'etat reel de la condition M4 est donc non tenue sur trois jeux sur sept, et non
+six comme ecrit a l'origine. La levee de M4 elle-meme n'est pas rouverte par cet amendement ; les
+sections d'origine de `DEC-0025` restent telles qu'ecrites le 2026-08-13, non effacees. Voir la
+section "Amendement du 2026-08-14 (s10, cloture)" dans
+`DEC-0025-levee-de-la-condition-m4-le-sprint-10-est-livre-avec-un-defaut-de-pli-assume.md`.

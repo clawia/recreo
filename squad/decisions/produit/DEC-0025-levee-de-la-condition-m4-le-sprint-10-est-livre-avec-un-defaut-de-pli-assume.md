@@ -225,3 +225,47 @@ et sur la forme de l'ampoule reste integralement le sien et celui d'`ines-design
   l'accompagne : reportee au sprint 11.
 - Elle ne fixe pas une nouvelle hauteur de viewport de reference : `DEC-0016` (640 px) reste en
   vigueur, pour le motif explique dans la voie 5 ci-dessus.
+
+## Amendement du 2026-08-14 (s10, cloture) - le resserrement de marges ferme trois jeux, pas deux, et pas ceux nommes ici
+
+Pendant son second verdict, `nadia-prof` rejoue la mesure de la voie 2 ci-dessus (le resserrement
+des marges), que personne n'avait rejouee depuis sa premiere mesure - `marc-dev` avait ecrit
+explicitement qu'il ne l'avait pas rejouee, et il avait raison de l'ecrire
+(`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section 4, "Second verdict du
+2026-08-13"). Protocole identique a son refus du matin, applique cette fois au pire cas de chaque
+jeu plutot qu'a un echantillon : 261 etats de message et 35 ecrans de revelation.
+
+**Ce que la voie 2 ci-dessus affirme est faux dans les deux sens.** Elle disait : *"gain de 24 a
+28 px [...] ferme deux jeux sur sept (Calcul CP, Le bon son)."*
+
+- **"Calcul CP" n'est pas ferme par le resserrement : il l'etait deja.** Il apparaissait au-dessus
+  du pli avec 18,81 px de marge des la premiere mesure de `nadia-prof`, avant meme que ce levier ne
+  soit pris en compte - seul jeu du catalogue dans ce cas, parce que son indice tient sur une seule
+  ligne.
+- **"Le bon son" n'est pas ferme du tout.** Son ecran de revelation deborde de **23,19 px**, pour
+  une cause de contenu et non de forme : l'explication et l'indice y disent deux fois la meme
+  chose (voir la story versee au backlog par `DEC-0026`).
+- **Le resserrement ferme en realite trois autres jeux** : "Comparer les nombres", "Soustractions
+  CP", et "Les complements a 10" - ce dernier a **2,81 px** de marge seulement, sur les 36 etats
+  mesures par `nadia-prof`, qui ne garantit rien sur les items qu'elle n'a pas tires.
+
+**L'etat reel de M4 apres le lot de cloture : non tenue sur trois jeux sur sept** - "Le bon son"
+(-23,19 px en revelation), "Petits problemes" (-63,19 et -83,19 px), "Le bon verbe" (-63,19 px, et
+son "Bravo !" a -35,19 px) - et non six comme les sections "Ce que la levee de M4 coute a l'enfant"
+et "La dette, chiffree" ci-dessus l'affirmaient avant cet amendement. C'est un progres reel de
+trois jeux sur les sept, obtenu par un seul geste de forme, et je le corrige sans l'effacer.
+
+**Ce que cet amendement ne change pas.** La levee de M4 prononcee ci-dessus reste en vigueur :
+`nadia-prof` l'ecrit elle-meme, cette correction de sa propre mesure ne retire ni n'ajoute aucun
+motif de refus - *"mon constat de refus n'est pas retire pour autant, la levee autorise a livrer
+malgre lui, elle ne le transforme pas en acceptation."* Les trois stories ouvertes par cette
+decision restent ouvertes dans les memes termes ; aucune n'est retiree ni ajoutee par cet
+amendement.
+
+### Impact de cet amendement
+
+- Les sections "Ce que la levee de M4 coute a l'enfant, jeu par jeu" et "La dette, chiffree, et les
+  stories qui la portent" de ce fichier restent telles qu'ecrites le 2026-08-13 ; elles ne sont pas
+  reecrites, seule la lecture qu'en donne cet amendement est correcte a compter du 2026-08-14.
+- `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee.
+- Aucun Done pedagogique ni statut de catalogue n'est modifie par cet amendement.

@@ -3311,3 +3311,105 @@ recrite ici, seule sa priorite change.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, pour le sprint 11 - proposition de
   forme d'`ines-design` requise (l'arbitrage de principe de `nadia-prof` est deja rendu, sous les
   six conditions ci-dessus).
+
+## Dette ouverte par DEC-0026 - une perte de partie sans confirmation, sur l'ecran de revelation
+
+`nadia-prof` refuse le lot de cloture du sprint 10 sur un seul motif bloquant : sur l'ecran de
+revelation de M5, quand la proposition qui porte la reponse revelee occupe la derniere position de
+l'ordre de tabulation, la premiere tabulation depuis elle atteint "Les jeux" et Entree detruit la
+partie sans confirmation - 10 destructions sur 25 revelations mesurees, sur les sept jeux.
+L'utilisatrice a joue l'increment et decide de le livrer, en assumant le defaut par ecrit -
+`DEC-0026-levee-m13-clause-1-ecran-de-revelation-perte-de-partie-sans-confirmation.md`. Les deux
+stories suivantes portent la dette que cette decision ouvre ; `nadia-prof` designe la propriete a
+tenir et refuse explicitement de choisir entre elles.
+
+### Story bloquante - Depuis le point de focus, la premiere tabulation ne mene jamais a la sortie (M13 clause 1, ecran de revelation)
+
+**Non affectee a un sprint au moment de cette decision ; `DEC-0026` exige qu'elle ou la story
+suivante soit planifiee pour le sprint 11.**
+
+- **Besoin** : en tant qu'eleve qui navigue au clavier ou avec une aide technique et qui vient de
+  faire reveler la reponse, je veux que la touche suivante ne me fasse jamais quitter ma partie
+  sans que je l'aie demande, afin de ne pas perdre ma partie et mon score par une exploration
+  ordinaire du clavier.
+- **Competence programme visee** : transverse - accessibilite clavier de l'ecran de jeu, aucune
+  ligne de `squad/programme/MATRICE-couverture.md` ne bouge.
+- **Criteres d'acceptation**, repris au mot pres de la clause 1 et de la clause 5 de M13 et de la
+  mesure du second verdict de `nadia-prof`
+  (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Second verdict du
+  2026-08-13", point 1) :
+  - Etant donne un ecran de revelation ou la proposition qui porte la reponse revelee occupe la
+    derniere position de l'ordre de tabulation, quand on presse Tabulation une fois puis Entree,
+    alors la partie reste en cours (`ecran-de-jeu`) : elle n'est jamais detruite par cette
+    sequence, sur aucun des sept jeux du catalogue.
+  - Cette propriete est verifiee sur les 25 revelations du protocole de `nadia-prof` (une par jeu,
+    plus les tirages repetes sur "Calcul CP" et "Le bon verbe"), pas sur un echantillon reduit.
+  - Le focus continue de se poser sur la proposition qui porte la reponse revelee (clause 5,
+    inchangee) : cette story ne deplace pas ce point de focus, elle change seulement ce qui suit
+    la premiere tabulation depuis lui.
+  - Les quatorze cas du premier refus de `nadia-prof` (Tabulation puis Entree apres une bonne et
+    une mauvaise reponse, hors ecran de revelation) restent verts apres cette story.
+  - Ce que cette story ne tranche pas : le moyen technique (ordre du document, ordre de
+    tabulation, place du bouton de sortie, ou la confirmation de la story suivante) - `theo-archi`,
+    qui peut aussi choisir de livrer la story suivante a la place de celle-ci si elle couvre la
+    meme propriete.
+  - Ce qui n'est pas testable par un automate et reste sous la garde de `nadia-prof` : la
+    reverification au clavier reel, dans un vrai navigateur, sur les 25 revelations de son
+    protocole, avant que cette dette soit consideree fermee.
+- **Lien decision** :
+  `DEC-0026-levee-m13-clause-1-ecran-de-revelation-perte-de-partie-sans-confirmation.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, pour le sprint 11.
+
+### Story - Confirmation avant d'abandonner une partie en cours, sur tout chemin de sortie
+
+**Non affectee a un sprint au moment de cette decision ; `DEC-0026` exige qu'elle ou la story
+precedente soit planifiee pour le sprint 11.**
+
+- **Besoin** : en tant qu'eleve qui presse "Les jeux" ou recharge la page pendant une partie, que
+  ce soit au clavier, a la souris ou par erreur, je veux qu'on me demande si je veux vraiment
+  quitter avant que ma partie ne disparaisse, afin de ne jamais la perdre par un geste que je
+  n'avais pas mesure.
+- **Competence programme visee** : transverse - aucune ligne de
+  `squad/programme/MATRICE-couverture.md` ne bouge.
+- **Criteres d'acceptation** :
+  - Etant donne une partie en cours, quand on declenche `POST /retour` (bouton "Les jeux") ou
+    `GET /` par n'importe quel chemin (clavier, souris, rechargement, navigation arriere), alors la
+    partie n'est pas immediatement detruite : une confirmation est demandee avant que
+    `abandonner()` ne retire les attributs de session du jeu, de la consigne et de la partie.
+  - Etant donne cette confirmation, quand l'enfant la refuse ou l'ignore, alors la partie reste en
+    cours, inchangee.
+  - Etant donne cette confirmation, quand l'enfant l'accepte, alors la partie est abandonnee comme
+    aujourd'hui, sans changement de ce comportement.
+  - Si cette story est livree, la story precedente (tabulation sur l'ecran de revelation) est
+    couverte dans le meme geste : la premiere tabulation depuis la revelation peut toujours
+    atteindre "Les jeux", mais Entree n'y detruit plus la partie sans confirmation.
+  - La reserve O de `nadia-prof` est fermee dans le meme geste : *"il n'existe aucun chemin vers le
+    catalogue qui ne detruise pas la partie"* cesse d'etre vrai.
+  - Ce que cette story ne tranche pas : la forme de la confirmation (modale, ecran intermediaire,
+    texte) - `ines-design` propose, `nadia-prof` juge le texte destine a l'enfant ; le moyen
+    technique - `theo-archi`.
+  - Ce qui n'est pas testable par un automate et reste sous la garde de `nadia-prof` : que le texte
+    de la confirmation soit lisible et comprehensible par un enfant de CP, et qu'il ne l'inquiete
+    pas a tort.
+- **Lien decision** :
+  `DEC-0026-levee-m13-clause-1-ecran-de-revelation-perte-de-partie-sans-confirmation.md` ;
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, reserve O.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, pour le sprint 11.
+
+### Reserves non bloquantes du second verdict de nadia-prof, datees du 2026-08-13
+
+Trois reserves neuves, versees par `nadia-prof` a la suite de son second verdict
+(`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Second verdict du
+2026-08-13" ; `squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md`), non affectees a
+un sprint :
+
+- **La marque "deja essayee" n'est pas cumulative apres la revelation, sur "Le bon verbe" (M14
+  clause 5)** : une proposition marquee perd sa marque au coup suivant. Constat non bloquant, visible
+  sur ce seul jeu.
+- **Le fondu de l'accent peint est du mauvais cote et produit l'arete qu'il devait eviter**, arete
+  mesuree au pixel par `nadia-prof`. Story de forme, routee a `ines-design` et `theo-archi`.
+- **"Le bon son" dit deux fois la meme chose sur son ecran de revelation** : l'explication et
+  l'indice du meme item se recouvrent presque mot pour mot. C'est la seule des trois reserves avec
+  un effet pedagogique direct - `nadia-prof` la nomme, jugement pedagogique de la reformulation qui
+  reste le sien - et sa correction ferme aussi le defaut de pli de M4 sur ce jeu dans le meme geste
+  (voir l'amendement du 2026-08-14 de `DEC-0025`).
