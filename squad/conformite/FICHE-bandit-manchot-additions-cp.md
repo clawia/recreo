@@ -243,7 +243,407 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Second verdict du 2026-08-13, prononce sur le lot de cloture du sprint 10 - le plus recent de cette fiche
+### Arbitrage prealable au developpement - la sortie unique dans l'en-tete (DEC-0027, s11), du 2026-08-14 - le plus recent de cette fiche
+
+**Ce bloc n'est pas un Done pedagogique.** C'est l'arbitrage prealable que `DEC-0027` point 2 exige
+avant tout developpement de la story de gain vertical. Il n'efface, ne modifie et ne rouvre aucun
+verdict anterieur de cette fiche : le Done pedagogique VALIDE de S6-9 du 2026-08-10 et mon refus du
+2026-08-13 restent ecrits tels quels, plus bas.
+
+> Seul changement apporte a un titre anterieur, et il ne touche aucun verdict : la mention "le plus
+> recent de cette fiche" passe du titre du 2026-08-13 a celui-ci, pour qu'un seul bloc la porte. Le
+> corps du verdict du 2026-08-13 n'est modifie d'aucun caractere.
+
+#### Les trois reponses, en une phrase chacune
+
+1. **Un enfant de CP retrouve-t-il la sortie si elle ne vit plus que dans l'en-tete pendant une
+   partie ? Oui, sur les etats de manche, et a une condition que je nomme :** la boite de (239, 16)
+   ne doit plus etre inerte sur l'accueil, sinon la seule experience que l'enfant a de cette boite
+   est qu'elle ne fait rien.
+2. **Le bouton de l'en-tete, a la place et a la taille qu'il aurait alors, est-il atteignable et
+   comprehensible ? Oui sur la taille, mesuree, et oui sur le mot ; il perd sur la place.** Sa boite
+   fait **109 x 53 px, exactement celle du bouton qu'il remplacerait** - ce n'est pas une sortie plus
+   petite. Elle passe en revanche du coin le plus facile de l'ecran au coin le plus difficile pour une
+   main de six ans.
+3. **Un jeu sur trois ramene au-dessus du pli ne change pas mon arbitrage du 2026-08-07, et je ne
+   negocie pas la porte contre des pixels.** Ce qui change mon arbitrage est autre chose, et c'est un
+   constat a moi, date du meme jour que le refus : **en production, "Les jeux" est le premier mot que
+   l'enfant lit sur une manche, avant la consigne et avant l'enonce.**
+
+**Verdict** : **la forme instruite est REFUSEE. Le principe est ACCEPTE sur les seuls etats rendus
+par `fragments/manche.html`, sous six conditions PORTE-1 a PORTE-6.** Le motif du refus est neuf et
+mesure, ce n'est pas une reconduction : la forme instruite pose **deux fois le mot "Les jeux", a
+49 px l'un de l'autre, sur l'ecran de fin de partie**, et fait descendre l'aplat de cet ecran de
+9 px au lieu de lui gagner quoi que ce soit.
+
+**Aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge.**
+
+#### 0. Comment j'ai joue, et ce que je declare degrade
+
+**J'ai joue, et j'ai reconstruit avant de mesurer.** Worktree dedie descendant verifie de
+`round-two` a `2ca7a55`, arbre propre, jar reconstruit depuis ce worktree sur un JDK 21.0.10 designe
+par `JAVA_HOME` le temps de la commande - le `java` du `PATH` de ce poste est un JRE 8, constat rendu
+par `bash outils/verifier-jdk.sh`. Application servie sur un port local dedie. **Aucune session tenue
+par un navigateur orphelin n'entre dans cette mesure** : la session que j'ai mesuree est celle que
+mes propres requetes ont ouverte.
+
+**Partie jouee en entier, en me trompant volontairement.** Vingt-six echanges sur "Calcul CP", avec
+trois echecs consecutifs sur presque chaque manche pour atteindre la revelation, puis l'appui sur la
+reponse revelee pour avancer, jusqu'a "C'est fini !" a Score : 5. Les quatre etats que l'enfant
+rencontre ont ete releves sur le HTML reellement servi : manche fraiche, echec avec essais restants,
+revelation, fin de partie.
+
+**Les deux etats compares portent le meme item, et je reprends pour cela la methode de
+`theo-archi`** : l'etat modifie n'est pas rejoue, il est derive du meme document assemble par retrait
+du seul `button.btn.retour-accueil` et par une declaration posterieure
+`body:has(.ecran-de-jeu) .lien-accueil{display:inline-flex}`. Rejouer aurait tire un autre item, donc
+un autre repli de texte. **Je n'ai modifie aucun fichier de production** : `git status` ne rapporte
+aucune modification sous `adapters/`. Zero octet de ce que voit un enfant ne change par cet
+arbitrage.
+
+**Captures par la commande versionnee du depot**, navigateur designe par la variable `CHROME` :
+
+```
+outils/mesurer-rendu.sh 360 <url> <png>
+outils/mesurer-rendu.sh 360 <url> <png> 640
+```
+
+Neuf documents captures a 360 px de large : manche, revelation, fin de partie et ecran d'erreur, en
+production et sous la forme instruite, plus l'accueil. Positions relevees au pixel sur l'image par
+aplats de la feuille servie : `#1d4b6b` pour le bandeau et la bordure du cabinet, `#2e6f9e` pour les
+deux sorties de la zone de contenu, `#ffffff` pour le lien de l'en-tete.
+
+**Les deux processus que j'ai lances - l'application et le service de fichiers des documents
+assembles - ont ete arretes par leur PID, jamais par nom d'image.** Aucun autre processus n'a ete
+touche.
+
+**Ce que je declare degrade, et ce n'est pas rien.**
+
+- **Je n'ai pas joue au doigt sur un telephone.** Ma reponse a la question 2 sur l'atteignabilite
+  d'un coin superieur droit par une main de six ans est un jugement de professeure, appuye sur une
+  geometrie mesuree, **pas sur une observation d'enfant**. C'est la limite la plus serieuse de ce
+  bloc, et elle est irreductible avec les moyens du depot.
+- **Je n'ai pas remesure le pli sur les sept jeux.** Je n'en avais pas besoin pour trancher, et je dis
+  en section 3 pourquoi.
+- **Je n'ai pas ecoute au lecteur d'ecran.** Le lien de l'en-tete vit dans un `nav` avec
+  `aria-label="Menu principal"` ; le bouton du fragment n'a aucun ancetre nomme. Ce que le changement
+  fait a l'annonce n'est pas dans ce bloc.
+
+#### 0 bis. Ce que je corrige avant de m'appuyer dessus - de mes propres constats, et de ce qu'on me cite
+
+Quatre corrections, et deux sont a mon desavantage.
+
+1. **Mon chiffre "102 x 53 px" du 2026-08-07 n'est plus le bon, et il est cite tel quel dans
+   `DEC-0027` et dans l'avis de faisabilite.** Je l'avais mesure sur le libelle "Accueil". S6-9 a
+   remplace ce libelle par "Les jeux", qui est plus large. **Remesure aujourd'hui : 109 x 53 px.**
+   Personne n'a introduit d'erreur en me recopiant ; c'est mon chiffre qui a vieilli d'une story que
+   j'ai moi-meme demandee.
+2. **La comparaison de taille de mon arbitrage du 2026-08-07 ne s'applique pas aux etats de manche,
+   et c'est la correction qui compte le plus ici.** J'avais oppose "un contour de 102 x 53 px dans un
+   coin" a "un aplat de 117 x 56 px au milieu du texte que l'enfant vient de lire". **L'aplat de
+   117 x 56 px est `sortie-pleine`, et il n'existe que sur l'ecran de fin de partie** - remesure
+   aujourd'hui a 117 x 56 px, exact. Sur une manche, les deux candidats sont `.retour-accueil` et
+   `.lien-accueil`, et je les ai mesures tous les deux : **109 x 53 px l'un et l'autre, a la
+   dimension pres**. `recreo.css` le dit d'ailleurs en clair depuis S6-1 - `.lien-accueil` "reprend
+   deliberement les memes composantes de boite que `.retour-accueil`". **Il n'y a aucun ecart de
+   taille a opposer sur une manche, et j'en avais fait un argument.**
+3. **La phrase qu'on me cite est une compression de la mienne, et elle a perdu le qualificatif qui
+   decide.** `recreo.css` ligne 120 et l'avis de faisabilite m'attribuent : *"retirer le bouton du
+   fragment laisserait la fin de partie sans porte visible la ou l'enfant regarde"*. Ce n'est pas une
+   phrase de ma fiche ; c'en est un resume fidele sur le fond. Mais lu sans son sujet, il se comprend
+   comme portant sur les cinq etats de l'ecran de jeu, alors que mon motif portait sur **un** ecran.
+   `docs/backlog/backlog.md` ligne 1650 est la seule des trois reprises a garder le qualificatif :
+   *"sur l'ecran de fin de partie"*. **Ma clause de 2026-08-07 a ete ecrite pour proteger l'ecran de
+   fin de partie et elle est appliquee depuis a cinq ecrans.** Cette extension est la mienne, pas
+   celle de qui m'a recopiee : c'est moi qui ai ecrit, dans le meme bloc, *"la sortie qui survit sur
+   un ecran de jeu est le bouton de la zone de contenu"*, une phrase plus large que son motif. **Je
+   ne corrige pas la barre, je corrige le perimetre que j'avais donne a mon propre motif.**
+4. **Ma raison 1 du 2026-08-07 ne discrimine pas les deux formes, et je l'avais crue decisive.**
+   J'avais ecrit : *"la position ne bouge pas [...] une sortie qui change de place est plus couteuse a
+   apprendre qu'une sortie qui change de taille"*. Mesure sur les deux formes, sur une session
+   complete de l'accueil a "C'est fini !" :
+   - **production** : accueil (239, 16) -> cinq etats de jeu (12, 108) -> **un saut de place**, entre
+     l'accueil et la premiere manche ;
+   - **forme instruite, si l'en-tete reste masque sur la fin de partie** : accueil (239, 16) -> etats
+     de manche (239, 16) -> fin de partie (12, 117) -> **un saut de place**, entre la derniere manche
+     et "C'est fini !".
+
+   **Un saut de part et d'autre. Ma raison 1 est un match nul, pas un argument.** Je ne peux pas m'en
+   servir pour refuser, et je ne m'en sers pas.
+
+Et une chose que je verifie et que je **credite** plutot que de la corriger : **les 44 px de
+`theo-archi` sont exacts, et je les ai remesures sur un jeu qu'il n'a pas utilise.** Haut du cabinet
+sur "Calcul CP", colonne x = 180 : **y = 293 en production, y = 249 sous la forme instruite, soit
+-44 px exactement**, identique sur la manche fraiche et sur la revelation. Ses 9 px de bandeau sont
+exacts aussi : bandeau **76 px** sur un ecran de jeu en production, **85 px** une fois le lien
+demasque, et l'accueil porte deja 85 px. Sa limite - le gain est constant, les ecarts auxquels il
+s'applique viennent de mes pires items - est honnete et je la retiens telle quelle.
+
+#### 1. Ce que la forme instruite fait a l'ecran, mesure au pixel
+
+Neuf captures a 360 px, positions relevees sur l'image. `(x, y)` est le coin superieur gauche de la
+boite.
+
+| Element lu par l'enfant | Ecran | Production | Forme instruite |
+|---|---|---|---|
+| bandeau d'en-tete | accueil | y 0-84, 85 px | inchange |
+| bandeau d'en-tete | manche, echec, revelation, fin, erreur | y 0-75, **76 px** | y 0-84, **85 px** |
+| `.lien-accueil` "Les jeux" | accueil | (239, 16), 109 x 53 px | inchange |
+| `.lien-accueil` "Les jeux" | manche, echec, revelation | masque | **(239, 16), 109 x 53 px** |
+| `.retour-accueil` "Les jeux" | manche, echec, revelation | **(12, 108), 109 x 53 px** | retire |
+| `.sortie-pleine` "Les jeux" | fin de partie | (12, 108), 117 x 56 px | (12, **117**), 117 x 56 px |
+| `.lien-accueil` "Les jeux" | **fin de partie** | masque | **(239, 16), 109 x 53 px - un second "Les jeux"** |
+| `.lien-accueil` "Les jeux" | **erreur** | masque | **(239, 16), a cote de "Recommencer"** |
+| haut du cabinet | manche, revelation | y 293 | y 249, **-44 px** |
+
+**Ce que l'enfant lit de haut en bas, au-dessus du cabinet, sur une manche.** Bandes de texte
+relevees a la ligne, colonne de contenu x 8-350 :
+
+| | Production | Forme instruite |
+|---|---|---|
+| 1re bande | **"Les jeux"**, y 108-160 | "Score : 0", y 134-147 |
+| 2e bande | "Score : 0", y 178-191 | "Combien ça fait ?", y 171-189 |
+| 3e bande | "Combien ça fait ?", y 215-233 | "1 + 5", y 211-233 |
+| 4e bande | "1 + 5", y 255-277 | - |
+
+#### 2. Question 1 - l'enfant retrouve-t-il la sortie ? Oui sur une manche, et voici ce qui decide
+
+**Ce n'est pas le gain de place qui me fait repondre oui, c'est le tableau de lecture ci-dessus.**
+
+En production, sur une manche, **le premier mot de la colonne que l'enfant lit est "Les jeux"**. Pas
+le score, pas la consigne, pas le calcul : la porte de sortie. Sur l'etat de revelation - c'est-a-dire
+sur l'enfant qui s'est trompe trois fois et a qui le jeu est en train de dire "C'est 9. Appuie sur
+9." - c'est encore "Les jeux" qui ouvre la colonne. **Un enfant de six ans lit de haut en bas et il
+lit lentement. Le premier mot qu'on lui donne au moment ou il vient d'echouer trois fois est une
+invitation a partir.**
+
+Ce defaut est le mien et il est date : c'est mon constat 1 du 2026-08-07, ecrit dans ce meme bloc
+quelques lignes sous le refus - *"sur les cinq etats de l'ecran de jeu, la sortie est le premier
+element de la zone de contenu, au-dessus du score, de la consigne, de l'enonce et du verdict [...]
+c'est un probleme d'ordre, pas de saillance"*. J'avais ajoute : *"il se corrige en descendant ce
+bouton sous 'C'est fini !', pas en le retirant"*, et je n'en avais pas fait une condition. **Sortir
+ce bouton de la colonne de lecture obtient ce que descendre le bouton aurait obtenu.** C'est un
+second remede au meme defaut, et il arrive avec 44 px sous le bras.
+
+**Et mon motif de refus du 2026-08-07 - la porte visible la ou l'enfant regarde - n'est pas engage sur
+une manche, parce que sur une manche l'enfant ne regarde ni l'une ni l'autre des deux positions.** Il
+regarde l'enonce et les colonnes de la machine, y 211 a 430. La porte est a 51 px au-dessus de sa
+ligne de regard en production (12, 108), et a 195 px au-dessus sous la forme instruite (239, 16).
+**Aucune des deux n'est la ou il regarde.** Mon motif discriminait deux positions sur l'ecran de fin de
+partie, ou le regard de l'enfant est sur le score et sur "C'est fini !" et ou `sortie-pleine` est
+posee au milieu d'eux. Il ne discrimine rien sur une manche. **Je ne le negocie pas contre des
+pixels ; je constate qu'il ne porte pas sur cet ecran-la.**
+
+**Ce qui fait que l'enfant retrouve la porte, et c'est ma condition.** Sous la forme instruite, la
+porte est a (239, 16) sur l'accueil **et** sur les trois etats de manche : c'est la meme boite, au
+meme endroit, que celle qu'il a vue avant de commencer. C'est un point d'appui reel. Mais je l'ai
+verifie plutot que de le supposer, et le resultat gate l'appui : **j'ai appuye sur "Les jeux" depuis
+l'accueil, et l'ecran rendu est identique au precedent, a l'octet pres** hormis une reecriture
+d'identifiant de session. La seule experience que l'enfant a de cette boite, aujourd'hui, est
+qu'**elle ne fait rien**. C'est mon constat 2 du 2026-08-07, mot pour mot : *"un bouton qui ne repond
+pas apprend a un enfant de six ans que les boutons ne repondent pas"*. Je l'avais laisse a
+`camille-po` sans en faire une condition, parce que S6-9 ne mettait pas la porte a cet endroit.
+**Cette demande-ci l'y met, et le constat devient porteur.** C'est PORTE-1.
+
+#### 3. Question 2 - atteignable et comprehensible ? Oui sur la taille et sur le mot, non sans reserve sur la place
+
+**Sur la taille : mesuree, et c'est un non-sujet.** 109 x 53 px, la boite exacte du bouton qu'elle
+remplacerait. Au-dessus des 44 x 44 px de cible tactile sur les deux dimensions. **Elle n'est pas
+plus petite d'un pixel.**
+
+**Sur la lisibilite : mesuree, et elle est bonne.** Texte et contour `#ffffff` sur bandeau `#1d4b6b`.
+Rapport de contraste **9,25:1**. Je dis explicitement pourquoi ce chiffre-la n'est pas la reprise de
+mon erreur du 2026-08-12 : j'avais alors calcule `#1d4b6b` contre `#ffffff` la ou il fallait
+`#1d4b6b` contre `#f4f7fb`, et la bonne valeur pour cette paire-la etait 8,61:1. **Ici la paire est
+reellement `#ffffff` sur `#1d4b6b`** - c'est `--recreo-accent-texte` sur `--recreo-entete-fond`, tel
+que la feuille les pose - donc 9,25:1 est la valeur juste pour ce que je mesure. Recalcule a la main
+sur les hexadecimaux declares, sans echantillonner de pixel.
+
+**Sur le mot : inchange, et c'est le meme que je garde depuis S6-9.** "Les jeux". Ma reserve de 2026-08-07
+sur le `x` final muet, qui ne se deduit pas et que le referentiel `squad/programme/francais/competences-cp.md`
+ne liste pas, reste exactement ce qu'elle etait : je tiens le mot pour acceptable parce qu'il nomme ce
+que l'enfant est en train de faire. **Je ne rouvre pas ce point et je ne le durcis pas.**
+
+**Sur la place : c'est la que la forme instruite perd, et je le chiffre.** La porte passe de (12, 108)
+- bord gauche, sous le bandeau, dans la colonne de contenu - a (239, 16), c'est-a-dire **13 px du bord
+droit de l'ecran et 16 px du haut**. Sur un ecran de 360 px tenu par une main de six ans, le coin
+superieur droit est le plus difficile a atteindre volontairement de tous les coins ; c'est aussi,
+sur un ordinateur, la zone qui touche les propres commandes du navigateur. **Je declare degrade mon
+jugement sur ce point** : je ne l'ai pas eprouve au doigt sur un telephone avec un enfant, et une
+geometrie ne remplace pas cette observation. Ce que je peux dire avec certitude est que la cible fait
+109 x 53 px, ce qui est confortable, et qu'elle est visiblement pressable - le contour blanc sur
+l'aplat sombre se lit comme un bouton sur la capture.
+
+**Ce cout de place a un remede exact, et il n'est pas dans cette story** : c'est la confirmation avant
+abandon. Voir section 6.
+
+#### 4. Question 3 - non, le pli ne change pas mon arbitrage, et voici ce que je refuse
+
+**Le pli ne decide rien ici, et je le dis avant tout le reste pour qu'on ne me relise pas comme ayant
+cede a un chiffre.** Les 44 px sont reels, je les ai remesures moi-meme a -44 px exactement. Un jeu
+sur trois entierement ramene au-dessus du pli, plus un etat d'un second, est un gain honnete. **Il ne
+serait pas suffisant pour defaire un arbitrage pedagogique, et il ne le defait pas :** ce qui defait
+ma clause de 2026-08-07 est son perimetre, corrige en section 0 bis point 3, et mon constat d'ordre de
+lecture, corrige en section 2. **Si le gain avait ete de 4 px au lieu de 44, ma reponse aux questions
+1 et 2 serait la meme.** Et je le dis dans l'autre sens aussi, pour etre nette : **si les 44 px
+avaient ete la seule chose au dossier, j'aurais reconduit le refus.**
+
+**Ce que je refuse, et le motif est neuf, mesure, et il n'est dans aucun des deux ecrits qu'on m'a
+transmis.**
+
+**PORTE-2, motif de refus de la forme instruite - deux fois "Les jeux" sur l'ecran de fin de partie.**
+`fragments/retour.html` porte `class="ecran-de-jeu"` sur sa racine. Lever
+`body:has(.ecran-de-jeu) .lien-accueil { display: none }` demasque donc le lien **aussi sur l'ecran de
+fin de partie**, qui garde par ailleurs son `sortie-pleine`. Capture faite, et le resultat est celui
+que je decris : **le mot "Les jeux" apparait deux fois, a 49 px l'un de l'autre** - le lien de
+l'en-tete en bas a y 68, l'aplat en haut a y 117. Deux boites de taille voisine, le meme mot, la meme
+destination, sur le seul ecran ou l'enfant n'a exactement qu'une chose a faire. **Un enfant de six ans
+qui lit deux fois le meme mot sur un ecran ne conclut pas qu'il y a deux chemins vers la meme porte ;
+il se demande lequel est le bon.** C'est ma reserve 2 du 2026-08-07 - *"sur un ecran de jeu il en faut
+un, pas deux"* - et c'est la barre inchangee, pas une barre nouvelle.
+
+Et le meme geste **coute** 9 px a cet ecran au lieu de lui en gagner : `sortie-pleine` descend de
+(12, 108) a (12, 117), pousse par le bandeau qui passe de 76 a 85 px. **Sur l'ecran le plus court de
+l'application, la forme instruite ne gagne rien et perd un pixel de plus que zero.**
+
+Je note comment ce point est passe entre les mailles, sans en faire grief a personne : `DEC-0027`
+ecrit que `fragments/retour.html` est *"hors du perimetre de cette demande"*, ce qui est exact du
+**fragment** et faux de l'**ecran** - c'est le marqueur porte par ce fragment, et non son contenu, que
+le geste atteint. Et les neuf captures de `theo-archi` couvrent trois etats - manche fraiche, echec,
+revelation - **dont aucun n'est la fin de partie**. Sa translation de 44 px est juste sur les trois
+etats qu'il a mesures ; elle ne dit rien de celui-la, et il ne pretend pas le contraire.
+
+**PORTE-3, second motif de refus - "Les jeux" a cote de "Recommencer" sur l'ecran d'erreur.**
+`fragments/erreur.html` porte aussi `class="ecran-de-jeu"`. Capture faite : sous la forme instruite,
+l'ecran d'erreur affiche "Les jeux" dans l'en-tete a cote de "Recommencer" dans le contenu. **Deux
+mots differents, deux boutons, une seule destination** - `Recommencer` est un `href="/"`, le lien de
+l'en-tete mene au meme endroit. Cela defait ce que S6-9 avait obtenu de mieux, et que j'ai valide en
+jouant le 2026-08-10 : **un seul mot de sortie circule dans toute l'application.** Et cet ecran ne
+gagne aucun pixel utile : il tient en 320 px de haut, il n'a jamais eu de probleme de pli.
+
+Je maintiens par ailleurs, sans le rouvrir, mon constat 3 du 2026-08-07 : "Recommencer" n'est pas plus
+dechiffrable au CP que "Accueil" ne l'etait. Ce n'est pas un motif ici et je n'en fais pas une
+condition de cette story.
+
+#### 5. Mes six conditions, numerotees pour etre mesurees une par une
+
+Elles sont ecrites pour etre verifiables par un tiers sans me redemander ce que je voulais dire. Je
+decris ce que l'enfant doit voir ; **les moyens techniques appartiennent a `theo-archi`** et je n'en
+choisis aucun.
+
+- **PORTE-1.** La boite de sortie de (239, 16) **ne doit plus rendre un ecran identique a celui qui
+  l'affiche**. Aujourd'hui, appuyer sur "Les jeux" depuis l'accueil rend l'accueil : verifie, a
+  l'octet pres. Tant que c'est le cas, la seule experience que l'enfant a de cette boite est qu'elle
+  ne repond pas, et on lui demande ensuite d'en faire sa porte de sortie. **Deux issues me
+  conviennent** : cette boite disparait de l'accueil, ou elle y fait quelque chose. Je ne choisis
+  pas laquelle - c'est une decision produit de `camille-po`, qui rouvre `DEC-0012` point 2 - **mais
+  l'une des deux est due, et elle est due avant ou avec cette story, pas apres.** C'est la condition
+  qui porte ma reponse a la question 1.
+- **PORTE-2.** **L'ecran de fin de partie affiche exactement une fois le mot "Les jeux"**, et c'est
+  `sortie-pleine` en aplat plein dans la zone de contenu, a la place et a la taille qu'il a
+  aujourd'hui : (12, 108), 117 x 56 px. Ni un second exemplaire dans l'en-tete, ni un decalage vers
+  le bas. **Verification : capture a 360 px de l'ecran "C'est fini !", un seul "Les jeux" a l'image,
+  son coin superieur gauche a (12, 108).**
+- **PORTE-3.** **L'ecran d'erreur reste tel quel** : "Recommencer" y est la seule chose pressable, et
+  aucune sortie ne s'y ajoute. **Verification : capture a 360 px de l'ecran d'erreur, un seul bouton
+  a l'image.**
+- **PORTE-4.** **Sur les trois etats de manche, la colonne de contenu ne commence plus par une
+  sortie.** C'est ce que le changement achete et il ne doit pas etre rendu : la premiere bande de
+  texte sous le bandeau est le score, jamais un mot de sortie. **Verification : capture a 360 px de
+  la manche fraiche et de la revelation, premiere bande non vide de la colonne x 8-350 = "Score : n".**
+- **PORTE-5.** **La boite de la sortie de l'en-tete n'est jamais reduite pour recuperer les 9 px de
+  bandeau.** Plancher : **109 x 53 px**, la boite mesuree aujourd'hui, qui est aussi celle du bouton
+  retire. Ramener sa hauteur au `min-height` de 44 px rendrait la sortie plus petite que celle qu'elle
+  remplace, sur l'ecran ou l'enfant a le plus de mal a l'atteindre. **C'est un plancher, et je ne le
+  releverai pas plus tard** : 109 x 53 px est la barre, elle est atteinte aujourd'hui, la relever
+  apres coup ferait de ma porte un caprice.
+- **PORTE-6.** **Cette story est livree apres la confirmation avant abandon, pas avant.** Motif en
+  section 6. Ce n'est pas une condition sur le lot de `marc-dev`, dont je ne tranche rien : c'est une
+  condition sur **celui-ci**.
+
+**PORTE-2 et PORTE-3 sont les deux motifs du refus de la forme instruite.** Elles sont satisfaites ou
+elles ne le sont pas, et c'est mesurable sur deux captures. **PORTE-1 est la condition de ma reponse
+oui a la question 1.** PORTE-4 et PORTE-5 protegent ce que le changement obtient. PORTE-6 est une
+condition d'ordre.
+
+#### 6. L'interaction avec le lot de `marc-dev`, que je nomme sans trancher son lot
+
+On m'a demande de dire si je voyais une interaction. **Je vois la meme que `theo-archi`, et elle est
+serree dans un sens : cette story deteriore un risque que la confirmation avant abandon efface.**
+
+Aujourd'hui, un appui unique et non confirme sur "Les jeux" detruit la partie - c'est ma **reserve O**,
+qui reste ouverte et que je ne leve pas ici. Ce geste destructeur est aujourd'hui a (12, 108), dans la
+colonne de contenu, la ou l'enfant appuie peu. La forme instruite le porte a (239, 16), au ras du bord
+droit et au ras du haut, **c'est-a-dire la ou une main derape et la ou un pointeur passe pour atteindre
+les commandes du navigateur.** Le defaut ne change pas de nature ; **sa probabilite de se declencher
+par accident, elle, augmente**, et je n'ai aucun moyen de la chiffrer.
+
+**Avec la confirmation avant abandon livree, ce cout disparait entierement** : aucun chemin de sortie,
+en-tete ou fragment, ne detruit plus la partie d'un seul geste, et la position de la porte redevient
+une pure question de lisibilite - ou j'ai repondu oui. C'est pour cela, et pour cela seul, que
+PORTE-6 existe. **Je ne dis pas comment la confirmation doit etre faite, je ne dis pas si elle doit
+etre un ecran, et je ne prononce rien sur le lot de `marc-dev`.** Je dis que cette story-ci le suit.
+
+Sur `ADR-0038` clause 1, je n'ajoute rien a la demonstration de `theo-archi` et je ne la conteste pas :
+le premier arret de tabulation resterait destructeur, seulement porte par un autre element. **Cette
+story n'est pas un remede a M13 clause 1, et personne ne doit la presenter comme tel.** Elle ne ferme
+pas non plus ma reserve O.
+
+#### 7. Ce dont je reste la seule garde apres cet arbitrage, et qu'il ne faut pas croire couvert
+
+Je les nomme parce que quatre defauts visibles par un enfant ont deja traverse une CI entierement
+verte sur ce depot.
+
+- **PORTE-1 en entier.** Aucun automate ne mesure qu'un bouton rend un ecran different de celui qui
+  l'affiche. Je le verifierai en appuyant.
+- **PORTE-2 et PORTE-3 en entier.** Aucun automate du depot ne mesure la **visibilite** d'un element
+  ni ne compte les occurrences d'un mot a l'ecran. `LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest` lit la
+  **forme** d'une regle de masquage, pas ce que l'enfant voit ; et `theo-archi` a montre que sous la
+  forme instruite ce test rougit en perdant son objet. **Si ce garde-fou est reecrit pour redevenir
+  vert, il ne gardera plus PORTE-2 ni PORTE-3 : ce sera moi, en jouant, ecran par ecran.**
+- **PORTE-4 en entier.** L'ordre des elements dans la colonne de contenu n'est encode nulle part.
+  C'est la seconde fois que je le nomme - je l'avais deja fait le 2026-08-07.
+- **PORTE-5.** Aucun automate ne mesure la boite rendue d'un element. `CabinetDeLaMachineTest` derive
+  `[data-role=sortie]` sur le fragment, ce qui ne dit rien d'une geometrie.
+- **Que le bandeau ne soit pas percu comme pressable**, ma reserve 4 de 2026-08-07, **et son inverse
+  desormais** : que la boite posee dessus, elle, le soit. Aucun automate ne lit une couleur.
+- **L'atteignabilite reelle du coin superieur droit par une main de six ans.** Personne ne la garde,
+  moi comprise : je ne l'ai pas eprouvee. C'est le trou de cet arbitrage et je le laisse ouvert
+  plutot que de le combler par une affirmation.
+
+#### 8. Ce qui me manque pour aller plus loin, et que je ne remplace pas par un jugement
+
+Une seule chose, et elle ne m'empeche pas de trancher : **une observation d'un enfant de CP cherchant
+la sortie sur un telephone, sous la forme instruite.** Elle trancherait la seule question ou je reste
+degradee - l'atteignabilite du coin superieur droit. Le depot n'a aucun moyen de la produire ; je ne la
+pose donc pas en condition, je la nomme comme la limite de ma reponse a la question 2.
+
+Ce dont je n'ai **pas** besoin : une remesure du pli sur les sept jeux. Elle ne changerait pas une
+ligne de ce bloc.
+
+#### 9. Ce que cet arbitrage ne tranche pas
+
+- **Il ne prononce aucun Done pedagogique** et n'en rouvre aucun. Le Done VALIDE de S6-9 du
+  2026-08-10 reste ecrit tel quel : il portait sur la forme qui est en production, et cette forme est
+  toujours celle qui est en production.
+- **Il ne leve pas ma reserve O**, ni aucune autre reserve ouverte de cette fiche.
+- **Il ne choisit aucun moyen technique** : ni comment demasquer le lien sur les seuls etats de
+  manche, ni quoi faire de `LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest`, de
+  `LActionNeDeclarePasMoinsQueLaSortieTest`, de `CabinetDeLaMachineTest` ni des deux assertions de
+  `PartieControllerTest` que `theo-archi` a mesurees rouges. Je note seulement, en tant que symptome
+  pedagogique, que la suppression des deux dernieres retirerait du depot le 3e critere de S1-4 - une
+  sortie visible sur un ecran de jeu - sans que rien ne le reprenne. **A instruire par
+  `theo-archi`.**
+- **Il ne decide pas du sort de la boite de sortie sur l'accueil** (PORTE-1) : les deux issues me
+  conviennent, le choix est produit et il est a `camille-po`.
+- **Il ne priorise pas cette story** et n'en fait pas un engagement de sprint. PORTE-6 dit un ordre
+  relatif, pas une date.
+- **Il ne rouvre pas M4** et n'est pas une des trois stories de raccourcissement de textes dont
+  `DEC-0025` fait le declencheur de reouverture. Un vert de pli obtenu par 44 px de bandeau n'est pas
+  M4, et je souscris a `theo-archi` sur ce point sans reserve.
+- **Il ne touche pas au mot "Les jeux"** ni a "Recommencer".
+
+### Second verdict du 2026-08-13, prononce sur le lot de cloture du sprint 10
 
 - **Verdict** : **REFUSE.** Aucun Done pedagogique. **Un seul motif bloquant**, et il est etroit :
   **M13 clause 1 sur l'ecran de revelation de M5**. Tout le reste de ce que j'avais nomme est tenu ou
