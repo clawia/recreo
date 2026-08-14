@@ -708,7 +708,9 @@ body:has(.ecran-de-jeu) .lien-accueil {
 
 /* ines-design, proposition s11 : la forme de l'ecran de confirmation (ADR-0038, DEC-0026 story 2).
    Le point qui compte, chiffre a 360 x 640 px (outils/mesurer-rendu.sh) : sans ce conteneur, les
-   deux boutons se touchaient a 5 px l'un de l'autre, cote a cote, de la meme hauteur - exactement
+   deux boutons ne laissaient que 4 px de pixels reellement vides entre eux, cote a cote, de la
+   meme hauteur (chiffre corrige par nadia-prof, arbitrage prealable du 2026-08-14, section 1 : ma
+   soustraction de coordonnees en donnait 5, son comptage des pixels vides en donne 4) - exactement
    la forme qu'ADR-0017 laisse passer puisqu'il ne compare ni la position ni l'espace (sa section
    "ce que cette regle ne couvre pas", point 3). Empiler les deux boutons et les ecarter d'un plein
    gabarit de cible tactile rend le geste sur physiquement plus difficile a manquer, sans toucher

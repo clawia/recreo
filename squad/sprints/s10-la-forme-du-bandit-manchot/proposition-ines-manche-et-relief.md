@@ -303,13 +303,21 @@ donc validee comme comparable a la sienne sur cette paire precise. La troisieme 
 `8,61:1`, un ecart deja constate en s08 et non resolu depuis. J'ai retente avec le second seuil de
 linearisation sRGB de l'erratum WCAG (`0,04045` au lieu de `0,03928`) : **le resultat ne change pas**
 (les canaux en cause, `29/255` et au-dela, sont loin de ce seuil, qui ne concerne que les valeurs
-proches du noir pur). Ce n'est donc pas la cause. L'hypothese que je retiens sans la trancher :
-`nadia-prof` mesure vraisemblablement par echantillonnage de pixels sur une capture reelle (sujette a
-l'antialiasing, a la compression PNG, a un rendu colorimetrique du navigateur), alors que je calcule
-a partir des valeurs hexadecimales declarees, sans jamais recharger une image. Le rapport **relatif**
-(`1,71 -> 3,20`, une multiplication par `1,87`) tient quelle que soit la methode exacte utilisee -
-c'est lui que je recommande de lire comme le fait acquis, la valeur absolue contre la page restant a
-reconcilier par qui voudra le faire, moi ou `nadia-prof`.
+proches du noir pur). Ce n'est donc pas la cause. L'hypothese que je retenais sans la trancher :
+`nadia-prof` mesurerait vraisemblablement par echantillonnage de pixels sur une capture reelle
+(sujette a l'antialiasing, a la compression PNG, a un rendu colorimetrique du navigateur), alors
+que je calcule a partir des valeurs hexadecimales declarees, sans jamais recharger une image.
+
+> **Correction du 2026-08-12, ajoutee sans rien effacer** : cette hypothese aussi est fausse.
+> `nadia-prof` a etabli (`FICHE-bandit-manchot-additions-cp.md`, section 4, verdict du 2026-08-12)
+> que l'ecart ne venait ni d'un echantillonnage de capture ni d'une divergence de calcul, mais
+> d'une paire de couleurs fausse de son cote : le cadre compare au blanc pur `#ffffff` au lieu du
+> fond de page `#f4f7fb`. La valeur juste contre la page est **8,61:1**, celle que j'avais avancee ;
+> son `9,25:1` est retire des fiches.
+
+Le rapport **relatif** (`1,71 -> 3,20`, une multiplication par `1,87`) tient quelle que soit la
+methode exacte utilisee - c'est lui que je recommandais deja de lire comme le fait acquis, et la
+valeur absolue est desormais reconciliee plutot que restant a reconcilier.
 
 **Geometrie des colonnes verifiee strictement identique** : `152,00 px` par colonne pour "Le bon
 petit mot", `96,00 px` pour "Calcul CP" a 360 px de large, memes valeurs que sans ce changement de
@@ -328,7 +336,8 @@ variable - seule la couleur du cadre change.
    peut confirmer que la reserve 1 n'est pas aggravee au-dela de ce que j'ai mesure sur ma maquette
    synthetique a trois colonnes.
 4. **La valeur absolue du contraste cadre/page** (`8,61:1` chez moi, `9,25:1` chez elle sur la valeur
-   actuelle) : je nomme l'ecart, je ne le resous pas.
+   actuelle) : je nommais l'ecart sans le resoudre ; resolu depuis par sa correction du 2026-08-12
+   (voir la section 3 ci-dessus) - `8,61:1` est la valeur juste.
 5. **Le choix entre `#081c2c` et une autre valeur** pour `--recreo-cabinet-fond`, si elle juge que
    `3,20:1` ne suffit pas ou qu'une teinte differente de la famille de couleurs de l'application
    conviendrait mieux - je ne fais que reprendre et reverifier ma proposition de s08, jamais restee

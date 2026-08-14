@@ -223,14 +223,19 @@ Capture a 360 px : le cadre se lit desormais comme une paroi nettement plus somb
 boutons, ou "mangeons" (a 1,875 rem, piste B) se tient a l'interieur avec une marge visible des
 deux cotes.
 
-**Limite que je nomme.** Mon calcul de contraste reproduit exactement le chiffre de `nadia-prof`
-sur le couple cadre/colonnes (1,71:1, verifie), ce qui valide ma methode pour comparer des
-candidats entre eux. Le contraste cadre/page que je calcule (8,61:1 sur la valeur actuelle) ne
-reproduit pas exactement le 9,25:1 qu'elle rapporte - un ecart probablement du a un seuil de
-linearisation sRGB legerement different entre nos deux calculs. Je le signale plutot que de
-choisir le chiffre qui m'arrangerait : la comparaison relative (1,71 -> 3,20, une multiplication
-par 1,87) reste valide quelle que soit la petite variante de methode, mais l'un de nous deux doit
-reverifier la valeur absolue avant de l'ecrire dans une fiche de conformite.
+**Limite que je nommais ici, close depuis.** Mon calcul de contraste reproduit exactement le
+chiffre de `nadia-prof` sur le couple cadre/colonnes (1,71:1, verifie), ce qui valide ma methode
+pour comparer des candidats entre eux. Le contraste cadre/page que je calcule (8,61:1 sur la
+valeur actuelle) ne reproduisait pas alors le 9,25:1 qu'elle rapportait ; je l'avais signale comme
+un ecart de methode sans en connaitre la cause, en supposant a tort un seuil de linearisation sRGB
+legerement different entre nos deux calculs.
+
+> **Correction du 2026-08-12, ajoutee sans rien effacer** : la cause n'etait pas la linearisation.
+> `nadia-prof` a etabli (`FICHE-bandit-manchot-additions-cp.md`, section 4, verdict du 2026-08-12)
+> que son `9,25:1` venait d'une paire de couleurs fausse de son cote - le cadre compare au blanc pur
+> `#ffffff` au lieu du fond de page `#f4f7fb` - et non d'une divergence de calcul. La valeur juste
+> est **8,61:1**, celle que j'avais avancee. La comparaison relative (1,71 -> 3,20, une
+> multiplication par 1,87) reste valide, comme je l'ecrivais deja ici avant la correction.
 
 Cette correction est **entierement independante** des pistes A/B/combinaison ci-dessus : elle peut
 etre retenue, ajournee ou refusee sans changer la question de la largeur.
