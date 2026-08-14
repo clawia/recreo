@@ -48,3 +48,15 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-tables-multiplication
     nombreDeManches: 10
+  - id: bandit-manchot-perimetre-cm1
+    titre: "Le périmètre"
+    consigne: "Quel est le périmètre ?"
+    mecanique: bandit-manchot
+    paquet: cm1-perimetre
+    nombreDeManches: 10
+  - id: bandit-manchot-conversions-unites-cm1
+    titre: "Les mesures"
+    consigne: "Convertis dans la bonne unité !"
+    mecanique: bandit-manchot
+    paquet: cm1-mesures
+    nombreDeManches: 10

@@ -1,0 +1,105 @@
+schema: 1
+id: cm1-mesures
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CM1"
+  domaine: "Grandeurs et mesures"
+  competence: "Convertir des unités de longueur, masse, contenance dans le système métrique"
+items:
+  - enonce: "7 cm, combien de mm ?"
+    bonneReponse: "70 mm"
+    distracteurs: ["700 mm", "7000 mm"]
+    indice: "1 cm, c'est 10 mm."
+  - enonce: "4 m, combien de cm ?"
+    bonneReponse: "400 cm"
+    distracteurs: ["40 cm", "4000 cm"]
+    indice: "1 m, c'est 100 cm."
+  - enonce: "3 km, combien de m ?"
+    bonneReponse: "3000 m"
+    distracteurs: ["30 m", "300 m"]
+    indice: "1 km, c'est 1000 m."
+  - enonce: "2 m, combien de mm ?"
+    bonneReponse: "2000 mm"
+    distracteurs: ["20 mm", "200 mm"]
+    indice: "1 m, c'est 1000 mm."
+  - enonce: "700 mm, combien de cm ?"
+    bonneReponse: "70 cm"
+    distracteurs: ["7 cm", "7000 cm"]
+    indice: "1 cm, c'est 10 mm."
+  - enonce: "500 cm, combien de m ?"
+    bonneReponse: "5 m"
+    distracteurs: ["50 m", "50000 m"]
+    indice: "1 m, c'est 100 cm."
+  - enonce: "6000 m, combien de km ?"
+    bonneReponse: "6 km"
+    distracteurs: ["600 km", "6000000 km"]
+    indice: "1 km, c'est 1000 m."
+  - enonce: "5000 mm, combien de m ?"
+    bonneReponse: "5 m"
+    distracteurs: ["500 m", "5000000 m"]
+    indice: "1 m, c'est 1000 mm."
+  - enonce: "4 kg, combien de g ?"
+    bonneReponse: "4000 g"
+    distracteurs: ["40 g", "400 g"]
+    indice: "1 kg, c'est 1000 g."
+  - enonce: "3 tonnes, combien de kg ?"
+    bonneReponse: "3000 kg"
+    distracteurs: ["30 kg", "300 kg"]
+    indice: "1 tonne, c'est 1000 kg."
+  - enonce: "2 kg, combien de g ?"
+    bonneReponse: "2000 g"
+    distracteurs: ["20 g", "200 g"]
+    indice: "1 kg, c'est 1000 g."
+  - enonce: "7 tonnes, combien de kg ?"
+    bonneReponse: "7000 kg"
+    distracteurs: ["70 kg", "700 kg"]
+    indice: "1 tonne, c'est 1000 kg."
+  - enonce: "6000 g, combien de kg ?"
+    bonneReponse: "6 kg"
+    distracteurs: ["600 kg", "6000000 kg"]
+    indice: "1 kg, c'est 1000 g."
+  - enonce: "5000 kg, combien de tonnes ?"
+    bonneReponse: "5 tonnes"
+    distracteurs: ["500 tonnes", "5000000 tonnes"]
+    indice: "1 tonne, c'est 1000 kg."
+  - enonce: "9000 g, combien de kg ?"
+    bonneReponse: "9 kg"
+    distracteurs: ["900 kg", "9000000 kg"]
+    indice: "1 kg, c'est 1000 g."
+  - enonce: "4000 kg, combien de tonnes ?"
+    bonneReponse: "4 tonnes"
+    distracteurs: ["400 tonnes", "4000000 tonnes"]
+    indice: "1 tonne, c'est 1000 kg."
+  - enonce: "6 cl, combien de ml ?"
+    bonneReponse: "60 ml"
+    distracteurs: ["600 ml", "6000 ml"]
+    indice: "1 cl, c'est 10 ml."
+  - enonce: "4 L, combien de cl ?"
+    bonneReponse: "400 cl"
+    distracteurs: ["40 cl", "4000 cl"]
+    indice: "1 L, c'est 100 cl."
+  - enonce: "3 L, combien de ml ?"
+    bonneReponse: "3000 ml"
+    distracteurs: ["30 ml", "300 ml"]
+    indice: "1 L, c'est 1000 ml."
+  - enonce: "9 cl, combien de ml ?"
+    bonneReponse: "90 ml"
+    distracteurs: ["900 ml", "9000 ml"]
+    indice: "1 cl, c'est 10 ml."
+  - enonce: "700 ml, combien de cl ?"
+    bonneReponse: "70 cl"
+    distracteurs: ["7 cl", "7000 cl"]
+    indice: "1 cl, c'est 10 ml."
+  - enonce: "700 cl, combien de L ?"
+    bonneReponse: "7 L"
+    distracteurs: ["70 L", "70000 L"]
+    indice: "1 L, c'est 100 cl."
+  - enonce: "5000 ml, combien de L ?"
+    bonneReponse: "5 L"
+    distracteurs: ["500 L", "5000000 L"]
+    indice: "1 L, c'est 1000 ml."
+  - enonce: "4000 ml, combien de L ?"
+    bonneReponse: "4 L"
+    distracteurs: ["400 L", "4000000 L"]
+    indice: "1 L, c'est 1000 ml."

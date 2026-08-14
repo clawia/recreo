@@ -1,0 +1,16 @@
+# Le meme paquet neuf, une fois ses propositions rendues distinctes : le garde-fou doit le laisser
+# passer. Sans cette seconde direction, un garde-fou rouge sur tout aurait l'air de mordre sans
+# rien distinguer (lecon d'ADR-0003). Texte de fixture, jamais affiche a un enfant.
+schema: 1
+id: paquet-neuf-avec-doublon
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Competence de fixture"
+items:
+  - enonce: "Enonce de fixture 1"
+    bonneReponse: "juste"
+    distracteurs: ["faux", "autre"]
+    indice: "Indice de fixture 1"
