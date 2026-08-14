@@ -30,6 +30,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0024 | "Le bon petit mot" quitte le catalogue jouable : contenu valide, ecran trop court, condition de retour executable | s10 | 2026-08-12 | Acceptee |
 | DEC-0025 | Levee de la condition M4 de nadia-prof : le sprint 10 est livre avec un defaut de pli assume par ecrit | s10 | 2026-08-13 | Acceptee, amendee le 2026-08-14 (chiffres du resserrement de marges corriges, trois jeux fermes et non deux, aucun n'est celui nomme a l'origine ; conclusion inchangee) |
 | DEC-0026 | Levee de la clause 1 de M13 de nadia-prof, bornee au seul ecran de revelation de M5 : le sprint 10 est livre avec une perte de partie sans confirmation, assumee par ecrit | s10 (cloture) | 2026-08-14 | Acceptee, amendee le 2026-08-14 (l'etendue mesuree couvre aussi l'ecran de reprise, pas seulement la revelation ; la levee et le declencheur de reouverture sont etendus aux deux ecrans) |
+| DEC-0027 | Le retrait du bouton de sortie du fragment de manche reouvre l'arbitrage valide de S6-9 / ADR-0022 : arbitrage prealable de nadia-prof requis avant developpement | s11 | 2026-08-14 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0023` a ete amendee le 2026-08-12, sur son point 6
 (disparition de l'ecran intermediaire), laisse ouvert et route a `nadia-prof` pour arbitrage
