@@ -3430,17 +3430,21 @@ un sprint :
 
 Demande de l'utilisatrice, s11 : gagner de la place verticale sur l'ecran de manche en ne gardant
 qu'une seule sortie, celle de l'en-tete, plutot que les deux sorties actuelles (en-tete masque en
-jeu, bouton du fragment visible). **Story soumise a arbitrage prealable de `nadia-prof` avant tout
-developpement** - voir `DEC-0027-retrait-bouton-sortie-fragment-manche-reouvre-s6-9-arbitrage-
-prealable-requis.md` : cette forme est exactement celle que `nadia-prof` a refusee lors de
-l'arbitrage prealable de S6-9 (2026-08-07), avant de valider la forme inverse (sortie du fragment
-conservee, en-tete masque) comme Done pedagogique le 2026-08-10.
+jeu, bouton du fragment visible). Voir `DEC-0027-retrait-bouton-sortie-fragment-manche-reouvre-s6-9-
+arbitrage-prealable-requis.md`, y compris son amendement du 2026-08-14 : cette forme est celle que
+`nadia-prof` avait refusee lors de l'arbitrage prealable de S6-9 (2026-08-07), avant de valider la
+forme inverse comme Done pedagogique le 2026-08-10. **L'arbitrage prealable exige par le point 2 de
+`DEC-0027` est desormais rendu** (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section
+"Arbitrage prealable au developpement - la sortie unique dans l'en-tete (DEC-0027, s11), du
+2026-08-14") : **le principe est accepte sur les seuls etats rendus par `fragments/manche.html`,
+sous six conditions PORTE-1 a PORTE-6 ; la forme instruite (masquage leve sur tout ecran portant
+`ecran-de-jeu`) est refusee.**
 
-### Story - Une seule sortie visible en jeu, portee par l'en-tete plutot que par le fragment de manche
+### Story - Une seule sortie visible en jeu, portee par l'en-tete, sur les seuls etats de fragments/manche.html
 
-**Non affectee a un sprint. Ne peut pas etre planifiee par `sofia-sm` avant que l'arbitrage
-prealable du point 2 de `DEC-0027` soit rendu et ecrit dans
-`squad/conformite/FICHE-bandit-manchot-additions-cp.md`.**
+**Non affectee a un sprint. Ne peut pas etre planifiee par `sofia-sm` avant que la story
+"Confirmation avant d'abandonner une partie en cours" (en developpement par `marc-dev`, s11) soit
+livree - PORTE-6.**
 
 - **Besoin** : en tant qu'eleve de CP ou de CM1 en train de jouer une manche, je veux que la zone
   ou je lis la question et les propositions ne soit pas allongee par un bouton de sortie qui existe
@@ -3448,53 +3452,79 @@ prealable du point 2 de `DEC-0027` soit rendu et ecrit dans
   a faire defiler la page.
 - **Competence programme visee** : transverse - ergonomie et espace d'ecran, pas de contenu
   pedagogique.
-- **Perimetre** : le seul bouton concerne est `button.btn.retour-accueil` de
-  `fragments/manche.html` (manche en cours, echec et reussite, puisque ce fragment rend ces trois
-  etats depuis s10). L'ecran de fin de partie (`fragments/retour.html`, `sortie-pleine`) n'est pas
-  concerne : il ne porte deja qu'une seule action, validee par `nadia-prof` en S3-6, et cette story
-  n'y change rien.
-- **Criteres d'acceptation** :
-  - Etant donne l'arbitrage prealable de `nadia-prof` prescrit par `DEC-0027`, quand cette story
-    est planifiee, alors cet arbitrage est deja rendu et ecrit, avec un motif ; s'il refuse la
-    forme, cette story n'est pas developpee telle qu'ecrite et retourne au backlog avec le motif du
-    refus.
-  - Etant donne un ecran de manche rendu pendant une partie (question, echec avec indice,
-    reussite), quand le document est assemble, alors il ne porte plus qu'une seule sortie visible :
-    celle de l'en-tete, atteignable et portant toujours le mot "Les jeux" (`ADR-0022` point 3,
-    inchange).
-  - Etant donne le meme ecran, quand on compte les elements `data-role="sortie"` visibles (au sens
-    de la derivation de masquage d'`ADR-0022`), alors ce compte reste exactement 1, jamais 0 ni 2.
-  - Etant donne l'ecran de fin de partie (`sortie-pleine`), quand cette story est livree, alors cet
-    ecran est inchange : une seule action, l'aplat plein, comme valide par `nadia-prof` en S3-6.
+- **Perimetre, corrige par l'amendement du 2026-08-14 a `DEC-0027`** : le bouton retire,
+  `button.btn.retour-accueil`, n'existe que dans `fragments/manche.html` (manche fraiche, echec et
+  revelation). Mais le mecanisme de masquage leve (`body:has(.ecran-de-jeu) .lien-accueil`)
+  s'applique a tout ecran portant la classe `ecran-de-jeu`, et `fragments/retour.html` (fin de
+  partie) comme `fragments/erreur.html` (erreur) la portent aussi. **Le changement de visibilite de
+  l'en-tete ne doit donc atteindre que les etats de `fragments/manche.html`** : l'ecran de fin de
+  partie et l'ecran d'erreur restent inchanges, sans lien d'en-tete visible (PORTE-2, PORTE-3).
+- **Criteres d'acceptation**, portant les six conditions de `nadia-prof` telles qu'elle les a
+  ecrites (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section citee ci-dessus,
+  sous-section "5. Mes six conditions") :
+  - **PORTE-1.** Etant donne l'accueil, quand l'enfant appuie sur la boite de sortie (239, 16)
+    (`.lien-accueil`), alors l'ecran rendu n'est plus identique, a l'octet pres, a celui qui
+    l'affichait (hors reecriture d'identifiant de session). Prealable non tranche par cette story
+    et non chiffre ici : `nadia-prof` accepte deux issues - la boite disparait de l'accueil, ou
+    elle y produit un effet - et ne choisit pas laquelle ; c'est une decision produit qui rouvre
+    `DEC-0012` point 2, due avant ou avec cette story, jamais apres.
+  - **PORTE-2.** Etant donne l'ecran de fin de partie ("C'est fini !"), quand le document est
+    assemble, alors il affiche exactement une fois le mot "Les jeux", porte par `sortie-pleine` en
+    aplat plein dans la zone de contenu, a la place et a la taille qu'il a aujourd'hui : (12, 108),
+    117 x 56 px. Ni un second exemplaire dans l'en-tete, ni un decalage vers le bas. Verification :
+    capture a 360 px de cet ecran, un seul "Les jeux" a l'image, son coin superieur gauche a
+    (12, 108).
+  - **PORTE-3.** Etant donne l'ecran d'erreur, quand le document est assemble, alors il reste tel
+    quel : "Recommencer" y est la seule chose pressable, aucune sortie ne s'y ajoute. Verification :
+    capture a 360 px de l'ecran d'erreur, un seul bouton a l'image.
+  - **PORTE-4.** Etant donne un des trois etats de manche (fraiche, echec, revelation), quand le
+    document est assemble, alors la colonne de contenu ne commence plus par une sortie : la
+    premiere bande de texte sous le bandeau est le score, jamais un mot de sortie. Verification :
+    capture a 360 px de la manche fraiche et de la revelation, premiere bande non vide de la
+    colonne x 8-350 = "Score : n".
+  - **PORTE-5.** Etant donne la boite de sortie de l'en-tete rendue sur un etat de manche, alors sa
+    taille n'est jamais reduite pour recuperer les 9 px gagnes par le bandeau : plancher 109 x
+    53 px, la boite mesuree le 2026-08-14, qui est aussi celle du bouton retire. `nadia-prof` la
+    designe comme un plancher qu'elle ne relevera pas plus tard.
+  - **PORTE-6.** Cette story n'est livree qu'apres la story "Confirmation avant d'abandonner une
+    partie en cours" (en developpement par `marc-dev`, s11), jamais avant - voir la section
+    "Interaction" plus bas pour le motif.
   - Le gain d'espace vertical obtenu n'est pas chiffre par cette story a l'ecriture : il est mesure
     par qui livre le lot (`theo-archi` ou `ines-design`), sur le rendu reel, et rapporte dans la
     revue plutot que suppose.
+- **Limite connue, non couverte par cette story** : `nadia-prof` declare son propre jugement
+  degrade sur l'atteignabilite reelle de la boite (239, 16) par une main de six ans - elle ne l'a
+  pas eprouvee au doigt sur un telephone avec un enfant, seulement par une geometrie mesuree
+  (109 x 53 px, au-dessus de la cible tactile de 44 x 44 px). Elle ne pose volontairement pas ce
+  point en condition, faute de moyen du depot pour produire cette observation ; cette story ne le
+  resout pas et ne doit pas etre presentee comme le resolvant.
 - **Ce que cette story ne fait pas** :
-  - Elle ne corrige pas le defaut leve par `DEC-0026` (clause 1 de M13, `ADR-0038`) : le bouton de
-    l'en-tete, une fois demasque, porterait la meme requete destructrice
-    (`data-role="sortie"`, `hx-post="/retour"`) que celui qu'il remplace. Le premier arret de
-    tabulation resterait destructeur, seulement deplace vers un autre element. Si elle est livree
-    seule, la clause 1 d'`ADR-0038` reste rouge exactement comme aujourd'hui.
+  - Elle ne corrige pas par elle-meme le defaut leve par `DEC-0026` (clause 1 de M13, `ADR-0038`) :
+    le bouton de l'en-tete, une fois demasque, porterait la meme requete destructrice
+    (`data-role="sortie"`, `hx-post="/retour"`) que celui qu'il remplace. PORTE-6 neutralise ce
+    risque en imposant que cette story ne soit jamais livree avant la confirmation avant abandon
+    (voir "Interaction" plus bas) ; elle ne le neutralise pas si l'ordre n'est pas respecte.
   - Elle ne rouvre pas et ne referme pas elle-meme le Done pedagogique VALIDE de S6-9 : c'est
-    l'objet de l'arbitrage prealable exige plus haut, pas de cette story.
+    l'arbitrage prealable rendu ci-dessus qui le fait, pas cette story.
   - Elle ne choisit pas le moyen technique de rendre l'en-tete visible en jeu (feuille de style,
     marqueur d'etat, autre) : `theo-archi`.
   - Elle ne compte pas comme l'une des deux stories que `DEC-0026` exige pour son declencheur de
     reouverture (voir la section precedente) : ni son perimetre ni ses criteres ne portent sur la
-    tabulation ou sur la confirmation avant abandon.
-- **Interaction avec les deux stories de "Dette ouverte par DEC-0026" ci-dessus** :
-  - Ces deux stories restent prioritaires : `DEC-0026` en a deja fait un engagement du sprint 11,
-    sur un motif de perte de partie sans confirmation, pas un gain d'espace. Cette story ne les
-    remplace pas et ne doit pas leur prendre leur place de planning.
-  - Si la story "confirmation avant d'abandonner une partie en cours" est retenue pour tenir
-    l'engagement de `DEC-0026`, cette story devient a faible risque une fois ce remede livre :
-    aucune sortie, quelle qu'elle soit, ne detruirait plus la partie d'un seul geste, et l'ordre
-    entre les deux n'est alors pas contraint.
-  - Si c'est la story "la premiere tabulation ne mene jamais a la sortie" qui est retenue a la
-    place, cette story doit **suivre** ce remede, jamais le precede : retirer un des deux elements
-    de sortie du document changerait la population d'elements que ce remede reordonne, avec risque
-    de defaire un travail deja livre.
+    tabulation.
+- **Interaction avec la story "Confirmation avant d'abandonner une partie en cours" (PORTE-6)** :
+  - Cette story ne peut pas etre livree avant que la confirmation avant abandon le soit, quelle que
+    soit l'issue retenue pour le second remede possible de `DEC-0026` (correction de l'ordre de
+    tabulation). Ce n'est pas une condition sur le lot de `marc-dev` : c'est une condition sur
+    celle-ci.
+  - Motif de `nadia-prof` : sans confirmation, le geste destructeur qui existe deja aujourd'hui
+    (appui unique et non confirme sur "Les jeux") est aujourd'hui a (12, 108), la ou l'enfant appuie
+    peu. Le porter en (239, 16) - au ras du bord droit et du haut de l'ecran, la ou une main derape
+    et la ou un pointeur passe pour atteindre les commandes du navigateur - augmente la probabilite
+    qu'il se declenche par accident, sans qu'elle puisse la chiffrer. Une fois la confirmation
+    livree, ce cout disparait entierement : aucun chemin de sortie ne detruit plus la partie d'un
+    seul geste, et la position de la porte redevient une pure question de lisibilite.
 - **Lien decision** : `DEC-0027-retrait-bouton-sortie-fragment-manche-reouvre-s6-9-arbitrage-
-  prealable-requis.md`.
-- **Agent pressenti** : arbitrage prealable a `nadia-prof` d'abord (route par `sofia-sm`) ; mise en
-  oeuvre a affecter ensuite par `sofia-sm`, si l'arbitrage l'autorise.
+  prealable-requis.md`, y compris son amendement du 2026-08-14 ;
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section citee ci-dessus.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, apres la story de confirmation avant
+  abandon (PORTE-6) ; moyen technique a `theo-archi`.
