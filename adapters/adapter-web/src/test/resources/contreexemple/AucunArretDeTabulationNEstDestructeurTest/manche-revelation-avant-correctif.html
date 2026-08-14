@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!-- ADR-0013 obligation 3, ADR-0038 : la forme exacte que la production rendait avant ce lot, sur
+     l'ecran de manche en revelation quand la reponse revelee occupe la derniere position de
+     tabulation - mesuree par theo-archi et recopiee de la table de contexte d'ADR-0038 (rang, role,
+     data-focus-cible, requete declaree). Ce document n'est plus produit par le serveur depuis ce
+     lot : POST /retour ne detruit plus la partie tant qu'elle est en cours
+     (PartieController.retour()). C'est un objet neuf, absent de la production du jour, au sens de
+     l'obligation 3 : personne ne peut plus l'obtenir en jouant. -->
+<body>
+<header class="entete">
+    <nav class="menu">
+        <a class="btn lien-accueil" data-role="sortie" href="/" hx-post="/retour">Les jeux</a>
+    </nav>
+</header>
+<main id="jeu">
+<div class="ecran-de-jeu" data-focus="bouton">
+    <button type="button" class="btn retour-accueil" data-role="sortie" hx-post="/retour">Les jeux</button>
+    <form hx-post="/parties/jeu-repete/coups">
+        <button type="submit" class="btn proposition deja-essayee" data-role="action"
+                data-focus-cible="false" name="propositionChoisie" value="mauvaise">mauvaise</button>
+        <button type="submit" class="btn proposition" data-role="action"
+                data-focus-cible="true" name="propositionChoisie" value="bonne">bonne</button>
+    </form>
+</div>
+</main>
+</body>
+</html>

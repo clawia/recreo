@@ -276,9 +276,13 @@ class PartieControllerTest {
         assertThat(fragment.select("button.retour-accueil")).isEmpty();
     }
 
-    /** S1-4, 3e critere : cliquer le bouton clot la partie et revient a la liste des jeux. */
+    /**
+     * ADR-0038, DEC-0026 (story 2, s11) : le bouton de retour ne clot plus la partie d'un seul
+     * geste. Sur une partie en cours, il rend l'ecran de confirmation, et la partie survit tant que
+     * l'enfant n'a pas confirme.
+     */
     @Test
-    void leBoutonDeRetourClotLaPartieEtRevientALaListeDesJeux() throws Exception {
+    void leBoutonDeRetourDemandeConfirmationSansClorePartieEnCours() throws Exception {
         MockHttpSession session = new MockHttpSession();
         mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
 
@@ -286,8 +290,63 @@ class PartieControllerTest {
                 .andReturn().getResponse().getContentAsString();
         Document fragment = Jsoup.parse(html);
 
+        assertThat(fragment.select("button.demarrer")).isEmpty();
+        assertThat(fragment.select("[data-role=sortie]")).isNotEmpty();
+
+        String reprise = mockMvc.perform(get("/").session(session))
+                .andReturn().getResponse().getContentAsString();
+        assertThat(Jsoup.parse(reprise).select(".enonce").text())
+                .as("la partie n'a pas ete abandonnee par la seule demande de confirmation")
+                .isEqualTo("un");
+    }
+
+    /** Confirmer l'abandon depuis l'ecran de confirmation clot bien la partie. */
+    @Test
+    void confirmerLAbandonClotLaPartieEtRevientALaListeDesJeux() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        mockMvc.perform(post("/retour").session(session));
+
+        String html = mockMvc.perform(post("/retour/confirmer").session(session))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
         assertThat(fragment.select("button.demarrer")).isNotEmpty();
         assertThat(fragment.select(".enonce")).isEmpty();
+    }
+
+    /** Annuler l'abandon depuis l'ecran de confirmation revient a la manche, rien n'est perdu. */
+    @Test
+    void annulerLAbandonRevientALaMancheSansRienPerdre() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                .session(session).param("propositionChoisie", "1"));
+        mockMvc.perform(post("/retour").session(session));
+
+        String html = mockMvc.perform(post("/retour/annuler").session(session))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.select(".enonce").text()).isEqualTo("deux");
+        assertThat(fragment.select(".score").text()).isEqualTo("Score : 1");
+    }
+
+    /** Sans partie en cours (fin de partie ou accueil), le retour reste immediat, sans confirmation. */
+    @Test
+    void leRetourApresLaFinDePartieNeDemandeAucuneConfirmation() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                .session(session).param("propositionChoisie", "1"));
+        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                .session(session).param("propositionChoisie", "2"));
+
+        String html = mockMvc.perform(post("/retour").session(session))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.select("button.demarrer")).isNotEmpty();
     }
 
     /**

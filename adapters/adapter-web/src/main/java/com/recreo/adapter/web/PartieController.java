@@ -103,12 +103,50 @@ public class PartieController {
         return "accueil";
     }
 
+    /**
+     * ADR-0038, DEC-0026 (story 2, s11) : quitter une partie en cours n'est plus un geste unique.
+     * Ce point d'appel ne detruit plus rien lui-meme ; s'il existe une partie en cours, il rend un
+     * ecran de confirmation qui laisse la session intacte (aucun appel a {@code abandonner()}). Sans
+     * partie en cours, il n'y a rien a confirmer : le comportement d'avant ce sprint est inchange,
+     * celui de l'ecran de fin de partie qui pose lui aussi {@code hx-post="/retour"}.
+     */
     @PostMapping("/retour")
     public String retour(HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
+        EtatDePartie etat = new EtatDePartieEnSession(requete).lire();
+        if (etat.portePartieEnCours()) {
+            return "fragments/confirmation :: confirmation";
+        }
         new EtatDePartieEnSession(requete).abandonner();
         effacerMarqueurDePartie(reponse);
         modele.addAttribute("jeux", partie.jeuxDisponibles());
         return "accueil :: zoneAccueil";
+    }
+
+    /** Le geste que l'ecran de confirmation appelle pour quitter reellement la partie en cours. */
+    @PostMapping("/retour/confirmer")
+    public String confirmerAbandon(HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
+        new EtatDePartieEnSession(requete).abandonner();
+        effacerMarqueurDePartie(reponse);
+        modele.addAttribute("jeux", partie.jeuxDisponibles());
+        return "accueil :: zoneAccueil";
+    }
+
+    /**
+     * Le geste que l'ecran de confirmation appelle pour rester sur la partie en cours. La session
+     * n'est ni lue ni ecrite pour la faire progresser : aucun essai n'est compte et aucun tirage
+     * n'est renouvele. {@code PAR_UN_GESTE} et non {@code SANS_GESTE} : ADR-0027 amendement M10, le
+     * premier facteur dit seulement si un geste de l'enfant a produit cet echange, ce qui est vrai
+     * ici (l'enfant vient de presser "Continuer la partie") - le second facteur, calcule dans {@code
+     * mancheModele} a partir du seul etat de la manche, suffit deja a ne pas rejouer le defilement
+     * si cette manche a deja essuye un echec.
+     */
+    @PostMapping("/retour/annuler")
+    public String annulerAbandon(HttpServletRequest requete, Model modele) {
+        EtatDePartie etat = new EtatDePartieEnSession(requete).lire();
+        if (!etat.portePartieEnCours()) {
+            throw new PartieIndisponible("aucune partie en cours a reprendre");
+        }
+        return mancheModele(modele, etat.jeuId(), etat.consigne(), etat.session(), PAR_UN_GESTE);
     }
 
     @PostMapping("/parties/{jeuId}")

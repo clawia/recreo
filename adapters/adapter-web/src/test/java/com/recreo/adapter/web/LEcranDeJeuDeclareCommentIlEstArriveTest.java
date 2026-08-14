@@ -199,7 +199,35 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
                 post("/parties/{jeuId}/coups", JEU_ID).session(new MockHttpSession())
                         .param("propositionChoisie", "1")));
 
+        // ADR-0038, DEC-0026 (story 2, s11) : deux routes neuves.
+        reponses.add(reponse("demande de confirmation avant d'abandonner, la partie continue",
+                "POST /retour", demandeDeConfirmation()));
+        reponses.add(reponse("annulation de l'abandon, retour a la manche, la partie continue",
+                "POST /retour/annuler", annulerLAbandon()));
+        reponses.add(reponse("confirmation de l'abandon, retour a la liste des jeux",
+                "POST /retour/confirmer", confirmerLAbandon()));
+
         return reponses;
+    }
+
+    private MockHttpServletRequestBuilder demandeDeConfirmation() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        return post("/retour").session(session);
+    }
+
+    private MockHttpServletRequestBuilder annulerLAbandon() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        mockMvc.perform(post("/retour").session(session));
+        return post("/retour/annuler").session(session);
+    }
+
+    private MockHttpServletRequestBuilder confirmerLAbandon() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        mockMvc.perform(post("/retour").session(session));
+        return post("/retour/confirmer").session(session);
     }
 
     /**
