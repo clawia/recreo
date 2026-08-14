@@ -41,6 +41,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0035](ADR-0035-aucun-texte-rendu-ne-vit-dans-un-sous-arbre-masque.md) | Refuser tout texte rendu a l'interieur d'un sous-arbre `aria-hidden`, et accrocher le masque au decor plutot qu'au conteneur | s10 | 2026-08-12 | Accepte |
 | [ADR-0036](ADR-0036-une-image-maison-entre-par-son-chemin-un-garde-fou-ne-lit-pas-un-binaire-comme-du-texte.md) | Faire entrer une image maison par son chemin litteral et non par une empreinte, deriver le perimetre d'une reference de ressource de l'attribut, et retirer les binaires du garde-fou de chemins | s10 | 2026-08-13 | Accepte |
 | [ADR-0037](ADR-0037-une-dependance-de-test-n-est-pas-une-ressource-servie.md) | Distinguer une dependance de test d'une ressource servie, et refuser tout octet servi qui n'est pas vendorise | s10 | 2026-08-14 | Accepte |
+| [ADR-0038](ADR-0038-aucun-arret-de-tabulation-destructeur-a-une-tabulation-d-un-point-de-depart.md) | Interdire tout arret de tabulation destructeur a une seule tabulation d'un point de depart que le document autorise | s10 | 2026-08-14 | Accepte, sa regle est due par le lot de s11 |
 
 ## Amendements
 
@@ -442,3 +443,20 @@ troisieme avait nommee sans la fermer :
     le pom du module qui la declare, la seconde parce que sa population contiendrait les outils de test
     que cet `ADR` declare libres. Ce n'est pas une regle ArchUnit - une analyse de bytecode ne voit pas
     une entree d'archive - le compte reste a **28** avec sa methode ; les tests passent de 403 a 406.
+36. **ADR-0038** est le premier `ADR` de ce depot qui **reprend a un automate une propriete qu'on
+    croyait reservee a `nadia-prof`**, et il vaut d'etre relu pour la forme de l'enonce plus que pour
+    le sujet. Son motif est le seul defaut bloquant du sprint 10, leve par `DEC-0026` : la partie est
+    detruite en deux touches **si et seulement si** la reponse revelee occupe la derniere position de
+    l'ordre de tabulation. Mesure faite sur le document assemble rendu par le controleur reel, et non
+    sur le gabarit : le document porte **deux** sorties, celle de l'en-tete permanent n'etant pas un
+    arret de tabulation parce que la feuille la masque sur un ecran de jeu - la conclusion de
+    `yanis-qa` est juste, sa demonstration incomplete. Il apporte trois choses au-dela de son sujet :
+    un enonce qui parle du **role de l'element atteint** et jamais d'un rang, ce qui lui permet de
+    distinguer un remede d'un deplacement du defaut (deplacer le bouton apres les propositions est
+    refuse) ; un critere de destruction fonde sur l'**effet mesure** de la requete declaree et non sur
+    `data-role`, parce que la clause de non-vacuite d'`ADR-0017` est globale et qu'un simple changement
+    d'attribut rendrait la regle verte ; et une liste explicite de huit choses que son vert **ne
+    prouvera pas**, dont la premiere est que le focus aille la ou le serveur le declare - ce qui est
+    pourquoi ses deux clauses sont ecrites separement. Il n'encode rien lui-meme : la regle est due par
+    le lot de s11, et son jeu fautif est l'etat de la production du jour, deja rouge sur deux ecrans.
+    Ce n'est pas une regle ArchUnit, le compte reste a **28** avec sa methode.
