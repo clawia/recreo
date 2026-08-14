@@ -241,3 +241,67 @@ Le jugement sur le moyen technique de le corriger reste integralement a `theo-ar
   hors de portee d'une story de code a ce jour.
 - Elle ne rouvre pas la levee de M4 par `DEC-0025` : seule la mesure qui l'accompagnait est
   corrigee, dans une note datee au sein de ce meme fichier.
+
+## Amendement du 2026-08-14 (s10, cloture, apres verification de theo-archi) - la clause 1 n'est pas tenue seulement a la revelation ; l'ecran de reprise porte le meme defaut, et la levee le couvre
+
+`theo-archi` a mesure l'invariante qu'il formalise dans `ADR-0038` non sur le gabarit, mais sur le
+document assemble par le controleur reel, pour tout ecran ou une partie est en cours. J'ai verifie
+moi-meme les deux faits qu'il rapporte, en lisant `accueil.html`, `fragments/manche.html` et
+`PartieController.java` :
+
+- **Le document porte deux sorties.** `a.btn.lien-accueil` dans l'en-tete permanent d'`accueil.html`
+  (`hx-post="/retour"`) et `button.btn.retour-accueil` dans `fragments/manche.html`
+  (`hx-post="/retour"`). La premiere est masquee par la regle de la feuille maison
+  `body:has(.ecran-de-jeu) .lien-accueil { display: none }`, des que la zone de contenu porte le
+  marqueur `ecran-de-jeu` - ce qui est vrai sur tout ecran de manche, y compris quand ce fragment est
+  rendu a l'interieur d'un `accueil.html` complet. Le premier arret de tabulation reel est donc, sur
+  tout ecran de manche, **le meme bouton** : `button.btn.retour-accueil`.
+- **`GET /` pendant une partie en cours rend exactement ce fragment.** Dans `PartieController`, la
+  methode `accueil()` teste `etat.portePartieEnCours()` ; si vrai, elle pose `reprise=true` et rend
+  `accueil.html`, qui inclut `fragments/manche :: manche` par `th:replace`. C'est un chargement de
+  page complet : rien n'y est focalise au depart. La clause 1 d'`ADR-0038` - "`A[0]` n'est pas
+  destructeur" - couvre exactement ce cas, au meme titre que le rebouclage depuis la derniere
+  proposition sur l'ecran de revelation : sur les deux ecrans, une premiere Tabulation puis Entree
+  atteint "Les jeux" et detruit la partie sans confirmation.
+
+**Ce que j'ecrivais au point 2 de la decision ci-dessus n'etait donc pas exact : "la clause 1
+elle-meme reste tenue partout ailleurs qu'a la revelation" ne l'etait pas au moment ou je l'ai
+ecrit - je n'avais mesure que l'ecran que `nadia-prof` avait elle-meme mesure, pas celui qu'elle n'a
+pas rejoue.** `theo-archi` signale ce second ecran comme un fait technique, sans le verser a son
+releve : l'evaluation pedagogique lui revient, et il ne s'y substitue pas.
+
+**La levee de la clause 1 de M13, prononcee au point 1 de la decision, couvre donc les deux
+ecrans : celui de revelation et celui de reprise (`GET /` pendant une partie en cours).** C'est le
+meme defaut structurel - le meme premier arret de tabulation, la meme requete destructrice -, et non
+deux defauts distincts ; le restreindre au seul ecran mesure par `nadia-prof` donnerait une borne
+fausse, pas une borne prudente. Rien d'autre n'est rouvert : les quatorze cas du premier refus, les
+clauses 2, 3, 4 et 5 de M13, et la clause 1 elle-meme partout ailleurs qu'aux deux ecrans nommes ici,
+restent tenus et ne sont pas remis en cause.
+
+### Declencheur de reouverture, complete
+
+Le declencheur ecrit plus haut exigeait une reverification "au protocole exact de `nadia-prof` [...]
+sur les 25 revelations". Ce protocole ne porte que sur l'ecran de revelation ; une reverification qui
+s'y limiterait ne verrait donc jamais l'ecran de reprise, alors que la levee couvre desormais les
+deux. J'ajoute une quatrieme condition au declencheur, cumulative avec les trois deja ecrites :
+
+- **La reverification couvre aussi l'ecran de reprise** : un chargement de `GET /` pendant une
+  partie en cours, ou aucun focus n'est pose au depart, suivi d'une Tabulation puis d'une Entree. Je
+  ne prescris pas la methode - clavier reel comme le reste de son protocole, ou tout autre moyen
+  qu'elle juge equivalent - cette methode reste a `nadia-prof`.
+
+### La dette, en stories - perimetre corrige
+
+Les deux stories versees a `docs/backlog/backlog.md` sous "Dette ouverte par DEC-0026" portaient,
+dans leur redaction du 2026-08-13, sur le seul ecran de revelation. Une note distincte, dans ce
+meme fichier de backlog, met a jour leur perimetre pour qu'il nomme les deux ecrans ; le detail n'est
+pas repete ici.
+
+### Impact de cet amendement
+
+- Ce fichier : section ajoutee, rien efface des sections d'origine du 2026-08-14.
+- `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee, ligne DEC-0026 mise a jour.
+- `docs/backlog/backlog.md` : les deux stories sous "Dette ouverte par DEC-0026" sont mises a jour
+  pour nommer les deux ecrans.
+- Aucun Done pedagogique ni ligne de `squad/programme/MATRICE-couverture.md` n'est modifie par cet
+  amendement.

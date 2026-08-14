@@ -29,7 +29,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0023 | Le perimetre du sprint 10 est repris sur les references de l'utilisatrice : la machine est redessinee en CSS pur, le veto de nadia-prof sur la manette est leve, l'ecran intermediaire est questionne | s10 | 2026-08-12 | Acceptee sur les points 1 a 5, point 6 ferme par DEC-0024 |
 | DEC-0024 | "Le bon petit mot" quitte le catalogue jouable : contenu valide, ecran trop court, condition de retour executable | s10 | 2026-08-12 | Acceptee |
 | DEC-0025 | Levee de la condition M4 de nadia-prof : le sprint 10 est livre avec un defaut de pli assume par ecrit | s10 | 2026-08-13 | Acceptee, amendee le 2026-08-14 (chiffres du resserrement de marges corriges, trois jeux fermes et non deux, aucun n'est celui nomme a l'origine ; conclusion inchangee) |
-| DEC-0026 | Levee de la clause 1 de M13 de nadia-prof, bornee au seul ecran de revelation de M5 : le sprint 10 est livre avec une perte de partie sans confirmation, assumee par ecrit | s10 (cloture) | 2026-08-14 | Acceptee |
+| DEC-0026 | Levee de la clause 1 de M13 de nadia-prof, bornee au seul ecran de revelation de M5 : le sprint 10 est livre avec une perte de partie sans confirmation, assumee par ecrit | s10 (cloture) | 2026-08-14 | Acceptee, amendee le 2026-08-14 (l'etendue mesuree couvre aussi l'ecran de reprise, pas seulement la revelation ; la levee et le declencheur de reouverture sont etendus aux deux ecrans) |
 
 Amendement (pas une nouvelle reference) : `DEC-0023` a ete amendee le 2026-08-12, sur son point 6
 (disparition de l'ecran intermediaire), laisse ouvert et route a `nadia-prof` pour arbitrage
@@ -207,3 +207,15 @@ six comme ecrit a l'origine. La levee de M4 elle-meme n'est pas rouverte par cet
 sections d'origine de `DEC-0025` restent telles qu'ecrites le 2026-08-13, non effacees. Voir la
 section "Amendement du 2026-08-14 (s10, cloture)" dans
 `DEC-0025-levee-de-la-condition-m4-le-sprint-10-est-livre-avec-un-defaut-de-pli-assume.md`.
+
+Amendement (pas une nouvelle reference) : `DEC-0026` a ete amendee le 2026-08-14, a la cloture du
+sprint 10, sur la base de la mesure que `theo-archi` a faite sur le document assemble par le
+controleur reel (`ADR-0038`). La decision d'origine bornait la levee au seul ecran de revelation ;
+la mesure montre que le meme premier arret de tabulation destructeur existe aussi sur l'ecran de
+reprise (`GET /` pendant une partie en cours, qui rend le meme fragment de manche dans `accueil.html`
+complet, rien focalise au depart). L'amendement corrige l'affirmation d'origine ("la clause 1 reste
+tenue partout ailleurs qu'a la revelation"), etend la levee aux deux ecrans et ajoute une quatrieme
+condition au declencheur de reouverture pour que la reverification de s11 porte aussi sur l'ecran de
+reprise. Les sections d'origine de `DEC-0026` restent telles qu'ecrites le 2026-08-14, non effacees.
+Voir la section "Amendement du 2026-08-14 (s10, cloture, apres verification de theo-archi)" dans
+`DEC-0026-levee-m13-clause-1-ecran-de-revelation-perte-de-partie-sans-confirmation.md`.
