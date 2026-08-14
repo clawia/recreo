@@ -26,8 +26,8 @@
 Deux lots d'instruction, sans code de production, verifies par `git diff --stat` avant chaque
 fusion. Lignee verifiee au prealable : les deux branches descendent de `9650cff` (tete de
 `round-two` a la cloture de s10) et ne descendent pas l'une de l'autre (`git merge-base` croise).
-Les worktrees des deux agents vivaient sous `C:/perso/`, hors du repertoire habituel des
-worktrees de sprint ; verifie et sans consequence sur la fusion elle-meme.
+Les worktrees des deux agents vivaient hors du repertoire habituel des worktrees de sprint ;
+verifie et sans consequence sur la fusion elle-meme.
 
 | Lot | Branche | Tete | Perimetre verifie |
 |---|---|---|---|
@@ -45,12 +45,11 @@ Tete de `round-two` apres fusion et rangement : **`970ed9a`**.
 
 Les deux lots fusionnes sont documentaires : aucun fichier de production ne bouge. Plutot que de
 recopier un chiffre annonce, j'ai reconstruit et rejoue moi-meme la suite complete, dans un
-**worktree detache** cree pour l'occasion (`git worktree add --detach`) : l'instance de
-l'utilisatrice tourne sur ce poste depuis `C:\perso\recreo\bootstrap\target\recreo.jar` (port 8080,
-verifie par `netstat` et la ligne de commande du process), et `mvn clean` sur le depot principal
-supprimerait ce fichier verrouille. Je ne touche pas ce processus ; je construis ailleurs plutot
-que de forcer un verrou qui n'est pas le mien a lever. Le worktree est supprime une fois la mesure
-faite.
+**worktree detache** cree pour l'occasion (`git worktree add --detach`) : une instance de
+l'application de l'utilisatrice tournait sur ce poste et verrouillait le livrable (verifie par la
+ligne de commande du process), si bien qu'un `mvn clean` sur le depot principal l'aurait supprime.
+Je ne touche pas ce processus ; je construis ailleurs plutot que de forcer un verrou qui n'est pas
+le mien a lever. Le worktree est supprime une fois la mesure faite.
 
 - `JAVA_HOME` positionne sur le JDK 21.0.10 le temps de la commande (`bash outils/verifier-jdk.sh` :
   `java` du `PATH` en 1.8.0_202, JDK de compilation 21.0.10, `JAVA_HOME` vide hors commande).
