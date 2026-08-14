@@ -263,7 +263,157 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Arbitrage prealable de s12 du 2026-08-14, trois textes de l'application et le point de focus de la confirmation - le plus recent de cette fiche
+### Arbitrage prealable de s12 du 2026-08-14, second tour - le point de focus de la confirmation, revu sur un fait mesure - le plus recent de cette fiche
+
+> **Ce que cette section fait.** Elle **corrige mon choix de focus rendu quelques heures plus tot**,
+> parce qu'un fait mesure par `theo-archi` le rend mecaniquement impossible. La section precedente
+> **n'est pas effacee, pas modifiee, pas reformulee** : un choix retire dont la trace disparait n'a
+> aucune valeur de preuve, et c'est precisement l'erreur que je veux qu'on puisse lire. La mention
+> "le plus recent de cette fiche" quitte son titre pour celui-ci, et c'est le seul caractere que j'y
+> touche.
+>
+> **Ce qu'elle ne fait pas** : elle ne leve pas ma reserve N, que je leverai au clavier sur un
+> increment livre. Personne ne me le demande, et je ne le ferais pas si on me le demandait.
+
+#### 0. Comment j'ai instruit, et ce que je declare degrade
+
+**Je n'ai pas presse ce clavier-la : mon audit reste degrade sur ce point precis, et je le dis avant
+de conclure.** Ce que j'ai fait :
+
+- **j'ai verifie le fait par la source plutot que de le croire sur parole.** `static/js/recreo.js`
+  fait, sur le point de focus et dans cet ordre, `setAttribute('tabindex', '-1')` puis `focus()`.
+  Sur un `button` natif - qui est dans l'ordre de tabulation par nature - `tabindex="-1"` l'en
+  **retire**. Le fait est exact, et il n'a pas besoin d'etre mesure pour etre etabli : il se lit ;
+- **j'ai un ancrage empirique, et il est de moi.** `fragments/manche.html` emploie **deja** la forme
+  proposee : `data-focus="enonce"` porte le focus sur un **paragraphe**, pas sur un bouton. C'est
+  l'etat dans lequel j'ai mesure la clause 1 sur les cinq ecrans, **zero partie detruite sur
+  cinquante-trois Tabulation-puis-Entree**. Sur une manche fraiche, le focus est sur l'enonce et la
+  premiere Tabulation atteint une proposition, jamais la sortie - alors meme que le bouton de sortie
+  precede l'enonce dans le document. **La forme qu'on me propose n'est donc pas une hypothese : je
+  l'ai deja pressee cinquante-trois fois, sur un autre ecran, et elle tient.**
+
+Ce que je ne sais toujours pas et que je n'invente pas : ce qu'un lecteur d'ecran annonce reellement
+en arrivant ici. **Reserve F11, entiere.**
+
+#### 1. Ce que je corrige de mon propre texte, avant tout le reste
+
+**J'ai ecrit une phrase fausse il y a quelques heures, dans cette fiche, et c'est moi qui l'ai
+ecrite.** Section precedente, a propos de mes deux proprietes de la reserve N : *"Un point de focus
+declare sur 'Continuer la partie' les satisferait toutes les deux."*
+
+**C'est faux, et pas a moitie.** Declarer le focus sur ce bouton l'aurait sorti de l'ordre de
+tabulation vivant, laissant **le bouton destructeur comme seul arret restant**. Ce que j'avais mesure
+a **0 fois sur 69** - la premiere Tabulation n'atteint jamais le bouton destructeur - serait devenu
+**le seul comportement possible**. Mon choix n'aurait pas ameliore l'ecran : il aurait installe, a
+100 %, le defaut dont j'etais fiere de constater qu'il n'arrivait jamais.
+
+**Et l'ironie est dans la phrase suivante de mon propre paragraphe**, ou j'ecrivais qu'*"une propriete
+satisfaite sur le papier n'est pas une propriete mesuree"*. Je l'ecrivais en train de tenir pour
+satisfaite une propriete que je n'avais pas mesuree. C'est la cinquieme fois que ce depot paie la
+meme lecon, et cette fois c'est moi qui la paie deux fois dans un meme paragraphe : **ce qui n'est
+pas presse n'est pas verifie**, y compris quand c'est moi qui le raisonne.
+
+Je ne retire pas le paragraphe. Je le laisse lisible et je le corrige ici. **Ce que mon argument de
+fond gardait de juste, et qui ne bouge pas** : on n'ecarte pas un defaut en installant sa version
+plus rapide. C'est ce principe, pas le nom du bouton, qui gouverne ce qui suit.
+
+#### 2. La forme proposee tient-elle mon exigence ? OUI - et ce n'est pas un pis-aller
+
+**Verdict : oui, cette forme sert le meme enfant, et sur un point elle le sert mieux que ce que
+j'avais demande.** Je reponds sur les deux enfants separement, parce qu'ils ne vivent pas cet ecran
+de la meme facon.
+
+**L'enfant au clavier.** Ce qu'il obtient : a l'arrivee, rien d'actionnable n'est focalise, donc
+**Entree seule ne fait rien** - et surtout ne detruit rien ; la **premiere** Tabulation atteint
+"Continuer la partie", **a chaque fois** ; la seconde atteint la sortie. Il faut donc **trois gestes
+deliberes** pour perdre la partie, sur un ecran qui affiche la consequence. Compare a aujourd'hui,
+ou la premiere Tabulation le fait sortir de la page **cinq fois sur six** : il presse, rien ne
+s'allume, il presse Entree, rien ne se passe, et il se croit en faute. **C'est ce cas-la, le plus
+frequent et le pire, que cette forme supprime.**
+
+**L'enfant a la souris.** Rien ne change pour lui : il voit la phrase et les deux boutons, il en
+presse un. Le point de focus ne le concerne pas. C'est neutre, et c'est bien ainsi.
+
+**Ce que cette forme ne ferme pas, et je le nomme au lieu de le passer.** Mes deux proprietes de la
+reserve N ne sont pas tenues a egalite. *"Le nombre d'appuis pour atteindre un bouton donne est le
+meme a chaque fois"* : **tenue**, et c'est le gros de la reserve. *"L'enfant doit savoir ou il en
+est des son arrivee"* : **pas tenue par cette forme**, parce qu'un paragraphe focalise par script ne
+dessine aucun anneau - la feuille maison ne declare de focus visible que sur `.btn`.
+
+**Et je m'interdis d'en faire une condition sur ce lot, pour un motif que je dois a ma propre
+regle.** Cette moitie-la n'est pas tenue **non plus sur l'ecran de manche**, ou le focus se pose sur
+l'enonce depuis s10 - et j'ai valide ces ecrans. Exiger de l'ecran de confirmation ce que je n'ai
+pas exige de la manche serait deplacer mes poteaux sur une equipe qui vient d'atteindre la barre.
+**Cette moitie reste ou elle est : dans la reserve N, telle qu'elle est ecrite, ouverte, et elle
+concerne tous les ecrans, pas celui-ci.**
+
+**Une chose que je refuse d'avance, pour qu'on ne me l'apporte pas comme un progres.** Si quelqu'un
+propose de rendre ce point d'arrivee visible en **dessinant un anneau autour de la phrase** : non.
+J'ai deja arbitre ce risque en s01 sur "C'est fini !", du texte centre en bleu qui *"reste, pour un
+lecteur debutant, tres proche de l'aspect d'une chose sur laquelle on appuie"*. Encadrer une phrase
+qu'on ne peut pas presser, sur l'ecran ou presser decide de la partie, ferait exactement ce
+contresens-la. **La phrase ne change pas d'apparence.**
+
+#### 3. Quel element porte le point de focus, et ce qu'il doit annoncer
+
+**L'element : la phrase deja arbitree, "Si tu pars, ta partie s'arrête."** - celle de CONF-3, que
+j'ai fixee ce matin et que je ne reformule pas.
+
+**Le motif n'est pas qu'elle est le seul candidat disponible, c'est qu'elle est le bon.** Cet ecran
+n'existe que pour avertir. **La premiere chose que l'enfant recoit doit donc etre l'avertissement**,
+et cela doit valoir par l'oeil comme par l'oreille. Poser le point d'arrivee sur la phrase fait
+coincider trois choses qui divergent aujourd'hui : ce que l'enfant lit en premier, ce qu'il entend en
+premier, et l'endroit d'ou part sa premiere Tabulation. Un ecran de confirmation dont le point
+d'arrivee est la consequence est un ecran coherent ; un ecran dont le point d'arrivee serait un
+bouton dirait a l'enfant "choisis" avant de lui avoir dit "voici ce que tu risques".
+
+**La propriete que j'exige sur l'annonce**, et je la formule en propriete parce que le moyen n'est
+pas de moi : **a l'arrivee sur cet ecran, ce qu'un enfant entend est la consequence, et il l'entend
+avant tout libelle de bouton.** Rien de plus, rien d'autre - pas de texte annonce qui n'existe pas a
+l'ecran, ce que je viens de refuser sur l'`aria-label` au meme titre.
+
+**Ce que je ne verifie pas et ne ferai pas semblant de verifier** : que l'annonce reelle soit bien
+celle-la. Personne dans cette equipe n'a jamais ecoute cette application, moi comprise. Si l'ecoute
+montre que le fait de focaliser cette phrase ne l'annonce pas, ou l'annonce apres autre chose,
+**c'est la forme qui doit changer, pas la propriete**. C'est ma reserve F11 et elle reste ouverte.
+
+**Ce que je laisse a `theo-archi` sans y toucher** : par quel attribut et sur quelle classe cette
+phrase devient le point de focus. Je nomme l'element par ce que l'enfant en recoit, pas par son
+balisage. Je note seulement, pour qu'on ne me reponde pas que c'est impossible, que la forme existe
+deja dans le depot sur un paragraphe.
+
+#### 4. `ines-design` : non, et la question est entierement la mienne
+
+**Je n'ai pas besoin d'elle sur ce point, et je demande qu'on ne lance pas ce cycle.**
+
+Le motif est simple : **il n'y a rien de visible a concevoir.** Cette forme ne change strictement rien
+a l'apparence de l'ecran - la phrase garde sa place, sa taille et sa couleur, et le point de focus
+sur un paragraphe ne dessine rien. Et la seule chose qui pourrait devenir visible, l'anneau autour de
+la phrase, **je viens de la refuser au point 2**, pour un motif pedagogique qui est de mon ressort et
+pas du sien.
+
+Ce sur quoi son avis serait requis, et qui n'est pas demande aujourd'hui : si quelqu'un veut un jour
+rendre le point d'arrivee de cet ecran perceptible **autrement** qu'en imitant un bouton. Ce serait
+une proposition visuelle, elle passerait par elle, et elle reviendrait par moi. Ce n'est pas ce
+sprint.
+
+#### 5. Ce que je conclus, en une ligne actionnable
+
+**Le point de focus de l'ecran de confirmation est la phrase "Si tu pars, ta partie s'arrête.",
+placee avant les deux boutons, sans requete, sans changement d'apparence.** "Continuer la partie" est
+ainsi le premier arret de tabulation reel, et il l'est a chaque fois. **Mon choix precedent est
+retire, son motif de fond est conserve, et la trace des deux reste lisible dans cette fiche.**
+
+#### 6. Les proprietes dont je reste la seule garde, apres ce tour
+
+1. **Ce qu'un lecteur d'ecran annonce en arrivant ici.** Reserve F11. Aucune ecoute n'a eu lieu, la
+   propriete du point 3 n'est donc verifiee par personne.
+2. **Que l'enfant sache ou il en est des son arrivee**, sur cet ecran comme sur la manche. Moitie non
+   tenue de la reserve N, qui reste ouverte et qui n'est pas une condition sur ce lot.
+3. **Que le point de focus declare soit celui que la touche atteint.** Je viens de me tromper dessus
+   par raisonnement ; je ne le saurai qu'en le pressant.
+
+### Arbitrage prealable de s12 du 2026-08-14, trois textes de l'application et le point de focus de la confirmation
 
 > **Ce que cette section ajoute et ce qu'elle ne touche pas.** Elle repond a trois questions que
 > `theo-archi` a portees en derivant le critere de son garde-fou de texte, plus une question de
