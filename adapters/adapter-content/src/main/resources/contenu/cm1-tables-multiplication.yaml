@@ -1,0 +1,405 @@
+schema: 1
+id: cm1-tables-multiplication
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CM1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - tables de multiplication (jusqu'à x10), rappel automatisé"
+items:
+  - enonce: "1 × 1 = ?"
+    bonneReponse: "1"
+    distracteurs: ["0", "2"]
+    indice: "Multiplier par 1, le nombre ne change pas."
+  - enonce: "1 × 2 = ?"
+    bonneReponse: "2"
+    distracteurs: ["1", "3"]
+    indice: "Multiplier par 1, le nombre ne change pas."
+  - enonce: "1 × 3 = ?"
+    bonneReponse: "3"
+    distracteurs: ["2", "4"]
+    indice: "Multiplier par 1, le nombre ne change pas."
+  - enonce: "1 × 4 = ?"
+    bonneReponse: "4"
+    distracteurs: ["3", "5"]
+    indice: "Multiplier par 1, le nombre ne change pas."
+  - enonce: "1 × 5 = ?"
+    bonneReponse: "5"
+    distracteurs: ["4", "6"]
+    indice: "Multiplier par 1, le nombre ne change pas."
+  - enonce: "1 × 6 = ?"
+    bonneReponse: "6"
+    distracteurs: ["5", "7"]
+    indice: "Multiplier par 1, le nombre ne change pas."
+  - enonce: "1 × 7 = ?"
+    bonneReponse: "7"
+    distracteurs: ["6", "8"]
+    indice: "Multiplier par 1, le nombre ne change pas."
+  - enonce: "1 × 8 = ?"
+    bonneReponse: "8"
+    distracteurs: ["7", "9"]
+    indice: "Multiplier par 1, le nombre ne change pas."
+  - enonce: "1 × 9 = ?"
+    bonneReponse: "9"
+    distracteurs: ["8", "10"]
+    indice: "Multiplier par 1, le nombre ne change pas."
+  - enonce: "1 × 10 = ?"
+    bonneReponse: "10"
+    distracteurs: ["9", "11"]
+    indice: "Multiplier par 1, le nombre ne change pas."
+  - enonce: "2 × 10 = ?"
+    bonneReponse: "20"
+    distracteurs: ["10", "30"]
+    indice: "Multiplier par 10, ajoute un zéro à la fin du nombre."
+  - enonce: "3 × 10 = ?"
+    bonneReponse: "30"
+    distracteurs: ["20", "40"]
+    indice: "Multiplier par 10, ajoute un zéro à la fin du nombre."
+  - enonce: "4 × 10 = ?"
+    bonneReponse: "40"
+    distracteurs: ["30", "50"]
+    indice: "Multiplier par 10, ajoute un zéro à la fin du nombre."
+  - enonce: "5 × 10 = ?"
+    bonneReponse: "50"
+    distracteurs: ["40", "60"]
+    indice: "Multiplier par 10, ajoute un zéro à la fin du nombre."
+  - enonce: "6 × 10 = ?"
+    bonneReponse: "60"
+    distracteurs: ["50", "70"]
+    indice: "Multiplier par 10, ajoute un zéro à la fin du nombre."
+  - enonce: "7 × 10 = ?"
+    bonneReponse: "70"
+    distracteurs: ["60", "80"]
+    indice: "Multiplier par 10, ajoute un zéro à la fin du nombre."
+  - enonce: "8 × 10 = ?"
+    bonneReponse: "80"
+    distracteurs: ["70", "90"]
+    indice: "Multiplier par 10, ajoute un zéro à la fin du nombre."
+  - enonce: "9 × 10 = ?"
+    bonneReponse: "90"
+    distracteurs: ["80", "100"]
+    indice: "Multiplier par 10, ajoute un zéro à la fin du nombre."
+  - enonce: "10 × 10 = ?"
+    bonneReponse: "100"
+    distracteurs: ["90", "110"]
+    indice: "Multiplier par 10, ajoute un zéro à la fin du nombre."
+  - enonce: "2 × 3 = ?"
+    bonneReponse: "6"
+    distracteurs: ["3", "4"]
+    indice: "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois."
+  - enonce: "3 × 2 = ?"
+    bonneReponse: "6"
+    distracteurs: ["4", "3"]
+    indice: "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois."
+  - enonce: "2 × 4 = ?"
+    bonneReponse: "8"
+    distracteurs: ["4", "6"]
+    indice: "Table de 4 : prends le double du double du nombre."
+  - enonce: "4 × 2 = ?"
+    bonneReponse: "8"
+    distracteurs: ["6", "4"]
+    indice: "Table de 4 : prends le double du double du nombre."
+  - enonce: "2 × 5 = ?"
+    bonneReponse: "10"
+    distracteurs: ["5", "8"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "5 × 2 = ?"
+    bonneReponse: "10"
+    distracteurs: ["8", "5"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "2 × 6 = ?"
+    bonneReponse: "12"
+    distracteurs: ["6", "10"]
+    indice: "Table de 6 : prends la table de 5, puis ajoute le nombre une fois."
+  - enonce: "6 × 2 = ?"
+    bonneReponse: "12"
+    distracteurs: ["10", "6"]
+    indice: "Table de 6 : prends la table de 5, puis ajoute le nombre une fois."
+  - enonce: "2 × 7 = ?"
+    bonneReponse: "14"
+    distracteurs: ["7", "12"]
+    indice: "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois."
+  - enonce: "7 × 2 = ?"
+    bonneReponse: "14"
+    distracteurs: ["12", "7"]
+    indice: "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois."
+  - enonce: "2 × 8 = ?"
+    bonneReponse: "16"
+    distracteurs: ["8", "14"]
+    indice: "Table de 8 : prends le double du double du double du nombre."
+  - enonce: "8 × 2 = ?"
+    bonneReponse: "16"
+    distracteurs: ["14", "8"]
+    indice: "Table de 8 : prends le double du double du double du nombre."
+  - enonce: "2 × 9 = ?"
+    bonneReponse: "18"
+    distracteurs: ["9", "16"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "9 × 2 = ?"
+    bonneReponse: "18"
+    distracteurs: ["16", "9"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "3 × 4 = ?"
+    bonneReponse: "12"
+    distracteurs: ["8", "9"]
+    indice: "Table de 4 : prends le double du double du nombre."
+  - enonce: "4 × 3 = ?"
+    bonneReponse: "12"
+    distracteurs: ["9", "8"]
+    indice: "Table de 4 : prends le double du double du nombre."
+  - enonce: "3 × 5 = ?"
+    bonneReponse: "15"
+    distracteurs: ["10", "12"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "5 × 3 = ?"
+    bonneReponse: "15"
+    distracteurs: ["12", "10"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "3 × 6 = ?"
+    bonneReponse: "18"
+    distracteurs: ["12", "15"]
+    indice: "Table de 6 : prends la table de 5, puis ajoute le nombre une fois."
+  - enonce: "6 × 3 = ?"
+    bonneReponse: "18"
+    distracteurs: ["15", "12"]
+    indice: "Table de 6 : prends la table de 5, puis ajoute le nombre une fois."
+  - enonce: "3 × 7 = ?"
+    bonneReponse: "21"
+    distracteurs: ["14", "18"]
+    indice: "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois."
+  - enonce: "7 × 3 = ?"
+    bonneReponse: "21"
+    distracteurs: ["18", "14"]
+    indice: "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois."
+  - enonce: "3 × 8 = ?"
+    bonneReponse: "24"
+    distracteurs: ["16", "21"]
+    indice: "Table de 8 : prends le double du double du double du nombre."
+  - enonce: "8 × 3 = ?"
+    bonneReponse: "24"
+    distracteurs: ["21", "16"]
+    indice: "Table de 8 : prends le double du double du double du nombre."
+  - enonce: "3 × 9 = ?"
+    bonneReponse: "27"
+    distracteurs: ["18", "24"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "9 × 3 = ?"
+    bonneReponse: "27"
+    distracteurs: ["24", "18"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "4 × 5 = ?"
+    bonneReponse: "20"
+    distracteurs: ["15", "16"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "5 × 4 = ?"
+    bonneReponse: "20"
+    distracteurs: ["16", "15"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "4 × 6 = ?"
+    bonneReponse: "24"
+    distracteurs: ["18", "20"]
+    indice: "Table de 6 : prends la table de 5, puis ajoute le nombre une fois."
+  - enonce: "6 × 4 = ?"
+    bonneReponse: "24"
+    distracteurs: ["20", "18"]
+    indice: "Table de 6 : prends la table de 5, puis ajoute le nombre une fois."
+  - enonce: "4 × 7 = ?"
+    bonneReponse: "28"
+    distracteurs: ["21", "24"]
+    indice: "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois."
+  - enonce: "7 × 4 = ?"
+    bonneReponse: "28"
+    distracteurs: ["24", "21"]
+    indice: "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois."
+  - enonce: "4 × 8 = ?"
+    bonneReponse: "32"
+    distracteurs: ["24", "28"]
+    indice: "Table de 8 : prends le double du double du double du nombre."
+  - enonce: "8 × 4 = ?"
+    bonneReponse: "32"
+    distracteurs: ["28", "24"]
+    indice: "Table de 8 : prends le double du double du double du nombre."
+  - enonce: "4 × 9 = ?"
+    bonneReponse: "36"
+    distracteurs: ["27", "32"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "9 × 4 = ?"
+    bonneReponse: "36"
+    distracteurs: ["32", "27"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "5 × 6 = ?"
+    bonneReponse: "30"
+    distracteurs: ["24", "25"]
+    indice: "Table de 6 : prends la table de 5, puis ajoute le nombre une fois."
+  - enonce: "6 × 5 = ?"
+    bonneReponse: "30"
+    distracteurs: ["25", "24"]
+    indice: "Table de 6 : prends la table de 5, puis ajoute le nombre une fois."
+  - enonce: "5 × 7 = ?"
+    bonneReponse: "35"
+    distracteurs: ["28", "30"]
+    indice: "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois."
+  - enonce: "7 × 5 = ?"
+    bonneReponse: "35"
+    distracteurs: ["30", "28"]
+    indice: "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois."
+  - enonce: "5 × 8 = ?"
+    bonneReponse: "40"
+    distracteurs: ["32", "35"]
+    indice: "Table de 8 : prends le double du double du double du nombre."
+  - enonce: "8 × 5 = ?"
+    bonneReponse: "40"
+    distracteurs: ["35", "32"]
+    indice: "Table de 8 : prends le double du double du double du nombre."
+  - enonce: "5 × 9 = ?"
+    bonneReponse: "45"
+    distracteurs: ["36", "40"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "9 × 5 = ?"
+    bonneReponse: "45"
+    distracteurs: ["40", "36"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "6 × 7 = ?"
+    bonneReponse: "42"
+    distracteurs: ["35", "36"]
+    indice: "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois."
+  - enonce: "7 × 6 = ?"
+    bonneReponse: "42"
+    distracteurs: ["36", "35"]
+    indice: "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois."
+  - enonce: "6 × 8 = ?"
+    bonneReponse: "48"
+    distracteurs: ["40", "42"]
+    indice: "Table de 8 : prends le double du double du double du nombre."
+  - enonce: "8 × 6 = ?"
+    bonneReponse: "48"
+    distracteurs: ["42", "40"]
+    indice: "Table de 8 : prends le double du double du double du nombre."
+  - enonce: "6 × 9 = ?"
+    bonneReponse: "54"
+    distracteurs: ["45", "48"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "9 × 6 = ?"
+    bonneReponse: "54"
+    distracteurs: ["48", "45"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "7 × 8 = ?"
+    bonneReponse: "56"
+    distracteurs: ["48", "49"]
+    indice: "Table de 8 : prends le double du double du double du nombre."
+  - enonce: "8 × 7 = ?"
+    bonneReponse: "56"
+    distracteurs: ["49", "48"]
+    indice: "Table de 8 : prends le double du double du double du nombre."
+  - enonce: "7 × 9 = ?"
+    bonneReponse: "63"
+    distracteurs: ["54", "56"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "9 × 7 = ?"
+    bonneReponse: "63"
+    distracteurs: ["56", "54"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "8 × 9 = ?"
+    bonneReponse: "72"
+    distracteurs: ["63", "64"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "9 × 8 = ?"
+    bonneReponse: "72"
+    distracteurs: ["64", "63"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "2 × 2 = ?"
+    bonneReponse: "4"
+    distracteurs: ["2", "6"]
+    indice: "Table de 2 : additionne le nombre avec lui-même."
+  - enonce: "2 × 2 = ?"
+    bonneReponse: "4"
+    distracteurs: ["3", "6"]
+    indice: "Table de 2 : additionne le nombre avec lui-même."
+  - enonce: "2 × 2 = ?"
+    bonneReponse: "4"
+    distracteurs: ["2", "3"]
+    indice: "Table de 2 : additionne le nombre avec lui-même."
+  - enonce: "3 × 3 = ?"
+    bonneReponse: "9"
+    distracteurs: ["6", "12"]
+    indice: "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois."
+  - enonce: "3 × 3 = ?"
+    bonneReponse: "9"
+    distracteurs: ["8", "12"]
+    indice: "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois."
+  - enonce: "3 × 3 = ?"
+    bonneReponse: "9"
+    distracteurs: ["6", "8"]
+    indice: "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois."
+  - enonce: "4 × 4 = ?"
+    bonneReponse: "16"
+    distracteurs: ["12", "20"]
+    indice: "Table de 4 : prends le double du double du nombre."
+  - enonce: "4 × 4 = ?"
+    bonneReponse: "16"
+    distracteurs: ["15", "20"]
+    indice: "Table de 4 : prends le double du double du nombre."
+  - enonce: "4 × 4 = ?"
+    bonneReponse: "16"
+    distracteurs: ["12", "15"]
+    indice: "Table de 4 : prends le double du double du nombre."
+  - enonce: "5 × 5 = ?"
+    bonneReponse: "25"
+    distracteurs: ["20", "30"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "5 × 5 = ?"
+    bonneReponse: "25"
+    distracteurs: ["24", "30"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "5 × 5 = ?"
+    bonneReponse: "25"
+    distracteurs: ["20", "24"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "6 × 6 = ?"
+    bonneReponse: "36"
+    distracteurs: ["30", "42"]
+    indice: "Table de 6 : prends la table de 5, puis ajoute le nombre une fois."
+  - enonce: "6 × 6 = ?"
+    bonneReponse: "36"
+    distracteurs: ["35", "42"]
+    indice: "Table de 6 : prends la table de 5, puis ajoute le nombre une fois."
+  - enonce: "6 × 6 = ?"
+    bonneReponse: "36"
+    distracteurs: ["30", "35"]
+    indice: "Table de 6 : prends la table de 5, puis ajoute le nombre une fois."
+  - enonce: "7 × 7 = ?"
+    bonneReponse: "49"
+    distracteurs: ["42", "56"]
+    indice: "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois."
+  - enonce: "7 × 7 = ?"
+    bonneReponse: "49"
+    distracteurs: ["48", "56"]
+    indice: "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois."
+  - enonce: "7 × 7 = ?"
+    bonneReponse: "49"
+    distracteurs: ["42", "48"]
+    indice: "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois."
+  - enonce: "8 × 8 = ?"
+    bonneReponse: "64"
+    distracteurs: ["56", "72"]
+    indice: "Table de 8 : prends le double du double du double du nombre."
+  - enonce: "8 × 8 = ?"
+    bonneReponse: "64"
+    distracteurs: ["63", "72"]
+    indice: "Table de 8 : prends le double du double du double du nombre."
+  - enonce: "8 × 8 = ?"
+    bonneReponse: "64"
+    distracteurs: ["56", "63"]
+    indice: "Table de 8 : prends le double du double du double du nombre."
+  - enonce: "9 × 9 = ?"
+    bonneReponse: "81"
+    distracteurs: ["72", "90"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "9 × 9 = ?"
+    bonneReponse: "81"
+    distracteurs: ["80", "90"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."
+  - enonce: "9 × 9 = ?"
+    bonneReponse: "81"
+    distracteurs: ["72", "80"]
+    indice: "Table de 9 : prends la table de 10, puis enlève le nombre une fois."

@@ -42,3 +42,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-complements-10
     nombreDeManches: 7
+  - id: bandit-manchot-tables-multiplication-cm1
+    titre: "Les tables de multiplication"
+    consigne: "Quel est le résultat ?"
+    mecanique: bandit-manchot
+    paquet: cm1-tables-multiplication
+    nombreDeManches: 10
