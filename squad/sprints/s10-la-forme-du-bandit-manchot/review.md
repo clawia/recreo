@@ -437,3 +437,156 @@ trente-huit conditions, **trente-cinq sont tenues ou sans objet**, une est levee
 sans etre reparee (M4), une porte un defaut non bloquant (M14 clause 5), et **une seule bloque**. Le
 travail de ce lot n'est pas perdu : il est arrete par un defaut nomme, sur un ecran, dont le remede ne
 touche pas au contenu.
+
+## Cloture - sofia-sm, du 2026-08-14
+
+> Cette section et les suivantes sont ecrites par `sofia-sm`, casquette Scrum Master, a la
+> fusion des deux derniers lots du sprint (`s10-theo-doctrine`, `s10-camille-fiche-conjugaison`).
+> Aucune section pedagogique ci-dessus n'est modifiee.
+
+- **Horodatage de fin** : 2026-08-14 10:24.
+- **Horodatage de debut** : **aucun** - le sprint 10 n'a pas eu de ceremonie de planning ecrite
+  (aucun fichier `planning.md` dans ce dossier). Le seul artefact anterieur au developpement est
+  `avis-faisabilite.md`, date du 2026-08-12, qui n'est pas un planning. Le premier commit `s10`
+  fusionne sur `round-two` est horodate 2026-08-12 15:22:34 : je le cite comme le premier point
+  observable dans le depot, pas comme un debut de sprint officiel. Je ne fabrique pas
+  retroactivement un `planning.md` que personne n'a ecrit - constat porte en retro.
+- **Duree effective** : non mesurable faute d'un horodatage de debut officiel.
+- **Commit de tete de `round-two`** : `6d1ffba` (apres fusion des deux lots ci-dessous).
+
+### Fusion des deux derniers lots
+
+`round-two` etait a `9c4b827` a l'ouverture de cette cloture (planning informel, developpement,
+trois tours de porte pedagogique, `DEC-0025`, `DEC-0026` et le rapport qualite de `yanis-qa` deja
+fusionnes). Deux lots restaient a fusionner, dans cet ordre parce que le second s'appuie sur le
+premier :
+
+| Ordre | Lot | Branche | Tete | Contenu |
+|---|---|---|---|---|
+| 1 | `theo-archi` | `s10-theo-doctrine` | `9e6d9f2` | `ADR-0037` (nashorn-core encode, avec son test d'integration neuf) ; `ADR-0038` (invariante de tabulation, sans test - due au lot de s11) ; deux amendements de renvoi sur `ADR-0014` |
+| 2 | `camille-po` | `s10-camille-fiche-conjugaison` | `4ff5330` | correction de la ligne de competences perimee de `FICHE-bandit-manchot-conjugaison-present-cm1.md` ; amendement d'etendue de `DEC-0026` a l'ecran de reprise, appuye sur la mesure d'`ADR-0038` |
+
+**Lignee verifiee avant fusion** : `git merge-base round-two s10-theo-doctrine` et `git merge-base
+round-two s10-camille-fiche-conjugaison` rendent tous deux `9c4b827`, tete exacte de `round-two`
+avant fusion - les deux branches partent du meme point, aucune derive. Fusionnees par
+`git merge --no-ff`, l'une apres l'autre dans l'ordre du tableau. **Aucun conflit sur aucune des
+deux fusions.**
+
+### `mvn -B clean verify`
+
+Rejoue independamment sur l'arbre fusionne final (`6d1ffba`), `JAVA_HOME` designe sur un JDK
+21.0.10 le temps de la commande : **BUILD SUCCESS**, six modules en SUCCESS, aucun test ignore.
+
+| Module | Tests |
+|---|---|
+| domain | 46 |
+| application | 7 |
+| adapter-web | 206 |
+| adapter-content | 64 |
+| bootstrap (surefire) | 77 |
+| bootstrap (failsafe) | 3 |
+| **Total** | **406** |
+
+**Methode, dans le meme paragraphe que le chiffre.** Somme de l'attribut `Tests run` du bloc
+`Results:` de chaque module dans la sortie du reacteur Maven, apres un `clean` - donc rejouee sur
+le livrable reconstruit, pas sur un jar deja present. C'est precisement le test qu'un jar perime
+rendrait faussement vert : `LeLivrableNeSertQueLesRessourcesDeSesModulesIT`, apportee par
+`ADR-0037`, lit le livrable assemble par `spring-boot-maven-plugin` et non un gabarit. Verifie dans
+`bootstrap/target/failsafe-reports/com.recreo.bootstrap.LeLivrableNeSertQueLesRessourcesDeSesModulesIT.txt` :
+3 tests, 0 echec, apres le `clean` de cette meme commande - pas rejouee sur un jar issu d'un
+`mvn verify` anterieur. **406 = 403 (confirmes par `yanis-qa` a `643c6f4`) + 3 (le test d'ADR-0037,
+neuf a cette fusion)**, conforme au chiffre annonce par `theo-archi` dans `ADR-0037` et dans
+`ADR-index.md`.
+
+**28 regles ArchUnit, confirme par moi en comptant les declarations dans le code**, pas en relayant
+le chiffre d'un agent : recherche de la forme litterale `ArchRule <nom> =` sous `src/test/java` des
+modules porteurs de tests declares au pom agregateur, fixture de contre-exemple exclue (elle vit
+sous `src/test/resources`, hors du perimetre de la methode). Resultat : 27 dans `bootstrap` (dix
+fichiers de `com.recreo.archi`) et 1 dans `adapter-web` (`AssertionsWebTest`) = **28**, **inchange**
+depuis avant cette fusion. Conforme a `ADR-0037` et `ADR-0038`, qui disent tous deux explicitement
+ne pas ajouter d'`ArchRule` - aucun des deux ne peut, par nature : `ADR-0037` garde le livrable
+assemble (une analyse de bytecode ne voit pas une entree d'archive), et `ADR-0038` n'encode rien
+lui-meme, sa regle etant due par le lot de s11.
+
+### Rapport qualite - yanis-qa
+
+- **Fichier** : `squad/sprints/s10-la-forme-du-bandit-manchot/rapport-qualite.md`, ecrit sur
+  `round-two` a `643c6f4`, avant les deux lots fusionnes ci-dessus.
+- **403 tests et 28 regles confirmes par `yanis-qa` a `643c6f4`, et je les retrouve exactement dans
+  les 406 et 28 mesures ci-dessus** : le lot `theo-archi` ajoute exactement les 3 tests de
+  `ADR-0037` (403 + 3 = 406) et aucune `ArchRule` (28 inchange) ; le lot `camille-po` ne touche
+  aucun fichier de code ni de test.
+- **Quatre garde-fous casses puis remis en etat sur du materiau reel**, chacun restaure et verifie
+  par `git status` propre : `LeScriptDAgrementSExecuteApresLeCorpsTest`,
+  `RecreoJsDeplaceLeFocusTest`, `LHabillageResteImmobileTest`, `RessourcesTiercesTest`. Leur point
+  commun, etabli par `yanis-qa` : dans chacun des quatre cas, le vert ne venait pas d'une absence de
+  defaut mais d'une absence de rencontre entre le garde-fou et l'objet qu'il pretendait garder.
+- **Un chiffre faux de `DEC-0025` trouve et sa cause nommee** (point 3.4 du rapport) : la decision
+  a ete redigee avant que le commit qu'elle decrit n'existe dans l'arbre. Corrige par `camille-po`
+  avant cette fusion, par une note datee dans `DEC-0025`.
+- **Cinq propositions de methode**, dont trois que j'arbitre plus bas dans le tableau des
+  obstacles (mutation-sur-materiau-reel systematique, outil de cycle de vie du serveur de mesure,
+  doctrine `nashorn-core`) et deux deja actees avant cette fusion par les lots merges ici
+  (`ADR-0037` repond a la doctrine `nashorn-core`, `ADR-0038` nomme le defaut de tabulation sur
+  la revelation).
+
+### Confirmation ArchUnit - theo-archi
+
+Portee par `ADR-0037` et `ADR-0038` eux-memes, chacun affirmant explicitement ne pas ajouter
+d'`ArchRule` et donnant sa propre methode de compte (28, inchange), et par la ligne neuve
+qu'il ajoute a `ADR-index.md` pour chacun des deux `ADR`. Je l'ai rejouee independamment
+ci-dessus (meme methode, meme resultat, sur l'arbre fusionne final) plutot que de la relayer.
+
+### Corrections - relecteur-pedagogique
+
+**Aucun fichier de relecture dedie et aucun commit `[REL]` n'existe pour le sprint 10 dans ce
+depot.** Ce que je peux etablir depuis le depot : le lot `s10-camille-fiche-conjugaison`, fusionne
+ci-dessus, corrige une ligne de competences perimee dans
+`FICHE-bandit-manchot-conjugaison-present-cm1.md` ("sur le present uniquement pour ce jeu", fausse
+depuis que S8-4 a etendu le paquet au futur et a l'imparfait). Le message de ce commit ne credite
+pas nommement qui a trouve l'ecart. `nadia-prof` signale independamment le meme ecart dans son
+second verdict ("Un ecart d'ancrage au programme, hors de mon perimetre d'ecriture"), en precisant
+explicitement qu'elle ne le corrige pas parce que ce tableau n'est pas d'elle. Les deux signalements
+convergent vers la meme correction, portee par `camille-po`. Je n'affirme donc pas de chiffre que
+je ne peux pas verifier dans le depot (comme "114 fichiers relus, zero correction") ; je constate
+que la seule correction de redaction attribuable a ce sprint est celle-ci, et qu'elle est fusionnee.
+
+### Avis de nadia-prof et Done pedagogique
+
+Non prononce. Le second verdict de `nadia-prof` ci-dessus, ecrit sur `round-two` a `643c6f4` et
+fusionne avant cette cloture, reste **REFUSE** : un seul motif bloquant, M13 clause 1 sur l'ecran de
+revelation. Les deux lots fusionnes par cette cloture (`ADR-0037`, `ADR-0038`, la correction de
+`FICHE-bandit-manchot-conjugaison-present-cm1.md`, l'amendement d'etendue de `DEC-0026`) ne
+touchent ni au code de jeu, ni au contenu, ni a aucune fiche de conformite : ils ne rouvrent, ne
+ferment et ne rejouent aucun verdict de `nadia-prof`. Le Done pedagogique du sprint 10 reste tel
+qu'elle l'a ecrit : **refuse sur un motif, leve par l'utilisatrice sous condition** (`DEC-0026`),
+pas prononce **valide**.
+
+### Tableau des obstacles du sprint
+
+| Description | Categorie | Destinataire | Statut |
+|---|---|---|---|
+| `nashorn-core` engage sans arbitrage ecrit (levee de la reserve L de `nadia-prof` sans `ADR`) | technique, gouvernance de dependance | theo-archi | **clos** - `ADR-0037`, fusionne a cette cloture |
+| Doctrine de tabulation pour M13 clause 1 : le defaut mesure par `nadia-prof` sur la revelation est derivable sans navigateur | technique, architecture | theo-archi | **clos pour la doctrine** (`ADR-0038`, fusionne) ; **ouvert pour le code** - la regle executable et le remede sont dus par le lot de s11, non affectes a un sprint au moment de cette cloture |
+| Le meme defaut de tabulation existe aussi sur l'ecran de reprise (`GET /` pendant une partie), non mesure par `nadia-prof` ni couvert par `DEC-0026` a l'origine | produit, perimetre d'une decision | camille-po | **clos** - amendement du 2026-08-14 a `DEC-0026`, fusionne a cette cloture, etend la levee et son declencheur aux deux ecrans |
+| Ligne de competences perimee dans `FICHE-bandit-manchot-conjugaison-present-cm1.md`, hors du perimetre d'ecriture de `nadia-prof` et du `relecteur-pedagogique` | redaction, ancrage programme | camille-po | **clos** - corrige dans `s10-camille-fiche-conjugaison`, fusionne a cette cloture |
+| Chiffre faux de `DEC-0025` (jeux fermes par le resserrement de marges) | qualite, gouvernance de decision | camille-po (correction), yanis-qa (trouvaille) | **clos** - amendement du 2026-08-14 a `DEC-0025`, fusionne avant cette cloture |
+| Proposition 1 de `yanis-qa` : faire de la mutation-sur-materiau-reel une etape systematique de ses rapports de cloture | qualite, methode | sofia-sm (arbitrage) | **clos** - **ACCEPTE**, amendement a `squad/README.md` ci-dessous |
+| Proposition 2 de `yanis-qa` : outil de cycle de vie du serveur de mesure, conforme a `ADR-0009`, avec cinq garanties nommees (fraicheur, isolement, exclusivite, arret garanti, tracabilite) | technique, outillage | theo-archi | **route** - a instruire pour s11, non affecte a un sprint |
+| Proposition 3 : ecrire dans un `ADR` ce qu'une regle ne prouve pas, pratique apparue trois fois ce sprint (`ADR-0036`, `ADR-0037`, `ADR-0038`) sans etre formalisee | technique, convention d'ecriture des ADR | theo-archi | **route** - a lui de decider si cela devient une doctrine ecrite (amendement d'`ADR-0003` ou note nouvelle) |
+| Declencheur de reouverture de `DEC-0026` : au moins une des deux stories (tabulation, confirmation d'abandon) doit etre planifiee pour le sprint 11, sinon la levee revient devant l'utilisatrice comme un report a nommer | capacite, planification | sofia-sm | **ouvert** - a planifier a l'ouverture de s11 |
+| Declencheur de reouverture de `DEC-0025` : M4 revient devant `nadia-prof` des que les trois stories (raccourcir six jeux, reecrire les 25 indices de "Le bon verbe", l'ampoule M16-M21) sont livrees, en tout ou en partie | capacite, planification | sofia-sm (avec camille-po pour la priorite) | **ouvert** - aucune des trois n'est affectee a un sprint a ce jour ; l'ampoule est deja reportee au sprint 11 par le backlog |
+| Cinq worktrees de sprint encore sur le disque (trois du premier lot deja fusionne, deux de cette fusion) | capacite | sofia-sm (casquette dev) | **clos** - les cinq branches verifiees ancetres de `HEAD`, worktrees et non necessaires a garder ouverts, supprimes a cette cloture |
+
+Rappel du gabarit : un obstacle n'est `clos` que si le fichier qui le tranche existe physiquement.
+Les six premieres lignes portent chacune un fichier fusionne dans ce depot a cette cloture ou avant
+elle ; les deux lignes de declencheur restent `ouvert` jusqu'a la planification de s11, faute de
+quoi elles ne seraient closes que sur une intention.
+
+### Amendement a `squad/README.md`
+
+**Proposition 1 de `yanis-qa` : ACCEPTEE.** Le point 4 ("Porte technique") de la section 9 gagne une
+phrase : le rapport de cloture de `yanis-qa` inclut desormais systematiquement un tirage d'un ou
+deux garde-fous recemment ecrits ou modifies, mutes sur le materiau de production reel plutot que
+sur leur fixture, avant chaque `review.md` - et non seulement quand une decouverte l'y pousse.
+Amendement ecrit dans `squad/README.md`, dans le meme geste que cette cloture.

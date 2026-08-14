@@ -226,6 +226,13 @@ morsure decrite explicitement** (amendement s06, retro de s05) - mutation reelle
 adverse de l'inegalite qu'il verifie, ou tout autre moyen nomme. "Il est vert" ne suffit jamais
 comme preuve de morsure, y compris quand l'auteur lui-meme le croit.
 
+**Le rapport de cloture de Yanis inclut systematiquement un tirage d'un ou deux garde-fous
+recemment ecrits ou modifies, mutes sur le materiau de production reel plutot que sur leur
+fixture, avant chaque `review.md`** (amendement s10, cloture de s10) - et non seulement quand une
+decouverte fortuite l'y pousse. En s10, quatre garde-fous casses puis restaures de cette facon se
+sont reveles verts sans avoir jamais rencontre l'objet qu'ils pretendaient garder ; cette etape
+systematique est la reponse a ce constat, pas une reaction ponctuelle a lui seul.
+
 **Un script livre avec sa propre suite de tests n'est declare "teste" qu'une fois qu'une etape de
 `.github/workflows/ci.yml` l'execute reellement** (amendement s06, retro de s06) - la presence du
 fichier `*-test.sh` dans le depot ne suffit pas. `outils/verifier-lignee-test.sh` et
