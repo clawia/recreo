@@ -3332,6 +3332,12 @@ a tenir et refuse explicitement de choisir entre elles.
 **Non affectee a un sprint au moment de cette decision ; `DEC-0026` exige qu'elle ou la story
 suivante soit planifiee pour le sprint 11.**
 
+**Livree en s11** (`marc-dev`, `687b4be` ; `lea-dev`, `4eaddf0`), couverte par `ADR-0038` et 416
+tests. **Ce que cette livraison ne ferme pas** : la reverification au clavier reel de `nadia-prof`
+sur l'increment tel qu'il est livre reste due - voir la section "Report du 2026-08-14 (s11,
+cloture)" de `DEC-0026-levee-m13-clause-1-ecran-de-revelation-perte-de-partie-sans-confirmation.md`,
+qui porte la tache identifiee pour le sprint 12.
+
 - **Besoin** : en tant qu'eleve qui navigue au clavier ou avec une aide technique, que je vienne de
   faire reveler la reponse ou que je recharge la page en cours de partie, je veux que la touche
   suivante ne me fasse jamais quitter ma partie sans que je l'aie demande, afin de ne pas perdre ma
@@ -3374,6 +3380,11 @@ suivante soit planifiee pour le sprint 11.**
 
 **Non affectee a un sprint au moment de cette decision ; `DEC-0026` exige qu'elle ou la story
 precedente soit planifiee pour le sprint 11.**
+
+**Livree en s11** (`marc-dev`, `687b4be` ; forme et texte corriges par `lea-dev`, `4eaddf0`). **Ce
+que cette livraison ne ferme pas** : meme renvoi que la story precedente - voir la section
+"Report du 2026-08-14 (s11, cloture)" de
+`DEC-0026-levee-m13-clause-1-ecran-de-revelation-perte-de-partie-sans-confirmation.md`.
 
 - **Besoin** : en tant qu'eleve qui presse "Les jeux" ou recharge la page pendant une partie, que
   ce soit au clavier, a la souris ou par erreur, je veux qu'on me demande si je veux vraiment

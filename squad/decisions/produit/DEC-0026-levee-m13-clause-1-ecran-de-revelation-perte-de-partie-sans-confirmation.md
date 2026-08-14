@@ -305,3 +305,145 @@ pas repete ici.
   pour nommer les deux ecrans.
 - Aucun Done pedagogique ni ligne de `squad/programme/MATRICE-couverture.md` n'est modifie par cet
   amendement.
+
+## Report du 2026-08-14 (s11, cloture) - le declencheur de reouverture n'est pas satisfait ; la levee est reconduite a s12 sur decision de l'utilisatrice
+
+### Ce que `sofia-sm` a mesure a la cloture de s11
+
+`sofia-sm` verifie les quatre conditions du declencheur ci-dessus contre l'etat reel du depot
+(`squad/sprints/s11-la-tabulation-ne-detruit-plus-la-partie/review.md`, section "Declencheur de
+reouverture de DEC-0026") :
+
+- **Condition 1 (au moins une des deux stories planifiee pour s11) : satisfaite.** Les deux
+  stories sont planifiees et livrees - `marc-dev` (`687b4be`, confirmation avant abandon, aucun
+  arret de tabulation destructeur) puis `lea-dev` (`4eaddf0`, ecart de 44 px et texte arbitre sur
+  l'ecran de confirmation).
+- **Condition 3 (report a nommer si aucune story livree) : sans objet a la lettre.** Les deux
+  stories sont livrees ; cette condition, telle qu'ecrite, ne se declenche donc pas telle quelle.
+- **Conditions 2 et 4 (reverification au clavier reel, sur les 25 revelations et sur l'ecran de
+  reprise, de `nadia-prof`) : non satisfaites, faute de preuve sur le depot.** Aucun fichier ni
+  commit ne porte une reverification posterieure a `4eaddf0`. Le seul bloc de `nadia-prof` qui
+  existe dans `squad/conformite/FICHE-bandit-manchot-additions-cp.md` pour ce sprint est un
+  arbitrage prealable du 2026-08-14, rendu en jouant un jar reconstruit sur la forme et le texte
+  **proposes avant leur correction** - il porte sur un texte que `nadia-prof` a elle-meme refuse
+  (*"tu perds ta partie"*, quatre motifs), pas sur *"Si tu pars, ta partie s'arrete."*, le texte
+  finalement livre par `lea-dev`. Ce n'est pas un Done pedagogique sur l'increment livre : ni
+  `sofia-sm` ni moi ne le traitons comme tel.
+
+### Ce qui est acquis, et ce qui ne l'est pas - a ne pas confondre
+
+**Acquis, verifie et tenu :**
+
+- Le remede technique est livre : `ADR-0038` (amende le 2026-08-14 par `theo-archi`) etablit que
+  la clause 1 de M13 tient sur les cinq ecrans mesures, revelation et reprise compris.
+- Ce remede est garde par la CI : 416 tests, 28 regles ArchUnit, garde-fou de chemins en code 0,
+  confirmes independamment par `sofia-sm` et par `yanis-qa` sur l'arbre fusionne final (`14cd800`).
+- `AucunArretDeTabulationNEstDestructeurTest` rougit sur mutation du corpus (5 echecs sur 6) et le
+  test de texte de confirmation rougit sur mutation d'un mot : ce ne sont pas des garde-fous qui
+  passent au vert par construction.
+- La forme (44 px) et le texte (*"Si tu pars, ta partie s'arrete."*) livres par `lea-dev`
+  correspondent aux deux conditions que `nadia-prof` a chiffrees et nommees dans son arbitrage
+  prealable (CONF-1, CONF-2, CONF-3).
+
+**Non acquis, et ce report ne le rend pas acquis :**
+
+- **Aucun Done pedagogique n'est prononce sur l'increment de confirmation tel qu'il est livre.**
+  Ce n'est pas un refus : c'est l'absence de tout verdict sur ce texte et cette forme precis, une
+  fois corriges.
+- **La reverification au clavier reel exigee par `DEC-0026` - sur les 25 revelations de son
+  protocole et sur l'ecran de reprise - n'a pas ete faite ou n'a pas ete tracee sur le depot**,
+  posterieurement a `4eaddf0`.
+- Ces deux etats sont independants du Double Done du projet (`CLAUDE.md`) : la CI verte ne se
+  substitue pas au verdict de `nadia-prof`, et ce report ne la fait pas parler a sa place.
+
+### Ce que j'ai porte a l'utilisatrice, et sa decision
+
+`DEC-0026` prevoit qu'a defaut de preuve a la cloture de s11, la levee revient devant
+l'utilisatrice comme un report a nommer explicitement plutot que de se reconduire en silence. Je
+lui ai porte ce manque, en proposant de faire rejouer `nadia-prof` immediatement sur l'increment
+livre. **Sa decision, du 2026-08-14 : reporter la reverification a s12.**
+
+**La levee de la clause 1 de M13, sur les deux ecrans (revelation et reprise), est donc
+reconduite au sprint 12 par decision expresse de l'utilisatrice.** Le verdict `REFUSE` du
+2026-08-13 de `nadia-prof` reste ecrit, entier et non conteste sur le fond ; la reverification de
+`nadia-prof` sur l'increment tel qu'il est livre reste due. Rien n'est retire des deux sections
+"Decision" et "Ce qui est acquis" ecrites plus haut dans ce fichier : elles restent en vigueur
+sans changement.
+
+### Un premier report, pas un troisieme : ma position sur son cout
+
+`DEC-0026` a ecrit cette clause precisement pour empecher qu'un manque de preuve se reconduise en
+silence sprint apres sprint, comme `DEC-0007` l'a laisse arriver trois fois sur la couverture
+programme. Voici sa premiere invocation reelle - pas la troisieme. Je ne traite pas les deux
+situations de la meme facon, et je dis pourquoi.
+
+**Ce report-ci ne doit rien couter de plus qu'un premier report.** Sa cause n'est pas un manque de
+capacite qui se represente identique sprint apres sprint (le motif de `DEC-0007`, ou deux
+obstacles routes "au backlog" n'etaient repris par personne) : ici, les deux stories de dette ont
+ete planifiees et livrees des le premier sprint ou `DEC-0026` l'exigeait, le remede technique est
+reel et garde par 416 tests, et ce qui manque est une verification courte, deja protocolee par
+`nadia-prof` elle-meme, qui n'a simplement pas ete rejouee apres la derniere correction de forme et
+de texte. Traiter ce manque comme aussi grave qu'une dette non instruite pendant trois sprints
+reviendrait a confondre un retard d'une ceremonie sur un protocole existant avec l'absence totale
+de traitement d'un sujet.
+
+**Mais accepter cela sans contrepartie ouvrirait exactement la porte que la clause devait fermer.**
+Si ce meme manque se represente une seconde fois - la reverification toujours ni faite ni tracee
+a la cloture de s12 - alors ce ne serait plus un retard d'une ceremonie : ce serait la meme cause
+qui se reproduit malgre un signalement explicite, la definition meme de ce que `DEC-0007` nomme
+"une direction que personne n'a choisie". **Je pose donc que le prochain manque, s'il se produit,
+coute plus qu'un simple report** : voir le declencheur complete ci-dessous.
+
+### Declencheur de reouverture, complete pour s12
+
+Les quatre conditions deja ecrites (trois initiales, plus la quatrieme de l'amendement du
+2026-08-14) restent la mesure de reference. J'y ajoute ce qui s'applique specifiquement au
+sprint 12 :
+
+- **Condition suffisante de cloture de la dette, quelle que soit son issue** : `nadia-prof`
+  reverifie, au clavier reel, sur l'increment tel qu'il est livre (poste au commit `4eaddf0` ou
+  posterieur), les 25 revelations de son protocole (sept jeux, tirages repetes sur "Calcul CP" et
+  "Le bon verbe") et l'ecran de reprise, et elle l'ecrit dans
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md` (et dans la fiche de "Le bon verbe" si
+  ce jeu est concerne). Que son verdict soit un Done pedagogique ou un refus motive sur ce point
+  precis, la dette de gouvernance ouverte par ce report est fermee dans les deux cas : un refus
+  motive n'est pas un manque de preuve, c'est une preuve. Un refus, le cas echeant, est traite
+  comme n'importe quel refus pedagogique - transforme en story corrective ou en `DEC` par moi -
+  sans rouvrir cette decision une fois de plus.
+- **Si, a la cloture de s12, aucune reverification n'est encore tracee sur le depot** - le meme
+  manque qu'a s11, malgre ce report nomme - **je ne le reporte pas une troisieme fois.** Je
+  proposerai alors a l'utilisatrice, non pas un nouveau report, mais le basculement par defaut du
+  statut de cette dette : de "levee assumee en attendant preuve" a "revertie faute de preuve", ce
+  qui replace la clause 1 de M13 en condition bloquante de plein droit sur les deux ecrans, jusqu'a
+  ce que la reverification existe. Le cout d'un second manque n'est donc plus une ligne de plus
+  dans un fichier : c'est la levee elle-meme qui cesse d'etre assumee par defaut.
+
+### La tache de reverification due a s12
+
+Ce qui suit decrit ce que la tache doit couvrir, pas comment `nadia-prof` doit proceder : son
+protocole lui appartient et n'est pas reecrit ici.
+
+- **Perimetre** : l'increment de confirmation tel qu'il est livre a la cloture de s11, posterieur
+  au commit `4eaddf0` (44 px d'ecart reellement vide entre les boutons, texte "Si tu pars, ta
+  partie s'arrete.").
+- **Ce qu'elle doit couvrir, au minimum, comme `DEC-0026` l'exige deja** : les 25 revelations de son
+  protocole (une par jeu sur les sept jeux, plus les tirages repetes sur "Calcul CP" et "Le bon
+  verbe") et l'ecran de reprise (`GET /` pendant une partie en cours, rien focalise au chargement),
+  au clavier reel, Tabulation puis Entree depuis le point de focus.
+- **Ce que la tache produit** : une section datee dans
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md` (et, le cas echeant,
+  `FICHE-bandit-manchot-conjugaison-present-cm1.md`), portant un verdict explicite sur ce point -
+  Done pedagogique ou refus motive - distinct de l'arbitrage prealable du 2026-08-14 qui portait sur
+  un texte deja refuse.
+- **A planifier par `sofia-sm`** comme un engagement du sprint 12, pas une intention : c'est
+  exactement le defaut que `DEC-0026` nommait deja pour s11 ("planifiee, pas laissee non affectee
+  a un sprint"), applique cette fois a la reverification elle-meme plutot qu'aux deux stories de
+  code, qui sont livrees.
+
+### Impact de ce report
+
+- Ce fichier : section ajoutee, rien efface des sections precedentes.
+- `squad/decisions/produit/DEC-index.md` : ligne DEC-0026 mise a jour, note de report ajoutee.
+- Aucun Done pedagogique ni ligne de `squad/programme/MATRICE-couverture.md` n'est modifie par ce
+  report. Aucun verdict ni releve de `nadia-prof` n'est modifie. Le `review.md` de `sofia-sm` sur
+  s11 n'est pas modifie.
