@@ -9,7 +9,10 @@
      LEcranDeJeuDeclareCommentIlEstArriveTest anime (elle est deja restreinte aux ecrans qui portent
      des propositions), et ADR-0038 clause 2 n'a ici aucun point de focus a examiner. -->
 <div th:fragment="confirmation" class="ecran-de-jeu">
-    <p class="question-confirmation">Si tu quittes, tu perds ta partie en cours. Veux-tu vraiment quitter ?</p>
+    <!-- Texte arbitre par nadia-prof (FICHE-bandit-manchot-additions-cp.md, arbitrage prealable du
+         2026-08-14, CONF-3) : ni "perdre" (homonymie de jeu) ni question, les deux boutons sont le
+         choix. Ne pas reformuler sans un nouvel arbitrage. -->
+    <p class="question-confirmation">Si tu pars, ta partie s'arrête.</p>
     <!-- ines-design, proposition s11 : les deux boutons partagent un seul conteneur pour que la
          feuille maison les empile et les ecarte sans toucher a .continuer-partie ni .retour-accueil,
          qui restent les classes partagees par le reste de l'application (ADR-0017). Aucun element

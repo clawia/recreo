@@ -101,6 +101,23 @@ class TexteAccentueDesGabaritsTest {
     }
 
     /**
+     * S11, arbitrage prealable de nadia-prof (FICHE-bandit-manchot-additions-cp.md, 2026-08-14,
+     * CONF-3) : le texte de l'ecran de confirmation avant abandon est integralement accentue et ne
+     * pose plus de question, les deux boutons etant le choix. Vise un gabarit nomme pour une
+     * propriete qui lui est propre, ce n'est pas un balayage (ADR-0013) - aucune faute connue de
+     * ce texte-la ne pouvait figurer dans la liste de la section precedente puisqu'il est neuf.
+     */
+    @Test
+    void leTexteDeConfirmationEstCeluiArbitreParNadiaProf() throws IOException {
+        String confirmation =
+                Files.readString(GABARITS_DE_PRODUCTION.resolve("fragments/confirmation.html"));
+        Document fragment = Jsoup.parse(confirmation);
+
+        assertThat(fragment.select(".question-confirmation").text())
+                .isEqualTo("Si tu pars, ta partie s'arrête.");
+    }
+
+    /**
      * S5-8 (DEC-0010) : l'utilisatrice corrige le nom du produit, "Recreo" sans accent, et
      * remplace ainsi le point 7 de DEC-0007 execute par S3-9. Un nom propre de produit n'est pas
      * un mot de vocabulaire que l'equipe redige pour apprendre a l'enfant a lire ou a

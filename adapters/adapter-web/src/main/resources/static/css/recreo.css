@@ -711,19 +711,22 @@ body:has(.ecran-de-jeu) .lien-accueil {
    deux boutons se touchaient a 5 px l'un de l'autre, cote a cote, de la meme hauteur - exactement
    la forme qu'ADR-0017 laisse passer puisqu'il ne compare ni la position ni l'espace (sa section
    "ce que cette regle ne couvre pas", point 3). Empiler les deux boutons et les ecarter d'un plein
-   gabarit de cible tactile (2rem = 32 px, contre 2,75rem de min-height) rend le geste sur physiquement
-   plus difficile a manquer, sans toucher aux composantes que le garde-fou compare (font-size,
-   min-height, padding restent ceux de .continuer-partie/.retour-accueil partout ailleurs).
+   gabarit de cible tactile rend le geste sur physiquement plus difficile a manquer, sans toucher
+   aux composantes que le garde-fou compare (font-size, min-height, padding restent ceux de
+   .continuer-partie/.retour-accueil partout ailleurs). L'ecart est de 2,75rem = 44 px, la valeur du
+   min-height que cette application s'impose deja a elle-meme sur toute cible pressable : nadia-prof
+   a refuse les 2rem = 32 px initiaux (arbitrage prealable du 2026-08-14, CONF-1), un espace de
+   separation plus petit que la plus petite cible du produit ne se defendant pas.
    align-items: center laisse .retour-accueil a sa largeur naturelle, compacte ; align-self: stretch
    ne s'applique qu'a .continuer-partie ci-dessous, qui devient seul un bandeau pleine largeur - la
    largeur n'est comparee par aucun garde-fou (ADR-0017 : "min-width sort"). Le budget vertical est
-   large a 360 x 640 (le bloc complet mesure environ 235 px de haut, mesure ci-dessous), donc ce
+   large a 360 x 640 (le bloc complet mesure environ 344 px de haut, mesure ci-dessous), donc ce
    choix ne coute rien au pli de DEC-0016. */
 .confirmation-actions {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 2.75rem;
     margin-top: 1.5rem;
 }
 
