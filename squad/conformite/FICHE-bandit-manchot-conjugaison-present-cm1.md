@@ -178,13 +178,20 @@
   `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Second verdict du 2026-08-13". **Le
   refus du matin est corrige sur ses quatorze cas** et les clauses 2, 3, 4 et 5 de M13 sont tenues pour
   la premiere fois. **M4 ne bloque plus**, levee par `DEC-0025`, et mon constat n'est pas retire.
-- **Derniere mise a jour** : 2026-08-13
+- **Correction de perimetre du 2026-08-14 (`camille-po`)** : le tableau "Competences visees"
+  ci-dessous portait encore "sur le present uniquement pour ce jeu", restriction posee a
+  l'ouverture de la ligne en s06 (`DEC-0013`) et perimee depuis S8-4 (extension au futur et a
+  l'imparfait) et le troisieme audit du 2026-08-11 qui leve la barre en six points sur les 25
+  items couvrant les trois temps. `nadia-prof` l'a signale dans son second verdict du sprint 10
+  (`squad/sprints/s10-la-forme-du-bandit-manchot/review.md`) sans le corriger elle-meme, le
+  tableau n'etant pas le sien. Corrige ici.
+- **Derniere mise a jour** : 2026-08-14
 
 ## Competences visees
 
 | Matiere | Niveau | Domaine | Competence | Reference au referentiel |
 |---|---|---|---|---|
-| francais | CM1 (cycle 3) | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif - **sur le present uniquement pour ce jeu** | `squad/programme/francais/competences-cm1.md` |
+| francais | CM1 (cycle 3) | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif - etendu au futur et a l'imparfait par S8-4, present, futur et imparfait tous les trois couverts depuis le troisieme audit du 2026-08-11 | `squad/programme/francais/competences-cm1.md` |
 
 ## Criteres pedagogiques attendus - camille-po
 
