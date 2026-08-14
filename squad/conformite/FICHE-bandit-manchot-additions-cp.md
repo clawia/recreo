@@ -263,13 +263,222 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Reverification exigee par DEC-0026 (s12), du 2026-08-14 - VALIDE SOUS RESERVE - le plus recent de cette fiche
+### Arbitrage prealable de s12 du 2026-08-14, trois textes de l'application et le point de focus de la confirmation - le plus recent de cette fiche
+
+> **Ce que cette section ajoute et ce qu'elle ne touche pas.** Elle repond a trois questions que
+> `theo-archi` a portees en derivant le critere de son garde-fou de texte, plus une question de
+> focus qu'il m'a laissee parce qu'elle est de mon ressort. **Aucun verdict anterieur de cette fiche
+> n'est efface, deplace ni reformule** ; le seul caractere modifie ailleurs est la mention "le plus
+> recent de cette fiche", retiree du titre de la section suivante et amenee ici, avec sa note.
+>
+> L'arbitrage prealable du meme jour sur les trois lignes de mathematiques CM1 vit dans un fichier a
+> part, `squad/conformite/ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md` : il ne concerne aucun des
+> jeux de cette fiche.
+
+#### 0. Comment j'ai instruit, et ce que je declare degrade
+
+**Je n'ai pas relance l'application pour cette section, et je le dis parce que ca compte.** Mon
+audit est donc **degrade** au sens ou je l'entends d'habitude : je n'ai pas revu ces ecrans a
+l'ecran ce jour-ci. Ce que j'ai fait a la place, et qui me suffit pour ces trois textes precisement :
+
+- j'ai lu les deux gabarits reellement servis, `templates/accueil.html` et
+  `templates/fragments/erreur.html`, dans le worktree d'ou je parle ;
+- j'ai etabli par l'historique du depot que **les deux phrases n'ont pas change d'un caractere
+  depuis mon audit joue du 2026-08-05**. "Oups ! Le jeu a un souci." est entree au depot le
+  2026-08-05 et n'a jamais ete retouchee depuis ; la ligne du catalogue vide a ete touchee pour la
+  derniere fois le 2026-08-05 elle aussi. Mon audit de s01 etait **non degrade** : j'avais rendu
+  l'ecran de catalogue vide **reellement**, en relancant l'application sur un catalogue sans aucun
+  jeu, et j'avais traverse l'ecran d'erreur en jouant un coup sans partie en cours.
+
+**Ce que ce mode ne me donne pas** : sur l'`aria-label`, il ne me donne rien du tout, parce que je
+n'ai jamais ecoute cette application avec un lecteur d'ecran, et personne dans cette equipe ne l'a
+fait. **Ma reserve F11 reste entiere** et cette section ne la leve pas. Je juge ci-dessous des
+**mots**, ce que je sais faire ; je ne juge pas ce que l'annonce donne a entendre dans son
+enchainement, ce que je ne sais pas encore.
+
+#### 1. Ce que je corrige dans le constat qui m'est transmis, avant d'arbitrer
+
+Le constat qui m'arrive dit que **les deux phrases n'ont aucun arbitrage a mon nom dans le depot**.
+**C'est faux pour les deux, et la trace est dans cette fiche meme.** Je le corrige d'abord, parce
+que je ne veux pas qu'on croie avoir trouve un trou de gouvernance la ou il n'y en a pas, ni qu'on
+enregistre comme neuf un verdict que j'ai deja rendu.
+
+Section "Verdict du sprint s01, conserve pour trace", datee du **2026-08-05**, tableau "Les libelles
+destines a l'enfant" :
+
+- **"Il n'y a pas de jeu pour le moment."** y porte le verdict **ACCEPTE**, avec son motif ecrit et
+  une reserve attachee ;
+- **"Oups ! Le jeu a un souci."** y porte le verdict **ACCEPTE**, dans la ligne qui la groupe avec
+  "Recommencer", "Ta partie s'est arrêtée. Choisis un nouveau jeu !" et "Score : N".
+
+Ces deux phrases ont ete vues a l'ecran avant d'etre acceptees, et je les ai reverifiees intactes le
+2026-08-07 dans le releve de texte de s05. Le trou de gouvernance est ailleurs, et il est reel : **il
+est sur l'`aria-label`**, entre au depot le 2026-08-06, c'est-a-dire **apres** mon arbitrage de s01,
+et jamais passe devant moi depuis. Sur ce point-la le constat est exact, et il est utile.
+
+#### 2. "Il n'y a pas de jeu pour le moment." - CONFIRME, et sa reserve est rappelee ouverte
+
+**Verdict : ACCEPTE. Je confirme le verdict du 2026-08-05 sans le rouvrir et sans le durcir.**
+
+Je n'ai pas de motif neuf, et je n'en fabrique pas un parce qu'on me repose la question : la phrase
+est du francais correct, entierement accentuee, au registre d'un enfant, et elle est **honnete** -
+elle dit ce qui est, sans inventer une panne ni accuser qui que ce soit. Neuf mots reste long pour
+un CP, et je l'ecrivais deja ainsi ; c'est un ecran d'anomalie que l'enfant ne rencontre pas en
+classe, et il n'a rien a y decider. Je ne deplace pas mes poteaux : la barre que j'ai ecrite en s01
+est atteinte, elle l'est toujours, le texte n'a pas bouge.
+
+**Ce que je rappelle ouvert, en revanche, et qui n'est pas une barre nouvelle : ma reserve 11 de
+s01** - *"L'ecran de catalogue vide n'offre aucune action. Accepte pour aujourd'hui parce que c'est
+un ecran d'anomalie, mais un enfant devant un ecran sans rien a faire reste un enfant bloque."* Je
+l'ai reverifiee dans le gabarit avant de la citer : quand la liste est vide, cet ecran rend cette
+seule phrase, et **rien de pressable qui mene ailleurs** - l'entree de menu de l'en-tete est bien
+visible ici, mais elle ramene a ce meme ecran vide. La reserve tient telle qu'elle etait ecrite.
+Elle reste **un motif pour `camille-po`, pas une condition sur un lot**, et surtout pas un motif de
+refus du texte, qui n'y est pour rien.
+
+#### 3. "Oups ! Le jeu a un souci." - CONFIRME
+
+**Verdict : ACCEPTE. Je confirme le verdict du 2026-08-05.**
+
+Le motif que j'avais ecrit tient mot pour mot et je le reprends : **le ton de cet ecran est
+exactement le bon, il n'accuse jamais l'enfant.** C'est le point qui compte sur un ecran d'erreur, et
+c'est le point que la plupart des logiciels ratent. "Souci" est un mot du francais parle des enfants,
+"Oups !" dit qu'il s'est passe quelque chose sans dramatiser, et surtout la phrase attribue le
+probleme **au jeu** et non a celui qui joue. Un enfant de six ans qui voit un ecran inattendu se
+croit en faute par defaut ; cette phrase-la est ecrite contre ce reflexe. Elle vaut aussi pour un
+CM1, sans changement.
+
+Cet ecran est en outre le seul de l'application qui n'ait jamais ete un cul-de-sac : "Recommencer" y
+est present et pressable, et c'est la seule chose pressable - arbitrage du 2026-08-07 que je ne
+rouvre pas. **Un enfant bloque doit pouvoir avancer : ici il le peut.**
+
+Je maintiens, sans en faire une condition, la remarque de forme de s01 : la phrase est centree et
+"Recommencer" est en dessous a gauche, donc l'alignement ne conduit pas l'oeil vers la seule action.
+C'etait deja note comme non bloquant sur un ecran presque vide. Ca l'est toujours.
+
+#### 4. `aria-label="Menu principal"` - JE LE PRENDS DANS MON PERIMETRE, et je le REFUSE
+
+**La reponse a la question de perimetre est oui, et elle ne souffre pas de nuance : ce texte est
+destine a un enfant, donc il passe par ma porte.** Un enfant qui utilise un lecteur d'ecran est un
+enfant. Le fait que ce texte soit annonce et non affiche change le canal, pas le destinataire.
+
+**Et je donne le critere, puisque c'est un critere qui manque et non une ligne de liste.**
+`theo-archi` a eu raison de refuser de fermer ce trou par une enumeration : une liste de chaines
+n'est pas un critere, elle se perime au prochain gabarit. Le critere que je pose, et qui se derive :
+**tout texte que le serveur envoie et qu'un enfant peut recevoir releve de cette porte, qu'il soit
+affiche a l'ecran ou annonce par une aide technique.** Le canal ne fait pas la difference ; le
+destinataire la fait. Ce qui reste dehors, c'est ce qu'aucun enfant ne recoit jamais - un commentaire
+de gabarit, un nom de classe, un message d'erreur technique de journal. Le moyen de tenir ce critere
+n'est pas de moi.
+
+**Verdict sur les mots : REFUSE.** Quatre motifs, et ils sont cumulatifs :
+
+1. **C'est faux.** Cette zone contient **un seul lien**. Un menu, c'est un choix entre plusieurs
+   choses. Annoncer "menu" pour un lien unique annonce une chose qui n'existe pas, et l'enfant qui
+   cherche les autres entrees les cherchera pour rien.
+2. **Le mot n'est pas comprehensible au niveau vise.** Ce n'est pas une question de dechiffrage - le
+   texte est entendu, pas lu - c'est une question de sens. "Menu", pour un enfant de six ans, c'est
+   ce qu'il y a a la cantine. "Principal", c'est le vocabulaire d'un adulte qui parle de logiciels.
+   Ni l'un ni l'autre ne designe, pour lui, l'endroit d'ou l'on sort du jeu.
+3. **Il introduit un second nom pour une chose qui en a deja un.** Cette application n'a **qu'un seul
+   mot de sortie**, "Les jeux", et c'est une regle que j'ai moi-meme imposee en refusant "Retour à
+   l'accueil" au motif que l'enfant n'a pas a apprendre deux vocabulaires pour une destination. Ici,
+   l'enfant qui voit l'ecran lit "Les jeux" et l'enfant qui l'entend s'entend annoncer "Menu
+   principal". La regle que j'ai fixee pour l'oeil vaut pour l'oreille.
+4. **Aucun enfant ne voit ces deux mots nulle part ailleurs dans l'application.** Un texte annonce qui
+   n'a aucun correspondant a l'ecran ne peut etre verifie par personne - ni par l'enfant, ni par
+   l'adulte a cote de lui.
+
+**La reformulation que j'ecris, et j'en donne deux formes parce que la premiere depend d'une
+contrainte technique que je ne connais pas.**
+
+- **Ce que je prefere : que cet attribut n'existe pas.** Cette page ne porte qu'une seule zone de
+  navigation et un seul lien dedans, qui se nomme lui-meme "Les jeux". Il n'y a rien a distinguer,
+  donc rien a etiqueter. Un libelle qui ne distingue rien n'ajoute que du bruit dans l'oreille de
+  l'enfant.
+- **Si un garde-fou technique exige un libelle non vide**, alors ce libelle est **"Les jeux"** - le
+  mot que l'enfant a deja, celui qui est ecrit dans le lien, celui que toute sortie de cette
+  application emploie. Redondant a l'oreille, mais jamais trompeur, et jamais un vocabulaire de plus.
+
+**Ce que ce refus ne fait pas** : il ne bloque rien. C'est un motif pour `camille-po`, a traiter dans
+un sprint suivant comme les autres, et il ne remet en cause aucun Done deja prononce. Aucun jeu n'en
+devient injouable ; c'est une phrase a corriger, pas un defaut de mecanique.
+
+#### 5. Le bouton qui recoit le focus sur l'ecran de confirmation - JE TRANCHE : "Continuer la partie"
+
+La question m'est posee comme la mienne, et elle l'est. **Mon choix : le point de focus declare a
+l'arrivee sur cet ecran est "Continuer la partie".**
+
+**Le motif tient en une phrase, et c'est celle qui gouverne tout ce que j'ai arbitre sur cet ecran :
+un enfant qui arrive quelque part sans avoir rien decide ne doit pas pouvoir tout perdre en appuyant
+une fois.** Le focus d'arrivee, c'est ce que l'enfant declenche par le premier geste qu'il connait -
+Entree. Il doit tomber sur l'option reversible. "Continuer la partie" le ramene dans son jeu, sans
+consequence ; c'est la seule des deux qui puisse etre le defaut.
+
+**L'autre choix est pire que le defaut que j'ai refuse le 2026-08-13, et je le dis avec ses chiffres
+pour qu'on ne me le represente pas.** Declarer le focus sur "Les jeux" ferait perdre la partie en
+**zero tabulation et un Entree**. Ce que j'ai refuse en s10 demandait **une tabulation et un
+Entree**. On n'ecarte pas un defaut en installant sa version plus rapide.
+
+**Sur la clause 2 d'`ADR-0038`, et je reponds a ce qui m'est signale sans sortir de mon role.**
+`theo-archi` prevoit que declarer le focus sur "Continuer la partie" ferait rougir sa clause 2,
+puisque l'arret suivant serait le bouton destructeur. **Je constate qu'il a probablement raison, et
+que ma reponse ne change pas pour autant.** Cet ecran porte exactement deux arrets : le bouton sur
+d'abord, le bouton destructeur ensuite. Sur une telle forme, la clause 2 - *aucun arret apres un
+point de focus declarable n'est destructeur* - n'a qu'**une seule solution verte : declarer le focus
+sur le bouton destructeur lui-meme**, puisque c'est le seul apres lequel il n'y a plus d'arret.
+C'est-a-dire que sa seule solution verte est la pire des deux pour l'enfant.
+
+**Ce que j'en conclus, et ce que je laisse a qui de droit.** Une regle dont l'unique issue verte est
+le choix qui detruit la partie au premier Entree n'est pas une regle qui juge cet ecran : c'est une
+regle ecrite pour l'ecran de revelation, ou elle fait exactement son travail - elle y distingue un
+remede d'un simple deplacement du defaut - et qui rencontre ici une forme d'ecran differente. **Un
+ecran de confirmation doit, par fonction, rendre la sortie atteignable** ; je l'ai ecrit moi-meme en
+acceptant que le bouton destructeur reste focalisable et pressable, et je ne me dedis pas. **Je
+decris le symptome, je ne prescris pas la correction** : la forme que doit prendre la clause 2 sur un
+ecran de confirmation appartient a `theo-archi`, et je ne touche pas a son `ADR`. Ce que je lui
+donne, c'est le seul element qui manquait a son instruction : le bouton, et il est arrete.
+
+**Ce que ce choix ne fait pas : il ne leve pas ma reserve N.** La reserve N demande deux proprietes -
+que l'enfant sache ou il en est des son arrivee, et que le nombre d'appuis pour atteindre un bouton
+donne soit le meme a chaque fois. Un point de focus declare sur "Continuer la partie" les satisferait
+toutes les deux, mais **une propriete satisfaite sur le papier n'est pas une propriete mesuree** :
+57 sorties de page sur 69 arrivees, c'etait deja un gabarit dont la lecture ne laissait rien
+presager. Je leverai la reserve N quand je l'aurai pressee au clavier sur l'increment livre, pas
+avant. La reserve N reste **ouverte**, telle qu'elle est ecrite, sans un mot de plus et sans un mot
+de moins.
+
+#### 6. Ce que ces quatre points changent au Done, et ce qu'ils ne changent pas
+
+**Rien de ce qui est ci-dessus ne ferme ni ne rouvre un Done pedagogique deja prononce.** Les deux
+phrases restent acceptees comme elles l'etaient. Le refus de l'`aria-label` porte sur un texte, il
+n'invalide aucun increment livre et n'empeche aucun jeu de tourner - c'est un motif de story pour
+`camille-po`. Le choix du bouton est une entree pour l'instruction de `theo-archi`, pas un verdict
+sur un increment.
+
+#### 7. Les proprietes dont je reste la seule garde, sur ces quatre points
+
+1. **Ce qu'un lecteur d'ecran annonce reellement, dans l'ordre ou il l'annonce.** Personne dans cette
+   equipe ne l'a jamais ecoute, moi comprise. C'est ma reserve F11, et elle reste ouverte : mon refus
+   du 4 porte sur des mots que je sais juger, pas sur une ecoute que je n'ai pas faite.
+2. **Que le vocabulaire reste unique d'un canal a l'autre** - un seul mot de sortie pour l'oeil et
+   pour l'oreille. Aucun garde-fou ne compare ce qui est affiche a ce qui est annonce.
+3. **Que le point de focus declare est bien celui que la touche atteint.** C'est la lecon que j'ai
+   payee moi-meme : l'ordre du document ne dit pas ce que la premiere touche fait. Tant que je ne
+   l'ai pas pressee, je ne le sais pas, et personne ne le sait a ma place.
+
+### Reverification exigee par DEC-0026 (s12), du 2026-08-14 - VALIDE SOUS RESERVE
 
 > Seul changement apporte a un titre anterieur, et il ne touche aucun verdict : la mention "le plus
 > recent de cette fiche" passe du titre de l'arbitrage prealable du 2026-08-14 sur la forme et le
 > texte de l'ecran de confirmation a celui-ci, pour qu'un seul bloc la porte. Le corps de ce
 > verdict-la n'est modifie d'aucun caractere, et aucun verdict anterieur de cette fiche n'est
 > efface, deplace ni reformule.
+>
+> **Amendement du 2026-08-14, second arbitrage prealable de s12** : la mention "le plus recent de
+> cette fiche" quitte ce titre pour celui de la section ajoutee au-dessus, pour la meme raison qu'a
+> son arrivee ici - un seul bloc la porte. **Rien d'autre n'est touche dans cette section : ni son
+> verdict, ni ses chiffres, ni ses deux reserves.**
 
 **Verdict : VALIDE SOUS RESERVE.** La clause 1 de M13 est **tenue**, pour la premiere fois de ce
 projet, sur les deux ecrans que `DEC-0026` nomme - l'ecran de revelation et l'ecran de reprise -
