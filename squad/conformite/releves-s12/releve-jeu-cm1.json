@@ -1,0 +1,680 @@
+{
+ "date": "2026-08-14T21:08:24.756Z",
+ "viewport": "360x640",
+ "jeux": {
+  "bandit-manchot-perimetre-cm1": {
+   "nom": "Le perimetre",
+   "parties": [
+    {
+     "consigne": "Quel est le périmètre ?",
+     "manches": [
+      {
+       "enonce": "Comment calcule-t-on le périmètre d'un carré ?",
+       "props": [
+        "côté × 4",
+        "côté × côté",
+        "côté × 2"
+       ],
+       "etapes": [
+        {
+         "essai": 1,
+         "choisi": "côté × 4",
+         "signal": "Bravo !",
+         "indice": null,
+         "marquees": [],
+         "enonceApres": "Quel est le périmètre d'un carré de côté 8 m ?",
+         "pli": {
+          "bas": 639,
+          "pli": 640,
+          "visibleSansDefiler": true
+         }
+        }
+       ]
+      },
+      {
+       "enonce": "Quel est le périmètre d'un carré de côté 8 m ?",
+       "props": [
+        "16 m",
+        "32 m",
+        "64 m"
+       ],
+       "etapes": [
+        {
+         "essai": 1,
+         "choisi": "16 m",
+         "signal": "Ce n'est pas ça. Essaie encore !",
+         "indice": "Multiplie la longueur d'un côté par quatre.",
+         "marquees": [
+          "16 m"
+         ],
+         "enonceApres": "Quel est le périmètre d'un carré de côté 8 m ?",
+         "pli": {
+          "bas": 667,
+          "pli": 640,
+          "visibleSansDefiler": false
+         }
+        },
+        {
+         "essai": 2,
+         "choisi": "32 m",
+         "signal": "Bravo !",
+         "indice": null,
+         "marquees": [],
+         "enonceApres": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+         "pli": {
+          "bas": 687,
+          "pli": 640,
+          "visibleSansDefiler": false
+         }
+        }
+       ]
+      },
+      {
+       "enonce": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+       "props": [
+        "65 cm",
+        "18 cm",
+        "36 cm"
+       ],
+       "etapes": [
+        {
+         "essai": 1,
+         "choisi": "65 cm",
+         "signal": "Ce n'est pas ça. Essaie encore !",
+         "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+         "marquees": [
+          "65 cm"
+         ],
+         "enonceApres": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+         "pli": {
+          "bas": 715,
+          "pli": 640,
+          "visibleSansDefiler": false
+         }
+        },
+        {
+         "essai": 2,
+         "choisi": "18 cm",
+         "signal": "Ce n'est pas ça. Essaie encore !",
+         "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+         "marquees": [
+          "65 cm",
+          "18 cm"
+         ],
+         "enonceApres": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+         "pli": {
+          "bas": 715,
+          "pli": 640,
+          "visibleSansDefiler": false
+         }
+        },
+        {
+         "essai": 3,
+         "choisi": "36 cm",
+         "signal": "Bravo !",
+         "indice": null,
+         "marquees": [],
+         "enonceApres": "Quel est le périmètre d'un rectangle de longueur 6 cm et de largeur 4 cm ?",
+         "pli": {
+          "bas": 687,
+          "pli": 640,
+          "visibleSansDefiler": false
+         }
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "strategie": {
+    "manches": 120,
+    "gagnees": 10
+   },
+   "indices": [
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 8 m ?",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "essai": 1
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "essai": 1
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "essai": 2
+    }
+   ],
+   "revelations": [],
+   "pli": [
+    {
+     "enonce": "Comment calcule-t-on le périmètre d'un carré ?",
+     "bas": 639,
+     "pli": 640,
+     "visibleSansDefiler": true
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 8 m ?",
+     "bas": 667,
+     "pli": 640,
+     "visibleSansDefiler": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 8 m ?",
+     "bas": 687,
+     "pli": 640,
+     "visibleSansDefiler": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+     "bas": 715,
+     "pli": 640,
+     "visibleSansDefiler": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+     "bas": 715,
+     "pli": 640,
+     "visibleSansDefiler": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+     "bas": 687,
+     "pli": 640,
+     "visibleSansDefiler": false
+    }
+   ],
+   "enoncesVus": [
+    "Quel est le périmètre d'un carré de côté 11 cm ?",
+    "Quel est le périmètre d'un carré de côté 8 m ?",
+    "Quel est le périmètre d'un carré de côté 9 m ?",
+    "Quel est le périmètre d'un rectangle de longueur 20 m et de largeur 5 m ?",
+    "Quel est le périmètre d'un carré de côté 6 cm ?",
+    "Quel est le périmètre d'un rectangle de longueur 8 cm et de largeur 3 cm ?",
+    "Quel est le périmètre d'un rectangle de longueur 15 cm et de largeur 6 cm ?",
+    "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+    "Quel est le périmètre d'un carré de côté 3 cm ?",
+    "Quel est le périmètre d'un rectangle de longueur 14 cm et de largeur 6 cm ?",
+    "Quel est le périmètre d'un rectangle de longueur 6 cm et de largeur 4 cm ?",
+    "Quel est le périmètre d'un carré de côté 7 cm ?",
+    "Quel est le périmètre d'un carré de côté 12 m ?",
+    "Comment calcule-t-on le périmètre d'un carré ?",
+    "Quel est le périmètre d'un rectangle de longueur 11 cm et de largeur 3 cm ?",
+    "Quel est le périmètre d'un rectangle de longueur 7 cm et de largeur 2 cm ?",
+    "Quel est le périmètre d'un rectangle de longueur 12 cm et de largeur 5 cm ?",
+    "Quel est le périmètre d'un carré de côté 10 cm ?",
+    "Quel est le périmètre d'un rectangle de longueur 9 cm et de largeur 4 cm ?",
+    "Quel est le périmètre d'un carré de côté 5 cm ?",
+    "Le périmètre d'une figure, c'est...",
+    "Quel est le périmètre d'un carré de côté 15 cm ?"
+   ],
+   "finDePartie": "Les jeux Score : 10 Bravo, c'est juste ! C'est fini !",
+   "ecranFin": "inconnu"
+  },
+  "bandit-manchot-conversions-unites-cm1": {
+   "nom": "Les mesures",
+   "parties": [
+    {
+     "consigne": "Convertis dans la bonne unité !",
+     "manches": [
+      {
+       "enonce": "4000 kg, combien de tonnes ?",
+       "props": [
+        "4 tonnes",
+        "400 tonnes",
+        "4000000 tonnes"
+       ],
+       "etapes": [
+        {
+         "essai": 1,
+         "choisi": "4 tonnes",
+         "signal": "Bravo !",
+         "indice": null,
+         "marquees": [],
+         "enonceApres": "6000 m, combien de km ?",
+         "pli": {
+          "bas": 591,
+          "pli": 640,
+          "visibleSansDefiler": true
+         }
+        }
+       ]
+      },
+      {
+       "enonce": "6000 m, combien de km ?",
+       "props": [
+        "6 km",
+        "6000000 km",
+        "600 km"
+       ],
+       "etapes": [
+        {
+         "essai": 1,
+         "choisi": "6 km",
+         "signal": "Bravo !",
+         "indice": null,
+         "marquees": [],
+         "enonceApres": "500 cm, combien de m ?",
+         "pli": {
+          "bas": 591,
+          "pli": 640,
+          "visibleSansDefiler": true
+         }
+        }
+       ]
+      },
+      {
+       "enonce": "500 cm, combien de m ?",
+       "props": [
+        "50 m",
+        "5 m",
+        "50000 m"
+       ],
+       "etapes": [
+        {
+         "essai": 1,
+         "choisi": "50 m",
+         "signal": "Ce n'est pas ça. Essaie encore !",
+         "indice": "1 m, c'est 100 cm.",
+         "marquees": [
+          "50 m"
+         ],
+         "enonceApres": "500 cm, combien de m ?",
+         "pli": {
+          "bas": 619,
+          "pli": 640,
+          "visibleSansDefiler": true
+         }
+        },
+        {
+         "essai": 2,
+         "choisi": "5 m",
+         "signal": "Bravo !",
+         "indice": null,
+         "marquees": [],
+         "enonceApres": "5000 mm, combien de m ?",
+         "pli": {
+          "bas": 591,
+          "pli": 640,
+          "visibleSansDefiler": true
+         }
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "strategie": {
+    "manches": 120,
+    "gagnees": 32
+   },
+   "indices": [
+    {
+     "enonce": "500 cm, combien de m ?",
+     "indice": "1 m, c'est 100 cm.",
+     "essai": 1
+    }
+   ],
+   "revelations": [],
+   "pli": [
+    {
+     "enonce": "4000 kg, combien de tonnes ?",
+     "bas": 591,
+     "pli": 640,
+     "visibleSansDefiler": true
+    },
+    {
+     "enonce": "6000 m, combien de km ?",
+     "bas": 591,
+     "pli": 640,
+     "visibleSansDefiler": true
+    },
+    {
+     "enonce": "500 cm, combien de m ?",
+     "bas": 619,
+     "pli": 640,
+     "visibleSansDefiler": true
+    },
+    {
+     "enonce": "500 cm, combien de m ?",
+     "bas": 591,
+     "pli": 640,
+     "visibleSansDefiler": true
+    }
+   ],
+   "enoncesVus": [
+    "9 cl, combien de ml ?",
+    "7 cm, combien de mm ?",
+    "4 kg, combien de g ?",
+    "5000 ml, combien de L ?",
+    "4000 kg, combien de tonnes ?",
+    "3 tonnes, combien de kg ?",
+    "4 m, combien de cm ?",
+    "9000 g, combien de kg ?",
+    "6 cl, combien de ml ?",
+    "2 kg, combien de g ?",
+    "700 ml, combien de cl ?",
+    "7 tonnes, combien de kg ?",
+    "700 mm, combien de cm ?",
+    "500 cm, combien de m ?",
+    "5000 kg, combien de tonnes ?",
+    "3 L, combien de ml ?",
+    "4000 ml, combien de L ?",
+    "5000 mm, combien de m ?",
+    "4 L, combien de cl ?",
+    "700 cl, combien de L ?",
+    "6000 g, combien de kg ?",
+    "6000 m, combien de km ?",
+    "2 m, combien de mm ?",
+    "3 km, combien de m ?"
+   ],
+   "finDePartie": "Les jeux Score : 10 Bravo, c'est juste ! C'est fini !",
+   "ecranFin": "inconnu"
+  },
+  "bandit-manchot-tables-multiplication-cm1": {
+   "nom": "Les tables de multiplication",
+   "parties": [
+    {
+     "consigne": "Quel est le résultat ?",
+     "manches": [
+      {
+       "enonce": "1 × 4 = ?",
+       "props": [
+        "3",
+        "5",
+        "4"
+       ],
+       "etapes": [
+        {
+         "essai": 1,
+         "choisi": "3",
+         "signal": "Ce n'est pas ça. Essaie encore !",
+         "indice": "Multiplier par 1, le nombre ne change pas.",
+         "marquees": [
+          "3"
+         ],
+         "enonceApres": "1 × 4 = ?",
+         "pli": {
+          "bas": 523,
+          "pli": 640,
+          "visibleSansDefiler": true
+         }
+        },
+        {
+         "essai": 2,
+         "choisi": "5",
+         "signal": "Ce n'est pas ça. Essaie encore !",
+         "indice": "Multiplier par 1, le nombre ne change pas.",
+         "marquees": [
+          "3",
+          "5"
+         ],
+         "enonceApres": "1 × 4 = ?",
+         "pli": {
+          "bas": 523,
+          "pli": 640,
+          "visibleSansDefiler": true
+         }
+        },
+        {
+         "essai": 3,
+         "choisi": "4",
+         "signal": "Bravo !",
+         "indice": null,
+         "marquees": [],
+         "enonceApres": "2 × 6 = ?",
+         "pli": {
+          "bas": 495,
+          "pli": 640,
+          "visibleSansDefiler": true
+         }
+        }
+       ]
+      },
+      {
+       "enonce": "2 × 6 = ?",
+       "props": [
+        "10",
+        "6",
+        "12"
+       ],
+       "etapes": [
+        {
+         "essai": 1,
+         "choisi": "10",
+         "signal": "Ce n'est pas ça. Essaie encore !",
+         "indice": "Table de 6 : prends la table de 5, puis ajoute le nombre une fois.",
+         "marquees": [
+          "10"
+         ],
+         "enonceApres": "2 × 6 = ?",
+         "pli": {
+          "bas": 523,
+          "pli": 640,
+          "visibleSansDefiler": true
+         }
+        },
+        {
+         "essai": 2,
+         "choisi": "6",
+         "signal": "Ce n'est pas ça. Essaie encore !",
+         "indice": "Table de 6 : prends la table de 5, puis ajoute le nombre une fois.",
+         "marquees": [
+          "10",
+          "6"
+         ],
+         "enonceApres": "2 × 6 = ?",
+         "pli": {
+          "bas": 523,
+          "pli": 640,
+          "visibleSansDefiler": true
+         }
+        },
+        {
+         "essai": 3,
+         "choisi": "12",
+         "signal": "Bravo !",
+         "indice": null,
+         "marquees": [],
+         "enonceApres": "6 × 6 = ?",
+         "pli": {
+          "bas": 495,
+          "pli": 640,
+          "visibleSansDefiler": true
+         }
+        }
+       ]
+      },
+      {
+       "enonce": "6 × 6 = ?",
+       "props": [
+        "35",
+        "36",
+        "30"
+       ],
+       "etapes": [
+        {
+         "essai": 1,
+         "choisi": "35",
+         "signal": "Ce n'est pas ça. Essaie encore !",
+         "indice": "Table de 6 : prends la table de 5, puis ajoute le nombre une fois.",
+         "marquees": [
+          "35"
+         ],
+         "enonceApres": "6 × 6 = ?",
+         "pli": {
+          "bas": 523,
+          "pli": 640,
+          "visibleSansDefiler": true
+         }
+        },
+        {
+         "essai": 2,
+         "choisi": "36",
+         "signal": "Bravo !",
+         "indice": null,
+         "marquees": [],
+         "enonceApres": "8 × 10 = ?",
+         "pli": {
+          "bas": 495,
+          "pli": 640,
+          "visibleSansDefiler": true
+         }
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "strategie": {
+    "manches": 118,
+    "gagnees": 76
+   },
+   "indices": [
+    {
+     "enonce": "1 × 4 = ?",
+     "indice": "Multiplier par 1, le nombre ne change pas.",
+     "essai": 1
+    },
+    {
+     "enonce": "1 × 4 = ?",
+     "indice": "Multiplier par 1, le nombre ne change pas.",
+     "essai": 2
+    },
+    {
+     "enonce": "2 × 6 = ?",
+     "indice": "Table de 6 : prends la table de 5, puis ajoute le nombre une fois.",
+     "essai": 1
+    },
+    {
+     "enonce": "2 × 6 = ?",
+     "indice": "Table de 6 : prends la table de 5, puis ajoute le nombre une fois.",
+     "essai": 2
+    },
+    {
+     "enonce": "6 × 6 = ?",
+     "indice": "Table de 6 : prends la table de 5, puis ajoute le nombre une fois.",
+     "essai": 1
+    }
+   ],
+   "revelations": [],
+   "pli": [
+    {
+     "enonce": "1 × 4 = ?",
+     "bas": 523,
+     "pli": 640,
+     "visibleSansDefiler": true
+    },
+    {
+     "enonce": "1 × 4 = ?",
+     "bas": 523,
+     "pli": 640,
+     "visibleSansDefiler": true
+    },
+    {
+     "enonce": "1 × 4 = ?",
+     "bas": 495,
+     "pli": 640,
+     "visibleSansDefiler": true
+    },
+    {
+     "enonce": "2 × 6 = ?",
+     "bas": 523,
+     "pli": 640,
+     "visibleSansDefiler": true
+    },
+    {
+     "enonce": "2 × 6 = ?",
+     "bas": 523,
+     "pli": 640,
+     "visibleSansDefiler": true
+    },
+    {
+     "enonce": "2 × 6 = ?",
+     "bas": 495,
+     "pli": 640,
+     "visibleSansDefiler": true
+    },
+    {
+     "enonce": "6 × 6 = ?",
+     "bas": 523,
+     "pli": 640,
+     "visibleSansDefiler": true
+    },
+    {
+     "enonce": "6 × 6 = ?",
+     "bas": 495,
+     "pli": 640,
+     "visibleSansDefiler": true
+    }
+   ],
+   "enoncesVus": [
+    "8 × 10 = ?",
+    "3 × 5 = ?",
+    "4 × 9 = ?",
+    "8 × 7 = ?",
+    "8 × 3 = ?",
+    "8 × 4 = ?",
+    "5 × 3 = ?",
+    "2 × 4 = ?",
+    "6 × 9 = ?",
+    "10 × 10 = ?",
+    "1 × 4 = ?",
+    "5 × 7 = ?",
+    "1 × 7 = ?",
+    "2 × 9 = ?",
+    "9 × 9 = ?",
+    "8 × 8 = ?",
+    "9 × 6 = ?",
+    "3 × 10 = ?",
+    "5 × 6 = ?",
+    "5 × 5 = ?",
+    "4 × 5 = ?",
+    "2 × 5 = ?",
+    "3 × 2 = ?",
+    "4 × 8 = ?",
+    "7 × 7 = ?",
+    "9 × 5 = ?",
+    "5 × 4 = ?",
+    "5 × 9 = ?",
+    "3 × 8 = ?",
+    "9 × 8 = ?",
+    "6 × 8 = ?",
+    "9 × 10 = ?",
+    "1 × 9 = ?",
+    "6 × 4 = ?",
+    "3 × 3 = ?",
+    "4 × 10 = ?",
+    "2 × 6 = ?",
+    "4 × 7 = ?",
+    "9 × 7 = ?",
+    "6 × 6 = ?",
+    "1 × 1 = ?",
+    "5 × 2 = ?",
+    "1 × 10 = ?",
+    "2 × 7 = ?",
+    "3 × 7 = ?",
+    "2 × 2 = ?",
+    "6 × 3 = ?",
+    "4 × 4 = ?",
+    "7 × 10 = ?",
+    "8 × 9 = ?",
+    "9 × 4 = ?",
+    "6 × 7 = ?",
+    "7 × 3 = ?",
+    "4 × 3 = ?",
+    "4 × 6 = ?",
+    "2 × 3 = ?",
+    "8 × 2 = ?",
+    "9 × 2 = ?",
+    "7 × 8 = ?",
+    "7 × 5 = ?",
+    "5 × 10 = ?"
+   ],
+   "finDePartie": "Les jeux Score : 10 Bravo, c'est juste ! C'est fini !",
+   "ecranFin": "inconnu"
+  }
+ }
+}

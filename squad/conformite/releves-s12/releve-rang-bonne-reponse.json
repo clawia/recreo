@@ -1,0 +1,1490 @@
+{
+ "date": "2026-08-14",
+ "auteur": "nadia-prof",
+ "objet": "rang de la bonne reponse parmi les trois propositions, calcul exhaustif sur les trois paquets",
+ "paquets": {
+  "cm1-tables-multiplication.yaml": {
+   "items": 99,
+   "itemsNumeriques": 99,
+   "repartition": {
+    "la-plus-grande": 64,
+    "intermediaire": 35,
+    "la-plus-petite": 0
+   },
+   "strategieToujoursLePlusGrand_pourcent": 64.6,
+   "strategieToujoursIntermediaire_pourcent": 35.4,
+   "strategieToujoursLePlusPetit_pourcent": 0.0,
+   "hasard_pourcent": 33.3,
+   "detail": [
+    {
+     "enonce": "1 × 1 = ?",
+     "bonneReponse": "1",
+     "distracteurs": [
+      "0",
+      "2"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "1 × 2 = ?",
+     "bonneReponse": "2",
+     "distracteurs": [
+      "1",
+      "3"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "1 × 3 = ?",
+     "bonneReponse": "3",
+     "distracteurs": [
+      "2",
+      "4"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "1 × 4 = ?",
+     "bonneReponse": "4",
+     "distracteurs": [
+      "3",
+      "5"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "1 × 5 = ?",
+     "bonneReponse": "5",
+     "distracteurs": [
+      "4",
+      "6"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "1 × 6 = ?",
+     "bonneReponse": "6",
+     "distracteurs": [
+      "5",
+      "7"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "1 × 7 = ?",
+     "bonneReponse": "7",
+     "distracteurs": [
+      "6",
+      "8"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "1 × 8 = ?",
+     "bonneReponse": "8",
+     "distracteurs": [
+      "7",
+      "9"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "1 × 9 = ?",
+     "bonneReponse": "9",
+     "distracteurs": [
+      "8",
+      "10"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "1 × 10 = ?",
+     "bonneReponse": "10",
+     "distracteurs": [
+      "9",
+      "11"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "2 × 10 = ?",
+     "bonneReponse": "20",
+     "distracteurs": [
+      "10",
+      "30"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "3 × 10 = ?",
+     "bonneReponse": "30",
+     "distracteurs": [
+      "20",
+      "40"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4 × 10 = ?",
+     "bonneReponse": "40",
+     "distracteurs": [
+      "30",
+      "50"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "5 × 10 = ?",
+     "bonneReponse": "50",
+     "distracteurs": [
+      "40",
+      "60"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "6 × 10 = ?",
+     "bonneReponse": "60",
+     "distracteurs": [
+      "50",
+      "70"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "7 × 10 = ?",
+     "bonneReponse": "70",
+     "distracteurs": [
+      "60",
+      "80"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "8 × 10 = ?",
+     "bonneReponse": "80",
+     "distracteurs": [
+      "70",
+      "90"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "9 × 10 = ?",
+     "bonneReponse": "90",
+     "distracteurs": [
+      "80",
+      "100"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "10 × 10 = ?",
+     "bonneReponse": "100",
+     "distracteurs": [
+      "90",
+      "110"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "2 × 3 = ?",
+     "bonneReponse": "6",
+     "distracteurs": [
+      "3",
+      "4"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "3 × 2 = ?",
+     "bonneReponse": "6",
+     "distracteurs": [
+      "4",
+      "3"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "2 × 4 = ?",
+     "bonneReponse": "8",
+     "distracteurs": [
+      "4",
+      "6"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4 × 2 = ?",
+     "bonneReponse": "8",
+     "distracteurs": [
+      "6",
+      "4"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "2 × 5 = ?",
+     "bonneReponse": "10",
+     "distracteurs": [
+      "5",
+      "8"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "5 × 2 = ?",
+     "bonneReponse": "10",
+     "distracteurs": [
+      "8",
+      "5"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "2 × 6 = ?",
+     "bonneReponse": "12",
+     "distracteurs": [
+      "6",
+      "10"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "6 × 2 = ?",
+     "bonneReponse": "12",
+     "distracteurs": [
+      "10",
+      "6"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "2 × 7 = ?",
+     "bonneReponse": "14",
+     "distracteurs": [
+      "7",
+      "12"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "7 × 2 = ?",
+     "bonneReponse": "14",
+     "distracteurs": [
+      "12",
+      "7"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "2 × 8 = ?",
+     "bonneReponse": "16",
+     "distracteurs": [
+      "8",
+      "14"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "8 × 2 = ?",
+     "bonneReponse": "16",
+     "distracteurs": [
+      "14",
+      "8"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "2 × 9 = ?",
+     "bonneReponse": "18",
+     "distracteurs": [
+      "9",
+      "16"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "9 × 2 = ?",
+     "bonneReponse": "18",
+     "distracteurs": [
+      "16",
+      "9"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "3 × 4 = ?",
+     "bonneReponse": "12",
+     "distracteurs": [
+      "8",
+      "9"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4 × 3 = ?",
+     "bonneReponse": "12",
+     "distracteurs": [
+      "9",
+      "8"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "3 × 5 = ?",
+     "bonneReponse": "15",
+     "distracteurs": [
+      "10",
+      "12"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "5 × 3 = ?",
+     "bonneReponse": "15",
+     "distracteurs": [
+      "12",
+      "10"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "3 × 6 = ?",
+     "bonneReponse": "18",
+     "distracteurs": [
+      "12",
+      "15"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "6 × 3 = ?",
+     "bonneReponse": "18",
+     "distracteurs": [
+      "15",
+      "12"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "3 × 7 = ?",
+     "bonneReponse": "21",
+     "distracteurs": [
+      "14",
+      "18"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "7 × 3 = ?",
+     "bonneReponse": "21",
+     "distracteurs": [
+      "18",
+      "14"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "3 × 8 = ?",
+     "bonneReponse": "24",
+     "distracteurs": [
+      "16",
+      "21"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "8 × 3 = ?",
+     "bonneReponse": "24",
+     "distracteurs": [
+      "21",
+      "16"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "3 × 9 = ?",
+     "bonneReponse": "27",
+     "distracteurs": [
+      "18",
+      "24"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "9 × 3 = ?",
+     "bonneReponse": "27",
+     "distracteurs": [
+      "24",
+      "18"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4 × 5 = ?",
+     "bonneReponse": "20",
+     "distracteurs": [
+      "15",
+      "16"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "5 × 4 = ?",
+     "bonneReponse": "20",
+     "distracteurs": [
+      "16",
+      "15"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4 × 6 = ?",
+     "bonneReponse": "24",
+     "distracteurs": [
+      "18",
+      "20"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "6 × 4 = ?",
+     "bonneReponse": "24",
+     "distracteurs": [
+      "20",
+      "18"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4 × 7 = ?",
+     "bonneReponse": "28",
+     "distracteurs": [
+      "21",
+      "24"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "7 × 4 = ?",
+     "bonneReponse": "28",
+     "distracteurs": [
+      "24",
+      "21"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4 × 8 = ?",
+     "bonneReponse": "32",
+     "distracteurs": [
+      "24",
+      "28"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "8 × 4 = ?",
+     "bonneReponse": "32",
+     "distracteurs": [
+      "28",
+      "24"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4 × 9 = ?",
+     "bonneReponse": "36",
+     "distracteurs": [
+      "27",
+      "32"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "9 × 4 = ?",
+     "bonneReponse": "36",
+     "distracteurs": [
+      "32",
+      "27"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "5 × 6 = ?",
+     "bonneReponse": "30",
+     "distracteurs": [
+      "24",
+      "25"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "6 × 5 = ?",
+     "bonneReponse": "30",
+     "distracteurs": [
+      "25",
+      "24"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "5 × 7 = ?",
+     "bonneReponse": "35",
+     "distracteurs": [
+      "28",
+      "30"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "7 × 5 = ?",
+     "bonneReponse": "35",
+     "distracteurs": [
+      "30",
+      "28"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "5 × 8 = ?",
+     "bonneReponse": "40",
+     "distracteurs": [
+      "32",
+      "35"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "8 × 5 = ?",
+     "bonneReponse": "40",
+     "distracteurs": [
+      "35",
+      "32"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "5 × 9 = ?",
+     "bonneReponse": "45",
+     "distracteurs": [
+      "36",
+      "40"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "9 × 5 = ?",
+     "bonneReponse": "45",
+     "distracteurs": [
+      "40",
+      "36"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "6 × 7 = ?",
+     "bonneReponse": "42",
+     "distracteurs": [
+      "35",
+      "36"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "7 × 6 = ?",
+     "bonneReponse": "42",
+     "distracteurs": [
+      "36",
+      "35"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "6 × 8 = ?",
+     "bonneReponse": "48",
+     "distracteurs": [
+      "40",
+      "42"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "8 × 6 = ?",
+     "bonneReponse": "48",
+     "distracteurs": [
+      "42",
+      "40"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "6 × 9 = ?",
+     "bonneReponse": "54",
+     "distracteurs": [
+      "45",
+      "48"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "9 × 6 = ?",
+     "bonneReponse": "54",
+     "distracteurs": [
+      "48",
+      "45"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "7 × 8 = ?",
+     "bonneReponse": "56",
+     "distracteurs": [
+      "48",
+      "49"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "8 × 7 = ?",
+     "bonneReponse": "56",
+     "distracteurs": [
+      "49",
+      "48"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "7 × 9 = ?",
+     "bonneReponse": "63",
+     "distracteurs": [
+      "54",
+      "56"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "9 × 7 = ?",
+     "bonneReponse": "63",
+     "distracteurs": [
+      "56",
+      "54"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "8 × 9 = ?",
+     "bonneReponse": "72",
+     "distracteurs": [
+      "63",
+      "64"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "9 × 8 = ?",
+     "bonneReponse": "72",
+     "distracteurs": [
+      "64",
+      "63"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "2 × 2 = ?",
+     "bonneReponse": "4",
+     "distracteurs": [
+      "2",
+      "6"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "2 × 2 = ?",
+     "bonneReponse": "4",
+     "distracteurs": [
+      "3",
+      "6"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "2 × 2 = ?",
+     "bonneReponse": "4",
+     "distracteurs": [
+      "2",
+      "3"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "3 × 3 = ?",
+     "bonneReponse": "9",
+     "distracteurs": [
+      "6",
+      "12"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "3 × 3 = ?",
+     "bonneReponse": "9",
+     "distracteurs": [
+      "8",
+      "12"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "3 × 3 = ?",
+     "bonneReponse": "9",
+     "distracteurs": [
+      "6",
+      "8"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4 × 4 = ?",
+     "bonneReponse": "16",
+     "distracteurs": [
+      "12",
+      "20"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4 × 4 = ?",
+     "bonneReponse": "16",
+     "distracteurs": [
+      "15",
+      "20"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4 × 4 = ?",
+     "bonneReponse": "16",
+     "distracteurs": [
+      "12",
+      "15"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "5 × 5 = ?",
+     "bonneReponse": "25",
+     "distracteurs": [
+      "20",
+      "30"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "5 × 5 = ?",
+     "bonneReponse": "25",
+     "distracteurs": [
+      "24",
+      "30"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "5 × 5 = ?",
+     "bonneReponse": "25",
+     "distracteurs": [
+      "20",
+      "24"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "6 × 6 = ?",
+     "bonneReponse": "36",
+     "distracteurs": [
+      "30",
+      "42"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "6 × 6 = ?",
+     "bonneReponse": "36",
+     "distracteurs": [
+      "35",
+      "42"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "6 × 6 = ?",
+     "bonneReponse": "36",
+     "distracteurs": [
+      "30",
+      "35"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "7 × 7 = ?",
+     "bonneReponse": "49",
+     "distracteurs": [
+      "42",
+      "56"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "7 × 7 = ?",
+     "bonneReponse": "49",
+     "distracteurs": [
+      "48",
+      "56"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "7 × 7 = ?",
+     "bonneReponse": "49",
+     "distracteurs": [
+      "42",
+      "48"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "8 × 8 = ?",
+     "bonneReponse": "64",
+     "distracteurs": [
+      "56",
+      "72"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "8 × 8 = ?",
+     "bonneReponse": "64",
+     "distracteurs": [
+      "63",
+      "72"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "8 × 8 = ?",
+     "bonneReponse": "64",
+     "distracteurs": [
+      "56",
+      "63"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "9 × 9 = ?",
+     "bonneReponse": "81",
+     "distracteurs": [
+      "72",
+      "90"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "9 × 9 = ?",
+     "bonneReponse": "81",
+     "distracteurs": [
+      "80",
+      "90"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "9 × 9 = ?",
+     "bonneReponse": "81",
+     "distracteurs": [
+      "72",
+      "80"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    }
+   ]
+  },
+  "cm1-perimetre.yaml": {
+   "items": 22,
+   "itemsNumeriques": 20,
+   "repartition": {
+    "la-plus-grande": 2,
+    "intermediaire": 18,
+    "la-plus-petite": 0
+   },
+   "strategieToujoursLePlusGrand_pourcent": 10.0,
+   "strategieToujoursIntermediaire_pourcent": 90.0,
+   "strategieToujoursLePlusPetit_pourcent": 0.0,
+   "hasard_pourcent": 33.3,
+   "detail": [
+    {
+     "enonce": "Le périmètre d'une figure, c'est...",
+     "rang": "non-numerique"
+    },
+    {
+     "enonce": "Comment calcule-t-on le périmètre d'un carré ?",
+     "rang": "non-numerique"
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 5 cm ?",
+     "bonneReponse": "20 cm",
+     "distracteurs": [
+      "25 cm",
+      "10 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 10 cm ?",
+     "bonneReponse": "40 cm",
+     "distracteurs": [
+      "100 cm",
+      "20 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 9 m ?",
+     "bonneReponse": "36 m",
+     "distracteurs": [
+      "81 m",
+      "18 m"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 3 cm ?",
+     "bonneReponse": "12 cm",
+     "distracteurs": [
+      "9 cm",
+      "6 cm"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 6 cm ?",
+     "bonneReponse": "24 cm",
+     "distracteurs": [
+      "36 cm",
+      "12 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 7 cm ?",
+     "bonneReponse": "28 cm",
+     "distracteurs": [
+      "49 cm",
+      "14 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 8 m ?",
+     "bonneReponse": "32 m",
+     "distracteurs": [
+      "64 m",
+      "16 m"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 11 cm ?",
+     "bonneReponse": "44 cm",
+     "distracteurs": [
+      "121 cm",
+      "22 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 12 m ?",
+     "bonneReponse": "48 m",
+     "distracteurs": [
+      "144 m",
+      "24 m"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 15 cm ?",
+     "bonneReponse": "60 cm",
+     "distracteurs": [
+      "225 cm",
+      "30 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 6 cm et de largeur 4 cm ?",
+     "bonneReponse": "20 cm",
+     "distracteurs": [
+      "24 cm",
+      "10 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 8 cm et de largeur 3 cm ?",
+     "bonneReponse": "22 cm",
+     "distracteurs": [
+      "24 cm",
+      "11 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 12 cm et de largeur 5 cm ?",
+     "bonneReponse": "34 cm",
+     "distracteurs": [
+      "60 cm",
+      "17 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 7 cm et de largeur 2 cm ?",
+     "bonneReponse": "18 cm",
+     "distracteurs": [
+      "14 cm",
+      "9 cm"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 9 cm et de largeur 4 cm ?",
+     "bonneReponse": "26 cm",
+     "distracteurs": [
+      "36 cm",
+      "13 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 15 cm et de largeur 6 cm ?",
+     "bonneReponse": "42 cm",
+     "distracteurs": [
+      "90 cm",
+      "21 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 20 m et de largeur 5 m ?",
+     "bonneReponse": "50 m",
+     "distracteurs": [
+      "100 m",
+      "25 m"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 11 cm et de largeur 3 cm ?",
+     "bonneReponse": "28 cm",
+     "distracteurs": [
+      "33 cm",
+      "14 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 14 cm et de largeur 6 cm ?",
+     "bonneReponse": "40 cm",
+     "distracteurs": [
+      "84 cm",
+      "20 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+     "bonneReponse": "36 cm",
+     "distracteurs": [
+      "65 cm",
+      "18 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    }
+   ]
+  },
+  "cm1-mesures.yaml": {
+   "items": 24,
+   "itemsNumeriques": 24,
+   "repartition": {
+    "la-plus-grande": 7,
+    "intermediaire": 4,
+    "la-plus-petite": 13
+   },
+   "strategieToujoursLePlusGrand_pourcent": 29.2,
+   "strategieToujoursIntermediaire_pourcent": 16.7,
+   "strategieToujoursLePlusPetit_pourcent": 54.2,
+   "hasard_pourcent": 33.3,
+   "detail": [
+    {
+     "enonce": "7 cm, combien de mm ?",
+     "bonneReponse": "70 mm",
+     "distracteurs": [
+      "700 mm",
+      "7000 mm"
+     ],
+     "rangDeLaBonneReponse": "la-plus-petite",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4 m, combien de cm ?",
+     "bonneReponse": "400 cm",
+     "distracteurs": [
+      "40 cm",
+      "4000 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "3 km, combien de m ?",
+     "bonneReponse": "3000 m",
+     "distracteurs": [
+      "30 m",
+      "300 m"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "2 m, combien de mm ?",
+     "bonneReponse": "2000 mm",
+     "distracteurs": [
+      "20 mm",
+      "200 mm"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "700 mm, combien de cm ?",
+     "bonneReponse": "70 cm",
+     "distracteurs": [
+      "7 cm",
+      "7000 cm"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "500 cm, combien de m ?",
+     "bonneReponse": "5 m",
+     "distracteurs": [
+      "50 m",
+      "50000 m"
+     ],
+     "rangDeLaBonneReponse": "la-plus-petite",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "6000 m, combien de km ?",
+     "bonneReponse": "6 km",
+     "distracteurs": [
+      "600 km",
+      "6000000 km"
+     ],
+     "rangDeLaBonneReponse": "la-plus-petite",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "5000 mm, combien de m ?",
+     "bonneReponse": "5 m",
+     "distracteurs": [
+      "500 m",
+      "5000000 m"
+     ],
+     "rangDeLaBonneReponse": "la-plus-petite",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4 kg, combien de g ?",
+     "bonneReponse": "4000 g",
+     "distracteurs": [
+      "40 g",
+      "400 g"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "3 tonnes, combien de kg ?",
+     "bonneReponse": "3000 kg",
+     "distracteurs": [
+      "30 kg",
+      "300 kg"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "2 kg, combien de g ?",
+     "bonneReponse": "2000 g",
+     "distracteurs": [
+      "20 g",
+      "200 g"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "7 tonnes, combien de kg ?",
+     "bonneReponse": "7000 kg",
+     "distracteurs": [
+      "70 kg",
+      "700 kg"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "6000 g, combien de kg ?",
+     "bonneReponse": "6 kg",
+     "distracteurs": [
+      "600 kg",
+      "6000000 kg"
+     ],
+     "rangDeLaBonneReponse": "la-plus-petite",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "5000 kg, combien de tonnes ?",
+     "bonneReponse": "5 tonnes",
+     "distracteurs": [
+      "500 tonnes",
+      "5000000 tonnes"
+     ],
+     "rangDeLaBonneReponse": "la-plus-petite",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "9000 g, combien de kg ?",
+     "bonneReponse": "9 kg",
+     "distracteurs": [
+      "900 kg",
+      "9000000 kg"
+     ],
+     "rangDeLaBonneReponse": "la-plus-petite",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4000 kg, combien de tonnes ?",
+     "bonneReponse": "4 tonnes",
+     "distracteurs": [
+      "400 tonnes",
+      "4000000 tonnes"
+     ],
+     "rangDeLaBonneReponse": "la-plus-petite",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "6 cl, combien de ml ?",
+     "bonneReponse": "60 ml",
+     "distracteurs": [
+      "600 ml",
+      "6000 ml"
+     ],
+     "rangDeLaBonneReponse": "la-plus-petite",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4 L, combien de cl ?",
+     "bonneReponse": "400 cl",
+     "distracteurs": [
+      "40 cl",
+      "4000 cl"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "3 L, combien de ml ?",
+     "bonneReponse": "3000 ml",
+     "distracteurs": [
+      "30 ml",
+      "300 ml"
+     ],
+     "rangDeLaBonneReponse": "la-plus-grande",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "9 cl, combien de ml ?",
+     "bonneReponse": "90 ml",
+     "distracteurs": [
+      "900 ml",
+      "9000 ml"
+     ],
+     "rangDeLaBonneReponse": "la-plus-petite",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "700 ml, combien de cl ?",
+     "bonneReponse": "70 cl",
+     "distracteurs": [
+      "7 cl",
+      "7000 cl"
+     ],
+     "rangDeLaBonneReponse": "intermediaire",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "700 cl, combien de L ?",
+     "bonneReponse": "7 L",
+     "distracteurs": [
+      "70 L",
+      "70000 L"
+     ],
+     "rangDeLaBonneReponse": "la-plus-petite",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "5000 ml, combien de L ?",
+     "bonneReponse": "5 L",
+     "distracteurs": [
+      "500 L",
+      "5000000 L"
+     ],
+     "rangDeLaBonneReponse": "la-plus-petite",
+     "doublonDeValeur": false
+    },
+    {
+     "enonce": "4000 ml, combien de L ?",
+     "bonneReponse": "4 L",
+     "distracteurs": [
+      "400 L",
+      "4000000 L"
+     ],
+     "rangDeLaBonneReponse": "la-plus-petite",
+     "doublonDeValeur": false
+    }
+   ]
+  }
+ }
+}
