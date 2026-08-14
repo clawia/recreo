@@ -10,16 +10,24 @@
      des propositions), et ADR-0038 clause 2 n'a ici aucun point de focus a examiner. -->
 <div th:fragment="confirmation" class="ecran-de-jeu">
     <p class="question-confirmation">Si tu quittes, tu perds ta partie en cours. Veux-tu vraiment quitter ?</p>
-    <!-- ADR-0038 clause 1 : ce bouton est le premier arret de tabulation de cet ecran, et sa requete
-         ne detruit rien - c'est ce qui rend l'invariante vraie ici, pas seulement declaree.
-         ADR-0017 : ce bouton fait avancer l'enfant (il reste dans le jeu), donc data-role="action". -->
-    <button type="button" class="btn continuer-partie" data-role="action"
-            hx-post="/retour/annuler" hx-target="#jeu" hx-swap="innerHTML">Continuer la partie</button>
-    <!-- ADR-0017 : ce bouton fait sortir l'enfant du jeu, donc data-role="sortie" - et sa requete
-         detruit reellement la partie, contrairement a celui de fragments/manche.html qui ne mene
-         plus qu'ici. Meme mot que toute autre sortie de l'application (ADR-0022 / S6-9). -->
-    <button type="button" class="btn retour-accueil" data-role="sortie"
-            hx-post="/retour/confirmer" hx-target="#jeu" hx-swap="innerHTML">Les jeux</button>
+    <!-- ines-design, proposition s11 : les deux boutons partagent un seul conteneur pour que la
+         feuille maison les empile et les ecarte sans toucher a .continuer-partie ni .retour-accueil,
+         qui restent les classes partagees par le reste de l'application (ADR-0017). Aucun element
+         focalisable ajoute : la derivation par balise de AucunArretDeTabulationNEstDestructeurTest et
+         d'ADR-0017 (button, a[href]) ne voit que les deux boutons, inchanges. -->
+    <div class="confirmation-actions">
+        <!-- ADR-0038 clause 1 : ce bouton est le premier arret de tabulation de cet ecran, et sa
+             requete ne detruit rien - c'est ce qui rend l'invariante vraie ici, pas seulement
+             declaree. ADR-0017 : ce bouton fait avancer l'enfant (il reste dans le jeu), donc
+             data-role="action". -->
+        <button type="button" class="btn continuer-partie" data-role="action"
+                hx-post="/retour/annuler" hx-target="#jeu" hx-swap="innerHTML">Continuer la partie</button>
+        <!-- ADR-0017 : ce bouton fait sortir l'enfant du jeu, donc data-role="sortie" - et sa requete
+             detruit reellement la partie, contrairement a celui de fragments/manche.html qui ne mene
+             plus qu'ici. Meme mot que toute autre sortie de l'application (ADR-0022 / S6-9). -->
+        <button type="button" class="btn retour-accueil" data-role="sortie"
+                hx-post="/retour/confirmer" hx-target="#jeu" hx-swap="innerHTML">Les jeux</button>
+    </div>
 </div>
 </body>
 </html>
