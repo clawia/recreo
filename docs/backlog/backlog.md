@@ -3425,3 +3425,76 @@ un sprint :
   un effet pedagogique direct - `nadia-prof` la nomme, jugement pedagogique de la reformulation qui
   reste le sien - et sa correction ferme aussi le defaut de pli de M4 sur ce jeu dans le meme geste
   (voir l'amendement du 2026-08-14 de `DEC-0025`).
+
+## Gain vertical - retrait du bouton de sortie du fragment de manche (DEC-0027)
+
+Demande de l'utilisatrice, s11 : gagner de la place verticale sur l'ecran de manche en ne gardant
+qu'une seule sortie, celle de l'en-tete, plutot que les deux sorties actuelles (en-tete masque en
+jeu, bouton du fragment visible). **Story soumise a arbitrage prealable de `nadia-prof` avant tout
+developpement** - voir `DEC-0027-retrait-bouton-sortie-fragment-manche-reouvre-s6-9-arbitrage-
+prealable-requis.md` : cette forme est exactement celle que `nadia-prof` a refusee lors de
+l'arbitrage prealable de S6-9 (2026-08-07), avant de valider la forme inverse (sortie du fragment
+conservee, en-tete masque) comme Done pedagogique le 2026-08-10.
+
+### Story - Une seule sortie visible en jeu, portee par l'en-tete plutot que par le fragment de manche
+
+**Non affectee a un sprint. Ne peut pas etre planifiee par `sofia-sm` avant que l'arbitrage
+prealable du point 2 de `DEC-0027` soit rendu et ecrit dans
+`squad/conformite/FICHE-bandit-manchot-additions-cp.md`.**
+
+- **Besoin** : en tant qu'eleve de CP ou de CM1 en train de jouer une manche, je veux que la zone
+  ou je lis la question et les propositions ne soit pas allongee par un bouton de sortie qui existe
+  deja ailleurs sur l'ecran, afin de voir plus de la question, du message et de l'indice sans avoir
+  a faire defiler la page.
+- **Competence programme visee** : transverse - ergonomie et espace d'ecran, pas de contenu
+  pedagogique.
+- **Perimetre** : le seul bouton concerne est `button.btn.retour-accueil` de
+  `fragments/manche.html` (manche en cours, echec et reussite, puisque ce fragment rend ces trois
+  etats depuis s10). L'ecran de fin de partie (`fragments/retour.html`, `sortie-pleine`) n'est pas
+  concerne : il ne porte deja qu'une seule action, validee par `nadia-prof` en S3-6, et cette story
+  n'y change rien.
+- **Criteres d'acceptation** :
+  - Etant donne l'arbitrage prealable de `nadia-prof` prescrit par `DEC-0027`, quand cette story
+    est planifiee, alors cet arbitrage est deja rendu et ecrit, avec un motif ; s'il refuse la
+    forme, cette story n'est pas developpee telle qu'ecrite et retourne au backlog avec le motif du
+    refus.
+  - Etant donne un ecran de manche rendu pendant une partie (question, echec avec indice,
+    reussite), quand le document est assemble, alors il ne porte plus qu'une seule sortie visible :
+    celle de l'en-tete, atteignable et portant toujours le mot "Les jeux" (`ADR-0022` point 3,
+    inchange).
+  - Etant donne le meme ecran, quand on compte les elements `data-role="sortie"` visibles (au sens
+    de la derivation de masquage d'`ADR-0022`), alors ce compte reste exactement 1, jamais 0 ni 2.
+  - Etant donne l'ecran de fin de partie (`sortie-pleine`), quand cette story est livree, alors cet
+    ecran est inchange : une seule action, l'aplat plein, comme valide par `nadia-prof` en S3-6.
+  - Le gain d'espace vertical obtenu n'est pas chiffre par cette story a l'ecriture : il est mesure
+    par qui livre le lot (`theo-archi` ou `ines-design`), sur le rendu reel, et rapporte dans la
+    revue plutot que suppose.
+- **Ce que cette story ne fait pas** :
+  - Elle ne corrige pas le defaut leve par `DEC-0026` (clause 1 de M13, `ADR-0038`) : le bouton de
+    l'en-tete, une fois demasque, porterait la meme requete destructrice
+    (`data-role="sortie"`, `hx-post="/retour"`) que celui qu'il remplace. Le premier arret de
+    tabulation resterait destructeur, seulement deplace vers un autre element. Si elle est livree
+    seule, la clause 1 d'`ADR-0038` reste rouge exactement comme aujourd'hui.
+  - Elle ne rouvre pas et ne referme pas elle-meme le Done pedagogique VALIDE de S6-9 : c'est
+    l'objet de l'arbitrage prealable exige plus haut, pas de cette story.
+  - Elle ne choisit pas le moyen technique de rendre l'en-tete visible en jeu (feuille de style,
+    marqueur d'etat, autre) : `theo-archi`.
+  - Elle ne compte pas comme l'une des deux stories que `DEC-0026` exige pour son declencheur de
+    reouverture (voir la section precedente) : ni son perimetre ni ses criteres ne portent sur la
+    tabulation ou sur la confirmation avant abandon.
+- **Interaction avec les deux stories de "Dette ouverte par DEC-0026" ci-dessus** :
+  - Ces deux stories restent prioritaires : `DEC-0026` en a deja fait un engagement du sprint 11,
+    sur un motif de perte de partie sans confirmation, pas un gain d'espace. Cette story ne les
+    remplace pas et ne doit pas leur prendre leur place de planning.
+  - Si la story "confirmation avant d'abandonner une partie en cours" est retenue pour tenir
+    l'engagement de `DEC-0026`, cette story devient a faible risque une fois ce remede livre :
+    aucune sortie, quelle qu'elle soit, ne detruirait plus la partie d'un seul geste, et l'ordre
+    entre les deux n'est alors pas contraint.
+  - Si c'est la story "la premiere tabulation ne mene jamais a la sortie" qui est retenue a la
+    place, cette story doit **suivre** ce remede, jamais le precede : retirer un des deux elements
+    de sortie du document changerait la population d'elements que ce remede reordonne, avec risque
+    de defaire un travail deja livre.
+- **Lien decision** : `DEC-0027-retrait-bouton-sortie-fragment-manche-reouvre-s6-9-arbitrage-
+  prealable-requis.md`.
+- **Agent pressenti** : arbitrage prealable a `nadia-prof` d'abord (route par `sofia-sm`) ; mise en
+  oeuvre a affecter ensuite par `sofia-sm`, si l'arbitrage l'autorise.
