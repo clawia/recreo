@@ -1,0 +1,475 @@
+{
+ "bandit-manchot-additions-cp": {
+  "coups": [
+   {
+    "n": 1,
+    "message": "Ce n'est pas ça. Essaie encore ! Compte sur tes doigts.",
+    "marques": 1,
+    "props": [
+     "12*",
+     "10",
+     "8"
+    ]
+   },
+   {
+    "n": 2,
+    "message": "Ce n'est pas ça. Essaie encore ! Compte sur tes doigts.",
+    "marques": 1,
+    "props": [
+     "12*",
+     "10",
+     "8"
+    ],
+    "focus": "12"
+   },
+   {
+    "n": 3,
+    "message": "C'est 10. Appuie sur 10. Compte sur tes doigts.",
+    "marques": 1,
+    "props": [
+     "12*",
+     "10",
+     "8"
+    ],
+    "focus": "10"
+   }
+  ],
+  "revelation_message": "C'est 10. Appuie sur 10. Compte sur tes doigts.",
+  "revelation_explication": "",
+  "revelation_indice": true,
+  "revelation_props": [
+   "12*",
+   "10",
+   "8"
+  ],
+  "revelation_marques": 1,
+  "revelation_focus": "BUTTON|btn proposition|10",
+  "revelation_focus_position": "2/3",
+  "revelee_annoncee": "10. Compte sur tes doigts",
+  "clause5_focus_est_la_revelee": false,
+  "tab_focus": "BUTTON|btn proposition|action|8",
+  "tab_est_sortie": false,
+  "partie_en_cours_apres_entree": true,
+  "ecran_apres_entree": "ecran-de-jeu",
+  "message_apres_entree": "C'est 10. Appuie sur 10. Compte sur tes doigts.",
+  "M14_candidates": [
+   "10"
+  ],
+  "M14_pressee": "10",
+  "M14_props_avant": [
+   "12*",
+   "10",
+   "8*"
+  ],
+  "M14_props_apres": [
+   "8",
+   "7",
+   "6"
+  ],
+  "M14_marques_avant_apres": [
+   2,
+   0
+  ],
+  "M14_message_apres": null,
+  "M14_enonce_inchange": false,
+  "M14_en_jeu": true,
+  "M14_focus_apres": "P|enonce|"
+ },
+ "bandit-manchot-comparer-nombres-cp": {
+  "coups": [
+   {
+    "n": 1,
+    "message": "Ce n'est pas ça. Essaie encore ! Compare les dizaines : 2 dizaines, c'est moins que 4 dizaines.",
+    "marques": 1,
+    "props": [
+     "<",
+     "=*",
+     ">"
+    ]
+   },
+   {
+    "n": 2,
+    "message": "Ce n'est pas ça. Essaie encore ! Compare les dizaines : 2 dizaines, c'est moins que 4 dizaines.",
+    "marques": 1,
+    "props": [
+     "<",
+     "=*",
+     ">"
+    ],
+    "focus": "="
+   },
+   {
+    "n": 3,
+    "message": "C'est <. Appuie sur <. Compare les dizaines : 2 dizaines, c'est moins que 4 dizaines.",
+    "marques": 1,
+    "props": [
+     "<",
+     "=*",
+     ">"
+    ],
+    "focus": "<"
+   }
+  ],
+  "revelation_message": "C'est <. Appuie sur <. Compare les dizaines : 2 dizaines, c'est moins que 4 dizaines.",
+  "revelation_explication": "",
+  "revelation_indice": true,
+  "revelation_props": [
+   "<",
+   "=*",
+   ">"
+  ],
+  "revelation_marques": 1,
+  "revelation_focus": "BUTTON|btn proposition|<",
+  "revelation_focus_position": "1/3",
+  "revelee_annoncee": "<. Compare les dizaines : 2 dizaines, c'est moins que 4 dizaines",
+  "clause5_focus_est_la_revelee": false,
+  "tab_focus": "BUTTON|btn proposition deja-essayee|action|=",
+  "tab_est_sortie": false,
+  "partie_en_cours_apres_entree": true,
+  "ecran_apres_entree": "ecran-de-jeu",
+  "message_apres_entree": "C'est <. Appuie sur <. Compare les dizaines : 2 dizaines, c'est moins que 4 dizaines.",
+  "M14_candidates": [
+   "<",
+   ">"
+  ],
+  "M14_pressee": "<",
+  "M14_props_avant": [
+   "<",
+   "=*",
+   ">"
+  ],
+  "M14_props_apres": [
+   "=",
+   ">",
+   "<"
+  ],
+  "M14_marques_avant_apres": [
+   1,
+   0
+  ],
+  "M14_message_apres": null,
+  "M14_enonce_inchange": false,
+  "M14_en_jeu": true,
+  "M14_focus_apres": "P|enonce|"
+ },
+ "bandit-manchot-complements-10-cp": {
+  "coups": [
+   {
+    "n": 1,
+    "message": "Ce n'est pas ça. Essaie encore ! Lève 8 doigts, puis compte ceux qui manquent pour arriver à 10.",
+    "marques": 1,
+    "props": [
+     "8*",
+     "1",
+     "2"
+    ]
+   },
+   {
+    "n": 2,
+    "message": "Ce n'est pas ça. Essaie encore ! Lève 8 doigts, puis compte ceux qui manquent pour arriver à 10.",
+    "marques": 1,
+    "props": [
+     "8*",
+     "1",
+     "2"
+    ],
+    "focus": "8"
+   },
+   {
+    "n": 3,
+    "message": "C'est 2. Appuie sur 2. Lève 8 doigts, puis compte ceux qui manquent pour arriver à 10.",
+    "marques": 1,
+    "props": [
+     "8*",
+     "1",
+     "2"
+    ],
+    "focus": "2"
+   }
+  ],
+  "revelation_message": "C'est 2. Appuie sur 2. Lève 8 doigts, puis compte ceux qui manquent pour arriver à 10.",
+  "revelation_explication": "",
+  "revelation_indice": true,
+  "revelation_props": [
+   "8*",
+   "1",
+   "2"
+  ],
+  "revelation_marques": 1,
+  "revelation_focus": "BUTTON|btn proposition|2",
+  "revelation_focus_position": "3/3",
+  "revelee_annoncee": "2. Lève 8 doigts, puis compte ceux qui manquent pour arriver à 10",
+  "clause5_focus_est_la_revelee": false,
+  "tab_focus": "BUTTON|btn retour-accueil|sortie|Les jeux",
+  "tab_est_sortie": true,
+  "partie_en_cours_apres_entree": false,
+  "ecran_apres_entree": "-",
+  "message_apres_entree": null
+ },
+ "bandit-manchot-conjugaison-present-cm1": {
+  "coups": [
+   {
+    "n": 1,
+    "message": "Ce n'est pas ça. Essaie encore !",
+    "marques": 1,
+    "props": [
+     "aimeront*",
+     "aimais",
+     "aimaient",
+     "aimait"
+    ]
+   },
+   {
+    "n": 2,
+    "message": "Ce n'est pas ça. Essaie encore !",
+    "marques": 1,
+    "props": [
+     "aimeront*",
+     "aimais",
+     "aimaient",
+     "aimait"
+    ],
+    "focus": "aimeront"
+   },
+   {
+    "n": 3,
+    "message": "C'est aimaient. Appuie sur aimaient.",
+    "marques": 1,
+    "props": [
+     "aimeront*",
+     "aimais",
+     "aimaient",
+     "aimait"
+    ],
+    "focus": "aimaient"
+   }
+  ],
+  "revelation_message": "C'est aimaient. Appuie sur aimaient.",
+  "revelation_explication": "",
+  "revelation_indice": false,
+  "revelation_props": [
+   "aimeront*",
+   "aimais",
+   "aimaient",
+   "aimait"
+  ],
+  "revelation_marques": 1,
+  "revelation_focus": "BUTTON|btn proposition|aimaient",
+  "revelation_focus_position": "3/4",
+  "revelee_annoncee": "aimaient",
+  "clause5_focus_est_la_revelee": true,
+  "tab_focus": "BUTTON|btn proposition|action|aimait",
+  "tab_est_sortie": false,
+  "partie_en_cours_apres_entree": true,
+  "ecran_apres_entree": "ecran-de-jeu",
+  "message_apres_entree": "C'est aimaient. Appuie sur aimaient.",
+  "M14_candidates": [
+   "aimais"
+  ],
+  "M14_pressee": "aimais",
+  "M14_props_avant": [
+   "aimeront*",
+   "aimais",
+   "aimaient",
+   "aimait*"
+  ],
+  "M14_props_apres": [
+   "aimeront*",
+   "aimais*",
+   "aimaient",
+   "aimait"
+  ],
+  "M14_marques_avant_apres": [
+   2,
+   2
+  ],
+  "M14_message_apres": "C'est aimaient. Appuie sur aimaient.",
+  "M14_enonce_inchange": true,
+  "M14_en_jeu": true,
+  "M14_focus_apres": "BUTTON|btn proposition|aimaient"
+ },
+ "bandit-manchot-le-bon-son-cp": {
+  "coups": [
+   {
+    "n": 1,
+    "message": "Ce n'est pas ça. Essaie encore ! On entend aussi ce son dans le mot ballon.",
+    "marques": 1,
+    "props": [
+     "an*",
+     "in",
+     "on"
+    ]
+   },
+   {
+    "n": 2,
+    "message": "Ce n'est pas ça. Essaie encore ! On entend aussi ce son dans le mot ballon.",
+    "marques": 1,
+    "props": [
+     "an*",
+     "in",
+     "on"
+    ],
+    "focus": "an"
+   },
+   {
+    "n": 3,
+    "message": "C'est on. Appuie sur on. On entend aussi ce son dans le mot ballon.",
+    "marques": 1,
+    "props": [
+     "an*",
+     "in",
+     "on"
+    ],
+    "focus": "on"
+   }
+  ],
+  "revelation_message": "C'est on. Appuie sur on. On entend aussi ce son dans le mot ballon.",
+  "revelation_explication": "",
+  "revelation_indice": true,
+  "revelation_props": [
+   "an*",
+   "in",
+   "on"
+  ],
+  "revelation_marques": 1,
+  "revelation_focus": "BUTTON|btn proposition|on",
+  "revelation_focus_position": "3/3",
+  "revelee_annoncee": "on. On entend aussi ce son dans le mot ballon",
+  "clause5_focus_est_la_revelee": false,
+  "tab_focus": "BUTTON|btn retour-accueil|sortie|Les jeux",
+  "tab_est_sortie": true,
+  "partie_en_cours_apres_entree": false,
+  "ecran_apres_entree": "-",
+  "message_apres_entree": null
+ },
+ "bandit-manchot-problemes-additifs-cp": {
+  "coups": [
+   {
+    "n": 1,
+    "message": "Ce n'est pas ça. Essaie encore ! Elle avait des images et elle en trouve d'autres : additionne 6 et 3.",
+    "marques": 1,
+    "props": [
+     "6*",
+     "9",
+     "3"
+    ]
+   },
+   {
+    "n": 2,
+    "message": "Ce n'est pas ça. Essaie encore ! Elle avait des images et elle en trouve d'autres : additionne 6 et 3.",
+    "marques": 1,
+    "props": [
+     "6*",
+     "9",
+     "3"
+    ],
+    "focus": "6"
+   },
+   {
+    "n": 3,
+    "message": "C'est 9. Appuie sur 9. Elle avait des images et elle en trouve d'autres : additionne 6 et 3.",
+    "marques": 1,
+    "props": [
+     "6*",
+     "9",
+     "3"
+    ],
+    "focus": "9"
+   }
+  ],
+  "revelation_message": "C'est 9. Appuie sur 9. Elle avait des images et elle en trouve d'autres : additionne 6 et 3.",
+  "revelation_explication": "",
+  "revelation_indice": true,
+  "revelation_props": [
+   "6*",
+   "9",
+   "3"
+  ],
+  "revelation_marques": 1,
+  "revelation_focus": "BUTTON|btn proposition|9",
+  "revelation_focus_position": "2/3",
+  "revelee_annoncee": "9. Elle avait des images et elle en trouve d'autres : additionne 6 et 3",
+  "clause5_focus_est_la_revelee": false,
+  "tab_focus": "BUTTON|btn proposition|action|3",
+  "tab_est_sortie": false,
+  "partie_en_cours_apres_entree": true,
+  "ecran_apres_entree": "ecran-de-jeu",
+  "message_apres_entree": "C'est 9. Appuie sur 9. Elle avait des images et elle en trouve d'autres : additionne 6 et 3.",
+  "M14_candidates": [
+   "9"
+  ],
+  "M14_pressee": "9",
+  "M14_props_avant": [
+   "6*",
+   "9",
+   "3*"
+  ],
+  "M14_props_apres": [
+   "6",
+   "16",
+   "4"
+  ],
+  "M14_marques_avant_apres": [
+   2,
+   0
+  ],
+  "M14_message_apres": null,
+  "M14_enonce_inchange": false,
+  "M14_en_jeu": true,
+  "M14_focus_apres": "P|enonce|"
+ },
+ "bandit-manchot-soustractions-cp": {
+  "coups": [
+   {
+    "n": 1,
+    "message": "Ce n'est pas ça. Essaie encore ! Lève 6 doigts, puis baisses-en 2 un par un.",
+    "marques": 1,
+    "props": [
+     "2*",
+     "8",
+     "4"
+    ]
+   },
+   {
+    "n": 2,
+    "message": "Ce n'est pas ça. Essaie encore ! Lève 6 doigts, puis baisses-en 2 un par un.",
+    "marques": 1,
+    "props": [
+     "2*",
+     "8",
+     "4"
+    ],
+    "focus": "2"
+   },
+   {
+    "n": 3,
+    "message": "C'est 4. Appuie sur 4. Lève 6 doigts, puis baisses-en 2 un par un.",
+    "marques": 1,
+    "props": [
+     "2*",
+     "8",
+     "4"
+    ],
+    "focus": "4"
+   }
+  ],
+  "revelation_message": "C'est 4. Appuie sur 4. Lève 6 doigts, puis baisses-en 2 un par un.",
+  "revelation_explication": "",
+  "revelation_indice": true,
+  "revelation_props": [
+   "2*",
+   "8",
+   "4"
+  ],
+  "revelation_marques": 1,
+  "revelation_focus": "BUTTON|btn proposition|4",
+  "revelation_focus_position": "3/3",
+  "revelee_annoncee": "4. Lève 6 doigts, puis baisses-en 2 un par un",
+  "clause5_focus_est_la_revelee": false,
+  "tab_focus": "BUTTON|btn retour-accueil|sortie|Les jeux",
+  "tab_est_sortie": true,
+  "partie_en_cours_apres_entree": false,
+  "ecran_apres_entree": "-",
+  "message_apres_entree": null
+ }
+}

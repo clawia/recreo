@@ -28,7 +28,15 @@
   67 au plus long**, contre 40 et 61 pour "Le bon verbe" dont j'ai mesure le cabinet sous le pli. Par
   derivation - annoncee comme derivation, je ne l'ai jamais mesure - c'est le jeu de CP a regarder en
   premier pour savoir si le message d'erreur y sera visible sans defiler.
-- **Derniere mise a jour** : 2026-08-12
+- **Second verdict du 2026-08-13 sur le lot de cloture du sprint 10 (`643c6f4`)** : **REFUSE**,
+  aucun Done pedagogique, **un seul motif bloquant** - **M13 clause 1 sur l'ecran de revelation de
+  M5**. Sur ce jeu, je n'ai pas tire la configuration fautive, mais le mecanisme y est identique.
+  **M4 reste NON TENUE**, de 63,19 px en echec et 83,19 px a la revelation. Le verdict complet et
+  l'etat de mes trente-huit conditions sont dans
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Second verdict du 2026-08-13". **Le
+  refus du matin est corrige sur ses quatorze cas** et les clauses 2, 3, 4 et 5 de M13 sont tenues pour
+  la premiere fois. **M4 ne bloque plus**, levee par `DEC-0025`, et mon constat n'est pas retire.
+- **Derniere mise a jour** : 2026-08-13
 
 ## Competences visees
 
@@ -59,6 +67,41 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+
+### Second verdict du 2026-08-13 sur le lot de cloture du sprint 10 : REFUSE
+
+- **Verdict** : **REFUSE.** Aucun Done pedagogique sur ce jeu.
+- **Le verdict complet, ses mesures et l'etat de mes trente-huit conditions sont dans**
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Second verdict du 2026-08-13". Le
+  meuble et la mecanique sont communs aux sept jeux du catalogue : je ne recopie pas le raisonnement,
+  j'ecris ici ce qui est propre a ce jeu.
+- **Increment audite** : `round-two` a `643c6f4`, jar **reconstruit depuis mon worktree** et correctif
+  verifie dans le HTML servi. `mvn -B verify` : BUILD SUCCESS. Done technique acquis.
+- **Mon motif de refus sur ce jeu, unique et bloquant - M13 clause 1 sur l'ecran de revelation** :
+  - **Mesure sur ce jeu** : une revelation mesuree, reponse revelee en **position 2 sur 3** - la
+    tabulation reste dans les propositions et la partie survit. **Je n'ai donc pas constate la
+    destruction sur ce jeu**, et je l'ecris plutot que de la supposer.
+  - **Mais le defaut y est present**, comme deduction et non comme mesure : la loi verifiee sur 25
+    revelations est que la partie est detruite **si et seulement si** la reponse revelee occupe la
+    derniere position, et l'ordre est tire a chaque manche.
+- **M4 sur ce jeu, mesuree apres le resserrement de marges** (pire cas de 36 etats de message et de
+  4 ecrans de revelation, 360 x 640, pli a `y = 640`) :
+  - echec avec indice, pire cas : **703,19 px**, soit **63,19 px SOUS le pli** ;
+  - **ecran de revelation, pire cas : 723,19 px, soit 83,19 px SOUS le pli** ;
+  - "Bravo !" : 591,19 px, 48,81 px au-dessus.
+  - **M4 reste NON TENUE sur ce jeu.** Elle etait a 747,19 px ce matin : le resserrement lui rend 44
+    px et il en manque encore 63. Ses indices sont les plus longs du CP - *"Il avait des bonbons et il
+    en mange : soustrais 4 de 9."* - et c'est ce qui le fait deborder.
+- **Ce qui est corrige sur ce jeu et que je credite** : apres une bonne comme apres une mauvaise
+  reponse, Tabulation puis Entree laisse **la partie en cours** ; le focus va sur l'**enonce** de la
+  question neuve apres une bonne reponse (clause 4) et sur la **proposition pressee, barree**, apres une
+  mauvaise (clause 2) ; sur l'ecran de revelation il va sur la **proposition qui porte la reponse
+  revelee** (clause 5). Les quatre clauses sont tenues sur ce jeu, mesurees au clavier.
+- **Ce qui est propre a ce jeu** : les enonces sont des phrases entieres a lire, en plus de l'indice.
+  C'est le seul jeu de CP dont l'enonce et l'indice sont tous deux longs, et le budget vertical n'y
+  suffit pas.
+- **Aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge.**
 
 ### Verdict courant - chantier du bandit manchot (mecanique, forme, M10), du 2026-08-13 : REFUSE
 

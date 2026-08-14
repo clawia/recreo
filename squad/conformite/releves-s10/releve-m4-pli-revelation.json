@@ -1,0 +1,282 @@
+{
+ "bandit-manchot-additions-cp": {
+  "mesures": [
+   {
+    "enonce": "3 + 6",
+    "bas": 549.19,
+    "message": "C'est 9. Appuie sur 9. Compte sur tes doigts.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "6 + 2",
+    "bas": 549.19,
+    "message": "C'est 8. Appuie sur 8. Compte sur tes doigts.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "5 + 2",
+    "bas": 549.19,
+    "message": "C'est 7. Appuie sur 7. Compte sur tes doigts.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "1 + 4",
+    "bas": 549.19,
+    "message": "C'est 5. Appuie sur 5. Compte sur tes doigts.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "2 + 6",
+    "bas": 549.19,
+    "message": "C'est 8. Appuie sur 8. Compte sur tes doigts.",
+    "hauteurDoc": 640
+   }
+  ],
+  "pire": {
+   "enonce": "3 + 6",
+   "bas": 549.19,
+   "message": "C'est 9. Appuie sur 9. Compte sur tes doigts.",
+   "hauteurDoc": 640
+  }
+ },
+ "bandit-manchot-comparer-nombres-cp": {
+  "mesures": [
+   {
+    "enonce": "63 ___ 12",
+    "bas": 579.19,
+    "message": "C'est >. Appuie sur >. Compare les dizaines : 6 dizaines, c'est plus que 1 dizaine.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "3 ___ 78",
+    "bas": 579.19,
+    "message": "C'est <. Appuie sur <. 3 n'a qu'un chiffre, 78 en a deux : 3 est plus petit que 78.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "36 ___ 36",
+    "bas": 579.19,
+    "message": "C'est =. Appuie sur =. 36 et 36, c'est le même nombre : ils sont égaux.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "19 ___ 33",
+    "bas": 579.19,
+    "message": "C'est <. Appuie sur <. Compare les dizaines : 1 dizaine, c'est moins que 3 dizaines.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "3 ___ 78",
+    "bas": 579.19,
+    "message": "C'est <. Appuie sur <. 3 n'a qu'un chiffre, 78 en a deux : 3 est plus petit que 78.",
+    "hauteurDoc": 640
+   }
+  ],
+  "pire": {
+   "enonce": "63 ___ 12",
+   "bas": 579.19,
+   "message": "C'est >. Appuie sur >. Compare les dizaines : 6 dizaines, c'est plus que 1 dizaine.",
+   "hauteurDoc": 640
+  }
+ },
+ "bandit-manchot-complements-10-cp": {
+  "mesures": [
+   {
+    "enonce": "8 + ? = 10",
+    "bas": 579.19,
+    "message": "C'est 2. Appuie sur 2. Lève 8 doigts, puis compte ceux qui manquent pour arriver à 10.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "2 + ? = 10",
+    "bas": 579.19,
+    "message": "C'est 8. Appuie sur 8. Lève 2 doigts, puis compte ceux qui manquent pour arriver à 10.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "7 + ? = 10",
+    "bas": 579.19,
+    "message": "C'est 3. Appuie sur 3. Lève 7 doigts, puis compte ceux qui manquent pour arriver à 10.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "6 + ? = 10",
+    "bas": 579.19,
+    "message": "C'est 4. Appuie sur 4. Lève 6 doigts, puis compte ceux qui manquent pour arriver à 10.",
+    "hauteurDoc": 640
+   }
+  ],
+  "pire": {
+   "enonce": "8 + ? = 10",
+   "bas": 579.19,
+   "message": "C'est 2. Appuie sur 2. Lève 8 doigts, puis compte ceux qui manquent pour arriver à 10.",
+   "hauteurDoc": 640
+  }
+ },
+ "bandit-manchot-conjugaison-present-cm1": {
+  "mesures": [
+   {
+    "enonce": "Autrefois, ils ___ ce dessin animé chaque mercredi.",
+    "bas": 703.19,
+    "message": "C'est aimaient. Appuie sur aimaient.",
+    "hauteurDoc": 735
+   },
+   {
+    "enonce": "Vous ___ du chocolat.",
+    "bas": 607.19,
+    "message": "C'est mangez. Appuie sur mangez.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "Elle ___ toujours ses affaires avant de partir en récréation.",
+    "bas": 703.19,
+    "message": "C'est range. Appuie sur range.",
+    "hauteurDoc": 735
+   },
+   {
+    "enonce": "Nous ___ dans la cour pendant la récréation.",
+    "bas": 655.19,
+    "message": "C'est courons. Appuie sur courons.",
+    "hauteurDoc": 687
+   },
+   {
+    "enonce": "Demain, vous ___ à la piscine avec la classe.",
+    "bas": 627.19,
+    "message": "C'est irez. Appuie sur irez.",
+    "hauteurDoc": 659
+   },
+   {
+    "enonce": "Autrefois, il ___ du vélo le dimanche.",
+    "bas": 655.19,
+    "message": "C'est faisait. Appuie sur faisait.",
+    "hauteurDoc": 687
+   }
+  ],
+  "pire": {
+   "enonce": "Autrefois, ils ___ ce dessin animé chaque mercredi.",
+   "bas": 703.19,
+   "message": "C'est aimaient. Appuie sur aimaient.",
+   "hauteurDoc": 735
+  }
+ },
+ "bandit-manchot-le-bon-son-cp": {
+  "mesures": [
+   {
+    "enonce": "MAMAN",
+    "bas": 579.19,
+    "message": "C'est an. Appuie sur an. On entend aussi ce son dans le mot grand.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "LUNDI",
+    "bas": 663.19,
+    "message": "C'est in. Appuie sur in. Dans LUNDI, ce sont les lettres u et n qui font le son in. Regarde : les lettres u et n font ce son.",
+    "hauteurDoc": 695
+   },
+   {
+    "enonce": "DENT",
+    "bas": 663.19,
+    "message": "C'est an. Appuie sur an. Dans DENT, ce sont les lettres e et n qui font le son an. Regarde : les lettres e et n font ce son.",
+    "hauteurDoc": 695
+   },
+   {
+    "enonce": "TIMBRE",
+    "bas": 663.19,
+    "message": "C'est in. Appuie sur in. Dans TIMBRE, ce sont les lettres i et m qui font le son in. Regarde : les lettres i et m font ce son.",
+    "hauteurDoc": 695
+   },
+   {
+    "enonce": "SAPIN",
+    "bas": 579.19,
+    "message": "C'est in. Appuie sur in. On entend aussi ce son dans le mot lapin.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "BALLON",
+    "bas": 579.19,
+    "message": "C'est on. Appuie sur on. On entend aussi ce son dans le mot pont.",
+    "hauteurDoc": 640
+   }
+  ],
+  "pire": {
+   "enonce": "LUNDI",
+   "bas": 663.19,
+   "message": "C'est in. Appuie sur in. Dans LUNDI, ce sont les lettres u et n qui font le son in. Regarde : les lettres u et n font ce son.",
+   "hauteurDoc": 695
+  }
+ },
+ "bandit-manchot-problemes-additifs-cp": {
+  "mesures": [
+   {
+    "enonce": "Ali a 9 cartes et en perd 2. Combien lui en reste-t-il ?",
+    "bas": 675.19,
+    "message": "C'est 7. Appuie sur 7. Il avait des cartes et il en perd : soustrais 2 de 9.",
+    "hauteurDoc": 707
+   },
+   {
+    "enonce": "Mamie a 7 gâteaux et on en mange 3. Combien lui en reste-t-il ?",
+    "bas": 723.19,
+    "message": "C'est 4. Appuie sur 4. Elle avait des gâteaux et on en mange : soustrais 3 de 7.",
+    "hauteurDoc": 755
+   },
+   {
+    "enonce": "Ali a 9 cartes et en perd 2. Combien lui en reste-t-il ?",
+    "bas": 675.19,
+    "message": "C'est 7. Appuie sur 7. Il avait des cartes et il en perd : soustrais 2 de 9.",
+    "hauteurDoc": 707
+   },
+   {
+    "enonce": "Léo a 2 gommes et en gagne 5. Combien en a-t-il ?",
+    "bas": 675.19,
+    "message": "C'est 7. Appuie sur 7. Il avait des gommes et il en gagne d'autres : additionne 2 et 5.",
+    "hauteurDoc": 707
+   }
+  ],
+  "pire": {
+   "enonce": "Mamie a 7 gâteaux et on en mange 3. Combien lui en reste-t-il ?",
+   "bas": 723.19,
+   "message": "C'est 4. Appuie sur 4. Elle avait des gâteaux et on en mange : soustrais 3 de 7.",
+   "hauteurDoc": 755
+  }
+ },
+ "bandit-manchot-soustractions-cp": {
+  "mesures": [
+   {
+    "enonce": "9 - 5 = ?",
+    "bas": 579.19,
+    "message": "C'est 4. Appuie sur 4. Lève 9 doigts, puis baisses-en 5 un par un.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "7 - 5 = ?",
+    "bas": 579.19,
+    "message": "C'est 2. Appuie sur 2. Lève 7 doigts, puis baisses-en 5 un par un.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "8 - 5 = ?",
+    "bas": 579.19,
+    "message": "C'est 3. Appuie sur 3. Lève 8 doigts, puis baisses-en 5 un par un.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "7 - 7 = ?",
+    "bas": 579.19,
+    "message": "C'est 0. Appuie sur 0. Lève 7 doigts, puis baisses-en 7 un par un : il n'en reste plus aucun.",
+    "hauteurDoc": 640
+   },
+   {
+    "enonce": "7 - 7 = ?",
+    "bas": 579.19,
+    "message": "C'est 0. Appuie sur 0. Lève 7 doigts, puis baisses-en 7 un par un : il n'en reste plus aucun.",
+    "hauteurDoc": 640
+   }
+  ],
+  "pire": {
+   "enonce": "9 - 5 = ?",
+   "bas": 579.19,
+   "message": "C'est 4. Appuie sur 4. Lève 9 doigts, puis baisses-en 5 un par un.",
+   "hauteurDoc": 640
+  }
+ }
+}

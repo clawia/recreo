@@ -1,0 +1,149 @@
+{
+ "bandit-manchot-additions-cp": {
+  "nom": "Calcul CP (additions)",
+  "etats_mesures": 36,
+  "pires": {
+   "bravo": {
+    "bas": 495.19,
+    "enonce": "1 + 1",
+    "message": "Bravo !",
+    "hauteurDoc": 640,
+    "cabinet_bas": 431.19
+   },
+   "echec (avec indice)": {
+    "bas": 577.19,
+    "enonce": "5 + 3",
+    "message": "Ce n'est pas ça. Essaie encore ! Compte sur tes doigts.",
+    "hauteurDoc": 640,
+    "cabinet_bas": 431.19
+   }
+  }
+ },
+ "bandit-manchot-comparer-nombres-cp": {
+  "nom": "Comparer les nombres",
+  "etats_mesures": 38,
+  "pires": {
+   "bravo": {
+    "bas": 495.19,
+    "enonce": "9 ___ 9",
+    "message": "Bravo !",
+    "hauteurDoc": 640,
+    "cabinet_bas": 431.19
+   },
+   "echec (avec indice)": {
+    "bas": 607.19,
+    "enonce": "9 ___ 9",
+    "message": "Ce n'est pas ça. Essaie encore ! 9 et 9, c'est le même nombre : ils sont égaux.",
+    "hauteurDoc": 640,
+    "cabinet_bas": 431.19
+   }
+  }
+ },
+ "bandit-manchot-complements-10-cp": {
+  "nom": "Complements a 10",
+  "etats_mesures": 36,
+  "pires": {
+   "echec (avec indice)": {
+    "bas": 637.19,
+    "enonce": "5 + ? = 10",
+    "message": "Ce n'est pas ça. Essaie encore ! Lève 5 doigts d'une main, puis compte ceux de l'autre main : il en reste 5 pour arriver à 10.",
+    "hauteurDoc": 669,
+    "cabinet_bas": 431.19
+   },
+   "bravo": {
+    "bas": 495.19,
+    "enonce": "10 + ? = 10",
+    "message": "Bravo !",
+    "hauteurDoc": 640,
+    "cabinet_bas": 431.19
+   }
+  }
+ },
+ "bandit-manchot-conjugaison-present-cm1": {
+  "nom": "Le bon verbe",
+  "etats_mesures": 40,
+  "pires": {
+   "echec (sans indice)": {
+    "bas": 703.19,
+    "enonce": "Autrefois, je ___ tous les jours dans le jardin.",
+    "message": "Ce n'est pas ça. Essaie encore !",
+    "hauteurDoc": 735,
+    "cabinet_bas": 611.19
+   },
+   "bravo": {
+    "bas": 675.19,
+    "enonce": "Elle ___ toujours ses affaires avant de partir en récréation.",
+    "message": "Bravo !",
+    "hauteurDoc": 707,
+    "cabinet_bas": 611.19
+   },
+   "revelation": {
+    "bas": 703.19,
+    "enonce": "Autrefois, nous ___ toujours les premiers à l'école.",
+    "message": "C'est étions. Appuie sur étions.",
+    "hauteurDoc": 735,
+    "cabinet_bas": 611.19
+   }
+  }
+ },
+ "bandit-manchot-le-bon-son-cp": {
+  "nom": "Le bon son",
+  "etats_mesures": 38,
+  "pires": {
+   "echec (avec indice)": {
+    "bas": 607.19,
+    "enonce": "TIMBRE",
+    "message": "Ce n'est pas ça. Essaie encore ! Regarde : les lettres i et m font ce son.",
+    "hauteurDoc": 640,
+    "cabinet_bas": 431.19
+   },
+   "bravo": {
+    "bas": 495.19,
+    "enonce": "SAPIN",
+    "message": "Bravo !",
+    "hauteurDoc": 640,
+    "cabinet_bas": 431.19
+   }
+  }
+ },
+ "bandit-manchot-problemes-additifs-cp": {
+  "nom": "Petits problemes",
+  "etats_mesures": 36,
+  "pires": {
+   "echec (avec indice)": {
+    "bas": 703.19,
+    "enonce": "Tom a 9 bonbons et en mange 4. Combien lui en reste-t-il ?",
+    "message": "Ce n'est pas ça. Essaie encore ! Il avait des bonbons et il en mange : soustrais 4 de 9.",
+    "hauteurDoc": 735,
+    "cabinet_bas": 527.19
+   },
+   "bravo": {
+    "bas": 591.19,
+    "enonce": "Nino a 5 crayons et en achète 2. Combien en a-t-il ?",
+    "message": "Bravo !",
+    "hauteurDoc": 640,
+    "cabinet_bas": 527.19
+   }
+  }
+ },
+ "bandit-manchot-soustractions-cp": {
+  "nom": "Soustractions CP",
+  "etats_mesures": 37,
+  "pires": {
+   "echec (avec indice)": {
+    "bas": 607.19,
+    "enonce": "5 - 3 = ?",
+    "message": "Ce n'est pas ça. Essaie encore ! Lève 5 doigts, puis baisses-en 3 un par un.",
+    "hauteurDoc": 640,
+    "cabinet_bas": 431.19
+   },
+   "bravo": {
+    "bas": 495.19,
+    "enonce": "10 - 3 = ?",
+    "message": "Bravo !",
+    "hauteurDoc": 640,
+    "cabinet_bas": 431.19
+   }
+  }
+ }
+}

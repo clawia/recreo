@@ -1,0 +1,168 @@
+{
+ "bandit-manchot-additions-cp": [
+  {
+   "tour": 1,
+   "revelee": "6",
+   "position": 2,
+   "nb": 3,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": false,
+   "partie_detruite": false
+  },
+  {
+   "tour": 2,
+   "revelee": "5",
+   "position": 3,
+   "nb": 3,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": true,
+   "partie_detruite": true
+  },
+  {
+   "tour": 3,
+   "revelee": "8",
+   "position": 3,
+   "nb": 3,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": true,
+   "partie_detruite": true
+  },
+  {
+   "tour": 4,
+   "revelee": "6",
+   "position": 2,
+   "nb": 3,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": false,
+   "partie_detruite": false
+  },
+  {
+   "tour": 5,
+   "revelee": "10",
+   "position": 3,
+   "nb": 3,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": true,
+   "partie_detruite": true
+  },
+  {
+   "tour": 6,
+   "revelee": "4",
+   "position": 2,
+   "nb": 3,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": false,
+   "partie_detruite": false
+  },
+  {
+   "tour": 7,
+   "revelee": "5",
+   "position": 3,
+   "nb": 3,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": true,
+   "partie_detruite": true
+  },
+  {
+   "tour": 8,
+   "revelee": "10",
+   "position": 3,
+   "nb": 3,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": true,
+   "partie_detruite": true
+  },
+  {
+   "tour": 10,
+   "revelee": "9",
+   "position": 2,
+   "nb": 3,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": false,
+   "partie_detruite": false
+  },
+  {
+   "tour": 11,
+   "revelee": "6",
+   "position": 2,
+   "nb": 3,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": false,
+   "partie_detruite": false
+  }
+ ],
+ "bandit-manchot-conjugaison-present-cm1": [
+  {
+   "tour": 1,
+   "revelee": "fais",
+   "position": 2,
+   "nb": 4,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": false,
+   "partie_detruite": false
+  },
+  {
+   "tour": 2,
+   "revelee": "aimaient",
+   "position": 3,
+   "nb": 4,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": false,
+   "partie_detruite": false
+  },
+  {
+   "tour": 3,
+   "revelee": "chantent",
+   "position": 4,
+   "nb": 4,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": true,
+   "partie_detruite": true
+  },
+  {
+   "tour": 5,
+   "revelee": "jouerai",
+   "position": 3,
+   "nb": 4,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": false,
+   "partie_detruite": false
+  },
+  {
+   "tour": 6,
+   "revelee": "cherche",
+   "position": 2,
+   "nb": 4,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": false,
+   "partie_detruite": false
+  },
+  {
+   "tour": 8,
+   "revelee": "va",
+   "position": 2,
+   "nb": 4,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": false,
+   "partie_detruite": false
+  },
+  {
+   "tour": 10,
+   "revelee": "cherche",
+   "position": 4,
+   "nb": 4,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": true,
+   "partie_detruite": true
+  },
+  {
+   "tour": 11,
+   "revelee": "ferons",
+   "position": 3,
+   "nb": 4,
+   "focus_sur_revelee": true,
+   "tab_vers_sortie": false,
+   "partie_detruite": false
+  }
+ ]
+}

@@ -1,0 +1,574 @@
+{
+ "bandit-manchot-additions-cp": {
+  "A_bonne": "4",
+  "A_focus": {
+   "focusTag": "P",
+   "focusClasse": "enonce",
+   "focusRole": "-",
+   "focusTexte": "3 + 5",
+   "focusEstEnonce": true,
+   "focusEstSortie": false,
+   "focusEstProposition": false,
+   "focusValeur": "",
+   "anneau": null
+  },
+  "A_message": "Bravo !",
+  "A_focus_apres_tab": "BUTTON|btn proposition|action|10",
+  "A_tab_est_sortie": false,
+  "A_partie_en_cours_apres_entree": true,
+  "A_ecran_apres_entree": "ecran-de-jeu",
+  "B_mauvaise": "7",
+  "B_focus": {
+   "focusTag": "BUTTON",
+   "focusClasse": "btn proposition deja-essayee",
+   "focusRole": "action",
+   "focusTexte": "7",
+   "focusEstEnonce": false,
+   "focusEstSortie": false,
+   "focusEstProposition": true,
+   "focusValeur": "7",
+   "focusMarquee": true,
+   "anneau": null
+  },
+  "B_focus_est_la_pressee": true,
+  "B_message": "Ce n'est pas ça. Essaie encore ! Compte sur tes doigts.",
+  "B_indice_present": true,
+  "B_focus_apres_tab": "BUTTON|btn proposition|action|6",
+  "B_tab_est_sortie": false,
+  "B_partie_en_cours_apres_entree": true,
+  "B_ecran_apres_entree": "ecran-de-jeu",
+  "C_etapes": [
+   {
+    "coup": 1,
+    "pressee": "10",
+    "message": "Ce n'est pas ça. Essaie encore ! Compte sur tes doigts.",
+    "focus": "BUTTON|btn proposition deja-essayee|10",
+    "focus_est_non_pressee": false,
+    "marques": 1,
+    "props": [
+     "10*",
+     "9",
+     "7"
+    ],
+    "indice": true
+   },
+   {
+    "coup": 3,
+    "pressee": "9",
+    "message": "Ce n'est pas ça. Essaie encore ! Compte sur tes doigts.",
+    "focus": "BUTTON|btn proposition deja-essayee|9",
+    "focus_est_non_pressee": false,
+    "marques": 1,
+    "props": [
+     "9*",
+     "6",
+     "8"
+    ],
+    "indice": true
+   },
+   {
+    "coup": 4,
+    "pressee": "6",
+    "message": "Ce n'est pas ça. Essaie encore ! Compte sur tes doigts.",
+    "focus": "BUTTON|btn proposition deja-essayee|6",
+    "focus_est_non_pressee": false,
+    "marques": 2,
+    "props": [
+     "9*",
+     "6*",
+     "8"
+    ],
+    "indice": true
+   }
+  ]
+ },
+ "bandit-manchot-comparer-nombres-cp": {
+  "A_bonne": "=",
+  "A_focus": {
+   "focusTag": "P",
+   "focusClasse": "enonce",
+   "focusRole": "-",
+   "focusTexte": "67 ___ 72",
+   "focusEstEnonce": true,
+   "focusEstSortie": false,
+   "focusEstProposition": false,
+   "focusValeur": "",
+   "anneau": null
+  },
+  "A_message": "Bravo !",
+  "A_focus_apres_tab": "BUTTON|btn proposition|action|<",
+  "A_tab_est_sortie": false,
+  "A_partie_en_cours_apres_entree": true,
+  "A_ecran_apres_entree": "ecran-de-jeu",
+  "B_mauvaise": "<",
+  "B_focus": {
+   "focusTag": "BUTTON",
+   "focusClasse": "btn proposition deja-essayee",
+   "focusRole": "action",
+   "focusTexte": "<",
+   "focusEstEnonce": false,
+   "focusEstSortie": false,
+   "focusEstProposition": true,
+   "focusValeur": "<",
+   "focusMarquee": true,
+   "anneau": null
+  },
+  "B_focus_est_la_pressee": true,
+  "B_message": "Ce n'est pas ça. Essaie encore ! Compare les dizaines : 8 dizaines, c'est plus que 7 dizaines.",
+  "B_indice_present": true,
+  "B_focus_apres_tab": "BUTTON|btn proposition|action|>",
+  "B_tab_est_sortie": false,
+  "B_partie_en_cours_apres_entree": true,
+  "B_ecran_apres_entree": "ecran-de-jeu",
+  "C_etapes": [
+   {
+    "coup": 2,
+    "pressee": ">",
+    "message": "Ce n'est pas ça. Essaie encore ! 73 et 73, c'est le même nombre : ils sont égaux.",
+    "focus": "BUTTON|btn proposition deja-essayee|>",
+    "focus_est_non_pressee": false,
+    "marques": 1,
+    "props": [
+     ">*",
+     "=",
+     "<"
+    ],
+    "indice": true
+   },
+   {
+    "coup": 4,
+    "pressee": "<",
+    "message": "Ce n'est pas ça. Essaie encore ! 14 et 14, c'est le même nombre : ils sont égaux.",
+    "focus": "BUTTON|btn proposition deja-essayee|<",
+    "focus_est_non_pressee": false,
+    "marques": 1,
+    "props": [
+     "<*",
+     ">",
+     "="
+    ],
+    "indice": true
+   },
+   {
+    "coup": 5,
+    "pressee": ">",
+    "message": "Ce n'est pas ça. Essaie encore ! 14 et 14, c'est le même nombre : ils sont égaux.",
+    "focus": "BUTTON|btn proposition deja-essayee|>",
+    "focus_est_non_pressee": false,
+    "marques": 2,
+    "props": [
+     "<*",
+     ">*",
+     "="
+    ],
+    "indice": true
+   }
+  ]
+ },
+ "bandit-manchot-complements-10-cp": {
+  "A_bonne": "6",
+  "A_focus": {
+   "focusTag": "P",
+   "focusClasse": "enonce",
+   "focusRole": "-",
+   "focusTexte": "3 + ? = 10",
+   "focusEstEnonce": true,
+   "focusEstSortie": false,
+   "focusEstProposition": false,
+   "focusValeur": "",
+   "anneau": null
+  },
+  "A_message": "Bravo !",
+  "A_focus_apres_tab": "BUTTON|btn proposition|action|7",
+  "A_tab_est_sortie": false,
+  "A_partie_en_cours_apres_entree": true,
+  "A_ecran_apres_entree": "ecran-de-jeu",
+  "B_mauvaise": "10",
+  "B_focus": {
+   "focusTag": "BUTTON",
+   "focusClasse": "btn proposition deja-essayee",
+   "focusRole": "action",
+   "focusTexte": "10",
+   "focusEstEnonce": false,
+   "focusEstSortie": false,
+   "focusEstProposition": true,
+   "focusValeur": "10",
+   "focusMarquee": true,
+   "anneau": null
+  },
+  "B_focus_est_la_pressee": true,
+  "B_message": "Ce n'est pas ça. Essaie encore ! Lève tes 10 doigts : il n'en manque plus aucun pour arriver à 10.",
+  "B_indice_present": true,
+  "B_focus_apres_tab": "BUTTON|btn proposition|action|1",
+  "B_tab_est_sortie": false,
+  "B_partie_en_cours_apres_entree": true,
+  "B_ecran_apres_entree": "ecran-de-jeu",
+  "C_etapes": [
+   {
+    "coup": 2,
+    "pressee": "5",
+    "message": "Ce n'est pas ça. Essaie encore ! Lève 4 doigts, puis compte ceux qui manquent pour arriver à 10.",
+    "focus": "BUTTON|btn proposition deja-essayee|5",
+    "focus_est_non_pressee": false,
+    "marques": 1,
+    "props": [
+     "5*",
+     "4",
+     "6"
+    ],
+    "indice": true
+   },
+   {
+    "coup": 3,
+    "pressee": "4",
+    "message": "Ce n'est pas ça. Essaie encore ! Lève 4 doigts, puis compte ceux qui manquent pour arriver à 10.",
+    "focus": "BUTTON|btn proposition deja-essayee|4",
+    "focus_est_non_pressee": false,
+    "marques": 2,
+    "props": [
+     "5*",
+     "4*",
+     "6"
+    ],
+    "indice": true
+   }
+  ]
+ },
+ "bandit-manchot-conjugaison-present-cm1": {
+  "A_bonne": "aideras",
+  "A_focus": {
+   "focusTag": "P",
+   "focusClasse": "enonce",
+   "focusRole": "-",
+   "focusTexte": "Nous ___ dans la cour pendant la récréation.",
+   "focusEstEnonce": true,
+   "focusEstSortie": false,
+   "focusEstProposition": false,
+   "focusValeur": "",
+   "anneau": null
+  },
+  "A_message": "Bravo !",
+  "A_focus_apres_tab": "BUTTON|btn proposition|action|cours",
+  "A_tab_est_sortie": false,
+  "A_partie_en_cours_apres_entree": true,
+  "A_ecran_apres_entree": "ecran-de-jeu",
+  "B_mauvaise": "aimait",
+  "B_focus": {
+   "focusTag": "BUTTON",
+   "focusClasse": "btn proposition deja-essayee",
+   "focusRole": "action",
+   "focusTexte": "aimait",
+   "focusEstEnonce": false,
+   "focusEstSortie": false,
+   "focusEstProposition": true,
+   "focusValeur": "aimait",
+   "focusMarquee": true,
+   "anneau": null
+  },
+  "B_focus_est_la_pressee": true,
+  "B_message": "Ce n'est pas ça. Essaie encore !",
+  "B_indice_present": false,
+  "B_focus_apres_tab": "BUTTON|btn proposition|action|aimaient",
+  "B_tab_est_sortie": false,
+  "B_partie_en_cours_apres_entree": true,
+  "B_ecran_apres_entree": "ecran-de-jeu",
+  "C_revelation_message": "C'est aide. Appuie sur aide.",
+  "C_revelation_focus": {
+   "focusTag": "BUTTON",
+   "focusClasse": "btn proposition",
+   "focusRole": "action",
+   "focusTexte": "aide",
+   "focusEstSortie": false,
+   "focusEstProposition": true,
+   "focusValeur": "aide",
+   "anneau": null
+  },
+  "C_focus_apres_tab": "BUTTON|btn retour-accueil|sortie|Les jeux",
+  "C_tab_est_sortie": true,
+  "C_props_avant_appui_a_cote": [
+   "aidait*",
+   "aidera*",
+   "aidez*",
+   "aide"
+  ],
+  "M14_pressee_a_cote": "aidait",
+  "M14_props_apres": [
+   "aidait*",
+   "aidera*",
+   "aidez*",
+   "aide"
+  ],
+  "M14_marques_apres": 3,
+  "M14_message_apres": "C'est aide. Appuie sur aide.",
+  "M14_enonce_inchange": true,
+  "M14_en_jeu": true,
+  "C_etapes": [
+   {
+    "coup": 1,
+    "pressee": "aidait",
+    "message": "Ce n'est pas ça. Essaie encore !",
+    "focus": "BUTTON|btn proposition deja-essayee|aidait",
+    "focus_est_non_pressee": false,
+    "marques": 1,
+    "props": [
+     "aidait*",
+     "aidera",
+     "aidez",
+     "aide"
+    ],
+    "indice": false
+   },
+   {
+    "coup": 2,
+    "pressee": "aidera",
+    "message": "Ce n'est pas ça. Essaie encore !",
+    "focus": "BUTTON|btn proposition deja-essayee|aidera",
+    "focus_est_non_pressee": false,
+    "marques": 2,
+    "props": [
+     "aidait*",
+     "aidera*",
+     "aidez",
+     "aide"
+    ],
+    "indice": false
+   },
+   {
+    "coup": 3,
+    "pressee": "aidez",
+    "message": "C'est aide. Appuie sur aide.",
+    "focus": "BUTTON|btn proposition|aide",
+    "focus_est_non_pressee": true,
+    "marques": 3,
+    "props": [
+     "aidait*",
+     "aidera*",
+     "aidez*",
+     "aide"
+    ],
+    "indice": false
+   }
+  ]
+ },
+ "bandit-manchot-le-bon-son-cp": {
+  "A_bonne": "on",
+  "A_focus": {
+   "focusTag": "P",
+   "focusClasse": "enonce",
+   "focusRole": "-",
+   "focusTexte": "MONTRE",
+   "focusEstEnonce": true,
+   "focusEstSortie": false,
+   "focusEstProposition": false,
+   "focusValeur": "",
+   "anneau": null
+  },
+  "A_message": "Bravo !",
+  "A_focus_apres_tab": "BUTTON|btn proposition|action|in",
+  "A_tab_est_sortie": false,
+  "A_partie_en_cours_apres_entree": true,
+  "A_ecran_apres_entree": "ecran-de-jeu",
+  "B_mauvaise": "an",
+  "B_focus": {
+   "focusTag": "BUTTON",
+   "focusClasse": "btn proposition deja-essayee",
+   "focusRole": "action",
+   "focusTexte": "an",
+   "focusEstEnonce": false,
+   "focusEstSortie": false,
+   "focusEstProposition": true,
+   "focusValeur": "an",
+   "focusMarquee": true,
+   "anneau": null
+  },
+  "B_focus_est_la_pressee": true,
+  "B_message": "Ce n'est pas ça. Essaie encore ! Regarde : les lettres o et m font ce son.",
+  "B_indice_present": true,
+  "B_focus_apres_tab": "BUTTON|btn proposition|action|on",
+  "B_tab_est_sortie": false,
+  "B_partie_en_cours_apres_entree": true,
+  "B_ecran_apres_entree": "ecran-de-jeu",
+  "C_etapes": [
+   {
+    "coup": 1,
+    "pressee": "on",
+    "message": "Ce n'est pas ça. Essaie encore ! On entend aussi ce son dans le mot sapin.",
+    "focus": "BUTTON|btn proposition deja-essayee|on",
+    "focus_est_non_pressee": false,
+    "marques": 1,
+    "props": [
+     "on*",
+     "in",
+     "an"
+    ],
+    "indice": true
+   },
+   {
+    "coup": 3,
+    "pressee": "in",
+    "message": "Ce n'est pas ça. Essaie encore ! On entend aussi ce son dans le mot bonbon.",
+    "focus": "BUTTON|btn proposition deja-essayee|in",
+    "focus_est_non_pressee": false,
+    "marques": 1,
+    "props": [
+     "in*",
+     "an",
+     "on"
+    ],
+    "indice": true
+   },
+   {
+    "coup": 4,
+    "pressee": "an",
+    "message": "Ce n'est pas ça. Essaie encore ! On entend aussi ce son dans le mot bonbon.",
+    "focus": "BUTTON|btn proposition deja-essayee|an",
+    "focus_est_non_pressee": false,
+    "marques": 2,
+    "props": [
+     "in*",
+     "an*",
+     "on"
+    ],
+    "indice": true
+   }
+  ]
+ },
+ "bandit-manchot-problemes-additifs-cp": {
+  "A_bonne": "3",
+  "A_focus": {
+   "focusTag": "P",
+   "focusClasse": "enonce",
+   "focusRole": "-",
+   "focusTexte": "Tom a 9 bonbons et en mange 4. Combien lui en reste-t-il ?",
+   "focusEstEnonce": true,
+   "focusEstSortie": false,
+   "focusEstProposition": false,
+   "focusValeur": "",
+   "anneau": null
+  },
+  "A_message": "Bravo !",
+  "A_focus_apres_tab": "BUTTON|btn proposition|action|5",
+  "A_tab_est_sortie": false,
+  "A_partie_en_cours_apres_entree": true,
+  "A_ecran_apres_entree": "ecran-de-jeu",
+  "B_mauvaise": "4",
+  "B_focus": {
+   "focusTag": "BUTTON",
+   "focusClasse": "btn proposition deja-essayee",
+   "focusRole": "action",
+   "focusTexte": "4",
+   "focusEstEnonce": false,
+   "focusEstSortie": false,
+   "focusEstProposition": true,
+   "focusValeur": "4",
+   "focusMarquee": true,
+   "anneau": null
+  },
+  "B_focus_est_la_pressee": true,
+  "B_message": "Ce n'est pas ça. Essaie encore ! Elle avait des gâteaux et elle en fait d'autres : additionne 3 et 4.",
+  "B_indice_present": true,
+  "B_focus_apres_tab": "BUTTON|btn proposition|action|1",
+  "B_tab_est_sortie": false,
+  "B_partie_en_cours_apres_entree": true,
+  "B_ecran_apres_entree": "ecran-de-jeu",
+  "C_etapes": [
+   {
+    "coup": 4,
+    "pressee": "11",
+    "message": "Ce n'est pas ça. Essaie encore ! Il avait des cartes et il en perd : soustrais 2 de 9.",
+    "focus": "BUTTON|btn proposition deja-essayee|11",
+    "focus_est_non_pressee": false,
+    "marques": 1,
+    "props": [
+     "11*",
+     "7",
+     "2"
+    ],
+    "indice": true
+   }
+  ]
+ },
+ "bandit-manchot-soustractions-cp": {
+  "A_bonne": "5",
+  "A_focus": {
+   "focusTag": "P",
+   "focusClasse": "enonce",
+   "focusRole": "-",
+   "focusTexte": "8 - 5 = ?",
+   "focusEstEnonce": true,
+   "focusEstSortie": false,
+   "focusEstProposition": false,
+   "focusValeur": "",
+   "anneau": null
+  },
+  "A_message": "Bravo !",
+  "A_focus_apres_tab": "BUTTON|btn proposition|action|3",
+  "A_tab_est_sortie": false,
+  "A_partie_en_cours_apres_entree": true,
+  "A_ecran_apres_entree": "ecran-de-jeu",
+  "B_mauvaise": "7",
+  "B_focus": {
+   "focusTag": "BUTTON",
+   "focusClasse": "btn proposition deja-essayee",
+   "focusRole": "action",
+   "focusTexte": "7",
+   "focusEstEnonce": false,
+   "focusEstSortie": false,
+   "focusEstProposition": true,
+   "focusValeur": "7",
+   "focusMarquee": true,
+   "anneau": null
+  },
+  "B_focus_est_la_pressee": true,
+  "B_message": "Ce n'est pas ça. Essaie encore ! Lève 7 doigts, puis baisses-en 7 un par un : il n'en reste plus aucun.",
+  "B_indice_present": true,
+  "B_focus_apres_tab": "BUTTON|btn proposition|action|1",
+  "B_tab_est_sortie": false,
+  "B_partie_en_cours_apres_entree": true,
+  "B_ecran_apres_entree": "ecran-de-jeu",
+  "C_etapes": [
+   {
+    "coup": 1,
+    "pressee": "9",
+    "message": "Ce n'est pas ça. Essaie encore ! Lève 9 doigts, puis baisses-en 5 un par un.",
+    "focus": "BUTTON|btn proposition deja-essayee|9",
+    "focus_est_non_pressee": false,
+    "marques": 1,
+    "props": [
+     "9*",
+     "3",
+     "4"
+    ],
+    "indice": true
+   },
+   {
+    "coup": 2,
+    "pressee": "3",
+    "message": "Ce n'est pas ça. Essaie encore ! Lève 9 doigts, puis baisses-en 5 un par un.",
+    "focus": "BUTTON|btn proposition deja-essayee|3",
+    "focus_est_non_pressee": false,
+    "marques": 2,
+    "props": [
+     "9*",
+     "3*",
+     "4"
+    ],
+    "indice": true
+   },
+   {
+    "coup": 5,
+    "pressee": "8",
+    "message": "Ce n'est pas ça. Essaie encore ! Lève 9 doigts, puis baisses-en 2 un par un.",
+    "focus": "BUTTON|btn proposition deja-essayee|8",
+    "focus_est_non_pressee": false,
+    "marques": 1,
+    "props": [
+     "8*",
+     "7",
+     "2"
+    ],
+    "indice": true
+   }
+  ]
+ }
+}

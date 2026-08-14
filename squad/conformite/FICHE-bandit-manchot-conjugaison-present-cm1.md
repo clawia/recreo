@@ -170,6 +170,14 @@
   ferait passer un mot de ce paquet sous mon plancher sans qu'aucun test ne bouge.
   **Ma barre de six points n'est pas rouverte par cet arbitrage et reste levee**, et la reserve F du
   2026-08-12 sur les 2,86 px d'air de `mangeons` reste ouverte, inchangee.
+- **Second verdict du 2026-08-13 sur le lot de cloture du sprint 10 (`643c6f4`)** : **REFUSE**,
+  aucun Done pedagogique, **un seul motif bloquant** - **M13 clause 1 sur l'ecran de revelation de
+  M5**. **Constate sur ce jeu** : 2 parties detruites sur 8 revelations. **M21 est TENUE** - plus
+  aucun indice ne nomme la reponse. **M4 reste NON TENUE** sur les trois etats, et c'est le jeu le
+  plus touche. Le verdict complet et l'etat de mes trente-huit conditions sont dans
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Second verdict du 2026-08-13". **Le
+  refus du matin est corrige sur ses quatorze cas** et les clauses 2, 3, 4 et 5 de M13 sont tenues pour
+  la premiere fois. **M4 ne bloque plus**, levee par `DEC-0025`, et mon constat n'est pas retire.
 - **Derniere mise a jour** : 2026-08-13
 
 ## Competences visees
@@ -208,6 +216,61 @@ entree/sortie observables.
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+
+### Second verdict du 2026-08-13 sur le lot de cloture du sprint 10 : REFUSE
+
+- **Verdict** : **REFUSE.** Aucun Done pedagogique sur ce jeu.
+- **Le verdict complet, ses mesures et l'etat de mes trente-huit conditions sont dans**
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Second verdict du 2026-08-13". Le
+  meuble et la mecanique sont communs aux sept jeux du catalogue : je ne recopie pas le raisonnement,
+  j'ecris ici ce qui est propre a ce jeu.
+- **Increment audite** : `round-two` a `643c6f4`, jar **reconstruit depuis mon worktree** et correctif
+  verifie dans le HTML servi. `mvn -B verify` : BUILD SUCCESS. Done technique acquis.
+- **Mon motif de refus sur ce jeu, unique et bloquant - M13 clause 1 sur l'ecran de revelation** :
+  - **Constate directement sur ce jeu** : sur **8 revelations** jouees, la reponse revelee a occupe la
+    **derniere des quatre positions 2 fois**, et les deux fois **une seule Tabulation a atteint "Les
+    jeux"** et Entree a **detruit la partie sans confirmation**. Les 6 autres fois, la tabulation est
+    restee dans les propositions et la partie a survecu.
+  - Ce jeu porte quatre propositions : le defaut y est donc moins frequent qu'ailleurs, pas absent.
+- **M4 sur ce jeu, mesuree apres le resserrement de marges** (pire cas de 40 etats de message et de
+  6 ecrans de revelation, 360 x 640, pli a `y = 640`) :
+  - echec, pire cas : **703,19 px**, soit **63,19 px SOUS le pli** ;
+  - ecran de revelation, pire cas : **703,19 px**, **63,19 px SOUS le pli** ;
+  - **"Bravo !", pire cas : 675,19 px, soit 35,19 px SOUS le pli** - un enfant qui reussit sur les
+    items a enonce long ne recoit toujours aucun retour visible.
+  - **M4 reste NON TENUE sur ce jeu, sur les trois etats.** Elle etait a 891,19 px ce matin : le
+    resserrement de marges et la disparition de l'indice (M21) lui rendent **188 px**, et il en manque
+    encore 63. `DEC-0025` leve la condition en ecrivant ce que l'enfant y perd, jeu par jeu ; ce
+    chiffre-ci est la mesure de ce qu'il perd apres le lot de cloture.
+- **Ce qui est corrige sur ce jeu et que je credite** : apres une bonne comme apres une mauvaise
+  reponse, Tabulation puis Entree laisse **la partie en cours** ; le focus va sur l'**enonce** de la
+  question neuve apres une bonne reponse (clause 4) et sur la **proposition pressee, barree**, apres une
+  mauvaise (clause 2) ; sur l'ecran de revelation il va sur la **proposition qui porte la reponse
+  revelee** (clause 5). Les quatre clauses sont tenues sur ce jeu, mesurees au clavier.
+- **M21 est TENUE sur ce jeu, et c'est le fait neuf le plus important pour lui.** Aucun indice n'est
+  rendu : ni au premier echec, ni au deuxieme, ni sur l'ecran de revelation. La plainte de
+  l'utilisatrice - la bonne reponse donnee des le premier echec - est **fermee**. Le perimetre est
+  porte par une cle du paquet (`indicesNommentLaReponse`), fausse par defaut, et non par un
+  identifiant de jeu compare en dur : c'est ce que j'avais exige.
+- **Exactitude du contenu, verifiee item par item sur les 25** : enonces, bonnes reponses et 75
+  distracteurs **justes**, accords de personne corrects, marqueurs temporels ("Demain", "Autrefois",
+  "Maintenant") coherents avec le temps attendu, aucun distracteur absurde. La competence declaree,
+  *"Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif"*, est retrouvee mot
+  pour mot dans `squad/programme/francais/competences-cm1.md`, et c'est bien celle-la que le jeu
+  travaille. **Une maladresse de langue** : l'item *"Tu ___ un dessin."* attend `dessines`, donc "tu
+  dessines un dessin".
+- **Le prix de M21, que je nomme parce que personne ne le paiera a ma place** : un enfant de CM1 qui se
+  trompe recoit desormais *"Ce n'est pas ça. Essaie encore !"* et **rien d'autre** ; a la revelation,
+  *"C'est étions. Appuie sur étions."* et rien qui explique pourquoi. **Ce jeu n'enseigne plus rien sur
+  l'erreur** : il sanctionne et il nomme. C'etait le moindre des deux maux, ce n'est pas un etat
+  souhaitable, et **les 25 indices a reecrire sont desormais la seule chose qui separe ce jeu d'un jeu
+  qui apprend quelque chose**.
+- **M14 clause 5 NON TENUE, et ce jeu est le seul ou elle est observable** : quatre propositions, donc
+  deux appuis a cote possibles apres la revelation. Mesure : marques `aimait` puis `aimait, aimeront`
+  puis `aimait, aimais` - **`aimeront` perd sa marque**. La marque de M9 n'est pas cumulative apres la
+  revelation, alors qu'elle l'est avant. Non bloquant, **reserve T** du verdict de reference.
+- **Aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge.**
 
 ### Verdict courant - chantier du bandit manchot (mecanique, forme, M10), du 2026-08-13 : REFUSE
 
@@ -1403,7 +1466,7 @@ J'en ajoute deux, datees du 2026-08-10 :
 - **Pour `camille-po`** : le constat de la section 4 et les deux reserves de la section 5 sont des
   motifs, pas des stories.
 - **`squad/programme/MATRICE-couverture.md`** : la ligne `francais | CM1 | Orthographe et grammaire |
-  Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif` **reste `en cours`**,
+  Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif` **reste `en cours`**,
   pour la raison ecrite au verdict "Ligne de matrice" ci-dessus. Elle ne bouge pas sur ce verdict.
 - **Je n'efface rien** : le refus du 2026-08-10 et ses deux arbitrages du meme jour, dont la reduction
   a trois propositions que j'ai eteinte moi-meme, restent lisibles plus bas dans l'ordre.
@@ -1616,7 +1679,7 @@ Elles ne fondent pas le refus et elles ne le grossissent pas.
 #### 7. Suites hors de ma main
 
 - `squad/programme/MATRICE-couverture.md`, ligne `francais | CM1 | Orthographe et grammaire |
-  Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif` : **reste
+  Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif` : **reste
   `en cours`**, et le Done pedagogique n'est pas accorde. Je n'ai pas edite cette ligne, elle
   appartient a `camille-po`.
 - Un refus renvoie l'increment a `camille-po`, qui en fait du backlog. Il ne bloque pas le sprint
@@ -1771,7 +1834,7 @@ libre de l'auteur.
   `theo-archi`, et ma mesure ci-dessus est la piece qui montre que la reduction a trois n'y suffit pas.
   Je ne choisis pas entre repli des colonnes, report du jeu et recul sur la cible de largeur.
 - **`squad/programme/MATRICE-couverture.md`** : la ligne `francais | CM1 | Orthographe et grammaire |
-  Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif` **reste `en cours`**.
+  Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif` **reste `en cours`**.
   Cet arbitrage ne la fait pas bouger et je ne l'ai pas editee.
 - **La barre pour `couvert-valide` reste celle de la section 5 de mon refus du 2026-08-10**, mot pour
   mot. Rien de cet arbitrage ne s'y ajoute.
@@ -1916,7 +1979,7 @@ sprint, **et je ne choisis pas entre elles.** Ce que ma decision lui apporte :
   la foi de mon arbitrage precedent, ce travail est a defaire. C'est le risque exact que ce bloc existe
   pour fermer.
 - **`squad/programme/MATRICE-couverture.md`** : la ligne `francais | CM1 | Orthographe et grammaire |
-  Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif` **reste `en cours`**.
+  Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif` **reste `en cours`**.
   Je ne l'ai pas editee.
 - **La barre pour `couvert-valide` reste celle de la section 5 de mon refus du 2026-08-10**, mot pour
   mot. Ce bloc n'y ajoute rien et n'en retire rien.

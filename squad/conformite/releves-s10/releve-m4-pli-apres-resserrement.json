@@ -1,0 +1,938 @@
+{
+ "bandit-manchot-additions-cp": {
+  "nom": "Calcul CP (additions)",
+  "etats": [
+   {
+    "nom": "question neuve",
+    "e": {
+     "enonce": "1 + 7",
+     "consigne": "Combien ça fait ?",
+     "message": null,
+     "boiteMessage": null,
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "6",
+      "9",
+      "8"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "echec 1",
+    "e": {
+     "enonce": "1 + 7",
+     "consigne": "Combien ça fait ?",
+     "message": "Ce n'est pas ça. Essaie encore ! Compte sur tes doigts.",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 577.19,
+      "h": 146
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "6*",
+      "9",
+      "8"
+     ],
+     "marques": 1
+    }
+   },
+   {
+    "nom": "echec 2",
+    "e": {
+     "enonce": "1 + 7",
+     "consigne": "Combien ça fait ?",
+     "message": "Ce n'est pas ça. Essaie encore ! Compte sur tes doigts.",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 577.19,
+      "h": 146
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "6*",
+      "9*",
+      "8"
+     ],
+     "marques": 2
+    }
+   },
+   {
+    "nom": "bonne reponse au coup 3 (8)",
+    "e": {
+     "enonce": "1 + 1",
+     "consigne": "Combien ça fait ?",
+     "message": "Bravo !",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 495.19,
+      "h": 64
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "1",
+      "0",
+      "2"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "echec 4",
+    "e": {
+     "enonce": "1 + 1",
+     "consigne": "Combien ça fait ?",
+     "message": "Ce n'est pas ça. Essaie encore ! Compte sur tes doigts.",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 577.19,
+      "h": 146
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "1*",
+      "0",
+      "2"
+     ],
+     "marques": 1
+    }
+   }
+  ],
+  "isolement_ok": true,
+  "viewport": 640
+ },
+ "bandit-manchot-comparer-nombres-cp": {
+  "nom": "Comparer les nombres",
+  "etats": [
+   {
+    "nom": "question neuve",
+    "e": {
+     "enonce": "56 ___ 60",
+     "consigne": "Quel signe faut-il mettre ?",
+     "message": null,
+     "boiteMessage": null,
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "<",
+      ">",
+      "="
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "bonne reponse au coup 1 (<)",
+    "e": {
+     "enonce": "19 ___ 33",
+     "consigne": "Quel signe faut-il mettre ?",
+     "message": "Bravo !",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 495.19,
+      "h": 64
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      ">",
+      "<",
+      "="
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "echec 2",
+    "e": {
+     "enonce": "19 ___ 33",
+     "consigne": "Quel signe faut-il mettre ?",
+     "message": "Ce n'est pas ça. Essaie encore ! Compare les dizaines : 1 dizaine, c'est moins que 3 dizaines.",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 607.19,
+      "h": 176
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      ">*",
+      "<",
+      "="
+     ],
+     "marques": 1
+    }
+   },
+   {
+    "nom": "bonne reponse au coup 3 (<)",
+    "e": {
+     "enonce": "100 ___ 85",
+     "consigne": "Quel signe faut-il mettre ?",
+     "message": "Bravo !",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 495.19,
+      "h": 64
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      ">",
+      "=",
+      "<"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "bonne reponse au coup 4 (>)",
+    "e": {
+     "enonce": "3 ___ 78",
+     "consigne": "Quel signe faut-il mettre ?",
+     "message": "Bravo !",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 495.19,
+      "h": 64
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "<",
+      ">",
+      "="
+     ],
+     "marques": 0
+    }
+   }
+  ],
+  "isolement_ok": true,
+  "viewport": 640
+ },
+ "bandit-manchot-complements-10-cp": {
+  "nom": "Complements a 10",
+  "etats": [
+   {
+    "nom": "question neuve",
+    "e": {
+     "enonce": "0 + ? = 10",
+     "consigne": "Combien manque-t-il pour faire 10 ?",
+     "message": null,
+     "boiteMessage": null,
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "10",
+      "9",
+      "0"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "bonne reponse au coup 1 (10)",
+    "e": {
+     "enonce": "2 + ? = 10",
+     "consigne": "Combien manque-t-il pour faire 10 ?",
+     "message": "Bravo !",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 495.19,
+      "h": 64
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "7",
+      "8",
+      "2"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "echec 2",
+    "e": {
+     "enonce": "2 + ? = 10",
+     "consigne": "Combien manque-t-il pour faire 10 ?",
+     "message": "Ce n'est pas ça. Essaie encore ! Lève 2 doigts, puis compte ceux qui manquent pour arriver à 10.",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 607.19,
+      "h": 176
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "7*",
+      "8",
+      "2"
+     ],
+     "marques": 1
+    }
+   },
+   {
+    "nom": "bonne reponse au coup 3 (8)",
+    "e": {
+     "enonce": "5 + ? = 10",
+     "consigne": "Combien manque-t-il pour faire 10 ?",
+     "message": "Bravo !",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 495.19,
+      "h": 64
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "6",
+      "4",
+      "5"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "echec 4",
+    "e": {
+     "enonce": "5 + ? = 10",
+     "consigne": "Combien manque-t-il pour faire 10 ?",
+     "message": "Ce n'est pas ça. Essaie encore ! Lève 5 doigts d'une main, puis compte ceux de l'autre main : il en reste 5 pour arriver à 10.",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 637.19,
+      "h": 206
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 669,
+     "props": [
+      "6*",
+      "4",
+      "5"
+     ],
+     "marques": 1
+    }
+   }
+  ],
+  "isolement_ok": true,
+  "viewport": 640
+ },
+ "bandit-manchot-conjugaison-present-cm1": {
+  "nom": "Le bon verbe",
+  "etats": [
+   {
+    "nom": "question neuve",
+    "e": {
+     "enonce": "Tous les jours, il ___ à l'école.",
+     "consigne": "Quel verbe complète la phrase ?",
+     "message": null,
+     "boiteMessage": null,
+     "boiteCabinet": {
+      "haut": 341.19,
+      "bas": 563.19,
+      "h": 222
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "allez",
+      "vais",
+      "va",
+      "vont"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "echec 1",
+    "e": {
+     "enonce": "Tous les jours, il ___ à l'école.",
+     "consigne": "Quel verbe complète la phrase ?",
+     "message": "Ce n'est pas ça. Essaie encore !",
+     "boiteMessage": {
+      "haut": 563.19,
+      "bas": 655.19,
+      "h": 92
+     },
+     "boiteCabinet": {
+      "haut": 341.19,
+      "bas": 563.19,
+      "h": 222
+     },
+     "viewport": 640,
+     "hauteurDoc": 687,
+     "props": [
+      "allez*",
+      "vais",
+      "va",
+      "vont"
+     ],
+     "marques": 1
+    }
+   },
+   {
+    "nom": "echec 2",
+    "e": {
+     "enonce": "Tous les jours, il ___ à l'école.",
+     "consigne": "Quel verbe complète la phrase ?",
+     "message": "Ce n'est pas ça. Essaie encore !",
+     "boiteMessage": {
+      "haut": 563.19,
+      "bas": 655.19,
+      "h": 92
+     },
+     "boiteCabinet": {
+      "haut": 341.19,
+      "bas": 563.19,
+      "h": 222
+     },
+     "viewport": 640,
+     "hauteurDoc": 687,
+     "props": [
+      "allez*",
+      "vais*",
+      "va",
+      "vont"
+     ],
+     "marques": 2
+    }
+   },
+   {
+    "nom": "bonne reponse au coup 3 (va)",
+    "e": {
+     "enonce": "Je ___ mon cahier dans mon sac.",
+     "consigne": "Quel verbe complète la phrase ?",
+     "message": "Bravo !",
+     "boiteMessage": {
+      "haut": 563.19,
+      "bas": 627.19,
+      "h": 64
+     },
+     "boiteCabinet": {
+      "haut": 341.19,
+      "bas": 563.19,
+      "h": 222
+     },
+     "viewport": 640,
+     "hauteurDoc": 659,
+     "props": [
+      "cherches",
+      "cherchons",
+      "cherchent",
+      "cherche"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "echec 4",
+    "e": {
+     "enonce": "Je ___ mon cahier dans mon sac.",
+     "consigne": "Quel verbe complète la phrase ?",
+     "message": "Ce n'est pas ça. Essaie encore !",
+     "boiteMessage": {
+      "haut": 563.19,
+      "bas": 655.19,
+      "h": 92
+     },
+     "boiteCabinet": {
+      "haut": 341.19,
+      "bas": 563.19,
+      "h": 222
+     },
+     "viewport": 640,
+     "hauteurDoc": 687,
+     "props": [
+      "cherches*",
+      "cherchons",
+      "cherchent",
+      "cherche"
+     ],
+     "marques": 1
+    }
+   }
+  ],
+  "isolement_ok": true,
+  "viewport": 640
+ },
+ "bandit-manchot-le-bon-son-cp": {
+  "nom": "Le bon son",
+  "etats": [
+   {
+    "nom": "question neuve",
+    "e": {
+     "enonce": "MANTEAU",
+     "consigne": "Dis le mot. Quel son entends-tu ?",
+     "message": null,
+     "boiteMessage": null,
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "an",
+      "in",
+      "on"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "bonne reponse au coup 1 (an)",
+    "e": {
+     "enonce": "SAPIN",
+     "consigne": "Dis le mot. Quel son entends-tu ?",
+     "message": "Bravo !",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 495.19,
+      "h": 64
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "on",
+      "an",
+      "in"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "echec 2",
+    "e": {
+     "enonce": "SAPIN",
+     "consigne": "Dis le mot. Quel son entends-tu ?",
+     "message": "Ce n'est pas ça. Essaie encore ! On entend aussi ce son dans le mot lapin.",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 607.19,
+      "h": 176
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "on*",
+      "an",
+      "in"
+     ],
+     "marques": 1
+    }
+   },
+   {
+    "nom": "echec 3",
+    "e": {
+     "enonce": "SAPIN",
+     "consigne": "Dis le mot. Quel son entends-tu ?",
+     "message": "Ce n'est pas ça. Essaie encore ! On entend aussi ce son dans le mot lapin.",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 607.19,
+      "h": 176
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "on*",
+      "an*",
+      "in"
+     ],
+     "marques": 2
+    }
+   },
+   {
+    "nom": "bonne reponse au coup 4 (in)",
+    "e": {
+     "enonce": "BALLON",
+     "consigne": "Dis le mot. Quel son entends-tu ?",
+     "message": "Bravo !",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 495.19,
+      "h": 64
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "an",
+      "in",
+      "on"
+     ],
+     "marques": 0
+    }
+   }
+  ],
+  "isolement_ok": true,
+  "viewport": 640
+ },
+ "bandit-manchot-problemes-additifs-cp": {
+  "nom": "Petits problemes",
+  "etats": [
+   {
+    "nom": "question neuve",
+    "e": {
+     "enonce": "Léa a 8 billes et en perd 3. Combien lui en reste-t-il ?",
+     "consigne": "Lis bien, puis trouve la réponse !",
+     "message": null,
+     "boiteMessage": null,
+     "boiteCabinet": {
+      "haut": 389.19,
+      "bas": 527.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "5",
+      "11",
+      "3"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "bonne reponse au coup 1 (5)",
+    "e": {
+     "enonce": "Le clown a 8 ballons, 4 s'envolent. Combien lui en reste-t-il ?",
+     "consigne": "Lis bien, puis trouve la réponse !",
+     "message": "Bravo !",
+     "boiteMessage": {
+      "haut": 527.19,
+      "bas": 591.19,
+      "h": 64
+     },
+     "boiteCabinet": {
+      "haut": 389.19,
+      "bas": 527.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "4",
+      "8",
+      "12"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "bonne reponse au coup 2 (4)",
+    "e": {
+     "enonce": "Tom a 4 bonbons et en reçoit 3. Combien en a-t-il ?",
+     "consigne": "Lis bien, puis trouve la réponse !",
+     "message": "Bravo !",
+     "boiteMessage": {
+      "haut": 527.19,
+      "bas": 591.19,
+      "h": 64
+     },
+     "boiteCabinet": {
+      "haut": 389.19,
+      "bas": 527.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "1",
+      "7",
+      "3"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "echec 3",
+    "e": {
+     "enonce": "Tom a 4 bonbons et en reçoit 3. Combien en a-t-il ?",
+     "consigne": "Lis bien, puis trouve la réponse !",
+     "message": "Ce n'est pas ça. Essaie encore ! Il avait des bonbons et il en reçoit d'autres : additionne 4 et 3.",
+     "boiteMessage": {
+      "haut": 527.19,
+      "bas": 703.19,
+      "h": 176
+     },
+     "boiteCabinet": {
+      "haut": 389.19,
+      "bas": 527.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 735,
+     "props": [
+      "1*",
+      "7",
+      "3"
+     ],
+     "marques": 1
+    }
+   },
+   {
+    "nom": "bonne reponse au coup 4 (7)",
+    "e": {
+     "enonce": "Ali a 8 cartes et en gagne 1. Combien en a-t-il ?",
+     "consigne": "Lis bien, puis trouve la réponse !",
+     "message": "Bravo !",
+     "boiteMessage": {
+      "haut": 527.19,
+      "bas": 591.19,
+      "h": 64
+     },
+     "boiteCabinet": {
+      "haut": 389.19,
+      "bas": 527.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "9",
+      "7",
+      "1"
+     ],
+     "marques": 0
+    }
+   }
+  ],
+  "isolement_ok": true,
+  "viewport": 640
+ },
+ "bandit-manchot-soustractions-cp": {
+  "nom": "Soustractions CP",
+  "etats": [
+   {
+    "nom": "question neuve",
+    "e": {
+     "enonce": "9 - 2 = ?",
+     "consigne": "Combien en reste-t-il ?",
+     "message": null,
+     "boiteMessage": null,
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "2",
+      "7",
+      "8"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "echec 1",
+    "e": {
+     "enonce": "9 - 2 = ?",
+     "consigne": "Combien en reste-t-il ?",
+     "message": "Ce n'est pas ça. Essaie encore ! Lève 9 doigts, puis baisses-en 2 un par un.",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 607.19,
+      "h": 176
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "2*",
+      "7",
+      "8"
+     ],
+     "marques": 1
+    }
+   },
+   {
+    "nom": "bonne reponse au coup 2 (7)",
+    "e": {
+     "enonce": "7 - 5 = ?",
+     "consigne": "Combien en reste-t-il ?",
+     "message": "Bravo !",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 495.19,
+      "h": 64
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "2",
+      "7",
+      "1"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "bonne reponse au coup 3 (2)",
+    "e": {
+     "enonce": "7 - 7 = ?",
+     "consigne": "Combien en reste-t-il ?",
+     "message": "Bravo !",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 495.19,
+      "h": 64
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "0",
+      "1",
+      "7"
+     ],
+     "marques": 0
+    }
+   },
+   {
+    "nom": "bonne reponse au coup 4 (0)",
+    "e": {
+     "enonce": "9 - 4 = ?",
+     "consigne": "Combien en reste-t-il ?",
+     "message": "Bravo !",
+     "boiteMessage": {
+      "haut": 431.19,
+      "bas": 495.19,
+      "h": 64
+     },
+     "boiteCabinet": {
+      "haut": 293.19,
+      "bas": 431.19,
+      "h": 138
+     },
+     "viewport": 640,
+     "hauteurDoc": 640,
+     "props": [
+      "6",
+      "4",
+      "5"
+     ],
+     "marques": 0
+    }
+   }
+  ],
+  "isolement_ok": true,
+  "viewport": 640
+ }
+}

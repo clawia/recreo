@@ -50,7 +50,12 @@
   d'afficher son indice sur la question courante en l'etat, et la **reserve C** - ses items n'ont que
   deux propositions, ou se tromper une fois designe la reponse par logique et ou le reessai
   n'apporte rien.
-- **Derniere mise a jour** : 2026-08-12
+- **Second verdict du 2026-08-13 sur le lot de cloture du sprint 10 (`643c6f4`)** : ce jeu reste
+  **retire du catalogue par `DEC-0024`** et n'a pas ete joue. Le REFUSE du jour ne porte pas sur lui.
+  Note d'audit en tete du bloc de validation - dont ce fait, pour le jour ou il reviendra : a **deux
+  propositions**, la reponse revelee y occuperait la derniere position **une fois sur deux**, ce qui en
+  ferait le jeu le plus touche par le defaut de M13 clause 1.
+- **Derniere mise a jour** : 2026-08-13
 
 ## Competences visees
 
@@ -69,6 +74,23 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Note d'audit - second verdict du 2026-08-13 : ce jeu n'a pas davantage ete joue
+
+- **Aucun verdict neuf, pour la meme raison.** "Le bon petit mot" reste retire du catalogue par
+  `DEC-0024` et n'apparait pas dans les sept jeux servis a `643c6f4`. Le **REFUSE** que je prononce ce
+  jour sur les sept autres fiches - M13 clause 1 sur l'ecran de revelation - **ne porte pas sur celle-ci**,
+  et rien de ce qui existait sur ce jeu n'est rouvert.
+- **Ce que le lot de cloture change pour le jour ou ce jeu reviendra** :
+  - **M13 clause 1 le concernera**, et de la meme facon que les sept autres : le defaut suit la
+    position tiree de la bonne reponse, pas le contenu. Ce jeu porte **deux propositions**, donc la
+    reponse revelee y occupe la derniere position **une fois sur deux** - ce serait le jeu le plus
+    touche du catalogue.
+  - **M4 reste son obstacle**, et le resserrement de marges de ce lot lui rendra les memes 24 a 44 px
+    qu'aux autres : tres loin de ce qu'il lui faut.
+  - **M21 lui est applicable telle quelle** : ses 22 indices sur 24 qui nomment la reponse pourraient
+    etre neutralises par la meme cle de paquet, sans une ligne de code neuve. Ce serait un
+    contournement, pas la reparation - la reparation reste de couper la fin de ces 22 phrases.
 
 ### Note d'audit - ce jeu n'a pas ete joue au chantier du bandit manchot, du 2026-08-13
 
