@@ -1,0 +1,97 @@
+schema: 1
+id: cm1-perimetre
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CM1"
+  domaine: "Grandeurs et mesures"
+  competence: "Calculer un périmètre de figures usuelles (carré, rectangle)"
+items:
+  - enonce: "Le périmètre d'une figure, c'est..."
+    bonneReponse: "la longueur de son contour"
+    distracteurs: ["sa surface intérieure", "le nombre de ses côtés"]
+    indice: "Ce n'est pas la surface, c'est le tour."
+  - enonce: "Comment calcule-t-on le périmètre d'un carré ?"
+    bonneReponse: "côté × 4"
+    distracteurs: ["côté × 2", "côté × côté"]
+    indice: "Un carré a quatre côtés égaux."
+  - enonce: "Quel est le périmètre d'un carré de côté 5 cm ?"
+    bonneReponse: "20 cm"
+    distracteurs: ["25 cm", "10 cm"]
+    indice: "Multiplie la longueur d'un côté par quatre."
+  - enonce: "Quel est le périmètre d'un carré de côté 10 cm ?"
+    bonneReponse: "40 cm"
+    distracteurs: ["100 cm", "20 cm"]
+    indice: "Multiplie la longueur d'un côté par quatre."
+  - enonce: "Quel est le périmètre d'un carré de côté 9 m ?"
+    bonneReponse: "36 m"
+    distracteurs: ["81 m", "18 m"]
+    indice: "Multiplie la longueur d'un côté par quatre."
+  - enonce: "Quel est le périmètre d'un carré de côté 3 cm ?"
+    bonneReponse: "12 cm"
+    distracteurs: ["9 cm", "6 cm"]
+    indice: "Multiplie la longueur d'un côté par quatre."
+  - enonce: "Quel est le périmètre d'un carré de côté 6 cm ?"
+    bonneReponse: "24 cm"
+    distracteurs: ["36 cm", "12 cm"]
+    indice: "Multiplie la longueur d'un côté par quatre."
+  - enonce: "Quel est le périmètre d'un carré de côté 7 cm ?"
+    bonneReponse: "28 cm"
+    distracteurs: ["49 cm", "14 cm"]
+    indice: "Multiplie la longueur d'un côté par quatre."
+  - enonce: "Quel est le périmètre d'un carré de côté 8 m ?"
+    bonneReponse: "32 m"
+    distracteurs: ["64 m", "16 m"]
+    indice: "Multiplie la longueur d'un côté par quatre."
+  - enonce: "Quel est le périmètre d'un carré de côté 11 cm ?"
+    bonneReponse: "44 cm"
+    distracteurs: ["121 cm", "22 cm"]
+    indice: "Multiplie la longueur d'un côté par quatre."
+  - enonce: "Quel est le périmètre d'un carré de côté 12 m ?"
+    bonneReponse: "48 m"
+    distracteurs: ["144 m", "24 m"]
+    indice: "Multiplie la longueur d'un côté par quatre."
+  - enonce: "Quel est le périmètre d'un carré de côté 15 cm ?"
+    bonneReponse: "60 cm"
+    distracteurs: ["225 cm", "30 cm"]
+    indice: "Multiplie la longueur d'un côté par quatre."
+  - enonce: "Quel est le périmètre d'un rectangle de longueur 6 cm et de largeur 4 cm ?"
+    bonneReponse: "20 cm"
+    distracteurs: ["24 cm", "10 cm"]
+    indice: "Additionne la longueur et la largeur, puis multiplie par deux."
+  - enonce: "Quel est le périmètre d'un rectangle de longueur 8 cm et de largeur 3 cm ?"
+    bonneReponse: "22 cm"
+    distracteurs: ["24 cm", "11 cm"]
+    indice: "Additionne la longueur et la largeur, puis multiplie par deux."
+  - enonce: "Quel est le périmètre d'un rectangle de longueur 12 cm et de largeur 5 cm ?"
+    bonneReponse: "34 cm"
+    distracteurs: ["60 cm", "17 cm"]
+    indice: "Additionne la longueur et la largeur, puis multiplie par deux."
+  - enonce: "Quel est le périmètre d'un rectangle de longueur 7 cm et de largeur 2 cm ?"
+    bonneReponse: "18 cm"
+    distracteurs: ["14 cm", "9 cm"]
+    indice: "Additionne la longueur et la largeur, puis multiplie par deux."
+  - enonce: "Quel est le périmètre d'un rectangle de longueur 9 cm et de largeur 4 cm ?"
+    bonneReponse: "26 cm"
+    distracteurs: ["36 cm", "13 cm"]
+    indice: "Additionne la longueur et la largeur, puis multiplie par deux."
+  - enonce: "Quel est le périmètre d'un rectangle de longueur 15 cm et de largeur 6 cm ?"
+    bonneReponse: "42 cm"
+    distracteurs: ["90 cm", "21 cm"]
+    indice: "Additionne la longueur et la largeur, puis multiplie par deux."
+  - enonce: "Quel est le périmètre d'un rectangle de longueur 20 m et de largeur 5 m ?"
+    bonneReponse: "50 m"
+    distracteurs: ["100 m", "25 m"]
+    indice: "Additionne la longueur et la largeur, puis multiplie par deux."
+  - enonce: "Quel est le périmètre d'un rectangle de longueur 11 cm et de largeur 3 cm ?"
+    bonneReponse: "28 cm"
+    distracteurs: ["33 cm", "14 cm"]
+    indice: "Additionne la longueur et la largeur, puis multiplie par deux."
+  - enonce: "Quel est le périmètre d'un rectangle de longueur 14 cm et de largeur 6 cm ?"
+    bonneReponse: "40 cm"
+    distracteurs: ["84 cm", "20 cm"]
+    indice: "Additionne la longueur et la largeur, puis multiplie par deux."
+  - enonce: "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?"
+    bonneReponse: "36 cm"
+    distracteurs: ["65 cm", "18 cm"]
+    indice: "Additionne la longueur et la largeur, puis multiplie par deux."
