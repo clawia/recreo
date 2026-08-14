@@ -175,6 +175,23 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
                 assembler(corps(post("/parties/{jeuId}/coups", JEU_ID)
                         .session(new MockHttpSession()).param("propositionChoisie", "1")))));
 
+        // ADR-0038, DEC-0026 (story 2, s11) : deux routes neuves, et un etat neuf sur /retour.
+        MockHttpSession partieDemandantSaSortie = new MockHttpSession();
+        corps(post("/parties/{jeuId}", JEU_ID).session(partieDemandantSaSortie));
+        ecrans.add(new Ecran("demande de confirmation avant d'abandonner, la partie continue",
+                "POST /retour",
+                assembler(corps(post("/retour").session(partieDemandantSaSortie)))));
+        ecrans.add(new Ecran("annulation de l'abandon, retour a la manche, la partie continue",
+                "POST /retour/annuler",
+                assembler(corps(post("/retour/annuler").session(partieDemandantSaSortie)))));
+
+        MockHttpSession partieQuiConfirmeSaSortie = new MockHttpSession();
+        corps(post("/parties/{jeuId}", JEU_ID).session(partieQuiConfirmeSaSortie));
+        corps(post("/retour").session(partieQuiConfirmeSaSortie));
+        ecrans.add(new Ecran("confirmation de l'abandon, retour a la liste des jeux",
+                "POST /retour/confirmer",
+                assembler(corps(post("/retour/confirmer").session(partieQuiConfirmeSaSortie)))));
+
         return ecrans;
     }
 

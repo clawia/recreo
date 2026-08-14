@@ -525,7 +525,11 @@ body:has(.ecran-de-jeu) .lien-accueil {
    commit.
    S10 : ".encore" quitte cette liste avec le bouton qui le portait - fragments/retour.html ne rend
    plus qu'un seul etat (fin de partie), et la disparition de l'ecran intermediaire (arbitrage de
-   mecanique de nadia-prof) fait de "Encore !" un bouton sans plus aucune route qui le pose. */
+   mecanique de nadia-prof) fait de "Encore !" un bouton sans plus aucune route qui le pose.
+   S11 : ".continuer-partie" rejoint ce groupe - le bouton qui laisse l'enfant sur sa partie en
+   cours depuis l'ecran de confirmation (ADR-0038, DEC-0026 story 2). Meme boite que les autres
+   actions pleines de l'application ; la forme de cet ecran reste a ines-design. */
+.continuer-partie,
 .demarrer,
 .proposition,
 .recommencer,
@@ -546,6 +550,7 @@ body:has(.ecran-de-jeu) .lien-accueil {
    comparer entre les trois propositions - il doit peser au moins autant que le calcul affiche
    (S3-4, reserve 1 de nadia-prof sur S2-1 : "le nombre doit peser plus que la barre qui le
    porte"). */
+.continuer-partie,
 .demarrer,
 .recommencer,
 .sortie-pleine {
@@ -691,6 +696,15 @@ body:has(.ecran-de-jeu) .lien-accueil {
     border-radius: 0.25rem;
     padding: 0.75rem 1rem;
     margin: 0 0 1rem;
+}
+
+/* S11 (ADR-0038, DEC-0026 story 2) : le texte de l'ecran de confirmation, au minimum lisible
+   (meme plancher que .consigne). Sa forme complete (fond, cadre, espacement) reste a proposer par
+   ines-design ; ce lot ne l'anticipe pas. */
+.question-confirmation {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    margin: 0 0 0.75rem;
 }
 
 /* S10 : rembourrage vertical resserre (ines-design), meme motif que .explication/.indice - ce bloc
