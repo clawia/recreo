@@ -43,6 +43,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0037](ADR-0037-une-dependance-de-test-n-est-pas-une-ressource-servie.md) | Distinguer une dependance de test d'une ressource servie, et refuser tout octet servi qui n'est pas vendorise | s10 | 2026-08-14 | Accepte |
 | [ADR-0038](ADR-0038-aucun-arret-de-tabulation-destructeur-a-une-tabulation-d-un-point-de-depart.md) | Interdire tout arret de tabulation destructeur a une seule tabulation d'un point de depart que le document autorise | s10 | 2026-08-14 | Accepte, amende le 2026-08-14 (s11) ; sa regle est portee par le lot de `marc-dev` |
 | [ADR-0039](ADR-0039-un-critere-se-derive-des-que-la-promesse-est-universelle.md) | Deriver le critere d'un garde-fou des que sa promesse est universelle, et faire passer toute enumeration du cote autorise | s12 | 2026-08-14 | Accepte |
+| [ADR-0040](ADR-0040-un-point-de-focus-declare-n-est-jamais-destructeur-l-ecran-de-confirmation-n-est-pas-exempte.md) | Interdire qu'un point de focus declare soit lui-meme destructeur, et refuser d'exempter l'ecran de confirmation de la clause 2 d'ADR-0038 | s12 | 2026-08-14 | Accepte |
 
 ## Amendements
 
@@ -89,6 +90,7 @@ est date dans le corps de l'ADR. Ceux du sprint 0 :
 | ADR-0038 | 2026-08-14 | **sa clause de concordance interdisait le remede que sa propre decision benissait, et deux de ses chiffres decrivaient un defaut plus etroit que le reel.** Le point 3 exigeait qu'un arret destructeur porte `data-role="sortie"` **et reciproquement** ; depuis la confirmation avant abandon, "Les jeux" reste une sortie du point de vue de l'enfant et sa requete ne detruit plus rien - tenir la clause aurait demande de remettre la destruction dans une requete unique, c'est-a-dire de retablir le defaut. **Cause : j'avais confondu ce que `data-role` declare (une destination pour l'enfant, `ADR-0017` point 1) avec l'effet d'une requete sur la session.** La concordance etait un **moyen** de ne pas se laisser desamorcer par un renommage ; le rejeu reel de la requete par `marc-dev` ferme ce desamorcage sans lire l'attribut - mesure : `sortie` remplace par `action` sur le bouton qui detruit, les deux clauses restent vertes. Clause retiree, dette nommee (une requete destructrice **neuve** declaree `action` passerait verte ; declencheur d'encodage : la deuxieme requete destructrice de l'application). Chiffres corriges : le garde-fou casse sur du materiau reel rougit sur **cinq** ecrans en clause 1 et un en clause 2, la ou j'avais ecrit deux et `nadia-prof` un. Quatre des huit non-preuves corrigees, dont la 4 qui etait **fausse** (la souris sur "Les jeux" ne detruit plus rien non plus). Morsure de la clause 1 apres le remede, mesuree et non supposee : les deux boutons de l'ecran de confirmation echanges de place, elle rougit |
 | ADR-0013 | 2026-08-14 | **la case "critere enumere" de son tableau etait trop indulgente, et la phrase que son obligation 1 en tirait etait fausse** : une liste de fautes a reprocher n'a pas "pour mode de defaillance un rouge, pas un vert" des que la promesse du garde-fou est universelle. Mesure : `RessourcesTiercesTest` promettait qu'aucun JavaScript de bibliotheque d'interface n'entre, refusait un seul nom, et un `alpine.min.js` reel correctement trace est entre en laissant ses **seize tests verts**. Le vert silencieux etait bien la, du cote critere - la case que le tableau reservait au perimetre. Ce qui separe les cas est la **polarite** de la liste (refus = vert par defaut, autorisation = rouge par defaut), pas la nature de ses membres. Clause ajoutee et recensement executable portes par ADR-0039 ; les trois obligations sont inchangees |
 | ADR-0014 | 2026-08-14 | **une de ses limites nommees ne gardait rien, et sa consolation etait fausse** (deuxieme fois pour cet ADR, apres la classe calculee de s03). La puce sur `JAVASCRIPT_TIERS_REFUSE` disait qu'un fichier renomme "echapperait au motif" mais pas au reste, "puisqu'il faudrait le vendoriser, donc le montrer en diff". Il echappait au garde-fou **entier**, et un diff est une relecture, c'est-a-dire un souhait selon l'axiome du depot. Critere remplace par une liste d'**autorisation** ou une entree designe une origine declaree et une empreinte, jamais un nom de fichier (ADR-0039) |
+| ADR-0038 | 2026-08-14 | **ses deux clauses jugeaient l'arret qu'une tabulation atteint, jamais le point de depart lui-meme** : un point de focus declare **sur** un arret destructeur les laissait toutes les deux vertes, alors qu'Entree seule y detruit la partie, sans aucune tabulation. Mesure sur du materiau reel : `data-focus-cible="true"` pose sur le bouton destructeur de `fragments/confirmation.html` laisse les six tests du garde-fou **et les 222 du module** verts. Le trou n'avait aucun objet avant l'ecran de confirmation - aucun point de focus ne pouvait etre destructeur - et il en a un depuis s11. Ferme par la clause 3 d'`ADR-0040`, encodee dans le meme fichier de test. Deux precisions dans le meme geste : `recreo.js` pose `tabindex="-1"` **sur le point de focus**, donc le document servi et le document vivant n'ont pas le meme `A[0]` des que ce point est lui-meme un arret ; et la clause 2 n'est **ni amendee ni exemptee** pour l'ecran de confirmation, son rouge y etant vrai |
 | ADR-0014 | 2026-08-14 | **son point 1 parlait de dependances, pas d'octets servis, et son refus du webjar n'etait ecrit que dans ses alternatives** - donc rien ne l'appliquait. Pris a la lettre, ce point se lisait comme s'il gouvernait toute dependance Maven, y compris un outil de test que personne ne sert : c'est ce qui a rendu l'arbitrage de `nashorn-core` impossible a ranger au sprint 10. Perimetre dit (l'octet servi), et refus du webjar desormais encode par `ADR-0037` sur le livrable produit - `RessourcesTiercesTest` ne pouvait pas le voir, son perimetre descendant de l'arbre `static/` d'un module ou un webjar n'atterrit jamais |
 
 ## Lecture rapide
@@ -498,3 +500,25 @@ troisieme avait nommee sans la fermer :
     l'alternative de l'annotation. Ce n'est pas une regle ArchUnit, le compte reste a **28** avec sa
     methode ; les trois garde-fous qu'il porte sont des tests JUnit, et les neuf tests qu'il ajoute
     portent la suite de 416 a **425**.
+
+38. **ADR-0040** est le premier `ADR` de ce depot qui **refuse une exemption qu'on lui demandait de
+    formuler**, et c'est pour cela qu'il vaut d'etre relu. La question posee etait bien construite :
+    la clause 2 d'`ADR-0038` interdit qu'une tabulation depuis un point de focus atteigne un arret
+    destructeur, et l'ecran de confirmation est precisement l'ecran dont la destruction est legitime -
+    faut-il l'exempter, et a quelle condition ? La reponse est non, pour un motif **mesure et non
+    doctrinal** : `recreo.js` pose `tabindex="-1"` sur le point de focus, donc focaliser le bouton sur
+    d'un ecran a deux boutons retire ce bouton de l'ordre vivant et fait du destructeur le seul arret
+    restant. Le rouge de la clause 2 n'est pas le prix d'un remede, c'est le refus d'un mauvais remede,
+    et **aucune formulation d'exemption ne survit a ce test** - la plus seduisante ("l'ecran dont la
+    destruction est le second geste delibere") exempte tout le corpus, l'ecran de revelation compris,
+    ou le defaut est ne. Il apporte trois choses au-dela de son sujet : une **clause 3** qui juge le
+    point de depart lui-meme (Entree seule) la ou les deux autres jugent l'arret d'apres, nee d'un trou
+    reel - le focus pose sur le bouton destructeur laissait 222 tests verts ; une **derivation qui
+    reduit le choix sans le faire** - les trois clauses eliminent toutes les formes sauf une, un point
+    de focus sans requete place avant les deux boutons, et laissent a `nadia-prof` ce qui lui revient ;
+    et une **epreuve de morsure qui sert d'anti-vacuite a toute la famille** - elle exige qu'il existe
+    encore un ecran a partie en cours offrant un arret destructeur, faute de quoi les trois clauses ne
+    gardent plus rien. Ce qu'il n'encode pas est dit : rien n'oblige encore un ecran a **declarer** un
+    point de focus, cette quatrieme clause serait rouge des sa premiere execution et appartient au lot
+    qui corrigera l'ecran. Ce n'est pas une regle ArchUnit, le compte reste a **28** avec sa methode ;
+    les deux tests qu'il ajoute portent la suite de 425 a **427**.

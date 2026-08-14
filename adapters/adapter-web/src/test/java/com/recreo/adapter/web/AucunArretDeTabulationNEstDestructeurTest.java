@@ -38,6 +38,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  * l'encodage demande par ce mecanisme pour la story 2 de {@code DEC-0026} : la confirmation avant
  * abandon (voir {@code PartieController.retour()}, {@code fragments/confirmation.html}).
  *
+ * <p><b>ADR-0040 y ajoute une troisieme clause</b> : le point de focus declare ne detruit pas
+ * lui-meme la partie. Les trois ensemble disent une seule chose - depuis le point de depart que le
+ * serveur choisit, ni Entree seule (clause 3) ni une Tabulation puis Entree (clause 2) ne detruit
+ * une partie en cours, et il en va de meme quand le serveur ne choisit aucun point de depart
+ * (clause 1).
+ *
  * <p><b>"Destructeur" est une mesure, jamais une lecture de {@code data-role}</b> (ADR-0038, point
  * 3) : chaque arret candidat est rejoue - meme requete HTTP, sur une session fraiche reproduisant
  * l'etat de depart de l'ecran juge - et le verdict vient de l'etat de session apres coup
@@ -369,6 +375,21 @@ class AucunArretDeTabulationNEstDestructeurTest {
         return Optional.of(enonce.first());
     }
 
+    /**
+     * Le point de focus declare <b>quand il declare lui-meme une requete</b> : c'est le seul cas ou
+     * Entree, pressee sans aucune Tabulation, peut agir depuis le point de depart que le serveur
+     * choisit (ADR-0040, clause 3). Un point de focus qui ne declare aucune requete - l'{@code
+     * .enonce} d'une manche neuve, un paragraphe - n'est pas juge : rien a activer.
+     *
+     * <p>Ce critere est volontairement plus large que l'activation reelle d'un navigateur : un
+     * element qui declare une requete sans etre activable au clavier serait juge ici alors qu'Entree
+     * n'y declencherait rien. Plus strict que la realite, jamais plus lache (ADR-0040, section "Ce
+     * que cette clause ne prouve pas").
+     */
+    private static Optional<Element> pointDeFocusActivable(Document document) {
+        return pointDeFocusDeclare(document).filter(point -> requeteDeclaree(point).isPresent());
+    }
+
     /** L'arret de {@code arrets} qui suit {@code pointDeFocus} dans l'ordre du document ; rebouclage
      * sur le premier arret si {@code pointDeFocus} est apres le dernier (ADR-0038, definition de
      * {@code A[0]} : "c'est aussi celui vers lequel la tabulation revient depuis le dernier arret"). */
@@ -468,6 +489,93 @@ class AucunArretDeTabulationNEstDestructeurTest {
         assertThat(juges)
                 .as("ADR-0003 : cette clause ne prouve rien si aucun ecran de ce corpus ne declare de "
                         + "point de focus pendant qu'une partie est en cours")
+                .isNotEmpty();
+    }
+
+    /**
+     * Clause 3 (ADR-0040) : sur tout ecran a partie en cours, le point de focus que le serveur
+     * declare ne detruit pas lui-meme cette partie. La clause 2 juge l'arret d'apres - Tabulation
+     * puis Entree ; celle-ci juge le point de depart - <b>Entree seule, sans aucune Tabulation</b>.
+     *
+     * <p>Elle n'existait pas avant s12 parce qu'aucun point de focus ne pouvait etre destructeur :
+     * jusqu'a l'ecran de confirmation, la seule requete destructrice de l'application etait celle
+     * d'une sortie, qu'aucun gabarit ne designe comme point de focus. Mesure du 2026-08-14, sur le
+     * depot et non en raisonnement : {@code data-focus-cible="true"} pose sur le bouton
+     * destructeur de {@code fragments/confirmation.html} laissait les six tests d'alors, et les 222
+     * du module, entierement verts.
+     */
+    @Test
+    void aucunPointDeFocusDeclareNeDetruitLuiMemeUnePartieEnCours() throws Exception {
+        List<String> juges = new ArrayList<>();
+        List<String> ecarts = new ArrayList<>();
+
+        for (Ecran ecran : ecrans()) {
+            if (!partieEnCoursSur(ecran)) {
+                continue;
+            }
+            Optional<Element> pointDeFocus = pointDeFocusActivable(ecran.document());
+            if (pointDeFocus.isEmpty()) {
+                continue;
+            }
+            juges.add(ecran.nom());
+            if (estDestructeur(pointDeFocus.get(), ecran.scenario())) {
+                ecarts.add("clause 3 : sur \"" + ecran.nom() + "\" (" + ecran.route()
+                        + "), le point de focus declare " + etiquette(pointDeFocus.get())
+                        + " detruit lui-meme la partie en cours - Entree suffit, sans Tabulation");
+            }
+        }
+
+        assertThat(ecarts).as("ADR-0040 clause 3").isEmpty();
+        assertThat(juges)
+                .as("ADR-0003 : cette clause ne prouve rien si aucun ecran de ce corpus ne declare un "
+                        + "point de focus qui porte une requete pendant qu'une partie est en cours")
+                .isNotEmpty();
+    }
+
+    /**
+     * ADR-0013 obligation 3 pour la clause 3, sur du materiau reel plutot que sur une fixture de ma
+     * main (lecon de s05) : le document que le serveur rend vraiment, avec son point de focus
+     * <b>deplace</b> sur un arret destructeur du meme ecran. Deplace et non ajoute, pour que cette
+     * epreuve reste valable le jour ou l'ecran de confirmation declarera enfin un point de focus.
+     *
+     * <p>La population n'est pas nommee ici : elle est derivee - tout ecran a partie en cours qui
+     * offre au moins un arret destructeur. Qu'elle soit non vide est la mesure d'anti-vacuite de
+     * toute la famille ADR-0038 : le jour ou aucun ecran a partie en cours n'offrirait plus de
+     * requete destructrice, les trois clauses ne garderaient plus aucun objet, et ce test le dirait.
+     */
+    @Test
+    void unPointDeFocusDeplaceSurUnArretDestructeurFaitEchouerLaClause3() throws Exception {
+        List<LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.Masquage> masquages =
+                LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.masquages(RACINE_PRODUCTION);
+        List<String> mutes = new ArrayList<>();
+
+        for (Ecran ecran : ecrans()) {
+            if (!partieEnCoursSur(ecran)) {
+                continue;
+            }
+            for (Element arret : arretsDeTabulation(ecran.document(), masquages)) {
+                if (!estDestructeur(arret, ecran.scenario())) {
+                    continue;
+                }
+                ecran.document().select("[data-focus-cible]").removeAttr("data-focus-cible");
+                arret.attr("data-focus-cible", "true");
+                Element mute = pointDeFocusActivable(ecran.document()).orElseThrow(() ->
+                        new AssertionError("le point de focus deplace doit etre relu sur \""
+                                + ecran.nom() + "\", sans quoi cette epreuve ne prouve rien"));
+                mutes.add(ecran.nom());
+
+                assertThatThrownBy(() -> assertThat(estDestructeur(mute, ecran.scenario()))
+                        .as("clause 3 : le point de focus declare ne detruit pas lui-meme la partie")
+                        .isFalse())
+                        .isInstanceOf(AssertionError.class)
+                        .hasMessageContaining("clause 3");
+                break;
+            }
+        }
+
+        assertThat(mutes)
+                .as("ADR-0003 : aucun ecran a partie en cours n'offre d'arret destructeur - les trois "
+                        + "clauses d'ADR-0038 et d'ADR-0040 ne gardent alors plus aucun objet")
                 .isNotEmpty();
     }
 

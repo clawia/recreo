@@ -1,6 +1,7 @@
 # ADR-0038 - Interdire tout arret de tabulation destructeur a une seule tabulation d'un point de depart que le document autorise
 
-- **Statut** : Accepte, amende le 2026-08-14 (s11, apres la livraison du lot de `marc-dev`)
+- **Statut** : Accepte, amende le 2026-08-14 (s11, apres la livraison du lot de `marc-dev`), complete
+  par `ADR-0040` le 2026-08-14 (s12 : une clause 3, et le refus d'exempter l'ecran de confirmation)
 - **Date** : 2026-08-14
 - **Auteur** : theo-archi
 - **Sprint** : s10 (point route par `sofia-sm` a la cloture ; la story qui l'applique appartient a s11)
@@ -123,6 +124,19 @@ tabulation** :
   et non celui que le tirage du jour a marque : la position de la reponse revelee vient du contenu, et
   une regle qui ne jugerait que le tirage rendu serait verte quinze fois sur vingt-cinq - la faute de
   mesure exacte que `nadia-prof` s'est reprochee a elle-meme.
+
+> **Amendement du 2026-08-14 (s12) - il y a une troisieme clause, et elle vit dans `ADR-0040`.** Les
+> deux clauses ci-dessus jugent l'arret **qu'une tabulation atteint** ; aucune ne juge le point de
+> depart lui-meme. Un point de focus declare **sur** un arret destructeur les laissait donc toutes les
+> deux vertes - Entree seule detruisait, sans aucune tabulation - et la mesure du 2026-08-14 le
+> confirme sur du materiau reel : `data-focus-cible="true"` pose sur le bouton destructeur de
+> `fragments/confirmation.html` laisse les six tests du garde-fou et les 222 du module verts. Ce trou
+> n'avait aucun objet avant l'ecran de confirmation, puisque aucun point de focus ne pouvait etre
+> destructeur. `ADR-0040` le ferme par une clause 3, encodee dans le meme fichier de test.
+>
+> **La clause 2 elle-meme n'est ni amendee ni exemptee.** La question de savoir si elle devait epargner
+> l'ecran dont la destruction est le second geste delibere a ete posee, mesuree et tranchee par la
+> negative dans `ADR-0040` : son rouge sur cet ecran est vrai, pas decoratif.
 
 Les deux clauses ensemble couvrent le defaut **sans que la regle ait a decider si le navigateur
 reboucle dans le document ou passe par sa propre interface**. C'est voulu : le rebouclage est
@@ -317,6 +331,14 @@ aucune ne doit etre lue dans son vert.
    `RecreoJsDeplaceLeFocusTest` l'execute maintenant, mais sur un faux DOM et un faux evenement.
    Si ce deplacement se recasse, la clause 2 restera verte en ne gardant plus rien - et c'est alors la
    clause 1 seule qui protege, ce qui est precisement pourquoi elle est ecrite separement.
+
+   > **Precise le 2026-08-14 (s12), et c'est plus net que ce que j'avais ecrit** : `recreo.js` pose
+   > `tabindex="-1"` **sur le point de focus** avant de le focaliser. Le document servi et le document
+   > vivant n'ont donc pas le meme `A[0]` des que le point de focus declare est lui-meme un arret : le
+   > script l'en retire. Aucun ecran n'est dans ce cas aujourd'hui - le point de focus est l'enonce,
+   > qui n'est pas un arret, ou une proposition, qui n'est jamais `A[0]`. C'est la mecanique exacte qui
+   > rend faux le remede consistant a focaliser le bouton sur de l'ecran de confirmation, et elle est
+   > developpee dans `ADR-0040`.
 2. **Que la premiere tabulation d'un vrai navigateur atteint l'element que la regle calcule.**
    `nadia-prof` mesure avec un outillage pilote ; `yanis-qa` a explicitement refuse d'affirmer que le
    rebouclage observe se reproduit dans un navigateur de bureau avec sa barre d'adresse, faute de
