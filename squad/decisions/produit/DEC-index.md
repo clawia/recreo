@@ -30,7 +30,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0024 | "Le bon petit mot" quitte le catalogue jouable : contenu valide, ecran trop court, condition de retour executable | s10 | 2026-08-12 | Acceptee |
 | DEC-0025 | Levee de la condition M4 de nadia-prof : le sprint 10 est livre avec un defaut de pli assume par ecrit | s10 | 2026-08-13 | Acceptee, amendee le 2026-08-14 (chiffres du resserrement de marges corriges, trois jeux fermes et non deux, aucun n'est celui nomme a l'origine ; conclusion inchangee) |
 | DEC-0026 | Levee de la clause 1 de M13 de nadia-prof, bornee au seul ecran de revelation de M5 : le sprint 10 est livre avec une perte de partie sans confirmation, assumee par ecrit | s10 (cloture) | 2026-08-14 | Acceptee, amendee le 2026-08-14 (l'etendue mesuree couvre aussi l'ecran de reprise, pas seulement la revelation ; la levee et le declencheur de reouverture sont etendus aux deux ecrans) |
-| DEC-0027 | Le retrait du bouton de sortie du fragment de manche reouvre l'arbitrage valide de S6-9 / ADR-0022 : arbitrage prealable de nadia-prof requis avant developpement | s11 | 2026-08-14 | Acceptee |
+| DEC-0027 | Le retrait du bouton de sortie du fragment de manche reouvre l'arbitrage valide de S6-9 / ADR-0022 : arbitrage prealable de nadia-prof requis avant developpement | s11 | 2026-08-14 | Acceptee, amendee le 2026-08-14 (arbitrage prealable rendu par nadia-prof : principe accepte sous six conditions, forme instruite refusee ; perimetre corrige a trois ecrans et non un, chiffre du 2026-08-07 corrige) |
 
 Amendement (pas une nouvelle reference) : `DEC-0023` a ete amendee le 2026-08-12, sur son point 6
 (disparition de l'ecran intermediaire), laisse ouvert et route a `nadia-prof` pour arbitrage
@@ -220,3 +220,17 @@ condition au declencheur de reouverture pour que la reverification de s11 porte 
 reprise. Les sections d'origine de `DEC-0026` restent telles qu'ecrites le 2026-08-14, non effacees.
 Voir la section "Amendement du 2026-08-14 (s10, cloture, apres verification de theo-archi)" dans
 `DEC-0026-levee-m13-clause-1-ecran-de-revelation-perte-de-partie-sans-confirmation.md`.
+
+Amendement (pas une nouvelle reference) : `DEC-0027` a ete amendee le 2026-08-14, sur l'arbitrage
+prealable de `nadia-prof` que son point 2 exigeait. Deux corrections : le perimetre ecrit dans la
+decision d'origine ("`fragments/retour.html` ... hors du perimetre de cette demande") est exact du
+fragment mais faux de l'ecran - `fragments/retour.html` et `fragments/erreur.html` portent tous
+deux le marqueur `ecran-de-jeu` que `fragments/manche.html` porte aussi, donc le perimetre reel
+couvre trois ecrans, pas un ; et le chiffre "102 x 53 px" cite dans la decision d'origine est
+perime (mesure sur l'ancien libelle "Accueil"), remesure a 109 x 53 px. Le verdict de `nadia-prof` :
+principe accepte sur les seuls etats de `fragments/manche.html`, forme instruite refusee (elle
+poserait deux fois "Les jeux" sur l'ecran de fin de partie et un second bouton sur l'ecran
+d'erreur), sous six conditions PORTE-1 a PORTE-6. Les sections d'origine de `DEC-0027` restent
+telles qu'ecrites le 2026-08-14, non effacees. Voir la section "Amendement du 2026-08-14 (s11,
+arbitrage prealable rendu)" dans
+`DEC-0027-retrait-bouton-sortie-fragment-manche-reouvre-s6-9-arbitrage-prealable-requis.md`.

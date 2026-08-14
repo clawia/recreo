@@ -133,3 +133,63 @@ a moi. La story le porte comme "a etablir", pas comme un chiffre suppose.
 - Elle ne leve, ne ferme et ne remplace aucune des deux stories de `DEC-0026` ; elle n'est pas
   candidate a leur declencheur de reouverture.
 - Elle ne chiffre aucun gain de place.
+
+## Amendement du 2026-08-14 (s11, arbitrage prealable rendu) - le perimetre couvre trois ecrans et non un, le chiffre de 2026-08-07 est perime, verdict de nadia-prof : principe accepte sous six conditions, forme instruite refusee
+
+`nadia-prof` a rendu l'arbitrage prealable exige au point 2 ci-dessus
+(`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Arbitrage prealable au
+developpement - la sortie unique dans l'en-tete (DEC-0027, s11), du 2026-08-14"). J'ai verifie
+moi-meme, en lisant les gabarits, les deux faits qui corrigent cette decision.
+
+**1. Le perimetre ecrit ci-dessus est faux, et c'est le point qui compte le plus.** J'avais ecrit,
+dans "Ce que je trouve en verifiant" : "`fragments/retour.html` ne rend plus que la fin de partie,
+avec sa propre sortie `sortie-pleine`, hors du perimetre de cette demande." C'est exact du
+**fragment** - `button.btn.retour-accueil`, le bouton que la demande retire, n'existe que dans
+`fragments/manche.html` - et faux de l'**ecran** : `fragments/retour.html` (ligne 11) et
+`fragments/erreur.html` (ligne 7) portent tous deux `class="ecran-de-jeu"`, le meme marqueur que
+`fragments/manche.html` (ligne 28). Lever `body:has(.ecran-de-jeu) .lien-accueil { display: none }`
+demasque donc le lien de l'en-tete sur les **trois** ecrans qui portent ce marqueur, pas sur un
+seul. Le perimetre reel de cette demande est : manche fraiche, echec et revelation
+(`fragments/manche.html`), fin de partie (`fragments/retour.html`), erreur
+(`fragments/erreur.html`).
+
+Consequences mesurees par `nadia-prof`, que je reprends sans les rejuger : sur l'ecran de fin de
+partie, "Les jeux" apparaitrait deux fois - le lien de l'en-tete et l'aplat `sortie-pleine`, a 49 px
+l'un de l'autre - et le bandeau qui passe de 76 a 85 px ferait descendre `sortie-pleine` de 9 px au
+lieu de lui faire gagner quoi que ce soit ; sur l'ecran d'erreur, "Les jeux" apparaitrait a cote de
+"Recommencer", deux mots pour une seule destination, ce qui defait l'acquis de S6-9 - un seul mot
+de sortie dans toute l'application.
+
+**2. Le chiffre "102 x 53 px" que je cite tel quel ci-dessus, dans "Ce que je trouve en
+verifiant", est perime.** Il datait de la mesure faite par `nadia-prof` le 2026-08-07 sur le
+libelle "Accueil", que S6-9 a depuis remplace par "Les jeux", plus large. Remesure par elle
+aujourd'hui : **109 x 53 px**, soit la boite exacte du bouton que cette demande retirerait. Il n'y
+avait donc aucun ecart de taille a opposer sur une manche - voir la fiche, section "0 bis", point
+2. Le meme chiffre perime figure aussi dans `ADR-0022` (`theo-archi`, 2026-08-07) ; je ne corrige
+pas ce document, qui n'est pas le mien, et je le signale a `sofia-sm` pour routage.
+
+**Verdict de `nadia-prof`, que je ne rends pas moi-meme et que je reprends tel qu'ecrit** : "la
+forme instruite est REFUSEE. Le principe est ACCEPTE sur les seuls etats rendus par
+`fragments/manche.html`, sous six conditions PORTE-1 a PORTE-6." Voir
+`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section citee ci-dessus, pour le detail
+des six conditions et leur motif ; je ne les reproduis pas ici pour ne pas dupliquer un texte qui
+n'est pas le mien.
+
+**Ce que cet amendement ne change pas.** Rien du corps de la decision ci-dessus n'est efface : le
+perimetre et le chiffre errones restent lisibles tels qu'ecrits le 2026-08-14, cette section dit
+seulement ce qui est correct a compter d'aujourd'hui. Le point 3 ci-dessus reste vrai sans
+changement : cette decision ne prononce toujours aucun jugement pedagogique par elle-meme, c'est
+`nadia-prof` qui vient de le rendre, dans sa fiche.
+
+### Impact de cet amendement
+
+- `docs/backlog/backlog.md` : la story "Gain vertical - retrait du bouton de sortie du fragment de
+  manche" est reecrite avec le perimetre corrige (trois ecrans) et les six conditions PORTE-1 a
+  PORTE-6 portees en criteres d'acceptation.
+- `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee, statut de la ligne DEC-0027
+  mis a jour.
+- `squad/programme/MATRICE-couverture.md` : inchangee, comme au point 5 de la decision d'origine.
+- `squad/conformite/FICHE-bandit-manchot-additions-cp.md` : inchangee par cet amendement, qui ne
+  fait que reprendre et referencer le verdict que `nadia-prof` y a deja ecrit.
+- Signale a `sofia-sm`, hors de ce fichier : le chiffre "102 x 53 px" perime dans `ADR-0022`, pour
+  routage vers `theo-archi`.
