@@ -224,6 +224,43 @@ entree/sortie observables.
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
+### Reverification exigee par DEC-0026 (s12), du 2026-08-14 : VALIDE SOUS RESERVE
+
+- **Verdict** : **VALIDE SOUS RESERVE**, sur le seul point que `DEC-0026` met en reverification -
+  la clause 1 de M13 sur l'ecran de revelation et sur l'ecran de reprise. Ce verdict n'efface,
+  ne modifie et ne rouvre aucun verdict anterieur de cette fiche : le REFUSE du 2026-08-13 reste
+  ecrit, entier, et il portait sur un increment ou la partie etait detruite.
+- **Le verdict complet, son protocole, ses chiffres et ses deux reserves sont dans**
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Reverification exigee par
+  DEC-0026 (s12), du 2026-08-14". L'ecran de confirmation et la mecanique sont communs aux sept
+  jeux : je ne recopie pas le raisonnement, j'ecris ici ce qui est propre a ce jeu.
+- **Increment reverifie** : `round-two` a `ef801b4` (posterieur a `4eaddf0`, comme la tache
+  l'exige), arbre propre, **jar reconstruit depuis mon propre worktree avant toute mesure**.
+- **Ce que j'ai joue sur ce jeu precisement**, au clavier reel, Tabulation puis Entree depuis le
+  point de focus :
+
+| Mesure sur "Le bon verbe" | Resultat |
+|---|---|
+| revelations jouees, en tirages repetes | **9** |
+| revelee en derniere position de l'ordre de tabulation, donc premiere Tabulation sur la sortie | **3 / 9** |
+| **parties detruites** | **0 / 9** |
+| clause 5 - le focus est sur la proposition qui porte la reponse revelee | **9 / 9** |
+| Entree rend l'ecran de confirmation, avec le texte *"Si tu pars, ta partie s'arrête."* | **3 / 3** |
+| ecran de reprise (`GET /` pendant une partie) : rien focalise au chargement, Tabulation sur la sortie, Entree sans destruction | **tenu** |
+| manche fraiche, apres une reponse fausse, apres une reponse juste : Tabulation n'atteint jamais la sortie | **3 / 3** |
+
+- **Ce qui est propre a ce jeu et que je note** : c'est le seul des sept a porter **quatre**
+  propositions, donc le seul ou la revelee tombe en derniere position moins souvent (3 fois sur 9
+  ici, contre 10 sur 10 sur "Calcul CP" a trois propositions). Cela ne change rien au verdict -
+  la loi de s10 se reproduit a l'identique, et sa consequence a disparu sur les deux formats.
+- **Les deux reserves du verdict complet valent aussi sur ce jeu**, parce qu'elles portent sur
+  l'ecran de confirmation, qui est le meme : **reserve N** (aucun point de focus declare, premiere
+  Tabulation instable) et **reserve M10 sur chemin neuf** (le retour depuis la confirmation rejoue
+  le defilement des colonnes sur un tirage inchange). Aucune des deux n'empeche l'usage de
+  l'increment.
+- **Ce que ce verdict ne fait pas** : il ne fait passer aucune ligne de
+  `squad/programme/MATRICE-couverture.md` a `couvert-valide`, il ne leve aucune autre reserve de ce
+  jeu, et il n'ecrit aucune story.
 
 ### Second verdict du 2026-08-13 sur le lot de cloture du sprint 10 : REFUSE
 

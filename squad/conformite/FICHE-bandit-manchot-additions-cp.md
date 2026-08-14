@@ -263,7 +263,736 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Arbitrage prealable - la forme et le texte de l'ecran de confirmation avant abandon (s11), du 2026-08-14 - le plus recent de cette fiche
+### Arbitrage prealable de s12 du 2026-08-14, second tour - le point de focus de la confirmation, revu sur un fait mesure - le plus recent de cette fiche
+
+> **Ce que cette section fait.** Elle **corrige mon choix de focus rendu quelques heures plus tot**,
+> parce qu'un fait mesure par `theo-archi` le rend mecaniquement impossible. La section precedente
+> **n'est pas effacee, pas modifiee, pas reformulee** : un choix retire dont la trace disparait n'a
+> aucune valeur de preuve, et c'est precisement l'erreur que je veux qu'on puisse lire. La mention
+> "le plus recent de cette fiche" quitte son titre pour celui-ci, et c'est le seul caractere que j'y
+> touche.
+>
+> **Ce qu'elle ne fait pas** : elle ne leve pas ma reserve N, que je leverai au clavier sur un
+> increment livre. Personne ne me le demande, et je ne le ferais pas si on me le demandait.
+
+#### 0. Comment j'ai instruit, et ce que je declare degrade
+
+**Je n'ai pas presse ce clavier-la : mon audit reste degrade sur ce point precis, et je le dis avant
+de conclure.** Ce que j'ai fait :
+
+- **j'ai verifie le fait par la source plutot que de le croire sur parole.** `static/js/recreo.js`
+  fait, sur le point de focus et dans cet ordre, `setAttribute('tabindex', '-1')` puis `focus()`.
+  Sur un `button` natif - qui est dans l'ordre de tabulation par nature - `tabindex="-1"` l'en
+  **retire**. Le fait est exact, et il n'a pas besoin d'etre mesure pour etre etabli : il se lit ;
+- **j'ai un ancrage empirique, et il est de moi.** `fragments/manche.html` emploie **deja** la forme
+  proposee : `data-focus="enonce"` porte le focus sur un **paragraphe**, pas sur un bouton. C'est
+  l'etat dans lequel j'ai mesure la clause 1 sur les cinq ecrans, **zero partie detruite sur
+  cinquante-trois Tabulation-puis-Entree**. Sur une manche fraiche, le focus est sur l'enonce et la
+  premiere Tabulation atteint une proposition, jamais la sortie - alors meme que le bouton de sortie
+  precede l'enonce dans le document. **La forme qu'on me propose n'est donc pas une hypothese : je
+  l'ai deja pressee cinquante-trois fois, sur un autre ecran, et elle tient.**
+
+Ce que je ne sais toujours pas et que je n'invente pas : ce qu'un lecteur d'ecran annonce reellement
+en arrivant ici. **Reserve F11, entiere.**
+
+#### 1. Ce que je corrige de mon propre texte, avant tout le reste
+
+**J'ai ecrit une phrase fausse il y a quelques heures, dans cette fiche, et c'est moi qui l'ai
+ecrite.** Section precedente, a propos de mes deux proprietes de la reserve N : *"Un point de focus
+declare sur 'Continuer la partie' les satisferait toutes les deux."*
+
+**C'est faux, et pas a moitie.** Declarer le focus sur ce bouton l'aurait sorti de l'ordre de
+tabulation vivant, laissant **le bouton destructeur comme seul arret restant**. Ce que j'avais mesure
+a **0 fois sur 69** - la premiere Tabulation n'atteint jamais le bouton destructeur - serait devenu
+**le seul comportement possible**. Mon choix n'aurait pas ameliore l'ecran : il aurait installe, a
+100 %, le defaut dont j'etais fiere de constater qu'il n'arrivait jamais.
+
+**Et l'ironie est dans la phrase suivante de mon propre paragraphe**, ou j'ecrivais qu'*"une propriete
+satisfaite sur le papier n'est pas une propriete mesuree"*. Je l'ecrivais en train de tenir pour
+satisfaite une propriete que je n'avais pas mesuree. C'est la cinquieme fois que ce depot paie la
+meme lecon, et cette fois c'est moi qui la paie deux fois dans un meme paragraphe : **ce qui n'est
+pas presse n'est pas verifie**, y compris quand c'est moi qui le raisonne.
+
+Je ne retire pas le paragraphe. Je le laisse lisible et je le corrige ici. **Ce que mon argument de
+fond gardait de juste, et qui ne bouge pas** : on n'ecarte pas un defaut en installant sa version
+plus rapide. C'est ce principe, pas le nom du bouton, qui gouverne ce qui suit.
+
+#### 2. La forme proposee tient-elle mon exigence ? OUI - et ce n'est pas un pis-aller
+
+**Verdict : oui, cette forme sert le meme enfant, et sur un point elle le sert mieux que ce que
+j'avais demande.** Je reponds sur les deux enfants separement, parce qu'ils ne vivent pas cet ecran
+de la meme facon.
+
+**L'enfant au clavier.** Ce qu'il obtient : a l'arrivee, rien d'actionnable n'est focalise, donc
+**Entree seule ne fait rien** - et surtout ne detruit rien ; la **premiere** Tabulation atteint
+"Continuer la partie", **a chaque fois** ; la seconde atteint la sortie. Il faut donc **trois gestes
+deliberes** pour perdre la partie, sur un ecran qui affiche la consequence. Compare a aujourd'hui,
+ou la premiere Tabulation le fait sortir de la page **cinq fois sur six** : il presse, rien ne
+s'allume, il presse Entree, rien ne se passe, et il se croit en faute. **C'est ce cas-la, le plus
+frequent et le pire, que cette forme supprime.**
+
+**L'enfant a la souris.** Rien ne change pour lui : il voit la phrase et les deux boutons, il en
+presse un. Le point de focus ne le concerne pas. C'est neutre, et c'est bien ainsi.
+
+**Ce que cette forme ne ferme pas, et je le nomme au lieu de le passer.** Mes deux proprietes de la
+reserve N ne sont pas tenues a egalite. *"Le nombre d'appuis pour atteindre un bouton donne est le
+meme a chaque fois"* : **tenue**, et c'est le gros de la reserve. *"L'enfant doit savoir ou il en
+est des son arrivee"* : **pas tenue par cette forme**, parce qu'un paragraphe focalise par script ne
+dessine aucun anneau - la feuille maison ne declare de focus visible que sur `.btn`.
+
+**Et je m'interdis d'en faire une condition sur ce lot, pour un motif que je dois a ma propre
+regle.** Cette moitie-la n'est pas tenue **non plus sur l'ecran de manche**, ou le focus se pose sur
+l'enonce depuis s10 - et j'ai valide ces ecrans. Exiger de l'ecran de confirmation ce que je n'ai
+pas exige de la manche serait deplacer mes poteaux sur une equipe qui vient d'atteindre la barre.
+**Cette moitie reste ou elle est : dans la reserve N, telle qu'elle est ecrite, ouverte, et elle
+concerne tous les ecrans, pas celui-ci.**
+
+**Une chose que je refuse d'avance, pour qu'on ne me l'apporte pas comme un progres.** Si quelqu'un
+propose de rendre ce point d'arrivee visible en **dessinant un anneau autour de la phrase** : non.
+J'ai deja arbitre ce risque en s01 sur "C'est fini !", du texte centre en bleu qui *"reste, pour un
+lecteur debutant, tres proche de l'aspect d'une chose sur laquelle on appuie"*. Encadrer une phrase
+qu'on ne peut pas presser, sur l'ecran ou presser decide de la partie, ferait exactement ce
+contresens-la. **La phrase ne change pas d'apparence.**
+
+#### 3. Quel element porte le point de focus, et ce qu'il doit annoncer
+
+**L'element : la phrase deja arbitree, "Si tu pars, ta partie s'arrête."** - celle de CONF-3, que
+j'ai fixee ce matin et que je ne reformule pas.
+
+**Le motif n'est pas qu'elle est le seul candidat disponible, c'est qu'elle est le bon.** Cet ecran
+n'existe que pour avertir. **La premiere chose que l'enfant recoit doit donc etre l'avertissement**,
+et cela doit valoir par l'oeil comme par l'oreille. Poser le point d'arrivee sur la phrase fait
+coincider trois choses qui divergent aujourd'hui : ce que l'enfant lit en premier, ce qu'il entend en
+premier, et l'endroit d'ou part sa premiere Tabulation. Un ecran de confirmation dont le point
+d'arrivee est la consequence est un ecran coherent ; un ecran dont le point d'arrivee serait un
+bouton dirait a l'enfant "choisis" avant de lui avoir dit "voici ce que tu risques".
+
+**La propriete que j'exige sur l'annonce**, et je la formule en propriete parce que le moyen n'est
+pas de moi : **a l'arrivee sur cet ecran, ce qu'un enfant entend est la consequence, et il l'entend
+avant tout libelle de bouton.** Rien de plus, rien d'autre - pas de texte annonce qui n'existe pas a
+l'ecran, ce que je viens de refuser sur l'`aria-label` au meme titre.
+
+**Ce que je ne verifie pas et ne ferai pas semblant de verifier** : que l'annonce reelle soit bien
+celle-la. Personne dans cette equipe n'a jamais ecoute cette application, moi comprise. Si l'ecoute
+montre que le fait de focaliser cette phrase ne l'annonce pas, ou l'annonce apres autre chose,
+**c'est la forme qui doit changer, pas la propriete**. C'est ma reserve F11 et elle reste ouverte.
+
+**Ce que je laisse a `theo-archi` sans y toucher** : par quel attribut et sur quelle classe cette
+phrase devient le point de focus. Je nomme l'element par ce que l'enfant en recoit, pas par son
+balisage. Je note seulement, pour qu'on ne me reponde pas que c'est impossible, que la forme existe
+deja dans le depot sur un paragraphe.
+
+#### 4. `ines-design` : non, et la question est entierement la mienne
+
+**Je n'ai pas besoin d'elle sur ce point, et je demande qu'on ne lance pas ce cycle.**
+
+Le motif est simple : **il n'y a rien de visible a concevoir.** Cette forme ne change strictement rien
+a l'apparence de l'ecran - la phrase garde sa place, sa taille et sa couleur, et le point de focus
+sur un paragraphe ne dessine rien. Et la seule chose qui pourrait devenir visible, l'anneau autour de
+la phrase, **je viens de la refuser au point 2**, pour un motif pedagogique qui est de mon ressort et
+pas du sien.
+
+Ce sur quoi son avis serait requis, et qui n'est pas demande aujourd'hui : si quelqu'un veut un jour
+rendre le point d'arrivee de cet ecran perceptible **autrement** qu'en imitant un bouton. Ce serait
+une proposition visuelle, elle passerait par elle, et elle reviendrait par moi. Ce n'est pas ce
+sprint.
+
+#### 5. Ce que je conclus, en une ligne actionnable
+
+**Le point de focus de l'ecran de confirmation est la phrase "Si tu pars, ta partie s'arrête.",
+placee avant les deux boutons, sans requete, sans changement d'apparence.** "Continuer la partie" est
+ainsi le premier arret de tabulation reel, et il l'est a chaque fois. **Mon choix precedent est
+retire, son motif de fond est conserve, et la trace des deux reste lisible dans cette fiche.**
+
+#### 6. Les proprietes dont je reste la seule garde, apres ce tour
+
+1. **Ce qu'un lecteur d'ecran annonce en arrivant ici.** Reserve F11. Aucune ecoute n'a eu lieu, la
+   propriete du point 3 n'est donc verifiee par personne.
+2. **Que l'enfant sache ou il en est des son arrivee**, sur cet ecran comme sur la manche. Moitie non
+   tenue de la reserve N, qui reste ouverte et qui n'est pas une condition sur ce lot.
+3. **Que le point de focus declare soit celui que la touche atteint.** Je viens de me tromper dessus
+   par raisonnement ; je ne le saurai qu'en le pressant.
+
+### Arbitrage prealable de s12 du 2026-08-14, trois textes de l'application et le point de focus de la confirmation
+
+> **Ce que cette section ajoute et ce qu'elle ne touche pas.** Elle repond a trois questions que
+> `theo-archi` a portees en derivant le critere de son garde-fou de texte, plus une question de
+> focus qu'il m'a laissee parce qu'elle est de mon ressort. **Aucun verdict anterieur de cette fiche
+> n'est efface, deplace ni reformule** ; le seul caractere modifie ailleurs est la mention "le plus
+> recent de cette fiche", retiree du titre de la section suivante et amenee ici, avec sa note.
+>
+> L'arbitrage prealable du meme jour sur les trois lignes de mathematiques CM1 vit dans un fichier a
+> part, `squad/conformite/ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md` : il ne concerne aucun des
+> jeux de cette fiche.
+
+#### 0. Comment j'ai instruit, et ce que je declare degrade
+
+**Je n'ai pas relance l'application pour cette section, et je le dis parce que ca compte.** Mon
+audit est donc **degrade** au sens ou je l'entends d'habitude : je n'ai pas revu ces ecrans a
+l'ecran ce jour-ci. Ce que j'ai fait a la place, et qui me suffit pour ces trois textes precisement :
+
+- j'ai lu les deux gabarits reellement servis, `templates/accueil.html` et
+  `templates/fragments/erreur.html`, dans le worktree d'ou je parle ;
+- j'ai etabli par l'historique du depot que **les deux phrases n'ont pas change d'un caractere
+  depuis mon audit joue du 2026-08-05**. "Oups ! Le jeu a un souci." est entree au depot le
+  2026-08-05 et n'a jamais ete retouchee depuis ; la ligne du catalogue vide a ete touchee pour la
+  derniere fois le 2026-08-05 elle aussi. Mon audit de s01 etait **non degrade** : j'avais rendu
+  l'ecran de catalogue vide **reellement**, en relancant l'application sur un catalogue sans aucun
+  jeu, et j'avais traverse l'ecran d'erreur en jouant un coup sans partie en cours.
+
+**Ce que ce mode ne me donne pas** : sur l'`aria-label`, il ne me donne rien du tout, parce que je
+n'ai jamais ecoute cette application avec un lecteur d'ecran, et personne dans cette equipe ne l'a
+fait. **Ma reserve F11 reste entiere** et cette section ne la leve pas. Je juge ci-dessous des
+**mots**, ce que je sais faire ; je ne juge pas ce que l'annonce donne a entendre dans son
+enchainement, ce que je ne sais pas encore.
+
+#### 1. Ce que je corrige dans le constat qui m'est transmis, avant d'arbitrer
+
+Le constat qui m'arrive dit que **les deux phrases n'ont aucun arbitrage a mon nom dans le depot**.
+**C'est faux pour les deux, et la trace est dans cette fiche meme.** Je le corrige d'abord, parce
+que je ne veux pas qu'on croie avoir trouve un trou de gouvernance la ou il n'y en a pas, ni qu'on
+enregistre comme neuf un verdict que j'ai deja rendu.
+
+Section "Verdict du sprint s01, conserve pour trace", datee du **2026-08-05**, tableau "Les libelles
+destines a l'enfant" :
+
+- **"Il n'y a pas de jeu pour le moment."** y porte le verdict **ACCEPTE**, avec son motif ecrit et
+  une reserve attachee ;
+- **"Oups ! Le jeu a un souci."** y porte le verdict **ACCEPTE**, dans la ligne qui la groupe avec
+  "Recommencer", "Ta partie s'est arrêtée. Choisis un nouveau jeu !" et "Score : N".
+
+Ces deux phrases ont ete vues a l'ecran avant d'etre acceptees, et je les ai reverifiees intactes le
+2026-08-07 dans le releve de texte de s05. Le trou de gouvernance est ailleurs, et il est reel : **il
+est sur l'`aria-label`**, entre au depot le 2026-08-06, c'est-a-dire **apres** mon arbitrage de s01,
+et jamais passe devant moi depuis. Sur ce point-la le constat est exact, et il est utile.
+
+#### 2. "Il n'y a pas de jeu pour le moment." - CONFIRME, et sa reserve est rappelee ouverte
+
+**Verdict : ACCEPTE. Je confirme le verdict du 2026-08-05 sans le rouvrir et sans le durcir.**
+
+Je n'ai pas de motif neuf, et je n'en fabrique pas un parce qu'on me repose la question : la phrase
+est du francais correct, entierement accentuee, au registre d'un enfant, et elle est **honnete** -
+elle dit ce qui est, sans inventer une panne ni accuser qui que ce soit. Neuf mots reste long pour
+un CP, et je l'ecrivais deja ainsi ; c'est un ecran d'anomalie que l'enfant ne rencontre pas en
+classe, et il n'a rien a y decider. Je ne deplace pas mes poteaux : la barre que j'ai ecrite en s01
+est atteinte, elle l'est toujours, le texte n'a pas bouge.
+
+**Ce que je rappelle ouvert, en revanche, et qui n'est pas une barre nouvelle : ma reserve 11 de
+s01** - *"L'ecran de catalogue vide n'offre aucune action. Accepte pour aujourd'hui parce que c'est
+un ecran d'anomalie, mais un enfant devant un ecran sans rien a faire reste un enfant bloque."* Je
+l'ai reverifiee dans le gabarit avant de la citer : quand la liste est vide, cet ecran rend cette
+seule phrase, et **rien de pressable qui mene ailleurs** - l'entree de menu de l'en-tete est bien
+visible ici, mais elle ramene a ce meme ecran vide. La reserve tient telle qu'elle etait ecrite.
+Elle reste **un motif pour `camille-po`, pas une condition sur un lot**, et surtout pas un motif de
+refus du texte, qui n'y est pour rien.
+
+#### 3. "Oups ! Le jeu a un souci." - CONFIRME
+
+**Verdict : ACCEPTE. Je confirme le verdict du 2026-08-05.**
+
+Le motif que j'avais ecrit tient mot pour mot et je le reprends : **le ton de cet ecran est
+exactement le bon, il n'accuse jamais l'enfant.** C'est le point qui compte sur un ecran d'erreur, et
+c'est le point que la plupart des logiciels ratent. "Souci" est un mot du francais parle des enfants,
+"Oups !" dit qu'il s'est passe quelque chose sans dramatiser, et surtout la phrase attribue le
+probleme **au jeu** et non a celui qui joue. Un enfant de six ans qui voit un ecran inattendu se
+croit en faute par defaut ; cette phrase-la est ecrite contre ce reflexe. Elle vaut aussi pour un
+CM1, sans changement.
+
+Cet ecran est en outre le seul de l'application qui n'ait jamais ete un cul-de-sac : "Recommencer" y
+est present et pressable, et c'est la seule chose pressable - arbitrage du 2026-08-07 que je ne
+rouvre pas. **Un enfant bloque doit pouvoir avancer : ici il le peut.**
+
+Je maintiens, sans en faire une condition, la remarque de forme de s01 : la phrase est centree et
+"Recommencer" est en dessous a gauche, donc l'alignement ne conduit pas l'oeil vers la seule action.
+C'etait deja note comme non bloquant sur un ecran presque vide. Ca l'est toujours.
+
+#### 4. `aria-label="Menu principal"` - JE LE PRENDS DANS MON PERIMETRE, et je le REFUSE
+
+**La reponse a la question de perimetre est oui, et elle ne souffre pas de nuance : ce texte est
+destine a un enfant, donc il passe par ma porte.** Un enfant qui utilise un lecteur d'ecran est un
+enfant. Le fait que ce texte soit annonce et non affiche change le canal, pas le destinataire.
+
+**Et je donne le critere, puisque c'est un critere qui manque et non une ligne de liste.**
+`theo-archi` a eu raison de refuser de fermer ce trou par une enumeration : une liste de chaines
+n'est pas un critere, elle se perime au prochain gabarit. Le critere que je pose, et qui se derive :
+**tout texte que le serveur envoie et qu'un enfant peut recevoir releve de cette porte, qu'il soit
+affiche a l'ecran ou annonce par une aide technique.** Le canal ne fait pas la difference ; le
+destinataire la fait. Ce qui reste dehors, c'est ce qu'aucun enfant ne recoit jamais - un commentaire
+de gabarit, un nom de classe, un message d'erreur technique de journal. Le moyen de tenir ce critere
+n'est pas de moi.
+
+**Verdict sur les mots : REFUSE.** Quatre motifs, et ils sont cumulatifs :
+
+1. **C'est faux.** Cette zone contient **un seul lien**. Un menu, c'est un choix entre plusieurs
+   choses. Annoncer "menu" pour un lien unique annonce une chose qui n'existe pas, et l'enfant qui
+   cherche les autres entrees les cherchera pour rien.
+2. **Le mot n'est pas comprehensible au niveau vise.** Ce n'est pas une question de dechiffrage - le
+   texte est entendu, pas lu - c'est une question de sens. "Menu", pour un enfant de six ans, c'est
+   ce qu'il y a a la cantine. "Principal", c'est le vocabulaire d'un adulte qui parle de logiciels.
+   Ni l'un ni l'autre ne designe, pour lui, l'endroit d'ou l'on sort du jeu.
+3. **Il introduit un second nom pour une chose qui en a deja un.** Cette application n'a **qu'un seul
+   mot de sortie**, "Les jeux", et c'est une regle que j'ai moi-meme imposee en refusant "Retour à
+   l'accueil" au motif que l'enfant n'a pas a apprendre deux vocabulaires pour une destination. Ici,
+   l'enfant qui voit l'ecran lit "Les jeux" et l'enfant qui l'entend s'entend annoncer "Menu
+   principal". La regle que j'ai fixee pour l'oeil vaut pour l'oreille.
+4. **Aucun enfant ne voit ces deux mots nulle part ailleurs dans l'application.** Un texte annonce qui
+   n'a aucun correspondant a l'ecran ne peut etre verifie par personne - ni par l'enfant, ni par
+   l'adulte a cote de lui.
+
+**La reformulation que j'ecris, et j'en donne deux formes parce que la premiere depend d'une
+contrainte technique que je ne connais pas.**
+
+- **Ce que je prefere : que cet attribut n'existe pas.** Cette page ne porte qu'une seule zone de
+  navigation et un seul lien dedans, qui se nomme lui-meme "Les jeux". Il n'y a rien a distinguer,
+  donc rien a etiqueter. Un libelle qui ne distingue rien n'ajoute que du bruit dans l'oreille de
+  l'enfant.
+- **Si un garde-fou technique exige un libelle non vide**, alors ce libelle est **"Les jeux"** - le
+  mot que l'enfant a deja, celui qui est ecrit dans le lien, celui que toute sortie de cette
+  application emploie. Redondant a l'oreille, mais jamais trompeur, et jamais un vocabulaire de plus.
+
+**Ce que ce refus ne fait pas** : il ne bloque rien. C'est un motif pour `camille-po`, a traiter dans
+un sprint suivant comme les autres, et il ne remet en cause aucun Done deja prononce. Aucun jeu n'en
+devient injouable ; c'est une phrase a corriger, pas un defaut de mecanique.
+
+#### 5. Le bouton qui recoit le focus sur l'ecran de confirmation - JE TRANCHE : "Continuer la partie"
+
+La question m'est posee comme la mienne, et elle l'est. **Mon choix : le point de focus declare a
+l'arrivee sur cet ecran est "Continuer la partie".**
+
+**Le motif tient en une phrase, et c'est celle qui gouverne tout ce que j'ai arbitre sur cet ecran :
+un enfant qui arrive quelque part sans avoir rien decide ne doit pas pouvoir tout perdre en appuyant
+une fois.** Le focus d'arrivee, c'est ce que l'enfant declenche par le premier geste qu'il connait -
+Entree. Il doit tomber sur l'option reversible. "Continuer la partie" le ramene dans son jeu, sans
+consequence ; c'est la seule des deux qui puisse etre le defaut.
+
+**L'autre choix est pire que le defaut que j'ai refuse le 2026-08-13, et je le dis avec ses chiffres
+pour qu'on ne me le represente pas.** Declarer le focus sur "Les jeux" ferait perdre la partie en
+**zero tabulation et un Entree**. Ce que j'ai refuse en s10 demandait **une tabulation et un
+Entree**. On n'ecarte pas un defaut en installant sa version plus rapide.
+
+**Sur la clause 2 d'`ADR-0038`, et je reponds a ce qui m'est signale sans sortir de mon role.**
+`theo-archi` prevoit que declarer le focus sur "Continuer la partie" ferait rougir sa clause 2,
+puisque l'arret suivant serait le bouton destructeur. **Je constate qu'il a probablement raison, et
+que ma reponse ne change pas pour autant.** Cet ecran porte exactement deux arrets : le bouton sur
+d'abord, le bouton destructeur ensuite. Sur une telle forme, la clause 2 - *aucun arret apres un
+point de focus declarable n'est destructeur* - n'a qu'**une seule solution verte : declarer le focus
+sur le bouton destructeur lui-meme**, puisque c'est le seul apres lequel il n'y a plus d'arret.
+C'est-a-dire que sa seule solution verte est la pire des deux pour l'enfant.
+
+**Ce que j'en conclus, et ce que je laisse a qui de droit.** Une regle dont l'unique issue verte est
+le choix qui detruit la partie au premier Entree n'est pas une regle qui juge cet ecran : c'est une
+regle ecrite pour l'ecran de revelation, ou elle fait exactement son travail - elle y distingue un
+remede d'un simple deplacement du defaut - et qui rencontre ici une forme d'ecran differente. **Un
+ecran de confirmation doit, par fonction, rendre la sortie atteignable** ; je l'ai ecrit moi-meme en
+acceptant que le bouton destructeur reste focalisable et pressable, et je ne me dedis pas. **Je
+decris le symptome, je ne prescris pas la correction** : la forme que doit prendre la clause 2 sur un
+ecran de confirmation appartient a `theo-archi`, et je ne touche pas a son `ADR`. Ce que je lui
+donne, c'est le seul element qui manquait a son instruction : le bouton, et il est arrete.
+
+**Ce que ce choix ne fait pas : il ne leve pas ma reserve N.** La reserve N demande deux proprietes -
+que l'enfant sache ou il en est des son arrivee, et que le nombre d'appuis pour atteindre un bouton
+donne soit le meme a chaque fois. Un point de focus declare sur "Continuer la partie" les satisferait
+toutes les deux, mais **une propriete satisfaite sur le papier n'est pas une propriete mesuree** :
+57 sorties de page sur 69 arrivees, c'etait deja un gabarit dont la lecture ne laissait rien
+presager. Je leverai la reserve N quand je l'aurai pressee au clavier sur l'increment livre, pas
+avant. La reserve N reste **ouverte**, telle qu'elle est ecrite, sans un mot de plus et sans un mot
+de moins.
+
+#### 6. Ce que ces quatre points changent au Done, et ce qu'ils ne changent pas
+
+**Rien de ce qui est ci-dessus ne ferme ni ne rouvre un Done pedagogique deja prononce.** Les deux
+phrases restent acceptees comme elles l'etaient. Le refus de l'`aria-label` porte sur un texte, il
+n'invalide aucun increment livre et n'empeche aucun jeu de tourner - c'est un motif de story pour
+`camille-po`. Le choix du bouton est une entree pour l'instruction de `theo-archi`, pas un verdict
+sur un increment.
+
+#### 7. Les proprietes dont je reste la seule garde, sur ces quatre points
+
+1. **Ce qu'un lecteur d'ecran annonce reellement, dans l'ordre ou il l'annonce.** Personne dans cette
+   equipe ne l'a jamais ecoute, moi comprise. C'est ma reserve F11, et elle reste ouverte : mon refus
+   du 4 porte sur des mots que je sais juger, pas sur une ecoute que je n'ai pas faite.
+2. **Que le vocabulaire reste unique d'un canal a l'autre** - un seul mot de sortie pour l'oeil et
+   pour l'oreille. Aucun garde-fou ne compare ce qui est affiche a ce qui est annonce.
+3. **Que le point de focus declare est bien celui que la touche atteint.** C'est la lecon que j'ai
+   payee moi-meme : l'ordre du document ne dit pas ce que la premiere touche fait. Tant que je ne
+   l'ai pas pressee, je ne le sais pas, et personne ne le sait a ma place.
+
+### Reverification exigee par DEC-0026 (s12), du 2026-08-14 - VALIDE SOUS RESERVE
+
+> Seul changement apporte a un titre anterieur, et il ne touche aucun verdict : la mention "le plus
+> recent de cette fiche" passe du titre de l'arbitrage prealable du 2026-08-14 sur la forme et le
+> texte de l'ecran de confirmation a celui-ci, pour qu'un seul bloc la porte. Le corps de ce
+> verdict-la n'est modifie d'aucun caractere, et aucun verdict anterieur de cette fiche n'est
+> efface, deplace ni reformule.
+>
+> **Amendement du 2026-08-14, second arbitrage prealable de s12** : la mention "le plus recent de
+> cette fiche" quitte ce titre pour celui de la section ajoutee au-dessus, pour la meme raison qu'a
+> son arrivee ici - un seul bloc la porte. **Rien d'autre n'est touche dans cette section : ni son
+> verdict, ni ses chiffres, ni ses deux reserves.**
+
+**Verdict : VALIDE SOUS RESERVE.** La clause 1 de M13 est **tenue**, pour la premiere fois de ce
+projet, sur les deux ecrans que `DEC-0026` nomme - l'ecran de revelation et l'ecran de reprise -
+et elle l'est aussi sur les trois autres ecrans de manche. **Zero partie detruite sur les
+cinquante-trois cas ou j'ai presse Tabulation puis Entree depuis le point de focus.** Le defaut
+que j'ai refuse le 2026-08-13 est corrige, et il l'est par un remede qui traite la cause plutot
+que le symptome. Mes cinq conditions de forme et de texte (CONF-1 a CONF-5) sont tenues, au pixel
+et au caractere. **J'ouvre donc le Done pedagogique sur ce point**, et je porte deux reserves
+nommees plus bas, qui n'empechent ni l'une ni l'autre l'usage de l'increment : l'ecran de
+confirmation lui-meme ne declare aucun point de focus, et le retour depuis cet ecran rejoue le
+defilement des colonnes sur un tirage inchange.
+
+**Ce que ce verdict ferme, au sens de `DEC-0026`** : la dette de gouvernance ouverte par le report
+du 2026-08-14. La reverification au clavier reel, sur l'increment tel qu'il est livre, existe
+desormais sur le depot avec ses chiffres. `camille-po` n'a pas a proposer le revert de la levee.
+
+#### 0. Comment j'ai joue, et ce que je declare degrade
+
+**J'ai joue, sur un jar reconstruit depuis mon propre worktree avant toute mesure.** Ce projet a
+compte cinq mesures perimees, dont une de moi sur une session tenue par un navigateur orphelin :
+je ne mesure plus rien sur un binaire que je n'ai pas fabrique. JDK 21 designe le temps de la
+commande (`java` du `PATH` de ce poste est en 1.8, verifie par `outils/verifier-jdk.sh`),
+application servie sur un port qui n'est celui de personne d'autre et jamais 8080, un seul serveur
+et deux navigateurs lances, **chacun arrete par son identifiant releve a `netstat`, jamais par nom
+d'image** - un arret par nom d'image a deja ferme sur ce poste des applications hors du projet.
+
+**Le clavier est reel** : chaque Tabulation et chaque Entree est un evenement de touche injecte
+dans le navigateur, avec son code de touche natif, qui traverse la meme chaine d'entree qu'une
+touche physique et en declenche les actions par defaut - le deplacement du focus pour Tabulation,
+l'activation du bouton pour Entree. Je n'ai simule aucun `focus()` et appele aucun `click()` :
+les deux seuls gestes que je pose par une autre voie sont le demarrage d'une partie et le choix
+d'une proposition, faits a la **souris reelle** sur les coordonnees du bouton rendu.
+
+**Et j'ai tout mesure deux fois, sur deux navigateurs** : l'un sans fenetre, l'autre **avec une
+fenetre reelle a l'ecran**. Je l'ai fait parce que le resultat central de la reserve N ci-dessous
+est un comportement de focus, et qu'un comportement de focus mesure seulement sans fenetre
+n'aurait pas valu qu'on s'y fie. Les deux navigateurs donnent la meme chose, aux memes
+proportions.
+
+**Ce que je declare degrade, et c'est le meme point que la derniere fois** : aucun enfant n'a vu
+cet ecran. Je juge contre des frontieres que j'ecris, ce qui est ma competence, mais personne de
+six ans n'a presse cette touche. Voir la section 8 : cela ne m'empeche pas de trancher, et je ne
+l'erige pas en condition.
+
+**Ce que je ne declare pas degrade** : la mecanique, la forme et le texte. Les trois sont mesures
+sur les octets servis et sur les pixels rendus par le jar que j'ai construit.
+
+#### 1. La clause 1 de M13 sur les 25 revelations - la loi de s10 se reproduit, sa consequence a disparu
+
+Protocole inchange, c'est le mien : une revelation par jeu sur les sept jeux, puis des tirages
+repetes sur "Calcul CP" et sur "Le bon verbe", **25 revelations**, et depuis le point de focus
+Tabulation puis Entree.
+
+| Mesure | revelations | revelee en derniere position | Tabulation atteint la sortie | **partie detruite** |
+|---|---|---|---|---|
+| une revelation par jeu, sept jeux | 7 | 5 | 5 | **0** |
+| "Calcul CP", tirages repetes | 10 | 10 | 10 | **0** |
+| "Le bon verbe", tirages repetes | 8 | 3 | 3 | **0** |
+| **total** | **25** | **18** | **18** | **0** |
+
+**La loi que j'avais etablie en s10 est toujours vraie sur sa premiere moitie, et fausse sur la
+seconde.** La premiere Tabulation atteint la sortie **si et seulement si** la proposition revelee
+occupe la derniere position de l'ordre des propositions : verifie 25 fois sur 25, sans une
+exception, exactement comme le 2026-08-13. Ce qui a change est ce qui suit : **Entree ne detruit
+plus rien.** Les 18 fois, elle rend l'ecran de confirmation, la partie intacte, et le texte y est
+*"Si tu pars, ta partie s'arrête."* - une seule valeur, sur les 18.
+
+**Ma clause 5 est toujours tenue, 25 fois sur 25** : le focus est sur la proposition qui porte la
+reponse revelee. Les 7 fois ou la revelee n'est pas en derniere position, la premiere Tabulation
+reste dans les propositions et Entree presse une proposition : l'enfant reste sur sa manche.
+
+**Et je verifie ce que la confirmation rend quand l'enfant revient** : sur les 15 cas ou j'ai
+presse "Continuer la partie", la zone de contenu revient **identique a ce qu'elle etait avant la
+demande**, comparaison faite sur le document rendu et non sur la seule session - meme enonce,
+meme verdict, memes marques de M9, aucun essai consomme. Sur l'ecran "Bravo !" aussi, le verdict
+est conserve au retour.
+
+#### 2. L'ecran de reprise - la quatrieme condition du declencheur, tenue sur les sept jeux
+
+`GET /` pendant une partie en cours, chargement de page complet, sur les sept jeux :
+
+| Ce que j'ai verifie | Mesure |
+|---|---|
+| la manche est bien rendue, l'enonce est celui d'avant le chargement | **7 / 7** |
+| **rien n'est focalise au chargement** - comme `camille-po` l'annonce | **7 / 7**, le focus est sur le corps du document |
+| la premiere Tabulation atteint la sortie | **7 / 7** - c'est le premier element focalisable du document, l'entree de menu de l'en-tete etant masquee |
+| **la partie est detruite** | **0 / 7** |
+| Entree rend l'ecran de confirmation, avec le texte arbitre | **7 / 7** |
+
+**C'est l'ecran que mon protocole ne couvrait pas**, signale par `theo-archi` a la cloture de s10
+et verse au declencheur par l'amendement de `DEC-0026`. Je confirme les deux faits techniques
+qu'il rapportait, mesures cette fois au clavier et non en lecture : le premier arret de tabulation
+y est bien le bouton de sortie du fragment de manche, et une Tabulation suivie d'une Entree y
+menait a la destruction. **Elle n'y mene plus.** Le fait qu'il ait nomme cet ecran sans l'inscrire
+de force a mon releve est ce qui a elargi le perimetre a temps, et c'est la bonne facon de faire.
+
+#### 3. Les trois autres ecrans - le remede tient sur les cinq, pas sur les deux que j'avais vus
+
+`camille-po` m'ecrit que le garde-fou rougissait sur **cinq** ecrans en clause 1, quand ma mesure
+d'origine portait sur la clause 2. Je prends le perimetre elargi et je mesure les trois qui
+restaient, sur les sept jeux, soit **21 cas** :
+
+| Ecran | Point de focus mesure | Tabulation atteint la sortie | partie detruite |
+|---|---|---|---|
+| manche fraiche | l'enonce, 7 / 7 | **0 / 7** | **0 / 7** |
+| apres une reponse fausse | la proposition pressee, portant la marque de M9, 7 / 7 | **0 / 7** | **0 / 7** |
+| apres une reponse juste | l'enonce de la question neuve, 7 / 7 | **0 / 7** | **0 / 7** |
+
+Sur ces trois ecrans, la sortie precede le point de focus dans l'ordre du document : la premiere
+Tabulation va vers les propositions, jamais vers la sortie. **Mes clauses 2 et 4 sont donc
+toujours tenues, 7 jeux sur 7 chacune**, et les quatorze cas de mon premier refus de s10 le
+restent.
+
+**Total du releve au clavier : 53 pressions de Tabulation puis Entree depuis un point de focus,
+sur cinq ecrans differents et sept jeux. Zero partie detruite.**
+
+#### 4. Mes cinq conditions sur la forme et le texte livres - toutes tenues, mesurees et non reprises
+
+Mesures faites a 360 x 640 sur la page reelle servie par mon jar, en **comptant les pixels
+reellement vides** de la colonne de contenu, pas en soustrayant des coordonnees - c'est la methode
+que j'ai moi-meme exigee, et c'est celle qui avait corrige trois chiffres qu'on m'avait transmis.
+
+| # | Ce qui etait du | Ce que je mesure sur l'increment livre | Verdict |
+|---|---|---|---|
+| CONF-1 | ecart vertical de **44 px au moins** en pixels vides entre les deux boutons | bande vide de **44 px exactement**, y=[218,261] entre le bas de `continuer-partie` (y=217) et le haut de `retour-accueil` (y=262) | **TENUE** |
+| CONF-2 | empilement, pleine largeur au seul geste sur, sortie a sa largeur naturelle et centree, rapport de largeur >= 3:1 | `continuer-partie` **336 x 56 px** en x=[12,347] ; `retour-accueil` **109 x 53 px** en x=[126,234] ; **3,08:1** en largeur, **3,26:1** en surface | **TENUE** |
+| CONF-3 | le texte devient *"Si tu pars, ta partie s'arrête."*, exactement, accents compris, et l'interrogative disparait | texte exact, **une seule ligne** y=[116,135], **aucun "?"** dans toute la zone de contenu | **TENUE** |
+| CONF-4 | aucune couleur ne change | les quatre paires mesurees sur les aplats rendus, loin de tout glyphe : **5,03:1 / 5,03:1 / 5,41:1 / 14,09:1** | **TENUE** |
+| CONF-5 | les acquis de mecanique ne bougent pas | les cinq ecrans rendent la confirmation (5 / 5, partie intacte) ; le retour est identique ; **aucune confirmation sur l'ecran de fin de partie** (`POST /retour` y rend directement le catalogue et ses 7 boutons de demarrage) ; un seul "Les jeux" visible | **TENUE** |
+
+**Le bas du bloc est a y = 314 sur 640.** C'est au pixel ce que j'avais annonce dans mon arbitrage
+prealable - *"le bloc complet finit a y = 314 sur 640"* - et au pixel ce que `lea-dev` a mesure.
+Je le note parce que c'est la deuxieme fois de ce chantier qu'un chiffre qu'on me transmet se
+reproduit sans un pixel d'ecart, et parce que **je n'ai pas releve ma barre en la retrouvant
+atteinte** : 44 px etait la condition, 44 px est livre, je leve.
+
+#### 5. Ma reserve O - sa premiere moitie reste fermee, sa seconde moitie reste ouverte
+
+**La question m'est posee directement, et la reponse est oui : la premiere moitie de ma reserve O
+reste fermee.** Je l'avais fermee le 2026-08-14 sur l'increment d'avant la correction de forme et
+de texte ; je la reverifie aujourd'hui sur l'increment livre, et rien de ce qui la fermait n'a
+bouge. *"Le seul chemin est Les jeux, qui appelle `abandonner()` sans confirmation"* est **faux**
+sur l'increment livre : aucun chemin, en-tete ou fragment, clavier ou souris, ne detruit la partie
+d'un seul geste, sur aucun des cinq ecrans. La correction de `lea-dev` ne touche ni la route ni la
+session ; elle ne pouvait pas rouvrir cette moitie, et elle ne l'a pas rouverte.
+
+**Sa seconde moitie reste vraie, et je ne la durcis pas.** *"Il n'existe aucun chemin vers le
+catalogue qui ne detruise pas la partie"* : remesure aujourd'hui, `GET /` pendant une partie rend
+l'ecran de jeu et **zero bouton de demarrage**, contre sept hors partie. Un enfant ne peut
+toujours pas **regarder** la liste des jeux en gardant sa partie. La confirmation ne le lui donne
+pas et n'a jamais pretendu le donner. Le sort de cette moitie est une question produit, pas une
+question de forme : elle reste a `camille-po`, sans demande nouvelle de ma part.
+
+#### 6. Mes deux reserves sur cet increment, et ce qu'elles ne sont pas
+
+Aucune des deux n'est un durcissement d'une barre anterieure, et je dis pour chacune d'ou elle
+vient. Aucune des deux n'empeche l'usage de l'increment : c'est pour cela que ce verdict ouvre le
+Done au lieu de le fermer.
+
+**Reserve N, nouvelle et datee de ce jour - l'ecran de confirmation ne declare aucun point de
+focus, et sa premiere Tabulation n'est pas stable.**
+
+C'est le seul ecran de cette application qui ne declare pas ou doit aller le focus. Le gabarit le
+dit explicitement, et c'est un choix assume : *"Aucun data-focus n'est declare ici."* La
+consequence, que j'ai mesuree et que personne n'avait mesuree :
+
+- **a l'arrivee sur cet ecran, rien n'est focalise** - ni a la souris, ni au clavier ;
+- **la premiere Tabulation quitte la page** environ **cinq fois sur six**, et atteint directement
+  "Continuer la partie" environ **une fois sur six**. Sur **69 arrivees** mesurees sur cet ecran :
+  **57 fois** le focus sort du document (le document perd le focus, verifiable), **12 fois** il
+  tombe sur le bouton sur. Meme proportion sans fenetre (49 / 10 sur 59) et **avec une fenetre
+  reelle** (8 / 2 sur 10). Le resultat ne depend pas du jeu, ni du tirage, ni du chemin d'arrivee
+  (souris ou clavier), **ni du temps que l'enfant attend avant d'appuyer** : mesure a 0 s, a 1 s et
+  a 3 s, les proportions ne bougent pas.
+
+**Ce que ca fait a l'enfant, et pourquoi je le nomme plutot que de le classer sans suite.** Le cas
+le plus frequent - cinq fois sur six - est le pire pedagogiquement : l'enfant presse Tabulation,
+**rien ne s'allume**, il presse Entree, **rien ne se passe**. C'est mot pour mot ce que j'ecrivais
+dans mon veto sur la manette : *"un enfant de CP qui essaie de tirer une manette et voit que rien
+ne se passe se croit en faute"*. Et le cas rare a un cout symetrique : l'enfant qui a appris que
+"Tabulation, Tabulation, Entree" continue sa partie - ce qui est vrai cinq fois sur six - **perd
+sa partie la sixieme**, sans qu'aucun signe ne l'en avertisse. Une regle de clavier qui vaut cinq
+fois sur six ne s'apprend pas.
+
+**Pourquoi ce n'est pas un motif de refus, et je le motive au lieu de le decreter.** Trois
+raisons, et je les tiens pour cumulatives :
+
+1. **Ma clause 1 est tenue sur cet ecran, sur ses propres termes.** Elle dit : depuis le point de
+   focus, la premiere Tabulation ne mene jamais a la sortie. La premiere Tabulation **n'a jamais
+   atteint le bouton destructeur, 0 fois sur 69**. Etendre ma clause pour la declarer non tenue ici
+   serait deplacer mes poteaux apres coup, et j'ai ecrit que je ne le ferais pas.
+2. **La destruction, quand elle arrive, arrive avec la phrase a l'ecran.** C'est la difference de
+   nature avec ce que j'ai refuse en s10 : la-bas, la partie disparaissait sans qu'aucun ecran
+   n'ait prevenu l'enfant. Ici, l'appui destructeur est le **second** appui, sur un ecran qui
+   affiche *"Si tu pars, ta partie s'arrête."* Un ecran de confirmation doit rendre la sortie
+   atteignable ; c'est sa fonction, et j'ai moi-meme accepte que le bouton destructeur reste
+   focalisable et pressable.
+3. **L'enfant n'est pas bloque.** Une seconde Tabulation l'amene sur "Continuer la partie". Un
+   enfant bloque doit pouvoir avancer : il peut.
+
+**Ce que je demande, et je ne choisis pas le moyen.** La propriete : sur cet ecran, l'enfant doit
+savoir ou il en est des son arrivee, et le nombre d'appuis pour atteindre un bouton donne doit
+etre le meme a chaque fois. Que le moyen soit un point de focus declare comme sur les autres
+ecrans, ou autre chose, appartient a `theo-archi`. **Motif pour `camille-po`, pas condition sur ce
+lot.** Je signale au passage que cette reserve porte aussi sur ce qu'un lecteur d'ecran annonce a
+l'arrivee sur cet ecran - c'est-a-dire, aujourd'hui, rien -, et que ce point-la reste sous ma
+reserve F11 : personne dans cette equipe n'a jamais fait cette ecoute.
+
+**Reserve M10 sur un chemin neuf - le retour depuis la confirmation rejoue le defilement des
+colonnes sur un tirage inchange.**
+
+Celle-ci n'est pas une barre nouvelle : **M10 est ma condition de s10**, et elle dit qu'un
+mouvement que l'enfant n'a pas declenche est refuse, parce que *"rejouer le defilement sur une
+question inchangee ferait dire au mouvement que la machine vient de distribuer alors que rien n'a
+ete distribue"*. Je l'applique a un chemin que cet increment cree, ce qui n'est pas la meme chose
+que la relever.
+
+Mesure, en jouant :
+
+- sur une **manche fraiche** (aucun essai encore pose), l'aller-retour "Les jeux" puis "Continuer
+  la partie" rend l'ecran avec le marqueur d'arrivee **par un geste**, sur un enonce **identique**
+  a celui d'avant : la bande sombre repasse sur les colonnes. Relevee image par image sur la
+  premiere colonne (boite de 74 px) : **11 px assombris, puis 5, puis 2, puis rien**. L'image
+  finale egale bien l'etat de repos - ce garde-fou-la tient ; c'est le **rejeu** qui est en cause,
+  pas sa derniere image ;
+- sur une manche qui a deja essuye un echec, le marqueur vaut **sans geste** et rien ne rejoue :
+  c'est ce cas-la, et lui seul, que j'avais verifie dans mon arbitrage prealable ;
+- **le cas le plus net est l'ecran de reprise.** `GET /` rend correctement **sans geste** - la
+  reprise silencieuse ne bouge pas, et c'est juste. Puis l'aller-retour par la confirmation le
+  fait basculer a **par un geste** : le va-et-vient **fabrique** le mouvement que la reprise
+  silencieuse avait justement supprime.
+
+**La cause, decrite comme symptome et laissee a qui elle revient.** La route qui annule l'abandon
+declare qu'un geste de l'enfant a produit cet echange, ce qui est vrai, et compte sur le second
+facteur - "cette manche est fraiche" - pour empecher le rejeu. Ce second facteur ne distingue pas
+"cette manche fraiche vient d'etre distribuee" de "cette manche fraiche est simplement re-montree",
+et c'est exactement le seul cas que la route neuve produit. **Je decris le symptome, je ne prescris
+pas la correction** : `theo-archi` pour la cause, `camille-po` pour la story.
+
+**Ce que ca coute a l'enfant** : celui qui hesite, ouvre la sortie, se ravise et revient voit la
+machine redistribuer sous ses yeux une question qu'elle n'a pas redistribuee. Sur une manche
+fraiche, c'est-a-dire avant tout essai, il peut croire que la question a change et la relire, ou
+croire que son tirage a ete refait. C'est un contresens, pas une perte : d'ou une reserve, et non
+un refus.
+
+#### 7. Ce que je corrige de mes propres constats, avant de m'appuyer dessus
+
+**A. Une affirmation de mon arbitrage prealable du 2026-08-14 etait incomplete, et c'est moi qui
+l'ai ecrite.** J'y ai ecrit : *"Rien ne rejoue une animation au retour. L'ecran revient avec le
+marqueur sans geste la ou l'etat le veut."* La seconde phrase etait prudente ; la premiere ne
+l'etait pas. **Je n'avais mesure que le retour sur une manche ayant deja essuye un echec, pas le
+retour sur une manche fraiche ni le retour apres une reprise, qui sont les deux cas ou le rejeu a
+lieu.** Le constat est corrige ci-dessus, section 6. Je ne l'efface pas : il est ecrit, il etait
+partiel, et c'est ma mesure qui manquait - pas la barre, qui etait ecrite depuis s10.
+
+**B. Une affirmation de la meme section etait vraie et insuffisante.** J'y ai ecrit : *"Le premier
+arret de tabulation est le bouton sur, premier dans l'ordre du document, aucun element focalisable
+avant lui."* **C'est toujours exact : je l'ai reverifie, l'ordre du document est bien celui-la.**
+Ce que je ne savais pas alors, parce que je l'avais lu dans l'ordre du document au lieu de le
+presser au clavier, c'est que **l'ordre du document ne determine pas ce que la premiere touche
+fait sur cet ecran** : cinq fois sur six, elle ne mene a aucun de ses deux boutons. C'est la
+reserve N. La lecon est celle que ce depot a deja payee quatre fois : ce qui n'est pas presse
+n'est pas verifie.
+
+**C. Ce que je ne corrige pas, apres verification.** J'ai reverifie avant de m'en servir les trois
+chiffres que je porte depuis l'arbitrage prealable - 44 px, le bas de bloc a 314 px, les quatre
+rapports de contraste. Les trois se reproduisent sur l'increment livre. Ma loi de s10 sur la
+derniere position de tabulation se reproduit aussi, 25 fois sur 25.
+
+#### 8. Ce qui me manque, et que je ne transforme pas en condition
+
+**La meme chose que la derniere fois, et je reponds a la question qui m'est posee : oui, cette
+limite pese sur ce verdict, et non, je ne l'erige pas en condition.**
+
+Ce qui manque est **un enfant de CP, en debut d'annee, un doigt sur un telephone, place devant cet
+ecran de confirmation**. Elle trancherait deux points ou ma reponse reste raisonnee plutot que
+constatee : qu'un non-lecteur retombe sur sa manche a chaque essai et ne trouve pas la porte, et
+que la phrase *"Si tu pars, ta partie s'arrête."* soit effectivement lue - c'est **mon** texte, et
+je suis mal placee pour etre seule a juger qu'il est lisible. Le depot n'a aucun moyen de produire
+cette observation. Je la nomme comme la limite de ce verdict, pas comme une porte de plus : faire
+d'une observation impossible une condition bloquante reviendrait a bloquer indefiniment, ce qui
+n'est pas un jugement mais une abstention.
+
+Ce dont je n'ai **pas** besoin : une mesure a une autre largeur que 360, une remesure du pli sur
+les sept jeux, ni un test de plus sur ce que j'ai presse moi-meme. Aucun des trois ne changerait
+une ligne de ce bloc.
+
+#### 9. Ce dont je reste la seule garde apres cette reverification
+
+Je les nomme parce que **quatre defauts visibles par un enfant ont deja traverse une CI
+entierement verte sur ce depot**, et parce que taire cette liste ferait croire couvert ce qui ne
+l'est pas.
+
+1. **Ce que la premiere touche fait reellement sur l'ecran de confirmation.** La reserve N est
+   introuvable par lecture : l'ordre du document est correct, le garde-fou qui derive les arrets de
+   tabulation par balise voit les deux bons boutons dans le bon ordre, et il a raison. **Le
+   comportement mesure ne s'en deduit pas.** Tant qu'aucun garde-fou ne presse une touche, c'est
+   moi, et en pressant.
+2. **Tout ce que l'enfant lit sur cet ecran.** Etabli par l'experience en s11, non dementi :
+   aucun garde-fou ne lisait un caractere de ce texte quand je l'ai remplace, les tests sont restes
+   verts. `sofia-sm` rapporte qu'un test de texte de confirmation existe desormais et rougit sur
+   mutation d'un mot ; je le prends comme un progres reel, **et je ne me retire pas de cette
+   garde** : un test qui epingle une chaine ne juge pas si elle est du CP.
+3. **Les trois chiffres de forme - 44 px de vide, la pleine largeur, le rapport de 3,08:1.** Rien
+   dans cette CI ne compare une position, un espace ou une surface. C'est moi, en comptant les
+   pixels.
+4. **Les quatre rapports de contraste.** Aucun automate de ce depot ne compare une couleur a son
+   fond. Ils tiennent aujourd'hui ; au prochain changement de palette ils peuvent devenir faux en
+   restant verts.
+5. **Que le retour depuis la confirmation rende la manche intacte.** Mon egalite du document rendu
+   est une mesure a moi, a refaire a chaque fois qu'on touchera cette route.
+6. **Que la confirmation ne se declenche pas sur l'ecran de fin de partie.** Je l'ai jouee. Je ne
+   sais pas si un test l'epingle ; je ne le declare donc pas couvert.
+7. **Le rejeu du defilement au retour**, reserve M10 ci-dessus : le garde-fou qui existe porte sur
+   la derniere image de l'animation, pas sur le fait qu'elle soit jouee a tort.
+8. **Reserve O seconde moitie**, et **reserve F11** (l'ecoute reelle d'un lecteur d'ecran, que la
+   reserve N rend plus urgente qu'avant), toutes deux inchangees.
+
+#### 10. Un ecran que mon protocole ne couvrait pas, et que je signale sans l'y inscrire de force
+
+Mon protocole mesure Tabulation puis Entree **depuis le point de focus d'un ecran de manche**, et
+il s'arrete quand il a constate que la partie survit. **Il n'a jamais mesure l'ecran de
+confirmation lui-meme comme un ecran ou l'enfant navigue** - pour une raison simple : cet ecran
+n'existait pas quand j'ai ecrit M13. C'est en y arrivant, et en continuant a presser au lieu de
+m'arreter au constat que la partie etait sauve, que j'ai trouve la reserve N.
+
+Je le dis de la meme facon que `theo-archi` a signale l'ecran de reprise : **comme un fait, sans
+l'inscrire d'autorite au declencheur de qui que ce soit.** Que ce troisieme ecran entre ou non
+dans un perimetre de verification futur est une question de `camille-po` et de `sofia-sm`, pas une
+condition que j'ajoute apres coup a une decision deja rendue.
+
+#### 11. Ce que ce verdict ne fait pas
+
+- Il ne rouvre **aucun** verdict anterieur de cette fiche, et n'en efface aucun. Le refus du
+  2026-08-13 reste ecrit, entier ; il portait sur un increment ou la partie etait detruite, ce qui
+  n'est plus le cas, et c'est precisement ce que ce bloc constate.
+- Il ne fait passer **aucune ligne** de `squad/programme/MATRICE-couverture.md` a `couvert-valide`
+  de son seul fait : il porte sur le remede de `DEC-0026`, pas sur la couverture d'une competence.
+  C'est `camille-po` qui juge ce que la matrice doit en tirer.
+- Il ne leve ni la reserve O seconde moitie, ni la reserve F11, ni ma reserve P sur le budget
+  vertical. Aucune des trois n'est traitee par cet increment, et je ne les durcis pas.
+- Il ne choisit aucun moyen technique pour les deux reserves qu'il ouvre : `theo-archi`.
+- Il n'ecrit aucune story et ne priorise rien : `camille-po`.
+
+#### 12. Recapitulatif actionnable
+
+| # | Etat | Ce qu'il faut en faire |
+|---|---|---|
+| Clause 1 de M13, ecran de revelation | **TENUE**, 25 / 25, zero partie detruite | rien - la dette de `DEC-0026` est fermee de ce cote |
+| Clause 1 de M13, ecran de reprise | **TENUE**, 7 / 7, zero partie detruite | rien - la quatrieme condition du declencheur est satisfaite |
+| Clause 1 de M13, trois autres ecrans | **TENUE**, 21 / 21 | rien |
+| Clauses 2, 4, 5 de M13 | **TENUES**, 7 / 7, 7 / 7, 25 / 25 | rien |
+| CONF-1 a CONF-5 | **TENUES** | rien - je ne releve aucune de ces cinq barres |
+| Reserve O, premiere moitie | **FERMEE**, reverifiee sur l'increment livre | rien |
+| Reserve O, seconde moitie | **OUVERTE**, inchangee | question produit, `camille-po` |
+| **Reserve N** (nouvelle, ce jour) | l'ecran de confirmation ne declare aucun point de focus ; premiere Tabulation instable, 57 sorties de page sur 69 arrivees | story a instruire ; propriete a tenir en section 6, moyen a `theo-archi` |
+| **Reserve M10 sur chemin neuf** | le retour depuis la confirmation rejoue le defilement sur un tirage inchange (manche fraiche, et apres une reprise) | story a instruire ; symptome decrit en section 6, cause a `theo-archi` |
+| Ce qui me manque | l'observation d'un enfant de CP au doigt sur un telephone | **non erige en condition** |
+
+Releve complet des 25 revelations, des 7 ecrans de reprise et des 21 cas des trois autres ecrans :
+`squad/conformite/releves-s12/releve-m13-reverification-dec-0026.json`. Capture de l'ecran de
+confirmation livre a 360 x 640 : `squad/conformite/releves-s12/confirmation-livree-360x640.png`.
+
+### Arbitrage prealable - la forme et le texte de l'ecran de confirmation avant abandon (s11), du 2026-08-14
 
 **Ce bloc n'est pas un Done pedagogique.** C'est l'arbitrage prealable demande sur deux choses non
 figees : la **forme** proposee par `ines-design` (`s11-ines-confirmation`, `ccac47f`) et le **texte**
@@ -273,6 +1002,14 @@ Il n'efface, ne modifie et ne rouvre aucun verdict anterieur de cette fiche.
 > Seul changement apporte a un titre anterieur, et il ne touche aucun verdict : la mention "le plus
 > recent de cette fiche" passe du titre de l'arbitrage `DEC-0027` du 2026-08-14 a celui-ci, pour
 > qu'un seul bloc la porte. Le corps de ce verdict-la n'est modifie d'aucun caractere.
+>
+> **Note du 2026-08-14 (s12), ajoutee par la reverification de `DEC-0026` ci-dessus, sans rien
+> effacer de ce bloc** : deux constats de sa section 5 sont repris et corriges dans la section 7 de
+> ce verdict-la - *"Rien ne rejoue une animation au retour"* (incomplet : je n'avais pas mesure la
+> manche fraiche ni le retour apres une reprise) et *"Le premier arret de tabulation est le bouton
+> sur"* (exact dans l'ordre du document, insuffisant pour dire ce que la premiere touche fait).
+> Les conditions CONF-1 a CONF-5 de ce bloc sont, elles, toutes verifiees tenues sur l'increment
+> livre.
 
 #### Les deux verdicts, en une phrase chacun
 
