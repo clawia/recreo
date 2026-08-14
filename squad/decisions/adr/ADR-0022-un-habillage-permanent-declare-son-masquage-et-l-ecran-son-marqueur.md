@@ -1,6 +1,7 @@
 # ADR-0022 - Rendre la visibilite d'un habillage permanent dependante d'un marqueur d'etat pose par le serveur, et retirer d'un appariement les boutons qui ne se montrent plus ensemble
 
-- **Statut** : Accepte
+- **Statut** : Accepte, son contexte amende le 2026-08-14 (un chiffre perime et la comparaison qu'il
+  portait ; la decision et ses garde-fous sont inchanges)
 - **Date** : 2026-08-07
 - **Auteur** : theo-archi
 - **Sprint** : s06
@@ -21,6 +22,68 @@ et `sortie-pleine` est conserve tel quel sur l'ecran de fin de partie. Elle a jo
 et chiffre son motif : le lien de l'en-tete mesure 102 x 53 px en contour dans un coin, contre un
 aplat de 117 x 56 px au milieu du texte que l'enfant vient de lire ; garder le premier comme seule
 porte ferait de l'ecran de fin de partie un cul-de-sac.
+
+> **Amendement du 2026-08-14 (s11) : le chiffre "102 x 53 px" est perime, et la comparaison qu'il
+> portait ne compare pas ce que je lui faisais dire. La decision ci-dessous ne bouge pas, et je dis
+> pourquoi plutot que de le supposer.**
+>
+> **1. Le chiffre. `109 x 53 px`, pas `102 x 53 px`.** `nadia-prof` l'avait mesure le 2026-08-07 sur le
+> libelle "Accueil" ; le **point 3 de la decision ci-dessous** remplace ce libelle par "Les jeux", plus
+> large. Le chiffre etait donc perime par cet `ADR` lui-meme, avant meme son acceptation, et il a
+> survecu un sprint et demi. Elle l'a remesure et corrige de sa main
+> (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "0 bis", point 1), `camille-po` en a
+> tire l'amendement de `DEC-0027` ; ce document-ci est le troisieme et dernier porteur du chiffre faux.
+>
+> **Ce que j'ai verifie moi-meme, et par quoi** - lecture des composantes de boite de `recreo.css`, pas
+> une capture :
+>
+> - **La hauteur est derivable, et elle vaut bien 53 px.** `.lien-accueil` declare `font-size: 1.25rem`
+>   (20 px), `padding: 0.6rem 1.1rem` (9,6 et 17,6 px), `border: 0.125rem` (2 px), et herite le
+>   `line-height: 1.5` de `.btn` : 30 + 2 x 9,6 + 2 x 2 = **53,2 px**. Le meme calcul sur
+>   `.sortie-pleine` (`padding: 0.75rem 1.25rem`, bordure de `.btn` a 1 px) donne **56 px**, exactement
+>   le second chiffre cite ci-dessus, qu'elle a remesure inchange.
+> - **La largeur absolue n'est pas derivable de ce depot, et je ne fais donc pas semblant de la
+>   verifier.** Aucun fichier maison ne declare de `font-family` ; la famille vient de
+>   `--bs-font-sans-serif` de la bibliotheque vendorisee, c'est-a-dire de la police systeme du poste. Les
+>   109 px sont sa mesure sur son rendu, et je la reprends comme telle. Ce qui se verifie de mon cote est
+>   la **coherence** des deux chiffres entre eux : leur ecart declare vaut 2 x (20 - 17,6) de rembourrage
+>   moins 2 x (2 - 1) de bordure, soit **+2,8 px** pour l'aplat, et l'ecart mesure est de 8 px ; les
+>   5,2 px restants sont l'avance du meme mot en gras a 20 px, ce qui est l'ordre de grandeur attendu.
+>   Rien ne detonne, et rien de plus n'est demontre par la.
+> - **Et surtout : les deux boites sont egales par construction, quelle que soit la police.**
+>   `.lien-accueil` et `.retour-accueil` declarent les **memes** composantes - `display`, `min-height`,
+>   `font-size`, largeur de bordure, `border-radius`, `padding` - ne se distinguent que par la couleur du
+>   texte et de la bordure, et portent le **meme libelle** depuis le point 3 ci-dessous. `recreo.css` le
+>   dit en clair depuis S6-1 : le lien *"reprend deliberement les memes composantes de boite que
+>   `.retour-accueil`"*. Cette egalite-la ne depend d'aucune mesure, et c'est elle qui compte pour la
+>   suite.
+>
+> **2. Le raisonnement qui tombe avec le chiffre.** La phrase ci-dessus oppose `.lien-accueil` a un
+> "aplat de 117 x 56 px", qui est `.sortie-pleine`. **Ces deux elements ne s'affichent jamais sur le meme
+> ecran** : le premier ne se montre que sur l'accueil (c'est l'objet de cette decision), le second n'est
+> rendu que par l'ecran de fin de partie. Une comparaison de tailles entre deux ecrans ne dit rien de ce
+> qu'un enfant voit - c'est la doctrine meme d'`ADR-0017` ("deux boutons d'un meme ecran") et
+> d'`ADR-0031`. Sur un ecran de manche, les deux candidats a la sortie sont `.lien-accueil` et
+> `.retour-accueil`, et le point 1 ci-dessus dit qu'ils ont **la meme boite**. **Il n'y avait donc aucun
+> ecart de taille a opposer sur une manche.** `nadia-prof` en tire la meme conclusion contre son propre
+> argument, et le perimetre de son motif - un ecran, pas cinq - est sa correction, dans sa fiche, pas la
+> mienne a ecrire.
+>
+> **3. Ce que cet amendement ne change pas, verifie clause par clause et non affirme.** Aucun des cinq
+> points de la decision, aucune consequence et aucun garde-fou ne raisonne sur une taille : le marqueur
+> d'etat, la forme contractuelle du masquage, le libelle, la conservation de `sortie-pleine` et la
+> derivation de l'appariement depuis les masquages sont tous des proprietes declaratives. Le garde-fou
+> amende, `LActionNeDeclarePasMoinsQueLaSortieTest`, compare des **composantes declarees** (`font-size`,
+> `min-height`, les deux axes de `padding`) et jamais une boite rendue - `ADR-0017` note lui-meme que la
+> largeur, venant du libelle, n'est pas comparable. Aucun chiffre de ce depot n'est a recalculer, et la
+> suite reste verte a 415 tests. Ce qui aurait bouge, si je l'avais ecrit : une justification du masquage
+> par "le lien est plus petit, il ne peut pas etre la seule porte". Elle n'est pas dans cet `ADR`, et
+> c'est le seul motif pour lequel la correction se limite au contexte.
+>
+> **4. Ma part dans la survie du chiffre, parce qu'elle est nommable.** Je l'ai recopie **sans sa
+> methode** - ni le libelle sur lequel il avait ete pris, ni l'ecran, ni le fait qu'il datait d'avant le
+> renommage que le meme `ADR` decidait. Un chiffre cite avec sa methode aurait rendu sa peremption
+> visible le jour meme. C'est ma propre regle, appliquee ici a mes frais.
 
 Elle me laisse deux questions techniques, et c'est tout ce que cet ADR traite.
 
