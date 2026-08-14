@@ -129,6 +129,46 @@ barree, et rien d'autre.
   propriete neuve que ce sprint fait apparaitre, et c'est la plus mecanisable de ce qui me reste. Je
   la decris, je ne prescris pas le moyen. Tant qu'aucun garde-fou ne la porte, c'est moi, en jouant.
 
+## Reserve N, pressee au clavier - nadia-prof, 2026-08-14
+
+**LEVEE** sur la propriete que j'avais annonce mesurer au clavier. Verdict complet dans le bloc de
+validation de `squad/conformite/FICHE-bandit-manchot-additions-cp.md` ; releve dans
+`squad/conformite/releves-s12/releve-reserve-n-clavier.json`.
+
+J'avais ecrit : *"je la leverai au clavier, sur l'increment livre."* Il est livre, j'ai reconstruit
+le jar depuis mon worktree, et j'ai presse les touches - 69 arrivees sur l'ecran de confirmation, le
+meme denominateur que mon chiffre d'avant, reparties sur sept jeux et trois etats de depart, dont
+l'etat de revelation qui avait fait tomber la clause 1 de M13 au s10.
+
+| Ce que j'attendais, dans mes termes | Mesure sur 69 arrivees |
+|---|---|
+| a l'arrivee, le focus est sur la phrase arbitree | **69 / 69** |
+| Entree seule ne fait rien | **69 / 69** |
+| la premiere Tabulation atteint "Continuer la partie" a chaque fois | **69 / 69** |
+| la premiere Tabulation sort de la page | **0 / 69** (avant : 57 / 69) |
+| trois gestes deliberes pour perdre la partie | **69 / 69** |
+
+`sofia-sm` a livre exactement la forme que j'avais designee : le point de focus sur la phrase, pas
+sur le bouton sur ; sans une ligne de JavaScript neuve ni un octet de CSS ; sans anneau, ce que
+j'avais refuse d'avance des le s01.
+
+**Je corrige ma propre mesure avant qu'on s'appuie dessus.** Mon instrument ne reproduit pas le mode
+de defaillance qui avait produit le 57 / 69 : en refabriquant l'etat "aucun point de focus", la
+premiere Tabulation atteint quand meme "Continuer la partie", 21 fois sur 21, faute de barre
+d'adresse ou echapper. J'ai donc rejoue les 69 arrivees dans une fenetre reelle au premier plan -
+memes chiffres. Ce que j'etablis est positif, pas une absence : le focus part d'un point declare
+dans le document, la premiere Tabulation est deterministe, et j'ai mesure ou elle arrive.
+
+**La moitie que je n'avais pas fermee reste ouverte, et ce n'est l'oubli de personne** : la phrase
+recoit le focus mais aucun anneau n'est peint, donc l'enfant ne voit pas ou il en est a l'arrivee.
+Je n'en fais pas une condition sur ce lot, parce que ce n'est pas tenu non plus sur l'ecran de
+manche que j'ai valide - ce serait un poteau deplace sur un seul ecran. C'est une propriete de toute
+l'application et une story a elle seule, pour `camille-po`.
+
+**Ce que la clause 4 de `theo-archi` ne couvre pas** : elle verifie qu'un point de focus est
+**declare**, pas qu'il est **atteint**, ni ou la premiere Tabulation arrive ensuite. C'est l'ecart
+que mon clavier couvre et qu'aucun automate ne couvre. Il faudra le represser a chaque ecran neuf.
+
 ### Ce dont je reste la seule garde sur ces trois jeux
 
 Le garde-fou de doublon de proposition, l'inventaire du texte lu par l'enfant, la part du facile et

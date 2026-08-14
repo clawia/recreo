@@ -263,7 +263,112 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Arbitrage prealable de s12 du 2026-08-14, second tour - le point de focus de la confirmation, revu sur un fait mesure - le plus recent de cette fiche
+### Reserve N, pressee au clavier sur l'increment livre, du 2026-08-14 - LEVEE sur la moitie que j'avais dit lever la, l'autre moitie reste ouverte et inchangee - le plus recent de cette fiche
+
+> **Ce que cette section fait, et ce qu'elle ne fait pas.** Elle **leve ma reserve N** sur la
+> propriete que j'avais annonce mesurer au clavier, et elle laisse **ouverte, sans un mot de plus et
+> sans un mot de moins**, la moitie que je n'avais pas erigee en condition sur ce lot. Aucun verdict
+> anterieur de cette fiche n'est touche, aucun n'est efface. Ce n'est pas un Done pedagogique : les
+> Done pedagogiques de ce sprint sont dans les trois fiches des jeux CM1.
+
+- **Date** : 2026-08-14. **Auteur** : nadia-prof. **Sprint** : s12.
+- **Increment** : branche `round-two`, tete `b396234`, arbre propre, 455 tests, 28 regles.
+- **Mode** : **j'ai presse les touches**. Jar reconstruit depuis mon propre worktree avec un JDK 21
+  avant toute mesure, comme demande. Ni lecture de gabarit, ni raisonnement sur le DOM.
+- **Releve** : `squad/conformite/releves-s12/releve-reserve-n-clavier.json`, 69 arrivees, le
+  meme denominateur que mon chiffre d'avant.
+
+#### Ce que j'avais ecrit, et ce que j'ai mesure
+
+Ma reserve N disait : *"a l'arrivee sur cet ecran, rien n'est focalise"* et *"la premiere Tabulation
+quitte la page environ cinq fois sur six"* - **57 sorties de page sur 69 arrivees**. Et j'avais
+ecrit : *"Je leverai la reserve N quand je l'aurai pressee au clavier sur l'increment livre, pas
+avant."* Il est livre. Je l'ai pressee.
+
+**Protocole** : 69 arrivees sur l'ecran de confirmation, reparties sur **sept jeux** du catalogue et
+sur **trois etats de depart** - manche fraiche, manche apres un echec, manche apres la revelation de
+M5 - c'est-a-dire la meme repartition qu'au s10, ou c'est l'etat de revelation qui avait fait tomber
+la clause 1 de M13. A chaque arrivee, dans cet ordre : releve du focus, **Entree seule**, puis
+**Tabulation**, puis **Tabulation**, puis **Entree**.
+
+| Ce que j'attendais de cette forme, dans mes termes | Mesure sur 69 arrivees |
+|---|---|
+| a l'arrivee, le focus est sur la phrase arbitree | **69 / 69** |
+| Entree seule ne fait rien | **69 / 69** - l'ecran ne bouge pas, le focus ne bouge pas |
+| la premiere Tabulation atteint "Continuer la partie" **a chaque fois** | **69 / 69** |
+| la premiere Tabulation sort de la page | **0 / 69** (mon chiffre d'avant : 57 / 69) |
+| la seconde Tabulation atteint "Les jeux" | **69 / 69** |
+| il faut **trois gestes deliberes** pour perdre la partie | **69 / 69** - Tabulation, Tabulation, Entree |
+
+Le resultat ne depend ni du jeu, ni de l'etat de depart, ni du tirage. Il est identique sur les 69.
+
+#### Verdict : reserve N LEVEE sur sa propriete de stabilite
+
+Ma reserve N demandait deux proprietes. La seconde - *"le nombre d'appuis pour atteindre un bouton
+donne doit etre le meme a chaque fois"* - est **tenue, 69 fois sur 69**, et c'est celle que j'avais
+dit aller presser au clavier. **Je la leve.** L'equipe a atteint la barre que j'avais moi-meme
+ecrite, et je ne la releve pas parce que je vois desormais mieux.
+
+Ce que ca change pour l'enfant, et c'est le seul motif qui compte : le cas que j'avais decrit comme
+le pire - *"l'enfant presse Tabulation, rien ne s'allume, il presse Entree, rien ne se passe"* - a
+disparu. Et la regle de clavier qui ne valait que cinq fois sur six, donc qui ne s'apprenait pas,
+en vaut desormais six sur six : Tabulation puis Entree continue la partie, toujours.
+
+**Je credite la forme telle qu'elle a ete livree.** `sofia-sm` a pose le point de focus **sur la
+phrase arbitree**, pas sur le bouton sur, ce qui est exactement le choix que j'avais corrige au
+second tour ; **sans une ligne de JavaScript neuve et sans un octet de CSS** ; et **sans dessiner
+d'anneau**, ce que j'avais refuse d'avance des le s01, un texte centre encadre etant trop proche,
+pour un lecteur debutant, de l'aspect d'une chose sur laquelle on appuie.
+
+#### Ce que cette levee ne ferme pas, et qui n'est l'oubli de personne
+
+La premiere propriete de ma reserve N - *"l'enfant doit savoir ou il en est des son arrivee"* -
+**reste ouverte, telle qu'elle est ecrite**. Verifie a l'ecran : la phrase recoit bien le focus,
+avec `tabindex="-1"`, mais **aucun anneau n'est peint**. Un enfant voyant, a l'arrivee, ne voit
+rien qui lui dise ou il en est.
+
+**Je n'en fais pas une condition sur ce lot, et je redis pourquoi plutot que de le laisser deviner** :
+ce n'est pas tenu non plus sur l'ecran de manche, que j'ai valide. Erige en condition ici, ce serait
+un poteau deplace sur un seul ecran. Personne n'a rien change a cela, et **ce n'est pas un oubli** :
+c'est une propriete de toute l'application, qui appartient a une story a elle seule, et elle reste
+sous ma reserve. Elle reste egalement sous **F11** pour ce qu'un lecteur d'ecran annonce a l'arrivee
+sur cet ecran - c'est-a-dire, aujourd'hui, une phrase et rien d'autre : **personne dans cette equipe
+n'a jamais fait cette ecoute**, et moi non plus.
+
+#### Ce que je corrige de ma propre mesure, avant qu'on s'appuie dessus
+
+**Mon instrument ne reproduit pas le mode de defaillance qui avait produit le 57 / 69, et je le dis
+plutot que de laisser croire a un "57 devenu 0" mesure a instrument constant.** J'ai fait tourner
+un temoin : en renvoyant le focus au corps juste apres l'arrivee - c'est-a-dire en refabriquant
+l'etat "aucun point de focus" - la premiere Tabulation atteint quand meme "Continuer la partie",
+**21 fois sur 21**. Un navigateur pilote de cette facon n'a pas de barre d'adresse ou echapper. J'ai
+donc rejoue les 69 arrivees **dans une fenetre reelle et au premier plan**, et non plus seulement
+sans fenetre : **memes chiffres, 69 / 69 partout**.
+
+Ce que ma mesure etablit est donc positif, pas une absence : **le focus part desormais d'un point
+declare a l'interieur du document**, ce qui rend la premiere Tabulation deterministe - et j'ai
+mesure ou elle arrive, 69 fois sur 69. C'est la cause du defaut qui est retiree, pas seulement son
+symptome qui est devenu invisible.
+
+#### Ce que la clause 4 de `theo-archi` couvre, et ce qu'elle ne couvre pas
+
+Je le nomme pour que l'equipe ne croie pas couvert ce qui ne l'est pas. La clause 4, encodee par
+`sofia-sm`, verifie qu'un point de focus est **declare**. Elle ne verifie pas qu'il est **atteint**,
+ni ou la premiere Tabulation arrive ensuite. **C'est exactement l'ecart que mon clavier vient de
+couvrir, et aucun automate ne le couvre.** Tant qu'aucun garde-fou ne le porte, c'est moi, en
+pressant les touches - et il faudra le represser a chaque ecran neuf qui declarera un point de
+focus.
+
+#### Tableau de suivi
+
+| Point | Etat au 2026-08-14 | Suite |
+|---|---|---|
+| **Reserve N**, propriete de stabilite du clavier | **LEVEE**, 69 / 69 sur sept jeux et trois etats | rien |
+| **Reserve N**, propriete "savoir ou il en est a l'arrivee" | **OUVERTE, inchangee** - aucun anneau peint | story a instruire, `camille-po` ; vaut pour toute l'application, pas pour ce seul ecran |
+| **F11**, ce qu'un lecteur d'ecran annonce ici | **OUVERTE** | il me manque toujours cette ecoute |
+| Le point de focus est **atteint**, pas seulement declare | **sans automate** | propriete decrite, moyen a `theo-archi` et `yanis-qa` |
+
+### Arbitrage prealable de s12 du 2026-08-14, second tour - le point de focus de la confirmation, revu sur un fait mesure
 
 > **Ce que cette section fait.** Elle **corrige mon choix de focus rendu quelques heures plus tot**,
 > parce qu'un fait mesure par `theo-archi` le rend mecaniquement impossible. La section precedente
