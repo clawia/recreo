@@ -38,11 +38,17 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  * l'encodage demande par ce mecanisme pour la story 2 de {@code DEC-0026} : la confirmation avant
  * abandon (voir {@code PartieController.retour()}, {@code fragments/confirmation.html}).
  *
- * <p><b>ADR-0040 y ajoute une troisieme clause</b> : le point de focus declare ne detruit pas
- * lui-meme la partie. Les trois ensemble disent une seule chose - depuis le point de depart que le
- * serveur choisit, ni Entree seule (clause 3) ni une Tabulation puis Entree (clause 2) ne detruit
- * une partie en cours, et il en va de meme quand le serveur ne choisit aucun point de depart
- * (clause 1).
+ * <p><b>ADR-0040 y ajoute deux clauses de plus</b> : la troisieme dit que le point de focus
+ * declare ne detruit pas lui-meme la partie - Entree seule, sans aucune Tabulation, depuis le
+ * point de depart que le serveur choisit ; la quatrieme dit que ce point de depart existe toujours,
+ * sur tout ecran a partie en cours. Les quatre ensemble disent une seule chose : depuis le point de
+ * depart que le serveur declare - et il en declare toujours un (clause 4) - ni Entree seule
+ * (clause 3) ni une Tabulation puis Entree (clause 2) ne detruit une partie en cours, quel que soit
+ * le premier arret de tabulation (clause 1).
+ *
+ * <p>La clause 4 ferme la reserve N de {@code nadia-prof} : sur
+ * {@code fragments/confirmation.html}, la premiere Tabulation quittait le document 57 fois sur 69
+ * arrivees, faute de tout point de focus declare.
  *
  * <p><b>"Destructeur" est une mesure, jamais une lecture de {@code data-role}</b> (ADR-0038, point
  * 3) : chaque arret candidat est rejoue - meme requete HTTP, sur une session fraiche reproduisant
@@ -352,10 +358,10 @@ class AucunArretDeTabulationNEstDestructeurTest {
     /**
      * Le point de focus que le serveur peut declarer sur cet ecran (ADR-0038 clause 2), lu dans les
      * marqueurs du gabarit et non recopie ici (ADR-0015) : un {@code data-focus-cible="true"} designe
-     * directement le bouton cible ; a defaut, un {@code data-focus} sans cible designe l'{@code
-     * .enonce} du meme ecran (M13 clause 4). Aucun des deux sur cet ecran : aucun point de focus n'y
-     * est declare, et la clause 2 n'a rien a y examiner - c'est le cas de
-     * {@code fragments/confirmation.html}, qui ne porte ni l'un ni l'autre.
+     * directement l'element cible, qu'il soit ou non un bouton (ADR-0040 : la phrase arbitree de
+     * {@code fragments/confirmation.html} le porte, sans etre un arret de tabulation) ; a defaut, un
+     * {@code data-focus} sans cible designe l'{@code .enonce} du meme ecran (M13 clause 4). Aucun des
+     * deux sur un ecran : aucun point de focus n'y est declare, et la clause 2 n'a rien a y examiner.
      */
     private static Optional<Element> pointDeFocusDeclare(Document document) {
         Elements cibles = document.select("[data-focus-cible=\"true\"]");
@@ -533,6 +539,42 @@ class AucunArretDeTabulationNEstDestructeurTest {
     }
 
     /**
+     * Clause 4 (ADR-0040, point 5) : tout ecran a partie en cours declare un point de focus. Elle ne
+     * juge pas ou va ce point de focus - les clauses 1 a 3 s'en chargent deja - elle juge seulement
+     * qu'il en existe un. Avant ce lot, elle aurait ete rouge des sa premiere execution, sur le seul
+     * ecran de confirmation : c'est la mesure de {@code nadia-prof} qui l'a fait naitre (57 arrivees
+     * sur 69 ou la premiere Tabulation quittait le document).
+     *
+     * <p>Perimetre et critere derives, comme les trois clauses precedentes : le corpus vient de
+     * vraies requetes sur de vraies sessions, "partie en cours" vient de
+     * {@link EtatDePartieEnSession}, et le point de focus vient des marqueurs poses par le gabarit
+     * ({@link #pointDeFocusDeclare}) - jamais d'une liste d'ecrans a verifier ecrite ici (ADR-0039,
+     * ADR-0013).
+     */
+    @Test
+    void toutEcranAPartieEnCoursDeclareUnPointDeFocus() throws Exception {
+        List<String> juges = new ArrayList<>();
+        List<String> ecarts = new ArrayList<>();
+
+        for (Ecran ecran : ecrans()) {
+            if (!partieEnCoursSur(ecran)) {
+                continue;
+            }
+            juges.add(ecran.nom());
+            if (pointDeFocusDeclare(ecran.document()).isEmpty()) {
+                ecarts.add("clause 4 : sur \"" + ecran.nom() + "\" (" + ecran.route()
+                        + "), aucun point de focus n'est declare");
+            }
+        }
+
+        assertThat(ecarts).as("ADR-0040 clause 4").isEmpty();
+        assertThat(juges)
+                .as("ADR-0003 : cette clause ne prouve rien si aucun ecran de ce corpus ne porte une "
+                        + "partie en cours")
+                .isNotEmpty();
+    }
+
+    /**
      * ADR-0013 obligation 3 pour la clause 3, sur du materiau reel plutot que sur une fixture de ma
      * main (lecon de s05) : le document que le serveur rend vraiment, avec son point de focus
      * <b>deplace</b> sur un arret destructeur du meme ecran. Deplace et non ajoute, pour que cette
@@ -576,6 +618,43 @@ class AucunArretDeTabulationNEstDestructeurTest {
         assertThat(mutes)
                 .as("ADR-0003 : aucun ecran a partie en cours n'offre d'arret destructeur - les trois "
                         + "clauses d'ADR-0038 et d'ADR-0040 ne gardent alors plus aucun objet")
+                .isNotEmpty();
+    }
+
+    /**
+     * ADR-0013 obligation 3 pour la clause 4, "muter un objet existant prouve que le critere mord" :
+     * le point de focus reellement declare par un ecran a partie en cours, retire du document que le
+     * serveur a vraiment rendu, doit faire echouer la clause 4. Sur materiau reel et non sur une
+     * fixture ecrite a la main (lecon de s05).
+     */
+    @Test
+    void unEcranDontLePointDeFocusEstRetireFaitEchouerLaClause4() throws Exception {
+        List<String> mutes = new ArrayList<>();
+
+        for (Ecran ecran : ecrans()) {
+            if (!partieEnCoursSur(ecran)) {
+                continue;
+            }
+            Optional<Element> pointDeFocus = pointDeFocusDeclare(ecran.document());
+            if (pointDeFocus.isEmpty()) {
+                continue;
+            }
+            mutes.add(ecran.nom());
+            pointDeFocus.get().removeAttr("data-focus-cible");
+            ecran.document().select("[data-focus]").removeAttr("data-focus");
+
+            assertThatThrownBy(() -> assertThat(pointDeFocusDeclare(ecran.document()))
+                    .as("clause 4 : sur \"" + ecran.nom() + "\" (" + ecran.route()
+                            + "), un point de focus doit etre declare")
+                    .isPresent())
+                    .isInstanceOf(AssertionError.class)
+                    .hasMessageContaining("clause 4");
+            break;
+        }
+
+        assertThat(mutes)
+                .as("ADR-0003 : aucun ecran a partie en cours de ce corpus ne declare de point de "
+                        + "focus - la clause 4 ne garderait plus aucun objet")
                 .isNotEmpty();
     }
 
