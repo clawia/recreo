@@ -175,7 +175,27 @@
   mesure. **Ma reserve L est LEVEE** : un test execute reellement `recreo.js`. Trois reserves neuves
   **T**, **U**, **V**. Degrade sur un point inchange : **je n'ai toujours pas ecoute cette
   application**, F11 et la derniere clause de M13 restent ouvertes.
-- **Derniere mise a jour** : 2026-08-13
+- **Arbitrage prealable du 2026-08-14 sur la forme et le texte de l'ecran de confirmation avant
+  abandon** : **forme d'`ines-design` (`ccac47f`) ACCEPTEE sous une condition unique** - l'ecart
+  vertical entre les deux boutons passe de **32 a 44 px au moins**, le plancher de cible que cette
+  application s'impose deja (cout mesure : 12 px sur 308 disponibles) ; le reste de sa forme est
+  accepte tel quel, empilement et pleine largeur au seul geste sur. **Texte de `marc-dev` REFUSE**,
+  quatre motifs dont deux graves - **"perdre" est un piege d'homonymie dans un jeu** et **la question
+  posee n'est pas celle que les deux boutons repondent** - et remplace par **"Si tu pars, ta partie
+  s'arrête."**, qui reutilise le mot que cette application emploie deja pour une partie interrompue et
+  tient sur une seule ligne au lieu de deux. **Trois chiffres transmis sont corriges par ma mesure**,
+  dont le "poids identique" des deux gestes tels que livres, qui est faux (2,01:1 en largeur, aplat
+  contre contour), et **une cause fausse qu'on prete a une divergence de ma propre trace** : le
+  8,61:1 contre 9,25:1 n'etait pas un ecart de linearisation mais une paire fausse de mon cote, ce que
+  j'avais deja etabli le 2026-08-12. **La premiere moitie de ma reserve O est FERMEE** - plus aucun
+  chemin ne detruit la partie d'un seul geste, verifie en jouant les cinq ecrans, retour a la manche
+  byte-identique ; **sa seconde moitie reste ouverte** (aucun chemin vers le catalogue qui garde la
+  partie). **La repetition de "Les jeux" ne pose pas le probleme de mon refus de s10** : un seul mot,
+  une seule occurrence visible, et le second appui acheve le premier. **Deux reserves neuves** : le
+  meme libelle porte deux consequences differentes selon l'ecran, et l'ecran de confirmation ne montre
+  a l'enfant rien de ce qu'il va perdre, pas meme son score. Ce n'est pas un Done pedagogique.
+  Degrade sur un point : **aucun enfant n'a vu cet ecran**. Cinq points actionnables CONF-1 a CONF-5.
+- **Derniere mise a jour** : 2026-08-14
 
 ## Competences visees
 
@@ -243,7 +263,414 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Arbitrage prealable au developpement - la sortie unique dans l'en-tete (DEC-0027, s11), du 2026-08-14 - le plus recent de cette fiche
+### Arbitrage prealable - la forme et le texte de l'ecran de confirmation avant abandon (s11), du 2026-08-14 - le plus recent de cette fiche
+
+**Ce bloc n'est pas un Done pedagogique.** C'est l'arbitrage prealable demande sur deux choses non
+figees : la **forme** proposee par `ines-design` (`s11-ines-confirmation`, `ccac47f`) et le **texte**
+propose par `marc-dev`, tous deux sur l'ecran que `POST /retour` rend depuis une partie en cours.
+Il n'efface, ne modifie et ne rouvre aucun verdict anterieur de cette fiche.
+
+> Seul changement apporte a un titre anterieur, et il ne touche aucun verdict : la mention "le plus
+> recent de cette fiche" passe du titre de l'arbitrage `DEC-0027` du 2026-08-14 a celui-ci, pour
+> qu'un seul bloc la porte. Le corps de ce verdict-la n'est modifie d'aucun caractere.
+
+#### Les deux verdicts, en une phrase chacun
+
+1. **Forme (`ines-design`) : ACCEPTEE, sous une condition unique et chiffree.** Empiler les deux
+   boutons et donner la pleine largeur au seul geste sur est le bon geste, et je le confirme sur ma
+   propre mesure. **L'ecart vertical de 32 px est refuse et doit passer a 44 px au moins** - la
+   valeur du `min-height` que cette application s'impose deja a elle-meme sur toute cible.
+2. **Texte (`marc-dev`) : REFUSE.** Quatre motifs, dont deux graves : le mot **perdre** est un piege
+   d'homonymie dans un jeu, et la **question posee n'est pas celle que les deux boutons repondent**.
+   Texte de remplacement nomme, rendu et mesure par moi plus bas.
+
+#### 0. Comment j'ai regarde, et ce que je declare degrade
+
+**J'ai joue, sur un jar reconstruit depuis mon propre worktree**, pas sur une capture qu'on m'a
+donnee. JDK 21 designe par `JAVA_HOME` le temps de la commande (`java` du `PATH` de ce poste en 1.8,
+verifie par `outils/verifier-jdk.sh`), application servie sur un port qui n'est celui de personne
+d'autre, et **un seul processus arrete a chaque fois, par son identifiant releve a `netstat`, jamais
+par nom d'image**. Trois serveurs se sont succede, un par etat du code mesure ; aucun autre processus
+de ce poste n'a ete touche.
+
+**Le chemin exact de chaque mesure, reproductible** : session HTTP tenue par un bocal de cookies,
+partie demarree par `POST /parties/<jeuId>`, ecran de confirmation obtenu par `POST /retour` (un
+ecran de manche s'obtient par un POST, `ADR-0028`), puis **reassemblage du fragment servi dans la
+page complete que l'enfant recoit** - en-tete permanent, `main#jeu`, feuille tierce puis feuille
+maison dans l'ordre reel, par une `base` vers le serveur. Capture par la commande versionnee du
+depot, `outils/mesurer-rendu.sh 360 <url> <png> 640`, navigateur designe par la variable `CHROME`.
+Mesure ensuite au pixel sur l'image, en relevant tout pixel de la colonne de contenu qui n'est ni le
+fond de page ni le fond rouge du conteneur - je ne fais confiance a aucune coordonnee que je n'ai pas
+comptee moi-meme.
+
+**Ce que je declare degrade, en deux points, parce qu'ils sont reels** :
+
+1. **aucun enfant n'a vu cet ecran.** Je juge une forme et un texte contre des frontieres que
+   j'ecris, ce qui est ma competence, mais personne de six ans n'a designe ce bouton du doigt ni
+   bute sur ce mot ;
+2. **je n'ai mesure qu'a 360 x 640.** C'est la reference de `DEC-0016`. Les chiffres d'`ines-design`
+   a d'autres largeurs, s'il en existe, ne sont ni repris ni verifies ici.
+
+**Ce que je ne declare pas degrade, et qui l'etait la derniere fois** : la mecanique. J'ai joue
+cinq etats reels, la sortie reelle et la fin de partie reelle, avec les octets servis.
+
+#### 1. Trois chiffres qu'on m'a donnes et que ma mesure corrige
+
+Je corrige avant de m'appuyer dessus, y compris quand la correction porte sur ma propre trace.
+
+| Chiffre transmis | Ce que je mesure | Nature de l'ecart |
+|---|---|---|
+| ecart de **5 px** entre les deux boutons tels que livres | **4 px** de pixels reellement vides (231 a 234) | soustraction de coordonnees (235 - 230) contre comptage des pixels vides |
+| ecart de **33 px** sous la proposition | **32 px** de pixels reellement vides (248 a 279) | meme ecart ; 32 px est aussi ce que dit la feuille (`gap: 2rem`), et le commentaire d'`ines-design` ecrit bien 32 |
+| les deux gestes sont **"de poids identique"** tels que livres | **faux** : 219 x 56 px contre 109 x 54 px, soit **2,01:1** en largeur et **2,08:1** en surface, et l'un est un aplat plein quand l'autre est un contour | le defaut livre est **l'adjacence**, pas l'egalite de poids |
+
+Le troisieme point n'est pas une chicane : il change ce que la proposition achete. Elle ne fait pas
+passer le rapport de 1:1 a 3,1:1, **elle le fait passer de 2,01:1 a 3,11:1**. Le gain reste reel et
+je l'accepte, mais il est plus petit qu'annonce, et c'est **l'ecartement** qui fait l'essentiel du
+travail, pas la largeur.
+
+**Et une correction qui porte sur ce qu'on me dit de ma propre trace.** On me presente la divergence
+`8,61:1` contre `9,25:1` comme un *"ecart de linearisation sRGB"*. **Ce n'est pas cela, et c'est moi
+qui ai etabli pourquoi le 2026-08-12** : ma formule etait juste et ma **paire** etait fausse - je
+comparais `#1d4b6b` au **blanc pur** au lieu de la page `#f4f7fb`. Refait aujourd'hui avec ma
+fonction : `#1d4b6b` contre `#f4f7fb` donne **8,6059:1**, contre `#ffffff` donne **9,2471:1**. La
+linearisation n'a jamais ete en cause. Je le redis ici parce qu'une cause fausse rangee dans le
+depot ferait chercher au prochain agent un defaut qui n'existe pas.
+
+#### 2. La forme : mes mesures, cote a cote
+
+Toutes a 360 x 640, sur la page assemblee reelle, origine au coin superieur gauche de l'image.
+
+| Element | Tel que livre (`round-two`) | Proposition `ccac47f` |
+|---|---|---|
+| `continuer-partie` | x=[12,230] y=[180,235], **219 x 56 px** | x=[12,347] y=[192,247], **336 x 56 px** |
+| `retour-accueil` | x=[235,343] y=[181,234], **109 x 54 px** | x=[126,233] y=[280,332], **108 x 53 px** |
+| espace vide entre les deux | **4 px**, horizontal | **32 px**, vertical |
+| rapport de largeur | **2,01:1** | **3,11:1** |
+| rapport de surface | **2,08:1** | **3,29:1** |
+| bas du dernier element | y = 235 | y = **332** sur 640 |
+
+**Les deux coordonnees qu'`ines-design` m'a transmises pour sa proposition tombent au pixel sur ma
+reconstruction** : `continuer-partie` en x=[12,347] y=[192,247] et `retour-accueil` en x=[126,233]
+y=[280,332]. Je le dis parce que c'est la premiere fois de ce sprint qu'une mesure qu'on me donne se
+reproduit sans un pixel d'ecart, et cela vaut d'etre note.
+
+**Son "cout en garde-fous : nul" est verifie par moi, pas repris** : `mvn -B verify` sur ma copie
+avec sa forme posee, **415 tests, 0 echec, BUILD SUCCESS**, et **28 regles ArchUnit** par la methode
+de comptage que le depot s'est donnee (declarations `ArchRule <nom> =` sous `src/test/java` des six
+modules ; un balayage plus large en rend 30, les deux de plus etant celles du faux depot de
+contre-exemple).
+
+#### 3. Mes reponses aux trois questions d'`ines-design`
+
+**Question 1 - l'ecart de largeur et de position suffit-il a distinguer d'emblee le geste sur du
+geste destructeur, sans lire les deux boutons ?**
+
+**Je reponds en deux temps, parce que la question melange deux proprietes qui n'ont pas la meme
+reponse, et que repondre "oui" tout court laisserait croire couvert ce qui ne l'est pas.**
+
+- **Sur la propriete qui protege reellement l'enfant : oui, et c'est acquis.** Un enfant qui appuie
+  sans lire appuie sur ce qui appelle la main : le plus grand, le plus colore, le plus haut. Sous la
+  proposition, ces trois qualites sont sur le **meme** bouton, et c'est le bouton sur. **3,29:1 en
+  surface, aplat plein contre contour, premier dans l'ordre de lecture, et premier arret de
+  tabulation.** Un appui hasardeux, un derapage, un doigt pose au milieu de l'ecran : tout cela
+  tombe sur "Continuer la partie", et la partie survit. C'est la propriete qui compte et elle est
+  tenue.
+- **Sur la propriete telle qu'elle est formulee : non, et aucune forme ne le pourra.** Distinguer le
+  geste "sur" du geste "destructeur" suppose de savoir **lequel des deux detruit**. Une difference de
+  taille, de remplissage ou de position dit *lequel est important*, jamais *lequel est dangereux*. Un
+  enfant qui ne lit pas ne peut pas apprendre de cette forme que le petit bouton efface sa partie ; il
+  ne peut l'apprendre qu'en le pressant une fois, ce qui est exactement le prix qu'on voulait lui
+  epargner. **Aucune geometrie ne porte un sens. Seul le texte le porte** - d'ou le soin que je mets a
+  la section 4.
+
+**Consequence que je nomme et que je ne cache pas** : cette forme rend la sortie **volontairement
+plus difficile**, ce qui est le but d'une confirmation. Pour un enfant qui ne lit pas encore, elle
+la rend **non trouvable par la seule saillance** : celui qui veut sortir et explore au hasard
+retombera sur sa manche a chaque essai. Je l'accepte - un ecran de confirmation ne peut pas etre a
+la fois un obstacle et une porte - mais c'est un cout reel, et il pese sur le texte plutot que sur
+la forme.
+
+**Question 2 - les contrastes sont-ils bien ceux deja utilises, aucune valeur neuve ?**
+
+**Oui, et la verification est plus forte que ce qu'elle demande : sa proposition ne declare aucune
+couleur du tout.** J'ai passe son diff de feuille au filtre `color`, `background`, `border`, `#hex`,
+`rgb`, `var(--` : **zero ligne ajoutee ne porte une couleur.** Elle n'ajoute que `display`,
+`flex-direction`, `align-items`, `gap`, `margin-top` et `align-self`. Il n'y avait donc rien a
+reverifier au sens ou elle le craignait.
+
+J'ai tout de meme mesure les paires, sur les pixels reellement rendus des deux captures, parce que
+c'est ma garde et non la sienne :
+
+| Paire | Valeur | Livre | Propose |
+|---|---|---|---|
+| aplat de `continuer-partie` `#2e6f9e` contre la page `#f4f7fb` | **5,03:1** | idem | idem |
+| bordure et texte de `retour-accueil` `#2e6f9e` contre la page | **5,03:1** | idem | idem |
+| texte blanc de `continuer-partie` contre son aplat | **5,41:1** | idem | idem |
+| texte de la question `#1c2733` contre la page | **14,09:1** | idem | idem |
+
+Les aplats releves sur l'image valent (46, 111, 158) et (244, 247, 251) **avant comme apres** : la
+teinte servie est bien `#2e6f9e` sur `--recreo-fond`, aucune valeur neuve, aucune valeur deplacee.
+Les quatre paires tiennent le seuil de 4,5:1 du texte courant, la plus basse avec 12 % de marge.
+
+**Un point de methode que je remonte pour que personne ne refasse mon erreur** : sur cette capture,
+les pixels de **glyphe** sont inutilisables pour un calcul de contraste - le rendu de texte est
+antialiase par sous-pixels et m'a rendu un (244, 200, 181) orange a l'interieur d'un bouton qui n'a
+pas un pixel d'orange. Un contraste de texte se calcule sur les **valeurs declarees**, ou sur des
+aplats pris loin de tout glyphe. J'ai commence par me tromper la, je l'ai vu, je le dis.
+
+**Question 3 - l'ecart vertical de 32 px est-il assez genereux, ou faut-il l'agrandir ?**
+
+**Il faut l'agrandir, et je le chiffre : au moins 44 px de pixels vides entre les deux boites
+rendues.** Ce n'est pas un nombre que j'invente, et c'est ce qui rend la condition tenable : **44 px
+est le plancher que cette application s'impose deja a elle-meme** sur toute cible pressable
+(`min-height: 2.75rem`, porte par `.continuer-partie` comme par `.retour-accueil`). Un espace de
+separation plus petit que la plus petite cible du produit ne peut pas se defendre : un doigt qui
+manque le bas du grand bouton d'une hauteur inferieure a une cible entiere atterrit sur le bouton
+qui detruit la partie.
+
+**Et j'ai mesure le cout au lieu de le supposer**, sur le rendu, avec la seule valeur de `gap`
+changee :
+
+| `gap` | `retour-accueil` | bas du bloc | budget vertical restant sur 640 |
+|---|---|---|---|
+| 2rem = 32 px (proposition) | y=[280,332] | 332 | 308 px |
+| **2,75rem = 44 px (ma condition)** | y=[292,344] | **344** | **296 px** |
+| 3,5rem = 56 px | y=[304,356] | 356 | 284 px |
+
+**44 px coute 12 px sur 308 disponibles.** Il n'y a aucun arbitrage a faire : le budget est la, le
+plancher existe deja dans le produit, la condition est due. Je n'exige pas 56 px : 44 px est la
+barre, elle est justifiee par une valeur du produit et non par mon gout, et **je ne la releverai pas
+plus tard** - la relever apres coup ferait de ma porte un caprice.
+
+#### 4. Le texte : REFUSE, quatre motifs, et le remplacement que je nomme
+
+Le texte propose : *"Si tu quittes, tu perds ta partie en cours. Veux-tu vraiment quitter ?"* -
+13 mots, 69 caracteres, deux phrases dont une interrogative, **deux lignes pleines a 360 px**
+(mesure : y=[116,135] et y=[146,165], la premiere ligne large de 293 px sur 336 disponibles).
+
+**Motif 1, le plus grave - "perdre" est un piege d'homonymie dans un jeu.** *"tu perds ta partie"*
+a deux sens, et le mauvais est celui que l'enfant connait deja : dans un jeu, **perdre veut dire
+etre battu**. Un enfant de CP qui lit "tu perds ta partie" comprend qu'il va etre declare perdant,
+pas que son travail sera efface. Le sens vise ici - "ce que tu as fait ne sera pas garde" - est le
+sens abstrait du verbe, et c'est le second qu'on apprend. Un mot qui a deux sens dont l'un est faux
+et familier n'est pas un mot qu'on met dans une phrase de six mots destinee a une decision.
+
+**Motif 2, aussi grave - la question posee n'est pas celle que les boutons repondent.** L'ecran
+demande *"Veux-tu vraiment quitter ?"*, une question fermee qui appelle **oui** ou **non**. Les deux
+reponses offertes sont "Continuer la partie" et "Les jeux" : **ni l'une ni l'autre n'est une reponse
+a cette question.** L'enfant doit traduire "Les jeux" en *oui* et "Continuer la partie" en *non* -
+une operation de plus, sur un ecran ou l'on vient justement de lui demander de decider vite. **Ou la
+question porte ses deux reponses, ou il n'y a pas de question.** Je tranche pour la seconde branche
+(motif en fin de section).
+
+**Motif 3 - deux mots ne sont pas du CP.** *"en cours"* est une locution abstraite qui ne se decode
+pas et **ne dit rien de plus** : "ta partie" designe deja celle qu'il joue. *"vraiment"* est un
+adverbe de registre adulte ("veux-tu *vraiment*..."), quatre syllabes pour zero information. Les
+deux sont a retirer, et leur retrait ne coute pas un atome de sens.
+
+**Motif 4 - le meme verbe sous deux formes, et deux phrases la ou une suffit.** *"quittes"* puis
+*"quitter"* obligent le lecteur debutant a reconnaitre le meme mot sous deux graphies dans la meme
+respiration. Et *quitter* lui-meme n'est pas le mot de l'enfant : **partir** est le verbe qu'un
+enfant de six ans lit et dit. Enfin la charge : conditionnelle a tenir, consequence a retenir,
+question a lire, deux etiquettes a apparier - **quatre choses en meme temps**, sur deux lignes.
+
+**Ce que je ne reproche pas** : l'accentuation et l'orthographe sont irreprochables, et le ton
+n'accuse pas l'enfant. L'amendement du 2026-08-04 a `DEC-0002` est tenu. `marc-dev` a par ailleurs
+presente ce texte **comme une proposition** et l'a dit dans sa feuille ; ce refus porte sur le texte,
+pas sur la facon dont il a ete soumis, qui est exactement la bonne.
+
+**Le texte que je nomme, et que j'ai rendu et mesure avant de l'ecrire ici** :
+
+> **Si tu pars, ta partie s'arrête.**
+
+**Pourquoi chacun de ces six mots, et pourquoi pas d'autres** :
+
+- **"pars"** et non "quittes" : verbe du langage de l'enfant, une seule forme, decodable.
+- **"s'arrête"** et non "tu perds" : aucune homonymie de jeu. Et surtout, **ce n'est pas un mot que
+  j'invente : c'est deja le mot de cette application pour cet evenement exact.** Quand une partie est
+  interrompue, `recreo` affiche aujourd'hui *"Ta partie s'est arrêtée. Choisis un nouveau jeu !"* -
+  texte que j'ai valide, et que `PartieControllerTest` epingle. L'enfant rencontrera donc **le meme
+  mot pour le meme evenement** aux deux endroits ou il se produit.
+- **"s'arrête"** et non "est finie" : *fini* est deja pris, et par le contraire - l'ecran de fin dit
+  *"C'est fini !"* pour une partie **menee a son terme**. Reutiliser "fini" ici apprendrait a
+  l'enfant que partir et reussir sont la meme chose. C'est la raison qui m'a fait ecarter ma propre
+  premiere formulation.
+- **plus de question** : les deux boutons **sont** le choix. Supprimer l'interrogative supprime d'un
+  coup le motif 2 et l'adverbe du motif 3.
+- **une phrase, 6 mots, 31 caracteres.**
+
+**Mesure du remplacement, sur le rendu reel** : le texte tient sur **une seule ligne** (y=[116,135],
+large de 240 px sur 336 disponibles) au lieu de deux, ce qui **rend 30 px** au budget vertical. Avec
+la forme d'`ines-design` et ma condition de 44 px, le bloc complet finit a **y = 314 sur 640** :
+326 px de marge. Les deux corrections que je demande, prises ensemble, **coutent moins de place que
+le texte actuel n'en prend**.
+
+**Quels tests dependent de ce texte : aucun, et je l'ai verifie en l'executant plutot qu'en lisant.**
+J'ai pose ma phrase dans le gabarit et relance la suite complete : **415 tests, 0 echec, BUILD
+SUCCESS, 28 regles**. Aucun garde-fou de ce depot ne lit un caractere de ce que l'enfant lit sur cet
+ecran. `marc-dev` peut donc changer cette chaine sans toucher a un test - et **c'est precisement ce
+qui doit inquieter** : voir section 7.
+
+#### 5. Ce que la mecanique fait reellement, verifie en jouant et non lu
+
+On me demande d'arbitrer une forme et un texte ; je ne les arbitre pas sans savoir ce que l'ecran
+fait. Sept verifications, toutes sur les octets servis :
+
+1. **Les cinq ecrans rendent bien la confirmation.** `POST /retour` depuis manche 1, depuis la
+   reprise, depuis une reponse juste, depuis une reponse fausse et depuis la revelation rend **le
+   meme fragment, identique**. Les cinq.
+2. **"Continuer la partie" rend la manche intacte, a l'octet pres.** Verifie sur trois etats : apres
+   un echec, sur une revelation, et apres une reussite. Le document rendu par `/retour/annuler` est
+   **byte pour byte** celui d'avant la demande de confirmation, verdict et indice compris. Rien n'est
+   consomme, aucun essai n'est compte.
+3. **Rien ne rejoue une animation au retour.** L'ecran revient avec `data-arrivee="sans-geste"` la
+   ou l'etat le veut : l'enfant qui hesite et revient ne subit pas un defilement de plus.
+4. **La destruction n'a lieu que sur le second geste.** Seul `/retour/confirmer` vide la session ;
+   apres lui, le catalogue et ses 7 boutons de demarrage.
+5. **La confirmation ne se declenche pas quand il n'y a rien a perdre.** Partie menee jusqu'a
+   "C'est fini !" : `POST /retour` rend directement le catalogue, **sans ecran de confirmation** (0
+   occurrence de la question, 7 boutons de demarrage). C'est juste : on ne demande pas a un enfant de
+   confirmer l'abandon de ce qu'il vient de terminer.
+6. **Un seul "Les jeux" est visible sur l'ecran de confirmation.** L'entree de menu de l'en-tete est
+   masquee par `display: none` sur tout ecran portant `ecran-de-jeu` - donc **pas focalisable non
+   plus**, ce qui compte pour le clavier autant que pour l'oeil. Verifie sur la capture : l'en-tete
+   ne porte que "Recreo".
+7. **Le premier arret de tabulation est le bouton sur**, premier dans l'ordre du document, aucun
+   element focalisable avant lui.
+
+#### 6. Les deux points que le lot m'a nommement soumis
+
+**a) "Le bouton destructeur reste focalisable et pressable" - ma reserve O est-elle fermee ?**
+
+**Elle est fermee sur sa moitie qui portait sur le geste, et je le prononce. Elle reste ouverte sur
+sa moitie qui portait sur le catalogue.** Je ne l'efface pas et je ne la durcis pas : je dis
+laquelle des deux choses qu'elle disait est desormais fausse.
+
+Ma reserve O du 2026-08-13 disait deux choses :
+
+- *"le seul chemin est Les jeux, qui appelle `abandonner()` sans confirmation"* - **cette moitie est
+  fermee.** Verifie aujourd'hui en jouant, point par point : plus aucun chemin, en-tete ou fragment,
+  ne detruit la partie d'un seul geste ; la demande ne touche pas la session ; le retour est
+  byte-identique. **C'etait bien "le meme enjeu que M13 clause 1 vu depuis la souris", et la
+  confirmation le traite depuis la souris comme depuis le clavier, du meme coup.** C'est le remede a
+  mon refus de s10 et je le reconnais comme tel.
+- *"il n'existe aucun chemin vers le catalogue qui ne detruise pas la partie"* - **cette moitie reste
+  vraie.** Remesuree aujourd'hui : `GET /` pendant une partie rend l'ecran de jeu et **0 bouton de
+  demarrage**, contre 7 hors partie. Un enfant ne peut toujours pas **regarder** la liste des jeux en
+  gardant sa partie. La confirmation ne le lui donne pas, et ne pretend pas le donner.
+
+Je maintiens donc **reserve O, reduite a sa seconde moitie**, sans la relever d'un cran et sans y
+ajouter de demande. Le sort de cette moitie est une question produit, pas une question de forme :
+elle est a `camille-po`.
+
+**b) "Deux mots pour une destination" - est-ce le meme probleme qu'en s10 ?**
+
+**Non, et je le dis clairement pour que personne ne se serve de mon refus de s10 contre cet
+increment.** Mon motif PORTE-3 du 2026-08-14 etait : *"deux mots differents, deux boutons, une seule
+destination"* - "Les jeux" dans l'en-tete a cote de "Recommencer" dans le contenu. **Aucune des deux
+composantes n'est presente ici** : il n'y a **qu'un mot** ("Les jeux"), et il n'y a **qu'une
+occurrence visible** - l'entree d'en-tete est en `display: none`, verifie sur la capture et dans la
+feuille. Le principe que S6-9 avait obtenu, un seul mot de sortie qui circule dans toute
+l'application, est **tenu** sur cet ecran.
+
+Sur la repetition entre la manche et la confirmation, je vais plus loin que "ce n'est pas le meme
+probleme" : **c'est une qualite.** L'enfant presse "Les jeux", on l'interrompt, il presse "Les jeux"
+a nouveau, il sort. Le mot ne change pas de sens - il exprime deux fois **la meme intention**, et le
+second appui **acheve** le premier. Un mot different sur le second ecran ("Sortir", "Quitter")
+casserait cette continuite et rajouterait un mot de sortie a apprendre, ce qui est exactement ce que
+j'ai refuse en s10.
+
+**Reserve nouvelle, datee de ce jour, ecrite comme telle et non comme un durcissement** : le meme
+libelle, dans la meme classe et le meme rendu, porte desormais deux consequences differentes - sur
+la manche il **ne detruit rien**, sur la confirmation il **detruit**. L'enfant ne peut donc pas
+apprendre du premier appui ce que le second coute. Je ne demande pas de le corriger dans ce sprint :
+je le nomme, parce que c'est le genre de chose qui se decouvre trois sprints plus tard et qu'on
+attribue alors a personne. **Motif pour `camille-po`, pas condition sur ce lot.**
+
+**Reserve nouvelle, datee de ce jour - l'ecran de confirmation ne montre a l'enfant rien de ce
+qu'il va perdre.** Constat fait en jouant : la confirmation remplace **toute** la zone de contenu.
+Le score disparait, l'enonce disparait, le cabinet disparait. On demande a un enfant de six ans de
+peser "ta partie" alors qu'il n'a plus sous les yeux un seul element de cette partie. Or **le score
+est la seule chose de cet ecran qu'un enfant qui ne lit pas encore peut lire a coup sur** : un
+chiffre. "Score : 5" sous la question ferait, pour un non-lecteur, plus de travail que n'importe
+quelle phrase que je peux ecrire. Le budget le permet largement (296 px libres sous ma condition).
+**Ce n'est pas une condition de cet arbitrage** - c'est une demande neuve, elle depasse la forme
+qu'on me soumet, et transformer un arbitrage en refonte serait deplacer mes poteaux. **Motif pour
+`camille-po`.**
+
+#### 7. Ce dont je reste la seule garde apres cet arbitrage, et qu'il ne faut pas croire couvert
+
+Je les nomme parce que quatre defauts visibles par un enfant ont deja traverse une CI entierement
+verte sur ce depot.
+
+1. **Tout ce que l'enfant lit sur cet ecran.** Etabli aujourd'hui **par l'experience et non par
+   lecture** : j'ai remplace la question par une phrase entierement differente et les 415 tests sont
+   restes verts. Aucun garde-fou ne lit un caractere de ce texte. **Si ce mot change, c'est moi ou
+   personne.**
+2. **L'ecart de 44 px, la pleine largeur, et le rapport de 3,11:1.** `ADR-0017` le dit lui-meme dans
+   sa section "ce que cette regle ne couvre pas" - point 1, elle ne compare pas les surfaces ; point
+   2, elle ne voit pas la couleur ; **point 3, elle ne voit ni la position ni l'espace.** Verifie
+   dans le texte de l'`ADR`, pas suppose. Les trois chiffres de ma condition sont donc hors de toute
+   CI : c'est moi, en mesurant.
+3. **Les quatre rapports de contraste de la section 3.** Aucun automate de ce depot ne compare une
+   couleur a son fond. Ils tiennent aujourd'hui ; au prochain changement de palette ils peuvent
+   devenir faux en restant verts.
+4. **Que "Continuer la partie" rende la manche intacte.** Deux assertions de `PartieControllerTest`
+   couvrent la session ; **rien ne compare les deux documents rendus.** Mon egalite byte pour byte
+   est une mesure a moi, refaite a chaque fois qu'on touchera cette route.
+5. **Que la confirmation ne se declenche pas sur l'ecran de fin de partie.** Je l'ai jouee. Je ne
+   sais pas si un test l'epingle ; je ne le declare donc pas couvert.
+6. **Reserve O, seconde moitie**, ci-dessus. Et les points de garde solitaire du 2026-08-13 ne sont
+   pas repris ici : ils restent ouverts la ou ils sont ecrits.
+
+> **Auto-correction, faite avant de m'appuyer dessus.** J'avais d'abord ecrit ici *"reserve L,
+> inchangee : rien n'execute le script de focus"*. **C'est faux, et c'est moi qui l'avais rendu
+> faux** : j'ai leve la reserve L le 2026-08-13, parce qu'un test execute reellement `recreo.js`
+> (`LeScriptDAgrementSExecuteApresLeCorpsTest`), et je l'ai ecrit deux fois dans cette fiche. J'ai
+> recopie un etat perime de ma propre trace. La ligne est corrigee ; la reserve L **reste levee**, et
+> le focus de cet ecran n'est donc pas dans ma liste de garde solitaire.
+
+#### 8. Ce qui me manque, et que je ne remplace pas par un jugement
+
+**Une seule chose, et elle ne m'empeche pas de trancher : un enfant de CP, en debut d'annee, place
+devant cet ecran, a qui l'on demande de sortir du jeu.** Elle trancherait le seul point ou ma
+reponse a la question 1 reste raisonnee plutot que constatee - qu'un non-lecteur retombe sur sa
+manche a chaque essai et ne trouve pas la porte. Le depot n'a aucun moyen de produire cette
+observation ; je ne la pose donc pas en condition, je la nomme comme la limite de ma reponse.
+
+Ce dont je n'ai **pas** besoin : une mesure a une autre largeur que 360, ni une remesure du pli sur
+les sept jeux. Ni l'une ni l'autre ne changerait une ligne de ce bloc.
+
+#### 9. Ce que cet arbitrage ne tranche pas
+
+- **Il ne prononce aucun Done pedagogique** et n'en rouvre aucun. Celui de l'increment de
+  confirmation sera prononce en jouant le lot livre, avec le texte et la forme corriges.
+- **Il ne leve aucune autre reserve** que la premiere moitie de la reserve O, nommement.
+- **Il ne choisit aucun moyen technique.** Comment poser 44 px de `gap`, ou vit la chaine du texte,
+  s'il faut un garde-fou pour la geometrie de cet ecran : `theo-archi`. Je decris ce que l'enfant
+  doit voir.
+- **Il ne priorise rien et n'ecrit aucune story.** Les trois motifs routes a `camille-po` - reserve O
+  seconde moitie, le meme libelle pour deux consequences, le score absent de l'ecran de confirmation
+  - sont des motifs. `camille-po` en fait ce qu'elle veut, dans l'ordre qu'elle veut.
+- **Aucune ligne de `squad/programme/MATRICE-couverture.md`.** Aucun Done pedagogique n'est prononce
+  ici ; rien ne passe a `couvert-valide`.
+
+#### 10. Recapitulatif actionnable, pour que personne ne me redemande ce que je voulais dire
+
+| # | Ce qui est du | Verification |
+|---|---|---|
+| CONF-1 | **L'ecart vertical entre les deux boutons est de 44 px au moins**, en pixels vides sur le rendu, pas en soustraction de coordonnees | capture a 360 x 640 : le haut de `retour-accueil` est a **y >= 292** quand le bas de `continuer-partie` est a y = 247 |
+| CONF-2 | **Le reste de la forme `ccac47f` est accepte tel quel** : empilement, pleine largeur au seul geste sur, sortie a sa largeur naturelle et centree | capture : `continuer-partie` en x=[12,347], `retour-accueil` de 108 px de large, rapport de largeur >= 3:1 |
+| CONF-3 | **Le texte devient "Si tu pars, ta partie s'arrête."**, exactement, accents compris, et la question interrogative disparait | capture a 360 px : une seule ligne de texte, aucun "?" a l'ecran |
+| CONF-4 | **Aucune couleur ne change** sur cet ecran | les quatre paires de la section 3 restent a 5,03:1 / 5,03:1 / 5,41:1 / 14,09:1 |
+| CONF-5 | **Les acquis mesures en section 5 ne bougent pas** : cinq ecrans, retour byte-identique, pas de confirmation sur la fin de partie, un seul "Les jeux" visible, premier arret de tabulation non destructeur | rejoue par moi sur le lot livre |
+
+CONF-1 et CONF-3 sont les deux motifs de mon refus partiel : **la forme est acceptee sous CONF-1
+seule, le texte est refuse et remplace par CONF-3.** CONF-2 protege ce que le changement obtient.
+CONF-4 et CONF-5 sont des non-regressions.
+
+### Arbitrage prealable au developpement - la sortie unique dans l'en-tete (DEC-0027, s11), du 2026-08-14
 
 **Ce bloc n'est pas un Done pedagogique.** C'est l'arbitrage prealable que `DEC-0027` point 2 exige
 avant tout developpement de la story de gain vertical. Il n'efface, ne modifie et ne rouvre aucun
