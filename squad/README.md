@@ -233,6 +233,29 @@ decouverte fortuite l'y pousse. En s10, quatre garde-fous casses puis restaures 
 sont reveles verts sans avoir jamais rencontre l'objet qu'ils pretendaient garder ; cette etape
 systematique est la reponse a ce constat, pas une reaction ponctuelle a lui seul.
 
+**Le compte de tests autoritaire, a chaque cloture, est la somme des blocs `Results:` du reacteur
+Maven apres un `clean` complet - ou, de facon equivalente, la somme de l'attribut `tests="..."` de
+chaque rapport XML de surefire/failsafe - jamais la somme des lignes `Tests run:` des rapports
+`.txt`** (amendement s11, cloture de s11). Etabli par `yanis-qa` : quatre classes de ce depot
+melangent, dans une meme classe, un champ statique `@ArchTest ArchRule` (execute par le moteur
+propre a `archunit-junit5`) et une methode `@Test` ordinaire (executee par Jupiter) ; le rapport
+`.txt` de la classe n'ecrit alors que le compte du moteur Jupiter, sous-comptant de 7 sur ce
+depot en s11. Le rapport XML, lui, agrege correctement les deux moteurs. Ce n'est pas une
+parametrisation JUnit5 qui cause l'ecart, contrairement a ce qui avait ete suppose avant
+verification.
+
+**A chaque `critere enumere` auto-declare (au sens d'`ADR-0013`), le rapport de cloture de Yanis
+verifie si au moins un membre de la liste est le nom d'un incident date et clos plutot qu'une
+categorie qui generalise, et si oui, mute un objet neuf, absent de la liste, sur du materiau
+reel, pour voir si le garde-fou peut seulement dire quelque chose de lui** (amendement s11,
+cloture de s11). Trouve par `yanis-qa` en cherchant l'auto-declaration exigee par `ADR-0013` dans
+tout le depot (quatre classes la portent) : `RessourcesTiercesTest` s'est revelee construite sur
+une liste de noms d'incidents ("bootstrap") plutot que sur une categorie, et un fichier
+JavaScript tiers reel, correctement trace sous un nom absent de la liste, est entre dans le depot
+sans faire rougir aucun de ses seize tests. Le grep de l'auto-declaration trouve mecaniquement
+tous les candidats ; juger si un membre de la liste generalise ou epingle un incident clos reste
+une lecture, jamais un motif syntaxique.
+
 **Un script livre avec sa propre suite de tests n'est declare "teste" qu'une fois qu'une etape de
 `.github/workflows/ci.yml` l'execute reellement** (amendement s06, retro de s06) - la presence du
 fichier `*-test.sh` dans le depot ne suffit pas. `outils/verifier-lignee-test.sh` et
