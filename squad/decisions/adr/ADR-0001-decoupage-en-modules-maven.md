@@ -156,7 +156,47 @@ fait `productionEtContreExemples()`.
 
 ## Ce qui me ferait changer d'avis
 
-- Une story qui demande de conserver la progression d'un enfant entre deux sessions : je cree
-  `adapter-persistence` et j'ajoute sa couche a la regle dans le meme commit.
+- ~~Une story qui demande de conserver la progression d'un enfant entre deux sessions : je cree
+  `adapter-persistence` et j'ajoute sa couche a la regle dans le meme commit.~~ **Declencheur ferme
+  le 2026-08-14 (s12) par `DEC-0028`**, sur decision de l'utilisatrice : *"je ne souhaite pas
+  persister une partie, ce n'est pas le but de recreo."* Aucune story de ce genre ne sera plus
+  ecrite ; ce declencheur-ci ne peut plus se produire. Detail de l'amendement ci-dessous.
 - Un second adaptateur entrant (API pour un autre client) : je verifierais que `adapter-web` n'est
   pas devenu un fourre-tout avant d'en ajouter un troisieme.
+
+## Amendement du 2026-08-14 (s12) - le declencheur de `adapter-persistence` est ferme, et une phrase de cet ADR ne l'est pas
+
+`DEC-0028` acte l'abandon de la persistance sur decision de l'utilisatrice. Ce que j'amende ici est le
+**premier point de "Ce qui me ferait changer d'avis"** ci-dessus, et rien d'autre : la decision du
+sprint 0 - `adapter-persistence` n'est pas cree - est inchangee, et elle avait raison pour un motif
+qui n'a pas bouge (un module sans usage est un module sans test).
+
+**J'ai relu les trois textes avant d'ecrire, parce qu'un abandon entier et un abandon partiel ne
+s'ecrivent pas pareil.** La lecture de `camille-po` est exacte sur les motifs : ni cet ADR, ni
+`DEC-0003`, ni `CLAUDE.md` ne motivent la persistance par autre chose que conserver la progression
+d'un enfant entre deux sessions - reprendre une partie interrompue, un historique de score. Aucun ne
+nomme de compte adulte, de contenu edite hors du code, de journal durable.
+
+**Une phrase de cet ADR est cependant plus large que ce motif, et elle n'est pas couverte par la
+decision de l'utilisatrice.** C'est le point 2 de la decision : *"Le module sera cree, avec sa couche
+dans la regle ArchUnit, dans le meme commit que la premiere story qui a besoin **d'ecrire quelque
+part**."* "Ecrire quelque part" est plus vaste que "conserver une partie". L'utilisatrice a ferme le
+besoin de conserver une partie ; elle n'a pas dit que rien ne serait jamais ecrit sur un disque. **Je
+laisse donc cette phrase intacte et vivante**, exactement comme `DEC-0028` le prevoit elle-meme au
+point 2 de sa decision ("ce sera un motif distinct, a justifier de nouveau le moment venu"). Etendre
+la parole de l'utilisatrice a tout ce qui s'ecrit serait la lui faire dire.
+
+Ce que cet amendement change, en une ligne : **le declencheur nomme n'est plus une eventualite normale
+du backlog, il est ferme** ; tout autre besoin d'ecriture durable rouvrira la question par ses propres
+motifs, et la couche `Persistance` devra alors etre ajoutee a la regle ArchUnit dans le meme commit
+que le module, comme la section executable ci-dessus l'exige depuis le sprint 0.
+
+**Ce que cet amendement n'est pas.** Il n'y a rien a encoder ici, et je le dis plutot que de le
+laisser croire : `layeredArchitecture` ignore silencieusement les paquets qu'aucune couche ne couvre
+(deja nomme dans la section executable), donc aucun test ne peut interdire la creation d'un module -
+il peut seulement refuser une dependance qui traverse les couches declarees. Ce qui garde cet abandon
+est **la revue et `DEC-0028`**, pas un automate. C'est le seul garde-fou honnete pour une decision de
+perimetre produit, et c'est le motif pour lequel elle est ecrite dans le depot plutot qu'appliquee de
+memoire : la dette n°1 de `main` etait une abstraction documentee partout et jamais implementee, et la
+regle de `CLAUDE.md` est que soit une abstraction existe dans le code, soit un `ADR` acte son abandon.
+Ce paragraphe est cet acte.

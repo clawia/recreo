@@ -23,10 +23,12 @@ programme.
 - **Front** : htmx + Thymeleaf (rendu serveur, fragments HTML, jamais de JSON cote vues),
   package dans un **fat jar unique** (`spring-boot-maven-plugin`) et deploye avec
   `java -jar bootstrap/target/recreo.jar`. Zero build Node, zero serveur front separe.
-- **Persistence** : cible du produit, pas du sprint 0. JPA + H2 en dev et test, PostgreSQL en
-  production, portee par un module `adapters/adapter-persistence` cree dans le meme commit que la
-  premiere story qui a besoin de conserver une donnee entre deux sessions (voir `ADR-0001`,
-  `DEC-0003`). Absente du code livre a ce jour.
+- **Persistence** : aucune, par decision produit du 2026-08-14 (`DEC-0028`). Recreo ne conserve ni
+  progression, ni score, ni partie en cours entre deux sessions : l'etat d'une partie vit dans la
+  session HTTP et disparait avec elle. Le module `adapters/adapter-persistence` n'existe pas et ne
+  sera pas cree pour ce motif ; JPA, H2 et PostgreSQL cessent d'etre une cible du produit (voir
+  `ADR-0001`, `DEC-0003`). Un besoin d'ecrire quelque chose de durable pour un **autre** motif
+  resterait a justifier le moment venu.
 
 Le decoupage exact en modules est une decision d'architecture : il est acte en `ADR` par
 `theo-archi`, pas presuppose par ce fichier.
@@ -52,8 +54,7 @@ Le decoupage exact en modules est une decision d'architecture : il est acte en `
   pas : une ceremonie sans fichier dans `squad/sprints/` n'a pas eu lieu, une decision non
   redigee en `ADR` ou `DEC` n'a pas ete prise, un test non ecrit ne couvre rien.
 - **Double Done.** **Technique** = CI verte (`mvn verify` : compilation, tests unitaires, tests
-  d'integration Spring Boot, ArchUnit, et integration H2 une fois `adapter-persistence` cree),
-  juge objectivement par la CI. **Pedagogique** = prononce
+  d'integration Spring Boot, ArchUnit), juge objectivement par la CI. **Pedagogique** = prononce
   **uniquement par `nadia-prof`**, apres avoir joue l'increment, avec un motif ecrit dans
   `squad/conformite/FICHE-<jeu>.md`. Les deux sont independants : un increment techniquement
   irreprochable peut etre refuse pedagogiquement.
