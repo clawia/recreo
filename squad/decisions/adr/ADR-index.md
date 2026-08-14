@@ -4,7 +4,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 
 | Reference | Titre | Sprint | Date | Statut |
 |---|---|---|---|---|
-| [ADR-0001](ADR-0001-decoupage-en-modules-maven.md) | Decouper le build en cinq modules Maven et orienter les dependances vers l'interieur | s00 | 2026-08-04 | Accepte |
+| [ADR-0001](ADR-0001-decoupage-en-modules-maven.md) | Decouper le build en cinq modules Maven et orienter les dependances vers l'interieur | s00 | 2026-08-04 | Accepte, amende le 2026-08-14 (s12) : le declencheur de `adapter-persistence` est ferme par `DEC-0028` |
 | [ADR-0002](ADR-0002-purete-du-domaine-et-de-application.md) | Interdire toute dependance externe dans `domain` et dans `application` | s00 | 2026-08-04 | Accepte |
 | [ADR-0003](ADR-0003-prouver-que-chaque-regle-archunit-mord.md) | Prouver que chaque regle ArchUnit mord, par un contre-exemple qui doit la faire echouer | s00 | 2026-08-04 | Accepte |
 | [ADR-0004](ADR-0004-decoupler-la-mecanique-du-contenu.md) | Decoupler la mecanique du contenu par deux contrats fermes et une regle bidirectionnelle | s00 | 2026-08-04 | Accepte |
@@ -42,6 +42,8 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0036](ADR-0036-une-image-maison-entre-par-son-chemin-un-garde-fou-ne-lit-pas-un-binaire-comme-du-texte.md) | Faire entrer une image maison par son chemin litteral et non par une empreinte, deriver le perimetre d'une reference de ressource de l'attribut, et retirer les binaires du garde-fou de chemins | s10 | 2026-08-13 | Accepte |
 | [ADR-0037](ADR-0037-une-dependance-de-test-n-est-pas-une-ressource-servie.md) | Distinguer une dependance de test d'une ressource servie, et refuser tout octet servi qui n'est pas vendorise | s10 | 2026-08-14 | Accepte |
 | [ADR-0038](ADR-0038-aucun-arret-de-tabulation-destructeur-a-une-tabulation-d-un-point-de-depart.md) | Interdire tout arret de tabulation destructeur a une seule tabulation d'un point de depart que le document autorise | s10 | 2026-08-14 | Accepte, amende le 2026-08-14 (s11) ; sa regle est portee par le lot de `marc-dev` |
+| [ADR-0039](ADR-0039-un-critere-se-derive-des-que-la-promesse-est-universelle.md) | Deriver le critere d'un garde-fou des que sa promesse est universelle, et faire passer toute enumeration du cote autorise | s12 | 2026-08-14 | Accepte |
+| [ADR-0040](ADR-0040-un-point-de-focus-declare-n-est-jamais-destructeur-l-ecran-de-confirmation-n-est-pas-exempte.md) | Interdire qu'un point de focus declare soit lui-meme destructeur, et refuser d'exempter l'ecran de confirmation de la clause 2 d'ADR-0038 | s12 | 2026-08-14 | Accepte |
 
 ## Amendements
 
@@ -86,6 +88,10 @@ est date dans le corps de l'ADR. Ceux du sprint 0 :
 | ADR-0010 | 2026-08-13 | **son garde-fou lisait les binaires comme du texte, et inventait des fautes** : la forme a lettre de lecteur tient en quatre octets, que les octets compresses d'une image contiennent tot ou tard. Mesure sur 21 PNG de 72 ko a 500 ko : **4 refuses**, sur un motif sans aucun rapport avec un chemin ; `favicon.ico` y echappait par sa seule petitesse. Le jour ou la premiere illustration entre, la CI avait environ une chance sur cinq de rougir a tort, et le tirage se refaisait a chaque image. `grep -I` retire les binaires par leur contenu et non par une liste d'extensions. Deuxieme fois que cet ADR mord son propre auteur : mon commentaire d'explication du correctif citait la sequence fautive en clair (ADR-0036) |
 | ADR-0022 | 2026-08-14 | **son contexte citait un chiffre que sa propre decision avait perime, et la comparaison qu'il portait opposait deux ecrans differents.** Le "102 x 53 px" du lien d'en-tete avait ete mesure sur le libelle "Accueil", que le **point 3 de cet ADR** remplace par "Les jeux", plus large : remesure par `nadia-prof`, **109 x 53 px**. Le chiffre etait donc faux avant l'acceptation de l'ADR et a survecu un sprint et demi, dans trois documents. Au-dela du chiffre : la phrase opposait `.lien-accueil` a un aplat de 117 x 56 px qui est `.sortie-pleine`, rendu par le seul ecran de fin de partie - deux elements qui ne s'affichent jamais ensemble, alors que sur une manche les deux candidats a la sortie (`.lien-accueil` et `.retour-accueil`) ont **la meme boite par construction**, memes composantes declarees et meme libelle depuis S6-9. **Il n'y avait aucun ecart de taille a opposer** ; `nadia-prof` le corrige contre son propre argument de 2026-08-07. Verifie de mon cote par lecture des composantes de `recreo.css`, pas par capture : la hauteur est derivable (53,2 px, et 56 px pour l'aplat), la largeur absolue **ne l'est pas** - aucun fichier maison ne declare de `font-family`, elle vient de la police systeme via la bibliotheque vendorisee. Aucun point de la decision, aucun garde-fou et aucune consequence ne raisonnaient sur une taille : la correction s'arrete au contexte, et la suite reste verte a 415 tests. **Cause nommee : j'avais recopie un chiffre sans sa methode** - ni le libelle, ni l'ecran, ni sa date par rapport au renommage que le meme ADR decidait |
 | ADR-0038 | 2026-08-14 | **sa clause de concordance interdisait le remede que sa propre decision benissait, et deux de ses chiffres decrivaient un defaut plus etroit que le reel.** Le point 3 exigeait qu'un arret destructeur porte `data-role="sortie"` **et reciproquement** ; depuis la confirmation avant abandon, "Les jeux" reste une sortie du point de vue de l'enfant et sa requete ne detruit plus rien - tenir la clause aurait demande de remettre la destruction dans une requete unique, c'est-a-dire de retablir le defaut. **Cause : j'avais confondu ce que `data-role` declare (une destination pour l'enfant, `ADR-0017` point 1) avec l'effet d'une requete sur la session.** La concordance etait un **moyen** de ne pas se laisser desamorcer par un renommage ; le rejeu reel de la requete par `marc-dev` ferme ce desamorcage sans lire l'attribut - mesure : `sortie` remplace par `action` sur le bouton qui detruit, les deux clauses restent vertes. Clause retiree, dette nommee (une requete destructrice **neuve** declaree `action` passerait verte ; declencheur d'encodage : la deuxieme requete destructrice de l'application). Chiffres corriges : le garde-fou casse sur du materiau reel rougit sur **cinq** ecrans en clause 1 et un en clause 2, la ou j'avais ecrit deux et `nadia-prof` un. Quatre des huit non-preuves corrigees, dont la 4 qui etait **fausse** (la souris sur "Les jeux" ne detruit plus rien non plus). Morsure de la clause 1 apres le remede, mesuree et non supposee : les deux boutons de l'ecran de confirmation echanges de place, elle rougit |
+| ADR-0013 | 2026-08-14 | **la case "critere enumere" de son tableau etait trop indulgente, et la phrase que son obligation 1 en tirait etait fausse** : une liste de fautes a reprocher n'a pas "pour mode de defaillance un rouge, pas un vert" des que la promesse du garde-fou est universelle. Mesure : `RessourcesTiercesTest` promettait qu'aucun JavaScript de bibliotheque d'interface n'entre, refusait un seul nom, et un `alpine.min.js` reel correctement trace est entre en laissant ses **seize tests verts**. Le vert silencieux etait bien la, du cote critere - la case que le tableau reservait au perimetre. Ce qui separe les cas est la **polarite** de la liste (refus = vert par defaut, autorisation = rouge par defaut), pas la nature de ses membres. Clause ajoutee et recensement executable portes par ADR-0039 ; les trois obligations sont inchangees |
+| ADR-0014 | 2026-08-14 | **une de ses limites nommees ne gardait rien, et sa consolation etait fausse** (deuxieme fois pour cet ADR, apres la classe calculee de s03). La puce sur `JAVASCRIPT_TIERS_REFUSE` disait qu'un fichier renomme "echapperait au motif" mais pas au reste, "puisqu'il faudrait le vendoriser, donc le montrer en diff". Il echappait au garde-fou **entier**, et un diff est une relecture, c'est-a-dire un souhait selon l'axiome du depot. Critere remplace par une liste d'**autorisation** ou une entree designe une origine declaree et une empreinte, jamais un nom de fichier (ADR-0039) |
+| ADR-0001 | 2026-08-14 | **son declencheur de creation d'`adapter-persistence` est ferme** : l'utilisatrice tranche le 2026-08-14 ("je ne souhaite pas persister une partie, ce n'est pas le but de recreo"), `camille-po` l'acte en `DEC-0028`. Le premier point de "Ce qui me ferait changer d'avis" - une story qui demande de conserver la progression d'un enfant entre deux sessions - ne peut plus se produire. **La decision du sprint 0 est inchangee**, et une phrase de l'ADR reste vivante a dessein : le point 2 de sa decision parle de "la premiere story qui a besoin **d'ecrire quelque part**", plus large que conserver une partie, donc non couvert par la parole de l'utilisatrice - l'etendre serait la lui faire dire. Rien a encoder, et c'est ecrit : `layeredArchitecture` ne peut pas interdire la creation d'un module, seulement gouverner les couches declarees. Ce qui garde cet abandon est la revue et `DEC-0028` |
+| ADR-0038 | 2026-08-14 | **ses deux clauses jugeaient l'arret qu'une tabulation atteint, jamais le point de depart lui-meme** : un point de focus declare **sur** un arret destructeur les laissait toutes les deux vertes, alors qu'Entree seule y detruit la partie, sans aucune tabulation. Mesure sur du materiau reel : `data-focus-cible="true"` pose sur le bouton destructeur de `fragments/confirmation.html` laisse les six tests du garde-fou **et les 222 du module** verts. Le trou n'avait aucun objet avant l'ecran de confirmation - aucun point de focus ne pouvait etre destructeur - et il en a un depuis s11. Ferme par la clause 3 d'`ADR-0040`, encodee dans le meme fichier de test. Deux precisions dans le meme geste : `recreo.js` pose `tabindex="-1"` **sur le point de focus**, donc le document servi et le document vivant n'ont pas le meme `A[0]` des que ce point est lui-meme un arret ; et la clause 2 n'est **ni amendee ni exemptee** pour l'ecran de confirmation, son rouge y etant vrai |
 | ADR-0014 | 2026-08-14 | **son point 1 parlait de dependances, pas d'octets servis, et son refus du webjar n'etait ecrit que dans ses alternatives** - donc rien ne l'appliquait. Pris a la lettre, ce point se lisait comme s'il gouvernait toute dependance Maven, y compris un outil de test que personne ne sert : c'est ce qui a rendu l'arbitrage de `nashorn-core` impossible a ranger au sprint 10. Perimetre dit (l'octet servi), et refus du webjar desormais encode par `ADR-0037` sur le livrable produit - `RessourcesTiercesTest` ne pouvait pas le voir, son perimetre descendant de l'arbre `static/` d'un module ou un webjar n'atterrit jamais |
 
 ## Lecture rapide
@@ -472,3 +478,48 @@ troisieme avait nommee sans la fermer :
     donc plus seulement la forme de l'enonce, c'est aussi le piege du **moyen pris pour la propriete** :
     la concordance servait a empecher le desamorcage d'un critere fonde sur l'attribut, et un critere
     qui ne lit pas l'attribut la rend inutile. Detail et mesures dans le tableau ci-dessus.
+
+37. **ADR-0039** est le premier `ADR` de ce depot qui **corrige une case du tableau d'`ADR-0013`**,
+    c'est-a-dire la doctrine de garde-fou elle-meme et non l'un de ses cas. Sa phrase utile ne parle
+    ni de perimetre ni de critere mais de **polarite** : une liste de refus est verte par defaut, une
+    liste d'autorisation est rouge par defaut, et une promesse universelle ne peut pas etre tenue par
+    la premiere. Elle vaut d'etre relue pour trois raisons. D'abord parce qu'elle nait d'un **trou
+    vivant** rejoue avant correction et non d'un raisonnement : un `alpine.min.js` reel,
+    correctement trace, entrait dans le depot en laissant seize tests verts, dont celui qui promettait
+    de le refuser. Ensuite parce qu'elle **refute la distinction qu'on lui proposait** - categorie qui
+    generalise contre incident clos - en montrant que `"bootstrap"` generalise autant que `"addition"`
+    et que `"addition"` echoue autant sur l'objet suivant, ce qui range
+    `AucunVocabulaireDeMatiereTest` dans la meme famille et le laisse enumere pour une raison de
+    **portee** (son complement demande une decision produit) et non de nature. Enfin parce qu'elle
+    **trace une limite pour rester applicable** : l'obligation ne vaut que si le complement du critere
+    contient un objet que le depot peut acquerir sans decision qui rouvre le garde-fou - sans quoi
+    tout critere, etant enumere a un niveau ou a un autre, serait fautif et la clause serait ignoree.
+    Les deux sondes syntaxiques qui auraient pu remplacer l'aveu sont ecartees **par des chiffres**
+    (l'une ne trouve pas le cas vivant, l'autre rend vingt faux rouges sur vingt-et-un cas), et la
+    faiblesse qui reste est nommee sans fard : le recensement compte les criteres enumeres qui se
+    declarent, jamais ceux qui se taisent - la faiblesse exacte qu'`ADR-0013` reprochait a
+    l'alternative de l'annotation. Ce n'est pas une regle ArchUnit, le compte reste a **28** avec sa
+    methode ; les trois garde-fous qu'il porte sont des tests JUnit, et les neuf tests qu'il ajoute
+    portent la suite de 416 a **425**.
+
+38. **ADR-0040** est le premier `ADR` de ce depot qui **refuse une exemption qu'on lui demandait de
+    formuler**, et c'est pour cela qu'il vaut d'etre relu. La question posee etait bien construite :
+    la clause 2 d'`ADR-0038` interdit qu'une tabulation depuis un point de focus atteigne un arret
+    destructeur, et l'ecran de confirmation est precisement l'ecran dont la destruction est legitime -
+    faut-il l'exempter, et a quelle condition ? La reponse est non, pour un motif **mesure et non
+    doctrinal** : `recreo.js` pose `tabindex="-1"` sur le point de focus, donc focaliser le bouton sur
+    d'un ecran a deux boutons retire ce bouton de l'ordre vivant et fait du destructeur le seul arret
+    restant. Le rouge de la clause 2 n'est pas le prix d'un remede, c'est le refus d'un mauvais remede,
+    et **aucune formulation d'exemption ne survit a ce test** - la plus seduisante ("l'ecran dont la
+    destruction est le second geste delibere") exempte tout le corpus, l'ecran de revelation compris,
+    ou le defaut est ne. Il apporte trois choses au-dela de son sujet : une **clause 3** qui juge le
+    point de depart lui-meme (Entree seule) la ou les deux autres jugent l'arret d'apres, nee d'un trou
+    reel - le focus pose sur le bouton destructeur laissait 222 tests verts ; une **derivation qui
+    reduit le choix sans le faire** - les trois clauses eliminent toutes les formes sauf une, un point
+    de focus sans requete place avant les deux boutons, et laissent a `nadia-prof` ce qui lui revient ;
+    et une **epreuve de morsure qui sert d'anti-vacuite a toute la famille** - elle exige qu'il existe
+    encore un ecran a partie en cours offrant un arret destructeur, faute de quoi les trois clauses ne
+    gardent plus rien. Ce qu'il n'encode pas est dit : rien n'oblige encore un ecran a **declarer** un
+    point de focus, cette quatrieme clause serait rouge des sa premiere execution et appartient au lot
+    qui corrigera l'ecran. Ce n'est pas une regle ArchUnit, le compte reste a **28** avec sa methode ;
+    les deux tests qu'il ajoute portent la suite de 425 a **427**.

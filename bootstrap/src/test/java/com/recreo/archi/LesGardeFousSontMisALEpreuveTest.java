@@ -68,6 +68,36 @@ class LesGardeFousSontMisALEpreuveTest {
      */
     private static final int PLAFOND_DE_DETTE = 2;
 
+    /**
+     * ADR-0039 : la formule exacte par laquelle un garde-fou declare garder un critere enumere sous
+     * une promesse universelle - une liste de refus, donc verte par defaut sur tout objet qu'elle ne
+     * nomme pas. Une formule figee, jamais une phrase libre : le grep de prose qui a servi a trouver
+     * ces cas en s11 attrape aussi les phrases qui disent le contraire ("sans qu'une liste ecrite a la
+     * main ait..." dans CabinetDeLaMachineTest), et une detection qui compte l'antidote parmi les
+     * malades est la faute mesuree en s05.
+     */
+    private static final String AVEU_DE_CRITERE_ENUMERE = "critere enumere assume";
+
+    /**
+     * Les garde-fous qui gardent un critere enumere sous une promesse universelle, et qui le
+     * declarent. Meme mecanique que DETTE_DE_BALAYAGE : la liste ne peut pas grandir (plafond), ne
+     * peut pas pourrir (chaque nom doit encore porter l'aveu), et un declarant de plus est rouge au
+     * lieu d'entrer en silence.
+     *
+     * <p>AucunVocabulaireDeMatiereTest est de la meme famille que les deux cas corriges en s12 - un
+     * mot de matiere absent de sa liste passe vert - mais son complement ne s'atteint que le jour ou
+     * une matiere neuve entre au catalogue, ce qui est une decision de camille-po et de nadia-prof,
+     * jamais un fichier copie sans decision. Il reste donc enumere, declare et compte.
+     */
+    private static final Set<String> CRITERES_ENUMERES_DECLARES = Set.of(
+            "AucunVocabulaireDeMatiereTest");
+
+    /**
+     * Etat au 2026-08-14, s12, a la creation de ce recensement. Ce nombre ne remonte jamais ; le
+     * baisser demande un diff visible, comme pour PLAFOND_DE_DETTE.
+     */
+    private static final int PLAFOND_DE_CRITERES_ENUMERES = 1;
+
     private record SourceDeTest(Path module, Path fichier) {
 
         String nom() {
@@ -258,6 +288,54 @@ class LesGardeFousSontMisALEpreuveTest {
                 .as("ADR-0013 : une dette qui nomme un garde-fou disparu ou renomme exempte un nom "
                         + "que plus rien ne porte")
                 .containsAll(DETTE_DE_BALAYAGE);
+    }
+
+    /**
+     * ADR-0039, recensement 3. Population derivee des sources de test de tous les modules, comme les
+     * deux autres ; critere : porter l'aveu. Ce que ce recensement vaut et ne vaut pas est ecrit dans
+     * ADR-0039 - il rend visible et plafonne les criteres enumeres <b>declares</b>, il ne trouve pas
+     * ceux qui ne se declarent pas.
+     *
+     * <p>Comme le recensement 1, il se retire par son propre nom de classe et non par une liste : il
+     * nomme l'aveu pour le chercher chez les autres, il n'en porte pas. Mesure a l'ecriture : sans ce
+     * retrait, le recensement se nommait lui-meme.
+     */
+    static List<String> criteresEnumeresDeclares(Path racine) {
+        String soiMeme = LesGardeFousSontMisALEpreuveTest.class.getSimpleName();
+        return sourcesDeTest(racine).stream()
+                .filter(source -> !source.nom().equals(soiMeme))
+                .filter(source -> lire(source.fichier()).contains(AVEU_DE_CRITERE_ENUMERE))
+                .map(SourceDeTest::nom)
+                .toList();
+    }
+
+    @Test
+    void aucunCritereEnumereDeclareNEchappeAuRecensement() {
+        assertThat(criteresEnumeresDeclares(racineDuDepot()))
+                .as("ADR-0039 : un garde-fou declare garder un critere enumere sous une promesse "
+                        + "universelle. Ce n'est pas interdit - c'est parfois le seul critere ecrivable - "
+                        + "mais cela se compte : ajoute son nom a CRITERES_ENUMERES_DECLARES et ecris "
+                        + "dans un ADR quel objet reel passerait vert devant lui. A l'inverse, un nom "
+                        + "recense que plus aucune source ne declare exempte quelque chose qui n'existe "
+                        + "plus")
+                .containsExactlyInAnyOrderElementsOf(CRITERES_ENUMERES_DECLARES);
+    }
+
+    @Test
+    void leRecensementDesCriteresEnumeresNeRemonteJamais() {
+        assertThat(CRITERES_ENUMERES_DECLARES)
+                .as("ADR-0039 : le nombre de criteres enumeres assumes ne remonte jamais")
+                .hasSizeLessThanOrEqualTo(PLAFOND_DE_CRITERES_ENUMERES);
+    }
+
+    /**
+     * ADR-0013 obligation 3 : la morsure se prouve sur un objet neuf, absent du depot reel. Le depot
+     * fictif porte une source qui avoue un critere enumere et n'est recensee nulle part.
+     */
+    @Test
+    void unCritereEnumereDeclareEtNonRecenseEstRefuse() {
+        assertThat(criteresEnumeresDeclares(DEPOT_FAUTIF))
+                .containsExactly("CritereEnumereContreExemple");
     }
 
     @Test

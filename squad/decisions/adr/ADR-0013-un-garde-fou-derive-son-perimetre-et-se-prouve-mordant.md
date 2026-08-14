@@ -57,6 +57,24 @@ Un perimetre enumere echoue **en silence**. C'est la seule case dangereuse du ta
 celle ou les trois faits se rangent. D'ou la regle, en une phrase : **le perimetre se derive, le
 critere peut s'enumerer.**
 
+> **Amendement du 2026-08-14 (s12, `ADR-0039`) - la case "critere enumere" de ce tableau est trop
+> indulgente, et la phrase de l'obligation 1 qui en decoule est fausse.**
+>
+> Cette case dit "un motif qu'on n'a pas nomme passe. Limite visible dans le texte du test", et
+> l'obligation 1 en tire qu'une liste de fautes a reprocher a pour "mode de defaillance un rouge,
+> pas un vert". **Mesure : c'est faux des que la promesse du garde-fou est universelle.**
+> `RessourcesTiercesTest` promettait qu'aucun JavaScript de bibliotheque d'interface n'entre dans le
+> depot et refusait un seul nom ; un `alpine.min.js` reel, correctement trace, est entre en laissant
+> les seize tests de la classe verts. Le mode de defaillance etait bien un **vert silencieux**, sur un
+> objet que le garde-fou avait pourtant rencontre - la case que ce tableau reservait au perimetre.
+>
+> Ce qui distingue les deux n'est pas la nature des membres de la liste mais sa **polarite** : une
+> liste de refus est verte par defaut, une liste d'autorisation est rouge par defaut. `ADR-0039`
+> ajoute donc la clause qui manquait - un critere se derive lui aussi des que la promesse est
+> universelle et que son complement contient un objet acquerable sans decision - et porte le
+> recensement executable des criteres qui restent enumeres. Les trois obligations ci-dessous ne
+> changent pas ; seule la permission accordee en passant par l'obligation 1 est resserree.
+
 Le fait 2 bis ajoute une precision que je n'aurais pas trouvee seul, et qui vient d'une mesure :
 **une derivation qui passe par une propriete facultative des membres n'est pas une derivation du
 perimetre.** `document.select("button, a[href]")` derive la population des boutons ;
