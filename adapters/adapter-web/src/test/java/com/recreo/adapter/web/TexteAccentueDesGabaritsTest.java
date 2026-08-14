@@ -2,12 +2,15 @@ package com.recreo.adapter.web;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.nodes.TextNode;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -22,8 +25,21 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *
  * <p>ADR-0013 : le perimetre balaye (quels gabarits sont controles) derive du repertoire de
  * gabarits, jamais d'une liste ecrite a la main - c'est cette derivation qui manquait a
- * {@code fragments/erreur.html} avant ce commit. Le critere (les fautes reprochees) reste une
- * liste, ce qui est permis : c'est un motif refuse, pas un perimetre.
+ * {@code fragments/erreur.html} avant ce commit.
+ *
+ * <p><b>ADR-0039.</b> Le critere, lui, etait une liste de cinq fautes deja corrigees, donc vert par
+ * defaut sur tout texte que ces cinq motifs ne traversent pas. Mesure en s11 : {@code nadia-prof} a
+ * fait remplacer entierement la phrase que l'enfant lit avant d'abandonner sa partie sans qu'un seul
+ * test bouge, et {@code lea-dev} a ferme ce cas-la par un test nomme - le cas, pas la classe de
+ * defaut. Le critere general est desormais total sur son complement : <b>tout</b> texte qu'un gabarit
+ * ecrit en clair pour l'enfant doit figurer dans l'inventaire ci-dessous. Un texte neuf, ou un mot
+ * change dans un texte existant, est rouge tant que l'inventaire ne le porte pas - et le mettre a
+ * jour est un diff sur une ligne de texte destinee a un enfant, c'est-a-dire sur ce que DEC-0002 et
+ * CLAUDE.md confient a {@code nadia-prof}.
+ *
+ * <p>La liste des cinq fautes reste, sous son nom : elle lit la <b>source entiere</b> du gabarit,
+ * commentaires et attributs compris, la ou l'inventaire ne juge que les noeuds de texte. C'est elle
+ * qui garde encore le nom du produit d'une accentuation ecrite dans un commentaire.
  */
 class TexteAccentueDesGabaritsTest {
 
@@ -32,6 +48,39 @@ class TexteAccentueDesGabaritsTest {
     /** ADR-0013 : le jeu fautif de ce garde-fou, un gabarit absent de la production. */
     private static final Path GABARITS_DU_CONTRE_EXEMPLE =
             Path.of("src/test/resources/contreexemple/TexteAccentueDesGabaritsTest");
+
+    /**
+     * Les deux attributs par lesquels Thymeleaf remplace au rendu le texte ecrit en clair. Ce
+     * texte-la n'atteint jamais l'enfant : celui qu'il lit vient du modele, donc du contenu, dont les
+     * garde-fous vivent dans adapter-content. Ensemble ferme par Thymeleaf, jamais par nous.
+     */
+    private static final List<String> POSE_SON_TEXTE_AU_RENDU = List.of("th:text", "th:utext");
+
+    /** Les elements dont le contenu n'est pas du texte lu, mais du code servi au navigateur. */
+    private static final List<String> SANS_TEXTE_POUR_L_ENFANT = List.of("script", "style");
+
+    /**
+     * ADR-0039 : l'inventaire du texte que les gabarits de production ecrivent en clair pour
+     * l'enfant. Ce n'est pas une liste de fautes, c'est le <b>complement</b> du critere, et c'est ce
+     * qui le rend total : un texte hors de cet inventaire est rouge. Une entree n'est jamais un motif
+     * ni une sous-chaine - c'est le texte exact d'un noeud, compare par egalite.
+     *
+     * <p>La reference en commentaire est ce que le depot trace de la formulation, pas un arbitrage que
+     * ce test constaterait : ce test ne juge aucun texte, il refuse qu'un texte change en silence.
+     * Deux entrees n'ont aucun arbitrage nomme dans le depot et le disent ; c'est une question pour
+     * {@code nadia-prof}, remontee et non tranchee ici.
+     */
+    private static final List<String> TEXTES_LUS_PAR_L_ENFANT = List.of(
+            "Recreo",                              // DEC-0010, S5-8 : sans accent, nom de produit
+            "Les jeux",                            // ADR-0022 / S6-9, DEC-0027 : le seul mot de sortie
+            "Il n'y a pas de jeu pour le moment.", // aucun arbitrage nomme dans le depot
+            "Si tu pars, ta partie s'arrête.",     // arbitrage du 2026-08-14, CONF-3
+            "Continuer la partie",                 // arbitrage du 2026-08-14, CONF-3
+            "Bravo, c'est juste !",                // FICHE-bandit-manchot-additions-cp.md
+            "Non, c'est",                          // idem ; la reponse suit, posee par le modele
+            "C'est fini !",                        // S10 : remplace le message refuse a S02
+            "Oups ! Le jeu a un souci.",           // aucun arbitrage nomme dans le depot
+            "Recommencer");                        // arbitrage du 2026-08-07 : seule chose pressable
 
     /** ADR-0013 obligation 1 : le perimetre balaye vient du repertoire, jamais d'une liste. */
     private static List<Path> tousLesGabarits(Path racine) {
@@ -72,6 +121,122 @@ class TexteAccentueDesGabaritsTest {
     @Test
     void aucunGabaritDeProductionNeReintroduitUneFauteDejaCorrigee() {
         aucunGabaritNeReintroduitUneFauteConnue(GABARITS_DE_PRODUCTION);
+    }
+
+    private static String lire(Path fichier) {
+        try {
+            return Files.readString(fichier);
+        } catch (IOException echec) {
+            throw new UncheckedIOException(echec);
+        }
+    }
+
+    /** Un texte lu par l'enfant, avec le gabarit qui l'ecrit, pour que le message le nomme. */
+    private record TexteLu(Path gabarit, String texte) {
+    }
+
+    /**
+     * ADR-0039, derivation totale du critere : chaque noeud de texte de chaque gabarit produit une
+     * assertion. Rien n'est retire par une propriete facultative de l'element qui le porte - ni sa
+     * classe, ni sa balise, ni sa position. Ce qui est retire l'est pour une raison qui dit que
+     * l'enfant ne lit pas ce texte : Thymeleaf le remplace au rendu, ou c'est du code servi au
+     * navigateur.
+     *
+     * <p>Les commentaires ne sont pas des noeuds de texte et n'entrent donc pas ici : c'est la liste
+     * des cinq fautes qui les couvre, en lisant la source entiere.
+     */
+    private static List<TexteLu> textesLusParLEnfant(Path racineDesGabarits) {
+        List<TexteLu> textes = new ArrayList<>();
+        for (Path gabarit : tousLesGabarits(racineDesGabarits)) {
+            Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
+            for (Element element : document.getAllElements()) {
+                if (SANS_TEXTE_POUR_L_ENFANT.contains(element.normalName())
+                        || remplaceAuRendu(element)) {
+                    continue;
+                }
+                for (TextNode noeud : element.textNodes()) {
+                    String texte = noeud.text().strip();
+                    if (texte.chars().anyMatch(Character::isLetter)) {
+                        textes.add(new TexteLu(gabarit, texte));
+                    }
+                }
+            }
+        }
+        return textes;
+    }
+
+    /**
+     * Le remplacement porte sur tout le sous-arbre de l'element qui declare l'attribut, pas seulement
+     * sur ses propres noeuds : Thymeleaf ecrase le contenu entier. La remontee se fait a la main parce
+     * que l'analyseur de selecteurs de jsoup ne comprend pas la forme echappee du deux-points
+     * (mesure citee dans RessourcesTiercesTest).
+     */
+    private static boolean remplaceAuRendu(Element element) {
+        for (Element ancetre = element; ancetre != null; ancetre = ancetre.parent()) {
+            for (String attribut : POSE_SON_TEXTE_AU_RENDU) {
+                if (ancetre.hasAttr(attribut)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    static void verifierQueToutTexteLuEstInventorie(Path racineDesGabarits) {
+        List<TexteLu> textes = textesLusParLEnfant(racineDesGabarits);
+        assertThat(textes)
+                .as("ADR-0039 : cette clause ne prouve rien si aucun gabarit de %s n'ecrit de texte en "
+                        + "clair. Si tout le texte lu par l'enfant venait desormais du modele, c'est ce "
+                        + "garde-fou qu'il faudrait deplacer vers adapter-content, avec son motif ecrit",
+                        racineDesGabarits)
+                .isNotEmpty();
+
+        for (TexteLu texte : textes) {
+            assertThat(TEXTES_LUS_PAR_L_ENFANT)
+                    .as("ADR-0039 et DEC-0002 : %s ecrit \"%s\", un texte que l'inventaire de ce "
+                            + "garde-fou ne porte pas. Un texte lu par un enfant qui apprend a lire ne "
+                            + "change pas en silence : soit nadia-prof l'a arbitre et l'inventaire "
+                            + "s'etend dans le meme commit, avec la reference de l'arbitrage, soit ce "
+                            + "texte n'aurait pas du entrer",
+                            texte.gabarit().getFileName(), texte.texte())
+                    .contains(texte.texte());
+        }
+    }
+
+    /**
+     * ADR-0039, la clause qui ferme la classe de defaut de s11 : un texte neuf, ou un mot change dans
+     * un texte existant, ne peut plus passer vert par le seul fait de n'etre aucune des cinq fautes
+     * connues.
+     */
+    @Test
+    void aucunGabaritDeProductionNEcritUnTexteHorsDeLInventaire() {
+        verifierQueToutTexteLuEstInventorie(GABARITS_DE_PRODUCTION);
+    }
+
+    /**
+     * ADR-0039, le versant qui empeche l'inventaire de pourrir, et la lecon du plafond d'ADR-0016 :
+     * une entree que plus aucun gabarit n'ecrit laisse croire qu'un texte est garde alors qu'il a
+     * disparu, et elle laisse une place libre pour le remettre sans diff visible.
+     */
+    @Test
+    void chaqueTexteDeLInventaireEstEncoreEcritParUnGabarit() {
+        assertThat(textesLusParLEnfant(GABARITS_DE_PRODUCTION).stream().map(TexteLu::texte).toList())
+                .as("ADR-0039 : une entree de l'inventaire ne correspond a aucun texte ecrit par un "
+                        + "gabarit de production. Si le texte a disparu, l'entree part dans le meme "
+                        + "commit ; un inventaire plus large que ce qu'il garde n'est pas un inventaire")
+                .containsAll(TEXTES_LUS_PAR_L_ENFANT);
+    }
+
+    /**
+     * ADR-0013 obligation 3 : la morsure se prouve sur un objet neuf, absent de la production. Le
+     * gabarit du jeu fautif ecrit une phrase que personne n'a inventoriee - et c'est la phrase, non la
+     * faute qu'elle contient, qui la fait refuser ici.
+     */
+    @Test
+    void unTexteNeufHorsDeLInventaireFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifierQueToutTexteLuEstInventorie(GABARITS_DU_CONTRE_EXEMPLE))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ne porte pas");
     }
 
     /**

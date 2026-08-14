@@ -400,9 +400,19 @@ tierce puis la maison.
   exactement ce qu'`ADR-0013` interdit, et cette puce en etait une occurrence. La forme reellement
   livree par `ines-design` porte de plus `btn` sur les deux branches, cet ADR ayant ete redige avant
   la mise en oeuvre.
-- **`JAVASCRIPT_TIERS_REFUSE` est un critere enumere, pas un perimetre.** Un fichier renomme
+- ~~**`JAVASCRIPT_TIERS_REFUSE` est un critere enumere, pas un perimetre.** Un fichier renomme
   echapperait au motif. Ce qui ne lui echappe pas : il faudrait le vendoriser, donc l'inscrire dans
-  `provenance.txt` avec son origine, donc le montrer en diff.
+  `provenance.txt` avec son origine, donc le montrer en diff.~~
+  **Amendement du 2026-08-14, `ADR-0039` : cette limite ne gardait rien, et sa consolation etait
+  fausse.** Le fichier renomme n'echappait pas "au motif" seulement : il echappait au garde-fou
+  entier. Mesure par `yanis-qa` en s11 et rejouee avant correction - un `alpine.min.js` reel, copie
+  sous `static/vendor/` avec une ligne de provenance complete et une empreinte exacte, laisse les
+  seize tests de la classe verts, y compris celui qui promet de refuser le JavaScript d'une
+  bibliotheque d'interface. Quant a "donc le montrer en diff" : un diff est une relecture, et
+  l'axiome du depot range une relecture parmi les souhaits - c'est exactement ce qu'`ADR-0013`
+  interdit, commis dans une puce qui se croyait prudente. Le critere est desormais une liste
+  d'**autorisation**, ou une entree designe une origine declaree et une empreinte, jamais un nom de
+  fichier.
 - **`.gitattributes` ne couvre que `static/vendor/`.** Le reste du depot garde le comportement
   actuel. Le jour ou un autre fichier du depot devra survivre octet pour octet, c'est la meme ligne
   qu'il faudra ajouter, et rien ne le rappellera automatiquement.

@@ -1,0 +1,6 @@
+# Provenance du jeu fautif d'ADR-0039 : tout y est correct. Le fichier est trace, son origine
+# permet de le refabriquer, son empreinte correspond octet pour octet. C'est precisement ce qui rend
+# ce jeu utile : le refus ne doit rien devoir a un defaut de tracabilite, seulement au fait qu'aucune
+# entree de JAVASCRIPT_TIERS_AUTORISE ne designe ces octets.
+
+vendor/bibliotheque-de-comportement.min.js|npm:bibliotheque-de-comportement:1.4.0|dist/bibliotheque.min.js|9750e539ab1f9d6d62f0cde2003fede9eaea629c872c2aab2b0f5fa215cdf879

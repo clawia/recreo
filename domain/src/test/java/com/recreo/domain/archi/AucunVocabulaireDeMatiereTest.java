@@ -31,9 +31,23 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * qui en a besoin, et {@code AdditionsBorneesContentSource} nomme donc legitimement une somme et un
  * operande. Ce n'est pas une exception concedee, c'est la frontiere que la decision trace.</p>
  *
- * <p>Le vocabulaire, lui, est une liste ecrite a la main, et ADR-0013 le permet explicitement : c'est
- * un critere, pas un perimetre, et son mode de defaillance est un mot oublie, donc un vert
- * incomplet - jamais un objet non juge. Un mot n'y entre qu'a deux conditions verifiees a la main :
+ * <p><b>ADR-0039, critere enumere assume.</b> Le vocabulaire est une liste ecrite a la main, et une
+ * liste de refus est verte par defaut : une mecanique qui nommerait "verbe", "division" ou "triangle"
+ * passerait sans etre reprise. C'est la meme famille que les deux criteres corriges en s12, et non
+ * une autre comme la distinction de {@code yanis-qa} le proposait - "addition" generalise a tout
+ * fichier futur qui emploie ce mot-la, exactement comme "bootstrap" generalisait a tout fichier
+ * futur nomme ainsi ; ce qui separe les cas n'est pas la nature des membres mais la <b>polarite</b> de
+ * la liste, et celle-ci est du cote refuse.
+ *
+ * <p>Elle y reste malgre cela, pour une raison de portee et non de nature : son complement ne
+ * s'atteint que le jour ou une matiere neuve entre au catalogue, ce qui est une decision de
+ * {@code camille-po} et de {@code nadia-prof} et non un fichier copie sans decision - la difference
+ * avec le script tiers qui est entre vert en s11. Le declencheur d'extension est donc ecrit ici :
+ * <b>toute matiere neuve au catalogue etend cette liste dans le meme lot</b>. Le recensement 3 de
+ * {@code LesGardeFousSontMisALEpreuveTest} compte et plafonne cet aveu.
+ *
+ * <p>Son mode de defaillance est donc un mot oublie, un vert incomplet - jamais un objet non juge.
+ * Un mot n'y entre qu'a deux conditions verifiees a la main :
  * il est specifique a une matiere, et il n'est la sous-chaine d'aucun mot courant. C'est pourquoi
  * "graphie", "phoneme" et "nasale" y entrent avec ADR-0024, et pourquoi "son" n'y entre pas : il est
  * dans "raison", "comparaison", "saison". Une regle qui rougit sur un mot etranger a son objet est

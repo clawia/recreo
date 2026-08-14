@@ -4,4 +4,10 @@
 # ete converties : ses octets ne sont plus ceux de l'origine, et le garde-fou passe au rouge pour un
 # motif etranger a toute alteration reelle. Mesure avant correction sur bootstrap.min.css : empreinte
 # extraite 596a918e..., empreinte declaree d85327d9....
-adapters/adapter-web/src/main/resources/static/vendor/** -text
+#
+# ADR-0039 : la limite nommee par ADR-0014 - "le jour ou un autre fichier du depot devra survivre
+# octet pour octet, c'est la meme ligne qu'il faudra ajouter, et rien ne le rappellera
+# automatiquement" - est rencontree par le jeu fautif javascript-tiers-trace, dont l'empreinte
+# declaree doit valoir sur tout poste. La forme est donc un motif sur tout repertoire de ressources
+# tierces, production comme jeu fautif, plutot qu'un chemin de plus a chaque fois.
+**/static/vendor/** -text

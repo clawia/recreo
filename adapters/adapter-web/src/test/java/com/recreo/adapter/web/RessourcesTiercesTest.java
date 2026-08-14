@@ -29,8 +29,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * <p>Perimetre derive, jamais enumere (ADR-0013) : les ressources tierces viennent du contenu du
  * repertoire static/vendor, les feuilles de style et les gabarits viennent du balayage de
  * l'arborescence de ressources. Aucun nom de bibliotheque n'est ecrit ici comme objet a controler.
- * Les seules listes ecrites a la main sont des listes de fautes reprochees, ce que l'ADR-0013
- * autorise : leur mode de defaillance est un rouge, pas un vert silencieux.
+ *
+ * <p><b>ADR-0039, correction d'une affirmation fausse de cette Javadoc.</b> Elle disait que les
+ * seules listes ecrites a la main y etaient des listes de fautes reprochees, "dont le mode de
+ * defaillance est un rouge, pas un vert silencieux". C'etait faux, et mesure : une liste de refus est
+ * verte par defaut sur tout objet qu'elle ne nomme pas, et cette classe est restee verte devant un
+ * script tiers reel que sa liste ne nommait pas. Les deux criteres concernes sont desormais totaux
+ * sur leur complement - une liste d'autorisation pour le JavaScript tiers, une propriete positive de
+ * caracteres pour une cible de ressource litterale.
  *
  * <p>Ce garde-fou ne juge jamais le contenu d'une feuille tierce a l'aune de nos choix de style.
  * Il ne lui reproche que ce qui vaut pour tout octet servi par l'application, quelle qu'en soit
@@ -48,15 +54,55 @@ class RessourcesTiercesTest {
     private static final String SEPARATEUR = "|";
 
     /**
-     * Critere enumere, jamais un perimetre (ADR-0013) : le JavaScript de ces bibliotheques ne doit
-     * pas entrer, parce que le comportement de jeu vit sur le serveur (ADR-0008). Un nom absent de
-     * cette liste n'echappe a rien : il devra de toute facon etre vendorise et trace, donc apparaitre
-     * en diff.
+     * ADR-0039 : ce critere etait une liste de refus (un seul nom, "bootstrap"), donc vert par
+     * defaut sur tout nom neuf. {@code yanis-qa} l'a mesure en s11 en faisant entrer un
+     * {@code alpine.min.js} reel, correctement trace : les seize tests de cette classe sont restes
+     * verts. L'enumeration passe donc du cote autorise, ou son mode de defaillance est un rouge.
+     *
+     * <p>Une entree designe des octets, pas un nom de fichier : l'origine declaree dans
+     * {@code provenance.txt} <b>et</b> l'empreinte du fichier servi. Un fichier renomme, une version
+     * differente, ou une provenance recopiee au-dessus d'autres octets ne correspondent a aucune
+     * entree. Le cout est reel et il est voulu : une mise a jour de la bibliotheque de transport
+     * touche ce test, dans le meme commit que {@code provenance.txt}, et la question "est-ce toujours
+     * la meme bibliotheque" recoit une reponse humaine.
+     *
+     * <p>Ce qui autorise cette seule entree : le rendu est servi en fragments HTML (CLAUDE.md,
+     * ADR-0008), et le transport hypermedia est ce qui les echange. Il ne porte aucun comportement de
+     * jeu. Faire entrer une autre bibliotheque de script demande un ADR, jamais un fichier de plus
+     * dans le repertoire.
      */
-    private static final List<String> JAVASCRIPT_TIERS_REFUSE = List.of("bootstrap");
+    private record JavaScriptAutorise(String origineDeclaree, String empreinte) {
+    }
+
+    private static final List<JavaScriptAutorise> JAVASCRIPT_TIERS_AUTORISE = List.of(
+            new JavaScriptAutorise("npm:htmx.org:2.0.10",
+                    "71ea67185bfa8c98c39d31717c6fce5d852370fcdfd129db4543774d3145c0de"));
 
     /** Ce qu'un gabarit ecrit quand il demande une ressource par une expression Thymeleaf. */
     private static final List<String> ATTRIBUTS_THYMELEAF = List.of("th:src=", "th:href=");
+
+    /**
+     * ADR-0039 : ce critere refusait trois caracteres nommes ({@code $}, {@code +}, {@code '}), donc
+     * il etait vert par defaut sur toute forme calculee qui n'en emploie aucune - une expression de
+     * message {@code #{...}} en est une, et elle designe une ressource differente selon la locale.
+     * Il exige desormais la propriete positive : une cible litterale n'est faite que de caracteres
+     * d'URI (RFC 3986). Toute expression Thymeleaf porte des accolades ({@code ${...}},
+     * {@code #{...}}, {@code ~{...}}, la forme de pretraitement {@code __${...}__}) ou une barre
+     * verticale (substitution litterale), et aucun de ces caracteres n'est un caractere d'URI : le
+     * complement du critere est donc juge, au lieu d'etre enumere.
+     *
+     * <p>Ecrit en ensemble de caracteres et non en expression reguliere : la regle ArchUnit d'ADR-0008
+     * refuse {@code java.util.regex} dans les tests de ce module, et elle a mordu la premiere ecriture
+     * de ce critere. Elle a raison sur le fond meme si ce controle-ci ne porte pas sur du HTML - un
+     * ensemble de caracteres se relit, une classe de caracteres echappee se relit mal.
+     */
+    private static final String CARACTERES_D_UNE_CIBLE_LITTERALE =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=%";
+
+    private static boolean estUneCibleLitterale(String valeur) {
+        return !valeur.isEmpty()
+                && valeur.chars().allMatch(c -> CARACTERES_D_UNE_CIBLE_LITTERALE.indexOf(c) >= 0);
+    }
 
     private record Ressource(String chemin, String origine, String cheminSource, String empreinte) {
     }
@@ -325,11 +371,11 @@ class RessourcesTiercesTest {
         if (valeur.startsWith("@{") && valeur.endsWith("}")) {
             valeur = valeur.substring(2, valeur.length() - 1).strip();
         }
-        assertThat(valeur)
+        assertThat(estUneCibleLitterale(valeur))
                 .as("ADR-0014 : %s reference une ressource par une expression calculee (%s) ; une "
                         + "ressource de page s'ecrit en chemin litteral, sinon rien ne prouve "
                         + "qu'elle est servie hors ligne", gabarit, brut)
-                .doesNotContain("$", "+", "'");
+                .isTrue();
         return valeur;
     }
 
@@ -361,29 +407,59 @@ class RessourcesTiercesTest {
     }
 
     /**
-     * ADR-0008 : le comportement de jeu vit sur le serveur. Le JavaScript de composants d'une
-     * bibliotheque d'interface - modales, menus, replis - n'a rien a faire ici, et la vendorisation
-     * fichier par fichier fait que son absence est l'etat par defaut : il faudrait le copier
-     * volontairement pour qu'il entre. Ce critere refuse ce geste-la.
+     * ADR-0008 : le comportement de jeu vit sur le serveur. Aucun JavaScript tiers n'entre dans ce
+     * depot, sauf celui qu'une entree de {@code JAVASCRIPT_TIERS_AUTORISE} designe par son origine et
+     * ses octets. La vendorisation fichier par fichier fait qu'il faut copier un fichier
+     * volontairement pour qu'il entre ; ce critere refuse ce geste-la, quel que soit le nom du
+     * fichier copie.
      */
-    static void verifierAucunJavaScriptTiersRefuse(Path racine) {
+    static void verifierAucunJavaScriptTiersNonAutorise(Path racine) {
         for (Path fichier : ressourcesTierces(racine)) {
             String nom = fichier.getFileName().toString().toLowerCase(java.util.Locale.ROOT);
             if (!nom.endsWith(".js")) {
                 continue;
             }
+            String chemin = cheminSousStatique(racine, fichier);
             String origine = provenanceDeclaree(racine)
-                    .getOrDefault(cheminSousStatique(racine, fichier),
-                            new Ressource("", "", "", ""))
-                    .origine().toLowerCase(java.util.Locale.ROOT);
-            for (String refuse : JAVASCRIPT_TIERS_REFUSE) {
-                assertThat(nom + " " + origine)
-                        .as("ADR-0014 et ADR-0008 : le JavaScript de %s n'entre pas dans ce depot ; "
-                                + "seule sa feuille de style est vendorisee, le comportement de jeu "
-                                + "reste sur le serveur", refuse)
-                        .doesNotContain(refuse);
-            }
+                    .getOrDefault(chemin, new Ressource("", "", "", ""))
+                    .origine();
+            assertThat(JAVASCRIPT_TIERS_AUTORISE)
+                    .as("ADR-0008, ADR-0014 et ADR-0039 : le JavaScript tiers %s n'entre pas dans ce "
+                            + "depot. Son origine declaree est \"%s\" et son empreinte %s, qu'aucune "
+                            + "entree autorisee ne designe. Le comportement de jeu vit sur le serveur : "
+                            + "d'une bibliotheque d'interface, seule sa feuille de style se vendorise. "
+                            + "Faire entrer un script tiers de plus demande un ADR et une entree de "
+                            + "plus ici, jamais un fichier de plus dans ce repertoire",
+                            chemin, origine, empreinte(fichier))
+                    .contains(new JavaScriptAutorise(origine, empreinte(fichier)));
         }
+    }
+
+    /**
+     * ADR-0039, le versant qui empeche l'autorisation de pourrir : une entree qui ne designe aucun
+     * fichier servi est un plafond au-dessus de la dette. Elle laisserait croire qu'un script tiers
+     * est passe en revue alors que plus rien ne le porte, et elle rouvrirait une place libre pour des
+     * octets que personne n'a relus. C'est la lecon du plafond d'ADR-0016, appliquee a une liste
+     * d'autorisation.
+     */
+    static void verifierQueChaqueAutorisationDesigneUnFichierServi(Path racine) {
+        List<JavaScriptAutorise> servis = new ArrayList<>();
+        for (Path fichier : ressourcesTierces(racine)) {
+            if (!fichier.getFileName().toString().toLowerCase(java.util.Locale.ROOT).endsWith(".js")) {
+                continue;
+            }
+            String origine = provenanceDeclaree(racine)
+                    .getOrDefault(cheminSousStatique(racine, fichier), new Ressource("", "", "", ""))
+                    .origine();
+            servis.add(new JavaScriptAutorise(origine, empreinte(fichier)));
+        }
+        assertThat(servis)
+                .as("ADR-0039 : une entree de JAVASCRIPT_TIERS_AUTORISE ne designe aucun fichier "
+                        + "reellement servi sous %s/. Soit la bibliotheque a ete retiree et l'entree "
+                        + "part dans le meme commit, soit elle a change de version et l'entree se met "
+                        + "a jour ; une autorisation qui ne garde plus rien est une place libre",
+                        TIERS)
+                .containsAll(JAVASCRIPT_TIERS_AUTORISE);
     }
 
     @Test
@@ -439,8 +515,13 @@ class RessourcesTiercesTest {
     }
 
     @Test
-    void aucunJavaScriptDeBibliothequeDInterfaceNEntreDansLeDepot() {
-        verifierAucunJavaScriptTiersRefuse(RACINE_PRODUCTION);
+    void aucunJavaScriptTiersNonAutoriseNEntreDansLeDepot() {
+        verifierAucunJavaScriptTiersNonAutorise(RACINE_PRODUCTION);
+    }
+
+    @Test
+    void chaqueJavaScriptTiersAutoriseDesigneUnFichierReellementServi() {
+        verifierQueChaqueAutorisationDesigneUnFichierServi(RACINE_PRODUCTION);
     }
 
     @Test
@@ -523,8 +604,39 @@ class RessourcesTiercesTest {
     @Test
     void leJavaScriptDUneBibliothequeDInterfaceFaitEchouerLeGardeFou() {
         assertThatThrownBy(() ->
-                verifierAucunJavaScriptTiersRefuse(CONTRE_EXEMPLES.resolve("javascript-de-composants")))
+                verifierAucunJavaScriptTiersNonAutorise(
+                        CONTRE_EXEMPLES.resolve("javascript-de-composants")))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("n'entre pas dans ce depot");
+    }
+
+    /**
+     * ADR-0039, la mise a l'epreuve qui manquait : un script tiers <b>correctement trace</b>, sous un
+     * nom que personne n'avait inscrit nulle part. C'est le geste exact que {@code yanis-qa} a joue en
+     * s11 sur la production, avec un {@code alpine.min.js} reel - et les seize tests de cette classe
+     * etaient restes verts. Le jeu fautif porte une ligne de provenance complete et une empreinte
+     * exacte : tout ce que la doctrine attend d'un ajout legitime est la, et le refus ne doit rien
+     * devoir au nom du fichier.
+     */
+    @Test
+    void unJavaScriptTiersCorrectementTraceMaisNonAutoriseFaitEchouerLeGardeFou() {
+        Path jeuFautif = CONTRE_EXEMPLES.resolve("javascript-tiers-trace");
+
+        verifierProvenanceDesRessourcesTierces(jeuFautif);
+        assertThatThrownBy(() -> verifierAucunJavaScriptTiersNonAutorise(jeuFautif))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("n'entre pas dans ce depot");
+    }
+
+    /**
+     * ADR-0039 : l'autre versant, une autorisation qui ne garde plus rien. Le jeu fautif ne sert aucun
+     * JavaScript tiers du tout, donc aucune des entrees autorisees n'y designe de fichier.
+     */
+    @Test
+    void uneAutorisationQuiNeDesigneAucunFichierServiFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifierQueChaqueAutorisationDesigneUnFichierServi(
+                CONTRE_EXEMPLES.resolve("tiers-non-trace")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("est une place libre");
     }
 }
