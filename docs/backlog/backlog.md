@@ -3539,3 +3539,145 @@ livree - PORTE-6.**
   `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section citee ci-dessus.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, apres la story de confirmation avant
   abandon (PORTE-6) ; moyen technique a `theo-archi`.
+
+## Sprint 12 - Trois lignes de mathematiques CM1, sur le schema de contenu existant
+
+**Contexte et decision de perimetre** : l'utilisatrice veut que le sprint 12 couvre les lignes de
+mathematiques CM1 par la mecanique bandit manchot existante. Sur les douze lignes du referentiel
+(`squad/programme/mathematiques/competences-cm1.md`), toutes `non couvert`,
+`DEC-0029-perimetre-sprint-12-trois-lignes-mathematiques-cm1-ouvertes-cinq-differees.md` tranche que
+trois entrent au sprint, toutes exprimables dans l'enveloppe `type: question` deja existante
+(`ADR-0007`) sans une ligne de Java, de gabarit ni de feuille de style neuve : le perimetre d'un
+carre ou d'un rectangle, la conversion d'unites de longueur/masse/contenance, et les tables de
+multiplication jusqu'a x10. Trois lignes de plus restent differees pour capacite (multiplications et
+divisions simples, problemes de durees, problemes a plusieurs etapes) et deux sont differees dans
+l'attente d'un arbitrage prealable de `nadia-prof` sur un proxy textuel (lire/ecrire les grands
+nombres ; reperage d'une fraction sur une droite numerique) - voir `DEC-0029` pour le detail des huit
+lignes candidates et les quatre confirmees hors d'atteinte de cette mecanique (multiplication posee,
+division euclidienne, tracer des figures, symetrie axiale).
+
+Chaque story ouvre une fiche de conformite sous `squad/conformite/`, remplie a l'exception du bloc
+de validation reserve a `nadia-prof` : le contenu de ce sprint repasse devant elle comme tout
+contenu neuf, le niveau scolaire et la qualite pedagogique restant entierement de son ressort.
+
+### S12-1 - Calculer le perimetre d'un carre ou d'un rectangle
+
+- **Besoin** : en tant qu'eleve de CM1, je veux calculer le tour d'un carre ou d'un rectangle a
+  partir de la longueur de ses cotes, afin de savoir combien de bordure ou de cloture il faut pour
+  en faire le tour.
+- **Competence programme visee** : mathematiques, CM1 (cycle 3), domaine "Grandeurs et mesures",
+  "Calculer un perimetre de figures usuelles (carre, rectangle)" (`squad/programme/mathematiques/
+  competences-cm1.md`).
+- **Criteres d'acceptation** :
+  - Etant donne chaque item du paquet dont la figure est un carre, quand on lit son enonce, alors
+    il donne la longueur d'un seul cote (un nombre entier, une unite de longueur explicite - cm ou
+    m), et la bonne reponse vaut exactement quatre fois cette longueur, dans la meme unite.
+  - Etant donne chaque item dont la figure est un rectangle, quand on lit son enonce, alors il
+    donne sa longueur et sa largeur (deux nombres entiers distincts, meme unite), et la bonne
+    reponse vaut exactement deux fois leur somme, dans la meme unite.
+  - Etant donne l'ensemble du paquet, quand on compte les items par figure, alors il contient au
+    moins autant d'items sur le carre que sur le rectangle, a un pres : ni l'une ni l'autre figure
+    nommee par le referentiel n'est reduite a un ou deux exemples isoles.
+  - Etant donne chaque item, quand on compte ses propositions, alors il y en a exactement trois :
+    la bonne reponse et deux distracteurs numeriques dans la meme unite, chacun correspondant a une
+    confusion frequente et identifiable (par exemple le produit des cotes plutot que le double de
+    leur somme - confusion avec l'aire -, ou la moitie du perimetre).
+  - Etant donne le paquet, quand on verifie chaque item, alors aucun ne porte de figure autre que le
+    carre ou le rectangle : le triangle equilateral, present dans `contenu-repris/quiz/
+    cm1-perimetre.yml`, sort du perimetre exact de cette ligne ("figures usuelles (carre,
+    rectangle)") et n'est pas repris.
+  - Etant donne le paquet, quand on compte ses items, alors il en compte au moins 20.
+  - Etant donne chaque item, quand on verifie qu'il porte un indice, alors ce champ est rempli et
+    non vide.
+  - Etant donne le paquet, quand on le charge au demarrage de l'application, alors il valide le
+    schema `type: question` d'`ADR-0007` : un fichier YAML et une ligne de catalogue, zero ligne de
+    Java, zero gabarit ni feuille de style neuve.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : l'exactitude et la clarte de chaque enonce et de chaque indice pour un enfant de
+    CM1, et la plausibilite des distracteurs (confusion reelle avec l'aire ou avec la moitie du
+    perimetre, pas un nombre choisi au hasard).
+- **Lien decision** :
+  `DEC-0029-perimetre-sprint-12-trois-lignes-mathematiques-cm1-ouvertes-cinq-differees.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
+  requis avant affectation, comme pour toute story neuve).
+
+### S12-2 - Convertir des longueurs, des masses et des contenances
+
+- **Besoin** : en tant qu'eleve de CM1, je veux convertir une longueur, une masse ou une contenance
+  d'une unite du systeme metrique a une autre, afin de savoir exprimer la meme quantite dans l'unite
+  qu'on me demande.
+- **Competence programme visee** : mathematiques, CM1 (cycle 3), domaine "Grandeurs et mesures",
+  "Convertir des unites de longueur, masse, contenance dans le systeme metrique"
+  (`squad/programme/mathematiques/competences-cm1.md`).
+- **Criteres d'acceptation** :
+  - Etant donne chaque item du paquet, quand on lit son enonce, alors il demande de convertir une
+    quantite exprimee dans une unite du systeme metrique (longueur : mm, cm, m, km ; masse : g, kg,
+    tonne ; contenance : ml, cl, L) vers une autre unite de la meme grandeur, et la bonne reponse
+    est numeriquement exacte compte tenu du facteur de conversion entre les deux unites.
+  - Etant donne l'ensemble du paquet, quand on repartit ses items par grandeur, alors chacune des
+    trois grandeurs nommees par le referentiel - longueur, masse, contenance - est representee par
+    au moins un quart des items : aucune des trois n'est absente ni reduite a un seul exemple, pour
+    ne pas reproduire le motif de couverture partielle deja sanctionne sur ce produit.
+  - Etant donne le paquet, quand on verifie chaque item, alors aucun ne porte une question
+    d'estimation d'ordre de grandeur ("quelle est la masse d'une pomme ?") ni d'identification
+    d'instrument ("avec quoi mesure-t-on une masse ?") : ces deux formes, presentes dans
+    `contenu-repris/quiz/cm1-masses.yml`, `cm1-longueurs.yml` et `cm1-contenances.yml`, ne relevent
+    pas du verbe "convertir" que cette ligne nomme.
+  - Etant donne chaque item, quand on compte ses propositions, alors il y en a exactement trois ou
+    quatre : la bonne reponse et deux ou trois distracteurs numeriques dans l'unite demandee, chacun
+    correspondant a une confusion de facteur identifiable (par exemple multiplier par 10 au lieu de
+    100, ou l'inverse).
+  - Etant donne le paquet, quand on compte ses items, alors il en compte au moins 24, avec au moins
+    8 items par grandeur (compatible avec le quart minimal ci-dessus).
+  - Etant donne chaque item, quand on verifie qu'il porte un indice, alors ce champ est rempli et
+    non vide.
+  - Etant donne le paquet, quand on le charge au demarrage de l'application, alors il valide le
+    schema `type: question` d'`ADR-0007`, zero ligne de Java neuve.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : l'exactitude, la clarte et le niveau reel des enonces pour un enfant de CM1, la
+    plausibilite des distracteurs, et si le regroupement des trois grandeurs sous un seul jeu reste
+    lisible pour l'enfant plutot que confus.
+- **Lien decision** :
+  `DEC-0029-perimetre-sprint-12-trois-lignes-mathematiques-cm1-ouvertes-cinq-differees.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
+  requis avant affectation, comme pour toute story neuve).
+
+### S12-3 - S'entrainer aux tables de multiplication jusqu'a x10
+
+- **Besoin** : en tant qu'eleve de CM1, je veux retrouver rapidement le resultat d'une
+  multiplication de deux nombres entre 1 et 10, afin de connaitre mes tables de multiplication par
+  coeur.
+- **Competence programme visee** : mathematiques, CM1 (cycle 3), domaine "Nombres et calculs",
+  "Calcul mental - tables de multiplication (jusqu'a x10), rappel automatise"
+  (`squad/programme/mathematiques/competences-cm1.md`).
+- **Criteres d'acceptation** :
+  - Etant donne chaque item du paquet, quand on lit son enonce, alors il est une multiplication
+    ecrite en chiffres de deux facteurs entiers, chacun compris entre 1 et 10 inclus (par exemple
+    "7 x 8 = ?"), et la bonne reponse est leur produit exact.
+  - Etant donne l'ensemble des couples de facteurs (a, b) avec 1 <= a <= b <= 10, quand on les
+    compare aux items du paquet, alors chacun des 55 couples distincts est represente par au moins
+    un item - couverture complete de la table jusqu'a x10, pas seulement ses produits les plus
+    faciles - un couple pouvant etre ecrit dans un ordre ou dans l'autre (7 x 8 ou 8 x 7) au choix
+    de l'auteur.
+  - Etant donne chaque item, quand on compte ses propositions, alors il y en a exactement trois :
+    la bonne reponse et deux distracteurs numeriques distincts, chacun correspondant a une erreur
+    frequente identifiable (par exemple un facteur mal lu de un, ou la somme des deux facteurs
+    plutot que leur produit).
+  - Etant donne le paquet, quand on compte ses items, alors il en compte au moins 55 (un par couple
+    minimum, voir ci-dessus).
+  - Etant donne chaque item, quand on verifie qu'il porte un indice, alors ce champ est rempli et
+    non vide.
+  - Etant donne le paquet, quand on le charge au demarrage de l'application, alors il valide le
+    schema `type: question` d'`ADR-0007`, et non `additions-bornees` : ce type reste specifique a
+    l'addition (`AdditionsBorneesContentSourceFactory`), rien n'y generalise a la multiplication ;
+    zero ligne de Java neuve n'est necessaire pour cette story.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : l'exactitude et la clarte des enonces et des indices pour un enfant de CM1, la
+    plausibilite des distracteurs, et si le nombre de manches declare au catalogue permet de
+    parcourir l'espace des 55 couples de facon satisfaisante au fil des parties (meme question de
+    principe que celle tranchee pour les complements a 10 par `DEC-0020`, a instruire de nouveau ici
+    si l'espace fini pose une contrainte comparable).
+- **Lien decision** :
+  `DEC-0029-perimetre-sprint-12-trois-lignes-mathematiques-cm1-ouvertes-cinq-differees.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
+  requis avant affectation, comme pour toute story neuve).

@@ -170,17 +170,45 @@ Source : `squad/programme/mathematiques/competences-cm1.md`.
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
 | mathematiques | CM1 | Nombres et calculs | Lire, ecrire, decomposer et comparer les nombres entiers jusqu'au million | - | - | non couvert |
-| mathematiques | CM1 | Nombres et calculs | Calcul mental - tables de multiplication (jusqu'a x10), rappel automatise | - | - | non couvert |
+| mathematiques | CM1 | Nombres et calculs | Calcul mental - tables de multiplication (jusqu'a x10), rappel automatise | bandit-manchot-tables-multiplication-cm1 | bandit manchot | en cours |
 | mathematiques | CM1 | Nombres et calculs | Calcul mental - multiplications et divisions simples (multiples de 10, 100) | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Effectuer une multiplication posee d'un nombre a 2-3 chiffres par un nombre a 1-2 chiffres | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Effectuer une division euclidienne simple (quotient et reste) par un diviseur a 1 chiffre | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Notion de fraction simple (unites fractionnaires, fractions inferieures a 1) et reperage sur une droite numerique | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Resoudre des problemes a plusieurs etapes mobilisant les 4 operations | - | - | non couvert |
-| mathematiques | CM1 | Grandeurs et mesures | Convertir des unites de longueur, masse, contenance dans le systeme metrique | - | - | non couvert |
-| mathematiques | CM1 | Grandeurs et mesures | Calculer un perimetre de figures usuelles (carre, rectangle) | - | - | non couvert |
+| mathematiques | CM1 | Grandeurs et mesures | Convertir des unites de longueur, masse, contenance dans le systeme metrique | bandit-manchot-conversions-unites-cm1 | bandit manchot | en cours |
+| mathematiques | CM1 | Grandeurs et mesures | Calculer un perimetre de figures usuelles (carre, rectangle) | bandit-manchot-perimetre-cm1 | bandit manchot | en cours |
 | mathematiques | CM1 | Grandeurs et mesures | Resoudre des problemes de durees (calcul d'une duree, d'un horaire d'arrivee) | - | - | non couvert |
 | mathematiques | CM1 | Espace et geometrie | Reconnaitre, nommer et tracer des figures planes (carre, rectangle, triangle, cercle) avec outils (regle, equerre, compas) | - | - | non couvert |
 | mathematiques | CM1 | Espace et geometrie | Reconnaitre et utiliser la notion de symetrie axiale simple | - | - | non couvert |
+
+Note sur les trois lignes `en cours` (tables de multiplication, conversions d'unites, perimetre) :
+`DEC-0029-perimetre-sprint-12-trois-lignes-mathematiques-cm1-ouvertes-cinq-differees.md` les ouvre
+au sprint 12 sur `docs/backlog/backlog.md`, stories S12-1 a S12-3, chacune sur un contenu neuf en
+`type: question` (aucune matiere premiere de `contenu-repris/` n'est chargeable telle quelle - voir
+`DEC-0029` pour le detail par ligne). Les criteres d'ouverture excluent explicitement les items hors
+perimetre exact de chaque competence (triangle sur le perimetre ; estimation ou instrument sur les
+conversions), pour ne pas faire l'inverse du defaut deja sanctionne sur ce produit - un paquet qui
+deborde du verbe qu'il pretend couvrir plutot qu'un paquet qui n'en couvre qu'une part.
+
+Note sur les cinq lignes qui restent `non couvert` en "Nombres et calculs" et "Grandeurs et
+mesures" (hors les deux structurellement hors d'atteinte de "Espace et geometrie", inchangees) :
+`DEC-0029` les differe explicitement.
+
+- **Multiplications et divisions simples (multiples de 10, 100)**, **problemes de durees** et
+  **problemes a plusieurs etapes (4 operations)** restent `non couvert` pour capacite : le sprint
+  12 porte deja trois ouvertures, la reverification de `nadia-prof` sur le declencheur de
+  `DEC-0026` et deux corrections de garde-fous. Aucune de ces trois lignes n'est structurellement
+  hors d'atteinte de la mecanique ; elles sont candidates prioritaires du prochain sprint qui ouvre
+  du contenu.
+- **"Lire, ecrire, decomposer et comparer les grands nombres"** et **"notion de fraction simple...
+  et reperage sur une droite numerique"** restent `non couvert` dans l'attente d'un arbitrage
+  prealable de `nadia-prof` : chacune bundle un verbe servable sans ambiguite ("decomposer",
+  "comparer" ; "notion de fraction simple") avec un verbe qui ne peut etre servi qu'au prix d'un
+  proxy textuel ("lire"/"ecrire" un nombre par transcription chiffres/lettres ; "reperage sur une
+  droite numerique" par un encadrement textuel) dont la validite pedagogique n'est pas mienne a
+  juger. Les deux questions exactes posees a `nadia-prof` sont dans `DEC-0029`, section "Ce que je
+  demande a nadia-prof avant le code".
 
 ## Francais - CP (cycle 2)
 
@@ -696,3 +724,29 @@ Aucun autre chiffre ne bouge - ni la ligne conjugaison CM1, dont les douze condi
 et de forme du sprint 10 ne sont pas rouvertes, ni aucune ligne de mathematiques ou de francais CP.
 Ce n'est pas un audit pedagogique : aucun Done n'est ni accorde ni retire par ce mouvement, c'est un
 constat que le produit livre aujourd'hui ne sert plus cette competence par aucun jeu jouable.
+
+## Perimetre de s12 (2026-08-14)
+
+`DEC-0029-perimetre-sprint-12-trois-lignes-mathematiques-cm1-ouvertes-cinq-differees.md` : sur
+demande de l'utilisatrice, le sprint 12 attaque mathematiques CM1, sur les trois lignes les plus
+directement servables par le schema `type: question` existant (perimetre, conversions d'unites,
+tables de multiplication). **Ces trois lignes passent `en cours` par ce planning**, jeu et mecanique
+renseignes dans le tableau mathematiques CM1 ci-dessus. Cinq lignes de plus restent `non couvert`
+avec un motif ecrit (trois pour capacite, deux dans l'attente d'un arbitrage prealable de
+`nadia-prof`), et quatre restent confirmees hors d'atteinte de cette mecanique. **Aucune ligne ne
+passe a `couvert-valide` par ce planning** : ce statut n'est prononce que par `nadia-prof`, apres
+audit reel de chaque increment, sur les trois fiches de conformite ouvertes dans le meme geste que
+`DEC-0029`.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 |
+| mathematiques CM1 | 12 | 9 | 3 | 0 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 9 | 1 | 1 |
+| **Total** | **46** | **35** | **6** | **5** |
+
+Trois lignes de plus qu'a la cloture de s10 passent `en cours` (toutes en mathematiques CM1, premiere
+ouverture de contenu sur ce niveau depuis le sprint 0 de la reconstruction), pour un total de six
+lignes `en cours` sur le produit. Aucune ligne ne passe `couvert-valide` par cette seule ouverture ;
+ce mouvement attend l'audit de `nadia-prof` sur les increments du sprint 12.
