@@ -59,9 +59,23 @@ class AdditionsBorneesContentSourceTest {
         }
     }
 
+    /**
+     * Echantillon dimensionne, pas choisi au hasard (rapport-qualite s12 de yanis-qa) : le seul
+     * cas ou un distracteur negatif peut apparaitre exige bonneReponse = 1 (couple (0, 1) ou
+     * (1, 0), donc un operande nul, filtre par ACCEPTATION_OPERANDE_NUL_SUR) puis enDessous = 2,
+     * soit un taux mesure de 1417 negatifs sur 325 000 tirages reels (fabrique mutee, clamp
+     * retire) : environ 0,44 %. A 50 tirages sur une seule graine, la probabilite de ne rencontrer
+     * aucun de ces tirages est (1 - 0,0044)^50 = 80 %, ce qui rend le test aveugle au defaut qu'il
+     * nomme (constate par yanis-qa, vert a tort sur la fabrique mutee). A 5000 tirages, cette meme
+     * probabilite tombe a (1 - 0,0044)^5000 = 2,6 x 10^-10, avec une marge qui absorbe
+     * une sous-estimation du taux mesure : meme a un taux deux fois plus faible (0,22 %), elle
+     * resterait a 4,5 x 10^-5. Un plus grand echantillon (par exemple les 20 graines x 6500 du test
+     * de rang voisin) ne rendrait pas la detection plus sure ici, seulement plus lente.
+     */
     @Test
     void auMoinsUnDistracteurPlausibleJamaisNegatifNiNonEntier() {
-        for (int i = 0; i < 50; i++) {
+        int nombreDeTirages = 5000;
+        for (int i = 0; i < nombreDeTirages; i++) {
             Question question = tirer();
             int bonneReponse = Integer.parseInt(question.bonneReponse());
 
