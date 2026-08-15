@@ -13,6 +13,12 @@
 - **Statut global** : **REFUSE** par `nadia-prof` le 2026-08-14, apres avoir joue l'increment
   (S12-3). Motif unique et actionnable : la bonne reponse n'est jamais le plus petit des trois
   nombres, et le plus grand dans 64 items sur 99. Detail dans le bloc de validation.
+  **Ce refus est LEVE le 2026-08-15 : VALIDE SOUS RESERVE**, apres avoir rejoue l'increment corrige
+  par `lea-dev` (28 items retournes vers les voisins du dessus). Le motif unique du refus est traite,
+  et il l'est aux deux moities : 36,4 % au rang majoritaire contre 64,6 %, et 28,3 % au rang le plus
+  rare contre 0 %. Deux reserves, ce sont les deux points mineurs que j'avais nommes le 2026-08-14 et
+  qui n'ont pas ete repris. **Le refus du 2026-08-14 n'est pas efface** : il reste lisible en entier
+  au bloc de validation, sous le present verdict.
 - **Arbitrage prealable de mecanique en vigueur pour tout le catalogue** (`squad/conformite/
   FICHE-bandit-manchot-additions-cp.md`, branche `s10-nadia-mecanique` et audits suivants) :
   conditions M1 a M13, dont deux ont ete bloquantes pour d'autres jeux du catalogue - M4 (le message
@@ -25,7 +31,7 @@
   complements a 10" (11 valeurs) et abaisse `nombreDeManches` plutot que d'elargir artificiellement
   les formes d'items ; le meme arbitrage pourra devoir etre instruit ici si `nombreDeManches`
   declare au catalogue s'approche de 55.
-- **Derniere mise a jour** : 2026-08-14 (verdict de `nadia-prof`)
+- **Derniere mise a jour** : 2026-08-15 (levee du refus par `nadia-prof`, apres avoir rejoue)
 
 ## Competences visees
 
@@ -52,6 +58,151 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Done pedagogique du 2026-08-15 - le refus du 2026-08-14 est LEVE, VALIDE SOUS RESERVE - le plus recent de cette fiche
+
+> **Ce que cette section fait.** Elle **leve le refus du 2026-08-14** sur son motif unique, apres
+> l'avoir rejoue moi-meme sur le paquet corrige. Elle **n'efface pas** ce refus, qui reste lisible
+> mot pour mot juste en dessous : un refus efface n'a aucune valeur de preuve. Elle ouvre le Done
+> pedagogique de ce jeu **sous deux reserves nommees**, qui sont les deux points mineurs que j'avais
+> deja ecrits le 2026-08-14 et qui n'ont pas ete repris.
+
+- **Verdict** : **VALIDE SOUS RESERVE**. Done pedagogique prononce. La ligne mathematiques / CM1 /
+  "Calcul mental - tables de multiplication (jusqu'a x10), rappel automatise" peut passer de
+  `en cours` a `couvert-valide`, **avec la mention obligatoire "sans mesure d'automatisation"**
+  rappelee plus bas et deja posee le 2026-08-14 : ce n'est pas une exigence nouvelle, c'est celle
+  que j'avais ecrite le jour du refus.
+- **Auteur** : nadia-prof. **Increment** : branche `s12-nadia-verdicts`, ouverte sur `round-two`
+  a `e55b57b`, arbre propre, 464 tests, 28 regles - inchanges de mon fait, je n'ecris que de la
+  documentation.
+- **Mode** : **j'ai joue**, ce n'est pas un audit degrade. Jar reconstruit depuis mon propre
+  worktree avec un JDK 21 avant toute mesure, serveur lance sur un port a moi, **6 000 manches
+  reellement jouees sur 600 parties completes** pour le releve de rang, **3 000 manches sur 300
+  parties** pour T-2, **5 000 manches sur 500 parties** pour la repetition d'enonce, plus une partie
+  jouee a la main en me trompant volontairement deux fois de suite pour revoir la revelation. Le
+  serveur a ete arrete par le PID reel de sa JVM apres la derniere mesure.
+
+#### 1. Le motif du refus est traite, et je le verifie moi-meme plutot que sur parole
+
+`lea-dev` annonce un taux exhaustif de 36,4 / 35,4 / 28,3 contre 64,6 / 35,4 / 0. **Je ne l'ai pas
+crue, je l'ai recompte**, et je confirme a la decimale.
+
+| Rang de la bonne reponse | Compte exhaustif sur les 99 items | Part | Avant reprise |
+|---|---|---|---|
+| la plus petite des trois | 28 | **28,28 %** | 0,00 % |
+| l'intermediaire | 35 | **35,35 %** | 35,35 % |
+| la plus grande | 36 | **36,36 %** | 64,65 % |
+
+Et le meme comptage sur ce que le jeu **sert** reellement, qui n'est pas la meme chose qu'un
+comptage de paquet : sur les 6 000 manches jouees, **27,57 / 35,83 / 36,60**.
+
+Puis les trois enfants imaginaires qui ne savent aucune table et pressent toujours le nombre du meme
+rang, 2 000 manches chacun :
+
+| Strategie sans rappel | Manches gagnees | Taux | Avant reprise |
+|---|---|---|---|
+| toujours **la plus petite** des trois valeurs | 592 / 2 000 | 29,6 % | 0 % |
+| toujours **l'intermediaire** | 730 / 2 000 | 36,5 % | 35,4 % |
+| toujours **la plus grande** | 749 / 2 000 | **37,5 %** | **64,4 %** |
+
+**Mes trois methodes concordent une fois de plus** - 36,36 % au comptage exhaustif, 36,60 % au
+comptage sur 6 000 manches jouees, 37,5 % au resultat d'un enfant qui applique la regle. Je retiens
+**36,4 %**.
+
+**Les deux moities de mon motif tombent, et je le dis separement parce que je les avais ecrites
+separement.**
+
+1. Le taux majoritaire passe de **64,6 % a 36,4 %**. C'est sous ma barre de refus de 50 %, et ce
+   n'est pas "juste sous" : **c'est au plancher arithmetique**. Trois rangs ne se partagent pas
+   mieux que 33,3 % chacun, et 36,4 % est a trois points de cette borne. Le paquet n'est pas
+   seulement vert, il est **bon** - je le note explicitement, parce que j'ai ecrit le 2026-08-15 sur
+   la fiche des additions qu'entre 37 % et 50 % un paquet est vert sans etre bon, et je ne veux pas
+   qu'on croie que je range celui-ci dans cette zone. Il n'y est pas.
+2. Le rang vide est rempli : *"la bonne reponse n'est jamais la plus petite, sur la totalite des 99
+   items"* devient **28 items sur 99**. L'elimination gratuite d'une proposition sur trois
+   disparait. Ce second motif etait le plus grave des deux, parce qu'il ne demandait meme pas de
+   comparer les nombres entre eux ; il n'existe plus.
+
+Ce paquet passe donc aussi la **reserve nouvelle que j'ai ouverte le 2026-08-15** sur l'autre fiche
+(aucun rang sous 10 % des items) : son rang le plus rare est a 28,3 %, au large. Je le mentionne pour
+memoire ; **cette reserve n'est pas opposee a ce lot**, elle lui est posterieure et il la tiendrait.
+
+#### 2. Ce que `lea-dev` affirme n'avoir pas casse - verifie, et exact
+
+On m'a demande de ne pas la croire. Je ne l'ai pas crue.
+
+- **T-2 est inchangee.** Comptage exhaustif : **19 items sur 99 comportent un facteur 1 ou 10, soit
+  19,19 %**, la valeur exacte du 2026-08-14, sous mon plafond d'une manche sur cinq. Et parce que
+  ma condition T-2 parle de **manches** et non d'items, je l'ai aussi mesuree en jouant, ce que je
+  n'avais pas fait : **571 manches sur 3 000, soit 19,03 %**. La condition tient sur les deux
+  lectures.
+- **T-5 est tenue, y compris sur les items retournes.** Les 198 distracteurs du paquet sont tous des
+  produits voisins : 54 en `(a-1) x b`, 54 en `(a+1) x b`, 37 en `a x (b-1)`, 37 en `a x (b+1)`, et
+  16 en `(a-1) x (a+1)` sur les huit carres - ou `(a-1) x b` et `a x (b-1)` donnent la meme valeur,
+  ce qui obligeait a un troisieme voisin ; `(a-1) x (a+1)` en est un, et un bon. **Aucun distracteur
+  arbitraire.** **Aucune proposition egale a une autre dans aucun des 99 items.** Et le piege que
+  j'avais nomme est toujours evite : `2 x 2` porte 2, 3 et 6 selon les items, jamais deux fois 4.
+- **Mon propre exemple de T-5 est dans le lot corrige, et il est juste.** `7 x 8 = ?` porte
+  desormais **56, 64, 63** - 64 est 8 x 8, 63 est 7 x 9, tous deux au-dessus. Ce n'est pas la paire
+  que j'avais citee (*48 et 63*), c'est **la meme famille**, celle que j'avais nommee sure. Je ne le
+  compte pas comme un ecart : T-5 nomme une famille, elle ne prescrit pas une paire.
+- **Exactitude : 99 produits sur 99 justes.** Je les ai tous recalcules une seconde fois, sur le
+  paquet corrige. Aucune erreur de fait. Et sur les 6 000 manches jouees, **le verdict du jeu est
+  juste exactement quand la valeur pressee vaut le produit, 6 000 fois sur 6 000** - aucune
+  proposition manquante, aucun doublon servi, aucun enonce hors forme.
+- **T-1, T-3, T-4, T-6, T-7 tiennent encore.** Les 55 couples y sont, les 28 couples a facteurs
+  distincts hors 1 et 10 sont dans les deux ordres, le signe multiplie est partout, les 99 indices
+  sont non vides et il y en a 10 distincts, aucune forme exclue.
+- **Rien n'a change de largeur, donc l'acquis M4 n'est pas entame.** La plus longue proposition du
+  paquet fait toujours **3 caracteres** (100 et 110), le plus long enonce toujours 11. La marge de
+  3 px que j'avais mesuree le 2026-08-14 n'est ni gagnee ni perdue.
+
+#### 3. Les deux reserves - ce sont mes deux points mineurs du 2026-08-14, non repris
+
+Je les avais ecrits *"a traiter dans la meme reprise"*. Ils ne l'ont pas ete. Ils ne justifient pas
+un refus - je les avais moi-meme qualifies de mineurs, et je ne deplace pas mes poteaux - donc ils
+deviennent des reserves, a charge pour `camille-po` d'en faire des stories.
+
+- **Reserve A - un meme enonce revient dans une partie sur cinq.** Inchangee, et **plus frequente
+  que je ne l'avais dit**. Le tirage sans remise porte sur l'identifiant d'item, et les 8 carres
+  (2 x 2 a 9 x 9) portent chacun **trois items au meme enonce** : 99 items pour seulement **83
+  enonces distincts**. Un enfant a qui la reponse de "7 x 7 = ?" vient d'etre revelee peut la
+  retrouver deux manches plus loin sans rien rappeler.
+- **Reserve B - deux distracteurs sortent de l'espace des tables.** Inchangee : **11** sur
+  "1 x 10 = ?" et **110** sur "10 x 10 = ?". Un produit de deux nombres de 1 a 10 ne vaut jamais 11
+  ni 110. Ils restent plausibles pour l'enfant qui additionne au lieu de multiplier, T-7 ne portait
+  que sur les facteurs des enonces, et ce sont les deux seuls du paquet sur 198.
+
+#### 4. Je corrige un de mes propres chiffres, a mon desavantage
+
+Le 2026-08-14 j'ai ecrit que l'enonce repete survenait *"environ une fois sur sept, 4 parties sur
+30"*. **C'est faux, et c'est un defaut de mon echantillon** : trente parties ne suffisent pas a
+mesurer un evenement de cet ordre. Sur **500 parties de dix manches**, ce sont **108 parties, soit
+21,6 %**, qui contiennent au moins un enonce deja vu, pour 123 manches repetees. La valeur theorique
+tombe au meme endroit : huit carres, trois paires d'items chacun, chaque paire tiree ensemble avec
+la probabilite (10/99) x (9/98), soit 0,22 collision attendue par partie. **Une partie sur cinq, pas
+une sur sept.** La reserve A est un peu plus lourde que je ne l'avais dite ; elle reste mineure.
+
+#### 5. Ce que la matrice doit dire, et que `camille-po` ne doit pas perdre
+
+- La ligne passe de `en cours` a **`couvert-valide`**, **avec la mention "sans mesure
+  d'automatisation"**. Je la repose sans la changer d'un mot : la ligne du referentiel dit "rappel
+  **automatise**", l'automatisation est une affaire de **vitesse**, et **ce produit ne mesure aucun
+  temps de reponse**. Le paquet verifie que l'enfant **sait** ses tables, pas qu'il les a
+  automatisees. C'est une couverture **partielle**, et la matrice doit l'ecrire avec ces mots.
+  Ce n'est pas une barre nouvelle : elle est ecrite dans le refus du 2026-08-14, au meme endroit.
+- Les reserves A et B ne bloquent pas cette ligne. Elles font deux stories.
+
+#### 6. Les proprietes dont je reste la seule garde sur ce jeu
+
+Inchangee depuis le 2026-08-14, moins ce que le garde-fou de rang de `lea-dev` a ferme entre-temps.
+**Le taux majoritaire du rang de la bonne reponse est desormais tenu par un automate** - je le retire
+de ma liste et je cesse de le compter a la main. **Restent sans automate, et c'est moi, en jouant** :
+l'exactitude arithmetique de chaque produit, la plausibilite de chaque distracteur, **le rang presque
+vide** (la reserve que j'ai ouverte le 2026-08-15 sur la fiche des additions, que rien ne mesure),
+**le nombre d'enonces distincts derriere le nombre d'items** (la reserve A ci-dessus : le tirage sans
+remise est automatise, l'egalite d'enonce entre deux items distincts ne l'est pas), l'utilite reelle
+de chaque indice, et le niveau tel qu'il se joue.
 
 ### Done pedagogique du 2026-08-14 - REFUSE (S12-3, paquet `cm1-tables-multiplication.yaml`)
 
