@@ -2,6 +2,16 @@
 
 - **Statut** : Accepte
 - **Date** : 2026-08-15
+- **Amende le** : 2026-08-15 - **un chiffre faux, aucune conclusion touchee**. Cet `ADR` disait
+  "sept jeux" au catalogue reel a trois endroits ; il y en a **onze**. "Sept" etait la taille du
+  catalogue en s10 et a ete reporte de sprint en sprint sans etre remesure. Ecart signale par
+  `ines-design`. Aucune clause, aucune mutation, aucune alternative de cet `ADR` ne depend de ce
+  nombre : les clauses portent sur des positions dans l'ordre du document, jamais sur un effectif,
+  et les mesures M1 a M5 sont faites sur des catalogues de test a quatre boutons dont le nombre est
+  ecrit dans leur propre tableau. Ce qui etait faux est donc la **taille du defaut rapporte** - onze
+  boutons remplacants annonces comme sept - pas ce qui en est conclu. Corrige avec sa methode de
+  comptage. Le troisieme emploi, "l'ordre visuel des sept jeux" dans la liste de ce que la contrainte
+  laisse libre, perd son chiffre plutot que d'en recevoir un juste : il aurait pourri au jeu suivant.
 - **Auteur** : theo-archi
 - **Sprint** : s13 (avis de faisabilite S13-1 a S13-6, section S13-6 : "infaisable sans `ADR`")
 - **Regle executable** : **due par le lot de S13-6**, dans le meme commit que l'ecran, sur le modele
@@ -44,8 +54,13 @@ A[5] button.btn demarrer "Jeu repete"      -> POST /parties/jeu-repete        de
 A[6] button.btn demarrer "Jeu a quatre..." -> POST /parties/jeu-quatre-...    destructeur=false
 ```
 
-Quatre arrets de l'ordre de tabulation - sept dans le catalogue reel - effacent la partie de l'enfant
-et le predicat repond **non destructeur** sur les sept.
+Quatre arrets de l'ordre de tabulation - **onze** dans le catalogue reel - effacent la partie de
+l'enfant et le predicat repond **non destructeur** sur les onze. *Chiffre corrige le 2026-08-15 : il
+disait "sept", qui etait la taille du catalogue en s10 et qui a ete reporte de sprint en sprint.
+Methode : entrees `- id:` sous la cle `jeux:` de
+`adapters/adapter-content/src/main/resources/catalogue.yaml`, comptees sur l'arbre du commit cite ;
+7 en `a6f2275` (s10), 8 en `4f0290d`, 9 en `d9e390c` (s12), 11 depuis `ab1d11e` (s13), donc 11 le
+jour ou cet `ADR` a ete ecrit. Ecart signale par `ines-design`.*
 
 ## Decision
 
@@ -145,9 +160,10 @@ faire. Le choix a l'interieur de ce qui reste possible est entierement le sien, 
 pour ce que l'enfant doit comprendre.
 
 Soit un ecran qui montre le catalogue pendant qu'une partie vit. Il porte donc, dans l'ordre du
-document, un ensemble d'arrets de tabulation dont **au moins sept sont remplacants** (les sept
-boutons de demarrage du catalogue reel) et dont au moins un est sur - le retour vers la partie en
-cours. Alors :
+document, un ensemble d'arrets de tabulation dont **autant sont remplacants que le catalogue porte de
+boutons de demarrage** - onze au 2026-08-15, voir la methode de comptage plus haut - et dont au moins
+un est sur, le retour vers la partie en cours. Aucune clause ci-dessous ne depend de ce nombre : elles
+portent sur des positions dans l'ordre du document, pas sur un effectif. Alors :
 
 1. **Le premier arret de tabulation du document ne peut etre aucun bouton de demarrage.** Clause 1.
    Ce qui peut l'occuper : le retour vers la partie en cours, ou tout autre arret dont la requete
@@ -170,7 +186,7 @@ racine du fragment et `data-focus-cible="true"` sur l'element vise, comme `fragm
 fait avec son enonce.
 
 **Ce que la contrainte ne dit pas, et qui reste libre** : l'apparence, la place a l'ecran, la taille,
-la couleur, le libelle, l'ordre visuel des sept jeux, la presence ou non d'une illustration.
+la couleur, le libelle, l'ordre visuel des jeux du catalogue, la presence ou non d'une illustration.
 **L'ordre du document et l'ordre visuel ne sont pas le meme ordre** - une mise en page peut placer le
 catalogue au-dessus et le retour au-dessous tout en gardant le retour premier dans le document. La
 contrainte porte sur l'ordre du document, jamais sur ce que l'oeil parcourt.

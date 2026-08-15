@@ -116,10 +116,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * les items "decomposer" de {@code cm1-grands-nombres} ou {@link #valeurDe} ne lisait que le premier
  * terme d'une somme, et par le refus pedagogique de nadia-prof sur le meme paquet, dont les sept items
  * "decomposer" ne faisaient varier que ce premier terme. Deux corrections : {@link #sommeDeTermes}
- * lit desormais le total d'une decomposition plutot que son premier terme - une extension du cas 2 de
- * la decision d'ADR-0041, hors de ce que cette decision enumere, a ratifier par theo-archi (voir le
- * rapport de ce lot) ; et un garde-fou dedie, {@link #verifierQuAucuneValeurNeCoincide}, rend visible
- * toute egalite residuelle au lieu de la laisser exclue en silence du calcul de rang.</p>
+ * lit desormais le total d'une decomposition plutot que son premier terme ; et un garde-fou dedie,
+ * {@link #verifierQuAucuneValeurNeCoincide}, rend visible toute egalite residuelle au lieu de la
+ * laisser exclue en silence du calcul de rang.</p>
+ *
+ * <p><b>Ratification du 2026-08-15 (theo-archi, ADR-0041 amende).</b> La lecture de la somme devient
+ * le cas 2 de la decision d'ADR-0041, au meme rang que la duree. Elle est mesuree necessaire sur du
+ * materiau reel : sans elle, les sept items "decomposer" de la forme que nadia-prof exige se lisent
+ * tous a la meme valeur et sortent du calcul de rang, soit la moitie des items numeriques du paquet.
+ * Ce que cette ratification ne couvre pas - le seul operateur "+", la somme mal formee qui n'a pas
+ * de valeur plutot qu'une valeur partielle, la decomposition non canonique - est ecrit dans ADR-0041,
+ * non-preuves 8 a 10, et n'est pas paraphrase ici.</p>
  */
 class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
 
@@ -358,41 +365,70 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
     }
 
     /**
-     * La valeur numerique comparable d'une proposition : une duree convertie en minutes si elle en
-     * a l'ecriture, sinon le total d'une somme de termes si elle en a la forme, sinon un nombre
-     * entier une fois ses separateurs de milliers retires, sinon {@code null} - hors du domaine de
-     * cette propriete, pas un defaut. Les durees sont vues avant les nombres nus : voir la Javadoc de
+     * Ce que la lecture de valeur a fait d'une proposition : la {@code valeur} qu'elle en tire, et
+     * le {@code reste} - le texte que cette lecture-la <b>n'a pas consomme</b>, une fois debarrasse
+     * de ses blancs de bord.
+     *
+     * <p>Le reste n'est pas une seconde lecture de la proposition : c'est le complement exact de la
+     * premiere. Sur {@code "20 cm"} il vaut {@code "cm"} et le mot "unite" le decrit bien ; sur
+     * {@code "40 000 + 700 + 5"}, sur {@code "1 h 30"} et sur {@code "40 705"} il est <b>vide</b>,
+     * parce que la lecture consomme ces trois ecritures en entier. Sur {@code "600 000 - 40"} il
+     * vaut {@code "- 40"}, parce que la lecture s'arrete au premier nombre et ignore le reste de
+     * l'expression - un reste non vide dit exactement cela, et rien d'autre : la lecture n'a pas
+     * tout lu.</p>
+     *
+     * <p>ADR-0041 amende le 2026-08-15 : c'est ce reste, et non un motif ecrit a cote, que
+     * {@link LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest} exige identique entre les trois
+     * propositions d'un item. Deux lectures qui derivent l'une de l'autre finissent par diverger ;
+     * celle-ci et la sienne n'en font qu'une.</p>
+     */
+    record Lue(long valeur, String reste) {
+    }
+
+    /**
+     * La lecture d'une proposition : une duree convertie en minutes si elle en a l'ecriture, sinon
+     * le total d'une somme de termes si elle en a la forme, sinon un nombre entier une fois ses
+     * separateurs de milliers retires, sinon {@code null} - hors du domaine de cette propriete, pas
+     * un defaut. Les durees sont vues avant les nombres nus : voir la Javadoc de
      * {@link #DUREE_HEURES}. La somme est vue avant le nombre nu pour la meme raison que la duree
      * est vue avant elle : lire le nombre en premier ferait valoir 40 000 la decomposition
      * "40 000 + 700 + 5", voir {@link #sommeDeTermes}.
      *
+     * <p>Les deux premiers cas sont ancres sur toute la proposition : leur reste est vide par
+     * construction. Seul le troisieme peut laisser un reste, et c'est precisement le cas ou la
+     * lecture n'a lu qu'un prefixe.</p>
+     *
      * <p>ADR-0041 : cette lecture est la <b>seule</b> du depot. Elle est visible du paquet pour que
      * {@link LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest} garde ses deux angles morts - le
-     * {@code null} silencieux et l'unite ignoree - sur la lecture reelle et non sur une copie qui
+     * {@code null} silencieux et le reste ignore - sur la lecture reelle et non sur une copie qui
      * deriverait de celle-ci.</p>
      *
-     * <p><b>Extension du 2026-08-15, hors du perimetre ferme par ADR-0041.</b> La somme de termes
-     * est un troisieme cas de lecture que la decision de cet ADR n'enumere pas ; elle reste a
-     * ratifier par theo-archi (voir le rapport de ce lot). Tant que ce n'est pas fait, elle vit ici
-     * comme la lecture des durees a vecu avant lui : une correction locale de ce garde-fou, sur du
-     * materiau reel, en attente de doctrine.</p>
+     * <p><b>La somme de termes est ratifiee par ADR-0041</b> (amendement du 2026-08-15, cas 2 de la
+     * decision) : elle n'etait pas dans le perimetre ferme par la version initiale de cet ADR et y
+     * vivait comme une correction locale en attente de doctrine.</p>
      */
-    static Long valeurDe(String proposition) {
+    static Lue lireValeur(String proposition) {
         String texte = proposition.strip();
         Long duree = dureeEnMinutes(texte);
         if (duree != null) {
-            return duree;
+            return new Lue(duree, "");
         }
         Long somme = sommeDeTermes(texte);
         if (somme != null) {
-            return somme;
+            return new Lue(somme, "");
         }
         Matcher matcher = NOMBRE.matcher(texte);
         if (!matcher.find()) {
             return null;
         }
         String sansSeparateur = SEPARATEUR_DE_MILLIERS.matcher(matcher.group()).replaceAll("");
-        return Long.valueOf(sansSeparateur);
+        return new Lue(Long.parseLong(sansSeparateur), texte.substring(matcher.end()).strip());
+    }
+
+    /** La seule valeur comparable d'une proposition, ou {@code null}. Voir {@link #lireValeur}. */
+    static Long valeurDe(String proposition) {
+        Lue lue = lireValeur(proposition);
+        return lue == null ? null : lue.valeur();
     }
 
     /**
