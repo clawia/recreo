@@ -30,6 +30,20 @@ import static org.assertj.core.api.Assertions.assertThat;
  * justesse arithmetique des items "decomposer" et "comparer", et GN-1 - qu'un distracteur "lire" ou
  * "ecrire" differe de la bonne reponse par la valeur qu'il designe, jamais par la seule orthographe
  * des mots-nombres.</p>
+ *
+ * <p><b>Correction du 2026-08-15, apres le refus pedagogique de nadia-prof</b>
+ * ({@code squad/conformite/FICHE-bandit-manchot-grands-nombres-cm1.md}) : les sept items
+ * "decomposer" ne faisaient varier que leur premier terme, et trois d'entre eux opposaient a la
+ * bonne reponse deux substitutions de chiffre plutot que deux erreurs de decomposition
+ * plausibles. Chaque distracteur "decomposer" garde desormais le premier terme de la bonne
+ * reponse et deplace une erreur reelle (rang confondu, zero avale) sur un terme suivant - ce que
+ * {@link #chaqueItemDecomposeEstUneSommeDeValeursDePositionQuiVautLeNombreDeLEnonce()} continue de
+ * prouver par le calcul de la somme, pas par une lecture du premier terme. Les deux indices faux
+ * sur "600 040" (verbes "ecrire" et "decomposer") sont corriges dans le paquet. Le separateur de
+ * milliers passe de l'espace simple a l'espace insecable (U+00A0, voir
+ * {@link #sansSeparateur(String)}) pour que la decomposition ne soit plus coupee en plein milieu
+ * d'un nombre a l'ecran, sans sortir du Latin-1 que PropositionsAccentueesJouablesIT (bootstrap)
+ * exige de toute proposition du catalogue.</p>
  */
 class PaquetCm1GrandsNombresTest {
 
@@ -202,9 +216,18 @@ class PaquetCm1GrandsNombresTest {
         return tousLesItems(paquet()).stream().filter(verbe).toList();
     }
 
-    /** MD-4 (arbitrage prealable s13) : les milliers sont separes par une espace simple. */
+    /**
+     * MD-4 (arbitrage prealable s13) exige une espace entre les milliers. Depuis la correction du
+     * motif 1 de nadia-prof (FICHE-bandit-manchot-grands-nombres-cm1.md, section 5) ce paquet
+     * l'ecrit en espace insecable (U+00A0) plutot qu'en espace simple, pour que le separateur ne
+     * casse plus la ligne a l'ecran ; l'espace fine insecable (U+202F), typographiquement plus
+     * exacte, a ete ecartee parce qu'elle est hors Latin-1 et que PropositionsAccentueesJouablesIT
+     * (bootstrap) ne sait reproduire que des propositions Latin-1 - les deux ecritures restent
+     * lues ici, comme dans le garde-fou de rang
+     * (LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest.NOMBRE).
+     */
     private static int sansSeparateur(String nombre) {
-        return Integer.parseInt(nombre.strip().replace(" ", ""));
+        return Integer.parseInt(nombre.strip().replaceAll("[\\u00A0\\u202F ]", ""));
     }
 
     private static int sommeDeLaDecomposition(String decomposition) {
