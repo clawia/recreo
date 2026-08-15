@@ -44,6 +44,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0038](ADR-0038-aucun-arret-de-tabulation-destructeur-a-une-tabulation-d-un-point-de-depart.md) | Interdire tout arret de tabulation destructeur a une seule tabulation d'un point de depart que le document autorise | s10 | 2026-08-14 | Accepte, amende le 2026-08-14 (s11) ; sa regle est portee par le lot de `marc-dev` |
 | [ADR-0039](ADR-0039-un-critere-se-derive-des-que-la-promesse-est-universelle.md) | Deriver le critere d'un garde-fou des que sa promesse est universelle, et faire passer toute enumeration du cote autorise | s12 | 2026-08-14 | Accepte |
 | [ADR-0040](ADR-0040-un-point-de-focus-declare-n-est-jamais-destructeur-l-ecran-de-confirmation-n-est-pas-exempte.md) | Interdire qu'un point de focus declare soit lui-meme destructeur, et refuser d'exempter l'ecran de confirmation de la clause 2 d'ADR-0038 | s12 | 2026-08-14 | Accepte |
+| [ADR-0041](ADR-0041-la-valeur-d-une-proposition-est-derivee-de-ce-qu-elle-ecrit.md) | Deriver la valeur comparable d'une proposition de ce qu'elle ecrit, et refuser qu'un garde-fou juge un paquet sur une partie de ses items | s13 | 2026-08-15 | Accepte |
 
 ## Amendements
 
@@ -524,3 +525,27 @@ troisieme avait nommee sans la fermer :
     point de focus, cette quatrieme clause serait rouge des sa premiere execution et appartient au lot
     qui corrigera l'ecran. Ce n'est pas une regle ArchUnit, le compte reste a **28** avec sa methode ;
     les deux tests qu'il ajoute portent la suite de 425 a **427**.
+
+39. **ADR-0041** est ne d'un garde-fou **vert et faux pendant deux sprints**, et c'est cette
+    circonstance qui le rend utile a relire plutot que sa decision, qui tient en trois lignes. La
+    valeur d'une proposition etait lue par un motif ecrit en passant - le premier groupe de chiffres -
+    et personne n'avait ecrit ce qu'une valeur devait etre : il n'y avait donc rien a contredire. Deux
+    faits mesures cette semaine, et chacun est une facon differente d'etre vert a tort. Sur des grands
+    nombres a separateur d'espace, douze items dont la bonne reponse est **toujours** la plus grande se
+    lisent comme une repartition parfaitement uniforme (33,3 %) ; sur des durees, six items faussement
+    classes "la plus petite" compensent **exactement** six items justes par hasard, et le taux tombe a
+    **50,0 % pile** contre un seuil compare strictement - un seul item deplace d'une moitie a l'autre
+    aurait rendu 58,3 % et un rouge. Un vert obtenu par compensation exacte entre deux erreurs opposees
+    ne se distingue en rien, dans un rapport de revue, d'un vert obtenu par une propriete tenue. La
+    decision acte la lecture livree par `lea-dev` - duree en minutes d'abord, sinon nombre entier
+    separateurs retires, sinon rien - et ferme les **deux angles morts** que le mot "sinon rien"
+    ouvrait : un paquet juge sur une partie de ses items doit declarer le nombre exact d'items ecartes
+    (`cm1-perimetre`, 2 sur 22, et le taux de 90,0 % qu'on lui cite porte donc sur 20), et les trois
+    propositions d'un item portent la meme unite, la lecture ne lisant que le nombre. La morsure de la
+    seconde clause est mesuree sur du materiau reel et le resultat depasse l'attente : un distracteur de
+    `cm1-mesures` reecrit dans une unite equivalente (`"4000 cm"` en `"40 m"`) **fait basculer** le rang
+    classe de cet item, et les douze tests du garde-fou de rang restent verts. Il porte aussi une
+    **mesure ratee, ecrite parce qu'elle a failli entrer dans l'ADR** : deux executions sans `-am` ont
+    rendu un chiffre perime qui figurait deja dans le depot, donc credible. Ce n'est pas une regle
+    ArchUnit, le compte reste a **28** avec sa methode ; les sept tests qu'il ajoute portent la suite
+    de 468 a **475**.

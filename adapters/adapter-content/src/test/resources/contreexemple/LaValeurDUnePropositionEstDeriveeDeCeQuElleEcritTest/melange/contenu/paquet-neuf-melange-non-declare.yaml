@@ -1,0 +1,49 @@
+schema: 1
+id: paquet-neuf-melange-non-declare
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CM1"
+  domaine: "Grandeurs et mesures"
+  competence: "Jeu fautif de test, jamais livre"
+items:
+  - enonce: "Un rectangle, c'est une figure qui a..."
+    bonneReponse: "quatre angles droits"
+    distracteurs: ["trois cotes", "aucun cote parallele"]
+    indice: "Jeu fautif de test."
+  - enonce: "Comment calcule-t-on le perimetre d'un carre ?"
+    bonneReponse: "cote x 4"
+    distracteurs: ["cote x 2", "cote x cote"]
+    indice: "Jeu fautif de test."
+  - enonce: "Que mesure un perimetre ?"
+    bonneReponse: "la longueur du contour"
+    distracteurs: ["la surface interieure", "le nombre de cotes"]
+    indice: "Jeu fautif de test."
+  - enonce: "Quelle unite convient pour un terrain de sport ?"
+    bonneReponse: "le metre"
+    distracteurs: ["le millimetre", "le kilometre"]
+    indice: "Jeu fautif de test."
+  - enonce: "Perimetre d'un carre de cote 5 cm ?"
+    bonneReponse: "20 cm"
+    distracteurs: ["10 cm", "25 cm"]
+    indice: "Jeu fautif de test."
+  - enonce: "Perimetre d'un carre de cote 7 cm ?"
+    bonneReponse: "28 cm"
+    distracteurs: ["49 cm", "14 cm"]
+    indice: "Jeu fautif de test."
+  - enonce: "Perimetre d'un rectangle de 3 cm sur 4 cm ?"
+    bonneReponse: "14 cm"
+    distracteurs: ["12 cm", "7 cm"]
+    indice: "Jeu fautif de test."
+  - enonce: "Perimetre d'un carre de cote 9 cm ?"
+    bonneReponse: "36 cm"
+    distracteurs: ["81 cm", "18 cm"]
+    indice: "Jeu fautif de test."
+  - enonce: "Perimetre d'un rectangle de 6 cm sur 2 cm ?"
+    bonneReponse: "16 cm"
+    distracteurs: ["12 cm", "8 cm"]
+    indice: "Jeu fautif de test."
+  - enonce: "Perimetre d'un carre de cote 12 cm ?"
+    bonneReponse: "48 cm"
+    distracteurs: ["144 cm", "24 cm"]
+    indice: "Jeu fautif de test."

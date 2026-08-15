@@ -1,0 +1,33 @@
+schema: 1
+id: paquet-neuf-unites-melangees
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CM1"
+  domaine: "Grandeurs et mesures"
+  competence: "Jeu fautif de test, jamais livre - version corrigee"
+items:
+  - enonce: "Quelle est la plus grande longueur ?"
+    bonneReponse: "1000 mm"
+    distracteurs: ["500 mm", "200 mm"]
+    indice: "Jeu fautif de test."
+  - enonce: "Quelle est la plus grande masse ?"
+    bonneReponse: "2000 g"
+    distracteurs: ["900 g", "500 g"]
+    indice: "Jeu fautif de test."
+  - enonce: "Quelle est la plus grande contenance ?"
+    bonneReponse: "3000 mL"
+    distracteurs: ["800 mL", "250 mL"]
+    indice: "Jeu fautif de test."
+  - enonce: "Quelle est la plus grande distance ?"
+    bonneReponse: "2000 m"
+    distracteurs: ["900 m", "400 m"]
+    indice: "Jeu fautif de test."
+  - enonce: "Quelle est la plus petite longueur ?"
+    bonneReponse: "5 mm"
+    distracteurs: ["40 mm", "1000 mm"]
+    indice: "Jeu fautif de test."
+  - enonce: "Quelle est la plus petite masse ?"
+    bonneReponse: "20 g"
+    distracteurs: ["1000 g", "3000 g"]
+    indice: "Jeu fautif de test."
