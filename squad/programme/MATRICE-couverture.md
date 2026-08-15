@@ -169,16 +169,16 @@ Source : `squad/programme/mathematiques/competences-cm1.md`.
 
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
-| mathematiques | CM1 | Nombres et calculs | Lire, ecrire, decomposer et comparer les nombres entiers jusqu'au million | - | - | non couvert |
-| mathematiques | CM1 | Nombres et calculs | Calcul mental - tables de multiplication (jusqu'a x10), rappel automatise | bandit-manchot-tables-multiplication-cm1 | bandit manchot | couvert-valide |
-| mathematiques | CM1 | Nombres et calculs | Calcul mental - multiplications et divisions simples (multiples de 10, 100) | - | - | non couvert |
+| mathematiques | CM1 | Nombres et calculs | Lire, ecrire, decomposer et comparer les nombres entiers jusqu'au million | bandit-manchot-grands-nombres-cm1 | bandit manchot | en cours |
+| mathematiques | CM1 | Nombres et calculs | Calcul mental - tables de multiplication (jusqu'a ×10), rappel automatise | bandit-manchot-tables-multiplication-cm1 | bandit manchot | couvert-valide |
+| mathematiques | CM1 | Nombres et calculs | Calcul mental - multiplications et divisions simples (multiples de 10, 100) | bandit-manchot-multiplications-divisions-cm1 | bandit manchot | en cours |
 | mathematiques | CM1 | Nombres et calculs | Effectuer une multiplication posee d'un nombre a 2-3 chiffres par un nombre a 1-2 chiffres | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Effectuer une division euclidienne simple (quotient et reste) par un diviseur a 1 chiffre | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Notion de fraction simple (unites fractionnaires, fractions inferieures a 1) et reperage sur une droite numerique | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Resoudre des problemes a plusieurs etapes mobilisant les 4 operations | - | - | non couvert |
 | mathematiques | CM1 | Grandeurs et mesures | Convertir des unites de longueur, masse, contenance dans le systeme metrique | bandit-manchot-conversions-unites-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Grandeurs et mesures | Calculer un perimetre de figures usuelles (carre, rectangle) | bandit-manchot-perimetre-cm1 | bandit manchot | couvert-valide |
-| mathematiques | CM1 | Grandeurs et mesures | Resoudre des problemes de durees (calcul d'une duree, d'un horaire d'arrivee) | - | - | non couvert |
+| mathematiques | CM1 | Grandeurs et mesures | Resoudre des problemes de durees (calcul d'une duree, d'un horaire d'arrivee) | bandit-manchot-problemes-durees-cm1 | bandit manchot | en cours |
 | mathematiques | CM1 | Espace et geometrie | Reconnaitre, nommer et tracer des figures planes (carre, rectangle, triangle, cercle) avec outils (regle, equerre, compas) | - | - | non couvert |
 | mathematiques | CM1 | Espace et geometrie | Reconnaitre et utiliser la notion de symetrie axiale simple | - | - | non couvert |
 
@@ -258,6 +258,50 @@ couvrir :
   l'encadrement redevient examinable pour la partie qui depasserait 1 - mais que son avis de fond
   sur le reperage visuel ne changerait pas pour autant. Aucun arbitrage du referentiel n'est fait
   ici ; la question reste ouverte pour l'utilisatrice si elle souhaite l'instruire.
+
+## Perimetre de s13 (2026-08-15)
+
+`DEC-0030-perimetre-sprint-13-trois-lignes-mathematiques-cm1-et-le-plafond-de-la-mecanique-
+unique.md` : trois lignes de mathematiques CM1 differees pour capacite au sprint 12 entrent au
+sprint 13 - stories S13-1 a S13-3, `docs/backlog/backlog.md`. **Ces trois lignes passent `en cours`
+par ce planning**, jeu et mecanique renseignes dans le tableau ci-dessus. **Aucune ligne ne passe a
+`couvert-valide` par ce planning** : ce statut n'est prononce que par `nadia-prof`, apres audit reel
+de chaque increment, sur les trois fiches de conformite ouvertes dans le meme geste que `DEC-0030`.
+
+- **Lire, ecrire, decomposer et comparer les nombres entiers jusqu'au million** ouvre **en entier**,
+  sans mention de couverture partielle : l'arbitrage prealable rendu par `nadia-prof` au sprint 12
+  (`squad/conformite/ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md`, section 1) valide le proxy de
+  transcription chiffres/lettres pour "lire" et "ecrire" sous deux conditions (GN-1, GN-2), et
+  "decomposer"/"comparer" sont servables sans aucun proxy.
+- **Calcul mental - multiplications et divisions simples (multiples de 10, 100)** et **resoudre des
+  problemes de durees** ouvrent sur un contenu jamais instruit a ce niveau de detail : `DEC-0030`
+  demande a `nadia-prof` un arbitrage prealable sur ces deux lignes avant tout code, sur le meme
+  modele que le sprint 12. Les criteres poses dans les stories S13-2 et S13-3 sont ceux de
+  `camille-po` et n'ont pas valeur de jugement pedagogique tant que cet arbitrage n'est pas rendu.
+
+**Deux lignes de plus restent `non couvert`, differees avec un motif ecrit** (`DEC-0030`, sections 1
+et 3) :
+
+- **Resoudre des problemes a plusieurs etapes mobilisant les 4 operations** : **second report pour
+  capacite** sur cette meme ligne, deja differee une premiere fois au sprint 12 par `DEC-0029`. Motif
+  inchange (aucune matiere premiere, paquet le plus expose au risque de refus sur la variete et la
+  coherence des enonces, meme famille que la reserve de `DEC-0021`).
+- **Notion de fraction simple (unites fractionnaires, fractions inferieures a 1) et reperage sur une
+  droite numerique** : **premier report pour capacite**, l'arbitrage qui debloquait sa moitie
+  "notion" (`ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md`, section 1) n'ayant ete rendu que le
+  2026-08-14, apres la cloture du sprint 12. Candidate en couverture partielle nommee (moitie
+  "notion" seule, sans proxy) pour un sprint suivant.
+
+**Note sur le plafond de la mecanique unique** (`DEC-0030`, section 4) : sur les 35 lignes `non
+couvert` avant ce planning, une relecture ligne par ligne, verifiee contre ce que le schema
+`type: question` peut porter sans code neuf, denombre environ 19 lignes entieres et une partielle
+servables par du contenu seul (dont 4 sous reserve d'un jugement pedagogique prealable de
+`nadia-prof`, pas d'un obstacle technique), 6 lignes entieres et une partielle qui demandent une
+mecanique visuelle neuve, 5 qui demandent une saisie, et 3 qui demandent de l'audio (plus une
+quatrieme, "lire a voix haute", qui demanderait en plus une reconnaissance vocale). `camille-po`
+n'ouvre aucune ligne de mecanique neuve ce sprint et estime a quatre a six sprints la marge de
+contenu seul restante avant que cette mecanique unique ne devienne bloquante pour le reste du
+programme.
 
 ## Francais - CP (cycle 2)
 
@@ -879,7 +923,7 @@ attribution.
   reponse (un remplissage plutot qu'un distracteur plausible) ; `nadia-prof` corrige sa propre
   condition C-7, trop courte sur ce point, et demande des erreurs de facteur a un ou deux crans
   seulement - correction deja versee au paquet et confirmee par elle.
-- **Calcul mental - tables de multiplication (jusqu'a x10), rappel automatise** : `nadia-prof`
+- **Calcul mental - tables de multiplication (jusqu'a ×10), rappel automatise** : `nadia-prof`
   prononce **REFUSE**. Motif unique : sur les 99 items, la bonne reponse n'est **jamais** le plus
   petit des trois nombres, et elle est le plus grand sur 64 items sur 99 (64,6 % au calcul exhaustif,
   64,4 % en jouant) - un enfant qui presse toujours le plus grand nombre gagne sans avoir rappele
@@ -963,7 +1007,7 @@ reellement jouees (27,57 / 35,83 / 36,60). Les deux moities du motif de refus to
 rang n'est majoritaire, et le rang "la plus petite" n'est plus vide. **Le REFUSE du 2026-08-14 est
 LEVE** ; il reste lisible en entier a sa place sur la fiche, non efface.
 
-**La ligne mathematiques CM1 "Calcul mental - tables de multiplication (jusqu'a x10), rappel
+**La ligne mathematiques CM1 "Calcul mental - tables de multiplication (jusqu'a ×10), rappel
 automatise" repasse de `en cours` a `couvert-valide`, avec la mention obligatoire "sans mesure
 d'automatisation"** deja posee au refus du 2026-08-14 et non rouverte a la levee (voir la note dediee
 sous le tableau mathematiques CM1 ci-dessus) : la competence dit "rappel **automatise**",
@@ -1003,3 +1047,25 @@ reserve. Le nombre de lignes `non couvert` ne bouge pas. Le produit compte desor
 lignes `en cours` (comparer et ranger en mathematiques CP, graphemes/phonemes en francais CP,
 homophones en francais CM1) : aucune ligne nouvelle n'est ouverte par ce second tour, le mouvement
 porte uniquement sur les deux lignes rejouees ce jour.
+
+## Perimetre de s13 (2026-08-15)
+
+`DEC-0030-perimetre-sprint-13-trois-lignes-mathematiques-cm1-et-le-plafond-de-la-mecanique-
+unique.md` : trois lignes de mathematiques CM1 entrent au sprint 13 (voir la section dediee sous le
+tableau mathematiques CM1 ci-dessus pour le detail par ligne). **Ces trois lignes passent `en cours`
+par ce planning**, jeu et mecanique renseignes. **Aucune ligne ne passe a `couvert-valide` par ce
+planning** : ce statut n'est prononce que par `nadia-prof`, apres audit reel de chaque increment.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 |
+| mathematiques CM1 | 12 | 6 | 3 | 3 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 9 | 1 | 1 |
+| **Total** | **46** | **32** | **6** | **8** |
+
+Trois lignes de plus qu'a la cloture de s12 passent `en cours` (toutes en mathematiques CM1 : grands
+nombres, multiplications et divisions simples, problemes de durees), pour un total de six lignes
+`en cours` sur le produit. Le nombre de lignes `couvert-valide` ne bouge pas : ce mouvement attend
+l'audit de `nadia-prof` sur les increments du sprint 13, y compris l'arbitrage prealable qui reste a
+rendre sur deux des trois lignes (`DEC-0030`, section 5).

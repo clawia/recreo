@@ -33,6 +33,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0027 | Le retrait du bouton de sortie du fragment de manche reouvre l'arbitrage valide de S6-9 / ADR-0022 : arbitrage prealable de nadia-prof requis avant developpement | s11 | 2026-08-14 | Acceptee, amendee le 2026-08-14 (arbitrage prealable rendu par nadia-prof : principe accepte sous six conditions, forme instruite refusee ; perimetre corrige a trois ecrans et non un, chiffre du 2026-08-07 corrige) |
 | DEC-0028 | Abandon de la persistance : recreo ne conserve aucune partie entre deux sessions | s12 | 2026-08-14 | Acceptee, completee le 2026-08-15 (reponse sur la phrase plus large d'ADR-0001, gardee sans extension) |
 | DEC-0029 | Perimetre du sprint 12 : trois lignes de mathematiques CM1 ouvertes, cinq differees dont deux sous reserve d'arbitrage prealable | s12 | 2026-08-14 | Acceptee |
+| DEC-0030 | Perimetre du sprint 13 : trois lignes de mathematiques CM1 ouvertes, deux differees, et le plafond de la mecanique unique mesure | s13 | 2026-08-15 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0023` a ete amendee le 2026-08-12, sur son point 6
 (disparition de l'ecran intermediaire), laisse ouvert et route a `nadia-prof` pour arbitrage
