@@ -80,9 +80,20 @@ class LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest {
      *
      * <p>Cette declaration n'absout pas : elle rend visible que le taux de 90,0 % cite par
      * {@code LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest} pour ce paquet porte sur 20
-     * items et non sur 22. Aucun autre paquet de production n'est dans ce cas.</p>
+     * items et non sur 22.</p>
+     *
+     * <p>{@code cm1-grands-nombres} (S13-1) porte 28 items a trois propositions dont 14 dans le
+     * domaine (les verbes "ecrire" et "decomposer", dont les trois propositions sont numeriques) et
+     * 14 ecartes : les 7 items du verbe "lire" (bonne reponse et distracteurs en designation
+     * litterale, par exemple "soixante-dix mille dix-huit") et les 7 items du verbe "comparer"
+     * (bonne reponse et distracteurs sont les symboles "&lt;", "&gt;", "="). Ces 14 items ne sont
+     * gardes par aucun garde-fou de rang automatique - ni celui-ci, qui les ecarte du domaine par
+     * construction, ni {@code LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest}, qui ne
+     * calcule un taux que sur les items dans le domaine. Ce qui les garde : la relecture
+     * pedagogique de {@code nadia-prof} sur chaque distracteur.</p>
      */
-    private static final Map<String, Integer> PAQUETS_A_ITEMS_ECARTES = Map.of("cm1-perimetre", 2);
+    private static final Map<String, Integer> PAQUETS_A_ITEMS_ECARTES =
+            Map.of("cm1-perimetre", 2, "cm1-grands-nombres", 14);
 
     /** Un item a trois propositions, vu par la lecture de valeur. */
     private record Lecture(List<String> propositions, List<Long> valeurs) {
