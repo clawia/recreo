@@ -255,7 +255,7 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
      * plus tot si le paquet est fini (Optional.empty()) ou si plus rien de neuf n'apparait pendant
      * TIRAGES_SANS_NOUVEAUTE_AVANT_ARRET tirages consecutifs (paquet combinatoire epuise en pratique).
      */
-    private static List<Question> itemsTires(ContentSource contenu) {
+    static List<Question> itemsTires(ContentSource contenu) {
         RandomSource hasard = new Random(5)::nextInt;
         Set<ItemId> dejaVus = new java.util.HashSet<>();
         Map<ItemId, Question> items = new LinkedHashMap<>();
@@ -300,8 +300,13 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
      * a l'ecriture, sinon un nombre entier une fois ses separateurs de milliers retires, sinon
      * {@code null} - hors du domaine de cette propriete, pas un defaut. Les durees sont vues avant
      * les nombres nus : voir la Javadoc de {@link #DUREE_HEURES}.
+     *
+     * <p>ADR-0041 : cette lecture est la <b>seule</b> du depot. Elle est visible du paquet pour que
+     * {@link LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest} garde ses deux angles morts - le
+     * {@code null} silencieux et l'unite ignoree - sur la lecture reelle et non sur une copie qui
+     * deriverait de celle-ci.</p>
      */
-    private static Long valeurDe(String proposition) {
+    static Long valeurDe(String proposition) {
         String texte = proposition.strip();
         Long duree = dureeEnMinutes(texte);
         if (duree != null) {

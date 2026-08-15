@@ -44,6 +44,8 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0038](ADR-0038-aucun-arret-de-tabulation-destructeur-a-une-tabulation-d-un-point-de-depart.md) | Interdire tout arret de tabulation destructeur a une seule tabulation d'un point de depart que le document autorise | s10 | 2026-08-14 | Accepte, amende le 2026-08-14 (s11) ; sa regle est portee par le lot de `marc-dev` |
 | [ADR-0039](ADR-0039-un-critere-se-derive-des-que-la-promesse-est-universelle.md) | Deriver le critere d'un garde-fou des que sa promesse est universelle, et faire passer toute enumeration du cote autorise | s12 | 2026-08-14 | Accepte |
 | [ADR-0040](ADR-0040-un-point-de-focus-declare-n-est-jamais-destructeur-l-ecran-de-confirmation-n-est-pas-exempte.md) | Interdire qu'un point de focus declare soit lui-meme destructeur, et refuser d'exempter l'ecran de confirmation de la clause 2 d'ADR-0038 | s12 | 2026-08-14 | Accepte |
+| [ADR-0041](ADR-0041-la-valeur-d-une-proposition-est-derivee-de-ce-qu-elle-ecrit.md) | Deriver la valeur comparable d'une proposition de ce qu'elle ecrit, et refuser qu'un garde-fou juge un paquet sur une partie de ses items | s13 | 2026-08-15 | Accepte |
+| [ADR-0042](ADR-0042-un-arret-remplacant-est-un-second-predicat-orthogonal-du-destructeur.md) | Ajouter un second predicat orthogonal du destructeur, "remplacant", et en tirer la contrainte de forme de l'ecran de S13-6 | s13 | 2026-08-15 | Accepte, sa regle est due par le lot de S13-6 |
 
 ## Amendements
 
@@ -524,3 +526,54 @@ troisieme avait nommee sans la fermer :
     point de focus, cette quatrieme clause serait rouge des sa premiere execution et appartient au lot
     qui corrigera l'ecran. Ce n'est pas une regle ArchUnit, le compte reste a **28** avec sa methode ;
     les deux tests qu'il ajoute portent la suite de 425 a **427**.
+
+39. **ADR-0041** est ne d'un garde-fou **vert et faux pendant deux sprints**, et c'est cette
+    circonstance qui le rend utile a relire plutot que sa decision, qui tient en trois lignes. La
+    valeur d'une proposition etait lue par un motif ecrit en passant - le premier groupe de chiffres -
+    et personne n'avait ecrit ce qu'une valeur devait etre : il n'y avait donc rien a contredire. Deux
+    faits mesures cette semaine, et chacun est une facon differente d'etre vert a tort. Sur des grands
+    nombres a separateur d'espace, douze items dont la bonne reponse est **toujours** la plus grande se
+    lisent comme une repartition parfaitement uniforme (33,3 %) ; sur des durees, six items faussement
+    classes "la plus petite" compensent **exactement** six items justes par hasard, et le taux tombe a
+    **50,0 % pile** contre un seuil compare strictement - un seul item deplace d'une moitie a l'autre
+    aurait rendu 58,3 % et un rouge. Un vert obtenu par compensation exacte entre deux erreurs opposees
+    ne se distingue en rien, dans un rapport de revue, d'un vert obtenu par une propriete tenue. La
+    decision acte la lecture livree par `lea-dev` - duree en minutes d'abord, sinon nombre entier
+    separateurs retires, sinon rien - et ferme les **deux angles morts** que le mot "sinon rien"
+    ouvrait : un paquet juge sur une partie de ses items doit declarer le nombre exact d'items ecartes
+    (`cm1-perimetre`, 2 sur 22, et le taux de 90,0 % qu'on lui cite porte donc sur 20), et les trois
+    propositions d'un item portent la meme unite, la lecture ne lisant que le nombre. La morsure de la
+    seconde clause est mesuree sur du materiau reel et le resultat depasse l'attente : un distracteur de
+    `cm1-mesures` reecrit dans une unite equivalente (`"4000 cm"` en `"40 m"`) **fait basculer** le rang
+    classe de cet item, et les douze tests du garde-fou de rang restent verts. Il porte aussi une
+    **mesure ratee, ecrite parce qu'elle a failli entrer dans l'ADR** : deux executions sans `-am` ont
+    rendu un chiffre perime qui figurait deja dans le depot, donc credible. Ce n'est pas une regle
+    ArchUnit, le compte reste a **28** avec sa methode ; les sept tests qu'il ajoute portent la suite
+    de 468 a **475**.
+
+40. **ADR-0042** est le premier `ADR` de ce depot qui **refute par la mesure le remede que son propre
+    auteur avait annonce**, et c'est la seule raison de le relire. Mon avis de faisabilite S13-6
+    proposait un second predicat "remplacant" defini par la comparaison du `jeuId` : la session porte
+    une partie **d'un autre jeu**. Cable dans les clauses et mesure sur la forme la plus dangereuse de
+    l'ecran a venir - le catalogue en tete du document, donc un bouton de demarrage en `A[0]` - ce
+    predicat rend **11 tests, 0 echec**. Il est vert sur la position qui compte, parce que le premier
+    bouton d'un catalogue est celui du jeu en cours, et redemarrer son propre jeu n'est pas changer de
+    jeu. Le predicat retenu ajoute une seconde comparaison, le **recul du compte de manches
+    resolues**, et rougit alors en nommant l'ecran et le bouton. Trois autres formes d'elargissement
+    ont ete essayees et chacune est ecartee par un chiffre, jamais par un raisonnement : "la partie
+    n'est plus le meme objet" rougit sur **sept ecrans legitimes**, c'est-a-dire sur le jeu lui-meme,
+    puisque presser une proposition remplace l'objet de session ; "la partie n'a pas avance" rougit
+    sur le second appui de la meme mauvaise reponse, le compteur d'essais expose etant un ensemble ;
+    la fusion des deux predicats en un seul a la meme extension mais rend un message qui ne dit pas
+    quel geste a eu lieu. Il **corrige au passage un argument faux de son propre avis** - la fin
+    naturelle d'une partie etait deja comptee parmi les destructions, avant tout elargissement, et le
+    garde-fou n'est vert que parce que cet arret n'occupe aucune des deux positions jugees ; c'est
+    devenu une dette nommee avec son declencheur. Ce qu'il apporte au-dela du predicat est la
+    **contrainte de forme ecrite pour `ines-design` avant qu'elle ne dessine**, en termes de ce qui
+    reste possible : un point de focus sans requete, place avant un retour vers la partie qui doit
+    etre le premier arret du document, les boutons de demarrage apres lui - et la precision que
+    l'ordre du document n'est pas l'ordre visuel, donc que la mise en page reste libre. Sa regle
+    n'est pas ecrite ici, elle est due par le lot de S13-6, et l'ADR nomme le vert facile qui
+    l'attend : le recensement de mise a l'epreuve restera vert sans que la clause neuve soit
+    eprouvee, la classe ayant deja son contre-exemple. Ce n'est pas une regle ArchUnit, le compte
+    reste a **28** avec sa methode ; aucun test n'est ajoute par ce lot, la suite reste a **475**.
