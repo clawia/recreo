@@ -1,0 +1,17 @@
+# Jeu fautif : un paquet neuf, jamais livre, qu'aucune liste de test ne nomme. Son item de
+# decomposition porte un distracteur qui vaut, une fois ses termes additionnes, exactement le meme
+# total que la bonne reponse (deux decompositions differentes du meme nombre) : le garde-fou doit
+# etre rouge dessus. Texte de fixture, jamais affiche a un enfant.
+schema: 1
+id: paquet-neuf-valeurs-egales
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Competence de fixture"
+items:
+  - enonce: "Decompose 40 705 en valeurs de position."
+    bonneReponse: "40 000 + 700 + 5"
+    distracteurs: ["39 000 + 1 700 + 5", "20 000 + 700 + 5"]
+    indice: "Indice de fixture."

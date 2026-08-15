@@ -108,6 +108,18 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * ce garde-fou une fois ecrit. <b>Exempte ne veut pas dire valide</b> : les trois portent une reserve
  * pedagogique ouverte au nom de nadia-prof, ecrite dans les fiches citees ci-dessus, pas dans ce
  * test.</p>
+ *
+ * <p><b>Correction du 2026-08-15 : le cas des valeurs egales.</b> Ni ma correction du classificateur
+ * (31ca444) ni ADR-0041 ne fermaient le cas ou deux ou trois propositions d'un meme item se lisent a
+ * la meme valeur : {@link #rangDe} les classait "la plus petite" a tort (aucun distracteur n'est
+ * strictement inferieur des qu'il est egal), et le fait s'est materialise deux fois - par le code, sur
+ * les items "decomposer" de {@code cm1-grands-nombres} ou {@link #valeurDe} ne lisait que le premier
+ * terme d'une somme, et par le refus pedagogique de nadia-prof sur le meme paquet, dont les sept items
+ * "decomposer" ne faisaient varier que ce premier terme. Deux corrections : {@link #sommeDeTermes}
+ * lit desormais le total d'une decomposition plutot que son premier terme - une extension du cas 2 de
+ * la decision d'ADR-0041, hors de ce que cette decision enumere, a ratifier par theo-archi (voir le
+ * rapport de ce lot) ; et un garde-fou dedie, {@link #verifierQuAucuneValeurNeCoincide}, rend visible
+ * toute egalite residuelle au lieu de la laisser exclue en silence du calcul de rang.</p>
  */
 class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
 
@@ -151,6 +163,18 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
 
     private static final String CONTRE_EXEMPLE_DUREES_CLASSPATH = CONTRE_EXEMPLE_CLASSPATH + "/durees";
 
+    /**
+     * Racine du jeu fautif propre a la correction du 2026-08-15 sur les valeurs egales (refus de
+     * nadia-prof sur cm1-grands-nombres, section "Le trou, et pourquoi il est urgent" du rapport de
+     * ce lot) : un item de decomposition dont deux distracteurs different de la bonne reponse par un
+     * terme different du premier, si bien qu'une decomposition qui n'additionnerait pas ses termes
+     * les lirait tous les trois a la meme valeur.
+     */
+    private static final Path CONTRE_EXEMPLE_VALEURS_EGALES = CONTRE_EXEMPLE.resolve("valeurs-egales");
+
+    private static final String CONTRE_EXEMPLE_VALEURS_EGALES_CLASSPATH =
+            CONTRE_EXEMPLE_CLASSPATH + "/valeurs-egales";
+
     /** Une strategie a rang constant ne doit jamais etre majoritaire sur un paquet. */
     private static final double SEUIL_MAJORITE = 0.5;
 
@@ -191,8 +215,17 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
      */
     private static final Pattern NOMBRE = Pattern.compile("^-?\\d(?:[\\d\\u00A0\\u202F ]*\\d)?");
 
+    /**
+     * Le meme motif que {@link #NOMBRE}, ancre aussi en fin de chaine : sert a verifier qu'un terme
+     * pris isolement (voir {@link #sommeDeTermes}) est un nombre entier complet et rien d'autre.
+     */
+    private static final Pattern NOMBRE_COMPLET = Pattern.compile(NOMBRE.pattern() + "$");
+
     /** Les trois ecritures d'un separateur de milliers vues par {@link #NOMBRE} : voir sa Javadoc. */
     private static final Pattern SEPARATEUR_DE_MILLIERS = Pattern.compile("[\\u00A0\\u202F ]");
+
+    /** Le separateur d'une somme de termes : voir {@link #sommeDeTermes}. */
+    private static final Pattern SEPARATEUR_DE_SOMME = Pattern.compile("\\s*\\+\\s*");
 
     /**
      * Une duree ou un instant ecrit en heures et minutes : "1 h 30", "1 h 30 min", "1 heure 30
@@ -296,21 +329,63 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
     }
 
     /**
+     * Une decomposition en valeurs de position ecrite en toutes lettres par le verbe "decomposer"
+     * ("40 000 + 700 + 5") : la valeur est le total, jamais le seul premier terme. Sans cette
+     * lecture, {@link #NOMBRE} s'arrete au premier "+" et rend 40 000 pour "40 000 + 700 + 5" -
+     * exactement ce qui rend ce garde-fou muet des qu'un distracteur de decomposition ne fait varier
+     * qu'un terme apres le premier, la forme que nadia-prof exige (REFUS du 2026-08-15 sur
+     * cm1-grands-nombres, S13-1) : les trois propositions partagent alors le meme premier terme et se
+     * liraient a la meme valeur sans qu'aucun diff ne le montre.
+     *
+     * <p>{@code null} si le texte n'a qu'un seul terme (pas de "+", ce n'est pas une somme - la
+     * lecture retombe alors sur {@link #NOMBRE}) ou si un des termes n'est pas un nombre entier
+     * complet une fois separe : une somme mal formee n'a pas de valeur plutot qu'une valeur
+     * partielle.</p>
+     */
+    private static Long sommeDeTermes(String texte) {
+        String[] termes = SEPARATEUR_DE_SOMME.split(texte, -1);
+        if (termes.length < 2) {
+            return null;
+        }
+        long total = 0;
+        for (String terme : termes) {
+            if (!NOMBRE_COMPLET.matcher(terme).matches()) {
+                return null;
+            }
+            total += Long.parseLong(SEPARATEUR_DE_MILLIERS.matcher(terme).replaceAll(""));
+        }
+        return total;
+    }
+
+    /**
      * La valeur numerique comparable d'une proposition : une duree convertie en minutes si elle en
-     * a l'ecriture, sinon un nombre entier une fois ses separateurs de milliers retires, sinon
-     * {@code null} - hors du domaine de cette propriete, pas un defaut. Les durees sont vues avant
-     * les nombres nus : voir la Javadoc de {@link #DUREE_HEURES}.
+     * a l'ecriture, sinon le total d'une somme de termes si elle en a la forme, sinon un nombre
+     * entier une fois ses separateurs de milliers retires, sinon {@code null} - hors du domaine de
+     * cette propriete, pas un defaut. Les durees sont vues avant les nombres nus : voir la Javadoc de
+     * {@link #DUREE_HEURES}. La somme est vue avant le nombre nu pour la meme raison que la duree
+     * est vue avant elle : lire le nombre en premier ferait valoir 40 000 la decomposition
+     * "40 000 + 700 + 5", voir {@link #sommeDeTermes}.
      *
      * <p>ADR-0041 : cette lecture est la <b>seule</b> du depot. Elle est visible du paquet pour que
      * {@link LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest} garde ses deux angles morts - le
      * {@code null} silencieux et l'unite ignoree - sur la lecture reelle et non sur une copie qui
      * deriverait de celle-ci.</p>
+     *
+     * <p><b>Extension du 2026-08-15, hors du perimetre ferme par ADR-0041.</b> La somme de termes
+     * est un troisieme cas de lecture que la decision de cet ADR n'enumere pas ; elle reste a
+     * ratifier par theo-archi (voir le rapport de ce lot). Tant que ce n'est pas fait, elle vit ici
+     * comme la lecture des durees a vecu avant lui : une correction locale de ce garde-fou, sur du
+     * materiau reel, en attente de doctrine.</p>
      */
     static Long valeurDe(String proposition) {
         String texte = proposition.strip();
         Long duree = dureeEnMinutes(texte);
         if (duree != null) {
             return duree;
+        }
+        Long somme = sommeDeTermes(texte);
+        if (somme != null) {
+            return somme;
         }
         Matcher matcher = NOMBRE.matcher(texte);
         if (!matcher.find()) {
@@ -321,9 +396,22 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
     }
 
     /**
+     * Vrai si deux des trois valeurs au moins coincident. Un rang suppose un ordre total sur trois
+     * valeurs distinctes ; une egalite le rend indefini, et le lire quand meme classerait l'item
+     * silencieusement "la plus petite" a chaque fois (aucun distracteur n'est strictement inferieur
+     * a la bonne reponse des qu'il lui est egal). Voir {@link #egaliteDe} : sur la production, ce
+     * n'est jamais une exclusion silencieuse, c'est un echec du garde-fou dedie.
+     */
+    private static boolean valeursEnConflit(long bonne, long d1, long d2) {
+        return bonne == d1 || bonne == d2 || d1 == d2;
+    }
+
+    /**
      * Le rang de la bonne reponse parmi les trois propositions, ou {@code null} si l'item n'a pas
-     * exactement deux distracteurs ou si l'une des trois propositions n'est pas numerique - hors du
-     * domaine de cette propriete, pas un defaut.
+     * exactement deux distracteurs, si l'une des trois propositions n'est pas numerique - hors du
+     * domaine de cette propriete, pas un defaut - ou si deux de ses valeurs coincident : un rang
+     * suppose alors un ordre indefini plutot qu'une exclusion silencieuse (voir
+     * {@link #valeursEnConflit} et {@link #egaliteDe}).
      */
     private static Rang rangDe(Question item) {
         if (item.distracteurs().size() != 2) {
@@ -333,6 +421,9 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
         Long d1 = valeurDe(item.distracteurs().get(0));
         Long d2 = valeurDe(item.distracteurs().get(1));
         if (bonne == null || d1 == null || d2 == null) {
+            return null;
+        }
+        if (valeursEnConflit(bonne, d1, d2)) {
             return null;
         }
         int rang = (d1 < bonne ? 1 : 0) + (d2 < bonne ? 1 : 0);
@@ -510,6 +601,95 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
     void leMemePaquetDeDureesUneFoisSonRangCorrigePasseLeGardeFou() {
         verifierQueLeRangNEstPasPredictible(CONTRE_EXEMPLE_DUREES.resolve("corrige"),
                 CONTRE_EXEMPLE_DUREES_CLASSPATH + "/corrige", Set.of());
+    }
+
+    /**
+     * Correction du 2026-08-15 : ce que ni la correction de valeurDe ni ADR-0041 ne fermait. Aucun
+     * des deux ne traite le cas ou deux ou trois propositions d'un item se lisent a la meme valeur -
+     * {@link #rangDe} l'exclut desormais du calcul de rang ({@link #valeursEnConflit}) plutot que de
+     * le classer "la plus petite" a tort, mais une exclusion silencieuse est exactement ce que
+     * nadia-prof refuse (REFUS du 2026-08-15 sur cm1-grands-nombres) : le jour ou un motif de
+     * decomposition ne fait plus varier que le premier terme, le garde-fou de rang devient muet sur
+     * tous les items concernes sans qu'aucun diff ne le montre. Ce message rend donc l'egalite
+     * elle-meme visible, et non pas seulement son effet sur un taux.
+     */
+    private static String egaliteDe(String paquet, Question item, long bonne, long d1, long d2) {
+        if (!valeursEnConflit(bonne, d1, d2)) {
+            return null;
+        }
+        return String.format(
+                "paquet %s, item %s (\"%s\") : au moins deux des trois propositions [%s, %s, %s] se"
+                        + " lisent a la meme valeur (%d, %d, %d) - le rang de la bonne reponse n'est"
+                        + " pas defini",
+                paquet, item.id().value(), item.enonce(), item.bonneReponse(),
+                item.distracteurs().get(0), item.distracteurs().get(1), bonne, d1, d2);
+    }
+
+    /**
+     * Aucun item du domaine (les trois propositions ont une valeur) ne doit lire deux de ses
+     * propositions a la meme valeur. Contrairement a une proposition sans valeur - hors du domaine,
+     * pas un defaut, ADR-0041 - une egalite de valeurs sur un item du domaine est toujours un defaut :
+     * soit les deux propositions designent reellement le meme nombre (l'item n'a pas de reponse
+     * unique), soit la lecture est trop courte pour les distinguer (une somme non lue, par exemple).
+     * Dans les deux cas, rien ne doit le laisser passer en silence.
+     */
+    static void verifierQuAucuneValeurNeCoincide(Path racine, String racineClasspath) {
+        List<String> paquets = paquets(racine);
+        assertThat(paquets)
+                .as("ce garde-fou ne prouve rien s'il ne trouve aucun paquet sous %s", racine)
+                .isNotEmpty();
+
+        List<String> defauts = new ArrayList<>();
+        for (String paquet : paquets) {
+            List<Question> items = itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet));
+            for (Question item : items) {
+                if (item.distracteurs().size() != 2) {
+                    continue;
+                }
+                Long bonne = valeurDe(item.bonneReponse());
+                Long d1 = valeurDe(item.distracteurs().get(0));
+                Long d2 = valeurDe(item.distracteurs().get(1));
+                if (bonne == null || d1 == null || d2 == null) {
+                    continue;
+                }
+                String defaut = egaliteDe(paquet, item, bonne, d1, d2);
+                if (defaut != null) {
+                    defauts.add(defaut);
+                }
+            }
+        }
+
+        assertThat(defauts)
+                .as("aucun item dont les trois propositions ont une valeur ne doit en lire deux a la"
+                        + " meme valeur")
+                .isEmpty();
+    }
+
+    @Test
+    void aucuneValeurDeProductionNeCoincideAvecUneAutreDansLeMemeItem() {
+        verifierQuAucuneValeurNeCoincide(CONTENU_DE_PRODUCTION, "");
+    }
+
+    /**
+     * ADR-0013 obligation 3 : l'objet neuf est un paquet que personne n'a jamais livre, dont deux
+     * distracteurs de decomposition different de la bonne reponse par un terme autre que le premier -
+     * la forme exacte que nadia-prof exige de tout paquet "decomposer" a venir, et qui tiendrait
+     * silencieusement si valeurDe ne lisait que le premier terme d'une somme.
+     */
+    @Test
+    void unItemNeufDontLesValeursCoincidentFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifierQuAucuneValeurNeCoincide(
+                CONTRE_EXEMPLE_VALEURS_EGALES, CONTRE_EXEMPLE_VALEURS_EGALES_CLASSPATH))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("paquet-neuf-valeurs-egales")
+                .hasMessageContaining("se lisent a la meme valeur");
+    }
+
+    /** Le meme paquet neuf, une fois ses valeurs distinguees, ne doit plus rien reprocher. */
+    @Test
+    void leMemePaquetUneFoisSesValeursDistingueesPasseLeGardeFou() {
+        verifierQuAucuneValeurNeCoincide(CONTRE_EXEMPLE_VALEURS_EGALES.resolve("corrige"),
+                CONTRE_EXEMPLE_VALEURS_EGALES_CLASSPATH + "/corrige");
     }
 
     private static void ajouterDefautSiSousLeSeuil(String paquet, String nomDuRang, int effectif,
