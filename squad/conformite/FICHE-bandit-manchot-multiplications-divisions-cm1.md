@@ -51,3 +51,20 @@ ligne "convertir des unites" deja `couvert-valide` au sprint 12), sans ecriture 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. Il reste vide tant qu'aucun
 > increment n'a ete livre et joue. L'arbitrage prealable demande par `DEC-0030` (bornes, unites,
 > profondeur sur 100) sera rendu ici ou dans un fichier d'arbitrage dedie, avant tout code.
+
+### Arbitrage prealable rendu le 2026-08-15 (s13) - ce n'est pas un Done pedagogique
+
+- **Ou** : `squad/conformite/ARBITRAGE-PREALABLE-s13-multiplications-divisions-et-durees-cm1.md`,
+  section 2. **Dix conditions, MD-1 a MD-10**, plus la liste de ce que je refuse d'avance
+  (section 3.5).
+- **Ce qu'il tranche** : la ligne ouvre **en entier**, sous la lecture stricte du referentiel -
+  l'operateur est 10 ou 100, jamais 1000 ni un multiple compose. Les bornes de `camille-po` sont
+  **confirmees** (entiers seulement, aucune ecriture decimale) et **completees** : quatre familles
+  d'operation chacune a un cinquieme du paquet au moins, resultat sous le million, signes multiplie
+  et divise reels a la place de la lettre `x` et de la barre oblique, et une **condition
+  d'aboutissement sur le rang de la bonne reponse** (entre 20 % et 40 % par rang) plus stricte que
+  les seuils de la CI, parce qu'elle est atteignable sur ce contenu.
+- **Ce qu'il ne fait pas** : il ne vaut aucun Done pedagogique par avance. Un lot qui tient les dix
+  conditions peut encore etre refuse pour ce que seul le jeu montre.
+- **Statut** : le verrou d'arbitrage prealable de `DEC-0030` sur cette story est **leve**. Le code
+  peut commencer des que `theo-archi` a rendu son avis de faisabilite.

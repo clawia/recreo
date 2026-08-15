@@ -217,8 +217,14 @@
   `couvert-valide`.** Un troisieme de mes propres chiffres est corrige : mon 66,54 % du refus etait
   legerement faux, la valeur exacte de l'etat d'avant est **66,45 %**. **Le refus du 2026-08-15 n'est
   pas efface** : il reste lisible en entier au bloc de validation, sous le present verdict.
-- **Derniere mise a jour** : 2026-08-15 (levee du refus sur la ligne de calcul mental, apres avoir
-  rejoue)
+- **Reserve F11, complement du 2026-08-15 (s13)** : **l'utilisatrice fera elle-meme l'ecoute au
+  lecteur d'ecran**, decision rapportee par `sofia-sm` au planning de s13. **F11 n'est pas levee** et
+  aucune ecoute n'a encore eu lieu. Le protocole que je demande - un jeu, quatre gestes, une session -
+  et la regle de decision que j'appliquerai a ce qui sera rapporte sont ecrits au bloc de validation,
+  section du 2026-08-15 (s13). La propriete reste **entierement a ma garde** : aucun garde-fou ne
+  compare ce qui est affiche a ce qui est annonce.
+- **Derniere mise a jour** : 2026-08-15 (protocole d'ecoute de F11 ecrit ; le verdict du meme jour sur
+  la ligne de calcul mental est inchange)
 
 ## Competences visees
 
@@ -286,7 +292,127 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Done pedagogique du 2026-08-15, second verdict du jour - le refus de ce matin est LEVE, VALIDE - le plus recent de cette fiche
+### Reserve F11 du 2026-08-15 (s13) - l'utilisatrice fera l'ecoute elle-meme : voici ce que je lui demande d'ecouter, et ce que j'en ferai - le plus recent de cette fiche
+
+> **Ce que cette section fait, et ce qu'elle ne fait pas.** Elle **n'efface, ne deplace et ne
+> reformule aucun verdict** de cette fiche. Elle **ne leve pas F11** : F11 reste **OUVERTE**, aucune
+> ecoute n'a encore eu lieu a la date ou j'ecris. Elle inscrit une decision de l'utilisatrice
+> rapportee par `sofia-sm` au planning de s13, et elle ecrit le protocole que je n'avais jamais
+> ecrit - c'est ma part du travail et je ne l'avais pas faite. Le seul caractere modifie ailleurs
+> est la mention "le plus recent de cette fiche", retiree du titre de la section suivante et amenee
+> ici, suivant la convention deja employee le 2026-08-14.
+
+- **Date** : 2026-08-15. **Auteur** : nadia-prof. **Sprint** : s13.
+- **Mode** : **je n'ai rien joue et rien ecoute**, et il n'y a rien a jouer : cette section est une
+  demande, pas un verdict. J'ai lu, dans mon worktree, les gabarits reellement servis -
+  `templates/accueil.html` et `templates/fragments/manche.html`, `erreur.html`, `retour.html`,
+  `confirmation.html` - pour savoir quoi demander et ne pas faire perdre de temps a quelqu'un.
+- **Increment** : branche `s13-nadia-arbitrages`, ouverte sur `round-two` a `9430cfd`, 464 tests,
+  28 regles - inchanges de mon fait, je n'ecris que de la documentation.
+
+#### 1. La decision que j'inscris
+
+`sofia-sm` a etabli au planning de s13 (`squad/sprints/s13-grands-nombres-et-chemin-de-catalogue/
+planning.md`, "Points routes", section 2) qu'**aucun agent de cette squad ne peut faire cette
+ecoute**, moi comprise, et elle a remonte la question a l'utilisatrice. **Reponse de l'utilisatrice,
+du 2026-08-15 : elle fera l'ecoute elle-meme.**
+
+**J'accepte cette forme de preuve et je n'en cherche pas d'autre.** Une ecoute humaine sur le rendu
+reel est exactement ce que F11 demande depuis le debut ; c'est la seule des deux issues que
+`sofia-sm` proposait qui ne me demande pas de rabaisser ma condition. Je redis, pour que la trace
+soit complete, ce que je continue de refuser : **une lecture d'arbre d'accessibilite, automatisee ou
+faite par moi, ne leve pas F11.** J'ai refuse cette approximation ailleurs sur ce produit et je ne
+l'accepte pas ici parce qu'elle serait plus rapide.
+
+**La propriete reste entierement a ma garde.** Aucun garde-fou du depot ne compare ce qui est
+affiche a ce qui est annonce, aucun ne connait l'ordre dans lequel une voix traverse cet ecran. Ce
+que `ADR-0035` garantit - qu'aucun texte utile ne se cache dans un sous-arbre masque - est une autre
+propriete, et je l'ai endossee comme telle.
+
+#### 2. Ce que je demande d'ecouter, et rien de plus
+
+Une seule session, **un seul jeu**, **quatre gestes**. Les huit jeux partagent le meme gabarit de
+manche : en ecouter un me renseigne sur les huit, et en ecouter huit ne m'apprendrait rien de plus.
+Aucune mesure, aucun enregistrement, aucun outil particulier : le lecteur d'ecran deja installe sur
+la machine convient, quel qu'il soit.
+
+**Quand.** Apres la fusion de **S12-5** si elle a lieu dans ce sprint - cette story change justement
+le texte annonce a la sortie, et l'ecouter avant ferait entendre un libelle que j'ai deja refuse. Si
+c'est plus commode de le faire avant, c'est utile quand meme : il suffit de me dire lequel des deux
+arbres a ete ecoute.
+
+| # | Le geste | Ce que je demande de noter |
+|---|---|---|
+| 1 | **Arriver sur la page d'accueil** et laisser la voix lire depuis le haut jusqu'a la liste des jeux, sans rien presser | Les **mots exacts** annonces pour l'unique lien de sortie de l'en-tete. C'est le seul endroit ou j'ai besoin du mot a mot ; ailleurs, l'a-peu-pres me suffit. |
+| 2 | **Entrer dans un jeu** et laisser la voix traverser tout l'ecran, du haut jusqu'aux propositions, sans rien presser | **L'ordre** de ce qui est annonce, en une liste de quelques mots par element (par exemple : sortie, score, consigne, question, puis les trois propositions). Et : **quelque chose est-il annonce entre la question et la premiere proposition ?** Si oui, quoi. |
+| 3 | **Repondre faux une fois**, puis **ne plus rien toucher pendant cinq secondes** | **Quelque chose est-il annonce tout seul, sans avoir a naviguer ?** Si oui, quoi, et dans quel ordre. **Si rien n'est annonce, c'est "rien" qu'il faut ecrire** - c'est une reponse aussi utile que l'autre, et probablement plus. |
+| 4 | **Tabuler** du haut de l'ecran de jeu jusqu'au bas | La **suite des arrets**, dans l'ordre, quelques mots chacun. |
+
+**Et trois choses en une ligne chacune, a la fin** : quel lecteur d'ecran et quel navigateur ; est-ce
+qu'un texte a ete entendu **deux fois** au cours de la traversee ; est-ce qu'un mot entendu ne
+correspond a **rien de visible** a l'ecran.
+
+**Ce que je ne demande pas**, pour que ce soit clair : ni les huit jeux, ni l'ecran de confirmation,
+ni l'ecran de fin de partie, ni une transcription mot a mot au-dela du geste 1, ni de recommencer si
+un geste a ete rate. Une session, quinze minutes environ. S'il faut couper, **les gestes 2 et 3 sont
+ceux qui portent** : le 1 et le 4 sont du confort.
+
+#### 3. Pourquoi ces gestes-la, et ce que chacun decide
+
+Je dis a quoi sert chaque geste, pour que personne n'ait l'impression de remplir un formulaire.
+
+- **Geste 2 - c'est le coeur de F11.** F11 dit que le nom de l'enseigne ne doit **jamais** etre
+  annonce **entre l'enonce et les propositions**, et ne doit **jamais exister deux fois** dans le
+  document. Aujourd'hui l'enseigne **n'est pas cablee** : le commentaire de `manche.html` le dit
+  explicitement, *"L'enseigne n'est pas cablee ici : F11 et `ADR-0035` bloquent son emplacement
+  accessible tant qu'une ecoute reelle de lecteur d'ecran n'a pas eu lieu"*. L'equipe a tenu ma
+  condition par abstention plutot que de la contourner, et je l'ai deja ecrit. **Ce geste me dit donc
+  s'il existe un emplacement acceptable pour ce nom**, ce que je ne peux pas savoir en lisant le
+  gabarit : je vois l'ordre du document, je n'entends pas ce que la voix en fait.
+- **Geste 3 - c'est celui dont je redoute le plus la reponse, et il ne porte pas sur l'enseigne.**
+  Le bloc qui porte le verdict, l'explication et l'indice est marque `role="status"` dans
+  `manche.html`, ce qui demande a la voix de l'annoncer d'elle-meme. Mais htmx remplace **tout** le
+  contenu de la zone de jeu a chaque reponse : ce bloc n'est pas modifie, il est **cree en meme temps
+  que son conteneur**. C'est le cas ou ce marquage est repute ne pas fonctionner. Si c'est le cas
+  ici, alors **un enfant qui ecoute et qui se trompe n'entend ni ce qui s'est passe, ni l'indice qui
+  le debloquerait** - il reste devant une machine muette. Ce serait un defaut bien plus grave que
+  celui pour lequel F11 a ete ouverte, et personne ne l'a jamais verifie.
+- **Geste 1** ferme le point que j'ai refuse le 2026-08-14 : l'application n'a **qu'un seul mot de
+  sortie**, "Les jeux", et l'enfant qui ecoute ne doit pas en entendre un second.
+- **Geste 4** verifie une propriete que j'ai deja pressee a l'oeil et jamais a l'oreille : que la
+  sortie n'est pas le premier arret dont l'enfant a besoin. Le gabarit met le bouton "Les jeux"
+  **avant** le score, la consigne et l'enonce ; je veux savoir si la voix le confirme.
+
+#### 4. Ce que je fais de la reponse - ma regle est ecrite d'avance
+
+Je l'ecris maintenant pour que personne ne se demande, en ecoutant, ce que j'attends d'entendre, et
+pour que je ne puisse pas deplacer mes poteaux apres coup.
+
+| Ce qui est rapporte | Ce que j'en fais |
+|---|---|
+| Geste 2 : rien n'est annonce entre l'enonce et les propositions, et aucun texte n'est entendu deux fois | **F11 est levee sur sa clause d'ordre**, sur cet arbre et a cette date. J'ecris a `ines-design` et a `theo-archi` que l'enseigne peut recevoir un emplacement accessible, et je rends l'arbitrage de forme qui est gele depuis s10. |
+| Geste 2 : quelque chose s'intercale, ou un texte revient deux fois | **F11 reste ouverte**, avec le fait entendu comme motif, et **l'enseigne reste non cablee**. Je le dis en une ligne, sans redemander une seconde ecoute. |
+| Geste 3 : le message et l'indice sont annonces seuls | Je le note comme un fait acquis, **et j'ouvre une reserve neuve et datee** sur leur ordre si l'ordre me gene. |
+| Geste 3 : **rien n'est annonce** | **J'ouvre une reserve neuve, distincte de F11**, et je la nomme a `camille-po` comme un motif de story. Je ne la traite pas comme un durcissement de F11 : c'est un fait different, decouvert le meme jour. |
+| Un geste n'a pas pu etre fait | Je le declare comme non couvert et je n'en tire rien. **Je ne suppose pas.** |
+
+**Duree de validite, pour qu'on n'ait pas a recommencer sans raison.** Une ecoute vaut pour l'ordre
+de lecture qu'elle a entendu. Elle reste valable tant que **l'ordre des elements de `manche.html`
+au-dessus des propositions ne change pas**. Le jour ou un lot le change - et le cablage de l'enseigne
+en sera un - il faudra une seconde ecoute, courte, du geste 2 seul. Je le dis maintenant plutot que
+de le decouvrir en le demandant.
+
+#### 5. Ce dont je reste la seule garde sur ce point, meme apres l'ecoute
+
+1. **Ce qu'un enfant entend reellement, dans l'ordre ou il l'entend.** Aucun garde-fou ne le mesure
+   et aucun ne le mesurera : ce qui sera acquis, c'est un fait date sur un arbre date, pas une
+   propriete tenue par la CI.
+2. **Que le vocabulaire reste unique d'un canal a l'autre** - un seul mot de sortie pour l'oeil et
+   pour l'oreille. Rien ne compare l'affiche a l'annonce.
+3. **Que ce qui est annonce apres une erreur aide l'enfant plutot que de le laisser devant une
+   machine muette.** Le geste 3 ouvre cette question ; il ne la ferme pas.
+
+### Done pedagogique du 2026-08-15, second verdict du jour - le refus de ce matin est LEVE, VALIDE
 
 > **Ce que cette section fait.** Elle **leve le refus prononce plus tot le meme jour** sur son motif
 > unique, apres l'avoir rejoue moi-meme sur la fabrique corrigee. Elle **n'efface pas** ce refus, qui
