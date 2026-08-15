@@ -634,8 +634,8 @@ maintenant a une raison qui ne bouge pas si mes refus futurs changent de valeur.
 
 **Mais 50 % est un plancher de refus, pas une cible - et l'ecart entre les deux est enorme.** Un
 paquet construit sans biais de rang atterrit entre 33 % et 37 % : c'est la borne arithmetique, trois
-rangs ne se partagent pas mieux. Le paquet de tables corrige par `lea-dev` est a **36,4 %**, c'est-
-a-dire au plancher. **Entre 37 % et 50 %, un paquet est vert et n'est pas bon.** Je ne tiendrai pas
+rangs ne se partagent pas mieux. Le paquet de tables corrige par `lea-dev` est a **36,4 %**,
+c'est-a-dire au plancher. **Entre 37 % et 50 %, un paquet est vert et n'est pas bon.** Je ne tiendrai pas
 pour satisfaisant un paquet a 48 % au motif que l'automate est vert, et je demande que le message du
 garde-fou dise cette difference, pour que personne ne lise "vert" comme "sans biais".
 
