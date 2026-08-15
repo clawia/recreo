@@ -1,0 +1,3648 @@
+{
+ "date": "2026-08-14T21:14:48.861Z",
+ "viewport": "360x640",
+ "jeux": {
+  "bandit-manchot-perimetre-cm1": {
+   "nom": "Le perimetre",
+   "total": 67,
+   "signalHorsPli": 67,
+   "indiceHorsPli": 67,
+   "pireCas": {
+    "enonce": "Quel est le périmètre d'un rectangle de longueur 11 cm et de largeur 3 cm ?",
+    "props": [
+     "33 cm",
+     "14 cm",
+     "28 cm"
+    ],
+    "signal": "Ce n'est pas ça. Essaie encore !",
+    "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+    "pli": 640,
+    "basSignal": 715,
+    "basIndice": 799,
+    "basDernierBouton": 599,
+    "hauteurDocument": 831,
+    "defilementNecessaire": true,
+    "signalVisible": false,
+    "indiceVisible": false
+   },
+   "mesures": [
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 11 cm et de largeur 3 cm ?",
+     "props": [
+      "33 cm",
+      "14 cm",
+      "28 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 7 cm et de largeur 2 cm ?",
+     "props": [
+      "9 cm",
+      "14 cm",
+      "18 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Le périmètre d'une figure, c'est...",
+     "props": [
+      "le nombre de ses côtés",
+      "la longueur de son contour",
+      "sa surface intérieure"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Ce n'est pas la surface, c'est le tour.",
+     "pli": 649,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 15 cm ?",
+     "props": [
+      "225 cm",
+      "60 cm",
+      "30 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 10 cm ?",
+     "props": [
+      "20 cm",
+      "100 cm",
+      "40 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 8 cm et de largeur 3 cm ?",
+     "props": [
+      "24 cm",
+      "11 cm",
+      "22 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 11 cm ?",
+     "props": [
+      "121 cm",
+      "22 cm",
+      "44 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 15 cm ?",
+     "props": [
+      "225 cm",
+      "60 cm",
+      "30 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 10 cm ?",
+     "props": [
+      "100 cm",
+      "20 cm",
+      "40 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 20 m et de largeur 5 m ?",
+     "props": [
+      "100 m",
+      "50 m",
+      "25 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 12 m ?",
+     "props": [
+      "24 m",
+      "144 m",
+      "48 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 8 cm et de largeur 3 cm ?",
+     "props": [
+      "11 cm",
+      "22 cm",
+      "24 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 3 cm ?",
+     "props": [
+      "9 cm",
+      "12 cm",
+      "6 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+     "props": [
+      "18 cm",
+      "36 cm",
+      "65 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 15 cm et de largeur 6 cm ?",
+     "props": [
+      "21 cm",
+      "90 cm",
+      "42 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 6 cm et de largeur 4 cm ?",
+     "props": [
+      "10 cm",
+      "24 cm",
+      "20 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 12 m ?",
+     "props": [
+      "144 m",
+      "48 m",
+      "24 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 7 cm ?",
+     "props": [
+      "14 cm",
+      "28 cm",
+      "49 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 15 cm et de largeur 6 cm ?",
+     "props": [
+      "21 cm",
+      "90 cm",
+      "42 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Comment calcule-t-on le périmètre d'un carré ?",
+     "props": [
+      "côté × 2",
+      "côté × 4",
+      "côté × côté"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Un carré a quatre côtés égaux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 769,
+     "basDernierBouton": 599,
+     "hauteurDocument": 801,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 12 m ?",
+     "props": [
+      "144 m",
+      "48 m",
+      "24 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 5 cm ?",
+     "props": [
+      "25 cm",
+      "10 cm",
+      "20 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 7 cm et de largeur 2 cm ?",
+     "props": [
+      "14 cm",
+      "9 cm",
+      "18 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 12 cm et de largeur 5 cm ?",
+     "props": [
+      "60 cm",
+      "34 cm",
+      "17 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 8 cm et de largeur 3 cm ?",
+     "props": [
+      "24 cm",
+      "11 cm",
+      "22 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 14 cm et de largeur 6 cm ?",
+     "props": [
+      "84 cm",
+      "20 cm",
+      "40 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+     "props": [
+      "65 cm",
+      "18 cm",
+      "36 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 9 m ?",
+     "props": [
+      "81 m",
+      "18 m",
+      "36 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 6 cm ?",
+     "props": [
+      "36 cm",
+      "24 cm",
+      "12 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 5 cm ?",
+     "props": [
+      "10 cm",
+      "20 cm",
+      "25 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 15 cm et de largeur 6 cm ?",
+     "props": [
+      "21 cm",
+      "42 cm",
+      "90 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 9 m ?",
+     "props": [
+      "18 m",
+      "81 m",
+      "36 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 10 cm ?",
+     "props": [
+      "100 cm",
+      "40 cm",
+      "20 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 11 cm et de largeur 3 cm ?",
+     "props": [
+      "14 cm",
+      "28 cm",
+      "33 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 6 cm ?",
+     "props": [
+      "36 cm",
+      "12 cm",
+      "24 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 11 cm ?",
+     "props": [
+      "22 cm",
+      "44 cm",
+      "121 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 12 m ?",
+     "props": [
+      "144 m",
+      "48 m",
+      "24 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 9 cm et de largeur 4 cm ?",
+     "props": [
+      "13 cm",
+      "36 cm",
+      "26 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 8 m ?",
+     "props": [
+      "16 m",
+      "64 m",
+      "32 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 14 cm et de largeur 6 cm ?",
+     "props": [
+      "20 cm",
+      "40 cm",
+      "84 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+     "props": [
+      "65 cm",
+      "36 cm",
+      "18 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 7 cm ?",
+     "props": [
+      "49 cm",
+      "28 cm",
+      "14 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 12 m ?",
+     "props": [
+      "24 m",
+      "48 m",
+      "144 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 11 cm ?",
+     "props": [
+      "22 cm",
+      "44 cm",
+      "121 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 15 cm et de largeur 6 cm ?",
+     "props": [
+      "21 cm",
+      "90 cm",
+      "42 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 15 cm ?",
+     "props": [
+      "225 cm",
+      "30 cm",
+      "60 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 11 cm ?",
+     "props": [
+      "22 cm",
+      "121 cm",
+      "44 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 6 cm et de largeur 4 cm ?",
+     "props": [
+      "10 cm",
+      "20 cm",
+      "24 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+     "props": [
+      "18 cm",
+      "65 cm",
+      "36 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 3 cm ?",
+     "props": [
+      "9 cm",
+      "6 cm",
+      "12 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 6 cm ?",
+     "props": [
+      "36 cm",
+      "12 cm",
+      "24 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 20 m et de largeur 5 m ?",
+     "props": [
+      "25 m",
+      "100 m",
+      "50 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 8 cm et de largeur 3 cm ?",
+     "props": [
+      "11 cm",
+      "22 cm",
+      "24 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+     "props": [
+      "65 cm",
+      "18 cm",
+      "36 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 10 cm ?",
+     "props": [
+      "100 cm",
+      "40 cm",
+      "20 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 3 cm ?",
+     "props": [
+      "6 cm",
+      "12 cm",
+      "9 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 8 m ?",
+     "props": [
+      "16 m",
+      "64 m",
+      "32 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Le périmètre d'une figure, c'est...",
+     "props": [
+      "le nombre de ses côtés",
+      "la longueur de son contour",
+      "sa surface intérieure"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Ce n'est pas la surface, c'est le tour.",
+     "pli": 649,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 5 cm ?",
+     "props": [
+      "10 cm",
+      "20 cm",
+      "25 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 7 cm et de largeur 2 cm ?",
+     "props": [
+      "14 cm",
+      "18 cm",
+      "9 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 11 cm ?",
+     "props": [
+      "22 cm",
+      "44 cm",
+      "121 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 11 cm et de largeur 3 cm ?",
+     "props": [
+      "33 cm",
+      "14 cm",
+      "28 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 9 m ?",
+     "props": [
+      "18 m",
+      "81 m",
+      "36 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Le périmètre d'une figure, c'est...",
+     "props": [
+      "sa surface intérieure",
+      "la longueur de son contour",
+      "le nombre de ses côtés"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Ce n'est pas la surface, c'est le tour.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 7 cm ?",
+     "props": [
+      "49 cm",
+      "28 cm",
+      "14 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 6 cm et de largeur 4 cm ?",
+     "props": [
+      "24 cm",
+      "10 cm",
+      "20 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Additionne la longueur et la largeur, puis multiplie par deux.",
+     "pli": 640,
+     "basSignal": 715,
+     "basIndice": 799,
+     "basDernierBouton": 599,
+     "hauteurDocument": 831,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "Quel est le périmètre d'un carré de côté 6 cm ?",
+     "props": [
+      "36 cm",
+      "24 cm",
+      "12 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplie la longueur d'un côté par quatre.",
+     "pli": 640,
+     "basSignal": 667,
+     "basIndice": 751,
+     "basDernierBouton": 551,
+     "hauteurDocument": 783,
+     "defilementNecessaire": true,
+     "signalVisible": false,
+     "indiceVisible": false
+    }
+   ]
+  },
+  "bandit-manchot-conversions-unites-cm1": {
+   "nom": "Les mesures",
+   "total": 61,
+   "signalHorsPli": 0,
+   "indiceHorsPli": 38,
+   "pireCas": {
+    "enonce": "6000 g, combien de kg ?",
+    "props": [
+     "600 kg",
+     "6 kg",
+     "6000000 kg"
+    ],
+    "signal": "Ce n'est pas ça. Essaie encore !",
+    "indice": "1 kg, c'est 1000 g.",
+    "pli": 640,
+    "basSignal": 619,
+    "basIndice": 673,
+    "basDernierBouton": 503,
+    "hauteurDocument": 705,
+    "defilementNecessaire": true,
+    "signalVisible": true,
+    "indiceVisible": false
+   },
+   "mesures": [
+    {
+     "enonce": "700 cl, combien de L ?",
+     "props": [
+      "70000 L",
+      "7 L",
+      "70 L"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 L, c'est 100 cl.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "6000 g, combien de kg ?",
+     "props": [
+      "600 kg",
+      "6 kg",
+      "6000000 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 kg, c'est 1000 g.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "7 tonnes, combien de kg ?",
+     "props": [
+      "700 kg",
+      "7000 kg",
+      "70 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 tonne, c'est 1000 kg.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "4 m, combien de cm ?",
+     "props": [
+      "40 cm",
+      "4000 cm",
+      "400 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 m, c'est 100 cm.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "7 cm, combien de mm ?",
+     "props": [
+      "7000 mm",
+      "70 mm",
+      "700 mm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 cm, c'est 10 mm.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "6 cl, combien de ml ?",
+     "props": [
+      "6000 ml",
+      "60 ml",
+      "600 ml"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 cl, c'est 10 ml.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "2 kg, combien de g ?",
+     "props": [
+      "200 g",
+      "20 g",
+      "2000 g"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 kg, c'est 1000 g.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "7 tonnes, combien de kg ?",
+     "props": [
+      "700 kg",
+      "7000 kg",
+      "70 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 tonne, c'est 1000 kg.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "500 cm, combien de m ?",
+     "props": [
+      "50 m",
+      "5 m",
+      "50000 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 m, c'est 100 cm.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "5000 mm, combien de m ?",
+     "props": [
+      "5000000 m",
+      "5 m",
+      "500 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 m, c'est 1000 mm.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "6000 g, combien de kg ?",
+     "props": [
+      "600 kg",
+      "6000000 kg",
+      "6 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 kg, c'est 1000 g.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "3 tonnes, combien de kg ?",
+     "props": [
+      "30 kg",
+      "300 kg",
+      "3000 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 tonne, c'est 1000 kg.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "3 km, combien de m ?",
+     "props": [
+      "300 m",
+      "30 m",
+      "3000 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 km, c'est 1000 m.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "7 cm, combien de mm ?",
+     "props": [
+      "700 mm",
+      "70 mm",
+      "7000 mm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 cm, c'est 10 mm.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "9000 g, combien de kg ?",
+     "props": [
+      "900 kg",
+      "9000000 kg",
+      "9 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 kg, c'est 1000 g.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "3 tonnes, combien de kg ?",
+     "props": [
+      "300 kg",
+      "3000 kg",
+      "30 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 tonne, c'est 1000 kg.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "5000 ml, combien de L ?",
+     "props": [
+      "500 L",
+      "5000000 L",
+      "5 L"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 L, c'est 1000 ml.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "2 m, combien de mm ?",
+     "props": [
+      "20 mm",
+      "200 mm",
+      "2000 mm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 m, c'est 1000 mm.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "4 L, combien de cl ?",
+     "props": [
+      "40 cl",
+      "4000 cl",
+      "400 cl"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 L, c'est 100 cl.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "700 mm, combien de cm ?",
+     "props": [
+      "7000 cm",
+      "7 cm",
+      "70 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 cm, c'est 10 mm.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "2 m, combien de mm ?",
+     "props": [
+      "20 mm",
+      "200 mm",
+      "2000 mm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 m, c'est 1000 mm.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "2 kg, combien de g ?",
+     "props": [
+      "200 g",
+      "20 g",
+      "2000 g"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 kg, c'est 1000 g.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "6000 g, combien de kg ?",
+     "props": [
+      "600 kg",
+      "6000000 kg",
+      "6 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 kg, c'est 1000 g.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "9000 g, combien de kg ?",
+     "props": [
+      "900 kg",
+      "9000000 kg",
+      "9 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 kg, c'est 1000 g.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "3 km, combien de m ?",
+     "props": [
+      "300 m",
+      "3000 m",
+      "30 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 km, c'est 1000 m.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4000 kg, combien de tonnes ?",
+     "props": [
+      "400 tonnes",
+      "4 tonnes",
+      "4000000 tonnes"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 tonne, c'est 1000 kg.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "500 cm, combien de m ?",
+     "props": [
+      "50 m",
+      "50000 m",
+      "5 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 m, c'est 100 cm.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "9 cl, combien de ml ?",
+     "props": [
+      "9000 ml",
+      "90 ml",
+      "900 ml"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 cl, c'est 10 ml.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4 m, combien de cm ?",
+     "props": [
+      "4000 cm",
+      "400 cm",
+      "40 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 m, c'est 100 cm.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4 L, combien de cl ?",
+     "props": [
+      "4000 cl",
+      "40 cl",
+      "400 cl"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 L, c'est 100 cl.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "5000 kg, combien de tonnes ?",
+     "props": [
+      "5000000 tonnes",
+      "5 tonnes",
+      "500 tonnes"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 tonne, c'est 1000 kg.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "700 cl, combien de L ?",
+     "props": [
+      "70 L",
+      "7 L",
+      "70000 L"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 L, c'est 100 cl.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "6000 g, combien de kg ?",
+     "props": [
+      "6000000 kg",
+      "600 kg",
+      "6 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 kg, c'est 1000 g.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "6000 m, combien de km ?",
+     "props": [
+      "600 km",
+      "6 km",
+      "6000000 km"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 km, c'est 1000 m.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "3 km, combien de m ?",
+     "props": [
+      "30 m",
+      "300 m",
+      "3000 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 km, c'est 1000 m.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "3 L, combien de ml ?",
+     "props": [
+      "30 ml",
+      "3000 ml",
+      "300 ml"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 L, c'est 1000 ml.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "9 cl, combien de ml ?",
+     "props": [
+      "900 ml",
+      "9000 ml",
+      "90 ml"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 cl, c'est 10 ml.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4 L, combien de cl ?",
+     "props": [
+      "40 cl",
+      "400 cl",
+      "4000 cl"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 L, c'est 100 cl.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "6000 g, combien de kg ?",
+     "props": [
+      "600 kg",
+      "6000000 kg",
+      "6 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 kg, c'est 1000 g.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "9 cl, combien de ml ?",
+     "props": [
+      "900 ml",
+      "9000 ml",
+      "90 ml"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 cl, c'est 10 ml.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4 m, combien de cm ?",
+     "props": [
+      "4000 cm",
+      "400 cm",
+      "40 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 m, c'est 100 cm.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4000 ml, combien de L ?",
+     "props": [
+      "400 L",
+      "4 L",
+      "4000000 L"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 L, c'est 1000 ml.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "3 tonnes, combien de kg ?",
+     "props": [
+      "30 kg",
+      "3000 kg",
+      "300 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 tonne, c'est 1000 kg.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "700 cl, combien de L ?",
+     "props": [
+      "70000 L",
+      "70 L",
+      "7 L"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 L, c'est 100 cl.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "7 cm, combien de mm ?",
+     "props": [
+      "7000 mm",
+      "70 mm",
+      "700 mm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 cm, c'est 10 mm.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "3 km, combien de m ?",
+     "props": [
+      "30 m",
+      "300 m",
+      "3000 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 km, c'est 1000 m.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "9 cl, combien de ml ?",
+     "props": [
+      "900 ml",
+      "9000 ml",
+      "90 ml"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 cl, c'est 10 ml.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "2 m, combien de mm ?",
+     "props": [
+      "20 mm",
+      "200 mm",
+      "2000 mm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 m, c'est 1000 mm.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "7 tonnes, combien de kg ?",
+     "props": [
+      "700 kg",
+      "7000 kg",
+      "70 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 tonne, c'est 1000 kg.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "5000 kg, combien de tonnes ?",
+     "props": [
+      "5000000 tonnes",
+      "5 tonnes",
+      "500 tonnes"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 tonne, c'est 1000 kg.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "500 cm, combien de m ?",
+     "props": [
+      "50000 m",
+      "5 m",
+      "50 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 m, c'est 100 cm.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "4000 ml, combien de L ?",
+     "props": [
+      "400 L",
+      "4000000 L",
+      "4 L"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 L, c'est 1000 ml.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "7 tonnes, combien de kg ?",
+     "props": [
+      "70 kg",
+      "700 kg",
+      "7000 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 tonne, c'est 1000 kg.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "2 m, combien de mm ?",
+     "props": [
+      "20 mm",
+      "200 mm",
+      "2000 mm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 m, c'est 1000 mm.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "5000 kg, combien de tonnes ?",
+     "props": [
+      "500 tonnes",
+      "5000000 tonnes",
+      "5 tonnes"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 tonne, c'est 1000 kg.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "7 cm, combien de mm ?",
+     "props": [
+      "7000 mm",
+      "70 mm",
+      "700 mm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 cm, c'est 10 mm.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "9000 g, combien de kg ?",
+     "props": [
+      "9000000 kg",
+      "900 kg",
+      "9 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 kg, c'est 1000 g.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "4 L, combien de cl ?",
+     "props": [
+      "4000 cl",
+      "400 cl",
+      "40 cl"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 L, c'est 100 cl.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "5000 mm, combien de m ?",
+     "props": [
+      "5000000 m",
+      "500 m",
+      "5 m"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 m, c'est 1000 mm.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "3 tonnes, combien de kg ?",
+     "props": [
+      "300 kg",
+      "3000 kg",
+      "30 kg"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 tonne, c'est 1000 kg.",
+     "pli": 640,
+     "basSignal": 619,
+     "basIndice": 673,
+     "basDernierBouton": 503,
+     "hauteurDocument": 705,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": false
+    },
+    {
+     "enonce": "4 m, combien de cm ?",
+     "props": [
+      "40 cm",
+      "4000 cm",
+      "400 cm"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "1 m, c'est 100 cm.",
+     "pli": 640,
+     "basSignal": 571,
+     "basIndice": 625,
+     "basDernierBouton": 455,
+     "hauteurDocument": 657,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    }
+   ]
+  },
+  "bandit-manchot-tables-multiplication-cm1": {
+   "nom": "Les tables de multiplication",
+   "total": 70,
+   "signalHorsPli": 0,
+   "indiceHorsPli": 0,
+   "pireCas": {
+    "enonce": "7 × 7 = ?",
+    "props": [
+     "42",
+     "49",
+     "56"
+    ],
+    "signal": "Ce n'est pas ça. Essaie encore !",
+    "indice": "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois.",
+    "pli": 640,
+    "basSignal": 523,
+    "basIndice": 607,
+    "basDernierBouton": 407,
+    "hauteurDocument": 640,
+    "defilementNecessaire": false,
+    "signalVisible": true,
+    "indiceVisible": true
+   },
+   "mesures": [
+    {
+     "enonce": "7 × 7 = ?",
+     "props": [
+      "42",
+      "49",
+      "56"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4 × 2 = ?",
+     "props": [
+      "6",
+      "4",
+      "8"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 4 : prends le double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "2 × 5 = ?",
+     "props": [
+      "5",
+      "8",
+      "10"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 5 : prends la moitié de la table de 10.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "6 × 6 = ?",
+     "props": [
+      "30",
+      "42",
+      "36"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 6 : prends la table de 5, puis ajoute le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "2 × 2 = ?",
+     "props": [
+      "2",
+      "6",
+      "4"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 2 : additionne le nombre avec lui-même.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "2 × 3 = ?",
+     "props": [
+      "4",
+      "6",
+      "3"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 637,
+     "basDernierBouton": 407,
+     "hauteurDocument": 669,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "8 × 2 = ?",
+     "props": [
+      "14",
+      "8",
+      "16"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 8 : prends le double du double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "7 × 7 = ?",
+     "props": [
+      "42",
+      "49",
+      "48"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "6 × 4 = ?",
+     "props": [
+      "20",
+      "18",
+      "24"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 6 : prends la table de 5, puis ajoute le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "8 × 2 = ?",
+     "props": [
+      "8",
+      "16",
+      "14"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 8 : prends le double du double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "8 × 7 = ?",
+     "props": [
+      "49",
+      "56",
+      "48"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 8 : prends le double du double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "2 × 8 = ?",
+     "props": [
+      "14",
+      "16",
+      "8"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 8 : prends le double du double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "5 × 6 = ?",
+     "props": [
+      "25",
+      "30",
+      "24"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 6 : prends la table de 5, puis ajoute le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "3 × 7 = ?",
+     "props": [
+      "14",
+      "21",
+      "18"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "5 × 3 = ?",
+     "props": [
+      "12",
+      "15",
+      "10"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 5 : prends la moitié de la table de 10.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4 × 2 = ?",
+     "props": [
+      "6",
+      "4",
+      "8"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 4 : prends le double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "6 × 6 = ?",
+     "props": [
+      "35",
+      "42",
+      "36"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 6 : prends la table de 5, puis ajoute le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "9 × 4 = ?",
+     "props": [
+      "27",
+      "36",
+      "32"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 9 : prends la table de 10, puis enlève le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4 × 3 = ?",
+     "props": [
+      "9",
+      "12",
+      "8"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 4 : prends le double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "3 × 6 = ?",
+     "props": [
+      "12",
+      "18",
+      "15"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 6 : prends la table de 5, puis ajoute le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "7 × 7 = ?",
+     "props": [
+      "48",
+      "42",
+      "49"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4 × 2 = ?",
+     "props": [
+      "6",
+      "8",
+      "4"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 4 : prends le double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "9 × 8 = ?",
+     "props": [
+      "64",
+      "63",
+      "72"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 9 : prends la table de 10, puis enlève le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "1 × 6 = ?",
+     "props": [
+      "5",
+      "6",
+      "7"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplier par 1, le nombre ne change pas.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "2 × 2 = ?",
+     "props": [
+      "6",
+      "2",
+      "4"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 2 : additionne le nombre avec lui-même.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "1 × 2 = ?",
+     "props": [
+      "1",
+      "2",
+      "3"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplier par 1, le nombre ne change pas.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "9 × 8 = ?",
+     "props": [
+      "63",
+      "64",
+      "72"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 9 : prends la table de 10, puis enlève le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "7 × 9 = ?",
+     "props": [
+      "56",
+      "54",
+      "63"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 9 : prends la table de 10, puis enlève le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "3 × 3 = ?",
+     "props": [
+      "8",
+      "12",
+      "9"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 637,
+     "basDernierBouton": 407,
+     "hauteurDocument": 669,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "8 × 2 = ?",
+     "props": [
+      "14",
+      "8",
+      "16"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 8 : prends le double du double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "8 × 9 = ?",
+     "props": [
+      "63",
+      "64",
+      "72"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 9 : prends la table de 10, puis enlève le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "3 × 2 = ?",
+     "props": [
+      "3",
+      "4",
+      "6"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 637,
+     "basDernierBouton": 407,
+     "hauteurDocument": 669,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "2 × 6 = ?",
+     "props": [
+      "10",
+      "6",
+      "12"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 6 : prends la table de 5, puis ajoute le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "1 × 3 = ?",
+     "props": [
+      "2",
+      "4",
+      "3"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplier par 1, le nombre ne change pas.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "8 × 8 = ?",
+     "props": [
+      "56",
+      "63",
+      "64"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 8 : prends le double du double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "5 × 8 = ?",
+     "props": [
+      "32",
+      "35",
+      "40"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 8 : prends le double du double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "3 × 10 = ?",
+     "props": [
+      "40",
+      "20",
+      "30"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplier par 10, ajoute un zéro à la fin du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "7 × 9 = ?",
+     "props": [
+      "56",
+      "63",
+      "54"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 9 : prends la table de 10, puis enlève le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "5 × 4 = ?",
+     "props": [
+      "16",
+      "20",
+      "15"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 5 : prends la moitié de la table de 10.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "7 × 5 = ?",
+     "props": [
+      "28",
+      "35",
+      "30"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "3 × 2 = ?",
+     "props": [
+      "4",
+      "6",
+      "3"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 637,
+     "basDernierBouton": 407,
+     "hauteurDocument": 669,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "1 × 10 = ?",
+     "props": [
+      "9",
+      "11",
+      "10"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplier par 1, le nombre ne change pas.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "1 × 9 = ?",
+     "props": [
+      "8",
+      "10",
+      "9"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplier par 1, le nombre ne change pas.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "9 × 10 = ?",
+     "props": [
+      "80",
+      "100",
+      "90"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplier par 10, ajoute un zéro à la fin du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4 × 4 = ?",
+     "props": [
+      "12",
+      "15",
+      "16"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 4 : prends le double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "1 × 6 = ?",
+     "props": [
+      "7",
+      "5",
+      "6"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplier par 1, le nombre ne change pas.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "7 × 8 = ?",
+     "props": [
+      "48",
+      "49",
+      "56"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 8 : prends le double du double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "3 × 6 = ?",
+     "props": [
+      "12",
+      "15",
+      "18"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 6 : prends la table de 5, puis ajoute le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4 × 8 = ?",
+     "props": [
+      "28",
+      "24",
+      "32"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 8 : prends le double du double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "2 × 7 = ?",
+     "props": [
+      "7",
+      "12",
+      "14"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 7 : prends la table de 5, puis ajoute le nombre deux fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "1 × 3 = ?",
+     "props": [
+      "4",
+      "3",
+      "2"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplier par 1, le nombre ne change pas.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "1 × 8 = ?",
+     "props": [
+      "9",
+      "7",
+      "8"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplier par 1, le nombre ne change pas.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4 × 5 = ?",
+     "props": [
+      "15",
+      "16",
+      "20"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 5 : prends la moitié de la table de 10.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "9 × 2 = ?",
+     "props": [
+      "9",
+      "16",
+      "18"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 9 : prends la table de 10, puis enlève le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "2 × 2 = ?",
+     "props": [
+      "3",
+      "4",
+      "6"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 2 : additionne le nombre avec lui-même.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "9 × 5 = ?",
+     "props": [
+      "40",
+      "36",
+      "45"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 9 : prends la table de 10, puis enlève le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "3 × 2 = ?",
+     "props": [
+      "3",
+      "6",
+      "4"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 637,
+     "basDernierBouton": 407,
+     "hauteurDocument": 669,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "5 × 4 = ?",
+     "props": [
+      "16",
+      "20",
+      "15"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 5 : prends la moitié de la table de 10.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4 × 4 = ?",
+     "props": [
+      "12",
+      "16",
+      "20"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 4 : prends le double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "3 × 3 = ?",
+     "props": [
+      "12",
+      "8",
+      "9"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 637,
+     "basDernierBouton": 407,
+     "hauteurDocument": 669,
+     "defilementNecessaire": true,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "5 × 5 = ?",
+     "props": [
+      "20",
+      "25",
+      "30"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 5 : prends la moitié de la table de 10.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "6 × 2 = ?",
+     "props": [
+      "6",
+      "12",
+      "10"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 6 : prends la table de 5, puis ajoute le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4 × 6 = ?",
+     "props": [
+      "18",
+      "20",
+      "24"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 6 : prends la table de 5, puis ajoute le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "2 × 8 = ?",
+     "props": [
+      "8",
+      "14",
+      "16"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 8 : prends le double du double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "3 × 4 = ?",
+     "props": [
+      "9",
+      "12",
+      "8"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 4 : prends le double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "7 × 9 = ?",
+     "props": [
+      "56",
+      "63",
+      "54"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 9 : prends la table de 10, puis enlève le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "8 × 8 = ?",
+     "props": [
+      "56",
+      "64",
+      "63"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 8 : prends le double du double du double du nombre.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "1 × 7 = ?",
+     "props": [
+      "6",
+      "8",
+      "7"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Multiplier par 1, le nombre ne change pas.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "5 × 5 = ?",
+     "props": [
+      "30",
+      "24",
+      "25"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 5 : prends la moitié de la table de 10.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    },
+    {
+     "enonce": "4 × 9 = ?",
+     "props": [
+      "27",
+      "32",
+      "36"
+     ],
+     "signal": "Ce n'est pas ça. Essaie encore !",
+     "indice": "Table de 9 : prends la table de 10, puis enlève le nombre une fois.",
+     "pli": 640,
+     "basSignal": 523,
+     "basIndice": 607,
+     "basDernierBouton": 407,
+     "hauteurDocument": 640,
+     "defilementNecessaire": false,
+     "signalVisible": true,
+     "indiceVisible": true
+    }
+   ]
+  }
+ }
+}
