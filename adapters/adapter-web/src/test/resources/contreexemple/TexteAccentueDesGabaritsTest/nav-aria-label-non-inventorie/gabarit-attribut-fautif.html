@@ -1,0 +1,6 @@
+<!-- Jeu fautif du garde-fou (ADR-0013, ADR-0039, S12-5) : le perimetre de ce garde-fou couvre
+     desormais les attributs par lesquels HTML et ARIA annoncent du texte a une aide technique, pas
+     seulement les noeuds de texte. Cet element ne porte aucun noeud de texte : si ce jeu fait
+     rougir le garde-fou, c'est necessairement l'attribut qui l'a fait, jamais le reste de son
+     perimetre - c'est exactement la forme du defaut mesure sur aria-label="Menu principal". -->
+<nav aria-label="Menu jeunesse"></nav>

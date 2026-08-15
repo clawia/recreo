@@ -26,12 +26,17 @@
      ADR-0022 / S6-9 : son libelle est "Les jeux", le seul mot de sortie de l'application, et il
      n'est pas visible sur un ecran de jeu - la feuille maison le masque des que la zone de contenu
      porte le marqueur "ecran-de-jeu". L'element reste permanent dans le document : c'est sa
-     visibilite qui depend de l'etat, jamais sa presence (DEC-0012, S6-1). -->
+     visibilite qui depend de l'etat, jamais sa presence (DEC-0012, S6-1).
+     S12-5 : nadia-prof refuse l'ancien aria-label="Menu principal" sur cette zone (motif : un seul
+     lien n'est pas un menu, "principal" n'est pas un mot d'enfant de six ans, et l'application n'a
+     qu'un seul mot de sortie, deja "Les jeux"). Aucun garde-fou n'exige de libelle non vide sur
+     cette zone (avis de faisabilite de theo-archi, s13) : l'attribut est retire plutot que
+     reformule. -->
 <header class="entete">
     <div class="container entete-contenu">
         <img th:src="@{/favicon.ico}" alt="" class="icone-entete">
         <h1 class="nom-site">Recreo</h1>
-        <nav class="menu" aria-label="Menu principal">
+        <nav class="menu">
             <a class="btn lien-accueil" data-role="sortie" href="/"
                hx-post="/retour" hx-target="#jeu" hx-swap="innerHTML">Les jeux</a>
         </nav>
