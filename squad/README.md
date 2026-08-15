@@ -264,6 +264,18 @@ d'`ADR-0009`, et aucun automate ne les executait : seule la main d'un agent le f
 `theo-archi` en ecrivant le sien (`outils/mesurer-rendu-test.sh`), qui a ajoute l'etape de CI
 manquante, perimetre derive du repertoire `outils/*-test.sh` plutot qu'une liste de trois noms.
 
+**A chaque verdict qui s'appuie sur un releve automatique cite comme preuve, le rapport de
+cloture de Yanis nomme explicitement la propriete que ce releve peut structurellement voir et
+celle qu'il ne peut pas, avant de le citer** (amendement s12, cloture de s12). Propose par
+`yanis-qa`, sur le meme modele que son amendement de s11 pour le critere enumere. En s12, une
+seconde instance de la meme famille - une mesure creditee pour une propriete qu'elle ne peut pas
+voir - s'ajoute a celle deja connue depuis s0 (la position a l'ecran, creditee pour le rang par
+valeur) : la clause 4 d'`ADR-0040` prouve qu'un point de focus est **declare** dans le document,
+pas qu'il est **atteint** ni **visible** pour l'enfant. Contrairement au critere enumere,
+`ADR-0013` n'impose ici aucun marqueur obligatoire equivalent a une auto-declaration : `yanis-qa`
+ne peut donc pas enumerer mecaniquement les candidats, et ecrit lui-meme que sa recherche est une
+lecture ciblee, pas une preuve d'exhaustivite.
+
 **5. Relecture.** Le `relecteur-pedagogique` passe sur les livrables non executables. Il corrige
 ce qui est sans ambiguite, signale le reste.
 
