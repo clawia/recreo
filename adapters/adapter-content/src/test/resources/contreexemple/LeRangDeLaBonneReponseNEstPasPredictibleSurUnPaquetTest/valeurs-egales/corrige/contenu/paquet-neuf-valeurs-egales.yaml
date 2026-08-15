@@ -1,0 +1,15 @@
+# Le meme jeu fautif, ses trois valeurs rendues distinctes : le garde-fou ne doit plus rien
+# reprocher. Texte de fixture, jamais affiche a un enfant.
+schema: 1
+id: paquet-neuf-valeurs-egales
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Competence de fixture"
+items:
+  - enonce: "Decompose 40 705 en valeurs de position."
+    bonneReponse: "40 000 + 700 + 5"
+    distracteurs: ["4 000 + 700 + 5", "20 000 + 700 + 5"]
+    indice: "Indice de fixture."
