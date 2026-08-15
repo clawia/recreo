@@ -11,12 +11,14 @@
 - **Regle executable** :
   - la lecture elle-meme :
     `adapters/adapter-content/src/test/java/com/recreo/adapter/content/LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest.java`
-    (methode `valeurDe`, et ses quatre mises a l'epreuve `...Milliers...` et `...Durees...`, lot
-    `lea-dev` fusionne en `31ca444`) ;
+    (methode `lireValeur`, qui rend la valeur **et** le reste, et son abrege `valeurDe` ; mises a
+    l'epreuve `...Milliers...`, `...Durees...` et `...ValeursCoincident...`, lots `lea-dev`
+    fusionnes en `31ca444` et `74cc9e7`) ;
   - ses deux angles morts, ecrits par cet ADR :
     `adapters/adapter-content/src/test/java/com/recreo/adapter/content/LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest.java`
-    (methodes `aucunPaquetNEstJugeSurUnePartieDeSesItemsSansQueLeDepotLeDeclare` et
-    `lesTroisPropositionsDUnItemDuDomainePortentLaMemeUnite`).
+    (methodes `aucunPaquetNEstJugeSurUnePartieDeSesItemsSansQueLeDepotLeDeclare`,
+    `lesTroisPropositionsDUnItemDuDomaineLaissentLeMemeResteApresLecture` et sa mise a l'epreuve
+    derivee `chaqueItemReelDontUnResteEstReecritFaitEchouerLaClause`).
 
 ## Contexte
 
@@ -141,21 +143,23 @@ propositions, dont **20** dans le domaine ; les deux autres sont ses deux items 
 citent a leur tour - porte donc sur 20 items, pas sur 22. La declaration ne corrige pas le paquet ;
 elle rend l'ecart visible au lieu de le laisser deduire.
 
-**5. Les trois propositions d'un item du domaine portent la meme unite.** La lecture ne lit que le
-nombre : "20 cm" vaut 20 et "1 m" vaut 1. Trois propositions d'unites differentes recoivent donc un
-ordre faux - non pas absent, **faux** - et le point 4 ne peut pas le voir, puisque les trois valeurs
+**5. Les trois propositions d'un item du domaine laissent le meme reste apres lecture de leur
+valeur** (*amende le 2026-08-15 ; la clause disait "portent la meme unite" et comparait un texte, ce
+qui n'est pas la meme chose - voir la section "Amendement", point 2*). Le **reste** est ce que la
+lecture n'a pas consomme, rendu par elle : vide sur un nombre, une somme ou une duree, qu'elle lit en
+entier ; "cm" sur "20 cm", qu'elle n'entame que jusqu'au nombre. Deux restes differents disent que
+les trois valeurs ne mesurent pas la meme chose : "20 cm" vaut 20 et "1 m" vaut 1, et l'ordre est
+alors faux - non pas absent, **faux** - ce que le point 4 ne peut pas voir, puisque les trois valeurs
 existent. Le catalogue porte deja un paquet de conversions (`cm1-mesures`, competence *"convertir des
 unites de longueur, masse, contenance"*), dont les 24 items ecrivent tous une unite : l'objet de
-cette clause est a un item de distance.
+cette clause est a un item de distance. Le reste n'est pas une unite et la clause ne dit pas
+"unite" : une unite ecrite est le cas le plus courant de reste non vide, ce n'est pas le seul.
 
 ## Regle executable
 
 Fichier : `adapters/adapter-content/src/test/java/com/recreo/adapter/content/LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest.java`
 
 ```java
-/** Les paquets juges sur une partie de leurs items, avec le nombre exact d'items ecartes. */
-private static final Map<String, Integer> PAQUETS_A_ITEMS_ECARTES = Map.of("cm1-perimetre", 2);
-
 @Test
 void aucunPaquetNEstJugeSurUnePartieDeSesItemsSansQueLeDepotLeDeclare() {
     assertThat(itemsEcartesParPaquet(CONTENU_DE_PRODUCTION, ""))
@@ -163,15 +167,26 @@ void aucunPaquetNEstJugeSurUnePartieDeSesItemsSansQueLeDepotLeDeclare() {
 }
 
 @Test
-void lesTroisPropositionsDUnItemDuDomainePortentLaMemeUnite() {
-    assertThat(itemsAUnitesMelangees(CONTENU_DE_PRODUCTION, "")).isEmpty();
+void lesTroisPropositionsDUnItemDuDomaineLaissentLeMemeResteApresLecture() {
+    assertThat(itemsAResteDeLectureDifferent(CONTENU_DE_PRODUCTION, "")).isEmpty();
 }
 ```
 
-La lecture n'est pas recopiee : ce garde-fou appelle
-`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest.valeurDe`, dont la visibilite passe de
-privee a celle du paquet dans le meme commit. Deux lectures qui derivent l'une de l'autre finissent
-par diverger, et c'est alors le garde-fou qui garde la mauvaise.
+`PAQUETS_A_ITEMS_ECARTES` declare `cm1-perimetre` (2 items ecartes) et, depuis le lot de `marc-dev`,
+`cm1-grands-nombres` (14). Le reste compare par la seconde clause est rendu par la lecture elle-meme :
+
+```java
+record Lue(long valeur, String reste) { }
+
+static Lue lireValeur(String proposition) { ... }   // reste vide sur une duree et sur une somme,
+                                                    // suffixe non lu sur un nombre de tete
+```
+
+La lecture n'est **ni recopiee ni doublee** : ce garde-fou appelle
+`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest.lireValeur`, dont la visibilite est celle du
+paquet. Deux lectures qui derivent l'une de l'autre finissent par diverger, et c'est alors le
+garde-fou qui garde la mauvaise - **c'est exactement ce qui est arrive** entre le 2026-08-15 et
+l'amendement du meme jour, sur cette phrase-la, dans ce fichier-la.
 
 **Pourquoi ce n'est pas une regle ArchUnit** : ArchUnit juge des classes et leurs dependances ; la
 propriete porte sur le contenu YAML charge par le chargeur reel. Le mecanisme automatique est un test
@@ -187,7 +202,10 @@ pom agregateur ; comptees sur l'arbre de ce commit).
 2. **derivation totale** - tout item a trois propositions est classe dans le domaine ou hors du
    domaine, sans troisieme sort. Un paquet introuvable, un repertoire vide sont des echecs ;
 3. **mise a l'epreuve** - deux paquets neufs jamais livres, un par clause, chacun avec sa version
-   corrigee qui doit redevenir verte.
+   corrigee qui doit redevenir verte, **plus** - amendement du 2026-08-15 - une mutation derivee de
+   **chaque** item du domaine de la production pour la clause 5, decrite a la fin de la section
+   "Amendement". Un paquet neuf prouve que la clause mord sur ce que son auteur imagine ; la mutation
+   derivee prouve qu'elle mord sur ce que le depot ecrit.
 
 **Morsure mesuree, methode comprise.** JDK 21.0.10, worktree dedie hors de l'arbre du depot,
 `mvn -B -pl adapters/adapter-content -am test` - jamais un `-pl` seul, voir la section suivante -
@@ -198,6 +216,10 @@ depot restaure apres chaque mutation, verdict lu dans le message d'echec :
 | M1 | `PAQUETS_A_ITEMS_ECARTES` vide | **1 echec sur 7**, *"Expecting empty but was: {"cm1-perimetre"=2}"* |
 | M2 | declaration a 3 items ecartes au lieu de 2 | **1 echec sur 7**, la meme clause, qui oppose la mesure a la declaration |
 | M3 | un distracteur reel de `cm1-mesures` reecrit dans une autre unite de meme grandeur (`"4000 cm"` devient `"40 m"`) | **1 echec sur 20**, la clause d'unite, nommant l'item ; **les 12 tests du garde-fou de rang restent verts** |
+
+*M3 est rejouee apres l'amendement du 2026-08-15 (morsure A1) : la clause du reste rougit sur la meme
+mutation, et le garde-fou de rang ne reste plus vert - le garde-fou d'egalite, neuf depuis, rougit
+aussi, `"40 cm"` et `"40 m"` se lisant tous deux 40.*
 
 M3 est la mesure qui compte, et elle est plus forte que je ne l'attendais : les deux ecritures
 designent la meme longueur, mais le rang classe de cet item **bascule** d'intermediaire a "la plus
@@ -251,6 +273,85 @@ mesure tient. La sonde n'est pas commitee ; ses chiffres sont ici.
 
 **Ce que la ratification ne couvre pas** est ecrit en non-preuves 8, 9 et 10 ci-dessous.
 
+### 2. La clause 5 exigeait l'identite d'un texte la ou elle voulait dire l'identite d'une unite
+
+`lea-dev` a trouve le defaut en verifiant, et ne l'a pas touche - hors de son perimetre, et c'est ma
+clause. Elle a raison sur les deux points, et sur le diagnostic.
+
+**Ce que la clause faisait.** Elle comparait, entre les trois propositions, **le texte qui suit le
+premier nombre**, lu par un motif ecrit dans le garde-fou - les chiffres, le signe et les trois
+ecritures du separateur de milliers, retires en tete. Ce
+motif etait une **seconde lecture**, ecrite a cote de la lecture de valeur, et la Javadoc de cet
+ADR interdisait deja explicitement ce montage a propos de `valeurDe` : *"deux lectures qui derivent
+l'une de l'autre finissent par diverger, et c'est alors le garde-fou qui garde la mauvaise."* Je
+l'avais ecrit, et je l'avais fait quand meme, dans le meme fichier.
+
+**Quand elles ont diverge.** Des que la lecture de valeur a su lire une somme. Sur
+`600 000 + 40`, la lecture de valeur consomme tout et rend 600 040 ; le motif d'a cote s'arretait au
+premier nombre et rendait `+ 40`. Tant que les items "decomposer" ne faisaient varier que leur
+premier terme, ce residu etait identique entre les trois **par coincidence** - la clause etait verte
+sans rien prouver, exactement la forme de vert que cet ADR a ete ecrit pour refuser. Le contenu
+corrige de `marc-dev` fait varier un terme suivant : les trois residus different, et la clause
+declenche un **faux positif d'unite sur un paquet qui n'ecrit aucune unite**.
+
+Mesure de ce faux positif, contenu de `marc-dev` (`066f857`) depose en production, clause d'avant
+l'amendement : **1 echec sur 7**, `lesTroisPropositionsDUnItemDuDomainePortentLaMemeUnite`, nommant
+les **sept** items "decomposer" du paquet, dont
+
+```
+paquet cm1-grands-nombres : les trois propositions [600 000 + 40, 600 000 + 4, 600 000 + 400]
+ne portent pas la meme unite ([+ 40, + 4, + 400])
+```
+
+C'etait le seul rouge restant du lot de `marc-dev` une fois celui de `lea-dev` fusionne.
+
+**Ce que la clause devient.** La lecture rend desormais, avec la valeur, **ce qu'elle n'a pas
+consomme** - le `reste`. La clause exige que les trois propositions d'un item du domaine laissent le
+**meme reste**.
+
+> **Clause 5 (amendee).** Les trois propositions d'un item du domaine laissent le meme reste apres
+> lecture de leur valeur. Le reste est le complement exact de la lecture, rendu par elle : vide sur
+> un nombre, une somme ou une duree, qu'elle consomme en entier ; `"cm"` sur `"20 cm"`, qu'elle
+> n'entame que jusqu'au nombre.
+
+Trois proprietes, et ce sont les trois demandees :
+
+1. **Ce que la clause gardait, elle le garde.** Une proposition en `kg` face a une en `g` laisse des
+   restes differents et rougit, comme avant.
+2. **Elle ne lit ni ne convertit les unites**, ce que la non-preuve 2 disait deja et continue de
+   dire : elle ne sait pas que `1 m` vaut `100 cm`, elle sait seulement que le texte laisse derriere
+   n'est pas le meme.
+3. **Rien n'est enumere** (`ADR-0039`). Il n'y a aucune liste d'unites connues : le reste est
+   **derive** de la lecture, et l'ensemble des restes que la production ecrit est **mesure** sur le
+   corpus par la mise a l'epreuve ci-dessous, jamais ecrit a la main.
+
+**Ce que la clause corrigee dit de plus, et que je n'avais pas cherche.** Un reste non vide ne
+signifie pas "une unite" : il signifie "la lecture n'a pas tout lu". Sur `600 000 - 40`, elle rend
+600 000 et laisse `- 40` : la valeur est fausse, et deux ecritures soustractives qui different
+laissent des restes differents, donc rougissent. La clause attrape ainsi une famille plus large que
+celle qu'elle visait, sans qu'aucune ligne la nomme. Le mot "unite" quitte le nom de la clause pour
+cette raison : il decrivait le cas le plus courant, pas la propriete.
+
+### Morsures de la clause amendee, sur du materiau reel, dans les deux sens
+
+JDK 21.0.10, worktree dedie hors de l'arbre du depot, depot restaure apres chaque mutation.
+
+| # | Sens | Materiau et mutation | Resultat |
+|---|---|---|---|
+| A1 | **rouge** | `cm1-mesures`, distracteur reel `"4000 cm"` reecrit `"40 m"` dans le fichier de production - la mutation M3 rejouee | **1 echec**, la clause nomme l'item : *"les trois propositions [400 cm, 40 cm, 40 m] ne laissent pas le meme reste apres lecture de leur valeur ([cm, m])"*. Le garde-fou d'egalite rougit **en plus** : *"[400 cm, 40 cm, 40 m] se lisent a la meme valeur (400, 40, 40)"* |
+| A2 | **rouge** | la lecture mutee pour rendre toujours un reste vide, production intacte | **2 echecs sur 8** : la mise a l'epreuve derivee et le paquet neuf a unites melangees. Une clause qui ne compare plus rien ne peut plus passer |
+| B1 | **vert** | contenu de `marc-dev` (`066f857`) depose en production, clause amendee | **0 echec** sur les deux classes concernees, **23 tests**. Les sept items "decomposer" laissent tous un reste vide - une somme est consommee en entier |
+| B2 | **vert** | le meme contenu, clause d'avant l'amendement | **1 echec sur 7**, les sept items nommes : la preuve que B1 corrige un faux positif et n'endort pas la clause |
+
+**La mise a l'epreuve derivee, et pourquoi elle remplace ma fixture.** Le paquet neuf
+`paquet-neuf-unites-melangees` est ecrit de ma main : il prouve que la clause mord sur ce que
+j'imagine, ce qui est la faute de s05 exactement. La mise a l'epreuve neuve part de **chaque** item
+du domaine de la production, et remplace le reste d'un seul de ses distracteurs par un autre reste
+**que la production ecrit ailleurs** - `"4000 cm"` devient `"4000 m"`, M3 appliquee a tous les items
+a la fois. Deux faits sont exiges ensemble : la production telle qu'elle est ecrite ne laisse aucun
+item a restes differents, et **chacun** de ses items mutes en laisse un. L'ensemble des restes est
+mesure sur le corpus, aucune unite n'est nommee.
+
 ## Ce que cette definition ne couvre pas, nommement
 
 1. **Un paquet entierement hors du domaine n'est juge par rien, et ce n'est pas declare.** Quatre
@@ -262,8 +363,10 @@ mesure tient. La sonde n'est pas commitee ; ses chiffres sont ici.
    la clause qui le fermerait obligerait a declarer les quatre paquets de francais et a en ajouter un
    a chaque ouverture de ligne, pour un risque qu'aucun objet du depot ne porte. **Ce qui me fera
    changer d'avis** : le premier paquet qui sort du domaine sans que ce soit voulu.
-2. **L'unite n'est ni lue ni convertie, elle est seulement exigee identique.** "20 cm" et "20 m" ont
-   la meme valeur pour ce depot. La clause 5 rend cette cecite inoffensive **a l'interieur d'un
+2. **L'unite n'est ni lue ni convertie ; ce n'est meme pas l'unite qui est exigee identique, c'est le
+   reste** (*reecrit par l'amendement du 2026-08-15 - la formulation d'origine parlait d'unite parce
+   que la clause croyait comparer des unites*). "20 cm" et "20 m" ont la meme valeur pour ce depot.
+   La clause 5 rend cette cecite inoffensive **a l'interieur d'un
    item** ; elle ne dit rien entre deux items du meme paquet, ou la comparaison n'a de toute facon
    pas lieu. Le jour ou un item pedagogiquement legitime demandera de comparer deux unites -
    *"coche la plus grande longueur : 1 m, 50 cm, 200 mm"*, ce qui est une question de CM1 tout a fait
@@ -297,11 +400,14 @@ mesure tient. La sonde n'est pas commitee ; ses chiffres sont ici.
    propositions ; il appelle `valeurDe` ou il justifie dans un `ADR` pourquoi il ne peut pas.
 8. **La somme ne connait qu'un operateur, et c'est `+`.** "600 000 - 40" n'est pas une somme : la
    lecture retombe sur le nombre de tete, rend 600 000, et laisse "- 40" derriere elle. La valeur est
-   alors fausse. Ce n'est pas invisible - la clause 5 amendee rougit des que deux propositions d'un
-   item laissent des restes differents, et deux ecritures soustractives qui different laissent
-   forcement des restes differents - mais ce n'est pas lu non plus. **Ce qui me fera changer d'avis** :
-   le premier item de production qui ecrit une difference dans une proposition. Aucun ne le fait au
-   2026-08-15.
+   alors fausse. La clause 5 amendee en attrape une partie - deux ecritures soustractives dont la
+   partie retranchee differe laissent des restes differents et rougissent - **et je n'irai pas plus
+   loin que ca** : quand la partie retranchee est identique entre les trois propositions, le reste
+   l'est aussi, la clause est muette, et l'ordre se trouve conserve parce que la meme quantite est
+   retranchee partout. Ce dernier point est une **observation, pas une preuve** : rien ici ne
+   demontre qu'un suffixe identique preserve l'ordre pour toute ecriture qu'un enseignant pourrait
+   choisir. **Ce qui me fera changer d'avis** : le premier item de production qui ecrit autre chose
+   qu'une somme ou un nombre dans une proposition. Aucun ne le fait au 2026-08-15.
 9. **Une somme mal formee n'a pas de valeur, et rien ne distingue ce silence d'une proposition
    litterale.** "40 000 + sept cents" tombe hors du domaine par le meme chemin que "soixante-dix
    mille dix-huit". La clause 4 le compte comme un item ecarte a declarer, ce qui le rend visible ;
@@ -313,6 +419,34 @@ mesure tient. La sonde n'est pas commitee ; ses chiffres sont ici.
     ne dit rien. **Ce controle-la est pedagogique et appartient a `nadia-prof`**, qui l'exerce
     distracteur par distracteur ; je ne l'encode pas, et l'ecrire ici est la seule facon de ne pas
     laisser croire que la lecture s'en charge.
+
+### Ce que l'amendement du 2026-08-15 ne prouve pas
+
+11. **Plus la lecture avale, moins la clause 5 peut parler, et c'est structurel.** Le reste est le
+    complement de la lecture : chaque cas neuf ajoute a `lireValeur` rend vide un reste qui ne
+    l'etait pas, et retire donc de la vue de la clause toute une famille d'ecritures. C'est
+    exactement ce que l'amendement vient de faire aux sommes, a bon droit ici puisque la lecture les
+    lit **correctement**. Mais si un cas futur consommait une ecriture en la lisant **mal** - une
+    multiplication prise pour une somme - la clause deviendrait muette sur precisement l'ecriture mal
+    lue, sans qu'aucun diff ne le montre. C'est le prix de n'avoir qu'une seule lecture, et je le
+    paie sciemment : deux lectures divergent, une lecture unique se tait. **Obligation qui en
+    decoule** : tout cas ajoute a `lireValeur` s'accompagne de la mesure de ce que la clause 5 cesse
+    de voir. Cet amendement la fournit pour la somme (morsures B1 et B2).
+12. **Le reste vide est desormais atteint par trois ecritures, et la clause ne les distingue pas.**
+    "1 h 30" (90), "90" et "40 000 + 50" laissent tous les trois un reste vide. La non-preuve 3
+    disait deja cela de la duree et du nombre nu ; la somme s'y ajoute. Aucun item du depot ne
+    melange ces ecritures au 2026-08-15, et le garde-fou d'egalite rougirait si deux d'entre elles se
+    lisaient a la meme valeur dans un meme item - mais si elles se lisent a des valeurs differentes,
+    rien ne verifie que la comparaison ait un sens.
+13. **La mutation derivee prouve que la clause voit un reste change, pas qu'elle voit un ordre
+    faux.** Elle mute un distracteur reel et exige un rouge ; elle ne verifie pas que le rang de
+    l'item bascule. Un paquet dont **les trois** propositions porteraient la meme unite fausse -
+    tous les items en "cm" alors que la question porte sur des metres - laisse un reste identique,
+    reste vert, et rien ici ne peut le voir. C'est `nadia-prof`, comme la non-preuve 5.
+14. **Le mot "unite" a disparu de la clause, la cecite aux unites n'a pas disparu du depot.**
+    L'amendement change ce que la clause compare, pas ce que la lecture comprend : la non-preuve 2
+    reste vraie mot pour mot, et le jour ou un item legitime demandera de comparer 1 m, 50 cm et
+    200 mm, la clause rougira toujours, et il faudra toujours un `ADR` pour trancher.
 
 ## Consequences
 
@@ -332,6 +466,10 @@ mesure tient. La sonde n'est pas commitee ; ses chiffres sont ici.
   `adapter-content` passe de 102 a 109 tests, le depot de 468 a 475.
 - **Aucune ligne de production ne change.** Ce lot ne touche que des tests, un contre-exemple et deux
   fichiers de decision.
+- **Amendement du 2026-08-15** : un test de plus, la mise a l'epreuve derivee. Le depot passe de 486
+  a **487 tests**, le compte des regles ArchUnit reste a **28** avec sa methode. Aucune ligne de
+  production ne change non plus, et le lot de `marc-dev` cesse d'etre bloque par un rouge qui n'etait
+  pas le sien.
 
 ## Alternatives considerees
 

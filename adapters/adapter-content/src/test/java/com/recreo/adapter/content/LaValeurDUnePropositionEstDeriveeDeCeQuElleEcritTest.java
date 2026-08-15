@@ -1,5 +1,6 @@
 package com.recreo.adapter.content;
 
+import com.recreo.adapter.content.LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest.Lue;
 import com.recreo.domain.content.Question;
 import org.junit.jupiter.api.Test;
 
@@ -10,17 +11,16 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * ADR-0041 : la valeur d'une proposition est derivee de ce que la proposition ecrit, et une
- * proposition qui n'ecrit ni un nombre ni une duree n'a pas de valeur - elle est hors du domaine
- * des proprietes qui comparent des propositions. La lecture elle-meme vit dans
- * {@link LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest#valeurDe} et ses quatre mises a
- * l'epreuve (milliers, durees, et leurs versions corrigees) sont ecrites la-bas.
+ * proposition qui n'ecrit ni un nombre, ni une somme, ni une duree n'a pas de valeur - elle est hors
+ * du domaine des proprietes qui comparent des propositions. La lecture elle-meme vit dans
+ * {@link LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest#lireValeur} et ses mises a
+ * l'epreuve (milliers, durees, sommes, et leurs versions corrigees) sont ecrites la-bas.
  *
  * <p>Ce garde-fou-ci ne juge pas la lecture : il garde ses <b>deux angles morts</b>, ceux par
  * lesquels un paquet reste vert sans etre juge, ou est juge sur un ordre faux.</p>
@@ -32,12 +32,24 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *       garde-fou de rang rend un taux et le presente comme celui du paquet, alors qu'il ne porte
  *       que sur les items qui lui restent. Un paquet ne peut donc etre juge sur une partie de ses
  *       items que si le depot le declare, avec le nombre exact d'items ecartes.</li>
- *   <li><b>L'unite ignoree.</b> La lecture ne lit que le nombre : {@code "20 cm"} vaut 20 et
- *       {@code "1 m"} vaut 1. Trois propositions qui ne portent pas la meme unite sont donc
- *       ordonnees a l'envers sans que rien ne le dise - une valeur existe, elle est simplement
- *       fausse, ce que l'exclusion silencieuse ci-dessus ne peut pas voir. Les trois propositions
- *       d'un item du domaine portent la meme unite.</li>
+ *   <li><b>Le reste ignore.</b> La lecture ne consomme pas toujours toute la proposition :
+ *       {@code "20 cm"} vaut 20 et laisse {@code "cm"}, {@code "1 m"} vaut 1 et laisse {@code "m"}.
+ *       Ce qu'elle laisse n'entre pas dans la valeur ; si ce reste differe d'une proposition a
+ *       l'autre, les trois valeurs ne mesurent pas la meme chose et leur ordre est faux, sans que
+ *       rien ne le dise - une valeur existe, elle est simplement fausse, ce que l'exclusion
+ *       silencieuse ci-dessus ne peut pas voir. Les trois propositions d'un item du domaine
+ *       laissent le meme reste.</li>
  * </ul>
+ *
+ * <p><b>Pourquoi le reste et non l'unite</b> (ADR-0041, amendement du 2026-08-15). La clause visait
+ * l'identite d'une <b>unite</b> et exigeait l'identite d'un <b>texte</b> : ce qui suivait le premier
+ * nombre, lu par un motif ecrit ici, a cote de la lecture de valeur. Les deux lectures ont diverge
+ * des que la lecture de valeur a su lire une somme : sur {@code "600 000 + 40"} elle consomme tout,
+ * le motif d'ici s'arretait au premier nombre et rendait {@code "+ 40"}. Sept items "decomposer"
+ * reels devenaient alors des faux positifs d'une clause d'unite, sur un paquet qui n'ecrit aucune
+ * unite. Le reste est desormais rendu par la lecture elle-meme, dont il est le complement exact : il
+ * n'y a plus deux lectures a faire diverger. Une unite ecrite reste le cas le plus courant de reste
+ * non vide, ce n'est pas le seul.</p>
  *
  * <p><b>Ce que ces deux clauses ne couvrent pas</b> est ecrit dans ADR-0041, section "Ce que cette
  * definition ne couvre pas", et n'est pas paraphrase ici.</p>
@@ -45,7 +57,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * <p>ADR-0013, les trois obligations : le perimetre vient du balayage de {@code contenu/} et les
  * items du chargeur reel ; tout item a trois propositions est classe dans le domaine ou hors du
  * domaine, sans troisieme sort ; la morsure se prouve sur deux paquets neufs jamais livres, un par
- * clause, chacun avec sa version corrigee qui doit redevenir verte.</p>
+ * clause, chacun avec sa version corrigee qui doit redevenir verte, et - pour la clause du reste -
+ * sur une mutation de <b>chaque</b> item reel du domaine
+ * ({@link #chaqueItemReelDontUnResteEstReecritFaitEchouerLaClause}).</p>
  *
  * <p>ADR-0039 : les deux criteres sont calcules, jamais enumeres. {@link #PAQUETS_A_ITEMS_ECARTES}
  * n'est pas un critere mais un <b>constat exact</b> : la mesure et la declaration doivent etre
@@ -62,14 +76,6 @@ class LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest {
 
     private static final String CONTRE_EXEMPLE_CLASSPATH =
             "/contreexemple/LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest";
-
-    /**
-     * Ce que la lecture de valeur consomme en tete d'une proposition : les chiffres, le signe et
-     * les trois ecritures du separateur de milliers qu'elle retire. Ce qui reste est l'unite, au
-     * sens de ce garde-fou - {@code "cm"} sur {@code "20 cm"}, la chaine vide sur {@code "20"} et
-     * sur toute duree, que la lecture consomme entierement.
-     */
-    private static final Pattern NOMBRE_DE_TETE = Pattern.compile("^[-\\d\\u00A0\\u202F ]+");
 
     /**
      * Les paquets de production que la lecture de valeur juge sur une partie de leurs items, avec
@@ -96,18 +102,22 @@ class LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest {
             Map.of("cm1-perimetre", 2, "cm1-grands-nombres", 14);
 
     /** Un item a trois propositions, vu par la lecture de valeur. */
-    private record Lecture(List<String> propositions, List<Long> valeurs) {
+    private record Lecture(List<String> propositions, List<Lue> lues) {
 
         boolean dansLeDomaine() {
-            return valeurs.stream().noneMatch(java.util.Objects::isNull);
+            return lues.stream().noneMatch(java.util.Objects::isNull);
         }
 
-        Set<String> unites() {
-            Set<String> unites = new LinkedHashSet<>();
-            for (String proposition : propositions) {
-                unites.add(NOMBRE_DE_TETE.matcher(proposition.strip()).replaceFirst("").strip());
+        /**
+         * Ce que la lecture n'a pas consomme, sur chacune des trois propositions. Ce n'est pas une
+         * seconde lecture du texte : c'est le complement exact de la premiere, rendu par elle.
+         */
+        Set<String> restes() {
+            Set<String> restes = new LinkedHashSet<>();
+            for (Lue lue : lues) {
+                restes.add(lue.reste());
             }
-            return unites;
+            return restes;
         }
     }
 
@@ -121,10 +131,12 @@ class LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest {
             }
             List<String> propositions = List.of(item.bonneReponse(),
                     item.distracteurs().get(0), item.distracteurs().get(1));
-            List<Long> valeurs = propositions.stream()
-                    .map(LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest::valeurDe)
-                    .toList();
-            lectures.add(new Lecture(propositions, valeurs));
+            List<Lue> lues = new ArrayList<>();
+            for (String proposition : propositions) {
+                lues.add(LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest
+                        .lireValeur(proposition));
+            }
+            lectures.add(new Lecture(propositions, lues));
         }
         return lectures;
     }
@@ -168,29 +180,33 @@ class LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest {
                 .containsExactlyInAnyOrderEntriesOf(PAQUETS_A_ITEMS_ECARTES);
     }
 
-    static List<String> itemsAUnitesMelangees(Path racine, String racineClasspath) {
+    static List<String> itemsAResteDeLectureDifferent(Path racine, String racineClasspath) {
         List<String> defauts = new ArrayList<>();
         for (String paquet : paquets(racine)) {
             for (Lecture lecture : lecturesDe(paquet, racineClasspath)) {
-                if (!lecture.dansLeDomaine() || lecture.unites().size() <= 1) {
+                if (!lecture.dansLeDomaine() || lecture.restes().size() <= 1) {
                     continue;
                 }
                 defauts.add(String.format(
-                        "paquet %s : les trois propositions %s ne portent pas la meme unite (%s), et"
-                                + " la lecture de valeur ne lit que leur nombre - l'ordre qu'elle en"
-                                + " tire est celui des nombres, pas celui des grandeurs",
-                        paquet, lecture.propositions(), lecture.unites()));
+                        "paquet %s : les trois propositions %s ne laissent pas le meme reste apres"
+                                + " lecture de leur valeur (%s) - la valeur ne porte donc pas sur la"
+                                + " meme chose d'une proposition a l'autre, et l'ordre qu'elle en"
+                                + " tire n'est pas celui des grandeurs comparees",
+                        paquet, lecture.propositions(), lecture.restes()));
             }
         }
         return defauts;
     }
 
     @Test
-    void lesTroisPropositionsDUnItemDuDomainePortentLaMemeUnite() {
-        assertThat(itemsAUnitesMelangees(CONTENU_DE_PRODUCTION, ""))
-                .as("ADR-0041 : la lecture de valeur ignore l'unite. Trois propositions d'unites"
-                        + " differentes recoivent donc un ordre faux, sans qu'aucun garde-fou ne"
-                        + " puisse s'en apercevoir - une valeur existe, elle est seulement fausse")
+    void lesTroisPropositionsDUnItemDuDomaineLaissentLeMemeResteApresLecture() {
+        assertThat(itemsAResteDeLectureDifferent(CONTENU_DE_PRODUCTION, ""))
+                .as("ADR-0041 : ce que la lecture de valeur n'a pas consomme n'entre pas dans la"
+                        + " valeur. Si ce reste differe d'une proposition a l'autre, les trois"
+                        + " valeurs ne mesurent pas la meme chose et leur ordre est faux, sans"
+                        + " qu'aucun autre garde-fou ne puisse s'en apercevoir - une valeur existe,"
+                        + " elle est seulement fausse. Une unite ecrite ('cm' face a 'm') est le cas"
+                        + " le plus courant de reste different, ce n'est pas le seul")
                 .isEmpty();
     }
 
@@ -227,7 +243,7 @@ class LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest {
      */
     @Test
     void unPaquetNeufAUnitesMelangeesFaitEchouerLeGardeFou() {
-        assertThat(itemsAUnitesMelangees(CONTRE_EXEMPLE.resolve("unites"),
+        assertThat(itemsAResteDeLectureDifferent(CONTRE_EXEMPLE.resolve("unites"),
                 CONTRE_EXEMPLE_CLASSPATH + "/unites"))
                 .isNotEmpty()
                 .anyMatch(defaut -> defaut.contains("paquet-neuf-unites-melangees"));
@@ -236,9 +252,96 @@ class LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest {
     /** Le meme paquet, une fois ses trois propositions ramenees a une seule unite par item. */
     @Test
     void leMemePaquetUneFoisSesUnitesAccordeesPasseLeGardeFou() {
-        assertThat(itemsAUnitesMelangees(CONTRE_EXEMPLE.resolve("unites").resolve("corrige"),
+        assertThat(itemsAResteDeLectureDifferent(CONTRE_EXEMPLE.resolve("unites").resolve("corrige"),
                 CONTRE_EXEMPLE_CLASSPATH + "/unites/corrige"))
                 .isEmpty();
+    }
+
+    /**
+     * Le meme texte, dont le reste que la lecture a laisse est remplace par un autre. Sur
+     * {@code "4000 cm"} et un autre reste {@code "m"}, rend {@code "4000 m"} : la mutation M3
+     * d'ADR-0041, ecrite comme une operation sur ce que le depot ecrit deja plutot que comme une
+     * proposition inventee.
+     */
+    private static String resteReecrit(String proposition, String reste, String autreReste) {
+        String texte = proposition.strip();
+        String sansReste = texte.substring(0, texte.length() - reste.length()).strip();
+        return autreReste.isEmpty() ? sansReste : sansReste + " " + autreReste;
+    }
+
+    /** Tous les restes non vides que la production ecrit reellement, jamais une liste de ma main. */
+    private static Set<String> restesEcritsParLaProduction() {
+        Set<String> restes = new LinkedHashSet<>();
+        for (String paquet : paquets(CONTENU_DE_PRODUCTION)) {
+            for (Lecture lecture : lecturesDe(paquet, "")) {
+                if (!lecture.dansLeDomaine()) {
+                    continue;
+                }
+                lecture.restes().stream().filter(reste -> !reste.isEmpty()).forEach(restes::add);
+            }
+        }
+        return restes;
+    }
+
+    /**
+     * ADR-0003, et la lecon de s05 : une fixture ecrite par l'auteur d'une regle ressemble a ce
+     * qu'il imagine. Le paquet neuf ci-dessus prouve que la clause mord ; il ne prouve pas qu'elle
+     * morde sur ce que le depot ecrit. Cette mise a l'epreuve-ci part de <b>chaque</b> item du
+     * domaine de la production, et remplace le reste d'un seul de ses distracteurs par un autre
+     * reste <b>que la production ecrit ailleurs</b> - "4000 cm" devient "4000 m", ce qui est la
+     * mutation M3 d'ADR-0041 appliquee a tous les items a la fois. Aucune unite n'est nommee ici :
+     * l'ensemble des restes est mesure sur le corpus (ADR-0039).
+     *
+     * <p>Deux faits sont exiges ensemble : la production telle qu'elle est ecrite ne laisse aucun
+     * item a restes differents, et <b>chacun</b> de ses items mutes en laisse un. Le second est ce
+     * qui distingue une clause qui garde d'une clause qui se tait.</p>
+     */
+    @Test
+    void chaqueItemReelDontUnResteEstReecritFaitEchouerLaClause() {
+        Set<String> restesReels = restesEcritsParLaProduction();
+        assertThat(restesReels)
+                .as("la mutation n'a rien a ecrire si la production n'ecrit aucun reste")
+                .isNotEmpty();
+
+        List<String> mutantsRestesMuets = new ArrayList<>();
+        int mutants = 0;
+        for (String paquet : paquets(CONTENU_DE_PRODUCTION)) {
+            for (Lecture lecture : lecturesDe(paquet, "")) {
+                if (!lecture.dansLeDomaine()) {
+                    continue;
+                }
+                String reste = lecture.lues().get(2).reste();
+                String autreReste = restesReels.stream()
+                        .filter(candidat -> !candidat.equals(reste))
+                        .findFirst()
+                        .orElseThrow();
+                List<String> mutees = new ArrayList<>(lecture.propositions());
+                mutees.set(2, resteReecrit(mutees.get(2), reste, autreReste));
+                mutants++;
+                if (restesDe(mutees).size() <= 1) {
+                    mutantsRestesMuets.add(paquet + " : " + mutees);
+                }
+            }
+        }
+
+        assertThat(mutants)
+                .as("aucun item du domaine a muter : la clause ne garde plus rien")
+                .isPositive();
+        assertThat(mutantsRestesMuets)
+                .as("un item reel dont un seul distracteur change de reste doit etre vu par la"
+                        + " clause. S'il ne l'est pas, la clause compare autre chose que ce que la"
+                        + " lecture a laisse")
+                .isEmpty();
+    }
+
+    private static Set<String> restesDe(List<String> propositions) {
+        Set<String> restes = new LinkedHashSet<>();
+        for (String proposition : propositions) {
+            Lue lue = LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest
+                    .lireValeur(proposition);
+            restes.add(lue == null ? null : lue.reste());
+        }
+        return restes;
     }
 
     /**
