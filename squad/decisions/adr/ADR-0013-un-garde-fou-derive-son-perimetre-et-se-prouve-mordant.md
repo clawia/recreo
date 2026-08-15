@@ -283,6 +283,65 @@ Ce qu'elle ne garantit pas, et je le dis franchement : rien n'oblige mecaniqueme
 plus difficile a oublier qu'une phrase dans un ADR. Si le plafond est encore a 6 a la cloture de
 s04, cet ADR aura echoue sur ce point et il faudra le dire.
 
+> **Amendement du 2026-08-15 (s13) - ce paragraphe adossait une clause en vigueur a un document qui
+> n'existait pas, et il faut le dire au lieu de le republier une cinquieme fois.**
+>
+> Le fait, avec sa methode : `confirmation-archunit.md` existe sous `squad/sprints/<sprint>/` pour
+> **huit** sprints clos (s00, s01, s02, s03, s05, s06, s07, s08) et manque pour **cinq** (s04, puis
+> s09 a s12, quatre d'affilee). Compte etabli par `git ls-files 'squad/sprints/*/confirmation-archunit.md'`
+> sur `9430cfd`, croise avec la liste des repertoires de `squad/sprints/` ; l'absence de s04 est
+> anterieure et documentee - ce sprint n'avait aucun dossier de ceremonie, et je l'avais ecrit a
+> l'epoque dans le fichier de s03 plutot que d'inventer un dossier.
+>
+> **La phrase ci-dessus etait donc un souhait, exactement au sens de l'axiome du depot** : elle
+> nommait comme mecanisme de descente un geste humain, qui a manque cinq fois sur treize. Je ne la
+> repare pas en promettant mieux. Je lui substitue ce qui fait le travail, et c'est une seule ligne
+> d'assertion : **le plafond ne se contente plus de majorer la dette, il vaut exactement sa taille.**
+>
+> ```java
+> assertThat(DETTE_DE_BALAYAGE).hasSize(PLAFOND_DE_DETTE);   // etait hasSizeLessThanOrEqualTo
+> ```
+>
+> Ce que ce changement ferme, et pourquoi il n'est pas cosmetique : un plafond superieur a la dette
+> est une **place libre**, et une place libre laisse entrer en silence le garde-fou non eprouve
+> suivant - le plafond ne rougit pas, personne ne voit rien, et l'exemption devient un perimetre
+> enumere deguise, ce que les trois puces ci-dessus affirment qu'elle n'est pas. Avec l'egalite, la
+> troisieme puce devient vraie dans les deux sens : entrer dans la dette **et** en sortir demandent
+> tous deux un diff sur le plafond, donc une relecture.
+>
+> Ce que ce changement ne fait toujours pas, et je ne le maquille pas : **il n'oblige toujours pas le
+> plafond a descendre.** Aucune assertion ne peut exiger qu'une dette soit payee. Ce qu'il obtient est
+> plus modeste et verifiable : la dette ne peut plus grandir en silence, et le plafond ne peut plus
+> mentir sur sa taille. La descente reste un choix, elle n'est simplement plus adossee a un document.
+>
+> **Morsure mesuree, sur le depot reel et non sur une fixture** : `PLAFOND_DE_DETTE` porte de 2 a 3,
+> la dette laissee a 2 - c'est-a-dire exactement l'etat qu'autorisait l'assertion precedente.
+> `mvn -B -pl bootstrap -am test -Dtest=LesGardeFousSontMisALEpreuveTest`, JDK 21.0.10 : **1 echec sur
+> 10**, `laDetteNePeutNiGrandirNiPourrir`, message *"le plafond vaut exactement la taille de la dette.
+> Un plafond superieur a la dette est une place libre, donc pas un cliquet"*. Plafond restaure a 2,
+> suite verte.
+>
+> Le meme geste est applique a `PLAFOND_DE_CRITERES_ENUMERES` (`ADR-0039`), qui portait la meme
+> assertion permissive pour la meme raison.
+>
+> **Etat des cinq cliquets du depot au 2026-08-15**, verifie et non suppose - chaque exemption nomme
+> encore quelque chose de reel, ce que les tests eux-memes assertent :
+>
+> | cliquet | dette | plafond | jeu |
+> |---|---|---|---|
+> | `LesGardeFousSontMisALEpreuveTest.DETTE_DE_BALAYAGE` | 2 | 2 | **verrouille** par cet amendement |
+> | `LesGardeFousSontMisALEpreuveTest.CRITERES_ENUMERES_DECLARES` | 1 | 1 | **verrouille** par cet amendement |
+> | `LeRangDeLaBonneReponse...Test.DETTE_DE_RANG` | 2 | 2 | nul aujourd'hui, assertion encore permissive |
+> | `LeRangDeLaBonneReponse...Test.DETTE_DE_SEUIL_MINIMUM` | 3 | 3 | nul aujourd'hui, assertion encore permissive |
+> | `ChaquePaquetPorteUnIndiceTest.DETTE_DE_CONTENU` | 0 | 0 | nul par construction |
+>
+> Les deux cliquets d'`adapter-content` n'ont **aucun jeu aujourd'hui** et ne sont donc pas un defaut
+> vivant. Je ne les modifie pas dans ce commit pour une raison de lot et non de doctrine : le lot de
+> S13-1 doit deja corriger la lecture de valeur de ce meme fichier, et faire converger deux agents sur
+> une ligne dont le changement est un non-evenement aujourd'hui coute un conflit pour rien. **Le
+> resserrement des deux y est du, dans le meme commit** ; s'il n'y est pas, c'est une dette a inscrire
+> au rapport de s13.
+
 ### Ce que la correction de `yanis-qa` doit a cette regle, et ce qu'elle lui doit encore
 
 Le commit `164b662` fait deriver les boutons controles des elements `<button>` et `<a href>`

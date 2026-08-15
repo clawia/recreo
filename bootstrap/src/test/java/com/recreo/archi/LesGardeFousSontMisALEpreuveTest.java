@@ -278,8 +278,11 @@ class LesGardeFousSontMisALEpreuveTest {
     @Test
     void laDetteNePeutNiGrandirNiPourrir() {
         assertThat(DETTE_DE_BALAYAGE)
-                .as("ADR-0013 : la dette de garde-fous non eprouves ne remonte jamais")
-                .hasSizeLessThanOrEqualTo(PLAFOND_DE_DETTE);
+                .as("ADR-0013, amendement du 2026-08-15 : le plafond vaut exactement la taille de la "
+                        + "dette. Un plafond superieur a la dette est une place libre, donc pas un "
+                        + "cliquet : il laisse rentrer en silence le garde-fou non eprouve suivant. "
+                        + "Retirer un nom de la dette oblige a baisser le plafond dans le meme diff")
+                .hasSize(PLAFOND_DE_DETTE);
 
         List<String> existants = balayagesDeProduction(racineDuDepot()).stream()
                 .map(SourceDeTest::nom)
@@ -324,8 +327,9 @@ class LesGardeFousSontMisALEpreuveTest {
     @Test
     void leRecensementDesCriteresEnumeresNeRemonteJamais() {
         assertThat(CRITERES_ENUMERES_DECLARES)
-                .as("ADR-0039 : le nombre de criteres enumeres assumes ne remonte jamais")
-                .hasSizeLessThanOrEqualTo(PLAFOND_DE_CRITERES_ENUMERES);
+                .as("ADR-0039, meme amendement du 2026-08-15 que PLAFOND_DE_DETTE : le plafond vaut "
+                        + "exactement la taille du recensement, sans place libre")
+                .hasSize(PLAFOND_DE_CRITERES_ENUMERES);
     }
 
     /**
