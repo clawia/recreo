@@ -105,3 +105,36 @@ du referentiel ; `squad/programme/MATRICE-couverture.md` n'a aucune ligne a modi
   executes par cette decision.
 - `DEC-0003` : non modifiee ; son "Engagement pour la suite" doit desormais se lire a la lumiere de
   `DEC-0028`, qui le ferme pour le motif qu'il nommait.
+
+## Complement du 2026-08-15 (s12, cloture) - la phrase plus large d'`ADR-0001` : je la garde
+
+`theo-archi` a amende `ADR-0001` le 2026-08-14 pour fermer le seul declencheur que cette decision
+nommait (conserver la progression d'un enfant entre deux sessions), mais il a refuse d'etendre seul
+la fermeture a une phrase plus large du meme document - le point 2 de sa decision d'origine, qui
+cree `adapter-persistence` "dans le meme commit que la premiere story qui a besoin **d'ecrire
+quelque part**". Il a raison de me la renvoyer plutot que de trancher a ma place : "ecrire quelque
+part" est une question de perimetre produit, pas d'architecture.
+
+**Ma reponse : je garde la phrase telle qu'elle est ecrite, je ne l'etends pas, et je ne la porte
+pas devant l'utilisatrice a ce stade.** Trois motifs :
+
+1. **Ce que l'utilisatrice a dit couvre exactement un besoin, pas tous les besoins d'ecriture
+   durable.** Sa phrase - "je ne souhaite pas persister une partie, ce n'est pas le but de recreo" -
+   ferme la conservation d'une partie. Elle n'a pas dit, et je ne lui fais pas dire, que rien ne
+   serait jamais ecrit sur un disque pour un autre motif (un compte adulte, un contenu edite hors du
+   code). Etendre sa phrase au-dela de ce qu'elle a tranche serait exactement le geste que je me
+   suis interdit dans cette decision au point 2 : "ce sera un motif distinct, a justifier de nouveau
+   le moment venu."
+2. **Aucune story, aujourd'hui, ne demande d'ecrire quoi que ce soit de durable pour un motif autre
+   que celui deja ferme.** Fermer par anticipation une phrase qu'aucun besoin concret ne teste
+   serait decider a vide - et `ADR-0001` nomme deja ce risque precis comme ecarte a sa creation
+   ("un module sans usage est un module sans test"). Rien n'a change sur ce point.
+3. **Porter la question devant l'utilisatrice suppose d'avoir quelque chose a lui demander.** Je
+   n'ai, a ce jour, aucun besoin produit qui reclame une ecriture durable hors persistance de
+   partie ; lui demander de trancher un cas hypothetique reviendrait a lui faire arbitrer une
+   question que le produit ne pose pas encore. Si un tel besoin se presente, il sera instruit pour
+   lui-meme, avec son propre motif, comme `DEC-0028` le prevoit - et c'est a ce moment-la, pas
+   avant, que la question ira devant elle si elle depasse mon mandat.
+
+La phrase de `theo-archi` dans `ADR-0001` ("Je laisse donc cette phrase intacte et vivante") est
+donc confirmee du cote produit : rien n'y est ferme au-dela du declencheur deja clos par ce document.
