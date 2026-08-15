@@ -195,7 +195,22 @@
   meme libelle porte deux consequences differentes selon l'ecran, et l'ecran de confirmation ne montre
   a l'enfant rien de ce qu'il va perdre, pas meme son score. Ce n'est pas un Done pedagogique.
   Degrade sur un point : **aucun enfant n'a vu cet ecran**. Cinq points actionnables CONF-1 a CONF-5.
-- **Derniere mise a jour** : 2026-08-14
+  **Done pedagogique de la ligne de calcul mental : REFUSE le 2026-08-15, apres avoir joue 1 320
+  manches.** Le Done accorde le 2026-08-05 au titre de s01 est **remis en cause et retire**, pour un
+  motif unique : **la bonne reponse est le nombre intermediaire des trois sur 66,5 % des manches**,
+  donc un enfant qui presse toujours celui du milieu gagne deux manches sur trois sans additionner -
+  au-dessus des 64,6 % pour lesquels j'ai refuse les tables la veille. La cause n'est pas le contenu
+  mais **la fabrique** `AdditionsBorneesContentSource`, dont la loi de tirage des distracteurs
+  (quatre voisins, deux gardes, quatre paires sur six a cheval) rend le rang intermediaire
+  majoritaire sur **tout** contenu qu'elle produira. **Deux de mes propres constats sont corriges** :
+  ma phrase de s00 sur "la valeur du milieu" n'avait jamais ete mesuree et confondait la position a
+  l'ecran, battue par la mecanique, avec le rang par valeur ; et le 63,1 % du releve de dette est
+  sous-evalue, la valeur est **66,5 %**. **Aucun autre verdict de cette fiche n'est touche**, le jeu
+  reste au catalogue, et son exactitude arithmetique est reconfirmee sur 900 manches sans une faute.
+  **Reserve neuve du 2026-08-15** : le seuil de 50 % est garde comme barre de refus mais ne voit pas
+  le rang presque vide (`cp-soustractions` a 8,3 %, `cp-complements-10` a 9,1 %), et deux paquets du
+  catalogue sont exactement sur la barre a 50,0 %.
+- **Derniere mise a jour** : 2026-08-15 (Done pedagogique REFUSE sur la ligne de calcul mental)
 
 ## Competences visees
 
@@ -263,7 +278,261 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Reserve N, pressee au clavier sur l'increment livre, du 2026-08-14 - LEVEE sur la moitie que j'avais dit lever la, l'autre moitie reste ouverte et inchangee - le plus recent de cette fiche
+### Done pedagogique du 2026-08-15 - REFUSE sur la ligne "Calcul mental - additions dans la limite de 10" - le Done de s01 est remis en cause, aucun verdict n'est efface - le plus recent de cette fiche
+
+> **Ce que cette section fait, et ce qu'elle ne fait pas.** Elle **retire le Done pedagogique**
+> accorde le 2026-08-05 sur la ligne de calcul mental de CP, pour **un seul motif**, celui du rang de
+> la bonne reponse. Elle ne touche a **aucun** autre verdict de cette fiche : ni les Done de s02, s05,
+> s06, s07, s08, s10, s11 sur la forme, le texte, le signal, la machine, le cabinet et la sortie, ni
+> les refus anterieurs et leurs levees. Tous restent lisibles a leur place. **Le verdict de s00 et
+> celui de s01 sont justes sur ce qu'ils ont examine** ; ce que je retire n'est pas leur exactitude,
+> c'est la conclusion de couverture qu'ils portaient, qu'une propriete non mesuree contredit.
+
+- **Verdict** : **REFUSE**. Le Done pedagogique de cette ligne est retire. `camille-po` repasse la
+  ligne mathematiques / CP / "Calcul mental - additions dans la limite de 10 (puis 20)" de
+  `couvert-valide` a **`en cours`**, conformement a la regle de la matrice. Ce refus renvoie
+  l'increment a `camille-po`, qui en fait du backlog ; **il ne bloque pas le sprint suivant**, et le
+  jeu **reste au catalogue** : il n'est ni faux ni dangereux, il est trop facile a contourner.
+- **Auteur** : nadia-prof. **Increment** : branche `s12-nadia-done`, tete `81da897`, arbre propre.
+  Le garde-fou generique de `lea-dev` (branche `s12-lea-tables-rang`) n'est pas dans mon arbre :
+  je juge le jeu tel qu'il est livre, et je mesure la propriete moi-meme.
+- **Mode** : **j'ai joue**, ce n'est pas un audit degrade. Jar reconstruit depuis mon propre worktree
+  avec un JDK 21 avant toute mesure, application lancee, **1 320 manches reellement jouees** sur
+  **86 parties completes**, plus 136 manches sur "Le perimetre" et 150 sur chacun des autres jeux
+  numeriques du catalogue. Le serveur a ete arrete par son PID de JVM reel apres la derniere mesure.
+
+#### 1. Ce que j'ai mesure, en jouant
+
+Trois enfants imaginaires qui ne calculent jamais, chacun jouant 300 manches - ils ne lisent pas
+l'enonce, ils comparent les trois nombres affiches et pressent toujours celui du meme rang :
+
+| Strategie sans calcul | Manches gagnees | Taux | Hasard |
+|---|---|---|---|
+| toujours **la plus petite** des trois valeurs | 54 / 300 | 18,0 % | 33,3 % |
+| toujours **l'intermediaire** des trois valeurs | **202 / 300** | **67,3 %** | 33,3 % |
+| toujours **la plus grande** des trois valeurs | 51 / 300 | 17,0 % | 33,3 % |
+
+Puis le comptage du rang de la bonne reponse sur les **900 manches** de ces trois series reunies,
+independamment de ce qui a ete presse : **la plus petite 167 (18,6 %), l'intermediaire 599
+(66,6 %), la plus grande 134 (14,9 %)**. Les 65 enonces possibles ont tous ete vus.
+
+Et le calcul exact sur la fabrique, pour ne pas dependre d'un echantillon : **66,54 %**.
+
+**Les trois methodes concordent** - 66,54 % au calcul, 66,6 % au comptage sur 900 manches jouees,
+67,3 % au resultat d'un enfant qui applique la regle. C'est la meme concordance que sur les tables,
+ou j'avais 64,6 % au calcul et 64,4 % en jouant. Je retiens **66,5 %**.
+
+#### 2. Deux de mes propres constats sont faux, et je les corrige avant de m'appuyer dessus
+
+**Le premier est le mien, et c'est lui qui a laisse passer le defaut.** En s00 j'ai ecrit : *"sa
+position varie (releve sur 41 manches : 16 fois en premier, 14 fois en deuxieme, 11 fois en
+troisieme, donc aucune strategie de position exploitable), [...] et la bonne reponse n'est pas
+systematiquement la valeur du milieu."*
+
+Les deux moities de cette phrase n'ont pas le meme statut, et j'ai laisse la seconde profiter de la
+premiere.
+
+- Le releve 16/14/11 est **exact et toujours vrai**, mais il porte sur **la position a l'ecran**.
+  J'ai relu `BanditManchotSession.melanger` : les trois propositions sont battues avant d'etre
+  rendues. La position est donc uniforme **par construction**, et aucun comptage de position, si
+  long soit-il, ne pourra jamais reveler ce defaut-ci.
+- *"n'est pas systematiquement la valeur du milieu"* est **litteralement vrai** - 66,5 % n'est pas
+  100 % - et **n'a jamais ete mesure**. C'etait une impression, posee a cote d'un chiffre, dans une
+  phrase qui se lisait comme si le chiffre la couvrait. Elle a ferme la question pour douze sprints.
+
+**Position a l'ecran et rang par valeur sont deux proprietes differentes.** J'ai credite l'une pour
+l'autre. C'est mon erreur, elle est anterieure a tout le travail de l'equipe sur ce jeu, et elle est
+la vraie raison pour laquelle un Done a tenu douze sprints sur un jeu contournable deux fois sur
+trois.
+
+**Le second constat a corriger n'est pas le mien : le 63,1 % du releve de dette de `lea-dev` est
+sous-evalue.** La valeur est **66,5 %**, pas 63,1 %. Sa methode classe **un tirage par identifiant
+d'item distinct**, soit 41 sur 65 : sur un paquet enumere c'est le compte exact du paquet, et je le
+confirme - j'ai reproduit ses trois autres chiffres **a la decimale** par un comptage independant
+(`cm1-mesures` 54,2 %, `cm1-perimetre` 90,0 %, `cm1-tables-multiplication` 64,6 %). Mais
+`cp-additions-jusqu-a-10` n'est pas un paquet enumere : c'est une fabrique, ou chaque item retire
+ses distracteurs au hasard a chaque tirage. Un tirage par identifiant y est un **echantillon de 65**,
+pas un compte. **La ligne de dette doit porter 66,5 %.** Ce n'est pas un detail de decimale : a
+63,1 % le paquet paraissait moins grave que les tables que j'ai refusees a 64,6 %, et **il l'est
+davantage**. C'est le paquet le plus contournable du catalogue.
+
+#### 3. Le motif, un seul, et il est actionnable
+
+**Sur 66,5 % des manches, la bonne reponse est le nombre intermediaire des trois affiches.** Un
+enfant qui ne sait pas additionner et presse toujours celui du milieu gagne **deux manches sur
+trois** - sept manches sur une partie de dix - sans avoir additionne une seule fois.
+
+**Le meme raisonnement que sur les tables s'applique, et je reponds a la question telle qu'elle est
+posee.** Le verbe de cette ligne est **"calcul mental"**. Il nomme un acte de **production** :
+l'enfant doit fabriquer la somme. Un paquet ou deux manches sur trois se gagnent **sans rien
+fabriquer** ne travaille pas le calcul mental ; il travaille la comparaison de trois nombres. C'est
+mot pour mot ce que j'ai oppose aux tables le 2026-08-14 - *"un paquet de tables ou deux manches sur
+trois se gagnent sans rappeler quoi que ce soit ne travaille pas le rappel"* - et le verbe est ici
+**plus exigeant**, pas moins : produire demande davantage que retrouver.
+
+**Ce qui distingue quand meme les deux lignes, et que je dis pour ne pas faire passer en contrebande
+un motif qui ne s'applique pas.** Mon refus des tables portait sur **deux** faits, pas un :
+
+1. le taux majoritaire (64,6 %) - **il se transpose ici, et en pire : 66,5 %** ;
+2. *"la bonne reponse n'est jamais la plus petite des trois, sur la totalite des 99 items"*, donc une
+   proposition eliminee gratuitement a chaque manche - **il ne se transpose pas.** Ici les trois
+   rangs sont tous occupes (18,6 / 66,6 / 14,9), aucun n'est vide, et la regle "n'en choisis jamais
+   une" n'existe pas. **Ce second motif tombe, et je ne m'en sers pas.**
+
+**Et la seule chose qui pouvait vraiment separer le CP du CM1, examinee et ecartee.** Sur les tables,
+la regle gagnante etait "presse le plus grand" : un enfant de 9 ans la trouve et l'execute sans
+effort, bien plus vite qu'il ne retrouve 7 x 8. Ici la regle gagnante est "presse celui du milieu",
+qui oblige a **ranger** les trois nombres, donc coute plus cher. J'ai pris cet argument au serieux,
+et il ne sauve pas le Done, pour deux raisons :
+
+- **Ranger trois nombres inferieurs a 13 est une competence de CP**, inscrite dans le meme
+  referentiel, deux lignes au-dessus de celle-ci : *"Comparer et ranger des nombres jusqu'a 100"*.
+  Le raccourci est donc **executable au niveau vise**. Il n'est pas hors de portee, il est seulement
+  moins immediat.
+- **C'est l'enfant en difficulte qui a le plus a y gagner.** Celui pour qui "6 + 4" est un obstacle
+  est precisement celui pour qui ranger 8, 9 et 10 n'en est pas un. Le jeu lui offre une sortie
+  moins couteuse que la competence qu'il est cense travailler, et il la lui offre sept fois sur dix.
+  Un exerciseur qui recompense la strategie d'evitement de l'eleve fragile fait le contraire de ce
+  qu'on lui demande.
+
+Je note l'attenuation - le contournement est moins immediat qu'au CM1 - et elle ne change pas le
+verdict. Elle changerait le verdict si le raccourci etait hors de portee du niveau ; il ne l'est pas.
+
+#### 4. La cause n'est pas le contenu, c'est la fabrique
+
+J'ai lu `AdditionsBorneesContentSource.distracteurs` pour verifier moi-meme ce qui m'etait rapporte,
+et c'est exact. Pour une somme `s`, la fabrique dresse les quatre voisins `s-1`, `s-2`, `s+1`, `s+2`,
+les bat, et en garde deux. Il y a **six paires possibles, toutes egalement probables** :
+
+| Paire retenue | Rang de la bonne reponse | Nombre de cas |
+|---|---|---|
+| `{s-1, s-2}` | la plus grande | 1 sur 6 |
+| `{s+1, s+2}` | la plus petite | 1 sur 6 |
+| `{s-1, s+1}`, `{s-1, s+2}`, `{s-2, s+1}`, `{s-2, s+2}` | **l'intermediaire** | **4 sur 6** |
+
+**4 sur 6, soit 66,67 %.** Le seul ecart vient des sommes de 1, ou la liste devient `{0, 2, 3, 4}` et
+le taux tombe a 50 % ; ces sommes ne font que **0,78 %** des manches (7 sur 900), d'ou les 66,54 %.
+Le chiffre n'est donc pas un accident de tirage : **c'est la loi de la fabrique**, et elle est
+constante.
+
+**Consequence que l'equipe ne doit pas manquer : ce n'est pas un paquet a retoucher, c'est un
+procede.** `cp-additions-jusqu-a-10` est aujourd'hui le seul contenu produit par cette fabrique,
+mais **tout contenu qu'elle produira demain portera le meme biais**, y compris un contenu neuf,
+ecrit avec soin, par quelqu'un qui n'aura pas lu cette fiche. Un paquet corrige a la main ne
+protegerait de rien.
+
+**Et la correction ne coute rien de pedagogique - je le dis parce que c'est l'objection que je me
+suis faite a moi-meme.** On pourrait craindre que corriger le rang abime les distracteurs : la paire
+`{s-1, s+1}` est excellente, elle attrape l'enfant qui compte un de trop **et** celui qui en compte
+un de moins. Mais `{s-1, s-2}` et `{s+1, s+2}` sont exactement aussi plausibles - un de trop, deux
+de trop - et restent dans la meme fenetre de plus ou moins deux. **Aucune famille d'erreur reelle
+n'est perdue** ; seule la frequence des paires change. C'etait deja le cas sur les tables, ou le
+voisin du dessus valait le voisin du dessous.
+
+**Je decris le symptome et la cible, jamais le moyen** : le moyen appartient a `theo-archi` et a
+`lea-dev`. La cible : qu'aucun rang ne soit majoritaire sur ce que la fabrique produit.
+
+#### 5. Ce qui reste acquis, et que ce refus ne remet pas en cause
+
+Je l'ecris pour que la reprise soit courte et pour qu'aucun credit deja gagne ne soit reouvert.
+
+1. **Exactitude arithmetique : 900 manches sur 900 justes.** Aucune somme superieure a 10, aucun
+   operande hors 0-10, aucune proposition negative, jamais deux propositions egales, et le verdict du
+   jeu est juste **exactement** quand la valeur pressee vaut la somme. Mon constat de s00 - zero
+   faute - tient sur un echantillon **quinze fois plus grand**.
+2. **La part d'operandes nuls tient : 13,0 %** (117 manches sur 900), contre les 12,9 % de s01 et la
+   cible de `DEC-0004`. **Ma reserve 2 de s00 reste LEVEE**, et je le confirme par une remesure.
+3. **Tout le reste de cette fiche est intact** : le texte lu par l'enfant, le score, l'ecran
+   d'erreur, la coche et la croix, la taille de l'enonce, la machine, le cabinet, la sortie unique,
+   l'ecran de confirmation, le point de focus. Ce refus a **un** motif et il ne s'etend a rien
+   d'autre.
+4. **`lea-dev` et `marc-dev` n'ont devie d'aucune de mes conditions.** Personne n'a manque une barre
+   que j'avais posee : **je n'avais pas pose celle-ci**, et j'avais meme ecrit une phrase qui la
+   faisait croire tenue. Ce refus est la correction d'un manque de ma porte, pas la sanction d'un
+   travail.
+
+#### 6. Reserve nouvelle et datee du 2026-08-15 - le seuil de 50 % : je le garde comme barre de refus, et il ne suffit pas
+
+On me demande si 50 % est le bon seuil. Voici ma reponse, et les mesures sur lesquelles elle repose.
+
+**Oui, je garde 50 % comme barre de refus, et je l'ecris avec ma raison, pas avec la sienne.**
+`lea-dev` l'a choisi comme milieu entre 33,3 % et 64,6 %, ce qui est une construction d'ingenieur -
+si j'avais refuse les tables a 80 %, le seuil serait a 56,7 %, ce qui montre bien que le milieu n'est
+pas un argument. Ma raison a moi est un fait sur l'enfant : **une strategie qui ignore le contenu ne
+doit jamais gagner plus souvent qu'elle ne perd.** Au-dela de la moitie, l'enfant qui ne lit pas est
+en moyenne recompense, et c'est cela qu'il apprend. Le nombre tombe au meme endroit ; il tient
+maintenant a une raison qui ne bouge pas si mes refus futurs changent de valeur.
+
+**Mais 50 % est un plancher de refus, pas une cible - et l'ecart entre les deux est enorme.** Un
+paquet construit sans biais de rang atterrit entre 33 % et 37 % : c'est la borne arithmetique, trois
+rangs ne se partagent pas mieux. Le paquet de tables corrige par `lea-dev` est a **36,4 %**, c'est-
+a-dire au plancher. **Entre 37 % et 50 %, un paquet est vert et n'est pas bon.** Je ne tiendrai pas
+pour satisfaisant un paquet a 48 % au motif que l'automate est vert, et je demande que le message du
+garde-fou dise cette difference, pour que personne ne lise "vert" comme "sans biais".
+
+**Et le seuil ne voit pas la moitie de ce que j'ai refuse sur les tables.** J'ai compte le rang, a la
+main et exactement, sur tous les paquets numeriques du catalogue :
+
+| Paquet | la plus petite | l'intermediaire | la plus grande | Max | Etat |
+|---|---|---|---|---|---|
+| `cp-additions-jusqu-a-10` (fabrique) | 18,6 % | **66,5 %** | 14,9 % | 66,5 % | rouge |
+| `cm1-perimetre` | 0,0 % | **90,0 %** | 10,0 % | 90,0 % | rouge |
+| `cm1-tables-multiplication` (avant reprise) | 0,0 % | 35,4 % | **64,6 %** | 64,6 % | rouge |
+| `cm1-mesures` | **54,2 %** | 16,7 % | 29,2 % | 54,2 % | rouge |
+| `cp-problemes-additifs` | 18,2 % | 31,8 % | **50,0 %** | 50,0 % | vert d'un cheveu |
+| `cp-soustractions` | 41,7 % | **50,0 %** | 8,3 % | 50,0 % | vert d'un cheveu |
+| `cp-complements-10` | 9,1 % | 45,5 % | 45,5 % | 45,5 % | vert |
+
+Deux faits sortent de ce tableau, et aucun des deux n'etait su.
+
+- **Deux paquets sont exactement sur la barre, a 50,0 %**, et ne passent que parce que la comparaison
+  est stricte : `cp-problemes-additifs` (11 items sur 22) et `cp-soustractions` (12 sur 24). **Un
+  seul item de plus les fait rougir.** Une barre que deux paquets touchent sans la franchir ne
+  separe pas grand-chose. Je ne demande pas de la deplacer - elle est juste - je demande qu'on sache
+  que la marge reelle du catalogue est de un item.
+- **`cp-soustractions` n'offre la bonne reponse comme la plus grande que sur 8,3 % de ses items** (2
+  sur 24). Un enfant qui apprend "presque jamais le plus grand" **elimine une proposition sur trois,
+  gratuitement, sur 91,7 % des manches**. C'est **le second motif de mon refus des tables** - celui
+  dont je viens d'ecrire au point 3 qu'il ne s'applique pas aux additions - et **le garde-fou de
+  `lea-dev` ne le voit pas**, parce qu'il ne regarde que le rang le plus frequent. `cp-complements-10`
+  est dans le meme cas a 9,1 %.
+
+**Ce que j'ouvre donc, comme reserve neuve et datee, et non comme un durcissement.** Le taux
+majoritaire n'est pas la seule facon dont un rang trahit la bonne reponse : **un rang presque vide en
+est une autre, et elle donne a l'enfant une elimination gratuite.** Je pose la propriete, sans en
+prescrire le moyen : *aucun des trois rangs ne devrait tomber sous 10 % des items d'un paquet.* Cette
+reserve est **nouvelle** ; elle ne rougit pas le travail de `lea-dev`, dont le paquet corrige est a
+28,3 % sur son rang le plus rare, donc au large des deux criteres. Elle n'est **pas bloquante
+aujourd'hui** et elle ne retire aucun Done : je la nomme pour que `camille-po` en fasse une story et
+pour que l'equipe ne croie pas cette famille de defauts couverte par le seuil de 50 %.
+
+**Sur la liste d'exemption elle-meme** : le mecanisme de dette plafonnee est bon et je l'approuve -
+elle ne peut pas grandir, elle ne peut pas pourrir. Une seule chose doit etre ecrite a cote :
+**exempte ne veut pas dire valide.** Deux des trois paquets exemptes portent aujourd'hui une reserve
+pedagogique ouverte a mon nom, et le troisieme perd son Done par la presente section.
+
+#### 7. Ce que la matrice doit dire, et que `camille-po` ne doit pas perdre
+
+- La ligne mathematiques / CP / "Calcul mental - additions dans la limite de 10 (puis 20)" repasse de
+  `couvert-valide` a **`en cours`**. C'est la ligne la plus ancienne du produit, et c'est justement
+  pourquoi elle ne peut pas etre exemptee d'une propriete qu'on applique aux lignes neuves.
+- La condition ecrite de son retour a `couvert-valide` : **qu'aucun rang de la bonne reponse ne soit
+  majoritaire sur ce que la fabrique produit**, mesure sur la chaine reelle et pas sur un paquet
+  retouche a la main. Le reste du jeu n'a rien a reprendre. C'est la seule barre, et je m'y tiendrai.
+- Le jeu **reste au catalogue** pendant ce temps. Un enfant qui y joue ne subit aucun tort : il
+  s'entraine sur des additions exactes, avec un bon indice et un bon retour. Il peut seulement s'en
+  tirer sans additionner, et c'est cela qu'on repare.
+
+#### 8. Les proprietes dont je reste la seule garde sur ce jeu
+
+Pour que l'equipe ne croie pas couvert ce qui ne l'est pas. Le garde-fou de rang de `lea-dev`, une
+fois fusionne, prendra **le taux majoritaire** - je le retire de ma liste et je cesserai de le
+compter a la main, y compris sur cette fabrique, puisque son perimetre est derive du chargeur reel.
+**Restent sans automate, et c'est moi, en jouant** : l'exactitude arithmetique de chaque somme, la
+plausibilite de chaque distracteur, **le rang presque vide** (la reserve du point 6, que rien ne
+mesure aujourd'hui), l'utilite reelle de l'indice, et le niveau tel qu'il se joue.
+
+### Reserve N, pressee au clavier sur l'increment livre, du 2026-08-14 - LEVEE sur la moitie que j'avais dit lever la, l'autre moitie reste ouverte et inchangee
 
 > **Ce que cette section fait, et ce qu'elle ne fait pas.** Elle **leve ma reserve N** sur la
 > propriete que j'avais annonce mesurer au clavier, et elle laisse **ouverte, sans un mot de plus et
