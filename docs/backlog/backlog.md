@@ -2932,6 +2932,20 @@ indices fautifs dans le meme geste que le raccourcissement de ses enonces.
   unitaire, regle ArchUnit ou autre) ni un seuil quelconque ne sont de mon ressort - ici il n'y a meme
   pas de seuil a fixer, la propriete attendue est une egalite stricte entre ce que le fichier declare
   et ce que la mecanique sert.
+- **Reserve O, seconde moitie, ouverte le 2026-08-13 et toujours ouverte au sprint 12**
+  (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, arbitrage de mecanique) : **il n'existe
+  aucun chemin vers l'ecran de catalogue qui garde la partie en cours.** Le seul chemin est le lien
+  "Les jeux", qui appelle `abandonner()` sans confirmation ; recharger la page ou revenir en arriere
+  ramene l'enfant sur l'ecran de jeu, jamais sur le catalogue. `nadia-prof` note que c'est le meme
+  enjeu que la clause 1 de M13 (`DEC-0026`), vu depuis la souris plutot que depuis le clavier, et que
+  M13 ne le couvre pas. Non affectee a un sprint ; a instruire avec `theo-archi` pour le moyen
+  technique (un chemin de consultation du catalogue qui ne detruise pas la partie).
+- **Reserve neuve du 2026-08-13** (meme fiche, meme section) : **le libelle "Les jeux" porte deux
+  consequences differentes selon l'ecran ou l'enfant le lit.** Sur l'ecran de manche, l'appui ne
+  detruit rien ; sur l'ecran de confirmation, il detruit la partie. Un enfant ne peut donc pas
+  apprendre, du premier appui, ce que le second lui coutera. `nadia-prof` precise que ce n'est pas
+  une condition sur l'increment livre, seulement un motif qu'elle nomme pour que l'equipe ne le
+  decouvre pas trois sprints plus tard sans attribution. Non affectee a un sprint.
 
 ## Sprint 10 - La machine est redessinee sur les references de l'utilisatrice, le veto sur la manette est leve, l'ecran intermediaire reste a arbitrer
 
@@ -3681,3 +3695,94 @@ contenu neuf, le niveau scolaire et la qualite pedagogique restant entierement d
   `DEC-0029-perimetre-sprint-12-trois-lignes-mathematiques-cm1-ouvertes-cinq-differees.md`.
 - **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
   requis avant affectation, comme pour toute story neuve).
+
+### S12-4 - Une manche de calcul mental ne se gagne plus en devinant le nombre du milieu
+
+**Contexte** : `nadia-prof` a rejoue `bandit-manchot-additions-cp` a la cloture de s12 et **retire**
+le Done pedagogique qu'elle avait accorde en s01 et confirme en s03
+(`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-15). Sur 66,5 % des
+manches, la bonne reponse est le nombre intermediaire des trois propositions affichees ; un enfant
+qui presse toujours celui du milieu gagne deux manches sur trois sans additionner. La cause qu'elle
+identifie n'est pas le contenu YAML, deja exact, mais la fabrique elle-meme : `AdditionsBorneesContentSource`
+tire ses distracteurs par ecarts croissants de part et d'autre de la bonne reponse, ce qui place
+mecaniquement celle-ci au centre sur tout contenu qu'elle produira. `squad/programme/
+MATRICE-couverture.md` fait redescendre la ligne mathematiques CP "Calcul mental - additions dans la
+limite de 10 (puis 20)" de `couvert-valide` a `en cours` en consequence. Cette story corrige la
+fabrique, cause racine, en parallele des autres travaux du sprint (branche `s12-marc-fabrique`).
+
+- **Besoin** : en tant qu'eleve de CP, je veux que gagner une manche de calcul mental demande
+  vraiment de calculer l'addition, afin de ne pas pouvoir gagner en devinant toujours le nombre du
+  milieu sans lire l'enonce.
+- **Competence programme visee** : mathematiques, CP (cycle 2), "Calcul mental - additions dans la
+  limite de 10 (puis 20)" (`squad/programme/mathematiques/competences-cp.md`) - ligne deja ouverte,
+  non rouverte sur son perimetre (borne 10 uniquement) ni sur la repartition des sommes deja levee
+  en s03.
+- **Criteres d'acceptation**, repris au mot pres du motif de `nadia-prof` :
+  - Etant donne le calcul exhaustif sur l'ensemble des couples valides de la fabrique corrigee,
+    quand on compte le rang de la bonne reponse (la plus petite, l'intermediaire, ou la plus grande
+    des trois propositions) sur chaque item qu'elle peut produire, alors aucun des trois rangs ne
+    represente 50 % ou plus des items - meme propriete et meme seuil que le garde-fou generique deja
+    livre par `lea-dev` (`LaBonneReponseNEstPasPredictibleSurUnPaquetTest`, `ADR-0013`, `ADR-0039`),
+    a appliquer a ce paquet.
+  - Etant donne 900 manches jouees en trois series de 300 (une strategie qui presse toujours la plus
+    petite proposition, une qui presse toujours l'intermediaire, une qui presse toujours la plus
+    grande, sans jamais lire l'enonce), quand on compte les manches gagnees par chacune, alors aucune
+    des trois strategies n'atteint 50 % de manches gagnees.
+  - Etant donne la meme fabrique corrigee, quand on verifie les criteres deja coches de cette ligne
+    (operandes et somme entiers entre 0 et 10, unique bonne reponse par item, distracteurs entiers
+    positifs et plausibles, aucune somme superieure a 10), alors ils restent tous vrais : cette story
+    ne touche pas ces proprietes, deja acquises.
+  - Etant donne la repartition des sommes proposees sur l'intervalle 0-10, quand on la mesure sur un
+    grand nombre de manches, alors elle reste conforme a la condition posee par `nadia-prof` en s01
+    et levee en s03 (S3-1) : aucune somme ne doit redevenir dominante au point de concentrer le jeu
+    sur le bord superieur de l'intervalle. Cette story ne rouvre pas cette condition, elle ne doit
+    simplement pas la degrader.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue l'increment corrige et confirme, en jouant, que le rang de la bonne
+    reponse n'est plus predictible sans additionner, et que l'exactitude arithmetique deja acquise
+    (900 manches sans une faute) n'a pas ete degradee par la correction.
+- **Lien decision** : aucune - correction de cause racine sur un motif deja ecrit par
+  `nadia-prof`, pas un changement de perimetre produit. Motif source :
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, verdict du 2026-08-15 ; garde-fou
+  generique de reference : branche `s12-lea-tables-rang`.
+- **Agent pressenti** : `marc-dev`, deja engage sur la branche `s12-marc-fabrique` en parallele de
+  ce sprint.
+
+### S12-5 - L'unique lien de sortie n'est plus annonce comme un menu a un enfant qui ecoute l'ecran
+
+**Contexte** : dans son arbitrage prealable de mecanique (`squad/conformite/
+FICHE-bandit-manchot-additions-cp.md`, section 4), `nadia-prof` prend l'attribut `aria-label="Menu
+principal"` dans son perimetre - "tout texte que le serveur envoie et qu'un enfant peut recevoir
+releve de cette porte, qu'il soit affiche a l'ecran ou annonce par une aide technique" - et le
+**refuse**, sur quatre motifs cumulatifs : c'est faux (une zone a un seul lien n'est pas un menu) ;
+les deux mots ne sont pas du vocabulaire d'un enfant de six ans ; l'application n'a qu'un seul mot
+de sortie, "Les jeux", et cette annonce en introduit un second pour la meme destination ; aucun
+enfant ne voit ces deux mots nulle part ailleurs dans l'application. Ce refus ne remet en cause
+aucun Done pedagogique deja prononce et ne rend aucun jeu injouable : c'est un texte a corriger, pas
+un defaut de mecanique.
+
+- **Besoin** : en tant qu'eleve qui utilise un lecteur d'ecran, je veux qu'on m'annonce le lien de
+  sortie avec le mot que je connais deja, afin de ne pas chercher un menu qui n'existe pas ni
+  apprendre un second mot pour la meme sortie.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Criteres d'acceptation**, repris au mot pres du motif de `nadia-prof` :
+  - Etant donne la zone de navigation du gabarit, quand on lit ce qu'un lecteur d'ecran en
+    annoncerait, alors soit aucun attribut d'etiquette n'y est porte (une zone a un seul lien qui se
+    nomme deja lui-meme "Les jeux" n'a rien a distinguer), soit, si une contrainte technique impose
+    un libelle non vide, ce libelle est exactement "Les jeux" - jamais "Menu principal" ni aucun
+    autre mot que l'enfant ne voit pas deja a l'ecran.
+  - Etant donne l'application entiere, quand on recherche toute occurrence du mot "menu" ou du mot
+    "principal" dans un texte annonce (`aria-label`, `title`) ou affiche a l'enfant, alors aucune
+    occurrence ne subsiste : l'application garde un seul mot de sortie, "Les jeux", sur les deux
+    canaux.
+  - Etant donne cette correction, quand on rejoue les cinq ecrans de l'application, alors aucun Done
+    pedagogique deja prononce n'est modifie et aucun jeu ne devient injouable : cette story ne
+    touche qu'un texte annonce, rien d'autre.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : ce que l'annonce donne reellement a entendre a l'ecoute reelle d'un lecteur
+    d'ecran - sa reserve F11 (aucune ecoute reelle tentee a ce jour par l'equipe) reste ouverte et
+    n'est pas levee par cette story.
+- **Lien decision** : aucune - correction directe d'un motif de refus de `nadia-prof`.
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, arbitrage de mecanique, section 4.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (le moyen technique de porter ou de
+  retirer l'etiquette appartient a `theo-archi`, comme pour toute story neuve).
