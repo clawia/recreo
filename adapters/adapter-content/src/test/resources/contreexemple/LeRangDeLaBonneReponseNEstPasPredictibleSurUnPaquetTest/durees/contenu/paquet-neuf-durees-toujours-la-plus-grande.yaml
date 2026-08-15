@@ -1,0 +1,57 @@
+schema: 1
+id: paquet-neuf-durees-toujours-la-plus-grande
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CM1"
+  domaine: "Grandeurs et mesures"
+  competence: "Jeu fautif de test, jamais livre"
+items:
+  - enonce: "Duree de test 1."
+    bonneReponse: "1 h 45"
+    distracteurs: ["1 h 15", "1 h 30"]
+    indice: "Jeu fautif de test."
+  - enonce: "Duree de test 2."
+    bonneReponse: "2 h 50"
+    distracteurs: ["2 h 10", "2 h 30"]
+    indice: "Jeu fautif de test."
+  - enonce: "Duree de test 3."
+    bonneReponse: "3 h 55"
+    distracteurs: ["3 h 20", "3 h 40"]
+    indice: "Jeu fautif de test."
+  - enonce: "Duree de test 4."
+    bonneReponse: "4 h 50"
+    distracteurs: ["4 h 10", "4 h 30"]
+    indice: "Jeu fautif de test."
+  - enonce: "Duree de test 5."
+    bonneReponse: "1 h 40"
+    distracteurs: ["1 h 05", "1 h 20"]
+    indice: "Jeu fautif de test."
+  - enonce: "Duree de test 6."
+    bonneReponse: "5 h 45"
+    distracteurs: ["5 h 05", "5 h 25"]
+    indice: "Jeu fautif de test."
+  - enonce: "Duree de test 7."
+    bonneReponse: "3 h 10"
+    distracteurs: ["2 h 45", "1 h 50"]
+    indice: "Jeu fautif de test."
+  - enonce: "Duree de test 8."
+    bonneReponse: "4 h 05"
+    distracteurs: ["3 h 50", "2 h 15"]
+    indice: "Jeu fautif de test."
+  - enonce: "Duree de test 9."
+    bonneReponse: "5 h 15"
+    distracteurs: ["4 h 45", "3 h 30"]
+    indice: "Jeu fautif de test."
+  - enonce: "Duree de test 10."
+    bonneReponse: "2 h 05"
+    distracteurs: ["1 h 50", "0 h 45"]
+    indice: "Jeu fautif de test."
+  - enonce: "Duree de test 11."
+    bonneReponse: "6 h 10"
+    distracteurs: ["5 h 55", "4 h 40"]
+    indice: "Jeu fautif de test."
+  - enonce: "Duree de test 12."
+    bonneReponse: "1 h 05"
+    distracteurs: ["0 h 50", "0 h 20"]
+    indice: "Jeu fautif de test."
