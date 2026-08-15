@@ -3785,4 +3785,256 @@ un defaut de mecanique.
 - **Lien decision** : aucune - correction directe d'un motif de refus de `nadia-prof`.
   `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, arbitrage de mecanique, section 4.
 - **Agent pressenti** : a affecter au planning par `sofia-sm` (le moyen technique de porter ou de
-  retirer l'etiquette appartient a `theo-archi`, comme pour toute story neuve).
+  retirer l'etiquette appartient a `theo-archi`, comme pour toute story neuve). **Affectee au
+  sprint 13** (`DEC-0030`) : elle etait entierement redigee et sans obstacle, seule son affectation
+  manquait.
+
+## Sprint 13 - Trois lignes de plus de mathematiques CM1, deux corrections de reserve sur les tables,
+## un chemin de catalogue qui garde la partie
+
+**Contexte et decision de perimetre** : `DEC-0030-perimetre-sprint-13-trois-lignes-mathematiques-
+cm1-et-le-plafond-de-la-mecanique-unique.md` ouvre trois lignes de mathematiques CM1 differees pour
+capacite au sprint 12 (grands nombres, desormais sans obstacle grace a l'arbitrage prealable rendu le
+2026-08-14 ; multiplications et divisions simples ; problemes de durees), corrige deux reserves non
+bloquantes sur les tables de multiplication, ouvre le chemin de catalogue nomme par la reserve O
+seconde moitie, et affecte la story S12-5 deja redigee. Deux lignes restent differees (problemes a
+plusieurs etapes - second report ; notion de fraction simple - premier report), voir `DEC-0030`
+sections 1 et 3. La meme decision instruit, en parallele et sans capacite de developpement affectee ce
+sprint, la question d'une seconde mecanique de jeu (`DEC-0030`, section 6).
+
+S13-1 ouvre sur un proxy deja arbitre par `nadia-prof` (`ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md`,
+section 1, GN-1 et GN-2) : aucun arbitrage neuf n'est demande. S13-2 et S13-3 portent sur un contenu
+jamais instruit a ce niveau de detail ; `DEC-0030` demande a `nadia-prof` un arbitrage prealable sur
+ces deux lignes avant que le code ne commence, sur le meme modele que le sprint 12.
+
+### S13-1 - Lire, ecrire, decomposer et comparer les grands nombres jusqu'au million
+
+- **Besoin** : en tant qu'eleve de CM1, je veux lire, ecrire, decomposer et comparer des nombres
+  entiers jusqu'au million, afin de comprendre comment un grand nombre est organise en classes et en
+  positions.
+- **Competence programme visee** : mathematiques, CM1 (cycle 3), domaine "Nombres et calculs", "Lire,
+  ecrire, decomposer et comparer les nombres entiers jusqu'au million" (`squad/programme/
+  mathematiques/competences-cm1.md`) - ligne entiere, sans couverture partielle : les quatre verbes du
+  referentiel sont tous servis par ce paquet.
+- **Criteres d'acceptation** :
+  - Etant donne chaque item qui teste "ecrire" (designation litterale donnee, ecriture chiffree a
+    trouver) ou "lire" (ecriture chiffree donnee, designation litterale a trouver), quand on compare
+    la bonne reponse a ses distracteurs dans le sens chiffres vers lettres, alors chaque distracteur
+    differe de la bonne reponse par la valeur qu'il designe (une classe ou une position confondue -
+    par exemple "trois mille cinq cent vingt-et-un" contre "trois cent cinq mille quatre cent
+    vingt-et-un", ou un zero intercalaire ignore), jamais par la seule orthographe des mots-nombres
+    (condition GN-1, `ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md`, section 1).
+  - Etant donne chaque item dans le sens lettres vers chiffres, quand on lit sa designation litterale,
+    alors elle est ecrite sans faute et sans ambiguite, avec les traits d'union de la reforme ou sans,
+    mais de facon constante dans tout le paquet (condition GN-2, meme section).
+  - Etant donne chaque item qui teste "decomposer", quand on lit son enonce, alors il donne un nombre
+    entier jusqu'au million et demande sa decomposition en valeurs de position (classes de mille,
+    centaines, dizaines, unites), et la bonne reponse est la decomposition exacte.
+  - Etant donne chaque item qui teste "comparer", quand on lit son enonce, alors il donne deux nombres
+    entiers distincts jusqu'au million et demande le signe exact parmi <, > et = - meme patron que
+    `cp-comparer-nombres.yaml`, a l'echelle du million.
+  - Etant donne l'ensemble du paquet, quand on repartit ses items par verbe (lire, ecrire, decomposer,
+    comparer), alors chacun des quatre est represente par au moins un quart des items : aucun des
+    quatre verbes nommes par le referentiel n'est absent ni reduit a un seul exemple isole - pour ne
+    pas reproduire le motif de couverture partielle deja sanctionne sur ce produit.
+  - Etant donne chaque item, quand on compte ses propositions, alors aucune n'est egale a une autre
+    dans le meme item (meme exigence que P-7, C-7, T-5 du sprint 12).
+  - Etant donne le paquet, quand on le compte, alors il compte au moins 24 items, avec au moins 6 par
+    verbe.
+  - Etant donne chaque item, quand on verifie qu'il porte un indice, alors ce champ est rempli, non
+    vide, et ne paraphrase pas l'enonce.
+  - Etant donne le paquet, quand on le charge au demarrage de l'application, alors il valide le schema
+    `type: question` (`ADR-0007`), zero ligne de Java neuve.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : l'exactitude et la clarte de chaque enonce et de chaque indice pour un enfant de
+    CM1, la plausibilite des distracteurs de classe et de position, la constance de l'ecriture
+    litterale dans tout le paquet, et si le regroupement des quatre verbes sous un seul jeu reste
+    lisible plutot que confus.
+- **Lien decision** : `DEC-0030-perimetre-sprint-13-trois-lignes-mathematiques-cm1-et-le-plafond-de-
+  la-mecanique-unique.md` ; proxy deja arbitre par `nadia-prof`,
+  `ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md`, section 1 (GN-1, GN-2).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
+  requis avant affectation, comme pour toute story neuve).
+
+### S13-2 - Calcul mental, multiplier ou diviser par 10 et par 100
+
+- **Besoin** : en tant qu'eleve de CM1, je veux multiplier ou diviser rapidement un nombre par 10 ou
+  par 100, afin de calculer de tete sans poser l'operation.
+- **Competence programme visee** : mathematiques, CM1 (cycle 3), domaine "Nombres et calculs", "Calcul
+  mental - multiplications et divisions simples (multiples de 10, 100)" (`squad/programme/
+  mathematiques/competences-cm1.md`).
+- **Criteres d'acceptation** :
+  - Etant donne chaque item du paquet, quand on lit son enonce, alors il est soit une multiplication
+    soit une division d'un nombre entier par 10 ou par 100 (par exemple "23 x 10 = ?", "4 500 / 100 =
+    ?"), sans unite de grandeur - une operation de calcul mental, pas une conversion de mesure - et la
+    bonne reponse est le resultat exact.
+  - Etant donne chaque item, quand on verifie le nombre de depart et le resultat, alors les deux sont
+    des entiers positifs (une division qui ne tombe pas juste n'est pas un item de cette ligne), et
+    aucun nombre decimal n'apparait, ni dans l'enonce ni dans une proposition - le referentiel de ce
+    depot ne couvre l'ecriture decimale sur aucune ligne livree.
+  - Etant donne l'ensemble du paquet, quand on separe ses items par operation, alors la multiplication
+    et la division sont representees a une unite d'ecart pres l'une de l'autre.
+  - Etant donne l'ensemble du paquet, quand on separe ses items par facteur, alors les items sur 10 et
+    les items sur 100 sont chacun representes par au moins un quart du paquet.
+  - Etant donne chaque item, quand on compte ses propositions, alors il y en a exactement trois : la
+    bonne reponse et deux distracteurs entiers distincts, chacun correspondant a une erreur de facteur
+    identifiable (multiplier par 10 au lieu de 100, diviser au lieu de multiplier, ou l'inverse) -
+    jamais deux propositions egales entre elles dans le meme item.
+  - Etant donne le paquet, quand on le compte, alors il compte au moins 24 items.
+  - Etant donne chaque item, quand on verifie qu'il porte un indice, alors ce champ est rempli, non
+    vide, et donne la methode (par exemple "multiplier par 10, c'est ajouter un zero.") plutot que le
+    resultat.
+  - Etant donne le paquet, quand on le charge au demarrage de l'application, alors il valide le schema
+    `type: question` (`ADR-0007`), zero ligne de Java neuve.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : l'exactitude et la clarte des enonces et des indices pour un enfant de CM1, la
+    plausibilite des distracteurs, et si les bornes que je propose ici (10 et 100 seulement, aucune
+    ecriture decimale) sont les bonnes - cette story demande un arbitrage prealable, voir la decision
+    liee.
+- **Lien decision** : `DEC-0030-perimetre-sprint-13-trois-lignes-mathematiques-cm1-et-le-plafond-de-
+  la-mecanique-unique.md`, section 5 - arbitrage prealable de `nadia-prof` demande et non encore rendu
+  sur ce contenu, contrairement a S13-1.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, apres l'arbitrage prealable de
+  `nadia-prof` et l'avis de faisabilite de `theo-archi`.
+
+### S13-3 - Resoudre des problemes de durees
+
+- **Besoin** : en tant qu'eleve de CM1, je veux calculer la duree ecoulee entre deux heures ou trouver
+  l'heure d'arrivee a partir d'un depart et d'une duree, afin de resoudre des problemes concrets de
+  temps qui passe.
+- **Competence programme visee** : mathematiques, CM1 (cycle 3), domaine "Grandeurs et mesures",
+  "Resoudre des problemes de durees (calcul d'une duree, d'un horaire d'arrivee)" (`squad/programme/
+  mathematiques/competences-cm1.md`).
+- **Criteres d'acceptation** :
+  - Etant donne chaque item du paquet, quand on lit son enonce, alors il releve de l'une des deux
+    formes nommees par le referentiel : soit calculer la duree ecoulee entre une heure de depart et une
+    heure de fin toutes deux donnees dans l'enonce, soit calculer l'heure d'arrivee a partir d'une
+    heure de depart et d'une duree toutes deux donnees dans l'enonce - jamais un item de simple lecture
+    de l'heure ("huit heures et quart, c'est...", competence CP, hors de cette ligne) ni un item de
+    conversion d'unite de temps seule ("combien de minutes dans une heure ?", hors de cette ligne).
+    `contenu-repris/quiz/cm1-heure.yml` porte deux items reellement conformes a "calcul d'une duree"
+    ("de 14h a 16h, combien de temps s'est ecoule ?", le film de 8h30 a 10h) et aucun sur "horaire
+    d'arrivee" - matiere premiere partielle, le reste est un contenu neuf.
+  - Etant donne l'ensemble du paquet, quand on separe ses items par forme, alors "calcul d'une duree"
+    et "horaire d'arrivee" sont toutes deux representees, chacune par au moins un tiers des items.
+  - Etant donne chaque item, quand on lit ses heures, alors elles restent dans une seule journee (aucun
+    item ne franchit minuit), exprimees en heures et minutes rondes de 5 en 5 minutes, sans seconde.
+  - Etant donne chaque item, quand on compte ses propositions, alors il y en a exactement trois : la
+    bonne reponse et deux distracteurs plausibles (erreur de report d'heure ou de minute, inversion du
+    sens de l'operation, oubli de la retenue de 60 minutes) - jamais deux propositions egales entre
+    elles.
+  - Etant donne le paquet, quand on le compte, alors il compte au moins 20 items.
+  - Etant donne chaque item, quand on verifie qu'il porte un indice, alors ce champ est rempli, non
+    vide, et donne la methode plutot que le resultat.
+  - Etant donne le paquet, quand on le charge au demarrage de l'application, alors il valide le schema
+    `type: question` (`ADR-0007`), zero ligne de Java neuve.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : l'exactitude et la clarte des enonces et des indices pour un enfant de CM1, la
+    plausibilite des distracteurs, et si mes bornes (une seule journee, minutes rondes de 5 en 5) sont
+    les bonnes - cette story demande un arbitrage prealable, voir la decision liee.
+- **Lien decision** : `DEC-0030-perimetre-sprint-13-trois-lignes-mathematiques-cm1-et-le-plafond-de-
+  la-mecanique-unique.md`, section 5 - arbitrage prealable de `nadia-prof` demande et non encore rendu
+  sur ce contenu.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, apres l'arbitrage prealable de
+  `nadia-prof` et l'avis de faisabilite de `theo-archi`.
+
+### S13-4 - Correction de reserve - Un enonce des tables de multiplication ne revient plus une partie
+### sur cinq
+
+**Contexte** : `nadia-prof` mesure, au second verdict du sprint 12, que 99 items ne portent que 83
+enonces distincts - les huit carres (2x2 a 9x9) sont chacun portes par trois items au meme enonce -
+et que la meme multiplication revient dans **21,6 %** des parties (108 sur 500), contre son estimation
+initiale au refus du 2026-08-14 ("environ une fois sur sept", 14,3 %). Elle nomme elle-meme cette
+reserve "plus lourde qu'elle ne l'avait dite" (`squad/conformite/FICHE-bandit-manchot-tables-
+multiplication-cm1.md`, "Synthese apres les seconds verdicts du sprint 12", reserve A).
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue plusieurs parties de suite au jeu des tables, je veux
+  rencontrer une plus grande variete de multiplications, afin de ne pas retomber trop souvent sur la
+  meme d'une partie a l'autre.
+- **Competence programme visee** : mathematiques, CM1 (cycle 3), "Calcul mental - tables de
+  multiplication (jusqu'a ×10), rappel automatise" - ligne deja `couvert-valide` sous reserve, non
+  rouverte sur son perimetre ni sur la couverture partielle "sans mesure d'automatisation" deja
+  posee.
+- **Criteres d'acceptation**, repris au mot et au chiffre pres du motif de `nadia-prof` :
+  - Etant donne le paquet corrige, quand on compte le nombre d'enonces distincts (un couple de
+    facteurs dans un ordre donne), alors aucun enonce n'est plus repete trois fois a l'identique par
+    simple copie : une repetition eventuelle d'un enonce se distingue au moins par ses distracteurs, et
+    le nombre d'enonces distincts se rapproche des 99 items du paquet plutot que de s'arreter a 83.
+  - Etant donne 500 parties de dix manches jouees en repondant au hasard (meme protocole que le second
+    audit de `nadia-prof` du sprint 12), quand on mesure la proportion de parties qui tirent au moins
+    deux fois le meme enonce, alors cette proportion se rapproche de l'estimation initiale de
+    `nadia-prof` ("une partie sur sept environ", 14,3 %) - sans qu'un seuil exact soit fixe ici : c'est
+    elle qui juge, en rejouant, si la correction suffit.
+  - Etant donne cette correction, quand on verifie les criteres deja coches de cette ligne (T-1 a T-7,
+    `ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md`, section 4), alors ils restent tous vrais : cette
+    story ne les rouvre pas.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : si la variete percue en jeu, sur plusieurs parties reellement jouees, est suffisante
+    pour un enfant de CM1.
+- **Lien decision** : aucune - correction directe d'une reserve non bloquante de `nadia-prof`.
+  `squad/conformite/FICHE-bandit-manchot-tables-multiplication-cm1.md`, "Synthese apres les seconds
+  verdicts du sprint 12", reserve A ; affectee par `DEC-0030`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S13-5 - Correction de reserve - Aucun distracteur des tables de multiplication ne sort de l'espace
+### des tables
+
+**Contexte** : `nadia-prof` releve, meme verdict, que les distracteurs de deux items sortent de
+l'espace arithmetique possible : 11 sur "1 x 10 = ?" et 110 sur "10 x 10 = ?", alors qu'un produit de
+deux facteurs entre 1 et 10 ne vaut jamais 11 ni 110 (reserve B, meme section de la meme fiche).
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que les deux mauvaises reponses proposees pour une
+  multiplication restent des produits plausibles de deux nombres entre 1 et 10, afin de ne pas pouvoir
+  eliminer un distracteur seulement parce qu'il n'appartient a aucune table.
+- **Competence programme visee** : mathematiques, CM1 (cycle 3), meme ligne que S13-4, non rouverte.
+- **Criteres d'acceptation**, repris au mot et au chiffre pres du motif de `nadia-prof` :
+  - Etant donne l'item "1 x 10 = ?", quand on lit ses distracteurs, alors aucun ne vaut 11.
+  - Etant donne l'item "10 x 10 = ?", quand on lit ses distracteurs, alors aucun ne vaut 110.
+  - Etant donne l'ensemble du paquet, quand on verifie chaque distracteur, alors chacun est soit un
+    produit reel de deux facteurs entre 1 et 10, soit une erreur nommee par la condition T-5
+    (`ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md`, section 4 - facteur voisin, ou somme des facteurs
+    sur les petits produits seulement) - jamais un nombre hors de cet espace.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : la plausibilite pedagogique de chaque distracteur corrige.
+- **Lien decision** : aucune - correction directe d'une reserve non bloquante de `nadia-prof`.
+  `squad/conformite/FICHE-bandit-manchot-tables-multiplication-cm1.md`, meme section, reserve B ;
+  affectee par `DEC-0030`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S13-6 - Un chemin vers le catalogue qui ne detruit pas la partie en cours
+
+**Contexte** : `nadia-prof` note, le 2026-08-13, qu'il n'existe aucun chemin vers l'ecran de catalogue
+qui garde la partie en cours - le seul chemin, le lien "Les jeux", appelle `abandonner()` sans
+confirmation ; recharger la page ou revenir en arriere ramene l'enfant sur l'ecran de jeu, jamais sur
+le catalogue (reserve O, seconde moitie, `squad/conformite/FICHE-bandit-manchot-additions-cp.md`,
+arbitrage de mecanique). La premiere moitie de la reserve O (une confirmation avant d'abandonner) est
+deja fermee en s11. `DEC-0030` tranche l'arbitrage produit qui manquait : ce chemin est souhaitable,
+distinct de la persistance entre deux sessions fermee par `DEC-0028` (celle-ci reste dans la meme
+partie, la meme session, le meme onglet).
+
+- **Besoin** : en tant qu'eleve en train de jouer une partie, je veux pouvoir consulter la liste des
+  jeux sans perdre ma partie en cours, afin de changer d'avis ou de verifier ce qui existe sans devoir
+  recommencer.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Criteres d'acceptation** :
+  - Etant donne une partie en cours, quand l'enfant choisit de consulter le catalogue des jeux (chemin
+    dont le moyen technique appartient a `theo-archi`), alors la partie en cours n'est pas detruite :
+    ses attributs de session (jeu, consigne, score, manche courante) restent intacts.
+  - Etant donne ce chemin, quand l'enfant revient ensuite a l'ecran de jeu, alors la manche affichee
+    est exactement celle qui etait en cours avant la consultation du catalogue - meme exigence
+    d'egalite de document rendu que celle deja posee pour le retour depuis l'ecran de confirmation.
+  - Etant donne ce chemin, quand l'enfant choisit depuis le catalogue de lancer un autre jeu, alors la
+    partie precedente est abandonnee comme aujourd'hui : ce cas reste un choix explicite de l'enfant,
+    pas un accident, et le comportement actuel n'est pas modifie sur ce point.
+  - Ce que cette story ne tranche pas : le moyen technique exact du nouveau chemin - `theo-archi` ; la
+    forme visuelle - `ines-design` propose ; le texte destine a l'enfant - `nadia-prof` juge.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : la clarte, pour un enfant de CP, de la difference entre "voir les jeux sans perdre
+    ma partie" et "quitter ma partie" - deux actions desormais distinctes qui n'existaient pas l'une
+    sans l'autre avant cette story.
+- **Lien decision** : `DEC-0030-perimetre-sprint-13-trois-lignes-mathematiques-cm1-et-le-plafond-de-
+  la-mecanique-unique.md`, section 7 ; reserve O seconde moitie,
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, arbitrage de mecanique, ouverte le
+  2026-08-13.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, avis de faisabilite de `theo-archi`
+  requis avant affectation.
