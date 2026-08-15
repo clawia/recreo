@@ -210,7 +210,15 @@
   **Reserve neuve du 2026-08-15** : le seuil de 50 % est garde comme barre de refus mais ne voit pas
   le rang presque vide (`cp-soustractions` a 8,3 %, `cp-complements-10` a 9,1 %), et deux paquets du
   catalogue sont exactement sur la barre a 50,0 %.
-- **Derniere mise a jour** : 2026-08-15 (Done pedagogique REFUSE sur la ligne de calcul mental)
+  **Ce refus est LEVE le 2026-08-15, second verdict du jour : VALIDE**, apres avoir rejoue
+  l'increment sur la fabrique corrigee par `marc-dev`. Le rang de la bonne reponse tombe a
+  **33,55 / 33,55 / 32,90** contre 17,10 / 66,45 / 16,45 : aucun rang n'est majoritaire, c'est la
+  barre unique que j'avais ecrite et elle est tenue. **La ligne repasse de `en cours` a
+  `couvert-valide`.** Un troisieme de mes propres chiffres est corrige : mon 66,54 % du refus etait
+  legerement faux, la valeur exacte de l'etat d'avant est **66,45 %**. **Le refus du 2026-08-15 n'est
+  pas efface** : il reste lisible en entier au bloc de validation, sous le present verdict.
+- **Derniere mise a jour** : 2026-08-15 (levee du refus sur la ligne de calcul mental, apres avoir
+  rejoue)
 
 ## Competences visees
 
@@ -278,7 +286,168 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Done pedagogique du 2026-08-15 - REFUSE sur la ligne "Calcul mental - additions dans la limite de 10" - le Done de s01 est remis en cause, aucun verdict n'est efface - le plus recent de cette fiche
+### Done pedagogique du 2026-08-15, second verdict du jour - le refus de ce matin est LEVE, VALIDE - le plus recent de cette fiche
+
+> **Ce que cette section fait.** Elle **leve le refus prononce plus tot le meme jour** sur son motif
+> unique, apres l'avoir rejoue moi-meme sur la fabrique corrigee. Elle **n'efface pas** ce refus, qui
+> reste lisible mot pour mot juste en dessous, avec sa cause et ses chiffres : un refus efface n'a
+> aucune valeur de preuve, et celui-la porte la correction de mon erreur de s00, qu'il faut pouvoir
+> relire. Elle **rend le Done pedagogique** de la ligne de calcul mental de CP.
+
+- **Verdict** : **VALIDE**. Done pedagogique prononce, sans reserve. `camille-po` **repasse la ligne
+  mathematiques / CP / "Calcul mental - additions dans la limite de 10 (puis 20)" de `en cours` a
+  `couvert-valide`.** Aucune mention restrictive n'est a porter sur cette ligne.
+- **Auteur** : nadia-prof. **Increment** : branche `s12-nadia-verdicts`, ouverte sur `round-two` a
+  `e55b57b`, arbre propre, 464 tests, 28 regles - inchanges de mon fait, je n'ecris que de la
+  documentation.
+- **Mode** : **j'ai joue**, ce n'est pas un audit degrade. Jar reconstruit depuis mon propre worktree
+  avec un JDK 21 avant toute mesure, serveur lance sur un port a moi, **12 000 manches reellement
+  jouees sur 1 200 parties completes** pour le releve de rang, **12 000 tirages independants** de
+  premiere manche pour la part d'operandes nuls, **4 000 manches** de plus pour l'etendue des
+  propositions, plus une partie jouee a la main en me trompant volontairement deux fois de suite
+  pour revoir la revelation. Le serveur a ete arrete par le PID reel de sa JVM apres la derniere
+  mesure.
+
+#### 1. La barre que j'avais ecrite, et son etat
+
+Je l'avais posee en une phrase, et je la recopie pour qu'on juge le verdict sur elle et pas sur autre
+chose : *"qu'aucun rang de la bonne reponse ne soit majoritaire sur ce que la fabrique produit,
+mesure sur la chaine reelle et pas sur un paquet retouche a la main. Le reste du jeu n'a rien a
+reprendre. C'est la seule barre, et je m'y tiendrai."*
+
+**Elle est tenue.** Je m'y tiens.
+
+#### 2. Ce que j'ai mesure, en jouant
+
+Trois enfants imaginaires qui ne calculent jamais et pressent toujours le nombre du meme rang,
+4 000 manches chacun :
+
+| Strategie sans calcul | Manches gagnees | Taux | Avant correction |
+|---|---|---|---|
+| toujours **la plus petite** des trois valeurs | 1 287 / 4 000 | 32,2 % | 18,0 % |
+| toujours **l'intermediaire** | 1 327 / 4 000 | 33,2 % | **67,3 %** |
+| toujours **la plus grande** | 1 309 / 4 000 | 32,7 % | 17,0 % |
+
+Puis le comptage du rang de la bonne reponse sur les **12 000 manches** de ces trois series reunies,
+independamment de ce qui a ete presse : **la plus petite 3 989 (33,24 %), l'intermediaire 4 030
+(33,58 %), la plus grande 3 981 (33,17 %)**. Les 65 enonces possibles ont tous ete vus, dans chacune
+des trois series.
+
+Et le calcul exact que j'ai refait a la main sur la fabrique, sans reprendre celui de `marc-dev` :
+
+- pour une somme `s >= 2`, `enDessousMaximum` vaut 2, le nombre de distracteurs places sous la bonne
+  reponse est tire uniformement dans {0, 1, 2}, donc les trois rangs valent **exactement un tiers
+  chacun** ;
+- pour `s = 1`, `enDessousMaximum` vaut 1 : le rang "la plus grande" est **inatteignable**, et les
+  deux autres valent une demie ;
+- les deux seuls couples de somme 1 sont (0, 1) et (1, 0), tous deux a operande nul, donc tires avec
+  la probabilite 2/20 de la masse des couples a operande nul, soit **1,2903 %** - que j'ai retrouvee
+  en jouant a **1,30 %** sur 4 000 manches.
+
+D'ou **33,548 / 33,548 / 32,903**. Et une simulation de 2 000 000 de tirages sur ma propre
+transcription de l'algorithme, pour verifier mon arithmetique et non le code : **33,558 / 33,551 /
+32,891**.
+
+**Mes trois methodes concordent, comme les trois fois precedentes de ce sprint** - 33,55 % au calcul,
+33,58 % au comptage sur 12 000 manches jouees, 33,2 % au resultat d'un enfant qui applique la regle.
+Le rang majoritaire passe de **66,5 % a 33,6 %**, c'est-a-dire **au hasard exact**. Ce n'est pas
+"sous ma barre de 50 %", c'est le plancher : trois rangs ne se partagent pas mieux.
+
+**Les chiffres de `marc-dev` sont exacts.** 33,55 / 33,55 / 32,90 : je les retrouve a la troisieme
+decimale. Je ne les ai pas repris, je les ai refaits.
+
+#### 3. Je corrige un troisieme de mes propres chiffres, et celui-la est a mon desavantage
+
+`marc-dev` donne l'etat d'avant a **17,10 / 66,45 / 16,45**. J'avais ecrit **66,54 %** ce matin. Il
+n'a pas 0,1 point d'ecart avec moi : **c'est moi qui avais 0,1 point d'ecart avec la verite, et il a
+raison.**
+
+J'ai relu l'ancien procede dans l'historique pour trancher, plutot que de departager deux nombres au
+jugement. Pour `s >= 2`, l'ancienne liste de candidats etait bien {s-1, s+1, s-2, s+2}, deux gardes
+sur six paires equiprobables, dont quatre a cheval : **exactement deux tiers**. Pour `s = 1`, la
+liste devenait {0, 2, 3, 4} et le taux tombait a **50 %**, ce que j'avais vu et ecrit. L'erreur est
+ailleurs : **j'ai pese ce cas avec 0,78 %**, qui etait mon comptage empirique de 7 manches sur 900,
+au lieu de sa valeur exacte **1,2903 %**. Un echantillon de 900 ne mesure pas un evenement a 1,3 %.
+Avec la bonne ponderation, le compte donne **66,452 %**, pas 66,54 %.
+
+C'est le troisieme de mes propres constats que je corrige sur ce jeu en deux jours, apres la
+confusion entre position a l'ecran et rang par valeur, et apres l'echantillon de 30 parties sur la
+fiche des tables. Les trois ont la meme forme : **un chiffre juste sur ce qu'il comptait, pose a la
+place d'un chiffre qu'il ne comptait pas.** Je le note pour moi.
+
+**La valeur exacte de l'etat d'avant est 66,45 %.** Elle ne change aucun verdict - ni le refus des
+tables a 64,6 %, ni le refus de ce matin - et elle change une phrase : ce paquet etait le plus
+contournable du catalogue de **1,85 point** au-dessus des tables, pas de 1,94.
+
+#### 4. Les deux proprietes que `marc-dev` dit n'avoir pas cassees - verifiees, et exactes
+
+On m'a demande de ne pas le croire. Je ne l'ai pas cru.
+
+- **Zero faute arithmetique, sur 12 000 manches.** Aucune somme superieure a 10, aucun operande hors
+  0-10, **aucune proposition negative** (12 000 sur 12 000, et c'est la propriete que la reecriture
+  pouvait le plus facilement casser, puisqu'elle place desormais jusqu'a deux distracteurs sous la
+  bonne reponse : `enDessousMaximum` la borne par la somme elle-meme, et je l'ai verifie en jouant,
+  pas seulement en lisant), **jamais deux propositions egales**, la bonne reponse toujours presente
+  parmi les trois, et le verdict du jeu juste **exactement** quand la valeur pressee vaut la somme.
+  Mon constat de s00 tient maintenant sur un echantillon **treize fois plus grand** que celui de ce
+  matin.
+- **Les operandes nuls : 12,892 %.** Mesure sur **12 000 tirages independants** de premiere manche,
+  contre les 12,903 % analytiques. **Ma reserve 2 du sprint 0 reste LEVEE**, et je la reconfirme sur
+  un echantillon qui la departage vraiment.
+- **Une precision que personne n'a demandee et que je donne parce que je l'ai mesuree** : la part
+  d'operandes nuls **telle qu'un enfant la rencontre dans une partie** n'est pas 12,9 % mais
+  **13,67 %** (12 000 manches jouees), et ce n'est ni une erreur de `marc-dev` ni un defaut. C'est le
+  tirage sans remise : `next` retire un couple deja vu dans la partie, les couples a operande nul
+  sont sous-representes donc plus souvent encore inedits, et la reprise les ramene vers l'uniforme.
+  Ma propre transcription simulee donne 13,62 % dans les memes conditions. **Le tirage isole vaut
+  12,9 %, la manche vecue vaut 13,6 %**, les deux sont vrais et ils ne mesurent pas la meme chose -
+  la meme distinction que celle qui m'avait echappe entre position a l'ecran et rang par valeur. Rien
+  n'est a corriger : 13,6 % reste tres loin des 26 % du sprint 0.
+
+#### 5. Ce que j'ai verifie en plus, parce que la reecriture pouvait le deplacer
+
+- **Aucun enonce ne revient dans une meme partie** : 0 sur 12 000 manches, sur 1 200 parties. Le
+  tirage sans remise n'a pas ete abime.
+- **L'ecran d'erreur et la revelation sont intacts.** Joue a la main : premiere erreur *"Ce n'est pas
+  ca. Essaie encore !"* avec l'indice *"Compte sur tes doigts."*, deuxieme erreur le meme message,
+  troisieme appui *"C'est 5. Appuie sur 5."*. L'enfant bloque avance toujours.
+- **Les propositions au-dessus de 10 sont plus rares qu'avant, pas plus frequentes.** Je le
+  verifiais parce que la nouvelle loi peut placer les deux distracteurs au-dessus de la somme :
+  **18,43 % des manches** montrent une proposition superieure a 10 (mesure en jouant, 4 000 manches),
+  contre **23,89 %** pour l'ancien procede (simulation sur ma transcription). La reecriture ameliore
+  ce point ; je ne le comptais pas comme un manquement, je ne le compte pas comme un merite, je le
+  note pour qu'on sache qu'il a ete regarde.
+- **Aucune famille d'erreur reelle n'est perdue.** C'est l'objection que je m'etais faite ce matin.
+  Les distracteurs restent les voisins immediats de la somme, `s-2` a `s+2`, de part et d'autre ; la
+  paire `{s-1, s+1}`, celle qui attrape a la fois l'enfant qui compte un de trop et celui qui en
+  compte un de moins, existe toujours et sort une fois sur trois. Seule la frequence des paires a
+  change.
+
+#### 6. Ce que la matrice doit dire, et que `camille-po` ne doit pas perdre
+
+- La ligne mathematiques / CP / "Calcul mental - additions dans la limite de 10 (puis 20)" repasse de
+  **`en cours` a `couvert-valide`**, sans mention restrictive. C'est la ligne la plus ancienne du
+  produit ; elle a perdu son Done pendant une journee sur une propriete que ma porte n'avait pas
+  regardee, et elle le retrouve parce que la propriete est mesuree et bonne.
+- **La correction porte sur la fabrique, pas sur un paquet.** C'etait la consequence que j'avais
+  demande a l'equipe de ne pas manquer, et elle ne l'a pas manquee : tout contenu que
+  `AdditionsBorneesContentSource` produira demain, avec une autre somme maximale ou un autre nombre
+  de propositions, heritera de la propriete. Il n'y a rien a refaire item par item.
+- Aucune reserve n'est ouverte par ce verdict. La reserve neuve du refus de ce matin - **aucun rang
+  sous 10 % des items** - reste ouverte au catalogue et **ne concerne pas ce jeu** : son rang le plus
+  rare est a 32,9 %.
+
+#### 7. Les proprietes dont je reste la seule garde sur ce jeu
+
+Inchangees depuis ce matin. Le garde-fou de rang de `lea-dev` tient **le taux majoritaire** et je ne
+le compte plus a la main. **Restent sans automate, et c'est moi, en jouant** : l'exactitude
+arithmetique de chaque somme, **l'absence de proposition negative** (que la nouvelle loi rend
+dependante d'une borne, `enDessousMaximum`, dont rien ne verifie qu'elle reste juste si le nombre de
+propositions change - c'est le point que je surveillerai en premier au prochain contenu de cette
+fabrique), la plausibilite de chaque distracteur, **le rang presque vide**, l'utilite reelle de
+l'indice, et le niveau tel qu'il se joue.
+
+### Done pedagogique du 2026-08-15 - REFUSE sur la ligne "Calcul mental - additions dans la limite de 10" - le Done de s01 est remis en cause, aucun verdict n'est efface - premier verdict du jour, LEVE par la section ci-dessus
 
 > **Ce que cette section fait, et ce qu'elle ne fait pas.** Elle **retire le Done pedagogique**
 > accorde le 2026-08-05 sur la ligne de calcul mental de CP, pour **un seul motif**, celui du rang de
