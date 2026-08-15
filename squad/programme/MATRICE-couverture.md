@@ -67,7 +67,7 @@ Source : `squad/programme/mathematiques/competences-cp.md`.
 |---|---|---|---|---|---|---|
 | mathematiques | CP | Nombres et calculs | Denombrer, lire, ecrire et decomposer les nombres jusqu'a 100 | - | - | non couvert |
 | mathematiques | CP | Nombres et calculs | Comparer et ranger des nombres jusqu'a 100 (<, >, =) | bandit-manchot-comparer-nombres-cp | bandit manchot | en cours |
-| mathematiques | CP | Nombres et calculs | Calcul mental - additions dans la limite de 10 (puis 20) | bandit-manchot-additions-cp | bandit manchot | couvert-valide |
+| mathematiques | CP | Nombres et calculs | Calcul mental - additions dans la limite de 10 (puis 20) | bandit-manchot-additions-cp | bandit manchot | en cours |
 | mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | bandit-manchot-soustractions-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Resoudre des problemes simples d'addition/soustraction en situation (1 etape) | bandit-manchot-problemes-additifs-cp | bandit manchot | couvert-valide |
@@ -176,8 +176,8 @@ Source : `squad/programme/mathematiques/competences-cm1.md`.
 | mathematiques | CM1 | Nombres et calculs | Effectuer une division euclidienne simple (quotient et reste) par un diviseur a 1 chiffre | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Notion de fraction simple (unites fractionnaires, fractions inferieures a 1) et reperage sur une droite numerique | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Resoudre des problemes a plusieurs etapes mobilisant les 4 operations | - | - | non couvert |
-| mathematiques | CM1 | Grandeurs et mesures | Convertir des unites de longueur, masse, contenance dans le systeme metrique | bandit-manchot-conversions-unites-cm1 | bandit manchot | en cours |
-| mathematiques | CM1 | Grandeurs et mesures | Calculer un perimetre de figures usuelles (carre, rectangle) | bandit-manchot-perimetre-cm1 | bandit manchot | en cours |
+| mathematiques | CM1 | Grandeurs et mesures | Convertir des unites de longueur, masse, contenance dans le systeme metrique | bandit-manchot-conversions-unites-cm1 | bandit manchot | couvert-valide |
+| mathematiques | CM1 | Grandeurs et mesures | Calculer un perimetre de figures usuelles (carre, rectangle) | bandit-manchot-perimetre-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Grandeurs et mesures | Resoudre des problemes de durees (calcul d'une duree, d'un horaire d'arrivee) | - | - | non couvert |
 | mathematiques | CM1 | Espace et geometrie | Reconnaitre, nommer et tracer des figures planes (carre, rectangle, triangle, cercle) avec outils (regle, equerre, compas) | - | - | non couvert |
 | mathematiques | CM1 | Espace et geometrie | Reconnaitre et utiliser la notion de symetrie axiale simple | - | - | non couvert |
@@ -209,6 +209,44 @@ mesures" (hors les deux structurellement hors d'atteinte de "Espace et geometrie
   droite numerique" par un encadrement textuel) dont la validite pedagogique n'est pas mienne a
   juger. Les deux questions exactes posees a `nadia-prof` sont dans `DEC-0029`, section "Ce que je
   demande a nadia-prof avant le code".
+
+**Arbitrage rendu le 2026-08-14** (`squad/conformite/ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md`,
+sections 1 et 2), sur les deux questions ci-dessus. Aucune des deux lignes n'est ouverte par cet
+arbitrage lui-meme - ce n'est pas une story, et `nadia-prof` ne se prononce jamais sur un
+increment qu'elle n'a pas joue - mais chacune recoit une reponse ecrite qui borne ce qu'une story future pourra
+couvrir :
+
+- **"Lire, ecrire, decomposer et comparer les grands nombres"** : le proxy de transcription
+  chiffres/lettres est **VALIDE** par `nadia-prof` pour "lire" et "ecrire". Consequence pour la
+  matrice : le jour ou `camille-po` ecrit la story, **la ligne peut ouvrir en entier**, sans mention
+  de couverture partielle - les quatre verbes du referentiel (lire, ecrire, decomposer, comparer)
+  sont alors tous servables par le schema `type: question` existant. Reste `non couvert` a ce jour,
+  faute de story ecrite ce sprint (capacite, voir ci-dessus).
+- **"Notion de fraction simple... et reperage sur une droite numerique"** : le proxy d'encadrement
+  entre deux entiers (par exemple "entre quels deux entiers se trouve 7/4 ?") est **REFUSE** pour
+  "reperage sur une droite numerique". Motif arithmetique, pas une opinion sur l'exercice : dans le
+  perimetre exact que nomme le referentiel ("fractions **inferieures a 1**"), toute fraction du
+  paquet serait encadree entre 0 et 1, donc tout item d'encadrement aurait **la meme reponse** -
+  un exercice vide, pas un exercice facile. `nadia-prof` ajoute un motif de fond, independant de
+  l'arithmetique : "reperer sur une droite numerique" est une competence de representation (une
+  fraction a une place, qu'on trouve en partageant l'unite et en lisant une graduation), qu'aucun
+  encadrement textuel ne travaille - "cette competence exige une ligne reellement dessinee et
+  graduee". **Couverture partielle nommee**, sur le modele de `DEC-0019` : la moitie "notion de
+  fraction simple" (nommer/reconnaitre une fraction, l'associer a son ecriture et a sa
+  denomination) est entierement servable sans proxy et **pourrait ouvrir seule**, en couverture
+  partielle explicite, si une story lui est ecrite ; la moitie "reperage sur une droite numerique"
+  **reste non couverte** et le restera tant qu'aucun mecanisme ne dessine reellement une ligne
+  numerique - une question d'architecture, a router a `theo-archi` le jour ou elle se pose. La
+  ligne entiere reste `non couvert` a ce jour : aucune story n'est ecrite ce sprint sur la moitie
+  ouvrable.
+
+  Remarque versee au dossier, sans suite ce sprint : `nadia-prof` signale que la restriction
+  "fractions inferieures a 1" du referentiel `squad/programme/mathematiques/competences-cm1.md`
+  est plus etroite que ce qu'un CM1 travaille reellement (les fractions superieures a 1 et leur
+  encadrement entre deux entiers sont au programme). Elle precise que si ce perimetre est elargi,
+  l'encadrement redevient examinable pour la partie qui depasserait 1 - mais que son avis de fond
+  sur le reperage visuel ne changerait pas pour autant. Aucun arbitrage du referentiel n'est fait
+  ici ; la question reste ouverte pour l'utilisatrice si elle souhaite l'instruire.
 
 ## Francais - CP (cycle 2)
 
@@ -750,3 +788,122 @@ Trois lignes de plus qu'a la cloture de s10 passent `en cours` (toutes en mathem
 ouverture de contenu sur ce niveau depuis le sprint 0 de la reconstruction), pour un total de six
 lignes `en cours` sur le produit. Aucune ligne ne passe `couvert-valide` par cette seule ouverture ;
 ce mouvement attend l'audit de `nadia-prof` sur les increments du sprint 12.
+
+## Synthese apres les verdicts du sprint 12 (2026-08-15)
+
+`nadia-prof` a rendu quatre verdicts a la cloture de s12 : trois sur les increments ouverts par
+`DEC-0029` (`squad/conformite/FICHE-bandit-manchot-perimetre-cm1.md`,
+`FICHE-bandit-manchot-conversions-unites-cm1.md`, `FICHE-bandit-manchot-tables-multiplication-cm1.md`)
+et un quatrieme, non planifie, qui **retire** un Done pedagogique tenu depuis s03
+(`FICHE-bandit-manchot-additions-cp.md`).
+
+### Le fait le plus lourd : le Done pedagogique de la ligne "Calcul mental - additions dans la
+### limite de 10" est retire
+
+`nadia-prof` a rejoue `bandit-manchot-additions-cp` (1 320 manches reellement jouees, plus le calcul
+exhaustif sur la fabrique) et prononce **REFUSE**, retirant le Done pedagogique qu'elle avait
+accorde le 2026-08-05 (s01) et que la ligne portait depuis le 2026-08-06 (s03,
+`couvert-valide`). Motif unique : **la bonne reponse est le nombre intermediaire des trois
+propositions sur 66,5 % des manches**, calcul exhaustif et jeu reel concordants (66,54 % / 66,6 % /
+67,3 % selon la methode) ; un enfant qui presse toujours la proposition du milieu gagne deux manches
+sur trois sans additionner. La cause n'est pas le contenu, qui reste arithmetiquement exact (900
+manches sans une faute) : c'est **la fabrique `AdditionsBorneesContentSource`**, dont la loi de
+tirage des distracteurs (les plus proches ecarts d'abord, un de chaque cote de la bonne reponse)
+place mecaniquement la bonne reponse au centre sur tout contenu qu'elle produira, quel que soit le
+paquet YAML charge.
+
+**Deux constats anterieurs de `nadia-prof` sont corriges par elle-meme, et les deux textes retires
+restent lisibles a leur date, non effaces** :
+
+- Son releve de s00 ("sa position varie... 16/14/11, aucune strategie de position exploitable")
+  reste **exact**, mais il porte sur **la position a l'ecran**, battue avant rendu par
+  `BanditManchotSession.melanger` et donc uniforme par construction - une mesure qui, par nature,
+  ne pouvait pas reveler un biais sur le **rang par valeur**, une propriete differente jamais
+  mesuree avant ce sprint. La conclusion de couverture que ce releve avait servi a porter est ce qui
+  est retire ici, pas son exactitude.
+- Le chiffre de 63,1 % porte par le releve de dette de `lea-dev` (`s12-lea-tables-rang`) est
+  **sous-evalue** : sa methode compte un tirage par identifiant d'item, un echantillon de 65 valide
+  sur un paquet enumere mais pas sur une fabrique combinatoire comme celle-ci. La valeur retenue est
+  **66,5 %**.
+
+**Ce que ce refus ne fait pas** : il ne touche aucun autre verdict de cette fiche (forme, texte,
+signal, machine, cabinet, sortie - tous inchanges), et le jeu **reste au catalogue** : il n'est ni
+faux ni dangereux, il est trop facile a contourner. Conformement a la regle de cette matrice, la
+ligne mathematiques CP "Calcul mental - additions dans la limite de 10 (puis 20)" **repasse de
+`couvert-valide` a `en cours`** et redevient du backlog - voir la story de correction ci-dessous
+(`docs/backlog/backlog.md`, section "Sprint 12", S12-4). La ligne ne repassera `couvert-valide` que
+sur un nouveau verdict de `nadia-prof`, la barre de repartition des sommes qu'elle avait posee en
+s01 et levee en s03 n'etant pas rouverte par ce refus-ci.
+
+**Reserve versee au dossier par `nadia-prof`, non bloquante** : le seuil de 50 % qu'elle emploie
+comme barre de refus ne voit pas le rang presque vide (`cp-soustractions` a 8,3 %,
+`cp-complements-10` a 9,1 %), et deux paquets du catalogue sont exactement sur cette barre. Aucune
+action n'est demandee ce sprint ; nommee pour que l'equipe ne la decouvre pas plus tard sans
+attribution.
+
+### Les trois increments de mathematiques CM1 ouverts par `DEC-0029`
+
+- **Calculer un perimetre de figures usuelles (carre, rectangle)** : `nadia-prof` prononce **VALIDE
+  SOUS RESERVE**, Done pedagogique **accorde**, **sans mention de couverture partielle** - le
+  referentiel ne nomme que le carre et le rectangle, et le paquet porte les deux. **La ligne passe
+  de `en cours` a `couvert-valide`.** Trois reserves non bloquantes, nommees pour memoire : (1) la
+  bonne reponse est le rang intermediaire sur 18 des 20 items de calcul (90,0 %), consequence
+  mecanique de sa propre condition P-6 telle qu'ecrite a l'ouverture - `nadia-prof` corrige P-6 pour
+  les paquets a venir (quatre familles de distracteurs au lieu de deux, plus une condition
+  d'aboutissement portant sur le resultat : aucun rang majoritaire sur l'ensemble d'un paquet), sans
+  rouvrir ni le verdict ni le paquet livre ; (2) a 360 x 640, le message d'erreur et l'indice sont
+  sous le pli sur 100 % des echecs mesures - non bloquant, M4 ne bloque plus depuis `DEC-0025` ; (3)
+  aucune mise en situation dans le paquet, conforme a la lettre de la condition qui l'autorisait sans
+  l'exiger.
+- **Convertir des unites de longueur, masse, contenance dans le systeme metrique** : `nadia-prof`
+  prononce **VALIDE SOUS RESERVE**, Done pedagogique **accorde**, **sans mention de couverture
+  partielle** - les trois grandeurs sont servies a parts egales (8 items chacune) et le verbe
+  travaille est bien "convertir". **La ligne passe de `en cours` a `couvert-valide`.** Deux
+  reserves non bloquantes : (1) a 360 x 640, l'indice est sous le pli sur 62 % des echecs mesures
+  (le message d'erreur, lui, reste visible sur 100 %) ; (2) les 24 quantites de depart sont toutes
+  un chiffre significatif unique suivi de zeros (7 cm, 3 km...), donc la tache se reduit a compter
+  des zeros plutot qu'a multiplier un nombre reel - un point de depart correct mais qui laisse de
+  cote la moitie de ce que la competence demande. Une reponse distincte est versee au meme geste :
+  la moitie des distracteurs de mauvais sens valait initialement de 10 000 a 1 000 000 fois la bonne
+  reponse (un remplissage plutot qu'un distracteur plausible) ; `nadia-prof` corrige sa propre
+  condition C-7, trop courte sur ce point, et demande des erreurs de facteur a un ou deux crans
+  seulement - correction deja versee au paquet et confirmee par elle.
+- **Calcul mental - tables de multiplication (jusqu'a x10), rappel automatise** : `nadia-prof`
+  prononce **REFUSE**. Motif unique : sur les 99 items, la bonne reponse n'est **jamais** le plus
+  petit des trois nombres, et elle est le plus grand sur 64 items sur 99 (64,6 % au calcul exhaustif,
+  64,4 % en jouant) - un enfant qui presse toujours le plus grand nombre gagne sans avoir rappele
+  une seule table. Cause : les deux distracteurs d'un enonce "a x b" sont systematiquement les
+  produits voisins **inferieurs** (`(a-1) x b` et `a x (b-1)`), jamais les voisins superieurs. **La
+  ligne reste `en cours`** : le paquet est par ailleurs le mieux construit des trois de ce sprint
+  (99 produits exacts, indices verifies un par un, seul des trois a tenir M4). **Ce verdict n'a pas
+  encore ete rejoue** : `lea-dev` a livre une reprise (branche `s12-lea-tables-rang`, garde-fou
+  generique de rang ajoute) apres ce refus, mais aucun nouvel audit de `nadia-prof` n'est trace sur
+  cet increment corrige a ce jour. La ligne ne passera `couvert-valide` que sur ce nouveau verdict.
+
+**Couverture partielle a nommer des maintenant, pour que la ligne ne s'ouvre jamais verte sur ce
+point sans que quelqu'un l'ait vu venir** (`nadia-prof`, meme fiche, section "Ce que la matrice doit
+dire, et que camille-po ne doit pas perdre") : la competence du referentiel dit "rappel
+**automatise**", et l'automatisation est une affaire de vitesse - un enfant automatise quand il
+repond sans calculer. **Ce produit ne mesure aucun temps de reponse.** Le jour ou cette ligne
+atteindra `couvert-valide`, ce sera donc sur une **couverture partielle** : le "sait" (l'enfant
+connait le produit) est couvert par ce mecanisme, l'"automatise" (l'enfant le retrouve vite) ne
+l'est par aucun. Ce n'est pas un reproche au paquet - savoir ses tables est la condition pour les
+automatiser, et s'entrainer est le bon usage de ce jeu - mais la matrice devra porter cette
+restriction avec ces mots, pas la laisser dans l'ombre d'une ligne verte.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 2 | 3 |
+| mathematiques CM1 | 12 | 9 | 1 | 2 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 9 | 1 | 1 |
+| **Total** | **46** | **35** | **5** | **6** |
+
+Deux mouvements en sens opposes sur ce sprint : mathematiques CM1 gagne deux lignes
+`couvert-valide` (perimetre, conversions), et mathematiques CP en perd une (additions, Done
+pedagogique retire). Le nombre de lignes `non couvert` ne bouge pas : aucune ligne n'est ouverte ni
+fermee au sens strict, seule "fractions" recoit une reponse nommee sans changer de statut (voir la
+note dediee sous le tableau mathematiques CM1 ci-dessus). Le produit compte six lignes
+`couvert-valide` sur 46 (contre cinq a la cloture de s10) et cinq lignes `en cours` (contre trois a
+l'ouverture de s12), dont une - les tables - attend un verdict pas encore rejoue, et une autre - les
+additions CP - redevient du backlog apres douze sprints de statut `couvert-valide`.
