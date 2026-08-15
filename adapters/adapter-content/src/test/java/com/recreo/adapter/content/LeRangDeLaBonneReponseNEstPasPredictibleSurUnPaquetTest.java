@@ -64,31 +64,28 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * <p>ADR-0039 : le critere n'est pas une liste enumeree, c'est une propriete calculee sur les rangs -
  * aucune promesse universelle n'est tenue par une liste de refus ici.</p>
  *
- * <p><b>Dette assumee.</b> Trois paquets du catalogue depassent aujourd'hui ce seuil :
- * {@code cm1-perimetre} (90,0 % des items numeriques rendent la bonne reponse intermediaire),
- * {@code cm1-mesures} (54,2 % la rendent la plus petite) et {@code cp-additions-jusqu-a-10} (66,5 %
- * la rendent intermediaire - un paquet combinatoire dont la fabrique tire deux distracteurs parmi les
- * ecarts symetriques autour de la somme ; choisir deux ecarts parmi un jeu equilibre de part et d'autre
- * favorise mecaniquement la combinaison "un de chaque cote", donc le rang intermediaire, bien avant
- * S12). Aucun des trois n'est dans le perimetre de S12-3 : je ne corrige pas un contenu qu'un autre
- * agent a ecrit ou une fabrique de contenu que je n'ai pas ecrite. Cette liste est exemptee, elle
+ * <p><b>Dette assumee.</b> Deux paquets du catalogue depassent aujourd'hui ce seuil :
+ * {@code cm1-perimetre} (90,0 % des items numeriques rendent la bonne reponse intermediaire) et
+ * {@code cm1-mesures} (54,2 % la rendent la plus petite). Aucun des deux n'est dans le perimetre de
+ * S12-3 : je ne corrige pas un contenu qu'un autre agent a ecrit. Cette liste est exemptee, elle
  * n'absout pas : elle ne peut pas grandir (PLAFOND_DE_DETTE) et ne peut pas pourrir (chaque nom doit
  * designer un paquet qui existe reellement et qui depasse effectivement le seuil), suivant le meme
  * mecanisme que {@code LesGardeFousSontMisALEpreuveTest.DETTE_DE_BALAYAGE} (ADR-0013). Remonte a
- * sofia-sm avec ces trois chiffres dans le rapport de cette story.</p>
+ * sofia-sm avec ces chiffres dans le rapport de cette story.</p>
  *
  * <p><b>Correction du 2026-08-15, demandee par nadia-prof (FICHE-bandit-manchot-additions-cp.md,
- * section "Done pedagogique du 2026-08-15").</b> Le chiffre ci-dessus pour {@code
- * cp-additions-jusqu-a-10} portait 63,1 % ; il est corrige a 66,5 %. Ma methode classe un tirage par
- * identifiant d'item distinct, ce qui est le compte exact sur un paquet enumere - nadia-prof a
- * reproduit mes trois autres chiffres a la decimale par un comptage independant - mais devient un
- * echantillon (41 sur 65 enonces possibles) sur ce paquet-la, seul du releve a etre une fabrique qui
- * retire ses distracteurs au hasard a chaque tirage plutot qu'une liste ecrite. Le calcul exact de
- * nadia-prof sur la fabrique donne 66,54 %. Le paquet reste dans {@code DETTE_DE_RANG} : la nouvelle
- * valeur depasse toujours le seuil de majorite, et davantage que la valeur precedente ne le laissait
- * croire. {@code marc-dev} corrige cette fabrique dans un autre lot ; si son lot fait redescendre ce
- * paquet sous le seuil, {@code DETTE_DE_RANG} doit perdre cette entree dans le meme geste - une dette
- * qui ne descend pas alors que sa cause a disparu pourrit.</p>
+ * section "Done pedagogique du 2026-08-15").</b> Le chiffre pour {@code cp-additions-jusqu-a-10}
+ * portait 63,1 % ; il est corrige a 66,5 %. Ma methode classe un tirage par identifiant d'item
+ * distinct, ce qui est le compte exact sur un paquet enumere - nadia-prof a reproduit mes trois
+ * autres chiffres a la decimale par un comptage independant - mais devient un echantillon (41 sur 65
+ * enonces possibles) sur ce paquet-la, seul du releve a etre une fabrique qui retire ses distracteurs
+ * au hasard a chaque tirage plutot qu'une liste ecrite. Le calcul exact de nadia-prof sur la fabrique
+ * donne 66,54 %. Le paquet est reste dans {@code DETTE_DE_RANG} le temps que {@code marc-dev} corrige
+ * cette fabrique dans un autre lot (S12) : sa cause a disparu, {@code cp-additions-jusqu-a-10} en sort
+ * ici dans le meme geste que la fusion de ce lot - reconstate par ce test lui-meme, qui a rougi une
+ * fois les deux lots fusionnes tant que l'entree restait, la preuve que l'exemption etait devenue
+ * perimee plutot que sa seule parole. {@code PLAFOND_DE_DETTE} descend en consequence de 3 a 2 : une
+ * dette qui ne descend pas alors que sa cause a disparu pourrit.</p>
  *
  * <p><b>Second garde-fou, ajoute le 2026-08-15 : aucun rang ne devrait tomber sous un seuil
  * minimal.</b> Reserve neuve et datee de nadia-prof (FICHE-bandit-manchot-additions-cp.md, section 6,
@@ -162,10 +159,10 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
      * l'exemption. Voir la Javadoc de la classe.
      */
     private static final Set<String> DETTE_DE_RANG =
-            Set.of("cm1-perimetre", "cm1-mesures", "cp-additions-jusqu-a-10");
+            Set.of("cm1-perimetre", "cm1-mesures");
 
     /** Etat au 2026-08-15, s12. Ce nombre ne remonte jamais ; le baisser demande un diff visible. */
-    private static final int PLAFOND_DE_DETTE = 3;
+    private static final int PLAFOND_DE_DETTE = 2;
 
     /**
      * Paquets exemptes du second garde-fou (seuil minimal), avec le verdict pedagogique pour motif -
