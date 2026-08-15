@@ -1,0 +1,49 @@
+schema: 1
+id: paquet-neuf-toujours-la-plus-grande
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CM1"
+  domaine: "Nombres et calculs"
+  competence: "Jeu fautif de test, jamais livre"
+items:
+  - enonce: "1 + 2 = ?"
+    bonneReponse: "3"
+    distracteurs: ["2", "1"]
+    indice: "Jeu fautif de test."
+  - enonce: "2 + 3 = ?"
+    bonneReponse: "5"
+    distracteurs: ["4", "3"]
+    indice: "Jeu fautif de test."
+  - enonce: "3 + 4 = ?"
+    bonneReponse: "7"
+    distracteurs: ["6", "5"]
+    indice: "Jeu fautif de test."
+  - enonce: "4 + 5 = ?"
+    bonneReponse: "9"
+    distracteurs: ["8", "7"]
+    indice: "Jeu fautif de test."
+  - enonce: "5 + 6 = ?"
+    bonneReponse: "11"
+    distracteurs: ["10", "9"]
+    indice: "Jeu fautif de test."
+  - enonce: "6 + 7 = ?"
+    bonneReponse: "13"
+    distracteurs: ["12", "11"]
+    indice: "Jeu fautif de test."
+  - enonce: "7 + 8 = ?"
+    bonneReponse: "15"
+    distracteurs: ["14", "13"]
+    indice: "Jeu fautif de test."
+  - enonce: "8 + 9 = ?"
+    bonneReponse: "17"
+    distracteurs: ["16", "15"]
+    indice: "Jeu fautif de test."
+  - enonce: "9 + 10 = ?"
+    bonneReponse: "19"
+    distracteurs: ["18", "17"]
+    indice: "Jeu fautif de test."
+  - enonce: "10 + 11 = ?"
+    bonneReponse: "21"
+    distracteurs: ["20", "19"]
+    indice: "Jeu fautif de test."
