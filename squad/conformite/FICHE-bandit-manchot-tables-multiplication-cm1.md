@@ -31,7 +31,8 @@
   complements a 10" (11 valeurs) et abaisse `nombreDeManches` plutot que d'elargir artificiellement
   les formes d'items ; le meme arbitrage pourra devoir etre instruit ici si `nombreDeManches`
   declare au catalogue s'approche de 55.
-- **Derniere mise a jour** : 2026-08-15 (levee du refus par `nadia-prof`, apres avoir rejoue)
+- **Derniere mise a jour** : 2026-08-15 (reponse de `nadia-prof` sur le troisieme distracteur hors
+  espace des tables derive par `theo-archi` ; le verdict et les deux reserves sont inchanges)
 
 ## Competences visees
 
@@ -59,7 +60,55 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Done pedagogique du 2026-08-15 - le refus du 2026-08-14 est LEVE, VALIDE SOUS RESERVE - le plus recent de cette fiche
+### Precision du 2026-08-15 (soir) - le perimetre exact de la reserve B : `0` sur `1 x 1 = ?` n'en fait pas partie
+
+> **Ce que cette section fait, et ce qu'elle ne fait pas.** Elle repond a une question que
+> `theo-archi` m'a posee en derivant le critere de ma reserve B - "un distracteur qui n'est le
+> produit d'aucun couple de la table" - et qui rend **trois** distracteurs la ou j'en avais nomme
+> deux. Elle **ne touche ni le verdict** du 2026-08-15, ni la reserve A, ni le refus du 2026-08-14.
+> Elle ne modifie pas non plus le texte de la reserve B : elle en **nomme le perimetre**, qui etait
+> deja celui de deux items et que je n'elargis pas.
+
+**Reponse : `0` est un distracteur legitime sur `1 x 1 = ?`. La story S13-5 porte sur `11` et `110`,
+et sur eux seuls.**
+
+**Le fait, verifie sur le paquet livre.** `0` figure une seule fois dans
+`cm1-tables-multiplication.yaml`, ligne 12, sur l'item `1 × 1 = ?` dont les propositions sont
+`1`, `0`, `2`. Aucun autre item du paquet ne porte `0`.
+
+**Le critere qui separe les trois, et il n'est pas fait pour l'occasion.** Le paquet construit ses
+distracteurs par les **produits voisins** : `(a-1) x b`, `(a+1) x b`, `a x (b-1)`, `a x (b+1)`,
+`(a-1) x (a+1)` sur les carres. C'est ce que j'ai constate et credite le 2026-08-15, plus haut dans
+cette fiche, sous les mots *"aucun distracteur arbitraire"*.
+
+- **`0` est un produit voisin, et un produit exact** : `0 x 1 = 0`. Sur `1 × 1 = ?`, il **est** le
+  `(a-1) x b` de la regle du paquet, comme `2` en est le `(a+1) x b`. Il sort de l'espace des tables
+  seulement parce que le referentiel fait commencer les tables a 1, pas parce que la multiplication
+  cesse d'y avoir un sens : la table de zero existe, un CM1 la rencontre, et `0 x 1 = 0` est vrai.
+- **`11` et `110` ne sont le produit d'aucun couple voisin.** Ils ne s'obtiennent que par une
+  **autre operation** que celle de l'enonce : `1 + 10 = 11`, et `110` par un zero ajoute a `11` ou
+  par `100 + 10`. C'est ce que j'ai ecrit dans la reserve B elle-meme - *"plausibles pour l'enfant
+  qui additionne au lieu de multiplier"*. Ma reserve ne dit pas qu'ils sont implausibles ; elle dit
+  qu'ils sont les deux seules valeurs du paquet qu'aucune multiplication ne produit.
+
+**Ce que `0` fait de plus, et qui est la vraie raison de le garder.** La confusion entre l'element
+neutre (`x 1`, le nombre ne change pas) et l'element absorbant (`x 0`, le nombre disparait) est
+l'une des erreurs les plus frequentes du cycle 3. `1 × 1 = ?` avec `0` en face est le seul item du
+paquet qui la mette en jeu, et l'indice de cet item - *"Multiplier par 1, le nombre ne change
+pas."* - est ecrit exactement pour la lever. Retirer `0`, c'est retirer a la fois le distracteur le
+plus instructif du paquet et l'objet de son indice.
+
+**Un effet de bord que je signale sans en faire une condition.** `1 × 1 = ?` n'a **aucun** voisin
+en dessous autre que `0` : lui interdire `0`, c'est lui imposer deux distracteurs superieurs a la
+bonne reponse, donc un item de plus ou la bonne reponse est la plus petite. C'est la famille de
+defaut que j'ai refusee le 2026-08-14. Un item sur 99 ne renverse pas un taux, et je n'en fais donc
+pas un argument decisif - mais celui qui retirerait `0` doit savoir qu'il paie de ce cote-la.
+
+**Ce qui me ferait changer d'avis** : un `0` employe ailleurs que sur un item `x 1`, ou un `0` pose
+comme distracteur sans que l'indice de l'item parle de l'element neutre. Ce serait alors un nombre
+arbitraire, et il tomberait sous la reserve B avec les deux autres.
+
+### Done pedagogique du 2026-08-15 - le refus du 2026-08-14 est LEVE, VALIDE SOUS RESERVE - le plus recent des verdicts de cette fiche
 
 > **Ce que cette section fait.** Elle **leve le refus du 2026-08-14** sur son motif unique, apres
 > l'avoir rejoue moi-meme sur le paquet corrige. Elle **n'efface pas** ce refus, qui reste lisible
