@@ -66,7 +66,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *
  * <p><b>Dette assumee.</b> Trois paquets du catalogue depassent aujourd'hui ce seuil :
  * {@code cm1-perimetre} (90,0 % des items numeriques rendent la bonne reponse intermediaire),
- * {@code cm1-mesures} (54,2 % la rendent la plus petite) et {@code cp-additions-jusqu-a-10} (63,1 %
+ * {@code cm1-mesures} (54,2 % la rendent la plus petite) et {@code cp-additions-jusqu-a-10} (66,5 %
  * la rendent intermediaire - un paquet combinatoire dont la fabrique tire deux distracteurs parmi les
  * ecarts symetriques autour de la somme ; choisir deux ecarts parmi un jeu equilibre de part et d'autre
  * favorise mecaniquement la combinaison "un de chaque cote", donc le rang intermediaire, bien avant
@@ -76,6 +76,41 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * designer un paquet qui existe reellement et qui depasse effectivement le seuil), suivant le meme
  * mecanisme que {@code LesGardeFousSontMisALEpreuveTest.DETTE_DE_BALAYAGE} (ADR-0013). Remonte a
  * sofia-sm avec ces trois chiffres dans le rapport de cette story.</p>
+ *
+ * <p><b>Correction du 2026-08-15, demandee par nadia-prof (FICHE-bandit-manchot-additions-cp.md,
+ * section "Done pedagogique du 2026-08-15").</b> Le chiffre ci-dessus pour {@code
+ * cp-additions-jusqu-a-10} portait 63,1 % ; il est corrige a 66,5 %. Ma methode classe un tirage par
+ * identifiant d'item distinct, ce qui est le compte exact sur un paquet enumere - nadia-prof a
+ * reproduit mes trois autres chiffres a la decimale par un comptage independant - mais devient un
+ * echantillon (41 sur 65 enonces possibles) sur ce paquet-la, seul du releve a etre une fabrique qui
+ * retire ses distracteurs au hasard a chaque tirage plutot qu'une liste ecrite. Le calcul exact de
+ * nadia-prof sur la fabrique donne 66,54 %. Le paquet reste dans {@code DETTE_DE_RANG} : la nouvelle
+ * valeur depasse toujours le seuil de majorite, et davantage que la valeur precedente ne le laissait
+ * croire. {@code marc-dev} corrige cette fabrique dans un autre lot ; si son lot fait redescendre ce
+ * paquet sous le seuil, {@code DETTE_DE_RANG} doit perdre cette entree dans le meme geste - une dette
+ * qui ne descend pas alors que sa cause a disparu pourrit.</p>
+ *
+ * <p><b>Second garde-fou, ajoute le 2026-08-15 : aucun rang ne devrait tomber sous un seuil
+ * minimal.</b> Reserve neuve et datee de nadia-prof (FICHE-bandit-manchot-additions-cp.md, section 6,
+ * et FICHE-bandit-manchot-perimetre-cm1.md, complement du 2026-08-15) : le seuil de majorite ne voit
+ * que le rang le plus frequent, jamais le rang le plus rare. Un rang quasi vide elimine une
+ * proposition gratuitement a presque chaque manche, sans jamais rendre une strategie a rang constant
+ * majoritaire - {@code cp-soustractions} passe le premier garde-fou (50,0 % pile, comparaison stricte)
+ * et n'offre pourtant la plus grande que sur 8,3 % de ses items. Le seuil retenu, 10 %, est celui de
+ * nadia-prof, pas un choix d'ingenieur : il n'est pas negocie ici. Cette reserve est explicitement
+ * <b>non bloquante</b> et ne retire aucun Done pedagogique ; elle est encodee pour qu'elle ne se
+ * perde pas, pas pour forcer une reprise.</p>
+ *
+ * <p><b>Dette du second garde-fou.</b> {@code cm1-perimetre} (la plus petite a 0,0 %) et
+ * {@code cp-soustractions} (la plus grande a 8,3 %) sont exemptes, avec le verdict pedagogique pour
+ * seul motif - {@code cm1-perimetre} parce que nadia-prof a explicitement choisi de ne pas rouvrir le
+ * lot livre (P-6 ne change que pour les lots a venir), {@code cp-soustractions} parce qu'il est hors
+ * du mandat de cette story. <b>Un troisieme paquet, mesure et non annonce dans la reserve, s'y ajoute</b> :
+ * {@code cp-complements-10} (la plus petite a 9,1 %), que nadia-prof nomme elle-meme dans la meme
+ * section - "cp-complements-10 est dans le meme cas" que cp-soustractions - et qui rougit reellement
+ * ce garde-fou une fois ecrit. <b>Exempte ne veut pas dire valide</b> : les trois portent une reserve
+ * pedagogique ouverte au nom de nadia-prof, ecrite dans les fiches citees ci-dessus, pas dans ce
+ * test.</p>
  */
 class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
 
@@ -87,8 +122,25 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
     private static final String CONTRE_EXEMPLE_CLASSPATH =
             "/contreexemple/LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest";
 
+    /**
+     * Racine du jeu fautif propre au second garde-fou (seuil minimal), separee de celle du premier
+     * pour qu'aucun des deux ne pollue la mise a l'epreuve de l'autre : le paquet fautif du premier
+     * garde-fou (toujours la plus grande) a un rang a 0 % qui violerait aussi le seuil minimal, et la
+     * version corrigee du second (voir plus bas) n'est pas construite pour satisfaire le premier.
+     */
+    private static final Path CONTRE_EXEMPLE_SEUIL_MINIMUM = CONTRE_EXEMPLE.resolve("seuil-minimal");
+
+    private static final String CONTRE_EXEMPLE_SEUIL_MINIMUM_CLASSPATH =
+            CONTRE_EXEMPLE_CLASSPATH + "/seuil-minimal";
+
     /** Une strategie a rang constant ne doit jamais etre majoritaire sur un paquet. */
     private static final double SEUIL_MAJORITE = 0.5;
+
+    /**
+     * Reserve nadia-prof du 2026-08-15 : aucun rang de la bonne reponse ne devrait apparaitre sur
+     * moins de 10 % des items d'un paquet. Ce seuil est le sien, pas un choix d'ingenieur.
+     */
+    private static final double SEUIL_MINIMUM = 0.10;
 
     /**
      * Budget de tirages par paquet. Un paquet enumere (ListContentSource) s'epuise de lui-meme, avant
@@ -114,6 +166,16 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
 
     /** Etat au 2026-08-15, s12. Ce nombre ne remonte jamais ; le baisser demande un diff visible. */
     private static final int PLAFOND_DE_DETTE = 3;
+
+    /**
+     * Paquets exemptes du second garde-fou (seuil minimal), avec le verdict pedagogique pour motif -
+     * pas le mien. Voir la Javadoc de la classe : exempte ne veut pas dire valide.
+     */
+    private static final Set<String> DETTE_DE_SEUIL_MINIMUM =
+            Set.of("cm1-perimetre", "cp-soustractions", "cp-complements-10");
+
+    /** Etat au 2026-08-15, s12. Ce nombre ne remonte jamais ; le baisser demande un diff visible. */
+    private static final int PLAFOND_DE_DETTE_SEUIL_MINIMUM = 3;
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
@@ -199,6 +261,10 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
 
         int meilleureStrategie() {
             return Math.max(petite, Math.max(intermediaire, grande));
+        }
+
+        int rangLePlusRare() {
+            return Math.min(petite, Math.min(intermediaire, grande));
         }
     }
 
@@ -304,5 +370,105 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
     void leMemePaquetUneFoisSonRangCorrigePasseLeGardeFou() {
         verifierQueLeRangNEstPasPredictible(
                 CONTRE_EXEMPLE.resolve("corrige"), CONTRE_EXEMPLE_CLASSPATH + "/corrige", Set.of());
+    }
+
+    private static void ajouterDefautSiSousLeSeuil(String paquet, String nomDuRang, int effectif,
+                                                     int total, List<String> defauts) {
+        double ratio = (double) effectif / total;
+        if (ratio < SEUIL_MINIMUM) {
+            defauts.add(String.format(
+                    "paquet %s : le rang %s de la bonne reponse n'apparait que sur %.1f %% des %d"
+                            + " items a trois propositions numeriques, en dessous du seuil minimal"
+                            + " (%.1f %%)",
+                    paquet, nomDuRang, 100 * ratio, total, 100 * SEUIL_MINIMUM));
+        }
+    }
+
+    /**
+     * Reserve nadia-prof du 2026-08-15 : le seuil de majorite ne voit que le rang le plus frequent,
+     * jamais le rang le plus rare. Un rang quasi vide elimine une proposition gratuitement a presque
+     * chaque manche sans jamais rendre une strategie a rang constant majoritaire - c'est ce que le
+     * premier garde-fou ne voit pas. Non bloquant, ne retire aucun Done pedagogique.
+     */
+    static void verifierQuAucunRangNeTombeSousLeSeuil(Path racine, String racineClasspath,
+                                                        Set<String> dette) {
+        List<String> paquets = paquets(racine);
+        assertThat(paquets)
+                .as("ce garde-fou ne prouve rien s'il ne trouve aucun paquet sous %s", racine)
+                .isNotEmpty();
+
+        List<String> defauts = new ArrayList<>();
+        for (String paquet : paquets) {
+            if (dette.contains(paquet)) {
+                continue;
+            }
+            List<Question> items = itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet));
+            Repartition repartition = repartitionDe(items);
+            if (repartition.total() == 0) {
+                continue;
+            }
+            ajouterDefautSiSousLeSeuil(paquet, "la plus petite", repartition.petite(),
+                    repartition.total(), defauts);
+            ajouterDefautSiSousLeSeuil(paquet, "l'intermediaire", repartition.intermediaire(),
+                    repartition.total(), defauts);
+            ajouterDefautSiSousLeSeuil(paquet, "la plus grande", repartition.grande(),
+                    repartition.total(), defauts);
+        }
+
+        assertThat(defauts)
+                .as("aucun des trois rangs de la bonne reponse ne devrait tomber sous le seuil minimal"
+                        + " - reserve nadia-prof du 2026-08-15")
+                .isEmpty();
+    }
+
+    @Test
+    void aucunRangDeLaBonneReponseNeTombeSousLeSeuilMinimalSurLesPaquetsDeProduction() {
+        verifierQuAucunRangNeTombeSousLeSeuil(CONTENU_DE_PRODUCTION, "", DETTE_DE_SEUIL_MINIMUM);
+    }
+
+    @Test
+    void laDetteDuSeuilMinimalNePeutNiGrandirNiPourrir() {
+        assertThat(DETTE_DE_SEUIL_MINIMUM)
+                .as("la dette de paquets dont un rang tombe sous le seuil minimal ne remonte jamais")
+                .hasSizeLessThanOrEqualTo(PLAFOND_DE_DETTE_SEUIL_MINIMUM);
+
+        List<String> defauts = new ArrayList<>();
+        for (String paquet : DETTE_DE_SEUIL_MINIMUM) {
+            if (!paquets(CONTENU_DE_PRODUCTION).contains(paquet)) {
+                defauts.add(paquet + " : n'existe plus dans " + CONTENU_DE_PRODUCTION);
+                continue;
+            }
+            List<Question> items = itemsTires(new YamlContentPackLoader("").chargerPaquet(paquet));
+            Repartition repartition = repartitionDe(items);
+            if (repartition.total() == 0
+                    || (double) repartition.rangLePlusRare() / repartition.total() >= SEUIL_MINIMUM) {
+                defauts.add(paquet + " : ne tombe plus sous le seuil minimal, l'exemption est perimee");
+            }
+        }
+        assertThat(defauts)
+                .as("chaque nom de la dette doit designer un paquet qui existe et dont un rang tombe"
+                        + " encore reellement sous le seuil minimal")
+                .isEmpty();
+    }
+
+    /**
+     * ADR-0013 obligation 3 : l'objet neuf est un paquet que personne n'a jamais livre, dont un rang
+     * (la plus petite) est quasi vide alors qu'aucun rang n'est majoritaire - la forme exacte du
+     * defaut que le premier garde-fou ne voit pas, mesuree par nadia-prof sur cp-soustractions.
+     */
+    @Test
+    void unPaquetNeufDontUnRangEstQuasiVideFaitEchouerLeGardeFouDeSeuil() {
+        assertThatThrownBy(() -> verifierQuAucunRangNeTombeSousLeSeuil(
+                CONTRE_EXEMPLE_SEUIL_MINIMUM, CONTRE_EXEMPLE_SEUIL_MINIMUM_CLASSPATH, Set.of()))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("paquet-neuf-rang-quasi-vide")
+                .hasMessageContaining("en dessous du seuil minimal");
+    }
+
+    /** Le meme paquet neuf, une fois son rang le plus rare etoffe, ne doit plus rien reprocher. */
+    @Test
+    void leMemePaquetUneFoisSonRangLePlusRareEtoffePasseLeGardeFouDeSeuil() {
+        verifierQuAucunRangNeTombeSousLeSeuil(CONTRE_EXEMPLE_SEUIL_MINIMUM.resolve("corrige"),
+                CONTRE_EXEMPLE_SEUIL_MINIMUM_CLASSPATH + "/corrige", Set.of());
     }
 }

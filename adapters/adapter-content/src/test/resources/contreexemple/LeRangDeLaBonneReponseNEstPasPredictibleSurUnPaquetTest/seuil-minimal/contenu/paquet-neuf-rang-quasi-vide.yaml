@@ -1,0 +1,89 @@
+schema: 1
+id: paquet-neuf-rang-quasi-vide
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CM1"
+  domaine: "Nombres et calculs"
+  competence: "Jeu fautif de test, jamais livre"
+items:
+  - enonce: "1 + 1 = ?"
+    bonneReponse: "2"
+    distracteurs: ["6", "9"]
+    indice: "Jeu fautif de test."
+  - enonce: "5 + 5 = ?"
+    bonneReponse: "10"
+    distracteurs: ["7", "15"]
+    indice: "Jeu fautif de test."
+  - enonce: "5 + 6 = ?"
+    bonneReponse: "11"
+    distracteurs: ["8", "16"]
+    indice: "Jeu fautif de test."
+  - enonce: "5 + 7 = ?"
+    bonneReponse: "12"
+    distracteurs: ["9", "17"]
+    indice: "Jeu fautif de test."
+  - enonce: "5 + 8 = ?"
+    bonneReponse: "13"
+    distracteurs: ["10", "18"]
+    indice: "Jeu fautif de test."
+  - enonce: "5 + 9 = ?"
+    bonneReponse: "14"
+    distracteurs: ["11", "19"]
+    indice: "Jeu fautif de test."
+  - enonce: "6 + 9 = ?"
+    bonneReponse: "15"
+    distracteurs: ["12", "20"]
+    indice: "Jeu fautif de test."
+  - enonce: "7 + 9 = ?"
+    bonneReponse: "16"
+    distracteurs: ["13", "21"]
+    indice: "Jeu fautif de test."
+  - enonce: "8 + 9 = ?"
+    bonneReponse: "17"
+    distracteurs: ["14", "22"]
+    indice: "Jeu fautif de test."
+  - enonce: "9 + 9 = ?"
+    bonneReponse: "18"
+    distracteurs: ["15", "23"]
+    indice: "Jeu fautif de test."
+  - enonce: "10 + 10 = ?"
+    bonneReponse: "20"
+    distracteurs: ["17", "14"]
+    indice: "Jeu fautif de test."
+  - enonce: "10 + 11 = ?"
+    bonneReponse: "21"
+    distracteurs: ["18", "15"]
+    indice: "Jeu fautif de test."
+  - enonce: "10 + 12 = ?"
+    bonneReponse: "22"
+    distracteurs: ["19", "16"]
+    indice: "Jeu fautif de test."
+  - enonce: "10 + 13 = ?"
+    bonneReponse: "23"
+    distracteurs: ["20", "17"]
+    indice: "Jeu fautif de test."
+  - enonce: "10 + 14 = ?"
+    bonneReponse: "24"
+    distracteurs: ["21", "18"]
+    indice: "Jeu fautif de test."
+  - enonce: "10 + 15 = ?"
+    bonneReponse: "25"
+    distracteurs: ["22", "19"]
+    indice: "Jeu fautif de test."
+  - enonce: "10 + 16 = ?"
+    bonneReponse: "26"
+    distracteurs: ["23", "20"]
+    indice: "Jeu fautif de test."
+  - enonce: "10 + 17 = ?"
+    bonneReponse: "27"
+    distracteurs: ["24", "21"]
+    indice: "Jeu fautif de test."
+  - enonce: "10 + 18 = ?"
+    bonneReponse: "28"
+    distracteurs: ["25", "22"]
+    indice: "Jeu fautif de test."
+  - enonce: "10 + 19 = ?"
+    bonneReponse: "29"
+    distracteurs: ["26", "23"]
+    indice: "Jeu fautif de test."
