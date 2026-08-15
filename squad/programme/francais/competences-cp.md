@@ -1,4 +1,4 @@
-# Référentiel de compétences — Français — CP (cycle 2)
+# Référentiel de compétences - Français - CP (cycle 2)
 
 > Socle réaliste de départ, **non exhaustif et non officiel** : à compléter et faire valider par
 > l'utilisatrice au fil des sprints, en lien avec `squad/programme/MATRICE-couverture.md`. Ne

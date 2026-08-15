@@ -1,4 +1,4 @@
-# Référentiel de compétences — Mathématiques — CM1 (cycle 3)
+# Référentiel de compétences - Mathématiques - CM1 (cycle 3)
 
 > Socle réaliste de départ, **non exhaustif et non officiel** : à compléter et faire valider par
 > l'utilisatrice au fil des sprints, en lien avec `squad/programme/MATRICE-couverture.md`. Ne
@@ -7,8 +7,8 @@
 ## Nombres et calculs
 
 - Lire, écrire, décomposer et comparer les nombres entiers jusqu'au million.
-- Calcul mental — tables de multiplication (jusqu'à ×10), rappel automatisé.
-- Calcul mental — multiplications et divisions simples (multiples de 10, 100).
+- Calcul mental - tables de multiplication (jusqu'à ×10), rappel automatisé.
+- Calcul mental - multiplications et divisions simples (multiples de 10, 100).
 - Effectuer une multiplication posée d'un nombre à 2-3 chiffres par un nombre à 1-2 chiffres.
 - Effectuer une division euclidienne simple (quotient et reste) par un diviseur à 1 chiffre.
 - Notion de fraction simple (unités fractionnaires, fractions inférieures à 1) et repérage sur

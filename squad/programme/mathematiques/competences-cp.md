@@ -1,4 +1,4 @@
-# Référentiel de compétences — Mathématiques — CP (cycle 2)
+# Référentiel de compétences - Mathématiques - CP (cycle 2)
 
 > Socle réaliste de départ, **non exhaustif et non officiel** : à compléter et faire valider par
 > l'utilisatrice au fil des sprints, en lien avec `squad/programme/MATRICE-couverture.md`. Ne
@@ -8,8 +8,8 @@
 
 - Dénombrer, lire, écrire et décomposer les nombres jusqu'à 100.
 - Comparer et ranger des nombres jusqu'à 100 (`<`, `>`, `=`).
-- Calcul mental — additions dans la limite de 10 (puis 20).
-- Calcul mental — soustractions dans la limite de 10.
+- Calcul mental - additions dans la limite de 10 (puis 20).
+- Calcul mental - soustractions dans la limite de 10.
 - Compléments à 10.
 - Résoudre des problèmes simples d'addition/soustraction en situation (1 étape).
 - Reconnaître et utiliser la monnaie (pièces/billets simples) dans des problèmes concrets.

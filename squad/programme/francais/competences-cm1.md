@@ -1,4 +1,4 @@
-# Référentiel de compétences — Français — CM1 (cycle 3)
+# Référentiel de compétences - Français - CM1 (cycle 3)
 
 > Socle réaliste de départ, **non exhaustif et non officiel** : à compléter et faire valider par
 > l'utilisatrice au fil des sprints, en lien avec `squad/programme/MATRICE-couverture.md`. Ne
