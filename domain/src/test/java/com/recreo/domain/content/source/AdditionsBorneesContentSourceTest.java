@@ -167,6 +167,74 @@ class AdditionsBorneesContentSourceTest {
         assertThat(tirer().indice()).contains(INDICE);
     }
 
+    /**
+     * Refus pedagogique de nadia-prof du 2026-08-15 (FICHE-bandit-manchot-additions-cp.md) : sur
+     * l'ancienne fabrique, la bonne reponse etait le nombre intermediaire des trois propositions sur
+     * 66,5 % des manches (calcul exhaustif de nadia-prof, 66,6 % mesure en jouant 900 manches) - une
+     * strategie qui presse toujours le milieu sans lire l'enonce gagnait deux manches sur trois.
+     * Cause : les deux distracteurs etaient tires parmi quatre voisins symetriques {s-2, s-1, s+1,
+     * s+2}, ce qui rend la combinaison "un de chaque cote" (donc le rang intermediaire) mecaniquement
+     * majoritaire (4 paires sur 6, 66,67 %).
+     *
+     * <p>La correction ne remplace pas une regle de tirage par une autre en esperant que la
+     * distribution suive : elle derive du resultat voulu. Le nombre de distracteurs places en
+     * dessous de la bonne reponse ({@link AdditionsBorneesContentSource#distracteurs}) est tire
+     * uniformement parmi les valeurs atteignables, ce qui rend directement le rang de la bonne
+     * reponse presque equiprobable entre les trois positions plutot que de l'observer en
+     * consequence d'une combinatoire sur des candidats.
+     *
+     * <p>Calcul exact sur la fabrique (memes constantes que le paquet livre) : la plus petite
+     * 33,55 %, intermediaire 33,55 %, la plus grande 32,90 % - au plancher arithmetique (33 % a
+     * 37 %) que nadia-prof fixe comme cible, et non pas seulement sous son plancher de refus
+     * (50 %) ; aucun rang sous sa reserve de 10 %. Verifie ici sur un grand nombre de tirages reels
+     * (20 graines x 6500, comme le test voisin de repartition des sommes) et non par un seul tirage
+     * par identifiant - c'est precisement la sous-estimation (63,1 % au lieu de 66,5 %) que
+     * nadia-prof a corrigee dans sa fiche.
+     */
+    @Test
+    void leRangDeLaBonneReponseNEstJamaisMajoritaireEtAucunRangNEstPresqueVide() {
+        int petite = 0;
+        int intermediaire = 0;
+        int grande = 0;
+
+        for (int graine = 0; graine < 20; graine++) {
+            RandomSource graineFixe = new Random(graine)::nextInt;
+            for (int tirage = 0; tirage < 6500; tirage++) {
+                Question question = (Question) source.next(graineFixe, Set.<ItemId>of()).orElseThrow();
+                int bonneReponse = Integer.parseInt(question.bonneReponse());
+                int distracteur1 = Integer.parseInt(question.distracteurs().get(0));
+                int distracteur2 = Integer.parseInt(question.distracteurs().get(1));
+                int enDessous = (distracteur1 < bonneReponse ? 1 : 0) + (distracteur2 < bonneReponse ? 1 : 0);
+                if (enDessous == 0) {
+                    petite++;
+                } else if (enDessous == 2) {
+                    grande++;
+                } else {
+                    intermediaire++;
+                }
+            }
+        }
+
+        int total = petite + intermediaire + grande;
+        double proportionPetite = 100.0 * petite / total;
+        double proportionIntermediaire = 100.0 * intermediaire / total;
+        double proportionGrande = 100.0 * grande / total;
+
+        // Plancher de refus de nadia-prof : une strategie a rang constant ne doit jamais gagner
+        // plus souvent qu'elle ne perd, et aucun rang ne doit devenir une elimination gratuite.
+        assertThat(proportionPetite).as("rang le plus petit, jamais majoritaire").isLessThan(50.0);
+        assertThat(proportionIntermediaire).as("rang intermediaire, jamais majoritaire").isLessThan(50.0);
+        assertThat(proportionGrande).as("rang le plus grand, jamais majoritaire").isLessThan(50.0);
+        assertThat(proportionPetite).as("rang le plus petit, jamais presque vide").isGreaterThan(10.0);
+        assertThat(proportionIntermediaire).as("rang intermediaire, jamais presque vide").isGreaterThan(10.0);
+        assertThat(proportionGrande).as("rang le plus grand, jamais presque vide").isGreaterThan(10.0);
+
+        // Cible de nadia-prof : le plancher arithmetique (33 % a 37 %), pas seulement sous la barre.
+        assertThat(proportionPetite).as("rang le plus petit, au plancher arithmetique").isBetween(30.0, 38.0);
+        assertThat(proportionIntermediaire).as("rang intermediaire, au plancher arithmetique").isBetween(30.0, 38.0);
+        assertThat(proportionGrande).as("rang le plus grand, au plancher arithmetique").isBetween(30.0, 38.0);
+    }
+
     private Question tirer() {
         return (Question) source.next(hasard, Set.<ItemId>of()).orElseThrow();
     }

@@ -113,25 +113,31 @@ public final class AdditionsBorneesContentSource implements ContentSource {
     }
 
     /**
-     * Les ecarts les plus petits sont ajoutes en premier, ce qui garantit qu'au moins un
-     * distracteur retenu est proche de la bonne reponse. Jamais de valeur negative.
+     * Correction du 2026-08-15 (refus pedagogique de nadia-prof, FICHE-bandit-manchot-additions-cp) :
+     * l'ancien tirage choisissait 2 candidats parmi 4 voisins {s-2, s-1, s+1, s+2}, ce qui rend la
+     * bonne reponse intermediaire sur 4 des 6 paires possibles (66,5 % des manches, calcul exhaustif).
+     * La propriete voulue porte sur le resultat, pas sur la liste : le rang de la bonne reponse
+     * (nombre de distracteurs en dessous d'elle) doit etre tire uniformement parmi les rangs
+     * atteignables, plutot que d'emerger d'une combinatoire sur des candidats. Le nombre de
+     * distracteurs places en dessous de la bonne reponse est donc tire uniformement parmi les valeurs
+     * possibles (bornees par le nombre de valeurs non negatives disponibles), puis les distracteurs
+     * sont les voisins les plus proches de chaque cote - jamais de valeur negative, toujours proches.
      */
     private List<String> distracteurs(RandomSource hasard, int bonneReponse) {
-        List<Integer> candidats = new ArrayList<>();
-        int ecart = 1;
-        while (candidats.size() < 2 * (nombreDePropositions - 1) && ecart <= sommeMaximale + nombreDePropositions) {
-            if (bonneReponse - ecart >= 0) {
-                candidats.add(bonneReponse - ecart);
-            }
-            candidats.add(bonneReponse + ecart);
-            ecart++;
+        int nombreDeDistracteurs = nombreDePropositions - 1;
+        int enDessousMaximum = Math.min(nombreDeDistracteurs, bonneReponse);
+        int enDessous = hasard.nextInt(enDessousMaximum + 1);
+        int auDessus = nombreDeDistracteurs - enDessous;
+
+        List<Integer> valeurs = new ArrayList<>();
+        for (int ecart = 1; ecart <= enDessous; ecart++) {
+            valeurs.add(bonneReponse - ecart);
         }
-        melanger(candidats, hasard);
-        return candidats.stream()
-                .distinct()
-                .limit(Math.max(0, nombreDePropositions - 1))
-                .map(String::valueOf)
-                .toList();
+        for (int ecart = 1; ecart <= auDessus; ecart++) {
+            valeurs.add(bonneReponse + ecart);
+        }
+        melanger(valeurs, hasard);
+        return valeurs.stream().map(String::valueOf).toList();
     }
 
     private static void melanger(List<Integer> valeurs, RandomSource hasard) {
