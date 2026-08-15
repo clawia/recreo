@@ -40,6 +40,24 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * <p>La liste des cinq fautes reste, sous son nom : elle lit la <b>source entiere</b> du gabarit,
  * commentaires et attributs compris, la ou l'inventaire ne juge que les noeuds de texte. C'est elle
  * qui garde encore le nom du produit d'une accentuation ecrite dans un commentaire.
+ *
+ * <p><b>S12-5 (theo-archi, avis de faisabilite du sprint 13).</b> "L'inventaire ne juge que les
+ * noeuds de texte" etait exactement la phrase qui a laisse passer {@code aria-label="Menu
+ * principal"} huit sprints : {@code nadia-prof} l'a trouve en lisant, aucun garde-fou ne le
+ * voyait, alors que son propre critere - "tout texte que le serveur envoie et qu'un enfant peut
+ * recevoir, affiche ou annonce" - le couvrait deja en intention. Le perimetre s'etend donc aux
+ * attributs que l'API d'accessibilite HTML/ARIA expose comme texte a une aide technique
+ * ({@link #ATTRIBUTS_QUI_ANNONCENT_DU_TEXTE}), et ces textes-la rejoignent le meme inventaire,
+ * jugee par la meme egalite - un texte annonce et jamais arbitre rougit exactement comme un texte
+ * affiche et jamais arbitre, parce que le critere de {@code nadia-prof} ne distingue pas les deux
+ * canaux.
+ *
+ * <p>Ce que cette extension ne prouve pas : elle lit ce que le gabarit <b>ecrit</b>, jamais ce
+ * qu'un lecteur d'ecran <b>annonce</b> reellement - aucun calcul de nom accessible n'est execute,
+ * seule la presence litterale d'un attribut connu est lue. Une forme dynamique de ces attributs
+ * (un {@code th:aria-label} qui calculerait la valeur au rendu) resterait hors de portee, comme
+ * {@code th:text} l'est deja pour le contenu. La reserve F11 - l'ecoute reelle d'un lecteur
+ * d'ecran - reste entiere et n'appartient qu'a {@code nadia-prof}.
  */
 class TexteAccentueDesGabaritsTest {
 
@@ -58,6 +76,22 @@ class TexteAccentueDesGabaritsTest {
 
     /** Les elements dont le contenu n'est pas du texte lu, mais du code servi au navigateur. */
     private static final List<String> SANS_TEXTE_POUR_L_ENFANT = List.of("script", "style");
+
+    /**
+     * Les attributs par lesquels HTML et ARIA exposent une chaine litterale directement au calcul
+     * du nom et de la description accessibles (W3C Accessible Name and Description Computation).
+     * Ensemble ferme par cette specification, jamais par nous - le meme raisonnement que ce
+     * fichier tient deja pour {@link #POSE_SON_TEXTE_AU_RENDU}, "ensemble ferme par Thymeleaf".
+     *
+     * <p>"aria-labelledby" et "aria-describedby" en sont exclus par construction : ils portent
+     * l'identifiant d'un autre element, jamais du texte, et les noeuds de texte de l'element qu'ils
+     * designent sont deja dans le perimetre par eux-memes. Un attribut "value" sur un bouton n'entre
+     * pas non plus : ce depot n'ecrit que des {@code <button>}, dont le nom accessible vient de leur
+     * contenu, deja couvert par les noeuds de texte.
+     */
+    private static final List<String> ATTRIBUTS_QUI_ANNONCENT_DU_TEXTE = List.of(
+            "alt", "title", "aria-label", "placeholder", "aria-placeholder",
+            "aria-roledescription", "aria-description");
 
     /**
      * ADR-0039 : l'inventaire du texte que les gabarits de production ecrivent en clair pour
@@ -136,22 +170,35 @@ class TexteAccentueDesGabaritsTest {
     }
 
     /**
-     * ADR-0039, derivation totale du critere : chaque noeud de texte de chaque gabarit produit une
-     * assertion. Rien n'est retire par une propriete facultative de l'element qui le porte - ni sa
-     * classe, ni sa balise, ni sa position. Ce qui est retire l'est pour une raison qui dit que
-     * l'enfant ne lit pas ce texte : Thymeleaf le remplace au rendu, ou c'est du code servi au
-     * navigateur.
+     * ADR-0039, derivation totale du critere : chaque noeud de texte et chaque attribut annonce de
+     * chaque gabarit produisent une assertion. Rien n'est retire par une propriete facultative de
+     * l'element qui le porte - ni sa classe, ni sa balise, ni sa position. Ce qui est retire l'est
+     * pour une raison qui dit que l'enfant ne recoit pas ce texte : Thymeleaf le remplace au rendu,
+     * ou c'est du code servi au navigateur.
      *
      * <p>Les commentaires ne sont pas des noeuds de texte et n'entrent donc pas ici : c'est la liste
      * des cinq fautes qui les couvre, en lisant la source entiere.
+     *
+     * <p>S12-5 : un attribut de {@link #ATTRIBUTS_QUI_ANNONCENT_DU_TEXTE} n'est pas exclu par
+     * {@link #remplaceAuRendu(Element)} - ce garde-fou-la ne concerne que le contenu qu'un {@code
+     * th:text}/{@code th:utext} porte sur un ancetre, jamais les attributs propres de l'element, que
+     * Thymeleaf laisse intacts.
      */
     private static List<TexteLu> textesLusParLEnfant(Path racineDesGabarits) {
         List<TexteLu> textes = new ArrayList<>();
         for (Path gabarit : tousLesGabarits(racineDesGabarits)) {
             Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
             for (Element element : document.getAllElements()) {
-                if (SANS_TEXTE_POUR_L_ENFANT.contains(element.normalName())
-                        || remplaceAuRendu(element)) {
+                if (SANS_TEXTE_POUR_L_ENFANT.contains(element.normalName())) {
+                    continue;
+                }
+                for (String attribut : ATTRIBUTS_QUI_ANNONCENT_DU_TEXTE) {
+                    String valeur = element.attr(attribut).strip();
+                    if (element.hasAttr(attribut) && valeur.chars().anyMatch(Character::isLetter)) {
+                        textes.add(new TexteLu(gabarit, valeur));
+                    }
+                }
+                if (remplaceAuRendu(element)) {
                     continue;
                 }
                 for (TextNode noeud : element.textNodes()) {
@@ -237,6 +284,22 @@ class TexteAccentueDesGabaritsTest {
         assertThatThrownBy(() -> verifierQueToutTexteLuEstInventorie(GABARITS_DU_CONTRE_EXEMPLE))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("ne porte pas");
+    }
+
+    /**
+     * S12-5, ADR-0013 obligation 3 : la morsure de la dimension neuve (le texte porte par un
+     * attribut) se prouve isolement, sur un gabarit qui ne porte <b>aucun</b> noeud de texte - si ce
+     * test rougissait, ce serait forcement l'attribut qui l'a fait rougir, jamais le reste du
+     * garde-fou. {@code nav-aria-label-non-inventorie/} est un sous-repertoire propre, pour que les
+     * deux autres preuves de morsure de cette classe restent ce qu'elles etaient.
+     */
+    @Test
+    void unTexteNeufPorteParUnAttributHorsDeLInventaireFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifierQueToutTexteLuEstInventorie(
+                GABARITS_DU_CONTRE_EXEMPLE.resolve("nav-aria-label-non-inventorie")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ne porte pas")
+                .hasMessageContaining("Menu jeunesse");
     }
 
     /**
