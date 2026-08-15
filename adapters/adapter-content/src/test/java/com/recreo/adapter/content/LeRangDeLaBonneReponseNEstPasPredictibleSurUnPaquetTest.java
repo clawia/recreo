@@ -130,6 +130,27 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
     private static final String CONTRE_EXEMPLE_SEUIL_MINIMUM_CLASSPATH =
             CONTRE_EXEMPLE_CLASSPATH + "/seuil-minimal";
 
+    /**
+     * Racine du jeu fautif propre a la branche milliers de la correction du 2026-08-15 (voir la
+     * Javadoc de {@link #NOMBRE}) : des nombres au-dessus de mille, ecrits au separateur d'espace,
+     * dont la bonne reponse est toujours la plus grande - materiau reel de theo-archi (avis de
+     * faisabilite S13-1), dont l'item "1 000 000" contre "999 999" et "998 000" est repris a
+     * l'identique.
+     */
+    private static final Path CONTRE_EXEMPLE_MILLIERS = CONTRE_EXEMPLE.resolve("milliers");
+
+    private static final String CONTRE_EXEMPLE_MILLIERS_CLASSPATH = CONTRE_EXEMPLE_CLASSPATH + "/milliers";
+
+    /**
+     * Racine du jeu fautif propre a la branche durees de la meme correction : des propositions
+     * ecrites en heures et minutes, dont six items partagent la meme heure de tete entre les trois
+     * propositions - materiau reel de nadia-prof (ARBITRAGE-PREALABLE-s13-multiplications-divisions-
+     * et-durees-cm1.md, section 3.6).
+     */
+    private static final Path CONTRE_EXEMPLE_DUREES = CONTRE_EXEMPLE.resolve("durees");
+
+    private static final String CONTRE_EXEMPLE_DUREES_CLASSPATH = CONTRE_EXEMPLE_CLASSPATH + "/durees";
+
     /** Une strategie a rang constant ne doit jamais etre majoritaire sur un paquet. */
     private static final double SEUIL_MAJORITE = 0.5;
 
@@ -152,7 +173,40 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
      */
     private static final int TIRAGES_SANS_NOUVEAUTE_AVANT_ARRET = 200;
 
-    private static final Pattern NOMBRE_EN_TETE = Pattern.compile("^-?\\d+");
+    /**
+     * Correction du 2026-08-15, demandee par theo-archi (avis de faisabilite S13-1) et par
+     * nadia-prof (ARBITRAGE-PREALABLE-s13-multiplications-divisions-et-durees-cm1.md, section 3.6).
+     * L'ancien motif, {@code ^-?\d+}, ne lisait que le premier groupe de chiffres d'une proposition.
+     * Sur un nombre nu c'est le nombre entier ; sur un nombre a separateur de milliers ("1 000 000"),
+     * ce n'est que le millier de tete, ce qui inverse le rang reel des lors qu'un paquet franchit le
+     * millier (S13-1 est le premier a le faire) ; sur une duree ("1 h 30"), ce n'est que l'heure, ce
+     * qui ignore les minutes entierement.
+     *
+     * <p>Ce motif capture desormais un nombre entier, y compris ses separateurs de milliers, plutot
+     * que son seul premier groupe. {@link #SEPARATEUR_DE_MILLIERS} retire ensuite ces separateurs
+     * avant lecture. Trois ecritures sont vues : l'espace simple, celle qu'ecrit MD-4 de l'arbitrage
+     * cite ci-dessus ("4 500") ; l'espace insecable (U+00A0) et l'espace fine insecable (U+202F), les
+     * deux variantes typographiques que theo-archi demande de couvrir par prudence, alors qu'aucun
+     * paquet livre n'en ecrit aucune aujourd'hui.</p>
+     */
+    private static final Pattern NOMBRE = Pattern.compile("^-?\\d(?:[\\d\\u00A0\\u202F ]*\\d)?");
+
+    /** Les trois ecritures d'un separateur de milliers vues par {@link #NOMBRE} : voir sa Javadoc. */
+    private static final Pattern SEPARATEUR_DE_MILLIERS = Pattern.compile("[\\u00A0\\u202F ]");
+
+    /**
+     * Une duree ou un instant ecrit en heures et minutes : "1 h 30", "1 h 30 min", "1 heure 30
+     * minutes", "2 h" (heures seules). Un instant du jour ("8 h 30") a la meme ecriture et se lit de
+     * la meme facon, en minutes depuis minuit : cela suffit a l'ordonner puisqu'aucun item du depot
+     * ne franchit minuit (D-3 de l'arbitrage cite ci-dessus). Vu en premier par {@link #valeurDe},
+     * avant {@link #NOMBRE} : sur "1 h 30", {@link #NOMBRE} ne verrait que "1" et perdrait les
+     * minutes, exactement le defaut releve par nadia-prof.
+     */
+    private static final Pattern DUREE_HEURES = Pattern.compile(
+            "^(\\d+)\\s*h(?:eures?)?\\.?(?:\\s+(\\d+)\\s*(?:min(?:utes?)?)?\\.?)?$");
+
+    /** Une duree en minutes seules : "45 min", "45 minutes". */
+    private static final Pattern DUREE_MINUTES = Pattern.compile("^(\\d+)\\s*min(?:utes?)?\\.?$");
 
     /**
      * Paquets exemptes de ce garde-fou, hors du perimetre de S12-3, avec le taux mesure qui justifie
@@ -223,9 +277,42 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
         return List.copyOf(items.values());
     }
 
-    private static Integer nombreEnTete(String proposition) {
-        Matcher matcher = NOMBRE_EN_TETE.matcher(proposition.strip());
-        return matcher.find() ? Integer.valueOf(matcher.group()) : null;
+    /**
+     * La duree ou l'instant lu par {@link #DUREE_HEURES} ou {@link #DUREE_MINUTES}, converti en
+     * minutes, ou {@code null} si le texte n'est ni l'un ni l'autre.
+     */
+    private static Long dureeEnMinutes(String texte) {
+        Matcher heures = DUREE_HEURES.matcher(texte);
+        if (heures.matches()) {
+            long h = Long.parseLong(heures.group(1));
+            long min = heures.group(2) == null ? 0 : Long.parseLong(heures.group(2));
+            return h * 60 + min;
+        }
+        Matcher minutes = DUREE_MINUTES.matcher(texte);
+        if (minutes.matches()) {
+            return Long.valueOf(minutes.group(1));
+        }
+        return null;
+    }
+
+    /**
+     * La valeur numerique comparable d'une proposition : une duree convertie en minutes si elle en
+     * a l'ecriture, sinon un nombre entier une fois ses separateurs de milliers retires, sinon
+     * {@code null} - hors du domaine de cette propriete, pas un defaut. Les durees sont vues avant
+     * les nombres nus : voir la Javadoc de {@link #DUREE_HEURES}.
+     */
+    private static Long valeurDe(String proposition) {
+        String texte = proposition.strip();
+        Long duree = dureeEnMinutes(texte);
+        if (duree != null) {
+            return duree;
+        }
+        Matcher matcher = NOMBRE.matcher(texte);
+        if (!matcher.find()) {
+            return null;
+        }
+        String sansSeparateur = SEPARATEUR_DE_MILLIERS.matcher(matcher.group()).replaceAll("");
+        return Long.valueOf(sansSeparateur);
     }
 
     /**
@@ -237,9 +324,9 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
         if (item.distracteurs().size() != 2) {
             return null;
         }
-        Integer bonne = nombreEnTete(item.bonneReponse());
-        Integer d1 = nombreEnTete(item.distracteurs().get(0));
-        Integer d2 = nombreEnTete(item.distracteurs().get(1));
+        Long bonne = valeurDe(item.bonneReponse());
+        Long d1 = valeurDe(item.distracteurs().get(0));
+        Long d2 = valeurDe(item.distracteurs().get(1));
         if (bonne == null || d1 == null || d2 == null) {
             return null;
         }
@@ -367,6 +454,57 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
     void leMemePaquetUneFoisSonRangCorrigePasseLeGardeFou() {
         verifierQueLeRangNEstPasPredictible(
                 CONTRE_EXEMPLE.resolve("corrige"), CONTRE_EXEMPLE_CLASSPATH + "/corrige", Set.of());
+    }
+
+    /**
+     * Mise a l'epreuve de la branche milliers (theo-archi, avis de faisabilite S13-1) : douze items
+     * dont la bonne reponse est toujours la plus grande, ecrits au separateur d'espace au-dessus de
+     * mille. L'ancien motif ({@code ^-?\d+}) ne lisait que le premier groupe de chiffres et melangeait
+     * les trois rangs sans jamais en saturer un seul - vert et faux. Une fois les separateurs retires
+     * avant lecture, les douze items se lisent tous "la plus grande" et le garde-fou doit rougir.
+     */
+    @Test
+    void unPaquetDeMilliersOuLaBonneReponseEstToujoursLaPlusGrandeFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifierQueLeRangNEstPasPredictible(
+                CONTRE_EXEMPLE_MILLIERS, CONTRE_EXEMPLE_MILLIERS_CLASSPATH, Set.of()))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("paquet-neuf-milliers-toujours-la-plus-grande")
+                .hasMessageContaining("au-dessus du seuil de majorite");
+    }
+
+    /** Le meme paquet de milliers, une fois son rang rendu non predictible, ne doit plus rien reprocher. */
+    @Test
+    void leMemePaquetDeMilliersUneFoisSonRangCorrigePasseLeGardeFou() {
+        verifierQueLeRangNEstPasPredictible(CONTRE_EXEMPLE_MILLIERS.resolve("corrige"),
+                CONTRE_EXEMPLE_MILLIERS_CLASSPATH + "/corrige", Set.of());
+    }
+
+    /**
+     * Mise a l'epreuve de la branche durees (nadia-prof, section 3.6 de l'arbitrage cite dans la
+     * Javadoc de {@link #NOMBRE}) : douze items dont la bonne reponse est toujours la plus grande une
+     * fois les heures et les minutes reellement lues. Six partagent la meme heure de tete entre leurs
+     * trois propositions - la forme exacte qu'elle decrit - et six autres non. L'ancien motif ne
+     * lisait que l'heure de tete : sur les six premiers, les trois heures sont egales, aucun
+     * distracteur n'est lu "inferieur", et le rang etait toujours "la plus petite" ; sur les six
+     * autres, l'heure de tete suffisait par hasard a ordonner correctement. Le melange des deux
+     * (moitie faux, moitie juste) reste sous le seuil de majorite - vert et faux, une seconde fois,
+     * pour une raison differente de la branche milliers. Une fois les durees converties en minutes,
+     * les douze items se lisent tous "la plus grande" et le garde-fou doit rougir.
+     */
+    @Test
+    void unPaquetDeDureesOuLaBonneReponseEstToujoursLaPlusGrandeFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifierQueLeRangNEstPasPredictible(
+                CONTRE_EXEMPLE_DUREES, CONTRE_EXEMPLE_DUREES_CLASSPATH, Set.of()))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("paquet-neuf-durees-toujours-la-plus-grande")
+                .hasMessageContaining("au-dessus du seuil de majorite");
+    }
+
+    /** Le meme paquet de durees, une fois son rang rendu non predictible, ne doit plus rien reprocher. */
+    @Test
+    void leMemePaquetDeDureesUneFoisSonRangCorrigePasseLeGardeFou() {
+        verifierQueLeRangNEstPasPredictible(CONTRE_EXEMPLE_DUREES.resolve("corrige"),
+                CONTRE_EXEMPLE_DUREES_CLASSPATH + "/corrige", Set.of());
     }
 
     private static void ajouterDefautSiSousLeSeuil(String paquet, String nomDuRang, int effectif,
