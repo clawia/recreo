@@ -67,7 +67,7 @@ Source : `squad/programme/mathematiques/competences-cp.md`.
 |---|---|---|---|---|---|---|
 | mathematiques | CP | Nombres et calculs | Denombrer, lire, ecrire et decomposer les nombres jusqu'a 100 | - | - | non couvert |
 | mathematiques | CP | Nombres et calculs | Comparer et ranger des nombres jusqu'a 100 (<, >, =) | bandit-manchot-comparer-nombres-cp | bandit manchot | en cours |
-| mathematiques | CP | Nombres et calculs | Calcul mental - additions dans la limite de 10 (puis 20) | bandit-manchot-additions-cp | bandit manchot | en cours |
+| mathematiques | CP | Nombres et calculs | Calcul mental - additions dans la limite de 10 (puis 20) | bandit-manchot-additions-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | bandit-manchot-soustractions-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Resoudre des problemes simples d'addition/soustraction en situation (1 etape) | bandit-manchot-problemes-additifs-cp | bandit manchot | couvert-valide |
@@ -170,7 +170,7 @@ Source : `squad/programme/mathematiques/competences-cm1.md`.
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
 | mathematiques | CM1 | Nombres et calculs | Lire, ecrire, decomposer et comparer les nombres entiers jusqu'au million | - | - | non couvert |
-| mathematiques | CM1 | Nombres et calculs | Calcul mental - tables de multiplication (jusqu'a x10), rappel automatise | bandit-manchot-tables-multiplication-cm1 | bandit manchot | en cours |
+| mathematiques | CM1 | Nombres et calculs | Calcul mental - tables de multiplication (jusqu'a x10), rappel automatise | bandit-manchot-tables-multiplication-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Nombres et calculs | Calcul mental - multiplications et divisions simples (multiples de 10, 100) | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Effectuer une multiplication posee d'un nombre a 2-3 chiffres par un nombre a 1-2 chiffres | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Effectuer une division euclidienne simple (quotient et reste) par un diviseur a 1 chiffre | - | - | non couvert |
@@ -209,6 +209,17 @@ mesures" (hors les deux structurellement hors d'atteinte de "Espace et geometrie
   droite numerique" par un encadrement textuel) dont la validite pedagogique n'est pas mienne a
   juger. Les deux questions exactes posees a `nadia-prof` sont dans `DEC-0029`, section "Ce que je
   demande a nadia-prof avant le code".
+
+**Note sur la ligne `couvert-valide` (tables de multiplication) - couverture partielle a ne pas
+perdre.** `nadia-prof` a leve son refus du 2026-08-14 le 2026-08-15 (voir "Synthese apres les seconds
+verdicts du sprint 12" ci-dessous) et la ligne porte desormais ce statut, **avec la mention
+obligatoire "sans mesure d'automatisation"** qu'elle a posee des le refus et n'a pas rouverte a la
+levee : la competence du referentiel dit "rappel **automatise**", l'automatisation est une affaire
+de **vitesse**, et **ce produit ne mesure aucun temps de reponse**. Le paquet verifie que l'enfant
+**sait** ses tables, pas qu'il les a automatisees. Ce n'est pas un reproche au paquet - savoir ses
+tables est la condition pour les automatiser, et s'entrainer est le bon usage de ce jeu - mais c'est
+une restriction reelle de perimetre, a porter avec ces mots chaque fois que cette ligne est citee,
+pas a laisser dans l'ombre d'un statut vert.
 
 **Arbitrage rendu le 2026-08-14** (`squad/conformite/ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md`,
 sections 1 et 2), sur les deux questions ci-dessus. Aucune des deux lignes n'est ouverte par cet
@@ -907,3 +918,88 @@ note dediee sous le tableau mathematiques CM1 ci-dessus). Le produit compte six 
 `couvert-valide` sur 46 (contre cinq a la cloture de s10) et cinq lignes `en cours` (contre trois a
 l'ouverture de s12), dont une - les tables - attend un verdict pas encore rejoue, et une autre - les
 additions CP - redevient du backlog apres douze sprints de statut `couvert-valide`.
+
+## Synthese apres les seconds verdicts du sprint 12 (2026-08-15)
+
+`nadia-prof` a rejoue, le meme jour, les deux increments refuses a la cloture de s12 - le refus non
+planifie sur une ligne `couvert-valide` depuis s03, et le refus planifie sur la troisieme ouverture
+CM1 - sur les branches de correctif fusionnees le jour meme
+(`squad/conformite/FICHE-bandit-manchot-additions-cp.md`,
+`FICHE-bandit-manchot-tables-multiplication-cm1.md`, sections "Done pedagogique du 2026-08-15"). Audit
+non degrade sur les deux fiches : jar reconstruit et joue par elle depuis son propre worktree, pas
+un audit sur parole.
+
+### Calcul mental - additions dans la limite de 10 : le refus du matin est leve, VALIDE sans reserve
+
+`marc-dev` a corrige la fabrique `AdditionsBorneesContentSource`. `nadia-prof` prononce **VALIDE**,
+sans reserve : le rang de la bonne reponse, mesure sur 12 000 manches reellement jouees (1 200
+parties) et confirme par calcul exact sur la fabrique, tombe a **33,55 / 33,55 / 32,90** contre
+17,10 / 66,45 / 16,45 avant correction - aucun rang n'est majoritaire, c'est la seule barre qu'elle
+avait ecrite et elle est tenue. **Le REFUSE du 2026-08-15 (matin) est LEVE** ; il reste lisible en
+entier a sa place sur la fiche, non efface.
+
+**La ligne mathematiques CP "Calcul mental - additions dans la limite de 10 (puis 20)" repasse de
+`en cours` a `couvert-valide`, sans mention restrictive.** C'est le retour de la ligne la plus
+ancienne du produit, tombee le matin meme de ce sprint apres douze sprints de statut vert, sur une
+propriete - le rang par valeur de la bonne reponse - que la mesure du sprint 0 portait sur la
+position a l'ecran et ne pouvait, par construction, pas voir. Cette histoire n'est pas effacee par
+le retour au vert : le REFUSE du 2026-08-15 reste lisible en entier sur la fiche, avec sa cause, et
+c'est lui qui a le plus de valeur dans cette ligne. La reserve deja ancienne de cette ligne
+subsiste, inchangee par ce verdict : la mention "(puis 20)" de la competence reste hors du perimetre
+de ce jeu, dont la borne est 10 (voir plus haut, verdict de cloture de s03).
+
+`nadia-prof` corrige au passage un de ses propres chiffres, a son desavantage : l'etat d'avant
+qu'elle avait ecrit ce matin (66,54 %) etait legerement faux, la valeur exacte est **66,45 %** - son
+echantillon du sprint 0 avait sous-pese le cas de somme 1 (0,78 % mesure contre 1,2903 % exact).
+Aucun verdict n'en est change, ni celui de ce matin ni celui des tables ci-dessous ; c'est une
+correction de sa propre mesure, versee au dossier.
+
+### Calcul mental - tables de multiplication : le refus du 2026-08-14 est leve, VALIDE SOUS RESERVE
+
+`lea-dev` a corrige la fabrique (28 items retournes vers les voisins du dessus). `nadia-prof`
+prononce **VALIDE SOUS RESERVE** : le rang de la bonne reponse, calcule de facon exhaustive sur les
+99 items, passe de 0 / 35,35 / 64,65 a **28,28 / 35,35 / 36,36**, confirme sur 6 000 manches
+reellement jouees (27,57 / 35,83 / 36,60). Les deux moities du motif de refus tombent : plus aucun
+rang n'est majoritaire, et le rang "la plus petite" n'est plus vide. **Le REFUSE du 2026-08-14 est
+LEVE** ; il reste lisible en entier a sa place sur la fiche, non efface.
+
+**La ligne mathematiques CM1 "Calcul mental - tables de multiplication (jusqu'a x10), rappel
+automatise" repasse de `en cours` a `couvert-valide`, avec la mention obligatoire "sans mesure
+d'automatisation"** deja posee au refus du 2026-08-14 et non rouverte a la levee (voir la note dediee
+sous le tableau mathematiques CM1 ci-dessus) : la competence dit "rappel **automatise**",
+l'automatisation est une affaire de vitesse, et ce produit ne mesure aucun temps de reponse. Le
+paquet verifie que l'enfant **sait** ses tables, pas qu'il les a automatisees - couverture
+**partielle**, a porter avec ces mots chaque fois que cette ligne est citee.
+
+Deux reserves non bloquantes, nommees par `nadia-prof` - ce sont ses deux points mineurs du
+2026-08-14, non repris dans cette reprise, versees au dossier plutot que refusees puisqu'elle ne
+deplace pas ses propres poteaux :
+
+- **Reserve A - un meme enonce revient dans une partie sur cinq**, et non sur sept comme elle
+  l'avait ecrit le 2026-08-14 : 99 items pour seulement **83 enonces distincts** (les 8 carres, de
+  2 x 2 a 9 x 9, portent chacun trois items au meme enonce), mesure a **21,6 % des parties** (108
+  parties sur 500 de dix manches), contre l'estimation initiale d'environ une fois sur sept (4
+  parties sur 30). `nadia-prof` ecrit explicitement que cette reserve est **plus lourde qu'elle ne
+  l'avait dite**.
+- **Reserve B - deux distracteurs sortent de l'espace des tables** : 11 sur "1 x 10 = ?" et 110 sur
+  "10 x 10 = ?". Un produit de deux nombres de 1 a 10 ne vaut jamais 11 ni 110 ; ils restent
+  plausibles pour l'enfant qui additionne au lieu de multiplier.
+
+Ces deux reserves ne bloquent pas cette ligne - c'est `nadia-prof` qui l'ecrit - et deviennent deux
+stories a ecrire.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 |
+| mathematiques CM1 | 12 | 9 | 0 | 3 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 9 | 1 | 1 |
+| **Total** | **46** | **35** | **3** | **8** |
+
+Deux mouvements, tous deux vers `couvert-valide` : mathematiques CP retrouve sa ligne d'additions,
+le jour meme de sa chute, et mathematiques CM1 gagne la ligne des tables de multiplication, sous
+reserve. Le nombre de lignes `non couvert` ne bouge pas. Le produit compte desormais huit lignes
+`couvert-valide` sur 46 (contre six a la cloture du premier tour d'audit de ce sprint) et trois
+lignes `en cours` (comparer et ranger en mathematiques CP, graphemes/phonemes en francais CP,
+homophones en francais CM1) : aucune ligne nouvelle n'est ouverte par ce second tour, le mouvement
+porte uniquement sur les deux lignes rejouees ce jour.
