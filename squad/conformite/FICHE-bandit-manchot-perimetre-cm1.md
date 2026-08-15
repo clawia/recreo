@@ -21,7 +21,17 @@
   tabulation ne detruit jamais la partie sans confirmation). Ces deux points devront etre mesures sur
   ce jeu une fois son contenu et son rendu reels disponibles ; rien n'est mesure ici a l'ouverture de
   la fiche, faute d'increment a mesurer.
-- **Derniere mise a jour** : 2026-08-14 (verdict de `nadia-prof`)
+- **Complement du 2026-08-15** : **ma reserve 1 ne suffit pas, et P-6 change pour les lots a venir.**
+  Le verdict du 2026-08-14 et ses trois reserves sont **inchanges**, le Done reste ouvert, le lot
+  livre n'est pas rouvert. Mais P-6, qui nommait exactement deux familles de distracteurs (l'aire et
+  la moitie du perimetre), **produit mecaniquement le rang intermediaire** et refabriquera le meme
+  defaut au lot suivant. Nouveau texte, date et non retroactif : **quatre familles permises**, dont
+  la formule du carre appliquee au rectangle (`4 x L`), qui est l'erreur la plus frequente en classe
+  et qui depasse **toujours** le perimetre ; et surtout une **condition d'aboutissement** portant sur
+  le resultat et non sur la liste - *aucun des trois rangs de la bonne reponse ne doit etre
+  majoritaire sur un paquet*. Chiffres du 2026-08-14 reconfirmes en rejouant : **91,7 %** de reussite
+  en pressant toujours le nombre du milieu (110 manches sur 120), **90,0 %** au comptage exact.
+- **Derniere mise a jour** : 2026-08-15 (complement de `nadia-prof` sur P-6)
 
 ## Competences visees
 
@@ -55,6 +65,92 @@ partielles deja rencontrees sur ce produit (additions "jusqu'a 10 (puis 20)", ho
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Complement du 2026-08-15 - ma reserve 1 ne suffit pas : P-6 doit changer pour les paquets a venir, et voici son nouveau texte
+
+> **Ce que cette section fait, et ce qu'elle ne fait pas.** Elle ne touche **ni** le verdict du
+> 2026-08-14 **ni** aucune de ses trois reserves : le Done pedagogique de ce jeu reste **ouvert**, la
+> ligne reste eligible a `couvert-valide`, et **le lot livre n'est pas rouvert**. Elle repond a une
+> question qui m'est posee - ma reserve 1 couvre-t-elle tout ? - et la reponse est **non** : elle
+> couvre le paquet livre, elle ne couvre pas les paquets que ma condition P-6 fera ecrire demain.
+
+- **Date** : 2026-08-15. **Auteur** : nadia-prof. **Sprint** : s12.
+- **Mode** : **j'ai rejoue**, jar reconstruit avec un JDK 21. **120 manches** jouees en pressant
+  toujours le nombre intermediaire des trois : **110 gagnees, 91,7 %**. Le comptage exact sur les 20
+  items de calcul du paquet donne **90,0 %** (18 sur 20). Mes deux chiffres du 2026-08-14 sont donc
+  **confirmes**, l'un par le jeu, l'autre par le compte. Je ne corrige rien de ma reserve 1.
+
+#### Ma reserve 1 couvre le paquet livre, et rien au-dela
+
+Elle est ecrite comme un fait sur `cm1-perimetre.yaml` : le taux, la cause, et un moyen actionnable
+sur **ce** paquet (augmenter la part des figures dont l'aire est inferieure au perimetre). Tout cela
+tient et je n'y touche pas.
+
+Mais **P-6 n'est pas un fait sur un paquet, c'est une condition**, et une condition sert au lot
+suivant. Telle que je l'ai ecrite, elle nomme **exactement deux** familles de distracteurs et
+**interdit les autres** : l'aire et la moitie du perimetre. Or la moitie du perimetre est
+**toujours** inferieure au perimetre, et l'aire ne lui est superieure qu'a partir d'un cote de 5.
+Consequence arithmetique, verifiee figure par figure : un carre de cote 5 ou plus ne **peut pas**
+donner autre chose que le rang intermediaire, et aucun carre ne peut jamais donner le rang le plus
+petit. **La condition, et non celui qui l'applique, produit le resultat.**
+
+Donc : celui qui ecrira le prochain paquet de perimetre, ou d'aire, ou tout paquet de grandeurs
+adosse a P-6, refabriquera le meme defaut en tenant ma condition a la lettre - exactement comme
+`marc-dev` l'a fait, sans devier d'un mot. **Une reserve corrige un paquet ; seule une condition
+neuve empeche le suivant.**
+
+#### Le nouveau texte de P-6, applicable aux lots a partir du 2026-08-15
+
+Je l'ecris comme une **condition neuve et datee**, pas comme un durcissement retroactif de l'ancienne.
+**L'ancienne P-6 reste lisible dans mon arbitrage prealable et le lot de `marc-dev` a ete juge
+contre elle**, correctement. Un lot deja livre ne devient pas fautif parce que j'ecris mieux
+aujourd'hui.
+
+**P-6 (version du 2026-08-15).** Les distracteurs d'un item de perimetre sont des erreurs reelles
+d'enfant, prises dans cette liste - qui est un **plancher de ce qui est permis**, pas une
+prescription de ce qu'il faut mettre sur chaque item :
+
+| Famille | Valeur | Position par rapport a la bonne reponse |
+|---|---|---|
+| l'aire | `c x c` ou `L x l` | au-dessus des que le cote depasse 4, en dessous sinon |
+| la moitie du perimetre | `2 x c` ou `L + l` | toujours en dessous |
+| un cote oublie | `3 x c` ou `2L + l` | toujours en dessous |
+| **la formule du carre appliquee au rectangle** | `4 x L` | **toujours au-dessus**, puisque `L > l` |
+
+La quatrieme est celle qui manquait, et c'est **la plus frequente des quatre en classe** : l'enfant
+qui a retenu "le perimetre, c'est fois quatre" l'applique au rectangle. Elle est donc plausible au
+premier chef, et elle depasse le perimetre **toujours**, sans condition sur la taille des cotes.
+
+**Et la condition d'aboutissement, qui est la vraie nouveaute** : la liste des familles ne suffit
+pas, parce que c'est en croyant fermer la question par une liste que je l'ai ouverte. Ce que P-6
+exige desormais porte sur le **resultat** : *sur l'ensemble d'un paquet, aucun des trois rangs de la
+bonne reponse - la plus petite, l'intermediaire, la plus grande - ne doit etre majoritaire.* Celui
+qui ecrit le paquet choisit ses familles et ses figures comme il veut, du moment que le compte final
+tient. C'est verifiable par un tiers sans me le redemander, et c'est la meme propriete que le
+garde-fou generique de `lea-dev` mesure.
+
+**Une precision de securite, heritee de ma reserve 1 et de P-7, a ne pas perdre en chemin** : deux
+propositions egales sont interdites, donc le carre de cote 2 (aire 4, moitie 4) et le carre de
+cote 4 (perimetre 16, aire 16) restent exclus, ainsi que le rectangle 3 x 6 (perimetre 18, aire 18).
+Elargir la liste des familles multiplie ces collisions : elles se verifient item par item.
+
+#### Ce que je demande, et a qui
+
+- A `camille-po`, via `sofia-sm` : une story pour le nouveau texte de P-6, qui vaut pour tout lot de
+  grandeurs et mesures a venir. Ma reserve 1 reste ce qu'elle est - une correction du paquet livre -
+  et les deux ne se remplacent pas.
+- A personne : aucune reprise de `cm1-perimetre.yaml` n'est exigee par cette section. Elle l'etait
+  deja par la reserve 1, au meme niveau, ni plus ni moins.
+
+#### Une propriete dont je reste la seule garde, en plus de celles du 2026-08-14
+
+Le garde-fou de `lea-dev`, une fois fusionne, prendra le **taux majoritaire** de ce paquet - il le
+verra rouge a 90,0 %, ce qui est le comportement attendu et non un incident. Il ne verra pas, en
+revanche, qu'ici **le rang le plus petit est a 0,0 %** : la bonne reponse n'est **jamais** la plus
+petite des trois, sur les 20 items. Un enfant qui apprend "jamais le plus petit" elimine une
+proposition sur trois, gratuitement, **a chaque manche**. C'est la reserve neuve que j'ouvre le meme
+jour dans `FICHE-bandit-manchot-additions-cp.md`, section 6, et `cm1-perimetre` en est le cas le plus
+net du catalogue. Non bloquant aujourd'hui, aucun Done retire.
 
 ### Done pedagogique du 2026-08-14 - VALIDE SOUS RESERVE (S12-1, paquet `cm1-perimetre.yaml`)
 
