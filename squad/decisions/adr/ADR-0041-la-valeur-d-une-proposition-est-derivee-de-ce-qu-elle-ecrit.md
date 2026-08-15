@@ -2,6 +2,9 @@
 
 - **Statut** : Accepte
 - **Date** : 2026-08-15
+- **Amende le** : 2026-08-15, voir la section "Amendement du 2026-08-15" - deux points, la
+  ratification de la lecture d'une somme et la correction de la clause 5, qui exigeait l'identite
+  d'un texte la ou elle voulait dire l'identite d'une unite
 - **Auteur** : theo-archi
 - **Sprint** : s13 (annonce dans mon avis de faisabilite S13-1 et non ecrit ; `lea-dev` a corrige le
   classificateur et a refuse d'en decider la doctrine a ma place, ce qui etait sa frontiere)
@@ -103,13 +106,18 @@ se declarant d'un autre type.
 
 1. une **duree ou un instant en heures et minutes** ("1 h 30", "2 h", "45 min") vaut son nombre total
    de minutes ;
-2. sinon, un **nombre entier complet** en tete de la proposition, ses separateurs de milliers retires
+2. sinon, une **somme de termes** ("40 000 + 700 + 5") vaut son **total**, chaque terme etant lu
+   comme un nombre entier complet ; si un seul terme ne l'est pas, la somme n'a pas de valeur plutot
+   qu'une valeur partielle (**ratifie par l'amendement du 2026-08-15**, voir la section
+   "Amendement") ;
+3. sinon, un **nombre entier complet** en tete de la proposition, ses separateurs de milliers retires
    - l'espace, l'espace insecable (U+00A0) et l'espace fine insecable (U+202F) ;
-3. sinon, la proposition **n'a pas de valeur**.
+4. sinon, la proposition **n'a pas de valeur**.
 
 L'ordre n'est pas cosmetique : lire le nombre en premier ferait valoir 1 la duree "1 h 30", ce qui
-est le defaut du fait 2. Une regle qui se contenterait de dire "on lit le nombre entier" laisserait
-donc la moitie du defaut ouverte.
+est le defaut du fait 2, et ferait valoir 40 000 la decomposition "40 000 + 700 + 5", ce qui est le
+defaut mesure a l'amendement. Une regle qui se contenterait de dire "on lit le nombre entier"
+laisserait donc les deux tiers du defaut ouverts.
 
 **3. Une proposition sans valeur est hors du domaine des proprietes qui comparent des propositions.
 Hors du domaine n'est pas un defaut** - le rang d'un symbole de comparaison ou d'un mot n'a pas de
@@ -206,6 +214,43 @@ commande, et le faux a l'air du vrai puisqu'il figure deja dans le depot. C'est 
 `sofia-sm` a constate ce sprint et que mon propre avis de faisabilite citait ; je l'ai reproduit
 quand meme. Toutes les mesures ci-dessus sont refaites avec `-am`.
 
+## Amendement du 2026-08-15
+
+Deux points, arrives ensemble parce que le meme contenu les a reveles : la reprise de
+`cm1-grands-nombres` par `marc-dev` apres le REFUS de `nadia-prof`, dont les distracteurs de
+decomposition gardent desormais le premier terme et deplacent l'erreur sur un terme suivant
+(`600 000 + 40` contre `600 000 + 4` et `600 000 + 400`).
+
+### 1. La lecture d'une somme est ratifiee, et devient le cas 2 de la decision
+
+`lea-dev` l'a implementee en fermant un autre trou - un item dont deux propositions se lisent a la
+meme valeur rougit desormais au lieu d'etre ecarte - et a explicitement refuse d'en decider la
+doctrine : elle a eu raison, et sa lecture est **ratifiee telle quelle**.
+
+**Le motif n'est pas qu'elle est correcte, c'est qu'il n'y a pas d'autre issue.** Mesure, JDK
+21.0.10, worktree dedie hors de l'arbre du depot, contenu de `marc-dev` (`066f857`) depose dans le
+repertoire de contenu de production, `mvn -B -pl adapters/adapter-content -am test` :
+
+| lecture de la somme | ce que devient `cm1-grands-nombres` |
+|---|---|
+| active (etat du depot) | **14 items juges** : petite 5, intermediaire 4, grande 5, max 35,7 % |
+| desactivee a la main dans `valeurDe` | **7 items juges**, les 7 "decomposer" lus a la meme valeur tous les trois ; le garde-fou d'egalite rougit sur les sept |
+
+Refuser la lecture de la somme ne laisserait donc pas le depot en l'etat : elle retirerait du
+domaine **la moitie des items numeriques** d'un paquet livre, et ferait de la forme de distracteur
+que `nadia-prof` **exige** la seule forme qu'aucun garde-fou de rang ne peut voir. C'est le fait 1
+de cet ADR, une troisieme fois, sur une troisieme ecriture. La derivation totale d'`ADR-0013`
+interdit de s'en tirer en declarant les sept items hors du domaine, exactement comme elle
+l'interdisait pour les durees.
+
+**Ce que j'ai verifie de la mesure de `lea-dev`, plutot que de la croire.** Elle annonce que les
+douze paquets de production ne bougent d'aucun taux avec ou sans cette lecture. Sonde jetable
+imprimant la repartition des rangs des douze paquets, executee deux fois sur le meme arbre, la
+seconde avec `sommeDeTermes` neutralisee : **les douze lignes sont identiques au chiffre pres**. Sa
+mesure tient. La sonde n'est pas commitee ; ses chiffres sont ici.
+
+**Ce que la ratification ne couvre pas** est ecrit en non-preuves 8, 9 et 10 ci-dessous.
+
 ## Ce que cette definition ne couvre pas, nommement
 
 1. **Un paquet entierement hors du domaine n'est juge par rien, et ce n'est pas declare.** Quatre
@@ -250,6 +295,24 @@ quand meme. Toutes les mesures ci-dessus sont refaites avec `-am`.
    exactement celle-la - une detection qui devine la forme que le monde ecrira attrape autre chose
    que ce qu'elle vise. **Declencheur** : le deuxieme garde-fou qui a besoin de comparer deux
    propositions ; il appelle `valeurDe` ou il justifie dans un `ADR` pourquoi il ne peut pas.
+8. **La somme ne connait qu'un operateur, et c'est `+`.** "600 000 - 40" n'est pas une somme : la
+   lecture retombe sur le nombre de tete, rend 600 000, et laisse "- 40" derriere elle. La valeur est
+   alors fausse. Ce n'est pas invisible - la clause 5 amendee rougit des que deux propositions d'un
+   item laissent des restes differents, et deux ecritures soustractives qui different laissent
+   forcement des restes differents - mais ce n'est pas lu non plus. **Ce qui me fera changer d'avis** :
+   le premier item de production qui ecrit une difference dans une proposition. Aucun ne le fait au
+   2026-08-15.
+9. **Une somme mal formee n'a pas de valeur, et rien ne distingue ce silence d'une proposition
+   litterale.** "40 000 + sept cents" tombe hors du domaine par le meme chemin que "soixante-dix
+   mille dix-huit". La clause 4 le compte comme un item ecarte a declarer, ce qui le rend visible ;
+   elle ne dit pas **pourquoi** il est ecarte.
+10. **Rien ne verifie qu'une decomposition est canonique.** "500 000 + 100 040" vaut 600 040 comme
+    "600 000 + 40" : la lecture les tient pour egales, ce qui est arithmetiquement vrai et
+    pedagogiquement faux - une seule des deux decompose en valeurs de position. Le garde-fou
+    d'egalite rougirait si les deux ecritures se trouvaient dans un meme item ; entre deux items, il
+    ne dit rien. **Ce controle-la est pedagogique et appartient a `nadia-prof`**, qui l'exerce
+    distracteur par distracteur ; je ne l'encode pas, et l'ecrire ici est la seule facon de ne pas
+    laisser croire que la lecture s'en charge.
 
 ## Consequences
 

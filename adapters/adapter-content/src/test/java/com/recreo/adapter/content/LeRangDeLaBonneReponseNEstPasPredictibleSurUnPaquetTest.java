@@ -116,10 +116,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * les items "decomposer" de {@code cm1-grands-nombres} ou {@link #valeurDe} ne lisait que le premier
  * terme d'une somme, et par le refus pedagogique de nadia-prof sur le meme paquet, dont les sept items
  * "decomposer" ne faisaient varier que ce premier terme. Deux corrections : {@link #sommeDeTermes}
- * lit desormais le total d'une decomposition plutot que son premier terme - une extension du cas 2 de
- * la decision d'ADR-0041, hors de ce que cette decision enumere, a ratifier par theo-archi (voir le
- * rapport de ce lot) ; et un garde-fou dedie, {@link #verifierQuAucuneValeurNeCoincide}, rend visible
- * toute egalite residuelle au lieu de la laisser exclue en silence du calcul de rang.</p>
+ * lit desormais le total d'une decomposition plutot que son premier terme ; et un garde-fou dedie,
+ * {@link #verifierQuAucuneValeurNeCoincide}, rend visible toute egalite residuelle au lieu de la
+ * laisser exclue en silence du calcul de rang.</p>
+ *
+ * <p><b>Ratification du 2026-08-15 (theo-archi, ADR-0041 amende).</b> La lecture de la somme devient
+ * le cas 2 de la decision d'ADR-0041, au meme rang que la duree. Elle est mesuree necessaire sur du
+ * materiau reel : sans elle, les sept items "decomposer" de la forme que nadia-prof exige se lisent
+ * tous a la meme valeur et sortent du calcul de rang, soit la moitie des items numeriques du paquet.
+ * Ce que cette ratification ne couvre pas - le seul operateur "+", la somme mal formee qui n'a pas
+ * de valeur plutot qu'une valeur partielle, la decomposition non canonique - est ecrit dans ADR-0041,
+ * non-preuves 8 a 10, et n'est pas paraphrase ici.</p>
  */
 class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
 
@@ -371,11 +378,9 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
      * {@code null} silencieux et l'unite ignoree - sur la lecture reelle et non sur une copie qui
      * deriverait de celle-ci.</p>
      *
-     * <p><b>Extension du 2026-08-15, hors du perimetre ferme par ADR-0041.</b> La somme de termes
-     * est un troisieme cas de lecture que la decision de cet ADR n'enumere pas ; elle reste a
-     * ratifier par theo-archi (voir le rapport de ce lot). Tant que ce n'est pas fait, elle vit ici
-     * comme la lecture des durees a vecu avant lui : une correction locale de ce garde-fou, sur du
-     * materiau reel, en attente de doctrine.</p>
+     * <p><b>La somme de termes est ratifiee par ADR-0041</b> (amendement du 2026-08-15, cas 2 de la
+     * decision) : elle n'etait pas dans le perimetre ferme par la version initiale de cet ADR et y
+     * vivait comme une correction locale en attente de doctrine.</p>
      */
     static Long valeurDe(String proposition) {
         String texte = proposition.strip();
