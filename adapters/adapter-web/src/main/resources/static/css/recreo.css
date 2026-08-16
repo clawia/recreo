@@ -174,30 +174,28 @@ body:has(.ecran-de-jeu) .lien-accueil {
    moins 1 rem laisserait plus de place a un geste d'enfant").
    S7-1/ADR-0026 : les propositions deviennent des colonnes cote a cote plutot qu'une liste
    empilee. Aucun element d'habillage n'est ajoute autour de .proposition (ADR-0026 section 5) :
-   la colonne est le bouton lui-meme, mis en ligne par ce conteneur. S7-2 : rien ici ne fige un
-   nombre de colonnes - flex-direction: row et flex: 1 1 0 s'appliquent a autant de boutons que
-   th:each en rend, que le contenu en fournisse deux, trois ou quatre (ADR-0026 section 4). */
+   la colonne est le bouton lui-meme, mis en ligne par ce conteneur.
+   S13, arbitrage prealable de nadia-prof du 2026-08-16 (voie 4, avis-jeton-en-image.md de
+   theo-archi) : flex-wrap: wrap remplace le repli scope a la seule quatrieme proposition. La
+   cause du defaut refuse ce jour-la n'etait pas le nombre de colonnes mais le couple qui suit -
+   un conteneur qui ne se replie jamais et une base de colonne fixee a zero -, qui forcait les
+   colonnes a se partager la largeur quoi qu'elles contiennent et laissait le texte deborder
+   plutot que de passer a la ligne. Le repli s'applique donc desormais a deux, trois ou quatre
+   colonnes, pas seulement a partir de la quatrieme (ce qui rend caduque l'ancien bloc
+   .propositions:has(.proposition:nth-child(4)) { flex-wrap: wrap; }, retire ici car devenu une
+   simple redite de cette meme declaration - voir TailleDesTextesEtBoutonsTest,
+   leConteneurSeReplieOuLaColonneGardeUneBaseNonNulle). */
 .propositions {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 1rem;
     margin: 0.75rem 0;
     padding: 0;
 }
 
 .proposition {
-    flex: 1 1 0;
-}
-
-/* Repli au-dela de trois colonnes (latitude ouverte par ADR-0026 section 4, proposition
-   d'ines-design section 5, remesuree et confirmee par nadia-prof le 2026-08-10, section 2 de son
-   second arbitrage) : deux colonnes par rangee a partir de la quatrieme proposition seulement.
-   :has() ne cree aucune classe, il s'appuie sur .propositions et .proposition deja existantes -
-   deja utilise par body:has(.ecran-de-jeu) .lien-accueil depuis S6-9. .proposition:nth-child(4)
-   ne matche que si une quatrieme proposition existe : les cas a deux et trois propositions
-   n'entrent jamais dans ce bloc et restent donc inchanges. */
-.propositions:has(.proposition:nth-child(4)) {
-    flex-wrap: wrap;
+    flex: 1 1 auto;
 }
 
 /* S8-5 : deux propositions du paquet de conjugaison sortaient de leur colonne a 360 px
