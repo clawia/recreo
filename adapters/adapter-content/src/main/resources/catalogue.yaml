@@ -60,9 +60,3 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-mesures
     nombreDeManches: 10
-  - id: bandit-manchot-grands-nombres-cm1
-    titre: "Les grands nombres"
-    consigne: "Lis, écris, décompose ou compare !"
-    mecanique: bandit-manchot
-    paquet: cm1-grands-nombres
-    nombreDeManches: 10
