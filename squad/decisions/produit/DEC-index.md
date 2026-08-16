@@ -34,6 +34,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0028 | Abandon de la persistance : recreo ne conserve aucune partie entre deux sessions | s12 | 2026-08-14 | Acceptee, completee le 2026-08-15 (reponse sur la phrase plus large d'ADR-0001, gardee sans extension) |
 | DEC-0029 | Perimetre du sprint 12 : trois lignes de mathematiques CM1 ouvertes, cinq differees dont deux sous reserve d'arbitrage prealable | s12 | 2026-08-14 | Acceptee |
 | DEC-0030 | Perimetre du sprint 13 : trois lignes de mathematiques CM1 ouvertes, deux differees, et le plafond de la mecanique unique mesure | s13 | 2026-08-15 | Acceptee |
+| DEC-0031 | Retrait de "Les grands nombres" du catalogue jusqu'a correction du rendu, contenu juge bon | s13 | 2026-08-16 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0023` a ete amendee le 2026-08-12, sur son point 6
 (disparition de l'ecran intermediaire), laisse ouvert et route a `nadia-prof` pour arbitrage
