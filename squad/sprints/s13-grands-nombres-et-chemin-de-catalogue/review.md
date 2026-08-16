@@ -124,3 +124,81 @@ seule sur le rang.
 `squad/conformite/FICHE-bandit-manchot-grands-nombres-cm1.md`, blocs du 2026-08-15 et du 2026-08-16.
 **Releves** : `squad/conformite/releves-s13/releve-grands-nombres-debordement-360.json`,
 `releve-grands-nombres-rang.json`, et les quatre captures `grands-nombres-debordement-*.png`.
+
+## Arbitrage prealable du 2026-08-16 (soir) - la voie de rendu des propositions (nadia-prof)
+
+Saisie par `theo-archi` (`avis-jeton-en-image.md`, `s13-theo-jeton`) sur quatre voies chiffrees, et
+par l'utilisatrice sur la question du nombre transforme en image. **J'ai joue les voies plutot que
+de les lire** : jar reconstruit a chaque etat, navigateur pilote a 360 x 640, parties reelles, tous
+les items de chaque paquet vus. Detail complet :
+`squad/conformite/ARBITRAGE-PREALABLE-s13-voie-de-rendu-des-propositions.md`.
+
+**La voie est tranchee : voie 4, la colonne recule devant son contenu.** Elle ferme les 29
+debordements, elle ne touche aucun plancher de police, et **elle est gratuite pour huit jeux du
+catalogue sur dix - inchanges au pixel, trois colonnes, meme hauteur de bloc.** La voie 2 meurt sur
+mes planchers (elle ne ferme pas le defaut sans descendre sous 1,25 rem, et laisse un item a 2,7 px
+au plancher, au-dessus des 2,01 px qui ont declenche `DEC-0018`). La voie 3 marche mais coute
++180 px aux sept jeux de CP qui n'ont jamais rien eu, et met **dix items du "Perimetre" avec un
+choix entierement hors ecran** contre **un seul** pour la voie 4 : elle reste mon repli, pas mon
+choix. Sept conditions VR-1 a VR-7 encadrent le lot.
+
+**Sur la voie 1, l'image : fermee, et d'abord par une mesure.** Une image de `1 000 000` reduite
+pour tenir dans une colonne de 96 px donne des glyphes de 18,9 px, soit 1,18 rem, **sous mon
+plancher de 1,25 rem**. Elle n'achete pas un pixel : le probleme n'est pas la nature du nombre, c'est
+la largeur de la colonne. **Ma condition C5 est maintenue sur ce cas** - mais je le dis franchement,
+sur un motif neuf date du 2026-08-16 et non sur celui de 2026-08-11 : C5 visait le raccourci visuel,
+et une image du nombre n'ouvre pas ce raccourci-la. Ce qui la ferme aujourd'hui, c'est que **rien ne
+prouverait jamais que l'image de `1 000 000` montre `1 000 000`** : les 103 tests qui jugent la
+chaine du YAML resteraient verts en jugeant un texte qui n'atteint plus l'oeil de l'enfant.
+
+**Sur le nombre de colonnes qui varie : acceptable, et verifie plutot que suppose.** J'ai regarde
+les ecrans, ils sont lisibles et la machine reste une machine. Surtout, j'ai mesure la seule chose
+qui m'aurait fait refuser : **presser toujours la boite la plus large gagne 26,7 %** sur 120 manches
+jouees, sous le hasard. La variation ne porte aucune information. **Ma limite devient une condition
+(VR-7) : aucune proposition de forme ne peut desormais presupposer trois colonnes**, et `ines-design`
+doit le savoir avant de dessiner.
+
+**Sur les neuf items qui debordent en production, deux verdicts differents parce que la gravite
+l'est.**
+
+- **"Le perimetre" - REFUSE, nouveau verdict date, un item, un motif.** Sur `Le perimetre d'une
+  figure, c'est...`, **c'est la bonne reponse qui est illisible** : `longueur` est percute lettre sur
+  lettre par le `nombre` de la colonne voisine. C'est le motif exact de mes deux refus sur
+  `cm1-grands-nombres`, et je ne peux pas le tenir sur un jeu et l'oublier sur un autre parce que
+  celui-la porte deja mon Done. **Je ne demande pas le retrait du catalogue** : le perimetre d'un
+  retrait est a `camille-po`, et mon avis non contraignant est que 21 items sur 22 sont bons.
+- **"Les mesures" - Done maintenu, reserve.** Les huit items abiment un **distracteur**, jamais la
+  bonne reponse. Meme frontiere que le 2026-08-16 : le debordement qui detruit la bonne reponse est
+  un refus, celui qui abime un distracteur est une reserve.
+
+**Deux corrections de mes propres constats, avant qu'on s'appuie dessus.**
+
+- **J'ai manque ce debordement le 2026-08-14 sur "Le perimetre", en jouant a 360 x 640** : j'avais
+  mesure les hauteurs et pas les largeurs. **C'est la deuxieme fois** apres les sept items de
+  `cm1-grands-nombres`. La regle que j'en tire : tant qu'aucun automate ne mesure une largeur rendue,
+  un audit de rendu mesure la largeur autant que la hauteur.
+- **J'ai failli contredire `theo-archi` sur la voie 3 avec une mesure fausse de ma main** : j'avais
+  pose la voie en ne changeant que la direction du conteneur, obtenu un bloc de 164 px et cru qu'elle
+  etait deux fois moins chere qu'annonce. L'ecran mesure etait en fait illisible - texte de 32 px
+  dans des boites de 44 px, propositions superposees. Refaite correctement : **254 px, soit les
+  +180 px qu'il annonce.** Son chiffre est juste, le mien etait faux.
+
+**Un fait neuf que je ne cherchais pas, et il est plus grave que le rendu.** En jouant les 120
+manches destinees a verifier que la largeur des boites ne trahissait pas la reponse, j'ai trouve que
+sur **"Les mesures", presser toujours la proposition la plus courte gagne 47,5 %** (57 manches sur
+120) contre 33,3 % au hasard - parce que **la bonne reponse est la plus courte sur 13 items sur 24**.
+"Presse le plus petit" se decouvre en trois manches et ne demande aucune conversion. Aucun autre
+paquet ne depasse 25 %. **Et le constat que je corrige est le mien** : j'avais mesure exactement
+cette distribution le 2026-08-14 et ecrit que *"cet equilibre-la est un acquis a preserver"*. Je
+l'avais lue comme une statistique de variete au lieu de la jouer comme une strategie. **Reserve
+neuve et datee, pas refus** : je ne transforme pas ma propre approbation en refus sur un chiffre
+inchange.
+
+**Ce dont je reste la seule garde s'agrandit, et il faut le savoir.** La voie que je retiens ajoute
+trois proprietes qu'aucun test ne couvre : que le nombre de colonnes reste un effet du texte et
+jamais un signal, qu'aucune proposition ne passe sous le pli hors l'item que j'ai nomme, et
+qu'aucune propriete de forme d'une proposition - longueur, largeur - ne fasse gagner mieux que le
+hasard. Le rang est garde depuis `lea-dev` ; **la longueur ne l'est par rien, et "Les mesures"
+prouve aujourd'hui que ce n'est pas theorique.**
+
+**Aucune ligne de matrice ne bouge de mon fait**, dans aucun sens.

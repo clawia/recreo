@@ -258,3 +258,75 @@ automate** : l'exactitude arithmetique de chaque reponse, la plausibilite de cha
 **le rang de la bonne reponse parmi les trois propositions** (reserve 1 - c'est la propriete neuve
 que ce sprint fait apparaitre, et personne ne la mesure aujourd'hui), l'utilite de l'indice, et le
 niveau tel qu'il se joue.
+
+---
+
+### Done pedagogique du 2026-08-16 - REFUSE (nouveau verdict, un item, un motif)
+
+- **Verdict** : **REFUSE**. Le Done ouvert le 2026-08-14 est **rouvert**. `camille-po` ne peut plus
+  compter cette ligne comme `couvert-valide` tant que ce motif tient.
+- **Auteur** : nadia-prof. **Arbre juge** : `round-two` a `c0c51c5`, arbre propre, 486 tests, 28
+  regles. Worktree dedie `s13-nadia-voie-rendu`.
+- **Le verdict du 2026-08-14 n'est pas efface** : il reste lisible plus haut, avec ses trois
+  reserves, qui restent ouvertes et inchangees. J'empile, je n'ecris pas par-dessus.
+- **Mode** : **j'ai joue**. Jar reconstruit depuis mon worktree, navigateur pilote a 360 x 640,
+  parties completes, **22 items sur 22 vus**. Releve :
+  `releves-s13/releve-voies-de-rendu-360x640.json`. Capture :
+  `releves-s13/voie-rendu-v0-perimetre-collision-360.png`.
+
+#### Le motif, et il est unique
+
+Sur l'item **`Le perimetre d'une figure, c'est...`**, a 360 px, **la bonne reponse n'est pas
+lisible**. Les trois propositions debordent de leur colonne de 96 px :
+
+| proposition | largeur du texte | debord par cote | ce que l'enfant voit |
+|---|---|---|---|
+| `le nombre de ses cotes` | 118,0 px | 11,0 px | `nombre` commence sur le fond sombre du cabinet |
+| `la longueur de son contour` (**bonne reponse**) | 136,6 px | 20,3 px | `longueur` est percute par le `nombre` de la colonne voisine ; le `r` final de `contour` passe sous la boite de droite |
+| `sa surface interieure` | 146,6 px | 25,3 px | `interieure` **sort de l'ecran** par la droite |
+
+Sur la capture, `nombre` et `longueur` se recouvrent lettre sur lettre : l'enfant a sous les yeux un
+mot qui n'existe pas. **La bonne reponse de cet item n'est pas presentee a l'enfant.**
+
+C'est le motif exact sur lequel j'ai refuse `cm1-grands-nombres` les 2026-08-15 et 2026-08-16 :
+**un enfant lit a l'ecran autre chose que ce qui est ecrit, et une erreur de fait dans un contenu
+scolaire est un motif de refus a elle seule - que la cause soit un YAML ou un rendu ne change rien
+pour lui.** Je ne peux pas tenir ce motif sur un jeu et l'oublier sur celui-ci parce que celui-ci
+porte deja mon Done.
+
+**Etendue exacte, et je ne la gonfle pas** : **un seul item sur 22**. Les 21 autres ne debordent
+d'aucun pixel. Le contenu du paquet n'est pas en cause : l'arithmetique, les distracteurs, les
+indices et le niveau restent ceux que j'ai valides le 2026-08-14.
+
+#### Correction de mon propre constat, avant qu'on s'appuie dessus
+
+Le 2026-08-14 j'ai joue ce jeu a 360 x 640 et je n'ai pas vu ce debordement. **J'avais mesure les
+hauteurs et pas les largeurs** - le meme angle mort que j'ai deja confesse sur `cm1-grands-nombres`
+le 2026-08-16, ou j'avais manque sept items debordants au premier audit. **C'est la deuxieme fois.**
+Ce n'est donc pas une exigence neuve posee apres coup : c'est un fait qui existait le 2026-08-14 et
+que mon audit a manque. Je l'ecris pour que la regle en sorte : **tant qu'aucun automate ne mesure
+la largeur d'un texte rendu, un audit de rendu mesure la largeur autant que la hauteur.**
+
+#### Comment ce refus se leve
+
+**Sans toucher au YAML.** Il tombe le jour ou la voie de rendu tranchee dans
+`ARBITRAGE-PREALABLE-s13-voie-de-rendu-des-propositions.md` (voie 4, la colonne recule devant son
+contenu) est livree sous mes conditions VR-1 a VR-7. Je l'ai verifie en jouant cet etat : sur les
+22 items, **zero debordement**, et sur cet item precis les trois propositions deviennent
+integralement lisibles (`releves-s13/voie-rendu-voie4-perimetre-360x640.png`).
+
+**Une seule story leve ce refus**, et c'est la meme que celle de `cm1-grands-nombres` et des huit
+items des "Mesures" : la cause est unique et la corriger une fois les corrige tous.
+
+#### Ce que je ne demande pas
+
+**Je ne demande pas le retrait du jeu du catalogue.** Le perimetre d'un retrait appartient a
+`camille-po`. Mon avis, non contraignant et qu'elle peut ecarter : 21 items sur 22 sont bons, le
+defaut porte sur un item, et le correctif est deja arbitre - retirer le jeu couterait plus a l'enfant
+de CM1 que de le laisser une iteration de plus. `DEC-0031` a retire un jeu qui n'avait jamais ete
+valide ; ce n'est pas le meme cas.
+
+#### Ce dont je reste la seule garde sur ce jeu
+
+Inchange, plus une : **qu'un texte tienne dans sa boite a 360 px**. Ce refus en est la preuve - le
+defaut a traverse une CI verte pendant deux sprints, et il etait deja la quand j'ai ouvert le Done.

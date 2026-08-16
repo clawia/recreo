@@ -1,0 +1,528 @@
+{
+ "date": "2026-08-16",
+ "auteur": "nadia-prof",
+ "methode": "parties reellement jouees au navigateur pilote, viewport 360x640, jar reconstruit a chaque etat, une partie par manche, tirage aleatoire repete jusqu a couverture du paquet",
+ "convention": "debord par cote = (largeur du texte rendu - largeur de la colonne) / 2, convention du verdict du 2026-08-16 et de l avis de theo-archi",
+ "etats": {
+  "v0-etat-actuel": [
+   {
+    "jeu": "bandit-manchot-conversions-unites-cm1",
+    "itemsDistinctsVus": 24,
+    "itemsDebordants": 8,
+    "pireDebordParCote": 16.4,
+    "rangeesVues": [
+     1
+    ],
+    "colonnesParRangeeVues": [
+     [
+      3
+     ]
+    ],
+    "hauteurBlocMin": 122,
+    "hauteurBlocMax": 122,
+    "basDuBlocMax": 503.2
+   },
+   {
+    "jeu": "bandit-manchot-perimetre-cm1",
+    "itemsDistinctsVus": 22,
+    "itemsDebordants": 1,
+    "pireDebordParCote": 25.3,
+    "rangeesVues": [
+     1
+    ],
+    "colonnesParRangeeVues": [
+     [
+      3
+     ]
+    ],
+    "hauteurBlocMin": 122,
+    "hauteurBlocMax": 218,
+    "basDuBlocMax": 599.2
+   }
+  ],
+  "voie4-colonne-recule-production": [
+   {
+    "jeu": "bandit-manchot-conversions-unites-cm1",
+    "itemsDistinctsVus": 24,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "rangeesVues": [
+     2,
+     3
+    ],
+    "colonnesParRangeeVues": [
+     [
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      1
+     ]
+    ],
+    "hauteurBlocMin": 164,
+    "hauteurBlocMax": 254,
+    "basDuBlocMax": 635.2,
+    "itemsAvecPropositionEntamee": 0,
+    "itemsAvecPropositionInvisible": 0,
+    "pireInvisibles": 0
+   },
+   {
+    "jeu": "bandit-manchot-perimetre-cm1",
+    "itemsDistinctsVus": 21,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "rangeesVues": [
+     2,
+     3
+    ],
+    "colonnesParRangeeVues": [
+     [
+      1,
+      1,
+      1
+     ],
+     [
+      2,
+      1
+     ]
+    ],
+    "hauteurBlocMin": 164,
+    "hauteurBlocMax": 254,
+    "basDuBlocMax": 683.2,
+    "itemsAvecPropositionEntamee": 11,
+    "itemsAvecPropositionInvisible": 0,
+    "pireInvisibles": 0
+   }
+  ],
+  "voie4-colonne-recule-cp": [
+   {
+    "jeu": "bandit-manchot-additions-cp",
+    "itemsDistinctsVus": 35,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "rangeesVues": [
+     1
+    ],
+    "colonnesParRangeeVues": [
+     [
+      3
+     ]
+    ],
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.2
+   },
+   {
+    "jeu": "bandit-manchot-conjugaison-present-cm1",
+    "itemsDistinctsVus": 24,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "rangeesVues": [
+     2
+    ],
+    "colonnesParRangeeVues": [
+     [
+      2,
+      2
+     ]
+    ],
+    "hauteurBlocMin": 158,
+    "hauteurBlocMax": 158,
+    "basDuBlocMax": 587.2
+   },
+   {
+    "jeu": "bandit-manchot-le-bon-son-cp",
+    "itemsDistinctsVus": 15,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "rangeesVues": [
+     1
+    ],
+    "colonnesParRangeeVues": [
+     [
+      3
+     ]
+    ],
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.2
+   },
+   {
+    "jeu": "bandit-manchot-soustractions-cp",
+    "itemsDistinctsVus": 23,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "rangeesVues": [
+     1
+    ],
+    "colonnesParRangeeVues": [
+     [
+      3
+     ]
+    ],
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.2
+   },
+   {
+    "jeu": "bandit-manchot-problemes-additifs-cp",
+    "itemsDistinctsVus": 20,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "rangeesVues": [
+     1
+    ],
+    "colonnesParRangeeVues": [
+     [
+      3
+     ]
+    ],
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 551.2
+   }
+  ],
+  "voie4-colonne-recule-reste": [
+   {
+    "jeu": "bandit-manchot-comparer-nombres-cp",
+    "itemsDistinctsVus": 23,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "rangeesVues": [
+     1
+    ],
+    "colonnesParRangeeVues": [
+     [
+      3
+     ]
+    ],
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.2,
+    "itemsAvecPropositionEntamee": 0,
+    "itemsAvecPropositionInvisible": 0,
+    "pireInvisibles": 0
+   },
+   {
+    "jeu": "bandit-manchot-complements-10-cp",
+    "itemsDistinctsVus": 11,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "rangeesVues": [
+     1
+    ],
+    "colonnesParRangeeVues": [
+     [
+      3
+     ]
+    ],
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.2,
+    "itemsAvecPropositionEntamee": 0,
+    "itemsAvecPropositionInvisible": 0,
+    "pireInvisibles": 0
+   },
+   {
+    "jeu": "bandit-manchot-tables-multiplication-cm1",
+    "itemsDistinctsVus": 38,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "rangeesVues": [
+     1
+    ],
+    "colonnesParRangeeVues": [
+     [
+      3
+     ]
+    ],
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.2,
+    "itemsAvecPropositionEntamee": 0,
+    "itemsAvecPropositionInvisible": 0,
+    "pireInvisibles": 0
+   }
+  ],
+  "voie3-propositions-empilees": [
+   {
+    "jeu": "bandit-manchot-perimetre-cm1",
+    "itemsDistinctsVus": 21,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "rangeesVues": [
+     3
+    ],
+    "colonnesParRangeeVues": [
+     [
+      1,
+      1,
+      1
+     ]
+    ],
+    "hauteurBlocMin": 254,
+    "hauteurBlocMax": 254,
+    "basDuBlocMax": 731.2,
+    "itemsAvecPropositionEntamee": 21,
+    "itemsAvecPropositionInvisible": 10,
+    "pireInvisibles": 1
+   },
+   {
+    "jeu": "bandit-manchot-conversions-unites-cm1",
+    "itemsDistinctsVus": 20,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "rangeesVues": [
+     3
+    ],
+    "colonnesParRangeeVues": [
+     [
+      1,
+      1,
+      1
+     ]
+    ],
+    "hauteurBlocMin": 254,
+    "hauteurBlocMax": 254,
+    "basDuBlocMax": 635.2,
+    "itemsAvecPropositionEntamee": 0,
+    "itemsAvecPropositionInvisible": 0,
+    "pireInvisibles": 0
+   },
+   {
+    "jeu": "bandit-manchot-additions-cp",
+    "itemsDistinctsVus": 44,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "rangeesVues": [
+     3
+    ],
+    "colonnesParRangeeVues": [
+     [
+      1,
+      1,
+      1
+     ]
+    ],
+    "hauteurBlocMin": 254,
+    "hauteurBlocMax": 254,
+    "basDuBlocMax": 587.2,
+    "itemsAvecPropositionEntamee": 0,
+    "itemsAvecPropositionInvisible": 0,
+    "pireInvisibles": 0
+   },
+   {
+    "jeu": "bandit-manchot-le-bon-son-cp",
+    "itemsDistinctsVus": 15,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "rangeesVues": [
+     3
+    ],
+    "colonnesParRangeeVues": [
+     [
+      1,
+      1,
+      1
+     ]
+    ],
+    "hauteurBlocMin": 254,
+    "hauteurBlocMax": 254,
+    "basDuBlocMax": 587.2,
+    "itemsAvecPropositionEntamee": 0,
+    "itemsAvecPropositionInvisible": 0,
+    "pireInvisibles": 0
+   }
+  ],
+  "v0-etat-actuel-detail-debordements": [
+   {
+    "jeu": "bandit-manchot-conversions-unites-cm1",
+    "itemsDistinctsVus": 24,
+    "itemsDebordants": 8,
+    "pireDebordParCote": 16.4,
+    "rangeesVues": [
+     1
+    ],
+    "colonnesParRangeeVues": [
+     [
+      3
+     ]
+    ],
+    "hauteurBlocMin": 122,
+    "hauteurBlocMax": 122,
+    "basDuBlocMax": 503.2,
+    "detail": [
+     {
+      "enonce": "9000 g, combien de kg ?",
+      "pire": 16.4,
+      "jetons": [
+       [
+        "9000000 kg",
+        16.4,
+        -227.6,
+        -3.6
+       ]
+      ]
+     },
+     {
+      "enonce": "5000 ml, combien de L ?",
+      "pire": 16.4,
+      "jetons": [
+       [
+        "5000000 L",
+        16.4,
+        -115.6,
+        -115.6
+       ]
+      ]
+     },
+     {
+      "enonce": "4000 ml, combien de L ?",
+      "pire": 16.4,
+      "jetons": [
+       [
+        "4000000 L",
+        16.4,
+        -227.6,
+        -3.6
+       ]
+      ]
+     },
+     {
+      "enonce": "6000 g, combien de kg ?",
+      "pire": 16.4,
+      "jetons": [
+       [
+        "6000000 kg",
+        16.4,
+        -3.6,
+        -227.6
+       ]
+      ]
+     },
+     {
+      "enonce": "4000 kg, combien de tonnes ?",
+      "pire": 16.4,
+      "jetons": [
+       [
+        "4 tonnes",
+        3,
+        -241,
+        -17
+       ],
+       [
+        "4000000 tonnes",
+        16.4,
+        -115.6,
+        -115.6
+       ],
+       [
+        "400 tonnes",
+        3,
+        -17,
+        -241
+       ]
+      ]
+     },
+     {
+      "enonce": "5000 mm, combien de m ?",
+      "pire": 16.4,
+      "jetons": [
+       [
+        "5000000 m",
+        16.4,
+        -227.6,
+        -3.6
+       ]
+      ]
+     },
+     {
+      "enonce": "5000 kg, combien de tonnes ?",
+      "pire": 16.4,
+      "jetons": [
+       [
+        "500 tonnes",
+        3,
+        -241,
+        -17
+       ],
+       [
+        "5000000 tonnes",
+        16.4,
+        -115.6,
+        -115.6
+       ],
+       [
+        "5 tonnes",
+        3,
+        -17,
+        -241
+       ]
+      ]
+     },
+     {
+      "enonce": "6000 m, combien de km ?",
+      "pire": 16.4,
+      "jetons": [
+       [
+        "6000000 km",
+        16.4,
+        -227.6,
+        -3.6
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "jeu": "bandit-manchot-perimetre-cm1",
+    "itemsDistinctsVus": 22,
+    "itemsDebordants": 1,
+    "pireDebordParCote": 25.3,
+    "rangeesVues": [
+     1
+    ],
+    "colonnesParRangeeVues": [
+     [
+      3
+     ]
+    ],
+    "hauteurBlocMin": 122,
+    "hauteurBlocMax": 218,
+    "basDuBlocMax": 599.2,
+    "detail": [
+     {
+      "enonce": "Le périmètre d'une figure, c'est...",
+      "pire": 25.3,
+      "jetons": [
+       [
+        "le nombre de ses côtés",
+        11,
+        -233,
+        -9
+       ],
+       [
+        "sa surface intérieure",
+        25.3,
+        -106.7,
+        -106.7
+       ],
+       [
+        "la longueur de son contour",
+        20.3,
+        0.3,
+        -223.7
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
