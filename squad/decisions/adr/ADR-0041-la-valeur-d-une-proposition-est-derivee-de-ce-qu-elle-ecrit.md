@@ -258,6 +258,44 @@ repertoire de contenu de production, `mvn -B -pl adapters/adapter-content -am te
 | active (etat du depot) | **14 items juges** : petite 5, intermediaire 4, grande 5, max 35,7 % |
 | desactivee a la main dans `valeurDe` | **7 items juges**, les 7 "decomposer" lus a la meme valeur tous les trois ; le garde-fou d'egalite rougit sur les sept |
 
+> **Correction du 2026-08-16 - la premiere ligne de ce tableau ne decrit pas le contenu qu'elle
+> nomme.** L'original est laisse au-dessus, comme les six chiffres deja corriges dans ce depot.
+>
+> **Le chiffre qui tient est celui de `marc-dev` : 14 items juges, petite 3, intermediaire 6,
+> grande 5, max 42,9 %.** Mesure sur l'arbre fusionne `4000bab`, JDK 21.0.10, worktree dedie hors
+> de l'arbre du depot, sonde jetable non commitee placee dans le paquet de test d'`adapter-content`,
+> qui appelle le chargeur reel et la lecture reelle (`paquets`, `itemsTires`, `valeurDe` de
+> `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`), jamais une transcription :
+> `mvn -B -pl adapters/adapter-content -am test -Dtest=<sonde>`. La meme execution rend
+> `cm1-mesures` 13/4/7 et `cp-additions-jusqu-a-10` 38,5 %, les deux chiffres que cet ADR cite par
+> ailleurs : la sonde lit bien ce que cet ADR croit lire.
+>
+> **D'ou venait l'ecart : d'un etat de contenu, pas d'une sonde qui lit faux.** Le 5/4/5 est la
+> repartition du contenu **d'avant la reprise de `marc-dev`** - celui que `nadia-prof` a REFUSE, ou
+> les trois propositions de decomposition ne faisaient varier que leur premier terme. Reproduit :
+> le fichier `cm1-grands-nombres.yaml` de `c6b7745` remis dans le repertoire de production rend
+> exactement **14 items juges, 5/4/5, max 35,7 %**. Le contenu de `066f857` n'a donc jamais ete
+> depose avant cette mesure-la, alors que la ligne le nomme.
+>
+> **Les deux lignes du tableau n'ont pas ete mesurees sur le meme contenu**, et c'est ce qui a rendu
+> l'erreur invisible : sur le contenu refuse, desactiver la lecture de somme ne change **rien**
+> (14 items juges, 5/4/5, dans les deux sens - les trois premiers termes different, donc les trois
+> valeurs restent distinctes sans lire la somme). La ligne 2 ne peut donc venir que du contenu de
+> `066f857`, et elle est juste. Sur l'arbre fusionne, le contraste que ce tableau veut montrer est
+> **14 items juges (3/6/5) contre 7 (2/3/2)** : la conclusion de la ratification est inchangee et
+> le fait qu'elle etablit est intact.
+>
+> **Consequence de garde-fou : aucune.** 42,9 % reste sous le seuil de majorite de 50 %,
+> `cm1-grands-nombres` n'entre pas dans `DETTE_DE_RANG`, et le plafond de dette ne bouge pas.
+>
+> **La lecon, et elle est neuve.** Les trois familles de cet ADR - la sonde qui reimplemente, le
+> `-pl` sans `-am` qui lit un jar perime - portaient toutes sur le **code** mesure. Celle-ci porte
+> sur le **contenu** mesure, et aucune de mes precautions ne la voyait : deposer un fichier dans un
+> repertoire est un geste sans trace, que rien dans le rapport ne distingue d'un geste omis. Une
+> mesure ne cite donc pas seulement sa commande et sa version de JDK, elle cite **l'etat de l'arbre
+> qu'elle a lu** - un commit, jamais un fichier recopie a la main depuis une autre branche. Quand ce
+> n'est pas possible, la mesure attend la fusion.
+
 Refuser la lecture de la somme ne laisserait donc pas le depot en l'etat : elle retirerait du
 domaine **la moitie des items numeriques** d'un paquet livre, et ferait de la forme de distracteur
 que `nadia-prof` **exige** la seule forme qu'aucun garde-fou de rang ne peut voir. C'est le fait 1
@@ -378,6 +416,37 @@ mesure sur le corpus, aucune unite n'est nommee.
    "90" vaut 90 : les deux sont dans le domaine, leur "unite" residuelle est vide dans les deux cas,
    la clause 5 les laisse passer. C'est correct si le nombre nu signifie des minutes, faux sinon.
    Aucun item du depot ne melange les deux ecritures.
+
+   > **Note du 2026-08-16 - cette non-preuve etait fausse le jour ou je l'ai ecrite, et
+   > l'amendement l'a rendue vraie.** `lea-dev` m'avait laisse une non-preuve qui s'est verifiee
+   > (la clause d'unite rougissait a tort sur le contenu corrige) ; j'ai cherche le symetrique -
+   > une clause qui **ne rougit plus** sur un cas qu'elle attrapait avant l'amendement - et il
+   > existe : c'est celui-ci. Sur `["1 h 30", "90", "45 min"]`, le motif d'avant l'amendement - les
+   > chiffres, le signe et les trois ecritures du separateur de milliers retires en tete, repris tel
+   > quel de `c6b7745` - rendait les residus `[h 30, , min]` et **rougissait** ; la clause du reste
+   > rend `[]` et passe. La phrase ci-dessus
+   > figurait deja dans la version initiale de cet ADR (`780e638`), ou elle etait donc **fausse** :
+   > la clause de l'epoque ne les laissait pas passer.
+   >
+   > **Mesure du symetrique sur du materiau reel, pas sur une fixture.** Sonde jetable non commitee,
+   > les deux clauses evaluees cote a cote sur tout le contenu chargeable du module - les douze
+   > paquets de production et les paquets de contre-exemple - JDK 21.0.10, arbre `4000bab` :
+   > **32 divergences, toutes dans le sens "ancienne rouge, nouvelle verte", aucune dans l'autre
+   > sens.** Sept sont les items "decomposer" de `cm1-grands-nombres`, le faux positif que
+   > l'amendement corrige. Vingt-quatre sont les douze items de
+   > `paquet-neuf-durees-toujours-la-plus-grande` et de sa version corrigee, comptes une fois
+   > chacun par racine : l'ancienne clause y opposait `h 50` a `h 10` comme deux unites
+   > differentes, ce qui etait faux aussi - et invisible, ce paquet appartenant au garde-fou de rang
+   > et non au perimetre de la clause. La derniere est l'item unique de
+   > `paquet-neuf-valeurs-egales`, deux decompositions dont l'ancienne clause opposait les queues de
+   > somme. **Aucune vraie prise n'est donc perdue sur ce que le depot
+   > ecrit** ; la seule perte est le cas de cette non-preuve, qu'aucun paquet n'ecrit - aucun paquet
+   > de production ne porte de duree au 2026-08-16.
+   >
+   > **La lecon, distincte de celle de la ligne 1.** Une non-preuve est une affirmation sur le code,
+   > au meme titre qu'un chiffre, et celle-ci n'avait jamais ete executee : je l'avais deduite de ce
+   > que la clause **voulait** faire, pas de ce qu'elle faisait. Une non-preuve qui decrit un cas
+   > concret se mesure comme une morsure, dans le sens vert, avant d'etre publiee.
 4. **Un instant et une duree portent la meme ecriture.** "8 h 30" est lu comme 510 minutes, qu'il
    designe une heure de la journee ou une duree. Cela suffit a les ordonner tant qu'aucun item ne
    franchit minuit (D-3 de l'arbitrage de `nadia-prof`) ; ce n'est plus vrai le jour ou un item
