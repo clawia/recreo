@@ -567,6 +567,17 @@ l'applique pas retroactivement ici**, elle ne l'a jamais visee.
 Une reserve neuve en sort, non bloquante : sur les 7 items "lire", la bonne reponse n'est **jamais**
 la plus petite valeur (0 sur 7). Sept items, c'est trop peu pour un motif ; c'est assez pour l'ecrire.
 
+**Addendum du 2026-08-16, apres coup et sans effet sur ce verdict.** `round-two` a avance en
+`34abbb7` pendant que j'ecrivais, sur **de la documentation seule** (`032d34e`, note de `theo-archi`
+sur `ADR-0041` ; le paquet, la feuille de style et le code sont inchanges, donc toutes mes mesures
+tiennent sur cette tete-la aussi). Sa reconciliation conclut a **3/6/5, max 42,9 % sur 14 items**, et
+attribue le 5/4/5 au contenu **d'avant** la reprise - celui que j'avais refuse. **Mon recompte a la
+main, fait avant de lire sa note, donne exactement 3/6/5 sur ces memes 14 items** ("ecrire" 2/3/2 +
+"decomposer" 1/3/3). Les 7 items "lire" (0/3/4) sont hors du domaine du garde-fou et n'entrent pas
+dans son compte : c'est toute la difference entre son 14 et mon 21. Les deux mesures disent la meme
+chose, je n'ai fonde mon verdict sur aucune des siennes, et je le note pour que la concordance soit
+lisible.
+
 #### 8. Reserves - l'etat au 2026-08-16
 
 **Mes sept reserves du 2026-08-15 (A a G) restent ouvertes, non bloquantes, et non traitees**, ce qui

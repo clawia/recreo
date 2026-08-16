@@ -77,6 +77,13 @@ J'ai recompte seule, et j'ai mesure les deux axes :
   **Le rang ne fonde pas ce refus.** La barre plus haute de MD-5 (40 / 20 %) a ete ecrite pour S13-2
   et S13-3 ; je ne l'applique pas retroactivement a ce paquet.
 
+**Addendum du 2026-08-16.** `round-two` a avance en `34abbb7` pendant que j'ecrivais, sur de la
+documentation seule (`032d34e`) : le paquet, la feuille de style et le code sont inchanges, mes
+mesures tiennent. La reconciliation de `theo-archi` conclut a **3/6/5, max 42,9 % sur 14 items**, et
+**mon recompte a la main, fait avant de lire sa note, donne exactement 3/6/5 sur ces memes 14
+items** ("ecrire" 2/3/2 + "decomposer" 1/3/3). Les 7 items "lire" (0/3/4) sont hors du domaine du
+garde-fou : c'est toute la difference entre son 14 et mon 21. Les deux mesures concordent.
+
 ### Deux corrections de mes propres constats
 
 - **J'avais manque un debordement qui existait deja avant ce lot.** Ma reserve C decrivait les sept
