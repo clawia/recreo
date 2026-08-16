@@ -303,6 +303,45 @@ n'ouvre aucune ligne de mecanique neuve ce sprint et estime a quatre a six sprin
 contenu seul restante avant que cette mecanique unique ne devienne bloquante pour le reste du
 programme.
 
+**Etat au 2026-08-15, premier audit de l'increment S13-1** : `nadia-prof` prononce **REFUSE**
+(`squad/conformite/FICHE-bandit-manchot-grands-nombres-cm1.md`, verdict du 2026-08-15) sur deux
+motifs : le verbe "decomposer" n'est pas reellement travaille par les sept items qui le portent
+(les distracteurs ne font varier que le premier terme de la decomposition, et trois items
+opposent un chiffre substitue plutot qu'une erreur de rang) et deux indices sont faux sur l'item
+`600 040`. La ligne **reste `en cours`** ; elle ne pouvait de toute facon pas atteindre
+`couvert-valide` sur ce premier increment.
+
+**Etat au 2026-08-16, second audit et retrait du catalogue jouable (sprint 13)** : `nadia-prof`
+reaudite le lot de reprise et prononce **REFUSE une seconde fois**, sur **un motif neuf et un
+seul** : ses deux motifs du 2026-08-15 sont **leves** sans reserve, mais a 360 px (largeur de
+reference du produit, `DEC-0016`), le separateur de milliers rendu insecable produit des jetons
+numeriques plus larges que leur colonne d'affichage (96,0 px) - jusqu'a 25,2 px de debord par
+cote sur `1 000 000`, dont la bonne reponse se lit alors `000 000`. Une erreur de fait montree a
+l'ecran est pour elle un motif de refus a elle seule, meme quand la cause est un rendu et non le
+contenu. **Le contenu, lui, est juge bon** : les neuf criteres pedagogiques de `camille-po` sont
+desormais tenus, les quatre verbes sont travailles a parts egales, les 28 bonnes reponses et les
+28 indices sont exacts, et les 14 distracteurs de decomposition que son garde-fou de rang atteint
+sont 14 erreurs reelles de valeur de position. Elle l'ecrit elle-meme : "si le rendu est corrige
+sans toucher au YAML, je n'aurai plus rien a objecter sur le fond."
+
+Sur decision de l'utilisatrice du 2026-08-16, le jeu **quitte le catalogue jouable**
+(`DEC-0031-retrait-les-grands-nombres-du-catalogue-debordement-de-rendu.md`). **La ligne reste
+`en cours`** : elle ne descend pas d'un niveau comme la ligne homophones au sprint 10 (`DEC-0024`),
+qui partait de `couvert-valide` - celle-ci partait deja d'`en cours` et n'a jamais atteint
+`couvert-valide`. La nuance a porter, faute d'un mot de plus dans la nomenclature de cette
+matrice : cet "en cours" recouvre un contenu acheve et juge pedagogiquement bon sur ses neuf
+criteres, bloque par un seul defaut de rendu, et non un contenu encore a l'etude ou refuse sur le
+fond - ni `non couvert` (le contenu existe, cible la competence, et `nadia-prof` a ecrit qu'elle
+n'aurait plus rien a objecter dessus une fois le rendu corrige), ni `couvert-valide` (aucun
+verdict VALIDE n'a ete rendu, et aucun jeu jouable ne sert la competence aujourd'hui). Condition
+de retour, executable et reprise dans les mots de `nadia-prof` : que les propositions du paquet
+tiennent dans leur colonne a 360 px, sans qu'aucun chiffre sorte du bouton ni de l'ecran
+(`DEC-0031`, section 3). Le defaut de rendu qui bloque ce retour ne lui est pas propre : sept des
+vingt-huit items debordaient deja de leur colonne avant ce lot, a cause de mots francais longs
+sans rapport avec le separateur de milliers, et la meme colonne de 96 px sert les onze jeux du
+catalogue actuel. La dette est generale et attend le chiffrage de `theo-archi` sur les voies de
+correction avant qu'une story ne soit ecrite (`DEC-0031`, section 4).
+
 ## Francais - CP (cycle 2)
 
 Source : `squad/programme/francais/competences-cp.md`.
