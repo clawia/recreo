@@ -359,3 +359,63 @@ Je les nomme pour que personne ne croie couvert ce qui ne l'est pas - et parce q
   courte, 13 items sur 24, qui demande une passe de contenu** et que je te signale comme la plus
   utile des deux.
 - **Aucune ligne de matrice ne bouge de mon fait aujourd'hui**, dans aucun sens.
+
+---
+
+## 9. Verification du lot livre, 2026-08-16 (soir) - l'etat de mes sept conditions
+
+Ce bloc s'ajoute et ne modifie rien de ce qui precede. `lea-dev` a livre la voie 4 (`bea4f64`,
+fusionnee en `47c333d`) et nomme ce qu'elle n'a pas fait : elle n'a rejoue ni les items ni les huit
+jeux inchanges, s'appuyant sur mes chiffres et ceux de `theo-archi`. **Voici la mesure independante
+qui manquait**, faite en jouant les onze jeux du catalogue a 360 x 640 depuis un worktree dedie
+(`s13-nadia-verification-voie-4`, tete de `round-two` a `2d79f2e` plus la seule reinstallation de
+l'entree de catalogue des grands nombres, branche non fusionnee), avec un second jar portant la
+feuille de style de `c0c51c5` pour comparer plutot que croire. Releve complet :
+`releves-s13/releve-verification-voie4-360x640.json`.
+
+**Ce que j'ai joue** : 11 jeux, **357 items distincts** - les 294 items des dix paquets a items fixes
+vus **integralement, jusqu'au dernier**, plus 63 tirages distincts du paquet d'additions, qui est
+genere et n'a pas d'inventaire ferme. 1 158 manches au total, et autant sur l'etat d'avant.
+
+| condition | etat | mesure |
+|---|---|---|
+| **VR-1** aucun debord, dix jeux, tous les items | **tenue** | 0 item debordant sur les 11 jeux et 357 items ; l'etat d'avant en portait **29** (grands nombres 20, mesures 8, perimetre 1), exactement le compte de mon arbitrage |
+| **VR-2** aucun plancher de police touche | **tenue** | 32 px sur toutes les propositions rendues, 30 px sur le seul paquet a quatre colonnes ; aucune troisieme taille |
+| **VR-3** les huit jeux qui ne debordaient pas ne bougent pas | **tenue sur le critere que j'ai ecrit** - voir la reserve neuve ci-dessous | 0 item de forme changee, 0 item de hauteur de bloc changee, sur les 8 jeux et leurs 283 items communs. La voie 3 aurait coute +180 px a chacun : ils n'en paient aucun |
+| **VR-4** aucun choix sous le pli hors l'item nomme | **NON TENUE** | **8 items de `cm1-grands-nombres`** placent un choix entierement sous le pli, en plus de l'item du perimetre que j'avais nomme |
+| **VR-5** reprendre le test devenu decoratif | **tenue** | `leRepliEnDeuxRangeesEstScopeALaQuatriemePropositionSeulement` est renomme et n'assertionne plus qu'une portee qui existe encore |
+| **VR-6** la regle rougit sur l'etat refuse | **tenue, et verifiee par moi** | j'ai remis la feuille de style reelle de `c0c51c5` dans l'arbre et relance la classe : **une seule defaillance, la bonne**, avec le message attendu. La regle ne rougit donc pas seulement sur sa fixture, elle rougit sur le fichier que j'ai refuse |
+| **VR-7** aucun habillage ne compte les colonnes | **tenue** | rien dans la feuille livree ne presuppose trois boites ; le seul selecteur qui compte est le seuil de quatre propositions, anterieur, et le decalage d'animation porte sur le rang d'une proposition, pas sur une grille |
+
+**Sur VR-4, qui n'est pas tenue** : ma condition disait qu'un deuxieme item me revenait. Huit me
+reviennent. Je ne refuse pas sur ce motif - le raisonnement, les faits mesures et ce que ca m'a
+coute de le decider sont ecrits dans `FICHE-bandit-manchot-grands-nombres-cm1.md`, verdict du
+2026-08-16 (soir), point 4 - et j'en fais une reserve nommee avec son critere de levee. Ce que je
+refuse, c'est de faire comme si VR-4 avait ete tenue.
+
+**Sur VR-3, une reserve neuve et datee, qui ne durcit pas la condition** : mon critere ecrit etait
+"meme nombre de colonnes, meme hauteur de bloc", et il est tenu exactement. Mais mon titre disait
+"pas d'un pixel", et cela, ce n'est pas vrai : **la largeur de chaque boite suit desormais la
+longueur de son texte**, jusqu'a 12,3 px d'ecart entre deux colonnes d'un meme item, sur 5 des 8
+jeux (jamais sur "Le bon verbe" ni "Compare les nombres", dont les propositions ont toutes la meme
+longueur). Je **leve VR-3** parce que l'equipe a atteint la barre que j'avais operationnalisee et que
+la relever apres coup ferait de ma porte un caprice. Et j'ecris la suite comme une observation
+neuve, datee de ce soir, pas comme un durcissement :
+
+> **La taille d'une boite est devenue une information visible sans lire.** Elle ne l'etait pas avant
+> la voie 4 : les trois colonnes etaient toujours de largeur egale, donc presser la plus petite
+> valait exactement le hasard, 33,3 %, sur les onze jeux. Aujourd'hui presser la plus petite gagne
+> **45,8 % sur "Les mesures"**, 39,4 % sur "Petits problemes" (CP) et 38,6 % sur "Calcul CP" ;
+> presser la plus grande gagne **48,5 % sur "Le perimetre"**. Le raccourci de longueur que j'ai
+> trouve ce matin dans le contenu a maintenant une face geometrique, et un enfant de CP n'a plus
+> besoin de dechiffrer trois mots pour l'exploiter : il vise la plus petite boite.
+> Capture : `releves-s13/verif-voie4-cp-problemes-boites-inegales-360x640.png`.
+
+Cela ne rouvre aucun Done : rien n'est faux, rien n'est illisible, et c'est la meme classe de fait
+que le raccourci que j'ai deja traite en reserve ce matin. Cela **etend le perimetre de la story de
+sprint 14** telle que l'amendement de `DEC-0031` la decrit, dont la clause "largeur" cesse d'etre
+hypothetique. Je ne conduis pas ici l'audit des onze paquets : il appartient a ce sprint-la.
+
+**Ce dont je reste la seule garde s'agrandit encore d'une entree** : qu'aucun choix ne passe sous le
+pli - hors l'item du perimetre que j'ai nomme - n'est mesure par rien, et huit items y echappent
+aujourd'hui. Tant qu'aucun automate ne mesure une geometrie rendue, c'est moi, en jouant, a 360 px.

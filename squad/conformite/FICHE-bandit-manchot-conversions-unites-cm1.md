@@ -251,3 +251,42 @@ Inchange, plus deux : **qu'un texte tienne dans sa boite a 360 px** (reserve J),
 propriete de forme d'une proposition - sa longueur, sa largeur - ne fasse gagner mieux que le
 hasard** (reserve K). Le rang est garde par le code depuis `lea-dev` ; **la longueur ne l'est par
 rien**, et ce paquet prouve que ce n'est pas une inquietude theorique.
+
+---
+
+### Note du 2026-08-16 (soir) - verification apres livraison de la voie 4 : **la reserve J tombe**, la reserve K se precise
+
+- **Auteur** : nadia-prof. **Ce bloc ne rouvre ni ne modifie le Done** de ce jeu, qui reste ouvert
+  depuis le 2026-08-14. Il leve une reserve et en documente une autre.
+- **Mode : j'ai joue.** Worktree `s13-nadia-verification-voie-4` sur `2d79f2e`, 360 x 640, **24 items
+  sur 24 vus, 81 manches**, et les memes 24 items rejoues sur l'etat d'avant la voie 4. Releve :
+  `releves-s13/releve-verification-voie4-360x640.json`.
+
+**La reserve J est levee.** Les huit items a distracteur de sept chiffres ne debordent plus : sur
+l'etat d'avant, 8 items sur 24 debordaient jusqu'a 16,42 px par cote ; sous la voie 4, **0 item sur
+24**, police a 32 px partout, et les 24 items affichent caractere pour caractere ce que le YAML
+ecrit. `4000000 tonnes` et `6000000 km` sont desormais entiers dans leur boite : ils restent
+invraisemblables, ce qui est l'autre reserve du 2026-08-14, inchangee.
+
+**Le cout que j'avais accepte est bien celui que je constate.** Sur ce jeu, **plus aucun item ne
+garde ses trois colonnes de front** : 16 items en deux rangees (deux boites puis une), 2 items en
+une boite puis deux, **et 6 items entierement empiles en trois rangees**. Je n'avais decrit que les
+deux premieres formes dans mon arbitrage, apres avoir regarde deux manches ; **il y en a trois, et la
+troisieme est un empilement complet**. Je le corrige ici. Cela ne change pas mon accord - la
+variation reste un effet de la longueur du texte, la machine reste une machine, et **aucune
+proposition ne passe sous le pli sur ce jeu** (bas de bloc a 635 px au pire, contre 640) - mais ma
+description d'alors etait incomplete et je ne la laisse pas faire foi.
+
+**La reserve K se precise, et par une mesure neuve.** Les colonnes ne se partageant plus la largeur a
+parts egales, la longueur d'une proposition est devenue une **taille de boite**, visible sans lire :
+presser la plus petite boite gagne **45,8 %** des manches sur ce paquet (esperance exacte sur les 24
+items), contre 33,3 % au hasard - chiffre coherent avec les 47,5 % que j'avais mesures en jouant 120
+manches. Avant la voie 4, la meme strategie donnait exactement 33,3 % : les trois boites etaient de
+largeur identique, et **le raccourci existait dans le contenu sans etre visible a l'ecran**. Il l'est
+maintenant.
+
+**Ce que `camille-po` doit en retenir pour la story de sprint 14** : son perimetre ne change pas,
+mais son urgence oui. Le raccourci ne demande plus a l'enfant de lire trois chaines et de comparer
+leur longueur - il lui suffit de viser la plus petite boite. La correction de contenu que je decris
+plus haut (six a sept items dont le distracteur est plus court que la bonne reponse) ferme les deux
+faces a la fois : elle est la seule que je demande.

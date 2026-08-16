@@ -202,3 +202,72 @@ hasard. Le rang est garde depuis `lea-dev` ; **la longueur ne l'est par rien, et
 prouve aujourd'hui que ce n'est pas theorique.**
 
 **Aucune ligne de matrice ne bouge de mon fait**, dans aucun sens.
+
+---
+
+## Verification de la voie 4 livree, 2026-08-16 (soir) - nadia-prof
+
+**Ce bloc s'ajoute et n'efface rien de ce qui precede, y compris mes deux refus.**
+
+`camille-po` a leve le blocage circulaire par l'amendement de `DEC-0031` : j'ai reinstalle l'entree
+de catalogue dans un worktree dedie, non fusionne, et **j'ai joue** - onze jeux, **357 items
+distincts** dont les 294 items des paquets a inventaire ferme vus jusqu'au dernier, a 360 x 640,
+avec un second jar portant la feuille de style que j'avais refusee pour comparer item par item
+plutot que croire un avant que je n'aurais pas remesure. C'est la premiere mesure independante apres
+implementation ; `lea-dev` avait dit franchement ne pas l'avoir faite.
+
+**Trois verdicts.**
+
+- **"Les grands nombres" - VALIDE SOUS RESERVE.** Troisieme passage, premier verdict favorable. Le
+  motif de mes deux refus est ferme et mesure : **20 items sur 28 debordaient, 0 aujourd'hui**, et
+  les 28 items affichent caractere pour caractere ce que le YAML ecrit, espace insecable comprise.
+- **"Le perimetre" - refus leve, VALIDE SOUS RESERVE.** Un item debordait, plus aucun ; sur l'item de
+  la definition les trois propositions se lisent entierement. La ligne peut revenir de `en cours` a
+  `couvert-valide`.
+- **"Les mesures" - Done inchange, ma reserve de rendu tombe.** 8 items debordaient, 0 aujourd'hui.
+
+**Mes sept conditions : six tenues, une non tenue.** VR-1 (0 debord sur 357 items contre 29 avant),
+VR-2 (32 px partout, 30 px sur le seul paquet a quatre colonnes), VR-5, VR-6 - que j'ai verifiee
+moi-meme en remettant la feuille de style reelle de `c0c51c5` dans l'arbre : **une seule defaillance,
+la bonne** - et VR-7 sont tenues. **VR-3 est tenue sur le critere que j'avais operationnalise** (0
+item de forme ou de hauteur changee sur les huit jeux et leurs 283 items communs) et je la leve a ce
+titre. **VR-4 n'est pas tenue** : huit items des grands nombres placent un choix entierement sous le
+pli, la ou j'en avais admis un seul et nomme.
+
+**Je ne refuse pas sur VR-4, et je dis pourquoi plutot que de le glisser.** Sur les huit items, sans
+exception, une boite est coupee par le pli - l'ecran ne parait jamais complet -, le choix cache est
+atteignable en 243 a 355 px, et l'enfant qui se trompe garde ses trois essais puis recoit la reponse
+nommee. Je me suis trompee trois fois de suite pour le verifier. Ma frontiere, appliquee dans le meme
+sens que ce matin : *un obstacle qu'on surmonte n'est pas du meme ordre qu'un texte qu'on ne peut pas
+lire*. **Mais huit items, ce n'est pas "un deuxieme item"** : la difference avec le perimetre est une
+difference de frequence - une manche par partie contre une manche sur six parties - et je refuse de
+la maquiller en difference de principe. C'est pour cela que le Done est **sous reserve** et non plein,
+avec un critere de levee ecrit.
+
+**Deux corrections de mes propres constats, avant qu'on s'appuie dessus.**
+
+- **Mon premier depouillement d'aujourd'hui etait faux** : il comptait le debord contre la boite de
+  contenu du bouton et annoncait quatorze items debordants sur "Le bon verbe", jeu qui n'a jamais
+  deborde. Refait sous la convention que j'ai moi-meme posee - texte contre boite du bouton - les
+  chiffres retombent au centieme sur mes releves d'avant.
+- **"Presser la plus grande boite ne fait pas gagner" est faux sur "Le perimetre".** Je l'ai ecrit ce
+  matin apres 37,5 % mesures en jouant ; l'esperance exacte sur les 22 items est **48,5 %**. Mon
+  echantillon etait trop petit et ma conclusion trop rapide, sur le seul point qui aurait pu me faire
+  refuser la voie 4.
+
+**Un fait neuf que la voie 4 apporte, et qui n'etait dans aucune de mes conditions.** Les colonnes ne
+se partageant plus la largeur a parts egales, **la taille d'une boite est devenue une information
+visible sans lire**. Avant, presser la plus petite valait exactement 33,3 % sur les onze jeux ;
+aujourd'hui elle gagne 45,8 % sur "Les mesures", 39,4 % sur "Petits problemes" et 38,6 % sur "Calcul
+CP", et presser la plus grande gagne 48,5 % sur "Le perimetre". **Le raccourci de longueur que j'ai
+trouve ce matin dans le contenu a maintenant une face geometrique** : un enfant de CP n'a plus besoin
+de dechiffrer trois mots pour l'exploiter. Reserve, pas refus - meme frontiere que ce matin - mais la
+clause "largeur" de la story de sprint 14 cesse d'etre hypothetique.
+
+**Un point de code que seule ma reinstallation pouvait reveler** : la methode de test qui reliait
+l'entree de catalogue au paquet a ete retiree avec l'entree. Sur ma branche l'entree est revenue et
+la suite reste a **488 tests** - donc **rien ne verifie que cette entree charge bien ce paquet**.
+Elle doit revenir dans le meme geste que l'entree.
+
+**Ce dont je reste la seule garde s'agrandit d'une entree** : qu'aucun choix ne passe sous le pli.
+Rien ne le mesure, et huit items y echappent aujourd'hui.

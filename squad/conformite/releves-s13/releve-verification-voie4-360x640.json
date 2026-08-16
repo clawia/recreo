@@ -1,0 +1,607 @@
+{
+ "date": "2026-08-16",
+ "auteur": "nadia-prof",
+ "objet": "verification de la voie 4 livree, apres implementation - premiere mesure independante",
+ "arbre": "worktree s13-nadia-verification-voie-4, branche du meme nom, tete de round-two a 2d79f2e, plus la seule reinstallation de l'entree de catalogue de bandit-manchot-grands-nombres-cm1",
+ "methode": "parties reellement jouees au navigateur pilote depuis l'ecran de catalogue, viewport 360x640, un jar reconstruit par etat, tirage repete jusqu'a couverture de tous les items de chaque paquet",
+ "convention": "debord par cote = (largeur du texte rendu - largeur de la BOITE du bouton) / 2, convention du verdict du 2026-08-16 ; un texte plus large que la boite de contenu mais plus etroit que la boite mange son rembourrage et ne sort pas du bouton",
+ "etats": {
+  "etat-refuse-le-2026-08-16": "feuille de style de c0c51c5 (.propositions sans flex-wrap, .proposition en flex: 1 1 0)",
+  "voie-4-livree": "2d79f2e (.propositions en flex-wrap: wrap, .proposition en flex: 1 1 auto)"
+ },
+ "parJeu": {
+  "etat-refuse": [
+   {
+    "jeu": "bandit-manchot-additions-cp",
+    "items": 60,
+    "manches": 150,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 180
+    },
+    "formesDeRangees": {
+     "[3]": 60
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.19
+   },
+   {
+    "jeu": "bandit-manchot-conjugaison-present-cm1",
+    "items": 25,
+    "manches": 67,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "30px": 100
+    },
+    "formesDeRangees": {
+     "[2, 2]": 25
+    },
+    "hauteurBlocMin": 158,
+    "hauteurBlocMax": 158,
+    "basDuBlocMax": 587.19
+   },
+   {
+    "jeu": "bandit-manchot-le-bon-son-cp",
+    "items": 15,
+    "manches": 41,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 45
+    },
+    "formesDeRangees": {
+     "[3]": 15
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.19
+   },
+   {
+    "jeu": "bandit-manchot-soustractions-cp",
+    "items": 24,
+    "manches": 69,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 72
+    },
+    "formesDeRangees": {
+     "[3]": 24
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.19
+   },
+   {
+    "jeu": "bandit-manchot-problemes-additifs-cp",
+    "items": 22,
+    "manches": 56,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 66
+    },
+    "formesDeRangees": {
+     "[3]": 22
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 551.19
+   },
+   {
+    "jeu": "bandit-manchot-comparer-nombres-cp",
+    "items": 24,
+    "manches": 83,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 72
+    },
+    "formesDeRangees": {
+     "[3]": 24
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.19
+   },
+   {
+    "jeu": "bandit-manchot-complements-10-cp",
+    "items": 11,
+    "manches": 18,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 33
+    },
+    "formesDeRangees": {
+     "[3]": 11
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.19
+   },
+   {
+    "jeu": "bandit-manchot-tables-multiplication-cm1",
+    "items": 99,
+    "manches": 427,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 297
+    },
+    "formesDeRangees": {
+     "[3]": 99
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.19
+   },
+   {
+    "jeu": "bandit-manchot-perimetre-cm1",
+    "items": 22,
+    "manches": 47,
+    "itemsDebordants": 1,
+    "pireDebordParCote": 25.32,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 66
+    },
+    "formesDeRangees": {
+     "[3]": 22
+    },
+    "hauteurBlocMin": 122,
+    "hauteurBlocMax": 218,
+    "basDuBlocMax": 599.19
+   },
+   {
+    "jeu": "bandit-manchot-conversions-unites-cm1",
+    "items": 24,
+    "manches": 83,
+    "itemsDebordants": 8,
+    "pireDebordParCote": 16.42,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 72
+    },
+    "formesDeRangees": {
+     "[3]": 24
+    },
+    "hauteurBlocMin": 122,
+    "hauteurBlocMax": 122,
+    "basDuBlocMax": 503.19
+   },
+   {
+    "jeu": "bandit-manchot-grands-nombres-cm1",
+    "items": 28,
+    "manches": 68,
+    "itemsDebordants": 20,
+    "pireDebordParCote": 33.07,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 84
+    },
+    "formesDeRangees": {
+     "[3]": 28
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 362,
+    "basDuBlocMax": 743.19
+   }
+  ],
+  "voie-4": [
+   {
+    "jeu": "bandit-manchot-additions-cp",
+    "items": 63,
+    "manches": 150,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 189
+    },
+    "formesDeRangees": {
+     "[3]": 63
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.19
+   },
+   {
+    "jeu": "bandit-manchot-conjugaison-present-cm1",
+    "items": 25,
+    "manches": 59,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "30px": 100
+    },
+    "formesDeRangees": {
+     "[2, 2]": 25
+    },
+    "hauteurBlocMin": 158,
+    "hauteurBlocMax": 158,
+    "basDuBlocMax": 587.19
+   },
+   {
+    "jeu": "bandit-manchot-le-bon-son-cp",
+    "items": 15,
+    "manches": 32,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 45
+    },
+    "formesDeRangees": {
+     "[3]": 15
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.19
+   },
+   {
+    "jeu": "bandit-manchot-soustractions-cp",
+    "items": 24,
+    "manches": 71,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 72
+    },
+    "formesDeRangees": {
+     "[3]": 24
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.19
+   },
+   {
+    "jeu": "bandit-manchot-problemes-additifs-cp",
+    "items": 22,
+    "manches": 60,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 66
+    },
+    "formesDeRangees": {
+     "[3]": 22
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 551.19
+   },
+   {
+    "jeu": "bandit-manchot-comparer-nombres-cp",
+    "items": 24,
+    "manches": 55,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 72
+    },
+    "formesDeRangees": {
+     "[3]": 24
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.19
+   },
+   {
+    "jeu": "bandit-manchot-complements-10-cp",
+    "items": 11,
+    "manches": 18,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 33
+    },
+    "formesDeRangees": {
+     "[3]": 11
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.19
+   },
+   {
+    "jeu": "bandit-manchot-tables-multiplication-cm1",
+    "items": 99,
+    "manches": 442,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 297
+    },
+    "formesDeRangees": {
+     "[3]": 99
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 74,
+    "basDuBlocMax": 407.19
+   },
+   {
+    "jeu": "bandit-manchot-perimetre-cm1",
+    "items": 22,
+    "manches": 50,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 1,
+    "polices": {
+     "32px": 66
+    },
+    "formesDeRangees": {
+     "[1, 1, 1]": 2,
+     "[2, 1]": 20
+    },
+    "hauteurBlocMin": 164,
+    "hauteurBlocMax": 398,
+    "basDuBlocMax": 779.19
+   },
+   {
+    "jeu": "bandit-manchot-conversions-unites-cm1",
+    "items": 24,
+    "manches": 81,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 0,
+    "polices": {
+     "32px": 72
+    },
+    "formesDeRangees": {
+     "[1, 1, 1]": 6,
+     "[1, 2]": 2,
+     "[2, 1]": 16
+    },
+    "hauteurBlocMin": 164,
+    "hauteurBlocMax": 254,
+    "basDuBlocMax": 635.19
+   },
+   {
+    "jeu": "bandit-manchot-grands-nombres-cm1",
+    "items": 28,
+    "manches": 94,
+    "itemsDebordants": 0,
+    "pireDebordParCote": 0.0,
+    "debordBas": 0,
+    "horsEcran": 0,
+    "sousLePli": 8,
+    "polices": {
+     "32px": 84
+    },
+    "formesDeRangees": {
+     "[1, 1, 1]": 19,
+     "[2, 1]": 2,
+     "[3]": 7
+    },
+    "hauteurBlocMin": 74,
+    "hauteurBlocMax": 494,
+    "basDuBlocMax": 875.19
+   }
+  ]
+ },
+ "propositionsEntierementSousLePli": {
+  "etat-refuse": {},
+  "voie-4": {
+   "bandit-manchot-perimetre-cm1": [
+    {
+     "enonce": "Le périmètre d'une figure, c'est...",
+     "propositionSousLePli": [
+      "la longueur de son contour"
+     ],
+     "hautDeLaProposition": 657.19,
+     "basDuBloc": 779.19,
+     "defilementNecessairePx": 259,
+     "blocCoupeParLePli": 1,
+     "cetteFoisCiCEtaitLaBonneReponse": true
+    }
+   ],
+   "bandit-manchot-grands-nombres-cm1": [
+    {
+     "enonce": "Lis ce nombre : 47 300.",
+     "propositionSousLePli": [
+      "quatre mille sept cent trente"
+     ],
+     "hautDeLaProposition": 657.19,
+     "basDuBloc": 779.19,
+     "defilementNecessairePx": 259,
+     "blocCoupeParLePli": 1,
+     "cetteFoisCiCEtaitLaBonneReponse": false
+    },
+    {
+     "enonce": "Lis ce nombre : 816 203.",
+     "propositionSousLePli": [
+      "quatre-vingt-seize mille deux cent trois"
+     ],
+     "hautDeLaProposition": 705.19,
+     "basDuBloc": 875.19,
+     "defilementNecessairePx": 355,
+     "blocCoupeParLePli": 1,
+     "cetteFoisCiCEtaitLaBonneReponse": false
+    },
+    {
+     "enonce": "Lis ce nombre : 32 010.",
+     "propositionSousLePli": [
+      "trente-deux mille dix"
+     ],
+     "hautDeLaProposition": 657.19,
+     "basDuBloc": 779.19,
+     "defilementNecessairePx": 259,
+     "blocCoupeParLePli": 1,
+     "cetteFoisCiCEtaitLaBonneReponse": true
+    },
+    {
+     "enonce": "Décompose 305 421 en valeurs de position.",
+     "propositionSousLePli": [
+      "300 000 + 5 000 + 400 + 20 + 1"
+     ],
+     "hautDeLaProposition": 705.19,
+     "basDuBloc": 827.19,
+     "defilementNecessairePx": 307,
+     "blocCoupeParLePli": 1,
+     "cetteFoisCiCEtaitLaBonneReponse": true
+    },
+    {
+     "enonce": "Décompose 452 000 en valeurs de position.",
+     "propositionSousLePli": [
+      "400 000 + 50 000 + 2 000"
+     ],
+     "hautDeLaProposition": 705.19,
+     "basDuBloc": 827.19,
+     "defilementNecessairePx": 307,
+     "blocCoupeParLePli": 1,
+     "cetteFoisCiCEtaitLaBonneReponse": true
+    },
+    {
+     "enonce": "Lis ce nombre : 528 006.",
+     "propositionSousLePli": [
+      "cinq cent vingt-huit mille six"
+     ],
+     "hautDeLaProposition": 705.19,
+     "basDuBloc": 827.19,
+     "defilementNecessairePx": 243,
+     "blocCoupeParLePli": 1,
+     "cetteFoisCiCEtaitLaBonneReponse": true
+    },
+    {
+     "enonce": "Lis ce nombre : 213 500.",
+     "propositionSousLePli": [
+      "deux cent treize mille cinquante"
+     ],
+     "hautDeLaProposition": 657.19,
+     "basDuBloc": 779.19,
+     "defilementNecessairePx": 259,
+     "blocCoupeParLePli": 1,
+     "cetteFoisCiCEtaitLaBonneReponse": false
+    },
+    {
+     "enonce": "Décompose 128 000 en valeurs de position.",
+     "propositionSousLePli": [
+      "100 000 + 20 000 + 8 000"
+     ],
+     "hautDeLaProposition": 705.19,
+     "basDuBloc": 827.19,
+     "defilementNecessairePx": 243,
+     "blocCoupeParLePli": 1,
+     "cetteFoisCiCEtaitLaBonneReponse": true
+    }
+   ]
+  }
+ },
+ "tauxDeReussiteEnPressantLaPlusPetiteBoite": {
+  "etat-refuse": {
+   "bandit-manchot-additions-cp": 33.3,
+   "bandit-manchot-conjugaison-present-cm1": 25.0,
+   "bandit-manchot-le-bon-son-cp": 33.3,
+   "bandit-manchot-soustractions-cp": 33.3,
+   "bandit-manchot-problemes-additifs-cp": 33.3,
+   "bandit-manchot-comparer-nombres-cp": 33.3,
+   "bandit-manchot-complements-10-cp": 33.3,
+   "bandit-manchot-tables-multiplication-cm1": 33.3,
+   "bandit-manchot-perimetre-cm1": 33.3,
+   "bandit-manchot-conversions-unites-cm1": 33.3,
+   "bandit-manchot-grands-nombres-cm1": 33.3
+  },
+  "voie-4": {
+   "bandit-manchot-additions-cp": 38.6,
+   "bandit-manchot-conjugaison-present-cm1": 25.0,
+   "bandit-manchot-le-bon-son-cp": 33.3,
+   "bandit-manchot-soustractions-cp": 34.0,
+   "bandit-manchot-problemes-additifs-cp": 39.4,
+   "bandit-manchot-comparer-nombres-cp": 33.3,
+   "bandit-manchot-complements-10-cp": 31.8,
+   "bandit-manchot-tables-multiplication-cm1": 31.6,
+   "bandit-manchot-perimetre-cm1": 21.2,
+   "bandit-manchot-conversions-unites-cm1": 45.8,
+   "bandit-manchot-grands-nombres-cm1": 31.0
+  },
+  "hasard": 33.3
+ },
+ "tauxDeReussiteEnPressantLaPlusGrandeBoite": {
+  "etat-refuse": {
+   "bandit-manchot-additions-cp": 33.3,
+   "bandit-manchot-conjugaison-present-cm1": 25.0,
+   "bandit-manchot-le-bon-son-cp": 33.3,
+   "bandit-manchot-soustractions-cp": 33.3,
+   "bandit-manchot-problemes-additifs-cp": 33.3,
+   "bandit-manchot-comparer-nombres-cp": 33.3,
+   "bandit-manchot-complements-10-cp": 33.3,
+   "bandit-manchot-tables-multiplication-cm1": 33.3,
+   "bandit-manchot-perimetre-cm1": 33.3,
+   "bandit-manchot-conversions-unites-cm1": 33.3,
+   "bandit-manchot-grands-nombres-cm1": 33.3
+  },
+  "voie-4": {
+   "bandit-manchot-additions-cp": 28.3,
+   "bandit-manchot-conjugaison-present-cm1": 25.0,
+   "bandit-manchot-le-bon-son-cp": 33.3,
+   "bandit-manchot-soustractions-cp": 31.9,
+   "bandit-manchot-problemes-additifs-cp": 21.2,
+   "bandit-manchot-comparer-nombres-cp": 33.3,
+   "bandit-manchot-complements-10-cp": 36.4,
+   "bandit-manchot-tables-multiplication-cm1": 35.2,
+   "bandit-manchot-perimetre-cm1": 48.5,
+   "bandit-manchot-conversions-unites-cm1": 20.8,
+   "bandit-manchot-grands-nombres-cm1": 34.5
+  },
+  "hasard": 33.3
+ }
+}
