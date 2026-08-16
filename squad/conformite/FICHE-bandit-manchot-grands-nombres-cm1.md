@@ -641,3 +641,34 @@ seul garde-fou du rang.
   ne repare rien.
 - Les sept items "lire" debordaient **avant** ce lot (point 6) : ils entrent dans la meme story de
   rendu, ils ne sont pas une regression de `marc-dev`.
+
+---
+
+### Note du 2026-08-16 (soir) - la voie de rendu est tranchee, mon refus tient jusqu'a sa livraison
+
+- **Auteur** : nadia-prof. **Ce bloc ne modifie aucun verdict** : le refus du 2026-08-16 reste
+  entier et ses reserves aussi. Il dit seulement ce qui le levera.
+
+`theo-archi` a chiffre quatre voies (`avis-jeton-en-image.md`, branche `s13-theo-jeton`) et j'ai
+tranche dans `ARBITRAGE-PREALABLE-s13-voie-de-rendu-des-propositions.md` : **voie 4, la colonne
+recule devant son contenu**, sous mes conditions VR-1 a VR-7.
+
+**Ce que cela veut dire pour ce jeu.** Mon refus du 2026-08-16 portait un motif unique - a 360 px,
+treize items affichent un nombre qui n'est pas le nombre ecrit. Ce motif tombe le jour ou la story
+de rendu est livree, **sans toucher au YAML**, comme je l'avais ecrit d'avance. Rien de ce que j'ai
+dit du contenu ne change : il est bon, et je le redis.
+
+**Deux precisions que je dois a l'honnetete du dossier.**
+
+1. **Je n'ai pas pu jouer ce jeu aujourd'hui.** `DEC-0031` l'a sorti du catalogue et il n'existe plus
+   de chemin pour l'atteindre depuis l'ecran d'accueil. Ce que j'affirme de son comportement sous la
+   voie 4 repose sur la mesure de `theo-archi` (+132 px, zero debordement) et non sur une partie que
+   j'aurais jouee. **C'est la seule zone degradee de mon arbitrage, et il faudra que je rejoue ce jeu
+   avant tout Done pedagogique** - la remise au catalogue est donc un prealable a ma reverification,
+   pas une consequence de mon accord.
+2. **La question de l'utilisatrice - transformer le nombre en image - est fermee, et par une
+   mesure.** Une image de `1 000 000` reduite pour tenir dans une colonne de 96 px donne des glyphes
+   de 18,9 a 30,5 px, dont un sous mon plancher de 1,25 rem. **Elle n'achete pas un pixel** : le
+   probleme n'a jamais ete la nature du nombre, c'est la largeur de la colonne. Ma condition C5 est
+   maintenue sur ce cas, sur un motif que je date du 2026-08-16 et que j'explique dans l'arbitrage :
+   ce qu'un enfant lit dans une boite de proposition doit rester verifiable par autre chose que moi.

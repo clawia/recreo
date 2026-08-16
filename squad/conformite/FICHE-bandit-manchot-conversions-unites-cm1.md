@@ -159,3 +159,95 @@ Le garde-fou de doublon livre ce sprint couvre la propriete 1 de la section 6 de
 chaque distracteur** (reserve du point signale ci-dessus - c'est la propriete que ce lot rend
 concrete), le rang de la bonne reponse parmi les trois propositions, l'utilite de l'indice, et le
 niveau tel qu'il se joue.
+
+---
+
+### Complement du 2026-08-16 - Done maintenu ouvert, deux reserves neuves et datees
+
+- **Verdict** : **VALIDE SOUS RESERVE, maintenu.** Le Done ouvert le 2026-08-14 **n'est pas
+  rouvert**. Le verdict de ce jour-la et ses reserves restent lisibles plus haut, inchanges : ce
+  bloc s'empile, il n'ecrase rien.
+- **Auteur** : nadia-prof. **Arbre juge** : `round-two` a `c0c51c5`, arbre propre, 486 tests, 28
+  regles. Worktree dedie `s13-nadia-voie-rendu`.
+- **Mode** : **j'ai joue**. Jar reconstruit, navigateur pilote a 360 x 640, **24 items sur 24 vus**,
+  plus **360 manches** jouees en strategie pour la reserve K. Releve :
+  `releves-s13/releve-voies-de-rendu-360x640.json`. Captures :
+  `releves-s13/voie-rendu-v0-mesures-6000km-360.png`,
+  `releves-s13/voie-rendu-v0-mesures-tonnes-360.png`.
+
+#### Reserve J (2026-08-16) - huit distracteurs sont illisibles a 360 px
+
+**Huit items sur 24** portent un distracteur qui deborde de sa colonne de **16,4 px par cote** :
+`4000000 tonnes`, `5000000 tonnes`, `6000000 km`, `5000000 m`, `9000000 kg`, `6000000 kg`,
+`4000000 L`, `5000000 L`. A l'ecran, le chiffre de tete tombe en texte sombre sur le fond sombre du
+cabinet et le dernier chiffre passe sur le montant du meuble : l'enfant lit `000000 km` la ou il est
+ecrit `6000000 km`. Sur les items en tonnes, les trois mots `tonnes` se rejoignent en une bande
+continue d'un bord a l'autre du cabinet, sans separation entre les colonnes.
+
+**Pourquoi une reserve et non un refus, et la frontiere est celle que j'ai deja posee.** Le
+2026-08-16, sur `cm1-grands-nombres`, j'ai ecrit que le debordement est grave parce que *"il n'y a
+plus de bonne reponse a l'ecran"*. Ici, **la bonne reponse est lisible sur les 24 items** : ce sont
+les distracteurs qui sont abimes. Un distracteur illisible n'est plus un distracteur - il ramene
+l'item a deux choix - mais l'enfant ne lit jamais un nombre faux a la place du bon. **Cela vaut une
+reserve, pas un refus**, et j'applique la meme frontiere que sur "Le perimetre", ou c'est la bonne
+reponse qui est detruite et ou j'ai refuse.
+
+Cette reserve tombe avec la story de rendu arbitree dans
+`ARBITRAGE-PREALABLE-s13-voie-de-rendu-des-propositions.md` : je l'ai jouee, les 24 items passent a
+**zero debordement**.
+
+Je note que ces huit distracteurs sont ceux que j'avais deja signales le 2026-08-14 comme
+invraisemblables (*"`6 000 000 kg` ne teste rien"*). Le rendu ajoute une raison de les corriger a
+celle que j'avais deja donnee ; il n'en cree pas une nouvelle famille.
+
+#### Reserve K (2026-08-16) - la reponse la plus courte gagne une fois sur deux, et je corrige mon propre constat du 2026-08-14
+
+**Le fait, joue avant d'etre lu.** Sur **120 manches reellement jouees**, un joueur qui presse
+toujours la proposition **la plus courte** gagne **57 fois, soit 47,5 %**, contre 33,3 % attendus du
+hasard. Verifie ensuite sur le contenu, hors de tout rendu : **la bonne reponse est la plus courte
+des trois chaines sur 13 items sur 24 (54,2 %)**, la plus longue sur 7 (29,2 %), intermediaire sur
+4 (16,7 %).
+
+Comme les trois propositions d'un item ne different que par leurs zeros, "la plus courte" veut dire
+"le plus petit nombre". **La regle gagnante est donc "presse le plus petit", elle se decouvre en
+trois manches, et elle ne demande aucune conversion.** C'est le defaut que je refuse partout
+ailleurs : une propriete de forme qui fait mieux que le hasard sur un jeu qui annonce enseigner a
+convertir.
+
+**Aucun autre paquet du catalogue n'est dans ce cas** : conjugaison 20 %, homophones 25 %, grands
+nombres 14 %, perimetre 0 %, tables 2 %, et 0 % sur les quatre paquets de CP concernes.
+"Les mesures" est seul.
+
+**Ce que je corrige, et c'est de moi.** Le 2026-08-14, dans le bloc de validation ci-dessus, j'ai
+mesure **exactement cette distribution** et je l'ai ecrite : *"la bonne reponse est la plus petite
+dans 54,2 % des items, la plus grande dans 29,2 %, intermediaire dans 16,7 %"*, en concluant que
+**"cet equilibre-la est un acquis a preserver"**. Mes chiffres d'aujourd'hui reproduisent les miens
+au dixieme. **Ce que j'avais credite comme un equilibre est un raccourci.** Je l'avais manque parce
+que j'avais lu cette repartition comme une statistique de variete, au lieu de la jouer comme une
+strategie - et la strategie, elle, se voit en une partie.
+
+**Ce que j'en fais : une reserve, pas un refus, et je dis pourquoi.** J'ai regarde ce chiffre le
+2026-08-14, je l'ai approuve par ecrit, et l'equipe n'a rien livre sur ce paquet depuis. Transformer
+ma propre approbation en refus, sur un chiffre inchange, dix jours plus tard, serait deplacer mon
+poteau apres coup : une porte qui fonctionne ainsi n'est plus une porte, c'est un caprice.
+**Je corrige mon constat, j'ecris la reserve, je laisse l'ancien texte lisible, et je ne rouvre pas
+le Done.**
+
+**Ce qui est actionnable pour `camille-po`**, et c'est peu couteux : il suffit que **six a sept des
+treize items concernes** portent un distracteur plus court que la bonne reponse. Sur une conversion
+de la grande vers la petite unite, la bonne reponse est deja la plus longue ; le paquet compte 12
+items dans chaque sens, donc **le materiau existe deja et c'est la repartition des distracteurs, pas
+le sens des conversions, qu'il faut retoucher.** A combiner avec la correction demandee en reserve
+du 2026-08-14 sur l'ordre de grandeur des distracteurs : les deux se traitent dans la meme passe.
+
+**Je ne pose pas de seuil chiffre aujourd'hui.** Je n'en ai jamais ecrit pour la longueur d'une
+proposition, et en inventer un dans le meme geste que le premier constat serait poser une barre et
+la faire respecter retroactivement. Ce que je demande est nomme : que ce paquet cesse d'etre gagnable
+a 47,5 % sans convertir.
+
+#### Ce dont je reste la seule garde sur ce jeu
+
+Inchange, plus deux : **qu'un texte tienne dans sa boite a 360 px** (reserve J), et **qu'aucune
+propriete de forme d'une proposition - sa longueur, sa largeur - ne fasse gagner mieux que le
+hasard** (reserve K). Le rang est garde par le code depuis `lea-dev` ; **la longueur ne l'est par
+rien**, et ce paquet prouve que ce n'est pas une inquietude theorique.
