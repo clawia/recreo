@@ -330,3 +330,73 @@ valide ; ce n'est pas le meme cas.
 
 Inchange, plus une : **qu'un texte tienne dans sa boite a 360 px**. Ce refus en est la preuve - le
 defaut a traverse une CI verte pendant deux sprints, et il etait deja la quand j'ai ouvert le Done.
+
+---
+
+### Done pedagogique du 2026-08-16 (soir) - VALIDE SOUS RESERVE : **mon refus du meme jour est leve**
+
+- **Verdict** : **VALIDE SOUS RESERVE**. **Le refus prononce plus haut aujourd'hui est leve**, sur
+  son motif exact et sur rien d'autre. `camille-po` peut ramener la ligne "Calculer un perimetre de
+  figures usuelles (carre, rectangle)" de `en cours` a `couvert-valide`, et sortir
+  `bandit-manchot-perimetre-cm1` de `FILE-ATTENTE.md`.
+- **Le refus n'est pas efface** : il reste lisible ci-dessus, avec son motif et sa capture. Ce bloc
+  s'ajoute, il ne remplace rien.
+- **Auteur** : nadia-prof. **Arbre juge** : worktree `s13-nadia-verification-voie-4` sur la tete de
+  `round-two` a `2d79f2e` (la seule modification que porte ma branche - l'entree de catalogue des
+  grands nombres - n'a aucun effet sur ce jeu-ci, deja au catalogue). `mvn verify` vert, 488 tests.
+- **Mode : j'ai joue.** 360 x 640, **22 items sur 22 vus, 50 manches**, et les memes 22 items rejoues
+  sur l'etat que j'avais refuse, pour comparer plutot que de croire. Releve :
+  `releves-s13/releve-verification-voie4-360x640.json`.
+
+#### Le motif du refus, verifie ferme
+
+| | etat refuse (`c0c51c5`) | voie 4 livree |
+|---|---|---|
+| items qui debordent | **1 sur 22** (`Le perimetre d'une figure, c'est...`) | **0 sur 22** |
+| pire debord par cote | 25,32 px | 0 px |
+| police | 32 px | 32 px |
+
+Mon chiffre du refus - 25,3 px par cote sur `sa surface interieure` - se retrouve au centieme. Sur
+l'item en cause, les trois propositions occupent desormais chacune une rangee pleine et se lisent
+entierement : `sa surface interieure`, `la longueur de son contour`, `le nombre de ses cotes`. Plus
+aucun mot n'est percute par un voisin, plus rien ne sort de l'ecran par la droite. Capture :
+`releves-s13/verif-voie4-perimetre-definition-pli-360x640.png`. Les 22 items affichent, caractere
+pour caractere, ce que le YAML ecrit.
+
+**Le cout que j'avais accepte d'avance est bien celui que je constate**, et je le verifie plutot que
+de le supposer : sur ce jeu, **plus aucun item ne garde ses trois colonnes de front** - 20 items en
+deux rangees (deux boites puis une), 2 items entierement empiles en trois rangees. Sur l'item de la
+definition, la troisieme proposition reste **entierement sous le pli** (259 px de defilement) : c'est
+le cas unique que j'ai nomme, mesure et pese dans mon arbitrage, et je ne le decouvre pas
+aujourd'hui. Une boite est coupee par le pli, donc l'ecran ne parait pas complet.
+
+#### Une reserve neuve et datee, et elle corrige un constat de ma main
+
+**Reserve 4 (2026-08-16) - sur ce jeu, presser la plus grande boite gagne 48,5 % des manches**,
+contre 33,3 % au hasard. Les colonnes ne se partageant plus la largeur a parts egales, la largeur
+d'une boite suit desormais la longueur de son texte : sur 20 des 22 items les trois boites ont des
+tailles differentes, et la bonne reponse est la plus grande sur 10 items sur 22. Un enfant peut
+gagner une manche sur deux **sans lire**.
+
+**Le constat que je corrige est le mien.** Dans mon arbitrage de ce matin, j'ai ecrit avoir verifie
+que la largeur des boites ne trahissait pas la reponse et conclu : *"presser la plus grande boite ne
+fait pas gagner"*. J'avais mesure 37,5 % sur ce jeu en jouant, et je l'ai lu comme du bruit autour du
+hasard. L'esperance exacte sur les 22 items est **48,5 %** : mon echantillon etait trop petit et ma
+conclusion trop rapide. C'etait la seule chose qui aurait pu me faire refuser la voie 4, je l'ai
+verifiee trop legerement, et je le dis ici plutot que de laisser ma phrase de ce matin faire foi.
+
+**Ce n'est pas un motif de refus, et pour une raison que j'assume** : c'est la meme classe de fait
+que le raccourci de la proposition la plus courte sur "Les mesures" (47,5 %), que j'ai traite ce
+matin en reserve et non en refus. Rien n'est faux, rien n'est illisible, le contenu est inchange. Je
+tiens la meme frontiere sur les deux jeux. **Ce qui est neuf, et que `camille-po` doit savoir** : la
+story de sprint 14 sur la longueur, telle que l'amendement de `DEC-0031` la decrit, cite deja la
+largeur parmi les proprietes de forme a garder - **cette clause-la n'est plus hypothetique**, elle se
+mesure a 48,5 % ici et la voie 4 est ce qui rend la propriete visible a l'oeil.
+
+**Les trois reserves du 2026-08-14 restent ouvertes et inchangees.**
+
+#### Ce dont je reste la seule garde sur ce jeu
+
+Inchange, plus deux : **qu'un choix ne passe pas sous le pli** (ici, un item, assume), et **que la
+largeur d'une boite ne designe pas la bonne reponse** - qui n'est plus tenue, et qu'aucune ligne ne
+mesure.

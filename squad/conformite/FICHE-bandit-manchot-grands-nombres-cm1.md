@@ -672,3 +672,181 @@ dit du contenu ne change : il est bon, et je le redis.
    probleme n'a jamais ete la nature du nombre, c'est la largeur de la colonne. Ma condition C5 est
    maintenue sur ce cas, sur un motif que je date du 2026-08-16 et que j'explique dans l'arbitrage :
    ce qu'un enfant lit dans une boite de proposition doit rester verifiable par autre chose que moi.
+
+---
+
+### Done pedagogique du 2026-08-16 (verification apres livraison de la voie 4) - VALIDE SOUS RESERVE
+
+- **Verdict** : **VALIDE SOUS RESERVE**. Le Done pedagogique est ouvert. `camille-po` peut passer la
+  ligne "Lire, ecrire, decomposer et comparer les nombres entiers jusqu'au million" a
+  `couvert-valide`, et l'entree de catalogue peut rejoindre `round-two` par le mecanisme ordinaire
+  de l'amendement du 2026-08-16 a `DEC-0031`, section 2.
+- **Auteur** : nadia-prof. **Troisieme passage de ce jeu devant moi** : refuse le 2026-08-15, refuse
+  le 2026-08-16, favorable aujourd'hui. Je le compte comme tel, ainsi que l'amendement de
+  `DEC-0031` me demande de le faire.
+- **Les deux refus ne sont pas effaces** : ils restent lisibles ci-dessus, avec leurs motifs. Un
+  refus efface n'a aucune valeur de preuve. J'empile.
+- **Arbre juge** : worktree dedie `s13-nadia-verification-voie-4`, branche du meme nom, posee sur la
+  tete de `round-two` a `2d79f2e`, **plus une seule modification de ma main** : la reinstallation de
+  l'entree `id: bandit-manchot-grands-nombres-cm1` dans `catalogue.yaml`, telle que `fdf6bae`
+  l'avait retiree, mot pour mot. `mvn verify` vert sur JDK 21.0.10, **488 tests**, aucune regle
+  d'architecture touchee. **Cette branche n'est pas destinee a la fusion** : si ce verdict est suivi,
+  c'est `sofia-sm` qui recable l'entree sur `round-two`.
+- **Mode : j'ai joue, et c'est la premiere mesure independante apres implementation.** Jar
+  reconstruit depuis ce worktree, lance par l'ecran de catalogue reel, navigateur pilote a
+  360 x 640. **28 items sur 28 vus, 94 manches.** J'ai joue **en parallele l'etat que j'avais
+  refuse** - second jar construit depuis le meme worktree avec la seule feuille de style de
+  `c0c51c5` - pour comparer item par item plutot que de croire un avant que je n'aurais pas remesure.
+  Releve : `releves-s13/releve-verification-voie4-360x640.json`.
+
+#### 1. Le motif de mes deux refus est ferme, et je l'ai mesure sur les deux etats
+
+| | etat refuse (`c0c51c5`) | voie 4 livree (`2d79f2e`) |
+|---|---|---|
+| items qui debordent de leur boite | **20 sur 28** | **0 sur 28** |
+| pire debord par cote | 33,07 px | 0 px |
+| propositions sortant de l'ecran | 0 | 0 |
+| police de proposition | 32 px | 32 px |
+
+**Mes chiffres d'avant se retrouvent exactement.** Mon second refus comptait treize items montrant
+un nombre qui n'est pas le nombre ecrit, et sept items "lire" qui debordaient deja avant le lot de
+`marc-dev` : 13 + 7 = **20**, et c'est ce que la mesure d'aujourd'hui donne sur l'etat refuse. Je
+n'ai fonde ce verdict sur aucun chiffre de `theo-archi` ni de `lea-dev`.
+
+**Et ce que l'ecran affiche est bien ce que le YAML ecrit.** Sur les 28 items, les trois
+propositions rendues sont identiques **caractere pour caractere** aux chaines du paquet, espace
+insecable U+00A0 comprise. Aucun chiffre n'est perdu, aucun separateur n'est transforme. C'etait le
+coeur de mes deux refus - un enfant lisait autre chose que ce qui est ecrit - et ce n'est plus le
+cas sur aucun item.
+
+Le contenu, lui, n'a pas ete rouvert et n'avait pas a l'etre : les neuf criteres etaient tenus, les
+28 bonnes reponses justes, les 28 indices exacts, les 56 distracteurs des erreurs reelles. Je
+l'avais ecrit d'avance, je le confirme apres avoir joue.
+
+#### 2. Je corrige une mesure de ma main avant qu'on s'appuie dessus
+
+Mon premier depouillement d'aujourd'hui comptait le debord contre la **boite de contenu** du bouton
+(rembourrage exclu) et annoncait des chiffres gonfles - 37,4 px la ou la convention en donne 16,4.
+Il donnait aussi quatorze items debordants sur "Le bon verbe", jeu qui n'a jamais deborde. **La
+convention que j'ai posee dans le verdict du 2026-08-16 compte le debord contre la boite du bouton**,
+et c'est la bonne : un texte plus large que la boite de contenu mais plus etroit que la boite mange
+son rembourrage, il ne sort pas du bouton et l'enfant lit tout. Depouillement refait sous la bonne
+convention ; ce sont ces chiffres-la qui sont ci-dessus, et ils concordent avec les miens de
+`releve-voies-de-rendu-360x640.json` (mesures 8 items / 16,4 px ; perimetre 25,3 px).
+
+#### 3. Ce qui n'est pas tenu : ma condition VR-4, et de huit fois
+
+**Je l'ecris avant tout le reste parce que c'est le point le plus defavorable du dossier.** VR-4
+disait : aucune proposition entierement invisible sous le pli, **sauf** l'item
+`Le perimetre d'une figure, c'est...`, seul cas que j'admettais parce que je l'avais mesure et pese,
+et j'ajoutais : *"un deuxieme item dans ce cas me revient"*.
+
+Sur ce paquet, a 360 x 640, **huit items sur 28 placent une proposition entierement sous le pli** :
+
+| item | defilement necessaire |
+|---|---|
+| `Lis ce nombre : 47 300.` | 259 px |
+| `Lis ce nombre : 816 203.` | **355 px** |
+| `Lis ce nombre : 32 010.` | 259 px |
+| `Lis ce nombre : 213 500.` | 259 px |
+| `Lis ce nombre : 528 006.` | 243 px |
+| `Decompose 305 421 en valeurs de position.` | 307 px |
+| `Decompose 452 000 en valeurs de position.` | 307 px |
+| `Decompose 128 000 en valeurs de position.` | 243 px |
+
+Ce n'est pas disperse : ce sont **cinq des sept items "lire" et trois des sept items "decomposer"**,
+c'est-a-dire exactement les deux verbes dont les propositions sont longues. Les sept "ecrire" et les
+sept "comparer" ne sont jamais concernes.
+
+Comme la mecanique melange les propositions a chaque manche, **la proposition cachee est la bonne
+reponse une fois sur trois** sur ces items. Sur les huit manches que j'ai relevees, c'etait le cas
+cinq fois. En partie de dix manches, un enfant rencontre en moyenne trois de ces items, donc
+**environ une manche par partie ou la bonne reponse n'est pas a l'ecran au moment de choisir**.
+Capture : `releves-s13/verif-voie4-grands-nombres-816203-pli-360x640.png`.
+
+#### 4. Pourquoi c'est une reserve et pas un troisieme refus - et ce que ca m'a coute de le decider
+
+Je ne valide pas parce que c'est le troisieme passage, ni parce que l'equipe a livre ce que j'avais
+demande. Voici mon raisonnement, avec ce qui plaide contre.
+
+**Ce que j'ai verifie avant de trancher, et qui compte :**
+
+- **Sur les huit items, sans exception, une boite est coupee par le pli.** L'ecran ne parait jamais
+  complet : l'enfant voit qu'il reste quelque chose dessous. Si un seul de ces huit items s'etait
+  termine proprement au-dessus de 640 px, sans aucun indice, j'aurais refuse - un ecran qui parait
+  fini et qui cache un choix ne se surmonte pas, il trompe.
+- **Le choix cache est atteignable** : 243 a 355 px de defilement, et une fois atteint il est
+  integralement lisible, chaque chiffre dans sa boite
+  (`releves-s13/verif-voie4-grands-nombres-128000-page-entiere.png`).
+- **L'enfant qui se trompe n'est pas puni sans recours** : je me suis trompee volontairement trois
+  fois de suite sur `Decompose 128 000`. La proposition pressee est barree et reste a sa place, les
+  trois essais tiennent, et le troisieme echec revele la bonne reponse en la nommant
+  (*"C'est 100 000 + 20 000 + 8 000. Appuie sur 100 000 + 20 000 + 8 000."*). A partir du deuxieme
+  essai, le focus porte la page vers le bas et tout devient visible.
+- **Rien de faux n'est montre.** C'etait mon motif de refus, et il est ferme.
+
+**Ce que ca coute quand meme, et je ne l'habille pas :** au premier echec sur un de ces huit items,
+le message *"Ce n'est pas ca. Essaie encore !"* tombe a 851 px et l'enfant qui n'a pas defile ne
+voit qu'une boite barree, sans un mot. `DEC-0025` admet le message et l'indice sous le pli, donc ce
+n'est pas un motif neuf ; c'est une aggravation de ce que `DEC-0025` a accepte, et je la nomme.
+
+**Ma frontiere, appliquee dans le meme sens que les deux fois precedentes** : *un obstacle qu'on
+surmonte n'est pas du meme ordre qu'un texte qu'on ne peut pas lire*. C'est par ce raisonnement que
+j'ai tranche le debordement contre la coupure, puis accepte l'item du perimetre. Un choix sous le
+pli, avec un indice visible et un chemin de retour, est un obstacle. **Le tenir pour un refus ici
+apres l'avoir tenu pour un cout acceptable la-bas, le meme jour, sur la meme classe de fait, serait
+appliquer ma porte dans deux sens opposes selon le jeu.**
+
+**Et la ou je dois etre franche : huit items, ce n'est pas "un deuxieme item".** La difference avec
+le perimetre est une difference de **frequence, pas de nature** - une manche par partie contre une
+manche sur six parties - et je refuse de la maquiller en difference de principe. C'est cette
+frequence qui fait que **je n'accorde pas un Done plein** : VR-4 n'est pas tenue, la reserve
+ci-dessous est ecrite pour cela, et elle est la plus utile des trois.
+
+#### 5. Reserves - l'etat au 2026-08-16 (soir)
+
+**Reserve J (neuve, 2026-08-16) - huit items placent un choix entierement sous le pli a 360 x 640.**
+Motif au point 3. **Critere de levee, ecrit pour qu'un tiers puisse le verifier sans me le
+redemander** : a 360 x 640, sur les 28 items du paquet, aucune proposition n'a son bord superieur a
+640 px ou au-dela. C'est un travail de rendu et il ne touche pas le YAML : ce qui pousse le bloc
+vers le bas, ce sont les trois lignes d'enonce a 2 rem, le bandeau du cabinet et ce qui les
+surmonte, pas les propositions. `theo-archi` traite la cause ; je ne prescris aucune voie.
+
+**Les reserves A a I restent ouvertes.** Deux evoluent, aucune ne durcit :
+
+- **Reserve C (coupure de ligne)** : sa moitie "lire", que le constat de largeur du 2026-08-16
+  aggravait, **retrouve son etat d'origine** - plus aucun texte ne deborde. Verifie : sous le repli,
+  les propositions ne se coupent qu'aux espaces ordinaires, **aucun groupe de chiffres n'est
+  separe**, l'espace insecable tient. La reserve reste, non aggravee.
+- **Reserve H (U+202F)** : inchangee, et je confirme que le separateur rendu est toujours U+00A0.
+  Aucune urgence.
+- **Reserves A, B, D, E, F, G, I** : inchangees, mot pour mot.
+
+Rien a signaler sur les biais ni sur le ton : ce paquet ne met en scene personne.
+
+#### 6. Ce dont je reste la seule garde sur ce jeu
+
+La liste du 2026-08-16 est inchangee sauf sur un point, et elle **s'agrandit d'une entree** :
+
+- **Qu'un texte tienne dans sa boite a 360 px.** Toujours a moi. La regle livree avec la voie 4 garde
+  **la cause** (un conteneur qui se replie, une base de colonne non nulle), jamais **l'effet**. Un
+  debordement reintroduit par une largeur en pixels ou un `white-space` resterait vert - `lea-dev`
+  l'ecrit elle-meme, et c'est exact.
+- **Qu'aucun choix ne passe sous le pli** (nouveau ici, et c'est la reserve J). Rien ne le mesure.
+- L'exactitude de chaque bonne reponse et de chaque indice, la plausibilite de chaque distracteur,
+  l'orthographe des mots-nombres, l'utilite reelle de chaque indice, le rang sur les 7 items
+  "comparer", le niveau tel qu'il se joue : inchanges.
+
+#### 7. Ce que `camille-po` doit retenir
+
+- **La ligne peut passer a `couvert-valide`**, avec la reserve J ouverte.
+- **Une story de rendu a ecrire** : critere au point 5. Elle concerne aussi "Le perimetre", qui garde
+  son item sous le pli - le mien, celui que j'ai accepte.
+- **Un point de code que ma verification fait apparaitre et que je signale sans le corriger** :
+  `a9a41aa` a retire la methode `leJeuDuCatalogueChargeBienLePaquetCm1GrandsNombres` en meme temps
+  que l'entree de catalogue. Sur ma branche, l'entree est revenue **et la suite reste a 488 tests** :
+  autrement dit, **rien ne verifie aujourd'hui que cette entree charge bien ce paquet**. Le jour ou
+  `sofia-sm` recable l'entree sur `round-two`, cette methode doit revenir dans le meme geste, sans
+  quoi le catalogue rentrera avec une entree que plus aucun test ne relie a son contenu. Ce n'est pas
+  un motif pedagogique et ce n'est pas mon perimetre : c'est un fait que seule ma reinstallation
+  pouvait reveler.
