@@ -1,0 +1,88 @@
+{
+ "releve": "grands-nombres-cm1 - rang de la bonne reponse, mesure en jouant et mesure sur les valeurs",
+ "date": "2026-08-16",
+ "auteur": "nadia-prof",
+ "increment": "branche round-two, tete 4000bab",
+ "1_rang_a_l_ecran_mesure_en_jouant": {
+  "methode": "2800 manches reellement tirees sur le serveur, position de la bonne reponse parmi les trois colonnes affichees",
+  "tirages": 2800,
+  "gauche_milieu_droite": [
+   890,
+   955,
+   955
+  ],
+  "pourcentages": [
+   31.8,
+   34.1,
+   34.1
+  ],
+  "conclusion": "la mecanique melange les propositions a chaque manche (melange de Fisher-Yates, BanditManchotSession.melanger) : la position a l'ecran est uniforme et n'est exploitable par aucun enfant. Ce n'est donc pas l'axe qui compte sur ce paquet.",
+  "par_verbe": {
+   "lire": {
+    "tirages": 687,
+    "pourcentages": [
+     29.7,
+     36.0,
+     34.4
+    ]
+   },
+   "comparer": {
+    "tirages": 700,
+    "pourcentages": [
+     29.7,
+     35.6,
+     34.7
+    ]
+   },
+   "decomposer": {
+    "tirages": 726,
+    "pourcentages": [
+     32.4,
+     34.2,
+     33.5
+    ]
+   },
+   "ecrire": {
+    "tirages": 687,
+    "pourcentages": [
+     35.4,
+     30.7,
+     33.9
+    ]
+   }
+  }
+ },
+ "2_rang_par_valeur_recompte_a_la_main": {
+  "methode": "valeur de chaque proposition recalculee par moi sur les 28 items : entier pour une ecriture chiffree, total de la somme pour une decomposition, valeur designee pour une ecriture en toutes lettres. Les 7 items comparer n'ont pas de valeur et sortent du compte.",
+  "items_classables": 21,
+  "plus_petite_intermediaire_plus_grande": [
+   3,
+   9,
+   9
+  ],
+  "pourcentages": [
+   14.3,
+   42.9,
+   42.9
+  ],
+  "par_verbe": {
+   "ecrire": [
+    2,
+    3,
+    2
+   ],
+   "lire": [
+    0,
+    3,
+    4
+   ],
+   "decomposer": [
+    1,
+    3,
+    3
+   ]
+  },
+  "conclusion": "aucun rang ne depasse 50 % ni ne tombe sous 10 % : le seuil en vigueur sur ce paquet est tenu. Le verbe lire pris seul ne place jamais la bonne reponse sur la plus petite valeur (0 sur 7) ; c'est trop peu d'items pour en faire un motif, c'est assez pour une reserve datee.",
+  "note": "je ne reprends ni le 3/6/5 de marc-dev ni le 5/4/5 d'ADR-0041 : je ne fonde rien sur un chiffre que je n'ai pas recompte."
+ }
+}

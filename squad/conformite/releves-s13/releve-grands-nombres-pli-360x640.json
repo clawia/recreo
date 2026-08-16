@@ -1,0 +1,265 @@
+{
+ "releve": "grands-nombres-cm1 - position du message d'erreur et de l'indice au premier echec, viewport 360 x 640",
+ "date": "2026-08-15",
+ "auteur": "nadia-prof",
+ "jeu": "bandit-manchot-grands-nombres-cm1",
+ "paquet": "cm1-grands-nombres",
+ "methode": "un premier echec joue reellement sur chacun des 28 items, page complete rendue a 360 px de large par outils/mesurer-rendu.sh, position du bloc de message et du bloc d'indice lue au pixel sur la capture ; pli a y = 640",
+ "pli_px": 640,
+ "bas_du_message_sous_le_pli": 18,
+ "bas_de_l_indice_sous_le_pli": 28,
+ "items": [
+  {
+   "item": 0,
+   "verbe": "ecrire",
+   "enonce": "Écris en chiffres : quarante mille sept cent cinq.",
+   "bas_du_message_px": 666,
+   "bas_de_l_indice_px": 780,
+   "depassement_message_px": 26,
+   "depassement_indice_px": 140
+  },
+  {
+   "item": 1,
+   "verbe": "ecrire",
+   "enonce": "Écris en chiffres : trois cent cinq mille quatre cent vingt-et-un.",
+   "bas_du_message_px": 666,
+   "bas_de_l_indice_px": 780,
+   "depassement_message_px": 26,
+   "depassement_indice_px": 140
+  },
+  {
+   "item": 2,
+   "verbe": "ecrire",
+   "enonce": "Écris en chiffres : cent vingt-huit mille.",
+   "bas_du_message_px": 618,
+   "bas_de_l_indice_px": 702,
+   "depassement_message_px": -22,
+   "depassement_indice_px": 62
+  },
+  {
+   "item": 3,
+   "verbe": "ecrire",
+   "enonce": "Écris en chiffres : six cent mille quarante.",
+   "bas_du_message_px": 618,
+   "bas_de_l_indice_px": 732,
+   "depassement_message_px": -22,
+   "depassement_indice_px": 92
+  },
+  {
+   "item": 4,
+   "verbe": "ecrire",
+   "enonce": "Écris en chiffres : quatre-vingt-dix mille quatre-vingt-dix.",
+   "bas_du_message_px": 666,
+   "bas_de_l_indice_px": 750,
+   "depassement_message_px": 26,
+   "depassement_indice_px": 110
+  },
+  {
+   "item": 5,
+   "verbe": "ecrire",
+   "enonce": "Écris en chiffres : quatre cent cinquante-deux mille.",
+   "bas_du_message_px": 666,
+   "bas_de_l_indice_px": 750,
+   "depassement_message_px": 26,
+   "depassement_indice_px": 110
+  },
+  {
+   "item": 6,
+   "verbe": "ecrire",
+   "enonce": "Écris en chiffres : un million.",
+   "bas_du_message_px": 666,
+   "bas_de_l_indice_px": 750,
+   "depassement_message_px": 26,
+   "depassement_indice_px": 110
+  },
+  {
+   "item": 7,
+   "verbe": "lire",
+   "enonce": "Lis ce nombre : 70 018.",
+   "bas_du_message_px": 714,
+   "bas_de_l_indice_px": 798,
+   "depassement_message_px": 74,
+   "depassement_indice_px": 158
+  },
+  {
+   "item": 8,
+   "verbe": "lire",
+   "enonce": "Lis ce nombre : 816 203.",
+   "bas_du_message_px": 858,
+   "bas_de_l_indice_px": 942,
+   "depassement_message_px": 218,
+   "depassement_indice_px": 302
+  },
+  {
+   "item": 9,
+   "verbe": "lire",
+   "enonce": "Lis ce nombre : 47 300.",
+   "bas_du_message_px": 762,
+   "bas_de_l_indice_px": 846,
+   "depassement_message_px": 122,
+   "depassement_indice_px": 206
+  },
+  {
+   "item": 10,
+   "verbe": "lire",
+   "enonce": "Lis ce nombre : 528 006.",
+   "bas_du_message_px": 810,
+   "bas_de_l_indice_px": 924,
+   "depassement_message_px": 170,
+   "depassement_indice_px": 284
+  },
+  {
+   "item": 11,
+   "verbe": "lire",
+   "enonce": "Lis ce nombre : 213 500.",
+   "bas_du_message_px": 810,
+   "bas_de_l_indice_px": 924,
+   "depassement_message_px": 170,
+   "depassement_indice_px": 284
+  },
+  {
+   "item": 12,
+   "verbe": "lire",
+   "enonce": "Lis ce nombre : 32 010.",
+   "bas_du_message_px": 762,
+   "bas_de_l_indice_px": 846,
+   "depassement_message_px": 122,
+   "depassement_indice_px": 206
+  },
+  {
+   "item": 13,
+   "verbe": "lire",
+   "enonce": "Lis ce nombre : 1 000 000.",
+   "bas_du_message_px": 618,
+   "bas_de_l_indice_px": 672,
+   "depassement_message_px": -22,
+   "depassement_indice_px": 32
+  },
+  {
+   "item": 14,
+   "verbe": "decomposer",
+   "enonce": "Décompose 40 705 en valeurs de position.",
+   "bas_du_message_px": 762,
+   "bas_de_l_indice_px": 846,
+   "depassement_message_px": 122,
+   "depassement_indice_px": 206
+  },
+  {
+   "item": 15,
+   "verbe": "decomposer",
+   "enonce": "Décompose 305 421 en valeurs de position.",
+   "bas_du_message_px": 1002,
+   "bas_de_l_indice_px": 1116,
+   "depassement_message_px": 362,
+   "depassement_indice_px": 476
+  },
+  {
+   "item": 16,
+   "verbe": "decomposer",
+   "enonce": "Décompose 128 000 en valeurs de position.",
+   "bas_du_message_px": 906,
+   "bas_de_l_indice_px": 990,
+   "depassement_message_px": 266,
+   "depassement_indice_px": 350
+  },
+  {
+   "item": 17,
+   "verbe": "decomposer",
+   "enonce": "Décompose 600 040 en valeurs de position.",
+   "bas_du_message_px": 762,
+   "bas_de_l_indice_px": 876,
+   "depassement_message_px": 122,
+   "depassement_indice_px": 236
+  },
+  {
+   "item": 18,
+   "verbe": "decomposer",
+   "enonce": "Décompose 90 090 en valeurs de position.",
+   "bas_du_message_px": 714,
+   "bas_de_l_indice_px": 828,
+   "depassement_message_px": 74,
+   "depassement_indice_px": 188
+  },
+  {
+   "item": 19,
+   "verbe": "decomposer",
+   "enonce": "Décompose 452 000 en valeurs de position.",
+   "bas_du_message_px": 906,
+   "bas_de_l_indice_px": 990,
+   "depassement_message_px": 266,
+   "depassement_indice_px": 350
+  },
+  {
+   "item": 20,
+   "verbe": "decomposer",
+   "enonce": "Décompose 8 004 en valeurs de position.",
+   "bas_du_message_px": 666,
+   "bas_de_l_indice_px": 750,
+   "depassement_message_px": 26,
+   "depassement_indice_px": 110
+  },
+  {
+   "item": 21,
+   "verbe": "comparer",
+   "enonce": "Compare 305 421 et 350 421.",
+   "bas_du_message_px": 570,
+   "bas_de_l_indice_px": 684,
+   "depassement_message_px": -70,
+   "depassement_indice_px": 44
+  },
+  {
+   "item": 22,
+   "verbe": "comparer",
+   "enonce": "Compare 999 999 et 1 000 000.",
+   "bas_du_message_px": 570,
+   "bas_de_l_indice_px": 654,
+   "depassement_message_px": -70,
+   "depassement_indice_px": 14
+  },
+  {
+   "item": 23,
+   "verbe": "comparer",
+   "enonce": "Compare 600 400 et 600 040.",
+   "bas_du_message_px": 570,
+   "bas_de_l_indice_px": 684,
+   "depassement_message_px": -70,
+   "depassement_indice_px": 44
+  },
+  {
+   "item": 24,
+   "verbe": "comparer",
+   "enonce": "Compare 816 203 et 816 023.",
+   "bas_du_message_px": 570,
+   "bas_de_l_indice_px": 654,
+   "depassement_message_px": -70,
+   "depassement_indice_px": 14
+  },
+  {
+   "item": 25,
+   "verbe": "comparer",
+   "enonce": "Compare 452 000 et 425 000.",
+   "bas_du_message_px": 570,
+   "bas_de_l_indice_px": 654,
+   "depassement_message_px": -70,
+   "depassement_indice_px": 14
+  },
+  {
+   "item": 26,
+   "verbe": "comparer",
+   "enonce": "Compare 70 018 et 78 000.",
+   "bas_du_message_px": 570,
+   "bas_de_l_indice_px": 684,
+   "depassement_message_px": -70,
+   "depassement_indice_px": 44
+  },
+  {
+   "item": 27,
+   "verbe": "comparer",
+   "enonce": "Compare 213 500 et 213 050.",
+   "bas_du_message_px": 570,
+   "bas_de_l_indice_px": 684,
+   "depassement_message_px": -70,
+   "depassement_indice_px": 44
+  }
+ ]
+}
