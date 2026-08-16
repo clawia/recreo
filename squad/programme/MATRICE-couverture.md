@@ -177,7 +177,7 @@ Source : `squad/programme/mathematiques/competences-cm1.md`.
 | mathematiques | CM1 | Nombres et calculs | Notion de fraction simple (unites fractionnaires, fractions inferieures a 1) et reperage sur une droite numerique | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Resoudre des problemes a plusieurs etapes mobilisant les 4 operations | - | - | non couvert |
 | mathematiques | CM1 | Grandeurs et mesures | Convertir des unites de longueur, masse, contenance dans le systeme metrique | bandit-manchot-conversions-unites-cm1 | bandit manchot | couvert-valide |
-| mathematiques | CM1 | Grandeurs et mesures | Calculer un perimetre de figures usuelles (carre, rectangle) | bandit-manchot-perimetre-cm1 | bandit manchot | couvert-valide |
+| mathematiques | CM1 | Grandeurs et mesures | Calculer un perimetre de figures usuelles (carre, rectangle) | bandit-manchot-perimetre-cm1 | bandit manchot | en cours |
 | mathematiques | CM1 | Grandeurs et mesures | Resoudre des problemes de durees (calcul d'une duree, d'un horaire d'arrivee) | bandit-manchot-problemes-durees-cm1 | bandit manchot | en cours |
 | mathematiques | CM1 | Espace et geometrie | Reconnaitre, nommer et tracer des figures planes (carre, rectangle, triangle, cercle) avec outils (regle, equerre, compas) | - | - | non couvert |
 | mathematiques | CM1 | Espace et geometrie | Reconnaitre et utiliser la notion de symetrie axiale simple | - | - | non couvert |
@@ -341,6 +341,32 @@ vingt-huit items debordaient deja de leur colonne avant ce lot, a cause de mots 
 sans rapport avec le separateur de milliers, et la meme colonne de 96 px sert les onze jeux du
 catalogue actuel. La dette est generale et attend le chiffrage de `theo-archi` sur les voies de
 correction avant qu'une story ne soit ecrite (`DEC-0031`, section 4).
+
+**Amendement du 2026-08-16 de `DEC-0031`.** `nadia-prof` a tranche la voie de correction (voie 4,
+`squad/conformite/ARBITRAGE-PREALABLE-s13-voie-de-rendu-des-propositions.md`), livree par `lea-dev`
+et fusionnee dans `round-two`. Elle pose un prealable que la decision d'origine ne prevoyait pas :
+elle ne peut pas verifier "Les grands nombres" tant qu'il n'a pas de chemin pour etre joue, et sa
+remise au catalogue est donc un prealable a sa reverification, pas une consequence de son arbitrage.
+`DEC-0031` est amendee pour lever ce blocage circulaire : le jeu ne revient pas dans le
+`catalogue.yaml` joue par un enfant, mais dans un chemin de verification dedie et jamais fusionne,
+que `nadia-prof` joue comme tout autre increment. **La ligne reste `en cours`**, dans les memes
+termes qu'a l'ouverture de cette section : aucun retour de chemin ni aucune fusion de code ne vaut
+Done pedagogique, seul un verdict joue et ecrit dans
+`squad/conformite/FICHE-bandit-manchot-grands-nombres-cm1.md` le peut. Detail complet, y compris ce
+qui se passe en cas de second refus : `DEC-0031`, section "Amendement du 2026-08-16".
+
+Le meme arbitrage rouvre et refuse une seconde fois le Done de la ligne "Calculer un perimetre de
+figures usuelles (carre, rectangle)" : sur `bandit-manchot-perimetre-cm1`, un item sur 22 percute sa
+bonne reponse contre la colonne voisine, motif identique a celui qui a fait sortir "Les grands
+nombres" du catalogue. **La ligne repasse de `couvert-valide` a `en cours`** dans le tableau
+ci-dessus. A la difference de "Les grands nombres", ce jeu **reste au catalogue jouable** : le
+correctif qui ferme ce motif (la voie 4) est deja fusionne dans `round-two`, et `nadia-prof` ne
+demande pas le retrait - retirer puis remettre le jeu au premier verdict favorable n'aurait pas de
+sens operationnel. Ce que cette ligne `en cours` porte, exceptionnellement, differe donc de sa
+soeur "Les grands nombres" : un jeu **joue aujourd'hui par un enfant** avec un Done **rouvert**, sur
+le pari que le code deja livre referme le motif de refus - constat qui reste a confirmer par un
+nouveau verdict de `nadia-prof`, pas par la fusion du correctif seule. Detail : `DEC-0031`, section
+"Amendement du 2026-08-16", point 5 ; l'increment entre dans `squad/validation/FILE-ATTENTE.md`.
 
 ## Francais - CP (cycle 2)
 
