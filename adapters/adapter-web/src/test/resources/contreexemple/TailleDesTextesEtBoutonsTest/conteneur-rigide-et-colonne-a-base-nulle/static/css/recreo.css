@@ -1,0 +1,15 @@
+/* Etat reel du depot a 34abbb7 (avis-jeton-en-image.md de theo-archi, arbitrage prealable de
+   nadia-prof du 2026-08-16), pas une fixture inventee pour l'occasion : le conteneur ne se
+   repliait jamais et chaque colonne fixait sa base de flexibilite a zero, ce qui forcait le
+   partage de la largeur quoi que la colonne contienne. C'est le defaut que la voie 4 corrige. */
+.propositions {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 0.75rem 0;
+    padding: 0;
+}
+
+.proposition {
+    flex: 1 1 0;
+}

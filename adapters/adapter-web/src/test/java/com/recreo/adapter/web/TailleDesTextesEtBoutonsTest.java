@@ -969,22 +969,25 @@ class TailleDesTextesEtBoutonsTest {
     }
 
     /**
-     * S7-1/S7-2 (ADR-0026 section 4, proposition-ines-machine-a-sous.md section 5) : le repli en
-     * deux rangees ne doit s'activer qu'a partir de la quatrieme proposition. Le selecteur
+     * S7-1/S7-2 (ADR-0026 section 4, proposition-ines-machine-a-sous.md section 5) : la largeur de
+     * colonne n'est divisee en deux qu'a partir de la quatrieme proposition. Le selecteur
      * {@code .proposition:nth-child(4)} ne matche que si une quatrieme proposition existe : ce
-     * test verifie que la regle est bien scopee a ce cas, pas que le rendu tienne (propriete du
-     * rendu, hors de portee d'un automate de ce depot - ADR-0025 -, mesuree par nadia-prof).
+     * test verifie que cette division-la est bien scopee a ce cas, pas que le rendu tienne
+     * (propriete du rendu, hors de portee d'un automate de ce depot - ADR-0025 -, mesuree par
+     * nadia-prof).
+     *
+     * <p>S13, voie 4 (arbitrage prealable de nadia-prof du 2026-08-16, condition VR-5 ;
+     * avis-jeton-en-image.md de theo-archi) : cette methode portait aussi une assertion sur
+     * {@code flex-wrap: wrap} scope au meme selecteur. Le repli en rangees ne s'active plus
+     * seulement a partir de la quatrieme proposition - {@code .propositions} se replie
+     * desormais toujours (voir {@link #leConteneurSeReplieOuLaColonneGardeUneBaseNonNulle}) - et
+     * l'ancien bloc CSS qui portait cette assertion a ete retire. La garder aurait laisse un test
+     * vert affirmant une portee qui n'existe plus ; elle est retiree, seule reste l'assertion sur
+     * la largeur de colonne, qui est bien encore scopee a la quatrieme proposition.
      */
     @Test
-    void leRepliEnDeuxRangeesEstScopeALaQuatriemePropositionSeulement() {
+    void laLargeurDeColonneEstDiviseeParDeuxAPartirDeLaQuatriemePropositionSeulement() {
         Map<String, String> blocs = blocsMaison(RACINE_PRODUCTION);
-
-        String bascule = blocs.get(".propositions:has(.proposition:nth-child(4))");
-        assertThat(bascule)
-                .as("le repli en deux rangees doit exister et n'etre declenche qu'a partir de la "
-                        + "quatrieme proposition")
-                .isNotNull();
-        assertThat(bascule).contains("flex-wrap: wrap");
 
         String colonne = blocs.get(".propositions:has(.proposition:nth-child(4)) .proposition");
         assertThat(colonne)
@@ -992,6 +995,96 @@ class TailleDesTextesEtBoutonsTest {
                         + "quatrieme proposition")
                 .isNotNull();
         assertThat(colonne).contains("calc(50% - 0.5rem)");
+    }
+
+    /**
+     * S13, voie 4 (arbitrage prealable de nadia-prof du 2026-08-16, condition VR-6 ;
+     * avis-jeton-en-image.md de theo-archi). Le defaut refuse le 2026-08-16 tient dans un seul
+     * couple : un conteneur qui ne se replie jamais ({@code .propositions} sans
+     * {@code flex-wrap: wrap}) combine a une colonne dont la base de flexibilite est une longueur
+     * nulle ({@code .proposition}, base a 0). Ce couple force les colonnes a se partager la
+     * largeur quoi qu'elles contiennent, et un {@code <button>} laisse alors son texte deborder
+     * plutot que d'exiger sa place.
+     *
+     * <p>Ce qu'elle ne prouve pas, et il faut le dire : elle garde une cause, pas un effet.
+     * ADR-0025 le rappelle, le debordement de rendu reste non gardable par un automate de ce
+     * depot - seule nadia-prof, en jouant, en repond. Un meme symptome de debordement reintroduit
+     * par un autre chemin - une largeur fixee en pixels, un {@code white-space: nowrap}, une
+     * police agrandie - resterait vert ici : cette regle ne verifie que ce couple precis, rien de
+     * plus.
+     */
+    static void verifierQueLeConteneurSeReplieOuQueLaColonneGardeUneBaseNonNulle(Path racine) {
+        Map<String, String> blocs = blocsMaison(racine);
+
+        String conteneur = blocs.get(".propositions");
+        assertThat(conteneur).as(".propositions doit exister dans le CSS maison").isNotNull();
+        int positionRepli = debutDeDeclaration(conteneur, "flex-wrap");
+        boolean seReplie = positionRepli >= 0
+                && valeurDeclaree(conteneur, positionRepli, "flex-wrap").equals("wrap");
+
+        String colonne = blocs.get(CLASSE_PROPOSITION);
+        assertThat(colonne).as(".proposition doit exister dans le CSS maison").isNotNull();
+        String base = baseDeFlexibilite(colonne);
+
+        assertThat(seReplie || !estUneLongueurNulle(base))
+                .as(".propositions ne declare pas flex-wrap: wrap et .proposition fixe sa base de "
+                        + "flexibilite a une longueur nulle (%s) : c'est exactement la forme du "
+                        + "defaut refuse par nadia-prof le 2026-08-16 - une base nulle partage la "
+                        + "largeur quoi que la colonne contienne, sur un conteneur qui ne se "
+                        + "replie jamais", base)
+                .isTrue();
+    }
+
+    /** La base de flexibilite (troisieme composante du raccourci {@code flex}) d'une colonne. */
+    private static String baseDeFlexibilite(String corps) {
+        int position = debutDeDeclaration(corps, "flex");
+        assertThat(position)
+                .as(".proposition doit declarer flex, qui porte la base de flexibilite de la colonne")
+                .isNotNegative();
+        List<String> composantes = motsDe(valeurDeclaree(corps, position, "flex"));
+        assertThat(composantes)
+                .as("flex doit s'ecrire avec ses trois composantes (croissance, retrecissement, "
+                        + "base), pour qu'une base nulle ne se dissimule pas dans un raccourci a "
+                        + "une ou deux valeurs")
+                .hasSize(3);
+        return composantes.get(2);
+    }
+
+    /**
+     * Une longueur nulle, quelle que soit son unite ({@code 0}, {@code 0px}, {@code 0rem}...).
+     * Un mot-cle sans prefixe numerique (par exemple {@code auto}) n'est jamais une longueur
+     * nulle.
+     */
+    private static boolean estUneLongueurNulle(String valeur) {
+        int fin = 0;
+        while (fin < valeur.length()
+                && (Character.isDigit(valeur.charAt(fin)) || valeur.charAt(fin) == '.')) {
+            fin++;
+        }
+        if (fin == 0) {
+            return false;
+        }
+        return Double.parseDouble(valeur.substring(0, fin)) == 0;
+    }
+
+    @Test
+    void leConteneurSeReplieOuLaColonneGardeUneBaseNonNulle() {
+        verifierQueLeConteneurSeReplieOuQueLaColonneGardeUneBaseNonNulle(RACINE_PRODUCTION);
+    }
+
+    /**
+     * ADR-0013 obligation 3, epreuve de morsure : le jeu fautif n'est pas une fixture inventee
+     * pour l'occasion, c'est l'etat reel du depot a 34abbb7 (avis-jeton-en-image.md de
+     * theo-archi, arbitrage prealable de nadia-prof du 2026-08-16) - celui qu'elle a refuse.
+     * {@code .propositions} n'y declarait jamais flex-wrap, et {@code .proposition} y fixait
+     * {@code flex: 1 1 0}.
+     */
+    @Test
+    void unConteneurRigideAvecUneColonneABaseNulleFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("conteneur-rigide-et-colonne-a-base-nulle");
+        assertThatThrownBy(() -> verifierQueLeConteneurSeReplieOuQueLaColonneGardeUneBaseNonNulle(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("c'est exactement la forme du defaut refuse par nadia-prof");
     }
 
     /**
