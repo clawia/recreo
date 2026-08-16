@@ -2947,6 +2947,61 @@ indices fautifs dans le meme geste que le raccourcissement de ses enonces.
   une condition sur l'increment livre, seulement un motif qu'elle nomme pour que l'equipe ne le
   decouvre pas trois sprints plus tard sans attribution. Non affectee a un sprint.
 
+### Story de correction differee - Un troisieme garde-fou de rang, sur la longueur du texte des propositions, et un audit des onze paquets du catalogue
+
+**Contexte.** Dans son arbitrage de la voie de rendu du sprint 13
+(`squad/conformite/ARBITRAGE-PREALABLE-s13-voie-de-rendu-des-propositions.md`, section 6),
+`nadia-prof` corrige son propre constat du 2026-08-14 sur `bandit-manchot-conversions-unites-cm1`
+("Les mesures") : elle l'avait alors lu comme une statistique acquise plutot que jouee comme une
+strategie. Mesure sur 120 manches reellement jouees : presser systematiquement la proposition la
+plus courte gagne **47,5 %** des manches, contre 33,3 % au hasard. Verifie ensuite sur le contenu,
+hors de tout rendu : la bonne reponse est la plus courte des trois chaines sur **13 items sur 24**,
+la plus longue sur 7, intermediaire sur 4 - comme les trois propositions d'un item ne different que
+par leurs zeros, "la plus courte" veut dire "le plus petit nombre". Aucun autre paquet du catalogue
+ne depasse 25 % sur ce critere ; "Les mesures" est seul a ce niveau. **Ce n'est pas un motif de
+refus** : le Done pedagogique de cette ligne reste `couvert-valide`, non rouvert par cette reserve
+(`DEC-0031`, amendement du 2026-08-16, section 6).
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue a un jeu de mathematiques, je veux que la bonne
+  reponse ne soit pas devinable a la seule longueur du texte affiche, afin d'etre oblige de convertir
+  ou de calculer plutot que de reconnaitre la proposition la plus courte.
+- **Competence programme visee** : deux volets distincts.
+  - Sur `bandit-manchot-conversions-unites-cm1` : mathematiques, CM1 (cycle 3), domaine "Grandeurs et
+    mesures", "Convertir des unites de longueur, masse, contenance dans le systeme metrique"
+    (`squad/programme/mathematiques/competences-cm1.md`) - ligne deja `couvert-valide`, non rouverte
+    par cette story.
+  - Sur le garde-fou de longueur et sur l'audit des dix autres paquets : transverse - pas de contenu
+    pedagogique.
+- **Criteres d'acceptation** :
+  - Etant donne un garde-fou generique de longueur, parallele au garde-fou de rang deja livre par
+    `lea-dev`, quand il est applique a un paquet quelconque du catalogue, alors "aucune propriete de
+    forme d'une proposition - sa longueur, sa largeur, son rang - ne fait gagner mieux que le hasard"
+    (repris au mot pres de l'arbitrage de `nadia-prof`, section 7, point 5).
+  - Etant donne le paquet corrige de `bandit-manchot-conversions-unites-cm1`, quand on rejoue au
+    moins 120 manches en pressant systematiquement la proposition la plus courte, alors le taux de
+    reussite ne reproduit plus 47,5 % et se rapproche du plafond que respectent deja les dix autres
+    paquets du catalogue (aucun ne depasse 25 %, chiffre de `nadia-prof`) - sans seuil chiffre fixe
+    ici a l'avance : c'est elle qui juge, en rejouant, si la correction suffit, meme discipline que
+    la condition d'aboutissement qu'elle a posee pour P-6 sur "Le perimetre".
+  - Etant donne cette correction, quand on relit les criteres deja coches de cette ligne, alors ils
+    restent tous vrais : cette story ne rouvre ni la ligne "Convertir des unites..." ni son Done
+    pedagogique sur un autre motif.
+  - Etant donne les onze paquets du catalogue - les dix jeux jouables et `cm1-grands-nombres` en
+    cours de verification (`DEC-0031`) -, quand on calcule pour chacun la proportion de manches
+    gagnees en pressant systematiquement la proposition la plus courte, alors un audit ecrit liste ce
+    taux paquet par paquet, pour que la reserve de "Les mesures" ne reste pas un cas isole non
+    recherche ailleurs dans le catalogue.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue le paquet corrige et confirme, en jouant, que la longueur du texte
+    n'est plus un raccourci exploitable, et que l'exactitude de conversion deja acquise n'est pas
+    degradee par la correction.
+- **Lien decision** : `DEC-0031-retrait-les-grands-nombres-du-catalogue-debordement-de-rendu.md`,
+  amendement du 2026-08-16, section 6 ; motif source :
+  `squad/conformite/ARBITRAGE-PREALABLE-s13-voie-de-rendu-des-propositions.md`, sections 6 et 7.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
+  requis sur le garde-fou generique, comme pour toute regle neuve). **Candidate au sprint 14** : le
+  sprint 13 ne la porte pas.
+
 ## Sprint 10 - La machine est redessinee sur les references de l'utilisatrice, le veto sur la manette est leve, l'ecran intermediaire reste a arbitrer
 
 **Contexte et decision de perimetre** : `DEC-0022` avait acte un manche dessine sur le fronton,

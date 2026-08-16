@@ -77,6 +77,31 @@ increment dans la file (voir `squad/programme/MATRICE-couverture.md` et
 Bien sous le seuil de gel (2-3) : rien n'empeche d'ouvrir de nouvelles stories de contenu au
 prochain planning.
 
+**Correction du 2026-08-16 (s13) - deux increments entrent dans cette file, restee sur 0 depuis s08.**
+
+`bandit-manchot-grands-nombres-cm1` a ete refuse deux fois par `nadia-prof`
+(`squad/conformite/FICHE-bandit-manchot-grands-nombres-cm1.md`, verdicts du 2026-08-15 et du
+2026-08-16) sans qu'un Done pedagogique n'ait jamais ete accorde sur ce jeu, et cette file etait
+restee sur le compte du sprint 8 pendant tout ce temps - meme defaut deja constate deux fois plus
+haut (corrections de s03 et de s08). Il **entre dans cette file** au titre du second refus, en
+attente de sa reprise. Sa reprise ne suit pas le chemin ordinaire (correction puis rejeu direct sur
+le catalogue joue) : le jeu est hors catalogue depuis `DEC-0031`, sa reverification passe par un
+chemin de verification dedie, jamais fusionne dans `round-two` tant que le verdict n'est pas rendu
+(`DEC-0031`, amendement du 2026-08-16, sections 1 et 2).
+
+`bandit-manchot-perimetre-cm1` a recu un Done pedagogique accorde le 2026-08-14, rouvert et refuse
+une seconde fois le 2026-08-16 (`squad/conformite/FICHE-bandit-manchot-perimetre-cm1.md`, verdict
+du 2026-08-16) : un item sur 22 percute sa bonne reponse contre la colonne voisine a 360 px, meme
+motif que le retrait de "Les grands nombres". Il **entre dans cette file** au titre de ce second
+refus. A la difference du jeu ci-dessus, il reste au catalogue jouable pendant cette attente
+(`DEC-0031`, amendement du 2026-08-16, section 5) : le correctif qui ferme ce motif (voie 4) est
+deja fusionne dans `round-two`, mais seul un nouveau verdict joue par `nadia-prof` peut faire sortir
+ce jeu de cette file, pas la seule fusion du code.
+
+**Compte actuel : 2 increments en attente.** Sous le seuil de gel (2-3) : la regle de gel ne
+s'applique pas encore, mais un troisieme increment en attente la declencherait pour le prochain
+planning.
+
 ## Historique
 
 | Increment | Fiche | Verdict final trace ici | Entre le | Sorti le |

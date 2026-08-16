@@ -171,3 +171,155 @@ recommencer sur les sept autres items deja debordants ailleurs dans le catalogue
 `DEC-0025` et `DEC-0026` assumaient une degradation de confort de lecture ou d'ergonomie ; ici,
 l'enfant lit un nombre qui n'est pas celui ecrit dans le contenu - ce n'est pas un defaut de
 confort, c'est une erreur de fait montree a un enfant en train d'apprendre.
+
+## Amendement du 2026-08-16 (s13) - la voie de rendu est tranchee, un prealable circulaire est leve
+
+Depuis la decision d'origine : `nadia-prof` a rendu l'arbitrage prealable qu'attendait la section 4
+(`squad/conformite/ARBITRAGE-PREALABLE-s13-voie-de-rendu-des-propositions.md`), en jouant les quatre
+voies chiffrees par `theo-archi` - voie 4 retenue ("la colonne recule devant son contenu"), sous ses
+conditions VR-1 a VR-7. `lea-dev` l'a livree (branche `s13-lea-voie-4`), fusionnee dans `round-two`.
+Elle ecrit d'avance, dans ce meme arbitrage, que le motif de son second refus sur `cm1-grands-nombres`
+"tombe le jour ou cette story est livree, sans toucher au YAML".
+
+### 1. Le prealable qu'elle pose, et pourquoi il est fonde
+
+`nadia-prof` refuse de considerer sa propre phrase ci-dessus comme suffisante pour rouvrir le Done de
+`cm1-grands-nombres` :
+
+> `cm1-grands-nombres` est sorti du catalogue par `DEC-0031` : je n'ai pas pu le jouer. Ce que je
+> dis de son comportement sous la voie 4 est la mesure de `theo-archi`, pas la mienne. Sa remise au
+> catalogue est un prealable a ma reverification, pas une consequence de mon accord.
+
+C'est le meme principe que tout son mode d'audit sur ce depot : elle ne juge jamais un increment
+qu'elle n'a pas joue elle-meme, page de catalogue comprise. Le retrait de la section 2 de cette
+decision a produit, sans que je l'aie anticipe a l'ecriture, un blocage circulaire : le jeu ne
+revient au catalogue que verifie, et il ne peut etre verifie que revenu au catalogue. Je le leve ici.
+
+### 2. Ma decision : le jeu revient, mais seulement dans un chemin qu'aucun enfant ne peut atteindre
+
+Je ne renvoie pas `id: bandit-manchot-grands-nombres-cm1` dans le
+`catalogue.yaml` de `round-two`. Le chemin que je retiens est celui que `nadia-prof` emploie deja
+pour tout arbitrage prealable de ce depot, et que ce document lui-meme atteste (`ARBITRAGE-PREALABLE-
+s13-voie-de-rendu-des-propositions.md`, section 1) : un worktree dedie, hors de l'arbre de
+`round-two`, ou l'entree est reinstallee sur une branche qui n'est jamais fusionnee tant que son
+verdict n'est pas rendu. `nadia-prof` y reconstruit le jar depuis ce worktree et joue le jeu par
+l'ecran de catalogue reel, exactement comme elle joue tout autre increment - ce n'est donc pas une
+mesure degradee de sa part, c'est son mode de verification habituel applique a un cas ou le chemin de
+production ne le permet plus.
+
+Ce que ce choix expose, dit franchement :
+
+- **Aucun enfant n'est expose.** Le `catalogue.yaml` livre et joue par un enfant reste celui de
+  `round-two`, ou l'entree demeure absente jusqu'a un verdict favorable. Ce n'est pas un compromis
+  entre le risque et la verification : c'est le point exact que `DEC-0031` visait a proteger (la
+  section "Ce que cette decision ne fait pas" nommait deja le mode de defaillance de `DEC-0009`, un
+  enfant continuant de jouer un contenu retire sur le papier) et je ne le rouvre pas pour resoudre ce
+  prealable.
+- **Ce que ca coute reellement** : ce chemin s'ecarte du mecanisme employe par `DEC-0009`, `DEC-0014`,
+  `DEC-0018` et `DEC-0024`, ou le jeu corrige rentrait directement dans le catalogue joue en
+  production des sa correction livree. Ce mecanisme-la ne peut pas etre reemploye ici sans recreer
+  exactement le prealable que `nadia-prof` refuse : le remettre en production avant son verdict
+  reviendrait a lui demander d'accorder ou de refuser un Done sur un increment qu'un enfant joue deja,
+  ce que sa porte n'a jamais fait sur aucun jeu de ce catalogue. Le cout est une action technique de
+  plus (une branche jetable a ouvrir, dont la duree de vie doit rester courte pour ne pas devenir une
+  seconde memoire non tenue a jour) : je la route a `sofia-sm`, dans le meme geste que cet amendement,
+  pas comme une intention a planifier - meme discipline que la section 2 de la decision d'origine.
+- **Si le verdict est VALIDE** : la meme entree rejoint alors `catalogue.yaml` sur `round-two`, par le
+  mecanisme ordinaire de `DEC-0009`/`DEC-0014`/`DEC-0018`/`DEC-0024` (fusion directe, execution
+  immediate), et la branche de verification est abandonnee sans etre fusionnee - elle n'a jamais servi
+  qu'a permettre le jeu, pas a porter le code final.
+
+### 3. Si `nadia-prof` refuse une seconde fois, sur le rendu corrige
+
+Ma decision d'origine ne le prevoyait pas et je l'ecris maintenant, pour ne pas le decouvrir a
+l'usage. Un jeu qui sort, revient en verification et ressort n'est pas la meme chose qu'un jeu retire
+une fois :
+
+- La branche de verification n'est, dans ce cas, **jamais fusionnee** : `round-two` ne porte a aucun
+  moment le jeu refuse une seconde fois, et le retrait de `DEC-0031` reste entierement en vigueur,
+  sans avoir jamais ete interrompu.
+- Je n'ecris pas un `DEC` neuf pour ce second refus : je complete cet amendement par une note datee
+  supplementaire, sur le meme modele que celui-ci, pour que l'historique montre qu'il s'agit d'un
+  second passage et non d'un premier retrait relu. Si un troisieme passage devait un jour se produire
+  sur ce meme jeu, je le compterais explicitement comme tel, avec le numero du sprint de chaque
+  passage - la lecon de `DEC-0007` sur les reports qui s'accumulent sans qu'on les compte s'applique
+  ici a un cycle de retour, pas seulement a un report de perimetre.
+- Un second refus sur un motif de rendu, apres que la voie 4 a ete arbitree precisement pour fermer ce
+  motif, changerait la nature du probleme : ce ne serait plus une correction a finir, ce serait un
+  signe que la voie 4 ne tient pas la promesse sur laquelle `nadia-prof` a fonde tout son arbitrage.
+  Je le remonterais alors a `sofia-sm`, qui route a `theo-archi`, plutot que de traiter la story comme
+  une simple reprise de plus.
+
+### 4. Ce retour n'est pas le Done
+
+La ligne de `squad/programme/MATRICE-couverture.md` ("Lire, ecrire, decomposer et comparer les
+nombres entiers jusqu'au million") reste `en cours`, exactement comme la decision d'origine l'a
+ecrit, et ne bouge pas du fait de cet amendement : ni la reouverture d'un chemin de verification, ni
+la fusion de la voie 4 dans `round-two`, ni la phrase ecrite d'avance par `nadia-prof` dans son
+arbitrage ne valent Done pedagogique. Seul un verdict qu'elle rend apres avoir joue l'increment,
+ecrit dans `squad/conformite/FICHE-bandit-manchot-grands-nombres-cm1.md`, peut faire bouger cette
+ligne - dans un sens comme dans l'autre.
+
+### 5. "Le perimetre" : refuse une seconde fois, sur le motif exact du retrait de "Les grands nombres" - je ne le retire pas
+
+`nadia-prof` a rouvert et refuse, le meme jour et dans le meme arbitrage
+(`squad/conformite/FICHE-bandit-manchot-perimetre-cm1.md`, verdict du 2026-08-16), le Done
+pedagogique qu'elle avait accorde le 2026-08-14 sur `bandit-manchot-perimetre-cm1` : sur l'item
+`Le perimetre d'une figure, c'est...`, la bonne reponse `la longueur de son contour` est percutee
+lettre sur lettre par le mot `nombre` de la colonne voisine, et `interieure` sort de l'ecran - le
+motif exact sur lequel "Les grands nombres" a ete retire, qu'elle nomme elle-meme comme identique
+("une erreur de fait dans un contenu scolaire est un motif de refus a elle seule, que la cause soit
+un YAML ou un rendu").
+
+Elle ecrit explicitement ne pas demander le retrait : *"le perimetre du retrait appartient a
+`camille-po`"*. Je ne retire pas ce jeu du catalogue, et je le distingue de "Les grands nombres" sur
+un point qui n'est pas pedagogique mais d'etat du code : le correctif qui ferme ce motif (la voie 4)
+est deja fusionne dans `round-two`, la ou "Les grands nombres" attendait encore ce correctif au
+moment de son propre retrait. Retirer "Le perimetre" aujourd'hui pour l'y remettre des qu'un nouveau
+verdict serait rendu n'aurait pas de sens operationnel et coute a l'enfant de CM1 un jeu de moins pour
+une fenetre que le code a deja refermee, sur la propre mesure de `nadia-prof` en jouant l'etat de la
+voie 4 (*"les trois propositions deviennent integralement lisibles"*, meme fiche).
+
+Ce que je n'efface pas pour autant : **le Done pedagogique de cette ligne est refuse aujourd'hui**, et
+tant qu'aucun nouveau verdict n'est rendu sur le code reellement fusionne dans `round-two`, un enfant
+joue un jeu dont le Done est rouvert, sur la base que le correctif deja livre referme le motif -
+constat de code, pas jugement pedagogique que je m'autorise a la place de `nadia-prof`. Je l'ecris
+au lieu de le laisser dans l'ombre d'une ligne restee `couvert-valide` par defaut : la ligne
+mathematiques CM1 "Calculer un perimetre de figures usuelles" repasse de `couvert-valide` a
+`en cours` dans la matrice (detail en section Impact), et `bandit-manchot-perimetre-cm1` entre dans
+`squad/validation/FILE-ATTENTE.md` comme increment dont le Done technique est atteint mais dont le
+Done pedagogique attend un nouveau verdict.
+
+### 6. La reserve sur "Les mesures" - un troisieme garde-fou de rang et un audit, au backlog du sprint 14
+
+`nadia-prof` corrige, dans le meme arbitrage, son propre constat du 2026-08-14 sur
+`bandit-manchot-conversions-unites-cm1` ("Les mesures") : presser systematiquement la proposition la
+plus courte gagne 47,5 % des manches jouees (contre 33,3 % au hasard), parce que la bonne reponse est
+la plus courte des trois chaines sur 13 items sur 24 - un raccourci qu'elle avait lu comme une
+statistique acquise plutot que jouee comme une strategie. Ce n'est pas un motif de refus : le Done
+pedagogique de cette ligne reste `couvert-valide`, non rouvert par cette reserve. Ce n'est pas non
+plus une action de ce sprint : la story de correction, avec le garde-fou de rang qu'elle nomme
+elle-meme (section 7, point 5 de son arbitrage : *"aucune propriete de forme d'une proposition - sa
+longueur, sa largeur, son rang - ne fait gagner mieux que le hasard"*) et l'audit des onze paquets du
+catalogue qu'elle en deduit, sont ecrits au backlog (`docs/backlog/backlog.md`, section "Backlog -
+sprints suivants") comme candidats au sprint 14. Le sprint 13 ne les porte pas.
+
+## Impact (complement du 2026-08-16)
+
+- `adapters/adapter-content/src/main/resources/catalogue.yaml` de `round-two` : aucune entree neuve
+  par cet amendement. Une entree `id: bandit-manchot-grands-nombres-cm1` est ouverte uniquement sur
+  une branche de verification dediee et non fusionnee, routee a `sofia-sm` dans le meme geste que cet
+  amendement (section 2).
+- `squad/programme/MATRICE-couverture.md` : la ligne "Lire, ecrire, decomposer et comparer les
+  nombres entiers jusqu'au million" reste `en cours`, inchangee par cet amendement (section 4). La
+  ligne "Calculer un perimetre de figures usuelles (carre, rectangle)" repasse de `couvert-valide` a
+  `en cours` (section 5).
+- `squad/validation/FILE-ATTENTE.md` : `bandit-manchot-perimetre-cm1` et `bandit-manchot-grands-
+  nombres-cm1` y entrent tous les deux, cette file etant restee au compte du sprint 8 malgre leurs
+  refus (section 5, et section 1 pour le second).
+- `docs/backlog/backlog.md` : une story neuve, candidate au sprint 14, sur le garde-fou de longueur et
+  l'audit des onze paquets (section 6).
+- `squad/decisions/produit/DEC-index.md` : statut de `DEC-0031` complete par la mention de cet
+  amendement.
+- Aucune fiche de conformite n'est modifiee par cet amendement : les verdicts cites restent tels que
+  `nadia-prof` les a ecrits.
