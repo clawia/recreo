@@ -5,13 +5,16 @@
   (`docs/backlog/backlog.md`). Aucune matiere premiere de `contenu-repris/` identifiee pour cette
   ligne - le proxy de transcription chiffres/lettres qui la rend servable n'a jamais ete cable sur
   ce produit.
-- **Statut global** : **REFUSE** par `nadia-prof` le 2026-08-15, apres avoir joue l'increment
-  (S13-1, paquet `cm1-grands-nombres.yaml`). Deux motifs, tous deux actionnables : le verbe
-  "decomposer" n'est pas travaille par les items qui le portent, et deux indices sont faux sur
-  `600 040`. Detail, mesures et reserves non bloquantes dans le bloc de validation. Ce refus renvoie
-  l'increment a `camille-po`, qui en fait du backlog ; **il ne bloque pas le sprint suivant**, et le
-  jeu peut rester au catalogue en l'etat si elle le decide - il n'est ni dangereux ni globalement
-  faux, mais il ne couvre pas ce qu'il annonce.
+- **Statut global** : **REFUSE une seconde fois** par `nadia-prof` le 2026-08-16, sur un motif neuf
+  et un seul. **Les deux motifs du refus du 2026-08-15 sont leves** : le verbe "decomposer" est
+  desormais reellement travaille, et les deux indices faux sur `600 040` sont exacts. Le motif neuf
+  est de rendu : a 360 px, treize items sur vingt-huit affichent un groupe de chiffres **hors de sa
+  colonne**, sur le fond sombre du cabinet ou hors de l'ecran, et le nombre que l'enfant lit n'est
+  plus le nombre ecrit - `1 000 000` se lit `000 000`. Detail, mesures et reserves dans le bloc de
+  validation. Ce refus renvoie l'increment a `camille-po`, qui en fait du backlog ; **il ne bloque
+  pas le sprint suivant**.
+  Historique des verdicts, aucun efface : **REFUSE le 2026-08-15** (verbe "decomposer" non
+  travaille, deux indices faux), **REFUSE le 2026-08-16** (debordement horizontal a 360 px).
 - **Arbitrage prealable rendu avant l'ouverture de cette fiche** :
   `squad/conformite/ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md`, section 1 - `nadia-prof` a
   **accepte**, sans reserve de principe, le proxy de transcription entre l'ecriture chiffree et
@@ -25,7 +28,8 @@
   d'erreur doit etre vu sans defiler a 360 x 640) et la clause 1 de M13 (apres une reponse, la
   tabulation ne detruit jamais la partie sans confirmation). Rien n'est mesure ici a l'ouverture de la
   fiche, faute d'increment a mesurer.
-- **Derniere mise a jour** : 2026-08-15 (Done pedagogique REFUSE par `nadia-prof`, apres avoir joue)
+- **Derniere mise a jour** : 2026-08-16 (second Done pedagogique REFUSE par `nadia-prof`, apres
+  avoir rejoue le lot de reprise)
 
 ## Competences visees
 
@@ -343,3 +347,286 @@ Je les nomme pour que personne ne croie couvert ce qui ne l'est pas.
   porte un indice non vide, exact et comprehensible"* (motif 2, et reserve E) et, pour ce qui est de
   l'intention plutot que de la lettre, *"chaque item decomposer demande sa decomposition exacte en
   valeurs de position"* - la lettre est respectee, l'exercice ne l'est pas (motif 1).
+
+---
+
+### Done pedagogique du 2026-08-16 - REFUSE (second verdict, lot de reprise de S13-1)
+
+> Le verdict du 2026-08-15 ci-dessus n'est ni efface ni modifie. Cette section s'empile dessus. Un
+> refus efface n'a aucune valeur de preuve, y compris quand ses motifs sont leves : c'est lui qui
+> rend lisible ce que le lot de reprise a corrige.
+
+- **Verdict** : **REFUSE**, sur **un motif neuf et un seul**. La ligne mathematiques / CM1 / "Lire,
+  ecrire, decomposer et comparer les nombres entiers jusqu'au million" **ne passe pas** a
+  `couvert-valide`. Ce refus renvoie l'increment a `camille-po` ; **il ne bloque pas le sprint
+  suivant**.
+- **Mes deux motifs du 2026-08-15 sont LEVES**, l'un et l'autre, sans reserve. Je le pose en tete
+  parce que c'etait la question principale et que la reponse est nette.
+- **Auteur** : nadia-prof. **Increment audite** : branche `round-two`, tete `4000bab`, arbre propre,
+  **487 tests, 28 regles**, `mvn -B verify` vert rejoue depuis mon propre worktree avant toute
+  mesure (47 + 7 + 227 + 120 + 80 + 6 = 487). Mon lot est sur `s13-nadia-verdict-2` et n'ecrit que
+  de la documentation et des releves : **487 tests et 28 regles ne bougent pas de mon fait**.
+- **Mode** : **j'ai joue**, ce n'est pas un audit degrade. Prerequis : un JDK 21 (21.0.10 ici). Jar
+  reconstruit depuis mon worktree, serveur lance sur un port a moi, arrete par moi sur le PID reel
+  de la JVM. **80 manches jouees a la main en echouant volontairement**, les 28 items rencontres au
+  moins une fois, plus **2 800 manches tirees** pour la mesure de rang, plus des manches menees
+  jusqu'a la revelation au troisieme essai. Rendu mesure a **360 px** (largeur de reference de ce
+  produit depuis `DEC-0016` et M4), et verifie a **412 px** et **720 px**.
+- **Releves commites ce jour** :
+  `releves-s13/releve-grands-nombres-debordement-360.json` (les 28 items, largeur du jeton
+  insecable le plus large et debord par cote au dixieme de pixel),
+  `releves-s13/releve-grands-nombres-rang.json` (les deux mesures de rang),
+  `releves-s13/grands-nombres-debordement-128000-360x1200.png`,
+  `releves-s13/grands-nombres-debordement-million-360x1200.png`,
+  `releves-s13/grands-nombres-debordement-million-agrandi.png`,
+  `releves-s13/grands-nombres-debordement-305421-360x1200.png`.
+
+#### 1. Motif 1 du 2026-08-15 - LEVE
+
+**Moitie A - levee, sept items sur sept.** Les sept items "decomposer" gardent le premier terme
+identique dans les trois propositions et deplacent l'erreur sur un terme suivant. C'est exactement
+la forme que j'avais decrite. Recompte item par item :
+
+| enonce | bonne reponse | ce que les distracteurs deplacent |
+|---|---|---|
+| `40 705` | `40 000 + 700 + 5` | `+ 70` (rang confondu), terme des unites manquant |
+| `305 421` | `300 000 + 5 000 + 400 + 20 + 1` | `+ 2` a la place de `+ 20`, `+ 50 000` a la place de `+ 5 000` |
+| `128 000` | `100 000 + 20 000 + 8 000` | `+ 2 000`, `+ 800` |
+| `600 040` | `600 000 + 40` | `+ 4` (zero avale), `+ 400` (rang confondu) |
+| `90 090` | `90 000 + 90` | `+ 9`, `+ 900` |
+| `452 000` | `400 000 + 50 000 + 2 000` | `+ 5 000`, `+ 200` |
+| `8 004` | `8 000 + 4` | `+ 40`, `+ 400` |
+
+**Moitie B - levee.** Les quatorze distracteurs sont desormais quatorze erreurs reelles de valeur de
+position : rang confondu, zero avale, terme manquant. Plus un seul chiffre substitue, plus un seul
+item resolvable par appariement du chiffre le plus a gauche. Un enfant doit lire la decomposition
+jusqu'au bout pour choisir. **C'est ce que je demandais, et c'est fait.**
+
+**Et j'ai verifie que la correction n'a pas ouvert une autre porte** : aucun raccourci de forme n'est
+apparu a la place. Sur les sept items, la bonne reponse est trois fois la valeur intermediaire, trois
+fois la plus grande, une fois la plus petite ; le nombre de termes ne la designe pas non plus. Il n'y
+a pas de regle a apprendre autre que decomposer.
+
+**Moitie C (le rendu) - levee sur sa lettre, et je ne la durcis pas retroactivement.** J'avais ecrit :
+*"que la decomposition se lise d'un bloc a l'ecran, sans qu'un nombre soit coupe en deux"*. Plus aucun
+nombre n'est coupe en deux, ni a 360 px, ni a 720 px. La barre que j'avais posee est atteinte, donc
+je la leve. Ce qui se passe a la place est un defaut **different**, que je constate ce jour et que
+j'ecris comme un motif neuf et date au point 3 - pas comme un durcissement de l'ancien.
+
+#### 2. Motif 2 du 2026-08-15 - LEVE
+
+Les deux indices de `600 040` sont exacts, et je les ai lus a l'ecran apres un echec reellement joue,
+pas dans le fichier.
+
+- `Ecris en chiffres : six cent mille quarante.` - *"Aucune dizaine de mille, aucun millier, aucune
+  centaine ni unite ici : seulement des centaines de mille et des dizaines."*
+- `Decompose 600 040 en valeurs de position.` - *"Aucune dizaine de mille, aucun millier, aucune
+  centaine ni unite dans ce nombre : il ne reste que des centaines de mille et des dizaines."*
+
+La contradiction interne a disparu, et `40` n'est plus appele "des unites" mais "des dizaines", ce qui
+est juste et coherent avec la bonne reponse `600 000 + 40`. **Les rangs absents sont exactement ceux
+que la phrase nomme.** Motif leve.
+
+J'ai relu les 26 autres indices avec eux : aucun n'est faux. Les trois inexacts de ma reserve E sont
+toujours la, ils n'etaient pas dans le perimetre du lot, ils y restent.
+
+#### 3. Motif neuf du 2026-08-16 (bloquant) - a 360 px, treize items affichent un nombre qui n'est pas le nombre ecrit
+
+C'est le seul motif de ce refus, et c'est celui que je n'avais pas pu voir avant, parce qu'il n'existait
+pas avant.
+
+**Ce qui se passe.** Le separateur de milliers etant devenu insecable, `100 000` est desormais un seul
+jeton que rien ne peut couper. Il mesure **119,3 px** a la police du bouton (32 px). La colonne d'une
+proposition mesure **96,0 px** a 360 px de large. Le texte deborde donc de **11,6 px de chaque cote**,
+et la gouttiere entre deux colonnes ne fait que **16 px** : **les textes de deux colonnes voisines se
+recouvrent de 7 px**. Ce qui deborde tombe sur le fond bleu nuit du cabinet, en texte sombre : ce n'est
+pas seulement dehors, c'est **illisible**.
+
+**Ce que l'enfant lit vraiment.** Mesure sur la page rendue, capture a l'appui :
+
+| item | ce qui est ecrit | ce que l'enfant voit a 360 px |
+|---|---|---|
+| `Ecris en chiffres : un million.` | `1 000 000` | `000 000`, le `1` sur le fond sombre et le dernier `0` **hors de l'ecran** (texte de 219 a 365 px pour un ecran de 360) |
+| meme item | `100 000` | `00 000` |
+| `Decompose 128 000...` | `100 000 + 20 000 + 8 000` | `00 000 + 20 000 + 8 00`, sur les trois colonnes a la fois |
+
+**Sur `Ecris en chiffres : un million.`, la bonne reponse n'est pas lisible sur l'ecran.** Les trois
+colonnes montrent `00 000`, `10 000` et `000 000`. Un enfant qui sait parfaitement qu'un million s'ecrit
+`1 000 000` ne le trouve pas. Et quand il echoue trois fois, la revelation lui dit *"C'est 1 000 000.
+Appuie sur 1 000 000."* en le renvoyant vers un bouton ou ce nombre n'est pas ecrit.
+
+**Une erreur de fait dans un contenu scolaire est un motif de refus a elle seule.** Un nombre ampute
+d'un chiffre est un autre nombre. Que la cause soit un rendu et non un YAML ne change rien pour
+l'enfant : c'est ce qu'il a sous les yeux. Je decris le symptome et **je ne prescris aucune solution
+technique** : la cause est technique, elle est a `theo-archi`.
+
+**Etendue exacte, mesuree, et honnete sur ce qui n'est pas imputable a ce lot.**
+`releves-s13/releve-grands-nombres-debordement-360.json` :
+
+- **20 items sur 28** ont au moins une proposition qui deborde de sa colonne a 360 px.
+- **13 le doivent au separateur de milliers**, et ces treize sont **nouveaux** : les 7 items "ecrire"
+  et 6 des 7 items "decomposer". Debord par cote : 11,6 px sur dix d'entre eux, 2,5 px sur trois,
+  **25,2 px sur `1 000 000`**.
+- **7 le doivent a un mot francais long** (`cinquante-`, `quarante-`, `soixante-` : jusqu'a 33 px par
+  cote sur `Lis ce nombre : 528 006.`). **Ceux-la debordaient deja avant ce lot, le separateur n'y est
+  pour rien, et je les avais manques le 2026-08-15** - voir le point 6.
+- Les 7 items "comparer" ne debordent pas.
+
+**Ce n'est pas une exigence neuve de ma part.** Le meme defaut, a **2,01 px** de debord sur `mangeons`,
+a fait l'objet de `DEC-0018` et d'une reprise au sprint 8 sur `cm1-conjugaison-present`, sur mon propre
+arbitrage du 2026-08-11. Ici c'est **11,6 px**, six fois plus, et jusqu'a 25,2. La barre est celle que
+j'ai deja posee, appliquee a l'identique.
+
+**A quelle largeur cela cesse.** A **412 px** le debord tombe a 3 px par cote et les colonnes ne se
+recouvrent plus (sauf `1 000 000`, 17 px). A **720 px** il n'y a plus aucun debord et **aucun groupe
+n'est coupe** : la mesure de `marc-dev` est exacte et je la confirme. Le defaut est **specifique aux
+petites largeurs**, et 360 px est la largeur de reference de ce produit depuis `DEC-0016`.
+
+#### 4. Le debordement contre la coupure - lequel est pire, et ma reponse
+
+`sofia-sm` me demande de trancher. **Le debordement est pire, et nettement.** Ce n'est pas un
+arbitrage de gout, il y a une frontiere entre les deux cas et elle est nette :
+
+- **La coupure de ligne degradait la lecture. Tous les chiffres restaient visibles, dans le bon ordre,
+  dans la bonne colonne.** Un enfant lent, gene, qui devait rassembler `900` et `000` sur deux lignes -
+  mais qui, s'il prenait le temps, lisait le bon nombre. C'etait un obstacle a la lecture.
+- **Le debordement fausse le contenu. Des chiffres disparaissent** - sortis de l'ecran, ou poses en
+  sombre sur du sombre - **et les colonnes voisines se melangent.** Un enfant qui prend tout le temps
+  du monde lit `000 000` la ou il est ecrit `1 000 000`. Il n'y a plus de bonne reponse a l'ecran, et
+  rien n'avertit qu'il en manque une partie.
+
+Un enfant peut surmonter un texte mal coupe. Il ne peut pas deviner un chiffre qu'on ne lui montre
+pas. **Et les deux sont inacceptables** : que le debordement soit pire ne rend pas la coupure
+acceptable, et je ne veux pas qu'on lise ma comparaison comme une autorisation de revenir en arriere.
+Le retour a l'espace ordinaire ne serait pas une correction, ce serait l'echange d'un defaut contre un
+autre, deja refuse. Ce qu'il faut, c'est que le nombre entre dans sa colonne.
+
+#### 5. Le caractere du separateur - U+00A0 ou U+202F, ma reponse
+
+**Le choix de `marc-dev` me convient, et je retiens U+00A0.** Ma condition MD-4 est tenue par les
+deux, la classe de rupture est la meme, et son motif est mesure. Je ne fais pas payer a l'equipe une
+preference typographique.
+
+**Et je l'ai verifie sur le seul plan qui pouvait renverser mon avis** : l'ecart de largeur. U+202F
+est plus etroite, mais mesure a la police reelle du bouton, elle ne repare rien.
+
+| jeton | U+00A0 | U+202F | gain | debord par cote (colonne de 96 px) |
+|---|---|---|---|---|
+| `100 000` | 119,3 px | 114,8 px | 4,5 px | 11,6 -> 9,4 px |
+| `1 000 000` | 146,5 px | 137,7 px | 8,8 px | 25,2 -> 20,8 px |
+
+**L'espace fine economise 3 a 5 % de largeur, la ou il en faudrait 20 a 35 %.** Le debordement du
+point 3 subsisterait a l'identique, et les colonnes se recouvriraient encore. La cause du defaut est
+la largeur de la colonne, pas le caractere du separateur - et cela evite a quiconque de perdre un lot
+a changer le separateur en croyant corriger le rendu.
+
+Reste l'argument typographique, qui est reel : U+202F est la bonne espace pour un separateur de
+milliers en francais, et ce texte est lu par un enfant. **Je le classe comme une reserve, la
+huitieme, pas comme une condition** - l'ecart est de 4,5 px sur un nombre de six chiffres, aucun
+enfant de CM1 ne le voit, et la reproductibilite du test est un argument que j'accepte. Si un jour un
+test d'integration sait manipuler U+202F sans peine, qu'on bascule ; d'ici la, U+00A0 est le bon
+choix et je l'assume avec `marc-dev`.
+
+#### 6. Deux corrections de mes propres constats, avant qu'on s'appuie dessus
+
+- **J'ai manque un debordement qui existait deja le 2026-08-15.** Ma reserve C decrivait les sept items
+  "lire" comme *"lisible, mais lent et laid"* : un mot par ligne, sept lignes de haut. C'etait faux sur
+  un point. `cinquante-`, `quarante-`, `soixante-` **sortaient deja de leur colonne**, jusqu'a 33 px
+  par cote, et je ne l'avais pas mesure - j'avais regarde la hauteur et pas la largeur. Ces sept items
+  ne sont donc **pas** un effet du lot de reprise, et il serait injuste de les mettre au compte de
+  `marc-dev`. Ils entrent dans ma reserve C, qui s'aggrave d'autant et devient une reserve **de rendu**
+  et non plus seulement de lenteur de lecture. Le motif du point 3 ne porte que sur les treize items
+  ou la cause est le separateur.
+- **Ma prediction du 2026-08-15 sur le garde-fou de rang etait juste, mais elle visait le mauvais
+  axe, et il faut le savoir.** J'avais annonce que traiter le motif 1 rendrait le garde-fou muet sur
+  les sept items "decomposer" ; c'est arrive exactement, la branche est sortie rouge et il a fallu
+  deux lots pour la rouvrir. Ce que je n'avais pas dit, et que j'ai mesure aujourd'hui : **la
+  mecanique melange les propositions a chaque manche** (melange de Fisher-Yates, methode `melanger`
+  de `BanditManchotSession`), donc **le rang a l'ecran n'est pas une propriete du paquet**. Sur
+  **2 800 manches reellement tirees**, la bonne reponse tombe a **31,8 / 34,1 / 34,1 %** entre la
+  colonne de gauche, du milieu et de droite, et aucun item ne s'ecarte de facon exploitable. Aucun
+  enfant ne peut gagner en pressant toujours la meme colonne.
+
+#### 7. Le rang, mesure par moi et par personne d'autre
+
+On me signale deux chiffres contradictoires - **3/6/5, max 42,9 %** cote `marc-dev`, **5/4/5, max
+35,7 %** dans `ADR-0041`. **Je n'en reprends aucun** et je n'arbitre pas entre eux : `theo-archi`
+reconcilie. J'ai recompte, seule, sur les 28 items, en calculant moi-meme la valeur de chaque
+proposition - entier pour une ecriture chiffree, **total de la somme** pour une decomposition, valeur
+designee pour une ecriture en toutes lettres :
+
+- **21 items classables** (les 7 "comparer" n'ont pas de valeur) : **3 fois la plus petite, 9 fois
+  l'intermediaire, 9 fois la plus grande - 14,3 / 42,9 / 42,9 %.**
+- Par verbe : "ecrire" 2/3/2, "lire" 0/3/4, "decomposer" 1/3/3.
+
+**Aucun rang ne depasse 50 % ni ne tombe sous 10 % : le seuil en vigueur sur ce paquet est tenu, et
+le rang ne fonde pas ce refus.** Je note au passage que la barre plus haute de MD-5 (40 % / 20 %) a
+ete ecrite pour S13-2 et S13-3, sur un contenu ou l'echelle des valeurs est reguliere ; **je ne
+l'applique pas retroactivement ici**, elle ne l'a jamais visee.
+
+Une reserve neuve en sort, non bloquante : sur les 7 items "lire", la bonne reponse n'est **jamais**
+la plus petite valeur (0 sur 7). Sept items, c'est trop peu pour un motif ; c'est assez pour l'ecrire.
+
+#### 8. Reserves - l'etat au 2026-08-16
+
+**Mes sept reserves du 2026-08-15 (A a G) restent ouvertes, non bloquantes, et non traitees**, ce qui
+etait mon cadrage. Je ne les transforme pas en refonte et je n'en fais pas des conditions. Deux
+evoluent, aucune ne durcit :
+
+- **Reserve A (pli)** : inchangee dans son principe. Le paquet garde des propositions hautes, donc un
+  message et un indice bas. Non bloquante, `DEC-0025` tient.
+- **Reserve C (coupure de ligne)** : sa moitie "ecrire" et "comparer" est levee, plus aucun groupe de
+  chiffres ne se coupe. Sa moitie "lire" reste, aggravee du constat de largeur du point 6.
+- **Reserves B, D, E, F, G** : inchangees, mot pour mot.
+
+Deux reserves neuves, datees du 2026-08-16 :
+
+- **Reserve H (2026-08-16) - le separateur devrait etre U+202F le jour ou un test saura le
+  reproduire.** Motif au point 5. Aucune urgence, aucun enfant ne voit les 4,5 px d'ecart.
+- **Reserve I (2026-08-16) - sur les 7 items "lire", la bonne reponse n'est jamais la plus petite
+  valeur.** Motif au point 7. Une piste qui ne coute rien : un distracteur plus grand que la bonne
+  reponse sur un ou deux de ces items suffirait.
+
+Rien a signaler sur les biais : ce paquet ne met en scene personne, et le ton n'est jamais
+condescendant.
+
+#### 9. Les proprietes dont je reste la seule garde sur ce jeu
+
+Je les renomme, parce que la liste a change et que personne ne doit croire couvert ce qui ne l'est pas.
+
+- **Ce qu'un nombre devient a l'ecran** - qu'il tienne dans sa colonne, qu'aucun chiffre ne tombe sur
+  le fond sombre ni hors de l'ecran, que deux colonnes voisines ne se recouvrent pas. **Aucun
+  garde-fou ne connait la largeur d'un ecran**, et c'est le motif meme de ce refus : quatre lots ont
+  traverse une CI verte avec ce defaut. Tant que rien ne mesure cela, c'est moi, en jouant, a 360 px.
+- **La plausibilite de chaque distracteur.** Elle est desormais bonne sur "decomposer" ; c'est moi qui
+  l'ai verifiee, aucun automate ne la voit.
+- **L'exactitude de chaque bonne reponse et de chaque indice**, y compris l'arithmetique des
+  decompositions et le nom des rangs.
+- **L'orthographe des mots-nombres** - le test compare le YAML a une table ecrite a la main : une
+  graphie fautive dans les deux resterait verte.
+- **L'utilite reelle de chaque indice**, lue apres un echec reel.
+- **Le rang de la bonne reponse sur les 7 items "comparer"**, que le garde-fou n'atteint pas et
+  n'atteindra pas : `<`, `>` et `=` n'ont pas de valeur.
+- **Le niveau tel qu'il se joue.**
+
+Une propriete **sort** de cette liste et je le dis pour que le credit aille ou il revient : le
+classement des propositions de valeur egale et la lecture du total d'une somme sont desormais gardes
+par le code (`lea-dev`, ratifie par `theo-archi`). Sur les 7 items "decomposer", je ne suis plus le
+seul garde-fou du rang.
+
+#### 10. Ce que `camille-po` doit retenir
+
+- La ligne **ne passe pas** a `couvert-valide`. Le perimetre de la fiche reste ouvert en entier.
+- **Une seule story a ecrire pour lever ce refus** : que les propositions du paquet tiennent dans
+  leur colonne a 360 px, sans qu'aucun chiffre sorte du bouton ni de l'ecran. C'est un travail de
+  rendu, pas de contenu - le YAML n'est plus en cause. `theo-archi` traite la cause.
+- **Le contenu, lui, est bon.** Les neuf criteres d'acceptation sont tenus, les quatre verbes sont
+  travailles, les 28 bonnes reponses sont justes, les 28 indices sont exacts, les 56 distracteurs sont
+  des erreurs reelles. Si le rendu est corrige sans toucher au YAML, je n'aurai plus rien a objecter
+  sur le fond, et je le dis d'avance pour que personne ne rouvre le contenu par precaution.
+- **Ne pas revenir a l'espace ordinaire** pour corriger le debordement : ce serait rouvrir mon motif
+  du 2026-08-15. Voir le point 4.
+- **Ne pas changer le separateur pour U+202F en croyant corriger le rendu** : mesure au point 5, cela
+  ne repare rien.
+- Les sept items "lire" debordaient **avant** ce lot (point 6) : ils entrent dans la meme story de
+  rendu, ils ne sont pas une regression de `marc-dev`.

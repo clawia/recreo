@@ -1,0 +1,299 @@
+{
+ "releve": "grands-nombres-cm1 - debordement horizontal des propositions hors de leur colonne, viewport 360 px",
+ "date": "2026-08-16",
+ "auteur": "nadia-prof",
+ "jeu": "bandit-manchot-grands-nombres-cm1",
+ "paquet": "cm1-grands-nombres",
+ "increment": "branche round-two, tete 4000bab, 487 tests, 28 regles",
+ "methode": "jar reconstruit depuis le worktree s13-nadia-verdict-2, serveur lance sur un port dedie, page de jeu reelle rendue dans une iframe de 360 px de large (meme conteneur que outils/mesurer-rendu.sh), geometrie lue au dixieme de pixel sur le document rendu ; largeur de chaque jeton insecable mesuree avec la police calculee du bouton (32 px), les coupures possibles etant l'espace ordinaire et l'apres-trait-d'union",
+ "largeur_de_la_colonne_px": 96,
+ "gouttiere_entre_colonnes_px": 16,
+ "police_du_bouton": "32px",
+ "items_dont_une_proposition_deborde": 20,
+ "items_total": 28,
+ "dont_cause_separateur_de_milliers": 13,
+ "dont_cause_mot_francais_long": 7,
+ "note_sur_les_deux_causes": "les items dont la cause est un mot francais long debordaient deja avant ce lot : le separateur n'y est pour rien et je les avais manques au 2026-08-15. Les items dont la cause est le separateur de milliers sont nouveaux : l'espace insecable a rendu insecable un groupe de chiffres qui se coupait avant.",
+ "items": [
+  {
+   "enonce": "Lis ce nombre : 528 006.",
+   "proposition_la_plus_large": "cinquante-deux mille huit cent six",
+   "jeton_insecable_le_plus_large": "cinquante-",
+   "largeur_du_jeton_px": 162.1,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 33.0,
+   "debord_par_cote_px_si_U202F": 33.0,
+   "cause_du_debord": "mot francais long"
+  },
+  {
+   "enonce": "Lis ce nombre : 213 500.",
+   "proposition_la_plus_large": "deux cent treize mille cinquante",
+   "jeton_insecable_le_plus_large": "cinquante",
+   "largeur_du_jeton_px": 149.2,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 26.6,
+   "debord_par_cote_px_si_U202F": 26.6,
+   "cause_du_debord": "mot francais long"
+  },
+  {
+   "enonce": "Lis ce nombre : 47 300.",
+   "proposition_la_plus_large": "quarante-sept mille trois cents",
+   "jeton_insecable_le_plus_large": "quarante-",
+   "largeur_du_jeton_px": 148.3,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 26.2,
+   "debord_par_cote_px_si_U202F": 26.2,
+   "cause_du_debord": "mot francais long"
+  },
+  {
+   "enonce": "Écris en chiffres : un million.",
+   "proposition_la_plus_large": "1 000 000",
+   "jeton_insecable_le_plus_large": "1 000 000",
+   "largeur_du_jeton_px": 146.5,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 25.2,
+   "debord_par_cote_px_si_U202F": 20.8,
+   "cause_du_debord": "separateur de milliers"
+  },
+  {
+   "enonce": "Lis ce nombre : 70 018.",
+   "proposition_la_plus_large": "soixante-dix mille dix-huit",
+   "jeton_insecable_le_plus_large": "soixante-",
+   "largeur_du_jeton_px": 139.6,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 21.8,
+   "debord_par_cote_px_si_U202F": 21.8,
+   "cause_du_debord": "mot francais long"
+  },
+  {
+   "enonce": "Écris en chiffres : quarante mille sept cent cinq.",
+   "proposition_la_plus_large": "407 050",
+   "jeton_insecable_le_plus_large": "407 050",
+   "largeur_du_jeton_px": 119.3,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 11.6,
+   "debord_par_cote_px_si_U202F": 9.4,
+   "cause_du_debord": "separateur de milliers"
+  },
+  {
+   "enonce": "Écris en chiffres : trois cent cinq mille quatre cent vingt-et-un.",
+   "proposition_la_plus_large": "305 421",
+   "jeton_insecable_le_plus_large": "305 421",
+   "largeur_du_jeton_px": 119.3,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 11.6,
+   "debord_par_cote_px_si_U202F": 9.4,
+   "cause_du_debord": "separateur de milliers"
+  },
+  {
+   "enonce": "Écris en chiffres : cent vingt-huit mille.",
+   "proposition_la_plus_large": "128 000",
+   "jeton_insecable_le_plus_large": "128 000",
+   "largeur_du_jeton_px": 119.3,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 11.6,
+   "debord_par_cote_px_si_U202F": 9.4,
+   "cause_du_debord": "separateur de milliers"
+  },
+  {
+   "enonce": "Écris en chiffres : six cent mille quarante.",
+   "proposition_la_plus_large": "600 040",
+   "jeton_insecable_le_plus_large": "600 040",
+   "largeur_du_jeton_px": 119.3,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 11.6,
+   "debord_par_cote_px_si_U202F": 9.4,
+   "cause_du_debord": "separateur de milliers"
+  },
+  {
+   "enonce": "Écris en chiffres : quatre cent cinquante-deux mille.",
+   "proposition_la_plus_large": "452 000",
+   "jeton_insecable_le_plus_large": "452 000",
+   "largeur_du_jeton_px": 119.3,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 11.6,
+   "debord_par_cote_px_si_U202F": 9.4,
+   "cause_du_debord": "separateur de milliers"
+  },
+  {
+   "enonce": "Décompose 305 421 en valeurs de position.",
+   "proposition_la_plus_large": "300 000 + 5 000 + 400 + 20 + 1",
+   "jeton_insecable_le_plus_large": "300 000",
+   "largeur_du_jeton_px": 119.3,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 11.6,
+   "debord_par_cote_px_si_U202F": 9.4,
+   "cause_du_debord": "separateur de milliers"
+  },
+  {
+   "enonce": "Décompose 128 000 en valeurs de position.",
+   "proposition_la_plus_large": "100 000 + 20 000 + 8 000",
+   "jeton_insecable_le_plus_large": "100 000",
+   "largeur_du_jeton_px": 119.3,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 11.6,
+   "debord_par_cote_px_si_U202F": 9.4,
+   "cause_du_debord": "separateur de milliers"
+  },
+  {
+   "enonce": "Décompose 600 040 en valeurs de position.",
+   "proposition_la_plus_large": "600 000 + 40",
+   "jeton_insecable_le_plus_large": "600 000",
+   "largeur_du_jeton_px": 119.3,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 11.6,
+   "debord_par_cote_px_si_U202F": 9.4,
+   "cause_du_debord": "separateur de milliers"
+  },
+  {
+   "enonce": "Décompose 452 000 en valeurs de position.",
+   "proposition_la_plus_large": "400 000 + 50 000 + 2 000",
+   "jeton_insecable_le_plus_large": "400 000",
+   "largeur_du_jeton_px": 119.3,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 11.6,
+   "debord_par_cote_px_si_U202F": 9.4,
+   "cause_du_debord": "separateur de milliers"
+  },
+  {
+   "enonce": "Lis ce nombre : 816 203.",
+   "proposition_la_plus_large": "quatre-vingt-seize mille deux cent trois",
+   "jeton_insecable_le_plus_large": "quatre-",
+   "largeur_du_jeton_px": 111.7,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 7.9,
+   "debord_par_cote_px_si_U202F": 7.9,
+   "cause_du_debord": "mot francais long"
+  },
+  {
+   "enonce": "Lis ce nombre : 1 000 000.",
+   "proposition_la_plus_large": "un million",
+   "jeton_insecable_le_plus_large": "million",
+   "largeur_du_jeton_px": 104.6,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 4.3,
+   "debord_par_cote_px_si_U202F": 4.3,
+   "cause_du_debord": "mot francais long"
+  },
+  {
+   "enonce": "Lis ce nombre : 32 010.",
+   "proposition_la_plus_large": "trente-deux mille dix",
+   "jeton_insecable_le_plus_large": "trente-",
+   "largeur_du_jeton_px": 104.3,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 4.1,
+   "debord_par_cote_px_si_U202F": 4.1,
+   "cause_du_debord": "mot francais long"
+  },
+  {
+   "enonce": "Écris en chiffres : quatre-vingt-dix mille quatre-vingt-dix.",
+   "proposition_la_plus_large": "90 090",
+   "jeton_insecable_le_plus_large": "90 090",
+   "largeur_du_jeton_px": 100.9,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 2.5,
+   "debord_par_cote_px_si_U202F": 0.2,
+   "cause_du_debord": "separateur de milliers"
+  },
+  {
+   "enonce": "Décompose 40 705 en valeurs de position.",
+   "proposition_la_plus_large": "40 000 + 700 + 5",
+   "jeton_insecable_le_plus_large": "40 000",
+   "largeur_du_jeton_px": 100.9,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 2.5,
+   "debord_par_cote_px_si_U202F": 0.2,
+   "cause_du_debord": "separateur de milliers"
+  },
+  {
+   "enonce": "Décompose 90 090 en valeurs de position.",
+   "proposition_la_plus_large": "90 000 + 90",
+   "jeton_insecable_le_plus_large": "90 000",
+   "largeur_du_jeton_px": 100.9,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": 2.5,
+   "debord_par_cote_px_si_U202F": 0.2,
+   "cause_du_debord": "separateur de milliers"
+  },
+  {
+   "enonce": "Décompose 8 004 en valeurs de position.",
+   "proposition_la_plus_large": "8 000 + 4",
+   "jeton_insecable_le_plus_large": "8 000",
+   "largeur_du_jeton_px": 82.5,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": -6.8,
+   "debord_par_cote_px_si_U202F": -9.0,
+   "cause_du_debord": null
+  },
+  {
+   "enonce": "Compare 305 421 et 350 421.",
+   "proposition_la_plus_large": "<",
+   "jeton_insecable_le_plus_large": "<",
+   "largeur_du_jeton_px": 22.6,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": -36.7,
+   "debord_par_cote_px_si_U202F": -36.7,
+   "cause_du_debord": null
+  },
+  {
+   "enonce": "Compare 999 999 et 1 000 000.",
+   "proposition_la_plus_large": "<",
+   "jeton_insecable_le_plus_large": "<",
+   "largeur_du_jeton_px": 22.6,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": -36.7,
+   "debord_par_cote_px_si_U202F": -36.7,
+   "cause_du_debord": null
+  },
+  {
+   "enonce": "Compare 600 400 et 600 040.",
+   "proposition_la_plus_large": ">",
+   "jeton_insecable_le_plus_large": ">",
+   "largeur_du_jeton_px": 22.6,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": -36.7,
+   "debord_par_cote_px_si_U202F": -36.7,
+   "cause_du_debord": null
+  },
+  {
+   "enonce": "Compare 816 203 et 816 023.",
+   "proposition_la_plus_large": ">",
+   "jeton_insecable_le_plus_large": ">",
+   "largeur_du_jeton_px": 22.6,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": -36.7,
+   "debord_par_cote_px_si_U202F": -36.7,
+   "cause_du_debord": null
+  },
+  {
+   "enonce": "Compare 452 000 et 425 000.",
+   "proposition_la_plus_large": ">",
+   "jeton_insecable_le_plus_large": ">",
+   "largeur_du_jeton_px": 22.6,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": -36.7,
+   "debord_par_cote_px_si_U202F": -36.7,
+   "cause_du_debord": null
+  },
+  {
+   "enonce": "Compare 70 018 et 78 000.",
+   "proposition_la_plus_large": "<",
+   "jeton_insecable_le_plus_large": "<",
+   "largeur_du_jeton_px": 22.6,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": -36.7,
+   "debord_par_cote_px_si_U202F": -36.7,
+   "cause_du_debord": null
+  },
+  {
+   "enonce": "Compare 213 500 et 213 050.",
+   "proposition_la_plus_large": ">",
+   "jeton_insecable_le_plus_large": ">",
+   "largeur_du_jeton_px": 22.6,
+   "largeur_de_la_colonne_px": 96,
+   "debord_par_cote_px": -36.7,
+   "debord_par_cote_px_si_U202F": -36.7,
+   "cause_du_debord": null
+  }
+ ]
+}
