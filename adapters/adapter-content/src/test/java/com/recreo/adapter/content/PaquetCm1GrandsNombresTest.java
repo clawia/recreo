@@ -1,6 +1,5 @@
 package com.recreo.adapter.content;
 
-import com.recreo.application.catalog.GameDefinition;
 import com.recreo.domain.content.ContentSource;
 import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
@@ -44,6 +43,14 @@ import static org.assertj.core.api.Assertions.assertThat;
  * {@link #sansSeparateur(String)}) pour que la decomposition ne soit plus coupee en plein milieu
  * d'un nombre a l'ecran, sans sortir du Latin-1 que PropositionsAccentueesJouablesIT (bootstrap)
  * exige de toute proposition du catalogue.</p>
+ *
+ * <p><b>DEC-0031</b> : "bandit-manchot-grands-nombres-cm1" n'a plus d'entree dans
+ * {@code catalogue.yaml} - second refus de nadia-prof, sur un defaut de rendu et non sur le
+ * contenu (les neuf criteres pedagogiques restent tenus). Meme traitement que "cp-le-bon-son"
+ * (DEC-0009) et "cm1-homophones" (DEC-0024) : le paquet reste couvert ici, charge directement par
+ * {@link YamlContentPackLoader#chargerPaquet}, sans passer par le catalogue. La methode qui
+ * verifiait la coherence entre l'entree de catalogue et ce paquet est retiree avec l'entree
+ * elle-meme, faute d'objet a verifier tant que DEC-0031 tient.</p>
  */
 class PaquetCm1GrandsNombresTest {
 
@@ -187,15 +194,6 @@ class PaquetCm1GrandsNombresTest {
         }
     }
 
-    @Test
-    void leJeuDuCatalogueChargeBienLePaquetCm1GrandsNombres() {
-        GameDefinition jeu = jeu("bandit-manchot-grands-nombres-cm1");
-
-        assertThat(tousLesItems(jeu.contenu()))
-                .as("l'entree de catalogue charge bien le paquet '%s'", PAQUET)
-                .isEqualTo(tousLesItems(paquet()));
-    }
-
     private static boolean estEcrire(Question item) {
         return item.enonce().startsWith(PREFIXE_ECRIRE);
     }
@@ -250,13 +248,6 @@ class PaquetCm1GrandsNombresTest {
             dejaVus.add(question.id());
         }
         return items;
-    }
-
-    private static GameDefinition jeu(String id) {
-        return new YamlContentPackLoader().games().stream()
-                .filter(candidat -> candidat.id().equals(id))
-                .findFirst()
-                .orElseThrow();
     }
 
     private static ContentSource paquet() {
