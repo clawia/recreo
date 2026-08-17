@@ -4,7 +4,9 @@
   portait ; la decision et ses garde-fous sont inchanges), amende le 2026-08-17 (s14 : ce que `S14-1`
   fait tomber, clause par clause, et la clause qui tombe n'est pas dans cet `ADR`), **amende une
   seconde fois le 2026-08-17 (s14, apres `S14-2` / `DEC-0033`) : le point 2 perd toute instance en
-  production, le point 1 garde la sienne et perd le garde-fou qui l'exigeait**
+  production, le point 1 garde la sienne et perd le garde-fou qui l'exigeait**, **puis une troisieme
+  fois le meme jour (s14, apres le refus pedagogique de `nadia-prof`) : le point 2 retrouve des sujets
+  et sa forme est generalisee, parce qu'une clause qui oscille avec un arbitrage etait mal formee**
 - **Date** : 2026-08-07
 - **Auteur** : theo-archi
 - **Sprint** : s06
@@ -199,6 +201,74 @@ porte ferait de l'ecran de fin de partie un cul-de-sac.
 > `squad/sprints/s14-points-d-entree-par-niveau/confirmation-archunit.md`, et cette clause est une
 > **condition de cloture de `S14-2`**, pas une regle due par un lot futur - la difference avec la dette
 > d'`ADR-0042` est la, et elle est tenue par la porte de cloture, pas par une promesse.
+
+> **Troisieme amendement du 2026-08-17 (s14, apres le refus pedagogique de `nadia-prof`) - celui-ci
+> n'est pas un constat : il change la forme de la clause 2, parce que la forme d'origine obligeait a
+> amender cet `ADR` a chaque fois que `nadia-prof` change d'avis. Elle l'a change deux fois en un jour ;
+> c'est la clause qui est en cause, pas elle.**
+>
+> **Le declencheur que j'ai ecrit ce matin s'est produit ce soir.** `nadia-prof` refuse le Done : sur
+> l'ecran de confirmation l'enfant a **quatre** boites pressables au lieu des deux que son arbitrage
+> autorise, sur l'ecran d'erreur **trois** au lieu d'une - les puces de niveau survivent la ou elles ne
+> doivent pas. Le mecanisme de masquage retrouve donc des sujets de production, et il en retrouve
+> **deux ecrans sur quatre**, ce que la clause 2 d'origine ne savait pas dire.
+>
+> **Ce que la forme d'origine presupposait sans l'ecrire, et qui est faux.** Elle nommait *un*
+> habillage (`.lien-accueil`), *un* marqueur (`ecran-de-jeu`), et son garde-fou en tirait que **tout**
+> gabarit insere dans la zone devait porter ce marqueur - vrai quand le masquage vise la famille
+> entiere des ecrans de jeu, **faux des qu'il en vise un sous-ensemble**. Ici les puces doivent
+> disparaitre sur la confirmation et sur l'erreur, et **rester** sur la manche (c'est tout l'objet de
+> `S14-1`) comme sur la fin de partie. Le marqueur `ecran-de-jeu`, porte par les quatre fragments, est
+> structurellement incapable de porter cette distinction : reutilise tel quel, il entrainerait la fin de
+> partie par erreur.
+>
+> **Clause 2, forme generalisee. Trois changements, et aucun ne touche la forme du selecteur.**
+>
+> 1. **Un masquage keye un marqueur d'etat quelconque, pas `ecran-de-jeu`.** La forme contractuelle
+>    `body:has(.<marqueur>) .<habillage> { display: none }` est **inchangee, caractere pour
+>    caractere** ; ce qui cesse d'etre fige est *quel* marqueur elle nomme. Un ecran declare autant de
+>    marqueurs que d'etats qu'il veut rendre lisibles a la feuille.
+> 2. **Un masquage peut viser un sous-ensemble d'ecrans.** Le garde-fou n'exige plus que **tout** ecran
+>    insere porte le marqueur d'un masquage : il exige que le marqueur soit **pose par au moins un**
+>    ecran insere, et que l'habillage masque soit **pose par au moins un element permanent**. La liste
+>    des ecrans concernes cesse d'etre une propriete du garde-fou pour devenir **une donnee du
+>    gabarit** - un attribut de classe, ajoute ou retire.
+> 3. **Le garde-fou n'exige plus qu'un masquage existe en production.** L'assertion
+>    `masquages(...).isNotEmpty()` est retiree. **C'est elle, et rien d'autre, qui a produit tout le
+>    desordre de ce sprint** : c'est elle qui a rendu le test rouge quand `S14-2` a retire le dernier
+>    masquage, c'est son retrait force qui a emporte la clause du marqueur, et c'est ce retrait qui a
+>    laisse la clause 1 orpheline. **Un garde-fou ne doit pas exiger que son mecanisme soit employe** -
+>    il doit exiger que le mecanisme, **quand il est employe**, le soit des deux cotes.
+>
+> **Ce que la clause 2 ne dit toujours pas, et qui reste hors de portee** : que l'element masque soit
+> reellement invisible. C'est une propriete du rendu, `nadia-prof` l'a nommee comme sienne en s06 et
+> elle vient de la mesurer par capture - c'est ainsi que ce refus est arrive, et c'est la division du
+> travail voulue. Le garde-fou lit un couple declaratif ; elle regarde l'ecran.
+>
+> **Pourquoi un amendement et non un `ADR` neuf.** Le mecanisme, son motif, ses trois alternatives
+> ecartees (`hx-swap-oob`, `th:if`, deplacer l'element dans la zone) et son garde-fou sont ceux de cet
+> `ADR` ; rien de neuf n'est decide sur le *comment*. Ce qui change est l'**etendue** d'une clause
+> existante, generalisee de "un habillage sur une famille d'ecrans" a "un habillage sur les ecrans que
+> le serveur nomme". Un `ADR` neuf dupliquerait tout le contexte pour n'ajouter qu'un quantificateur.
+>
+> **Ce qui reste a `.ecran-de-jeu`, et ce qui ne change pas de statut.** Le selecteur `body:has()`
+> revient, mais il revient sur un **marqueur neuf**, pas sur celui-la. `ecran-de-jeu` n'est toujours
+> nomme par **aucun** selecteur qui l'utilise pour styler quoi que ce soit : son seul consommateur reste
+> `LEcranDeJeuDeclareCommentIlEstArriveTest` (`ADR-0027`), et il ne lui reste dans la feuille qu'une
+> regle vide pour satisfaire `HabillageDesEcransTest`. **La raison qui en faisait une classe n'est donc
+> pas revenue, et ma recommandation de migration vers un attribut ne change pas de statut : elle reste
+> differee, candidat de story.** Elle en sort meme renforcee : ce sprint montre que deux marqueurs de
+> nature differente coexistent desormais - l'un que la feuille selectionne, donc une classe legitime,
+> l'autre purement declaratif, donc un attribut selon la doctrine qu'`ADR-0027` a ecrite pour lui-meme.
+> Les confondre en une seule classe est precisement ce qui a fait croire, en s14, que `ecran-de-jeu`
+> pouvait porter les deux proprietes.
+>
+> **Les regles executables de cet amendement sont des conditions de cloture du lot en vol**, pas des
+> regles dues par un lot futur : elles sont enumerees dans
+> `squad/sprints/s14-points-d-entree-par-niveau/confirmation-archunit.md`, section 7. **Et je borne
+> l'usage que je fais de ce levier pour la seconde fois** : si le lot ferme sans ces clauses, c'est cet
+> amendement-ci qui doit etre annule, pas la dette qui doit etre ouverte. Un `ADR` amende dont la regle
+> n'existe pas est ce que `ADR-0042` a coute a ce depot.
 
 Elle me laisse deux questions techniques, et c'est tout ce que cet ADR traite.
 
