@@ -1,0 +1,18 @@
+# Catalogue fautif, jamais servi (ADR-0013 obligation 3, ADR-0045).
+# Le paquet du perimetre est assigne par erreur au jeu des mesures : le couple
+# mecanique + paquet apparait deux fois. Aucun paquet n'est charge par ce garde-fou,
+# qui ne juge que les invariants internes du fichier.
+schema: 1
+jeux:
+  - id: bandit-manchot-perimetre-cm1
+    titre: "Le périmètre"
+    consigne: "Quel est le périmètre ?"
+    mecanique: bandit-manchot
+    paquet: cm1-perimetre
+    nombreDeManches: 10
+  - id: bandit-manchot-conversions-unites-cm1
+    titre: "Les mesures"
+    consigne: "Convertis dans la bonne unité !"
+    mecanique: bandit-manchot
+    paquet: cm1-perimetre
+    nombreDeManches: 10

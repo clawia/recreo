@@ -57,7 +57,11 @@ import static org.assertj.core.api.Assertions.assertThat;
  * 8.1) : un paquet volontairement hors catalogue (DEC-0009, DEC-0014, DEC-0031 : "le bon son", "le
  * bon verbe", "les grands nombres" ont chacun connu ce statut ; "cm1-homophones" aujourd'hui) reste
  * hors de sa portee, gardee par {@code ChaquePaquetPorteUnIndiceTest} et consorts qui derivent du
- * repertoire. Elle ne verifie pas non plus le nombre de manches declare
+ * repertoire. <b>Cette perte est tranchee par ADR-0045</b> : la part qui se derive - les invariants
+ * internes du catalogue - est recoltee par {@code AucuneEntreeDuCatalogueNEnDoubleUneAutreTest}, qui
+ * rougit sur un paquet reassigne au jeu d'un autre ; la justesse de l'association appartient a
+ * nadia-prof et a la fiche de conformite, et rien dans ce depot ne la garde. Elle ne verifie pas non
+ * plus le nombre de manches declare
  * ({@code YamlContentPackLoaderTest}, et pour "cp-complements-10",
  * {@code PaquetCpComplements10S9Test}).</p>
  */
@@ -67,10 +71,15 @@ class ChaqueEntreeDuCatalogueChargeBienSonPaquetTest {
      * "cp-additions-jusqu-a-10" (type 'additions-bornees') est combinatoire et ne rend jamais
      * {@code Optional.empty()} (voir {@code AdditionsBorneesContentSource.next}) : une boucle
      * "jusqu'a epuisement" comme celle des cinq methodes remplacees ne termine pas sur ce paquet.
-     * Le tirage est donc borne : au-dela du plus grand paquet enumere connu du depot
-     * (cm1-tables-multiplication, 99 items), la marge suffit a epuiser tout paquet enumere et a
-     * comparer deterministiquement, sur un echantillon fixe, un paquet combinatoire sans
-     * l'enumerer.
+     * Le tirage est donc borne : au-dela du plus grand paquet enumere du depot
+     * (cm1-tables-multiplication, 99 items ; methode : lignes commencant par deux espaces et un tiret
+     * sous la cle "items:", les douze paquets du repertoire de contenu de ce module comptes le
+     * 2026-08-17, les onze autres allant de 11 a 28 items ; le chemin de ce repertoire n'est pas ecrit
+     * ici, voir ADR-0045 non-preuve 5), la marge suffit a epuiser tout paquet enumere et a
+     * comparer deterministiquement, sur un echantillon fixe, un paquet combinatoire sans l'enumerer.
+     * Ce que cette borne est et n'est pas - une borne d'echantillon, ni un cliquet d'exemption ni un
+     * budget de production - est tranche en section 5.3 de
+     * squad/sprints/s14-points-d-entree-par-niveau/confirmation-archunit.md.
      */
     private static final int TIRAGES = 150;
 

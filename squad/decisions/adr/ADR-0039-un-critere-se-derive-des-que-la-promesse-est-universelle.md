@@ -97,6 +97,12 @@ critere contient un objet que le depot peut acquerir **sans decision qui rouvre 
 1. **Un garde-fou dont la promesse est universelle rend son critere total sur son complement.** Deux
    formes seulement : une **propriete calculee** de l'objet, ou une liste d'**autorisation**. Une
    liste de refus ne tient pas une promesse universelle et ne doit plus etre ecrite pour cela.
+
+   > **Amendement du 2026-08-17 (s14, `ADR-0045`) - cette clause ne dit pas de quelle source le calcul
+   > a le droit de tirer, et c'est un manque.** Une propriete calculee **a partir de l'artefact juge**
+   > ne juge pas cet artefact : il a toujours raison. Elle reste legitime, elle ne se credite que de la
+   > coherence interne de l'artefact, et la propriete perdue se nomme et se route a son autorite.
+   > Detail et mesures : non-preuve 9 ci-dessous, et `ADR-0045`.
 2. **Une liste d'autorisation porte ses deux clauses de plafond.** Chaque entree doit designer un
    objet reellement present - une autorisation qui ne garde plus rien est une place libre - et doit
    identifier son objet assez precisement pour qu'un autre ne s'y glisse pas. Pour un fichier :
@@ -253,6 +259,17 @@ franchement fausse au sprint suivant ; celles-ci sont a relire au meme titre.
    recensement 3 rougit si l'aveu recense disparait (mutation 1 mesuree). Ce que je ne peux pas
    ecarter : les trois se videraient sans rougir si le module de test entier disparaissait, ce que
    rien dans ce depot ne surveille.
+9. **Un critere derive de l'artefact qu'il juge ne juge pas cet artefact.** Non-preuve ajoutee le
+   2026-08-17 (s14, `ADR-0045`), et c'est un manque de la clause 1, pas une nuance : la clause 1
+   autorise *"une propriete calculee de l'objet"* sans dire de quelle source le calcul a le droit de
+   tirer. S'il tire de l'artefact juge, l'artefact a toujours raison. C'est ce qui est arrive au
+   garde-fou de catalogue de s14, dont le paquet attendu vient de `catalogue.yaml` : toute mauvaise
+   association ecrite dans le catalogue lui est invisible - **mesure : le catalogue mute pour que le
+   jeu des mesures serve les homophones, `verify` entier vert, 0 echec**. Ce qu'un critere derive peut
+   encore juger est la **coherence interne** de l'artefact, ce que le fichier peut se dire a lui-meme,
+   et `ADR-0045` la recolte pour le catalogue - 110 des 121 mutations d'une edition, contre 55 pour les
+   cinq methodes figees qui l'ont precede. Ce qu'il ne pourra jamais juger est la correspondance a une
+   intention qui vit ailleurs : celle-la se nomme et se route a son autorite, elle ne se garde pas.
 
 ## Consequences
 

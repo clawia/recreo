@@ -112,3 +112,129 @@ son `assertThatThrownBy` et son repertoire de jeu fautif non vide. Mesure :
 `LesGardeFousSontMisALEpreuveTest` **10 tests sur 10**, dont
 `aucunGardeFouDeBalayageNEchappeALaMiseALEpreuve` et `laDetteNePeutNiGrandirNiPourrir`, qui asserte
 `hasSize(PLAFOND_DE_DETTE)` - donc qu'aucune place ne s'est liberee.
+
+## 5. Second lot de s14 - la derivation du catalogue (`ADR-0045`)
+
+- **Arbre juge** : la branche `s14-theo-derivation`, worktree dedie, forkee de `round-two` a
+  **`c1abb47`** - donc **avec** les trois lots deja fusionnes du sprint - **et avec mon second lot**.
+  Lignee verifiee par `outils/verifier-lignee.sh`.
+- Les sections 1 a 4 ci-dessus jugent un autre arbre (`e30566b` plus mon premier lot) et ne sont pas
+  reecrites : cette section-ci porte la difference sur `c1abb47`.
+
+### 5.1 Le resultat de la commande
+
+`bash outils/mvn-jdk21.sh -B clean verify`, jamais un perimetre partiel :
+
+```
+recreo ............................................. SUCCESS
+recreo-domain ...................................... SUCCESS
+recreo-application ................................. SUCCESS
+recreo-adapter-web ................................. SUCCESS
+recreo-adapter-content ............................. SUCCESS
+recreo-bootstrap ................................... SUCCESS
+BUILD SUCCESS
+Total time:  02:43 min
+```
+
+**506 tests, 0 echec, 0 erreur, 0 ignore. 29 regles ArchUnit.**
+
+**Methode du comptage des tests, dans le meme paragraphe que le chiffre.** Somme de l'attribut `tests`
+de la balise racine `testsuite` des **81 rapports XML** produits par cette seule execution, sous
+`*/target/surefire-reports/` et `*/target/failsafe-reports/` des **cinq modules declares dans
+`modules`** du pom agregateur, lus **apres le `clean`** de cette commande. Jamais un balayage lance
+depuis la racine du depot, qui verrait les worktrees des autres agents. Repartition : `adapter-web`
+**238**, `adapter-content` **121**, `bootstrap` **88** (dont 6 en failsafe), `domain` **48**,
+`application` **11**. **Exclus explicitement** : les resumes `.txt` de Surefire, qui ne conservent
+qu'un seul moteur JUnit par classe et sous-comptent.
+
+**Methode du comptage des regles, deux methodes qui concordent.** Critere `ArchRule <nom> =`.
+
+1. tous les fichiers `.java` de l'arbre dont le chemin contient `src/test/java`, hors `target`, suivis
+   et non suivis : **31 brut**, dans 13 fichiers. Deux de ces trente-et-un vivent dans le **faux
+   depot** de contre-exemple de `LesGardeFousSontMisALEpreuveTest`, sous `src/test/resources`, dont le
+   chemin contient `src/test/java` sans etre un source de module. **31 - 2 = 29** ;
+2. balayage des seuls `src/test/java` des cinq modules declares au pom : **29** directement.
+
+**Ecart avec le chiffre de `sofia-sm` sur `c1abb47` (502 tests, 29 regles) : +4 tests, +0 regle**, et
+les quatre sont nommes - les quatre methodes de `AucuneEntreeDuCatalogueNEnDoubleUneAutreTest`. Son
+compte est donc confirme par difference sur le meme arbre.
+
+### 5.2 Morsure mesuree, sur le catalogue de production mute
+
+Detail et messages dans `ADR-0045`. Ce qui compte ici est le resultat des commandes, une mutation a la
+fois, arbre restaure et verifie propre par `git status --porcelain` apres chacune :
+
+| Mutation du catalogue servi | Commande | Mesure |
+|---|---|---|
+| l'entree des mesures designe `cm1-perimetre` | `-B -o -pl adapters/adapter-content -am test` | **1 seul echec** sur les 180 tests des trois modules construits, celui du garde-fou neuf. Les 21 autres classes de `adapter-content` sont vertes, dont `ChaqueEntreeDuCatalogueChargeBienSonPaquetTest` et `ChaqueJeuDuCatalogueOffrePlusDItemsQueDeManchesTest` |
+| l'entree des mesures designe `cm1-homophones` | `-B -o verify` | **BUILD SUCCESS**, 0 echec sur 506. C'est la non-preuve 1 d'`ADR-0045`, mesuree |
+| trois catalogues fautifs jamais servis | `-Dtest=AucuneEntreeDuCatalogueNEnDoubleUneAutreTest` | **4 tests, 0 echec** : deux morsures et un corrige |
+
+**Un point de methode a garder pour tout le monde, et il invalide une forme de commande que j'ai
+moi-meme employee dans l'avis de faisabilite : une mesure partielle porte `-am`.** Mesure du
+2026-08-17 sur cet arbre, sans aucune mutation :
+`-pl adapters/adapter-content test -Dtest=LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`
+rend **1 echec sur 15** (`cp-additions-jusqu-a-10`, strategie a rang constant a 63,1 %), et la meme
+commande avec `-am` rend **0 echec sur 15**. Sans `-am`, le module se lie au `recreo-domain`
+0.1.0-SNAPSHOT installe dans le depot local de l'utilisateur, pas a celui du reacteur. Ici un faux
+rouge, qui m'a coute un aller-retour ; la meme cause produira un faux vert.
+
+### 5.3 Les cliquets, et le plafond de 150 tirages
+
+**Aucun cliquet ne bouge** : aucun plafond, aucune dette, aucune exemption. Etat inchange par rapport
+a la section 5.2 du fichier de s13 - cinq cliquets d'exemption, jeu nul sur les cinq ; deux budgets de
+production sur le JavaScript maison. Verifie et pas suppose : le garde-fou neuf lit `src/main/`, entre
+donc dans le recensement de mise a l'epreuve, et n'entre pas dans `DETTE_DE_BALAYAGE` - il porte son
+`assertThatThrownBy` et trois catalogues fautifs. `LesGardeFousSontMisALEpreuveTest` : **10 sur 10**.
+
+**Un rouge que j'ai produit et qu'il faut lire.** Sur une execution intermediaire de
+`bash outils/mvn-jdk21.sh -B clean verify`, `aucunGardeFouDeBalayageNEchappeALaMiseALEpreuve` a echoue
+- *"Expecting empty but was: [\"ChaqueEntreeDuCatalogueChargeBienSonPaquetTest\"]"* - parce que la
+methode d'un chiffre que j'avais ajoutee dans une Javadoc contenait le chemin
+`src/main/resources/contenu/`, et que ce recensement reconnait un balayage de production au **litteral
+`src/main/` dans la source**. Un commentaire a fait entrer une classe dans une population, sans
+qu'aucune assertion ne bouge ; le litteral retire de la prose, la suite est verte. Ce n'est pas un
+incident de mon lot, c'est une mesure sur le perimetre du recensement, et elle est versee en non-preuve
+5 d'`ADR-0045` avec la seconde moitie du probleme : ce garde-fou-la ne peut structurellement pas
+recevoir le jeu fautif que le recensement exigerait de lui.
+
+**Le `TIRAGES = 150` de `ChaqueEntreeDuCatalogueChargeBienSonPaquetTest` : ni un cliquet d'exemption,
+ni un budget de production. C'est un troisieme genre, une borne de terminaison d'echantillon, et la
+distinction n'est pas une echappatoire.** Elle se lit sur le mode de defaillance, comme celle du
+2026-08-17 entre cliquet et budget :
+
+- un **cliquet d'exemption** plafonne une liste de choses exemptees : sa place libre laisse entrer en
+  silence l'exemption suivante, d'ou l'exigence "plafond = taille de la dette" ;
+- un **budget de production** plafonne un artefact livre (`PLAFOND_LIGNES = 100`, `PLAFOND_OCTETS =
+  4096` sur le JavaScript maison) : sa marge est ce qu'`ADR-0008` autorise a dessein ;
+- une **borne d'echantillon** ne plafonne rien qui existe : elle existe parce qu'un paquet
+  combinatoire ne rend jamais `Optional.empty()` (`AdditionsBorneesContentSource.next`, fait connu
+  depuis le contexte d'`ADR-0012`), donc une boucle "jusqu'a epuisement" n'y termine pas - `lea-dev` a
+  constate un `OutOfMemoryError` reel avant son commit final. Son mode de defaillance n'est pas une
+  exemption silencieuse mais une **comparaison partielle** : au-dela de la borne, les deux cotes sont
+  tronques ensemble et le test reste vert.
+
+**Ce que cette comparaison partielle couterait, mesure plutot qu'estime : rien sur la propriete
+gardee.** Les deux cotes compares sont `games()` et `chargerPaquet(paquetId)`, or `games()` resout son
+paquet en appelant `chargerPaquet` avec la meme chaine, sur un chargeur sans etat : une divergence
+apparait au premier item ou jamais. Et la marge est large - le plus grand paquet enumere du depot est
+`cm1-tables-multiplication` avec **99 items** (methode : lignes commencant par `  - ` sous la cle
+`items:`, les douze paquets de `adapters/adapter-content/src/main/resources/contenu/` comptes le
+2026-08-17 ; les onze autres vont de 11 a 28 items, `cp-additions-jusqu-a-10` etant combinatoire et
+sans taille). **Verdict : la borne est legitime et n'a pas a etre derivee.**
+
+**Ce qui, en revanche, etait un chiffre sans methode, et que je corrige dans ce commit** : la Javadoc
+justifiait 150 par *"le plus grand paquet enumere connu du depot (cm1-tables-multiplication, 99
+items)"*, sans date ni methode de ce 99 - exactement le defaut que j'ai refuse au critere "les onze
+jeux" en section 7.8 de l'avis de faisabilite. La borne ne pourrit pas ; **sa justification, si**. Une
+date et une methode coutent une ligne, elles sont ecrites. Ce qui la ferait bouger, ecrit d'avance :
+un paquet enumere au-dela de 150 items, ou un second consommateur de cette boucle - la borne
+rejoindrait alors la forme du garde-fou frere, `TIRAGES_PAR_ITEM_VISE` multiplie par un nombre derive
+du catalogue.
+
+### 5.4 Ce que cette section ne fait pas
+
+Aucun Done pedagogique ni son anticipation, aucun arbitrage produit, aucune ligne dans
+`rapport-qualite.md`, dans `squad/conformite/` ni dans le planning de `sofia-sm`. La perte de
+couverture que `sofia-sm` m'a routee est tranchee dans `ADR-0045`, pas ici : ce fichier ne porte que
+le resultat des commandes et l'etat des plafonds.

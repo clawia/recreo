@@ -1,0 +1,18 @@
+# Catalogue corrige, jamais servi (ADR-0045) : l'autre borne du garde-fou.
+# Le meme paquet est rejoue par une seconde mecanique, avec des longueurs de partie
+# differentes (ADR-0012). C'est une addition legitime : un critere ecrit sur le paquet
+# seul la refuserait, celui-ci l'accepte.
+schema: 1
+jeux:
+  - id: bandit-manchot-perimetre-cm1
+    titre: "Le périmètre"
+    consigne: "Quel est le périmètre ?"
+    mecanique: bandit-manchot
+    paquet: cm1-perimetre
+    nombreDeManches: 10
+  - id: paires-perimetre-cm1
+    titre: "Les paires du périmètre"
+    consigne: "Retrouve les paires !"
+    mecanique: paires
+    paquet: cm1-perimetre
+    nombreDeManches: 6
