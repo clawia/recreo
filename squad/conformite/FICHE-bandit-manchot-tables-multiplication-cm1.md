@@ -19,6 +19,15 @@
   rare contre 0 %. Deux reserves, ce sont les deux points mineurs que j'avais nommes le 2026-08-14 et
   qui n'ont pas ete repris. **Le refus du 2026-08-14 n'est pas efface** : il reste lisible en entier
   au bloc de validation, sous le present verdict.
+  **Les deux reserves sont LEVEES le 2026-08-17 (s14) : le verdict devient VALIDE**, apres avoir rejoue
+  l'increment sur le code de `lea-dev` fusionne (`436b159`, S13-4 et S13-5). Reserve B fermee sur son
+  perimetre exact : `11` et `110` sont partis, et la seule proposition du paquet hors espace des tables
+  est le `0` de "1 x 1 = ?" que j'avais declare legitime. Reserve A fermee sur la barre ecrite au
+  planning : **72 parties sur 500, 14,4 %**, contre 21,6 % avant la reprise - une partie sur 6,9 au lieu
+  d'une sur 4,6. Le rang de la bonne reponse n'est pas entame (37,4 % au rang majoritaire). **Rien
+  n'est efface** et la mention obligatoire "sans mesure d'automatisation" reste due sur la ligne de
+  matrice : ce n'est pas une reserve, c'est le perimetre de la couverture. **Cette reverification etait
+  la porte de sortie de S13-4 et S13-5, ecrite au planning de s13 et jamais franchie a la cloture.**
 - **Arbitrage prealable de mecanique en vigueur pour tout le catalogue** (`squad/conformite/
   FICHE-bandit-manchot-additions-cp.md`, branche `s10-nadia-mecanique` et audits suivants) :
   conditions M1 a M13, dont deux ont ete bloquantes pour d'autres jeux du catalogue - M4 (le message
@@ -31,8 +40,8 @@
   complements a 10" (11 valeurs) et abaisse `nombreDeManches` plutot que d'elargir artificiellement
   les formes d'items ; le meme arbitrage pourra devoir etre instruit ici si `nombreDeManches`
   declare au catalogue s'approche de 55.
-- **Derniere mise a jour** : 2026-08-15 (reponse de `nadia-prof` sur le troisieme distracteur hors
-  espace des tables derive par `theo-archi` ; le verdict et les deux reserves sont inchanges)
+- **Derniere mise a jour** : 2026-08-17 (reverification de `nadia-prof` sur le code de S13-4 et S13-5
+  fusionne : les deux reserves sont levees, le verdict passe a VALIDE)
 
 ## Competences visees
 
@@ -59,6 +68,185 @@
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Reverification du 2026-08-17 (s14) - les reserves A et B sont LEVEES, le verdict devient VALIDE - le plus recent des verdicts de cette fiche
+
+> **Ce que cette section fait, et ce qu'elle ne fait pas.** Elle est la porte de sortie de **S13-4**
+> et de **S13-5**, ecrite au planning de s13 et jamais franchie : cette fiche n'avait plus ete touchee
+> depuis s12 alors que le code de `lea-dev` (`436b159`) etait fusionne et vert depuis le 2026-08-16.
+> Elle **leve les deux reserves** du 2026-08-15 apres les avoir rejouees moi-meme, et fait donc passer
+> le verdict de VALIDE SOUS RESERVE a **VALIDE**. Elle **n'efface rien** : le refus du 2026-08-14, le
+> verdict du 2026-08-15 et la precision du meme soir restent lisibles en entier en dessous. Elle ne
+> touche pas la mention obligatoire "sans mesure d'automatisation", qui n'est pas une reserve mais le
+> perimetre de la ligne de matrice, et qui reste due.
+
+- **Verdict** : **VALIDE**. Done pedagogique prononce sans reserve. La ligne mathematiques / CM1 /
+  "Calcul mental - tables de multiplication (jusqu'a x10), rappel automatise" reste `couvert-valide`,
+  **toujours avec la mention "sans mesure d'automatisation"** : ce produit ne mesure aucun temps de
+  reponse, donc la couverture reste partielle. `camille-po` peut retirer de la matrice les deux
+  reserves A et B, pas cette mention.
+- **Auteur** : nadia-prof. **Increment** : branche `s14-nadia-dettes`, ouverte sur `round-two` a
+  `5761e48`, arbre propre - inchange de mon fait, je n'ecris que de la documentation. `bash
+  outils/mvn-jdk21.sh -B clean verify` sur mon worktree : BUILD SUCCESS, **489 tests, 0 echec**. Le
+  Done technique est donc acquis sur l'arbre que je juge, et je ne juge pas un jeu qui plante.
+- **Mode** : **j'ai joue**, ce n'est pas un audit degrade. Jar reconstruit depuis mon propre worktree
+  sur le JDK de la toolchain 21 avant toute mesure, serveur lance sur un port a moi, **5 000 manches
+  reellement jouees sur 500 parties completes** (meme protocole que le 2026-08-15, pour que les deux
+  chiffres soient comparables), **environ 2 000 manches par enfant imaginaire** pour les trois
+  strategies sans rappel, et **une manche jouee a la main en me trompant trois fois de suite** pour
+  revoir le message d'erreur, l'indice et la revelation. Serveur arrete par le PID reel de sa JVM
+  apres la derniere mesure. Un seul point de cet audit est degrade et je le nomme au 5 ci-dessous :
+  **je n'ai pas remesure le rendu**.
+
+#### 1. Reserve B - LEVEE, et sur exactement le perimetre que j'avais nomme
+
+Ma reserve nommait **deux** valeurs, `11` sur "1 x 10 = ?" et `110` sur "10 x 10 = ?", et ma precision
+du 2026-08-15 (soir) avait ecarte `0` sur "1 x 1 = ?" de ce perimetre. Les deux valeurs visees sont
+parties, et `0` est reste :
+
+- "1 × 10 = ?" porte desormais **10, 9, 20**. `20` est `2 x 10`, le voisin du dessus.
+- "10 × 10 = ?" porte desormais **100, 90, 81**. `81` est `9 x 9`.
+
+**Comptage exhaustif sur les 297 propositions du paquet** : une seule n'est le produit d'aucun couple
+de facteurs de 1 a 10, et c'est le `0` de "1 × 1 = ?", que j'ai declare legitime. **Mesure en jouant,
+sur les 5 000 manches** : la seule valeur hors espace des tables jamais servie a l'ecran est ce meme
+`0`, **46 fois**. La reserve B est fermee.
+
+**Une precision sur le motif que `lea-dev` ecrit, parce qu'il est un peu plus large que le fait.** Son
+message de commit donne `81` comme *"seule valeur disponible sous 100"*. Ce n'est pas tout a fait
+cela : `80` est aussi un produit de la table (`8 x 10`). Ce qui rend `81` juste, c'est qu'il est le
+seul **voisin** restant - `9 x 10` et `10 x 9` donnent tous deux `90`, deja pris, et le voisin du
+dessus serait `11 x 10`, que ma reserve interdit. `81` est le voisin **diagonal**, une famille neuve
+dans ce paquet (un seul item la porte) et une erreur plausible : c'est se tromper d'une ligne dans la
+table. Je le credite. Je note, sans en faire une condition, que l'ecart entre `81` et `100` est de 19
+et que c'est le plus grand ecart du paquet entre un distracteur et sa bonne reponse ; sur un item ou
+aucun voisin plus proche n'existe, je l'accepte.
+
+#### 2. Reserve A - LEVEE sur la barre que j'avais ecrite, et je ne la deplace pas
+
+La barre est celle du planning de s13 : *"un enonce des tables ne revient plus une partie sur cinq"*.
+Je la mesure avec le protocole exact du 2026-08-15, **500 parties de dix manches** :
+
+| Mesure | Avant la reprise (2026-08-15) | Apres la reprise (2026-08-17) |
+|---|---|---|
+| Parties contenant au moins un enonce deja vu | 108 / 500, **21,6 %** | **72 / 500, 14,4 %** |
+| Manches repetees | 123 | **77** |
+| Paires d'items au meme enonce dans le paquet | 24 | **16** |
+| Collisions attendues par partie, calcul theorique | 0,223 | **0,148**, soit 13,8 % de parties |
+
+La mesure et le calcul tombent au meme endroit, comme la premiere fois. **Une partie sur 6,9 au lieu
+d'une sur 4,6.** La barre est tenue et **je leve la reserve A**. Je n'exige pas zero : je ne l'avais
+pas ecrit, et une barre qu'on releve apres coup ferait de ma porte un caprice.
+
+**Ce qui n'a pas change, et que personne ne doit croire change.** Le paquet compte toujours **99 items
+pour 83 enonces distincts** - exactement autant qu'avant la reprise, je l'ai recompte sur l'arbre
+d'avant (`436b159^`) : 99 items, 83 enonces, deja. La reprise n'a pas ajoute un seul enonce neuf ; elle
+a **redistribue** les doublons, de 8 enonces portes par 3 items chacun a 16 enonces portes par 2 items
+chacun, ce qui fait tomber les paires de 24 a 16 et le taux d'un tiers. Le message de commit de
+`lea-dev` dit que les huit items retires sont *"remplaces par huit items neufs sur des couples
+distincts (2x4, 2x6, 2x8, 3x4, 3x6, 3x8, 4x5, 4x7)"* : ces couples sont bien distincts de ceux des
+carres, mais **ces huit enonces existaient deja dans le paquet**. Le gain est reel et mesure, ce n'est
+pas un gain de variete.
+
+**Est-ce que j'ouvre une reserve neuve sur les 14,4 % qui restent ? Non, et je l'ecris pour que
+personne ne me garde une reserve fantome.** Reposer un enonce a l'interieur d'une partie n'est pas un
+defaut en soi sur une competence de rappel : etre reinterroge sur "7 x 7 = ?" est un entrainement
+legitime, et le second item porte des distracteurs differents, donc l'enfant doit encore choisir la
+valeur. Ce que je refusais, c'etait la **frequence** ; elle est passee sous ma barre. Si un lot futur
+la fait remonter, cette section est le point de comparaison.
+
+#### 3. Le rang de la bonne reponse n'est pas entame par la reprise - trois methodes concordantes
+
+`lea-dev` annonce avoir garde le rang au niveau du verdict du 2026-08-15. **Je ne l'ai pas crue, je
+l'ai recompte trois fois.**
+
+| Methode | la plus petite | l'intermediaire | la plus grande |
+|---|---|---|---|
+| Comptage exhaustif des 99 items | 28 items, **28,28 %** | 34 items, **34,34 %** | 37 items, **37,37 %** |
+| Comptage sur 5 000 manches reellement servies | **28,66 %** | **33,36 %** | **37,98 %** |
+| Enfant qui presse toujours ce rang, environ 2 000 manches chacun | **28,59 %** | **35,64 %** | **35,64 %** |
+
+Le rang majoritaire est a **37,4 %** au comptage exhaustif, contre 36,4 % le 2026-08-15 : il a gagne
+**un item**, et je le dis plutot que de l'arrondir. C'est a trois points du plancher arithmetique de
+33,3 %, tres loin de ma barre de refus de 50 %, et **aucun rang n'est sous 10 %** - la reserve que
+j'ai ouverte le 2026-08-15 sur la fiche des additions serait tenue ici aussi. Rien a redire.
+
+#### 4. Ce que j'ai reverifie d'autre sur le materiau, parce qu'une reprise peut casser ailleurs
+
+Comptage exhaustif sur le paquet livre, pas sur parole :
+
+- **Exactitude : 99 produits sur 99 justes.** Je les ai recalcules une troisieme fois. Aucune erreur
+  de fait.
+- **T-1** : les 55 couples (a, b) avec 1 <= a <= b <= 10 sont tous representes, **aucun manquant**.
+- **T-2** : **19 items sur 99 portent un facteur 1 ou 10, soit 19,19 %** - la valeur exacte des deux
+  audits precedents, sous mon plafond d'une manche sur cinq.
+- **T-4, T-6, T-7** : le signe multiplie partout, jamais la lettre x ; les 99 indices non vides et
+  **10 distincts** ; aucun facteur hors de 1 a 10, propositions en nombres nus.
+- **Aucune proposition egale a une autre dans aucun des 99 items.**
+- **Familles de distracteurs** : 54 en `(a-1) x b`, 54 en `(a+1) x b`, 45 en `a x (b-1)`, 36 en
+  `a x (b+1)`, 8 en `(a-1) x (a+1)` sur les carres, 1 en `(a-1) x (b-1)` - le `81` du 1 ci-dessus.
+  **Aucun distracteur arbitraire**, la propriete que j'avais creditee tient sur les items neufs.
+
+#### 5. Le seul point degrade de cet audit : je n'ai pas remesure le rendu
+
+Mon acquis M4 du 2026-08-14 - a 360 x 640, le message d'echec **et** l'indice visibles sans defiler,
+70 fois sur 70, avec une marge de **3 px dans le pire cas** - reposait le 2026-08-15 sur un argument de
+longueur, et je le reprends tel quel : **la plus longue proposition du paquet fait toujours 3
+caracteres** (`100`, et `81` remplace `110` sans changer ce maximum) **et le plus long enonce toujours
+11 caracteres**. Ces deux maxima sont recomptes exhaustivement sur le paquet livre. Rien n'a change de
+largeur, donc l'acquis M4 n'est pas entame par cette reprise.
+
+**Mais je n'ai pas relance de capture d'ecran cette fois**, et je le dis au lieu de laisser croire le
+contraire : la seule commande de mesure de rendu du depot, `outils/mesurer-rendu.sh`, prend une URL, et
+l'etat "premier echec" d'un ecran de jeu ne s'atteint pas par une URL. La marge de 3 px reste ce
+qu'elle etait : **tout allongement futur des enonces ou des propositions de ce paquet la fait
+sauter**, et il faudra alors remesurer.
+
+#### 6. Le traitement de l'erreur, joue a la main - un enfant bloque peut avancer
+
+Sur "7 × 9 = ?", propositions servies **63, 56, 54**. J'ai presse 56, puis 54, puis 56 :
+
+- **premier echec** : *"Ce n'est pas ça. Essaie encore !"*, et **l'indice apparait des ce premier
+  echec** : *"Table de 9 : prends la table de 10, puis enlève le nombre une fois."* L'enfant ne recoit
+  pas un "faux" nu, il recoit une strategie executable, et celle-ci donne bien 70 - 7 = 63 ;
+- **deuxieme echec** : meme message, meme indice, les trois propositions toujours la ;
+- **troisieme echec** : *"C'est 63. Appuie sur 63."*, indice toujours affiche. **La partie n'est
+  jamais un cul-de-sac.**
+
+#### 7. Deux faits de documentation releves en jouant, routes et non reserves
+
+Ils ne changent pas mon verdict et ne sont pas de mon perimetre, mais ils portent sur des phrases dont
+je me sers pour savoir ce qui est garde :
+
+1. `AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest` ecrit, pour justifier d'exclure l'indice de
+   l'identite d'un ecran, que l'indice *"ne s'affiche qu'apres trois echecs consecutifs"*. Le produit
+   l'affiche **des le premier echec** sur la manche bloquante, ce que `BanditManchotSession.indice()`
+   et M1 (`DEC-0004` point 4) disent explicitement et ce que j'ai revu en jouant au 6 ci-dessus. La
+   conclusion du garde-fou n'en souffre pas - l'indice est vide sur une manche fraiche dans les deux
+   cas - mais le motif ecrit decrit l'aide que `DEC-0004` a supprimee. **Route a `theo-archi`.**
+2. Le meme fichier porte une mesure d'etat non datee : *"aucun couple enonce + jeu de propositions
+   n'apparait deux fois dans un meme paquet, et meme le critere plus strict de l'enonce seul est tenu
+   partout"*. La seconde moitie **n'est plus vraie du contenu de production** : ce paquet porte 16
+   enonces deux fois. Le garde-fou lui-meme est intact, son critere etant `enonce + propositions` par
+   decision explicite. **Route a `theo-archi` et `yanis-qa`** comme un fait de documentation.
+
+#### 8. Les proprietes dont je reste la seule garde sur ce jeu
+
+Inchangees depuis le 2026-08-15, avec une confirmation et un ajout, parce que l'equipe doit savoir ce
+qui n'est **pas** couvert :
+
+- **le nombre d'enonces distincts derriere le nombre d'items** - j'ai lu le garde-fou d'`ADR-0032` :
+  son critere est `enonce + jeu de propositions`, **par decision explicite et pour une bonne raison**
+  (deux items de meme enonce et de propositions differentes sont une forme legitime). Rien dans le
+  depot ne compte les enonces distincts. C'est moi, en jouant, et la reserve A que je viens de lever
+  est la seule mesure qui existe de cette propriete ;
+- **l'exactitude arithmetique de chaque produit** et **la plausibilite de chaque distracteur** ;
+- **le rang presque vide** (aucun rang sous 10 % des items), que rien ne mesure - le rang
+  **majoritaire**, lui, est bien tenu par un automate depuis s12 et je ne le recompte plus par
+  obligation ;
+- **l'utilite reelle de chaque indice** et **le niveau tel qu'il se joue** ;
+- **le rendu a 360 px** : aucun garde-fou ne connait la largeur d'un ecran, et la marge de 3 px du
+  point 5 n'est tenue par personne d'autre que par la brievete des enonces de ce paquet.
 
 ### Precision du 2026-08-15 (soir) - le perimetre exact de la reserve B : `0` sur `1 x 1 = ?` n'en fait pas partie
 
@@ -108,7 +296,7 @@ pas un argument decisif - mais celui qui retirerait `0` doit savoir qu'il paie d
 comme distracteur sans que l'indice de l'item parle de l'element neutre. Ce serait alors un nombre
 arbitraire, et il tomberait sous la reserve B avec les deux autres.
 
-### Done pedagogique du 2026-08-15 - le refus du 2026-08-14 est LEVE, VALIDE SOUS RESERVE - le plus recent des verdicts de cette fiche
+### Done pedagogique du 2026-08-15 - le refus du 2026-08-14 est LEVE, VALIDE SOUS RESERVE
 
 > **Ce que cette section fait.** Elle **leve le refus du 2026-08-14** sur son motif unique, apres
 > l'avoir rejoue moi-meme sur le paquet corrige. Elle **n'efface pas** ce refus, qui reste lisible
