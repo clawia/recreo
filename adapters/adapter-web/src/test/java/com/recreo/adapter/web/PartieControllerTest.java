@@ -24,6 +24,7 @@ import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -49,8 +50,21 @@ class PartieControllerTest {
     private static final String JEU_REPETE_ID = "jeu-repete";
     private static final String JEU_QUATRE_PROPOSITIONS_ID = "jeu-quatre-propositions";
 
+    /** Le seul niveau du catalogue de test (JeuDeTestConfiguration). */
+    private static final String NIVEAU = "CP";
+
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private PartieUseCase partieUseCase;
+
+    /** Lit l'etat de partie d'une session sans passer par une requete HTTP (ADR-0019). */
+    private static EtatDePartie etatDeLaSession(MockHttpSession session) {
+        MockHttpServletRequest requete = new MockHttpServletRequest();
+        requete.setSession(session);
+        return new EtatDePartieEnSession(requete).lire();
+    }
 
     @Test
     void laPageDAccueilProposeDeDemarrerSansCompteNiDonneePersonnelle() throws Exception {
@@ -59,6 +73,21 @@ class PartieControllerTest {
 
         assertThat(page.select("button.demarrer")).isNotEmpty();
         assertThat(page.select("input[type=text], input[type=email], input[name=nom]")).isEmpty();
+    }
+
+    /**
+     * S14-1, critere 8 (avis-faisabilite de theo-archi, section 7.8) : au premier chargement, la
+     * liste affichee est exactement jeuxDisponibles(), sans filtre - aucun effectif ecrit ici.
+     */
+    @Test
+    void auPremierChargementLaListeEstExactementLeCatalogueSansFiltre() throws Exception {
+        String html = mockMvc.perform(get("/")).andReturn().getResponse().getContentAsString();
+        Document page = Jsoup.parse(html);
+
+        List<String> titresRendus = page.select("button.demarrer").eachText();
+        List<String> titresDuCatalogue = partieUseCase.jeuxDisponibles().stream()
+                .map(GameDefinition::titre).toList();
+        assertThat(titresRendus).containsExactlyElementsOf(titresDuCatalogue);
     }
 
     @Test
@@ -330,6 +359,92 @@ class PartieControllerTest {
 
         assertThat(fragment.select(".enonce").text()).isEqualTo("deux");
         assertThat(fragment.select(".score").text()).isEqualTo("Score : 1");
+    }
+
+    /**
+     * S14-1, critere 3 (avis-faisabilite de theo-archi, section 7.3) : sans partie en cours, la
+     * liste se filtre dans la meme reponse, sans passer par le fragment de confirmation.
+     */
+    @Test
+    void unNiveauSansPartieEnCoursFiltreImmediatementSansPasserParLaConfirmation() throws Exception {
+        String html = mockMvc.perform(get("/niveaux/{niveau}", NIVEAU))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.select(".question-confirmation")).isEmpty();
+        assertThat(fragment.select("button.demarrer")).isNotEmpty();
+    }
+
+    /**
+     * S14-1, critere 4, forme renforcee (avis-faisabilite de theo-archi, section 7.4) : la
+     * confirmation existante s'affiche avant tout changement, et l'etat lu par
+     * EtatDePartieEnSession est identique avant et apres - jeuId et compte de manches resolues
+     * compris, jamais une assertion sur le balisage (doctrine ADR-0038 point 3).
+     */
+    @Test
+    void unAppuiSurUnePuceDeNiveauPendantUnePartieNeModifieRienAvantConfirmation() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        EtatDePartie avant = etatDeLaSession(session);
+
+        String html = mockMvc.perform(get("/niveaux/{niveau}", NIVEAU).session(session))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.select(".question-confirmation")).isNotEmpty();
+        EtatDePartie apres = etatDeLaSession(session);
+        assertThat(apres.jeuId()).isEqualTo(avant.jeuId());
+        assertThat(apres.session().score().tentatives()).isEqualTo(avant.session().score().tentatives());
+    }
+
+    /**
+     * S14-1, critere 5 (avis-faisabilite de theo-archi, section 7.5) : continuer depuis la
+     * confirmation ouverte par une puce de niveau reprend exactement la manche affichee.
+     * "Aucun filtre applique" est garanti par construction (ADR-0044 point 4 : le niveau ne vit
+     * que dans l'URL) et n'a donc rien de plus a asserter ici.
+     */
+    @Test
+    void continuerDepuisLaConfirmationOuverteParUneNiveauReprendExactementLaManche() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        mockMvc.perform(get("/niveaux/{niveau}", NIVEAU).session(session));
+
+        String html = mockMvc.perform(post("/retour/annuler").session(session))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.select(".enonce").text()).isEqualTo("un");
+        assertThat(fragment.select(".score").text()).isEqualTo("Score : 0");
+    }
+
+    /**
+     * S14-1, critere 6, "meme comportement" explicite (avis-faisabilite de theo-archi, section
+     * 7.6) : confirmer depuis une confirmation ouverte par une puce de niveau abandonne la
+     * partie comme un abandon ordinaire (session sans partie en cours, marqueur navigateur
+     * efface) et rend l'accueil filtre sur ce niveau.
+     */
+    @Test
+    void confirmerDepuisUneConfirmationDeNiveauAbandonneLaPartieEtRendLaListeFiltree() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        MvcResult demarrage = mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session))
+                .andReturn();
+        mockMvc.perform(get("/niveaux/{niveau}", NIVEAU).session(session));
+
+        MvcResult confirmation = mockMvc.perform(
+                        post("/niveaux/{niveau}/confirmer", NIVEAU).session(session))
+                .andReturn();
+        Document fragment = Jsoup.parse(confirmation.getResponse().getContentAsString());
+
+        assertThat(fragment.select("button.demarrer")).isNotEmpty();
+        assertThat(etatDeLaSession(session).portePartieEnCours())
+                .as("meme comportement qu'un abandon ordinaire : plus de partie en cours")
+                .isFalse();
+        Cookie marqueurEfface = confirmation.getResponse().getCookie("recreo-partie-en-cours");
+        assertThat(marqueurEfface)
+                .as("meme comportement qu'un abandon ordinaire : le marqueur navigateur est efface")
+                .isNotNull();
+        assertThat(marqueurEfface.getMaxAge()).isZero();
+        assertThat(demarrage.getResponse().getCookie("recreo-partie-en-cours")).isNotNull();
     }
 
     /** Sans partie en cours (fin de partie ou accueil), le retour reste immediat, sans confirmation. */

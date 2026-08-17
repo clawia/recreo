@@ -46,9 +46,57 @@ class PartieServiceTest {
         return new PartieService(catalogue, mecaniques, TOUJOURS_ZERO);
     }
 
+    private static final ContentDescriptor DESCRIPTEUR_CM1 =
+            new ContentDescriptor("Mathematiques", "CM1", "Nombres et calculs", "denombrer");
+
+    private static final GameDefinition JEU_CM1 = new GameDefinition(
+            "un-jeu-cm1", "Un jeu de CM1", "Choisis la bonne reponse", BanditManchot.ID, DESCRIPTEUR_CM1,
+            new ListContentSource(DESCRIPTEUR_CM1, List.of(
+                    new Question(new ItemId("q1"), "un", "1", List.of("2")))),
+            NOMBRE_DE_MANCHES);
+
+    private static PartieService serviceAvecDeuxNiveaux() {
+        ContentCatalogPort catalogue = () -> List.of(JEU, JEU_CM1);
+        MechanicRegistryPort mecaniques = id -> new BanditManchot();
+        return new PartieService(catalogue, mecaniques, TOUJOURS_ZERO);
+    }
+
     @Test
     void exposeLesJeuxDuCatalogue() {
         assertThat(service().jeuxDisponibles()).containsExactly(JEU);
+    }
+
+    /** ADR-0044 : le niveau unique du catalogue de test, rendu sans effectif ecrit en dur. */
+    @Test
+    void niveauxDuCatalogueRendLeNiveauUniqueDuJeuDeTest() {
+        assertThat(service().niveauxDuCatalogue()).containsExactly(DESCRIPTEUR.niveau());
+    }
+
+    /** ADR-0044 : les valeurs distinctes, dans l'ordre du catalogue - jamais un effectif epingle. */
+    @Test
+    void niveauxDuCatalogueRendLesValeursDistinctesDansLOrdreDuCatalogue() {
+        assertThat(serviceAvecDeuxNiveaux().niveauxDuCatalogue()).containsExactly("CP", "CM1");
+    }
+
+    @Test
+    void jeuxDuNiveauRendUniquementLesJeuxDeCeNiveau() {
+        assertThat(serviceAvecDeuxNiveaux().jeuxDuNiveau("CM1")).containsExactly(JEU_CM1);
+    }
+
+    /**
+     * Critere 7 (avis-faisabilite s14, section 7.7), forme renforcee versee sans etre imposee par
+     * theo-archi : une partition, pas seulement une inclusion - elle attrape en plus un jeu dont le
+     * niveau ne correspondrait a aucun niveau du catalogue, ce qu'une simple egalite ne voit pas.
+     */
+    @Test
+    void laReunionDesListesFiltreesSurTousLesNiveauxEstExactementJeuxDisponibles() {
+        PartieService service = serviceAvecDeuxNiveaux();
+
+        List<GameDefinition> reunion = service.niveauxDuCatalogue().stream()
+                .flatMap(niveau -> service.jeuxDuNiveau(niveau).stream())
+                .toList();
+
+        assertThat(reunion).containsExactlyInAnyOrderElementsOf(service.jeuxDisponibles());
     }
 
     @Test

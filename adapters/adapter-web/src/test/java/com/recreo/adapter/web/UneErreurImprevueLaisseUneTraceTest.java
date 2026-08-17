@@ -134,6 +134,16 @@ class UneErreurImprevueLaisseUneTraceTest {
                 }
 
                 @Override
+                public List<String> niveauxDuCatalogue() {
+                    return List.of(DESCRIPTEUR.niveau());
+                }
+
+                @Override
+                public List<GameDefinition> jeuxDuNiveau(String niveau) {
+                    return jeuxDisponibles();
+                }
+
+                @Override
                 public GameSession demarrer(String jeuId) {
                     throw new DefautJamaisVu();
                 }

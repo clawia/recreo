@@ -105,6 +105,9 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
     /** La proposition fausse de l'item de {@code JEU_REPETE_ID} (PartieControllerTest). */
     private static final String PROPOSITION_FAUSSE = "mauvaise";
 
+    /** Le seul niveau du catalogue de test (PartieControllerTest.JeuDeTestConfiguration). */
+    private static final String NIVEAU = "CP";
+
     /**
      * ADR-0034, amendement : deux manches et un contenu combinatoire (PartieControllerTest), donc une
      * partie que deux reponses fausses terminent sur un verdict faux.
@@ -207,7 +210,31 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
         reponses.add(reponse("confirmation de l'abandon, retour a la liste des jeux",
                 "POST /retour/confirmer", confirmerLAbandon()));
 
+        // S14-1 (ADR-0043, ADR-0044) : deux routes neuves, le point d'entree par niveau. Ni l'une
+        // ni l'autre ne rend d'ecran de jeu avec des propositions : ecransAnimables() y sera vide,
+        // et les clauses de cette classe ne les jugeront donc pas - seule la couverture des routes
+        // (chaqueRouteDuControleurEstExerceeParCeGardeFou) l'exige.
+        reponses.add(reponse("liste filtree par niveau, aucune partie en cours", "GET /niveaux/{niveau}",
+                get("/niveaux/{niveau}", NIVEAU)));
+        reponses.add(reponse("demande de confirmation avant de changer de niveau, la partie continue",
+                "GET /niveaux/{niveau}", demandeDeConfirmationDeNiveau()));
+        reponses.add(reponse("confirmation du changement de niveau, retour a la liste filtree",
+                "POST /niveaux/{niveau}/confirmer", confirmerLeChangementDeNiveau()));
+
         return reponses;
+    }
+
+    private MockHttpServletRequestBuilder demandeDeConfirmationDeNiveau() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        return get("/niveaux/{niveau}", NIVEAU).session(session);
+    }
+
+    private MockHttpServletRequestBuilder confirmerLeChangementDeNiveau() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        mockMvc.perform(get("/niveaux/{niveau}", NIVEAU).session(session));
+        return post("/niveaux/{niveau}/confirmer", NIVEAU).session(session);
     }
 
     private MockHttpServletRequestBuilder demandeDeConfirmation() throws Exception {

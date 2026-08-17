@@ -27,11 +27,6 @@
      sur aucune des deux valeurs : c'est la clause bloquante de M13. -->
 <div th:fragment="manche" class="ecran-de-jeu"
      th:attr="data-arrivee=${arriveeParUnGeste} ? 'par-un-geste' : 'sans-geste', data-focus=${focus}">
-    <!-- ADR-0017 : data-role dit ce que le bouton fait du point de vue de l'enfant - avancer dans le
-         jeu ou en sortir. C'est ce que le garde-fou de saillance relative compare, et il refuse tout
-         bouton qui ne le porte pas. Attribut inerte : aucun CSS ni aucun script ne s'en sert. -->
-    <button type="button" class="btn retour-accueil" data-role="sortie" hx-post="/retour"
-            hx-target="#jeu" hx-swap="innerHTML">Les jeux</button>
     <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
     <p class="consigne" th:text="${consigne}"></p>
     <p class="enonce" th:text="${enonce}"></p>
@@ -71,6 +66,16 @@
         </div>
         <div class="cabinet-socle" aria-hidden="true"></div>
     </div>
+    <!-- BARRE-3 (FICHE-barre-entree-niveau.md, arbitrage prealable du 2026-08-17) : cette sortie
+         vivait avant S14-1 en premiere ligne de la colonne de contenu, donc lue avant l'enonce -
+         un defaut que nadia-prof avait deja nomme en s06 et s08 sans qu'aucun lot ne le corrige.
+         La barre de niveaux de l'en-tete ajoutant deux portes de plus au-dessus de l'enonce, la
+         condition impose de descendre celle-ci sous les propositions plutot que d'empiler une
+         troisieme porte en tete d'ecran ; aucun composant neuf, seul son emplacement change.
+         ADR-0017 : data-role dit ce que le bouton fait du point de vue de l'enfant - avancer dans
+         le jeu ou en sortir. Attribut inerte : aucun CSS ni aucun script ne s'en sert. -->
+    <button type="button" class="btn retour-accueil" data-role="sortie" hx-post="/retour"
+            hx-target="#jeu" hx-swap="innerHTML">Les jeux</button>
     <!-- S10, M1, M6, M9, M11, M12 : le seul emplacement ou le jeu parle de la reponse de l'enfant,
          sous le meuble, hors du cadre du cabinet - jamais au-dessus (M1, M4). "message-jeu" est le
          bloc que ce chantier pose pour le second lot : sa forme (fond, espacement) lui revient, sa

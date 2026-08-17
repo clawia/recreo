@@ -1,5 +1,6 @@
 package com.recreo.adapter.web;
 
+import com.recreo.application.port.in.PartieUseCase;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -9,6 +10,8 @@ import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -44,6 +47,9 @@ class EnTeteEtMenuTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    private PartieUseCase partieUseCase;
+
     private Document page(MockHttpSession session) throws Exception {
         String html = mockMvc.perform(get("/").session(session))
                 .andReturn().getResponse().getContentAsString();
@@ -75,19 +81,33 @@ class EnTeteEtMenuTest {
                 .hasSize(1);
     }
 
+    /**
+     * S14-1 (avis-faisabilite de theo-archi, section 7.1) : remplace le comptage fixe a un seul
+     * element actionnable, qui epinglait la taille du depot au jour ou il a ete ecrit plutot qu'une
+     * propriete. La forme retenue interdit trois choses a la fois : un libelle de niveau ecrit en
+     * dur, un niveau du catalogue sans point d'entree, et un point d'entree sans niveau au
+     * catalogue - sans jamais ecrire d'effectif dans ce test (ADR-0006, ADR-0044).
+     */
     @Test
-    void leMenuDeLEnTeteContientExactementUneEntreeVersLAccueil() throws Exception {
+    void leMenuDeLEnTeteContientUnPointDEntreeParNiveauEtUneSeuleSortieVersLAccueil() throws Exception {
         Document page = page(new MockHttpSession());
 
-        Elements liensDeNavigation = page.select("header button, header a[href]");
-        assertThat(liensDeNavigation)
-                .as("DEC-0012 : le menu de l'en-tete contient exactement une entree")
+        Elements sorties = page.select("header [data-role=sortie]");
+        assertThat(sorties)
+                .as("ADR-0022 / S6-9 : le menu de l'en-tete ne contient qu'une seule sortie")
                 .hasSize(1);
-        assertThat(liensDeNavigation.first().text())
+        assertThat(sorties.first().text())
                 .as("ADR-0022 / S6-9 : le libelle est \"Les jeux\", et c'est le geste par lequel "
-                        + "nadia-prof leve sa reserve 3 du 2026-08-07 ; l'entree existe toujours, "
-                        + "elle a cesse d'etre un doublon")
+                        + "nadia-prof leve sa reserve 3 du 2026-08-07")
                 .isEqualTo("Les jeux");
+
+        List<String> niveauxDuCatalogue = partieUseCase.niveauxDuCatalogue();
+        Elements pointsDEntree = page.select("header [data-role=entree]");
+        assertThat(pointsDEntree.eachText())
+                .as("ADR-0043 / ADR-0044 : exactement un point d'entree par niveau distinct du "
+                        + "catalogue, dans l'ordre du catalogue - le nombre n'est pas ecrit ici, il "
+                        + "est celui que niveauxDuCatalogue() rend")
+                .containsExactlyElementsOf(niveauxDuCatalogue);
     }
 
     @Test

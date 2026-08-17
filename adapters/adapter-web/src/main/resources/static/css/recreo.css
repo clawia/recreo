@@ -623,6 +623,44 @@ body:has(.ecran-de-jeu) .lien-accueil {
     cursor: pointer;
 }
 
+/* S14-1 (ADR-0043, ADR-0044) : second rang de l'en-tete, les points d'entree par niveau. Fond
+   distinct de --recreo-entete-fond (nadia-prof, FICHE-barre-entree-niveau.md, section 4 :
+   "les puces sont sur un second rang, a gauche, sur une bande plus sombre" - BARRE-9, jamais le
+   meme rang que .menu qui porte "Les jeux"). Aucune regle de masquage n'est ecrite ici,
+   contrairement a .lien-accueil : c'est l'absence de regle qui rend cette barre visible y compris
+   sur un ecran de jeu (proposition-ines-barre-de-niveaux.md, section 1). BARRE-8 : un seul rang a
+   360 px pour les deux niveaux du catalogue - un second rang est un arbitrage prealable neuf, non
+   accorde d'avance.
+   S6-8 (LeConteneurTierGardeSonRembourrageLateralTest) : seuls les deux axes verticaux sont
+   declares ici, jamais le raccourci "padding: 0.5rem 0" qui fixerait aussi le rembourrage lateral
+   a 0 et ecraserait celui, inconditionnel, de .container porte par ce meme element. */
+.bandeau-niveaux {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: var(--recreo-cabinet-fond);
+}
+
+/* La boite reprend a l'identique celle de .lien-accueil/.retour-accueil - taille de police,
+   hauteur minimale, rembourrage, forme en contour - pour ne jamais depasser une action de l'ecran
+   ou la puce s'affiche (ADR-0043, LActionNeDeclarePasMoinsQueLaSortieTest, 11 tests sur 11).
+   BARRE-4 : la puce ne porte que son texte, aucun disque ni pictogramme. */
+.chip-niveau {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    font-size: 1.25rem;
+    color: var(--recreo-accent-texte);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent-texte);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.9rem;
+    cursor: pointer;
+}
+
 .score {
     font-size: 1.25rem;
     font-weight: bold;

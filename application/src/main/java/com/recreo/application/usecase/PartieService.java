@@ -9,6 +9,7 @@ import com.recreo.domain.mechanic.GameMechanic;
 import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.Move;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -31,6 +32,30 @@ public final class PartieService implements PartieUseCase {
     @Override
     public List<GameDefinition> jeuxDisponibles() {
         return catalogue.games();
+    }
+
+    /**
+     * ADR-0044 : la selection vit ici, derriere le port entrant, jamais dans l'adaptateur de
+     * rendu. Les valeurs distinctes sont rendues dans l'ordre du catalogue - c'est cette methode,
+     * et rien d'autre, qui dit combien de points d'entree l'en-tete porte.
+     */
+    @Override
+    public List<String> niveauxDuCatalogue() {
+        List<String> niveaux = new ArrayList<>();
+        for (GameDefinition jeu : catalogue.games()) {
+            String niveau = jeu.descripteur().niveau();
+            if (!niveaux.contains(niveau)) {
+                niveaux.add(niveau);
+            }
+        }
+        return niveaux;
+    }
+
+    @Override
+    public List<GameDefinition> jeuxDuNiveau(String niveau) {
+        return catalogue.games().stream()
+                .filter(jeu -> jeu.descripteur().niveau().equals(niveau))
+                .toList();
     }
 
     @Override

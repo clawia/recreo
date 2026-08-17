@@ -88,6 +88,7 @@ public class PartieController {
     @GetMapping("/")
     public String accueil(Model modele, HttpServletRequest requete, HttpServletResponse reponse) {
         EtatDePartie etat = new EtatDePartieEnSession(requete).lire();
+        modele.addAttribute("niveaux", partie.niveauxDuCatalogue());
 
         if (etat.portePartieEnCours()) {
             modele.addAttribute("reprise", true);
@@ -114,6 +115,7 @@ public class PartieController {
     public String retour(HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
         EtatDePartie etat = new EtatDePartieEnSession(requete).lire();
         if (etat.portePartieEnCours()) {
+            modele.addAttribute("urlConfirmerAbandon", "/retour/confirmer");
             return "fragments/confirmation :: confirmation";
         }
         new EtatDePartieEnSession(requete).abandonner();
@@ -128,6 +130,41 @@ public class PartieController {
         new EtatDePartieEnSession(requete).abandonner();
         effacerMarqueurDePartie(reponse);
         modele.addAttribute("jeux", partie.jeuxDisponibles());
+        return "accueil :: zoneAccueil";
+    }
+
+    /**
+     * S14-1 (ADR-0043, ADR-0044) : le point d'entree par niveau, une route et non un parametre -
+     * c'est ce qui le fait entrer dans le perimetre derive du garde-fou de tabulation
+     * (chaqueRouteDuControleurEstExerceeParCeGardeFou). Sans partie en cours, la liste se filtre
+     * dans la meme reponse (critere 3). Avec une partie en cours, la meme confirmation qu'une
+     * sortie ordinaire s'affiche d'abord, sans toucher la session (critere 4) ; son bouton de
+     * confirmation porte le niveau demande pour que l'accueil qui en resulte reste filtre
+     * (critere 6), puisque DEC-0028/ADR-0044 interdisent de le loger en session.
+     */
+    @GetMapping("/niveaux/{niveau}")
+    public String niveaux(@PathVariable String niveau, HttpServletRequest requete, Model modele) {
+        EtatDePartie etat = new EtatDePartieEnSession(requete).lire();
+        if (etat.portePartieEnCours()) {
+            modele.addAttribute("urlConfirmerAbandon", "/niveaux/" + niveau + "/confirmer");
+            return "fragments/confirmation :: confirmation";
+        }
+        modele.addAttribute("jeux", partie.jeuxDuNiveau(niveau));
+        return "accueil :: zoneAccueil";
+    }
+
+    /**
+     * Le geste que l'ecran de confirmation appelle pour quitter reellement la partie en cours
+     * quand la confirmation a ete ouverte par une puce de niveau : meme abandon que
+     * {@code confirmerAbandon}, mais l'accueil qui en resulte reste filtre sur ce niveau
+     * (critere 6).
+     */
+    @PostMapping("/niveaux/{niveau}/confirmer")
+    public String confirmerAbandonNiveau(@PathVariable String niveau, HttpServletRequest requete,
+                                          HttpServletResponse reponse, Model modele) {
+        new EtatDePartieEnSession(requete).abandonner();
+        effacerMarqueurDePartie(reponse);
+        modele.addAttribute("jeux", partie.jeuxDuNiveau(niveau));
         return "accueil :: zoneAccueil";
     }
 

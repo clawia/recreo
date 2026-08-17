@@ -91,6 +91,9 @@ class AucunArretDeTabulationNEstDestructeurTest {
     private static final String JEU_REPETE_ID = "jeu-repete";
     private static final String PROPOSITION_FAUSSE = "mauvaise";
 
+    /** Le seul niveau du catalogue de test (PartieControllerTest.JeuDeTestConfiguration). */
+    private static final String NIVEAU = "CP";
+
     private static final Path RACINE_PRODUCTION = Path.of("src/main/resources");
     private static final Path CONTRE_EXEMPLE =
             Path.of("src/test/resources/contreexemple/AucunArretDeTabulationNEstDestructeurTest");
@@ -228,6 +231,24 @@ class AucunArretDeTabulationNEstDestructeurTest {
         ecrans.add(ecranFragment("ecran d'erreur, partie introuvable", "POST /parties/{jeuId}/coups",
                 session -> corps(post("/parties/{jeuId}/coups", JEU_ID).session(session)
                         .param("propositionChoisie", "1"))));
+
+        // S14-1 (ADR-0043, ADR-0044) : deux routes neuves, le point d'entree par niveau.
+        ecrans.add(ecranFragment("liste filtree par niveau, aucune partie en cours",
+                "GET /niveaux/{niveau}",
+                session -> corps(get("/niveaux/{niveau}", NIVEAU).session(session))));
+
+        ecrans.add(ecranFragment("demande de confirmation avant de changer de niveau, la partie continue",
+                "GET /niveaux/{niveau}", session -> {
+                    corps(post("/parties/{jeuId}", JEU_ID).session(session));
+                    return corps(get("/niveaux/{niveau}", NIVEAU).session(session));
+                }));
+
+        ecrans.add(ecranFragment("confirmation du changement de niveau, retour a la liste filtree",
+                "POST /niveaux/{niveau}/confirmer", session -> {
+                    corps(post("/parties/{jeuId}", JEU_ID).session(session));
+                    corps(get("/niveaux/{niveau}", NIVEAU).session(session));
+                    return corps(post("/niveaux/{niveau}/confirmer", NIVEAU).session(session));
+                }));
 
         return ecrans;
     }
