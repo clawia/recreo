@@ -1,5 +1,4 @@
-# DEC-0031 - "Les grands nombres" quitte le catalogue jouable : contenu juge bon, debordement de
-# rendu a 360 px, condition de retour executable
+# DEC-0031 - "Les grands nombres" quitte le catalogue jouable : contenu juge bon, debordement de rendu a 360 px, condition de retour executable
 
 - **Type** : perimetre produit, retrait temporaire d'un jeu du catalogue
 - **Date** : 2026-08-16
