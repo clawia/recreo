@@ -128,6 +128,12 @@ diff.
 pas cosmetique : c'est ce qui fait qu'une regle maison de meme specificite l'emporte sur la regle
 tierce, donc que les planchers declares ici sont ceux que l'enfant voit.
 
+> **Amendement du 2026-08-17, `ADR-0046`** : la premiere phrase reste vraie et l'ordre de chargement
+> reste exige. Le "donc" est faux : l'hypothese de **meme specificite** ne tient pas des que la regle
+> tierce porte une pseudo-classe, et c'est ainsi que les boutons de l'en-tete disparaissent au survol.
+> Ce point est desormais une condition **partielle** parmi trois - voir la limite barree dans "Ce que
+> cette regle ne couvre pas" et `ADR-0046`, qui porte la troisieme.
+
 **6. Une garantie pedagogique est toujours portee par une regle maison.** Un bouton rendu doit etre
 couvert par au moins une regle ecrite ici, qui declare le plancher. Une bibliotheque tierce porte le
 rendu de base ; elle ne porte jamais une exigence de `nadia-prof`, parce que sa prochaine version
@@ -383,11 +389,21 @@ tierce puis la maison.
   arbre DOM statique ; ils ne mesurent aucun pixel. Le seul verdict sur ce que l'enfant voit
   reellement est celui de `nadia-prof`, qui rasterise. C'etait deja vrai avant Bootstrap, ce l'est
   davantage apres.
-- **La specificite CSS n'est pas calculee.** La garantie repose sur la conjonction de deux regles :
+- ~~**La specificite CSS n'est pas calculee.** La garantie repose sur la conjonction de deux regles :
   feuille maison chargee en dernier, et pas de `!important` tiers sur une propriete gardee. Un
   selecteur tiers de specificite superieure a une classe (par exemple `#id .btn`) l'emporterait sans
   etre vu. Bootstrap n'en contient pas ; le jour ou une bibliotheque en contiendrait, c'est cette
-  limite qu'il faudrait lever.
+  limite qu'il faudrait lever.~~
+  **Amendement du 2026-08-17, `ADR-0046` : cette limite etait ecrite et n'a rien garde, et son
+  illustration a fait passer pour exotique un cas qui est la norme.** Il ne faut aucun identifiant :
+  **une pseudo-classe suffit**. `.btn:hover` vaut (0,2,0) contre (0,1,0) pour `.chip-niveau`, et
+  "Bootstrap n'en contient pas" est faux au sens qui compte - la feuille vendorisee porte **139
+  selecteurs a pseudo-classe interactive** sur 2 959, et ceux de `.btn` s'appliquent aux **huit**
+  boutons de l'application. Le defaut reel : les boutons de l'en-tete **disparaissent au survol**,
+  vu par l'utilisatrice en jouant l'increment de s14 et par aucun des 510 tests. Le point 5 ci-dessus
+  n'est donc plus une garantie mais une condition partielle : il faut l'ordre de chargement, l'absence
+  de `!important` tiers, **et** que la feuille maison declare les etats que la feuille tierce declare.
+  C'est `ADR-0046` qui decide cette troisieme condition et qui l'encode.
 - ~~**Le garde-fou lit la classe statique du gabarit, pas la classe calculee.**
   `fragments/retour.html` porte `th:class="${enSuite} ? 'retour-accueil' : 'sortie-pleine'"` : seule
   la valeur par defaut de l'attribut `class` est controlee. Limite anterieure a cet ADR, non

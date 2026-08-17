@@ -1,0 +1,13 @@
+/* La regle maison a l'air complete : couleur de texte, aplat, contour, taille, cible tactile. Elle
+   ne declare aucun etat interactif, et la bibliotheque tierce en declare trois sur .btn. Au survol
+   comme a l'appui, les trois proprietes de cette regle sont remplacees par les valeurs de bouton nu
+   de la bibliotheque. */
+.bouton-neuf {
+    display: inline-flex;
+    min-height: 2.75rem;
+    font-size: 1.25rem;
+    color: #ffffff;
+    background-color: transparent;
+    border: 0.125rem solid #ffffff;
+    padding: 0.5rem 0.9rem;
+}
