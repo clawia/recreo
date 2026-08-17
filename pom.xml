@@ -34,7 +34,78 @@
     <archunit.version>1.5.0</archunit.version>
     <jsoup.version>1.23.1</jsoup.version>
     <nashorn.version>15.7</nashorn.version>
+    <maven-toolchains-plugin.version>3.2.0</maven-toolchains-plugin.version>
+    <maven-enforcer-plugin.version>3.6.3</maven-enforcer-plugin.version>
   </properties>
+
+  <build>
+    <plugins>
+      <!-- Le java du PATH n'est pas forcement celui qui doit compiler recreo. Sans cette
+           declaration, un poste dont le java du PATH est un JRE echoue au premier module sur
+           "No compiler is provided in this environment", message qui ne nomme ni le JDK attendu
+           ni l'endroit ou le declarer : trois agents en ont conclu que le JDK 21 etait absent du
+           poste et ont mesure sur une autre chaine. Ici, le build s'arrete des la phase validate
+           tant qu'aucune toolchain jdk 21 n'est declaree, et le message nomme le type, la version
+           et le fichier a renseigner.
+
+           Prerequis de poste : un JDK 21 declare comme toolchain jdk version 21 dans le fichier
+           de toolchains de l'utilisateur (CLAUDE.md, section Prerequis de build ;
+           outils/mvn-jdk21.sh lance Maven sur ce JDK). En CI, actions/setup-java ecrit lui-meme
+           cette toolchain a partir de son entree java-version et de sa distribution.
+
+           Aucun vendor n'est exige : la toolchain d'un poste peut ne pas en declarer, celle de la
+           CI en declare un (la distribution installee). Exiger la version seule accepte les deux. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-toolchains-plugin</artifactId>
+        <version>${maven-toolchains-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>exiger-jdk-21</id>
+            <goals>
+              <goal>toolchain</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <toolchains>
+            <jdk>
+              <version>21</version>
+            </jdk>
+          </toolchains>
+        </configuration>
+      </plugin>
+
+      <!-- Une toolchain gouverne le JDK qui compile et qui execute les tests, pas la machine
+           virtuelle sur laquelle Maven lui-meme tourne. Or spring-boot-maven-plugin 4.1.0 est
+           compile en classe 61 : sur un Maven lance par un JRE 8, il echoue a la toute fin du
+           build, au repackage du fat jar, apres plusieurs minutes de tests verts, sur une trace
+           "API incompatibility" de quarante lignes qui ne nomme pas le remede. Mesure sur ce
+           poste le 2026-08-17 : 483 tests verts, puis cet echec. Cette regle fait dire la meme
+           chose en une seconde, a la phase validate, et en une phrase. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>${maven-enforcer-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>exiger-une-jvm-maven-17-ou-plus</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireJavaVersion>
+                  <version>[17,)</version>
+                  <message>Maven doit tourner sur un JDK 17 ou plus recent (spring-boot-maven-plugin 4.1.0 est compile en classe 61). Positionner JAVA_HOME sur un JDK 21, ou lancer le build par outils/mvn-jdk21.sh qui le fait a partir de la toolchain jdk 21 declaree.</message>
+                </requireJavaVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
   <dependencyManagement>
     <dependencies>

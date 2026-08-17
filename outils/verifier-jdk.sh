@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 # Constate la presence d'un JDK 21 sans se fier au seul nom d'un fichier de toolchains (S6-14).
 #
+# Changement de role au sprint 14 : la moitie "diagnostiquer pourquoi rien ne compile" de ce script
+# n'est plus le seul recours. Le pom parent declare maintenant maven-toolchains-plugin (toolchain
+# jdk 21 exigee) et maven-enforcer-plugin (machine virtuelle de Maven en 17 ou plus) : le build
+# lui-meme nomme desormais ce qui manque, en une seconde et a la phase validate, la ou il echouait
+# sur "No compiler is provided in this environment". Ce qui reste a la charge de ce fichier :
+#   - le constat citable, sans chemin, colle tel quel dans un rapport de sprint ;
+#   - extraire_jdkhome_pour_version, dont outils/mvn-jdk21.sh se sert pour lancer Maven sur le JDK
+#     de la toolchain sans que personne ait a positionner JAVA_HOME a la main.
+#
 # Deux canaux distincts, jamais melanges (critere corrige par theo-archi, avis de faisabilite s06,
 # section S6-14, apres que la premiere ecriture de la story se contredisait avec ADR-0010) :
 #
