@@ -223,8 +223,28 @@
   et la regle de decision que j'appliquerai a ce qui sera rapporte sont ecrits au bloc de validation,
   section du 2026-08-15 (s13). La propriete reste **entierement a ma garde** : aucun garde-fou ne
   compare ce qui est affiche a ce qui est annonce.
-- **Derniere mise a jour** : 2026-08-15 (protocole d'ecoute de F11 ecrit ; le verdict du meme jour sur
-  la ligne de calcul mental est inchange)
+- **Done pedagogique du 2026-08-17 (s14) sur S12-5, le retrait de l'`aria-label` : VALIDE.** Le
+  jugement que le planning de s13 exigeait et qu'aucun fichier ne portait. Le retrait est **la forme
+  que j'avais moi-meme ecrite comme preferee** le 2026-08-14, et le document reellement servi ne porte
+  plus aucun attribut annoncant du texte, ni sur l'accueil ni sur un ecran de jeu : un seul element de
+  sortie, un seul mot, "Les jeux". **Un de mes propres constats est corrige avant d'etre utilise** :
+  mon premier releve avait trouve la chaine "Menu principal" sur la page servie, elle vit dans un
+  commentaire de gabarit qu'aucun lecteur d'ecran n'annonce. Le garde-fou etendu par `ADR-0039` est
+  credite mais **ne verifie que l'orthographe, pas le vocabulaire** : qu'un mot annonce soit un mot
+  d'enfant reste entierement a ma garde. **Fait a rejuger, date** : les boutons d'entree par niveau
+  toujours visibles decides par l'utilisatrice feront cesser d'etre vrai le premier de mes quatre
+  motifs de refus (une zone a un seul lien) et contredisent la regle de masquage d'`ADR-0022` ; ce
+  Done vaut pour l'en-tete a un seul lien, il ne prejuge rien de sa forme future, et **l'arbitrage de
+  la nouvelle barre n'est pas rendu ici**.
+- **Correction du 2026-08-17 (s14) sur la reserve F11** : le chiffre "les huit jeux partagent le meme
+  gabarit", que j'ai ecrit le 2026-08-15, est **faux, et l'etait deja le jour de son ecriture** - le
+  catalogue en comptait dix ce jour-la et en compte **onze** aujourd'hui. Releve par
+  `relecteur-pedagogique`. **Le raisonnement tient sans changer d'un mot** : il repose sur le gabarit
+  de manche partage, pas sur un compte, donc **un seul jeu suffit toujours** et ce que je demande
+  d'ecouter est inchange. La section du 2026-08-15 n'est pas reecrite, la correction est datee
+  au-dessus d'elle. **F11 reste OUVERTE**, aucune ecoute n'a eu lieu.
+- **Derniere mise a jour** : 2026-08-17 (Done pedagogique de S12-5 rendu ; chiffre de la reserve F11
+  corrige par note datee ; le verdict du 2026-08-15 sur la ligne de calcul mental est inchange)
 
 ## Competences visees
 
@@ -292,7 +312,131 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Reserve F11 du 2026-08-15 (s13) - l'utilisatrice fera l'ecoute elle-meme : voici ce que je lui demande d'ecouter, et ce que j'en ferai - le plus recent de cette fiche
+### Done pedagogique du 2026-08-17 (s14) sur S12-5 - le retrait de l'`aria-label` est VALIDE - le plus recent de cette fiche
+
+> **Ce que cette section fait, et ce qu'elle ne fait pas.** Elle rend le jugement que le planning de
+> s13 exigeait de moi sur l'increment de **S12-5** et qu'aucun fichier ne portait a la cloture. Elle
+> **ne touche aucun autre verdict** de cette fiche, ni la reserve F11, ni le verdict du 2026-08-15 sur
+> la ligne de calcul mental. Elle porte sur **une seule chose** : ce que l'enfant recoit de la zone de
+> menu de l'en-tete, apres le retrait de l'attribut que j'avais refuse le 2026-08-14.
+
+- **Date** : 2026-08-17. **Auteur** : nadia-prof. **Sprint** : s14. **Verdict** : **VALIDE**.
+- **Increment juge** : `adapters/adapter-web/src/main/resources/templates/accueil.html` sur `round-two`
+  a `5761e48`, correction de `lea-dev` en s13, garde-fou de texte accentue etendu aux attributs qui
+  annoncent du texte (`ADR-0039`).
+- **Mode** : **j'ai joue**, et j'ai regarde le document reellement servi, pas seulement le gabarit.
+  Jar reconstruit depuis mon worktree sur le JDK de la toolchain 21, serveur lance sur un port a moi,
+  arrete par le PID reel de sa JVM apres la derniere mesure. Capture du rendu reel :
+  `outils/mesurer-rendu.sh 360 <url de l'accueil> <png> 640` - invocation declaree valide (largeur CSS
+  mesuree 360 px, hauteur CSS 640 px, pli a y = 640 px, fenetre parente 600 x 1400 px, profil isole).
+
+#### 1. Le fait, verifie sur le document servi et non sur le gabarit
+
+**Le retrait est la forme que je preferais, et je l'avais ecrite comme telle** le 2026-08-14 : *"Ce que
+je prefere : que cet attribut n'existe pas. [...] Un libelle qui ne distingue rien n'ajoute que du
+bruit dans l'oreille de l'enfant."* La seconde forme que j'avais donnee - le libelle "Les jeux" si un
+garde-fou technique exigeait un libelle non vide - n'etait pas necessaire : aucun garde-fou ne l'exige.
+L'equipe a pris la premiere. **Il n'y a rien a redire et je ne cherche pas a redire.**
+
+Ce que j'ai constate sur le document que le serveur envoie, commentaires HTML retires :
+
+- **aucun attribut `aria-*` porteur de texte, nulle part** sur l'accueil ni sur un ecran de jeu -
+  l'inventaire complet de `alt`, `title`, `aria-label`, `placeholder`, `aria-roledescription` et
+  `aria-description` est vide sur les deux ecrans, le seul `alt` etant celui, vide, de l'icone
+  decorative ;
+- **un seul element de sortie** dans le document, portant le texte **"Les jeux"** et rien d'autre ;
+- **la chaine "Menu principal" n'apparait plus hors commentaire.**
+
+**Une correction de mon propre constat, faite avant de m'appuyer dessus.** Mon premier releve
+inventoriait les attributs sans retirer les commentaires HTML, et il a trouve `aria-label="Menu
+principal"` sur la page servie. **C'etait faux** : les mots vivent dans le commentaire de gabarit qui
+documente leur retrait, et ce commentaire est envoye tel quel au navigateur. Un lecteur d'ecran
+n'annonce pas un commentaire, donc **l'enfant ne recoit pas ces mots** ; mais quiconque cherchera cette
+chaine dans la page servie la trouvera, et prendra pour un defaut ce qui n'en est pas un. Je le note
+pour que la prochaine personne ne perde pas le temps que j'y ai perdu.
+
+A 360 x 640, l'en-tete montre l'icone, le nom "Recreo" et l'unique bouton "Les jeux". **Un seul mot de
+sortie a l'oeil, un seul a l'oreille.** La regle que j'avais posee pour l'oeil vaut desormais pour
+l'oreille, ce qui etait le troisieme de mes quatre motifs de refus.
+
+#### 2. Ce que ce Done couvre, et ce qu'il ne couvre pas
+
+Le garde-fou etendu par `ADR-0039` est un vrai acquis et je le credite : les sept attributs qui
+annoncent du texte entrent desormais dans l'inventaire de texte accentue, la ou *"les noeuds de texte"*
+etait exactement la phrase par laquelle "Menu principal" avait traverse huit sprints. **Mais il verifie
+l'orthographe et l'accentuation, pas le vocabulaire.** Un `aria-label="Menu principal"` reecrit demain
+serait vert : il est en francais correct. **Ce que ce garde-fou ne peut pas savoir, c'est si le mot est
+un mot d'enfant de six ans, et cette propriete reste entierement a ma garde.** Un cas resterait meme
+hors de portee de l'inventaire, et le fichier de test le dit lui-meme : un `th:aria-label` calcule au
+rendu. Personne ne doit croire ce point couvert par la CI.
+
+#### 3. Un fait qui change la portee de ce verdict, et que je date pour ne pas le confondre avec mon refus
+
+L'utilisatrice a decide d'ajouter dans cet en-tete des **boutons d'entree par niveau (CP / CM1)
+toujours visibles, y compris sur un ecran de jeu**. Or mon premier motif de refus du 2026-08-14 etait
+que *"cette zone contient un seul lien"* - c'est ce fait-la qui rendait le mot "menu" faux et un
+libelle inutile. **Ce fait va cesser d'etre vrai.** Deux consequences, et je m'arrete la :
+
+1. **Le jour ou cette zone portera plusieurs entrees, la question du libelle se rejuge**, et elle se
+   rejugera sur les mots, pas sur celui-ci : "Menu principal" restera refuse pour ses trois autres
+   motifs, qui ne dependaient pas du nombre de liens. Le present Done vaut pour l'en-tete **a un seul
+   lien** ; il ne prejuge rien de l'autre.
+2. La regle de masquage actuelle - `body:has(.ecran-de-jeu) .lien-accueil { display: none }`, motivee
+   par `ADR-0022` et par mon propre arbitrage du 2026-08-07 (*"une seule sortie par ecran de jeu"*) -
+   est **directement contredite** par des boutons d'en-tete toujours visibles pendant une partie.
+   Ce n'est pas un defaut du lot livre : c'est un point que l'arbitrage prealable de la nouvelle barre
+   devra trancher, et **je le tranche la, pas ici.**
+
+**Ceci n'est pas une reserve nouvelle et n'ouvre aucune story.** C'est un fait a rejuger, date du
+2026-08-17, verse ici pour que le prochain lot ne croie pas cet en-tete valide sous sa forme future.
+
+#### 4. Ce dont je reste la seule garde sur ce point
+
+1. **Que les mots annonces soient des mots d'enfant** : le garde-fou d'`ADR-0039` lit l'orthographe,
+   pas le niveau de langue.
+2. **Que l'application n'ait qu'un seul mot de sortie**, a l'oeil comme a l'oreille. Rien ne le mesure.
+3. **Ce qu'un lecteur d'ecran annonce reellement pour cette zone.** C'est le geste 1 de ma reserve F11,
+   ci-dessous, et il n'a pas encore eu lieu. Je signale une question que je ne peux pas trancher en
+   lisant : la balise `<nav>` sans nom accessible fait quand meme annoncer un mot de region par le
+   lecteur, un mot qui ne vient pas d'un attribut du depot et qui n'est pas non plus un mot d'enfant.
+   **Je n'en fais pas une reserve** : je ne sais pas ce qui est dit, et l'ecoute du geste 1 me le dira.
+
+### Correction du 2026-08-17 (s14) - le chiffre "huit jeux" de ma reserve F11 est faux, le raisonnement tient
+
+> **Ce que cette section fait, et ce qu'elle ne fait pas.** Elle corrige un **chiffre** que j'ai ecrit
+> dans la section suivante, datee du 2026-08-15. Elle **ne reecrit pas cette section**, ne la deplace
+> pas et n'en retire pas un mot : le texte errone reste lisible, avec cette correction au-dessus. Elle
+> **ne leve pas F11** et **ne change rien** a ce que je demande d'ecouter, ni a la regle de decision que
+> j'ai ecrite d'avance.
+
+- **Date** : 2026-08-17. **Auteur** : nadia-prof. **Releve par** : `relecteur-pedagogique`, le
+  2026-08-17, qui a eu raison de ne pas le corriger lui-meme : c'est un chiffre de contenu de
+  production, et il est de moi.
+
+**Le fait.** J'ai ecrit le 2026-08-15, au point 2 de la section suivante : *"Les huit jeux partagent le
+meme gabarit de manche : en ecouter un me renseigne sur les huit, et en ecouter huit ne m'apprendrait
+rien de plus."* Et au point suivant : *"Ce que je ne demande pas [...] : ni les huit jeux"*. **Le
+chiffre est faux, et il l'etait deja le jour ou je l'ai ecrit.** `catalogue.yaml` compte **onze jeux**
+au 2026-08-17, et en comptait **dix** le 2026-08-15 au moment ou j'ecrivais, la reinstallation de
+`bandit-manchot-grands-nombres-cm1` etant intervenue le lendemain. "Huit" etait le catalogue d'un
+sprint plus tot ; je l'ai recopie de memoire sans le recompter.
+
+**Ce qu'il faut lire a la place**, et c'est la seule chose a changer dans les deux phrases : **onze
+jeux**, aujourd'hui. Partout ou la section suivante ecrit "huit jeux", lire "les jeux du catalogue".
+
+**Le raisonnement, lui, ne bouge pas d'un mot, et c'est ce qui compte pour ce qui m'est demande.** Ma
+demande ne repose pas sur un compte, elle repose sur le fait que **le gabarit de manche est partage** :
+les onze jeux du catalogue emploient la meme mecanique et le meme `fragments/manche.html`, donc en
+ecouter **un** renseigne sur tous, et le nombre exact est sans effet sur la conclusion. **Ce que je
+demande d'ecouter reste : une session, un jeu, quatre gestes.** Si le catalogue en comptait trente, ce
+serait toujours un seul jeu.
+
+**Ce que je retiens pour moi.** Un chiffre recopie de memoire dans un fichier qui fait foi est un
+chiffre faux en puissance, et celui-la a tenu deux jours sans que je le voie, alors que je verifie les
+chiffres des autres. Je recompte desormais sur le materiau tout chiffre de catalogue que j'ecris, comme
+je recompte les leurs.
+
+### Reserve F11 du 2026-08-15 (s13) - l'utilisatrice fera l'ecoute elle-meme : voici ce que je lui demande d'ecouter, et ce que j'en ferai
 
 > **Ce que cette section fait, et ce qu'elle ne fait pas.** Elle **n'efface, ne deplace et ne
 > reformule aucun verdict** de cette fiche. Elle **ne leve pas F11** : F11 reste **OUVERTE**, aucune
