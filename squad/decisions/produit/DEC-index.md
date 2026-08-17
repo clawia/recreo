@@ -36,6 +36,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0030 | Perimetre du sprint 13 : trois lignes de mathematiques CM1 ouvertes, deux differees, et le plafond de la mecanique unique mesure | s13 | 2026-08-15 | Acceptee |
 | DEC-0031 | Retrait de "Les grands nombres" du catalogue jusqu'a correction du rendu, contenu juge bon | s13 | 2026-08-16 | Acceptee, amendee le 2026-08-16 (prealable circulaire de nadia-prof leve par un chemin de verification hors catalogue joue ; "Le perimetre" refuse une seconde fois sur le meme motif, garde au catalogue, ligne repassee en cours ; reserve de longueur sur "Les mesures" routee au backlog s14) |
 | DEC-0032 | Perimetre du sprint 14 : la barre d'entree par niveau ouvre sous arbitrage prealable, le filtre par matiere est differe a s15, S13-6 est remplacee | s14 | 2026-08-17 | Acceptee sur le perimetre ; developpement de S14-1 bloque jusqu'a l'arbitrage prealable de nadia-prof |
+| DEC-0033 | BARRE-7 : le lien "Les jeux" de l'en-tete disparait de l'accueil, il n'y est pas remplace par un comportement neuf | s14 | 2026-08-17 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0023` a ete amendee le 2026-08-12, sur son point 6
 (disparition de l'ecran intermediaire), laisse ouvert et route a `nadia-prof` pour arbitrage
@@ -261,6 +262,14 @@ poserait deux fois "Les jeux" sur l'ecran de fin de partie et un second bouton s
 d'erreur), sous six conditions PORTE-1 a PORTE-6. Les sections d'origine de `DEC-0027` restent
 telles qu'ecrites le 2026-08-14, non effacees. Voir la section "Amendement du 2026-08-14 (s11,
 arbitrage prealable rendu)" dans
+`DEC-0027-retrait-bouton-sortie-fragment-manche-reouvre-s6-9-arbitrage-prealable-requis.md`.
+
+Amendement (pas une nouvelle reference) : `DEC-0027` a ete amendee une seconde fois le 2026-08-17
+(s14), pour fermer PORTE-1 - le constat, du 2026-08-14, que le lien "Les jeux" de l'en-tete rend un
+ecran identique a celui qui l'affiche depuis l'accueil. `S14-1` (barre d'entree par niveau) a rendu
+cette condition bloquante sous le nom BARRE-7 (`FICHE-barre-entree-niveau.md`, section 6) ; `DEC-
+0033` la resout en retirant ce lien de l'en-tete plutot qu'en lui donnant un comportement neuf. Voir
+la section "Amendement du 2026-08-17 (s14, PORTE-1 fermee par DEC-0033)" dans
 `DEC-0027-retrait-bouton-sortie-fragment-manche-reouvre-s6-9-arbitrage-prealable-requis.md`.
 
 Complement (pas une nouvelle reference) : `DEC-0028` a ete completee le 2026-08-15, a la cloture de
