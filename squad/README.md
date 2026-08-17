@@ -295,6 +295,18 @@ attendue au planning. En s13, deux portes de sortie ecrites au planning (S13-4/S
 jamais ete franchies alors que le code correspondant etait fusionne et vert, et rien ni personne ne
 l'avait signale avant que Sofia ne verifie chaque porte ligne par ligne a la cloture.
 
+**Une condition declaree "tenue par construction" n'est pas une condition tenue tant qu'elle n'a
+pas ete verifiee sur le document assemble** (amendement s14, cloture de s14). En s14, `marc-dev` a
+declare deux conditions bloquantes "tenues par construction" en raisonnant sur le fragment qu'il
+ecrivait ; l'en-tete permanent, lui, survivait a l'assemblage complet du document et les puces de
+niveau avec lui, ce que `nadia-prof` a mesure et refuse. C'est la quatrieme instance nommee de la
+meme famille qu'`ADR-0020` porte deja pour l'architecture ("l'unite de verification d'un ecran est
+le document assemble") et que l'amendement de s12 porte deja pour les releves automatiques cites
+en preuve : ce qui manquait est la meme regle pour une affirmation de raisonnement humaine, non
+instrumentee. Toute affirmation "tenu par construction" citee dans une revue de code ou un accord
+d'architecte est verifiee sur le document reellement rendu avant d'entrer dans un `review.md`, pas
+seulement raisonnee sur le fragment source.
+
 **8. Cloture.** Sofia lance le rapport de tokens et ecrit `RAPPORT.md`.
 
 **9. Retro.** Sofia anime, ecrit `retro.md`, et amende ce README si le process doit evoluer.
