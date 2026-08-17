@@ -4093,3 +4093,90 @@ partie, la meme session, le meme onglet).
   2026-08-13.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, avis de faisabilite de `theo-archi`
   requis avant affectation.
+
+**Note de cloture (s14, camille-po, 2026-08-17).** Verifie contre le depot avant d'ecrire cette
+note : ni `review.md`, ni `RAPPORT.md`, ni `retro.md` de s13 ne mentionnent cette story - elle a ete
+affectee au planning (`planning.md`, second lot de `marc-dev`) mais jamais developpee.
+**Elle n'est pas reconduite sous cette forme : elle est remplacee par `S14-1`**
+(`DEC-0032-perimetre-sprint-14-barre-entree-niveau-arbitrage-prealable-matiere-differee.md`,
+section 4). Le besoin qu'elle portait - atteindre le catalogue sans perdre une partie en cours - est
+repris par `S14-1`, mais avec une resolution differente : `S14-1` passe par l'ecran de confirmation
+existant des qu'une partie est en cours (une action potentiellement destructrice signalee), la ou
+cette story visait une consultation qui ne modifie jamais l'etat de la partie, sans confirmation
+d'aucune sorte. Cette story n'est plus a affecter au planning.
+
+## Sprint 14 - Une barre d'entree par niveau, toujours visible
+
+**Contexte et decision de perimetre** :
+`DEC-0032-perimetre-sprint-14-barre-entree-niveau-arbitrage-prealable-matiere-differee.md`. La
+demande de l'utilisatrice porte des points d'entree par niveau et par matiere dans l'en-tete,
+toujours visibles. Le sprint 14 n'ouvre que le niveau ; la matiere est differee a s15 le temps de
+trancher la nomenclature affichee (accents). `DEC-0032` remplace `S13-6` par la story ci-dessous.
+
+### S14-1 - Une barre d'entree par niveau, toujours visible dans l'en-tete
+
+- **Besoin** : en tant qu'eleve de CP ou de CM1, je veux voir et utiliser a tout moment un bouton
+  pour retrouver les jeux de mon niveau, meme pendant que je joue, afin de changer de jeu sans
+  devoir d'abord chercher comment sortir de ma partie.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Cette story ne cible
+  aucune ligne de `squad/programme/MATRICE-couverture.md` ; elle change la navigation entre des
+  jeux qui existent deja.
+- **Arbitrages deja rendus par l'utilisatrice, non rouverts par cette story** (`DEC-0032`) :
+  1. Les boutons de niveau sont toujours visibles dans l'en-tete, y compris sur un ecran de jeu
+     (zone de contenu portant le marqueur `ecran-de-jeu`) - une propriete que le lien "Les jeux"
+     actuel n'a pas, puisqu'il est masque sur ce meme marqueur (`ADR-0022`, S6-9).
+  2. Un appui sur un bouton de niveau pendant une partie en cours ne detruit pas la partie d'un seul
+     geste : il passe par l'ecran de confirmation deja existant (`fragments/confirmation.html`,
+     `DEC-0026`, `ADR-0038`, `ADR-0042`), exactement comme le bouton de sortie de l'ecran de manche
+     aujourd'hui.
+  3. Le filtre par matiere est hors perimetre de cette story (differe a s15).
+- **Ce que cette story remplace** : le besoin ouvert par `S13-6` (section "Sprint 13" ci-dessus, note
+  de cloture) - un chemin vers le catalogue pendant une partie en cours - est repris ici, mais avec
+  la resolution que l'utilisatrice a choisie : le passage par la confirmation existante, et non une
+  consultation garantie sans consequence. `S13-6` n'est plus a developper sous sa forme d'origine.
+- **Criteres d'acceptation** :
+  - Etant donne l'ecran d'accueil, quand la page est rendue (avec ou sans partie en cours), alors
+    l'en-tete affiche deux boutons de niveau, "CP" et "CM1", en plus des elements d'en-tete deja
+    existants.
+  - Etant donne un ecran de jeu (zone de contenu portant le marqueur `ecran-de-jeu` : manche, echec,
+    revelation, fin de partie, erreur), quand la page ou le fragment est rendu, alors les deux
+    boutons de niveau restent visibles dans l'en-tete - a la difference du lien "Les jeux" actuel,
+    masque sur ce meme marqueur (`ADR-0022`) : c'est la propriete "toujours visible" que cette
+    story introduit.
+  - Etant donne l'ecran d'accueil sans partie en cours, quand l'enfant appuie sur un bouton de
+    niveau, alors la liste de jeux affichee se filtre immediatement sur ce niveau, sans passer par
+    l'ecran de confirmation - il n'y a rien a proteger.
+  - Etant donne une partie en cours, quand l'enfant appuie sur un bouton de niveau, alors l'ecran de
+    confirmation existant (`fragments/confirmation.html`) s'affiche avant tout changement, et la
+    partie n'est pas encore modifiee a ce stade.
+  - Etant donne l'ecran de confirmation ouvert depuis un bouton de niveau, quand l'enfant choisit de
+    continuer sa partie, alors elle reprend exactement sur la manche qui etait affichee avant
+    l'ouverture de la confirmation, et aucun filtre de niveau n'est applique.
+  - Etant donne l'ecran de confirmation ouvert depuis un bouton de niveau, quand l'enfant confirme
+    vouloir quitter, alors la partie en cours est abandonnee (meme comportement qu'un abandon
+    ordinaire aujourd'hui) et l'ecran d'accueil affiche la liste des jeux filtree sur le niveau
+    choisi.
+  - Etant donne la liste de jeux filtree sur un niveau, quand on la compare au catalogue complet,
+    alors elle contient exactement les jeux dont le niveau du `ContentDescriptor` correspond au
+    niveau choisi, et aucun jeu de l'autre niveau - source de donnees deja portee par chaque paquet,
+    aucune donnee neuve necessaire.
+  - Etant donne l'ecran d'accueil au premier chargement (sans navigation prealable), quand aucun
+    bouton de niveau n'a encore ete presse, alors la liste affichee reste le catalogue complet des
+    onze jeux, comme aujourd'hui : cette story ajoute un filtre, elle ne retire pas la vue non
+    filtree.
+  - Ce que cette story ne tranche pas : le moyen technique exact de la barre et du filtrage
+    (`theo-archi`) ; la forme visuelle des boutons et le moyen de revenir a la vue non filtree une
+    fois un niveau choisi (`ines-design` propose) ; le texte lu par l'enfant sur les boutons et sur
+    l'etat filtre (`nadia-prof` juge, integralement accentue et sans faute, `DEC-0002` amende).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : si un enfant de CP distingue les boutons de niveau d'une sortie de jeu sur un
+    ecran de jeu, et si le passage par l'ecran de confirmation est un signal suffisant de
+    consequence sur la partie - objet de l'arbitrage prealable ci-dessous.
+- **Porte de sortie** : les huit criteres testables ci-dessus tenus et `mvn verify` vert ;
+  **arbitrage prealable de `nadia-prof` rendu sur `squad/conformite/FICHE-barre-entree-niveau.md`
+  avant toute affectation en developpement (bloquant)** ; texte des boutons et de l'etat filtre juge
+  par `nadia-prof` sur l'increment reellement rendu, verdict ecrit sur la meme fiche.
+- **Lien decision** :
+  `DEC-0032-perimetre-sprint-14-barre-entree-niveau-arbitrage-prealable-matiere-differee.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, apres l'arbitrage prealable de
+  `nadia-prof` (bloquant) et l'avis de faisabilite de `theo-archi`.
