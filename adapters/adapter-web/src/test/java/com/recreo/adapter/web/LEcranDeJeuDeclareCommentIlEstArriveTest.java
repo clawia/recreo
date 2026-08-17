@@ -18,10 +18,15 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 
+import static com.recreo.adapter.web.LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.documents;
+import static com.recreo.adapter.web.LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.zoneEchangee;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -133,6 +138,17 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
     /** ADR-0013 : le jeu fautif de la lecture de la marque d'un essai deja fait. */
     private static final Path CONTRE_EXEMPLE =
             Path.of("src/test/resources/contreexemple/LEcranDeJeuDeclareCommentIlEstArriveTest");
+
+    private static final Path RACINE_PRODUCTION = Path.of("src/main/resources");
+
+    /**
+     * S14-2 (BARRE-7, DEC-0033), avis de theo-archi apres relecture : le jeu fautif qui porte
+     * exactement la faute de la clause ci-dessous (un fragment insere qui oublie le marqueur)
+     * existe deja pour {@code LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest} - aucun fixture neuf.
+     */
+    private static final Path CONTRE_EXEMPLE_FRAGMENT_SANS_MARQUEUR = Path.of(
+            "src/test/resources/contreexemple/LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest")
+            .resolve("fragment-sans-marqueur");
 
     /**
      * L'attribut de modele par lequel le controleur transmet au gabarit les propositions deja
@@ -696,6 +712,102 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
                         + "repris plutot que laisse vert a vide")
                 .hasSize(1);
         assertThat(arrivee(ecransAnimables(reprise).get(0))).isEqualTo(SANS_GESTE);
+    }
+
+    /**
+     * S14-2 (BARRE-7, DEC-0033), exigence 1 de theo-archi apres relecture de ce lot :
+     * {@code chaqueEcranInsereDansLaZonePorteLeMarqueurQueLaFeuilleExige}
+     * ({@code LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest}) gardait deux proprietes a la fois - qu'un
+     * masquage existe (perimee depuis que S14-2 retire le lien "Les jeux" de l'en-tete, et sa regle
+     * de masquage avec lui), et que tout gabarit insere porte le marqueur "ecran-de-jeu"
+     * (<b>intacte</b> : {@link #ecransDeJeu} en derive sa population par {@code select(".ecran-de-
+     * jeu")}, avec une non-vacuite globale sur cette classe). Retirer le test qui portait les deux
+     * a la fois, comme S14-2 l'a fait, laissait la seconde propriete sans aucune clause du depot
+     * pour l'exiger : un cinquieme fragment qui oublierait le marqueur sortirait du perimetre
+     * d'ADR-0027 en silence.
+     *
+     * <p>Cette clause reporte la seconde propriete, decouplee du masquage, dans la classe qui
+     * consomme reellement le marqueur - celle-ci, et non celle qui a perdu son sujet. Elle ne dit
+     * rien du masquage ni de la feuille maison : seulement que tout gabarit du repertoire qui n'est
+     * pas la coquille porte le marqueur d'etat, quelle que soit la raison pour laquelle un
+     * consommateur en a besoin.
+     *
+     * <p>ADR-0013, les trois obligations :
+     * <ul>
+     *   <li><b>perimetre derive</b> : les gabarits viennent du repertoire, la coquille de la
+     *       presence de la zone {@code hx-target} - memes helpers {@code documents} et
+     *       {@code zoneEchangee} que {@code LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest}, partages
+     *       plutot que recopies (ADR-0031 les partage deja de la meme facon) ;</li>
+     *   <li><b>derivation totale</b> : aucun gabarit, aucune zone, plusieurs zones, aucune
+     *       coquille, plusieurs coquilles ou aucun fragment insere sont des <b>echecs</b>, jamais
+     *       des cas ignores ;</li>
+     *   <li><b>mise a l'epreuve</b> : gratuite - le jeu fautif {@code fragment-sans-marqueur} de
+     *       {@code LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest} porte deja exactement cette faute
+     *       (un fragment insere qui oublie le marqueur), sans qu'aucun fixture neuf soit
+     *       necessaire.</li>
+     * </ul>
+     */
+    static void verifierQueToutFragmentInsereDansLaZonePorteLeMarqueur(Path racineDesGabarits) {
+        Set<String> defauts = new LinkedHashSet<>();
+        Map<String, Document> gabarits = documents(racineDesGabarits);
+
+        assertThat(gabarits)
+                .as("ce garde-fou ne prouve rien s'il ne releve aucun gabarit sous %s",
+                        racineDesGabarits)
+                .isNotEmpty();
+
+        Optional<String> zone = zoneEchangee(gabarits.values(), defauts);
+        if (zone.isPresent()) {
+            List<String> coquilles = gabarits.entrySet().stream()
+                    .filter(ecran -> !ecran.getValue().select(zone.get()).isEmpty())
+                    .map(Map.Entry::getKey)
+                    .toList();
+            if (coquilles.size() != 1) {
+                defauts.add("la zone " + zone.get() + " est declaree par " + coquilles.size()
+                        + " gabarit(s) " + coquilles + " ; il en faut exactement un, sans quoi ce "
+                        + "garde-fou ne sait pas quels gabarits sont des ecrans inseres");
+            } else {
+                String coquille = coquilles.get(0);
+                List<String> fragments = gabarits.keySet().stream()
+                        .filter(ecran -> !ecran.equals(coquille))
+                        .toList();
+                assertThat(fragments)
+                        .as("ce garde-fou ne prouve rien si aucun gabarit n'est insere dans %s sous "
+                                + "%s", zone.get(), racineDesGabarits)
+                        .isNotEmpty();
+                for (String fragment : fragments) {
+                    if (gabarits.get(fragment).select("." + ECRAN_DE_JEU).isEmpty()) {
+                        defauts.add("ecran " + fragment + " : insere dans " + zone.get() + ", il ne "
+                                + "porte pas le marqueur \"" + ECRAN_DE_JEU + "\"");
+                    }
+                }
+            }
+        }
+
+        assertThat(defauts)
+                .as("ADR-0027 : tout gabarit insere dans la zone echangee porte le marqueur d'etat "
+                        + "\"" + ECRAN_DE_JEU + "\", que ce garde-fou consomme par "
+                        + "select(\".ecran-de-jeu\") pour deriver sa population d'ecrans de jeu")
+                .isEmpty();
+    }
+
+    @Test
+    void chaqueGabaritInsereDansLaZonePorteLeMarqueurDEcranDeJeu() {
+        verifierQueToutFragmentInsereDansLaZonePorteLeMarqueur(RACINE_PRODUCTION);
+    }
+
+    /**
+     * ADR-0013 obligation 3, preuve de morsure gratuite (avis de theo-archi) : le jeu fautif de
+     * {@code LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest} porte deja exactement cette faute -
+     * {@code fragments/bilan.html} insere dans {@code #jeu} sans porter {@code ecran-de-jeu}.
+     */
+    @Test
+    void unFragmentInsereQuiOublieLeMarqueurFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifierQueToutFragmentInsereDansLaZonePorteLeMarqueur(
+                CONTRE_EXEMPLE_FRAGMENT_SANS_MARQUEUR))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ecran templates/fragments/bilan.html : insere dans #jeu, il "
+                        + "ne porte pas le marqueur \"ecran-de-jeu\"");
     }
 
     private Set<String> routesDeclarees() {

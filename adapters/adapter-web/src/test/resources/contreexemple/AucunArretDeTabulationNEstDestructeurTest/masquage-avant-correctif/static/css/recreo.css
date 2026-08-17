@@ -1,0 +1,11 @@
+/* S14-2 (BARRE-7, DEC-0033) : forme du masquage d'ADR-0022 telle qu'elle vivait en production
+   avant que S14-2 ne retire le lien "Les jeux" de l'en-tete (et cette regle avec lui). Ce fichier
+   est un fixture fige, jamais lu par l'application reelle : laFormeDeLaProductionAvantCeLotFaitEc
+   houerLaClause1 (AucunArretDeTabulationNEstDestructeurTest) rejoue une regression historique
+   d'ADR-0038 sur la forme exacte que le serveur rendait avant ce lot-la, et cette forme incluait
+   ce masquage. Le lire ici, plutot que dans la feuille de production qui ne le porte plus depuis
+   S14-2, garde la preuve d'algorithme intacte sans la recoupler a un mecanisme que la production a
+   depuis retire. */
+body:has(.ecran-de-jeu) .lien-accueil {
+    display: none;
+}

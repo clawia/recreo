@@ -18,25 +18,21 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 /**
- * S6-1, S6-2 (DEC-0012) : un en-tete permanent porte l'icone et une unique entree de menu vers
- * l'accueil, et le contenu de chaque ecran est centre dans une largeur maximale.
+ * S6-1, S6-2 (DEC-0012) : un en-tete permanent porte l'icone, le titre et le contenu de chaque
+ * ecran est centre dans une largeur maximale.
  *
  * <p>Rendu par le vrai moteur Thymeleaf via {@link MockMvc}, comme {@code PartieControllerTest} :
  * ce n'est pas un balayage de fichiers de production lus depuis le disque (ADR-0013), donc ce
  * test n'entre pas dans le recensement de {@code LesGardeFousSontMisALEpreuveTest} - il vise une
  * propriete du gabarit d'accueil rendu, pas une population derivee du systeme de fichiers.
  *
- * <p>Ce que ce test ne prouve pas : que l'entree de menu reste moins saillante qu'un bouton de
- * reponse ou "Encore !". Depuis l'arbitrage de nadia-prof du 2026-08-07 sur S6-9, cette entree n'est
- * plus visible sur les cinq etats de l'ecran de jeu, et la question ne se pose donc plus que sur
- * l'accueil - ou {@link LActionNeDeclarePasMoinsQueLaSortieTest} la confronte a {@code .demarrer}
- * (ADR-0022, second amendement du meme jour a ADR-0017). Ce test-ci verifie que l'entree
- * <b>existe</b> et qu'elle est unique, jamais qu'elle est visible : une visibilite est une propriete
- * du rendu. Le couple declaratif qui la produit est garde par
- * {@link LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest}. Ce qui reste hors de portee de la CI et
- * n'appartient qu'a nadia-prof, en jouant : la saillance rendue, qui depend de la couleur, de la
- * position et de la largeur des libelles (ADR-0017, points 1 a 3 de la meme section), et
- * l'invisibilite effective de l'entree sur les cinq etats de l'ecran de jeu.
+ * <p>S14-2 (BARRE-7, DEC-0033) : l'en-tete ne porte plus de lien de sortie vers l'accueil - le
+ * lien "Les jeux" qui y vivait est retire de tout ecran, jamais remplace par un comportement neuf.
+ * Seuls les points d'entree par niveau (ADR-0043, ADR-0044) restent actionnables dans l'en-tete.
+ * Ce que ce test ne prouve toujours pas : la saillance rendue de ces points d'entree, qui depend
+ * de la couleur, de la position et de la largeur des libelles (ADR-0017) - hors de portee de la
+ * CI, gardee par {@link LActionNeDeclarePasMoinsQueLaSortieTest} pour ce qui est declaratif, et
+ * par {@code nadia-prof} en jouant pour le reste.
  */
 @WebMvcTest(PartieController.class)
 @Import(PartieControllerTest.JeuDeTestConfiguration.class)
@@ -82,24 +78,27 @@ class EnTeteEtMenuTest {
     }
 
     /**
-     * S14-1 (avis-faisabilite de theo-archi, section 7.1) : remplace le comptage fixe a un seul
-     * element actionnable, qui epinglait la taille du depot au jour ou il a ete ecrit plutot qu'une
-     * propriete. La forme retenue interdit trois choses a la fois : un libelle de niveau ecrit en
-     * dur, un niveau du catalogue sans point d'entree, et un point d'entree sans niveau au
-     * catalogue - sans jamais ecrire d'effectif dans ce test (ADR-0006, ADR-0044).
+     * S14-2 (BARRE-7, DEC-0033) : remplace
+     * {@code leMenuDeLEnTeteContientUnPointDEntreeParNiveauEtUneSeuleSortieVersLAccueil} (S14-1,
+     * 2026-08-17), qui affirmait une sortie dans le menu de l'en-tete. Cette sortie - le lien
+     * "Les jeux" - est retiree de tout ecran par S14-2, sans etre remplacee par un comportement
+     * neuf (DEC-0033) : elle n'etait deja visible que sur l'accueil et, sur l'accueil non filtre,
+     * un appui dessus rendait le meme document. Le menu de l'en-tete ne porte donc plus qu'un
+     * point d'entree par niveau distinct du catalogue, dans l'ordre du catalogue - toujours sans
+     * effectif ecrit ici (ADR-0006, ADR-0044).
+     *
+     * <p><b>Propose pour confirmation ecrite de theo-archi (via sofia-sm), pas tranche seul</b> :
+     * remplacement d'un test que la story d'hier m'a fait ecrire, motive par le meme geste que
+     * {@code LActionNeDeclarePasMoinsQueLaSortieTest}.</p>
      */
     @Test
-    void leMenuDeLEnTeteContientUnPointDEntreeParNiveauEtUneSeuleSortieVersLAccueil() throws Exception {
+    void leMenuDeLEnTeteNePorteQuUnPointDEntreeParNiveauEtPlusAucuneSortie() throws Exception {
         Document page = page(new MockHttpSession());
 
-        Elements sorties = page.select("header [data-role=sortie]");
-        assertThat(sorties)
-                .as("ADR-0022 / S6-9 : le menu de l'en-tete ne contient qu'une seule sortie")
-                .hasSize(1);
-        assertThat(sorties.first().text())
-                .as("ADR-0022 / S6-9 : le libelle est \"Les jeux\", et c'est le geste par lequel "
-                        + "nadia-prof leve sa reserve 3 du 2026-08-07")
-                .isEqualTo("Les jeux");
+        assertThat(page.select("header [data-role=sortie]"))
+                .as("DEC-0033 / BARRE-7 : le lien \"Les jeux\" de l'en-tete est retire, jamais "
+                        + "remplace par un comportement neuf")
+                .isEmpty();
 
         List<String> niveauxDuCatalogue = partieUseCase.niveauxDuCatalogue();
         Elements pointsDEntree = page.select("header [data-role=entree]");
@@ -108,6 +107,27 @@ class EnTeteEtMenuTest {
                         + "catalogue, dans l'ordre du catalogue - le nombre n'est pas ecrit ici, il "
                         + "est celui que niveauxDuCatalogue() rend")
                 .containsExactlyElementsOf(niveauxDuCatalogue);
+    }
+
+    /**
+     * S14-2, critere 2 (docs/backlog/backlog.md), forme retenue par theo-archi apres relecture de
+     * ce lot : l'ensemble des actionnables de l'en-tete egale l'ensemble de ses
+     * {@code [data-role=entree]} - sans libelle, sans catalogue, sans effectif. Elle interdit
+     * exactement ce que le critere nomme (aucune troisieme boite actionnable a cote des puces de
+     * niveau) sans dependre de ce que {@code niveauxDuCatalogue()} rend ni de ce qu'un bouton dit.
+     */
+    @Test
+    void surLAccueilNonFiltreLesActionnablesDeLEnTeteSontExactementSesPointsDEntree() throws Exception {
+        Document page = page(new MockHttpSession());
+
+        Elements actionnables = page.select("header button, header a[href]");
+        Elements pointsDEntree = page.select("header [data-role=entree]");
+        assertThat(actionnables)
+                .as("S14-2 critere 2 : rien d'actionnable dans l'en-tete de l'accueil non filtre "
+                        + "hors de ses points d'entree par niveau")
+                .containsExactlyInAnyOrderElementsOf(pointsDEntree);
+        assertThat(page.select("header .icone-entete")).isNotEmpty();
+        assertThat(page.select("header .nom-site").text()).isEqualTo("Recreo");
     }
 
     @Test

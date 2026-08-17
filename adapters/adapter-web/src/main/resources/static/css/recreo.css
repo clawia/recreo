@@ -89,44 +89,26 @@ h1 {
     margin-right: auto;
 }
 
-.menu {
-    display: flex;
-}
+/* S14-2 (BARRE-7, DEC-0033) : .menu, .lien-accueil et leur regle de masquage
+   (body:has(.ecran-de-jeu) .lien-accueil { display: none }) sont retires avec l'element qu'ils
+   habillaient - le lien "Les jeux" de l'en-tete n'existe plus dans aucun gabarit.
+   Garder la regle de masquage, decorative, a ete essaye et refuse par deux garde-fous a la fois :
+   LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest la refuse elle-meme ("une regle qui masque une classe
+   absente est decorative", ADR-0022) et UnEcranNeGouvernePasLApparenceDUnAutreTest la refuse aussi
+   ("ce selecteur ne s'appliquera jamais", ADR-0031), puisque .lien-accueil n'etant plus permanent
+   nulle part, aucun document jouable ne peut plus porter ses deux jetons a la fois. Deux
+   garde-fous independants s'accordant pour la refuser, la retirer est le choix qui suit leur
+   verdict plutot que de l'esquiver.
+   Consequence assumee et signalee au lot (voir compte rendu) : .ecran-de-jeu perd le seul endroit
+   ou une regle maison le nommait, et LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest,
+   AucunArretDeTabulationNEstDestructeurTest et HabillageDesEcransTest en portent chacun une
+   consequence, documentee a l'endroit de chacun. */
 
-/* S6-1 : le lien de menu quitte l'ecran en cours comme le bouton "Les jeux" (ADR-0017,
-   data-role="sortie"), et reprend deliberement les memes composantes de boite que
-   .retour-accueil - taille de police, hauteur minimale, rembourrage - pour ne jamais depasser un
-   bouton d'action sur l'ecran ou il s'affiche. Contour blanc plutot que la couleur d'accent, parce
-   que le fond de l'en-tete est deja cette meme couleur.
-   ADR-0022 : depuis S6-9 ce lien ne s'affiche que sur l'accueil, ou il est confronte a .demarrer.
-   Il n'est plus confronte a .proposition ni a .encore : la regle de masquage ci-dessous fait qu'il
-   ne se montre jamais en meme temps qu'elles. */
-.lien-accueil {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 2.75rem;
-    font-size: 1.25rem;
-    color: var(--recreo-accent-texte);
-    background-color: transparent;
-    border: 0.125rem solid var(--recreo-accent-texte);
-    border-radius: 0.5rem;
-    padding: 0.6rem 1.1rem;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* ADR-0022 / S6-9 : une seule sortie par ecran de jeu, et c'est celle de la zone de contenu
-   (arbitrage de nadia-prof du 2026-08-07 : retirer le bouton du fragment laisserait la fin de
-   partie sans porte visible la ou l'enfant regarde). Le serveur ne rend que la zone #jeu, jamais
-   l'en-tete qui en est le frere : c'est donc le marqueur d'etat pose sur le contenu qui commande la
-   visibilite du lien, par un selecteur relationnel. Aucun JavaScript n'entre ici (ADR-0008,
-   ADR-0014 point 7), et l'element reste present dans le document (DEC-0012).
-   La forme de cette regle est un contrat lu par LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest :
-   body:has(.<marqueur>) .<habillage> { display: none }. La changer sans changer le garde-fou le
-   rend rouge. */
-body:has(.ecran-de-jeu) .lien-accueil {
-    display: none;
+/* .ecran-de-jeu ne porte aucun style propre - c'est un marqueur d'etat pour la feuille et pour les
+   garde-fous (ADR-0022, ADR-0027), jamais un habillage visuel. Regle vide, meme geste que
+   .message-jeu plus bas : nommer la classe pour HabillageDesEcransTest sans lui inventer une
+   apparence qui n'est pas due par cette story. */
+.ecran-de-jeu {
 }
 
 /* S6-2 : le contenu de chaque ecran (liste des jeux ou fragment de jeu) respire au-dessus et

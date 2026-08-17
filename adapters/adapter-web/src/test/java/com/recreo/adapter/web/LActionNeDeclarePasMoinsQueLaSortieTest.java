@@ -613,41 +613,30 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
     }
 
     /**
-     * Remplace {@code leLienDeLEnTeteEstConfronteAuxActionsDesEcransDeJeu}, epinglage du 2026-08-07
-     * supprime le meme jour. <b>Motif ecrit de la suppression</b>, exige par ADR-0013 : cet epinglage
-     * affirmait que le lien de l'en-tete est confronte a {@code .proposition} et a {@code .encore}.
-     * L'arbitrage de nadia-prof du 2026-08-07 sur S6-9 rend ce lien invisible sur les cinq etats de
-     * l'ecran de jeu (`FICHE-bandit-manchot-additions-cp.md`). Ces boutons ne s'affichent donc plus
-     * jamais ensemble : maintenir l'epinglage aurait exige de mesurer un ecran que l'enfant ne
-     * rencontre jamais, c'est-a-dire de garder vert un appariement sans objet - le defaut que la
-     * retro de s05 a sanctionne deux fois. Il n'est pas affaibli, il est <b>deplace sur son objet
-     * reel</b>.
+     * S14-2 (BARRE-7, DEC-0033) : retiree, remplace
+     * {@code leLienDeLEnTeteEstConfronteAuxSeulesActionsDeLAccueil}. <b>Motif ecrit de la
+     * suppression</b>, exige par ADR-0013 : cet epinglage affirmait qu'un couple
+     * {@code .btn.demarrer "Jouer"} contre {@code .btn.lien-accueil "Les jeux"} existait sur
+     * l'accueil. Le lien de l'en-tete est retire de tout gabarit par S14-2 (le lien "Les jeux" de
+     * l'en-tete n'est pas remplace par un comportement neuf) : aucun bouton {@code .lien-accueil}
+     * n'existe plus nulle part, donc ce couple ne peut plus se former, et sa seconde assertion
+     * (le lien n'accompagne plus les actions des ecrans de jeu) devient vraie a vide, sur un role
+     * qu'aucun bouton ne porte. Maintenir l'epinglage aurait exige de mesurer un bouton que
+     * l'enfant ne rencontre plus - la meme famille de defaut que la retro de s05 a sanctionne, et
+     * que la suppression de 2026-08-07 dans ce meme fichier avait deja fermee une fois pour le
+     * lien "Encore !".
      *
-     * <p>Cet objet reel est l'accueil : c'est le seul ecran ou le lien se montre, et il y accompagne
-     * les boutons de titre de jeu. La propriete d'ADR-0017 y vaut pleinement - un enfant qui regarde
-     * la liste des jeux ne doit pas voir la sortie plus saillante qu'un jeu a ouvrir.
+     * <p>Ce qui reste garde, et par quoi : le role {@code sortie}, lui, continue d'exister
+     * (sortie-pleine, retour-accueil) et reste confronte a des actions ailleurs
+     * ({@code aucuneSortieNeDeclarePlusQuUneActionDuMemeEcran}) ; le role {@code entree} des puces
+     * de niveau prend desormais seul la place de sujet confronte a {@code .demarrer} sur
+     * l'accueil, sans epinglage nomme - {@code rolesDominesJamaisConfrontes} suffit a garantir
+     * qu'il ne peut pas se derober silencieusement (ADR-0043).</p>
      *
-     * <p>La seconde assertion est celle qui empeche cette suppression d'etre une capitulation : elle
-     * exige que le lien ne soit <b>plus</b> confronte aux actions des ecrans de jeu. Elle rougirait si
-     * quelqu'un retirait la regle de masquage tout en gardant le lien dans l'en-tete, c'est-a-dire si
-     * l'arbitrage etait defait en silence. Les deux assertions se tiennent donc par les deux bouts :
-     * l'une interdit que le couple restant disparaisse, l'autre interdit que les couples retires
-     * reviennent.
+     * <p><b>Propose pour confirmation ecrite de theo-archi (via sofia-sm), pas tranche seul</b> :
+     * ce retrait suit le patron deja etabli deux fois dans ce fichier pour un epinglage dont le
+     * sujet a disparu de la production, mais il n'a pas encore ete relu par lui.</p>
      */
-    @Test
-    void leLienDeLEnTeteEstConfronteAuxSeulesActionsDeLAccueil() {
-        List<String> couples = couplesConfrontes(RACINE_PRODUCTION, RACINE_PRODUCTION);
-
-        assertThat(couples)
-                .as("le lien de l'en-tete se montre sur l'accueil, il s'y compare aux jeux a ouvrir")
-                .contains("ecran templates/accueil.html : .btn.demarrer \"Jouer\" contre "
-                        + ".btn.lien-accueil \"Les jeux\"");
-        assertThat(couples)
-                .as("ADR-0022 : masque sur les ecrans de jeu, ce lien n'y accompagne plus aucune "
-                        + "action ; l'y confronter mesurerait un ecran que l'enfant ne voit jamais")
-                .noneMatch(couple -> couple.contains(".btn.lien-accueil")
-                        && (couple.contains(".btn.proposition") || couple.contains(".btn.encore")));
-    }
 
     /**
      * L'en-tete permanent de S6-1 pose un lien de sortie hors de la zone echangee : il s'affiche

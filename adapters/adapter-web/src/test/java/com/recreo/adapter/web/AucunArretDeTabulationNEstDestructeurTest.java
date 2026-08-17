@@ -750,13 +750,26 @@ class AucunArretDeTabulationNEstDestructeurTest {
      * est celle, documentee et datee, que ce lot a changee ({@code POST /retour} detruisait alors
      * la partie inconditionnellement). Reconstruire l'ancien controleur pour cette seule preuve
      * d'algorithme couterait plus que l'algorithme qu'elle eprouve.</p>
+     *
+     * <p>S14-2 (BARRE-7, DEC-0033), amendement : le masquage d'ADR-0022 se lisait jusqu'ici dans
+     * la feuille de <b>production</b> ({@code RACINE_PRODUCTION}), qui ne le porte plus depuis que
+     * S14-2 retire le lien "Les jeux" de l'en-tete (et sa regle de masquage avec lui). Cette
+     * epreuve rejoue une regression figee dans le temps, independante de ce que la production
+     * porte aujourd'hui ; la recoupler a une feuille qui evolue pour d'autres motifs que le sien
+     * l'aurait fait rougir pour un defaut qui n'est pas celui qu'elle nomme. Le masquage se lit
+     * donc desormais dans un fixture fige a cote du gabarit fautif
+     * ({@code masquage-avant-correctif/static/css/recreo.css}), forme exacte de la regle
+     * qu'ADR-0022 declarait a la date de cette regression - <b>propose pour confirmation ecrite de
+     * theo-archi (via sofia-sm)</b>, au meme titre que les trois autres garde-fous que ce lot
+     * touche.</p>
      */
     @Test
     void laFormeDeLaProductionAvantCeLotFaitEchouerLaClause1() throws Exception {
         Document fautif = Jsoup.parse(
                 CONTRE_EXEMPLE.resolve("manche-revelation-avant-correctif.html").toFile(), "UTF-8");
         List<LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.Masquage> masquages =
-                LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.masquages(RACINE_PRODUCTION);
+                LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.masquages(
+                        CONTRE_EXEMPLE.resolve("masquage-avant-correctif"));
         List<Element> arrets = arretsDeTabulation(fautif, masquages);
 
         assertThat(arrets).as("le jeu fautif doit fournir au moins un arret").isNotEmpty();
