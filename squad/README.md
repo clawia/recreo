@@ -286,6 +286,15 @@ verdict dans la fiche de conformite. Si c'est `VALIDE`, Camille passe la ligne d
 **7. Review.** Sofia ecrit `review.md` : horodatage de fin, duree, rapport de Yanis, confirmation
 de Theo, corrections du relecteur, tableau des obstacles, verdict de Nadia.
 
+**A la review, Sofia verifie physiquement chaque porte de sortie nommee au planning, pas
+seulement les fichiers de ceremonie** (amendement s13, cloture de s13). Une porte de sortie qui
+cite une action precise - "reverifie par Nadia sur `FICHE-<jeu>.md`", "jugee par Nadia" - est un
+engagement au meme titre qu'un fichier de ceremonie : elle ne compte comme tenue que si l'action
+existe physiquement sur le disque a la date de la review, jamais parce qu'elle a ete ecrite comme
+attendue au planning. En s13, deux portes de sortie ecrites au planning (S13-4/S13-5, S12-5) n'ont
+jamais ete franchies alors que le code correspondant etait fusionne et vert, et rien ni personne ne
+l'avait signale avant que Sofia ne verifie chaque porte ligne par ligne a la cloture.
+
 **8. Cloture.** Sofia lance le rapport de tokens et ecrit `RAPPORT.md`.
 
 **9. Retro.** Sofia anime, ecrit `retro.md`, et amende ce README si le process doit evoluer.

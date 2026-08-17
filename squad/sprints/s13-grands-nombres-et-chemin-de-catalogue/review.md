@@ -271,3 +271,184 @@ Elle doit revenir dans le meme geste que l'entree.
 
 **Ce dont je reste la seule garde s'agrandit d'une entree** : qu'aucun choix ne passe sous le pli.
 Rien ne le mesure, et huit items y echappent aujourd'hui.
+
+---
+
+## Cloture du sprint - sofia-sm, 2026-08-17
+
+- **Horodatage de debut** : 2026-08-15 16:18 (`planning.md`)
+- **Horodatage de fin** : 2026-08-17 09:16
+- **Increment audite** : `round-two` a `8d846c0`, arbre propre (`git status --porcelain` vide avant
+  et apres chaque commande).
+
+Ce qui suit complete les blocs de `nadia-prof` ci-dessus, sans en effacer ni en reformuler aucun.
+
+### Porte technique - rejouee par moi, jamais recopiee
+
+`JAVA_HOME` pointe sur le JDK 21.0.10 le temps de chaque commande (`outils/verifier-jdk.sh` :
+`java` du `PATH` en 1.8.0_202, fichier de toolchains present sous un nom non lu par Maven -
+`mvn -version` confirme malgre tout `Java version: 21.0.10` une fois `JAVA_HOME` positionne, le
+nom errone du fichier n'empeche donc pas la compilation, seulement sa detection automatique).
+
+`mvn -B clean verify`, un seul passage complet, jamais un `-pl` seul : **BUILD SUCCESS**, six
+modules en SUCCESS.
+
+| Module | Tests |
+|---|---|
+| domain | 47 |
+| application | 7 |
+| adapter-web | 229 |
+| adapter-content | 120 |
+| bootstrap (surefire) | 80 |
+| bootstrap (failsafe) | 6 |
+| **total** | **489** |
+
+**489 confirme**, chiffre identique a celui de `rapport-qualite.md` (`yanis-qa`, tete `a948785`) et
+inchange depuis (aucun commit de production entre `a948785` et `8d846c0`).
+
+**28 regles ArchUnit, recompte par une methode stricte** (motif `ArchRule <nom> =`, pas la seule
+sous-chaine `ArchRule `, qui compte a tort la constante `DECLARATION_DE_REGLE` et un commentaire de
+`LesGardeFousSontMisALEpreuveTest`) : 30 declarations brutes sur `src/test/java` des cinq modules,
+moins 2 dans le faux module de contre-exemple (`RegleContreExemple.java`, sous
+`src/test/resources`) = **28**, repartis `adapter-web` 1, `bootstrap` 27. Identique a
+`confirmation-archunit.md` et `rapport-qualite.md`.
+
+**Garde-fou de chemins**, rejoue comme la CI :
+`git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' | bash .github/scripts/verifier-chemins.sh`
+-> "Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies.", **code de sortie
+0**.
+
+### Rapport qualite
+
+`squad/sprints/s13-grands-nombres-et-chemin-de-catalogue/rapport-qualite.md` (`yanis-qa`,
+2026-08-17, tete `a948785`) : BUILD SUCCESS rejoue deux fois, 489 tests, 28 regles, garde-fou de
+chemins a 0 - je retrouve les memes chiffres sur `8d846c0`. Deux mutations sur la regle de la voie 4
+(elle mord sur l'etat reel refuse par `nadia-prof`, et reste vert a tort sur un `white-space:
+nowrap` qui contourne le couple qu'elle garde). Un quatrieme axe de rang existe (la position a
+l'ecran), enumerable par lecture du tirage Fisher-Yates mais mesure par aucun test. Les quatre
+tests au motif fragile signales par `marc-dev` sont confirmes par mutation reelle sur
+`catalogue.yaml`. Deux chiffres non corriges verifies au hasard (13/24 sur `cm1-mesures`, 18/20 sur
+`cm1-perimetre`) tiennent exactement. Detail complet dans le fichier lui-meme, non reproduit ici.
+
+### Confirmation ArchUnit - un critere de cloture que je m'etais impose n'est pas tenu, et je tranche
+
+`theo-archi` a publie `confirmation-archunit.md` a l'**ouverture** du sprint (`9430cfd`,
+2026-08-15, commit `f9c5b57`), en ecrivant explicitement qu'il l'amenderait "a la review, sur
+l'arbre fusionne, section ajoutee et non reecrite". `yanis-qa` releve dans `rapport-qualite.md`
+qu'a `a948785` ce fichier compte toujours 143 lignes et un seul commit : **aucune section de
+cloture n'a ete ajoutee**. Je verifie moi-meme sur `8d846c0` : c'est toujours vrai, `git log
+--follow` sur ce fichier ne rend qu'un seul commit.
+
+**Je ne fabrique pas cette section a la place de `theo-archi`** - ce serait ecrire une ceremonie qui
+n'a pas eu lieu, sous un nom qui n'est pas le mien. Je tranche donc ainsi :
+
+1. **Le critere que j'avais pose n'est pas rempli.** Ce n'est ni la quatrieme ni la cinquieme
+   absence de la serie s09-s12 (le fichier existe, date de l'ouverture) : c'est une **premiere**,
+   d'une nature differente - une republication promise et non tenue plutot qu'une republication
+   absente. Je le nomme comme tel plutot que de le confondre avec la serie qu'il devait clore.
+2. **Ce que ca change sur le fond : rien.** L'amendement du 2026-08-15 a `ADR-0013` (ecrit par
+   `theo-archi` dans ce meme fichier, section 4) a deja retire toute clause qui dependait de cette
+   republication : "une clause dont l'execution depend d'une ceremonie n'est pas une clause". Les
+   deux cliquets resserres ce sprint (`hasSize` au lieu de `hasSizeLessThanOrEqualTo`) sont des
+   tests, verts sur `8d846c0` comme partout ailleurs dans ce rapport. Le compte de regles (28) et de
+   tests (489) est reverifie deux fois de plus depuis l'ouverture - par `yanis-qa` puis par moi -
+   sans dependre de ce fichier.
+3. **Ce que je route a s14** : `theo-archi` ecrit la section de cloture qu'il avait annoncee, ou
+   ecrit explicitement dans `confirmation-archunit.md` pourquoi il juge qu'elle n'apporte plus rien
+   depuis que son propre amendement a decouple le mecanisme de la ceremonie - les deux reponses sont
+   recevables, l'absence de reponse ne l'est pas une seconde fois.
+
+### Corrections du relecteur-pedagogique
+
+- **Titre de `DEC-0031` fusionne en un seul titre de niveau 1** (`3fcafa6`) : le fichier portait
+  deux lignes commencant par `#`, corrige sans toucher au texte.
+- **Reserve F11 : un chiffre de production perime, non corrige par lui.** `FICHE-bandit-manchot-
+  additions-cp.md` porte, dans la section datee du 2026-08-15 ecrite par `nadia-prof`, la phrase
+  "Les huit jeux partagent le meme gabarit de manche". Le catalogue jouable compte aujourd'hui
+  **onze** jeux (`catalogue.yaml`), et en comptait dix des la reinstallation de
+  `bandit-manchot-grands-nombres-cm1` cette semaine. Le relecteur ne l'a pas corrige : c'est un
+  chiffre de contenu de production, pas une question de redaction, et sa correction revient a son
+  autrice. **Je le route a `nadia-prof`** : la phrase ne change rien a la portee de sa demande
+  (un seul jeu suffit toujours a renseigner le gabarit partage), mais le chiffre cite doit etre
+  corrige par une note datee plutot que laisse faux dans un fichier qui fait foi.
+
+### Tableau des obstacles du sprint
+
+| Description | Categorie | Destinataire | Statut |
+|---|---|---|---|
+| `confirmation-archunit.md` publie a l'ouverture, section de cloture promise non ecrite | technique / methode | `theo-archi` | **ouvert**, route a s14, voir ci-dessus |
+| Reserve F11 : "les huit jeux" est un chiffre perime (le catalogue en compte onze) | pedagogie / redaction de contenu | `nadia-prof` | **ouvert**, route par cette review |
+| Done pedagogique de S13-4 et S13-5 jamais rejoue par `nadia-prof` sur `FICHE-bandit-manchot-tables-multiplication-cm1.md` apres la correction de `lea-dev` (`436b159`) | pedagogie | `nadia-prof` | **ouvert** - voir "Ce que j'ai trouve et qui n'etait annonce par personne" |
+| Jugement pedagogique de S12-5 (retrait de l'`aria-label`) jamais rendu par `nadia-prof`, alors que la porte de sortie du planning l'exigeait explicitement | pedagogie | `nadia-prof` | **ouvert** - idem |
+| `MATRICE-couverture.md` et `FILE-ATTENTE.md` non mis a jour depuis les verdicts du 2026-08-16 (soir) sur les grands nombres et le perimetre | produit / methode | `camille-po` | **ouvert**, a faire a cette review |
+| Le quatrieme axe de rang (position a l'ecran) est enumerable par lecture de code mais n'est mesure par aucun test | technique | `theo-archi` (mecanisme), `camille-po` (story) | **route a s14** |
+| Quatre tests au motif fragile (`leJeuDuCatalogue...ChargeBienLePaquet...`) et le couple retrait/restitution de methode de test non garde par un mecanisme | technique | `theo-archi` | **route a s14** |
+| Le premier critere d'acceptation de S13-4, tel qu'ecrit ("se rapproche des 99 items"), n'etait pas encodable en test ; `theo-archi` l'a substitue par une forme plus forte et gratuite | methode | `camille-po` (ecriture de critere), pour reference future | **clos ce sprint sur le fond, retenu comme lecon pour s14** |
+| JDK 21 declare absent par un troisieme agent ce sprint (`sofia-sm` au planning, `theo-archi`, `yanis-qa`) : le fichier de toolchains du poste s'appelle `toochains.xml`, jamais lu par Maven | infrastructure de poste, hors depot | aucun - deja signale a l'utilisatrice | **rien a faire cote depot** ; voir ci-dessous |
+| Reserve H (U+202F, ecart mesure 3 a 5 % contre 20 a 35 % necessaires) et reserve I (les 7 items "lire", rang jamais la plus petite valeur) | pedagogie | `nadia-prof` | **non bloquantes**, deja tracees dans la FICHE |
+
+**Sur le JDK 21, ce que le depot peut faire, et ce qu'il fait deja.** Le fichier fautif
+(`~/.m2/toochains.xml`) vit hors du depot, sur le poste de chaque agent : aucun commit ne peut
+renommer un fichier qu'il ne voit jamais. `outils/verifier-jdk.sh` est deja la reponse que ce depot
+peut apporter et l'apporte depuis s06 : il detecte le JDK 21 par une methode qui ne suppose pas que
+Maven lise le fichier de toolchains, rend un constat citable, et chaque agent l'utilise pour
+positionner `JAVA_HOME` avant chaque commande plutot que de compter sur la detection automatique.
+Rien de plus n'est faisable depuis le depot ; renommer `toochains.xml` en `toolchains.xml` reste une
+action a faire une fois, sur le poste, hors de ce depot.
+
+### Ce que j'ai trouve et qui n'etait annonce par personne
+
+En verifiant les portes de sortie du planning ligne par ligne plutot que de les tenir pour
+acquises :
+
+**S13-4 et S13-5.** La porte de sortie du planning exigeait, pour chacune, "reverifie par
+`nadia-prof` sur `FICHE-bandit-manchot-tables-multiplication-cm1.md`". La correction technique de
+`lea-dev` (`436b159`, fusionnee en `38657eb`) est livree et verte. **Aucun commit posterieur ne
+touche cette fiche** (`git log` sur le fichier s'arrete a `b50d4c5`, s12) : `nadia-prof` n'a jamais
+rejoue l'increment corrige. Le Done pedagogique de cette ligne reste donc celui du 2026-08-15
+(sprint 12), sur un contenu qui a change depuis. Je ne prononce aucun Done a sa place ; je constate
+que la porte que j'avais moi-meme ecrite au planning n'est pas franchie.
+
+**Un element du travail de `nadia-prof` sur cette meme reserve a ete perdu.** Le commit `653b915`
+("reserve B des tables - 0 sur 1x1 est un distracteur legitime, S13-5 se limite a 11 et 110") existe
+sur le worktree `s13-nadia-audit` (tete `cfb17dc`) mais **n'est l'ancetre d'aucun commit de
+`round-two`** - a la difference du reste de ce worktree, dont le contenu equivalent a ete fusionne
+par un autre commit (`a7ebb29`). La bonne nouvelle : `lea-dev` a corrige exactement dans l'esprit de
+cette note (le `0` de `1 x 1` n'est pas touche, seuls `11` et `110` le sont), donc aucune matiere
+n'a ete perdue sur le fond. Mais la note elle-meme n'est plus dans le depot, et c'est la preuve
+concrete d'un point que ce sprint a deja nomme ailleurs (`theo-archi`, sur le contenu mesure) :
+**un commit sur un worktree qui n'est jamais devenu l'ancetre de `round-two` n'existe pas pour le
+depot**, meme si son auteur l'a bien ecrit une fois. Je le signale plutot que de le laisser filer :
+rien ne se reouvre ici puisque le fond est sauf, mais je verifie desormais la lignee de chaque
+worktree avant de conclure qu'un travail est capture, pas seulement qu'il a ete produit.
+
+**S12-5 (retrait de l'`aria-label`).** La porte de sortie exigeait ce jugement "jugee par
+`nadia-prof`". Aucun fichier de ce sprint - ni `review.md`, ni `rapport-qualite.md`, ni
+`FICHE-bandit-manchot-additions-cp.md` - ne porte de verdict post-fusion sur ce point precis. Le
+Done technique est atteint (`ADR-0039`, extension du garde-fou aux attributs, mesuree sur l'etat
+fautif reel). Le Done pedagogique de ce point n'est pas prononce.
+
+### Etat des worktrees
+
+24 worktrees dedies au sprint 13 restent enregistres sous `recreo-wt/`. 23 sont des ancetres de
+`round-two` (`git merge-base --is-ancestor <branche> round-two` confirme) : leur contenu est
+integralement capture, ils peuvent etre supprimes sans perte. **Un seul ne l'est pas** :
+`s13-nadia-audit` (tete `cfb17dc`) - voir ci-dessus, contenu equivalent capture par ailleurs sauf le
+commit `653b915`. Je ne supprime aucun worktree dans ce geste : ce n'est pas demande, et la
+suppression est une operation que je fais sur instruction, pas de ma seule initiative.
+
+### Avis de `nadia-prof` et Done pedagogique - synthese, je ne prononce rien
+
+Recapitulatif des verdicts ecrits par `nadia-prof` ci-dessus, sans reformulation :
+
+| Fiche | Verdict le plus recent | Ce qui reste ouvert |
+|---|---|---|
+| `bandit-manchot-grands-nombres-cm1` | VALIDE SOUS RESERVE (2026-08-16, soir) | VR-4 non tenue (huit items sous le pli) ; reserves H et I non bloquantes |
+| `bandit-manchot-perimetre-cm1` | VALIDE SOUS RESERVE, refus leve (2026-08-16, soir) | passage a `couvert-valide` sur la matrice, a la charge de `camille-po` |
+| `bandit-manchot-conversions-unites-cm1` (Les mesures) | Done maintenu, reserve de rendu levee | reserve neuve sur la longueur/largeur comme signal (story s14) |
+| `bandit-manchot-tables-multiplication-cm1` | inchange depuis s12 - **jamais rejoue sur le code de `lea-dev`** | reverification a faire, voir ci-dessus |
+| `bandit-manchot-additions-cp` (F11) | F11 reste OUVERTE, protocole ecrit pour l'ecoute de l'utilisatrice | ecoute reelle a faire hors squad |
+
+**Aucune ligne de `MATRICE-couverture.md` n'est mise a jour par moi.** Cette mise a jour, au vu des
+verdicts ci-dessus, revient a `camille-po` (`squad/README.md`, tableau des responsabilites) et n'a
+pas encore eu lieu depuis les verdicts du 2026-08-16 soir - voir le tableau des obstacles.
