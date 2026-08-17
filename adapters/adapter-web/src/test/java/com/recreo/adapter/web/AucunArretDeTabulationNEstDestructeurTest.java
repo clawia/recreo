@@ -697,6 +697,19 @@ class AucunArretDeTabulationNEstDestructeurTest {
     }
 
     /**
+     * S14-2, correction du Done pedagogique refuse par nadia-prof (BARRE-1, BARRE-2) : retiree
+     * avant d'avoir ete commitee. <b>Motif ecrit</b>, exige par la relecture de theo-archi
+     * (ADR-0022, troisieme amendement, section 7.2) : "deux boites" et "une boite" ne sont pas des
+     * proprietes, ce sont les contenus du jour de deux ecrans - les ecrire dans une assertion
+     * referait a chaque arbitrage futur de nadia-prof ce que l'oscillation de la clause 2
+     * d'ADR-0022 vient de couter au sprint. La propriete que ces deux chiffres visaient - aucun
+     * element actionnable permanent ne survit sur un ecran exclusif - est portee, sans aucun
+     * nombre, par
+     * {@code LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.verifierQuAucunActionnablePermanentNeSurvitSurUnEcranExclusif}
+     * (clause B).
+     */
+
+    /**
      * ADR-0013 obligation 1 : le perimetre des routes vient du controleur, jamais de la liste
      * ci-dessus. Une route neuve que ce garde-fou n'exerce pas le rend rouge.
      */

@@ -3,8 +3,12 @@
 <body>
 <!-- ADR-0020 : ce fragment ne porte pas l'identifiant de la zone qui le recoit.
      ADR-0022 : marqueur d'etat "ecran-de-jeu", voir fragments/manche.html. Sur cet ecran
-     "Recommencer" reste la seule chose pressable (arbitrage de nadia-prof du 2026-08-07). -->
-<div th:fragment="erreur" class="ecran-de-jeu">
+     "Recommencer" reste la seule chose pressable (arbitrage de nadia-prof du 2026-08-07).
+     S14-2, correction du Done pedagogique refuse (nadia-prof, BARRE-2 ; theo-archi, ADR-0022
+     troisieme amendement) : c'est l'ecran ou l'enfant est le plus perdu ; la barre de niveaux de
+     l'en-tete y ajoutait deux boites de plus. "ecran-exclusif" masque cet habillage permanent ici
+     - "Recommencer" est le seul chemin que cet ecran ouvre, voir fragments/confirmation.html. -->
+<div th:fragment="erreur" class="ecran-de-jeu ecran-exclusif">
     <p class="erreur">Oups ! Le jeu a un souci.</p>
     <a class="btn recommencer" data-role="action" href="/">Recommencer</a>
 </div>
