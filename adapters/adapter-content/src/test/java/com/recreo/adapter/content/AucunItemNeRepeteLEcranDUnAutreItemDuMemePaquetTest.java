@@ -128,7 +128,8 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
 
     /**
      * Budget de tirages par paquet. Il sert a distinguer une source finie, qui s'epuise bien avant
-     * (le plus gros paquet du depot en compte 25), d'une source combinatoire, qui ne s'epuise jamais.
+     * (le plus gros paquet du depot en compte 99 items, cm1-tables-multiplication, mesure du
+     * 2026-08-17), d'une source combinatoire, qui ne s'epuise jamais.
      */
     private static final int BUDGET_DE_TIRAGES = 500;
 
