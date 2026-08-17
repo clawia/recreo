@@ -3,12 +3,21 @@
 - **Increment** : deux boutons d'entree par niveau (CP / CM1) dans l'en-tete de recreo, toujours
   visibles y compris sur un ecran de jeu, story `S14-1` (`docs/backlog/backlog.md`, section
   "Sprint 14").
-- **Statut global** : **arbitrage prealable RENDU le 2026-08-17 par `nadia-prof`** - la story peut
-  etre affectee au planning. **Variante 1 d'`ines-design` (bandeau empile) RETENUE, variante 2
-  (defilement horizontal) REFUSEE**, sous **neuf conditions bloquantes BARRE-1 a BARRE-9** et avec
-  **cinq reserves non bloquantes R-BARRE-1 a R-BARRE-5**, toutes au bloc de validation. Ce n'est pas
-  un Done pedagogique : celui de S14-1 sera prononce en jouant l'increment livre, et il pourra etre
-  refuse pour ce que seul le rendu montre, meme si les neuf conditions sont tenues
+- **Statut global** : **Done pedagogique REFUSE le 2026-08-17 par `nadia-prof`**, apres avoir joue
+  l'increment fusionne (`911af6a`). **Deux motifs, et ce sont deux de mes neuf conditions ecrites
+  avant le code** : l'ecran de confirmation porte **quatre** boites pressables au lieu de deux
+  (BARRE-1), dont les deux puces qui viennent d'ouvrir cet ecran et qui ne repondent plus rien si on
+  les represse ; l'ecran d'erreur en porte **trois** au lieu d'une (BARRE-2). **Sept conditions sur
+  neuf sont tenues, deux mieux que ce que je demandais**, et je corrige **deux choses de ma main** :
+  le texte de BARRE-3, que j'avais ecrit inapplicable, et un chiffre de prevision que la mesure demode
+  a l'avantage de l'increment. Les deux motifs se corrigent par une regle de visibilite sur deux
+  ecrans, **pas par une reprise de la barre**, qui est bonne : le gain annonce est verifie, la liste
+  filtree sur CP tient entiere au-dessus du pli. **Ce refus ne bloque pas le sprint suivant** et la
+  barre peut rester en production si `camille-po` le decide. Detail au bloc de validation.
+- **Arbitrage prealable RENDU le 2026-08-17** par la meme autrice, non efface et lisible sous le
+  verdict : **variante 1 d'`ines-design` (bandeau empile) RETENUE, variante 2 (defilement horizontal)
+  REFUSEE**, sous **neuf conditions bloquantes BARRE-1 a BARRE-9** et avec **cinq reserves non
+  bloquantes R-BARRE-1 a R-BARRE-5**
   (`DEC-0032-perimetre-sprint-14-barre-entree-niveau-arbitrage-prealable-matiere-differee.md`,
   section 1).
 - **Ce que cette story rouvre, et pourquoi cette fiche existe avant tout code** : elle ajoute deux
@@ -17,10 +26,16 @@
   qu'un enfant hesite entre plusieurs elements qui ressemblent a une sortie. La demande vient de
   l'utilisatrice, qui l'assume en connaissance de cet arbitrage anterieur - ce n'est pas une
   reouverture que `camille-po` propose de son propre chef, voir `DEC-0032` pour le detail.
-- **Releves de mesure** : `squad/conformite/releves-s14/`, sept captures a 360 px et au pli de 640 px,
-  produites par `outils/mesurer-rendu.sh 360 <url> <png> 640` sur l'application reelle.
-- **Derniere mise a jour** : 2026-08-17 (arbitrage prealable rendu par `nadia-prof` ; ouverture par
-  `camille-po` le meme jour, bloc de validation alors vide).
+- **Releves de mesure** : `squad/conformite/releves-s14/`, **quatorze** captures a 360 px et au pli de
+  640 px, produites par `outils/mesurer-rendu.sh 360 <url> <png> 640` sur l'application reelle - sept
+  prefixees `barre-` pour l'arbitrage prealable, sept prefixees `livre-` pour le verdict sur
+  l'increment.
+- **Deux points routes a `nadia-prof` et traites dans le verdict** : l'exemption des libelles "CP" et
+  "CM1" au garde-fou de texte accentue (`yanis-qa`) - **jugee legitime, avec sa frontiere ecrite, et le
+  trou du garde-fou a fermer avant s15** ; et le residu de 11 mutations sur 121 qu'`ADR-0045` laisse
+  sans automate (`theo-archi`) - **pris, sous deux clauses verifiables N-1 et N-2**.
+- **Derniere mise a jour** : 2026-08-17 (Done pedagogique de S14-1 REFUSE par `nadia-prof` ; arbitrage
+  prealable du meme jour inchange ; ouverture par `camille-po` le meme jour).
 
 ## Competences visees
 
@@ -50,6 +65,275 @@ Cette story n'ouvre, ne ferme et ne rejuge aucune ligne de `squad/programme/MATR
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. Il reste vide tant qu'aucun
 > arbitrage prealable n'a ete rendu et qu'aucun increment n'a ete livre et joue.
+
+### Done pedagogique du 2026-08-17 (s14) sur S14-1 - REFUSE, deux motifs, et tout le reste est credite - le plus recent de cette fiche
+
+> **Ce que cette section fait.** Elle prononce - ici, elle **refuse** - le Done pedagogique de
+> **S14-1** sur l'increment fusionne, apres l'avoir joue. Elle **n'efface pas** l'arbitrage prealable
+> du meme jour, qui reste lisible en entier en dessous, et elle **n'ajoute aucune condition neuve** :
+> les deux motifs sont deux des neuf conditions que j'avais ecrites **avant** le code. Elle corrige en
+> revanche deux choses de ma main : le **texte** de BARRE-3, que j'avais ecrit inapplicable, et un
+> **chiffre** de prevision que la mesure demode a l'avantage de l'increment.
+
+- **Verdict** : **REFUSE**. Aucun Done pedagogique. **Motif, en deux phrases** : sur l'ecran de
+  confirmation avant abandon, l'enfant a **quatre** boites pressables au lieu des deux que BARRE-1
+  exige, et **deux d'entre elles sont la puce qu'il vient de presser**, qui ne repond plus rien si
+  on la represse ; sur l'ecran d'erreur, il en a **trois** au lieu de la seule que BARRE-2 exige, sur
+  l'ecran ou il est le plus perdu. **Les deux se corrigent par une regle de visibilite sur deux
+  ecrans, pas par une reprise de la barre**, qui est bonne.
+- **Ce refus ne bloque pas le sprint suivant.** Il renvoie l'increment a `camille-po`, qui en fait du
+  backlog. **La barre reste en production en l'etat si elle le decide** : elle n'est ni fausse, ni
+  dangereuse, et elle ne detruit aucune partie - je l'ai verifie en jouant.
+- **Auteur** : nadia-prof. **Increment juge** : `round-two` a `911af6a`, worktree `s14-nadia-porte`,
+  descendance verifiee par `outils/verifier-lignee.sh`, aucun fichier de production modifie de mon
+  fait.
+- **Porte technique, verifiee par moi et non prise sur parole** : `bash outils/mvn-jdk21.sh -B clean
+  verify` sur mon worktree, **BUILD SUCCESS, 507 tests, 0 echec**. Je ne juge pas un jeu qui plante ;
+  celui-ci ne plante pas.
+
+#### 0. Comment j'ai joue, et ce que je declare degrade
+
+**J'ai joue.** Jar reconstruit sur le JDK de la toolchain 21, application servie sur un port a moi,
+et **j'ai fait les gestes qui m'inquietaient** : presser CP sans partie, presser CM1 sans partie,
+demarrer une partie puis presser une puce, verifier que la partie est encore la apres l'ouverture de
+la confirmation, confirmer depuis la puce, provoquer l'ecran d'erreur, et jouer une partie de
+"Les complements a 10" jusqu'a "C'est fini !". Serveur et service de fichiers **arretes par leur PID
+reel, jamais par nom d'image**.
+
+**Methode des captures, et elle est la meme que celle que j'ai acceptee de `theo-archi` le
+2026-08-14** : le document complet est celui que le serveur rend pour la racine ; l'etat echange est
+obtenu en remplacant le contenu de `#jeu` par le fragment que le serveur rend **reellement** pour la
+route que la puce ou le bouton appelle - c'est-a-dire en refaisant cote serveur ce que
+`hx-target="#jeu" hx-swap="innerHTML"` fait cote navigateur. Aucune feuille de style n'est dupliquee
+ni modifiee. Captures :
+
+```
+outils/mesurer-rendu.sh 360 <url> <png> 640
+```
+
+Sept captures dans `squad/conformite/releves-s14/`, prefixees `livre-` :
+
+| Capture | Ce qu'elle etablit |
+|---|---|
+| `livre-1-accueil-complet-360x640.png` | en-tete a 142 px, un seul rang de puces, 6 jeux entiers sur 11, le septieme coupe |
+| `livre-2-accueil-filtre-cp-360x640.png` | **les six jeux de CP entiers au-dessus du pli, avec de la marge** |
+| `livre-3-manche-360x640.png` | l'ordre de lecture : score, consigne, enonce, propositions, **puis** la sortie |
+| `livre-4-confirmation-depuis-une-puce-360x640.png` | **quatre boites pressables** - le motif 1 du refus |
+| `livre-5-erreur-360x640.png` | **trois boites pressables** - le motif 2 du refus |
+| `livre-6-fin-de-partie-360x640.png` | un seul "Les jeux", en aplat, dans la zone de contenu |
+| `livre-7-manche-grands-nombres-360x640.png` | le meme item que ce matin, pour chiffrer ma reserve J |
+
+**Ce que je declare degrade.**
+
+- **Je n'ai pas joue au doigt sur un telephone**, ni observe un enfant. La question de `camille-po` -
+  un enfant de CP confond-il une puce et une sortie - **je ne peux pas y repondre par une mesure**.
+  Ce que je peux faire, et que j'ai fait, c'est compter les boites et regarder leur place. C'est la
+  meme limite irreductible que le 2026-08-14, et c'est la plus serieuse de ce bloc.
+- **Je n'ai pas essaye la tabulation au clavier.** L'ordre des arrets que je cite au 7 est **lu dans
+  l'ordre du document**, pas eprouve avec un clavier.
+- **Un seul item echantillonne** pour les grands nombres, choisi parce que c'est celui que j'avais
+  deja mesure ce matin, pour que les deux chiffres soient comparables.
+
+#### 1. Etat de mes neuf conditions, verifiees une par une
+
+| | Etat | Ce que j'ai constate, et comment |
+|---|---|---|
+| **BARRE-1** | **NON TENUE** | Capture `livre-4` : **quatre** boites pressables sur l'ecran de confirmation - CP, CM1, "Continuer la partie", "Les jeux". Ma condition en exigeait **deux**. Motif detaille au 2. |
+| **BARRE-2** | **NON TENUE** | Capture `livre-5` : **trois** boites pressables sur l'ecran d'erreur - CP, CM1, "Recommencer". Ma condition en exigeait **une**. Motif detaille au 2. |
+| **BARRE-3** | **TENUE sur son objet**, et **mon texte etait fautif** | Capture `livre-3` : la colonne de contenu d'une manche commence par "Score : 0" et la sortie est passee **sous les propositions**. C'est mon propre remede de 2026-08-07, applique pour la premiere fois. Le compte litteral que j'avais ecrit etait inapplicable : voir ma correction au 4. |
+| **BARRE-4** | **TENUE** | Captures `livre-1` a `livre-6` : les puces ne portent que "CP" et "CM1". Aucun disque, aucune pastille, aucun pictogramme. Le commentaire de `recreo.css` nomme la condition a l'endroit ou elle se tient. |
+| **BARRE-5** | **TENUE** | Comptage du mot "Les jeux" sur les cinq etats, commentaires HTML retires : accueil **0**, manche **1** (sous les propositions), confirmation **1**, erreur **0**, fin de partie **1**. Aucune puce ne le porte. |
+| **BARRE-6** | **TENUE, et tenue par un automate** | J'avais demande la propriete, pas l'attribut. `ADR-0043` fait du troisieme role un **role domine** : `LActionNeDeclarePasMoinsQueLaSortieTest` met `entree` dans `ROLES_DOMINES` avec `sortie`, confronte le role a **toutes** les familles d'action, et porte un contre-exemple dedie (`entree-permanente-plus-grosse`) qui le fait rougir. Je verifie donc que la regle existe, qu'elle mord et qu'elle est verte, et **je cesse de compter cette propriete a la main**. |
+| **BARRE-7** | **TENUE** | `camille-po` a choisi la premiere de mes deux issues (`DEC-0033`) : la boite disparait. Verifie dans le depot - l'element, la classe `.menu`, `.lien-accueil` **et** sa regle de masquage sont retires, pas masques ; il n'en reste que des commentaires de trace et des fixtures de contre-exemple. Le document servi ne porte plus aucun lien d'en-tete. |
+| **BARRE-8** | **TENUE, et mieux que ma borne** | Mesure au pixel sur `livre-1`, colonne x = 180 : bandeau d'en-tete `#1d4b6b` de y 0 a 59 puis de y 126 a 141, bande des puces `#081c2c` de y 60 a 125 - **66 px exactement pour un seul rang**, total d'en-tete **142 px**, contenu a partir de y 142. Ma borne disait 151 px : l'increment est **9 px sous** ma borne, parce que S14-2 a retire le bouton du premier rang. Puces mesurees **56 x 50 px** ("CP") et **74 x 50 px** ("CM1"), au-dessus du plancher de cible de 44 x 44 px. Rien de pressable n'a ete retreci. |
+| **BARRE-9** | **TENUE, et durablement** | Il n'y a plus aucun "Les jeux" dans l'en-tete : les deux ne peuvent plus partager un rang, et **ce n'est pas un masquage qu'un `flex-wrap` pourrait defaire** - l'element n'existe plus. |
+
+**Sept sur neuf tenues, dont deux mieux que ce que je demandais.** Et deux non tenues, qui sont
+**deux des trois que j'avais nommees comme portant ma reponse "oui"**.
+
+#### 2. Les deux motifs du refus
+
+**Motif 1 - l'ecran de confirmation porte quatre boites, et deux sont le geste qui l'a ouvert.**
+
+Capture `livre-4-confirmation-depuis-une-puce-360x640.png`, prise apres avoir demarre une partie puis
+presse "CM1". De haut en bas, l'enfant voit : **CP**, **CM1**, puis *"Si tu pars, ta partie
+s'arrête."*, puis **"Continuer la partie"**, puis **"Les jeux"**.
+
+- **Cet ecran pose une question et n'a que deux reponses.** C'est l'ecran dont j'ai accepte la forme
+  le 2026-08-14 sous une condition unique - 44 px entre les deux boutons - **precisement parce que
+  l'enfant doit choisir entre deux gestes**. Il en a quatre.
+- **Et les deux boites en trop sont celle qu'il vient de presser.** J'ai lu le controleur pour savoir
+  ce qui se passe s'il represse "CM1" ici : `GET /niveaux/{niveau}` avec une partie en cours rend **le
+  meme ecran de confirmation**. Donc l'enfant presse, **et rien ne change a l'ecran**. C'est
+  exactement le defaut pour lequel j'ai ecrit PORTE-1 le 2026-08-14 - *"un bouton qui ne repond pas
+  apprend a un enfant de six ans que les boutons ne repondent pas"* - que `DEC-0033` vient de fermer
+  sur l'accueil, et qui **reapparait ici, sur un autre ecran, avec les puces**.
+- **Ceci ne contredit pas l'arbitrage de l'utilisatrice, et je l'avais ecrit avant le code.** Sa
+  decision veut qu'un enfant puisse demander un changement de niveau a tout moment. Sur cet ecran,
+  **il l'a deja demande** : la barre n'y sert plus la decision, elle n'y ajoute qu'un piege. Si
+  l'utilisatrice veut la barre la aussi, c'est sa decision, il suffit de l'ecrire et je l'inscrirai -
+  je nomme le cout, je ne le lui impose pas.
+
+**Motif 2 - l'ecran d'erreur porte trois boites la ou j'en exigeais une.**
+
+Capture `livre-5-erreur-360x640.png` : **CP**, **CM1**, *"Oups ! Le jeu a un souci."*,
+**"Recommencer"**. BARRE-2 reaffirmait PORTE-3 du 2026-08-14 mot pour mot. Le motif est inchange :
+c'est l'ecran ou l'enfant est le plus perdu, ou j'ai deja constate que le seul mot present n'est meme
+pas dechiffrable au CP, et **augmenter le choix la ou il a le moins les moyens de choisir est le
+contraire de ce qu'il faut faire**. Ici il n'y a plus de partie du tout : l'arbitrage de
+l'utilisatrice ne dit rien de cet ecran.
+
+**Ce que ces deux motifs demandent, et ce qu'ils ne demandent pas.** Ils demandent que la barre ne
+s'affiche pas sur ces deux ecrans. **Le moyen n'est pas de moi** - mais j'ai verifie qu'il existe,
+pour ne pas poser une condition impossible : la forme contractuelle `body:has(.<marqueur>)
+.<habillage> { display: none }` est deja employee par le depot, et l'ecran de confirmation porte
+**deja** un attribut qui le distingue des autres (`data-focus="phrase"`), tandis que l'ecran d'erreur
+n'en a pas encore. **Ils ne demandent aucune reprise de la barre, aucun changement de la variante
+retenue, aucun changement des routes.**
+
+#### 3. Ce que je credite, et il y en a beaucoup
+
+Je l'ecris parce qu'un refus qui ne dit pas ce qui est bon fait recommencer ce qui etait juste.
+
+1. **Le gain que j'avais annonce est verifie sur l'increment reel, et il est la.** Capture `livre-2` :
+   apres un appui sur "CP", **les six jeux de CP tiennent entiers au-dessus du pli, avec de la
+   marge**, la ou le catalogue complet n'y tient plus - 6 sur 11, le septieme coupe. Un enfant de CP
+   ne defile plus pour trouver son jeu et ne voit plus cinq jeux qui ne sont pas pour lui. **C'est le
+   besoin de S14-1 et il est atteint.**
+2. **La partie est reellement protegee, verifie en jouant** : apres avoir presse "CM1" pendant une
+   partie, j'ai redemande la page et **la manche etait toujours la**. Et en confirmant depuis la
+   puce, j'ai bien atterri sur la liste **filtree sur CM1** - cinq jeux. Les deux criteres que
+   `camille-po` avait ecrits sur ce point sont tenus.
+3. **L'ordre de lecture d'une manche est repare, et c'est un acquis que j'attendais depuis le
+   2026-08-07.** La sortie n'ouvre plus la colonne : elle est passee sous les propositions. Un enfant
+   qui vient d'echouer trois fois ne lit plus une invitation a partir comme premier mot.
+4. **Le troisieme role est un vrai garde-fou, pas une etiquette.** Voir BARRE-6 : `entree` est domine
+   par construction, avec un contre-exemple qui le prouve. C'est une propriete de plus que je cesse
+   de garder seule, et c'en est la deuxieme de ce sprint.
+5. **`DEC-0033` a tranche BARRE-7 par la meilleure des deux issues.** Retirer l'element plutot que lui
+   inventer un comportement supprime le defaut au lieu de le deplacer, et le mot "Les jeux" reste
+   exactement la ou il sert : la fin de partie et la confirmation.
+
+#### 4. Je corrige deux choses de ma main, avant de m'appuyer sur le reste
+
+**Correction 1 - le texte de BARRE-3 etait inapplicable, et l'erreur est de moi.** J'ai ecrit *"sur
+les trois etats de manche, l'enfant ne lit pas plus d'une porte avant l'enonce"*, en comptant les deux
+puces parmi les portes. **Or l'utilisatrice a decide que les deux puces sont visibles sur un ecran de
+jeu, et elles sont dans l'en-tete, donc au-dessus de l'enonce par construction : ma condition exigeait
+donc, litteralement, de supprimer une puce.** C'etait impossible a tenir sans defaire une decision que
+je ne dois pas rouvrir. **Ce que ma condition voulait dire, et ce que son motif dit sans ambiguite,
+c'est que la zone de contenu ne devait pas ajouter une porte par-dessus la barre** - et c'est
+exactement ce que `marc-dev` a fait. **Je compte donc BARRE-3 comme tenue, et je ne fais pas payer a
+l'equipe une condition que j'ai mal ecrite.** La formulation juste, pour la prochaine fois : *"la
+colonne de contenu d'un ecran de jeu ne commence jamais par une porte"*.
+
+**Correction 2 - ma prevision de cout sur les grands nombres etait pessimiste de 53 px.** Ce matin,
+j'avais mesure sur une barre injectee que l'item *"Décompose 305 421 en valeurs de position."*
+perdrait 66 px et que sa deuxieme proposition serait reduite a une bande de quelques pixels. Mesure
+sur l'increment livre, meme item, meme commande, colonne x = 180 : le haut du cabinet passe de
+**y = 397 avant le sprint** a **y = 410**, soit **+13 px** et non +66. **La sortie descendue sous les
+propositions rend 53 des 66 px que la barre prend**, et la deuxieme proposition affiche encore sa
+premiere ligne, comme avant. **Ma prevision etait fausse dans le sens defavorable a l'increment ; je
+la corrige.**
+
+#### 5. Les libelles "CP" et "CM1" et le garde-fou de texte accentue - la question de `yanis-qa`
+
+**Mon jugement : l'exemption est legitime pour ces deux libelles-la, et le trou du garde-fou est reel
+mais il n'est pas sur eux.** Les deux choses sont distinctes et il faut les separer.
+
+- **"CP" et "CM1" ne contiennent aucune lettre qui puisse porter un accent.** Pas une voyelle : C, P,
+  C, M, 1. L'exigence *"integralement accentue"* n'est pas contournee sur eux, **elle est satisfaite
+  a vide** : il n'existe aucune autre facon d'ecrire ces deux chaines. Ce n'est donc meme pas une
+  exemption, c'est une exigence sans objet. **Et sur le fond pedagogique, je maintiens ce que j'ai
+  ecrit dans mon arbitrage** : ce sont les etiquettes que l'enfant lit deja sur son cahier, pas des
+  mots a decoder.
+- **Le trou du garde-fou, lui, est reel, et il faut le nommer plutot que de le decouvrir a s15.** Un
+  libelle rendu par le modele echappe a l'inventaire. Aujourd'hui cela ne coute rien. **A s15, cela
+  coutera exactement le defaut que `DEC-0032` section 2 a differe pour l'eviter** : les libelles de
+  matiere sont ecrits `"Francais"` et `"Mathematiques"` dans les descripteurs des paquets, **sans
+  accent**, et ils passeront par le meme chemin que "CP" et "CM1". Le garde-fou ne les verra pas
+  davantage. **Ce trou doit etre ferme avant que le premier libelle accentue ne passe par la, pas
+  apres.**
+- **La frontiere exacte de mon exemption, pour qu'on ne l'etende pas toute seule** : elle vaut pour
+  un libelle de niveau **sans lettre accentuable**. Le jour ou un paquet declarerait un niveau dont le
+  nom en porte une - "Première" en est un, et ce produit n'est pas garanti de s'arreter au CM1 -
+  l'exemption tombe d'elle-meme et le libelle redevient du texte a verifier.
+
+**Ce que je demande donc**, et c'est actionnable : que l'exemption soit **ecrite explicitement** dans
+la source du garde-fou avec sa raison (aucune lettre accentuable) et sa frontiere, plutot que laissee
+implicite ; et que la fermeture du trou pour les libelles rendus par le modele soit instruite **avant
+s15**. Le moyen appartient a `theo-archi`. **Ce point ne fait pas partie des motifs de mon refus.**
+
+#### 6. Le residu d'`ADR-0045` - je prends la propriete, et voici la forme verifiable
+
+`theo-archi` ecrit que la justesse de l'association entre une entree de catalogue et son paquet - que
+le jeu intitule "Les mesures" serve bien un paquet de mesures - n'est pas encodable et qu'elle
+m'appartient. **Je la prends.** C'est un jugement sur le **sens** d'un titre, et aucun test ne juge un
+sens.
+
+**Je commence par lire son chiffre au lieu de le repeter** : sur **121** mutations possibles, son
+garde-fou en attrape **110** et il en echappe **11**, et ces onze ne sont pas quelconques - ce sont
+**les onze renvois vers `cm1-homophones`, le seul paquet de `contenu/` que plus aucune entree ne
+sert**. Le residu n'est donc pas "n'importe quelle mauvaise association" : c'est **"une entree qui
+pointe vers un paquet qu'aucune entree ne sert"**. Cette precision change la forme que je peux tenir.
+
+**La forme sous laquelle je la prends, en deux clauses verifiables par un tiers sans moi :**
+
+- **N-1. A chaque Done pedagogique d'un jeu, j'inscris dans sa fiche le paquet servi et un enonce que
+  l'application m'a reellement servi sous ce titre.** Verification par un tiers : presser le titre
+  dans l'application et comparer l'enonce obtenu a celui de la fiche. Une association devenue fausse
+  se voit alors sans me redemander quoi que ce soit - et elle se voit sur le **materiau joue**, pas
+  sur une chaine de caracteres.
+- **N-2. Je veux pouvoir connaitre a tout moment le nombre de paquets de `contenu/` qu'aucune entree
+  du catalogue ne sert.** Il vaut **1** aujourd'hui (`cm1-homophones`) et **il borne exactement le
+  residu** : onze mutations tant qu'il vaut 1, **zero si ce nombre tombe a zero**. Je ne prescris pas
+  de retirer ce paquet - ce n'est pas ma decision - je nomme le seul levier qui fait disparaitre le
+  residu, pour que personne ne le cherche ailleurs.
+
+Je note enfin ce que cette prise **ne** couvre pas : je ne relis pas les 121 associations, je ne juge
+que **les jeux que je joue**, et un jeu jamais rejoue garde l'association que sa derniere fiche a
+enregistree. C'est une garde par echantillon date, pas une garde continue, et personne ne doit la lire
+autrement.
+
+#### 7. Mes cinq reserves non bloquantes, apres verification
+
+| | Etat apres l'increment livre |
+|---|---|
+| **R-BARRE-1** (la reserve J des grands nombres empire) | **Toujours ouverte, mais l'aggravation est de 13 px et non de 66** - voir ma correction 2. Reste une story candidate pour `camille-po`, et le chiffre a viser est inchange : aucun item ne place une proposition sous le pli a 360 x 640. |
+| **R-BARRE-2** (l'accueil non filtre perd des jeux de visibilite) | **Levee dans les faits.** Elle est remplacee par son contraire : le catalogue complet passe de 8 a 6 jeux entiers, mais **la liste filtree tient en entier**, ce qui est l'usage que la barre installe. Le solde est positif et je le dis. |
+| **R-BARRE-3** (le mot "Les jeux" confirme un geste demande sous un autre nom) | **AGGRAVEE, et c'est le point que je route en premier a `camille-po`.** Ce qui devait la reparer - la puce active, visible sur la liste qui apparait - **n'existe pas dans l'increment** : `ADR-0044` point 3 pose qu'aucun etat de filtre ne vit dans l'en-tete, donc **aucune puce ne se distingue jamais**. Consequence mesuree sur `livre-2` : apres avoir presse "CP", l'enfant voit six jeux et **rien a l'ecran ne dit pourquoi la liste a raccourci, ni comment revoir les onze**. La forme d'`ines-design` que j'avais creditee portait un etat actif en plein contre contour ; l'increment ne l'a pas. **Non bloquant** - je n'en avais pas fait une condition et je ne me rattrape pas apres coup - mais c'est une story, et son motif est ecrit ici. |
+| **R-BARRE-4** (F11 s'enrichit) | **Confirmee et precisee.** L'ecoute devra couvrir les deux puces, et un fait neuf s'y ajoute : **les deux puces sont les deux premiers arrets de tabulation d'un ecran de jeu**, avant les propositions - lu dans l'ordre du document, non eprouve au clavier. Mon geste 1 demandait les mots annonces pour l'unique lien de l'en-tete ; cet unique lien n'existe plus, et ce sont les deux puces qu'il faudra entendre. |
+| **R-BARRE-5** (la troisieme forme, non mesuree) | **Sans objet, et de la meilleure facon.** Elle proposait de recuperer les 66 px en logeant les puces dans le vide laisse par "Les jeux" sur un ecran de jeu. `DEC-0033` a retire ce lien partout, et la sortie descendue sous les propositions rend deja 53 des 66 px. **Je la referme.** |
+
+#### 8. Ce dont je reste la seule garde sur cet increment
+
+- **Qu'un enfant de CP distingue une puce de niveau d'une sortie de jeu.** C'est la question de
+  `camille-po`, elle reste sans reponse mesurable, et **mon refus ne la tranche pas non plus** : il
+  reduit le nombre de boites sur deux ecrans, il ne prouve pas la comprehension.
+- **Le compte des boites pressables par ecran.** Aucun garde-fou ne le fait, et les deux motifs de ce
+  refus n'existent que parce que je les ai comptes en jouant. Si la correction arrive, **c'est encore
+  moi qui la verifierai, sur deux captures.**
+- **Que la colonne de contenu ne recommence pas par une porte** (BARRE-3 dans sa formulation
+  corrigee). Rien ne l'encode. Quatrieme fois que je le nomme.
+- **Le budget du pli a 360 px**, et je suis la seule a pouvoir le mesurer sur ce poste : trois agents
+  ont echoue sur `outils/mesurer-rendu.sh` faute d'un navigateur designe. **Tant que ce prerequis est
+  une dette de poste, aucun chiffre de rendu n'entre dans ce depot sans passer par moi**, et c'est
+  une dependance a une seule personne que je signale comme telle.
+- **La justesse de l'association titre / paquet**, que je viens de prendre au 6, sous ses deux clauses
+  N-1 et N-2.
+
+#### 9. Ce que ce refus ne fait pas
+
+- **Il ne rouvre pas l'arbitrage de l'utilisatrice** : la barre existe, elle porte CP et CM1, elle est
+  visible sur un ecran de jeu, un appui pendant une partie passe par la confirmation. Mes deux motifs
+  portent sur **deux ecrans qui ne sont pas des ecrans de jeu au sens de sa decision** - l'un ou le
+  geste a deja ete fait, l'autre ou il n'y a plus de partie.
+- **Il ne retire aucun Done deja prononce** et ne rouvre aucune ligne de la matrice : cette story n'en
+  touche aucune.
+- **Il n'ajoute aucune condition neuve.** Les neuf de l'arbitrage prealable restent les neuf, dont une
+  corrigee dans sa formulation par son autrice et **a l'avantage de l'equipe**.
+- **Il ne demande pas de defaire la variante retenue**, ni les routes, ni le troisieme role, ni
+  `DEC-0033`.
 
 ### Arbitrage prealable au developpement - barre d'entree par niveau toujours visible (DEC-0032, s14) - rendu le 2026-08-17
 
