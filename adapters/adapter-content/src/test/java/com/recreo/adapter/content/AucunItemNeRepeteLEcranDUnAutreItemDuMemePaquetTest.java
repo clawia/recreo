@@ -59,18 +59,42 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * deux nombres qui changent). Un critere sur le seul enonce l'aurait refusee. L'identite retenue est
  * donc le couple <b>enonce + jeu de propositions</b>, en ensemble et non en liste parce que la
  * mecanique melange l'ordre a chaque manche ({@code BanditManchotSession.melanger}) : deux items qui
- * ne differeraient que par l'ordre sont le meme ecran. L'indice n'entre pas dans cette identite : il
- * ne s'affiche qu'apres trois echecs consecutifs et ne distingue donc pas deux manches jouees.</p>
+ * ne differeraient que par l'ordre sont le meme ecran. L'indice n'entre pas dans cette identite, et
+ * le motif ecrit ici etait faux : il disait "il ne s'affiche qu'apres trois echecs consecutifs".
+ * L'indice s'affiche <b>des le premier echec</b> sur la manche bloquante et jusqu'a sa resolution
+ * (M1, {@code DEC-0004} point 4, {@code BanditManchotSession.indice()}) - constate en jouant par
+ * {@code nadia-prof} au sprint 14, corrige ici. Le motif juste est le meme dans sa conclusion : un
+ * indice n'apparait que sur une manche que l'enfant n'a pas encore resolue, il ne distingue donc pas
+ * deux items l'un de l'autre au moment ou l'ecran se presente. Le critere n'a pas bouge d'un
+ * caractere ; c'est sa justification qui portait un chiffre faux.</p>
  *
- * <p><b>Mesure de l'etat actuel, avec sa methode, parce qu'un garde-fou ecrit avant son defaut doit
- * dire ce qu'il trouve aujourd'hui.</b> Sur les 397 items lisibles des 65 paquets du depot (les 4
- * paquets servis de {@code adapters/adapter-content/src/main/resources/contenu/} et les 61 paquets de
- * reserve de {@code contenu-repris/}), <b>aucun couple enonce + jeu de propositions n'apparait deux
- * fois</b> dans un meme paquet, et meme le critere plus strict de l'enonce seul est tenu partout.
- * Methode : lecture ligne a ligne des cles {@code enonce}/{@code question}, {@code bonneReponse}/{@code bonne}
- * et {@code distracteurs}, le decoupage des listes en ligne respectant les guillemets ; les 429 cles
- * {@code distracteurs} du depot sont toutes ecrites en ligne, donc aucune n'echappe a ce comptage.
- * Cette clause part donc verte sur du materiau reel, jamais sur une fixture ecrite pour elle.</p>
+ * <p><b>Mesure de l'etat au 2026-08-11 (s10), avec sa methode et sa date, parce qu'un garde-fou
+ * ecrit avant son defaut doit dire ce qu'il trouvait le jour ou il est entre.</b> Sur les 397 items
+ * lisibles des 65 paquets du depot d'alors (les 4 paquets servis de
+ * {@code adapters/adapter-content/src/main/resources/contenu/} et les 61 paquets de reserve de
+ * {@code contenu-repris/}), <b>aucun couple enonce + jeu de propositions n'apparaissait deux fois</b>
+ * dans un meme paquet. Methode : lecture ligne a ligne des cles {@code enonce}/{@code question},
+ * {@code bonneReponse}/{@code bonne} et {@code distracteurs}, le decoupage des listes en ligne
+ * respectant les guillemets ; les 429 cles {@code distracteurs} d'alors sont toutes ecrites en ligne,
+ * donc aucune n'echappait a ce comptage. Cette clause est donc partie verte sur du materiau reel,
+ * jamais sur une fixture ecrite pour elle - et elle l'est restee, c'est {@code mvn verify} qui le
+ * dit a chaque execution, pas cette phrase.</p>
+ *
+ * <p><b>Ce que cette mesure disait de trop, et qui n'est plus vrai.</b> Elle ajoutait que "meme le
+ * critere plus strict de l'enonce seul est tenu partout". Ce n'est plus le cas du contenu de
+ * production, et le contenu qui l'a rendu faux est <b>valide</b> : {@code cm1-tables-multiplication}
+ * (S13-4/S13-5) porte 99 items dont <b>16 enonces apparaissent deux fois</b>, avec le meme
+ * {@code bonneReponse} et des {@code distracteurs} differents - par exemple {@code "2 x 4 = ?"} avec
+ * {@code ["12", "10"]} puis avec {@code ["4", "6"]}. C'est <b>exactement la forme legitime</b> que le
+ * paragraphe precedent decrit et que le critere retenu autorise a dessein : deux ecrans que l'enfant
+ * ne confond pas, parce que ce qu'il compare change. La phrase supprimee n'etait pas une clause -
+ * aucune assertion n'a jamais porte sur l'enonce seul - c'etait une observation de circonstance, et
+ * une observation de circonstance qui survit a son contenu devient un mensonge sur ce que le
+ * garde-fou garde. Mesure du 2026-08-17, methode : lecture ligne a ligne des cles
+ * {@code enonce}/{@code question} des paquets servis et de {@code contenu-repris/}, comptage des
+ * valeurs apparaissant plus d'une fois dans un meme fichier ; {@code cm1-tables-multiplication} est
+ * le <b>seul</b> paquet du depot dans ce cas. Signale par {@code nadia-prof}, qui precise que le
+ * garde-fou lui-meme est intact - il l'est, et rien de son code n'a change ici.</p>
  *
  * <p>ADR-0013, les trois obligations :</p>
  * <ul>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- ADR-0003 : jeu fautif, jamais servi a un enfant. Le catalogue entier arrive dans la vue, et
+     c'est la vue qui decide quels jeux montrer en lisant le niveau du descripteur de contenu.
+     Le controleur n'a rien fait de mal ici : la regle ArchUnit d'ADR-0044 reste verte, et c'est
+     tout l'interet de ce jeu fautif. -->
+<main id="jeu">
+    <ul class="jeux">
+        <li th:each="jeu : ${jeux}" th:if="${jeu.descripteur().niveau() == niveauChoisi}">
+            <button type="button" class="btn demarrer" data-role="action" th:text="${jeu.titre()}">Jouer</button>
+        </li>
+    </ul>
+</main>
+</body>
+</html>

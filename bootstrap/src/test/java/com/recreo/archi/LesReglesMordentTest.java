@@ -113,6 +113,22 @@ class LesReglesMordentTest {
                 .hasMessageContaining("AdaptateurWebDependantDuContenuContreExemple");
     }
 
+    /**
+     * ADR-0044 : la selection des jeux montres reste derriere le port entrant. Le contre-exemple
+     * est ecrit comme le chemin le moins cher l'ecrirait - le catalogue filtre dans l'adaptateur
+     * web en lisant le descripteur de contenu - parce que c'est cette forme-la, et pas une faute
+     * imaginaire, que la regle existe pour arreter.
+     */
+    @Test
+    void uneVueQuiFiltreLeCatalogueParNiveauEstRefusee() {
+        assertThatThrownBy(() -> LeChoixDesJeuxResteDerriereLePortTest
+                .aucunAdaptateurDeRenduNeLitLeDescripteurDeContenu
+                .check(contreExemples("com.recreo.adapter.web.contreexemple")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("VueQuiFiltreLeCatalogueContreExemple")
+                .hasMessageContaining("ContentDescriptor");
+    }
+
     /** ADR-0002 : la purete de l'application, symetrique de celle du domaine, jamais eprouvee. */
     @Test
     void lApplicationNeDoitPasDependreDUnFramework() {

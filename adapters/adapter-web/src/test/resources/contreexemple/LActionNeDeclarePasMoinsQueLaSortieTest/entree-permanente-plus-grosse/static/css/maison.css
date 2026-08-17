@@ -1,0 +1,23 @@
+.puce-niveau {
+    font-size: 1.25rem;
+    min-height: 2.75rem;
+    padding: 1rem 1.5rem;
+}
+
+.sortir {
+    font-size: 1.25rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.9rem;
+}
+
+.commencer {
+    font-size: 2rem;
+    min-height: 3rem;
+    padding: 1rem 1.5rem;
+}
+
+.continuer {
+    font-size: 1.25rem;
+    min-height: 2.75rem;
+    padding: 0.75rem 1.25rem;
+}

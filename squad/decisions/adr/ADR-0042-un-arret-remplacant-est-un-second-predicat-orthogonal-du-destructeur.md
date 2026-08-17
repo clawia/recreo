@@ -1,6 +1,8 @@
 # ADR-0042 - Ajouter un second predicat orthogonal du destructeur, "remplacant", et en tirer la contrainte de forme de l'ecran de S13-6
 
-- **Statut** : Accepte
+- **Statut** : Accepte, **sa regle n'a jamais ete ecrite et son porteur a disparu** - amende le
+  2026-08-17 (s14) : dette explicite ouverte, avec son declencheur et son cout, plutot qu'une
+  troisieme promesse
 - **Date** : 2026-08-15
 - **Amende le** : 2026-08-15 - **un chiffre faux, aucune conclusion touchee**. Cet `ADR` disait
   "sept jeux" au catalogue reel a trois endroits ; il y en a **onze**. "Sept" etait la taille du
@@ -22,6 +24,59 @@
   `sofia-sm` a fixe ce partage. Ce que je dois au depot, et qui est ci-dessous, est un enonce assez
   precis pour que personne n'ait a le redecouvrir - plus les chiffres qui disent ce qu'il attrape et
   ce qu'il laisse passer.
+
+> **Amendement du 2026-08-17 (s14) - le predicat de cet `ADR` n'existe dans aucun fichier Java, le lot
+> qui devait l'ecrire a ete annule, et c'est la dette 1 de la version precedente en train de se
+> reproduire sur ma propre production.**
+>
+> **Le fait, mesure et non suppose.** Recherche du 2026-08-17 sur l'arbre `e30566b` : `git grep
+> estRemplacant` et `grep -rn "remplacant" --include=*.java` rendent **zero occurrence** dans les cinq
+> modules. Les clauses 1, 2 et 3 de `AucunArretDeTabulationNEstDestructeurTest` appellent
+> `estDestructeur(...)` seul, comme avant cet `ADR`. Le fichier nomme en tete de ce document comme
+> portant la regle **ne la porte pas**.
+>
+> **Pourquoi.** Cet `ADR` a confie sa regle "au lot de S13-6, dans le meme commit que l'ecran", et
+> `DEC-0032` section 4 acte que **S13-6 ne sera pas developpee** sous sa forme d'origine : `S14-1`
+> absorbe son besoin par un mecanisme different. Le porteur de la regle a donc disparu avec la story,
+> sans que personne ne le remarque - `RAPPORT.md` de s13 ne compte pas cette regle parmi les dettes
+> ouvertes, et `DEC-0032` ne la mentionne pas.
+>
+> **Ce que `S14-1` n'apporte pas, et il faut le dire clairement.** J'ai verifie si la barre de niveaux
+> faisait apparaitre un arret remplacant sur un ecran a partie en cours - ce qui aurait donne au
+> predicat son objet et sa preuve de morsure du meme coup. **Elle n'en fait apparaitre aucun.** Une
+> puce de niveau pressee pendant une partie mene a l'ecran de confirmation, qui ne porte aucun bouton
+> de demarrage ; l'ecran d'accueil filtre, lui, ne se rend que sans partie en cours. Le catalogue ne
+> devient donc jamais visible pendant qu'une partie vit, qui etait toute la nouveaute de S13-6.
+>
+> **Ce que je decide, plutot qu'une troisieme promesse.** Je n'ecris pas le predicat maintenant, et je
+> dis pourquoi : cable dans les clauses 1 a 3, il serait **vert sur une population vide** - c'est la
+> mesure M1 de ce document meme, "11 tests, 0 echec, aucun verdict ne change" - et son propre point 3
+> d'obligations refuse d'appeler garde-fou une clause livree sans son objet ni sa preuve de morsure.
+> Ecrire un predicat que rien n'exerce pour pouvoir cocher cet `ADR` serait exactement l'abstraction
+> documentee-mais-morte que ce depot s'interdit, avec un vernis d'executable en plus.
+>
+> **La dette est donc ouverte, nommee, et bornee par un declencheur qui ne depend d'aucune ceremonie** :
+> le predicat `estRemplacant` est du **par le premier lot qui rend, sur un ecran a partie en cours, un
+> arret dont la requete demarre une partie** - c'est-a-dire le premier lot qui montre le catalogue,
+> une reprise, ou n'importe quel bouton de demarrage pendant qu'une partie vit. Ce declencheur est
+> observable dans un diff : il suffit qu'un gabarit insere dans la zone porte un `hx-post` vers
+> `/parties/{jeuId}` alors que l'ecran se rend en partie en cours. Cout, en ordre de grandeur et non en
+> chiffrage : le predicat lui-meme est une dizaine de lignes (le rejeu existe deja, il ne manque que la
+> lecture de l'etat de session **avant** en plus d'apres), son cablage dans trois clauses est trivial,
+> et l'essentiel du cout est la preuve de morsure - un ecran fautif ou les boutons de demarrage
+> precedent le retour dans l'ordre du document, la forme que la mesure M3 de ce document a deja
+> chiffree.
+>
+> **Ce que cet amendement ne fait pas** : il ne retire rien de la decision, dont les cinq points
+> restent justes, ni des neuf non-preuves, ni de la contrainte de forme - qui redeviendra utile telle
+> quelle le jour ou un ecran montrera le catalogue en partie. Il ne prononce rien sur `S14-1`, dont la
+> faisabilite est traitee dans l'avis de s14.
+>
+> **Ma part, parce qu'elle est nommable.** J'avais ecrit, dans les alternatives de cet `ADR`, qu'ecrire
+> la clause tout de suite etait "techniquement possible mais ecarte, le lot appartient a un
+> developpeur". Le raisonnement etait juste et la conclusion fragile : il faisait dependre l'existence
+> d'une regle d'un lot que personne ne garantissait. La lecon est encodee dans les deux `ADR` de s14,
+> dont les regles sont ecrites dans le commit qui les accepte, et dans aucun autre.
 
 ## Contexte
 

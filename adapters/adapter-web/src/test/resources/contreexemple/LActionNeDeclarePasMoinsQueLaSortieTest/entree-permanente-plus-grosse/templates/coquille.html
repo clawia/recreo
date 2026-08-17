@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- ADR-0043, jeu fautif : la boite du point d'entree permanent est reprise de la proposition
+     chiffree d'ines-design pour la barre de niveaux (s14), a une seule chose pres - son rembourrage
+     depasse celui de l'action de l'ecran insere. Aucune sortie n'est en cause ici : c'est le
+     troisieme role qui domine, et un garde-fou qui ne confronterait que "sortie" resterait vert. -->
+<header>
+    <nav>
+        <a class="puce-niveau" data-role="entree" href="/niveaux/cp" hx-target="#zone">CP</a>
+    </nav>
+    <a class="sortir" data-role="sortie" href="/" hx-target="#zone">Les jeux</a>
+</header>
+<main id="zone">
+    <button type="button" class="commencer" data-role="action" hx-target="#zone">Commencer</button>
+</main>
+</body>
+</html>
