@@ -2,7 +2,9 @@
 
 - **Statut** : Accepte, son contexte amende le 2026-08-14 (un chiffre perime et la comparaison qu'il
   portait ; la decision et ses garde-fous sont inchanges), amende le 2026-08-17 (s14 : ce que `S14-1`
-  fait tomber, clause par clause, et la clause qui tombe n'est pas dans cet `ADR`)
+  fait tomber, clause par clause, et la clause qui tombe n'est pas dans cet `ADR`), **amende une
+  seconde fois le 2026-08-17 (s14, apres `S14-2` / `DEC-0033`) : le point 2 perd toute instance en
+  production, le point 1 garde la sienne et perd le garde-fou qui l'exigeait**
 - **Date** : 2026-08-07
 - **Auteur** : theo-archi
 - **Sprint** : s06
@@ -139,6 +141,64 @@ porte ferait de l'ecran de fin de partie un cul-de-sac.
 > Ce que cet amendement ne change pas : aucune ligne de la decision, aucune consequence, aucun
 > garde-fou de cet `ADR`. Il ne prononce rien sur l'arbitrage prealable de `nadia-prof`, qui reste
 > entier et qui reste le sien.
+
+> **Second amendement du 2026-08-17 (s14, apres la livraison de `S14-2` / `DEC-0033`) - le sujet du
+> masquage disparait, et l'`ADR` n'est ni faux, ni remplace, ni sans objet. Ce qu'il perd et ce qu'il
+> garde, clause par clause et non en bloc.**
+>
+> `S14-2` retire le lien "Les jeux" de l'en-tete, donc `a.lien-accueil` de tout gabarit, donc la regle
+> `body:has(.ecran-de-jeu) .lien-accueil { display: none }` de la feuille servie. **Deux garde-fous
+> independants refusent de garder la regle sans son element** - celui de cet `ADR` (*"une regle qui
+> masque une classe absente est decorative"*) et celui d'`ADR-0031` (un selecteur qui ne peut plus
+> jamais s'appliquer). Le retrait suit leur verdict ; il ne l'esquive pas.
+>
+> **Etat des cinq clauses apres `S14-2`.**
+>
+> | Clause | Population en production | Ce qui la garde |
+> |---|---|---|
+> | **1. Le marqueur `ecran-de-jeu` sur la zone de contenu** | **pleine** : les quatre fragments le portent toujours | **plus rien, et c'est le defaut de ce lot** - voir ci-dessous |
+> | **2. La forme contractuelle du masquage dans la feuille** | **vide** | le mecanisme reste exact et **eprouve sur deux jeux fautifs** (`fragment-sans-marqueur`, `feuille-sans-masquage`) ; seule la clause qui l'exigeait *en production* est retiree |
+> | **3. Le libelle "Les jeux", un seul mot de sortie** | **pleine** : `sortie-pleine` et `retour-accueil` | `leLienDeMenuEtLaSortieDeLaZoneDeContenuPortentLeMemeMot`, vert et non vacuant - verifie, pas suppose |
+> | **4. `sortie-pleine` conserve tel quel** | pleine | inchange |
+> | **5. L'appariement derive des masquages** | le **mecanisme de traversee de frontiere** garde sa population - les puces de niveau de `S14-1` sont permanentes et rien ne les masque ; la **dependance au masquage**, elle, n'a plus d'objet, la liste des masquages servis etant vide | `aucuneSortieNeDeclarePlusQuUneActionDuMemeEcran` et `rolesDominesJamaisConfrontes` (`ADR-0043`) |
+>
+> **Pourquoi un amendement de constat, et non un `ADR` neuf ni un changement de statut.** Aucune
+> clause n'est devenue fausse : le mecanisme fait exactement ce qu'il decrit, et il le refera le jour
+> ou un habillage permanent devra disparaitre sur certains ecrans. Aucun `ADR` posterieur ne le
+> remplace - `DEC-0033` retire un **element**, pas une decision. Et un `ADR` neuf ne deciderait rien
+> de neuf. **La doctrine appliquee ici est celle que cet `ADR` s'est donnee a lui-meme en s06** pour le
+> mecanisme d'`ADR-0017` : *"Un mecanisme juste, prouve mordant sur un objet neuf, dont la population
+> de production est momentanement vide, n'est pas un garde-fou decoratif. Ce qui serait decoratif [...]
+> c'est l'epinglage qui pretendait que la production l'exerce."* Le point 2 est desormais dans cette
+> situation, et il y est traite comme il l'avait prescrit pour autrui.
+>
+> **Ce qui le rouvrirait, ecrit pour ne pas etre redecouvert** : le prochain habillage permanent dont
+> la visibilite doit dependre de l'ecran. Le couple declaratif, sa forme contractuelle et son garde-fou
+> sont prets et eprouves ; il n'y aura rien a reinventer, et `LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest`
+> redeviendra portant par la seule ecriture d'une regle de masquage. Un signal secondaire vaut d'etre
+> note : `AucunArretDeTabulationNEstDestructeurTest` continue de lire `masquages(RACINE_PRODUCTION)`
+> dans ses clauses vivantes, sur une liste desormais vide. Ce n'est pas un defaut - rien n'est masque,
+> donc rien n'est a retirer de l'ordre de tabulation - mais c'est un mecanisme a population vide de
+> plus, et il redeviendra portant par le meme geste.
+>
+> **La consequence que je refuse de laisser passer, et qui conditionne mon accord sur ce lot.** La
+> clause 1 garde sa population et **perd le seul garde-fou qui l'exigeait**. Le marqueur
+> `ecran-de-jeu` n'est plus consomme par la feuille ; il est consomme par
+> `LEcranDeJeuDeclareCommentIlEstArriveTest` (`ADR-0027`), **qui derive sa population d'ecrans par
+> `select(".ecran-de-jeu")` sur les reponses reelles**. Sa non-vacuite est globale ("au moins un ecran
+> de jeu est rendu"), jamais par fragment. Un cinquieme fragment qui oublierait le marqueur sortirait
+> donc **silencieusement** du perimetre d'`ADR-0027`, et la suite resterait verte : c'est exactement la
+> faute que la table de garde-fous de cet `ADR` fermait ligne 1 (*"Un fragment neuf oublie le marqueur
+> | les ecrans sont derives du repertoire de gabarits"*), et la famille de defaut que la retro de s05 a
+> sanctionnee deux fois.
+>
+> **La propriete de la clause 1 est donc re-portee, decouplee du masquage** : *tout gabarit insere dans
+> la zone echangee porte le marqueur d'etat*. Elle ne se derive plus de la feuille, qui ne le nomme
+> plus ; elle se derive du **consommateur** du marqueur. L'enonce, l'emplacement et la preuve de
+> morsure sont ecrits dans la section "Accord sur le lot S14-2" de
+> `squad/sprints/s14-points-d-entree-par-niveau/confirmation-archunit.md`, et cette clause est une
+> **condition de cloture de `S14-2`**, pas une regle due par un lot futur - la difference avec la dette
+> d'`ADR-0042` est la, et elle est tenue par la porte de cloture, pas par une promesse.
 
 Elle me laisse deux questions techniques, et c'est tout ce que cet ADR traite.
 

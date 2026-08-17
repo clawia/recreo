@@ -238,3 +238,224 @@ Aucun Done pedagogique ni son anticipation, aucun arbitrage produit, aucune lign
 `rapport-qualite.md`, dans `squad/conformite/` ni dans le planning de `sofia-sm`. La perte de
 couverture que `sofia-sm` m'a routee est tranchee dans `ADR-0045`, pas ici : ce fichier ne porte que
 le resultat des commandes et l'etat des plafonds.
+
+## 6. Accord sur le lot S14-2 de `marc-dev` - geste par geste
+
+- **Date** : 2026-08-17. **Auteur** : `theo-archi`.
+- **Arbre juge** : `s14-marc-barre7` a **`d950192`**, forkee de `round-two` a `81a43ac`.
+- **Ce que cette section est** : la confirmation ecrite que `marc-dev` a demandee sur quatre gestes
+  qu'il a proposes sans les trancher, et sans laquelle `S14-2` ne cloture pas. **Un accord global n'y
+  figure pas** : chaque geste est juge separement, et l'un des cinq est refuse en l'etat.
+- **Ce que cette section n'est pas** : un Done pedagogique, ni son anticipation. `DEC-0033` a tranche
+  le produit, `nadia-prof` jugera l'increment.
+
+### 6.1 La porte technique, mesuree et non reprise sur parole
+
+`bash outils/mvn-jdk21.sh -B clean verify` sur son worktree, JDK 21.0.10 designe par la toolchain :
+**BUILD SUCCESS**, `Total time: 02:52 min`, les six modules `SUCCESS`.
+
+**505 tests, 0 echec, 0 erreur, 0 ignore. 29 regles ArchUnit.** Methode, dans le meme paragraphe :
+somme de l'attribut `tests` de la balise racine `testsuite` des **81 rapports XML** produits par cette
+seule execution, sous `*/target/surefire-reports/` et `*/target/failsafe-reports/` des cinq modules
+declares au pom, lus **apres le `clean`** ; repartition `adapter-web` 237, `adapter-content` 121,
+`bootstrap` 88 (dont 6 en failsafe), `domain` 48, `application` 11. Les regles par balayage des seuls
+`src/test/java` de ces cinq modules, critere `ArchRule <nom> =` : **29**, inchange.
+
+**Les chiffres de `marc-dev` se verifient**, y compris son ecart de `-1` : deux tests retires
+(gestes 1 et 3), un renomme (geste 2, net nul), un ajoute (geste 2). Son arbre est reste propre
+pendant ma mesure (`git status --porcelain` vide, `target/` etant ignore).
+
+### 6.2 Geste 1 - epinglage `leLienDeLEnTeteEstConfronteAuxSeulesActionsDeLAccueil` retire : **ACCORD**
+
+Le patron s'applique, et `marc-dev` ne l'a pas etendu au-dela de ce que j'avais ecrit. Verifie
+assertion par assertion plutot que sur la ressemblance des motifs :
+
+- la premiere exigeait qu'un couple `.btn.demarrer` contre `.btn.lien-accueil` **existe** sur
+  l'accueil. `.lien-accueil` n'existe plus dans aucun gabarit : le couple ne peut plus se former, donc
+  l'assertion ne peut plus qu'echouer, et la maintenir demanderait de remettre l'element ;
+- la seconde exigeait que ce lien ne soit **plus** confronte aux actions des ecrans de jeu. Elle
+  devient vraie a vide, sur un role qu'aucun bouton ne porte plus. C'est la definition d'un epinglage
+  decoratif.
+
+**Ce que mon patron exige en plus, et qui est tenu ici** : que la propriete survive ailleurs, et non
+que l'epinglage disparaisse seul. Verifie, pas suppose : `aucuneSortieNeDeclarePlusQuUneActionDuMemeEcran`
+garde la propriete sur les sorties restantes ; `rolesDominesJamaisConfrontes` (`ADR-0043`) empeche le
+role `entree` de se derober silencieusement ; et le **mecanisme de traversee de frontiere** que
+`ADR-0022` avait garde a population vide en s06 **garde la sienne**, les puces de niveau etant
+permanentes et masquees par rien. L'epinglage change de porteur, la propriete ne change pas de main.
+
+### 6.3 Geste 2 - `EnTeteEtMenuTest`, test remplace et test neuf : **ACCORD, avec une modification exigee**
+
+Le remplacement est juste : l'ancien test affirmait une sortie dans l'en-tete, `DEC-0033` la retire, et
+la forme derivee (un point d'entree par niveau distinct du catalogue, aucun effectif ecrit) est celle
+que j'avais specifiee en section 7.1 de l'avis de faisabilite. Il en garde la propriete et y ajoute
+`isEmpty()` sur `header [data-role=sortie]`, ce qui epingle exactement ce que `DEC-0033` decide.
+
+**Modification exigee sur le test neuf `surLAccueilNonFiltreLEnTeteNeMontreQueLIconeLeTitreEtLesPucesDeNiveau`.**
+Il compare `header button, header a[href]` a `niveauxDuCatalogue()`. Deux defauts, aucun bloquant mais
+tous deux gratuits a corriger :
+
+1. **il re-asserte la propriete du test precedent** (un point d'entree par niveau du catalogue, dans
+   l'ordre) au lieu de la sienne, qui est *"rien d'actionnable dans l'en-tete hors des puces"* ;
+2. **il couple le critere 2 de `S14-2` a une coincidence** : que le libelle rendu d'une puce soit
+   **egal** a la valeur brute du niveau. C'est vrai de "CP" et "CM1" et ce n'est pas une propriete -
+   `ADR-0044` inscrit lui-meme, dans ce qu'il ne garde pas, que *"la graphie de ces valeurs est une
+   question de redaction pour un enfant"*, et c'est la question meme que je differe a s15 pour les
+   matieres. Le jour ou un libelle differera de sa valeur, ce test rougira pour un motif qu'il ne
+   nomme pas.
+
+**Forme demandee, qui dit exactement le critere 2 et rien d'autre** : l'ensemble des elements
+actionnables de l'en-tete est exactement l'ensemble de ses `[data-role=entree]`. Aucun libelle, aucun
+catalogue, aucun effectif. Elle interdit reellement la seule chose que le critere 2 interdit - une
+troisieme boite actionnable a cote des puces - et elle reste vraie quelle que soit la graphie retenue.
+**Je ne l'ecris pas a la place de `marc-dev`** : elle est routee par `sofia-sm`.
+
+### 6.4 Geste 3 - `chaqueEcranInsereDansLaZonePorteLeMarqueurQueLaFeuilleExige` retire : **REFUS EN L'ETAT**, accord conditionne
+
+**Le retrait de ce test-la est fonde ; ce qui manque est ce qu'il emporte avec lui.** Sa premiere
+assertion exige qu'au moins un masquage de la forme contractuelle soit declare en production ; la
+production n'en declare plus, donc le maintenir le rendrait rouge pour un motif qu'il n'a pas choisi de
+garder. Et le retrait de la regle CSS elle-meme est doublement fonde : deux garde-fous independants la
+refusent, celui d'`ADR-0022` et celui d'`ADR-0031`. Sur ce point `marc-dev` a mesure les deux
+strategies au lieu d'en supposer une, ce qui est exactement ce qu'on lui demande.
+
+**Ce que le retrait emporte, et qui n'a pas ete vu.** Ce test gardait **deux** proprietes, pas une :
+qu'un masquage existe (perimee), et **que tout gabarit insere dans la zone porte le marqueur d'etat**
+(intacte). Or le marqueur `ecran-de-jeu` a toujours un consommateur vivant : `LEcranDeJeuDeclareCommentIlEstArriveTest`
+(`ADR-0027`) **derive sa population d'ecrans par `select(".ecran-de-jeu")` sur les reponses reelles**,
+et sa non-vacuite est globale - "au moins un ecran de jeu est rendu" - jamais par fragment. Verifie sur
+son arbre : apres ce lot, **aucune clause du depot n'exige qu'un fragment porte le marqueur.**
+
+**Consequence, et c'est un vert silencieux au sens exact de ce depot** : un cinquieme fragment qui
+oublierait `class="ecran-de-jeu"` sortirait du perimetre d'`ADR-0027` sans qu'aucun test ne rougisse.
+C'est mot pour mot la premiere ligne de la table de garde-fous d'`ADR-0022` (*"Un fragment neuf oublie
+le marqueur | les ecrans sont derives du repertoire de gabarits"*), et la famille que la retro de s05 a
+sanctionnee deux fois.
+
+**Condition de mon accord** - la propriete est re-portee, **decouplee du masquage** :
+
+> **Enonce** : tout gabarit du repertoire de gabarits qui n'est pas la coquille porte le marqueur
+> d'etat de l'ecran de jeu.
+> **Emplacement** : `LEcranDeJeuDeclareCommentIlEstArriveTest`, la classe qui **consomme** ce marqueur
+> et dont la population serait amputee en silence. C'est le consommateur qui doit prouver que sa
+> population est complete, pas la feuille qui ne le nomme plus.
+> **Derivation** : la coquille est identifiee par le fait que son document **contient la zone
+> `hx-target`**, jamais par son nom de fichier - la derivation d'`ADR-0022`, deja partagee dans le
+> paquet par `documents` et `zoneEchangee` (`ADR-0031`), donc rien a reecrire. Le nom du marqueur se lit
+> dans la constante que cette classe porte deja.
+> **Derivation totale** : aucun gabarit, aucune zone, plusieurs zones distinctes, aucune coquille,
+> plusieurs coquilles, aucun fragment restent des **echecs**, jamais des cas ignores.
+> **Preuve de morsure** : le jeu fautif `fragment-sans-marqueur` existe deja et porte exactement cette
+> faute - un ecran insere qui oublie le marqueur. Il n'y a aucune fixture a inventer, seulement a la
+> juger par la clause neuve.
+
+**Cout : un test.** Le compte passe donc de **505 a 506** ; c'est la seule consequence de mon verdict
+sur les chiffres de `marc-dev`. **Je ne l'ecris pas a sa place** ; l'enonce ci-dessus est assez precis
+pour qu'il n'y ait rien a redecouvrir, et `sofia-sm` le lui route.
+
+**Ce qui n'est pas exige** : garder `LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest` en production. Ses deux
+jeux fautifs suffisent a maintenir le mecanisme exact et eprouve, et c'est la doctrine que cet `ADR`
+s'est donnee a lui-meme en s06. Le sort d'`ADR-0022` est tranche dans son second amendement du
+2026-08-17 : **amendement de constat**, ni `ADR` neuf, ni changement de statut - clause par clause, avec
+ce qui le rouvrirait.
+
+### 6.5 Geste 4 - la preuve historique rendue autonome par un fixture : **ACCORD**
+
+La question posee est la bonne : une preuve qui ne lit plus la production prouve-t-elle encore quelque
+chose ? Ici, oui, et pour une raison qui distingue ce cas du defaut que j'ai nomme ce sprint.
+
+- **L'objet de cette epreuve est un algorithme, pas la production.** Elle etablit que
+  `arretsDeTabulation` plus la clause 1 rougissent sur le document que le serveur rendait avant le lot
+  de s11 - un document **deja fige** depuis ce jour-la, que le serveur ne produit plus. Son materiau
+  n'a jamais ete l'arbre courant.
+- **Ce que le lot corrige est une incoherence, pas une perte.** Un document fige juge contre une
+  feuille vivante est un attelage batard : la feuille evolue pour des motifs etrangers a la regression
+  nommee, et la preuve rougit alors pour un defaut qui n'est pas le sien. C'est exactement ce qui
+  vient de se produire - c'est le cinquieme echec que `marc-dev` a rencontre. Figer les deux entrees
+  rend l'epreuve conforme a ce qu'elle annonce.
+- **Le defaut que j'ai nomme ce sprint ne s'applique pas ici**, et il faut dire pourquoi plutot que
+  l'invoquer : *"une fixture ecrite par l'auteur d'une regle ressemble a ce qu'il imagine"* vise un
+  garde-fou dont l'**objet** est la production et qui ne la rencontre jamais. Or la famille `ADR-0038`
+  garde ses preuves sur materiau reel : `unPointDeFocusDeplaceSurUnArretDestructeurFaitEchouerLaClause3`
+  et `unEcranDontLePointDeFocusEstRetireFaitEchouerLaClause4` mutent des documents que le serveur rend
+  vraiment, et leurs clauses de non-vacuite refusent de passer si le corpus n'en porte plus. La famille
+  n'est donc pas laissee aux seules fixtures : celle-ci est la seule figee, et elle l'est parce que son
+  sujet est date.
+- **Le contenu du fixture est la forme exacte que la production portait** - la regle que cet `ADR`
+  declarait, mot pour mot - et non une regle reecrite pour la circonstance. Verifie.
+
+**Ce que j'ajoute, sans l'exiger** : le jour ou une regle de masquage revient en production, cette
+epreuve pourra redevenir couplee a la feuille servie, et ce sera un gain. Le declencheur est ecrit dans
+le second amendement d'`ADR-0022`.
+
+### 6.6 La regle CSS vide `.ecran-de-jeu {}` : **ACCORD pour ce lot**, et la question de fond est tranchee contre elle
+
+Le precedent de `.message-jeu` est reel, verifie dans la feuille servie : une regle vide, commentee, qui
+nomme une classe pour `HabillageDesEcransTest` sans lui inventer une apparence qu'aucune story ne doit.
+Le geste est donc coherent avec le depot, et il vaut mieux qu'une exemption : il garde
+`aucuneClassePoseeSurUnElementNEstOrpheline` honnete plutot que de lui ajouter une liste.
+
+**Mais la question de fond est desormais tranchee contre la classe, et par le depot lui-meme.**
+`ADR-0027` ecrit noir sur blanc, a propos de son propre marqueur : *"Un attribut et non une classe, pour
+la meme raison qu'ADR-0017 a choisi `data-role` : ce qu'il declare n'est pas un habillage, et une
+classe aurait exige une regle de style qui ne style rien."* `ecran-de-jeu` etait une classe pour une
+seule raison - le selecteur `body:has(.ecran-de-jeu)` en avait besoin. **Cette raison vient de
+disparaitre.** Ce qui reste est exactement ce qu'`ADR-0027` refusait : une classe d'etat, et une regle
+de style qui ne style rien pour la justifier.
+
+**Je ne l'exige pas dans ce lot, et je dis pourquoi** : la migration vers un attribut touche quatre
+gabarits de production, deux classes de test et une quinzaine de jeux fautifs sous
+`src/test/resources/contreexemple/`, dont chaque preuve de morsure devrait etre reverifiee. Un second
+cascadage dans le meme lot, pour un gain de forme, contre le principe de la plus petite piece mobile.
+**Candidat de story, cout de l'ordre d'un petit lot**, et son declencheur est deja survenu - c'est
+`sofia-sm` qui l'affecte ou non. Ce qui me ferait l'exiger plus tot : un second marqueur d'etat pose en
+classe, qui ferait de l'exception une habitude.
+
+### 6.7 Ce que j'exige de `marc-dev`, en clair et sans code
+
+1. **Bloquant pour la cloture** : la clause de la section 6.4 - tout gabarit insere dans la zone porte
+   le marqueur -, dans `LEcranDeJeuDeclareCommentIlEstArriveTest`, eprouvee sur le jeu fautif
+   `fragment-sans-marqueur` qui existe deja. **+1 test : 506.**
+2. **Non bloquant, a corriger dans le meme lot** : la forme du test neuf de la section 6.3 - l'ensemble
+   des actionnables de l'en-tete egale l'ensemble de ses `[data-role=entree]`, sans libelle ni
+   catalogue. Aucun changement de compte.
+
+Rien d'autre. Les gestes 1, 4 et la regle vide sont acceptes tels quels, et le geste 2 est accepte dans
+son principe.
+
+### 6.8 Le doublement de perimetre - ce que cela dit de ma facon de deriver les impacts
+
+**Oui, cela dit quelque chose, et la reponse n'est pas que les quatre etaient indevinables.** Geste par
+geste, ce qui etait derivable avant execution :
+
+| Garde-fou touche | Derivable en lisant ? | Comment |
+|---|---|---|
+| geste 1 | **oui, en un grep** | le test contient le litteral `.btn.lien-accueil` dans son assertion |
+| geste 2 | **oui**, et `DEC-0033` le nommait deja | idem, litteral |
+| geste 3 | **oui, en deux temps** | le test exige un masquage non vide, et le seul masquage servi nomme `.lien-accueil` ; la classe refuse elle-meme un masquage decoratif |
+| geste 4 | **oui en principe, manque en pratique** | le couplage n'est visible qu'en lisant le **corps** de la methode : un document fige juge avec `masquages(RACINE_PRODUCTION)`. Ni son nom ni `ADR-0038` ne le laissent deviner |
+| le cinquieme, conditionnel (`ADR-0031`) | **non par les seuls garde-fous** | il fallait savoir qu'une co-occurrence impossible est refusee, ce que j'avais analyse - pour l'**ajout** de la barre, ou j'avais conclu, a juste titre, qu'`ADR-0031` resterait vert |
+
+**Le defaut de methode, nomme** : j'ai derive le perimetre du **geste du jour** - ajouter la barre - et
+non celui de son inverse. Mon avis de faisabilite de `S14-1` porte une mesure du perimetre de l'ajout,
+faite en posant les puces et en executant le module ; il ne porte aucune mesure du perimetre d'un
+retrait, alors que `BARRE-7` etait deja une reserve routee. **Le perimetre d'un retrait n'est pas celui
+d'un ajout, et je n'en avais mesure qu'un.**
+
+**Le correctif, concret et cheap, que je m'applique** : tout avis de faisabilite qui concerne le
+**retrait** d'un element de production porte, avec son resultat, le releve des sources de test qui
+nomment cet element en litteral - une commande, publiee dans l'avis comme une mesure de rendu porte la
+sienne. Cela aurait attrape les gestes 1, 2 et la moitie du 3. Pour le reste - un garde-fou dont la
+*derivation* lit une source dont l'element est la derniere instance - il n'y a pas de commande, et je
+ne pretends pas le contraire : c'est une lecture de corps de methode, et c'est la que geste 4 m'a
+echappe.
+
+**Ce que le doublement ne dit pas, et qu'il ne faut pas lui faire dire** : que les garde-fous ont
+failli. Les cinq echecs sont **cinq rouges au bon moment**, pas un vert silencieux. Chacun a arrete le
+lot exactement la ou une propriete perdait son objet, y compris le cinquieme, conditionnel, qui a
+oppose deux garde-fous a une regle morte que personne n'aurait relue. C'est le cout que `ADR-0038`
+avait accepte d'avance - *"un ecran neuf parfaitement correct fera rougir la regle [...] elle coutera un
+ajout de cas"*. **Une derivation d'impact ratee a coute une surprise a l'execution ; elle n'a coute
+aucun defaut.** Et le seul trou reel de ce lot - la clause 1 orpheline de la section 6.4 - n'a pas ete
+produit par un garde-fou muet : il a ete produit par le **retrait** d'un garde-fou, ce qui est
+precisement le geste sur lequel un accord ecrit est exige.
