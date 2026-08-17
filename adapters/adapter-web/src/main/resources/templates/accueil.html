@@ -41,6 +41,19 @@
                hx-post="/retour" hx-target="#jeu" hx-swap="innerHTML">Les jeux</a>
         </nav>
     </div>
+    <!-- S14-1 (ADR-0043, ADR-0044) : un point d'entree par niveau distinct du catalogue, dans
+         l'ordre du catalogue - jamais un libelle ni un href ecrits en clair (ADR-0006). Second
+         rang de l'en-tete, sans regle de masquage : c'est l'absence de regle qui rend cette barre
+         visible y compris sur un ecran de jeu (FICHE-barre-entree-niveau.md, variante retenue).
+         ADR-0044 point 3 : aucun etat de filtre courant ici, l'en-tete ne peut pas etre rafraichi
+         par un echange htmx - le niveau demande ne vit que dans la route que chaque puce appelle.
+         data-role="entree" (ADR-0043) : ni une action de l'ecran affiche, ni sa sortie. -->
+    <nav class="container bandeau-niveaux">
+        <button type="button" class="btn chip-niveau" data-role="entree"
+                th:each="niveau : ${niveaux}"
+                th:attr="hx-get=@{'/niveaux/' + ${niveau}}"
+                hx-target="#jeu" hx-swap="innerHTML" th:text="${niveau}">CP</button>
+    </nav>
 </header>
 <!-- ADR-0020 : ce <main> est le seul porteur de l'identifiant de la zone echangee, dans tout le
      depot. Le fragment "zoneAccueil" que /retour renvoie est porte par un th:block, qui ne rend

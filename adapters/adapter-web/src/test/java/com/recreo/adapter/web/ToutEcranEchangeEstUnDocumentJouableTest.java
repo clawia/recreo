@@ -78,6 +78,9 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
     /** La proposition fausse de l'item de {@code JEU_REPETE_ID} (PartieControllerTest). */
     private static final String PROPOSITION_FAUSSE = "mauvaise";
 
+    /** Le seul niveau du catalogue de test (PartieControllerTest.JeuDeTestConfiguration). */
+    private static final String NIVEAU = "CP";
+
     /**
      * ADR-0034, amendement : deux manches et un contenu combinatoire (PartieControllerTest), donc une
      * partie que deux reponses fausses terminent sur un verdict faux.
@@ -191,6 +194,24 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
         ecrans.add(new Ecran("confirmation de l'abandon, retour a la liste des jeux",
                 "POST /retour/confirmer",
                 assembler(corps(post("/retour/confirmer").session(partieQuiConfirmeSaSortie)))));
+
+        // S14-1 (ADR-0043, ADR-0044) : deux routes neuves, le point d'entree par niveau.
+        ecrans.add(new Ecran("liste filtree par niveau, aucune partie en cours", "GET /niveaux/{niveau}",
+                assembler(corps(get("/niveaux/{niveau}", NIVEAU)))));
+
+        MockHttpSession partieQuiChangeDeNiveau = new MockHttpSession();
+        corps(post("/parties/{jeuId}", JEU_ID).session(partieQuiChangeDeNiveau));
+        ecrans.add(new Ecran("demande de confirmation avant de changer de niveau, la partie continue",
+                "GET /niveaux/{niveau}",
+                assembler(corps(get("/niveaux/{niveau}", NIVEAU).session(partieQuiChangeDeNiveau)))));
+
+        MockHttpSession partieQuiConfirmeSonChangementDeNiveau = new MockHttpSession();
+        corps(post("/parties/{jeuId}", JEU_ID).session(partieQuiConfirmeSonChangementDeNiveau));
+        corps(get("/niveaux/{niveau}", NIVEAU).session(partieQuiConfirmeSonChangementDeNiveau));
+        ecrans.add(new Ecran("confirmation du changement de niveau, retour a la liste filtree",
+                "POST /niveaux/{niveau}/confirmer",
+                assembler(corps(post("/niveaux/{niveau}/confirmer", NIVEAU)
+                        .session(partieQuiConfirmeSonChangementDeNiveau)))));
 
         return ecrans;
     }

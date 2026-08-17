@@ -37,9 +37,14 @@
                 hx-post="/retour/annuler" hx-target="#jeu" hx-swap="innerHTML">Continuer la partie</button>
         <!-- ADR-0017 : ce bouton fait sortir l'enfant du jeu, donc data-role="sortie" - et sa requete
              detruit reellement la partie, contrairement a celui de fragments/manche.html qui ne mene
-             plus qu'ici. Meme mot que toute autre sortie de l'application (ADR-0022 / S6-9). -->
+             plus qu'ici. Meme mot que toute autre sortie de l'application (ADR-0022 / S6-9).
+             S14-1 : la destination varie selon ce qui a ouvert cette confirmation - un abandon
+             ordinaire (/retour/confirmer) ou une puce de niveau (/niveaux/{niveau}/confirmer,
+             ADR-0044) - pour que l'accueil qui en resulte reste filtre sur le niveau demande, le
+             niveau ne pouvant pas vivre ailleurs que dans l'URL (DEC-0028). Attribut pose a part du
+             role, jamais dans le meme th:attr que lui. -->
         <button type="button" class="btn retour-accueil" data-role="sortie"
-                hx-post="/retour/confirmer" hx-target="#jeu" hx-swap="innerHTML">Les jeux</button>
+                th:attr="hx-post=${urlConfirmerAbandon}" hx-target="#jeu" hx-swap="innerHTML">Les jeux</button>
     </div>
 </div>
 </body>

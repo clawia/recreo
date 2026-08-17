@@ -14,6 +14,12 @@ public interface PartieUseCase {
 
     List<GameDefinition> jeuxDisponibles();
 
+    /** ADR-0044 : les valeurs de niveau distinctes du catalogue, dans l'ordre du catalogue. */
+    List<String> niveauxDuCatalogue();
+
+    /** ADR-0044 : le sous-ensemble du catalogue dont le niveau correspond. */
+    List<GameDefinition> jeuxDuNiveau(String niveau);
+
     GameSession demarrer(String jeuId);
 
     GameSession jouer(String jeuId, GameSession session, Move coup);
