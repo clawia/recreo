@@ -1,6 +1,5 @@
 package com.recreo.adapter.content;
 
-import com.recreo.application.catalog.GameDefinition;
 import com.recreo.domain.content.ContentSource;
 import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
@@ -50,8 +49,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  * criteres pedagogiques restaient tenus), puis recable au meme sprint apres son amendement du
  * 2026-08-16 : la voie de rendu retenue a leve ce refus (verdict favorable sous reserve,
  * {@code squad/conformite/FICHE-bandit-manchot-grands-nombres-cm1.md}).
- * {@link #leJeuDuCatalogueChargeBienLePaquetCm1GrandsNombres()} verifie a nouveau que l'entree de
- * catalogue charge bien ce paquet.</p>
+ * La verification "l'entree de catalogue charge bien ce paquet" (s14, dette technique 1,
+ * avis-faisabilite.md section 8.1) est desormais generique, derivee de catalogue.yaml, dans
+ * {@code ChaqueEntreeDuCatalogueChargeBienSonPaquetTest} ; elle n'est plus repetee ici.</p>
  */
 class PaquetCm1GrandsNombresTest {
 
@@ -195,15 +195,6 @@ class PaquetCm1GrandsNombresTest {
         }
     }
 
-    @Test
-    void leJeuDuCatalogueChargeBienLePaquetCm1GrandsNombres() {
-        GameDefinition jeu = jeu("bandit-manchot-grands-nombres-cm1");
-
-        assertThat(tousLesItems(jeu.contenu()))
-                .as("l'entree de catalogue charge bien le paquet '%s'", PAQUET)
-                .isEqualTo(tousLesItems(paquet()));
-    }
-
     private static boolean estEcrire(Question item) {
         return item.enonce().startsWith(PREFIXE_ECRIRE);
     }
@@ -262,12 +253,5 @@ class PaquetCm1GrandsNombresTest {
 
     private static ContentSource paquet() {
         return new YamlContentPackLoader().chargerPaquet(PAQUET);
-    }
-
-    private static GameDefinition jeu(String id) {
-        return new YamlContentPackLoader().games().stream()
-                .filter(candidat -> candidat.id().equals(id))
-                .findFirst()
-                .orElseThrow();
     }
 }

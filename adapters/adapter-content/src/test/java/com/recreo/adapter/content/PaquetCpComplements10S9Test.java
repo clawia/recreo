@@ -112,16 +112,19 @@ class PaquetCpComplements10S9Test {
                 .hasSizeGreaterThanOrEqualTo(9);
     }
 
+    /**
+     * s14, dette technique 1 (avis-faisabilite.md section 8.1) : la verification "l'entree de
+     * catalogue charge bien ce paquet" est desormais generique, derivee de catalogue.yaml, dans
+     * ChaqueEntreeDuCatalogueChargeBienSonPaquetTest. Ce qui reste specifique a ce paquet, et donc
+     * ici, est le nombre de manches (DEC-0020, 7 et non 10 comme les autres jeux du catalogue).
+     */
     @Test
-    void leJeuDuCatalogueDeclareSeptManchesEtJoueBienLePaquetCpComplements10() {
+    void leJeuDuCatalogueDeclareSeptManches() {
         GameDefinition jeu = jeu("bandit-manchot-complements-10-cp");
 
         assertThat(jeu.nombreDeManches())
                 .as("DEC-0020 : ce jeu declare 7 manches, et non 10 comme les autres jeux du catalogue")
                 .isEqualTo(7);
-        assertThat(tousLesItems(jeu.contenu()))
-                .as("l'entree de catalogue charge bien le paquet 'cp-complements-10'")
-                .isEqualTo(tousLesItems(paquet()));
     }
 
     /** Enumere tous les items distincts du paquet en faisant grossir le tirage deja-vu jusqu'a epuisement. */
