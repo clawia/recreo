@@ -193,3 +193,31 @@ changement : cette decision ne prononce toujours aucun jugement pedagogique par 
   fait que reprendre et referencer le verdict que `nadia-prof` y a deja ecrit.
 - Signale a `sofia-sm`, hors de ce fichier : le chiffre "102 x 53 px" perime dans `ADR-0022`, pour
   routage vers `theo-archi`.
+
+## Amendement du 2026-08-17 (s14, PORTE-1 fermee par DEC-0033)
+
+**PORTE-1 restait ouverte depuis le 2026-08-14** : le constat que le lien "Les jeux" de l'en-tete
+rend, depuis l'accueil, un ecran identique a celui qui l'affiche - `nadia-prof` avait ecrit que
+"deux issues [lui] conviennent : cette boite disparait de l'accueil, ou elle y fait quelque chose",
+sans trancher, le choix restant a `camille-po`.
+
+`S14-1` (barre d'entree par niveau, sprint 14) installe deux puces de niveau dans la meme zone
+d'en-tete, qui repondent l'une et l'autre, et rend cette condition **bloquante** sous le nom
+**BARRE-7** (`squad/conformite/FICHE-barre-entree-niveau.md`, section 6, arbitrage du 2026-08-17) :
+le Done pedagogique de `S14-1` ne pouvait pas etre prononce tant que le choix entre les deux issues
+n'etait pas fait.
+
+**`DEC-0033-barre-7-le-lien-les-jeux-de-l-en-tete-disparait-de-l-accueil.md` tranche : la premiere
+issue est retenue.** Le lien de l'en-tete est retire de tout ecran, y compris l'accueil, plutot que
+de lui donner un comportement neuf - motif detaille dans cette decision. PORTE-1 est donc **fermee**
+par `DEC-0033`, pas par le present document : rien dans les sections d'origine de `DEC-0027`
+ci-dessus n'est modifie par cet amendement, qui se limite a dater la fermeture et a renvoyer vers la
+decision qui la prononce.
+
+### Impact de cet amendement
+
+- `docs/backlog/backlog.md` : story neuve `S14-2`, section "Sprint 14", portant le retrait du lien
+  et ses criteres d'acceptation.
+- `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee.
+- `squad/conformite/FICHE-barre-entree-niveau.md` : inchangee par cet amendement ; le verdict sur
+  BARRE-7 y reste celui deja ecrit par `nadia-prof`.

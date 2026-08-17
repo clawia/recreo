@@ -4180,3 +4180,53 @@ trancher la nomenclature affichee (accents). `DEC-0032` remplace `S13-6` par la 
   `DEC-0032-perimetre-sprint-14-barre-entree-niveau-arbitrage-prealable-matiere-differee.md`.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, apres l'arbitrage prealable de
   `nadia-prof` (bloquant) et l'avis de faisabilite de `theo-archi`.
+
+### S14-2 - Le lien "Les jeux" de l'en-tete disparait, il ne survit qu'a l'accueil ou il ne repondait plus a rien
+
+- **Besoin** : en tant qu'eleve de CP ou de CM1, je veux que chaque boite de l'en-tete sur laquelle
+  j'appuie fasse quelque chose, afin de ne pas apprendre a distinguer une sortie qui marche d'une
+  boite voisine qui ne fait rien.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Cette story retire un
+  element de navigation devenu sans effet ; elle ne cible aucune ligne de
+  `squad/programme/MATRICE-couverture.md`.
+- **Contexte et obstacle qu'elle leve** : `S14-1` est livree et fusionnee, huit de ses neuf
+  conditions bloquantes tenues. La neuvieme, **BARRE-7**
+  (`squad/conformite/FICHE-barre-entree-niveau.md`, section 6), reste ouverte et bloque le Done
+  pedagogique de `S14-1` dans son ensemble : le lien `a.lien-accueil` de l'en-tete, libelle "Les
+  jeux", n'est visible sur aucun ecran de jeu (deja masque par `ADR-0022`) et, sur l'accueil non
+  filtre - l'etat de tout premier chargement - un appui dessus rend un document identique a celui
+  qui l'affichait. `nadia-prof` a nomme deux issues acceptables sans trancher entre elles ; `DEC-
+  0033` retient la premiere : la boite disparait, elle n'est pas remplacee par un comportement
+  neuf, motif detaille dans la decision.
+- **Criteres d'acceptation** :
+  - Etant donne n'importe quel ecran rendu par l'application (accueil avec ou sans filtre de
+    niveau, reprise d'une partie en cours, manche, echec, revelation, fin de partie, erreur,
+    confirmation), quand on lit le document servi, alors aucun element ne porte plus a la fois la
+    classe `lien-accueil` et le texte "Les jeux" dans l'en-tete (`nav.menu`) : cette boite est
+    retiree, pas seulement masquee par une regle supplementaire qui laisserait un cas ou elle
+    reapparait.
+  - Etant donne l'accueil affichant le catalogue complet (etat par defaut, sans filtre de niveau),
+    quand l'enfant regarde l'en-tete, alors il n'y voit que l'icone, le titre "Recreo" et les puces
+    de niveau ("CP", "CM1") : aucune troisieme boite actionnable a cote d'elles.
+  - Etant donne l'ecran de fin de partie et l'ecran de confirmation d'abandon, quand on compte les
+    occurrences du mot "Les jeux" sur chacun, alors ce compte est inchange par cette story : une
+    fois pour `sortie-pleine` sur la fin de partie (PORTE-2, `DEC-0027`), une fois pour
+    `retour-accueil` sur la confirmation. Cette story ne retire que l'exemplaire de l'en-tete,
+    jamais une sortie de contenu deja arbitree.
+  - Ce que cette story ne tranche pas : le moyen technique du retrait - suppression de l'element du
+    gabarit ou extension permanente d'une regle de masquage - et son impact sur
+    `LActionNeDeclarePasMoinsQueLaSortieTest` et sur
+    `EnTeteEtMenuTest.leMenuDeLEnTeteContientExactementUneEntreeVersLAccueil`, qui comptaient
+    jusqu'ici ce lien dans leur population (`theo-archi`, saisine par `sofia-sm`).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que le retrait de cette boite suffise, pour un enfant de six ans, a ne plus
+    hesiter entre les puces de niveau et une sortie sur l'accueil - `nadia-prof` le rejoue avec les
+    huit autres conditions de `FICHE-barre-entree-niveau.md` avant de prononcer le Done pedagogique
+    complet de `S14-1`.
+- **Porte de sortie** : les trois criteres testables ci-dessus tenus et `mvn verify` vert. Aucun
+  arbitrage prealable neuf n'est requis - `nadia-prof` a deja nomme les deux issues acceptables et
+  laisse le choix a `camille-po` (`DEC-0033`) ; le Done pedagogique complet de `S14-1`, lui, reste a
+  prononcer par `nadia-prof` une fois cette story fusionnee avec le reste de l'increment.
+- **Lien decision** :
+  `DEC-0033-barre-7-le-lien-les-jeux-de-l-en-tete-disparait-de-l-accueil.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, lot court du sprint 14 en cours.
