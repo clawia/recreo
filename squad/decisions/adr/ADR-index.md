@@ -602,7 +602,8 @@ troisieme avait nommee sans la fermer :
     plutot qu'en raisonnant : `sortie` fait echouer la clause de libelle unique d'`ADR-0022`, `action`
     fait echouer la saillance d'`ADR-0017` avec **16 ecarts sur quatre ecrans** - les deux clauses
     tirent en sens contraire, et c'est ce qui rend le troisieme role obligatoire plutot que commode.
-    `ADR-0044` ajoute la **29e regle ArchUnit** du depot, la premiere depuis s00 : aucun adaptateur de
+    `ADR-0044` ajoute la **29e regle ArchUnit** du depot, la premiere depuis s06 (2026-08-07,
+    `ADR-0019`) : aucun adaptateur de
     rendu ne lit le descripteur de contenu, mesuree mordante sur la production mutee (le filtre par
     niveau ecrit dans `PartieController`, 1 echec nommant la methode et la ligne). Il nomme lui-meme
     le chemin qu'ArchUnit ne peut pas voir - un `th:if` dans un gabarit - et le ferme par une seconde
