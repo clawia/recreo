@@ -88,12 +88,21 @@ noms de fichiers - et sont verifiees par le `relecteur-pedagogique` :
   commit et les identifiants de code restent en ASCII.
 - Pas de commentaire qui paraphrase le code.
 - **Aucun chemin absolu de poste de travail, aucun nom d'utilisateur, aucune credential.** Le
-  depot est pousse sur GitHub : `C:\...`, `/c/...`, `~/.m2/...`, un chemin d'interpreteur ou de
-  JDK, un nom de compte n'ont rien a y faire, y compris dans un rapport de ceremonie qui cite la
-  commande qu'un agent a lancee. Ecrire la commande sous sa forme portable (`mvn -B verify`,
-  `python outils/rapport-tokens.py`) et nommer le prerequis plutot que son emplacement
-  (`JAVA_HOME` sur un JDK 21, et non le repertoire ou il est installe sur telle machine). Les
-  secrets vivent dans `.env`, jamais dans un fichier commite.
+  depot est pousse sur GitHub : `C:\...`, `/c/...`, `/home/...`, `/Users/...`, un chemin
+  d'interpreteur ou de JDK, un nom de compte n'ont rien a y faire, y compris dans un rapport de
+  ceremonie qui cite la commande qu'un agent a lancee. Ecrire la commande sous sa forme portable
+  (`mvn -B verify`, `python outils/rapport-tokens.py`) et nommer le prerequis plutot que son
+  emplacement (`JAVA_HOME` sur un JDK 21, et non le repertoire ou il est installe sur telle
+  machine). Les secrets vivent dans `.env`, jamais dans un fichier commite.
+  Le critere est **la portabilite, pas la presence d'un separateur** : un emplacement qui vaut
+  identiquement sur toute machine reste ecrivable. `$HOME`, `$JAVA_HOME`, `%USERPROFILE%`,
+  `~/.m2/settings.xml`, `~/.m2/toolchains.xml` sont des formes acceptees ; c'est la variable qui
+  est bonne et sa valeur figee qui est mauvaise. C'est ce qu'`ADR-0010` decide et ce que
+  `verifier-chemins.sh` execute depuis s03, avec un cas de test nomme pour chacune de ces formes.
+  Amendement du 2026-08-17 (`theo-archi`, s14) : cette phrase enumerait `~/.m2/...` parmi les
+  formes interdites, en contradiction avec `ADR-0010`, avec le garde-fou, avec le test du
+  garde-fou et avec deux relectures (s03, s05) qui avaient deja tranche dans l'autre sens. La
+  decision vit dans l'`ADR` ; c'est cette enumeration-ci qui avait derive, elle est corrigee.
 
 Le contenu et l'interface destines a l'enfant (enonces, propositions de reponse, pictogrammes,
 signaux d'interface comme le retour juste/faux) n'entrent pas dans ce registre : ils sont
