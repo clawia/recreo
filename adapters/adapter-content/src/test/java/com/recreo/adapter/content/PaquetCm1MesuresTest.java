@@ -172,14 +172,11 @@ class PaquetCm1MesuresTest {
                 .doesNotContainIgnoringCase("contenance");
     }
 
-    @Test
-    void leJeuDuCatalogueChargeBienLePaquetCm1Mesures() {
-        GameDefinition jeu = jeu("bandit-manchot-conversions-unites-cm1");
-
-        assertThat(tousLesItems(jeu.contenu()))
-                .as("l'entree de catalogue charge bien le paquet '%s'", PAQUET)
-                .isEqualTo(tousLesItems(paquet()));
-    }
+    /*
+     * s14, dette technique 1 (avis-faisabilite.md section 8.1) : la verification "l'entree de
+     * catalogue charge bien ce paquet" est desormais generique, derivee de catalogue.yaml, dans
+     * ChaqueEntreeDuCatalogueChargeBienSonPaquetTest. Elle n'est plus repetee ici.
+     */
 
     /** Enumere tous les items distincts du paquet en faisant grossir le tirage deja-vu jusqu'a epuisement. */
     private static List<Question> tousLesItems(ContentSource contenu) {

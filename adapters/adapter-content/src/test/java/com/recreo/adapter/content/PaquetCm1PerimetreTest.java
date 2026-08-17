@@ -1,6 +1,5 @@
 package com.recreo.adapter.content;
 
-import com.recreo.application.catalog.GameDefinition;
 import com.recreo.domain.content.ContentSource;
 import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
@@ -160,14 +159,11 @@ class PaquetCm1PerimetreTest {
         }
     }
 
-    @Test
-    void leJeuDuCatalogueChargeBienLePaquetCm1Perimetre() {
-        GameDefinition jeu = jeu("bandit-manchot-perimetre-cm1");
-
-        assertThat(tousLesItems(jeu.contenu()))
-                .as("l'entree de catalogue charge bien le paquet '%s'", PAQUET)
-                .isEqualTo(tousLesItems(paquet()));
-    }
+    /*
+     * s14, dette technique 1 (avis-faisabilite.md section 8.1) : la verification "l'entree de
+     * catalogue charge bien ce paquet" est desormais generique, derivee de catalogue.yaml, dans
+     * ChaqueEntreeDuCatalogueChargeBienSonPaquetTest. Elle n'est plus repetee ici.
+     */
 
     /** Les items de calcul, hors les deux items definitionnels admis par P-5. */
     private static List<Question> itemsDeCalcul() {
@@ -188,13 +184,6 @@ class PaquetCm1PerimetreTest {
             dejaVus.add(question.id());
         }
         return items;
-    }
-
-    private static GameDefinition jeu(String id) {
-        return new YamlContentPackLoader().games().stream()
-                .filter(candidat -> candidat.id().equals(id))
-                .findFirst()
-                .orElseThrow();
     }
 
     private static ContentSource paquet() {

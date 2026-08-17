@@ -1,6 +1,5 @@
 package com.recreo.adapter.content;
 
-import com.recreo.application.catalog.GameDefinition;
 import com.recreo.domain.content.ContentSource;
 import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
@@ -96,14 +95,11 @@ class PaquetCpSoustractionsS9Test {
                 .hasSizeGreaterThanOrEqualTo(20);
     }
 
-    @Test
-    void leJeuDuCatalogueJoueBienLePaquetCpSoustractions() {
-        GameDefinition jeu = jeu("bandit-manchot-soustractions-cp");
-
-        assertThat(tousLesItems(jeu.contenu()))
-                .as("l'entree de catalogue charge bien le paquet 'cp-soustractions'")
-                .isEqualTo(tousLesItems(paquet()));
-    }
+    /*
+     * s14, dette technique 1 (avis-faisabilite.md section 8.1) : la verification "l'entree de
+     * catalogue charge bien ce paquet" est desormais generique, derivee de catalogue.yaml, dans
+     * ChaqueEntreeDuCatalogueChargeBienSonPaquetTest. Elle n'est plus repetee ici.
+     */
 
     /** Enumere tous les items distincts du paquet en faisant grossir le tirage deja-vu jusqu'a epuisement. */
     private static List<Question> tousLesItems(ContentSource contenu) {
@@ -117,13 +113,6 @@ class PaquetCpSoustractionsS9Test {
             dejaVus.add(question.id());
         }
         return items;
-    }
-
-    private static GameDefinition jeu(String id) {
-        return new YamlContentPackLoader().games().stream()
-                .filter(candidat -> candidat.id().equals(id))
-                .findFirst()
-                .orElseThrow();
     }
 
     private static ContentSource paquet() {
