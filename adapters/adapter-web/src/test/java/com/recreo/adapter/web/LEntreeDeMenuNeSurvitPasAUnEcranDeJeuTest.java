@@ -250,10 +250,34 @@ class LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest {
                 .isEmpty();
     }
 
-    @Test
-    void chaqueEcranInsereDansLaZonePorteLeMarqueurQueLaFeuilleExige() {
-        verifierQueLHabillageMasqueDeclareSonMarqueur(RACINE_PRODUCTION, RACINE_PRODUCTION);
-    }
+    /**
+     * S14-2 (BARRE-7, DEC-0033) : retiree. <b>Motif ecrit de la suppression</b>, exige par
+     * ADR-0013 : ce test exercait {@code verifierQueLHabillageMasqueDeclareSonMarqueur} contre la
+     * production reelle, dont la premiere assertion exige qu'au moins un masquage de la forme
+     * {@code body:has(.<marqueur>) .<habillage>} soit declare - sans lui, "l'entree de menu de
+     * l'en-tete permanent reste visible sur les ecrans de jeu", le defaut que l'arbitrage de
+     * nadia-prof du 2026-08-07 refusait. Cette entree - le lien "Les jeux" de l'en-tete - est
+     * retiree de tout gabarit par S14-2, jamais remplacee par un comportement neuf (DEC-0033) : il
+     * n'y a donc plus rien a masquer, et la production ne declare plus aucun masquage de cette
+     * forme. Maintenir ce test l'aurait fait rougir pour un motif qu'il n'a pas choisi de garder -
+     * le mecanisme d'ADR-0022 lui-meme n'a plus d'instance en production, pas seulement son
+     * epinglage.
+     *
+     * <p>Ce qui reste garde, et par quoi : la <b>fonction</b> de ce garde-fou survit intacte -
+     * {@code verifierQueLHabillageMasqueDeclareSonMarqueur} et son helper {@code masquages} restent
+     * exerces par {@code unEcranInsereQuiOublieLeMarqueurFaitEchouerLeGardeFou} et
+     * {@code uneFeuilleSansRegleDeMasquageFaitEchouerLeGardeFou} (sur des jeux fautifs, pas sur la
+     * production), et {@code masquages}/{@code masqueSur} restent utilises tels quels par
+     * {@code AucunArretDeTabulationNEstDestructeurTest} pour deriver l'ordre de tabulation. Seule la
+     * clause qui exigeait qu'un masquage existe <b>en production</b> perd son objet.</p>
+     *
+     * <p><b>Propose pour confirmation ecrite de theo-archi (via sofia-sm), pas tranche seul</b> :
+     * le mecanisme de masquage d'ADR-0022 (un habillage permanent masque sur les ecrans de jeu)
+     * n'a plus aucune instance en production a la date de ce commit. Ce retrait suit le patron
+     * deja etabli dans {@code LActionNeDeclarePasMoinsQueLaSortieTest} pour un sujet disparu, mais
+     * la question de savoir si ADR-0022 lui-meme merite un amendement de constat - comme il en a
+     * deja recu un pendant S14-1 - reste ouverte et n'est pas tranchee ici.</p>
+     */
 
     /**
      * Epinglage de ce que l'arbitrage a tranche, cote texte : un seul mot de sortie circule sur toute
