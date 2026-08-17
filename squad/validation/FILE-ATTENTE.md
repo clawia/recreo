@@ -98,9 +98,24 @@ refus. A la difference du jeu ci-dessus, il reste au catalogue jouable pendant c
 deja fusionne dans `round-two`, mais seul un nouveau verdict joue par `nadia-prof` peut faire sortir
 ce jeu de cette file, pas la seule fusion du code.
 
-**Compte actuel : 2 increments en attente.** Sous le seuil de gel (2-3) : la regle de gel ne
-s'applique pas encore, mais un troisieme increment en attente la declencherait pour le prochain
-planning.
+**Correction du 2026-08-17 (s14) - les deux increments ci-dessus sortent de la file.**
+
+`bandit-manchot-grands-nombres-cm1` a recu, le 2026-08-16 au soir, un Done pedagogique **VALIDE SOUS
+RESERVE** (troisieme passage devant `nadia-prof`, apres deux refus) : le motif de rendu du second
+refus est leve, verifie en jouant l'increment sur un worktree dedie apres livraison de la voie de
+rendu (`squad/conformite/FICHE-bandit-manchot-grands-nombres-cm1.md`, verdict "verification apres
+livraison de la voie 4"). Il **sort de cette file**. Sa reserve non bloquante (reserve J, huit items
+sur 28 places entierement sous le pli a 360 x 640) n'est pas un motif et ne le remet pas en attente ;
+elle est suivie comme note de `squad/programme/MATRICE-couverture.md` et comme candidate de story au
+backlog, pas comme un Done pedagogique en souffrance.
+
+`bandit-manchot-perimetre-cm1` a recu, le meme soir, un Done pedagogique **VALIDE SOUS RESERVE** :
+le refus du 2026-08-16 (un item sur 22 illisible a 360 px) est leve sur le meme lot de verification
+(`squad/conformite/FICHE-bandit-manchot-perimetre-cm1.md`, verdict du 2026-08-16, soir). Il **sort de
+cette file**.
+
+**Compte actuel : 0 increment en attente.** Bien sous le seuil de gel (2-3) : rien n'empeche d'ouvrir
+de nouvelles stories de contenu au prochain planning.
 
 ## Historique
 
@@ -111,6 +126,8 @@ planning.
 | bandit-manchot-le-bon-son-cp | `squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE (leve depuis REFUSE) | 2026-08-06 (sprint 4, premier audit) | 2026-08-10 (sprint 6, refus leve apres recomposition) |
 | bandit-manchot-conjugaison-present-cm1 | `squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE (leve depuis REFUSE) | 2026-08-10 (sprint 6, premier audit) | 2026-08-10 (sprint 7, second audit, refus leve) |
 | bandit-manchot-conjugaison-present-cm1 | `squad/conformite/FICHE-bandit-manchot-conjugaison-present-cm1.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE (leve depuis REFUSE) | 2026-08-11 (sprint 8, troisieme audit) | 2026-08-11 (sprint 8, quatrieme audit, refus leve) |
+| bandit-manchot-grands-nombres-cm1 | `squad/conformite/FICHE-bandit-manchot-grands-nombres-cm1.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE (leve depuis REFUSE, troisieme passage) | 2026-08-16 (sprint 13, second refus) | 2026-08-16 (sprint 13, soir, verification apres livraison de la voie 4) |
+| bandit-manchot-perimetre-cm1 | `squad/conformite/FICHE-bandit-manchot-perimetre-cm1.md` | VALIDE SOUS RESERVE, Done pedagogique ACCORDE (leve depuis REFUSE) | 2026-08-16 (sprint 13, refus sur le rendu) | 2026-08-16 (sprint 13, soir, meme verification) |
 
 **Correction de s08 - ce fichier etait perime depuis sa cloture de sprint 7.** Le sprint 7 a leve
 le refus ci-dessus le 2026-08-10 (meme jour que l'ouverture du refus, sur un increment livre

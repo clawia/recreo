@@ -169,7 +169,7 @@ Source : `squad/programme/mathematiques/competences-cm1.md`.
 
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
-| mathematiques | CM1 | Nombres et calculs | Lire, ecrire, decomposer et comparer les nombres entiers jusqu'au million | bandit-manchot-grands-nombres-cm1 | bandit manchot | en cours |
+| mathematiques | CM1 | Nombres et calculs | Lire, ecrire, decomposer et comparer les nombres entiers jusqu'au million | bandit-manchot-grands-nombres-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Nombres et calculs | Calcul mental - tables de multiplication (jusqu'a ×10), rappel automatise | bandit-manchot-tables-multiplication-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Nombres et calculs | Calcul mental - multiplications et divisions simples (multiples de 10, 100) | bandit-manchot-multiplications-divisions-cm1 | bandit manchot | en cours |
 | mathematiques | CM1 | Nombres et calculs | Effectuer une multiplication posee d'un nombre a 2-3 chiffres par un nombre a 1-2 chiffres | - | - | non couvert |
@@ -177,7 +177,7 @@ Source : `squad/programme/mathematiques/competences-cm1.md`.
 | mathematiques | CM1 | Nombres et calculs | Notion de fraction simple (unites fractionnaires, fractions inferieures a 1) et reperage sur une droite numerique | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Resoudre des problemes a plusieurs etapes mobilisant les 4 operations | - | - | non couvert |
 | mathematiques | CM1 | Grandeurs et mesures | Convertir des unites de longueur, masse, contenance dans le systeme metrique | bandit-manchot-conversions-unites-cm1 | bandit manchot | couvert-valide |
-| mathematiques | CM1 | Grandeurs et mesures | Calculer un perimetre de figures usuelles (carre, rectangle) | bandit-manchot-perimetre-cm1 | bandit manchot | en cours |
+| mathematiques | CM1 | Grandeurs et mesures | Calculer un perimetre de figures usuelles (carre, rectangle) | bandit-manchot-perimetre-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Grandeurs et mesures | Resoudre des problemes de durees (calcul d'une duree, d'un horaire d'arrivee) | bandit-manchot-problemes-durees-cm1 | bandit manchot | en cours |
 | mathematiques | CM1 | Espace et geometrie | Reconnaitre, nommer et tracer des figures planes (carre, rectangle, triangle, cercle) avec outils (regle, equerre, compas) | - | - | non couvert |
 | mathematiques | CM1 | Espace et geometrie | Reconnaitre et utiliser la notion de symetrie axiale simple | - | - | non couvert |
@@ -367,6 +367,42 @@ soeur "Les grands nombres" : un jeu **joue aujourd'hui par un enfant** avec un D
 le pari que le code deja livre referme le motif de refus - constat qui reste a confirmer par un
 nouveau verdict de `nadia-prof`, pas par la fusion du correctif seule. Detail : `DEC-0031`, section
 "Amendement du 2026-08-16", point 5 ; l'increment entre dans `squad/validation/FILE-ATTENTE.md`.
+
+**Etat au 2026-08-16 (soir), verification apres livraison de la voie 4 - VALIDE SOUS RESERVE, "Les
+grands nombres" passe a `couvert-valide`.** `nadia-prof` a rejoue `bandit-manchot-grands-nombres-cm1`
+depuis un worktree dedie, sur la tete de `round-two` en reinstallant l'entree de catalogue pour
+pouvoir le jouer par l'ecran reel
+(`squad/conformite/FICHE-bandit-manchot-grands-nombres-cm1.md`, verdict "verification apres
+livraison de la voie 4"). **Le refus du 2026-08-16 est leve** : 0 debordement sur les 28 items,
+contre 20 sur 28 sur l'etat refuse, mesure sur les deux etats en parallele plutot que suppose. Le
+Done pedagogique est **VALIDE SOUS RESERVE**. **La ligne mathematiques CM1 "Lire, ecrire, decomposer
+et comparer les nombres entiers jusqu'au million" passe de `en cours` a `couvert-valide`**, ouverte
+en entier, sans mention de couverture partielle : les quatre verbes restent tous servis dans les
+proportions posees a l'ouverture de la fiche. Reserve non bloquante a porter avec ce statut -
+**reserve J** : a 360 x 640, huit items sur 28 placent une proposition entierement sous le pli (les
+cinq items "lire" et trois des sept items "decomposer", ceux dont les propositions sont les plus
+longues), la bonne reponse y etant hors champ au premier coup d'oeil sur ces items environ une
+manche sur dix. `nadia-prof` juge que ce n'est pas un motif de refus (un choix qu'on atteint en
+defilant n'est pas un texte qu'on ne peut pas lire, tant qu'aucune boite ne parait completement
+absente), mais une story de rendu reste a ecrire, commune a cette ligne et a "Le perimetre"
+ci-dessous. **L'entree de catalogue `id: bandit-manchot-grands-nombres-cm1` est deja recablee sur
+`round-two`** (`a948785`, `sofia-sm`, methode de test de chargement restituee dans le meme commit) :
+le jeu est aujourd'hui reellement jouable, ce n'est pas un statut vert en attente d'une action
+technique.
+
+**Etat au 2026-08-16 (soir), meme verification - VALIDE SOUS RESERVE, "Le perimetre" revient a
+`couvert-valide`.** Sur le meme lot de verification (voie 4 livree), `nadia-prof` rejoue
+`bandit-manchot-perimetre-cm1` et leve son refus du 2026-08-16 sur l'item
+`Le perimetre d'une figure, c'est...` (0 debordement contre 1 sur 22 sur l'etat refuse)
+(`squad/conformite/FICHE-bandit-manchot-perimetre-cm1.md`, verdict du 2026-08-16, soir). **La ligne
+mathematiques CM1 "Calculer un perimetre de figures usuelles (carre, rectangle)" repasse de
+`en cours` a `couvert-valide`**, et `bandit-manchot-perimetre-cm1` sort de
+`squad/validation/FILE-ATTENTE.md`. Une reserve neuve et non bloquante est versee au dossier par
+`nadia-prof` elle-meme, qui corrige un de ses propres constats du matin : sur ce jeu, presser la
+plus grande proposition gagne desormais 48,5 % des manches (les colonnes n'ayant plus la meme
+largeur sous la voie 4), contre 33,3 % au hasard - meme famille que la reserve deja ouverte sur "Les
+mesures" (candidate de story au backlog, section "Backlog - sprints suivants" de
+`docs/backlog/backlog.md`), et non une condition de ce statut.
 
 ## Francais - CP (cycle 2)
 
@@ -1134,3 +1170,45 @@ nombres, multiplications et divisions simples, problemes de durees), pour un tot
 `en cours` sur le produit. Le nombre de lignes `couvert-valide` ne bouge pas : ce mouvement attend
 l'audit de `nadia-prof` sur les increments du sprint 13, y compris l'arbitrage prealable qui reste a
 rendre sur deux des trois lignes (`DEC-0030`, section 5).
+
+## Synthese apres les verdicts du sprint 13 (2026-08-15 a 2026-08-16, soir)
+
+Cette section corrige une dette de gouvernance nommee dans `squad/sprints/s13-grands-nombres-et-
+chemin-de-catalogue/RAPPORT.md` (section "Encore ouverts") : cette matrice etait restee sur l'etat
+d'ouverture de s13 ci-dessus pendant tout le sprint, alors que quatre verdicts de `nadia-prof` s'y
+sont succede le meme jour et le lendemain. Je les recapitule dans l'ordre, plutot que de n'ecrire
+que l'etat final, pour que la trajectoire reste lisible (voir aussi le detail sous les tableaux
+mathematiques CM1 ci-dessus) :
+
+1. **2026-08-15** : premier audit de "Les grands nombres" - **REFUSE** (deux motifs de contenu).
+   Aucun mouvement de statut : la ligne etait deja `en cours` depuis l'ouverture du planning.
+2. **2026-08-16, journee** : second audit de "Les grands nombres" - **REFUSE une seconde fois**, sur
+   un motif neuf de rendu, les deux motifs de contenu leves. Toujours aucun mouvement de statut.
+   Dans le meme arbitrage, "Le perimetre" (`couvert-valide` depuis le 2026-08-14) est **rouvert et
+   refuse** sur le motif exact : la ligne "Calculer un perimetre de figures usuelles (carre,
+   rectangle)" **redescend de `couvert-valide` a `en cours`**.
+3. **2026-08-16, soir** : apres livraison de la voie de rendu (voie 4), `nadia-prof` verifie les
+   deux jeux en jouant l'increment reel. Les deux verdicts sont **VALIDE SOUS RESERVE** : "Les
+   grands nombres" **passe de `en cours` a `couvert-valide`** (reserve J ouverte, non bloquante) et
+   "Le perimetre" **repasse de `en cours` a `couvert-valide`** (refus du point 2 leve, une reserve
+   neuve versee au dossier).
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 |
+| mathematiques CM1 | 12 | 6 | 2 | 4 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 9 | 1 | 1 |
+| **Total** | **46** | **32** | **5** | **9** |
+
+Par rapport a l'ouverture de s13 (46 | 32 | 6 | 8), un seul mouvement net subsiste une fois la
+journee du 2026-08-16 rejouee dans l'ordre : mathematiques CM1 gagne une ligne `couvert-valide`
+("Les grands nombres", jamais couverte avant ce sprint) et en perd zero au net sur "Le perimetre"
+(descendue puis remontee le meme jour). Les deux lignes qui restent `en cours` en mathematiques CM1
+sont "Calcul mental - multiplications et divisions simples (multiples de 10, 100)" et "Resoudre des
+problemes de durees", toutes deux ouvertes par `DEC-0030` et toujours en attente de l'arbitrage
+prealable de `nadia-prof` sur leur contenu (section 5 de cette meme decision), non affecte par les
+verdicts ci-dessus.
+
+`squad/validation/FILE-ATTENTE.md` est mis a jour dans le meme geste : les deux increments sortent
+de la file au titre de leurs Done pedagogiques respectifs, tous deux `VALIDE SOUS RESERVE`.
