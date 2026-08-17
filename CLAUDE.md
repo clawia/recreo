@@ -33,6 +33,23 @@ programme.
 Le decoupage exact en modules est une decision d'architecture : il est acte en `ADR` par
 `theo-archi`, pas presuppose par ce fichier.
 
+## Prerequis de build
+
+Deux exigences, declarees dans le POM parent et donc verifiees a chaque `mvn`, des la phase
+`validate` :
+
+- une **toolchain de type `jdk` et de version `21`** dans le fichier de toolchains de
+  l'utilisateur (`~/.m2/toolchains.xml`), qui designe le JDK de compilation et d'execution des
+  tests. Sans elle, `maven-toolchains-plugin` arrete le build en nommant le type, la version et le
+  fichier a renseigner. En CI, `actions/setup-java` ecrit cette toolchain lui-meme ;
+- **Maven lance sur un JDK 17 ou plus recent** : `spring-boot-maven-plugin` ne peut pas etre
+  charge par une machine virtuelle plus ancienne, et une toolchain ne gouverne pas la machine
+  virtuelle de Maven. Sans cela, `maven-enforcer-plugin` arrete le build avec la marche a suivre.
+
+Sur un poste dont le `java` du `PATH` n'est pas un JDK 21, `bash outils/mvn-jdk21.sh -B clean
+verify` lance Maven sur le JDK de la toolchain declaree : plus besoin de positionner `JAVA_HOME` a
+la main a chaque commande, et la version sur laquelle on a mesure est celle de la toolchain.
+
 ## Regles cles
 
 - **Clean Architecture stricte** : les dependances vont toujours vers l'interieur. `domain` n'a
