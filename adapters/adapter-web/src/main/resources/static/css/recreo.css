@@ -608,11 +608,12 @@ h1 {
 /* S14-1 (ADR-0043, ADR-0044) : second rang de l'en-tete, les points d'entree par niveau. Fond
    distinct de --recreo-entete-fond (nadia-prof, FICHE-barre-entree-niveau.md, section 4 :
    "les puces sont sur un second rang, a gauche, sur une bande plus sombre" - BARRE-9, jamais le
-   meme rang que .menu qui porte "Les jeux"). Aucune regle de masquage n'est ecrite ici,
-   contrairement a .lien-accueil : c'est l'absence de regle qui rend cette barre visible y compris
-   sur un ecran de jeu (proposition-ines-barre-de-niveaux.md, section 1). BARRE-8 : un seul rang a
-   360 px pour les deux niveaux du catalogue - un second rang est un arbitrage prealable neuf, non
-   accorde d'avance.
+   meme rang que .menu qui porte "Les jeux"). BARRE-8 : un seul rang a 360 px pour les deux
+   niveaux du catalogue - un second rang est un arbitrage prealable neuf, non accorde d'avance.
+   S14-2, correction du Done pedagogique refuse par nadia-prof (BARRE-1, BARRE-2) : cette barre
+   reste permanente sur l'accueil et sur les trois etats de manche (demande de l'utilisatrice,
+   non remise en cause), mais elle est masquee sur la confirmation avant abandon et sur l'ecran
+   d'erreur - voir la regle de masquage sous .chip-niveau, plus bas dans ce fichier.
    S6-8 (LeConteneurTierGardeSonRembourrageLateralTest) : seuls les deux axes verticaux sont
    declares ici, jamais le raccourci "padding: 0.5rem 0" qui fixerait aussi le rembourrage lateral
    a 0 et ecraserait celui, inconditionnel, de .container porte par ce meme element. */
@@ -641,6 +642,27 @@ h1 {
     border-radius: 0.5rem;
     padding: 0.5rem 0.9rem;
     cursor: pointer;
+}
+
+/* S14-2, correction du Done pedagogique refuse par nadia-prof (BARRE-1, BARRE-2), forme retenue
+   par theo-archi (ADR-0022, troisieme amendement) : la barre de niveaux redevient un habillage
+   permanent dont la visibilite depend de l'ecran, sur un marqueur neuf, "ecran-exclusif" -
+   distinct de "ecran-de-jeu" (porte par les quatre fragments, donc structurellement incapable de
+   viser un sous-ensemble : la barre doit disparaitre sur deux ecrans sur quatre et rester sur les
+   deux autres). Un ecran est exclusif quand tout chemin qu'il ouvre a l'enfant vit a l'interieur
+   de lui - la confirmation (continuer ou quitter) et l'erreur (recommencer), jamais la manche ni
+   la fin de partie.
+   BARRE-1 : sur la confirmation, l'ecran pose une question et offre deux reponses ; la puce
+   pressee, republiee dans la barre, redonnerait le meme ecran sans rien changer. BARRE-2 :
+   "Recommencer" reste la seule chose pressable sur l'ecran d'erreur.
+   La forme contractuelle est celle d'ADR-0022 : body:has(.<marqueur>) .<habillage> { display:
+   none }. .chip-niveau est le porteur pressable de l'habillage, jamais .bandeau-niveaux qui
+   l'enveloppe : masquer le conteneur laisserait les boutons dans l'ordre de tabulation aux yeux
+   d'un garde-fou qui ne lit que la classe portee par l'element candidat lui-meme
+   (AucunArretDeTabulationNEstDestructeurTest), tout en les rendant invisibles a l'ecran - le
+   piege que theo-archi avait nomme d'avance en s14. */
+body:has(.ecran-exclusif) .chip-niveau {
+    display: none;
 }
 
 .score {

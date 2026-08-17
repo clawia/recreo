@@ -13,8 +13,17 @@
      data-focus-cible="true" sur la phrase arbitree ci-dessous ferment cette reserve, dans la seule
      forme que la clause 2 d'ADR-0038 laisse verte (ADR-0040, point 4) : un point de focus qui ne
      declare aucune requete, place avant les deux boutons. La phrase ne declare aucun hx-post ni
-     href, donc ADR-0040 clause 3 n'a rien a y examiner non plus (rien a activer). -->
-<div th:fragment="confirmation" class="ecran-de-jeu" data-focus="phrase">
+     href, donc ADR-0040 clause 3 n'a rien a y examiner non plus (rien a activer).
+     S14-2, correction du Done pedagogique refuse (nadia-prof, BARRE-1 ; theo-archi, ADR-0022
+     troisieme amendement) : cet ecran pose une question et offre deux reponses ; la barre de
+     niveaux de l'en-tete, permanente, y ajoutait deux boites de plus, dont une est la puce que
+     l'enfant vient de presser - la represser rend le meme ecran. "ecran-exclusif" est le marqueur
+     d'etat que le serveur pose ici (ADR-0022, clause 2 generalisee) : un ecran est exclusif quand
+     tout chemin qu'il ouvre a l'enfant vit a l'interieur de lui - continuer la partie ou la
+     quitter, ici, rien d'autre. Distinct de "ecran-de-jeu" (porte par les quatre fragments, jamais
+     nomme par une regle de style) parce que la barre de niveaux ne doit disparaitre que sur deux
+     ecrans sur quatre - elle reste visible sur la manche et sur la fin de partie. -->
+<div th:fragment="confirmation" class="ecran-de-jeu ecran-exclusif" data-focus="phrase">
     <!-- Texte arbitre par nadia-prof (FICHE-bandit-manchot-additions-cp.md, arbitrage prealable du
          2026-08-14, CONF-3) : ni "perdre" (homonymie de jeu) ni question, les deux boutons sont le
          choix. Ne pas reformuler sans un nouvel arbitrage.
