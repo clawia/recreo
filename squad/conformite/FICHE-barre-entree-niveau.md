@@ -3,17 +3,19 @@
 - **Increment** : deux boutons d'entree par niveau (CP / CM1) dans l'en-tete de recreo, toujours
   visibles y compris sur un ecran de jeu, story `S14-1` (`docs/backlog/backlog.md`, section
   "Sprint 14").
-- **Statut global** : **Done pedagogique REFUSE le 2026-08-17 par `nadia-prof`**, apres avoir joue
-  l'increment fusionne (`911af6a`). **Deux motifs, et ce sont deux de mes neuf conditions ecrites
-  avant le code** : l'ecran de confirmation porte **quatre** boites pressables au lieu de deux
-  (BARRE-1), dont les deux puces qui viennent d'ouvrir cet ecran et qui ne repondent plus rien si on
-  les represse ; l'ecran d'erreur en porte **trois** au lieu d'une (BARRE-2). **Sept conditions sur
-  neuf sont tenues, deux mieux que ce que je demandais**, et je corrige **deux choses de ma main** :
-  le texte de BARRE-3, que j'avais ecrit inapplicable, et un chiffre de prevision que la mesure demode
-  a l'avantage de l'increment. Les deux motifs se corrigent par une regle de visibilite sur deux
-  ecrans, **pas par une reprise de la barre**, qui est bonne : le gain annonce est verifie, la liste
-  filtree sur CP tient entiere au-dessus du pli. **Ce refus ne bloque pas le sprint suivant** et la
-  barre peut rester en production si `camille-po` le decide. Detail au bloc de validation.
+- **Statut global** : **Done pedagogique de S14-1 et de S14-2 prononce le 2026-08-17 par
+  `nadia-prof` : VALIDE SOUS RESERVE**, sur l'increment corrige (`23267ea`), apres l'avoir rejoue.
+  **Les neuf conditions BARRE-1 a BARRE-9 sont tenues**, remesurees une par une. Deux reserves
+  nommees, non bloquantes : **S14-A**, une bande sombre vide de 16 px sur les deux ecrans exclusifs ;
+  **S14-B**, aucune puce ne se distingue jamais et rien ne nomme le filtre en cours - maintenue non
+  bloquante apres avoir rejoue, avec la condition future datee qui s'appliquera au second axe de
+  filtre de s15. Detail au bloc de validation.
+- **Le refus du 2026-08-17 (premier verdict du jour) n'est pas efface** : il reste lisible en entier
+  au bloc de validation, sous le present verdict. Ses deux motifs - quatre boites pressables sur
+  l'ecran de confirmation au lieu de deux, trois sur l'ecran d'erreur au lieu d'une - sont traites par
+  la correction de `marc-dev`, et je les ai **remesures** plutot que constates sur la regle : la barre
+  est reellement absente de l'image sur ces deux ecrans, et la geometrie de la manche est identique au
+  pixel a ce qu'elle etait avant la correction.
 - **Arbitrage prealable RENDU le 2026-08-17** par la meme autrice, non efface et lisible sous le
   verdict : **variante 1 d'`ines-design` (bandeau empile) RETENUE, variante 2 (defilement horizontal)
   REFUSEE**, sous **neuf conditions bloquantes BARRE-1 a BARRE-9** et avec **cinq reserves non
@@ -26,16 +28,18 @@
   qu'un enfant hesite entre plusieurs elements qui ressemblent a une sortie. La demande vient de
   l'utilisatrice, qui l'assume en connaissance de cet arbitrage anterieur - ce n'est pas une
   reouverture que `camille-po` propose de son propre chef, voir `DEC-0032` pour le detail.
-- **Releves de mesure** : `squad/conformite/releves-s14/`, **quatorze** captures a 360 px et au pli de
-  640 px, produites par `outils/mesurer-rendu.sh 360 <url> <png> 640` sur l'application reelle - sept
-  prefixees `barre-` pour l'arbitrage prealable, sept prefixees `livre-` pour le verdict sur
-  l'increment.
+- **Releves de mesure** : `squad/conformite/releves-s14/`, **vingt-et-une** captures a 360 px et au pli
+  de 640 px, produites par `outils/mesurer-rendu.sh 360 <url> <png> 640` sur l'application reelle -
+  sept prefixees `barre-` pour l'arbitrage prealable, sept prefixees `livre-` pour le refus, sept
+  prefixees `corrige-` pour le Done. Les trois series portent les memes noms d'ecran, pour que la
+  comparaison se fasse image contre image.
 - **Deux points routes a `nadia-prof` et traites dans le verdict** : l'exemption des libelles "CP" et
   "CM1" au garde-fou de texte accentue (`yanis-qa`) - **jugee legitime, avec sa frontiere ecrite, et le
   trou du garde-fou a fermer avant s15** ; et le residu de 11 mutations sur 121 qu'`ADR-0045` laisse
   sans automate (`theo-archi`) - **pris, sous deux clauses verifiables N-1 et N-2**.
-- **Derniere mise a jour** : 2026-08-17 (Done pedagogique de S14-1 REFUSE par `nadia-prof` ; arbitrage
-  prealable du meme jour inchange ; ouverture par `camille-po` le meme jour).
+- **Derniere mise a jour** : 2026-08-17 (Done pedagogique de S14-1 et S14-2 prononce VALIDE SOUS
+  RESERVE apres correction ; le refus du meme jour et l'arbitrage prealable du meme jour sont
+  inchanges et lisibles sous lui).
 
 ## Competences visees
 
@@ -66,7 +70,210 @@ Cette story n'ouvre, ne ferme et ne rejuge aucune ligne de `squad/programme/MATR
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. Il reste vide tant qu'aucun
 > arbitrage prealable n'a ete rendu et qu'aucun increment n'a ete livre et joue.
 
-### Done pedagogique du 2026-08-17 (s14) sur S14-1 - REFUSE, deux motifs, et tout le reste est credite - le plus recent de cette fiche
+### Done pedagogique du 2026-08-17 (s14), second verdict du jour - le refus est LEVE : S14-1 et S14-2 sont VALIDE SOUS RESERVE - le plus recent de cette fiche
+
+> **Ce que cette section fait.** Elle **leve le refus** que j'ai prononce quelques heures plus tot sur
+> cette meme fiche, apres avoir rejoue l'increment corrige par `marc-dev`. Elle **n'efface pas ce
+> refus** : il reste lisible mot pour mot juste en dessous, et l'arbitrage prealable sous lui. Elle
+> ouvre le Done pedagogique de **S14-1** et de **S14-2** sous **deux reserves nommees**, qui sont deux
+> points de cet increment et non des reserves reportees d'ailleurs.
+
+- **Verdict** : **VALIDE SOUS RESERVE**. Done pedagogique prononce. **Motif, en deux phrases** : les
+  deux motifs de mon refus sont traites et je les ai remesures moi-meme - l'ecran de confirmation
+  porte desormais **exactement deux** boites pressables et l'ecran d'erreur **exactement une**, la
+  barre etant reellement invisible au rendu et non seulement declaree masquee. **Les sept autres
+  conditions ne sont pas entamees**, verifie au pixel : la geometrie de la manche est **identique** a
+  celle d'avant la correction, et les deux ecrans corriges gagnent 50 px au lieu d'en perdre.
+- **Auteur** : nadia-prof. **Increment juge** : `round-two` a `23267ea`, worktree `s14-nadia-porte`,
+  descendance verifiee par `outils/verifier-lignee.sh`, aucun fichier de production modifie de mon
+  fait.
+- **Porte technique, verifiee par mes propres commandes** : `bash outils/mvn-jdk21.sh -B clean verify`,
+  **BUILD SUCCESS, 510 tests, 0 echec**, et `bash .github/scripts/verifier-chemins.sh` en code de
+  sortie 0.
+- **Ce que ce Done permet** : la story S14-1 et la story S14-2 peuvent passer a done. Aucune ligne de
+  `squad/programme/MATRICE-couverture.md` ne bouge - cette story est transverse, elle n'en ouvre ni
+  n'en ferme aucune.
+
+#### 0. Comment j'ai rejoue, et ce que je declare degrade
+
+**J'ai rejoue**, avec la meme methode et les memes gestes que pour le refus, pour que les deux series
+de chiffres soient comparables : jar reconstruit sur le JDK de la toolchain 21, application servie sur
+un port a moi, partie ouverte par requetes HTTP reelles, etat echange obtenu en remplacant le contenu
+de `#jeu` par le fragment que le serveur rend reellement pour la route appelee - c'est-a-dire en
+refaisant cote serveur ce que `hx-target="#jeu" hx-swap="innerHTML"` fait cote navigateur. Serveur et
+service de fichiers **arretes par leur PID reel**.
+
+```
+outils/mesurer-rendu.sh 360 <url> <png> 640
+```
+
+Sept captures neuves dans `squad/conformite/releves-s14/`, prefixees `corrige-`, aux memes noms que
+les sept `livre-` du refus pour que la comparaison se fasse image contre image.
+
+**Ce que je declare degrade, et deux points sont nouveaux.**
+
+- **Je n'ai pas presse la touche de tabulation.** Que `display: none` retire les puces de l'ordre des
+  arrets est un comportement du navigateur et non une chose que j'ai constatee. Le piege que
+  `theo-archi` avait nomme - une regle qui nommerait le conteneur laisserait les puces dans l'ordre
+  de tabulation tout en les rendant invisibles - **est ferme dans la forme retenue** (la regle nomme
+  la puce), mais **c'est une lecture de la regle, pas une mesure de ma part**. Je le dis parce que
+  c'est exactement le genre de propriete dont j'ai deja constate qu'elle traverse une CI verte.
+- **Je n'ai pas joue au doigt sur un telephone**, ni observe un enfant. La question de `camille-po` -
+  un enfant de CP confond-il une puce et une sortie - **reste sans reponse mesurable**, et ce Done ne
+  la tranche pas : il constate que le nombre de boites et leur place sont ceux que j'avais exiges.
+- **Un seul item echantillonne** pour les grands nombres, le meme que les deux fois precedentes.
+
+#### 1. Les deux motifs du refus sont traites, mesures et non pris sur parole
+
+`marc-dev` annonce avoir corrige par une regle de visibilite. **J'ai regarde ce que l'enfant voit, pas
+ce que la regle declare** - c'est la distinction meme que mon refus reprochait a l'increment
+precedent.
+
+| Ecran | Boites pressables avant la correction | Apres la correction | Ma condition |
+|---|---|---|---|
+| confirmation avant abandon (`corrige-4`) | **4** : CP, CM1, "Continuer la partie", "Les jeux" | **2** : "Continuer la partie", "Les jeux" | BARRE-1 en exigeait 2 - **TENUE** |
+| erreur (`corrige-5`) | **3** : CP, CM1, "Recommencer" | **1** : "Recommencer" | BARRE-2 en exigeait 1 - **TENUE** |
+
+**Et la correction rend de la place plutot qu'en prendre**, ce que je ne demandais pas et que je note
+parce que c'est mesure. Bandes relevees a la colonne x = 180 :
+
+- sur la manche, l'accueil et la fin de partie : en-tete **142 px**, bande des puces **66 px** -
+  **exactement les valeurs d'avant la correction, au pixel** ;
+- sur la confirmation et sur l'erreur : en-tete **92 px**, la bande des puces tombant de 66 px a
+  **16 px**. Les deux ecrans que ma condition visait **gagnent 50 px** au lieu d'en perdre, et ils ne
+  coutent plus que 16 px de plus qu'avant tout ce sprint.
+
+**Le fait que je cherchais, et qui est le vrai objet de cette reverification.** `marc-dev` ecrit
+n'avoir verifie que la coherence structurelle du couple declaratif, et que le reste me revient. Le
+reste, c'est ceci : **le `:has()` est honore par le navigateur reel et les puces sont absentes de
+l'image**. Elles le sont. Ce n'etait pas acquis - une regle juste peut ne pas s'appliquer - et
+c'est desormais un fait date sur un rendu date.
+
+#### 2. Rien des sept autres conditions n'est entame - verifie, parce que c'est le scenario que ce depot connait
+
+Je l'ai verifie plutot que de le supposer : une correction de rendu qui repare deux ecrans et en abime
+un troisieme est arrivee plusieurs fois ici.
+
+| | Etat | Ce que j'ai constate |
+|---|---|---|
+| **BARRE-1** | **TENUE** | 2 boites pressables sur la confirmation (`corrige-4`) |
+| **BARRE-2** | **TENUE** | 1 boite pressable sur l'erreur (`corrige-5`) |
+| **BARRE-3** | **TENUE, intacte** | `corrige-3` : l'ordre reste score, consigne, enonce, propositions, **puis** la sortie. Et la geometrie est **identique** : sur l'item "Décompose 305 421 en valeurs de position.", le haut du cabinet est a **y = 410** avant comme apres la correction. Rien n'a bouge d'un pixel sur la manche. |
+| **BARRE-4** | **TENUE** | les puces ne portent que "CP" et "CM1", aucun disque, aucun symbole |
+| **BARRE-5** | **TENUE** | comptage du mot "Les jeux" sur les cinq etats, commentaires retires : accueil 0, manche 1, confirmation 1, erreur 0, fin de partie 1 |
+| **BARRE-6** | **TENUE** | `entree` reste un role domine, la regle est verte sur les 510 tests |
+| **BARRE-7** | **TENUE** | le lien de l'en-tete reste retire, pas masque (`DEC-0033`) |
+| **BARRE-8** | **TENUE** | un seul rang de puces, en-tete **142 px** sur les trois ecrans qui les montrent, sous ma borne de 151 px ; puces **56 x 50** et **74 x 50 px**, au-dessus du plancher de 44 x 44 px ; rien de pressable n'a ete retreci |
+| **BARRE-9** | **TENUE** | il n'y a toujours aucun "Les jeux" dans l'en-tete : les deux ne peuvent pas partager un rang |
+
+**Neuf sur neuf.** Et le gain que j'avais annonce dans l'arbitrage prealable est toujours la, remesure
+sur `corrige-2` : **filtree sur CP, la liste des six jeux tient entiere au-dessus du pli, avec de la
+marge**, la ou le catalogue complet n'y tient plus.
+
+#### 3. Mes deux reserves, et pourquoi ce n'est pas un VALIDE sec
+
+- **Reserve S14-A - une bande sombre vide de 16 px sur les deux ecrans exclusifs.** La regle masque la
+  **puce** et non le bandeau, ce qui est le bon choix technique et je le credite ; la consequence est
+  que le bandeau reste, avec son fond et son rembourrage vertical, et **sans rien dedans**. Mesure sur
+  `corrige-4` et `corrige-5` : une bande `#081c2c` de **16 px** entre le titre et le contenu. Ce n'est
+  ni un piege, ni un texte, ni quelque chose de pressable - **c'est pour cela que ce n'est pas un
+  refus** - mais c'est une bande de couleur qui ne veut rien dire sur les deux ecrans ou l'enfant doit
+  comprendre vite. A traiter dans un sprint suivant, et le moyen n'est pas de moi.
+- **Reserve S14-B - aucune puce ne se distingue jamais, et rien ne nomme le filtre en cours.** Voir le
+  4 : je la maintiens **non bloquante**, apres l'avoir rejouee, et je dis exactement pourquoi et
+  jusqu'a quand.
+
+**Ces deux reserves ne bloquent pas le Done**, et `camille-po` en fait deux stories si elle le juge.
+
+#### 4. R-BARRE-3 : je la maintiens NON BLOQUANTE, et je corrige mon propre cri d'alarme
+
+C'est la question qu'on me demande de trancher maintenant plutot qu'a s15, et elle le merite.
+
+**Ce que j'avais ecrit dans mon refus** : que la reserve etait *"AGGRAVEE"*, parce que la forme
+d'`ines-design` que j'avais creditee portait un etat actif en plein contre contour et que l'increment
+ne l'a pas (`ADR-0044` point 3 interdit a l'en-tete de porter un etat de filtre). **Le fait est exact
+et je ne le retire pas. Mon alarme, elle, etait trop forte, et c'est en rejouant que je le vois.**
+
+**Les trois faits qui me font la maintenir non bloquante.**
+
+1. **Le retour n'est pas absent, il est immediat.** L'enfant presse "CP" et **la liste change sous ses
+   yeux dans le meme geste**, de onze jeux a six. Une reponse immediate a son propre appui est le
+   retour le plus lisible qui existe pour un enfant de six ans - plus lisible qu'une marque sur un
+   ecran statique qu'il faudrait interpreter. Et c'est **l'exact contraire** du defaut de PORTE-1, ou
+   la boite ne repondait rien.
+2. **Il n'est jamais coince.** Les deux puces restent visibles sur tous les ecrans ou elles servent :
+   un enfant tombe sur la liste de l'autre niveau presse la sienne et retrouve ses jeux. **La sortie
+   d'un filtre faux est toujours a l'ecran**, ce qui etait ma vraie inquietude.
+3. **Ce qu'il perd - la vue melangee des onze jeux - n'est pas une perte pedagogique.** Cette liste ne
+   tient pas au-dessus du pli, elle melange deux niveaux, et un enfant de CP n'a aucun usage des cinq
+   jeux de CM1. Je ne vais pas bloquer un Done pour rendre atteignable une vue qui est moins bonne que
+   celle qui la remplace.
+
+**Quand elle deviendrait bloquante, et je l'ecris aujourd'hui pour ne pas avoir a l'inventer a s15 :
+le jour ou un second axe de filtre s'ajoute.** Avec les matieres, l'enfant pourra combiner deux
+filtres - CP et mathematiques - et **deux filtres combines ne se devinent pas depuis la liste** : trois
+jeux affiches ne disent pas lesquels des deux criteres les ont selectionnes, ni comment en relacher un
+seul. C'est a ce moment-la que l'absence d'etat visible cesse d'etre un confort manquant pour devenir
+une impasse, et **c'est a ce moment-la que je la poserai en condition**, pas avant. Ce n'est pas un
+durcissement de la reserve d'aujourd'hui : c'est une condition **datee du 2026-08-17 et suspendue a un
+evenement nomme**, que `camille-po` peut lire d'avance.
+
+#### 5. L'etat de mes cinq reserves de l'arbitrage prealable
+
+| | Etat |
+|---|---|
+| **R-BARRE-1** (la reserve J des grands nombres) | **Ouverte, inchangee par la correction** : le haut du cabinet reste a y = 410 contre y = 397 avant le sprint, soit **+13 px**, et non les 66 px que j'avais annonces. Story candidate, sur la fiche des grands nombres. |
+| **R-BARRE-2** (l'accueil non filtre perd des jeux) | **Levee**, remesuree : le solde est positif des que le filtre sert. |
+| **R-BARRE-3** (rien ne dit le filtre en cours) | **Maintenue NON BLOQUANTE**, voir le 4, avec la condition future datee et nommee. Devient la reserve **S14-B** de cette fiche. |
+| **R-BARRE-4** (F11 s'enrichit) | **Ouverte.** L'ecoute au lecteur d'ecran devra couvrir les deux puces, et un fait s'y ajoute : elles disparaissent sur deux ecrans sur cinq, donc **ce que la voix annonce n'est pas le meme selon l'ecran**. Cela ne change rien a ma demande d'ecoute, cela l'enrichit d'un ecran a ecouter. |
+| **R-BARRE-5** (la troisieme forme) | **Refermee**, sans objet. |
+
+#### 6. S14-2 - le retrait du lien de l'en-tete, juge dans le meme geste
+
+**VALIDE, sans reserve propre.** `DEC-0033` a choisi la premiere de mes deux issues de BARRE-7, et
+c'etait la meilleure : retirer l'element supprime le defaut au lieu de le deplacer. Verifie sur le
+document servi - plus aucun lien dans l'en-tete - et sur le depot : l'element, la classe et la regle de
+masquage sont partis ensemble, seuls des commentaires de trace et des fixtures de contre-exemple
+citent encore l'ancien nom. **Le mot "Les jeux" reste exactement la ou il sert** : la fin de partie et
+la confirmation, une fois chacune.
+
+Une consequence que je note et qui prolonge mon Done du matin sur le retrait de l'`aria-label` :
+l'en-tete ne porte plus qu'une seule zone de navigation, celle des puces, **et elle porte deux
+controles sans aucun nom**. Ma position est inchangee - **aucun nom est meilleur qu'un nom faux**, je
+n'en exige pas, et le geste 1 de F11 dira ce qu'une voix en fait. "Menu principal" reste refuse sur
+ses trois motifs qui ne dependaient pas du nombre de liens.
+
+#### 7. Ce dont je reste la seule garde apres ce Done
+
+- **Le compte des boites pressables par ecran**, et il vient de servir deux fois : c'est ce comptage
+  qui a produit le refus du matin et c'est lui qui le leve. Aucun garde-fou ne le fait, et
+  `theo-archi` a eu raison de refuser que mes "deux boites" et "une boite" deviennent des constantes
+  de test - ce sont les contenus du jour de deux ecrans, pas des proprietes. **Le corollaire est que
+  cette verification me revient a chaque increment qui touche ces ecrans**, et personne ne doit la
+  croire acquise.
+- **Que la barre soit reellement invisible au rendu**, et non seulement declaree masquee. Les deux
+  clauses neuves gardent le **couple declaratif** ; elles ne regardent aucune image.
+- **Que la colonne de contenu ne recommence pas par une porte** (BARRE-3, formulation corrigee).
+  Cinquieme fois que je le nomme.
+- **Le budget du pli a 360 px.** Je le redis en tant que risque d'organisation et pas seulement de
+  produit : **je suis la seule de cette squad a pouvoir produire un chiffre de rendu sur ce poste**,
+  trois agents ayant echoue sur `outils/mesurer-rendu.sh` faute d'un navigateur designe. Tant que ce
+  prerequis est une dette de poste, cette porte-la depend d'une seule personne.
+- **La justesse de l'association titre / paquet**, prise dans mon refus sous les clauses N-1 et N-2, et
+  qui reste prise : rien dans la correction ne la touche.
+
+#### 8. Ce que ce Done ne fait pas
+
+- **Il ne repond pas a la question de `camille-po`** sur ce qu'un enfant de six ans distingue. Il
+  constate des boites et des places, pas une comprehension.
+- **Il ne leve ni F11, ni la reserve J, ni la reserve O seconde moitie.**
+- **Il ne prejuge pas de s15** : aucun second rang de puces, aucun libelle de matiere et aucun
+  pictogramme n'est accorde d'avance, et le 4 nomme la condition qui s'appliquera au second axe de
+  filtre.
+- **Il ne tranche pas le nom du marqueur `ecran-exclusif`**, qui n'est pas de mon ressort et sur
+  lequel je n'ai rien a dire.
+
+### Done pedagogique du 2026-08-17 (s14) sur S14-1 - REFUSE, deux motifs, et tout le reste est credite - le premier verdict du jour, LEVE par le verdict ci-dessus
 
 > **Ce que cette section fait.** Elle prononce - ici, elle **refuse** - le Done pedagogique de
 > **S14-1** sur l'increment fusionne, apres l'avoir joue. Elle **n'efface pas** l'arbitrage prealable
