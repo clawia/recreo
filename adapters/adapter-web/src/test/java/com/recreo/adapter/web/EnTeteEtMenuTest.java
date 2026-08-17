@@ -110,20 +110,22 @@ class EnTeteEtMenuTest {
     }
 
     /**
-     * S14-2, critere 2 (docs/backlog/backlog.md) : sur l'accueil affichant le catalogue complet
-     * (etat par defaut, sans filtre de niveau), l'en-tete ne montre que l'icone, le titre
-     * "Recreo" et les puces de niveau - aucune troisieme boite actionnable a cote d'elles.
+     * S14-2, critere 2 (docs/backlog/backlog.md), forme retenue par theo-archi apres relecture de
+     * ce lot : l'ensemble des actionnables de l'en-tete egale l'ensemble de ses
+     * {@code [data-role=entree]} - sans libelle, sans catalogue, sans effectif. Elle interdit
+     * exactement ce que le critere nomme (aucune troisieme boite actionnable a cote des puces de
+     * niveau) sans dependre de ce que {@code niveauxDuCatalogue()} rend ni de ce qu'un bouton dit.
      */
     @Test
-    void surLAccueilNonFiltreLEnTeteNeMontreQueLIconeLeTitreEtLesPucesDeNiveau() throws Exception {
+    void surLAccueilNonFiltreLesActionnablesDeLEnTeteSontExactementSesPointsDEntree() throws Exception {
         Document page = page(new MockHttpSession());
 
-        List<String> niveauxDuCatalogue = partieUseCase.niveauxDuCatalogue();
         Elements actionnables = page.select("header button, header a[href]");
-        assertThat(actionnables.eachText())
+        Elements pointsDEntree = page.select("header [data-role=entree]");
+        assertThat(actionnables)
                 .as("S14-2 critere 2 : rien d'actionnable dans l'en-tete de l'accueil non filtre "
-                        + "hors des puces de niveau")
-                .containsExactlyElementsOf(niveauxDuCatalogue);
+                        + "hors de ses points d'entree par niveau")
+                .containsExactlyInAnyOrderElementsOf(pointsDEntree);
         assertThat(page.select("header .icone-entete")).isNotEmpty();
         assertThat(page.select("header .nom-site").text()).isEqualTo("Recreo");
     }
