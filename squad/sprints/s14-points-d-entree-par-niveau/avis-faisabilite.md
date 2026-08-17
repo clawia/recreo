@@ -542,3 +542,59 @@ silence, quelle que soit l'option retenue.
 - **A qui affecter la story, ni dans quel ordre.** `sofia-sm`.
 - **Si les criteres reecrits en section 7 conviennent au produit.** Je dis ce qu'un test peut tenir ;
   ce que la story doit promettre reste a `camille-po`.
+
+## 12. Le prerequis `-am`, remonte dans `CLAUDE.md` - et pourquoi une phrase ne suffira pas
+
+**Ecrit, sur demande de `sofia-sm`** : section "Prerequis de build" de `CLAUDE.md`, un troisieme point
+a cote de la toolchain JDK 21 et de la JVM Maven 17+, explicitement marque comme etant **d'une autre
+nature** - aucun `mvn` ne le verifie, aucun plugin ne l'arrete. Ce que la phrase nomme d'abord est le
+**mode de defaillance** et non la liste des flags : la commande reussit, le chiffre s'affiche, et il
+decrit un autre arbre que celui du worktree, parce que Maven a resolu les modules amont depuis le
+depot local au lieu de les construire. Le chiffre du 2026-08-17 n'est pas recopie : la phrase renvoie
+a `ADR-0045`, section "Prerequis de mesure", qui le porte avec sa methode - un chiffre recopie a
+moitie pourrit deux fois plus vite qu'un chiffre cite une seule fois.
+
+**Mon avis, que `sofia-sm` demande explicitement : cette phrase est le bon porteur du prerequis, et
+elle ne fermera pas le defaut.** Les deux affirmations tiennent ensemble et il faut les separer.
+
+- **Elle est le bon porteur** parce qu'elle s'adresse a une decision prise **avant** que la commande
+  soit tapee, par un agent qui choisit d'aller plus vite. `CLAUDE.md` est le seul document que tous
+  les agents lisent, et c'est deja la section ou vivent les deux autres prerequis d'environnement.
+- **Elle ne fermera pas le defaut**, et c'est mon propre axiome applique a une phrase que j'ecris
+  moi-meme : une regle qui n'est pas encodee n'est pas une regle. Celle-ci restera invisible a qui
+  lance un `-pl` sans avoir relu cette section, ce qui est exactement la population qu'elle vise.
+
+**Le garde-fou que je recommande, avec son cout en ordre de grandeur.** Il est encodable, et le
+critere est derive plutot qu'enumere :
+
+> Un test de module verifie que les classes des modules amont sont chargees **depuis l'arbre du
+> depot** et non depuis le depot local de l'utilisateur. La provenance se lit sur l'URL que rend le
+> chargeur de classes pour une classe amont ; la racine du depot se derive en remontant jusqu'au POM
+> agregateur, comme `LesGardeFousSontMisALEpreuveTest` le fait deja - donc aucun chemin de poste, ni
+> dans le test ni dans son message.
+
+Ce qu'il interdit reellement : la commande sans `-am`, et rien d'autre. Sous `mvn clean verify` comme
+sous `-pl <module> -am test`, la classe amont vient du `target/` d'un module du depot ; sans `-am`,
+elle vient de l'archive installee. **Il mord dans les deux sens**, faux rouge comme faux vert, parce
+qu'il ne juge pas le verdict mais la provenance de ce qui a ete mesure. Il n'appartient a aucune des
+familles de balayage de production, puisqu'il n'examine aucun artefact servi : il examine son propre
+classpath.
+
+**Cout** : un petit lot de developpeur. Une classe de test par module qui depend d'un module amont -
+trois aujourd'hui - ou une clause partagee, plus sa preuve de morsure, qui est ici gratuite et reelle :
+la commande sans `-am` **est** le cas fautif, il n'y a aucune fixture a inventer. C'est la situation
+qu'`ADR-0038` avait rencontree une fois, ou l'etat du depot fournit lui-meme l'epreuve.
+
+**Une variante moins chere, et pourquoi je ne la recommande pas seule** : faire refuser par
+`outils/mvn-jdk21.sh` un `-pl` non accompagne de `-am`, avec ses cas dans le script de test qui
+l'accompagne deja (`ADR-0009`). Cout : une poignee de lignes. Elle donne le meilleur message, au bon
+moment - au lancement, pas trente secondes plus tard - mais elle ne couvre que les invocations qui
+passent par le lanceur : un `mvn -pl` nu lui echappe entierement. Les deux sont complementaires, la
+seconde est un confort, la premiere est la garantie.
+
+**Ce que je ne fais pas, et la difference avec la dette d'`ADR-0042`.** Je n'ecris pas ce garde-fou
+dans ce lot, et je ne l'adosse a aucun `ADR`. Ce n'est pas la faute d'`ADR-0042`, qui etait une
+**decision acceptee dont la regle etait due par un lot futur** : ici aucune decision n'est acceptee
+sans etre gardee - un prerequis d'environnement est documente la ou on le lit, et le garde-fou est un
+**candidat de story** que `sofia-sm` affecte ou n'affecte pas. Rien ne reste decide-mais-non-encode.
+Si elle l'affecte, l'enonce ci-dessus est assez precis pour qu'il n'y ait rien a redecouvrir.

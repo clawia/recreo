@@ -50,6 +50,32 @@ Sur un poste dont le `java` du `PATH` n'est pas un JDK 21, `bash outils/mvn-jdk2
 verify` lance Maven sur le JDK de la toolchain declaree : plus besoin de positionner `JAVA_HOME` a
 la main a chaque commande, et la version sur laquelle on a mesure est celle de la toolchain.
 
+Une troisieme exigence s'ajoute aux deux precedentes, **d'une autre nature : aucun `mvn` ne la
+verifie**, aucun plugin ne l'arrete, et c'est exactement pourquoi elle est ecrite ici.
+
+- **Toute mesure partielle du reacteur porte `-am`.** `mvn -pl <module> test` sans `-am` ne
+  construit pas les modules dont `<module>` depend : Maven les resout depuis le depot local de
+  l'utilisateur (`~/.m2/repository`), ou dort la derniere version **installee**, qui peut etre plus
+  ancienne que l'arbre qu'on croit mesurer. **Le mode de defaillance n'est pas l'echec, c'est
+  l'ecart muet** : la commande reussit, le chiffre s'affiche, et il decrit un autre arbre que celui
+  du worktree. Cela vaut pour n'importe quel `-pl`, par n'importe quel agent, sur un test comme sur
+  un comptage.
+
+Ce que cette exigence coute a omettre, et pourquoi la formule "juste cette fois" ne tient pas : un
+tel ecart a ete mesure le 2026-08-17 sur un garde-fou de contenu, **avec et sans `-am` sur le meme
+arbre et sans aucune mutation**, et les deux executions ne rendent pas le meme verdict.
+`ADR-0045`, section "Prerequis de mesure", porte le chiffre avec sa methode ; il n'est pas recopie
+ici, pour qu'il ne puisse pas y pourrir a moitie. Ce jour-la l'ecart etait un **faux rouge**, donc
+visible et corrige dans l'heure. Rien ne garantit le sens du prochain : un **faux vert** a la meme
+cause, et il ne se remarque pas - c'est la definition meme d'un garde-fou qui ne garde plus rien,
+la famille de defaut que ce depot a deja sanctionnee plusieurs fois.
+
+`mvn -B clean verify` sur la racine n'a jamais ce probleme : le reacteur y est complet par
+construction, et c'est la commande de la porte technique. Le `-am` ne concerne que les mesures
+partielles, celles qu'on lance pour aller plus vite - et toute mesure partielle citee dans un
+fichier commite nomme son perimetre a cote de son chiffre, un module mesure n'etant pas le depot
+(`squad/README.md`, section 4).
+
 ## Regles cles
 
 - **Clean Architecture stricte** : les dependances vont toujours vers l'interieur. `domain` n'a
