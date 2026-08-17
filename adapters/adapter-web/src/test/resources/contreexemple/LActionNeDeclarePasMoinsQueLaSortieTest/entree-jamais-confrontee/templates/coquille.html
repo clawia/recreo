@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- ADR-0043, jeu fautif de la clause de non-vacuite par role : le point d'entree permanent existe,
+     mais la feuille le masque sur le seul ecran qui porte une action, et l'ecran ou il reste visible
+     n'en porte aucune. Il est donc porte et confronte a rien : ADR-0017 ne le juge plus, et un
+     bouton sorti de cette regle par un attribut est exactement le desamorcage qu'ADR-0038 nomme.
+     Le couple action/sortie de l'ecran insere, lui, existe et passe : la clause generale
+     "aucun couple confronte" reste donc verte, et c'est ce qui rend ce jeu fautif utile. -->
+<header>
+    <nav>
+        <a class="puce-niveau" data-role="entree" href="/niveaux/cp" hx-target="#zone">CP</a>
+    </nav>
+</header>
+<main id="zone">
+    <p class="accueil-vide">Choisis ton niveau.</p>
+</main>
+</body>
+</html>

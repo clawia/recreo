@@ -1,7 +1,8 @@
 # ADR-0022 - Rendre la visibilite d'un habillage permanent dependante d'un marqueur d'etat pose par le serveur, et retirer d'un appariement les boutons qui ne se montrent plus ensemble
 
 - **Statut** : Accepte, son contexte amende le 2026-08-14 (un chiffre perime et la comparaison qu'il
-  portait ; la decision et ses garde-fous sont inchanges)
+  portait ; la decision et ses garde-fous sont inchanges), amende le 2026-08-17 (s14 : ce que `S14-1`
+  fait tomber, clause par clause, et la clause qui tombe n'est pas dans cet `ADR`)
 - **Date** : 2026-08-07
 - **Auteur** : theo-archi
 - **Sprint** : s06
@@ -84,6 +85,60 @@ porte ferait de l'ecran de fin de partie un cul-de-sac.
 > methode** - ni le libelle sur lequel il avait ete pris, ni l'ecran, ni le fait qu'il datait d'avant le
 > renommage que le meme `ADR` decidait. Un chiffre cite avec sa methode aurait rendu sa peremption
 > visible le jour meme. C'est ma propre regle, appliquee ici a mes frais.
+
+> **Amendement du 2026-08-17 (s14) - `S14-1` demande la visibilite permanente de deux boutons sur un
+> ecran de jeu. `DEC-0032` et la fiche de conformite disent que cette story "contredit `ADR-0022`".
+> J'ai verifie clause par clause au lieu de le reprendre ou de le nier, et la reponse est plus utile
+> que les deux : aucune des cinq clauses de cet `ADR` ne tombe, et la clause qui tombe est ailleurs.**
+>
+> **Ce qui survit, clause par clause, et pourquoi.**
+>
+> - **Point 1, le marqueur `ecran-de-jeu` pose par le serveur sur la zone de contenu** : intact, et
+>   `S14-1` en depend. C'est ce marqueur qui permet a un habillage permanent de dependre de l'etat sans
+>   qu'aucun echange htmx traverse l'en-tete.
+> - **Point 2, la forme contractuelle `body:has(.ecran-de-jeu) .lien-accueil { display: none }`** :
+>   intacte, mot pour mot. La barre de niveaux **n'y est pas ajoutee** - c'est l'absence de regle qui
+>   produit la visibilite permanente, et il n'y a donc rien a ecrire de ce cote. Le garde-fou
+>   `chaqueEcranInsereDansLaZonePorteLeMarqueurQueLaFeuilleExige` continue d'exiger le marqueur sur
+>   chaque fragment, pour cette regle-la. Mesure : les deux puces posees dans l'en-tete avec leur
+>   feuille, `LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest` reste a **4 tests sur 4**.
+> - **Point 3, le libelle "Les jeux" et l'unicite du mot de sortie** : intact, et c'est la clause qui
+>   **interdit** de declarer une puce de niveau `data-role="sortie"`. Mesure du 2026-08-17 : deux puces
+>   `sortie` libellees "CP"/"CM1" font echouer `leLienDeMenuEtLaSortieDeLaZoneDeContenuPortentLeMemeMot`
+>   et lui seul. Loin d'etre contredite par `S14-1`, cette clause en gouverne le vocabulaire -
+>   `ADR-0043` en tire le troisieme role.
+> - **Point 4, `sortie-pleine` conserve tel quel** : intact, aucun rapport avec cette story.
+> - **Point 5, un appariement ne confronte que des boutons qu'un couple masquage/marqueur laisse
+>   visibles ensemble** : intact, et il **retrouve sa population de production**. Cet `ADR` ecrivait,
+>   en consequence : *"le mecanisme de traversee de frontiere d'`ADR-0017` n'a plus aucun objet en
+>   production [...] il redeviendra portant le jour ou un element permanent portera un bouton visible
+>   sur un ecran de jeu"*. **`S14-1` est ce jour-la.** Le mecanisme garde en 2026-08-07 sans population
+>   redevient exact et utile sans qu'une ligne change.
+>
+> **Ce qui tombe, et ou il vit.** La propriete que `DEC-0032` attribue a cet `ADR` - "un ecran de jeu
+> ne porte qu'une seule sortie visible" - n'est **aucune de ses cinq clauses**. C'est l'arbitrage de
+> `nadia-prof` du 2026-08-07, rapporte dans le contexte ci-dessus, et cet `ADR` ne l'encode
+> qu'indirectement, en masquant un element. La clause executable qui tombe est ailleurs, et elle est
+> nommee ici parce que personne ne l'avait vue :
+>
+> ```java
+> Elements liensDeNavigation = page.select("header button, header a[href]");
+> assertThat(liensDeNavigation)
+>         .as("DEC-0012 : le menu de l'en-tete contient exactement une entree")
+>         .hasSize(1);
+> ```
+>
+> `EnTeteEtMenuTest.leMenuDeLEnTeteContientExactementUneEntreeVersLAccueil`, un **comptage fixe** qui
+> releve `DEC-0012` et non cet `ADR`. Mesure du 2026-08-17, deux puces posees dans l'en-tete : cette
+> assertion est l'un des trois seuls echecs de `adapter-web` (233 tests). Elle doit etre remplacee dans
+> le commit de la barre, par la propriete derivee que l'avis de faisabilite de s14 specifie - un
+> element de role `sortie` dont le libelle est "Les jeux", plus un point d'entree par niveau distinct
+> du catalogue - jamais par un nombre releve a la main. **Un comptage fixe n'est pas une propriete :
+> c'est la taille du depot au jour ou il a ete ecrit.**
+>
+> Ce que cet amendement ne change pas : aucune ligne de la decision, aucune consequence, aucun
+> garde-fou de cet `ADR`. Il ne prononce rien sur l'arbitrage prealable de `nadia-prof`, qui reste
+> entier et qui reste le sien.
 
 Elle me laisse deux questions techniques, et c'est tout ce que cet ADR traite.
 

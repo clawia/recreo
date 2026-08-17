@@ -16,6 +16,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Stream;
 
 import static com.recreo.adapter.web.LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.Masquage;
@@ -73,7 +74,30 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
 
     private static final String ACTION = "action";
     private static final String SORTIE = "sortie";
-    private static final Set<String> ROLES = Set.of(ACTION, SORTIE);
+
+    /**
+     * ADR-0043 : le troisieme role, un point d'entree permanent. Il ne fait pas avancer le jeu
+     * affiche (donc pas {@code action}) et il n'est pas la sortie de ce jeu (donc pas
+     * {@code sortie}) : il mene ailleurs dans l'application, depuis un habillage qui ne disparait
+     * pas. Les deux valeurs existantes ont ete essayees avant d'en ouvrir une troisieme, et chacune
+     * rend un garde-fou de ce depot rouge - la mesure est dans ADR-0043.
+     */
+    private static final String ENTREE = "entree";
+
+    /**
+     * Les roles domines : ceux dont aucune composante de boite ne peut depasser celle d'une action
+     * du meme ecran. La propriete d'ADR-0017 ne parle pas de sortie, elle parle de ce qui appelle la
+     * main : sur un ecran ou l'enfant peut encore jouer, c'est ce qui fait avancer le jeu qui doit
+     * appeler la main, jamais ce qui mene ailleurs. Un point d'entree mene ailleurs.
+     */
+    private static final Set<String> ROLES_DOMINES = Set.of(SORTIE, ENTREE);
+
+    private static final Set<String> ROLES = Set.of(ACTION, SORTIE, ENTREE);
+
+    /** Comment un role se nomme dans un message d'echec, pour que le defaut se lise. */
+    private static String designerLeRole(String role) {
+        return SORTIE.equals(role) ? "la sortie" : "le point d'entree";
+    }
 
     private static final String CLASSE_CALCULEE = "th:class";
     private static final String CLASSE_AJOUTEE = "th:classappend";
@@ -237,15 +261,15 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
         }
         String role = bouton.attr(ATTRIBUT_DE_ROLE).strip();
         if (role.isEmpty()) {
-            defauts.add(origine + " : ce bouton ne porte pas " + ATTRIBUT_DE_ROLE + "=\"" + ACTION
-                    + "\" ou \"" + SORTIE + "\". Sans role, il sortirait du controle en silence, et "
+            defauts.add(origine + " : ce bouton ne porte pas " + ATTRIBUT_DE_ROLE + " parmi "
+                    + new TreeSet<>(ROLES) + ". Sans role, il sortirait du controle en silence, et "
                     + "c'est exactement le vert silencieux que cette regle existe pour fermer "
                     + "(ADR-0013, obligation 2)");
             return null;
         }
         if (!ROLES.contains(role)) {
-            defauts.add(origine + " : role \"" + role + "\" inconnu ; les seules valeurs lues sont \""
-                    + ACTION + "\" et \"" + SORTIE + "\"");
+            defauts.add(origine + " : role \"" + role + "\" inconnu ; les seules valeurs lues sont "
+                    + new TreeSet<>(ROLES));
             return null;
         }
         return role;
@@ -392,21 +416,28 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
         return true;
     }
 
-    /** Les couples action/sortie a confronter : meme ecran, capables de s'afficher ensemble. */
+    /**
+     * Les couples a confronter : une action d'un cote, un role domine de l'autre, meme ecran,
+     * capables de s'afficher ensemble.
+     *
+     * <p>ADR-0043 : le cote domine n'est plus le seul {@code sortie}. Un point d'entree permanent y
+     * entre par la meme porte et pour la meme raison - il ne fait pas avancer le jeu affiche - et
+     * c'est ce qui l'empeche d'etre une valeur de role par laquelle on echappe a ADR-0017.
+     */
     private static List<int[]> appariements(List<Etat> etats) {
         List<int[]> couples = new ArrayList<>();
         for (int action = 0; action < etats.size(); action++) {
             if (!ACTION.equals(etats.get(action).role())) {
                 continue;
             }
-            for (int sortie = 0; sortie < etats.size(); sortie++) {
-                Etat candidate = etats.get(sortie);
-                if (!SORTIE.equals(candidate.role())
+            for (int domine = 0; domine < etats.size(); domine++) {
+                Etat candidate = etats.get(domine);
+                if (!ROLES_DOMINES.contains(candidate.role())
                         || !candidate.ecran().equals(etats.get(action).ecran())
                         || !sAffichentEnsemble(etats.get(action), candidate)) {
                     continue;
                 }
-                couples.add(new int[] {action, sortie});
+                couples.add(new int[] {action, domine});
             }
         }
         return couples;
@@ -460,6 +491,33 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
         return Optional.of(Double.parseDouble(brute.substring(0, brute.length() - UNITE.length())));
     }
 
+    /**
+     * ADR-0043, la clause qui empeche le troisieme role d'etre une porte de sortie de cette regle :
+     * tout role domine <b>reellement porte par un bouton du depot</b> doit etre confronte au moins
+     * une fois. Un role qu'aucun bouton ne porte n'est pas juge - il n'y a rien a juger ; un role
+     * porte et jamais confronte est un bouton qui a echappe a ADR-0017 en changeant un attribut,
+     * c'est-a-dire exactement le desamorcage qu'ADR-0038 avait nomme comme le moyen le moins cher.
+     *
+     * <p>La population est derivee du balisage, jamais enumeree ici : un quatrieme role ajoute
+     * demain a {@code ROLES_DOMINES} entre dans cette clause sans que personne y pense.
+     */
+    private static List<String> rolesDominesJamaisConfrontes(List<Etat> etats, List<int[]> couples) {
+        Set<String> confrontes = new LinkedHashSet<>();
+        for (int[] couple : couples) {
+            confrontes.add(etats.get(couple[1]).role());
+        }
+        List<String> defauts = new ArrayList<>();
+        for (String role : new TreeSet<>(ROLES_DOMINES)) {
+            boolean porte = etats.stream().anyMatch(etat -> role.equals(etat.role()));
+            if (porte && !confrontes.contains(role)) {
+                defauts.add("le role \"" + role + "\" est porte par un bouton du depot mais n'est "
+                        + "confronte a aucune action : ADR-0017 ne le juge donc pas, et changer un "
+                        + "attribut suffirait a sortir n'importe quel bouton de cette regle");
+            }
+        }
+        return defauts;
+    }
+
     private static String enRem(double valeur) {
         return String.format(Locale.FRENCH, "%.2f", valeur) + UNITE;
     }
@@ -479,16 +537,17 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
         List<int[]> couples = appariements(etats);
         for (int[] couple : couples) {
             Boite action = boites.get(couple[0]);
-            Boite sortie = boites.get(couple[1]);
+            Boite domine = boites.get(couple[1]);
             for (int rang = 0; rang < COMPOSANTES.size(); rang++) {
                 Optional<Double> valeurAction = action.valeurs().get(rang);
-                Optional<Double> valeurSortie = sortie.valeurs().get(rang);
-                if (valeurAction.isEmpty() || valeurSortie.isEmpty()
-                        || valeurAction.get() >= valeurSortie.get()) {
+                Optional<Double> valeurDominee = domine.valeurs().get(rang);
+                if (valeurAction.isEmpty() || valeurDominee.isEmpty()
+                        || valeurAction.get() >= valeurDominee.get()) {
                     continue;
                 }
-                defauts.add("ecran " + action.etat().ecran() + " : la sortie " + sortie.etat().etiquette()
-                        + " declare " + COMPOSANTES.get(rang).nom() + " a " + enRem(valeurSortie.get())
+                defauts.add("ecran " + action.etat().ecran() + " : "
+                        + designerLeRole(domine.etat().role()) + " " + domine.etat().etiquette()
+                        + " declare " + COMPOSANTES.get(rang).nom() + " a " + enRem(valeurDominee.get())
                         + " quand l'action " + action.etat().etiquette() + " se contente de "
                         + enRem(valeurAction.get()) + " ; sur un ecran ou l'enfant peut encore jouer, ce "
                         + "qui appelle la main doit etre ce qui fait avancer le jeu, jamais ce qui en "
@@ -498,6 +557,7 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
         if (couples.isEmpty()) {
             defauts.add("aucun couple action/sortie n'a ete confronte : cette regle ne prouverait rien");
         }
+        defauts.addAll(rolesDominesJamaisConfrontes(etats, couples));
 
         assertThat(defauts)
                 .as("ADR-0017 : sur un meme ecran, un bouton de sortie ne declare aucune composante de "
@@ -617,6 +677,37 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
         assertThatThrownBy(() -> verifierQueLActionNeDeclarePasMoinsQueLaSortie(racine, racine))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("la sortie .terminer \"Rentrer\" declare rembourrage gauche et droite");
+    }
+
+    /**
+     * ADR-0043 : le troisieme role est domine comme la sortie, et il l'est <b>par la comparaison</b>
+     * et non par la bonne foi. Le jeu fautif reprend la boite que {@code ines-design} a chiffree pour
+     * la barre de niveaux, a son rembourrage pres ; la sortie du meme habillage y reste plus petite
+     * que l'action, donc seul le point d'entree est en cause - un garde-fou qui n'aurait etendu que
+     * le vocabulaire, sans etendre l'appariement, resterait vert ici.
+     */
+    @Test
+    void unPointDEntreePermanentQuiDepasseLActionFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("entree-permanente-plus-grosse");
+        assertThatThrownBy(() -> verifierQueLActionNeDeclarePasMoinsQueLaSortie(racine, racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("le point d'entree .puce-niveau \"CP\" declare rembourrage "
+                        + "haut et bas a 1,00rem quand l'action .continuer \"Continuer\" se contente "
+                        + "de 0,75rem");
+    }
+
+    /**
+     * ADR-0043, l'autre bout de la meme propriete : un role domine qui existe dans le balisage et
+     * que la regle ne confronte a rien doit etre un echec, sans quoi le troisieme role serait une
+     * porte de sortie d'ADR-0017 plutot qu'une entree dedans.
+     */
+    @Test
+    void unPointDEntreeQueRienNeConfronteFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("entree-jamais-confrontee");
+        assertThatThrownBy(() -> verifierQueLActionNeDeclarePasMoinsQueLaSortie(racine, racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("le role \"entree\" est porte par un bouton du depot mais n'est "
+                        + "confronte a aucune action");
     }
 
     /** ADR-0013 obligation 2 : un bouton dont le role ne se lit pas est un echec, pas un ignore. */

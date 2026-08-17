@@ -141,3 +141,115 @@ que d'inventer un dossier.
 - **Aucun `ADR` neuf.** Cet amendement n'etablit aucune decision nouvelle : il substitue un mecanisme
   executable a un mecanisme humain, sur une clause deja acceptee. `ADR-index.md` porte la ligne de
   l'amendement, sans numero neuf.
+
+## 5. Cloture sur l'arbre fusionne - section ajoutee le 2026-08-17 (s14), et pourquoi si tard
+
+**La section 0 de ce fichier annoncait : "il sera amende a la review sur l'arbre fusionne, section
+ajoutee et non reecrite".** Elle ne l'a pas ete. C'est une quatrieme absence de suite, d'une forme
+nouvelle et pire que les precedentes : les quatre premieres etaient des fichiers qui n'existaient
+pas, celle-ci est une promesse non tenue **a l'interieur** d'une ceremonie qui a bien eu lieu -
+`retro.md` de s13 la nomme comme telle. Un fichier publie a l'ouverture pour echapper a la ceremonie
+de cloture s'est fait absorber par cette ceremonie quand meme, sur la moitie qu'il lui avait laissee.
+La section est ecrite maintenant, avec un sprint de retard, et le retard fait partie du compte-rendu.
+
+- **Auteur** : `theo-archi`. **Date** : 2026-08-17.
+- **Arbre juge** : `round-two` a **`e30566b`**, la tete du depot a l'ouverture de s14 - donc l'arbre
+  fusionne de s13, increments de `nadia-prof`, `camille-po` et `ines-design` compris.
+- **Provisionnement** : worktree dedie hors de l'arbre du depot, branche `s14-theo` forkee de
+  `round-two`, lignee verifiee par `outils/verifier-lignee.sh`.
+- **Prerequis** : le `java` du `PATH` de ce poste n'est pas un JDK 21. Toutes les mesures sont prises
+  sur le **JDK 21.0.10** designe par la toolchain de l'utilisateur, via `bash outils/mvn-jdk21.sh`
+  (constat citable rendu par `outils/verifier-jdk.sh` : `java du PATH : 1.8.0_202 | JDK de
+  compilation : 21.0.10 | JAVA_HOME : vide | toolchains lu par Maven : oui`).
+
+### 5.1 Le resultat de la commande
+
+`bash outils/mvn-jdk21.sh -B clean verify`, jamais un perimetre partiel :
+
+```
+recreo ............................................. SUCCESS [  0.605 s]
+recreo-domain ...................................... SUCCESS [ 10.075 s]
+recreo-application ................................. SUCCESS [  3.828 s]
+recreo-adapter-web ................................. SUCCESS [ 28.006 s]
+recreo-adapter-content ............................. SUCCESS [  9.417 s]
+recreo-bootstrap ................................... SUCCESS [ 46.913 s]
+BUILD SUCCESS
+Total time:  01:39 min
+```
+
+**489 tests, 0 echec, 0 erreur, 0 ignore. 28 regles ArchUnit.**
+
+**Methode du comptage des tests, dans le meme paragraphe que le chiffre.** Somme de l'attribut
+`tests` de la balise racine `testsuite` des **76 rapports XML** produits par cette seule execution,
+sous `*/target/surefire-reports/` et `*/target/failsafe-reports/` des **cinq modules declares dans
+`modules`** du pom agregateur, lus **apres le `clean`** de cette commande. Jamais un balayage lance
+depuis la racine du depot, qui verrait les worktrees des autres agents. Repartition : `adapter-web`
+233, `adapter-content` 120, `bootstrap` 88 (dont 6 en failsafe), `domain` 47, `application` 7.
+**Exclus explicitement** : les resumes `.txt` de Surefire, qui ne conservent qu'un seul moteur JUnit
+par classe et sous-comptent.
+
+**Methode du comptage des regles, deux methodes qui doivent concorder et concordent.** Critere
+`ArchRule <nom> =`.
+
+1. tous les fichiers `.java` du depot dont le chemin contient `src/test/java`, suivis **et** non
+   suivis : **30 brut**. Deux de ces trente vivent dans le **faux depot** de contre-exemple de
+   `LesGardeFousSontMisALEpreuveTest`, sous `src/test/resources`, dont le chemin contient
+   `src/test/java` sans etre un source de module. **30 - 2 = 28** ;
+2. balayage des seuls `src/test/java` des cinq modules declares au pom : **28** directement,
+   repartis en `bootstrap` **27** et `adapter-web` **1** (`AssertionsWebTest`). `domain`,
+   `application` et `adapter-content` en portent zero.
+
+**Rapprochement avec les chiffres annonces en s13, et il y a un ecart a expliquer.** La section 1 de
+ce fichier annoncait **464 tests** et **28 regles** sur `9430cfd`, la tete a l'**ouverture** de s13.
+L'arbre fusionne en porte **489** et **28**. L'ecart de tests, **+25**, est le travail du sprint et
+non une erreur de comptage : les deux methodes sont identiques a celles de la section 1, jusqu'au
+nombre de rapports XML lus (74 alors, 76 maintenant - deux classes de test de plus). Le compte de
+regles n'a pas bouge, ce qui est coherent avec `ADR-0041` et `ADR-0042`, qui declarent tous deux "le
+compte reste a 28" avec leur methode.
+
+### 5.2 L'inventaire des cliquets sur l'arbre fusionne
+
+C'est la seule information que ce fichier porte et qu'aucun autre document ne republie (`ADR-0013`,
+amendement du 2026-08-15). Etat au 2026-08-17 sur `e30566b`, lu dans les sources et non recopie de la
+section 3 :
+
+| cliquet | dette | plafond | jeu | assertion |
+|---|---|---|---|---|
+| `LesGardeFousSontMisALEpreuveTest.DETTE_DE_BALAYAGE` (`FaviconTest`, `FrontieresDuJavaScriptTest`) | 2 | 2 | 0 | `hasSize` |
+| `LesGardeFousSontMisALEpreuveTest.CRITERES_ENUMERES_DECLARES` (`AucunVocabulaireDeMatiereTest`) | 1 | 1 | 0 | `hasSize` |
+| `LeRangDeLaBonneReponse...Test.DETTE_DE_RANG` (`cm1-perimetre`, `cm1-mesures`) | 2 | 2 | 0 | `hasSizeLessThanOrEqualTo` - encore permissive |
+| `LeRangDeLaBonneReponse...Test.DETTE_DE_SEUIL_MINIMUM` (`cm1-perimetre`, `cp-soustractions`, `cp-complements-10`) | 3 | 3 | 0 | `hasSizeLessThanOrEqualTo` - encore permissive |
+| `ChaquePaquetPorteUnIndiceTest.DETTE_DE_CONTENU` (vide) | 0 | 0 | 0 | nulle par construction |
+
+**Aucun cliquet du depot ne porte de jeu, et chaque exemption nomme encore quelque chose de reel** -
+les cinq paquets cites existent tous dans `adapters/adapter-content/src/main/resources/contenu/`, et
+ce n'est pas ma parole : les tests l'assertent eux-memes (`containsAll`,
+`containsExactlyInAnyOrderElementsOf`, et une boucle sur chaque nom de dette). Les deux
+`hasSizeLessThanOrEqualTo` restants n'ont **pas** de place libre a ce jour : plafond egal a dette sur
+les deux. Ils restent permissifs par leur forme d'assertion, pas par leur valeur.
+
+**Ce que l'inventaire de la section 3 omettait, et il faut le dire.** Il annoncait "les cinq cliquets
+du depot". Methode du recomptage : `grep -rn "static final int PLAFOND" --include=*.java` sur les
+cinq modules, hors `target` - il rend **six** constantes de plafond. La sixieme est
+`FrontieresDuJavaScriptTest.PLAFOND_LIGNES = 100`, doublee de `PLAFOND_OCTETS = 4096`, et
+`recreo.js` mesure **16 lignes pour 597 octets**. Il y a donc 84 lignes et 3 499 octets de place
+libre.
+
+**Ce n'est pas un cliquet dont le plafond depasse la dette, et la distinction n'est pas une
+echappatoire.** Un cliquet d'exemption plafonne une **liste de choses exemptees** : sa place libre
+laisse entrer en silence l'exemption suivante, et c'est pourquoi `ADR-0013` exige que son plafond
+vaille exactement la taille de sa dette. Un **budget** plafonne la taille d'un artefact de
+production, ici le JavaScript maison : sa marge est ce qu'il autorise a dessein (`ADR-0008`), et la
+reduire a la taille du fichier du jour interdirait la ligne suivante sans avoir rien decide. Les deux
+familles ne se comparent pas, et c'est pour cela que l'inventaire de la section 3 ne comptait que les
+cliquets d'exemption - mais il aurait du le dire, et il annoncait "les cinq cliquets du depot" sans
+qualifier. Corrige ici : **cinq cliquets d'exemption, jeu nul sur les cinq ; deux budgets de
+production, marge large et voulue.**
+
+### 5.3 Ce que cette section ne fait pas
+
+Aucun Done pedagogique ni son anticipation, aucun arbitrage produit, aucune ligne dans
+`rapport-qualite.md`, dans `squad/conformite/` ni dans le planning de `sofia-sm`. Les chiffres du lot
+de s14 ne sont pas ici : ils vivent dans
+`squad/sprints/s14-points-d-entree-par-niveau/confirmation-archunit.md`, qui est le fichier de ce
+sprint-ci.
