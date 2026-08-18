@@ -91,7 +91,7 @@ Cette story n'ouvre, ne ferme et ne rejuge aucune ligne de `squad/programme/MATR
 ### Arbitrage prealable du 2026-08-18 (s15) - rang unique et etat actif de la puce : variante 1 retenue, sept conditions - le plus recent de cette fiche
 
 > **Ce que cette section fait.** Elle repond aux cinq questions d'`ines-design`
-> (`squad/sprints/s15-la-sortie-vit-dans-l-en-tete/proposition-ines-etat-actif-et-rang-unique.md`,
+> (`squad/sprints/s15-cinq-arbitrages-de-l-en-tete/proposition-ines-etat-actif-et-rang-unique.md`,
 > section 3) **avant tout code**, sur deux demandes que l'utilisatrice a deja tranchees dans leur
 > principe (un seul rang, une couleur sur la puce choisie). Elle ne rouvre ni l'un ni l'autre de ces
 > principes. Elle n'est **pas un Done pedagogique** : celui du lot a venir sera prononce en jouant.

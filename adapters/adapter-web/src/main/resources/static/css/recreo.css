@@ -117,7 +117,7 @@ h1 {
    (body:has(.ecran-de-jeu) .lien-accueil), qui visait les quatre fragments de jeu a la fois, est
    retiree plus bas - c'est exactement ce que cet arbitrage annule, la sortie d'en-tete restant
    desormais visible pendant une manche. Deux regles plus ciblees la remplacent (exigences de
-   theo-archi, squad/sprints/s15-la-sortie-vit-dans-l-en-tete/). */
+   theo-archi, squad/sprints/s15-cinq-arbitrages-de-l-en-tete/). */
 
 /* S6-1 : le lien de menu quitte l'ecran en cours comme le bouton "Les jeux" (ADR-0017,
    data-role="sortie"), et reprend deliberement les memes composantes de boite que
@@ -757,7 +757,7 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    teinte, et c'est cette composante-la qui satisfait la clause. Nadia-prof refuse nommement de s'en
    tenir a une largeur a peine visible (0,0625rem, qu'il avait cite comme suffisant a la clause sans
    etre vu) : ici le contour garde la largeur deja en vigueur au repos (0,125rem), reellement percue.
-   S15, correction de theo-archi (squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-etat-actif-au-retour.md) :
+   S15, correction de theo-archi (squad/sprints/s15-cinq-arbitrages-de-l-en-tete/exigences-theo-etat-actif-au-retour.md) :
    sa premiere forme neutralisait l'apparence active sur le marqueur d'ecran de jeu et laissait donc
    allumee toute autre route qui rend le catalogue complet sans filtre - defaut vu par l'utilisatrice
    (CM1 presse puis "Les jeux" : la puce reste pleine). La regle est desormais positive et

@@ -188,7 +188,7 @@ class PartieControllerTest {
     /**
      * S1-4, 3e critere, <b>retournee</b> par S15-3 (troisieme arbitrage de l'utilisatrice,
      * DEC-0034, 2026-08-18). <b>Motif ecrit du retournement, exige par ADR-0013</b> (releve de
-     * theo-archi, squad/sprints/s15-la-sortie-vit-dans-l-en-tete/) : ce test affirmait
+     * theo-archi, squad/sprints/s15-cinq-arbitrages-de-l-en-tete/) : ce test affirmait
      * {@code button.retour-accueil} present sur la manche - faux des le retrait de ce bouton de
      * {@code fragments/manche.html}. Son sujet a change d'ecran : l'utilisatrice demande la sortie
      * dans l'en-tete y compris pendant une partie (renversement de l'arbitrage de nadia-prof du

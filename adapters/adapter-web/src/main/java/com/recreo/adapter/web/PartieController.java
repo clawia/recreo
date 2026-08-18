@@ -150,7 +150,7 @@ public class PartieController {
      *
      * <p>Amendement d'ADR-0044 (s15, "un seul rang, une couleur sur la puce choisie") : la puce de
      * niveau perd {@code hx-get}/{@code hx-target} et ne garde que son {@code href} (exigences de
-     * theo-archi, squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-etat-actif.md,
+     * theo-archi, squad/sprints/s15-cinq-arbitrages-de-l-en-tete/exigences-theo-etat-actif.md,
      * section 1.1). Un appui n'echange donc plus un fragment dans {@code #jeu} : c'est une
      * navigation complete, et cette route doit desormais rendre le document entier - en-tete
      * comprise, avec la puce du niveau demande marquee active par la donnee ({@code niveauActif}),

@@ -26,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * S15 (exigences de theo-archi,
- * squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-etat-actif-au-retour.md) : la puce
+ * squad/sprints/s15-cinq-arbitrages-de-l-en-tete/exigences-theo-etat-actif-au-retour.md) : la puce
  * de niveau porte une classe d'etat active, posee par le serveur en {@code th:class}, jamais par
  * une regle CSS par niveau. Deux clauses, aucune troisieme :
  *

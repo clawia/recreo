@@ -330,7 +330,7 @@ porte ferait de l'ecran de fin de partie un cul-de-sac.
 >
 > Le detail - marqueur neuf, trois regles, deux clauses de garde-fou dues au lot, releve des sources
 > qui perdent leur sujet - est dans
-> `squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-sortie-en-tete.md`.
+> `squad/sprints/s15-cinq-arbitrages-de-l-en-tete/exigences-theo-sortie-en-tete.md`.
 
 Elle me laisse deux questions techniques, et c'est tout ce que cet ADR traite.
 

@@ -67,7 +67,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * {@code theo-archi} propose en attendant.
  *
  * <p><b>s15, troisieme arbitrage de l'utilisatrice (DEC-0034, 2026-08-18) : deux clauses de plus,
- * exigees par theo-archi</b> (squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-sortie-en-tete.md).
+ * exigees par theo-archi</b> (squad/sprints/s15-cinq-arbitrages-de-l-en-tete/exigences-theo-sortie-en-tete.md).
  * La sortie d'en-tete ({@code .lien-accueil}) reste visible sur la manche desormais (l'utilisatrice
  * renverse l'arbitrage de nadia-prof du 2026-08-07, S6-9) et disparait sur les trois ecrans qui
  * portent deja leur propre sortie ou qui n'en ouvrent aucune. {@code ecran-exclusif} ne peut pas

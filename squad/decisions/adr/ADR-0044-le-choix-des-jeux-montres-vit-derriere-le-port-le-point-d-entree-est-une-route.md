@@ -59,7 +59,7 @@
 > et y faire entrer une neutralisation d'apparence leur ferait calculer un document faux en restant verts.
 >
 > Le mecanisme retenu, ses deux moities, les deux clauses dues au lot et le releve sont dans
-> `squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-etat-actif.md`.
+> `squad/sprints/s15-cinq-arbitrages-de-l-en-tete/exigences-theo-etat-actif.md`.
 
 ## Contexte
 

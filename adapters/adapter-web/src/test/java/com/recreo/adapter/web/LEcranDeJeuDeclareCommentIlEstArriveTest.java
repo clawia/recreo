@@ -684,7 +684,7 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
      * ADR-0013 : elle affirmait que les documents complets etaient exactement ceux dont le nom
      * commence par "accueil", c'est-a-dire GET / seule. La puce de niveau perd son hx-get et ne
      * garde que son href (theo-archi,
-     * squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-etat-actif.md, section 1.1) :
+     * squad/sprints/s15-cinq-arbitrages-de-l-en-tete/exigences-theo-etat-actif.md, section 1.1) :
      * GET /niveaux/{niveau} rend desormais lui aussi un document complet, sur ses deux branches -
      * la liste filtree et la confirmation ouverte par une puce - puisque c'est ce rendu complet qui
      * permet de marquer la puce active par la donnee. Une assertion qui n'enumere aucun nom

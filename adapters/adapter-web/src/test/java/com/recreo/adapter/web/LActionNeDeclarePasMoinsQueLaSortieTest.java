@@ -614,7 +614,7 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
 
     /**
      * DEC-0034 (s15), <b>retournee</b> par accord de theo-archi
-     * (squad/sprints/s15-la-sortie-vit-dans-l-en-tete/accord-theo-epinglage-du-lien.md) : cet
+     * (squad/sprints/s15-cinq-arbitrages-de-l-en-tete/accord-theo-epinglage-du-lien.md) : cet
      * epinglage ne se retire pas, son sujet {@code .btn.lien-accueil} reste vivant et change de
      * signe. Premiere assertion <b>inchangee</b> - le couple de l'accueil existe toujours, le lien
      * s'y compare toujours aux jeux a ouvrir.
