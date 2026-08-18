@@ -221,3 +221,14 @@ decision qui la prononce.
 - `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee.
 - `squad/conformite/FICHE-barre-entree-niveau.md` : inchangee par cet amendement ; le verdict sur
   BARRE-7 y reste celui deja ecrit par `nadia-prof`.
+
+## Note du 2026-08-17 (s15) - la fermeture de PORTE-1 ne reflete plus l'etat du depot
+
+Cet amendement enregistrait une fermeture de PORTE-1 par le retrait du lien. **Cette fermeture ne
+reflete plus l'etat du depot** : l'utilisatrice, apres avoir joue l'increment livre, retablit le
+lien "Les jeux" dans l'en-tete dans son etat d'avant s14, en connaissance du motif meme de PORTE-1
+(`DEC-0034-utilisatrice-retablit-les-jeux-et-unifie-lapparence-des-puces.md`). Le paragraphe
+ci-dessus n'est pas corrige : au moment ou `DEC-0033` l'a ecrit, la fermeture etait exacte. Ce qui
+change est posterieur, rendu par une autorite au-dessus de `nadia-prof` et de `camille-po`, et ce
+n'est pas une reouverture au sens ou la squad l'entend habituellement - personne ne remet en cause
+le motif de `nadia-prof`, l'utilisatrice choisit de vivre avec.

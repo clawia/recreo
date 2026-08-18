@@ -36,7 +36,8 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0030 | Perimetre du sprint 13 : trois lignes de mathematiques CM1 ouvertes, deux differees, et le plafond de la mecanique unique mesure | s13 | 2026-08-15 | Acceptee |
 | DEC-0031 | Retrait de "Les grands nombres" du catalogue jusqu'a correction du rendu, contenu juge bon | s13 | 2026-08-16 | Acceptee, amendee le 2026-08-16 (prealable circulaire de nadia-prof leve par un chemin de verification hors catalogue joue ; "Le perimetre" refuse une seconde fois sur le meme motif, garde au catalogue, ligne repassee en cours ; reserve de longueur sur "Les mesures" routee au backlog s14) |
 | DEC-0032 | Perimetre du sprint 14 : la barre d'entree par niveau ouvre sous arbitrage prealable, le filtre par matiere est differe a s15, S13-6 est remplacee | s14 | 2026-08-17 | Acceptee sur le perimetre ; developpement de S14-1 bloque jusqu'a l'arbitrage prealable de nadia-prof |
-| DEC-0033 | BARRE-7 : le lien "Les jeux" de l'en-tete disparait de l'accueil, il n'y est pas remplace par un comportement neuf | s14 | 2026-08-17 | Acceptee |
+| DEC-0033 | BARRE-7 : le lien "Les jeux" de l'en-tete disparait de l'accueil, il n'y est pas remplace par un comportement neuf | s14 | 2026-08-17 | Remplacee par DEC-0034 |
+| DEC-0034 | L'utilisatrice retablit le lien "Les jeux" dans l'en-tete et unifie l'apparence des puces de niveau : DEC-0033 est remplacee | s15 | 2026-08-17 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0023` a ete amendee le 2026-08-12, sur son point 6
 (disparition de l'ecran intermediaire), laisse ouvert et route a `nadia-prof` pour arbitrage
@@ -282,3 +283,13 @@ autre que celui deja clos n'existe aujourd'hui, et l'etendre sans besoin reviend
 vide. Les sections d'origine de `DEC-0028` restent telles qu'ecrites le 2026-08-14, non effacees.
 Voir la section "Complement du 2026-08-15 (s12, cloture)" dans
 `DEC-0028-abandon-de-la-persistance-recreo-ne-conserve-aucune-partie.md`.
+
+`DEC-0033` n'est pas amendee : elle est **remplacee** le 2026-08-17 (s15) par
+`DEC-0034-utilisatrice-retablit-les-jeux-et-unifie-lapparence-des-puces.md`, sur arbitrage de
+l'utilisatrice apres qu'elle a joue l'increment livre de s14. L'utilisatrice retablit le lien "Les
+jeux" dans l'en-tete dans son etat d'avant s14, en connaissance du motif BARRE-7 / PORTE-1 que
+`DEC-0033` avait resolu par le retrait, et elle unifie l'apparence des puces de niveau avec ce lien,
+ce qui contredit BARRE-9. Le refus pedagogique de `nadia-prof` qui avait motive `DEC-0033` **n'est
+ni efface ni reecrit** : il reste lisible dans `squad/conformite/FICHE-barre-entree-niveau.md` et
+dans `DEC-0027`, ou une note datee du 2026-08-17 (s15) est ajoutee sous l'amendement qui enregistrait
+la fermeture de PORTE-1. Voir `DEC-0034` pour le detail, la chronologie complete et le routage.

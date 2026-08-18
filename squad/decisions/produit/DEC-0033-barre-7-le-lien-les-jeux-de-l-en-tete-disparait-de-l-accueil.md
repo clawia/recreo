@@ -1,5 +1,13 @@
 # DEC-0033 - BARRE-7 : le lien "Les jeux" de l'en-tete disparait de l'accueil, il n'y est pas remplace par un comportement neuf
 
+> **Remplacee le 2026-08-17 (s15) par `DEC-0034-utilisatrice-retablit-les-jeux-et-unifie-lapparence-
+> des-puces.md`.** L'utilisatrice, apres avoir joue l'increment livre, retablit le lien "Les jeux"
+> dans l'en-tete dans son etat d'avant s14, en connaissance du motif BARRE-7 que cette decision
+> resolvait par le retrait. Le corps de cette decision reste tel qu'ecrit ci-dessous : il documente
+> pourquoi le retrait avait ete choisi et quel motif il fermait, et c'est ce motif que l'arbitrage de
+> l'utilisatrice rouvre sciemment plutot que d'ignorer. Voir `DEC-0034` pour le detail et pour la
+> chronologie complete.
+
 - **Type** : arbitrage de story, corrige un obstacle bloquant la porte pedagogique d'une story deja
   livree
 - **Date** : 2026-08-17
@@ -8,7 +16,7 @@
 - **Competence programme visee** : transverse - pas de contenu pedagogique. Cette decision ne
   cible aucune ligne de `squad/programme/MATRICE-couverture.md` ; elle retire un element de
   navigation devenu sans effet, elle ne touche a aucun contenu.
-- **Statut** : Acceptee
+- **Statut** : Remplacee par DEC-0034
 
 ## Contexte
 

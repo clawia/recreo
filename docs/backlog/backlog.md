@@ -4230,3 +4230,110 @@ trancher la nomenclature affichee (accents). `DEC-0032` remplace `S13-6` par la 
 - **Lien decision** :
   `DEC-0033-barre-7-le-lien-les-jeux-de-l-en-tete-disparait-de-l-accueil.md`.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, lot court du sprint 14 en cours.
+
+## Sprint 15 - L'utilisatrice revient sur DEC-0033 apres avoir joue
+
+**Contexte et decision de perimetre** :
+`DEC-0034-utilisatrice-retablit-les-jeux-et-unifie-lapparence-des-puces.md`. L'utilisatrice a joue
+l'increment de s14 (Done pedagogique VALIDE SOUS RESERVE de `S14-1`/`S14-2`,
+`squad/conformite/FICHE-barre-entree-niveau.md`) et rend deux arbitrages qui reviennent sur
+`DEC-0033` : le lien "Les jeux" revient dans l'en-tete dans son etat d'avant s14, et les puces de
+niveau prennent son apparence sur le fond commun de l'en-tete. Les deux stories ci-dessous portent
+chacun de ces arbitrages. Un troisieme retour de l'utilisatrice - les boutons de l'en-tete
+disparaissent au survol - est un defaut technique deja diagnostique, hors de ce sprint tel qu'ecrit
+ici : il fait l'objet d'une story distincte instruite par `theo-archi`.
+
+### S15-1 - "Les jeux" revient dans l'en-tete, dans son etat d'avant s14
+
+- **Besoin** : en tant qu'eleve de CP ou de CM1, je veux retrouver dans l'en-tete un bouton "Les
+  jeux" qui me ramene a la liste complete de tous les jeux, comme avant, afin de revenir au
+  catalogue complet meme si je suis arrive sur une liste filtree par mon niveau.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Cette story ne cible
+  aucune ligne de `squad/programme/MATRICE-couverture.md` ; elle reintroduit un element de
+  navigation retire par `S14-2`.
+- **Arbitrage deja rendu, non rouvert par cette story** (`DEC-0034`, arbitrage A) : l'utilisatrice a
+  choisi de retablir ce lien dans son etat d'avant s14 - sans role nouveau, sans devenir un bouton
+  d'annulation de filtre -, en connaissance du fait que cela reintroduit le defaut nomme BARRE-7 par
+  `nadia-prof` (un bouton qui ne fait rien depuis l'accueil non filtre, et qui repond depuis
+  l'accueil filtre). Cette story ne cherche pas a corriger ce defaut : elle reproduit fidelement le
+  comportement d'avant s14, motif et historique complets dans `DEC-0034`.
+- **Criteres d'acceptation** :
+  - Etant donne l'ecran d'accueil (catalogue complet ou liste filtree par niveau), quand la page est
+    rendue, alors l'en-tete affiche, en plus des puces de niveau, un element de role sortie libelle
+    exactement "Les jeux" (`data-role="sortie"`, comme avant s14).
+  - Etant donne un ecran de jeu (zone de contenu portant le marqueur que le serveur pose pour un
+    ecran de jeu, quel qu'il soit - manche, echec, revelation, confirmation, fin de partie, erreur),
+    quand la page ou le fragment est rendu, alors cet element "Les jeux" de l'en-tete n'est pas
+    visible - masque exactement comme il l'etait avant s14 (`ADR-0022`, clause 2, forme generalisee
+    de son troisieme amendement du 2026-08-17 ; le moyen technique et le marqueur retenu
+    appartiennent a `theo-archi`).
+  - Etant donne l'accueil affichant le catalogue complet (etat par defaut, sans filtre de niveau),
+    quand l'enfant appuie sur "Les jeux", alors le document rendu est identique, texte pour texte, a
+    celui qui l'affichait avant l'appui - ce critere constate sciemment le comportement que
+    `nadia-prof` a nomme BARRE-7 et que l'utilisatrice a choisi de retablir, il ne le corrige pas.
+  - Etant donne l'accueil affichant une liste filtree sur un niveau, quand l'enfant appuie sur "Les
+    jeux", alors le catalogue complet (les onze jeux, non filtre) est affiche - comportement
+    inchange par rapport a celui livre par `S14-1`.
+  - Etant donne l'ecran de fin de partie et l'ecran de confirmation d'abandon, quand on compte les
+    occurrences du mot "Les jeux" sur chacun, alors ce compte reste inchange par cette story : une
+    fois pour `sortie-pleine` sur la fin de partie (PORTE-2, `DEC-0027`), une fois pour
+    `retour-accueil` sur la confirmation. Cette story ajoute un exemplaire du mot sur l'accueil, elle
+    n'en ajoute aucun ailleurs.
+  - Ce que cette story ne tranche pas : le moyen technique de reintroduction du lien et de son
+    masquage, et l'impact sur `LActionNeDeclarePasMoinsQueLaSortieTest` et sur
+    `EnTeteEtMenuTest.leMenuDeLEnTeteContientExactementUneEntreeVersLAccueil` (`theo-archi`, saisine
+    par `sofia-sm`).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : elle rejugera cette story au regard de BARRE-7, qu'elle a deja tranchee dans
+    l'autre sens - c'est a elle de dire ce qu'elle fait de cette condition face a un arbitrage de
+    l'utilisatrice qui la surplombe.
+- **Porte de sortie** : les criteres testables ci-dessus tenus et `mvn verify` vert. Le Done
+  pedagogique de l'increment resultant (cette story et `S15-2`) reste a prononcer par `nadia-prof`
+  sur `squad/conformite/FICHE-barre-entree-niveau.md`, qui n'est pas rouverte par cette seule
+  ecriture de story.
+- **Lien decision** :
+  `DEC-0034-utilisatrice-retablit-les-jeux-et-unifie-lapparence-des-puces.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S15-2 - Les puces de niveau et "Les jeux" partagent la meme apparence, la bande sombre de l'en-tete disparait
+
+- **Besoin** : en tant qu'eleve de CP ou de CM1, je veux que les boutons de l'en-tete se ressemblent
+  tous sur le meme fond, afin de ne pas etre surpris par une bande de couleur qui ne veut rien dire.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Cette story change
+  l'apparence de l'en-tete ; elle ne cible aucune ligne de `squad/programme/MATRICE-couverture.md`.
+- **Arbitrage deja rendu, non rouvert par cette story** (`DEC-0034`, arbitrage B) : l'utilisatrice a
+  choisi que les puces "CP" et "CM1" prennent la meme apparence que "Les jeux", sur le fond commun
+  de l'en-tete, plutot que sur une bande distincte plus sombre. Elle tranche l'**apparence** des
+  trois boutons ; elle ne tranche pas leur **disposition** en un ou deux rangs, question routee a
+  `ines-design` puis a `nadia-prof` (voir `DEC-0034` pour le detail, dont la contradiction avec
+  BARRE-9 et avec l'arbitrage prealable du 2026-08-17 sur la separation des rangs).
+- **Criteres d'acceptation** :
+  - Etant donne l'en-tete rendu sur un ecran ou les puces de niveau et "Les jeux" sont visibles en
+    meme temps (l'accueil), quand on compare les composantes de boite declarees des trois elements a
+    leur etat inactif (couleur de fond, couleur de texte, couleur de bordure), alors les trois
+    partagent les memes valeurs de fond et de texte : aucune des trois boites n'est posee sur un
+    fond distinct du reste de l'en-tete.
+  - Etant donne l'en-tete rendu sur n'importe quel ecran qui montre au moins un des trois elements,
+    quand on mesure les bandes de fond de l'en-tete de haut en bas, alors il n'existe plus qu'une
+    seule bande de fond : la bande sombre distincte mesuree par `nadia-prof` a 66 px (accueil, manche,
+    fin de partie) ou a 16 px (confirmation, erreur) disparait.
+  - Etant donne l'ecran de confirmation et l'ecran d'erreur (ecrans ou les puces sont masquees, par
+    BARRE-1 et BARRE-2), quand on mesure l'en-tete, alors aucune bande vide ne subsiste a
+    l'emplacement ou les puces se seraient affichees - ceci ferme la reserve **S14-A** de
+    `nadia-prof`.
+  - Ce que cette story ne tranche pas : la disposition en un ou deux rangs des trois boutons a
+    360 px, sous la contrainte de gabarit deja mesuree par `nadia-prof` - "Les jeux" 109 x 53 px, les
+    puces 56 x 50 px et 74 x 50 px (`ines-design` propose, `nadia-prof` juge) ; aucune de ces deux
+    dispositions n'est imposee ni exclue par les criteres ci-dessus.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : elle rejugera cette story au regard de BARRE-9, qu'elle a deja tranchee dans
+    l'autre sens - c'est a elle de dire ce qu'elle fait de cette condition, y compris si elle
+    souhaite la reformuler plutot que la lever purement et simplement.
+- **Porte de sortie** : les criteres testables ci-dessus tenus, `mvn verify` vert, disposition en un
+  ou deux rangs proposee par `ines-design` sur la contrainte de gabarit rappelee ci-dessus. Le Done
+  pedagogique de l'increment resultant (cette story et `S15-1`) reste a prononcer par `nadia-prof`
+  sur `squad/conformite/FICHE-barre-entree-niveau.md`.
+- **Lien decision** :
+  `DEC-0034-utilisatrice-retablit-les-jeux-et-unifie-lapparence-des-puces.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, apres proposition de disposition
+  d'`ines-design`.
