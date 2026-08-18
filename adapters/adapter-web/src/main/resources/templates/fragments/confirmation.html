@@ -3,8 +3,7 @@
 <body>
 <!-- ADR-0038, DEC-0026 (story 2, s11) : la sortie de l'ecran de manche et de l'ecran de reprise ne
      detruit plus la partie d'un seul geste ; elle rend cet ecran, qui laisse la partie intacte tant
-     que l'enfant n'a pas confirme explicitement. "ecran-de-jeu" masque l'entree de menu de l'en-tete
-     permanent, exactement comme sur les autres ecrans de jeu (ADR-0022).
+     que l'enfant n'a pas confirme explicitement.
      Ce garde-fou n'entre pas dans la population que LEcranDeJeuDeclareCommentIlEstArriveTest anime
      (elle est deja restreinte aux ecrans qui portent des propositions), donc data-focus n'y est pas
      lu par elle.
@@ -22,8 +21,14 @@
      tout chemin qu'il ouvre a l'enfant vit a l'interieur de lui - continuer la partie ou la
      quitter, ici, rien d'autre. Distinct de "ecran-de-jeu" (porte par les quatre fragments, jamais
      nomme par une regle de style) parce que la barre de niveaux ne doit disparaitre que sur deux
-     ecrans sur quatre - elle reste visible sur la manche et sur la fin de partie. -->
-<div th:fragment="confirmation" class="ecran-de-jeu ecran-exclusif" data-focus="phrase">
+     ecrans sur quatre - elle reste visible sur la manche et sur la fin de partie.
+     S15-3 (troisieme arbitrage de l'utilisatrice, DEC-0034) : "ecran-porte-sa-sortie" est le
+     second marqueur qu'exige le retour de la sortie dans l'en-tete (exigences de theo-archi,
+     squad/sprints/s15-la-sortie-vit-dans-l-en-tete/) - cet ecran rend deja sa propre sortie
+     (.retour-accueil, "Les jeux") et masque donc celle de l'en-tete pour ne pas la lire deux fois
+     (BARRE-5). Il porte les deux marqueurs a la fois, chacun pour son propre motif : "ecran-exclusif"
+     masque aussi les puces de niveau (clause B), ce que "ecran-porte-sa-sortie" ne fait pas. -->
+<div th:fragment="confirmation" class="ecran-de-jeu ecran-exclusif ecran-porte-sa-sortie" data-focus="phrase">
     <!-- Texte arbitre par nadia-prof (FICHE-bandit-manchot-additions-cp.md, arbitrage prealable du
          2026-08-14, CONF-3) : ni "perdre" (homonymie de jeu) ni question, les deux boutons sont le
          choix. Ne pas reformuler sans un nouvel arbitrage.

@@ -90,7 +90,18 @@ class CabinetDeLaMachineTest {
 
     /**
      * Critere d'acceptation S8-1 : le cabinet contient les colonnes de reponses et rien d'autre qui
-     * se presse (C2 de nadia-prof) - "Les jeux" (data-role="sortie") reste hors du cadre.
+     * se presse (C2 de nadia-prof).
+     *
+     * <p>S15-3 (troisieme arbitrage de l'utilisatrice, DEC-0034) : la seconde moitie de ce test
+     * affirmait que le fragment de manche portait lui-meme une sortie ({@code [data-role=sortie]})
+     * et que celle-ci restait hors du cabinet. <b>Motif ecrit du retrait, exige par ADR-0013</b> :
+     * "Les jeux" quitte entierement ce fragment - l'utilisatrice demande la sortie dans l'en-tete,
+     * y compris pendant une partie, et {@code fragments/manche.html} ne porte donc plus aucun
+     * bouton {@code .retour-accueil}. La propriete "hors du cabinet" ne se pose plus dans ce
+     * fragment : il n'y a plus de sortie a y confronter au cabinet. Ce que gardait cette moitie -
+     * une sortie visible et atteignable pendant la manche - est repris par l'en-tete permanent
+     * (accueil.html, {@code .lien-accueil}) ; sa regle de masquage sur cet ecran precis est en
+     * cours de revision par theo-archi et n'est pas couverte ici.</p>
      */
     @Test
     void leCabinetEntoureLesPropositionsEtRienDAutreQuiSePresse() {
@@ -105,12 +116,21 @@ class CabinetDeLaMachineTest {
         assertThat(cabinet.select("[data-role=sortie]"))
                 .as("C2 : aucun element de sortie ne se presse a l'interieur du cabinet")
                 .isEmpty();
+    }
 
-        Element sortie = manche.select("[data-role=sortie]").first();
-        assertThat(sortie).as("l'ecran de manche doit porter une sortie").isNotNull();
-        assertThat(sortie.parents())
-                .as("\"Les jeux\" reste hors du cabinet")
-                .doesNotContain(cabinet);
+    /**
+     * S15-3 (DEC-0034) : epingle l'etat nouveau plutot que de laisser une propriete disparaitre en
+     * silence - le fragment de manche ne porte plus aucune sortie du tout, la seule qui subsiste
+     * pendant une partie est celle de l'en-tete permanent.
+     */
+    @Test
+    void leFragmentDeMancheNePorteDesormaisAucuneSortie() {
+        Document manche = document("manche.html");
+
+        assertThat(manche.select("[data-role=sortie]"))
+                .as("S15-3 : \"Les jeux\" a quitte ce fragment pour l'en-tete permanent, y compris "
+                        + "pendant une partie en cours")
+                .isEmpty();
     }
 
     /**

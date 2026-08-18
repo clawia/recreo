@@ -7,8 +7,15 @@
      (PartieController.mancheModele), ce fragment ne rend plus qu'un seul etat - la fin de partie.
      Sa branche "la partie continue" ("Encore !", GET /parties/{jeuId}/manche) n'a plus d'appelant :
      retiree plutot que laissee vivre sans route qui la pose, sur le modele deja etabli par
-     DEC-0009/DEC-0014 (l'absence, jamais un drapeau mort). -->
-<div th:fragment="retour" class="ecran-de-jeu">
+     DEC-0009/DEC-0014 (l'absence, jamais un drapeau mort).
+     S15-3 (troisieme arbitrage de l'utilisatrice, DEC-0034) : "ecran-porte-sa-sortie" est le second
+     marqueur d'etat qu'exige le retour de la sortie dans l'en-tete (exigences de theo-archi,
+     squad/sprints/s15-la-sortie-vit-dans-l-en-tete/) - un fait structurel (cet ecran rend lui-meme
+     un [data-role=sortie]), jamais un jugement pedagogique comme "ecran-exclusif". Il masque la
+     sortie d'en-tete ici pour que "Les jeux" ne se lise pas deux fois (BARRE-5) : cet ecran porte
+     deja la sienne (.sortie-pleine). Nom propose par theo-archi, en attente de confirmation
+     d'ines-design (c'est du balisage). -->
+<div th:fragment="retour" class="ecran-de-jeu ecran-porte-sa-sortie">
     <!-- S3-6 : sur cet ecran, la sortie est desormais toujours la seule action possible, donc
          toujours l'aplat le plus saillant (nadia-prof, FICHE-bandit-manchot-additions-cp.md,
          reserve 4). ADR-0017 : data-role="sortie". -->

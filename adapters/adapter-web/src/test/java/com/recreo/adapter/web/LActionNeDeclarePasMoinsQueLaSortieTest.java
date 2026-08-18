@@ -613,16 +613,32 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
     }
 
     /**
-     * DEC-0034 (s15) : restauree a l'identique de sa forme d'avant S14-2, remplace
-     * la note de retrait qui vivait ici depuis S14-2 (BARRE-7, DEC-0033). <b>Motif ecrit de la
-     * restauration</b>, exige par ADR-0013 : l'utilisatrice retablit le lien "Les jeux" de
-     * l'en-tete dans son etat d'avant s14 (DEC-0034), donc le bouton {@code .btn.lien-accueil} que
-     * cet epinglage confrontait existe de nouveau, a l'identique de sa forme d'alors (meme classe,
-     * meme libelle, meme ecran). Le couple qu'il nommait redevient formable et se mesure a nouveau
-     * vrai sur la production, sans qu'une seule valeur de ce test ait du changer.
+     * DEC-0034 (s15), <b>retournee</b> par accord de theo-archi
+     * (squad/sprints/s15-la-sortie-vit-dans-l-en-tete/accord-theo-epinglage-du-lien.md) : cet
+     * epinglage ne se retire pas, son sujet {@code .btn.lien-accueil} reste vivant et change de
+     * signe. Premiere assertion <b>inchangee</b> - le couple de l'accueil existe toujours, le lien
+     * s'y compare toujours aux jeux a ouvrir.
+     *
+     * <p><b>Motif ecrit du retournement de la seconde assertion, exige par ADR-0013</b> : elle
+     * affirmait que le lien de l'en-tete n'accompagnait jamais aucune action d'un ecran de jeu,
+     * masque partout ailleurs qu'a l'accueil (ADR-0022, S6-9). Sa premisse tombe avec l'arbitrage
+     * de l'utilisatrice du 2026-08-18 - la sortie d'en-tete reste desormais visible pendant une
+     * manche - mais ce qu'elle gardait n'etait pas la premisse : c'etait <b>la garde contre une
+     * defection silencieuse</b>. Elle rougissait si le masquage disparaissait en gardant le lien ;
+     * <b>retournee, elle rougit si un masquage du lien reapparait sur un ecran de jeu</b> - le
+     * meme service, dans l'autre sens, contre le renversement inverse cette fois. Forme accordee
+     * par theo-archi : aucun ecran n'est enumere, seule la classe d'action ({@code .btn.proposition})
+     * est comparee, pour qu'un cinquieme ecran de jeu entre dans la propriete sans qu'une ligne
+     * change ici.</p>
+     *
+     * <p><b>Menage dans le meme geste</b>, demande par theo-archi : le disjoint {@code .btn.encore}
+     * est retire du predicat - cette classe n'existe plus dans aucun gabarit depuis s10 (verifie :
+     * {@code grep -rn "encore" --include=*.html} sur {@code templates/} ne rend qu'un mot francais
+     * dans un commentaire). Un disjoint mort dans un predicat de garde-fou est du poids qui fait
+     * croire a une couverture qu'il n'a plus.</p>
      */
     @Test
-    void leLienDeLEnTeteEstConfronteAuxSeulesActionsDeLAccueil() {
+    void leLienDeLEnTeteRedevientConfronteALaReponseSurLesEcransDeJeu() {
         List<String> couples = couplesConfrontes(RACINE_PRODUCTION, RACINE_PRODUCTION);
 
         assertThat(couples)
@@ -630,10 +646,12 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
                 .contains("ecran templates/accueil.html : .btn.demarrer \"Jouer\" contre "
                         + ".btn.lien-accueil \"Les jeux\"");
         assertThat(couples)
-                .as("ADR-0022 : masque sur les ecrans de jeu, ce lien n'y accompagne plus aucune "
-                        + "action ; l'y confronter mesurerait un ecran que l'enfant ne voit jamais")
-                .noneMatch(couple -> couple.contains(".btn.lien-accueil")
-                        && (couple.contains(".btn.proposition") || couple.contains(".btn.encore")));
+                .as("DEC-0034 : l'utilisatrice demande la sortie d'en-tete visible pendant une "
+                        + "partie ; au moins un ecran de jeu doit donc confronter ce lien a une "
+                        + "reponse - un masquage qui reapparaitrait sur les ecrans de jeu deferait "
+                        + "cet arbitrage en silence")
+                .anyMatch(couple -> couple.contains(".btn.lien-accueil")
+                        && couple.contains(".btn.proposition"));
     }
 
     /**
