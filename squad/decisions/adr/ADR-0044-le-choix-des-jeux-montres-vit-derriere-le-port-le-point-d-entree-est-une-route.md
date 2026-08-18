@@ -1,6 +1,7 @@
 # ADR-0044 - Loger le choix des jeux montres derriere le port entrant, faire du point d'entree une route et non un parametre, et refuser tout etat de filtre dans l'en-tete permanent
 
-- **Statut** : Accepte
+- **Statut** : Accepte, **amende le 2026-08-18 (s15) : la premiere phrase du point 3 tombe, sa branche
+  conditionnelle devient l'etat de l'application, et le cout que j'y avais chiffre est du**
 - **Date** : 2026-08-17
 - **Auteur** : theo-archi
 - **Sprint** : s14 (avis de faisabilite S14-1 ; contrat de controleur signale comme manquant par
@@ -14,6 +15,51 @@
     `LesReglesMordentTest.uneVueQuiFiltreLeCatalogueParNiveauEstRefusee` ;
   - `adapters/adapter-web/src/test/java/com/recreo/adapter/web/LeChoixDesJeuxNeVitPasDansLaVueTest.java`
     (le versant que le bytecode ne voit pas), avec son jeu fautif.
+
+> **Amendement du 2026-08-18 (s15) - le point 3 avait deux moities, une affirmation et une branche
+> conditionnelle. L'affirmation tombe ; la branche s'active ; et c'est moi qui avais ecrit les deux, avec
+> le prix de la seconde.**
+>
+> L'utilisatrice a rejoue l'increment et demande que **la puce pressee prenne une couleur** pour dire quel
+> niveau est choisi, et que cet etat **cesse quand le jeu demarre**. Elle est l'autorite au-dessus de la
+> squad et l'arbitrage ne se rediscute pas.
+>
+> **Clause par clause, ce qui tombe et ce qui survit.**
+>
+> - *"L'en-tete permanent ne porte aucun etat que le serveur ne peut pas rafraichir"*, et le corollaire
+>   *"l'etat filtre est annonce dans la zone echangee"* : **tombent**. C'etait le choix par defaut du
+>   point 3, pas un fait technique.
+> - *"Aucun echange htmx n'atteint l'en-tete"* : **survit, c'est un fait**, et c'est lui qui gouverne tout
+>   le reste. Il force la solution a se scinder en deux moities, parce que marquer une puce active et
+>   effacer cet etat au demarrage du jeu n'ont pas le meme besoin de rafraichissement.
+> - *"Si `nadia-prof` juge qu'un enfant a besoin de voir dans l'en-tete sur quel niveau il est, alors - et
+>   seulement alors - chaque appui sur une puce devient un rendu de document complet, sans echange htmx.
+>   Le cout est nomme : un chargement de page a chaque changement de niveau."* : **cette branche est
+>   desormais l'etat de l'application**. Le declencheur a joue - depuis l'utilisatrice plutot que depuis
+>   `nadia-prof`, ce qui ne change rien a son contenu - et le cout que j'avais chiffre est du. **Le point 3
+>   n'a pas ete refute : sa branche minoritaire est devenue la majoritaire.**
+> - **Point 4, *"le niveau demande voyage dans l'URL, jamais dans un attribut de session"* : survit
+>   entierement.** L'etat actif est calcule au rendu depuis la variable de chemin, jamais conserve.
+>   `DEC-0028`, `ADR-0019` et `AccesALEtatDeSessionTest` restent intacts, et c'est ce qui rend cet
+>   amendement peu couteux.
+> - **Points 1 et 2 : intacts.** La selection vit toujours derriere le port entrant, et le point d'entree
+>   reste une route - c'est meme cette route qui porte desormais l'etat actif, donc le point 2 est ce qui
+>   rend la voie retenue possible.
+>
+> **Les deux voies que le point 3 ecartait restent ecartees, et l'une pour un motif aggrave.** La regle CSS
+> par niveau contredit toujours `ADR-0006` frontalement. `hx-swap-oob` est pire qu'en s14 : le garde-fou
+> d'`ADR-0020` reimplemente `hx-swap="innerHTML"` en posant le fragment **dans** la zone, donc un en-tete
+> hors bande y serait assemble imbrique, et le document assemble est desormais la matiere des quatre
+> clauses d'`ADR-0038`, de l'appariement d'`ADR-0017` et de la clause D. Un assemblage faux les
+> corromprait toutes en restant vert.
+>
+> **Ce que cet amendement n'ouvre pas** : la forme contractuelle du masquage d'`ADR-0022` **n'est pas
+> elargie**. La regle qui neutralise l'apparence active sur un ecran de jeu ne masque rien et ne doit pas
+> etre lue comme un masquage : trois garde-fous lisent `masquages()` en y cherchant ce qui est invisible,
+> et y faire entrer une neutralisation d'apparence leur ferait calculer un document faux en restant verts.
+>
+> Le mecanisme retenu, ses deux moities, les deux clauses dues au lot et le releve sont dans
+> `squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-etat-actif.md`.
 
 ## Contexte
 

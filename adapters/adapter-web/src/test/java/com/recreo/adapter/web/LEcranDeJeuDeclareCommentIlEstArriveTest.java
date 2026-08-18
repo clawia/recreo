@@ -675,8 +675,23 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
     }
 
     /**
-     * Le corpus distingue bien deux populations. Sans cette assertion, une erreur de detection de
-     * document complet - tout classe du meme cote - rendrait l'une des deux clauses vide sans le dire.
+     * Le corpus distingue bien deux populations. Sans les deux premieres assertions, une erreur de
+     * detection de document complet - tout classe du meme cote - rendrait l'une des deux clauses
+     * vide sans le dire.
+     *
+     * <p><b>S15, amendement d'ADR-0044 point 3 ("un seul rang, une couleur sur la puce choisie") :
+     * la troisieme assertion se retourne, elle ne se retire pas.</b> Motif ecrit, exige par
+     * ADR-0013 : elle affirmait que les documents complets etaient exactement ceux dont le nom
+     * commence par "accueil", c'est-a-dire GET / seule. La puce de niveau perd son hx-get et ne
+     * garde que son href (theo-archi,
+     * squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-etat-actif.md, section 1.1) :
+     * GET /niveaux/{niveau} rend desormais lui aussi un document complet, sur ses deux branches -
+     * la liste filtree et la confirmation ouverte par une puce - puisque c'est ce rendu complet qui
+     * permet de marquer la puce active par la donnee. Une assertion qui n'enumere aucun nom
+     * d'ecran, gardant la meme propriete pour la meme raison : un navigateur ne charge un document
+     * complet que sur une route qu'il peut atteindre par une navigation simple, une methode GET,
+     * jamais un POST qui reste echange par htmx. Elle survit telle quelle a une troisieme route GET
+     * qui rendrait un document complet demain.</p>
      */
     @Test
     void leCorpusPorteALaFoisDesDocumentsCompletsEtDesFragments() throws Exception {
@@ -684,9 +699,10 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
 
         assertThat(reponses).anyMatch(Reponse::documentComplet);
         assertThat(reponses).anyMatch(reponse -> !reponse.documentComplet());
-        assertThat(reponses.stream().filter(Reponse::documentComplet).map(Reponse::nom).toList())
-                .as("les documents complets sont ceux que le navigateur charge, et eux seuls")
-                .allMatch(nom -> nom.startsWith("accueil"));
+        assertThat(reponses)
+                .as("un document complet est rendu exactement sur les routes GET, jamais sur un "
+                        + "POST qui reste echange par htmx")
+                .allMatch(reponse -> reponse.documentComplet() == reponse.route().startsWith("GET "));
     }
 
     /**

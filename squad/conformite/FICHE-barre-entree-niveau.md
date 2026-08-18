@@ -3,7 +3,22 @@
 - **Increment** : deux boutons d'entree par niveau (CP / CM1) dans l'en-tete de recreo, toujours
   visibles y compris sur un ecran de jeu, story `S14-1` (`docs/backlog/backlog.md`, section
   "Sprint 14").
-- **Statut global** : **Done pedagogique de S14-1 et de S14-2 prononce le 2026-08-17 par
+- **Statut global au 2026-08-18** : **Done pedagogique de S15-1, S15-2 et du troisieme arbitrage
+  prononce par `nadia-prof` : VALIDE SOUS RESERVE**, sur l'increment fusionne (`b109f98`), apres
+  l'avoir joue. L'increment applique quatre arbitrages de l'utilisatrice, dont deux defont des
+  decisions que j'avais rendues (BARRE-7 defaite, BARRE-9 annulee, le compte de BARRE-3 annule) : **ces
+  arbitrages ne se rediscutent pas et je ne les rediscute pas**, je juge ce qui est livre et j'ecris ce
+  qu'il coute. Il **ferme trois defauts** - le survol qui effacait tous les boutons du depot
+  (`ADR-0046`, defaut vu par l'utilisatrice et que l'outillage de ce depot ne peut pas voir), ma
+  reserve **S14-A**, et la seconde moitie de ma reserve **S14-B** (le chemin vers les onze jeux
+  existe). **Reserve neuve S15-C** : rien ne distingue plus, a l'oeil, le bouton qui montre tout de
+  ceux qui filtrent.
+- **Arbitrage prealable du 2026-08-18 rendu dans le meme geste**, sur les deux demandes neuves de
+  l'utilisatrice : **variante 1 d'`ines-design` (flex simple) RETENUE**, variante 2 (groupe insecable)
+  **REFUSEE** pour son debordement de page entiere ; **etat actif plein contre contour ACCEPTE sous
+  condition** ; **sept conditions bloquantes S15-1 a S15-7** et six refus nommes. Detail au bloc de
+  validation.
+- **Done pedagogique de S14-1 et de S14-2 prononce le 2026-08-17 par
   `nadia-prof` : VALIDE SOUS RESERVE**, sur l'increment corrige (`23267ea`), apres l'avoir rejoue.
   **Les neuf conditions BARRE-1 a BARRE-9 sont tenues**, remesurees une par une. Deux reserves
   nommees, non bloquantes : **S14-A**, une bande sombre vide de 16 px sur les deux ecrans exclusifs ;
@@ -37,9 +52,12 @@
   "CM1" au garde-fou de texte accentue (`yanis-qa`) - **jugee legitime, avec sa frontiere ecrite, et le
   trou du garde-fou a fermer avant s15** ; et le residu de 11 mutations sur 121 qu'`ADR-0045` laisse
   sans automate (`theo-archi`) - **pris, sous deux clauses verifiables N-1 et N-2**.
-- **Derniere mise a jour** : 2026-08-17 (Done pedagogique de S14-1 et S14-2 prononce VALIDE SOUS
-  RESERVE apres correction ; le refus du meme jour et l'arbitrage prealable du meme jour sont
-  inchanges et lisibles sous lui).
+- **Releves de mesure du 2026-08-18** : `squad/conformite/releves-s15/`, sept captures a 360 px et au
+  pli de 640 px, memes noms d'ecran que les series `barre-`, `livre-` et `corrige-` de s14, pour que la
+  comparaison se fasse image contre image sur quatre etats successifs du meme produit.
+- **Derniere mise a jour** : 2026-08-18 (Done pedagogique de S15-1, S15-2 et du troisieme arbitrage
+  prononce VALIDE SOUS RESERVE ; arbitrage prealable rendu sur les deux demandes neuves ; tous les
+  verdicts anterieurs, dont le refus du 2026-08-17, sont inchanges et lisibles sous eux).
 
 ## Competences visees
 
@@ -70,7 +88,377 @@ Cette story n'ouvre, ne ferme et ne rejuge aucune ligne de `squad/programme/MATR
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. Il reste vide tant qu'aucun
 > arbitrage prealable n'a ete rendu et qu'aucun increment n'a ete livre et joue.
 
-### Done pedagogique du 2026-08-17 (s14), second verdict du jour - le refus est LEVE : S14-1 et S14-2 sont VALIDE SOUS RESERVE - le plus recent de cette fiche
+### Arbitrage prealable du 2026-08-18 (s15) - rang unique et etat actif de la puce : variante 1 retenue, sept conditions - le plus recent de cette fiche
+
+> **Ce que cette section fait.** Elle repond aux cinq questions d'`ines-design`
+> (`squad/sprints/s15-la-sortie-vit-dans-l-en-tete/proposition-ines-etat-actif-et-rang-unique.md`,
+> section 3) **avant tout code**, sur deux demandes que l'utilisatrice a deja tranchees dans leur
+> principe (un seul rang, une couleur sur la puce choisie). Elle ne rouvre ni l'un ni l'autre de ces
+> principes. Elle n'est **pas un Done pedagogique** : celui du lot a venir sera prononce en jouant.
+
+#### 1. Reponse a la question 1 - variante 1, et le motif est le meme que celui de mon refus de s14
+
+**Variante 1 (flex simple) RETENUE. Variante 2 (groupe insecable) REFUSEE.**
+
+Je suis la recommandation d'`ines-design` et je donne le motif qui, de mon cote, la rend
+non-negociable : **le mode de panne de la variante 2 est celui que j'ai deja refuse le 2026-08-17.**
+Sous 346 px, elle rend une partie de "CM1" **inatteignable sans un geste de defilement horizontal
+qu'aucun autre ecran de cette application ne demande**. C'est mot pour mot ce que j'ai refuse en s14
+sur la variante a defilement de la barre de niveaux, et pour les memes deux raisons : un enfant de CP
+ne devine pas un geste que rien ne lui a appris, et un debordement de page entiere est un defaut que
+ce depot traite deja comme bloquant ailleurs. **Je ne l'accepte pas ici parce que le seuil est sous le
+plancher accepte : un plancher est une garantie, pas une frontiere au-dela de laquelle le produit peut
+devenir inutilisable.**
+
+Le mode de panne de la variante 1 - "CM1" change de voisin - est **visible, reversible, et ne coute
+aucune fonction** : les deux puces restent entieres, lisibles et pressables. Un mauvais groupement se
+lit ; un bouton coupe hors champ ne se lit pas.
+
+**Et je note le chiffre qui va dans le meme sens, sans qu'il decide** : la variante 1 repliee a 360 px
+mesure **143 px contre 151 px aujourd'hui**, soit **8 px rendus au budget du pli**. Je l'accepte comme
+un bonus et non comme un argument - si elle avait coute 8 px, ma reponse serait la meme.
+
+**Je credite en outre la correction de chiffre d'`ines-design`** : le seuil du rang unique complet est
+**470 px** et non 420 px. Elle corrige une estimation qui avait ete donnee a l'utilisatrice, elle le
+dit explicitement, et elle donne la methode qui l'etablit. C'est exactement la facon de faire que
+j'attends, et c'est la deuxieme fois de ce sprint que je vois un chiffre corrige par son propre auteur.
+
+#### 2. Reponse a la question 2 - le report du plein/contour est valide, mais sous une condition qui le rend sur
+
+**Ma reponse : oui, ce report tient - a une condition, et c'est elle qui fait la difference entre une
+forme sure et une forme ambigue.**
+
+`ines-design` nomme elle-meme le risque, et elle a raison de le nommer : dans cette application,
+**"plein" a toujours voulu dire "c'est ce qu'il faut presser"** (`.demarrer`, `.continuer-partie`,
+`.proposition`) et "contour" a toujours voulu dire "secondaire, ou sortie". Lui faire dire, en plus,
+"c'est ce qui est deja choisi" ajoute un second sens a un code visuel qui n'en avait qu'un. Or ma
+regle sur ce produit est constante : **un code, un sens** - c'est pour cela que j'ai impose un seul mot
+de sortie, et que j'ai refuse un second vocabulaire pour une meme destination.
+
+**Deux faits me font accepter quand meme, et je les donne dans l'ordre de leur poids.**
+
+1. **La couleur du plein n'est celle d'aucune action.** L'aplat des actions est
+   `--recreo-accent` ; la puce active serait **blanche**. `ines-design` a d'elle-meme ecarte le
+   remplissage a `--recreo-accent` parce qu'il aurait donne a la puce l'exacte apparence du bouton
+   "Jouer" visible sur le meme ecran. **Je confirme cet ecart et j'en fais un refus** (voir le 6) :
+   c'est le point qui empeche la confusion, et il ne doit pas se perdre.
+2. **Et surtout : le seul enfant qui voit une puce pleine est celui qui vient de la presser.** C'est ma
+   condition **S15-5**. Un enfant ne "tombe" jamais sur un etat plein qu'il n'a pas produit : le plein
+   est alors la confirmation immediate de son propre geste, jamais une invitation a en faire un
+   nouveau. C'est la meme mecanique que j'ai creditee le 2026-08-17 pour R-BARRE-3 - une reponse
+   immediate a l'appui de l'enfant est le retour le plus lisible qui existe a six ans.
+
+**Sans la condition S15-5, ma reponse serait non.** Un enfant qui arriverait devant une liste deja
+filtree, avec une puce pleine qu'il n'a pas produite, aurait toutes les raisons de lire ce plein comme
+"presse-moi" - et il presserait une puce qui ne changerait rien, ce qui est le defaut de PORTE-1 sous
+une autre forme.
+
+#### 3. Reponse a la question 3 - l'extinction silencieuse suffit, et elle est meme obligatoire
+
+**Oui, l'extinction silencieuse suffit**, et je reprends les trois motifs d'`ines-design`, qui sont
+justes, sans en ajouter : le changement d'ecran est deja un signal massif, l'enfant regarde la zone de
+jeu et pas l'en-tete, et une extinction manquee ne lui fait tirer aucune conclusion fausse. **Rien a
+animer**, et je le pose en refus (voir le 6) : je n'ouvre pas une troisieme surface animee sur ce
+produit pour un detail que personne ne fixe.
+
+**Je vais plus loin qu'elle sur un point, et c'est une condition** : l'extinction n'est pas seulement
+acceptable, elle est **due**. Pendant une partie, une puce de niveau **n'est plus un filtre** : c'est
+une porte, et l'appuyer ouvre l'ecran de confirmation. Une puce qui resterait pleine pendant une
+partie dirait "voici ton niveau" a un enfant dont l'appui **abandonnerait sa partie**. C'est **S15-4**.
+
+#### 4. Reponse a la question 4 - le filtre ne survit pas, ni a une partie, ni a un chargement de page
+
+**Ce qu'un enfant attend, et c'est la question qu'on me pose** : un enfant de six ans qui arrive
+devant la machine attend de voir **tous** les jeux. Il n'a aucun moyen de savoir qu'un filtre a ete
+pose avant lui - par lui la veille, ou par un frere de CM1 dix minutes plus tot - et un etat qu'il n'a
+pas choisi et qu'il ne peut pas expliquer est exactement ce que je refuse depuis le debut de ce
+produit. Un enfant de CP qui trouverait cinq jeux de CM1 en arrivant conclurait que ses jeux ont
+disparu.
+
+**Donc : pas de persistance.** Le filtre vit le temps de la navigation qui l'a produit ; une sortie de
+partie et un chargement de page repartent sur le catalogue complet. Cela **coincide** avec ce que ce
+produit est deja (`DEC-0028` : rien ne survit a une session) et cela **fonde** la condition S15-5 qui
+rend le plein sur : les deux reponses tiennent ensemble et je les ai voulues ensemble.
+
+Je note pour `camille-po`, a qui la question est aussi posee : **ma reponse ne lui retire rien**. Si
+elle voulait la persistance, elle devrait d'abord me faire lever S15-5, et j'ai dit au 2 pourquoi je ne
+le ferais pas sans autre chose a la place.
+
+#### 5. Reponse a la question 5 - la phrase au-dessus de la liste est due, meme si la couleur est livree
+
+C'est ici que je ne suis pas `ines-design` : elle presente la phrase comme un **repli** si je refuse la
+couleur. **Je ne refuse pas la couleur, et je demande la phrase quand meme.** Trois raisons.
+
+1. **Les deux ne disent pas la meme chose.** La phrase dit **ce qui est montre** ; la puce pleine dit
+   **quel bouton l'a produit, donc comment en changer**. Un enfant qui se demande pourquoi il y a six
+   jeux a besoin de la premiere ; un enfant qui veut l'autre niveau a besoin de la seconde.
+2. **La couleur seule demande une inference que je ne garantis pas a six ans** : relier l'apparence
+   d'un bouton en haut de l'ecran a la longueur d'une liste en dessous. La phrase, elle, **le dit**.
+   C'est le meme raisonnement que M11 sur le retour juste/faux : le signal non textuel accompagne le
+   texte, il ne le remplace pas.
+3. **La phrase est la seule des deux qui soit certaine d'arriver.** Et c'est le point technique qui
+   decide : la phrase vit dans le fragment que la route rend deja a chaque appui, **donc elle apparait
+   au moment ou l'enfant presse**. La puce, elle, vit dans l'en-tete, que `DEC-0012` et `ADR-0044`
+   point 3 mettent hors de portee d'un echange qui ne remplace que la zone de jeu. **Si `theo-archi`
+   refuse le mecanisme hors bande, l'etat actif n'apparaitra jamais au moment ou il servirait** - il ne
+   serait vu qu'apres un chargement complet de page, c'est-a-dire jamais, puisque le seul chemin vers
+   un filtre est l'appui sur une puce. C'est ma condition **S15-3** : je n'accepte pas un etat actif
+   qui n'apparait pas dans la reponse a l'appui qui le cause.
+
+**Le libelle, que je tranche parce que c'est du texte lu par un enfant : "Pour le CP" et "Pour le
+CM1".** Trois mots, chacun accessible en debut de CP, et il repond exactement a la question que la
+liste raccourcie pose. **J'ai ecarte la forme "Jeux pour le CP" et toute forme contenant "Les jeux"
+pour une raison que je verifie sur ma propre condition** : BARRE-5 exige que le mot "Les jeux"
+n'apparaisse **au plus qu'une fois par ecran**, et l'en-tete le porte deja sur le bouton de sortie. Une
+phrase qui le repeterait me mettrait en contradiction avec ma propre barre, et je prefere changer le
+libelle plutot que d'amender la barre apres coup.
+
+**Consequence sur R-BARRE-3 / S14-B** : cette phrase est ce qui la ferme. Je ne la leve pas
+aujourd'hui - rien n'est encore code - mais **je dis d'avance ce qui la levera** : la phrase, seule,
+suffit ; la couleur, seule, ne suffit pas. Et la bascule que j'avais datee au 2026-08-17 ("des qu'un
+second axe de filtre s'ajoutera") reste ecrite telle quelle : avec deux axes, la phrase devra nommer
+les deux.
+
+#### 6. Mes sept conditions bloquantes pour le lot a venir
+
+Elles decrivent ce que l'enfant doit voir ; les moyens appartiennent a `theo-archi`.
+
+- **S15-1. Variante 1, et rien ne deborde du document a aucune largeur.** Verification, et c'est la
+  methode d'`ines-design` que je reprends parce qu'elle est meilleure que la mienne sur ce point :
+  `document.documentElement.scrollWidth` compare a `clientWidth` **a 300, 320, 345, 346, 360 et
+  470 px**, la valeur ecrite dans la page puis capturee par `outils/mesurer-rendu.sh <largeur> <url>
+  <png>`. **Zero px de debordement partout**, y compris sous le plancher accepte. Une capture seule ne
+  suffit pas ici : elle decoupe silencieusement a la largeur demandee et masque le defaut, `ines-design`
+  l'a etabli et je le reprends.
+- **S15-2. La phrase qui nomme le filtre est due, et elle est due meme sans l'etat actif.** "Pour le
+  CP" ou "Pour le CM1", au-dessus de la liste, dans le fragment echange. **Verification : capture a
+  360 px de la liste filtree, la phrase presente et lisible au-dessus du premier bouton de jeu.**
+- **S15-3. Si l'etat actif est livre, il apparait dans la reponse a l'appui qui le cause.** Un etat
+  actif qui n'existe qu'apres un chargement complet de page n'est pas livre, il est decoratif.
+  **Verification : appuyer sur une puce depuis l'accueil et constater que cette puce a change
+  d'apparence sans avoir recharge la page.**
+- **S15-4. Aucune puce ne porte l'etat actif sur un ecran ou l'appuyer ouvrirait la confirmation.**
+  Donc sur aucun etat de manche. **Verification : capture a 360 px d'une manche fraiche, aucune puce
+  pleine a l'image.**
+- **S15-5. Aucun enfant ne voit un etat actif qu'il n'a pas produit.** Le filtre ne survit ni a une
+  sortie de partie, ni a un chargement de page. **Verification : charger la page apres une partie
+  jouee depuis une liste filtree, et constater le catalogue complet et aucune puce pleine.**
+- **S15-6. La colonne de contenu d'un ecran de jeu ne commence jamais par une porte.** C'est la seule
+  forme de BARRE-3 qui survit aux arbitrages (voir le verdict ci-dessous), et **elle est tenue
+  aujourd'hui** : cette condition est donc une non-regression, pas une demande neuve. **Verification :
+  capture a 360 px d'une manche fraiche, la premiere bande de texte sous l'en-tete est le score.**
+- **S15-7. Le lot ne coute pas plus de hauteur qu'il n'en annonce.** En-tete a **143 px au plus** a
+  360 px, la valeur qu'`ines-design` a mesuree pour la variante 1. **Verification : capture a 360 px,
+  bandes relevees a la colonne.** Motif : ma reserve sur le pli vient de perdre 22 px depuis s14 (voir
+  le verdict), et les 8 px que cette variante rend sont les seuls qui reviennent.
+
+#### 7. Ce que je refuse, nommement, pour que cela ne revienne pas par la fenetre
+
+1. **La variante 2** (debordement de page entiere sous 346 px).
+2. **Un etat actif porte par la couleur seule.** Et je precise la barre que `theo-archi` a eu raison de
+   nommer sans la fixer : **un contour de 0,0625rem ne me convient pas**. Sa clause garantit qu'un
+   second canal existe ; ce que je demande est qu'il **se voie**, et le seul que je valide aujourd'hui
+   est **le plein contre le contour**. Un autre porteur non chromatique m'est proposable, il n'est pas
+   pre-accepte.
+3. **Le remplissage de la puce active a `--recreo-accent`.** `ines-design` l'a ecarte ; j'en fais un
+   refus pour que ce ne soit pas rediscute : ce serait l'exacte apparence du bouton "Jouer" affiche sur
+   le meme ecran.
+4. **Toute animation ou transition sur l'allumage ou l'extinction de l'etat actif.**
+5. **La persistance du filtre** entre deux sessions ou apres une sortie de partie.
+6. **Un pictogramme, un disque ou une coche dans la puce** - BARRE-4 du 2026-08-17, inchangee. Le
+   porteur non chromatique est l'aplat, pas un symbole de plus a apprendre.
+
+#### 8. Ce dont je reste la seule garde sur ce lot
+
+- **Que le plein soit lu comme "deja choisi" et non comme "presse-moi".** Aucun automate ne le mesure,
+  ma condition S15-5 le rend probable, **elle ne le prouve pas**. C'est le point que je rejugerai en
+  jouant, et c'est celui ou je peux encore refuser le lot livre.
+- **Que "Pour le CP" soit lu et comprise** par un enfant qui commence a dechiffrer.
+- **Le budget du pli et l'absence de debordement**, que je suis seule a pouvoir mesurer sur ce poste.
+- **Que trois boites de meme apparence dans le meme en-tete ne se confondent pas** - voir la reserve
+  S15-C du verdict ci-dessous, que ce lot est justement en position de fermer.
+
+### Done pedagogique du 2026-08-18 (s15) sur S15-1, S15-2 et le troisieme arbitrage - VALIDE SOUS RESERVE
+
+> **Ce que cette section fait.** Elle juge l'increment fusionne a `b109f98`, qui applique **quatre
+> arbitrages successifs de l'utilisatrice**, dont deux defont des decisions que j'avais rendues. **Ces
+> arbitrages ne se rediscutent pas et je ne les rediscute pas** : ils viennent de l'autorite au-dessus
+> de la squad, qui a joue le produit et lu mes motifs. Ce qui m'appartient est de juger **ce qui est
+> livre**, et de dire ce que cela coute a un enfant pour que ce soit ecrit. Mes refus anterieurs
+> restent lisibles en dessous, non effaces.
+
+- **Verdict** : **VALIDE SOUS RESERVE**. Done pedagogique prononce sur **S15-1**, **S15-2** et le
+  troisieme arbitrage (la sortie permanente pendant une manche). **Motif, en deux phrases** :
+  l'increment applique fidelement les quatre arbitrages, et il **ferme trois defauts** - le survol qui
+  effacait tous les boutons du depot, ma reserve S14-A, et l'impossibilite d'atteindre le catalogue
+  complet depuis une liste filtree. Ce qu'il coute a un enfant - **trois portes de meme apparence lues
+  avant l'enonce** et une boite qui rend encore un ecran identique sur l'accueil non filtre - decoule
+  de decisions qui ne sont pas celles de l'equipe, et je l'inscris comme **defait par arbitrage**,
+  jamais comme un motif contre le lot.
+- **Auteur** : nadia-prof. **Increment juge** : `round-two` a `b109f98`, worktree `s15-nadia`,
+  lignee verifiee par `outils/verifier-lignee.sh`, aucun fichier de production modifie de mon fait.
+- **Porte technique, verifiee par mes propres commandes** : `bash outils/mvn-jdk21.sh -B clean verify`,
+  **BUILD SUCCESS, 523 tests, 0 echec** ; `bash .github/scripts/verifier-chemins.sh` en code 0.
+
+#### 0. Comment j'ai joue, et ce que je declare degrade
+
+Meme methode que les deux verdicts precedents, pour que les chiffres se comparent : jar reconstruit sur
+le JDK de la toolchain 21, application servie sur un port a moi, parties ouvertes par requetes HTTP
+reelles, etat echange obtenu en rejouant cote serveur le remplacement que htmx fait cote navigateur.
+**Serveurs arretes par leur PID reel.** Sept captures dans `squad/conformite/releves-s15/`, par
+
+```
+outils/mesurer-rendu.sh 360 <url> <png> 640
+```
+
+**Les gestes que j'ai reellement faits**, parce que c'est ce qui a produit les faits du 2 : presser
+"Les jeux" depuis l'accueil non filtre ; presser "Les jeux" depuis la liste filtree sur CP ; presser
+"Les jeux" pendant une manche puis verifier que la partie est intacte ; presser CP puis CM1 ; ouvrir la
+confirmation depuis une puce ; provoquer l'ecran d'erreur ; jouer une partie jusqu'a "C'est fini !".
+
+**Ce que je declare degrade.**
+
+- **Je n'ai pas survole les boutons.** La fermeture du defaut de survol (`ADR-0046`) est **lue dans la
+  feuille** - les etats `:hover` et `:active` reprennent les valeurs du repos - et non constatee sous
+  un pointeur : `outils/mesurer-rendu.sh` capture, il ne survole pas. C'est le seul moyen que le depot
+  me donne, et je ne peux donc **pas** confirmer par la mesure le defaut que l'utilisatrice a vu ni sa
+  correction. Je la credite sur la lecture de la regle, en le disant.
+- **Je n'ai pas presse la touche de tabulation**, donc l'ordre des arrets reste lu dans le document.
+- **Je n'ai pas joue au doigt sur un telephone**, ni observe un enfant : la question de savoir si un
+  enfant de CP distingue trois boites de meme apparence reste **sans reponse mesurable**, et c'est
+  precisement la reserve S15-C.
+- **Un seul item echantillonne** pour le pli, le meme que les deux fois precedentes.
+
+#### 1. Ce que l'increment ferme, et je le mets avant le reste parce que c'est le plus important
+
+1. **Un defaut que je n'avais pas pu voir, et qui touchait tous les boutons du depot.** La feuille
+   tierce declarait `:hover` sur `.btn` a une specificite superieure a celle des regles maison : sous
+   le pointeur, un bouton perdait son contour et son texte. **Je n'aurais pas pu le trouver** -
+   l'outil de mesure de ce depot capture une page, il ne survole rien - et c'est l'utilisatrice qui
+   l'a vu en jouant. `ADR-0046` le ferme en **forme neutre**, c'est-a-dire que rien ne change sous le
+   pointeur. **C'est le bon choix et je le dis** : ce produit n'a jamais eu de retour visuel transitoire
+   au geste, et lui en ajouter un aurait cree un vocabulaire de plus. Je note pour la trace que **ce
+   defaut a traverse quinze sprints et une CI verte**, et qu'il ne se voyait ni dans une capture ni
+   dans un test - c'est le cinquieme defaut visible par un enfant qui echappe a tout ce que ce depot
+   sait mesurer.
+2. **Ma reserve S14-A est fermee, et je le verifie plutot que de le croire.** La bande sombre du second
+   rang a disparu : mesure a la colonne x = 180, l'en-tete de l'accueil et de la manche est **une seule
+   bande `#1d4b6b` de y 0 a 150**, sans aucun fond propre au rang des puces. Le residu de 16 px vides
+   qui subsistait sur la confirmation et sur l'erreur ne se distingue plus de rien. **Reserve S14-A :
+   LEVEE.**
+3. **La seconde moitie de ma reserve R-BARRE-3 / S14-B est fermee, et par un chemin que je n'avais pas
+   vu.** Je reprochais qu'"rien ne dit comment revoir les onze jeux". **Mesure en jouant : depuis la
+   liste filtree sur CP, presser "Les jeux" rend les onze jeux.** La sortie d'en-tete est devenue le
+   chemin de retour au catalogue complet, et elle est visible en permanence. Je n'avais pas anticipe
+   que le retour du lien que j'avais fait retirer fermerait une de mes propres reserves ; **je
+   l'inscris parce que c'est vrai**, et cela reduit S14-B a sa premiere moitie (rien ne dit **pourquoi**
+   la liste a raccourci), que l'arbitrage ci-dessus met en condition S15-2.
+
+#### 2. Ce que l'increment coute, et qui est defait par arbitrage et non par negligence
+
+**Trois portes de meme apparence sont lues avant l'enonce, sur tout ecran de manche.** Capture
+`s15-3-manche-360x640.png` : de haut en bas, "Les jeux" en haut a droite, puis "CP" et "CM1" a gauche,
+puis le score, la consigne, l'enonce. C'est le constat que j'ai fait le 2026-08-07, redit le
+2026-08-14, et dont j'ai refuse le triplement le 2026-08-17. **Il est aujourd'hui defait par deux
+arbitrages, et l'un des deux est le mien** - les puces viennent de l'arbitrage prealable que j'ai rendu
+en s14. Je n'en fais donc pas un motif ; je l'inscris.
+
+**Et je dis ce que l'unification d'apparence change, en credit comme en risque, parce que ma propre
+preference est ici contredite.** Mon arbitrage de s14 demandait "une bande plus sombre" pour que les
+puces ne se confondent pas avec la sortie. L'arbitrage B l'annule, et **il y a un argument reel de son
+cote que je dois reconnaitre** : pendant une partie, les trois boutons ont desormais **la meme
+consequence exacte** - les trois ouvrent le meme ecran de confirmation, verifie en jouant les trois.
+Trois boites de meme apparence pour trois gestes de meme consequence est **coherent**, et c'est plus
+coherent que ce que je demandais. Sur l'accueil, les trois forment aussi une famille : "tout", "CP",
+"CM1", trois facons de dire ce que la liste montre. **Le risque residuel est ailleurs** et il est reel :
+rien ne distingue plus, a l'oeil, le bouton qui montre tout de ceux qui filtrent. C'est la reserve
+S15-C, et le lot que je viens d'arbitrer est justement celui qui peut la fermer.
+
+**Une boite rend encore un ecran identique a celui qui l'affiche, mais dans un seul cas sur deux.**
+Verifie en jouant : depuis l'accueil **non filtre**, presser "Les jeux" rend les onze memes jeux -
+c'est le defaut de PORTE-1, que `DEC-0033` avait ferme et que `DEC-0034` rouvre en connaissance de
+cause. Mais depuis l'accueil **filtre**, la meme boite rend les onze jeux **alors que six etaient
+affiches** : elle repond. Le defaut est donc **strictement plus etroit qu'avant s14** : il ne subsiste
+que sur l'ecran d'arrivee. **BARRE-7 est defaite par arbitrage** ; je note que ce qui la motivait -
+l'enfant apprend d'un voisin qu'un bouton ne repond pas - est desormais **a moitie vrai** au lieu
+d'etre vrai.
+
+**Le budget du pli recule de 9 px de plus.** Sur l'item "Décompose 305 421 en valeurs de position.",
+haut du cabinet mesure a la colonne x = 180 : **y = 397** avant s14, **y = 410** apres s14, **y = 419**
+aujourd'hui. L'en-tete passe de 142 a **151 px** parce que la sortie, plus haute que l'icone, gouverne
+desormais la hauteur du premier rang ; la sortie retiree de la zone de contenu ne rend rien, puisqu'elle
+etait **sous** les propositions. **151 px est exactement le plafond que BARRE-8 avait fixe** - la
+condition est tenue, au pixel, et il n'y a plus de marge. Les 8 px que la variante 1 rendra sont donc
+les seuls qui reviennent, et c'est pourquoi j'en fais la condition S15-7.
+
+#### 3. Etat de mes conditions apres ces quatre arbitrages
+
+| | Etat | |
+|---|---|---|
+| **BARRE-1** | **TENUE** | 2 boites pressables sur la confirmation (`s15-4`), en-tete a 92 px, puces et sortie masquees |
+| **BARRE-2** | **TENUE** | 1 boite pressable sur l'erreur (`s15-5`) |
+| **BARRE-3** | **compte ANNULE par arbitrage ; substance conservee** | voir le 4 |
+| **BARRE-4** | **TENUE** | les puces ne portent que leur texte |
+| **BARRE-5** | **TENUE** | "Les jeux" : accueil 1, manche 1, confirmation 1, erreur 0, fin de partie 1. Le second marqueur `ecran-porte-sa-sortie` est ce qui l'assure sur la fin de partie et sur la confirmation, et il le fait proprement |
+| **BARRE-6** | **TENUE** | les trois boutons ont desormais les memes composantes de boite, donc aucun ne depasse une action |
+| **BARRE-7** | **DEFAITE par arbitrage** (`DEC-0034`), residu reduit a l'accueil non filtre |
+| **BARRE-8** | **TENUE, sans marge** | 151 px, exactement le plafond |
+| **BARRE-9** | **ANNULEE par arbitrage** (arbitrage A) |
+
+#### 4. BARRE-3 et la clause derivee que `theo-archi` me propose - ma reponse
+
+**Je constate avec lui que le compte est mort, et je ne fais pas semblant de le garder.** Trois portes
+avant l'enonce, dont deux que j'ai moi-meme accordees : une condition qu'on ne peut plus tenir sans
+defaire un arbitrage n'est plus une condition, c'est un souhait. **Le compte de BARRE-3 est annule, et
+je l'ecris ici pour que personne ne le ressorte contre un lot futur.**
+
+**Ce que je garde, et c'est la formulation que j'avais deja corrigee le 2026-08-17** : *"la colonne de
+contenu d'un ecran de jeu ne commence jamais par une porte"*. Elle est **tenue aujourd'hui** - la
+colonne d'une manche commence par le score - et elle devient la condition **S15-6** du lot suivant, en
+non-regression. Ce n'est pas une barre neuve : c'est le meme texte, deja ecrit, deja date.
+
+**Sur sa clause derivee - "sur une manche fraiche, le point de focus declare est l'enonce" - ma reponse
+est : je la prends, et NON, elle ne remplace pas BARRE-3.** `theo-archi` a raison sur les deux points
+et je le suis exactement :
+
+- **Je la prends** parce qu'elle garde quelque chose de reel : elle garantit que **ce que le serveur
+  designe** a l'arrivee sur une manche est la question, jamais une porte. C'est une propriete que rien
+  ne garde aujourd'hui et qu'un automate peut garder. **Qu'il l'ecrive.**
+- **Elle ne remplace rien**, parce qu'un point de focus et un ordre de lecture ne s'adressent pas au
+  meme enfant. Le focus gouverne l'enfant qui navigue au clavier ou qui ecoute ; **l'ordre de lecture
+  gouverne l'oeil**, et un oeil qui descend une page rencontre les trois portes avant l'enonce quoi que
+  le focus declare. **Aucune clause de focus ne protege cela**, et personne ne doit lire celle-ci comme
+  si elle le faisait. Il a eu raison de refuser de la presenter comme un equivalent, et j'aurais refuse
+  qu'il le fasse.
+
+#### 5. Mes reserves, dont une neuve
+
+- **S14-A** : **LEVEE**, mesuree (voir le 1).
+- **S14-B / R-BARRE-3** : **reduite a sa premiere moitie**. Le chemin vers les onze jeux existe
+  desormais ; ce qui manque est de dire **pourquoi** la liste a raccourci. **Non bloquante**, et
+  l'arbitrage ci-dessus en fait la condition S15-2. Sa bascule datee du 2026-08-17 (un second axe de
+  filtre) reste inchangee.
+- **Reserve S15-C, neuve et datee du 2026-08-18** : **rien ne distingue plus, a l'oeil, le bouton qui
+  montre tout de ceux qui filtrent.** Trois boites de meme apparence dans le meme en-tete, dont l'une
+  a un role different des deux autres sur l'accueil. **Non bloquante** - la coherence des consequences
+  pendant une partie compense en partie, et je n'ai aucun moyen de mesurer la confusion - mais c'est
+  une reserve **neuve**, pas un durcissement de l'arbitrage B : elle nait de l'unification que cet
+  arbitrage a voulue. Le lot que je viens d'arbitrer la ferme si S15-2 et S15-3 sont livrees.
+- **Reserve sur le pli** : la mienne du 2026-08-17 sur les grands nombres perd **9 px de plus**, soit
+  **22 px** depuis s14. Reste non bloquante et reste sur la fiche des grands nombres ; la condition
+  S15-7 est ce que je fais pour la contenir.
+
+#### 6. Ce que ce Done ne fait pas
+
+- **Il ne rediscute aucun des quatre arbitrages de l'utilisatrice**, et il n'en approuve aucun non plus :
+  il constate ce qui est livre et en nomme le cout.
+- **Il ne retire aucun de mes verdicts anterieurs**, qui restent lisibles en dessous - y compris le
+  refus du 2026-08-17, dont les deux motifs restent traites.
+- **Il ne leve ni F11, ni la reserve J, ni la reserve O seconde moitie.**
+- **Il ne prejuge pas le lot de s15** : les sept conditions de l'arbitrage ci-dessus sont a tenir, et un
+  increment qui les tiendrait toutes peut encore etre refuse pour ce que seul le rendu montre.
+
+### Done pedagogique du 2026-08-17 (s14), second verdict du jour - le refus est LEVE : S14-1 et S14-2 sont VALIDE SOUS RESERVE
 
 > **Ce que cette section fait.** Elle **leve le refus** que j'ai prononce quelques heures plus tot sur
 > cette meme fiche, apres avoir rejoue l'increment corrige par `marc-dev`. Elle **n'efface pas ce

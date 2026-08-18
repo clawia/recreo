@@ -72,10 +72,29 @@ h1 {
     padding: 1rem 0;
 }
 
+/* S15 (troisieme et quatrieme arbitrages de l'utilisatrice) : un seul rang plutot que deux
+   (variante 1 d'ines-design, retenue par nadia-prof - FICHE-barre-entree-niveau.md, arbitrage
+   prealable du 2026-08-18, section 1). flex-wrap: wrap est le seul garde-fou possible du mode de
+   defaillance a largeur insuffisante (theo-archi, exigences-theo-etat-actif.md, section 3) : le
+   rang passe a la ligne plutot que de deborder horizontalement, ce qui couperait des boutons hors
+   de l'ecran sans signal - c'est cette declaration-la, et non son effet, qui est gardable.
+   row-gap distinct de gap : la reforme d'ines-design gagne 8 px au budget du pli par rapport aux
+   deux <nav> empiles d'avant ce lot (151 px contre 143 px a 360 px, S15-7). */
 .entete-contenu {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 1rem;
+    row-gap: 0.5rem;
+}
+
+/* Pousse "Les jeux" a droite du rang, sur l'espace que flex-wrap laisse disponible - variante 1
+   d'ines-design (proposition-ines-etat-actif-et-rang-unique.md, section 1.1). Sous le plancher de
+   360 px, si la marge du groupe icone/titre/CP/CM1 est mangee, "CM1" change de voisin plutot que
+   de deborder (nadia-prof l'accepte, section 1 de son arbitrage) : ce mode de panne-la n'est pas
+   gardable par un automate (ADR-0028), seule la declaration qui l'y mene l'est. */
+.entete-contenu .lien-accueil {
+    margin-left: auto;
 }
 
 .icone-entete {
@@ -89,17 +108,16 @@ h1 {
     margin-right: auto;
 }
 
-/* DEC-0034 (s15) : .menu et .lien-accueil sont retablis a l'identique de leur forme d'avant s14
-   (relevee dans l'historique, cc68304) - S14-2 (BARRE-7, DEC-0033) les avait retires, l'utilisatrice
-   retablit le lien en connaissance de ce motif (voir accueil.html).
-   S15-3 (troisieme arbitrage de l'utilisatrice, 2026-08-18) : leur regle de masquage d'alors
+/* DEC-0034 (s15) : .lien-accueil est retabli a l'identique de sa forme d'avant s14 (relevee dans
+   l'historique, cc68304) - S14-2 (BARRE-7, DEC-0033) l'avait retire, l'utilisatrice le retablit en
+   connaissance de ce motif (voir accueil.html). ".menu", le <nav> qui l'enveloppait, disparait en
+   s15 avec la fusion du rang unique (ci-dessus) : .lien-accueil est desormais un enfant direct de
+   .entete-contenu, ce qui est ce qui rend "margin-left: auto" efficace pour le pousser a droite.
+   S15-3 (troisieme arbitrage de l'utilisatrice, 2026-08-18) : sa regle de masquage d'alors
    (body:has(.ecran-de-jeu) .lien-accueil), qui visait les quatre fragments de jeu a la fois, est
    retiree plus bas - c'est exactement ce que cet arbitrage annule, la sortie d'en-tete restant
    desormais visible pendant une manche. Deux regles plus ciblees la remplacent (exigences de
    theo-archi, squad/sprints/s15-la-sortie-vit-dans-l-en-tete/). */
-.menu {
-    display: flex;
-}
 
 /* S6-1 : le lien de menu quitte l'ecran en cours comme le bouton "Les jeux" (ADR-0017,
    data-role="sortie"), et reprend deliberement les memes composantes de boite que
@@ -687,39 +705,20 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
     border: 0.125rem solid var(--recreo-accent);
 }
 
-/* S14-1 (ADR-0043, ADR-0044) : second rang de l'en-tete, les points d'entree par niveau.
-   S14-2, correction du Done pedagogique refuse par nadia-prof (BARRE-1, BARRE-2) : cette barre
-   reste permanente sur l'accueil et sur les trois etats de manche (demande de l'utilisatrice,
-   non remise en cause), mais elle est masquee sur la confirmation avant abandon et sur l'ecran
-   d'erreur - voir la regle de masquage sous .chip-niveau, plus bas dans ce fichier.
-   DEC-0034 (s15, arbitrage B) : la bande sombre distincte (--recreo-cabinet-fond, contredisait
-   BARRE-9 - "les puces sont sur un second rang [...] sur une bande plus sombre") est retiree ;
-   les puces se lisent desormais sur le fond commun de l'en-tete (--recreo-entete-fond, herite de
-   .entete). Ceci ferme au passage la reserve S14-A de nadia-prof : le residu de bande vide de
-   16 px qui subsistait sur la confirmation et sur l'erreur (puces masquees, rembourrage de ce
-   conteneur seul) ne se distingue plus du bandeau qui le porte, faute de fond propre a exposer.
-   La disposition en un ou deux rangs des trois boutons n'est pas tranchee par cette decision : elle
-   revient a ines-design puis a nadia-prof (voir accueil.html, ou le rang de "Les jeux" et celui des
-   puces restent, pour l'instant, ceux d'avant s14 et de s14 respectivement).
-   S6-8 (LeConteneurTierGardeSonRembourrageLateralTest) : seuls les deux axes verticaux sont
-   declares ici, jamais le raccourci "padding: 0.5rem 0" qui fixerait aussi le rembourrage lateral
-   a 0 et ecraserait celui, inconditionnel, de .container porte par ce meme element. */
-.bandeau-niveaux {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-}
-
-/* La boite reprend a l'identique celle de .lien-accueil/.retour-accueil - taille de police,
+/* S14-1 (ADR-0043, ADR-0044) : les points d'entree par niveau. S14-2, correction du Done
+   pedagogique refuse par nadia-prof (BARRE-1, BARRE-2) : ils restent permanents sur l'accueil et
+   sur les trois etats de manche (demande de l'utilisatrice, non remise en cause), mais ils sont
+   masques sur la confirmation avant abandon et sur l'ecran d'erreur - voir la regle de masquage
+   sous .chip-niveau, plus bas dans ce fichier.
+   DEC-0034 (s15, arbitrage B) : la bande sombre distincte qui les portait (--recreo-cabinet-fond,
+   contredisait BARRE-9) avait deja disparu au profit du fond commun de l'en-tete.
+   S15 (troisieme et quatrieme arbitrages de l'utilisatrice) : les puces rejoignent le rang unique
+   de l'en-tete (voir .entete-contenu plus haut) - le conteneur ".bandeau-niveaux" qui les portait
+   sur un second rang distinct disparait, avec le rembourrage vertical propre qu'il portait.
+   La boite reprend a l'identique celle de .lien-accueil/.retour-accueil - taille de police,
    hauteur minimale, rembourrage, forme en contour - pour ne jamais depasser une action de l'ecran
    ou la puce s'affiche (ADR-0043, LActionNeDeclarePasMoinsQueLaSortieTest, 11 tests sur 11).
-   BARRE-4 : la puce ne porte que son texte, aucun disque ni pictogramme.
-   DEC-0034 (s15, arbitrage B) : "meme composantes de fond, de texte et de bordure que Les jeux a
-   l'etat inactif" - deja le cas, sans qu'une valeur bouge ici : cette regle reprenait deja celles
-   de .lien-accueil au mot pres (commentaire ci-dessus, ecrit en s06). Ce que cette decision change
-   reellement est le fond de .bandeau-niveaux, ci-dessus. */
+   BARRE-4 : la puce ne porte que son texte, aucun disque ni pictogramme. */
 .chip-niveau {
     display: inline-flex;
     align-items: center;
@@ -746,23 +745,69 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
     border: 0.125rem solid var(--recreo-accent-texte);
 }
 
+/* S15 (quatrieme arbitrage de l'utilisatrice, "une couleur sur la puce choisie") : plein contre
+   contour, forme et libelle tranches par nadia-prof (FICHE-barre-entree-niveau.md, arbitrage
+   prealable du 2026-08-18, section 2 ; proposee par ines-design,
+   proposition-ines-etat-actif-et-rang-unique.md, section 2.1). Contraste 9,25:1 dans les deux sens
+   (memes deux teintes que l'etat inactif, seulement inversees entre fond et texte) - a verifier par
+   nadia-prof sur le rendu reel, aucun navigateur ici. Refuse nommement par elle : un remplissage a
+   --recreo-accent (l'exacte apparence du bouton "Jouer" visible sur le meme ecran) et un etat porte
+   par la seule couleur - clause F (theo-archi) : le contour ecrit ici en raccourci complet (comme
+   partout ailleurs dans ce fichier, jamais border-color seul) porte la largeur, pas seulement la
+   teinte, et c'est cette composante-la qui satisfait la clause. Nadia-prof refuse nommement de s'en
+   tenir a une largeur a peine visible (0,0625rem, qu'il avait cite comme suffisant a la clause sans
+   etre vu) : ici le contour garde la largeur deja en vigueur au repos (0,125rem), reellement percue.
+   Doit etre ecrite apres .chip-niveau:hover/:active : meme specificite (0,2,0), l'ordre de
+   declaration tranche (ines-design, section 2.3). Les trois etats (repos, survol, appui) sont
+   ecrits ensemble et identiques (ADR-0046 point 4, deja en vigueur sur .chip-niveau elle-meme) :
+   il n'existe que deux apparences possibles pour une puce, jamais quatre. */
+.chip-niveau.est-actif,
+.chip-niveau.est-actif:hover,
+.chip-niveau.est-actif:active {
+    background-color: var(--recreo-accent-texte);
+    color: var(--recreo-entete-fond);
+    border: 0.125rem solid var(--recreo-entete-fond);
+}
+
+/* S15 (partie 2 de la demande, "qui n'est plus active quand le jeu demarre") : neutralise
+   l'apparence active des que la zone de contenu porte le marqueur d'ecran de jeu, sans qu'aucun
+   rafraichissement d'en-tete ne soit necessaire et sans une ligne de JavaScript - le mecanisme est
+   deja eprouve par les masquages d'ADR-0022, reevalue en direct par le navigateur a chaque echange
+   htmx (exigences de theo-archi, exigences-theo-etat-actif.md, section 1.2). "ecran-de-jeu" et non
+   "ecran-exclusif" ni "ecran-porte-sa-sortie" : c'est le seul marqueur commun aux quatre fragments
+   de jeu (manche, retour, confirmation, erreur), donc le seul qui neutralise sur les quatre.
+   ATTENTION, forme non contractuelle : cette regle ne masque rien (aucun display), elle neutralise
+   une apparence. Elle ne doit jamais etre lue par masquages() (LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest) :
+   trois garde-fous lisent cette liste en y cherchant "ce qui est invisible", et une neutralisation
+   d'apparence leur ferait calculer un document faux en restant verts (clause E, theo-archi). La
+   puce reste visible et focalisable sur un ecran de jeu (AucunArretDeTabulationNEstDestructeurTest,
+   LActionNeDeclarePasMoinsQueLaSortieTest) : seule son apparence redevient celle du repos inactif -
+   nadia-prof, extinction sans transition ni animation (section 3 de son arbitrage, section 2.4 de
+   la proposition d'ines-design). */
+body:has(.ecran-de-jeu) .chip-niveau.est-actif {
+    background-color: transparent;
+    color: var(--recreo-accent-texte);
+    border: 0.125rem solid var(--recreo-accent-texte);
+}
+
 /* S14-2, correction du Done pedagogique refuse par nadia-prof (BARRE-1, BARRE-2), forme retenue
-   par theo-archi (ADR-0022, troisieme amendement) : la barre de niveaux redevient un habillage
-   permanent dont la visibilite depend de l'ecran, sur un marqueur neuf, "ecran-exclusif" -
+   par theo-archi (ADR-0022, troisieme amendement) : les points d'entree par niveau redeviennent un
+   habillage permanent dont la visibilite depend de l'ecran, sur un marqueur neuf, "ecran-exclusif" -
    distinct de "ecran-de-jeu" (porte par les quatre fragments, donc structurellement incapable de
-   viser un sous-ensemble : la barre doit disparaitre sur deux ecrans sur quatre et rester sur les
+   viser un sous-ensemble : ils doivent disparaitre sur deux ecrans sur quatre et rester sur les
    deux autres). Un ecran est exclusif quand tout chemin qu'il ouvre a l'enfant vit a l'interieur
    de lui - la confirmation (continuer ou quitter) et l'erreur (recommencer), jamais la manche ni
    la fin de partie.
    BARRE-1 : sur la confirmation, l'ecran pose une question et offre deux reponses ; la puce
-   pressee, republiee dans la barre, redonnerait le meme ecran sans rien changer. BARRE-2 :
+   pressee, republiee dans le rang, redonnerait le meme ecran sans rien changer. BARRE-2 :
    "Recommencer" reste la seule chose pressable sur l'ecran d'erreur.
    La forme contractuelle est celle d'ADR-0022 : body:has(.<marqueur>) .<habillage> { display:
-   none }. .chip-niveau est le porteur pressable de l'habillage, jamais .bandeau-niveaux qui
-   l'enveloppe : masquer le conteneur laisserait les boutons dans l'ordre de tabulation aux yeux
-   d'un garde-fou qui ne lit que la classe portee par l'element candidat lui-meme
-   (AucunArretDeTabulationNEstDestructeurTest), tout en les rendant invisibles a l'ecran - le
-   piege que theo-archi avait nomme d'avance en s14. */
+   none }. .chip-niveau est le porteur pressable de l'habillage - depuis s15 il n'a plus de
+   conteneur propre (".bandeau-niveaux" a disparu avec le rang unique), mais la regle nommait deja
+   la puce et non son ancien conteneur : masquer un conteneur aurait laisse les boutons dans
+   l'ordre de tabulation aux yeux d'un garde-fou qui ne lit que la classe portee par l'element
+   candidat lui-meme (AucunArretDeTabulationNEstDestructeurTest), tout en les rendant invisibles a
+   l'ecran - le piege que theo-archi avait nomme d'avance en s14. */
 body:has(.ecran-exclusif) .chip-niveau {
     display: none;
 }
@@ -825,6 +870,15 @@ body:has(.ecran-exclusif) .chip-niveau {
 }
 
 .pas-de-jeu {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    margin: 0.5rem 0;
+}
+
+/* S15-2 (nadia-prof, FICHE-barre-entree-niveau.md, arbitrage prealable du 2026-08-18, section 5) :
+   la phrase qui nomme le filtre, due meme sans l'etat actif de la puce - meme plancher de
+   lisibilite que .pas-de-jeu, au-dessus de la liste qu'elle annonce. */
+.filtre-niveau {
     font-size: 1.25rem;
     color: var(--recreo-texte);
     margin: 0.5rem 0;
