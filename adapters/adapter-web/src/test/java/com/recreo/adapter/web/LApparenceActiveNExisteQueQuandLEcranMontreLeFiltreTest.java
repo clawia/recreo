@@ -20,46 +20,51 @@ import java.util.stream.Stream;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.blocsMaison;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.gabarits;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.lire;
+import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.sujetDuSelecteur;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * S15 (exigences de theo-archi,
- * squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-etat-actif.md, section 2) : la
- * puce de niveau porte une classe d'etat active, posee par le serveur en {@code th:class}, jamais
- * par une regle CSS par niveau. Deux clauses, aucune troisieme :
+ * squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-etat-actif-au-retour.md) : la puce
+ * de niveau porte une classe d'etat active, posee par le serveur en {@code th:class}, jamais par
+ * une regle CSS par niveau. Deux clauses, aucune troisieme :
  *
  * <ul>
- *   <li><b>Clause E</b> ({@link #verifierQueLEtatActifEstNeutraliseSurUnEcranDeJeu}) : toute classe
- *       qu'un point d'entree peut porter <b>conditionnellement</b> est nommee par une regle maison
- *       qui la neutralise sur le marqueur d'ecran de jeu. Ce qu'elle interdit reellement : que la
- *       regle de neutralisation soit retiree ou renommee pendant que la classe reste posee - l'etat
- *       actif persisterait alors pendant une partie, silencieusement. Le sens inverse - la classe
- *       renommee, la regle laissee - est deja ferme par {@code UnEcranNeGouvernePasLApparenceDUnAutreTest}
- *       (ADR-0031), qui refuse un jeton qu'aucun ecran ne peut poser ;</li>
+ *   <li><b>Clause E</b> ({@link #verifierQueLaClasseActiveNestDeclareeQueSousLaConditionDuFiltre}) :
+ *       aucune regle maison ne declare une classe qu'un point d'entree peut porter
+ *       <b>conditionnellement</b> en dehors d'un selecteur conditionne par la marque du filtre
+ *       ({@code .filtre-niveau}). <b>Reforme le 2026-08-18</b> : la premiere forme de cette clause
+ *       exigeait seulement qu'une regle <i>neutralise</i> l'apparence active sur le marqueur
+ *       d'ecran de jeu quelque part - elle laissait donc passer une declaration inconditionnelle
+ *       posee <i>a cote</i> de la neutralisation, exactement le defaut que l'utilisatrice a trouve
+ *       (CM1 presse puis "Les jeux" : la liste montre les onze jeux et CM1 garde sa couleur, parce
+ *       que la route qui rend ce catalogue complet ne porte pas le marqueur d'ecran de jeu et
+ *       qu'une regle inconditionnelle restait allumee). La forme reformee est plus stricte : elle
+ *       interdit toute declaration hors condition, quelle que soit la route ou l'ecran qui manquerait
+ *       a une enumeration ;</li>
  *   <li><b>Clause F</b> ({@link #verifierQueLaClasseActiveNeReposePasSurLaSeuleCouleur}) : la regle
  *       maison de chaque classe active declare au moins une composante qui n'est pas une couleur.
- *       Elle ne juge pas laquelle, et elle ne peut pas juger si un enfant la percoit - ce verdict
- *       reste a {@code nadia-prof}, sur capture (ADR-0025).</li>
+ *       Inchangee par la reforme - elle lit la regle de l'apparence active, qui existe toujours,
+ *       seulement conditionnee desormais. Elle ne juge pas laquelle, et elle ne peut pas juger si un
+ *       enfant la percoit - ce verdict reste a {@code nadia-prof}, sur capture (ADR-0025).</li>
  * </ul>
  *
- * <p><b>Ce que la neutralisation n'est pas, et pourquoi ce fichier ne lit jamais
- * {@code LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest#masquages}.</b> La regle qui neutralise une
- * apparence active ne prend jamais la forme contractuelle du masquage d'ADR-0022
- * ({@code display: none}) : elle change des couleurs et un contour, jamais une visibilite. Trois
- * garde-fous lisent {@code masquages()} en y cherchant "ce qui est invisible" -
- * {@code AucunArretDeTabulationNEstDestructeurTest}, {@code LActionNeDeclarePasMoinsQueLaSortieTest},
- * la clause D de {@code LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest} - et y faire entrer une
- * neutralisation d'apparence leur ferait calculer un document faux en restant verts. Ce fichier
- * derive donc sa propre population, independante de {@code masquages()}.</p>
+ * <p><b>Pourquoi une condition plutot qu'une neutralisation, et ce n'est pas une preference de
+ * style.</b> Une neutralisation doit enumerer ce qu'elle defait - "cesse quand le jeu demarre",
+ * "cesse au catalogue complet" - et un perimetre enumere echoue par omission : c'est exactement le
+ * defaut trouve par l'utilisatrice, la seconde instance d'une propriete dont la premiere forme de
+ * cette clause n'en gardait qu'une. Une application conditionnelle n'a rien a enumerer : ce qui
+ * n'est pas applique n'a pas besoin d'etre defait, et une route ou un ecran de jeu futur qui rendrait
+ * le catalogue complet sans filtre est couvert sans que personne y pense.</p>
  *
  * <p>ADR-0013, les trois obligations :
  * <ul>
  *   <li><b>perimetre derive</b> : les classes conditionnelles viennent des litteraux de
  *       {@code th:class}/{@code th:classappend} portes par un element {@code data-role="entree"},
- *       jamais d'un nom ecrit ici ({@link #classesConditionnellesDesPointsDEntree}) ; le marqueur
- *       d'ecran de jeu, lui, est nomme en clair - c'est le seul choix arrete par le mecanisme retenu
- *       (section 1.2 de l'exigence), pas une derivation ;</li>
+ *       jamais d'un nom ecrit ici ({@link #classesConditionnellesDesPointsDEntree}) ; la marque du
+ *       filtre, elle, est nommee en clair - c'est le seul choix arrete par le mecanisme retenu
+ *       (section 1 de l'exigence), pas une derivation ;</li>
  *   <li><b>derivation totale</b> : aucune classe conditionnelle relevee est un echec pour les deux
  *       clauses, jamais un cas ignore (ADR-0003) ;</li>
  *   <li><b>mise a l'epreuve</b> : sur une copie mutee de la production (ADR-0015) pour les deux
@@ -67,22 +72,24 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *       pour la clause E.</li>
  * </ul>
  */
-class LEtatActifDUnPointDEntreeSeteintSurUnEcranDeJeuTest {
+class LApparenceActiveNExisteQueQuandLEcranMontreLeFiltreTest {
 
     private static final Path RACINE_PRODUCTION = Path.of("src/main/resources");
 
     private static final Path CONTRE_EXEMPLES = Path.of(
-            "src/test/resources/contreexemple/LEtatActifDUnPointDEntreeSeteintSurUnEcranDeJeuTest");
+            "src/test/resources/contreexemple/LApparenceActiveNExisteQueQuandLEcranMontreLeFiltreTest");
 
     private static final String ROLE_ENTREE = "entree";
     private static final String SELECTEUR_ENTREE = "[data-role=" + ROLE_ENTREE + "]";
 
     /**
-     * Le marqueur d'ecran de jeu (ADR-0022) : nomme en clair parce que c'est la seule chose que le
-     * mecanisme de neutralisation retenu (exigences-theo-etat-actif.md, section 1.2) ne derive pas -
-     * il est choisi, pas lu dans une source qui varierait.
+     * La marque du filtre (theo-archi, exigences-theo-etat-actif-au-retour.md, section 1) : nommee
+     * en clair parce que c'est le seul choix arrete par le mecanisme retenu, pas une derivation. Elle
+     * est portee par l'element de la phrase "Pour le CP" lui-meme, jamais par un ancetre (reserve H
+     * d'ADR-0035) - c'est ce qui rend le couplage sain : la marque ne peut pas survivre a la
+     * disparition du texte qui la porte.
      */
-    private static final String MARQUEUR_ECRAN_DE_JEU = "ecran-de-jeu";
+    private static final String MARQUEUR_FILTRE = "filtre-niveau";
 
     private static final List<String> PORTEURS_DE_CLASSE = List.of("th:class", "th:classappend");
 
@@ -121,7 +128,7 @@ class LEtatActifDUnPointDEntreeSeteintSurUnEcranDeJeuTest {
     /**
      * Les classes qu'un point d'entree peut porter conditionnellement, lues dans les litteraux de
      * {@code th:class}/{@code th:classappend} - jamais ecrites ici. Un point d'entree sans aucune
-     * classe conditionnelle ne contribue rien : il n'a rien a neutraliser.
+     * classe conditionnelle ne contribue rien : il n'a rien a conditionner.
      */
     static Set<String> classesConditionnellesDesPointsDEntree(Path racineDesGabarits) {
         Set<String> classes = new LinkedHashSet<>();
@@ -141,21 +148,37 @@ class LEtatActifDUnPointDEntreeSeteintSurUnEcranDeJeuTest {
         return classes;
     }
 
-    /** La regle maison au repos de cette classe : un selecteur qui s'y termine, sans pseudo-classe. */
+    /**
+     * Les classes que porte le <b>sujet</b> d'un selecteur - son dernier compose, celui sur lequel
+     * la regle s'applique reellement - en ignorant tout ce qu'un {@code :has(...)} ancetre peut
+     * nommer avant lui. C'est ce qui distingue une classe que l'element <b>porte</b> d'une classe
+     * que l'element exige seulement d'un ancetre pour s'appliquer.
+     */
+    private static Set<String> classesDuSujet(String selecteur) {
+        return LAnimationRetardeMaisNeDetermineRienTest.classesDuSelecteur(sujetDuSelecteur(selecteur));
+    }
+
+    /**
+     * La regle maison au repos de cette classe : celle dont le sujet se termine par cette classe,
+     * sans pseudo-classe ajoutee apres elle. Cherchee sur le <b>sujet</b> et non sur le selecteur
+     * entier, pour ne pas confondre un survol/appui (qui allonge le sujet, {@code .est-actif:hover})
+     * avec la condition ancetre {@code :has(...)} qu'un selecteur peut porter desormais - celle-ci ne
+     * fait plus partie du sujet et ne doit donc jamais empecher ce filtre de reconnaitre le repos.
+     */
     private static Optional<Map.Entry<String, String>> reposDeLaClasse(Map<String, String> maison,
                                                                        String classe) {
         String suffixe = "." + classe;
         return maison.entrySet().stream()
-                .filter(entree -> entree.getKey().endsWith(suffixe) && !entree.getKey().contains(":"))
+                .filter(entree -> sujetDuSelecteur(entree.getKey()).endsWith(suffixe))
                 .findFirst();
     }
 
     /**
-     * Clause E : toute classe conditionnelle d'un point d'entree est neutralisee par une regle
-     * maison sur le marqueur d'ecran de jeu.
+     * Clause E : aucune regle maison ne declare une classe conditionnelle d'un point d'entree en
+     * dehors d'un selecteur conditionne par la marque du filtre.
      */
-    static void verifierQueLEtatActifEstNeutraliseSurUnEcranDeJeu(Path racineDesGabarits,
-                                                                  Path racineDesFeuilles) {
+    static void verifierQueLaClasseActiveNestDeclareeQueSousLaConditionDuFiltre(Path racineDesGabarits,
+                                                                                Path racineDesFeuilles) {
         Set<String> classes = classesConditionnellesDesPointsDEntree(racineDesGabarits);
         assertThat(classes)
                 .as("ADR-0003 : cette clause ne prouve rien si aucun point d'entree ne porte de "
@@ -165,20 +188,21 @@ class LEtatActifDUnPointDEntreeSeteintSurUnEcranDeJeuTest {
         Map<String, String> maison = blocsMaison(racineDesFeuilles);
         List<String> defauts = new ArrayList<>();
         for (String classe : classes) {
-            String suffixe = "." + classe;
-            boolean neutralisee = maison.keySet().stream()
-                    .anyMatch(selecteur -> selecteur.contains(MARQUEUR_ECRAN_DE_JEU)
-                            && selecteur.endsWith(suffixe));
-            if (!neutralisee) {
-                defauts.add("la classe \"" + classe + "\" est posee conditionnellement par un point "
-                        + "d'entree, mais aucune regle maison ne la neutralise sur le marqueur \""
-                        + MARQUEUR_ECRAN_DE_JEU + "\" : l'etat actif persisterait pendant une partie, "
-                        + "silencieusement");
+            for (String selecteur : maison.keySet()) {
+                if (!classesDuSujet(selecteur).contains(classe)) {
+                    continue;
+                }
+                if (!selecteur.contains("." + MARQUEUR_FILTRE)) {
+                    defauts.add("le selecteur \"" + selecteur + "\" declare la classe conditionnelle "
+                            + "\"" + classe + "\" hors de toute condition sur \"." + MARQUEUR_FILTRE
+                            + "\" : son apparence active existerait meme quand l'ecran ne montre pas "
+                            + "le filtre");
+                }
             }
         }
         assertThat(defauts)
-                .as("chaque classe d'etat conditionnelle d'un point d'entree doit etre neutralisee "
-                        + "sur un ecran de jeu")
+                .as("aucune regle maison ne doit declarer une classe conditionnelle d'un point "
+                        + "d'entree hors d'un selecteur conditionne par la marque du filtre")
                 .isEmpty();
     }
 
@@ -200,7 +224,8 @@ class LEtatActifDUnPointDEntreeSeteintSurUnEcranDeJeuTest {
             Optional<Map.Entry<String, String>> repos = reposDeLaClasse(maison, classe);
             if (repos.isEmpty()) {
                 defauts.add("la classe \"" + classe + "\" n'a aucune regle maison a son repos "
-                        + "(un selecteur qui se termine par \"." + classe + "\", sans pseudo-classe)");
+                        + "(un selecteur dont le sujet se termine par \"." + classe
+                        + "\", sans pseudo-classe)");
                 continue;
             }
             List<String> proprietes =
@@ -238,8 +263,8 @@ class LEtatActifDUnPointDEntreeSeteintSurUnEcranDeJeuTest {
     }
 
     @Test
-    void laClasseActiveEstNeutraliseeSurUnEcranDeJeuEnProduction() {
-        verifierQueLEtatActifEstNeutraliseSurUnEcranDeJeu(RACINE_PRODUCTION, RACINE_PRODUCTION);
+    void laClasseActiveNestDeclareeQueSousLaConditionDuFiltreEnProduction() {
+        verifierQueLaClasseActiveNestDeclareeQueSousLaConditionDuFiltre(RACINE_PRODUCTION, RACINE_PRODUCTION);
     }
 
     @Test
@@ -249,48 +274,45 @@ class LEtatActifDUnPointDEntreeSeteintSurUnEcranDeJeuTest {
 
     /**
      * ADR-0013 obligation 3, clause E : mise a l'epreuve sur un objet neuf - un point d'entree que
-     * personne n'a inscrit nulle part, dont la classe conditionnelle "etat-neuf" n'est neutralisee
-     * par aucune regle maison. Distinct de la preuve sur materiau reel ci-dessous : celle-ci montre
-     * que la clause voit un point d'entree qu'elle n'a jamais rencontre, pas seulement une
-     * regression sur celui qui existe deja.
+     * personne n'a inscrit nulle part, dont la classe conditionnelle "etat-neuf" est declaree par
+     * une regle maison hors de toute condition. Distinct de la preuve sur materiau reel ci-dessous :
+     * celle-ci montre que la clause voit un point d'entree qu'elle n'a jamais rencontre, pas
+     * seulement une regression sur celui qui existe deja. Le jeu fautif est celui d'hier, valable
+     * tel quel (theo-archi) : une declaration inconditionnelle etait deja la faute qu'il nommait.
      */
     @Test
-    void unPointDEntreeNeufSansNeutralisationFaitEchouerLaClauseE() {
-        Path racine = CONTRE_EXEMPLES.resolve("point-d-entree-sans-neutralisation");
-        assertThatThrownBy(() -> verifierQueLEtatActifEstNeutraliseSurUnEcranDeJeu(racine, racine))
+    void unPointDEntreeNeufSansConditionFaitEchouerLaClauseE() {
+        Path racine = CONTRE_EXEMPLES.resolve("point-d-entree-sans-condition");
+        assertThatThrownBy(() -> verifierQueLaClasseActiveNestDeclareeQueSousLaConditionDuFiltre(racine, racine))
                 .isInstanceOf(AssertionError.class)
-                .hasMessageContaining("aucune regle maison ne la neutralise");
+                .hasMessageContaining("hors de toute condition");
     }
 
     /**
      * ADR-0013 obligation 3, clause E : preuve de morsure sur du materiau reel - une copie de la
-     * production dont la regle de neutralisation de {@code .est-actif} est retiree pendant que la
-     * classe reste posee par le gabarit. C'est exactement la defection silencieuse que la clause
-     * existe pour fermer : l'etat actif persisterait pendant une partie sans qu'aucun autre
-     * garde-fou ne le voie (la classe reste visible et focalisable, ADR-0038/ADR-0017).
+     * production dont la regle de l'apparence active perd sa condition sur la marque du filtre, sans
+     * perdre sa declaration. C'est exactement la defection que l'utilisatrice a trouvee : l'etat
+     * actif survivrait au retour au catalogue complet, silencieusement.
      */
     @Test
-    void uneRegleDeNeutralisationRetireeFaitEchouerLaClauseE(@TempDir Path tempDir) throws IOException {
+    void uneConditionRetireeFaitEchouerLaClauseE(@TempDir Path tempDir) throws IOException {
         copierArbreReel(RACINE_PRODUCTION, tempDir);
         Path feuille = tempDir.resolve("static/css/recreo.css");
         // Comparaison sur les fins de ligne normalisees (le fichier source est en CRLF) : seule
         // l'ecriture qui suit compte pour la mutation, la lecture qui prouve le rouge ne compare
         // que des blocs CSS, jamais un octet de fin de ligne.
         String contenu = Files.readString(feuille).replace("\r\n", "\n");
-        String mute = contenu.replace(
-                "body:has(." + MARQUEUR_ECRAN_DE_JEU + ") .chip-niveau.est-actif {\n"
-                        + "    background-color: transparent;\n"
-                        + "    color: var(--recreo-accent-texte);\n"
-                        + "    border: 0.125rem solid var(--recreo-accent-texte);\n"
-                        + "}",
-                "");
-        assertThat(mute).as("la regle de neutralisation doit exister telle quelle avant mutation")
-                .isNotEqualTo(contenu);
+        // Retire la condition ancetre des trois selecteurs de la regle, sans toucher a ce qu'ils
+        // declarent : String.replace remplace toutes les occurrences, donc les trois lignes
+        // "body:has(.filtre-niveau) .chip-niveau.est-actif[...]" perdent leur prefixe d'un seul
+        // geste, exactement la mutation que la clause E doit desormais attraper.
+        String mute = contenu.replace("body:has(." + MARQUEUR_FILTRE + ") ", "");
+        assertThat(mute).as("la regle doit porter la condition avant mutation").isNotEqualTo(contenu);
         Files.writeString(feuille, mute);
 
-        assertThatThrownBy(() -> verifierQueLEtatActifEstNeutraliseSurUnEcranDeJeu(tempDir, tempDir))
+        assertThatThrownBy(() -> verifierQueLaClasseActiveNestDeclareeQueSousLaConditionDuFiltre(tempDir, tempDir))
                 .isInstanceOf(AssertionError.class)
-                .hasMessageContaining("aucune regle maison ne la neutralise");
+                .hasMessageContaining("hors de toute condition");
     }
 
     /**

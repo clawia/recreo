@@ -2,7 +2,8 @@
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <body>
 <!-- ADR-0013 obligation 3 : un point d'entree neuf, absent de la production, dont la classe
-     conditionnelle "etat-neuf" n'est neutralisee par aucune regle maison de recreo.css. -->
+     conditionnelle "etat-neuf" est declaree par une regle maison de recreo.css hors de toute
+     condition sur la marque du filtre. -->
 <a class="btn porte-neuve" data-role="entree" href="/ailleurs"
    th:classappend="${quelconque} ? 'etat-neuf' : ''">Texte</a>
 </body>
