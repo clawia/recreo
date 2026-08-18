@@ -85,6 +85,12 @@ public class PartieController {
         this.partie = partie;
     }
 
+    /**
+     * S15-5 (nadia-prof, FICHE-barre-entree-niveau.md) : aucun filtre ne survit a un chargement de
+     * page - {@code niveauActif} n'est jamais pose ici, sur aucune des deux branches, donc jamais
+     * lu comme non nul par le gabarit (DEC-0028, ADR-0044 point 4 : le niveau ne vit que dans l'URL
+     * de {@code /niveaux/{niveau}}, jamais en session).
+     */
     @GetMapping("/")
     public String accueil(Model modele, HttpServletRequest requete, HttpServletResponse reponse) {
         EtatDePartie etat = new EtatDePartieEnSession(requete).lire();
@@ -141,16 +147,29 @@ public class PartieController {
      * sortie ordinaire s'affiche d'abord, sans toucher la session (critere 4) ; son bouton de
      * confirmation porte le niveau demande pour que l'accueil qui en resulte reste filtre
      * (critere 6), puisque DEC-0028/ADR-0044 interdisent de le loger en session.
+     *
+     * <p>Amendement d'ADR-0044 (s15, "un seul rang, une couleur sur la puce choisie") : la puce de
+     * niveau perd {@code hx-get}/{@code hx-target} et ne garde que son {@code href} (exigences de
+     * theo-archi, squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-etat-actif.md,
+     * section 1.1). Un appui n'echange donc plus un fragment dans {@code #jeu} : c'est une
+     * navigation complete, et cette route doit desormais rendre le document entier - en-tete
+     * comprise, avec la puce du niveau demande marquee active par la donnee ({@code niveauActif}),
+     * jamais par une regle CSS par niveau (ADR-0006). C'est aussi ce qui rend possible, ici et nulle
+     * part ailleurs, de marquer la classe active : c'est la puce elle-meme qui declenche ce rendu
+     * complet (section 1 de l'exigence).</p>
      */
     @GetMapping("/niveaux/{niveau}")
     public String niveaux(@PathVariable String niveau, HttpServletRequest requete, Model modele) {
         EtatDePartie etat = new EtatDePartieEnSession(requete).lire();
+        modele.addAttribute("niveaux", partie.niveauxDuCatalogue());
+        modele.addAttribute("niveauActif", niveau);
         if (etat.portePartieEnCours()) {
             modele.addAttribute("urlConfirmerAbandon", "/niveaux/" + niveau + "/confirmer");
-            return "fragments/confirmation :: confirmation";
+            modele.addAttribute("confirmationDirecte", true);
+            return "accueil";
         }
         modele.addAttribute("jeux", partie.jeuxDuNiveau(niveau));
-        return "accueil :: zoneAccueil";
+        return "accueil";
     }
 
     /**

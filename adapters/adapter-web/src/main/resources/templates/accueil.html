@@ -37,28 +37,44 @@
      lien n'est pas un menu, "principal" n'est pas un mot d'enfant de six ans, et l'application n'a
      qu'un seul mot de sortie, deja "Les jeux"). Aucun garde-fou n'exige de libelle non vide sur
      cette zone (avis de faisabilite de theo-archi, s13) : l'attribut est retire plutot que
-     reformule. -->
+     reformule.
+     S15 (troisieme et quatrieme arbitrages de l'utilisatrice, DEC-0034/ADR-0044 amendement) : un
+     seul rang, dans l'ordre icone/titre/CP/CM1 puis "Les jeux" pousse a droite (variante 1
+     d'ines-design, retenue par nadia-prof - proposition-ines-etat-actif-et-rang-unique.md, section
+     1.1 ; FICHE-barre-entree-niveau.md, arbitrage prealable du 2026-08-18, section 1). Le second
+     "nav" d'avant ce lot (classe bandeau-niveaux) disparait comme element distinct : les deux
+     anciens rangs fusionnent dans ce seul conteneur. -->
 <header class="entete">
-    <div class="container entete-contenu">
+    <nav class="container entete-contenu">
         <img th:src="@{/favicon.ico}" alt="" class="icone-entete">
         <h1 class="nom-site">Recreo</h1>
-        <nav class="menu">
-            <a class="btn lien-accueil" data-role="sortie" href="/"
-               hx-post="/retour" hx-target="#jeu" hx-swap="innerHTML">Les jeux</a>
-        </nav>
-    </div>
-    <!-- S14-1 (ADR-0043, ADR-0044) : un point d'entree par niveau distinct du catalogue, dans
-         l'ordre du catalogue - jamais un libelle ni un href ecrits en clair (ADR-0006). Second
-         rang de l'en-tete, sans regle de masquage : c'est l'absence de regle qui rend cette barre
-         visible y compris sur un ecran de jeu (FICHE-barre-entree-niveau.md, variante retenue).
-         ADR-0044 point 3 : aucun etat de filtre courant ici, l'en-tete ne peut pas etre rafraichi
-         par un echange htmx - le niveau demande ne vit que dans la route que chaque puce appelle.
-         data-role="entree" (ADR-0043) : ni une action de l'ecran affiche, ni sa sortie. -->
-    <nav class="container bandeau-niveaux">
-        <button type="button" class="btn chip-niveau" data-role="entree"
-                th:each="niveau : ${niveaux}"
-                th:attr="hx-get=@{'/niveaux/' + ${niveau}}"
-                hx-target="#jeu" hx-swap="innerHTML" th:text="${niveau}">CP</button>
+        <!-- S14-1 (ADR-0043), amendement d'ADR-0044 (s15, section 1.1 de
+             exigences-theo-etat-actif.md) : un point d'entree par niveau distinct du catalogue,
+             dans l'ordre du catalogue - jamais un libelle ecrit en clair, et jamais une route par
+             niveau ecrite en dur (ADR-0006) : th:href reste calcule depuis ${niveau}, un seul
+             element de gabarit sert les deux niveaux du catalogue comme il en servirait un
+             treizieme demain. Le href="/niveaux/CP" ci-dessous est un espace reserve, toujours
+             ecrase au rendu par th:href, jamais lu par le serveur : il existe pour que ce <a>
+             reste reconnaissable comme "a[href]" par les garde-fous qui lisent le gabarit brut,
+             avant tout traitement Thymeleaf (TailleDesTextesEtBoutonsTest,
+             LHabillageResteImmobileTest et d'autres derivent leur population de pressables de
+             "button, a[href]" sur le fichier source, ou seul l'attribut litteral existe encore).
+             La puce perd hx-get/hx-target et ne garde que son href : un appui est desormais une
+             navigation complete (cout assume, ADR-0044 point 3 amende), ce qui est ce qui rend
+             possible de marquer par la donnee (th:classappend, jamais une regle CSS par niveau)
+             quel niveau est actif - c'est la puce elle-meme qui declenche ce rendu complet.
+             data-role="entree" (ADR-0043) : ni une action de l'ecran affiche, ni sa sortie.
+             est-actif (nadia-prof, arbitrage du 2026-08-18, section 2) : pose par la seule donnee
+             de niveau demande (PartieController.niveaux, niveauActif), jamais persiste (S15-5) -
+             son extinction au demarrage d'un jeu est une regle de feuille qui neutralise
+             l'apparence sans toucher cette classe (voir recreo.css). -->
+        <a class="btn chip-niveau" data-role="entree" href="/niveaux/CP"
+           th:each="niveau : ${niveaux}"
+           th:href="@{'/niveaux/' + ${niveau}}"
+           th:classappend="${niveau == niveauActif} ? 'est-actif' : ''"
+           th:text="${niveau}">CP</a>
+        <a class="btn lien-accueil" data-role="sortie" href="/"
+           hx-post="/retour" hx-target="#jeu" hx-swap="innerHTML">Les jeux</a>
     </nav>
 </header>
 <!-- ADR-0020 : ce <main> est le seul porteur de l'identifiant de la zone echangee, dans tout le
@@ -71,15 +87,33 @@
         <div th:replace="~{fragments/manche :: manche}"></div>
     </div>
     <div th:unless="${reprise}">
-        <p class="message-reprise" th:if="${messageReprise}" th:text="${messageReprise}"></p>
-        <p class="pas-de-jeu" th:if="${jeux.isEmpty()}">Il n'y a pas de jeu pour le moment.</p>
-        <ul class="jeux list-unstyled" th:unless="${jeux.isEmpty()}">
-            <li th:each="jeu : ${jeux}">
-                <button type="button" class="btn demarrer" data-role="action" th:text="${jeu.titre()}"
-                        th:attr="hx-post=@{'/parties/' + ${jeu.id()}}"
-                        hx-target="#jeu" hx-swap="innerHTML">Jouer</button>
-            </li>
-        </ul>
+        <!-- S15 (PartieController.niveaux, amendement d'ADR-0044) : un appui sur une puce de
+             niveau pendant une partie en cours est desormais une navigation complete (la puce a
+             perdu son hx-get) ; sans cette branche, le controleur rendrait la confirmation nue,
+             sans en-tete ni feuille de style, sur ce seul chemin. -->
+        <div th:if="${confirmationDirecte}">
+            <div th:replace="~{fragments/confirmation :: confirmation}"></div>
+        </div>
+        <div th:unless="${confirmationDirecte}">
+            <p class="message-reprise" th:if="${messageReprise}" th:text="${messageReprise}"></p>
+            <!-- S15-2 (nadia-prof, FICHE-barre-entree-niveau.md, arbitrage prealable du
+                 2026-08-18, section 5) : la phrase qui nomme le filtre est due meme sans l'etat
+                 actif de la puce, et elle vit ici parce que c'est le seul endroit certain d'etre
+                 rendu au moment de l'appui (PartieController.niveaux). Libelle tranche par elle -
+                 "Pour le CP" - jamais "Les jeux pour le CP", pour ne pas contredire BARRE-5 (un
+                 seul mot de sortie par ecran, deja porte par le lien de l'en-tete). -->
+            <p class="filtre-niveau" th:if="${niveauActif != null}"
+               th:text="'Pour le ' + ${niveauActif}"></p>
+            <p class="pas-de-jeu" th:if="${jeux.isEmpty()}">Il n'y a pas de jeu pour le moment.</p>
+            <ul class="jeux list-unstyled" th:unless="${jeux.isEmpty()}">
+                <li th:each="jeu : ${jeux}">
+                    <button type="button" class="btn demarrer" data-role="action"
+                            th:text="${jeu.titre()}"
+                            th:attr="hx-post=@{'/parties/' + ${jeu.id()}}"
+                            hx-target="#jeu" hx-swap="innerHTML">Jouer</button>
+                </li>
+            </ul>
+        </div>
     </div>
 </th:block>
 </main>

@@ -1,0 +1,9 @@
+.porte-neuve {
+    color: #1c2733;
+}
+
+.porte-neuve.etat-neuf {
+    background-color: #ffffff;
+    color: #1c2733;
+    border: 0.125rem solid #1c2733;
+}

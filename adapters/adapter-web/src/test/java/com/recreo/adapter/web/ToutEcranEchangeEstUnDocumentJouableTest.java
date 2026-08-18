@@ -196,14 +196,22 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
                 assembler(corps(post("/retour/confirmer").session(partieQuiConfirmeSaSortie)))));
 
         // S14-1 (ADR-0043, ADR-0044) : deux routes neuves, le point d'entree par niveau.
+        // S15, amendement d'ADR-0044 point 3 : ces deux entrees ne passent plus par assembler().
+        // Motif ecrit, exige par ADR-0013 : la puce de niveau a perdu son hx-get (theo-archi,
+        // exigences-theo-etat-actif.md, section 1.1) et GET /niveaux/{niveau} rend desormais un
+        // document complet - en-tete comprise, comme GET / - sur ses deux branches. L'assembler
+        // sur un document deja complet imbriquait un second <main id="jeu"> dans le #jeu de la
+        // coquille (ADR-0020, "un identifiant porte deux fois"), exactement le defaut que ce
+        // meme fichier existe pour attraper - c'est lui qui a mesure la regression, pas une
+        // relecture.
         ecrans.add(new Ecran("liste filtree par niveau, aucune partie en cours", "GET /niveaux/{niveau}",
-                assembler(corps(get("/niveaux/{niveau}", NIVEAU)))));
+                Jsoup.parse(corps(get("/niveaux/{niveau}", NIVEAU)))));
 
         MockHttpSession partieQuiChangeDeNiveau = new MockHttpSession();
         corps(post("/parties/{jeuId}", JEU_ID).session(partieQuiChangeDeNiveau));
         ecrans.add(new Ecran("demande de confirmation avant de changer de niveau, la partie continue",
                 "GET /niveaux/{niveau}",
-                assembler(corps(get("/niveaux/{niveau}", NIVEAU).session(partieQuiChangeDeNiveau)))));
+                Jsoup.parse(corps(get("/niveaux/{niveau}", NIVEAU).session(partieQuiChangeDeNiveau)))));
 
         MockHttpSession partieQuiConfirmeSonChangementDeNiveau = new MockHttpSession();
         corps(post("/parties/{jeuId}", JEU_ID).session(partieQuiConfirmeSonChangementDeNiveau));
