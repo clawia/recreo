@@ -270,6 +270,38 @@ porte ferait de l'ecran de fin de partie un cul-de-sac.
 > amendement-ci qui doit etre annule, pas la dette qui doit etre ouverte. Un `ADR` amende dont la regle
 > n'existe pas est ce que `ADR-0042` a coute a ce depot.
 
+> **Verification du 2026-08-17 (s15) - la reforme de la clause 2 mesuree sur le cas pour lequel elle
+> a ete ecrite. Ce n'est pas un amendement : aucune clause ne change.**
+>
+> `DEC-0034` fait revenir "Les jeux" dans l'en-tete, donc `.lien-accueil` et son masquage : la
+> population de la clause 2 change pour la **quatrieme fois en un jour**. Le troisieme amendement
+> ci-dessus a ete ecrit pour que ce cas ne coute aucun fichier de garde-fou ; plutot que de l'affirmer,
+> je l'ai mesure.
+>
+> Methode, dans le meme paragraphe : mutation du depot reel a `5b50000`, `.lien-accueil` et `.menu`
+> remis dans `accueil.html` et dans `recreo.css` dans leur forme d'avant `S14-2` (relevee dans
+> l'historique, `cc68304`), masquage `body:has(.ecran-de-jeu) .lien-accueil { display: none }` compris ;
+> `bash outils/mvn-jdk21.sh -B verify` apres `clean`, puis mutation annulee, `git status` propre.
+>
+> **Resultat sur la reforme : zero fichier de garde-fou.**
+> `LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest` reste **vert, 6 cas sur 6**, avec un masquage qui
+> reapparait sur un marqueur (`ecran-de-jeu`) qu'aucun selecteur maison n'utilisait plus, coexistant
+> avec celui de `S14-2` (`ecran-exclusif`). C'est exactement la propriete visee par les trois
+> changements : un marqueur quelconque, un sous-ensemble d'ecrans, et plus aucune exigence que le
+> mecanisme soit employe. Verts aussi, sans qu'une ligne bouge :
+> `UnEcranNeGouvernePasLApparenceDUnAutreTest`, `HabillageDesEcransTest`,
+> `AucunArretDeTabulationNEstDestructeurTest`, `LActionNeDeclarePasMoinsQueLaSortieTest`,
+> `TailleDesTextesEtBoutonsTest`. Les seules mentions de `.lien-accueil` qui subsistent dans le code de
+> test sont trois lignes de Javadoc et de commentaire, aucune expression executable.
+>
+> **Ce que le retour coute quand meme, et qui n'est pas cet ADR** : 2 echecs dans
+> `EnTeteEtMenuTest`, sur les deux assertions qui encodent `DEC-0033`/`BARRE-7`. Ce rouge est correct -
+> un garde-fou qui encode un arbitrage pedagogique doit rougir quand l'arbitrage tombe - et son
+> retrait est une consequence de `DEC-0034` a acter par `camille-po` avec `nadia-prof`, pas un geste
+> d'architecture. Un troisieme echec s'y ajoute depuis `ADR-0046`, dans le cliquet d'etats interactifs :
+> `.lien-accueil` est un bouton de contour sur fond sombre sans etat declare, c'est-a-dire le defaut du
+> jour sur le point de revenir par le meme chemin.
+
 Elle me laisse deux questions techniques, et c'est tout ce que cet ADR traite.
 
 ### Question 1 - un element permanent qui doit disparaitre sur certains ecrans

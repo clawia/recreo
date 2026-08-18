@@ -307,8 +307,14 @@ class TailleDesTextesEtBoutonsTest {
     /**
      * Un bouton et l'un des jeux de classes qu'il peut porter une fois rendu. Un bouton dont la
      * classe est conditionnelle en produit un par branche.
+     *
+     * <p>Visible dans le paquet depuis ADR-0046, avec {@link #selecteursApplicables} et
+     * {@link #etiquette} : la clause d'etat lit exactement la meme population de boutons rendus et
+     * les memes selecteurs applicables que les planchers de ce fichier. Deux derivations libres de
+     * divergier laisseraient un etat de bouton confronte a un plancher ici et pas a son etat
+     * interactif la-bas - le meme motif que l'accord entre habillage et pressable d'ADR-0033.
      */
-    private record BoutonRendu(Element bouton, List<String> classes) {
+    record BoutonRendu(Element bouton, List<String> classes) {
     }
 
     /**
@@ -390,7 +396,7 @@ class TailleDesTextesEtBoutonsTest {
      * navigateur : c'est exactement ce que cette derivation doit detecter, plutot que de le laisser
      * passer parce qu'il n'a pas de classe a controler.
      */
-    private static List<String> selecteursApplicables(BoutonRendu etat) {
+    static List<String> selecteursApplicables(BoutonRendu etat) {
         List<String> classes = etat.classes().stream().map(classe -> "." + classe).toList();
         return classes.isEmpty() ? List.of(etat.bouton().tagName()) : classes;
     }
@@ -411,7 +417,7 @@ class TailleDesTextesEtBoutonsTest {
         return maisonnee;
     }
 
-    private static String etiquette(BoutonRendu etat) {
+    static String etiquette(BoutonRendu etat) {
         Element bouton = etat.bouton();
         String description = etat.classes().isEmpty()
                 ? "<" + bouton.tagName() + "> sans classe"

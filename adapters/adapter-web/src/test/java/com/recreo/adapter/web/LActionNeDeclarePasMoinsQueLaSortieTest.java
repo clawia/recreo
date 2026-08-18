@@ -613,30 +613,28 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
     }
 
     /**
-     * S14-2 (BARRE-7, DEC-0033) : retiree, remplace
-     * {@code leLienDeLEnTeteEstConfronteAuxSeulesActionsDeLAccueil}. <b>Motif ecrit de la
-     * suppression</b>, exige par ADR-0013 : cet epinglage affirmait qu'un couple
-     * {@code .btn.demarrer "Jouer"} contre {@code .btn.lien-accueil "Les jeux"} existait sur
-     * l'accueil. Le lien de l'en-tete est retire de tout gabarit par S14-2 (le lien "Les jeux" de
-     * l'en-tete n'est pas remplace par un comportement neuf) : aucun bouton {@code .lien-accueil}
-     * n'existe plus nulle part, donc ce couple ne peut plus se former, et sa seconde assertion
-     * (le lien n'accompagne plus les actions des ecrans de jeu) devient vraie a vide, sur un role
-     * qu'aucun bouton ne porte. Maintenir l'epinglage aurait exige de mesurer un bouton que
-     * l'enfant ne rencontre plus - la meme famille de defaut que la retro de s05 a sanctionne, et
-     * que la suppression de 2026-08-07 dans ce meme fichier avait deja fermee une fois pour le
-     * lien "Encore !".
-     *
-     * <p>Ce qui reste garde, et par quoi : le role {@code sortie}, lui, continue d'exister
-     * (sortie-pleine, retour-accueil) et reste confronte a des actions ailleurs
-     * ({@code aucuneSortieNeDeclarePlusQuUneActionDuMemeEcran}) ; le role {@code entree} des puces
-     * de niveau prend desormais seul la place de sujet confronte a {@code .demarrer} sur
-     * l'accueil, sans epinglage nomme - {@code rolesDominesJamaisConfrontes} suffit a garantir
-     * qu'il ne peut pas se derober silencieusement (ADR-0043).</p>
-     *
-     * <p><b>Propose pour confirmation ecrite de theo-archi (via sofia-sm), pas tranche seul</b> :
-     * ce retrait suit le patron deja etabli deux fois dans ce fichier pour un epinglage dont le
-     * sujet a disparu de la production, mais il n'a pas encore ete relu par lui.</p>
+     * DEC-0034 (s15) : restauree a l'identique de sa forme d'avant S14-2, remplace
+     * la note de retrait qui vivait ici depuis S14-2 (BARRE-7, DEC-0033). <b>Motif ecrit de la
+     * restauration</b>, exige par ADR-0013 : l'utilisatrice retablit le lien "Les jeux" de
+     * l'en-tete dans son etat d'avant s14 (DEC-0034), donc le bouton {@code .btn.lien-accueil} que
+     * cet epinglage confrontait existe de nouveau, a l'identique de sa forme d'alors (meme classe,
+     * meme libelle, meme ecran). Le couple qu'il nommait redevient formable et se mesure a nouveau
+     * vrai sur la production, sans qu'une seule valeur de ce test ait du changer.
      */
+    @Test
+    void leLienDeLEnTeteEstConfronteAuxSeulesActionsDeLAccueil() {
+        List<String> couples = couplesConfrontes(RACINE_PRODUCTION, RACINE_PRODUCTION);
+
+        assertThat(couples)
+                .as("le lien de l'en-tete se montre sur l'accueil, il s'y compare aux jeux a ouvrir")
+                .contains("ecran templates/accueil.html : .btn.demarrer \"Jouer\" contre "
+                        + ".btn.lien-accueil \"Les jeux\"");
+        assertThat(couples)
+                .as("ADR-0022 : masque sur les ecrans de jeu, ce lien n'y accompagne plus aucune "
+                        + "action ; l'y confronter mesurerait un ecran que l'enfant ne voit jamais")
+                .noneMatch(couple -> couple.contains(".btn.lien-accueil")
+                        && (couple.contains(".btn.proposition") || couple.contains(".btn.encore")));
+    }
 
     /**
      * L'en-tete permanent de S6-1 pose un lien de sortie hors de la zone echangee : il s'affiche
