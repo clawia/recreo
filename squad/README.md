@@ -108,6 +108,18 @@ sous 500 px (le plancher de `chrome --headless --window-size`) et aucune des deu
 n'avait laisse de commande citable. `outils/mesurer-rendu.sh` (`ADR-0025`) porte desormais cette
 commande pour toute mesure sous ce plancher.
 
+**Une propriete visible seulement par un humain qui joue n'est pas gardable par l'outillage du
+depot, et un verdict qui s'appuie sur elle le dit explicitement** (amendement s15, cloture de
+s15). `ADR-0025` avait deja declare non gardable le debordement de mise en page ; s15 en nomme deux
+instances de plus, chacune avec sa cause ecrite par `nadia-prof` : l'etat de survol reel d'un
+pressable (le seul outil de mesure du depot pilote un navigateur en mode capture, rien n'y conduit
+un navigateur, donc aucune image du depot n'a jamais montre un bouton sous le doigt) et un jugement
+de comprehension d'enfant ("le plein se lit deja choisi") qui repose sur un raisonnement nomme,
+jamais sur une mesure. Un verdict qui credite une telle propriete la declare degradee dans le meme
+paragraphe, sur le meme registre que l'amendement de s12 pour les releves automatiques cites en
+preuve - la difference etant que, ici, aucune commande future ne fera jamais disparaitre la
+limite : elle est structurelle a l'outillage actuel, pas a l'execution d'une mesure donnee.
+
 ## 5. La synthese de sprint - `RAPPORT.md`
 
 C'est le document qu'on lit en premier pour savoir ce qui s'est passe. Ecrit par Sofia a la
@@ -212,6 +224,18 @@ meme depot. Rien n'a ete perdu uniquement parce que les deux perimetres ne se re
 un nettoyage d'arbre aurait efface son travail sans qu'aucun commit n'en garde trace. La consigne
 de non-fusion reste valide pour tous les autres agents parce que chacun travaillait deja dans son
 propre worktree ; `camille-po` etait seule a ne pas en avoir ouvert.
+
+**Un sprint peut etre pilote par des arbitrages successifs de l'autorite produit plutot que par un
+objectif gele au planning, et le process le nomme plutot que de le taire** (amendement s15, cloture
+de s15). Dans ce mode, l'utilisatrice joue l'increment livre, rend un arbitrage, et ce rendu
+declenche immediatement un lot de developpement, sans story instruite au sens normal du terme ni
+avis de faisabilite ecrit avant coup. Deux exigences minimales restent dues meme sous ce mode, pour
+que la gouvernance par le depot ne se degrade pas : **chaque arbitrage recoit sa trace `DEC`
+(creation ou amendement) dans le meme geste que la fusion du lot qui l'implemente**, jamais reportee
+a la cloture du sprint - en s15, trois arbitrages sur cinq sont restes sans aucun fichier `DEC`
+pendant toute leur duree de vie en production, decouvert seulement en regularisant le planning a la
+fin ; et **`planning.md` nomme ce mode en clair** au lieu de fabriquer, avec le recul, un objectif
+gele qui n'a jamais existe.
 
 **2. Developpement.** Marc, Lea et Sofia codent, tests dans le meme commit. Yanis traduit les
 criteres d'acceptation en tests et fait tourner la suite. Tout obstacle va a Sofia, qui classe,
