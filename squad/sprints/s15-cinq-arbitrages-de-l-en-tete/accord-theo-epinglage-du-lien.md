@@ -6,7 +6,7 @@
   test appartient a `marc-dev`, je ne l'ecris pas a sa place.
 - **Objet** : le seul echec de la suite dans `../recreo-s15-marc-sortie`,
   `LActionNeDeclarePasMoinsQueLaSortieTest.leLienDeLEnTeteEstConfronteAuxSeulesActionsDeLAccueil`.
-- **Complement de** `squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-sortie-en-tete.md`
+- **Complement de** `squad/sprints/s15-cinq-arbitrages-de-l-en-tete/exigences-theo-sortie-en-tete.md`
   (branche `s15-theo-sortie`), dont la section 3 disait "`ADR-0017` : le garde-fou ne change pas".
   **Cette phrase etait vraie de la clause et fausse de l'epinglage du meme fichier** ; c'est cet
   ecart-la que ce document solde.
