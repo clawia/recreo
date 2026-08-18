@@ -757,37 +757,27 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    teinte, et c'est cette composante-la qui satisfait la clause. Nadia-prof refuse nommement de s'en
    tenir a une largeur a peine visible (0,0625rem, qu'il avait cite comme suffisant a la clause sans
    etre vu) : ici le contour garde la largeur deja en vigueur au repos (0,125rem), reellement percue.
-   Doit etre ecrite apres .chip-niveau:hover/:active : meme specificite (0,2,0), l'ordre de
-   declaration tranche (ines-design, section 2.3). Les trois etats (repos, survol, appui) sont
-   ecrits ensemble et identiques (ADR-0046 point 4, deja en vigueur sur .chip-niveau elle-meme) :
-   il n'existe que deux apparences possibles pour une puce, jamais quatre. */
-.chip-niveau.est-actif,
-.chip-niveau.est-actif:hover,
-.chip-niveau.est-actif:active {
+   S15, correction de theo-archi (squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-etat-actif-au-retour.md) :
+   sa premiere forme neutralisait l'apparence active sur le marqueur d'ecran de jeu et laissait donc
+   allumee toute autre route qui rend le catalogue complet sans filtre - defaut vu par l'utilisatrice
+   (CM1 presse puis "Les jeux" : la puce reste pleine). La regle est desormais positive et
+   conditionnelle : l'apparence active n'existe qu'a l'interieur de body:has(.filtre-niveau),
+   la marque que seul le catalogue filtre porte (voir accueil.html). Elle couvre d'un seul geste les
+   trois routes qui rendent le catalogue complet sans filtre et les quatre ecrans de jeu, qui ne
+   portent aucun des deux la marque - une neutralisation aurait du enumerer chacun, une condition
+   positive n'a rien a enumerer. Elle gagne aussi par specificite plutot que par ordre de
+   declaration : body + :has(.filtre-niveau) + .chip-niveau + .est-actif vaut (0,3,1) contre (0,2,0)
+   pour .chip-niveau:hover, quel que soit l'ordre des deux regles dans ce fichier.
+   Couplage voulu a .filtre-niveau (theo-archi, section 2) : une couleur sans phrase serait un
+   defaut silencieux (l'accord de nadia-prof sur l'etat actif repose sur la phrase disant la meme
+   chose dans la meme reponse) ; une phrase sans couleur reste vraie et se voit a la premiere
+   capture. La regle rend le premier etat structurellement inatteignable. */
+body:has(.filtre-niveau) .chip-niveau.est-actif,
+body:has(.filtre-niveau) .chip-niveau.est-actif:hover,
+body:has(.filtre-niveau) .chip-niveau.est-actif:active {
     background-color: var(--recreo-accent-texte);
     color: var(--recreo-entete-fond);
     border: 0.125rem solid var(--recreo-entete-fond);
-}
-
-/* S15 (partie 2 de la demande, "qui n'est plus active quand le jeu demarre") : neutralise
-   l'apparence active des que la zone de contenu porte le marqueur d'ecran de jeu, sans qu'aucun
-   rafraichissement d'en-tete ne soit necessaire et sans une ligne de JavaScript - le mecanisme est
-   deja eprouve par les masquages d'ADR-0022, reevalue en direct par le navigateur a chaque echange
-   htmx (exigences de theo-archi, exigences-theo-etat-actif.md, section 1.2). "ecran-de-jeu" et non
-   "ecran-exclusif" ni "ecran-porte-sa-sortie" : c'est le seul marqueur commun aux quatre fragments
-   de jeu (manche, retour, confirmation, erreur), donc le seul qui neutralise sur les quatre.
-   ATTENTION, forme non contractuelle : cette regle ne masque rien (aucun display), elle neutralise
-   une apparence. Elle ne doit jamais etre lue par masquages() (LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest) :
-   trois garde-fous lisent cette liste en y cherchant "ce qui est invisible", et une neutralisation
-   d'apparence leur ferait calculer un document faux en restant verts (clause E, theo-archi). La
-   puce reste visible et focalisable sur un ecran de jeu (AucunArretDeTabulationNEstDestructeurTest,
-   LActionNeDeclarePasMoinsQueLaSortieTest) : seule son apparence redevient celle du repos inactif -
-   nadia-prof, extinction sans transition ni animation (section 3 de son arbitrage, section 2.4 de
-   la proposition d'ines-design). */
-body:has(.ecran-de-jeu) .chip-niveau.est-actif {
-    background-color: transparent;
-    color: var(--recreo-accent-texte);
-    border: 0.125rem solid var(--recreo-accent-texte);
 }
 
 /* S14-2, correction du Done pedagogique refuse par nadia-prof (BARRE-1, BARRE-2), forme retenue
