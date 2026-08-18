@@ -37,7 +37,8 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0031 | Retrait de "Les grands nombres" du catalogue jusqu'a correction du rendu, contenu juge bon | s13 | 2026-08-16 | Acceptee, amendee le 2026-08-16 (prealable circulaire de nadia-prof leve par un chemin de verification hors catalogue joue ; "Le perimetre" refuse une seconde fois sur le meme motif, garde au catalogue, ligne repassee en cours ; reserve de longueur sur "Les mesures" routee au backlog s14) |
 | DEC-0032 | Perimetre du sprint 14 : la barre d'entree par niveau ouvre sous arbitrage prealable, le filtre par matiere est differe a s15, S13-6 est remplacee | s14 | 2026-08-17 | Acceptee sur le perimetre ; developpement de S14-1 bloque jusqu'a l'arbitrage prealable de nadia-prof |
 | DEC-0033 | BARRE-7 : le lien "Les jeux" de l'en-tete disparait de l'accueil, il n'y est pas remplace par un comportement neuf | s14 | 2026-08-17 | Remplacee par DEC-0034 |
-| DEC-0034 | L'utilisatrice retablit le lien "Les jeux" dans l'en-tete et unifie l'apparence des puces de niveau : DEC-0033 est remplacee | s15 | 2026-08-17 | Acceptee |
+| DEC-0034 | L'utilisatrice retablit le lien "Les jeux" dans l'en-tete et unifie l'apparence des puces de niveau : DEC-0033 est remplacee | s15 | 2026-08-17 | Acceptee, amendee (note) le 2026-08-18 (l'hypothese de masquage inchange sur les ecrans de jeu est depassee par l'arbitrage C de DEC-0035) |
+| DEC-0035 | Trois arbitrages de l'utilisatrice du sprint 15 (sortie permanente en tete pendant une manche, rang unique, couleur d'etat actif) n'avaient aucune trace ecrite | s15 | 2026-08-18 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0023` a ete amendee le 2026-08-12, sur son point 6
 (disparition de l'ecran intermediaire), laisse ouvert et route a `nadia-prof` pour arbitrage
@@ -293,3 +294,30 @@ ce qui contredit BARRE-9. Le refus pedagogique de `nadia-prof` qui avait motive 
 ni efface ni reecrit** : il reste lisible dans `squad/conformite/FICHE-barre-entree-niveau.md` et
 dans `DEC-0027`, ou une note datee du 2026-08-17 (s15) est ajoutee sous l'amendement qui enregistrait
 la fermeture de PORTE-1. Voir `DEC-0034` pour le detail, la chronologie complete et le routage.
+
+Amendement (pas une nouvelle reference) : `DEC-0027` a ete amendee une troisieme fois le
+2026-08-18 (s15), par une note ajoutee sous l'amendement du 2026-08-14. Un arbitrage neuf de
+l'utilisatrice - la sortie d'en-tete reste visible pendant une manche en cours - va plus loin que
+le principe que ce document avait accepte (limite aux etats de `fragments/manche.html`), et il est
+livre sous une forme technique neuve (second marqueur `ecran-porte-sa-sortie`) que `nadia-prof` juge
+pour la premiere fois, avec un verdict distinct de celui du 2026-08-14. Le verdict d'origine n'est
+pas corrige : il reste exact pour la forme qu'il jugeait alors. Voir la section "Note du 2026-08-18
+(s15)" dans `DEC-0027-retrait-bouton-sortie-fragment-manche-reouvre-s6-9-arbitrage-prealable-requis.md`,
+et le detail complet dans
+`DEC-0035-trois-arbitrages-de-s15-non-traces-sortie-permanente-rang-unique-etat-actif.md`
+(arbitrage C).
+
+Note (pas un amendement de fond, ajoutee le 2026-08-18) : `DEC-0034` recoit une note sous sa
+section de routage - la phrase qui supposait le lien "Les jeux" reste masque sur les ecrans de jeu
+est depassee par l'arbitrage C de `DEC-0035` (2026-08-18), qui retire ce masquage sur la manche.
+Les arbitrages A et B de `DEC-0034` restent inchanges et exacts. Voir la section "Note du 2026-08-18
+(s15)" dans `DEC-0034-utilisatrice-retablit-les-jeux-et-unifie-lapparence-des-puces.md`.
+
+`DEC-0035-trois-arbitrages-de-s15-non-traces-sortie-permanente-rang-unique-etat-actif.md` trace,
+retroactivement, les trois arbitrages de l'utilisatrice du 2026-08-18 qu'aucune decision produit ne
+portait avant elle : la sortie d'en-tete reste visible pendant une manche (arbitrage C), un seul
+rang dans l'en-tete (arbitrage D), une couleur sur la puce de niveau choisie eteinte au demarrage
+du jeu (arbitrage E). Elle explique aussi pourquoi le correctif technique d'une regression trouvee
+par l'utilisatrice sur l'arbitrage E (une puce gardait sa couleur apres un retour au catalogue
+complet) n'y entre pas comme un arbitrage distinct : il corrige une non-conformite a une condition
+pedagogique deja posee (S15-5), pas une decision produit neuve.

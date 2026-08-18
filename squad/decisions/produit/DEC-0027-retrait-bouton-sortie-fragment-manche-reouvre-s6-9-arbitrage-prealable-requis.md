@@ -232,3 +232,26 @@ ci-dessus n'est pas corrige : au moment ou `DEC-0033` l'a ecrit, la fermeture et
 change est posterieur, rendu par une autorite au-dessus de `nadia-prof` et de `camille-po`, et ce
 n'est pas une reouverture au sens ou la squad l'entend habituellement - personne ne remet en cause
 le motif de `nadia-prof`, l'utilisatrice choisit de vivre avec.
+
+## Note du 2026-08-18 (s15) - un troisieme arbitrage va plus loin que ce que le principe accepte ici couvrait, et il est juge sous une forme neuve
+
+L'amendement du 2026-08-14 enregistrait un verdict de `nadia-prof` qui **acceptait le principe**
+d'une sortie unique dans l'en-tete, **mais seulement sur les etats de `fragments/manche.html`**, et
+**refusait la forme instruite** parce qu'elle demasquait aussi la confirmation et l'erreur, ou elle
+aurait fait lire "Les jeux" deux fois ou aux cotes d'un second mot de sortie.
+
+Le 2026-08-18, l'utilisatrice rend un arbitrage qui va plus loin que ce que ce principe couvrait :
+la sortie d'en-tete reste visible pendant une manche **sans limitation aux six conditions PORTE-1 a
+PORTE-6** que cet amendement portait, et sous une **forme technique neuve** - un second marqueur
+structurel (`ecran-porte-sa-sortie`) qui masque le lien sur la confirmation et la fin de partie
+sans reproduire le defaut que la forme refusee ici aurait cause. Cette forme n'est ni celle que
+`DEC-0027` avait instruite, ni couverte par son verdict : elle est jugee pour la premiere fois par
+`nadia-prof` sur l'increment `b109f98`, avec un verdict **VALIDE SOUS RESERVE** distinct de celui
+enregistre ci-dessus. Le detail complet, la chronologie et ce que cet arbitrage coute sont dans
+`DEC-0035-trois-arbitrages-de-s15-non-traces-sortie-permanente-rang-unique-etat-actif.md`,
+arbitrage C.
+
+**Ce que cette note ne fait pas** : elle ne retire ni ne corrige le verdict du 2026-08-14 ci-dessus,
+qui reste exact pour la forme qu'il jugeait a l'epoque. Elle situe seulement l'arbitrage de s15 par
+rapport a lui, pour qu'un lecteur ne confonde pas les six conditions PORTE avec les conditions
+posees par `nadia-prof` sur la forme livree en s15.

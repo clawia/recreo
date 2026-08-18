@@ -192,3 +192,23 @@ jour ou quelqu'un lira `ADR-0022` point 3 sans en avoir suivi l'historique.
   conditions qu'elle a deja tranchees dans l'autre sens (BARRE-7 et BARRE-9) au regard d'un
   arbitrage de l'utilisatrice qui les surplombe ; c'est a elle de dire ce qu'elle en fait, y
   compris si elle souhaite reformuler ces conditions plutot que les lever purement et simplement.
+
+## Note du 2026-08-18 (s15) - la section "Ce que cette decision ne fait pas" supposait un masquage qu'un arbitrage posterieur retire
+
+Cette decision ecrivait, au sujet du lien "Les jeux" retabli par l'arbitrage A : *"elle ne choisit
+aucun moyen technique : ni la forme du masquage du lien Les jeux sur les ecrans de jeu (qui
+reutilise la forme generalisee de la clause 2 d'ADR-0022 [...])"*. Cette phrase supposait que le
+lien resterait masque sur les ecrans de jeu, comme il l'etait depuis S6-9 (2026-08-07) - seul le
+retrait sur l'accueil non filtre etait en cause dans l'arbitrage A.
+
+**Un troisieme arbitrage, rendu le lendemain (2026-08-18), retire ce masquage sur la manche** : la
+sortie d'en-tete reste desormais visible pendant une partie en cours, ce que l'arbitrage A seul
+n'avait pas demande. Le masquage sur les ecrans de jeu que cette decision anticipait comme
+inchange **ne l'est plus** que sur la confirmation et la fin de partie, via un second marqueur
+neuf. Le detail, la chronologie complete et ce que cet arbitrage coute (BARRE-3, BARRE-9) sont
+dans `DEC-0035-trois-arbitrages-de-s15-non-traces-sortie-permanente-rang-unique-etat-actif.md`,
+arbitrage C.
+
+**Ce que cette note ne fait pas** : elle ne corrige aucune autre partie de `DEC-0034`, dont les
+arbitrages A et B restent exacts et inchanges tels qu'ecrits le 2026-08-17. Elle situe seulement la
+phrase ci-dessus par rapport a un arbitrage qui lui succede.
