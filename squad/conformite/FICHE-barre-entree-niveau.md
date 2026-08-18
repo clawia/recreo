@@ -3,7 +3,18 @@
 - **Increment** : deux boutons d'entree par niveau (CP / CM1) dans l'en-tete de recreo, toujours
   visibles y compris sur un ecran de jeu, story `S14-1` (`docs/backlog/backlog.md`, section
   "Sprint 14").
-- **Statut global au 2026-08-18** : **Done pedagogique de S15-1, S15-2 et du troisieme arbitrage
+- **Statut global au 2026-08-18, second lot** : **Done pedagogique du rang unique et de l'etat actif
+  prononce par `nadia-prof` : VALIDE**, sur l'increment `65da40e`. **Les sept conditions S15-1 a S15-7
+  sont tenues**, dont les trois que j'etais seule a pouvoir mesurer : **zero pixel de debordement de
+  document** aux six largeurs demandees (300, 320, 345, 346, 360, 470 px), en-tete a **143 px** a
+  360 px, et un etat actif qui differe de l'inactif par une **inversion complete de sa boite, 9,25:1
+  mesure sur les pixels rendus**. Le lot rend les **8 px** annonces au budget du pli. **Le plein se lit
+  "deja choisi"** - jugement, non mesure - **et mon accord tient a trois jambes nommees** : l'enfant
+  vient de le produire, la phrase "Pour le CP" dit la meme chose, l'aplat n'est pas la couleur d'une
+  action. **Reserve S15-C reduite, non fermee** : "Les jeux" reste visuellement identique a une puce
+  inactive. **Une propriete non gardee est routee a `theo-archi`** : l'etat actif d'une puce ne change
+  pas d'apparence sous le doigt, code juste aujourd'hui, mais aucun test ne le tient.
+- **Statut du premier lot de s15** : **Done pedagogique de S15-1, S15-2 et du troisieme arbitrage
   prononce par `nadia-prof` : VALIDE SOUS RESERVE**, sur l'increment fusionne (`b109f98`), apres
   l'avoir joue. L'increment applique quatre arbitrages de l'utilisatrice, dont deux defont des
   decisions que j'avais rendues (BARRE-7 defaite, BARRE-9 annulee, le compte de BARRE-3 annule) : **ces
@@ -55,9 +66,12 @@
 - **Releves de mesure du 2026-08-18** : `squad/conformite/releves-s15/`, sept captures a 360 px et au
   pli de 640 px, memes noms d'ecran que les series `barre-`, `livre-` et `corrige-` de s14, pour que la
   comparaison se fasse image contre image sur quatre etats successifs du meme produit.
-- **Derniere mise a jour** : 2026-08-18 (Done pedagogique de S15-1, S15-2 et du troisieme arbitrage
-  prononce VALIDE SOUS RESERVE ; arbitrage prealable rendu sur les deux demandes neuves ; tous les
-  verdicts anterieurs, dont le refus du 2026-08-17, sont inchanges et lisibles sous eux).
+- **Derniere mise a jour** : 2026-08-18 (Done pedagogique du second lot de s15 - rang unique et etat
+  actif - prononce VALIDE apres les trois mesures que `sofia-sm` avait retenues ; tous les verdicts
+  anterieurs, dont le refus du 2026-08-17, sont inchanges et lisibles sous eux).
+- **Releves du second lot** : `squad/conformite/releves-s15/`, six sondes de debordement
+  (`mesure-debordement-<largeur>.png`), la mesure de cascade du survol (`mesure-cascade-hover.png`) et
+  quatre captures d'ecran prefixees `lot2-`.
 
 ## Competences visees
 
@@ -88,7 +102,245 @@ Cette story n'ouvre, ne ferme et ne rejuge aucune ligne de `squad/programme/MATR
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. Il reste vide tant qu'aucun
 > arbitrage prealable n'a ete rendu et qu'aucun increment n'a ete livre et joue.
 
-### Arbitrage prealable du 2026-08-18 (s15) - rang unique et etat actif de la puce : variante 1 retenue, sept conditions - le plus recent de cette fiche
+### Done pedagogique du 2026-08-18 (s15), second lot - rang unique et etat actif : VALIDE - le plus recent de cette fiche
+
+> **Ce que cette section fait.** Elle prononce le Done pedagogique du lot qui applique mon arbitrage
+> prealable du meme jour, lisible juste en dessous et non modifie. **Trois de mes sept conditions
+> n'etaient mesurables que par moi** et `sofia-sm` a eu raison de retenir le Done jusqu'a ce que je les
+> produise : les voici, avec leurs chiffres et la commande qui les a produits.
+
+- **Verdict** : **VALIDE**. Done pedagogique prononce. **Motif, en deux phrases** : **les sept
+  conditions S15-1 a S15-7 sont tenues, et les trois que j'etais seule a pouvoir mesurer le sont au
+  chiffre** - **zero pixel de debordement de document aux six largeurs demandees**, en-tete a
+  **143 px** a 360 px, et un etat actif qui differe de l'etat inactif par une **inversion complete de
+  sa boite, mesuree a 9,25:1 sur les pixels rendus**. Le lot ne cree aucun defaut neuf, il **rend 8 px
+  au budget du pli** comme annonce, et il **reduit** ma reserve S15-C sans la fermer.
+- **Auteur** : nadia-prof. **Increment juge** : `round-two` a `65da40e`, worktree `s15-nadia-mesures`,
+  lignee verifiee par `outils/verifier-lignee.sh`, aucun fichier de production modifie de mon fait.
+- **Porte technique, recomptee par mes propres commandes** : `bash outils/mvn-jdk21.sh -B clean
+  verify`, **BUILD SUCCESS, 528 tests, 0 echec** ; `bash .github/scripts/verifier-chemins.sh` en code 0.
+- **L'instance de l'utilisatrice n'a pas ete touchee** : elle ecoute sur son port, j'ai lance la mienne
+  sur un autre et **je l'ai arretee par son PID**, comme le service de fichiers de mes documents
+  assembles. Aucun processus arrete par nom d'image.
+
+#### 0. Methode, et ce que je reprends d'`ines-design`
+
+**Le chiffre de debordement n'est pas lu a l'oeil sur une image** - une capture decoupe silencieusement
+a la largeur demandee et masque justement le defaut cherche, `ines-design` l'a etabli et je le reprends.
+Une sonde posee dans la page lit `document.documentElement.scrollWidth` et `clientWidth` apres
+chargement, ainsi que `getBoundingClientRect()` de l'en-tete, des deux puces et de la sortie, et
+**ecrit ces valeurs dans la page** ; c'est cette valeur, calculee par le navigateur lui-meme, qui est
+ensuite capturee :
+
+```
+outils/mesurer-rendu.sh <largeur> <url> <png>
+outils/mesurer-rendu.sh 360 <url> <png> 640
+```
+
+Aucune ligne de production modifiee : les documents mesures sont ceux que le serveur rend, la sonde est
+ajoutee dans une copie servie a part.
+
+#### 1. S15-1 - zero debordement aux six largeurs, et le seuil de 346 px confirme sur le code livre
+
+Valeurs relevees par la sonde, une capture par largeur
+(`squad/conformite/releves-s15/mesure-debordement-<largeur>.png`) :
+
+| Largeur | Debordement | En-tete | Puce CP | Puce CM1 | Sortie "Les jeux" |
+|---|---|---|---|---|---|
+| 300 px | **0 px** | 143 px | 56 x 50 @ y16 | 74 x 50 @ **y76** | 109 x 53 @ y74 |
+| 320 px | **0 px** | 143 px | 56 x 50 @ y16 | 74 x 50 @ **y76** | 109 x 53 @ y74 |
+| 345 px | **0 px** | 143 px | 56 x 50 @ y16 | 74 x 50 @ **y76** | 109 x 53 @ y74 |
+| 346 px | **0 px** | 143 px | 56 x 50 @ y16 | 74 x 50 @ **y16** | 109 x 53 @ y74 |
+| 360 px | **0 px** | 143 px | 56 x 50 @ y16 | 74 x 50 @ **y16** | 109 x 53 @ y74 |
+| 470 px | **0 px** | **85 px** | 56 x 50 @ y18 | 74 x 50 @ y18 | 109 x 53 @ y16 |
+
+**S15-1 : TENUE.** `scrollWidth` egale `clientWidth` aux six largeurs, y compris **sous le plancher
+accepte** - c'est ce que la variante 2 n'aurait pas fait, et c'est la raison pour laquelle je l'ai
+refusee.
+
+**Le seuil d'`ines-design` se verifie au pixel sur le code livre** : "CM1" est sur la seconde ligne a
+345 px et remonte a cote de "CP" a 346 px. Le mode de defaillance que j'ai accepte est donc exactement
+celui qu'elle avait decrit - sous le plancher, "CM1" change de voisin, **rien ne devient
+inatteignable**. Et le rang unique complet apparait bien a 470 px, ou l'en-tete tombe a **85 px**.
+
+**Les boites, verifiees au passage** : puces **56 x 50** et **74 x 50 px**, sortie **109 x 53 px** -
+au-dessus du plancher de cible de 44 x 44 px, et la sortie garde exactement la boite dont j'avais fait
+un plancher en PORTE-5 le 2026-08-14. Aucune boite n'a ete retrecie pour payer le rang unique.
+
+#### 2. S15-7 - 143 px, exactement ma borne, et les 8 px annonces sont rendus
+
+**S15-7 : TENUE.** En-tete a **143 px** a 360 px, la valeur meme qu'`ines-design` avait mesuree sur son
+mockup et que j'avais posee en plafond. Contre **151 px** avant ce lot.
+
+**Et je verifie ou vont ces 8 px**, sur le meme item de grands nombres que je suis depuis trois
+verdicts, meme commande, meme colonne x = 180 - **apres avoir corrige une erreur de ma part** : mon
+premier tirage avait retenu un item different ("Compare 305 421 et 350 421.") parce que mon filtre ne
+testait que le nombre ; le chiffre qu'il donnait, y = 363, ne voulait rien dire et je l'ai jete.
+
+| Etat du produit | Haut du cabinet |
+|---|---|
+| avant s14 | y = 397 |
+| s14 | y = 410 |
+| s15, avant ce lot | y = 419 |
+| **s15, ce lot** | **y = 411** |
+
+Les 8 px reviennent, exactement. Le solde depuis avant s14 est de **+14 px**, contre +22 px avant ce
+lot. **Ma reserve sur le pli reste ouverte sur la fiche des grands nombres**, et elle est un peu moins
+lourde qu'hier.
+
+#### 3. Le contraste percu de l'etat actif, mesure sur les pixels rendus et non sur les valeurs declarees
+
+Capture `lot2-accueil-filtre-cp-360x640.png`, echantillonnage des aplats dans la boite de chaque puce :
+
+| | Aplat dominant de la boite | Texte |
+|---|---|---|
+| puce **CP, active** | **`#ffffff`** sur 1 942 px de sa boite | `#1d4b6b` |
+| puce **CM1, inactive** | `#1d4b6b` sur 2 320 px de sa boite (le fond de l'en-tete) | `#ffffff` |
+
+Les deux etats sont **l'inversion exacte l'un de l'autre**, et le rapport de luminance entre les deux
+aplats - c'est-a-dire la difference que l'oeil voit entre une puce et l'autre - est de **9,25:1**,
+calcule par la formule WCAG sur les couleurs **relevees sur l'image**, pas sur celles declarees dans la
+feuille. Le texte tient le meme 9,25:1 dans les deux etats.
+
+**Ce que cela vaut pedagogiquement, et c'est la raison pour laquelle j'avais exige un canal non
+chromatique** : la distinction ne repose sur aucune teinte. C'est une **boite claire contre une boite
+sombre**, sur toute sa surface. Un enfant qui ne distingue pas les couleurs la voit ; un enfant qui
+regarde de loin la voit ; elle survit a un ecran mal regle. **Le porteur que j'avais valide est bien
+celui qui est livre**, et il porte l'information au lieu de se contenter d'exister - c'est la
+distinction que `theo-archi` avait eu raison de me laisser, et le contour de 0,0625rem que je refusais
+n'aurait rien donne de tel.
+
+#### 4. La question de `marc-dev` : "deja choisi" ou "appuie-moi" ? - ma reponse est "deja choisi", et je dis a quelles conditions
+
+**Ma reponse : le plein se lit "deja choisi", et il le fait parce que trois choses tiennent
+ensemble.** Aucune des trois ne suffit seule, et c'est pourquoi je les avais posees ensemble.
+
+1. **L'enfant vient de le produire.** Ma condition S15-5 garantit qu'aucun enfant ne rencontre un etat
+   actif qu'il n'a pas fabrique lui-meme un geste plus tot. Le plein est donc la reponse a son appui,
+   jamais une consigne qui l'attendait.
+2. **Les mots disent la meme chose que la couleur.** "Pour le CP" est la, au-dessus de la liste, dans
+   la meme reponse. Un enfant qui hesiterait sur ce que veut dire une boite blanche **lit la phrase**.
+   C'est exactement pourquoi j'ai refuse de traiter cette phrase comme un repli : elle est le sens
+   ecrit du signal visuel, comme le texte accompagne le signal juste/faux en M11.
+3. **Le plein n'est pas la couleur d'une action.** Verifie sur la capture : les six boutons de jeu sont
+   des aplats **bleus** et la puce active est un aplat **blanc**. Aucune action de cette application
+   n'est blanche. La puce ne ressemble donc a rien de ce qu'on presse pour avancer.
+
+**Ce que je surveille malgre tout, et que je nomme** : sur cette capture, la puce active est l'element
+le plus clair de l'en-tete, donc le plus attirant de cette zone. Ce qui me rassure est la hierarchie
+des tailles - les boutons de jeu sont trois fois plus larges, en texte gras, dans la zone que l'enfant
+regarde - et le fait que la puce garde **exactement la meme boite** que la puce inactive : seule la
+matiere de la boite s'inverse, sa taille ne bouge pas d'un pixel (56 x 50 dans les deux etats,
+mesure).
+
+**Et je le dis comme un jugement, pas comme une mesure** : je n'ai pas observe d'enfant, et je ne peux
+pas mesurer ce qu'il lit. **Ma reponse est donc conditionnelle et je pose la condition pour la suite** :
+elle vaut tant que les trois jambes tiennent. **Le jour ou l'une tombe - un filtre qui persiste, la
+phrase retiree, l'aplat recolore - mon accord tombe avec elle**, et il faudra me le redemander. Ce
+n'est pas une reserve nouvelle : c'est la portee exacte de l'accord que j'ai donne le matin.
+
+#### 5. Le survol - ce que je peux mesurer, ce que je ne peux toujours pas, et ce que la mesure dit
+
+**Ce que je ne peux pas faire, et c'est la seconde fois que je le nomme avec sa cause** : je ne peux
+pas produire un rendu survole. `outils/mesurer-rendu.sh` pilote un navigateur en mode capture ; **rien
+dans ce depot ne conduit un navigateur**, donc rien ne peut poser un pointeur sur un bouton. **Aucune
+image de ce depot n'a jamais montre, et ne peut montrer, un bouton sous le doigt.** C'est la cause
+exacte pour laquelle le defaut que l'utilisatrice a vu a traverse quinze sprints et une CI verte, et
+elle est de nature outillage, pas de nature attention.
+
+**Ce que j'ai pu faire, en revanche, et qui est une mesure et non une lecture** : faire dire au
+navigateur lui-meme quelle declaration l'emporte sous le doigt. J'ai charge les **deux feuilles
+reelles** telles que l'application les sert, dans l'ordre que le document declare, et fait enumerer par
+le navigateur toutes les regles d'etat (`:hover`, `:active`) qui visent une puce ou un `.btn`
+(`squad/conformite/releves-s15/mesure-cascade-hover.png`). Resultat, dans l'ordre du document :
+
+| Ordre | Feuille | Selecteur | Ce qu'il pose |
+|---|---|---|---|
+| #299 | tierce | `.btn:hover` | fond, texte et bordure des variables de la feuille tierce |
+| #1239 | maison | `.chip-niveau:hover`, `.chip-niveau:active` | fond transparent, texte et bordure blancs |
+| #1240 | maison | `.chip-niveau.est-actif:hover`, `.chip-niveau.est-actif:active` | fond blanc, texte et bordure a la teinte de l'en-tete |
+
+**Ce que cela etablit** : la regle du selecteur compose (#1240) est **plus specifique** que celle de la feuille
+tierce (trois classes contre deux) **et posterieure** dans le document. Elle gagne donc deux fois.
+**Sous le doigt, la puce active garde son aplat blanc et son texte sombre**, et la puce inactive garde
+son contour blanc. **Le defaut de survol est ferme pour les deux etats de la puce**, et je le tiens
+desormais d'une mesure et non d'une lecture de fichier.
+
+**Une precaution de methode que je declare, parce que ma premiere tentative a echoue** : une feuille
+servie depuis une autre origine refuse d'exposer ses regles au script, et mon premier releve n'a donc
+rien rendu du tout - je l'ai jete plutot que de conclure. Le releve retenu **inline** les deux feuilles
+telles que je les ai recuperees de l'application en cours d'execution, dans le meme ordre ; cela ne
+change ni leur contenu ni leur ordre, donc ni la specificite ni le vainqueur, et c'est la seule
+approximation de cette mesure.
+
+**Ce que la mesure dit du trou de garde-fou que `sofia-sm` a trouve, et il vaut la peine d'etre
+chiffre.** Elle a retire les etats du selecteur compose et les sept tests d'`ADR-0046` sont restes
+verts : la propriete existe dans le code livre mais rien ne la garde. **La mesure ci-dessus me permet
+de dire ce que coute exactement cette absence de garde** : si `#1240` disparaissait, le vainqueur sous
+le doigt deviendrait `#1239` - posterieur a la feuille tierce et de meme specificite qu'elle - donc la
+puce active prendrait **fond transparent, texte blanc**, c'est-a-dire l'apparence **d'une puce
+inactive**.
+
+- **Le defaut qui reviendrait n'est donc pas celui que l'utilisatrice a vu** (un bouton dont le texte
+  s'efface) : c'est **la disparition de l'etat actif pendant que le doigt est dessus**. Plus discret,
+  et pour cette raison plus probable de passer.
+- **Pedagogiquement** : un enfant qui appuie sur la puce de son niveau la verrait redevenir semblable a
+  l'autre au moment ou il la presse. C'est une contradiction entre son geste et ce qu'il voit, sur le
+  seul element de l'ecran qui lui dit ou il est.
+- **Je route donc a `theo-archi` un fait, pas une exigence de forme** : la propriete non gardee est
+  *"l'etat actif d'une puce ne change pas d'apparence sous le doigt"*, et **le contre-exemple qui la
+  mettrait a l'epreuve est celui que `sofia-sm` a deja fabrique** en mutant la feuille de production.
+  **Ce n'est pas un motif de refus** : le code livre est juste, mesure ci-dessus. C'est une story.
+
+#### 6. Etat des sept conditions, une par une
+
+| | Etat | Chiffre ou constat |
+|---|---|---|
+| **S15-1** | **TENUE** | debordement **0 px** a 300, 320, 345, 346, 360 et 470 px |
+| **S15-2** | **TENUE** | "Pour le CP" present au-dessus de la liste filtree, une fois, et "Pour le CM1" sur l'autre |
+| **S15-3** | **TENUE** | la puce change d'apparence **dans la reponse a l'appui** : l'appui est devenu une navigation complete, le document rendu porte `est-actif` **une seule fois**, sur la puce pressee |
+| **S15-4** | **TENUE** | sur une manche demarree depuis une liste filtree, **aucune puce ne porte `est-actif`** - verifie dans le document servi et sur la capture `lot2-manche-apres-filtre-360x640.png`, les deux puces sont en contour |
+| **S15-5** | **TENUE** | aucune persistance : le document de l'accueil non filtre ne porte **aucun** `est-actif`, et le demarrage d'une partie n'en laisse aucun |
+| **S15-6** | **TENUE** | la colonne de contenu d'une manche commence par "Score : 0" |
+| **S15-7** | **TENUE** | **143 px** a 360 px, ma borne exacte ; 85 px a 470 px |
+
+**Et mes six refus du matin sont tous respectes** : variante 1 livree, aplat blanc et non
+`--recreo-accent`, aucun contour mince en guise de second canal, aucune animation sur l'allumage ni sur
+l'extinction, aucune persistance, aucun pictogramme dans la puce.
+
+#### 7. Ce qui reste ouvert, pour que ce VALIDE ne se lise pas comme "tout est ferme"
+
+- **Reserve S15-C, reduite et non fermee.** L'etat actif distingue desormais CP de CM1, mais **"Les
+  jeux" reste visuellement identique a une puce inactive** : meme contour, meme boite a 4 px pres.
+  Sur la capture, un enfant voit une boite pleine et **deux** boites en contour dont l'une montre tout
+  et l'autre filtre l'autre niveau. **Non bloquante**, reduite d'un tiers par ce lot, et candidate a
+  une story.
+- **Ma reserve sur le pli** reste ouverte sur la fiche des grands nombres, a **+14 px** depuis avant
+  s14 au lieu de +22.
+- **La propriete non gardee du survol de la puce active** (le 5), routee a `theo-archi` avec le
+  contre-exemple deja fabrique.
+- **F11** n'est pas levee, et elle s'enrichit encore : l'en-tete porte desormais trois controles dont
+  un qui change d'apparence selon l'etat, et **l'appui sur une puce est devenu un chargement de page
+  complet** - ce qu'une voix annonce apres un rechargement n'est pas ce qu'elle annonce apres un
+  echange partiel. Le protocole que j'ai ecrit le 2026-08-15 reste valable ; son geste 1 aura un
+  element de plus a entendre.
+
+#### 8. Ce que je declare degrade
+
+- **Je ne peux pas produire un rendu survole**, et je viens de dire pourquoi avec la cause exacte
+  (le 5). Ce que j'ai obtenu est le **vainqueur de la cascade mesure par le navigateur**, pas un pixel
+  sous un pointeur.
+- **Je n'ai pas presse la touche de tabulation** : l'ordre des arrets reste lu dans le document.
+- **Je n'ai pas joue au doigt sur un telephone, ni observe un enfant.** Ma reponse au 4 sur "deja
+  choisi" est un **jugement de professeure**, conditionne aux trois jambes que j'y nomme.
+- **Un seul item echantillonne** pour le pli, et **j'ai jete mon premier chiffre** parce qu'il portait
+  sur un autre item que celui que je suis depuis trois verdicts.
+- **Je reste la seule de cette squad a pouvoir produire un chiffre de rendu sur ce poste.** Trois
+  conditions de ce lot n'etaient mesurables que par moi ; c'est une dependance a une seule personne, et
+  le fait que `sofia-sm` ait retenu le Done jusqu'a ma mesure est la bonne conduite - mais cela ne rend
+  pas la dependance moins reelle.
+
+### Arbitrage prealable du 2026-08-18 (s15) - rang unique et etat actif de la puce : variante 1 retenue, sept conditions
 
 > **Ce que cette section fait.** Elle repond aux cinq questions d'`ines-design`
 > (`squad/sprints/s15-cinq-arbitrages-de-l-en-tete/proposition-ines-etat-actif-et-rang-unique.md`,
