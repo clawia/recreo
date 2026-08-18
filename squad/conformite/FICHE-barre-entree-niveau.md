@@ -3,7 +3,17 @@
 - **Increment** : deux boutons d'entree par niveau (CP / CM1) dans l'en-tete de recreo, toujours
   visibles y compris sur un ecran de jeu, story `S14-1` (`docs/backlog/backlog.md`, section
   "Sprint 14").
-- **Statut global au 2026-08-18, second lot** : **Done pedagogique du rang unique et de l'etat actif
+- **Statut global a la cloture de s15 (2026-08-18)** : **correctif de la regression de l'etat actif
+  VALIDE SOUS RESERVE** sur l'increment `6b3641e` - la couleur de selection est **eteinte sur les trois
+  routes** (`/retour`, `/retour/confirmer`, `/niveaux/{niveau}/confirmer`), verifie **au pixel sur le
+  rendu et non sur la classe**, et elle **reste** la ou elle est legitime, sur la liste filtree. **Une
+  reserve neuve, S15-D** : sur `/niveaux/{niveau}/confirmer`, l'enfant atterrit sur une liste filtree a
+  six jeux **sans aucune phrase pour le dire** - ma condition S15-2 est tenue sur une route et pas sur
+  l'autre. **Le couplage de la couleur a ma phrase me convient** : il rend l'etat "couleur sans phrase"
+  structurellement inatteignable, ce qui vaut mieux qu'une vigilance de ma part. **Arbitrage rendu sur
+  la question d'`ines-design`** : **variante 1, la forme neutre**, sous deux conditions S15-8 et S15-9 -
+  ce qui debloque `theo-archi` sans rouge a faire taire ni exemption a ecrire.
+- **Statut du second lot de s15** : **Done pedagogique du rang unique et de l'etat actif
   prononce par `nadia-prof` : VALIDE**, sur l'increment `65da40e`. **Les sept conditions S15-1 a S15-7
   sont tenues**, dont les trois que j'etais seule a pouvoir mesurer : **zero pixel de debordement de
   document** aux six largeurs demandees (300, 320, 345, 346, 360, 470 px), en-tete a **143 px** a
@@ -66,9 +76,12 @@
 - **Releves de mesure du 2026-08-18** : `squad/conformite/releves-s15/`, sept captures a 360 px et au
   pli de 640 px, memes noms d'ecran que les series `barre-`, `livre-` et `corrige-` de s14, pour que la
   comparaison se fasse image contre image sur quatre etats successifs du meme produit.
-- **Derniere mise a jour** : 2026-08-18 (Done pedagogique du second lot de s15 - rang unique et etat
-  actif - prononce VALIDE apres les trois mesures que `sofia-sm` avait retenues ; tous les verdicts
-  anterieurs, dont le refus du 2026-08-17, sont inchanges et lisibles sous eux).
+- **Derniere mise a jour** : 2026-08-18, cloture de s15 (correctif de la regression de l'etat actif
+  juge sur les trois routes ; arbitrage rendu sur le retour sous le doigt d'une proposition deja
+  essayee ; tous les verdicts anterieurs, dont le refus du 2026-08-17, sont inchanges et lisibles sous
+  eux).
+- **Releves de cloture** : `squad/conformite/releves-s15/`, cinq captures prefixees `cloture-`, une par
+  etat mesure, avec l'aplat de chaque puce echantillonne dans sa boite.
 - **Releves du second lot** : `squad/conformite/releves-s15/`, six sondes de debordement
   (`mesure-debordement-<largeur>.png`), la mesure de cascade du survol (`mesure-cascade-hover.png`) et
   quatre captures d'ecran prefixees `lot2-`.
@@ -102,7 +115,206 @@ Cette story n'ouvre, ne ferme et ne rejuge aucune ligne de `squad/programme/MATR
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. Il reste vide tant qu'aucun
 > arbitrage prealable n'a ete rendu et qu'aucun increment n'a ete livre et joue.
 
-### Done pedagogique du 2026-08-18 (s15), second lot - rang unique et etat actif : VALIDE - le plus recent de cette fiche
+### Done pedagogique du 2026-08-18 (s15), cloture - le correctif de regression est VALIDE SOUS RESERVE, et l'arbitrage sur le retour sous le doigt - le plus recent de cette fiche
+
+> **Ce que cette section fait.** Elle juge le correctif de la regression que l'utilisatrice avait
+> trouvee dans le lot que j'avais valide - la puce gardait sa couleur de selection apres un appui sur
+> "Les jeux" - et elle rend l'arbitrage qu'`ines-design` et `theo-archi` attendent tous les deux pour
+> debloquer la correction de la derivation d'`ADR-0046`. Elle n'efface aucun verdict anterieur.
+
+- **Verdict sur le correctif** : **VALIDE SOUS RESERVE**. **Motif, en deux phrases** : la couleur de
+  selection est **eteinte sur les trois routes**, verifie au pixel sur le rendu et non sur la classe -
+  la puce garde `est-actif` dans le document, et c'est bien l'**apparence** qui disparait, ce qui est
+  exactement ce que la regle positive devait obtenir. **Une reserve, et elle porte sur ma propre
+  condition S15-2** : sur `/niveaux/{niveau}/confirmer`, l'enfant atterrit sur une liste **filtree a
+  six jeux sans aucune phrase pour le dire**, donc rien a l'ecran ne nomme le filtre qui vient d'etre
+  applique.
+- **Auteur** : nadia-prof. **Increment juge** : `round-two` a `6b3641e`, worktree `s15-nadia-cloture`,
+  lignee verifiee par `outils/verifier-lignee.sh`, aucun fichier de production modifie de mon fait.
+- **Porte technique, recomptee par mes commandes** : `bash outils/mvn-jdk21.sh -B clean verify`,
+  **BUILD SUCCESS, 528 tests, 0 echec**.
+- **Aucune instance de l'utilisatrice ne tournait** ; j'ai lance la mienne sur un port a moi et je l'ai
+  arretee, avec le service de fichiers de mes documents assembles, **par leur PID**.
+
+#### 0. Methode
+
+Meme methode que mes quatre verdicts precedents, pour que les chiffres se comparent : l'etat echange
+est obtenu en rejouant cote serveur le remplacement que htmx fait cote navigateur - le fragment que la
+route rend reellement est injecte dans la zone de jeu du document complet, **l'en-tete restant celui de
+la navigation precedente**, ce qui est precisement la situation ou la regression vivait.
+
+```
+outils/mesurer-rendu.sh 360 <url> <png> 640
+```
+
+Cinq captures dans `squad/conformite/releves-s15/`, prefixees `cloture-`. La couleur de chaque puce est
+ensuite **echantillonnee dans sa boite** sur l'image, jamais jugee a l'oeil.
+
+#### 1. Les trois routes, une par une, mesurees sur les pixels
+
+Depart commun, et c'est le pire cas : l'enfant filtre sur **CM1**, donc l'en-tete porte `est-actif` sur
+la puce CM1 et cette puce est **blanche** - etat legitime, verifie d'abord (`cloture-0`).
+
+| Etat | Jeux montres | Phrase | Aplat de la puce CM1 | Verdict |
+|---|---|---|---|---|
+| **depart** - liste filtree CM1 | 5 | "Pour le CM1" | **`#ffffff`** sur 2 328 px | l'apparence active est **la ou elle doit etre** |
+| **route 1** - `/retour` | 11 | aucune | **`#1d4b6b`** sur 2 320 px | **eteinte** |
+| **route 2** - `/retour/confirmer` | 11 | aucune | **`#1d4b6b`** sur 2 320 px | **eteinte** |
+| **route 3** - `/niveaux/CP/confirmer` | **6** | **aucune** | **`#1d4b6b`** sur 2 320 px | **eteinte** |
+| manche demarree apres un filtre | 3 propositions | aucune | **`#1d4b6b`** sur 2 320 px | **eteinte** |
+
+`#1d4b6b` est le fond de l'en-tete : la puce n'a plus d'aplat propre, elle est redevenue un contour.
+**La regression est fermee sur les trois routes**, et sur la manche par le meme geste.
+
+**Ce que je verifie en plus, parce que la regle a change de forme et qu'une regle plus large peut
+eteindre ce qu'il faut garder** : l'apparence active **reste** sur la liste filtree - c'est la premiere
+ligne du tableau, `#ffffff` sur 2 328 px, avec son contraste de **9,25:1** contre la puce voisine,
+inchange. Et elle ne **reapparait nulle part** : cinq etats mesures, quatre eteints, un allume, et
+c'est le bon.
+
+**Je note que la puce conserve la classe `est-actif` dans le document sur les quatre etats eteints.**
+Ce n'est pas un defaut : l'en-tete n'est pas re-rendu par un echange qui ne remplace que la zone de
+jeu, et la forme positive fait que **la classe sans la marque ne peint rien**. Un enfant ne lit pas une
+classe, il lit un aplat ; l'aplat est parti. C'est exactement pour cela que je devais mesurer le rendu
+et pas le document, et c'est ce que `marc-dev` a eu raison de me laisser.
+
+#### 2. Le couplage a ma phrase - il me convient, et je dis pourquoi, puis ce qu'il fait apparaitre
+
+**Le couplage me convient, et il me convient pour la raison meme que `theo-archi` avance.** Mon accord
+du matin sur la couleur reposait sur trois jambes, dont celle-ci : *"la phrase 'Pour le CP' dit la meme
+chose dans la meme reponse"*. Une couleur sans phrase aurait retire cette jambe **sans que je le
+sache** - c'est-a-dire aurait rendu mon accord faux en silence, ce qui est la famille de defaut que je
+crains le plus sur ce produit. **Une regle qui rend cet etat structurellement inatteignable vaut mieux
+qu'une vigilance de ma part**, et je prefere de loin ce couplage a une promesse de le surveiller.
+
+**Sur le diagnostic plus grossier, je suis d'accord et je le dis explicitement** : que le message
+d'echec nomme la marque du filtre plutot que le genre d'ecran est un **bon echange**. Un diagnostic
+moins precis pour une propriete plus sure est exactement le sens dans lequel je veux qu'on tranche ; je
+n'ai jamais eu besoin d'un message de test, j'ai besoin que l'enfant ne voie pas la faute.
+
+**Mais ce couplage fait apparaitre l'autre moitie de la question, et c'est ma reserve.** Il garantit
+"jamais de couleur sans phrase". Il ne garantit rien sur "jamais de **filtre** sans phrase" - et c'est
+precisement ce que la route 3 produit. Le raisonnement de `theo-archi` sur ce point - *"une phrase sans
+couleur reste vraie et se voit a la premiere capture"* - est juste ; mais le cas qui se realise n'est ni
+l'un ni l'autre : c'est **une liste filtree sans phrase ni couleur**, ou plus rien ne porte
+l'information.
+
+#### 3. Ma reserve S15-D, datee du 2026-08-18 - une liste filtree qui ne dit pas qu'elle l'est
+
+**Le fait, mesure et non deduit.** Sur `cloture-3-route-niveaux-confirmer-360x640.png` : un enfant qui
+presse une puce de niveau **pendant une partie**, puis confirme qu'il veut partir, atterrit sur une
+liste de **six** jeux - filtree sur CP, ce qui est bien ce que le critere 6 de S14-1 demande - avec
+**aucune phrase** et **aucune puce allumee**. Onze jeux sont devenus six et rien a l'ecran ne le dit.
+La cause est lisible dans le controleur : cette route pose la liste filtree mais **ne pose pas** la
+donnee de niveau dont la phrase depend.
+
+**Pourquoi c'est ma condition S15-2 et non une exigence neuve.** Je l'avais ecrite ainsi le matin
+meme : *"la phrase qui nomme le filtre est due, et elle est due meme si l'etat actif de la puce n'est
+pas livre"*. Elle est tenue sur le chemin normal - un appui sur une puce depuis l'accueil - et elle
+manque sur ce chemin-ci. **Je ne durcis rien** : je constate qu'une de mes sept conditions est tenue
+sur une route et pas sur l'autre, ce que je n'avais pas mesure hier parce que ce lot-la n'ouvrait pas
+cette route.
+
+**Pourquoi une reserve et non un refus.** L'enfant n'est pas trompe et n'est pas bloque : la liste
+qu'il obtient est **celle qu'il a demandee**, ses six jeux sont justes, et les deux puces restent a
+l'ecran pour changer d'avis. Ce qui manque est l'explication, pas la fonction - et c'est exactement le
+perimetre que j'avais donne a R-BARRE-3 en la maintenant non bloquante le 2026-08-17. **Je reste
+coherente avec ce que j'ai deja tranche** plutot que de refuser aujourd'hui ce que j'ai laisse passer
+hier sur le meme motif.
+
+**Ce qui la fermera, et c'est actionnable sans moi** : que cette route pose la meme donnee de niveau
+que celle qui rend la liste filtree depuis l'accueil, de sorte que "Pour le CP" apparaisse - et, par le
+couplage que je viens d'approuver, que la puce s'allume avec elle. **Verification : capture a 360 px de
+l'ecran obtenu apres avoir confirme un changement de niveau pendant une partie ; la phrase presente
+au-dessus du premier bouton de jeu, et la puce du niveau demande en aplat.**
+
+#### 4. La question d'`ines-design` - je retiens la variante 1, la forme neutre
+
+**Ma reponse : l'absence de tout changement continue de suffire a une proposition marquee "deja
+essayee". Je retiens la variante 1.**
+
+Je commence par ce que je credite chez elle, parce que son raisonnement est bon et que ce n'est pas lui
+qui me fait trancher autrement : elle a raison qu'un signal gagne a porter un second canal, raison de
+ne proposer **aucune teinte neuve** faute de pouvoir la verifier, raison de refuser de recopier sur ce
+bouton une mesure faite sur un autre, et raison de dire que la variante 1 est le choix "le moins cher a
+ecrire" - ce qui n'est pas un argument. **Sa variante 2 est bien construite** : elle ne deplace aucune
+boite (M8), ne touche ni police ni position (M9 clause 2), et reutilise une teinte deja jugee.
+
+**Deux motifs me font choisir la variante 1, et le premier est decisif.**
+
+1. **La variante 2 detruirait la premisse sur laquelle j'ai accorde l'etat actif de la puce, il y a
+   quelques heures.** `ines-design` avait ecrit, et **j'ai accepte cet argument**, que le plein d'une
+   puce active ne peut pas etre confondu avec un effet du geste *"parce que survoler ou presser une
+   puce ne change jamais rien a son apparence, nulle part dans cette application"*. C'est une
+   propriete **globale**, et c'est elle qui rend le plein lisible comme un etat plutot que comme une
+   reaction. Le jour ou un element de l'application repond au doigt, cette phrase devient fausse, et
+   avec elle une des jambes de mon accord. **Je ne vais pas defaire le matin meme le raisonnement que
+   j'ai valide** pour un gain que je ne peux pas mesurer.
+2. **Sur l'appareil de reference, ce retour arriverait la ou l'enfant ne peut pas le voir.** Le
+   plancher de ce produit est 360 px, c'est-a-dire un telephone : il n'y a pas de survol, et l'etat
+   d'appui ne dure que le temps ou **le doigt est pose sur la proposition**, donc pendant que le doigt
+   la couvre. Un contour interieur de 0,125 rem apparaitrait sous la pulpe du doigt. Je ne refuse pas
+   un retour au motif qu'il serait inutile sur un ordinateur ; je constate qu'il est
+   **structurellement invisible** sur l'appareil que ce produit vise en premier. C'est un jugement de
+   geometrie, et je le declare comme tel : **je ne l'ai pas mesure au doigt**, et personne ici ne peut
+   le faire.
+
+**Ce que la variante 1 ne doit surtout pas devenir, et c'est ma condition** - parce qu'une forme neutre
+mal ecrite ferait un degat que la forme actuelle ne fait pas :
+
+- **S15-8. L'etat neutre de `.proposition.deja-essayee` conserve la couleur de fond de sa position.**
+  Les quatre fonds pastel sont cycliques (`nth-child(4n+1)` a `4n+4`) et je les ai valides comme
+  quatre teintes distinctes. Une regle neutre qui declarerait **une seule** couleur de fond les
+  aplatirait toutes les quatre sous le doigt : les trois propositions deviendraient de la meme couleur
+  au moment de l'appui. **Verification : une capture par position, la proposition marquee gardant son
+  fond de position.** Le moyen appartient a `theo-archi` ; la propriete est que **rien ne change**, et
+  "rien" inclut la couleur que cette position porte.
+- **S15-9. Le trait de M9 survit a l'etat neutre**, epaisseur et teinte inchangees. C'est la marque
+  elle-meme ; une forme neutre qui la perdrait retirerait l'information au moment ou l'enfant la
+  demande. **Verification : capture d'une proposition deja essayee, trait present.**
+
+**Et je debloque explicitement `theo-archi`** : avec la variante 1, la derivation corrigee reclamera
+des etats pour `.proposition.deja-essayee`, et ces etats existeront - en forme neutre, comme les huit
+boutons deja traites. **Il n'y a donc ni rouge a faire taire, ni exemption a ecrire**, ce qui etait sa
+condition pour corriger, et il avait raison de ne pas trancher cela seul : ce n'est pas une question
+d'architecture, c'est ce que l'enfant voit ou ne voit pas sous son doigt.
+
+**Ce que je ne peux pas affirmer, et `ines-design` ne l'affirme pas non plus** : que l'angle mort
+produise **aujourd'hui** un defaut visible sur `.proposition.deja-essayee`. Je n'ai pas pu le verifier
+- voir le 5 - et je refuse de reprendre sur ce bouton la mesure que j'ai faite sur un autre. Le prix du
+refus qu'elle chiffre est le bon : rien ne garantit que cela reste vrai apres une retouche de teintes
+ou une montee de version de la feuille tierce. **La variante 1 ferme ce risque sans en ouvrir un
+autre.**
+
+#### 5. Ce que je declare degrade a la cloture de ce sprint
+
+- **Je ne peux toujours pas produire un rendu survole**, et c'est la troisieme fois que je le nomme
+  avec sa cause : le seul outil de mesure du depot pilote un navigateur **en mode capture**, rien n'y
+  conduit un navigateur, donc aucune image de ce depot n'a jamais montre ni ne peut montrer un bouton
+  sous le doigt. Ce que j'ai pu produire, hier, est le **vainqueur de la cascade** enumere par le
+  navigateur lui-meme ; je ne l'ai pas refait ici parce que la regle jugee aujourd'hui n'est pas une
+  regle d'etat. **Mon arbitrage du 4 repose donc sur une geometrie et sur une premisse, pas sur un
+  pixel survole.**
+- **Je n'ai pas joue au doigt sur un telephone, ni observe un enfant**, sur aucun des cinq verdicts de
+  ces deux jours. La question de `camille-po` - un enfant de CP distingue-t-il une puce d'une sortie -
+  **reste sans reponse mesurable a la cloture de ce sprint**, et aucun de mes Done ne la tranche.
+- **Un seul item echantillonne** pour le pli, et une seule position de proposition regardee : je pose
+  la condition S15-8 sur les quatre positions **sans les avoir toutes capturees**.
+- **Je reste la seule de cette squad a pouvoir produire un chiffre de rendu sur ce poste.** Cinq
+  verdicts de ce sprint en ont dependu. C'est une dependance a une seule personne, et elle n'est pas
+  moins reelle parce qu'elle a bien fonctionne.
+
+#### 6. Ce que ce verdict ne fait pas
+
+- **Il ne rouvre aucun des cinq arbitrages de l'utilisatrice**, ni les deux noms de marqueurs
+  qu'`ines-design` a tranches et sur lesquels je n'ai rien a dire.
+- **Il ne leve ni F11, ni la reserve J des grands nombres, ni la reserve O seconde moitie.**
+- **Reserve S15-C** (le bouton qui montre tout reste visuellement identique a une puce inactive) :
+  **inchangee, non bloquante**, et non refermee par ce lot.
+- **Il ne prejuge pas de s16** : les conditions S15-8 et S15-9 sont a tenir sur le lot qui corrigera la
+  derivation, et un lot qui les tiendrait peut encore etre refuse pour ce que seul le rendu montre.
+
+### Done pedagogique du 2026-08-18 (s15), second lot - rang unique et etat actif : VALIDE
 
 > **Ce que cette section fait.** Elle prononce le Done pedagogique du lot qui applique mon arbitrage
 > prealable du meme jour, lisible juste en dessous et non modifie. **Trois de mes sept conditions
