@@ -8,7 +8,7 @@
   affecte, **puis** le developpement commence) : ce sprint ne l'a pas suivi. Je l'ecris en clair
   plutot que de fabriquer, avec le recul, un objectif qui aurait ete gele - ce serait un faux au
   sens que `squad/README.md` donne a ce mot.
-- **Horodatage d'ouverture reel** : **2026-08-17, 20:33:26 +0200**, premier commit du sprint,
+- **Horodatage de debut (ouverture reelle du sprint)** : **2026-08-17 20:33:26 +0200**, premier commit du sprint,
   `7bf9692` (`[CAM] s15: DEC-0034 acte le retour de Les jeux et l'apparence commune des puces,
   DEC-0033 remplacee`). Verifie sur l'historique du depot (`git log`), pas suppose.
 - **Ce fichier est ecrit le 2026-08-18, apres six lots** dont cinq sont fusionnes sur `round-two`
