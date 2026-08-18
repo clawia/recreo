@@ -7,7 +7,11 @@
      S14-2, correction du Done pedagogique refuse (nadia-prof, BARRE-2 ; theo-archi, ADR-0022
      troisieme amendement) : c'est l'ecran ou l'enfant est le plus perdu ; la barre de niveaux de
      l'en-tete y ajoutait deux boites de plus. "ecran-exclusif" masque cet habillage permanent ici
-     - "Recommencer" est le seul chemin que cet ecran ouvre, voir fragments/confirmation.html. -->
+     - "Recommencer" est le seul chemin que cet ecran ouvre, voir fragments/confirmation.html.
+     S15-3 (troisieme arbitrage de l'utilisatrice, DEC-0034) : "ecran-exclusif" masque desormais
+     aussi la sortie de l'en-tete (.lien-accueil) sur cet ecran, pour le meme motif que les puces -
+     aucun element permanent actionnable ne survit sur un ecran exclusif (clause B). Cet ecran ne
+     porte pas "ecran-porte-sa-sortie" : il ne rend lui-meme aucune sortie. -->
 <div th:fragment="erreur" class="ecran-de-jeu ecran-exclusif">
     <p class="erreur">Oups ! Le jeu a un souci.</p>
     <a class="btn recommencer" data-role="action" href="/">Recommencer</a>

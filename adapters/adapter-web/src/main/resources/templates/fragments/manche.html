@@ -4,9 +4,15 @@
 <!-- ADR-0020 : ce fragment ne porte pas l'identifiant de la zone qui le recoit. hx-swap="innerHTML"
      l'insere DANS #jeu ; le reprendre ici donnait deux elements du meme identifiant dans le document
      assemble, donc une cible hx-target indeterminee.
-     ADR-0022 : "ecran-de-jeu" est le marqueur d'etat que le serveur pose sur la zone de contenu. Il
-     ne porte aucun style propre : il dit a la feuille maison que l'entree de menu de l'en-tete
-     permanent ne doit pas s'afficher sur cet ecran (arbitrage de nadia-prof du 2026-08-07, S6-9). -->
+     "ecran-de-jeu" est un marqueur d'etat que le serveur pose sur la zone de contenu, sans porter
+     aucun style propre. Jusqu'a DEC-0034 (s15, troisieme arbitrage de l'utilisatrice, 2026-08-18)
+     il commandait aussi le masquage de l'entree de menu de l'en-tete permanent sur cet ecran
+     (arbitrage de nadia-prof du 2026-08-07, S6-9) : l'utilisatrice renverse ce point precis pour la
+     manche seule - "Les jeux" reste visible dans l'en-tete pendant une partie en cours, et le
+     bouton .retour-accueil qui portait cette sortie ici est retire (S15-3, un seul exemplaire du
+     mot par ecran, BARRE-5). Le marqueur reste pose ici pour ADR-0027 (voir plus bas) : sa regle
+     de masquage vers .lien-accueil est en cours de revision par theo-archi, hors du perimetre de
+     ce commit. -->
 <!-- ADR-0027 : data-arrivee est le second marqueur d'etat de cet ecran, et il ne dit pas la meme chose
      que "ecran-de-jeu". Le premier dit ou l'enfant est ; celui-ci dit comment le tirage que les
      colonnes montrent est arrive. Seule une regle d'animation le lira, et c'est lui seul qui autorise
@@ -66,16 +72,6 @@
         </div>
         <div class="cabinet-socle" aria-hidden="true"></div>
     </div>
-    <!-- BARRE-3 (FICHE-barre-entree-niveau.md, arbitrage prealable du 2026-08-17) : cette sortie
-         vivait avant S14-1 en premiere ligne de la colonne de contenu, donc lue avant l'enonce -
-         un defaut que nadia-prof avait deja nomme en s06 et s08 sans qu'aucun lot ne le corrige.
-         La barre de niveaux de l'en-tete ajoutant deux portes de plus au-dessus de l'enonce, la
-         condition impose de descendre celle-ci sous les propositions plutot que d'empiler une
-         troisieme porte en tete d'ecran ; aucun composant neuf, seul son emplacement change.
-         ADR-0017 : data-role dit ce que le bouton fait du point de vue de l'enfant - avancer dans
-         le jeu ou en sortir. Attribut inerte : aucun CSS ni aucun script ne s'en sert. -->
-    <button type="button" class="btn retour-accueil" data-role="sortie" hx-post="/retour"
-            hx-target="#jeu" hx-swap="innerHTML">Les jeux</button>
     <!-- S10, M1, M6, M9, M11, M12 : le seul emplacement ou le jeu parle de la reponse de l'enfant,
          sous le meuble, hors du cadre du cabinet - jamais au-dessus (M1, M4). "message-jeu" est le
          bloc que ce chantier pose pour le second lot : sa forme (fond, espacement) lui revient, sa

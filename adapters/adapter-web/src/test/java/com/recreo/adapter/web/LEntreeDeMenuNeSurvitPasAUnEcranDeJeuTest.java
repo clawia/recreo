@@ -44,7 +44,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * insere porte le marqueur. C'est faux des qu'un masquage vise un <b>sous-ensemble</b> d'ecrans -
  * exactement le cas de la barre de niveaux, qui doit disparaitre sur la confirmation et sur
  * l'erreur (marqueur {@code ecran-exclusif}) et rester visible sur la manche comme sur la fin de
- * partie. Deux clauses seulement, aucune troisieme :
+ * partie. Deux clauses seulement, aucune troisieme (a l'ouverture d'ADR-0022 - s15 en ajoute deux
+ * de plus, voir plus bas) :
  * <ul>
  *   <li><b>Clause A</b> ({@link #verifierQueLeCoupleDeMasquageEstCoherent}) : pour chaque masquage
  *       declare, son marqueur est pose par au moins un ecran insere et sa classe cachee par au
@@ -54,16 +55,40 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *       : sur tout ecran qui porte le marqueur d'exclusivite ({@code ecran-exclusif}), aucun
  *       element actionnable permanent ne survit aux masquages declares - la propriete que
  *       nadia-prof vient de mesurer par capture, sans jamais ecrire un nombre ;</li>
- *   <li><b>Clause C, aucune</b> : le jeton qu'aucun ecran ne peut poser est deja refuse par
- *       {@code UnEcranNeGouvernePasLApparenceDUnAutreTest} (ADR-0031), qui a deja mordu sur la
- *       regle morte pendant S14-2. Une troisieme clause pour la meme propriete serait
- *       decorative.</li>
+ *   <li><b>Clause C', aucune, a l'ouverture d'ADR-0022</b> : le jeton qu'aucun ecran ne peut poser
+ *       est deja refuse par {@code UnEcranNeGouvernePasLApparenceDUnAutreTest} (ADR-0031), qui a
+ *       deja mordu sur la regle morte pendant S14-2. Une troisieme clause pour la meme propriete
+ *       serait decorative.</li>
  * </ul>
  *
  * <p>Un ecran est <b>exclusif</b> quand tout chemin qu'il ouvre a l'enfant vit a l'interieur de
  * lui - la confirmation (continuer la partie ou la quitter) et l'erreur (recommencer). Le nom du
  * marqueur est du balisage et revient a {@code ines-design} ; {@code ecran-exclusif} est celui que
  * {@code theo-archi} propose en attendant.
+ *
+ * <p><b>s15, troisieme arbitrage de l'utilisatrice (DEC-0034, 2026-08-18) : deux clauses de plus,
+ * exigees par theo-archi</b> (squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-sortie-en-tete.md).
+ * La sortie d'en-tete ({@code .lien-accueil}) reste visible sur la manche desormais (l'utilisatrice
+ * renverse l'arbitrage de nadia-prof du 2026-08-07, S6-9) et disparait sur les trois ecrans qui
+ * portent deja leur propre sortie ou qui n'en ouvrent aucune. {@code ecran-exclusif} ne peut pas
+ * couvrir seul ce sous-ensemble (il manque la fin de partie, et l'y ajouter masquerait aussi les
+ * puces de niveau, contre l'arbitrage de s14) : un second marqueur, <b>{@code ecran-porte-sa-sortie}</b>
+ * (nom propose par {@code theo-archi}, revient a {@code ines-design}), porte un <b>fait structurel
+ * verifiable</b> - "cet ecran rend lui-meme un {@code [data-role=sortie]}" - jamais un jugement
+ * pedagogique comme {@code ecran-exclusif}.
+ * <ul>
+ *   <li><b>Clause C</b> ({@link #verifierQueLeMarqueurDeSortiePropreNeMentJamais}) : un ecran
+ *       insere porte {@code ecran-porte-sa-sortie} <b>si et seulement si</b> il rend au moins un
+ *       {@code [data-role=sortie]}. Les deux fautes symetriques sont des defauts reels : un ecran
+ *       qui gagne une sortie sans le marqueur ferait lire "Les jeux" deux fois a l'enfant ; un
+ *       ecran qui porte le marqueur sans sortie masquerait celle de l'en-tete sans rien mettre a
+ *       la place - le cul-de-sac que nadia-prof avait refuse en s06 ;</li>
+ *   <li><b>Clause D</b> ({@link #verifierQuAuPlusUneSortieResteVisibleParEcran}) : BARRE-5 derivee,
+ *       sans aucun nombre - sur tout ecran assemble, masquages appliques, <b>au plus un</b> element
+ *       visible porte {@code data-role="sortie"}. C'est le {@code 0/1/1/0/1} que nadia-prof a
+ *       mesure par capture, rendu executable sans epingler ni ecran ni compte - <b>non-vacuite
+ *       exigee</b>, au moins un ecran doit rendre une sortie visible.</li>
+ * </ul>
  *
  * <p>ADR-0013, les trois obligations :
  * <ul>
@@ -93,6 +118,15 @@ class LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest {
      * revient a ines-design (c'est du balisage), non tranche ici.
      */
     private static final String MARQUEUR_EXCLUSIF = "ecran-exclusif";
+
+    /**
+     * Le marqueur de sortie propre (s15, exigences de theo-archi ci-dessus) : un ecran le porte
+     * quand et seulement quand il rend lui-meme un {@code [data-role=sortie]}. Nom propose par
+     * theo-archi ; revient a ines-design (c'est du balisage), non tranche ici.
+     */
+    private static final String MARQUEUR_SORTIE_PROPRE = "ecran-porte-sa-sortie";
+
+    private static final String SELECTEUR_SORTIE = "[data-role=sortie]";
 
     /**
      * La forme contractuelle d'un masquage, celle que la feuille maison doit ecrire :
@@ -357,6 +391,136 @@ class LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest {
     }
 
     /**
+     * Clause C (s15, exigences de theo-archi) : le marqueur de sortie propre ne peut pas mentir.
+     * Population : les memes ecrans inseres que la clause A. Pour chacun, porter le marqueur
+     * equivaut a rendre au moins un {@code [data-role=sortie]}.
+     */
+    static void verifierQueLeMarqueurDeSortiePropreNeMentJamais(Path racineDesGabarits) {
+        Set<String> defauts = new LinkedHashSet<>();
+        Map<String, Document> documents = documents(racineDesGabarits);
+
+        assertThat(documents)
+                .as("ce garde-fou ne prouve rien s'il ne releve aucun gabarit sous %s",
+                        racineDesGabarits)
+                .isNotEmpty();
+
+        Optional<String> zone = zoneEchangee(documents.values(), defauts);
+        if (zone.isPresent()) {
+            List<String> coquilles = documents.entrySet().stream()
+                    .filter(ecran -> !ecran.getValue().select(zone.get()).isEmpty())
+                    .map(Map.Entry::getKey)
+                    .toList();
+            if (coquilles.size() != 1) {
+                defauts.add("la zone " + zone.get() + " est declaree par " + coquilles.size()
+                        + " gabarit(s) " + coquilles + " ; il en faut exactement un");
+            } else {
+                String coquille = coquilles.get(0);
+                for (Map.Entry<String, Document> ecran : documents.entrySet()) {
+                    if (ecran.getKey().equals(coquille)) {
+                        continue;
+                    }
+                    boolean porteLeMarqueur = !ecran.getValue()
+                            .select("." + MARQUEUR_SORTIE_PROPRE).isEmpty();
+                    boolean porteUneSortie = !ecran.getValue().select(SELECTEUR_SORTIE).isEmpty();
+                    if (porteLeMarqueur && !porteUneSortie) {
+                        defauts.add("ecran " + ecran.getKey() + " porte \"" + MARQUEUR_SORTIE_PROPRE
+                                + "\" sans rendre aucune sortie : la sortie d'en-tete y serait "
+                                + "masquee sans rien mettre a la place");
+                    }
+                    if (porteUneSortie && !porteLeMarqueur) {
+                        defauts.add("ecran " + ecran.getKey() + " rend une sortie sans porter \""
+                                + MARQUEUR_SORTIE_PROPRE + "\" : la sortie d'en-tete y resterait "
+                                + "visible a cote de la sienne");
+                    }
+                }
+            }
+        }
+
+        assertThat(defauts)
+                .as("le marqueur de sortie propre doit etre pose si et seulement si l'ecran rend "
+                        + "lui-meme une sortie")
+                .isEmpty();
+    }
+
+    /**
+     * Clause D (s15, exigences de theo-archi) : BARRE-5 derivee, sans aucun nombre. Sur tout ecran
+     * assemble - la coquille moins la zone echangee, plus le fragment insere - au plus un element
+     * visible porte {@code data-role="sortie"}, une fois les masquages declares appliques.
+     * Population : les memes ecrans inseres que la clause A ; "visible" derive des memes masquages
+     * que les clauses A et B, jamais d'une mesure de rendu.
+     *
+     * <p>Une sortie compte de deux facons : rendue par le fragment lui-meme (jamais masquee, un
+     * masquage ne visant que l'habillage permanent), ou rendue par la coquille hors de la zone
+     * echangee (l'entree de menu de l'en-tete) et non masquee par aucun des masquages que cet
+     * ecran declare porter.
+     */
+    static void verifierQuAuPlusUneSortieResteVisibleParEcran(Path racineDesGabarits,
+                                                              Path racineDesFeuilles) {
+        Set<String> defauts = new LinkedHashSet<>();
+        Map<String, Document> documents = documents(racineDesGabarits);
+        List<Masquage> masquages = masquages(racineDesFeuilles);
+        boolean auMoinsUneSortieVisible = false;
+        List<String> ecransJuges = new ArrayList<>();
+
+        assertThat(documents)
+                .as("ce garde-fou ne prouve rien s'il ne releve aucun gabarit sous %s",
+                        racineDesGabarits)
+                .isNotEmpty();
+
+        Optional<String> zone = zoneEchangee(documents.values(), defauts);
+        if (zone.isPresent()) {
+            List<String> coquilles = documents.entrySet().stream()
+                    .filter(ecran -> !ecran.getValue().select(zone.get()).isEmpty())
+                    .map(Map.Entry::getKey)
+                    .toList();
+            if (coquilles.size() != 1) {
+                defauts.add("la zone " + zone.get() + " est declaree par " + coquilles.size()
+                        + " gabarit(s) " + coquilles + " ; il en faut exactement un");
+            } else {
+                String coquille = coquilles.get(0);
+                Element racineDeZone = documents.get(coquille).select(zone.get()).first();
+                List<Element> sortiesPermanentes = documents.get(coquille)
+                        .select(SELECTEUR_SORTIE).stream()
+                        .filter(element -> !estDansLElement(element, racineDeZone))
+                        .toList();
+
+                for (Map.Entry<String, Document> ecran : documents.entrySet()) {
+                    if (ecran.getKey().equals(coquille)) {
+                        continue;
+                    }
+                    ecransJuges.add(ecran.getKey());
+                    long sortiesLocales = ecran.getValue().select(SELECTEUR_SORTIE).size();
+                    long sortiesPermanentesVisibles = sortiesPermanentes.stream()
+                            .filter(element -> masquages.stream().noneMatch(masquage ->
+                                    element.hasClass(masquage.habillage())
+                                            && masqueSur(ecran.getValue(), masquage)))
+                            .count();
+                    long total = sortiesLocales + sortiesPermanentesVisibles;
+                    if (total >= 1) {
+                        auMoinsUneSortieVisible = true;
+                    }
+                    if (total > 1) {
+                        defauts.add("ecran " + ecran.getKey() + " rend " + total + " sortie(s) "
+                                + "visible(s) a la fois (BARRE-5) : au plus une seule ne doit rester "
+                                + "visible");
+                    }
+                }
+            }
+        }
+
+        assertThat(ecransJuges)
+                .as("ADR-0003 : cette clause ne prouve rien si aucun ecran insere n'a ete juge sous "
+                        + "%s", racineDesGabarits)
+                .isNotEmpty();
+        assertThat(auMoinsUneSortieVisible)
+                .as("ADR-0003 : cette clause ne prouve rien si aucun ecran ne rend de sortie visible")
+                .isTrue();
+        assertThat(defauts)
+                .as("BARRE-5 : au plus une sortie visible par ecran assemble")
+                .isEmpty();
+    }
+
+    /**
      * Copie recursive d'un arbre reel vers une destination, pour muter une copie plutot que le
      * depot (ADR-0015 : materiau reel, jamais une fixture ecrite a la main). Fonction utilitaire
      * sans logique de garde-fou : elle ne fait que dupliquer des octets.
@@ -383,6 +547,62 @@ class LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest {
     @Test
     void aucunActionnablePermanentNeSurvitSurUnEcranExclusifEnProduction() {
         verifierQuAucunActionnablePermanentNeSurvitSurUnEcranExclusif(RACINE_PRODUCTION, RACINE_PRODUCTION);
+    }
+
+    @Test
+    void leMarqueurDeSortiePropreNeMentJamaisEnProduction() {
+        verifierQueLeMarqueurDeSortiePropreNeMentJamais(RACINE_PRODUCTION);
+    }
+
+    @Test
+    void auPlusUneSortieResteVisibleParEcranEnProduction() {
+        verifierQuAuPlusUneSortieResteVisibleParEcran(RACINE_PRODUCTION, RACINE_PRODUCTION);
+    }
+
+    /**
+     * ADR-0013 obligation 3, clauses C et D (s15) : preuve de morsure sur du materiau reel, exigee
+     * par theo-archi - une copie de la production dont le marqueur de sortie propre est retire du
+     * seul ecran ou cette mutation ne demande aucun fichier neuf, {@code fragments/retour.html}
+     * (fin de partie). L'ecran rend toujours sa sortie ({@code .sortie-pleine}) mais ne porte plus
+     * le marqueur qui l'annonce : exactement la premiere faute symetrique de la clause C.
+     */
+    @Test
+    void unMarqueurDeSortiePropreRetireDeLaFinDePartieFaitEchouerLaClauseC(@TempDir Path tempDir)
+            throws IOException {
+        copierArbreReel(RACINE_PRODUCTION, tempDir);
+        Path chemin = tempDir.resolve("templates/fragments/retour.html");
+        String contenu = Files.readString(chemin);
+        String mute = contenu.replace(" " + MARQUEUR_SORTIE_PROPRE, "");
+        assertThat(mute).as("retour.html doit porter le marqueur avant mutation")
+                .isNotEqualTo(contenu);
+        Files.writeString(chemin, mute);
+
+        assertThatThrownBy(() -> verifierQueLeMarqueurDeSortiePropreNeMentJamais(tempDir))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("templates/fragments/retour.html")
+                .hasMessageContaining("rend une sortie sans porter");
+    }
+
+    /**
+     * ADR-0013 obligation 3, clause D (s15) : la meme mutation prive la fin de partie de son seul
+     * masquage de la sortie d'en-tete - {@code .lien-accueil} y redevient visible aux cotes de
+     * {@code .sortie-pleine}, deux sorties a la fois sur le meme ecran assemble.
+     */
+    @Test
+    void unMarqueurDeSortiePropreRetireDeLaFinDePartieFaitEchouerLaClauseD(@TempDir Path tempDir)
+            throws IOException {
+        copierArbreReel(RACINE_PRODUCTION, tempDir);
+        Path chemin = tempDir.resolve("templates/fragments/retour.html");
+        String contenu = Files.readString(chemin);
+        String mute = contenu.replace(" " + MARQUEUR_SORTIE_PROPRE, "");
+        assertThat(mute).as("retour.html doit porter le marqueur avant mutation")
+                .isNotEqualTo(contenu);
+        Files.writeString(chemin, mute);
+
+        assertThatThrownBy(() -> verifierQuAuPlusUneSortieResteVisibleParEcran(tempDir, tempDir))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("templates/fragments/retour.html")
+                .hasMessageContaining("2 sortie(s) visible(s)");
     }
 
     /**

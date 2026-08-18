@@ -302,6 +302,36 @@ porte ferait de l'ecran de fin de partie un cul-de-sac.
 > `.lien-accueil` est un bouton de contour sur fond sombre sans etat declare, c'est-a-dire le defaut du
 > jour sur le point de revenir par le meme chemin.
 
+> **Note du 2026-08-18 (s15) - la premisse de cet `ADR` est renversee par l'utilisatrice, et aucune de
+> ses clauses ne bouge. Ce n'est pas un amendement : c'est la mesure de celui d'hier.**
+>
+> L'utilisatrice a rejoue l'increment et tranche que **la sortie vit dans l'en-tete, y compris pendant
+> une partie**. C'est le renversement complet de l'arbitrage de `nadia-prof` du 2026-08-07 rapporte en
+> contexte ci-dessus - *"la sortie qui survit sur un ecran de jeu est le bouton de la zone de contenu,
+> pas le lien de l'en-tete"*. Elle est l'autorite au-dessus de la squad, l'arbitrage ne se rediscute
+> pas, et le refus de `nadia-prof` reste lisible dans sa fiche. **Un lecteur de cet `ADR` doit savoir
+> que sa premisse a change**, et c'est le seul objet de cette note.
+>
+> **Ce que ce renversement coute a cet `ADR` : rien.** La population de masquage change pour la
+> cinquieme fois - `.lien-accueil` masque sur trois ecrans sur quatre au lieu de quatre sur quatre, et
+> plus du tout sur la manche. Depuis le troisieme amendement, une telle bascule coute **trois regles
+> CSS et deux attributs de classe** : zero clause d'`ADR` retiree ou ajoutee, zero fichier de garde-fou
+> touche sur ce mecanisme, et l'appariement de saillance d'`ADR-0017` se recompose seul depuis les
+> masquages servis (point 5). Le troisieme amendement annoncait cette mesure - *"si l'humain change
+> d'avis, combien de fichiers de garde-fou bougent ? La bonne reponse est zero"* - et le geste suivant
+> l'a prise.
+>
+> **Ce qui survit et se trouve confirme par le renversement lui-meme** : le **point 3**. Toutes les
+> sorties portent toujours "Les jeux", ou qu'elles vivent, donc
+> `leLienDeMenuEtLaSortieDeLaZoneDeContenuPortentLeMemeMot` reste vert et non vacuant. Cette clause
+> portait sur le **mot** et jamais sur l'ecran qui le porte ; c'est ce qui lui permet de traverser
+> intacte un renversement de l'arbitrage qui l'avait motivee. Une clause bien formee survit au
+> jugement qui l'a fait naitre.
+>
+> Le detail - marqueur neuf, trois regles, deux clauses de garde-fou dues au lot, releve des sources
+> qui perdent leur sujet - est dans
+> `squad/sprints/s15-la-sortie-vit-dans-l-en-tete/exigences-theo-sortie-en-tete.md`.
+
 Elle me laisse deux questions techniques, et c'est tout ce que cet ADR traite.
 
 ### Question 1 - un element permanent qui doit disparaitre sur certains ecrans

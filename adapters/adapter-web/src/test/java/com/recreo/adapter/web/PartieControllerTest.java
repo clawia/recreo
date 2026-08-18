@@ -185,20 +185,32 @@ class PartieControllerTest {
         assertThat(fragment.select(".score").text()).isEqualTo("Score : 1");
     }
 
-    /** S1-4, 3e critere : le bouton de retour est visible sur n'importe quel ecran de jeu. */
+    /**
+     * S1-4, 3e critere, <b>retournee</b> par S15-3 (troisieme arbitrage de l'utilisatrice,
+     * DEC-0034, 2026-08-18). <b>Motif ecrit du retournement, exige par ADR-0013</b> (releve de
+     * theo-archi, squad/sprints/s15-la-sortie-vit-dans-l-en-tete/) : ce test affirmait
+     * {@code button.retour-accueil} present sur la manche - faux des le retrait de ce bouton de
+     * {@code fragments/manche.html}. Son sujet a change d'ecran : l'utilisatrice demande la sortie
+     * dans l'en-tete y compris pendant une partie (renversement de l'arbitrage de nadia-prof du
+     * 2026-08-07, S6-9), et "l'enfant peut sortir depuis une manche" n'est pas affaiblie mais
+     * deplacee - c'est desormais le masquage declaratif qui la garde
+     * ({@code LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest}, clauses A, C et D), pas ce fichier. Ce
+     * test-ci epingle ce qui reste vrai depuis ce controleur : la manche rendue ne porte plus
+     * elle-meme aucune sortie.
+     */
     @Test
-    void leBoutonDeRetourAlAccueilEstVisibleSurLaManche() throws Exception {
+    void laManchePosteeNePorteAucuneSortieDansSaZone() throws Exception {
         MockHttpSession session = new MockHttpSession();
 
         String html = mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session))
                 .andReturn().getResponse().getContentAsString();
 
-        assertThat(Jsoup.parse(html).select("button.retour-accueil")).isNotEmpty();
+        assertThat(Jsoup.parse(html).select("[data-role=sortie]")).isEmpty();
     }
 
-    /** S1-4, 3e critere : le bouton reste visible apres une reponse, avant meme la fin de la partie. */
+    /** Meme retournement que ci-dessus, apres une reponse : la manche ne re-rend jamais de sortie. */
     @Test
-    void leBoutonDeRetourAlAccueilEstVisibleApresUneReponse() throws Exception {
+    void laMancheNePorteAucuneSortieDansSaZoneApresUneReponse() throws Exception {
         MockHttpSession session = new MockHttpSession();
         mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
 
@@ -206,7 +218,7 @@ class PartieControllerTest {
                         .session(session).param("propositionChoisie", "1"))
                 .andReturn().getResponse().getContentAsString();
 
-        assertThat(Jsoup.parse(html).select("button.retour-accueil")).isNotEmpty();
+        assertThat(Jsoup.parse(html).select("[data-role=sortie]")).isEmpty();
     }
 
     /** S1-2, DEC-0004 point 1 : aucun symbole du score ne peut se lire comme un signe operatoire. */

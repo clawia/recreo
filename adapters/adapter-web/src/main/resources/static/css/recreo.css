@@ -89,11 +89,14 @@ h1 {
     margin-right: auto;
 }
 
-/* DEC-0034 (s15) : .menu, .lien-accueil et leur regle de masquage sont retablis a l'identique de
-   leur forme d'avant s14 (relevee dans l'historique, cc68304) - S14-2 (BARRE-7, DEC-0033) les avait
-   retires, l'utilisatrice retablit le lien en connaissance de ce motif (voir accueil.html). Le
-   marqueur "ecran-de-jeu" que ce masquage lit n'a jamais quitte les quatre fragments de jeu
-   (manche, retour, confirmation, erreur) : seule la regle qui le consommait avait disparu. */
+/* DEC-0034 (s15) : .menu et .lien-accueil sont retablis a l'identique de leur forme d'avant s14
+   (relevee dans l'historique, cc68304) - S14-2 (BARRE-7, DEC-0033) les avait retires, l'utilisatrice
+   retablit le lien en connaissance de ce motif (voir accueil.html).
+   S15-3 (troisieme arbitrage de l'utilisatrice, 2026-08-18) : leur regle de masquage d'alors
+   (body:has(.ecran-de-jeu) .lien-accueil), qui visait les quatre fragments de jeu a la fois, est
+   retiree plus bas - c'est exactement ce que cet arbitrage annule, la sortie d'en-tete restant
+   desormais visible pendant une manche. Deux regles plus ciblees la remplacent (exigences de
+   theo-archi, squad/sprints/s15-la-sortie-vit-dans-l-en-tete/). */
 .menu {
     display: flex;
 }
@@ -121,16 +124,23 @@ h1 {
     cursor: pointer;
 }
 
-/* ADR-0022 / S6-9 : une seule sortie par ecran de jeu, et c'est celle de la zone de contenu
-   (arbitrage de nadia-prof du 2026-08-07 : retirer le bouton du fragment laisserait la fin de
-   partie sans porte visible la ou l'enfant regarde). Le serveur ne rend que la zone #jeu, jamais
-   l'en-tete qui en est le frere : c'est donc le marqueur d'etat pose sur le contenu qui commande la
-   visibilite du lien, par un selecteur relationnel. Aucun JavaScript n'entre ici (ADR-0008,
+/* S15-3 (troisieme arbitrage de l'utilisatrice, DEC-0034, 2026-08-18) : l'utilisatrice renverse
+   l'arbitrage de nadia-prof du 2026-08-07 (S6-9) sur la manche seule - la sortie d'en-tete y reste
+   visible, "Les jeux" n'etant plus rendu par la zone de contenu (fragments/manche.html ne porte
+   plus de .retour-accueil). Elle disparait toujours sur les trois ecrans qui portent deja leur
+   propre sortie ou qui n'en ouvrent aucune : le second marqueur ("ecran-porte-sa-sortie") couvre le
+   premier motif (BARRE-5, un seul exemplaire du mot par ecran), "ecran-exclusif" couvre le second
+   (clause B, deja en vigueur pour les puces de niveau). Aucun JavaScript n'entre ici (ADR-0008,
    ADR-0014 point 7), et l'element reste present dans le document (DEC-0012).
-   La forme de cette regle est un contrat lu par LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest :
-   body:has(.<marqueur>) .<habillage> { display: none }. La changer sans changer le garde-fou le
-   rend rouge. */
-body:has(.ecran-de-jeu) .lien-accueil {
+   La forme de chaque regle est le contrat lu par LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest :
+   body:has(.<marqueur>) .<habillage> { display: none }. Deux regles independantes sur le meme
+   habillage, chacune vraie pour son propre motif : la confirmation porte les deux marqueurs a la
+   fois, et ni l'une ni l'autre n'est a retirer au profit de la seconde. */
+body:has(.ecran-exclusif) .lien-accueil {
+    display: none;
+}
+
+body:has(.ecran-porte-sa-sortie) .lien-accueil {
     display: none;
 }
 

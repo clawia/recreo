@@ -130,12 +130,12 @@ class EnTeteEtMenuTest {
      * elle n'est pas remplacee par une assertion equivalente, la propriete qu'elle gardait n'est
      * plus celle du produit.
      *
-     * <p>Deux assertions incidentes de cette methode disparaissent avec elle sans etre reportees
-     * ailleurs : la presence de {@code .icone-entete} (deja couverte par
+     * <p>Deux assertions incidentes de cette methode disparaissent avec elle : la presence de
+     * {@code .icone-entete} (deja couverte par
      * {@link #lIconeDeLEnTeteEstServieHorsLigneDepuisLesRessourcesStatiques}) et le texte exact de
-     * {@code .nom-site} ("Recreo"), qui n'est garde par aucun autre test de ce fichier apres ce
-     * retrait - une perte de couverture mineure et signalee, pas comblee ici par une assertion que
-     * ni S15-1 ni S15-2 ne demandent.</p>
+     * {@code .nom-site} ("Recreo"). La premiere ne laisse pas de trou ; la seconde en laissait un,
+     * signale sans etre comble dans ce lot. <b>Comble ici</b> (yanis-qa via sofia-sm, routage du
+     * lot suivant qui touche ce fichier) : {@link #leNomDuSiteEstAffiche}.</p>
      */
 
     @Test
@@ -147,6 +147,19 @@ class EnTeteEtMenuTest {
         assertThat(icones.first().attr("src"))
                 .as("l'icone doit venir des ressources statiques empaquetees, jamais du reseau")
                 .isEqualTo("/favicon.ico");
+    }
+
+    /**
+     * S15-3 : comble la perte de couverture signalee plus haut (routage de yanis-qa via sofia-sm) -
+     * le texte de {@code .nom-site} n'etait plus garde par aucun test depuis le retrait de
+     * {@code surLAccueilNonFiltreLesActionnablesDeLEnTeteSontExactementSesPointsDEntree} au lot
+     * precedent.
+     */
+    @Test
+    void leNomDuSiteEstAffiche() throws Exception {
+        Document page = page(new MockHttpSession());
+
+        assertThat(page.select("header .nom-site").text()).isEqualTo("Recreo");
     }
 
     @Test
