@@ -131,15 +131,17 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
      * qu'un etat garde y ecrase. Le produit par {@link #ETATS_GARDES} est fait par le test : le jour ou
      * un etat entre dans le perimetre, l'ensemble attendu change de taille et le plafond doit etre
      * rouvert explicitement.
+     *
+     * <p><b>s15 (lot marc-dev, exigence 1 d'ADR-0046) : la dette est payee, le plafond baisse a
+     * vide dans le meme commit que le correctif.</b> Les sept exigences ouvertes ci-dessus sont
+     * closes par six regles de feuille (un couple {@code :hover, :active} par groupe de boutons
+     * partageant deja une regle de repos - {@code .chip-niveau}, {@code .retour-accueil} et les
+     * cinq boutons pleins ensemble). Le meme commit reintroduit {@code .lien-accueil} dans
+     * l'en-tete (DEC-0034) : cette huitieme exigence est payee des son introduction, jamais
+     * laissee ouverte le temps d'un commit. Un plafond qui ne nomme plus rien de reel n'est plus un
+     * cliquet (exigence 1) : la carte reste vide plutot que de citer une dette honoree.
      */
-    private static final Map<String, Set<String>> DETTE_A_L_OUVERTURE = Map.of(
-            ".chip-niveau", Set.of("color", "background-color", "border"),
-            ".retour-accueil", Set.of("color", "background-color", "border"),
-            ".continuer-partie", Set.of("color", "background-color"),
-            ".demarrer", Set.of("color", "background-color"),
-            ".proposition", Set.of("color", "background-color"),
-            ".recommencer", Set.of("color", "background-color"),
-            ".sortie-pleine", Set.of("color", "background-color"));
+    private static final Map<String, Set<String>> DETTE_A_L_OUVERTURE = Map.of();
 
     /**
      * Une exigence : la feuille maison declare {@code propriete} au repos sur {@code selecteurMaison},

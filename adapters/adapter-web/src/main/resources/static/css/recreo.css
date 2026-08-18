@@ -89,20 +89,64 @@ h1 {
     margin-right: auto;
 }
 
-/* S14-2 (BARRE-7, DEC-0033) : .menu, .lien-accueil et leur regle de masquage
-   (body:has(.ecran-de-jeu) .lien-accueil { display: none }) sont retires avec l'element qu'ils
-   habillaient - le lien "Les jeux" de l'en-tete n'existe plus dans aucun gabarit.
-   Garder la regle de masquage, decorative, a ete essaye et refuse par deux garde-fous a la fois :
-   LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest la refuse elle-meme ("une regle qui masque une classe
-   absente est decorative", ADR-0022) et UnEcranNeGouvernePasLApparenceDUnAutreTest la refuse aussi
-   ("ce selecteur ne s'appliquera jamais", ADR-0031), puisque .lien-accueil n'etant plus permanent
-   nulle part, aucun document jouable ne peut plus porter ses deux jetons a la fois. Deux
-   garde-fous independants s'accordant pour la refuser, la retirer est le choix qui suit leur
-   verdict plutot que de l'esquiver.
-   Consequence assumee et signalee au lot (voir compte rendu) : .ecran-de-jeu perd le seul endroit
-   ou une regle maison le nommait, et LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest,
-   AucunArretDeTabulationNEstDestructeurTest et HabillageDesEcransTest en portent chacun une
-   consequence, documentee a l'endroit de chacun. */
+/* DEC-0034 (s15) : .menu, .lien-accueil et leur regle de masquage sont retablis a l'identique de
+   leur forme d'avant s14 (relevee dans l'historique, cc68304) - S14-2 (BARRE-7, DEC-0033) les avait
+   retires, l'utilisatrice retablit le lien en connaissance de ce motif (voir accueil.html). Le
+   marqueur "ecran-de-jeu" que ce masquage lit n'a jamais quitte les quatre fragments de jeu
+   (manche, retour, confirmation, erreur) : seule la regle qui le consommait avait disparu. */
+.menu {
+    display: flex;
+}
+
+/* S6-1 : le lien de menu quitte l'ecran en cours comme le bouton "Les jeux" (ADR-0017,
+   data-role="sortie"), et reprend deliberement les memes composantes de boite que
+   .retour-accueil - taille de police, hauteur minimale, rembourrage - pour ne jamais depasser un
+   bouton d'action sur l'ecran ou il s'affiche. Contour blanc plutot que la couleur d'accent, parce
+   que le fond de l'en-tete est deja cette meme couleur.
+   ADR-0022 : depuis S6-9 ce lien ne s'affiche que sur l'accueil, ou il est confronte a .demarrer.
+   Il n'est plus confronte a .proposition ni a .encore : la regle de masquage ci-dessous fait qu'il
+   ne se montre jamais en meme temps qu'elles. */
+.lien-accueil {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    font-size: 1.25rem;
+    color: var(--recreo-accent-texte);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent-texte);
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ADR-0022 / S6-9 : une seule sortie par ecran de jeu, et c'est celle de la zone de contenu
+   (arbitrage de nadia-prof du 2026-08-07 : retirer le bouton du fragment laisserait la fin de
+   partie sans porte visible la ou l'enfant regarde). Le serveur ne rend que la zone #jeu, jamais
+   l'en-tete qui en est le frere : c'est donc le marqueur d'etat pose sur le contenu qui commande la
+   visibilite du lien, par un selecteur relationnel. Aucun JavaScript n'entre ici (ADR-0008,
+   ADR-0014 point 7), et l'element reste present dans le document (DEC-0012).
+   La forme de cette regle est un contrat lu par LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest :
+   body:has(.<marqueur>) .<habillage> { display: none }. La changer sans changer le garde-fou le
+   rend rouge. */
+body:has(.ecran-de-jeu) .lien-accueil {
+    display: none;
+}
+
+/* ADR-0046 : la feuille vendorisee declare :hover et :active sur .btn a specificite (0,2,0), egale
+   a celle d'une regle maison sur une seule classe - l'ordre de chargement ne suffit plus a lui
+   seul (ADR-0014 point 5) des que la regle tierce porte une pseudo-classe. Sans etat maison ici,
+   .lien-accueil perdrait son contour et son texte au survol comme a l'appui, exactement le defaut
+   que l'utilisatrice a vu sur .chip-niveau. Forme neutre exigee par ADR-0046 point 4 : chaque etat
+   reprend a l'identique les valeurs du repos, rien ne change sous le pointeur ni sous l'appui - une
+   autre apparence est un arbitrage de nadia-prof, non tranche ici. */
+.lien-accueil:hover,
+.lien-accueil:active {
+    color: var(--recreo-accent-texte);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent-texte);
+}
 
 /* .ecran-de-jeu ne porte aucun style propre - c'est un marqueur d'etat pour la feuille et pour les
    garde-fous (ADR-0022, ADR-0027), jamais un habillage visuel. Regle vide, meme geste que
@@ -525,6 +569,24 @@ h1 {
     background-color: var(--recreo-accent);
 }
 
+/* ADR-0046 : ces cinq boutons pleins partagent deja la regle de repos ci-dessus ; ils recoivent
+   donc le meme couple d'etat, sur les deux seules proprietes que la feuille tierce leur ecrase
+   (color, background-color - le contour n'entre pas ici, aucun de ces boutons n'en declare).
+   Forme neutre du point 4 : les valeurs du repos, inchangees sous le pointeur et sous l'appui. */
+.continuer-partie:hover,
+.demarrer:hover,
+.proposition:hover,
+.recommencer:hover,
+.sortie-pleine:hover,
+.continuer-partie:active,
+.demarrer:active,
+.proposition:active,
+.recommencer:active,
+.sortie-pleine:active {
+    color: var(--recreo-accent-texte);
+    background-color: var(--recreo-accent);
+}
+
 /* Taille du texte des boutons pleins : la plupart partagent la taille commune des boutons
    actionnables (1,25rem), mais le chiffre d'un bouton de reponse est ce que l'enfant doit
    comparer entre les trois propositions - il doit peser au moins autant que le calcul affiche
@@ -605,15 +667,30 @@ h1 {
     cursor: pointer;
 }
 
-/* S14-1 (ADR-0043, ADR-0044) : second rang de l'en-tete, les points d'entree par niveau. Fond
-   distinct de --recreo-entete-fond (nadia-prof, FICHE-barre-entree-niveau.md, section 4 :
-   "les puces sont sur un second rang, a gauche, sur une bande plus sombre" - BARRE-9, jamais le
-   meme rang que .menu qui porte "Les jeux"). BARRE-8 : un seul rang a 360 px pour les deux
-   niveaux du catalogue - un second rang est un arbitrage prealable neuf, non accorde d'avance.
+/* ADR-0046 : .retour-accueil est, avec .chip-niveau et .lien-accueil, l'un des boutons de contour
+   dont la lisibilite est le contour lui-meme - la propriete qui disparait au survol si la feuille
+   maison ne la redeclare pas ici. Forme neutre du point 4 : les valeurs du repos, inchangees. */
+.retour-accueil:hover,
+.retour-accueil:active {
+    color: var(--recreo-accent);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent);
+}
+
+/* S14-1 (ADR-0043, ADR-0044) : second rang de l'en-tete, les points d'entree par niveau.
    S14-2, correction du Done pedagogique refuse par nadia-prof (BARRE-1, BARRE-2) : cette barre
    reste permanente sur l'accueil et sur les trois etats de manche (demande de l'utilisatrice,
    non remise en cause), mais elle est masquee sur la confirmation avant abandon et sur l'ecran
    d'erreur - voir la regle de masquage sous .chip-niveau, plus bas dans ce fichier.
+   DEC-0034 (s15, arbitrage B) : la bande sombre distincte (--recreo-cabinet-fond, contredisait
+   BARRE-9 - "les puces sont sur un second rang [...] sur une bande plus sombre") est retiree ;
+   les puces se lisent desormais sur le fond commun de l'en-tete (--recreo-entete-fond, herite de
+   .entete). Ceci ferme au passage la reserve S14-A de nadia-prof : le residu de bande vide de
+   16 px qui subsistait sur la confirmation et sur l'erreur (puces masquees, rembourrage de ce
+   conteneur seul) ne se distingue plus du bandeau qui le porte, faute de fond propre a exposer.
+   La disposition en un ou deux rangs des trois boutons n'est pas tranchee par cette decision : elle
+   revient a ines-design puis a nadia-prof (voir accueil.html, ou le rang de "Les jeux" et celui des
+   puces restent, pour l'instant, ceux d'avant s14 et de s14 respectivement).
    S6-8 (LeConteneurTierGardeSonRembourrageLateralTest) : seuls les deux axes verticaux sont
    declares ici, jamais le raccourci "padding: 0.5rem 0" qui fixerait aussi le rembourrage lateral
    a 0 et ecraserait celui, inconditionnel, de .container porte par ce meme element. */
@@ -623,13 +700,16 @@ h1 {
     gap: 0.5rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    background-color: var(--recreo-cabinet-fond);
 }
 
 /* La boite reprend a l'identique celle de .lien-accueil/.retour-accueil - taille de police,
    hauteur minimale, rembourrage, forme en contour - pour ne jamais depasser une action de l'ecran
    ou la puce s'affiche (ADR-0043, LActionNeDeclarePasMoinsQueLaSortieTest, 11 tests sur 11).
-   BARRE-4 : la puce ne porte que son texte, aucun disque ni pictogramme. */
+   BARRE-4 : la puce ne porte que son texte, aucun disque ni pictogramme.
+   DEC-0034 (s15, arbitrage B) : "meme composantes de fond, de texte et de bordure que Les jeux a
+   l'etat inactif" - deja le cas, sans qu'une valeur bouge ici : cette regle reprenait deja celles
+   de .lien-accueil au mot pres (commentaire ci-dessus, ecrit en s06). Ce que cette decision change
+   reellement est le fond de .bandeau-niveaux, ci-dessus. */
 .chip-niveau {
     display: inline-flex;
     align-items: center;
@@ -642,6 +722,18 @@ h1 {
     border-radius: 0.5rem;
     padding: 0.5rem 0.9rem;
     cursor: pointer;
+}
+
+/* ADR-0046 : le defaut vu par l'utilisatrice - au survol, .btn:hover de la feuille vendorisee
+   (specificite 0,2,0) ecrase color, background-color et border-color sans qu'aucune regle maison
+   ne les redeclare a cet etat (specificite 0,1,0 sur .chip-niveau seule) : la puce perd son
+   contour blanc et son texte devient sombre sur la bande sombre du bandeau. Forme neutre du
+   point 4 : les valeurs du repos, inchangees sous le pointeur et sous l'appui. */
+.chip-niveau:hover,
+.chip-niveau:active {
+    color: var(--recreo-accent-texte);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent-texte);
 }
 
 /* S14-2, correction du Done pedagogique refuse par nadia-prof (BARRE-1, BARRE-2), forme retenue

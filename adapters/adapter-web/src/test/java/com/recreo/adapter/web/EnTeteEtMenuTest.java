@@ -26,13 +26,17 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  * test n'entre pas dans le recensement de {@code LesGardeFousSontMisALEpreuveTest} - il vise une
  * propriete du gabarit d'accueil rendu, pas une population derivee du systeme de fichiers.
  *
- * <p>S14-2 (BARRE-7, DEC-0033) : l'en-tete ne porte plus de lien de sortie vers l'accueil - le
- * lien "Les jeux" qui y vivait est retire de tout ecran, jamais remplace par un comportement neuf.
- * Seuls les points d'entree par niveau (ADR-0043, ADR-0044) restent actionnables dans l'en-tete.
- * Ce que ce test ne prouve toujours pas : la saillance rendue de ces points d'entree, qui depend
- * de la couleur, de la position et de la largeur des libelles (ADR-0017) - hors de portee de la
- * CI, gardee par {@link LActionNeDeclarePasMoinsQueLaSortieTest} pour ce qui est declaratif, et
- * par {@code nadia-prof} en jouant pour le reste.
+ * <p><b>DEC-0034 (s15) : l'utilisatrice retablit le lien "Les jeux" dans l'en-tete</b>, dans son
+ * etat d'avant s14, en connaissance du motif BARRE-7/DEC-0027 que S14-2 (BARRE-7, DEC-0033) avait
+ * ferme en le retirant. Ce refus pedagogique de {@code nadia-prof} reste lisible tel quel dans
+ * {@code FICHE-barre-entree-niveau.md} et n'est ni efface ni corrige ici : l'arbitrage de
+ * l'utilisatrice le surplombe, il ne le repare pas. L'en-tete porte donc de nouveau une seule
+ * sortie (le lien "Les jeux") aux cotes des points d'entree par niveau (ADR-0043, ADR-0044).
+ *
+ * <p>Ce que ce test ne prouve toujours pas : la saillance rendue de ces points d'entree et de la
+ * sortie, qui depend de la couleur, de la position et de la largeur des libelles (ADR-0017) - hors
+ * de portee de la CI, gardee par {@link LActionNeDeclarePasMoinsQueLaSortieTest} pour ce qui est
+ * declaratif, et par {@code nadia-prof} en jouant pour le reste.
  */
 @WebMvcTest(PartieController.class)
 @Import(PartieControllerTest.JeuDeTestConfiguration.class)
@@ -78,27 +82,32 @@ class EnTeteEtMenuTest {
     }
 
     /**
-     * S14-2 (BARRE-7, DEC-0033) : remplace
-     * {@code leMenuDeLEnTeteContientUnPointDEntreeParNiveauEtUneSeuleSortieVersLAccueil} (S14-1,
-     * 2026-08-17), qui affirmait une sortie dans le menu de l'en-tete. Cette sortie - le lien
-     * "Les jeux" - est retiree de tout ecran par S14-2, sans etre remplacee par un comportement
-     * neuf (DEC-0033) : elle n'etait deja visible que sur l'accueil et, sur l'accueil non filtre,
-     * un appui dessus rendait le meme document. Le menu de l'en-tete ne porte donc plus qu'un
-     * point d'entree par niveau distinct du catalogue, dans l'ordre du catalogue - toujours sans
-     * effectif ecrit ici (ADR-0006, ADR-0044).
+     * DEC-0034 (s15) : remplace {@code leMenuDeLEnTeteNePorteQuUnPointDEntreeParNiveauEtPlusAucuneSortie}
+     * (S14-2, 2026-08-17), qui affirmait qu'aucune sortie ne vivait plus dans l'en-tete. <b>Motif
+     * ecrit du retrait, exige par ADR-0013</b> : cette assertion encodait DEC-0033/BARRE-7, que
+     * l'utilisatrice vient de renverser en connaissance de cause (elle retablit le lien "Les jeux"
+     * dans l'en-tete, dans son etat d'avant s14) - un garde-fou qui encode un arbitrage pedagogique
+     * doit rougir, puis etre corrige, quand cet arbitrage tombe. Ce que cette assertion gardait :
+     * qu'aucun {@code [data-role=sortie]} n'apparaissait dans l'en-tete ; ce que cette methode garde
+     * desormais a la place, restaure a l'identique de sa forme S14-1 (2026-08-17, avis de
+     * faisabilite de theo-archi, section 7.1) : exactement une sortie, "Les jeux".
      *
-     * <p><b>Propose pour confirmation ecrite de theo-archi (via sofia-sm), pas tranche seul</b> :
-     * remplacement d'un test que la story d'hier m'a fait ecrire, motive par le meme geste que
-     * {@code LActionNeDeclarePasMoinsQueLaSortieTest}.</p>
+     * <p>Le reste de la methode - un point d'entree par niveau distinct du catalogue, dans l'ordre
+     * du catalogue, sans effectif ecrit ici (ADR-0006, ADR-0044) - est inchange par ce retrait.</p>
      */
     @Test
-    void leMenuDeLEnTeteNePorteQuUnPointDEntreeParNiveauEtPlusAucuneSortie() throws Exception {
+    void leMenuDeLEnTeteContientUnPointDEntreeParNiveauEtUneSeuleSortieVersLAccueil() throws Exception {
         Document page = page(new MockHttpSession());
 
-        assertThat(page.select("header [data-role=sortie]"))
-                .as("DEC-0033 / BARRE-7 : le lien \"Les jeux\" de l'en-tete est retire, jamais "
-                        + "remplace par un comportement neuf")
-                .isEmpty();
+        Elements sorties = page.select("header [data-role=sortie]");
+        assertThat(sorties)
+                .as("ADR-0022 / S6-9, DEC-0034 : le menu de l'en-tete contient de nouveau une seule "
+                        + "sortie")
+                .hasSize(1);
+        assertThat(sorties.first().text())
+                .as("ADR-0022 / S6-9 : le libelle est \"Les jeux\", et c'est le geste par lequel "
+                        + "nadia-prof leve sa reserve 3 du 2026-08-07")
+                .isEqualTo("Les jeux");
 
         List<String> niveauxDuCatalogue = partieUseCase.niveauxDuCatalogue();
         Elements pointsDEntree = page.select("header [data-role=entree]");
@@ -110,25 +119,24 @@ class EnTeteEtMenuTest {
     }
 
     /**
-     * S14-2, critere 2 (docs/backlog/backlog.md), forme retenue par theo-archi apres relecture de
-     * ce lot : l'ensemble des actionnables de l'en-tete egale l'ensemble de ses
-     * {@code [data-role=entree]} - sans libelle, sans catalogue, sans effectif. Elle interdit
-     * exactement ce que le critere nomme (aucune troisieme boite actionnable a cote des puces de
-     * niveau) sans dependre de ce que {@code niveauxDuCatalogue()} rend ni de ce qu'un bouton dit.
+     * DEC-0034 (s15) : retiree. <b>Motif ecrit du retrait, exige par ADR-0013</b> : cette methode
+     * (S14-2, critere 2) affirmait que l'ensemble des actionnables de l'en-tete de l'accueil non
+     * filtre egalait exactement l'ensemble de ses {@code [data-role=entree]} - "rien d'actionnable
+     * dans l'en-tete hors de ses points d'entree par niveau". L'utilisatrice retablit le lien
+     * "Les jeux" ({@code [data-role=sortie]}) dans ce meme en-tete (DEC-0034) : un actionnable de
+     * plus qui n'est pas un point d'entree existe desormais deliberement, et cette assertion
+     * deviendrait fausse par construction plutot que par defaut. Son sujet - "aucune troisieme
+     * boite actionnable a cote des puces de niveau" - est exactement ce que DEC-0034 renverse ;
+     * elle n'est pas remplacee par une assertion equivalente, la propriete qu'elle gardait n'est
+     * plus celle du produit.
+     *
+     * <p>Deux assertions incidentes de cette methode disparaissent avec elle sans etre reportees
+     * ailleurs : la presence de {@code .icone-entete} (deja couverte par
+     * {@link #lIconeDeLEnTeteEstServieHorsLigneDepuisLesRessourcesStatiques}) et le texte exact de
+     * {@code .nom-site} ("Recreo"), qui n'est garde par aucun autre test de ce fichier apres ce
+     * retrait - une perte de couverture mineure et signalee, pas comblee ici par une assertion que
+     * ni S15-1 ni S15-2 ne demandent.</p>
      */
-    @Test
-    void surLAccueilNonFiltreLesActionnablesDeLEnTeteSontExactementSesPointsDEntree() throws Exception {
-        Document page = page(new MockHttpSession());
-
-        Elements actionnables = page.select("header button, header a[href]");
-        Elements pointsDEntree = page.select("header [data-role=entree]");
-        assertThat(actionnables)
-                .as("S14-2 critere 2 : rien d'actionnable dans l'en-tete de l'accueil non filtre "
-                        + "hors de ses points d'entree par niveau")
-                .containsExactlyInAnyOrderElementsOf(pointsDEntree);
-        assertThat(page.select("header .icone-entete")).isNotEmpty();
-        assertThat(page.select("header .nom-site").text()).isEqualTo("Recreo");
-    }
 
     @Test
     void lIconeDeLEnTeteEstServieHorsLigneDepuisLesRessourcesStatiques() throws Exception {
