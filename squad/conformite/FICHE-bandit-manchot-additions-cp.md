@@ -243,8 +243,15 @@
   de manche partage, pas sur un compte, donc **un seul jeu suffit toujours** et ce que je demande
   d'ecouter est inchange. La section du 2026-08-15 n'est pas reecrite, la correction est datee
   au-dessus d'elle. **F11 reste OUVERTE**, aucune ecoute n'a eu lieu.
-- **Derniere mise a jour** : 2026-08-17 (Done pedagogique de S12-5 rendu ; chiffre de la reserve F11
-  corrige par note datee ; le verdict du 2026-08-15 sur la ligne de calcul mental est inchange)
+- **Constat du 2026-08-19 (s16) sur S16-1, le message de partie interrompue : VALIDE.** Les deux
+  scenarios sont mesures separement, dont un sur un **redemarrage reel du serveur** : apres une pause
+  ordinaire le message ne parait plus, apres une interruption reelle il parait toujours, mot pour mot
+  celui que j'ai valide. Le marqueur porte desormais une duree de vie de **1 800 s** lue sur la session
+  qu'il signale, la ou il n'en portait aucune. **Le texte n'est pas rouvert** : ce qui avait change etait
+  le moment, pas les mots - un message vrai au mauvais moment est une information fausse, et un enfant
+  de six ans n'a aucun moyen de la recouper.
+- **Derniere mise a jour** : 2026-08-19 (constat de S16-1 ; tous les verdicts anterieurs sont inchanges
+  et lisibles sous lui)
 
 ## Competences visees
 
@@ -312,7 +319,89 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
-### Done pedagogique du 2026-08-17 (s14) sur S12-5 - le retrait de l'`aria-label` est VALIDE - le plus recent de cette fiche
+### Constat du 2026-08-19 (s16) sur S16-1 - le message de partie interrompue : VALIDE - le plus recent de cette fiche
+
+> **Ce que cette section fait.** Elle rend le constat que `sofia-sm` me demande sur **S16-1**, apres
+> avoir rejoue les **deux scenarios** separement. Elle ne rouvre pas le texte du message : `camille-po`
+> a eu raison de ne pas le rouvrir, je l'avais valide pour cet evenement exact et **ce qui a change est
+> le moment, pas les mots**. Elle n'efface aucun verdict anterieur de cette fiche.
+
+- **Verdict** : **VALIDE**. **Motif, en deux phrases** : le message n'apparait plus a un enfant qui
+  revient apres une pause ordinaire, et il apparait toujours a celui dont la partie a reellement ete
+  interrompue - les deux scenarios mesures separement, sur un **redemarrage reel du serveur** et non
+  sur une simulation. Le marqueur porte desormais une duree de vie egale a celle de la session qu'il
+  signale, **1 800 s mesurees sur le cookie que le serveur envoie**, la ou il n'en portait aucune.
+- **Auteur** : nadia-prof. **Increment juge** : `round-two` a `d2460a3`, worktree `s16-nadia`, lignee
+  verifiee par `outils/verifier-lignee.sh`, aucun fichier de production modifie de mon fait.
+- **Porte technique, recomptee par mes commandes** : `bash outils/mvn-jdk21.sh -B clean verify`,
+  **BUILD SUCCESS, 545 tests, 0 echec**.
+- **Aucune instance de l'utilisatrice ne tournait** ; j'ai lance la mienne sur un port a moi, je l'ai
+  **redemarree pour le besoin du scenario B**, et je l'ai arretee **par son PID**, comme le service de
+  fichiers de mes documents assembles.
+
+#### 1. Les deux scenarios, mesures separement
+
+**Scenario B - le retour apres un redemarrage pendant une partie reellement en cours.** C'est
+l'evenement que j'avais valide, et il doit continuer a parler. Joue pour de vrai : partie demarree,
+cookies conserves, **serveur arrete par son PID puis relance**, puis retour a l'accueil en presentant
+les memes cookies - donc une session morte et un marqueur encore valide.
+
+- **message affiche** : *"Ta partie s'est arrêtée. Choisis un nouveau jeu !"*, **mot pour mot celui que
+  j'ai valide**, dans `.message-reprise`.
+- **onze jeux servis** dessous : l'enfant a une suite immediate, l'ecran n'est pas un cul-de-sac.
+- **Verdict sur ce scenario : la propriete que j'avais validee est intacte.**
+
+**Scenario A - le retour apres une pause ordinaire.** Le marqueur a expire, donc le navigateur ne
+l'envoie plus - c'est exactement ce que fait un navigateur d'un cookie perime.
+
+- **aucun message** : `.message-reprise` est **absent** du document.
+- **onze jeux servis**, l'accueil ordinaire.
+- **Verdict sur ce scenario : le message ne se declenche plus sans motif.**
+
+**Et la cause est fermee a la racine, pas masquee.** Releve du `Set-Cookie` tel que le serveur
+l'envoie, apres avoir demarre une partie : le marqueur `recreo-partie-en-cours` porte une expiration a
+**environ 1 800 secondes**, soit trente minutes, et il n'est plus un cookie de session. `JSESSIONID`,
+lui, reste un cookie de session - c'est la difference qui produisait le defaut : le second mourait a la
+fermeture du navigateur et a chaque redemarrage, le premier survivait indefiniment.
+
+#### 2. Ce que je juge de la forme, puisque c'est ma part
+
+**Le moment est desormais juste, et c'est tout ce que je demandais.** Mon accord de s01 sur ce texte
+portait sur un evenement precis - *une partie interrompue* - et la valeur de ce message pour un enfant
+tient entierement a ce qu'il soit **vrai**. Un message vrai qui arrive au mauvais moment n'est pas une
+maladresse de forme : c'est une **information fausse**, et un enfant de six ans n'a aucun moyen de la
+recouper. Un enfant a qui l'on annonce l'arret d'une partie qu'il n'a pas jouee apprend que la machine
+raconte des choses ; c'est le meme defaut de fond que le bouton qui ne repond pas, dans un autre canal.
+
+**Je credite la forme du correctif** : la duree de vie du marqueur est **lue sur la session elle-meme**
+plutot que recopiee dans une constante. Un chiffre recopie aurait derive le jour ou la configuration du
+conteneur change, et **le defaut serait revenu sans qu'aucun test ne bouge** - c'est la famille de
+defaut que ce depot a deja sanctionnee plusieurs fois, et celle que je crains le plus ici. Que la
+lecture soit confinee au seul type autorise a toucher la session est un choix d'architecture qui n'est
+pas de moi ; le fait que le chiffre ne soit ecrit nulle part, si.
+
+#### 3. Ce que je declare degrade sur ce constat
+
+- **Je n'ai pas attendu trente minutes.** L'expiration elle-meme est un comportement du **navigateur** :
+  ce que j'ai mesure est la duree de vie que le serveur **annonce** sur le cookie, et j'ai reproduit
+  l'etat "marqueur expire" en ne le presentant pas, ce qui est exactement ce qu'un navigateur fait d'un
+  cookie perime. **Je n'ai donc pas observe l'expiration se produire**, je l'ai encadree par ses deux
+  bords.
+- **Je n'ai pas verifie que 1 800 s est bien la duree que le conteneur applique**, seulement que c'est
+  celle qu'il annonce : les deux coincident par construction du correctif, et je n'ai aucun moyen de
+  mesurer la seconde depuis l'exterieur.
+- **Je n'ai pas observe d'enfant**, comme sur tous mes verdicts.
+
+#### 4. Ce que ce constat ne fait pas
+
+- **Il ne rouvre pas le texte du message**, ni aucun autre texte de cette fiche.
+- **Il ne leve ni F11, ni la reserve O seconde moitie, ni aucune reserve ouverte de cette fiche.**
+- **Table de correspondance de mes conditions** : les familles `M`, `F`, `PORTE` et les reserves
+  lettrees de cette fiche sont recensees dans la table que j'ai ecrite le 2026-08-19 dans
+  `squad/conformite/FICHE-barre-entree-niveau.md`, section "Table de correspondance". Ce renvoi existe
+  pour qu'un lecteur de cette fiche-ci n'ait pas a la deviner.
+
+### Done pedagogique du 2026-08-17 (s14) sur S12-5 - le retrait de l'`aria-label` est VALIDE
 
 > **Ce que cette section fait, et ce qu'elle ne fait pas.** Elle rend le jugement que le planning de
 > s13 exigeait de moi sur l'increment de **S12-5** et qu'aucun fichier ne portait a la cloture. Elle
