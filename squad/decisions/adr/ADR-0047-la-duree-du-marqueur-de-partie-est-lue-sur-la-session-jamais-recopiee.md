@@ -19,6 +19,17 @@
   la cacher, et c'est la difference avec `ADR-0042`, accepte en s13 avec une regle qui n'existe
   toujours pas.
 
+> **Amendement du 2026-08-19 (s17, sofia-sm, casquette dev) - le perimetre derive enoncait une
+> condition vraie et insuffisante.** La regle executable disait que la duree attendue est lue sur la
+> session de la requete jugee, jamais ecrite dans le test : c'est vrai, et une constante cablee
+> satisfait cette meme condition dans chaque epreuve prise separement. Ce qui rendait la propriete
+> visible n'etait pas cette lecture mais une divergence fortuite entre deux fixtures de deux classes
+> distinctes (900 dans `EtatDePartieEnSessionTest`, 1800 dans `PartieControllerTest`), que personne
+> n'avait choisie pour cela - repere par `theo-archi` a la cloture de s16. La clause devient :
+> **l'egalite est verifiee sur au moins deux durees differentes dans la meme epreuve**, la seule
+> forme ou une constante cablee echoue sans dependre d'un voisin. `PartieControllerTest` porte
+> desormais cette forme dans une seule methode de test.
+
 ## Contexte
 
 L'utilisatrice revient sur l'application apres une pause ordinaire et lit le message de partie
@@ -74,8 +85,10 @@ qui merite le message.
 > est egale a la duree d'inactivite maximale de la session HTTP de cette meme requete.**
 
 - **Perimetre derive** : les reponses viennent de vraies requetes sur de vraies sessions, comme le
-  corpus d'`ADR-0038` ; la duree attendue est **lue sur la session de la requete jugee**, jamais
-  ecrite dans le test. Le garde-fou ne connait aucun nombre, donc il suit une configuration future
+  corpus d'`ADR-0038` ; la duree attendue est lue sur la session de la requete jugee, jamais ecrite
+  dans le test - et **l'egalite est verifiee sur au moins deux durees differentes dans la meme
+  epreuve**, jamais sur une seule : c'est la seule forme ou une constante cablee echoue sans
+  dependre d'un voisin. Le garde-fou ne connait aucun nombre, donc il suit une configuration future
   sans etre relu.
 - **Derivation totale** : une reponse qui pose le marqueur sans declarer de duree, une duree negative
   ou nulle, et une session dont la duree d'inactivite n'est pas positive sont des **echecs**, jamais

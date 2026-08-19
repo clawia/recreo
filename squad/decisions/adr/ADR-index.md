@@ -53,6 +53,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0047](ADR-0047-la-duree-du-marqueur-de-partie-est-lue-sur-la-session-jamais-recopiee.md) | Deriver la duree de vie du marqueur de partie de la duree d'inactivite de la session, lue et jamais recopiee | s16 | 2026-08-19 | **Propose** - devient `Accepte` dans le commit du lot de `S16-1`, avec sa regle ; ecrite aujourd'hui elle serait rouge, puisque c'est le defaut qu'elle nomme **Accepte le 2026-08-19**, dans le lot de `S16-1` qui porte sa regle - verte et prouvee par mutation. `Propose` a l'ouverture du sprint, le temps que sa regle existe ; l'acceptation etait mon geste et elle avait manque, `marc-dev` ayant refuse a juste titre de trancher une decision d'architecture a ma place |
 | [ADR-0048](ADR-0048-l-adresse-affichee-est-gouvernee-par-une-en-tete-de-reponse-jamais-par-le-declencheur.md) | Faire gouverner l'adresse affichee par une en-tete de reponse, pour qu'un declencheur unique garde sa double responsabilite | s16 | 2026-08-19 | **Propose** - devient `Accepte` dans le commit du lot de `S16-2`, avec sa regle **Accepte le 2026-08-19**, dans le lot de `S16-2` qui porte sa regle - verte et prouvee par mutation. `Propose` a l'ouverture du sprint, le temps que sa regle existe ; l'acceptation etait mon geste et elle avait manque, `marc-dev` ayant refuse a juste titre de trancher une decision d'architecture a ma place |
 | [ADR-0049](ADR-0049-une-matiere-s-ecrit-accentuee-dans-la-donnee-de-catalogue.md) | Porter la matiere accentuee dans la donnee de contenu elle-meme, et garder l'unicite de sa graphie | s17 | 2026-08-19 | Accepte, sa regle ecrite dans le meme commit (`UneMatiereNAQuUneSeuleGraphieDansLeContenuServiTest`, 3 tests dont la morsure) ; **ferme `DEC-0032` point 2**, sans reponse depuis le 2026-08-17 et differe trois fois |
+| [ADR-0050](ADR-0050-un-texte-support-est-un-champ-de-contenu-qui-rejoint-le-plancher-et-l-identite-d-ecran.md) | Faire entrer un texte-support comme champ de contenu, et lui faire rejoindre le plancher de lisibilite et l'identite d'ecran | s17 | 2026-08-19 | Accepte, ses deux regles ecrites dans le meme commit (`TailleDesTextesEtBoutonsTest`, `AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest`, 5 methodes neuves dont 3 morsures) ; confirme que `S17-2` reste une story de contenu |
 
 ## Amendements
 
@@ -702,3 +703,18 @@ troisieme avait nommee sans la fermer :
     laquelle des deux moities elle ne tient pas, et se derive par un repliage de diacritiques sans
     aucune liste de mots. Ce n'est pas une regle ArchUnit - l'objet juge est la valeur d'une cle de
     ressources - le compte reste a **29**.
+
+47. **ADR-0050** repond a une question de perimetre - un texte-support est-il un champ ou une
+    mecanique - et la reponse tient en une phrase : le critere existait deja, executable, dans
+    `ADR-0004` (une mecanique implemente `GameMechanic` et vit dans son propre paquet), il suffisait
+    de le lire. Ce qui vaut d'etre relu est ailleurs. **L'instruction a trouve deux trous qui ne
+    dependent pas de `S17-2` et qui sont vrais aujourd'hui** : le plancher de lisibilite de 1,25rem
+    ne gardait ni les boutons exceptes ni sept selecteurs nommes a la main, laissant **cinq regles de
+    la feuille servie** lues par personne - dont `.signal .verdict`, le juste/faux que l'enfant lit
+    apres chaque reponse ; et l'identite d'ecran d'`ADR-0032`, enumeree par champs, rendra un verdict
+    **faux** des que l'ecran portera trois textes. Les deux corrections suivent la meme resolution
+    qu'`ADR-0015` et qu'`ADR-0039` : la propriete generale demenage dans un balayage derive,
+    l'epinglage nomme reste nomme. La morsure de la premiere se prouve sur **la feuille servie reelle
+    mutee**, et verifie dans le meme geste que l'ancienne clause reste verte sur cette feuille - la
+    mesure de ce que la clause neuve ajoute, pas son affirmation. Aucune des deux n'est une regle
+    ArchUnit : l'objet juge est une declaration CSS pour l'une, la forme d'un record pour l'autre.

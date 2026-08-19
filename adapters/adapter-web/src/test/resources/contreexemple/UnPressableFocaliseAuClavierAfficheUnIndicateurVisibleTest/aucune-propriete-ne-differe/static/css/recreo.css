@@ -1,0 +1,13 @@
+/* Le defaut exact que S17-1 corrige (reserve S16-A) : un pressable qui porte deja une regle a
+   :focus-visible, sans qu'aucune propriete n'y differe de son repos - un enfant au clavier ne voit
+   nulle part ou il est. Aucun box-shadow n'est declare ici, ni au repos ni au focus. */
+.bouton-neuf {
+    display: inline-flex;
+    color: #ffffff;
+    background-color: #2e6f9e;
+}
+
+.bouton-neuf:focus-visible {
+    color: #ffffff;
+    background-color: #2e6f9e;
+}

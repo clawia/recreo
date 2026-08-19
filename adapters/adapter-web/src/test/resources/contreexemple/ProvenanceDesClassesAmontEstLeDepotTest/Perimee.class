@@ -1,0 +1,3 @@
+Dette 8.2 (s17) : jeu fautif de ProvenanceDesClassesAmontEstLeDepotTest. Ce fichier n'est pas un
+vrai .class - il joue le role du compile perime dans la comparaison d'horodatage. Son contenu n'a
+aucune importance ; seul son horodatage, pose au moment de l'epreuve, compte.

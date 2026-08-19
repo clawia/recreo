@@ -834,6 +834,31 @@ body:has(.filtre-niveau) .chip-niveau.est-actif:focus-visible {
     border: 0.125rem solid var(--recreo-entete-fond);
 }
 
+/* S17-1 (reserve S16-A de nadia-prof, FICHE-barre-entree-niveau.md) : un enfant qui navigue au
+   clavier voit desormais lequel des sept pressables d'une manche est actuellement selectionne.
+   Forme tranchee par l'arbitrage prealable de nadia-prof (variante 1 d'ines-design,
+   ARBITRAGE-PREALABLE-s17-indicateur-de-focus-clavier.md) : anneau interieur, 3 px, currentColor,
+   sur les memes selecteurs qu'ADR-0046, a :focus-visible seulement - jamais a :hover ni :active
+   (FOC-3, ce qui garde intacte la premisse "rien ne change sous le pointeur" du 2026-08-18).
+   FOC-1 : box-shadow inset plutot qu'un outline ou un contour, pour peindre a l'interieur de la
+   boite du bouton, sur son propre fond - le contraste de l'anneau est donc celui du texte contre
+   ce meme fond, deja mesure (proposition-ines-focus-clavier.md, section 3). FOC-2 : box-shadow ne
+   participe jamais au calcul de boite (deja ecartee des proprietes comparees a :focus-visible par
+   ADR-0046 point 4, second amendement) - aucun pressable ne change de taille, de police ni de
+   position au focus. currentColor : aucune teinte neuve, aucune paire a justifier. */
+.continuer-partie:focus-visible,
+.demarrer:focus-visible,
+.proposition:focus-visible,
+.recommencer:focus-visible,
+.sortie-pleine:focus-visible,
+.proposition.deja-essayee:focus-visible,
+.retour-accueil:focus-visible,
+.lien-accueil:focus-visible,
+.chip-niveau:focus-visible,
+body:has(.filtre-niveau) .chip-niveau.est-actif:focus-visible {
+    box-shadow: inset 0 0 0 0.1875rem currentColor;
+}
+
 /* S14-2, correction du Done pedagogique refuse par nadia-prof (BARRE-1, BARRE-2), forme retenue
    par theo-archi (ADR-0022, troisieme amendement) : les points d'entree par niveau redeviennent un
    habillage permanent dont la visibilite depend de l'ecran, sur un marqueur neuf, "ecran-exclusif" -
