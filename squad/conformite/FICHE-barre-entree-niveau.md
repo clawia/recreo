@@ -3,7 +3,15 @@
 - **Increment** : deux boutons d'entree par niveau (CP / CM1) dans l'en-tete de recreo, toujours
   visibles y compris sur un ecran de jeu, story `S14-1` (`docs/backlog/backlog.md`, section
   "Sprint 14").
-- **Statut global au 2026-08-19 (s16)** : **S16-2 (l'adresse affichee) et S16-6 (la phrase de filtre)
+- **Statut global au 2026-08-19 (s16), quatrieme constat** : **S16-3 et S16-4 constates VALIDE SOUS
+  RESERVE**. **Mes conditions S15-8 et S15-9 sont tenues aux quatre positions, sur deux jeux et sept
+  items** - la porte de sortie que j'avais posee est franchie, mon verdict de s15 n'est plus degrade
+  sur ce point. **Reserve neuve S16-A** : mesure faite pour la premiere fois, **un enfant qui navigue
+  au clavier ne voit nulle part ou il est** - aucun des sept pressables d'une manche n'affiche
+  d'indicateur de focus, et la cause est une variable de couleur que la feuille tierce ne definit que
+  sur des classes de variante qu'aucun de nos gabarits ne porte. **Et je retire une limite que j'avais
+  declaree cinq fois** : le focus clavier m'est mesurable, contrairement au survol.
+- **Statut global au 2026-08-19 (s16), trois premiers constats** : **S16-2 (l'adresse affichee) et S16-6 (la phrase de filtre)
   constates VALIDE** sur l'increment `d2460a3`. L'adresse est poussee a `/` par la seule branche qui rend
   le catalogue complet et **jamais** sur la branche de confirmation, mesure sur l'en-tete de reponse des
   deux branches ; **aucune condition deja tenue n'est degradee**, les neuf `BARRE` et les neuf `S15`
@@ -128,7 +136,196 @@ Cette story n'ouvre, ne ferme et ne rejuge aucune ligne de `squad/programme/MATR
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. Il reste vide tant qu'aucun
 > arbitrage prealable n'a ete rendu et qu'aucun increment n'a ete livre et joue.
 
-### Constats du 2026-08-19 (s16) sur S16-2 et S16-6, et la table de correspondance de mes conditions - le plus recent de cette fiche
+### Constat du 2026-08-19 (s16) sur S16-3 et S16-4 - VALIDE SOUS RESERVE, et une reserve neuve que ce lot m'a permis de voir - le plus recent de cette fiche
+
+> **Ce que cette section fait.** Elle rend le quatrieme constat, celui que `sofia-sm` avait place en
+> dernier pour que je juge sur un tableau complet. Elle mesure **mes conditions S15-8 et S15-9** sur le
+> materiau livre, franchit **la porte de sortie que j'avais posee** (les quatre positions et plusieurs
+> items, la ou mon verdict de s15 etait degrade a une position et un item), et repond franchement sur
+> le focus clavier. Elle n'efface aucun verdict anterieur.
+
+- **Verdict** : **VALIDE SOUS RESERVE**. **Motif, en deux phrases** : **S15-8 et S15-9 sont tenues aux
+  quatre positions, sur deux jeux et sept items**, y compris a l'etat de focus clavier que je n'avais
+  jamais pu atteindre - chaque proposition marquee garde le pastel de sa position et son trait, et
+  aucune ne devient bleue. **Une reserve neuve, S16-A** : la mesure que ce lot m'a enfin permis de
+  faire montre qu'**un enfant qui navigue au clavier ne voit nulle part ou il est** - aucun des sept
+  pressables d'une manche n'affiche d'indicateur de focus, et la phrase ecrite sous l'amendement
+  ("l'anneau de focus clavier tiers reste intact") est fausse sur ce produit.
+- **Auteur** : nadia-prof. **Increment juge** : `round-two` a `b0c98fd`, fusionne dans mon worktree
+  `s16-nadia`, lignee verifiee par `outils/verifier-lignee.sh`, aucun fichier de production modifie de
+  mon fait. **BUILD SUCCESS, 545 tests, 0 echec** par mes commandes.
+- **Aucune instance de l'utilisatrice ne tournait** ; j'ai lance la mienne sur un port a moi et je l'ai
+  arretee **par son PID**, comme le service de fichiers de mes documents assembles.
+
+#### 1. La porte de sortie que j'avais posee : les quatre positions, plusieurs items
+
+**Mon verdict du 2026-08-18 etait degrade sur ce point exact** - *"une seule position de proposition
+regardee : je pose la condition S15-8 sur les quatre positions sans les avoir toutes capturees"*. Je la
+franchis ici.
+
+**Comment j'ai atteint les quatre positions**, parce que ce n'etait pas immediat : la plus grande partie
+du catalogue sert **trois** propositions, donc la quatrieme position y est inatteignable. **"Le bon
+verbe" en sert quatre** - 25 items du paquet de conjugaison - et c'est par lui que cette position
+existe. Pour chaque position, j'ai cherche une manche ou la bonne reponse n'y est pas, presse cette
+proposition une fois, et capture l'etat resultant : une seule proposition marquee a l'ecran, a la
+position voulue, verifie dans le document (la classe de marque sur celle-la et sur aucune autre).
+
+| Capture | Jeu | Position marquee | Fond attendu | Fond mesure sur l'image |
+|---|---|---|---|---|
+| `s16-marquee-verbe-pos1` | Le bon verbe (4 propositions) | 1 | `#bdd2ef` | **present, 9 631 px** |
+| `s16-marquee-verbe-pos2` | Le bon verbe | 2 | `#a9dcd8` | **present, 9 227 px** |
+| `s16-marquee-verbe-pos3` | Le bon verbe | 3 | `#dcc8ed` | **present, 9 152 px** |
+| `s16-marquee-verbe-pos4` | Le bon verbe | 4 | `#eec1d8` | **present, 9 848 px** |
+| `s16-marquee-calcul-pos1` | Calcul CP (3 propositions) | 1 | `#bdd2ef` | **present, 6 755 px** |
+| `s16-marquee-calcul-pos2` | Calcul CP | 2 | `#a9dcd8` | **present, 6 311 px** |
+| `s16-marquee-calcul-pos3` | Calcul CP | 3 | `#dcc8ed` | **present, 6 627 px** |
+
+**Sept items distincts, deux jeux, quatre positions.** Les enonces differents a chaque fois - de "4 + 4"
+a "Autrefois, nous ___ toujours les premiers a l'ecole." - donc ce n'est pas la meme manche regardee
+sept fois.
+
+**Et je verifie l'inverse de ce que la condition demande, parce que c'est cela qui aurait fait mal.**
+La regle d'etat livree declare le fond a `--recreo-accent`, c'est-a-dire **le bleu des boutons
+d'action**. Si elle gagnait la cascade, chaque proposition deja essayee deviendrait **bleue a texte
+blanc sous le doigt** - l'apparence exacte d'un bouton de jeu, sur l'element qui doit dire "celle-la,
+tu l'as deja essayee". **Mesure : la surface de ce bleu a l'interieur du cabinet vaut 209 px sur les
+sept captures, identique partout, et c'est le levier du meuble, pas une proposition.** Aucune
+proposition ne devient bleue. **S15-8 : TENUE.**
+
+**Sur la forme retenue, je dis ce que j'en pense.** Declarer des valeurs pour satisfaire une exigence
+en s'arrangeant pour qu'elles **ne gagnent jamais** est un procede que je regarde avec mefiance : il
+tient a l'ordre des regles dans le fichier, et un deplacement de bloc suffirait a le renverser sans
+qu'aucun test de contenu ne bouge. Le commentaire de la feuille le dit lui-meme - *"ne jamais deplacer
+ce bloc apres les quatre regles de position"*. **Je l'accepte parce que le resultat a l'ecran est
+juste, et je note que sa fragilite est une instruction ecrite, pas un garde-fou.** C'est le genre de
+propriete dont je reste la seule garde, et je la remesurerai a chaque lot qui touche cette feuille.
+
+#### 2. S15-9 - le trait de M9 survit, aux quatre positions
+
+**TENUE.** Le trait est present sur la proposition marquee des sept captures ; sur
+`s16-marquee-verbe-pos4`, le verbe marque porte son trait sur le pastel `#eec1d8` de la quatrieme
+position, et les trois autres propositions n'en portent pas. Mesure de style calcule sur l'element
+marque : le trait est declare **au repos et a l'etat de focus**.
+
+**Et je credite la forme du raisonnement autant que le resultat** : la conclusion "aucune exigence ne
+nait sur le trait" n'est pas un releve fige, elle est **recalculee a chaque execution** contre la
+feuille tierce reellement servie. La difference compte pour moi : une liste ecrite a la main aurait
+vieilli en silence a la premiere montee de version, et c'est la famille de defaut qui a produit tout ce
+chantier. Que `yanis-qa` l'ait verifie **par mutation de la vraie feuille tierce** - un soulignement
+ajoute y fait naitre six exigences - est ce qui transforme cette phrase en propriete.
+
+#### 3. Le focus clavier - la reponse franche : oui, je peux l'atteindre, et je viens de le faire
+
+**Reponse : oui.** Vous avez raison de distinguer les deux, et je l'avais mal separe. **Un survol
+demande un pointeur, et rien dans ce depot ne conduit un pointeur - c'est la cause que j'ai nommee cinq
+fois et elle est inchangee. Le focus, lui, est un etat que le document peut prendre lui-meme**, et je
+n'avais jamais essaye. Je l'ai essaye : une sonde posee dans le document assemble appelle le focus sur
+un pressable, verifie que l'etat de focus clavier correspond bien, puis lit le style calcule et l'ecrit
+dans la page, que je capture ensuite par la commande habituelle.
+
+```
+outils/mesurer-rendu.sh 560 <url> <png>
+```
+
+**Cela marche : l'etat de focus clavier correspond, sur les sept pressables d'une manche.** Ce que je
+peux donc desormais mesurer, et que personne n'avait mesure : ce qu'un enfant au clavier voit.
+
+**Premier resultat, et il valide le lot** (`s16-mesure-focus-clavier.png`), sur la proposition marquee
+de la quatrieme position :
+
+| | Fond | Texte | Trait |
+|---|---|---|---|
+| au repos | `rgb(238,193,216)` | `rgb(28,39,51)` | trait present |
+| **focalisee au clavier** | **`rgb(238,193,216)`** | **`rgb(28,39,51)`** | **trait present** |
+
+**Rien ne change.** C'est exactement la forme neutre que j'ai retenue le 2026-08-18, et elle tient a
+l'etat de focus comme sous le doigt. **Le defaut que ce lot corrige etait donc reel et je le
+confirme** : un enfant au clavier subissait le meme effacement que celui que l'utilisatrice a vu a la
+souris, et il ne le subit plus.
+
+#### 4. Reserve S16-A, neuve et datee du 2026-08-19 - un enfant au clavier ne voit pas ou il est
+
+**Le fait, mesure sur les sept pressables d'une manche** (`s16-mesure-anneau-de-focus.png`) : pour les
+deux puces de niveau, la sortie d'en-tete, les trois propositions et la proposition marquee, le contour
+passe de **3 px a zero** au moment ou l'element recoit le focus, et l'ombre portee vaut **rien avant
+comme apres**. **Aucun des sept n'affiche le moindre indicateur.**
+
+**La cause, verifiee dans la feuille tierce servie et pas devinee** - et je l'ecris parce que sans elle
+la reserve n'est pas actionnable :
+
+1. la regle de focus clavier de la feuille tierce pose `outline: 0` **et** remplace le contour par une
+   ombre portee prise dans une variable ;
+2. la classe de bouton definit bien cette variable, mais sa valeur **reference une seconde variable** de
+   couleur ;
+3. cette seconde variable n'est **jamais definie par la classe de bouton** : les dix-sept autres regles
+   qui la definissent sont les classes de variante de la bibliotheque, et **aucun gabarit de ce depot
+   n'en porte une** - je l'ai verifie sur tous les gabarits ;
+4. donc la declaration est invalide a la resolution, l'ombre retombe a rien, **et le contour natif a
+   deja ete retire par la meme regle**. Il ne reste rien.
+
+**Ce que cela coute a un enfant.** Un enfant qui joue au clavier - parce qu'il ne peut pas tenir un
+telephone, parce qu'un adulte l'aide, parce que c'est l'ordinateur de la classe - **avance a l'aveugle**
+: rien ne lui dit sur quelle proposition il se trouve avant qu'il ne presse. C'est **la meme famille
+exacte** que le defaut que l'utilisatrice a trouve a la souris - la feuille tierce retire quelque chose
+que la feuille maison ne restitue pas - et c'est la troisieme fois que cette famille se manifeste sur
+ce produit.
+
+**Pourquoi une reserve et non un motif de refus, et je veux etre nette la-dessus.** Ce lot **n'a pas
+cree** ce defaut : il l'a herite, et il a **ameliore** l'etat de focus sur tout le reste (couleur, texte
+et trait survivent desormais, ce qui n'etait pas le cas). Refuser le lot qui m'a enfin donne le moyen de
+voir ce defaut serait exactement le contraire de ce qu'il faut faire. **Et je corrige une phrase, pas un
+choix** : ecarter l'ombre portee des proprietes comparees **a cet etat** est justifie - la redeclarer
+n'aurait rien restitue - mais la raison ecrite a cote (*"l'anneau de focus clavier tiers reste
+intact"*) est **fausse sur ce produit** : cet anneau n'existe pour aucun de nos boutons. Le raisonnement
+de `theo-archi` est bon, son hypothese ne l'est pas, et il n'avait aucun moyen de le voir sans la mesure
+que je viens de faire.
+
+**Ce qui la fermera, et c'est verifiable sans moi** : que **chaque pressable de l'application affiche, a
+l'etat de focus clavier, un indicateur visible qui ne soit pas seulement une couleur** - je ne prescris
+ni sa forme ni son moyen, c'est un arbitrage de forme qui appartient a `ines-design` et un mecanisme qui
+appartient a `theo-archi`. **Verification : la sonde de style calcule ci-dessus, sur les pressables de
+chaque ecran ; au moins une propriete visible doit differer entre le repos et le focus.** Je poserai mes
+conditions sur la forme quand elle me sera proposee ; je ne les invente pas d'avance.
+
+#### 5. Une observation que je verifie contre mon propre dossier avant de la nommer
+
+Sur `s16-marquee-verbe-pos4`, le message d'echec est **dans le document mais sous le pli** a 360 x 640 :
+la grille de quatre propositions de "Le bon verbe" est haute, et le message tombe en dessous. **Ce n'est
+pas un defaut neuf de ce lot, et j'ai verifie mon propre dossier avant de l'ecrire** : ma condition M4
+est **non tenue sur trois jeux sur sept** depuis ma mesure du 2026-08-13, et elle a cesse d'etre
+bloquante par `DEC-0025`. "Le bon verbe" est de ceux-la, et pour la raison structurelle que je viens de
+remesurer. **Je ne la rouvre pas ici** et je ne la compte pas contre ce lot ; je la note parce qu'elle
+est visible sur mes propres captures et qu'un lecteur les verra.
+
+#### 6. Ce que je declare degrade a la cloture de ce sprint
+
+- **Le survol reste hors de portee**, et la cause est inchangee : rien dans ce depot ne conduit un
+  pointeur. **Mais je retire cette limite pour le focus clavier** : je viens de montrer qu'elle ne s'y
+  appliquait pas, et j'aurais pu l'essayer plus tot. C'est une limite que j'ai declaree cinq fois sans
+  verifier qu'elle couvrait bien les deux etats.
+- **Le focus que j'ai obtenu est pose par un script, pas par la touche de tabulation.** L'etat de focus
+  clavier correspond, ce que j'ai verifie et non suppose, mais **je n'ai pas traverse un ecran a la
+  tabulation** : l'ordre des arrets reste lu dans le document.
+- **Je n'ai pas observe d'enfant**, sur aucun de mes verdicts de ce sprint ni des deux precedents. La
+  question de `camille-po` - un enfant de CP distingue-t-il une puce d'une sortie - **reste sans reponse
+  mesurable a la cloture**.
+- **La quatrieme position n'existe que par un jeu**, "Le bon verbe" : ma condition S15-8 porte sur quatre
+  positions dont **une seule est atteignable par un seul paquet**. Si ce paquet quittait le catalogue, la
+  quatrieme position redeviendrait non mesurable, et personne ne s'en apercevrait.
+- **Deux defauts non bloquants de `yanis-qa`** - la duree du marqueur protegee par la seule divergence
+  fortuite de deux fixtures, et la provenance qui prouve un emplacement mais jamais une fraicheur - sont
+  hors de ma porte ; je les note parce que le premier touche le correctif que j'ai constate ce matin, et
+  qu'un garde-fou qui tient par accident ne tient pas.
+
+#### 7. Ce que ce constat ne fait pas
+
+- **Il ne rouvre aucune des conditions deja tenues**, ni aucun arbitrage de l'utilisatrice.
+- **Il ne leve ni F11, ni M4, ni la reserve J, ni la reserve O seconde moitie, ni S15-C.**
+- **Il ne prescrit pas la forme de l'indicateur de focus** : S16-A nomme la propriete, pas son dessin.
+- **Il ne prejuge pas de la clause de `theo-archi` sur mes jetons** : ma table existe depuis ce matin,
+  elle est faite pour etre comparee, et le calendrier appartient a `sofia-sm`.
+
+### Constats du 2026-08-19 (s16) sur S16-2 et S16-6, et la table de correspondance de mes conditions
 
 > **Ce que cette section fait.** Elle rend les deux constats que `sofia-sm` me demande - **S16-2**
 > (l'adresse affichee) et **S16-6** (la phrase de filtre sur la route ou elle manquait, qui ferme ma
