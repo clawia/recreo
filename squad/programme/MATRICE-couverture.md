@@ -630,6 +630,32 @@ apres audit reel de chaque increment.
   document qui doit en ajouter un quatrieme. Story compagne des antonymes ecrite au backlog,
   non affectee : `S17-5`, `docs/backlog/backlog.md`.
 
+**Note du 2026-08-19 (camille-po) - `S17-3` REFUSE sur un rendu ; le statut de ligne ne bouge pas,
+et je dis pourquoi ce statut inchange ne doit pas se lire comme un increment jouable.**
+`nadia-prof` a refuse `S17-3` (`squad/conformite/FICHE-bandit-manchot-synonymes-cm1.md`, "Done
+pedagogique du 2026-08-19 (s17) sur S17-3") : contenu non en cause (`SYN-1` a `SYN-4` tenues, 0
+indice sur 20 ne nomme la reponse), refus de forme mesure - aucune entree de catalogue, et la
+derniere proposition tombe 63 a 159 px sous le pli sur 20 items sur 20 a 360 x 640. Detail complet,
+ma decision de perimetre et ce que je route a `theo-archi` : `DEC-0039`, amendement du 2026-08-19
+("`S17-3` refusee sur un rendu, meme famille que `S17-2`, mais pas son declencheur").
+
+**Le statut de cette ligne reste `en cours` et je ne le change pas ici, par la regle que
+`nadia-prof` ecrit dans son propre verdict : "le refus [...] ne fait pas bouger la ligne de la
+matrice, qui reste `en cours`."** Ce n'est pas une omission de ma part : je l'applique telle
+qu'elle l'a posee, et elle est seule a en avoir l'autorite.
+
+**Ce que ce statut inchange ne veut pas dire, et que je nomme pour qu'un audit futur ne le
+suppose pas.** `en cours` ne signifie pas ici qu'un enfant peut jouer ce jeu : `S17-3` n'a
+aujourd'hui aucune entree dans `catalogue.yaml`, `nadia-prof` l'ecrit elle-meme ("ce jeu n'existe
+pas pour un enfant"), et sa condition bloquante `SYN-5` reste ouverte. Le statut de matrice mesure
+une ligne de programme suivie par une story active, pas la presence d'un increment jouable a la
+date de cette note - les deux ont coincide pour cette ligne depuis l'ouverture de s17, ils ne
+coincident plus depuis ce refus. Voir `DEC-0039`, meme amendement, pour le critere que je pose
+avant la cloture de s17 : si `SYN-5` n'est pas levee et qu'aucune entree de catalogue n'existe pour
+`S17-3` a la cloture, l'engagement de `DEC-0037` (au moins un mouvement reel de couverture par
+sprint) n'est pas honore par ce statut inchange, et je l'ecrirai alors comme le changement de
+direction que `DEC-0037` exige de nommer.
+
 **Amendement du 2026-08-19 (camille-po) - `S17-2` sort du perimetre de s17, la ligne revient
 `non couvert`.** `nadia-prof` a rejoue la mesure de `COMP-5` sur la mise en page reelle de la
 manche (consigne, bloc de question et cabinet compris, pas seulement le bloc de texte-support) :
@@ -1488,3 +1514,23 @@ de lignes `couvert-valide` ne bouge pas et n'a aucune chance de bouger a la clot
 pedagogique complet, tous deux absents (`DEC-0024`, amendement du 2026-08-19). **Aucune ligne
 n'atteindra `couvert-valide` a la cloture de s17.** L'engagement de `DEC-0037` (au moins une ligne
 rouverte, faute de quoi ce serait un changement de direction) reste leve par `S17-3` seule.
+
+## Synthese apres le refus de `S17-3` (2026-08-19) - le tableau ne bouge pas, la phrase de cloture est corrigee
+
+Le tableau de la section precedente reste exact : `S17-3` refusee ne change aucun total, par la
+regle que `nadia-prof` pose dans son propre verdict et que la note dediee sous le tableau francais
+CM1 explique (statut de ligne inchange, `en cours`). Je ne recopie donc pas un tableau identique.
+
+**Ce que je corrige est la derniere phrase de la synthese precedente : "l'engagement de `DEC-0037`
+[...] reste leve par `S17-3` seule" ne tient plus telle quelle.** Je ne l'efface pas, pour que la
+trajectoire reste lisible : elle etait vraie au moment ou je l'ai ecrite, quand `S17-3` portait
+encore la promesse d'un increment jouable a la cloture de s17. Depuis, `nadia-prof` a refuse cet
+increment sur un rendu (63 a 159 px sous le pli, aucune entree de catalogue) - voir la note dediee
+ci-dessus et `DEC-0039`, amendement du 2026-08-19. **La phrase juste, a lire a sa place** : le
+statut de matrice de la ligne synonymes reste `en cours`, mais cela ne suffit plus a dire que
+l'engagement de `DEC-0037` est honore en substance, puisqu'aucune ligne du produit n'a produit
+d'increment jouable a ce jour du sprint (`S17-2` en est sortie sans code, `S17-4` reste bloquee sur
+`BPM-1`, `S17-3` est refusee et injouable). `S17-3` reste activement poursuivie sous la branche du
+mecanisme routee a `theo-archi` (`DEC-0039`) : le critere qui decidera, a la cloture de s17, si
+l'engagement de `DEC-0037` est honore ou s'il faut l'ecrire comme un changement de direction est
+celui pose dans ce meme amendement - `SYN-5` levee et une entree de catalogue pour `S17-3`, ou non.

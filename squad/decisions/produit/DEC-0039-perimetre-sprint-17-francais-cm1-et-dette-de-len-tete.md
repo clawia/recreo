@@ -528,3 +528,91 @@ meuble.
 - **`sofia-sm`** : ne plus reconduire cet obstacle comme une ligne sans proprietaire dans les
   rapports de sprint - il a desormais un proprietaire (`camille-po`) et un declencheur explicite (la
   reouverture de `S17-2`), sur le meme modele que les obstacles transferes en section 3.
+
+## Amendement du 2026-08-19 (camille-po, s17) - `S17-3` (synonymes CM1) refusee sur un rendu, meme famille que `S17-2`, mais pas son declencheur
+
+`nadia-prof` a rendu son Done pedagogique sur `S17-3`
+(`squad/conformite/FICHE-bandit-manchot-synonymes-cm1.md`, section "Done pedagogique du 2026-08-19
+(s17) sur S17-3", branche `s17-nadia-contenu`, increment mesure `round-two` a `ed7eb52`) :
+**REFUSE.** Je le rapporte sans l'adoucir : **le contenu de `lea-dev` n'est pas en cause** -
+`SYN-1` a `SYN-4` tenues, les vingt items verifies un par un, **0 indice sur 20 ne nomme la
+reponse**, le meilleur resultat du catalogue selon les mots memes de `nadia-prof`. Le refus est de
+**forme**, mesure sur le rendu servi : aucune entree de catalogue, et a 360 x 640 la derniere
+proposition tombe **63 a 159 px sous le pli sur 20 items sur 20**. Le chiffre qui rend ce refus non
+negociable vient du dossier du depot : le plus **court** enonce de ce paquet fait **101
+caracteres**, contre **97** pour le plus long du paquet que `DEC-0024` a retire du catalogue pour
+ce motif exact - le meilleur cas du paquet neuf est pire que le pire cas d'un paquet deja juge
+inacceptable.
+
+`nadia-prof` impute la cause a sa propre condition `SYN-1` (le mot presente en phrase, jamais
+isole), qu'elle n'avait pas assortie d'une limite de rendu, et ouvre **`SYN-5`** (bloquante) : la
+derniere proposition de chaque item entierement visible a 360 x 640 sans defiler, sur la totalite
+des vingt items. Elle isole elle-meme le levier, mesure et non suppose : une clause invariante de
+**60 a 66 caracteres**, repetee a l'identique dans les vingt enonces, occupant **3 a 4 des 5 a 7
+lignes rendues** ("Dans cette phrase, quel mot peut remplacer X sans changer le sens ?"). Elle ne
+choisit pas ou cette clause doit vivre - dans l'enonce, dans la consigne du jeu, ailleurs - et le
+route explicitement a `camille-po` et `theo-archi`.
+
+### Ma decision, avec son motif
+
+**`S17-3` reste au perimetre de s17, sous la branche qui deplace la clause hors de l'enonce - pas
+sous celle qui reecrit le paquet a une longueur imposee, et pas sous celle qui sort la story du
+perimetre comme `S17-2`.**
+
+- **La branche du seuil de longueur est ecartee, pas seulement moins bonne.** `DEC-0016` interdit
+  nommement tout critere en nombre de caracteres comme condition de rendu ("un raisonnement par
+  lettres manque son pire cas reel") ; l'ecrire ici reproduirait exactement la forme de garde-fou
+  que ce produit a deja refusee. La clause invariante seule (60 a 66 caracteres) est deja proche du
+  seuil qui a fait refuser "Le bon petit mot" (97 caracteres) une fois la phrase de contexte
+  ajoutee : compresser la phrase en gardant la clause telle quelle risquerait de reduire le mot
+  cible a un contexte trop pauvre pour rester une phrase au sens de `SYN-1`, rouvrant le risque que
+  cette condition existe pour fermer.
+- **La sortie de perimetre n'est pas retenue, a la difference de `S17-2`, parce que la situation
+  n'est pas la meme.** Quand j'ai sorti `S17-2`, les trois rendus etaient deja tous rentres :
+  `ines-design` et `theo-archi` avaient chacun mesure leur limite (44 a 82 px, zero px de
+  mecanisme) et `nadia-prof` avait deja exclu toute forme reduite viable. Ici, **aucun mecanisme
+  n'a encore ete instruit** : `nadia-prof` isole un levier chiffre (3 a 4 lignes sur 5 a 7, soit un
+  ordre de grandeur comparable a l'ecart de `S17-2`) qui ne touche ni le cabinet ni le score -
+  contrairement a `S17-2`, la clause invariante est un element du **contenu de l'item**, pas de
+  l'**identite partagee de l'ecran de manche**. Conclure a l'impossibilite avant que `theo-archi`
+  n'ait dit si le schema de contenu existant porte deja de quoi la deplacer (le champ `consigne` du
+  catalogue, deja rendu une fois par ecran plutot que repete par item) serait trancher son
+  mecanisme a sa place.
+
+**Ce que je route.** `theo-archi` : la question posee au mot pres par `nadia-prof` - ou la clause
+invariante peut vivre sans code de domaine neuf, avant tout autre travail de contenu sur ce paquet.
+`sofia-sm` : affectation de la correction une fois la reponse de mecanisme obtenue.
+`nadia-prof` a deja route elle-meme ses deux reserves non bloquantes (le guillemet droit qui n'est
+pas une ponctuation francaise, a `theo-archi`/`ines-design` ; le degre sur quatre items, matiere de
+`S17-5`) : je ne les reroute pas.
+
+### Reponse en clair aux deux faits nommes
+
+**1. `S17-3` n'est pas le declencheur du mandat sur le cabinet et le score** (amendement
+precedent). L'ecart de `S17-2` etait irreductible sans toucher l'identite partagee de l'ecran de
+manche : les deux mandats deja instruits (`ines-design`, `theo-archi`) plafonnaient a 82 px pour un
+besoin de 90 a 120, et `nadia-prof` avait deja ferme toute forme reduite viable. L'ecart de
+`S17-3` a une cause localisee et chiffree par `nadia-prof` elle-meme, qui ne requiert par
+construction aucune revision du cabinet ni du score : c'est une question de repartition du texte
+entre l'item et la consigne d'un jeu deja existant, pas une question d'identite visuelle partagee
+par huit jeux deja juges. Le declencheur que j'ai pose pour le mandat cabinet/score reste
+exclusivement la reouverture de `S17-2` ; il n'est pas etendu par ce refus.
+
+**2. La phrase que j'ai ecrite ("l'engagement de `DEC-0037` est tenu") ne tient plus telle
+quelle, et je le dis plutot que de la laisser filer.** Elle etait fondee sur `S17-3` faisant
+avancer une ligne vers un increment reel ; a ce jour, cet increment est **refuse et injouable** -
+`nadia-prof` l'ecrit elle-meme : *"ce jeu n'existe pas pour un enfant."* Par la regle qu'elle pose
+dans son propre verdict (*"le refus [...] ne fait pas bouger la ligne de la matrice, qui reste `en
+cours`"*), le statut de la ligne au sens strict de la matrice ne change pas - je ne le modifie donc
+pas ci-dessous. Mais **je ne confonds pas un statut de matrice inchange avec l'engagement que
+`DEC-0037` protegeait** : cet engagement visait a empecher qu'un sprint se ferme sans progres reel
+sur la couverture, pas a verifier qu'une ligne porte encore une etiquette. **A l'heure ou j'ecris
+cette phrase, aucune ligne de `squad/programme/MATRICE-couverture.md` n'a produit d'increment
+jouable ce sprint** : `S17-2` en est sortie sans code, `S17-4` (homophones) reste bloquee sur
+`BPM-1` et un Done complet (amendement du 2026-08-19), et `S17-3` est refusee et injouable. **Si
+`s17` se cloture dans cet etat - `SYN-5` non levee, aucune entree de catalogue pour `S17-3` -
+j'ecrirai a la cloture, sans attenuation, que s17 est un quatrieme sprint sans mouvement reel de
+couverture malgre un statut de matrice inchange, exactement le changement de direction que
+`DEC-0037` exige de nommer plutot que de laisser filer.** Je ne l'ecris pas encore comme acquis
+parce que `S17-3` reste activement poursuivie (ci-dessus) ; je pose ici, avant la cloture et non
+apres, le critere qui decidera lequel des deux constats est le bon.
