@@ -9,6 +9,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -63,9 +64,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *   <li>le <b>cote maison</b> vient de ce que la feuille maison declare reellement au repos : une
  *       propriete qu'elle ne gouverne pas n'est jamais exigee a un etat.</li>
  * </ul>
- * Seuls les <b>noms des etats gardes</b> sont ecrits ici, et l'un de ceux qui pourraient y figurer en
- * est exclu sur mesure - voir {@link #ETATS_GARDES} et
- * {@link #lAnneauDeFocusClavierEstUneOmbrePorteeTierceEtCetEtatResteHorsDuPerimetre}.
+ * Seuls les <b>noms des etats gardes</b> sont ecrits ici, et l'une des proprietes qu'un etat garde
+ * pourrait comparer en est ecartee sur mesure, a cet etat seulement - voir {@link #ETATS_GARDES} et
+ * {@link #lAnneauDeFocusClavierEstUneOmbrePorteeTierceEtBoxShadowResteHorsDesProprietesCompareesACetEtat}.
  *
  * <p><b>Ce que cette clause ne voit pas, dit avant qu'on le decouvre.</b>
  * <ul>
@@ -103,19 +104,48 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
      * Les etats que cette clause garde : ceux qu'un pointeur, un doigt ou un appui posent et retirent
      * sans que le serveur en sache rien.
      *
-     * <p>{@code :focus-visible} n'y est pas, et l'exclusion est mesuree plutot qu'argumentee : la
-     * bibliotheque vendorisee y declare l'anneau de focus clavier sous forme d'ombre portee, sur lequel
-     * ce depot s'appuie nommement (ADR-0030 point 2,
-     * {@code LHabillageNeRogneJamaisUnElementPressableTest}). Exiger que la feuille maison redeclare
-     * {@code box-shadow} a cet etat forcerait le developpeur a ecraser cet anneau ou a le recopier - un
-     * garde-fou qui pousse a une regression d'accessibilite. La mesure de ce qu'il en couterait est
-     * epinglee par
-     * {@link #lAnneauDeFocusClavierEstUneOmbrePorteeTierceEtCetEtatResteHorsDuPerimetre}, qui rougit le
-     * jour ou ce motif disparait. {@code :focus-within}, {@code :target}, {@code :visited} et
-     * {@code :link} n'y sont pas non plus : la feuille vendorisee ne les declare sur aucun selecteur
-     * qu'un de nos boutons porte, et une exigence sans objet est decorative.
+     * <p><b>Second amendement d'ADR-0046 (s16) : {@code :focus-visible} y entre.</b> L'exclusion
+     * initiale etait trop grossiere - elle excluait un <b>etat</b> la ou il fallait exclure une
+     * <b>propriete de cet etat</b>. Mesure sur la feuille vendorisee servie : {@code .btn:focus-visible}
+     * ecrase {@code color}, {@code background-color}, {@code border-color}, {@code outline} <b>et</b>
+     * {@code box-shadow} - pas seulement une ombre portee. Sous focus clavier, un pressable perd donc
+     * bien ses couleurs au profit de celles de la bibliotheque, exactement le defaut que cet ADR existe
+     * pour fermer ; le critere de S16-3 nommait un defaut reel. Seule {@code box-shadow} reste ecartee,
+     * et seulement a cet etat ({@link #PROPRIETES_TIERCES_ECARTEES_PAR_ETAT}) : elle porte l'anneau de
+     * focus clavier tiers, sur lequel ce depot s'appuie nommement (ADR-0030 point 2,
+     * {@code LHabillageNeRogneJamaisUnElementPressableTest}), et l'exiger a cet etat forcerait le
+     * developpeur a l'ecraser ou a la recopier a la main - un garde-fou qui pousse a une regression
+     * d'accessibilite. Une propriete ecartee a un etat nomme, pas un etat exclu en bloc : la meme forme
+     * que {@code border-width} (ADR-0017) et {@code transform} (ADR-0033). La mesure de ce que cette
+     * seule exclusion couvre reste epinglee par
+     * {@link #lAnneauDeFocusClavierEstUneOmbrePorteeTierceEtBoxShadowResteHorsDesProprietesCompareesACetEtat},
+     * qui rougit le jour ou l'un des trois faits dont elle depend tombe. {@code :focus-within},
+     * {@code :target}, {@code :visited} et {@code :link} n'y sont pas non plus : la feuille vendorisee
+     * ne les declare sur aucun selecteur qu'un de nos boutons porte, et une exigence sans objet est
+     * decorative.
      */
-    static final List<String> ETATS_GARDES = List.of(":hover", ":active");
+    static final List<String> ETATS_GARDES = List.of(":hover", ":active", ":focus-visible");
+
+    /**
+     * Les proprietes tierces ecartees des exigences, a un etat garde donne - jamais globalement.
+     * ADR-0046, second amendement (s16) : {@code box-shadow} porte l'anneau de focus clavier tiers
+     * (ADR-0030 point 2) et n'est ecartee qu'a {@code :focus-visible}, ou l'exiger forcerait la
+     * feuille maison a l'ecraser ou a le recopier a la main. Aucune exclusion a {@code :hover} ni a
+     * {@code :active} : une propriete dont la difference est un moyen legitime a un etat donne, pas
+     * une domination generale - la meme forme que {@code border-width} (ADR-0017) et {@code transform}
+     * (ADR-0033).
+     *
+     * <p>Appliquee par <b>regle</b>, jamais par bucket d'etat isole : la feuille vendorisee porte des
+     * selecteurs qui combinent plusieurs etats gardes a la fois ({@code
+     * .btn:first-child:active:focus-visible}), et cette regle-la ne s'applique jamais sans
+     * {@code :focus-visible}. Ecarter {@code box-shadow} seulement dans le bucket {@code
+     * :focus-visible} laisserait une exigence fantome dans le bucket {@code :active} pour une regle
+     * qui ne peut pas s'appliquer au survol ou a l'appui seuls - {@link #exigencesDuTiers} calcule
+     * donc l'ecart sur l'union des etats que <b>la regle courante</b> porte, pas sur l'etat en cours
+     * d'iteration.
+     */
+    private static final Map<String, Set<String>> PROPRIETES_TIERCES_ECARTEES_PAR_ETAT =
+            Map.of(":focus-visible", Set.of("box-shadow"));
 
     /**
      * Toutes les pseudo-classes que le navigateur, et non le serveur, met et retire. Cette liste-ci
@@ -359,7 +389,9 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
     /**
      * Les exigences que la feuille tierce fait peser sur ce bouton, rattachees a son identite : pour
      * chaque regle tierce dont le sujet est applicable et porteur d'un ou plusieurs etats <b>tous</b>
-     * gardes, chaque propriete declaree qui touche une propriete gouvernee au repos par la maison.
+     * gardes, chaque propriete declaree - hors celles ecartees a cet etat precis par
+     * {@link #PROPRIETES_TIERCES_ECARTEES_PAR_ETAT} - qui touche une propriete gouvernee au repos par
+     * la maison.
      */
     private static Map<Exigence, Set<String>> exigencesDuTiers(
             Map<String, String> tiers, TailleDesTextesEtBoutonsTest.BoutonRendu bouton,
@@ -372,8 +404,15 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
                     || !sujetApplicable(composeDuMemeElement(regle.getKey()), bouton)) {
                 continue;
             }
+            Set<String> ecarteesParCetteRegle = lecture.etats().stream()
+                    .flatMap(etat -> PROPRIETES_TIERCES_ECARTEES_PAR_ETAT
+                            .getOrDefault(etat, Set.of()).stream())
+                    .collect(Collectors.toSet());
             for (String etat : lecture.etats()) {
                 for (String proprieteTierce : proprietesRendues(regle.getValue())) {
+                    if (ecarteesParCetteRegle.contains(proprieteTierce)) {
+                        continue;
+                    }
                     for (String proprieteMaison : repos) {
                         if (touche(proprieteMaison, proprieteTierce)) {
                             exigences.computeIfAbsent(
@@ -574,16 +613,23 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
     }
 
     /**
-     * Le motif de l'exclusion de {@code :focus-visible}, mesure sur la feuille vendorisee reelle
-     * plutot qu'argumente - meme geste que l'exclusion de {@code transform} par ADR-0033. Ce test
-     * epingle les trois faits dont l'exclusion depend, et rougit le jour ou l'un tombe : la
-     * bibliotheque declare bien l'anneau de focus en ombre portee, un bouton maison declare bien une
-     * ombre portee au repos, et cet etat est bien hors du perimetre garde. Le jour ou la bibliotheque
-     * cesse d'utiliser une ombre, l'exclusion n'est plus une exception constatee mais une question
-     * ouverte.
+     * Le motif de l'exclusion de {@code box-shadow} a {@code :focus-visible}, mesure sur la feuille
+     * vendorisee reelle plutot qu'argumente - meme geste que l'exclusion de {@code transform} par
+     * ADR-0033. Ce test epingle les trois faits dont l'exclusion depend, et rougit le jour ou l'un
+     * tombe : la bibliotheque declare bien l'anneau de focus en ombre portee, un bouton maison declare
+     * bien une ombre portee au repos, et {@code box-shadow} est bien hors des proprietes comparees a
+     * cet etat.
+     *
+     * <p>Second amendement d'ADR-0046 (s16) : ce test est <b>reformule, jamais supprime</b>. Sa
+     * troisieme assertion passe de "cet etat est hors du perimetre garde" - faux depuis que
+     * {@code :focus-visible} y entre - a "{@code box-shadow} est hors des proprietes comparees a cet
+     * etat", qui reste vrai. Le nom suit ce changement : un nom qui promet autre chose que ce que le
+     * test verifie est la meme famille de defaut qu'une reference qui pointe vers rien. Le jour ou la
+     * bibliotheque cesse d'utiliser une ombre, l'exclusion n'est plus une exception constatee mais une
+     * question ouverte.
      */
     @Test
-    void lAnneauDeFocusClavierEstUneOmbrePorteeTierceEtCetEtatResteHorsDuPerimetre() {
+    void lAnneauDeFocusClavierEstUneOmbrePorteeTierceEtBoxShadowResteHorsDesProprietesCompareesACetEtat() {
         Map<String, String> tiers = TailleDesTextesEtBoutonsTest.blocsTiers(RACINE_PRODUCTION);
         assertThat(proprietesRendues(tiers.getOrDefault(".btn:focus-visible", "")))
                 .as("la bibliotheque vendorisee doit toujours porter l'anneau de focus clavier par "
@@ -592,14 +638,14 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
 
         Map<String, String> maison = TailleDesTextesEtBoutonsTest.blocsMaison(RACINE_PRODUCTION);
         assertThat(proprietesRendues(maison.getOrDefault(".demarrer", "")))
-                .as("un bouton maison doit declarer une ombre portee au repos, sans quoi l'exigence "
-                        + "sur box-shadow a l'etat de focus serait sans objet et l'exclusion sans "
-                        + "motif")
+                .as("un bouton maison doit declarer une ombre portee au repos, sans quoi l'exclusion "
+                        + "de box-shadow a :focus-visible serait sans objet et sans motif")
                 .contains("box-shadow");
 
-        assertThat(ETATS_GARDES)
-                .as("inclure :focus-visible ferait exiger un box-shadow maison a cet etat, donc "
-                        + "pousserait a ecraser l'anneau de focus clavier de la bibliotheque")
-                .doesNotContain(":focus-visible");
+        assertThat(PROPRIETES_TIERCES_ECARTEES_PAR_ETAT.getOrDefault(":focus-visible", Set.of()))
+                .as("box-shadow doit rester ecartee des proprietes comparees a :focus-visible, sans "
+                        + "quoi ce garde-fou exigerait un box-shadow maison a cet etat et pousserait "
+                        + "a ecraser l'anneau de focus clavier de la bibliotheque")
+                .contains("box-shadow");
     }
 }
