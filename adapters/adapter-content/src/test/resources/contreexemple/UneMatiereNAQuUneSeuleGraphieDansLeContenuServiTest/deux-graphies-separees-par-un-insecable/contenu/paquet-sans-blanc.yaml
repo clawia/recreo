@@ -1,0 +1,14 @@
+# ADR-0003 : jeu fautif, jamais servi a un enfant. Graphie de reference, sans blanc de bord.
+schema: 1
+id: paquet-sans-blanc
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CM1"
+  domaine: "Orthographe et grammaire"
+  competence: "Graphie de reference du jeu fautif de l'insecable"
+items:
+  - enonce: "Il ___ mange une pomme."
+    bonneReponse: "a"
+    distracteurs: ["as"]
+    indice: "Remplace par 'avait'."

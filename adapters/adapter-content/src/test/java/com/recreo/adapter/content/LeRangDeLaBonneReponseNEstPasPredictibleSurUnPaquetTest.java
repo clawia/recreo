@@ -268,6 +268,43 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
     /** Etat au 2026-08-15, s12. Ce nombre ne remonte jamais ; le baisser demande un diff visible. */
     private static final int PLAFOND_DE_DETTE_SEUIL_MINIMUM = 3;
 
+    /**
+     * ADR-0051 : les paquets dont <b>aucun</b> item n'entre dans le calcul de rang, avec le motif de
+     * chacun. Ce n'est ni une dette ni une exemption : ces paquets ne violent rien, ils sont hors du
+     * domaine d'une propriete qui suppose trois valeurs comparables. Ce qui est en cause n'est pas
+     * leur contenu, c'est le <b>silence</b> - avant cette declaration, un paquet entierement hors du
+     * domaine traversait ce garde-fou sans qu'aucune ligne verte ou rouge ne dise qu'il n'avait
+     * jamais ete regarde.
+     *
+     * <p>Cette table ne peut ni grandir en silence (un paquet hors du domaine et non declare est
+     * rouge), ni pourrir dans les deux sens (un paquet declare qui contribue des items est rouge, un
+     * nom qui ne designe plus aucun paquet est rouge). Elle n'a <b>pas de plafond</b>, et c'est
+     * delibere : un plafond dirait qu'un contenu textuel de plus est une degradation, alors que c'est
+     * le programme scolaire qui le demande. Le cout de sa croissance est ailleurs - chaque nom qui s'y
+     * ajoute mesure la part du contenu servi sur laquelle cette propriete n'est gardee par rien.</p>
+     */
+    private static final Map<String, String> PAQUETS_HORS_DU_DOMAINE_NUMERIQUE = Map.of(
+            "cm1-conjugaison-present",
+            "25 items sur 25 portent trois distracteurs, donc quatre propositions : le rang d'une"
+                    + " bonne reponse parmi trois n'y est pas defini. Mesure du 2026-08-19, comptage"
+                    + " des cles distracteurs du paquet servi",
+            "cm1-homophones",
+            "24 items sur 24 portent un seul distracteur, donc deux propositions : meme motif, en"
+                    + " sens inverse. Mesure du 2026-08-19",
+            "cp-comparer-nombres",
+            "24 items sur 24 proposent les trois symboles de comparaison (\"<\", \">\", \"=\") :"
+                    + " deux distracteurs, mais aucune des trois propositions n'a de valeur"
+                    + " numerique. C'est l'enonce qui porte les nombres, jamais les propositions",
+            "cp-le-bon-son",
+            "15 items sur 15 proposent des graphies de phonemes (\"on\", \"in\", \"an\") : deux"
+                    + " distracteurs, aucune valeur numerique lisible",
+            "cm1-synonymes",
+            "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"
+                    + " propositions n'est numerique : ce sont des mots de vocabulaire (synonymes et"
+                    + " distracteurs), valeurDe rend null sur les trois propositions de chaque item."
+                    + " Mesure du 2026-08-19, verification directe : aucune des 60 propositions ne"
+                    + " commence par un chiffre");
+
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
     }
@@ -540,6 +577,150 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
     @Test
     void leRangDeLaBonneReponseNEstPasPredictibleSurLesPaquetsDeProduction() {
         verifierQueLeRangNEstPasPredictible(CONTENU_DE_PRODUCTION, "", DETTE_DE_RANG);
+    }
+
+    /**
+     * <b>ADR-0051 : aucun paquet n'est ecarte en silence du calcul de rang.</b>
+     *
+     * <p>Defaut trouve par {@code lea-dev} sur un paquet de synonymes neuf, verifie et etendu par
+     * {@code yanis-qa} (rapport qualite de s17, point 1) :
+     * {@link #verifierQueLeRangNEstPasPredictible} porte {@code if (repartition.total() == 0)
+     * continue;}, et un paquet dont aucun item ne rend trois valeurs comparables traverse donc ce
+     * garde-fou sans etre juge, sans qu'aucune ligne du depot ne le dise. Le garde-fou frere,
+     * {@code LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest}, declare deja ses exclusions
+     * <b>partielles</b> ({@code PAQUETS_A_ITEMS_ECARTES}) ; celui-ci n'avait rien pour les exclusions
+     * <b>totales</b>, qui sont pourtant les seules a ne laisser aucune trace.</p>
+     *
+     * <p><b>Ce que cette clause ne fait pas, et il faut le lire avant ce qu'elle fait</b> : elle ne
+     * garde pas la propriete sur du texte. Elle ne la comble pas, elle la rend <b>comptable</b>.
+     * ADR-0051 dit pourquoi elle ne la comble pas : sur des propositions textuelles il n'existe aucun
+     * ordre intrinseque, et toute strategie qu'on encoderait (la plus longue, la premiere par ordre
+     * alphabetique) serait une hypothese sur ce qu'un enfant fait - une affirmation pedagogique, hors
+     * du mandat de l'architecte qui ecrit ce test.</p>
+     */
+    @Test
+    void aucunPaquetNEstEcarteEnSilenceDuCalculDeRang() {
+        verifierQuAucunPaquetNEstEcarteEnSilence(
+                CONTENU_DE_PRODUCTION, "", PAQUETS_HORS_DU_DOMAINE_NUMERIQUE);
+    }
+
+    /**
+     * ADR-0051 : la clause, extraite pour se prouver mordante sur une declaration mutee plutot que sur
+     * un paquet invente - l'objet juge est la declaration, c'est donc elle qu'il faut muter, et le
+     * corpus reste les paquets reellement servis.
+     */
+    static void verifierQuAucunPaquetNEstEcarteEnSilence(Path racine, String racineClasspath,
+                                                          Map<String, String> declares) {
+        List<String> paquets = paquets(racine);
+        assertThat(paquets)
+                .as("ce garde-fou ne prouve rien s'il ne trouve aucun paquet sous %s", racine)
+                .isNotEmpty();
+
+        List<String> ecartesEnSilence = new ArrayList<>();
+        List<String> declarationsPerimees = new ArrayList<>();
+        for (String paquet : paquets) {
+            List<Question> items =
+                    itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet));
+            int classes = repartitionDe(items).total();
+            boolean declare = declares.containsKey(paquet);
+            if (classes == 0 && !declare) {
+                ecartesEnSilence.add(String.format(
+                        "paquet %s : %d items tires, %d classes - ce garde-fou ne l'a pas juge du tout,"
+                                + " et rien ne le declare. Soit ce paquet est hors du domaine de la"
+                                + " propriete (propositions non numeriques, ou nombre de distracteurs"
+                                + " different de deux) et il entre dans"
+                                + " PAQUETS_HORS_DU_DOMAINE_NUMERIQUE avec son motif, soit c'est le"
+                                + " garde-fou qui ne sait pas lire ce qu'il devrait lire (ADR-0051)",
+                        paquet, items.size(), classes));
+            }
+            if (classes > 0 && declare) {
+                declarationsPerimees.add(String.format(
+                        "paquet %s : declare hors du domaine, il contribue pourtant %d items au calcul"
+                                + " de rang - la declaration est perimee (ADR-0051)",
+                        paquet, classes));
+            }
+        }
+
+        List<String> declarationsFantomes = declares.keySet().stream()
+                .filter(paquet -> !paquets.contains(paquet))
+                .map(paquet -> "paquet " + paquet + " : declare hors du domaine, il n'existe plus sous "
+                        + racine + " - une declaration qui survit a son paquet (ADR-0051)")
+                .sorted()
+                .toList();
+
+        declares.forEach((paquet, motif) -> assertThat(motif)
+                .as("%s : une declaration sans motif ecrit ne declare rien", paquet)
+                .isNotBlank());
+
+        assertThat(ecartesEnSilence)
+                .as("ADR-0051 : un paquet que ce garde-fou n'examine sur aucun de ses items le declare"
+                        + " - un garde-fou qui exclut son objet en silence occupe la place d'une preuve"
+                        + " qu'il ne fournit pas")
+                .isEmpty();
+        assertThat(declarationsPerimees)
+                .as("ADR-0051 : une declaration hors du domaine ne survit pas au contenu qui la"
+                        + " motivait")
+                .isEmpty();
+        assertThat(declarationsFantomes)
+                .as("ADR-0051 : chaque nom declare designe un paquet qui existe reellement")
+                .isEmpty();
+    }
+
+    /**
+     * ADR-0013 obligation 3, premier sens : la declaration amputee d'un nom, sur le corpus reel. C'est
+     * la forme exacte que prendra l'oubli le jour ou un paquet textuel neuf sera servi - ce que
+     * {@code lea-dev} vient de vivre sur son paquet de synonymes, sans qu'aucun rouge ne le lui dise.
+     */
+    @Test
+    void unPaquetHorsDuDomaineNonDeclareFaitEchouerLeGardeFou() {
+        Map<String, String> amputee = new LinkedHashMap<>(PAQUETS_HORS_DU_DOMAINE_NUMERIQUE);
+        String retire = amputee.keySet().iterator().next();
+        amputee.remove(retire);
+        assertThatThrownBy(() -> verifierQuAucunPaquetNEstEcarteEnSilence(
+                CONTENU_DE_PRODUCTION, "", amputee))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining(retire)
+                .hasMessageContaining("ne l'a pas juge du tout");
+    }
+
+    /**
+     * ADR-0013 obligation 3, second sens : un paquet reellement juge, declare a tort hors du domaine.
+     * Sans cette clause, la table pourrait grandir sans limite et finir par soustraire au calcul des
+     * paquets que le calcul voit parfaitement.
+     */
+    @Test
+    void unPaquetDeclareAtortHorsDuDomaineFaitEchouerLeGardeFou() {
+        Map<String, String> enTrop = new LinkedHashMap<>(PAQUETS_HORS_DU_DOMAINE_NUMERIQUE);
+        enTrop.put("cm1-tables-multiplication", "motif faux, pose par la mise a l'epreuve");
+        assertThatThrownBy(() -> verifierQuAucunPaquetNEstEcarteEnSilence(
+                CONTENU_DE_PRODUCTION, "", enTrop))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("cm1-tables-multiplication")
+                .hasMessageContaining("la declaration est perimee");
+    }
+
+    /** ADR-0013 obligation 3, troisieme sens : un nom qui ne designe plus aucun paquet. */
+    @Test
+    void uneDeclarationQuiSurvitASonPaquetFaitEchouerLeGardeFou() {
+        Map<String, String> fantome = new LinkedHashMap<>(PAQUETS_HORS_DU_DOMAINE_NUMERIQUE);
+        fantome.put("paquet-qui-n-existe-pas", "motif pose par la mise a l'epreuve");
+        assertThatThrownBy(() -> verifierQuAucunPaquetNEstEcarteEnSilence(
+                CONTENU_DE_PRODUCTION, "", fantome))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("paquet-qui-n-existe-pas")
+                .hasMessageContaining("survit a son paquet");
+    }
+
+    /** ADR-0013 obligation 3, quatrieme sens : une declaration sans motif ecrit. */
+    @Test
+    void uneDeclarationSansMotifFaitEchouerLeGardeFou() {
+        Map<String, String> muette = new LinkedHashMap<>(PAQUETS_HORS_DU_DOMAINE_NUMERIQUE);
+        String premier = muette.keySet().iterator().next();
+        muette.put(premier, "   ");
+        assertThatThrownBy(() -> verifierQuAucunPaquetNEstEcarteEnSilence(
+                CONTENU_DE_PRODUCTION, "", muette))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("une declaration sans motif ecrit ne declare rien");
     }
 
     @Test

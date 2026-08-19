@@ -1,0 +1,16 @@
+# ADR-0003 : jeu fautif, jamais servi a un enfant. La meme graphie, une espace de fin en plus - la mutation que yanis-qa a mesuree
+# verte sur deux paquets de production reels. L'espace vit dans les guillemets, jamais en fin de
+# ligne, pour qu'aucun outil de mise en forme ne l'efface en silence.
+schema: 1
+id: paquet-avec-blanc-de-fin
+type: question
+descripteur:
+  matiere: "Français "
+  niveau: "CM1"
+  domaine: "Lecture et comprehension"
+  competence: "Meme graphie, separee de la precedente par un seul blanc"
+items:
+  - enonce: "Le renard vit un corbeau. Ou est le corbeau ?"
+    bonneReponse: "sur un arbre"
+    distracteurs: ["dans un trou"]
+    indice: "Relis la phrase."

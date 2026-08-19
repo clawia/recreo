@@ -1,0 +1,14 @@
+# ADR-0003 : jeu fautif, jamais servi a un enfant. Cas qui doit rester vert : ni le meme mot, ni le meme nombre de mots que l'autre.
+schema: 1
+id: paquet-de-questionner-le-monde
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CM1"
+  domaine: "Le vivant"
+  competence: "Seconde des deux matieres du cas vert"
+items:
+  - enonce: "Ou vit le poisson ?"
+    bonneReponse: "dans l'eau"
+    distracteurs: ["dans le sable"]
+    indice: "Pense a l'aquarium."

@@ -1,6 +1,7 @@
 # ADR-0049 - Porter la matiere accentuee dans la donnee de contenu elle-meme, et garder l'unicite de sa graphie
 
-- **Statut** : Accepte, avec sa regle ecrite dans le meme commit
+- **Statut** : Accepte, avec sa regle ecrite dans le meme commit ; **amende le 2026-08-19 (s17)** -
+  son repliage restait muet sur un ecart de blancs, defaut mesure par `yanis-qa` sur du materiau reel
 - **Date** : 2026-08-19
 - **Auteur** : theo-archi
 - **Sprint** : s17 (avis de faisabilite, avant tout commit de code)
@@ -119,6 +120,52 @@ prerequis de build).
 **Ce n'est pas une regle ArchUnit**, et le compte reste a **29** : l'objet juge est la valeur d'une cle
 d'un fichier de ressources, qu'ArchUnit ne voit pas. Le mecanisme automatique est un test du module
 `adapter-content`, execute par `mvn verify`.
+
+## Amendement du 2026-08-19 (s17) - le repliage absorbe les blancs, insecable comprise
+
+**Defaut mesure par `yanis-qa`** (rapport qualite de s17, point 2), sur du **materiau reel** et non
+sur la fixture de cette regle : deux paquets de production copies (`cm1-conjugaison-present` et
+`cm1-homophones`, tous deux `matiere: "Francais"`), **un seul mute d'une espace de fin**. Le
+garde-fou est reste **vert** alors que le contenu servi aurait porte deux chaines distinctes. Cause :
+le repliage retirait les diacritiques et la casse, jamais les blancs, si bien que `"Francais"` et
+`"Francais "` tombaient dans deux groupes de taille 1 au lieu d'un groupe de taille 2.
+
+**Ce que l'amendement change, et ce qu'il ne change pas.** La decision du 2026-08-19 n'est pas
+touchee : la forme accentuee reste la bonne, et la regle garde toujours l'**unicite** et jamais la
+justesse. C'est la definition de "ces deux chaines nomment la meme matiere" qui etait trop etroite.
+Le repliage retire desormais les blancs de bord et reduit toute suite interne a une seule espace.
+
+**Un second blanc, que la fixture de l'auteur n'aurait pas trouve.** `Character.isWhitespace` **ne
+compte pas** l'espace insecable (U+00A0) - par definition, elle ne compte que les blancs qui
+autorisent un retour a la ligne. Or c'est exactement le blanc qu'un copier-coller depose dans un
+fichier de contenu, et le seul qu'une relecture humaine ne distingue pas d'une espace ordinaire. Le
+predicat retenu est donc `isWhitespace || isSpaceChar`. **Mesure de la necessite, pas affirmation** :
+avec `isWhitespace` seule, sur les deux jeux fautifs neufs, la suite rend **un echec et un seul** -
+`unEspaceInsecableQuiSepareDeuxGraphiesFaitEchouerLeGardeFou`, tandis que le jeu du blanc ordinaire
+mord toujours (`bash outils/mvn-jdk21.sh -pl adapters/adapter-content -am test
+-Dtest=UneMatiereNAQuUneSeuleGraphieDansLeContenuServiTest`, JDK 21.0.10, 6 tests, 1 echec ; puis
+predicat restaure, 6 tests, 0 echec). Les deux clauses ne sont donc pas redondantes, et ce n'est pas
+une opinion sur les fixtures.
+
+**Trois jeux fautifs neufs**, dont un qui doit rester **vert** :
+
+- `deux-graphies-separees-par-un-blanc` : reproduit au caractere pres la mutation de `yanis-qa`.
+  L'espace vit **a l'interieur des guillemets** du YAML, jamais en fin de ligne, pour qu'aucun outil
+  de mise en forme ne l'efface sans qu'on le voie ;
+- `deux-graphies-separees-par-un-insecable` : le caractere est ecrit `\u00A0`, echappement que la
+  double quote de YAML interprete - **visible en relecture**, contrairement a l'octet lui-meme ;
+- `deux-matieres-differentes` : `Mathematiques` accentue et `Questionner le monde`, qui doivent rester
+  **deux matieres**. Sans ce cas, les deux clauses ci-dessus seraient une interdiction d'ecrire deux
+  matieres differentes deguisee en clause d'unicite.
+
+**Ce que le repliage ne pretend toujours pas.** Il ne fusionne rien qui differe autrement que par
+l'accent, la casse ou les blancs : `"Maths"` et `"Mathematiques"` restent deux matieres a ses yeux, et
+une divergence de ce genre passerait. Elle n'est pas invisible pour autant - elle se lit dans le diff
+du paquet, la ou un blanc de bord ne se lit pas. **C'est le critere de cet amendement** : est absorbe
+ce qu'une relecture humaine ne peut pas voir, rien de plus.
+
+**Le compte des regles ArchUnit ne bouge pas** (toujours 29) : c'est la meme regle, dont le repliage
+s'elargit, et ce n'est pas une regle ArchUnit.
 
 ## Consequences
 
