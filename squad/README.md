@@ -53,6 +53,22 @@ proprietaire a chaque creation et a chaque changement de statut.
 **Un fichier par ceremonie. On n'ajoute jamais a la suite d'un fichier existant** : diffs Git
 propres, pas d'ecriture concurrente, tri par date automatique.
 
+**Nomenclature des conditions et reserves pedagogiques de `nadia-prof` (amendement s16, retro de
+s16).** Quatre conventions de numerotation coexistent sans jamais avoir ete reliees (`BARRE-n`,
+`S15-n`, `R-BARRE-n`/lettre seule, `PORTE-n`), au point qu'une meme reserve porte deux noms dans
+des documents differents et qu'un meme jeton (`S15-<n>`) designe selon le contexte une story ou
+une condition - trouve par `relecteur-pedagogique` en s16, chaque reference verifiee exacte,
+aucune fantome. `theo-archi` a etabli que ces jetons sont cites par onze fichiers du code, dont
+la feuille de style servie et sept classes de garde-fou : les renommer casserait des references
+que rien ne detecte, donc aucun renommage n'est fait ni exige par cet amendement. La regle : toute
+famille de jetons neuve ou tout renommage introduit par `nadia-prof` est repris dans une **table
+de correspondance unique**, portee par la fiche de conformite du jeu concerne (premier exemple :
+`squad/conformite/FICHE-barre-entree-niveau.md`, section "Table de correspondance"), avec ses
+regles de lecture quand un jeton est ambigu. Un garde-fou qui protege ces references contre un
+renommage silencieux (sur le patron de `ConcordanceDesTagsDAgentTest`) ne peut etre ecrit qu'une
+fois cette table existante - sans elle, il n'y a rien contre quoi comparer une reference trouvee
+dans le code.
+
 ## 3. Pilotage par increment, pas par duree
 
 Il n'y a **pas de timebox**. Un sprint est un **increment livrable**, quelle que soit sa duree
@@ -108,6 +124,17 @@ sous 500 px (le plancher de `chrome --headless --window-size`) et aucune des deu
 n'avait laisse de commande citable. `outils/mesurer-rendu.sh` (`ADR-0025`) porte desormais cette
 commande pour toute mesure sous ce plancher.
 
+**Une verification annoncee sans sa methode est sanctionnee comme un chiffre sans sa methode**
+(amendement s16, cloture de s16). Extension de l'exigence ci-dessus, proposee par `theo-archi`
+contre lui-meme : dans son avis de faisabilite de s16, il avait ecrit avoir verifie qu'aucun
+critere n'epinglait un effectif de catalogue, sans dire comment - en realite il avait trouve
+l'effectif dans l'enonce du besoin et avait arrete de chercher, puis ecrit avoir cherche. Le
+`relecteur-pedagogique` a trouve la faille par un simple `grep`, que la phrase aurait du citer la
+premiere fois. Une affirmation de la forme "verifie", "cherche et rien trouve" ou "aucun ne le
+fait" porte, dans le meme paragraphe, la commande ou la methode de lecture qui l'a produite -
+sinon elle ne se distingue pas d'une affirmation non verifiee, et elle est pire : elle se
+presente comme verifiee.
+
 **Une propriete visible seulement par un humain qui joue n'est pas gardable par l'outillage du
 depot, et un verdict qui s'appuie sur elle le dit explicitement** (amendement s15, cloture de
 s15). `ADR-0025` avait deja declare non gardable le debordement de mise en page ; s15 en nomme deux
@@ -119,6 +146,18 @@ jamais sur une mesure. Un verdict qui credite une telle propriete la declare deg
 paragraphe, sur le meme registre que l'amendement de s12 pour les releves automatiques cites en
 preuve - la difference etant que, ici, aucune commande future ne fera jamais disparaitre la
 limite : elle est structurelle a l'outillage actuel, pas a l'execution d'une mesure donnee.
+
+**Une limite de mesure declaree nomme l'etat exact qu'elle couvre, jamais une categorie plus
+large qui l'englobe par analogie** (amendement s16, cloture de s16). `nadia-prof` a declare cinq
+sprints de suite ne pas pouvoir mesurer l'etat de survol d'un pressable (cause reelle : l'outil de
+mesure du depot pilote un navigateur en mode capture, rien n'y conduit un pointeur), et a laisse
+cette limite couvrir aussi le focus clavier sans jamais l'avoir essaye. En s16 elle a distingue les
+deux - le focus clavier est un etat que le document peut prendre lui-meme, sans pointeur - ecrit
+une sonde, mesure, et leve la limite pour cet etat seul. Cette mesure neuve a immediatement rendu
+verifiable un defaut jusque-la seulement declaratif (l'anneau de focus clavier tiers, `ADR-0046`)
+et en a trouve un troisieme de la meme famille (reserve `S16-A`). Le cout de cinq sprints de
+sur-extension silencieuse d'une limite est le motif de cet amendement : une limite couvre l'etat
+qu'elle a effectivement essaye et echoue a mesurer, jamais un etat voisin qui n'a jamais ete tente.
 
 ## 5. La synthese de sprint - `RAPPORT.md`
 
@@ -299,6 +338,17 @@ pas qu'il est **atteint** ni **visible** pour l'enfant. Contrairement au critere
 `ADR-0013` n'impose ici aucun marqueur obligatoire equivalent a une auto-declaration : `yanis-qa`
 ne peut donc pas enumerer mecaniquement les candidats, et ecrit lui-meme que sa recherche est une
 lecture ciblee, pas une preuve d'exhaustivite.
+
+**Un garde-fou qui tient uniquement par la divergence fortuite de deux fixtures ne tient pas**
+(amendement s16, cloture de s16). Trouve par `yanis-qa` : `EtatDePartieEnSession.dureeInactiviteMaximale()`
+n'est protegee contre une valeur recopiee dans le test qui la verifie que par le fait que deux
+tests distincts (`PartieControllerTest`, `EtatDePartieEnSessionTest`) utilisent par hasard deux
+duree differentes (1800 et 900) - jamais par une propriete de la regle elle-meme. Si l'un des deux
+tests disparaissait ou changeait sa valeur pour coincider avec l'autre, une regression vers une
+constante recopiee passerait inapercue sans qu'aucun test ne rougisse. Un garde-fou dont
+l'invariant repose sur la non-coincidence accidentelle de deux fixtures ecrites separement n'est
+pas un garde-fou tant qu'un test dedie ne fait pas varier explicitement la valeur pour prouver que
+la regle la lit et ne la recopie pas.
 
 **5. Relecture.** Le `relecteur-pedagogique` passe sur les livrables non executables. Il corrige
 ce qui est sans ambiguite, signale le reste.
