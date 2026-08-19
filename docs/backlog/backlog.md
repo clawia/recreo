@@ -4688,6 +4688,58 @@ ici : il fait l'objet d'une story distincte instruite par `theo-archi`.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, apres arbitrage prealable
   d'`ines-design` et de `nadia-prof` sur la forme, et avis de faisabilite de `theo-archi`.
 
+### Story de correction - Le bouton nomme a la revelation est absent de l'ordre de tabulation (`S17-C`, `M13`, anterieure a s17)
+
+**Non affectee a un sprint.** `nadia-prof`, en sondant `S17-1` apres livraison, mesure qu'a la
+revelation d'une manche, au clavier, le jeu ecrit "C'est auront. Appuie sur auront." et pose le
+focus sur ce bouton avec son anneau - mais que ce bouton est **le seul absent de l'ordre de
+tabulation** (`squad/conformite/FICHE-barre-entree-niveau.md`, reserve `S17-C`, 2026-08-19).
+**Ce defaut date de `M13` (s10) et n'est pas cause par `S17-1`** : l'indicateur de focus l'a
+seulement rendu visible pour la premiere fois. `camille-po` tranche qu'il n'entre pas au perimetre
+de s17 (`DEC-0039`, amendement du 2026-08-19) : le defaut est anterieur de sept sprints, son
+correctif touche `static/js/recreo.js` (dette 4 de `CLAUDE.md`, "le comportement des mecaniques
+loge dans le JavaScript client, que rien ne testait") sans garde-fou pret a l'accueillir
+(`RecreoJsDeplaceLeFocusTest` ne modelise aujourd'hui aucun attribut `tabindex`), et son cout n'est
+pas cerne sur un sprint deja charge.
+
+- **Besoin** : en tant qu'eleve qui navigue au clavier, je veux pouvoir revenir sur le bouton que
+  le jeu vient de me nommer a la revelation de la bonne reponse, afin de pouvoir appuyer dessus
+  sans devoir reprendre la partie a la souris.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Cause, lue dans le depot et non devinee** (`nadia-prof`) : `static/js/recreo.js` pose
+  `tabindex="-1"` sur sa cible **meme quand cette cible est deja focalisable**. L'attribut n'est
+  necessaire que pour les cibles qui ne le sont pas nativement (l'enonce, le signal). Meme effet,
+  moins grave, apres chaque echec : la proposition qu'on vient de presser sort aussi du cycle
+  jusqu'au rendu suivant.
+- **Criteres d'acceptation**, repris au mot pres de la mesure et de la verification de fermeture de
+  `nadia-prof` :
+  - Etant donne l'ecran de revelation d'une manche, quand on y traverse l'ensemble des elements a
+    la tabulation, alors le bouton nomme par le message de revelation ("Appuie sur `<reponse>`.")
+    fait partie de l'ordre de tabulation rencontre - verification de fermeture ecrite par
+    `nadia-prof` au mot pres.
+  - Etant donne une proposition pressee apres une reponse fautive, quand l'ecran se recharge sur la
+    meme manche, alors cette proposition n'est pas davantage exclue de l'ordre de tabulation que
+    tout autre element focalisable de l'ecran.
+  - Etant donne toute cible du script de focus qui est deja nativement focalisable (un bouton, par
+    exemple), quand le script lui pose le focus, alors il ne lui ajoute pas `tabindex="-1"` -
+    l'attribut reste reserve aux cibles qui en ont besoin pour devenir focalisables (l'enonce, le
+    signal).
+  - Ce qui n'est pas testable par un automate a ce jour, et releve de la seule sonde de
+    `nadia-prof`, faute de garde-fou executable (section 7 de sa sonde, 2026-08-19, "aucun
+    garde-fou de la CI ne mesure un etat de focus... c'est moi le garde-fou") : que l'ordre de
+    tabulation reel, mesure au clavier dans un vrai navigateur, rencontre effectivement le bouton
+    nomme, sur l'ecran de revelation et sur l'ecran de reprise.
+- **Ce que cette story ne tranche pas** : le mecanisme du correctif dans `static/js/recreo.js`, et
+  si un garde-fou executable peut naitre en etendant le faux DOM de `RecreoJsDeplaceLeFocusTest`
+  pour modeliser `tabindex`, ou si cette clause reste verifiee au clavier reel par `nadia-prof`
+  seule, comme la clause 1 de `M13` l'est deja - routes a `theo-archi`.
+- **Lien decision** : reserve **`S17-C`** de `nadia-prof`,
+  `squad/conformite/FICHE-barre-entree-niveau.md`, section "Sonde post-livraison du 2026-08-19
+  (s17) sur S17-1" ; `DEC-0039`, amendement du 2026-08-19 ("`S17-C` n'entre pas au perimetre de
+  s17").
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, apres avis de `theo-archi` sur le
+  mecanisme et son garde-fou.
+
 ### S17-2 - Comprendre un texte narratif ou documentaire (francais CM1)
 
 - **Besoin** : en tant qu'eleve de CM1, je veux lire un court texte et repondre a une question sur
