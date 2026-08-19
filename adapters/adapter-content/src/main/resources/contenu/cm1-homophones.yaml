@@ -6,100 +6,104 @@ descripteur:
   niveau: "CM1"
   domaine: "Orthographe et grammaire"
   competence: "Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...)"
+# S17-4 (DEC-0024, DEC-0039) : raccourcissement des enonces les plus longs (BPM-3, aucun item
+# supprime, toujours 24) et correction des indices qui nommaient la reponse au lieu de la
+# manipulation qui y mene (DEC-0024 point 5). Chaque phrase raccourcie garde la structure qui rend
+# sa reponse determinable (BPM-2), verifiee item par item.
 items:
   - enonce: "Il ___ mangé une pomme."
     bonneReponse: "a"
     distracteurs: ["à"]
-    indice: "Remplace par 'avait' : 'Il avait mangé une pomme' fonctionne, alors c'est 'a'."
+    indice: "Remplace par 'avait' : 'Il avait mangé une pomme' fonctionne."
   - enonce: "Je vais ___ l'école."
     bonneReponse: "à"
     distracteurs: ["a"]
-    indice: "Remplace par 'avait' : 'Je vais avait l'école' ne fonctionne pas, alors c'est 'à'."
+    indice: "Remplace par 'avait' : 'Je vais avait l'école' ne fonctionne pas."
   - enonce: "Papa ___ maman font la cuisine."
     bonneReponse: "et"
     distracteurs: ["est"]
-    indice: "Remplace par 'et puis' : 'Papa et puis maman font la cuisine' fonctionne, alors c'est 'et'."
+    indice: "Remplace par 'et puis' : 'Papa et puis maman font la cuisine' fonctionne."
   - enonce: "Le chat ___ noir."
     bonneReponse: "est"
     distracteurs: ["et"]
-    indice: "Remplace par 'était' : 'Le chat était noir' fonctionne, alors c'est 'est'."
+    indice: "Remplace par 'était' : 'Le chat était noir' fonctionne."
   - enonce: "Les enfants ___ partis."
     bonneReponse: "sont"
     distracteurs: ["son"]
-    indice: "Remplace par 'étaient' : 'Les enfants étaient partis' fonctionne, alors c'est 'sont'."
+    indice: "Remplace par 'étaient' : 'Les enfants étaient partis' fonctionne."
   - enonce: "Il prend ___ cartable."
     bonneReponse: "son"
     distracteurs: ["sont"]
-    indice: "Remplace par 'ton' : 'Il prend ton cartable' fonctionne, alors c'est 'son'."
+    indice: "Remplace par 'ton' : 'Il prend ton cartable' fonctionne."
   - enonce: "Ils ___ un chien."
     bonneReponse: "ont"
     distracteurs: ["on"]
-    indice: "Remplace par 'avaient' : 'Ils avaient un chien' fonctionne, alors c'est 'ont'."
+    indice: "Remplace par 'avaient' : 'Ils avaient un chien' fonctionne."
   - enonce: "___ joue dans la cour."
     bonneReponse: "On"
     distracteurs: ["Ont"]
-    indice: "Remplace par 'il' : 'Il joue dans la cour' fonctionne, alors c'est 'on'."
+    indice: "Remplace par 'il' : 'Il joue dans la cour' fonctionne."
   - enonce: "___ vas-tu ?"
     bonneReponse: "Où"
     distracteurs: ["Ou"]
-    indice: "Remplace par 'à quel endroit' : 'À quel endroit vas-tu ?' fonctionne, alors c'est 'où'."
+    indice: "Remplace par 'à quel endroit' : 'À quel endroit vas-tu ?' fonctionne."
   - enonce: "Tu veux du thé ___ du café ?"
     bonneReponse: "ou"
     distracteurs: ["où"]
-    indice: "Remplace par 'ou bien' : 'Tu veux du thé ou bien du café ?' fonctionne, alors c'est 'ou'."
+    indice: "Remplace par 'ou bien' : 'Tu veux du thé ou bien du café ?' fonctionne."
   - enonce: "Pose ton cartable ___, à côté du mien."
     bonneReponse: "là"
     distracteurs: ["la"]
-    indice: "Remplace par 'à cet endroit' : 'Pose ton cartable à cet endroit' fonctionne, alors c'est 'là'."
+    indice: "Remplace par 'à cet endroit' : 'Pose ton cartable à cet endroit' fonctionne."
   - enonce: "Léa cherche ___ règle dans sa trousse."
     bonneReponse: "la"
     distracteurs: ["là"]
-    indice: "Le mot qui suit le trou est un nom ('règle') : il faut un déterminant, 'la'."
-  - enonce: "Léa a perdu son livre depuis lundi, mais elle ___ enfin retrouvé ce matin."
+    indice: "Le mot qui suit le trou est un nom ('règle') : il faut un déterminant."
+  - enonce: "Léa a perdu son livre, mais elle ___ enfin retrouvé."
     bonneReponse: "l'a"
     distracteurs: ["la"]
-    indice: "Remplace par 'l'avait' : 'elle l'avait enfin retrouvé' fonctionne, alors c'est 'l'a'."
-  - enonce: "Il ___ range soigneusement dans son cartable."
+    indice: "Remplace par 'l'avait' : 'elle l'avait enfin retrouvé' fonctionne."
+  - enonce: "Il ___ range soigneusement."
     bonneReponse: "la"
     distracteurs: ["l'a"]
-    indice: "Le mot qui suit le trou est un verbe au présent ('range'), pas un participe : c'est 'la'."
+    indice: "Le mot qui suit le trou est un verbe au présent ('range'), pas un participe."
   - enonce: "___ cahier appartient à mon petit frère."
     bonneReponse: "ce"
     distracteurs: ["se"]
-    indice: "Le mot qui suit le trou est un nom ('cahier') : il faut un déterminant, 'ce'."
-  - enonce: "Après la récréation, tous les élèves ___ rangent devant la porte de la classe."
+    indice: "Le mot qui suit le trou est un nom ('cahier') : il faut un déterminant."
+  - enonce: "Après la récréation, les élèves ___ rangent."
     bonneReponse: "se"
     distracteurs: ["ce"]
-    indice: "Le mot qui suit le trou est un verbe conjugué ('rangent') : il faut un pronom, 'se'."
-  - enonce: "Regarde ___ oiseaux là-bas, sur la branche !"
+    indice: "Le mot qui suit le trou est un verbe conjugué ('rangent') : il faut un pronom."
+  - enonce: "Regarde ___ oiseaux là-bas !"
     bonneReponse: "ces"
     distracteurs: ["ses"]
-    indice: "'là-bas' montre ce qu'on regarde : c'est 'ces', comme quand on désigne quelque chose."
-  - enonce: "Léa range son cahier et ___ crayons avant de partir."
+    indice: "Le mot 'là-bas' montre qu'on désigne les oiseaux du doigt."
+  - enonce: "Léa range son cahier et ___ crayons."
     bonneReponse: "ses"
     distracteurs: ["ces"]
-    indice: "Léa range son cahier à elle, et donc ses crayons à elle aussi : c'est 'ses'."
-  - enonce: "Il fait très froid ce matin, ___ le soleil brille quand même."
+    indice: "Le cahier et les crayons appartiennent à Léa : il faut un mot de possession, pas un mot qui montre du doigt."
+  - enonce: "Il fait très froid, ___ le soleil brille."
     bonneReponse: "mais"
     distracteurs: ["mes"]
-    indice: "Remplace par 'pourtant' : 'il fait froid, pourtant le soleil brille' fonctionne, alors c'est 'mais'."
-  - enonce: "J'ai rangé ___ affaires avant de partir à l'école."
+    indice: "Remplace par 'pourtant' : 'il fait froid, pourtant le soleil brille' fonctionne."
+  - enonce: "J'ai rangé ___ affaires ce matin."
     bonneReponse: "mes"
     distracteurs: ["mais"]
-    indice: "Remplace par 'tes' : 'J'ai rangé tes affaires' fonctionne, alors c'est 'mes'."
-  - enonce: "Il reste ___ de pain dans le placard de la cuisine."
+    indice: "Remplace par 'tes' : 'J'ai rangé tes affaires' fonctionne."
+  - enonce: "Il reste ___ de pain dans le placard."
     bonneReponse: "peu"
     distracteurs: ["peut"]
-    indice: "Remplace par 'un peu' : 'il reste un peu de pain' fonctionne, alors c'est 'peu'."
-  - enonce: "Même si le ciel est bien dégagé ce matin, il ___ encore pleuvoir avant le soir."
+    indice: "Remplace par 'un peu' : 'il reste un peu de pain' fonctionne."
+  - enonce: "Le ciel est dégagé, mais il ___ encore pleuvoir."
     bonneReponse: "peut"
     distracteurs: ["peu"]
-    indice: "Remplace par 'pouvait' : 'il pouvait encore pleuvoir' fonctionne, alors c'est 'peut'."
-  - enonce: "Tom cherchait sa gomme depuis le début du cours, et son voisin ___ enfin repérée sous la table."
+    indice: "Remplace par 'pouvait' : 'il pouvait encore pleuvoir' fonctionne."
+  - enonce: "Tom cherchait sa gomme, et son voisin ___ enfin repérée."
     bonneReponse: "l'a"
     distracteurs: ["la"]
-    indice: "Remplace par 'l'avait' : 'son voisin l'avait enfin repérée sous la table' fonctionne, alors c'est 'l'a'."
-  - enonce: "Après cette longue randonnée en montagne, le vieux chien ne ___ plus vraiment courir comme avant."
+    indice: "Remplace par 'l'avait' : 'son voisin l'avait enfin repérée' fonctionne."
+  - enonce: "Le chien ne ___ plus courir."
     bonneReponse: "peut"
     distracteurs: ["peu"]
-    indice: "Remplace par 'pouvait' : 'le vieux chien ne pouvait plus vraiment courir comme avant' fonctionne, alors c'est 'peut'."
+    indice: "Remplace par 'pouvait' : 'le chien ne pouvait plus courir' fonctionne."

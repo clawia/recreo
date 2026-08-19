@@ -80,6 +80,17 @@ import static org.assertj.core.api.Assertions.assertThat;
  * court), mais le paquet lui-meme reste couvert par ce fichier, sur le meme principe que
  * "cp-le-bon-son" sous DEC-0009 : charge directement par {@link YamlContentPackLoader#chargerPaquet},
  * sans passer par le catalogue.</p>
+ *
+ * <p>S17-4 (DEC-0024 point 3, arbitrage prealable de nadia-prof du 2026-08-19, BPM-1 a BPM-4) :
+ * "bandit-manchot-homophones-cm1" revient au catalogue. Les onze enonces les plus longs du paquet
+ * sont raccourcis sans qu'aucun des 24 items ne soit supprime (BPM-3), et les 24 indices sont
+ * corriges pour ne plus nommer la reponse (DEC-0024 point 5) : ce controle avait ete mesure a "22
+ * indices sur 24" a l'ouverture de cette story, mais une relecture caractere par caractere en
+ * trouve 24 sur 24, les deux manquants ("On", "Où") echappant a une comparaison sensible a la
+ * casse parce que leur bonne reponse est en capitale de debut de phrase quand l'indice les citait
+ * en minuscule - les 24 sont corriges ici, pas seulement les 22. BPM-1 (mesure de rendu sur la
+ * totalite des manches raccourcies) n'est pas produite par ce lot : DEC-0039 section 3 en a
+ * retire la production a la squad.</p>
  */
 class PaquetsFrancaisS04Test {
 
@@ -287,29 +298,30 @@ class PaquetsFrancaisS04Test {
          */
         List<Question> dixItemsExistantsDepuisS4 = List.of(
                 new Question(new ItemId("item-0"), "Il ___ mangé une pomme.", "a", List.of("à"),
-                        Optional.of("Remplace par 'avait' : 'Il avait mangé une pomme' fonctionne, alors c'est 'a'.")),
+                        Optional.of("Remplace par 'avait' : 'Il avait mangé une pomme' fonctionne.")),
                 new Question(new ItemId("item-1"), "Je vais ___ l'école.", "à", List.of("a"),
-                        Optional.of("Remplace par 'avait' : 'Je vais avait l'école' ne fonctionne pas, alors c'est 'à'.")),
+                        Optional.of("Remplace par 'avait' : 'Je vais avait l'école' ne fonctionne pas.")),
                 new Question(new ItemId("item-2"), "Papa ___ maman font la cuisine.", "et", List.of("est"),
-                        Optional.of("Remplace par 'et puis' : 'Papa et puis maman font la cuisine' fonctionne, alors c'est 'et'.")),
+                        Optional.of("Remplace par 'et puis' : 'Papa et puis maman font la cuisine' fonctionne.")),
                 new Question(new ItemId("item-3"), "Le chat ___ noir.", "est", List.of("et"),
-                        Optional.of("Remplace par 'était' : 'Le chat était noir' fonctionne, alors c'est 'est'.")),
+                        Optional.of("Remplace par 'était' : 'Le chat était noir' fonctionne.")),
                 new Question(new ItemId("item-4"), "Les enfants ___ partis.", "sont", List.of("son"),
-                        Optional.of("Remplace par 'étaient' : 'Les enfants étaient partis' fonctionne, alors c'est 'sont'.")),
+                        Optional.of("Remplace par 'étaient' : 'Les enfants étaient partis' fonctionne.")),
                 new Question(new ItemId("item-5"), "Il prend ___ cartable.", "son", List.of("sont"),
-                        Optional.of("Remplace par 'ton' : 'Il prend ton cartable' fonctionne, alors c'est 'son'.")),
+                        Optional.of("Remplace par 'ton' : 'Il prend ton cartable' fonctionne.")),
                 new Question(new ItemId("item-6"), "Ils ___ un chien.", "ont", List.of("on"),
-                        Optional.of("Remplace par 'avaient' : 'Ils avaient un chien' fonctionne, alors c'est 'ont'.")),
+                        Optional.of("Remplace par 'avaient' : 'Ils avaient un chien' fonctionne.")),
                 new Question(new ItemId("item-7"), "___ joue dans la cour.", "On", List.of("Ont"),
-                        Optional.of("Remplace par 'il' : 'Il joue dans la cour' fonctionne, alors c'est 'on'.")),
+                        Optional.of("Remplace par 'il' : 'Il joue dans la cour' fonctionne.")),
                 new Question(new ItemId("item-8"), "___ vas-tu ?", "Où", List.of("Ou"),
-                        Optional.of("Remplace par 'à quel endroit' : 'À quel endroit vas-tu ?' fonctionne, alors c'est 'où'.")),
+                        Optional.of("Remplace par 'à quel endroit' : 'À quel endroit vas-tu ?' fonctionne.")),
                 new Question(new ItemId("item-9"), "Tu veux du thé ___ du café ?", "ou", List.of("où"),
-                        Optional.of("Remplace par 'ou bien' : 'Tu veux du thé ou bien du café ?' fonctionne, alors c'est 'ou'.")));
+                        Optional.of("Remplace par 'ou bien' : 'Tu veux du thé ou bien du café ?' fonctionne.")));
 
         assertThat(items)
-                .as("S5-6 puis S5-5 (residuel) : l'enonce, la bonne reponse et le distracteur des dix"
-                        + " items existants ne changent pas ; seul l'indice s'y ajoute")
+                .as("S17-4 (DEC-0024 point 5) : l'enonce, la bonne reponse et le distracteur des dix"
+                        + " items existants ne changent pas ; seul l'indice est corrige pour ne plus"
+                        + " nommer la reponse")
                 .containsAll(dixItemsExistantsDepuisS4);
     }
 
@@ -341,50 +353,53 @@ class PaquetsFrancaisS04Test {
     }
 
     /**
-     * S6-4 : deux items neufs dont le mot decisif n'est pas voisin du trou, dans les familles
-     * la/l'a et peu/peut (condition chiffree par nadia-prof le 2026-08-07, section 3, point 1).
-     * S6-5 : l'indice de l'item dont la bonne reponse est "mes" est corrige pour montrer une phrase
-     * de substitution qui est elle-meme du francais correct, sur le modele de l'indice de l'item
-     * "son" (meme verdict, section 3, point 2). Les treize autres items de ce lot (herites de S5-6)
-     * restent inchanges : ce test les reprend tous pour le prouver, pas seulement celui qui bouge.
+     * S17-4 (DEC-0024, BPM-1 a BPM-4) : les onze enonces les plus longs de ces quatorze items sont
+     * raccourcis (BPM-3 : aucun item supprime, la bonne reponse et le distracteur de chacun restent
+     * inchanges), et les quatorze indices sont corriges pour ne plus nommer la reponse (DEC-0024
+     * point 5). Chaque phrase raccourcie garde la structure qui rend sa reponse determinable
+     * (BPM-2) : "ne ___ plus" (item-23, forme reprise telle quelle de l'exemple ecrit par
+     * nadia-prof dans son arbitrage prealable), le temps du verbe qui suit le trou (item-13,
+     * item-15), la construction parallele de possession (item-17), la marque "là-bas" du geste de
+     * pointer (item-16).
      */
     @Test
-    void homophonesCm1PorteLesQuatorzeDerniersItemsAvecLIndiceDeMesCorrige() {
+    void homophonesCm1PorteLesQuatorzeDerniersItemsRaccourcisAvecLeursIndicesCorriges() {
         List<Question> items = tousLesItems(paquet("cm1-homophones"));
 
         List<Question> quatorzeDerniersItemsAttendus = List.of(
                 new Question(new ItemId("item-10"), "Pose ton cartable ___, à côté du mien.", "là", List.of("la"),
-                        Optional.of("Remplace par 'à cet endroit' : 'Pose ton cartable à cet endroit' fonctionne, alors c'est 'là'.")),
+                        Optional.of("Remplace par 'à cet endroit' : 'Pose ton cartable à cet endroit' fonctionne.")),
                 new Question(new ItemId("item-11"), "Léa cherche ___ règle dans sa trousse.", "la", List.of("là"),
-                        Optional.of("Le mot qui suit le trou est un nom ('règle') : il faut un déterminant, 'la'.")),
-                new Question(new ItemId("item-12"), "Léa a perdu son livre depuis lundi, mais elle ___ enfin retrouvé ce matin.", "l'a", List.of("la"),
-                        Optional.of("Remplace par 'l'avait' : 'elle l'avait enfin retrouvé' fonctionne, alors c'est 'l'a'.")),
-                new Question(new ItemId("item-13"), "Il ___ range soigneusement dans son cartable.", "la", List.of("l'a"),
-                        Optional.of("Le mot qui suit le trou est un verbe au présent ('range'), pas un participe : c'est 'la'.")),
+                        Optional.of("Le mot qui suit le trou est un nom ('règle') : il faut un déterminant.")),
+                new Question(new ItemId("item-12"), "Léa a perdu son livre, mais elle ___ enfin retrouvé.", "l'a", List.of("la"),
+                        Optional.of("Remplace par 'l'avait' : 'elle l'avait enfin retrouvé' fonctionne.")),
+                new Question(new ItemId("item-13"), "Il ___ range soigneusement.", "la", List.of("l'a"),
+                        Optional.of("Le mot qui suit le trou est un verbe au présent ('range'), pas un participe.")),
                 new Question(new ItemId("item-14"), "___ cahier appartient à mon petit frère.", "ce", List.of("se"),
-                        Optional.of("Le mot qui suit le trou est un nom ('cahier') : il faut un déterminant, 'ce'.")),
-                new Question(new ItemId("item-15"), "Après la récréation, tous les élèves ___ rangent devant la porte de la classe.", "se", List.of("ce"),
-                        Optional.of("Le mot qui suit le trou est un verbe conjugué ('rangent') : il faut un pronom, 'se'.")),
-                new Question(new ItemId("item-16"), "Regarde ___ oiseaux là-bas, sur la branche !", "ces", List.of("ses"),
-                        Optional.of("'là-bas' montre ce qu'on regarde : c'est 'ces', comme quand on désigne quelque chose.")),
-                new Question(new ItemId("item-17"), "Léa range son cahier et ___ crayons avant de partir.", "ses", List.of("ces"),
-                        Optional.of("Léa range son cahier à elle, et donc ses crayons à elle aussi : c'est 'ses'.")),
-                new Question(new ItemId("item-18"), "Il fait très froid ce matin, ___ le soleil brille quand même.", "mais", List.of("mes"),
-                        Optional.of("Remplace par 'pourtant' : 'il fait froid, pourtant le soleil brille' fonctionne, alors c'est 'mais'.")),
-                new Question(new ItemId("item-19"), "J'ai rangé ___ affaires avant de partir à l'école.", "mes", List.of("mais"),
-                        Optional.of("Remplace par 'tes' : 'J'ai rangé tes affaires' fonctionne, alors c'est 'mes'.")),
-                new Question(new ItemId("item-20"), "Il reste ___ de pain dans le placard de la cuisine.", "peu", List.of("peut"),
-                        Optional.of("Remplace par 'un peu' : 'il reste un peu de pain' fonctionne, alors c'est 'peu'.")),
-                new Question(new ItemId("item-21"), "Même si le ciel est bien dégagé ce matin, il ___ encore pleuvoir avant le soir.", "peut", List.of("peu"),
-                        Optional.of("Remplace par 'pouvait' : 'il pouvait encore pleuvoir' fonctionne, alors c'est 'peut'.")),
-                new Question(new ItemId("item-22"), "Tom cherchait sa gomme depuis le début du cours, et son voisin ___ enfin repérée sous la table.", "l'a", List.of("la"),
-                        Optional.of("Remplace par 'l'avait' : 'son voisin l'avait enfin repérée sous la table' fonctionne, alors c'est 'l'a'.")),
-                new Question(new ItemId("item-23"), "Après cette longue randonnée en montagne, le vieux chien ne ___ plus vraiment courir comme avant.", "peut", List.of("peu"),
-                        Optional.of("Remplace par 'pouvait' : 'le vieux chien ne pouvait plus vraiment courir comme avant' fonctionne, alors c'est 'peut'.")));
+                        Optional.of("Le mot qui suit le trou est un nom ('cahier') : il faut un déterminant.")),
+                new Question(new ItemId("item-15"), "Après la récréation, les élèves ___ rangent.", "se", List.of("ce"),
+                        Optional.of("Le mot qui suit le trou est un verbe conjugué ('rangent') : il faut un pronom.")),
+                new Question(new ItemId("item-16"), "Regarde ___ oiseaux là-bas !", "ces", List.of("ses"),
+                        Optional.of("Le mot 'là-bas' montre qu'on désigne les oiseaux du doigt.")),
+                new Question(new ItemId("item-17"), "Léa range son cahier et ___ crayons.", "ses", List.of("ces"),
+                        Optional.of("Le cahier et les crayons appartiennent à Léa : il faut un mot de possession, pas un mot qui montre du doigt.")),
+                new Question(new ItemId("item-18"), "Il fait très froid, ___ le soleil brille.", "mais", List.of("mes"),
+                        Optional.of("Remplace par 'pourtant' : 'il fait froid, pourtant le soleil brille' fonctionne.")),
+                new Question(new ItemId("item-19"), "J'ai rangé ___ affaires ce matin.", "mes", List.of("mais"),
+                        Optional.of("Remplace par 'tes' : 'J'ai rangé tes affaires' fonctionne.")),
+                new Question(new ItemId("item-20"), "Il reste ___ de pain dans le placard.", "peu", List.of("peut"),
+                        Optional.of("Remplace par 'un peu' : 'il reste un peu de pain' fonctionne.")),
+                new Question(new ItemId("item-21"), "Le ciel est dégagé, mais il ___ encore pleuvoir.", "peut", List.of("peu"),
+                        Optional.of("Remplace par 'pouvait' : 'il pouvait encore pleuvoir' fonctionne.")),
+                new Question(new ItemId("item-22"), "Tom cherchait sa gomme, et son voisin ___ enfin repérée.", "l'a", List.of("la"),
+                        Optional.of("Remplace par 'l'avait' : 'son voisin l'avait enfin repérée' fonctionne.")),
+                new Question(new ItemId("item-23"), "Le chien ne ___ plus courir.", "peut", List.of("peu"),
+                        Optional.of("Remplace par 'pouvait' : 'le chien ne pouvait plus courir' fonctionne.")));
 
         assertThat(items)
-                .as("S6-4 : deux items neufs ajoutes en fin de paquet ; S6-5 : seul l'indice de 'mes'"
-                        + " change, les treize autres items de ce lot restent inchanges")
+                .as("S17-4 : les onze enonces les plus longs sont raccourcis et les quatorze indices"
+                        + " sont corriges pour ne plus nommer la reponse, sans que la bonne reponse ni"
+                        + " le distracteur d'aucun item ne changent (BPM-3)")
                 .containsAll(quatorzeDerniersItemsAttendus);
     }
 
