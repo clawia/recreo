@@ -4992,3 +4992,68 @@ execute la bascule qu'`ADR-0049` a decidee, elle ne rejuge rien de son contenu.
 - **Lien decision** : `ADR-0049-une-matiere-s-ecrit-accentuee-dans-la-donnee-de-catalogue.md`.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, avec `theo-archi` pour le
   mecanisme de la bascule (point ci-dessus).
+
+### Complement du 2026-08-19 (camille-po, s17) - mecanisme etabli par theo-archi, perimetre elargi a trois chaines de plus
+
+`theo-archi` a instruit le mecanisme de la bascule (`squad/sprints/s17-francais-cm1-et-dette/
+avis-garde-fous-routes-par-yanis.md`, section 4). Ce que la story ne tranchait pas est desormais
+repondu, et remplace le point "ce que cette story ne tranche pas" ci-dessus sur ce seul sujet :
+
+- **Aucun garde-fou neuf n'est du.** La regle d'unicite existante d'`ADR-0049`
+  (`UneMatiereNAQuUneSeuleGraphieDansLeContenuServiTest`) bloque symetriquement des que le corpus
+  est uniforme : avant la bascule un paquet accentue est rouge, apres la bascule un paquet ASCII
+  l'est. Un garde-fou qui interdirait nommement l'ASCII exigerait un dictionnaire, qu'`ADR-0049`
+  et `ADR-0039` refusent tous deux.
+- **Un seul commit, jamais deux : tout etat intermediaire est rouge par construction.** Ce n'est
+  pas une preference d'ordonnancement, c'est une propriete de la regle elle-meme, et **cela devient
+  un critere d'acceptation de cette story**, ajoute a ceux deja ecrits : etant donne les fichiers du
+  perimetre, quand la bascule est livree, alors elle l'est en un seul commit portant tous les
+  fichiers a la fois - jamais un sous-ensemble laisse en ASCII pendant qu'un autre est deja
+  accentue.
+- **Cout mesure, confirmant et precisant le perimetre deja ecrit** : 12 paquets servis (3 en
+  `Francais`, 9 en `Mathematiques`), plus `cm1-synonymes` (`lea-dev`), 2 entrees de l'inventaire de
+  `TexteAccentueExposeParLePortEntrantTest` (ses deux clauses sont bidirectionnelles : sans cette
+  edition, les deux rougissent), et **zero ligne de code de production** (`grep -rn "\.matiere\(\)"`
+  sur `src/main` : aucune occurrence).
+- **Deux pieges nommes, a ne pas decouvrir par un rouge** : un remplacement global de `Francais`
+  dans le depot casserait la morsure du garde-fou (`paquet-servi-en-ascii.yaml`, sous
+  `src/test/resources/contreexemple/`, doit rester en ASCII deliberement) - la bascule touche
+  uniquement `src/main/resources/contenu/`. Et `contenu-repris/` n'est pas concerne : ses 61
+  fichiers sont deja accentues et ne sont pas servis.
+
+**Decision sur les trois chaines routees par `theo-archi`, avec son motif.** Le meme inventaire de
+`TexteAccentueExposeParLePortEntrantTest` porte trois autres chaines non accentuees des memes
+descripteurs, marquees "CONNU ET NON CORRIGE ICI" depuis `S16-5` : le domaine
+`Lecture et comprehension de l'ecrit` (`cp-le-bon-son.yaml`) et les competences
+`Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...)`
+(meme fichier) et `Resoudre des problemes simples d'addition/soustraction en situation (1 etape)`
+(`cp-problemes-additifs.yaml`). **Ces trois chaines entrent au perimetre de cette story.** Motif :
+elles vivent dans deux fichiers deja ouverts par cette meme story pour leur `matiere` -
+`cp-le-bon-son.yaml` et `cp-problemes-additifs.yaml` sont deux des douze du perimetre ci-dessus -
+et le meme inventaire les verifie ; les y laisser obligerait a rouvrir les deux memes fichiers une
+seconde fois pour le meme motif (accentuation d'un descripteur), ce que cette squad evite
+systematiquement ailleurs (`DEC-0024`, point 5, sur les indices de `cm1-homophones`). Le risque est
+nul : aucun gabarit ne rend le domaine ni la competence a un enfant aujourd'hui (verifie par
+`theo-archi`), et la graphie cible n'est pas une nuance a trancher - elle recopie mot pour mot le
+referentiel deja arbitre (`squad/programme/francais/competences-cp.md`, "Lecture et compréhension
+de l'écrit", "Associer les graphèmes aux phonèmes..." ; `squad/programme/mathematiques/
+competences-cp.md`, "Résoudre des problèmes simples d'addition/soustraction en situation
+(1 étape)"), verifie par moi caractere pres caractere avant d'ecrire cette phrase.
+
+**Sur la coincidence nommee** : l'une des trois chaines, `Lecture et comprehension de l'ecrit`,
+est le domaine de la competence que porte `S17-2`, la story que je viens de sortir du perimetre de
+s17. **Ce n'est pas la meme chose, et je verifie plutot que de le supposer** : cette chaine ne vient
+pas d'un paquet de `S17-2` - aucun fichier `cm1-comprehension.yaml` n'existe, `S17-2` n'a produit
+aucun code (deja etabli dans l'amendement de sortie de perimetre). Elle vient de
+`cp-le-bon-son.yaml`, un paquet CP deja au catalogue depuis plusieurs sprints, sur une competence
+de grapheme/phoneme sans rapport avec la comprehension de texte de `S17-2` - les deux se contentent
+de partager le meme intitule de domaine du referentiel francais, un domaine qui regroupe plusieurs
+competences a la fois au CP et au CM1. **Cela ne change donc rien a ma decision** : je ne traite ni
+plus ni moins ces trois chaines parce que l'une porte le meme nom qu'un domaine deja sorti du
+perimetre de s17 par ailleurs - la sortie de `S17-2` reste entierement etrangere a cette story.
+
+- **Critere d'acceptation ajoute** : etant donne les trois chaines ci-dessus, quand la bascule
+  livre cette story, alors chacune porte la graphie accentuee du referentiel citee ci-dessus, dans
+  le meme commit que la bascule de `matiere`.
+- **Lien decision (ajout)** : `squad/sprints/s17-francais-cm1-et-dette/avis-garde-fous-routes-par-
+  yanis.md`, section 4.
