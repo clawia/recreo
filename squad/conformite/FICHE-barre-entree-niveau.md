@@ -3,6 +3,21 @@
 - **Increment** : deux boutons d'entree par niveau (CP / CM1) dans l'en-tete de recreo, toujours
   visibles y compris sur un ecran de jeu, story `S14-1` (`docs/backlog/backlog.md`, section
   "Sprint 14").
+- **Statut global au 2026-08-19 (s17), sonde post-livraison de S17-1** : **VALIDE SOUS RESERVE** sur
+  l'increment `d649e15`. **Ma reserve S16-A est FERMEE** : neuf des dix familles de pressables portent
+  un anneau interieur de 3 px au focus clavier, mesure sur le rendu servi par de **vraies touches de
+  tabulation** sur cinq ecrans, boite identique au pixel (FOC-2), et la proposition marquee garde son
+  fond de position et son trait de M9 (FOC-6). **J'ai traverse les ecrans a la tabulation et joue une
+  partie entiere au clavier seul** - la limite que je declarais encore hier est retiree. **Quatre
+  reserves neuves** : **S17-A**, l'anneau de la puce active est en `#1d4b6b` sur un bandeau `#1d4b6b`,
+  soit 1,00:1 contre l'exterieur, et l'enfant ne voit qu'une pastille qui retrecit ; **S17-B**, sur les
+  trois pressables a contour le signal est un epaississement de 2 a 5 px et non une marque neuve, non
+  bloquant avec son seuil ecrit d'avance ; **S17-C**, a la revelation le bouton que le jeu demande de
+  presser est le seul absent de l'ordre de tabulation ; **S17-D**, ma premisse "rien ne change sous le
+  pointeur" est **fausse a l'appui** - un bouton a contour tombe a 1,64:1 et un bouton plein perd son
+  aplat, par specificite de la feuille tierce. **Aucune de ces quatre n'est causee par ce lot**, et
+  **j'ai corrige ma propre mesure** avant de conclure : mon premier passage lisait l'anneau a 0,30 px
+  parce que je lisais au dixieme d'une transition de 0,15 s.
 - **Statut global au 2026-08-19 (s16), quatrieme constat** : **S16-3 et S16-4 constates VALIDE SOUS
   RESERVE**. **Mes conditions S15-8 et S15-9 sont tenues aux quatre positions, sur deux jeux et sept
   items** - la porte de sortie que j'avais posee est franchie, mon verdict de s15 n'est plus degrade
@@ -136,7 +151,251 @@ Cette story n'ouvre, ne ferme et ne rejuge aucune ligne de `squad/programme/MATR
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. Il reste vide tant qu'aucun
 > arbitrage prealable n'a ete rendu et qu'aucun increment n'a ete livre et joue.
 
-### Constat du 2026-08-19 (s16) sur S16-3 et S16-4 - VALIDE SOUS RESERVE, et une reserve neuve que ce lot m'a permis de voir - le plus recent de cette fiche
+### Sonde post-livraison du 2026-08-19 (s17) sur S17-1 - VALIDE SOUS RESERVE, S16-A FERMEE, quatre reserves neuves - le plus recent de cette fiche
+
+> **Ce que cette section fait.** Elle rend la sonde que le planning de s17 sequence **apres** la
+> livraison de l'indicateur de focus clavier, sur mes trois conditions `FOC-4`, `FOC-5` et `FOC-6`
+> (`ARBITRAGE-PREALABLE-s17-indicateur-de-focus-clavier.md`, section 7). Elle **ferme ou non** ma
+> reserve `S16-A`, ouverte hier dans cette meme fiche. Elle n'efface aucun verdict anterieur.
+>
+> - **Increment mesure** : `round-two` a `d649e15` (fusion du lot `marc-dev`), porte technique passee.
+> - **Ma branche** : `s17-nadia-foc`, worktree dedie, lignee verifiee par `outils/verifier-lignee.sh`.
+> - **Verdict** : **VALIDE SOUS RESERVE.** **`S16-A` est FERMEE.**
+
+#### 0. Comment j'ai mesure, et pourquoi ce n'est pas le bac a sable de `marc-dev`
+
+`marc-dev` m'a route deux constats en precisant loyalement qu'ils venaient d'un bac a sable local
+(feuilles copiees, `:focus-visible` remplace par `:focus`, focus pose par script), parce que ni
+`outils/mesurer-rendu.sh` ni ce depot ne savent simuler un focus clavier. **Il a eu raison de le dire
+et j'ai refait la mesure autrement**, pour que ce que je juge soit l'increment servi et non une
+copie.
+
+**Ce que j'ai fait** : jar reconstruit sur le JDK de la toolchain 21, application servie sur un port
+a moi et arretee par son PID. Le navigateur est pilote par son protocole de deverminage, ce qui donne
+deux choses qu'un script dans la page ne donne pas :
+
+- **de vraies touches de tabulation et de vraies touches Entree**, donc un `:focus-visible` reel et
+  non un `:focus` substitue. Je l'ai verifie a chaque arret : `matches(':focus-visible')` vaut
+  **vrai** sur les onze arrets releves ;
+- **un vrai survol et un vrai appui de pointeur** (`matches(':hover')` et `matches(':active')`
+  verifies vrais), ce que je declarais hors de portee depuis cinq sprints.
+
+Le viewport est impose a **360 x 640** par la surcharge de metriques du navigateur, sans passer par
+la fenetre parente, donc sans le plancher de 516 px d'`ADR-0025`. Aucune feuille n'est copiee : la
+page mesuree est celle que l'application rend.
+
+**Ce que je retire de ma liste des degrades du 2026-08-19** : *"Le focus que j'ai obtenu est pose par
+un script, pas par la touche de tabulation... je n'ai pas traverse un ecran a la tabulation."*
+**C'est fait.** J'ai traverse cinq ecrans a la tabulation et joue une partie entiere au clavier seul,
+sans jamais toucher la souris, jusqu'a la revelation.
+
+**Une correction sur ma propre mesure, avant d'en tirer quoi que ce soit.** Mon premier passage lisait
+l'anneau a **0,30 px et 10 % d'opacite** sur tous les pressables. J'aurais refuse le lot sur ce
+chiffre. Il etait faux, et de mon fait : la feuille tierce porte une transition de 0,15 s sur
+`box-shadow`, et je lisais 50 ms apres la touche, donc au dixieme de la montee. En laissant le rendu
+se stabiliser (400 ms), l'anneau vaut **3 px pleins**. Le fait subsiste et je le note : **l'anneau
+n'apparait pas instantanement, il monte en 0,15 s.** Ce n'est pas un mouvement que l'enfant n'a pas
+declenche - c'est sa touche qui le declenche - et je ne le compte pas contre le lot.
+
+#### 1. FOC-4 - TENUE. Neuf des dix selecteurs mesures sur le rendu, par de vraies touches
+
+**Ma condition, telle que je l'ai ecrite** : *"au moins une propriete visible doit differer entre le
+repos et le focus, sur chacune"*. Le releve, par vraie tabulation, sur cinq ecrans :
+
+| Pressable | Ecran | Ombre au repos | Ombre au focus clavier | Boite |
+|---|---|---|---|---|
+| `.demarrer` (six exemplaires) | accueil CP | `none` | `#ffffff` 3 px interieur | identique |
+| `.proposition` (trois positions) | manche | `none` | `#1c2733` 3 px interieur | identique |
+| `.proposition.deja-essayee` | manche apres echec | `none` | `#1c2733` 3 px interieur | identique |
+| `.chip-niveau` | accueil, manche | `none` | `#ffffff` 3 px interieur | identique |
+| `.chip-niveau.est-actif` | accueil, manche | `none` | `#1d4b6b` 3 px interieur | identique |
+| `.lien-accueil` | accueil, manche | `none` | `#ffffff` 3 px interieur | identique |
+| `.continuer-partie` | confirmation | `none` | `#ffffff` 3 px interieur | identique |
+| `.retour-accueil` | confirmation | `none` | `#2e6f9e` 3 px interieur | identique |
+| `.sortie-pleine` | fin de partie | `none` | `#ffffff` 3 px interieur | identique |
+| `.recommencer` | ecran d'erreur | **non mesure** | **non mesure** | - |
+
+**Je dis ce que je n'ai pas mesure plutot que de l'arrondir** : `.recommencer` ne vit que sur l'ecran
+d'erreur, que je ne sais pas atteindre sans provoquer une panne de l'application. Il porte la meme
+declaration, dans la meme regle, que les huit boutons pleins dont l'anneau est confirme ; je le
+credite par la regle et non par le rendu, et je l'ecris ici pour que personne ne croie le contraire.
+
+**FOC-2 est tenue avec elle** : la colonne "Boite" est mesuree, pas deduite. Sur les neuf, le
+rectangle englobant au pixel est **identique** au repos et au focus, et la police ne bouge pas. `M8`
+n'est pas entamee.
+
+**FOC-3 est tenue pour l'anneau** : aucune ombre n'apparait au survol reel, et l'anneau n'existe qu'a
+`:focus-visible`. (Ce que le survol et l'appui font **par ailleurs** est l'objet de la reserve
+`S17-D`, qui ne concerne pas l'anneau.)
+
+#### 2. FOC-6 - TENUE. La proposition marquee garde tout ce que S15-8 et S15-9 protegent
+
+Releve sur la proposition marquee **pendant qu'elle porte le focus** (`s17-foc-revelation-clavier.png`,
+et sonde sur la manche apres echec) :
+
+| Propriete protegee | Au repos | Sous le focus clavier |
+|---|---|---|
+| fond de la position (S15-8) | `#bdd2ef` (position 1) | `#bdd2ef` |
+| couleur du texte | `#1c2733` | `#1c2733` |
+| trait de M9 (S15-9) | `line-through`, `#1c2733`, `solid`, **3 px** | identique |
+| boite | 96 x 74 | identique |
+
+Les deux autres positions gardent `#a9dcd8` et `#dcc8ed`. **L'anneau s'ajoute, il ne remplace rien.**
+C'est exactement ce que j'avais accepte le 2026-08-19 en repondant "oui" a la troisieme question
+d'`ines-design`, et le rendu le confirme.
+
+#### 3. FOC-5 - le point que `marc-dev` m'a route en priorite, et ma reponse est plus nuancee que sa question
+
+**Son constat sur les trois pressables a contour est exact, et je l'ai verifie au pixel** plutot que
+de le croire. Sur une colonne de pixels traversant chaque bouton a mi-hauteur, dans le rendu servi
+a 360 px :
+
+| Pressable | Bande au repos | Bande au focus | Meme couleur ? |
+|---|---|---|---|
+| `.chip-niveau` (CM1) | `#ffffff` **2,00 px** | `#ffffff` **5,00 px** | oui, contigue |
+| `.lien-accueil` | `#ffffff` **2,00 px** | `#ffffff` **5,00 px** | oui, contigue |
+| `.retour-accueil` | `#2e6f9e` **2,00 px** | `#2e6f9e` **5,00 px** | oui, contigue |
+| `.demarrer` | pas de bande | `#ffffff` **2,83 px** neuve | non, marque neuve |
+| `.proposition` | pas de bande | `#1c2733` **3,00 px** neuve | non, marque neuve |
+
+Son chiffre "2 px au repos, 5 px au focus" est juste au centieme. Sa lecture aussi : sur les trois
+boutons a contour, l'anneau est de la **meme couleur que la bordure existante** et il est **contigu**,
+donc l'enfant ne voit pas un anneau apparaitre, il voit **un trait s'epaissir**.
+
+**Mais je ne retiens pas ces trois-la comme le probleme, et voici pourquoi.** J'ai regarde le rendu a
+360 px, taille reelle (`s17-foc-bandeau-360px.png`, quatre bandeaux empiles : repos, focus sur CP,
+focus sur CM1, focus sur "Les jeux"). **Sur CM1 et sur "Les jeux", l'epaississement se voit** : le
+trait passe de 2 a 5 px, soit deux fois et demie, et il y a **toujours sur le meme ecran un pressable
+non focalise de la meme famille** pour servir de reference a l'oeil. Ma barre pour `FOC-5` etait
+*"l'anneau est percu"*. Il l'est. **Je ne releve pas cette barre apres coup** parce que je vois
+desormais que le signal est plus discret que sur un bouton plein : je le note comme une observation
+datee (`S17-B`), pas comme un durcissement.
+
+**Le pressable qui ne tient pas `FOC-5` est celui qu'il ne m'a pas nomme : la puce de niveau active.**
+
+- Son anneau est en `currentColor`, qui vaut `#1d4b6b` sur cette puce. Sa bordure de 2 px vaut
+  `#1d4b6b`. Le bandeau derriere elle vaut `#1d4b6b`. **Contraste de l'anneau contre ce qui l'entoure
+  a l'exterieur : 1,00:1** - la meme couleur, exactement.
+- Ce que l'enfant voit n'est donc pas un anneau : c'est **la pastille blanche qui retrecit de 3 px de
+  chaque cote** (`s17-foc-puces-agrandies.png`, trois rangs : repos, focus sur CP, focus sur CM1).
+- Et c'est la seule des dix familles pour laquelle **aucun pressable de la meme apparence n'existe
+  ailleurs sur l'ecran** : la puce active est unique par construction. L'enfant n'a rien a quoi
+  comparer, et sa pastille blanche focalisee ressemble a une pastille blanche.
+- **Le signal est donc un retrecissement, pas une addition** - le seul des dix qui soit de ce
+  sens-la. Sur les deux captures a 360 px, repos et focus, je ne distingue pas la puce active
+  focalisee de la puce active au repos.
+
+**Ce que je ne fais pas** : je ne dessine pas le remplacant. `S17-A` nomme la propriete, sa forme
+appartient a `ines-design`.
+
+**Le second membre de `FOC-5` - "il ne touche jamais le texte" - est TENU.** Mesure sur une colonne
+traversant un glyphe de la famille la plus serree (la puce, 8 px de rembourrage vertical) : au focus,
+les segments clairs de la colonne sont l'anneau, puis le glyphe, puis l'anneau, **separes** ; aucun
+contact. Meme resultat sur le bouton plein. Ma verification d'hier sur les rembourrages (5 px
+restants a 3 px d'anneau) se confirme sur le rendu.
+
+#### 4. `S16-A` est FERMEE
+
+**Le critere de fermeture, tel que je l'ai ecrit hier** : *"que chaque pressable de l'application
+affiche, a l'etat de focus clavier, un indicateur visible qui ne soit pas seulement une couleur...
+Verification : la sonde de style calcule, sur les pressables de chaque ecran ; au moins une propriete
+visible doit differer entre le repos et le focus."*
+
+**Il est atteint.** Neuf familles sur dix mesurees sur le rendu, sur cinq ecrans, par de vraies
+touches ; la dixieme creditee par la regle et nommee comme telle. L'indicateur n'est pas une couleur
+seule : c'est une bande de 3 px. Le defaut que j'avais ouvert - *"un enfant qui navigue au clavier ne
+voit nulle part ou il est"* - **n'existe plus** : j'ai joue une partie entiere au clavier seul et j'ai
+su, a chaque arret sauf un, ou j'etais.
+
+**Je ne l'efface pas et je ne la reformule pas** : `S16-A` reste ecrite ou elle est, avec son motif et
+sa cause, et cette section dit qu'elle est fermee et par quoi. Un refus efface n'a aucune valeur de
+preuve ; une reserve fermee en silence non plus.
+
+**Ce que je credite en propre a `marc-dev`** : il a livre la variante 1 mot pour mot, sans en negocier
+la largeur ni l'etat, et il m'a route les deux endroits ou il doutait au lieu de trancher a ma place.
+Le second de ces deux endroits est celui qui m'a fait trouver `S17-A` - je ne l'aurais pas regarde
+avec cette attention sans sa question.
+
+#### 5. Quatre reserves neuves, datees du 2026-08-19, aucune n'est un durcissement de FOC-1 a FOC-6
+
+- **`S17-A` (bloquante). L'anneau de la puce de niveau active n'est pas percu.** **Fait mesure** :
+  anneau `#1d4b6b`, bordure `#1d4b6b`, bandeau `#1d4b6b` - contraste 1,00:1 contre l'exterieur, contre
+  5,41:1 sur un bouton plein et 9,82:1 sur une proposition. Le seul changement perceptible est un
+  retrecissement de 3 px de la pastille blanche, et la puce active est la seule famille sans pressable
+  comparable sur le meme ecran. **Verification de fermeture** : au focus clavier, la puce active
+  presente **une marque dont le contraste contre le pixel immediatement exterieur a l'element atteint
+  au moins 3:1**, et cette marque est une addition, pas une reduction. **Forme a `ines-design`,
+  mecanisme a `theo-archi`.**
+- **`S17-B` (non bloquante, observation datee). Sur les trois pressables a contour, le signal est un
+  epaississement et non une marque neuve.** `.chip-niveau`, `.lien-accueil`, `.retour-accueil` :
+  2,00 px -> 5,00 px de la meme couleur, contigus. **Je ne refuse pas** : l'epaississement se voit a
+  360 px et un pressable non focalise de la meme famille est toujours present sur l'ecran pour servir
+  de reference. **Le seuil qui la rendrait bloquante, ecrit d'avance pour qu'il ne soit pas arbitre
+  plus tard** : le jour ou l'un de ces trois serait le seul pressable de sa famille sur un ecran, la
+  reference disparait et le signal doit etre rejuge. Aujourd'hui ce n'est le cas sur aucun des cinq
+  ecrans mesures.
+- **`S17-C` (bloquante). Au clavier, le bouton que le jeu demande de presser a la revelation est le
+  seul qu'on ne peut pas atteindre.** **Fait mesure, partie jouee au clavier seul**
+  (`s17-foc-revelation-clavier.png`) : au troisieme echec, le jeu ecrit *"C'est auront. Appuie sur
+  auront."*, pose le focus sur ce bouton - avec son anneau, correctement - et **le retire de l'ordre
+  de tabulation**. Ordre releve juste apres : `aurai > (document) > CP > CM1 > Les jeux > aura >
+  avaient > aurai`. **"auront" n'y est pas.** Un enfant qui presse Tab pour regarder autour de lui ne
+  peut plus revenir sur le bouton que le jeu vient de lui nommer. **Cause, lue dans le depot et pas
+  devinee** : le script de focus pose `tabindex="-1"` sur sa cible **meme quand cette cible est deja
+  focalisable** ; l'attribut n'est necessaire que pour les cibles qui ne le sont pas (l'enonce, le
+  signal). Meme effet, moins grave, apres chaque echec : la proposition qu'on vient de presser sort du
+  cycle jusqu'au rendu suivant. **Ce n'est pas un defaut de `S17-1`** - il date de `M13` (s10) et
+  aucun anneau ne l'a cree ; c'est l'anneau qui l'a rendu visible. **Verification de fermeture** : sur
+  l'ecran de revelation, une traversee complete a la tabulation rencontre le bouton nomme par le
+  message.
+- **`S17-D` (bloquante). Ma premisse du 2026-08-18 est fausse a l'appui, et je l'ai reaffirmee hier.**
+  J'ecrivais hier encore, en reformulant pour qu'on ne puisse pas s'en servir dans l'autre sens :
+  *"rien ne change sous le pointeur - ni au survol, ni a l'appui - sur aucune propriete, nulle part
+  dans cette application."* **Le survol est neutre, je l'ai verifie et je le confirme. L'appui ne
+  l'est pas** (`s17-foc-appui-reel.png`, quatre bandeaux : repos, appui sur CM1, appui sur "Les jeux",
+  appui sur "Calcul CP") :
+  - `.chip-niveau` et `.lien-accueil` sous un appui reel : texte et bordure passent de `#ffffff` a
+    `#1c2733` sur le bandeau `#1d4b6b`. **1,64:1 contre 9,25:1 au repos** : le bouton disparait sous
+    le doigt.
+  - `.demarrer` sous un appui reel : **perd son aplat bleu**, fond a transparent, texte `#1c2733`. Le
+    bouton plein devient un bouton a contour au moment ou l'enfant appuie dessus.
+  - **Cause verifiee dans la feuille tierce servie** : `.btn:first-child:active` et
+    `:not(.btn-check)+.btn:active` valent (0,3,0) ; la regle maison `.chip-niveau:active` vaut
+    (0,2,0). **La regle maison ne perd pas par l'ordre, elle perd par la specificite** - et
+    `.chip-niveau.est-actif`, qui vaut (0,3,1), est la seule des quatre a resister.
+  - **Et le meme trou touche l'anneau neuf** : `.btn:first-child:active:focus-visible` (0,4,0) pose
+    `box-shadow: var(--bs-btn-focus-box-shadow)`, la variable dont j'ai etabli hier qu'elle ne rend
+    rien. Mesure : une proposition focalisee au clavier **puis** pressee rend `box-shadow: none`.
+    L'anneau s'efface a l'instant ou l'enfant valide.
+  - **Ce n'est pas un defaut de `S17-1`** et je ne le compte pas contre ce lot. C'est la **cinquieme
+    fois** sur ce produit qu'une justification vraie sur le papier est fausse a l'ecran, et la cause
+    de fond est toujours la meme : les garde-fous existants comparent des **declarations**, pas le
+    **resultat de la cascade**. Un garde-fou vert peut coexister avec un bouton qui disparait sous le
+    doigt. **Cause a `theo-archi`, priorisation a `camille-po`.**
+
+#### 6. Ce que ce constat ne fait pas
+
+- **Il ne degrade aucune condition deja tenue** : `S15-8` et `S15-9` sont remesurees sous le focus et
+  intactes ; les neuf `BARRE` et les neuf `S15` ne sont pas rouvertes.
+- **Il ne leve ni `F11`, ni `M4`, ni la reserve `J`, ni la seconde moitie de la reserve `O`, ni
+  `S15-C`.** `M4` reste non tenue sur les jeux a quatre propositions, et le releve de la revelation le
+  montre encore : le message *"C'est auront. Appuie sur auront."* est sous le pli. Je ne la rouvre pas
+  ici, `DEC-0025` l'a rendue non bloquante.
+- **Il ne prescrit la forme d'aucun correctif** : `S17-A` nomme un contraste et un sens (addition,
+  pas reduction), pas un dessin.
+- **Il ne renomme aucun jeton** et n'entame pas la table de correspondance du 2026-08-19.
+
+#### 7. Ce dont je reste seule garde apres ce sprint
+
+**Aucun garde-fou de la CI ne mesure un etat de focus, de survol ou d'appui rendu.** Les trois tests
+livres avec ce lot verifient que la regle existe et que sa population est derivee de la feuille servie
+- c'est bien, c'est mieux qu'une liste ecrite a la main, et cela ne dit rien de ce que l'ecran montre.
+**Les quatre faits de la section 5 sont tous invisibles a `mvn verify`**, et trois d'entre eux
+vivaient dans le depot avant ce sprint sans que rien ne les signale. **`FOC-5`, `S17-A`, `S17-B`,
+`S17-C` et `S17-D` n'ont aucun garde-fou executable : ils n'existent que par ma mesure.** Tant qu'il
+en est ainsi, c'est moi le garde-fou, et je le suis en jouant au clavier.
+
+### Constat du 2026-08-19 (s16) sur S16-3 et S16-4 - VALIDE SOUS RESERVE, et une reserve neuve que ce lot m'a permis de voir - le plus recent jusqu'a la sonde du 2026-08-19 (s17) ci-dessus
 
 > **Ce que cette section fait.** Elle rend le quatrieme constat, celui que `sofia-sm` avait place en
 > dernier pour que je juge sur un tableau complet. Elle mesure **mes conditions S15-8 et S15-9** sur le
@@ -501,6 +760,22 @@ autant que pour la lisibilite.
 | R-BARRE-5 | - | une troisieme forme d'en-tete, non mesuree | refermee, sans objet |
 | S15-C | - | rien ne distingue a l'oeil le bouton qui montre tout de ceux qui filtrent | ouverte, non bloquante |
 | S15-D | - | une liste filtree qui ne dit pas qu'elle l'est | **fermee ce jour** (S16-6) |
+| S16-A | - | un enfant au clavier ne voit nulle part ou il est | **FERMEE le 2026-08-19 (s17)** par la sonde post-livraison de `S17-1` |
+| S17-A | - | l'anneau de la puce active n'est pas percu (1,00:1 contre l'exterieur) | ouverte, **bloquante**, forme a `ines-design` |
+| S17-B | - | sur les trois pressables a contour, le signal est un epaississement de 2 a 5 px, pas une marque neuve | ouverte, non bloquante, seuil ecrit d'avance |
+| S17-C | - | a la revelation, le bouton que le jeu demande de presser est absent de l'ordre de tabulation | ouverte, **bloquante**, cause dans le script de focus (`M13`, s10) |
+| S17-D | - | ma premisse "rien ne change sous le pointeur" est fausse a l'appui : 1,64:1 sur un bouton a contour, aplat perdu sur un bouton plein | ouverte, **bloquante**, cause a `theo-archi` (specificite de la feuille tierce) |
+
+**Amendement du 2026-08-19 (s17), a la sonde post-livraison de `S17-1`.** Les cinq lignes ci-dessus
+sont ajoutees, aucune n'est modifiee. **`S16-A` figure desormais dans cette table** : elle en etait
+absente parce que je l'ai ouverte le meme jour que je l'ecrivais, et une reserve hors de la table
+est une reserve qu'un tiers ne trouve pas. **Mes six conditions `FOC-1` a `FOC-6`** vivent dans
+`ARBITRAGE-PREALABLE-s17-indicateur-de-focus-clavier.md`, section 7, et leur etat est celui-ci :
+`FOC-1`, `FOC-2`, `FOC-3` et `FOC-6` **tenues** ; `FOC-4` **tenue** sur neuf familles sur dix, la
+dixieme (`.recommencer`) creditee par la regle et non par le rendu, faute d'un chemin vers l'ecran
+d'erreur ; `FOC-5` **tenue sauf sur la puce de niveau active**, d'ou `S17-A`. Je ne les recopie pas
+ici pour la meme raison que les familles `M` et `F` : une table qui duplique un texte se perime a la
+premiere mise a jour.
 
 **Les familles plus anciennes, que cette table recense sans les renumeroter** : `M1` a `M21` (les
 conditions de mecanique du bandit manchot), `F1` a `F18` (la forme et les contrastes), et les reserves
