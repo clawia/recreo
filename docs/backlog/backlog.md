@@ -4502,3 +4502,121 @@ ici : il fait l'objet d'une story distincte instruite par `theo-archi`.
 - **Lien decision** : aucune - correction directe d'un ecart de navigation non arbitre, pas un
   renversement de decision produit. Contrainte technique routee a `theo-archi` ci-dessus.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S16-3 - Une puce de niveau active garde son apparence sous le pointeur
+
+- **Besoin** : en tant qu'eleve de CP ou de CM1, je veux que la puce du niveau que j'ai choisi
+  garde son apparence si ma souris passe dessus ou si je clique dessus par erreur, afin de
+  continuer a voir clairement quel niveau est actif.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Garde-fou de
+  non-regression sur un arbitrage deja rendu.
+- **Ce que cette story ne rouvre pas** : la forme retenue pour l'etat sous pointeur est deja
+  arbitree par `nadia-prof` le 2026-08-18 (variante neutre, `squad/conformite/FICHE-barre-entree-
+  niveau.md`, section 4) : rien ne change sous le pointeur, exactement comme avant l'entree de la
+  bibliotheque tierce en s03 (`ADR-0046`).
+- **Criteres d'acceptation** :
+  - Etant donne la puce du niveau actif (etat plein), quand un pointeur la survole, l'active ou la
+    prend au clavier (`:hover`, `:active`, `:focus-visible`), alors ses couleurs de texte, de fond
+    et de bordure restent identiques a son etat actif au repos.
+  - Etant donne la puce du niveau inactif (etat contour), quand un pointeur la survole, l'active
+    ou la prend au clavier, alors ses couleurs de texte, de fond et de bordure restent identiques
+    a son etat inactif au repos - garantie deja tenue par `ADR-0046` pour les huit boutons traites
+    en s15, etendue ici a la variante active introduite apres cet ADR.
+  - Ce que cette story ne tranche pas : le moyen technique (regle CSS composee, nombre de regles),
+    sous les quatre exigences deja ecrites par `theo-archi` dans `ADR-0046`, section "Ce que
+    j'exige du lot qui corrigera" (six regles au plus, contour non facultatif, aucun `!important`,
+    forme neutre uniquement).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : elle rejoue et confirme, dans `squad/conformite/FICHE-barre-entree-niveau.md`,
+    qu'aucun changement visible n'apparait sous le pointeur - constat qu'elle a deja signale ne
+    pouvoir produire qu'a titre de jugement de geometrie, faute d'outillage capable de simuler un
+    survol (voir la dependance nommee dans `DEC-0037`).
+- **Porte de sortie** : les deux premiers criteres tenus, verifies par le garde-fou derive
+  d'`ADR-0046` (mutation testee), et `mvn verify` vert, puis constat ecrit de `nadia-prof`.
+- **Lien decision** : `ADR-0046-un-etat-interactif-tiers-oblige-la-feuille-maison-a-le-
+  declarer.md` ; arbitrage de `nadia-prof` du 2026-08-18 (`FICHE-barre-entree-niveau.md`).
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S16-4 - Une proposition deja essayee garde son apparence sous le pointeur
+
+- **Besoin** : en tant qu'eleve qui joue a un jeu construit sur la mecanique du bandit manchot, je
+  veux qu'une proposition que j'ai deja essayee garde son apparence si mon doigt ou ma souris
+  passe dessus, afin de continuer a la reconnaitre facilement parmi les autres.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Cette story touche un
+  style partage par tous les jeux construits sur la mecanique du bandit manchot, pas seulement
+  l'en-tete ou vit l'arbitrage qui l'a tranchee.
+- **Ce que cette story ne rouvre pas** : `nadia-prof` a retenu la variante neutre pour
+  `.proposition.deja-essayee` le 2026-08-18, sous deux conditions (`FICHE-barre-entree-niveau.md`,
+  section 4).
+- **Criteres d'acceptation** :
+  - Etant donne une proposition marquee "deja essayee", sur chacune de ses quatre positions
+    cycliques de fond, quand un pointeur la survole ou l'active, alors elle garde la couleur de
+    fond de sa position (condition **S15-8**).
+  - Etant donne cette meme proposition, quand un pointeur la survole ou l'active, alors le trait
+    qui la marque comme deja essayee garde son epaisseur et sa teinte (condition **S15-9**).
+  - Ce que cette story ne tranche pas : le moyen technique, sous les memes quatre exigences
+    d'`ADR-0046` que `S16-3`.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : elle rejoue et confirme sur les quatre positions et sur plusieurs items -
+    a la cloture de s15 elle n'avait pu verifier qu'une position et un seul item, et l'a
+    elle-meme note comme degrade.
+- **Porte de sortie** : les deux premiers criteres tenus, `mvn verify` vert, puis constat ecrit de
+  `nadia-prof` sur les quatre positions.
+- **Lien decision** : `ADR-0046-un-etat-interactif-tiers-oblige-la-feuille-maison-a-le-
+  declarer.md` ; arbitrage de `nadia-prof` du 2026-08-18 (`FICHE-barre-entree-niveau.md`).
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S16-5 - Tout libelle rendu par le modele est soumis au meme garde-fou d'accentuation que le texte ecrit en clair
+
+- **Besoin** : en tant qu'eleve, je veux que tout mot ecrit a mon intention sur l'ecran soit
+  toujours correctement accentue, meme s'il vient d'un contenu ou d'un catalogue ajoute plus tard
+  et non d'un gabarit ecrit a la main, afin de ne jamais lire un mot mal orthographie.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Garde-fou de
+  redaction (`DEC-0002`, amendement du 2026-08-04 : tout texte lu par l'enfant est integralement
+  accentue).
+- **Ce que cette story ne fait pas** : elle ne rend aucun rendu different pour l'enfant. Le texte
+  actuel ("CP", "CM1") reste affiche a l'identique.
+- **Criteres d'acceptation** :
+  - Etant donne un libelle produit par le contenu ou le catalogue et pose dans un gabarit par une
+    donnee du modele (`th:text`/`th:utext`) plutot qu'ecrit en clair, quand ce libelle contient au
+    moins une lettre qui devrait porter un accent en francais correct et ne le porte pas, alors un
+    garde-fou fait echouer la construction, en nommant le libelle fautif - meme garantie que celle
+    que `TexteAccentueDesGabaritsTest` porte deja pour le texte ecrit en clair.
+  - Etant donne les libelles de niveau actuels ("CP", "CM1"), quand ce garde-fou s'execute, alors
+    ils restent verts, avec une exemption ecrite explicitement dans le code du garde-fou, sa
+    raison (aucune lettre accentuable dans ces deux chaines) et sa frontiere (elle cesse de
+    s'appliquer des qu'un niveau futur porte une lettre accentuable) - demande exacte de
+    `nadia-prof` du 2026-08-18 (`FICHE-barre-entree-niveau.md`, section 5).
+  - Ce que cette story ne tranche pas : si la nomenclature de matiere, le jour ou elle s'affichera,
+    portera une valeur interne elle-meme accentuee ou un libelle d'affichage distinct - question
+    d'architecture encore ouverte de `DEC-0032`, point 2, non fermee par ce garde-fou.
+- **Porte de sortie** : les criteres testables ci-dessus tenus et `mvn verify` vert. Aucun rendu ne
+  changeant pour l'enfant, aucun constat de `nadia-prof` n'est attendu par construction ; elle
+  peut neanmoins le demander si elle le juge necessaire.
+- **Lien decision** : `DEC-0032-perimetre-sprint-14-barre-entree-niveau-arbitrage-prealable-
+  matiere-differee.md`, point 2 ; demande de `nadia-prof` du 2026-08-18
+  (`FICHE-barre-entree-niveau.md`, section 5).
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S16-6 - La phrase qui nomme le filtre en cours apparait aussi apres un changement de niveau confirme pendant une partie
+
+- **Besoin** : en tant qu'eleve de CP ou de CM1 qui change de niveau alors qu'une partie etait en
+  cours, je veux qu'une phrase me dise sur quelle liste je me trouve apres avoir confirme, afin de
+  savoir ce que je vois sans avoir a le deviner.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Ce que cette story ne rouvre pas** : elle applique a une route ou elle manque encore la meme
+  condition que `S15-2`/`S14-1` appliquent deja a l'accueil (`nadia-prof`, condition **S15-2**,
+  couplage phrase/couleur).
+- **Criteres d'acceptation** :
+  - Etant donne une partie en cours et un changement de niveau confirme par l'enfant (route
+    `/niveaux/{niveau}/confirmer`), quand l'accueil filtre qui en resulte est rendu, alors une
+    phrase nomme le niveau affiche ("Pour le CP" ou "Pour le CM1"), au-dessus de la liste des
+    jeux, exactement comme sur l'accueil filtre atteint sans partie en cours.
+  - Etant donne ce meme ecran, quand on compare la puce de niveau active a la phrase affichee,
+    alors les deux nomment le meme niveau - aucune des deux ne peut apparaitre sans l'autre
+    (reserve **S15-D** fermee).
+- **Porte de sortie** : les deux criteres testables ci-dessus tenus et `mvn verify` vert, puis
+  constat ecrit de `nadia-prof` dans `squad/conformite/FICHE-barre-entree-niveau.md`.
+- **Lien decision** : reserve **S15-D** de `nadia-prof`, nommee dans `squad/sprints/s15-cinq-
+  arbitrages-de-l-en-tete/RAPPORT.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
