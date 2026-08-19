@@ -459,7 +459,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
 | francais | CM1 | Lecture et comprehension de l'ecrit | Lire silencieusement un texte de longueur croissante et en restituer l'essentiel | - | - | non couvert |
-| francais | CM1 | Lecture et comprehension de l'ecrit | Comprendre un texte narratif ou documentaire (questions explicites et implicites, inferences simples) | - | - | non couvert |
+| francais | CM1 | Lecture et comprehension de l'ecrit | Comprendre un texte narratif ou documentaire (questions explicites et implicites, inferences simples) | bandit-manchot-comprehension-cm1 | bandit manchot | en cours |
 | francais | CM1 | Lecture et comprehension de l'ecrit | Reperer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte | - | - | non couvert |
 | francais | CM1 | Ecriture | Rediger un texte narratif court et coherent (quelques phrases, temps du recit respecte) | - | - | non couvert |
 | francais | CM1 | Ecriture | Relire et corriger son texte a l'aide de reperes simples (majuscules, ponctuation) | - | - | non couvert |
@@ -467,7 +467,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | - | - | non couvert |
 | francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | bandit-manchot-homophones-cm1 | bandit manchot | en cours |
 | francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif | bandit-manchot-conjugaison-present-cm1 | bandit manchot | couvert-valide |
-| francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | - | - | non couvert |
+| francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | bandit-manchot-synonymes-cm1 | bandit manchot | en cours |
 | francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | - | - | non couvert |
 
 Note sur la ligne `en cours` (homophones) : `DEC-0008-la-couverture-reprend-francais-cp-et-cm1.md`
@@ -589,6 +589,26 @@ de cette ligne. Deux reserves non bloquantes, distinctes du pli, sont versees au
 paquet a 360 px (aucune taille acceptable par `nadia-prof` ne le rend confortable, 2,86 px d'air
 reel contre 20 px demandes par sa propre definition d'une colonne lisible) et le risque qu'un
 futur paquet a quatre propositions herite de 30 px sans qu'aucune ligne de test ne le signale.
+
+**Note sur la ligne `en cours` (homophones) - resurrection au sprint 17, pas une nouvelle ouverture.**
+`DEC-0039` affecte la story de raccourcissement de `cm1-homophones.yaml`, ouverte au backlog depuis
+`DEC-0024` (s10) et jamais affectee depuis. Cette ligne est deja `en cours` depuis s10 (contenu
+pedagogiquement valide, retire du catalogue jouable pour un motif de forme) : la traiter au sprint
+17 fait avancer un jeu deja suivi vers un nouveau Done pedagogique et un retour au catalogue, ce
+n'est pas une ouverture de competence neuve et cela ne compte pas dans le plafond de trois
+ouvertures de `DEC-0030`. Voir `DEC-0039`, section dediee, pour la condition de retour (mesure de
+rendu a 360 px, plus correction des 22 indices qui nomment la reponse, plus reprise de tout le
+paquet comme un contenu neuf devant `nadia-prof`) et `docs/backlog/backlog.md`, story `S17-4`.
+
+**Note sur les deux lignes `en cours` ouvertes au sprint 17 (comprehension de texte, synonymes).**
+`DEC-0039` ouvre ces deux lignes, stories `S17-2` et `S17-3` de `docs/backlog/backlog.md`, chacune
+sous arbitrage prealable bloquant de `nadia-prof` avant tout code
+(`squad/conformite/FICHE-bandit-manchot-comprehension-cm1.md`,
+`FICHE-bandit-manchot-synonymes-cm1.md`). La ligne synonymes ouvre en **couverture partielle
+nommee** : seuls les synonymes sont couverts, aucun antonyme, faute de matiere premiere - voir la
+fiche dediee pour le detail, sur le meme modele que les couvertures partielles deja nommees sur ce
+produit. **Aucune ligne ne passe a `couvert-valide` par ce planning** : ce statut n'est prononce que
+par `nadia-prof`, apres audit reel de chaque increment.
 
 ## Synthese au sprint 0, mise a jour a l'ouverture du sprint 4
 
@@ -1296,3 +1316,102 @@ revanche plus pressant qu'il ne paraissait sous le chiffre fautif : neuf lignes 
 sur 46 (19,6 %) et vingt-trois sur 74 (31,1 %) ne racontent pas la meme histoire d'avancement, et
 c'est la version optimiste, fausse, qui avait circule dans trois documents de ceremonie avant
 d'etre lue par l'utilisatrice.
+
+## Perimetre de s17 (2026-08-19) - francais CM1 non couvert
+
+`DEC-0039-perimetre-sprint-17-francais-cm1-et-dette-de-len-tete.md` : l'utilisatrice tranche le
+perimetre de s17 sur le francais CM1 non couvert et la dette. Deux lignes entrent au sprint, deux
+autres sont differees nommement, une (`homophones`) est traitee sans etre une ouverture (voir la
+note dediee sous le tableau francais CM1 ci-dessus) - detail complet, criteres et arbitrages
+prealables dans `DEC-0039` et `docs/backlog/backlog.md`, section "Sprint 17".
+
+**Ces deux lignes passent `en cours` par ce planning**, jeu et mecanique renseignes dans le tableau
+francais CM1 ci-dessus :
+
+- **Comprendre un texte narratif ou documentaire (questions explicites et implicites, inferences
+  simples)** - story `S17-2`, sous arbitrage prealable bloquant de `nadia-prof` sur la validite de
+  la forme (texte affiche avec la question) au regard de la competence visee.
+- **Utiliser des synonymes et antonymes pour preciser ou nuancer un propos** - story `S17-3`, en
+  couverture partielle nommee (synonymes seuls), sous double arbitrage prealable bloquant de
+  `nadia-prof` (validite du proxy de reconnaissance pour un verbe de production, "utiliser" ;
+  acceptabilite du perimetre partiel a l'ouverture).
+
+**Aucune ligne ne passe a `couvert-valide` par ce planning** : ce statut n'est prononce que par
+`nadia-prof`, apres audit reel de chaque increment, sur les deux fiches de conformite ouvertes dans
+le meme geste que `DEC-0039`.
+
+**Trois lignes de plus restent `non couvert`, differees avec un motif ecrit** (`DEC-0039`) :
+
+- **Lire silencieusement un texte de longueur croissante et en restituer l'essentiel** : premier
+  report, structurel - la competence demande une production (un resume), le mecanisme du bandit
+  manchot ne sait que faire choisir une proposition. Route a `theo-archi` le jour ou une mecanique
+  de production ou de saisie libre est envisagee pour le produit, sur le meme modele que "reperage
+  sur une droite numerique" en mathematiques CM1.
+- **Rediger un texte narratif court et coherent** et **Relire et corriger son texte a l'aide de
+  reperes simples** : meme famille structurelle que ci-dessus (production d'ecriture libre), premier
+  report pour chacune, meme routage a `theo-archi` le jour ou une mecanique de production se pose.
+- **Reperer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte**, **Accorder
+  le verbe avec son sujet** et **Utiliser a bon escient des mots de liaison simples** : differees
+  pour capacite, premier report chacune. Aucune matiere premiere identifiee dans `contenu-repris/`
+  pour aucune des trois (verifie par recherche cible, `DEC-0039`) ; servables en principe par le
+  schema `type: question` existant, sans arbitrage de principe bloquant identifie a ce jour, mais un
+  contenu neuf integralement ecrit sans matiere premiere sur un sprint deja charge de dette
+  technique et de deux ouvertures. Candidates prioritaires du sprint suivant.
+- **Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif)** : differee
+  pour capacite, premier report. Matiere premiere partielle identifiee
+  (`contenu-repris/textes-trous/cm1-accords.yml`, 5 items, accord de l'adjectif seul) : elle ne
+  couvre pas l'accord determinant/nom que la competence nomme aussi. Je le nomme des maintenant pour
+  que la couverture partielle qu'un paquet fonde sur ce seul fichier porterait ne soit pas decouverte
+  a l'audit si cette ligne est retenue telle quelle au sprint suivant.
+
+**Le filtre par matiere - troisieme report, compte comme tel, mais pour la premiere fois sur
+instruction expresse de l'utilisatrice plutot que par defaut.** `DEC-0032` l'a differe une premiere
+fois (s14 vers s15), `DEC-0037` une seconde (s16). L'utilisatrice fixe elle-meme le perimetre de s17
+sur le francais CM1 et la dette, sans y inclure le filtre par matiere : je ne le propose donc pas ce
+sprint. Meme si elle l'avait inclus, les deux prealables poses par `DEC-0032` point 2 resteraient a
+lever (la nomenclature de matiere accentuee, sans reponse ecrite de `theo-archi` depuis le
+2026-08-17, et l'absence de toute proposition de forme d'`ines-design` pour un second axe de filtre
+combine). A la difference des deux premiers, ce troisieme report n'est pas une continuation
+silencieuse : c'est la premiere fois que la demande initiale de l'utilisatrice est explicitement
+arbitree par elle plutot que reportee par la squad a son insu, ce qui est la difference que
+`DEC-0007` nommait deja comme le point de bascule entre un arbitrage et une direction non choisie.
+Je le compte neanmoins comme un troisieme report, sans en attenuer le chiffre.
+
+**La dette de capacite sort du perimetre de la squad, prise en charge par l'utilisatrice.** Deux des
+dix obstacles ouverts a l'entree de s17 (`squad/sprints/s16-deux-defauts-et-dettes-de-len-tete/
+RAPPORT.md`, section "Obstacles / Ouverts a l'entree de s17") ne sont plus des obstacles de capacite
+de l'equipe a ce jour :
+
+- **La dependance a une seule personne pour toute mesure de rendu** (aucun autre agent que
+  `nadia-prof` ne peut produire un chiffre de rendu sur ce poste, faute d'un outillage qui pilote un
+  navigateur reel) - route jusqu'ici a `sofia-sm` et `camille-po` comme une decision de capacite
+  jamais prise.
+- **R-BARRE-4 / la reserve F11** (l'ecoute reelle au lecteur d'ecran) - nommee depuis s13 comme hors
+  de la portee de la squad, sans proprietaire.
+
+Les deux etaient nommees dans le tableau des obstacles sans jamais avoir de proprietaire capable de
+trancher : l'utilisatrice les prend desormais explicitement a sa charge. Ce n'est plus un manque de
+la squad a router au sprint suivant ; je le retire de mon perimetre et de celui de `sofia-sm`, et je
+le route pour la derniere fois - a `sofia-sm`, pour qu'elle ne les reconduise plus dans le tableau
+des obstacles de `RAPPORT.md` a compter de s17, sur cette seule base ecrite.
+
+L'engagement pose par `DEC-0037` (si s17 ne rouvre aucune ligne, ce sera a ecrire comme un
+changement de direction) est **leve par ce perimetre, une fois gele par `sofia-sm`** : deux lignes
+passent `en cours`, la premiere ouverture de competence depuis le sprint 13 apres trois sprints de
+stabilisation nommes comme tels (s14, s15, s16).
+
+## Synthese apres l'ouverture de s17 (2026-08-19)
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 |
+| mathematiques CM1 | 12 | 6 | 2 | 4 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 7 | 3 | 1 |
+| **Total** | **46** | **30** | **7** | **9** |
+
+Deux lignes de plus qu'a la cloture de s13 passent `en cours` (toutes deux en francais CM1 :
+comprehension de texte, synonymes), pour un total de sept lignes `en cours` sur le produit. Le
+nombre de lignes `couvert-valide` ne bouge pas : ce mouvement attend l'audit de `nadia-prof` sur les
+increments du sprint 17, apres ses deux arbitrages prealables bloquants. Ce tableau n'est valide que
+si `sofia-sm` gele ce perimetre au planning tel quel ; `camille-po` ne gele rien.
