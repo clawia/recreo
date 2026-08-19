@@ -301,3 +301,76 @@ perimetre d'en ajouter un quatrieme, et la prose porte deja cette nuance sans en
   jeu neuve) et avis de faisabilite sur `S17-2` et `S17-3` tels qu'amendes ici.
 - **`sofia-sm`** : verifier au planning que `S17-5` (antonymes) figure au backlog avant la cloture de
   s17, meme non affectee, condition posee par `nadia-prof`.
+
+## Amendement du 2026-08-19 (camille-po, s17) - `S17-C` (tabindex de la revelation) n'entre pas au perimetre de s17
+
+`nadia-prof` a rendu sa sonde post-livraison sur `S17-1` (`squad/conformite/FICHE-barre-entree-
+niveau.md`, section "Sonde post-livraison du 2026-08-19 (s17) sur S17-1", branche `s17-nadia-foc`,
+increment mesure `round-two` a `d649e15`) : **VALIDE SOUS RESERVE**, `S16-A` **FERMEE**. Elle ouvre
+quatre reserves datees, dont une qui m'est routee comme arbitrage de perimetre : `S17-C`,
+bloquante - au clavier, a la revelation d'une manche, le bouton que le jeu nomme ("C'est auront.
+Appuie sur auront.") **est le seul absent de l'ordre de tabulation**, parce que
+`static/js/recreo.js` pose `tabindex="-1"` sur sa cible meme quand elle est deja focalisable.
+**Le defaut date de `M13` (s10)** : il n'est pas cause par `S17-1`, l'anneau de focus l'a seulement
+rendu visible pour la premiere fois.
+
+**Ce que je ne fais pas.** Je ne juge pas la perception a la place de `nadia-prof` : sa mesure
+("`aurai > (document) > CP > CM1 > Les jeux > aura > avaient`", "auront" absent) est actee telle
+quelle. Je ne dessine ni ne tranche le correctif de `static/js/recreo.js` ni son garde-fou : voir
+"Ce que je route" ci-dessous. Je ne compte pas la capacite liberee par la sortie de `S17-2` du
+perimetre comme un motif d'entree - ce n'en est pas un, et je ne m'en sers pas ici.
+
+**Decision : `S17-C` n'entre pas au perimetre de s17. Elle sort au backlog comme story propre,
+non affectee.** Trois motifs, aucun ne portant sur la gravite du defaut (bloquante, elle le reste
+tant qu'elle tient) :
+
+1. **Le defaut est anterieur de sept sprints et n'a jamais ete impute a aucune story** : il n'est
+   la consequence d'aucun geste de s17, contrairement a `S17-A` et `S17-D` qu'`S17-1` a directement
+   introduits ou exposes par construction. Le charger sur ce sprint reviendrait a faire porter a
+   `S17-1` un passif qui existait deja sous les sept increments precedents sans que personne ne le
+   voie.
+2. **Le correctif touche `static/js/recreo.js`**, exactement la zone que `CLAUDE.md` nomme comme
+   dette 4 de la version precedente ("le comportement des mecaniques loge dans le JavaScript
+   client, que rien ne testait"). Ce depot a deja un test qui execute reellement ce script
+   (`RecreoJsDeplaceLeFocusTest`, S10) mais son propre Javadoc dit ce qu'il ne couvre pas :
+   *"le vrai focus clavier d'un navigateur (tabindex, ordre de tabulation reel...)"* - son faux DOM
+   ne modelise aujourd'hui aucun attribut `tabindex`. Fermer `S17-C` avec autre chose qu'une
+   verification manuelle de plus (le mode de defaillance que `nadia-prof` nomme elle-meme en
+   section 7 : *"aucun garde-fou executable [...] c'est moi le garde-fou"*) suppose donc une
+   decision sur comment un attribut `tabindex` entre dans ce faux DOM, ou sur une autre voie de
+   garde-fou - une question de mecanisme, pas de contenu, qui n'a pas encore de reponse ecrite.
+3. **Le cout n'est pas cerne.** Le geste de correction lui-meme parait simple dans son enonce ("ne
+   poser `tabindex="-1"` que sur une cible qui n'est pas deja focalisable"), mais son garde-fou ne
+   l'est pas (point 2), et `DEC-0039` porte deja dix obstacles herites de s16, la resurrection du
+   "bon petit mot" et deux dettes de garde-fou sur ce seul sprint. Ajouter un correctif de cout
+   inconnu dans une zone que le produit a deja identifiee comme sa dette la plus lourde reproduirait
+   le risque nomme depuis `DEC-0021` : *"un increment techniquement simple peut consommer autant de
+   temps sur ses defauts que sur son contenu."*
+
+**Ce que cela ne change pas.** `S17-C` reste bloquante au sens de `nadia-prof` : rien ici ne
+l'affaiblit, ne la reformule ni ne la rend non bloquante par un tour de plume - a la difference de
+`M4` en s10 (`DEC-0025`), je ne leve aucune condition, je diffère seulement le sprint qui la
+traite. `S16-A` reste FERMEE, ce constat n'est pas rouvert.
+
+## Ce que `S17-1` livre a s17
+
+`S16-A` (l'absence totale d'indicateur de focus clavier) est fermee : c'est ce que le sprint
+livre, mesure par `nadia-prof` sur cinq ecrans et une partie jouee entierement au clavier. **Le
+Done pedagogique de `S17-1` n'est pas prononce en totalite a la cloture de s17** : la story se
+ferme **VALIDE SOUS RESERVE**, avec `S17-C` desormais nommement differee au-dela de s17 (ci-dessus)
+et `S17-A`/`S17-D` encore `en cours` sur leurs branches respectives (`ines-design` pour la forme de
+`S17-A`, `marc-dev` pour le correctif de `S17-D`) sans que j'en prejuge l'issue avant la cloture -
+`S17-B` seule est non bloquante. C'est `nadia-prof`, et elle seule, qui prononcera si `S17-A` et
+`S17-D` ferment a temps pour ce sprint ; ce que je peux dire dans tous les cas, c'est que la
+reserve `S17-C` restera ouverte a la cloture de s17 quel que soit le sort des deux autres, puisque
+sa resolution n'est plus de ce sprint.
+
+## Ce que je route (ajout du 2026-08-19, second)
+
+- **`theo-archi`** : le mecanisme du correctif de `static/js/recreo.js` pour `S17-C` (ne poser
+  `tabindex="-1"` que sur une cible qui n'est pas deja focalisable) et son garde-fou - notamment si
+  `RecreoJsDeplaceLeFocusTest` peut etendre son faux DOM pour modeliser `tabindex`, ou si cette
+  clause reste, comme la clause 1 de `M13`, verifiee seulement par `nadia-prof` au clavier reel
+  hors CI.
+- **`sofia-sm`** : affectation de la story `S17-C` (`docs/backlog/backlog.md`) a un sprint futur,
+  apres l'avis de `theo-archi` ci-dessus.
