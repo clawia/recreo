@@ -88,15 +88,24 @@ class LesGardeFousSontMisALEpreuveTest {
      * mot de matiere absent de sa liste passe vert - mais son complement ne s'atteint que le jour ou
      * une matiere neuve entre au catalogue, ce qui est une decision de camille-po et de nadia-prof,
      * jamais un fichier copie sans decision. Il reste donc enumere, declare et compte.
+     *
+     * <p>TexteAccentueExposeParLePortEntrantTest (S16-5, s16) exempte "CP" et "CM1" de son inventaire
+     * de chaines exposees par le port entrant, parce qu'aucune de leurs lettres n'est accentuable.
+     * Meme famille que les cas ci-dessus - une liste de refus ecrite a la main, du cote qui dispense
+     * de preuve plutot que d'exiger une entree - et meme motif de portee : son complement ne
+     * s'atteint que le jour ou un niveau au nom different entre au catalogue, une decision de
+     * camille-po et de nadia-prof. Frontiere ecrite dans sa propre Javadoc.
      */
     private static final Set<String> CRITERES_ENUMERES_DECLARES = Set.of(
-            "AucunVocabulaireDeMatiereTest");
+            "AucunVocabulaireDeMatiereTest",
+            "TexteAccentueExposeParLePortEntrantTest");
 
     /**
-     * Etat au 2026-08-14, s12, a la creation de ce recensement. Ce nombre ne remonte jamais ; le
-     * baisser demande un diff visible, comme pour PLAFOND_DE_DETTE.
+     * Etat au 2026-08-14, s12, a la creation de ce recensement ; monte de 1 a 2 le 2026-08-19 (s16,
+     * TexteAccentueExposeParLePortEntrantTest). Ce nombre ne remonte jamais ; le baisser demande un
+     * diff visible, comme pour PLAFOND_DE_DETTE.
      */
-    private static final int PLAFOND_DE_CRITERES_ENUMERES = 1;
+    private static final int PLAFOND_DE_CRITERES_ENUMERES = 2;
 
     private record SourceDeTest(Path module, Path fichier) {
 
