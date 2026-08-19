@@ -301,3 +301,93 @@ perimetre d'en ajouter un quatrieme, et la prose porte deja cette nuance sans en
   jeu neuve) et avis de faisabilite sur `S17-2` et `S17-3` tels qu'amendes ici.
 - **`sofia-sm`** : verifier au planning que `S17-5` (antonymes) figure au backlog avant la cloture de
   s17, meme non affectee, condition posee par `nadia-prof`.
+
+## Amendement du 2026-08-19 (camille-po, s17) - `S17-2` sort du perimetre de s17
+
+Les trois rendus attendus sur `COMP-5` sont revenus, chacun lu a sa source
+(`squad/conformite/FICHE-bandit-manchot-comprehension-cm1.md`, section "Jugement de lisibilite du
+texte-support" ; `squad/sprints/s17-francais-cm1-et-dette/proposition-ines-mise-en-page-manche-
+comprehension.md` ; `squad/sprints/s17-francais-cm1-et-dette/avis-mecanisme-texte-support-comp5.md`
+et `ADR-0050`, tous fusionnes sur `round-two` a `150c428`). Je tranche la question de perimetre
+qu'ils me routent tous les trois : `S17-2` n'est pas de leur ressort de fermer.
+
+**Le fait, sans l'habiller.** `nadia-prof` accepte `COMP-5` sur la forme (variante nue
+d'`ines-design`, lisible), mais son propre budget de "8 lignes / 45 mots" - mesure ce matin sans
+consigne, sans bloc de question et avec des propositions d'un chiffre - ne survit pas a la mise en
+page reelle de `S17-2` : consigne, question et propositions ajoutent chacune plus que les
+26,81 px de marge qui restaient. **Le budget compose reel est de 4 lignes, environ 20 mots, dans
+l'assemblage le plus favorable qui soit encore realiste** - elle le dit elle-meme insuffisant pour
+porter l'inference que `COMP-3` exige, et le paquet y redeviendrait le reperage litteral qu'elle a
+deja refuse pour "Le bon son" en s02. Il faut retrouver 90 a 120 px. `ines-design` en degage 44
+sans aucun cout pour l'enfant (sa recommandation), ou 82 par une voie qu'elle deconseille
+elle-meme parce qu'elle retire le score de l'ecran - et ni l'un ni l'autre ne referme l'ecart.
+`theo-archi` n'apporte aucun pixel : le mecanisme est confirme (`S17-2` reste une story de
+contenu, pas d'architecture - cinq fichiers, quatre modules, mais aucune evolution de schema), et
+il ferme deux trous de garde-fou reels et independants de ce sprint (le plancher de 1,25rem
+n'etait garde par aucune regle derivee, l'identite d'ecran ne couvrait pas un troisieme texte
+rendu) sans en tirer un seul pixel vertical.
+
+**Pourquoi ce n'est pas un arbitrage de degre que je peux prendre a la place de `nadia-prof`.**
+Une "forme reduite" n'est disponible ici que si un contenu ecrit au budget survivant (20 a environ
+31 mots, en comptant le meilleur gain qu'`ines-design` propose) peut encore satisfaire `COMP-3`.
+`nadia-prof` a deja repondu, dans le meme rendu, sans conditionnel : *"a 20 mots, un support ne
+porte pas d'inference, donc COMP-3 n'est pas atteignable et le paquet redevient le reperage
+litteral qu'elle a refuse"* - et elle ne s'en dedit pas parce que la conclusion devient genante.
+Ce n'est pas une nuance de perimetre a la maniere des synonymes (`S17-3`, une partialite qu'elle a
+elle-meme bornee et acceptee) : c'est un contenu qui, ecrit au seul budget que la squad sait
+produire aujourd'hui, echouerait la condition bloquante qu'elle a posee pour que le principe
+tienne. Trancher "une forme reduite mais valide" reviendrait a decider a sa place que `COMP-3`
+peut ceder, ce qui n'est pas mien a decider.
+
+**Decision : `S17-2` sort du perimetre de s17 et retourne au backlog, non affectee.** Aucun code de
+production n'existe pour ce champ a ce jour - verifie plutot que suppose : aucune classe des
+modules `domain`, `application` ni `adapters` ne porte de champ ou de propriete nommant un
+texte-support, aucune entree `bandit-manchot-comprehension-cm1` n'existe dans `catalogue.yaml`,
+aucun fichier de contenu `cm1-comprehension.yaml` n'existe sous
+`adapters/adapter-content/src/main/resources/contenu/`. Rien n'est donc a defaire : la sortie de
+perimetre ne coute aucun retour arriere de code. Ce que je garde du travail fait ce sprint est tout
+le contraire d'une perte - `COMP-1` a `COMP-7`, le tableau chiffre de la section 3 du jugement de
+`nadia-prof`, les deux variantes d'`ines-design` avec leur cout exact, et `ADR-0050` avec ses deux
+garde-fous - c'est la matiere qu'une prochaine ouverture de cette ligne n'aura pas a reproduire.
+
+**Ce que je ne fais pas.** Je ne retire aucune des deux regles CSS d'`ADR-0050` ni les garde-fous
+qui les portent (`TailleDesTextesEtBoutonsTest`, `AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest`) :
+ils ferment des trous reels et prealables a `S17-2`, independants de son sort - le plancher de
+1,25rem valait deja pour sept selecteurs geres a la main, il vaut desormais pour toute la feuille ;
+l'identite d'ecran valait deja pour enonce + propositions, elle sait desormais classer un troisieme
+texte rendu, quel qu'il soit. Je ne rouvre aucun jugement de `nadia-prof` sur `COMP-1` a `COMP-7` :
+ils restent la matiere de travail du jour ou cette ligne rouvre. Je ne dessine aucune mise en page
+et je ne tranche aucun mecanisme : voir "Ce que je route" ci-dessous.
+
+**Ce que je route.** L'ecart de 90 a 120 px ne se ferme pas dans le mandat deja donne a
+`ines-design` (un champ generique, sans toucher au cabinet ni au score) ni dans celui deja donne a
+`theo-archi` (le mecanisme du champ, pas la disposition de l'ecran). Le combler demanderait de
+rouvrir un element partage par tous les jeux du catalogue - le gabarit de l'ecran de manche
+lui-meme (le cabinet, la place du score) plutot qu'un champ scope a un seul contenu - ce qui est
+exactement le type de cycle de mise en page que ce produit s'interdit hors d'un gel explicite
+(memoire de squad : gel de design au sprint 9, reouverture au sprint 10). **Je nomme cet
+arbitrage, je ne le prends pas** : c'est a `sofia-sm` de decider si et quand elle mandate
+`ines-design` et `theo-archi` sur une revision du gabarit de l'ecran de manche lui-meme, hors de la
+capacite deja engagee sur s17 (deux ouvertures et dix obstacles de dette, `DEC-0039` section 1).
+
+## Ce que s17 rend reellement a la couverture, en clair
+
+Le planning de s17 comptait `S17-2` comme la seule ligne susceptible d'atteindre `couvert-valide`
+ce sprint. Elle en sort. Ce qui reste :
+
+- **`S17-3` (synonymes)** ouvre bien une ligne (`non couvert` -> `en cours`) si elle va a son
+  terme : c'est la seule ligne que s17 fait avancer. Elle **ne peut pas** atteindre
+  `couvert-valide`, meme seule et meme sur un contenu que `nadia-prof` validerait sans reserve -
+  section 3 de cet amendement, deja ecrite avant ce jour, non rouverte ici : les antonymes doivent
+  s'y ajouter avant que cette ligne n'y pretende.
+- **`S17-4` (homophones)** reste `en cours` comme avant s17 : son retour a `couvert-valide` est
+  bloque par un motif distinct et deja ecrit (`DEC-0024`, amendement du 2026-08-19 : la mesure
+  `BPM-1` et le Done pedagogique complet sur le paquet raccourci manquent tous deux).
+- **`S17-2` (comprehension)** retourne `non couvert` (section ci-dessous, `MATRICE-couverture.md`).
+
+**Aucune ligne de `squad/programme/MATRICE-couverture.md` n'atteindra `couvert-valide` a la
+cloture de s17.** L'engagement pose par `DEC-0037` (si s17 ne rouvre aucune ligne, ce sera ecrit
+comme un changement de direction) reste leve par `S17-3` seule : au moins une ligne progresse, ce
+n'est pas un quatrieme sprint de stabilisation silencieuse. Mais l'ambition plus haute que le
+planning avait nommee - une ligne qui franchit `couvert-valide` ce sprint - ne se realise pas, et
+je ne l'habille pas autrement.

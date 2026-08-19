@@ -4739,6 +4739,31 @@ ici : il fait l'objet d'une story distincte instruite par `theo-archi`.
 - **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
   requis avant affectation, y compris sur COMP-5).
 
+### Note du 2026-08-19 (camille-po, s17) - S17-2 sort du perimetre de s17, retourne non affectee
+
+`nadia-prof` a rejoue `COMP-5` sur la mise en page reelle de la manche (consigne, question et
+propositions comprises, pas seulement le bloc de texte) : le budget compose tient a 4 lignes,
+environ 20 mots dans le meilleur assemblage encore realiste, ce qu'elle juge elle-meme
+insuffisant pour porter l'inference qu'exige `COMP-3` - a ce budget, le paquet redeviendrait le
+reperage litteral qu'elle a refuse en s02. `ines-design` degage 44 px sans cout pour l'enfant (ou
+82 px par une voie qu'elle deconseille, en retirant le score de l'ecran) ; `theo-archi` n'apporte
+aucun pixel de mecanisme. Il manque 90 a 120 px : aucune des trois contributions ne les fournit,
+et meme la voie deconseillee ne referme pas l'ecart. Detail complet dans `DEC-0039`, amendement du
+2026-08-19 ("`S17-2` sort du perimetre de s17").
+
+**Consequence sur cette story** : `COMP-5` reste satisfaite (variante nue d'`ines-design`), mais
+le critere "au plus 45 mots" ci-dessus est **retire** - il n'a jamais ete atteignable dans la mise
+en page reelle - et remplace par `COMP-6` (consigne rendue sur une seule ligne) et `COMP-7` (aucun
+nombre de lignes ou de mots ne fait budget ; seul `y <= 640` mesure sur l'ensemble texte-support +
+question + propositions gouverne), tous deux repris de
+`squad/conformite/FICHE-bandit-manchot-comprehension-cm1.md`. **Cette story n'est plus affectee a
+s17** : aucun agent n'y travaille a ce jour, et aucun code de production n'existe pour elle
+(verifie : aucune entree de catalogue, aucun fichier de contenu, aucun champ de texte-support dans
+`domain`, `application` ou `adapters`). Elle redevient une story de backlog non affectee, au meme
+titre que les autres lignes differees de `DEC-0039` section 5, jusqu'a ce qu'un arbitrage de mise
+en page ou de mecanisme trouve les 90 a 120 px manquants - arbitrage que je nomme et route a
+`sofia-sm` (voir `DEC-0039`), pas que je prends ici.
+
 ### S17-3 - Synonymes en contexte (francais CM1, couverture partielle nommee, jamais couvert-valide sur ce seul paquet)
 
 - **Besoin** : en tant qu'eleve de CM1, je veux retrouver, dans une phrase, le mot qui peut en

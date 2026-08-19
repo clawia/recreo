@@ -459,7 +459,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
 | francais | CM1 | Lecture et comprehension de l'ecrit | Lire silencieusement un texte de longueur croissante et en restituer l'essentiel | - | - | non couvert |
-| francais | CM1 | Lecture et comprehension de l'ecrit | Comprendre un texte narratif ou documentaire (questions explicites et implicites, inferences simples) | bandit-manchot-comprehension-cm1 | bandit manchot | en cours |
+| francais | CM1 | Lecture et comprehension de l'ecrit | Comprendre un texte narratif ou documentaire (questions explicites et implicites, inferences simples) | - | - | non couvert |
 | francais | CM1 | Lecture et comprehension de l'ecrit | Reperer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte | - | - | non couvert |
 | francais | CM1 | Ecriture | Rediger un texte narratif court et coherent (quelques phrases, temps du recit respecte) | - | - | non couvert |
 | francais | CM1 | Ecriture | Relire et corriger son texte a l'aide de reperes simples (majuscules, ponctuation) | - | - | non couvert |
@@ -629,6 +629,21 @@ apres audit reel de chaque increment.
   matrice n'en porte que trois (`non couvert` / `en cours` / `couvert-valide`) et ce n'est pas ce
   document qui doit en ajouter un quatrieme. Story compagne des antonymes ecrite au backlog,
   non affectee : `S17-5`, `docs/backlog/backlog.md`.
+
+**Amendement du 2026-08-19 (camille-po) - `S17-2` sort du perimetre de s17, la ligne revient
+`non couvert`.** `nadia-prof` a rejoue la mesure de `COMP-5` sur la mise en page reelle de la
+manche (consigne, bloc de question et cabinet compris, pas seulement le bloc de texte-support) :
+le budget compose tient a 4 lignes, environ 20 mots dans le meilleur assemblage encore realiste,
+et elle l'ecrit elle-meme insuffisant pour porter l'inference que `COMP-3` exige - le paquet y
+redeviendrait le reperage litteral qu'elle a deja refuse en s02. `ines-design` degage 44 px sans
+cout pour l'enfant (ou 82 px par une voie qu'elle deconseille, en retirant le score de l'ecran) ;
+`theo-archi` n'apporte aucun pixel de mecanisme. Il manque 90 a 120 px, aucune des trois
+contributions ne les fournit, et aucune ne s'approche meme par la voie deconseillee. Detail complet
+et motif de perimetre dans `DEC-0039`, amendement du 2026-08-19 ("`S17-2` sort du perimetre de
+s17"). Aucun code de production n'existait pour cette ligne a la date de cet amendement (verifie :
+aucune entree de catalogue, aucun fichier de contenu, aucun champ de texte-support dans le code) ;
+la sortie de perimetre ne defait donc rien. Les cinq conditions `COMP-1` a `COMP-7`, le tableau
+chiffre de `nadia-prof` et `ADR-0050` restent la matiere de travail du jour ou cette ligne rouvre.
 
 ## Synthese au sprint 0, mise a jour a l'ouverture du sprint 4
 
@@ -1450,3 +1465,26 @@ comprehension de texte, synonymes), pour un total de sept lignes `en cours` sur 
 nombre de lignes `couvert-valide` ne bouge pas : ce mouvement attend l'audit de `nadia-prof` sur les
 increments du sprint 17, apres ses deux arbitrages prealables bloquants. Ce tableau n'est valide que
 si `sofia-sm` gele ce perimetre au planning tel quel ; `camille-po` ne gele rien.
+
+## Synthese apres l'amendement du 2026-08-19 - `S17-2` sort du perimetre de s17
+
+`DEC-0039`, amendement du 2026-08-19 ("`S17-2` sort du perimetre de s17") : la ligne comprehension
+de texte revient `non couvert` (voir la note dediee sous le tableau francais CM1 ci-dessus). Une
+seule des deux lignes ouvertes a s17 reste `en cours` a ce jour.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 |
+| mathematiques CM1 | 12 | 6 | 2 | 4 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 8 | 2 | 1 |
+| **Total** | **46** | **31** | **6** | **9** |
+
+Une seule ligne de plus qu'a la cloture de s13 passe `en cours` (synonymes, francais CM1), pour un
+total de six lignes `en cours` sur le produit - contre sept dans la synthese precedente. Le nombre
+de lignes `couvert-valide` ne bouge pas et n'a aucune chance de bouger a la cloture de s17 :
+`S17-3` (synonymes) ne peut pas y atteindre `couvert-valide` seule (note dediee ci-dessus,
+`DEC-0039` section 3) et `S17-4` (homophones) reste bloquee par la mesure `BPM-1` et le Done
+pedagogique complet, tous deux absents (`DEC-0024`, amendement du 2026-08-19). **Aucune ligne
+n'atteindra `couvert-valide` a la cloture de s17.** L'engagement de `DEC-0037` (au moins une ligne
+rouverte, faute de quoi ce serait un changement de direction) reste leve par `S17-3` seule.
