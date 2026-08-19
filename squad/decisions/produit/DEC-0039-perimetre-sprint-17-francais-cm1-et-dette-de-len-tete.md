@@ -391,3 +391,68 @@ comme un changement de direction) reste leve par `S17-3` seule : au moins une li
 n'est pas un quatrieme sprint de stabilisation silencieuse. Mais l'ambition plus haute que le
 planning avait nommee - une ligne qui franchit `couvert-valide` ce sprint - ne se realise pas, et
 je ne l'habille pas autrement.
+
+## Amendement du 2026-08-19 (camille-po, s17) - le mandat sur le cabinet et le score n'est elargi a personne ; l'ecart reste ferme jusqu'a la reouverture de `S17-2`
+
+`sofia-sm` me route un obstacle qu'elle refuse de trancher a ma place, et son motif est le bon :
+elargir le mandat d'un agent est une decision de perimetre, pas une decision de Scrum Master.
+L'arbitrage qui fermerait les 90 a 120 px manquants de `S17-2` (amendement ci-dessus) porte sur
+une revision de l'**ecran de manche partage** - emprise du cabinet, place du score - une zone que
+ni `ines-design` (scopee au champ generique, `.texte-support`) ni `theo-archi` (mecanisme, qui n'en
+rend aucun pixel) ne tiennent aujourd'hui sous mandat.
+
+**Ce que je verifie avant de trancher, plutot que de le supposer.** `ines-design` a deja nomme
+elle-meme pourquoi elle ne va pas plus loin de son propre chef
+(`squad/sprints/s17-francais-cm1-et-dette/proposition-ines-mise-en-page-manche-comprehension.md`,
+section 1) : le cabinet (`.cabinet`, `.cabinet-bandeau`, `.cabinet-socle`, `.cabinet-levier`) et
+l'ecart entre propositions sont *"l'identite visuelle du meuble, actee sur plusieurs sprints
+(`ADR-0030`, `ADR-0033`, `ADR-0036`, F5)"*, et le `gap` de 1rem vient nommement d'une reserve de
+`nadia-prof` sur le geste de l'enfant (`S3-5`). Masquer le score, sa seule autre piste, coute une
+information visible sur tous les autres jeux du catalogue et elle ecrit elle-meme : *"ce n'est pas
+ma decision seule a prendre."*
+
+**Pourquoi ce n'est pas une simple question de repartition du travail entre deux agents
+disponibles.** Le cabinet et le score ne sont pas des elements scopes a `S17-2` : ce sont des
+elements **partages par les huit jeux deja au catalogue**, dont plusieurs portent un Done
+pedagogique deja accorde sur des proprietes qui en dependent directement - `M4` (le pli, huit
+jeux), `S15-8`/`S15-9` (couleur et trait d'une proposition deja essayee, quatre positions), les
+conditions `F5` a `F12` sur l'habillage du meuble, et la reserve de geste de `S3-5` elle-meme.
+Elargir un mandat sur cette zone pour gagner 44 a 82 px sur un seul ecran encore non construit
+reviendrait a rouvrir une question de forme sur des jeux deja juges, pour un gain que ni
+`ines-design` ni `theo-archi` ne garantissent suffisant - elle l'ecrit elle-meme : *"je ne sais pas
+si mes pixels suffisent."* C'est exactement le type de cycle de mise en page que ce produit gouverne
+par un gel explicite plutot que par une extension de perimetre au fil de l'eau (memoire de squad :
+gel de design au sprint 9, reouverture nommee au sprint 10 pour le meuble lui-meme). Une revision de
+l'identite partagee de l'ecran de manche est une decision de cette famille ; elle ne s'ouvre pas en
+annexe d'une story de contenu qui, par ailleurs, est deja hors du perimetre de s17.
+
+**Decision : je n'elargis le mandat d'aucun des deux agents aujourd'hui.** L'ecart reste ferme -
+personne ne le detient pour l'executer - jusqu'a ce que `S17-2` soit rouverte a un sprint futur.
+Ce n'est pas une troisieme branche que `sofia-sm` n'aurait pas nommee : c'est le second choix
+qu'elle a pose ("acter que ce vide reste ouvert et que l'ecart reste ferme tant que `S17-2` n'est
+pas rouverte"), retenu plutot que le premier.
+
+**Le proprietaire de cette question, nomme pour qu'elle ne se reconduise pas sans porteur.** Ce
+n'est ni `ines-design` ni `theo-archi` aujourd'hui - c'est etabli. **Ce n'est pas non plus une
+question a transferer a l'utilisatrice** comme `DEC-0039` section 3 l'a fait pour la mesure de
+rendu : la aussi il s'agissait d'un manque d'**outillage** (aucun agent ne pouvait piloter un
+navigateur reel), un investissement hors du budget d'outils de la squad. Ici, la squad a la
+competence necessaire des deux cotes (design, architecture) ; ce qui manque est un **arbitrage de
+risque produit** - accepter de rouvrir une identite partagee et deja jugee, pour un gain incertain,
+sur une story qui n'est pas priorisee ce sprint - et c'est un arbitrage de perimetre, donc **le
+mien**. **Je le garde : `camille-po` est proprietaire de cette question**, avec un declencheur
+explicite plutot qu'un report muet - le jour ou `S17-2` revient au perimetre d'un sprint, l'ouverture
+ou non d'un mandat borne sur le cabinet et le score pour cette story est tranchee dans le meme
+geste que sa reouverture, avec son cout et son risque nommes a ce moment-la plutot qu'aujourd'hui
+sans contenu en face.
+
+**Ce que je ne fais pas.** Je ne juge pas si 44, 82 ou davantage de pixels suffiraient un jour :
+seule une proposition reelle d'`ines-design`, sur un mandat explicitement ouvert, pourrait le dire.
+Je ne rouvre aucun Done pedagogique deja accorde sur `M4`, `S15-8`, `S15-9` ou les conditions `F` du
+meuble.
+
+## Ce que je route
+
+- **`sofia-sm`** : ne plus reconduire cet obstacle comme une ligne sans proprietaire dans les
+  rapports de sprint - il a desormais un proprietaire (`camille-po`) et un declencheur explicite (la
+  reouverture de `S17-2`), sur le meme modele que les obstacles transferes en section 3.
