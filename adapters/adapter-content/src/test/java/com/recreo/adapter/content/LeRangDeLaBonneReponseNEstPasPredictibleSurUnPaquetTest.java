@@ -297,7 +297,13 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " numerique. C'est l'enonce qui porte les nombres, jamais les propositions",
             "cp-le-bon-son",
             "15 items sur 15 proposent des graphies de phonemes (\"on\", \"in\", \"an\") : deux"
-                    + " distracteurs, aucune valeur numerique lisible");
+                    + " distracteurs, aucune valeur numerique lisible",
+            "cm1-synonymes",
+            "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"
+                    + " propositions n'est numerique : ce sont des mots de vocabulaire (synonymes et"
+                    + " distracteurs), valeurDe rend null sur les trois propositions de chaque item."
+                    + " Mesure du 2026-08-19, verification directe : aucune des 60 propositions ne"
+                    + " commence par un chiffre");
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
