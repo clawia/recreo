@@ -1,0 +1,16 @@
+# ADR-0003 : le meme jeu fautif, seconde moitie. Graphie accentuee, celle des 61 fichiers de
+# contenu-repris/. Une conversion qui recopie la valeur telle quelle depose donc cette graphie a
+# cote de la precedente, et c'est exactement ce que la clause d'unicite refuse.
+schema: 1
+id: paquet-converti-accentue
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CM1"
+  domaine: "Lecture et comprehension"
+  competence: "Forme accentuee, celle de la reserve de matiere premiere"
+items:
+  - enonce: "Le renard vit un corbeau. Ou est le corbeau ?"
+    bonneReponse: "sur un arbre"
+    distracteurs: ["dans un trou"]
+    indice: "Relis la phrase."
