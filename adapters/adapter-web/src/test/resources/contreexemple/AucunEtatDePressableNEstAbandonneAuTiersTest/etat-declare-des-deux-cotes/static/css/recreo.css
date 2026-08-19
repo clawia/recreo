@@ -1,6 +1,7 @@
-/* Le meme bouton, corrige par le seul ajout des deux regles d'etat. Rien d'autre ne change : ni la
-   boite, ni la taille, ni la couleur au repos, ni le gabarit. C'est ce jeu-ci qui etablit que la
-   clause n'est pas une interdiction du bouton de contour deguisee en clause d'etat.
+/* Le meme bouton, corrige par le seul ajout des trois regles d'etat (amendement ADR-0046, s16 :
+   :focus-visible rejoint :hover et :active). Rien d'autre ne change : ni la boite, ni la taille, ni
+   la couleur au repos, ni le gabarit. C'est ce jeu-ci qui etablit que la clause n'est pas une
+   interdiction du bouton de contour deguisee en clause d'etat.
    Les valeurs d'etat reprennent celles du repos : ce jeu prouve la forme, pas une apparence - quelle
    apparence un bouton prend sous le pointeur reste un arbitrage de nadia-prof. */
 .bouton-neuf {
@@ -14,7 +15,8 @@
 }
 
 .bouton-neuf:hover,
-.bouton-neuf:active {
+.bouton-neuf:active,
+.bouton-neuf:focus-visible {
     color: #ffffff;
     background-color: transparent;
     border: 0.125rem solid #ffffff;

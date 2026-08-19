@@ -168,9 +168,15 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    .lien-accueil perdrait son contour et son texte au survol comme a l'appui, exactement le defaut
    que l'utilisatrice a vu sur .chip-niveau. Forme neutre exigee par ADR-0046 point 4 : chaque etat
    reprend a l'identique les valeurs du repos, rien ne change sous le pointeur ni sous l'appui - une
-   autre apparence est un arbitrage de nadia-prof, non tranche ici. */
+   autre apparence est un arbitrage de nadia-prof, non tranche ici.
+   Second amendement ADR-0046 (s16) : :focus-visible rejoint :hover et :active. .btn:focus-visible
+   ecrase aussi color/background-color/border-color (mesure de theo-archi) ; box-shadow est ecartee
+   des proprietes comparees a cet etat seul (l'anneau de focus clavier tiers, ADR-0030 point 2, reste
+   intact), donc seules les trois couleurs sont redeclarees ici, forme neutre identique aux deux
+   autres etats. */
 .lien-accueil:hover,
-.lien-accueil:active {
+.lien-accueil:active,
+.lien-accueil:focus-visible {
     color: var(--recreo-accent-texte);
     background-color: transparent;
     border: 0.125rem solid var(--recreo-accent-texte);
@@ -598,9 +604,13 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
 }
 
 /* ADR-0046 : ces cinq boutons pleins partagent deja la regle de repos ci-dessus ; ils recoivent
-   donc le meme couple d'etat, sur les deux seules proprietes que la feuille tierce leur ecrase
+   donc le meme trio d'etat, sur les deux seules proprietes que la feuille tierce leur ecrase
    (color, background-color - le contour n'entre pas ici, aucun de ces boutons n'en declare).
-   Forme neutre du point 4 : les valeurs du repos, inchangees sous le pointeur et sous l'appui. */
+   Forme neutre du point 4 : les valeurs du repos, inchangees sous le pointeur et sous l'appui.
+   Second amendement ADR-0046 (s16) : :focus-visible rejoint :hover et :active, box-shadow ecartee
+   a cet etat seul (l'anneau de focus clavier tiers, ADR-0030 point 2, reste intact - aucun de ces
+   cinq boutons hors .demarrer ne declare de box-shadow au repos, et .demarrer non plus ne se voit
+   rien exiger sur cette propriete puisqu'elle est ecartee). */
 .continuer-partie:hover,
 .demarrer:hover,
 .proposition:hover,
@@ -610,7 +620,12 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
 .demarrer:active,
 .proposition:active,
 .recommencer:active,
-.sortie-pleine:active {
+.sortie-pleine:active,
+.continuer-partie:focus-visible,
+.demarrer:focus-visible,
+.proposition:focus-visible,
+.recommencer:focus-visible,
+.sortie-pleine:focus-visible {
     color: var(--recreo-accent-texte);
     background-color: var(--recreo-accent);
 }
@@ -626,15 +641,22 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    - S15-8, la couleur de fond de la position cyclique doit survivre sous le doigt : les valeurs
      ci-dessous sont volontairement celles du repos non cyclique (identiques a la regle de
      ".proposition:hover, .proposition:active" ci-dessus) et cette regle est placee avant les
-     quatre regles de position ci-dessous, a la meme specificite (0,3,0) qu'elles : la derniere du
-     fichier l'emporte a specificite egale (ADR-0014 point 5), donc chaque position garde son fond
-     et son texte, hover ou non - ne jamais deplacer ce bloc apres les quatre regles de position ;
+     quatre regles de position ci-dessous, a la meme specificite (0,3,0) qu'elles - y compris pour
+     :focus-visible, ajoute au meme endroit par le second amendement d'ADR-0046 (s16) : la derniere
+     du fichier l'emporte a specificite egale (ADR-0014 point 5), donc chaque position garde son
+     fond et son texte, quel que soit l'etat - ne jamais deplacer ce bloc apres les quatre regles
+     de position ;
    - S15-9, le trait de M9 (text-decoration et ses trois longhands sur ".proposition.deja-essayee")
-     n'est touche par aucune des deux regles ci-dessous ni par aucun etat de la feuille tierce
-     (mesure d'ADR-0046, aucune regle vendorisee ne porte text-decoration) : il survit sans avoir a
-     etre redeclare ici. */
+     survit sans etre redeclare ici, et ce n'est pas un releve fige : la derivation d'ADR-0046
+     (reposMaison / exigencesDuTiers / touche()) recroise ces longhands avec la feuille vendorisee
+     servie a chaque execution, jamais avec une liste ecrite a la main. Aujourd'hui, aucune regle de
+     cette feuille ne porte text-decoration a un etat garde, donc aucune exigence n'en nait ; le jour
+     ou une montee de version en ajouterait une, la meme derivation la ferait apparaitre et rougir
+     ici d'elle-meme (verifie par yanis-qa par mutation reelle de la feuille vendorisee : ajouter un
+     soulignement a :hover y fait naitre six exigences neuves). */
 .proposition.deja-essayee:hover,
-.proposition.deja-essayee:active {
+.proposition.deja-essayee:active,
+.proposition.deja-essayee:focus-visible {
     color: var(--recreo-accent-texte);
     background-color: var(--recreo-accent);
 }
@@ -721,9 +743,12 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
 
 /* ADR-0046 : .retour-accueil est, avec .chip-niveau et .lien-accueil, l'un des boutons de contour
    dont la lisibilite est le contour lui-meme - la propriete qui disparait au survol si la feuille
-   maison ne la redeclare pas ici. Forme neutre du point 4 : les valeurs du repos, inchangees. */
+   maison ne la redeclare pas ici. Forme neutre du point 4 : les valeurs du repos, inchangees.
+   Second amendement ADR-0046 (s16) : :focus-visible rejoint :hover et :active, box-shadow ecartee
+   a cet etat seul (aucune ombre ici au repos, l'exclusion ne change donc rien de visible). */
 .retour-accueil:hover,
-.retour-accueil:active {
+.retour-accueil:active,
+.retour-accueil:focus-visible {
     color: var(--recreo-accent);
     background-color: transparent;
     border: 0.125rem solid var(--recreo-accent);
@@ -761,9 +786,13 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    (specificite 0,2,0) ecrase color, background-color et border-color sans qu'aucune regle maison
    ne les redeclare a cet etat (specificite 0,1,0 sur .chip-niveau seule) : la puce perd son
    contour blanc et son texte devient sombre sur la bande sombre du bandeau. Forme neutre du
-   point 4 : les valeurs du repos, inchangees sous le pointeur et sous l'appui. */
+   point 4 : les valeurs du repos, inchangees sous le pointeur et sous l'appui.
+   Second amendement ADR-0046 (s16) : :focus-visible rejoint :hover et :active - la meme perte de
+   contour et de texte se produit au clavier, sur .btn:focus-visible - box-shadow ecartee a cet
+   etat seul (aucune ombre ici au repos). */
 .chip-niveau:hover,
-.chip-niveau:active {
+.chip-niveau:active,
+.chip-niveau:focus-visible {
     color: var(--recreo-accent-texte);
     background-color: transparent;
     border: 0.125rem solid var(--recreo-accent-texte);
@@ -798,7 +827,8 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    capture. La regle rend le premier etat structurellement inatteignable. */
 body:has(.filtre-niveau) .chip-niveau.est-actif,
 body:has(.filtre-niveau) .chip-niveau.est-actif:hover,
-body:has(.filtre-niveau) .chip-niveau.est-actif:active {
+body:has(.filtre-niveau) .chip-niveau.est-actif:active,
+body:has(.filtre-niveau) .chip-niveau.est-actif:focus-visible {
     background-color: var(--recreo-accent-texte);
     color: var(--recreo-entete-fond);
     border: 0.125rem solid var(--recreo-entete-fond);
