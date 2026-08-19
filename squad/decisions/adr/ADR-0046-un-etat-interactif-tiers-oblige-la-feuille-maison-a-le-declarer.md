@@ -1,6 +1,8 @@
 # ADR-0046 - Un etat interactif declare par la feuille tierce oblige la feuille maison a le declarer
 
-- **Statut** : Accepte, **amende le 2026-08-19 (s16) : sa derivation ne voyait pas un selecteur
+- **Statut** : Accepte, **amende deux fois le 2026-08-19 (s16) : son exclusion de `:focus-visible`
+  etait trop grossiere - c'est une propriete de cet etat qu'il faut exclure, pas l'etat entier ; et
+  amende le meme jour (s16) : sa derivation ne voyait pas un selecteur
   compose, donc ni ne l'exigeait ni ne le comptait. Trou trouve par `sofia-sm`, chiffre par
   `nadia-prof`, correction due par le lot de `S16-3`/`S16-4`**
 - **Date** : 2026-08-17
@@ -61,6 +63,79 @@
 > uniquement - et elles s'appliquent desormais aux deux familles.
 >
 > **Le compte des regles ArchUnit ne bouge pas** (29) : cette correction est un test de `adapter-web`.
+
+> **Second amendement du 2026-08-19 (s16) - mon exclusion de `:focus-visible` etait trop grossiere.
+> J'ai exclu un etat la ou il fallait exclure une propriete de cet etat, et cette coarseness a
+> produit une contradiction entre cet `ADR` et mon propre avis de faisabilite de s16.**
+>
+> **La contradiction, d'abord, parce qu'elle est de moi des deux cotes.** Le critere de `S16-3` demande
+> que la puce active garde ses couleurs sous `:hover`, `:active` **et `:focus-visible`**. Mon avis de
+> faisabilite de s16 a ecrit que ce troisieme etat "doit passer par la constante qui enumere les etats
+> gardes, sans quoi le critere serait vrai a l'ecrit et garde par rien". Le point 5 de cet `ADR`, que
+> j'avais ecrit deux jours plus tot, **l'interdit** et nomme le test qui rougirait. `lea-dev` a refuse
+> d'implementer et a route plutot que de trancher seule : elle a eu raison, et c'est a moi de dire
+> lequel des deux documents disait faux.
+>
+> **Ce qui etait faux, et ce n'est ni le critere ni l'intuition de mon avis : c'est le perimetre de
+> l'exclusion du point 5.** Mesure sur la feuille vendorisee servie, aujourd'hui, methode comprise -
+> lecture des corps de regles dont le selecteur porte `:focus-visible` et mentionne `.btn`,
+> commentaires retires :
+>
+> ```
+> .btn:focus-visible -> color, background-color, border-color, outline, box-shadow
+> ```
+>
+> **Ce n'est donc pas seulement une ombre portee.** La bibliotheque y ecrase aussi **les trois
+> couleurs** avec ses valeurs de survol. Le point 5 disait vrai sur l'anneau et faux par omission sur
+> le reste : sous focus clavier, la puce active perd bien ses couleurs au profit de celles de la
+> bibliotheque, et c'est exactement le defaut que cet `ADR` existe pour fermer. **Le critere de `S16-3`
+> nommait donc un defaut reel, et mon avis avait raison de vouloir le garder.**
+>
+> **Et le motif du point 5 reste vrai, lui aussi mesure.** Inclure l'etat entier ferait naitre une
+> exigence sur `box-shadow` : `.demarrer` declare `box-shadow` au repos (verifie : bloc
+> `border-radius / box-shadow / position`), la bibliotheque declare `box-shadow` a cet etat, et
+> `touche()` les apparie. Satisfaire cette exigence demanderait a la maison de declarer une ombre
+> portee **a l'etat de focus**, donc d'ecraser l'anneau de focus clavier dont `ADR-0030` point 2
+> depend. Un garde-fou qui pousse a une regression d'accessibilite reste pire que pas de garde-fou.
+>
+> **Les deux faits ensemble donnent la forme juste, et elle est plus etroite que mon exclusion :**
+>
+> > **`:focus-visible` entre dans les etats gardes, et `box-shadow` sort des proprietes comparees a cet
+> > etat - a cet etat seulement.**
+>
+> Les trois couleurs redeviennent exigees ; l'anneau de focus reste a la bibliotheque. **Ce n'est pas
+> une exception concedee, c'est la forme que ce depot emploie deja deux fois** : `ADR-0017` exclut
+> `border-width` de ses composantes comparees, `ADR-0033` exclut `transform`, et chaque fois pour la
+> meme raison - une propriete dont la difference est un moyen legitime, pas une domination.
+>
+> **Ce que la correction change au cout que `lea-dev` avait estime, et c'est verifiable.** Elle avait
+> etabli qu'ajouter l'etat rouvrirait une dette d'**ombre portee** sur les huit boutons deja traites.
+> Avec `box-shadow` hors des proprietes comparees a cet etat, cette dette **n'apparait pas** : il ne
+> reste que la redeclaration des trois couleurs a l'etat de focus, sur les pressables dont la maison
+> gouverne ces couleurs au repos. Son constat etait juste sur la forme que je lui avais donnee ; il ne
+> vaut plus sur celle-ci, et c'est ma faute et non la sienne.
+>
+> **Ce que le lot doit livrer, et le seul point de sequencement.** `ETATS_GARDES` gagne
+> `:focus-visible` ; les proprietes comparees deviennent dependantes de l'etat, `box-shadow` etant
+> ecartee au seul `:focus-visible` ; et
+> `lAnneauDeFocusClavierEstUneOmbrePorteeTierceEtCetEtatResteHorsDuPerimetre` est **reformule, jamais
+> supprime** - il epingle toujours les trois memes faits, sa troisieme assertion passant de "cet etat
+> est hors du perimetre" a "`box-shadow` est hors des proprietes comparees a cet etat". Son nom doit
+> suivre. **Sequencement** : `yanis-qa` travaille en ce moment sur la mutation-morsure de ce fichier ;
+> le lot qui porte cet amendement passe apres lui, et je ne touche pas ce fichier dans le commit qui
+> ecrit cet amendement - c'est la seule raison pour laquelle la regle n'est pas ici.
+>
+> **La porte de sortie de `S16-3` reste donc partiellement ouverte sur ce seul point**, comme
+> `sofia-sm` l'a tenue, et elle se ferme avec ce lot. Le fond de la story - `:hover` et `:active` - est
+> tenu et vert depuis le lot de `lea-dev`. **Le compte des regles ArchUnit ne bouge pas** (29) : cette
+> correction est un test de `adapter-web`.
+>
+> **Ce que je retire de cette contradiction, pour moi.** Mon avis de faisabilite a lu un critere et
+> raisonne sur son encodabilite **sans le confronter a l'`ADR` accepte qui gouverne le garde-fou
+> concerne**, alors que cet `ADR` etait de ma main et datait de deux jours. C'est la faute que je
+> sanctionne chez les autres sous le nom d'enumeration non verifiee, ici sous une autre forme : un avis
+> qui prescrit une extension de perimetre doit relire la decision qui a fixe ce perimetre, et dire si
+> elle tombe. Le mien ne l'a pas fait.
 
 ## Contexte
 

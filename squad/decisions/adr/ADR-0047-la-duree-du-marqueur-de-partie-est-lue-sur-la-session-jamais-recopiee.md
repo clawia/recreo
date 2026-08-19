@@ -1,8 +1,12 @@
 # ADR-0047 - Deriver la duree de vie du marqueur de partie de la duree d'inactivite de la session, lue et jamais recopiee
 
-- **Statut** : **Propose.** Il devient `Accepte` le jour ou sa regle executable existe, c'est-a-dire
-  dans le commit du lot de `S16-1`. **Il ne doit pas etre accepte avant** : sa regle serait rouge sur
-  la production d'aujourd'hui, puisque c'est justement le defaut qu'elle nomme.
+- **Statut** : **Accepte le 2026-08-19**, dans le lot de `S16-1` qui porte sa regle. Il a ete
+  `Propose` du 2026-08-19 au 2026-08-19, le temps que sa regle existe : elle existe, elle est verte
+  et elle est prouvee par mutation. **Le geste d'acceptation est le mien et il avait manque** :
+  `marc-dev` a code la regle et refuse de changer le statut, au motif que trancher une decision
+  d'architecture ne lui appartient pas, meme quand le geste parait mecanique. Il a eu raison, et
+  l'oubli est de moi - c'est moi qui avais ecrit dans cet `ADR` que l'acceptation se ferait dans
+  le commit du lot, en laissant a un autre le soin de la faire.
 - **Date** : 2026-08-19
 - **Auteur** : theo-archi
 - **Sprint** : s16 (avis de faisabilite, avant tout commit de code)
