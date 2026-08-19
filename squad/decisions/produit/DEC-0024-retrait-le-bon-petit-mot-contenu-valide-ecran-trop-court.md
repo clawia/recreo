@@ -269,3 +269,79 @@ generale ne se defait pas pour un seul paquet sans que `nadia-prof` ne le juge e
 **Fixer un seuil chiffre de caracteres comme condition de retour.** Ecartee au meme motif que
 `DEC-0016` : un compte de caracteres manque le pire cas reel, mesure par `ADR-0026` sur la largeur
 de glyphes rendus plutot que sur un compte de lettres.
+
+## Correction du 2026-08-19 (lea-dev, s17) - le chiffre "22 indices sur 24" du point 5 est faux, c'est 24 sur 24
+
+En livrant `S17-4`, `lea-dev` a relu `cm1-homophones.yaml` caractere par caractere plutot que de
+recopier le chiffre de mesure d'origine, et a corrige **les 24 indices, pas seulement les 22
+annonces** (branche `s17-lea`, commit `96e6b23`). Methode et chiffre documentes dans la Javadoc de
+`PaquetsFrancaisS04Test`
+(`adapters/adapter-content/src/test/java/com/recreo/adapter/content/PaquetsFrancaisS04Test.java`).
+Les deux indices manquants au compte d'origine (bonne reponse `On`, bonne reponse `Où`) echappent
+a une comparaison sensible a la casse : leur bonne reponse porte la majuscule de debut de phrase,
+quand l'indice la citait en minuscule.
+
+Je ne corrige pas la phrase d'origine du point 5 : elle reste lisible telle qu'ecrite le
+2026-08-12 ("22 sur 24"), pour que la trajectoire de l'erreur ne soit pas effacee. **Le chiffre
+juste, a lire a sa place : 24 indices sur 24 nomment la bonne reponse plutot que la manipulation
+qui y mene.**
+
+**Ce que cela change a la decision : rien.** Le point 5 concluait que les indices fautifs de
+`cm1-homophones` ne fondent pas une troisieme story, puisque ce paquet est deja rouvert dans son
+integralite par le point 4 et rejuge de toute facon comme un contenu neuf - ce raisonnement ne
+dependait pas du compte exact, seulement du fait qu'au moins un indice fautif existe. Il tient
+identiquement a 24 sur 24.
+
+**Ce que je route.** Le meme chiffre fautif est recopie dans des fichiers que je ne corrige pas
+moi-meme, chacun pour un motif distinct :
+- `squad/sprints/s17-francais-cm1-et-dette/planning.md` (tableau des stories, section "S17-4 -
+  comment je gele une story dont la porte de sortie est hors de la squad") - c'est le fichier de
+  `sofia-sm`, routee a elle ;
+- `squad/conformite/FICHE-bandit-manchot-additions-cp.md` (section "0 bis. Ce que je corrige de
+  mes propres constats, avant de m'appuyer dessus") et
+  `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md` (sections "Note d'audit - second
+  verdict du 2026-08-13" et "Note d'audit - ce jeu n'a pas ete joue au chantier du bandit
+  manchot, du 2026-08-13") - ce sont les arbitrages ecrits par `nadia-prof` elle-meme, en son nom
+  propre ("je") ; je ne reecris pas son texte a sa place, je le lui route.
+
+Je corrige en revanche mon propre backlog, par la meme methode et le meme chiffre : voir
+`docs/backlog/backlog.md`, story `S17-4`, note datee de ce jour.
+
+## Amendement du 2026-08-19 (camille-po, s17) - le retour au catalogue de `bandit-manchot-homophones-cm1` n'est pas acquis par cette fusion
+
+`lea-dev` restitue, sur la branche `s17-lea` non encore fusionnee, l'entree
+`id: bandit-manchot-homophones-cm1` dans `catalogue.yaml` (deux lignes, commit `96e6b23`), comme
+le planning de s17 le lui demandait pour la part que la squad peut produire elle-meme. Le meme
+planning ecrit, dans la meme section, que **"son retour effectif au catalogue jouable n'est pas
+acquis a la cloture de s17 : il attend que la mesure existe"** -
+`squad/sprints/s17-francais-cm1-et-dette/planning.md`, section "S17-4 - comment je gele une story
+dont la porte de sortie est hors de la squad". Ces deux phrases ne peuvent pas etre vraies
+ensemble une fois le lot fusionne : une entree presente dans `catalogue.yaml` rend le jeu jouable
+par un enfant, point 2 de cette meme decision le dit sans detour ("Ce mecanisme n'est pas ouvert a
+instruction [...] aucune exemption dans une clause de garde-fou"). Je tranche, parce que
+`sofia-sm` ne peut pas le faire a ma place : c'est cette decision-ci qui pose la condition de
+retour, et `DEC-0039` (section 2) l'a reprise "au mot pres [...] sans les redurcir ni les
+affaiblir".
+
+**Decision : l'entree reste hors du catalogue jusqu'a ce que `BPM-1` existe et que `nadia-prof`
+ait accorde un Done pedagogique sur le paquet raccourci.** Le point 3 de cette meme decision est
+explicite et n'a pas ete amende depuis : *"Le retour au catalogue suppose les deux : la mesure de
+forme ci-dessus **et** un Done pedagogique accorde sur le paquet raccourci."* `DEC-0039` (section
+3) a transfere la production de `BPM-1` a l'utilisatrice, hors du perimetre de la squad - elle n'a
+ni leve ni assoupli cette condition. Sans `BPM-1` ni Done pedagogique complet sur le paquet
+raccourci, tous deux absents a ce jour, la condition de retour n'est pas remplie : la restituer au
+catalogue maintenant reexposerait un enfant a l'exact defaut qui a motive le retrait (l'enonce le
+plus long qui ne tient pas au-dessus du pli), sans que personne ne l'ait verifie sur le paquet
+raccourci.
+
+**Ce que cela ne change pas.** Le raccourcissement des 24 phrases, la correction des 24 indices
+(voir correction ci-dessus) et le reste du travail de contenu de `S17-4` restent acquis a ce
+sprint et jugeables par `nadia-prof` sur `BPM-2`/`BPM-3`/`BPM-4`, exactement comme le planning le
+prevoit. Seule la restitution de l'entree de catalogue est retenue.
+
+**Ce que je route.** `sofia-sm` : exclure les deux lignes `id: bandit-manchot-homophones-cm1` de
+`catalogue.yaml` lors de la fusion du lot de `lea-dev`, comme une action technique immediate liee
+a cette decision plutot qu'une story a planifier - le meme mecanisme, dans l'autre sens, que le
+point 2 de cette decision l'avait deja pose pour le retrait. L'entree revient au catalogue le jour
+ou `BPM-1` est produite et ou `nadia-prof` prononce son Done sur le paquet raccourci, dans le meme
+geste, jamais en deux temps.
