@@ -72,6 +72,16 @@ amendee, une `ADR` creee, trois `ADR` amendees). Aucune section vide.
 | Predicat `estRemplacant` d'`ADR-0042` toujours sans objet en code | theo-archi | s13 | declencheur non atteint ce sprint |
 | Reserve F11 (ecoute reelle au lecteur d'ecran) | hors de la portee de la squad | s13 | ecoute reelle, hors squad |
 
+## Correction du 2026-08-19 (trouvee par le relecteur-pedagogique en s16)
+
+La ligne "R-BARRE-1 (grands nombres CM1) : +22 px depuis s14" dans le tableau des obstacles ouverts
+ci-dessus **inverse le sens du mouvement**. Lu dans
+`squad/conformite/FICHE-barre-entree-niveau.md`, section "S15-7" : avant s14 y = 397, s14 y = 410
+(+13 px), lot 3 (`b109f98`) y = 419 (**+22 px** - c'est le lot 3 qui degrade), lot 4 (rang unique et
+etat actif) y = 411 (**+14 px** - le lot 4 **recupere 8 px**). Le chiffre final de s15 est **+14 px**,
+non +22. `DEC-0037` de s16 reprend le chiffre faux de ce document ; routee a `camille-po` - voir
+`squad/sprints/s16-deux-defauts-et-dettes-de-len-tete/planning.md`.
+
 ## Couverture programme
 
 **Aucune ligne de `squad/programme/MATRICE-couverture.md` n'est ouverte ni fermee par ce sprint, et

@@ -170,6 +170,19 @@ cherche.
 | Predicat `estRemplacant` d'`ADR-0042` toujours sans objet en code | technique | theo-archi (dette actee) | Ouvert depuis s13, capacite non affectee ce sprint |
 | Reserve F11 (ecoute reelle au lecteur d'ecran) | pedagogie / accessibilite | hors de la portee de la squad | Ouvert depuis s13, inchange |
 
+## Correction du 2026-08-19 (trouvee par le relecteur-pedagogique en s16)
+
+Le tableau ci-dessus dit "+13 px mesures sur `b109f98`, une aggravation de 9 px supplementaires
+(+22 px depuis s14) mesuree seulement dans le lot 6 non fusionne" : **le sens du mouvement est
+inversé**. Lu dans `squad/conformite/FICHE-barre-entree-niveau.md`, section "S15-7", tableau
+"Etat du produit / Haut du cabinet" : avant s14 y = 397, s14 y = 410 (**+13 px**, chiffre exact mais
+c'est le solde de s14, pas de `b109f98`), s15 avant le lot 6 (donc sur `b109f98`, premier lot de
+s15) y = 419 (**+22 px** depuis avant s14 - c'est `b109f98` qui degrade, pas le lot 6), s15 avec le
+lot 6 (rang unique et etat actif) y = 411 (**+14 px** - le lot 6 **recupere 8 px**, il n'aggrave
+rien). Le chiffre final, une fois le lot 6 fusionné, est donc **+14 px**, non +22. Je ne
+corrige pas la ligne d'origine, ecrite dans l'incertitude legitime du moment (le lot 6 n'etait pas
+encore fusionne) : je verse ici la lecture correcte de la source, avec sa methode.
+
 ## Ce qui reste a faire pour clore s15
 
 1. **Fusionner le lot 6** (`726e0c4`, Done pedagogique VALIDE de `nadia-prof` sur le rang unique et

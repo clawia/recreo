@@ -163,6 +163,16 @@ ceux de `nadia-prof`, sans reformulation ni synthese qui en attenuerait les rese
 | Predicat `estRemplacant` d'`ADR-0042` toujours sans objet en code | technique | theo-archi (dette actee) | **ouvert depuis s13, non affecte** |
 | Reserve F11 (ecoute reelle au lecteur d'ecran) | pedagogie / accessibilite | hors de la portee de la squad | **ouvert depuis s13, inchange** |
 
+## Correction du 2026-08-19 (trouvee par le relecteur-pedagogique en s16)
+
+La ligne ci-dessus dit "+22 px depuis s14 (etait +13 px au lot 3, aggrave au lot 4)" : **le sens du
+mouvement est inversé**. Lu dans `squad/conformite/FICHE-barre-entree-niveau.md`, section "S15-7",
+tableau "Etat du produit / Haut du cabinet" : avant s14 y = 397, s14 y = 410 (+13 px, solde de s14
+lui-meme, pas du lot 3), lot 3 (`b109f98`) y = 419 (**+22 px** - c'est le lot 3 qui degrade), lot 4
+(rang unique et etat actif) y = 411 (**+14 px** - le lot 4 **recupere 8 px**, il n'aggrave rien).
+Le chiffre final de s15 est donc **+14 px**, non +22. Je ne corrige pas la ligne d'origine : je
+verse ici la lecture correcte de la source, avec sa methode.
+
 ## Le compte de retraits et de retournements de tests sur `theo-archi`
 
 Cinq fois ce sprint et le sprint precedent immediatement lie a lui, la clause 2 d'`ADR-0022` ou son
