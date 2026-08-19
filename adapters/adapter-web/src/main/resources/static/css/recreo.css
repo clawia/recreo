@@ -174,8 +174,23 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    des proprietes comparees a cet etat seul (l'anneau de focus clavier tiers, ADR-0030 point 2, reste
    intact), donc seules les trois couleurs sont redeclarees ici, forme neutre identique aux deux
    autres etats. */
+/* S17-D (nadia-prof, sonde clavier+pointeur reelle, s17) : un ancetre reel rejoint le
+   sujet a l'etat presse - jamais un ajout au sujet lui-meme. Sans lui, ce sujet a :active
+   valait (0,2,0) contre (0,3,0) pour ".btn:first-child:active" /
+   ":not(.btn-check)+.btn:active" : une specificite tierce plus haute l'emportait sur
+   l'ordre de chargement (ADR-0014 point 5 ne joue qu'a specificite egale) - perte mesuree
+   par nadia-prof a 1,64:1 sur le bandeau, et .demarrer perdait son aplat bleu. Ajouter une
+   classe au sujet lui-meme (par exemple ".btn", deja portee par l'element) romprait
+   silencieusement la derivation d'ADR-0046 : "btn" deviendrait une classe connue de la
+   feuille maison, et l'identite de CHAQUE bouton reel en serait changee, pas seulement
+   celle-ci - mesure par un premier essai de ce lot, revert avant ce commit. Un ancetre reel,
+   separe par un combinateur, est invisible a cette derivation (elle ne lit que le dernier
+   compose, sujetDuSelecteur) - la meme forme que "body:has(.filtre-niveau)" plus bas dans
+   ce fichier. Le trou est de la meme famille que celui deja corrige deux fois en s16 sur
+   cette derivation (S17-D route ce troisieme cas a theo-archi) ; le bloc combine plus bas
+   repare l'anneau de focus sous ce meme etat presse, que la meme cause efface. */
 .lien-accueil:hover,
-.lien-accueil:active,
+.entete-contenu .lien-accueil:active,
 .lien-accueil:focus-visible {
     color: var(--recreo-accent-texte);
     background-color: transparent;
@@ -611,16 +626,31 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    a cet etat seul (l'anneau de focus clavier tiers, ADR-0030 point 2, reste intact - aucun de ces
    cinq boutons hors .demarrer ne declare de box-shadow au repos, et .demarrer non plus ne se voit
    rien exiger sur cette propriete puisqu'elle est ecartee). */
+/* S17-D (nadia-prof, sonde clavier+pointeur reelle, s17) : un ancetre reel rejoint le
+   sujet a l'etat presse - jamais un ajout au sujet lui-meme. Sans lui, ce sujet a :active
+   valait (0,2,0) contre (0,3,0) pour ".btn:first-child:active" /
+   ":not(.btn-check)+.btn:active" : une specificite tierce plus haute l'emportait sur
+   l'ordre de chargement (ADR-0014 point 5 ne joue qu'a specificite egale) - perte mesuree
+   par nadia-prof a 1,64:1 sur le bandeau, et .demarrer perdait son aplat bleu. Ajouter une
+   classe au sujet lui-meme (par exemple ".btn", deja portee par l'element) romprait
+   silencieusement la derivation d'ADR-0046 : "btn" deviendrait une classe connue de la
+   feuille maison, et l'identite de CHAQUE bouton reel en serait changee, pas seulement
+   celle-ci - mesure par un premier essai de ce lot, revert avant ce commit. Un ancetre reel,
+   separe par un combinateur, est invisible a cette derivation (elle ne lit que le dernier
+   compose, sujetDuSelecteur) - la meme forme que "body:has(.filtre-niveau)" plus bas dans
+   ce fichier. Le trou est de la meme famille que celui deja corrige deux fois en s16 sur
+   cette derivation (S17-D route ce troisieme cas a theo-archi) ; le bloc combine plus bas
+   repare l'anneau de focus sous ce meme etat presse, que la meme cause efface. */
 .continuer-partie:hover,
 .demarrer:hover,
 .proposition:hover,
 .recommencer:hover,
 .sortie-pleine:hover,
-.continuer-partie:active,
-.demarrer:active,
-.proposition:active,
-.recommencer:active,
-.sortie-pleine:active,
+#jeu .continuer-partie:active,
+#jeu .demarrer:active,
+#jeu .proposition:active,
+#jeu .recommencer:active,
+#jeu .sortie-pleine:active,
 .continuer-partie:focus-visible,
 .demarrer:focus-visible,
 .proposition:focus-visible,
@@ -746,8 +776,23 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    maison ne la redeclare pas ici. Forme neutre du point 4 : les valeurs du repos, inchangees.
    Second amendement ADR-0046 (s16) : :focus-visible rejoint :hover et :active, box-shadow ecartee
    a cet etat seul (aucune ombre ici au repos, l'exclusion ne change donc rien de visible). */
+/* S17-D (nadia-prof, sonde clavier+pointeur reelle, s17) : un ancetre reel rejoint le
+   sujet a l'etat presse - jamais un ajout au sujet lui-meme. Sans lui, ce sujet a :active
+   valait (0,2,0) contre (0,3,0) pour ".btn:first-child:active" /
+   ":not(.btn-check)+.btn:active" : une specificite tierce plus haute l'emportait sur
+   l'ordre de chargement (ADR-0014 point 5 ne joue qu'a specificite egale) - perte mesuree
+   par nadia-prof a 1,64:1 sur le bandeau, et .demarrer perdait son aplat bleu. Ajouter une
+   classe au sujet lui-meme (par exemple ".btn", deja portee par l'element) romprait
+   silencieusement la derivation d'ADR-0046 : "btn" deviendrait une classe connue de la
+   feuille maison, et l'identite de CHAQUE bouton reel en serait changee, pas seulement
+   celle-ci - mesure par un premier essai de ce lot, revert avant ce commit. Un ancetre reel,
+   separe par un combinateur, est invisible a cette derivation (elle ne lit que le dernier
+   compose, sujetDuSelecteur) - la meme forme que "body:has(.filtre-niveau)" plus bas dans
+   ce fichier. Le trou est de la meme famille que celui deja corrige deux fois en s16 sur
+   cette derivation (S17-D route ce troisieme cas a theo-archi) ; le bloc combine plus bas
+   repare l'anneau de focus sous ce meme etat presse, que la meme cause efface. */
 .retour-accueil:hover,
-.retour-accueil:active,
+#jeu .retour-accueil:active,
 .retour-accueil:focus-visible {
     color: var(--recreo-accent);
     background-color: transparent;
@@ -790,8 +835,23 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    Second amendement ADR-0046 (s16) : :focus-visible rejoint :hover et :active - la meme perte de
    contour et de texte se produit au clavier, sur .btn:focus-visible - box-shadow ecartee a cet
    etat seul (aucune ombre ici au repos). */
+/* S17-D (nadia-prof, sonde clavier+pointeur reelle, s17) : un ancetre reel rejoint le
+   sujet a l'etat presse - jamais un ajout au sujet lui-meme. Sans lui, ce sujet a :active
+   valait (0,2,0) contre (0,3,0) pour ".btn:first-child:active" /
+   ":not(.btn-check)+.btn:active" : une specificite tierce plus haute l'emportait sur
+   l'ordre de chargement (ADR-0014 point 5 ne joue qu'a specificite egale) - perte mesuree
+   par nadia-prof a 1,64:1 sur le bandeau, et .demarrer perdait son aplat bleu. Ajouter une
+   classe au sujet lui-meme (par exemple ".btn", deja portee par l'element) romprait
+   silencieusement la derivation d'ADR-0046 : "btn" deviendrait une classe connue de la
+   feuille maison, et l'identite de CHAQUE bouton reel en serait changee, pas seulement
+   celle-ci - mesure par un premier essai de ce lot, revert avant ce commit. Un ancetre reel,
+   separe par un combinateur, est invisible a cette derivation (elle ne lit que le dernier
+   compose, sujetDuSelecteur) - la meme forme que "body:has(.filtre-niveau)" plus bas dans
+   ce fichier. Le trou est de la meme famille que celui deja corrige deux fois en s16 sur
+   cette derivation (S17-D route ce troisieme cas a theo-archi) ; le bloc combine plus bas
+   repare l'anneau de focus sous ce meme etat presse, que la meme cause efface. */
 .chip-niveau:hover,
-.chip-niveau:active,
+.entete-contenu .chip-niveau:active,
 .chip-niveau:focus-visible {
     color: var(--recreo-accent-texte);
     background-color: transparent;
@@ -856,6 +916,32 @@ body:has(.filtre-niveau) .chip-niveau.est-actif:focus-visible {
 .lien-accueil:focus-visible,
 .chip-niveau:focus-visible,
 body:has(.filtre-niveau) .chip-niveau.est-actif:focus-visible {
+    box-shadow: inset 0 0 0 0.1875rem currentColor;
+}
+
+/* S17-D (nadia-prof, sonde clavier+pointeur reelle, s17) : le meme trou de specificite efface
+   aussi l'anneau ci-dessus des qu'un pressable est a la fois focalise au clavier et presse - la
+   feuille vendorisee porte une regle distincte pour cet etat compose,
+   ".btn:first-child:active:focus-visible" / ":not(.btn-check)+.btn:active:focus-visible", qui
+   redeclare "box-shadow" a (0,4,0) via une variable non definie sur nos gabarits (invalide au
+   calcul, donc "none" mesure). Le bloc ci-dessus, a (0,2,0) ou (0,3,0), perdait cette propriete
+   precisement quand l'enfant appuie sur le bouton qu'il vient d'atteindre au clavier - l'endroit
+   ou l'anneau est le plus utile. Meme ancetre reel qu'au bloc precedent (jamais une classe
+   ajoutee au sujet, pour la raison qui y est ecrite) : "#jeu" ou ".entete-contenu" portent deja
+   l'element, et l'identifiant "#jeu" depasse (0,4,0) a lui seul (colonne ID). Deux identites n'en
+   ont pas besoin : ".proposition.deja-essayee" atteint deja (0,4,0) avec ses deux classes propres,
+   et la puce active ("body:has(.filtre-niveau) .chip-niveau.est-actif") depasse deja (0,4,0) par
+   son propre selecteur de type "body" - verifie par le test qui accompagne ce lot, pour ne pas
+   ajouter une regle honoree qui n'apporte rien. */
+#jeu .continuer-partie:active:focus-visible,
+#jeu .demarrer:active:focus-visible,
+#jeu .proposition:active:focus-visible,
+#jeu .recommencer:active:focus-visible,
+#jeu .sortie-pleine:active:focus-visible,
+.proposition.deja-essayee:active:focus-visible,
+#jeu .retour-accueil:active:focus-visible,
+.entete-contenu .lien-accueil:active:focus-visible,
+.entete-contenu .chip-niveau:active:focus-visible {
     box-shadow: inset 0 0 0 0.1875rem currentColor;
 }
 
