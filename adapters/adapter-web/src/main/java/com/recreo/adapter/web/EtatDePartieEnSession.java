@@ -35,6 +35,17 @@ final class EtatDePartieEnSession {
         this.httpSession = requete.getSession();
     }
 
+    /**
+     * ADR-0047 : la duree d'inactivite maximale de cette session HTTP, en secondes, telle que le
+     * conteneur l'applique reellement - jamais une valeur recopiee. Sert a faire mourir le
+     * marqueur navigateur de partie en cours avec la session qu'il signale, jamais avant, jamais
+     * apres. Simple lecture d'une propriete du conteneur, hors du cycle lire-calculer-ecrire des
+     * trois attributs de partie : aucun verrou n'est necessaire ici.
+     */
+    int dureeInactiviteMaximale() {
+        return httpSession.getMaxInactiveInterval();
+    }
+
     EtatDePartie lire() {
         synchronized (verrou()) {
             return instantane();

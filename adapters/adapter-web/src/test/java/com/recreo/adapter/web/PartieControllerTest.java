@@ -561,6 +561,42 @@ class PartieControllerTest {
     }
 
     /**
+     * S16-1, critere 1, ADR-0047 : la duree de validite declaree du marqueur est egale a la duree
+     * d'inactivite maximale de la session HTTP de cette meme requete - lue sur la session jugee,
+     * jamais recopiee dans ce test (assertion contre {@code session.getMaxInactiveInterval()}, pas
+     * contre un nombre litteral).
+     */
+    @Test
+    void laDureeDeVieDuMarqueurEstLueSurLaSessionEtJamaisRecopiee() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        session.setMaxInactiveInterval(1800);
+
+        MvcResult demarrage = mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session))
+                .andReturn();
+        Cookie marqueur = demarrage.getResponse().getCookie("recreo-partie-en-cours");
+
+        assertThat(marqueur.getMaxAge()).isEqualTo(session.getMaxInactiveInterval());
+    }
+
+    /**
+     * S16-1, critere 2, reecrit par theo-archi (ADR-0047) : une requete qui ne porte pas le
+     * marqueur, quel qu'en soit le motif, obtient le catalogue complet sans le message - la
+     * consequence observable de l'invariant de DEC-0036, sur le cas le plus simple : aucun cookie
+     * du tout.
+     */
+    @Test
+    void uneRequeteSansMarqueurObtientLeCatalogueCompletSansLeMessage() throws Exception {
+        String html = mockMvc.perform(get("/")).andReturn().getResponse().getContentAsString();
+        Document page = Jsoup.parse(html);
+
+        assertThat(page.select(".message-reprise")).isEmpty();
+        List<String> titresRendus = page.select("button.demarrer").eachText();
+        List<String> titresDuCatalogue = partieUseCase.jeuxDisponibles().stream()
+                .map(GameDefinition::titre).toList();
+        assertThat(titresRendus).containsExactlyElementsOf(titresDuCatalogue);
+    }
+
+    /**
      * S7-2 : le nombre de colonnes rendues suit exactement le nombre de propositions du contenu,
      * jamais une constante de la mecanique. Trois contenus distincts (deux, trois et quatre
      * propositions) sont confrontes dans le meme test pour qu'aucun des trois ne puisse passer

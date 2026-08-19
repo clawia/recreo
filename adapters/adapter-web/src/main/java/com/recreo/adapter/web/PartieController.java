@@ -212,7 +212,7 @@ public class PartieController {
         BanditManchotSession session = (BanditManchotSession) partie.demarrer(jeuId);
 
         new EtatDePartieEnSession(requete).demarrer(jeuId, jeu.consigne(), session);
-        synchroniserMarqueurDePartie(session, reponse);
+        synchroniserMarqueurDePartie(session, requete, reponse);
 
         return mancheModele(modele, jeuId, jeu.consigne(), session, PAR_UN_GESTE);
     }
@@ -223,7 +223,7 @@ public class PartieController {
         EtatDePartie etat = new EtatDePartieEnSession(requete).jouer(jeuId,
                 actuelle -> (BanditManchotSession) partie.jouer(
                         jeuId, actuelle, new BanditManchotMove(propositionChoisie)));
-        synchroniserMarqueurDePartie(etat.session(), reponse);
+        synchroniserMarqueurDePartie(etat.session(), requete, reponse);
 
         return mancheModele(modele, jeuId, etat.consigne(), etat.session(), PAR_UN_GESTE,
                 propositionChoisie);
@@ -381,17 +381,25 @@ public class PartieController {
         return false;
     }
 
-    private static void synchroniserMarqueurDePartie(BanditManchotSession session, HttpServletResponse reponse) {
+    private static void synchroniserMarqueurDePartie(BanditManchotSession session,
+                                                      HttpServletRequest requete, HttpServletResponse reponse) {
         if (session.status() == SessionStatus.TERMINEE) {
             effacerMarqueurDePartie(reponse);
         } else {
-            marquerPartieEnCours(reponse);
+            marquerPartieEnCours(requete, reponse);
         }
     }
 
-    private static void marquerPartieEnCours(HttpServletResponse reponse) {
+    /**
+     * ADR-0047, DEC-0036 : le marqueur ne doit jamais rester valide au-dela du moment ou la
+     * session aurait de toute facon expire par inactivite. Sa duree de validite est donc lue sur
+     * cette meme session, jamais chiffree ici ni dans une configuration - EtatDePartieEnSession
+     * est le seul type autorise a la lire (ADR-0019).
+     */
+    private static void marquerPartieEnCours(HttpServletRequest requete, HttpServletResponse reponse) {
         Cookie cookie = new Cookie(COOKIE_PARTIE_EN_COURS, "1");
         cookie.setPath("/");
+        cookie.setMaxAge(new EtatDePartieEnSession(requete).dureeInactiviteMaximale());
         reponse.addCookie(cookie);
     }
 
