@@ -40,7 +40,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0034 | L'utilisatrice retablit le lien "Les jeux" dans l'en-tete et unifie l'apparence des puces de niveau : DEC-0033 est remplacee | s15 | 2026-08-17 | Acceptee, amendee (note) le 2026-08-18 (l'hypothese de masquage inchange sur les ecrans de jeu est depassee par l'arbitrage C de DEC-0035) |
 | DEC-0035 | Trois arbitrages de l'utilisatrice du sprint 15 (sortie permanente en tete pendant une manche, rang unique, couleur d'etat actif) n'avaient aucune trace ecrite | s15 | 2026-08-18 | Acceptee |
 | DEC-0036 | Le message de partie interrompue est borne a une interruption plausible, jamais a un cookie qui a survecu a l'expiration de sa session | s16 | 2026-08-19 | Acceptee |
-| DEC-0037 | Perimetre du sprint 16 : fermeture des dettes de l'en-tete et des deux defauts de l'utilisatrice, zero ouverture de contenu, troisieme sprint de stabilisation consecutif nomme comme tel | s16 | 2026-08-19 | Proposee |
+| DEC-0037 | Perimetre du sprint 16 : fermeture des dettes de l'en-tete et des deux defauts de l'utilisatrice, zero ouverture de contenu, troisieme sprint de stabilisation consecutif nomme comme tel | s16 | 2026-08-19 | Proposee, note du 2026-08-19 (s16, chiffre de R-BARRE-1 corrige a +14 px au lieu de +22, arbitrage inchange) |
 
 Amendement (pas une nouvelle reference) : `DEC-0023` a ete amendee le 2026-08-12, sur son point 6
 (disparition de l'ecran intermediaire), laisse ouvert et route a `nadia-prof` pour arbitrage
