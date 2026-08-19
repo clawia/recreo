@@ -219,3 +219,20 @@ cree aucune urgence nouvelle a ouvrir la story candidate ce sprint - c'en retire
 puisque le seul fait nouveau va dans le sens inverse d'une degradation. La decision de ne pas
 ouvrir `R-BARRE-1` en s16 reste donc telle quelle, sur son motif de perimetre, corrigee sur son
 seul chiffre.
+
+## Note du 2026-08-19 - un couplage entre une condition pedagogique et la composition du catalogue, nomme et non traite
+
+En constatant `S15-8` aux quatre positions pour clore `S16-3`/`S16-4`, `nadia-prof` observe que la
+quatrieme position de proposition n'existe aujourd'hui que par un seul paquet du catalogue - "Le
+bon verbe", le seul a servir quatre propositions plutot que trois
+(`squad/conformite/FICHE-barre-entree-niveau.md`, 2026-08-19). Si ce paquet quittait le catalogue,
+pour quelque motif que ce soit, la condition `S15-8` redeviendrait non mesurable a la quatrieme
+position, et rien dans le depot ne le signalerait : aucun garde-fou ne lie aujourd'hui la
+composition du catalogue a la couverture de cette condition.
+
+Je nomme ce fait ici plutot que d'ouvrir une story : ce n'est pas un besoin d'enfant a formuler
+aujourd'hui, et retirer "Le bon verbe" n'est a l'ordre du jour d'aucun sprint. Mais je pose un
+declencheur explicite pour qu'il ne se perde pas en silence, exactement le mode de defaillance que
+ce couplage rend possible : **le jour ou une decision produit propose de retirer du catalogue le
+seul paquet qui sert quatre propositions, cette decision doit citer ce couplage et statuer sur la
+mesurabilite de `S15-8` avant d'etre acceptee.** Je verifierai ce point moi-meme a cette occasion.
