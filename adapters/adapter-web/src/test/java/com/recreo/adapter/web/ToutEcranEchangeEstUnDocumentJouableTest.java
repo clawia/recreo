@@ -4,6 +4,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Attribute;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.junit.jupiter.api.Test;
 import com.recreo.domain.mechanic.SessionStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -396,6 +397,111 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
                             ecran.nom(), ecran.route())
                     .isEmpty();
         }
+    }
+
+    /**
+     * ADR-0052 : les ecrans qui montrent l'enonce d'un item sans porter la consigne de leur jeu.
+     *
+     * <p>Un ecran de manche porte deux textes que l'enfant doit lire ensemble : la <b>consigne</b> du
+     * jeu, ecrite une fois dans l'entree de catalogue, et l'<b>enonce</b> de l'item tire. Tant que la
+     * consigne ne disait qu'une generalite ("Combien ca fait ?"), la perdre aurait coute peu. Depuis
+     * ADR-0052 elle peut porter la <b>question elle-meme</b>, la partie invariante que les vingt items
+     * d'un paquet repetaient chacun ; un ecran qui montrerait l'enonce sans elle laisserait alors
+     * l'enfant devant une phrase sans question - "Lea est "contente" de son cadeau." et trois mots,
+     * sans rien qui dise quoi en faire.</p>
+     *
+     * <p>La clause juge le <b>document assemble</b> (ADR-0020), pas le gabarit : ce qui compte est ce
+     * que l'enfant a sous les yeux apres l'echange, et un gabarit correct rendu dans une coquille qui
+     * l'ampute produirait le meme ecran mutile.</p>
+     */
+    static Set<String> enoncesSansConsigne(Document document) {
+        Set<String> defauts = new TreeSet<>();
+        for (Element enonce : document.select(".enonce")) {
+            if (enonce.text().isBlank()) {
+                continue;
+            }
+            boolean consigneLisible = document.select(".consigne").stream()
+                    .anyMatch(consigne -> !consigne.text().isBlank());
+            if (!consigneLisible) {
+                defauts.add(enonce.outerHtml());
+            }
+        }
+        return defauts;
+    }
+
+    /**
+     * <b>ADR-0052, clause 1 : aucun ecran ne montre l'enonce d'un item sans la consigne de son jeu.</b>
+     *
+     * <p>Ce que cette clause interdit reellement : qu'un lot gagne des pixels verticaux en retirant la
+     * consigne de l'ecran de manche. C'est la tentation exacte que le refus de {@code S17-3} installe -
+     * le paquet de synonymes deborde le pli de 63 a 159 px, et la consigne est le seul bloc de texte de
+     * cet ecran qu'aucun garde-fou ne retenait. Depuis ADR-0052 elle peut porter la question ; la
+     * retirer ne rendrait pas l'ecran plus court, elle le rendrait <b>muet</b>.</p>
+     *
+     * <p>Ce qu'elle ne garde pas, et il faut le lire ici : <b>aucune hauteur</b>. Elle ne dit pas que
+     * la consigne tient au-dessus du pli, ni qu'elle est lisible - ADR-0025 et ADR-0028 valent ici
+     * comme ailleurs, et {@code SYN-5} reste sans garde-fou executable (voir ADR-0052).</p>
+     */
+    @Test
+    void aucunEcranNeMontreUnEnonceSansLaConsigneDeSonJeu() throws Exception {
+        List<Ecran> avecEnonce = new ArrayList<>();
+        for (Ecran ecran : ecrans()) {
+            if (!ecran.document().select(".enonce").isEmpty()) {
+                avecEnonce.add(ecran);
+            }
+            assertThat(enoncesSansConsigne(ecran.document()))
+                    .as("ADR-0052 : sur l'ecran \"%s\" (%s), l'enonce d'un item est rendu sans la "
+                            + "consigne de son jeu. La consigne peut porter la question elle-meme "
+                            + "(la clause invariante qu'un paquet ne repete plus item par item) : "
+                            + "sans elle, l'enfant lit une phrase et trois mots, sans rien qui dise "
+                            + "quoi en faire", ecran.nom(), ecran.route())
+                    .isEmpty();
+        }
+
+        assertThat(avecEnonce)
+                .as("ADR-0003 : aucun ecran du corpus ne rend d'enonce, cette clause serait verte sans "
+                        + "rien avoir examine")
+                .isNotEmpty();
+    }
+
+    /**
+     * ADR-0013 obligation 3 : la morsure sur <b>la sortie reelle du serveur</b>, mutee - jamais un
+     * gabarit ecrit de ma main (meme posture que {@link #unEcranDontLEnonceEstVideFaitEchouerLeGardeFou}
+     * ci-dessous). La consigne est retiree du document assemble tel que Thymeleaf vient de le rendre :
+     * c'est la forme exacte qu'aurait un ecran dont un lot aurait supprime le bloc pour gagner des
+     * pixels.
+     */
+    @Test
+    void unEcranDontLaConsigneDisparaitFaitEchouerLeGardeFou() throws Exception {
+        Document manche =
+                assembler(corps(post("/parties/{jeuId}", JEU_ID).session(new MockHttpSession())));
+        assertThat(manche.select(".enonce")).as("l'ecran de jeu porte un enonce").isNotEmpty();
+        Elements consignes = manche.select(".consigne");
+        assertThat(consignes).as("l'ecran de jeu porte une consigne avant mutation").isNotEmpty();
+        consignes.remove();
+
+        assertThat(enoncesSansConsigne(manche))
+                .as("un ecran de manche dont la consigne a disparu doit rendre ce garde-fou rouge")
+                .isNotEmpty();
+    }
+
+    /**
+     * La seconde forme du meme defaut, et celle qu'une suppression franche ne couvre pas : le bloc
+     * reste dans le document, le modele ne le nourrit pas. {@code th:text} rend alors une balise
+     * ouverte-fermee - la meme forme que l'ecran mort d'ADR-0020 - et l'enfant ne lit rien de plus que
+     * si elle avait ete retiree.
+     */
+    @Test
+    void unEcranDontLaConsigneEstVideFaitEchouerLeGardeFou() throws Exception {
+        Document manche =
+                assembler(corps(post("/parties/{jeuId}", JEU_ID).session(new MockHttpSession())));
+        Element consigne = manche.selectFirst(".consigne");
+        assertThat(consigne).as("l'ecran de jeu porte une consigne avant mutation").isNotNull();
+        consigne.text("");
+
+        assertThat(enoncesSansConsigne(manche))
+                .as("une consigne que le modele n'a pas nourrie doit rendre ce garde-fou rouge")
+                .isNotEmpty();
     }
 
     @Test

@@ -1,6 +1,11 @@
 package com.recreo.adapter.web;
 
+import org.jsoup.nodes.Element;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+import java.io.IOException;
+import java.nio.file.Files;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -10,9 +15,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.fail;
 
 /**
  * ADR-0046 : <b>des que la feuille tierce declare un etat interactif sur un selecteur qu'un element
@@ -488,6 +495,318 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
                 String.join(", ", origines), exigence.selecteurMaison(), exigence.etat());
     }
 
+    /** Les pseudo-classes qui prennent la specificite de leur argument le plus specifique. */
+    private static final Set<String> PSEUDOS_TRANSPARENTS = Set.of("is", "not", "has", "matches");
+
+    /** {@code :where()} ne compte jamais, quel que soit son argument. */
+    private static final Set<String> PSEUDOS_SANS_SPECIFICITE = Set.of("where");
+
+    /**
+     * <b>ADR-0046, amendement du 2026-08-19 (s17) : declarer ne suffit pas, il faut l'emporter.</b>
+     *
+     * <p>La specificite d'un selecteur, compactee en un entier comparable
+     * ({@code a * 10000 + b * 100 + c}) : identifiants, puis classes, attributs et pseudo-classes,
+     * puis elements et pseudo-elements. Aucune retenue n'est atteignable en pratique - la feuille
+     * servie ne depasse pas quatre selecteurs simples par compose.</p>
+     *
+     * <p><b>Une construction que cette lecture ne sait pas lire est un echec, jamais un cas ignore</b>
+     * (ADR-0013 obligation 2), et le sens de l'erreur compte ici plus qu'ailleurs : une specificite
+     * maison surevaluee est un <b>faux vert</b>, exactement la famille de defaut que cet amendement
+     * ferme. Refuser ce qu'on ne sait pas lire est la seule direction sure.</p>
+     *
+     * <p>Les pseudo-classes fonctionnelles suivent la specification : {@code :is()}, {@code :not()} et
+     * {@code :has()} prennent la specificite de leur argument le plus specifique et ne comptent pas
+     * pour elles-memes, {@code :where()} vaut zero. Ce n'est pas un raffinement theorique - l'une des
+     * deux formes reelles qui ont produit le defaut mesure par {@code nadia-prof} en depend :
+     * {@code :not(.btn-check)+.btn:active} vaut (0,3,0) par cette regle, et (0,2,0) pour une lecture
+     * qui ignorerait l'argument, c'est-a-dire exactement la valeur qui la ferait passer pour perdante
+     * alors qu'elle gagne.</p>
+     */
+    static int specificite(String selecteur) {
+        int[] compte = new int[3];
+        lireSpecificite(selecteur, compte);
+        return compte[0] * 10000 + compte[1] * 100 + compte[2];
+    }
+
+    private static void lireSpecificite(String selecteur, int[] compte) {
+        int position = 0;
+        while (position < selecteur.length()) {
+            char caractere = selecteur.charAt(position);
+            if (Character.isWhitespace(caractere) || caractere == '>' || caractere == '+'
+                    || caractere == '~' || caractere == ',' || caractere == '*') {
+                position++;
+            } else if (caractere == '#') {
+                position = finDuJeton(selecteur, position + 1);
+                compte[0]++;
+            } else if (caractere == '.') {
+                position = finDuJeton(selecteur, position + 1);
+                compte[1]++;
+            } else if (caractere == '[') {
+                int fin = selecteur.indexOf(']', position);
+                if (fin < 0) {
+                    fail("selecteur illisible pour la specificite (crochet non ferme) : " + selecteur);
+                }
+                position = fin + 1;
+                compte[1]++;
+            } else if (caractere == ':') {
+                position = lirePseudo(selecteur, position, compte);
+            } else if (Character.isLetter(caractere)) {
+                position = finDuJeton(selecteur, position);
+                compte[2]++;
+            } else {
+                fail("caractere illisible pour la specificite (" + caractere + ") dans \"" + selecteur
+                        + "\" : une specificite maison surevaluee serait un faux vert, ce garde-fou "
+                        + "refuse donc ce qu'il ne sait pas lire (ADR-0046, ADR-0013 obligation 2)");
+            }
+        }
+    }
+
+    private static int lirePseudo(String selecteur, int position, int[] compte) {
+        boolean pseudoElement =
+                position + 1 < selecteur.length() && selecteur.charAt(position + 1) == ':';
+        int debut = position + (pseudoElement ? 2 : 1);
+        int fin = finDuJeton(selecteur, debut);
+        String nom = selecteur.substring(debut, fin);
+
+        if (fin >= selecteur.length() || selecteur.charAt(fin) != '(') {
+            if (pseudoElement) {
+                compte[2]++;
+            } else {
+                compte[1]++;
+            }
+            return fin;
+        }
+
+        int fermante = parentheseFermante(selecteur, fin);
+        String argument = selecteur.substring(fin + 1, fermante);
+        if (PSEUDOS_TRANSPARENTS.contains(nom)) {
+            int meilleure = 0;
+            for (String branche : argument.split(",")) {
+                int[] partiel = new int[3];
+                lireSpecificite(branche, partiel);
+                meilleure = Math.max(meilleure, partiel[0] * 10000 + partiel[1] * 100 + partiel[2]);
+            }
+            compte[0] += meilleure / 10000;
+            compte[1] += (meilleure % 10000) / 100;
+            compte[2] += meilleure % 100;
+        } else if (!PSEUDOS_SANS_SPECIFICITE.contains(nom)) {
+            compte[1]++;
+        }
+        return fermante + 1;
+    }
+
+    private static int parentheseFermante(String selecteur, int ouvrante) {
+        int profondeur = 0;
+        for (int position = ouvrante; position < selecteur.length(); position++) {
+            char caractere = selecteur.charAt(position);
+            if (caractere == '(') {
+                profondeur++;
+            } else if (caractere == ')') {
+                profondeur--;
+                if (profondeur == 0) {
+                    return position;
+                }
+            }
+        }
+        fail("parenthese non fermee dans le selecteur \"" + selecteur + "\"");
+        return selecteur.length();
+    }
+
+    private static int finDuJeton(String selecteur, int position) {
+        int fin = position;
+        while (fin < selecteur.length()
+                && (Character.isLetterOrDigit(selecteur.charAt(fin))
+                        || selecteur.charAt(fin) == '-' || selecteur.charAt(fin) == '_')) {
+            fin++;
+        }
+        if (fin == position) {
+            fail("jeton vide dans le selecteur \"" + selecteur + "\"");
+        }
+        return fin;
+    }
+
+    /**
+     * <b>Cette regle tierce peut-elle reellement s'appliquer a ce bouton rendu ?</b> Evaluee sur
+     * l'element du gabarit lui-meme, avec le jeu de classes de <b>cet etat rendu</b> - donc prefixes
+     * compris : ancetres, freres, pseudo-classes structurelles.
+     *
+     * <p><b>Pourquoi ce predicat n'existe que pour la clause de specificite, et pourquoi il ne doit
+     * surtout pas entrer dans la clause de declaration.</b> La clause de declaration rattache une
+     * regle tierce a un bouton par son seul <b>compose du meme element</b> ({@link #sujetApplicable}),
+     * donc elle sur-collecte : elle exige une declaration maison a cause de regles qui ne peuvent
+     * jamais s'appliquer, comme {@code .btn-check+.btn:hover} - aucun gabarit de ce depot ne porte
+     * {@code btn-check}. Cette sur-collecte est <b>sans danger la-bas</b> : elle demande une
+     * declaration de plus, et une declaration de plus ne casse rien. Elle serait <b>fausse ici</b> :
+     * exiger que la feuille maison batte en specificite une regle qui ne concourt jamais obligerait a
+     * prefixer huit selecteurs par un identifiant pour un adversaire imaginaire. Mesure du
+     * 2026-08-19 : sans ce predicat, cette clause rend <b>14 motifs sur 8 pressables</b>, tous
+     * imputables a la seule regle {@code .btn-check+.btn:hover}.</p>
+     *
+     * <p>Un selecteur tiers que le moteur de selection ne sait pas evaluer est un <b>echec</b>, jamais
+     * un cas ignore (ADR-0013 obligation 2) : le prendre pour non applicable serait un faux vert.</p>
+     */
+    private static boolean regleTierceSApplique(
+            String selecteurTiers, TailleDesTextesEtBoutonsTest.BoutonRendu bouton) {
+        String sansEtats = selecteurTiers;
+        for (String etat : TOUS_LES_ETATS) {
+            sansEtats = sansEtats.replace(etat, "");
+        }
+        sansEtats = sansEtats.strip();
+        if (sansEtats.isEmpty()) {
+            return true;
+        }
+        Element element = bouton.bouton();
+        String classesDuGabarit = element.className();
+        element.attr("class", String.join(" ", bouton.classes()));
+        try {
+            return element.is(sansEtats);
+        } catch (RuntimeException illisible) {
+            fail("selecteur tiers que le moteur de selection ne sait pas evaluer : \"" + selecteurTiers
+                    + "\" (" + illisible.getMessage() + "). Le prendre pour non applicable serait un "
+                    + "faux vert (ADR-0046, ADR-0013 obligation 2)");
+            return false;
+        } finally {
+            element.attr("class", classesDuGabarit);
+        }
+    }
+
+    /** Une regle maison telle qu'elle est ecrite : son selecteur complet et ce qu'elle declare. */
+    private record RegleMaison(String selecteur, Set<String> proprietes) {
+    }
+
+    /**
+     * Les regles maison qui portent un etat interactif, indexees par sujet puis par etat, avec leur
+     * <b>selecteur complet</b>. {@link #etatsMaisonParSujet} n'en garde que les proprietes : c'est
+     * assez pour dire "cet etat est declare", jamais pour dire "cette declaration l'emporte".
+     */
+    private static Map<String, Map<String, List<RegleMaison>>> reglesMaisonParSujetEtEtat(
+            Map<String, String> maison) {
+        Map<String, Map<String, List<RegleMaison>>> regles = new LinkedHashMap<>();
+        for (Map.Entry<String, String> regle : maison.entrySet()) {
+            EtatsDuCompose lecture =
+                    etatsDuCompose(TailleDesTextesEtBoutonsTest.sujetDuSelecteur(regle.getKey()));
+            if (lecture.etats().isEmpty()) {
+                continue;
+            }
+            String sujet = composeDuMemeElement(regle.getKey());
+            Set<String> proprietes = new LinkedHashSet<>(proprietesRendues(regle.getValue()));
+            for (String etat : lecture.etats()) {
+                regles.computeIfAbsent(sujet, inconnu -> new LinkedHashMap<>())
+                        .computeIfAbsent(etat, inconnu -> new ArrayList<>())
+                        .add(new RegleMaison(regle.getKey(), proprietes));
+            }
+        }
+        return regles;
+    }
+
+    /**
+     * <b>ADR-0046, amendement 3 : chaque etat declare par la maison l'emporte sur la regle tierce qui
+     * l'imposait.</b>
+     *
+     * <p>Defaut mesure par {@code nadia-prof} sous un appui reel (s17) : deux pressables tombent de
+     * 9,25:1 a <b>1,64:1</b> et {@code .demarrer} perd son aplat, alors que la feuille maison
+     * declarait bien l'etat. Cause : {@code .btn:first-child:active} et
+     * {@code :not(.btn-check)+.btn:active} valent (0,3,0) contre (0,2,0) pour le sujet maison - la
+     * declaration existait, elle ne gagnait pas. {@code ADR-0014} point 5 ne joue qu'a specificite
+     * <b>egale</b>, c'est ecrit dans cet ADR depuis son premier amendement, et cette derivation ne le
+     * verifiait pas. Troisieme trou de la meme famille sur la meme derivation, apres les deux de s16.
+     *
+     * <p>La comparaison accepte l'<b>egalite</b> : la feuille maison est chargee apres la feuille
+     * tierce (ADR-0014), elle gagne donc les egalites. Seule une specificite strictement inferieure
+     * est un defaut.</p>
+     *
+     * <p><b>Ce qu'elle ne voit pas, et qu'elle n'introduit pas</b> : comme la clause de declaration
+     * qu'elle complete, elle rattache une regle maison a un sujet par {@link #composeDuMemeElement},
+     * donc <b>sans verifier qu'un prefixe d'ancetre s'applique reellement</b> au bouton rendu. Une
+     * regle {@code #jeu .demarrer:active} serait creditee a {@code .demarrer} meme si ce bouton
+     * vivait hors de {@code #jeu}. L'angle mort est herite, pas ajoute - mais il devient plus expose
+     * depuis que l'ajout d'un ancetre est la sortie recommandee pour gagner de la specificite
+     * (S17-D). Dette nommee dans l'amendement d'ADR-0046, avec son declencheur et le motif de ne pas
+     * la fermer ici : un ancetre peut etre rendu sous condition par le gabarit, et le fermer de
+     * travers produirait des rouges sur des ancetres conditionnels parfaitement legitimes.</p>
+     */
+    static void verifierQueLaMaisonLEmporteSurChaqueRegleTierce(Path racineMaison, Path racineTiers) {
+        Map<String, String> maison = TailleDesTextesEtBoutonsTest.blocsMaison(racineMaison);
+        Map<String, Map<String, List<RegleMaison>>> reglesMaison = reglesMaisonParSujetEtEtat(maison);
+        Map<Exigence, Set<String>> toutesLesExigences = exigences(racineMaison, racineTiers, false);
+        Set<String> aEvaluer = toutesLesExigences.values().stream()
+                .flatMap(Set::stream)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        Map<String, Set<String>> applicablesParIdentite =
+                reglesTiercesApplicablesParIdentite(racineMaison, aEvaluer);
+        List<String> motifs = new ArrayList<>();
+        List<String> comparees = new ArrayList<>();
+
+        toutesLesExigences.forEach((exigence, origines) -> {
+            List<RegleMaison> declarantes =
+                    reglesMaison.getOrDefault(exigence.selecteurMaison(), Map.of())
+                            .getOrDefault(exigence.etat(), List.of()).stream()
+                            .filter(regle -> regle.proprietes().stream()
+                                    .anyMatch(declaree -> touche(exigence.propriete(), declaree)))
+                            .toList();
+            Set<String> concurrentes = origines.stream()
+                    .filter(origine -> applicablesParIdentite
+                            .getOrDefault(exigence.selecteurMaison(), Set.of()).contains(origine))
+                    .collect(Collectors.toCollection(LinkedHashSet::new));
+            if (declarantes.isEmpty() || concurrentes.isEmpty()) {
+                return;
+            }
+            int maisonLaPlusForte = declarantes.stream()
+                    .mapToInt(regle -> specificite(regle.selecteur())).max().orElseThrow();
+            String tiersLePlusFort = concurrentes.stream()
+                    .max((gauche, droite) -> Integer.compare(specificite(gauche), specificite(droite)))
+                    .orElseThrow();
+            comparees.add(exigence.selecteurMaison() + " " + exigence.etat() + " "
+                    + exigence.propriete());
+            if (maisonLaPlusForte < specificite(tiersLePlusFort)) {
+                motifs.add(String.format(
+                        "%s declare %s a l'etat %s, mais la regle tierce \"%s\" l'emporte par "
+                                + "specificite (%d contre %d, en (a,b,c) compactee) : l'enfant voit la "
+                                + "peinture de la bibliotheque, pas celle de la feuille maison. "
+                                + "Declarer ne suffit pas - ADR-0014 point 5 ne joue qu'a specificite "
+                                + "egale. La sortie est un ancetre reel separe par un combinateur, "
+                                + "jamais une classe de plus sur le sujet, qui changerait l'identite "
+                                + "calculee de chaque bouton du produit (ADR-0046, amendement du "
+                                + "2026-08-19)",
+                        exigence.selecteurMaison(), exigence.propriete(), exigence.etat(),
+                        tiersLePlusFort, maisonLaPlusForte, specificite(tiersLePlusFort)));
+            }
+        });
+
+        assertThat(comparees)
+                .as("ADR-0003 : aucune exigence declaree n'a ete comparee sous %s ; cette clause "
+                        + "serait verte sans avoir rien examine", racineMaison)
+                .isNotEmpty();
+        assertThat(motifs)
+                .as("ADR-0046 : un etat declare par la feuille maison doit l'emporter sur la regle "
+                        + "tierce qui l'imposait")
+                .isEmpty();
+    }
+
+    /**
+     * Pour chaque identite de bouton rendu, les selecteurs tiers qui s'y appliquent <b>reellement</b>
+     * ({@link #regleTierceSApplique}). Meme population de boutons et meme identite que
+     * {@link #exigences} : les deux derivations ne peuvent pas diverger, elles partent des memes
+     * {@code etatsRendus} et du meme {@code identiteDuBouton}.
+     */
+    private static Map<String, Set<String>> reglesTiercesApplicablesParIdentite(
+            Path racineMaison, Set<String> aEvaluer) {
+        Map<String, String> maison = TailleDesTextesEtBoutonsTest.blocsMaison(racineMaison);
+        Set<String> classesConnues = classesConnuesDeLaMaison(maison);
+        Map<String, Set<String>> applicables = new LinkedHashMap<>();
+        for (TailleDesTextesEtBoutonsTest.BoutonRendu bouton
+                : TailleDesTextesEtBoutonsTest.etatsRendus(racineMaison)) {
+            String identite = identiteDuBouton(classesConnues, bouton);
+            for (String selecteurTiers : aEvaluer) {
+                if (regleTierceSApplique(selecteurTiers, bouton)) {
+                    applicables.computeIfAbsent(identite, inconnue -> new LinkedHashSet<>())
+                            .add(selecteurTiers);
+                }
+            }
+        }
+        return applicables;
+    }
+
     /**
      * La clause. Elle rassemble <b>toutes</b> les exigences manquantes avant d'echouer, jamais la
      * premiere rencontree : la lecon du point 7.a d'ADR-0033, ou une boucle qui echouait au premier
@@ -530,6 +849,94 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
     @Test
     void laDetteDEtatsDeLaProductionVautExactementSonPlafond() {
         verifierQueLaDetteDEtatsNeDepasseJamaisSonPlafond(RACINE_PRODUCTION);
+    }
+
+    /** ADR-0046, amendement 3 : la clause de specificite sur la production servie. */
+    @Test
+    void chaqueEtatDeclareParLaMaisonLEmporteSurLaRegleTierceQuiLImpose() {
+        verifierQueLaMaisonLEmporteSurChaqueRegleTierce(RACINE_PRODUCTION, RACINE_PRODUCTION);
+    }
+
+    /**
+     * ADR-0013 obligation 3 : la morsure sur <b>la feuille servie reelle, remise dans sa forme
+     * d'avant S17-D</b> - jamais une fixture ecrite de ma main. La mutation retire l'ancetre
+     * {@code #jeu} que {@code marc-dev} a ajoute pour gagner la specificite : le selecteur redevient
+     * {@code .demarrer:active} (0,2,0) face a {@code .btn:first-child:active} (0,3,0), c'est-a-dire
+     * exactement l'etat de la feuille au moment ou {@code nadia-prof} a mesure 1,64:1 sous l'appui.
+     *
+     * <p><b>Et c'est la mesure qui compte le plus dans ce lot</b> : sur cette meme feuille mutee,
+     * {@link #verifierQueChaqueEtatTiersEstRedeclareParLaMaison} reste <b>vert</b>. La declaration est
+     * la, elle ne gagne pas ; sans cette clause neuve, la CI ne voit rien.</p>
+     */
+    @Test
+    void laFeuilleRemiseDansSaFormeDAvantS17DFaitEchouerLaClauseDeSpecificite(@TempDir Path racine)
+            throws IOException {
+        copierArbreReel(RACINE_PRODUCTION, racine);
+        Path feuille = racine.resolve("static/css/recreo.css");
+        String reelle = Files.readString(feuille).replace("\r\n", "\n");
+        String avant = "#jeu .demarrer:active";
+        String apres = ".demarrer:active";
+        assertThat(reelle)
+                .as("la mutation doit porter sur une regle que la feuille servie porte vraiment - "
+                        + "l'ancetre ajoute par S17-D")
+                .contains(avant);
+        Files.writeString(feuille, reelle.replace(avant, apres));
+
+        verifierQueChaqueEtatTiersEstRedeclareParLaMaison(racine);
+
+        assertThatThrownBy(() -> verifierQueLaMaisonLEmporteSurChaqueRegleTierce(racine, RACINE_PRODUCTION))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining(".demarrer")
+                .hasMessageContaining("l'emporte par specificite");
+    }
+
+    /**
+     * La lecture de specificite, eprouvee sur les <b>formes reelles des deux feuilles</b> et non sur
+     * des selecteurs inventes pour elle. Les deux premieres sont les regles tierces que
+     * {@code nadia-prof} a mesurees comme gagnantes ; les deux suivantes sont des regles maison
+     * servies. Sans le traitement de {@code :not()} comme transparent, la deuxieme vaudrait (0,2,0) -
+     * elle passerait pour perdante alors qu'elle gagne, et la clause serait verte sur le defaut meme
+     * qu'elle ferme.
+     */
+    @Test
+    void laSpecificiteEstLueSurLesFormesReellesDesDeuxFeuilles() {
+        assertThat(specificite(".btn:first-child:active")).isEqualTo(300);
+        assertThat(specificite(":not(.btn-check)+.btn:active")).isEqualTo(300);
+        assertThat(specificite(".demarrer:active")).isEqualTo(200);
+        assertThat(specificite("#jeu .demarrer:active")).isEqualTo(10200);
+        assertThat(specificite("body:has(.filtre-niveau) .chip-niveau.est-actif")).isEqualTo(301);
+        assertThat(specificite(":where(.btn) .proposition")).isEqualTo(100);
+        assertThat(specificite("*")).isZero();
+    }
+
+    /**
+     * ADR-0013 obligation 2 : une construction que la lecture ne sait pas lire est un echec. Le sens
+     * de cette clause est le point : refuser plutot que sous-evaluer, parce qu'une specificite maison
+     * surevaluee - ou une specificite tierce sous-evaluee - serait un faux vert.
+     */
+    @Test
+    void unSelecteurIllisiblePourLaSpecificiteFaitEchouerLaLecture() {
+        assertThatThrownBy(() -> specificite(".btn:not(.btn-check"))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("parenthese non fermee");
+        assertThatThrownBy(() -> specificite(".demarrer%actif"))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("caractere illisible");
+    }
+
+    /** Copie l'arbre de ressources servi - gabarits et feuilles - pour le muter sans le toucher. */
+    private static void copierArbreReel(Path source, Path cible) throws IOException {
+        try (Stream<Path> arborescence = Files.walk(source)) {
+            for (Path chemin : arborescence.toList()) {
+                Path destination = cible.resolve(source.relativize(chemin).toString());
+                if (Files.isDirectory(chemin)) {
+                    Files.createDirectories(destination);
+                } else {
+                    Files.createDirectories(destination.getParent());
+                    Files.copy(chemin, destination);
+                }
+            }
+        }
     }
 
     /** Un garde-fou qui ne mesure rien ne prouve rien : la population doit etre non vide. */
