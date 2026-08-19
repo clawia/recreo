@@ -5,6 +5,17 @@
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cm1-homophones.yaml`,
   24 items depuis s06 (22 a l'audit de s05, 10 a celui de s04), `type: question`, chacun porteur
   d'un indice. Matiere premiere issue de `contenu-repris/`.
+- **Statut global au 2026-08-19 (s17), sur le paquet raccourci de `S17-4`** : **VALIDE SOUS
+  RESERVE** sur les trois conditions de mon ressort. **`BPM-3` tenue** (24 items avant et apres,
+  aucun supprime, toujours deux propositions ; enonce le plus long 97 -> 56 caracteres, mediane
+  39 -> 29,5, onze items reecrits). **`BPM-2` tenue** : les onze items raccourcis gardent la
+  structure qui commande leur reponse, aucune ambiguite neuve - **et j'ai failli enregistrer un
+  defaut qui n'en etait pas un** sur le couple `ces/ses`, verifie puis retire avant de l'ecrire.
+  **`BPM-4` : la relecture item par item est faite**, les 24 reponses et les 24 indices sont exacts.
+  **Reserve** : **3 indices sur 24 nomment encore la reponse** (items 3 `et`, 10 `ou`, 21 `peu`), la
+  ou ils etaient **24 sur 24** avant ce lot - la forme negative deja employee aux items 2 et 9 les
+  ramenerait a zero. **Ce verdict est une moitie de la condition de retour, jamais la condition
+  entiere** : `BPM-1` n'est pas produite, je ne la simule pas, et l'entree de catalogue reste dehors.
 - **Statut global** : **VALIDE** (Done pedagogique accorde le 2026-08-06, reconduit le 2026-08-07,
   **verdict VALIDE sans reserve bloquante le 2026-08-10**). C'est le premier contenu de CM1 du
   produit.
@@ -75,6 +86,131 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
+### Verdict du 2026-08-19 (s17) sur S17-4, BPM-2 / BPM-3 / BPM-4 - VALIDE SOUS RESERVE, et ce n'est que la moitie de la condition de retour
+
+> **Ce que cette section fait.** Elle rend les trois jugements de contenu que `DEC-0024` et mon
+> arbitrage prealable du 2026-08-19 me reservent sur le paquet raccourci - **`BPM-2`**, **`BPM-3`**,
+> **`BPM-4`** - sur l'increment `ed7eb52` (contenu de `lea-dev`, `96e6b23` et `d21c952`). Elle
+> n'efface aucun verdict anterieur.
+>
+> **Ce qu'elle ne fait pas, et il faut le lire avant le verdict.** **`BPM-1` n'est pas produite, et je
+> ne la simule pas.** `DEC-0039` en a transfere la production a l'utilisatrice sans amender la
+> condition. `camille-po` a tranche que **l'entree de catalogue reste dehors** jusqu'a ce que `BPM-1`
+> existe **et** qu'un Done pedagogique complet soit prononce ; `lea-dev` a defait l'entree qu'elle
+> avait restituee. **Ce verdict-ci est donc une moitie de la condition de retour, jamais la condition
+> entiere**, et il ne rend ce jeu jouable par aucun enfant aujourd'hui.
+>
+> - **Verdict** : **VALIDE SOUS RESERVE**, sur les trois conditions de mon ressort.
+> - **Audit joue** : **non, et ce n'est pas un choix** - le jeu n'a pas d'entree au catalogue, comme
+>   depuis `DEC-0024`. Jugement de contenu, sur le fichier servi, item par item. C'est exactement le
+>   perimetre que `DEC-0024` et le planning m'ont reserve ce sprint.
+
+#### 1. `BPM-3` - TENUE, verifiee par comptage et non par la note de commit
+
+24 items avant, **24 items apres**. Aucun supprime : le diff est fait de substitutions, pas de
+coupes. **Chaque item porte toujours deux propositions** - ma reserve 5 de s04 (une chance sur deux
+au hasard) n'est ni levee ni **aggravee**, ce que j'avais exige nommement.
+
+**Le raccourcissement est reel et je le mesure** : enonce le plus long **97 -> 56 caracteres**,
+mediane **39 -> 29,5**, **onze items** reecrits. Le travail demande etait *"une reecriture, pas une
+coupe"* ; c'en est une.
+
+#### 2. `BPM-2` - TENUE, et j'ai failli enregistrer un defaut qui n'en est pas un
+
+**Ma verification, celle que j'avais ecrite** : lire les 24 phrases raccourcies et essayer la mauvaise
+proposition dans chacune ; aucune ne doit passer. **Je l'ai faite sur les 24, et d'abord sur les onze
+qui ont change.** Sur les onze, la structure qui commande la reponse survit au raccourcissement :
+le *"ne... plus"* de l'item 24, le participe contre le present de l'item 14, le nom apres le trou des
+items 12 et 15, la conjonction de l'item 19. **Aucune ambiguite neuve.**
+
+**Et voici ce que j'ai failli ecrire.** J'ai d'abord classe **deux items en echec** - le couple
+`ces/ses`, *"Regarde ___ oiseaux la-bas !"* et *"Lea range son cahier et ___ crayons."* - au motif que
+les deux propositions y sont grammaticalement bien formees. **Je me suis arretee avant de l'enregistrer
+et j'ai refait le raisonnement, et il est faux.** Dans la premiere phrase, `ses` exigerait un
+possesseur que la phrase ne donne pas, et `la-bas` fournit le geste que le demonstratif demande ; dans
+la seconde, `ces` exigerait un geste absent, et `son cahier` fournit le possesseur. **Chaque phrase
+exclut bien une des deux propositions**, par ce qu'elle contient et par ce qu'elle ne contient pas.
+Les deux items sont determinables, et ma verification de s05 - que je citais de memoire dans mon
+arbitrage - **tient**.
+
+**Ce que je note quand meme, et qui est une observation, pas une reserve** : ces deux items sont les
+seuls du paquet ou l'exclusion passe par la **necessite du contexte** et non par l'**impossibilite
+grammaticale**. Ce sont les deux plus exigeants du paquet pour un CM1. Ils sont bien construits - ils
+se repondent l'un l'autre - et leurs deux indices disent exactement la regle. Je les laisse.
+
+#### 3. `BPM-4` - la relecture item par item est faite : VALIDE SOUS RESERVE
+
+**Exactitude** : les **24 bonnes reponses sont justes**, verifiees une a une en relisant la phrase
+completee. Les **24 indices sont exacts** : aucun ne dit quelque chose de faux sur la langue.
+
+**Le progres, et il est considerable, sur le point qui a fonde ma reserve A du 2026-08-12** :
+**24 indices sur 24 nommaient la reponse avant ce lot ; ils sont 3 sur 24 apres.** Compte fait par moi,
+jeton par jeton, sur le fichier servi et sur son etat d'avant (`96e6b23^`). La forme retenue - donner
+la **manipulation** et s'arreter avant la conclusion - est celle que je demandais, et *"Remplace par
+'avait' : 'Il avait mange une pomme' fonctionne."* est exactement l'indice que j'avais decrit comme
+complet sans ses quatre derniers mots.
+
+#### 4. La reserve, nommee et actionnable
+
+**Trois indices sur vingt-quatre nomment encore la bonne reponse**, et je donne les trois :
+
+| Item | Reponse | Indice livre | Ce qui la nomme |
+|---|---|---|---|
+| 3 | `et` | *"Remplace par 'et puis' : 'Papa et puis maman font la cuisine' fonctionne."* | `et` y figure deux fois |
+| 10 | `ou` | *"Remplace par 'ou bien' : 'Tu veux du the ou bien du cafe ?' fonctionne."* | `ou` y figure deux fois |
+| 21 | `peu` | *"Remplace par 'un peu' : 'il reste un peu de pain' fonctionne."* | `peu` y figure deux fois |
+
+**Ce n'est pas de la negligence, et je le dis parce que le motif compte pour la reparation.** Sur ces
+trois couples, le mot-test classique **contient** la reponse : on teste `et` par *"et puis"*, `ou` par
+*"ou bien"*, `peu` par *"un peu"*. La forme positive ne peut pas ne pas nommer la reponse.
+
+**La reparation existe deja dans ce meme fichier**, et c'est pourquoi cette reserve est actionnable
+sans que j'aie a dessiner quoi que ce soit : **la forme negative**, employee aux items 2 et 9.
+*"Remplace par 'avait' : 'Je vais avait l'ecole' ne fonctionne pas."* ne nomme pas `a`. Le meme geste
+sur les trois items ci-dessus tomberait a **0 sur 24**.
+
+**Pourquoi une reserve et non un refus.** L'indice n'apparait qu'apres un echec ; un indice qui nomme
+la reponse transforme une aide en revelation, ce que `M5` refuse - c'est reel et c'est pourquoi je
+l'ecris. Mais **21 sur 24 sont desormais corrects la ou 0 l'etait**, la consequence que j'avais
+assumee (ces jeux n'affichent pas leur indice sur la question courante) devient **levable pour la
+quasi-totalite du paquet**, et refuser le lot qui produit ce progres serait le contraire de ce qu'il
+faut faire. **Trois items a retoucher ne valent pas un refus ; les laisser sans les nommer, si.**
+
+#### 5. Une observation datee du 2026-08-19, non bloquante, que je ne compte pas contre ce lot
+
+**Item 3, *"Papa ___ maman font la cuisine."*** presuppose un foyer avec un papa et une maman. Ce
+n'est ni blessant ni caricatural - les deux parents y cuisinent ensemble - mais c'est un contexte que
+tous les enfants n'ont pas, et c'est la seule phrase du paquet dans ce cas.
+
+**Je la note comme une observation et pas comme une reserve, pour une raison de methode qui
+m'engage** : **cet item n'a pas ete raccourci**. `BPM-4` me fait rejuger *"chaque item raccourci"* ;
+celui-ci ne l'est pas, il est dans le paquet depuis s04 et je l'ai valide deux fois. **Ouvrir une
+reserve sur du contenu ancien a l'occasion d'un lot qui n'y touche pas, ce serait deplacer mes
+poteaux.** Je l'ecris, datee, pour que `camille-po` en fasse ce qu'elle veut le jour ou ce paquet
+sera rouvert - pas pour la mettre au passif de ce sprint.
+
+#### 6. Ce que ce verdict ne fait pas
+
+- **Il ne fait pas revenir le jeu au catalogue** et ne prejuge pas de `BPM-1`. La condition de retour
+  de `DEC-0024` reste entiere : `BPM-1` **et** un Done pedagogique complet. **Je n'ai la moitie que
+  d'une des deux.**
+- **Il ne leve pas `M4`** sur ce jeu, qui en est le pire cas du catalogue, ni ma **reserve C** (deux
+  propositions ne se reessaient pas), ni ma **reserve 5 de s04**.
+- **Il ne rouvre aucune condition tenue** et ne durcit aucune des quatre `BPM`.
+- **Il ne dit rien de la forme.** Le raccourcissement change ce que l'enfant lit ; **ce qu'il voit**
+  reste a mesurer, et cette mesure porte un nom, `BPM-1`, et elle n'est pas de moi ce sprint.
+
+#### 7. Ce dont je reste seule garde
+
+**Aucun garde-fou de la CI ne compte les indices qui nomment leur reponse.** Le comptage des sections
+3 et 4 est de moi, a la main, un jour donne, avec une methode que je viens de corriger - la note
+datee du meme jour dans `FICHE-bandit-manchot-additions-cp.md` dit pourquoi mon comptage precedent
+rendait 22 au lieu de 24. **Rien n'empeche le vingt-cinquieme item, ecrit plus tard, de renommer sa
+reponse sans que personne ne le voie.** Et `yanis-qa` a etabli ce sprint que
+`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` **ne voit rien de ce paquet non plus** -
+ses propositions ne sont pas numeriques : sur `cm1-homophones` comme sur `cm1-synonymes`, la propriete
+*"on ne gagne pas sans lire"* n'est gardee par rien d'automatique.
+
 ### Note d'audit - second verdict du 2026-08-13 : ce jeu n'a pas davantage ete joue
 
 - **Aucun verdict neuf, pour la meme raison.** "Le bon petit mot" reste retire du catalogue par
@@ -91,6 +227,22 @@
   - **M21 lui est applicable telle quelle** : ses 22 indices sur 24 qui nomment la reponse pourraient
     etre neutralises par la meme cle de paquet, sans une ligne de code neuve. Ce serait un
     contournement, pas la reparation - la reparation reste de couper la fin de ces 22 phrases.
+> **Note datee du 2026-08-19 (s17), `nadia-prof` - le chiffre "22 indices sur 24" ecrit deux fois
+> ci-dessus est faux : c'est 24 sur 24.** Les deux phrases restent ecrites telles que je les ai
+> ecrites ; cette note dit ce qu'elles ont de faux.
+>
+> **Cause** : j'ai compte la bonne reponse dans l'indice **sensiblement a la casse**, et les deux
+> items dont la reponse porte une majuscule de debut de phrase - `On` et `Ou` - ont un indice qui la
+> nomme en minuscules. Recompte par moi ce jour, jeton par jeton, sur le fichier d'avant `S17-4`
+> (`96e6b23^`) : **22 sur 24 a la casse pres, 24 sur 24 sans la casse**. La note longue, avec ce que
+> j'en tire sur ma facon de compter, est dans `FICHE-bandit-manchot-additions-cp.md`, au tableau du
+> 2026-08-12.
+>
+> **Consequence sur le raisonnement : aucune.** M2 etait enfreinte par la quasi-totalite du paquet,
+> elle l'etait par sa totalite. La reparation nommee - couper la fin de la phrase - vaut pour 24
+> items et non 22.
+
+
 
 ### Note d'audit - ce jeu n'a pas ete joue au chantier du bandit manchot, du 2026-08-13
 
@@ -106,7 +258,7 @@
     catalogue. Le chantier livre place le message **sous** le meuble : sur ce jeu il serait plus bas
     encore que les 251 px de deficit mesures aujourd'hui sur "Le bon verbe".
   - **M2 le concerne aussi** : ses **22 indices sur 24** nomment la bonne reponse (reserve A du
-    2026-08-12, non rouverte). Ils sont les plus faciles a corriger du lot - il n'y a que la fin de
+    2026-08-12, non rouverte). *(chiffre corrige le 2026-08-19 : 24 sur 24, note datee ci-dessus)* Ils sont les plus faciles a corriger du lot - il n'y a que la fin de
     la phrase a couper.
   - **Ma reserve C reste ouverte** : un item a deux propositions ne peut pas etre reessaye, se
     tromper une fois y designe la reponse par logique, et le reessai que la mecanique livree apporte
