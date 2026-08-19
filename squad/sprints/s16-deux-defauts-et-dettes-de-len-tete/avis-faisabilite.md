@@ -293,9 +293,27 @@ predicat lui-meme, inchange : une dizaine de lignes, l'essentiel du cout etant l
 | S16-4 | 1 - quatre positions cycliques | encodable en declaratif ; le constat sur les quatre positions rendues reste a `nadia-prof`, la story le dit deja |
 | S16-5 | 2 - exemption de "CP"/"CM1" | encodable tel quel, **le mieux ecrit des vingt-et-un** ; une seule addition : l'exemption doit etre comptee par le recensement, sinon elle grandira en silence |
 
-**Aucun critere n'epingle un effectif de catalogue cette fois** - je l'ai cherche, apres l'avoir refuse
-deux fois. Les onze jeux sont cites dans `S16-2` comme un **repere de lecture** dans la phrase du besoin,
-jamais dans un critere d'acceptation. C'est la bonne place, et il vaut de le noter.
+> **Correction du 2026-08-19 : ce paragraphe disait faux, et il disait faux en se felicitant d'avoir
+> verifie - ce qui est pire que de n'avoir rien dit.** Il affirmait qu'aucun critere n'epinglait
+> d'effectif de catalogue et que les onze jeux n'apparaissaient que dans la phrase du besoin. Releve du
+> `relecteur-pedagogique`, verifie par moi sur l'arbre fusionne : `grep -n "onze jeux"
+> docs/backlog/backlog.md` rend quatre occurrences, dont **deux dans les criteres d'acceptation de
+> `S16-2` eux-memes** - lignes 4480 (*"coherente avec les onze jeux desormais affiches"*) et 4483
+> (*"le catalogue complet des onze jeux s'affiche a l'identique"*). Les deux autres, lignes 4165 et
+> 4275, appartiennent a des stories anterieures.
+>
+> **Le verdict que ce paragraphe aurait du rendre**, et c'est le meme que les deux fois precedentes :
+> ces deux criteres sont **a reecrire**, un effectif etant un etat du catalogue et non une propriete. La
+> forme demandee est celle deja employee en s14 - *la liste affichee est exactement ce que
+> `jeuxDisponibles()` rend, sans filtre* - sans aucun nombre ecrit. Ce n'est pas bloquant pour la porte
+> de sortie : le critere est **plus faible** que necessaire, pas faux, et le comportement livre est
+> correct. Il pourrira au douzieme jeu, et il pourrira en restant vert.
+>
+> **Ce que je retire de mon erreur** : j'ai cherche l'effectif dans la phrase du besoin, l'y ai trouve,
+> et j'ai arrete de chercher - puis j'ai ecrit avoir cherche. Un chiffre annonce sans sa methode est
+> sanctionne dans ce depot ; **une verification annoncee sans sa methode devrait l'etre autant**, et
+> celle-ci n'en portait aucune. La commande ci-dessus est la methode qui manquait, et elle tient sur une
+> ligne.
 
 ## 8. Trois sprints sans mouvement de la matrice
 
@@ -315,3 +333,55 @@ decoupage ne pese donc rien dans ce report ; s'il faut un motif, il est ailleurs
   `DEC-0037` la nomme. Ce que le depot peut faire pour la reduire est ecrit en s14, section 7.4 de
   `confirmation-archunit.md`, et n'a pas bouge : rendre la commande de mesure executable par quelqu'un
   qui ne l'a jamais lancee, sans jamais pretendre la rendre independante d'un poste equipe.
+
+## 10. Deux points routes le 2026-08-19, apres la fusion du developpement
+
+### 10.1 La nomenclature des conditions - une seule chose y releve de l'architecture, et elle est mesurable
+
+**La table de correspondance n'est pas de mon ressort** : ces conditions sont nommees par `nadia-prof`,
+dans son fichier, et `sofia-sm` la lui route a juste titre. Je n'ai aucun avis a rendre sur le choix d'un
+prefixe ni sur l'opportunite d'un amendement de process, et je ne m'en donne pas.
+
+**Une seule part est de mon ressort, et le relecteur ne pouvait pas la voir depuis les seuls documents :
+ces identifiants sont porteurs dans le code.** Methode : `grep -rEno` des formes `BARRE-n`, `R-BARRE-n`,
+`PORTE-n`, `S14-n`, `S15-n`, `CONF-n` sur les sources `.java`, `.html`, `.css` et `.js` des cinq modules,
+hors `target/`, sur l'arbre `73ae3b0`. Resultat : **onze fichiers les citent**, dont la **feuille servie**
+(`recreo.css` cite `BARRE-1`, `BARRE-2`, `BARRE-7`, `S14-2`, `S15-3`), sept classes de garde-fou, et un
+**jeu fautif fige** sous `contreexemple/`.
+
+**Consequence, et c'est la seule chose que j'ajoute au dossier** : renommer une condition - ce qui a eu
+lieu, `BARRE-3` devenant `S15-6` - **casse des references portees par du code, et rien ne le detecte**.
+Ce n'est pas un defaut de lisibilite d'un document : c'est une reference qui pointe vers rien dans un
+fichier execute, la meme famille que la reference perimee de `CLAUDE.md` corrigee ce sprint.
+
+**C'est gardable, et le depot a deja le patron exact** : `ConcordanceDesTagsDAgentTest` verifie qu'un
+identifiant cite dans du code ou un document correspond a ce qu'un autre document declare. Une clause de
+la meme forme - *tout identifiant de condition cite dans une source du depot existe dans le document qui
+les nomme* - vit dans `bootstrap`, seul module qui voit tous les autres, et sa population se derive du
+balayage plutot que d'une liste. **Ordre de grandeur : un petit lot.** Je le verse comme candidat de story
+a `sofia-sm`, pas comme une exigence : sans la table que `nadia-prof` doit ecrire, une telle clause
+n'aurait rien contre quoi comparer. **Les deux vont ensemble, dans cet ordre.**
+
+### 10.2 L'angle mort de mon releve - constat accepte, et ce que j'en change
+
+`sofia-sm` observe que mon releve manque les tests dont le sujet est **derive structurellement** (une
+route, un doctype) plutot que nomme par un litteral, et que deux agents ont du retourner des assertions
+qu'il n'aurait pas trouvees. **Le constat est juste et je ne le discute pas.**
+
+**Ce n'est pas un trou non nomme** : les trois fois ou j'ai publie ce releve, j'ai ecrit sous lui ce qu'il
+n'attrape pas - un garde-fou dont la derivation lit une source dont l'element est la derniere instance.
+**Le probleme est que je l'ai nomme et n'en ai rien fait**, trois fois de suite, ce qui est la forme de
+defaut que ce depot sanctionne le plus souvent.
+
+**Ce que je change, et c'est une degradation de statut plutot qu'une regle de plus.** Le releve etait
+presente comme la methode qui derive les impacts d'un changement de visibilite. Il ne l'est pas et ne peut
+pas l'etre : un grep trouve ce qui est **nomme**, et une derivation structurelle ne nomme rien. Il
+redevient donc ce qu'il est - **une aide de pre-vol, jamais un substitut a l'execution de la suite** - et
+l'autorite sur le perimetre reel d'un changement redevient `mvn verify`, qui l'a etablie correctement a
+chaque fois, y compris les deux que `sofia-sm` cite. Un avis qui publie ce releve doit desormais ecrire
+cette phrase a cote, sans quoi il fait passer une aide pour une garantie.
+
+**Ce que je n'ecris pas** : une seconde commande pour couvrir les derivations structurelles. J'y ai pense
+et je l'ecarte - elle enumererait les formes de derivation connues (une route, un doctype, un masquage) et
+manquerait la quatrieme, en donnant l'impression d'avoir ferme le trou. **Deux commandes incompletes
+valent moins qu'une commande dont on dit ce qu'elle ne couvre pas.**

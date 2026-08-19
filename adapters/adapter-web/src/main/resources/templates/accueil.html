@@ -29,10 +29,17 @@
      corrige ici. "Les jeux" est le seul mot de sortie de l'application (ADR-0022 point 3,
      DEC-0027) : il porte aussi la sortie de la fin de partie (sortie-pleine) et le bouton de
      confirmation d'abandon (retour-accueil).
-     ADR-0022 / S6-9 : son libelle est "Les jeux", et il n'est pas visible sur un ecran de jeu - la
-     feuille maison le masque des que la zone de contenu porte le marqueur "ecran-de-jeu". L'element
-     reste permanent dans le document : c'est sa visibilite qui depend de l'etat, jamais sa
-     presence (DEC-0012, S6-1).
+     ADR-0022 / S6-9 : son libelle est "Les jeux". Ce commentaire affirmait jusqu'au 2026-08-19 qu'il
+     n'etait pas visible sur un ecran de jeu, masque des que la zone porte le marqueur "ecran-de-jeu" -
+     c'etait vrai jusqu'a l'arbitrage C de s15, qui a retire cette regle : l'utilisatrice a tranche
+     que la sortie vit dans l'en-tete y compris pendant une partie. Le masquage de ce lien ne depend
+     plus du marqueur d'ecran de jeu mais des deux marqueurs qui nomment un fait de l'ecran -
+     "ecran-exclusif" (tout chemin qu'il ouvre vit a l'interieur de lui) et "ecran-porte-sa-sortie" -
+     et il reste donc visible sur une manche. recreo.css documente ces deux regles a l'endroit ou elles
+     vivent ; seul ce commentaire-ci n'avait pas suivi (releve du relecteur-pedagogique, corrige par
+     theo-archi qui avait ecrit l'arbitrage).
+     Ce qui n'a pas change et vaut toujours : l'element reste permanent dans le document, c'est sa
+     visibilite qui depend de l'etat, jamais sa presence (DEC-0012, S6-1).
      S12-5 : nadia-prof refuse l'ancien aria-label="Menu principal" sur cette zone (motif : un seul
      lien n'est pas un menu, "principal" n'est pas un mot d'enfant de six ans, et l'application n'a
      qu'un seul mot de sortie, deja "Les jeux"). Aucun garde-fou n'exige de libelle non vide sur

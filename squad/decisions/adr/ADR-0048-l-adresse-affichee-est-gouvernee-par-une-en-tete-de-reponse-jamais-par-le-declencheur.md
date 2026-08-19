@@ -1,7 +1,12 @@
 # ADR-0048 - Faire gouverner l'adresse affichee par une en-tete de reponse, pour qu'un declencheur unique garde sa double responsabilite
 
-- **Statut** : **Propose.** Il devient `Accepte` dans le commit du lot de `S16-2`, avec sa regle. Meme
-  motif qu'`ADR-0047` : la regle porte sur une en-tete que la production ne pose pas encore.
+- **Statut** : **Accepte le 2026-08-19**, dans le lot de `S16-2` qui porte sa regle. Il a ete
+  `Propose` du 2026-08-19 au 2026-08-19, le temps que sa regle existe : elle existe, elle est verte
+  et elle est prouvee par mutation. **Le geste d'acceptation est le mien et il avait manque** :
+  `marc-dev` a code la regle et refuse de changer le statut, au motif que trancher une decision
+  d'architecture ne lui appartient pas, meme quand le geste parait mecanique. Il a eu raison, et
+  l'oubli est de moi - c'est moi qui avais ecrit dans cet `ADR` que l'acceptation se ferait dans
+  le commit du lot, en laissant a un autre le soin de la faire.
 - **Date** : 2026-08-19
 - **Auteur** : theo-archi
 - **Sprint** : s16 (avis de faisabilite, avant tout commit de code)
