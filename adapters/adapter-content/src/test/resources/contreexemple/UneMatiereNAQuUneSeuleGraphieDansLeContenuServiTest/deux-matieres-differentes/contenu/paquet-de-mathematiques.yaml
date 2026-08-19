@@ -1,0 +1,14 @@
+# ADR-0003 : jeu fautif, jamais servi a un enfant. Cas qui doit rester vert : deux matieres reellement differentes.
+schema: 1
+id: paquet-de-mathematiques
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CM1"
+  domaine: "Nombres et calcul"
+  competence: "Premiere des deux matieres du cas vert"
+items:
+  - enonce: "2 + 3 = ?"
+    bonneReponse: "5"
+    distracteurs: ["6"]
+    indice: "Compte sur tes doigts."
