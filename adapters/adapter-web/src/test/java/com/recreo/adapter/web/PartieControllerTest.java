@@ -593,18 +593,25 @@ class PartieControllerTest {
      * S16-1, critere 1, ADR-0047 : la duree de validite declaree du marqueur est egale a la duree
      * d'inactivite maximale de la session HTTP de cette meme requete - lue sur la session jugee,
      * jamais recopiee dans ce test (assertion contre {@code session.getMaxInactiveInterval()}, pas
-     * contre un nombre litteral).
+     * contre un nombre litteral). Dette 8.1 (s17) : une seule duree ne refute pas une constante
+     * cablee, qui satisferait l'egalite tout aussi bien - l'epreuve pose donc deux durees
+     * differentes et relit le marqueur sur chacune.
      */
     @Test
     void laDureeDeVieDuMarqueurEstLueSurLaSessionEtJamaisRecopiee() throws Exception {
-        MockHttpSession session = new MockHttpSession();
-        session.setMaxInactiveInterval(1800);
+        MockHttpSession premiereSession = new MockHttpSession();
+        premiereSession.setMaxInactiveInterval(900);
+        MvcResult premierDemarrage =
+                mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(premiereSession)).andReturn();
+        Cookie premierMarqueur = premierDemarrage.getResponse().getCookie("recreo-partie-en-cours");
+        assertThat(premierMarqueur.getMaxAge()).isEqualTo(premiereSession.getMaxInactiveInterval());
 
-        MvcResult demarrage = mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session))
-                .andReturn();
-        Cookie marqueur = demarrage.getResponse().getCookie("recreo-partie-en-cours");
-
-        assertThat(marqueur.getMaxAge()).isEqualTo(session.getMaxInactiveInterval());
+        MockHttpSession secondeSession = new MockHttpSession();
+        secondeSession.setMaxInactiveInterval(1800);
+        MvcResult secondDemarrage =
+                mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(secondeSession)).andReturn();
+        Cookie secondMarqueur = secondDemarrage.getResponse().getCookie("recreo-partie-en-cours");
+        assertThat(secondMarqueur.getMaxAge()).isEqualTo(secondeSession.getMaxInactiveInterval());
     }
 
     /**
