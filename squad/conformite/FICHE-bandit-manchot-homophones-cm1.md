@@ -86,6 +86,26 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
 
+### Note datee du 2026-08-19 (s17) - ma reserve sur les trois indices est FERMEE
+
+**Fait, recompte par moi sur le fichier servi** (`round-two` a `693fdcc`), jeton par jeton, avec la
+methode corrigee - insensible a la casse, celle dont la note du meme jour dans
+`FICHE-bandit-manchot-additions-cp.md` explique pourquoi l'ancienne rendait 22 au lieu de 24 :
+**0 indice sur 24 ne nomme la bonne reponse.** Ils etaient **24 sur 24** avant `S17-4`, **3 sur 24**
+apres, et les trois items que j'avais nommes (3 `et`, 10 `ou`, 21 `peu`) ont recu la forme negative
+que j'avais designee comme la reparation, deja employee aux items 2 et 9 du meme paquet.
+
+**Ce que cela ferme et ce que cela ne ferme pas.** La reserve du verdict ci-dessous est **fermee** :
+sur ce point, `M2` est desormais tenue par la totalite du paquet, et la consequence que j'assumais
+depuis le 2026-08-12 - ce jeu ne peut pas afficher son indice sur la question courante - **devient
+levable pour tout le paquet**. **Cela ne fait pas revenir le jeu au catalogue** : la condition de
+retour de `DEC-0024` demande `BPM-1` **et** un Done pedagogique complet, `BPM-1` n'est pas produite,
+et je ne la simule pas.
+
+**Ce dont je reste seule garde** : aucun garde-fou ne compte les indices qui nomment leur reponse. Ce
+comptage est de moi, a la main, un jour donne. Le vingt-cinquieme item ecrit plus tard ne sera verifie
+par personne.
+
 ### Verdict du 2026-08-19 (s17) sur S17-4, BPM-2 / BPM-3 / BPM-4 - VALIDE SOUS RESERVE, et ce n'est que la moitie de la condition de retour
 
 > **Ce que cette section fait.** Elle rend les trois jugements de contenu que `DEC-0024` et mon
