@@ -914,9 +914,38 @@ body:has(.filtre-niveau) .chip-niveau.est-actif:focus-visible {
 .proposition.deja-essayee:focus-visible,
 .retour-accueil:focus-visible,
 .lien-accueil:focus-visible,
-.chip-niveau:focus-visible,
-body:has(.filtre-niveau) .chip-niveau.est-actif:focus-visible {
+.chip-niveau:focus-visible {
     box-shadow: inset 0 0 0 0.1875rem currentColor;
+}
+
+/* S17-A (nadia-prof, sonde post-livraison de S17-1 puis proposition d'ines-design,
+   proposition-ines-marque-de-focus-puce-active.md) : la puce active est retiree du groupe
+   ci-dessus et recoit sa propre regle. Diagnostic d'ines-design (section 0) : l'etat actif peint
+   l'anneau, la bordure et le bandeau dans la meme variable (--recreo-entete-fond, #1d4b6b) -
+   "currentColor" y vaut donc la couleur de tout ce qui l'entoure, et l'anneau interieur ne cree
+   plus aucune frontiere avec l'exterieur (1,00:1 mesure par nadia-prof). C'est la seule des dix
+   familles ou cette propriete casse - partout ailleurs currentColor differe de son environnement
+   par construction. Correctif (section 2 de la proposition) : un anneau EXTERIEUR, sans "inset",
+   peint sur le bandeau plutot que sur le remplissage blanc de la puce, en blanc declare
+   (--recreo-accent-texte, deja utilise sur ce meme bandeau - aucune teinte neuve). C'est une
+   addition sur un fond qui ne portait aucune marque au repos (la bordure y est deja confondue avec
+   le bandeau), jamais un epaississement d'un trait deja visible (S17-B, qui ne s'applique pas ici
+   pour cette raison). Contraste contre le bandeau, des deux cotes de l'anneau : 9,25:1, reverifie
+   par nadia-prof (L = 0,063549 pour #1d4b6b, contre 0,063569 chez ines-design - l'arrondi tombe du
+   meme cote). box-shadow reste hors du calcul de boite (ADR-0046 point 4) : aucun changement de
+   taille ni de position au focus.
+   Scope inchange, verifie exact par nadia-prof : "body:has(.filtre-niveau)" est la meme condition
+   que celle qui peint l'etat actif lui-meme (S15, quatrieme arbitrage) - elle n'existe que sur le
+   catalogue filtre, jamais sur une manche ni sur les trois routes qui rendent le catalogue complet.
+   C'est pourquoi cette regle est plus etroite d'un ecran que la reserve initiale ne le disait :
+   sur une manche, ".chip-niveau.est-actif" ne recoit jamais l'habillage actif (la condition ne
+   porte pas), donc jamais cet anneau non plus - le pressable y est une puce ordinaire, deja
+   couverte par le groupe ci-dessus. Aucune regle combinee ":active:focus-visible" n'est due ici
+   (S17-D) : ce selecteur porte deja un selecteur de type ("body") qui le place au-dessus du
+   plancher tiers combine, verifie par le test qui accompagne ce lot - la meme raison, et le meme
+   test, que pour l'anneau interieur qu'il remplace. */
+body:has(.filtre-niveau) .chip-niveau.est-actif:focus-visible {
+    box-shadow: 0 0 0 0.1875rem var(--recreo-accent-texte);
 }
 
 /* S17-D (nadia-prof, sonde clavier+pointeur reelle, s17) : le meme trou de specificite efface

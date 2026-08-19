@@ -1,0 +1,12 @@
+/* Le defaut exact que S17-A corrige : la puce active recoit encore l'anneau interieur en
+   currentColor, partage avec les neuf autres familles - anneau, bordure et bandeau valent tous la
+   meme teinte, l'anneau ne cree donc aucune frontiere percue. */
+body:has(.filtre-niveau) .chip-niveau.est-actif {
+    background-color: #ffffff;
+    color: #1d4b6b;
+    border: 0.125rem solid #1d4b6b;
+}
+
+body:has(.filtre-niveau) .chip-niveau.est-actif:focus-visible {
+    box-shadow: inset 0 0 0 0.1875rem currentColor;
+}
