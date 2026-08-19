@@ -1,12 +1,66 @@
 # ADR-0046 - Un etat interactif declare par la feuille tierce oblige la feuille maison a le declarer
 
-- **Statut** : Accepte
+- **Statut** : Accepte, **amende le 2026-08-19 (s16) : sa derivation ne voyait pas un selecteur
+  compose, donc ni ne l'exigeait ni ne le comptait. Trou trouve par `sofia-sm`, chiffre par
+  `nadia-prof`, correction due par le lot de `S16-3`/`S16-4`**
 - **Date** : 2026-08-17
 - **Auteur** : theo-archi
 - **Sprint** : s15 (ouverture)
 - **Amende** : `ADR-0014`, son point 5 et l'une de ses limites nommees. Le point 5 reste vrai sur ce
   qu'il affirme de l'ordre de chargement ; c'est le "donc" qu'il en tire qui est faux, et la limite
   qui devait couvrir ce cas l'ecartait sur un fait faux.
+
+> **Amendement du 2026-08-19 (s16) - un trou dans ma derivation, trouve par mutation et non par
+> lecture, et le blocage qui le retenait est leve.**
+>
+> **Le fait.** `sofia-sm` a retire les etats interactifs du selecteur compose `.chip-niveau.est-actif`
+> dans la feuille de production : **les sept tests de cet `ADR` sont restes verts**. `nadia-prof` a
+> chiffre ce que le defaut produirait en faisant enumerer les regles par le navigateur - sans cette
+> regle, l'etat de survol simple l'emporte et **la puce active prend l'apparence d'une puce inactive
+> sous le doigt**. Elle note que ce defaut est plus discret que celui qui a motive cet `ADR`, donc plus
+> susceptible de passer.
+>
+> **La cause, lue dans le code et non supposee.** `etatsMaison` et `exigencesDuTiers` retiennent une
+> regle seulement si `applicables.contains(elementDuCompose(reste))`. `elementDuCompose` coupe au
+> premier deux-points, donc pour `.chip-niveau.est-actif:hover` il rend `.chip-niveau.est-actif`
+> **entier** - une chaine que `selecteursApplicables` ne produit jamais, puisqu'elle rend des selecteurs
+> simples. La regle **sort donc du perimetre**, dans les deux sens : ses etats ne sont ni exiges ni
+> comptes. Ce n'est pas un alias mal calcule, c'est une population incomplete.
+>
+> **La correction : un selecteur compose est un sujet distinct.** Deux appuis d'une meme classe de base
+> qui declarent des apparences differentes sont deux pressables du point de vue de l'enfant, et chacun
+> doit declarer ses etats. La population se derive de la meme source que la clause E de s15 - les
+> combinaisons de classes qu'**un meme element peut porter**, litteraux du gabarit compris - jamais
+> d'une liste de selecteurs ecrite dans le test.
+>
+> **Ce que la correction reclamera, mesure et non craint.** Methode : enumeration des selecteurs maison
+> composes de deux classes ou plus, commentaires retires, sur la feuille servie de `4c7cd45`. Six
+> familles. `.signal.est-juste` et `.signal.est-faux` ne sont pas des pressables et restent hors
+> population par construction. `.chip-niveau.est-actif` declare deja ses deux etats : elle passera au
+> vert **en etant enfin verifiee**. Il reste **exactement un** cas qui rougira :
+> `.proposition.deja-essayee`, pressable, composee, qui ne declare aujourd'hui aucun etat interactif.
+>
+> **Pourquoi cette correction n'a pas eu lieu en s15, et pourquoi elle a lieu maintenant.** J'avais
+> refuse de corriger la derivation sans arbitrage, parce que le rouge de `.proposition.deja-essayee`
+> demandait une decision qui n'est pas la mienne : cette proposition doit-elle declarer sa propre
+> apparence sous le doigt, ou celle de `.proposition` continue-t-elle de valoir pour elle ?
+> **`nadia-prof` a tranche la forme neutre le 2026-08-18**, avec un motif qui vaut d'etre repris parce
+> qu'il protege la coherence de l'ensemble : la variante que `ines-design` recommandait aurait detruit
+> la premisse **globale** sur laquelle elle avait accorde l'aplat actif quelques heures plus tot. Le
+> blocage est donc leve, et la correction entre au perimetre de s16.
+>
+> **Un seul lot pour les deux stories, et ce n'est pas un choix d'organisation.** La correction de la
+> derivation est **indivisible** : le jour ou elle entre, les deux rouges apparaissent ensemble. Livrer
+> `S16-3` d'abord obligerait soit a corriger la derivation et laisser `.proposition.deja-essayee`
+> rouge - une CI rouge entre deux lots -, soit a la corriger deux fois. **Les deux stories partagent une
+> seule cause et doivent partager un seul lot** ; ce sont leurs regles CSS de production qui sont
+> distinctes, pas le garde-fou.
+>
+> **Les quatre exigences de la section "Ce que j'exige du lot qui corrigera" restent en vigueur telles
+> quelles** - six regles au plus, contour non facultatif, aucune declaration forcee, forme neutre
+> uniquement - et elles s'appliquent desormais aux deux familles.
+>
+> **Le compte des regles ArchUnit ne bouge pas** (29) : cette correction est un test de `adapter-web`.
 
 ## Contexte
 
