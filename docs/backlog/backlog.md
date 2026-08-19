@@ -4843,3 +4843,75 @@ ici : il fait l'objet d'une story distincte instruite par `theo-archi`.
   section 2 ; conditions precisees par l'arbitrage prealable de `nadia-prof` du 2026-08-19.
 - **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
   requis avant affectation).
+
+### Note du 2026-08-19 (camille-po, s17) - le critere "22 indices sur 24" de S17-4 est faux, c'est 24 sur 24
+
+En livrant cette story, `lea-dev` a relu `cm1-homophones.yaml` caractere par caractere et corrige
+**les 24 indices, pas seulement les 22 annonces** : les deux manquants au compte d'origine (bonne
+reponse `On`, bonne reponse `Où`) echappaient a une comparaison sensible a la casse, leur bonne
+reponse portant la majuscule de debut de phrase quand l'indice la citait en minuscule. Methode et
+chiffre documentes dans la Javadoc de `PaquetsFrancaisS04Test`
+(`adapters/adapter-content/src/test/java/com/recreo/adapter/content/PaquetsFrancaisS04Test.java`),
+meme correction versee dans `DEC-0024`, section "Correction du 2026-08-19 (lea-dev, s17)".
+
+Je ne reecris pas le critere ci-dessus : il reste lisible tel qu'ecrit le 2026-08-19 au matin.
+**Le critere juste, a lire a sa place** : "Etant donne les 24 indices sur 24 qui nomment
+aujourd'hui la reponse au lieu de la manipulation qui y mene, quand le paquet est raccourci, alors
+chacun de ces indices est corrige dans le meme geste." Le geste demande ne change pas (corriger
+tous les indices fautifs dans le meme mouvement que le raccourcissement) : seul le compte affiche
+etait faux, et `lea-dev` a corrige au-dela du compte annonce plutot qu'a sa hauteur.
+
+### Story de migration - Les paquets de contenu servis portent leur matiere accentuee (execution d'ADR-0049)
+
+**Non affectee a un sprint.** `ADR-0049` (`theo-archi`, s17) decide que la matiere est portee
+accentuee par la donnee de contenu elle-meme (`descripteur.matiere`), et non plus en ASCII. La
+decision est prise, elle n'est pas executee : les 12 paquets servis sur `round-two` a ce jour
+portent toujours `matiere: "Francais"` ou `matiere: "Mathematiques"` en ASCII
+(`adapters/adapter-content/src/main/resources/contenu/*.yaml`), et `lea-dev` vient d'ecrire un
+treizieme paquet (`cm1-synonymes.yaml`, `S17-3`) dans la meme graphie ASCII, deliberement, pour ne
+pas faire rougir `UneMatiereNAQuUneSeuleGraphieDansLeContenuServiTest` (le garde-fou d'`ADR-0049`
+refuse qu'une seule matiere porte deux graphies a la fois dans le contenu servi). Cette story
+execute la bascule qu'`ADR-0049` a decidee, elle ne rejuge rien de son contenu.
+
+- **Besoin** : en tant qu'eleve de CP ou de CM1, je veux que le mot qui nomme ma matiere soit
+  toujours ecrit de la meme facon dans l'application, meme avant que ce mot ne me soit montre sur
+  un bouton ou un filtre, afin que le jour ou je le lirai, ce ne soit jamais un mot ecrit
+  differemment selon le jeu auquel je joue.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Perimetre a la date d'ouverture (2026-08-19), et qui grandit tant que la story n'est pas
+  affectee** : les 12 fichiers suivants, tous `matiere` en ASCII -
+  `cm1-conjugaison-present.yaml`, `cm1-grands-nombres.yaml`, `cm1-homophones.yaml`,
+  `cm1-mesures.yaml`, `cm1-perimetre.yaml`, `cm1-tables-multiplication.yaml`,
+  `cp-additions-jusqu-a-10.yaml`, `cp-comparer-nombres.yaml`, `cp-complements-10.yaml`,
+  `cp-le-bon-son.yaml`, `cp-problemes-additifs.yaml`, `cp-soustractions.yaml` - plus
+  `cm1-synonymes.yaml` (`S17-3`, sur la branche `s17-lea` non encore fusionnee a ce jour, meme
+  graphie ASCII). **Chaque paquet neuf ecrit en ASCII avant que cette story ne soit executee
+  agrandit ce perimetre d'un fichier de plus** : je ne fige pas le compte a 12 ni a 13, je le
+  fige a la date d'affectation.
+- **Criteres d'acceptation** :
+  - Etant donne l'ensemble des paquets de contenu servis a la date d'affectation de cette story
+    (le perimetre ci-dessus, mis a jour a cette date), quand on lit le champ
+    `descripteur.matiere` de chacun, alors aucun ne porte plus la forme ASCII (`Francais`,
+    `Mathematiques`) et tous portent la forme accentuee retenue.
+  - Etant donne `UneMatiereNAQuUneSeuleGraphieDansLeContenuServiTest` (`ADR-0049`), quand cette
+    story est livree, alors ce test reste vert : une seule graphie par matiere dans le contenu
+    servi, desormais la forme accentuee plutot que l'ASCII.
+  - Etant donne l'assertion de `YamlContentPackLoaderTest` qui compare une valeur de matiere, et
+    l'inventaire du garde-fou de `S16-5` qui liste la matiere de chaque entree exposee par le
+    port entrant, quand la bascule est faite, alors les deux refletent la graphie accentuee -
+    cout nomme explicitement par `ADR-0049` ("douze fichiers de contenu servis [...] plus
+    l'assertion [...] et l'inventaire du garde-fou de S16-5").
+  - Ce que cette story ne tranche pas, routee a `theo-archi` : le mecanisme de la bascule (un
+    commit par fichier ou un script qui les convertit tous, l'ordre, et si un garde-fou neuf
+    doit desormais refuser tout paquet neuf depose en ASCII pour que ce cout ne se represente
+    jamais) - `ADR-0049` le dit lui-meme, cette decision "ne tranche pas" le mecanisme, seulement
+    la forme cible et son unicite.
+  - Ce qui n'est pas testable par un automate : que la graphie accentuee retenue
+    (`Français`/`Mathématiques`, forme deja portee par `contenu-repris/`) soit du francais
+    correct et integralement accentue, releve de `relecteur-pedagogique` (`DEC-0002`, amendement
+    du 2026-08-04), et non d'un jugement pedagogique de `nadia-prof` : cette story ne modifie
+    aucun enonce, aucune reponse, aucune competence visee des paquets touches, elle ne repasse
+    donc pas devant elle comme un contenu neuf.
+- **Lien decision** : `ADR-0049-une-matiere-s-ecrit-accentuee-dans-la-donnee-de-catalogue.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, avec `theo-archi` pour le
+  mecanisme de la bascule (point ci-dessus).
