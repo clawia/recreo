@@ -195,3 +195,44 @@ question d'architecture de `DEC-0032` point 2 n'est pas tranchee par `theo-archi
 - `squad/programme/MATRICE-couverture.md` : **inchangee**, motif ecrit ci-dessus.
 - `squad/conformite/FICHE-barre-entree-niveau.md` : inchangee par cette decision, `nadia-prof` la
   complete a la review de `S16-3`, `S16-4` et `S16-6`.
+
+## Correction du 2026-08-19 (trouvee par le relecteur-pedagogique, chiffre etabli par sofia-sm)
+
+**La section "Ce qui sort, differe ou reste hors de mon mandat, et pourquoi" cite "R-BARRE-1
+(grands nombres CM1, +22 px de pli depuis s14)" : ce chiffre inverse le sens du mouvement.**
+Source primaire verifiee par `sofia-sm` : `squad/conformite/FICHE-barre-entree-niveau.md`, section
+"S15-7" - avant s14 y = 397, s14 y = 410 (+13 px), lot 3 (`b109f98`) y = 419 (**+22 px** - c'est le
+lot 3 qui degrade), lot 4 (rang unique et etat actif) y = 411 (**+14 px** - le lot 4 **recupere
+8 px**, il n'aggrave rien). Le chiffre reel a la cloture de s15, et donc a l'ouverture de s16, est
+**+14 px**, non +22. Je ne corrige pas la phrase d'origine : je verse ici la lecture correcte de
+la source, avec sa methode, comme `sofia-sm` l'a fait sur ses trois documents de s15
+(`RAPPORT.md`, `review.md`, `planning.md` de s16).
+
+**Ce que cela change a mon arbitrage : rien.** J'avais motive l'exclusion de `R-BARRE-1` du
+perimetre de s16 par deux faits, aucun des deux ne portant sur le sens du chiffre : elle est *"sur
+un jeu et un ecran sans rapport avec le chantier de l'en-tete"*, et je ne voulais pas *"melanger
+deux chantiers dans un sprint deja charge de dettes"*. Le seul mot que le chiffre juste retire est
+ma phrase *"rien ne l'a aggravee depuis sa derniere mesure"* : ce n'est pas qu'elle n'a pas
+empire, c'est qu'elle **s'est amelioree de 8 px** par un effet de bord du lot qui a corrige le
+rang unique de l'en-tete. Un pli qui recule de 8 px n'est pas un pli qui s'aggrave de 9, et cela ne
+cree aucune urgence nouvelle a ouvrir la story candidate ce sprint - c'en retire, si quelque chose,
+puisque le seul fait nouveau va dans le sens inverse d'une degradation. La decision de ne pas
+ouvrir `R-BARRE-1` en s16 reste donc telle quelle, sur son motif de perimetre, corrigee sur son
+seul chiffre.
+
+## Note du 2026-08-19 - un couplage entre une condition pedagogique et la composition du catalogue, nomme et non traite
+
+En constatant `S15-8` aux quatre positions pour clore `S16-3`/`S16-4`, `nadia-prof` observe que la
+quatrieme position de proposition n'existe aujourd'hui que par un seul paquet du catalogue - "Le
+bon verbe", le seul a servir quatre propositions plutot que trois
+(`squad/conformite/FICHE-barre-entree-niveau.md`, 2026-08-19). Si ce paquet quittait le catalogue,
+pour quelque motif que ce soit, la condition `S15-8` redeviendrait non mesurable a la quatrieme
+position, et rien dans le depot ne le signalerait : aucun garde-fou ne lie aujourd'hui la
+composition du catalogue a la couverture de cette condition.
+
+Je nomme ce fait ici plutot que d'ouvrir une story : ce n'est pas un besoin d'enfant a formuler
+aujourd'hui, et retirer "Le bon verbe" n'est a l'ordre du jour d'aucun sprint. Mais je pose un
+declencheur explicite pour qu'il ne se perde pas en silence, exactement le mode de defaillance que
+ce couplage rend possible : **le jour ou une decision produit propose de retirer du catalogue le
+seul paquet qui sert quatre propositions, cette decision doit citer ce couplage et statuer sur la
+mesurabilite de `S15-8` avant d'etre acceptee.** Je verifierai ce point moi-meme a cette occasion.

@@ -4620,3 +4620,70 @@ ici : il fait l'objet d'une story distincte instruite par `theo-archi`.
 - **Lien decision** : reserve **S15-D** de `nadia-prof`, nommee dans `squad/sprints/s15-cinq-
   arbitrages-de-l-en-tete/RAPPORT.md`.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+## Sprint 17 - Reserve S16-A : un enfant au clavier ne voit nulle part ou il est
+
+### S17-1 - Un enfant qui navigue au clavier voit quel pressable est actuellement selectionne
+
+- **Besoin** : en tant qu'eleve qui joue au clavier - parce que je ne peux pas tenir un
+  telephone, parce qu'un adulte m'aide, ou parce que c'est l'ordinateur de la classe - je veux
+  voir clairement laquelle des propositions ou des puces est actuellement selectionnee quand je
+  me deplace avec les touches, afin de savoir ou j'en suis avant d'appuyer, sans avoir a deviner.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Ce que cette story ne rouvre pas** : les conditions **S15-8** et **S15-9** (couleur et trait
+  d'une proposition deja essayee), constatees TENUES aux quatre positions, y compris a l'etat de
+  focus clavier (`nadia-prof`, `squad/conformite/FICHE-barre-entree-niveau.md`, 2026-08-19). Cette
+  story ne porte que sur l'**indicateur de focus lui-meme** : le fait qu'un element recoive
+  visiblement le focus, pas l'apparence qu'il garde une fois qu'il l'a.
+- **Contexte du defaut, mesure et non suppose** (`nadia-prof`, reserve **S16-A**, 2026-08-19,
+  `FICHE-barre-entree-niveau.md`) : sur les sept elements pressables d'un ecran de manche (les
+  deux puces de niveau, la sortie d'en-tete, les trois propositions et la proposition marquee),
+  le contour visible passe de 3 px a zero au moment ou l'element recoit le focus clavier, et
+  l'ombre portee qui devait le remplacer ne vaut rien, avant comme apres. Cause verifiee dans la
+  feuille tierce servie : la regle de focus retire le contour natif (`outline: 0`) et le
+  remplace par une ombre dont la valeur reference une variable de couleur que seules dix-sept
+  classes de variante de la bibliotheque definissent - qu'aucun gabarit de ce produit ne porte.
+  L'ombre retombe donc a rien et le contour a deja ete retire par la meme regle : aucun des sept
+  pressables n'affiche le moindre indicateur de focus.
+- **Criteres d'acceptation** :
+  - Etant donne chacun des sept pressables d'un ecran de manche (population ci-dessus), quand cet
+    element recoit le focus clavier, alors au moins une propriete de style visible calculee
+    differe entre son etat de repos et son etat de focus - methode et sonde deja produites par
+    `nadia-prof` le 2026-08-19 (appel du focus, verification de l'etat de focus clavier, lecture
+    du style calcule).
+  - Etant donne cette propriete qui differe, quand on la nomme, alors elle n'est pas
+    exclusivement une couleur - repris au mot pres de `nadia-prof`, 2026-08-19,
+    `FICHE-barre-entree-niveau.md`, section 4 : *"un indicateur visible qui ne soit pas seulement
+    une couleur"*.
+  - Ce que cette story ne tranche pas : le moyen technique (variable CSS reparee, indicateur
+    maison neuf porte par la feuille maison, autre forme), sous la responsabilite de
+    `theo-archi`, et sous les memes principes qu'`ADR-0046` a deja appliques a `S16-3`/`S16-4`.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : elle rejoue chacun des sept pressables au clavier sur un ecran de manche et
+    confirme, dans `squad/conformite/FICHE-barre-entree-niveau.md`, que l'indicateur est present
+    et visible - constat qu'elle vient d'etablir pouvoir produire (elle ne le pouvait pas avant
+    le 2026-08-19, faute d'avoir essaye d'atteindre l'etat de focus clavier).
+- **Ce qui doit etre arbitre avant tout code** : la forme de l'indicateur (couleur, epaisseur,
+  style). A la difference de `S16-3`/`S16-4`, la forme neutre ("rien ne change sous le pointeur")
+  ne s'applique pas ici : il n'existe aujourd'hui aucun indicateur a restaurer, donc toute forme
+  proposee est une apparence neuve, ce qu'`ADR-0046`, point 4, reserve a un arbitrage prealable
+  de `nadia-prof` sur une proposition d'`ines-design`. `nadia-prof` l'a ecrit elle-meme : *"je
+  poserai mes conditions sur la forme quand elle me sera proposee ; je ne les invente pas
+  d'avance"*.
+- **Relation avec la reserve F11 (ecoute reelle de lecteur d'ecran)** : je garde les deux
+  distinctes, je ne les rapproche pas. F11 porte sur ce qu'un enfant **entend** au lecteur
+  d'ecran et reste bloquee par une capacite que personne dans la squad ne peut produire (aucune
+  ecoute reelle tentee a ce jour). S16-A porte sur ce qu'un enfant **voit** au clavier, sans
+  lecteur d'ecran, et `nadia-prof` vient de montrer qu'elle peut la mesurer elle-meme et que
+  `theo-archi`/`ines-design` peuvent la corriger avec les moyens deja au depot. Traiter les deux
+  comme un seul sujet ferait dependre une correction possible aujourd'hui (S16-A) d'une capacite
+  qui ne l'est pas (F11), et inversement laisserait croire que fermer S16-A repond a F11 alors
+  qu'un enfant qui n'entend pas l'ecran n'est pas aide par un contour qu'il ne voit pas non plus.
+- **Porte de sortie** : la forme arbitree prealablement par `nadia-prof`, les deux criteres
+  testables ci-dessus tenus sur la forme retenue, `mvn verify` vert, puis constat ecrit de
+  `nadia-prof` sur les sept pressables d'un ecran de manche.
+- **Lien decision** : reserve **S16-A** de `nadia-prof`, `squad/conformite/FICHE-barre-entree-
+  niveau.md`, section 4 (2026-08-19) ; troisieme manifestation nommee par elle de la meme famille
+  de defaut que celle qui a motive `ADR-0046` (2026-08-17, en-tete au survol de la souris).
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, apres arbitrage prealable
+  d'`ines-design` et de `nadia-prof` sur la forme, et avis de faisabilite de `theo-archi`.
