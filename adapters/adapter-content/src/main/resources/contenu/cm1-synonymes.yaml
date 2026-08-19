@@ -1,0 +1,95 @@
+schema: 1
+id: cm1-synonymes
+type: question
+descripteur:
+  matiere: "Francais"
+  niveau: "CM1"
+  domaine: "Vocabulaire"
+  competence: "Utiliser des synonymes et antonymes pour préciser ou nuancer un propos"
+# SYN-1 (arbitrage prealable de nadia-prof, s17) : le mot cible est toujours presente entre
+# guillemets a l'interieur d'une phrase complete, jamais isole - la question porte sur ce mot dans
+# ce contexte precis, jamais sur le mot seul. Reformulation obligatoire de la matiere premiere
+# (contenu-repris/associer/cm1-synonymes.yml, 12 paires mot/synonyme sans phrase), condition
+# bloquante sans laquelle l'accord de nadia-prof sur le proxy tombe (couverture partielle, voir
+# FICHE-bandit-manchot-synonymes-cm1.md : synonymes seuls, aucun antonyme).
+items:
+  - enonce: "Léa est \"contente\" de son cadeau. Dans cette phrase, quel mot peut remplacer \"contente\" sans changer le sens ?"
+    bonneReponse: "heureuse"
+    distracteurs: ["inquiète", "surprise"]
+    indice: "Ce mot décrit une émotion joyeuse, comme quand on sourit parce que tout va bien."
+  - enonce: "Le guépard court très \"vite\". Dans cette phrase, quel mot peut remplacer \"vite\" sans changer le sens ?"
+    bonneReponse: "rapidement"
+    distracteurs: ["silencieusement", "prudemment"]
+    indice: "Ce mot dit à quelle allure on se déplace, comme quelqu'un qui n'a pas une seconde à perdre."
+  - enonce: "Ce paysage de montagne est \"beau\". Dans cette phrase, quel mot peut remplacer \"beau\" sans changer le sens ?"
+    bonneReponse: "joli"
+    distracteurs: ["vaste", "aride"]
+    indice: "Ce mot dit qu'une chose est agréable à regarder."
+  - enonce: "Le petit garçon est \"triste\" depuis le départ de son ami. Dans cette phrase, quel mot peut remplacer \"triste\" sans changer le sens ?"
+    bonneReponse: "malheureux"
+    distracteurs: ["inquiet", "gêné"]
+    indice: "Ce mot décrit ce que l'on ressent quand on a envie de pleurer."
+  - enonce: "Le village est très \"calme\" le dimanche matin. Dans cette phrase, quel mot peut remplacer \"calme\" sans changer le sens ?"
+    bonneReponse: "tranquille"
+    distracteurs: ["bruyant", "animé"]
+    indice: "Ce mot dit qu'il n'y a ni bruit ni agitation autour de soi."
+  - enonce: "Cette histoire de pirates est \"drôle\". Dans cette phrase, quel mot peut remplacer \"drôle\" sans changer le sens ?"
+    bonneReponse: "amusante"
+    distracteurs: ["triste", "effrayante"]
+    indice: "Ce mot dit qu'une histoire donne envie de rire."
+  - enonce: "Après la course, Tom est \"fatigué\". Dans cette phrase, quel mot peut remplacer \"fatigué\" sans changer le sens ?"
+    bonneReponse: "épuisé"
+    distracteurs: ["content", "inquiet"]
+    indice: "Ce mot dit qu'on n'a plus du tout de force."
+  - enonce: "Le pompier reste \"courageux\" face au danger. Dans cette phrase, quel mot peut remplacer \"courageux\" sans changer le sens ?"
+    bonneReponse: "brave"
+    distracteurs: ["maladroit", "discret"]
+    indice: "Ce mot dit qu'on n'a pas peur d'affronter une difficulté."
+  - enonce: "Dans les fables, le renard est \"malin\". Dans cette phrase, quel mot peut remplacer \"malin\" sans changer le sens ?"
+    bonneReponse: "rusé"
+    distracteurs: ["gentil", "peureux"]
+    indice: "Ce mot dit qu'on trouve toujours une astuce pour se sortir d'une situation."
+  - enonce: "Ce moteur de camion est très \"fort\". Dans cette phrase, quel mot peut remplacer \"fort\" sans changer le sens ?"
+    bonneReponse: "puissant"
+    distracteurs: ["léger", "bruyant"]
+    indice: "Ce mot dit qu'une chose a beaucoup de force ou d'énergie."
+  - enonce: "Ce château construit il y a très longtemps est \"ancien\". Dans cette phrase, quel mot peut remplacer \"ancien\" sans changer le sens ?"
+    bonneReponse: "vieux"
+    distracteurs: ["moderne", "abandonné"]
+    indice: "Ce mot dit qu'une chose existe depuis très longtemps."
+  - enonce: "La maman parle à son bébé d'une voix \"douce\". Dans cette phrase, quel mot peut remplacer \"douce\" sans changer le sens ?"
+    bonneReponse: "tendre"
+    distracteurs: ["forte", "grave"]
+    indice: "Ce mot décrit une voix pleine d'affection, comme celle qui rassure quelqu'un."
+  - enonce: "Ce désert de sable est très \"grand\". Dans cette phrase, quel mot peut remplacer \"grand\" sans changer le sens ?"
+    bonneReponse: "immense"
+    distracteurs: ["chaud", "vide"]
+    indice: "Ce mot dit qu'un espace semble sans limite, à perte de vue."
+  - enonce: "Cette fourmi est \"petite\". Dans cette phrase, quel mot peut remplacer \"petite\" sans changer le sens ?"
+    bonneReponse: "minuscule"
+    distracteurs: ["rapide", "noire"]
+    indice: "Ce mot dit qu'une chose est extrêmement petite, presque impossible à voir."
+  - enonce: "Le nouveau voisin est \"gentil\" avec tout le monde. Dans cette phrase, quel mot peut remplacer \"gentil\" sans changer le sens ?"
+    bonneReponse: "aimable"
+    distracteurs: ["célèbre", "élégant"]
+    indice: "Ce mot décrit quelqu'un qui se comporte bien avec les autres, poliment et avec bonté."
+  - enonce: "Cet exercice de mathématiques est \"difficile\". Dans cette phrase, quel mot peut remplacer \"difficile\" sans changer le sens ?"
+    bonneReponse: "compliqué"
+    distracteurs: ["amusant", "court"]
+    indice: "Ce mot dit qu'une chose est dure à comprendre ou à réussir."
+  - enonce: "Ce jeu de société est \"facile\" pour les débutants. Dans cette phrase, quel mot peut remplacer \"facile\" sans changer le sens ?"
+    bonneReponse: "simple"
+    distracteurs: ["dangereux", "coûteux"]
+    indice: "Ce mot dit qu'une chose ne demande pas beaucoup d'effort pour être réussie."
+  - enonce: "La musique du carnaval est \"gaie\". Dans cette phrase, quel mot peut remplacer \"gaie\" sans changer le sens ?"
+    bonneReponse: "joyeuse"
+    distracteurs: ["lente", "grave"]
+    indice: "Ce mot dit qu'une musique donne envie de sourire et de danser."
+  - enonce: "Le jeune homme est \"poli\" avec les adultes. Dans cette phrase, quel mot peut remplacer \"poli\" sans changer le sens ?"
+    bonneReponse: "courtois"
+    distracteurs: ["bavard", "impatient"]
+    indice: "Ce mot décrit quelqu'un qui a de bonnes manières."
+  - enonce: "Le bureau de Léa est \"propre\". Dans cette phrase, quel mot peut remplacer \"propre\" sans changer le sens ?"
+    bonneReponse: "net"
+    distracteurs: ["encombré", "sombre"]
+    indice: "Ce mot dit qu'un endroit est bien rangé et sans saleté."
