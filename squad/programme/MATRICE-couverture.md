@@ -1212,3 +1212,87 @@ verdicts ci-dessus.
 
 `squad/validation/FILE-ATTENTE.md` est mis a jour dans le meme geste : les deux increments sortent
 de la file au titre de leurs Done pedagogiques respectifs, tous deux `VALIDE SOUS RESERVE`.
+
+## Synthese au sprint 17 (2026-08-19) - verification demandee par l'utilisatrice, ecart trouve avec `DEC-0037`
+
+Cette matrice n'avait plus de section de synthese depuis la cloture du sprint 13 ci-dessus, alors
+que `DEC-0037` (perimetre de s16, `camille-po`) et les trois documents de ceremonie de s16 de
+`sofia-sm` (`squad/sprints/s16-deux-defauts-et-dettes-de-len-tete/planning.md`, `RAPPORT.md`,
+`review.md`) affirment tous les quatre un etat de couverture - "23 lignes `couvert-valide`, 5 `en
+cours`, 46 `non couvert`, sur 74 lignes de competence au total" - incompatible avec le dernier
+tableau de synthese de cette matrice (ci-dessus, s13 : 46 total, 32 non couvert, 5 en cours, 9
+couvert-valide). C'est exactement la dette de gouvernance que la section de s13 disait corriger :
+un chiffre sans methode ecrite a cote ne se compare a rien, meme juste.
+
+**Methode de comptage, verifiee deux fois par deux chemins independants :**
+
+1. **Une ligne de competence = une puce de premier niveau** des quatre referentiels actuellement
+   disponibles (`squad/programme/mathematiques/competences-cp.md`, `competences-cm1.md`,
+   `squad/programme/francais/competences-cp.md`, `competences-cm1.md`), reprise mot pour mot dans
+   les quatre tableaux de cette matrice ci-dessus. Ne compte pas comme une ligne : les titres de
+   domaine (`##`), les lignes des tableaux de synthese eux-memes, ni les phrases de la prose qui
+   reprennent les memes mots sans etre une ligne de tableau. Compte de puce par referentiel :
+   mathematiques CP 7+2+2=11 ; mathematiques CM1 7+3+2=12 ; francais CP 3+4+2+2+1=12 ; francais CM1
+   3+2+4+2=11. **Total : 46.**
+2. **Une ligne de tableau par une ligne de tableau**, comptee directement dans les quatre tableaux
+   "Mathematiques - CP", "Mathematiques - CM1", "Francais - CP", "Francais - CM1" ci-dessus,
+   statut par statut.
+
+Les deux chemins rendent le meme total (46) et le meme detail par statut. Aucune des quatre
+referentiels ne porte de sous-competence formellement distincte d'une puce : il n'existe donc
+aujourd'hui aucun perimetre defendable qui rendrait plus de 46 lignes sans en inventer.
+
+**Etat reel, inchange depuis le sprint 13 (2026-08-15/16) :**
+
+| Matiere / niveau | competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 |
+| mathematiques CM1 | 12 | 6 | 2 | 4 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 9 | 1 | 1 |
+| **Total** | **46** | **32** | **5** | **9** |
+
+Verifie a nouveau, pas seulement recopie de s13 : aucune story de `docs/backlog/backlog.md` sur
+s14, s15, s16 ou s17 (a ce jour) ne cible une ligne de cette matrice. `DEC-0032` (s14), `DEC-0037`
+(s16, section 3) et `DEC-0038` (s17) le disent chacune explicitement pour son sprint, et la story
+`S17-1` du sprint 17 est elle-meme marquee "transverse - pas de contenu pedagogique". Les quatre
+tableaux ci-dessus n'ont recu aucune modification de statut depuis les verdicts du sprint 13. Le
+tableau ci-dessus est donc identique, ligne a ligne, a celui de la section "Synthese apres les
+verdicts du sprint 13" plus haut.
+
+**D'ou vient l'ecart avec `DEC-0037`.** Ce n'est pas un cas ou les deux chiffres compteraient des
+objets differents et seraient chacun defendables sous leur propre definition : les quatre
+referentiels ne portent pas de quoi faire 74 lignes sous aucun decoupage raisonnable, et 23 ne
+correspond a aucun sous-ensemble nomme des neuf lignes `couvert-valide` reelles. `DEC-0037` est
+simplement fausse sur trois des quatre nombres qu'elle porte. La lecture la plus probable de la
+mecanique de l'erreur, batie pour rendre compte des quatre chiffres a la fois : le "46" reel (le
+total juste) a ete recopie au mauvais endroit, dans la case "non couvert" plutot que dans la case
+"total" ; le "32" reel (le vrai compte de lignes non couvertes) a ete transpose en "23" ; le "5"
+(en cours) est le seul chiffre juste, et le seul que l'enonce de l'ecart, plus haut, avait deja
+repere comme concordant ; et le "74" n'est la somme d'aucune mesure independante, seulement la
+somme des trois chiffres deja fautifs (23 + 5 + 46 = 74), ce qui explique pourquoi il "boucle"
+sans etre juste. Je ne peux pas retrouver la frappe exacte qui a produit cet ecart, et je ne
+l'invente pas : ce que je peux etablir avec certitude, par verification directe des quatre
+referentiels et des quatre tableaux, c'est que 46 / 32 / 5 / 9 est l'etat reel et que 74 / 23 / 5 /
+46 ne decrit aucun perimetre existant.
+
+**Origine tracee dans le depot.** `git log` sur
+`squad/decisions/produit/DEC-0037-perimetre-sprint-16-fermeture-des-dettes-de-len-tete-zero-
+ouverture-de-contenu.md` montre que les quatre chiffres fautifs sont deja presents dans son premier
+commit (`f73ad41`, `camille-po`, 2026-08-19), avant toute autre modification de ce fichier. Les
+trois documents de ceremonie de s16 de `sofia-sm` qui portent la meme phrase (`planning.md`,
+commit `411a5ad`, posterieur ; `RAPPORT.md` ; `review.md`) l'ont donc reprise de `DEC-0037` sans la
+verifier contre cette matrice - c'est `camille-po` qui a introduit l'erreur, pas `sofia-sm` qui
+l'aurait inventee. Correction versee dans `DEC-0037` lui-meme, section "Correction du 2026-08-19
+(camille-po, s17)" ; les trois fichiers de `sofia-sm` ne sont pas corriges ici (voir la section "Ce
+que je route" de cette meme correction).
+
+**Ce que cet ecart change a l'engagement pose par `DEC-0037`.** Cette decision posait que si le
+sprint 17 ne rouvre aucune ligne de cette matrice, ce fait devra etre ecrit comme un changement de
+direction plutot que comme une continuation silencieuse. Rien dans le travail fait ce jour sur
+cette matrice n'ouvre de ligne : c'est une correction de mesure, pas un increment de contenu.
+L'engagement de `DEC-0037` reste donc entier et n'est pas leve par cette section. Il est en
+revanche plus pressant qu'il ne paraissait sous le chiffre fautif : neuf lignes `couvert-valide`
+sur 46 (19,6 %) et vingt-trois sur 74 (31,1 %) ne racontent pas la meme histoire d'avancement, et
+c'est la version optimiste, fausse, qui avait circule dans trois documents de ceremonie avant
+d'etre lue par l'utilisatrice.

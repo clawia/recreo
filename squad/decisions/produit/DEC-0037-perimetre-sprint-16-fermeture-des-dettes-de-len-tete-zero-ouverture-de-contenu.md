@@ -236,3 +236,39 @@ declencheur explicite pour qu'il ne se perde pas en silence, exactement le mode 
 ce couplage rend possible : **le jour ou une decision produit propose de retirer du catalogue le
 seul paquet qui sert quatre propositions, cette decision doit citer ce couplage et statuer sur la
 mesurabilite de `S15-8` avant d'etre acceptee.** Je verifierai ce point moi-meme a cette occasion.
+
+## Correction du 2026-08-19 (camille-po, s17) - le chiffre de couverture programme de la section 4 est faux
+
+L'utilisatrice a signale une contradiction entre la phrase "23 lignes `couvert-valide`, 5 `en
+cours`, 46 `non couvert`, sur 74 lignes de competence au total" de la section 4 ci-dessus et la
+derniere section de synthese de `squad/programme/MATRICE-couverture.md` (s13 : 46 total, 32 non
+couvert, 5 en cours, 9 couvert-valide). J'ai verifie les deux chemins de comptage possibles - une
+puce de premier niveau par ligne dans les quatre referentiels de `squad/programme/`, et une ligne
+de tableau par ligne dans les quatre tableaux de la matrice - et les deux rendent 46 au total, 32
+non couvert, 5 en cours, 9 couvert-valide. Methode complete et hypothese sur l'origine de l'erreur
+versees dans `squad/programme/MATRICE-couverture.md`, section "Synthese au sprint 17 (2026-08-19)".
+
+**La phrase de la section 4 ci-dessus est fausse sur trois de ses quatre nombres** (total, non
+couvert, couvert-valide ; seul "en cours" est juste) **et je ne la corrige pas sur place** : elle
+reste lisible telle qu'ecrite le 2026-08-19 au matin, pour que la trajectoire de l'erreur ne soit
+pas effacee. La phrase juste, a lire a sa place : *"Inchangee depuis le sprint 13 : 9 lignes
+`couvert-valide`, 5 `en cours`, 32 `non couvert`, sur 46 lignes de competence au total."* Rien
+d'autre dans cette decision ne change : la conclusion de la section 3 (plafond d'ouvertures a 0,
+troisieme sprint consecutif sans mouvement, engagement pose pour s17) ne dependait pas de la valeur
+exacte de ce chiffre, seulement du fait qu'aucune ligne n'ouvre ni ne ferme ce sprint - fait qui
+reste vrai.
+
+**Ce que cette correction ne fait pas.** Elle ne leve pas l'engagement pose en section 3 : si s17
+ne rouvre aucune ligne de la matrice, cela reste a ecrire comme un changement de direction, pas
+comme une continuation silencieuse. Elle rend cet engagement plus pressant, pas moins : le produit
+couvre 19,6 % des competences (9/46), pas 31,1 % (23/74) comme la phrase fautive le laissait
+croire.
+
+## Ce que je route (ajout du 2026-08-19)
+
+- **`sofia-sm`** : les memes quatre chiffres, copies de cette section 4 sans reverification, sont
+  aussi dans `squad/sprints/s16-deux-defauts-et-dettes-de-len-tete/planning.md`,
+  `RAPPORT.md` et `review.md` (les trois posterieurs a cette decision, verifie par `git log`). Ces
+  trois fichiers sont les siens ; je ne les corrige pas moi-meme et je route la meme correction, la
+  meme methode et la meme phrase juste ci-dessus pour qu'elle les corrige a son tour, par note
+  datee et non par reecriture silencieuse.
