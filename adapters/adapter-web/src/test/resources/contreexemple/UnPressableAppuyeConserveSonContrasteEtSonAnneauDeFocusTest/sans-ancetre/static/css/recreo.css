@@ -1,0 +1,14 @@
+/* Le defaut exact que S17-D corrige : un bouton de contour dont ":active" est declare sur le
+   sujet seul, sans ancetre. Specificite (0,2,0), inferieure a celle des deux selecteurs tiers
+   ":active" ((0,3,0)) : la feuille vendorisee l'emporterait malgre l'ordre de chargement. */
+.bouton-neuf {
+    color: #ffffff;
+    background-color: transparent;
+    border: 0.125rem solid #ffffff;
+}
+
+.bouton-neuf:active {
+    color: #ffffff;
+    background-color: transparent;
+    border: 0.125rem solid #ffffff;
+}
