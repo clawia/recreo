@@ -273,3 +273,19 @@ compter de s17 :
    sous reserve du Done pedagogique) - les synonymes et les homophones ne peuvent pas basculer ce
    sprint, quel que soit le verdict sur leur contenu, pour les motifs ecrits dans la section dediee
    ci-dessus.
+
+## Correction du 2026-08-19 (trouvee par lea-dev, verifiee par camille-po, s17)
+
+Ce document cite deux fois "la correction des 22 indices sur 24" (tableau des stories, ligne
+`S17-4`, et section "S17-4 - comment je gele une story dont la porte de sortie est hors de la
+squad"). **Le chiffre est faux : c'est 24 sur 24.** `lea-dev` a relu `cm1-homophones.yaml`
+caractere par caractere en livrant la story et corrige les deux indices manquants au compte
+d'origine (bonne reponse `On`, bonne reponse `Où`), qui echappaient a une comparaison sensible a
+la casse : leur bonne reponse porte la majuscule de debut de phrase, l'indice les citait en
+minuscule. `camille-po` a verifie ce chiffre et l'a retrouve, coherent, dans cinq fichiers
+(`DEC-0024`, `docs/backlog/backlog.md`, la Javadoc de `PaquetsFrancaisS04Test`, et les deux
+occurrences de ce document). Le geste demande a `S17-4` ne change pas : corriger tous les indices
+fautifs dans le meme mouvement que le raccourcissement. Seul le compte affiche etait faux, et
+`lea-dev` a corrige au-dela du compte annonce plutot qu'a sa hauteur. Les deux lignes d'origine
+ci-dessus ne sont pas reecrites, conformement a la forme retenue par ce depot depuis s16
+(`R-BARRE-1`) : correction par note datee, jamais par reecriture silencieuse.
