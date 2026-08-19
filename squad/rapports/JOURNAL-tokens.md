@@ -202,13 +202,30 @@ Aucune invocation mesuree sur cette fenetre pour : `ines-design`.
 
 Aucune invocation mesuree sur cette fenetre pour : `lea-dev`, `yanis-qa`, `relecteur-pedagogique`.
 
+## Sprint s16
+
+| Agent | Modele | Tours | Input | Output | Cache cree | Cache lu |
+|---|---|---|---:|---:|---:|---:|
+| `camille-po` | claude-sonnet-5 | 75 | 150 | 25 887 | 232 783 | 5 546 401 |
+| `sofia-sm` | claude-sonnet-5 | 537 | 1 074 | 247 629 | 3 501 719 | 110 084 499 |
+| `theo-archi` | claude-opus-5 | 34 | 68 | 28 753 | 1 434 883 | 22 480 511 |
+| `marc-dev` | claude-sonnet-5 | 133 | 266 | 54 437 | 440 595 | 16 794 285 |
+| `lea-dev` | claude-sonnet-5 | 396 | 792 | 221 503 | 1 834 904 | 129 566 766 |
+| `yanis-qa` | claude-sonnet-5 | 312 | 624 | 90 650 | 834 858 | 47 596 359 |
+| `relecteur-pedagogique` | claude-sonnet-5 | 219 | 438 | 71 806 | 646 084 | 38 627 529 |
+| `nadia-prof` | claude-opus-5 | 115 | 230 | 76 036 | 2 517 510 | 67 975 671 |
+| orchestrateur (fil principal) | claude-opus-5 | 61 | 122 | 170 287 | 177 372 | 33 461 752 |
+| **Total** | | **1882** | **3 764** | **986 988** | **11 620 708** | **472 133 773** |
+
+Aucune invocation mesuree sur cette fenetre pour : `ines-design`.
+
 ## hors sprint
 
 | Agent | Modele | Tours | Input | Output | Cache cree | Cache lu |
 |---|---|---|---:|---:|---:|---:|
-| `camille-po` | claude-sonnet-5 | 2444 | 291 691 | 1 150 598 | 11 495 729 | 262 169 082 |
-| `sofia-sm` | claude-sonnet-5 | 2893 | 328 368 | 942 450 | 11 354 036 | 367 419 852 |
-| `theo-archi` | claude-opus-5  claude-sonnet-5 | 4133 | 167 624 | 2 148 797 | 19 068 956 | 621 173 145 |
+| `camille-po` | claude-sonnet-5 | 2609 | 292 021 | 1 248 394 | 12 143 817 | 282 107 946 |
+| `sofia-sm` | claude-sonnet-5 | 3071 | 328 724 | 1 013 196 | 12 327 645 | 404 135 886 |
+| `theo-archi` | claude-opus-5  claude-sonnet-5 | 4175 | 167 708 | 2 200 212 | 20 396 995 | 646 751 502 |
 | `marc-dev` | claude-sonnet-5 | 1359 | 146 004 | 681 947 | 5 600 983 | 367 848 036 |
 | `lea-dev` | claude-sonnet-5 | 690 | 159 927 | 308 067 | 2 247 237 | 117 157 164 |
 | `yanis-qa` | claude-sonnet-5 | 548 | 3 184 | 176 540 | 1 344 792 | 66 910 415 |
@@ -217,5 +234,5 @@ Aucune invocation mesuree sur cette fenetre pour : `lea-dev`, `yanis-qa`, `relec
 | `ines-design` | claude-sonnet-5 | 2360 | 163 840 | 1 044 469 | 9 516 140 | 421 881 656 |
 | `Explore` | claude-opus-5 | 132 | 71 529 | 47 409 | 993 601 | 6 937 649 |
 | `Plan` | claude-opus-5 | 20 | 40 | 17 138 | 76 644 | 2 950 551 |
-| orchestrateur (fil principal) | claude-opus-5 | 1681 | 45 335 | 2 801 338 | 20 766 461 | 629 728 484 |
-| **Total** | | **19422** | **1 441 443** | **10 880 969** | **96 448 658** | **3 205 414 422** |
+| orchestrateur (fil principal) | claude-opus-5 | 1710 | 45 393 | 2 843 293 | 20 807 502 | 643 435 960 |
+| **Total** | | **19836** | **1 442 271** | **11 142 881** | **99 439 435** | **3 301 355 153** |
