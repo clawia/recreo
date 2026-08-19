@@ -46,6 +46,14 @@ public class PartieController {
     private static final String COOKIE_PARTIE_EN_COURS = "recreo-partie-en-cours";
     private static final String MESSAGE_PARTIE_PERDUE = "Ta partie s'est arrêtée. Choisis un nouveau jeu !";
 
+    /**
+     * ADR-0048 : en-tete htmx qui pousse une adresse dans l'historique du navigateur sans toucher
+     * au corps de la reponse (aucun echange hors bande, ADR-0020 intact). Le seul en-tete de ce
+     * type que ce depot pose a ce jour.
+     */
+    private static final String ENTETE_ADRESSE_AFFICHEE = "HX-Push-Url";
+    private static final String ADRESSE_CATALOGUE_COMPLET = "/";
+
     /** M12 : les trois textes exacts, voulus par nadia-prof, ecrits ici pour ne pas etre reinventes. */
     private static final String MESSAGE_BRAVO = "Bravo !";
     private static final String MESSAGE_ECHEC = "Ce n'est pas ça. Essaie encore !";
@@ -116,6 +124,11 @@ public class PartieController {
      * ecran de confirmation qui laisse la session intacte (aucun appel a {@code abandonner()}). Sans
      * partie en cours, il n'y a rien a confirmer : le comportement d'avant ce sprint est inchange,
      * celui de l'ecran de fin de partie qui pose lui aussi {@code hx-post="/retour"}.
+     *
+     * <p>ADR-0048 (S16-2) : {@code hx-post="/retour"} reste un echange htmx, pour garder sa double
+     * responsabilite (ci-dessus). C'est la meme branche qui choisit le fragment qui declare, par
+     * une en-tete de reponse et non par un attribut du declencheur, l'adresse a afficher - jamais
+     * sur l'ecran de confirmation, ou elle mentirait sur ce que l'enfant vient de quitter.</p>
      */
     @PostMapping("/retour")
     public String retour(HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
@@ -126,6 +139,7 @@ public class PartieController {
         }
         new EtatDePartieEnSession(requete).abandonner();
         effacerMarqueurDePartie(reponse);
+        reponse.setHeader(ENTETE_ADRESSE_AFFICHEE, ADRESSE_CATALOGUE_COMPLET);
         modele.addAttribute("jeux", partie.jeuxDisponibles());
         return "accueil :: zoneAccueil";
     }

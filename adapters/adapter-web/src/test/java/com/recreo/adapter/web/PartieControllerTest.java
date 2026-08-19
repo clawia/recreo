@@ -341,6 +341,21 @@ class PartieControllerTest {
                 .isEqualTo("un");
     }
 
+    /**
+     * S16-2, critere 3, sens negatif (ADR-0048) : la meme reponse ne declare aucune adresse quand
+     * une partie en cours fait rendre la confirmation - sinon l'adresse mentirait sur ce que
+     * l'enfant vient de quitter, qui n'est rien.
+     */
+    @Test
+    void laReponseDeRetourNeDeclareAucuneAdresseAvecUnePartieEnCours() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+
+        MvcResult confirmation = mockMvc.perform(post("/retour").session(session)).andReturn();
+
+        assertThat(confirmation.getResponse().getHeader("HX-Push-Url")).isNull();
+    }
+
     /** Confirmer l'abandon depuis l'ecran de confirmation clot bien la partie. */
     @Test
     void confirmerLAbandonClotLaPartieEtRevientALaListeDesJeux() throws Exception {
@@ -474,6 +489,20 @@ class PartieControllerTest {
         Document fragment = Jsoup.parse(html);
 
         assertThat(fragment.select("button.demarrer")).isNotEmpty();
+    }
+
+    /**
+     * S16-2, critere 1, reecrit par theo-archi (ADR-0048) : sans partie en cours, la reponse de
+     * /retour declare, par une en-tete de reponse et non par un attribut du declencheur, l'adresse
+     * du catalogue complet qu'elle vient de rendre - la meme branche qui choisit le fragment.
+     */
+    @Test
+    void laReponseDeRetourDeclareLAdresseDuCatalogueCompletSansPartieEnCours() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+
+        MvcResult resultat = mockMvc.perform(post("/retour").session(session)).andReturn();
+
+        assertThat(resultat.getResponse().getHeader("HX-Push-Url")).isEqualTo("/");
     }
 
     /**
