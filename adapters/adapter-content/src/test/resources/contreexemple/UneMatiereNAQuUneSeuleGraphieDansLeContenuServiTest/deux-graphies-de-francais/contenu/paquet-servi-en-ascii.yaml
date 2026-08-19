@@ -1,0 +1,14 @@
+# ADR-0003 : jeu fautif, jamais servi a un enfant. Graphie ASCII, celle des 12 paquets servis.
+schema: 1
+id: paquet-servi-en-ascii
+type: question
+descripteur:
+  matiere: "Francais"
+  niveau: "CM1"
+  domaine: "Orthographe et grammaire"
+  competence: "Forme ASCII, celle du contenu servi avant ADR-0049"
+items:
+  - enonce: "Il ___ mange une pomme."
+    bonneReponse: "a"
+    distracteurs: ["as"]
+    indice: "Remplace par 'avait'."

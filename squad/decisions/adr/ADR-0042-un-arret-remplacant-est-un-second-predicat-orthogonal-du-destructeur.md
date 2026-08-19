@@ -1,8 +1,13 @@
 # ADR-0042 - Ajouter un second predicat orthogonal du destructeur, "remplacant", et en tirer la contrainte de forme de l'ecran de S13-6
 
-- **Statut** : Accepte, **sa regle n'a jamais ete ecrite et son porteur a disparu** - amende le
-  2026-08-17 (s14) : dette explicite ouverte, avec son declencheur et son cout, plutot qu'une
-  troisieme promesse
+- **Statut** : **En attente de son objet** depuis le 2026-08-19 (s17) - ce n'est plus `Accepte`, et
+  le changement est l'engagement que j'avais ecrit a la cloture de s16 : *"si le declencheur n'a pas
+  joue a la cloture de s16, `ADR-0042` doit changer de statut"*. Il n'a pas joue, et le fichier
+  portait toujours `Accepte` - trouve par `sofia-sm` en verifiant au-dela des portes de sortie.
+  **Sa contrainte de forme reste valable et opposable telle quelle** ; c'est son predicat qui reste
+  du, le jour ou un ecran a partie en cours portera un arret dont la requete demarre une partie.
+  Precede de : amende le 2026-08-17 (s14), dette explicite ouverte avec son declencheur et son cout,
+  plutot qu'une troisieme promesse
 - **Date** : 2026-08-15
 - **Amende le** : 2026-08-15 - **un chiffre faux, aucune conclusion touchee**. Cet `ADR` disait
   "sept jeux" au catalogue reel a trois endroits ; il y en a **onze**. "Sept" etait la taille du
@@ -77,6 +82,54 @@
 > developpeur". Le raisonnement etait juste et la conclusion fragile : il faisait dependre l'existence
 > d'une regle d'un lot que personne ne garantissait. La lecon est encodee dans les deux `ADR` de s14,
 > dont les regles sont ecrites dans le commit qui les accepte, et dans aucun autre.
+
+> **Changement de statut du 2026-08-19 (s17) - `Accepte` devient `En attente de son objet`, et c'est
+> une tenue d'engagement, pas une degradation subie.**
+>
+> **Ce que j'avais ecrit**, dans mon avis de faisabilite de s16, section sur les trois dettes : *"si le
+> declencheur n'a pas joue a la cloture de s16, `ADR-0042` doit changer de statut - de `Accepte` a une
+> forme qui dit la verite"*, avec le motif : un `ADR` accepte dont la regle n'existe pas est ce que ce
+> depot a paye ; un `ADR` qui dit "cette decision attend son objet" ne coute rien a personne.
+>
+> **Le declencheur n'a pas joue.** Verifie sur le perimetre de s17 comme sur celui de s16 : aucune
+> story ne fait apparaitre, sur un ecran a partie en cours, un arret dont la requete demarre une
+> partie. `S17-2` et `S17-3` ajoutent du contenu ; `S17-4` restitue une entree de catalogue ; `S17-1`
+> touche un indicateur de focus. Le catalogue n'est toujours montre a aucun moment ou une partie vit.
+>
+> **Et le fichier portait toujours `Accepte`** - `sofia-sm` l'a trouve en verifiant au-dela des sept
+> portes de sortie de s16. C'est la seconde fois de ce sprint qu'un geste que j'avais moi-meme inscrit
+> dans un document a du etre reclame par quelqu'un d'autre, apres les deux statuts d'`ADR-0047` et
+> d'`ADR-0048`. Le point commun des trois n'est pas l'oubli d'une decision : c'est que **j'avais ecrit
+> la condition et laisse son execution a un moment qui n'appartenait a personne**. La lecon est la
+> meme que celle qu'`ADR-0013` a tiree en s13 d'une clause adossee a une ceremonie, et elle vaut pour
+> mes propres engagements : une condition dont l'echeance ne tombe dans le mandat de personne n'est
+> pas une condition.
+>
+> **Ce que ce statut change, et ce qu'il ne change pas.**
+>
+> - **Ne change pas** : la **contrainte de forme** ecrite pour `ines-design` reste valable et
+>   opposable telle quelle - un ecran qui montrerait le catalogue pendant une partie devra placer le
+>   retour vers la partie en premier arret, ne pas faire du point de focus un bouton de demarrage, et
+>   declarer un point de focus. Elle ne depend d'aucun predicat pour etre vraie ; elle se derive des
+>   clauses d'`ADR-0038` et d'`ADR-0040`, qui sont, elles, ecrites et vertes.
+> - **Ne change pas** : les mesures M0 a M5, les neuf non-preuves et le refus motive des trois
+>   elargissements. Ce sont des faits mesures, pas des promesses.
+> - **Change** : cet `ADR` cesse de compter parmi les decisions dont une regle executable garde
+>   l'application. Le predicat `estRemplacant` n'existe dans aucun fichier Java, et le statut le dit
+>   desormais au lieu de le laisser lire dans un amendement.
+>
+> **Ce qui le ferait redevenir `Accepte`** : l'ecriture du predicat, due par le premier lot qui rend,
+> sur un ecran a partie en cours, un arret dont la requete demarre une partie. Le declencheur est
+> observable dans un diff - un gabarit insere qui pose un `hx-post` vers la route de demarrage alors
+> que l'ecran se rend en partie en cours - et le cout reste celui chiffre en s14 : une dizaine de
+> lignes pour le predicat, l'essentiel etant la preuve de morsure de la forme M3.
+>
+> **Ce que je ne fais pas, et pourquoi ce n'est pas de la complaisance** : je n'ecris pas le predicat
+> aujourd'hui. La mesure M1 de cet `ADR` etablit qu'il serait vert sur une population vide, et son
+> obligation 3 refuse d'appeler garde-fou une clause livree sans son objet ni sa preuve de morsure. Le
+> livrer pour pouvoir reecrire `Accepte` serait exactement l'abstraction documentee-mais-morte que ce
+> depot s'interdit, avec un vernis d'executable en plus - et cette fois le statut dit la verite, ce
+> qui est le seul progres que ce geste apporte.
 
 ## Contexte
 
