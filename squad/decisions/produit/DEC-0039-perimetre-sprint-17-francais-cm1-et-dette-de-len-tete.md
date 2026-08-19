@@ -391,6 +391,7 @@ comme un changement de direction) reste leve par `S17-3` seule : au moins une li
 n'est pas un quatrieme sprint de stabilisation silencieuse. Mais l'ambition plus haute que le
 planning avait nommee - une ligne qui franchit `couvert-valide` ce sprint - ne se realise pas, et
 je ne l'habille pas autrement.
+
 ## Amendement du 2026-08-19 (camille-po, s17) - `S17-C` (tabindex de la revelation) n'entre pas au perimetre de s17
 
 `nadia-prof` a rendu sa sonde post-livraison sur `S17-1` (`squad/conformite/FICHE-barre-entree-
@@ -523,7 +524,7 @@ seule une proposition reelle d'`ines-design`, sur un mandat explicitement ouvert
 Je ne rouvre aucun Done pedagogique deja accorde sur `M4`, `S15-8`, `S15-9` ou les conditions `F` du
 meuble.
 
-## Ce que je route
+## Ce que je route (ajout du 2026-08-19, troisieme)
 
 - **`sofia-sm`** : ne plus reconduire cet obstacle comme une ligne sans proprietaire dans les
   rapports de sprint - il a desormais un proprietaire (`camille-po`) et un declencheur explicite (la

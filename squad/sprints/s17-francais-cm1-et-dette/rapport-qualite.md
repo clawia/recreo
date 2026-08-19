@@ -18,8 +18,7 @@ rencontre pendant les runs cibles ci-dessous.
 Ce rapport ne porte pas de Done pedagogique : `cm1-synonymes` (branche `s17-lea`, non fusionnee)
 n'a pas ete rejoue par `nadia-prof`, et rien ici ne s'y substitue.
 
-## 1. `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` sur `cm1-synonymes` : constat de
-`lea-dev` confirme, garde-fou vide
+## 1. `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` sur `cm1-synonymes` : constat de `lea-dev` confirme, garde-fou vide
 
 **Verifie a la source**, pas pris sur parole : lecture de `git show
 s17-lea:adapters/adapter-content/src/main/resources/contenu/cm1-synonymes.yaml` (20 items, 60
@@ -113,8 +112,7 @@ tout paquet dont `repartition.total() == 0` sur `LeRangDeLaBonneReponseNEstPasPr
 - rendre le silence visible sans pretendre le combler. Les deux sont des decisions de mecanisme,
 pas de simples corrections de bug.
 
-## 2. `UneMatiereNAQuUneSeuleGraphieDansLeContenuServiTest` : mord dans le sens attendu, muet sur un
-autre
+## 2. `UneMatiereNAQuUneSeuleGraphieDansLeContenuServiTest` : mord dans le sens attendu, muet sur un autre
 
 Lecture du test (`adapters/adapter-content/src/test/java/com/recreo/adapter/content/
 UneMatiereNAQuUneSeuleGraphieDansLeContenuServiTest.java`) : la fonction `replie()` normalise une
