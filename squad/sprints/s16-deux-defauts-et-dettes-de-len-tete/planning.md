@@ -133,6 +133,19 @@ cette fois : rien n'urge a la fermer avant une autre date que sa propre place da
    apres fusion, un lot pedagogique reste hors branche plusieurs heures, trois arbitrages sans trace
    `DEC` pendant toute leur duree de vie en production).
 
+## Correction du 2026-08-19 (trouvee par camille-po, s17)
+
+Le point 1 ci-dessus dit "23 lignes `couvert-valide`, 5 `en cours`, 46 non couvertes sur 74" :
+**faux sur trois des quatre nombres**, recopie sans reverification depuis `DEC-0037` (section 4),
+elle-meme fautive des son premier commit. Methode et etat reel verifies par `camille-po` dans
+`squad/programme/MATRICE-couverture.md`, section "Synthese au sprint 17 (2026-08-19)" - une puce de
+premier niveau des quatre referentiels de `squad/programme/` = une ligne de competence, verifiee
+par deux chemins independants : **9 lignes `couvert-valide`, 5 `en cours`, 32 non couvertes, sur 46
+lignes de competence au total** (19,6 %, non 31,1 %). Seul "5 en cours" etait juste. Je ne corrige
+pas la ligne d'origine : je verse ici la lecture correcte de la source, avec sa methode. La limite
+posee dans `DEC-0037` (engagement de cloture pour s17) ne depend pas de la valeur exacte de ce
+chiffre et reste inchangee ; elle est plus pressante sous le taux reel que sous le taux fautif.
+
 ## Ce que je decide sur les deux documents encore dus de la cloture de s15
 
 **`confirmation-archunit.md` de `theo-archi` est livre** (fusion `ea4433f`) - sixieme absence de

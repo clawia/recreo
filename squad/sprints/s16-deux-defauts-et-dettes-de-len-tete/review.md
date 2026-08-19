@@ -229,6 +229,20 @@ planning comme un engagement de cloture : **si s17 ne rouvre aucune ligne de la 
 `sofia-sm` et `camille-po` de l'ecrire comme un changement de direction du produit, pas comme une
 continuation silencieuse.** Cet engagement est reporte tel quel a l'ouverture de s17.
 
+## Correction du 2026-08-19 (trouvee par camille-po, s17)
+
+La section ci-dessus dit "23 lignes `couvert-valide`, 5 `en cours`, 46 `non couvert`, sur 74
+lignes de competence au total" : **faux sur trois des quatre nombres**, recopie sans
+reverification depuis `DEC-0037` (section 4), elle-meme fautive des son premier commit. Methode
+et etat reel verifies par `camille-po` dans `squad/programme/MATRICE-couverture.md`, section
+"Synthese au sprint 17 (2026-08-19)" - une puce de premier niveau des quatre referentiels de
+`squad/programme/` = une ligne de competence, verifiee par deux chemins independants : **9 lignes
+`couvert-valide`, 5 `en cours`, 32 non couvertes, sur 46 lignes de competence au total** (19,6 %,
+non 31,1 %). Seul "5 en cours" etait juste. Je ne corrige pas le paragraphe d'origine : je verse
+ici la lecture correcte de la source, avec sa methode. La limite posee dans `DEC-0037` (engagement
+de cloture pour s17) ne depend pas de la valeur exacte de ce chiffre et reste inchangee ; elle est
+plus pressante sous le taux reel que sous le taux fautif.
+
 ## Decisions prises
 
 1. **Le Done technique de l'increment fusionne (`750ef9d`) est atteste par ma propre execution de
