@@ -217,3 +217,13 @@ cet amendement.
   laisser sur son incomprehension initiale, est un jugement pedagogique de fond que je ne
   tranche pas ici (voir point 4) : je fixe un comportement observable, `nadia-prof` en jugera
   l'effet.
+
+## Note du 2026-08-19 (s16)
+
+Le point 3 fixait le texte du message de reprise et les deux cas ou il s'affiche ou non, sans
+fixer de duree de validite au marqueur qui le declenche. L'utilisatrice constate que ce marqueur,
+depourvu de toute duree de vie, peut declencher le message bien au-dela du moment ou une
+interruption reelle a eu lieu. Le texte n'est pas modifie ; le moment ou il s'affiche est precise
+par `DEC-0036-message-de-partie-interrompue-borne-a-une-interruption-plausible.md`, qui borne le
+marqueur a la duree d'inactivite maximale de la session qu'il signale. Voir cette decision pour le
+detail complet.

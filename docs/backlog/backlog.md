@@ -4337,3 +4337,286 @@ ici : il fait l'objet d'une story distincte instruite par `theo-archi`.
   `DEC-0034-utilisatrice-retablit-les-jeux-et-unifie-lapparence-des-puces.md`.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, apres proposition de disposition
   d'`ines-design`.
+
+### S15-RETRO-1 - "Les jeux" reste visible dans l'en-tete pendant une manche en cours (regularisation retroactive)
+
+- **Story retroactive** : cette story documente, apres coup, l'arbitrage C de `DEC-0035`, deja
+  instruit, code et fusionne avant qu'elle ne soit ecrite. Elle ne rouvre aucun arbitrage et
+  n'ajoute rien au comportement livre. Elle comble l'ecart signale par `DEC-0035` elle-meme :
+  aucune story de backlog ne portait cet arbitrage.
+- **Besoin** : en tant qu'eleve de CP ou de CM1 en train de jouer une manche, je veux voir a tout
+  moment un chemin vers "Les jeux" dans l'en-tete, afin de pouvoir changer de jeu sans etre bloque
+  sur l'ecran de manche.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Criteres d'acceptation** (constates sur l'increment fusionne `b109f98`, non a redemontrer) :
+  - Etant donne l'ecran de manche, quand il est rendu, alors l'element de role sortie "Les jeux"
+    de l'en-tete est visible - ce qui renverse, sur arbitrage de l'utilisatrice, celui du
+    2026-08-07 (S6-9, `ADR-0022` point 3).
+  - Etant donne l'ecran de confirmation d'abandon ou l'ecran de fin de partie, quand il est rendu,
+    alors l'element "Les jeux" de l'en-tete n'est pas visible - chacun de ces deux ecrans porte
+    deja sa propre sortie, jamais deux a la fois.
+  - Etant donne n'importe quel ecran assemble par le serveur, quand on compte les elements de role
+    sortie visibles simultanement, alors ce compte ne depasse jamais un.
+- **Porte de sortie** : **deja franchie**. Done pedagogique **VALIDE SOUS RESERVE** prononce par
+  `nadia-prof` sur l'increment `b109f98` (`squad/conformite/FICHE-barre-entree-niveau.md`, section
+  "Done pedagogique du 2026-08-18 (s15), cloture"). Une reserve non bloquante nait de cet
+  arbitrage - nommee **S15-C** par `nadia-prof` dans cette meme fiche, a ne pas confondre avec
+  l'identifiant de cette story - et reste ouverte, sans action produit distincte a ce stade. Rien
+  a planifier.
+- **Lien decision** : `DEC-0035`, arbitrage C ; note du 2026-08-18 sous `DEC-0027` ; note du
+  2026-08-18 sous `DEC-0034`.
+- **Agent pressenti** : aucun - deja livre.
+
+### S15-RETRO-2 - Un seul rang dans l'en-tete a partir de 470 px (regularisation retroactive)
+
+- **Story retroactive** : documente l'arbitrage D de `DEC-0035`, deja instruit, code et fusionne.
+  Elle ne rouvre aucun arbitrage.
+- **Besoin** : en tant qu'eleve de CP ou de CM1, je veux que l'en-tete tienne sur une seule ligne
+  des que mon ecran est assez large, afin de voir d'un coup d'oeil l'icone, le titre, les niveaux
+  et "Les jeux".
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Criteres d'acceptation** (constates sur l'increment fusionne, non a redemontrer) :
+  - Etant donne un ecran d'au moins 470 px de large, quand l'en-tete est rendu, alors l'icone, le
+    titre, les puces CP et CM1 et "Les jeux" apparaissent sur un seul rang.
+  - Etant donne le plancher de largeur du produit (360 px), quand l'en-tete est rendu, alors il
+    peut se replier sur deux rangs, mais aucun element ni aucune partie de texte ne devient
+    inatteignable ni ne deborde du document (`scrollWidth` egal a `clientWidth`).
+  - Etant donne les six largeurs verifiees par `nadia-prof` (300, 320, 345, 346, 360 et 470 px),
+    quand le document est mesure, alors le debordement horizontal est nul aux six.
+- **Porte de sortie** : **deja franchie**. Done pedagogique **VALIDE** prononce par `nadia-prof`
+  sur l'increment `65da40e` (`squad/conformite/FICHE-barre-entree-niveau.md`, section "Done
+  pedagogique du 2026-08-18 (s15), second lot"), sept conditions S15-1 a S15-7 tenues. Rien a
+  planifier.
+- **Lien decision** : `DEC-0035`, arbitrage D.
+- **Agent pressenti** : aucun - deja livre.
+
+### S15-RETRO-3 - Une couleur marque la puce de niveau choisie, eteinte des le demarrage du jeu (regularisation retroactive)
+
+- **Story retroactive** : documente l'arbitrage E de `DEC-0035` et le correctif de regression qui
+  l'a suivi, deja instruits, codes et fusionnes. Elle ne rouvre aucun arbitrage.
+- **Besoin** : en tant qu'eleve de CP ou de CM1, je veux voir laquelle des deux puces de niveau
+  j'ai choisie tant que je n'ai pas encore commence a jouer, afin de savoir sur quelle liste je me
+  trouve.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Criteres d'acceptation** (constates sur l'increment fusionne, non a redemontrer) :
+  - Etant donne l'accueil affichant une liste filtree par niveau, quand la puce du niveau choisi
+    est rendue, alors elle porte un etat visuellement distinct de son etat inactif (inversion
+    pleine/contour), mesure a un contraste d'au moins 4,5:1.
+  - Etant donne ce meme ecran, quand on lit le texte affiche au-dessus de la liste, alors une
+    phrase nomme le filtre en cours ("Pour le CP" ou "Pour le CM1"), independamment de la couleur.
+  - Etant donne une partie qui demarre depuis une liste filtree, quand l'ecran de jeu est rendu,
+    alors aucune puce ne porte plus la couleur d'etat actif.
+  - Etant donne un retour au catalogue complet depuis "Les jeux", une confirmation d'abandon ou
+    une annulation, quand l'accueil est de nouveau rendu sans filtre, alors aucune puce ne porte
+    la couleur d'etat actif - correction de la regression trouvee par l'utilisatrice sur les trois
+    routes concernees, deja livree.
+  - Etant donne un chargement de page, quand l'accueil se rend, alors l'etat actif ne survit
+    jamais a lui seul a ce chargement (non-persistance).
+- **Porte de sortie** : **deja franchie**. Done pedagogique **VALIDE** prononce par `nadia-prof`
+  sur l'increment `65da40e`, puis **VALIDE SOUS RESERVE** sur le correctif de regression
+  (`squad/conformite/FICHE-barre-entree-niveau.md`, "Statut global a la cloture de s15"). Une
+  reserve non bloquante nait de ce lot - nommee **S15-D** par `nadia-prof` dans cette meme fiche,
+  absence de phrase sur la route `/niveaux/{niveau}/confirmer` - et reste ouverte, hors perimetre
+  de cette story. Rien a planifier.
+- **Lien decision** : `DEC-0035`, arbitrage E.
+- **Agent pressenti** : aucun - deja livre.
+
+## Sprint 16 - Deux defauts trouves par l'utilisatrice en rejouant l'application livree de s15
+
+### S16-1 - Correction : le message de partie interrompue ne s'affiche que pour une interruption plausible
+
+- **Besoin** : en tant qu'enfant qui revient sur `recreo` apres une pause ordinaire (l'ecran a ete
+  range, ou le serveur a simplement eu le temps de m'oublier), je veux retrouver directement la
+  liste des jeux, afin de ne pas croire qu'une partie s'est arretee alors que je n'ai rien
+  interrompu.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Comportement
+  generique de l'accueil, deja pose par `S1-4`.
+- **Ce que cette story ne rouvre pas** : le texte du message ("Ta partie s'est arretee. Choisis
+  un nouveau jeu !") reste inchange, deja valide par `nadia-prof`
+  (`squad/conformite/FICHE-bandit-manchot-additions-cp.md`). Cette story corrige uniquement le
+  moment ou il s'affiche.
+- **Criteres d'acceptation** :
+  - Etant donne le marqueur que le serveur pose pour signaler une partie en cours, quand on
+    observe sa duree de validite declaree, alors elle n'excede jamais la duree d'inactivite
+    maximale configuree pour la session HTTP a laquelle il se rapporte.
+  - Etant donne une session qui a disparu par la seule expiration d'inactivite (aucun
+    redemarrage, aucun plantage du serveur), quand l'enfant revient sur "/", alors l'accueil
+    affiche directement le catalogue complet, sans le message "Ta partie s'est arretee. Choisis
+    un nouveau jeu !" - ce cas se comporte comme une premiere visite.
+  - Etant donne une session detruite par un redemarrage ou un arret du serveur survenu pendant
+    que le marqueur de partie en cours etait encore valide au sens du premier critere, quand
+    l'enfant revient sur "/", alors le message "Ta partie s'est arretee. Choisis un nouveau jeu !"
+    continue de s'afficher exactement comme aujourd'hui, au-dessus de la liste des jeux.
+  - Etant donne un enfant qui recharge la page pendant que sa session HTTP est encore valide,
+    quand la page se recharge, alors il retrouve directement l'etat de sa manche en cours, sans
+    aucun message affiche - comportement deja acquis par `S1-4`, non modifie par cette story.
+  - Ce que cette story ne tranche pas : le moyen technique qui lie la duree de vie du marqueur a
+    la duree d'inactivite maximale de la session (`theo-archi`, DEC-0036).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : elle rejoue les deux scenarios nommes aux deuxieme et troisieme criteres sur
+    l'increment livre et consigne son constat dans
+    `squad/conformite/FICHE-bandit-manchot-additions-cp.md` - elle seule peut confirmer que le
+    message ne se declenche plus que pour l'evenement qu'elle a deja valide.
+- **Porte de sortie** : les quatre premiers criteres testables ci-dessus tenus et `mvn verify`
+  vert, puis constat ecrit de `nadia-prof` sur les deux scenarios rejoues.
+- **Lien decision** :
+  `DEC-0036-message-de-partie-interrompue-borne-a-une-interruption-plausible.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S16-2 - Correction : l'adresse affichee correspond au catalogue complet apres un retour depuis "Les jeux"
+
+- **Besoin** : en tant qu'eleve, je veux que l'adresse affichee par mon navigateur corresponde a
+  ce que je vois quand j'appuie sur "Les jeux", afin que si je recharge cette page ou que je la
+  retrouve plus tard, je revoie exactement ce que j'avais sous les yeux, et pas une liste filtree
+  sur un niveau que je ne suis plus.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Navigation et
+  ergonomie de l'en-tete.
+- **Ce que cette story ne rouvre pas** : le mot "Les jeux" ne change pas, et le comportement de
+  confirmation d'une partie en cours (`DEC-0026`, `ADR-0038`, `ADR-0042`) n'est pas retire.
+- **Criteres d'acceptation** :
+  - Etant donne l'accueil affichant une liste filtree sur un niveau (par exemple CM1, cinq jeux)
+    et aucune partie en cours, quand l'enfant active l'element "Les jeux" de l'en-tete, alors
+    l'adresse affichee par le navigateur devient celle du catalogue complet, coherente avec les
+    onze jeux desormais affiches - elle ne reste plus celle du niveau quitte.
+  - Etant donne l'adresse obtenue au critere precedent, quand l'enfant la recharge (touche
+    d'actualisation, nouvel onglet sur la meme adresse, ou signet), alors le catalogue complet
+    des onze jeux s'affiche a l'identique.
+  - Etant donne un ecran de jeu ou "Les jeux" est visible et une partie en cours, quand l'enfant
+    active "Les jeux", alors l'ecran de confirmation d'abandon s'affiche exactement comme avant
+    cette story - aucune partie n'est quittee sans confirmation explicite.
+  - Etant donne l'ecran de confirmation ouvert par "Les jeux" pendant une partie en cours, quand
+    l'enfant confirme vouloir partir, alors il obtient le meme resultat qu'aujourd'hui (catalogue
+    complet, partie abandonnee) - cette story ne change que l'adresse affichee quand aucune
+    partie n'etait en cours.
+  - Ce que cette story ne tranche pas : le moyen technique par lequel l'element "Les jeux" devient
+    une navigation complete tout en continuant de porter l'ouverture de l'ecran de confirmation
+    quand une partie est en cours (`hx-post="/retour"` porte aujourd'hui cette double
+    responsabilite - `theo-archi`, saisine par `sofia-sm`).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : elle rejoue l'increment et confirme par un constat ecrit dans
+    `squad/conformite/FICHE-barre-entree-niveau.md` qu'aucune des conditions deja tenues sur cet
+    ecran (marqueur `ecran-porte-sa-sortie`, BARRE, PORTE, S15-1 a S15-9) n'est degradee par le
+    changement de mecanisme de navigation.
+- **Porte de sortie** : les quatre premiers criteres testables ci-dessus tenus et `mvn verify`
+  vert, puis constat ecrit de `nadia-prof`.
+- **Lien decision** : aucune - correction directe d'un ecart de navigation non arbitre, pas un
+  renversement de decision produit. Contrainte technique routee a `theo-archi` ci-dessus.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S16-3 - Une puce de niveau active garde son apparence sous le pointeur
+
+- **Besoin** : en tant qu'eleve de CP ou de CM1, je veux que la puce du niveau que j'ai choisi
+  garde son apparence si ma souris passe dessus ou si je clique dessus par erreur, afin de
+  continuer a voir clairement quel niveau est actif.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Garde-fou de
+  non-regression sur un arbitrage deja rendu.
+- **Ce que cette story ne rouvre pas** : la forme retenue pour l'etat sous pointeur est deja
+  arbitree par `nadia-prof` le 2026-08-18 (variante neutre, `squad/conformite/FICHE-barre-entree-
+  niveau.md`, section 4) : rien ne change sous le pointeur, exactement comme avant l'entree de la
+  bibliotheque tierce en s03 (`ADR-0046`).
+- **Criteres d'acceptation** :
+  - Etant donne la puce du niveau actif (etat plein), quand un pointeur la survole, l'active ou la
+    prend au clavier (`:hover`, `:active`, `:focus-visible`), alors ses couleurs de texte, de fond
+    et de bordure restent identiques a son etat actif au repos.
+  - Etant donne la puce du niveau inactif (etat contour), quand un pointeur la survole, l'active
+    ou la prend au clavier, alors ses couleurs de texte, de fond et de bordure restent identiques
+    a son etat inactif au repos - garantie deja tenue par `ADR-0046` pour les huit boutons traites
+    en s15, etendue ici a la variante active introduite apres cet ADR.
+  - Ce que cette story ne tranche pas : le moyen technique (regle CSS composee, nombre de regles),
+    sous les quatre exigences deja ecrites par `theo-archi` dans `ADR-0046`, section "Ce que
+    j'exige du lot qui corrigera" (six regles au plus, contour non facultatif, aucun `!important`,
+    forme neutre uniquement).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : elle rejoue et confirme, dans `squad/conformite/FICHE-barre-entree-niveau.md`,
+    qu'aucun changement visible n'apparait sous le pointeur - constat qu'elle a deja signale ne
+    pouvoir produire qu'a titre de jugement de geometrie, faute d'outillage capable de simuler un
+    survol (voir la dependance nommee dans `DEC-0037`).
+- **Porte de sortie** : les deux premiers criteres tenus, verifies par le garde-fou derive
+  d'`ADR-0046` (mutation testee), et `mvn verify` vert, puis constat ecrit de `nadia-prof`.
+- **Lien decision** : `ADR-0046-un-etat-interactif-tiers-oblige-la-feuille-maison-a-le-
+  declarer.md` ; arbitrage de `nadia-prof` du 2026-08-18 (`FICHE-barre-entree-niveau.md`).
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S16-4 - Une proposition deja essayee garde son apparence sous le pointeur
+
+- **Besoin** : en tant qu'eleve qui joue a un jeu construit sur la mecanique du bandit manchot, je
+  veux qu'une proposition que j'ai deja essayee garde son apparence si mon doigt ou ma souris
+  passe dessus, afin de continuer a la reconnaitre facilement parmi les autres.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Cette story touche un
+  style partage par tous les jeux construits sur la mecanique du bandit manchot, pas seulement
+  l'en-tete ou vit l'arbitrage qui l'a tranchee.
+- **Ce que cette story ne rouvre pas** : `nadia-prof` a retenu la variante neutre pour
+  `.proposition.deja-essayee` le 2026-08-18, sous deux conditions (`FICHE-barre-entree-niveau.md`,
+  section 4).
+- **Criteres d'acceptation** :
+  - Etant donne une proposition marquee "deja essayee", sur chacune de ses quatre positions
+    cycliques de fond, quand un pointeur la survole ou l'active, alors elle garde la couleur de
+    fond de sa position (condition **S15-8**).
+  - Etant donne cette meme proposition, quand un pointeur la survole ou l'active, alors le trait
+    qui la marque comme deja essayee garde son epaisseur et sa teinte (condition **S15-9**).
+  - Ce que cette story ne tranche pas : le moyen technique, sous les memes quatre exigences
+    d'`ADR-0046` que `S16-3`.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : elle rejoue et confirme sur les quatre positions et sur plusieurs items -
+    a la cloture de s15 elle n'avait pu verifier qu'une position et un seul item, et l'a
+    elle-meme note comme degrade.
+- **Porte de sortie** : les deux premiers criteres tenus, `mvn verify` vert, puis constat ecrit de
+  `nadia-prof` sur les quatre positions.
+- **Lien decision** : `ADR-0046-un-etat-interactif-tiers-oblige-la-feuille-maison-a-le-
+  declarer.md` ; arbitrage de `nadia-prof` du 2026-08-18 (`FICHE-barre-entree-niveau.md`).
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S16-5 - Tout libelle rendu par le modele est soumis au meme garde-fou d'accentuation que le texte ecrit en clair
+
+- **Besoin** : en tant qu'eleve, je veux que tout mot ecrit a mon intention sur l'ecran soit
+  toujours correctement accentue, meme s'il vient d'un contenu ou d'un catalogue ajoute plus tard
+  et non d'un gabarit ecrit a la main, afin de ne jamais lire un mot mal orthographie.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Garde-fou de
+  redaction (`DEC-0002`, amendement du 2026-08-04 : tout texte lu par l'enfant est integralement
+  accentue).
+- **Ce que cette story ne fait pas** : elle ne rend aucun rendu different pour l'enfant. Le texte
+  actuel ("CP", "CM1") reste affiche a l'identique.
+- **Criteres d'acceptation** :
+  - Etant donne un libelle produit par le contenu ou le catalogue et pose dans un gabarit par une
+    donnee du modele (`th:text`/`th:utext`) plutot qu'ecrit en clair, quand ce libelle contient au
+    moins une lettre qui devrait porter un accent en francais correct et ne le porte pas, alors un
+    garde-fou fait echouer la construction, en nommant le libelle fautif - meme garantie que celle
+    que `TexteAccentueDesGabaritsTest` porte deja pour le texte ecrit en clair.
+  - Etant donne les libelles de niveau actuels ("CP", "CM1"), quand ce garde-fou s'execute, alors
+    ils restent verts, avec une exemption ecrite explicitement dans le code du garde-fou, sa
+    raison (aucune lettre accentuable dans ces deux chaines) et sa frontiere (elle cesse de
+    s'appliquer des qu'un niveau futur porte une lettre accentuable) - demande exacte de
+    `nadia-prof` du 2026-08-18 (`FICHE-barre-entree-niveau.md`, section 5).
+  - Ce que cette story ne tranche pas : si la nomenclature de matiere, le jour ou elle s'affichera,
+    portera une valeur interne elle-meme accentuee ou un libelle d'affichage distinct - question
+    d'architecture encore ouverte de `DEC-0032`, point 2, non fermee par ce garde-fou.
+- **Porte de sortie** : les criteres testables ci-dessus tenus et `mvn verify` vert. Aucun rendu ne
+  changeant pour l'enfant, aucun constat de `nadia-prof` n'est attendu par construction ; elle
+  peut neanmoins le demander si elle le juge necessaire.
+- **Lien decision** : `DEC-0032-perimetre-sprint-14-barre-entree-niveau-arbitrage-prealable-
+  matiere-differee.md`, point 2 ; demande de `nadia-prof` du 2026-08-18
+  (`FICHE-barre-entree-niveau.md`, section 5).
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S16-6 - La phrase qui nomme le filtre en cours apparait aussi apres un changement de niveau confirme pendant une partie
+
+- **Besoin** : en tant qu'eleve de CP ou de CM1 qui change de niveau alors qu'une partie etait en
+  cours, je veux qu'une phrase me dise sur quelle liste je me trouve apres avoir confirme, afin de
+  savoir ce que je vois sans avoir a le deviner.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Ce que cette story ne rouvre pas** : elle applique a une route ou elle manque encore la meme
+  condition que `S15-2`/`S14-1` appliquent deja a l'accueil (`nadia-prof`, condition **S15-2**,
+  couplage phrase/couleur).
+- **Criteres d'acceptation** :
+  - Etant donne une partie en cours et un changement de niveau confirme par l'enfant (route
+    `/niveaux/{niveau}/confirmer`), quand l'accueil filtre qui en resulte est rendu, alors une
+    phrase nomme le niveau affiche ("Pour le CP" ou "Pour le CM1"), au-dessus de la liste des
+    jeux, exactement comme sur l'accueil filtre atteint sans partie en cours.
+  - Etant donne ce meme ecran, quand on compare la puce de niveau active a la phrase affichee,
+    alors les deux nomment le meme niveau - aucune des deux ne peut apparaitre sans l'autre
+    (reserve **S15-D** fermee).
+- **Porte de sortie** : les deux criteres testables ci-dessus tenus et `mvn verify` vert, puis
+  constat ecrit de `nadia-prof` dans `squad/conformite/FICHE-barre-entree-niveau.md`.
+- **Lien decision** : reserve **S15-D** de `nadia-prof`, nommee dans `squad/sprints/s15-cinq-
+  arbitrages-de-l-en-tete/RAPPORT.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.

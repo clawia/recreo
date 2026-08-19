@@ -276,3 +276,16 @@ decision produit ici enregistrerait une decision qui n'a pas ete prise une secon
 - **Personne, pour la reserve S15-C** : elle reste ouverte, non bloquante, et sa fermeture depend du
   Done complet sur l'increment D/E une fois fusionne - pas d'une action produit distincte a ce
   stade.
+
+## Note du 2026-08-19 (s16) - les deux ecarts signales sont traites separement
+
+- **L'ecart de backlog est comble.** `docs/backlog/backlog.md`, section "Sprint 15", recoit trois
+  stories retroactives - `S15-RETRO-1`, `S15-RETRO-2`, `S15-RETRO-3` -, une par arbitrage C, D et
+  E, avec leurs criteres d'acceptation et leur porte de sortie deja franchie. Elles ne rouvrent
+  aucun des trois arbitrages ; elles tracent, comme `S15-1` et `S15-2` l'avaient fait pour A et B,
+  ce que le produit fait deja.
+- **L'ecart de citation verbatim reste ouvert.** Je n'ai trouve, en relisant a nouveau le depot le
+  2026-08-19, aucune source ecrite qui porterait les mots exacts de l'utilisatrice pour C, D ou E,
+  au-dela de la paraphrase de `marc-dev` et de `theo-archi` deja citee plus haut. Je ne comble pas
+  cet ecart par une citation reconstituee : je le signale a l'utilisatrice elle-meme, seule source
+  possible, pour qu'elle confirme ou complete la paraphrase si elle le souhaite.
