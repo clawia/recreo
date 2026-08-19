@@ -341,6 +341,21 @@ class PartieControllerTest {
                 .isEqualTo("un");
     }
 
+    /**
+     * S16-2, critere 3, sens negatif (ADR-0048) : la meme reponse ne declare aucune adresse quand
+     * une partie en cours fait rendre la confirmation - sinon l'adresse mentirait sur ce que
+     * l'enfant vient de quitter, qui n'est rien.
+     */
+    @Test
+    void laReponseDeRetourNeDeclareAucuneAdresseAvecUnePartieEnCours() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+
+        MvcResult confirmation = mockMvc.perform(post("/retour").session(session)).andReturn();
+
+        assertThat(confirmation.getResponse().getHeader("HX-Push-Url")).isNull();
+    }
+
     /** Confirmer l'abandon depuis l'ecran de confirmation clot bien la partie. */
     @Test
     void confirmerLAbandonClotLaPartieEtRevientALaListeDesJeux() throws Exception {
@@ -477,6 +492,20 @@ class PartieControllerTest {
     }
 
     /**
+     * S16-2, critere 1, reecrit par theo-archi (ADR-0048) : sans partie en cours, la reponse de
+     * /retour declare, par une en-tete de reponse et non par un attribut du declencheur, l'adresse
+     * du catalogue complet qu'elle vient de rendre - la meme branche qui choisit le fragment.
+     */
+    @Test
+    void laReponseDeRetourDeclareLAdresseDuCatalogueCompletSansPartieEnCours() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+
+        MvcResult resultat = mockMvc.perform(post("/retour").session(session)).andReturn();
+
+        assertThat(resultat.getResponse().getHeader("HX-Push-Url")).isEqualTo("/");
+    }
+
+    /**
      * S1-4, 1er et 2e criteres, M3 : la partie se termine exactement au nombre de manches annonce,
      * meme si le contenu est combinatoire et ne s'epuise jamais, et meme si l'enfant echoue toutes
      * les manches - jamais au milieu d'une question (M3), toujours par la revelation du troisieme
@@ -558,6 +587,42 @@ class PartieControllerTest {
                 .andReturn().getResponse().getContentAsString();
 
         assertThat(Jsoup.parse(html).select(".message-reprise")).isEmpty();
+    }
+
+    /**
+     * S16-1, critere 1, ADR-0047 : la duree de validite declaree du marqueur est egale a la duree
+     * d'inactivite maximale de la session HTTP de cette meme requete - lue sur la session jugee,
+     * jamais recopiee dans ce test (assertion contre {@code session.getMaxInactiveInterval()}, pas
+     * contre un nombre litteral).
+     */
+    @Test
+    void laDureeDeVieDuMarqueurEstLueSurLaSessionEtJamaisRecopiee() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        session.setMaxInactiveInterval(1800);
+
+        MvcResult demarrage = mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session))
+                .andReturn();
+        Cookie marqueur = demarrage.getResponse().getCookie("recreo-partie-en-cours");
+
+        assertThat(marqueur.getMaxAge()).isEqualTo(session.getMaxInactiveInterval());
+    }
+
+    /**
+     * S16-1, critere 2, reecrit par theo-archi (ADR-0047) : une requete qui ne porte pas le
+     * marqueur, quel qu'en soit le motif, obtient le catalogue complet sans le message - la
+     * consequence observable de l'invariant de DEC-0036, sur le cas le plus simple : aucun cookie
+     * du tout.
+     */
+    @Test
+    void uneRequeteSansMarqueurObtientLeCatalogueCompletSansLeMessage() throws Exception {
+        String html = mockMvc.perform(get("/")).andReturn().getResponse().getContentAsString();
+        Document page = Jsoup.parse(html);
+
+        assertThat(page.select(".message-reprise")).isEmpty();
+        List<String> titresRendus = page.select("button.demarrer").eachText();
+        List<String> titresDuCatalogue = partieUseCase.jeuxDisponibles().stream()
+                .map(GameDefinition::titre).toList();
+        assertThat(titresRendus).containsExactlyElementsOf(titresDuCatalogue);
     }
 
     /**

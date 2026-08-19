@@ -91,6 +91,21 @@ class EtatDePartieEnSessionTest {
                 .isInstanceOf(IllegalStateException.class);
     }
 
+    /**
+     * ADR-0047 : simple lecture directe de la duree d'inactivite maximale que le conteneur
+     * applique a cette session - aucun calcul, aucune valeur recopiee dans la classe.
+     */
+    @Test
+    void dureeInactiviteMaximaleLitLaDureeReelleDeLaSessionHttp() {
+        MockHttpServletRequest requete = new MockHttpServletRequest();
+        MockHttpSession session = new MockHttpSession();
+        session.setMaxInactiveInterval(900);
+        requete.setSession(session);
+
+        assertThat(new EtatDePartieEnSession(requete).dureeInactiviteMaximale())
+                .isEqualTo(session.getMaxInactiveInterval());
+    }
+
     @Test
     void unCoupSurUnJeuQuiNEstPasCeluiDeLaSessionEstRefuse() {
         MockHttpServletRequest requete = requeteAvecPartieEnCours(2);
