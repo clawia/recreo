@@ -4,6 +4,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -530,6 +531,16 @@ class TailleDesTextesEtBoutonsTest {
                 .contains("sortie-pleine");
     }
 
+    /**
+     * <b>ADR-0050 : epinglage, plus une promesse generale.</b> Son nom dit "aucun texte" et son
+     * perimetre est une liste de sept selecteurs ecrite a la main : {@code .texte-support},
+     * {@code .verdict}, {@code .filtre-niveau} ou {@code .question-confirmation} n'y sont pas, et une
+     * regle qui abaisserait l'un d'eux passait verte de bout en bout. La promesse generale est
+     * desormais portee par {@link #aucuneTailleDeclareeParLaFeuilleMaisonNePasseSousLePlancher},
+     * derivee de la feuille ; ces sept-la restent nommes comme ce qu'ils sont, l'epinglage de ce que
+     * S2-1 et S3-4 ont gagne. Meme resolution qu'ADR-0015 et qu'ADR-0039 : la propriete generale
+     * demenage dans un balayage derive, l'epinglage nomme reste nomme.
+     */
     @Test
     void aucunTexteNePasseSousLaTailleDeLaConsigne() {
         Map<String, String> blocs = blocsMaison(RACINE_PRODUCTION);
@@ -816,6 +827,130 @@ class TailleDesTextesEtBoutonsTest {
                 .as("les deux regles nommees doivent etre celles que la feuille porte vraiment : une "
                         + "enumeration dont un membre a disparu n'enumere plus rien")
                 .containsExactlyInAnyOrderElementsOf(TAILLES_NOMMEES_DES_PROPOSITIONS.keySet());
+    }
+
+    /**
+     * Toutes les declarations de cette propriete dans un corps de regle, et non la premiere seule.
+     * Une regle qui declarerait deux fois la taille du texte ne doit pas cacher la seconde derriere
+     * la premiere : {@link #debutDeDeclaration} s'arrete au premier debut trouve, ce qui suffit pour
+     * lire une valeur qu'on sait unique, jamais pour affirmer qu'aucune autre n'existe.
+     */
+    private static List<Integer> declarationsDe(String corps, String propriete) {
+        List<Integer> positions = new ArrayList<>();
+        String etiquette = propriete + ":";
+        int position = corps.indexOf(etiquette);
+        while (position >= 0) {
+            if (estDebutDeDeclaration(corps, position)) {
+                positions.add(position);
+            }
+            position = corps.indexOf(etiquette, position + 1);
+        }
+        return positions;
+    }
+
+    /**
+     * <b>ADR-0050, clause 1 : aucune regle de la feuille maison ne descend le texte sous le plancher
+     * de lisibilite.</b>
+     *
+     * <p>Le plancher de 1,25rem est de nadia-prof, pas de moi, et il est deja garde deux fois : sur
+     * tout bouton reellement rendu ({@link #verifierPlancherDeLisibilite}, perimetre derive des
+     * gabarits) et sur sept selecteurs nommes a la main
+     * ({@link #aucunTexteNePasseSousLaTailleDeLaConsigne}). Entre les deux, <b>un texte qui n'est
+     * pas un bouton et qui n'est pas dans les sept</b> n'etait confronte a rien. Ce n'est pas une
+     * hypothese : au 2026-08-19, la feuille servie declare 1,25rem sur {@code .signal .verdict}
+     * (le juste/faux que l'enfant lit apres chaque reponse), {@code .filtre-niveau},
+     * {@code .question-confirmation}, {@code .cabinet-enseigne} et {@code .chip-niveau} - cinq
+     * regles dont aucun garde-fou ne lisait la valeur. Methode du releve : lecture des 20
+     * declarations {@code font-size} de {@code static/css/recreo.css} sur cet arbre, confrontees a
+     * la liste de sept et a la population de boutons rendus.</p>
+     *
+     * <p><b>Ce qu'elle juge, et ce qu'elle ne juge pas.</b> Elle lit des <b>declarations</b>, jamais
+     * des pixels rendus : ADR-0025 et ADR-0028 valent ici comme ailleurs, la hauteur reelle d'un bloc
+     * n'est pas gardable et reste a la porte de nadia-prof. Elle ne distingue pas non plus un texte
+     * lu d'un signe decoratif - cette difference-la, aucun garde-fou ne la voit (ADR-0035), et c'est
+     * pourquoi le plancher vaut pour toute taille declaree : une police plus petite se gagne par un
+     * arbitrage, comme la seule entaille jamais accordee au plancher des propositions (condition 2
+     * de nadia-prof, 2026-08-11), jamais par une ligne de feuille.</p>
+     *
+     * <p>ADR-0013 obligation 2 : une taille qu'elle ne sait pas lire - une variable, un
+     * {@code calc()} - est un defaut, jamais un cas ignore. Le plancher illisible est un plancher
+     * absent.</p>
+     */
+    static void verifierQuAucuneTailleDeclareeNePasseSousLePlancher(Path racine) {
+        List<RegleEcrite> regles = reglesEcritesMaison(racine);
+        assertThat(regles)
+                .as("aucune regle maison relevee sous %s : ce garde-fou ne prouve rien", racine)
+                .isNotEmpty();
+
+        List<String> taillesRelevees = new ArrayList<>();
+        for (RegleEcrite regle : regles) {
+            for (int position : declarationsDe(regle.corps(), "font-size")) {
+                String valeur = valeurDeclaree(regle.corps(), position, "font-size");
+                taillesRelevees.add(regle.selecteur() + " -> " + valeur);
+                assertThat(valeur)
+                        .as("%s : la regle %s declare la taille du texte en \"%s\", que ce garde-fou "
+                                + "ne sait pas confronter au plancher de %s rem. Une variable ou un "
+                                + "calc() rendent peut-etre les memes pixels, mais ils rendent le "
+                                + "plancher illisible ici, et un plancher illisible est un plancher "
+                                + "absent (ADR-0050, ADR-0013 obligation 2)",
+                                regle.origine(), regle.selecteur(), valeur, PLANCHER_DE_LISIBILITE_REM)
+                        .endsWith("rem");
+                double taille =
+                        Double.parseDouble(valeur.substring(0, valeur.length() - "rem".length()));
+                assertThat(taille)
+                        .as("%s : la regle %s descend le texte a %s, sous le plancher de lisibilite "
+                                + "de %s rem que nadia-prof tient pour non negociable. Ce plancher ne "
+                                + "se defait pas par une ligne de feuille : il se defait par un "
+                                + "arbitrage, comme la seule entaille jamais accordee - 1,875rem sous "
+                                + "le repli a quatre colonnes (ADR-0050)",
+                                regle.origine(), regle.selecteur(), valeur, PLANCHER_DE_LISIBILITE_REM)
+                        .isGreaterThanOrEqualTo(PLANCHER_DE_LISIBILITE_REM);
+            }
+        }
+
+        assertThat(taillesRelevees)
+                .as("ADR-0003 : aucune declaration de taille de texte relevee sous %s ; ce garde-fou "
+                        + "serait vert sans avoir rien examine", racine)
+                .isNotEmpty();
+    }
+
+    @Test
+    void aucuneTailleDeclareeParLaFeuilleMaisonNePasseSousLePlancher() {
+        verifierQuAucuneTailleDeclareeNePasseSousLePlancher(RACINE_PRODUCTION);
+    }
+
+    /**
+     * ADR-0013 obligation 3 : la morsure est prouvee sur <b>du materiau reel mute</b>, jamais sur une
+     * feuille ecrite de ma main - une fixture de l'auteur de la regle ressemble a ce qu'il imagine
+     * (lecon d'ADR-0015, meme posture qu'ADR-0020 qui mute la sortie reelle du serveur). La mutation
+     * porte sur {@code .signal .verdict}, le texte qui dit a l'enfant si sa reponse etait juste :
+     * il n'est ni un bouton ni l'un des sept selecteurs nommes, donc les deux clauses de plancher qui
+     * existaient avant celle-ci restent vertes sur cette feuille mutee. C'est la mesure exacte de ce
+     * que cette clause ajoute.
+     */
+    @Test
+    void uneTailleDeTexteAbaisseeHorsDesSeptSelecteursNommesFaitEchouerLeGardeFou(@TempDir Path racine)
+            throws IOException {
+        String reelle = lire(RACINE_PRODUCTION.resolve("static/css/recreo.css")).replace("\r\n", "\n");
+        String avant = ".signal .verdict {\n    font-size: 1.25rem;\n}";
+        String apres = ".signal .verdict {\n    font-size: 0.9rem;\n}";
+        assertThat(reelle)
+                .as("la mutation doit porter sur une regle que la feuille servie porte vraiment")
+                .contains(avant);
+        Path feuille = racine.resolve("static/css/recreo.css");
+        Files.createDirectories(feuille.getParent());
+        Files.writeString(feuille, reelle.replace(avant, apres));
+
+        Map<String, String> blocs = blocsMaison(racine);
+        assertThat(tailleEnRem(blocs, ".consigne"))
+                .as("la feuille mutee garde intact ce que la clause enumeree lit : c'est la mesure de "
+                        + "ce qu'elle ne voyait pas")
+                .isEqualTo(PLANCHER_DE_LISIBILITE_REM);
+
+        assertThatThrownBy(() -> verifierQuAucuneTailleDeclareeNePasseSousLePlancher(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining(".signal .verdict")
+                .hasMessageContaining("0.9rem");
     }
 
     @Test

@@ -9,9 +9,11 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.lang.reflect.RecordComponent;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -19,6 +21,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -67,6 +70,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * indice n'apparait que sur une manche que l'enfant n'a pas encore resolue, il ne distingue donc pas
  * deux items l'un de l'autre au moment ou l'ecran se presente. Le critere n'a pas bouge d'un
  * caractere ; c'est sa justification qui portait un chiffre faux.</p>
+ *
+ * <p><b>ADR-0050 (s17) : cette identite est une enumeration, et elle le sait desormais.</b> Le couple
+ * enonce + propositions decrit ce que l'ecran de manche montre <b>tant que</b> {@link Question} ne
+ * porte que ces composantes-la. Une composante rendue de plus - un texte-support au-dessus de la
+ * question (S17-2, COMP-5) - ferait juger deux ecrans differents comme un seul, et le message
+ * d'erreur nommerait une cause fausse. {@link #verifierQueChaqueComposanteDUnItemEstClassee} refuse
+ * desormais le silence : une composante de plus rend ce garde-fou rouge tant que personne n'a ecrit
+ * si l'ecran la montre.</p>
  *
  * <p><b>Mesure de l'etat au 2026-08-11 (s10), avec sa methode et sa date, parce qu'un garde-fou
  * ecrit avant son defaut doit dire ce qu'il trouvait le jour ou il est entre.</b> Sur les 397 items
@@ -181,6 +192,117 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
         propositions.add(question.bonneReponse());
         propositions.addAll(question.distracteurs());
         return new Ecran(question.enonce(), Set.copyOf(propositions));
+    }
+
+    /**
+     * ADR-0050, clause 2 : les composantes d'un item que l'ecran de manche montre <b>au moment ou il
+     * se presente</b>, et qui font donc partie de son identite d'ecran ci-dessus.
+     */
+    private static final Set<String> COMPOSANTES_DANS_L_IDENTITE_D_ECRAN =
+            Set.of("enonce", "bonneReponse", "distracteurs");
+
+    /**
+     * ADR-0050, clause 2 : les composantes d'un item qui n'entrent pas dans son identite d'ecran, et
+     * le motif de chacune. Ce ne sont pas des exemptions de confort : chacune dit pourquoi deux items
+     * qui ne differeraient que par elle presentent quand meme le meme ecran.
+     */
+    private static final Map<String, String> COMPOSANTES_HORS_IDENTITE_D_ECRAN = Map.of(
+            "id", "il est derive de la position dans le YAML : deux items rigoureusement identiques en"
+                    + " portent deux distincts, et c'est exactement le trou que ce garde-fou ferme",
+            "indice", "il ne s'affiche que sur une manche que l'enfant n'a pas encore resolue, jamais"
+                    + " au moment ou l'ecran se presente",
+            "explication", "elle ne s'affiche qu'avec la revelation, apres trois echecs, jamais au"
+                    + " moment ou l'ecran se presente");
+
+    /**
+     * <b>ADR-0050, clause 2 : aucune composante d'un item n'echappe au classement de l'identite
+     * d'ecran.</b>
+     *
+     * <p>L'identite retenue par ADR-0032 - {@code enonce} + jeu de propositions - est une
+     * <b>enumeration ecrite a la main</b> de ce que l'ecran de manche montre. Elle etait exacte le
+     * jour ou elle a ete ecrite, et elle le reste tant que {@link Question} ne porte que ces
+     * composantes-la. Le jour ou un champ de plus est rendu a l'enfant sur le meme ecran - un
+     * texte-support au-dessus de la question, par exemple (S17-2, COMP-5) - cette identite juge deux
+     * ecrans differents comme un seul : deux items poses sur deux textes distincts, dont la question
+     * et les propositions coincident ("Que ressent le personnage ?" avec les memes trois choix), sont
+     * alors refuses comme une copie. La defaillance est un <b>faux rouge</b>, donc visible, mais son
+     * message nomme une cause fausse et pousse l'auteur a reecrire du contenu qui n'a rien.</p>
+     *
+     * <p>Cette clause ne devine pas ce que le gabarit rend - il vit dans un autre module, et deduire
+     * "cette composante est a l'ecran" d'un nom d'attribut de modele serait une devinette. Elle fait
+     * la seule chose qu'un test puisse faire ici, et elle la fait entierement : <b>elle refuse le
+     * silence</b>. Une composante de plus sur {@link Question} rend ce test rouge tant que personne
+     * n'a ecrit, dans l'un des deux ensembles ci-dessus, si l'ecran la montre. C'est un classement a
+     * ecrire, relu comme n'importe quelle ligne de diff, la ou aujourd'hui l'omission ne laisse
+     * aucune trace.</p>
+     *
+     * <p><b>Ce qu'elle n'empeche pas, dit sans l'habiller</b> : elle ne verifie pas que
+     * {@link #ecranDe} lit vraiment les composantes classees a l'ecran. Un auteur qui classerait a
+     * tort une composante rendue dans {@link #COMPOSANTES_HORS_IDENTITE_D_ECRAN} la verrait verte.
+     * Il aurait alors ecrit une affirmation fausse et signee, pas oublie quelque chose - la
+     * difference que cette clause achete.</p>
+     */
+    static void verifierQueChaqueComposanteDUnItemEstClassee(
+            Set<String> dansLIdentite, Set<String> horsIdentite) {
+        Set<String> communes = new TreeSet<>(dansLIdentite);
+        communes.retainAll(horsIdentite);
+        assertThat(communes)
+                .as("une composante ne peut pas etre a la fois dans l'identite d'ecran et hors d'elle")
+                .isEmpty();
+
+        Set<String> classees = new TreeSet<>(dansLIdentite);
+        classees.addAll(horsIdentite);
+        Set<String> portees = Arrays.stream(Question.class.getRecordComponents())
+                .map(RecordComponent::getName)
+                .collect(TreeSet::new, Set::add, Set::addAll);
+
+        assertThat(classees)
+                .as("ADR-0050 : chaque composante de Question est classee - dans l'identite d'ecran"
+                        + " d'ADR-0032, ou hors d'elle avec son motif. Une composante portee et non"
+                        + " classee est une composante dont personne n'a dit si l'enfant la voit au"
+                        + " moment ou l'ecran se presente : si elle est rendue, ecranDe doit la lire"
+                        + " dans le meme commit, sans quoi deux ecrans differents seront refuses comme"
+                        + " une copie ; si elle ne l'est pas, son motif s'ecrit a cote des trois"
+                        + " autres. Une composante classee et non portee est l'inverse - un classement"
+                        + " qui a survecu a son champ")
+                .isEqualTo(portees);
+    }
+
+    @Test
+    void chaqueComposanteDUnItemEstClasseeDansLIdentiteDEcranOuHorsDElle() {
+        verifierQueChaqueComposanteDUnItemEstClassee(
+                COMPOSANTES_DANS_L_IDENTITE_D_ECRAN, COMPOSANTES_HORS_IDENTITE_D_ECRAN.keySet());
+    }
+
+    /**
+     * ADR-0013 obligation 3 : la morsure est prouvee sur le <b>vrai record</b>, avec un classement
+     * ampute d'un nom - la forme exacte que prendrait l'oubli le jour ou une composante de plus
+     * entrerait dans {@link Question}. Muter le classement plutot qu'inventer un faux record garde
+     * l'objet juge identique a celui de la production : une fixture de ma main ressemblerait a la
+     * composante que j'imagine, pas a celle que quelqu'un ajoutera.
+     */
+    @Test
+    void uneComposanteQueLeClassementNeNommePasFaitEchouerLeGardeFou() {
+        Set<String> horsIdentiteAmpute = new TreeSet<>(COMPOSANTES_HORS_IDENTITE_D_ECRAN.keySet());
+        horsIdentiteAmpute.remove("explication");
+        assertThatThrownBy(() -> verifierQueChaqueComposanteDUnItemEstClassee(
+                COMPOSANTES_DANS_L_IDENTITE_D_ECRAN, horsIdentiteAmpute))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("explication");
+    }
+
+    /**
+     * Le meme classement augmente d'un nom que {@link Question} ne porte pas doit rougir aussi : une
+     * liste qui ne peut que grandir finirait par decrire un record disparu.
+     */
+    @Test
+    void unClassementQuiSurvitASonChampFaitEchouerLeGardeFou() {
+        Set<String> horsIdentiteEnTrop = new TreeSet<>(COMPOSANTES_HORS_IDENTITE_D_ECRAN.keySet());
+        horsIdentiteEnTrop.add("graphie");
+        assertThatThrownBy(() -> verifierQueChaqueComposanteDUnItemEstClassee(
+                COMPOSANTES_DANS_L_IDENTITE_D_ECRAN, horsIdentiteEnTrop))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("graphie");
     }
 
     static void verifierQuAucunItemNeRepeteLEcranDUnAutre(Path racine, String racineClasspath) {
