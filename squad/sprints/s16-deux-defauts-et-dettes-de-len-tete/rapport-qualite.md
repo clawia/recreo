@@ -269,3 +269,164 @@ ci-dessus, garde-fous d'`ADR-0046` et de S16-7 mis a l'epreuve et confirmes mord
 pedagogique des stories de ce sprint (S16-1, S16-2, S16-6) reste entierement a `nadia-prof`, qui
 n'a pas encore statue au moment de ce rapport. Un increment techniquement vert n'est pas un
 increment accepte.
+
+## 7. Complement du 2026-08-19 - les deux mutations dues avant cloture de s16
+
+`sofia-sm` a pris acte de la section 2.2 (sur-credit par classe de base, desormais prouve) et a
+redemande, avant cloture de s16, les deux points que la section 4 nommait sans les avoir mis a
+l'epreuve : la portee structurelle des trois garde-fous de provenance (S16-7), et une mutation
+propre sur `ADR-0047`/`ADR-0048`, sans reprendre la trace laissee par `marc-dev` (retiree avant
+son propre commit).
+
+**Commit audite pour ce complement** : `d2460a3` (fusion du rapport des sections 1 a 6), puis
+fast-forward vers `round-two` a jour, qui embarque en outre `899bb48`/`ca3adc9` (`theo-archi` :
+correction de l'exclusion de `:focus-visible` dans `ADR-0046`, statut `Accepte` pour `ADR-0047` et
+`ADR-0048`). **Je n'ai pas mute la forme corrigee de `:focus-visible`** : `theo-archi` n'a touche
+que le texte de l'ADR dans ce lot (il ecrit lui-meme "je n'y touche pas" a propos de la regle
+executable), le code (`AucunEtatDePressableNEstAbandonneAuTiersTest.java`, `recreo.css`) est
+identique a ce que j'ai deja mute trois fois en section 2 (`git diff 73ae3b0..d2460a3` confirme
+aucun changement sur ces deux fichiers). Cette morsure reste donc a faire une fois le lot de
+`lea-dev` fusionne.
+
+Restauration integrale confirmee apres chaque mutation individuellement (`git status --porcelain`
+vide sur le fichier concerne avant la mutation suivante), et build complet rejoue en fin de
+section (`bash outils/mvn-jdk21.sh -B clean verify`, BUILD SUCCESS, 545 tests - meme methode double
+que section 1, meme chiffre) : aucune des huit mutations ci-dessous ne laisse de trace dans
+l'arbre.
+
+### 7.1 ADR-0047 - la duree du marqueur, deux mutations sur PartieController.java / EtatDePartieEnSession.java
+
+**Mutation A - valeur recopiee au lieu d'etre lue** (le defaut exact que `theo-archi` annonce comme
+"faux en silence le jour d'une configuration") : `EtatDePartieEnSession.dureeInactiviteMaximale()`
+change de `return httpSession.getMaxInactiveInterval();` a `return 1800;` (1800 est aussi la valeur
+que fixe `PartieControllerTest.laDureeDeVieDuMarqueurEstLueSurLaSessionEtJamaisRecopiee` pour sa
+session de test, choisie expres pour eprouver le risque au mot).
+
+`mvn -pl adapters/adapter-web -am test -Dtest=PartieControllerTest,EtatDePartieEnSessionTest` :
+vert sur `PartieControllerTest` (34 sur 34, y compris le test cite ci-dessus - la coincidence
+1800/1800 le rend aveugle a cette mutation precise), rouge sur
+`EtatDePartieEnSessionTest.dureeInactiviteMaximaleLitLaDureeReelleDeLaSessionHttp`, qui fixe sa
+propre session a 900 : l'assertion 1800 = 900 echoue. Restaure (`git status --porcelain` vide sur
+les deux fichiers), rejoue vert (38 sur 38).
+
+Verdict : le risque nomme par `theo-archi` est reel a l'echelle d'un seul test - si
+`EtatDePartieEnSessionTest` n'existait pas, ou choisissait la meme valeur que
+`PartieControllerTest`, une valeur recopiee passerait inapercue. Ce qui ferme le risque n'est pas
+une garantie ecrite dans la regle elle-meme, c'est que les deux tests qui exercent
+`dureeInactiviteMaximale()` fixent deliberement deux durees differentes (1800 et 900), une
+propriete des donnees d'entree des tests (ADR-0013, amendement), pas de la regle. Signale en
+section 8 : ce n'est pas un defaut a corriger dans l'immediat (la suite mord bien, aujourd'hui),
+mais une dependance fragile a nommer.
+
+**Mutation B - le defaut d'avant ADR-0047, rejoue sans la trace de marc-dev** : dans
+`marquerPartieEnCours`, retrait complet de `cookie.setMaxAge(...)` (le cookie redevient un cookie
+de session navigateur, exactement l'etat que `ADR-0047` decrit comme le defaut mesure sur la
+production d'avant son lot).
+
+`mvn -pl adapters/adapter-web -am test -Dtest=PartieControllerTest,EtatDePartieEnSessionTest` :
+rouge, 1 echec sur 38 -
+`PartieControllerTest.laDureeDeVieDuMarqueurEstLueSurLaSessionEtJamaisRecopiee` (`getMaxAge()` vaut
+-1, le defaut d'un `Cookie` construit sans `setMaxAge`, contre 1800 attendu). Restaure, rejoue vert
+(38 sur 38).
+
+Verdict : la regle mord bien sur le defaut original, etabli par moi et non recopie de la trace
+disparue de `marc-dev`.
+
+### 7.2 ADR-0048 - l'adresse par en-tete, deux mutations sur PartieController.java
+
+**Mutation C - en-tete absente quand elle est due** : dans `retour(...)`, retrait de la ligne qui
+pose `HX-Push-Url` dans la branche sans partie en cours.
+
+`mvn -pl adapters/adapter-web -am test -Dtest=PartieControllerTest` : rouge, 1 echec sur 34 -
+`laReponseDeRetourDeclareLAdresseDuCatalogueCompletSansPartieEnCours` (l'en-tete vaut `null` au
+lieu de `/`). Restaure, rejoue vert.
+
+**Mutation D - en-tete posee inconditionnellement**, exactement la forme que `theo-archi` refuse
+au point 3 de l'ADR : la meme ligne est deplacee avant le test de partie en cours, donc posee
+aussi sur la branche de confirmation.
+
+`mvn -pl adapters/adapter-web -am test -Dtest=PartieControllerTest` : rouge, 1 echec sur 34 -
+`laReponseDeRetourNeDeclareAucuneAdresseAvecUnePartieEnCours` (l'en-tete vaut `/` au lieu de
+`null`, sur l'ecran de confirmation ou l'adresse mentirait). Restaure, rejoue vert.
+
+Verdict : la regle mord dans les deux sens annonces par l'ADR - absence quand due, presence ou
+elle est explicitement refusee - sur du materiau de production reel et non sur une trace recopiee.
+
+### 7.3 Les trois garde-fous de provenance (S16-7) - ce qu'ils voient, ce qu'ils ne voient pas
+
+J'avais deja etabli (section 3) qu'ils mordent sur l'absence de `-am` avec un depot local Maven
+deja peuple d'un artefact `com.recreo`. Trois questions restaient : un module absent du reacteur
+(pas seulement resolu ailleurs), un `target/` perime que le reacteur n'a pas recompile, et si la
+comparaison par prefixe (repertoire de classes ou archive, jamais un chemin exact) est elle-meme
+un trou.
+
+Cas 1, module amont absent de tout, reacteur et depot local (pas seulement resolu ailleurs). Depot
+local Maven verifie vide de tout artefact `com.recreo` avant l'essai. `mvn -pl adapters/adapter-web
+test -Dtest=ProvenanceDesClassesAmontEstLeDepotTest` (sans `-am`) : BUILD FAILURE avant tout test -
+resolution de dependances en echec, artefacts amont introuvables.
+
+Ce n'est pas un angle mort du garde-fou, c'est un mode de defaillance different et plus sur : la
+resolution de dependances Maven echoue avant que la classe de test ne soit meme chargee. Rien a
+attraper puisque rien ne s'execute - le risque que ce garde-fou ferme (la commande reussit et
+decrit un autre arbre) suppose qu'un artefact soit disponible quelque part pour etre resolu a
+tort ; un module completement absent ne produit jamais ce risque, il echoue fort et tot.
+
+Cas 2, target perime que le reacteur, invoque avec -am, ne recompile pas. Etabli par mutation
+reelle : `domain/target/classes` recompile une premiere fois (`mvn -pl domain clean compile`),
+puis `GameMechanic.java` modifie (ajout d'une methode par defaut) et sa date de modification
+remise anterieure a celle du `.class` deja compile (manipulation d'horodatage, technique de test,
+jamais commise). `mvn -pl adapters/adapter-web -am test
+-Dtest=ProvenanceDesClassesAmontEstLeDepotTest` : BUILD SUCCESS, "Nothing to compile - all classes
+are up to date" sur `recreo-domain`, les deux tests de provenance verts.
+
+Verdict, et c'est l'angle mort reel : le garde-fou verifie une provenance, jamais une fraicheur.
+Meme invoque avec -am - la forme que ce sprint impose partout - il ne voit pas qu'un
+target/classes a l'interieur du perimetre qu'il accepte peut etre en retard sur le code source
+qu'il pretend representer, des lors que l'heuristique de compilation incrementale de Maven (fondee
+sur les dates de modification de fichier) juge a tort qu'il n'y a rien a refaire. La voie que j'ai
+empruntee (horodatage truque a la main) est deliberement adversariale et non un mode de
+defaillance ordinaire d'un poste de developpement - un editeur ou un compilateur avancent
+toujours l'horloge d'un fichier modifie - mais elle a un equivalent naturel : une restauration de
+cache de build, une manipulation d'horodatage involontaire, ou une horloge de poste desynchronisee
+produiraient la meme illusion sans qu'aucune main ne l'ait cherchee. Le garde-fou ferme le trou
+qu'il annonce (depot local contre arbre du worktree) ; il ne ferme pas celui-ci, qui est d'une
+autre nature (fraicheur du contenu, jamais nommee dans sa Javadoc).
+
+Cas 3, la comparaison par prefixe (repertoire de classes ou archive) est-elle un trou distinct ?
+Reponse : non, c'est la meme limite que le cas 2, pas une seconde. La comparaison de chemins
+delegue a la semantique standard de comparaison de chemins de la plateforme Java, qui compare des
+elements de chemin entiers et non des caracteres - un repertoire voisin nomme, par exemple,
+domain/target-old, ne satisferait jamais ce test (le dernier element differe : target-old contre
+target). La souplesse que `lea-dev` a du introduire (accepter le repertoire de classes pendant les
+tests et l'archive une fois la phase package atteinte) n'elargit le perimetre qu'a deux
+emplacements que seul le reacteur de ce worktree ecrit en usage normal ; elle ne cree pas de
+troisieme voie qu'un chemin fabrique pourrait emprunter. Le veritable defaut partage par les deux
+formes (repertoire ou archive) est celui du cas 2 : aucune des deux ne porte d'information de
+fraicheur, et une archive packagee a partir d'un repertoire de classes deja perime serait acceptee
+exactement comme ce repertoire perime lui-meme.
+
+## 8. Defauts ouverts (mise a jour)
+
+Aucun defaut technique bloquant sur ADR-0046, ADR-0047, ADR-0048 ni sur le garde-fou -am de S16-7 :
+les huit mutations de la section 7 mordent toutes dans le sens attendu, et les trois de la section
+2 restent acquises. Deux points a signaler, ni bloquants ni proposes en correction par moi (hors
+mandat) :
+
+1. `EtatDePartieEnSession.dureeInactiviteMaximale()` n'est protegee contre une valeur recopiee que
+   par la difference des deux durees choisies dans deux tests distincts (1800 dans
+   `PartieControllerTest`, 900 dans `EtatDePartieEnSessionTest`), jamais par une propriete de la
+   regle elle-meme. Si l'un des deux tests disparaissait ou changeait sa valeur pour coincider avec
+   l'autre, une regression vers une constante recopiee passerait inapercue. Remonte a `sofia-sm`
+   pour arbitrage sur l'opportunite d'un test dedie qui varie explicitement la duree plutot que de
+   compter sur la divergence actuelle des fixtures.
+2. Le garde-fou de provenance (S16-7) verifie un emplacement, jamais une fraicheur (section 7.3,
+   cas 2) : un target perime que la compilation incrementale de Maven juge a tort a jour reste
+   invisible, meme avec -am. Etabli par mutation adversariale (horodatage truque), sans equivalent
+   commis dans le depot. Remonte a `sofia-sm` : fermer ce trou demanderait de comparer le contenu
+   ou l'horodatage du fichier compile a celui de sa source, ce qui est un choix d'architecture de
+   garde-fou, pas une correction de bug.
+
+## 9. Rappel du double Done (inchange)
+
+Ce complement ne prononce, comme la section 6, que le Done technique. Le Done pedagogique des
+stories de ce sprint reste entierement a `nadia-prof`.
