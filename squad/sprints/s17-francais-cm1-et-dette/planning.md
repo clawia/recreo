@@ -132,7 +132,7 @@ qu'elle entre au numerateur du taux de couverture tant que les antonymes n'y son
 homophones ne peut pas non plus basculer ce sprint** : sa condition de retour (`BPM-1`, mesure de
 rendu sur la totalite des 24 manches raccourcies) n'est pas produite par la squad ce sprint - voir
 `S17-4` ci-dessous. **Le taux de couverture actuel est 19,6 % (9 lignes `couvert-valide` sur 46,
-0 lignes rouvertes ce sprint** : la matrice compte l'ouverture d'une ligne (`non couvert` ->
+0 lignes rouvertes ce sprint)** : la matrice compte l'ouverture d'une ligne (`non couvert` ->
 `en cours`), pas encore un mouvement de couverture validee.
 
 ## Tableau des stories
