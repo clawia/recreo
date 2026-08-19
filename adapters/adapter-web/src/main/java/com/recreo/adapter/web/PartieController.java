@@ -177,12 +177,22 @@ public class PartieController {
      * quand la confirmation a ete ouverte par une puce de niveau : meme abandon que
      * {@code confirmerAbandon}, mais l'accueil qui en resulte reste filtre sur ce niveau
      * (critere 6).
+     *
+     * <p>S16-6 (ferme S15-D, nadia-prof) : {@code niveauActif} manquait ici, alors que la phrase
+     * de filtre d'{@code accueil.html} (".filtre-niveau") comme la puce de niveau active en
+     * dependent toutes deux. Sans lui, cette route rendait la liste filtree sans aucune phrase
+     * pour le dire - et, par la condition posee sur {@code body:has(.filtre-niveau)} (amendement
+     * d'ADR-0046, s15), la puce deja marquee active dans la coquille perdait aussi sa couleur des
+     * que ce fragment remplaçait #jeu. Poser {@code niveauActif} ici repare les deux symptomes
+     * d'un seul geste, sans toucher la coquille : c'est la reapparition de ".filtre-niveau" dans
+     * le document qui rend la condition vraie de nouveau.</p>
      */
     @PostMapping("/niveaux/{niveau}/confirmer")
     public String confirmerAbandonNiveau(@PathVariable String niveau, HttpServletRequest requete,
                                           HttpServletResponse reponse, Model modele) {
         new EtatDePartieEnSession(requete).abandonner();
         effacerMarqueurDePartie(reponse);
+        modele.addAttribute("niveauActif", niveau);
         modele.addAttribute("jeux", partie.jeuxDuNiveau(niveau));
         return "accueil :: zoneAccueil";
     }
