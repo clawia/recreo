@@ -4555,6 +4555,41 @@ bonne reponse entre guillemets dans le texte de l'indice :
 |---|---|---|
 | `cm1-conjugaison-present` | 25 | **25 sur 25** |
 | `cm1-homophones` | 24 | **22 sur 24** |
+> **Note datee du 2026-08-19 (s17), `nadia-prof` - le chiffre "22 sur 24" de ce tableau et des deux
+> autres endroits de cette fiche est faux : c'est 24 sur 24.** Le tableau, la ligne M2 plus bas et la
+> reserve A plus bas encore restent ecrits tels que je les ai ecrits ; cette note dit ce qu'ils ont de
+> faux, et pourquoi.
+>
+> **La cause est ma methode de comptage, pas la matiere.** J'ai compte en cherchant la bonne reponse
+> **entre guillemets** dans le texte de l'indice, **sensiblement a la casse**. Les deux items que ce
+> comptage a manques sont ceux dont la reponse porte une majuscule de debut de phrase - `On` et `Ou` -
+> et dont l'indice la nomme en minuscules : *"...alors c'est 'on'."* et *"...alors c'est 'ou'."* La
+> reponse y est nommee tout autant ; c'est ma comparaison qui ne la voyait pas.
+>
+> **Verifie par moi ce jour, sur le fichier tel qu'il etait avant `S17-4`** (`96e6b23^`), jeton par
+> jeton : **22 sur 24 a la casse pres, 24 sur 24 sans la casse.** `lea-dev` l'a relu caractere par
+> caractere et `camille-po` l'a confirme dans cinq fichiers ; j'ai refait le comptage moi-meme plutot
+> que de reprendre le leur, et il tombe sur les memes deux items.
+>
+> **Ce que cela change au raisonnement : rien.** M2 est enfreinte par la totalite des deux paquets de
+> CM1 au lieu de la quasi-totalite, la consequence que j'assumais (ces deux jeux n'affichent pas leur
+> indice sur la question courante) est la meme, et elle est meme mieux fondee. **Le seul chiffre qui
+> bouge dans la reserve A est le total** : `cm1-conjugaison-present` 25 sur 25 et `cm1-homophones`
+> 24 sur 24 font **49 indices sur 49**, non 47 sur 49. J'ai recompte le paquet de conjugaison par la
+> meme methode corrigee : 25 sur 25, insensible a la casse comme a l'accent.
+>
+> **Et je note ce que cet ecart dit de moi, parce que c'est la deuxieme fois ce sprint.** Un comptage
+> sensible a la casse sur un contenu dont les reponses commencent parfois une phrase **ne peut pas**
+> etre exact, et je ne l'avais pas vu. C'est la meme famille que le chiffre de couverture redresse de
+> 31,1 % a 19,6 %, et que la ligne de mon tableau `FOC-4` corrigee ce jour : un chiffre produit par un
+> instrument que personne, moi comprise, n'a mis a l'epreuve. **Ce que j'en tire pour la suite : tout
+> comptage que j'ecris dans une fiche dit desormais avec quoi il a ete fait.**
+>
+> **Etat du paquet apres `S17-4`, mesure ce jour par la methode corrigee** : **3 indices sur 24**
+> nomment encore la reponse (items 3 `et`, 10 `ou`, 21 `peu`) - voir mon verdict `BPM-2`/`BPM-3`/
+> `BPM-4` du 2026-08-19 dans `FICHE-bandit-manchot-homophones-cm1.md`.
+
+
 | `cp-le-bon-son` | 15 | 0 |
 | `cp-comparer-nombres` | 24 | 0 |
 | `cp-soustractions` | 24 | 0 |
@@ -4723,6 +4758,7 @@ bouger au-dessus du point ou l'enfant appuie (M8).
 
 **M2 - un indice rattache a la question courante ne nomme jamais la reponse attendue.** Mesure du
 jour : `cm1-conjugaison-present` **25 indices sur 25** et `cm1-homophones` **22 sur 24** nomment la
+*(chiffre corrige le 2026-08-19 : 24 sur 24, note datee au tableau du 0 bis point A ci-dessus)*
 bonne reponse entre guillemets ; les six paquets de CP, **aucun**. *Consequence directe et que
 j'assume* : sous M1, ces deux jeux ne peuvent pas afficher leur indice sur la question courante -
 sinon le premier echec **donne la reponse**, ce que M5 refuse. Sur ces deux jeux, l'enfant garde le
@@ -5282,6 +5318,7 @@ Ni l'une ni l'autre n'est un refus, et aucune ne bloque le sprint. Elles sont ec
 
 **Reserve A - 47 indices sur 49 des deux paquets de CM1 nomment la bonne reponse.**
 `cm1-conjugaison-present` 25 sur 25, `cm1-homophones` 22 sur 24 (0 bis, point A). Elle est
+*(corrige le 2026-08-19 : 24 sur 24, donc 49 sur 49 et non 47 sur 49 ; note datee au tableau du 0 bis, point A)*
 **independante de ce chantier** : deja aujourd'hui, un enfant qui echoue trois fois recoit, sur la
 question suivante, un indice qui lui donne sa reponse - joue et constate ce jour. Ce que je demande :
 que ces 47 textes soient reecrits pour porter la **manipulation** sans la conclusion. Les indices de

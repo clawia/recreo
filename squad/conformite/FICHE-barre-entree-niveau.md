@@ -3,6 +3,17 @@
 - **Increment** : deux boutons d'entree par niveau (CP / CM1) dans l'en-tete de recreo, toujours
   visibles y compris sur un ecran de jeu, story `S14-1` (`docs/backlog/backlog.md`, section
   "Sprint 14").
+- **Statut global au 2026-08-19 (s17), jugement de forme sur S17-A** : la proposition d'`ines-design`
+  (anneau **exterieur** blanc de 3 px, peint sur le bandeau au lieu de mordre le remplissage) est
+  **ACCEPTEE**. Ses quatre chiffres reproduisent, dont **9,25:1** contre le pixel immediatement
+  exterieur, et cette fois l'arrondi tombe de son cote. Mesure sur le rendu servi, regle injectee sans
+  toucher aucun fichier : anneau de **3,00 px** exactement, **remplissage blanc inchange au pixel**
+  (15,00 px au repos comme au focus) - c'est donc bien une addition et non le retrecissement que je
+  refusais. Place disponible mesuree sur **quatre largeurs et les deux niveaux** : aucun contact, marge
+  la plus etroite **5 px**, et **aucun ancetre ne rogne** l'anneau. `S17-A` sera **fermee** a la
+  remesure sur l'increment livre, pas avant. **Et je corrige une ligne de mon propre tableau `FOC-4`**
+  : elle donnait `#1d4b6b` pour la puce active sur l'accueil **et** sur la manche ; sur la manche
+  l'anneau est blanc et conforme, `S17-A` est plus etroite d'un ecran que ce que j'avais ecrit.
 - **Statut global au 2026-08-19 (s17), sonde post-livraison de S17-1** : **VALIDE SOUS RESERVE** sur
   l'increment `d649e15`. **Ma reserve S16-A est FERMEE** : neuf des dix familles de pressables portent
   un anneau interieur de 3 px au focus clavier, mesure sur le rendu servi par de **vraies touches de
@@ -151,7 +162,161 @@ Cette story n'ouvre, ne ferme et ne rejuge aucune ligne de `squad/programme/MATR
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. Il reste vide tant qu'aucun
 > arbitrage prealable n'a ete rendu et qu'aucun increment n'a ete livre et joue.
 
-### Sonde post-livraison du 2026-08-19 (s17) sur S17-1 - VALIDE SOUS RESERVE, S16-A FERMEE, quatre reserves neuves - le plus recent de cette fiche
+### Jugement de forme du 2026-08-19 (s17) sur S17-A - ACCEPTE, et une correction d'un releve de ma main - le plus recent de cette fiche
+
+> **Ce que cette section fait.** Elle juge la proposition de forme d'`ines-design`
+> (`squad/sprints/s17-francais-cm1-et-dette/proposition-ines-marque-de-focus-puce-active.md`, branche
+> `s17-ines-puce`, non fusionnee au moment ou j'ecris) sur ma seule condition bloquante **`S17-A`**,
+> ouverte dans la section suivante. Elle **corrige aussi une ligne de mon propre tableau `FOC-4`**,
+> qui etait fausse. Elle n'efface aucun verdict anterieur.
+>
+> - **Ma branche** : `s17-nadia-contenu`, worktree dedie, lignee verifiee par `outils/verifier-lignee.sh`.
+> - **Increment mesure** : `round-two` a `4ef84ec`. La regle proposee n'existe dans aucun fichier : je
+>   l'ai **injectee dans la page servie** par le protocole de deverminage du navigateur, sans toucher
+>   ni feuille ni gabarit, puis mesuree sur le rendu reel. Je le dis parce que c'est la limite de cette
+>   mesure : je mesure la **forme proposee**, pas un increment livre.
+> - **Verdict** : **ACCEPTE.** `marc-dev` peut l'implementer.
+
+#### 1. Le verdict en une phrase
+
+**La variante exterieure (`box-shadow: 0 0 0 0.1875rem var(--recreo-accent-texte)`, sans `inset`, sur
+le seul selecteur compose) satisfait les deux moitiees de ma condition de fermeture de `S17-A` : elle
+atteint 9,25:1 contre le pixel immediatement exterieur, et elle est une addition mesurable au pixel,
+pas une reduction.**
+
+#### 2. Reverification des chiffres - les quatre reproduisent, et cette fois l'arrondi est de son cote
+
+La derniere fois j'avais trouve un ecart d'arrondi sur ses canaux lineaires (14,08 la ou le depot
+porte 14,09). Je les ai donc tous recalcules.
+
+| Ce qu'elle annonce | Ma valeur | Verdict |
+|---|---|---|
+| `#1d4b6b` : L = 0,063569 | **L = 0,063549** | ecart au cinquieme decimal, sans consequence |
+| blanc sur `#1d4b6b` = **9,25:1** | **9,2471:1**, arrondi **9,25:1** | reproduit, et l'arrondi tombe du bon cote |
+| fenetre de luminance tenant 3:1 des deux cotes : `[0,290707 ; 0,300000]`, largeur 0,0093 | **`[0,290647 ; 0,300000]`, largeur 0,009353 (0,935 % de l'echelle)** | reproduit |
+| gris `#949494` : **3,05:1** contre `#1d4b6b` et **3,03:1** contre le blanc | **3,0484:1** et **3,0335:1** | reproduits exactement |
+
+**Sa demonstration par la mesure est juste, et je credite la methode autant que le resultat.** Elle
+n'a pas ecarte l'anneau interieur recolore au jugement : elle a calcule que la fenetre qui satisferait
+les deux contraintes fait **moins de 1 % de l'echelle de luminance**, a cherche une teinte reelle
+dedans, et a constate qu'elle y tient a **2 a 3 % de marge**. Elle a raison de ne pas me proposer
+cela : j'ai refuse le 2026-08-18 un contour de `0,0625rem` parce qu'il *"satisferait la clause sans
+etre vu"*, et une teinte qui bascule sous 3:1 selon qui recalcule est de la meme famille.
+
+#### 3. Ce que le rendu montre - c'est bien une addition, et je le mesure au pixel
+
+Sonde de pixels sur une colonne traversant la puce a mi-hauteur, rendu servi, viewport 360 x 640
+(releves `s17a-puce-active-bandeaux-360px.png` et `s17a-puce-active-agrandie.png`) :
+
+| Etat | Ce que la colonne traverse, du bandeau vers le centre de la puce |
+|---|---|
+| **repos** | `#1d4b6b` (bandeau, bordure confondue avec lui) puis **`#ffffff` sur 15,00 px** (remplissage) |
+| **focus, regle proposee** | `#1d4b6b` puis **`#ffffff` 3,00 px** (l'anneau neuf) puis **`#1d4b6b` 2,00 px** (la bordure, devenue visible) puis **`#ffffff` 15,00 px** (remplissage inchange) |
+
+**Trois faits que je retiens de ce tableau.**
+
+1. **L'anneau fait exactement 3,00 px**, la largeur demandee, et il est blanc sur un bandeau qui ne
+   portait rien : c'est une forme qui n'existait pas et qui apparait.
+2. **Le remplissage blanc ne bouge pas d'un pixel** - 15,00 px au repos, 15,00 px au focus (15,33 px
+   dans les deux etats sur la puce CM1). **Le retrecissement que je refusais a disparu.** C'est la
+   seconde moitie de ma condition, et elle est verifiee par la mesure et non par le raisonnement.
+3. **Effet de bord que je n'avais pas demande et que je note** : la bordure de 2 px, invisible au
+   repos parce qu'elle est de la couleur du bandeau, **devient lisible** au focus, prise entre deux
+   blancs. Le signal est donc plus riche que ce qu'`ines-design` annonce : l'enfant voit un cadre
+   blanc **et** un lisere sombre qui le detache du remplissage.
+
+**Et je l'ai regarde a taille reelle, parce que c'est ce qui decide.** Sur les quatre bandeaux du
+releve a 360 px (repos et focus, sur la page CP et sur la page CM1), **la difference se voit sans
+effort et se lit comme "un cadre est apparu"**. Je n'avais pas su distinguer la puce active focalisee
+de la puce active au repos avec l'anneau interieur ; ici je la distingue immediatement.
+
+#### 4. Le premier point qu'elle me route : la place disponible. Mesuree, elle suffit, et la marge la plus etroite est de 5 px
+
+Elle a eu raison de ne pas conclure sur des valeurs declarees. Mesure sur le rendu, **quatre largeurs
+et les deux niveaux**, marges restantes **apres** les 3 px d'anneau :
+
+| Largeur | Vers l'autre puce | Vers "Les jeux" | Vers le haut de l'en-tete | Vers le bord droit |
+|---|---|---|---|---|
+| 320 px | 162,72 px (le rang se replie) | pas de chevauchement | 13 px | 9 px |
+| 360 px | **13 px** | **5 px** | 13 px | 9 px (niveau CM1) |
+| 400 px | 13 px | 5 px | 13 px | 9 px |
+| 470 px | 13 px | pas de chevauchement | 14,59 px | 133,87 px |
+
+**Aucun contact, a aucune des quatre largeurs, sur aucun des deux niveaux.** La marge la plus etroite
+est de **5 px**, verticalement, entre l'anneau et "Les jeux" - le `row-gap` de 8 px moins les 3 px de
+l'anneau. **Et j'ai verifie ce qu'elle ne pouvait pas verifier** : aucun ancetre de la puce ne declare
+`overflow` autre que `visible` ni `clip-path`, donc **rien ne rogne cet anneau exterieur**. C'etait le
+risque propre a peindre dehors, et il n'existe pas ici.
+
+**La boite ne change pas** : 56,38 x 50 px au repos comme au focus sur la puce CP, 73,91 x 50 px sur
+la puce CM1. **`FOC-2` continue de tenir**, ce que je verifie plutot que de le deduire de la propriete
+employee.
+
+#### 5. Deux faits que je verifie et qui vont au-dela de ce qu'elle annonce
+
+- **La regle proposee resiste a `S17-D`, et c'est un accident heureux qu'il faut nommer comme tel.**
+  Son selecteur compose vaut (0,4,0), a egalite avec `.btn:first-child:active:focus-visible` de la
+  feuille tierce, et `recreo.css` est chargee apres `bootstrap.min.css` - la regle maison l'emporte
+  donc par l'ordre. Mesure : puce active focalisee au clavier **puis** pressee reellement, l'anneau
+  **reste** blanc 3 px, et ni le fond, ni le texte, ni la bordure ne bougent. C'est la **seule des dix
+  familles** dans ce cas ; les neuf autres, a (0,2,0), perdent l'anneau a cet instant. **Que personne
+  n'en tire que `S17-D` est traitee** : elle ne l'est pas, cette famille-ci y echappe par sa
+  specificite, pas par un correctif.
+- **Le defaut de `S17-A` n'existe que la ou `.filtre-niveau` est presente**, et son selecteur le
+  scope exactement la. Verifie sur l'ecran de manche : `.filtre-niveau` y est absente, la puce
+  `est-actif` n'y porte donc pas l'habillage actif (S15-5), `currentColor` y vaut blanc, et l'anneau
+  interieur partage y rend un blanc de 3 px parfaitement visible (releve
+  `s17a-puce-sur-la-manche.png`). **Elle a scope sa regle au bon endroit** : ni trop large, ni trop
+  etroit.
+
+#### 6. Correction d'un releve de ma main, du 2026-08-19 - la ligne `.chip-niveau.est-actif` de mon tableau FOC-4 etait fausse
+
+**Ce que j'ai ecrit hier**, dans le tableau de la section `FOC-4` : `.chip-niveau.est-actif` |
+`accueil, manche` | `none` | **`#1d4b6b` 3 px interieur**.
+
+**C'est faux pour la colonne "manche".** Mes propres releves du jour portaient deja les deux valeurs :
+`rgb(29, 75, 107)` sur l'accueil filtre, et `rgb(255, 255, 255)` sur la manche. J'ai fondu les deux
+ecrans dans une seule ligne et retenu la valeur d'un seul. **Consequence de l'erreur** : elle fait
+paraitre `S17-A` plus large qu'elle ne l'est - le defaut de 1,00:1 **n'a jamais concerne l'ecran de
+manche**, ou l'anneau de cette puce est blanc et visible.
+
+**La ligne corrigee** : `.chip-niveau.est-actif` | accueil **filtre** (`.filtre-niveau` presente) |
+`none` | `#1d4b6b` 3 px interieur, **1,00:1 contre l'exterieur** ; et **manche** (`.filtre-niveau`
+absente) | `none` | `#ffffff` 3 px interieur, **9,25:1**, conforme.
+
+**Je ne reecris pas la ligne d'origine** : elle reste ou elle est, et cette note dit ce qu'elle a de
+faux. **`S17-A` n'est pas retiree pour autant** : le defaut existe bel et bien sur l'ecran filtre,
+c'est-a-dire l'ecran par lequel tout enfant passe pour choisir un jeu. Son perimetre est simplement
+plus etroit d'un ecran que ce que mon tableau laissait lire, et c'est `ines-design` qui l'avait vu
+avant moi en scopant sa regle a `body:has(.filtre-niveau)`.
+
+#### 7. Mes reponses a ses trois questions
+
+1. **Oui**, la variante exterieure satisfait `S17-A`, et je n'attends pas une autre epaisseur : 3 px
+   rendus, mesures, avec 5 px de marge au point le plus serre. Je ne demande ni plus (la marge
+   tomberait a 2 px) ni moins (j'ai refuse plus fin deux fois).
+2. **Mesure faite, section 4** : l'anneau ne touche aucun voisin, a aucune des quatre largeurs
+   mesurees, sur aucun des deux niveaux, et rien ne le rogne.
+3. **Non, la difference de mecanisme n'appelle aucune mention destinee a l'enfant** - il ne voit pas
+   par quelle propriete un pixel est peint. **Mais elle en appelle une dans cette fiche, et je viens de
+   l'ecrire** : la section 5 dit pourquoi cette famille echappe a `S17-D` et pourquoi cela ne doit pas
+   etre generalise. Sans cette phrase, le depot croirait couvert ce qui ne l'est pas - c'est exactement
+   le defaut que je passe ce sprint a nommer.
+
+#### 8. Ce que ce jugement ne fait pas
+
+- **Il ne ferme pas `S17-B`** (l'epaississement sur les trois pressables a contour) : cette
+  proposition n'y touche pas, et je n'ai pas demande qu'elle y touche.
+- **Il ne ferme ni `S17-C` ni `S17-D`.** `camille-po` a differe `S17-C` ; `S17-D` reste entiere.
+- **Il ne prononce aucun Done pedagogique** : la regle n'est pas ecrite dans le depot. `S17-A` sera
+  **fermee** quand `marc-dev` l'aura livree et que je l'aurai remesuree sur l'increment fusionne, avec
+  les memes trois chiffres : 3,00 px rendus, remplissage blanc inchange au pixel, aucun contact avec
+  un voisin.
+- **Il ne me dispense pas de la mesure de livraison** : ce que je viens de mesurer est une regle
+  injectee par moi dans une page servie. Une regle ecrite dans `recreo.css` peut se faire ecraser par
+  une specificite que mon injection contournait - `S17-D` est precisement cela. **Je remesure.**
+
+### Sonde post-livraison du 2026-08-19 (s17) sur S17-1 - VALIDE SOUS RESERVE, S16-A FERMEE, quatre reserves neuves - le plus recent jusqu'au jugement de forme S17-A ci-dessus
 
 > **Ce que cette section fait.** Elle rend la sonde que le planning de s17 sequence **apres** la
 > livraison de l'indicateur de focus clavier, sur mes trois conditions `FOC-4`, `FOC-5` et `FOC-6`
@@ -761,7 +926,7 @@ autant que pour la lisibilite.
 | S15-C | - | rien ne distingue a l'oeil le bouton qui montre tout de ceux qui filtrent | ouverte, non bloquante |
 | S15-D | - | une liste filtree qui ne dit pas qu'elle l'est | **fermee ce jour** (S16-6) |
 | S16-A | - | un enfant au clavier ne voit nulle part ou il est | **FERMEE le 2026-08-19 (s17)** par la sonde post-livraison de `S17-1` |
-| S17-A | - | l'anneau de la puce active n'est pas percu (1,00:1 contre l'exterieur) | ouverte, **bloquante**, forme a `ines-design` |
+| S17-A | - | l'anneau de la puce active n'est pas percu (1,00:1 contre l'exterieur) **sur l'ecran filtre uniquement** (note du 2026-08-19 : un releve de moi conflait deux ecrans) | ouverte, **bloquante** ; **forme ACCEPTEE le 2026-08-19** (anneau exterieur blanc de 3 px), fermeture a la remesure sur l'increment livre |
 | S17-B | - | sur les trois pressables a contour, le signal est un epaississement de 2 a 5 px, pas une marque neuve | ouverte, non bloquante, seuil ecrit d'avance |
 | S17-C | - | a la revelation, le bouton que le jeu demande de presser est absent de l'ordre de tabulation | ouverte, **bloquante**, cause dans le script de focus (`M13`, s10) |
 | S17-D | - | ma premisse "rien ne change sous le pointeur" est fausse a l'appui : 1,64:1 sur un bouton a contour, aplat perdu sur un bouton plein | ouverte, **bloquante**, cause a `theo-archi` (specificite de la feuille tierce) |
