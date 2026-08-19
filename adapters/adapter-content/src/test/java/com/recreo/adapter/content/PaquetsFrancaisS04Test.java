@@ -82,15 +82,22 @@ import static org.assertj.core.api.Assertions.assertThat;
  * sans passer par le catalogue.</p>
  *
  * <p>S17-4 (DEC-0024 point 3, arbitrage prealable de nadia-prof du 2026-08-19, BPM-1 a BPM-4) :
- * "bandit-manchot-homophones-cm1" revient au catalogue. Les onze enonces les plus longs du paquet
- * sont raccourcis sans qu'aucun des 24 items ne soit supprime (BPM-3), et les 24 indices sont
- * corriges pour ne plus nommer la reponse (DEC-0024 point 5) : ce controle avait ete mesure a "22
- * indices sur 24" a l'ouverture de cette story, mais une relecture caractere par caractere en
- * trouve 24 sur 24, les deux manquants ("On", "Où") echappant a une comparaison sensible a la
- * casse parce que leur bonne reponse est en capitale de debut de phrase quand l'indice les citait
- * en minuscule - les 24 sont corriges ici, pas seulement les 22. BPM-1 (mesure de rendu sur la
- * totalite des manches raccourcies) n'est pas produite par ce lot : DEC-0039 section 3 en a
- * retire la production a la squad.</p>
+ * les onze enonces les plus longs du paquet sont raccourcis sans qu'aucun des 24 items ne soit
+ * supprime (BPM-3), et les 24 indices sont corriges pour ne plus nommer la reponse (DEC-0024
+ * point 5) : ce controle avait ete mesure a "22 indices sur 24" a l'ouverture de cette story, mais
+ * une relecture caractere par caractere en trouve 24 sur 24, les deux manquants ("On", "Où")
+ * echappant a une comparaison sensible a la casse parce que leur bonne reponse est en capitale de
+ * debut de phrase quand l'indice les citait en minuscule - les 24 sont corriges ici, pas seulement
+ * les 22 (confirme par camille-po, qui retrouve le meme ecart dans cinq fichiers).</p>
+ *
+ * <p><b>"bandit-manchot-homophones-cm1" ne revient pas au catalogue dans ce lot</b>, malgre le
+ * raccourcissement ci-dessus : arbitrage de camille-po, amendement date de DEC-0024, route par
+ * sofia-sm apres fusion. La condition de retour du point 3 de DEC-0024 exige la mesure de forme
+ * (BPM-1) <b>et</b> un Done pedagogique complet sur le paquet raccourci ; DEC-0039 a deplace la
+ * production de BPM-1 a l'utilisatrice, elle n'a amende ni affaibli la condition elle-meme. Le
+ * paquet reste donc couvert par ce fichier sans entree de catalogue, exactement comme avant ce
+ * lot - charge directement par {@link YamlContentPackLoader#chargerPaquet}, sur le meme principe
+ * que "cp-le-bon-son" sous DEC-0009, cite au paragraphe precedent.</p>
  */
 class PaquetsFrancaisS04Test {
 

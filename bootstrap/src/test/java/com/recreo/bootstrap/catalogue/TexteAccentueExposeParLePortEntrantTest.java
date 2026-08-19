@@ -94,9 +94,6 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-perimetre-cm1",
             "bandit-manchot-conversions-unites-cm1",
             "bandit-manchot-grands-nombres-cm1",
-            // S17-4 (DEC-0024, DEC-0039) : "bandit-manchot-homophones-cm1" revient au catalogue,
-            // paquet raccourci et rejuge par nadia-prof comme un contenu neuf.
-            "bandit-manchot-homophones-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -111,9 +108,6 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Le périmètre",
             "Les mesures",
             "Les grands nombres",
-            // S17-4 : titre deja arbitre par nadia-prof avant le retrait de DEC-0024 (verdict VALIDE
-            // du 2026-08-10, squad/conformite/FICHE-bandit-manchot-homophones-cm1.md).
-            "Le bon petit mot",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -126,10 +120,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Quel est le périmètre ?",
             "Convertis dans la bonne unité !",
             "Lis, écris, décompose ou compare !",
-            // S17-4 : meme motif que le titre ci-dessus.
-            "Quel mot complète la phrase ?",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
-            // valeur unique pour les douze jeux du catalogue reel.
+            // valeur unique pour les onze jeux du catalogue reel.
             "bandit-manchot",
             // matiere (descripteur de chaque paquet reference par le catalogue).
             // CONNU ET NON CORRIGE ICI (S16-5 ne change aucun rendu) : ces deux valeurs sont ecrites
@@ -154,10 +146,7 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lire, écrire, décomposer et comparer les nombres entiers jusqu'au million",
             // CONNU ET NON CORRIGE ICI, meme motif que "Mathematiques" ci-dessus.
             "Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...)",
-            "Resoudre des problemes simples d'addition/soustraction en situation (1 etape)",
-            // S17-4 : competence du descripteur de "cm1-homophones", deja exposee avant DEC-0024 et
-            // simplement restituee dans le meme geste que l'entree de catalogue.
-            "Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...)");
+            "Resoudre des problemes simples d'addition/soustraction en situation (1 etape)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
