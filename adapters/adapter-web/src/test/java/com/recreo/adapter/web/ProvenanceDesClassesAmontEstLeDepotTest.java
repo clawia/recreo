@@ -53,10 +53,34 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * apres une modification de source non recompilee produit exactement ce cas, et l'emplacement seul
  * ne le voit pas. La comparaison ajoutee lit l'horodatage du {@code .class} compile (dans le
  * repertoire ou dans le jar, selon la phase atteinte) et celui du {@code .java} source, et exige
- * que le premier ne soit jamais anterieur au second. <b>Ce que cette comparaison ne prouve pas</b> :
- * un {@code touch} sur le {@code .class} suffirait a la tromper sans recompiler quoi que ce soit, et
- * elle ne remplace donc pas un {@code clean} en amont d'une mesure, seule garantie reelle de
- * fraicheur.
+ * que le premier ne soit jamais anterieur au second.
+ *
+ * <p><b>Ce que cette comparaison ne prouve pas, dans les deux sens</b> (le second nomme le
+ * 2026-08-19 par {@code yanis-qa}, rapport qualite de s17, point 3 : il l'a mesure, le premier
+ * seul etait ecrit ici). Elle ne compare que deux horodatages, jamais un contenu ni une empreinte,
+ * donc elle est aveugle symetriquement :
+ * <ul>
+ *   <li><b>faux vert</b> : un {@code touch} sur le {@code .class} la trompe sans recompiler quoi que
+ *       ce soit ;</li>
+ *   <li><b>faux rouge</b> : un {@code .java} dont l'horodatage avance sans que son contenu change -
+ *       un {@code touch}, un enregistrement sans modification, un {@code git checkout} qui reecrit le
+ *       fichier - la fait rougir sur un {@code .class} parfaitement a jour.</li>
+ * </ul>
+ *
+ * <p><b>Le faux rouge est conserve tel quel, et voici la mesure qui le justifie</b> (theo-archi,
+ * 2026-08-19, JDK 21.0.10, sur l'arbre de {@code s17-theo-gardefous}). Il n'est <b>pas atteignable
+ * depuis une commande qui compile</b> : apres {@code touch} sur {@code GameMechanic.java},
+ * {@code mvn -pl application -am test} recompile le fichier touche - le {@code .class} passe a un
+ * horodatage posterieur - et les deux clauses sont vertes. Le rouge n'apparait qu'en <b>supprimant
+ * la compilation</b> ({@code -Dmaven.main.skip=true}), et il apparait alors sur un
+ * {@code target/classes} dont plus rien ne garantit qu'il correspond aux sources. Autrement dit, le
+ * seul geste qui produit ce faux rouge est celui qui rend la mesure non verifiable : le rouge est
+ * exact sur le fond, meme quand sa cause immediate n'est pas une modification de source. Le corriger
+ * demanderait de comparer un contenu a un binaire compile, donc de recompiler pour juger - un cout
+ * hors de proportion avec un rouge qui ne peut pas apparaitre dans {@code mvn -B clean verify}, la
+ * commande de la porte technique. Ce qui est corrige, c'est le <b>message</b> : il nomme desormais
+ * les deux causes possibles, pour qu'un lecteur qui le rencontre ne cherche pas une modification de
+ * source qui n'existe pas.
  */
 class ProvenanceDesClassesAmontEstLeDepotTest {
 
@@ -135,7 +159,10 @@ class ProvenanceDesClassesAmontEstLeDepotTest {
      * strictement plus ancien que son {@code .java} signale un target non recompile apres une
      * modification du source.
      *
-     * <p><b>Ce que cette comparaison ne prouve pas</b> : un {@code touch} sur le {@code .class}
+     * <p><b>Ce que cette comparaison ne prouve pas, dans les deux sens</b> - voir la Javadoc de la
+     * classe, qui porte la mesure du 2026-08-19 : le faux rouge (horodatage du {@code .java} avance
+     * sans modification de contenu) n'est atteignable qu'en supprimant la compilation, et le faux vert
+     * reste entier - un {@code touch} sur le {@code .class}
      * suffirait a la tromper sans recompiler quoi que ce soit, et elle ne remplace donc pas un
      * {@code clean} en amont d'une mesure, seule garantie reelle de fraicheur.
      */
@@ -143,11 +170,14 @@ class ProvenanceDesClassesAmontEstLeDepotTest {
             Path sourceJava, FileTime horodatageClasse, FileTime horodatageSource) {
         assertThat(horodatageClasse.toInstant().isBefore(horodatageSource.toInstant()))
                 .as("%s (module %s) : le .class compile (%s, horodatage %s) est plus ancien que son "
-                        + ".java source (%s, horodatage %s) - signe d'un target perime, jamais "
-                        + "recompile depuis une modification du source. Cette comparaison ne prouve "
-                        + "ni qu'un touch n'a pas rajeuni le .class sans le recompiler, ni qu'aucun "
-                        + "mvn n'a ete saute entre-temps : un clean en amont d'une mesure reste la "
-                        + "seule garantie",
+                        + ".java source (%s, horodatage %s). Deux causes possibles, et cette "
+                        + "comparaison ne les distingue pas - elle ne lit que des horodatages, jamais "
+                        + "un contenu : soit le target est perime, jamais recompile depuis une "
+                        + "modification du source, soit l'horodatage du .java a avance sans que son "
+                        + "contenu change (touch, enregistrement a vide, git checkout) alors que la "
+                        + "compilation a ete supprimee - un mvn -B clean verify, qui compile, ne peut "
+                        + "pas produire ce second cas. Dans les deux cas la mesure en cours ne "
+                        + "prouve rien : un clean en amont reste la seule garantie de fraicheur",
                         nomClasse, moduleAmont, provenance, horodatageClasse, sourceJava,
                         horodatageSource)
                 .isFalse();
@@ -189,6 +219,11 @@ class ProvenanceDesClassesAmontEstLeDepotTest {
                 Files.getLastModifiedTime(classeCompilee), Files.getLastModifiedTime(sourceJava)))
                 .as("un .class plus ancien que son .java source doit faire rougir le garde-fou")
                 .isInstanceOf(AssertionError.class)
-                .hasMessageContaining("plus ancien");
+                .hasMessageContaining("plus ancien")
+                // s17, point 3 de yanis-qa : le message nomme les deux causes possibles, et cette
+                // clause-ci est ce qui empeche la seconde de disparaitre d'une prochaine reecriture.
+                // Un rouge dont la cause peut etre un horodatage avance sans modification de contenu
+                // doit le dire la ou le lecteur le rencontre, pas seulement dans une Javadoc.
+                .hasMessageContaining("Deux causes possibles");
     }
 }
