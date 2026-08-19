@@ -18,6 +18,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * pressable porte, la feuille maison declare ce meme etat pour toute propriete qu'elle gouverne au
  * repos.</b>
  *
+ * <p><b>Amendement du 2026-08-19 (s16) : un selecteur maison compose est un sujet distinct.</b> La
+ * derivation ne comparait un sujet compose (par exemple {@code .chip-niveau.est-actif}) qu'a la
+ * liste des selecteurs simples de {@code selecteursApplicables} - une chaine qu'elle ne produit
+ * jamais - et le sujet sortait donc du perimetre dans les deux sens : ni exige, ni compte. Trouve
+ * par mutation par {@code sofia-sm} (etats retires de {@code .chip-niveau.est-actif}, sept tests
+ * restes verts), chiffre par {@code nadia-prof}. La correction : {@link #sujetApplicable} juge
+ * qu'un sujet - simple ou compose - s'applique des que l'element rendu porte au moins toutes les
+ * classes qu'il nomme, exactement la semantique CSS d'un selecteur compose - jamais une egalite de
+ * chaine avec un selecteur simple ecrit ailleurs.
+ *
  * <p><b>Le defaut que cette clause ferme a ete vu par l'utilisatrice, pas par la CI.</b> Les puces de
  * niveau de l'en-tete disparaissent au survol de la souris. Le mecanisme est entierement declaratif et
  * verifiable par lecture des deux feuilles :
@@ -140,6 +150,17 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
      * l'en-tete (DEC-0034) : cette huitieme exigence est payee des son introduction, jamais
      * laissee ouverte le temps d'un commit. Un plafond qui ne nomme plus rien de reel n'est plus un
      * cliquet (exigence 1) : la carte reste vide plutot que de citer une dette honoree.
+     *
+     * <p><b>s16 (lot lea-dev, S16-3/S16-4, amendement de l'ADR) : une dette neuve ouverte par la
+     * correction de la derivation, payee dans le meme commit.</b> La derivation ne voyait pas les
+     * sujets composes ({@code .chip-niveau.est-actif}, {@code .proposition.deja-essayee}) : elle ne
+     * les exigeait pas et ne comptait pas non plus leurs propres etats declares - trou trouve par
+     * mutation par {@code sofia-sm}. Une fois la derivation corrigee, {@code .chip-niveau.est-actif}
+     * declarait deja ses deux etats et passe au vert en etant enfin verifiee ; seule
+     * {@code .proposition.deja-essayee} ouvrait une dette reelle (4 exigences : {@code color} et
+     * {@code background-color} a {@code :hover} et {@code :active}, mesure par {@code theo-archi}).
+     * Fermee dans ce meme commit par les deux regles de feuille correspondantes, forme neutre -
+     * S15-8, S15-9. Le plafond reste donc vide.
      */
     private static final Map<String, Set<String>> DETTE_A_L_OUVERTURE = Map.of();
 
@@ -180,10 +201,30 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
      * ({@code :first-child}, {@code :not(...)}) comme les pseudo-elements. Une pseudo-classe
      * structurelle est ainsi traitee comme satisfaite - la surcollecte assumee, nommee dans la Javadoc
      * de la classe et mesuree comme n'ajoutant aucune exigence sur la feuille livree.
+     *
+     * <p>Le resultat peut etre un sujet compose de plusieurs classes ({@code .chip-niveau.est-actif}) :
+     * {@link #sujetApplicable} en juge, jamais une egalite de chaine avec un selecteur simple.
      */
     private static String elementDuCompose(String reste) {
         int deuxPoints = reste.indexOf(':');
         return (deuxPoints < 0 ? reste : reste.substring(0, deuxPoints)).strip();
+    }
+
+    /**
+     * Un sujet - simple ou compose - s'applique-t-il a ce bouton rendu ? Amendement ADR-0046 (s16) :
+     * un selecteur compose est un sujet distinct, jamais un alias de sa premiere classe. Il
+     * s'applique des que l'element rendu porte <b>au moins</b> toutes les classes qu'il nomme -
+     * exactement la semantique CSS d'un selecteur compose, qu'il soit ecrit {@code .a.b} ou
+     * {@code .b.a}. Un sujet sans aucune classe est une balise nue : il ne s'applique qu'a un bouton
+     * qui n'a lui-meme aucune classe et qui porte cette balise, {@code selecteursApplicables} ne
+     * rendant une balise que dans ce cas precis.
+     */
+    private static boolean sujetApplicable(String sujet, TailleDesTextesEtBoutonsTest.BoutonRendu bouton) {
+        Set<String> classesDuSujet = LAnimationRetardeMaisNeDetermineRienTest.classesDuSelecteur(sujet);
+        if (!classesDuSujet.isEmpty()) {
+            return bouton.classes().containsAll(classesDuSujet);
+        }
+        return bouton.classes().isEmpty() && sujet.equals(bouton.bouton().tagName());
     }
 
     /**
@@ -211,33 +252,104 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
                 .toList();
     }
 
-    /** Les proprietes que la feuille maison declare au repos sur cet etat de bouton, par selecteur. */
-    private static Map<String, Set<String>> reposMaison(
-            Map<String, String> maison, List<String> applicables) {
-        Map<String, Set<String>> repos = new LinkedHashMap<>();
-        for (String selecteur : applicables) {
-            String corps = maison.get(selecteur);
-            if (corps == null) {
+    /**
+     * Le compose de classes du meme element que ce selecteur gouverne reellement, quel que soit son
+     * prefixe : le sujet (dernier compose, {@code sujetDuSelecteur}) depouille de tout etat interactif
+     * puis de toute pseudo-classe structurelle restante ({@link #elementDuCompose}). {@code
+     * body:has(.filtre-niveau) .chip-niveau.est-actif} et {@code .chip-niveau.est-actif:hover}
+     * rendent tous deux {@code .chip-niveau.est-actif} : un sujet compose n'est pas moins un sujet
+     * distinct parce qu'une regle qui le porte est elle-meme scopee a une descendance.
+     */
+    private static String composeDuMemeElement(String selecteur) {
+        return elementDuCompose(
+                etatsDuCompose(TailleDesTextesEtBoutonsTest.sujetDuSelecteur(selecteur)).reste());
+    }
+
+    /**
+     * Les classes que la feuille maison connait, au repos comme a un etat interactif : celles que
+     * nomme le compose de classes du meme element de tout selecteur maison, quel que soit son prefixe
+     * de descendance. Sert a decouper l'<b>identite</b> d'un bouton rendu de ses classes purement
+     * tierces ({@code btn}, que la feuille maison ne nomme jamais seule).
+     */
+    private static Set<String> classesConnuesDeLaMaison(Map<String, String> maison) {
+        Set<String> classes = new LinkedHashSet<>();
+        for (String selecteur : maison.keySet()) {
+            classes.addAll(
+                    LAnimationRetardeMaisNeDetermineRienTest.classesDuSelecteur(
+                            composeDuMemeElement(selecteur)));
+        }
+        return classes;
+    }
+
+    /**
+     * L'identite d'un bouton rendu : le sujet compose de ses classes connues de la feuille maison,
+     * dans l'ordre du gabarit. Amendement ADR-0046 (s16) - un selecteur compose est un sujet distinct :
+     * deux appuis d'une meme classe de base qui declarent des apparences differentes
+     * ({@code .proposition} et {@code .proposition.deja-essayee}) sont deux pressables distincts, et
+     * l'identite de chacun est ce a quoi ses propres etats doivent etre rattaches - jamais a celle
+     * d'un sujet plus simple que le meme element porte aussi. Rendue en {@code .a.b}, jamais {@code
+     * .b.a} : l'ordre est celui du gabarit, le meme que celui dans lequel les regles maison composees
+     * sont ecrites (verifie sur {@code .chip-niveau.est-actif} et {@code .proposition.deja-essayee}).
+     */
+    private static String identiteDuBouton(
+            Set<String> classesConnues, TailleDesTextesEtBoutonsTest.BoutonRendu bouton) {
+        StringBuilder identite = new StringBuilder();
+        for (String classe : bouton.classes()) {
+            if (classesConnues.contains(classe)) {
+                identite.append('.').append(classe);
+            }
+        }
+        return identite.toString();
+    }
+
+    /**
+     * Les proprietes que la feuille maison declare au repos et qui s'appliquent reellement a ce
+     * bouton : celles de chaque compose de classes du meme element ({@link #sujetApplicable}) que le
+     * bouton porte au moins - sujet simple ({@code .proposition}) comme sujet compose ({@code
+     * .proposition.deja-essayee}), toutes reunies dans un seul ensemble puisqu'elles s'appliquent
+     * simultanement au meme element rendu.
+     */
+    private static Set<String> reposMaison(
+            Map<String, String> maison, TailleDesTextesEtBoutonsTest.BoutonRendu bouton) {
+        Set<String> repos = new LinkedHashSet<>();
+        for (Map.Entry<String, String> regle : maison.entrySet()) {
+            String selecteur = regle.getKey();
+            boolean porteUnEtatInteractif = !etatsDuCompose(
+                    TailleDesTextesEtBoutonsTest.sujetDuSelecteur(selecteur)).etats().isEmpty();
+            if (porteUnEtatInteractif || !sujetApplicable(composeDuMemeElement(selecteur), bouton)) {
                 continue;
             }
-            repos.put(selecteur, new LinkedHashSet<>(proprietesRendues(corps)));
+            repos.addAll(proprietesRendues(regle.getValue()));
         }
         return repos;
     }
 
-    /** Les proprietes que la feuille maison declare a chaque etat interactif de cet etat de bouton. */
-    private static Map<String, Set<String>> etatsMaison(
-            Map<String, String> maison, List<String> applicables) {
-        Map<String, Set<String>> declares = new LinkedHashMap<>();
+    /**
+     * Les proprietes que la feuille maison declare a chaque etat interactif, par sujet exact et par
+     * etat - independant de tout bouton particulier, c'est un fait de la feuille elle-meme.
+     *
+     * <p>Amendement ADR-0046 (s16) : la cle est desormais le sujet exact, jamais un ensemble
+     * d'etats fusionne pour tout sujet applicable. C'est ce qui rend {@link #sujetApplicable} a lui
+     * seul insuffisant a fermer le trou trouve par mutation : une declaration sur {@code
+     * .proposition:hover} ne satisfait plus une exigence posee sur l'identite {@code
+     * .proposition.deja-essayee}, exactement le mode de defaillance que la mutation de
+     * {@code sofia-sm} sur {@code .chip-niveau.est-actif} a revele - une declaration sur
+     * {@code .chip-niveau:hover} seul ne doit pas non plus suffire a couvrir cette identite-la.
+     * Chaque pressable distinct declare ses propres etats, jamais ceux d'un sujet plus simple qu'il
+     * porte aussi.
+     */
+    private static Map<String, Map<String, Set<String>>> etatsMaisonParSujet(Map<String, String> maison) {
+        Map<String, Map<String, Set<String>>> declares = new LinkedHashMap<>();
         for (Map.Entry<String, String> regle : maison.entrySet()) {
             EtatsDuCompose lecture =
                     etatsDuCompose(TailleDesTextesEtBoutonsTest.sujetDuSelecteur(regle.getKey()));
-            if (lecture.etats().isEmpty()
-                    || !applicables.contains(elementDuCompose(lecture.reste()))) {
+            if (lecture.etats().isEmpty()) {
                 continue;
             }
+            String sujet = composeDuMemeElement(regle.getKey());
             for (String etat : lecture.etats()) {
-                declares.computeIfAbsent(etat, inconnu -> new LinkedHashSet<>())
+                declares.computeIfAbsent(sujet, inconnu -> new LinkedHashMap<>())
+                        .computeIfAbsent(etat, inconnu -> new LinkedHashSet<>())
                         .addAll(proprietesRendues(regle.getValue()));
             }
         }
@@ -245,30 +357,29 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
     }
 
     /**
-     * Les exigences que la feuille tierce fait peser sur cet etat de bouton : pour chaque regle tierce
-     * dont le sujet est un selecteur applicable porteur d'un ou plusieurs etats <b>tous</b> gardes,
-     * chaque propriete declaree qui touche une propriete gouvernee au repos par la maison.
+     * Les exigences que la feuille tierce fait peser sur ce bouton, rattachees a son identite : pour
+     * chaque regle tierce dont le sujet est applicable et porteur d'un ou plusieurs etats <b>tous</b>
+     * gardes, chaque propriete declaree qui touche une propriete gouvernee au repos par la maison.
      */
     private static Map<Exigence, Set<String>> exigencesDuTiers(
-            Map<String, String> tiers, List<String> applicables, Map<String, Set<String>> repos) {
+            Map<String, String> tiers, TailleDesTextesEtBoutonsTest.BoutonRendu bouton,
+            String identite, Set<String> repos) {
         Map<Exigence, Set<String>> exigences = new LinkedHashMap<>();
         for (Map.Entry<String, String> regle : tiers.entrySet()) {
             EtatsDuCompose lecture =
                     etatsDuCompose(TailleDesTextesEtBoutonsTest.sujetDuSelecteur(regle.getKey()));
             if (lecture.etats().isEmpty() || !ETATS_GARDES.containsAll(lecture.etats())
-                    || !applicables.contains(elementDuCompose(lecture.reste()))) {
+                    || !sujetApplicable(composeDuMemeElement(regle.getKey()), bouton)) {
                 continue;
             }
             for (String etat : lecture.etats()) {
                 for (String proprieteTierce : proprietesRendues(regle.getValue())) {
-                    for (Map.Entry<String, Set<String>> declarees : repos.entrySet()) {
-                        for (String proprieteMaison : declarees.getValue()) {
-                            if (touche(proprieteMaison, proprieteTierce)) {
-                                exigences.computeIfAbsent(
-                                        new Exigence(declarees.getKey(), etat, proprieteMaison),
-                                        inconnue -> new LinkedHashSet<>())
-                                        .add(regle.getKey());
-                            }
+                    for (String proprieteMaison : repos) {
+                        if (touche(proprieteMaison, proprieteTierce)) {
+                            exigences.computeIfAbsent(
+                                    new Exigence(identite, etat, proprieteMaison),
+                                    inconnue -> new LinkedHashSet<>())
+                                    .add(regle.getKey());
                         }
                     }
                 }
@@ -303,18 +414,22 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
             Path racineMaison, Path racineTiers, boolean seulementNonSatisfaites) {
         Map<String, String> maison = TailleDesTextesEtBoutonsTest.blocsMaison(racineMaison);
         Map<String, String> tiers = TailleDesTextesEtBoutonsTest.blocsTiers(racineTiers);
+        Set<String> classesConnues = classesConnuesDeLaMaison(maison);
+        Map<String, Map<String, Set<String>>> declaresParSujet = etatsMaisonParSujet(maison);
         Map<Exigence, Set<String>> retenues = new LinkedHashMap<>();
 
         for (TailleDesTextesEtBoutonsTest.BoutonRendu bouton
                 : TailleDesTextesEtBoutonsTest.etatsRendus(racineMaison)) {
-            List<String> applicables = TailleDesTextesEtBoutonsTest.selecteursApplicables(bouton);
-            Map<String, Set<String>> repos = reposMaison(maison, applicables);
-            Map<String, Set<String>> declares = etatsMaison(maison, applicables);
+            String identite = identiteDuBouton(classesConnues, bouton);
+            Set<String> repos = reposMaison(maison, bouton);
 
             for (Map.Entry<Exigence, Set<String>> exigence
-                    : exigencesDuTiers(tiers, applicables, repos).entrySet()) {
+                    : exigencesDuTiers(tiers, bouton, identite, repos).entrySet()) {
                 Exigence attendue = exigence.getKey();
-                boolean satisfaite = declares.getOrDefault(attendue.etat(), Set.of()).stream()
+                Set<String> declarees = declaresParSujet
+                        .getOrDefault(attendue.selecteurMaison(), Map.of())
+                        .getOrDefault(attendue.etat(), Set.of());
+                boolean satisfaite = declarees.stream()
                         .anyMatch(declaree -> touche(attendue.propriete(), declaree));
                 if (!satisfaite || !seulementNonSatisfaites) {
                     retenues.computeIfAbsent(attendue, inconnue -> new LinkedHashSet<>())
@@ -396,12 +511,20 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
      * declarer ces proprietes au survol, ou ou la puce cesse de les declarer au repos - c'est-a-dire le
      * jour ou l'une des deux moities du mecanisme disparait, et ou ce qui est ecrit ici cesse de
      * decrire le depot.
+     *
+     * <p>Amendement ADR-0046 (s16) : l'identite lue ici est {@code .chip-niveau.est-actif}, jamais
+     * {@code .chip-niveau} seul. {@code th:classappend} n'etant pas une branche conditionnelle pour
+     * {@code TailleDesTextesEtBoutonsTest.etatsDe} - il ajoute son literal a l'unique etat rendu, quel
+     * que soit le niveau demande - la puce de niveau releve dans les gabarits porte toujours
+     * {@code est-actif} dans la population de ce fichier. Avant cet amendement, cette identite
+     * composee sortait du perimetre (le meme trou que celui trouve par mutation par {@code sofia-sm})
+     * et ce test se lisait par coincidence sur le sujet simple ; il decrit desormais le sujet reel.
      */
     @Test
     void leSurvolTiersEcraseLesTroisProprietesDeLaPuceDeNiveau() {
         Set<String> attendues = new LinkedHashSet<>();
         exigences(RACINE_PRODUCTION, RACINE_PRODUCTION, false).keySet().stream()
-                .filter(exigence -> exigence.selecteurMaison().equals(".chip-niveau")
+                .filter(exigence -> exigence.selecteurMaison().equals(".chip-niveau.est-actif")
                         && exigence.etat().equals(":hover"))
                 .forEach(exigence -> attendues.add(exigence.propriete()));
 

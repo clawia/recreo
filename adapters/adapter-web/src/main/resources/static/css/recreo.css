@@ -615,6 +615,30 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
     background-color: var(--recreo-accent);
 }
 
+/* Amendement ADR-0046 (s16) : ".proposition.deja-essayee" est un sujet compose, donc un pressable
+   distinct de ".proposition" au sens de la clause - il doit declarer ses propres etats, une regle
+   sur ".proposition" seule ne suffit plus a le couvrir. Trou trouve par mutation sur
+   ".chip-niveau.est-actif" (meme derivation, meme famille de defaut) et chiffre par theo-archi :
+   ".proposition.deja-essayee" est le seul des six selecteurs composes du depot qui ne declarait
+   encore aucun etat interactif.
+   Forme neutre retenue par nadia-prof le 2026-08-18 (FICHE-barre-entree-niveau.md, section 4) :
+   "l'absence de tout changement continue de suffire" - ses deux conditions :
+   - S15-8, la couleur de fond de la position cyclique doit survivre sous le doigt : les valeurs
+     ci-dessous sont volontairement celles du repos non cyclique (identiques a la regle de
+     ".proposition:hover, .proposition:active" ci-dessus) et cette regle est placee avant les
+     quatre regles de position ci-dessous, a la meme specificite (0,3,0) qu'elles : la derniere du
+     fichier l'emporte a specificite egale (ADR-0014 point 5), donc chaque position garde son fond
+     et son texte, hover ou non - ne jamais deplacer ce bloc apres les quatre regles de position ;
+   - S15-9, le trait de M9 (text-decoration et ses trois longhands sur ".proposition.deja-essayee")
+     n'est touche par aucune des deux regles ci-dessous ni par aucun etat de la feuille tierce
+     (mesure d'ADR-0046, aucune regle vendorisee ne porte text-decoration) : il survit sans avoir a
+     etre redeclare ici. */
+.proposition.deja-essayee:hover,
+.proposition.deja-essayee:active {
+    color: var(--recreo-accent-texte);
+    background-color: var(--recreo-accent);
+}
+
 /* Taille du texte des boutons pleins : la plupart partagent la taille commune des boutons
    actionnables (1,25rem), mais le chiffre d'un bouton de reponse est ce que l'enfant doit
    comparer entre les trois propositions - il doit peser au moins autant que le calcul affiche
