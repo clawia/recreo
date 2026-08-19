@@ -289,3 +289,19 @@ fautifs dans le meme mouvement que le raccourcissement. Seul le compte affiche e
 `lea-dev` a corrige au-dela du compte annonce plutot qu'a sa hauteur. Les deux lignes d'origine
 ci-dessus ne sont pas reecrites, conformement a la forme retenue par ce depot depuis s16
 (`R-BARRE-1`) : correction par note datee, jamais par reecriture silencieuse.
+
+## Correction du 2026-08-19 (trouvee par relecteur-pedagogique, s17)
+
+La section "Ce que ce sprint peut et ne peut pas rendre a la couverture" ci-dessus affirme qu'**une
+seule ligne peut passer `en cours` a `couvert-valide` a la cloture de s17, celle de la
+comprehension (`S17-2`)**. **Ce n'est plus vrai : `S17-2` est sortie du perimetre de s17.**
+`camille-po` l'a decide par amendement de `DEC-0039` (deuxieme amendement, 2026-08-19) : le budget
+vertical compose de la manche de comprehension reste insuffisant de 90 a 120 px meme apres les
+rendus d'`ines-design` et de `theo-archi`, et `S17-2` retourne au backlog, non affectee. Depuis ce
+meme amendement, **aucune ligne de `squad/programme/MATRICE-couverture.md` n'atteindra
+`couvert-valide` a la cloture de s17** ; l'engagement de `DEC-0037` reste leve, mais par
+l'ouverture de la ligne des synonymes (`S17-3`) seule, jamais par un franchissement de
+`couvert-valide`. Je ne reecris pas la section d'origine, qui datait le gel de l'objectif au
+demarrage du sprint : cette note dit ce qu'elle n'a plus de vrai depuis, sur le patron retenu par
+ce depot depuis s16 (`R-BARRE-1`) et applique plus haut dans ce meme document pour le chiffre
+24/24.
