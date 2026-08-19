@@ -90,6 +90,15 @@ import static org.assertj.core.api.Assertions.assertThat;
  * debut de phrase quand l'indice les citait en minuscule - les 24 sont corriges ici, pas seulement
  * les 22 (confirme par camille-po, qui retrouve le meme ecart dans cinq fichiers).</p>
  *
+ * <p><b>Reserve fermee par nadia-prof le 2026-08-19</b> (VALIDE SOUS RESERVE sur BPM-2/3/4) : 3 des
+ * 24 indices corriges ci-dessus nommaient encore la reponse par un chemin different - "et", "ou"
+ * et "peu" (items 3, 10, 21) sont les mots-test classiques de leurs propres homophones ("et puis",
+ * "ou bien", "un peu"), qui contiennent la reponse comme mot entier plutot que comme une lettre
+ * incidente. Non une negligence : la reparation reprend le patron deja pose aux items 2 ("à") et 9
+ * ("Où") - tester la substitution du <b>distracteur</b> et montrer qu'elle echoue, jamais celle de
+ * la bonne reponse. Les 24 indices sont revus une seconde fois avec cette regle (mot-test complet,
+ * pas seulement lettre finale) : 0 fuite trouvee au-dela des 3 signalees.</p>
+ *
  * <p><b>"bandit-manchot-homophones-cm1" ne revient pas au catalogue dans ce lot</b>, malgre le
  * raccourcissement ci-dessus : arbitrage de camille-po, amendement date de DEC-0024, route par
  * sofia-sm apres fusion. La condition de retour du point 3 de DEC-0024 exige la mesure de forme
@@ -309,7 +318,7 @@ class PaquetsFrancaisS04Test {
                 new Question(new ItemId("item-1"), "Je vais ___ l'école.", "à", List.of("a"),
                         Optional.of("Remplace par 'avait' : 'Je vais avait l'école' ne fonctionne pas.")),
                 new Question(new ItemId("item-2"), "Papa ___ maman font la cuisine.", "et", List.of("est"),
-                        Optional.of("Remplace par 'et puis' : 'Papa et puis maman font la cuisine' fonctionne.")),
+                        Optional.of("Remplace par 'était' : 'Papa était maman font la cuisine' ne fonctionne pas.")),
                 new Question(new ItemId("item-3"), "Le chat ___ noir.", "est", List.of("et"),
                         Optional.of("Remplace par 'était' : 'Le chat était noir' fonctionne.")),
                 new Question(new ItemId("item-4"), "Les enfants ___ partis.", "sont", List.of("son"),
@@ -323,7 +332,7 @@ class PaquetsFrancaisS04Test {
                 new Question(new ItemId("item-8"), "___ vas-tu ?", "Où", List.of("Ou"),
                         Optional.of("Remplace par 'à quel endroit' : 'À quel endroit vas-tu ?' fonctionne.")),
                 new Question(new ItemId("item-9"), "Tu veux du thé ___ du café ?", "ou", List.of("où"),
-                        Optional.of("Remplace par 'ou bien' : 'Tu veux du thé ou bien du café ?' fonctionne.")));
+                        Optional.of("Remplace par 'à quel endroit' : 'Tu veux du thé à quel endroit du café ?' ne fonctionne pas.")));
 
         assertThat(items)
                 .as("S17-4 (DEC-0024 point 5) : l'enonce, la bonne reponse et le distracteur des dix"
@@ -395,7 +404,7 @@ class PaquetsFrancaisS04Test {
                 new Question(new ItemId("item-19"), "J'ai rangé ___ affaires ce matin.", "mes", List.of("mais"),
                         Optional.of("Remplace par 'tes' : 'J'ai rangé tes affaires' fonctionne.")),
                 new Question(new ItemId("item-20"), "Il reste ___ de pain dans le placard.", "peu", List.of("peut"),
-                        Optional.of("Remplace par 'un peu' : 'il reste un peu de pain' fonctionne.")),
+                        Optional.of("Remplace par 'pouvait' : 'Il reste pouvait de pain dans le placard' ne fonctionne pas.")),
                 new Question(new ItemId("item-21"), "Le ciel est dégagé, mais il ___ encore pleuvoir.", "peut", List.of("peu"),
                         Optional.of("Remplace par 'pouvait' : 'il pouvait encore pleuvoir' fonctionne.")),
                 new Question(new ItemId("item-22"), "Tom cherchait sa gomme, et son voisin ___ enfin repérée.", "l'a", List.of("la"),

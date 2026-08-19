@@ -22,7 +22,7 @@ items:
   - enonce: "Papa ___ maman font la cuisine."
     bonneReponse: "et"
     distracteurs: ["est"]
-    indice: "Remplace par 'et puis' : 'Papa et puis maman font la cuisine' fonctionne."
+    indice: "Remplace par 'était' : 'Papa était maman font la cuisine' ne fonctionne pas."
   - enonce: "Le chat ___ noir."
     bonneReponse: "est"
     distracteurs: ["et"]
@@ -50,7 +50,7 @@ items:
   - enonce: "Tu veux du thé ___ du café ?"
     bonneReponse: "ou"
     distracteurs: ["où"]
-    indice: "Remplace par 'ou bien' : 'Tu veux du thé ou bien du café ?' fonctionne."
+    indice: "Remplace par 'à quel endroit' : 'Tu veux du thé à quel endroit du café ?' ne fonctionne pas."
   - enonce: "Pose ton cartable ___, à côté du mien."
     bonneReponse: "là"
     distracteurs: ["la"]
@@ -94,7 +94,7 @@ items:
   - enonce: "Il reste ___ de pain dans le placard."
     bonneReponse: "peu"
     distracteurs: ["peut"]
-    indice: "Remplace par 'un peu' : 'il reste un peu de pain' fonctionne."
+    indice: "Remplace par 'pouvait' : 'Il reste pouvait de pain dans le placard' ne fonctionne pas."
   - enonce: "Le ciel est dégagé, mais il ___ encore pleuvoir."
     bonneReponse: "peut"
     distracteurs: ["peu"]
