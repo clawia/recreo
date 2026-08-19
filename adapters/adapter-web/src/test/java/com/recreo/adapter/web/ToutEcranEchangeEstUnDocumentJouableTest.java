@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -134,7 +135,18 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
 
     /** L'assemblage que htmx fait dans le navigateur : innerHTML de la zone remplace par le fragment. */
     private Document assembler(String fragment) throws Exception {
-        Document coquille = Jsoup.parse(corps(get("/")));
+        return assembler(Jsoup.parse(corps(get("/"))), fragment);
+    }
+
+    /**
+     * S16-6 : variante qui recoit la coquille plutot que de toujours en refaire une avec {@code
+     * GET /}. Necessaire des qu'une coquille porte un etat que {@code GET /} ne porte jamais - la
+     * puce de niveau active - sans quoi l'assemblage recompose un document que le navigateur n'a
+     * jamais montre : un enfant qui confirme un changement de niveau vient de {@code GET
+     * /niveaux/{niveau}}, dont l'en-tete porte deja la puce active de ce niveau, jamais de
+     * {@code GET /}.
+     */
+    private Document assembler(Document coquille, String fragment) {
         coquille.select(zoneEchangee(coquille)).html(fragment);
         return coquille;
     }
@@ -215,10 +227,16 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
 
         MockHttpSession partieQuiConfirmeSonChangementDeNiveau = new MockHttpSession();
         corps(post("/parties/{jeuId}", JEU_ID).session(partieQuiConfirmeSonChangementDeNiveau));
-        corps(get("/niveaux/{niveau}", NIVEAU).session(partieQuiConfirmeSonChangementDeNiveau));
+        // S16-6 : la coquille de cet ecran compose n'est pas GET / (par ou assembler() passe par
+        // defaut) - un enfant qui confirme un changement de niveau vient de GET /niveaux/{niveau},
+        // dont l'en-tete porte deja la puce active de ce niveau. C'est cette coquille-la, capturee
+        // ici, que l'echange htmx suivant recompose - jamais une coquille neutre qui ne l'a jamais
+        // demandee.
+        Document coquilleDuNiveauConfirme = Jsoup.parse(corps(
+                get("/niveaux/{niveau}", NIVEAU).session(partieQuiConfirmeSonChangementDeNiveau)));
         ecrans.add(new Ecran("confirmation du changement de niveau, retour a la liste filtree",
                 "POST /niveaux/{niveau}/confirmer",
-                assembler(corps(post("/niveaux/{niveau}/confirmer", NIVEAU)
+                assembler(coquilleDuNiveauConfirme, corps(post("/niveaux/{niveau}/confirmer", NIVEAU)
                         .session(partieQuiConfirmeSonChangementDeNiveau)))));
 
         return ecrans;
@@ -530,6 +548,97 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
         assertThatThrownBy(() -> marqueursDeVerdict(fautif))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("les deux marqueurs du verdict se lisent dans");
+    }
+
+    /** La marque de la phrase de filtre, source du niveau qu'elle nomme (accueil.html). */
+    private static final String SELECTEUR_PHRASE_FILTRE = ".filtre-niveau";
+
+    /** La marque de la puce de niveau active, source du niveau qu'elle nomme (accueil.html). */
+    private static final String SELECTEUR_PUCE_ACTIVE = ".chip-niveau.est-actif";
+
+    /** Le prefixe que le gabarit concatene devant ${niveauActif} (accueil.html, ".filtre-niveau"). */
+    private static final String PREFIXE_PHRASE_FILTRE = "Pour le ";
+
+    /**
+     * S16-6 : le niveau nomme par la phrase de filtre, sur un ecran qui en porte une. Derive du
+     * texte du gabarit, jamais ecrit ici : le prefixe est celui qu'accueil.html concatene devant
+     * {@code ${niveauActif}}.
+     */
+    private static Optional<String> niveauDeLaPhraseDeFiltre(Document document) {
+        var phrases = document.select(SELECTEUR_PHRASE_FILTRE);
+        assertThat(phrases.size())
+                .as("un ecran ne porte au plus qu'une phrase de filtre")
+                .isLessThanOrEqualTo(1);
+        if (phrases.isEmpty()) {
+            return Optional.empty();
+        }
+        String texte = phrases.first().text();
+        assertThat(texte)
+                .as("la phrase de filtre doit commencer par \"%s\"", PREFIXE_PHRASE_FILTRE)
+                .startsWith(PREFIXE_PHRASE_FILTRE);
+        return Optional.of(texte.substring(PREFIXE_PHRASE_FILTRE.length()));
+    }
+
+    /** Le niveau nomme par la puce active, sur un ecran qui en porte une. */
+    private static Optional<String> niveauDeLaPuceActive(Document document) {
+        var puces = document.select(SELECTEUR_PUCE_ACTIVE);
+        assertThat(puces.size())
+                .as("un ecran ne porte au plus qu'une puce de niveau active")
+                .isLessThanOrEqualTo(1);
+        return puces.isEmpty() ? Optional.empty() : Optional.of(puces.first().text());
+    }
+
+    /**
+     * S16-6 (ferme S15-D, forme renforcee de theo-archi, avis de faisabilite du sprint 16) : sur
+     * tout ecran <b>compose</b> par un echange htmx, le niveau nomme par la phrase de filtre et
+     * celui de la puce de niveau active sont le meme, et l'un n'apparait jamais sans l'autre.
+     *
+     * <p>Restreint aux ecrans composes - les routes dont le verbe est {@code POST}, qui echangent
+     * un fragment dans la coquille. Les deux routes {@code GET} du controleur ({@code accueil()},
+     * {@code niveaux()}) rendent un document complet en un seul passage Thymeleaf, ou la puce
+     * active peut legitimement porter sa classe pendant que la confirmation d'abandon remplace la
+     * phrase par son propre contenu (l'apparence active reste eteinte tant que ".filtre-niveau"
+     * n'est pas dans le document, amendement d'ADR-0046 s15) : une propriete distincte, deja
+     * arbitree, hors du perimetre de cette clause. La distinction vient du verbe de la route, pas
+     * d'un nom de route enumere : c'est la convention deja portee par le controleur lui-meme (GET
+     * rend une page, POST rend un fragment), jamais une liste ecrite ici.</p>
+     */
+    @Test
+    void surToutEcranComposeLaPhraseDeFiltreEtLaPuceActiveNommentLeMemeNiveau() throws Exception {
+        for (Ecran ecran : ecrans()) {
+            if (!ecran.route().startsWith("POST ")) {
+                continue;
+            }
+            Optional<String> phrase = niveauDeLaPhraseDeFiltre(ecran.document());
+            Optional<String> puce = niveauDeLaPuceActive(ecran.document());
+            assertThat(phrase)
+                    .as("S15-D : sur l'ecran compose \"%s\" (%s), la phrase de filtre (%s) et la "
+                            + "puce de niveau active (%s) doivent nommer le meme niveau, ou etre "
+                            + "toutes deux absentes", ecran.nom(), ecran.route(), phrase, puce)
+                    .isEqualTo(puce);
+        }
+    }
+
+    /**
+     * ADR-0013 obligation 3 : mise a l'epreuve sur la sortie reelle du serveur - l'ecran compose
+     * de la confirmation de changement de niveau, dont on retire la phrase de filtre qu'il porte
+     * reellement. C'est exactement la forme du defaut de S15-D avant ce lot : la puce reste
+     * active dans la coquille, la phrase a disparu du fragment.
+     */
+    @Test
+    void unEcranComposeDontLaPhraseDeFiltreDisparaitFaitEchouerLaClauseS15D() throws Exception {
+        Ecran ecran = ecrans().stream()
+                .filter(candidat -> candidat.nom().equals(
+                        "confirmation du changement de niveau, retour a la liste filtree"))
+                .findFirst()
+                .orElseThrow();
+        Element phrase = ecran.document().selectFirst(SELECTEUR_PHRASE_FILTRE);
+        assertThat(phrase).as("cet ecran doit porter la phrase de filtre avant mutation").isNotNull();
+        phrase.remove();
+
+        assertThat(niveauDeLaPhraseDeFiltre(ecran.document()))
+                .as("apres mutation, la phrase est absente alors que la puce active reste presente")
+                .isNotEqualTo(niveauDeLaPuceActive(ecran.document()));
     }
 
     /** Le corpus doit vraiment contenir des ecrans a juger, sinon les deux clauses passent a vide. */

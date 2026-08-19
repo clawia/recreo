@@ -69,8 +69,19 @@ class TexteAccentueDesGabaritsTest {
 
     /**
      * Les deux attributs par lesquels Thymeleaf remplace au rendu le texte ecrit en clair. Ce
-     * texte-la n'atteint jamais l'enfant : celui qu'il lit vient du modele, donc du contenu, dont les
-     * garde-fous vivent dans adapter-content. Ensemble ferme par Thymeleaf, jamais par nous.
+     * texte-la n'atteint jamais l'enfant sous la forme litterale ecrite ici : celui qu'il lit vient
+     * du modele. Ensemble ferme par Thymeleaf, jamais par nous.
+     *
+     * <p><b>Amendement du 2026-08-19 (S16-5, theo-archi, avis de faisabilite du sprint 16).</b> La
+     * phrase qui justifiait ce saut affirmait que ce texte-la, venant du modele, "dont les
+     * garde-fous vivent dans adapter-content" - c'est vrai pour le texte d'un paquet, c'est faux
+     * pour les libelles de niveau ("CP", "CM1") exposes par {@code PartieUseCase.niveauxDuCatalogue()}
+     * et rendus ici meme par la puce de niveau et la phrase de filtre : rien dans
+     * {@code adapter-content} ne juge leur accentuation. Ce trou est ferme par
+     * {@code TexteAccentueExposeParLePortEntrantTest} (module {@code bootstrap}), dont le perimetre
+     * se derive des composantes du port entrant plutot que d'un gabarit - ADR-0015. Ce fichier-ci
+     * continue de sauter ce texte a bon droit, pour la seule raison qui reste vraie : il ne peut pas
+     * le lire, ce n'est pas un texte ecrit en clair dans ce gabarit.</p>
      */
     private static final List<String> POSE_SON_TEXTE_AU_RENDU = List.of("th:text", "th:utext");
 
