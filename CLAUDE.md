@@ -64,8 +64,12 @@ verifie**, aucun plugin ne l'arrete, et c'est exactement pourquoi elle est ecrit
 Ce que cette exigence coute a omettre, et pourquoi la formule "juste cette fois" ne tient pas : un
 tel ecart a ete mesure le 2026-08-17 sur un garde-fou de contenu, **avec et sans `-am` sur le meme
 arbre et sans aucune mutation**, et les deux executions ne rendent pas le meme verdict.
-`ADR-0045`, section "Prerequis de mesure", porte le chiffre avec sa methode ; il n'est pas recopie
-ici, pour qu'il ne puisse pas y pourrir a moitie. Ce jour-la l'ecart etait un **faux rouge**, donc
+`squad/sprints/s14-points-d-entree-par-niveau/avis-faisabilite.md`, section 12, porte le chiffre avec
+sa methode ; il n'est pas recopie ici, pour qu'il ne puisse pas y pourrir a moitie. *Cette phrase a
+renvoye du 2026-08-17 au 2026-08-19 vers "`ADR-0045`, section Prerequis de mesure", qui n'existe pas -
+`ADR-0045` porte sur la coherence du catalogue. Ecart trouve par `camille-po` en verifiant la
+reference, corrige par `theo-archi` qui l'avait ecrite : une reference qui pointe vers rien, dans le
+fichier que tous les agents lisent, est de la meme famille qu'un chiffre sans methode.* Ce jour-la l'ecart etait un **faux rouge**, donc
 visible et corrige dans l'heure. Rien ne garantit le sens du prochain : un **faux vert** a la meme
 cause, et il ne se remarque pas - c'est la definition meme d'un garde-fou qui ne garde plus rien,
 la famille de defaut que ce depot a deja sanctionnee plusieurs fois.
