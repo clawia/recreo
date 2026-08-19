@@ -601,14 +601,34 @@ rendu a 360 px, plus correction des 22 indices qui nomment la reponse, plus repr
 paquet comme un contenu neuf devant `nadia-prof`) et `docs/backlog/backlog.md`, story `S17-4`.
 
 **Note sur les deux lignes `en cours` ouvertes au sprint 17 (comprehension de texte, synonymes).**
-`DEC-0039` ouvre ces deux lignes, stories `S17-2` et `S17-3` de `docs/backlog/backlog.md`, chacune
-sous arbitrage prealable bloquant de `nadia-prof` avant tout code
-(`squad/conformite/FICHE-bandit-manchot-comprehension-cm1.md`,
-`FICHE-bandit-manchot-synonymes-cm1.md`). La ligne synonymes ouvre en **couverture partielle
-nommee** : seuls les synonymes sont couverts, aucun antonyme, faute de matiere premiere - voir la
-fiche dediee pour le detail, sur le meme modele que les couvertures partielles deja nommees sur ce
-produit. **Aucune ligne ne passe a `couvert-valide` par ce planning** : ce statut n'est prononce que
-par `nadia-prof`, apres audit reel de chaque increment.
+`DEC-0039` ouvre ces deux lignes, stories `S17-2` et `S17-3` de `docs/backlog/backlog.md`. **Aucune
+ligne ne passe a `couvert-valide` par ce planning** : ce statut n'est prononce que par `nadia-prof`,
+apres audit reel de chaque increment.
+
+**Mise a jour du 2026-08-19, apres l'arbitrage prealable de `nadia-prof`**
+(`squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md`) :
+
+- **Comprehension de texte (`S17-2`)** : principe **ACCEPTE** sous cinq conditions (COMP-1 a
+  COMP-5, `squad/conformite/FICHE-bandit-manchot-comprehension-cm1.md`) ; la matiere premiere
+  identifiee a l'ouverture de la fiche est **REFUSEE** (appariement de mots, zero inference sur huit
+  items) - le paquet a ecrire est integralement neuf. Limite de couverture nommee par
+  `nadia-prof`, a porter le jour ou cette ligne bouge : "textes courts, un texte par question, sans
+  lecture longue" - le mecanisme ne fera jamais lire un texte long a l'enfant.
+- **Synonymes (`S17-3`)** : proxy **ACCEPTE** sous condition de forme (le mot en contexte de phrase,
+  jamais isole). Couverture partielle **ACCEPTEE**, mais avec un statut different des cinq
+  partialites deja acceptees sur ce produit (additions, homophones, conjugaison, comparer, tables) :
+  `nadia-prof` ecrit que les antonymes ne sont pas un prolongement du meme geste que les synonymes,
+  ils sont l'autre operation. **Consequence pour cette matrice, ecrite ici pour qu'elle ne soit
+  jamais oubliee a un audit futur : cette ligne reste `en cours` quel que soit le verdict
+  pedagogique rendu sur le paquet synonymes seul, et elle n'entre jamais dans le numerateur du taux
+  de couverture tant que les antonymes n'y sont pas ajoutes.** Un Done `VALIDE` sur ce paquet ne
+  suffira pas a lui seul, a la difference de la ligne "tables de multiplication" (qui avait, elle,
+  atteint `couvert-valide` avec une mention restrictive sur l'automatisation). Le mecanisme pour
+  exprimer cette nuance est celui deja en usage depuis s09 (note "comparer/ranger" sous le tableau
+  mathematiques CP) : une prose sous le tableau, pas un statut invente - la nomenclature de cette
+  matrice n'en porte que trois (`non couvert` / `en cours` / `couvert-valide`) et ce n'est pas ce
+  document qui doit en ajouter un quatrieme. Story compagne des antonymes ecrite au backlog,
+  non affectee : `S17-5`, `docs/backlog/backlog.md`.
 
 ## Synthese au sprint 0, mise a jour a l'ouverture du sprint 4
 
@@ -1339,6 +1359,21 @@ francais CM1 ci-dessus :
 **Aucune ligne ne passe a `couvert-valide` par ce planning** : ce statut n'est prononce que par
 `nadia-prof`, apres audit reel de chaque increment, sur les deux fiches de conformite ouvertes dans
 le meme geste que `DEC-0039`.
+
+**Amendement du 2026-08-19, apres les trois arbitrages prealables rendus par `nadia-prof`**
+(`squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md`). Les deux arbitrages
+bloquants nommes ci-dessus sont rendus :
+
+- **`S17-2`** : principe accepte sous conditions (COMP-1 a COMP-5). La matiere premiere de
+  `contenu-repris/quiz/cm1-comprehension.yml`, elle, est **refusee** - voir la note dediee sous le
+  tableau francais CM1 ci-dessus et `DEC-0039`, amendement du 2026-08-19, pour ce que cela change au
+  plafond et au cout estime. Le critere d'ouverture "sans gabarit ni feuille de style neuve" est
+  **leve** par `camille-po` (COMP-5 l'exige).
+- **`S17-3`** : proxy accepte sous condition de forme (mot en contexte de phrase, `SYN-1`).
+  Partialite acceptee, mais **avec un statut plus strict que les cinq precedentes** : cette ligne ne
+  passera jamais `couvert-valide` sur les seuls synonymes et ne compte jamais dans le taux de
+  couverture tant que les antonymes n'y sont pas - voir la note dediee sous le tableau francais CM1
+  ci-dessus. Story compagne des antonymes ecrite au backlog (`S17-5`), non affectee.
 
 **Trois lignes de plus restent `non couvert`, differees avec un motif ecrit** (`DEC-0039`) :
 

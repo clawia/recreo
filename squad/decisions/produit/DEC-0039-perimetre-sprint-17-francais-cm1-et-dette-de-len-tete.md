@@ -211,3 +211,93 @@ plutot que de le laisser trainer comme une fausse piste pour un sprint futur.
 - `S17-2` et `S17-3` : les arbitrages prealables de la section 1, chacun sur sa propre fiche.
 - `S17-4` : aucun arbitrage de principe neuf - les deux conditions de `DEC-0024` s'appliquent telles
   qu'ecrites, et le paquet repasse devant `nadia-prof` comme un contenu neuf des qu'il est raccourci.
+
+## Amendement du 2026-08-19 - les trois arbitrages prealables sont rendus
+
+`nadia-prof` a rendu les trois arbitrages prealables bloquants nommes ci-dessus
+(`squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md`, branche `s17-nadia`,
+tete `c5d2bce`, worktree dedie non fusionne). Je n'efface aucune ligne des sections
+precedentes : ce qui suit corrige et complete, ne remplace pas.
+
+### 1. `S17-2` - la matiere premiere refusee, ce que cela change au plafond et au cout
+
+`nadia-prof` a mesure les huit items de `contenu-repris/quiz/cm1-comprehension.yml` un par un :
+huit sur huit resolubles par appariement de mots avec le texte, au moins quatre sur huit resolubles
+sans le texte, zero item sur huit qui demande l'inference que le referentiel nomme, et un support
+d'une seule phrase qui n'est pas un texte. Sa conclusion : **"ce n'est pas une reprise, c'est un
+paquet neuf".** Le principe (une question a choix multiple peut verifier une comprehension reelle)
+reste **ACCEPTE**, sous cinq conditions bloquantes (COMP-1 a COMP-5, reprises dans
+`squad/conformite/FICHE-bandit-manchot-comprehension-cm1.md` et dans la story `S17-2` du backlog).
+
+**Ce que cela change a mon estimation de cout, dit sans detour** : quand j'ai ouvert cette story, une
+partie de mon raisonnement pour la classer parmi les deux ouvertures raisonnables de ce sprint (et
+non parmi les lignes differees pour capacite, section 5) tenait a l'existence d'une matiere premiere
+qui semblait directement transposable. **Cette economie n'existe pas.** Le paquet a ecrire est
+integralement neuf, au meme rang de cout qu'une ligne comme "reperer les substituts d'un personnage"
+que j'ai differee en section 5 pour ce motif precis (aucune matiere premiere).
+
+**Ce que je ne change pas, et pourquoi je le maintiens neanmoins a deux ouvertures ce sprint plutot
+que de le redescendre a un et de differer `S17-2`** : ce que `nadia-prof` a produit en echange n'est
+pas rien - elle a resolu **avant tout code** les deux questions qui, dans les precedents refuses de
+ce produit (Le bon son en s02, Le bon verbe en s07), n'avaient ete decouvertes qu'a l'audit, apres
+que du contenu avait deja ete ecrit : la validite du principe pedagogique, et le budget de rendu
+exact (5 lignes au style d'enonce actuel, 8 lignes a un style dedie - section 0 de son arbitrage,
+mesure avant que je n'ecrive un seul item). C'est precisement l'inverse du risque qui m'a fait
+differer les lignes sans matiere premiere de la section 5 : la, personne n'a encore instruit le
+contenu ni mesure son rendu ; ici, les deux sont faits, et ce qui reste a ecrire est cadre par cinq
+conditions decidables plutot que par un principe encore flou. Je retiens donc `S17-2` dans le
+perimetre, avec son cout revise a la hausse (contenu integralement neuf, plus un prealable de design
+avant le premier item - section 2 ci-dessous) mais son risque de premier jet reduit par l'arbitrage
+deja rendu. **Le plafond de deux ouvertures ne change pas** : je n'ouvre pas de troisieme ligne pour
+compenser, le sprint reste a deux ouvertures de contenu neuf.
+
+### 2. `S17-2` - le critere "sans gabarit ni feuille de style neuve" est leve
+
+`nadia-prof` a mesure que ce critere, tel que j'avais ouvert la fiche, ne peut pas tenir avec la
+competence visee : au style d'enonce actuel, le budget est de 5 lignes, qui ne portent qu'un
+reperage litteral - exactement ce qu'elle refuse par COMP-1 et COMP-2. Elle l'a ecrit sans detour :
+**si ce critere est maintenu, sa reponse au principe devient NON.**
+
+**Je leve ce critere plutot que de sortir la story du perimetre.** C'est mon arbitrage, pas le sien :
+le critere venait de moi, a l'ouverture de la fiche, et son seul motif etait d'eviter un cout de
+developpement, pas une exigence pedagogique. Le sacrifier pour tenir une regle de forme que je m'etais
+moi-meme fixee, alors que `nadia-prof` vient de montrer precisement ou et pourquoi elle bloque la
+competence, serait ecrire un refus a l'avance pour economiser une decision de style. **Condition de
+remplacement (COMP-5, bloquante)** : le texte-support recoit un style distinct de celui de l'enonce,
+plus petit, sur les deux chiffres qu'elle a mesures (5 lignes insuffisant, 8 lignes suffisant). La
+forme exacte (taille, police, couleur) n'est pas la mienne a choisir : je la route a `ines-design`
+pour la proposition et a `theo-archi` pour le mecanisme, avant qu'aucun des vingt items de `S17-2`
+ne soit ecrit sur sa base - `nadia-prof` jugera cette proposition sur sa lisibilite, elle ne l'a pas
+tranchee elle-meme. Ce n'est pas une mecanique neuve (aucun code de jeu ne change, une seule regle
+de style s'ajoute pour un champ) : je ne considere donc pas que cela deplace `S17-2` hors du
+perimetre de contenu pour en faire une story d'architecture.
+
+### 3. `S17-3` - statut retenu pour la ligne des synonymes
+
+Je retiens la distinction que `nadia-prof` pose, au mot pres : les antonymes ne sont pas un
+prolongement du meme geste que les synonymes (contrairement aux cinq partialites deja acceptees sur
+ce produit), ils sont l'autre operation. **Decision** : cette ligne reste `en cours` quel que soit
+le verdict pedagogique rendu sur le paquet synonymes seul, et elle n'entre jamais dans le numerateur
+du taux de couverture tant que les antonymes n'y sont pas ajoutes - y compris si `nadia-prof` rend un
+jour un Done `VALIDE` sans reserve sur ce paquet. Je ne laisse pas cette ligne suivre le chemin de
+"tables de multiplication" (`couvert-valide` avec une mention restrictive) : le motif qu'elle donne
+(l'autre operation, pas un prolongement) est plus fort que celui des tables (une propriete du meme
+verbe non mesuree), et je le retiens tel quel plutot que d'arbitrer moi-meme une nuance pedagogique.
+
+**Comment la matrice l'exprime** : par une note en prose sous le tableau francais CM1
+(`squad/programme/MATRICE-couverture.md`), sur le meme mecanisme que la note "comparer/ranger" de
+s09 - pas par un statut nouveau. La nomenclature de cette matrice compte trois statuts
+(`non couvert` / `en cours` / `couvert-valide`) depuis le sprint 0 ; ce n'est pas a une decision de
+perimetre d'en ajouter un quatrieme, et la prose porte deja cette nuance sans en avoir besoin.
+
+**Story compagne** : `S17-5` (antonymes), ecrite au backlog, non affectee, sur demande de
+`nadia-prof` (condition SYN-4, non bloquante mais datee).
+
+## Ce que je route (ajout du 2026-08-19)
+
+- **`ines-design`** : proposition de style pour le texte-support de `S17-2` (COMP-5), avant tout
+  item ecrit sur sa base.
+- **`theo-archi`** : mecanisme de ce style neuf (une regle CSS pour un champ, pas une mecanique de
+  jeu neuve) et avis de faisabilite sur `S17-2` et `S17-3` tels qu'amendes ici.
+- **`sofia-sm`** : verifier au planning que `S17-5` (antonymes) figure au backlog avant la cloture de
+  s17, meme non affectee, condition posee par `nadia-prof`.

@@ -4700,55 +4700,72 @@ ici : il fait l'objet d'une story distincte instruite par `theo-archi`.
   un texte de longueur croissante et en restituer l'essentiel", reste `non couvert` - elle demande une
   production (un resume dans les mots de l'enfant) que le mecanisme du bandit manchot ne sait pas
   recueillir. Premier report, motif complet dans `DEC-0039`, section 5.
-- **Criteres d'acceptation** :
-  - Etant donne le paquet complet, quand on compte ses items, alors il en compte au moins 20, avec
-    chacun un texte-support, une question et trois ou quatre propositions.
-  - Etant donne chaque item, quand on lit le texte-support et la question, alors une seule des
-    propositions est vraie au regard du texte - aucune autre proposition ne peut etre defendue comme
-    correcte par une lecture attentive.
-  - Etant donne l'ensemble du paquet, quand on classe chaque item selon que sa reponse recopie une
-    phrase du texte mot pour mot (explicite) ou demande de relier deux informations distinctes du
-    texte (implicite, inference simple), alors chacune des deux familles represente au moins un tiers
-    des items - le referentiel nomme les deux, un paquet entierement explicite ne le couvrirait qu'a
-    moitie.
-  - Etant donne chaque distracteur, quand on le compare au texte, alors il mentionne ou evoque un
-    element du texte (un evenement, un personnage, un lieu qui y figure), jamais une proposition sans
-    rapport qu'un enfant pourrait ecarter sans avoir lu le texte.
-  - Etant donne chaque item rendu a 360 x 640, quand on mesure son texte-support, sa question et ses
-    propositions par `outils/mesurer-rendu.sh`, alors l'ensemble tient au-dessus du pli sans defiler -
-    meme exigence M4 que les autres jeux du catalogue.
-  - Etant donne le paquet, quand on le charge au demarrage de l'application, alors il valide le schema
-    `type: question` (`ADR-0007`), zero ligne de Java neuve.
+- **Matiere premiere** : aucune. `contenu-repris/quiz/cm1-comprehension.yml` a ete verifie et
+  **refuse par `nadia-prof`** (arbitrage prealable du 2026-08-19) - ses huit items sont exactement le
+  defaut qu'elle refuse (appariement de mots, zero inference), pas un point de depart a corriger. Ce
+  paquet est ecrit integralement neuf, sans economie de reprise.
+- **Criteres d'acceptation**, repris au mot pres de l'arbitrage prealable de `nadia-prof`
+  (`squad/conformite/FICHE-bandit-manchot-comprehension-cm1.md`, conditions COMP-1 a COMP-5) :
+  - Etant donne un item, quand on masque la question et les propositions et qu'on ne garde que le
+    texte, alors aucune proposition ne se laisse reperer par la seule presence ou absence de ses mots
+    dans le texte (COMP-1) : toutes les propositions d'un item emploient des mots du texte, ou aucune
+    ne le fait, jamais une seule.
+  - Etant donne un item, quand on masque le texte et qu'on ne garde que la question et les
+    propositions, alors un enfant qui n'a pas lu le texte ne fait pas mieux que le hasard (COMP-2) :
+    ni fait de culture generale, ni distracteur absurde qui s'elimine seul.
+  - Etant donne l'ensemble du paquet, quand on classe chaque item selon que sa reponse est un
+    fragment recopie du texte ou exige de relier deux informations distinctes du texte, alors au
+    moins un tiers des items sont dans la seconde famille (COMP-3).
+  - Etant donne chaque item rendu a 360 x 640, quand on mesure le texte-support, la question et les
+    propositions par `outils/mesurer-rendu.sh`, alors l'ensemble tient au-dessus du pli sans defiler,
+    sur la totalite des items du paquet (COMP-4).
+  - Etant donne le texte-support, quand on compare son style a celui de l'enonce des autres jeux du
+    catalogue, alors il porte un style distinct, plus petit, propose par `ines-design` et juge par
+    `nadia-prof` sur sa lisibilite avant le premier item ecrit sur sa base (COMP-5) - **le critere
+    "sans gabarit ni feuille de style neuve" ne s'applique pas a cette story, leve par `camille-po`
+    le 2026-08-19** (`DEC-0039`, amendement du 2026-08-19, section 2).
+  - Etant donne le paquet, quand on le compte, alors il compte au moins 20 items.
+  - Etant donne chaque item, quand on lit son texte-support, alors il ne depasse pas environ 45 mots
+    (limite du proxy nommee par `nadia-prof` : ce jeu ne lira jamais un texte long, seulement des
+    textes courts, un texte par question).
   - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
-    `nadia-prof` : si la forme (texte affiche avec la question) verifie reellement une comprehension
-    du texte ou seulement une recherche d'information localisee, la difficulte des inferences pour un
-    enfant de CM1, et la justesse du francais de chaque texte-support.
-- **Ce qui doit etre arbitre avant tout code** : arbitrage prealable bloquant de `nadia-prof`,
-  question posee dans `squad/conformite/FICHE-bandit-manchot-comprehension-cm1.md` - la forme
-  choisie constitue-t-elle un exercice valide de la competence visee, meme risque nomme que celui qui
-  a fait refuser "Le bon son" en s02 sur l'appariement visuel sans passer par le phoneme.
-- **Lien decision** : `DEC-0039-perimetre-sprint-17-francais-cm1-et-dette-de-len-tete.md`.
+    `nadia-prof` : la difficulte reelle des inferences pour un enfant de CM1, et la justesse du
+    francais de chaque texte-support.
+- **Ce qui doit etre arbitre avant tout code** : la forme exacte du style du texte-support (COMP-5) -
+  proposition d'`ines-design`, mecanisme de `theo-archi`, jugement de lisibilite de `nadia-prof` -
+  avant qu'aucun des vingt items ne soit ecrit sur sa base.
+- **Lien decision** : `DEC-0039-perimetre-sprint-17-francais-cm1-et-dette-de-len-tete.md`, amendement
+  du 2026-08-19.
 - **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
-  requis avant affectation).
+  requis avant affectation, y compris sur COMP-5).
 
-### S17-3 - Synonymes (francais CM1, couverture partielle nommee)
+### S17-3 - Synonymes en contexte (francais CM1, couverture partielle nommee, jamais couvert-valide sur ce seul paquet)
 
-- **Besoin** : en tant qu'eleve de CM1, je veux retrouver le mot qui veut dire (presque) la meme
-  chose qu'un mot donne, afin d'enrichir mon vocabulaire et de choisir des mots plus precis dans mes
-  phrases.
+- **Besoin** : en tant qu'eleve de CM1, je veux retrouver, dans une phrase, le mot qui peut en
+  remplacer un autre sans changer le sens, afin d'enrichir mon vocabulaire et de choisir des mots
+  plus precis dans mes phrases.
 - **Competence programme visee** : francais, CM1 (cycle 3), domaine "Vocabulaire", "Utiliser des
   synonymes et antonymes pour preciser ou nuancer un propos" (`squad/programme/francais/
   competences-cm1.md`) - **couverture partielle assumee a l'ouverture** : ce paquet ne porte que des
-  synonymes, aucun antonyme, faute de matiere premiere identifiee. Un Done pedagogique accorde sur ce
-  paquet ne fera pas passer cette ligne a `couvert-valide` sans une extension ulterieure aux
-  antonymes ; voir `squad/conformite/FICHE-bandit-manchot-synonymes-cm1.md` pour le detail.
-- **Criteres d'acceptation** :
-  - Etant donne le paquet complet, quand on compte ses items, alors il en compte au moins 20.
-  - Etant donne chaque item, quand on lit sa bonne reponse, alors c'est un synonyme reellement
-    interchangeable avec le mot de l'enonce dans au moins une phrase usuelle d'un enfant de CM1,
-    jamais un synonyme rare, technique ou hors du vocabulaire courant de cet age.
-  - Etant donne chaque item, quand on compare ses distracteurs a son mot de l'enonce, alors aucun
-    distracteur n'est lui-meme un synonyme acceptable de ce mot - pas de double bonne reponse.
+  synonymes, aucun antonyme, faute de matiere premiere identifiee.
+  **Statut, arbitre par `nadia-prof` le 2026-08-19** : les antonymes ne sont pas un prolongement du
+  meme geste (comme les cinq autres partialites deja acceptees sur ce produit), ils sont l'autre
+  operation. **Cette ligne reste `en cours` quel que soit le verdict pedagogique sur ce paquet, et
+  n'entre jamais dans le numerateur du taux de couverture tant que les antonymes n'y sont pas** -
+  voir `squad/conformite/FICHE-bandit-manchot-synonymes-cm1.md` et
+  `squad/programme/MATRICE-couverture.md`.
+- **Criteres d'acceptation**, repris au mot pres de l'arbitrage prealable de `nadia-prof`
+  (`squad/conformite/FICHE-bandit-manchot-synonymes-cm1.md`, conditions SYN-1 a SYN-3) :
+  - Etant donne chaque item, quand on le lit, alors le mot cible est presente dans une phrase, jamais
+    isole : "Dans cette phrase, quel mot peut remplacer `<mot souligne>` sans changer le sens ?" -
+    condition bloquante **SYN-1**, sans laquelle l'accord de `nadia-prof` sur le proxy tombe.
+  - Etant donne chaque item, quand on essaie chaque proposition a la place du mot souligne dans la
+    phrase donnee, alors seule la bonne reponse garde le sens de la phrase - aucun distracteur n'est
+    substituable (**SYN-2**).
+  - Etant donne chaque item, quand on relit la phrase avec sa bonne reponse, alors aucune des
+    propositions presentees comme interchangeables ne serait refusee par un enseignant dans cette
+    phrase precise (**SYN-3**) - deux synonymes ne le sont jamais partout.
+  - Etant donne le paquet, quand on le compte, alors il compte au moins 20 items.
   - Etant donne chaque item, quand on verifie qu'il porte un indice, alors ce champ est rempli, exact,
     aide a retrouver le sens du mot sans jamais nommer la reponse (condition M2 de l'arbitrage de
     mecanique en vigueur pour le catalogue).
@@ -4756,16 +4773,35 @@ ici : il fait l'objet d'une story distincte instruite par `theo-archi`.
     `type: question` (`ADR-0007`), zero ligne de Java neuve et zero mecanique d'association par
     paires.
   - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
-    `nadia-prof` : si la forme a choix multiple verifie reellement un usage du synonyme ou seulement
-    sa reconnaissance, et l'acceptabilite du perimetre partiel (synonymes seuls) comme premiere
-    ouverture.
-- **Ce qui doit etre arbitre avant tout code** : deux arbitrages prealables bloquants de
-  `nadia-prof`, questions posees dans `squad/conformite/FICHE-bandit-manchot-synonymes-cm1.md` - la
-  validite du proxy de reconnaissance pour le verbe "utiliser", et l'acceptabilite du perimetre
-  partiel a l'ouverture.
-- **Lien decision** : `DEC-0039-perimetre-sprint-17-francais-cm1-et-dette-de-len-tete.md`.
+    `nadia-prof` : la justesse et le niveau de chaque phrase-support pour un enfant de CM1.
+- **Lien decision** : `DEC-0039-perimetre-sprint-17-francais-cm1-et-dette-de-len-tete.md`, amendement
+  du 2026-08-19.
 - **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
   requis avant affectation).
+
+### S17-5 - Antonymes (francais CM1, non affectee, story compagne de S17-3)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux retrouver, dans une phrase, le mot de sens oppose a
+  un mot donne, afin de nuancer ou contraster un propos, et pas seulement le preciser par un mot
+  proche.
+- **Competence programme visee** : francais, CM1 (cycle 3), domaine "Vocabulaire", "Utiliser des
+  synonymes et antonymes pour preciser ou nuancer un propos" (`squad/programme/francais/
+  competences-cm1.md`) - seconde moitie de la ligne ouverte par `S17-3`. Cette story est necessaire
+  pour que la ligne puisse un jour atteindre `couvert-valide` : `nadia-prof` a ecrit que les
+  antonymes ne sont pas un prolongement du meme geste que les synonymes, mais l'autre operation
+  (`squad/conformite/FICHE-bandit-manchot-synonymes-cm1.md`).
+- **Non affectee a ce sprint** : ecrite au backlog sur demande explicite de `nadia-prof` (condition
+  SYN-4, non bloquante mais datee : "je demande que la story existe au backlog avant la cloture de
+  s17"), sans engager de sprint. Aucune matiere premiere identifiee dans `contenu-repris/` a ce
+  jour - a ecrire integralement neuf, sur le meme patron que S17-3 (mot en contexte de phrase, pas
+  isole).
+- **Criteres d'acceptation attendus, par analogie avec SYN-1 a SYN-3 de S17-3** : mot cible presente
+  en contexte de phrase, bonne reponse un antonyme reellement oppose dans cette phrase precise,
+  aucun distracteur qui serait lui-meme un antonyme acceptable - a confirmer par un arbitrage
+  prealable de `nadia-prof` propre a cette story le jour ou elle est affectee, la reponse rendue pour
+  les synonymes ne valant pas automatiquement pour l'operation inverse.
+- **Lien decision** : `squad/conformite/FICHE-bandit-manchot-synonymes-cm1.md`, condition SYN-4.
+- **Agent pressenti** : non affectee - candidate du backlog, a planifier par `sofia-sm`.
 
 ### S17-4 - "Le bon petit mot" revient au catalogue (francais CM1, raccourcissement, pas une ouverture)
 
@@ -4776,23 +4812,34 @@ ici : il fait l'objet d'une story distincte instruite par `theo-archi`.
   "Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont,
   a/à...)" (`squad/programme/francais/competences-cm1.md`) - ligne deja `en cours` depuis `DEC-0024`
   (s10) ; cette story ne l'ouvre pas, elle la fait avancer vers `couvert-valide`.
-- **Criteres d'acceptation**, repris au mot pres de `DEC-0024` (points 3 et 5), sans les redurcir ni
-  les affaiblir :
+- **Criteres d'acceptation**, repris au mot pres de `DEC-0024` (points 3 et 5) et precises par les
+  conditions BPM-1 a BPM-4 de l'arbitrage prealable de `nadia-prof` du 2026-08-19, sans redurcir ni
+  affaiblir aucune des deux sources :
   - Etant donne le paquet `cm1-homophones.yaml` raccourci, quand on rend chaque manche a 360 x 640
     avec `outils/mesurer-rendu.sh` (message d'echec, indice, revelation), alors les propositions de
-    reponse restent entierement visibles au-dessus du pli sur la totalite des manches - jamais un
-    critere en nombre de caracteres (`DEC-0016`).
+    reponse restent entierement visibles au-dessus du pli **sur la totalite des 24 items**, jamais un
+    critere en nombre de caracteres (`DEC-0016`) ni un echantillon (**BPM-1**).
+  - Etant donne chaque item raccourci, quand on essaie la mauvaise proposition dans la phrase
+    obtenue, alors elle ne devient jamais grammaticalement acceptable : le raccourcissement ne
+    supprime pas la structure de phrase (par exemple un "ne... plus" qui commande le verbe) qui rend
+    la bonne reponse determinable (**BPM-2** - risque nomme par `nadia-prof`, absent de `DEC-0024`).
+  - Etant donne le paquet raccourci, quand on le compte, alors il compte toujours au moins 24 items :
+    le raccourcissement modifie des phrases, il ne supprime aucun item (**BPM-3**).
   - Etant donne les 22 indices sur 24 qui nomment aujourd'hui la reponse au lieu de la manipulation
     qui y mene, quand le paquet est raccourci, alors chacun de ces indices est corrige dans le meme
     geste, pour ne pas rouvrir ce fichier une seconde fois sur un motif distinct.
-  - Etant donne le paquet raccourci et corrige, quand `nadia-prof` le rejuge, alors elle applique la
-    barre en six points deja ecrite dans `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`
-    (verdict du 2026-08-10), sans qu'aucun point n'y soit ajoute ni retire par cette story.
+  - Etant donne le paquet raccourci et corrige, quand `nadia-prof` le rejuge, alors elle le traite
+    comme un contenu neuf (**BPM-4**) et applique la barre en six points deja ecrite dans
+    `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md` (verdict du 2026-08-10), sans qu'aucun
+    point n'y soit ajoute ni retire par cette story.
   - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
     `nadia-prof` : que le raccourcissement des enonces ne perde aucune des dix familles
     d'homophones deja validees, et que chaque indice corrige aide reellement sans nommer la reponse.
+- **Reserve non rouverte, a ne pas aggraver** : deux propositions par item donnent une chance sur
+  deux au hasard (reserve 5 de `nadia-prof`, s04) - le raccourcissement ne doit pas reduire encore le
+  nombre de propositions.
 - **Lien decision** : `DEC-0024-retrait-le-bon-petit-mot-contenu-valide-ecran-trop-court.md`,
   affectee au sprint 17 par `DEC-0039-perimetre-sprint-17-francais-cm1-et-dette-de-len-tete.md`,
-  section 2.
+  section 2 ; conditions precisees par l'arbitrage prealable de `nadia-prof` du 2026-08-19.
 - **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
   requis avant affectation).
