@@ -7,7 +7,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0001 | Perimetre du sprint 0 et choix de la premiere competence couverte | s0 | 2026-08-04 | Acceptee |
 | DEC-0002 | Statut des emoji et pictogrammes dans le contenu et l'interface destines a l'enfant | s0 | 2026-08-04 | Acceptee |
 | DEC-0003 | Le sprint 0 ne cree pas de story de persistence, le critere d'integration est reformule | s0 | 2026-08-04 | Acceptee |
-| DEC-0004 | Textes, forme du score et seuils chiffres pour lever le refus pedagogique du sprint 1 | s01 | 2026-08-05 | Acceptee |
+| DEC-0004 | Textes, forme du score et seuils chiffres pour lever le refus pedagogique du sprint 1 | s01 | 2026-08-05 | Acceptee, amendee le 2026-08-05 (s03, cible d'operande nul precisee a 12,9 %) et le 2026-08-19 (s16, note : le declencheur du message de reprise est precise par DEC-0036, le texte reste inchange) |
 | DEC-0005 | L'indice de S1-5 est un contenu YAML, jamais une constante du domaine | s01 | 2026-08-05 | Acceptee |
 | DEC-0006 | Perimetre du chantier identite visuelle de s02 et statut de l'icone d'application au regard de DEC-0002 | s02 | 2026-08-05 | Acceptee |
 | DEC-0007 | Le sprint 3 complete la ligne mathematiques CP existante et solde la dette de gouvernance, il n'ouvre pas de nouvelle matiere ni de nouvelle competence | s03 | 2026-08-05 | Acceptee (point 1 remplace par DEC-0008, point 7 remplace par DEC-0010, points 2 a 6 et 8 inchanges) |
@@ -39,6 +39,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0033 | BARRE-7 : le lien "Les jeux" de l'en-tete disparait de l'accueil, il n'y est pas remplace par un comportement neuf | s14 | 2026-08-17 | Remplacee par DEC-0034 |
 | DEC-0034 | L'utilisatrice retablit le lien "Les jeux" dans l'en-tete et unifie l'apparence des puces de niveau : DEC-0033 est remplacee | s15 | 2026-08-17 | Acceptee, amendee (note) le 2026-08-18 (l'hypothese de masquage inchange sur les ecrans de jeu est depassee par l'arbitrage C de DEC-0035) |
 | DEC-0035 | Trois arbitrages de l'utilisatrice du sprint 15 (sortie permanente en tete pendant une manche, rang unique, couleur d'etat actif) n'avaient aucune trace ecrite | s15 | 2026-08-18 | Acceptee |
+| DEC-0036 | Le message de partie interrompue est borne a une interruption plausible, jamais a un cookie qui a survecu a l'expiration de sa session | s16 | 2026-08-19 | Acceptee |
 
 Amendement (pas une nouvelle reference) : `DEC-0023` a ete amendee le 2026-08-12, sur son point 6
 (disparition de l'ecran intermediaire), laisse ouvert et route a `nadia-prof` pour arbitrage
