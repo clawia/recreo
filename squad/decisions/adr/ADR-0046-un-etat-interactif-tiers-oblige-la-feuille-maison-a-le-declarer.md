@@ -1,10 +1,13 @@
 # ADR-0046 - Un etat interactif declare par la feuille tierce oblige la feuille maison a le declarer
 
-- **Statut** : Accepte, **amende deux fois le 2026-08-19 (s16) : son exclusion de `:focus-visible`
-  etait trop grossiere - c'est une propriete de cet etat qu'il faut exclure, pas l'etat entier ; et
-  amende le meme jour (s16) : sa derivation ne voyait pas un selecteur
+- **Statut** : Accepte, **amende trois fois**. Deux fois le 2026-08-19 (s16) : son exclusion de
+  `:focus-visible` etait trop grossiere - c'est une propriete de cet etat qu'il faut exclure, pas
+  l'etat entier ; et le meme jour (s16) : sa derivation ne voyait pas un selecteur
   compose, donc ni ne l'exigeait ni ne le comptait. Trou trouve par `sofia-sm`, chiffre par
-  `nadia-prof`, correction due par le lot de `S16-3`/`S16-4`**
+  `nadia-prof`, correction due par le lot de `S16-3`/`S16-4`. **Troisieme amendement le 2026-08-19
+  (s17) : sa derivation ne comparait aucune specificite - elle verifiait que la maison declare, jamais
+  qu'elle l'emporte.** Defaut mesure sous appui reel par `nadia-prof` (deux pressables a 1,64:1), la
+  feuille corrigee par `marc-dev` (`S17-D`), la derivation corrigee ici avec sa clause
 - **Date** : 2026-08-17
 - **Auteur** : theo-archi
 - **Sprint** : s15 (ouverture)
@@ -462,6 +465,87 @@ du point 6 rougit parce que `.lien-accueil` est un pressable de contour neuf, su
 l'en-tete, sans aucun etat declare - c'est-a-dire **le defaut du jour, sur le point de revenir par le
 meme chemin**. Total mesure du retour de `.lien-accueil` : **3 echecs, 2 fichiers**, dont un a retirer
 par decision de produit et un a payer par six lignes de feuille de style.
+
+## Amendement du 2026-08-19 (s17) - declarer ne suffit pas, il faut l'emporter
+
+**Troisieme trou de la meme famille dans la meme derivation, et le plus proche du coeur de cet
+`ADR`.** Les deux premiers portaient sur ce que la derivation ne **voyait** pas (une propriete d'un
+etat, un selecteur compose) ; celui-ci porte sur ce qu'elle **verifie** : elle exigeait qu'un etat
+soit *declare* par la feuille maison, jamais qu'il l'*emporte*.
+
+**Le fait, mesure par `nadia-prof` sous un appui reel** : deux pressables passent de 9,25:1 a
+**1,64:1** et `.demarrer` perd son aplat, alors que la feuille maison declarait bien l'etat presse.
+Cause entierement declarative : `.btn:first-child:active` et `:not(.btn-check)+.btn:active` valent
+**(0,3,0)** contre **(0,2,0)** pour le sujet maison. Le meme mecanisme effacait l'anneau de focus
+livre le meme sprint. **Le point 5 d'`ADR-0014` ne joue qu'a specificite egale** - c'est ecrit dans
+cet `ADR` depuis son premier amendement, et sa propre derivation ne le verifiait pas. Une regle qui
+verifie un proxy de ce qu'elle promet est un souhait avec un `assert` autour.
+
+**La correction.** Une clause neuve dans le meme garde-fou :
+`verifierQueLaMaisonLEmporteSurChaqueRegleTierce`. Pour chaque exigence deja **satisfaite** au sens
+de la clause de declaration, la specificite de la regle maison qui la satisfait doit etre **au moins
+egale** a celle de la regle tierce la plus specifique qui l'imposait. L'egalite suffit : la feuille
+maison est chargee apres la tierce (`ADR-0014`), elle gagne donc les egalites ; seule une specificite
+strictement inferieure est un defaut.
+
+**Ce que la lecture de specificite fait, avec le sens de ses erreurs.** Elle compte identifiants,
+classes/attributs/pseudo-classes, elements, et suit la specification pour les pseudo-classes
+fonctionnelles : `:is()`, `:not()` et `:has()` prennent la specificite de leur argument le plus
+specifique, `:where()` vaut zero. **Ce n'est pas un raffinement theorique** : sans le traitement de
+`:not()`, la forme reelle `:not(.btn-check)+.btn:active` vaudrait (0,2,0) et passerait pour perdante
+alors qu'elle gagne - la clause serait verte sur le defaut meme qu'elle ferme. **Une construction
+qu'elle ne sait pas lire est un echec**, jamais un cas ignore : une specificite maison surevaluee est
+un faux vert, et refuser ce qu'on ne sait pas lire est la seule direction sure.
+
+**L'asymetrie qui fait le fond de cet amendement, et qui a failli me faire ecrire une clause fausse.**
+La clause de declaration rattache une regle tierce a un bouton par son seul **compose du meme
+element**, sans verifier qu'un prefixe (ancetre, frere, pseudo-classe structurelle) s'applique
+vraiment. Elle **sur-collecte** donc, et c'est sans danger la-bas : elle exige une declaration de
+plus, ce qui ne casse rien. **La meme sur-collecte est fausse pour une comparaison de specificite** :
+exiger que la maison batte une regle qui ne concourt jamais obligerait a prefixer des selecteurs pour
+un adversaire imaginaire. **Mesure, et c'est le chiffre qui a decide de la forme de la clause** : sans
+predicat d'applicabilite, la clause rend **14 motifs sur 8 pressables**, tous imputables a la seule
+regle `.btn-check+.btn:hover` - qu'aucun gabarit de ce depot ne peut declencher, `btn-check` n'y
+existant nulle part. La clause n'evalue donc la specificite que contre les regles tierces qui
+s'appliquent **reellement** au bouton rendu, evaluees par le moteur de selection sur l'element du
+gabarit avec le jeu de classes de cet etat rendu. Un selecteur tiers que le moteur ne sait pas
+evaluer est un echec, jamais un cas ignore.
+
+**Le predicat d'applicabilite n'entre pas dans la clause de declaration**, et ce n'est pas un oubli :
+l'y mettre retirerait des exigences a une clause qui, elle, gagne a sur-collecter, et ferait tomber le
+cliquet de dette qui vaut exactement son plafond. Un garde-fou qu'on affaiblit en passant, pour
+corriger un autre, est la faute que ce depot a deja sanctionnee.
+
+**Mesure de ce lot** (JDK 21.0.10, `bash outils/mvn-jdk21.sh -pl adapters/adapter-web -am test`,
+`-am` porte parce que la mesure est partielle) : **57 exigences declarees** sont comparees sur la
+production servie, **toutes satisfaites**. Le garde-fou passe de **7 a 11 tests**.
+
+**La morsure, sur du materiau reel.** La feuille servie est copiee puis **remise dans sa forme
+d'avant `S17-D`** : l'ancetre `#jeu` que `marc-dev` a ajoute est retire, `.demarrer:active` redevient
+(0,2,0) face a `.btn:first-child:active` (0,3,0) - l'etat exact de la feuille au moment ou
+`nadia-prof` a mesure 1,64:1. **Et c'est la mesure qui compte le plus dans ce lot** : sur cette meme
+feuille mutee, la clause de declaration reste **verte**. La declaration est la, elle ne gagne pas ;
+sans la clause neuve, la CI ne voit rien. Deux autres morsures portent sur la lecture de specificite
+elle-meme (parenthese non fermee, caractere illisible), et une clause epingle les valeurs des
+**formes reelles des deux feuilles** plutot que de selecteurs inventes pour elle.
+
+**Ce que cet amendement ne ferme pas, nomme avec son declencheur.** La clause credite une regle maison
+a un sujet **sans verifier que son propre prefixe d'ancetre s'applique** : `#jeu .demarrer:active`
+serait creditee a `.demarrer` meme si ce bouton vivait hors de `#jeu`. L'angle mort est **herite** de
+la clause de declaration, pas introduit ici - mais il devient plus expose depuis que l'ajout d'un
+ancetre est la sortie recommandee pour gagner de la specificite. **Dette explicite**, avec ce qui la
+rendrait due : le premier lot qui ajoute un ancetre a une regle d'etat dont le pressable peut etre
+rendu **hors** de cet ancetre. Je ne la ferme pas ici parce qu'un ancetre peut etre rendu sous
+condition par le gabarit (`th:if`), et qu'un predicat trop strict produirait des rouges sur des
+ancetres conditionnels parfaitement legitimes - c'est-a-dire l'inverse du defaut qu'on corrige.
+**Seconde limite heritee** : `blocsTiers` aplatit la feuille et rend la condition d'une regle-`@`
+comme une cle de selecteur ; les regles tierces nichees sous `@media` sont invisibles a cette
+derivation, avant comme apres cet amendement.
+
+**Ce que `marc-dev` a mesure et qui reste vrai** : ajouter une classe au **sujet** maison (`.btn`)
+pour gagner de la specificite ferait de `btn` une classe connue de la feuille maison et changerait
+l'identite calculee de **chaque** bouton du produit. La sortie est un ancetre reel separe par un
+combinateur, et le message d'echec de la clause neuve le dit a qui la rencontrera.
 
 ## Consequences
 
