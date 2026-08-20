@@ -56,6 +56,7 @@ Une ligne par decision d'architecture. Numeros jamais reutilises.
 | [ADR-0050](ADR-0050-un-texte-support-est-un-champ-de-contenu-qui-rejoint-le-plancher-et-l-identite-d-ecran.md) | Faire entrer un texte-support comme champ de contenu, et lui faire rejoindre le plancher de lisibilite et l'identite d'ecran | s17 | 2026-08-19 | Accepte, ses deux regles ecrites dans le meme commit (`TailleDesTextesEtBoutonsTest`, `AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest`, 5 methodes neuves dont 3 morsures) ; confirme que `S17-2` reste une story de contenu |
 | [ADR-0051](ADR-0051-un-garde-fou-qui-n-examine-aucun-de-ses-objets-le-declare.md) | Obliger un garde-fou a declarer tout objet qu'il n'examine pas du tout, et declarer non gardable l'ordre des propositions sur du texte | s17 | 2026-08-19 | Accepte, sa regle ecrite dans le meme commit (`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`, une clause, quatre morsures) ; ne comble pas le trou qu'elle rend comptable, et dit lequel |
 | [ADR-0052](ADR-0052-la-part-invariante-d-un-enonce-vit-dans-la-consigne-du-catalogue.md) | Faire vivre la part invariante d'un enonce dans la consigne de l'entree de catalogue, et rendre la consigne porteuse | s17 | 2026-08-19 | Accepte, sa regle ecrite dans le meme commit (`ToutEcranEchangeEstUnDocumentJouableTest`, une clause, deux morsures) ; zero ligne de production, et **aucun garde-fou n'est apporte a `SYN-5`**, ce qui est ecrit avant le reste |
+| [ADR-0053](ADR-0053-une-declaration-qui-suit-la-position-survit-a-tout-etat-interactif.md) | Faire survivre a tout etat interactif une declaration dont le sujet designe une position, et sortir du commentaire la relation de cascade entre deux regles maison | s17 | 2026-08-19 | Accepte, sa regle ecrite dans le meme commit (`UneCouleurDePositionSurvitATousLesEtatsTest`, une clause, deux morsures et un cas vert) ; ferme le trou maison contre maison que l'amendement 3 d'`ADR-0046` laissait ouvert, et **ne ferme pas** la dette d'ancetre qu'il nomme |
 
 ## Amendements
 
@@ -750,3 +751,24 @@ troisieme avait nommee sans la fermer :
     decision : la consigne devient **porteuse**, donc un ecran qui montrerait un enonce sans elle
     devient un ecran muet, et c'est rouge - la tentation etant installee par le refus lui-meme, la
     consigne etant le seul bloc de texte de cet ecran qu'aucun garde-fou ne retenait.
+
+50. **ADR-0053** est ne d'un defaut que **mon propre lot de la veille avait declare sain** : la clause
+    de specificite de l'amendement 3 d'`ADR-0046` a verifie que le correctif `S17-D` tient - 57
+    exigences comparees, toutes satisfaites - et ce vert n'etait pas faux, il etait **etroit**. Il
+    compare la feuille maison a la feuille **tierce** ; le defaut vivait entre **deux regles maison**,
+    et il a defait une condition pedagogique validee (`S15-8`, la couleur qui suit la position d'une
+    proposition) sous un appui reel. Ce qui vaut d'etre relu tient en trois points. **Ce qui tenait la
+    propriete etait un commentaire** - juste, precis, place a deux lignes de la modification, et sans
+    effet : il interdisait de deplacer un bloc, alors que **relever la specificite produit le meme
+    resultat**. **La regle ne compare pas des specificites mais l'issue de la cascade**, parce que les
+    deux protections reelles du depot n'etaient pas de la meme nature - une **marge** pour
+    `.proposition`, une **egalite plus un ordre** pour `.proposition.deja-essayee` - et qu'un registre
+    d'egalites, la forme d'`ADR-0051`, aurait declare la seconde et laisse passer la premiere, c'est-a-dire
+    celle qui a cede. **Et l'ADR distingue deux trous voisins nes du meme geste** : la dette d'ancetre
+    nommee la veille (un ancetre qui **ne s'applique pas**, faux vert) n'est pas celle qui s'est
+    realisee (un ancetre qui s'applique et fait gagner **trop haut**) ; elle reste ouverte, desormais
+    partagee par deux garde-fous qui la paient dans des sens opposes. **Preuve que la clause garde une
+    propriete et non une redaction** : le correctif du proprietaire abaisse le sujet presse (egalite a
+    (0,3,0), tranchee par l'ordre du fichier) la ou la correction provisoire de `theo-archi` relevait
+    les regles de position (marge a (1,3,0)) - **elle est verte sur les deux**, et rouge sur les deux
+    facons de perdre, une morsure par chemin de cascade.

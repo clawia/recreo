@@ -667,8 +667,14 @@ class TailleDesTextesEtBoutonsTest {
                 .hasMessageContaining("rien en dessous");
     }
 
-    /** Une regle CSS telle qu'elle est ecrite : d'ou elle vient, ce qu'elle habille, ce qu'elle dit. */
-    private record RegleEcrite(String origine, String selecteur, String corps) {
+    /**
+     * Une regle CSS telle qu'elle est ecrite : d'ou elle vient, ce qu'elle habille, ce qu'elle dit.
+     *
+     * <p>Visible dans le paquet depuis ADR-0053 : la clause de position lit les memes regles, dans le
+     * meme ordre de fichier, que celles de ce garde-fou. Deux lectures libres de diverger finiraient
+     * par juger deux feuilles differentes (le motif deja ecrit pour {@code BoutonRendu}).</p>
+     */
+    record RegleEcrite(String origine, String selecteur, String corps) {
     }
 
     /**
@@ -684,7 +690,7 @@ class TailleDesTextesEtBoutonsTest {
      * ({@code @keyframes} et {@code @media (prefers-reduced-motion: reduce)}) : le canal est ouvert,
      * pas hypothetique.
      */
-    private static List<RegleEcrite> reglesEcritesMaison(Path racine) {
+    static List<RegleEcrite> reglesEcritesMaison(Path racine) {
         List<RegleEcrite> regles = new ArrayList<>();
         for (Path feuille : feuillesMaison(racine)) {
             String source = sansCommentaires(lire(feuille));
