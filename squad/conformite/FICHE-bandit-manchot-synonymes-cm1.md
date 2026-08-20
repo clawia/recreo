@@ -12,6 +12,21 @@
   question a choix multiple ("Quel mot veut dire la meme chose que `<mot>` ?") pour rester dans le
   schema `type: question` existant. Reprise = reprise de la matiere, pas de la structure
   (`contenu-repris/README.md`) : chaque item repasse devant `nadia-prof` comme un contenu neuf.
+- **Statut global au 2026-08-20 (s17), mesure de l'item pilote** : **il TIENT**, a **2,81 px** pres.
+  L'entree de catalogue existe et est servie sur `/niveaux/CM1` - **le second motif de mon refus est
+  leve**. Releve a `scrollY = 0` verifie : consigne **2 lignes** (60 px), enonce **3 lignes** (144 px,
+  contre 7 avant), 3 propositions sur **2 rangees**, bas de la derniere proposition a **y = 637,19**
+  pour un pli a 640. Le meme item etait a **799,19** le 2026-08-19 : gain net **162 px**, la borne haute
+  de ce que j'avais derive, et ma prevision "entre 3 px de marge et 45 px sous le pli" tombe juste.
+  **`SYN-7` et `SYN-8` tenues** (verifiee par moi : un seul enonce a change, les dix-neuf autres sont
+  identiques octet pour octet, la phrase n'a pas bouge d'un caractere). **`SYN-6` tenue** - guillemets
+  francais lisibles, designes par leur nom dans la consigne - **avec `SYN-9` neuve et datee** : les
+  espaces a l'interieur des guillemets sont **ordinaires** et la ligne se coupe entre le guillemet et
+  le mot sur l'item pilote lui-meme ; une espace insecable corrige cela pour un caractere et zero pixel.
+  **Et je corrige la sequence que j'avais demandee** : le pire cas n'est pas la phrase la plus longue
+  mais le couple (lignes d'enonce, rangees de propositions) - une rangee de plus coute 90 px et ne
+  depend pas de la phrase. **Aucun Done pedagogique n'est prononce** : un item sur vingt tient, `SYN-5`
+  porte sur les vingt, mon refus reste en vigueur.
 - **Statut global au 2026-08-20 (s17), reponse a la question de mecanisme d'`ADR-0052`** : **la voie
   est ACCEPTEE.** Une consigne generique plus un enonce qui porte la phrase **satisfait `SYN-1`** - ma
   propre redaction de la condition designe deja le mot cible generiquement ("le mot souligne"), et la
@@ -427,6 +442,197 @@ fermeture, sur la tentation que mon refus lui-meme installait. **Elle ne dit rie
 
 `SYN-5`, `SYN-6`, `SYN-7` et `SYN-8` n'ont aucun garde-fou executable. Elles n'existent que par ma
 mesure, item par item, sur le rendu reel.
+
+### Mesure du 2026-08-20 (s17) de l'item pilote de S17-3 - il PASSE a 2,81 px pres, et la suite n'est pas celle que j'avais demandee
+
+> **Ce que cette section fait.** Elle rend la mesure que j'avais demandee en premier : l'item pilote,
+> celui que mon tableau du 2026-08-20 designait comme etant sur la frontiere. Elle s'ajoute a la suite
+> de mon refus du 2026-08-19 et de ma reponse sur `SYN-1`, sans reecrire ni l'un ni l'autre.
+>
+> - **Base relevee par moi** : `round-two` a **`c8727d2`** (fusion du lot de `lea-dev`, `99e2ee6`).
+>   J'ai aussi verifie ce que j'avais laisse en suspens : **`ADR-0053` existe desormais**, fusionnee a
+>   `eb3543b`, avec son garde-fou `UneCouleurDePositionSurvitATousLesEtatsTest`. Ce que j'observais le
+>   2026-08-20 - la decision absente du depot et *"il reste quelque chose a fusionner"* - etait exact
+>   au moment ou je regardais, et ne l'est plus.
+> - **Ma branche** : `s17-nadia-pilote`, worktree dedie, lignee verifiee.
+> - **Verdicts** : **l'entree de catalogue existe**, **l'item pilote tient au-dessus du pli**,
+>   **`SYN-7` et `SYN-8` sont tenues**, **`SYN-6` est tenue avec une reserve d'un seul caractere**.
+>   **Une condition neuve datee, `SYN-9`.** Et **la sequence que j'avais demandee est fausse** : je la
+>   corrige.
+
+#### 0. Un artefact de ma propre mesure que j'ai attrape avant de le publier, et il aurait ete un faux vert
+
+**Mon premier releve donnait 119,81 px de marge. Il etait faux.** Le script de focus de `M13` focalise
+`.enonce` a chaque manche fraiche, et **focaliser un element le fait defiler dans la vue** : la page
+etait descendue de 117 px au moment ou je lisais les rectangles. Mon `window.scrollTo(0,0)` etait bien
+appele, mais je lisais avant qu'il ne prenne effet.
+
+**Correction** : la sonde verifie desormais que `window.scrollY` vaut **0** avant chaque lecture, et
+recommence jusqu'a ce qu'il le vaille. Tous les chiffres ci-dessous portent `scrollY = 0`.
+
+**Je l'ecris en premier parce que c'est le pire genre d'erreur que je puisse commettre** : elle allait
+dans le sens de la story, elle donnait 117 px de marge la ou il y en a 3, et rien ne l'aurait
+signalee. C'est exactement la famille de defaut que je passe ce sprint a reprocher aux autres, et
+c'est la sixieme fois que je corrige un chiffre de ma main - la premiere ou la correction change un
+verdict.
+
+#### 1. L'entree de catalogue existe - le second motif de mon refus est leve
+
+`bandit-manchot-synonymes-cm1` est servie sur `/niveaux/CM1`, aux cotes des cinq autres jeux de ce
+niveau. **Un enfant atteint le jeu**, je l'ai joue au clavier seul, et j'ai pu mesurer un rendu reel au
+lieu de le reconstituer. C'etait le second motif de mon refus du 2026-08-19 ; il n'a plus d'objet.
+
+**Et je verifie ce que `sofia-sm` a nomme** : aucun test n'exerce la clause *"la consigne est
+porteuse"* sur l'ecran reel de ce jeu-ci, le garde-fou d'`ADR-0052` tournant sur un jeu fictif. **Je
+suis donc la premiere a le regarder, et je confirme que la consigne est bien rendue sur l'ecran reel
+de ce jeu** : deux lignes, 20 px, graisse normale, au-dessus de l'enonce. Le fait est etabli
+aujourd'hui ; le trou de garde-fou reste ouvert et n'est pas de mon ressort.
+
+#### 2. L'item pilote tient - releve complet, `scrollY = 0`, feuilles servies
+
+Viewport 360 x 640, application servie, sonde par element.
+
+| Bloc | Lignes | Taille | Graisse | Haut | Bas | Hauteur |
+|---|---|---|---|---|---|---|
+| en-tete | - | - | - | y = 0 | y = 143,19 | 143,19 px |
+| score | 1 | 20 px | 700 | y = 183,19 | y = 213,19 | 30,00 px |
+| **consigne** | **2** | **20 px** | **400** | y = 221,19 | y = 281,19 | **60,00 px** |
+| **enonce** | **3** | **32 px** | **700** | y = 285,19 | y = 429,19 | **144,00 px** |
+| propositions | 3 boutons, **2 rangees**, 74 px chacune | | | | y = **637,19** | |
+
+**Bas de la derniere proposition : `y = 637,19`. Pli a 640. L'item TIENT, avec 2,81 px de marge.**
+
+Le meme item mesurait **799,19**, soit **159,19 px sous le pli**, le 2026-08-19. **Gain net : 162 px**,
+exactement la borne haute de ce que j'avais derive.
+
+**Et mon estimation etait juste.** J'avais ecrit le 2026-08-20 : *"le plus long tombe exactement sur la
+frontiere - entre 3 px de marge et 45 px sous le pli, selon l'endroit ou les lignes se coupent."* La
+mesure donne **2,81 px de marge**. L'enonce est passe de 7 lignes a **3**, la consigne de 1 a **2**.
+`s17-syn-item-pilote-360x640.png` montre l'ecran tel qu'un enfant le voit : la consigne, la phrase, et
+**les trois propositions, la derniere posee au ras du pli**.
+
+#### 3. `SYN-6` sur le rendu - tenue, avec une reserve d'un seul caractere
+
+**Ce que je credite.** La marque est un vrai guillemet francais, `«` et `»`, et non le guillemet droit
+que ma reserve du 2026-08-19 refusait. Elle est **parfaitement lisible a 2 rem gras**
+(`s17-syn-item-pilote-enonce-agrandi.png`). Et la consigne la designe **par son nom exact** - *"le mot
+entre guillemets"* - donc l'enfant sait quelle marque chercher sans qu'on lui nomme le mot.
+
+**Epreuve de `SYN-6`, consigne masquee** : je regarde l'enonce seul et je dois pointer le mot dont il
+est question. **Aucune hesitation** : `« triste »` est le seul groupe marque de la phrase.
+
+**Ce que la mesure trouve, et qui n'etait pas visible sur le fichier.** Les espaces a l'interieur des
+guillemets sont des **espaces ordinaires** (U+0020), pas des espaces insecables (U+00A0) - verifie par
+les points de code, pas au jugement. **Consequence, et elle se produit sur l'item pilote lui-meme** :
+la ligne se coupe **entre le guillemet ouvrant et le mot**. L'enfant lit une premiere ligne qui finit
+par un guillemet seul, et une deuxieme qui commence par le mot suivi du guillemet fermant.
+
+**Ce que j'en conclus, et je separe les deux choses.** L'**identification** survit : le guillemet
+fermant ferme encore le mot, on voit lequel est marque. La **ponctuation francaise**, elle, ne survit
+pas : le francais impose une espace insecable a l'interieur des guillemets **precisement pour que cela
+n'arrive pas**. Dans un exercice de vocabulaire francais, lu par un enfant qui apprend a ecrire, une
+marque de ponctuation orpheline en fin de ligne n'est pas un detail de gout.
+
+**`SYN-6` est donc tenue** - la marque est bien une ponctuation francaise et la consigne la designe -
+**et j'ouvre une condition sur l'espacement**, parce que la corriger coute un caractere et zero pixel,
+et que ne pas la corriger la reproduirait vingt fois.
+
+- **`SYN-9` (bloquante avant la reecriture des dix-neuf autres, datee du 2026-08-20). Les espaces a
+  l'interieur des guillemets sont insecables**, de sorte que la marque ne puisse jamais etre separee du
+  mot qu'elle marque par un passage a la ligne. **Verification** : les points de code de l'enonce, et
+  le rendu a 360 px sur chaque item. **Ce n'est pas un durcissement de `SYN-6`** : `SYN-6` a ete ecrite
+  avant qu'aucun rendu n'existe, et c'est le rendu qui vient de montrer ce que l'espace ordinaire
+  produit. **Cout en pixels : nul** - une espace insecable occupe la meme largeur.
+
+#### 4. `SYN-7` - tenue
+
+Les deux blocs, lus dans l'ordre ou ils sont rendus : la consigne dit *"Quel mot peut remplacer le mot
+entre guillemets sans changer le sens ?"*, puis l'enonce donne *"Le petit garcon est « triste » depuis
+le depart de son ami."*
+
+**La tache est dite, puis la matiere est donnee.** Et `lea-dev` a fait mieux que ce que `SYN-7`
+demandait : sa consigne ne dit pas *"dans cette phrase"* mais *"le mot entre guillemets"* - elle pointe
+**la marque** et non la phrase, donc elle n'a besoin d'aucun renvoi vers ce qui la suit. Elle se lit
+juste, seule, avant d'avoir vu quoi que ce soit. `SYN-7` tenue.
+
+#### 5. `SYN-8` - verifiee par moi, pas par son test
+
+J'ai compare les vingt enonces du fichier servi a ceux d'avant le lot (`99e2ee6^`), un par un :
+
+- **un seul enonce a change**, le quatrieme ; **les dix-neuf autres sont identiques octet pour octet** ;
+- sur l'item transforme, la phrase est **identique caractere pour caractere** apres neutralisation de la
+  seule marque, et rien d'autre ne bouge ;
+- l'enonce passe de **132 a 59 caracteres** : les 73 retires sont exactement la clause deplacee, et les
+  2 ajoutes sont les guillemets francais, plus larges d'un caractere de chaque cote.
+
+**Aucun pixel n'a ete gagne sur la phrase.** `SYN-8` tenue.
+
+#### 6. Ce que la mesure change a la sequence que j'avais demandee - et c'est moi qui me corrige
+
+**J'avais demande qu'on mesure "le plus long des vingt" en premier, au motif que mon tableau le
+designait comme celui qui echouerait. C'etait la bonne premiere mesure et c'est une mauvaise regle.**
+Les onze autres items que j'ai vus passer pendant que je cherchais le pilote montrent pourquoi :
+
+| Item vu | Lignes d'enonce | Rangees de propositions | Bas des propositions |
+|---|---|---|---|
+| "grand", "calme", "fatigue", "beau", "malin", "fort", "douce" | 6 | **2** | y = 781,19 |
+| "courageux" | 7 | 2 | y = 829,19 |
+| "vite" | **5** | **3** | y = 823,19 |
+| "ancien", "poli" | 6 | **3** | y = 871,19 |
+
+**Une rangee de propositions de plus coute 90 px, et elle ne depend pas du tout de la longueur de la
+phrase** : elle depend de la largeur des trois etiquettes de reponse. "vite" a **l'enonce le plus court
+des onze** et se retrouve **plus bas** que sept items a 6 lignes, parce que le mot `silencieusement`
+fait passer ses propositions a trois rangees.
+
+**Donc le pire cas n'est pas la phrase la plus longue : c'est le couple (lignes d'enonce, rangees de
+propositions).** L'item pilote a tenu avec **2,81 px** en etant a **2 rangees**. **Un item a 3 rangees
+partirait de 90 px de plus, c'est-a-dire environ 87 px sous le pli**, quelle que soit la brievete de sa
+phrase.
+
+**Prediction que je pose pour qu'on puisse me la reprocher** : sur les dix-neuf a reecrire, ceux dont
+les propositions tiennent sur **trois** rangees - `vite`, `ancien`, `poli` et `drole`, les quatre que
+j'ai vus - **ne passeront pas** par le seul deplacement de la clause. Je ne dis pas quoi en faire :
+raccourcir une etiquette de reponse est un choix de contenu qui appartient a `camille-po` et a
+`lea-dev`, et il devra repasser par `SYN-2` et `SYN-3`.
+
+#### 7. Ce que je demande maintenant, dans l'ordre corrige
+
+1. **`SYN-9` d'abord**, sur l'item pilote : une espace insecable de chaque cote, avant que dix-neuf
+   items ne reproduisent l'espace ordinaire.
+2. **Puis les items a trois rangees de propositions**, pas les phrases les plus longues - `vite`,
+   `ancien`, `poli`, `drole` en tete. Ce sont eux qui decident maintenant.
+3. **Puis les vingt, un par un.** `SYN-5` ne se mesure pas sur un echantillon, et l'item pilote vient
+   de montrer pourquoi : il tient a **2,81 px**, une marge qu'aucune moyenne, aucune extrapolation et
+   aucun comptage de caracteres n'aurait predite au bon signe. Chaque releve porte : `scrollY = 0`,
+   lignes de consigne, lignes d'enonce, rangees de propositions, `y` du bas de la derniere proposition.
+4. **`SYN-2` et `SYN-3` sur tout item dont la phrase ou une etiquette de reponse change.**
+
+#### 8. Une observation datee du 2026-08-20, non bloquante, que je ne compte pas contre ce lot
+
+**Un enfant qui arrive au clavier voit un cadre autour de la question.** Mesure : le script de `M13`
+focalise `.enonce` avec `tabindex="-1"` ; arrive au clavier, l'element satisfait `:focus-visible` et
+recoit **l'anneau de focus par defaut du navigateur** (`outline: rgb(16, 16, 16) auto 1px`), qu'aucune
+regle maison ne neutralise sur un `<p>`. Arrive a la souris, `:focus-visible` est faux et il n'y a
+aucun cadre - verifie sur trois jeux.
+
+**Ce n'est ni propre a ce jeu ni cause par ce lot** : c'est general, sur toute manche fraiche de tout
+jeu, et cela date de `M13` (s10). Ce que je note, c'est que **la question porte alors le meme
+vocabulaire visuel qu'un bouton focalise**, sur un element qui n'est pas pressable. **C'est la meme
+ligne de `recreo.js` qui produit `S17-C`**, que `camille-po` a sortie du perimetre de s17 ; je verse
+cette observation au meme dossier plutot que d'ouvrir un jeton de plus.
+
+#### 9. Ce que cette mesure ne fait pas
+
+- **Elle ne prononce aucun Done pedagogique sur `S17-3`.** Un item sur vingt tient ; `SYN-5` porte sur
+  les vingt. **Mon refus du 2026-08-19 reste en vigueur** jusqu'a ce que les vingt soient mesures.
+- **Elle ne fait pas bouger la ligne de la matrice**, qui reste `en cours` avec la mention "synonymes
+  seuls, antonymes non couverts".
+- **Elle ne dit rien de bon des dix-neuf autres** : je les ai remesures au passage, ils sont
+  aujourd'hui **141 a 231 px sous le pli**.
+- **Elle ne comble aucun trou de garde-fou.** `SYN-5` a `SYN-9` n'ont aucun test executable, et aucun
+  test n'exerce la consigne sur l'ecran reel de ce jeu. **Je reste seule garde**, et l'artefact de la
+  section 0 dit ce que cela coute quand la seule garde se trompe.
 
 ## Arbitrage prealable bloquant, avant tout premier commit de code
 
