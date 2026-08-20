@@ -12,6 +12,18 @@
   question a choix multiple ("Quel mot veut dire la meme chose que `<mot>` ?") pour rester dans le
   schema `type: question` existant. Reprise = reprise de la matiere, pas de la structure
   (`contenu-repris/README.md`) : chaque item repasse devant `nadia-prof` comme un contenu neuf.
+- **Statut global au 2026-08-20 (s17), reponse a la question de mecanisme d'`ADR-0052`** : **la voie
+  est ACCEPTEE.** Une consigne generique plus un enonce qui porte la phrase **satisfait `SYN-1`** - ma
+  propre redaction de la condition designe deja le mot cible generiquement ("le mot souligne"), et la
+  forme demandee est **celle de "Le bon verbe", jeu que j'ai deja valide**. Trois conditions neuves et
+  datees : **`SYN-6`** (le mot cible porte une marque qui est une ponctuation francaise, et la consigne
+  le designe par cette marque - avec le fait mesure que *"le mot en gras"* **ne peut pas fonctionner**,
+  `.enonce` etant en gras en entier), **`SYN-7`** (les deux blocs lus dans l'ordre rendu disent la
+  tache), **`SYN-8`** (aucun pixel gagne sur la phrase ; toute phrase modifiee repasse par `SYN-2` et
+  `SYN-3`). **Cette reponse ne leve pas `SYN-5` et ne rouvre pas la story** : mon refus tient. Et je
+  corrige le plancher de gain d'`ADR-0052` - 54 a 72 px annonces, **114 a 162 px derivables** de mes
+  propres mesures - ce qui place **l'item le plus long exactement sur la frontiere**, entre 3 px de
+  marge et 45 px sous le pli. C'est lui qu'il faut mesurer en premier.
 - **Statut global au 2026-08-19 (s17), Done pedagogique** : **REFUSE** sur l'increment `ed7eb52`.
   `SYN-1` a `SYN-4` sont **tenues**, les vingt items sont justes et leurs vingt indices ne nomment
   jamais la reponse - **le contenu n'est pas en cause**. Le motif est de forme et il est mesure : le
@@ -223,6 +235,198 @@ du 2026-08-19, et il est tenu.
 le vingt-et-unieme item, ecrit dans six mois, ne sera verifie par personne. Tant que le mecanisme
 route a `theo-archi` n'existe pas, **c'est moi le garde-fou sur cette propriete pour tout paquet
 textuel**, et l'equipe doit le savoir plutot que de lire une CI verte comme une couverture.
+
+### Reponse du 2026-08-20 (s17) a la question de mecanisme d'ADR-0052 sur SYN-1 - la voie est ACCEPTEE, sous trois conditions, et elle ne leve pas SYN-5
+
+> **Ce que cette section fait.** Elle repond a la seule question que `theo-archi` me route dans
+> `ADR-0052` (section "Consequences") : *une consigne generique, qui ne peut plus nommer le mot cible,
+> plus un enonce qui porte la phrase - est-ce encore `SYN-1` ?* Elle **n'efface pas et ne reecrit pas**
+> le Done pedagogique REFUSE du 2026-08-19 ci-dessus, qui tient tel quel.
+>
+> - **Base** : `round-two` a `246d149`, verifiee avant d'ecrire.
+> - **Ma branche** : `s17-nadia-syn1`, worktree dedie, lignee verifiee.
+> - **Reponse** : **la voie existe. J'accepte la designation generique.** Trois conditions neuves et
+>   datees l'accompagnent.
+> - **Ce que cette reponse n'est pas** : **elle ne leve pas `SYN-5`**, elle ne rouvre pas la story, et
+>   elle ne prononce aucun Done. Elle dit que le chemin n'est pas ferme par moi.
+
+#### 1. La reponse, et elle est ecrite dans ma propre condition
+
+**`SYN-1` designe deja le mot cible generiquement, et c'est moi qui l'ai ecrit ainsi.** Mon texte du
+2026-08-19, mot pour mot :
+
+> *"Le mot est presente dans une phrase, jamais isole. La question devient : dans cette phrase, quel
+> mot peut remplacer **le mot souligne** sans changer le sens ?"*
+
+**"Le mot souligne", pas "le mot *joli*".** La designation generique n'est donc pas une concession
+qu'on m'arrache aujourd'hui : c'est la formulation que j'ai posee le jour ou j'ai pose la condition.
+`theo-archi` a eu raison de me la router - il ne pouvait pas savoir que ma reponse etait deja dans mon
+propre texte - mais la question ne me met pas en difficulte.
+
+**Ce que `SYN-1` interdit, et que ce mecanisme ne fait pas.** Ma condition a un contre-exemple nomme,
+et un seul : *"Quel mot veut dire la meme chose que rapide ?"* - **le mot seul, sans phrase**. Le motif
+est le referentiel : *"pour preciser ou nuancer **un propos**"*, et un mot seul n'est pas un propos.
+Ce que `SYN-1` protege est donc **la presence de la phrase**, pas la place de la question.
+
+**Et le deplacement sert `SYN-1` plutot qu'il ne l'affaiblit.** Aujourd'hui la phrase est noyee : sur
+les vingt items, elle occupe 26 a 57 caracteres d'un enonce de 101 a 132, le reste etant la clause. Le
+premier bloc que l'oeil de l'enfant rencontre, en 2 rem gras, est donc majoritairement une consigne
+deguisee. **Apres deplacement, l'enonce ne porte plus que le propos**, dans le plus gros caractere de
+l'ecran. C'est exactement ou `SYN-1` voulait mettre l'attention de l'enfant.
+
+#### 2. Le precedent qui rend ce refus impossible a soutenir, et il est dans mon propre dossier
+
+**La forme proposee est deja la forme de production d'un jeu que j'ai valide.** "Le bon verbe"
+(`bandit-manchot-conjugaison-present-cm1`, servi aujourd'hui) :
+
+| | Ce jeu, en production | Ce que `ADR-0052` propose pour les synonymes |
+|---|---|---|
+| consigne | *"Quel verbe complete la phrase ?"* - generique, ne nomme aucun mot | *"...quel mot peut remplacer le mot entre guillemets..."* - generique |
+| enonce | *"Demain, ils ___ une recreation plus longue."* - la phrase seule | la phrase seule, avec le mot marque |
+
+**C'est le meme decoupage, et je l'ai valide.** Refuser pour les synonymes une forme que j'accepte pour
+la conjugaison serait tenir deux barres pour une meme chose. **Je n'ai pas de motif qui distingue les
+deux cas**, et j'ai cherche : dans les deux, la tache est invariante, le materiau varie, et la phrase
+est ce que l'enfant lit.
+
+#### 3. Un chiffre de `theo-archi` que je corrige, et il joue en faveur de son mecanisme
+
+Il annonce un plancher de gain de **54 a 72 px** et ecrit que ce plancher ne couvre pas mon deficit de
+63 a 159 px. **Sa decomposition sous-estime l'effet, et le motif est precis** : il calcule *"a nombre
+de lignes inchange, 18 px de moins par ligne"*. Or la clause ne se contente pas de rapetisser sur
+place - **elle quitte un bloc a 48 px la ligne et entre dans un bloc a 30 px la ligne, ou elle tient
+aussi plus de caracteres par ligne.**
+
+Decomposition sur les trois items que j'ai reellement mesures. Longueurs recomptees sur le fichier
+servi, clause comprise entre 73 et 74 caracteres selon le mot cible :
+
+| Item mesure | Enonce aujourd'hui | Phrase seule | Enonce apres | Lignes rendues a 48 px | Consigne : 1 -> 2 lignes | Net |
+|---|---|---|---|---|---|---|
+| le plus court (101 car.) | 5 lignes | **26 car.** | 2 lignes | **-144 px** | +30 px | **-114 px** |
+| celui du milieu que j'ai mesure (120 car.) | 6 lignes | **46 car.** | 2 ou 3 lignes | -144 a -192 px | +30 px | **-114 a -162 px** |
+| le plus long (132 car.) | 7 lignes | **57 car.** | 3 ou 4 lignes | -144 a -192 px | +30 px | **-114 a -162 px** |
+
+La ligne "consigne" ne vient pas d'une hypothese mais de deux mesures que j'ai faites le 2026-08-19 :
+une consigne de **17 caracteres tient sur une ligne**, une consigne de **41 caracteres en prend deux**
+(les deux chiffres sont au tableau de surcouts de `FICHE-bandit-manchot-comprehension-cm1.md`, section
+3 de mon jugement `COMP-5` : *"consigne rendue sur 2 lignes au lieu d'1 (Lis le texte, puis reponds a
+la question.) | +30 px"*).
+Une clause de 73 a 74 caracteres en prendra donc **deux**, soit **une ligne de plus** que les onze
+consignes servies aujourd'hui, qui font toutes de 17 a 35 caracteres.
+
+**Confronte a mes deficits mesures** : le plus court passerait de 63 px sous le pli a **51 px de
+marge** ; celui du milieu, de 111 px a une marge de **3 a 51 px** ; **le plus long tombe exactement sur
+la frontiere** - entre **3 px de marge et 45 px sous le pli**, selon l'endroit ou les lignes se
+coupent.
+
+**Et je refuse que ce tableau serve de budget, y compris a moi.** Il est derive de comptages de
+caracteres la ou le passage a la ligne se fait **par mots** ; `DEC-0016` interdit nommement ce
+raisonnement et ma propre `COMP-7` dit qu'aucun nombre de lignes n'est un budget. **Ce tableau ne sert
+qu'a deux choses** : dire que le mecanisme fait **plus** que ce que son auteur annonce, et designer
+**l'item le plus long comme celui qui decide** - c'est lui, et lui seul, qui dira si le paquet est
+faisable. Seule la mesure sur le rendu tranche.
+
+**Correction d'une ligne de mon propre tableau du 2026-08-19.** Ma deuxieme ligne est etiquetee
+*"median (113 car.)"* : les 113 sont le chiffre median du paquet que j'avais publie a part, l'item que
+j'ai reellement mesure ("Le village est tres 'calme' le dimanche matin...") en fait **120**, et le
+median exact des vingt est **112,5**. **La mesure elle-meme est juste** - 6 lignes, bas des
+propositions a `y = 751,19`, 111 px sous le pli - c'est **l'etiquette** qui melangeait un item et une
+statistique. Je ne reecris pas la ligne d'origine ; cette note dit ce qu'elle a de faux. Quatrieme
+constat de ma main corrige sur ce sprint.
+
+#### 4. Mes trois conditions, neuves et datees du 2026-08-20
+
+Elles portent sur un etat de fait qui n'existait pas quand j'ai ecrit `SYN-1` a `SYN-5` : la question
+quitte l'item. **Aucune n'est un durcissement de mes conditions precedentes**, et je dis pour chacune
+ce qui a change autour d'elle.
+
+- **`SYN-6` (bloquante). Le mot cible porte une marque qui est une ponctuation francaise, et la
+  consigne le designe par cette marque exacte.**
+  **Ce qui a change** : jusqu'ici la marque etait redondante - la clause de chaque item nommait le mot
+  entre guillemets juste apres. **Une fois la clause partie, la marque est la seule chose qui dit de
+  quel mot on parle.** Elle passe donc de detail de forme a porteuse de sens, et ma reserve non
+  bloquante du 2026-08-19 sur le guillemet droit devient bloquante **pour ce motif-la, pas parce que
+  j'ai releve ma barre**.
+  **Et un fait mesure qui condamne la formulation que `ADR-0052` cite en exemple** : *"le mot en gras"*
+  **ne peut pas fonctionner**. `.enonce` declare `font-weight: bold` **sur tout le bloc** - la phrase
+  entiere est en gras, "en gras" ne designe donc rien. J'ajoute, puisque la question va se poser :
+  `font-style` n'apparait **pas une seule fois** dans `recreo.css`, l'italique n'est pas dans le
+  vocabulaire de ce depot, et de toute facon le schema de contenu ne porte aucun balisage
+  (`ADR-0052`, point 3). **La marque disponible est donc un caractere, et le francais en a un pour
+  cela.** Je ne choisis pas lequel : la forme est a `ines-design`, le mecanisme a `theo-archi` s'il
+  en faut un.
+  **Verification, par un tiers et sans moi** : consigne masquee, montrer un item a quelqu'un qui ne
+  connait pas le jeu et lui demander de pointer le mot dont il est question. S'il hesite, `SYN-6`
+  n'est pas tenue.
+
+- **`SYN-7` (bloquante). Les deux blocs, lus dans l'ordre ou ils sont rendus, disent la tache a eux
+  seuls.** La consigne est rendue **avant** l'enonce (`fragments/manche.html`, la consigne ligne 37,
+  l'enonce ligne 38) : elle peut donc annoncer la phrase qui suit, et c'est ainsi que "Lis bien, puis
+  trouve la reponse !" fonctionne deja. **Ce que j'exige est qu'un enfant qui lit la consigne puis la
+  phrase sache quoi faire, sans avoir besoin de la relire a l'envers.**
+  **Verification** : lire les deux blocs a voix haute, dans cet ordre, une seule fois.
+
+- **`SYN-8` (bloquante). Aucun pixel n'est gagne sur la phrase.** La tentation que ce deplacement
+  installe est de raccourcir aussi le contexte pour rentrer dans le pli. **C'est precisement ce que
+  `SYN-1` protege**, et `theo-archi` l'a nomme dans son alternative 5. **Tout item dont la phrase
+  change repasse devant moi comme un contenu neuf, par `SYN-2` et `SYN-3`** - la substituabilite se
+  joue dans la phrase, et une phrase raccourcie n'est plus la phrase que j'ai verifiee.
+  **Verification** : la liste des phrases modifiees, et pour chacune l'essai de chaque distracteur.
+
+**Precision de methode sur `SYN-5`, qui n'en change pas la barre.** La mesure que `SYN-5` exige
+rapportera desormais, pour chaque item, **les lignes rendues de la consigne** a cote de celles de
+l'enonce. Motif : la clause arrive dans la consigne et lui coute une ligne, qui mange une partie du
+gain - une mesure qui ne compterait que l'enonce surestimerait le progres. **La barre reste la meme** :
+le bas de la derniere proposition a `y <= 640`, sur les vingt items.
+
+#### 5. Ce que je demande a mesurer ensuite, et dans cet ordre
+
+1. **L'entree de catalogue existe.** C'etait le second motif de mon refus et il n'a pas bouge : sans
+   elle, aucun enfant n'atteint le jeu et il n'y a rien a mesurer. `ADR-0052` la nomme comme un
+   prealable ; je la nomme comme la premiere chose a faire.
+2. **Un seul item d'abord, et le plus long des vingt** - pas un item typique. Ce n'est pas une
+   preference de methode reprise de `COMP-5` : **mon tableau du 3 designe l'item le plus long comme
+   celui qui echouera encore**, avec 45 px sous le pli. Le mesurer avant les dix-neuf autres est le
+   seul moyen de savoir si le paquet est faisable **avant** de reecrire vingt fois.
+3. **Puis les vingt, un par un.** `SYN-5` ne se mesure pas sur un echantillon. Chaque releve porte :
+   lignes de consigne, lignes d'enonce, rangees de propositions, `y` du bas de la derniere
+   proposition.
+4. **`SYN-6` sur le rendu, pas sur le fichier.** La marque doit se voir a 360 px, en 2 rem gras, dans
+   la phrase - une marque correcte dans le YAML qui disparait a l'ecran serait de la famille de defaut
+   que ce sprint a passe son temps a nommer.
+5. **`SYN-2` et `SYN-3` sur toute phrase modifiee**, comme du contenu neuf.
+
+**Ce que je mesurerai moi-meme, et ce que je ne peux pas deleguer** : les points 2, 3 et 4. Aucun
+garde-fou de ce depot ne mesure une hauteur rendue, `ADR-0052` le dit avant le reste et il a raison de
+le dire dans cet ordre. **Je reste seule garde de `SYN-5` et de `SYN-6`.**
+
+#### 6. Ce que cette reponse ne fait pas, et je l'ecris parce qu'on me demande de ne pas le laisser lire de travers
+
+- **Elle ne leve pas `SYN-5`.** Le deficit mesure n'est pas comble par ce mecanisme sur les items les
+  plus longs, de mon propre calcul.
+- **Elle ne rouvre pas la story** et ne prononce aucun Done pedagogique. **Mon refus du 2026-08-19
+  tient**, dans les termes ou il est ecrit, jusqu'a une mesure sur un paquet reecrit et atteignable.
+- **Elle ne fait pas bouger la ligne de la matrice**, qui reste `en cours` avec la mention
+  "synonymes seuls, antonymes non couverts", pour un motif independant.
+- **Elle ne valide aucune formulation de consigne.** J'accepte le **principe** de la designation
+  generique ; la phrase exacte devra passer `SYN-6` et `SYN-7`, et l'exemple cite par `ADR-0052` ne les
+  passe pas.
+- **Elle ne cherche pas de moyen terme pour sauver la story.** Si ma reponse avait ete non, je
+  l'aurais ecrite seche : j'ai refuse ce sprint que `COMP-3` soit rabotee et j'ai laisse `S17-2` sortir
+  du perimetre plutot que d'accepter vingt items de reperage litteral. **Ici je dis oui parce que ma
+  propre condition disait deja oui**, et parce que la forme demandee est celle d'un jeu que j'ai deja
+  valide. Ce n'est pas un arrangement, c'est une relecture de mon texte.
+
+#### 7. Ce dont je reste seule garde apres cette reponse
+
+`ADR-0052` ecrit avant tout le reste qu'il n'apporte **aucun garde-fou a `SYN-5`**, et il a raison de
+le mettre en tete plutot qu'en note. J'ajoute ce que sa clause neuve garde et ce qu'elle ne garde pas,
+pour que personne ne lise l'une pour l'autre : **elle garantit qu'un ecran ne montre pas un enonce sans
+sa consigne** - donc qu'on ne gagnera pas de pixels en rendant l'ecran muet, et c'est une vraie
+fermeture, sur la tentation que mon refus lui-meme installait. **Elle ne dit rien de la hauteur.**
+
+`SYN-5`, `SYN-6`, `SYN-7` et `SYN-8` n'ont aucun garde-fou executable. Elles n'existent que par ma
+mesure, item par item, sur le rendu reel.
 
 ## Arbitrage prealable bloquant, avant tout premier commit de code
 
