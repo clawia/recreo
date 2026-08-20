@@ -3,7 +3,8 @@
 - **Statut** : Accepte, sa regle ecrite dans le meme commit
   (`ToutEcranEchangeEstUnDocumentJouableTest`, une clause, deux morsures) ; **amende le 2026-08-20
   (s17)** : son illustration de la designation du mot cible devient neutre, `SYN-6` rendant la marque
-  porteuse de sens. **La decision et la regle ne changent pas.**
+  porteuse de sens. **La decision ne change pas.** **Amende une seconde fois le 2026-08-20** : sa regle
+  est **etendue** au materiau servi - la clause generale ne traversait que le catalogue de test.
 - **Sprint** : s17. **Date** : 2026-08-19. **Auteur** : theo-archi.
 - **Arbre mesure** : `round-two` a `39b3c42` (SHA releve sur la branche, pas repris d'un message).
 - **Route par** : `nadia-prof` (`FICHE-bandit-manchot-synonymes-cm1.md`, Done pedagogique du
@@ -216,6 +217,75 @@ plus long des vingt items - trois faits de mecanisme, aucun choix de forme :
 clause de cet `ADR` - aucun ecran ne montre l'enonce d'un item sans la consigne de son jeu - garde
 exactement la meme propriete apres `SYN-6` qu'avant, puisqu'elle ne dit rien du **contenu** des deux
 blocs. Le compte des regles ArchUnit reste a **29**.
+
+## Amendement du 2026-08-20 (s17), second - la regle s'etend au materiau servi
+
+**Le fait, etabli par `sofia-sm` en lisant le mecanisme au lieu du chiffre, et verifie par moi a la
+source.** La clause de cet `ADR` -
+`ToutEcranEchangeEstUnDocumentJouableTest.aucunEcranNeMontreUnEnonceSansLaConsigneDeSonJeu` - est
+annotee `@WebMvcTest(PartieController.class)` avec `@Import(PartieControllerTest.JeuDeTestConfiguration.class)` :
+sa population est un **jeu fictif** (`"un-jeu"`, consigne *"Choisis la bonne reponse"*), **jamais le
+catalogue reel**. Son compte est reste **strictement identique** avant et apres le lot qui a ajoute
+l'entree `bandit-manchot-synonymes-cm1` - le premier jeu servi dont la consigne porte la question.
+
+**Ce que la clause generale prouve, et ce qu'elle ne prouve pas.** Elle prouve la **chaine de rendu**,
+et ce n'est pas rien : si `fragments/manche.html` cessait de rendre la consigne, ou si un ecran
+rendait l'enonce sans elle, elle rougirait - c'est exactement la tentation que cet `ADR` nommait (gagner
+des pixels en retirant le bloc). Elle ne prouve **rien du materiau servi** : aucune des douze entrees du
+catalogue reel ne la traverse, et une entree dont la consigne serait **vide** passerait aussi le
+chargeur - `champObligatoire` ne refuse que `null`, `consigne: ""` se charge sans un mot.
+
+**Je tranche pour l'extension, pas pour la justification, et je nomme ce qui me le dicte.** `ADR-0020`
+decide que l'unite de verification d'un ecran est le document assemble ; et surtout, `ADR-0050` decision
+6 - **que j'ai ecrite quatre jours plus tot** - exige d'un champ neuf qu'un test prouve qu'il *atteint
+l'ecran sur un item reel, en traversant la frontiere HTTP*, sur le modele de
+`LExplicationDUnItemReelAtteintLEcranDeRetourTest`. J'ai impose cette obligation au texte-support et je
+ne l'ai pas appliquee a la consigne, dans l'`ADR` qui rend la consigne porteuse. **Une justification
+serait ici un deux-poids-deux-mesures**, pas un arbitrage.
+
+### La regle ajoutee
+
+`bootstrap/src/test/java/com/recreo/bootstrap/rendu/LaConsigneDUnJeuServiAtteintLEcranDeMancheTest.java`
+
+> **La consigne que l'entree de catalogue declare atteint l'ecran de manche de chaque jeu reellement
+> servi, et l'enonce n'y apparait jamais seul.**
+
+- **Population derivee du materiau servi** : `PartieUseCase.jeuxDisponibles()`, donc le catalogue reel
+  charge par la chaine reelle - **12 entrees** mesurees sur `c8727d2`. Une entree neuve y entre sans
+  que ce fichier change, ce qui est precisement ce qui manquait.
+- **Chaine complete** : contexte Spring entier, chargeur YAML reel, controleur, Thymeleaf. Le test vit
+  dans `bootstrap` pour le meme motif que `LExplicationDUnItemReelAtteintLEcranDeRetourTest` : c'est le
+  seul module qui voie a la fois le contenu reel et la couche web.
+- **Trois criteres sur le document rendu** : la consigne est **presente**, elle est **non vide**, et
+  elle est **celle que l'entree declare** (egalite, jamais sous-chaine). Ce troisieme critere est ce qui
+  voit un croisement de jeux, qu'aucune presence ne verrait.
+- **Quatre morsures, sur la sortie reelle du serveur mutee** : consigne retiree, consigne videe (la
+  balise reste - la forme de l'ecran mort d'`ADR-0020`, qu'une suppression franche ne couvre pas),
+  consigne etrangere au jeu joue, et l'ecran sain verifie avant mutation.
+- **Non-vacuite** (`ADR-0003`) : un catalogue qui ne servirait aucun jeu fait echouer la clause au lieu
+  de la rendre verte a vide.
+
+**Les deux clauses sont complementaires, et il faut lire comment.** La generale couvre **toutes les
+routes et tous les etats** (manche fraiche, reponse fausse, revelation, fin de partie) sur un materiau
+**fictif** ; la neuve couvre **toutes les entrees servies** sur la **premiere manche**. Ni l'une ni
+l'autre ne couvre le produit des deux.
+
+### Ce que cette extension ne couvre toujours pas, nomme
+
+- **Aucune hauteur rendue.** `SYN-5` reste sans garde-fou executable, `nadia-prof` en est seule garde
+  (`ADR-0025`, `ADR-0028`). Cette extension ne change rien a cela, et elle ne doit pas etre lue comme
+  une couverture du pli.
+- **Aucun jugement du texte** : que la consigne designe le bon mot, qu'un enfant la comprenne, qu'elle
+  nomme la marque exacte du mot cible (`SYN-6`) - competence de `nadia-prof`.
+- **Un jeu reel sur une manche autre que la premiere.** La consigne y vient de la session
+  (`EtatDePartieEnSession`) et le meme fragment la rend, et la clause generale couvre cette route sur le
+  materiau fictif : le risque est donc faible, mais il n'est pas garde et je ne le laisse pas croire.
+  **Declencheur qui le rendrait du** : le premier lot qui fait dependre la consigne rendue de l'etat de
+  la partie plutot que de l'entree de catalogue.
+- **Ce que ni cette regle ni la generale ne verront jamais** : qu'un enfant lise la consigne. C'est la
+  troisieme fois de ce sprint que je termine ainsi, et la conclusion ne s'use pas.
+
+**Le compte des regles ArchUnit ne bouge pas** : **29**. L'objet juge est un document HTML rendu.
 
 ## Consequences
 
