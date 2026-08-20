@@ -4856,6 +4856,52 @@ en page ou de mecanisme trouve les 90 a 120 px manquants - arbitrage que je nomm
 - **Agent pressenti** : a affecter au planning par `sofia-sm` (avis de faisabilite de `theo-archi`
   requis avant affectation).
 
+### Note du 2026-08-20 (camille-po, s17) - S17-3 REFUSE puis reprise ; le paquet vise seize items, pas vingt
+
+`nadia-prof` a refuse `S17-3` le 2026-08-19 sur un rendu (aucune entree de catalogue, la derniere
+proposition 63 a 159 px sous le pli sur 20 items sur 20 - contenu non en cause, `SYN-1` a `SYN-4`
+tenues). Elle a ouvert `SYN-5` (bloquante, la derniere proposition visible sans defiler, sur la
+totalite du paquet servi) et route a `camille-po`/`theo-archi` la question de savoir ou vivre la
+clause invariante qui allongeait chaque enonce. Detail et ma decision de garder `S17-3` au
+perimetre plutot que de la sortir comme `S17-2` : `DEC-0039`, amendement du 2026-08-19 ("`S17-3`
+refusee sur un rendu, meme famille que `S17-2`, mais pas son declencheur").
+
+`theo-archi` a instruit le mecanisme (`ADR-0052`) : la clause quitte l'enonce pour la consigne du
+jeu, deja rendue une fois par ecran plutot que repetee par item. `nadia-prof` a accepte la voie
+(sa propre condition `SYN-1` disait deja "le mot souligne", jamais "le mot joli") sous trois
+conditions neuves (`SYN-6` a `SYN-8`). `lea-dev` a livre l'entree de catalogue et un item pilote :
+mesure a `y = 637,19` pour un pli a 640, **il tient avec 2,81 px de marge**, gain net de 162 px.
+`SYN-9` (bloquante, espace insecable dans les guillemets du mot marque) est neuve, cout nul en
+pixels.
+
+**Mais `nadia-prof` a aussi mesure que le pire cas n'est pas la phrase la plus longue : c'est le
+couple (lignes d'enonce, rangees de propositions).** Une rangee de propositions de plus coute 90 px
+et ne depend pas de la phrase. Sa prediction, mesuree sur onze items vus en cherchant le pilote :
+**quatre items - `vite`, `ancien`, `poli`, `drole` - ont des propositions sur trois rangees et ne
+passeront pas** par le seul deplacement de la clause (environ 87 px sous le pli). Elle ne choisit
+pas la suite : raccourcir une etiquette de reponse est un contenu neuf qui repasse par `SYN-2` et
+`SYN-3`, un rejugement pedagogique qu'elle route a `camille-po`/`lea-dev`.
+
+**Ma decision, avec son motif complet dans `DEC-0039`, amendement du 2026-08-20** : les quatre
+items sortent du paquet plutot que d'etre reecrits. Motif court : reecrire leurs etiquettes est un
+cout et un risque pedagogique non bornes (un synonyme aussi juste et plus court n'est pas garanti
+d'exister) engage pour tenir un compte d'items qui n'est pas une exigence de `nadia-prof` - verifie
+a la source : ses conditions `SYN-1` a `SYN-9` ne portent jamais sur le nombre d'items, et "au
+moins 20 items" est ma propre checklist d'ouverture, pas un jugement pedagogique. Retirer un item
+deja valide n'est pas le reecrire : aucun repassage par `SYN-2`/`SYN-3` sur les seize qui restent.
+`ADR-0023` (plus d'items que de manches) reste tenu a seize contre dix manches.
+
+**Consequence sur les criteres ci-dessus** : le critere "le paquet compte au moins 20 items" est
+**remplace par "le paquet compte au moins 16 items"**, seul chiffre change ; aucun autre critere de
+cette story n'est modifie. `SYN-5` a `SYN-9` (`squad/conformite/FICHE-bandit-manchot-synonymes-
+cm1.md`) s'ajoutent aux criteres deja lies a cette story, reprises au mot pres, comme `SYN-1` a
+`SYN-3` l'ont ete a l'ouverture.
+
+**Etat a ce jour** : un item sur seize mesure et tenu (le pilote, 2,81 px de marge) ; quinze restent
+a corriger (deplacement de la clause) et a mesurer un par un par `nadia-prof`, dans l'ordre qu'elle
+a elle-meme fixe. Aucun Done pedagogique n'est prononce ; le refus du 2026-08-19 reste formellement
+en vigueur jusqu'a la mesure complete.
+
 ### S17-5 - Antonymes (francais CM1, non affectee, story compagne de S17-3)
 
 - **Besoin** : en tant qu'eleve de CM1, je veux retrouver, dans une phrase, le mot de sens oppose a

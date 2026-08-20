@@ -617,3 +617,90 @@ couverture malgre un statut de matrice inchange, exactement le changement de dir
 `DEC-0037` exige de nommer plutot que de laisser filer.** Je ne l'ecris pas encore comme acquis
 parce que `S17-3` reste activement poursuivie (ci-dessus) ; je pose ici, avant la cloture et non
 apres, le critere qui decidera lequel des deux constats est le bon.
+
+## Amendement du 2026-08-20 (camille-po, s17) - le pari sur `S17-3` paie sur le pilote ; les quatre items a trois rangees sortent du paquet plutot que d'etre reecrits
+
+`nadia-prof` a mesure l'item pilote de `S17-3` (`squad/conformite/FICHE-bandit-manchot-synonymes-
+cm1.md`, section "Mesure du 2026-08-20 (s17) de l'item pilote de S17-3", branche `s17-nadia-pilote`,
+increment mesure `round-two` a `c8727d2`) : **il tient**, bas de la derniere proposition a `y =
+637,19` pour un pli a 640 - **2,81 px de marge**, gain net de 162 px sur le meme item. L'entree de
+catalogue existe (`bandit-manchot-synonymes-cm1`, servie sur `/niveaux/CM1`) : le second motif de
+mon refus du 2026-08-19 est leve. `SYN-6`, `SYN-7`, `SYN-8` sont tenues ; `SYN-9` (bloquante,
+espace insecable dans les guillemets) est neuve, cout nul en pixels.
+
+**Mais `nadia-prof` corrige la regle qu'elle avait elle-meme posee, et c'est la que ma decision
+est requise.** Le pire cas n'est pas la phrase la plus longue, c'est le couple (lignes d'enonce,
+rangees de propositions) : une rangee de propositions de plus coute 90 px, independamment de la
+phrase. Elle predit, chiffre a l'appui et pour qu'on puisse la lui reprocher, que **quatre items sur
+vingt - `vite`, `ancien`, `poli`, `drole` - ne passeront pas** par le seul deplacement de la clause
+(environ 87 px sous le pli), parce que leurs propositions occupent trois rangees plutot que deux.
+Elle ne choisit pas quoi en faire : raccourcir une etiquette de reponse est un contenu neuf qui
+repasse par `SYN-2` et `SYN-3`, et elle le route explicitement a `camille-po` et `lea-dev`.
+
+### Ma decision, avec son motif
+
+**Les quatre items sortent du paquet plutot que d'etre reecrits ; le paquet passe de vingt a seize
+items.** Trois branches etaient sur la table, je n'en retiens aucune des deux autres :
+
+- **La reecriture des quatre etiquettes (ecartee).** Elle exigerait de trouver, pour chacun des
+  quatre mots cibles, un synonyme aussi juste que celui deja valide mais tenant sur une largeur qui
+  ramene les propositions a deux rangees - un resultat qui n'est pas garanti d'exister pour les
+  quatre a la fois - puis de le faire rejuger par `nadia-prof` sur `SYN-2` (justesse) et `SYN-3`
+  (plausibilite du distracteur) comme un contenu neuf. C'est un cout et un risque pedagogique non
+  bornes, engages pour conserver un compte d'items qui n'est pas une exigence pedagogique : voir le
+  point suivant.
+- **La livraison partielle a vingt items nominaux, seize mesures, quatre non corriges (ecartee).**
+  Elle laisserait au catalogue un paquet dont un cinquieme des items est un defaut deja identifie et
+  non traite - exactement la forme d'increment "techniquement livre, sous silence sur son propre
+  defaut" que ce depot sanctionne (`DEC-0009`, `CLAUDE.md`). Ce n'est pas ce que je veux nommer
+  "livre" a la cloture d'un sprint.
+- **Le retrait des quatre items (retenu).** Je verifie plutot que de supposer si `nadia-prof`
+  exige un plancher de vingt items : **elle ne le fait pas**. Ses conditions `SYN-1` a `SYN-9` ne
+  portent que sur la forme et le contenu de chaque item, jamais sur leur nombre ; le seul endroit ou
+  "au moins 20 items" est ecrit est ma propre checklist d'ouverture de cette fiche
+  (`squad/conformite/FICHE-bandit-manchot-synonymes-cm1.md`, ligne "Le paquet compte au moins 20
+  items"), un critere de volume que j'ai pose moi-meme, pas un jugement pedagogique. Rien d'autre
+  dans le depot ne fixe ce chiffre : le seul garde-fou qui compte les items d'un jeu exige qu'il y
+  en ait plus que de manches par partie (`ADR-0023`) - dix ici (`catalogue.yaml`,
+  `nombreDeManches: 10`) - et seize le tient largement. Retirer les quatre items ne modifie ni ne
+  rejuge les seize qui restent : c'est un retrait de contenu deja valide, pas une reecriture, donc
+  aucun repassage par `SYN-2`/`SYN-3`.
+
+**Ce que je fais de mon propre critere.** Je le corrige moi-meme, puisqu'il est mien : la story
+`S17-3` du backlog visera desormais **seize items**, et non vingt, avec le motif ci-dessus versé
+dans la story.
+
+### Reponse en clair sur le critere de `DEC-0037` que j'avais pose avant la cloture
+
+**Il n'est pas encore atteint, et je dis precisement ou il en est plutot que de trancher par
+anticipation.** Le critere que j'avais pose portait sur deux conditions conjointes : une entree de
+catalogue pour `S17-3`, et `SYN-5` levee. **La premiere est remplie aujourd'hui.** La seconde ne
+l'est pas : `SYN-5` porte sur la totalite des items du paquet servi (desormais seize, apres ma
+decision ci-dessus), et **un seul est mesure et tenu** - le pilote, a 2,81 px pres, la marge la plus
+etroite mesuree sur ce produit cette annee. Les quinze autres retenus restent, a ce jour, mesures
+**sans** le deplacement de la clause (141 a 231 px sous le pli, chiffre d'avant correctif) et
+n'ont pas encore ete recorriges ni remesures avec le mecanisme qui a fait tenir le pilote. Le refus
+du 2026-08-19 de `nadia-prof` **reste donc formellement en vigueur** : aucun Done pedagogique n'est
+prononce.
+
+**Ce que cela change au critere que j'avais pose.** Rien a sa formulation - il reste "`SYN-5`
+levee et une entree de catalogue" - mais son evaluation passe d'un "aucune des deux conditions non
+tenue" (constat du 2026-08-19/20 precedent) a "une condition tenue, une en cours, mesuree a un item
+sur seize." Je ne declare pas la seconde moitie du pari gagnee sur la foi d'un item : `nadia-prof`
+l'a ecrit elle-meme, une marge de 2,81 px sur un pire cas n'est pas une preuve sur les quinze
+suivants, dont plusieurs sont pres de la meme frontiere selon son propre tableau du 2026-08-20
+(la ligne "median" et la ligne "le plus long" de ce tableau restent a verifier sur le rendu reel,
+pas sur un calcul de caracteres qu'elle a elle-meme recuse). **Le critere de cloture reste donc
+pose tel quel** : si les quinze items restants sont mesures et tiennent, et qu'un Done pedagogique
+(meme sous reserve) est prononce, l'engagement de `DEC-0037` est honore en substance et je l'ecrirai
+ainsi ; sinon, `s17` s'ecrit comme le changement de direction deja nomme dans l'amendement
+precedent.
+
+### Ce que je route
+
+- **`sofia-sm`** : affectation de la mesure item par item des quinze items restants (hors pilote)
+  a `nadia-prof`, dans l'ordre qu'elle a elle-meme corrige (les items a trois rangees d'abord, s'il
+  en reste apres retrait des quatre nommes, puis les seize un par un) ; affectation du retrait des
+  quatre items et de l'application de `SYN-9` (espace insecable) a `lea-dev`.
+- **`nadia-prof`** : rien de neuf a arbitrer sur le fond - je ne rediscute pas son verdict ni sa
+  prediction. La mesure des items restants et le Done final restent entierement les siens.
