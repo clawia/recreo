@@ -12,6 +12,24 @@ descripteur:
 # (contenu-repris/associer/cm1-synonymes.yml, 12 paires mot/synonyme sans phrase), condition
 # bloquante sans laquelle l'accord de nadia-prof sur le proxy tombe (couverture partielle, voir
 # FICHE-bandit-manchot-synonymes-cm1.md : synonymes seuls, aucun antonyme).
+#
+# ADR-0052 (theo-archi, s17) : la clause invariante "Dans cette phrase, quel mot peut remplacer X
+# sans changer le sens ?" quitte l'enonce pour la consigne de l'entree de catalogue (generique,
+# catalogue.yaml), sur accord de nadia-prof (reserve SYN-5, refus du 2026-08-19). Trois conditions
+# datees du 2026-08-19 gouvernent ce deplacement :
+#   - SYN-6 (bloquante) : la marque qui designe le mot cible est une ponctuation francaise, nommee
+#     par la consigne "par cette marque exacte" - le guillemet droit ("...") n'en est pas une.
+#     L'item transforme ci-dessous marque son mot cible par des guillemets francais (« ... »), et
+#     la consigne le designe par "le mot entre guillemets" ;
+#   - SYN-7 : la consigne et l'enonce, lus dans leur ordre de rendu (fragments/manche.html rend
+#     .consigne avant .enonce), disent la tache a eux seuls, sans la clause invariante ;
+#   - SYN-8 : aucun pixel gagne sur la phrase elle-meme - seule la clause invariante est retiree et
+#     la marque du mot cible changee, aucun mot de la phrase de contexte n'est modifie.
+#
+# nadia-prof designe l'item le plus long des vingt (132 caracteres, "triste"/"malheureux") comme
+# celui qui decide si le mecanisme suffit : lui seul est transforme dans ce lot, les dix-neuf
+# autres restent sous leur forme d'origine (SYN-1 a SYN-4 deja tenues, credit non remis en cause)
+# jusqu'a ce que la mesure de cet item soit jugee.
 items:
   - enonce: "Léa est \"contente\" de son cadeau. Dans cette phrase, quel mot peut remplacer \"contente\" sans changer le sens ?"
     bonneReponse: "heureuse"
@@ -25,7 +43,7 @@ items:
     bonneReponse: "joli"
     distracteurs: ["vaste", "aride"]
     indice: "Ce mot dit qu'une chose est agréable à regarder."
-  - enonce: "Le petit garçon est \"triste\" depuis le départ de son ami. Dans cette phrase, quel mot peut remplacer \"triste\" sans changer le sens ?"
+  - enonce: "Le petit garçon est « triste » depuis le départ de son ami."
     bonneReponse: "malheureux"
     distracteurs: ["inquiet", "gêné"]
     indice: "Ce mot décrit ce que l'on ressent quand on a envie de pleurer."
