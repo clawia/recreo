@@ -12,6 +12,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-conjugaison-present
     nombreDeManches: 10
+  - id: bandit-manchot-synonymes-cm1
+    titre: "Les synonymes"
+    consigne: "Quel mot peut remplacer le mot entre guillemets sans changer le sens ?"
+    mecanique: bandit-manchot
+    paquet: cm1-synonymes
+    nombreDeManches: 10
   - id: bandit-manchot-le-bon-son-cp
     titre: "Le bon son"
     consigne: "Dis le mot. Quel son entends-tu ?"
