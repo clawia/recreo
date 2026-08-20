@@ -3,6 +3,18 @@
 - **Increment** : deux boutons d'entree par niveau (CP / CM1) dans l'en-tete de recreo, toujours
   visibles y compris sur un ecran de jeu, story `S14-1` (`docs/backlog/backlog.md`, section
   "Sprint 14").
+- **Statut global au 2026-08-20 (s17), remesure du correctif** : **`S15-8` est REFERMEE.** Sous un
+  appui reel de pointeur, les trois couleurs de position survivent (`#bdd2ef`, `#a9dcd8`, `#dcc8ed`) et
+  le texte reste `#1c2733` - la ou les trois tombaient a `#2e6f9e` hier. Boite identique, survol
+  neutre, anneau conserve a focus + appui. **`S17-D` n'a pas ete reperdu** : les pressables a contour
+  ne changent toujours rien, le bouton plein garde son aplat, l'anneau ne s'efface plus a la
+  validation. **`S15-9` remesuree tenue** sous l'appui sur la proposition marquee, qui garde son fond
+  de position et son trait de M9 - c'est la seconde protection du depot, et elle n'a rien perdu.
+  **Le liseré de 1 px a change de couleur** (blanc -> `#1c2733` sur les propositions, 9,75 a 10,03:1
+  contre leur fond) **et reste invisible** : un pixel sur le bord du bouton, la ou il rencontre deja le
+  cabinet sombre. **Je n'en fais pas une condition, et aucune condition neuve n'est ouverte.**
+  Enfin, **je ne peux pas crediter `ADR-0053`** : la decision qu'on me decrit n'existe dans aucun
+  fichier du depot, sur aucune branche - le garde-fou reellement present compare des specificites.
 - **Statut global au 2026-08-19 (s17), remesure sur l'increment livre** : **`S17-A` est FERMEE.**
   Mesure sur la **feuille du depot** et non plus sur une regle injectee : anneau exterieur blanc de
   **3,00 px**, **9,25:1** contre le pixel immediatement exterieur, **remplissage blanc inchange au
@@ -180,7 +192,168 @@ Cette story n'ouvre, ne ferme et ne rejuge aucune ligne de `squad/programme/MATR
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. Il reste vide tant qu'aucun
 > arbitrage prealable n'a ete rendu et qu'aucun increment n'a ete livre et joue.
 
-### Remesure du 2026-08-19 (s17) sur l'increment livre - S17-A FERMEE, S17-D non fermee et S15-8 defaite par son correctif, seuil de S17-B franchi - le plus recent de cette fiche
+### Remesure du 2026-08-20 (s17) - S15-8 est REFERMEE, S17-D n'a pas ete reperdu, le liseré a change de couleur sans devenir visible - le plus recent de cette fiche
+
+> **Ce que cette section fait.** Elle remesure, sous un **appui reel de pointeur** comme la premiere
+> fois, la condition `S15-8` que le correctif de `S17-D` avait defaite hier, et elle verifie que la
+> reparation n'a rien reperdu. Elle n'efface aucun verdict anterieur : la section du 2026-08-19, qui
+> declare `S15-8` defaite, reste ecrite telle quelle.
+>
+> - **Base relevee par moi** : `round-two` a **`0dc90e9`** (fusion du correctif de `marc-dev`,
+>   `f66504c`). Le message qui me saisit annonce l'arbre par un nombre de tests et non par un SHA ;
+>   je l'ai releve moi-meme, comme les trois fois precedentes.
+> - **Ma branche** : `s17-nadia-s158`, worktree dedie, lignee verifiee par `outils/verifier-lignee.sh`.
+> - **Methode** : jar reconstruit sur le JDK de la toolchain 21, application servie sur un port a moi
+>   et arretee par son PID, navigateur pilote par son protocole de deverminage - **vrai survol, vrai
+>   appui, vraies touches de tabulation**, viewport impose a 360 x 640. Sonde par element, marquee
+>   item par item, jamais sur "le premier qui correspond".
+> - **Verdicts** : **`S15-8` est REFERMEE.** **`S17-D` n'a pas ete reperdu.** **Aucune condition
+>   neuve.**
+
+#### 1. `S15-8` est REFERMEE
+
+Appui reel sur chacune des trois propositions, sonde posee sur l'element presse et non sur un
+homonyme :
+
+| Position | Fond au repos | Fond sous l'appui | Texte au repos | Texte sous l'appui | Boite |
+|---|---|---|---|---|---|
+| 1 | `#bdd2ef` | **`#bdd2ef`** | `#1c2733` | **`#1c2733`** | identique |
+| 2 | `#a9dcd8` | **`#a9dcd8`** | `#1c2733` | **`#1c2733`** | identique |
+| 3 | `#dcc8ed` | **`#dcc8ed`** | `#1c2733` | **`#1c2733`** | identique |
+
+**Les trois couleurs de position survivent au doigt, et le texte reste `#1c2733`.** C'est exactement
+ce que `S15-8` demande, et c'est exactement ce qui avait cede hier - les trois fonds tombaient a
+`#2e6f9e` et le texte passait au blanc. **Le survol reel ne change rien** sur les trois. **L'anneau de
+focus survit a focus + appui** sur les trois : `#1c2733`, 3 px interieur, avant comme pendant l'appui.
+
+`s17-s15-8-refermee-1-1.png` montre la manche au repos et sous l'appui a taille reelle : **je ne
+distingue pas les deux images**, ce qui est le resultat attendu d'une condition qui exige que rien ne
+change.
+
+**`S15-8` repasse donc de DEFAITE a tenue.** Je ne reecris pas la ligne d'hier : elle reste, cette
+section dit qu'elle est refermee et par quoi.
+
+#### 2. `S17-D` n'a pas ete reperdu
+
+| Pressable | Survol reel | Appui reel | Anneau a focus + appui |
+|---|---|---|---|
+| puce de niveau active | aucun changement | **aucun changement** | conserve (blanc, 3 px exterieur) |
+| puce de niveau simple | aucun changement | **aucun changement** | conserve (blanc, 3 px interieur) |
+| sortie d'en-tete | aucun changement | **aucun changement** | conserve |
+| bouton plein (`.demarrer`) | aucun changement | **liseré de 1 px seul** (voir 3) | - |
+| proposition | aucun changement | **liseré de 1 px seul** (voir 3) | conserve |
+
+**Aucune des reparations d'hier n'a ete perdue en reparant `S15-8`** : les trois pressables a contour
+ne tombent plus a 1,64:1 sur le bandeau, le bouton plein garde son aplat, et l'anneau ne s'efface plus
+a l'instant ou l'enfant valide.
+
+**Une precision de methode que je dois donner plutot que de la taire** : ma lecture du focus sur
+`.demarrer` n'est pas valide dans ce releve - il y a six boutons de cette classe, ma sonde en lit un et
+la tabulation en atteint un autre. Je ne la corrige pas ici parce que je n'en ai pas besoin :
+`FOC-4` a ete fermee le 2026-08-19 avec une lecture element par element sur les six. **Ce que ce
+releve-ci etablit sur `.demarrer` est son comportement sous l'appui**, qui ne depend pas de l'exemplaire.
+
+#### 3. Le liseré de 1 px a bouge - je le mesure, et je n'en fais pas une condition
+
+**Ce qui a change** : sous l'appui, la bordure de 1 px des propositions passait de transparent a
+**blanc** hier ; elle passe aujourd'hui a **`#1c2733`**. Sur les boutons pleins elle reste **blanche**.
+
+| Ou | Couleur du liseré sous l'appui | Contre quoi | Contraste |
+|---|---|---|---|
+| proposition, position 1 | `#1c2733` | `#bdd2ef` (son propre fond) | **9,82:1** |
+| proposition, position 2 | `#1c2733` | `#a9dcd8` | **10,03:1** |
+| proposition, position 3 | `#1c2733` | `#dcc8ed` | **9,75:1** |
+| bouton plein | `#ffffff` | `#f4f7fb` (la page) | **1,07:1** |
+
+**Et je refuse de me laisser impressionner par les trois premiers chiffres, qui sont exactement le
+genre de nombre qui a l'air de commander une condition.** Un contraste de 9,8:1 sur un trait d'**un
+pixel** qui tombe **sur le bord du bouton**, c'est-a-dire la ou le bouton rencontre deja le cabinet
+sombre, ne produit aucun changement visible : le bord y est deja sombre. Verifie plutot que suppose -
+`s17-liseré-repos-vs-appui.png`, agrandi six fois, repos au-dessus et appui au-dessous : le fond, le
+texte et le bord se lisent identiques.
+
+**Donc : le fait est enregistre, la mesure est ecrite, et je n'ouvre pas de condition.** On me demande
+de ne pas le transformer en condition si ce n'est pas justifie, et ce ne l'est pas : **rien de ce qu'un
+enfant voit n'a change**. Ma premisse du 2026-08-18 reste litteralement fausse a l'appui sur cette
+propriete - c'est deja ecrit dans `S17-D`, qui reste ouverte pour ce seul motif, et ce releve ne
+l'aggrave pas.
+
+**Une correction d'un chiffre de ma main, au passage** : j'avais ecrit **1,08:1** pour le liseré blanc
+contre la page ; le calcul rend **1,0745**, donc **1,07:1**. Cinquieme chiffre de moi corrige sur ce
+sprint, et le plus petit - je le note parce que c'est l'habitude qui rend le reste croyable, pas parce
+que ce centieme change quoi que ce soit.
+
+#### 4. `.proposition.deja-essayee` sous l'appui - la seconde protection tient
+
+C'est le pressable dont `FOC-6` depend, et il porte une protection d'une autre forme que celle de
+`.proposition`. Sous un appui reel :
+
+| Propriete | Au repos | Sous l'appui |
+|---|---|---|
+| fond de la position | `#a9dcd8` | **`#a9dcd8`** |
+| couleur du texte | `#1c2733` | **`#1c2733`** |
+| trait de M9 (`S15-9`) | `line-through`, 3 px | **`line-through`, 3 px** |
+| boite | 96 x 74 | **identique** |
+| bordure de 1 px | transparente | `#1c2733` (le meme liseré qu'au 3) |
+
+**Elle n'a rien perdu.** `S15-9` survit au doigt comme au focus. Le survol ne change rien.
+
+**Ce que je ne peux pas mesurer ici, et je le dis** : je n'ai pas pu l'atteindre a la tabulation, parce
+que le script de focus lui pose `tabindex="-1"` apres l'echec - c'est ma reserve `S17-C`, que
+`camille-po` a sortie du perimetre de s17. **Son etat sous le focus clavier a ete mesure le 2026-08-19**
+par le focus que le jeu pose lui-meme, et il etait conforme ; je ne le redemontre pas aujourd'hui, et
+je ne fais pas semblant de l'avoir refait.
+
+#### 5. Ce qui est desormais garde, ce qui ne l'est pas, et une reference que je ne peux pas crediter
+
+**Le correctif est accompagne d'un garde-fou neuf**,
+`LaCouleurDeLaPositionCycliqueSurvitSousLAppuiTest`, et je l'ai lu plutot que de le croire : **il
+compare des specificites** - il exige que le sujet a etat interactif ait *"exactement la meme
+specificite"* que les regles cycliques, une egalite tranchee par l'ordre de declaration. **C'est plus
+qu'un commentaire, et c'est un progres reel** : la propriete que je disais tenue par *"une egalite de
+specificite ecrite en commentaire et executee par personne"* est desormais executee.
+
+**En revanche je ne peux pas crediter `ADR-0053`.** Le message qui me saisit la decrit en detail - une
+clause qui comparerait l'issue de la cascade plutot qu'une specificite, au motif qu'un registre des
+egalites aurait laisse passer celle qui a reellement cede. **Cette decision n'existe dans aucun fichier
+du depot, sur aucune branche** : je l'ai cherchee par son numero sur toutes les references locales, et
+elle n'y est pas. **Je ne l'ecris donc pas comme acquise, et je n'ecris pas non plus qu'elle a tort** :
+je ne peux pas juger un texte que je ne peux pas lire, et la question de savoir laquelle des deux
+formes de garde-fou est la bonne appartient a `theo-archi`, pas a moi. **Ce que je note, parce que c'est
+verifiable** : le garde-fou reellement present dans le depot est de la forme "registre d'egalites", qui
+est precisement celle que la decision annoncee dit insuffisante. Si les deux affirmations sont vraies,
+il reste quelque chose a fusionner.
+
+**Et l'invariant, qui ne depend d'aucune des deux** : ni l'un ni l'autre ne lit une couleur sous le
+doigt. Ils gardent la **cause declarative** ; **l'effet reste garde par moi seule**, et c'est pourquoi
+cette remesure ne pouvait pas etre remplacee par un test vert. C'est le constat que j'avais ecrit hier,
+et il n'a pas bouge d'un mot.
+
+#### 6. Etat des jetons apres cette remesure
+
+| Jeton | Etat au 2026-08-20 |
+|---|---|
+| **condition `S15-8`** | **REFERMEE ce jour**, mesuree sous un appui reel aux trois positions |
+| `S15-9` | tenue, remesuree sous l'appui sur la proposition marquee |
+| `S16-A` | fermee (2026-08-19) |
+| `S17-A` | fermee (2026-08-19), remesuree sur la feuille servie |
+| `S17-B` | ouverte, non bloquante ; seuil franchi et relu (2026-08-19) |
+| `S17-C` | ouverte, hors perimetre de s17 |
+| `S17-D` | **ouverte**, pour le seul liseré de 1 px, qui a change de couleur sans devenir visible |
+| `FOC-1` a `FOC-6` | tenues |
+
+#### 7. Ce que cette remesure ne fait pas
+
+- **Aucune condition neuve.** Rien de ce que j'ai mesure aujourd'hui ne justifie d'en ouvrir une, et je
+  ne cherche pas a en trouver une pour equilibrer un verdict favorable.
+- **Elle ne ferme pas `S17-D`** : le liseré subsiste, et la premisse reste litteralement fausse a
+  l'appui.
+- **Elle ne touche pas a `S17-3`** : je n'ai pas mesure le paquet de synonymes, l'entree de catalogue
+  et le plus long des vingt items ne sont pas encore livres.
+- **Elle ne juge pas la forme du garde-fou.** Je dis ce qu'il compare et ce qu'il ne compare pas ; quelle
+  clause il faut est une question d'architecture.
+
+### Remesure du 2026-08-19 (s17) sur l'increment livre - S17-A FERMEE, S17-D non fermee et S15-8 defaite par son correctif, seuil de S17-B franchi - le plus recent jusqu'a la remesure du 2026-08-20 ci-dessus
 
 > **Ce que cette section fait.** Elle remesure, **sur la feuille du depot et non plus sur une regle que
 > j'injectais**, les trois choses que j'avais laissees ouvertes : la fermeture de **`S17-A`**, l'etat
@@ -380,7 +553,7 @@ nommee. **Cela ne fait pas revenir le jeu au catalogue** : `BPM-1` reste due et 
 | `S17-B` | ouverte, non bloquante ; **seuil franchi sur l'ecran de confirmation, relu, signal tenu** |
 | `S17-C` | ouverte, hors perimetre de s17 par arbitrage de `camille-po` |
 | `S17-D` | **ouverte** : ses deux motifs mesures sont corriges, un liseré de 1 px subsiste sous l'appui, sans consequence visible sur deux ecrans sur trois |
-| **condition `S15-8`** | **DEFAITE ce jour** par le correctif de `S17-D`, bloquante |
+| **condition `S15-8`** | **DEFAITE ce jour** par le correctif de `S17-D`, bloquante - **REFERMEE le 2026-08-20**, voir la remesure en tete de fiche |
 | `S15-9` | tenue |
 | `FOC-1` a `FOC-6` | tenues ; `FOC-4` avec la reserve deja ecrite sur `.recommencer`, credite par la regle |
 
@@ -1153,7 +1326,7 @@ autant que pour la lisibilite.
 | condition S15-5 | idem | aucun enfant ne voit un etat actif qu'il n'a pas produit | tenue |
 | condition S15-6 | idem | la colonne de contenu ne commence jamais par une porte | tenue |
 | condition S15-7 | idem | en-tete a 143 px au plus a 360 px | tenue (143 px) |
-| condition S15-8 | cloture du 2026-08-18 | l'etat neutre garde la couleur de fond de sa position | tenue en s16 et le 2026-08-19 ; **DEFAITE le 2026-08-19** par le correctif de `S17-D` (voir la remesure en tete de fiche) |
+| condition S15-8 | cloture du 2026-08-18 | l'etat neutre garde la couleur de fond de sa position | tenue en s16 et le 2026-08-19 ; **DEFAITE le 2026-08-19** par le correctif de `S17-D` ; **REFERMEE le 2026-08-20**, mesuree sous un appui reel aux trois positions |
 | condition S15-9 | idem | le trait de M9 survit a l'etat neutre | a tenir sur le lot a venir |
 
 **Les reserves.**
@@ -1172,7 +1345,7 @@ autant que pour la lisibilite.
 | S17-A | - | l'anneau de la puce active n'est pas percu (1,00:1 contre l'exterieur) **sur l'ecran filtre uniquement** | **FERMEE le 2026-08-19** sur l'increment livre : anneau exterieur blanc de 3,00 px, 9,25:1, remplissage inchange au pixel |
 | S17-B | - | sur les trois pressables a contour, le signal est un epaississement de 2 a 5 px, pas une marque neuve | ouverte, non bloquante ; **seuil franchi le 2026-08-19** sur l'ecran de confirmation, **relu, signal tenu** |
 | S17-C | - | a la revelation, le bouton que le jeu demande de presser est absent de l'ordre de tabulation | ouverte, **bloquante**, cause dans le script de focus (`M13`, s10) |
-| S17-D | - | ma premisse "rien ne change sous le pointeur" est fausse a l'appui : 1,64:1 sur un bouton a contour, aplat perdu sur un bouton plein | **ouverte** ; les deux motifs mesures sont **corriges** le 2026-08-19, il reste un liseré de 1 px sous l'appui (1,08:1, invisible la ou il tombe) |
+| S17-D | - | ma premisse "rien ne change sous le pointeur" est fausse a l'appui : 1,64:1 sur un bouton a contour, aplat perdu sur un bouton plein | **ouverte** ; les deux motifs mesures sont **corriges** le 2026-08-19, il reste un liseré de 1 px sous l'appui - **1,07:1** sur un bouton plein (chiffre corrige le 2026-08-20), `#1c2733` a 9,75-10,03:1 sur une proposition depuis le 2026-08-20, **invisible dans les deux cas** |
 
 **Amendement du 2026-08-19 (s17), a la sonde post-livraison de `S17-1`.** Les cinq lignes ci-dessus
 sont ajoutees, aucune n'est modifiee. **`S16-A` figure desormais dans cette table** : elle en etait
