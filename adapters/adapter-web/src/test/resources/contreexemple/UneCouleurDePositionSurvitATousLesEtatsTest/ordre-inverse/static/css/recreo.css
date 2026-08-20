@@ -1,0 +1,12 @@
+/* ADR-0013 : jeu fautif, jamais servi a un enfant. Il porte l'autre chemin de defaillance que la
+   mutation de la feuille reelle ne couvre pas : ici les deux regles sont a la MEME specificite
+   (0,3,0), et c'est l'ORDRE du fichier qui decide - la regle d'etat est ecrite apres, donc elle
+   recouvre la couleur de position. Aucun identifiant, aucune marge : le defaut tient au seul ordre
+   de redaction, exactement ce que le commentaire de la feuille servie demandait de ne jamais faire
+   et que personne n'executait. */
+.propositions .proposition:nth-child(4n+1) { background-color: #bdd2ef; color: #1c2733; }
+
+.propositions .proposition:hover {
+    background-color: #2e6f9e;
+    color: #ffffff;
+}

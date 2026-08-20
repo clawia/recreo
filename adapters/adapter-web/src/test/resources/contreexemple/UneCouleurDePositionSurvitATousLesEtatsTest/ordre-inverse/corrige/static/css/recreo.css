@@ -1,0 +1,10 @@
+/* Le meme jeu, les deux blocs remis dans l'ordre : a specificite egale, la regle de position est
+   ecrite apres, donc elle l'emporte. Sans ce cas vert, la clause serait une interdiction de declarer
+   un etat sur un pressable colore par sa position - elle interdit qu'il la recouvre, jamais qu'il
+   existe. */
+.propositions .proposition:hover {
+    background-color: #2e6f9e;
+    color: #ffffff;
+}
+
+.propositions .proposition:nth-child(4n+1) { background-color: #bdd2ef; color: #1c2733; }

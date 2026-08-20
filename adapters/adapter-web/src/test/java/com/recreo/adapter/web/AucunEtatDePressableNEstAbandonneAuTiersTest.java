@@ -256,7 +256,7 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
      * qui n'a lui-meme aucune classe et qui porte cette balise, {@code selecteursApplicables} ne
      * rendant une balise que dans ce cas precis.
      */
-    private static boolean sujetApplicable(String sujet, TailleDesTextesEtBoutonsTest.BoutonRendu bouton) {
+    static boolean sujetApplicable(String sujet, TailleDesTextesEtBoutonsTest.BoutonRendu bouton) {
         Set<String> classesDuSujet = LAnimationRetardeMaisNeDetermineRienTest.classesDuSelecteur(sujet);
         if (!classesDuSujet.isEmpty()) {
             return bouton.classes().containsAll(classesDuSujet);
@@ -271,7 +271,7 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
      * disparait. La relation est lue sur les noms, dans les deux sens, sans table de raccourcis a
      * tenir a jour.
      */
-    private static boolean touche(String proprieteMaison, String proprieteTierce) {
+    static boolean touche(String proprieteMaison, String proprieteTierce) {
         return proprieteTierce.equals(proprieteMaison)
                 || proprieteTierce.startsWith(proprieteMaison + "-")
                 || proprieteMaison.startsWith(proprieteTierce + "-");
@@ -283,7 +283,7 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
      * {@code --bs-link-color-rgb}, et la prendre pour une propriete rendue est la forme exacte du
      * defaut qu'ADR-0015 a corrige sur {@code --bs-btn-font-size}.
      */
-    private static List<String> proprietesRendues(String corps) {
+    static List<String> proprietesRendues(String corps) {
         return LAnimationRetardeMaisNeDetermineRienTest.proprietesDeclarees(corps).stream()
                 .filter(nom -> !nom.startsWith("--"))
                 .toList();
@@ -297,7 +297,7 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
      * rendent tous deux {@code .chip-niveau.est-actif} : un sujet compose n'est pas moins un sujet
      * distinct parce qu'une regle qui le porte est elle-meme scopee a une descendance.
      */
-    private static String composeDuMemeElement(String selecteur) {
+    static String composeDuMemeElement(String selecteur) {
         return elementDuCompose(
                 etatsDuCompose(TailleDesTextesEtBoutonsTest.sujetDuSelecteur(selecteur)).reste());
     }
@@ -493,6 +493,15 @@ class AucunEtatDePressableNEstAbandonneAuTiersTest {
                         + "une regle tierce a pseudo-classe l'emporte par specificite",
                 exigence.selecteurMaison(), exigence.propriete(), exigence.etat(),
                 String.join(", ", origines), exigence.selecteurMaison(), exigence.etat());
+    }
+
+    /**
+     * Les etats interactifs gardes que ce selecteur porte sur son sujet. Expose pour ADR-0053 : la
+     * clause de position doit reconnaitre exactement les memes etats que celle-ci, sans quoi une
+     * regle d'etat pourrait etre gardee ici et invisible la-bas.
+     */
+    static Set<String> etatsInteractifsDe(String selecteur) {
+        return etatsDuCompose(TailleDesTextesEtBoutonsTest.sujetDuSelecteur(selecteur)).etats();
     }
 
     /** Les pseudo-classes qui prennent la specificite de leur argument le plus specifique. */
