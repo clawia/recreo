@@ -299,11 +299,13 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             "15 items sur 15 proposent des graphies de phonemes (\"on\", \"in\", \"an\") : deux"
                     + " distracteurs, aucune valeur numerique lisible",
             "cm1-synonymes",
-            "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"
+            "16 items sur 16 portent deux distracteurs (trois propositions), mais aucune des 48"
                     + " propositions n'est numerique : ce sont des mots de vocabulaire (synonymes et"
                     + " distracteurs), valeurDe rend null sur les trois propositions de chaque item."
                     + " Mesure du 2026-08-19, verification directe : aucune des 60 propositions ne"
-                    + " commence par un chiffre");
+                    + " commence par un chiffre - remesure du 2026-08-20 apres le retrait de quatre"
+                    + " items par camille-po (vite, ancien, poli, drole), meme motif inchange sur"
+                    + " les 16 restants et leurs 48 propositions");
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

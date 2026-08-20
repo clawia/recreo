@@ -7,10 +7,13 @@ import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -22,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * S17-3 (DEC-0039, arbitrage prealable de nadia-prof du 2026-08-19, section 2) : le paquet
  * "cm1-synonymes". Matiere premiere reformulee, pas convertie
  * ({@code contenu-repris/associer/cm1-synonymes.yml}, 12 paires mot/synonyme sans phrase ni
- * distracteur) - ce paquet en porte 20, integralement ecrits pour ce sprint.
+ * distracteur).
  *
  * <p>Ne couvre que les criteres d'acceptation automatisables (SYN-1, comptage, forme du
  * descripteur) : la justesse du sens de chaque synonyme et de chaque phrase pour un enfant de CM1
@@ -35,22 +38,32 @@ import static org.assertj.core.api.Assertions.assertThat;
  * paquet, aucune proposition egale a une autre dans un item, une seule graphie de matiere) sont
  * deja derivees du repertoire de contenu par les garde-fous existants et ne sont pas repetees ici.</p>
  *
- * <p><b>ADR-0052, refus du 2026-08-19 (SYN-5) puis accord de nadia-prof sur le mecanisme.</b> La
- * clause invariante ("Dans cette phrase, quel mot peut remplacer X sans changer le sens ?") quitte
- * l'enonce pour la consigne, generique, de l'entree de catalogue neuve
- * ("bandit-manchot-synonymes-cm1"). Sur instruction expresse de {@code sofia-sm} (routee par
- * {@code nadia-prof}) : <b>seul l'item le plus long des vingt</b> ("triste"/"malheureux", 132
- * caracteres, celui que son tableau designe comme la frontiere) est transforme dans ce lot ; les
- * dix-neuf autres restent sous leur forme d'origine, en attente du jugement sur cet item pilote.
- * Ce fichier distingue donc deux formes valides tant que la transformation n'est pas
- * generalisee :</p>
- * <ul>
- *   <li><b>forme d'origine</b> (dix-neuf items) : mot cite deux fois entre guillemets droits, la
- *       clause invariante ecrite dans l'enonce ;</li>
- *   <li><b>forme pilote</b> (un item, SYN-6) : mot cite une fois entre guillemets francais, aucune
- *       clause invariante dans l'enonce - elle vit dans la consigne du catalogue, verifiee
- *       separement.</li>
- * </ul>
+ * <p><b>ADR-0052 : le paquet est passe a la forme validee sur l'item pilote.</b> La clause
+ * invariante ("Dans cette phrase, quel mot peut remplacer X sans changer le sens ?") a quitte
+ * l'enonce pour la consigne, generique, de l'entree de catalogue ("bandit-manchot-synonymes-cm1").
+ * L'item pilote ("triste"/"malheureux", le plus long du paquet a l'ouverture, 132 caracteres) a
+ * d'abord ete transforme seul et mesure par nadia-prof - VALIDE (gain net de 162 px, marge de
+ * 2,81 px au pli) - avant que la forme ne soit etendue au reste du paquet.</p>
+ *
+ * <p><b>Le paquet compte 16 items, pas 20 (camille-po, 2026-08-20).</b> Quatre items dont
+ * l'etiquette de la bonne reponse fait passer les propositions a trois rangees plutot que deux -
+ * "vite" (rapidement), "ancien" (vieux), "poli" (courtois), "drole" (amusante) - sortent du paquet
+ * plutot que d'etre reecrits : repasser leurs etiquettes par SYN-2/SYN-3 comme du contenu neuf,
+ * sans garantie qu'un synonyme aussi juste et plus court existe, pour preserver un compte qui est
+ * un critere de checklist d'ouverture et non une condition pedagogique - SYN-1 a SYN-9 ne
+ * mentionnent aucun nombre d'items - n'est pas justifie. ADR-0023 (plus d'items que de manches)
+ * reste largement tenu, 16 contre 10.</p>
+ *
+ * <p><b>SYN-9 (bloquante, datee du 2026-08-20)</b> : la mesure de nadia-prof a trouve une ligne qui
+ * se coupe entre le guillemet ouvrant et le mot, sur l'item pilote lui-meme - les espaces a
+ * l'interieur des guillemets etaient ordinaires (U+0020), pas insecables. Corrige sur les seize
+ * items : chaque mot cible est entoure de deux espaces insecables (U+00A0), invisibles a la
+ * lecture mais verifiees ci-dessous par leur code point, pas par leur rendu.</p>
+ *
+ * <p><b>SYN-8</b> : aucun mot de phrase n'a change sur les quinze items reecrits dans ce lot -
+ * seule la clause invariante est retiree et la marque du mot cible passee du guillemet droit
+ * repete au guillemet francais avec espaces insecables. Preuve par egalite stricte
+ * ({@link #lesSeizeEnoncesSontExactementCeuxAttendus()}).</p>
  */
 class PaquetCm1SynonymesTest {
 
@@ -58,117 +71,123 @@ class PaquetCm1SynonymesTest {
 
     private static final String ID_DE_CATALOGUE = "bandit-manchot-synonymes-cm1";
 
-    private static final int MINIMUM_D_ITEMS = 20;
-
-    /** SYN-6 : l'item pilote transforme dans ce lot, identifie par sa bonne reponse unique au paquet. */
-    private static final String BONNE_REPONSE_DE_L_ITEM_PILOTE = "malheureux";
-
-    private static final int NOMBRE_D_ITEMS_SOUS_FORME_D_ORIGINE = 19;
+    /**
+     * Le compte est garde exactement, pas seulement atteint : camille-po a retire quatre items
+     * (2026-08-20) precisement pour ne plus le laisser gonfler comme un critere en soi. Une
+     * regression qui ajouterait ou retirerait un item sans toucher ce fichier doit rougir ici.
+     */
+    private static final int NOMBRE_D_ITEMS_ATTENDU = 16;
 
     /**
-     * Forme d'origine : le mot cible cite deux fois entre guillemets droits dans le meme enonce -
-     * une fois dans la phrase qui lui donne son contexte, une fois dans la question qui demande son
-     * remplacement - jamais une seule fois isolee. Rendu textuel choisi pour {@code th:text}
-     * (fragments/manche.html echappe le HTML, aucun soulignement n'est disponible sans gabarit
-     * neuf) : les guillemets tenaient lieu du "mot souligne" que l'arbitrage de nadia-prof illustre,
-     * jusqu'a sa reserve du 2026-08-19 (le guillemet droit n'est pas une ponctuation francaise).
+     * SYN-6, SYN-9 : le mot cible est marque par des guillemets francais, avec un espace insecable
+     * (U+00A0, jamais l'espace ordinaire U+0020) immediatement a l'interieur de chaque guillemet -
+     * sans lui, une ligne peut se couper entre le guillemet et le mot, ce que nadia-prof a mesure
+     * sur l'item pilote avant cette correction.
      */
-    private static final Pattern MOT_ENTRE_GUILLEMETS_DROITS = Pattern.compile("\"([^\"]+)\"");
-
-    /** SYN-6 : forme pilote, le mot cible cite une seule fois entre guillemets francais. */
-    private static final Pattern MOT_ENTRE_GUILLEMETS_FRANCAIS = Pattern.compile("«\s*([^»]+?)\s*»");
+    private static final Pattern MOT_ENTRE_GUILLEMETS_FRANCAIS =
+            Pattern.compile("«\u00A0([^»]+?)\u00A0»");
 
     private static final String CLAUSE_INVARIANTE = "Dans cette phrase, quel mot peut remplacer";
 
+    /**
+     * SYN-8, preuve par egalite stricte : les seize enonces exacts apres le passage a la forme
+     * validee, generes depuis le paquet servi et non ecrits a la main, pour qu'aucune transcription
+     * ne puisse introduire l'ecart qu'elle est censee prouver absent. Chaque enonce porte un espace
+     * insecable (U+00A0) immediatement a l'interieur de chaque guillemet francais - invisible dans
+     * ce fichier comme dans le paquet, verifie par code point ailleurs dans cette classe, jamais par
+     * une relecture visuelle.
+     */
+    private static final List<Question> SEIZE_ITEMS_ATTENDUS = List.of(
+            new Question(new ItemId("item-0"), "Léa est « contente » de son cadeau.", "heureuse", List.of("inquiète", "surprise"),
+                    Optional.of("Ce mot décrit une émotion joyeuse, comme quand on sourit parce que tout va bien.")),
+            new Question(new ItemId("item-1"), "Ce paysage de montagne est « beau ».", "joli", List.of("vaste", "aride"),
+                    Optional.of("Ce mot dit qu'une chose est agréable à regarder.")),
+            new Question(new ItemId("item-2"), "Le petit garçon est « triste » depuis le départ de son ami.", "malheureux", List.of("inquiet", "gêné"),
+                    Optional.of("Ce mot décrit ce que l'on ressent quand on a envie de pleurer.")),
+            new Question(new ItemId("item-3"), "Le village est très « calme » le dimanche matin.", "tranquille", List.of("bruyant", "animé"),
+                    Optional.of("Ce mot dit qu'il n'y a ni bruit ni agitation autour de soi.")),
+            new Question(new ItemId("item-4"), "Après la course, Tom est « fatigué ».", "épuisé", List.of("content", "inquiet"),
+                    Optional.of("Ce mot dit qu'on n'a plus du tout de force.")),
+            new Question(new ItemId("item-5"), "Le pompier reste « courageux » face au danger.", "brave", List.of("maladroit", "discret"),
+                    Optional.of("Ce mot dit qu'on n'a pas peur d'affronter une difficulté.")),
+            new Question(new ItemId("item-6"), "Dans les fables, le renard est « malin ».", "rusé", List.of("gentil", "peureux"),
+                    Optional.of("Ce mot dit qu'on trouve toujours une astuce pour se sortir d'une situation.")),
+            new Question(new ItemId("item-7"), "Ce moteur de camion est très « fort ».", "puissant", List.of("léger", "bruyant"),
+                    Optional.of("Ce mot dit qu'une chose a beaucoup de force ou d'énergie.")),
+            new Question(new ItemId("item-8"), "La maman parle à son bébé d'une voix « douce ».", "tendre", List.of("forte", "grave"),
+                    Optional.of("Ce mot décrit une voix pleine d'affection, comme celle qui rassure quelqu'un.")),
+            new Question(new ItemId("item-9"), "Ce désert de sable est très « grand ».", "immense", List.of("chaud", "vide"),
+                    Optional.of("Ce mot dit qu'un espace semble sans limite, à perte de vue.")),
+            new Question(new ItemId("item-10"), "Cette fourmi est « petite ».", "minuscule", List.of("rapide", "noire"),
+                    Optional.of("Ce mot dit qu'une chose est extrêmement petite, presque impossible à voir.")),
+            new Question(new ItemId("item-11"), "Le nouveau voisin est « gentil » avec tout le monde.", "aimable", List.of("célèbre", "élégant"),
+                    Optional.of("Ce mot décrit quelqu'un qui se comporte bien avec les autres, poliment et avec bonté.")),
+            new Question(new ItemId("item-12"), "Cet exercice de mathématiques est « difficile ».", "compliqué", List.of("amusant", "court"),
+                    Optional.of("Ce mot dit qu'une chose est dure à comprendre ou à réussir.")),
+            new Question(new ItemId("item-13"), "Ce jeu de société est « facile » pour les débutants.", "simple", List.of("dangereux", "coûteux"),
+                    Optional.of("Ce mot dit qu'une chose ne demande pas beaucoup d'effort pour être réussie.")),
+            new Question(new ItemId("item-14"), "La musique du carnaval est « gaie ».", "joyeuse", List.of("lente", "grave"),
+                    Optional.of("Ce mot dit qu'une musique donne envie de sourire et de danser.")),
+            new Question(new ItemId("item-15"), "Le bureau de Léa est « propre ».", "net", List.of("encombré", "sombre"),
+                    Optional.of("Ce mot dit qu'un endroit est bien rangé et sans saleté.")));
+
     @Test
-    void lePaquetCompteAuMoinsVingtItems() {
+    void lePaquetCompteExactementSeizeItems() {
         assertThat(tousLesItems(paquet()))
-                .as("SYN, comptage : au moins %d items", MINIMUM_D_ITEMS)
-                .hasSizeGreaterThanOrEqualTo(MINIMUM_D_ITEMS);
+                .as("le compte est garde exactement a %d, pas seulement atteint (camille-po,"
+                        + " 2026-08-20) : vite, ancien, poli et drole sont sortis du paquet plutot"
+                        + " que reecrits", NOMBRE_D_ITEMS_ATTENDU)
+                .hasSize(NOMBRE_D_ITEMS_ATTENDU);
     }
 
     @Test
-    void lesDixNeufItemsDOrigineGardentLeurClauseInvarianteEtLeursGuillemetsDroits() {
-        List<Question> itemsDOrigine = tousLesItems(paquet()).stream()
-                .filter(item -> !item.bonneReponse().equals(BONNE_REPONSE_DE_L_ITEM_PILOTE))
-                .toList();
-        assertThat(itemsDOrigine)
-                .as("SYN-8 : seul l'item pilote change de forme dans ce lot, les dix-neuf autres"
-                        + " restent inchanges")
-                .hasSize(NOMBRE_D_ITEMS_SOUS_FORME_D_ORIGINE);
+    void lesQuatreItemsATroisRangeesNeSontPlusDansLePaquet() {
+        Set<String> bonnesReponsesRetirees = Set.of("rapidement", "vieux", "courtois", "amusante");
+        for (Question item : tousLesItems(paquet())) {
+            assertThat(bonnesReponsesRetirees)
+                    .as("'%s' : les quatre items a trois rangees de propositions (vite, ancien,"
+                            + " poli, drole) sont retires du paquet, pas seulement de la forme"
+                            + " validee", item.enonce())
+                    .doesNotContain(item.bonneReponse());
+        }
+    }
 
-        for (Question item : itemsDOrigine) {
+    @Test
+    void lesSeizeEnoncesSontExactementCeuxAttendus() {
+        assertThat(tousLesItems(paquet()))
+                .as("SYN-8 : sur les items reecrits, seules la clause invariante et la marque du mot"
+                        + " cible ont change - aucun mot de la phrase de contexte n'a bouge, aucune"
+                        + " bonne reponse ni aucun distracteur n'a change")
+                .containsExactlyInAnyOrderElementsOf(SEIZE_ITEMS_ATTENDUS);
+    }
+
+    @Test
+    void chaqueItemMarqueSonMotCibleParDesGuillemetsFrancaisAvecDesEspacesInsecables() {
+        for (Question item : tousLesItems(paquet())) {
             String enonce = item.enonce();
-            List<String> motsCites = new ArrayList<>();
-            Matcher trouve = MOT_ENTRE_GUILLEMETS_DROITS.matcher(enonce);
-            int premierIndex = -1;
-            while (trouve.find()) {
-                if (premierIndex < 0) {
-                    premierIndex = trouve.start();
-                }
-                motsCites.add(trouve.group(1));
-            }
+            Matcher trouve = MOT_ENTRE_GUILLEMETS_FRANCAIS.matcher(enonce);
 
-            assertThat(motsCites)
-                    .as("'%s' (SYN-1) : le mot cible est cite deux fois - dans la phrase, puis dans la"
-                            + " question qui demande son remplacement", enonce)
-                    .hasSize(2);
-            assertThat(motsCites.get(1))
-                    .as("'%s' (SYN-1) : la question porte sur le meme mot que celui presente dans la"
-                            + " phrase", enonce)
-                    .isEqualTo(motsCites.get(0));
-            assertThat(enonce.substring(0, premierIndex).strip())
-                    .as("'%s' (SYN-1) : du texte precede le mot cite - il est presente en phrase,"
-                            + " jamais isole en tete d'enonce", enonce)
-                    .isNotEmpty();
+            assertThat(trouve.find())
+                    .as("'%s' (SYN-6, SYN-9) : le mot cible est marque par des guillemets francais"
+                            + " avec des espaces insecables immediatement a l'interieur", enonce)
+                    .isTrue();
+            assertThat(trouve.find())
+                    .as("'%s' (SYN-1) : le mot cible n'est cite qu'une seule fois - la clause"
+                            + " invariante ne le repete plus dans l'enonce", enonce)
+                    .isFalse();
             assertThat(enonce)
-                    .as("'%s' (SYN-1) : la question demande explicitement un remplacement dans cette"
-                            + " phrase, jamais une definition du mot seul", enonce)
-                    .contains(CLAUSE_INVARIANTE);
+                    .as("'%s' (SYN-6) : plus aucun guillemet droit", enonce)
+                    .doesNotContain("\"");
+            assertThat(enonce)
+                    .as("'%s' (SYN-7) : la clause invariante a quitte l'enonce, elle vit dans la"
+                            + " consigne de catalogue", enonce)
+                    .doesNotContain(CLAUSE_INVARIANTE);
         }
     }
 
     /**
-     * SYN-6, SYN-7, SYN-8 : l'item pilote ("triste"/"malheureux") marque son mot cible par des
-     * guillemets francais, une seule fois, dans une phrase qui ne porte plus la clause invariante -
-     * celle-ci est verifiee separement sur la consigne de catalogue
-     * ({@link #laConsigneDeCatalogueDesigneLeMotEntreGuillemetsSansNommerAucunItem()}).
-     */
-    @Test
-    void litemPiloteMarqueSonMotCibleParDesGuillemetsFrancaisSansClauseInvarianteDansLaPhrase() {
-        Question pilote = tousLesItems(paquet()).stream()
-                .filter(item -> item.bonneReponse().equals(BONNE_REPONSE_DE_L_ITEM_PILOTE))
-                .findFirst()
-                .orElseThrow(() -> new AssertionError(
-                        "aucun item du paquet n'a pour bonne reponse '" + BONNE_REPONSE_DE_L_ITEM_PILOTE + "'"));
-        String enonce = pilote.enonce();
-
-        assertThat(enonce)
-                .as("SYN-8 : la phrase de contexte n'a pas bouge d'un mot")
-                .isEqualTo("Le petit garçon est « triste » depuis le départ de son ami.");
-
-        Matcher guillemetsFrancais = MOT_ENTRE_GUILLEMETS_FRANCAIS.matcher(enonce);
-        assertThat(guillemetsFrancais.find())
-                .as("'%s' (SYN-6) : le mot cible est marque par des guillemets francais", enonce)
-                .isTrue();
-        assertThat(guillemetsFrancais.group(1)).isEqualTo("triste");
-        assertThat(guillemetsFrancais.find())
-                .as("'%s' (SYN-6) : une seule occurrence - la clause invariante ne repete plus le"
-                        + " mot cite une seconde fois dans l'enonce", enonce)
-                .isFalse();
-
-        assertThat(enonce)
-                .as("'%s' (SYN-7) : la clause invariante a quitte l'enonce, elle vit dans la consigne"
-                        + " de catalogue", enonce)
-                .doesNotContain(CLAUSE_INVARIANTE);
-        assertThat(enonce)
-                .as("'%s' (SYN-6) : plus aucun guillemet droit sur cet item", enonce)
-                .doesNotContain("\"");
-    }
-
-    /**
-     * ADR-0052, SYN-6, SYN-7 : l'entree de catalogue neuve porte une consigne generique qui designe
-     * le mot cible par sa marque exacte ("guillemets"), sans nommer aucun mot d'aucun item - une
+     * ADR-0052, SYN-6, SYN-7 : l'entree de catalogue porte une consigne generique qui designe le
+     * mot cible par sa marque exacte ("guillemets"), sans nommer aucun mot d'aucun item - une
      * consigne qui citerait un mot precis figerait le jeu sur cet item.
      */
     @Test
@@ -191,7 +210,7 @@ class PaquetCm1SynonymesTest {
         for (Question item : tousLesItems(paquet())) {
             assertThat(consigne)
                     .as("la consigne ne nomme aucune bonne reponse d'aucun item, elle reste generique"
-                            + " pour les vingt", item.bonneReponse())
+                            + " pour les seize", item.bonneReponse())
                     .doesNotContain(item.bonneReponse());
         }
     }
@@ -201,8 +220,8 @@ class PaquetCm1SynonymesTest {
         try (var flux = PaquetCm1SynonymesTest.class.getResourceAsStream("/catalogue.yaml")) {
             assertThat(flux).as("/catalogue.yaml introuvable sur le classpath").isNotNull();
             return (Map<String, Object>) new org.yaml.snakeyaml.Yaml().load(flux);
-        } catch (java.io.IOException e) {
-            throw new java.io.UncheckedIOException(e);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
         }
     }
 

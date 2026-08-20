@@ -14,100 +14,96 @@ descripteur:
 # FICHE-bandit-manchot-synonymes-cm1.md : synonymes seuls, aucun antonyme).
 #
 # ADR-0052 (theo-archi, s17) : la clause invariante "Dans cette phrase, quel mot peut remplacer X
-# sans changer le sens ?" quitte l'enonce pour la consigne de l'entree de catalogue (generique,
-# catalogue.yaml), sur accord de nadia-prof (reserve SYN-5, refus du 2026-08-19). Trois conditions
-# datees du 2026-08-19 gouvernent ce deplacement :
+# sans changer le sens ?" a quitte l'enonce pour la consigne de l'entree de catalogue (generique,
+# catalogue.yaml), sur accord de nadia-prof (reserve SYN-5, refus du 2026-08-19). Conditions datees
+# du 2026-08-19 et du 2026-08-20 :
 #   - SYN-6 (bloquante) : la marque qui designe le mot cible est une ponctuation francaise, nommee
 #     par la consigne "par cette marque exacte" - le guillemet droit ("...") n'en est pas une.
-#     L'item transforme ci-dessous marque son mot cible par des guillemets francais (« ... »), et
-#     la consigne le designe par "le mot entre guillemets" ;
+#     Chaque item marque son mot cible par des guillemets francais (« ... »), et la consigne le
+#     designe par "le mot entre guillemets" ;
 #   - SYN-7 : la consigne et l'enonce, lus dans leur ordre de rendu (fragments/manche.html rend
 #     .consigne avant .enonce), disent la tache a eux seuls, sans la clause invariante ;
 #   - SYN-8 : aucun pixel gagne sur la phrase elle-meme - seule la clause invariante est retiree et
-#     la marque du mot cible changee, aucun mot de la phrase de contexte n'est modifie.
+#     la marque du mot cible changee, aucun mot de la phrase de contexte n'est modifie ;
+#   - SYN-9 (bloquante, 2026-08-20) : les espaces a l'interieur des guillemets sont insecables
+#     (U+00A0), jamais ordinaires (U+0020) - sans cela une ligne peut se couper entre le guillemet
+#     et le mot, ce que nadia-prof a mesure sur l'item pilote avant cette correction.
 #
-# nadia-prof designe l'item le plus long des vingt (132 caracteres, "triste"/"malheureux") comme
-# celui qui decide si le mecanisme suffit : lui seul est transforme dans ce lot, les dix-neuf
-# autres restent sous leur forme d'origine (SYN-1 a SYN-4 deja tenues, credit non remis en cause)
-# jusqu'a ce que la mesure de cet item soit jugee.
+# Item pilote ("triste"/"malheureux", le plus long du paquet a l'ouverture, 132 caracteres) mesure
+# et VALIDE par nadia-prof le 2026-08-20 (marge de 2,81 px au pli, gain net de 162 px) : le
+# mecanisme est etendu a tout le paquet dans ce lot.
+#
+# camille-po (2026-08-20) : quatre items dont l'etiquette de la bonne reponse fait passer les
+# propositions a trois rangees plutot que deux - "vite" (rapidement), "ancien" (vieux), "poli"
+# (courtois), "drole" (amusante) - sortent du paquet plutot que d'etre reecrits. Motif : reecrire
+# leurs etiquettes serait du contenu neuf a cout pedagogique non borne (repasser par SYN-2/SYN-3
+# sans garantie qu'un synonyme aussi juste et plus court existe), pour preserver un compte d'items
+# qui est un critere de checklist d'ouverture de camille-po et non une condition de nadia-prof :
+# SYN-1 a SYN-9 ne mentionnent aucun nombre d'items. Le paquet compte donc 16 items, gardes
+# exactement a ce compte (PaquetCm1SynonymesTest) ; ADR-0023 (plus d'items que de manches) reste
+# largement tenu, 16 contre 10.
 items:
-  - enonce: "Léa est \"contente\" de son cadeau. Dans cette phrase, quel mot peut remplacer \"contente\" sans changer le sens ?"
+  - enonce: "Léa est « contente » de son cadeau."
     bonneReponse: "heureuse"
     distracteurs: ["inquiète", "surprise"]
     indice: "Ce mot décrit une émotion joyeuse, comme quand on sourit parce que tout va bien."
-  - enonce: "Le guépard court très \"vite\". Dans cette phrase, quel mot peut remplacer \"vite\" sans changer le sens ?"
-    bonneReponse: "rapidement"
-    distracteurs: ["silencieusement", "prudemment"]
-    indice: "Ce mot dit à quelle allure on se déplace, comme quelqu'un qui n'a pas une seconde à perdre."
-  - enonce: "Ce paysage de montagne est \"beau\". Dans cette phrase, quel mot peut remplacer \"beau\" sans changer le sens ?"
+  - enonce: "Ce paysage de montagne est « beau »."
     bonneReponse: "joli"
     distracteurs: ["vaste", "aride"]
     indice: "Ce mot dit qu'une chose est agréable à regarder."
-  - enonce: "Le petit garçon est « triste » depuis le départ de son ami."
+  - enonce: "Le petit garçon est « triste » depuis le départ de son ami."
     bonneReponse: "malheureux"
     distracteurs: ["inquiet", "gêné"]
     indice: "Ce mot décrit ce que l'on ressent quand on a envie de pleurer."
-  - enonce: "Le village est très \"calme\" le dimanche matin. Dans cette phrase, quel mot peut remplacer \"calme\" sans changer le sens ?"
+  - enonce: "Le village est très « calme » le dimanche matin."
     bonneReponse: "tranquille"
     distracteurs: ["bruyant", "animé"]
     indice: "Ce mot dit qu'il n'y a ni bruit ni agitation autour de soi."
-  - enonce: "Cette histoire de pirates est \"drôle\". Dans cette phrase, quel mot peut remplacer \"drôle\" sans changer le sens ?"
-    bonneReponse: "amusante"
-    distracteurs: ["triste", "effrayante"]
-    indice: "Ce mot dit qu'une histoire donne envie de rire."
-  - enonce: "Après la course, Tom est \"fatigué\". Dans cette phrase, quel mot peut remplacer \"fatigué\" sans changer le sens ?"
+  - enonce: "Après la course, Tom est « fatigué »."
     bonneReponse: "épuisé"
     distracteurs: ["content", "inquiet"]
     indice: "Ce mot dit qu'on n'a plus du tout de force."
-  - enonce: "Le pompier reste \"courageux\" face au danger. Dans cette phrase, quel mot peut remplacer \"courageux\" sans changer le sens ?"
+  - enonce: "Le pompier reste « courageux » face au danger."
     bonneReponse: "brave"
     distracteurs: ["maladroit", "discret"]
     indice: "Ce mot dit qu'on n'a pas peur d'affronter une difficulté."
-  - enonce: "Dans les fables, le renard est \"malin\". Dans cette phrase, quel mot peut remplacer \"malin\" sans changer le sens ?"
+  - enonce: "Dans les fables, le renard est « malin »."
     bonneReponse: "rusé"
     distracteurs: ["gentil", "peureux"]
     indice: "Ce mot dit qu'on trouve toujours une astuce pour se sortir d'une situation."
-  - enonce: "Ce moteur de camion est très \"fort\". Dans cette phrase, quel mot peut remplacer \"fort\" sans changer le sens ?"
+  - enonce: "Ce moteur de camion est très « fort »."
     bonneReponse: "puissant"
     distracteurs: ["léger", "bruyant"]
     indice: "Ce mot dit qu'une chose a beaucoup de force ou d'énergie."
-  - enonce: "Ce château construit il y a très longtemps est \"ancien\". Dans cette phrase, quel mot peut remplacer \"ancien\" sans changer le sens ?"
-    bonneReponse: "vieux"
-    distracteurs: ["moderne", "abandonné"]
-    indice: "Ce mot dit qu'une chose existe depuis très longtemps."
-  - enonce: "La maman parle à son bébé d'une voix \"douce\". Dans cette phrase, quel mot peut remplacer \"douce\" sans changer le sens ?"
+  - enonce: "La maman parle à son bébé d'une voix « douce »."
     bonneReponse: "tendre"
     distracteurs: ["forte", "grave"]
     indice: "Ce mot décrit une voix pleine d'affection, comme celle qui rassure quelqu'un."
-  - enonce: "Ce désert de sable est très \"grand\". Dans cette phrase, quel mot peut remplacer \"grand\" sans changer le sens ?"
+  - enonce: "Ce désert de sable est très « grand »."
     bonneReponse: "immense"
     distracteurs: ["chaud", "vide"]
     indice: "Ce mot dit qu'un espace semble sans limite, à perte de vue."
-  - enonce: "Cette fourmi est \"petite\". Dans cette phrase, quel mot peut remplacer \"petite\" sans changer le sens ?"
+  - enonce: "Cette fourmi est « petite »."
     bonneReponse: "minuscule"
     distracteurs: ["rapide", "noire"]
     indice: "Ce mot dit qu'une chose est extrêmement petite, presque impossible à voir."
-  - enonce: "Le nouveau voisin est \"gentil\" avec tout le monde. Dans cette phrase, quel mot peut remplacer \"gentil\" sans changer le sens ?"
+  - enonce: "Le nouveau voisin est « gentil » avec tout le monde."
     bonneReponse: "aimable"
     distracteurs: ["célèbre", "élégant"]
     indice: "Ce mot décrit quelqu'un qui se comporte bien avec les autres, poliment et avec bonté."
-  - enonce: "Cet exercice de mathématiques est \"difficile\". Dans cette phrase, quel mot peut remplacer \"difficile\" sans changer le sens ?"
+  - enonce: "Cet exercice de mathématiques est « difficile »."
     bonneReponse: "compliqué"
     distracteurs: ["amusant", "court"]
     indice: "Ce mot dit qu'une chose est dure à comprendre ou à réussir."
-  - enonce: "Ce jeu de société est \"facile\" pour les débutants. Dans cette phrase, quel mot peut remplacer \"facile\" sans changer le sens ?"
+  - enonce: "Ce jeu de société est « facile » pour les débutants."
     bonneReponse: "simple"
     distracteurs: ["dangereux", "coûteux"]
     indice: "Ce mot dit qu'une chose ne demande pas beaucoup d'effort pour être réussie."
-  - enonce: "La musique du carnaval est \"gaie\". Dans cette phrase, quel mot peut remplacer \"gaie\" sans changer le sens ?"
+  - enonce: "La musique du carnaval est « gaie »."
     bonneReponse: "joyeuse"
     distracteurs: ["lente", "grave"]
     indice: "Ce mot dit qu'une musique donne envie de sourire et de danser."
-  - enonce: "Le jeune homme est \"poli\" avec les adultes. Dans cette phrase, quel mot peut remplacer \"poli\" sans changer le sens ?"
-    bonneReponse: "courtois"
-    distracteurs: ["bavard", "impatient"]
-    indice: "Ce mot décrit quelqu'un qui a de bonnes manières."
-  - enonce: "Le bureau de Léa est \"propre\". Dans cette phrase, quel mot peut remplacer \"propre\" sans changer le sens ?"
+  - enonce: "Le bureau de Léa est « propre »."
     bonneReponse: "net"
     distracteurs: ["encombré", "sombre"]
     indice: "Ce mot dit qu'un endroit est bien rangé et sans saleté."
