@@ -1,7 +1,9 @@
 # ADR-0052 - La part invariante d'un enonce vit dans la consigne de l'entree de catalogue, et la consigne devient porteuse
 
 - **Statut** : Accepte, sa regle ecrite dans le meme commit
-  (`ToutEcranEchangeEstUnDocumentJouableTest`, une clause, deux morsures).
+  (`ToutEcranEchangeEstUnDocumentJouableTest`, une clause, deux morsures) ; **amende le 2026-08-20
+  (s17)** : son illustration de la designation du mot cible devient neutre, `SYN-6` rendant la marque
+  porteuse de sens. **La decision et la regle ne changent pas.**
 - **Sprint** : s17. **Date** : 2026-08-19. **Auteur** : theo-archi.
 - **Arbre mesure** : `round-two` a `39b3c42` (SHA releve sur la branche, pas repris d'un message).
 - **Route par** : `nadia-prof` (`FICHE-bandit-manchot-synonymes-cm1.md`, Done pedagogique du
@@ -109,15 +111,124 @@ declare de `font-family`. Le deficit mesure est de **63 a 159 px**. Le plancher 
 meme pas le meilleur cas, et le plafond n'est pas calculable ici. **Ce mecanisme rend `SYN-5`
 atteignable, il ne la prononce pas** : seule une mesure de rendu sur les vingt items le dira.
 
+## Amendement du 2026-08-20 (s17) - l'illustration devient neutre, le mecanisme ne bouge pas
+
+**Ce qui a change autour de cet `ADR`.** `nadia-prof` a **accepte** la designation generique - le motif
+etant dans le texte de sa propre condition, qui disait *"le mot souligne"* et non un mot choisi pour sa
+forme - et a ouvert `SYN-6` (bloquante) : *le mot cible porte une marque qui est une ponctuation
+francaise, et la consigne le designe par cette marque exacte*. Son motif est structurel et je le
+reprends : tant que la clause vivait dans chaque item, la marque etait **redondante** - la clause
+nommait le mot juste apres ; une fois la clause partie dans la consigne, **la marque est la seule
+chose qui dit de quel mot on parle**. Elle passe de detail de forme a porteuse de sens.
+
+**Correction du dossier, parce qu'un `ADR` mal cite se propage.** Le fait mesure est adresse a *"la
+formulation que `ADR-0052` cite en exemple"*, citee comme *"le mot en gras"*. **Cette formulation n'est
+pas dans cet `ADR`** : mesure sur `eb3543b`, le mot "gras" y apparait **une seule fois**, dans la
+description typographique du deplacement (*"2rem gras -> 1,25rem normal"*), qui decrit les deux blocs
+et non la designation du mot. L'illustration que cet `ADR` portait est *"le mot entre guillemets"* - la
+meme formulation que `SYN-6` rappelle elle-meme comme celle des items. **Cela ne retire rien a la
+mesure**, qui vaut telle quelle et que je verifie ci-dessous ; cela deplace seulement ce qui est
+corrige : l'illustration de cet `ADR` n'etait pas fausse, elle etait **ambigue** - elle nommait par un
+seul mot une marque dont une variante est refusee et une autre acceptable - et c'est cette ambiguite
+que cet amendement leve.
+
+**Les trois faits, re-mesures par moi sur `eb3543b` plutot que repris** (lecture de la feuille et du
+gabarit servis) :
+
+| Fait | Mesure |
+|---|---|
+| `.enonce` est en gras **sur tout le bloc** | `.enonce { font-size: 2rem; font-weight: bold; margin-bottom: 0.25rem }` - la phrase entiere est grasse, "en gras" ne designe donc rien |
+| l'italique n'est pas dans le vocabulaire du depot | `font-style` : **0 occurrence** dans `static/css/recreo.css` |
+| aucun balisage ne peut venir du contenu | `<p class="enonce" th:text="${enonce}">`, et **0 occurrence** de `th:utext` dans les gabarits : `th:text` echappe, donc un `<b>` ecrit dans le YAML s'afficherait **litteralement**, en toutes lettres, sous les yeux de l'enfant |
+
+**Ce que ces trois faits font a cet `ADR` : ils confirment son point 3, ils ne le contredisent pas.**
+Le point 3 decide qu'aucune cle neuve n'entre dans le paquet et que le schema **ne porte aucun
+balisage** ; la troisieme ligne du tableau en est la demonstration executable, et les deux premieres
+ferment par la mesure la branche typographique que le point 3 fermait par principe. **La marque ne peut
+donc etre qu'un caractere a l'interieur de la chaine.** C'est une consequence du mecanisme, pas une
+correction du mecanisme.
+
+**Ce qui change dans le texte de cet `ADR`** : l'illustration de la premiere consequence ne nomme plus
+de marque. Elle nomme la **contrainte** - la marque est un caractere, elle est une ponctuation
+francaise, et la consigne la designe par ce caractere exact - et laisse la marque a `ines-design` qui
+la propose et a `nadia-prof` qui la juge. **Je ne la choisis pas**, et je ne la choisis pas davantage
+en la citant en exemple : c'est precisement ainsi qu'une illustration devient une decision par
+accident.
+
+### Le mecanisme lui-meme ne bouge pas, et voici pourquoi
+
+La decision porte sur **ou vit un texte** : la part strictement invariante dans la `consigne` de
+l'entree de catalogue, la part variable dans l'item. La marque du mot cible est **dans la part
+variable** - elle vit dans la phrase, avec le mot. Quelle qu'elle soit, elle traverse exactement le
+meme chemin qu'aujourd'hui : `items[].enonce` -> `QuestionContentSourceFactory` -> `Question.enonce`
+-> modele -> `th:text`. **Aucun des quatre points de la decision ne depend de la marque retenue** : ni
+le lieu de la part invariante, ni le maintien du mot dans l'item, ni le refus d'une cle neuve, ni le
+caractere porteur de la consigne. `SYN-6` contraint le **contenu** de la consigne (elle doit nommer la
+marque exacte) et le **contenu** de l'item (il doit la porter) ; elle ne contraint aucun mecanisme.
+
+**Une seule chose serait tombee** : si la designation avait du passer par une marque **typographique**,
+il aurait fallu un balisage dans le contenu, donc une cle neuve ou un second champ - et le point 3
+serait devenu intenable. La mesure de `nadia-prof` ecarte cette branche ; elle ne l'ouvre pas.
+
+### Faut-il un garde-fou sur le choix de la marque ? Non, et je dis ce que ce non laisse ouvert
+
+**Ce n'est pas gardable, pour deux raisons distinctes.**
+
+1. **Le predicat porterait sur de la prose francaise.** Pour rougir sur une consigne qui designe une
+   marque que la feuille ne rend pas, il faudrait reconnaitre les mots qui nomment une marque -
+   "gras", "italique", "souligne", "en couleur". C'est une **liste de mots ecrite a la main sous une
+   promesse universelle**, ce qu'`ADR-0039` refuse, et elle serait contournee par la premiere
+   formulation qu'elle n'aurait pas prevue ("le mot ecrit autrement"). Un garde-fou qui compte
+   l'antidote parmi les malades est la faute mesuree en s05 ; celui-la ne verrait meme pas la maladie.
+2. **La propriete reelle est rendue, pas declarative.** `SYN-6` n'exige pas qu'un mot figure dans une
+   consigne : elle exige **qu'un enfant sache de quel mot on parle**, et sa verification le dit -
+   consigne masquee, montrer l'item a un tiers, lui demander de pointer le mot. Aucun automate de ce
+   depot ne mesure cela, et `nadia-prof` l'ecrit elle-meme : *"je reste seule garde de `SYN-5` et de
+   `SYN-6`"*, et *"`SYN-6` sur le rendu, pas sur le fichier"*. C'est la troisieme fois de ce sprint que
+   je conclus ainsi, et la conclusion n'est pas moins vraie parce qu'elle se repete.
+
+**Ce qui est deja garde sur ce chemin, et ce qui ne l'est pas** - dit pour que personne ne croie ni
+trop ni trop peu :
+
+- **garde** : un caractere non-ASCII d'une **proposition** traverse la chaine reelle jusqu'au serveur
+  embarque, par une vraie requete HTTP, pour **chaque** proposition non-ASCII des paquets servis
+  (`PropositionsAccentueesJouablesIT`, perimetre derive du contenu reel). C'est le defaut de s05, et il
+  est ferme ;
+- **garde** : l'unicite de graphie de la matiere et l'inventaire des chaines accentuees exposees par le
+  port entrant (`UneMatiereNAQuUneSeuleGraphieDansLeContenuServiTest`,
+  `TexteAccentueExposeParLePortEntrantTest`) ;
+- **non garde** : qu'un caractere donne d'un **enonce** soit **visible** a 360 px, en 2 rem gras, dans
+  la phrase. C'est le point 4 de la liste de mesures de `nadia-prof`, et c'est elle qui le tient.
+
+**Ce que `lea-dev` peut tenir pour acquis sans attendre personne**, puisqu'elle ecrit la consigne et le
+plus long des vingt items - trois faits de mecanisme, aucun choix de forme :
+
+1. **la marque est un caractere dans la chaine** : ni gras, ni italique, ni balise - le schema ne porte
+   aucun balisage et `th:text` echappe, donc un `<b>` s'afficherait en toutes lettres a l'enfant ;
+2. **la consigne vit dans `catalogue.yaml`**, champ `consigne` de l'entree, obligatoire, rendu une fois
+   par ecran **avant** l'enonce - aucun code a ecrire pour cela ;
+3. **l'encodage n'est pas un obstacle** : les caracteres non-ASCII traversent deja la chaine, et le
+   garde-fou qui le prouve est derive du contenu reel, donc il couvrira son paquet le jour ou il sera
+   servi. **Le choix de la marque appartient a `ines-design` et a `nadia-prof`** ; ce qui precede dit ce
+   qui est possible, jamais ce qui est bon.
+
+**Aucune regle neuve n'accompagne cet amendement**, et c'est un choix ecrit plutot qu'un silence : la
+clause de cet `ADR` - aucun ecran ne montre l'enonce d'un item sans la consigne de son jeu - garde
+exactement la meme propriete apres `SYN-6` qu'avant, puisqu'elle ne dit rien du **contenu** des deux
+blocs. Le compte des regles ArchUnit reste a **29**.
+
 ## Consequences
 
 - **La question migre de l'item vers le jeu.** Consequence de contenu, pas de mecanisme : la consigne
   ne peut plus nommer le mot cible (elle est ecrite une fois pour vingt items) et doit le designer
-  autrement - *"le mot entre guillemets"*, par exemple. **Est-ce encore `SYN-1` ?** Ce n'est pas ma
-  question : `SYN-1` est de `nadia-prof`, et cette formulation lui est routee avec sa reserve deja
-  ouverte sur la marque du mot cible (le guillemet droit n'est pas une ponctuation francaise). Si
-  elle refuse la designation generique, ce mecanisme tombe et il faut revenir vers elle, pas vers le
-  code.
+  **par la marque que ce mot porte dans la phrase** - une marque qui est un **caractere** de la chaine,
+  qui est une ponctuation francaise, et que la consigne nomme par ce caractere exact.
+  *(Amendement du 2026-08-20 : cette phrase citait une marque en exemple ; l'exemple est retire.
+  `SYN-6` a rendu la marque porteuse de sens - elle est la seule chose qui dit de quel mot on parle une
+  fois la clause partie - et une illustration devient une decision par accident. La marque est a
+  `ines-design`, son jugement a `nadia-prof` ; la designation generique elle-meme est **acceptee** par
+  `nadia-prof` le 2026-08-20.)* **Est-ce encore `SYN-1` ?** Ce n'etait pas ma question : `SYN-1` est de
+  `nadia-prof`, et elle a repondu oui.
 - **L'entree de catalogue doit exister**, ce qui est de toute facon le second motif du refus : sans
   elle, aucun enfant n'atteint le jeu. La consigne est un champ **obligatoire** de cette entree : le
   cout de cette decision au-dela de ce qui etait deja du est donc **nul**.
