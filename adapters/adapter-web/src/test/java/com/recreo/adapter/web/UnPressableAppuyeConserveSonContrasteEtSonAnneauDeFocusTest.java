@@ -185,6 +185,16 @@ class UnPressableAppuyeConserveSonContrasteEtSonAnneauDeFocusTest {
      * S17-1 a dotees d'un anneau, moins la puce active dont la specificite propre
      * ({@code body:has(.filtre-niveau) .chip-niveau.est-actif...}) depasse deja le plancher sans
      * aucune regle de plus (verifie a part, {@link #laPuceActiveDepasseDejaLePlancherSansRegleDePlus}).
+     *
+     * <p>Correction de S15-8 (nadia-prof, remesure sous appui reel) : le sujet actif de
+     * {@code .proposition} n'est plus {@code #jeu .proposition:active} - cet ancetre identifiant
+     * battait aussi les quatre regles cycliques de position, qui doivent rester a specificite
+     * <b>egale</b> pour gagner par l'ordre de declaration (voir
+     * {@code LaCouleurDeLaPositionCycliqueSurvitSousLAppuiTest}, qui verifie cette egalite - une
+     * relation entre deux regles maison que ce fichier-ci, tourne vers le tiers, ne voit pas).
+     * {@code .propositions .proposition:active} reste a la meme specificite que les regles
+     * cycliques (trois classes/pseudo-classes) tout en egalant celle des selecteurs tiers d'appui
+     * compares ici, ce que ce test verifie.
      */
     private static final List<Identite> POPULATION = List.of(
             new Identite("continuer-partie",
@@ -192,7 +202,7 @@ class UnPressableAppuyeConserveSonContrasteEtSonAnneauDeFocusTest {
             new Identite("demarrer",
                     "#jeu .demarrer:active", "#jeu .demarrer:active:focus-visible"),
             new Identite("proposition",
-                    "#jeu .proposition:active", "#jeu .proposition:active:focus-visible"),
+                    ".propositions .proposition:active", "#jeu .proposition:active:focus-visible"),
             new Identite("recommencer",
                     "#jeu .recommencer:active", "#jeu .recommencer:active:focus-visible"),
             new Identite("sortie-pleine",

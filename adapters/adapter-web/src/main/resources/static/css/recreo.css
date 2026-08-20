@@ -640,7 +640,20 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    compose, sujetDuSelecteur) - la meme forme que "body:has(.filtre-niveau)" plus bas dans
    ce fichier. Le trou est de la meme famille que celui deja corrige deux fois en s16 sur
    cette derivation (S17-D route ce troisieme cas a theo-archi) ; le bloc combine plus bas
-   repare l'anneau de focus sous ce meme etat presse, que la meme cause efface. */
+   repare l'anneau de focus sous ce meme etat presse, que la meme cause efface.
+   Correction de S15-8 (nadia-prof, remesure sous appui reel) : ".proposition" a recu par erreur
+   le meme ancetre "#jeu" (un identifiant) que les quatre autres, ce qui a fait passer sa
+   specificite au-dessus de (0,3,0) - au-dessus, donc, des quatre regles cycliques
+   (".propositions .proposition:nth-child(...)", plus bas dans ce fichier) qui doivent rester
+   PLUS FORTES que ce sujet pour que la couleur de position survive sous le doigt (S15-8) : ces
+   deux jeux de regles etaient volontairement a la meme specificite (0,3,0), l'ordre dans le
+   fichier tranchant en faveur des regles cycliques, declarees apres. Un identifiant bat cette
+   egalite sans espoir de retour, quel que soit l'ordre. Le correctif reprend l'ancetre reel deja
+   utilise par les regles cycliques elles-memes, ".propositions" (le conteneur direct de chaque
+   proposition) : ".propositions .proposition:active" vaut exactement (0,3,0) - egalite avec les
+   regles tierces (l'ordre inter-feuilles la tranche, ADR-0014 point 5) et egalite avec les
+   regles cycliques (l'ordre intra-fichier la tranche, comme avant ce lot). Les quatre autres
+   sujets de ce groupe n'ont aucune regle cyclique a proteger et gardent "#jeu". */
 .continuer-partie:hover,
 .demarrer:hover,
 .proposition:hover,
@@ -648,7 +661,7 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
 .sortie-pleine:hover,
 #jeu .continuer-partie:active,
 #jeu .demarrer:active,
-#jeu .proposition:active,
+.propositions .proposition:active,
 #jeu .recommencer:active,
 #jeu .sortie-pleine:active,
 .continuer-partie:focus-visible,

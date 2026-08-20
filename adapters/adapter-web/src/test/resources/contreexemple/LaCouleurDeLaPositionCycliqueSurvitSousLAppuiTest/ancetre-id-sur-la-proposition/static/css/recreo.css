@@ -1,0 +1,12 @@
+/* Le defaut exact que ce lot corrige : ".proposition" recoit un ancetre identifiant ("#jeu"),
+   qui bat sans espoir de retour la specificite (0,3,0) des quatre regles cycliques de position -
+   la couleur de position ne survit plus sous un appui reel (S15-8 defaite). */
+#jeu .proposition:active {
+    color: #ffffff;
+    background-color: #2e6f9e;
+}
+
+.propositions .proposition:nth-child(4n+1) { background-color: #bdd2ef; color: #1c2733; }
+.propositions .proposition:nth-child(4n+2) { background-color: #a9dcd8; color: #1c2733; }
+.propositions .proposition:nth-child(4n+3) { background-color: #dcc8ed; color: #1c2733; }
+.propositions .proposition:nth-child(4n+4) { background-color: #eec1d8; color: #1c2733; }
