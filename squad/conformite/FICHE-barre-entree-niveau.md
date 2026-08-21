@@ -15,6 +15,9 @@
   cabinet sombre. **Je n'en fais pas une condition, et aucune condition neuve n'est ouverte.**
   Enfin, **je ne peux pas crediter `ADR-0053`** : la decision qu'on me decrit n'existe dans aucun
   fichier du depot, sur aucune branche - le garde-fou reellement present compare des specificites.
+  **Reconciliation datee du 2026-08-21** : `ADR-0053` **existe**, fusionnee a `eb3543b`, **apres ma base
+  de mesure `0dc90e9`** - la phrase ci-dessus etait exacte quand je l'ai ecrite et ne l'est plus. Voir
+  la note en fin de la section correspondante.
 - **Statut global au 2026-08-19 (s17), remesure sur l'increment livre** : **`S17-A` est FERMEE.**
   Mesure sur la **feuille du depot** et non plus sur une regle injectee : anneau exterieur blanc de
   **3,00 px**, **9,25:1** contre le pixel immediatement exterieur, **remplissage blanc inchange au
@@ -323,6 +326,29 @@ formes de garde-fou est la bonne appartient a `theo-archi`, pas a moi. **Ce que 
 verifiable** : le garde-fou reellement present dans le depot est de la forme "registre d'egalites", qui
 est precisement celle que la decision annoncee dit insuffisante. Si les deux affirmations sont vraies,
 il reste quelque chose a fusionner.
+
+**Note de reconciliation, datee du 2026-08-21.** **`ADR-0053` existe.** Elle a ete fusionnee a
+`eb3543b`, **apres la base sur laquelle je mesurais (`0dc90e9`)** : ce que j'ecrivais ci-dessus etait
+exact au moment ou je regardais, et le *"il reste quelque chose a fusionner"* l'etait aussi - c'etait
+precisement cela qui restait. **Je laisse le paragraphe tel quel** et je porte la suite ici, parce
+qu'un lecteur qui arrive aujourd'hui lirait sinon une affirmation fausse sans savoir qu'elle etait
+vraie.
+
+**Ce que j'ai verifie moi-meme sur l'`ADR` desormais lisible**, plutot que de reprendre ce qu'on m'en
+dit : sa clause `UneCouleurDePositionSurvitATousLesEtatsTest` **compare l'issue de la cascade et non une
+specificite**, et son motif est celui qu'on m'annoncait - un registre d'egalites aurait declare la
+protection de `.proposition.deja-essayee` (une egalite plus un ordre) **et laisse passer celle de
+`.proposition`** (une marge de specificite), qui est celle qui a reellement cede. **Les deux formes
+coexistent donc maintenant** : le test de `marc-dev`, qui compare des egalites, et celui-ci, qui compare
+l'issue. **Laquelle suffit n'est pas ma question**, et je ne la tranche pas davantage aujourd'hui
+qu'hier.
+
+**Ce que cette note ne change pas** : l'invariant du paragraphe suivant. **Aucune des deux clauses ne
+lit une couleur sous le doigt.** Elles gardent la cause declarative ; **l'effet reste garde par moi
+seule**, et la remesure du 2026-08-20 - `S15-8` refermee sous un appui reel - restait indispensable.
+`ADR-0053` cite d'ailleurs ma propre phrase sur la protection *"ecrite en commentaire et executee par
+personne"* comme le fond de sa decision : c'est exactement ce que je voulais qu'il arrive a cette
+phrase.
 
 **Et l'invariant, qui ne depend d'aucune des deux** : ni l'un ni l'autre ne lit une couleur sous le
 doigt. Ils gardent la **cause declarative** ; **l'effet reste garde par moi seule**, et c'est pourquoi
@@ -1344,8 +1370,8 @@ autant que pour la lisibilite.
 | S16-A | - | un enfant au clavier ne voit nulle part ou il est | **FERMEE le 2026-08-19 (s17)** par la sonde post-livraison de `S17-1` |
 | S17-A | - | l'anneau de la puce active n'est pas percu (1,00:1 contre l'exterieur) **sur l'ecran filtre uniquement** | **FERMEE le 2026-08-19** sur l'increment livre : anneau exterieur blanc de 3,00 px, 9,25:1, remplissage inchange au pixel |
 | S17-B | - | sur les trois pressables a contour, le signal est un epaississement de 2 a 5 px, pas une marque neuve | ouverte, non bloquante ; **seuil franchi le 2026-08-19** sur l'ecran de confirmation, **relu, signal tenu** |
-| S17-C | - | a la revelation, le bouton que le jeu demande de presser est absent de l'ordre de tabulation | ouverte, **bloquante**, cause dans le script de focus (`M13`, s10) |
-| S17-D | - | ma premisse "rien ne change sous le pointeur" est fausse a l'appui : 1,64:1 sur un bouton a contour, aplat perdu sur un bouton plein | **ouverte** ; les deux motifs mesures sont **corriges** le 2026-08-19, il reste un liseré de 1 px sous l'appui - **1,07:1** sur un bouton plein (chiffre corrige le 2026-08-20), `#1c2733` a 9,75-10,03:1 sur une proposition depuis le 2026-08-20, **invisible dans les deux cas** |
+| S17-C | - | a la revelation, le bouton que le jeu demande de presser est absent de l'ordre de tabulation | ouverte, **bloquante**, cause dans le script de focus (`M13`, s10) ; **hors perimetre de s17** par arbitrage de `camille-po` ; **mise a jour du 2026-08-21** : la meme ligne de `recreo.js` fait aussi encadrer la question par l'anneau du navigateur a l'arrivee au clavier, sur toute manche fraiche de tout jeu (observation versee a ce dossier, non bloquante) |
+| S17-D | - | ma premisse "rien ne change sous le pointeur" est fausse a l'appui : 1,64:1 sur un bouton a contour, aplat perdu sur un bouton plein | **ouverte** ; les deux motifs mesures sont **corriges** le 2026-08-19, il reste un liseré de 1 px sous l'appui - **1,07:1** sur un bouton plein (chiffre corrige le 2026-08-20), `#1c2733` a 9,75-10,03:1 sur une proposition depuis le 2026-08-20, **invisible dans les deux cas** ; **mise a jour du 2026-08-21** : la cause declarative de cette famille est desormais gardee par `ADR-0053` (`UneCouleurDePositionSurvitATousLesEtatsTest`, qui compare l'issue de la cascade), **l'effet rendu reste garde par moi seule** |
 
 **Amendement du 2026-08-19 (s17), a la sonde post-livraison de `S17-1`.** Les cinq lignes ci-dessus
 sont ajoutees, aucune n'est modifiee. **`S16-A` figure desormais dans cette table** : elle en etait

@@ -517,6 +517,13 @@ suis donc la premiere a le regarder, et je confirme que la consigne est bien ren
 de ce jeu** : deux lignes, 20 px, graisse normale, au-dessus de l'enonce. Le fait est etabli
 aujourd'hui ; le trou de garde-fou reste ouvert et n'est pas de mon ressort.
 
+**Mise a jour datee du 2026-08-21, sur un etat perime de ma main** : **ce trou est ferme.**
+`LaConsigneDUnJeuServiAtteintLEcranDeMancheTest` fait desormais jouer **chaque entree du catalogue
+reel**, et non plus un catalogue de test - je l'ai lu plutot que de le croire. La phrase ci-dessus
+etait exacte le 2026-08-20 ; **elle ne l'est plus, et je n'etais la premiere a regarder que pendant un
+jour.** C'est le seul de mes constats de "seule garde" de ce sprint qui ait ete referme par un
+garde-fou executable, et il l'a ete parce que `sofia-sm` a lu un mecanisme au lieu d'un chiffre.
+
 #### 2. L'item pilote tient - releve complet, `scrollY = 0`, feuilles servies
 
 Viewport 360 x 640, application servie, sonde par element.
@@ -830,6 +837,78 @@ plus net de tout ce sprint : **des tests justes, verts, bien construits, et sept
 l'enfant ne peut pas jouer.** Tant qu'aucun outil ne mesure une hauteur rendue, c'est moi le garde-fou,
 et le fait que je me sois trompee le 2026-08-20 en ne mesurant qu'un tirage dit exactement ce que cette
 situation coute.
+
+### Deux etats perimes en tete de cette fiche, signales le 2026-08-21 - ils ne sont pas de moi et je ne les reecris pas
+
+En relisant cette fiche pour y ecrire la table ci-dessous, j'ai trouve **deux enonces perimes dans son
+en-tete**. Ils appartiennent a `camille-po` (`[CAM]`, lot `DEC-0039`), comme le critere "20 items" qu'on
+me demande expressement de ne pas toucher. **Je les signale et je les lui route ; je ne les reecris
+pas** - c'est la meme regle que celle qui lui a fait corriger elle-meme mon chiffre de 24 sur 24.
+
+1. **La ligne "Contenu(s)" annonce le fichier "(a creer, ... au moins 20 items)".** Il est cree depuis
+   le 2026-08-19 et il porte **seize** items depuis le 2026-08-21.
+2. **La meme ligne cite, comme forme de reprise a produire, la question "Quel mot veut dire la meme
+   chose que `<mot>` ?".** Ce n'est pas seulement perime : **c'est le contre-exemple nomme de ma
+   condition `SYN-1`**, la seule formulation que mon arbitrage du 2026-08-19 refuse explicitement -
+   *"travaille l'association de mots, pas l'usage"*. Un lecteur qui arrive par l'en-tete lit donc comme
+   un plan la forme que la porte pedagogique interdit. **C'est l'ecart le plus couteux des trois que je
+   trouve aujourd'hui**, parce qu'il porte sur une condition bloquante et qu'il se lit avant elle.
+3. Accessoirement, la ligne **"Statut global : en construction"** cohabite desormais avec trois statuts
+   dates plus recents, dont un refus. Elle n'induit personne en erreur - les statuts dates sont
+   au-dessus d'elle - mais elle n'a plus d'objet.
+
+### Table de correspondance des jetons SYN-1 a SYN-10 - ecrite le 2026-08-21, sur signalement du relecteur-pedagogique
+
+**Pourquoi elle manquait, et pourquoi c'est une recidive.** Le `relecteur-pedagogique` avait trouve
+exactement ce defaut en s16, sur mes jetons `BARRE`, `PORTE` et `S15-<n>` : des references qui pointent
+toutes vers du reel, et **rien qui dise a un lecteur neuf comment ces noms se rapportent entre eux**.
+L'amendement de s16 exige qu'une famille de jetons neuve soit reprise dans une table unique portee par
+la fiche du jeu concerne. **J'ai cree dix jetons `SYN` sur ce sprint - six pendant les six derniers
+jours - et je n'ai pas ecrit la table.** Il a eu raison de ne pas y toucher : ces jetons sont a la
+premiere personne et l'etat de chacun est un jugement de moi.
+
+**Et le fait qui rend l'omission couteuse, verifie plutot que suppose** : **cinq fichiers de code citent
+ces jetons, 35 fois au total** - le paquet de contenu lui-meme, son test dedie, et trois classes de
+garde-fou (`PaquetCm1SynonymesTest`, `ToutEcranEchangeEstUnDocumentJouableTest`,
+`TexteAccentueExposeParLePortEntrantTest`, `LaConsigneDUnJeuServiAtteintLEcranDeMancheTest`). **Un
+renommage casserait des references que rien ne detecte.** Cette table est la reference contre laquelle
+comparer ; **je ne renomme rien.**
+
+**Quatre regles de lecture d'abord, parce que sans elles la table ne suffit pas.**
+
+1. **`SYN-<n>` et `S17-<n>` ne sont pas la meme famille, et la confusion est possible sur un seul
+   couple** : **`SYN-4`** est ma condition qui exige qu'une story d'antonymes existe ; **`S17-5`** est
+   cette story. Les prefixes suffisent a les distinguer, mais un jeton cite sans son prefixe complet ne
+   prouve rien. **Je ne renomme pas** : la lecon de l'ambiguite `S15-<n>` de s16 est qu'on documente, on
+   ne renumerote pas.
+2. **`SYN-9` est FERMEE, pas levee.** Elle reste opposable a tout item ecrit plus tard : un paquet qui
+   reintroduirait des espaces ordinaires dans ses guillemets la rouvrirait.
+3. **`SYN-10` n'est pas une condition de contenu, c'est la methode de verification de `SYN-5`.** Elle ne
+   se ferme pas separement. Elle cessera d'avoir un objet le jour ou le nombre de rangees de
+   propositions ne dependra plus de l'ordre du tirage - pas avant.
+4. **`SYN-1` a `SYN-4` vivent dans l'arbitrage prealable du 2026-08-19**
+   (`ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md`, section 2.1 et 2.2) ; **`SYN-5` a
+   `SYN-10` vivent dans cette fiche**, chacune a la section du verdict qui l'a ouverte. La table ne
+   duplique pas leur texte : une table qui recopierait un enonce se perimerait a la premiere mise a
+   jour, et c'est le defaut que je refuse ailleurs.
+
+| Jeton | Ouverte le | Ce qu'elle exige, en une ligne | Etat au 2026-08-21 |
+|---|---|---|---|
+| **`SYN-1`** bloquante | 2026-08-19 | le mot cible est presente **dans une phrase, jamais isole** | **tenue** (20/20, puis 16/16) ; **amendee le 2026-08-20** : la consigne peut le designer generiquement, ce que ma redaction d'origine disait deja ("le mot souligne") |
+| **`SYN-2`** bloquante | 2026-08-19 | la bonne reponse est substituable dans la phrase donnee, **aucun distracteur ne l'est** | **tenue**, verifiee item par item ; aucune etiquette de reponse modifiee depuis |
+| **`SYN-3`** bloquante | 2026-08-19 | aucun item ne presente comme interchangeables deux mots **qu'un enseignant refuserait dans cette phrase** | **tenue** |
+| **`SYN-4`** non bloquante, datee | 2026-08-19 | la moitie manquante (les antonymes) est **ecrite comme une story**, pas comme une intention | **tenue** : `S17-5` existe au backlog |
+| **`SYN-5`** bloquante | 2026-08-19 | la **derniere proposition de chaque item** est entierement visible a 360 x 640, sur la totalite des items | **NON TENUE** : **7 items sur 16** sous le pli, de 39 a 87 px (mesure du 2026-08-21) |
+| **`SYN-6`** bloquante | 2026-08-19 | la marque du mot cible est une **ponctuation francaise**, et la consigne le designe **par cette marque exacte** | **tenue** (16/16, guillemets francais nommes par la consigne) |
+| **`SYN-7`** bloquante | 2026-08-19 | les deux blocs, **lus dans l'ordre ou ils sont rendus**, disent la tache a eux seuls | **tenue** |
+| **`SYN-8`** bloquante | 2026-08-19 | **aucun pixel gagne sur la phrase** ; toute phrase modifiee repasse par `SYN-2` et `SYN-3` | **tenue** : 16 phrases identiques caractere pour caractere |
+| **`SYN-9`** bloquante avant reecriture | 2026-08-20 | les espaces a l'interieur des guillemets sont **insecables** | **FERMEE** le 2026-08-21 : 16/16 en points de code, **0 coupure sur 80 tirages** |
+| **`SYN-10`** bloquante | 2026-08-21 | `SYN-5` se mesure **au pire tirage** de chaque item, jamais sur un tirage | **ouverte** ; ne change pas la barre de `SYN-5`, seulement sa methode de verification |
+
+**Ce que cette table ne fait pas** : elle ne renomme rien, donc **elle ne casse aucune des 35 references
+portees par les cinq fichiers de code** ; elle ne recopie aucun enonce de condition ; et elle **ne
+prononce aucun verdict** - les verdicts sont aux sections datees de cette fiche, et le plus recent est
+un refus.
 
 ## Arbitrage prealable bloquant, avant tout premier commit de code
 

@@ -16,6 +16,10 @@
   ou ils etaient **24 sur 24** avant ce lot - la forme negative deja employee aux items 2 et 9 les
   ramenerait a zero. **Ce verdict est une moitie de la condition de retour, jamais la condition
   entiere** : `BPM-1` n'est pas produite, je ne la simule pas, et l'entree de catalogue reste dehors.
+  **Mise a jour du 2026-08-21 : cette reserve est FERMEE** - `lea-dev` a reformule les trois indices le
+  jour meme, **0 indice sur 24 ne nomme plus la reponse**, recompte par moi sur le fichier servi. Le
+  verdict ci-dessus n'est pas reecrit ; il est a jour de ce qu'il jugeait, et cette ligne dit l'etat
+  courant (note datee "ma reserve sur les trois indices est FERMEE", plus bas dans cette fiche).
 - **Statut global** : **VALIDE** (Done pedagogique accorde le 2026-08-06, reconduit le 2026-08-07,
   **verdict VALIDE sans reserve bloquante le 2026-08-10**). C'est le premier contenu de CM1 du
   produit.
