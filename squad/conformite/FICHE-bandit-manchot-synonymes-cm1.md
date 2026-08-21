@@ -12,6 +12,17 @@
   question a choix multiple ("Quel mot veut dire la meme chose que `<mot>` ?") pour rester dans le
   schema `type: question` existant. Reprise = reprise de la matiere, pas de la structure
   (`contenu-repris/README.md`) : chaque item repasse devant `nadia-prof` comme un contenu neuf.
+
+  **Note du 2026-08-21 (camille-po) - la forme citee ci-dessus est le contre-exemple de `SYN-1`,
+  pas une forme a produire.** `nadia-prof` a signale, en relisant cette fiche, que la question
+  "Quel mot veut dire la meme chose que `<mot>` ?" est celle qu'elle nomme comme le contre-exemple
+  explicite et unique de sa condition bloquante `SYN-1` (le mot cible presente dans une phrase,
+  jamais isole) - voir `SYN-1` telle qu'elle l'a ecrite, plus bas dans cette meme fiche. Je ne
+  reecris pas cette ligne d'ouverture : elle decrivait la reformulation envisagee avant que
+  `SYN-1` n'existe, le 2026-08-19, et reste lisible telle quelle pour que la trajectoire ne soit
+  pas effacee. **La forme retenue et servie n'est pas celle-ci** : chaque item presente le mot
+  cible dans une phrase, sous la forme que `lea-dev` a livree et que `nadia-prof` a creditee
+  (`SYN-1` a `SYN-9` tenues sur le contenu).
 - **Statut global au 2026-08-21 (s17), mesure des seize items** : **Done pedagogique REFUSE.**
   **`SYN-5` n'est pas tenue** : **sept items sur seize** posent la derniere proposition **sous le pli**,
   six a 87 px et un a 39 px. Methode : 8 parties jouees au clavier, **80 tirages**, `scrollY = 0` verifie
