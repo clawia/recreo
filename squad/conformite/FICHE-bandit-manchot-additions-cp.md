@@ -4588,6 +4588,12 @@ bonne reponse entre guillemets dans le texte de l'indice :
 > **Etat du paquet apres `S17-4`, mesure ce jour par la methode corrigee** : **3 indices sur 24**
 > nomment encore la reponse (items 3 `et`, 10 `ou`, 21 `peu`) - voir mon verdict `BPM-2`/`BPM-3`/
 > `BPM-4` du 2026-08-19 dans `FICHE-bandit-manchot-homophones-cm1.md`.
+>
+> **Suite datee du 2026-08-21** : ces trois indices ont ete reformules et **le paquet est a 0 sur 24**,
+> recompte par moi sur le fichier servi, meme methode insensible a la casse. Le chiffre de 3 sur 24
+> ci-dessus reste ecrit parce qu'il etait exact le jour ou je l'ai mesure ; **l'etat courant est zero**,
+> et il ferme la reserve A pour la moitie `cm1-homophones`. La moitie `cm1-conjugaison-present`
+> **reste ouverte a 25 sur 25**.
 
 
 | `cp-le-bon-son` | 15 | 0 |
