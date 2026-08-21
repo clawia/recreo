@@ -118,6 +118,23 @@ phrase a trou de substitution, sur demande bloquante de `nadia-prof` (SYN-1).
 - [ ] Le paquet valide le schema `type: question` (`ADR-0007`) sans code Java neuf, sans gabarit ni
   feuille de style neuve, et sans mecanique d'association par paires.
 
+**Note du 2026-08-20 (camille-po) - le plancher "au moins 20 items" est faux, c'est "au moins 16"
+depuis ma decision sur les quatre items a trois rangees.** `nadia-prof` a mesure que quatre items
+(`vite`, `ancien`, `poli`, `drole`) ne tiennent pas au-dessus du pli par le seul deplacement de la
+clause invariante hors de l'enonce, leurs propositions occupant trois rangees plutot que deux ; j'ai
+decide de les retirer du paquet plutot que de reecrire leurs etiquettes de reponse, ce qui aurait
+ete un contenu neuf a rejuger par `SYN-2`/`SYN-3` (`DEC-0039`, amendement du 2026-08-20). `lea-dev`
+a livre le paquet a seize items, retires du fichier et non simplement ecartes, et verifie par
+recherche exhaustive qu'aucun garde-fou du depot ne presupposait vingt items.
+
+Je ne reecris ni la ligne "Contenu(s)" en tete de cette fiche ni le point de checklist ci-dessus :
+ils restent lisibles tels qu'ecrits le 2026-08-19, pour que la trajectoire ne soit pas effacee. **Le
+chiffre juste, a lire a leur place : le paquet compte au moins 16 items**, et non 20 - ce plancher a
+toujours ete ma propre checklist d'ouverture, jamais une condition pedagogique de `nadia-prof`
+(ses conditions `SYN-1` a `SYN-9` ne portent jamais sur le nombre d'items). Ce que ce chiffre errone
+ne change pas : `ADR-0023` (plus d'items que de manches par partie) reste tenu a seize items contre
+dix manches (`catalogue.yaml`, `nombreDeManches: 10`).
+
 ---
 
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
