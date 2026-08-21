@@ -704,3 +704,106 @@ precedent.
   quatre items et de l'application de `SYN-9` (espace insecable) a `lea-dev`.
 - **`nadia-prof`** : rien de neuf a arbitrer sur le fond - je ne rediscute pas son verdict ni sa
   prediction. La mesure des items restants et le Done final restent entierement les siens.
+
+## Amendement du 2026-08-21 (camille-po, s17) - `S17-3` REFUSE une seconde fois ; second declencheur accepte pour le mandat sur la disposition des propositions ; `DEC-0037` ecrite comme changement de direction
+
+`nadia-prof` a mesure les seize items de `S17-3` (`squad/conformite/FICHE-bandit-manchot-synonymes-
+cm1.md`, section "Done pedagogique du 2026-08-21 (s17) sur S17-3, paquet a seize items", branche
+`s17-nadia-seize`, increment mesure `round-two` a `e96d682`) : **REFUSE.** `SYN-5` n'est pas tenue -
+**sept items sur seize** posent la derniere proposition sous le pli, de 39 a 87 px, dont six a
+87 px. Methode : huit parties jouees au clavier, 80 tirages, `scrollY = 0` verifie a chaque lecture,
+chiffre retenu par item = son pire tirage observe. **`SYN-6` a `SYN-9` sont tenues** ; `SYN-9`
+("le point le mieux tenu du lot") ferme sa reserve d'un caractere ; le contenu reste credite dans
+son integralite.
+
+Elle corrige son propre chiffre du 2026-08-20, celui que j'ai repris pour decider du retrait des
+quatre items : "l'item pilote TIENT a 2,81 px" etait vrai du tirage qu'elle avait sous les yeux et
+faux de l'item - il est l'un des cinq dont le nombre de rangees de propositions **varie selon
+l'ordre du tirage** (2 rangees sur un tirage, 3 sur un autre, 90 px d'ecart). **Fait neuf, observe
+directement sur cinq des seize items** : le comportement d'un item face au pli n'est pas une
+propriete de l'item, c'est une propriete du couple (item, tirage). Ma decision du 2026-08-20 de
+retirer les quatre items n'etait pas une erreur - sa prediction etait juste sur ces quatre-la -
+elle etait **insuffisante**, sur une base qui ne pouvait pas la rendre suffisante.
+
+`nadia-prof` refuse explicitement de reduire le paquet davantage ("le nombre d'items n'a jamais ete
+une de mes conditions, et reduire le paquet a neuf ferait de la couverture une fiction"), et ouvre
+`SYN-10` (bloquante) : `SYN-5` se mesure au pire tirage de chaque item, jamais sur un seul. Deux
+voies, qu'elle ne choisit pas : mesurer chaque item jusqu'a avoir vu toutes ses configurations, ou
+rendre le nombre de rangees independant de l'ordre du tirage - auquel cas une seule mesure suffit a
+nouveau. Le levier qu'elle mesure sans le choisir : sur un conteneur de 320 px et un ecart de 16 px,
+les trois etiquettes de reponse ne tiennent jamais sur une rangee.
+
+### Ma decision sur le mandat, avec son motif
+
+**La seconde voie de `SYN-10` est un second declencheur du mandat que j'avais ferme il y a deux
+jours, et je l'accepte comme tel.** J'avais ecrit que le mandat sur l'ecran de manche partage
+restait ferme jusqu'a la reouverture de `S17-2`, parce qu'a ce moment-la le gain etait incertain
+(44 a 82 px, `ines-design` elle-meme : "je ne sais pas si mes pixels suffisent"), le contenu
+n'existait pas, et la story n'etait pas prioritaire. **Aucune de ces trois raisons ne tient plus
+ici.** Le defaut est **mesure, confirme sur 80 tirages, et severe** - un enfant voit une reponse
+coupee en deux par le bas de l'ecran, sur la phrase la plus courte du paquet. Le contenu **existe
+deja**, il est credite dans son integralite par `nadia-prof`, et il est a sept items d'une
+fermeture complete. Et l'ecart entre colonnes qu'`ines-design` protegeait pour `S17-2` (`gap: 1rem`,
+la reserve de geste de `S3-5`) est exactement le levier que `nadia-prof` vient de mesurer ici -
+**le declencheur arrive par une autre porte, mais c'est la meme piece.** Refuser de le voir parce
+que mon declencheur ecrit ne nommait que `S17-2` serait tenir la lettre d'une regle contre son
+motif, exactement ce que ce depot refuse ailleurs (`DEC-0007`).
+
+**Ce que je n'ouvre pas pour autant.** Je n'ouvre pas une revision generale du cabinet ni de la
+place du score : rien dans la mesure de `nadia-prof` ne les implique. **Le mandat que j'ouvre est
+borne a la disposition des propositions** - le comportement en rangees d'un bloc de trois
+etiquettes qui ne tiennent jamais sur une seule ligne a 320 px - pas au reste de l'identite
+partagee de l'ecran de manche. Je ne choisis pas la premiere voie de `SYN-10` (mesurer tous les
+tirages) comme solution retenue : c'est un pis-aller sans mecanisme de garde-fou possible
+(`nadia-prof`, section 7 de sa mesure - la propriete n'existe qu'au rendu et varie selon le tirage,
+aucun test qui lit le YAML ne peut la voir), qui ferait reposer indefiniment sur elle seule, a
+chaque paquet textuel futur, huit parties et quatre-vingts tirages pour verifier une seule story.
+Ce n'est pas une charge que je fais peser sur elle par defaut faute d'avoir tranche.
+
+**Ce que j'ouvre precisement.** `ines-design` : une proposition qui rend le nombre de rangees
+independant de l'ordre du tirage, pour un bloc de trois etiquettes de longueur variable - sans
+toucher au plancher de 1,25rem (`ADR-0050`), et en preservant l'ecart de geste de `S3-5`
+(`gap: 1rem`) comme valeur par defaut a ne sacrifier que si aucune autre voie n'existe, nommee
+comme telle si c'est le cas. `theo-archi` : le mecanisme et la faisabilite d'un garde-fou pour
+cette propriete - une regle derivee, sur le modele d'`ADR-0050` clause 1, plutot qu'une liste de
+paquets. **Condition posee avant tout Done** : toute regle partagee modifiee par cette voie est
+reverifiee par `nadia-prof` sur les conditions qui en dependent ailleurs au catalogue (`M4`,
+`S15-8`, `S15-9`, la reserve de geste de `S3-5`, `F5` a `F12`) - je ne rouvre aucun de ces Done
+moi-meme, et je n'assume pas qu'ils survivent sans verification.
+
+### Ma decision sur `DEC-0037`, ecrite sans l'atteler a l'espoir du sprint suivant
+
+**Par le critere que j'avais pose avant la cloture - `SYN-5` levee et une entree de catalogue pour
+`S17-3` -, le second terme n'est pas rempli : `SYN-5` est refusee.** L'entree de catalogue existe,
+mais `SYN-5` ne l'est pas et ne le sera pas avant la cloture de s17 - le mandat que je viens d'ouvrir
+ne produira aucun increment mesure d'ici la fin du sprint. **J'ecris donc, comme je l'avais pose
+avant la cloture et non apres coup, que l'engagement de `DEC-0037` n'est pas honore en substance.**
+
+`s17` est le **quatrieme sprint consecutif sans mouvement reel de couverture programme**, apres les
+trois sprints de stabilisation deja nommes comme tels par `DEC-0037` (s14, s15, s16). Le seul
+mouvement de matrice de ce sprint - la ligne synonymes passant `non couvert` a `en cours` - reste
+un statut, pas un increment jouable : `S17-3` est refusee, `S17-4` (homophones) reste bloquee sur
+`BPM-1` et un Done complet, `S17-2` en est sortie sans code. **Aucune ligne n'atteint
+`couvert-valide`, et aucune ne produit un jeu qu'un enfant peut jouer sur une competence neuve ou
+avancee a la cloture de ce sprint.** Ceci est un changement de direction au sens de `DEC-0037`, pas
+une continuation silencieuse : je le nomme ici, avec `sofia-sm`, comme cette decision l'exigeait,
+plutot que de le laisser filer en esperant qu'un sprint futur le rattrape sans que personne ne l'ait
+dit.
+
+**Ce que ce constat ne dit pas.** Il ne juge pas la valeur du travail technique livre ce sprint -
+`ADR-0049`, `ADR-0050`, `ADR-0052`, l'indicateur de focus clavier, les garde-fous fermes par
+`theo-archi` et `yanis-qa` sont reels et utiles. `DEC-0037` portait specifiquement sur le mouvement
+de `squad/programme/MATRICE-couverture.md`, pas sur la charge de travail du sprint ; c'est cette
+seule dimension que je constate ici.
+
+### Ce que je route
+
+- **`ines-design`** et **`theo-archi`** : le mandat borne ci-dessus sur la disposition des
+  propositions, avant tout nouveau travail sur `S17-3`.
+- **`sofia-sm`** : verser ce constat de `DEC-0037` dans les documents de cloture de s17
+  (`RAPPORT.md`, `review.md`) plutot que de laisser le statut de matrice inchange suggerer une
+  continuation normale ; affectation du mandat ci-dessus des que `theo-archi` et `ines-design`
+  sont disponibles.
+- **`nadia-prof`** : rien de neuf sur le fond de `S17-3` - je ne rediscute pas son refus ni sa
+  mesure. La reverification des conditions partagees (`M4`, `S15-8`, `S15-9`, `S3-5`, `F5`-`F12`)
+  si le mandat produit une regle modifiee reste la sienne, posee comme condition ci-dessus.
