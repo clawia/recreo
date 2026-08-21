@@ -12,6 +12,18 @@
   question a choix multiple ("Quel mot veut dire la meme chose que `<mot>` ?") pour rester dans le
   schema `type: question` existant. Reprise = reprise de la matiere, pas de la structure
   (`contenu-repris/README.md`) : chaque item repasse devant `nadia-prof` comme un contenu neuf.
+- **Statut global au 2026-08-21 (s17), mesure des seize items** : **Done pedagogique REFUSE.**
+  **`SYN-5` n'est pas tenue** : **sept items sur seize** posent la derniere proposition **sous le pli**,
+  six a 87 px et un a 39 px. Methode : 8 parties jouees au clavier, **80 tirages**, `scrollY = 0` verifie
+  sur chacun, les seize items vus 3 a 8 fois, chiffre retenu = **pire tirage**. **`SYN-6`, `SYN-7`,
+  `SYN-8` et `SYN-9` sont tenues** - `SYN-9` impeccable, espaces insecables sur les seize et **zero
+  coupure guillemet/mot sur 80 tirages** ; ma reserve d'un caractere est fermee. **Et je corrige mon
+  propre chiffre du 2026-08-20** : "l'item pilote TIENT a 2,81 px" etait vrai du tirage que j'avais sous
+  les yeux et **faux de l'item** - il est l'un des cinq dont le nombre de rangees varie, et sur un autre
+  tirage il est **87 px sous le pli**. Le fait neuf : **le comportement face au pli est une propriete du
+  couple (item, tirage)**, pas de l'item. D'ou **`SYN-10`**, neuve et datee : `SYN-5` se mesure au pire
+  tirage, jamais sur un tirage. La barre n'a pas bouge ; c'est ma methode de verification qui etait
+  insuffisante.
 - **Statut global au 2026-08-20 (s17), mesure de l'item pilote** : **il TIENT**, a **2,81 px** pres.
   L'entree de catalogue existe et est servie sur `/niveaux/CM1` - **le second motif de mon refus est
   leve**. Releve a `scrollY = 0` verifie : consigne **2 lignes** (60 px), enonce **3 lignes** (144 px,
@@ -633,6 +645,174 @@ cette observation au meme dossier plutot que d'ouvrir un jeton de plus.
 - **Elle ne comble aucun trou de garde-fou.** `SYN-5` a `SYN-9` n'ont aucun test executable, et aucun
   test n'exerce la consigne sur l'ecran reel de ce jeu. **Je reste seule garde**, et l'artefact de la
   section 0 dit ce que cela coute quand la seule garde se trompe.
+
+### Done pedagogique du 2026-08-21 (s17) sur S17-3, paquet a seize items - REFUSE, et je corrige mon propre chiffre du 2026-08-20
+
+> **Ce que cette section fait.** Elle rend la mesure des seize items, celle que ma sequence corrigee
+> demandait. Elle s'ajoute a la suite de mon refus du 2026-08-19, de ma reponse sur `SYN-1` et de la
+> mesure de l'item pilote, sans reecrire aucun des trois. Elle ne touche pas au critere "20 items" de
+> la checklist de `camille-po`.
+>
+> - **Base relevee par moi** : `round-two` a **`e96d682`**, qui **contient deja** `e2d53d0`. J'avais
+>   fusionne `s17-lea-syn3-16items` dans mon worktree avant de mesurer, au cas ou : **c'etait le
+>   second cas, et il est devenu inutile pendant que je mesurais**. J'ai verifie que le fichier de
+>   contenu que j'ai mesure est **identique octet pour octet** a celui de `round-two`.
+> - **Ma branche** : `s17-nadia-seize`, worktree dedie, lignee verifiee par `outils/verifier-lignee.sh`.
+> - **Verdict** : **REFUSE.** **`SYN-5` n'est pas tenue** : **sept items sur seize** posent la derniere
+>   proposition **sous le pli**, de 39 a 87 px. **`SYN-6`, `SYN-7`, `SYN-8` et `SYN-9` sont tenues.**
+> - **Une condition neuve, `SYN-10`, datee du 2026-08-21.**
+
+#### 0. Ce que je corrige de ma main, et c'est mon chiffre le plus cite de ce sprint
+
+**J'ai ecrit le 2026-08-20 que l'item pilote "TIENT, marge 2,81 px". C'etait vrai du tirage que j'avais
+sous les yeux et faux de l'item.** L'item pilote - *"Le petit garcon est « triste » depuis le depart de
+son ami."* - est l'un de ceux dont le nombre de rangees de propositions **varie d'un tirage a l'autre**.
+Sur cinq tirages observes je l'ai vu a **2 rangees** (bas a 637,19, marge 2,81 px) **et a 3 rangees**
+(bas a **727,19**, soit **87 px sous le pli**).
+
+**Ma mesure du 2026-08-20 n'etait pas fausse : elle etait incomplete, et je ne l'avais pas dit.** Je
+n'avais mesure l'item pilote qu'**une fois**. C'est exactement le reproche que je fais aux autres depuis
+le debut de ce sprint - un chiffre juste dont on ne dit pas ce qu'il ne couvre pas - et cette fois il
+est de moi, sur le chiffre que toute la squad a repris. **Je ne reecris pas la section du 2026-08-20** :
+elle reste, et celle-ci dit ce qu'elle a d'incomplet.
+
+**Consequence sur la decision de `camille-po`** : elle a retire quatre items sur la foi de ma prediction,
+et **ma prediction etait juste sur ces quatre-la** - ils etaient bien a trois rangees. Ce que je n'avais
+pas vu, c'est qu'**ils n'etaient pas les seuls**, et qu'un item peut passer a trois rangees **sans
+qu'aucun de ses mots ne change**. Le retrait des quatre n'etait donc pas une erreur ; il etait
+insuffisant, et il ne pouvait pas etre suffisant sur la base que je lui avais donnee.
+
+#### 1. Le fait qui commande tout : le pli depend du tirage, pas seulement de l'item
+
+**Mesure** : conteneur des propositions **320 px**, ecart entre colonnes **16 px**, etiquettes a **2 rem**.
+Sur les seize items, **les trois etiquettes ne tiennent jamais sur une seule rangee** : chaque item est
+sur **2 ou 3 rangees**. Et **laquelle des deux depend de l'ordre dans lequel la mecanique tire les
+propositions** - l'etiquette qui se retrouve seule sur une rangee y est etiree a 320 px.
+
+**Observe directement, pas deduit** : sur **cinq** des seize items, j'ai vu **les deux** nombres de
+rangees au fil des tirages. Une rangee de plus coute **90 px**, le chiffre que j'avais etabli le
+2026-08-20.
+
+**Donc le comportement d'un item face au pli n'est pas une propriete de l'item : c'est une propriete du
+couple (item, tirage).** C'est le fait neuf de cette mesure, et il invalide la methode de verification
+que j'avais moi-meme ecrite pour `SYN-5`.
+
+#### 2. `SYN-5` : les seize, tirage par tirage - sept ne tiennent pas
+
+**Methode** : application servie, navigateur pilote par son protocole de deverminage, viewport impose a
+360 x 640, **huit parties jouees au clavier seul**, **80 tirages** au total, **`scrollY = 0` verifie
+avant chaque lecture** (0 lecture a `scrollY` non nul sur 80). Les seize items ont ete vus, chacun de 3
+a 8 fois. Le chiffre retenu par item est **son pire tirage observe**.
+
+| Etat | Tirages | Rangees vues | Pire bas | Verdict | Item |
+|---|---|---|---|---|---|
+| variable | 5 | 2 et 3 | 727,19 | **87 px sous le pli** | « triste » (l'item pilote) |
+| variable | 8 | 2 et 3 | 727,19 | **87 px sous le pli** | « calme » |
+| stable | 3 | 3 | 727,19 | **87 px sous le pli** | « gentil » |
+| variable | 4 | 2 et 3 | 727,19 | **87 px sous le pli** | « courageux » |
+| variable | 6 | 2 et 3 | 727,19 | **87 px sous le pli** | « facile » |
+| variable | 5 | 2 et 3 | 727,19 | **87 px sous le pli** | « difficile » |
+| stable | 6 | 3 | 679,19 | **39 px sous le pli** | « contente » |
+| stable | 5 | 2 | 637,19 | tient, +2,81 px | « beau » |
+| stable | 5 | 2 | 637,19 | tient, +2,81 px | « douce » |
+| stable | 4 a 6 | 2 | 589,19 | tient, +50,81 px | « propre », « fort », « gaie », « grand », « petite », « malin », « fatigue » |
+
+**Sept items sur seize ne tiennent pas.** Six a 87 px sous le pli, un a 39 px. Les neuf autres tiennent,
+dont deux a **2,81 px** de marge.
+
+**Ce que l'enfant voit** (`s17-syn16-echec-contente.png`) : sur *"Lea est « contente » de son cadeau."* -
+**la phrase la plus courte du paquet**, deux lignes d'enonce - il lit la consigne, la phrase, deux
+propositions entieres, et **la troisieme coupee en deux par le bas de l'ecran**. Il doit deviner ou
+defiler pour savoir ce qu'on lui propose.
+
+**Et je verifie ce qu'on me demandait de ne pas croire.** `lea-dev` annonce n'avoir trouve **aucun** item
+a trois rangees parmi les seize. **Il y en a sept**, et cinq d'entre eux ne le montrent que sur certains
+tirages - ce qui explique qu'une lecture du fichier ne pouvait pas les voir. **Ce n'est pas une
+negligence de sa part** : la propriete n'est pas dans le fichier, elle est dans le rendu et dans le
+tirage. C'est ma mesure du 2026-08-20 qui l'a mise sur la piste des rangees, et c'est ma mesure du
+2026-08-20 qui lui a donne une liste incomplete.
+
+#### 3. `SYN-6`, `SYN-7`, `SYN-8`, `SYN-9` - les quatre sont tenues
+
+- **`SYN-9` tenue, et c'est le point le mieux tenu du lot.** Les espaces a l'interieur des guillemets
+  sont des **espaces insecables (U+00A0) sur les seize items**, verifie par les points de code. Et sur
+  le rendu, **zero coupure entre un guillemet et son mot sur 80 tirages** - mesure par les rectangles du
+  guillemet et du premier caractere du mot, jamais par relecture visuelle. L'item pilote, qui portait
+  encore des espaces ordinaires le 2026-08-20, est corrige. **Ma reserve d'un caractere est fermee.**
+- **`SYN-6` tenue.** Guillemets francais sur les seize, designes par la consigne (*"le mot entre
+  guillemets"*), lisibles a 2 rem gras. Epreuve consigne masquee sur les captures : le mot marque est
+  identifiable sans hesitation.
+- **`SYN-7` tenue.** La consigne se lit avant la phrase et suffit a dire la tache, sans renvoi vers ce
+  qui la suit.
+- **`SYN-8` tenue, verifiee par moi et non par son test.** J'ai compare les seize enonces a ceux d'avant
+  le lot : **les seize phrases sont identiques caractere pour caractere** apres neutralisation de la
+  seule marque ; **aucune etiquette de reponse n'a ete modifiee** sur aucun des seize ; et les **quatre
+  items designes sont bien supprimes du fichier**, pas seulement ecartes. Aucun pixel n'a ete gagne sur
+  la phrase.
+
+#### 4. Verdict : REFUSE
+
+**Le Done pedagogique de `S17-3` est REFUSE.** Motif, en une phrase : **sur sept items sur seize,
+l'enfant ne voit pas toutes les propositions sans defiler**, de 39 a 87 px de deficit, et sur cinq de
+ces sept le defaut **n'apparait que sur certains tirages**, donc en jeu et pas en relecture.
+
+**Mon refus du 2026-08-19 reste donc en vigueur**, dans les termes ou il est ecrit. Le contenu reste
+credite : les seize phrases sont justes, les indices ne nomment jamais la reponse, `SYN-1` a `SYN-4`,
+`SYN-6` a `SYN-9` sont tenues. **Ce qui bloque est ce qui bloquait le 2026-08-19 : la hauteur rendue.**
+
+**Et je ne cherche pas de moyen terme.** Je pourrais ecrire que neuf items sur seize tiennent, que le
+mecanisme d'`ADR-0052` a produit un gain reel de 162 px, que `SYN-9` est impeccable - tout cela est vrai
+et rien de tout cela ne fait qu'un enfant voie ses trois reponses. **`camille-po` a leve deux de ses
+propres criteres ce sprint plutot que d'entamer une de mes conditions ; je ne vais pas entamer la mienne
+pour lui rendre la politesse.**
+
+#### 5. Condition neuve, datee du 2026-08-21
+
+- **`SYN-10` (bloquante). `SYN-5` se mesure sur le pire tirage de chaque item, jamais sur un tirage.**
+  Un item ne tient que s'il tient **quel que soit l'ordre dans lequel ses propositions sont tirees**.
+  **Verification, au choix de qui la produit** : soit mesurer chaque item jusqu'a avoir observe tous les
+  nombres de rangees qu'il peut produire, soit rendre le nombre de rangees independant de l'ordre - dans
+  ce second cas une seule mesure par item suffit a nouveau.
+  **Ce n'est pas un durcissement de `SYN-5`** : `SYN-5` demande depuis le 2026-08-19 que *"la derniere
+  proposition de chaque item soit entierement visible"*, et c'est **ma methode de verification** qui
+  etait insuffisante, pas la barre. Je corrige ma methode ; la barre n'a pas bouge d'un pixel.
+
+**Le levier, mesure, et je ne le choisis pas** : les trois etiquettes d'un item ne tiennent jamais sur
+une rangee de 320 px. Reduire la largeur totale des etiquettes, ou changer la mise en page du cabinet,
+sont respectivement un choix de contenu (`camille-po`, `lea-dev`, avec repassage par `SYN-2` et `SYN-3`)
+et un choix de forme (`ines-design`, mecanisme a `theo-archi`). **Ce que j'exige est le resultat** :
+`SYN-5` sur les seize, au pire tirage.
+
+**Ce que je ne demande pas** : de retirer sept items de plus. Le paquet est deja passe de vingt a seize
+sur ma prediction ; le reduire a neuf ferait de la couverture une fiction, et **le nombre d'items n'a
+jamais ete une de mes conditions** - `camille-po` l'a verifie a la source et elle a raison.
+
+#### 6. Ce que cette mesure ne fait pas
+
+- **Elle ne rouvre aucune condition tenue** et ne durcit ni `SYN-5`, ni `SYN-6` a `SYN-9`.
+- **Elle ne fait pas bouger la ligne de la matiere**, qui reste `en cours` avec la mention "synonymes
+  seuls, antonymes non couverts", pour un motif independant deja arbitre.
+- **Elle ne touche pas au critere "20 items"** de la checklist de `camille-po`, qui figure encore dans
+  cette fiche. **Fait a signaler plutot qu'a corriger** : on m'a indique qu'elle l'avait amende par note
+  datee ; je ne trouve cette note **ni a la ligne du critere, ni ailleurs dans cette fiche** - sa
+  decision de lever le compte vit dans `DEC-0039` et au backlog. Le critere est le sien, je ne le
+  reecris pas, et je note l'ecart comme j'ai note l'absence d'`ADR-0053` le 2026-08-20.
+- **Elle ne dit rien du Done technique.** Une precision pour que personne ne cherche un fantome : ma
+  premiere reconstruction du jar a echoue sur le `clean` de `bootstrap`. **La cause etait moi** - un
+  processus java de mon invocation precedente, morte avant que je puisse l'arreter, tenait encore le
+  jar. Arrete par son PID, la reconstruction passe. **Rien dans l'arbre n'etait en cause.**
+
+#### 7. Ce dont je reste seule garde
+
+`SYN-5` a `SYN-10` n'ont **aucun garde-fou executable**, et cette mesure vient de montrer pourquoi le
+trou est plus large qu'on ne le croyait : **la propriete a garder n'est pas dans le fichier de contenu.**
+Un test qui lit le YAML - et `lea-dev` en a ecrit d'excellents, sur les points de code de `SYN-9`, sur la
+suppression des quatre items, sur `SYN-8` par comparaison a des `Question` generees depuis le fichier -
+**ne peut pas voir** un defaut qui n'existe qu'au rendu et qui varie selon le tirage. C'est le cas le
+plus net de tout ce sprint : **des tests justes, verts, bien construits, et sept items sur seize que
+l'enfant ne peut pas jouer.** Tant qu'aucun outil ne mesure une hauteur rendue, c'est moi le garde-fou,
+et le fait que je me sois trompee le 2026-08-20 en ne mesurant qu'un tirage dit exactement ce que cette
+situation coute.
 
 ## Arbitrage prealable bloquant, avant tout premier commit de code
 
