@@ -656,6 +656,19 @@ avant la cloture de s17 : si `SYN-5` n'est pas levee et qu'aucune entree de cata
 sprint) n'est pas honore par ce statut inchange, et je l'ecrirai alors comme le changement de
 direction que `DEC-0037` exige de nommer.
 
+**Note du 2026-08-21 (camille-po) - le critere pose ci-dessus est tranche : `SYN-5` refusee une
+seconde fois, `DEC-0037` s'ecrit comme changement de direction.** `nadia-prof` a mesure les seize
+items retenus (apres retrait des quatre a trois rangees, voir plus bas) sur 80 tirages au clavier :
+**sept sur seize** posent la derniere proposition sous le pli, de 39 a 87 px selon le tirage - le
+comportement d'un item face au pli s'est revele etre une propriete du couple (item, tirage), pas de
+l'item seul. **`SYN-5` reste refusee.** L'entree de catalogue existe, mais le second terme de mon
+critere ne l'est pas : par ma propre regle, **l'engagement de `DEC-0037` n'est pas honore en
+substance**. Detail complet, ma decision sur le mandat de la disposition des propositions (second
+declencheur accepte, borne, route a `ines-design`/`theo-archi`) et le texte integral du changement
+de direction : `DEC-0039`, amendement du 2026-08-21. Le statut de cette ligne reste `en cours`,
+inchange une seconde fois, pour le meme motif qu'au refus precedent - ce n'est toujours pas un
+increment jouable.
+
 **Amendement du 2026-08-19 (camille-po) - `S17-2` sort du perimetre de s17, la ligne revient
 `non couvert`.** `nadia-prof` a rejoue la mesure de `COMP-5` sur la mise en page reelle de la
 manche (consigne, bloc de question et cabinet compris, pas seulement le bloc de texte-support) :
@@ -1534,3 +1547,25 @@ d'increment jouable a ce jour du sprint (`S17-2` en est sortie sans code, `S17-4
 mecanisme routee a `theo-archi` (`DEC-0039`) : le critere qui decidera, a la cloture de s17, si
 l'engagement de `DEC-0037` est honore ou s'il faut l'ecrire comme un changement de direction est
 celui pose dans ce meme amendement - `SYN-5` levee et une entree de catalogue pour `S17-3`, ou non.
+
+## Synthese de cloture de s17 (2026-08-21) - le critere de `DEC-0037` tranche, changement de direction ecrit
+
+`nadia-prof` a refuse `SYN-5` une seconde fois (`squad/conformite/FICHE-bandit-manchot-synonymes-
+cm1.md`, "Done pedagogique du 2026-08-21 (s17) sur S17-3, paquet a seize items") : sept items sur
+seize sous le pli selon le tirage, `SYN-10` neuve. Le critere que j'avais pose avant la cloture -
+`SYN-5` levee **et** une entree de catalogue - n'est donc pas rempli : le second terme existe, le
+premier non. **Conformement a ce critere, j'ecris que l'engagement de `DEC-0037` n'est pas honore
+en substance.**
+
+Le tableau de la section "Synthese apres l'amendement du 2026-08-19 - `S17-2` sort du perimetre de
+s17" reste le tableau exact de cloture : aucun total ne bouge (francais CM1 8/2/1, total 31/6/9),
+la ligne synonymes restant `en cours` sans jamais avoir produit d'increment jouable ce sprint. Ce
+que j'ajoute ici, et que le tableau seul ne dit pas : **s17 est le quatrieme sprint consecutif sans
+mouvement reel de couverture programme**, apres les trois sprints de stabilisation deja nommes
+comme tels par `DEC-0037` (s14, s15, s16). Aucune ligne n'atteint `couvert-valide` ; aucune ne
+produit, a la cloture, un jeu qu'un enfant peut jouer sur une competence neuve ou avancee. C'est un
+changement de direction au sens de `DEC-0037`, ecrit ici et dans `DEC-0039` (amendement du
+2026-08-21) plutot que laisse filer sur l'espoir d'un sprint suivant. Le mandat sur la disposition
+des propositions, ouvert dans ce meme amendement et route a `ines-design`/`theo-archi`, est ce qui
+pourrait, un jour, fermer `SYN-5` sur `S17-3` ; il n'est pas cense produire d'increment avant la
+cloture de s17.
