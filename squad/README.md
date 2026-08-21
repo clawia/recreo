@@ -159,6 +159,15 @@ et en a trouve un troisieme de la meme famille (reserve `S16-A`). Le cout de cin
 sur-extension silencieuse d'une limite est le motif de cet amendement : une limite couvre l'etat
 qu'elle a effectivement essaye et echoue a mesurer, jamais un etat voisin qui n'a jamais ete tente.
 
+**Un chiffre cite dans un document qui le reprend d'un autre document du depot est verifie contre
+sa source primaire avant d'etre recopie, jamais suppose exact parce qu'il porte deja une reference**
+(amendement s17, cloture de s17). Le chiffre de couverture programme de `DEC-0037` section 4 (23
+lignes `couvert-valide` sur 74) a ete recopie sans reverification dans trois documents de plus
+(`planning.md` et `RAPPORT.md` de s16, `planning.md` de s17), alors qu'il etait deja fautif dans
+`DEC-0037` elle-meme des son premier commit. Distinct de la regle de s06 (un chiffre porte sa
+methode) : ici la methode etait bien citee a chaque reprise, ce qui manquait est la verification
+contre la source primaire, pas contre l'absence de methode.
+
 ## 5. La synthese de sprint - `RAPPORT.md`
 
 C'est le document qu'on lit en premier pour savoir ce qui s'est passe. Ecrit par Sofia a la
@@ -350,6 +359,20 @@ l'invariant repose sur la non-coincidence accidentelle de deux fixtures ecrites 
 pas un garde-fou tant qu'un test dedie ne fait pas varier explicitement la valeur pour prouver que
 la regle la lit et ne la recopie pas.
 
+**A chaque lot qui ajoute du materiau qu'un garde-fou existant est cense couvrir (contenu, entree
+de catalogue, fichier neuf), le rapport de cloture de Yanis verifie si le compte de ce garde-fou a
+bouge ; s'il ne bouge pas, ce n'est pas une bonne nouvelle par defaut et appelle une reponse ecrite
+disant si le garde-fou a vu le materiau neuf ou non** (amendement s17, cloture de s17). Propose par
+`theo-archi`, qui a trouve deux defauts sur trois de cette facon en un seul sprint (le garde-fou de
+rang vide sur `cm1-synonymes`, la clause d'`ADR-0052` bornee a un jeu fictif alors qu'une entree
+reelle venait d'arriver) sans ecrire une ligne de code. Meme famille que les amendements de s11
+(critere enumere) et s12 (releve automatique cite en preuve) : un signal syntaxique mecanique (le
+compte ne bouge pas) qui declenche une lecture, jamais une preuve d'exhaustivite en lui-meme.
+`theo-archi` decline explicitement d'encoder un garde-fou automatique unique pour la famille
+sous-jacente (rang, perimetre de derivation, population de test) : le manque n'est pas au meme
+endroit dans les trois cas rencontres ce sprint, un automate unique aurait ete soit incomplet, soit
+trop large.
+
 **5. Relecture.** Le `relecteur-pedagogique` passe sur les livrables non executables. Il corrige
 ce qui est sans ambiguite, signale le reste.
 
@@ -380,6 +403,17 @@ en preuve : ce qui manquait est la meme regle pour une affirmation de raisonneme
 instrumentee. Toute affirmation "tenu par construction" citee dans une revue de code ou un accord
 d'architecte est verifiee sur le document reellement rendu avant d'entrer dans un `review.md`, pas
 seulement raisonnee sur le fragment source.
+
+**Un engagement conditionnel ecrit dans un `ADR` ou une `DEC` ("je changerai ce statut ou cette
+clause si X se realise") porte, au moment ou il est ecrit, qui verifie sa realisation et quand -
+jamais suppose que son auteur le fera de lui-meme** (amendement s17, cloture de s17). Trois
+instances de la meme famille en deux sprints (`ADR-0042`, `ADR-0047`, `ADR-0048`), chacune fermee
+seulement parce qu'un tiers l'a remarquee plutot que par son propre auteur. La retro de s16 avait
+juge la regle de s13 (verification physique de chaque porte de sortie) suffisante par une lecture
+large ; deux instances de plus depuis montrent que cette lecture large ne s'est pas produite. La
+regle de s13 porte sur les portes de sortie d'un tableau de stories, pas sur un engagement
+conditionnel ecrit ailleurs dans un document de decision : la regle qui manquait est distincte, pas
+une extension de la regle existante.
 
 **8. Cloture.** Sofia lance le rapport de tokens et ecrit `RAPPORT.md`.
 
