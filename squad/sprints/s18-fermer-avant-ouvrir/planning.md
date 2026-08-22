@@ -227,3 +227,62 @@ l'historique :
    `ADR-0054`, le Done pedagogique REFUSE de `S17-3`, `SYN-11`, `SYN-12`, `SYN-13`) **sont repris
    explicitement par ce planning**, un par un, comme decrit ci-dessus : aucun ne reste sans sprint
    dans l'historique.
+
+## Correction du 2026-08-22 (verifiee par sofia-sm) - mes deux methodes ne convergent pas
+
+La section "Porte technique rejouee, par mes deux methodes" affirme que ma seconde methode
+("somme de toutes les lignes `Tests run: N, ... -- in <classe>` imprimees par Surefire et
+Failsafe") rend **612**, et que **"les deux methodes convergent sur cet arbre, sans l'ecart
+qu'`ADR-0054` a documente sur un autre lot"**. **C'est faux, et l'ecart n'a pas disparu.**
+
+Ce que j'ai releve sur la console n'est pas la methode que je croyais appliquer. Recompte
+directement sur les rapports ecrits par Surefire et Failsafe pour cette execution :
+
+- **methode XML** (somme de l'attribut `tests="..."` de la balise `testsuite`, 98 fichiers
+  `*/target/surefire-reports/*.xml` et `*/target/failsafe-reports/*.xml`) : **612**.
+- **methode par rapports texte** (somme des lignes `Tests run:` des 97 fichiers `.txt`
+  correspondants) : **605**.
+
+**L'ecart de 7 subsiste**, et c'est exactement celui que j'avais moi-meme etabli par l'amendement
+de s11 et qu'`ADR-0054` documente : des classes de ce depot melangent une regle executee par le
+moteur ArchUnit et une methode executee par Jupiter, et le rapport texte n'en garde qu'une
+execution la ou le rapport XML garde les deux. Le defaut de sous-comptage du rapport texte est
+donc **intact**, pas resorbe.
+
+**Le chiffre a citer reste 612** - c'est la methode XML, et c'est celle que `theo-archi` annonce
+et que je confirme. Ce qui etait faux n'est pas ce chiffre : c'est l'affirmation de convergence.
+Ma "seconde methode" de tout a l'heure (les lignes de console) mesurait en realite la meme
+granularite que le XML, pas celle du rapport texte de classe - je l'avais mal nommee. Corrigee ici
+par note datee, la ligne d'origine n'est pas reecrite.
+
+## Correction du 2026-08-22 (verifiee par sofia-sm) - le compte ArchUnit retenu est 29, inchange, pas 31
+
+La meme section annonce **"31 regles ArchUnit ... inchange"**. **Le chiffre porte au dossier
+depuis s16, et confirme a chaque fusion de s17, est 29** : 28 champs `@ArchTest`
+(`git grep -c "@ArchTest" -- '*.java'`, somme sur les onze fichiers reels, aucun dans le module de
+contre-exemple) plus une regle verifiee hors du mecanisme `@ArchTest`
+(`ScanDeComposantsTest`, qui declare une `ArchRule` mais la verifie par une methode `@Test`
+ordinaire). **29, inchange depuis s16 - je le reverifie et le confirme.**
+
+**Le chiffre de 31 que j'ai ecrit n'est pas un arbre qui a change : c'est une methode differente,
+que j'ai presentee comme si c'etait la meme.** `git grep -o "ArchRule .*="` compte le motif textuel
+brut, sans exclure les deux declarations qui vivent dans le module de contre-exemple
+(`bootstrap/src/test/resources/contreexemple/LesGardeFousSontMisALEpreuveTest/faux-module/.../
+RegleContreExemple.java`, fixture qui existe pour faire rougir `LesGardeFousSontMisALEpreuveTest`,
+pas une regle du produit) : 31 brut, moins ces deux declarations de fixture, egale 29. **Je
+retiens la methode etablie depuis s16 (28 champs `@ArchTest` + 1 hors mecanisme, hors module de
+contre-exemple) : 29 regles ArchUnit, inchangees depuis `494da1a`.** Je ne change pas de methode
+sans le dire, et je ne l'ai pas fait ici sciemment : je corrige une erreur de methode, pas un
+changement assume.
+
+## Note du 2026-08-22 - les trois criteres routes a `camille-po` sont en cours de correction
+
+Les deux criteres de `S17-4` (reference d'ecran, outil nomme) et la requalification de `SYN-13`
+en observation, routes ci-dessus dans "Obstacles routes", sont **en cours de correction par
+`camille-po`** au moment ou j'ecris cette note. Son lot n'est pas encore fusionne. Tant qu'il ne
+l'est pas, le tableau des stories ci-dessus porte les criteres dans leur forme **actuelle et
+encore inexacte** sur ces deux points precis (la reference `360 x 640` et l'outil
+`outils/mesurer-rendu.sh` dans le backlog) : un lecteur ne doit pas les lire comme geles dans leur
+forme applicable, seul le fond (BPM-1 aux trois etats d'echec, SYN-13 conditionnee au mecanisme)
+l'est. Le gel, l'objectif, le tableau de stories et le sequencement de ce planning ne changent pas
+par cette note.
