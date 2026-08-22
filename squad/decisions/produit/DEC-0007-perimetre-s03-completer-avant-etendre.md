@@ -268,3 +268,11 @@ texte du point 5 ci-dessus, qui reste lisible tel qu'ecrit le 2026-08-05 et rest
 qui a fonde quatre sprints de mesure contre un telephone en portrait : voir
 `DEC-0040-cible-de-deploiement-ordinateur-et-tablette-le-telephone-sort-du-perimetre.md`, qui
 porte la decision, son contexte et ce qu'elle rouvre.
+
+## Note du 2026-08-22 (camille-po, seconde) - la largeur de 375 px est remplacee par 744 px
+
+L'amendement du 2026-08-22 (second) a `DEC-0040` fixe la largeur de reference a 744 px (iPad mini,
+pire cas de largeur reel de la cible ordinateur et tablette), en remplacement des 375 px retenus
+au point 5 ci-dessus. Le texte d'origine reste lisible tel qu'ecrit ; c'est la reference qu'il
+fixait qui change, pas son raisonnement, qui restait valide pour la cible telephone qu'il visait
+alors.

@@ -187,3 +187,174 @@ le presume pas ici dans un sens ou dans l'autre.
 - **`nadia-prof`** : aucune demande de rejugement aujourd'hui. Le jour ou une mesure existe sur la
   nouvelle reference pour `S17-3`, "Le bon petit mot" ou la famille `M4`, c'est a elle seule de
   dire si le defaut persiste, disparait, ou change de nature.
+
+## Amendement du 2026-08-22 (second, camille-po) - la largeur et la hauteur de reference sont fixees a 744 x 551 px
+
+**Sprint.** L'utilisatrice a prolonge s17 plutot que de laisser cette decision attendre
+l'ouverture de s18 : ce qui suit s'inscrit dans s17, pas dans l'intervalle "hors sprint" nomme a
+l'ouverture de cette decision. Je ne corrige pas le champ "Sprint" en tete de ce document, qui
+restait exact au moment ou il a ete ecrit ; je le precise ici.
+
+**Ce qui declenche cet amendement.** `ines-design` (`proposition-ines-cible-ordinateur-et-tablette.md`,
+branche `s17-ines-cible-ordinateur-tablette`, non fusionnee, forkee de `round-two` a `db2bff6`) a
+etabli l'inventaire d'appareils que je routais au point "Ce que je route" ci-dessus. `nadia-prof`
+(`squad/conformite/mesure-hauteur-utile-nouvelle-cible.md`, branche `s17-nadia-hauteur-utile`, non
+fusionnee, meme fork) a verifie sur navigateur reel le point qu'`ines-design` nommait elle-meme
+comme le plus fragile de son document. Les deux documents ne tranchent ni l'un ni l'autre la
+reference : c'est l'objet du present amendement.
+
+### 1. Ce que les deux mesures etablissent
+
+**Largeur.** Le pire cas de largeur reel identifie sur la cible ordinateur et tablette est
+**744 px** (iPad mini, 6e/7e generation) : toute configuration d'ordinateur releve par
+`ines-design` est plus large (1280 px au plus etroit), et tout autre iPad du catalogue actuel est
+a 768 px ou plus. L'axe largeur est donc entierement porte par la tablette.
+
+**Hauteur.** Le pire cas de hauteur n'est pas porte par la tablette (1024 px au plus bas, dalle
+entiere, aucune deduction de chrome puisque le navigateur mobile retracte sa barre d'adresse a
+l'usage) mais par l'ordinateur, ou aucun retrait de ce type n'existe : la barre d'adresse, les
+onglets et la barre des taches Windows restent visibles en permanence. `nadia-prof` a mesure sur
+un poste reel (Chrome et Edge, profil isole, fenetre maximisee, capture d'ecran croisee avec la
+lecture pour exclure un artefact) que cette chrome coute **135 px sans barre de favoris et 169 px
+avec**, contre l'estimation non verifiee de 110 a 160 px qu'`ines-design` avait posee. Appliquee au
+pire cas de dalle qu'elle a identifie (1280 x 720, deux chemins materiels distincts - panneau natif
+720p ou panneau 1080p mis a l'echelle a 150 % - qui convergent vers la meme valeur), cette mesure
+derive une hauteur utile de **585 px sans barre de favoris et 551 px avec**.
+
+### 2. La largeur de reference : 744 px, en dessous du seuil de 768 px, deliberement
+
+`nadia-prof` a mesure que la mise en page de la rangee de propositions est un escalier, pas une
+pente, sur la feuille de style tierce du produit : la bande de viewport 576-767 px plafonne la
+rangee a 500 px (cinq items sur seize a deux rangees, un item a 1,51 px de marge sur le dernier
+mot cible qui tient) ; a 768 px pile, un seuil Bootstrap fait passer la rangee a 680 px et les
+seize items sur une seule rangee.
+
+**Je fixe la largeur de reference a 744 px, en dessous du seuil de 768 px, et je le fais sciemment
+plutot que par defaut.** La raison n'est pas une preference pour le cas le plus dur : c'est que
+**744 px est un appareil reel** (l'iPad mini) et que **768 px n'en est aucun** parmi ceux
+identifies - l'iPad le plus etroit du catalogue actuel est justement celui qui reste sous le
+seuil. Fixer la reference a 768 px ne rendrait pas un iPad mini plus confortable : cet appareil
+continuerait a rendre une rangee de 500 px quel que soit le nombre que j'ecris dans une decision,
+puisque son viewport reel est 744 px et que rien dans cette decision ne le change. Une reference
+fixee au-dessus du pire cas reel identifie ne protegerait personne, elle ferait seulement en sorte
+que la squad cesse de mesurer l'endroit ou le defaut se produit reellement - exactement le mode de
+defaillance que ce depot nomme ailleurs comme un ecart muet plutot qu'un echec visible. La marche
+de 768 px est un fait sur le mecanisme de mise en page, pas un choix de reference qui m'est
+ouvert : elle reste un probleme a router a `theo-archi` et `ines-design` (item a 1,51 px, cinq
+items a deux rangees), pas une facon de m'en affranchir en deplacant le curseur.
+
+### 3. La hauteur de reference : 551 px, la configuration avec barre de favoris retenue
+
+**Je retiens 551 px, la valeur mesuree avec la barre de favoris visible, plutot que 585 px sans
+elle.** `nadia-prof` le nomme elle-meme : *"551 px est une configuration ordinaire, pas un cas
+extreme"* - un ordinateur familial sur lequel personne ne masque la barre de favoris pour reviser.
+Ecarter cette configuration reviendrait a choisir la reference la plus confortable a mesurer
+plutot que la plus fidele a l'usage reel, ce que `DEC-0007` nommait deja comme le motif retenu
+pour l'"appareil disponible a la maison" plutot qu'un appareil ideal. Je ne retiens pas 585 px : ce
+serait ecarter, sans motif produit, une configuration que `nadia-prof` elle-meme qualifie de
+courante plutot que d'exception.
+
+### 4. Reference unique, pas un pire cas par appareil
+
+`ines-design` nomme un fait qui n'existait pas quand la reference etait un telephone : le pire cas
+de largeur et le pire cas de hauteur viennent desormais de deux familles differentes (tablette,
+ordinateur), la ou le tout-telephone de s10 les reunissait dans la meme famille d'appareils. Une
+reference unique combinant les deux pires cas ne correspond donc, par construction, a aucun
+appareil reel.
+
+**Je retiens neanmoins une reference unique : 744 x 551 px**, pour deux raisons.
+
+Premiere raison, deja posee par `ines-design` : ce depot a deja fait ce choix une fois sans le
+nommer comme tel - le couple 360 x 640 px de `DEC-0016` n'etait pas non plus un appareil unique de
+la distribution mesuree en s10, seul le Galaxy S8 s'en approchait a 100 px pres sur la hauteur. Le
+precede existe ; je ne l'invente pas ici.
+
+Seconde raison, verifiee par `nadia-prof` et pas seulement supposee : **la position de la derniere
+proposition ne depend d'aucune unite relative a la hauteur du viewport**, verifie en mesurant les
+memes seize items aux trois hauteurs 945, 585 et 551 px et en obtenant le jeu de valeurs identique
+au centieme de pixel pres. Les deux axes sont independants dans ce produit. Un point qui cumule le
+pire cas de chacun des deux axes est donc, par construction, au moins aussi contraignant que
+n'importe quel appareil reel sur chacun des deux axes pris separement - ce n'est pas une reference
+fictive qui invente un risque, c'est une reference fictive qui borne strictement tous les risques
+reels connus.
+
+**Ce que cela coute, et je le dis parce que `nadia-prof` vient d'en payer le prix sur un seul
+format : rien de plus que ce qu'elle fait deja.** Une reference unique ne change rien a sa methode
+de mesure - un rendu, un pli, comme aujourd'hui. Passer a un pire cas par appareil aurait multiplie
+ce cout par le nombre d'appareils retenus, alors qu'elle vient de consacrer seize parties et cent
+soixante tirages a un seul format pour un seul paquet (`SYN-5`/`SYN-10`, s17). Ce que cela ne
+donne pas en echange : si un gabarit se comporte bien sur la reference fictive mais mal sur un
+appareil reel qui ne cumule pas les deux pires cas mais en approche un seul de tres pres (par
+exemple un ordinateur a la fois etroit et bas, ou une tablette a la fois etroite et basse), une
+reference unique ne le revelerait que si cet appareil venait a etre mesure explicitement un jour -
+ce que je ne fais pas ici, faute d'un tel appareil identifie dans l'inventaire actuel.
+
+### 5. Ce que je fixe, formellement
+
+**La largeur de reference devient 744 px, remplacant les 375 px de `DEC-0007` point 5.**
+**La hauteur de reference devient 551 px, remplacant les 640 px de `DEC-0016` point 1.**
+Ces deux decisions amendent `DEC-0007` et `DEC-0016` par note datee, comme au premier amendement
+de cette meme decision : le texte d'origine reste lisible, la note dit ce qu'il devient.
+
+### 6. Ce que cela ne fait pas
+
+**Ceci n'est pas une levee de `SYN-5`.** `nadia-prof` l'ecrit elle-meme avant que je ne le
+reprenne : `SYN-5` se mesure contre la reference que je fixe ici, et tant qu'aucune reference
+n'existait, il n'y avait rien contre quoi la mesurer. Le refus du 2026-08-21 reste entier. Une
+mesure existe desormais a 744 px de large (section 1), avec un resultat favorable au pli le plus
+severe qu'elle a mesure (551 px : zero item sur seize sous le pli) - mais **ce constat reste le
+sien a prononcer, pas le mien**, et il suppose qu'elle le fasse dans les formes habituelles
+(fiche de conformite, Done pedagogique), pas par le detour d'une mesure hors fiche comme celle
+qu'elle vient de produire pour informer cette decision.
+
+**Aucun statut de `squad/programme/MATRICE-couverture.md` ne bouge par cette decision non plus.**
+
+**Je ne tranche pas la question du survol** qu'`ines-design` pose en section 5 de sa proposition
+(la premisse du 2026-08-18 sur le survol neutre, dont elle nomme elle-meme qu'elle devient plus
+sollicitee sur ordinateur) : elle la pose pour `nadia-prof` et pour moi, je ne la traite pas dans
+cet amendement qui porte sur la reference d'ecran, pas sur le comportement au survol. Je la garde
+nommee pour ne pas la perdre : elle attend un arbitrage separe.
+
+### 7. Deux faits annexes, nommes sans etre tranches
+
+**Un trou de garde-fou.** La largeur effective de la rangee de propositions est une fonction en
+escalier d'un seuil de la feuille de style tierce (Bootstrap), qu'aucun test du depot n'assertionne.
+Un changement de version de cette dependance, ou une modification de la classe `container` sur
+l'ecran de manche, ramenerait la rangee vers 320 px sans qu'aucun test ne rougisse - le meme mode
+de defaillance que celui deja nomme ailleurs dans ce depot sous le nom d'ecart muet. `nadia-prof`
+l'a deja route directement a `theo-archi` dans son propre document ; je ne la reroute pas, je la
+nomme ici pour qu'elle reste tracee au fil de cette decision et pas seulement dans une mesure hors
+fiche.
+
+**Le bloc juste/faux, pas une proposition, qui depasse le pli sur les cinq items a deux rangees.**
+`nadia-prof` a vu, en jouant, que ce qui depasse le pli sur les cinq items qui restent a deux
+rangees a 744 x 551 n'est pas une troisieme proposition mais le bloc de retour juste/faux
+lui-meme : un enfant qui repond faux sur l'un de ces cinq items ne verrait pas le message qui le
+lui dit sans defiler. Elle le note et ne le juge pas, et precise que ce fait est hors de `SYN-5`
+(qui porte sur les propositions, pas sur le bloc de retour). Je le nomme ici dans les memes
+termes : ce n'est pas une condition aujourd'hui, cela peut le devenir le jour ou `nadia-prof`
+mesure formellement contre la reference que je viens de fixer.
+
+## Impact de cet amendement
+
+- `squad/decisions/produit/DEC-0007-perimetre-s03-completer-avant-etendre.md` : seconde note datee
+  du 2026-08-22 ajoutee, precisant que 375 px est remplace par 744 px.
+- `squad/decisions/produit/DEC-0016-hauteur-de-viewport-de-reference-et-contenu-au-dessus-du-pli.md` :
+  seconde note datee du 2026-08-22 ajoutee, precisant que 640 px est remplace par 551 px.
+- `squad/decisions/produit/DEC-index.md` : ligne DEC-0040 mise a jour avec cet amendement ; notes
+  d'amendement sur les lignes DEC-0007 et DEC-0016 completees.
+- `squad/programme/MATRICE-couverture.md` : inchangee.
+- Aucun fichier de conformite, aucun Done pedagogique, aucun statut de catalogue n'est modifie.
+
+## Ce que je route (ajout du 2026-08-22, second)
+
+- **`sofia-sm`** : verser cet amendement au planning de s17 prolonge, pas de s18 - le sprint n'a
+  pas ete rouvert en tant que nouveau sprint, il a ete prolonge par l'utilisatrice.
+- **`ines-design`** et **`theo-archi`** : le mandat du 2026-08-21 sur le repli des rangees et le
+  trou de garde-fou de la section 7 restent leur perimetre, sur la reference desormais fixee
+  (744 x 551) plutot que sur une reference encore ouverte.
+- **`nadia-prof`** : aucune obligation nouvelle de rejuger `S17-3` dans un delai donne. Si elle
+  choisit de mesurer `SYN-5` contre 744 x 551 dans les formes (fiche de conformite), le verdict
+  reste entierement le sien, y compris sur le fait annexe du bloc juste/faux nomme en section 7 et
+  sur la reserve qu'elle a posee elle-meme sur la police de caracteres (Segoe UI mesuree, San
+  Francisco non verifiee, item a 1,51 px de marge).

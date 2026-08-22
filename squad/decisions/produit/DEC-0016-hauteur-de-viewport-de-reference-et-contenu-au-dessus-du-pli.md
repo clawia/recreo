@@ -233,3 +233,11 @@ laquelle tout le catalogue a ete mesure jusqu'a ce jour : voir
 `DEC-0040-cible-de-deploiement-ordinateur-et-tablette-le-telephone-sort-du-perimetre.md`, qui
 porte la decision, son contexte et ce qu'elle rouvre - notamment sur le sort de la famille `M4`
 (`DEC-0025`) et sur `S17-3` (`DEC-0039`), tous deux juges contre cette meme reference de 640 px.
+
+## Note du 2026-08-22 (camille-po, seconde) - la hauteur de 640 px est remplacee par 551 px
+
+L'amendement du 2026-08-22 (second) a `DEC-0040` fixe la hauteur de reference a 551 px (dalle
+d'ordinateur a 720 px, chrome de navigateur avec barre de favoris mesuree sur poste reel a 169 px
+par `nadia-prof`), en remplacement des 640 px retenus au point 1 ci-dessus. La nouvelle reference
+est plus contraignante que l'ancienne, pas moins : 551 px est inferieur a 640 px. Le texte
+d'origine reste lisible tel qu'ecrit ; c'est la reference qu'il fixait qui change.
