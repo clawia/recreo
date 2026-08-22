@@ -280,3 +280,112 @@ qui n'existe pas encore.
   story de correction S17-C mise a jour pour dire qu'elle entre au perimetre propose de s18.
 - `squad/programme/MATRICE-couverture.md` : section "Synthese a l'ouverture de s18 (2026-08-22)"
   ajoutee, tableau inchange (31/6/9/46), aucun statut ne bouge par ce document.
+
+## Amendement du 2026-08-22 (camille-po, s18, apres gel) - corrections issues de l'avis de faisabilite de `theo-archi`, arbre reverifie
+
+**Arbre reverifie a l'ouverture de cet amendement** : `round-two` a `eed653ba5a7c6862c798dd8fe896f8cf6045f546`,
+releve par `git rev-parse round-two` sur ce worktree neuf. C'est **un commit de plus** que le
+`8f197fc` communique a l'ouverture de ce lot : `sofia-sm` a corrige, entre-temps et par note datee
+dans son propre `planning.md`, deux chiffres de sa porte technique (612 tests confirme par la
+methode XML, la convergence des deux methodes annoncee etait fausse ; 29 regles ArchUnit, pas 31,
+erreur de methode de comptage) et a signale que mon lot etait en cours. Aucune des deux corrections
+ne porte sur mon perimetre ni sur les trois actions gelees ; je le releve parce que le SHA qui m'a
+ete communique n'etait deja plus la tete au moment ou je l'ai verifie moi-meme, exactement le risque
+que `CLAUDE.md` nomme sous le nom d'ecart muet.
+
+`theo-archi` a rendu son avis de faisabilite (`squad/sprints/s18-fermer-avant-ouvrir/
+avis-faisabilite.md`) avant tout code de story, et `sofia-sm` a gele le sprint sur cette base
+(`planning.md`, horodatage 2026-08-22 21:35) en me renvoyant trois corrections qui sont miennes.
+Je les traite ici, sans rouvrir le perimetre gele des trois actions.
+
+### 1. Les deux criteres perimes de `S17-4` sont corriges
+
+Le critere de `S17-4` qui nommait *"360 x 640 avec `outils/mesurer-rendu.sh`"* portait deux
+defauts factuels distincts, etablis par `theo-archi` (avis, sections 1.2 et 1.4) : la reference
+n'existe plus (`DEC-0040` : 744 x 551) et l'outil ne peut structurellement pas atteindre un etat
+d'echec, qui s'obtient en postant une mauvaise reponse dans une session de partie, jamais par une
+capture d'ecran d'une URL. Corrige par note datee dans `docs/backlog/backlog.md`, sans reecrire le
+critere d'origine ni le point 3 de `DEC-0024` dont il est repris - le fond du critere ne change
+pas, seules sa reference et sa methode etaient perimees. **Ecart verifie et non trouve** : j'ai lu
+le tableau critere par critere de la section 1.4 de l'avis ligne a ligne contre les sept criteres
+de `S17-4` un a un ; aucun autre critere de cette story n'y est marque a corriger.
+
+### 2. `SYN-13` requalifiee en observation ; `SYN-12` non touchee ; `SYN-11` non touchee
+
+Ma propre note du 2026-08-22 sous `S17-3` disait que `SYN-12` et `SYN-13` "s'ajoutent aux criteres
+de cette story au meme titre que `SYN-5` a `SYN-10`" - c'est inexact pour les deux, et `theo-archi`
+l'etablit (avis, section 2.4) : `SYN-13` est **conditionnee au mecanisme retenu** pour `SYN-11`
+("elle disparaitra d'elle-meme si `SYN-11` est fermee par la largeur", `nadia-prof`), ce qu'un
+critere d'acceptation ne peut pas etre avant que ce mecanisme soit choisi ; `SYN-12` reste **une
+question entierement jugee par `nadia-prof`**, jamais un critere de lot testable. Corrige par note
+datee dans `docs/backlog/backlog.md`, sous `S17-3`. **`SYN-11` n'est pas touchee** : `theo-archi`
+la juge bonne telle qu'ecrite et non encodable, et je ne la modifie pas.
+
+### 3. L'entree de catalogue de `cm1-homophones` : ma qualification de "triviale" est confirmee, ma mise en garde routee a `theo-archi` etait fausse
+
+J'avais route a `theo-archi`, en section 2 ci-dessus, la verification que l'ajout de l'entree
+"ne demande aucun mecanisme neuf" - phrase prudente parce que je craignais qu'une entree neuve
+expose le paquet a des regles de contenu qu'il n'affronte pas encore. `theo-archi` (avis, section
+1.1) etablit que **cette crainte etait infondee** : la population des regles de contenu de ce depot
+est le balayage du repertoire `contenu/`, pas le catalogue - `cm1-homophones.yaml` affronte deja
+toutes ces regles aujourd'hui, sans etre catalogue. L'entree n'ajoute reellement d'exposition qu'aux
+quatre clauses dont la population **est** le catalogue, dont trois sont satisfaites par
+construction (24 items pour 10 manches, aucun doublon) et une seule demande une edition :
+l'inventaire de `TexteAccentueExposeParLePortEntrantTest`. **Une edition, pas cinq.** Je retiens ce
+chiffre pour toute mesure future du meme geste plutot que de reproduire ma propre mise en garde.
+
+### 4. Le cout de `BPM-1` est reevalue a la hausse, sans changer le perimetre
+
+Le cout que j'avais chiffre en section 6 ("une entree de catalogue (triviale) plus une mesure de
+rendu de `nadia-prof`, deja routee") sous-estimait la seconde moitie. `theo-archi` (avis, section
+1.3) mesure que cette campagne porte sur **24 items** aux trois etats d'echec chacun, au pire
+tirage - **un ordre superieur** a la derniere campagne comparable de `nadia-prof` (`SYN-11` : 9
+parties, 360 lectures, sur 16 items). Deux faits la bornent vers le bas (deux propositions par item
+sur les 24, total de caracteres des deux etiquettes jamais superieur a sept) et un fait l'allonge
+(la revelation s'atteint en pressant trois fois la meme mauvaise reponse, donc les trois etats
+d'echec sont chacun reellement atteignables). Corrige par note datee dans `docs/backlog/
+backlog.md`, sous `S17-4`. **Ce que cela ne change pas** : le perimetre que je propose reste les
+trois memes actions ; c'est `sofia-sm` qui sequence la capacite de mesure de `nadia-prof` entre
+`BPM-1`, `SYN-11` et `S17-C` sur le cout desormais juste, pas moi.
+
+### 5. La migration `ADR-0049` : le motif que `theo-archi` ajoute a mon exclusion
+
+`theo-archi` (avis, section 5) confirme que laisser cette migration hors du perimetre de s18 est le
+bon arbitrage, pour un motif que je n'avais pas ecrit : **s18 est le seul sprint ou la reporter est
+gratuite**. Le cout de cette dette croit d'un fichier par paquet de contenu neuf ouvert, et `DEC-0041`
+ferme deliberement tout contenu neuf ce sprint - donc, exceptionnellement, attendre ne coute rien
+cette fois, ce qui n'etait pas vrai en s17 (ou `cm1-synonymes` s'est ajoute au perimetre pendant le
+sprint) et ne le sera plus au sprint suivant si `S17-5` (antonymes) ouvre. Il ajoute qu'elle est **le
+meilleur candidat a un ajout tardif** si un developpeur se libere pendant que `nadia-prof` mesure
+`BPM-1`, puisqu'elle ne demande aucune mesure de sa part - ma reserve au point 5 ci-dessus ("j'ecarte
+S17-5 pour ne pas melanger contenu neuf et fermeture de dette") ne s'applique pas a elle, une
+migration de graphie n'etant pas un contenu pedagogique neuf. J'inscris ce motif ici plutot que de
+le laisser dans le seul avis de `theo-archi` : il complete, sans le contredire, mon exclusion de la
+section 5.
+
+### 6. Un motif de report de `S17-C` est corrige par note dans le backlog, sans consequence sur mon classement
+
+`theo-archi` (avis, section 4.1) etablit que le motif de report de `S17-C` cite dans `docs/
+backlog/backlog.md` et dans `DEC-0039` - *"`RecreoJsDeplaceLeFocusTest` ne modelise aujourd'hui
+aucun attribut `tabindex`"* - est faux sur un point verifiable en une lecture : le faux DOM
+assertionne deja `tabindex`. Ce qui manque reellement est la focalisabilite native d'un element,
+un fait distinct qui change le mecanisme du correctif mais pas la conclusion du report (cout non
+cerne en s17). Note datee ajoutee dans `docs/backlog/backlog.md`, sans reecrire le paragraphe
+d'origine. **Ceci ne rouvre rien de ma section 4** : mon reclassement de `S17-C` au perimetre
+propose de s18 repose sur le retrait du telephone (`DEC-0040`) et sur le fait ajoute par
+`nadia-prof`, pas sur la capacite du faux DOM - inchange.
+
+### Ce que je route (ajout)
+
+- **`sofia-sm`** : les trois corrections ci-dessus sont faites, sans rouvrir le gel ; le cout reel
+  de `BPM-1` (point 4) est a verser au sequencement si elle ne l'a pas deja fait de son cote.
+- **Personne d'autre** : aucun mecanisme, aucun rendu, aucun refus ne sont touches par cet
+  amendement.
+
+## Impact de cet amendement
+
+- `docs/backlog/backlog.md` : quatre notes datees ajoutees (correction du critere `BPM-1` de
+  `S17-4` ; requalification de `SYN-12`/`SYN-13` sous `S17-3` ; reevaluation du cout de `BPM-1` ;
+  correction du motif de report de `S17-C`). Aucun texte d'origine reecrit.
+- `squad/decisions/produit/DEC-0041-...md` (ce fichier) : cette section ajoutee.
+- Aucun autre fichier n'est modifie par cet amendement.
