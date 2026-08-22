@@ -168,8 +168,24 @@ class LAnimationRetardeMaisNeDetermineRienTest {
      * pas une chose qu'une expression reguliere lit correctement.
      */
     static List<Regle> reglesMaison(Path racine) {
+        return regles(feuillesMaison(racine));
+    }
+
+    /**
+     * Les memes regles, lues sur les feuilles vendorisees. Exposee pour
+     * {@code LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest} : la declaration tierce qui borne
+     * la largeur du conteneur vit exclusivement sous {@code @media}, donc ne peut etre lue que par un
+     * balayage qui garde le contexte de regles-@ - celui-ci. Un second decoupage de blocs CSS dans le
+     * meme module serait une duplication sans motif, ce que le commentaire de {@link Regle} dit
+     * depuis ADR-0030.
+     */
+    static List<Regle> reglesTierces(Path racine) {
+        return regles(TailleDesTextesEtBoutonsTest.feuillesTierces(racine));
+    }
+
+    private static List<Regle> regles(List<Path> feuilles) {
         List<Regle> regles = new ArrayList<>();
-        for (Path feuille : feuillesMaison(racine)) {
+        for (Path feuille : feuilles) {
             String nom = feuille.getFileName().toString();
             String source = sansCommentaires(lire(feuille));
             List<String> pile = new ArrayList<>();

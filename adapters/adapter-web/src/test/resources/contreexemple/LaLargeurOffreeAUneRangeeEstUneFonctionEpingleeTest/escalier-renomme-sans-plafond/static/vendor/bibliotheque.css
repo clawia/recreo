@@ -1,0 +1,26 @@
+/* Jeu fautif d'ADR-0054, obligation 3 d'ADR-0013 : une bibliotheque tierce fictive, dont aucun nom
+   de classe ni aucun seuil ne coincide avec ceux de la production, pour prouver que la derivation
+   trouve l'escalier par sa forme et non par le nom "container" ni par les seuils de Bootstrap. */
+* {
+    box-sizing: border-box;
+}
+
+.enveloppe {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 640px) {
+    .enveloppe {
+        max-width: 600px;
+    }
+}
+
+@media (min-width: 900px) {
+    .enveloppe {
+        max-width: 860px;
+    }
+}
