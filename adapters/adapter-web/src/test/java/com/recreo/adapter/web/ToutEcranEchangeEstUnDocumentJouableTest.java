@@ -121,7 +121,7 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
      * aucune, sont un defaut : ce garde-fou ne saurait plus quel element remplacer, donc quel
      * document l'enfant obtient.
      */
-    private static String zoneEchangee(Document coquille) {
+    static String zoneEchangee(Document coquille) {
         Set<String> cibles = new LinkedHashSet<>();
         for (Element porteur : coquille.select("[" + ATTRIBUT_DE_CIBLE + "]")) {
             cibles.add(porteur.attr(ATTRIBUT_DE_CIBLE).strip());

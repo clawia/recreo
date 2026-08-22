@@ -207,6 +207,17 @@ class TailleDesTextesEtBoutonsTest {
         return feuilles(racine, false);
     }
 
+    /**
+     * Les feuilles vendorisees : {@code static/vendor/} (ADR-0014). Exposee pour la meme raison que
+     * {@link #feuillesMaison} - {@code LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest} lit ces
+     * feuilles avec leur structure de regles-@ plutot qu'aplaties par selecteur, parce que la seule
+     * declaration de {@code .container} qui borne une largeur vit sous {@code @media}. Le perimetre
+     * ne doit etre derive qu'une fois.
+     */
+    static List<Path> feuillesTierces(Path racine) {
+        return feuilles(racine, true);
+    }
+
     static Map<String, String> blocsTiers(Path racine) {
         return blocsParSelecteur(feuilles(racine, true));
     }
