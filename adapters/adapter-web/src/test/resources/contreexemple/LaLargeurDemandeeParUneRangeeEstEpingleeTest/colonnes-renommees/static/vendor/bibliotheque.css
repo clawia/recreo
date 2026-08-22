@@ -1,0 +1,23 @@
+/* Jeu fautif d'ADR-0055, obligation 3 d'ADR-0013 : une bibliotheque tierce fictive dont aucun nom ne
+   coincide avec ceux de la production, pour prouver que la derivation trouve les colonnes d'une
+   rangee par leur position dans le document et non par le nom "proposition" ni par le nom "btn". */
+* {
+    box-sizing: border-box;
+}
+
+.enveloppe {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .enveloppe {
+        max-width: 600px;
+    }
+}
+
+.touche {
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #333333;
+}

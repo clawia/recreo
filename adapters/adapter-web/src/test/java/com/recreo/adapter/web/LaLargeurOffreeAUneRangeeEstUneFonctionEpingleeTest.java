@@ -193,7 +193,7 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
     }
 
     /** Le nom stable d'un element du document : sa balise, son identifiant, ses classes. */
-    private static String etiquette(Element element) {
+    static String etiquette(Element element) {
         StringBuilder nom = new StringBuilder(element.tagName());
         if (!element.id().isEmpty()) {
             nom.append('#').append(element.id());
@@ -292,6 +292,15 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
 
     /** Les termes lateraux qu'un corps de regle declare, dans l'ordre ou son auteur les a ecrits. */
     private static List<String> termesLateraux(String corps) {
+        return termesDeclares(corps, TERMES_LATERAUX);
+    }
+
+    /**
+     * Les declarations de {@code proprietes} que ce corps de regle porte, dans l'ordre ou son auteur
+     * les a ecrites. ADR-0055 lit le meme corps avec un autre jeu de proprietes : la lecture est la
+     * meme, le jeu de proprietes est ce qui distingue la largeur offerte de la largeur demandee.
+     */
+    static List<String> termesDeclares(String corps, Set<String> proprietes) {
         List<String> termes = new ArrayList<>();
         for (String declaration : corps.split(";")) {
             int deuxPoints = declaration.indexOf(':');
@@ -299,7 +308,7 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
                 continue;
             }
             String propriete = declaration.substring(0, deuxPoints).strip();
-            if (!TERMES_LATERAUX.contains(propriete)) {
+            if (!proprietes.contains(propriete)) {
                 continue;
             }
             int position = debutDeDeclaration(corps, propriete);
@@ -309,7 +318,7 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
     }
 
     /** Vrai si cette regle declare un repli, donc si son sujet est une rangee repliable. */
-    private static boolean declareUnRepli(Regle regle) {
+    static boolean declareUnRepli(Regle regle) {
         int position = debutDeDeclaration(regle.corps(), REPLI);
         return position >= 0
                 && !valeurDeclaree(regle.corps(), position, REPLI).strip().equals("nowrap");
@@ -336,7 +345,7 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
     }
 
     /** Les elements que ce selecteur designe dans ce document ; un selecteur illisible est un echec. */
-    private static List<Element> designes(Document document, String selecteur) {
+    static List<Element> designes(Document document, String selecteur) {
         try {
             return document.select(selecteur).stream().toList();
         } catch (Selector.SelectorParseException | IllegalArgumentException illisible) {
@@ -364,21 +373,7 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
                         + "prouve rien, la largeur d'une rangee ne serait plus une fonction du viewport")
                 .isNotEmpty();
 
-        List<Element> rangees = new ArrayList<>();
-        for (Regle regle : maison) {
-            if (!declareUnRepli(regle)) {
-                continue;
-            }
-            for (Element designe : designes(document, sansPseudoClasses(regle.selecteur()))) {
-                if (!rangees.contains(designe)) {
-                    rangees.add(designe);
-                }
-            }
-        }
-        assertThat(rangees)
-                .as("aucune rangee repliable dans ce document : ce garde-fou ne prouve rien, la "
-                        + "propriete qu'il garde n'existe que pour un conteneur qui se replie")
-                .isNotEmpty();
+        List<Element> rangees = rangeesRepliables(document, maison);
 
         List<String> lignes = new ArrayList<>();
         for (Element rangee : rangees) {
@@ -400,6 +395,31 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
             }
         }
         return lignes;
+    }
+
+    /**
+     * Les rangees repliables de ce document : les elements que designe une regle maison declarant un
+     * repli. Population derivee de la feuille servie, jamais d'un nom ecrit ici. ADR-0055 juge la
+     * meme population : deux tables qui decriraient deux ensembles de rangees differents ne
+     * s'additionneraient pas, elles se contrediraient.
+     */
+    static List<Element> rangeesRepliables(Document document, List<Regle> maison) {
+        List<Element> rangees = new ArrayList<>();
+        for (Regle regle : maison) {
+            if (!declareUnRepli(regle)) {
+                continue;
+            }
+            for (Element designe : designes(document, sansPseudoClasses(regle.selecteur()))) {
+                if (!rangees.contains(designe)) {
+                    rangees.add(designe);
+                }
+            }
+        }
+        assertThat(rangees)
+                .as("aucune rangee repliable dans ce document : ce garde-fou ne prouve rien, la "
+                        + "propriete qu'il garde n'existe que pour un conteneur qui se replie")
+                .isNotEmpty();
+        return rangees;
     }
 
     /**
