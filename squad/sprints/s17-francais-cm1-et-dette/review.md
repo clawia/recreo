@@ -264,3 +264,43 @@ supplementaires routees par `theo-archi`, non affectee.
 7. **Deux etats perimes signales par `nadia-prof` restent ouverts** dans `FICHE-bandit-manchot-
    synonymes-cm1.md`, routes a `camille-po`, non corriges par moi ni par le relecteur (pas leur texte).
 8. **Aucun worktree n'est supprime, aucun push n'est effectue dans ce geste.**
+
+## Done pedagogique du 2026-08-22 (s17 prolonge) - mesure formelle de `S17-3` contre 744 x 551 - REFUSE
+
+Ecrit par `nadia-prof`. Le verdict complet, sa methode et ses chiffres vivent dans
+`squad/conformite/FICHE-bandit-manchot-synonymes-cm1.md`, section datee du 2026-08-22 ; cette section
+n'en est que la reprise, comme la porte pedagogique l'exige.
+
+- **`SYN-5` est TENUE** contre la reference 744 x 551 fixee par le second amendement de `DEC-0040` :
+  **seize items sur seize** placent leur derniere proposition au-dessus du pli, pire marge
+  **+19,81 px**, tous stables au tirage. 16 parties, **160 tirages**, `scrollY = 0` verifie sur les
+  160. Le motif de mes refus du 2026-08-19 et du 2026-08-21 n'existe plus a cette reference, et je le
+  dis sans y ajouter de condition.
+- **Le Done pedagogique reste REFUSE, sur un motif neuf qui n'est pas `SYN-5`.** En me trompant
+  volontairement - 9 parties, **360 lectures**, trois echecs sur chaque manche, `scrollY = 0` sur les
+  360 - j'ai mesure que sur **cinq items sur seize** (« contente », « calme », « triste »,
+  « difficile », « facile ») **le bloc de retour juste/faux est entierement sous le pli** : bandeau a
+  4,19 px, texte du verdict a 13,19 px, indice a 72,19 px, **dans les trois etats d'echec**. L'enfant
+  qui se trompe recoit **une rature et aucun mot** ; au troisieme echec, la phrase qui lui donne la
+  reponse est invisible.
+- **Trois conditions neuves et datees du 2026-08-22** : **`SYN-11`** (bloquante, le bandeau et le
+  texte du verdict visibles sans defiler, revelation comprise), **`SYN-12`** (non bloquante, l'indice
+  coupe sur la majorite des items), **`SYN-13`** (non bloquante, la revelation enseigne par sa phrase
+  et non par elimination des etiquettes barrees). `SYN-11` **n'est pas un durcissement de `SYN-5`** :
+  autre objet, autre etat.
+- **Deux corrections de ma main.** Le fait du bloc juste/faux que j'avais ecrit le 2026-08-22 hors
+  fiche etait **deduit d'une hauteur de document**, pas mesure, et je n'avais alors joue aucun echec :
+  mesure, il est plus severe que ce que j'avais ecrit. Et le defaut de tabulation que j'ai retrouve a
+  la revelation **est deja `S17-C`, de moi, en s17** - je ne le represente pas comme neuf ; j'y ajoute
+  seulement le fait qu'une sortie au clavier existe (presser une reponse fausse rend le focus au
+  bouton revele) et que rien a l'ecran ne l'indique.
+- **Portee de ce verdict, dite comme une reponse et non comme une reserve** : mes largeurs sont
+  mesurees en Segoe UI sur Chrome/Windows quand un iPad rendra en San Francisco. La reference fixee
+  est une **taille de viewport**, pas un appareil : mesurer 744 x 551 dans un navigateur reel est
+  mesurer cette reference. Une autre police changerait **lesquels** des seize items tombent dans le
+  defaut, pas le mecanisme qui le produit - le bloc de retour vit sous les propositions, et une
+  seconde rangee coute 90 px. Que quiconque disposera d'un appareil de la cible refasse la table des
+  largeurs ; d'ici la, mon compte de cinq items ne doit pas etre cite comme une propriete des
+  appareils.
+- **Ce verdict ne juge aucun autre jeu du catalogue** : `BPM-1`, `COMP-4` et la famille `M4` n'ont pas
+  ete mesures a cette reference, et je ne verse pas un pronostic dans une fiche.

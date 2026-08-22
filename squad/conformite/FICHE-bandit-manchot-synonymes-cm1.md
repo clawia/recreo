@@ -23,6 +23,21 @@
   pas effacee. **La forme retenue et servie n'est pas celle-ci** : chaque item presente le mot
   cible dans une phrase, sous la forme que `lea-dev` a livree et que `nadia-prof` a creditee
   (`SYN-1` a `SYN-9` tenues sur le contenu).
+- **Statut global au 2026-08-22 (s17 prolonge), mesure formelle contre la reference 744 x 551 fixee
+  par `DEC-0040`** : **Done pedagogique REFUSE**, et **`SYN-5` est TENUE**. Les deux vont ensemble et
+  ne se contredisent pas. `SYN-5` : **seize items sur seize** placent leur derniere proposition
+  au-dessus du pli, pire marge **+19,81 px**, tous stables au tirage - 16 parties, **160 tirages**,
+  `scrollY = 0` verifie sur les 160. Le motif du refus est **neuf et n'est pas `SYN-5`** : en me
+  trompant volontairement (9 parties, **360 lectures**, trois echecs par manche, `scrollY = 0` sur les
+  360), j'ai mesure que sur **cinq items sur seize** - « contente », « calme », « triste »,
+  « difficile », « facile » - **le bloc de retour juste/faux est entierement sous le pli**, bandeau a
+  4,19 px et texte du verdict a 13,19 px sous le pli, **dans les trois etats d'echec** : l'enfant qui
+  se trompe recoit **une rature et aucun mot**, et au troisieme echec la phrase qui lui donne la
+  reponse est invisible. D'ou **`SYN-11`** (bloquante), **`SYN-12`** et **`SYN-13`** (non bloquantes).
+  **Et je corrige un enonce de ma main du meme jour** : j'avais **deduit** ce fait d'une hauteur de
+  document sans jamais avoir joue un echec ; mesure, il est plus severe que ce que j'avais ecrit.
+  `S17-C` se reproduit ici et n'est pas reprononcee, avec un fait ajoute : une sortie au clavier
+  existe a la revelation, et rien a l'ecran ne l'indique.
 - **Statut global au 2026-08-21 (s17), mesure des seize items** : **Done pedagogique REFUSE.**
   **`SYN-5` n'est pas tenue** : **sept items sur seize** posent la derniere proposition **sous le pli**,
   six a 87 px et un a 39 px. Methode : 8 parties jouees au clavier, **80 tirages**, `scrollY = 0` verifie
@@ -849,6 +864,267 @@ l'enfant ne peut pas jouer.** Tant qu'aucun outil ne mesure une hauteur rendue, 
 et le fait que je me sois trompee le 2026-08-20 en ne mesurant qu'un tirage dit exactement ce que cette
 situation coute.
 
+### Done pedagogique du 2026-08-22 (s17 prolonge) sur S17-3, mesure formelle contre la reference 744 x 551 - REFUSE, et `SYN-5` est TENUE
+
+> **Ce que cette section est.** La mesure formelle que `camille-po` nomme dans le second amendement
+> de `DEC-0040` : elle a fixe la reference d'ecran a **744 x 551 px** sur mon fait du 2026-08-22
+> (`squad/conformite/mesure-hauteur-utile-nouvelle-cible.md`, branche `s17-nadia-hauteur-utile`) et
+> sur l'inventaire d'`ines-design`, en ecrivant que seule une mesure de moi, dans les formes, pourrait
+> rouvrir mon refus. La voici.
+>
+> **Je ne reecris aucune des sections datees qui precedent.** Mes refus du 2026-08-19 et du
+> 2026-08-21 restent lisibles tels quels, avec les chiffres qu'ils portaient et la reference contre
+> laquelle ils ont ete prononces. Celle-ci s'ajoute.
+>
+> **En une phrase** : **`SYN-5` est tenue** a 744 x 551, mesuree sur les seize items au pire tirage -
+> et **le Done pedagogique reste REFUSE**, sur un motif neuf, mesure, qui n'est pas `SYN-5` : sur
+> **cinq items sur seize**, un enfant qui se trompe **ne voit aucun mot de ce que le jeu lui repond**.
+
+#### 0. Ce que je verifie de ma main avant de m'appuyer dessus
+
+**Un fait que je croyais neuf et qui est deja de moi.** En jouant au clavier, j'ai trouve qu'a la
+revelation le bouton que le message nomme est hors de l'ordre de tabulation. J'ai failli l'ecrire ici
+comme une decouverte. **C'est `S17-C`, bloquante, que j'ai moi-meme prononcee en s17 dans
+`FICHE-barre-entree-niveau.md`**, avec sa cause deja lue dans le depot (`recreo.js` pose
+`tabindex="-1"` sur sa cible meme quand cette cible est deja focalisable) et sa juste attribution
+(`M13`, s10, pas `S17-1`). Je ne la represente donc pas comme neuve : je confirme qu'elle **se
+reproduit a l'identique sur ce jeu-ci** au niveau de `db2bff6`, et j'y ajoute un seul fait qu'elle ne
+portait pas - voir 4.
+
+**Et je corrige, dans le sens defavorable a ma propre severite**, ce que `S17-C` laissait entendre.
+Elle dit *"un enfant qui presse Tab ne peut plus revenir sur le bouton que le jeu vient de lui
+nommer"*, ce qui se lit comme un blocage definitif. **Mesure aujourd'hui : il existe une sortie au
+clavier**, et elle fonctionne - presser une mauvaise reponse re-rend l'ecran, le serveur replace le
+focus sur le bouton revele, et l'appui suivant fait avancer la manche (verifie : le focus revient
+bien sur le bouton nomme, et l'enonce change ensuite). L'enfant n'est donc pas enferme ; il doit
+**presser volontairement une reponse fausse pour qu'on lui rende la bonne**, et rien a l'ecran ne le
+lui indique. C'est moins grave que ce que ma formulation laissait croire, et je le dis avant qu'on me
+le fasse remarquer.
+
+#### 1. Methode
+
+Reference mesuree : **viewport 744 x 551 px**, `deviceScaleFactor` a 1, mode non mobile, navigateur
+reel pilote par son protocole de deverminage, application servie depuis le fat jar construit sur un
+worktree dedie forke de `round-two` a **`db2bff6`** (SHA releve par moi avant tout travail).
+**Jeu au clavier seul**, tabulation et Entree, jamais un appel HTTP fabrique.
+
+Deux campagnes, parce que `SYN-5` et le sort du bloc de retour ne se mesurent pas dans le meme etat :
+
+- **Campagne A, `SYN-5`** : 16 parties, **160 tirages**, reponses justes pour derouler les manches.
+  Les seize items vus **8 a 13 fois** chacun. Chiffre retenu par item : **son pire tirage**
+  (`SYN-10`). **`scrollY = 0` verifie avant chaque lecture : 0 sur 160.**
+- **Campagne B, le bloc de retour** : 9 parties, **360 lectures**, et cette fois **je me trompe
+  volontairement** - premier echec, deuxieme echec, troisieme echec (revelation) sur **chaque**
+  manche, avec une lecture complete a chacun des trois. Les seize items ont ete vus dans les trois
+  etats d'echec. **`scrollY = 0` verifie avant chaque lecture : 0 sur 360.**
+
+**Pourquoi la campagne B existe, et c'est un manquement de ma part que je repare.** Le 2026-08-20 et
+le 2026-08-21 j'ai joue au clavier **en repondant juste a chaque fois**. Je n'avais donc jamais
+mesure l'ecran que l'enfant recoit quand il se trompe - c'est-a-dire l'ecran ou ce jeu enseigne
+quelque chose. Mon propre reflexe l'exige (*"y compris en te trompant volontairement"*) et je ne
+l'avais pas applique sur ce paquet. Le motif du refus ci-dessous sort entierement de cette campagne.
+
+#### 2. `SYN-5` contre 744 x 551 - TENUE sur les seize, au pire tirage
+
+Conteneur des propositions mesure a **500 px** (la `container` Bootstrap plafonne la zone de contenu
+a 540 px sur toute la bande 576-767 px : la largeur utile n'est pas 744 px, elle est 500 px). Une
+rangee coute **90 px**, le chiffre du 2026-08-20, inchange.
+
+| Pire bas | Rangees | Etat sur les tirages | Marge au pli de 551 | Items |
+|---|---|---|---|---|
+| 531,19 | 2 | stable | **+19,81 px** | « contente », « calme », « triste », « difficile », « facile » |
+| 441,19 | 1 | stable | +109,81 px | « courageux », « gentil », « gaie », « douce », « malin », « beau », « fort », « grand », « fatigue » |
+| 393,19 | 1 | stable | +157,81 px | « propre », « petite » |
+
+**Seize items sur seize placent leur derniere proposition entierement au-dessus du pli. `SYN-5` est
+tenue.** Je l'ecris sans reserve et sans y ajouter de condition : c'est la barre que j'ai ecrite le
+2026-08-19, mesuree contre la reference que `camille-po` a fixee, et elle est atteinte. **Je ne
+deplace pas mes poteaux** : le deficit de 39 a 87 px que je mesurais le 2026-08-21 n'existe plus a
+cette reference, et le dire est la seule chose honnete a faire.
+
+**`SYN-10` est satisfaite, et son objet change de nature ici.** Aucun des seize items ne varie selon
+le tirage, sur 8 a 13 tirages chacun. La variabilite que j'avais etablie a 320 px de rangee ne se
+reproduit pas a 500 px : les cinq items qui debordent la rangee la debordent de 14 a 38 px, trop pour
+qu'un ordre de tirage les rattrape. **`SYN-10` n'en devient pas inutile** - c'est elle qui m'a fait
+faire 160 tirages plutot qu'un, et c'est la seule raison pour laquelle je peux ecrire "stable" plutot
+que "je n'ai pas regarde".
+
+**Le seul point de fragilite que je nomme sur `SYN-5`** : l'item « gentil » tient sur une rangee avec
+**1,51 px** de marge de largeur (mesure du 2026-08-22, section 2.3 de mon fichier de mesure). S'il
+basculait a deux rangees, son pire bas passerait de 441,19 a 531,19 - **encore au-dessus du pli**.
+`SYN-5` ne tomberait donc pas ; c'est le motif du 3 ci-dessous qu'il rejoindrait.
+
+#### 3. Le motif du refus - le bloc juste/faux, mesure et non plus deduit
+
+**Ce que j'avais ecrit le 2026-08-22 hors fiche, et que je corrige ici.** J'avais note, sans le
+juger, que sur les cinq items a deux rangees *"un enfant qui repond faux ne verra pas le message qui
+lui dit pourquoi sans defiler"*. C'etait **deduit d'une hauteur de document** (587 px pour un pli a
+585), pas mesure sur les blocs eux-memes, et je n'avais alors jamais joue un seul echec. **Mesure a
+present, l'enonce est confirme et il est plus severe que ce que j'avais ecrit.**
+
+Positions relevees, pli a 551 px, sur les 270 lectures d'echec de la campagne B :
+
+| Items | Lectures | Bandeau juste/faux | Texte du verdict | Indice |
+|---|---|---|---|---|
+| **11 a une rangee** | 180 | jamais sous le pli (0/180) | **entierement visible 180/180** | entierement visible **21/180** |
+| **5 a deux rangees** | 90 | **entierement sous le pli 90/90** | **entierement sous le pli 90/90** | entierement sous le pli 90/90 |
+
+Chiffres exacts sur les cinq items a deux rangees : le bandeau `.signal` commence a **555,19**, soit
+**4,19 px sous le pli** ; le texte du verdict commence a **564,19**, soit **13,19 px sous le pli** ;
+l'indice commence a **623,19**, soit **72,19 px sous le pli**. Le document fait **705 a 735 px** pour
+un pli a 551. Les trois etats d'echec donnent **les memes positions au centieme** : ce n'est pas un
+cas de bord, c'est tout le chemin d'erreur de ces cinq items.
+
+**Ce que l'enfant voit, mesure et regarde**
+(`releves-s17/s17-syn-744x551-echec-2rangees-rien-de-visible.png`, item « calme », premier echec) :
+la consigne, la phrase, les trois propositions, et **le mot qu'il vient de presser barre**. Rien
+d'autre. Pas de bandeau rouge, pas de croix, **pas un mot**. Le score affiche toujours *"Score : 0"*.
+Un enfant de CM1 qui se trompe recoit une rature et le silence.
+
+**Et au troisieme echec, c'est le meme ecran muet**
+(`releves-s17/s17-syn-744x551-revelation-2rangees-muette.png`) : le jeu ecrit *"C'est tranquille.
+Appuie sur tranquille."* **entierement sous le pli**. Ce que l'enfant voit est deux mots barres et un
+mot intact - il peut deduire la reponse par elimination, ce qui n'est pas ce que le jeu croit lui
+enseigner. **Et c'est precisement l'ecran ou `S17-C` mord** : le bouton que le message nomme, message
+qu'il ne voit pas, est celui que sa tabulation ne peut pas atteindre.
+
+**Pour comparaison, les onze items a une rangee**
+(`releves-s17/s17-syn-744x551-echec-1rangee-verdict-visible.png`) : croix rouge et *"Ce n'est pas ca.
+Essaie encore !"* entiers, et le bloc d'indice qui commence juste au bord bas. **La mecanique n'est
+pas fautive en soi** : elle fait exactement ce qu'il faut sur onze items sur seize. Ce sont les 90 px
+de la seconde rangee qui poussent tout le retour hors de l'ecran.
+
+#### 4. Verdict : REFUSE
+
+**Le Done pedagogique de `S17-3` est REFUSE contre la reference 744 x 551.** Motif, en une phrase
+actionnable : **sur cinq items sur seize - « contente », « calme », « triste », « difficile »,
+« facile » - le bloc de retour juste/faux est entierement sous le pli, bandeau compris, dans les
+trois etats d'echec ; l'enfant qui se trompe recoit une rature et aucun mot, et au troisieme echec la
+phrase qui lui donne la reponse est invisible.**
+
+**Pourquoi ce n'est pas une reserve mais un refus**, et je reponds a la question que je me pose
+toujours a cet endroit - est-ce que je refuse parce que c'est verifie, ou parce que ce serait plus
+confortable d'avoir l'air severe ?
+
+- **Ce n'est pas un etat de bord, c'est l'etat normal d'un jeu de revision.** Un enfant qui revise
+  les synonymes se trompe. Une partie tire dix manches dans seize items : rencontrer au moins un de
+  ces cinq items est le cas courant, pas l'exception.
+- **Ma propre barre, ecrite avant ce sprint** : *"un simple 'faux' n'apprend rien"*. Ici il n'y a
+  meme pas de "faux" ecrit, il y a une rature. Le seul endroit ou ce jeu enseigne quelque chose,
+  c'est le retour a l'erreur, et sur 31 % des items il est vide.
+- **La sortie par le defilement ne me suffit pas ici**, et je dis pourquoi plutot que de le poser :
+  sur les onze items a une rangee, le verdict visible dit a l'enfant qu'il s'est passe quelque chose,
+  et le bord de l'indice qui affleure lui dit qu'il y a plus bas. Sur les cinq, **rien ne signale
+  qu'il existe quelque chose a aller chercher.** Un enfant ne defile pas vers une information dont il
+  ne sait pas qu'elle existe.
+
+**Ce qui est credite, et ce n'est pas une consolation de forme.** `SYN-1` a `SYN-4`, `SYN-6` a
+`SYN-9` restent tenues ; les seize phrases sont justes ; les indices ne nomment jamais la reponse ;
+`SYN-9` est impeccable ; **et `SYN-5`, le motif de mes deux refus precedents, est tenue.** Le contenu
+n'est pas en cause et ne l'a jamais ete. **Le motif de ce refus n'est le travail ni de `lea-dev` ni
+de `camille-po`** : c'est un defaut de disposition de la mecanique partagee, revele par une reference
+plus contrainte en hauteur, sur un etat que personne - moi comprise - n'avait mesure.
+
+**Ce refus ne bloque pas le sprint suivant** et il retourne a `camille-po` comme les precedents.
+
+#### 5. Conditions neuves, datees du 2026-08-22
+
+- **`SYN-11` (bloquante). Le retour juste/faux est entierement visible sans defiler, a la reference
+  744 x 551, sur chaque item, au pire tirage, et dans chacun des trois etats d'echec.** Sont
+  concernes le bandeau `.signal` et le texte du verdict ; l'indice releve de `SYN-12`. La condition
+  vaut aussi pour l'etat de revelation : la phrase qui nomme la reponse est la seule chose qui
+  debloque un enfant, et elle ne peut pas etre hors de l'ecran.
+  **Ce n'est pas un durcissement de `SYN-5`**, qui porte sur les propositions et que je viens de
+  declarer tenue. C'est une condition d'un autre objet, sur un etat que `SYN-5` n'a jamais couvert.
+  **Le levier, mesure, et je ne le choisis pas** : les cinq items debordent la rangee de 500 px de 14
+  a 38 px, et une rangee de plus coute 90 px. Reduire la largeur totale des trois etiquettes est un
+  choix de contenu (`camille-po`, `lea-dev`, avec repassage par `SYN-2` et `SYN-3`) ; changer la
+  disposition du cabinet ou la place du bloc de retour est un choix de forme (`ines-design`,
+  mecanisme a `theo-archi`). **Ce que j'exige est le resultat.**
+  **Verification de fermeture** : sur chaque item, au pire tirage, aux trois etats d'echec, le bas du
+  texte du verdict est au-dessus de 551 px a `scrollY = 0`.
+- **`SYN-12` (non bloquante). L'indice est coupe par le pli sur la grande majorite des items.**
+  Mesure : entierement visible sur **21 lectures sur 180** pour les items a une rangee, **0 sur 90**
+  pour les cinq autres. Je ne la rends pas bloquante, et je dis pourquoi : quand le verdict est
+  visible, l'enfant sait qu'il s'est passe quelque chose et voit le bord du bloc suivant. C'est une
+  perte de qualite pedagogique reelle - l'indice est ce qui enseigne - pas une impasse.
+- **`SYN-13` (non bloquante, observation). Sur les cinq items a deux rangees, le troisieme echec
+  revele la reponse par elimination visuelle** avant tout texte : deux etiquettes barrees, une
+  intacte. Ce n'est pas faux au sens du contenu, mais ce n'est pas l'apprentissage que la revelation
+  vise. Elle disparaitra d'elle-meme si `SYN-11` est fermee par la largeur ; je la nomme pour qu'on ne
+  la decouvre pas comme neuve si elle est fermee par un autre chemin.
+
+#### 6. Ce que mon verdict vaut sans la mesure qui me manque - c'est une reponse, pas une reserve
+
+**Ce qui me manque** : mes largeurs d'etiquettes sont mesurees en **Segoe UI** (Chrome sur Windows) ;
+la pile de polices du produit commence par `system-ui, -apple-system`, qui resout vers **San
+Francisco** sur iOS. Les deficits des cinq items (14 a 38 px sur une rangee de 500) sont de l'ordre
+de 3 a 7 %, c'est-a-dire **du meme ordre que l'ecart de largeur entre deux polices systeme**. Sur un
+iPad mini reel, le nombre d'items a deux rangees pourrait donc etre autre que cinq - je ne peux pas
+dire dans quel sens, et **je n'ai pas d'iPad**.
+
+**Et voici pourquoi cela ne suspend pas mon verdict.**
+
+1. **La reference que `camille-po` a fixee est une taille de viewport, pas un appareil.** Elle ne
+   nomme ni navigateur ni police. Mesurer 744 x 551 dans un navigateur reel **est** mesurer cette
+   reference. Savoir si cette reference represente fidelement un iPad est une question sur la
+   reference, qui appartient a `camille-po` et a `ines-design` - pas un trou dans ma mesure.
+2. **Le motif du refus ne depend pas du compte d'items.** Ce que j'ai mesure est un **mecanisme** :
+   le bloc de retour vit sous les propositions, et une seconde rangee de propositions coute 90 px,
+   ce qui pousse le bandeau **4,19 px** et le verdict **13,19 px** sous le pli. Ce mecanisme ne
+   depend d'aucune police. Une police plus etroite changerait **lesquels** des seize items tombent
+   dedans ; elle ne ferait pas remonter le bloc pour ceux qui y tombent.
+3. **Le cas ou ma mesure serait un faux refus est nommable, et je le nomme** : si San Francisco
+   faisait tenir les seize items sur une rangee, `SYN-11` serait satisfaite sur cet appareil-la et
+   mon compte de cinq serait faux. **Dans ce cas c'est ma mesure qu'il faudrait corriger, et je la
+   corrigerais** - comme j'ai corrige mon chiffre de 2,81 px et comme je corrige au 3 ci-dessus une
+   deduction que je n'avais pas mesuree. Ce qui ne changerait pas : `SYN-11` resterait due, parce que
+   le mecanisme reste, et parce que « gentil » tient sa rangee a 1,51 px pres.
+
+**Reponse, donc** : mon verdict est complet contre la reference telle qu'elle est ecrite, et il est
+incomplet comme prediction de ce que fera un iPad. Ce que je demande n'est pas une mesure de plus de
+ma part - c'est que **quiconque disposera d'un appareil de la cible refasse la table des largeurs**,
+et que d'ici la personne ne cite mon compte de cinq items comme une propriete des appareils.
+
+#### 7. Ce dont je reste seule garde apres ce verdict
+
+`SYN-5`, `SYN-10`, `SYN-11`, `SYN-12` et `SYN-13` n'ont **aucun garde-fou executable**, et la
+campagne B ajoute le pire cas de tous : **la propriete "l'enfant voit ce que le jeu lui repond quand
+il se trompe" n'existe dans aucun fichier de contenu, dans aucun gabarit et dans aucun test.** Elle
+n'apparait qu'au rendu, dans un etat qu'on n'atteint qu'en jouant **et en se trompant**. Le fait qui
+le dit mieux que tout : j'ai joue 160 tirages au clavier le 2026-08-21 et 160 de plus le 2026-08-22
+sans jamais voir ce defaut, **parce que je repondais juste**.
+
+Je maintiens les trois proprietes nommees le 2026-08-22 dans
+`squad/conformite/mesure-hauteur-utile-nouvelle-cible.md` (hauteur rendue de la derniere proposition,
+invariance au tirage, largeur effective de la rangee - cette derniere routee a `theo-archi`) et
+j'ajoute :
+
+4. **La visibilite du retour a l'erreur** (`SYN-11`) : elle depend de la hauteur cumulee de tout ce
+   qui precede le bloc de retour, donc du nombre de rangees de propositions, donc de la largeur. Rien
+   ne la garde.
+5. **`S17-C` reste ouverte et se reproduit ici** : a la revelation, le bouton que le message nomme est
+   hors de l'ordre de tabulation. Je ne la reprononce pas - elle est deja bloquante dans
+   `FICHE-barre-entree-niveau.md` - je constate qu'elle vaut aussi sur ce jeu au niveau de `db2bff6`,
+   et j'ajoute a son enonce le seul fait qu'elle n'avait pas : **une sortie au clavier existe**,
+   presser une reponse fausse rend le focus au bouton revele et l'appui suivant fait avancer la
+   manche (mesure du 2026-08-22), **et rien a l'ecran ne l'indique**.
+
+#### 8. Ce que ce verdict ne fait pas
+
+- Il ne juge **aucun autre jeu du catalogue**. `BPM-1`, `COMP-4` et la famille `M4` n'ont pas ete
+  mesures a 744 x 551. Le mecanisme decrit au 6.2 les concerne tres probablement - le bloc de retour
+  vit sous les propositions dans la mecanique partagee - mais **"probablement" n'est pas mesure**, et
+  je ne verse pas un pronostic dans une fiche.
+- Il ne rouvre ni ne ferme le mandat du 2026-08-21 sur le repli des rangees. Le fait que
+  `camille-po` attendait est ici : **a 744 px le repli se produit encore, sur cinq items sur seize,
+  et il n'est plus dependant du tirage.** Ce qu'elle en fait lui appartient.
+- Il ne fixe aucune reference et ne conteste pas celle qui est fixee. 744 x 551 est mesurable, je
+  l'ai mesuree, et le cout annonce - une reference et non une par appareil - est celui que j'ai paye :
+  160 tirages pour `SYN-5`, 360 lectures pour `SYN-11`.
+- Il ne compte **aucun item de plus a retirer**. Le paquet est deja passe de vingt a seize sur une
+  prediction de moi ; le nombre d'items n'a jamais ete une de mes conditions et ne le devient pas.
+
 ### Deux etats perimes en tete de cette fiche, signales le 2026-08-21 - ils ne sont pas de moi et je ne les reecris pas
 
 En relisant cette fiche pour y ecrire la table ci-dessous, j'ai trouve **deux enonces perimes dans son
@@ -920,6 +1196,24 @@ comparer ; **je ne renomme rien.**
 portees par les cinq fichiers de code** ; elle ne recopie aucun enonce de condition ; et elle **ne
 prononce aucun verdict** - les verdicts sont aux sections datees de cette fiche, et le plus recent est
 un refus.
+
+### Complement date du 2026-08-22 a la table ci-dessus - trois jetons neufs, et deux etats qui changent
+
+**Je ne reecris pas la table du 2026-08-21.** Sa colonne dit "Etat au 2026-08-21" : elle est datee,
+donc elle n'est pas perimee, elle est historique. Ce complement dit ce qui a change et ce qui s'ajoute,
+mesure contre la reference **744 x 551** fixee par `DEC-0040`.
+
+| Jeton | Ouverte le | Ce qu'elle exige, en une ligne | Etat au 2026-08-22 |
+|---|---|---|---|
+| **`SYN-5`** bloquante | 2026-08-19 | la **derniere proposition de chaque item** est entierement visible sans defiler, sur la totalite des items | **TENUE** contre 744 x 551 : 16/16, pire marge **+19,81 px**, 160 tirages. L'etat "NON TENUE" de la table ci-dessus reste vrai **de la reference 360 x 640** contre laquelle il a ete mesure |
+| **`SYN-10`** bloquante | 2026-08-21 | `SYN-5` se mesure **au pire tirage** de chaque item, jamais sur un tirage | **satisfaite** a cette reference : 16/16 items stables sur 8 a 13 tirages chacun. Reste **ouverte comme regle de methode** - elle vaut a toute largeur |
+| **`SYN-11`** bloquante | 2026-08-22 | le **bandeau juste/faux et le texte du verdict** sont entierement visibles sans defiler, sur chaque item, au pire tirage, **dans les trois etats d'echec, revelation comprise** | **NON TENUE** : **5 items sur 16**, bloc entierement sous le pli (bandeau a 4,19 px, verdict a 13,19 px), 90 lectures sur 90 |
+| **`SYN-12`** non bloquante, datee | 2026-08-22 | l'**indice** est entierement visible sans defiler | **non tenue** : 21 lectures sur 180 pour les items a une rangee, 0 sur 90 pour les cinq autres. Non bloquante parce qu'un verdict visible signale a l'enfant qu'il y a plus bas |
+| **`SYN-13`** non bloquante, observation | 2026-08-22 | la **revelation enseigne par sa phrase**, pas par elimination visuelle des etiquettes barrees | **observee** sur les 5 items a deux rangees ; se ferme d'elle-meme si `SYN-11` est fermee par la largeur |
+
+**Ce que ce complement ne fait pas** : il ne renomme aucun jeton, il ne recopie aucun enonce complet
+(les enonces vivent dans les sections datees), et **il ne prononce aucun verdict** - le verdict du
+2026-08-22 est a sa section, et c'est un refus dont le motif est `SYN-11`, jamais `SYN-5`.
 
 ## Arbitrage prealable bloquant, avant tout premier commit de code
 
