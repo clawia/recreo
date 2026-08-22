@@ -257,3 +257,22 @@ correspond a aucun tirage reellement joue par l'application.
 - Que 375 px soit une largeur suffisante pour couvrir "une tablette ou un telephone tenu debout"
   reste une approximation produit, pas une mesure ; je la retiens parce qu'elle correspond a une
   largeur de telephone courante en portrait, pas parce qu'elle epuise la question.
+
+## Note du 2026-08-22 (camille-po) - le point 5 est amende par `DEC-0040`, texte d'origine inchange
+
+Le point 5 ci-dessus tranche *"oui, c'est un support vise"* pour une largeur d'ecran de telephone
+ou de tablette portrait, au motif qu'*"un enfant revise a la maison sur l'appareil disponible
+plutot que sur un ordinateur"*. L'utilisatrice a rendu l'arbitrage inverse le 2026-08-22 : la
+cible de deploiement devient ordinateur et tablette, et le telephone en sort. Je ne corrige pas le
+texte du point 5 ci-dessus, qui reste lisible tel qu'ecrit le 2026-08-05 et reste le motif exact
+qui a fonde quatre sprints de mesure contre un telephone en portrait : voir
+`DEC-0040-cible-de-deploiement-ordinateur-et-tablette-le-telephone-sort-du-perimetre.md`, qui
+porte la decision, son contexte et ce qu'elle rouvre.
+
+## Note du 2026-08-22 (camille-po, seconde) - la largeur de 375 px est remplacee par 744 px
+
+L'amendement du 2026-08-22 (second) a `DEC-0040` fixe la largeur de reference a 744 px (iPad mini,
+pire cas de largeur reel de la cible ordinateur et tablette), en remplacement des 375 px retenus
+au point 5 ci-dessus. Le texte d'origine reste lisible tel qu'ecrit ; c'est la reference qu'il
+fixait qui change, pas son raisonnement, qui restait valide pour la cible telephone qu'il visait
+alors.

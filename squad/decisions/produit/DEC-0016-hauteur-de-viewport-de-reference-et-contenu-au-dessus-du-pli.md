@@ -217,3 +217,27 @@ ouverte dans les memes termes, sans seuil chiffre.
   fusionnee qui aurait recopie les chiffres du 2026-08-11 avant cet amendement.
 - `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee.
 - Aucun Done pedagogique ni statut de catalogue n'est modifie par cet amendement.
+
+## Note du 2026-08-22 (camille-po) - la reference de 640 px est amendee par `DEC-0040`, texte d'origine inchange
+
+Le point 1 ci-dessus fixe 640 px de hauteur de viewport de reference, motive non par une donnee
+sur les appareils mais par le fait que c'etait *"deja la convention que `nadia-prof` appliquait de
+fait"*. `ines-design` a mesure en s10
+(`squad/sprints/s10-la-forme-du-bandit-manchot/mesure-ines-hauteur-de-pli.md`) que cette hauteur
+est le plancher d'une generation de telephones sortie d'usage, 92 px sous la mediane de sa propre
+distribution, et qu'elle exclut alors les tablettes au motif qu'*"une tablette n'est pas le pire
+cas de hauteur"* pour une cible telephone. L'utilisatrice a rendu, le 2026-08-22, l'arbitrage
+inverse sur la cible elle-meme : ordinateur et tablette, telephone exclu. Je ne corrige pas le
+texte du point 1 ci-dessus, qui reste lisible tel qu'ecrit le 2026-08-10 et reste la reference sur
+laquelle tout le catalogue a ete mesure jusqu'a ce jour : voir
+`DEC-0040-cible-de-deploiement-ordinateur-et-tablette-le-telephone-sort-du-perimetre.md`, qui
+porte la decision, son contexte et ce qu'elle rouvre - notamment sur le sort de la famille `M4`
+(`DEC-0025`) et sur `S17-3` (`DEC-0039`), tous deux juges contre cette meme reference de 640 px.
+
+## Note du 2026-08-22 (camille-po, seconde) - la hauteur de 640 px est remplacee par 551 px
+
+L'amendement du 2026-08-22 (second) a `DEC-0040` fixe la hauteur de reference a 551 px (dalle
+d'ordinateur a 720 px, chrome de navigateur avec barre de favoris mesuree sur poste reel a 169 px
+par `nadia-prof`), en remplacement des 640 px retenus au point 1 ci-dessus. La nouvelle reference
+est plus contraignante que l'ancienne, pas moins : 551 px est inferieur a 640 px. Le texte
+d'origine reste lisible tel qu'ecrit ; c'est la reference qu'il fixait qui change.
