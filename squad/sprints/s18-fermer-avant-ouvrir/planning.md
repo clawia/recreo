@@ -286,3 +286,47 @@ encore inexacte** sur ces deux points precis (la reference `360 x 640` et l'outi
 forme applicable, seul le fond (BPM-1 aux trois etats d'echec, SYN-13 conditionnee au mecanisme)
 l'est. Le gel, l'objectif, le tableau de stories et le sequencement de ce planning ne changent pas
 par cette note.
+
+## Note du 2026-08-22 (seconde) - les trois criteres sont corriges, lot fusionne
+
+Le lot `s18-camille-po-corrections` (commit `9f204f6`, forke de `eed653b` - ma propre correction
+ci-dessus, pas d'une tete anterieure) est fusionne sans conflit (commit de fusion `eec9575`),
+documentaire seul (`DEC-0041`, `docs/backlog/backlog.md`, `DEC-index.md`, aucun fichier de code ni
+de test touche). **Les trois points que la note precedente disait "en cours de correction" le
+sont** :
+
+- **`S17-4` : un seul critere portait deux defauts, pas deux criteres distincts.** J'avais ecrit
+  "deux criteres de `S17-4` a corriger" ; `camille-po` a verifie ligne a ligne le tableau de
+  `theo-archi` (avis, section 1.4) contre les sept criteres de la story et n'a trouve qu'un seul
+  critere fautif (celui qui nommait `360 x 640` et `outils/mesurer-rendu.sh`), portant les deux
+  defauts que j'avais comptes comme deux criteres separes. Ma note d'origine n'etait donc pas
+  fausse sur le fond (les deux defauts existent et sont corriges), seule ma facon de les compter
+  aurait pu laisser croire a un second critere qui n'existe pas. Critere corrige par note datee
+  dans `docs/backlog/backlog.md`, sous `S17-4` : la reference en vigueur (`744 x 551`) et la
+  methode de `nadia-prof` s'y substituent, le fond ne change pas.
+- **`SYN-13` requalifiee en observation datee**, comme demande ; `SYN-12` laissee entierement au
+  jugement de `nadia-prof`, non transformee en critere de lot ; `SYN-11` non touchee.
+- **Le cout de `BPM-1` reevalue** (24 items aux trois etats d'echec contre 16 pour `SYN-11`, borne
+  vers le bas par deux faits declaratifs, allonge par l'atteignabilite de la revelation en pressant
+  trois fois la meme mauvaise reponse) : le chiffre confirme ce que ma section de sequencement
+  disait deja de la charge relative de `BPM-1` ; **le perimetre et le sequencement de ce planning
+  ne changent pas**, `camille-po` le dit elle-meme explicitement.
+
+**Deux points supplementaires verses par ce lot, sans consequence sur le gel** : le motif de
+`theo-archi` sur la migration `ADR-0049` (s18 seul sprint ou la reporter est gratuite) est
+desormais inscrit dans `DEC-0041` elle-meme, pas seulement dans l'avis ; et le motif de report
+d'origine de `S17-C` ("le faux DOM ne modelise aucun `tabindex`") est corrige par note dans le
+backlog - sans rouvrir le classement de `S17-C`, deja au perimetre de ce planning pour un autre
+motif (retrait du telephone, `DEC-0040`).
+
+**Porte technique rejouee apres cette fusion, documentaire seule** : `BUILD SUCCESS`, six modules,
+inchange sur le fond puisqu'aucun fichier de code n'est touche. **612 tests** par la methode de
+reference (XML, 98 rapports `surefire`/`failsafe`, somme de l'attribut `tests="..."`, identique a
+la somme des blocs `[INFO] Results:` du reacteur) ; **605** par la methode des rapports texte (97
+fichiers `.txt`, somme des lignes `Tests run:`) - **l'ecart de 7 est le meme qu'avant cette fusion**,
+documentaire, aucun fichier de test n'ayant change. **29 regles ArchUnit** (28 champs `@ArchTest`
++ 1 hors mecanisme sur `ScanDeComposantsTest`, hors module de contre-exemple), inchange. **Les
+trois garde-fous de CI** (`prefixes`, `chemins`, `outils`) rejoues, tous verts sur l'arbre fusionne.
+
+`round-two` est desormais a **`eec9575`**. Le gel (objectif, tableau de stories, sequencement,
+reprise des six lots orphelins) n'est pas retouche par cette note.
