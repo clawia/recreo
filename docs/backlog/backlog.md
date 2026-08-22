@@ -4690,7 +4690,17 @@ ici : il fait l'objet d'une story distincte instruite par `theo-archi`.
 
 ### Story de correction - Le bouton nomme a la revelation est absent de l'ordre de tabulation (`S17-C`, `M13`, anterieure a s17)
 
-**Non affectee a un sprint.** `nadia-prof`, en sondant `S17-1` apres livraison, mesure qu'a la
+**Entre au perimetre propose de s18 (`DEC-0041`, camille-po, 2026-08-22).** Restee non affectee a
+l'issue de s17 (`DEC-0039`, amendement du 2026-08-19), cette story est reclassee : `DEC-0040`
+retire le telephone du perimetre de support, ce qui fait du clavier un chemin de jeu ordinaire sur
+le seul support qui reste vise, et le meme defaut vient de se reproduire sur `cm1-synonymes`
+(`squad/conformite/FICHE-bandit-manchot-synonymes-cm1.md`, verdict du 2026-08-22) sans etre
+reprononce. `nadia-prof` y ajoute un fait qui nuance sa severite sans la lever : une sortie au
+clavier existe a la revelation, l'enfant n'est pas enferme, mais il doit presser volontairement une
+mauvaise reponse pour que la bonne lui soit rendue. Ses criteres d'acceptation, ecrits ci-dessous,
+ne changent pas.
+
+`nadia-prof`, en sondant `S17-1` apres livraison, mesure qu'a la
 revelation d'une manche, au clavier, le jeu ecrit "C'est auront. Appuie sur auront." et pose le
 focus sur ce bouton avec son anneau - mais que ce bouton est **le seul absent de l'ordre de
 tabulation** (`squad/conformite/FICHE-barre-entree-niveau.md`, reserve `S17-C`, 2026-08-19).
@@ -4902,6 +4912,32 @@ a corriger (deplacement de la clause) et a mesurer un par un par `nadia-prof`, d
 a elle-meme fixe. Aucun Done pedagogique n'est prononce ; le refus du 2026-08-19 reste formellement
 en vigueur jusqu'a la mesure complete.
 
+### Note du 2026-08-22 (camille-po, s18) - remesuree a 744 x 551 : `SYN-5` tenue, Done REFUSE sur `SYN-11` neuve ; entre au perimetre propose de s18
+
+`nadia-prof` a remesure `S17-3` contre la reference fixee par `DEC-0040` (`squad/conformite/
+FICHE-bandit-manchot-synonymes-cm1.md`, verdict du 2026-08-22) : **`SYN-5` est tenue** - seize
+items sur seize au-dessus du pli, 160 tirages, pire marge +19,81 px. Le Done pedagogique reste
+**REFUSE**, sur un motif neuf et sans rapport avec la reference d'ecran : en se trompant
+volontairement (9 parties, 360 lectures), elle a mesure que sur **cinq items sur seize** le bloc de
+retour juste/faux (bandeau et texte du verdict) est **entierement sous le pli** dans les trois
+etats d'echec - un enfant qui se trompe une fois n'a ni rature ni mot, et au troisieme echec ne
+voit jamais la phrase qui lui donne la reponse. D'ou `SYN-11` (bloquante), `SYN-12` et `SYN-13`
+(non bloquantes), qui s'ajoutent aux criteres de cette story au meme titre que `SYN-5` a `SYN-10`.
+`S17-C` se reproduit egalement ici, sans etre reprononcee (voir la story de correction dediee) :
+une sortie au clavier existe a la revelation, rien a l'ecran ne l'indique.
+
+**Critere d'acceptation ajoute (`SYN-11`)** : etant donne chacun des cinq items dont les
+propositions plafonnent a deux rangees, quand l'enfant repond faux (aux trois etats d'echec -
+premiere erreur, deuxieme erreur, revelation apres la troisieme), alors le bandeau juste/faux et le
+texte du verdict sont entierement visibles au-dessus du pli, sans defiler, mesures a 744 x 551.
+
+**Ce que cette story ne tranche pas** : le mecanisme qui replace le bloc de retour au-dessus du pli
+(deplacer le bloc, reduire ce qui le precede, autre voie) - route a `ines-design` et `theo-archi`,
+sous le veto pedagogique de `nadia-prof` (`DEC-0041`).
+
+- **Lien decision** : `DEC-0041-perimetre-sprint-18-fermer-trois-dettes-avant-toute-couverture-
+  neuve-bpm-1-reclamee-a-nadia-prof.md`.
+
 ### S17-5 - Antonymes (francais CM1, non affectee, story compagne de S17-3)
 
 - **Besoin** : en tant qu'eleve de CM1, je veux retrouver, dans une phrase, le mot de sens oppose a
@@ -4983,6 +5019,26 @@ aujourd'hui la reponse au lieu de la manipulation qui y mene, quand le paquet es
 chacun de ces indices est corrige dans le meme geste." Le geste demande ne change pas (corriger
 tous les indices fautifs dans le meme mouvement que le raccourcissement) : seul le compte affiche
 etait faux, et `lea-dev` a corrige au-dela du compte annonce plutot qu'a sa hauteur.
+
+### Note du 2026-08-22 (camille-po, s18) - `BPM-1` reclamee a `nadia-prof`, entre au perimetre propose de s18
+
+`BPM-2`, `BPM-3` et `BPM-4` sont tenues depuis le 2026-08-19, et la reserve sur les trois indices
+qui nommaient encore la reponse est fermee depuis le 2026-08-21 (0 indice sur 24). Seule `BPM-1`
+manque encore a la condition de retour de `DEC-0024`. Le transfert de sa production a
+l'utilisatrice (`DEC-0039`, section 3) est leve par `DEC-0041` : la mesure de rendu qu'il
+attendait existe desormais couramment chez `nadia-prof` (`SYN-5`, `SYN-11`). `BPM-1` redevient une
+mesure de la squad.
+
+**Critere d'acceptation precise** : un dev ajoute l'entree `bandit-manchot-homophones-cm1` a
+`catalogue.yaml` (une entree, zero ligne de Java neuf, zero mecanique neuve, sur le patron des
+douze entrees deja presentes), puis `nadia-prof` produit `BPM-1` sur cette entree en incluant les
+trois etats d'echec (message, indice, revelation), pas seulement l'etat de repos - la lecon de
+`SYN-11` s'applique ici aussi. Si `BPM-1` tient et si le Done complet est prononce sans reserve
+bloquante, la ligne francais CM1 "homophones" de `squad/programme/MATRICE-couverture.md` passe a
+`couvert-valide` dans le meme geste que le verdict.
+
+- **Lien decision** : `DEC-0041-perimetre-sprint-18-fermer-trois-dettes-avant-toute-couverture-
+  neuve-bpm-1-reclamee-a-nadia-prof.md`.
 
 ### Story de migration - Les paquets de contenu servis portent leur matiere accentuee (execution d'ADR-0049)
 
