@@ -4750,6 +4750,19 @@ pas cerne sur un sprint deja charge.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, apres avis de `theo-archi` sur le
   mecanisme et son garde-fou.
 
+### Note du 2026-08-22 (camille-po, s18) - le motif de report cite ci-dessus est faux sur un point verifiable, sans consequence sur le report lui-meme
+
+`theo-archi` (`squad/sprints/s18-fermer-avant-ouvrir/avis-faisabilite.md`, section 4.1) verifie que
+*"`RecreoJsDeplaceLeFocusTest` ne modelise aujourd'hui aucun attribut `tabindex`"*, cite plus haut
+comme un des motifs du report a s17, est faux : le faux DOM de ce test porte deja une table
+d'attributs et assertionne `tabindex` sur au moins un cas. Ce qu'il ne modelise pas, et qui change
+le mecanisme du correctif, est **la focalisabilite native d'un element** (savoir qu'un `<button>`
+est focalisable et qu'un `<p>` ne l'est pas). Je ne reecris pas le paragraphe ci-dessus : le motif
+de report qu'il donne reste lisible tel qu'ecrit le 2026-08-19, avec sa conclusion juste (cout non
+cerne) construite sur une cause partiellement fausse. **Cela ne rouvre rien de ma decision** : le
+classement de `S17-C` au perimetre propose de s18 (note ci-dessus) tient independamment de ce point
+technique, et le choix du mecanisme reste entierement la main de `theo-archi`.
+
 ### S17-2 - Comprendre un texte narratif ou documentaire (francais CM1)
 
 - **Besoin** : en tant qu'eleve de CM1, je veux lire un court texte et repondre a une question sur
@@ -4938,6 +4951,33 @@ sous le veto pedagogique de `nadia-prof` (`DEC-0041`).
 - **Lien decision** : `DEC-0041-perimetre-sprint-18-fermer-trois-dettes-avant-toute-couverture-
   neuve-bpm-1-reclamee-a-nadia-prof.md`.
 
+### Note du 2026-08-22 (camille-po, s18, seconde) - `SYN-12` et `SYN-13` ne sont pas des criteres de lot ; `theo-archi` corrige ma formulation
+
+`theo-archi` (`squad/sprints/s18-fermer-avant-ouvrir/avis-faisabilite.md`, section 2.4) releve que
+la phrase ci-dessus ("`SYN-12` et `SYN-13` [...] s'ajoutent aux criteres de cette story au meme
+titre que `SYN-5` a `SYN-10`") est inexacte pour les deux, et je ne la reecris pas : elle reste
+lisible telle qu'ecrite le 2026-08-22 au matin. **La phrase juste, a lire a sa place :**
+
+- **`SYN-11`** (bloquante) est seule un critere de lot, et il est deja ecrit correctement
+  ci-dessus : bon tel qu'ecrit, non encodable, porte de `nadia-prof` seule. Ce qui devient
+  encodable depuis `ADR-0055` (fusionne dans ce meme lot) est l'obligation de remesure des que l'un
+  des deux membres de la comparaison de largeur change - jamais la mesure elle-meme.
+- **`SYN-12`** (indice sous le pli, non bloquante) reste **entierement** au jugement de
+  `nadia-prof`, comme elle l'a deja ecrit dans `squad/conformite/FICHE-bandit-manchot-synonymes-
+  cm1.md` : son argument ("un verdict visible signale a l'enfant qu'il y a plus bas") depend du
+  mecanisme retenu pour fermer `SYN-11`, pas d'un critere que je peux formuler avant que ce
+  mecanisme soit choisi. Rien a ecrire ici, rien a encoder.
+- **`SYN-13`** (revelation par elimination visuelle, non bloquante) n'est **pas un critere de
+  lot** : elle est **conditionnee au mecanisme retenu** pour `SYN-11` - `nadia-prof` l'a ecrit
+  elle-meme, "se ferme d'elle-meme si `SYN-11` est fermee par la largeur" (meme fiche). Un critere
+  d'acceptation ne peut pas dependre du levier qui le fermera avant que ce levier soit choisi.
+  `SYN-13` reste ce qu'elle est deja dans la fiche de conformite : **une observation datee**, a
+  reprononcer - ou non - par `nadia-prof` une fois le mecanisme livre et remesure, jamais une
+  condition de sortie de ce lot.
+
+Cette story n'ouvre donc, comme critere de lot testable ou porte a la seule verification de
+`nadia-prof`, que `SYN-11` - inchangee - et rien de plus sur `SYN-12`/`SYN-13`.
+
 ### S17-5 - Antonymes (francais CM1, non affectee, story compagne de S17-3)
 
 - **Besoin** : en tant qu'eleve de CM1, je veux retrouver, dans une phrase, le mot de sens oppose a
@@ -5039,6 +5079,44 @@ bloquante, la ligne francais CM1 "homophones" de `squad/programme/MATRICE-couver
 
 - **Lien decision** : `DEC-0041-perimetre-sprint-18-fermer-trois-dettes-avant-toute-couverture-
   neuve-bpm-1-reclamee-a-nadia-prof.md`.
+
+### Note du 2026-08-22 (camille-po, s18, seconde) - le critere `BPM-1` de S17-4 nomme une reference et un outil perimes, corrige par `theo-archi`
+
+Le critere de `S17-4` "repris au mot pres de `DEC-0024`" (ci-dessus, point 3 de la liste des
+criteres d'acceptation : *"quand on rend chaque manche a 360 x 640 avec `outils/mesurer-rendu.sh`
+[...] alors les propositions de reponse restent entierement visibles au-dessus du pli sur la
+totalite des 24 items"*) est **inapplicable sur deux points factuels**, etablis par `theo-archi`
+(`squad/sprints/s18-fermer-avant-ouvrir/avis-faisabilite.md`, section 1.2 et 1.4) : la reference
+qu'il nomme (360 x 640) n'existe plus depuis `DEC-0040` (744 x 551), et l'outil qu'il nomme
+(`outils/mesurer-rendu.sh`) rend une capture d'ecran d'une URL - il n'a aucune prise sur un etat
+d'echec, qui s'obtient en postant une mauvaise reponse dans une session de partie, et ne peut donc
+structurellement pas produire les trois quarts de ce que ce meme critere et `DEC-0041` demandent
+(message d'echec, indice, revelation - pas seulement l'etat de repos).
+
+Je ne reecris pas le critere ci-dessus, ni le point 3 de `DEC-0024` dont il est repris : ils
+restent lisibles tels qu'ecrits en s10 et en s17. **Le critere juste, a lire a leur place :**
+"Etant donne le paquet `cm1-homophones.yaml` raccourci et son entree de catalogue, quand
+`nadia-prof` mesure sur navigateur reel, a `scrollY = 0` verifie - la meme methode que `SYN-5` et
+`SYN-11` - l'etat le plus charge de chaque manche (message d'echec, indice, revelation) a la
+reference en vigueur (744 x 551 px, `DEC-0040`), alors les propositions de reponse restent
+entierement visibles au-dessus du pli sur la totalite des 24 items, jamais un critere en nombre de
+caracteres (`DEC-0016`) ni un echantillon (`BPM-1`)." **Le fond du critere ne change pas** - c'est
+sa reference et son outil qui avaient vieilli, pas ce qu'il demande a l'enfant de pouvoir voir.
+
+**Ce que je corrige aussi, dans le meme geste : le cout que j'avais chiffre ci-dessus et dans
+`DEC-0041` etait sous-estime.** `theo-archi` (meme avis, section 1.3) mesure que cette campagne
+porte sur **24 items** aux trois etats d'echec chacun, au pire tirage (`SYN-10`) - un ordre
+superieur a la derniere campagne comparable de `nadia-prof` (`SYN-11` : 9 parties, 360 lectures,
+sur 16 items seulement). Deux faits bornent cette campagne vers le bas sans en garantir l'issue :
+les 24 items ont tous exactement deux propositions (`SYN-10` y coute deux arrangements par item,
+non six), et le total de caracteres des deux etiquettes ne depasse jamais sept - une seconde rangee
+de propositions y est donc plus couteuse a declencher que sur `cm1-synonymes`. Un fait l'allonge en
+sens inverse : la revelation s'atteint en pressant trois fois la meme mauvaise reponse
+(`ESSAIS_AVANT_REVELATION = 3`, une proposition deja essayee restant cliquable), donc les trois
+etats d'echec sont chacun reellement atteignables et aucun ne peut etre saute. **Le perimetre que
+je propose ne change pas pour autant** : la decision de capacite (sequencer cette campagne contre
+celles de `SYN-11` et de `S17-C`) reste celle de `sofia-sm`, mais le cout qu'elle sequence doit
+etre le vrai, pas celui, trop bas, que j'avais annonce.
 
 ### Story de migration - Les paquets de contenu servis portent leur matiere accentuee (execution d'ADR-0049)
 
