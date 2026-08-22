@@ -1569,3 +1569,26 @@ changement de direction au sens de `DEC-0037`, ecrit ici et dans `DEC-0039` (ame
 des propositions, ouvert dans ce meme amendement et route a `ines-design`/`theo-archi`, est ce qui
 pourrait, un jour, fermer `SYN-5` sur `S17-3` ; il n'est pas cense produire d'increment avant la
 cloture de s17.
+
+## Synthese a l'ouverture de s18 (2026-08-22) - perimetre propose, tableau inchange
+
+`DEC-0041` (`camille-po`) propose un perimetre de trois actions de fermeture de dette pour s18,
+sans ouvrir aucune ligne `non couvert` neuve. Le tableau reste exactement celui de la cloture de
+s17 : je ne le recopie pas.
+
+**Ce que ce perimetre pourrait rendre, si `nadia-prof` mesure et juge favorablement, et rien
+avant** : la ligne francais CM1 "Distinguer et utiliser correctement les principaux homophones
+grammaticaux" (`S17-4`) est la seule candidate a `couvert-valide` - `BPM-2` a `BPM-4` sont deja
+tenues, seule `BPM-1` manque, et son transfert a l'utilisatrice est leve (`DEC-0041`, section 2).
+**Chiffre honnete, non acquis** : 9/46 (19,6 %) -> au mieux 10/46 (21,7 %), un gain de 2,1 points,
+conditionne a une mesure qui n'existe pas encore.
+
+**Ce que ce perimetre ne rend pas** : `S17-3` (synonymes) reste `en cours` quel que soit le sort de
+`SYN-11` a `SYN-13` - les antonymes manquent toujours et cette ligne n'entre jamais dans le
+numerateur sur le seul paquet synonymes (`nadia-prof`, 2026-08-19). Aucune autre ligne ne bouge :
+zero contenu neuf n'est ouvert a s18, deliberement (`DEC-0041`, section 1).
+
+**Si `BPM-1` ne tient pas ou si son Done n'est pas complet a la cloture**, s18 rejoint la serie des
+sprints sans mouvement reel de couverture deja nommee par `DEC-0037` - je le dis a l'ouverture
+plutot qu'a la cloture, puisque c'est la seule action de ce perimetre qui porte un espoir de
+mouvement.

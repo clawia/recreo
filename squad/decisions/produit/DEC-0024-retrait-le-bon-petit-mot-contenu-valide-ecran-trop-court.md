@@ -345,3 +345,15 @@ a cette decision plutot qu'une story a planifier - le meme mecanisme, dans l'aut
 point 2 de cette decision l'avait deja pose pour le retrait. L'entree revient au catalogue le jour
 ou `BPM-1` est produite et ou `nadia-prof` prononce son Done sur le paquet raccourci, dans le meme
 geste, jamais en deux temps.
+
+## Note du 2026-08-22 (camille-po, s18) - le transfert de `BPM-1` a l'utilisatrice est leve
+
+`DEC-0039` (section 3) avait transfere la production de `BPM-1` a l'utilisatrice, hors du
+perimetre de la squad, pour un motif de capacite : aucun outil du depot ne pilotait un navigateur
+reel et personne dans la squad ne pouvait mesurer un rendu de ce type. Ce motif ne tient plus -
+`nadia-prof` mesure desormais couramment ce genre de rendu sur navigateur reel (`SYN-5` a
+744 x 551, seize parties, cent soixante tirages ; `SYN-11`, neuf parties, trois cent soixante
+lectures). `DEC-0041` (`squad/decisions/produit/DEC-0041-perimetre-sprint-18-fermer-trois-dettes-
+avant-toute-couverture-neuve-bpm-1-reclamee-a-nadia-prof.md`) leve ce transfert : `BPM-1` redevient
+une mesure de la squad, produite par `nadia-prof`. La condition de retour posee ci-dessus ne
+change pas : `BPM-1` **et** un Done pedagogique complet, dans le meme geste, jamais en deux temps.

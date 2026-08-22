@@ -119,6 +119,16 @@ pedagogiques qui y sont adossees (`F11`, `R-BARRE-4` dans `squad/conformite/
 FICHE-barre-entree-niveau.md`) : elles restent la responsabilite de `nadia-prof` de les nommer et de
 les rouvrir si l'ecoute ou la mesure de rendu venaient a exister par un autre chemin.
 
+### Note du 2026-08-22 (camille-po, s18) - le premier obstacle transfere ci-dessus revient a la squad, `BPM-1` avec lui
+
+La mesure de rendu venue a exister par un autre chemin, exactement la clause que je m'etais
+reservee ci-dessus. `nadia-prof` mesure desormais couramment sur navigateur reel (`SYN-5` a
+744 x 551, `SYN-11`) : la premisse de ce transfert - aucun agent de la squad ne peut produire un
+tel chiffre - ne tient plus. `DEC-0041` leve, pour `BPM-1` nommement, le transfert de sa production
+a l'utilisatrice pose par `DEC-0024` (amendement du 2026-08-19). La reserve `F11` (ecoute reelle au
+lecteur d'ecran) n'est pas concernee par cette note : aucune ecoute reelle n'a ete tentee, la
+premisse de son propre transfert reste intacte.
+
 ## 4. Le filtre par matiere : troisieme report, compte comme tel, pour la premiere fois sur instruction expresse
 
 `DEC-0032` a differe le filtre par matiere une premiere fois (s14 vers s15) sous deux conditions
