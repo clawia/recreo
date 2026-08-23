@@ -194,3 +194,87 @@ C'est une consequence attendue de la variante, pas une garantie que j'ecris a sa
   l'implementation de `lea-dev` selon le sequencement du planning.
 
 Je ne fusionne pas, je ne pousse pas.
+
+## Addendum du 2026-08-23 - ce que je sais desormais, et l'effet possible sur BPM-5
+
+- **Auteur** : ines-design. **Ce que je ne reecris pas** : la variante recommandee (section 1)
+  tient telle qu'elle est ecrite - je ne la modifie pas ici.
+- **Arbre** : `round-two` a `8046256` (releve par `git rev-parse round-two` sur ce worktree),
+  inchange depuis l'ecriture de la section 1. Ma proposition vit sur `s18-ines` a `bb81e91`,
+  non fusionnee.
+
+### 1. Deux faits confirmes par `theo-archi`, pris note, rien a corriger de mon cote
+
+- **L'arithmetique tient au pixel** (720 - 24 - 16 = 680, meme chaine que le 500 actuel) et la
+  borne haute doit etre le litteral de la bibliotheque tierce (`767.98px`), pas une valeur que
+  j'aurais pu inventer - sans elle, la declaration deborderait sur le palier 768-991 px et y
+  *abaisserait* son plafond de 960 a 720. Je n'avais pas ce chiffre en ecrivant la section 1 ;
+  je le note ici pour que le developpeur qui implementera ne le cherche pas deux fois.
+- **La variante est bloquee par un garde-fou remis en etat**, sur une premisse (la cible
+  telephone) que `DEC-0040` a deja retiree et que `camille-po` est en train de trancher. Ce n'est
+  pas un defaut de ma proposition et je n'ai rien a y changer : j'attends l'issue comme le reste
+  de la squad.
+
+### 2. Effet de la variante sur `BPM-5` ("Le bon petit mot") - reponse a la question posee
+
+**Un fait de structure, verifie en lisant le gabarit et la feuille servis, pas mesure sur un
+rendu** : dans `fragments/manche.html`, `.consigne`, `.enonce` et `.cabinet` (qui contient
+`.propositions`) sont trois freres, enfants directs du meme fragment injecte dans `#jeu`. `.enonce`
+ne perd donc **aucun** terme lateral que `.propositions` perdrait en plus de lui (la bordure du
+`.cabinet`, 16 px, ne s'applique qu'a ce qui est dedans) : **`.enonce` est gouverne par exactement
+la meme chaine de largeur que la rangee de propositions**, moins ce seul terme. Elargir le plafond
+de `.zone-jeu` sur le palier de reference, comme ma variante le propose, elargirait donc aussi la
+largeur disponible pour le texte de l'enonce, du meme ordre de grandeur (autour de 180 px) - pas
+seulement celle de la rangee de boutons.
+
+**Ce que j'en conclus, et je le dis dans les termes de la question posee** : **ma variante n'est
+pas sans effet sur `BPM-5`, par construction du gabarit** - il existe un chemin reel, verifiable
+dans le code sans aucun rendu, par lequel elle change la largeur disponible pour l'enonce, et
+`nadia-prof` a elle-meme etabli que c'est le nombre de lignes de l'enonce qui gouverne la hauteur
+avant l'indice sur ce jeu. **Je ne peux pas dire si elle suffit**, et je ne peux pas non plus dire
+avec confiance qu'elle n'est que partielle plutot que totale ou nulle - les trois issues restent
+ouvertes tant que personne n'a mesure.
+
+**Ce que je refuse explicitement de faire ici, et pourquoi** : je n'ai pas compte de caracteres par
+ligne, je n'ai pas estime une largeur de police pour deduire lesquelles des vingt-quatre phrases
+franchiraient le seuil d'une ligne a deux, et je n'ai tire aucune conclusion de l'arithmetique de
+la rangee (500 vers 680 px) vers la hauteur du document. C'est exactement le saut que la question
+me demande de ne pas faire, et il m'a ete signale a mes propres depens sur l'inventaire d'appareils
+de la semaine derniere (744 px de dalle qui s'est revele etre 500 px offerts a l'ecran). Le fait
+qu'un mot se coupe a la fin d'une phrase depend du rendu reel d'une police que je ne peux pas
+observer - seule `nadia-prof`, sur un navigateur reel, peut dire si l'un des vingt-quatre enonces
+passe de deux lignes a une a 680 px plutot qu'a 500, et si oui lesquels.
+
+**Si elle contribue sans suffire, ce qui manquerait - sans le concevoir.** Le mandat sur "Le bon
+petit mot" n'est pas ouvert pour moi et `camille-po` ne m'a rien demande sur ce jeu ; je nomme donc
+seulement la forme du manque, pas sa solution. `BPM-1` est deja tenue avec une marge tres large
+(139,81 px) sur les propositions elles-memes : le budget qui manque a `BPM-5` n'est donc pas celui
+de la rangee de boutons, il est celui de tout ce qui s'empile **avant** l'indice (consigne, enonce,
+cabinet) et de la longueur propre de chaque indice une fois affiche. Si l'elargissement de l'enonce
+ne suffit que pour une partie des items - `nadia-prof` nomme deja douze items a 15,81 px du pli en
+plus des huit qui echouent aujourd'hui, donc vingt candidats potentiels sur vingt-quatre - le residu
+demanderait un levier distinct de celui que ma variante actionne, du meme ordre que celui que
+`SYN-11` a demande sur l'autre jeu : un changement de categorie plutot qu'un ajustement fin, et pas
+necessairement le meme puisque la cause geometrique n'est pas la meme rangee.
+
+### 3. Ce que je ne conclus pas, faute de mesure
+
+- Je ne conclus pas que la variante ferme, ferme partiellement, ou ne change rien a `BPM-5`.
+- Je ne conclus pas que les huit items qui echouent aujourd'hui, ni les douze qui sont a 15,81 px
+  du pli, sont parmi ceux dont l'enonce passerait de deux lignes a une a 680 px.
+- Je ne conclus rien sur le contenu (quels enonces, quels indices) : ce n'est pas mon mandat sur ce
+  jeu, et je ne l'ouvre pas moi-meme.
+- Je ne propose aucun mecanisme neuf pour `BPM-5` : si la variante recommandee pour `SYN-11` ne
+  suffit pas, la question revient a `sofia-sm` et a `theo-archi` pour un mecanisme dedie, comme
+  celle-ci l'a ete pour `SYN-11`.
+
+## Ce que je remonte (addendum)
+
+- **A `nadia-prof`** : si elle mesure la variante recommandee une fois implementee, je lui demande
+  de verifier aussi son effet sur "Le bon petit mot" (nombre de lignes de chacun des vingt-quatre
+  enonces, position de l'indice dans les trois etats) - pas seulement sur `cm1-synonymes`, puisque
+  le mecanisme est partage.
+- **A `sofia-sm`** : `BPM-5` n'a pas de mecanisme affecte a ce jour dans mes lectures ; si la
+  mesure ci-dessus montre un residu, il faudra le mandater separement, sur ce jeu specifiquement.
+
+Je ne fusionne pas, je ne pousse pas.
