@@ -462,3 +462,86 @@ pas non plus.
 - `squad/decisions/produit/DEC-0041-...md` (ce fichier) : cette section ajoutee. Le perimetre gele
   (trois actions) n'est pas modifie.
 - Aucun autre fichier n'est modifie par cet amendement.
+
+## Amendement du 2026-08-23 (camille-po, s18, cloture) - `SYN-16` : la bande 576-719 px designe un appareil reel, pas un vide de reference
+
+`nadia-prof` a mesure, sur le correctif livre de `SYN-11`, que celui-ci ne mord qu'a partir de
+720 px de viewport : entre 576 et 719 px, les cinq items de synonymes gardent deux rangees et leur
+verdict sous le pli (594,19 px), et six a sept items d'homophones gardent leur indice coupe
+(`BPM-8`). Elle verse ce fait en observation datee non bloquante (`SYN-16`), refusant a bon droit
+d'elargir ses conditions apres coup - elles nomment 744 x 551 et y sont satisfaites - et me route
+une question de perimetre plutot que de la trancher elle-meme : **existe-t-il un appareil cible
+dans cette bande ?**
+
+### Ce que je verifie avant de repondre
+
+Deux faits, aucun ne suffisant seul :
+
+1. **L'inventaire d'`ines-design`** (`squad/sprints/s17-francais-cm1-et-dette/proposition-ines-
+   cible-ordinateur-et-tablette.md`) etablit un pire cas de largeur de 744 px (iPad mini) et aucune
+   configuration d'ordinateur plus etroite que 1280 px. **Sur cette base seule**, la bande 576-719
+   ne correspond a aucun appareil de la cible : elle est plus etroite que la tablette la plus
+   etroite et que l'ordinateur le plus etroit.
+2. **Cet inventaire mesure des dalles, pas des fenetres.** Je l'ai relu a la source : sa methode
+   pour l'axe ordinateur est explicitement *"zoom a 100 %, fenetre maximisee"* - une fenetre de
+   navigateur non maximisee, ou deux fenetres cote a cote, n'y est jamais consideree. Or rien dans
+   `DEC-0040` ne restreint la cible "ordinateur" a une fenetre maximisee : la reference y est
+   deja etablie comme **une taille de viewport, pas un appareil** - `nadia-prof` l'a elle-meme pose
+   en tranchant sa reserve de police (`squad/conformite/FICHE-bandit-manchot-synonymes-cm1.md`,
+   section 6) : *"mesurer 744 x 551 dans un navigateur reel EST mesurer cette reference"*, precisement
+   parce qu'elle ne nomme ni navigateur ni appareil, seulement une taille de fenetre.
+
+### Ma reponse : c'est le viewport qui gouverne, et la bande designe un appareil reel
+
+**Une fenetre de navigateur a moitie ecran sur un ordinateur de la cible produit exactement cette
+largeur.** Un ordinateur a 1280 px de dalle (le pire cas identifie par `ines-design`) partage en
+deux donne 640 px ; un ecran de 1366 px, courant, en donne 683 - au centre de la bande que
+`nadia-prof` nomme. Ce n'est pas un usage marginal ou une manipulation qu'un enfant ferait
+deliberement pour casser l'application : partager son ecran entre deux fenetres, ou simplement ne
+pas maximiser son navigateur, est un geste ordinaire sur ordinateur - a la difference du telephone,
+exclu du perimetre par `DEC-0040` pour un motif de produit qui ne depend d'aucune mecanique de
+fenetre. **La bande 576-719 px est donc un viewport qu'un enfant sur la cible "ordinateur" peut
+atteindre sans rien faire d'inhabituel**, et `SYN-16` designe a ce titre un trou reel, pas un
+appareil fictif sans objet.
+
+**Ce que cela ne fait pas.** Je ne rouvre pas `DEC-0040` : la reference unique (744 x 551) reste
+celle contre laquelle `nadia-prof` mesure `SYN-5`, `SYN-11` et tout Done pedagogique - je ne lui
+demande pas de mesurer une seconde reference. `SYN-16` reste, comme elle l'a ecrit, une observation
+non bloquante : je ne la rends pas bloquante, je confirme seulement qu'elle nomme un fait qui
+compte plutot qu'un cas d'ecole.
+
+**Un ecart nomme, plutot que laisse en silence.** L'inventaire d'`ines-design` etablissait le
+plancher "ordinateur" (1280 px) sous une hypothese de fenetre maximisee qu'il ne rendait pas
+explicite comme telle - je ne la lui reproche pas, c'etait une methode de mesure raisonnable pour
+fixer la reference elle-meme, pas une declaration sur tout usage possible. Mais cette hypothese
+vient de rencontrer sa premiere consequence concrete (`SYN-16`), et je la nomme pour qu'elle ne
+reste pas une limite implicite que quelqu'un redecouvre plus tard sans methode ecrite.
+
+### Ce que je ne tranche pas
+
+`lea-dev` a nomme la contradiction qui rend un correctif difficile dans cette bande : y corriger le
+pli effondre les marges laterales (`SYN-14`), y preserver les marges laisse le verdict sous le pli.
+`nadia-prof` route cette part a `theo-archi` comme une question de mecanisme - je ne la resous pas
+et je ne prejuge d'aucune des deux issues. Je dis seulement que la bande est visee, donc que la
+question merite d'etre instruite plutot que fermee comme sans objet.
+
+### Ce que je route
+
+- **`theo-archi`** : la question de mecanisme que `lea-dev` a nommee (corriger le pli sans effondrer
+  les marges entre 576 et 719 px, ou l'inverse) reste enterement la sienne a instruire, quand elle
+  sera priorisee.
+- **`ines-design`** : nommer, dans son inventaire, l'hypothese de fenetre maximisee qui borne
+  aujourd'hui le plancher "ordinateur" a 1280 px - pas pour la remplacer par une mesure de plus ce
+  sprint, mais pour que la limite soit ecrite plutot qu'implicite la prochaine fois qu'elle sert de
+  base a une decision.
+- **`sofia-sm`** : `SYN-16` et la question de mecanisme qu'elle ouvre sont un candidat de backlog,
+  non affecte, non urgent - `SYN-11` et `BPM-5` sont fermees sur la reference en vigueur, ce trou
+  est un cran en dessous, non bloquant pour aucun Done ni aucune ligne de matrice a ce jour.
+- **`nadia-prof`** : aucune demande de mesure supplementaire. `SYN-16` reste ecrite comme elle
+  l'a posee.
+
+### Impact de cet amendement
+
+- `squad/decisions/produit/DEC-0041-...md` (ce fichier) : cette section ajoutee.
+- Aucun fichier de conformite, aucune ligne de `squad/programme/MATRICE-couverture.md`, aucun
+  perimetre gele n'est modifie par cet amendement.
