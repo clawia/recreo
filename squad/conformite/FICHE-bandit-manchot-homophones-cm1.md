@@ -90,6 +90,16 @@
   `en cours`. **Reserve de robustesse reelle** : 9,81 px est **sous** mon propre seuil de bruit de
   police (15 a 35 px), donc satisfaite et fragile sur les items 13 et 23. Les douze items a 15,81 px
   passent tous a 45,81 px. Mesure complete en fin de fiche.
+- **Remesure du 2026-08-23 (s18, troisieme), sur le correctif LIVRE (`s18-lea`, arbre `4702524`,
+  621 tests verts)** : **`BPM-5` FERMEE** - **0 item sur 24** perd du texte d'indice sous le pli dans
+  les trois etats d'echec, contre 8 sur 24 le matin ; pire bas de glyphe **541,19 px**, marge
+  **+9,81 px** ; `BPM-1` (411,19) et `M4` (474,19) inchangees ; 246 lectures, `scrollY = 0` sur les
+  246. La regle servie rend **au centieme** ce que rendait la regle injectee. **Done pedagogique de
+  `S17-4` : VALIDE SOUS RESERVE, aucune reserve bloquante** - le refus du matin est **leve, pas
+  efface**. **La porte de matrice est ouverte** : `camille-po` peut passer la ligne a
+  `couvert-valide`. Conditions neuves : **`BPM-7`** (declencheur de remesure, marge de 9,81 px sous le
+  seuil de bruit de police) et **`BPM-8`** (sous 720 px l'indice est encore coupe sur 6 a 7 items).
+  `BPM-6` reste ouverte, non bloquante, non reverifiee.
 - **Derniere mise a jour** : 2026-08-23 (la ligne ci-dessous, du 2026-08-13, est conservee telle
   qu'ecrite ce jour-la)
 - **Derniere mise a jour** : 2026-08-13
@@ -1626,3 +1636,147 @@ pour laquelle j'avais vise la cause et non les huit items etait bonne, et la cau
   neuf de ce jour, ecrit avec sa mesure et sa condition `SYN-14` dans
   `FICHE-bandit-manchot-synonymes-cm1.md`, section 5 : elle appartient au mecanisme, pas a ce jeu, et
   je ne la duplique pas ici.
+
+---
+
+### Remesure du 2026-08-23 (s18, troisieme) sur l'increment livre - `BPM-5` **FERMEE**, Done pedagogique de `S17-4` : **VALIDE SOUS RESERVE**
+
+> **Ce que cette section fait.** Elle remesure `BPM-5` sur le correctif **livre** (`s18-lea`,
+> `4702524`), la ou ma mesure de ce matin portait sur une regle que j'injectais. Elle leve le refus
+> que j'ai prononce ce matin, **et elle ne l'efface pas** : il reste ecrit, avec son motif, et c'est
+> lui qui a produit ce correctif.
+>
+> - **`BPM-5` : FERMEE.** **0 item sur 24** perd un caractere d'indice sous le pli, dans les trois
+>   etats d'echec, contre **8 sur 24** ce matin. Pire bas de glyphe **541,19 px**, marge **+9,81 px**.
+> - **`BPM-1` tenue** (411,19 px) et **`M4` tenue** (474,19 px), inchangees au centieme.
+> - **Done pedagogique de `S17-4` : VALIDE SOUS RESERVE**, aucune reserve bloquante.
+> - **Consequence de matrice** : la porte pedagogique est **ouverte**. `camille-po` peut passer la
+>   ligne francais CM1 "homophones" a `couvert-valide`. **Ce fait n'est pas entre dans ce verdict**,
+>   pas plus que ce matin quand il aurait fallu l'ignorer pour refuser.
+
+**Arbre mesure** : `s18-nadia-remesure`, forke de `round-two` a **`8046256`**, `merge s18-lea` en
+avance rapide vers **`4702524`** (embarque `s18-theo` et le lot de `marc-dev`), puis mes deux lots
+documentaires anterieurs. Six ancetres verifies un a un par `git merge-base --is-ancestor`.
+**`mvn clean verify` sur la racine : BUILD SUCCESS, 621 tests, 0 echec.** Regle presente dans la
+feuille **servie**, verifie sur `/css/recreo.css` avant toute mesure. Methode et precedent : section 1
+de la remesure du meme jour dans `FICHE-bandit-manchot-synonymes-cm1.md`.
+
+**Campagne sur ce jeu** : 6 parties, **246 lectures**, **24/24 items**, chacun dans les quatre etats,
+**`scrollY = 0` verifie avant chaque lecture, 0 sur 246**, **0 abandon**.
+
+#### 1. `BPM-5` sur le servi - FERMEE
+
+| | Avant le correctif | Regle injectee (ce matin) | **Servi** |
+|---|---|---|---|
+| Enonces a deux lignes | 8 | 2 (13, 23) | **2 (13, 23)** |
+| Items perdant du texte d'indice | **8 / 24** | 0 / 24 | **0 / 24** |
+| Pire bas de glyphe d'indice | 571,19 px (**-20,19**) | 541,19 px (+9,81) | **541,19 px (+9,81)** |
+| `BPM-1`, pire bas de proposition | 411,19 px | 411,19 px | **411,19 px** |
+| `M4`, pire bas de verdict | 474,19 px | 474,19 px | **474,19 px** |
+
+**Verification de fermeture, dans les termes ou j'ai ecrit `BPM-5` ce matin** - *"le texte de l'indice
+est lisible en entier sans defiler, sur la totalite des 24 items et dans les trois etats d'echec, la
+totalite de sa derniere phrase, ponctuation finale comprise"* : **atteint sur les 24.** Les huit mots
+que l'enfant perdait - *"endroit' fonctionne."*, *"déterminant."* (deux fois), *"fonctionne."* (trois
+fois), *"('rangent') : il faut un pronom."*, *"mot de possession, pas un mot qui montre du doigt."* -
+sont tous a l'ecran. Releve :
+`squad/conformite/releves-s18/s18-servi-744x551-bpm5-item-13-indice-entier.png`, a comparer avec
+`s18-bpm1-744x551-item-13-echec-indice-tronque.png` : meme item, meme etat, meme reference.
+
+**`BPM-5` est FERMEE.** Le refus du matin n'est pas efface ; il est leve, ici, avec sa date.
+
+#### 2. La fragilite se confirme, exactement telle que je l'avais donnee
+
+**+9,81 px de marge sur les items 13 et 23**, identique au centieme a la mesure injectee. **C'est
+toujours sous mon propre seuil de bruit de police (15 a 35 px)**, et je le redis parce que c'est une
+propriete du resultat, pas une reserve que j'ajouterais apres coup : sur ces deux items, une pile de
+polices un peu plus large ramenerait *"fonctionne."* sous le pli et rouvrirait le defaut exact que
+j'ai refuse ce matin. Les seize autres items sont a 45,81 px, confortables. **Je ne bloque pas
+sur une marge mince quand la barre que j'ai ecrite est atteinte** - mais je l'instrumente, et c'est
+`BPM-7` ci-dessous.
+
+#### 3. Constat neuf et date du 2026-08-23 - le correctif ne descend pas sous 720 px
+
+Joue sur l'increment livre a **700 et 719 px** de viewport, sur ce jeu :
+
+| Viewport | Items dont l'indice est coupe |
+|---|---|
+| 700 px | **6** (11, 13, 15, 16, 18, 23) sur 22 items vus |
+| 719 px | **7** (11, 12, 13, 15, 18, 22, 23) sur 21 items vus |
+| 720 px | **0** sur 20 items vus |
+| 744 px | **0** sur 21 items vus |
+
+**Sous 720 px, le defaut que j'ai refuse ce matin existe encore, inchange.** `BPM-5` nomme *"la
+reference en vigueur (744 x 551 px, `DEC-0040`)"* : elle est satisfaite a cette reference, donc fermee,
+et je ne l'elargis pas apres coup a tout le palier - ce serait deplacer mes poteaux et punir
+`lea-dev` d'avoir suivi `SYN-14`, que j'ai ecrite. **C'est une observation datee**, symetrique de
+`SYN-16` sur l'autre jeu, et elle devient `BPM-8` ci-dessous. J'ai accorde la bande 720-767,98 px et
+son motif dans `FICHE-bandit-manchot-synonymes-cm1.md`, section 4 ; je ne le duplique pas ici.
+
+#### 4. Une correction de ma propre main, faite avant de m'appuyer dessus
+
+Dans un premier depouillement j'ai lu **5 px** d'air a droite de la derniere proposition a 720 px, et
+j'ai failli l'ecrire comme un defaut. **C'est faux, et l'erreur etait de ma methode** : j'agregeais un
+bord mesure sur un ecran de manche avec une largeur de document relevee sur l'accueil, ou une barre de
+defilement verticale retrecit la zone. Mesure refaite sur la seule chaine de boites d'un ecran de
+manche : a 720 px la rangee va de **20,00 a 700,00** dans un document de 720,00, soit **20 px de chaque
+cote, symetrique**, et **aucun debordement horizontal** (`scrollWidth` egal a `clientWidth`). A la
+reference, 32 px de chaque cote.
+
+#### 5. Done pedagogique de `S17-4` - **VALIDE SOUS RESERVE**
+
+**Etat de mes conditions sur l'increment livre `4702524`** : **`BPM-1` tenue** (accordee ce matin,
+411,19 px, marge +139,81) ; **`BPM-2`, `BPM-3`, `BPM-4` tenues** depuis le 2026-08-19, non rejugees ;
+ma reserve sur les indices **fermee** depuis le 2026-08-21 (0 sur 24) ; **`BPM-5` FERMEE** ce jour ;
+**`M4` tenue** (474,19 px) ; `BPM-6` ouverte, non bloquante. **Aucune condition bloquante ne reste
+ouverte.**
+
+**Audit joue** : oui - 6 parties, 246 lectures, les 24 items dans les quatre etats, au clavier seul,
+sur l'application servie. La condition de retour de `DEC-0024` demandait **`BPM-1` et un Done
+pedagogique complet, dans le meme geste** : `BPM-1` a ete produite ce matin sur cet increment-ci
+moins le correctif, et le Done est prononce maintenant sur l'increment complet, la ou le jeu est
+jouable et ou l'enfant recoit une aide entiere.
+
+**Verdict : VALIDE SOUS RESERVE.** Reserves, aucune bloquante :
+
+1. **`BPM-7` (neuve, datee du 2026-08-23, non bloquante).** La marge de `BPM-5` sur les items **13 et
+   23** est de **9,81 px**, sous mon seuil de bruit de police. **Toute modification d'un des termes
+   qui la composent - pile de polices, taille de police de l'enonce ou de l'indice, hauteur de
+   l'en-tete, plafond de largeur, texte de l'enonce ou de l'indice de ces deux items - oblige a
+   remesurer `BPM-5` avant d'etre livree.** C'est un declencheur de remesure, pas une barre neuve : je
+   n'exige aucune marge chiffree que je n'avais pas ecrite avant.
+2. **`BPM-8` (neuve, datee du 2026-08-23, non bloquante).** **Sous 720 px de viewport, l'indice est
+   encore coupe sur 6 a 7 items** (mesure a 700 et 719 px). `BPM-5` porte sur la reference et est
+   fermee ; ceci est le constat de ce qui n'est pas couvert. A `camille-po` de dire s'il existe un
+   appareil cible dans cette bande.
+3. **`BPM-6`** - a la revelation, la reponse revelee sortait de l'ordre de tabulation (mesure ce
+   matin). **Non reverifiee ici** : le lot de `marc-dev` est present sur cet arbre et pourrait en
+   avoir retire la cause, mais **je ne juge pas sa correction** et je ne veux pas la crediter sans
+   l'avoir instruite. `BPM-6` reste **ouverte et non bloquante**, a verifier avec son lot.
+4. **Reserve 5 de s04** - deux propositions donnent une chance sur deux au hasard. Ouverte depuis le
+   2026-08-06, non aggravee par ce lot.
+5. **Observation du 2026-08-19 sur l'item 3** (*"Papa ___ maman font la cuisine."*) - non rouverte,
+   disponible pour `camille-po`.
+
+**Ce que ce Done autorise, et ce que je refuse de laisser peser dessus.** `DEC-0041` prevoit que la
+ligne francais CM1 "homophones" passe `en cours` -> `couvert-valide` si `BPM-1` tient et si le Done est
+`VALIDE` ou `VALIDE SOUS RESERVE` sans reserve bloquante. **Les deux sont vrais : la porte est
+ouverte, et c'est `camille-po` qui passe la ligne, pas moi.** Ce matin j'ai refuse ce meme Done en
+ecrivant que le fait qu'il porte la seule progression de couverture du sprint n'entrait pas dans mon
+verdict. **Il n'y entre pas davantage aujourd'hui** : ce qui a change n'est pas l'enjeu, c'est que les
+huit indices decapites sont redevenus entiers, et je l'ai mesure sur les 24 items avant de l'ecrire.
+
+**Ce que ce Done ne couvre pas** : ce qu'un lecteur d'ecran annonce, ce qu'un enfant reel comprend, le
+clavier (`BPM-6`), et tout rendu sur une largeur, une hauteur ou une pile de polices que je n'ai pas
+mesurees - **`BPM-8` en est la partie que j'ai mesuree et qui echoue**.
+
+#### 6. Ce dont je reste seule garde
+
+- **La position de l'indice, a toute largeur et sur toute pile de polices.** La CI est verte a 621
+  tests sur l'arbre exact ou `BPM-8` existe, et aucun garde-fou du depot ne voit une position rendue
+  ni un mot passe sous le pli. **`BPM-5`, `BPM-7`, `BPM-8`, `BPM-1` et `M4` sont des mesures de moi,
+  un jour donne, a une reference donnee.**
+- **Le comptage des indices qui nomment leur reponse** : toujours a la main, toujours de moi. Le
+  vingt-cinquieme item ecrit plus tard ne sera verifie par personne.
+- **Les 9,81 px de marge des items 13 et 23** : c'est le point le plus mince de tout ce jeu, et rien
+  ne le surveille que `BPM-7`, qui est une phrase dans une fiche.

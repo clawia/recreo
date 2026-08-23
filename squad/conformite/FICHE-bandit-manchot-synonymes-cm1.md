@@ -90,6 +90,17 @@
   **ACCEPTE** sous condition de forme (SYN-1 a SYN-3), couverture partielle **ACCEPTEE** mais **ne
   comptera jamais dans le taux de couverture** sur les seuls synonymes (voir ci-dessous). Aucun code
   ecrit a ce jour.
+- **Remesure du 2026-08-23 (s18, troisieme), sur le correctif LIVRE (`s18-lea`, arbre `4702524`,
+  621 tests verts)** : **`SYN-11` FERMEE** - 0 item sur 16 a deux rangees, pire bas du texte du
+  verdict **474,19 px**, marge **+76,81 px**, 328 lectures, `scrollY = 0` sur les 328. La regle servie
+  rend **au centieme** ce que rendait l'injectee. **`SYN-13` fermee**, **`SYN-15` confirmee**,
+  **`SYN-14` satisfaite** aux treize largeurs mesurees (en-tete aligne partout, hauteur d'en-tete
+  53,19 px partout), **`SYN-12` confirmee non fermee** (3 items sur 16 contre 15 sur 16).
+  **Bande 720-767,98 px retenue par `lea-dev` : ACCORDEE** apres verification aux largeurs ou j'avais
+  trouve le defaut. **Done pedagogique de `S17-3` : VALIDE SOUS RESERVE, aucune reserve bloquante** -
+  mes trois refus sont leves, pas effaces. **La ligne de matrice ne passe PAS `couvert-valide`** :
+  `SYN-4` (les antonymes manquent) l'en empeche, comme mon arbitrage de s17 le disait. Condition
+  neuve : **`SYN-16`** (sous 720 px, le defaut de `SYN-11` existe encore, 5 items sur 16).
 - **Arbitrage de forme du 2026-08-23 (s18), sur la proposition d'`ines-design`** : variante
   **ACCEPTEE**, portee tranchee sur **`.zone-jeu` ET l'en-tete** (motif mesure : hauteur d'en-tete
   constante a 53,2 px de 576 a 768 px dans les trois configurations, aucun repli, geometrie de jeu
@@ -1490,3 +1501,207 @@ role ; je nomme le resultat que j'exige a la remesure (`SYN-14` ci-dessous).
   (+76,81 px) est tres au-dessus de l'incertitude de police que j'ai nommee, donc robuste ; celle de
   `SYN-12` sur les trois items residuels ne l'est pas, et une police plus large en ajouterait
   d'autres.
+
+---
+
+### Remesure du 2026-08-23 (s18, troisieme) sur l'increment livre - `SYN-11` **FERMEE**, bande de `lea-dev` **ACCORDEE**, Done pedagogique de `S17-3` : **VALIDE SOUS RESERVE**
+
+> **Ce que cette section fait.** Elle rend la remesure que j'ai moi-meme posee ce matin comme la seule
+> qui puisse fermer quoi que ce soit : le correctif est ecrit dans la feuille servie, plus dans une
+> regle que j'injecte. Elle juge aussi l'ecart de bande que `lea-dev` expose au lieu de le taire. Elle
+> n'efface aucun verdict anterieur, y compris mes trois refus.
+>
+> - **La bande retenue par `lea-dev` (720-767,98 px au lieu de 576-767,98) : ACCORDEE**, apres
+>   verification et non sur parole.
+> - **`SYN-11` : FERMEE.** 0 item sur 16 a deux rangees, pire bas du texte du verdict **474,19 px**,
+>   marge **+76,81 px**, sur **328 lectures**.
+> - **`SYN-14` : satisfaite** sur ses deux clauses, aux treize largeurs mesurees.
+> - **`SYN-13` : fermee.** **`SYN-15` : confirmee** sur le servi.
+> - **`SYN-12` : confirmee non fermee**, 3 items sur 16, non bloquante comme depuis le 2026-08-22.
+> - **Done pedagogique de `S17-3` : VALIDE SOUS RESERVE**, aucune reserve bloquante.
+> - **La ligne de matrice ne passe PAS `couvert-valide` pour autant** : mon propre arbitrage de s17
+>   l'en empeche sans les antonymes (`SYN-4`), et ce verdict ne le change pas.
+
+#### 0. L'arbre mesure
+
+Worktree neuf `s18-nadia-remesure`, forke de `round-two` a **`8046256`** (releve par
+`git rev-parse`, pas recopie), puis `git merge s18-lea` - **avance rapide** vers **`4702524`**, la
+branche du dev etant un descendant direct. L'arbre embarque donc aussi `s18-theo` (`ADR-0056`,
+`ADR-0057`) et le lot de `marc-dev` ; j'y ai ensuite fusionne mes deux lots documentaires anterieurs
+pour que cette fiche porte son histoire complete. Verifie par `git merge-base --is-ancestor` :
+`round-two`, `s18-lea`, `s18-theo`, `s18-marc`, `s18-nadia-bpm1` et `s18-nadia-syn11` sont tous
+ancetres. `outils/verifier-lignee.sh` : descend de la lignee de `round-two`.
+
+**`bash outils/mvn-jdk21.sh -B clean verify` sur la racine : BUILD SUCCESS, 621 tests, 0 echec**
+(48 + 13 + 321 + 144 + 89 + 6, somme faite sur les six blocs `Results`, pas recopiee). Le Done
+technique est acquis.
+
+**La regle est bien dans la feuille servie**, pas dans ma sonde : verifie en interrogeant
+`/css/recreo.css` sur l'application en marche, avant toute mesure.
+
+#### 1. La regle servie rend exactement ce que rendait la regle injectee
+
+| Grandeur | Regle injectee (ce matin) | Regle **servie** (ce soir) |
+|---|---|---|
+| Plafond de la zone de jeu | 720,00 px | **720,00 px** |
+| Plafond de l'en-tete | 720,00 px | **720,00 px** |
+| Rangee de propositions | 680,00 px | **680,00 px** |
+| Largeur de l'enonce | 696,00 px | **696,00 px** |
+| Items a deux rangees | 0 / 16 | **0 / 16** |
+| Pire bas du bandeau `.signal` | 499,19 px | **499,19 px** |
+| Pire bas du texte du verdict | 474,19 px | **474,19 px** |
+| `SYN-5`, pire bas de proposition | 411,19 px | **411,19 px** |
+| `SYN-12`, items perdant du texte | 3 / 16 (9, 12, 14) | **3 / 16 (9, 12, 14)**, memes mots |
+
+**Au centieme, sur chaque ligne, et sur un echantillon plus large que la mesure injectee** (328
+lectures servies contre 123 injectees). **C'est la troisieme fois que je verifie ce procede et la
+troisieme fois que le risque que j'avais nomme ne se realise pas** (`COMP-5`, `S17-A`, celui-ci). Je
+continuerai a le nommer et a remesurer : trois concordances ne sont pas une preuve, et le jour ou un
+lot introduira une specificite concurrente, c'est cette remesure-la qui le verra.
+
+#### 2. `SYN-11` - FERMEE
+
+**Campagne sur le servi** : 8 parties, **328 lectures**, **16/16 items**, chacun dans les quatre
+etats (repos, trois echecs), **`scrollY = 0` verifie avant chaque lecture, 0 sur 328**, **0 abandon**.
+
+**Verification de fermeture, dans les termes exacts ou je l'avais posee le 2026-08-22** - *"sur chaque
+item, au pire tirage, aux trois etats d'echec, le bas du texte du verdict est au-dessus de 551 px a
+`scrollY = 0`"* : **474,19 px sur les seize, aux trois etats**, bandeau `.signal` a 499,19 px.
+**`SYN-11` est FERMEE.** Je ne l'efface pas de la table des conditions : je l'y marque fermee avec sa
+date, et mes trois refus restent lisibles la ou ils ont ete ecrits.
+
+**`SYN-5` s'ameliore de 120 px** (531,19 -> 411,19). **`SYN-10` reste satisfaite** : aucune variation
+selon le tirage sur les 328 lectures. Releve :
+`squad/conformite/releves-s18/s18-servi-744x551-syn11-une-rangee-verdict-et-indice-visibles.png` -
+trois propositions sur une rangee, verdict **et** indice entiers a l'ecran.
+
+#### 3. `SYN-13` fermee, `SYN-12` confirmee non fermee, `SYN-15` confirmee
+
+- **`SYN-13`** : **0 item sur 16 a deux rangees.** L'elimination visuelle qu'elle observait n'est plus
+  observable. **Fermee par la cause**, comme je l'avais annonce le 2026-08-22.
+- **`SYN-12`** : **3 items sur 16** (9, 12, 14) perdent encore la fin de leur indice - *"quelqu'un."*,
+  *"avec bonté."*, *"réussie."* - contre **15 sur 16** avant le correctif. **Non fermee, non
+  bloquante**, pour le motif que j'avais ecrit et que je ne change pas : le verdict est visible, la
+  definition tronquee reste comprehensible, et aucune de ces trois troncatures ne peut se lire a
+  l'envers - contrairement a celles des homophones, ou j'ai bloque.
+- **`SYN-15`** : **confirmee sur le servi.** Les onze items sans defaut ne regressent pas, la rangee
+  passe de 500 a 680 px, la cible de doigt grandit, aucun item ne passe a deux rangees. C'est la
+  confirmation qu'`ines-design` avait demandee explicitement, faite sur le livre.
+
+#### 4. La bande de `lea-dev` - ACCORDEE, apres verification
+
+**Elle a raison de me la soumettre, et je le dis avant de trancher.** Ce n'est pas une simple
+correction numerique : **la bande faisait partie de la forme que j'ai accordee** ce matin, dans les
+termes d'`ines-design` (576-767,98 px). La changer change cette forme. L'exposer et demander
+confirmation est exactement ce qu'il fallait faire.
+
+**Son motif est verifie, pas cru** - mesure aux largeurs ou j'avais trouve le defaut :
+
+| Viewport | Zone de jeu | En-tete | Premier bouton | Aligne |
+|---|---|---|---|---|
+| 576 px | 540 px, gauche 10,5 | 540 px, gauche 10,5 | 22,5 px | oui |
+| 640 px | 540 px, gauche 42,5 | 540 px, gauche 42,5 | 54,5 px | oui |
+| 700 px | 540 px, gauche 72,5 | 540 px, gauche 72,5 | 84,5 px | oui |
+| 719 px | 540 px, gauche 82,0 | 540 px, gauche 82,0 | 94,0 px | oui |
+| 720 px | 705 px, gauche 0 | 705 px, gauche 0 | 12,0 px (liste) / **20,0 px** (proposition) | oui |
+| 744 px | 720 px, gauche 4,5 | 720 px, gauche 4,5 | 16,5 px (liste) / **32,0 px** (proposition) | oui |
+| 767 px | 720 px, gauche 16,0 | 720 px, gauche 16,0 | 28,0 px | oui |
+| 768 px | 720 px, gauche 16,5 | 720 px, gauche 16,5 | 28,5 px | oui |
+
+**Sous 720 px, tout est identique a l'avant-correctif.** L'effondrement des marges que j'avais mesure
+sur 576-719 n'existe plus. **Treize largeurs mesurees, hauteur d'en-tete 53,19 px partout, sans
+exception** : aucun repli neuf, ni sur l'accueil ni sur un ecran de manche. **J'accorde cette bande**,
+et le motif est qu'elle sert mieux `SYN-14` que la forme que j'avais acceptee.
+
+#### 5. `SYN-14` - satisfaite, et je dis ou ma propre redaction etait plus lache que mon intention
+
+**Clause "en-tete aligne sur la zone de jeu"** : bords gauche et droit **identiques au centieme aux
+treize largeurs**. Satisfaite sans discussion.
+
+**Clause "aucun element a presser ne se rapproche du bord plus que le rembourrage de la zone"** : le
+rembourrage vaut **12 px**. Sur un ecran de manche, la premiere proposition est a **20 px** du bord a
+720-735 px (12 de rembourrage + 8 de bordure de cabinet) et a **32 px** a la reference. Sur la liste
+des jeux, le premier bouton est a **12 px** a 720-735 px, c'est-a-dire **exactement** le rembourrage.
+**Satisfaite - a la borne.**
+
+**Et je dis le reste, parce qu'un tiers le verrait.** En ecrivant `SYN-14` ce matin, je designais
+12 px comme le probleme ; ma redaction en a fait le plancher. **Le correctif atteint le plancher que
+j'ai ecrit, pas l'intention que j'avais.** Je ne relis pas ma condition plus severement apres coup -
+c'est la troisieme fois aujourd'hui que cette discipline me coute quelque chose (les 2,19 px de la
+boite d'indice, les 12 px ici) et c'est precisement ce qui fait qu'une barre de moi veut dire quelque
+chose. **`SYN-14` est satisfaite.** Si je veux un plancher chiffre, il s'ecrira avant, pas apres.
+
+#### 6. Constat neuf et date du 2026-08-23 - le correctif ne descend pas sous 720 px
+
+**Ce que personne n'avait mesure, et que je nomme pour que la squad ne croie pas couvert ce qui ne
+l'est pas.** J'ai joue les seize items a **640, 700 et 719 px** sur l'increment livre :
+
+| Viewport | Items a deux rangees | Pire bas du texte du verdict |
+|---|---|---|
+| 640 px | **5** (1, 3, 4, 13, 14) | **594,19 px - sous le pli** |
+| 700 px | **5** (1, 3, 4, 13, 14) | **594,19 px - sous le pli** |
+| 719 px | **5** (1, 3, 4, 13, 14) | **594,19 px - sous le pli** |
+| 720 px et au-dela | 0 | 474,19 px |
+
+**Le defaut pour lequel j'ai refuse `S17-3` trois fois existe encore, inchange, sur toute la bande
+576-719 px.** Il n'est pas corrige, il est hors de la bande du correctif.
+
+**Ce que j'en fais.** `SYN-11`, telle que je l'ai ecrite le 2026-08-22, porte sur *"la reference
+744 x 551"*. **Elle est satisfaite a cette reference, donc elle est fermee**, et je ne l'elargis pas
+apres coup a toutes les largeurs du palier : ce serait deplacer mes poteaux, et punir `lea-dev`
+d'avoir suivi `SYN-14`, que j'ai ecrite. **Ce n'est donc pas un motif de refus**, c'est une
+**observation datee du 2026-08-23**, et elle devient `SYN-16` ci-dessous.
+
+**Le choix que `lea-dev` a fait sans le nommer ainsi, et qu'il faut voir** : entre 576 et 719 px, les
+deux objectifs se contredisent - une forme qui corrige `SYN-11` y effondre les marges, une forme qui
+preserve les marges y laisse le verdict sous le pli. Elle a preserve les marges. **Je ne le lui
+reproche pas** : c'est ce que `SYN-14` demandait, et la reference du produit est a 744 px. Mais le
+constat est que **le produit n'est corrige qu'au-dessus de 720 px**, et savoir si une forme atteint
+les deux a la fois est une question de mecanisme pour `theo-archi`, pas une question que je tranche
+et surtout pas un chiffre que j'invente ici.
+
+#### 7. Done pedagogique de `S17-3` - **VALIDE SOUS RESERVE**
+
+**Etat de mes conditions sur l'increment livre `4702524`** : `SYN-1`, `SYN-2`, `SYN-3` tenues ;
+`SYN-4` tenue (la story des antonymes existe) ; **`SYN-5` tenue** (411,19 px) ; `SYN-6`, `SYN-7`,
+`SYN-8` tenues ; `SYN-9` fermee ; `SYN-10` satisfaite ; **`SYN-11` FERMEE** ; `SYN-12` ouverte non
+bloquante ; **`SYN-13` fermee** ; **`SYN-14` satisfaite** ; **`SYN-15` confirmee**. **Aucune condition
+bloquante ne reste ouverte.**
+
+**Audit joue** : oui - 8 parties, 328 lectures, les seize items dans les quatre etats, au clavier
+seul, sur l'application servie depuis le fat jar de cet arbre. Ce n'est pas un audit degrade, a la
+reserve de police pres.
+
+**Verdict : VALIDE SOUS RESERVE.** Reserves, aucune bloquante :
+
+1. **`SYN-12`** - trois items sur seize perdent la fin de leur indice. Reste ouverte, datee du
+   2026-08-22.
+2. **`SYN-16` (neuve, datee du 2026-08-23, non bloquante)** - **sous 720 px de viewport, le defaut de
+   `SYN-11` existe encore, inchange** : 5 items sur 16, verdict a 594,19 px, mesure a 640, 700 et
+   719 px. Ce n'est pas une reouverture de `SYN-11`, qui porte sur la reference et qui est fermee.
+   `camille-po` decide s'il existe un appareil cible dans cette bande ; si oui, cela demande un
+   mecanisme, et il n'est ni concu ni chiffre ici.
+3. **`SYN-4`** - la moitie de la competence (les antonymes) manque. **C'est elle, et elle seule, qui
+   empeche la ligne de matrice de passer `couvert-valide`**, exactement comme mon arbitrage de s17 le
+   disait. **Ce Done ouvre la porte pedagogique de `S17-3` ; il ne fait pas bouger la ligne.**
+
+**Ce que ce Done ne couvre pas** : ce qu'un lecteur d'ecran annonce (jamais couvert par aucun de mes
+Done), ce qu'un enfant reel comprend, et tout rendu sur une largeur, une hauteur ou une pile de
+polices que je n'ai pas mesurees. **Il ne juge pas la correction clavier de `marc-dev`**, presente sur
+cet arbre : son Done reste une autre question, que je n'instruis pas ici.
+
+**Audit degrade a declarer** : pile de polices systeme de cette machine. La marge de `SYN-11`
+(+76,81 px) est plus du double de l'incertitude de police que j'ai nommee (15 a 35 px), donc ce
+verdict-la est robuste. Celle de `SYN-12` sur les trois items residuels ne l'est pas.
+
+#### 8. Ce dont je reste seule garde
+
+- **La position de tout ce que l'enfant lit sous le meuble, a toute largeur.** La CI est verte a 621
+  tests sur l'arbre exact ou `SYN-16` existe : aucun garde-fou ne voit une position rendue.
+  `LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest` epingle desormais **deux** lignes de plafond
+  (`lea-dev` a corrige le chiffre que `theo-archi` et `sofia-sm` lui donnaient : deux selecteurs, deux
+  chaines, donc deux lignes) - il garde la **declaration**, jamais la consequence a l'ecran.
+- **Que la regle livree continue de rendre ce que rend celle d'aujourd'hui.** Trois concordances ne
+  sont pas une preuve.
+- **`SYN-16`**, que rien n'observe : le produit n'est corrige qu'au-dessus de 720 px, et seule une
+  mesure le dit.
