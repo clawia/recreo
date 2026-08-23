@@ -389,3 +389,76 @@ propose de s18 repose sur le retrait du telephone (`DEC-0040`) et sur le fait aj
   correction du motif de report de `S17-C`). Aucun texte d'origine reecrit.
 - `squad/decisions/produit/DEC-0041-...md` (ce fichier) : cette section ajoutee.
 - Aucun autre fichier n'est modifie par cet amendement.
+
+## Amendement du 2026-08-23 (camille-po, s18) - le prealable de `SYN-11` sur le seuil de 375 px est tranche ; la coherence d'apparence en-tete / zone de jeu n'est pas une exigence de produit
+
+`theo-archi` (`ADR-0056-...md`, non fusionne a ce jour) m'a route une decision de perimetre trouvee
+en instruisant la variante d'`ines-design` pour `SYN-11` : `ViewportEtLargeurTelephoneTest`
+interdit tout plafond maison au-dela de 375 px, sur une premisse (la cible telephone de `S3-8`,
+`DEC-0007` point 5) que `DEC-0040` a retiree du perimetre, et le seuil, corrige d'un defaut de
+lecture qui le rendait aveugle sous une regle `@media`, mord desormais reellement. **Ceci n'est pas
+une action de plus de ce perimetre : c'est un prealable technique a la seule mise en page qui
+fermerait `SYN-11`**, et je le tranche comme tel, sans rouvrir les trois actions gelees.
+
+### 1. Le sort du seuil de 375 px
+
+Trancher dans `squad/decisions/produit/DEC-0007-perimetre-s03-completer-avant-etendre.md` (note du
+2026-08-23, troisieme) : **revise a 744 px, sur les trois proprietes qu'il examine (`width`,
+`min-width`, `max-width`), jamais supprime**. Resume ici pour que ce document reste complet sur ce
+qu'il route : ce seuil protegeait, et protege encore une fois sa cible corrigee, contre un
+debordement horizontal d'un element maison sur l'appareil le plus etroit reellement vise - hier un
+telephone a 375 px, aujourd'hui l'iPad mini a 744 px (`DEC-0040`). Je ne retiens pas l'exemption de
+`max-width` seule que `theo-archi` fournit comme argument sans la trancher : elle relacherait un
+garde-fou dans le lot meme qui en beneficie et laisserait tout `max-width` maison hors de la chaine
+d'`ADR-0054` sans aucune garde. Un seuil uniforme a 744 px suffit a laisser passer `max-width:
+720px` sans exception nommee, puisque 720 est strictement sous 744.
+
+**Consequence directe sur `S17-3`** : le prealable technique qui bloquait la variante d'`ines-design`
+pour `SYN-11` est leve. Cela ne choisit pas la variante - `nadia-prof` arbitre toujours la forme,
+sous son veto pedagogique, une fois sa mesure de `BPM-1` terminee (sequencement deja fixe par
+`sofia-sm`) - et cela ne prejuge pas de son verdict de rendu une fois le correctif livre.
+
+### 2. La coherence d'apparence entre l'en-tete et la zone de jeu n'est pas une exigence de produit
+
+`theo-archi` nomme un ecart visible, evitable d'un selecteur, entre deux mecanismes : scoper la
+declaration a `.zone-jeu` seule cree un ecart de largeur visible avec l'en-tete sur le seul palier
+576-767 px ; l'etendre a `.entete-contenu` supprime cet ecart mais elargit une **seconde** rangee
+repliable dont le repli n'a jamais ete mesure par personne, sur un ecran different de celui ou
+`SYN-11` a ete trouvee.
+
+**Je ne pose pas la coherence visuelle entre l'en-tete et la zone de jeu comme une exigence de
+produit.** Aucune decision anterieure de ce depot ne l'a jamais posee comme telle - `S6-2` (s06)
+demandait un contenu centre dans une largeur maximale, jamais une largeur identique a celle de
+l'en-tete sur tous les paliers, et rien depuis n'en a fait une condition. Je ne l'invente pas a
+l'occasion d'un correctif qui n'en a pas besoin : le choix reste entier entre les deux mecanismes,
+et c'est `nadia-prof`, avec `ines-design`, qui le tranche sur ce qu'elle voit, exactement comme
+`theo-archi` le demande.
+
+**Ce que j'ajoute, sans le poser en regle** : a perimetre de mesure egal, je nomme une preference de
+portee, pas une exigence - le mecanisme scope a `.zone-jeu` seule ferme `SYN-11` sans ouvrir de
+question de rendu neuve sur un ecran que ce defaut ne concerne pas, alors que la capacite de mesure
+de `nadia-prof` est deja la ressource la plus sollicitee de ce sprint (`BPM-1`, la remesure de
+`SYN-11`, la verification de `S17-C`). Si l'ecart visible qui en resulte se revele, aux yeux de
+`nadia-prof`, genant pour un enfant plutot que seulement inegal, c'est a elle de le dire en le
+voyant et de demander alors le mecanisme plus large - je ne le lui interdis pas, je ne le pre-choisis
+pas non plus.
+
+### Ce que je route (ajout du 2026-08-23)
+
+- **`theo-archi`** : mise a jour de la constante et des messages de
+  `ViewportEtLargeurTelephoneTest` (744 px, sur les trois proprietes), et de toute table
+  d'`ADR-0054`/`ADR-0055` que le correctif de `SYN-11` ferait bouger, dans le lot qui livre le
+  mecanisme retenu.
+- **`ines-design`** et **`nadia-prof`** : le choix du mecanisme (scope etroit ou large) reste
+  entierement le leur, sur ce que `nadia-prof` voit une fois `BPM-1` terminee ; aucune des deux
+  options n'est pre-choisie par cet amendement.
+- **`sofia-sm`** : le prealable technique qui retenait le sequencement de `SYN-11` est leve ; le
+  sequencement lui-meme (`BPM-1` d'abord) ne change pas.
+
+### Impact de cet amendement
+
+- `squad/decisions/produit/DEC-0007-perimetre-s03-completer-avant-etendre.md` : note datee du
+  2026-08-23 (troisieme) ajoutee, seuil technique de `S3-8` revise a 744 px.
+- `squad/decisions/produit/DEC-0041-...md` (ce fichier) : cette section ajoutee. Le perimetre gele
+  (trois actions) n'est pas modifie.
+- Aucun autre fichier n'est modifie par cet amendement.

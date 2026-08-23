@@ -276,3 +276,66 @@ pire cas de largeur reel de la cible ordinateur et tablette), en remplacement de
 au point 5 ci-dessus. Le texte d'origine reste lisible tel qu'ecrit ; c'est la reference qu'il
 fixait qui change, pas son raisonnement, qui restait valide pour la cible telephone qu'il visait
 alors.
+
+## Note du 2026-08-23 (camille-po, troisieme) - le garde-fou technique de S3-8 (`ViewportEtLargeurTelephoneTest`) est lui aussi revise a 744 px, jamais supprime
+
+**Ce qui m'est remonte.** `theo-archi`, en instruisant un correctif de mise en page pour `SYN-11`
+(`squad/decisions/adr/ADR-0056-...md`), etablit que `ViewportEtLargeurTelephoneTest` voit desormais
+reellement ce qu'il jugeait deja en droit - un defaut de lecture qui le rendait aveugle a une
+declaration nichee sous une regle `@media` est corrige dans le meme lot - et qu'il **interdit** en
+consequence tout plafond maison au-dela de 375 px, sur les trois proprietes qu'il examine (`width`,
+`min-width`, `max-width`). C'est exactement le garde-fou ouvert par le point 5 ci-dessus et sa story
+S3-8 (sprint 3), et sa premisse - la cible telephone - est celle que `DEC-0040` a retiree du
+perimetre. `theo-archi` route la decision plutot que de la prendre : *"la clause reste telle
+qu'elle est, et elle est desormais visible"*, et fournit un fait sur le modele de boite sans le
+trancher - un `max-width` au-dela de la cible ne peut pas produire le debordement que borner
+`width`/`min-width` empeche reellement.
+
+**Ce que je verifie avant de trancher.** La note precedente (ci-dessus) remplace *"la largeur de
+reference"* que ce point fixait - celle contre laquelle `nadia-prof` mesure un pli - par 744 px. Le
+garde-fou technique de S3-8 est un mecanisme distinct : il ne mesure aucun pli, il interdit une
+declaration de largeur fixe ou plancher dans la feuille maison au-dela d'une cible, pour eviter
+qu'un enfant sur l'appareil le plus etroit reellement vise voie un element deborder horizontalement.
+Les deux mecanismes visaient la meme cible (le telephone, 375 px) pour deux raisons differentes ; je
+n'avais pas ecrit explicitement, dans la note precedente, que le remplacement s'etendait aussi a ce
+second mecanisme. Je le fais ici, pour que la question ne reste pas en suspens entre deux notes qui
+se lisent comme si elles se recouvraient sans le dire.
+
+**Ce que ce seuil gardait.** Sur l'appareil le plus etroit alors vise (un telephone en portrait, 375
+px), toute declaration maison de `width` ou `min-width` en pixels au-dela de cette largeur aurait
+force un element a deborder horizontalement sur cet appareil - le defaut structurel nomme par S3-8
+("chevauchement, depassement horizontal, bouton hors champ"). `max-width` etait borne par la meme
+inegalite, sans que la story ni moi n'ayons jamais distingue les trois proprietes entre elles.
+
+**Ce qu'il garde encore, une fois sa cible corrigee.** La meme propriete, contre le meme mode de
+defaillance, sur l'appareil le plus etroit **reellement vise aujourd'hui** : un `width` ou un
+`min-width` maison en pixels au-dela de 744 px forcerait un debordement horizontal sur l'iPad mini,
+le pire cas de largeur etabli par `DEC-0040`. Rien dans le changement de cible ne rend ce risque
+caduc - il reste exactement aussi reel qu'en s03, seulement mesure contre un autre appareil. Je
+**revise le seuil a 744 px plutot que de le supprimer** : le supprimer perdrait ce garde-fou par
+inadvertance, sur la foi d'une premisse perimee qui n'est pas la seule chose qu'il protegeait.
+
+**Sur `max-width` specifiquement, et sur l'argument que `theo-archi` fournit sans trancher.** Je ne
+retiens pas l'option de scoper le seuil a `width`/`min-width` seules en laissant `max-width` non
+borne, pour les deux raisons qu'il nomme lui-meme et que je fais miennes : cela relacherait un
+garde-fou dans le lot meme qui en beneficie, et cela laisserait tout `max-width` maison hors de la
+chaine d'une rangee (`ADR-0054` ne table que sur cette chaine) sans aucune garde. Je retiens plutot
+un seuil **uniforme aux trois proprietes, revise a 744 px** - la meme reference que celle qui
+gouverne deja le pli, pas un troisieme nombre invente pour l'occasion. **Consequence verifiee et
+non supposee** : ce choix suffit a laisser passer la variante proposee par `ines-design` sur
+`SYN-11` (`max-width: 720px`, strictement sous 744), sans qu'aucune exception nommee ne soit
+necessaire - la variante rentre dans la regle generale, elle n'en sort pas. La regle categorique
+independante de la valeur - ne jamais ecrire `width` en pixels dans la feuille maison, utiliser
+`max-width` pour rester capable de retrecir - n'est pas concernee par cette note et reste telle
+qu'elle est.
+
+**Ce qui n'est pas decide ici, et reste route a `theo-archi`.** Le mecanisme du correctif
+(`Regle 1` d'`ADR-0056`, deja ecrit et fusionne independamment de cette note), la mise a jour de la
+constante et des messages du garde-fou (`LARGEUR_CIBLE_PX`, le nom "largeur cible telephone" qui
+devrait se lire comme la largeur cible de la cible produit actuelle), et toute consequence sur les
+tables d'`ADR-0054`/`ADR-0055`. Je ne touche ni au code ni aux gabarits.
+
+**Un declencheur explicite pour la prochaine fois**, sur le modele de ce que ce depot exige deja
+ailleurs (`CLAUDE.md`, references qui se perimenent en silence) : **si la largeur de reference
+change de nouveau, ce seuil doit etre revu dans le meme geste**, pas suppose suivre. Je le nomme
+pour qu'il ne redevienne pas un second seuil perime sans qu'on l'ait decide.
