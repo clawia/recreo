@@ -273,6 +273,16 @@ un nettoyage d'arbre aurait efface son travail sans qu'aucun commit n'en garde t
 de non-fusion reste valide pour tous les autres agents parce que chacun travaillait deja dans son
 propre worktree ; `camille-po` etait seule a ne pas en avoir ouvert.
 
+**Cette regle a ete relue et pourtant recontournee** (amendement s18, retro de s18). En s18,
+`camille-po` a de nouveau edite `squad/programme/MATRICE-couverture.md` dans le depot principal au
+lieu d'un worktree dedie pour son lot de cloture - un agent different de celui de s06 aurait pu
+commettre la meme faute, la regle etant deja ecrite depuis douze sprints. Detecte par elle-meme
+avant tout commit, corrige, rien perdu : la regle n'a pas failli, c'est le reflexe de l'ouvrir en
+premier geste qui a failli deux fois sur dix-huit sprints, chez deux agents differents. Une prose
+relue au planning ne suffit pas a elle seule a empecher la recurrence ; `sofia-sm` verifie
+desormais explicitement, a chaque fusion, que le lot recu n'a jamais existe que dans un worktree
+distinct du depot principal (deja sa pratique de fait depuis s14, faite regle explicite ici).
+
 **Un sprint peut etre pilote par des arbitrages successifs de l'autorite produit plutot que par un
 objectif gele au planning, et le process le nomme plutot que de le taire** (amendement s15, cloture
 de s15). Dans ce mode, l'utilisatrice joue l'increment livre, rend un arbitrage, et ce rendu
@@ -372,6 +382,31 @@ compte ne bouge pas) qui declenche une lecture, jamais une preuve d'exhaustivite
 sous-jacente (rang, perimetre de derivation, population de test) : le manque n'est pas au meme
 endroit dans les trois cas rencontres ce sprint, un automate unique aurait ete soit incomplet, soit
 trop large.
+
+**Un garde-fou deja accepte, avec sa propre preuve de morsure ecrite, n'a ete mis a l'epreuve que
+par une tentative reelle de le defaire, jamais par une relecture de son code ou de son test**
+(amendement s18, retro de s18). Trois defauts trouves le meme sprint, tous dans des regles deja
+en place (`ADR-0054`, `ADR-0055`, le mecanisme initial de `S17-C`) : un seuil de largeur maison
+evitable en nichant la declaration sous une regle `@media`, que le balayage ne parcourait pas ; une
+clause textuelle sensible a la casse que l'orthographe la plus idiomatique de la faute contournait ;
+et le retrait des trois attributs de gabarit qui defaisait le mecanisme de focus entier sans faire
+rougir un seul test. Les trois ont ete trouves en appliquant reellement une variante ou un correctif
+candidat concret puis en mesurant le resultat - jamais en relisant le texte d'une regle deja verte.
+Une regle qu'un jeu fautif commis a l'avance rend verte n'a ete mise a l'epreuve que du cas que son
+auteur avait imagine ; elle reste non mise a l'epreuve du premier cas reel qui la rencontre. **A
+chaque candidat de mise en page ou de mecanisme propose par `ines-design` ou par un dev, le premier
+geste avant de le retenir est de le faire passer reellement devant les garde-fous existants**, pas
+de raisonner sur sa conformite.
+
+**Une mesure de reference qui sert de plancher ou de plafond a une decision doit nommer, a cote de
+sa valeur, l'hypothese de contexte sous laquelle elle a ete prise** (amendement s18, retro de s18).
+L'inventaire d'appareils d'`ines-design` etablissait le plancher "ordinateur" a 1280 px sous une
+methode de mesure "zoom a 100 %, fenetre maximisee" - raisonnable pour fixer une reference d'ecran,
+mais jamais ecrite comme une hypothese qui bornait aussi tout usage futur de ce chiffre. Elle n'a
+rencontre sa premiere consequence concrete qu'un sprint plus tard (`SYN-16`, `camille-po`) : une
+fenetre non maximisee ou partagee produit une largeur dans une bande que l'inventaire ne couvrait
+pas, sans que quiconque ait pu le voir en le relisant. Une valeur de reference sans l'hypothese qui
+la borne est une limite implicite que quelqu'un redecouvre plus tard sans methode ecrite.
 
 **5. Relecture.** Le `relecteur-pedagogique` passe sur les livrables non executables. Il corrige
 ce qui est sans ambiguite, signale le reste.
