@@ -90,6 +90,17 @@
   **ACCEPTE** sous condition de forme (SYN-1 a SYN-3), couverture partielle **ACCEPTEE** mais **ne
   comptera jamais dans le taux de couverture** sur les seuls synonymes (voir ci-dessous). Aucun code
   ecrit a ce jour.
+- **Arbitrage de forme du 2026-08-23 (s18), sur la proposition d'`ines-design`** : variante
+  **ACCEPTEE**, portee tranchee sur **`.zone-jeu` ET l'en-tete** (motif mesure : hauteur d'en-tete
+  constante a 53,2 px de 576 a 768 px dans les trois configurations, aucun repli, geometrie de jeu
+  identique au centieme ; et a 768 px le produit sert deja un en-tete de 720 px aligne). Mesure sur
+  **regle injectee** : **`SYN-11` satisfaite sur 16/16** aux trois etats d'echec (pire bas de verdict
+  **474,19 px**, marge +76,81, contre 594,19 au temoin et 5 items entierement sous le pli) ;
+  **`SYN-13` disparait** (0 item a deux rangees contre 5) ; **`SYN-12` non fermee** mais 15/16 -> 3/16.
+  **Rien n'est ferme** : regle injectee, pas increment livre. Conditions neuves : **`SYN-14`**
+  (contrepartie laterale, marges effondrees sur 576-767) et **`SYN-15`** (non bloquante, les onze
+  items sans defaut verifies). **Le refus du 2026-08-22 sur `S17-3` n'est pas leve.** Verdict complet
+  en fin de fiche.
 - **Derniere mise a jour** : 2026-08-19 (arbitrage prealable de `nadia-prof`, `camille-po` en tire
   les consequences sur cette fiche).
 
@@ -1238,3 +1249,244 @@ verbe" en s07 (`squad/README.md`, section 10). Deux questions, toutes deux avant
 2. **La couverture partielle est acceptee**, mais avec un statut different des cinq precedentes :
    voir la mise a jour ci-dessus sous "Competences visees". Story compagne des antonymes demandee
    au backlog avant la cloture de s17 (SYN-4, non bloquante).
+
+---
+
+### Arbitrage de forme du 2026-08-23 (s18) - la variante d'`ines-design` est **ACCEPTEE**, portee **`.zone-jeu` ET l'en-tete**, et `SYN-11` est satisfaite **en mesure**
+
+> **Ce que cette section fait.** Elle rend l'arbitrage de forme que le planning de s18 me reserve
+> apres `BPM-1`, sur la proposition d'`ines-design`
+> (`squad/sprints/s18-fermer-avant-ouvrir/proposition-ines-bloc-de-retour-visible.md`, `s18-ines` a
+> `e5539a3`), elle tranche la question de portee que `camille-po` m'a explicitement laissee, et elle
+> mesure le resultat sur les seize items. Elle n'efface aucun verdict anterieur et **ne ferme rien**.
+>
+> - **Forme : ACCEPTEE.** `lea-dev` peut l'implementer.
+> - **Portee : `.zone-jeu` ET `.entete-contenu`**, et je motive ce choix par une mesure, pas par un
+>   gout.
+> - **`SYN-11` : satisfaite sur les 16 items, aux trois etats d'echec** - pire bas du texte du
+>   verdict **474,19 px** contre un pli de 551, marge **+76,81 px**, la ou le temoin donne
+>   **594,19 px** et cinq items entierement sous le pli.
+> - **`SYN-13` : disparait**, comme je l'avais annonce - **0 item sur 16 a deux rangees** contre 5.
+> - **`SYN-12` : ne se ferme pas**, et c'est un resultat, pas une reserve : de **15 items sur 16**
+>   qui perdaient du texte d'indice, on tombe a **3**.
+> - **Aucune de ces trois lignes n'est fermee par cette section** : ce que j'ai mesure est une
+>   **regle injectee**, pas un increment livre. La fermeture se fait sur le livre.
+
+#### 0. L'arbre, et ce qu'il contient exactement
+
+Worktree dedie `s18-nadia-syn11`, forke de **`s18-nadia-bpm1`** a `e98e0dc` (mon lot `BPM-1`, laisse
+intouche), lui-meme descendant de `round-two` a **`8046256`** - SHA releve par moi, `git rev-parse`,
+pas recopie de la demande. `bash outils/verifier-lignee.sh` : *"le worktree sur la branche
+'s18-nadia-syn11' descend de la lignee de round-two"*. `bash outils/mvn-jdk21.sh -B clean verify` sur
+la racine : **BUILD SUCCESS, 612 tests, 0 echec**.
+
+**Ce que cet arbre ne contient pas, et c'est voulu** : ni `s18-ines`, ni `s18-theo`, ni `s18-marc`
+(la correction clavier de `marc-dev`, que je ne juge pas), ni le lot de seuil de `camille-po`
+(`s18-camille-po-seuil-375`). Verifie branche par branche par `git merge-base --is-ancestor` :
+les quatre sont **absentes**. Je mesure donc l'effet de la **regle seule** sur le produit servi tel
+qu'il est, sans qu'aucun autre lot du sprint ne puisse expliquer un chiffre a ma place.
+Le lot de seuil n'a aucun effet sur ma mesure et je dis pourquoi plutot que de le laisser supposer :
+`ViewportEtLargeurTelephoneTest` est un garde-fou de **CI sur le contenu de la feuille**, et
+j'injecte la regle a l'execution sans toucher la feuille. Sa revision de 375 a 744 px est le
+prealable de l'**implementation**, pas de la mesure.
+
+#### 1. Methode - regle injectee, et je reemploie mon precedent en le disant
+
+**Le procede.** Reference **744 x 551 px** (`DEC-0040`), `deviceScaleFactor` a 1, mode non mobile,
+navigateur reel pilote par son protocole de deverminage, jeu **au clavier seul**, application servie
+depuis le fat jar de cet arbre. La declaration proposee n'existe dans aucun fichier : je l'ai
+**injectee** dans la page servie, en dernier dans le `head`, la ou `recreo.css` est chargee
+(`ADR-0014` point 5), sous la forme exacte qu'`ines-design` propose et avec la borne haute que
+`theo-archi` a etablie :
+
+    @media (min-width:576px) and (max-width:767.98px){.zone-jeu{max-width:720px}}
+
+**Ce precedent est le mien, et je l'assume avec sa limite.** J'ai mesure une regle injectee deux
+fois - pour `COMP-5` et pour `S17-A` - en ecrivant chaque fois la meme limite : *"une regle ecrite
+dans `recreo.css` peut se faire ecraser par une specificite que mon injection contournait"*. Puis,
+le 2026-08-19, j'ai remesure `S17-A` sur la regle **servie** et constate qu'elle rendait **au
+centieme** ce que rendait l'injectee. **Je reemploie donc le procede, et voici ce qu'il vaut ici,
+verifie et non suppose** : `recreo.css` ne declare **aucun** `max-width` (verifie par recherche sur
+la feuille), et `.zone-jeu` comme `.container` sont des selecteurs de classe unique, donc de meme
+specificite - c'est l'ordre de chargement qui tranche, et `recreo.css` est chargee **apres** la
+bibliotheque tierce. Une declaration ecrite dans `recreo.css` gagnerait donc pour la meme raison
+que mon injection gagne. **Le risque que ma limite nomme est ici plus faible qu'il ne l'etait pour
+`S17-A`, mais il n'est pas nul, et c'est exactement pourquoi cette section ne ferme rien.**
+
+**L'arithmetique de `theo-archi` est confirmee au pixel, sur le rendu et non sur le calcul** :
+rangee de propositions **680,00 px** (720 - 24 - 16) et enonce **696,00 px** (720 - 24), contre
+**500,00** et **516,00** au temoin. Les deux nombres qu'`ADR-0054` epingle sont donc rendus par la
+declaration telle qu'elle est ecrite.
+
+**Campagne** : **trois configurations** (temoin, `.zone-jeu` seule, `.zone-jeu` + en-tete) x **deux
+jeux**, soit **31 parties et 1 271 lectures**, **16/16 items** et **24/24 items** vus dans chaque
+configuration, chacun dans **les quatre etats** (repos, trois echecs). **`scrollY = 0` verifie avant
+chaque lecture : 0 lecture a `scrollY` non nul sur 1 271.** **0 abandon** - et cela confirme au
+passage la section 5.2 de mon verdict `BPM-1` : avec des appuis a cadence humaine, la soumission
+native que j'avais rencontree a vitesse machine ne s'est **pas reproduite une seule fois** sur
+1 271 lectures.
+
+#### 2. `SYN-11` contre la variante - satisfaite sur les seize, aux trois etats d'echec
+
+| Configuration | Rangee offerte | Items a deux rangees | Pire bas du bandeau `.signal` | Pire bas du texte du verdict | `SYN-11` |
+|---|---|---|---|---|---|
+| temoin (servi aujourd'hui) | 500 px | **5** (1, 3, 4, 13, 14) | 619,19 px | **594,19 px** | **non tenue** |
+| variante, `.zone-jeu` seule | 680 px | **0** | 499,19 px | **474,19 px** | **satisfaite** |
+| variante, `.zone-jeu` + en-tete | 680 px | **0** | 499,19 px | **474,19 px** | **satisfaite** |
+
+**Les seize items placent le bandeau et le texte du verdict entierement au-dessus du pli, dans les
+trois etats d'echec, revelation comprise.** Marge **+76,81 px** sur le texte du verdict, soit plus
+du double de l'incertitude de police que j'ai nommee moi-meme (15 a 35 px) : ce n'est pas une tenue
+de justesse, et le levier fait bien ce que `theo-archi` appelait un changement de categorie -
+**180 px offerts pour un pire deficit de 38 px**.
+
+**Mon chiffre du 2026-08-22 se reproduit exactement, et je le verifie avant de m'appuyer dessus.**
+J'avais ecrit *"bandeau a 4,19 px, verdict a 13,19 px"* sous le pli sur les cinq items. Le temoin
+d'aujourd'hui donne un bas de verdict a 594,19 px, donc un **haut** de verdict a 564,19 px, soit
+**13,19 px sous le pli** - au centieme, et sur un autre arbre, un autre jour, une autre campagne.
+Les cinq items nommes sont les memes cinq.
+
+**`SYN-5` ne regresse pas** : pire bas de proposition **411,19 px** contre 531,19 au temoin, donc
+elle s'ameliore de 120 px. **`SYN-10` reste satisfaite** : aucune variation selon le tirage dans
+aucune des trois configurations.
+
+#### 3. `SYN-13` disparait, `SYN-12` s'ameliore beaucoup sans se fermer - et c'est un resultat
+
+**`SYN-13` (observation).** Elle portait sur les cinq items a deux rangees, ou le troisieme echec
+revelait la reponse par elimination visuelle avant tout texte. **Sous la variante, aucun item n'a
+deux rangees.** L'observation disparait par la cause, exactement comme je l'avais ecrit le
+2026-08-22 (*"elle disparaitra d'elle-meme si `SYN-11` est fermee par la largeur"*) et comme
+`theo-archi` l'avait dit. **Je ne la porte pas au credit de la variante comme une reserve levee** :
+c'etait une observation, elle cesse d'etre observable, je l'ecris et je la datera fermee sur le
+livre.
+
+**`SYN-12` (non bloquante).** Mesure du **texte** de l'indice, ligne de glyphes par ligne de
+glyphes, et non de la boite du bloc :
+
+| Configuration | Items perdant du texte d'indice | Pire bas de glyphe | Ce qui reste perdu |
+|---|---|---|---|
+| temoin | **15 / 16** | 691,19 px | jusqu'a deux lignes entieres |
+| variante | **3 / 16** (9, 12, 14) | 571,19 px | *"quelqu'un."*, *"avec bonté."*, *"réussie."* |
+
+**Je le donne comme un resultat et non comme une reserve** : la variante ne ferme pas `SYN-12`, elle
+la reduit de 15 items a 3, et sur ces trois ce qui manque est le dernier mot d'une definition deja
+lisible - *"Ce mot decrit une voix pleine d'affection, comme celle qui rassure..."* se comprend sans
+son dernier mot. **`SYN-12` etait non bloquante et le reste**, pour le motif que j'avais ecrit et
+que je ne change pas : le verdict est visible, l'enfant sait qu'il s'est passe quelque chose.
+
+**Et je verifie ici la coherence de mon propre traitement, parce qu'elle pourrait passer pour un
+deux poids deux mesures.** J'ai rendu `SYN-12` non bloquante sur ce paquet et `BPM-5` **bloquante**
+sur les homophones, pour le meme symptome apparent. La difference est dans le contenu, elle est
+verifiable, et je l'ai verifiee : les seize indices de ce paquet sont tous de la meme forme, une
+definition descriptive (*"Ce mot dit que..."*), qu'une troncature appauvrit sans jamais l'inverser.
+Le paquet d'homophones emploie **deux** formes de substitution, positive et negative, et la
+troncature y emporte precisement le verbe qui les distingue - un indice qui peut se lire a l'envers.
+**Ce n'est pas la meme faute, et c'est pourquoi ce ne sont pas les memes verdicts.**
+
+#### 4. La portee - je tranche pour `.zone-jeu` **et** l'en-tete, sur mesure et non sur gout
+
+`camille-po` a tranche que la coherence en-tete / zone de jeu **n'est pas une exigence de produit**
+et m'a laisse le choix entier ; je n'invoque donc aucune exigence, je choisis sur ce que j'ai
+mesure et sur ce que l'ecran montre.
+
+**Ce que coute l'en-tete inclus : rien de mesurable.** J'ai mesure la hauteur de l'en-tete a
+**576, 640, 744, 767 et 768 px** de viewport, dans les trois configurations : **53,2 px partout, sans
+exception**. La rangee repliable que personne n'avait mesuree **ne se replie dans aucun cas**, et
+c'est arithmetique autant que mesure : elargir une rangee `flex-wrap` diminue la pression de repli,
+elle ne l'augmente jamais. Rien ne bouge donc sous l'en-tete - et la mesure le confirme sur les deux
+jeux, **toutes les valeurs de geometrie de jeu etant identiques au centieme entre `.zone-jeu` seule
+et `.zone-jeu` + en-tete** (861 et 410 lectures).
+
+**Ce que coute l'en-tete exclu : une chose que j'ai regardee et qui se voit.** A 744 px, l'en-tete
+reste plafonne a 540 px quand la zone de jeu passe a 720 : **180 px d'ecart de largeur, 90 px de
+decalage sur chaque bord**. Concretement, le nom de l'application et les deux puces de niveau
+flottent 90 px a droite du bord gauche de tout ce qu'ils coiffent. **Ce n'est pas une nuance
+d'esthetique que je m'autoriserais a trancher, c'est un ecran qui a l'air casse** : le titre du site
+n'est plus au-dessus de son contenu. Releve :
+`squad/conformite/releves-s18/s18-variante-744x551-portee-zone-seule-entete-decale-90px.png` contre
+`s18-variante-744x551-portee-zone-et-entete-aligne.png`.
+
+**Et le fait qui rend ce choix facile, que personne n'avait mis sur la table.** A **768 px**, sans
+aucune regle ajoutee, le produit sert **deja** un en-tete de 720 px aligne sur une zone de jeu de
+720 px - je l'ai mesure. Inclure l'en-tete ne cree donc aucun etat neuf : cela **avance d'un palier
+l'alignement que le produit possede deja**, ce qui est exactement l'argument par lequel
+`ines-design` justifie 680 px plutot qu'une valeur inventee. **L'exclure, en revanche, creerait un
+etat que le produit n'a nulle part** : un en-tete plus etroit que son contenu.
+
+**Sur la preference de portee de `camille-po`**, qui voulait m'epargner une mesure sur un ecran que
+`SYN-11` ne concerne pas : la mesure est **faite**, elle a coute cinq largeurs de viewport et une
+sonde, et elle rend une reponse nette. Sa preference etait la bonne par defaut ; elle n'a plus
+d'objet une fois la mesure produite.
+
+#### 5. Ce que j'ai trouve que personne n'avait nomme - la regle ne fait pas que donner 180 px a 744
+
+**Un `max-width` releve cesse de mordre en dessous de sa nouvelle valeur.** J'ai mesure la
+declaration sur toute la bande qu'elle couvre, pas seulement au point de reference, et le resultat
+n'est pas celui que sa description laisse attendre :
+
+| Viewport | Bord gauche de la zone de jeu, temoin | Bord gauche, variante | Bord gauche du premier bouton, temoin -> variante |
+|---|---|---|---|
+| 576 px | 10,5 px | **0,0 px** | 22,5 -> **12,0 px** |
+| 600 px | 22,5 px | **0,0 px** | 34,5 -> **12,0 px** |
+| 640 px | 42,5 px | **0,0 px** | 54,5 -> **12,0 px** |
+| 700 px | 72,5 px | **0,0 px** | 84,5 -> **12,0 px** |
+| 744 px | 94,5 px | 4,5 px | 106,5 -> **16,5 px** |
+
+En dessous de 720 px de viewport, le plafond de 720 px ne mord plus : la zone perd le centrage que
+`.container` lui donnait et s'etale **bord a bord**, ne laissant que le rembourrage de 12 px de
+`.container`. **Ce n'est pas l'effet decrit, qui etait "180 px de plus a 744 px" ; c'est le
+retrait du plafond sur toute la bande 576-767.** Releve :
+`squad/conformite/releves-s18/s18-variante-576-marges-laterales-effondrees.png` - a 576 px, l'icone
+de l'application est collee dans l'angle.
+
+**Ce que j'en fais, et ce que je n'en fais pas.** Je **ne bloque pas** la variante pour autant : a la
+reference que `DEC-0040` fixe (744 px), le premier bouton garde **16,5 px** de bord, ce que
+j'accepte, et aucun de mes constats de contenu ne se degrade. Mais c'est un changement d'aspect sur
+**tous** les ecrans de la bande, y compris la liste des jeux que `SYN-11` ne concerne pas, et il
+touche le bord ou se posent les pouces d'un enfant qui tient une tablette. **Il vient de la forme du
+mecanisme - relever un plafond - et pas de la cible de 680 px** : une forme qui conserverait le
+centrage rendrait 680 px sans effondrer les marges. Je ne concois pas cette forme, ce n'est pas mon
+role ; je nomme le resultat que j'exige a la remesure (`SYN-14` ci-dessous).
+
+#### 6. Conditions neuves, datees du 2026-08-23
+
+- **`SYN-14` (bloquante a la remesure, pas a l'implementation), 2026-08-23.** Sur toute la bande que
+  la declaration couvre (576-767 px), **aucun element que l'enfant doit presser ne se rapproche du
+  bord du viewport plus que le rembourrage de la zone de contenu**, et **l'en-tete reste aligne sur
+  la zone de jeu**. Verification : bord gauche du premier bouton et bord droit du dernier, releves a
+  576, 640, 744 et 767 px, plus la hauteur de l'en-tete aux memes largeurs. **Ce n'est pas un
+  durcissement de `SYN-11`**, qui porte sur la position verticale du bloc de retour et qui est
+  satisfaite : c'est la contrepartie laterale du meme mecanisme, que personne n'avait mesuree avant
+  aujourd'hui.
+- **`SYN-15` (non bloquante), 2026-08-23.** Les onze items qui n'avaient pas le defaut voient leurs
+  boutons s'elargir de 500 a 680 px de rangee. **Mesure : aucune regression** - `SYN-5` s'ameliore de
+  120 px, aucun item ne passe a deux rangees, la cible de doigt grandit. Je l'ecris parce
+  qu'`ines-design` a demande explicitement que je confirme les onze en plus des cinq : **c'est fait,
+  sur les seize.** Rien a corriger ; la ligne existe pour que la remesure du livre reverifie ce point
+  plutot que de le supposer acquis.
+
+#### 7. Ce que cette section ne fait pas
+
+- **Elle ne ferme ni `SYN-11`, ni `SYN-12`, ni `SYN-13`.** J'ai mesure une **regle injectee** par moi
+  dans une page servie, pas un increment livre. C'est ma propre distinction, posee deux fois, et je ne
+  vais pas l'abandonner le jour ou elle m'arrangerait : **`SYN-11` se fermera quand `lea-dev` aura
+  livre, que la CI sera verte, et que j'aurai remesure les 16 items aux trois etats sur le servi.**
+  Les chiffres a retrouver alors sont ecrits ci-dessus : 0 item a deux rangees, pire bas de verdict
+  474,19 px.
+- **Elle ne juge pas la correction clavier de `marc-dev`** ni l'`ADR` que `theo-archi` ecrit dessus :
+  absents de l'arbre mesure, verifie.
+- **Elle ne rejuge aucun contenu.** `SYN-1` a `SYN-4`, `SYN-6` a `SYN-9` sont creditees et je n'y
+  touche pas ; les seize phrases et les seize indices ne sont pas rouverts.
+- **Elle ne leve pas le refus du 2026-08-22 sur `S17-3`.** Un refus ne se leve pas sur une regle que
+  personne n'a encore ecrite dans un fichier.
+
+#### 8. Ce dont je reste seule garde
+
+- **Que la regle livree rende ce que l'injectee a rendu.** C'est la limite nommee de ce procede, et
+  la seule chose qui la lever est la remesure.
+- **La contrepartie laterale (`SYN-14`)**, qu'aucun garde-fou ne voit : `ViewportEtLargeurTelephoneTest`
+  compare des declarations dans une feuille, il ne voit pas ou tombe un bord a l'ecran.
+- **Audit degrade a declarer** : pile de polices systeme de cette machine. La marge de `SYN-11`
+  (+76,81 px) est tres au-dessus de l'incertitude de police que j'ai nommee, donc robuste ; celle de
+  `SYN-12` sur les trois items residuels ne l'est pas, et une police plus large en ajouterait
+  d'autres.

@@ -81,6 +81,15 @@
   neuves datees : **`BPM-5`** (bloquante) et **`BPM-6`** (non bloquante). **La ligne de matrice ne
   bouge pas et reste `en cours`.** Verdict complet en fin de fiche ; aucun verdict anterieur n'est
   reecrit.
+- **Mesure du 2026-08-23 (s18, seconde), sur la variante `SYN-11` d'`ines-design` en regle
+  injectee** : **`BPM-5` passerait de 8 items coupes sur 24 a 0 sur 24** - six des huit enonces a
+  deux lignes n'en font plus qu'une, et les deux qui restent (13, 23) voient leur indice tenir sur une
+  ligne, dernier glyphe a **541,19 px**, marge **+9,81 px**. **`BPM-1` et `M4` ne regressent pas**
+  (411,19 et 474,19 px, inchanges). **Ce n'est PAS une levee** : regle injectee, pas increment livre ;
+  **le refus du Done pedagogique du meme jour n'est pas touche** et la ligne de matrice reste
+  `en cours`. **Reserve de robustesse reelle** : 9,81 px est **sous** mon propre seuil de bruit de
+  police (15 a 35 px), donc satisfaite et fragile sur les items 13 et 23. Les douze items a 15,81 px
+  passent tous a 45,81 px. Mesure complete en fin de fiche.
 - **Derniere mise a jour** : 2026-08-23 (la ligne ci-dessous, du 2026-08-13, est conservee telle
   qu'ecrite ce jour-la)
 - **Derniere mise a jour** : 2026-08-13
@@ -1520,3 +1529,100 @@ viens de valider la forme : c'est le pli qui doit ceder, pas l'aide.
   declarer** : j'ai mesure sur la pile de polices systeme de cette machine ; une police plus large
   deplace les nombres de la section 3, et **dans le sens qui aggrave** - les 12 items a 15,81 px de
   marge basculeraient avant les autres.
+
+---
+
+### Mesure du 2026-08-23 (s18, seconde) - la variante `SYN-11` porte `BPM-5` a **0 item coupe sur 24**, et ce n'est pas une levee
+
+> **Ce que cette section fait.** `ines-design` a etabli, par construction du gabarit, que la variante
+> qu'elle propose pour `SYN-11` sur l'autre jeu n'est pas sans effet sur `BPM-5` - `.consigne`,
+> `.enonce` et le meuble sont trois freres, et `.enonce` partage la chaine de largeur de la rangee -
+> et elle a refuse de dire combien des vingt-quatre enonces changeraient de nombre de lignes, en
+> ecrivant que seule ma mesure peut le trancher. **Elle a eu raison de refuser, et voici la mesure.**
+>
+> - **Resultat : `BPM-5` passe de 8 items coupes sur 24 a 0 sur 24.** Aucun des vingt-quatre indices
+>   ne perd un seul caractere sous le pli, dans aucun des trois etats d'echec.
+> - **`BPM-1` et `M4` ne regressent pas** : pire bas de proposition **411,19 px**, pire bas de
+>   verdict **474,19 px**, inchanges au centieme.
+> - **Ce n'est pas une levee de `BPM-5`, et je ne l'ecris pas comme telle.** J'ai mesure une **regle
+>   injectee** dans la page servie, pas un increment livre. `BPM-5` se fermera sur le livre, avec les
+>   chiffres ci-dessous a retrouver.
+> - **Mon refus du Done pedagogique du 2026-08-23 (premiere section de ce jour) n'est pas touche.**
+>   Il porte sur l'increment servi, ou les 8 items coupent toujours.
+
+**Arbre** : worktree `s18-nadia-syn11`, forke de `s18-nadia-bpm1` a `e98e0dc`, descendant de
+`round-two` a **`8046256`**. Aucun autre lot de s18 present (verifie branche par branche). Methode,
+procede d'injection, precedent et limite : section 1 de mon arbitrage de forme du meme jour dans
+`FICHE-bandit-manchot-synonymes-cm1.md`, que je ne recopie pas ici. **21 parties et 861 lectures sur
+ce jeu**, 24/24 items dans chacune des trois configurations, quatre etats chacun, **`scrollY = 0`
+verifie avant chaque lecture, 0 sur 861**.
+
+#### 1. Ce que la variante change sur la chaine de largeur de ce jeu
+
+`ines-design` avait raison sur le fait de structure, et je le confirme par la mesure : l'enonce passe
+de **516,00 px a 696,00 px** de largeur utile, la rangee de **500,00 a 680,00**. **L'ordre de
+grandeur qu'elle annonçait sans le mesurer - "autour de 180 px" - est exact.**
+
+#### 2. `BPM-5` item par item - 8 coupes deviennent 0
+
+Mesure du **texte** de l'indice, ligne de glyphes par ligne de glyphes, jamais de la boite du bloc :
+
+| | Temoin (servi) | Variante |
+|---|---|---|
+| Enonces a deux lignes | **8** (11, 12, 13, 15, 16, 18, 22, 23) | **2** (13, 23) |
+| Items dont du texte d'indice est sous le pli | **8 / 24** | **0 / 24** |
+| Pire bas de glyphe d'indice | 571,19 px (**20,19 px sous le pli**) | **541,19 px** (marge **+9,81 px**) |
+
+Six des huit enonces qui faisaient deux lignes n'en font plus qu'une (11, 12, 15, 16, 18, 22), ce
+qui remonte tout ce qui suit de 48 px. **Les deux qui restent a deux lignes - 13 et 23, les deux
+items en `l'a`, les deux plus longues phrases du paquet - voient neanmoins leur indice passer de deux
+lignes a une**, et c'est ce qui les sauve : leur derniere ligne de glyphes s'arrete a **541,19 px**,
+au-dessus du pli.
+
+**Le point ou j'ai failli me tromper, et je le dis avant qu'on me le trouve.** La boite du bloc
+d'indice de ces deux items descend a **553,19 px**, soit **2,19 px sous le pli** : ma premiere lecture
+les a comptes comme "encore coupes". **Ils ne le sont pas.** Ce qui depasse est le bas vide de la
+boite du paragraphe, pas du texte : la ligne de glyphes va de 514,19 a **541,19 px**. Or `BPM-5`, telle
+que je l'ai ecrite ce matin, porte sur *"le texte de l'indice [...] la totalite de sa derniere phrase,
+ponctuation finale comprise"* - **et le texte est entier a l'ecran, "fonctionne." compris**. Je ne vais
+pas relire ma propre condition plus severement qu'elle n'est ecrite parce que 2,19 px m'arrangeraient :
+**la barre est celle que j'ai posee, et elle est atteinte.** Releve :
+`squad/conformite/releves-s18/s18-bpm5-744x551-variante-item-13-indice-entier.png` - a comparer avec
+`s18-bpm1-744x551-item-13-echec-indice-tronque.png`, meme item, meme etat, meme reference.
+
+**Les huit mots que l'enfant perdait, et qu'il lit desormais** : *"endroit' fonctionne."* (11),
+*"déterminant."* (12 et 15), *"fonctionne."* (13, 22, 23), *"('rangent') : il faut un pronom."* (16),
+*"mot de possession, pas un mot qui montre du doigt."* (18). **L'inversion possible que j'ai donnee
+comme motif de refus - un indice de forme positive tronque de son verbe, dans un paquet qui emploie
+aussi la forme negative - n'existe plus sous cette variante sur aucun des quatre items concernes.**
+
+#### 3. La reserve de robustesse, et elle est reelle
+
+**La marge est de 9,81 px, et je l'ai moi-meme declaree sous mon seuil de bruit.** L'incertitude de
+police que j'ai nommee vaut **15 a 35 px** sur cette rangee. **9,81 px est en dessous.** Je ne peux
+donc pas certifier que ce resultat tient sur une autre pile de polices que celle de cette machine :
+sur les seize items a une ligne d'enonce la marge est confortable (45,81 px), mais sur **13 et 23**
+une police un peu plus large ramenerait *"fonctionne."* sous le pli et rouvrirait exactement le defaut
+que j'ai refuse ce matin. **C'est la difference nette entre les deux jeux** : `SYN-11` est satisfaite
+avec +76,81 px, donc robuste ; `BPM-5` est satisfaite avec +9,81 px, donc satisfaite **et fragile**.
+Je le donne comme un resultat, pas comme une reserve nouvelle : la barre est atteinte, et sa marge est
+mince. **Les douze items a 15,81 px que je nommais ce matin, eux, passent tous a 45,81 px** - la raison
+pour laquelle j'avais vise la cause et non les huit items etait bonne, et la cause visee est celle-ci.
+
+#### 4. Ce que cette section ne fait pas
+
+- **Elle ne ferme pas `BPM-5`** et ne leve pas mon refus du Done pedagogique. Regle injectee, pas
+  increment livre - ma propre distinction, et c'est aujourd'hui qu'elle me coute quelque chose, donc
+  c'est aujourd'hui qu'elle vaut. **Chiffres a retrouver sur le livre** : 0 item sur 24 perdant du
+  texte d'indice, pire bas de glyphe 541,19 px, pire bas de proposition 411,19 px, pire bas de verdict
+  474,19 px, aux trois etats d'echec, `scrollY = 0`.
+- **Elle ne rejuge pas le contenu** : `BPM-2`, `BPM-3`, `BPM-4` restent tenues, ma reserve sur les
+  indices reste fermee, et l'observation du 2026-08-19 sur l'item 3 reste ouverte et non rouverte.
+- **Elle ne touche pas `BPM-6`** (la reponse revelee hors de l'ordre de tabulation) : la variante est
+  une affaire de largeur, elle ne dit rien du clavier, et le lot de `marc-dev` n'est pas sur cet arbre.
+- **Elle ne fait rien bouger dans `squad/programme/MATRICE-couverture.md`.** La ligne reste
+  `en cours`, et elle y restera jusqu'a un Done pedagogique prononce sur un increment livre.
+- **La contrepartie laterale du mecanisme** (marges effondrees sur la bande 576-767) est un constat
+  neuf de ce jour, ecrit avec sa mesure et sa condition `SYN-14` dans
+  `FICHE-bandit-manchot-synonymes-cm1.md`, section 5 : elle appartient au mecanisme, pas a ce jeu, et
+  je ne la duplique pas ici.
