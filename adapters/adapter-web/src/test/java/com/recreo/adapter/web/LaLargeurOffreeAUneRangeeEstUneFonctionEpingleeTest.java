@@ -500,8 +500,23 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
      * rendrait un test vert sans avoir rien mute, et c'est l'assertion ci-dessous qui l'attrape.
      */
     private static void muter(Path racine, String chemin, String avant, String apres) {
+        muterUneSeuleFois(racine.resolve(chemin), avant, apres);
+    }
+
+    /**
+     * ADR-0057 : l'implementation unique de la mutation d'un fichier de production, partagee par les
+     * trois garde-fous de ce module qui mutent du materiau reel. ADR-0056 avait ecrit le declencheur
+     * de cette extraction - "le jour ou un troisieme fichier de ce module mute du materiau reel, les
+     * trois copies partent dans un seul endroit" - et ce jour est celui du lot de S17-C. Le geste est
+     * celui de l'extraction de {@code rangeesRepliables} en ADR-0055 : l'implementation vit dans le
+     * fichier ou elle est nee, les autres l'importent, et chacun garde le tour d'appel qui lui va.
+     *
+     * <p><b>Ce que le partage protege, et c'est le motif</b> : l'unicite d'ancrage decidee par
+     * ADR-0056 est une decision, pas une commodite. En trois copies, elle pouvait deriver en trois
+     * endroits ; en un seul, elle est prouvee une fois par la clause qui suit.
+     */
+    static void muterUneSeuleFois(Path fichier, String avant, String apres) {
         try {
-            Path fichier = racine.resolve(chemin);
             String source = Files.readString(fichier);
             String saut = source.contains("\r\n") ? "\r\n" : "\n";
             String motif = avant.replace("\n", saut);
@@ -510,7 +525,7 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
                             + "L'ancrage cherche dans %s n'y apparait pas une fois mais %d, et "
                             + "String.replace reecrirait chacune : a zero la morsure ne mute rien, "
                             + "au-dela de un elle porte sur autre chose que ce qu'elle prouve, sans "
-                            + "que rien ne le dise. Ancrage : %s", chemin,
+                            + "que rien ne le dise. Ancrage : %s", fichier,
                             occurrences(source, motif), motif)
                     .isEqualTo(1);
             Files.writeString(fichier, source.replace(motif, apres.replace("\n", saut)));

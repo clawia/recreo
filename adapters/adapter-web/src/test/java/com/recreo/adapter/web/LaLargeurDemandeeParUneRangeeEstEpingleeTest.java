@@ -276,58 +276,17 @@ class LaLargeurDemandeeParUneRangeeEstEpingleeTest {
         }
     }
 
+    /**
+     * ADR-0057 : la mutation vit desormais en un seul endroit pour les trois garde-fous de ce module
+     * qui mutent du materiau reel, et l'unicite d'ancrage decidee par ADR-0056 y est prouvee une
+     * fois. Ce tour d'appel-ci - une racine et un chemin relatif - reste ici parce que les cinq
+     * morsures de ce fichier travaillent sur des copies de l'arborescence servie.
+     */
     private static void muter(Path racine, String chemin, String avant, String apres) {
-        try {
-            Path fichier = racine.resolve(chemin);
-            String source = Files.readString(fichier);
-            String saut = source.contains("\r\n") ? "\r\n" : "\n";
-            String motif = avant.replace("\n", saut);
-            assertThat(occurrences(source, motif))
-                    .as("ADR-0056 : une mise a l'epreuve mute l'objet qu'elle nomme, et un seul. "
-                            + "L'ancrage cherche dans %s n'y apparait pas une fois mais %d, et "
-                            + "String.replace reecrirait chacune : a zero la morsure ne mute rien, "
-                            + "au-dela de un elle porte sur autre chose que ce qu'elle prouve, sans "
-                            + "que rien ne le dise. Ancrage : %s", chemin,
-                            occurrences(source, motif), motif)
-                    .isEqualTo(1);
-            Files.writeString(fichier, source.replace(motif, apres.replace("\n", saut)));
-        } catch (IOException echec) {
-            throw new UncheckedIOException(echec);
-        }
+        LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest
+                .muterUneSeuleFois(racine.resolve(chemin), avant, apres);
     }
 
-    /**
-     * Le nombre de fois que ce texte apparait dans cette source, sans chevauchement. Compte par
-     * {@code indexOf} et non par une expression reguliere : {@code AssertionsWebTest} l'interdit dans
-     * ce module (ADR-0008), et un ancrage de mutation contient des accolades et des points, qui ne
-     * sont pas des caracteres neutres pour un moteur d'expressions.
-     */
-    private static int occurrences(String source, String texte) {
-        int total = 0;
-        int position = source.indexOf(texte);
-        while (position >= 0) {
-            total++;
-            position = source.indexOf(texte, position + texte.length());
-        }
-        return total;
-    }
-
-    /**
-     * ADR-0056, la mise a l'epreuve de la mise a l'epreuve, sur du materiau reel : la feuille maison
-     * servie declare plus d'une fois le texte cherche ici, et c'est le seul fait dont ce test depend.
-     * Avant ce lot, {@code muter} verifiait seulement que l'ancrage existait ; un ancrage qui en
-     * designait plusieurs faisait porter la morsure sur des endroits que son auteur n'avait pas
-     * nommes, en silence. Les cinq morsures de ce fichier partagent le meme ancrage
-     * {@code .proposition}, ce qui rend le declencheur proche pour elles aussi.
-     */
-    @Test
-    void unAncrageDeMutationAmbiguFaitEchouerLaMiseALEpreuve() {
-        Path racine = copieDesFeuilles(tempo.resolve("ancrage-ambigu"));
-
-        assertThatThrownBy(() -> muter(racine, "static/css/recreo.css", "font-size:", "font-size:"))
-                .isInstanceOf(AssertionError.class)
-                .hasMessageContaining("et un seul");
-    }
 
     @Test
     void unEcartElargiEntreDeuxColonnesFaitEchouerLeGardeFou() throws Exception {

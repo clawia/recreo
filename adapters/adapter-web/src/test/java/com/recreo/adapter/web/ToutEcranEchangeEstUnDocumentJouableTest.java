@@ -747,6 +747,154 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
                 .isNotEqualTo(niveauDeLaPuceActive(ecran.document()));
     }
 
+
+    /**
+     * ADR-0057, clause 2 : les balises que la specification HTML rend focalisables sans qu'on
+     * declare rien. <b>C'est le point faible nomme de cette regle</b>, parce que c'est une
+     * enumeration - la forme dont ce depot a ecrit qu'elle "echoue par inclusion autant que par
+     * omission". Le sens de la panne est choisi : une balise focalisable <b>absente</b> de cette
+     * liste rend la clause <b>rouge</b> a tort, ce qui est visible et se corrige en une ligne ; une
+     * balise <b>non</b> focalisable qu'on y ajouterait par erreur creerait un trou muet. La liste
+     * reste donc a l'ensemble interactif de la specification, et rien n'y entre pour faire passer un
+     * cas.
+     */
+    private static final Set<String> BALISES_FOCALISABLES_NATIVEMENT =
+            Set.of("a", "button", "input", "select", "textarea");
+
+    /** La cible de focus du script, et par quelle branche de son aiguillage elle a ete trouvee. */
+    private record PointDeFocus(String branche, Element element) {
+    }
+
+    /**
+     * ADR-0057 : la cible que {@code recreo.js} focalisera sur ce document, par le meme aiguillage
+     * que lui - le {@code [data-focus]} de l'ecran, puis {@code .enonce} ou
+     * {@code [data-focus-cible="true"]} selon sa valeur, et a defaut le repli sur {@code .signal}.
+     *
+     * <p><b>C'est un reencodage en Java de l'aiguillage du script, et il faut le dire.</b> Ce que ce
+     * depot possede pour empecher les deux de divergier n'est pas rien, et n'est pas cette clause :
+     * {@code RecreoJsDeplaceLeFocusTest} epingle les trois branches en executant le vrai script, et
+     * son faux DOM leve {@code UnsupportedOperationException} sur tout selecteur qu'il ne modelise
+     * pas - un cinquieme selecteur dans le script rougit la-bas avant d'etre oublie ici. La
+     * divergence reste possible si quelqu'un change une branche <b>existante</b> et met les deux
+     * endroits a jour de travers ; c'est nomme dans ADR-0057 et ce n'est pas garde.
+     */
+    private static Optional<PointDeFocus> pointDeFocusDuScript(Document document) {
+        Elements porteurs = document.select("[data-focus]");
+        if (porteurs.isEmpty()) {
+            Element signal = document.selectFirst(".signal");
+            return signal == null ? Optional.empty()
+                    : Optional.of(new PointDeFocus("repli sur .signal", signal));
+        }
+        Element ecran = porteurs.first();
+        if ("enonce".equals(ecran.attr("data-focus"))) {
+            Element enonce = ecran.selectFirst(".enonce");
+            return enonce == null ? Optional.empty()
+                    : Optional.of(new PointDeFocus("data-focus=enonce", enonce));
+        }
+        Element cible = ecran.selectFirst("[data-focus-cible=\"true\"]");
+        return cible == null ? Optional.empty()
+                : Optional.of(new PointDeFocus("data-focus-cible", cible));
+    }
+
+    /**
+     * Vrai si {@code focus()} peut atteindre cet element du document servi. Un {@code tabindex}
+     * declare suffit, quelle que soit sa valeur - y compris {@code -1}, qui retire de l'ordre de
+     * tabulation mais laisse {@code focus()} agir, et c'est exactement ce que le mecanisme de S17-C
+     * pose sur les trois cibles non focalisables. A defaut, seule la balise decide.
+     */
+    private static boolean estFocalisable(Element element) {
+        if (element.hasAttr("tabindex")) {
+            return true;
+        }
+        if (element.tagName().equals("a")) {
+            return element.hasAttr("href");
+        }
+        return BALISES_FOCALISABLES_NATIVEMENT.contains(element.tagName());
+    }
+
+    /**
+     * ADR-0057, clause 2 : la moitie positive de la propriete de S17-C. Le lot qui a deplace
+     * {@code tabindex} du script vers les gabarits a laisse la CI garder l'absence dans le script et
+     * <b>rien du tout</b> sur la presence dans les gabarits.
+     *
+     * <p><b>Mesure qui ouvre cette clause, 2026-08-23, sur l'arbre fusionne</b> : les trois
+     * {@code tabindex="-1"} retires de {@code manche.html}, {@code confirmation.html} et
+     * {@code retour.html} - c'est-a-dire le mecanisme entier de S17-C defait - laissent
+     * {@code BUILD SUCCESS} et 618 tests verts. Un enfant au clavier perdrait son point de focus sur
+     * les trois ecrans, et aucun automate ne le dirait. C'est la meme faute qu'ADR-0055 a nommee sur
+     * les largeurs : une moitie de propriete gardee n'est pas la propriete gardee.
+     *
+     * <p><b>Ce que cette clause ne prouve pas</b> : que Tabulation puis Entree, au clavier, dans un
+     * vrai navigateur, atteignent ce point et n'y detruisent rien. La clause 1 de {@code M13} reste
+     * la mesure de {@code nadia-prof} (ADR-0025, ADR-0028). Ce qui est garde ici est la <b>cause
+     * declarative</b> : la cible que le script designe est focalisable dans le document que le
+     * serveur sert.
+     */
+    @Test
+    void surChaqueEcranLaCibleDeFocusDuScriptEstFocalisableDansLeDocumentServi() throws Exception {
+        Set<String> branchesExercees = new TreeSet<>();
+        List<String> juges = new ArrayList<>();
+
+        for (Ecran ecran : ecrans()) {
+            Optional<PointDeFocus> point = pointDeFocusDuScript(ecran.document());
+            if (point.isEmpty()) {
+                continue;
+            }
+            juges.add(ecran.nom());
+            branchesExercees.add(point.get().branche());
+
+            assertThat(estFocalisable(point.get().element()))
+                    .as("ADR-0057 : sur l'ecran \"%s\" (%s), recreo.js focalisera <%s class=\"%s\"> "
+                            + "par la branche \"%s\", et cet element n'est pas focalisable dans le "
+                            + "document servi - ni nativement, ni par un tabindex declare. focus() n'y "
+                            + "fera rien : l'enfant qui arrive sur cet ecran n'a plus de point de "
+                            + "depart au clavier. Depuis S17-C, c'est le gabarit qui declare tabindex, "
+                            + "jamais le script (clause 1)", ecran.nom(), ecran.route(),
+                            point.get().element().tagName(),
+                            point.get().element().className(), point.get().branche())
+                    .isTrue();
+        }
+
+        assertThat(juges)
+                .as("ADR-0003 : aucun ecran du corpus ne designe de cible de focus, cette clause "
+                        + "serait verte sans rien avoir examine")
+                .isNotEmpty();
+        assertThat(branchesExercees)
+                .as("ADR-0051 : cette clause doit rencontrer les trois branches de l'aiguillage du "
+                        + "script, sinon elle en garde moins qu'elle n'en nomme. Branches exercees "
+                        + "par le corpus : %s", branchesExercees)
+                .containsExactlyInAnyOrder("data-focus=enonce", "data-focus-cible",
+                        "repli sur .signal");
+    }
+
+    /**
+     * ADR-0013 obligation 3 pour la clause 2, sur la sortie reelle du serveur plutot que sur une
+     * fixture (meme posture que les deux morsures voisines) : le {@code tabindex} declare par le
+     * gabarit est retire du document que Thymeleaf vient de rendre. C'est exactement le geste dont la
+     * mesure du 2026-08-23 a etabli qu'il passait inapercu.
+     */
+    @Test
+    void unTabindexRetireDuGabaritFaitEchouerLaClauseDeFocalisabilite() throws Exception {
+        Ecran manche = ecrans().stream()
+                .filter(candidat -> candidat.nom().equals("manche 1"))
+                .findFirst()
+                .orElseThrow();
+        PointDeFocus point = pointDeFocusDuScript(manche.document()).orElseThrow(() ->
+                new AssertionError("la manche doit designer une cible de focus avant mutation"));
+        assertThat(point.branche()).isEqualTo("data-focus=enonce");
+        assertThat(estFocalisable(point.element()))
+                .as("avant mutation, la cible doit etre focalisable, sinon cette morsure ne prouve "
+                        + "rien sur le geste qu'elle reproduit")
+                .isTrue();
+
+        point.element().removeAttr("tabindex");
+
+        assertThat(estFocalisable(point.element()))
+                .as("un <p> sans tabindex n'est pas focalisable : focus() n'y ferait rien, et c'est "
+                        + "le defaut que la clause 2 doit rendre rouge")
+                .isFalse();
+    }
+
     /** Le corpus doit vraiment contenir des ecrans a juger, sinon les deux clauses passent a vide. */
     @Test
     void leCorpusDEcransNEstPasVide() throws Exception {
