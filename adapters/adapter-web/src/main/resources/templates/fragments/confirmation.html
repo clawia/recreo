@@ -36,7 +36,10 @@
          nadia-prof, meme reference) - aucun anneau, aucun contour, aucun changement d'apparence :
          du texte centre encadre resterait, pour un lecteur debutant, trop proche de l'aspect d'une
          chose sur laquelle on appuie (nadia-prof, arbitrage s01, refuse d'avance). -->
-    <p class="question-confirmation" data-focus-cible="true">Si tu pars, ta partie s'arrête.</p>
+    <!-- S18, S17-C : tabindex="-1" est declare ici, jamais pose par recreo.js. Un <p> n'est pas
+         focalisable nativement ; c'est la seule maniere dont focus() peut atteindre cette phrase,
+         le point de focus arbitre par ADR-0040. -->
+    <p class="question-confirmation" data-focus-cible="true" tabindex="-1">Si tu pars, ta partie s'arrête.</p>
     <!-- ines-design, proposition s11 : les deux boutons partagent un seul conteneur pour que la
          feuille maison les empile et les ecarte sans toucher a .continuer-partie ni .retour-accueil,
          qui restent les classes partagees par le reste de l'application (ADR-0017). Aucun element

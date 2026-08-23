@@ -23,7 +23,10 @@
     <button type="button" class="btn sortie-pleine" data-role="sortie"
             hx-post="/retour" hx-target="#jeu" hx-swap="innerHTML">Les jeux</button>
     <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
-    <div class="signal" th:classappend="${juste} ? 'est-juste' : 'est-faux'">
+    <!-- S18, S17-C : tabindex="-1" est declare ici, jamais pose par recreo.js. Un <div> n'est pas
+         focalisable nativement ; c'est la seule maniere dont focus() peut l'atteindre quand aucun
+         data-focus n'est present sur cet ecran, et que le script replie sur .signal. -->
+    <div class="signal" tabindex="-1" th:classappend="${juste} ? 'est-juste' : 'est-faux'">
         <span class="icone-signal" aria-hidden="true"></span>
         <p th:if="${juste}" class="verdict">Bravo, c'est juste !</p>
         <p th:unless="${juste}" class="verdict">
