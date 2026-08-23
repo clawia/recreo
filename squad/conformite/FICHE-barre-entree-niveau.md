@@ -154,6 +154,18 @@
 - **Releves de mesure du 2026-08-18** : `squad/conformite/releves-s15/`, sept captures a 360 px et au
   pli de 640 px, memes noms d'ecran que les series `barre-`, `livre-` et `corrige-` de s14, pour que la
   comparaison se fasse image contre image sur quatre etats successifs du meme produit.
+- **Verdict du 2026-08-23 (s18, cloture) sur `S17-C`** : **VALIDE.** Le bouton que le jeu nomme est
+  redevenu un **arret de tabulation**, mesure au clavier reel sur l'increment servi (`10e0e0f`, 621
+  tests verts) - ordre releve : *(document) > CP > CM1 > Les jeux > Ont > On*, contre un ordre ou il
+  etait le seul absent en s17 ; quitte puis **retrouve par tabulation seule**, l'appui faisant avancer
+  la manche. **Clause 1 de `M13` confirmee** : Tabulation puis Entree ne detruit jamais la partie, la
+  sortie passe par une confirmation dont le premier arret est *"Continuer la partie"*. **Les cinq
+  etats des trois ecrans ont un point de depart au clavier**, aucun sur `body`. **`BPM-6` : clause 1
+  FERMEE, clause 2 NON TENUE** (la mauvaise proposition, encore atteignable a la revelation, rend un
+  ecran strictement identique) - non chargee a ce lot. Conditions neuves : **`M22`** (un quatrieme
+  ecran, `erreur.html`, n'a aucune cible de focus - lu sur le gabarit, non joue) et **`M23`** (rien
+  n'annonce que le troisieme echec donnera la reponse - fait de s17 **inchange**). Verdict complet en
+  fin de fiche.
 - **Derniere mise a jour** : 2026-08-18, cloture de s15 (correctif de la regression de l'etat actif
   juge sur les trois routes ; arbitrage rendu sur le retour sous le doigt d'une proposition deja
   essayee ; tous les verdicts anterieurs, dont le refus du 2026-08-17, sont inchanges et lisibles sous
@@ -3088,3 +3100,212 @@ obtient de bien. BARRE-7 et BARRE-8 sont deux conditions deja ecrites que cette 
   pictogramme de matiere. Le critere que j'appliquerai le jour ou on me les proposera est ecrit ici :
   un pictogramme n'est acceptable que s'il **retire** un effort de lecture, jamais s'il en ajoute un.
 - **Le texte de l'etat filtre**, qui n'existe pas encore. Il sera juge sur l'increment livre.
+
+---
+
+### Verdict du 2026-08-23 (s18, cloture) sur `S17-C` - **VALIDE**, clause 1 de `M13` confirmee au clavier reel, `BPM-6` **fermee a moitie**
+
+> **Ce que cette section fait.** Elle instruit la correction clavier de `marc-dev` que j'avais
+> explicitement refuse de crediter le matin meme, alors qu'elle etait deja presente sur l'arbre que je
+> mesurais : *"je ne juge pas la correction clavier de `marc-dev` [...] son Done reste une autre
+> question, que je n'instruis pas ici."* La voici instruite. Elle n'efface aucun verdict anterieur.
+>
+> - **`S17-C` : VALIDE.** Le bouton que le jeu nomme est redevenu un arret de tabulation, mesure au
+>   clavier reel sur l'increment servi.
+> - **Clause 1 de `M13` : confirmee** par ma mesure - Tabulation puis Entree ne detruit jamais la
+>   partie, sur les trois ecrans.
+> - **Les trois ecrans ont un point de depart au clavier.** Un **quatrieme** n'en a pas, et personne
+>   ne l'avait nomme : constat neuf, `M22`.
+> - **`BPM-6` : sa clause 1 est FERMEE, sa clause 2 ne l'est pas.** Je l'instruis au lieu de la
+>   crediter, comme je m'y etais engagee.
+> - **Le fait que j'avais nomme contre ma propre severite en s17 n'est PAS change**, et `S17-C` ne l'a
+>   jamais promis : `M23`.
+
+#### 0. L'arbre mesure
+
+Worktree dedie `s18-nadia-s17c`, forke de `round-two` a **`10e0e0f`** - SHA releve par moi
+(`git rev-parse`), pas recopie de la demande. `outils/verifier-lignee.sh` : descend de la lignee de
+`round-two`. `round-two`, `s18-marc`, `s18-theo` et `s18-lea` sont ancetres, verifies un a un par
+`git merge-base --is-ancestor`. **`bash outils/mvn-jdk21.sh -B clean verify` sur la racine : BUILD
+SUCCESS, 621 tests, 0 echec** (48 + 13 + 321 + 144 + 89 + 6, somme faite sur les six blocs `Results`).
+
+**Le materiau servi est verifie avant la mesure, pas suppose** : le script rendu par l'application en
+marche (`/js/recreo.js`) contient **zero `setAttribute`**, et les trois gabarits declarent
+`tabindex="-1"` sur `p.enonce`, `p.question-confirmation` et `div.signal`.
+
+#### 1. Methode
+
+Reference **744 x 551 px**, navigateur reel pilote par son protocole de deverminage, application
+servie depuis le fat jar de cet arbre, **clavier seul** : Tabulation et Entree, jamais un appel HTTP
+fabrique, jamais un `click()` de script. L'ordre de tabulation est releve en lisant
+`document.activeElement` **apres chaque Tabulation reelle**, un arret a la fois. La revelation est
+atteinte comme un enfant l'atteint : trois appuis sur la meme mauvaise proposition.
+
+#### 2. `S17-C` - le defaut a disparu, et voici les deux ordres cote a cote
+
+**Ce que j'avais releve en s17**, sur une manche revelee dont le bouton nomme etait `aura`, apres
+avoir quitte ce bouton - **le bouton nomme etait le seul absent de l'ordre**, et c'etait le motif de
+`S17-C` :
+
+    aurai > (document) > CP > CM1 > Les jeux > aura > avaient
+
+**Ce que je mesure aujourd'hui**, meme geste, sur une manche revelee dont le bouton nomme est `On` :
+
+    (document) > CP > CM1 > Les jeux > Ont > On > (document) > CP > CM1
+
+**Les deux propositions sont dans l'ordre de tabulation, y compris celle que le jeu nomme**, et
+**aucune ne porte plus de `tabindex`** (`ti=null` sur les deux, releve dans le document servi, pas
+deduit du gabarit). Le bouton nomme est donc un arret de tabulation.
+
+**Verification faite dans les deux sens, parce qu'un ordre releve n'est pas un geste d'enfant** : j'ai
+quitte le bouton nomme, je l'ai **retrouve par tabulation seule**, et l'appui a fait avancer la manche
+- enonce suivant rendu, verifie. Releve :
+`squad/conformite/releves-s18/s18-s17c-revelation-focus-retrouve-par-tabulation.png` - le bouton nomme
+porte l'anneau de focus, sous la phrase *"C'est et. Appuie sur et."* qui le designe.
+
+**`S17-C` est tenue.** C'est la seule mesure de ce sprint ou je ne trouve rien a reprocher au premier
+passage, et je le dis sans le nuancer.
+
+#### 3. Les trois ecrans ont un point de depart au clavier - et un quatrieme n'en a pas
+
+`theo-archi` a etabli que sans les attributs declares, l'appel de focus **ne fait plus rien** : le
+mecanisme entier repose sur leur presence. Mesure, etat par etat, sur le servi :
+
+| Etat | Point de focus declare | Element reellement focalise | Sur `body` ? |
+|---|---|---|---|
+| Manche fraiche | `enonce` | `p.enonce`, `tabindex="-1"` | non |
+| Manche apres echec | le bouton presse | le bouton presse, **sans** `tabindex` | non |
+| Manche revelee | le bouton nomme | le bouton nomme, **sans** `tabindex` | non |
+| Confirmation de sortie | `phrase` | `p.question-confirmation`, `tabindex="-1"` | non |
+| Fin de partie | branche `.signal` | `div.signal`, `tabindex="-1"` | non |
+
+**Aucun des cinq etats ne laisse le focus sur `body`.** Le mecanisme declaratif fait ce qu'il annonce.
+
+**Le constat neuf, que je n'ai pas cherche et qui est tombe en auditant les gabarits servis.** La
+seconde branche du script vise `.signal` quand l'ecran echange ne porte pas `data-focus`. **Deux
+fragments sont dans ce cas, pas un** : `retour.html`, dont le `.signal` porte bien l'attribut, et
+**`erreur.html`, qui n'a aucun `.signal`** - il porte `p.erreur` et un lien `.recommencer`. Sur cet
+ecran la cible de focus est donc **nulle**, et le focus ne bouge pas : apres un echange qui a retire du
+document l'element focalise, il retombe sur `body`. **L'enfant n'y est pas enferme** - l'ecran n'a
+qu'une action, *"Recommencer"*, et la tabulation l'atteint - mais c'est le seul ecran sans point de
+depart declare.
+
+**Audit degrade, declare plutot que masque : je n'ai pas pu jouer cet ecran.** Il demande une erreur
+technique que je ne sais pas provoquer en jouant, et je ne fabrique pas d'appel HTTP pour y arriver.
+**Ce constat est une lecture du gabarit servi, pas une mesure de rendu**, et c'est exactement pourquoi
+je le pose en condition (`M22`) et non en motif.
+
+#### 4. Clause 1 de `M13` - confirmee, et ce qui reste hors CI
+
+**La clause, telle qu'elle est ecrite depuis le 2026-08-12** : apres une reponse, le focus ne va jamais
+sur la sortie, qui detruit la partie sans confirmation. `ADR-0057` la reformule en *"Tabulation puis
+Entree ne detruit jamais la partie"* et la laisse a ma mesure. **Mesuree, dans les deux
+formulations** :
+
+- **Le focus apres une reponse** ne va sur aucune sortie : enonce, bouton presse, ou bouton nomme
+  (tableau de la section 3). **Jamais sur un `data-role="sortie"`.**
+- **Tabulation x1 puis Entree depuis le point de focus d'une manche fraiche** : le premier arret est
+  une **proposition**, l'appui joue la reponse - score 0 -> 1, manche suivante rendue. **La partie
+  survit.**
+- **La sortie atteinte volontairement par tabulation** (`Les jeux`, dans l'en-tete) : Entree rend
+  l'**ecran de confirmation**, pas la liste des jeux. La partie n'est pas detruite.
+- **Sur cet ecran de confirmation, le premier arret de tabulation est *"Continuer la partie"***, la
+  sortie n'etant qu'au second - ordre releve : *Continuer la partie > Les jeux > (document) > cycle*.
+  **Tabulation puis Entree y ramene donc l'enfant dans sa partie.** C'est le meilleur cas possible et
+  rien ne le garantissait ; je le credite parce que je l'ai mesure.
+
+**Clause 1 de `M13` : confirmee.** Elle n'est pas fermee par un garde-fou et ne le sera pas. Ce que la
+CI garde desormais, **des deux cotes** grace a `ADR-0057`, est la **cause declarative** : que le script
+ne rende plus aucun element focalisable, et que les gabarits portent bien les trois attributs. C'est
+ce qui empeche le defaut de revenir en silence, et c'est beaucoup - `theo-archi` a trouve la deux trous
+que ni `marc-dev` ni moi n'avions vus, dont une clause sensible a la casse que l'orthographe la plus
+idiomatique du meme geste contournait suite verte.
+
+**Ce qu'aucun test ne verra jamais, et c'est moi qui reste dessus** :
+1. **Qu'un ordre de tabulation reel est celui-la.** Le faux DOM de `RecreoJsDeplaceLeFocusTest` pose un
+   drapeau sur `focus()` et **reussit donc toujours** ; il ne modelise ni la focalisabilite native ni
+   la propriete DOM. Un vert de ce fichier ne dit jamais que la cible pouvait recevoir le focus.
+2. **Qu'un nom d'attribut calcule** (`'tab' + 'index'`) echappe a la clause textuelle. Dette assumee
+   par `ADR-0057`, bornee par le plafond de quinze lignes du script, avec son declencheur ecrit.
+3. **Que le premier arret de tabulation d'un ecran n'est pas destructeur.** Aucune clause ne compare un
+   ordre de tabulation a la destructivite de ses cibles.
+
+#### 5. `BPM-6` - sa clause 1 est fermee, sa clause 2 ne l'est pas
+
+J'avais ecrit `BPM-6` en deux clauses le 2026-08-23 au matin, en refusant explicitement de la valider
+sur la promesse du mecanisme de `S17-C`. **Je les instruis toutes les deux.**
+
+**Clause 1 - *"la proposition qui porte la reponse revelee reste atteignable au clavier"* : FERMEE.**
+Mesure de la section 2 : elle est dans l'ordre de tabulation, retrouvable apres l'avoir quittee, et
+l'appui fait avancer la manche. **C'etait bien la cause, et le mecanisme B l'a retiree** - je l'avais
+suppose le matin, je le sais maintenant.
+
+**Clause 2 - *"aucune proposition atteignable ne rend un ecran strictement identique a celui qui la
+precede"* : NON TENUE.** Mesure a la revelation, sur l'increment servi : la mauvaise proposition,
+barree, est **toujours atteignable au clavier** ; l'appui declenche **un echange HTTP reel** ; et
+l'ecran rendu est **strictement identique** - meme score, meme enonce, meme verdict, meme indice, memes
+marques, compares champ par champ. Le focus revient ensuite sur le bouton nomme.
+
+**`BPM-6` reste donc ouverte sur sa seconde clause, et je ne la charge pas a `S17-C`.** Ce lot visait
+la focalisabilite declarative ; il n'a jamais promis de changer ce que fait le domaine sur une manche
+revelee (`BanditManchotSession.jouer`, branche `revelee` : un appui a cote rend `this` tel quel, ce qui
+est `M5` et que j'ai moi-meme demande). **Sa severite a nettement baisse et je le dis** : le matin, la
+mauvaise proposition etait la **seule** atteignable, donc le seul chemin passait par un appui sans
+effet ; aujourd'hui elle coexiste avec la bonne, atteignable et nommee a l'ecran. **Une touche morte a
+cote d'une touche qui marche n'est pas une impasse.** Elle reste **non bloquante**, comme le 2026-08-23
+au matin.
+
+#### 6. Le fait que j'avais nomme contre ma propre severite - **il n'est pas change**
+
+En s17 j'avais ecrit, en corrigeant ma propre formulation trop dure, qu'une sortie existait et que
+l'enfant n'etait pas enferme, mais qu'il devait **presser volontairement une mauvaise reponse pour
+qu'on lui rende la bonne**, et que **rien a l'ecran ne le lui indiquait**.
+
+**Mesure sur l'increment servi : ce fait est inchange.** `ESSAIS_AVANT_REVELATION` vaut toujours 3, et
+la revelation ne s'obtient que par trois echecs. Ce que l'ecran dit, releve etat par etat : sur une
+manche fraiche, **rien** - ni verdict, ni indice, ni explication ; au premier et au deuxieme echec,
+*"Ce n'est pas ça. Essaie encore !"* et l'indice de l'item. **Aucun des trois etats n'annonce qu'un
+troisieme echec donnera la reponse.**
+
+**Et je corrige une sonde de ma propre main avant de m'appuyer dessus** : mon depouillement affichait
+`annonce_la_revelation: true` aux echecs 1 et 2. **C'est un faux positif de ma sonde**, qui cherchait
+le mot *"encore"* et le trouvait dans *"Essaie encore !"* - lequel invite a reessayer et n'annonce rien
+du tout. Le fait juste est celui du paragraphe ci-dessus.
+
+**Ce que j'en fais.** `S17-C` portait sur *"la sortie clavier absente a la revelation"* et ne visait
+pas la maniere dont la revelation s'obtient. **Ce n'est donc pas un motif contre ce lot** ; ce serait
+lui reprocher ce qu'il n'a jamais promis. C'est une **condition neuve et datee**, `M23`, sur la
+mecanique partagee par les treize jeux.
+
+#### 7. Verdict et conditions neuves, datees du 2026-08-23
+
+**`S17-C` : VALIDE.** Done pedagogique accorde sur l'increment livre (`round-two` a `10e0e0f`). Audit
+joue : oui, au clavier seul, sur les cinq etats des trois ecrans, application servie. Le motif de
+report d'origine est traite, la clause 1 de `M13` est confirmee par ma mesure, et la cause declarative
+est desormais gardee des deux cotes.
+
+**`M22` (non bloquante), 2026-08-23.** **Tout ecran que le script de focus vise porte une cible qui
+peut recevoir le focus.** `erreur.html` est aujourd'hui le seul a ne pas en avoir : la seconde branche
+y cherche un `.signal` qui n'existe pas. Verification demandee **en jouant** l'ecran, ce que je n'ai
+pas su faire ; a defaut, une lecture du gabarit servi comme la mienne. Non bloquante : l'ecran n'a
+qu'une action et la tabulation l'atteint.
+
+**`M23` (non bloquante), 2026-08-23.** **Rien a l'ecran n'indique a l'enfant que le troisieme echec
+lui donnera la reponse.** Constat mesure, inchange depuis s17, sur la mecanique partagee. Je le pose
+en condition pour qu'il cesse d'etre un fait que je repete a chaque verdict sans que personne n'en
+fasse rien - a `camille-po` d'en faire une story ou de le refuser explicitement. **Je n'en fais pas un
+motif** et je ne dessine aucune solution : ce n'est pas mon role et je ne veux pas qu'un libelle de
+plus a l'ecran soit ajoute sans que j'en juge la lisibilite.
+
+**`BPM-6`** reste ouverte sur sa clause 2 (section 5), non bloquante, dans
+`FICHE-bandit-manchot-homophones-cm1.md` ou elle est nee.
+
+#### 8. Ce dont je reste seule garde
+
+- **L'ordre de tabulation reel, sur tout ecran et dans tout etat.** La CI est verte a 621 tests et ne
+  voit aucun ordre de tabulation ; elle voit une declaration dans un gabarit et une absence dans un
+  script. Les deux sont les bonnes choses a garder, et elles ne remplacent pas un doigt sur une touche.
+- **Que le premier arret de tabulation d'un ecran ne soit pas destructeur.** Rien ne le compare.
+- **`M22`**, que je n'ai pas pu jouer, et **`M23`**, que rien n'observe.
+- **Ce que je ne garantis toujours pas** : ce qu'un lecteur d'ecran annonce - jamais couvert par aucun
+  de mes Done, y compris celui-ci, et l'ordre de tabulation n'en dit rien.
