@@ -143,6 +143,19 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
      * sont derivees de la meme arithmetique, et n'ont ete mesurees par personne : leur presence ici
      * garde l'escalier entier contre un changement muet, elle n'affirme rien sur ce qu'un enfant voit
      * a ces largeurs.
+     *
+     * <p><b>Consigne permanente attachee a ces deux lignes, et non correction anticipee.</b> La
+     * phrase ci-dessus est vraie aussi longtemps qu'aucune declaration <b>maison</b> ne l'emporte sur
+     * l'une de ces deux lignes au palier de reference. Le jour ou une declaration maison le fait -
+     * c'est ce que la variante d'{@code ines-design} pour {@code SYN-11} pose sur {@code .zone-jeu},
+     * en attente d'arbitrage au moment ou j'ecris - la consequence mesuree de la ligne qu'elle
+     * recouvre devient <b>perimee</b> : la ligne reste dans la table, puisque la declaration tierce
+     * reste declaree, mais les 500 px que {@code nadia-prof} a mesures ne sont plus ce que le
+     * navigateur rend a ce palier. <b>Cette phrase est alors a corriger dans le commit du
+     * correctif</b>, avec la remesure demandee - et la table rougit precisement ici, sur les lignes
+     * concernees, ce qui met le rouge et la consigne au meme endroit. Elle n'est pas corrigee
+     * d'avance : ecrire aujourd'hui qu'une mesure est perimee alors qu'elle ne l'est pas serait
+     * exactement la reference fausse que cette consigne existe pour eviter.
      */
     private static final List<String> FONCTION_EPINGLEE = List.of(
             "nav.container.entete-contenu <- nav.container.entete-contenu | bootstrap.min.css | - | * | box-sizing: border-box",
@@ -500,16 +513,72 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
      * rendrait un test vert sans avoir rien mute, et c'est l'assertion ci-dessous qui l'attrape.
      */
     private static void muter(Path racine, String chemin, String avant, String apres) {
+        muterUneSeuleFois(racine.resolve(chemin), avant, apres);
+    }
+
+    /**
+     * ADR-0057 : l'implementation unique de la mutation d'un fichier de production, partagee par les
+     * trois garde-fous de ce module qui mutent du materiau reel. ADR-0056 avait ecrit le declencheur
+     * de cette extraction - "le jour ou un troisieme fichier de ce module mute du materiau reel, les
+     * trois copies partent dans un seul endroit" - et ce jour est celui du lot de S17-C. Le geste est
+     * celui de l'extraction de {@code rangeesRepliables} en ADR-0055 : l'implementation vit dans le
+     * fichier ou elle est nee, les autres l'importent, et chacun garde le tour d'appel qui lui va.
+     *
+     * <p><b>Ce que le partage protege, et c'est le motif</b> : l'unicite d'ancrage decidee par
+     * ADR-0056 est une decision, pas une commodite. En trois copies, elle pouvait deriver en trois
+     * endroits ; en un seul, elle est prouvee une fois par la clause qui suit.
+     */
+    static void muterUneSeuleFois(Path fichier, String avant, String apres) {
         try {
-            Path fichier = racine.resolve(chemin);
             String source = Files.readString(fichier);
             String saut = source.contains("\r\n") ? "\r\n" : "\n";
             String motif = avant.replace("\n", saut);
-            assertThat(source).as("la mutation doit porter sur du materiau reel").contains(motif);
+            assertThat(occurrences(source, motif))
+                    .as("ADR-0056 : une mise a l'epreuve mute l'objet qu'elle nomme, et un seul. "
+                            + "L'ancrage cherche dans %s n'y apparait pas une fois mais %d, et "
+                            + "String.replace reecrirait chacune : a zero la morsure ne mute rien, "
+                            + "au-dela de un elle porte sur autre chose que ce qu'elle prouve, sans "
+                            + "que rien ne le dise. Ancrage : %s", fichier,
+                            occurrences(source, motif), motif)
+                    .isEqualTo(1);
             Files.writeString(fichier, source.replace(motif, apres.replace("\n", saut)));
         } catch (IOException echec) {
             throw new UncheckedIOException(echec);
         }
+    }
+
+    /**
+     * Le nombre de fois que ce texte apparait dans cette source, sans chevauchement. Compte par
+     * {@code indexOf} et non par une expression reguliere : {@code AssertionsWebTest} l'interdit dans
+     * ce module (ADR-0008), et un ancrage de mutation contient des accolades et des points, qui ne
+     * sont pas des caracteres neutres pour un moteur d'expressions.
+     */
+    private static int occurrences(String source, String texte) {
+        int total = 0;
+        int position = source.indexOf(texte);
+        while (position >= 0) {
+            total++;
+            position = source.indexOf(texte, position + texte.length());
+        }
+        return total;
+    }
+
+    /**
+     * ADR-0056, la mise a l'epreuve de la mise a l'epreuve. Elle mord sur du materiau reel : la
+     * feuille maison servie declare plus d'une fois le texte cherche ici, et c'est le seul fait dont
+     * ce test depend. Avant ce lot, {@code muter} se contentait de verifier que l'ancrage existait ;
+     * un ancrage qui en designait plusieurs faisait donc porter la morsure sur des endroits que son
+     * auteur n'avait pas nommes, en silence. Le declencheur n'est pas theorique : la declaration
+     * proposee pour {@code SYN-11} ajoute un second bloc {@code .zone-jeu}, ancrage de deux des
+     * morsures de ce module.
+     */
+    @Test
+    void unAncrageDeMutationAmbiguFaitEchouerLaMiseALEpreuve() {
+        Path racine = copieDesFeuilles(tempo.resolve("ancrage-ambigu"));
+
+        assertThatThrownBy(() -> muter(racine, "static/css/recreo.css", "font-size:", "font-size:"))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("et un seul");
     }
 
     /**

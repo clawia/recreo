@@ -13,14 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.Regle;
+import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.reglesMaison;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * S3-8, prealable seul (avis de faisabilite theo-archi, sprint 3) : accueil.html ne portait aucune
  * balise &lt;meta name="viewport"&gt;. Sans elle, un telephone rend la page dans une fenetre
- * virtuelle d'environ 980px puis reduit l'ensemble : la mise en page a 375px n'est jamais reellement
- * exercee sur un vrai telephone. Le reste de la story (chevauchement et depassement reellement
+ * virtuelle d'environ 980px puis reduit l'ensemble : la mise en page a la largeur de l'appareil
+ * n'est jamais reellement exercee sur un vrai telephone. (375 px etait la cible produit au sprint 3 ;
+ * la reference est 744 x 551 depuis DEC-0040, et le plafond de ce fichier a suivi - voir
+ * {@link #LARGEUR_CIBLE_PX}.) Le reste de la story (chevauchement et depassement reellement
  * rendus) reste hors de portee, aucun moteur de rendu n'existant dans ce depot.
  *
  * <p>Perimetre derive, jamais enumere (ADR-0013) : les gabarits de page viennent du systeme de
@@ -46,34 +50,33 @@ class ViewportEtLargeurTelephoneTest {
     private static final Path RACINE_PRODUCTION = Path.of("src/main/resources");
     private static final Path CONTRE_EXEMPLES =
             Path.of("src/test/resources/contreexemple/ViewportEtLargeurTelephoneTest");
-    private static final int LARGEUR_CIBLE_PX = 375;
+    /**
+     * La largeur de reference du produit, et le plafond que ce garde-fou oppose a toute largeur
+     * declaree en pixels dans une feuille maison ou dans un attribut de style.
+     *
+     * <p><b>744 px depuis le 2026-08-23, decision de camille-po ; 375 px auparavant.</b> Les 375 px
+     * venaient de S3-8, sprint 3, quand le telephone etait la cible du produit. DEC-0040
+     * (2026-08-22) a sorti la bande sous 576 px du perimetre et fixe la reference a 744 x 551 : la
+     * premisse du seuil avait disparu. ADR-0056 a d'abord rendu ce seuil <b>visible</b> - il
+     * s'evitait en nichant la declaration sous une regle-@, et ne voyait donc pas la moitie des
+     * gestes qu'il interdit - puis a route sa valeur a camille-po sans la trancher, une largeur de
+     * reference n'etant pas une decision d'architecture.
+     *
+     * <p><b>Ce que sa decision retient, et ce qu'elle ecarte.</b> Le seuil est <b>revise, jamais
+     * supprime</b> : le meme risque, contre le meme mode de defaillance, s'est redeplace avec la
+     * cible - toute largeur maison au-dela de l'appareil le plus etroit reellement vise force un
+     * debordement horizontal. Il est revise <b>uniformement sur les trois proprietes</b> que ce
+     * fichier examine. L'argument que je lui avais fourni - exempter {@code max-width}, au motif
+     * qu'un plafond au-dela de la cible ne peut pas faire deborder la ou {@code width} et
+     * {@code min-width} le peuvent - est <b>ecarte</b>, avec son motif : il relacherait un garde-fou
+     * exactement dans le lot qui en beneficie, et laisserait tout {@code max-width} maison hors de
+     * la chaine d'ADR-0054 sans aucune garde. La valeur retenue est la reference deja fixee, pas un
+     * troisieme nombre invente.
+     */
+    private static final int LARGEUR_CIBLE_PX = 744;
 
     private static Path templates(Path racine) {
         return racine.resolve("templates");
-    }
-
-    /**
-     * ADR-0014 : le perimetre juge ici n'est plus un fichier nomme, il est derive de la provenance.
-     * Toute feuille servie est jugee, sauf celles de static/vendor/, qui sont des copies octet pour
-     * octet de bibliotheques tierces. Deux consequences voulues : une feuille maison neuve est jugee
-     * du jour ou elle existe, sans qu'on pense a l'inscrire ; et une feuille tierce ne recoit jamais
-     * le reproche d'un choix de mise en page qui n'est pas le notre. Une bibliotheque deposee
-     * ailleurs que sous vendor/ n'echappe a rien : elle est jugee comme du CSS maison, et une
-     * largeur en pixels la fait echouer immediatement.
-     */
-    private static List<Path> feuillesMaison(Path racine) throws IOException {
-        Path statique = racine.resolve("static");
-        if (!Files.isDirectory(statique)) {
-            return List.of();
-        }
-        Path tierces = statique.resolve("vendor");
-        try (Stream<Path> arborescence = Files.walk(statique)) {
-            return arborescence.filter(Files::isRegularFile)
-                    .filter(fichier -> fichier.getFileName().toString().endsWith(".css"))
-                    .filter(fichier -> !fichier.startsWith(tierces))
-                    .sorted()
-                    .toList();
-        }
     }
 
     /**
@@ -164,17 +167,35 @@ class ViewportEtLargeurTelephoneTest {
         return propriete.equals("width") || propriete.equals("min-width") || propriete.equals("max-width");
     }
 
-    private static List<LargeurPx> largeursPxDuCss(Path fichierCss) throws IOException {
-        String source = sansCommentaires(Files.readString(fichierCss));
+    /**
+     * ADR-0056 : les largeurs en pixels des feuilles maison, lues par le balayage qui <b>garde le
+     * contexte de regles-@</b> plutot que par un decoupage sur les accolades.
+     *
+     * <p>Le decoupage precedent attribuait a une regle-@ le texte entier de son bloc : sa premiere
+     * declaration se lisait alors comme une propriete nommee "SELECTEUR ACCOLADE max-width", que
+     * {@link #isLargeurFixeeOuBornee} ne reconnait pas, donc comme une largeur qui n'entrait dans
+     * aucune population. <b>Une meme declaration etait jugee au niveau superieur du fichier et
+     * invisible sous une requete de media</b> - un seuil qu'il suffisait de nicher pour ne plus le
+     * rencontrer. Mesure du 2026-08-23, sur la declaration maison proposee pour {@code SYN-11} : le
+     * plafond de 720 px passait cette clause en vert, la meme declaration au niveau superieur du
+     * fichier la faisant rougir. Le balayage appele ici est celui qu'ADR-0054 avait deja generalise
+     * pour la meme cause ; le reutiliser evite un troisieme decoupage de blocs CSS dans ce module
+     * (ADR-0030).
+     *
+     * <p><b>Le perimetre reste celui d'ADR-0014, derive de la provenance et non d'un fichier nomme</b>
+     * : {@code reglesMaison} lit toute feuille servie sauf celles de {@code static/vendor/}, qui sont
+     * des copies octet pour octet de bibliotheques tierces. Deux consequences voulues, inchangees par
+     * ce lot : une feuille maison neuve est jugee du jour ou elle existe, sans qu'on pense a
+     * l'inscrire ; et une feuille tierce ne recoit jamais le reproche d'un choix de mise en page qui
+     * n'est pas le notre. Une bibliotheque deposee ailleurs que sous {@code vendor/} n'echappe a rien.
+     */
+    private static List<LargeurPx> largeursPxDesFeuillesMaison(Path racine) {
         List<LargeurPx> trouvees = new ArrayList<>();
-        for (String bloc : source.split("\\}")) {
-            int accolade = bloc.indexOf('{');
-            if (accolade < 0) {
-                continue;
-            }
-            String selecteur = bloc.substring(0, accolade).strip();
-            String corps = bloc.substring(accolade + 1);
-            trouvees.addAll(largeursPxDuBloc(corps, fichierCss + " (" + selecteur + ")"));
+        for (Regle regle : reglesMaison(racine)) {
+            String origine = regle.fichier()
+                    + (regle.contexte().isEmpty() ? "" : " " + regle.contexte())
+                    + " (" + regle.selecteur() + ")";
+            trouvees.addAll(largeursPxDuBloc(regle.corps(), origine));
         }
         return trouvees;
     }
@@ -192,25 +213,26 @@ class ViewportEtLargeurTelephoneTest {
     }
 
     static void verifierAucuneLargeurFixeeAuDelaDeLaCible(Path racine) throws IOException {
-        List<Path> feuilles = feuillesMaison(racine);
-        assertThat(feuilles)
-                .as("aucune feuille maison sous %s/static : ce garde-fou ne prouve rien", racine)
+        assertThat(reglesMaison(racine))
+                .as("aucune regle maison sous %s/static : ce garde-fou ne prouve rien", racine)
                 .isNotEmpty();
 
-        List<LargeurPx> largeurs = new ArrayList<>();
-        for (Path feuille : feuilles) {
-            largeurs.addAll(largeursPxDuCss(feuille));
-        }
+        List<LargeurPx> largeurs = new ArrayList<>(largeursPxDesFeuillesMaison(racine));
         largeurs.addAll(largeursPxDesGabarits(tousLesGabarits(racine)));
 
         for (LargeurPx largeur : largeurs) {
             assertThat(largeur.valeurPx())
-                    .as("%s : %s ne doit jamais depasser %dpx, la largeur cible telephone",
+                    .as("%s : %s ne doit jamais depasser %dpx, la largeur de reference du produit "
+                            + "(DEC-0040 ; seuil revise a cette valeur par camille-po le 2026-08-23, "
+                            + "revise et non supprime, uniformement sur width, min-width et "
+                            + "max-width). Une largeur maison au-dela de l'appareil le plus etroit "
+                            + "reellement vise force un debordement horizontal",
                             largeur.origine(), largeur.propriete(), LARGEUR_CIBLE_PX)
                     .isLessThanOrEqualTo(LARGEUR_CIBLE_PX);
             assertThat(largeur.propriete())
-                    .as("%s : width fixe une largeur absolue sur le conteneur, utiliser max-width pour "
-                            + "rester capable de retrecir sous %dpx", largeur.origine(), LARGEUR_CIBLE_PX)
+                    .as("%s : width fixe une largeur absolue sur le conteneur, utiliser max-width "
+                            + "pour rester capable de retrecir sous %dpx, la largeur de reference du "
+                            + "produit (DEC-0040)", largeur.origine(), LARGEUR_CIBLE_PX)
                     .isNotEqualTo("width");
         }
     }
@@ -231,11 +253,39 @@ class ViewportEtLargeurTelephoneTest {
         assertThatThrownBy(() -> verifierViewport(racine)).isInstanceOf(AssertionError.class);
     }
 
+    /**
+     * Le seuil est prouve <b>a sa valeur</b>, pas seulement dans son existence : le jeu fautif
+     * declare un plafond a {@code 745px}, un pixel au-dela de la cible, et l'assertion exige de
+     * retrouver ce nombre dans le message. Il porte {@code max-width} et non {@code width} pour une
+     * raison qui compte : {@code width} est interdit par son nom seul, quelle que soit sa valeur -
+     * un jeu fautif ecrit avec {@code width} resterait rouge meme si le seuil etait relache a
+     * l'infini, et ce test-la prouverait l'interdiction de {@code width}, pas le seuil.
+     * <b>C'etait le cas avant le 2026-08-23</b> : ce jeu fautif portait {@code width: 600px}, valeur
+     * qui passe desormais sous la cible de 744 px ; le test restait vert par l'autre assertion, en
+     * ayant cesse de prouver ce que son nom annonce.
+     */
     @Test
-    void uneLargeurQuiDepasseLaCibleFaitEchouerLeGardeFou() {
+    void unPlafondUnPixelAuDelaDeLaCibleFaitEchouerLeGardeFou() {
         Path racine = CONTRE_EXEMPLES.resolve("largeur-excessive");
         assertThatThrownBy(() -> verifierAucuneLargeurFixeeAuDelaDeLaCible(racine))
-                .isInstanceOf(AssertionError.class);
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("745")
+                .hasMessageContaining("744");
+    }
+
+    /**
+     * L'autre cote du meme seuil, et le seul qui prouve que la cible vaut 744 px plutot qu'un nombre
+     * plus bas : deux plafonds que la revision autorise doivent laisser ce garde-fou <b>vert</b>.
+     * {@code 720px} est la valeur exacte que la variante d'{@code ines-design} pose sur
+     * {@code .zone-jeu} pour {@code SYN-11} - elle passe <b>sans exception nommee</b>, ce qui est ce
+     * que la decision de {@code camille-po} voulait obtenir en retenant la reference deja fixee
+     * plutot qu'un troisieme nombre. {@code 744px} est la borne elle-meme, et pinne le sens large de
+     * la comparaison.
+     */
+    @Test
+    void unPlafondSousLaCibleOuAExactementLaCibleLaisseLeGardeFouVert() throws IOException {
+        verifierAucuneLargeurFixeeAuDelaDeLaCible(
+                CONTRE_EXEMPLES.resolve("largeur-plafonnee-sous-la-cible"));
     }
 
     @Test
@@ -243,5 +293,20 @@ class ViewportEtLargeurTelephoneTest {
         Path racine = CONTRE_EXEMPLES.resolve("largeur-fixe-sous-la-cible");
         assertThatThrownBy(() -> verifierAucuneLargeurFixeeAuDelaDeLaCible(racine))
                 .isInstanceOf(AssertionError.class);
+    }
+
+    /**
+     * ADR-0056 : la meme faute, nichee sous une requete de media. Avant ce lot, ce cas etait
+     * <b>vert</b> : le seuil de ce fichier s'evitait en deplacant la declaration d'un cran vers
+     * l'interieur, sans rien changer a ce qu'elle produit. Le jeu fautif porte le meme selecteur
+     * fictif et la meme valeur que {@code largeur-excessive}, a la seule difference du nichage, pour
+     * que ce qui est prouve ici soit le nichage et rien d'autre.
+     */
+    @Test
+    void uneLargeurExcessiveNicheeSousUneRequeteDeMediaFaitAussiEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("largeur-excessive-sous-media");
+        assertThatThrownBy(() -> verifierAucuneLargeurFixeeAuDelaDeLaCible(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("745");
     }
 }

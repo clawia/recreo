@@ -1,0 +1,11 @@
+/* Le cas vert du seuil : deux plafonds que la cible de 744px (DEC-0040) autorise. 720px est la
+   valeur exacte que la variante d'ines-design pose sur .zone-jeu pour SYN-11 - elle passe sans
+   exception nommee, et c'est ce que ce jeu fautif etablit. 744px est la borne elle-meme, qui pinne
+   le sens large de la comparaison : la cible est atteignable, pas seulement approchable. */
+.conteneur-fictif {
+    max-width: 720px;
+}
+
+.conteneur-fictif-a-la-borne {
+    max-width: 744px;
+}

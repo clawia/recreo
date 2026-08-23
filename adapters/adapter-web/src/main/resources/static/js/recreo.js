@@ -10,7 +10,6 @@ document.body.addEventListener('htmx:afterSwap', function (evenement) {
         pointDeFocus = cible.querySelector('.signal');
     }
     if (pointDeFocus) {
-        pointDeFocus.setAttribute('tabindex', '-1');
         pointDeFocus.focus();
     }
 });

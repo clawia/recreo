@@ -1,3 +1,7 @@
+/* Un pixel au-dela de la cible de 744px (DEC-0040), sur max-width : la seule propriete des trois
+   que ce garde-fou examine qui ne porte pas d'interdiction de nom. C'est ce qui fait que ce jeu
+   fautif prouve le seuil et rien d'autre - avec width, il resterait rouge par l'interdiction de
+   width meme si le seuil etait relache. */
 .conteneur-fictif {
-    width: 600px;
+    max-width: 745px;
 }

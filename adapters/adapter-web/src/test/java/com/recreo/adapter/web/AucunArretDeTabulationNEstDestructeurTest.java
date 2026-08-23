@@ -596,6 +596,74 @@ class AucunArretDeTabulationNEstDestructeurTest {
     }
 
     /**
+     * S18, S17-C : ce que le mecanisme retenu par theo-archi rend derivable (avis-faisabilite.md,
+     * section 4.3, motif 3). Avant ce lot, {@link #arretsDeTabulation} lisait un document assemble
+     * qui ne portait jamais l'attribut que {@code recreo.js} n'ajoutait qu'au moment du focus reel :
+     * le calcul etait juste mais aveugle au defaut mesure par {@code nadia-prof} (le bouton nomme
+     * par le message de revelation sortait de l'ordre de tabulation apres le focus, dans un DOM que
+     * ce garde-fou ne voit jamais). Depuis ce lot, {@code tabindex="-1"} n'est plus mute par le
+     * script : le document que le serveur rend <b>est</b> celui que le navigateur affichera, donc la
+     * cause declarative de la clause 1 de M13 (le bouton reste un arret de tabulation) est desormais
+     * verifiable ici, sur le meme materiau que les quatre clauses d'ADR-0038/ADR-0040.
+     *
+     * <p><b>Ce que ce test ne pretend pas prouver</b> : que Tabulation, au clavier, dans un vrai
+     * navigateur, atteint reellement ce bouton (lecture de pile d'accessibilite, ordre effectif) -
+     * cela reste la seule verification de {@code nadia-prof} (avis-faisabilite.md, section 4.4).
+     * Ce test prouve seulement que la cause qui faisait echouer cette mesure a disparu du materiau
+     * que le serveur sert.
+     */
+    @Test
+    void surLaMancheEnRevelationLeBoutonNommeParLeMessageResteUnArretDeTabulation() throws Exception {
+        List<LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.Masquage> masquages =
+                LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.masquages(RACINE_PRODUCTION);
+
+        Ecran revelation = ecrans().stream()
+                .filter(ecran -> ecran.nom().equals("manche en revelation, la partie continue"))
+                .findFirst()
+                .orElseThrow(() -> new AssertionError(
+                        "le corpus doit porter l'ecran de revelation pour que ce test juge quelque chose"));
+
+        Element boutonRevele = pointDeFocusDeclare(revelation.document()).orElseThrow(() ->
+                new AssertionError("l'ecran de revelation doit declarer un point de focus"));
+        assertThat(boutonRevele.tagName())
+                .as("le point de focus de la revelation doit etre le bouton nomme, pas l'enonce")
+                .isEqualTo("button");
+
+        List<Element> arrets = arretsDeTabulation(revelation.document(), masquages);
+        assertThat(arrets)
+                .as("S17-C : le bouton nomme par le message de revelation doit rester un arret de "
+                        + "tabulation du document servi")
+                .contains(boutonRevele);
+    }
+
+    /**
+     * ADR-0013 obligation 3 : preuve de morsure du test precedent, sur le meme document reel - jamais
+     * une fixture ecrite a la main. Reproduit exactement le defaut d'avant ce lot ({@code recreo.js}
+     * posait {@code tabindex="-1"} meme sur une cible deja focalisable) en mutant le seul attribut que
+     * le script mutait, sur l'objet que le serveur a vraiment rendu.
+     */
+    @Test
+    void unTabindexNegatifSurLeBoutonReveleFaitEchouerCeteEpreuve() throws Exception {
+        List<LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.Masquage> masquages =
+                LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.masquages(RACINE_PRODUCTION);
+
+        Ecran revelation = ecrans().stream()
+                .filter(ecran -> ecran.nom().equals("manche en revelation, la partie continue"))
+                .findFirst()
+                .orElseThrow();
+        Element boutonRevele = pointDeFocusDeclare(revelation.document()).orElseThrow();
+        boutonRevele.attr("tabindex", "-1");
+
+        List<Element> arrets = arretsDeTabulation(revelation.document(), masquages);
+
+        assertThatThrownBy(() -> assertThat(arrets)
+                .as("S17-C : le bouton nomme par le message de revelation doit rester un arret de "
+                        + "tabulation du document servi")
+                .contains(boutonRevele))
+                .isInstanceOf(AssertionError.class);
+    }
+
+    /**
      * ADR-0013 obligation 3 pour la clause 3, sur du materiau reel plutot que sur une fixture de ma
      * main (lecon de s05) : le document que le serveur rend vraiment, avec son point de focus
      * <b>deplace</b> sur un arret destructeur du meme ecran. Deplace et non ajoute, pour que cette
