@@ -276,18 +276,17 @@ class LaLargeurDemandeeParUneRangeeEstEpingleeTest {
         }
     }
 
+    /**
+     * ADR-0057 : la mutation vit desormais en un seul endroit pour les trois garde-fous de ce module
+     * qui mutent du materiau reel, et l'unicite d'ancrage decidee par ADR-0056 y est prouvee une
+     * fois. Ce tour d'appel-ci - une racine et un chemin relatif - reste ici parce que les cinq
+     * morsures de ce fichier travaillent sur des copies de l'arborescence servie.
+     */
     private static void muter(Path racine, String chemin, String avant, String apres) {
-        try {
-            Path fichier = racine.resolve(chemin);
-            String source = Files.readString(fichier);
-            String saut = source.contains("\r\n") ? "\r\n" : "\n";
-            String motif = avant.replace("\n", saut);
-            assertThat(source).as("la mutation doit porter sur du materiau reel").contains(motif);
-            Files.writeString(fichier, source.replace(motif, apres.replace("\n", saut)));
-        } catch (IOException echec) {
-            throw new UncheckedIOException(echec);
-        }
+        LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest
+                .muterUneSeuleFois(racine.resolve(chemin), avant, apres);
     }
+
 
     @Test
     void unEcartElargiEntreDeuxColonnesFaitEchouerLeGardeFou() throws Exception {

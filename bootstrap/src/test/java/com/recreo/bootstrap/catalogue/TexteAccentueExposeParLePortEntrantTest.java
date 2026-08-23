@@ -97,6 +97,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S17-3 (ADR-0052) : entree neuve, consigne generique porteuse de la clause
             // invariante retiree de l'enonce.
             "bandit-manchot-synonymes-cm1",
+            // S17-4 (DEC-0024, DEC-0041) : entree neuve, restitution de "Le bon petit mot"
+            // (paquet deja juge bon, BPM-1 remesuree par nadia-prof).
+            "bandit-manchot-homophones-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -113,6 +116,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les grands nombres",
             // S17-3 : titre neuf.
             "Les synonymes",
+            // S17-4 : titre neuf.
+            "Le bon petit mot",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -128,8 +133,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S17-3 (ADR-0052) : consigne devenue porteuse, generique, designe le mot
             // cible par sa marque exacte (SYN-6).
             "Quel mot peut remplacer le mot entre guillemets sans changer le sens ?",
+            // S17-4 : consigne neuve.
+            "Quel mot complète la phrase ?",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
-            // valeur unique pour les treize jeux du catalogue reel.
+            // valeur unique pour les treize jeux du catalogue reel (S17-4 : douze avant cette
+            // entree, treize avec elle - compte sur catalogue.yaml, pas recopie).
             "bandit-manchot",
             // matiere (descripteur de chaque paquet reference par le catalogue).
             // CONNU ET NON CORRIGE ICI (S16-5 ne change aucun rendu) : ces deux valeurs sont ecrites
@@ -158,7 +166,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...)",
             "Resoudre des problemes simples d'addition/soustraction en situation (1 etape)",
             // S17-3 : competence neuve.
-            "Utiliser des synonymes et antonymes pour préciser ou nuancer un propos");
+            "Utiliser des synonymes et antonymes pour préciser ou nuancer un propos",
+            // S17-4 : competence neuve.
+            "Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

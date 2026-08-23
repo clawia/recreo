@@ -35,7 +35,10 @@
      th:attr="data-arrivee=${arriveeParUnGeste} ? 'par-un-geste' : 'sans-geste', data-focus=${focus}">
     <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
     <p class="consigne" th:text="${consigne}"></p>
-    <p class="enonce" th:text="${enonce}"></p>
+    <!-- S18, S17-C : tabindex="-1" est declare ici, jamais pose par recreo.js. Un <p> n'est pas
+         focalisable nativement ; c'est la seule maniere dont focus() peut l'atteindre quand
+         data-focus="enonce" le designe comme point de focus (M13 clause 4). -->
+    <p class="enonce" tabindex="-1" th:text="${enonce}"></p>
     <!-- S8-1 : le cabinet entoure les colonnes de reponses, jamais la consigne ni l'enonce, qui
          restent au-dessus, hors du cadre (nadia-prof, arbitrage prealable du 2026-08-11, section 2 ;
          proposition-ines-cabinet.md, section 1). Freres purement decoratifs, aria-hidden parce

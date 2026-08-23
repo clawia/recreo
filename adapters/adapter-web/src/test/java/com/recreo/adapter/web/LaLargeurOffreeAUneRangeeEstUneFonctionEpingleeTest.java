@@ -142,7 +142,38 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
      * {@code nadia-prof} sur 160 tirages le 2026-08-22. Les trois marches au-dela (960, 1140, 1320)
      * sont derivees de la meme arithmetique, et n'ont ete mesurees par personne : leur presence ici
      * garde l'escalier entier contre un changement muet, elle n'affirme rien sur ce qu'un enfant voit
-     * a ces largeurs.
+     * a ces largeurs. <b>Correction du 2026-08-23 (S18, {@code SYN-11}), exigee par la consigne
+     * permanente ci-dessous</b> : la consequence de la ligne des 540 px, sur la chaine
+     * {@code form.propositions <- main#jeu.container.zone-jeu}, est <b>perimee</b> sur la portion de
+     * son palier ou une declaration maison l'emporte desormais (720 a 767,98 px de viewport, ce qui
+     * couvre la reference de {@code DEC-0040}, 744 px) ; elle reste valable en-deca (576 a 719,98 px),
+     * ou aucune declaration maison ne s'applique (SYN-14, voir {@code recreo.css}). A la reference, la
+     * rangee offre desormais 680 px, mesures par {@code nadia-prof} sur une regle injectee identique
+     * ({@code FICHE-bandit-manchot-synonymes-cm1.md}, arbitrage du 2026-08-23) ; la remesure sur le
+     * servi, que la consigne exige, reste due et n'est pas prononcee par ce fichier.
+     *
+     * <p><b>Consigne permanente attachee a ces deux lignes, et non correction anticipee.</b> La
+     * phrase ci-dessus est vraie aussi longtemps qu'aucune declaration <b>maison</b> ne l'emporte sur
+     * l'une de ces deux lignes au palier de reference. Le jour ou une declaration maison le fait -
+     * c'est ce que la variante d'{@code ines-design} pour {@code SYN-11} pose sur {@code .zone-jeu},
+     * en attente d'arbitrage au moment ou j'ecris - la consequence mesuree de la ligne qu'elle
+     * recouvre devient <b>perimee</b> : la ligne reste dans la table, puisque la declaration tierce
+     * reste declaree, mais les 500 px que {@code nadia-prof} a mesures ne sont plus ce que le
+     * navigateur rend a ce palier. <b>Cette phrase est alors a corriger dans le commit du
+     * correctif</b>, avec la remesure demandee - et la table rougit precisement ici, sur les lignes
+     * concernees, ce qui met le rouge et la consigne au meme endroit. Elle n'est pas corrigee
+     * d'avance : ecrire aujourd'hui qu'une mesure est perimee alors qu'elle ne l'est pas serait
+     * exactement la reference fausse que cette consigne existe pour eviter.
+     *
+     * <p><b>Ce jour est arrive (lea-dev, S18, 2026-08-23).</b> La variante d'{@code ines-design} est
+     * livree ci-dessous, portee a {@code .entete-contenu} et {@code .zone-jeu} (arbitrage de
+     * {@code nadia-prof} du meme jour, section 4 de son arbitrage), et scopee a 720-767,98 px plutot
+     * qu'a 576-767,98 px comme la variante initialement mesuree - correction que {@code SYN-14}
+     * (meme arbitrage) exige : en dessous de 720 px, un plafond maison superieur au viewport ne mord
+     * plus et le conteneur perd son centrage, ce que la bande initiale aurait produit sur toute la
+     * portion 576-719,98 px sans y ameliorer aucun repli mesure. La table gagne deux lignes, pas une
+     * seule : {@code .entete-contenu} et {@code .zone-jeu} sont deux selecteurs distincts du meme
+     * bloc, chacun sur sa propre chaine.
      */
     private static final List<String> FONCTION_EPINGLEE = List.of(
             "nav.container.entete-contenu <- nav.container.entete-contenu | bootstrap.min.css | - | * | box-sizing: border-box",
@@ -153,6 +184,7 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
             "nav.container.entete-contenu <- nav.container.entete-contenu | bootstrap.min.css | @media (min-width:1200px) | .container | max-width: 1140px",
             "nav.container.entete-contenu <- nav.container.entete-contenu | bootstrap.min.css | @media (min-width:1400px) | .container | max-width: 1320px",
             "nav.container.entete-contenu <- nav.container.entete-contenu | recreo.css | - | * | box-sizing: border-box",
+            "nav.container.entete-contenu <- nav.container.entete-contenu | recreo.css | @media (min-width: 720px) and (max-width: 767.98px) | .entete-contenu | max-width: 720px",
             "form.propositions <- main#jeu.container.zone-jeu | bootstrap.min.css | - | * | box-sizing: border-box",
             "form.propositions <- main#jeu.container.zone-jeu | bootstrap.min.css | - | .container | width: 100%; padding-right: calc(var(--bs-gutter-x) * .5); padding-left: calc(var(--bs-gutter-x) * .5); margin-right: auto; margin-left: auto",
             "form.propositions <- main#jeu.container.zone-jeu | bootstrap.min.css | @media (min-width:576px) | .container | max-width: 540px",
@@ -161,6 +193,7 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
             "form.propositions <- main#jeu.container.zone-jeu | bootstrap.min.css | @media (min-width:1200px) | .container | max-width: 1140px",
             "form.propositions <- main#jeu.container.zone-jeu | bootstrap.min.css | @media (min-width:1400px) | .container | max-width: 1320px",
             "form.propositions <- main#jeu.container.zone-jeu | recreo.css | - | * | box-sizing: border-box",
+            "form.propositions <- main#jeu.container.zone-jeu | recreo.css | @media (min-width: 720px) and (max-width: 767.98px) | .zone-jeu | max-width: 720px",
             "form.propositions <- div.ecran-de-jeu | bootstrap.min.css | - | * | box-sizing: border-box",
             "form.propositions <- div.ecran-de-jeu | recreo.css | - | * | box-sizing: border-box",
             "form.propositions <- div.cabinet | bootstrap.min.css | - | * | box-sizing: border-box",
@@ -500,16 +533,72 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
      * rendrait un test vert sans avoir rien mute, et c'est l'assertion ci-dessous qui l'attrape.
      */
     private static void muter(Path racine, String chemin, String avant, String apres) {
+        muterUneSeuleFois(racine.resolve(chemin), avant, apres);
+    }
+
+    /**
+     * ADR-0057 : l'implementation unique de la mutation d'un fichier de production, partagee par les
+     * trois garde-fous de ce module qui mutent du materiau reel. ADR-0056 avait ecrit le declencheur
+     * de cette extraction - "le jour ou un troisieme fichier de ce module mute du materiau reel, les
+     * trois copies partent dans un seul endroit" - et ce jour est celui du lot de S17-C. Le geste est
+     * celui de l'extraction de {@code rangeesRepliables} en ADR-0055 : l'implementation vit dans le
+     * fichier ou elle est nee, les autres l'importent, et chacun garde le tour d'appel qui lui va.
+     *
+     * <p><b>Ce que le partage protege, et c'est le motif</b> : l'unicite d'ancrage decidee par
+     * ADR-0056 est une decision, pas une commodite. En trois copies, elle pouvait deriver en trois
+     * endroits ; en un seul, elle est prouvee une fois par la clause qui suit.
+     */
+    static void muterUneSeuleFois(Path fichier, String avant, String apres) {
         try {
-            Path fichier = racine.resolve(chemin);
             String source = Files.readString(fichier);
             String saut = source.contains("\r\n") ? "\r\n" : "\n";
             String motif = avant.replace("\n", saut);
-            assertThat(source).as("la mutation doit porter sur du materiau reel").contains(motif);
+            assertThat(occurrences(source, motif))
+                    .as("ADR-0056 : une mise a l'epreuve mute l'objet qu'elle nomme, et un seul. "
+                            + "L'ancrage cherche dans %s n'y apparait pas une fois mais %d, et "
+                            + "String.replace reecrirait chacune : a zero la morsure ne mute rien, "
+                            + "au-dela de un elle porte sur autre chose que ce qu'elle prouve, sans "
+                            + "que rien ne le dise. Ancrage : %s", fichier,
+                            occurrences(source, motif), motif)
+                    .isEqualTo(1);
             Files.writeString(fichier, source.replace(motif, apres.replace("\n", saut)));
         } catch (IOException echec) {
             throw new UncheckedIOException(echec);
         }
+    }
+
+    /**
+     * Le nombre de fois que ce texte apparait dans cette source, sans chevauchement. Compte par
+     * {@code indexOf} et non par une expression reguliere : {@code AssertionsWebTest} l'interdit dans
+     * ce module (ADR-0008), et un ancrage de mutation contient des accolades et des points, qui ne
+     * sont pas des caracteres neutres pour un moteur d'expressions.
+     */
+    private static int occurrences(String source, String texte) {
+        int total = 0;
+        int position = source.indexOf(texte);
+        while (position >= 0) {
+            total++;
+            position = source.indexOf(texte, position + texte.length());
+        }
+        return total;
+    }
+
+    /**
+     * ADR-0056, la mise a l'epreuve de la mise a l'epreuve. Elle mord sur du materiau reel : la
+     * feuille maison servie declare plus d'une fois le texte cherche ici, et c'est le seul fait dont
+     * ce test depend. Avant ce lot, {@code muter} se contentait de verifier que l'ancrage existait ;
+     * un ancrage qui en designait plusieurs faisait donc porter la morsure sur des endroits que son
+     * auteur n'avait pas nommes, en silence. Le declencheur n'est pas theorique : la declaration
+     * proposee pour {@code SYN-11} ajoute un second bloc {@code .zone-jeu}, ancrage de deux des
+     * morsures de ce module.
+     */
+    @Test
+    void unAncrageDeMutationAmbiguFaitEchouerLaMiseALEpreuve() {
+        Path racine = copieDesFeuilles(tempo.resolve("ancrage-ambigu"));
+
+        assertThatThrownBy(() -> muter(racine, "static/css/recreo.css", "font-size:", "font-size:"))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("et un seul");
     }
 
     /**
@@ -594,11 +683,17 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
      * {@code ViewportEtLargeurTelephoneTest}, dont la population est celle des largeurs declarees
      * <b>au-dela</b> de la cible telephone : 320px n'y depasse rien, et {@code max-width} n'est pas
      * {@code width}. La premiere assertion le constate sur la feuille mutee plutot que de l'affirmer.
+     *
+     * <p>Ancrage etendu a {@code ".zone-jeu {\n    padding-top: 2rem;"} depuis S18 (ADR-0056) : le
+     * correctif de {@code SYN-11} ajoute un second bloc {@code .zone-jeu} (sous {@code @media}), ce
+     * qui rendait {@code ".zone-jeu {"} seul ambigu - la mise a l'epreuve de la mise a l'epreuve,
+     * plus bas dans ce fichier, l'aurait fait rougir sans cette extension.
      */
     @Test
     void uneRegleMaisonQuiBorneLaLargeurDeLaChaineFaitEchouerLeGardeFou() throws Exception {
         Path racine = copieDesFeuilles(tempo.resolve("borne-maison"));
-        muter(racine, "static/css/recreo.css", ".zone-jeu {", ".zone-jeu {\n    max-width: 320px;");
+        muter(racine, "static/css/recreo.css", ".zone-jeu {\n    padding-top: 2rem;",
+                ".zone-jeu {\n    max-width: 320px;\n    padding-top: 2rem;");
 
         ViewportEtLargeurTelephoneTest.verifierAucuneLargeurFixeeAuDelaDeLaCible(racine);
 
@@ -614,12 +709,14 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
      * ({@code blocsMaison}) attribue ce corps a la cle {@code "@media (...)"} et ne le voit jamais sur
      * {@code .zone-jeu} - la premiere assertion le constate sur la feuille mutee, elle ne le suppose
      * pas. Le balayage de ce fichier garde le contexte de regle-@ et rougit.
+     *
+     * <p>Ancrage etendu, meme motif et meme date que la morsure 4 ci-dessus.
      */
     @Test
     void uneBorneMaisonNicheeSousUneRequeteDeMediaFaitAussiEchouerLeGardeFou() throws Exception {
         Path racine = copieDesFeuilles(tempo.resolve("borne-maison-sous-media"));
-        muter(racine, "static/css/recreo.css", ".zone-jeu {",
-                "@media (min-width: 576px) {\n    .zone-jeu { max-width: 320px; }\n}\n\n.zone-jeu {");
+        muter(racine, "static/css/recreo.css", ".zone-jeu {\n    padding-top: 2rem;",
+                "@media (min-width: 576px) {\n    .zone-jeu { max-width: 320px; }\n}\n\n.zone-jeu {\n    padding-top: 2rem;");
 
         assertThat(TailleDesTextesEtBoutonsTest.blocsMaison(racine).get(".zone-jeu"))
                 .as("la lecture aplatie du module ne doit pas voir cette borne : c'est la limite "
