@@ -1,5 +1,7 @@
+/* La meme faute que largeur-excessive, a la seule difference du nichage : meme selecteur fictif,
+   meme propriete, meme valeur. Ce qui est prouve ici est le nichage, rien d'autre. */
 @media (min-width: 576px) and (max-width: 767.98px) {
     .conteneur-fictif {
-        width: 600px;
+        max-width: 745px;
     }
 }

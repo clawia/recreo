@@ -143,6 +143,19 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
      * sont derivees de la meme arithmetique, et n'ont ete mesurees par personne : leur presence ici
      * garde l'escalier entier contre un changement muet, elle n'affirme rien sur ce qu'un enfant voit
      * a ces largeurs.
+     *
+     * <p><b>Consigne permanente attachee a ces deux lignes, et non correction anticipee.</b> La
+     * phrase ci-dessus est vraie aussi longtemps qu'aucune declaration <b>maison</b> ne l'emporte sur
+     * l'une de ces deux lignes au palier de reference. Le jour ou une declaration maison le fait -
+     * c'est ce que la variante d'{@code ines-design} pour {@code SYN-11} pose sur {@code .zone-jeu},
+     * en attente d'arbitrage au moment ou j'ecris - la consequence mesuree de la ligne qu'elle
+     * recouvre devient <b>perimee</b> : la ligne reste dans la table, puisque la declaration tierce
+     * reste declaree, mais les 500 px que {@code nadia-prof} a mesures ne sont plus ce que le
+     * navigateur rend a ce palier. <b>Cette phrase est alors a corriger dans le commit du
+     * correctif</b>, avec la remesure demandee - et la table rougit precisement ici, sur les lignes
+     * concernees, ce qui met le rouge et la consigne au meme endroit. Elle n'est pas corrigee
+     * d'avance : ecrire aujourd'hui qu'une mesure est perimee alors qu'elle ne l'est pas serait
+     * exactement la reference fausse que cette consigne existe pour eviter.
      */
     private static final List<String> FONCTION_EPINGLEE = List.of(
             "nav.container.entete-contenu <- nav.container.entete-contenu | bootstrap.min.css | - | * | box-sizing: border-box",

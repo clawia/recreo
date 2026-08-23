@@ -280,6 +280,43 @@ mecanismes et leur cout en table ; je n'en retiens aucun.
 - **Une duplication de plus assumee** (`occurrences`, deux fois), avec le declencheur ecrit de son
   extraction.
 
+## Suite du 2026-08-23 - la question routee a recu sa reponse
+
+`camille-po` tranche le seuil que cet `ADR` avait rendu visible sans le fixer : **744 px, la
+reference deja fixee par `DEC-0040`, uniformement sur les trois proprietes, revise et jamais
+supprime.** La constante et les messages de `ViewportEtLargeurTelephoneTest` portent cette valeur
+depuis le meme jour, et son message nomme la cible et sa decision - un seuil dont le message cite une
+cible abolie est la reference perimee que ce depot corrige a chaque sprint.
+
+**Elle ecarte l'argument technique que je lui avais fourni** - exempter `max-width`, au motif qu'un
+plafond au-dela de la cible ne peut pas deborder la ou `width` et `min-width` le peuvent. Je l'avais
+donne comme valide et explicitement laisse a trancher ; son motif est plus fort que mon argument, et
+je le note comme tel : *"elle relacherait un garde-fou exactement dans le lot qui en beneficie, et
+laisserait tout `max-width` maison hors de la chaine d'`ADR-0054` sans aucune garde."* C'est le
+second de mes deux motifs pour avoir moi-meme ecarte cette voie dans la section Alternatives
+ci-dessus ; elle retient les deux, et ne retient pas la conclusion que mon argument suggerait.
+
+**Ce qu'elle etablit et que je n'avais pas vu** : le seuil n'avait pas seulement perdu sa premisse, il
+**gardait encore quelque chose**. Le meme risque, contre le meme mode de defaillance, s'est redeplace
+avec la cible : toute largeur maison au-dela de l'appareil le plus etroit reellement vise force un
+debordement horizontal. J'avais nomme la premisse perimee sans verifier ce que le seuil gardait
+encore - ce qui aurait pu conduire a le supprimer.
+
+**Consequence sur `SYN-11`** : les `max-width: 720px` de la variante d'`ines-design` passent, **sans
+exception nommee**, 720 etant inferieur a 744. Verifie sur la feuille de production et non seulement
+sur un jeu fautif : 720 px laisse la clause verte, 745 px la fait rougir en nommant 744, `DEC-0040`
+et la decision. La consequence mesuree en section "chaine au pixel" tient donc inchangee : ce qui
+bloquait le correctif est leve, et ce qui reste du est la ligne de table que le correctif ajoutera.
+
+**Un defaut de mon propre jeu fautif, trouve en portant la valeur.** Les deux cas
+`largeur-excessive` declaraient `width: 600px`. A 744, 600 passe sous le seuil : ces cas restaient
+rouges par l'**autre** assertion - l'interdiction du nom `width`, qui ne juge aucune valeur - donc
+verts en tant que tests, en ayant cesse de prouver ce que leur nom annonce. Ils declarent desormais
+`max-width: 745px`, la seule des trois proprietes sans interdiction de nom, et l'assertion exige de
+retrouver `745` et `744` dans le message. Un troisieme cas fautif, **vert**, pinne l'autre cote du
+seuil : `max-width: 720px` et `max-width: 744px` doivent le laisser vert. Sans ce cas-la, rien
+n'aurait distingue un seuil a 744 d'un seuil a 400.
+
 ## Alternatives considerees
 
 **Ne rien ecrire et nommer la dette avec son declencheur.** Ecartee sur le meme motif qu'`ADR-0055`,

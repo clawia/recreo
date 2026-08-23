@@ -21,8 +21,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 /**
  * S3-8, prealable seul (avis de faisabilite theo-archi, sprint 3) : accueil.html ne portait aucune
  * balise &lt;meta name="viewport"&gt;. Sans elle, un telephone rend la page dans une fenetre
- * virtuelle d'environ 980px puis reduit l'ensemble : la mise en page a 375px n'est jamais reellement
- * exercee sur un vrai telephone. Le reste de la story (chevauchement et depassement reellement
+ * virtuelle d'environ 980px puis reduit l'ensemble : la mise en page a la largeur de l'appareil
+ * n'est jamais reellement exercee sur un vrai telephone. (375 px etait la cible produit au sprint 3 ;
+ * la reference est 744 x 551 depuis DEC-0040, et le plafond de ce fichier a suivi - voir
+ * {@link #LARGEUR_CIBLE_PX}.) Le reste de la story (chevauchement et depassement reellement
  * rendus) reste hors de portee, aucun moteur de rendu n'existant dans ce depot.
  *
  * <p>Perimetre derive, jamais enumere (ADR-0013) : les gabarits de page viennent du systeme de
@@ -48,7 +50,30 @@ class ViewportEtLargeurTelephoneTest {
     private static final Path RACINE_PRODUCTION = Path.of("src/main/resources");
     private static final Path CONTRE_EXEMPLES =
             Path.of("src/test/resources/contreexemple/ViewportEtLargeurTelephoneTest");
-    private static final int LARGEUR_CIBLE_PX = 375;
+    /**
+     * La largeur de reference du produit, et le plafond que ce garde-fou oppose a toute largeur
+     * declaree en pixels dans une feuille maison ou dans un attribut de style.
+     *
+     * <p><b>744 px depuis le 2026-08-23, decision de camille-po ; 375 px auparavant.</b> Les 375 px
+     * venaient de S3-8, sprint 3, quand le telephone etait la cible du produit. DEC-0040
+     * (2026-08-22) a sorti la bande sous 576 px du perimetre et fixe la reference a 744 x 551 : la
+     * premisse du seuil avait disparu. ADR-0056 a d'abord rendu ce seuil <b>visible</b> - il
+     * s'evitait en nichant la declaration sous une regle-@, et ne voyait donc pas la moitie des
+     * gestes qu'il interdit - puis a route sa valeur a camille-po sans la trancher, une largeur de
+     * reference n'etant pas une decision d'architecture.
+     *
+     * <p><b>Ce que sa decision retient, et ce qu'elle ecarte.</b> Le seuil est <b>revise, jamais
+     * supprime</b> : le meme risque, contre le meme mode de defaillance, s'est redeplace avec la
+     * cible - toute largeur maison au-dela de l'appareil le plus etroit reellement vise force un
+     * debordement horizontal. Il est revise <b>uniformement sur les trois proprietes</b> que ce
+     * fichier examine. L'argument que je lui avais fourni - exempter {@code max-width}, au motif
+     * qu'un plafond au-dela de la cible ne peut pas faire deborder la ou {@code width} et
+     * {@code min-width} le peuvent - est <b>ecarte</b>, avec son motif : il relacherait un garde-fou
+     * exactement dans le lot qui en beneficie, et laisserait tout {@code max-width} maison hors de
+     * la chaine d'ADR-0054 sans aucune garde. La valeur retenue est la reference deja fixee, pas un
+     * troisieme nombre invente.
+     */
+    private static final int LARGEUR_CIBLE_PX = 744;
 
     private static Path templates(Path racine) {
         return racine.resolve("templates");
@@ -197,12 +222,17 @@ class ViewportEtLargeurTelephoneTest {
 
         for (LargeurPx largeur : largeurs) {
             assertThat(largeur.valeurPx())
-                    .as("%s : %s ne doit jamais depasser %dpx, la largeur cible telephone",
+                    .as("%s : %s ne doit jamais depasser %dpx, la largeur de reference du produit "
+                            + "(DEC-0040 ; seuil revise a cette valeur par camille-po le 2026-08-23, "
+                            + "revise et non supprime, uniformement sur width, min-width et "
+                            + "max-width). Une largeur maison au-dela de l'appareil le plus etroit "
+                            + "reellement vise force un debordement horizontal",
                             largeur.origine(), largeur.propriete(), LARGEUR_CIBLE_PX)
                     .isLessThanOrEqualTo(LARGEUR_CIBLE_PX);
             assertThat(largeur.propriete())
-                    .as("%s : width fixe une largeur absolue sur le conteneur, utiliser max-width pour "
-                            + "rester capable de retrecir sous %dpx", largeur.origine(), LARGEUR_CIBLE_PX)
+                    .as("%s : width fixe une largeur absolue sur le conteneur, utiliser max-width "
+                            + "pour rester capable de retrecir sous %dpx, la largeur de reference du "
+                            + "produit (DEC-0040)", largeur.origine(), LARGEUR_CIBLE_PX)
                     .isNotEqualTo("width");
         }
     }
@@ -223,11 +253,39 @@ class ViewportEtLargeurTelephoneTest {
         assertThatThrownBy(() -> verifierViewport(racine)).isInstanceOf(AssertionError.class);
     }
 
+    /**
+     * Le seuil est prouve <b>a sa valeur</b>, pas seulement dans son existence : le jeu fautif
+     * declare un plafond a {@code 745px}, un pixel au-dela de la cible, et l'assertion exige de
+     * retrouver ce nombre dans le message. Il porte {@code max-width} et non {@code width} pour une
+     * raison qui compte : {@code width} est interdit par son nom seul, quelle que soit sa valeur -
+     * un jeu fautif ecrit avec {@code width} resterait rouge meme si le seuil etait relache a
+     * l'infini, et ce test-la prouverait l'interdiction de {@code width}, pas le seuil.
+     * <b>C'etait le cas avant le 2026-08-23</b> : ce jeu fautif portait {@code width: 600px}, valeur
+     * qui passe desormais sous la cible de 744 px ; le test restait vert par l'autre assertion, en
+     * ayant cesse de prouver ce que son nom annonce.
+     */
     @Test
-    void uneLargeurQuiDepasseLaCibleFaitEchouerLeGardeFou() {
+    void unPlafondUnPixelAuDelaDeLaCibleFaitEchouerLeGardeFou() {
         Path racine = CONTRE_EXEMPLES.resolve("largeur-excessive");
         assertThatThrownBy(() -> verifierAucuneLargeurFixeeAuDelaDeLaCible(racine))
-                .isInstanceOf(AssertionError.class);
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("745")
+                .hasMessageContaining("744");
+    }
+
+    /**
+     * L'autre cote du meme seuil, et le seul qui prouve que la cible vaut 744 px plutot qu'un nombre
+     * plus bas : deux plafonds que la revision autorise doivent laisser ce garde-fou <b>vert</b>.
+     * {@code 720px} est la valeur exacte que la variante d'{@code ines-design} pose sur
+     * {@code .zone-jeu} pour {@code SYN-11} - elle passe <b>sans exception nommee</b>, ce qui est ce
+     * que la decision de {@code camille-po} voulait obtenir en retenant la reference deja fixee
+     * plutot qu'un troisieme nombre. {@code 744px} est la borne elle-meme, et pinne le sens large de
+     * la comparaison.
+     */
+    @Test
+    void unPlafondSousLaCibleOuAExactementLaCibleLaisseLeGardeFouVert() throws IOException {
+        verifierAucuneLargeurFixeeAuDelaDeLaCible(
+                CONTRE_EXEMPLES.resolve("largeur-plafonnee-sous-la-cible"));
     }
 
     @Test
@@ -249,6 +307,6 @@ class ViewportEtLargeurTelephoneTest {
         Path racine = CONTRE_EXEMPLES.resolve("largeur-excessive-sous-media");
         assertThatThrownBy(() -> verifierAucuneLargeurFixeeAuDelaDeLaCible(racine))
                 .isInstanceOf(AssertionError.class)
-                .hasMessageContaining("600");
+                .hasMessageContaining("745");
     }
 }
