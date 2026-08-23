@@ -465,7 +465,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Ecriture | Relire et corriger son texte a l'aide de reperes simples (majuscules, ponctuation) | - | - | non couvert |
 | francais | CM1 | Orthographe et grammaire | Accorder le verbe avec son sujet (cas frequents, temps simples : present, futur, imparfait) | - | - | non couvert |
 | francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | - | - | non couvert |
-| francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | bandit-manchot-homophones-cm1 | bandit manchot | en cours |
+| francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | bandit-manchot-homophones-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif | bandit-manchot-conjugaison-present-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | bandit-manchot-synonymes-cm1 | bandit manchot | en cours |
 | francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | - | - | non couvert |
@@ -600,6 +600,51 @@ ouvertures de `DEC-0030`. Voir `DEC-0039`, section dediee, pour la condition de 
 rendu a 360 px, plus correction des 22 indices qui nomment la reponse, plus reprise de tout le
 paquet comme un contenu neuf devant `nadia-prof`) et `docs/backlog/backlog.md`, story `S17-4`.
 
+**Etat au 2026-08-23 (s18), la ligne remonte a `couvert-valide` - premier mouvement reel de
+couverture depuis quatre sprints.** `nadia-prof` prononce **VALIDE SOUS RESERVE, aucune reserve
+bloquante**, sur l'entree de catalogue de `S17-4` remesuree contre la reference 744 x 551 fixee par
+`DEC-0040` (`squad/conformite/FICHE-bandit-manchot-homophones-cm1.md`, verdict du 2026-08-23,
+arbre `10e0e0f`) : `BPM-1` **TENUE** (24 items sur 24, aux trois etats d'echec, 23 parties, 624
+lectures, `scrollY = 0` sur les 624) ; son refus du meme matin (`BPM-5`, huit indices sur 24 coupes
+par le pli) est **FERME l'apres-midi** sur le correctif livre - **0 item sur 24** perd du texte
+d'indice, contre 8 le matin meme, mesure au centieme sur l'increment reellement servi (246
+lectures). **Ses trois refus successifs sur ce jeu sont ainsi leves, aucun n'est efface** : ils
+restent lisibles a leur date, avec leur motif, plus haut dans cette meme note et dans la fiche de
+conformite.
+
+**La condition de retour de `DEC-0024` est desormais remplie dans son entier** : la mesure de forme
+(`BPM-1`) **et** un Done pedagogique complet sur le paquet raccourci, dans le meme geste - ni l'un
+ni l'autre ne suffisait seul depuis s10. **Je fais donc le geste que le process reserve a moi seule
+face a un Done `VALIDE` ou `VALIDE SOUS RESERVE` sans reserve bloquante** (`squad/README.md`,
+section 9, etape 6) : la ligne passe de `en cours` a `couvert-valide` (tableau ci-dessus). Elle y
+retourne pour la seconde fois - la premiere le 2026-08-10, avant que `DEC-0024` ne la fasse
+redescendre le 2026-08-12 pour un motif de forme, jamais pedagogique. Le perimetre exact de ce
+`couvert-valide` reste celui que `nadia-prof` a nomme le 2026-08-10 (dix familles d'homophones,
+`c'est`/`s'est` et `sait`/`sais` non couverts, candidats d'une story ulterieure) : cette ligne ne
+pretend pas a une couverture totale de la competence, et je ne l'habille pas autrement.
+
+**Le chiffre, avec sa base.** Avant ce mouvement : **9 lignes `couvert-valide` sur 46** (19,6 %),
+inchange depuis s13 malgre quatre sprints (s14 a s17) que `DEC-0037` nomme elle-meme sans mouvement
+reel de couverture. Apres ce mouvement : **10 lignes `couvert-valide` sur 46** (21,7 %), un gain de
+2,1 points. Methode : meme comptage que la synthese de cloture de s17 ci-dessus (une ligne de
+tableau par ligne de competence, quatre tableaux de cette matrice), une seule ligne change de
+colonne, aucune n'ouvre ni ne ferme par ailleurs.
+
+**Ce que cela fait au verdict de `DEC-0037`.** Le compte qu'elle pose - quatre sprints consecutifs
+(s14 a s17) sans mouvement reel de couverture programme - est un fait historique, mesure a l'epoque
+sur l'etat reel du produit, et je ne le reecris pas : il reste exact tel qu'ecrit. **Mais la serie
+qu'il decrit s'arrete ici** : s18 est le premier sprint depuis s13 ou une ligne franchit
+`couvert-valide` sur un increment reellement jouable par un enfant, audite par `nadia-prof` sur
+l'application servie. Ce n'est pas une couverture neuve au sens ou `DEC-0030` plafonne les
+ouvertures - `S17-4` faisait deja avancer une ligne `en cours` depuis s10, jamais une competence
+neuve - mais c'est exactement le mouvement dont l'absence faisait le constat de `DEC-0037` et de
+son amendement de cloture de s17 (*"aucune ligne n'atteint `couvert-valide` ; aucune ne produit, a
+la cloture, un jeu qu'un enfant peut jouer sur une competence neuve ou avancee"*). Cette phrase-la
+cesse d'etre vraie a la cloture de s18. Je ne prononce pas la fin de la serie comme une victoire
+d'ensemble : `S17-3` (synonymes), refusee trois fois sur ce meme trimestre et desormais `VALIDE
+SOUS RESERVE` elle aussi, reste `en cours` (note ci-dessous) - le mouvement de s18 porte sur une
+seule ligne, pas sur l'ensemble du chantier francais CM1 ouvert depuis s17.
+
 **Note sur les deux lignes `en cours` ouvertes au sprint 17 (comprehension de texte, synonymes).**
 `DEC-0039` ouvre ces deux lignes, stories `S17-2` et `S17-3` de `docs/backlog/backlog.md`. **Aucune
 ligne ne passe a `couvert-valide` par ce planning** : ce statut n'est prononce que par `nadia-prof`,
@@ -668,6 +713,18 @@ declencheur accepte, borne, route a `ines-design`/`theo-archi`) et le texte inte
 de direction : `DEC-0039`, amendement du 2026-08-21. Le statut de cette ligne reste `en cours`,
 inchange une seconde fois, pour le meme motif qu'au refus precedent - ce n'est toujours pas un
 increment jouable.
+
+**Note du 2026-08-23 (camille-po, s18) - `S17-3` obtient `VALIDE SOUS RESERVE, aucune reserve
+bloquante` ; la ligne reste `en cours`, exactement comme deja ecrit ci-dessus.** `nadia-prof`
+remesure `S17-3` sur le correctif livre de `SYN-11` (`squad/conformite/FICHE-bandit-manchot-
+synonymes-cm1.md`, verdict du 2026-08-23, arbre `10e0e0f`) : ses trois refus successifs sur cette
+ligne sont leves, aucune condition bloquante ne reste ouverte. **Je ne fais pas passer cette ligne
+a `couvert-valide`** : `SYN-4` (les antonymes manquent) l'en empeche, exactement comme la note du
+2026-08-19 ci-dessus le nommait a l'avance et comme `nadia-prof` le confirme elle-meme dans son
+verdict ("c'est elle, et elle seule, qui empeche la ligne de matrice de passer `couvert-valide`").
+Ce Done ouvre la porte pedagogique de `S17-3` ; il ne fait pas bouger la ligne, qui n'entrera dans
+le numerateur du taux de couverture que le jour ou `S17-5` (antonymes, non affectee) l'aura
+completee et sera elle-meme jugee.
 
 **Amendement du 2026-08-19 (camille-po) - `S17-2` sort du perimetre de s17, la ligne revient
 `non couvert`.** `nadia-prof` a rejoue la mesure de `COMP-5` sur la mise en page reelle de la
@@ -1592,3 +1649,36 @@ zero contenu neuf n'est ouvert a s18, deliberement (`DEC-0041`, section 1).
 sprints sans mouvement reel de couverture deja nommee par `DEC-0037` - je le dis a l'ouverture
 plutot qu'a la cloture, puisque c'est la seule action de ce perimetre qui porte un espoir de
 mouvement.
+
+## Synthese de cloture de s18 (2026-08-23) - premier mouvement reel de couverture depuis quatre sprints
+
+`nadia-prof` a prononce deux Done pedagogiques sur l'increment livre de s18 (`round-two` a
+`10e0e0f`, 621 tests verts, 29 regles ArchUnit) : `S17-4` (homophones) **VALIDE SOUS RESERVE,
+aucune reserve bloquante**, et `S17-3` (synonymes) **VALIDE SOUS RESERVE, aucune reserve
+bloquante**. Une seule des deux fait bouger cette matrice - voir les notes dediees sous chacune des
+deux lignes concernees pour le detail et la methode ; je ne les recopie pas ici.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide |
+|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 |
+| mathematiques CM1 | 12 | 6 | 2 | 4 |
+| francais CP | 12 | 11 | 1 | 0 |
+| francais CM1 | 11 | 8 | 1 | 2 |
+| **Total** | **46** | **31** | **5** | **10** |
+
+**Le mouvement, avec sa base.** Une seule ligne change de colonne : francais CM1, homophones
+grammaticaux, `en cours` -> `couvert-valide`. **9/46 (19,6 %) -> 10/46 (21,7 %)**, gain de 2,1
+points. Aucune autre ligne ne bouge : `S17-3` (synonymes) obtient le meme type de verdict pedagogique
+mais reste `en cours`, bloquee par `SYN-4` (les antonymes manquants) comme mon arbitrage de s17
+l'avait pose et comme `nadia-prof` le confirme dans son propre verdict.
+
+**Ce que cela fait au verdict de `DEC-0037`.** Le fait qu'elle pose - quatre sprints consecutifs
+(s14 a s17) sans mouvement reel de couverture programme - reste un fait historique exact, et je ne
+le reecris pas. **La serie s'arrete a s18** : c'est le premier sprint depuis s13 ou une ligne
+franchit `couvert-valide` sur un increment reellement jouable, audite par `nadia-prof` sur
+l'application servie. Je ne l'ecris pas comme un retournement d'ensemble - `S17-3`, malgre un
+verdict pedagogique du meme ordre, reste `en cours`, et le chantier francais CM1 ouvert depuis s17
+n'est donc qu'a moitie sorti de la stagnation qu'il visait a rompre. Mais le fait precis que
+`DEC-0037` et son amendement de cloture de s17 nommaient - *"aucune ligne n'atteint
+`couvert-valide` [...] aucune ne produit [...] un jeu qu'un enfant peut jouer sur une competence
+neuve ou avancee"* - cesse d'etre vrai a compter de cette cloture.
