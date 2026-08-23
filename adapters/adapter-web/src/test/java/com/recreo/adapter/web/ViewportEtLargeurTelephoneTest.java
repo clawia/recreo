@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.Regle;
+import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.reglesMaison;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -50,30 +52,6 @@ class ViewportEtLargeurTelephoneTest {
 
     private static Path templates(Path racine) {
         return racine.resolve("templates");
-    }
-
-    /**
-     * ADR-0014 : le perimetre juge ici n'est plus un fichier nomme, il est derive de la provenance.
-     * Toute feuille servie est jugee, sauf celles de static/vendor/, qui sont des copies octet pour
-     * octet de bibliotheques tierces. Deux consequences voulues : une feuille maison neuve est jugee
-     * du jour ou elle existe, sans qu'on pense a l'inscrire ; et une feuille tierce ne recoit jamais
-     * le reproche d'un choix de mise en page qui n'est pas le notre. Une bibliotheque deposee
-     * ailleurs que sous vendor/ n'echappe a rien : elle est jugee comme du CSS maison, et une
-     * largeur en pixels la fait echouer immediatement.
-     */
-    private static List<Path> feuillesMaison(Path racine) throws IOException {
-        Path statique = racine.resolve("static");
-        if (!Files.isDirectory(statique)) {
-            return List.of();
-        }
-        Path tierces = statique.resolve("vendor");
-        try (Stream<Path> arborescence = Files.walk(statique)) {
-            return arborescence.filter(Files::isRegularFile)
-                    .filter(fichier -> fichier.getFileName().toString().endsWith(".css"))
-                    .filter(fichier -> !fichier.startsWith(tierces))
-                    .sorted()
-                    .toList();
-        }
     }
 
     /**
@@ -164,17 +142,35 @@ class ViewportEtLargeurTelephoneTest {
         return propriete.equals("width") || propriete.equals("min-width") || propriete.equals("max-width");
     }
 
-    private static List<LargeurPx> largeursPxDuCss(Path fichierCss) throws IOException {
-        String source = sansCommentaires(Files.readString(fichierCss));
+    /**
+     * ADR-0056 : les largeurs en pixels des feuilles maison, lues par le balayage qui <b>garde le
+     * contexte de regles-@</b> plutot que par un decoupage sur les accolades.
+     *
+     * <p>Le decoupage precedent attribuait a une regle-@ le texte entier de son bloc : sa premiere
+     * declaration se lisait alors comme une propriete nommee "SELECTEUR ACCOLADE max-width", que
+     * {@link #isLargeurFixeeOuBornee} ne reconnait pas, donc comme une largeur qui n'entrait dans
+     * aucune population. <b>Une meme declaration etait jugee au niveau superieur du fichier et
+     * invisible sous une requete de media</b> - un seuil qu'il suffisait de nicher pour ne plus le
+     * rencontrer. Mesure du 2026-08-23, sur la declaration maison proposee pour {@code SYN-11} : le
+     * plafond de 720 px passait cette clause en vert, la meme declaration au niveau superieur du
+     * fichier la faisant rougir. Le balayage appele ici est celui qu'ADR-0054 avait deja generalise
+     * pour la meme cause ; le reutiliser evite un troisieme decoupage de blocs CSS dans ce module
+     * (ADR-0030).
+     *
+     * <p><b>Le perimetre reste celui d'ADR-0014, derive de la provenance et non d'un fichier nomme</b>
+     * : {@code reglesMaison} lit toute feuille servie sauf celles de {@code static/vendor/}, qui sont
+     * des copies octet pour octet de bibliotheques tierces. Deux consequences voulues, inchangees par
+     * ce lot : une feuille maison neuve est jugee du jour ou elle existe, sans qu'on pense a
+     * l'inscrire ; et une feuille tierce ne recoit jamais le reproche d'un choix de mise en page qui
+     * n'est pas le notre. Une bibliotheque deposee ailleurs que sous {@code vendor/} n'echappe a rien.
+     */
+    private static List<LargeurPx> largeursPxDesFeuillesMaison(Path racine) {
         List<LargeurPx> trouvees = new ArrayList<>();
-        for (String bloc : source.split("\\}")) {
-            int accolade = bloc.indexOf('{');
-            if (accolade < 0) {
-                continue;
-            }
-            String selecteur = bloc.substring(0, accolade).strip();
-            String corps = bloc.substring(accolade + 1);
-            trouvees.addAll(largeursPxDuBloc(corps, fichierCss + " (" + selecteur + ")"));
+        for (Regle regle : reglesMaison(racine)) {
+            String origine = regle.fichier()
+                    + (regle.contexte().isEmpty() ? "" : " " + regle.contexte())
+                    + " (" + regle.selecteur() + ")";
+            trouvees.addAll(largeursPxDuBloc(regle.corps(), origine));
         }
         return trouvees;
     }
@@ -192,15 +188,11 @@ class ViewportEtLargeurTelephoneTest {
     }
 
     static void verifierAucuneLargeurFixeeAuDelaDeLaCible(Path racine) throws IOException {
-        List<Path> feuilles = feuillesMaison(racine);
-        assertThat(feuilles)
-                .as("aucune feuille maison sous %s/static : ce garde-fou ne prouve rien", racine)
+        assertThat(reglesMaison(racine))
+                .as("aucune regle maison sous %s/static : ce garde-fou ne prouve rien", racine)
                 .isNotEmpty();
 
-        List<LargeurPx> largeurs = new ArrayList<>();
-        for (Path feuille : feuilles) {
-            largeurs.addAll(largeursPxDuCss(feuille));
-        }
+        List<LargeurPx> largeurs = new ArrayList<>(largeursPxDesFeuillesMaison(racine));
         largeurs.addAll(largeursPxDesGabarits(tousLesGabarits(racine)));
 
         for (LargeurPx largeur : largeurs) {
@@ -243,5 +235,20 @@ class ViewportEtLargeurTelephoneTest {
         Path racine = CONTRE_EXEMPLES.resolve("largeur-fixe-sous-la-cible");
         assertThatThrownBy(() -> verifierAucuneLargeurFixeeAuDelaDeLaCible(racine))
                 .isInstanceOf(AssertionError.class);
+    }
+
+    /**
+     * ADR-0056 : la meme faute, nichee sous une requete de media. Avant ce lot, ce cas etait
+     * <b>vert</b> : le seuil de ce fichier s'evitait en deplacant la declaration d'un cran vers
+     * l'interieur, sans rien changer a ce qu'elle produit. Le jeu fautif porte le meme selecteur
+     * fictif et la meme valeur que {@code largeur-excessive}, a la seule difference du nichage, pour
+     * que ce qui est prouve ici soit le nichage et rien d'autre.
+     */
+    @Test
+    void uneLargeurExcessiveNicheeSousUneRequeteDeMediaFaitAussiEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("largeur-excessive-sous-media");
+        assertThatThrownBy(() -> verifierAucuneLargeurFixeeAuDelaDeLaCible(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("600");
     }
 }
