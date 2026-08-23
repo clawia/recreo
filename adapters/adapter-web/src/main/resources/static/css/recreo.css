@@ -217,6 +217,41 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
     padding-bottom: 2rem;
 }
 
+/* S18, SYN-11 : correctif de forme arbitre (nadia-prof, 2026-08-23, FICHE-bandit-manchot-synonymes-cm1.md,
+   "Arbitrage de forme du 2026-08-23" - variante d'ines-design ACCEPTEE, portee .zone-jeu ET l'en-tete,
+   mecanisme confirme par theo-archi, ADR-0056, section "L'ecart en-tete / zone de jeu").
+   La feuille tierce plafonne .container a 540px sur toute la bande 576-767.98px (l'escalier
+   qu'ADR-0054 epingle) ; cinq items de cm1-synonymes sur seize demandent plus que les 500px de
+   rangee que ce plafond offre (rembourrage de .container et bordure de .cabinet retires), ce qui
+   les replie sur deux rangees et pousse le bloc de retour juste/faux sous le pli (SYN-11). Relever
+   ce plafond a 720px - la valeur que la feuille tierce offre deja a partir de 768px - rend 680px de
+   rangee (720 - 24 - 16, arithmetique d'ADR-0054 confirmee sur le rendu par nadia-prof a 680,00px)
+   sans toucher a aucun terme de colonne (ADR-0055 n'est pas concerne).
+   Portee .entete-contenu incluse, sur mesure et non sur gout (nadia-prof, section 4 de son
+   arbitrage) : l'en-tete inclus ne coute rien de mesurable (hauteur d'en-tete identique a cinq
+   largeurs de viewport, aucun repli neuf) et l'en-tete exclu decale l'en-tete de 90px par rapport a
+   la zone de jeu qu'il coiffe - un ecran qui a l'air casse. A 768px, le produit sert deja un en-tete
+   aligne sur une zone de jeu de 720px sans aucune regle ajoutee : inclure l'en-tete n'invente rien,
+   il avance d'un palier un alignement deja natif au palier suivant.
+   Bande scopee a 720-767.98px, jamais 576-767.98px : c'est SYN-14 (nadia-prof, meme arbitrage), qui
+   a mesure la forme large sur cette meme regle et trouve qu'un plafond eleve au-dela du viewport ne
+   mord plus - sous 720px la zone perd son centrage et s'etale bord a bord (le bord gauche du premier
+   bouton tombe a 12,0px, plus pres du bord qu'au repos aujourd'hui). Elle exige qu'aucun element a
+   presser ne se rapproche du bord plus que le rembourrage de la zone, et que l'en-tete reste aligne
+   sur la zone de jeu - une forme qui ne modifierait rien sous 720px atteint les deux sans effondrer
+   aucune marge : le plafond de 540px de la feuille tierce, inchange sous 720px, continue d'y regir
+   .entete-contenu comme .zone-jeu a l'identique, donc alignes l'un sur l'autre comme aujourd'hui. La
+   borne haute 767.98px reste le litteral de la feuille tierce (theo-archi, ADR-0056) : sans elle la
+   declaration s'appliquerait aussi a 992px et y abaisserait le plafond de 960 a 720.
+   Garde-fou : LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest (ADR-0054, ADR-0056),
+   ViewportEtLargeurTelephoneTest (seuil de largeur maison, 744px, DEC-0040). */
+@media (min-width: 720px) and (max-width: 767.98px) {
+    .entete-contenu,
+    .zone-jeu {
+        max-width: 720px;
+    }
+}
+
 /* ADR-0014 : list-style et padding-left viennent desormais de .list-unstyled (gabarit), portee
    par la classe Bootstrap plutot que redeclaree ici. */
 .jeux {

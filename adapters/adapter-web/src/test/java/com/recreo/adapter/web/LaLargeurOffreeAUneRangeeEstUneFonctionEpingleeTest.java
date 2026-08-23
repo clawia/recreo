@@ -142,7 +142,15 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
      * {@code nadia-prof} sur 160 tirages le 2026-08-22. Les trois marches au-dela (960, 1140, 1320)
      * sont derivees de la meme arithmetique, et n'ont ete mesurees par personne : leur presence ici
      * garde l'escalier entier contre un changement muet, elle n'affirme rien sur ce qu'un enfant voit
-     * a ces largeurs.
+     * a ces largeurs. <b>Correction du 2026-08-23 (S18, {@code SYN-11}), exigee par la consigne
+     * permanente ci-dessous</b> : la consequence de la ligne des 540 px, sur la chaine
+     * {@code form.propositions <- main#jeu.container.zone-jeu}, est <b>perimee</b> sur la portion de
+     * son palier ou une declaration maison l'emporte desormais (720 a 767,98 px de viewport, ce qui
+     * couvre la reference de {@code DEC-0040}, 744 px) ; elle reste valable en-deca (576 a 719,98 px),
+     * ou aucune declaration maison ne s'applique (SYN-14, voir {@code recreo.css}). A la reference, la
+     * rangee offre desormais 680 px, mesures par {@code nadia-prof} sur une regle injectee identique
+     * ({@code FICHE-bandit-manchot-synonymes-cm1.md}, arbitrage du 2026-08-23) ; la remesure sur le
+     * servi, que la consigne exige, reste due et n'est pas prononcee par ce fichier.
      *
      * <p><b>Consigne permanente attachee a ces deux lignes, et non correction anticipee.</b> La
      * phrase ci-dessus est vraie aussi longtemps qu'aucune declaration <b>maison</b> ne l'emporte sur
@@ -156,6 +164,16 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
      * concernees, ce qui met le rouge et la consigne au meme endroit. Elle n'est pas corrigee
      * d'avance : ecrire aujourd'hui qu'une mesure est perimee alors qu'elle ne l'est pas serait
      * exactement la reference fausse que cette consigne existe pour eviter.
+     *
+     * <p><b>Ce jour est arrive (lea-dev, S18, 2026-08-23).</b> La variante d'{@code ines-design} est
+     * livree ci-dessous, portee a {@code .entete-contenu} et {@code .zone-jeu} (arbitrage de
+     * {@code nadia-prof} du meme jour, section 4 de son arbitrage), et scopee a 720-767,98 px plutot
+     * qu'a 576-767,98 px comme la variante initialement mesuree - correction que {@code SYN-14}
+     * (meme arbitrage) exige : en dessous de 720 px, un plafond maison superieur au viewport ne mord
+     * plus et le conteneur perd son centrage, ce que la bande initiale aurait produit sur toute la
+     * portion 576-719,98 px sans y ameliorer aucun repli mesure. La table gagne deux lignes, pas une
+     * seule : {@code .entete-contenu} et {@code .zone-jeu} sont deux selecteurs distincts du meme
+     * bloc, chacun sur sa propre chaine.
      */
     private static final List<String> FONCTION_EPINGLEE = List.of(
             "nav.container.entete-contenu <- nav.container.entete-contenu | bootstrap.min.css | - | * | box-sizing: border-box",
@@ -166,6 +184,7 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
             "nav.container.entete-contenu <- nav.container.entete-contenu | bootstrap.min.css | @media (min-width:1200px) | .container | max-width: 1140px",
             "nav.container.entete-contenu <- nav.container.entete-contenu | bootstrap.min.css | @media (min-width:1400px) | .container | max-width: 1320px",
             "nav.container.entete-contenu <- nav.container.entete-contenu | recreo.css | - | * | box-sizing: border-box",
+            "nav.container.entete-contenu <- nav.container.entete-contenu | recreo.css | @media (min-width: 720px) and (max-width: 767.98px) | .entete-contenu | max-width: 720px",
             "form.propositions <- main#jeu.container.zone-jeu | bootstrap.min.css | - | * | box-sizing: border-box",
             "form.propositions <- main#jeu.container.zone-jeu | bootstrap.min.css | - | .container | width: 100%; padding-right: calc(var(--bs-gutter-x) * .5); padding-left: calc(var(--bs-gutter-x) * .5); margin-right: auto; margin-left: auto",
             "form.propositions <- main#jeu.container.zone-jeu | bootstrap.min.css | @media (min-width:576px) | .container | max-width: 540px",
@@ -174,6 +193,7 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
             "form.propositions <- main#jeu.container.zone-jeu | bootstrap.min.css | @media (min-width:1200px) | .container | max-width: 1140px",
             "form.propositions <- main#jeu.container.zone-jeu | bootstrap.min.css | @media (min-width:1400px) | .container | max-width: 1320px",
             "form.propositions <- main#jeu.container.zone-jeu | recreo.css | - | * | box-sizing: border-box",
+            "form.propositions <- main#jeu.container.zone-jeu | recreo.css | @media (min-width: 720px) and (max-width: 767.98px) | .zone-jeu | max-width: 720px",
             "form.propositions <- div.ecran-de-jeu | bootstrap.min.css | - | * | box-sizing: border-box",
             "form.propositions <- div.ecran-de-jeu | recreo.css | - | * | box-sizing: border-box",
             "form.propositions <- div.cabinet | bootstrap.min.css | - | * | box-sizing: border-box",
@@ -663,11 +683,17 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
      * {@code ViewportEtLargeurTelephoneTest}, dont la population est celle des largeurs declarees
      * <b>au-dela</b> de la cible telephone : 320px n'y depasse rien, et {@code max-width} n'est pas
      * {@code width}. La premiere assertion le constate sur la feuille mutee plutot que de l'affirmer.
+     *
+     * <p>Ancrage etendu a {@code ".zone-jeu {\n    padding-top: 2rem;"} depuis S18 (ADR-0056) : le
+     * correctif de {@code SYN-11} ajoute un second bloc {@code .zone-jeu} (sous {@code @media}), ce
+     * qui rendait {@code ".zone-jeu {"} seul ambigu - la mise a l'epreuve de la mise a l'epreuve,
+     * plus bas dans ce fichier, l'aurait fait rougir sans cette extension.
      */
     @Test
     void uneRegleMaisonQuiBorneLaLargeurDeLaChaineFaitEchouerLeGardeFou() throws Exception {
         Path racine = copieDesFeuilles(tempo.resolve("borne-maison"));
-        muter(racine, "static/css/recreo.css", ".zone-jeu {", ".zone-jeu {\n    max-width: 320px;");
+        muter(racine, "static/css/recreo.css", ".zone-jeu {\n    padding-top: 2rem;",
+                ".zone-jeu {\n    max-width: 320px;\n    padding-top: 2rem;");
 
         ViewportEtLargeurTelephoneTest.verifierAucuneLargeurFixeeAuDelaDeLaCible(racine);
 
@@ -683,12 +709,14 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
      * ({@code blocsMaison}) attribue ce corps a la cle {@code "@media (...)"} et ne le voit jamais sur
      * {@code .zone-jeu} - la premiere assertion le constate sur la feuille mutee, elle ne le suppose
      * pas. Le balayage de ce fichier garde le contexte de regle-@ et rougit.
+     *
+     * <p>Ancrage etendu, meme motif et meme date que la morsure 4 ci-dessus.
      */
     @Test
     void uneBorneMaisonNicheeSousUneRequeteDeMediaFaitAussiEchouerLeGardeFou() throws Exception {
         Path racine = copieDesFeuilles(tempo.resolve("borne-maison-sous-media"));
-        muter(racine, "static/css/recreo.css", ".zone-jeu {",
-                "@media (min-width: 576px) {\n    .zone-jeu { max-width: 320px; }\n}\n\n.zone-jeu {");
+        muter(racine, "static/css/recreo.css", ".zone-jeu {\n    padding-top: 2rem;",
+                "@media (min-width: 576px) {\n    .zone-jeu { max-width: 320px; }\n}\n\n.zone-jeu {\n    padding-top: 2rem;");
 
         assertThat(TailleDesTextesEtBoutonsTest.blocsMaison(racine).get(".zone-jeu"))
                 .as("la lecture aplatie du module ne doit pas voir cette borne : c'est la limite "
