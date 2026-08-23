@@ -85,6 +85,29 @@ class FrontieresDuJavaScriptTest {
         }
     }
 
+    /**
+     * S18, S17-C : troisieme critere d'acceptation de la story (backlog), reformule par
+     * theo-archi comme une propriete textuelle plutot que comportementale (avis-faisabilite.md,
+     * section 4.3, motif 4) - le mecanisme retenu deplace la declaration de {@code tabindex} vers
+     * les gabarits, et {@code recreo.js} ne doit plus jamais la poser lui-meme, sur aucune cible,
+     * qu'elle soit ou non nativement focalisable.
+     */
+    @Test
+    void leScriptDeFocusNeMuteJamaisTabindex() throws IOException {
+        List<Path> fichiers = javaScriptMaison();
+        assertThat(fichiers)
+                .as("ADR-0003 : cette regle ne prouve rien si aucun fichier n'est passe au crible")
+                .isNotEmpty();
+
+        for (Path fichier : fichiers) {
+            String source = Files.readString(fichier);
+            assertThat(source)
+                    .as("S17-C : %s ne doit plus poser tabindex, desormais declare par les gabarits",
+                            fichier)
+                    .doesNotContain("tabindex");
+        }
+    }
+
     @Test
     void aucunGabaritNeMarqueLaBonneReponse() throws IOException {
         List<Path> gabarits = fichiers(GABARITS, ".html").toList();

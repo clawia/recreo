@@ -36,11 +36,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * {@code data-focus} n'est present (ecran de fin de partie) - et que, sans {@code <body>}, l'appel
  * leve exactement l'erreur qui a rendu ces clauses inoperantes.
  *
- * <p><b>Ce que ce test ne couvre pas</b> : le vrai focus clavier d'un navigateur (tabindex, ordre de
+ * <p><b>Ce que ce test ne couvre pas</b> : le vrai focus clavier d'un navigateur (ordre de
  * tabulation reel, lecteur d'ecran), le vrai evenement {@code htmx:afterSwap} tel qu'htmx le
  * declenche, et tout selecteur CSS que le faux DOM ne modelise pas. La clause 1 de M13 (Tabulation
  * puis Entree ne detruit jamais la partie) reste verifiee au clavier, dans un vrai navigateur, hors de
  * la CI.
+ *
+ * <p>S18, S17-C : {@code tabindex} n'est plus une propriete que ce script mute - le serveur le
+ * declare desormais dans les gabarits ({@code fragments/manche.html}, {@code
+ * fragments/confirmation.html}, {@code fragments/retour.html}) sur leurs seules cibles non
+ * focalisables nativement. Ce que ce test verifie a la place : que le script n'ajoute {@code
+ * tabindex} sur aucune cible qu'il focalise, jamais qu'il en pose une valeur donnee.
  */
 class RecreoJsDeplaceLeFocusTest {
 
@@ -109,7 +115,10 @@ class RecreoJsDeplaceLeFocusTest {
 
         assertThat(enonce.focalise).as("clause 4 de M13 : apres une bonne reponse, le focus va sur "
                 + "l'enonce de la question neuve").isTrue();
-        assertThat(enonce.getAttribute("tabindex")).isEqualTo("-1");
+        assertThat(enonce.getAttribute("tabindex"))
+                .as("S18, S17-C : le script ne mute plus aucun attribut, tabindex=\"-1\" est desormais "
+                        + "declare par le gabarit lui-meme, jamais devine ici")
+                .isNull();
     }
 
     @Test
@@ -131,6 +140,11 @@ class RecreoJsDeplaceLeFocusTest {
                         + "reponse revelee, recoit le focus")
                 .isTrue();
         assertThat(autreBouton.focalise).isFalse();
+        assertThat(boutonDesigne.getAttribute("tabindex"))
+                .as("critere S17-C : une cible deja nativement focalisable (un bouton) ne recoit "
+                        + "jamais tabindex=\"-1\" du script - c'est exactement le defaut mesure par "
+                        + "nadia-prof, qui sortait ce bouton de l'ordre de tabulation")
+                .isNull();
     }
 
     @Test
