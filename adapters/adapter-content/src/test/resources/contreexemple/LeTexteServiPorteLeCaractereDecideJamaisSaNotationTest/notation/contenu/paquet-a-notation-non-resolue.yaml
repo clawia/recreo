@@ -1,0 +1,20 @@
+schema: 1
+# ADR-0060 : paquet fautif, jamais servi, jamais inscrit au catalogue.
+# Le premier item est conforme aux deux clauses, pour que le rouge de la clause 1
+# ne puisse pas etre confondu avec celui de la non-vacuite de la clause 2.
+id: paquet-a-notation-non-resolue
+type: question
+descripteur:
+  matiere: "Contre-exemple"
+  niveau: "Contre-exemple"
+  domaine: "Contre-exemple"
+  competence: "Contre-exemple"
+items:
+  - enonce: "Le mot marque est « grand » dans cette phrase."
+    bonneReponse: "petit"
+    distracteurs: ["large"]
+    indice: "Indice du premier item."
+  - enonce: "Le second item porte la notation dans son indice."
+    bonneReponse: "oui"
+    distracteurs: ["non"]
+    indice: 'Ce texte contient \u00a0 la ou il faudrait un espace insecable.'

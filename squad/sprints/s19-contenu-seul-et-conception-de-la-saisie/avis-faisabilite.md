@@ -553,3 +553,113 @@ motif pedagogique different du mien ; les deux motifs vont dans le meme sens et 
   texte de `surefire-reports` n'en garde **qu'un**. Un comptage lu dans les rapports texte sous-compte
   donc ; le journal Maven, lui, porte les deux lignes. C'est la troisieme des trois causes de
   divergence que j'avais identifiees apres coup en s14, observee ici en direct.
+
+---
+
+## 10. Amendement du 2026-08-24 (cloture s19) - la morsure que mes sections 1 a 4 n'ont pas vue, et ce qu'un avis de faisabilite peut promettre
+
+*Amendement, pas reecriture : les sections 1 a 9 restent telles qu'elles ont ete rendues, y compris la
+phrase de la section 1 que cet amendement contredit.*
+
+### 10.1 Ce que j'ai ecrit de faux, deux fois
+
+`marc-dev` et `lea-dev` ont chacun decouvert par un rouge, independamment, sur deux stories
+differentes, que `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` **mord des qu'un paquet a
+propositions textuelles est depose** : sa clause `verifierQuAucunPaquetNEstEcarteEnSilence`
+(`ADR-0051`) exige que tout paquet dont il n'examine aucun item se declare dans
+`PAQUETS_HORS_DU_DOMAINE_NUMERIQUE` **avec un motif non vide**, faute de quoi il est repute ecarte en
+silence et le test rougit.
+
+**Le probleme n'est pas que je l'aie omis - je l'ai nomme, et j'ai dit le contraire de ce qu'il fait.**
+
+- Section 1, sur `S19-1` : *"`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` ne verra rien
+  de ce paquet, et il faut le savoir plutot que de croire le contraire"*. Il ne verra rien **de la
+  propriete de rang**, c'est exact ; et c'est precisement pour cela qu'il exige une declaration.
+  J'ai transforme la condition de la morsure en preuve de son absence.
+- Section 3, sur `S19-3` : *"les propositions sont textuelles donc hors du perimetre d'`ADR-0041` et
+  d'`ADR-0051`"*. Faux pour `ADR-0051`, qui est l'ADR qui **cree** cette obligation - et que j'ai
+  ecrit moi-meme.
+- Sections 2 et 4, sur `S19-2` et `S19-4` : rien du tout.
+
+Quatre stories, quatre paquets a propositions textuelles, quatre entrees ajoutees a
+`PAQUETS_HORS_DU_DOMAINE_NUMERIQUE` pendant le sprint (`cm1-accords-groupe-nominal`,
+`cm1-accord-sujet-verbe`, `cm1-antonymes`, `cp-nature-mot`) - **quatre morsures qu'aucun de mes avis
+n'annoncait**. Et je me suis fait mordre le meme sprint par `LesGardeFousSontMisALEpreuveTest`, qui a
+refuse ma premiere version de regle faute de jeu fautif commite.
+
+### 10.2 Ce que le prochain paquet a propositions textuelles doit savoir, d'avance
+
+Tout paquet **dont aucun item n'a exactement trois propositions numeriques** - ce qui est le cas de
+tout paquet de francais, et de tout paquet a deux ou quatre propositions quelle que soit la matiere -
+doit, **dans le meme commit que le fichier YAML** :
+
+1. entrer dans `PAQUETS_HORS_DU_DOMAINE_NUMERIQUE`
+   (`adapters/adapter-content/src/test/java/com/recreo/adapter/content/LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest.java`) ;
+2. y porter un **motif ecrit et mesure** - le nombre d'items, le nombre de distracteurs par item, et
+   la raison pour laquelle aucune proposition n'a de valeur numerique, avec la date de la mesure. Une
+   declaration vide echoue sur une clause dediee ;
+3. savoir que la declaration **ne peut pas etre posee d'avance** : un paquet declare qui contribuerait
+   malgre tout au calcul de rang rougit sur `declarationsPerimees`, et un paquet declare qui
+   n'existerait plus rougit sur `declarationsFantomes`. La declaration se pose avec le paquet, jamais
+   avant, jamais apres.
+
+Ce paragraphe est ce que ma section 1 aurait du contenir.
+
+### 10.3 La vraie question : un avis peut-il, par construction, enumerer les garde-fous qui mordront ?
+
+**Non. Pas a la lecture, et pas par plus de soin.** Je le dis franchement plutot que de promettre un
+inventaire plus applique la prochaine fois, parce que la promesse serait tenue par ma vigilance,
+c'est-a-dire par rien - et que c'est exactement ce que ce depot refuse d'un garde-fou.
+
+Trois raisons, dont la troisieme est la seule qui compte.
+
+1. **Un garde-fou de ce depot derive son perimetre de la source** (`ADR-0013`, obligation 1). Sa
+   population n'est donc pas une liste que je peux lire, c'est le resultat d'un predicat evalue sur un
+   artefact qui **n'existe pas encore** au moment ou j'ecris l'avis. Enumerer exactement ce qui mordra
+   demande d'evaluer ces predicats, c'est-a-dire d'executer les garde-fous, pas de les lire.
+2. **Une morsure vient souvent de la clause secondaire, pas de la propriete que le nom annonce.** Ici,
+   le nom promet une propriete de rang ; ce qui mord est une obligation de declaration greffee par
+   `ADR-0051`. C'est la meme forme que le defaut de s11 - un `@ExceptionHandler` attrape un type et
+   tout son sous-arbre, et nommer deux types n'est pas nommer deux situations. Un perimetre enumere a
+   la lecture echoue par inclusion autant que par omission.
+3. **La preuve est ma propre production, et elle est accablante.** J'ai inventorie a la main pour
+   quatre stories, avec le fichier ouvert sous les yeux, et je me suis trompe quatre fois - dont deux
+   fois en affirmant l'inverse du comportement reel d'un garde-fou dont j'avais ecrit l'ADR trois
+   sprints plus tot. Une methode qui echoue dans ces conditions-la n'echoue pas par manque de soin.
+
+**Ce qu'un avis de faisabilite peut donc promettre, et ce qu'il ne peut pas.** Il peut nommer les
+garde-fous dont la story **change le perimetre** : un fichier depose dans un repertoire derive, une
+entree de catalogue neuve, une declaration a tenir. Il ne peut pas garantir que cette liste soit
+complete, et **il doit le dire**, sans quoi il vaut moins que rien : un developpeur qui lit une liste
+qu'il croit exhaustive cesse de chercher.
+
+**Ce qui remplace l'enumeration exhaustive, et qui coute deux minutes.** Deriver au lieu d'enumerer -
+la doctrine d'`ADR-0013`, appliquee a mon propre livrable. Avant d'ecrire une ligne de contenu, le
+developpeur depose un **artefact minimal de la bonne forme** (un paquet de deux ou trois items, du
+bon type, du bon nombre de propositions, contenu bidon) et lance la suite du module :
+
+```
+bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test
+```
+
+Le `-am` n'est pas decoratif : sans lui la mesure porte sur les modules amont **installes**, pas sur
+l'arbre (`CLAUDE.md`, prerequis de mesure). Ce que rend cette commande n'est pas une liste que
+quelqu'un a devinee : c'est la liste **exacte** des garde-fous que cette forme d'artefact met en jeu,
+produite par la machine, au debut de la story plutot qu'a la fin. Le rouge arrive quand il ne coute
+rien - avant le contenu, avant l'arbitrage pedagogique, avant la fusion.
+
+**Ce que je change dans mes avis a partir de maintenant** : toute section qui nomme des garde-fous se
+termine par la phrase *"cette liste n'est pas exhaustive et ne peut pas l'etre ; la liste exhaustive
+s'obtient par un depot minimal et un `test` du module, avant d'ecrire le contenu"*, suivie de la
+commande. C'est un engagement sur **mon** livrable, que je tiens seul.
+
+**Ce que je ne decide pas** : faire de ce depot minimal une etape obligatoire du deroulement d'une
+story de contenu est une decision de **process**, donc de `sofia-sm`. Je la lui route, avec mon avis :
+elle coute deux minutes par story, elle a evite trois rouges tardifs ce sprint-ci a elle seule, et
+elle est la seule des deux methodes qui ne repose sur la vigilance de personne.
+
+**Et pourquoi je n'en fais pas un `ADR`** : la regle porterait sur la facon dont un humain conduit une
+story, pas sur une propriete du code. Je ne sais pas l'encoder en test - un depot Git ne peut pas
+distinguer un `mvn test` lance avant d'un `mvn test` lance apres - et une regle que je ne sais pas
+encoder n'est pas une regle. `CLAUDE.md` demande dans ce cas d'ecrire quel autre mecanisme la garde :
+ici, aucun. C'est une pratique, elle est ecrite comme telle, et elle n'a pas la force d'une regle.

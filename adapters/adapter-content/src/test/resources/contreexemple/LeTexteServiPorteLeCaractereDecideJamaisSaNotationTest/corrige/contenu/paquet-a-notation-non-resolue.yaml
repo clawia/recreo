@@ -1,0 +1,19 @@
+schema: 1
+# ADR-0060 : paquet fautif, jamais servi, jamais inscrit au catalogue.
+# Version corrigee : le caractere est ecrit, jamais sa notation.
+id: paquet-a-notation-non-resolue
+type: question
+descripteur:
+  matiere: "Contre-exemple"
+  niveau: "Contre-exemple"
+  domaine: "Contre-exemple"
+  competence: "Contre-exemple"
+items:
+  - enonce: "Le mot marque est « grand » dans cette phrase."
+    bonneReponse: "petit"
+    distracteurs: ["large"]
+    indice: "Indice du premier item."
+  - enonce: "Le second item porte le caractere lui-meme dans son indice."
+    bonneReponse: "oui"
+    distracteurs: ["non"]
+    indice: "Ce texte contient un espace insecable, ecrit tel quel."
