@@ -486,6 +486,17 @@ cm1-nature-mot.yml` (quatre natures, mots isoles, niveau CM1) vers deux natures 
 une phrase tres simple, niveau CP - ce n'est pas une reprise au sens de `contenu-repris/README.md`.
 Arbitrage prealable de `nadia-prof` demande avant tout code (`DEC-0042`, section 5).
 
+**Amendement du 2026-08-24 (meme jour, second passage) - increment audite, deux reserves
+bloquantes, la ligne reste `en cours`.** `nadia-prof` a joue l'increment livre (`FICHE-bandit-
+manchot-nature-mot-cp.md`, verdict `ddb0fc4`) : le motif de son refus de la premiere version des
+seize phrases est leve et remesure (`NAT-1` a `NAT-8` tenues, sauf deux). Deux reserves restent
+**bloquantes** : `NAT-5` (aucun renfort visuel du mot cible, au-dela des guillemets seuls, n'a ete
+propose ni ajoute - je l'avais routee a `ines-design`, qui n'a pas ete saisie de ce point, trou de
+coordination que je corrige ci-dessous) et `NAT-9`, neuve (la consigne servie, "Le mot entre
+guillemets est-il un nom ou un verbe ?", n'est pas lisible seul par un enfant de CP et est
+circulaire - `nadia-prof` propose "Nom ou verbe ?", deja le titre du jeu). Elle ecrit que les deux
+se reparent ensemble. Detail complet, criteres correctifs et routage : `DEC-0044`.
+
 **Note du 2026-08-24 (s19, `camille-po`) - question de validite de proxy due depuis s13, sans
 reponse a ce jour.** La ligne "Decoder un mot regulier inconnu par assemblage syllabique" bloque
 sur une question posee a `nadia-prof` par `DEC-0030` (section 5) le 2026-08-15 : un choix a trois
@@ -550,10 +561,10 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Ecriture | Rediger un texte narratif court et coherent (quelques phrases, temps du recit respecte) | - | - | non couvert |
 | francais | CM1 | Ecriture | Relire et corriger son texte a l'aide de reperes simples (majuscules, ponctuation) | - | - | non couvrable en l'etat |
 | francais | CM1 | Orthographe et grammaire | Accorder le verbe avec son sujet (cas frequents, temps simples : present, futur, imparfait) | bandit-manchot-accord-sujet-verbe-cm1 | bandit manchot | en cours |
-| francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | bandit-manchot-accords-groupe-nominal-cm1 | bandit manchot | en cours |
+| francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | bandit-manchot-accords-groupe-nominal-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | bandit-manchot-homophones-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif | bandit-manchot-conjugaison-present-cm1 | bandit manchot | couvert-valide |
-| francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | bandit-manchot-synonymes-cm1, bandit-manchot-antonymes-cm1 (S19-1) | bandit manchot | en cours |
+| francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | bandit-manchot-synonymes-cm1, bandit-manchot-antonymes-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | - | - | non couvert |
 
 **Note du 2026-08-24 (s19, `camille-po`) - trois lignes ouvertes par le Lot A de `DEC-0042`**
@@ -577,6 +588,48 @@ Source : `squad/programme/francais/competences-cm1.md`.
 
 Aucune des trois lignes ne passe a `couvert-valide` par ce planning : ce statut n'est prononce que
 par `nadia-prof`, apres audit reel de chaque increment.
+
+**Amendement du 2026-08-24 (meme jour, second passage) - deux des trois lignes passent
+`couvert-valide`, verifie par `camille-po` avant de faire bouger la ligne**
+
+`nadia-prof` a audite les quatre paquets neufs (branche `s19-nadia`, commit `ddb0fc4`, non
+fusionnee). Je verifie moi-meme la condition de chaque ligne plutot que de la croire sur parole
+(`squad/README.md`, section 9, etape 6), avant de faire bouger quoi que ce soit.
+
+- **Synonymes et antonymes -> `couvert-valide`.** La condition posee par `DEC-0039` section 3 est
+  : la ligne ne passe que le jour ou **les deux jeux sont chacun `VALIDE` par `nadia-prof`**. Verifie
+  : `bandit-manchot-synonymes-cm1` est `VALIDE SOUS RESERVE, aucune reserve bloquante` depuis s18
+  (`FICHE-bandit-manchot-synonymes-cm1.md`) ; `bandit-manchot-antonymes-cm1` recoit le meme verdict
+  le 2026-08-24 (`FICHE-bandit-manchot-antonymes-cm1.md`, verdict `ddb0fc4` : 17 items, 4 parties,
+  17/17 items vus a 744 x 551, verdict au pire 474,19 px, deux reserves non bloquantes `ANT-8` et
+  `ANT-9`). Les deux conditions de `DEC-0039` sont tenues. **Perimetre exact de ce que ce
+  `couvert-valide` recouvre** : les deux jeux ensemble ; aucun residu non couvert par les deux
+  fiches - `ANT-8` (un item perd la fin de son indice sous le pli, 2,19 px, non bloquant, meme
+  mecanisme que `SYN-12`) et `SYN-16`/`S19-6a` (bande 576-719 px, residu de largeur assume, renvoye
+  a s20 par `DEC-0043`) restent ouverts et non bloquants, sans effet sur ce statut.
+- **Accorder en genre et en nombre dans le groupe nominal -> `couvert-valide`.** Un seul jeu, la
+  regle standard s'applique (`squad/README.md`, section 9, etape 6) : Done `VALIDE SOUS RESERVE,
+  aucune reserve bloquante` prononce le 2026-08-24 (`FICHE-bandit-manchot-accords-groupe-nominal-
+  cm1.md`, verdict `ddb0fc4` : 24 items, 6 parties, 24/24 items vus a 744 x 551, verdict au pire
+  510,19 px). **Perimetre exact** : les trois composantes du groupe nominal (determinant, nom,
+  adjectif) sont chacune testees, huit items chacune, comme la story l'exigeait des l'ouverture.
+  Trois reserves non bloquantes restent ouvertes : `AGN-1` (huit items perdent leur indice sous le
+  pli, meme mecanisme que `SYN-12`, verse au chantier vertical de s20 avec un chiffre revise -
+  68,19 px et non 43,19 px, les items a quatre propositions coutant plus cher que les items a
+  trois) ; `AGN-2` (huit items sur vingt-quatre n'ont que deux propositions, voir `DEC-0044` pour
+  l'arbitrage du score) ; `AGN-3` (apostrophes droites au lieu de guillemets dans les vingt-quatre
+  indices, correction mecanique non faite ici, laissee ouverte dans la fiche).
+- **Distinguer les principaux types de mots (nom, verbe) -> reste `en cours`.** Le Done pedagogique
+  n'est pas prononce : `nadia-prof` ecrit elle-meme *"la ligne ne peut pas passer `couvert-valide`
+  tant que `NAT-5` et `NAT-9` restent ouvertes"* (`FICHE-bandit-manchot-nature-mot-cp.md`, verdict
+  `ddb0fc4`). Je ne la fais pas bouger. Le detail de `NAT-5`/`NAT-9` et leur routage : `DEC-0044`.
+- **Accorder le verbe avec son sujet -> reste `en cours`.** `nadia-prof` a **REFUSE** l'increment le
+  2026-08-24 (`FICHE-bandit-manchot-accord-sujet-verbe-cm1.md`, verdict `ddb0fc4`) sur cinq motifs,
+  dont un decisif mesure **a la reference du produit elle-meme (744 x 551)**, pas dans une bande
+  differee : deux items sur vingt-et-un mettent le verdict sous le pli. `marc-dev` corrige au
+  moment ou j'ecris cette note ; je ne prejuge pas du resultat. Si la correction n'est ni livree ni
+  reauditee avant la cloture de s19, le refus devient une story de backlog pour s20 (voir
+  `docs/backlog/backlog.md`, entree conditionnelle).
 
 **Note du 2026-08-24 (s19, `camille-po`) - question de validite de proxy due depuis s13, sans
 reponse a ce jour.** La ligne "Relire et corriger son texte a l'aide de reperes simples" bloque sur
@@ -1908,3 +1961,40 @@ reproduis pas ici, cette matrice n'etant pas le lieu de la methode de recomptage
 developpement, geles par `DEC-0042` et non rouverts par cet amendement. Aucune ligne ne passe
 `couvert-valide` par ce geste ; ce statut reste entierement celui de `nadia-prof`, apres audit reel
 d'un increment livre.
+
+## Amendement du 2026-08-24 (troisieme passage) - deux lignes passent `couvert-valide`, 12/44 (27,3 %)
+
+`nadia-prof` a audite les quatre paquets neufs du Lot A de `DEC-0042` (branche `s19-nadia`, commit
+`ddb0fc4`). Deux lignes francais CM1 passent `couvert-valide`, verifiees une par une ci-dessus dans
+la section francais CM1 : "Utiliser des synonymes et antonymes pour preciser ou nuancer un propos"
+et "Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif)". Deux autres
+n'y passent pas et restent `en cours` : "Distinguer les principaux types de mots (nom, verbe)"
+(deux reserves bloquantes, `NAT-5` et `NAT-9`) et "Accorder le verbe avec son sujet" (`REFUSE`,
+correction en cours par `marc-dev`).
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide | non couvrable en l'etat |
+|---|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 | 0 |
+| mathematiques CM1 | 12 | 6 | 2 | 4 | 0 |
+| francais CP | 12 | 9 | 2 | 0 | 1 |
+| francais CM1 | 11 | 5 | 1 | 4 | 1 |
+| **Total** | **46** | **26** | **6** | **12** | **2** |
+
+Francais CM1 : `en cours` passe de 3 a 1 (les deux lignes qui bougent), `couvert-valide` de 2 a 4.
+Aucune autre cellule ne bouge par rapport au tableau precedent de ce meme jour.
+
+**Le chiffre.** Le denominateur atteignable reste **44** sur **46** (deux lignes `non couvrable en
+l'etat`, inchangees par ce geste). Le compte de lignes `couvert-valide` passe de **10** a **12**.
+**10/44 (22,7 %) devient 12/44 (27,3 %)**, un gain de 4,6 points. **C'est le premier mouvement reel
+de couverture depuis s18** : deux increments joues et audites par `nadia-prof`, sur deux paquets
+neufs distincts, avec verdict `VALIDE SOUS RESERVE` sans reserve bloquante chacun.
+
+**Perimetre exact de ce qui est couvert, pour que ce chiffre ne soit pas cru sur parole plus tard**
+que je ne l'ai moi-meme cru sur celle de `nadia-prof` : le detail jeu par jeu, reserve par reserve,
+est dans la section francais CM1 ci-dessus (amendement du 2026-08-24, second passage). Rien de ce
+gain ne depend d'une mesure hors la reference du produit (744 x 551, `DEC-0040`) ; les residus
+connus dans la bande 576-719 px (`SYN-16`/`S19-6a`) et sous le pli a la reference (`SYN-12`,
+`ANT-8`, `AGN-1`) sont tous non bloquants et deja ouverts avant ce geste.
+
+**Ce qui ne bouge pas.** Le perimetre de developpement de s19 (`S19-1` a `S19-6`, `DEC-0042`) est
+inchange. Aucune autre ligne ne passe `couvert-valide` par ce geste.

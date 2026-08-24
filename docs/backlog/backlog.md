@@ -5413,6 +5413,34 @@ faisabilite.
 - **Lien decision** : `DEC-0042`, section 5.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`.
 
+**Statut du 2026-08-24 - REFUSE, correction en cours dans ce sprint.** `nadia-prof` a audite
+l'increment livre et REFUSE (`squad/conformite/FICHE-bandit-manchot-accord-sujet-verbe-cm1.md`,
+verdict `ddb0fc4`, branche `s19-nadia`). Cinq motifs, repris avec ses mots pour qu'un critere
+correctif ne les affaiblisse pas :
+
+1. **Decisif** - deux items sur vingt-et-un mettent le verdict sous le pli **a la reference du
+   produit elle-meme (744 x 551 px, `DEC-0040`)**, pas dans une bande differee : "Demain, les
+   enfants du quartier ___ un grand tournoi de football." et "Cet ete, mes cousins ___ une cabane
+   au fond du jardin.", verdict a 564,19 px pour un pli a 551 px.
+2. Les vingt-et-un indices impriment la reponse exacte en toutes lettres dans leur derniere clause
+   ("comme dans 'ils jouent'"), ce qui contredit le critere deja ecrit dans cette fiche ("un indice
+   qui donne la methode, pas le resultat") et vide `M5` de son sens : une manche resolue en lisant
+   l'indice compte comme une reussite.
+3. Sur quinze items a sujet de troisieme personne, le troisieme distracteur est systematiquement
+   une forme en `-ons` qu'aucun enfant n'ecrirait, rendant ces items a trois propositions en
+   apparence et deux en fait.
+4. Deux items emploient un vocabulaire au-dessus du CM1 (*deferler*, *moudre*) et l'un des deux
+   enonces se contredit lui-meme.
+5. Les indices citent mots et terminaisons entre apostrophes droites plutot qu'avec les guillemets
+   francais deja etablis par `SYN-6`/`SYN-9`.
+
+**Ce que cette story devient, selon l'issue de la correction en cours.** `marc-dev` corrige au
+moment ou cette note est ecrite ; je ne prejuge pas du resultat. Si `nadia-prof` reaudite et rend un
+Done `VALIDE` (sous reserve non bloquante ou sans reserve) avant la cloture de s19, cette section
+est cloturee sans story neuve. **Si ce n'est pas le cas, les cinq motifs ci-dessus deviennent les
+criteres d'acceptation correctifs d'une story `S19-3` reportee au backlog de s20**, affectee par
+`sofia-sm`, sans qu'aucun mot des motifs ne soit affaibli dans leur reformulation.
+
 ### S19-4 - Distinguer nom et verbe dans une phrase tres simple (francais CP)
 
 - **Besoin** : en tant qu'eleve de CP, je veux dire si un mot d'une phrase courte est un nom ou un
@@ -5452,6 +5480,24 @@ faisabilite.
 - **Lien decision** : `DEC-0042`, section 5.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, arbitrage prealable de `nadia-prof`
   requis avant tout code.
+
+**Criteres correctifs ajoutes le 2026-08-24 - deux reserves BLOQUANTES a l'audit de l'increment
+livre** (`squad/conformite/FICHE-bandit-manchot-nature-mot-cp.md`, verdict `ddb0fc4`, branche
+`s19-nadia`). Repris avec les mots de `nadia-prof` :
+
+- **`NAT-5`** - "le mot cible est designe autrement que par les guillemets seuls, et jamais par la
+  couleur seule." Un renfort visuel du mot cible, au-dela des guillemets francais deja en place,
+  doit exister et etre juge par `nadia-prof`. Proposition de forme routee a `ines-design` (voir
+  routage de `DEC-0044`), jamais tranchee par la seule couleur.
+- **`NAT-9`** - la consigne servie ("Le mot entre guillemets est-il un nom ou un verbe ?") n'est pas
+  lisible seule par un enfant de CP et est circulaire : elle nomme un signe (guillemets) que
+  l'enfant ne connait pas pour designer le mot dont on parle. Etant donne la consigne, quand un
+  enfant de CP la lit seul, alors elle ne nomme aucun signe typographique et reste comprehensible
+  sans qu'il ait besoin de connaitre la convention des guillemets. `nadia-prof` propose "Nom ou
+  verbe ?", deja le titre du jeu, des lors que le renfort visuel de `NAT-5` existe.
+
+`nadia-prof` ecrit que les deux se reparent ensemble, dans le meme chantier. Reaudit requis avant
+tout Done pedagogique sur cette ligne.
 
 ### S19-5 - Migration ADR-0049 (accentuation des descripteurs de matiere)
 
