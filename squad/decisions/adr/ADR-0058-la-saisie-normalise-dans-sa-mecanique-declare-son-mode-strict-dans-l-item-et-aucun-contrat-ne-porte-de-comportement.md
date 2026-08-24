@@ -282,9 +282,16 @@ static final ArchRule unContratNeDeclareAucunComportement = methods()
   la normalisation que la section 3 de cet ADR decrit, ecrite comme le chemin le moins cher l'ecrirait.
 
 **Mesure, methode comprise** : `bash outils/mvn-jdk21.sh -B clean verify` a la racine du reacteur -
-**624 tests, 0 echec, BUILD SUCCESS** (48 `domain` + 13 `application` + 321 `adapter-content` +
-144 `adapter-web` + 92 `bootstrap` surefire + 6 `failsafe`). Reference avant ce lot, meme commande,
-meme arbre : **621, 0 echec**. Les trois tests de plus sont la clause et ses deux morsures. Pas de
+**624 tests, 0 echec, BUILD SUCCESS** (48 `domain` + 13 `application` + 321 `adapter-web` +
+144 `adapter-content` + 92 `bootstrap` surefire + 6 `failsafe`). Reference avant ce lot, meme
+commande, meme arbre : **621, 0 echec**. *Correction du 2026-08-24, meme jour : cette parenthese
+donnait "321 `adapter-content` + 144 `adapter-web`", les deux etiquettes echangees. Ecart trouve par
+`sofia-sm` a la relecture de ce lot, verse au dossier de `yanis-qa` plutot que corrige dans un
+fichier qui n'est pas le sien, et corrige ici par `theo-archi` qui l'avait ecrit. Verifie par le
+comptage des `<testsuite tests="...">` des rapports XML de surefire et de failsafe : `adapter-web`
+porte 321 tests sur 42 classes, `adapter-content` 144 sur 23. Le total de 624 etait juste - c'est un
+defaut d'etiquette, pas de mesure, et c'est exactement le genre de chiffre qu'un lecteur reprendrait
+sans le recompter.* Les trois tests de plus sont la clause et ses deux morsures. Pas de
 `-am` a citer : le reacteur est complet par construction.
 
 **Compte des regles ArchUnit, avec sa methode.** Balayage des sources `.java` de l'arbre du worktree,
@@ -409,3 +416,91 @@ attendre.
 6. **Elargir `GameSession` pour que l'adaptateur n'ait plus a descendre vers un type concret.**
    Ecartee en section 5 : ce serait la dette 2 de la version precedente portee par le contrat de
    mecanique. Le retypage de l'adaptateur (`R-A`) resout le meme probleme sans charger le contrat.
+
+---
+
+## Amendement du 2026-08-24, meme jour - `SAI-9` est tranchee, `SAI-12` est chiffree, et une phrase de ma section 6 etait fausse
+
+### 1. La question que je routais est fermee, et rien ne m'est du
+
+`nadia-prof` tranche `SAI-9` en retenant la **lecture (b)** - celle sur laquelle cet ADR est ecrit -
+et elle precise que ce n'est pas par commodite d'architecture : la lecture litterale aurait vide les
+trois essais de `M5` de leur sens, et elle aurait refuse un increment qui l'aurait implementee. Elle
+scinde sa condition en `SAI-9a` (a chaque refus, la chaine de l'enfant seule) et `SAI-9b` (a la
+revelation, les deux chaines).
+
+**Consequence sur cet ADR : aucune ligne de son corps ne change.** `M9` clause 5 n'est pas rouverte,
+son encodage dans le domaine ne bouge pas, et **l'amendement date que je m'engageais a ecrire si elle
+tranchait pour (a) n'est pas du**. Je le note ici pour que la section "Ce que je route" ne reste pas
+lue comme une question ouverte dans un fichier que d'autres reprennent.
+
+### 2. `SAI-12`, chiffree a part comme elle le demande
+
+**Sa question** : j'ai chiffre une chaine, elle en demande trois. Est-ce que cela change la
+conception, l'etat de partie en session, le retypage d'`adapter-web`, ou seulement le rendu ?
+
+**La reponse, poste par poste, contre cet ADR tel qu'il est ecrit :**
+
+| Ce que `SAI-12` touche | Verdict |
+|---|---|
+| Conception, sections 1 a 4 (forme d'item, mode strict, normalisation, contrats) | **rien** |
+| Section 5, `Move` et `GameSession` | **rien** - la liste vit sur le type de session de la saisie, comme le reste |
+| Retypage d'`adapter-web` (20 occurrences, 3 fichiers) | **rien** - ce chiffre compte les endroits qui **nomment** la mecanique, pas ce que la session porte |
+| Etat de partie de la saisie | **un champ change de type, et un champ disparait** |
+| Rendu | **oui**, et c'est la que le travail est |
+
+**Et ma section 6 disait faux sur un point, que je corrige plutot que de le laisser passer.** J'y ai
+ecrit : *"garder les trois est le meme geste que garder une - la session porte deja
+`Set<String> propositionsEssayees` a cote de `derniereTentative`"*. Le geste, oui. **Le type, non**,
+et la difference est exactement celle que `SAI-12` demande.
+
+`BanditManchotSession` normalise son champ a la construction :
+`this.propositionsEssayees = Set.copyOf(propositionsEssayees)`. `Set.copyOf` rend un ensemble
+immuable **dont l'ordre d'iteration n'est pas specifie et varie d'une machine virtuelle a l'autre**.
+**Mesure** : cinq executions de `jshell` sur le JDK 21.0.10 de la toolchain declaree, meme ordre
+d'insertion a chaque fois (`elleve, eleve, elevve, ellevve`), **deux ordres d'iteration distincts
+observes, dont aucun n'est l'ordre d'insertion**. Ce n'est pas une lecture de documentation, c'est un
+constat.
+
+**Pourquoi cela ne coute rien aux boutons et tout a la saisie.** Sur les boutons, ce champ n'est
+jamais itere pour l'affichage : le gabarit ne l'interroge que par appartenance
+(`th:classappend="${propositionsEssayees.contains(proposition)} ? 'deja-essayee' : ''"`) et
+`PartieController` ne s'en sert que par `contains` et `isEmpty`. **L'ordre affiche est celui de
+`propositions`, une `List` melangee une fois par manche.** Dans la saisie, cette liste n'existe pas :
+l'ordre de ce que l'enfant a ecrit ne vit nulle part ailleurs que dans la collection elle-meme.
+Reprendre le meme type rendrait a l'enfant, sur la meme manche, une liste dont l'ordre peut changer
+d'un demarrage a l'autre.
+
+**Ce que cela decide, et cela simplifie.** La session de la saisie porte
+**`List<String> tentatives`**, dans l'ordre ou l'enfant les a ecrites, et **`derniereTentative()`
+devient une propriete calculee** - la derniere de la liste - au lieu d'un second champ. C'est le
+geste d'`ADR-0039`, et il fait **un champ au lieu de deux** : `SAI-12` en retire un, elle n'en ajoute
+pas.
+
+**Ce qu'elle coute, borne.** Au plus **deux** chaines anterieures a l'ecran :
+`ESSAIS_AVANT_REVELATION` vaut 3, donc le deuxieme essai en montre une et le troisieme en montre
+deux. Rien a stocker qui merite d'etre nomme, et le texte de l'enfant traverse deja le rendu pour
+`SAI-9a` - trois chaines echappees plutot qu'une n'est pas une difference de nature.
+
+**Un fait d'architecture qui evite une decision inutile a `nadia-prof`** : avec les boutons,
+represser une proposition deja marquee **consomme bel et bien un essai** - `jouer` incremente
+`essaisSurLaManche` avant que `essayeesSuivantes.add(choix)` ne fasse rien sur un doublon. Donc une
+chaine retapee a l'identique qui consomme un essai dans la saisie est **symetrique de la mecanique
+existante**, pas une decision neuve. Restent deux points qui ne sont pas de moi : si une chaine
+retapee a l'identique apparait **deux fois** dans la liste, et si la liste se compare avant ou apres
+normalisation. Les deux sont des questions de forme et de pedagogie - une repetition vue ou non vue
+est precisement ce que `SAI-12` existe pour montrer - et je les laisse a `nadia-prof`.
+
+**`R-C`, due avec le lot de code, et je la nomme pour qu'elle ne soit pas une bonne intention.**
+Aucune regle ArchUnit ne garde ce que `SAI-12` demande, et je ne prends pas ce silence pour un vert :
+ArchUnit voit des types, pas l'ordre d'une collection rendue par un gabarit. Le mecanisme automatique
+est un **test unitaire de la mecanique de saisie** : trois tentatives ecrites dans un ordre connu
+reviennent dans cet ordre-la, et le meme test sur un autre ordre d'insertion rend cet autre ordre -
+c'est cette seconde moitie qui distingue "ordonne" de "ordonne par hasard comme je l'attendais", et
+c'est elle qu'un `Set.copyOf` fait rougir.
+
+### 3. Ce que cet amendement ne change pas
+
+Les sections 1 a 5, 7 et 8, les regles executables, `R-A`, `R-B` et toutes les mesures de cet ADR
+sont inchangees. La conception tient telle qu'elle est ecrite ; c'est une phrase de justification de
+la section 6 qui etait fausse, et le type d'un champ qui s'en deduit.

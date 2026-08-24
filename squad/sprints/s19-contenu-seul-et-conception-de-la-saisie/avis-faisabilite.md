@@ -330,6 +330,124 @@ soit sur une bande reduite - ce qui est une decision de `camille-po`, pas la mie
 famille verticale, moyennant l'`ADR` du point 6.3.2. Je ne recommande ni l'un ni l'autre : je dis ce
 que chacun coute.
 
+### 6.5 Amendement du 2026-08-24, meme jour - la mesure est rendue, mon verdict tombe
+
+**Fait neuf** : `nadia-prof` a mesure la largeur de rangee **necessaire** que je nommais comme le
+seul chiffre manquant. Elle vaut **539 px** (`FICHE-bandit-manchot-synonymes-cm1.md`, "Mesure du
+2026-08-24", lot `s19-nadia`). Les sections 6.1 a 6.4 restent ci-dessus telles qu'elles ont ete
+ecrites : elles etaient exactes sous l'information disponible, et c'est de la qu'il faut partir pour
+lire ce qui suit.
+
+**Ce que la mesure confirme.** L'arithmetique de la largeur offerte - `rangee = plafond - 40` - est
+reproduite une quatrieme fois par ses trois campagnes (plafond 579 injecte, rangee mesuree 539,00).
+**Et une cinquieme, que personne n'avait faite** : ses huit mesures de bords lateraux a plafond 579
+se derivent toutes de `bord gauche = (V - min(V, 579)) / 2`, soit 0 - 0 - 0 - 0,5 - 10,5 - 30,5 -
+60,5 - 70,0 px a 576, 578, 579, 580, 600, 640, 700 et 719 px de viewport. **Ce sont ses huit
+chiffres, au dixieme.**
+
+**Ce qui tombe, et je le nomme precisement plutot que de me couvrir derriere ce qui tenait.**
+
+- **La ligne de mon tableau de tete est fausse** : j'y ecris *"l'arithmetique ferme la famille de
+  correctifs qu'on croit avoir"*. Elle n'en ferme pas la famille, elle en ferme **3 largeurs de
+  viewport sur 144**. Un correctif de largeur est faisable de **579 a 719 px** et echoue sur 576, 577
+  et 578 px, faute des 3, 2 et 1 px que le viewport lui-meme retient. **`S19-6` n'est pas infaisable :
+  elle est faisable sur 141 largeurs sur 144**, et savoir si le produit s'en contente est un
+  arbitrage de perimetre qui appartient a `camille-po`.
+- **Ma phrase litterale, elle, tient - et c'est precisement ce qui la rend trompeuse.** J'ecrivais
+  qu'un correctif *"ne tiendra le critere sur la totalite des seize items, entre 576 et 719 px inclus,
+  que si la largeur necessaire est inferieure a 536 px"*. C'est vrai : 539 > 536, la bande entiere
+  n'est pas tenable. Mais un "infaisable" en tete de tableau, quand il porte sur 2 % de la bande, dit
+  au lecteur autre chose que ce que le calcul dit. **Le defaut n'est pas dans l'arithmetique, il est
+  dans le poids que j'ai donne a sa conclusion en ne sachant pas encore sur combien de pixels elle
+  portait.** C'est exactement ce que le chiffre manquant decidait, et c'est pour cela que je le
+  demandais.
+- **Mon "+180 px" de la section 6.1 est un chiffre juste au mauvais endroit.** J'ecris *"la ou il a
+  fallu +180 px pour que le defaut disparaisse"* : 180 px est la taille du correctif de s18, pas le
+  besoin. Le besoin etait de **+39 px** (500 -> 539), et personne ne le savait.
+- **Ma troisieme puce de 6.1 est fausse sur le fond** : j'ecrivais qu'*"il faudrait effondrer
+  entierement les marges, ce que `SYN-14` refuse"*. `nadia-prof` a mesure `SYN-14` a huit viewports
+  avec un plafond de 579 px et la trouve **tenue** - en-tete aligne aux huit largeurs, et 12,0 px du
+  bord au pire cas, c'est-a-dire exactement le rembourrage de la zone et exactement le chiffre
+  qu'elle avait deja accepte le 2026-08-23. Je supposais son refus au lieu de lire ce qu'elle avait
+  ecrit.
+
+**Ce qui reste exact et n'est pas rouvert** : la borne `rangee <= V - 40` est une propriete du
+viewport et non de la feuille. Les trois pixels 576-578 sont hors de portee de **toute** valeur de
+plafond, aujourd'hui comme demain.
+
+### 6.6 Le mecanisme, maintenant qu'une famille est ouverte - `ADR-0059`
+
+Ma section 6.3 disait ce que le mecanisme doit tenir quel qu'il soit. Il est nomme, decide et garde
+par **`ADR-0059`**, ecrit dans ce lot avec sa regle executable, ses quatre morsures sur la feuille
+maison reelle et un jeu fautif commite joue en cas vert et en cas rouge
+(`UnPlafondMaisonNAffamePasLaRangeeTest`, `adapter-web`, 7 tests, 0 echec). En trois points, pour que
+cet avis se lise seul :
+
+- **le mecanisme** est une declaration maison de plafond lateral qui l'emporte sur celui de la
+  feuille tierce **a l'interieur de la bande**, sur les memes selecteurs qu'a s18 - donc le mecanisme
+  de s18 etendu vers le bas, pas un mecanisme neuf ;
+- **le garde-fou** est un **critere**, la ou `ADR-0054` n'est qu'un **detecteur de changement** : il
+  refuse tout plafond maison qui laisse a la rangee moins que la largeur mesuree necessaire. Ce qu'il
+  interdit reellement est nomme et reproduit par une morsure - recopier le `540px` de la feuille
+  tierce, mettre la table d'`ADR-0054` a jour, redevenir vert, et livrer un correctif qui ne corrige
+  rien ;
+- **la valeur du plafond n'est pas la mienne et n'est ecrite nulle part dans la regle.** Elle vit
+  dans `recreo.css` ; la regle porte trois constantes nommees d'une ligne chacune - le necessaire
+  mesure, le retranchement de la chaine, la reserve de police - et une inegalite,
+  **`P >= L + R + 40`**. La reserve vaut zero tant que personne ne l'a tranchee, et zero est ici la
+  valeur qui n'affirme rien. Le jour ou `camille-po` fixe la tolerance, une ligne de constante change
+  et rien d'autre.
+
+**Le fait qui rend ce routage possible, et il est demontre dans l'`ADR`** : la couverture est
+**binaire** en la valeur du plafond. Au-dessus de `L + 40`, toute valeur couvre les **memes** 141
+largeurs ; en dessous, aucune n'en couvre une seule. Ce que la valeur gouverne n'est pas ce qui est
+corrige, c'est **ou le centrage commence** - donc une question de forme, pour `ines-design` et
+`nadia-prof`, jamais un arbitrage d'architecture deguise.
+
+### 6.7 La famille verticale garde-t-elle un interet - oui, et pour une autre raison qu'avant
+
+**Comme route rivale, elle perd presque tout son interet.** Elle ne vaut plus que les trois pixels
+que la largeur ne peut pas atteindre - 576, 577 et 578 px. Les instruire coute une campagne de mesure
+et un `ADR`, pour 2 % de la bande. Je ne le recommande pas ; le prioriser ou non appartient a
+`camille-po`, et `nadia-prof` note la meme chose de son cote : les deux familles ne s'excluent pas et
+ne couvrent pas la meme chose.
+
+**Comme garde-fou, elle en gagne, et c'est une raison plus forte que celle que j'avais.** Le
+correctif de largeur ne vaut que par un chiffre **vertical** : le verdict remonte a 504,19 px pour un
+pli a 551 px, soit **+46,81 px** de marge. Cette marge est tenue par des declarations que **rien** ne
+compare a rien. Le rembourrage de `.zone-jeu` vaut 32 px en haut ; un lot de forme qui le porte a
+2,5 rem en consomme 8, et aucun test de ce depot ne le dit. **Mon constat de la section 6.3.2 tient
+donc, mais il ne porte plus sur une route alternative : il porte sur ce qui garde le correctif qu'on
+va livrer.**
+
+**L'`ADR` est le mien, il est du, et je ne l'ecris pas dans ce lot - le motif est ecrit dans
+`ADR-0059`, section "Ce qui reste ouvert".** En deux phrases : le perimetre honnete n'est pas la
+chaine d'ancetres du bloc de verdict mais **tout le flux qui le precede**, freres compris - un
+garde-fou limite aux ancetres resterait vert pendant qu'un rembourrage de `.enonce` pousse le verdict
+sous le pli, et ce serait une regle decorative ; et une table epinglee sur ce flux serait epinglee
+contre une mise en page que le correctif de `S19-6` est sur le point de changer, donc perimee le jour
+de son premier usage. **Declencheur date et nomme** : le premier lot qui touche un terme vertical du
+flux au-dessus du verdict - correctif de `S19-6` compris - porte cet `ADR` et sa table, avec la
+remesure de `nadia-prof` du meme commit. C'est une dette explicite, elle est la mienne, elle est
+datee du 2026-08-24.
+
+### 6.8 Mon verdict d'affectation, revise
+
+**`S19-6` est faisable, moyennant `ADR-0059`, sur 579-719 px de viewport - 141 largeurs sur 144.**
+Elle reste infaisable sur 576-578 px par une borne du viewport que rien ne leve. Ce qui reste a
+decider avant qu'un lot commence n'est plus une mesure : c'est **la valeur du plafond**
+(`ines-design` propose, `nadia-prof` tranche, sous la tolerance de `camille-po`) et **si couvrir 141
+pixels sur 144 est ce que le produit veut** (`camille-po` seule). Aucune des deux n'est de moi, et
+aucune des deux n'attend un chiffre qui n'existe pas.
+
+**Un point de methode que je me dois a moi-meme.** `nadia-prof` ecrit que le chiffre manquait parce
+que sa mesure de s18 l'avait laisse manquer, pas parce que j'avais mal cherche. C'est genereux et ce
+n'est pas tout a fait suffisant : j'avais **680 px** comme suffisante et **500 px** comme
+insuffisante dans le meme fichier, donc l'encadrement etait sous mes yeux, et j'ai conclu sur la
+borne haute de cet encadrement plutot que d'ecrire que le verdict dependait d'un intervalle de 180 px
+que personne n'avait resserre. C'est ce que la section 6.4 demandait, et c'est ce que le tableau de
+tete a efface.
+
 ---
 
 ## 7. Question routee par `camille-po` - l'ordre de fusion entre `S19-5` et le lot des quatre paquets
