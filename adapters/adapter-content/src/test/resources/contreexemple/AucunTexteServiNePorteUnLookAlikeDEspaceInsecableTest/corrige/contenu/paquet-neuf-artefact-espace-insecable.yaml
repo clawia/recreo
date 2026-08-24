@@ -1,0 +1,13 @@
+schema: 1
+id: paquet-neuf-artefact-espace-insecable
+type: question
+descripteur:
+  matiere: "Francais"
+  niveau: "CM1"
+  domaine: "Vocabulaire"
+  competence: "Jeu fautif de test, jamais livre"
+items:
+  - enonce: "Le mot « content » est un antonyme de triste."
+    bonneReponse: "mecontent"
+    distracteurs: ["joyeux", "gai"]
+    indice: "Jeu fautif de test."
