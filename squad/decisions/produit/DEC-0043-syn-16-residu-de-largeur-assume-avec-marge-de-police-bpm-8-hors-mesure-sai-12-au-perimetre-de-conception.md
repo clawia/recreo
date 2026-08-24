@@ -188,3 +188,32 @@ S'il conclut l'inverse, je veux le savoir avant que le sprint ne se cloture, pas
 - `docs/backlog/backlog.md` : `S19-6` retiree et remplacee par `S19-6a` et `S19-6b`, toutes deux
   au backlog non affecte, candidates de s20.
 - Aucun fichier de conformite, aucune ligne de matrice, aucun Done pedagogique n'est modifie.
+
+## Amendement du 2026-08-24 (meme jour, second passage) - deux chiffres du chantier de s20 sont revises par l'audit des quatre paquets neufs
+
+`nadia-prof` a audite `cm1-antonymes` et `cm1-accords-groupe-nominal` le meme jour (branche
+`s19-nadia`, commit `ddb0fc4`), et ces deux paquets touchent directement les deux chantiers que
+cette decision route a s20. Je n'y change aucun arbitrage - la piste de largeur reste retenue pour
+`SYN-16` (section 1), le residu reste assume avec marge de police exigee - mais je verse les deux
+chiffres a jour pour que personne ne les redecouvre plus tard.
+
+**Le plafond de largeur.** `cm1-antonymes` demande une largeur de rangee necessaire de **547 px**
+(item le plus charge, trois propositions), contre 539 px pour `cm1-synonymes` : c'est desormais
+`cm1-antonymes` qui porte le pire cas de largeur de la bande. La reserve de la proposition
+d'`ines-design` a 620 px de plafond, que `nadia-prof` a a trancher, passe en consequence de **41 px
+a 33 px** (620 - 40 - 547 = 33). Elle reste largement au-dessus du risque de derive de police nomme
+en section 1, et la proposition de 620 px couvre ce paquet-ci. Je ne change rien a l'exigence deja
+posee section 1 : la marge doit exister, sa valeur reste a `ines-design` et `nadia-prof`.
+
+**Le chantier vertical.** `cm1-accords-groupe-nominal` sert huit items a quatre propositions, mis
+en deux colonnes de deux par la feuille de style (`.propositions:has(.proposition:nth-child(4))`).
+Sur ces items, l'indice tombe a 619,19 px pour un pli a 551 px : **il manque 68,19 px**, et non les
+43,19 px chiffres sur les synonymes seuls (`avis-faisabilite.md`, section 6.2). **Le chantier
+vertical de s20, s'il est instruit, doit budgeter pour les items a quatre propositions et pas
+seulement pour ceux a trois** - `nadia-prof` le nomme elle-meme dans
+`FICHE-bandit-manchot-accords-groupe-nominal-cm1.md`, reserve `AGN-1`.
+
+### Impact de cet amendement
+
+- `squad/decisions/produit/DEC-0043-...md` (ce fichier) : cette section ajoutee.
+- Aucun fichier de conformite, aucune ligne de matrice, aucun perimetre gele n'est modifie.
