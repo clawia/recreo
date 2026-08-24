@@ -1,0 +1,430 @@
+{
+  "items": {
+    "Ce chien est « vieux ».": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est ce qu'on dit d'un animal qui vient de naître il y a peu de temps.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "marron",
+        "jeune",
+        "obéissant"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 495
+    },
+    "Ce coureur est très « rapide ».": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est le contraire de la vitesse : on met beaucoup de temps à arriver.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "souple",
+        "lent",
+        "discret"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 417
+    },
+    "Ce mur est très « haut ».": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est la hauteur contraire : tout près du sol.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "solide",
+        "peint",
+        "bas"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Ce pain est devenu « dur ».": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est ce qu'on ressent au toucher quand une chose s'écrase facilement.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "chaud",
+        "sucré",
+        "mou"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Ce quartier est très « silencieux » la nuit.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est ce qu'on dit d'un lieu plein de bruit.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "ancien",
+        "éclairé",
+        "bruyant"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 472
+    },
+    "Ce sac est « lourd ».": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est ce qu'on ressent quand on porte une plume plutôt qu'une pierre.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "coloré",
+        "léger",
+        "cassé"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 406
+    },
+    "Ce verre est « plein ».": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est l'état d'un verre qui ne contient plus rien.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "vide",
+        "propre",
+        "chaud"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 415
+    },
+    "Cette pièce est « claire » le matin.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est ce qui arrive quand on ferme les volets : il n'y a plus de lumière.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "silencieuse",
+        "sombre",
+        "humide"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 547
+    },
+    "Cette route est « large ».": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est ce qu'on dit d'un passage où deux voitures ne peuvent pas se croiser.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "boueuse",
+        "droite",
+        "étroite"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 477
+    },
+    "Cette soupe est encore « chaude ».": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est la sensation contraire de la chaleur, comme un glaçon.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "épaisse",
+        "salée",
+        "froide"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 433
+    },
+    "Le chat va « monter » sur le toit.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est le mouvement inverse, vers le bas.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "dormir",
+        "descendre",
+        "courir"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 504
+    },
+    "Le clown est toujours « joyeux » avec les enfants.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 553.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "C'est ce qu'on ressent quand on a envie de pleurer plutôt que de rire.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "bruyant",
+        "maladroit",
+        "triste"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 501
+    },
+    "Le film va « commencer » dans cinq minutes.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est ce qui arrive à la toute dernière minute d'un film.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "passer",
+        "finir",
+        "reprendre"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 465
+    },
+    "Le nouvel élève est « poli » avec la maîtresse.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est ce qu'on dit de quelqu'un qui ne dit ni bonjour ni merci.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "timide",
+        "impoli",
+        "curieux"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 463
+    },
+    "Léa doit « ouvrir » la fenêtre avant de partir.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est le geste qu'on fait pour empêcher l'air d'entrer.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "nettoyer",
+        "peindre",
+        "fermer"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 504
+    },
+    "Léa est arrivée « première » à la course.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est la position de celui qui arrive après tous les autres.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "dernière",
+        "fatiguée",
+        "contente"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 542
+    },
+    "Notre équipe va « gagner » le match.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "C'est ce qui arrive à l'équipe qui n'a pas marqué assez de points.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot veut dire le contraire du mot entre guillemets ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "jouer",
+        "disputer",
+        "perdre"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 461
+    }
+  },
+  "itemsADeuxRangees": [],
+  "itemsIndiceSousLePli": [
+    "Le clown est toujours « joyeux » avec les enfants."
+  ],
+  "itemsVerdictSousLePli": [],
+  "itemsVus": 17,
+  "jeu": "bandit-manchot-antonymes-cm1",
+  "lectures": 89,
+  "lecturesADefilementNonNul": 0,
+  "nombresDePropositions": [
+    3
+  ],
+  "parties": 5,
+  "seuilLargeurMaximum": 547,
+  "viewport": [
+    744,
+    551
+  ]
+}
