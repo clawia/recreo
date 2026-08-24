@@ -8,6 +8,7 @@ import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
 import org.junit.jupiter.api.Test;
 
+import static com.tngtech.archunit.core.domain.JavaClass.Predicates.simpleName;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -177,6 +178,43 @@ class LesReglesMordentTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("com.recreo.domain.mechanics.seconde.MecaniqueSecondeContreExemple")
                 .hasMessageContaining("com.recreo.domain.mechanics.premiere.MecaniquePremiereContreExemple");
+    }
+
+    /**
+     * ADR-0058, premiere forme : le moteur partage hisse dans le contrat de <b>mecanique</b> sous
+     * une methode <b>statique</b> d'interface. Le contre-exemple passe volontairement
+     * {@code leContratDeMecaniqueEstFerme} - c'est une interface - et c'est ce vert-la qui a ete
+     * mesure le 2026-08-24 avant que cette regle n'existe.
+     */
+    @Test
+    void unMoteurPartageSousFormeDeMethodeStatiqueDInterfaceEstRefuse() {
+        assertThatThrownBy(() -> DecouplageMecaniqueContenuTest.unContratNeDeclareAucunComportement
+                .check(contreExemples("com.recreo.domain.mechanic")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("NormalisationPartageeContreExemple")
+                .hasMessageContaining("replier");
+
+        DecouplageMecaniqueContenuTest.leContratDeMecaniqueEstFerme
+                .check(contreExemples("com.recreo.domain.mechanic")
+                        .that(simpleName("NormalisationPartageeContreExemple")));
+    }
+
+    /**
+     * ADR-0058, seconde forme, et sur l'autre contrat : une methode <b>par defaut</b> dans le contrat
+     * de <b>contenu</b>. Les deux formes sont verifiees separement parce qu'un predicat qui n'aurait
+     * refuse que {@code static} laisserait passer celle-ci, et reciproquement.
+     */
+    @Test
+    void unComportementParDefautDansLeContratDeContenuEstRefuse() {
+        assertThatThrownBy(() -> DecouplageMecaniqueContenuTest.unContratNeDeclareAucunComportement
+                .check(contreExemples("com.recreo.domain.content")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("EnonceNormaliseContreExemple")
+                .hasMessageContaining("enonceNormalise");
+
+        DecouplageMecaniqueContenuTest.leContratDeContenuEstFerme
+                .check(contreExemples("com.recreo.domain.content")
+                        .that(simpleName("EnonceNormaliseContreExemple")));
     }
 
     /** ADR-0005 : le nom brule. Le message doit citer le type fautif, pas seulement le nom brule. */

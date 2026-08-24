@@ -75,6 +75,16 @@ public final class AdditionsBorneesContentSource implements ContentSource {
     }
 
     /**
+     * ADR-0058 : declaree explicitement depuis que {@link ContentSource#indicesNommentLaReponse()}
+     * n'a plus de defaut. Faux, et la valeur ne vient d'aucune cle : ce paquet est combinatoire, son
+     * indice unique est recu au constructeur (DEC-0005) et ne nomme aucune somme.
+     */
+    @Override
+    public boolean indicesNommentLaReponse() {
+        return false;
+    }
+
+    /**
      * Le tirage est combinatoire, pas fini : contrairement a ListContentSource, il ne renvoie
      * jamais Optional.empty(). dejaVus n'est utilise que pour limiter les repetitions litterales
      * a l'interieur d'une meme partie, pas pour arreter le jeu.

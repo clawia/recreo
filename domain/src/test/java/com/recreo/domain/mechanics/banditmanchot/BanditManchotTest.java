@@ -70,6 +70,11 @@ class BanditManchotTest {
                 position++;
                 return Optional.of(question);
             }
+
+            @Override
+            public boolean indicesNommentLaReponse() {
+                return false;
+            }
         };
     }
 
