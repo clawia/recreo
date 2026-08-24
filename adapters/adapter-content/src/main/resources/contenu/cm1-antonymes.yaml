@@ -1,0 +1,109 @@
+schema: 1
+id: cm1-antonymes
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CM1"
+  domaine: "Vocabulaire"
+  competence: "Utiliser des synonymes et antonymes pour préciser ou nuancer un propos"
+# S19-1 (docs/backlog/backlog.md, FICHE-bandit-manchot-antonymes-cm1.md) : jeu et paquet neufs,
+# distincts de "Les synonymes" (ADR-0052, DEC-0039 section 3). Arbitrage prealable rendu par
+# nadia-prof (ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md, partie A) sur la
+# proposition de marc-dev (squad/sprints/s19-contenu-seul-et-conception-de-la-saisie/
+# proposition-marc-antonymes-cm1.md) : ACCEPTE SOUS CONDITIONS (ANT-1 a ANT-7).
+#
+# ANT-1, ANT-2 : cinq des dix-huit items proposes sont corriges ou retires ci-dessous.
+#   - item "silencieux"/"bruyant" (le seul defaut bloquant, deux reponses vraies) : le
+#     distracteur "anime" est lui-meme un antonyme acceptable de "silencieux" - remplace par
+#     "ancien", sur la reparation de nadia-prof.
+#   - item "plein"/"vide" : "d'eau" ne survit a aucune substitution ("vide d'eau" n'est pas du
+#     francais) - retire de l'enonce, sur la reparation de nadia-prof.
+#   - item "commencer"/"finir" : les distracteurs "durer" et "plaire" ne tiennent pas dans la
+#     phrase - remplaces par "reprendre" et "passer", sur la reparation de nadia-prof.
+#   - item "gagner"/"perdre" : les distracteurs "arbitrer" et "applaudir" ne tiennent pas dans la
+#     phrase - remplaces par "jouer" et "disputer", sur la reparation de nadia-prof.
+#   - item "jour"/"nuit" : le determinant ("le") ne suit pas le genre de la bonne reponse
+#     ("nuit") - retire (ANT-2, ANT-4 : dix-sept items restent, plancher de seize tenu).
+#
+# ANT-1 : sur chaque item restant, la bonne reponse produit, substituee au mot cible, une phrase
+# francaise correcte qui dit le contraire ; aucun distracteur, substitue de la meme facon, ne
+# produit une phrase qui dit aussi le contraire. Verifie item par item, jugement pedagogique de
+# nadia-prof (non automatisable, comme SYN-2/SYN-3 pour les synonymes).
+#
+# ANT-3 : aucune erreur de fait, verifiee par nadia-prof sur les dix-huit couples proposes.
+#
+# ANT-5 : mot cible entre guillemets francais, espaces insecables (U+00A0), comme SYN-1/SYN-6/SYN-9.
+#
+# ANT-6 : au plus un antonyme forme par prefixe dans le paquet ("poli"/"impoli", un seul item).
+#
+# ANT-7 : aucun item ne se resout par un accord de genre - les trois propositions de chaque item
+# s'accordent de la meme facon avec le mot cible.
+items:
+  - enonce: "Cette soupe est encore « chaude »."
+    bonneReponse: "froide"
+    distracteurs: ["salée", "épaisse"]
+    indice: "C'est la sensation contraire de la chaleur, comme un glaçon."
+  - enonce: "Ce coureur est très « rapide »."
+    bonneReponse: "lent"
+    distracteurs: ["souple", "discret"]
+    indice: "C'est le contraire de la vitesse : on met beaucoup de temps à arriver."
+  - enonce: "Cette pièce est « claire » le matin."
+    bonneReponse: "sombre"
+    distracteurs: ["humide", "silencieuse"]
+    indice: "C'est ce qui arrive quand on ferme les volets : il n'y a plus de lumière."
+  - enonce: "Ce sac est « lourd »."
+    bonneReponse: "léger"
+    distracteurs: ["cassé", "coloré"]
+    indice: "C'est ce qu'on ressent quand on porte une plume plutôt qu'une pierre."
+  - enonce: "Ce verre est « plein »."
+    bonneReponse: "vide"
+    distracteurs: ["propre", "chaud"]
+    indice: "C'est l'état d'un verre qui ne contient plus rien."
+  - enonce: "Léa doit « ouvrir » la fenêtre avant de partir."
+    bonneReponse: "fermer"
+    distracteurs: ["peindre", "nettoyer"]
+    indice: "C'est le geste qu'on fait pour empêcher l'air d'entrer."
+  - enonce: "Le chat va « monter » sur le toit."
+    bonneReponse: "descendre"
+    distracteurs: ["courir", "dormir"]
+    indice: "C'est le mouvement inverse, vers le bas."
+  - enonce: "Le film va « commencer » dans cinq minutes."
+    bonneReponse: "finir"
+    distracteurs: ["reprendre", "passer"]
+    indice: "C'est ce qui arrive à la toute dernière minute d'un film."
+  - enonce: "Notre équipe va « gagner » le match."
+    bonneReponse: "perdre"
+    distracteurs: ["jouer", "disputer"]
+    indice: "C'est ce qui arrive à l'équipe qui n'a pas marqué assez de points."
+  - enonce: "Ce mur est très « haut »."
+    bonneReponse: "bas"
+    distracteurs: ["solide", "peint"]
+    indice: "C'est la hauteur contraire : tout près du sol."
+  - enonce: "Ce pain est devenu « dur »."
+    bonneReponse: "mou"
+    distracteurs: ["sucré", "chaud"]
+    indice: "C'est ce qu'on ressent au toucher quand une chose s'écrase facilement."
+  - enonce: "Cette route est « large »."
+    bonneReponse: "étroite"
+    distracteurs: ["droite", "boueuse"]
+    indice: "C'est ce qu'on dit d'un passage où deux voitures ne peuvent pas se croiser."
+  - enonce: "Léa est arrivée « première » à la course."
+    bonneReponse: "dernière"
+    distracteurs: ["fatiguée", "contente"]
+    indice: "C'est la position de celui qui arrive après tous les autres."
+  - enonce: "Ce quartier est très « silencieux » la nuit."
+    bonneReponse: "bruyant"
+    distracteurs: ["éclairé", "ancien"]
+    indice: "C'est ce qu'on dit d'un lieu plein de bruit."
+  - enonce: "Le clown est toujours « joyeux » avec les enfants."
+    bonneReponse: "triste"
+    distracteurs: ["bruyant", "maladroit"]
+    indice: "C'est ce qu'on ressent quand on a envie de pleurer plutôt que de rire."
+  - enonce: "Ce chien est « vieux »."
+    bonneReponse: "jeune"
+    distracteurs: ["obéissant", "marron"]
+    indice: "C'est ce qu'on dit d'un animal qui vient de naître il y a peu de temps."
+  - enonce: "Le nouvel élève est « poli » avec la maîtresse."
+    bonneReponse: "impoli"
+    distracteurs: ["timide", "curieux"]
+    indice: "C'est ce qu'on dit de quelqu'un qui ne dit ni bonjour ni merci."

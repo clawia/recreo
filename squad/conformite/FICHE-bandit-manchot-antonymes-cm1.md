@@ -2,7 +2,10 @@
 
 - **Mecanique** : bandit manchot (mecanique generique, partagee avec les autres jeux du catalogue).
 - **Contenu(s)** : `adapters/adapter-content/src/main/resources/contenu/cm1-antonymes.yaml`
-  (a creer, `type: question`, au moins 16 items), story `S19-1` (`docs/backlog/backlog.md`).
+  livre, `type: question`, 17 items (dix-huit proposes, un retire - detail dans le bullet
+  "Arbitrage prealable de nadia-prof RENDU" ci-dessous), story `S19-1` (`docs/backlog/backlog.md`). Entree de catalogue
+  `bandit-manchot-antonymes-cm1`, titre "Les antonymes", consigne "Quel mot veut dire le contraire
+  du mot entre guillemets ?", 10 manches. Tests : `PaquetCm1AntonymesTest.java`.
   **Aucune matiere premiere reutilisable** : `contenu-repris/associer/cm1-synonymes.yml` (12 paires
   mot/synonyme) ne contient aucun antonyme, verifie ligne par ligne et confirme par `DEC-0039`
   ("verifie par recherche du mot 'antonyme' et de ses derives dans `contenu-repris/` : aucun
@@ -13,12 +16,27 @@
   pour un item d'antonyme. `nadia-prof` qualifie elle-meme les antonymes d'"autre operation", pas
   d'un prolongement du meme geste (`DEC-0039`, section 3). Detail complet du raisonnement :
   `docs/backlog/backlog.md`, story `S19-1`.
-- **Statut global** : **ouverte, aucun increment livre a ce jour.** Rien n'a encore ete joue.
-- **Arbitrage prealable de `nadia-prof` demande et non encore rendu** : condition posee par
-  elle-meme des s17 - "la reponse rendue pour les synonymes ne vaut pas automatiquement pour
-  l'operation inverse" (`S17-5`, `docs/backlog/backlog.md`). Les criteres ci-dessous sont ceux de
-  `camille-po` et n'ont pas valeur de jugement pedagogique tant que `nadia-prof` ne les a pas
-  confirmes ou corriges.
+- **Statut global** : **increment livre, Done pedagogique non encore prononce.** L'arbitrage
+  prealable de `nadia-prof` (voir ci-dessous) a accepte la proposition sous conditions ; les
+  corrections ANT-2 ont ete appliquees dans le paquet livre. `mvn verify` vert sur le reacteur
+  complet (methode et compte dans le compte rendu de `marc-dev`, non recopies ici). Rien n'a encore
+  ete joue par `nadia-prof` sur cet increment : le Done pedagogique reste entier.
+- **Arbitrage prealable de `nadia-prof` RENDU** : `ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-
+  nature-du-mot-cp.md`, partie A, 2026-08-24 - **ACCEPTE SOUS CONDITIONS** (`ANT-1` a `ANT-7`).
+  Cinq des dix-huit items proposes ont ete repris ou retires (`ANT-2`) :
+  - item "silencieux"/"bruyant" (defaut bloquant, deux reponses vraies : le distracteur "anime"
+    etait lui-meme un antonyme acceptable) - distracteur remplace par "ancien" ;
+  - item "plein"/"vide" (la substitution ne produisait pas du francais avec "d'eau") - "d'eau"
+    retire de l'enonce ;
+  - item "commencer"/"finir" (distracteurs "durer"/"plaire" ne tenaient pas dans la phrase) -
+    remplaces par "reprendre"/"passer" ;
+  - item "gagner"/"perdre" (memes motif) - distracteurs "arbitrer"/"applaudir" remplaces par
+    "jouer"/"disputer" ;
+  - item "jour"/"nuit" (le determinant ne suivait pas le genre de la bonne reponse) - **retire**,
+    dix-sept items restants, plancher de seize tenu (`ANT-4`).
+  Les treize autres items sont livres sans changement, deja juges "justes" par `nadia-prof` dans son
+  arbitrage. Les conditions `ANT-1` (test de substitution) et `ANT-3` (aucune erreur de fait)
+  restent un jugement de sens que seul `nadia-prof` porte, a l'audit de l'increment livre.
 - **Arbitrage prealable de mecanique en vigueur pour tout le catalogue** (`squad/conformite/
   FICHE-bandit-manchot-additions-cp.md`, conditions M1 a M13) et **forme deja validee pour un jeu
   voisin** (`FICHE-bandit-manchot-synonymes-cm1.md`, conditions SYN-1 a SYN-9, reprises par

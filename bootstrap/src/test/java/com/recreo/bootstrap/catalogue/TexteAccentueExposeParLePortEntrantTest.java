@@ -95,6 +95,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S17-3 (ADR-0052) : entree neuve, consigne generique porteuse de la clause
             // invariante retiree de l'enonce.
             "bandit-manchot-synonymes-cm1",
+            // S19-1 : entree neuve, distincte de "Les synonymes" (ADR-0052, DEC-0039).
+            "bandit-manchot-antonymes-cm1",
             // S17-4 (DEC-0024, DEC-0041) : entree neuve, restitution de "Le bon petit mot"
             // (paquet deja juge bon, BPM-1 remesuree par nadia-prof).
             "bandit-manchot-homophones-cm1",
@@ -118,6 +120,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les grands nombres",
             // S17-3 : titre neuf.
             "Les synonymes",
+            // S19-1 : titre neuf.
+            "Les antonymes",
             // S17-4 : titre neuf.
             "Le bon petit mot",
             // S19-2 : titre neuf.
@@ -139,6 +143,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S17-3 (ADR-0052) : consigne devenue porteuse, generique, designe le mot
             // cible par sa marque exacte (SYN-6).
             "Quel mot peut remplacer le mot entre guillemets sans changer le sens ?",
+            // S19-1 : consigne neuve, meme marque du mot cible (guillemets), verbe distinct
+            // ("contraire" plutot que "remplacer... sans changer le sens").
+            "Quel mot veut dire le contraire du mot entre guillemets ?",
             // S17-4 : consigne neuve.
             "Quel mot complète la phrase ?",
             // S19-3 : consigne neuve.
