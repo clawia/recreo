@@ -96,3 +96,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-accords-groupe-nominal
     nombreDeManches: 10
+  - id: bandit-manchot-nature-mot-cp
+    titre: "Nom ou verbe ?"
+    consigne: "Le mot entre guillemets est-il un nom ou un verbe ?"
+    mecanique: bandit-manchot
+    paquet: cp-nature-mot
+    nombreDeManches: 10

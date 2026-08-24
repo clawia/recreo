@@ -10,16 +10,26 @@
   et perimetre) changent a la fois ; ce paquet repasse integralement devant `nadia-prof` comme un
   contenu neuf (`contenu-repris/README.md`).
 - **Statut global** : **ouverte, aucun increment livre a ce jour.** Rien n'a encore ete joue.
-- **Arbitrage prealable de `nadia-prof` demande et non encore rendu** : cette competence n'a jamais
-  ete instruite a ce niveau de detail pour le CP (premiere ligne de grammaire CP de ce produit). Les
-  criteres ci-dessous, notamment la longueur et le vocabulaire des phrases, sont ceux de
-  `camille-po` et n'ont pas valeur de jugement pedagogique tant que `nadia-prof` ne les a pas
-  confirmes ou corriges.
+- **Arbitrage prealable de `nadia-prof` rendu le 2026-08-24**
+  (`squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md`, partie B) : **la
+  forme du jeu est ACCEPTEE SOUS CONDITIONS ; les seize phrases du premier brouillon
+  (`squad/sprints/s19-contenu-seul-et-conception-de-la-saisie/proposition-s19-4-lea-dev.md`) sont
+  REFUSEES en l'etat**, motif mesure et non suppose - les huit noms proposes etaient tous precedes
+  d'un determinant, aucun des huit verbes ne l'etait, et la seule regle "petit mot juste avant" donnait
+  seize bonnes reponses sur seize sans lire aucun mot cible (`NAT-1`). Conditions bloquantes `NAT-1` a
+  `NAT-5`, non bloquantes `NAT-6` a `NAT-8`, detaillees dans le fichier d'arbitrage. Le paquet servi
+  sous `adapters/adapter-content/src/main/resources/contenu/cp-nature-mot.yaml` est la reecriture
+  demandee ; sa conformite aux conditions reste a auditer par `nadia-prof` sur l'increment livre (elle
+  n'a valide aucun contenu par ce seul depot de fichier).
 - **Arbitrage prealable de mecanique en vigueur pour tout le catalogue** (`squad/conformite/
   FICHE-bandit-manchot-additions-cp.md`, conditions M1 a M13) et **forme deja validee pour un mot
   marque en contexte de phrase** (`FICHE-bandit-manchot-synonymes-cm1.md`, conditions SYN-1, SYN-6,
   SYN-9, reprises par analogie ci-dessous pour marquer le mot cible).
-- **Derniere mise a jour** : 2026-08-24 (ouverture par `camille-po`, `DEC-0042`)
+- **NAT-5 (renfort visuel du mot cible), non encore instruit** : les guillemets francais seuls ne
+  suffisent pas a un enfant de CP qui ne les a pas appris (`nadia-prof`, partie B.6). Le renfort est a
+  proposer par `ines-design` et a trancher par `nadia-prof`, jamais par la seule couleur ; ce paquet
+  garde pour l'instant les guillemets francais a espaces insecables, identiques a `cm1-synonymes`.
+- **Derniere mise a jour** : 2026-08-24 (`lea-dev`, depot du paquet reecrit selon `NAT-1` a `NAT-8`)
 
 ## Competences visees
 

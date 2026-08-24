@@ -1,0 +1,87 @@
+schema: 1
+id: cp-nature-mot
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CP"
+  domaine: "Orthographe et grammaire"
+  competence: "Distinguer les principaux types de mots (nom, verbe) dans une phrase très simple"
+# S19-4 (DEC-0042). Arbitrage prealable de nadia-prof rendu le 2026-08-24
+# (squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md, partie B) : la
+# forme (seize phrases, huit noms, huit verbes, mot cible entre guillemets francais avec espaces
+# insecables) est acceptee sous conditions NAT-1 a NAT-8. Le premier brouillon (route dans
+# squad/sprints/s19-.../proposition-s19-4-lea-dev.md) a ete refuse pour un seul motif mesure :
+# les huit noms etaient tous precedes d'un determinant et aucun des huit verbes ne l'etait, ce qui
+# resolvait les seize items sans la competence (NAT-1). Ce paquet-ci melange determinant et
+# adjectif (ou aucun mot) devant le nom, et nom propre ou pronom devant le verbe, pour qu'aucun
+# signal de forme visible sans lire le mot ne separe les deux natures.
+items:
+  # Noms (8 items). Determinant immediatement avant la cible : items 1, 3, 7, 8 (4/8).
+  # Rien ou un adjectif immediatement avant la cible (NAT-1) : items 2, 4, 5, 6 (4/8).
+  # Indices semantiques uniquement, jamais le determinant deja imprime dans la phrase (NAT-3).
+  - enonce: "Le « chat » dort sur le tapis."
+    bonneReponse: "nom"
+    distracteurs: ["verbe"]
+    indice: "Ce mot désigne un animal."
+  - enonce: "Léa porte un joli « sac »."
+    bonneReponse: "nom"
+    distracteurs: ["verbe"]
+    indice: "Ce mot désigne un objet."
+  - enonce: "Le « soleil » brille dans le ciel."
+    bonneReponse: "nom"
+    distracteurs: ["verbe"]
+    indice: "Ce mot désigne une chose qu'on voit dans le ciel."
+  - enonce: "Tom mange un bon « gâteau »."
+    bonneReponse: "nom"
+    distracteurs: ["verbe"]
+    indice: "Ce mot désigne une chose qu'on peut manger."
+  - enonce: "« Médor » aboie très fort."
+    bonneReponse: "nom"
+    distracteurs: ["verbe"]
+    indice: "Ce mot désigne un animal."
+  - enonce: "Les petits « oiseaux » chantent dans l'arbre."
+    bonneReponse: "nom"
+    distracteurs: ["verbe"]
+    indice: "Ce mot désigne des animaux."
+  - enonce: "Papa lave la « voiture »."
+    bonneReponse: "nom"
+    distracteurs: ["verbe"]
+    indice: "Ce mot désigne un objet qui roule."
+  - enonce: "La « maîtresse » écrit au tableau."
+    bonneReponse: "nom"
+    distracteurs: ["verbe"]
+    indice: "Ce mot désigne une personne."
+  # Verbes (8 items). Nom ou nom propre immediatement avant la cible : items 9, 10, 12, 13, 14 (5/8).
+  # Pronom sujet immediatement avant la cible (NAT-1) : items 11, 15, 16 (3/8).
+  - enonce: "Le chien « court » dans le jardin."
+    bonneReponse: "verbe"
+    distracteurs: ["nom"]
+    indice: "Ce mot dit ce que fait le chien."
+  - enonce: "Le poisson « nage » dans l'eau."
+    bonneReponse: "verbe"
+    distracteurs: ["nom"]
+    indice: "Ce mot dit ce que fait le poisson."
+  - enonce: "Elle « range » sa chambre."
+    bonneReponse: "verbe"
+    distracteurs: ["nom"]
+    indice: "Ce mot dit ce qu'elle fait."
+  - enonce: "Les enfants « chantent » une chanson."
+    bonneReponse: "verbe"
+    distracteurs: ["nom"]
+    indice: "Ce mot dit ce que font les enfants."
+  - enonce: "Léa « arrose » les fleurs."
+    bonneReponse: "verbe"
+    distracteurs: ["nom"]
+    indice: "Ce mot dit ce que fait Léa."
+  - enonce: "Tom « saute » dans la flaque."
+    bonneReponse: "verbe"
+    distracteurs: ["nom"]
+    indice: "Ce mot dit ce que fait Tom."
+  - enonce: "Il « dort » bien fort."
+    bonneReponse: "verbe"
+    distracteurs: ["nom"]
+    indice: "Ce mot dit ce qu'il fait."
+  - enonce: "Tu « dessines » un beau soleil."
+    bonneReponse: "verbe"
+    distracteurs: ["nom"]
+    indice: "Ce mot dit ce que tu fais."
