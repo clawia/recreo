@@ -2,7 +2,7 @@
 
 - **Mecanique** : bandit manchot (mecanique generique, partagee avec les autres jeux du catalogue).
 - **Contenu(s)** : `adapters/adapter-content/src/main/resources/contenu/
-  cm1-accord-sujet-verbe.yaml` (a creer, `type: question`, au moins 20 items), story `S19-3`
+  cm1-accord-sujet-verbe.yaml` livre, `type: question`, 21 items, story `S19-3`
   (`docs/backlog/backlog.md`). **Aucune matiere premiere reutilisable** :
   `contenu-repris/textes-trous/cm1-conjugaison.yml` (6 items) teste le choix de la bonne personne
   conjuguee au present, avec un sujet pronominal immediatement devant le verbe - c'est la matiere
@@ -11,10 +11,31 @@
 - **Distinction a garder de la ligne conjugaison deja couverte** : chaque item doit exiger de
   reperer le sujet avant de choisir la forme - jamais un sujet pronominal isole colle au verbe, qui
   ne ferait que redemander la conjugaison deja testee ailleurs.
-- **Statut global** : **ouverte, aucun increment livre a ce jour.** Rien n'a encore ete joue.
-- **Aucun arbitrage prealable de `nadia-prof` demande** : cette competence est directement servable
-  par le schema `type: question` existant, sur le meme patron que la conjugaison deja couverte. Les
-  criteres ci-dessous sont ceux de `camille-po`, verifies a l'audit.
+- **Statut global** : **increment corrige livre, Done pedagogique non encore reprononce.**
+  Un premier increment a ete `REFUSE` par `nadia-prof` (verdict du 2026-08-24, branche `s19-nadia`,
+  commit `ddb0fc4` - voir ce fichier sur cette branche pour le verdict complet et non recopie ici).
+  Quatre motifs corriges dans ce lot, aucun accord ni aucune structure retouches :
+  - **Motif 1 (decisif, largeur)** : les deux items dont le verdict passait sous le pli a
+    744x551 px (verbes longs "organiseront"/"construiront") portent desormais des verbes plus
+    courts de meme temps et meme sujet ("gagneront", "batiront"). Mesure par
+    `squad/outils/nadia-prof/auditer-paquet.py` sur le jar reconstruit : largeur necessaire
+    maximale du paquet **647 px**, rangee offerte 680 px, `itemsADeuxRangees` et
+    `itemsVerdictSousLePli` tous deux vides sur les 21 items.
+  - **Motif 2** : la clause finale de chaque indice qui nommait la reponse en toutes lettres est
+    retiree sur les 21 items - la methode (sujet, nombre, personne, terminaison ou irregularite)
+    reste, le resultat n'y est plus.
+  - **Motif 3** : les quinze distracteurs en `-ons`/`-ions` sous un sujet a la troisieme personne
+    (implausibles) sont remplaces par une erreur reellement plausible - homophone de conjugaison
+    ou confusion de temps.
+  - **Motif 4** : les deux items portant "deferler" et "moudre" (vocabulaire au-dessus du CM1,
+    et pour le premier un enonce qui se contredisait) sont remplaces par deux items neufs, meme
+    structure de sujet et meme temps.
+  - **Motif 5 (non bloquant)** : les citations de mots et de terminaisons dans les indices sont
+    passees des apostrophes droites aux guillemets francais avec espaces insecables.
+- **Aucun arbitrage prealable de `nadia-prof` demande a l'ouverture** : cette competence est
+  directement servable par le schema `type: question` existant, sur le meme patron que la
+  conjugaison deja couverte. Les criteres ci-dessous sont ceux de `camille-po`, verifies a
+  l'audit ; c'est a cet audit que les quatre motifs ci-dessus ont ete trouves.
 - **Arbitrage prealable de mecanique en vigueur pour tout le catalogue** (`squad/conformite/
   FICHE-bandit-manchot-additions-cp.md`, conditions M1 a M13). Rien n'est mesure ici a l'ouverture
   de la fiche, faute d'increment a mesurer.

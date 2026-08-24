@@ -64,7 +64,7 @@ class PaquetCm1AccordSujetVerbeTest {
             Map.entry("Les élèves de la classe, après la récréation, ___ leur cahier de mathématiques.", "present"),
             Map.entry("Toi et ton frère ___ la vaisselle après le repas.", "present"),
             Map.entry("Le vieux chêne du parc ___ de l'ombre sur tout le banc.", "present"),
-            Map.entry("Les vagues de la mer, malgré le vent, ___ doucement sur le sable.", "present"),
+            Map.entry("Les feuilles des arbres, malgré le vent, ___ encore accrochées aux branches.", "present"),
             Map.entry("Demain, les enfants du quartier ___ un grand tournoi de football.", "futur"),
             Map.entry("La semaine prochaine, mon cousin et moi ___ à la piscine tous les jours.", "futur"),
             Map.entry("Bientôt, les hirondelles, comme chaque année, ___ vers les pays chauds.", "futur"),
@@ -76,7 +76,7 @@ class PaquetCm1AccordSujetVerbeTest {
             Map.entry("Quand j'étais petit, mon frère et moi ___ ensemble dans la même chambre.", "imparfait"),
             Map.entry("Chaque hiver, les habitants de la vallée ___ beaucoup de neige.", "imparfait"),
             Map.entry("Avant les vacances, toi et ta sœur ___ tous les soirs à la bibliothèque.", "imparfait"),
-            Map.entry("Il y a longtemps, le vieux moulin de la rivière ___ encore le blé du village.", "imparfait"),
+            Map.entry("Il y a longtemps, le vieux tracteur du fermier ___ encore dans le champ.", "imparfait"),
             Map.entry("Autrefois, les enfants, même les jours de pluie, ___ dehors après l'école.", "imparfait"),
             Map.entry("Quand j'étais au CP, mes amis et moi ___ toujours les premiers dans la cour.", "imparfait"));
 
