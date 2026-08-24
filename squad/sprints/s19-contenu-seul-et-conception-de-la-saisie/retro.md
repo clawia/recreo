@@ -76,6 +76,19 @@ signale sans trancher lui-meme. Tranche dans `review.md` (obstacle 10) : tout do
 qui propose des phrases candidates a devenir du contenu enfant les redige deja integralement
 accentuees, meme si le document reste par ailleurs en registre developpeur.
 
+**Un quatrieme fait de gouvernance, trouve seulement apres cette cloture, a la meme
+adresse que les trois premiers.** `RAPPORT.md` et `review.md` ont ecrit "Technique (CI) :
+vert" en s'appuyant sur des executions locales de `mvn verify` (les miennes et celles de
+`yanis-qa` et `theo-archi`), alors que `round-two` n'etait pas encore poussee et que la CI
+n'avait donc rien pu juger - `squad/README.md` section 7 designe pourtant la CI, pas un
+agent, comme le juge du Done technique. Un sprint entier a donc ecrit un Done technique que
+l'organe qui le juge n'a jamais vu, et cela n'a ete constate qu'a une verification de
+cloture posterieure, pas pendant la review elle-meme. Meme famille que les trois faits
+ci-dessus : un geste que je n'ai pas fait (pousser avant d'ecrire un verdict de CI) plutot
+qu'une erreur d'un agent. Corrige par une note datee dans `RAPPORT.md` et `review.md`
+plutot que par une reecriture des phrases d'origine, qui disaient vrai de ce qui avait ete
+mesure et faux de ce qui l'avait juge.
+
 ## Amendements a `squad/README.md`
 
 1. **Une phrase candidate a devenir du contenu servi a l'enfant est redigee integralement

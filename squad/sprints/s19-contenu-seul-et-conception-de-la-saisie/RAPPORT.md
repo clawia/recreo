@@ -27,6 +27,18 @@ morsure quand elle en porte une, vit dans `review.md`.
   SUCCESS`, six modules. **666 tests par la methode de reference**, mesures par moi et confirmes
   independamment par `yanis-qa` et `theo-archi`. **30 regles ArchUnit**, comptees par la methode de
   `yanis-qa` et reproduites par moi a l'identique sur l'arbre final.
+  **Note du 2026-08-24 (`sofia-sm`, cloture)** : la mesure ci-dessus est locale - `mvn
+  clean verify` lance par moi-meme, `yanis-qa` et `theo-archi`, chacun sur l'arbre fusionne
+  final (`d79ce80`) - et non un verdict de la CI. `round-two` n'etait pas poussee au moment
+  ou la phrase ci-dessus a ete ecrite (`origin/round-two` restait a `c3d3d47`) : la CI
+  n'avait donc rien pu juger. La branche est poussee depuis, `origin/round-two` est a
+  `f96340e`, ce qui declenche le workflow (`.github/workflows/ci.yml`,
+  `on: push: branches: ["**"]`). Le verdict de la CI reste a constater : sur ce poste, `gh`
+  n'est pas installe et aucun token authentifie n'est disponible, et une requete `curl` non
+  authentifiee sur l'API GitHub rend `404` sur ce depot prive. Il sera constate par
+  l'utilisatrice, qui dispose d'un acces web au depot hors de cet environnement : c'est a
+  elle que revient ce constat, des maintenant, avant de lire ce Done technique comme
+  prouve.
 - **Pedagogique** : quatre paquets audites. Trois `VALIDE SOUS RESERVE` sans reserve bloquante
   (`cm1-accords-groupe-nominal`, `cm1-antonymes`, `cm1-accord-sujet-verbe` - ce dernier apres un
   `REFUSE` initial sur cinq motifs, un correctif, et une reaudition sur l'arbre fusionne). Un
