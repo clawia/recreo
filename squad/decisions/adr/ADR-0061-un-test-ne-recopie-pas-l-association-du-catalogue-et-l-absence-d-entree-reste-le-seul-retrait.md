@@ -157,11 +157,16 @@ static void verifierQuAucuneClasseNeRecopieUneAssociation(Collection<Class<?>> c
 }
 ```
 
-**Ce n'est pas une regle ArchUnit**, et le motif est le meme qu'`ADR-0059` et `ADR-0060` : l'objet
-juge est la **valeur** d'une constante compilee, qu'ArchUnit n'expose pas dans son modele. Le
-mecanisme automatique qui garde la decision est un balayage par reflexion des classes compilees du
-module, execute par la meme commande de porte technique que tout le reste (`mvn -B verify`). **Ce
-lot n'ajoute aucune `ArchRule` ; le compte de regles ArchUnit du depot est donc inchange par lui.**
+**Ce n'est pas une regle ArchUnit** : ArchUnit modelise des types Java et leurs relations, et
+l'objet juge ici est la **valeur** d'une constante compilee, qu'il n'expose pas dans son modele.
+C'est un motif **distinct** de celui d'`ADR-0059` et d'`ADR-0060`, ou l'objet n'est pas un type Java
+du tout - une declaration de feuille de style pour le premier, une chaine produite par le chargement
+d'une ressource pour le second. Seul le principe est commun aux trois, et l'ecrire "meme motif"
+serait recopier une justification au lieu de donner la mienne. Le mecanisme automatique qui garde la
+decision est un balayage par reflexion des classes compilees du module, execute par la meme commande
+de porte technique que tout le reste (`mvn -B verify`). **Ce lot n'ajoute aucune `ArchRule` ; le
+compte de regles ArchUnit du depot est donc inchange par lui** - methode : zero occurrence de
+`ArchRule`, `@ArchTest` ou `com.tngtech` dans le fichier livre.
 
 **Les deux populations se derivent, aucune ne s'enumere** (`ADR-0013` obligation 1) : les
 associations viennent de `catalogue.yaml` lui-meme, les objets examines sont toutes les classes
