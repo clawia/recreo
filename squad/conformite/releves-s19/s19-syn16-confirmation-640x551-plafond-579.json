@@ -1,0 +1,143 @@
+{
+  "items": {
+    "Après la course, Tom est « fatigué ».": {
+      "auDessusDuPli": true,
+      "basDuSignal": 481.19,
+      "basDuVerdict": 456.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    },
+    "Ce désert de sable est très « grand ».": {
+      "auDessusDuPli": true,
+      "basDuSignal": 481.19,
+      "basDuVerdict": 456.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    },
+    "Ce jeu de société est « facile » pour les débutants.": {
+      "auDessusDuPli": true,
+      "basDuSignal": 529.19,
+      "basDuVerdict": 504.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    },
+    "Ce moteur de camion est très « fort ».": {
+      "auDessusDuPli": true,
+      "basDuSignal": 529.19,
+      "basDuVerdict": 504.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    },
+    "Ce paysage de montagne est « beau ».": {
+      "auDessusDuPli": true,
+      "basDuSignal": 529.19,
+      "basDuVerdict": 504.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    },
+    "Cet exercice de mathématiques est « difficile ».": {
+      "auDessusDuPli": true,
+      "basDuSignal": 529.19,
+      "basDuVerdict": 504.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    },
+    "Cette fourmi est « petite ».": {
+      "auDessusDuPli": true,
+      "basDuSignal": 481.19,
+      "basDuVerdict": 456.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    },
+    "Dans les fables, le renard est « malin ».": {
+      "auDessusDuPli": true,
+      "basDuSignal": 529.19,
+      "basDuVerdict": 504.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    },
+    "La maman parle à son bébé d'une voix « douce ».": {
+      "auDessusDuPli": true,
+      "basDuSignal": 529.19,
+      "basDuVerdict": 504.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    },
+    "La musique du carnaval est « gaie ».": {
+      "auDessusDuPli": true,
+      "basDuSignal": 481.19,
+      "basDuVerdict": 456.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    },
+    "Le bureau de Léa est « propre ».": {
+      "auDessusDuPli": true,
+      "basDuSignal": 481.19,
+      "basDuVerdict": 456.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    },
+    "Le nouveau voisin est « gentil » avec tout le monde.": {
+      "auDessusDuPli": true,
+      "basDuSignal": 529.19,
+      "basDuVerdict": 504.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    },
+    "Le petit garçon est « triste » depuis le départ de son ami.": {
+      "auDessusDuPli": true,
+      "basDuSignal": 529.19,
+      "basDuVerdict": 504.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    },
+    "Le pompier reste « courageux » face au danger.": {
+      "auDessusDuPli": true,
+      "basDuSignal": 529.19,
+      "basDuVerdict": 504.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    },
+    "Le village est très « calme » le dimanche matin.": {
+      "auDessusDuPli": true,
+      "basDuSignal": 529.19,
+      "basDuVerdict": 504.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    },
+    "Léa est « contente » de son cadeau.": {
+      "auDessusDuPli": true,
+      "basDuSignal": 481.19,
+      "basDuVerdict": 456.19,
+      "defilement": 0,
+      "largeurRangee": 539,
+      "rangees": 1
+    }
+  },
+  "itemsADeuxRangees": [],
+  "itemsSousLePli": [],
+  "itemsVus": 16,
+  "lecturesADefilementNonNul": 0,
+  "pireBasDuVerdict": 504.19,
+  "plafondZoneInjecte": 579,
+  "rangeeAttendue": 539,
+  "viewport": [
+    640,
+    551
+  ]
+}
