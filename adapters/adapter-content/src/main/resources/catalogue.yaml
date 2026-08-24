@@ -24,6 +24,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-synonymes
     nombreDeManches: 10
+  - id: bandit-manchot-antonymes-cm1
+    titre: "Les antonymes"
+    consigne: "Quel mot veut dire le contraire du mot entre guillemets ?"
+    mecanique: bandit-manchot
+    paquet: cm1-antonymes
+    nombreDeManches: 10
   - id: bandit-manchot-accord-sujet-verbe-cm1
     titre: "L'accord du verbe"
     consigne: "Quelle est la bonne forme du verbe ?"
