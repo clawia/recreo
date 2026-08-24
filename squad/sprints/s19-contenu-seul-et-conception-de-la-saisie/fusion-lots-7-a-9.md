@@ -65,7 +65,7 @@ contre `cm1-synonymes.yaml`. `lea-dev` a verifie ses propres espaces insecables 
 Verification independante faite sur l'arbre fusionne : `cm1-antonymes.yaml` porte 34 occurrences
 de l'espace insecable reel (U+00A0), `cp-nature-mot.yaml` en porte 32, du meme ordre que les 32 de
 `cm1-synonymes.yaml` pris comme reference ; aucun motif de l'artefact ASCII litteral trouve dans
-les deux fichiers neufs. **Je route a `theo-archi`** : deux agents ont converge indépendamment
+les deux fichiers neufs. **Je route a `theo-archi`** : deux agents ont converge independamment
 vers la meme methode de detection (comparaison d'octets/code points) pour un defaut qu'aucune
 porte existante ne voit ; c'est le signal d'un garde-fou manquant, pas seulement une vigilance
 individuelle a saluer. Matiere de retro dans tous les cas.

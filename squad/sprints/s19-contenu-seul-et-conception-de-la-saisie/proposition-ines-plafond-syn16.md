@@ -175,7 +175,7 @@ arbitre** :
 chiffre qui depasse 43,19 px sur le papier, mais qui suppose de vider entierement le rembourrage du
 haut de **tous** les ecrans de l'application (accueil compris) et de supprimer toute respiration
 autour du score. Je ne le recommande pas : le gain ne sert que les trois largeurs 576-578 px (les
-mêmes que la famille horizontale echoue deja a couvrir), pour un cout qui change l'aspect de
+memes que la famille horizontale echoue deja a couvrir), pour un cout qui change l'aspect de
 **chaque** ecran de l'application, la ou la famille horizontale ne change que celui des jeux dans
 une bande de largeur precise. Le rapport gain/etendue est a l'envers de celui de la section 3.
 
@@ -190,7 +190,7 @@ sliver de trois pixels de viewport. Je recommande de ne pas ouvrir ce chantier.
 Le brief presentait le choix comme "579 px strict couvre le plus de largeurs [...] un plafond avec
 reserve [...] coute de la largeur utile a chaque viewport de la bande". Mesure a l'appui (section
 1), ce n'est pas tout a fait ce qui se passe : le nombre de largeurs couvertes (141/144) **ne
-depend pas** de la valeur du plafond choisie au-dessus de 579 px - c'est une proprieté du seul
+depend pas** de la valeur du plafond choisie au-dessus de 579 px - c'est une propriete du seul
 point bas de la bande (579 px), invariante quel que soit `P`. Ce que la valeur du plafond change
 reellement, c'est **ou** la reserve de largeur apparait dans la bande (jamais au point bas, toujours
 au-dessus du plafond choisi) et **combien de marge laterale** cela retire aux viewports hauts - un

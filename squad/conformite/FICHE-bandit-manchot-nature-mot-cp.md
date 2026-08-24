@@ -2,14 +2,15 @@
 
 - **Mecanique** : bandit manchot (mecanique generique, partagee avec les autres jeux du catalogue).
 - **Contenu(s)** : `adapters/adapter-content/src/main/resources/contenu/cp-nature-mot.yaml`
-  (a creer, `type: question`, au moins 16 items), story `S19-4` (`docs/backlog/backlog.md`).
+  livre, `type: question`, 16 items, story `S19-4` (`docs/backlog/backlog.md`).
   **Adaptation reelle requise, pas une reprise** : `contenu-repris/mots/cm1-nature-mot.yml` (16
   items) classe des mots isoles (hors phrase) en quatre natures (nom, verbe, adjectif,
   determinant), a un niveau CM1. La competence CP demande exactement deux natures (nom, verbe) et
   exige que le mot soit presente dans une phrase tres simple, jamais isole. Les deux ecarts (forme
   et perimetre) changent a la fois ; ce paquet repasse integralement devant `nadia-prof` comme un
   contenu neuf (`contenu-repris/README.md`).
-- **Statut global** : **ouverte, aucun increment livre a ce jour.** Rien n'a encore ete joue.
+- **Statut global** : **increment livre, Done pedagogique non encore prononce.** Rien n'a encore
+  ete joue par `nadia-prof` sur cet increment : le Done pedagogique reste entier.
 - **Arbitrage prealable de `nadia-prof` rendu le 2026-08-24**
   (`squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md`, partie B) : **la
   forme du jeu est ACCEPTEE SOUS CONDITIONS ; les seize phrases du premier brouillon

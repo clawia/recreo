@@ -2,22 +2,24 @@
 
 - **Mecanique** : bandit manchot (mecanique generique, partagee avec les autres jeux du catalogue).
 - **Contenu(s)** : `adapters/adapter-content/src/main/resources/contenu/
-  cm1-accords-groupe-nominal.yaml` (a creer, `type: question`, au moins 20 items), story `S19-2`
-  (`docs/backlog/backlog.md`). Matiere premiere partiellement reutilisable :
+  cm1-accords-groupe-nominal.yaml` livre, `type: question`, 24 items (determinant/nom/adjectif,
+  huit items chacun, un seul trou par item), story `S19-2` (`docs/backlog/backlog.md`). Matiere
+  premiere partiellement reutilisable :
   `contenu-repris/textes-trous/cm1-accords.yml` (5 items) ne teste que l'accord de l'adjectif, le
   determinant et le nom etant deja fixes dans chaque phrase - verifie ligne par ligne. Le paquet
   doit etendre la couverture au determinant et au nom pour representer le groupe nominal complet
   que nomme la competence.
-- **Statut global** : **ouverte, aucun increment livre a ce jour.** Rien n'a encore ete joue.
+- **Statut global** : **increment livre, Done pedagogique non encore prononce.** Rien n'a encore
+  ete joue par `nadia-prof` sur cet increment : le Done pedagogique reste entier.
 - **Aucun arbitrage prealable de `nadia-prof` demande** : cette competence ne souleve aucune
   question de validite de proxy - elle est directement servable par le schema `type: question`
   existant (fill-in-the-blank), sur le meme patron que l'accord de l'adjectif deja identifie par
   `DEC-0008`. Les criteres ci-dessous sont ceux de `camille-po`, verifies a l'audit comme toute
   autre story de contenu de ce produit.
 - **Arbitrage prealable de mecanique en vigueur pour tout le catalogue** (`squad/conformite/
-  FICHE-bandit-manchot-additions-cp.md`, conditions M1 a M13). Rien n'est mesure ici a l'ouverture
-  de la fiche, faute d'increment a mesurer.
-- **Derniere mise a jour** : 2026-08-24 (ouverture par `camille-po`, `DEC-0042`)
+  FICHE-bandit-manchot-additions-cp.md`, conditions M1 a M13).
+- **Derniere mise a jour** : 2026-08-24 (`lea-dev`, depot du paquet, les trois composantes du
+  groupe nominal tiennent toutes dans le paquet livre)
 
 ## Competences visees
 
