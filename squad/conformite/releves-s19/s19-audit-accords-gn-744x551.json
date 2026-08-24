@@ -1,0 +1,616 @@
+{
+  "items": {
+    "Dans la classe, il y a vingt ___.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Le mot 'vingt' annonce le pluriel : il faut le nom au pluriel.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "élève",
+        "élèves"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Des chats ___.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 619.19,
+        "basDuVerdict": 510.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Le nom 'chats' est masculin pluriel : l'adjectif doit être accordé au masculin pluriel.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 447.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 4,
+      "propositions": [
+        "noire",
+        "noir",
+        "noires",
+        "noirs"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "La maison est ___.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 619.19,
+        "basDuVerdict": 510.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Le nom 'maison' est féminin singulier : l'adjectif doit être accordé au féminin singulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 447.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 4,
+      "propositions": [
+        "grandes",
+        "grands",
+        "grand",
+        "grande"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Le ballon est ___.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 619.19,
+        "basDuVerdict": 510.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Le nom 'ballon' est masculin singulier : l'adjectif doit être accordé au masculin singulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 447.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 4,
+      "propositions": [
+        "rondes",
+        "rond",
+        "ronds",
+        "ronde"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Le chat attrape une ___.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "'une' annonce le singulier : il faut le nom au singulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "balle",
+        "balles"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Le fermier a un seul ___ dans le pré.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "'un seul' annonce le singulier : il faut le nom au singulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "chevaux",
+        "cheval"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Les enfants ramassent des ___.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Le mot 'des' annonce le pluriel : il faut le nom au pluriel.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "feuille",
+        "feuilles"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Les fleurs sont ___.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 619.19,
+        "basDuVerdict": 510.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Le nom 'fleurs' est féminin pluriel : l'adjectif doit être accordé au féminin pluriel.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 447.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 4,
+      "propositions": [
+        "jolis",
+        "joli",
+        "jolie",
+        "jolies"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Les garçons sont ___.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 619.19,
+        "basDuVerdict": 510.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Le nom 'garçons' est masculin pluriel : l'adjectif doit être accordé au masculin pluriel.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 447.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 4,
+      "propositions": [
+        "petits",
+        "petite",
+        "petites",
+        "petit"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Les histoires sont ___.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 619.19,
+        "basDuVerdict": 510.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Le nom 'histoires' est féminin pluriel : l'adjectif doit être accordé au féminin pluriel.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 447.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 4,
+      "propositions": [
+        "amusantes",
+        "amusant",
+        "amusante",
+        "amusants"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Léa a acheté ___ ballon rouge.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 535.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Le nom 'ballon' est masculin singulier : il faut un déterminant masculin singulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "une",
+        "un",
+        "des"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Léa a cueilli trois ___.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Le mot 'trois' annonce le pluriel : il faut le nom au pluriel.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "fleur",
+        "fleurs"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Léa porte une ___ neuve.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "'une' annonce le singulier : il faut le nom au singulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "robes",
+        "robe"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Léa range ___ cahiers dans son sac.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Le nom 'cahiers' est au pluriel : il faut un déterminant pluriel.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "sa",
+        "son",
+        "ses"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Nous avons vu ___ voiture bleue.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 535.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Le nom 'voiture' est féminin singulier : il faut un déterminant féminin singulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "un",
+        "des",
+        "une"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Range ___ crayons dans la trousse.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Le nom 'crayons' est au pluriel : il faut un déterminant pluriel.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "cette",
+        "ce",
+        "ces"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Regarde ___ chien là-bas !": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 535.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Le nom 'chien' est masculin singulier : il faut un déterminant masculin singulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "ces",
+        "ce",
+        "cette"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Sur la table, il y a quatre ___.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Le mot 'quatre' annonce le pluriel : il faut le nom au pluriel.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "assiettes",
+        "assiette"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Tom a perdu ___ gomme préférée.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 535.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Le nom 'gomme' est féminin singulier : il faut un déterminant féminin singulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "son",
+        "ses",
+        "sa"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Tom a un seul ___ dans sa trousse.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "'un seul' annonce le singulier : il faut le nom au singulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "crayon",
+        "crayons"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Un gâteau ___.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 619.19,
+        "basDuVerdict": 510.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Le nom 'gâteau' est masculin singulier : l'adjectif doit être accordé au masculin singulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 447.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 4,
+      "propositions": [
+        "chaud",
+        "chauds",
+        "chaude",
+        "chaudes"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Une pomme ___.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 619.19,
+        "basDuVerdict": 510.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Le nom 'pomme' est féminin singulier : l'adjectif doit être accordé au féminin singulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 447.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 4,
+      "propositions": [
+        "vert",
+        "verte",
+        "verts",
+        "vertes"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "___ chat dort sur le canapé.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 535.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Le nom 'chat' est masculin singulier : il faut un déterminant masculin singulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "La",
+        "Les",
+        "Le"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "___ fleurs sentent très bon.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 505.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Le nom 'fleurs' est au pluriel : il faut un déterminant pluriel.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quel mot complète la phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Le",
+        "Les",
+        "La"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    }
+  },
+  "itemsADeuxRangees": [
+    "Des chats ___.",
+    "La maison est ___.",
+    "Le ballon est ___.",
+    "Les fleurs sont ___.",
+    "Les garçons sont ___.",
+    "Les histoires sont ___.",
+    "Un gâteau ___.",
+    "Une pomme ___."
+  ],
+  "itemsIndiceSousLePli": [
+    "Des chats ___.",
+    "La maison est ___.",
+    "Le ballon est ___.",
+    "Les fleurs sont ___.",
+    "Les garçons sont ___.",
+    "Les histoires sont ___.",
+    "Un gâteau ___.",
+    "Une pomme ___."
+  ],
+  "itemsVerdictSousLePli": [],
+  "itemsVus": 24,
+  "jeu": "bandit-manchot-accords-groupe-nominal-cm1",
+  "lectures": 114,
+  "lecturesADefilementNonNul": 0,
+  "nombresDePropositions": [
+    2,
+    3,
+    4
+  ],
+  "parties": 6,
+  "seuilLargeurMaximum": 400,
+  "viewport": [
+    744,
+    551
+  ]
+}
