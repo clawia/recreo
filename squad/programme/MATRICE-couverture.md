@@ -560,7 +560,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Lecture et comprehension de l'ecrit | Reperer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte | - | - | non couvert |
 | francais | CM1 | Ecriture | Rediger un texte narratif court et coherent (quelques phrases, temps du recit respecte) | - | - | non couvert |
 | francais | CM1 | Ecriture | Relire et corriger son texte a l'aide de reperes simples (majuscules, ponctuation) | - | - | non couvrable en l'etat |
-| francais | CM1 | Orthographe et grammaire | Accorder le verbe avec son sujet (cas frequents, temps simples : present, futur, imparfait) | bandit-manchot-accord-sujet-verbe-cm1 | bandit manchot | en cours |
+| francais | CM1 | Orthographe et grammaire | Accorder le verbe avec son sujet (cas frequents, temps simples : present, futur, imparfait) | bandit-manchot-accord-sujet-verbe-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | bandit-manchot-accords-groupe-nominal-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | bandit-manchot-homophones-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif | bandit-manchot-conjugaison-present-cm1 | bandit manchot | couvert-valide |
@@ -623,13 +623,29 @@ fusionnee). Je verifie moi-meme la condition de chaque ligne plutot que de la cr
   n'est pas prononce : `nadia-prof` ecrit elle-meme *"la ligne ne peut pas passer `couvert-valide`
   tant que `NAT-5` et `NAT-9` restent ouvertes"* (`FICHE-bandit-manchot-nature-mot-cp.md`, verdict
   `ddb0fc4`). Je ne la fais pas bouger. Le detail de `NAT-5`/`NAT-9` et leur routage : `DEC-0044`.
-- **Accorder le verbe avec son sujet -> reste `en cours`.** `nadia-prof` a **REFUSE** l'increment le
-  2026-08-24 (`FICHE-bandit-manchot-accord-sujet-verbe-cm1.md`, verdict `ddb0fc4`) sur cinq motifs,
-  dont un decisif mesure **a la reference du produit elle-meme (744 x 551)**, pas dans une bande
-  differee : deux items sur vingt-et-un mettent le verdict sous le pli. `marc-dev` corrige au
-  moment ou j'ecris cette note ; je ne prejuge pas du resultat. Si la correction n'est ni livree ni
-  reauditee avant la cloture de s19, le refus devient une story de backlog pour s20 (voir
-  `docs/backlog/backlog.md`, entree conditionnelle).
+- **Accorder le verbe avec son sujet -> `couvert-valide`, apres reaudition.** `nadia-prof` avait
+  **REFUSE** l'increment le 2026-08-24 sur cinq motifs (`FICHE-bandit-manchot-accord-sujet-verbe-
+  cm1.md`, premier verdict, non efface), dont un decisif mesure **a la reference du produit elle-
+  meme (744 x 551)**, pas dans une bande differee. `marc-dev` a corrige, et `nadia-prof` a reaudite
+  le meme jour l'arbre **fusionne** (`round-two` a `6d9c00a`, branche `s19-nadia`, commit
+  `a81324c`) : **`VALIDE SOUS RESERVE`, aucune reserve bloquante**, les cinq motifs leves un par un
+  et verifies par sa propre mesure, pas par l'annonce de `marc-dev`. Verifie avant de faire bouger
+  la ligne : elle a controle que le seul fichier de production modifie entre les deux audits est
+  `cm1-accord-sujet-verbe.yaml`, donc que ses trois autres verdicts du jour ne sont pas concernes.
+  **Chiffre du motif decisif** : largeur necessaire maximale 647 px pour 680 px offerts (33 px de
+  marge), zero item sur deux rangees (contre deux au refus), bas du bloc de verdict a 474,19 px
+  (contre 564,19 px, sous un pli a 551 px). Audit : 6 parties, 108 lectures, 21/21 items vus,
+  `scrollY = 0` sur les 108. **Perimetre exact de ce que ce `couvert-valide` recouvre** : trois
+  reserves non bloquantes restent ouvertes et sont nommees, pas tues - `ASV-1` (vingt indices sur
+  vingt-et-un sous le pli, meme mecanisme que `SYN-12`/`AGN-1`, verse au chantier vertical de s20 ;
+  la premiere ligne de chaque indice reste lisible et porte le sujet et son nombre) ; `ASV-2` (sur
+  dix-huit items, la terminaison annoncee dans l'indice se resout par appariement de fin de mot -
+  le prix de donner la regle, aucune demande) ; `ASV-3` (un item sur vingt-et-un ou la reponse est
+  contenue dans l'infinitif nomme, inherent au premier groupe). **Ce paquet ne couvre rien dans la
+  bande 576-719 px** : sa largeur necessaire (647 px) depasse largement les 500 px qu'elle y offre
+  aujourd'hui, et il s'y repliera tant que `S19-6a` (`DEC-0043`) n'est pas traitee - cette bande
+  n'entrait pas non plus dans le refus initial, la portee de ce Done ne change donc pas sur cet
+  axe.
 
 **Note du 2026-08-24 (s19, `camille-po`) - question de validite de proxy due depuis s13, sans
 reponse a ce jour.** La ligne "Relire et corriger son texte a l'aide de reperes simples" bloque sur
@@ -1995,6 +2011,44 @@ est dans la section francais CM1 ci-dessus (amendement du 2026-08-24, second pas
 gain ne depend d'une mesure hors la reference du produit (744 x 551, `DEC-0040`) ; les residus
 connus dans la bande 576-719 px (`SYN-16`/`S19-6a`) et sous le pli a la reference (`SYN-12`,
 `ANT-8`, `AGN-1`) sont tous non bloquants et deja ouverts avant ce geste.
+
+**Ce qui ne bouge pas.** Le perimetre de developpement de s19 (`S19-1` a `S19-6`, `DEC-0042`) est
+inchange. Aucune autre ligne ne passe `couvert-valide` par ce geste.
+
+## Amendement du 2026-08-24 (quatrieme passage) - S19-3 reauditee, une troisieme ligne passe couvert-valide, 13/44 (29,5 %)
+
+`nadia-prof` a reaudite `cm1-accord-sujet-verbe` sur l'arbre fusionne apres le correctif de
+`marc-dev` (branche `s19-nadia`, commit `a81324c`) : **`VALIDE SOUS RESERVE`, aucune reserve
+bloquante**, les cinq motifs de son refus du meme jour leves un par un et verifies par sa propre
+mesure. Verifie moi-meme avant de faire bouger la ligne (`squad/README.md`, section 9, etape 6),
+detail complet dans la section francais CM1 ci-dessus. La ligne "Accorder le verbe avec son sujet"
+passe `en cours` -> `couvert-valide`.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide | non couvrable en l'etat |
+|---|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 | 0 |
+| mathematiques CM1 | 12 | 6 | 2 | 4 | 0 |
+| francais CP | 12 | 9 | 2 | 0 | 1 |
+| francais CM1 | 11 | 5 | 0 | 5 | 1 |
+| **Total** | **46** | **26** | **5** | **13** | **2** |
+
+Francais CM1 : `en cours` passe de 1 a 0, `couvert-valide` de 4 a 5. Aucune autre cellule ne bouge
+par rapport au tableau precedent de ce meme jour.
+
+**Le chiffre, avec sa base.** Le denominateur atteignable reste **44** sur **46**, inchange par ce
+geste. Le compte de lignes `couvert-valide` passe de **12** a **13**. **12/44 (27,3 %) devient
+13/44 (29,5 %)**, un gain de 2,3 points sur ce seul mouvement - troisieme et dernier mouvement de
+couverture de la journee, apres 22,7 % a l'ouverture de s19 et 27,3 % au troisieme passage de cet
+amendement.
+
+**Perimetre exact de ce qui est couvert.** Trois reserves non bloquantes restent ouvertes et
+nommees dans la section francais CM1 ci-dessus : `ASV-1` (vingt indices sur vingt-et-un sous le
+pli, chantier vertical de s20), `ASV-2` (terminaison resolue par appariement de fin de mot sur
+dix-huit items, aucune demande), `ASV-3` (un item ou la reponse est contenue dans l'infinitif
+nomme). **Ce paquet ne couvre rien dans la bande 576-719 px** : sa largeur necessaire (647 px)
+depasse les 500 px qu'elle y offre, et il s'y repliera tant que `S19-6a` n'est pas traitee - la
+bande basse concerne desormais trois paquets nommes (`cm1-synonymes`, `cm1-antonymes`,
+`cm1-accord-sujet-verbe`), pas un seul, donnee versee a l'arbitrage de perimetre de `DEC-0043`.
 
 **Ce qui ne bouge pas.** Le perimetre de developpement de s19 (`S19-1` a `S19-6`, `DEC-0042`) est
 inchange. Aucune autre ligne ne passe `couvert-valide` par ce geste.

@@ -217,3 +217,32 @@ seulement pour ceux a trois** - `nadia-prof` le nomme elle-meme dans
 
 - `squad/decisions/produit/DEC-0043-...md` (ce fichier) : cette section ajoutee.
 - Aucun fichier de conformite, aucune ligne de matrice, aucun perimetre gele n'est modifie.
+
+## Amendement du 2026-08-24 (troisieme passage) - la bande basse concerne desormais trois paquets, pas un seul
+
+`nadia-prof` a reaudite `cm1-accord-sujet-verbe` apres correctif de `marc-dev` (branche `s19-
+nadia`, commit `a81324c`) : `VALIDE SOUS RESERVE`, aucune reserve bloquante, ligne "Accorder le
+verbe avec son sujet" passee `couvert-valide`
+(`squad/programme/MATRICE-couverture.md`, amendement du meme jour, quatrieme passage). Ce paquet
+demande une largeur de rangee necessaire de **647 px** a la reference - le pire cas connu du
+sprint, devant `cm1-antonymes` (547 px) et `cm1-synonymes` (539 px) - et **ne couvre rien dans la
+bande 576-719 px** : a 500 px offerts en bande basse aujourd'hui, il s'y repliera integralement
+tant que `S19-6a` n'est pas traitee, exactement comme cette bande n'entrait ni dans son refus ni
+dans son second verdict.
+
+**Je ne change rien a l'arbitrage de la section 1** : la piste de largeur reste retenue, le residu
+reste assume avec marge de police exigee, `S19-6a` reste candidate de s20. Je verse ce fait pour
+que la decision de perimetre sur `S19-6a`, le jour ou elle sera instruite, se prenne en connaissance
+du perimetre reel : **la bande basse touche desormais trois paquets nommes de francais CM1
+(`cm1-synonymes`, `cm1-antonymes`, `cm1-accord-sujet-verbe`) et non plus un seul**, et le pire cas
+de largeur necessaire (647 px) n'est plus celui qui fixait la reserve de police au point precedent
+(547 px). **Je ne recalcule pas la reserve d'`ines-design` ici** : cela suppose de savoir d'abord
+si `S19-6a` cible tous les paquets de la bande ou seulement ceux nommes a l'ouverture - question
+que je poserai au moment ou `S19-6a` sera affectee, pas ici sur la foi d'un seul chiffre de plus.
+
+### Impact de cet amendement
+
+- `squad/decisions/produit/DEC-0043-...md` (ce fichier) : cette section ajoutee.
+- Aucun fichier de conformite n'est modifie. `squad/programme/MATRICE-couverture.md` est modifiee
+  par ailleurs, dans le meme geste, pour la ligne "Accorder le verbe avec son sujet" - reference
+  croisee, pas une consequence de ce fichier.
