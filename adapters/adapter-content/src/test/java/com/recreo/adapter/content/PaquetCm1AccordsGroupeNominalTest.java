@@ -54,8 +54,6 @@ class PaquetCm1AccordsGroupeNominalTest {
 
     private static final String PAQUET = "cm1-accords-groupe-nominal";
 
-    private static final String ID_DE_CATALOGUE = "bandit-manchot-accords-groupe-nominal-cm1";
-
     private static final int NOMBRE_D_ITEMS_MINIMUM = 20;
 
     /**
@@ -156,19 +154,29 @@ class PaquetCm1AccordsGroupeNominalTest {
 
     @Test
     void lEntreeDeCatalogueDesignerLeBonPaquetSousUneConsigneGenerique() {
-        Map<String, Object> catalogue = catalogueCharge();
-        @SuppressWarnings("unchecked")
-        List<Map<String, Object>> jeux = (List<Map<String, Object>>) catalogue.get("jeux");
-        Map<String, Object> entree = jeux.stream()
-                .filter(jeu -> ID_DE_CATALOGUE.equals(jeu.get("id")))
-                .findFirst()
-                .orElseThrow(() -> new AssertionError(
-                        ID_DE_CATALOGUE + " : aucune entree de ce nom dans catalogue.yaml"));
-
-        assertThat(entree.get("paquet")).isEqualTo(PAQUET);
+        Map<String, Object> entree = entreeQuiSertLePaquet();
         assertThat(String.valueOf(entree.get("consigne")))
                 .as("consigne generique, deja servie par les autres jeux a trou de ce catalogue")
                 .isEqualTo("Quel mot complète la phrase ?");
+    }
+
+    /**
+     * `ADR-0061` : l'entree est trouvee par le paquet qu'elle sert, jamais par un identifiant de jeu
+     * recopie en constante ici - le couple (entree, paquet) vit dans catalogue.yaml et nulle part
+     * ailleurs. Une clause qui juge la consigne d'une entree exposee n'a plus d'objet le jour ou le
+     * jeu quitte le catalogue : elle part alors avec lui, dans le meme commit que le retrait.
+     */
+    private static Map<String, Object> entreeQuiSertLePaquet() {
+        Map<String, Object> catalogue = catalogueCharge();
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> jeux = (List<Map<String, Object>>) catalogue.get("jeux");
+        return jeux.stream()
+                .filter(jeu -> PAQUET.equals(jeu.get("paquet")))
+                .findFirst()
+                .orElseThrow(() -> new AssertionError(
+                        "aucune entree de catalogue ne sert le paquet \"" + PAQUET + "\" : si le jeu"
+                                + " a quitte le catalogue, cette clause de consigne part dans le meme"
+                                + " commit que le retrait (ADR-0061)"));
     }
 
     @SuppressWarnings("unchecked")
