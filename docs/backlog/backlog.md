@@ -5242,9 +5242,15 @@ perimetre de s17 par ailleurs - la sortie de `S17-2` reste entierement etrangere
 
 Perimetre fixe par `DEC-0042-perimetre-sprint-19-contenu-seul-conception-de-la-saisie-lecture-a-
 voix-haute-non-couvrable.md`. Quatre stories de contenu servies par la mecanique `bandit-manchot`
-existante (`S19-1` a `S19-4`), deux stories de dette deja chiffree (`S19-5`, `S19-6`). Aucune story
-de code de mecanique neuve ce sprint : la conception de la saisie (Lot C de `DEC-0042`) avance sans
-capacite de developpement affectee, via `theo-archi` et `nadia-prof`.
+existante (`S19-1` a `S19-4`), une story de dette deja chiffree (`S19-5`). Aucune story de code de
+mecanique neuve ce sprint : la conception de la saisie (Lot C de `DEC-0042`) avance sans capacite
+de developpement affectee, via `theo-archi` et `nadia-prof`.
+
+`S19-6` etait initialement une sixieme story de dette. `DEC-0043` la scinde en `S19-6a` et `S19-6b`
+(ci-dessous, apres `S19-5`) et les renvoie toutes deux au backlog de s20, non affectees a s19 :
+`nadia-prof` a mesure entre-temps que le correctif de `SYN-16` est bon marche a instruire, mais
+son implementation reste une story a part entiere, et `BPM-8` n'a encore recu aucune mesure de
+faisabilite.
 
 ### S19-1 - Les antonymes (francais CM1, ferme la moitie manquante de S17-3)
 
@@ -5466,45 +5472,82 @@ ServiTest` - je ne fixe pas cet ordre ici.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, avec `theo-archi` pour le mecanisme
   de la bascule et l'ordre de fusion.
 
-### S19-6 - Le pli ne mord pas entre 576 et 719 px de viewport (SYN-16 / BPM-8)
+### S19-6a - Le pli ne mord pas entre 576 et 719 px de viewport, jeu "Les synonymes" (SYN-16)
+
+> Scindee de l'ancienne `S19-6` par `DEC-0043` : `BPM-8` (ci-dessous, `S19-6b`) relevait d'un
+> mecanisme different et n'avait recu aucune mesure de faisabilite. Candidate de s20, non affectee
+> a s19.
 
 - **Besoin** : en tant qu'eleve de CM1 qui joue sur un ordinateur dont la fenetre du navigateur
   n'occupe pas tout l'ecran (fenetre partagee, fenetre non maximisee), je veux voir entierement les
-  propositions de reponse et les indices des jeux "Les synonymes" et "Le bon petit mot", afin de
-  jouer dans les memes conditions que sur un ordinateur en plein ecran.
+  propositions de reponse du jeu "Les synonymes", afin de jouer dans les memes conditions que sur
+  un ordinateur en plein ecran.
 - **Competence programme visee** : transverse - pas de contenu pedagogique.
 - **Constat mesure, pas suppose** (`nadia-prof`, `squad/conformite/FICHE-bandit-manchot-synonymes-
-  cm1.md` et `FICHE-bandit-manchot-homophones-cm1.md`, verdicts du 2026-08-23) : le correctif livre
-  pour `SYN-11`/`BPM-1` ne mord qu'a partir de 720 px de viewport. Entre 576 et 719 px : cinq items
-  de synonymes sur seize gardent deux rangees de propositions et leur verdict sous le pli, pire cas
-  594,19 px (`SYN-16`) ; six a sept items d'homophones sur vingt-quatre gardent leur indice coupe
-  par le pli, mesure a 700 et 719 px (`BPM-8`). Les deux sont non bloquantes pour les Done
-  pedagogiques deja rendus, qui se mesurent contre la reference unique 744 x 551 (`DEC-0040`).
-- **Perimetre de la bande, tranche par `camille-po` a la cloture de s18**
-  (`DEC-0041`, amendement du 2026-08-23) : la bande 576-719 px n'est pas un vide de reference. Un
-  ordinateur de la cible produit (1280 px de dalle au plus etroit identifie par `ines-design`)
-  partage en deux fenetres, ou simplement non maximise, donne une largeur de viewport dans cette
-  bande - un geste ordinaire sur ordinateur, pas un usage marginal. C'est donc un trou reel du
-  produit sur sa cible actuelle, et non un appareil hors cible.
+  cm1.md`, verdict du 2026-08-23 puis mesure du 2026-08-24) : le correctif livre pour `SYN-11` ne
+  mord qu'a partir de 720 px de viewport. Entre 576 et 719 px, cinq items sur seize gardent deux
+  rangees de propositions et leur verdict sous le pli, pire cas 594,19 px. La largeur de rangee
+  **necessaire** aux seize items est 539 px (mesuree le 2026-08-24, contre 680 px connue comme
+  seulement suffisante) : un correctif de largeur ferme 141 des 144 largeurs de la bande et
+  echoue sur 576, 577 et 578 px. Non bloquant pour le Done pedagogique deja rendu, qui se mesure
+  contre la reference unique 744 x 551 (`DEC-0040`).
+- **Perimetre de la bande, tranche par `camille-po` a la cloture de s18** (`DEC-0041`, amendement
+  du 2026-08-23) : la bande 576-719 px n'est pas un vide de reference. Un ordinateur de la cible
+  produit (1280 px de dalle au plus etroit identifie par `ines-design`) partage en deux fenetres,
+  ou simplement non maximise, donne une largeur de viewport dans cette bande - un geste ordinaire
+  sur ordinateur, pas un usage marginal. C'est donc un trou reel du produit sur sa cible actuelle,
+  et non un appareil hors cible.
 - **Criteres d'acceptation** :
   - Etant donne le jeu "Les synonymes", quand on rend chaque manche a une largeur de viewport
-    comprise entre 576 et 719 px inclus, dans l'etat le plus charge (revelation, trois etats
-    d'echec), alors les propositions de reponse restent entierement visibles au-dessus du pli, sur
-    la totalite des seize items.
+    comprise entre la borne basse retenue (au plus 579 px, majoree de la marge de police posee
+    ci-dessous) et 719 px inclus, dans l'etat le plus charge (revelation, trois etats d'echec),
+    alors les propositions de reponse restent entierement visibles au-dessus du pli, sur la
+    totalite des seize items.
+  - Etant donne le plafond de largeur retenu pour cette bande, il porte une marge de securite de
+    police au-dessus des 539 px de rangee necessaire mesures le 2026-08-24 sur une seule machine
+    (`DEC-0043`, section 1) : il n'est pas colle au strict necessaire. La valeur exacte est
+    proposee par `ines-design` et tranchee par `nadia-prof`.
+  - Etant donne les deux criteres ci-dessus, quand le correctif est livre, alors il ne fait
+    regresser aucune des mesures deja tenues a 720 px et au-dela (`SYN-11`), ni la clause
+    "en-tete aligne" ou "aucun element a presser ne se rapproche du bord plus que le rembourrage
+    de la zone" de `SYN-14`, deja tenue a un plafond de 579 px sur huit viewports mesures.
+  - Le residu de bande qui reste hors correctif, sous la borne basse retenue, est un residu assume
+    et documente avec son motif dans la fiche de conformite au moment de la mesure finale, pas un
+    silence.
+  - Ce que cette story ne tranche pas, entierement route a `theo-archi` : le mecanisme de
+    correction (regle CSS scopee a la bande, garde-fou `ADR-0054`/`ADR-0055`/`ADR-0056`).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : la mesure finale sur navigateur reel, a `scrollY = 0` verifie, sur la bande
+    retenue et sur `SYN-14`.
+- **Lien decision** : `DEC-0041`, amendement du 2026-08-23 ("`SYN-16` : la bande 576-719 px designe
+  un appareil reel") ; `DEC-0043`.
+- **Agent pressenti** : a affecter au planning de s20 par `sofia-sm`, avec `ines-design` pour la
+  marge de police et `nadia-prof` pour la valeur retenue et la mesure finale.
+
+### S19-6b - L'indice reste coupe par le pli entre 576 et 719 px de viewport, jeu "Le bon petit mot" (BPM-8)
+
+> Scindee de l'ancienne `S19-6` par `DEC-0043`. Mecanisme different de `S19-6a` : un defaut de
+> hauteur de contenu (l'indice, pas les propositions), sans aucune mesure de largeur ou de hauteur
+> necessaire a ce jour. Candidate de s20, non affectee a s19, non prete sans l'etape suivante.
+- **Besoin** : en tant qu'eleve de CM1 qui joue sur un ordinateur dont la fenetre du navigateur
+  n'occupe pas tout l'ecran, je veux voir entierement l'indice du jeu "Le bon petit mot", afin de
+  jouer dans les memes conditions que sur un ordinateur en plein ecran.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Constat mesure, pas suppose** (`nadia-prof`, `squad/conformite/FICHE-bandit-manchot-homophones-
+  cm1.md`, verdict du 2026-08-23) : sous 720 px de viewport, l'indice reste coupe par le pli sur
+  six a sept items sur vingt-quatre (mesure a 700 et 719 px). Non bloquant pour le Done pedagogique
+  deja rendu (`VALIDE SOUS RESERVE`), qui se mesure contre la reference unique 744 x 551.
+- **Perimetre de la bande** : identique a `S19-6a`, tranche par `DEC-0041`.
+- **Criteres d'acceptation** :
   - Etant donne le jeu "Le bon petit mot", quand on rend chaque manche a une largeur de viewport
     comprise entre 576 et 719 px inclus, dans l'etat le plus charge, alors l'indice reste
-    entierement visible au-dessus du pli, sur la totalite des vingt-quatre items.
-  - Etant donne les deux criteres ci-dessus, quand le correctif est livre, alors il ne fait
-    regresser aucune des mesures deja tenues a 720 px et au-dela (`SYN-11`, `BPM-1`) ni la
-    contrepartie laterale deja nommee sur cette bande (marges effondrees) sans qu'un arbitrage
-    explicite l'accepte.
-  - Ce que cette story ne tranche pas, entierement route a `theo-archi` : le mecanisme de
-    correction. `lea-dev` a deja nomme la contradiction (corriger le pli dans cette bande effondre
-    les marges laterales ; preserver les marges y laisse le verdict sous le pli) ; cette story
-    n'impose aucune des deux issues.
-  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
-    `nadia-prof` : la mesure finale sur navigateur reel, a `scrollY = 0` verifie, aux largeurs
-    576, 640, 700 et 719 px, sur les deux jeux.
-- **Lien decision** : `DEC-0041`, amendement du 2026-08-23 ("`SYN-16` : la bande 576-719 px designe
-  un appareil reel") ; `DEC-0042`, section 6.
+    entierement visible au-dessus du pli, sur la totalite des vingt-quatre items, ou sur la borne
+    de bande qu'un avis de faisabilite documentera comme atteignable si la bande entiere s'avere
+    hors de portee, sur le meme modele que `S19-6a`.
+  - Ce que cette story ne tranche pas et route a `theo-archi` : le mecanisme de correction, dont
+    la nature (largeur ou hauteur de contenu) n'est pas encore etablie pour ce jeu.
+- **Ce qui manque avant affectation** : un avis de faisabilite de `theo-archi` sur ce mecanisme
+  propre, puis, s'il nomme un chiffre manquant, une mesure de `nadia-prof` sur navigateur reel -
+  le meme processus qui vient de rendre `S19-6a` affectable.
+- **Lien decision** : `DEC-0041`, amendement du 2026-08-23 ; `DEC-0043`, section 2.
 - **Agent pressenti** : avis de faisabilite de `theo-archi` requis avant affectation.
