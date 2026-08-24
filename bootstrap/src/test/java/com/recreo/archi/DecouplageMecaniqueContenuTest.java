@@ -1,5 +1,6 @@
 package com.recreo.archi;
 
+import com.tngtech.archunit.core.domain.JavaModifier;
 import com.tngtech.archunit.core.importer.ImportOption;
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
@@ -7,6 +8,7 @@ import com.tngtech.archunit.lang.ArchRule;
 
 import static com.tngtech.archunit.core.domain.JavaClass.Predicates.resideOutsideOfPackages;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
+import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.methods;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 import static com.tngtech.archunit.library.dependencies.SlicesRuleDefinition.slices;
 
@@ -67,7 +69,40 @@ class DecouplageMecaniqueContenuTest {
             .allowEmptyShould(false)
             .as("ADR-0004 : une implementation de GameMechanic vit dans com.recreo.domain.mechanics.<mecanique>");
 
-    /** (7) Isolation, desormais adossee a (1), (2) et (6). */
+    /**
+     * (8) ADR-0058. Les clauses (1) et (2) ferment les deux contrats a une <b>classe</b> porteuse de
+     * comportement - c'est la forme qu'avait le {@code SessionEngine} de la version precedente, et
+     * c'est la forme des deux contre-exemples ecrits en s00. Une <b>interface</b> dont une methode
+     * est statique, par defaut ou privee y loge exactement le meme moteur partage et reste verte
+     * sous (1) comme sous (2) : mesure le 2026-08-24 sur cet arbre, deux sondes posees - une
+     * normalisation statique dans {@code domain.mechanic}, un normalisateur d'enonce par defaut dans
+     * {@code domain.content} - suite complete <b>verte</b>, 615 tests, 0 echec.
+     *
+     * <p><b>Ce que cette clause interdit reellement</b>, et pourquoi elle n'est pas decorative : la
+     * clause (7), "deux mecaniques ne dependent pas l'une de l'autre", ne prouve rien tant que deux
+     * mecaniques peuvent etre deux coquilles qui appellent le meme moteur hisse dans un contrat -
+     * elles ne dependraient alors pas l'une de l'autre, et tout le comportement vivrait au meme
+     * endroit. Le geste est concret et date : la mecanique de saisie d'ADR-0058 a besoin d'une
+     * normalisation, la mecanique existante compare des chaines, et un contrat commun est le lieu le
+     * moins cher pour la poser.
+     *
+     * <p><b>Perimetre.</b> Les seules methodes jugees sont celles declarees par une interface des
+     * deux paquets de contrat. Les records et les enums en sont hors, et ce n'est pas une exemption
+     * concedee : leurs accesseurs et leurs {@code values()}/{@code valueOf()} sont produits par le
+     * compilateur, jamais ecrits, et les refuser ferait rougir {@code Score} et
+     * {@code SessionStatus} sans qu'aucun comportement n'ait ete partage.
+     */
+    @ArchTest
+    static final ArchRule unContratNeDeclareAucunComportement = methods()
+            .that().areDeclaredInClassesThat().resideInAnyPackage(CONTRAT_CONTENU, CONTRAT_MECANIQUE)
+            .and().areDeclaredInClassesThat().areInterfaces()
+            .should().haveModifier(JavaModifier.ABSTRACT)
+            .allowEmptyShould(false)
+            .as("ADR-0058 : une interface de contrat ne declare que des methodes abstraites - ni"
+                    + " statique, ni par defaut, ni privee. Un contrat qui porte du comportement est"
+                    + " un moteur partage, quelle que soit la forme du type qui le porte");
+
+    /** (7) Isolation, desormais adossee a (1), (2), (6) et (8). */
     @ArchTest
     static final ArchRule lesMecaniquesNeSeConnaissentPas = slices()
             .matching("com.recreo.domain.mechanics.(*)..")

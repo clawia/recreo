@@ -723,6 +723,11 @@ class PartieControllerTest {
                 public Optional<Item> next(RandomSource hasard, Set<ItemId> dejaVus) {
                     return Optional.of(question);
                 }
+
+                @Override
+                public boolean indicesNommentLaReponse() {
+                    return false;
+                }
             };
         }
 
