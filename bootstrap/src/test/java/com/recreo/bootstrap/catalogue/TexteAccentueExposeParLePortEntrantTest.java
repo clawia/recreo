@@ -102,6 +102,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-accords-groupe-nominal-cm1",
             // S19-3 : entree neuve, accord du verbe avec un sujet eloigne, compose ou nominal.
             "bandit-manchot-accord-sujet-verbe-cm1",
+            // S19-4 (DEC-0042) : entree neuve, nom ou verbe dans une phrase tres simple de CP.
+            "bandit-manchot-nature-mot-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -124,6 +126,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Le bon accord",
             // S19-3 : titre neuf.
             "L'accord du verbe",
+            // S19-4 : titre neuf.
+            "Nom ou verbe ?",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -143,6 +147,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Quel mot complète la phrase ?",
             // S19-3 : consigne neuve.
             "Quelle est la bonne forme du verbe ?",
+            // S19-4 : consigne neuve.
+            "Le mot entre guillemets est-il un nom ou un verbe ?",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
             // valeur unique pour les jeux du catalogue reel, compte sur catalogue.yaml, pas recopie.
             "bandit-manchot",
@@ -178,7 +184,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S19-2 : competence neuve.
             "Accorder en genre et en nombre dans le groupe nominal (déterminant/nom/adjectif)",
             // S19-3 : competence neuve.
-            "Accorder le verbe avec son sujet (cas fréquents, temps simples : présent, futur, imparfait)");
+            "Accorder le verbe avec son sujet (cas fréquents, temps simples : présent, futur, imparfait)",
+            // S19-4 : competence neuve.
+            "Distinguer les principaux types de mots (nom, verbe) dans une phrase très simple");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

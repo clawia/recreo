@@ -1,5 +1,15 @@
 # S19-4 - Proposition d'items pour arbitrage prealable de nadia-prof (nom/verbe, francais CP)
 
+> **Addendum du 2026-08-24 (lea-dev)** : `nadia-prof` a rendu son arbitrage
+> (`squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md`, partie B). La
+> forme ci-dessous est acceptee sous conditions ; **les seize phrases qui suivent sont refusees en
+> l'etat** - les huit noms etaient tous precedes d'un determinant, aucun des huit verbes ne l'etait
+> (`NAT-1`), et deux mots cibles ("joue", "lit") sont des homographes nom/verbe qu'un CP connait deja
+> dans les deux emplois (`NAT-2`), contrairement a ce que ce document affirmait en toute bonne foi
+> mais sans verification. Ce fichier n'est **pas** reecrit : il reste la trace de ce qui a ete propose
+> et de pourquoi c'etait insuffisant. Le paquet reellement servi, conforme a `NAT-1` a `NAT-8`, est
+> `adapters/adapter-content/src/main/resources/contenu/cp-nature-mot.yaml`.
+
 - **Auteur** : lea-dev. **Date** : 2026-08-24.
 - **Ce que ce fichier est** : une proposition de phrases pour la story `S19-4`
   (`docs/backlog/backlog.md`), soumise a l'arbitrage prealable que `planning.md` (sequencement,

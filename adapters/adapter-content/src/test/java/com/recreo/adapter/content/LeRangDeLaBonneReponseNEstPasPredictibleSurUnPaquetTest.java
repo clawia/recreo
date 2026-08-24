@@ -318,7 +318,12 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " propositions n'est numerique : ce sont des formes conjuguees d'un verbe"
                     + " (bonne reponse et deux erreurs d'accord), valeurDe rend null sur les trois"
                     + " propositions de chaque item. Mesure du 2026-08-24 : aucune des 63"
-                    + " propositions ne commence par un chiffre");
+                    + " propositions ne commence par un chiffre",
+            "cp-nature-mot",
+            "16 items sur 16 portent un seul distracteur, donc deux propositions - hors du domaine"
+                    + " au meme titre que cm1-homophones - et les deux propositions sont toujours les"
+                    + " memes deux mots (\"nom\", \"verbe\"), jamais une valeur numerique. Mesure du"
+                    + " 2026-08-24 sur le paquet servi");
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
