@@ -5434,12 +5434,16 @@ correctif ne les affaiblisse pas :
 5. Les indices citent mots et terminaisons entre apostrophes droites plutot qu'avec les guillemets
    francais deja etablis par `SYN-6`/`SYN-9`.
 
-**Ce que cette story devient, selon l'issue de la correction en cours.** `marc-dev` corrige au
-moment ou cette note est ecrite ; je ne prejuge pas du resultat. Si `nadia-prof` reaudite et rend un
-Done `VALIDE` (sous reserve non bloquante ou sans reserve) avant la cloture de s19, cette section
-est cloturee sans story neuve. **Si ce n'est pas le cas, les cinq motifs ci-dessus deviennent les
-criteres d'acceptation correctifs d'une story `S19-3` reportee au backlog de s20**, affectee par
-`sofia-sm`, sans qu'aucun mot des motifs ne soit affaibli dans leur reformulation.
+**Issue, le meme jour - la condition posee ci-dessus est remplie, cette section est cloturee sans
+story neuve.** `marc-dev` a corrige les cinq motifs (branche fusionnee `round-two` a `6d9c00a`) et
+`nadia-prof` a reaudite l'arbre fusionne : **`VALIDE SOUS RESERVE`, aucune reserve bloquante**
+(`squad/conformite/FICHE-bandit-manchot-accord-sujet-verbe-cm1.md`, second verdict, commit
+`a81324c`, branche `s19-nadia`). Les cinq motifs sont leves un par un et verifies par sa propre
+mesure - le motif decisif, notamment : largeur necessaire 647 px pour 680 px offerts (33 px de
+marge), contre plus de 700 px au refus. Trois reserves non bloquantes restent ouvertes (`ASV-1` a
+`ASV-3`, chantier vertical de s20 pour `ASV-1`) : voir `squad/programme/MATRICE-couverture.md`,
+section francais CM1, pour le detail complet. La ligne de matrice "Accorder le verbe avec son
+sujet" passe `couvert-valide` le meme jour.
 
 ### S19-4 - Distinguer nom et verbe dans une phrase tres simple (francais CP)
 
