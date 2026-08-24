@@ -507,7 +507,12 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
         verifierQueLaFonctionEstCelleEpinglee(mancheAssemblee(), RACINE_PRODUCTION, FONCTION_EPINGLEE);
     }
 
-    private static Path copieDesFeuilles(Path destination) {
+    /**
+     * ADR-0059 : visibilite de paquet plutot qu'une troisieme copie. Le declencheur qu'ADR-0056 a
+     * ecrit pour {@code muter} vaut ici mot pour mot - le jour ou un troisieme fichier de ce module
+     * copie l'arborescence servie pour la muter, il l'emprunte au lieu de la recopier.
+     */
+    static Path copieDesFeuilles(Path destination) {
         try {
             Path source = RACINE_PRODUCTION;
             try (Stream<Path> arborescence = Files.walk(source)) {

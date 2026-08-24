@@ -1,0 +1,17 @@
+/* Jeu fautif d'ADR-0059, obligation 3 d'ADR-0013, cas rouge. Aucun nom de ce fichier ne coincide
+   avec ceux de la production : la rangee repliable s'appelle .rangee-de-choix et non .propositions,
+   l'element qui porte le plafond s'appelle .panneau et non .zone-jeu, et la bande n'est pas celle de
+   la feuille tierce. Le plafond y laisse 480 px a une rangee
+   qui en demande 539 : c'est le correctif qui ne corrige rien, sous d'autres noms que ceux de la
+   production. */
+.rangee-de-choix {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+@media (min-width: 620px) and (max-width: 899.98px) {
+    .panneau {
+        max-width: 520px;
+    }
+}
