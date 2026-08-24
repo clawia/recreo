@@ -299,6 +299,22 @@ gele qui n'a jamais existe.
 criteres d'acceptation en tests et fait tourner la suite. Tout obstacle va a Sofia, qui classe,
 route, attend la decision **ecrite**, debloque.
 
+**Un obstacle route a plus d'un agent sur le meme perimetre est nomme comme tel au moment du
+routage** (amendement s19, retro de s19). En s19, le meme defaut d'encodage a ete route a
+`theo-archi` et a `yanis-qa` en parallele, chacun sans savoir que l'autre l'ecrivait ; les deux ont
+produit un garde-fou concurrent sur la meme famille de defaut, dans le meme module, decouvert
+seulement a la fusion. La confrontation des deux a trouve une faute reelle dans l'un d'eux, mais
+c'est un benefice accidentel, pas une methode : Sofia dit desormais explicitement, en routant, que
+le meme obstacle part vers plus d'un destinataire et sur quel perimetre chacun ecrit, pour que la
+collision soit anticipee plutot que decouverte.
+
+**Une phrase candidate a devenir du contenu servi a l'enfant est redigee integralement accentuee
+des le premier brouillon**, meme dans un document de travail par ailleurs redige sans accent
+(amendement s19, retro de s19). Trouve par le `relecteur-pedagogique` sur deux drafts opposes du
+meme sprint : l'un accentuait deja ses phrases candidates en respectant `DEC-0002`, l'autre non.
+Une phrase qui va devenir du contenu servi gagne a etre ecrite une seule fois sous sa forme finale
+plutot que reecrite a la validation.
+
 **3. Daily.** Sofia collecte et route. Pas de fichier.
 
 **4. Porte technique.** `mvn verify` vert. Yanis produit le rapport qualite, Theo confirme
@@ -407,6 +423,14 @@ rencontre sa premiere consequence concrete qu'un sprint plus tard (`SYN-16`, `ca
 fenetre non maximisee ou partagee produit une largeur dans une bande que l'inventaire ne couvrait
 pas, sans que quiconque ait pu le voir en le relisant. Une valeur de reference sans l'hypothese qui
 la borne est une limite implicite que quelqu'un redecouvre plus tard sans methode ecrite.
+
+**Une ceremonie de relecture ou d'audit n'est lancee que sur un arbre qui porte deja tout ce
+qu'elle doit lire** (amendement s19, retro de s19). En s19, Sofia a lance le
+`relecteur-pedagogique` sur un `round-two` qui ne portait pas encore l'audit pedagogique en cours
+de `nadia-prof` : il a remis a jour des fiches de conformite perimees pendant qu'elle y ecrivait
+ses verdicts, ce qui a produit une collision de fusion reelle. Meme famille que l'amendement de s06
+sur le worktree dedie (section 9, etape 1) : la lignee d'un arbre se verifie avant de lancer un
+agent dessus, pas seulement avant de fusionner son lot.
 
 **5. Relecture.** Le `relecteur-pedagogique` passe sur les livrables non executables. Il corrige
 ce qui est sans ambiguite, signale le reste.
