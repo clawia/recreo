@@ -545,3 +545,13 @@ question merite d'etre instruite plutot que fermee comme sans objet.
 - `squad/decisions/produit/DEC-0041-...md` (ce fichier) : cette section ajoutee.
 - Aucun fichier de conformite, aucune ligne de `squad/programme/MATRICE-couverture.md`, aucun
   perimetre gele n'est modifie par cet amendement.
+
+### Note du 2026-08-24 (s19, camille-po) - `nadia-prof` a mesure la largeur necessaire, `SYN-16` scindee de `BPM-8` et renvoyee a s20
+
+`nadia-prof` a mesure le chiffre que `theo-archi` nommait manquant pour juger la faisabilite d'un
+correctif sur cette bande : la largeur de rangee necessaire aux seize items de `cm1-synonymes` est
+539 px, pas 680 px. Consequence, verifiee section 4 de sa mesure : un correctif de largeur ferme
+141 largeurs de la bande sur 144, et echoue seulement sur 576, 577 et 578 px. Ce constat, la
+marge de police que je pose en reponse, et la separation d'avec `BPM-8` (dont la mesure ne dit
+rien - defaut different, non mesure) sont traites dans `DEC-0043`, qui ne reecrit rien de cette
+section : l'observation du 2026-08-23 ci-dessus reste exacte pour ce qu'elle savait alors.

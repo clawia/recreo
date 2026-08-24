@@ -509,3 +509,13 @@ n'ait pas a le redecouvrir :
   citent.
 - **`nadia-prof`** : rien de plus ici - son arbitrage reste la source, je ne lui redemande rien.
 
+### Note du 2026-08-24 (meme jour, camille-po) - `SAI-12` entre au perimetre de la conception, chiffrage route
+
+`nadia-prof` a pose, le meme jour, une condition neuve non couverte par les deux paragraphes
+ci-dessus : `SAI-12`, l'enfant voit aux deuxieme et troisieme essais la liste de ce qu'il a deja
+ecrit sur la manche, pas seulement sa derniere tentative. Elle demande qu'elle soit chiffree a
+part de `SAI-9`. Je tranche que `SAI-12` entre au perimetre de la conception de s19 plutot que
+d'attendre l'ouverture de la mecanique, avec son motif complet dans `DEC-0043`. Cette section
+n'est pas reecrite : `SAI-2` et `SAI-9` restent les deux entrees qu'elle nommait ce jour-la,
+`SAI-12` s'y ajoute par cette note.
+
