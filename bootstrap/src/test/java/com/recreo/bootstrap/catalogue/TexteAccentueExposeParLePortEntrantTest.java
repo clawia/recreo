@@ -98,6 +98,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S17-4 (DEC-0024, DEC-0041) : entree neuve, restitution de "Le bon petit mot"
             // (paquet deja juge bon, BPM-1 remesuree par nadia-prof).
             "bandit-manchot-homophones-cm1",
+            // S19-2 (DEC-0042) : entree neuve, accord dans le groupe nominal.
+            "bandit-manchot-accords-groupe-nominal-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -116,6 +118,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les synonymes",
             // S17-4 : titre neuf.
             "Le bon petit mot",
+            // S19-2 : titre neuf.
+            "Le bon accord",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -165,7 +169,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S17-3 : competence neuve.
             "Utiliser des synonymes et antonymes pour préciser ou nuancer un propos",
             // S17-4 : competence neuve.
-            "Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...)");
+            "Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...)",
+            // S19-2 : competence neuve.
+            "Accorder en genre et en nombre dans le groupe nominal (déterminant/nom/adjectif)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

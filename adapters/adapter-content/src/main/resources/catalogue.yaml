@@ -78,3 +78,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-grands-nombres
     nombreDeManches: 10
+  - id: bandit-manchot-accords-groupe-nominal-cm1
+    titre: "Le bon accord"
+    consigne: "Quel mot complète la phrase ?"
+    mecanique: bandit-manchot
+    paquet: cm1-accords-groupe-nominal
+    nombreDeManches: 10
