@@ -89,6 +89,14 @@ qu'une erreur d'un agent. Corrige par une note datee dans `RAPPORT.md` et `revie
 plutot que par une reecriture des phrases d'origine, qui disaient vrai de ce qui avait ete
 mesure et faux de ce qui l'avait juge.
 
+**Cloture de ce quatrieme fait (2026-08-24)** : l'utilisatrice a constate que la CI est
+passee ("la ci est bien passee, considere que c'est le cas, sinon je remonte le probleme").
+C'est le constat de l'autorite que la note designait, pas le mien : je n'ai vu aucun
+workflow s'executer. La note citait `f96340e` ; l'origine a depuis avance jusqu'a `03d14ba`
+par trois lots hors sprint (revert de `DEC-0045`, `ADR-0061`, reapplication du retrait). Le
+Done technique de s19 est desormais prononce par l'organe qui le juge, pas seulement par des
+executions locales - ce que ce fait de gouvernance signalait comme manquant.
+
 ## Amendements a `squad/README.md`
 
 1. **Une phrase candidate a devenir du contenu servi a l'enfant est redigee integralement

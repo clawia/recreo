@@ -168,6 +168,19 @@ lignes `couvert-valide` sur 74) a ete recopie sans reverification dans trois doc
 methode) : ici la methode etait bien citee a chaque reprise, ce qui manquait est la verification
 contre la source primaire, pas contre l'absence de methode.
 
+**Un chiffre porte sa date dans la meme phrase que sa methode, jamais dans une parenthese a
+cote qu'un lecteur presse saute** (amendement hors sprint, 2026-08-24, trouve par
+`theo-archi` en relisant sa propre ligne d'index d'`ADR-0061`). Trois defauts distincts, tous
+reels, sur le meme paragraphe : un chiffre recopie en se compressant ("rejoue en une seule
+fois" devenu "une seule edition"), une justification empruntee au motif d'un `ADR` voisin
+dont l'objet n'etait pourtant pas le meme, et une mesure juste au moment de l'ecrire rendue
+fausse par un mot au present ("aujourd'hui") a cote d'un SHA epingle - auto-refutee des que
+le geste que l'`ADR` lui-meme habilitait a ete execute. Aucun des trois n'est une erreur de
+mesure : ce sont trois facons de faire vieillir un chiffre juste sans jamais le remesurer
+faux. Distinct des amendements de s06 (un chiffre porte sa methode) et de s17 (verifie contre
+sa source primaire) : ici la methode et la source etaient justes, ce qui manquait est une
+date portee par la phrase elle-meme plutot que par le contexte d'ecriture.
+
 ## 5. La synthese de sprint - `RAPPORT.md`
 
 C'est le document qu'on lit en premier pour savoir ce qui s'est passe. Ecrit par Sofia a la

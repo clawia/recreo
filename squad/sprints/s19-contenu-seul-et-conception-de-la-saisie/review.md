@@ -125,6 +125,18 @@ l'increment reaudite.
   depot prive. Il sera constate par l'utilisatrice, qui dispose d'un acces web au depot
   hors de cet environnement : c'est a elle que revient ce constat, des maintenant, avant de
   lire ce Done technique comme prouve.
+
+  **Cloture de cette note (2026-08-24, `sofia-sm`)** : l'utilisatrice a constate que la CI
+  est passee ("la ci est bien passee, considere que c'est le cas, sinon je remonte le
+  probleme"). Ce constat est le sien, pas celui de `sofia-sm` ni de la coordination : ni
+  l'une ni l'autre n'a vu le workflow s'executer, seule l'autorite que la note ci-dessus
+  designait a pu le faire. La note citait `f96340e` ; l'origine a depuis avance a `03d14ba`
+  (revert de la fusion de `DEC-0045`, fusion d'`ADR-0061`, reapplication du retrait). Le
+  constat porte sur l'etat courant du depot tel que l'utilisatrice l'a regarde ; rien
+  n'indique quel commit precis, entre `f96340e` et `03d14ba` ou au-dela, le workflow qu'elle
+  a lu couvrait, et ce n'est pas suppose ici. Le Done technique de s19 est prononce par
+  l'organe que `squad/README.md` section 7 designe, et non plus seulement par des executions
+  locales.
 - **Pedagogique** : quatre verdicts prononces, trois lignes de matiere passees `couvert-valide`
   dans ce sprint, une quatrieme (`cp-nature-mot`) qui reste ouverte sur une reserve nommee et
   routee, pas sur un refus.
