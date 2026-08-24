@@ -1,0 +1,545 @@
+{
+  "items": {
+    "Autrefois, les enfants, même les jours de pluie, ___ dehors après l'école.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « les enfants », au pluriel : à l'imparfait, le verbe « jouer » se termine par « -aient ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "jouait",
+        "jouaient",
+        "joueront"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 498
+    },
+    "Autrefois, les paysans du village ___ leurs champs à la main.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « les paysans du village », au pluriel : à l'imparfait, le verbe « labourer » se termine par « -aient ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "labouraient",
+        "labourait",
+        "laboureront"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 647
+    },
+    "Avant les vacances, toi et ta sœur ___ tous les soirs à la bibliothèque.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « toi et ta sœur », c'est-à-dire « vous » : à l'imparfait, le verbe « aller » se termine par « -iez ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "allait",
+        "alliez",
+        "allaient"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 421
+    },
+    "Bientôt, les hirondelles, comme chaque année, ___ vers les pays chauds.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « les hirondelles », au pluriel : au futur, le verbe « partir » se termine par « -ont ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "partaient",
+        "partira",
+        "partiront"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 535
+    },
+    "Cet été, mes cousins ___ une cabane au fond du jardin.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « mes cousins », au pluriel : au futur, le verbe « bâtir » se termine par « -ont ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "bâtissent",
+        "bâtiront",
+        "bâtira"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 505
+    },
+    "Chaque hiver, les habitants de la vallée ___ beaucoup de neige.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « les habitants de la vallée », au pluriel : à l'imparfait, le verbe « voir » se termine par « -aient ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "voyaient",
+        "voyait",
+        "verront"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 491
+    },
+    "Dans deux jours, le chien des voisins ___ un nouveau panier.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « le chien des voisins », au singulier : au futur, le verbe « avoir » est irrégulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "aura",
+        "auront",
+        "avait"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Dans quelques minutes, le train de Paris ___ en gare.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « le train de Paris », au singulier : au futur, le verbe « arriver » se termine par « -a ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "arrivera",
+        "arriveront",
+        "arrivait"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 532
+    },
+    "Demain, les enfants du quartier ___ un grand tournoi de football.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « les enfants du quartier », au pluriel : au futur, le verbe « gagner » se termine par « -ont ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "gagnera",
+        "gagneront",
+        "gagnent"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 565
+    },
+    "Il y a longtemps, le vieux tracteur du fermier ___ encore dans le champ.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « le vieux tracteur du fermier », au singulier : à l'imparfait, le verbe « rouler » se termine par « -ait ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "roulera",
+        "roulaient",
+        "roulait"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 502
+    },
+    "L'année prochaine, toi et tes amis ___ dans une nouvelle école.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « toi et tes amis », c'est-à-dire « vous » : au futur, le verbe « entrer » se termine par « -ez ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "entrera",
+        "entreront",
+        "entrerez"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 535
+    },
+    "La semaine prochaine, mon cousin et moi ___ à la piscine tous les jours.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « mon cousin et moi », c'est-à-dire « nous » : au futur, le verbe « aller » est irrégulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "iront",
+        "ira",
+        "irons"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Le chat de ma grand-mère, malgré son âge, ___ encore sur le mur du jardin.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « le chat de ma grand-mère », au singulier : le verbe « grimper » se termine par « -e ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "grimpe",
+        "grimpent",
+        "grimpes"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 529
+    },
+    "Le vieux chêne du parc ___ de l'ombre sur tout le banc.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « le vieux chêne du parc », au singulier : le verbe « offrir » se termine par « -e ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "offrent",
+        "offre",
+        "offres"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 425
+    },
+    "Les enfants du voisin ___ dans le jardin tous les après-midis.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « les enfants du voisin », au pluriel : le verbe « jouer » se termine par « -ent ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "joue",
+        "jouent",
+        "joues"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Les feuilles des arbres, malgré le vent, ___ encore accrochées aux branches.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « les feuilles des arbres », au pluriel : le verbe « rester » se termine par « -ent ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "resteront",
+        "restent",
+        "reste"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 475
+    },
+    "Les élèves de la classe, après la récréation, ___ leur cahier de mathématiques.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « les élèves de la classe », au pluriel : le verbe « ranger » se termine par « -ent ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "range",
+        "rangent",
+        "ranges"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 464
+    },
+    "Mon frère et moi ___ tous les mercredis au foot.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « mon frère et moi », c'est-à-dire « nous » : le verbe « jouer » se termine par « -ons ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "jouons",
+        "jouent",
+        "joue"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 422
+    },
+    "Quand j'étais au CP, mes amis et moi ___ toujours les premiers dans la cour.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « mes amis et moi », c'est-à-dire « nous » : à l'imparfait, le verbe « être » est irrégulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "étaient",
+        "étions",
+        "était"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 424
+    },
+    "Quand j'étais petit, mon frère et moi ___ ensemble dans la même chambre.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 583.19,
+        "basDuVerdict": 474.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « mon frère et moi », c'est-à-dire « nous » : à l'imparfait, le verbe « dormir » se termine par « -ions ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 411.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "dormait",
+        "dormaient",
+        "dormions"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 579
+    },
+    "Toi et ton frère ___ la vaisselle après le repas.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 535.19,
+        "basDuVerdict": 426.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Le sujet est « toi et ton frère », c'est-à-dire « vous » : le verbe « laver » se termine par « -ez ».",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Quelle est la bonne forme du verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "lave",
+        "lavez",
+        "laviez"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    }
+  },
+  "itemsADeuxRangees": [],
+  "itemsIndiceSousLePli": [
+    "Autrefois, les enfants, même les jours de pluie, ___ dehors après l'école.",
+    "Autrefois, les paysans du village ___ leurs champs à la main.",
+    "Avant les vacances, toi et ta sœur ___ tous les soirs à la bibliothèque.",
+    "Bientôt, les hirondelles, comme chaque année, ___ vers les pays chauds.",
+    "Cet été, mes cousins ___ une cabane au fond du jardin.",
+    "Chaque hiver, les habitants de la vallée ___ beaucoup de neige.",
+    "Dans deux jours, le chien des voisins ___ un nouveau panier.",
+    "Dans quelques minutes, le train de Paris ___ en gare.",
+    "Demain, les enfants du quartier ___ un grand tournoi de football.",
+    "Il y a longtemps, le vieux tracteur du fermier ___ encore dans le champ.",
+    "L'année prochaine, toi et tes amis ___ dans une nouvelle école.",
+    "La semaine prochaine, mon cousin et moi ___ à la piscine tous les jours.",
+    "Le chat de ma grand-mère, malgré son âge, ___ encore sur le mur du jardin.",
+    "Le vieux chêne du parc ___ de l'ombre sur tout le banc.",
+    "Les enfants du voisin ___ dans le jardin tous les après-midis.",
+    "Les feuilles des arbres, malgré le vent, ___ encore accrochées aux branches.",
+    "Les élèves de la classe, après la récréation, ___ leur cahier de mathématiques.",
+    "Mon frère et moi ___ tous les mercredis au foot.",
+    "Quand j'étais au CP, mes amis et moi ___ toujours les premiers dans la cour.",
+    "Quand j'étais petit, mon frère et moi ___ ensemble dans la même chambre."
+  ],
+  "itemsVerdictSousLePli": [],
+  "itemsVus": 21,
+  "jeu": "bandit-manchot-accord-sujet-verbe-cm1",
+  "lectures": 108,
+  "lecturesADefilementNonNul": 0,
+  "nombresDePropositions": [
+    3
+  ],
+  "parties": 6,
+  "seuilLargeurMaximum": 647,
+  "viewport": [
+    744,
+    551
+  ]
+}
