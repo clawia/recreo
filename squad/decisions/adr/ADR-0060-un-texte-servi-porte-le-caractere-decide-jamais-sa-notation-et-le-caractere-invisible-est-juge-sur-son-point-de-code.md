@@ -153,12 +153,89 @@ aucun inscrit au catalogue, aucun servi (`ADR-0013`, obligation 3) :
 - `corrige/` - les memes paquets corriges, verts, pour que la morsure prouve le critere et non le
   chargement.
 
-**Morsure prouvee aussi sur du materiau reel**, parce qu'une fixture ecrite par l'auteur d'une regle
-ressemble a ce qu'il imagine (constat de s05) : mutation d'un seul octet dans
+**Quatre mises a l'epreuve par mutation d'une chaine reellement servie**, ajoutees par l'amendement
+ci-dessous et executees par la CI a chaque build : la notation en graphie minuscule, l'entite HTML,
+l'espace ordinaire, et le temoin non mute. Leur materiau est derive du repertoire - le premier texte
+servi porteur d'un guillemet francais et d'un espace insecable - et s'invalide de lui-meme si la
+production cesse d'en servir.
+
+**Morsure prouvee aussi a la main sur du materiau reel**, avant que ces quatre epreuves n'existent :
+mutation d'un seul octet dans
 `cm1-antonymes.yaml` - un `U+00A0` apres un guillemet ouvrant remplace par `U+0020` - puis
 `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test -Dtest=LeTexteServiPorte...` ;
 **1 echec sur 5**, sur `chaqueTexteServiEnProductionPorteSesCaracteres`, message de la clause 2.
 Mutation annulee, `git status` propre sur le fichier avant commit.
+
+## Amendement du 2026-08-24, meme jour - collision avec le garde-fou de `yanis-qa`, et ce que j'en absorbe
+
+`sofia-sm` a route le meme obstacle a `yanis-qa` et a moi, en parallele, sans que l'un sache que
+l'autre l'avait. Nous avons ecrit deux garde-fous, dans le meme paquet Java, sur la meme famille de
+defaut : le mien, et `AucunTexteServiNePorteUnLookAlikeDEspaceInsecableTest` (branche `s19-yanis`,
+commit `c9a5052`). **Deux garde-fous qui gardent la meme chose sans le dire est la famille de defaut
+que ce depot sanctionne** : `LesGardeFousSontMisALEpreuveTest` verifie qu'une regle a sa morsure,
+jamais qu'elle n'est pas le doublon d'une autre, et un doublon non nomme finit supprime par quelqu'un
+qui croit elaguer.
+
+### Le recouvrement, clause par clause
+
+| Propriete | Sa regle | La mienne |
+|---|---|---|
+| Corpus | paquets du repertoire, items tires par le chargeur reel, memes cinq champs | **identique** |
+| Espace insecable dans les guillemets francais | oui | oui, **meme predicat** |
+| Non-vacuite sur les guillemets (`ADR-0051`) | oui | oui, **meme clause** |
+| Notation d'un caractere | deux sous-chaines litterales : la sequence en graphie **majuscule**, et `&nbsp;` | trois grammaires : **toute** contre-barre, **toute** entite HTML, **toute** notation `U+` |
+
+Deux clauses sur trois sont identiques, jusqu'au predicat. La troisieme differe, et c'est la que se
+trouve la trouvaille.
+
+### La mesure qui tranche, et elle n'est pas une lecture
+
+Methode, dans le meme paragraphe : sa classe copiee sans aucune modification dans mon worktree, une
+seule mutation posee sur du contenu **reellement servi** - un `indice` de `cm1-antonymes.yaml`
+reecrit en scalaire a apostrophes (le seul style ou la sequence survit au parseur), portant la
+notation **loin de tout guillemet francais** - puis
+`bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test -Dtest=...`, perimetre le seul
+module de contenu et ses amonts, `-am` porte.
+
+| Mutation, seule la casse hexadecimale change | Sa regle | La mienne |
+|---|---|---|
+| graphie **minuscule** (`u00a0`) | **7 tests sur 7 verts** | 1 echec sur 5 |
+| graphie **majuscule** (`u00A0`) | 1 echec sur 7 | 1 echec sur 5 |
+
+**Son critere de notation laisse passer la graphie minuscule de la sequence qu'il nomme.**
+`String.contains` est sensible a la casse, et les deux graphies denotent le meme caractere en YAML
+comme en Java. Ce n'est pas une etourderie : c'est la faute etablie en s11 avec `yanis-qa` lui-meme -
+un critere enumere construit sur le nom d'un incident clos plutot que sur une categorie. Elle ne s'est
+pas vue parce que la seconde clause, celle des guillemets, rattrape le cas ou la notation est
+adjacente a un guillemet, ce qui etait le cas de l'incident de s19 : **la regle attrapait le
+declencheur par sa bonne clause, et son auteur pouvait la croire mordante sur la mauvaise.** Il n'y a
+pas de mesure symetrique a produire : sa regle ne mord rien que la mienne laisse passer, ses deux
+premieres clauses etant les miennes et sa troisieme un sous-ensemble strict de ma clause 1.
+
+### Mon verdict, et ce qu'il n'est pas
+
+**Les deux regles se recouvrent ; une seule doit rester, et je conclus que c'est la mienne** - non
+parce qu'elle est la mienne, mais parce que son critere de notation est une categorie la ou l'autre
+est une liste de deux sous-chaines dont l'une manque sa propre cible. **Je ne supprime pas son
+fichier** : le travail d'un autre agent ne disparait pas dans mon lot. `sofia-sm` arbitre la fusion,
+avec cette mesure sous les yeux.
+
+**Et je dis aussi ce que sa regle fait mieux que la mienne, parce que c'est vrai et que je le lui
+prends.** Elle porte **des mises a l'epreuve par mutation d'une chaine reellement servie**, executees
+par la CI a chaque build. Je n'avais qu'une mutation manuelle, faite une fois, attestee en prose dans
+la section Morsure ci-dessus. Une fixture ecrite par l'auteur d'une regle ressemble a ce qu'il imagine
+(mon propre constat de s05) ; une preuve rejouee par la machine vaut mieux qu'une preuve rejouee par
+son auteur. **J'absorbe donc cette forme** : quatre epreuves de plus dans mon fichier
+(`uneChaineReelleOuLEspaceInsecableDevient...` et leur temoin), avec deux changements par rapport aux
+siennes - le materiau est **derive du repertoire** (le premier texte servi porteur d'un guillemet et
+d'un espace insecable) au lieu d'etre le paquet nomme `cm1-antonymes`, et la graphie mutee est la
+**minuscule**, celle que la mesure ci-dessus a montree manquante. La trouvaille de la section
+precedente devient ainsi elle-meme un test, au lieu de rester une phrase.
+
+**Si `sofia-sm` decide de garder les deux fichiers**, alors la frontiere doit etre nommee dans les
+deux Javadoc, sans quoi le prochain lecteur en supprimera un en croyant nettoyer. Mais je ne le
+recommande pas : il n'y a pas de frontiere a nommer ici, il y a un recouvrement de deux clauses sur
+trois et un sous-ensemble strict pour la troisieme.
 
 ## Consequences
 
@@ -184,6 +261,8 @@ Mutation annulee, `git status` propre sur le fichier avant commit.
 - **Mauvaise consequence assumee 3** : le garde-fou tire 60 items par paquet avec une graine fixe,
   comme ses onze voisins. Un paquet combinatoire dont un item fautif ne sortirait jamais dans ces 60
   tirages passerait vert. Aucun paquet a guillemets n'est combinatoire aujourd'hui.
+- **9 tests neufs** : 1 clause de production, 3 morsures de jeu fautif, 1 cas corrige, 4 mutations sur
+  chaine reellement servie.
 - **Le compte de garde-fous de balayage d'`adapter-content` passe de 11 a 12.** Methode, dans le meme
   paragraphe : `grep -l 'src/main/' *.java` sous
   `adapters/adapter-content/src/test/java/com/recreo/adapter/content`, c'est-a-dire exactement le

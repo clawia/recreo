@@ -123,14 +123,14 @@ bash outils/mvn-jdk21.sh -B clean verify
 
 ```
 [INFO] Reactor Summary for recreo 0.1.0-SNAPSHOT:
-[INFO] recreo ............................................. SUCCESS [  0.538 s]
-[INFO] recreo-domain ...................................... SUCCESS [  7.578 s]
-[INFO] recreo-application ................................. SUCCESS [  3.942 s]
-[INFO] recreo-adapter-web ................................. SUCCESS [ 29.503 s]
-[INFO] recreo-adapter-content ............................. SUCCESS [ 11.880 s]
-[INFO] recreo-bootstrap ................................... SUCCESS [ 39.187 s]
+[INFO] recreo ............................................. SUCCESS [  0.458 s]
+[INFO] recreo-domain ...................................... SUCCESS [  7.255 s]
+[INFO] recreo-application ................................. SUCCESS [  3.284 s]
+[INFO] recreo-adapter-web ................................. SUCCESS [ 27.578 s]
+[INFO] recreo-adapter-content ............................. SUCCESS [  9.729 s]
+[INFO] recreo-bootstrap ................................... SUCCESS [ 38.016 s]
 [INFO] BUILD SUCCESS
-[INFO] Total time:  01:32 min
+[INFO] Total time:  01:26 min
 ```
 
 | Module | Surefire | Failsafe |
@@ -138,12 +138,14 @@ bash outils/mvn-jdk21.sh -B clean verify
 | `recreo-domain` | 48 | - |
 | `recreo-application` | 13 | - |
 | `recreo-adapter-web` | 328 | - |
-| `recreo-adapter-content` | **175** | - |
+| `recreo-adapter-content` | **179** | - |
 | `recreo-bootstrap` | 92 | 6 |
 
-**662 tests, 0 echec, 0 erreur, 0 ignore. BUILD SUCCESS.** Ecart avec la mesure 1 : **+5 tests, +0
-regle ArchUnit**, et les cinq sont les miens (une clause de production, trois morsures, un cas
-corrige).
+**666 tests, 0 echec, 0 erreur, 0 ignore. BUILD SUCCESS.** Ecart avec la mesure 1 : **+9 tests, +0
+regle ArchUnit**, et les neuf sont les miens - une clause de production, trois morsures de jeu fautif,
+un cas corrige, et **quatre mutations d'une chaine reellement servie absorbees du garde-fou de
+`yanis-qa`** (section 6). Une mesure intermediaire de ce document annoncait 662 avant cette
+absorption ; elle est remplacee, pas conservee a cote.
 
 **La mesure partielle de mon lot, avec son perimetre et son `-am`.** Pendant l'ecriture, la boucle
 courte a ete :
@@ -186,7 +188,55 @@ de toolchains de l'utilisateur par `outils/mvn-jdk21.sh`, et n'est ecrite nulle 
 
 ---
 
-## 5. Ce que cette confirmation atteste, et ce qu'elle n'atteste pas
+## 5. Collision de garde-fous avec `yanis-qa`, et mon arbitrage
+
+`sofia-sm` a route le meme obstacle a `yanis-qa` et a moi, en parallele. Deux garde-fous, meme paquet
+Java, meme famille de defaut : le mien et
+`AucunTexteServiNePorteUnLookAlikeDEspaceInsecableTest` (`s19-yanis`, `c9a5052`). Le detail complet
+est dans l'amendement d'`ADR-0060` ; voici ce dont `sofia-sm` a besoin pour arbitrer la fusion.
+
+**Recouvrement** : deux clauses sur trois sont identiques jusqu'au predicat - l'espace insecable dans
+les guillemets francais, et la non-vacuite d'`ADR-0051` sur ces guillemets. Le corpus est le meme
+(paquets du repertoire, items tires par le chargeur reel, memes cinq champs).
+
+**La difference, mesuree et non lue.** Sa classe copiee sans modification dans mon worktree, une seule
+mutation posee sur du contenu **reellement servi** - un `indice` de `cm1-antonymes.yaml` reecrit en
+scalaire a apostrophes, portant la notation **loin de tout guillemet francais** :
+
+| Mutation, seule la casse hexadecimale change | Sa regle | La mienne |
+|---|---|---|
+| graphie **minuscule** | **7 tests sur 7 verts** | 1 echec sur 5 |
+| graphie **majuscule** | 1 echec sur 7 | 1 echec sur 5 |
+
+Commande, perimetre nomme et `-am` porte :
+`bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test -Dtest=...`, le seul module de
+contenu et ses amonts. Mutation et copie annulees ensuite ; `git status` propre avant tout commit.
+
+**Verdict** : son critere de notation est bati sur deux sous-chaines litterales et laisse passer la
+graphie minuscule de la sequence qu'il nomme - la faute etablie en s11 avec lui-meme, un critere
+enumere sur le nom d'un incident clos. Il ne s'est pas vu parce que sa clause des guillemets rattrape
+le cas ou la notation touche un guillemet, ce qui etait le cas du declencheur de s19. **Les deux
+regles se recouvrent, une seule doit rester, et c'est la mienne** - parce que son critere est une
+categorie la ou l'autre est une liste. Sa regle ne mord rien que la mienne laisse passer.
+
+**Ce que je ne fais pas** : je ne supprime pas son fichier. Le travail d'un autre agent ne disparait
+pas dans mon lot ; `sofia-sm` arbitre la fusion. Si elle garde les deux, la frontiere doit etre
+nommee dans les deux Javadoc - mais il n'y a pas de frontiere a nommer ici, il y a un doublon.
+
+**Ce que je lui prends, parce que sa forme est meilleure que la mienne sur ce point** : ses mises a
+l'epreuve par **mutation d'une chaine reellement servie**, rejouees par la CI a chaque build, la ou je
+n'avais qu'une mutation manuelle attestee en prose. Quatre epreuves de plus dans mon fichier, avec
+deux ameliorations : le materiau est **derive du repertoire** au lieu d'un paquet nomme, et la graphie
+mutee est la minuscule - la trouvaille ci-dessus devient un test au lieu de rester une phrase.
+
+**Sur les comptes** : il mesure 664 apres son lot, moi 666 apres le mien, tous deux depuis 657. Ni
+l'un ni l'autre ne decrit l'arbre final, qui depend de son arbitrage. Les deux totaux ne s'additionnent
+pas : si les deux fichiers etaient fusionnes, le total serait 673, et sept de ces tests garderaient
+deux fois la meme propriete.
+
+---
+
+## 6. Ce que cette confirmation atteste, et ce qu'elle n'atteste pas
 
 **Atteste** : la porte technique est verte sur reacteur complet, deux fois, avant et apres mon lot -
 compilation, tests unitaires, tests d'integration Spring Boot, ArchUnit, garde-fou de chemins.
@@ -197,8 +247,8 @@ que ce texte dit.
 
 **Point de convergence a verifier avec `yanis-qa`** : il produit son propre compte en parallele. Si
 son total de tests differe de 657 sur l'arbre fusionne, la premiere piste est le journal Maven contre
-les rapports texte (section 1, note de methode) ; s'il differe de 662, la seconde est de savoir si son
-arbre porte mon lot. Si son compte de **regles** differe de 30, la piste est l'une des trois
+les rapports texte (section 1, note de methode) ; s'il differe de 666, la seconde est de savoir si son
+arbre porte mon lot (voir la section 5 : nos deux lots ne s'additionnent pas). Si son compte de **regles** differe de 30, la piste est l'une des trois
 precisions de la section 2 - `@ArchTest` contre champ `ArchRule`, le faux depot, ou l'addition des
 garde-fous de balayage aux regles. Une divergence n'est pas une erreur de l'un des deux : c'est une
 trouvaille tant que les deux methodes ne sont pas ecrites cote a cote.

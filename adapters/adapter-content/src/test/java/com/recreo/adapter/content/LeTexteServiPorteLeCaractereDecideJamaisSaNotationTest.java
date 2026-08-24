@@ -169,68 +169,94 @@ class LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest {
         return rendu.toString().trim();
     }
 
+    /**
+     * Les defauts d'un seul texte servi, clauses 1 et 2. Fonction pure, extraite pour que les mises a
+     * l'epreuve par mutation ci-dessous s'exercent sur une chaine reellement servie plutot que sur une
+     * fixture de ma main - la forme que yanis-qa a donnee a son garde-fou du meme sprint, et qui est
+     * meilleure que la preuve manuelle et datee que j'avais ecrite dans ADR-0060.
+     */
+    static List<String> defautsDe(String origine, String valeur) {
+        List<String> defauts = new ArrayList<>();
+        for (Pattern notation : NOTATIONS) {
+            Matcher trouve = notation.matcher(valeur);
+            while (trouve.find()) {
+                defauts.add(String.format(
+                        "%s : le fragment \"%s\" est la notation d'un caractere, pas le caractere."
+                                + " Le texte servi vaut %s. Ecrire le caractere lui-meme dans le"
+                                + " paquet (ADR-0060, clause 1)",
+                        origine, trouve.group(), pointsDeCode(valeur)));
+            }
+        }
+        for (int rang = 0; rang < valeur.length(); rang++) {
+            char lettre = valeur.charAt(rang);
+            if (lettre == GUILLEMET_OUVRANT
+                    && (rang + 1 >= valeur.length() || valeur.charAt(rang + 1) != ESPACE_INSECABLE)) {
+                defauts.add(String.format(
+                        "%s : le guillemet francais ouvrant n'est pas suivi d'un espace insecable."
+                                + " Le texte servi vaut %s (SYN-9, ANT-5, ADR-0060, clause 2)",
+                        origine, pointsDeCode(valeur)));
+            }
+            if (lettre == GUILLEMET_FERMANT
+                    && (rang == 0 || valeur.charAt(rang - 1) != ESPACE_INSECABLE)) {
+                defauts.add(String.format(
+                        "%s : le guillemet francais fermant n'est pas precede d'un espace insecable."
+                                + " Le texte servi vaut %s (SYN-9, ANT-5, ADR-0060, clause 2)",
+                        origine, pointsDeCode(valeur)));
+            }
+        }
+        return defauts;
+    }
+
+    private static int nombreDeGuillemetsFrancais(String valeur) {
+        int compte = 0;
+        for (int rang = 0; rang < valeur.length(); rang++) {
+            char lettre = valeur.charAt(rang);
+            if (lettre == GUILLEMET_OUVRANT || lettre == GUILLEMET_FERMANT) {
+                compte++;
+            }
+        }
+        return compte;
+    }
+
     static void verifierQueChaqueTexteServiPorteSesCaracteres(Path racine, String racineClasspath) {
         List<TexteServi> textes = textesServis(racine, racineClasspath);
         assertThat(textes)
                 .as("ce garde-fou ne prouve rien s'il ne trouve aucun texte servi sous %s", racine)
                 .isNotEmpty();
 
-        List<String> notations = new ArrayList<>();
-        List<String> espacesSecables = new ArrayList<>();
+        List<String> defauts = new ArrayList<>();
         int guillemetsExamines = 0;
-
         for (TexteServi texte : textes) {
-            String valeur = texte.valeur();
-            for (Pattern notation : NOTATIONS) {
-                Matcher trouve = notation.matcher(valeur);
-                while (trouve.find()) {
-                    notations.add(String.format(
-                            "%s : le fragment \"%s\" est la notation d'un caractere, pas le caractere."
-                                    + " Le texte servi vaut %s. Ecrire le caractere lui-meme dans le"
-                                    + " paquet (ADR-0060, clause 1)",
-                            texte.origine(), trouve.group(), pointsDeCode(valeur)));
-                }
-            }
-
-            for (int rang = 0; rang < valeur.length(); rang++) {
-                char lettre = valeur.charAt(rang);
-                if (lettre == GUILLEMET_OUVRANT) {
-                    guillemetsExamines++;
-                    if (rang + 1 >= valeur.length() || valeur.charAt(rang + 1) != ESPACE_INSECABLE) {
-                        espacesSecables.add(String.format(
-                                "%s : le guillemet francais ouvrant n'est pas suivi d'un espace"
-                                        + " insecable. Le texte servi vaut %s (SYN-9, ANT-5,"
-                                        + " ADR-0060, clause 2)",
-                                texte.origine(), pointsDeCode(valeur)));
-                    }
-                }
-                if (lettre == GUILLEMET_FERMANT) {
-                    guillemetsExamines++;
-                    if (rang == 0 || valeur.charAt(rang - 1) != ESPACE_INSECABLE) {
-                        espacesSecables.add(String.format(
-                                "%s : le guillemet francais fermant n'est pas precede d'un espace"
-                                        + " insecable. Le texte servi vaut %s (SYN-9, ANT-5,"
-                                        + " ADR-0060, clause 2)",
-                                texte.origine(), pointsDeCode(valeur)));
-                    }
-                }
-            }
+            defauts.addAll(defautsDe(texte.origine(), texte.valeur()));
+            guillemetsExamines += nombreDeGuillemetsFrancais(texte.valeur());
         }
 
-        assertThat(notations)
-                .as("ADR-0060 clause 1 : un texte servi porte le caractere, jamais sa notation - une"
-                        + " sequence d'echappement que le parseur n'a pas resolue, une entite HTML ou"
-                        + " une notation de point de code atteint l'enfant telle quelle")
-                .isEmpty();
-        assertThat(espacesSecables)
-                .as("ADR-0060 clause 2 : SYN-9 et ANT-5 exigent un espace insecable a l'interieur des"
-                        + " guillemets francais - un espace ordinaire y est invisible a l'oeil et"
-                        + " autorise un retour a la ligne entre le guillemet et le mot marque")
+        assertThat(defauts)
+                .as("ADR-0060 : un texte servi porte le caractere decide, jamais sa notation"
+                        + " (clause 1), et l'espace interieur d'un guillemet francais est insecable"
+                        + " (clause 2, SYN-9 et ANT-5)")
                 .isEmpty();
         assertThat(guillemetsExamines)
                 .as("ADR-0051 : aucun texte servi sous %s ne porte de guillemet francais, la clause 2"
                         + " de ce garde-fou n'examine donc aucun objet et ne prouve rien", racine)
                 .isPositive();
+    }
+
+    /**
+     * Un texte reellement servi par la production, porteur d'un guillemet francais et donc d'un
+     * espace insecable : le materiau des quatre mises a l'epreuve par mutation. Derive du repertoire
+     * comme le reste, jamais d'un paquet nomme, et s'invalide de lui-meme si la production cesse d'en
+     * servir - une mise a l'epreuve qui ne mute plus rien de reel ne prouve plus rien.
+     */
+    private static String unTexteReelPorteurDUnGuillemet() {
+        return textesServis(CONTENU_DE_PRODUCTION, "").stream()
+                .map(TexteServi::valeur)
+                .filter(valeur -> nombreDeGuillemetsFrancais(valeur) > 0)
+                .filter(valeur -> valeur.indexOf(ESPACE_INSECABLE) >= 0)
+                .findFirst()
+                .orElseThrow(() -> new AssertionError(
+                        "plus aucun texte servi ne porte un guillemet francais flanque d'un espace"
+                                + " insecable : ces mises a l'epreuve ne mutent plus rien de reel"));
     }
 
     @Test
@@ -282,5 +308,72 @@ class LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest {
                 CONTRE_EXEMPLE.resolve("sans-guillemet"), CONTRE_EXEMPLE_CLASSPATH + "/sans-guillemet"))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("n'examine donc aucun objet");
+    }
+
+    /**
+     * Mises a l'epreuve par mutation d'une chaine <b>reellement servie</b>, absorbees du garde-fou
+     * qu'a ecrit {@code yanis-qa} le meme jour sur la meme famille de defaut
+     * ({@code AucunTexteServiNePorteUnLookAlikeDEspaceInsecableTest}, branche {@code s19-yanis}).
+     * Sa forme est meilleure que la mienne sur ce point precis et je la reprends telle quelle plutot
+     * que de m'en tenir a la preuve manuelle et datee que porte {@code ADR-0060} : une mutation
+     * rejouee par la CI a chaque build vaut mieux qu'une mutation rejouee une fois par son auteur.
+     *
+     * <p>La graphie de l'artefact est ici <b>minuscule</b>, et ce n'est pas indifferent : c'est
+     * exactement la graphie que le critere par sous-chaine de {@code yanis-qa} laisse passer.
+     * Mesure du 2026-08-24, sa classe executee sans modification sur un indice de
+     * {@code cm1-antonymes} mute en scalaire a apostrophes, loin de tout guillemet - graphie
+     * minuscule : 7 tests sur 7 verts ; meme mutation, seule la casse hexadecimale changee :
+     * 1 echec sur 7. Le present garde-fou est rouge dans les deux cas, parce que son critere est la
+     * contre-barre et non le nom d'un incident.
+     */
+    @Test
+    void uneChaineReelleOuLEspaceInsecableDevientLaNotationEnMinusculeEstUnDefaut() {
+        String reel = unTexteReelPorteurDUnGuillemet();
+        String mute = reel.replace(String.valueOf(ESPACE_INSECABLE), "\\" + "u00a0");
+
+        assertThat(mute)
+                .as("la mutation doit changer la chaine, sans quoi elle ne prouve rien")
+                .isNotEqualTo(reel);
+        assertThat(defautsDe("production / mutation", mute))
+                .as("clause 1 : la notation en graphie minuscule est un defaut au meme titre que la"
+                        + " graphie majuscule")
+                .isNotEmpty();
+    }
+
+    /** Meme mutation, second membre de la categorie : l'entite HTML, jamais resolue par aucun style. */
+    @Test
+    void uneChaineReelleOuLEspaceInsecableDevientUneEntiteHtmlEstUnDefaut() {
+        String reel = unTexteReelPorteurDUnGuillemet();
+        String mute = reel.replace(String.valueOf(ESPACE_INSECABLE), "&nbsp;");
+
+        assertThat(mute)
+                .as("la mutation doit changer la chaine, sans quoi elle ne prouve rien")
+                .isNotEqualTo(reel);
+        assertThat(defautsDe("production / mutation", mute))
+                .as("clause 1 : une entite de caractere HTML dans un texte servi est un defaut")
+                .isNotEmpty();
+    }
+
+    /**
+     * Le membre silencieux, sur du materiau reel : le geste d'un editeur qui "normalise les espaces",
+     * ou d'une main qui tape la barre d'espace. Rien ne le distingue a l'oeil.
+     */
+    @Test
+    void uneChaineReelleOuLEspaceInsecableDevientUnEspaceOrdinaireEstUnDefaut() {
+        String reel = unTexteReelPorteurDUnGuillemet();
+        String mute = reel.replace(String.valueOf(ESPACE_INSECABLE), " ");
+
+        assertThat(mute)
+                .as("la mutation doit changer la chaine, sans quoi elle ne prouve rien")
+                .isNotEqualTo(reel);
+        assertThat(defautsDe("production / mutation", mute))
+                .as("clause 2 : un guillemet francais flanque d'un espace ordinaire est un defaut")
+                .isNotEmpty();
+    }
+
+    /** Le temoin des trois mutations : la meme chaine reelle, non mutee, ne reproche rien. */
+    @Test
+    void laMemeChaineReelleNonMuteeNeReprocheRien() {
+        assertThat(defautsDe("production / temoin", unTexteReelPorteurDUnGuillemet())).isEmpty();
     }
 }
