@@ -5237,3 +5237,274 @@ perimetre de s17 par ailleurs - la sortie de `S17-2` reste entierement etrangere
   le meme commit que la bascule de `matiere`.
 - **Lien decision (ajout)** : `squad/sprints/s17-francais-cm1-et-dette/avis-garde-fous-routes-par-
   yanis.md`, section 4.
+
+## Sprint 19 - Contenu seul en francais CP/CM1, conception de la saisie sans code
+
+Perimetre fixe par `DEC-0042-perimetre-sprint-19-contenu-seul-conception-de-la-saisie-lecture-a-
+voix-haute-non-couvrable.md`. Quatre stories de contenu servies par la mecanique `bandit-manchot`
+existante (`S19-1` a `S19-4`), deux stories de dette deja chiffree (`S19-5`, `S19-6`). Aucune story
+de code de mecanique neuve ce sprint : la conception de la saisie (Lot C de `DEC-0042`) avance sans
+capacite de developpement affectee, via `theo-archi` et `nadia-prof`.
+
+### S19-1 - Les antonymes (francais CM1, ferme la moitie manquante de S17-3)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux retrouver, dans une phrase, le mot de sens oppose a
+  un mot donne, afin de nuancer ou contraster un propos, et pas seulement le preciser par un mot
+  proche.
+- **Competence programme visee** : francais, CM1 (cycle 3), domaine "Vocabulaire", "Utiliser des
+  synonymes et antonymes pour preciser ou nuancer un propos"
+  (`squad/programme/francais/competences-cm1.md`) - seconde moitie de la ligne ouverte par `S17-3`.
+  Cette story affecte `S17-5`, ecrite au backlog depuis s17 sur demande de `nadia-prof` (condition
+  SYN-4) et jamais affectee depuis : le besoin, la competence et le lien decision de `S17-5` restent
+  exacts, je ne les reecris pas, je les complete par des criteres fermes et une decision de forme.
+- **Matiere premiere verifiee, aucune reutilisable telle quelle** : `contenu-repris/associer/
+  cm1-synonymes.yml` (12 paires mot/synonyme) ne contient aucun antonyme - verifie ligne par ligne,
+  confirme par `DEC-0039` ("verifie par recherche du mot 'antonyme' et de ses derives dans
+  `contenu-repris/` : aucun fichier"). Le paquet est donc integralement neuf.
+- **Decision de forme : paquet neuf et jeu neuf au catalogue, pas une extension de
+  `cm1-synonymes.yaml`.** Deux options existaient ; je retiens la premiere et j'ecris pourquoi la
+  seconde ne tient pas :
+  - L'entree de catalogue `bandit-manchot-synonymes-cm1` porte, depuis `ADR-0052`, une consigne
+    generique unique et fixe : *"Quel mot peut remplacer le mot entre guillemets sans changer le
+    sens ?"* (`adapters/adapter-content/src/main/resources/catalogue.yaml`, verifie). Un item
+    d'antonyme repondrait faux a cette question par construction - il n'existe pas de mot qui
+    "remplace sans changer le sens" par un contraire. Ajouter des antonymes au paquet
+    `cm1-synonymes.yaml` sans changer la consigne produirait un jeu qui pose une question fausse a
+    la moitie de ses items ; changer la consigne selon l'item demanderait de revenir a une clause
+    portee par l'enonce, exactement ce qu'`ADR-0052` a fait sortir de l'enonce pour gagner de la
+    hauteur utile (voir `FICHE-bandit-manchot-synonymes-cm1.md`, section sur `ADR-0052`) - je ne
+    rouvre pas ce gain pour cette story.
+  - `nadia-prof` a elle-meme qualifie les antonymes d'"**autre operation**", pas d'un prolongement
+    du meme geste (`DEC-0039`, section 3) : un jeu distinct, avec son propre titre et sa propre
+    consigne, porte cette distinction plus honnetement qu'un paquet unique aux deux operations
+    melangees.
+  - **Ce que cela ne change pas** : aucune mecanique neuve, aucun code de domaine - une entree de
+    catalogue de plus, sur le meme patron que les treize deja servies. La ligne de matrice reste
+    servie par "Jeu(x) couvrant" au pluriel (`bandit-manchot-synonymes-cm1`,
+    `bandit-manchot-antonymes-cm1`), une fois les deux jeux valides.
+  - Identifiants proposes, a confirmer par le developpeur : `id: bandit-manchot-antonymes-cm1`,
+    `paquet: cm1-antonymes`, `titre` et `consigne` a rediger par le developpeur sur le meme patron
+    que "Les synonymes" (consigne generique invariante, mot cible marque par une ponctuation
+    francaise dans l'enonce, jamais un mot isole - voir `SYN-1` et `SYN-6`, meme fiche).
+- **Criteres d'acceptation**, par analogie directe avec `SYN-1` a `SYN-9` de `S17-3` (memes motifs,
+  operation inverse) :
+  - Etant donne chaque item du paquet, quand on lit son enonce, alors le mot cible est presente
+    entre guillemets francais a l'interieur d'une phrase complete, jamais isole (repris de `SYN-1`).
+  - Etant donne un item, quand on lit sa bonne reponse, alors elle est un antonyme reellement
+    oppose au mot cible **dans cette phrase precise** - pas un antonyme du mot pris hors contexte
+    (un mot polysemique n'a pas le meme contraire selon le sens retenu dans la phrase).
+  - Etant donne un item, quand on lit ses distracteurs, alors aucun n'est lui-meme un antonyme
+    acceptable du mot cible dans cette phrase - un seul contraire juste par item.
+  - Etant donne les espaces a l'interieur des guillemets francais, quand le paquet est ecrit,
+    alors ce sont des espaces insecables (repris de `SYN-9`).
+  - Etant donne le paquet complet, quand on le compte, alors il porte au moins 16 items (plancher
+    deja retenu sur `cm1-synonymes.yaml` apres retrait des items a trois rangees de propositions -
+    ce paquet neuf doit verifier des l'ecriture qu'aucun de ses items ne produit trois rangees a la
+    reference 744 x 551, `DEC-0040`, plutot que de le decouvrir a l'audit).
+  - Etant donne chaque item, quand on lit son indice, alors il aide a trouver l'antonyme sans le
+    nommer (repris du principe deja applique a tous les paquets de ce produit).
+  - Ce que cette story ne tranche pas : le mecanisme de rendu de la consigne et de l'enonce
+    (deja etabli par `ADR-0052` pour "Les synonymes", a reutiliser tel quel), routee a
+    `theo-archi` seulement si un ecart apparait.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof`, sur un **arbitrage prealable a rendre avant tout code** (la reponse rendue sur
+    le proxy des synonymes ne vaut pas automatiquement pour l'operation inverse, `S17-5`) : que
+    chaque antonyme retenu soit un contraire pertinent et univoque pour un CM1 dans le contexte de
+    sa phrase, que la profondeur des phrases soit de niveau CM1 (pas CE1/CE2, meme exigence que
+    `SYN-2`/`SYN-3`), et que la decision de forme ci-dessus (jeu distinct) soit elle-meme jugee
+    lisible par un enfant qui a deja joue "Les synonymes".
+- **Lien decision** : `S17-5` (origine), `DEC-0039` section 3, `DEC-0042` section 5.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, arbitrage prealable de `nadia-prof`
+  requis avant tout code.
+
+### S19-2 - Accorder en genre et en nombre dans le groupe nominal (francais CM1)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux choisir la bonne terminaison du determinant, du nom
+  ou de l'adjectif dans un groupe de mots, afin qu'ils s'accordent tous ensemble en genre et en
+  nombre.
+- **Competence programme visee** : francais, CM1 (cycle 3), domaine "Orthographe et grammaire",
+  "Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif)"
+  (`squad/programme/francais/competences-cm1.md`).
+- **Matiere premiere verifiee, partiellement reutilisable** : `contenu-repris/textes-trous/
+  cm1-accords.yml` (5 items) porte uniquement l'accord de l'adjectif - "le determinant et le nom
+  [sont] deja fixes dans chaque phrase" (constat deja verse au backlog, section "Backlog - sprints
+  suivants", jamais instruit depuis). La competence du referentiel nomme le determinant, le nom et
+  l'adjectif : ce paquet ne teste aujourd'hui qu'un tiers du groupe nominal.
+- **Decision de perimetre : le paquet neuf couvre les trois composantes, pas seulement
+  l'adjectif.** Je n'ouvre pas cette ligne sur le seul materiau repris, qui reproduirait le motif
+  deja sanctionne sur ce produit (couverture partielle non nommee des l'ouverture - additions
+  "jusqu'a 10", homophones "principaux", conjugaison "un temps sur trois", tous nommes des
+  l'ouverture depuis, jamais decouverts a l'audit). Si le developpeur ou `nadia-prof` juge que les
+  trois composantes ne peuvent pas tenir dans un seul paquet a cout raisonnable, la limite de
+  couverture doit etre nommee par ecrit dans la fiche de conformite des l'ouverture, sur le modele
+  de `DEC-0013` (conjugaison, un temps sur trois nomme d'emblee) - jamais decouverte a l'audit.
+- **Criteres d'acceptation** :
+  - Etant donne le paquet complet, quand on classe ses items par composante testee (determinant,
+    nom, adjectif), alors chacune des trois est representee par au moins un quart des items - aucun
+    tiers du groupe nominal n'est cite dans l'enonce sans jamais porter le blanc a completer.
+  - Etant donne un item qui teste l'accord du nom (singulier/pluriel), quand on lit ses
+    distracteurs, alors ils portent une erreur de nombre reelle sur le nom (par exemple un pluriel
+    en `-s` manquant ou ajoute a tort), jamais une erreur d'un autre ordre.
+  - Etant donne un item qui teste l'accord du determinant, quand on lit ses distracteurs, alors ils
+    portent un determinant dont le genre ou le nombre ne correspond pas au nom qui suit, jamais un
+    determinant inexistant en francais.
+  - Etant donne un item qui teste l'accord de l'adjectif, quand on lit ses distracteurs, alors ils
+    reprennent le patron deja valide sur `cm1-accords.yml` (les quatre formes possibles de
+    l'adjectif, une seule accordee juste avec le reste du groupe).
+  - Etant donne le paquet complet, quand on le compte, alors il porte au moins 20 items (aucun
+    plancher fixe par `nadia-prof` a ce jour ; ce chiffre est ma propre checklist d'ouverture, pas
+    une condition pedagogique).
+  - Ce que cette story ne tranche pas : le format exact de l'item (une phrase a trou par composante,
+    ou un groupe nominal complet avec plusieurs trous) - routee a `theo-archi` si elle a un cout
+    different selon la forme retenue, sinon laissee au developpeur.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que les trois composantes soient chacune testees a une profondeur de CM1, et que
+    la limite de couverture, si les trois ne tiennent finalement pas dans ce paquet, soit nommee
+    avant le premier audit et non decouverte pendant.
+- **Lien decision** : `DEC-0042`, section 5 ; candidate deja versee au backlog, section "Backlog -
+  sprints suivants" ("`textes-trous/cm1-accords.yml` [...] reste le candidat non retenu cette
+  fois... a instruire pour un sprint suivant").
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S19-3 - Accorder le verbe avec son sujet (francais CM1)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux choisir la bonne forme d'un verbe pour qu'il
+  s'accorde avec son sujet, meme quand ce sujet n'est pas juste devant le verbe, afin de ne plus
+  confondre "accorder" avec "connaitre sa conjugaison".
+- **Competence programme visee** : francais, CM1 (cycle 3), domaine "Orthographe et grammaire",
+  "Accorder le verbe avec son sujet (cas frequents, temps simples : present, futur, imparfait)"
+  (`squad/programme/francais/competences-cm1.md`).
+- **Matiere premiere verifiee, hors sujet** : `contenu-repris/textes-trous/cm1-conjugaison.yml` (6
+  items) teste le choix de la bonne personne conjuguee au present, avec le sujet immediatement
+  devant le verbe et un pronom sujet non ambigu dans chaque phrase - c'est la matiere qui sert deja
+  la ligne "Conjuguer les verbes frequents..." (`cm1-conjugaison-present.yaml`, `couvert-valide`).
+  Cette ligne-ci vise l'**accord**, pas la conjugaison : elle suppose que l'enfant sache deja la
+  forme et doive reperer a quel sujet elle s'accorde, y compris quand ce sujet est un groupe
+  nominal, un sujet compose, ou separe du verbe par un groupe de mots. Aucune matiere premiere
+  identifiee ne teste cela ; le paquet est integralement neuf.
+- **Distinction a garder de la ligne conjugaison deja couverte, pour ne pas construire un doublon** :
+  chaque item de ce paquet doit exiger de reperer le sujet avant de choisir la forme - jamais un
+  sujet pronominal isole colle au verbe, qui ne fait que redemander la conjugaison deja testee par
+  `cm1-conjugaison-present.yaml`.
+- **Criteres d'acceptation** :
+  - Etant donne chaque item, quand on lit sa phrase, alors le sujet n'est jamais un pronom
+    personnel seul immediatement suivi du verbe - il est soit un groupe nominal ("les enfants du
+    voisin ___"), soit un sujet compose ("mon frere et moi ___"), soit separe du verbe par un
+    groupe de mots ("les enfants, malgre la pluie, ___").
+  - Etant donne un item, quand on lit ses distracteurs, alors au moins un est la forme correcte
+    d'un autre nombre ou d'une autre personne que celle du sujet reel - une erreur d'accord, pas une
+    erreur de temps ni de verbe.
+  - Etant donne le paquet complet, quand on le classe par temps, alors le present, le futur et
+    l'imparfait sont chacun representes - la competence du referentiel nomme les trois ; si les
+    trois ne tiennent pas dans ce paquet a cout raisonnable, la limite doit etre nommee par ecrit
+    dans la fiche de conformite des l'ouverture, sur le modele de `DEC-0013`, jamais decouverte a
+    l'audit.
+  - Etant donne le paquet complet, quand on le compte, alors il porte au moins 20 items.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que chaque sujet propose soit reellement un cas ou un enfant de CM1 risque de se
+    tromper d'accord (le risque cible par la competence), et que la profondeur des trois temps, si
+    tous les trois sont couverts, soit homogene.
+- **Lien decision** : `DEC-0042`, section 5.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S19-4 - Distinguer nom et verbe dans une phrase tres simple (francais CP)
+
+- **Besoin** : en tant qu'eleve de CP, je veux dire si un mot d'une phrase courte est un nom ou un
+  verbe, afin de commencer a reperer comment une phrase est construite.
+- **Competence programme visee** : francais, CP (cycle 2), domaine "Orthographe et grammaire",
+  "Distinguer les principaux types de mots (nom, verbe) dans une phrase tres simple"
+  (`squad/programme/francais/competences-cp.md`).
+- **Matiere premiere verifiee, adaptation reelle requise, pas une reprise** :
+  `contenu-repris/mots/cm1-nature-mot.yml` (16 items) classe des mots **isoles** (hors phrase) en
+  quatre natures (nom, verbe, adjectif, determinant), a un niveau CM1. La competence CP demande
+  exactement deux natures (nom, verbe) et exige que le mot soit presente **dans une phrase tres
+  simple**, jamais isole. Aucun des deux ecarts n'est mineur : la forme (mot isole contre mot en
+  phrase) et le perimetre (quatre natures contre deux) changent tous les deux. Ce paquet est donc
+  une adaptation reelle qui repasse integralement devant `nadia-prof`, pas une simple reprise de
+  matiere (`contenu-repris/README.md`).
+- **Criteres d'acceptation** :
+  - Etant donne chaque item, quand on lit son enonce, alors il presente une phrase tres simple
+    (sujet, verbe, et au plus un complement court - vocabulaire et longueur de niveau CP, pas CM1)
+    avec le mot cible marque par une ponctuation francaise, jamais un mot isole.
+  - Etant donne un item, quand on lit ses propositions, alors elles sont exactement deux : "nom" et
+    "verbe" - aucune troisieme nature, la competence CP n'en nommant que deux.
+  - Etant donne le paquet complet, quand on le classe par bonne reponse, alors "nom" et "verbe"
+    sont chacun representes par au moins la moitie moins un quart des items (repartition equilibree,
+    aucune des deux natures dominante).
+  - Etant donne le paquet complet, quand on lit le vocabulaire employe (sujets, verbes,
+    complements), alors chaque mot est un mot courant de CP, deja rencontre ou plausible a ce niveau
+    de lecture - pas un mot du vocabulaire CM1 du paquet repris.
+  - Etant donne chaque item, quand on lit son indice, alors il aide a reconnaitre la nature du mot
+    (par exemple : "un verbe dit ce qu'on fait") sans jamais nommer la reponse.
+  - Etant donne le paquet complet, quand on le compte, alors il porte au moins 16 items.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof`, sur un **arbitrage prealable a rendre avant tout code** (competence CP jamais
+    instruite a ce niveau de detail) : que les phrases soient reellement lisibles par un enfant de
+    CP en cours d'apprentissage de la lecture (longueur, vocabulaire, absence de mot irregulier non
+    encore vu), et que le choix nom/verbe ne se resolve jamais par un indice de position plutot que
+    par le sens du mot.
+- **Lien decision** : `DEC-0042`, section 5.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, arbitrage prealable de `nadia-prof`
+  requis avant tout code.
+
+### S19-5 - Migration ADR-0049 (accentuation des descripteurs de matiere)
+
+**Non affectee jusqu'a ce jour, affectee au sprint 19 par `DEC-0042`.** La story complete, son
+perimetre et son cout restent ceux ecrits section "Story de migration - Les paquets de contenu
+servis portent leur matiere accentuee (execution d'ADR-0049)" et son complement du 2026-08-19,
+plus haut dans ce document : je ne les reecris pas. **Perimetre reverifie a l'ouverture de s19,
+inchange** : les 13 paquets servis (`adapters/adapter-content/src/main/resources/contenu/*.yaml`)
+portent tous encore `matiere: "Francais"` ou `matiere: "Mathematiques"` en ASCII, sans exception.
+
+**Point de sequencement ajoute, route a `sofia-sm` et `theo-archi`** (`DEC-0042`, section 5) :
+l'ordre de fusion entre cette story et `S19-1` a `S19-4` determine la graphie a ecrire dans les
+quatre paquets neufs, sous la contrainte symetrique d'`UneMatiereNAQuUneSeuleGraphieDansLeContenu-
+ServiTest` - je ne fixe pas cet ordre ici.
+
+- **Lien decision** : `ADR-0049-une-matiere-s-ecrit-accentuee-dans-la-donnee-de-catalogue.md`,
+  `DEC-0042`, section 6.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, avec `theo-archi` pour le mecanisme
+  de la bascule et l'ordre de fusion.
+
+### S19-6 - Le pli ne mord pas entre 576 et 719 px de viewport (SYN-16 / BPM-8)
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue sur un ordinateur dont la fenetre du navigateur
+  n'occupe pas tout l'ecran (fenetre partagee, fenetre non maximisee), je veux voir entierement les
+  propositions de reponse et les indices des jeux "Les synonymes" et "Le bon petit mot", afin de
+  jouer dans les memes conditions que sur un ordinateur en plein ecran.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Constat mesure, pas suppose** (`nadia-prof`, `squad/conformite/FICHE-bandit-manchot-synonymes-
+  cm1.md` et `FICHE-bandit-manchot-homophones-cm1.md`, verdicts du 2026-08-23) : le correctif livre
+  pour `SYN-11`/`BPM-1` ne mord qu'a partir de 720 px de viewport. Entre 576 et 719 px : cinq items
+  de synonymes sur seize gardent deux rangees de propositions et leur verdict sous le pli, pire cas
+  594,19 px (`SYN-16`) ; six a sept items d'homophones sur vingt-quatre gardent leur indice coupe
+  par le pli, mesure a 700 et 719 px (`BPM-8`). Les deux sont non bloquantes pour les Done
+  pedagogiques deja rendus, qui se mesurent contre la reference unique 744 x 551 (`DEC-0040`).
+- **Perimetre de la bande, tranche par `camille-po` a la cloture de s18**
+  (`DEC-0041`, amendement du 2026-08-23) : la bande 576-719 px n'est pas un vide de reference. Un
+  ordinateur de la cible produit (1280 px de dalle au plus etroit identifie par `ines-design`)
+  partage en deux fenetres, ou simplement non maximise, donne une largeur de viewport dans cette
+  bande - un geste ordinaire sur ordinateur, pas un usage marginal. C'est donc un trou reel du
+  produit sur sa cible actuelle, et non un appareil hors cible.
+- **Criteres d'acceptation** :
+  - Etant donne le jeu "Les synonymes", quand on rend chaque manche a une largeur de viewport
+    comprise entre 576 et 719 px inclus, dans l'etat le plus charge (revelation, trois etats
+    d'echec), alors les propositions de reponse restent entierement visibles au-dessus du pli, sur
+    la totalite des seize items.
+  - Etant donne le jeu "Le bon petit mot", quand on rend chaque manche a une largeur de viewport
+    comprise entre 576 et 719 px inclus, dans l'etat le plus charge, alors l'indice reste
+    entierement visible au-dessus du pli, sur la totalite des vingt-quatre items.
+  - Etant donne les deux criteres ci-dessus, quand le correctif est livre, alors il ne fait
+    regresser aucune des mesures deja tenues a 720 px et au-dela (`SYN-11`, `BPM-1`) ni la
+    contrepartie laterale deja nommee sur cette bande (marges effondrees) sans qu'un arbitrage
+    explicite l'accepte.
+  - Ce que cette story ne tranche pas, entierement route a `theo-archi` : le mecanisme de
+    correction. `lea-dev` a deja nomme la contradiction (corriger le pli dans cette bande effondre
+    les marges laterales ; preserver les marges y laisse le verdict sous le pli) ; cette story
+    n'impose aucune des deux issues.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : la mesure finale sur navigateur reel, a `scrollY = 0` verifie, aux largeurs
+    576, 640, 700 et 719 px, sur les deux jeux.
+- **Lien decision** : `DEC-0041`, amendement du 2026-08-23 ("`SYN-16` : la bande 576-719 px designe
+  un appareil reel") ; `DEC-0042`, section 6.
+- **Agent pressenti** : avis de faisabilite de `theo-archi` requis avant affectation.
