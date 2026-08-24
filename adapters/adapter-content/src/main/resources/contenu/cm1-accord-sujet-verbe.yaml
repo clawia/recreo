@@ -1,0 +1,110 @@
+schema: 1
+id: cm1-accord-sujet-verbe
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CM1"
+  domaine: "Orthographe et grammaire"
+  competence: "Accorder le verbe avec son sujet (cas fréquents, temps simples : présent, futur, imparfait)"
+# S19-3 (FICHE-bandit-manchot-accord-sujet-verbe-cm1.md, docs/backlog/backlog.md) : paquet neuf,
+# aucune matiere premiere reutilisable (contenu-repris/textes-trous/cm1-conjugaison.yml teste la
+# conjugaison derriere un sujet pronominal colle au verbe, pas l'accord avec un sujet eloigne).
+#
+# Distinction tenue sur les vingt et un items : le sujet n'est jamais un pronom personnel seul
+# immediatement suivi du verbe. Il est soit un groupe nominal ("les enfants du voisin ___"), soit
+# un sujet compose ("mon frère et moi ___"), soit separe du verbe par un groupe de mots inserte
+# ("les enfants, malgré la pluie, ___"). Les trois temps du referentiel (present, futur, imparfait)
+# sont chacun representes par sept items.
+#
+# Chaque indice nomme le sujet et le verbe plutot que d'enoncer une regle de personne generale non
+# temperee (AucunIndiceNeContreditUnAutreItemDuMemePaquetTest, ne du refus de nadia-prof sur
+# cm1-conjugaison-present le 2026-08-10, cliquet a zero) : la forme "avec 'tu', le verbe se termine
+# par ..." n'apparait jamais seule, le verbe est toujours nomme entre "verbe" et "se termine".
+#
+# Sur chaque item, au moins un distracteur est la forme correcte du meme verbe a un autre nombre ou
+# une autre personne que le sujet reel - une erreur d'accord, jamais une erreur de temps.
+items:
+  - enonce: "Les enfants du voisin ___ dans le jardin tous les après-midis."
+    bonneReponse: "jouent"
+    distracteurs: ["joue", "jouons"]
+    indice: "Le sujet est 'les enfants du voisin', au pluriel : le verbe 'jouer' se termine par '-ent', comme dans 'ils jouent'."
+  - enonce: "Le chat de ma grand-mère, malgré son âge, ___ encore sur le mur du jardin."
+    bonneReponse: "grimpe"
+    distracteurs: ["grimpent", "grimpons"]
+    indice: "Le sujet est 'le chat de ma grand-mère', au singulier : le verbe 'grimper' se termine par '-e', comme dans 'il grimpe'."
+  - enonce: "Mon frère et moi ___ tous les mercredis au foot."
+    bonneReponse: "jouons"
+    distracteurs: ["joue", "jouent"]
+    indice: "Le sujet est 'mon frère et moi', c'est-à-dire 'nous' : le verbe 'jouer' se termine par '-ons', comme dans 'nous jouons'."
+  - enonce: "Les élèves de la classe, après la récréation, ___ leur cahier de mathématiques."
+    bonneReponse: "rangent"
+    distracteurs: ["range", "rangeons"]
+    indice: "Le sujet est 'les élèves de la classe', au pluriel : le verbe 'ranger' se termine par '-ent', comme dans 'ils rangent'."
+  - enonce: "Toi et ton frère ___ la vaisselle après le repas."
+    bonneReponse: "lavez"
+    distracteurs: ["lave", "lavons"]
+    indice: "Le sujet est 'toi et ton frère', c'est-à-dire 'vous' : le verbe 'laver' se termine par '-ez', comme dans 'vous lavez'."
+  - enonce: "Le vieux chêne du parc ___ de l'ombre sur tout le banc."
+    bonneReponse: "offre"
+    distracteurs: ["offrent", "offrons"]
+    indice: "Le sujet est 'le vieux chêne du parc', au singulier : le verbe 'offrir' se termine par '-e', comme dans 'il offre'."
+  - enonce: "Les vagues de la mer, malgré le vent, ___ doucement sur le sable."
+    bonneReponse: "déferlent"
+    distracteurs: ["déferle", "déferlons"]
+    indice: "Le sujet est 'les vagues de la mer', au pluriel : le verbe 'déferler' se termine par '-ent', comme dans 'elles déferlent'."
+  - enonce: "Demain, les enfants du quartier ___ un grand tournoi de football."
+    bonneReponse: "organiseront"
+    distracteurs: ["organisera", "organiserons"]
+    indice: "Le sujet est 'les enfants du quartier', au pluriel : au futur, le verbe 'organiser' se termine par '-ont', comme dans 'ils organiseront'."
+  - enonce: "La semaine prochaine, mon cousin et moi ___ à la piscine tous les jours."
+    bonneReponse: "irons"
+    distracteurs: ["ira", "iront"]
+    indice: "Le sujet est 'mon cousin et moi', c'est-à-dire 'nous' : au futur, le verbe 'aller' est irrégulier et devient 'irons'."
+  - enonce: "Bientôt, les hirondelles, comme chaque année, ___ vers les pays chauds."
+    bonneReponse: "partiront"
+    distracteurs: ["partira", "partirons"]
+    indice: "Le sujet est 'les hirondelles', au pluriel : au futur, le verbe 'partir' se termine par '-ont', comme dans 'elles partiront'."
+  - enonce: "L'année prochaine, toi et tes amis ___ dans une nouvelle école."
+    bonneReponse: "entrerez"
+    distracteurs: ["entrera", "entreront"]
+    indice: "Le sujet est 'toi et tes amis', c'est-à-dire 'vous' : au futur, le verbe 'entrer' se termine par '-ez', comme dans 'vous entrerez'."
+  - enonce: "Dans quelques minutes, le train de Paris ___ en gare."
+    bonneReponse: "arrivera"
+    distracteurs: ["arriveront", "arriverons"]
+    indice: "Le sujet est 'le train de Paris', au singulier : au futur, le verbe 'arriver' se termine par '-a', comme dans 'il arrivera'."
+  - enonce: "Cet été, mes cousins ___ une cabane au fond du jardin."
+    bonneReponse: "construiront"
+    distracteurs: ["construira", "construirons"]
+    indice: "Le sujet est 'mes cousins', au pluriel : au futur, le verbe 'construire' se termine par '-ont', comme dans 'ils construiront'."
+  - enonce: "Dans deux jours, le chien des voisins ___ un nouveau panier."
+    bonneReponse: "aura"
+    distracteurs: ["auront", "aurons"]
+    indice: "Le sujet est 'le chien des voisins', au singulier : au futur, le verbe 'avoir' est irrégulier et devient 'aura'."
+  - enonce: "Autrefois, les paysans du village ___ leurs champs à la main."
+    bonneReponse: "labouraient"
+    distracteurs: ["labourait", "labourions"]
+    indice: "Le sujet est 'les paysans du village', au pluriel : à l'imparfait, le verbe 'labourer' se termine par '-aient', comme dans 'ils labouraient'."
+  - enonce: "Quand j'étais petit, mon frère et moi ___ ensemble dans la même chambre."
+    bonneReponse: "dormions"
+    distracteurs: ["dormait", "dormaient"]
+    indice: "Le sujet est 'mon frère et moi', c'est-à-dire 'nous' : à l'imparfait, le verbe 'dormir' se termine par '-ions', comme dans 'nous dormions'."
+  - enonce: "Chaque hiver, les habitants de la vallée ___ beaucoup de neige."
+    bonneReponse: "voyaient"
+    distracteurs: ["voyait", "voyions"]
+    indice: "Le sujet est 'les habitants de la vallée', au pluriel : à l'imparfait, le verbe 'voir' se termine par '-aient', comme dans 'ils voyaient'."
+  - enonce: "Avant les vacances, toi et ta sœur ___ tous les soirs à la bibliothèque."
+    bonneReponse: "alliez"
+    distracteurs: ["allait", "allaient"]
+    indice: "Le sujet est 'toi et ta sœur', c'est-à-dire 'vous' : à l'imparfait, le verbe 'aller' se termine par '-iez', comme dans 'vous alliez'."
+  - enonce: "Il y a longtemps, le vieux moulin de la rivière ___ encore le blé du village."
+    bonneReponse: "moulait"
+    distracteurs: ["moulaient", "moulions"]
+    indice: "Le sujet est 'le vieux moulin de la rivière', au singulier : à l'imparfait, le verbe 'moudre' se termine par '-ait', comme dans 'il moulait'."
+  - enonce: "Autrefois, les enfants, même les jours de pluie, ___ dehors après l'école."
+    bonneReponse: "jouaient"
+    distracteurs: ["jouait", "jouions"]
+    indice: "Le sujet est 'les enfants', au pluriel : à l'imparfait, le verbe 'jouer' se termine par '-aient', comme dans 'ils jouaient'."
+  - enonce: "Quand j'étais au CP, mes amis et moi ___ toujours les premiers dans la cour."
+    bonneReponse: "étions"
+    distracteurs: ["était", "étaient"]
+    indice: "Le sujet est 'mes amis et moi', c'est-à-dire 'nous' : à l'imparfait, le verbe 'être' est irrégulier et devient 'étions'."

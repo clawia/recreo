@@ -305,7 +305,13 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " Mesure du 2026-08-19, verification directe : aucune des 60 propositions ne"
                     + " commence par un chiffre - remesure du 2026-08-20 apres le retrait de quatre"
                     + " items par camille-po (vite, ancien, poli, drole), meme motif inchange sur"
-                    + " les 16 restants et leurs 48 propositions");
+                    + " les 16 restants et leurs 48 propositions",
+            "cm1-accord-sujet-verbe",
+            "21 items sur 21 portent deux distracteurs (trois propositions), mais aucune des 63"
+                    + " propositions n'est numerique : ce sont des formes conjuguees d'un verbe"
+                    + " (bonne reponse et deux erreurs d'accord), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-08-24 : aucune des 63"
+                    + " propositions ne commence par un chiffre");
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
