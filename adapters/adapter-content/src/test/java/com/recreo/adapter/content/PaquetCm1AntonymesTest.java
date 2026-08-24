@@ -41,8 +41,6 @@ class PaquetCm1AntonymesTest {
 
     private static final String PAQUET = "cm1-antonymes";
 
-    private static final String ID_DE_CATALOGUE = "bandit-manchot-antonymes-cm1";
-
     /**
      * ANT-2, ANT-4 : dix-huit items proposes, cinq repris ou retires (item "jour"/"nuit" retire,
      * les quatre autres corriges) - dix-sept items livres, au-dessus du plancher de seize.
@@ -120,16 +118,7 @@ class PaquetCm1AntonymesTest {
      */
     @Test
     void laConsigneDeCatalogueEstGeneriqueEtNeNommeAucuneBonneReponse() {
-        Map<String, Object> catalogue = catalogueCharge();
-        @SuppressWarnings("unchecked")
-        List<Map<String, Object>> jeux = (List<Map<String, Object>>) catalogue.get("jeux");
-        Map<String, Object> entree = jeux.stream()
-                .filter(jeu -> ID_DE_CATALOGUE.equals(jeu.get("id")))
-                .findFirst()
-                .orElseThrow(() -> new AssertionError(
-                        ID_DE_CATALOGUE + " : aucune entree de ce nom dans catalogue.yaml"));
-
-        assertThat(entree.get("paquet")).isEqualTo(PAQUET);
+        Map<String, Object> entree = entreeQuiSertLePaquet();
         String consigne = String.valueOf(entree.get("consigne"));
         assertThat(consigne)
                 .as("la consigne designe le mot cible par sa marque exacte")
@@ -144,6 +133,25 @@ class PaquetCm1AntonymesTest {
                             + " generique pour les dix-sept", item.bonneReponse())
                     .doesNotContain(item.bonneReponse());
         }
+    }
+
+    /**
+     * `ADR-0061` : l'entree est trouvee par le paquet qu'elle sert, jamais par un identifiant de jeu
+     * recopie en constante ici - le couple (entree, paquet) vit dans catalogue.yaml et nulle part
+     * ailleurs. Une clause qui juge la consigne d'une entree exposee n'a plus d'objet le jour ou le
+     * jeu quitte le catalogue : elle part alors avec lui, dans le meme commit que le retrait.
+     */
+    private static Map<String, Object> entreeQuiSertLePaquet() {
+        Map<String, Object> catalogue = catalogueCharge();
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> jeux = (List<Map<String, Object>>) catalogue.get("jeux");
+        return jeux.stream()
+                .filter(jeu -> PAQUET.equals(jeu.get("paquet")))
+                .findFirst()
+                .orElseThrow(() -> new AssertionError(
+                        "aucune entree de catalogue ne sert le paquet \"" + PAQUET + "\" : si le jeu"
+                                + " a quitte le catalogue, cette clause de consigne part dans le meme"
+                                + " commit que le retrait (ADR-0061)"));
     }
 
     @SuppressWarnings("unchecked")

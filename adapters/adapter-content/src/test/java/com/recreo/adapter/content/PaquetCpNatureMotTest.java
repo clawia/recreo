@@ -7,12 +7,9 @@ import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -45,12 +42,17 @@ import static org.assertj.core.api.Assertions.assertThat;
  * CP, la lecture des mots "nom"/"verbe" sur les boutons et le renfort visuel du mot cible au-dela
  * des guillemets (`NAT-4`, `NAT-5`, `AUD-3`) restent la porte pedagogique de `nadia-prof`, et le
  * renfort visuel lui-meme est a proposer par `ines-design` avant qu'elle ne tranche.</p>
+ *
+ * <p><b>`ADR-0061`</b> : la clause {@code lEntreeDeCatalogueDesigneLeBonPaquet} de ce fichier est
+ * retiree. Elle recopiait en constantes Java l'association que `catalogue.yaml` porte deja, motif
+ * qu'`ADR-0045` avait retire en s14 et qui est revenu en s17 puis en s19 ; elle a fait rougir le
+ * module au retrait de l'entree (`DEC-0045`) sans rien garder que le catalogue ne dise. Ce que ce
+ * fichier juge est le paquet, charge par son nom : il reste entier, servi et couvert, que le jeu
+ * soit expose ou non.</p>
  */
 class PaquetCpNatureMotTest {
 
     private static final String PAQUET = "cp-nature-mot";
-
-    private static final String ID_DE_CATALOGUE = "bandit-manchot-nature-mot-cp";
 
     private static final int NOMBRE_D_ITEMS_ATTENDU = 16;
 
@@ -155,36 +157,12 @@ class PaquetCpNatureMotTest {
                 .isEqualTo("Distinguer les principaux types de mots (nom, verbe) dans une phrase très simple");
     }
 
-    @Test
-    void lEntreeDeCatalogueDesigneLeBonPaquet() {
-        Map<String, Object> catalogue = catalogueCharge();
-        @SuppressWarnings("unchecked")
-        List<Map<String, Object>> jeux = (List<Map<String, Object>>) catalogue.get("jeux");
-        Map<String, Object> entree = jeux.stream()
-                .filter(jeu -> ID_DE_CATALOGUE.equals(jeu.get("id")))
-                .findFirst()
-                .orElseThrow(() -> new AssertionError(
-                        ID_DE_CATALOGUE + " : aucune entree de ce nom dans catalogue.yaml"));
-
-        assertThat(entree.get("paquet")).isEqualTo(PAQUET);
-    }
-
     private static String motCibleDe(String enonce) {
         Matcher trouve = MOT_ENTRE_GUILLEMETS_FRANCAIS.matcher(enonce);
         if (!trouve.find()) {
             throw new AssertionError("'" + enonce + "' : aucun mot entre guillemets francais");
         }
         return trouve.group(1);
-    }
-
-    @SuppressWarnings("unchecked")
-    private static Map<String, Object> catalogueCharge() {
-        try (var flux = PaquetCpNatureMotTest.class.getResourceAsStream("/catalogue.yaml")) {
-            assertThat(flux).as("/catalogue.yaml introuvable sur le classpath").isNotNull();
-            return (Map<String, Object>) new org.yaml.snakeyaml.Yaml().load(flux);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
     }
 
     /** Enumere tous les items distincts du paquet en faisant grossir le tirage deja-vu jusqu'a epuisement. */
