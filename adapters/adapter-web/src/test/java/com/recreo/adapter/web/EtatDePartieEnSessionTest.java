@@ -155,6 +155,11 @@ class EtatDePartieEnSessionTest {
             public Optional<Item> next(RandomSource hasard, Set<ItemId> dejaVus) {
                 return Optional.of(QUESTION);
             }
+
+            @Override
+            public boolean indicesNommentLaReponse() {
+                return false;
+            }
         };
     }
 }
