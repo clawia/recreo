@@ -100,6 +100,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-homophones-cm1",
             // S19-2 (DEC-0042) : entree neuve, accord dans le groupe nominal.
             "bandit-manchot-accords-groupe-nominal-cm1",
+            // S19-3 : entree neuve, accord du verbe avec un sujet eloigne, compose ou nominal.
+            "bandit-manchot-accord-sujet-verbe-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -120,6 +122,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Le bon petit mot",
             // S19-2 : titre neuf.
             "Le bon accord",
+            // S19-3 : titre neuf.
+            "L'accord du verbe",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -137,9 +141,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Quel mot peut remplacer le mot entre guillemets sans changer le sens ?",
             // S17-4 : consigne neuve.
             "Quel mot complète la phrase ?",
+            // S19-3 : consigne neuve.
+            "Quelle est la bonne forme du verbe ?",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
-            // valeur unique pour les treize jeux du catalogue reel (S17-4 : douze avant cette
-            // entree, treize avec elle - compte sur catalogue.yaml, pas recopie).
+            // valeur unique pour les jeux du catalogue reel, compte sur catalogue.yaml, pas recopie.
             "bandit-manchot",
             // matiere (descripteur de chaque paquet reference par le catalogue).
             // S19-5 (ADR-0049) : graphie accentuee, corrigee depuis S16-5.
@@ -171,7 +176,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S17-4 : competence neuve.
             "Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...)",
             // S19-2 : competence neuve.
-            "Accorder en genre et en nombre dans le groupe nominal (déterminant/nom/adjectif)");
+            "Accorder en genre et en nombre dans le groupe nominal (déterminant/nom/adjectif)",
+            // S19-3 : competence neuve.
+            "Accorder le verbe avec son sujet (cas fréquents, temps simples : présent, futur, imparfait)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

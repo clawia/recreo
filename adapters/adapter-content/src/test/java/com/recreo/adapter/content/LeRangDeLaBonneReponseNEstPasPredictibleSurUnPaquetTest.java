@@ -312,7 +312,13 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " determinant portent bien deux distracteurs, mais aucune des 72 propositions"
                     + " du paquet n'est numerique - ce sont des mots (determinants, noms,"
                     + " adjectifs), valeurDe rend null sur chacune. Mesure du 2026-08-24 sur le"
-                    + " paquet servi");
+                    + " paquet servi",
+            "cm1-accord-sujet-verbe",
+            "21 items sur 21 portent deux distracteurs (trois propositions), mais aucune des 63"
+                    + " propositions n'est numerique : ce sont des formes conjuguees d'un verbe"
+                    + " (bonne reponse et deux erreurs d'accord), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-08-24 : aucune des 63"
+                    + " propositions ne commence par un chiffre");
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
