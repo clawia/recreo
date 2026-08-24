@@ -230,10 +230,10 @@ class PaquetCm1SynonymesTest {
         var descripteur = paquet().descriptor();
 
         assertThat(descripteur.matiere())
-                .as("ADR-0049 : la meme graphie ASCII que les douze autres paquets servis - une"
-                        + " graphie accentuee ici, seule, ferait echouer"
+                .as("ADR-0049, execution S19-5 : la meme graphie accentuee que les douze autres"
+                        + " paquets servis - une graphie ASCII ici, seule, ferait echouer"
                         + " UneMatiereNAQuUneSeuleGraphieDansLeContenuServiTest")
-                .isEqualTo("Francais");
+                .isEqualTo("Français");
         assertThat(descripteur.niveau()).isEqualTo("CM1");
         assertThat(descripteur.domaine()).isEqualTo("Vocabulaire");
         assertThat(descripteur.competence())

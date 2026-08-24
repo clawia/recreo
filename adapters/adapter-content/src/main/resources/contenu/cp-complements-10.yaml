@@ -2,7 +2,7 @@ schema: 1
 id: cp-complements-10
 type: question
 descripteur:
-  matiere: "Mathematiques"
+  matiere: "Mathématiques"
   niveau: "CP"
   domaine: "Nombres et calculs"
   competence: "Compléments à 10"

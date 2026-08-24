@@ -2,7 +2,7 @@ schema: 1
 id: cm1-conjugaison-present
 type: question
 descripteur:
-  matiere: "Francais"
+  matiere: "Français"
   niveau: "CM1"
   domaine: "Orthographe et grammaire"
   competence: "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif"

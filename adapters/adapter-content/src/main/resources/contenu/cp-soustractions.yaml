@@ -2,7 +2,7 @@ schema: 1
 id: cp-soustractions
 type: question
 descripteur:
-  matiere: "Mathematiques"
+  matiere: "Mathématiques"
   niveau: "CP"
   domaine: "Nombres et calculs"
   competence: "Calcul mental - soustractions dans la limite de 10"

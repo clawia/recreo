@@ -2,7 +2,7 @@ schema: 1
 id: cm1-perimetre
 type: question
 descripteur:
-  matiere: "Mathematiques"
+  matiere: "Mathématiques"
   niveau: "CM1"
   domaine: "Grandeurs et mesures"
   competence: "Calculer un périmètre de figures usuelles (carré, rectangle)"

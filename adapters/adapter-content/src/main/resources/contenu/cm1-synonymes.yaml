@@ -2,7 +2,7 @@ schema: 1
 id: cm1-synonymes
 type: question
 descripteur:
-  matiere: "Francais"
+  matiere: "Français"
   niveau: "CM1"
   domaine: "Vocabulaire"
   competence: "Utiliser des synonymes et antonymes pour préciser ou nuancer un propos"

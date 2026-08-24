@@ -72,12 +72,10 @@ class TexteAccentueExposeParLePortEntrantTest {
      * ci-dessus. Une entree par valeur distincte reellement produite par {@code catalogue.yaml} et
      * les descripteurs des paquets qu'il reference, comparee par egalite (ADR-0039).
      *
-     * <p>Deux groupes portent une note explicite : {@code matiere} ("Mathematiques", "Francais") et
-     * une partie de {@code domaine}/{@code competence} sont ecrits sans accent dans le contenu reel
-     * aujourd'hui. Aucun gabarit ne les rend a un enfant a ce jour (aucune vue ne lit
-     * {@code descripteur.matiere()}), donc aucun Done pedagogique n'est du sur ce lot (S16-5) - mais
-     * ils devront etre corriges avant que le filtre par matiere ne les affiche (second motif de
-     * DEC-0032, toujours ouvert). Le dire ici plutot que de le laisser croire couvert.
+     * <p>S19-5 (ADR-0049) a corrige les cinq chaines que S16-5 avait laissees sans accent :
+     * {@code matiere} ("Mathematiques", "Francais") et la partie de {@code domaine}/{@code competence}
+     * portee par {@code cp-le-bon-son.yaml} et {@code cp-problemes-additifs.yaml}. Elles portent
+     * desormais la graphie accentuee du contenu servi.
      */
     private static final List<String> CHAINES_EXPOSEES_PAR_LE_PORT_ENTRANT = List.of(
             // identifiants de catalogue.yaml (GameDefinition.id) : jamais lus par un enfant, mais
@@ -140,18 +138,17 @@ class TexteAccentueExposeParLePortEntrantTest {
             // entree, treize avec elle - compte sur catalogue.yaml, pas recopie).
             "bandit-manchot",
             // matiere (descripteur de chaque paquet reference par le catalogue).
-            // CONNU ET NON CORRIGE ICI (S16-5 ne change aucun rendu) : ces deux valeurs sont ecrites
-            // sans accent dans les paquets reels. Voir la note de classe ci-dessus.
-            "Mathematiques",
-            "Francais",
+            // S19-5 (ADR-0049) : graphie accentuee, corrigee depuis S16-5.
+            "Mathématiques",
+            "Français",
             // domaine (descripteur)
             "Nombres et calculs",
             "Orthographe et grammaire",
             "Grandeurs et mesures",
             // S17-3 : domaine neuf.
             "Vocabulaire",
-            // CONNU ET NON CORRIGE ICI, meme motif que "Mathematiques" ci-dessus.
-            "Lecture et comprehension de l'ecrit",
+            // S19-5 (ADR-0049) : graphie accentuee, corrigee depuis S16-5.
+            "Lecture et compréhension de l'écrit",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -162,9 +159,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Calculer un périmètre de figures usuelles (carré, rectangle)",
             "Convertir des unités de longueur, masse, contenance dans le système métrique",
             "Lire, écrire, décomposer et comparer les nombres entiers jusqu'au million",
-            // CONNU ET NON CORRIGE ICI, meme motif que "Mathematiques" ci-dessus.
-            "Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...)",
-            "Resoudre des problemes simples d'addition/soustraction en situation (1 etape)",
+            // S19-5 (ADR-0049) : graphie accentuee, corrigee depuis S16-5.
+            "Associer les graphèmes aux phonèmes (voyelles, consonnes simples, puis digraphes ch, ou, on...)",
+            "Résoudre des problèmes simples d'addition/soustraction en situation (1 étape)",
             // S17-3 : competence neuve.
             "Utiliser des synonymes et antonymes pour préciser ou nuancer un propos",
             // S17-4 : competence neuve.

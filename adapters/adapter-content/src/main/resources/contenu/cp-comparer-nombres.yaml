@@ -2,7 +2,7 @@ schema: 1
 id: cp-comparer-nombres
 type: question
 descripteur:
-  matiere: "Mathematiques"
+  matiere: "Mathématiques"
   niveau: "CP"
   domaine: "Nombres et calculs"
   competence: "Comparer deux nombres entiers jusqu'à 100 (<, >, =)"

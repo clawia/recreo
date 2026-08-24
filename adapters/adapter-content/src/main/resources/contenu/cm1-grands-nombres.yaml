@@ -2,7 +2,7 @@ schema: 1
 id: cm1-grands-nombres
 type: question
 descripteur:
-  matiere: "Mathematiques"
+  matiere: "Mathématiques"
   niveau: "CM1"
   domaine: "Nombres et calculs"
   competence: "Lire, écrire, décomposer et comparer les nombres entiers jusqu'au million"

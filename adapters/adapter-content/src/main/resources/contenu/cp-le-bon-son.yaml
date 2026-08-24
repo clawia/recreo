@@ -2,10 +2,10 @@ schema: 1
 id: cp-le-bon-son
 type: question
 descripteur:
-  matiere: "Francais"
+  matiere: "Français"
   niveau: "CP"
-  domaine: "Lecture et comprehension de l'ecrit"
-  competence: "Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...)"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Associer les graphèmes aux phonèmes (voyelles, consonnes simples, puis digraphes ch, ou, on...)"
 items:
   - enonce: "MAMAN"
     bonneReponse: "an"

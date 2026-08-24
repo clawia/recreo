@@ -2,10 +2,10 @@ schema: 1
 id: cp-problemes-additifs
 type: question
 descripteur:
-  matiere: "Mathematiques"
+  matiere: "Mathématiques"
   niveau: "CP"
   domaine: "Nombres et calculs"
-  competence: "Resoudre des problemes simples d'addition/soustraction en situation (1 etape)"
+  competence: "Résoudre des problèmes simples d'addition/soustraction en situation (1 étape)"
 items:
   - enonce: "Léa a 3 billes et en gagne 2. Combien en a-t-elle ?"
     bonneReponse: "5"

@@ -2,7 +2,7 @@ schema: 1
 id: cm1-mesures
 type: question
 descripteur:
-  matiere: "Mathematiques"
+  matiere: "Mathématiques"
   niveau: "CM1"
   domaine: "Grandeurs et mesures"
   competence: "Convertir des unités de longueur, masse, contenance dans le système métrique"

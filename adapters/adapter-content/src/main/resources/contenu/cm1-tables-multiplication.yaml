@@ -2,7 +2,7 @@ schema: 1
 id: cm1-tables-multiplication
 type: question
 descripteur:
-  matiere: "Mathematiques"
+  matiere: "Mathématiques"
   niveau: "CM1"
   domaine: "Nombres et calculs"
   competence: "Calcul mental - tables de multiplication (jusqu'à ×10), rappel automatisé"
