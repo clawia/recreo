@@ -5435,8 +5435,8 @@ faisabilite.
   - Etant donne un item, quand on lit ses propositions, alors elles sont exactement deux : "nom" et
     "verbe" - aucune troisieme nature, la competence CP n'en nommant que deux.
   - Etant donne le paquet complet, quand on le classe par bonne reponse, alors "nom" et "verbe"
-    sont chacun representes par au moins la moitie moins un quart des items (repartition equilibree,
-    aucune des deux natures dominante).
+    sont chacun representes par au moins un quart des items (repartition equilibree, aucune des
+    deux natures dominante).
   - Etant donne le paquet complet, quand on lit le vocabulaire employe (sujets, verbes,
     complements), alors chaque mot est un mot courant de CP, deja rencontre ou plausible a ce niveau
     de lecture - pas un mot du vocabulaire CM1 du paquet repris.

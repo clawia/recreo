@@ -2,8 +2,8 @@
 
 - **Mecanique** : bandit manchot (mecanique generique, partagee avec les autres jeux du catalogue).
 - **Contenu(s)** : `adapters/adapter-content/src/main/resources/contenu/
-  cm1-accord-sujet-verbe.yaml` (a creer, `type: question`, au moins 20 items), story `S19-3`
-  (`docs/backlog/backlog.md`). **Aucune matiere premiere reutilisable** :
+  cm1-accord-sujet-verbe.yaml` livre, `type: question`, 21 items (present/futur/imparfait, sept
+  items chacun), story `S19-3` (`docs/backlog/backlog.md`). **Aucune matiere premiere reutilisable** :
   `contenu-repris/textes-trous/cm1-conjugaison.yml` (6 items) teste le choix de la bonne personne
   conjuguee au present, avec un sujet pronominal immediatement devant le verbe - c'est la matiere
   qui sert deja `cm1-conjugaison-present.yaml` (`couvert-valide`), pas l'accord avec un sujet
@@ -11,14 +11,15 @@
 - **Distinction a garder de la ligne conjugaison deja couverte** : chaque item doit exiger de
   reperer le sujet avant de choisir la forme - jamais un sujet pronominal isole colle au verbe, qui
   ne ferait que redemander la conjugaison deja testee ailleurs.
-- **Statut global** : **ouverte, aucun increment livre a ce jour.** Rien n'a encore ete joue.
+- **Statut global** : **increment livre, Done pedagogique non encore prononce.** Rien n'a encore
+  ete joue par `nadia-prof` sur cet increment : le Done pedagogique reste entier.
 - **Aucun arbitrage prealable de `nadia-prof` demande** : cette competence est directement servable
   par le schema `type: question` existant, sur le meme patron que la conjugaison deja couverte. Les
   criteres ci-dessous sont ceux de `camille-po`, verifies a l'audit.
 - **Arbitrage prealable de mecanique en vigueur pour tout le catalogue** (`squad/conformite/
-  FICHE-bandit-manchot-additions-cp.md`, conditions M1 a M13). Rien n'est mesure ici a l'ouverture
-  de la fiche, faute d'increment a mesurer.
-- **Derniere mise a jour** : 2026-08-24 (ouverture par `camille-po`, `DEC-0042`)
+  FICHE-bandit-manchot-additions-cp.md`, conditions M1 a M13).
+- **Derniere mise a jour** : 2026-08-24 (`marc-dev`, depot du paquet, les trois temps du
+  referentiel tiennent tous dans le paquet livre)
 
 ## Competences visees
 

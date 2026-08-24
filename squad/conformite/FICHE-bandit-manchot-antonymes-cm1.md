@@ -30,7 +30,7 @@
     retire de l'enonce ;
   - item "commencer"/"finir" (distracteurs "durer"/"plaire" ne tenaient pas dans la phrase) -
     remplaces par "reprendre"/"passer" ;
-  - item "gagner"/"perdre" (memes motif) - distracteurs "arbitrer"/"applaudir" remplaces par
+  - item "gagner"/"perdre" (meme motif) - distracteurs "arbitrer"/"applaudir" remplaces par
     "jouer"/"disputer" ;
   - item "jour"/"nuit" (le determinant ne suivait pas le genre de la bonne reponse) - **retire**,
     dix-sept items restants, plancher de seize tenu (`ANT-4`).

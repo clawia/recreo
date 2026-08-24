@@ -188,7 +188,7 @@ l'enfant ne sait pas si cela lui compte, et l'adulte a cote de lui non plus. Le 
 compte des manches reussies ; il n'y a pas de demi-manche.
 
 **Pourquoi le message ne l'est pas.** C'est exactement ce qu'un maitre fait : il valide, et il corrige
-dans le meme souffle. *"Oui, c'est bien eleve - regarde, il y a deux accents."* La reponse est
+dans le meme souffle. *"Oui, c'est bien élève - regarde, il y a deux accents."* La reponse est
 comptee juste ; l'enfant apprend quand meme l'orthographe. La distinction que la question cherche
 existe donc, mais elle vit dans le texte du retour, pas dans le verdict ni dans le score.
 
