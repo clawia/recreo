@@ -1,0 +1,16 @@
+schema: 1
+# ADR-0060 : paquet fautif, jamais servi, jamais inscrit au catalogue.
+# Les guillemets francais y encadrent des espaces ordinaires : invisible a
+# l'oeil, visible en points de code (SYN-9, ANT-5).
+id: paquet-a-espace-secable
+type: question
+descripteur:
+  matiere: "Contre-exemple"
+  niveau: "Contre-exemple"
+  domaine: "Contre-exemple"
+  competence: "Contre-exemple"
+items:
+  - enonce: "Le mot marque est « grand » dans cette phrase."
+    bonneReponse: "petit"
+    distracteurs: ["large"]
+    indice: "Indice du premier item."

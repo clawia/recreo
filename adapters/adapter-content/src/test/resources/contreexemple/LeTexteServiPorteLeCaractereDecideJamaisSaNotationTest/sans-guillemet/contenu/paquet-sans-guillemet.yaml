@@ -1,0 +1,16 @@
+schema: 1
+# ADR-0060 : paquet fautif, jamais servi, jamais inscrit au catalogue.
+# Aucun guillemet francais nulle part : la clause 2 n'examine aucun objet,
+# et c'est la clause de non-vacuite d'ADR-0051 qui doit mordre.
+id: paquet-sans-guillemet
+type: question
+descripteur:
+  matiere: "Contre-exemple"
+  niveau: "Contre-exemple"
+  domaine: "Contre-exemple"
+  competence: "Contre-exemple"
+items:
+  - enonce: "Cette phrase ne marque aucun mot."
+    bonneReponse: "oui"
+    distracteurs: ["non"]
+    indice: "Indice sans guillemet."
