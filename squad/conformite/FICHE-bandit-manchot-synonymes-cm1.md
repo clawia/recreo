@@ -1705,3 +1705,196 @@ verdict-la est robuste. Celle de `SYN-12` sur les trois items residuels ne l'est
   sont pas une preuve.
 - **`SYN-16`**, que rien n'observe : le produit n'est corrige qu'au-dessus de 720 px, et seule une
   mesure le dit.
+
+---
+
+## Mesure du 2026-08-24 (s19) - la largeur de rangee **necessaire** est de **539 px**, et elle change le verdict sur `SYN-16`
+
+> **Ce bloc est une mesure, pas un verdict.** Aucun Done n'est prononce ici : rien n'a ete livre sur
+> `SYN-16`. `S17-3` reste `VALIDE SOUS RESERVE` du 2026-08-23, `SYN-16` reste ouverte et non
+> bloquante, et la ligne de matrice ne bouge pas - elle est bloquee par `SYN-4`, les antonymes, et
+> par rien d'autre.
+
+**Pourquoi cette mesure existe.** `theo-archi` (avis de faisabilite de s19, section 6) ferme `S19-6`
+comme *"infaisable en l'etat sur la bande entiere"* par une arithmetique tiree de mes propres
+chiffres de s18, et il nomme lui-meme le chiffre qui manque : **680 px est une largeur *suffisante*,
+la largeur *necessaire* n'a jamais ete mesuree.** C'est le seul nombre qui separe deux verdicts
+opposes. Il me le route parce qu'il demande un navigateur, et qu'aucun test de ce depot ne lit une
+position rendue.
+
+### 1. Methode, et ce qu'elle reemploie
+
+**Arbre mesure** : `s19-nadia` a `6aecee3`, c'est-a-dire `round-two` a la cloture de s18 plus mes
+deux arbitrages prealables, qui ne touchent aucun fichier de code. **Le contenu servi est donc bien
+celui de l'increment livre** : `cm1-synonymes` n'a pas change depuis le verdict du 2026-08-23.
+Application servie depuis le fat jar reconstruit de cet arbre, **arretee par son PID**.
+
+**Procede**, identique a celui de mes campagnes de s18 : navigateur reel pilote par son protocole de
+deverminage, `deviceScaleFactor` a 1, mode non mobile, declaration de largeur **injectee** en dernier
+dans le `head`, la ou `recreo.css` est chargee (`ADR-0014` point 5) - la feuille n'est jamais
+modifiee. La limite que j'ecris a chaque fois vaut encore : une regle ecrite dans `recreo.css`
+pourrait se faire ecraser par une specificite que mon injection contourne. Elle est ici du meme ordre
+qu'a s18, et pour la meme raison verifiee alors : `.zone-jeu` et `.container` sont des selecteurs de
+classe unique, et `recreo.css` est chargee apres la bibliotheque tierce.
+
+**Ce que ce procede ajoute a ceux de s18, et c'est ce qui rend la mesure abordable** : la largeur est
+balayee **sur la manche affichee**, sans recharger ni perdre l'item. Chaque item visite rend donc son
+propre seuil par recherche dichotomique, au pixel, en une seule visite. Les deux scripts sont commits
+dans le depot pour que la campagne se rejoue sans etre reconstruite :
+`squad/outils/nadia-prof/balayage-largeur-rangee.py` et
+`squad/outils/nadia-prof/confirmer-largeur-dans-la-bande.py`. Releves complets dans
+`squad/conformite/releves-s19/`.
+
+**Ce que je mesure** : le nombre de rangees occupees par les propositions, par le nombre de valeurs
+distinctes du bord superieur des boutons. Un item est "a deux rangees" quand ce nombre vaut 2.
+
+### 2. Le balayage - largeur necessaire item par item, a la reference 744 x 551
+
+**16 items sur 16 vus, 4 parties.** Seuil = plus petite largeur de rangee, au pixel, pour laquelle
+l'item tient sur une seule rangee.
+
+| Seuil | Item | Propositions |
+|---|---|---|
+| **539 px** | Ce jeu de societe est "facile" pour les debutants. | simple / dangereux / couteux |
+| **538 px** | Lea est "contente" de son cadeau. | heureuse / inquiete / surprise |
+| **527 px** | Cet exercice de mathematiques est "difficile". | complique / amusant / court |
+| **517 px** | Le petit garcon est "triste" depuis le depart de son ami. | malheureux / inquiet / gene |
+| **515 px** | Le village est tres "calme" le dimanche matin. | tranquille / bruyant / anime |
+| 499 px | Le nouveau voisin est "gentil" avec tout le monde. | aimable / celebre / elegant |
+| 490 px | Le pompier reste "courageux" face au danger. | brave / maladroit / discret |
+| 485 px | Cette fourmi est "petite". | minuscule / rapide / noire |
+| 479 px | Ce moteur de camion est tres "fort". | puissant / leger / bruyant |
+| 478 px | Apres la course, Tom est "fatigue". | epuise / content / inquiet |
+| 471 px | Le bureau de Lea est "propre". | net / encombre / sombre |
+| 449 px | Ce desert de sable est tres "grand". | immense / chaud / vide |
+| 433 px | Dans les fables, le renard est "malin". | ruse / gentil / peureux |
+| 432 px | La musique du carnaval est "gaie". | joyeuse / lente / grave |
+| 416 px | La maman parle a son bebe d'une voix "douce". | tendre / forte / grave |
+| 400 px | Ce paysage de montagne est "beau". | joli / vaste / aride |
+
+**La largeur necessaire au paquet entier est le maximum de cette colonne : 539 px.**
+
+**Mon chiffre de s18 se reexplique exactement, et je le verifie avant de m'appuyer dessus.** J'avais
+compte **cinq** items a deux rangees a 500 px de rangee. Ce tableau donne exactement cinq seuils
+au-dessus de 500 px, et ce sont **les memes cinq items**. Le sixieme est a 499 px - un pixel sous la
+rangee servie, ce qui explique pourquoi il ne s'est jamais replie. Le comptage de s18 n'etait pas une
+estimation : c'etait le bon nombre, et voici pourquoi.
+
+### 3. Confirmation dans la bande, a 640 x 551, en jouant les seize items jusqu'a l'echec
+
+Le balayage mesure a la reference. Le defaut vit dans la bande. Trois campagnes de confirmation, avec
+la declaration injectee **sous la meme borne de media que celle qui est servie**
+(`min-width:576px` et `max-width:767.98px`), chaque item joue jusqu'a un echec pour lire la position
+reelle du bloc de verdict.
+
+| Plafond de `.zone-jeu` | Rangee offerte | Items vus | Items a deux rangees | Pire bas du texte du verdict | Sous le pli |
+|---|---|---|---|---|---|
+| **540 px** (temoin, servi aujourd'hui) | 500 px | 16/16 | **5** | **594,19 px** | 5 |
+| 578 px | 538 px | 16/16 | **1** (le seul a 539) | 594,19 px | 1 |
+| **579 px** | **539 px** | 16/16 | **0** | **504,19 px** | **0** |
+
+**`scrollY = 0` verifie a chaque lecture, 0 lecture a defilement non nul sur les trois campagnes.**
+
+**Le temoin reproduit mon chiffre de s18 au centieme** - 594,19 px, cinq items, les memes cinq - sur
+un autre jour, un autre arbre, une autre campagne, et par un outil different de celui de s18. C'est
+la verification que je devais a ma propre methode avant de m'appuyer sur elle.
+
+**La borne est nette et elle est au pixel** : a 538 px de rangee il reste exactement l'item de 539 px ;
+a 539 px il n'en reste aucun, et le verdict remonte de 90 px, a **504,19 px pour un pli a 551 px**,
+soit une marge de **+46,81 px**.
+
+Captures : `squad/conformite/releves-s19/s19-syn16-640x551-item-facile-temoin-rangee-500.png` et
+`...-correctif-rangee-539.png`, sur l'item le plus large, apres un echec.
+
+### 4. Ce que cela fait au verdict de `theo-archi`, et je commence par ce qu'il a juste
+
+**Son arithmetique est exacte et je la reprends telle quelle** : a un viewport `V`, la rangee ne peut
+pas depasser `V - 40`. Elle reproduit mes deux mesures de s18, et mes trois campagnes d'aujourd'hui
+la reproduisent une quatrieme fois (plafond 579 injecte, rangee mesuree 539,00).
+
+**Ce qui change est la seule inconnue qu'il avait nommee.** Avec 539 px et non 680 px :
+
+| Viewport | Rangee atteignable (`V - 40`) | 539 px atteints ? |
+|---|---|---|
+| 576 px | 536 px | **non**, il manque 3 px |
+| 577 px | 537 px | **non**, il manque 2 px |
+| 578 px | 538 px | **non**, il manque 1 px |
+| **579 px** | **539 px** | **oui, exactement** |
+| 640 px | 600 px | oui, 61 px de marge |
+| 719 px | 679 px | oui, 140 px de marge |
+
+**Un correctif de largeur n'est pas infaisable sur la bande : il est faisable sur 579-719 px et
+echoue sur exactement trois pixels de viewport - 576, 577, 578.** Sur les 144 largeurs entieres de la
+bande, il en couvre 141.
+
+**Je ne le tourne pas contre lui.** Il a nomme lui-meme le chiffre qui lui manquait, il a dit ou son
+verdict basculerait, et il a refuse de l'inventer. **Le chiffre manquait parce que ma mesure de s18
+l'avait laisse manquer** : j'ai mesure une largeur suffisante et je n'ai pas mesure la necessaire.
+C'est mon trou, pas le sien, et c'est pourquoi c'est moi qui le comble.
+
+### 5. Les bords lateraux avec un plafond de 579 px - `SYN-14` tenue, a la borne que j'ai deja acceptee
+
+Mesure a huit viewports, plafond de 579 px injecte sur `.entete-contenu` et `.zone-jeu`
+(`squad/conformite/releves-s19/s19-syn16-bords-lateraux-plafond-579.json`) :
+
+| Viewport | Largeur de zone | Bord gauche de la zone | En-tete aligne | Bord gauche de la premiere proposition |
+|---|---|---|---|---|
+| 576 px | 576 px | 0 | oui | 20,0 px |
+| 578 px | 578 px | 0 | oui | 20,0 px |
+| 579 px | 579 px | 0 | oui | 20,0 px |
+| 580 px | 579 px | 0,5 | oui | 20,5 px |
+| 600 px | 579 px | 10,5 | oui | 30,5 px |
+| 640 px | 579 px | 30,5 | oui | 50,5 px |
+| 700 px | 579 px | 60,5 | oui | 80,5 px |
+| 719 px | 579 px | 70,0 | oui | 90,0 px |
+
+**`SYN-14`, clause "en-tete aligne sur la zone de jeu" : tenue aux huit largeurs**, bord gauche
+identique au centieme.
+
+**`SYN-14`, clause "aucun element a presser ne se rapproche du bord plus que le rembourrage de la
+zone" : tenue, a la borne.** Le pire cas est au pied de la bande, ou la zone occupe tout le viewport :
+la premiere proposition y est a **20,0 px** du bord (12 de rembourrage + 8 de bordure de cabinet), et
+le premier bouton du catalogue a **12,0 px**, c'est-a-dire exactement le rembourrage. **C'est le meme
+chiffre, au pixel, que celui que j'ai mesure et accepte le 2026-08-23 a 720-735 px** en ecrivant
+*"satisfaite - a la borne"*. Je ne relis pas ma condition plus severement parce que le correctif
+descend plus bas : elle dit ce qu'elle dit, et 12 px reste 12 px.
+
+**Un point qui n'est pas de moi et que je route plutot que de le trancher** : un plafond de 579 px
+donne des marges **plus larges** au sommet de la bande qu'un plafond de 680 px (70 px contre 19,5 px
+a 719 px de viewport). Le plafond minimal est donc aussi le plus genereux pour `SYN-14` - mais
+choisir sa valeur exacte, entre le strict necessaire et une reserve de securite, est une question de
+forme. `ines-design` propose, je trancherai.
+
+### 6. Ce dont je reste seule garde, et la reserve que je ne cache pas
+
+- **Le seuil de 539 px est mesure sur la pile de polices systeme de cette machine**, comme toutes mes
+  mesures depuis s10. Une police plus large deplace ce seuil vers le haut, et **c'est ici que cela
+  compte le plus** : il ne faut que **0,6 % de largeur de texte en plus** pour que 539 devienne 543 et
+  que le pied de la bande recule de 579 a 583 px. Au sommet de la bande la marge est de 140 px et rien
+  ne la menace ; au pied, elle est nulle par construction. **Un plafond fixe au strict necessaire ne
+  laisse aucune reserve de police, et je ne validerai pas un correctif qui s'y colle sans en avoir
+  parle.** Ce n'est pas une condition d'audit, c'est ce que je dirai le jour ou le lot arrivera.
+- **Rien dans ce depot ne verifie aucun de ces chiffres.** `LaLargeurOffreeAUneRangeeEstUneFonction
+  EpingleeTest` garde la **declaration**, jamais la consequence a l'ecran. Le nombre de rangees
+  qu'occupent trois mots dans un cabinet n'est vu par aucun test, et il ne le sera pas : c'est le
+  meme constat qu'a s18, et il vaut pour cette mesure comme pour la precedente.
+- **Ce que ce bloc ne dit pas** : il ne dit pas si la famille verticale que `theo-archi` chiffre a
+  43,19 px est meilleure ou moins bonne. Elle reste ouverte et entiere, et je ne l'instruis pas ici -
+  `ines-design` propose les termes verticaux, je trancherai. **Une remarque tout de meme, pour qu'elle
+  ne se perde pas** : les deux familles ne s'excluent pas et ne couvrent pas la meme chose. La largeur
+  ferme 141 pixels de la bande sur 144 et laisse les trois derniers ; une reduction verticale de
+  43,19 px les fermerait sans toucher a la largeur. Qui doit etre choisie, ou les deux, n'est pas ma
+  decision - c'est `camille-po` qui priorise et `theo-archi` qui chiffre.
+
+### 7. Suites hors de ma main
+
+- **`theo-archi`** : le chiffre qu'il a nomme comme manquant existe maintenant - **539 px**. Son
+  arithmetique tient, sa conclusion *"infaisable sur la bande entiere"* devient *"faisable sur
+  579-719 px, infaisable sur 576-578 px"*. Il lui revient de dire s'il amende son avis.
+- **`camille-po`** : `S19-6` n'est pas ferme par l'arithmetique. Il reste un arbitrage de perimetre -
+  couvrir 141 pixels de la bande sur 144 est-il ce qu'elle veut, ou faut-il les 144. **Ce n'est pas ma
+  decision** : c'est elle qui a etabli, a la cloture de s18, qu'un appareil reel vit dans cette bande.
+- **`ines-design`** : deux objets de forme, l'un et l'autre a proposer, pas a trancher - la valeur du
+  plafond (le strict necessaire de 579 px, ou une reserve de police au-dessus) et les termes verticaux
+  de la seconde famille.
+- **`sofia-sm`** : rien de cette mesure n'ouvre ni ne ferme un Done, et `SYN-16` reste ouverte.

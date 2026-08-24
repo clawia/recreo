@@ -350,3 +350,99 @@ laquelle cette mecanique vaudrait moins que celle qu'on a deja.
 - **`ines-design`** : rien ne lui est demande ici, mais SAI-9 lui donnera un objet a dessiner - deux
   textes cote a cote dans un retour qui n'en portait qu'un. Le jour venu, sa proposition ne se valide
   pas contre mon avis, comme d'habitude.
+
+---
+
+## Amendement du 2026-08-24, meme jour - `SAI-9` : `theo-archi` a raison, ma redaction disait plus que mon intention
+
+`theo-archi` a ecrit `ADR-0058` en s'appuyant sur cet arbitrage et **il conteste la lecture
+litterale de `SAI-9`** au lieu de la contourner en silence. Il a eu raison de le faire, et il a
+raison sur le fond. Je tranche ici, et **je ne rends pas ma reponse plus facile pour l'architecture
+qu'elle ne doit l'etre pour l'enfant** : je verifie d'abord ce que la lecture litterale ferait a
+l'enfant, et c'est cela qui decide.
+
+### 1. Ce que ma phrase disait, et ce que j'avais en tete
+
+J'ai ecrit : *"Quand une reponse est refusee, le retour montre ce que l'enfant a ecrit a cote de la
+reponse attendue"*, avec l'exemple *"Tu as écrit : elleve. On écrit : élève."*
+
+**Applique a chaque refus, cela nomme la bonne reponse des le premier essai.** `theo-archi` cite
+exactement ce qui s'y oppose, et j'ai verifie les deux citations mot pour mot :
+
+- **`M5`** donne **trois** essais par manche avant la revelation
+  (`BanditManchotSession.ESSAIS_AVANT_REVELATION = 3`) ;
+- **`M9` clause 5** - *"aucune marque ne designe la bonne reponse avant la revelation"* - est
+  encodee dans le domaine, et sa Javadoc l'ecrit : *"la bonne reponse de la manche courante, exposee
+  seulement une fois revelee. Avant ce moment, aucune methode de cette classe ne la designe."*
+
+**Et ma propre section 0 dit deja la bonne chose.** J'y ecris que l'enfant *"voit en permanence ce
+qu'il a deja essaye, et **au moment de la revelation** il voit son erreur a cote de la bonne
+reponse"*. Deux moments distincts, deux contenus distincts. `SAI-9` les a fondus en un seul et a
+demande les deux a chaque refus. **C'est ma redaction qui a derive, pas sa lecture.**
+
+### 2. Ce que la lecture litterale ferait a l'enfant, et c'est cela qui tranche
+
+**Elle detruirait les trois essais.** Un enfant qui recoit *"On écrit : élève"* apres sa premiere
+tentative n'a plus rien a chercher : les essais 2 et 3 deviennent de la recopie. `M5` existe parce
+qu'un enfant a le droit de se reprendre avec sa propre tete, et un dispositif qui donne la reponse
+au premier ecart lui retire exactement l'occasion d'apprendre que le troisieme essai lui offre. Ce
+serait **strictement pire que la mecanique d'aujourd'hui**, ou aucune proposition n'est designee
+avant la revelation.
+
+**J'aurais refuse un increment qui aurait implemente ma phrase au pied de la lettre.** C'est le
+motif de ma decision, et il n'est pas de commodite : la lecture de `theo-archi` n'est pas un
+compromis technique, c'est la lecture pedagogiquement juste.
+
+### 3. La decision
+
+**Je retiens la lecture de `theo-archi`**, et je reecris `SAI-9` en deux clauses qui disent
+separement ce que ma phrase melangeait. Le libelle d'origine reste ci-dessus, il n'est pas efface :
+c'est de lui que la correction part.
+
+- **`SAI-9a`** - **A chaque refus, avant la revelation : la chaine que l'enfant a ecrite reste
+  visible, et la reponse attendue n'est jamais nommee.** Le retour dit qu'il s'est trompe et lui
+  laisse ce qu'il a produit sous les yeux, pour qu'il le corrige plutot que de retaper a l'aveugle.
+  Aucune formulation ne doit designer, meme indirectement, la bonne reponse - pas plus qu'une marque
+  ne le fait aujourd'hui sur un bouton.
+- **`SAI-9b`** - **A la revelation, et seulement la : la chaine de l'enfant et la reponse attendue
+  sont montrees ensemble.** C'est la que mon exemple s'applique : *"Tu as écrit : elleve. On écrit :
+  élève."* C'est aussi le moment ou la mecanique actuelle nomme deja la bonne reponse, donc rien
+  n'est ajoute au regime existant.
+
+**`M9` clause 5 n'est pas rouverte, et son encodage dans le domaine n'a pas a bouger.** Je le dis
+explicitement pour que `theo-archi` n'engage pas l'amendement date qu'il proposait : il n'y a rien a
+amender.
+
+### 4. Une condition **neuve**, datee du 2026-08-24, que cet echange me fait voir et que je n'ecris pas comme un durcissement de `SAI-9`
+
+En verifiant `M9`, je vois ce que ni `SAI-9` ni la lecture de `theo-archi` ne couvrent, et c'est un
+manque reel.
+
+Avec des boutons, **toutes** les propositions deja pressees restent marquees : au troisieme essai,
+l'enfant voit ses deux erreurs precedentes et ne les repete pas. C'est la clause de `M9` qui n'a
+jamais eu besoin d'etre ecrite, parce que le balisage la donnait gratuitement. Dans un champ de
+saisie, si seule la derniere chaine survit, **un enfant peut retaper au troisieme essai ce qu'il
+avait deja ecrit au premier**, et user une manche sur une repetition qu'il ne voit pas.
+
+- **`SAI-12` (neuve, 2026-08-24, non retroactive)** - **Aux deuxieme et troisieme essais, l'enfant
+  voit la liste de ce qu'il a deja ecrit sur cette manche**, pas seulement sa derniere tentative.
+  C'est l'equivalent de `M9` pour la saisie, et c'est la seule facon que les trois essais veuillent
+  dire la meme chose dans les deux mecaniques.
+
+**Je l'ecris comme une condition neuve et non comme une precision de `SAI-9`**, parce qu'elle demande
+davantage que ce que `theo-archi` a chiffre - il ecrit que le serveur garde la chaine de toute facon,
+au singulier, et garder trois chaines n'est pas la meme chose. **Si elle coute, qu'il le dise et
+qu'il la chiffre a part** ; je ne la fais pas passer pour acquise dans une decision deja rendue.
+
+### 5. Ce que cet amendement ne change pas
+
+`SAI-1` a `SAI-8`, `SAI-10`, `SAI-11`, `R1` a `R5` et `SEUIL-1` a `SEUIL-5` sont inchanges.
+**`SEUIL-1` reste ecrit contre `SAI-9a`** : si l'enfant ne voit pas ce qu'il a ecrit au moment du
+verdict, la saisie ne doit pas exister. Ce seuil ne portait pas sur la reponse attendue, il portait
+sur la chaine de l'enfant, et cette moitie-la n'a jamais ete en cause.
+
+Je confirme par ailleurs, sans rien y ajouter, les deux points que `theo-archi` valide sans
+correction dans mon autre arbitrage de ce sprint : ni les figures planes ni le decodage syllabique
+n'appellent une mecanique neuve, ce sont des formes d'item. Mes deux routages - visuel et audio -
+portent sur ce que la forme d'item doit pouvoir rendre, jamais sur le geste de l'enfant, et sa
+lecture est la bonne.

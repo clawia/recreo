@@ -1,0 +1,160 @@
+{
+  "bornesDuBalayage": [
+    400,
+    700
+  ],
+  "items": {
+    "Après la course, Tom est « fatigué ».": {
+      "propositions": [
+        "inquiet",
+        "content",
+        "épuisé"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 478
+    },
+    "Ce désert de sable est très « grand ».": {
+      "propositions": [
+        "vide",
+        "chaud",
+        "immense"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 449
+    },
+    "Ce jeu de société est « facile » pour les débutants.": {
+      "propositions": [
+        "coûteux",
+        "simple",
+        "dangereux"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 539
+    },
+    "Ce moteur de camion est très « fort ».": {
+      "propositions": [
+        "bruyant",
+        "léger",
+        "puissant"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 479
+    },
+    "Ce paysage de montagne est « beau ».": {
+      "propositions": [
+        "joli",
+        "vaste",
+        "aride"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 400
+    },
+    "Cet exercice de mathématiques est « difficile ».": {
+      "propositions": [
+        "compliqué",
+        "amusant",
+        "court"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 527
+    },
+    "Cette fourmi est « petite ».": {
+      "propositions": [
+        "rapide",
+        "noire",
+        "minuscule"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 485
+    },
+    "Dans les fables, le renard est « malin ».": {
+      "propositions": [
+        "gentil",
+        "peureux",
+        "rusé"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 433
+    },
+    "La maman parle à son bébé d'une voix « douce ».": {
+      "propositions": [
+        "grave",
+        "forte",
+        "tendre"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 416
+    },
+    "La musique du carnaval est « gaie ».": {
+      "propositions": [
+        "joyeuse",
+        "grave",
+        "lente"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 432
+    },
+    "Le bureau de Léa est « propre ».": {
+      "propositions": [
+        "encombré",
+        "net",
+        "sombre"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 471
+    },
+    "Le nouveau voisin est « gentil » avec tout le monde.": {
+      "propositions": [
+        "célèbre",
+        "aimable",
+        "élégant"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 499
+    },
+    "Le petit garçon est « triste » depuis le départ de son ami.": {
+      "propositions": [
+        "malheureux",
+        "inquiet",
+        "gêné"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 517
+    },
+    "Le pompier reste « courageux » face au danger.": {
+      "propositions": [
+        "brave",
+        "discret",
+        "maladroit"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 490
+    },
+    "Le village est très « calme » le dimanche matin.": {
+      "propositions": [
+        "animé",
+        "bruyant",
+        "tranquille"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 515
+    },
+    "Léa est « contente » de son cadeau.": {
+      "propositions": [
+        "surprise",
+        "inquiète",
+        "heureuse"
+      ],
+      "rangeeOfferteAuPlafondHaut": 700,
+      "seuil": 538
+    }
+  },
+  "itemsVus": 16,
+  "parties": 4,
+  "retraitRangee": 40,
+  "seuilMaximum": 539,
+  "viewport": [
+    744,
+    551
+  ]
+}

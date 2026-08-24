@@ -1,0 +1,170 @@
+[
+ {
+  "viewport": 576,
+  "accueil": {
+   "viewport": 576,
+   "zoneLargeur": 576,
+   "zoneGauche": 0,
+   "zoneDroite": 0,
+   "enteteGauche": 0,
+   "enteteLargeur": 576,
+   "boutonCatalogueGauche": 12
+  },
+  "manche": {
+   "viewport": 576,
+   "zoneLargeur": 576,
+   "zoneGauche": 0,
+   "zoneDroite": 0,
+   "enteteGauche": 0,
+   "enteteLargeur": 576,
+   "propositionGauche": 20
+  }
+ },
+ {
+  "viewport": 578,
+  "accueil": {
+   "viewport": 578,
+   "zoneLargeur": 578,
+   "zoneGauche": 0,
+   "zoneDroite": 0,
+   "enteteGauche": 0,
+   "enteteLargeur": 578,
+   "propositionGauche": 20
+  },
+  "manche": {
+   "viewport": 578,
+   "zoneLargeur": 578,
+   "zoneGauche": 0,
+   "zoneDroite": 0,
+   "enteteGauche": 0,
+   "enteteLargeur": 578,
+   "propositionGauche": 20
+  }
+ },
+ {
+  "viewport": 579,
+  "accueil": {
+   "viewport": 579,
+   "zoneLargeur": 579,
+   "zoneGauche": 0,
+   "zoneDroite": 0,
+   "enteteGauche": 0,
+   "enteteLargeur": 579,
+   "propositionGauche": 20
+  },
+  "manche": {
+   "viewport": 579,
+   "zoneLargeur": 579,
+   "zoneGauche": 0,
+   "zoneDroite": 0,
+   "enteteGauche": 0,
+   "enteteLargeur": 579,
+   "propositionGauche": 20
+  }
+ },
+ {
+  "viewport": 580,
+  "accueil": {
+   "viewport": 580,
+   "zoneLargeur": 579,
+   "zoneGauche": 0.5,
+   "zoneDroite": 0.5,
+   "enteteGauche": 0.5,
+   "enteteLargeur": 579,
+   "propositionGauche": 20.5
+  },
+  "manche": {
+   "viewport": 580,
+   "zoneLargeur": 579,
+   "zoneGauche": 0.5,
+   "zoneDroite": 0.5,
+   "enteteGauche": 0.5,
+   "enteteLargeur": 579,
+   "propositionGauche": 20.5
+  }
+ },
+ {
+  "viewport": 600,
+  "accueil": {
+   "viewport": 600,
+   "zoneLargeur": 579,
+   "zoneGauche": 10.5,
+   "zoneDroite": 10.5,
+   "enteteGauche": 10.5,
+   "enteteLargeur": 579,
+   "propositionGauche": 30.5
+  },
+  "manche": {
+   "viewport": 600,
+   "zoneLargeur": 579,
+   "zoneGauche": 10.5,
+   "zoneDroite": 10.5,
+   "enteteGauche": 10.5,
+   "enteteLargeur": 579,
+   "propositionGauche": 30.5
+  }
+ },
+ {
+  "viewport": 640,
+  "accueil": {
+   "viewport": 640,
+   "zoneLargeur": 579,
+   "zoneGauche": 30.5,
+   "zoneDroite": 30.5,
+   "enteteGauche": 30.5,
+   "enteteLargeur": 579,
+   "propositionGauche": 50.5
+  },
+  "manche": {
+   "viewport": 640,
+   "zoneLargeur": 579,
+   "zoneGauche": 30.5,
+   "zoneDroite": 30.5,
+   "enteteGauche": 30.5,
+   "enteteLargeur": 579,
+   "propositionGauche": 50.5
+  }
+ },
+ {
+  "viewport": 700,
+  "accueil": {
+   "viewport": 700,
+   "zoneLargeur": 579,
+   "zoneGauche": 60.5,
+   "zoneDroite": 60.5,
+   "enteteGauche": 60.5,
+   "enteteLargeur": 579,
+   "propositionGauche": 80.5
+  },
+  "manche": {
+   "viewport": 700,
+   "zoneLargeur": 579,
+   "zoneGauche": 60.5,
+   "zoneDroite": 60.5,
+   "enteteGauche": 60.5,
+   "enteteLargeur": 579,
+   "propositionGauche": 80.5
+  }
+ },
+ {
+  "viewport": 719,
+  "accueil": {
+   "viewport": 719,
+   "zoneLargeur": 579,
+   "zoneGauche": 70,
+   "zoneDroite": 70,
+   "enteteGauche": 70,
+   "enteteLargeur": 579,
+   "propositionGauche": 90
+  },
+  "manche": {
+   "viewport": 719,
+   "zoneLargeur": 579,
+   "zoneGauche": 70,
+   "zoneDroite": 70,
+   "enteteGauche": 70,
+   "enteteLargeur": 579,
+   "propositionGauche": 90
+  }
+ }
+]
