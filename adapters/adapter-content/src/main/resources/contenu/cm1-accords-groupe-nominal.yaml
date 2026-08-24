@@ -1,0 +1,116 @@
+schema: 1
+id: cm1-accords-groupe-nominal
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CM1"
+  domaine: "Orthographe et grammaire"
+  competence: "Accorder en genre et en nombre dans le groupe nominal (déterminant/nom/adjectif)"
+# S19-2 (DEC-0042) : le paquet couvre les trois composantes du groupe nominal, pas seulement
+# l'adjectif comme la matiere premiere reprise (contenu-repris/textes-trous/cm1-accords.yml, 5
+# items). Un item ne porte qu'un seul trou et sa composante n'est jamais melangee a une autre :
+# la mecanique bandit-manchot compare une seule chaine (BanditManchotSession.jouer), et un groupe
+# nominal a plusieurs trous n'aurait ete jouable que si une proposition les remplissait tous a la
+# fois (avis-faisabilite.md s19, section 2.b) - non retenu ici, un trou par item l'evite entierement.
+items:
+  # Determinant (8 items, genre et nombre) : chaque distracteur est un determinant reel dont le
+  # genre ou le nombre ne correspond pas au nom qui suit, jamais un determinant inexistant.
+  - enonce: "___ chat dort sur le canapé."
+    bonneReponse: "Le"
+    distracteurs: ["La", "Les"]
+    indice: "Le nom 'chat' est masculin singulier : il faut un déterminant masculin singulier."
+  - enonce: "___ fleurs sentent très bon."
+    bonneReponse: "Les"
+    distracteurs: ["Le", "La"]
+    indice: "Le nom 'fleurs' est au pluriel : il faut un déterminant pluriel."
+  - enonce: "Léa a acheté ___ ballon rouge."
+    bonneReponse: "un"
+    distracteurs: ["une", "des"]
+    indice: "Le nom 'ballon' est masculin singulier : il faut un déterminant masculin singulier."
+  - enonce: "Nous avons vu ___ voiture bleue."
+    bonneReponse: "une"
+    distracteurs: ["un", "des"]
+    indice: "Le nom 'voiture' est féminin singulier : il faut un déterminant féminin singulier."
+  - enonce: "Regarde ___ chien là-bas !"
+    bonneReponse: "ce"
+    distracteurs: ["cette", "ces"]
+    indice: "Le nom 'chien' est masculin singulier : il faut un déterminant masculin singulier."
+  - enonce: "Range ___ crayons dans la trousse."
+    bonneReponse: "ces"
+    distracteurs: ["ce", "cette"]
+    indice: "Le nom 'crayons' est au pluriel : il faut un déterminant pluriel."
+  - enonce: "Tom a perdu ___ gomme préférée."
+    bonneReponse: "sa"
+    distracteurs: ["son", "ses"]
+    indice: "Le nom 'gomme' est féminin singulier : il faut un déterminant féminin singulier."
+  - enonce: "Léa range ___ cahiers dans son sac."
+    bonneReponse: "ses"
+    distracteurs: ["son", "sa"]
+    indice: "Le nom 'cahiers' est au pluriel : il faut un déterminant pluriel."
+  # Nom (8 items, singulier/pluriel) : le distracteur est toujours la meme erreur de nombre sur
+  # le meme nom, jamais une erreur d'un autre ordre.
+  - enonce: "Léa a cueilli trois ___."
+    bonneReponse: "fleurs"
+    distracteurs: ["fleur"]
+    indice: "Le mot 'trois' annonce le pluriel : il faut le nom au pluriel."
+  - enonce: "Le chat attrape une ___."
+    bonneReponse: "balle"
+    distracteurs: ["balles"]
+    indice: "'une' annonce le singulier : il faut le nom au singulier."
+  - enonce: "Dans la classe, il y a vingt ___."
+    bonneReponse: "élèves"
+    distracteurs: ["élève"]
+    indice: "Le mot 'vingt' annonce le pluriel : il faut le nom au pluriel."
+  - enonce: "Tom a un seul ___ dans sa trousse."
+    bonneReponse: "crayon"
+    distracteurs: ["crayons"]
+    indice: "'un seul' annonce le singulier : il faut le nom au singulier."
+  - enonce: "Les enfants ramassent des ___."
+    bonneReponse: "feuilles"
+    distracteurs: ["feuille"]
+    indice: "Le mot 'des' annonce le pluriel : il faut le nom au pluriel."
+  - enonce: "Léa porte une ___ neuve."
+    bonneReponse: "robe"
+    distracteurs: ["robes"]
+    indice: "'une' annonce le singulier : il faut le nom au singulier."
+  - enonce: "Sur la table, il y a quatre ___."
+    bonneReponse: "assiettes"
+    distracteurs: ["assiette"]
+    indice: "Le mot 'quatre' annonce le pluriel : il faut le nom au pluriel."
+  - enonce: "Le fermier a un seul ___ dans le pré."
+    bonneReponse: "cheval"
+    distracteurs: ["chevaux"]
+    indice: "'un seul' annonce le singulier : il faut le nom au singulier."
+  # Adjectif (8 items, quatre formes possibles) : patron deja valide sur cm1-accords.yml.
+  - enonce: "Les fleurs sont ___."
+    bonneReponse: "jolies"
+    distracteurs: ["joli", "jolis", "jolie"]
+    indice: "Le nom 'fleurs' est féminin pluriel : l'adjectif doit être accordé au féminin pluriel."
+  - enonce: "Des chats ___."
+    bonneReponse: "noirs"
+    distracteurs: ["noir", "noire", "noires"]
+    indice: "Le nom 'chats' est masculin pluriel : l'adjectif doit être accordé au masculin pluriel."
+  - enonce: "La maison est ___."
+    bonneReponse: "grande"
+    distracteurs: ["grand", "grands", "grandes"]
+    indice: "Le nom 'maison' est féminin singulier : l'adjectif doit être accordé au féminin singulier."
+  - enonce: "Les garçons sont ___."
+    bonneReponse: "petits"
+    distracteurs: ["petit", "petite", "petites"]
+    indice: "Le nom 'garçons' est masculin pluriel : l'adjectif doit être accordé au masculin pluriel."
+  - enonce: "Une pomme ___."
+    bonneReponse: "verte"
+    distracteurs: ["vert", "verts", "vertes"]
+    indice: "Le nom 'pomme' est féminin singulier : l'adjectif doit être accordé au féminin singulier."
+  - enonce: "Le ballon est ___."
+    bonneReponse: "rond"
+    distracteurs: ["ronde", "ronds", "rondes"]
+    indice: "Le nom 'ballon' est masculin singulier : l'adjectif doit être accordé au masculin singulier."
+  - enonce: "Les histoires sont ___."
+    bonneReponse: "amusantes"
+    distracteurs: ["amusant", "amusants", "amusante"]
+    indice: "Le nom 'histoires' est féminin pluriel : l'adjectif doit être accordé au féminin pluriel."
+  - enonce: "Un gâteau ___."
+    bonneReponse: "chaud"
+    distracteurs: ["chaude", "chauds", "chaudes"]
+    indice: "Le nom 'gâteau' est masculin singulier : l'adjectif doit être accordé au masculin singulier."
