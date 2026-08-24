@@ -332,3 +332,180 @@ vocale) sans les rejuger.
   au moins une des trois contraintes fondatrices nommees en section 3, pourrait le faire.
 - Elle ne repond a aucune des quatre questions de proxy qu'elle repose : ces reponses restent
   entierement celles de `nadia-prof`.
+
+## Amendement du 2026-08-24 (meme jour, second passage) - nadia-prof a repondu aux quatre questions
+   de proxy pendant que cette decision s'ecrivait
+
+`nadia-prof` travaillait en parallele sur la branche `s19-nadia`, worktree dedie, lignee verifiee.
+Son arbitrage (`squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md`)
+repond aux quatre questions de la section 4 ci-dessus. Cette section les amende a leur date plutot
+que de les reecrire : les notes de `squad/programme/MATRICE-couverture.md` qui disaient une reponse
+due restent lisibles telles qu'ecrites au moment ou elles etaient vraies, et portent desormais, a
+cote, l'amendement du meme jour.
+
+### Verification demandee par le coordinateur avant de reprendre
+
+**Aucune graphie fautive n'est entree dans mon lot.** J'ai relu `docs/backlog/backlog.md`,
+`squad/programme/MATRICE-couverture.md` et les quatre fiches ouvertes ce sprint : aucune ne cite la
+ligne de relecture CM1 avec le mot "accords" ajoute. La seule occurrence de cette ligne dans mon lot
+(`squad/programme/MATRICE-couverture.md`, tableau francais CM1) porte deja l'intitule exact du
+referentiel, *"Relire et corriger son texte a l'aide de reperes simples (majuscules,
+ponctuation)"*, verifie caractere pres caractere contre
+`squad/programme/francais/competences-cm1.md`. Rien a corriger de ce cote.
+
+### Les quatre verdicts
+
+| Question (`DEC-0030` section 4) | Verdict de `nadia-prof` | Famille apres arbitrage |
+|---|---|---|
+| 1. Denombrer, lire, ecrire, decomposer jusqu'a 100 (math CP) | **partiel** : REFUSE sur "denombrer", ACCEPTE SOUS CONDITIONS (`DEN-1` a `DEN-8`) sur "lire, ecrire, decomposer" | contenu seul (moitie) + visuel (moitie, "denombrer") |
+| 2. Reconnaitre et nommer des figures planes (math CP) | **REFUSE** | visuel (`FIG-1` a `FIG-4`) |
+| 3. Decoder un mot regulier par assemblage syllabique (francais CP) | **REFUSE** comme proxy ecrit ; le format qui la sert reellement existe et ne demande pas de reconnaissance vocale | audio, emission seule (`SYL-1` a `SYL-4`) |
+| 4. Relire et corriger son texte (francais CM1) | **REFUSE**, et la saisie ne la debloque pas non plus | hors de portee de ce produit tel que le referentiel l'ecrit |
+
+Motifs complets dans le fichier source, non recopies ici : groupement par dix non controlable dans
+une chaine qui retourne a la ligne selon l'ecran et plafond reel de dix objets par ligne pour la
+question 1 ; proportions d'un glyphe qui sont celles de la police et non du contenu, demontre par
+`contenu-repris/associer/cp-formes.yml` qui associe deja un carre a la cible "rectangle", pour la
+question 2 ; le proxy ecrit teste la segmentation et non l'assemblage et affiche toujours le mot qui
+doit rester inconnu, pour la question 3 ; dependance a une autre ligne non couverte (rediger un
+texte) et jugement de correction non automatisable, pour la question 4.
+
+### Le defaut trouve dans la matiere premiere des figures planes, verse au dossier
+
+`contenu-repris/associer/cp-formes.yml` associe le glyphe carre a la cible "rectangle" - le seul
+materiau du depot sur cette competence, et il enseigne l'inverse exact de ce qu'elle existe pour
+faire distinguer. Ce n'est pas du contenu servi et cela n'ouvre aucune story ce sprint. Je le nomme
+ici pour qu'il ne soit pas redecouvert le jour ou la famille visuelle ouvrira - ce que le refus 2
+vient de rendre probable plutot qu'hypothetique.
+
+### Le recompte des familles, avec la methode de `nadia-prof`
+
+Elle part du tableau de `DEC-0030` section 4 (35 lignes `non couvert` a s13) et n'y applique que ses
+quatre verdicts, sans reouvrir le reste :
+
+| Besoin mecanique | `DEC-0030` (s13) | Apres cet arbitrage (s19) |
+|---|---|---|
+| Contenu seul | 19 entieres + 1 partielle | **15 entieres + 2 partielles** |
+| Visuel | 6 entieres + 1 partielle | **7 entieres + 2 partielles** |
+| Saisie | 5 | **5, inchange** |
+| Audio (emission) | 3 | **4** |
+| Hors de portee | 1 | **2** |
+
+Le total reste 35, deux lignes etant comptees en deux moities (fractions, deja partagee depuis s13 ;
+denombrement, nouvellement partagee). Je reprends ce tableau tel quel : je n'ai aucun motif de le
+compter autrement, et refaire le calcul a sa place reviendrait a mettre en doute un travail que je
+n'ai aucune raison de mettre en doute.
+
+**Consequence pour l'horizon de `DEC-0030` section 6, que cette decision citait en section 1 :**
+l'estimation "quatre a six sprints" de contenu seul restant reposait sur une reserve de 19 lignes
+entieres plus une moitie (19,5 en equivalent-ligne). Elle est desormais de 15 plus deux moities (16
+en equivalent-ligne). Au rythme observe sur ce produit (4 lignes ouvertes a s9, 3 a s12, 3 proposees
+a s13, 4 dans le Lot A de ce sprint - une moyenne de 3,5 lignes par sprint sur ces quatre points de
+mesure), 16 equivalent-lignes representent environ **4,6 sprints**. **Je revise l'horizon a quatre a
+cinq sprints**, plutot que quatre a six - une reduction modeste, dans le sens attendu, et je l'ecris
+avec sa methode plutot que de laisser circuler un chiffre qui n'a plus sa base.
+
+### Ma decision sur le denominateur : la ligne "Relire et corriger son texte" rejoint "Lire a voix
+   haute" au statut `non couvrable en l'etat`
+
+`nadia-prof` ecrit elle-meme, dans son verdict sur la question 4 : *"Elle rejoint la meme categorie
+que 'Lire a voix haute un texte court avec fluidite' : hors de portee, et pas pour une question de
+sprints."* Je retiens ce rapprochement plutot que d'en inventer un autre : les deux lignes partagent
+la meme nature de blocage - un jugement humain sur une production de l'enfant (le ton et les
+liaisons pour l'une, la correction d'un texte qu'il a lui-meme ecrit pour l'autre) qu'aucun verdict
+serveur testable ne peut rendre (`ADR-0008`), et qui ne se resout par aucune des mecaniques que ce
+produit peut construire - ni le choix, ni la saisie.
+
+**Ce que je note comme distinct, pour ne pas confondre les deux motifs malgre le meme statut** :
+"Lire a voix haute" bute sur une contrainte technique du produit (la reconnaissance vocale, qui
+contredirait trois choix fondateurs a la fois) - une contrainte qui pourrait, en theorie, tomber si
+l'utilisatrice revenait sur l'un de ces choix. "Relire et corriger son texte" bute sur autre chose :
+elle est **structurellement dependante d'une autre ligne non couverte** ("Rediger un texte narratif
+court et coherent", elle-meme hors de portee de la saisie par refus `R3` du second arbitrage de
+`nadia-prof`, voir plus bas) et sur un jugement de correction qu'aucune comparaison de chaines ne
+peut rendre, meme si le texte de l'enfant existait. Le premier motif est un choix de produit qui
+pourrait changer ; le second est une propriete de la competence elle-meme, telle que le referentiel
+la formule aujourd'hui. Je les classe au meme statut parce que le resultat operationnel est
+identique - aucune mecanique de ce produit ne la debloquera - mais je garde les deux motifs
+distincts dans la matrice pour qu'un futur arbitrage ne les confonde pas.
+
+**Ce que je retiens de la piste que `nadia-prof` ouvre, sans la trancher moi-meme** : elle recommande
+qu'un amendement du referentiel, pas un arbitrage de mecanique, pourrait un jour rendre utile ce que
+cette ligne visait - les reperes de relecture eux-memes (majuscule en debut de phrase, point final,
+majuscule aux noms propres), servables des aujourd'hui par la mecanique actuelle et sans aucun
+arbitrage de sa part, mais qui ne sont pas ce que la ligne actuelle nomme ("relire et corriger **son**
+texte"). Les referentiels de `squad/programme/` sont un socle non exhaustif et non officiel, a faire
+valider par l'utilisatrice (`squad/programme/francais/competences-cm1.md`, en-tete) : je ne
+l'amende pas moi-meme et je route cette proposition a l'utilisatrice, via `sofia-sm`, comme une
+question de perimetre du referentiel et non de mecanique.
+
+**Le denominateur devient donc 44 lignes atteignables sur 46**, deux lignes ("Lire a voix haute",
+"Relire et corriger son texte") portant desormais le statut `non couvrable en l'etat`. Le compte de
+lignes `couvert-valide` ne change pas : **10**. Le taux devient **10/44 (22,7 %)**, remplacant le
+10/45 (22,2 %) que j'avais ecrit avant de recevoir cet arbitrage - lui-meme deja different du 10/46
+(21,7 %) de la cloture de s18. J'ecris les trois chiffres successifs plutot que le seul dernier,
+pour la meme raison que plus haut : aucun des deux mouvements n'est un mouvement de couverture,
+seulement un denominateur qui se precise au fil des reponses recues.
+
+### Ce que je ne fais pas dans cet amendement
+
+- Je n'ouvre aucune story sur les quatre lignes tranchees : le perimetre de developpement de ce
+  sprint (`S19-1` a `S19-6`) est intact, aucune capacite n'y est ajoutee.
+- Je ne fais passer aucune des deux lignes reclassees "visuel" ou "audio" a `en cours` : aucun jeu
+  ne les cible encore, seule leur famille de mecanique future change dans la note qui les
+  accompagne.
+- Je n'amende pas le referentiel `squad/programme/francais/competences-cm1.md` : la proposition de
+  `nadia-prof` est routee, pas tranchee.
+
+## Amendement du 2026-08-24 (meme jour, troisieme passage) - nadia-prof instruit la mecanique de
+   saisie (Lot C)
+
+Second fichier recu sur la meme branche : `squad/conformite/ARBITRAGE-PREALABLE-s19-mecanique-de-
+saisie.md`. Il precede l'`ADR` de `theo-archi` plutot que de le remplacer, sur le meme principe que
+tout arbitrage prealable de ce produit. Je n'en recopie pas le detail (onze conditions `SAI-1` a
+`SAI-11`, cinq seuils `SEUIL-1` a `SEUIL-5`, cinq refus `R1` a `R5`) : il reste la source, et
+`theo-archi` le lit lui-meme pour son `ADR`. Ce que je retiens ici, pour que le sequencement de s20
+n'ait pas a le redecouvrir :
+
+- **Cinq lignes du referentiel sur lesquelles `nadia-prof` refuse par avance qu'une story de saisie
+  soit un jour validee** : "Copier un mot, une phrase courte..." (CP, `R1` - competence
+  graphomotrice, un clavier n'en travaille aucune facette) ; "Comprendre un texte narratif ou
+  documentaire" (CP et CM1) et "Lire silencieusement... et en restituer l'essentiel" (CM1) (`R2` -
+  une reponse libre a des dizaines de formulations correctes, le choix deja retenu a s17 est
+  superieur) ; "Rediger un texte narratif court et coherent" (CM1, `R3` - la coherence d'un recit ne
+  se compare pas a des chaines) ; "Relire et corriger son texte" (CM1, `R4` - deja traitee ci-dessus,
+  meme verdict) ; "Utiliser des synonymes et antonymes..." (CM1, `R5` - un mot a plusieurs synonymes
+  justes, le choix ferme l'espace des reponses et c'est une qualite ici, ligne deja servie par
+  `S19-1` et `bandit-manchot-synonymes-cm1` sans aucun besoin de saisie).
+- **Une ligne qui a besoin de deux mecaniques a la fois, pas d'une seule** : "Ecrire de maniere
+  autonome un mot simple en respectant les correspondances grapheme/phoneme connues" (CP) exige que
+  l'enfant produise des lettres (saisie) a partir d'un mot **entendu**, jamais affiche (audio) - sans
+  quoi l'exercice devient de la copie (`R1`). Cette ligne ne peut donc ouvrir qu'apres que les deux
+  familles existent ensemble, jamais l'une sans l'autre. Je le note pour qu'aucun arbitrage de
+  sequencement futur ne la range dans une seule des deux colonnes.
+- **Une amelioration d'existant, pas une couverture neuve** : `nadia-prof` recommande la saisie
+  numerique courte (au plus deux chiffres) sur les paquets de calcul deja `couvert-valide` ou
+  `en cours` (additions, complements a 10...), au motif qu'elle supprime la chance qu'un choix parmi
+  quatre laisse aujourd'hui. Je ne l'ouvre pas comme story ce sprint - `sofia-sm` en decidera la
+  valeur le jour ou la mecanique existera, hors du perimetre de developpement gele de s19.
+- **Deux questions routees a l'utilisatrice, via `sofia-sm`, qui conditionnent la portee de tout
+  l'arbitrage de saisie et que je transmets sans les trancher** : une lettre accentuee est-elle
+  accessible d'un geste raisonnable sur le clavier virtuel de la tablette visee (si la reponse est
+  non, la tolerance d'accent `SAI-1` cesse d'etre un confort et devient une condition d'existence de
+  toute saisie alphabetique) ; et dans quel contexte un enfant de CP utilise `recreo` - seul ou
+  accompagne, sur quel appareil (la reponse change son verdict sur la viabilite de la saisie
+  alphabetique au CP).
+- **Ce qui ne change pas** : la distinction operation posee / saisie que cette decision posait deja
+  en section 7 est confirmee sans amendement par `theo-archi` et par `nadia-prof`, au mot pres.
+
+### Ce que je route, mis a jour
+
+- **`theo-archi`** : en plus de ce que section 7 routait deja, les deux conditions `SAI-2` (ou vit
+  l'interrupteur de tolerance stricte declare par le contenu) et `SAI-9` (montrer a l'enfant ce qu'il
+  a ecrit au moment du verdict) comme entrees les plus structurantes pour son `ADR`.
+- **`sofia-sm`** : transmettre les deux questions ci-dessus a l'utilisatrice avant que l'`ADR` de la
+  saisie ne soit ecrit, comme `nadia-prof` le demande elle-meme ; verifier que les cinq refus
+  (`R1` a `R5`) sont lus par quiconque instruira une story de saisie sur l'une des lignes qu'ils
+  citent.
+- **`nadia-prof`** : rien de plus ici - son arbitrage reste la source, je ne lui redemande rien.
+

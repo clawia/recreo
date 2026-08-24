@@ -26,14 +26,20 @@ face a chacune d'entre elles sur la branche `round-two`.
   cours, Done pedagogique pas encore prononce).
 - `couvert-valide` : `nadia-prof` a rendu un verdict `VALIDE` sur la fiche de conformite
   correspondante. Ce statut n'est **jamais** attribue sur la seule foi d'une CI verte.
-- `non couvrable en l'etat` (introduit au sprint 19, `DEC-0042`) : la competence exige une capacite
-  que ce produit ne peut pas fournir sans revenir sur au moins une contrainte fondatrice du produit
-  lui-meme (`CLAUDE.md`), et non faute d'un contenu, d'une mecanique ou d'un arbitrage pedagogique
-  qui manquerait encore. Une ligne dans cet etat ne compte dans aucune reserve de contenu, dans
+- `non couvrable en l'etat` (introduit au sprint 19, `DEC-0042`) : la competence exige quelque
+  chose qu'aucune mecanique que ce produit pourrait construire ne peut fournir, et non faute d'un
+  contenu, d'une mecanique ou d'un arbitrage pedagogique qui manquerait encore. Deux motifs
+  distincts ont conduit a ce statut, et chaque ligne dans cet etat porte le sien en toutes lettres :
+  soit la competence exige de revenir sur une contrainte fondatrice du produit lui-meme
+  (`CLAUDE.md`) - c'est le cas de la reconnaissance vocale ; soit elle exige un jugement humain sur
+  une production libre de l'enfant, qu'aucun verdict serveur testable ne peut rendre (`ADR-0008`),
+  et que ni le choix ni la saisie ne peuvent automatiser (amendement du 2026-08-24 a `DEC-0042`, sur
+  arbitrage de `nadia-prof`). Une ligne dans cet etat ne compte dans aucune reserve de contenu, dans
   aucun horizon de sprint, et dans aucun compte de report : elle est retiree du denominateur
   "atteignable" de cette matrice (voir la synthese de s19 en bas de fichier), sans etre retiree du
-  referentiel source. Seule une decision future de l'utilisatrice, actant un changement sur la
-  contrainte en cause, peut la faire sortir de cet etat - ce n'est pas un geste de planning.
+  referentiel source. Seule une decision future de l'utilisatrice - sur la contrainte fondatrice en
+  cause, ou sur un amendement du referentiel qui reformulerait la competence - peut la faire sortir
+  de cet etat ; ce n'est pas un geste de planning.
 
 ## Qui la met a jour, et quand
 
@@ -95,6 +101,32 @@ d'arbitrage n'y reponde - verifie par recherche des formulations exactes dans
 `squad/conformite/` et `squad/decisions/produit/`, seul `DEC-0030` lui-meme les porte. Detail
 complet et ce que je change pour que ce manque redevienne visible a chaque cloture :
 `DEC-0042`, section 4.
+
+**Amendement du 2026-08-24 (meme jour) - les deux questions sont tranchees par `nadia-prof`
+pendant que la note ci-dessus s'ecrivait** (`squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-
+proxys-en-attente-depuis-s13.md`, `DEC-0042` amendement du meme jour). La note ci-dessus reste
+lisible telle qu'ecrite, a l'heure ou la reponse etait encore due.
+
+- **Denombrer, lire, ecrire, decomposer jusqu'a 100** : **REFUSE sur "denombrer"** (un groupement
+  par dix n'est pas controlable dans une chaine qui retourne a la ligne selon l'ecran, et le
+  plafond reel de comptage a l'ecran est autour de dix objets pour une ligne qui va jusqu'a cent).
+  **ACCEPTE SOUS CONDITIONS** (`DEN-1` a `DEN-8`) sur "lire, ecrire et decomposer", en couverture
+  partielle nommee - candidat ouvrable sans arbitrage supplementaire des qu'une capacite de
+  developpement lui est affectee, la ligne restant `en cours` meme si ce paquet est un jour
+  valide (condition `DEN-2`, non negociable). "Denombrer" quitte la famille "contenu seul" et
+  rejoint la famille **visuelle**, et n'y ouvrira qu'avec une interaction reelle sur la collection
+  (deplacer, marquer, grouper), pas un simple dessin statique.
+- **Reconnaitre et nommer des figures planes** : **REFUSE en entier**. La discrimination que la
+  ligne demande (carre contre rectangle) tient a une proportion, et les proportions d'un glyphe
+  sont celles de la police, pas du contenu - deja demontre en creux par
+  `contenu-repris/associer/cp-formes.yml`, qui associe le glyphe carre a la cible "rectangle", seul
+  materiau du depot sur cette competence. Cette ligne quitte entierement la famille "contenu seul"
+  et rejoint la famille **visuelle**, sous conditions `FIG-1` a `FIG-4` (figures dessinees aux
+  proportions declarees par le contenu, au moins trois exemples par forme variant orientation et
+  taille, couleur jamais discriminante, cercle et disque jamais confondus).
+
+Ligne reste `non couvert` sur les deux : aucune story n'est ouverte ce sprint, le perimetre de
+developpement de s19 restant celui fixe par `DEC-0042`.
 
 Note sur la ligne `en cours` (comparer et ranger) : `DEC-0019-perimetre-sprint-9-quatre-lignes-
 textuelles-de-mathematiques-cp-denombrement-et-monnaie-differes.md` ouvre cette ligne au sprint 9
@@ -463,6 +495,20 @@ sans reponse ecrite - verifie par recherche de la formulation exacte ("assemblag
 `squad/conformite/` et `squad/decisions/produit/`, seul `DEC-0030` lui-meme la porte. Detail
 complet : `DEC-0042`, section 4.
 
+**Amendement du 2026-08-24 (meme jour) - la question est tranchee par `nadia-prof`**
+(`squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md`, section 3).
+**REFUSE** : le proxy ecrit teste la segmentation (reconnaitre une coupe deja faite), pas
+l'assemblage que la ligne nomme, et un choix parmi des mots ecrits affiche toujours le mot qui doit
+rester inconnu - le defaut est structurel, pas reparable par une regle d'ecriture des items. Cette
+ligne quitte la famille "contenu seul" et rejoint la famille **audio, par emission de son
+seulement** (`SYL-1` a `SYL-4` : mot rare ou pseudo-mot jamais rencontre, propositions **entendues**
+et non lues, reecoute libre, aucune manche chronometree) - **explicitement sans reconnaissance
+vocale**, a la difference de "Lire a voix haute...". Elle rejoint ainsi les trois lignes de
+conscience phonologique deja hors perimetre de s19 (arbitrage 2 de `DEC-0042`) sous le meme motif
+de production (aucun agent de cette squad ne peut fournir un enregistrement de voix humaine), la
+famille audio comptant desormais quatre lignes et non trois. Ligne reste `non couvert` : aucune
+story n'est ouverte ce sprint.
+
 Note sur la ligne `en cours` : `DEC-0008-la-couverture-reprend-francais-cp-et-cm1.md` ouvre cette
 competence au sprint 4, sur la matiere premiere `contenu-repris/mots/cp-le-bon-son.yml` (story
 S4-2, `docs/backlog/backlog.md`).
@@ -502,7 +548,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Lecture et comprehension de l'ecrit | Comprendre un texte narratif ou documentaire (questions explicites et implicites, inferences simples) | - | - | non couvert |
 | francais | CM1 | Lecture et comprehension de l'ecrit | Reperer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte | - | - | non couvert |
 | francais | CM1 | Ecriture | Rediger un texte narratif court et coherent (quelques phrases, temps du recit respecte) | - | - | non couvert |
-| francais | CM1 | Ecriture | Relire et corriger son texte a l'aide de reperes simples (majuscules, ponctuation) | - | - | non couvert |
+| francais | CM1 | Ecriture | Relire et corriger son texte a l'aide de reperes simples (majuscules, ponctuation) | - | - | non couvrable en l'etat |
 | francais | CM1 | Orthographe et grammaire | Accorder le verbe avec son sujet (cas frequents, temps simples : present, futur, imparfait) | bandit-manchot-accord-sujet-verbe-cm1 | bandit manchot | en cours |
 | francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | bandit-manchot-accords-groupe-nominal-cm1 | bandit manchot | en cours |
 | francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | bandit-manchot-homophones-cm1 | bandit manchot | couvert-valide |
@@ -540,6 +586,21 @@ competence suppose-t-elle un texte que l'enfant a lui-meme produit, ce qui la de
 saisie ? Six sprints se sont ecoules sans reponse ecrite - verifie par recherche de la formulation
 exacte ("relire et corriger") dans `squad/conformite/` et `squad/decisions/produit/`, seul
 `DEC-0030` lui-meme la porte. Detail complet : `DEC-0042`, section 4.
+
+**Amendement du 2026-08-24 (meme jour) - la question est tranchee, la ligne rejoint le statut
+`non couvrable en l'etat`** (`squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-
+depuis-s13.md`, section 4 ; `DEC-0042`, amendement du meme jour). **REFUSE, et la saisie ne la
+debloque pas non plus** : `nadia-prof` ecrit elle-meme que cette ligne "rejoint la meme categorie
+que 'Lire a voix haute...' : hors de portee, et pas pour une question de sprints." Deux motifs
+cumules, distincts de celui de la lecture a voix haute - elle depend structurellement d'une autre
+ligne non couverte ("Rediger un texte narratif court et coherent", elle-meme refusee a la saisie,
+voir plus bas), et juger une correction suppose un jugement humain sur un texte que l'enfant a
+lui-meme ecrit, qu'aucune comparaison de chaines ne peut rendre. **Le statut de cette ligne passe de
+`non couvert` a `non couvrable en l'etat`** (tableau ci-dessus) : elle cesse de figurer dans une
+famille ("contenu seul" chez `DEC-0030`, "production libre" chez `DEC-0039`) qui laisserait croire
+qu'une mecanique la debloquera un jour. `nadia-prof` route par ailleurs une proposition
+d'amendement du referentiel, distincte de ce statut et non tranchee ici : voir `DEC-0042` pour le
+detail et le routage vers l'utilisatrice.
 
 Note sur la ligne `en cours` (homophones) : `DEC-0008-la-couverture-reprend-francais-cp-et-cm1.md`
 ouvre cette competence au sprint 4, sur la matiere premiere `contenu-repris/mots/cm1-homophones.yml`
@@ -1798,3 +1859,52 @@ repondues, reposees a `nadia-prof` et rendues visibles directement sous les lign
 bloquent** (mathematiques CP : denombrer, figures planes ; francais CP : decoder un mot par
 assemblage syllabique ; francais CM1 : relire et corriger son texte) - detail et methode de
 verification : `DEC-0042`, section 4.
+
+## Amendement du 2026-08-24 (meme jour) a la synthese d'ouverture de s19 - les quatre questions recoivent reponse, le denominateur se precise a 44/46
+
+La synthese ci-dessus reste lisible telle qu'ecrite au moment de l'ouverture du sprint, avant que
+`nadia-prof` ne reponde. Ce qui suit l'amende, sans la reecrire.
+
+`nadia-prof` a repondu aux quatre questions de proxy pendant que la synthese ci-dessus s'ecrivait
+(`squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md`) : une
+acceptation partielle sous conditions (denombrement, moitie "lire/ecrire/decomposer"), deux refus
+routes vers une famille de mecanique future (figures planes -> visuel ; decodage syllabique ->
+audio par emission), et un refus qui reclasse une ligne au statut `non couvrable en l'etat`
+(relire et corriger son texte, qui rejoint "Lire a voix haute..." - meme statut, motif distinct,
+detail dans `DEC-0042`).
+
+**Consequence sur le tableau ci-dessus** : aucune des trois premieres reponses ne bouge une colonne
+- aucune story n'est ouverte ce sprint sur ces trois lignes, le perimetre de developpement de s19
+reste celui fixe par `DEC-0042` (`S19-1` a `S19-6`, inchange). La quatrieme reponse, elle, deplace
+une ligne :
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide | non couvrable en l'etat |
+|---|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 | 0 |
+| mathematiques CM1 | 12 | 6 | 2 | 4 | 0 |
+| francais CP | 12 | 9 | 2 | 0 | 1 |
+| francais CM1 | 11 | 5 | 3 | 2 | 1 |
+| **Total** | **46** | **26** | **8** | **10** | **2** |
+
+Seule "Relire et corriger son texte" quitte `non couvert` pour `non couvrable en l'etat` dans
+francais CM1 (6 -> 5 non couvert, 0 -> 1 non couvrable). Aucune autre cellule ne bouge par rapport
+au tableau d'ouverture ci-dessus.
+
+**Le denominateur, mis a jour.** Deux lignes portent desormais le statut `non couvrable en l'etat` :
+"Lire a voix haute..." et "Relire et corriger son texte...". Le denominateur atteignable passe de
+**45** a **44** sur **46**. Le compte de lignes `couvert-valide` ne change pas : **10**. **10/45
+(22,2 %) devient 10/44 (22,7 %)** - troisieme valeur du meme chiffre en une seule journee (21,7 %
+a la cloture de s18, 22,2 % a l'ouverture de s19, 22,7 % apres la reponse de `nadia-prof`), aucune
+des trois etapes n'etant un mouvement de couverture reel : je le repete ici pour la meme raison
+qu'a chaque fois, et parce que trois chiffres le meme jour est precisement le genre de situation ou
+un rapport de sprint pourrait, par erreur, en garder un au hasard plutot que le dernier assume.
+
+**Le recompte des familles de mecanique pour les 35 lignes `non couvert` de s13** (contenu seul,
+visuel, saisie, audio, hors de portee) et l'horizon de reserve de contenu seul revise a quatre-cinq
+sprints (au lieu de quatre-six) : `DEC-0042`, amendement du 2026-08-24, section dediee. Je ne les
+reproduis pas ici, cette matrice n'etant pas le lieu de la methode de recomptage.
+
+**Ce qui ne bouge pas** : les six stories du sprint (`S19-1` a `S19-6`) et leur perimetre de
+developpement, geles par `DEC-0042` et non rouverts par cet amendement. Aucune ligne ne passe
+`couvert-valide` par ce geste ; ce statut reste entierement celui de `nadia-prof`, apres audit reel
+d'un increment livre.
