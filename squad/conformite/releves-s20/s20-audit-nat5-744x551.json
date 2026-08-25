@@ -1,0 +1,1093 @@
+{
+ "autresJeuxDuCatalogue": {
+  "bandit-manchot-accord-sujet-verbe-cm1": {
+   "hauteurs": [
+    96
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-accords-groupe-nominal-cm1": {
+   "hauteurs": [
+    48
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-additions-cp": {
+   "hauteurs": [
+    48
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-antonymes-cm1": {
+   "hauteurs": [
+    48
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-comparer-nombres-cp": {
+   "hauteurs": [
+    48
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-complements-10-cp": {
+   "hauteurs": [
+    48
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-conjugaison-present-cm1": {
+   "hauteurs": [
+    48
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-conversions-unites-cm1": {
+   "hauteurs": [
+    48
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-grands-nombres-cm1": {
+   "hauteurs": [
+    48
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-homophones-cm1": {
+   "hauteurs": [
+    96
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-le-bon-son-cp": {
+   "hauteurs": [
+    48
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-nature-mot-cp": {
+   "hauteurs": [
+    55.19
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 4,
+   "spansTotal": 4,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text",
+     "SPAN",
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-perimetre-cm1": {
+   "hauteurs": [
+    96
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-problemes-additifs-cp": {
+   "hauteurs": [
+    96
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-reperes-cm1": {
+   "hauteurs": [
+    48
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-soustractions-cp": {
+   "hauteurs": [
+    48
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-synonymes-cm1": {
+   "hauteurs": [
+    96
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  },
+  "bandit-manchot-tables-multiplication-cm1": {
+   "hauteurs": [
+    48
+   ],
+   "lance": true,
+   "manches": 4,
+   "marqueTotale": 0,
+   "spansTotal": 0,
+   "taille": [
+    32
+   ],
+   "typesNoeuds": [
+    [
+     "#text"
+    ]
+   ]
+  }
+ },
+ "items": {
+  "Elle « range » sa chambre.": {
+   "apresUnEchec": {
+    "basEnonce": 252.38,
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "defilement": 0,
+    "fondMot": "rgb(255, 245, 157)",
+    "indiceAuDessusDuPli": true,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "rangees": 1,
+    "taillePxMot": 36.8,
+    "textIndice": "Ce mot dit ce qu'elle fait.",
+    "verdictAuDessusDuPli": true
+   },
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 107.41,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "range",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "nom",
+     "verbe"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  },
+  "Il « dort » bien fort.": {
+   "apresUnEchec": {
+    "basEnonce": 252.38,
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "defilement": 0,
+    "fondMot": "rgb(255, 245, 157)",
+    "indiceAuDessusDuPli": true,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "rangees": 1,
+    "taillePxMot": 36.8,
+    "textIndice": "Ce mot dit ce qu'il fait.",
+    "verdictAuDessusDuPli": true
+   },
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 83.31,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "dort",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "verbe",
+     "nom"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  },
+  "La « maîtresse » écrit au tableau.": {
+   "apresUnEchec": {
+    "basEnonce": 252.38,
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "defilement": 0,
+    "fondMot": "rgb(255, 245, 157)",
+    "indiceAuDessusDuPli": true,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "rangees": 1,
+    "taillePxMot": 36.8,
+    "textIndice": "Ce mot désigne une personne.",
+    "verdictAuDessusDuPli": true
+   },
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 173,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "maîtresse",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "nom",
+     "verbe"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  },
+  "Le chien « court » dans le jardin.": {
+   "apresUnEchec": {
+    "basEnonce": 252.38,
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "defilement": 0,
+    "fondMot": "rgb(255, 245, 157)",
+    "indiceAuDessusDuPli": true,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "rangees": 1,
+    "taillePxMot": 36.8,
+    "textIndice": "Ce mot dit ce que fait le chien.",
+    "verdictAuDessusDuPli": true
+   },
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 100.45,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "court",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "verbe",
+     "nom"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  },
+  "Le poisson « nage » dans l'eau.": {
+   "apresUnEchec": {
+    "basEnonce": 252.38,
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "defilement": 0,
+    "fondMot": "rgb(255, 245, 157)",
+    "indiceAuDessusDuPli": true,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "rangees": 1,
+    "taillePxMot": 36.8,
+    "textIndice": "Ce mot dit ce que fait le poisson.",
+    "verdictAuDessusDuPli": true
+   },
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 92.77,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "nage",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "verbe",
+     "nom"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  },
+  "Le « chat » dort sur le tapis.": {
+   "apresUnEchec": {
+    "basEnonce": 252.38,
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "defilement": 0,
+    "fondMot": "rgb(255, 245, 157)",
+    "indiceAuDessusDuPli": true,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "rangees": 1,
+    "taillePxMot": 36.8,
+    "textIndice": "Ce mot désigne un animal.",
+    "verdictAuDessusDuPli": true
+   },
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 81.95,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "chat",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "verbe",
+     "nom"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  },
+  "Le « soleil » brille dans le ciel.": {
+   "apresUnEchec": {
+    "basEnonce": 252.38,
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "defilement": 0,
+    "fondMot": "rgb(255, 245, 157)",
+    "indiceAuDessusDuPli": true,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "rangees": 1,
+    "taillePxMot": 36.8,
+    "textIndice": "Ce mot désigne une chose qu'on voit dans le ciel.",
+    "verdictAuDessusDuPli": true
+   },
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 97.98,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "soleil",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "nom",
+     "verbe"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  },
+  "Les enfants « chantent » une chanson.": {
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 160.56,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "chantent",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "verbe",
+     "nom"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  },
+  "Les petits « oiseaux » chantent dans l'arbre.": {
+   "apresUnEchec": {
+    "basEnonce": 252.38,
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "defilement": 0,
+    "fondMot": "rgb(255, 245, 157)",
+    "indiceAuDessusDuPli": true,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "rangees": 1,
+    "taillePxMot": 36.8,
+    "textIndice": "Ce mot désigne des animaux.",
+    "verdictAuDessusDuPli": true
+   },
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 139.45,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "oiseaux",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "nom",
+     "verbe"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  },
+  "Léa porte un joli « sac ».": {
+   "apresUnEchec": {
+    "basEnonce": 252.38,
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "defilement": 0,
+    "fondMot": "rgb(255, 245, 157)",
+    "indiceAuDessusDuPli": true,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "rangees": 1,
+    "taillePxMot": 36.8,
+    "textIndice": "Ce mot désigne un objet.",
+    "verdictAuDessusDuPli": true
+   },
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 61.66,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "sac",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "verbe",
+     "nom"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  },
+  "Léa « arrose » les fleurs.": {
+   "apresUnEchec": {
+    "basEnonce": 252.38,
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "defilement": 0,
+    "fondMot": "rgb(255, 245, 157)",
+    "indiceAuDessusDuPli": true,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "rangees": 1,
+    "taillePxMot": 36.8,
+    "textIndice": "Ce mot dit ce que fait Léa.",
+    "verdictAuDessusDuPli": true
+   },
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 115.55,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "arrose",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "nom",
+     "verbe"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  },
+  "Papa lave la « voiture ».": {
+   "apresUnEchec": {
+    "basEnonce": 252.38,
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "defilement": 0,
+    "fondMot": "rgb(255, 245, 157)",
+    "indiceAuDessusDuPli": true,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "rangees": 1,
+    "taillePxMot": 36.8,
+    "textIndice": "Ce mot désigne un objet qui roule.",
+    "verdictAuDessusDuPli": true
+   },
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 131.55,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "voiture",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "verbe",
+     "nom"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  },
+  "Tom mange un bon « gâteau ».": {
+   "apresUnEchec": {
+    "basEnonce": 252.38,
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "defilement": 0,
+    "fondMot": "rgb(255, 245, 157)",
+    "indiceAuDessusDuPli": true,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "rangees": 1,
+    "taillePxMot": 36.8,
+    "textIndice": "Ce mot désigne une chose qu'on peut manger.",
+    "verdictAuDessusDuPli": true
+   },
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 126.75,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "gâteau",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "verbe",
+     "nom"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  },
+  "Tom « saute » dans la flaque.": {
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 100.34,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "saute",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "verbe",
+     "nom"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  },
+  "Tu « dessines » un beau soleil.": {
+   "apresUnEchec": {
+    "basEnonce": 252.38,
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "defilement": 0,
+    "fondMot": "rgb(255, 245, 157)",
+    "indiceAuDessusDuPli": true,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "rangees": 1,
+    "taillePxMot": 36.8,
+    "textIndice": "Ce mot dit ce que tu fais.",
+    "verdictAuDessusDuPli": true
+   },
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 151.91,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "dessines",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "verbe",
+     "nom"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  },
+  "« Médor » aboie très fort.": {
+   "apresUnEchec": {
+    "basEnonce": 252.38,
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "defilement": 0,
+    "fondMot": "rgb(255, 245, 157)",
+    "indiceAuDessusDuPli": true,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "rangees": 1,
+    "taillePxMot": 36.8,
+    "textIndice": "Ce mot désigne un animal.",
+    "verdictAuDessusDuPli": true
+   },
+   "auRepos": {
+    "basEnonce": 252.38,
+    "basPropositions": 370.38,
+    "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+    "couleurTexteEnonce": "rgb(28, 39, 51)",
+    "couleurTexteMot": "rgb(28, 39, 51)",
+    "defilement": 0,
+    "fondEnonce": "rgba(0, 0, 0, 0)",
+    "fondMot": "rgb(255, 245, 157)",
+    "graisseEnonce": "700",
+    "graisseMot": "700",
+    "guillemetsDansEnonce": 2,
+    "guillemetsDansMot": 0,
+    "hauteurMot": 49,
+    "largeurMot": 123.06,
+    "lignesEnonce": 1,
+    "marqueur": true,
+    "motDesigne": "Médor",
+    "nbPropositions": 2,
+    "padMot": "0px 4px",
+    "propositions": [
+     "nom",
+     "verbe"
+    ],
+    "rangees": 1,
+    "rayonMot": "4px",
+    "taillePxEnonce": 32,
+    "taillePxMot": 36.8
+   }
+  }
+ },
+ "lectures": 71,
+ "parties": 5,
+ "reference": "744x551",
+ "visionEmulee": {
+  "achromatopsia": {
+   "contrasteBoiteContreFond": 1.045,
+   "pixelDansLaBoite": [
+    242,
+    242,
+    242
+   ],
+   "pixelHorsBoite": [
+    247,
+    247,
+    247
+   ]
+  },
+  "boite": {
+   "h": 49,
+   "w": 160.5625,
+   "x": 228.875,
+   "y": 200.1875
+  },
+  "deuteranopia": {
+   "contrasteBoiteContreFond": 1.033,
+   "pixelDansLaBoite": [
+    255,
+    245,
+    161
+   ],
+   "pixelHorsBoite": [
+    245,
+    246,
+    251
+   ]
+  },
+  "enonceRect": {
+   "h": 55.1875,
+   "w": 696,
+   "x": 24,
+   "y": 197.1875
+  },
+  "fond": {
+   "el": "BODY",
+   "fond": "rgb(244, 247, 251)"
+  },
+  "motTexte": "chantent",
+  "none": {
+   "contrasteBoiteContreFond": 1.04,
+   "pixelDansLaBoite": [
+    255,
+    245,
+    157
+   ],
+   "pixelHorsBoite": [
+    244,
+    247,
+    251
+   ]
+  },
+  "protanopia": {
+   "contrasteBoiteContreFond": 1.087,
+   "pixelDansLaBoite": [
+    255,
+    239,
+    150
+   ],
+   "pixelHorsBoite": [
+    246,
+    247,
+    251
+   ]
+  },
+  "tritanopia": {
+   "contrasteBoiteContreFond": 1.081,
+   "pixelDansLaBoite": [
+    255,
+    234,
+    223
+   ],
+   "pixelHorsBoite": [
+    242,
+    248,
+    248
+   ]
+  }
+ }
+}
