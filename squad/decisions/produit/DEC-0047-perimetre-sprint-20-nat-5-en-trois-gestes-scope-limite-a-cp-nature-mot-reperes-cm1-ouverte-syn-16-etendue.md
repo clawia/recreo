@@ -210,3 +210,96 @@ plutot que de les trancher a sa place ou de les laisser se perdre :
   validation.
 - Aucun fichier sous `domain/`, `application/`, `adapters/` ni `bootstrap/` n'est modifie par cette
   decision.
+
+## Amendement du 2026-08-25 (meme jour) - l'utilisatrice rend les trois arbitrages nommes en section "Ce que je nomme et ne tranche pas"
+
+Les trois questions que j'avais nommees sans les trancher recoivent une reponse le jour meme. Je
+n'efface ni ne reecris la section d'origine : elle reste lisible telle qu'ecrite, a l'heure ou ces
+trois reponses etaient encore dues. Cette section trace les trois, avec la consequence de chacune
+sur le perimetre de s20.
+
+### 1. La premiere story de saisie : oui, en conception seule - un quatrieme chantier s'ajoute, sans capacite de developpement
+
+**Decision de l'utilisatrice** : la conception de la mecanique de saisie reprend a s20, sur le
+meme mode que le Lot C de `DEC-0042` a s19 - `theo-archi` et `nadia-prof` instruisent ce qui manque
+encore, **aucun developpeur n'y est affecte**. Ma proposition de ne pas ouvrir cette mecanique ce
+sprint est donc suivie pour le code et depassee pour la conception.
+
+**Ce que cela change a mon perimetre** : s20 porte un **quatrieme chantier**, purement
+documentaire - reprise de la conception de la mecanique de saisie. Rien ne bouge dans
+`docs/backlog/backlog.md` sous forme de story a criteres d'acceptation testables : le meme choix
+qu'a s19, ou la conception n'a jamais pris la forme d'une story, seulement de decisions et
+d'arbitrages prealables. Ce que je nomme comme du au chantier, sans le trancher moi-meme :
+
+- **Le retypage de l'etat de partie que `theo-archi` a deja mesure pour `SAI-12`** (`ADR-0058`,
+  amendement du 2026-08-24, section 2) reste la piece connue de ce chantier. Je ne rouvre pas son
+  chiffrage : il est fait, et `ADR-0058` dit lui-meme qu'il retire un champ de l'etat de partie au
+  lieu d'en ajouter un.
+- **Ce que les deux arbitrages ci-dessous (sections 2 et 3) ajoutent a instruire**, nomme et non
+  tranche ici : la consequence du clavier qui corrige sur `SAI-2` (section 2) ; et, si elle change
+  quoi que ce soit a la lecture des cinq refus `R1` a `R5` ou a la liste des lignes candidates deja
+  posee a s19 (`ARBITRAGE-PREALABLE-s19-mecanique-de-saisie.md`), le fait que l'adulte accompagnant
+  ne recoive jamais aucune instruction du produit (section 3) - je ne prejuge pas que cela change
+  quoi que ce soit a la conception de la saisie, je nomme seulement que `theo-archi` et
+  `nadia-prof` gardent la question ouverte pendant qu'ils instruisent.
+
+### 2. Le clavier : ordinateur et tablette, correction automatique acceptee - une question soumise a `nadia-prof`, sans reponse presumee
+
+**Decision de l'utilisatrice** : la saisie vaudra sur les deux appareils de la cible (`DEC-0040`),
+et un clavier virtuel qui corrige et complete est accepte, en connaissance de sa consequence dans
+les mots de `nadia-prof` - un paquet en mode strict peut crediter une reponse que l'enfant n'a pas
+produite. Les deux options qui l'auraient evitee (neutraliser la correction, limiter la saisie au
+clavier physique) sont ecartees.
+
+**Ce que cela ferme** : la question "clavier physique ou virtuel", ouverte depuis que `SAI-11` a
+ete levee sur l'alphabetique (section "Ce que je nomme et ne tranche pas" ci-dessus), ne reste plus
+ouverte en tant que telle.
+
+**Ce que cela ouvre, et que je ne referme pas a sa place** : `nadia-prof` recoit en ce moment meme
+la consequence de cet arbitrage sur sa propre condition `SAI-2` (le mode strict, declare par le
+contenu, qu'`ADR-0058` a fixe dans le contrat). Un clavier qui corrige rend cette declaration
+fausse sans que rien ne le signale a l'ecran. **Trois issues me paraissent possibles - la condition
+tient, elle est amendee, ou le mode strict disparait de son arbitrage - et je n'en suggere aucune
+ici.** La reponse est **entierement celle de `nadia-prof`**, et elle entre dans ce que `theo-archi`
+instruit au chantier de conception de la section 1. Je n'ai rien ecrit ailleurs dans ce document ni
+dans `docs/backlog/backlog.md` qui presume laquelle des trois issues sera retenue - verifie en
+relisant `S20-1` et `S19-6a`, aucune des deux ne cite `SAI-2` ni le mode strict.
+
+### 3. L'adulte accompagnant : non, jamais - le statu quo conforte le motif de `NAT-5`
+
+**Decision de l'utilisatrice** : tout ce qui est a l'ecran reste ecrit pour l'enfant. Le produit ne
+s'adresse jamais a l'adulte, meme si tout le CP repose desormais sur sa presence durable
+(`DEC-0046`, section 3). L'adulte lit et explique ce qu'il veut, sans qu'aucun ecran ne le guide.
+
+**Consequence que j'ecris, parce qu'elle vaut d'etre gardee plutot que redecouverte** : cette
+reponse confirme, plutot qu'elle n'affaiblit, le motif qui porte `NAT-5` depuis le 2026-08-25.
+`nadia-prof` avait deja ecrit qu'un adulte durablement present peut lever une designation
+circulaire, mais que rien dans le produit ne lui demande de le faire (`squad/conformite/FICHE-
+bandit-manchot-nature-mot-cp.md`, second amendement, section 3). L'utilisatrice vient de confirmer
+que rien ne le lui demandera jamais : **une consigne ou un marquage qui ne tiennent que si un
+adulte comble le trou restent un defaut du produit, meme quand un adulte est effectivement present
+pour le combler**, puisque le produit ne peut ni le savoir ni le lui demander. `S20-1`
+(`docs/backlog/backlog.md`) n'a besoin d'aucune reecriture pour porter cette consequence : son
+critere sur `NAT-5` est deja formule sans supposer que l'adulte intervient, exactement pour cette
+raison.
+
+### Ce que je route, mis a jour
+
+- **`theo-archi`** : ouvrir le chantier de conception de la saisie (section 1) ; instruire, dans ce
+  chantier, la consequence du clavier correcteur sur `SAI-2` une fois la reponse de `nadia-prof`
+  recue, sans la presumer entre-temps.
+- **`nadia-prof`** : trancher laquelle des trois issues nommees en section 2 s'applique a `SAI-2`.
+- **`sofia-sm`** : verser ce chantier de conception au planning de s20 sans lui affecter de
+  developpeur, sur le meme mode que le Lot C de `DEC-0042`.
+
+### Ce que je ne fais pas, precise
+
+- Je ne trancherai pas, ici ni ailleurs dans ce sprint, l'issue de `SAI-2` : c'est `nadia-prof`.
+- Je n'ouvre aucune story de code pour la saisie ce sprint : le chantier reste de la conception.
+
+### Impact de cet amendement
+
+- `squad/decisions/produit/DEC-0047-...md` (ce fichier) : cette section ajoutee.
+- `docs/backlog/backlog.md` : section "Sprint 20", paragraphe d'introduction mis a jour pour nommer
+  le quatrieme chantier (conception, sans story).
+- Aucun autre fichier n'est modifie par cet amendement.

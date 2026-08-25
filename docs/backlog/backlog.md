@@ -5645,14 +5645,18 @@ appartient desormais a un autre jeu.
   routee pour s20 par `DEC-0047` ; si l'avis nomme un chiffre manquant, la mesure de `nadia-prof`
   et l'affectation d'une story deviennent candidates d'un sprint suivant, pas necessairement s20.
 
-## Sprint 20 - `NAT-5` (mot cible designe), une competence neuve en contenu seul, extension du correctif de bande basse
+## Sprint 20 - `NAT-5` (mot cible designe), une competence neuve en contenu seul, extension du correctif de bande basse, conception de la saisie reprise
 
 Perimetre fixe par `DEC-0047-perimetre-sprint-20-nat-5-en-trois-gestes-scope-limite-a-cp-nature-
-mot-reperes-cm1-ouverte-syn-16-etendue.md`. Un seul arbitrage explicite de l'utilisatrice ouvre ce
-sprint : le chantier du renfort du mot cible (`NAT-5`) entre au perimetre. `S20-1` l'instruit.
-`S20-2` ouvre une competence neuve, entierement instruite et sans arbitrage restant, en contenu
-seul. `S19-6a` et `S19-6b`, ci-dessus, sont la troisieme et la quatrieme story de ce sprint ; elles
-ne sont pas reecrites ici pour ne pas dupliquer leur numero.
+mot-reperes-cm1-ouverte-syn-16-etendue.md`, complete par son amendement du 2026-08-25 (les trois
+arbitrages de l'utilisatrice sur la saisie, le clavier et l'adulte accompagnant). Quatre chantiers :
+le renfort du mot cible (`NAT-5`, `S20-1`) ; une competence neuve en contenu seul (`S20-2`) ;
+l'extension du correctif de bande basse a trois jeux nommes (`S19-6a`, ci-dessus, non reecrite
+ici) ; et la reprise de la conception de la mecanique de saisie, **sans capacite de developpement
+affectee**, sur le meme mode que le Lot C de `DEC-0042` a s19 - nommee et routee dans l'amendement
+du 2026-08-25 a `DEC-0047`, jamais recopiee ici sous forme de story a criteres d'acceptation : la
+conception n'en a jamais pris la forme sur ce produit. `S19-6b`, ci-dessus, reste une demande
+d'avis de faisabilite routee, pas une cinquieme story affectee.
 
 ### S20-1 - Le mot cible de "Nom ou verbe ?" est designe autrement que par les guillemets seuls (`NAT-5`)
 
