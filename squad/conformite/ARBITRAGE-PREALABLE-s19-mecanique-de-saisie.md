@@ -703,3 +703,218 @@ d'autoriser.
   CP n'est plus gardee par aucune condition prealable. **Elle n'est gardee que par mon audit de
   l'increment**, une fois qu'il existera. C'est plus tard et c'est plus faible ; c'est desormais le
   seul filet sur cette famille-la.
+
+---
+
+## Troisieme amendement du 2026-08-25 (hors sprint) - correction automatique acceptee sur les deux appareils : `SAI-2` est amendee, ni maintenue telle quelle ni supprimee
+
+- **Auteur** : nadia-prof. **Fait neuf** : l'utilisatrice tranche la question que je routais depuis
+  le 2026-08-24 - **ordinateur et tablette, correction automatique acceptee**, en connaissance de la
+  consequence que j'avais nommee.
+- **Rien de ce qui precede n'est efface ni reecrit.** Quatrieme bloc date de ce fichier.
+- **Mode** : aucune mesure. Je n'ai pas d'appareil tactile et je le redis ici, parce que ce bloc
+  repose sur un raisonnement et non sur un releve - je marque a la section 2.3 l'endroit exact ou
+  cela compte.
+
+### 0. Ce que je corrige chez moi avant d'arbitrer, et je l'ai ecrit deux fois aujourd'hui
+
+J'ai ecrit ce matin, puis ce soir, que la correction automatique *"serait franchement grave sur un
+paquet en mode strict au titre de `SAI-2` comme les homophones, `couvert-valide` depuis s18"*.
+**C'est inexact, et l'inexactitude va dans le sens alarmiste.** Verifie dans
+`adapters/adapter-content/src/main/resources/catalogue.yaml` plutot que de memoire : l'entree
+`bandit-manchot-homophones-cm1` porte `mecanique: bandit-manchot` - **c'est un jeu a choix**. Or
+`SAI-2` ne gouverne que des paquets de **saisie**, et **aucun paquet de saisie n'existe** dans ce
+depot.
+
+**Consequence exacte : zero contenu servi aujourd'hui n'est expose a cette defaillance.** Le paquet
+d'homophones `couvert-valide` ne l'est pas, ni maintenant ni si la saisie arrive - il restera un jeu
+a choix. Ce que cet arbitrage met en cause est un contenu **futur**, et je le traite comme tel. Une
+porte pedagogique qui exagere l'urgence use son credit aussi surement qu'une porte qui approuve tout.
+
+### 1. Ce que cet arbitrage rompt, en une phrase
+
+**Sur un des deux appareils vises, l'identite entre *ce que l'enfant a produit* et *ce que le serveur
+a recu* n'est plus garantie.**
+
+C'est la seule chose nouvelle, et c'est la bonne facon de trier mes douze conditions : **celles qui
+reposaient sur cette identite sont touchees, les autres ne le sont pas.** Je ne les passe pas toutes
+en revue par acquit de conscience, je les trie par ce critere.
+
+### 2. `SAI-2`
+
+#### 2.1 Je refuse la troisieme issue - supprimer le mode strict - et le motif est chiffrable
+
+C'est l'issue qui a l'air la plus honnete et c'est la pire. **Sans mode strict, un paquet de saisie
+sur les homophones est insoluble sur 100 % des items et sur 100 % des appareils** : `SAI-1` tolere
+l'accent par defaut, donc `a` et `a` accentue deviennent la meme chaine, `ou` et `ou` accentue
+aussi, et les deux reponses d'un item deviennent litteralement indiscernables. **Avec un mode strict
+expose a la correction automatique, l'exercice est corrompu parfois, sur une partie du parc.**
+
+Supprimer le mode strict ne repare donc pas le defaut : **il l'universalise**, et il le rend
+certain la ou il n'etait qu'occasionnel. Je ne troque pas une defaillance intermittente contre une
+defaillance totale.
+
+#### 2.2 Je refuse aussi la premiere issue - maintenir tel quel et prendre acte
+
+Non pas parce que le motif de `SAI-2` aurait disparu : **il est intact.** `SAI-2` n'a jamais servi a
+certifier que l'enfant avait produit l'orthographe ; elle sert a **empecher qu'une tolerance rende
+l'exercice insoluble**. Cet arbitrage ne touche pas a cela.
+
+Ce qu'il touche, c'est la **promesse implicite** que `SAI-2` portait sans l'ecrire : qu'un verdict
+strict dit quelque chose de l'enfant. Desormais **un verdict strict certifie la chaine recue, pas la
+production de l'enfant.** Sur un clavier physique les deux coincident ; sur un clavier virtuel elles
+peuvent differer. Laisser cet ecart non ecrit serait exactement la defaillance silencieuse que je
+sanctionne ailleurs.
+
+**Ce n'est donc pas le motif de `SAI-2` qui est en cause, c'est sa tenabilite** - la distinction que
+l'on me demande de faire, et elle est juste.
+
+#### 2.3 Ce que j'amende, et l'endroit exact ou je raisonne faute de pouvoir mesurer
+
+Le libelle du 2026-08-24 reste ci-dessus. Je le scinde en trois clauses, sur le modele de `SAI-9a` et
+`SAI-9b` que j'ai deja employe dans ce fichier.
+
+- **`SAI-2a` - inchangee, c'est le libelle d'origine.** Un paquet dont la competence porte sur
+  l'accent declare la stricte egalite, la ou elle est vraie - paquet ou item -, jamais par deduction
+  du code. Un paquet qui ne declare rien est en mode tolerant.
+- **`SAI-2b` (neuve, 2026-08-25, non retroactive)** - **La stricte egalite n'est declarable que si la
+  faute que l'exercice cherche a attraper est elle-meme un mot francais valide.** Si la faute
+  attendue est un non-mot, le mode strict promet ce qu'il ne peut pas tenir et le paquet ne doit pas
+  etre ecrit.
+- **`SAI-2c` (neuve, 2026-08-25)** - **Sur un paquet en mode strict, la chaine jugee est montree a
+  l'enfant aussi en cas de reussite**, pas seulement en cas de refus. Extension de `SAI-8` a la
+  reussite stricte, dans la meme forme que celle qui y est deja acceptee : *"Oui ! On écrit :
+  élève."* devient, quand la chaine recue le merite, une phrase qui la fait voir.
+
+**Le motif de `SAI-2b`, et c'est ici que je raisonne au lieu de mesurer.** Un correcteur de clavier
+**repare des non-mots** ; il n'echange pas spontanement deux mots valides l'un pour l'autre, faute
+de savoir lequel le contexte demande. `a` et `a` accentue, `ou` et `ou` accentue, `la` et `la`
+accentue, `son` et `sont` sont **tous des mots francais existants** : la famille des homophones
+grammaticaux, celle pour laquelle `SAI-2` a ete ecrite, passe le test et survit. *eleve* pour
+*élève*, *bato* pour *bateau* sont **des non-mots** : c'est exactement ce qu'un clavier repare, et le
+mode strict y certifierait le clavier.
+
+**Je ne peux pas verifier ce raisonnement** : aucun agent de cette squad ne dispose de l'appareil,
+comme pour l'ecoute au lecteur d'ecran et pour l'enregistrement des sons. **C'est pourquoi j'ajoute
+`SAI-2c` plutot que de m'en tenir a `SAI-2b`** : si mon raisonnement est faux et qu'un clavier
+accentue tout de meme un `a`, `SAI-2c` fait que **quelqu'un le voit** - l'enfant lit la chaine qui a
+ete jugee, et elle n'est pas celle qu'il a tapee. **Une defaillance visible n'est plus la famille de
+defaut que je refuse.** C'est la seule protection que je puisse ecrire sans sortir de mon perimetre,
+et elle ne coute rien a personne d'autre qu'un texte de retour.
+
+**`SAI-2c` s'adresse a l'enfant, jamais a l'adulte.** L'utilisatrice a tranche que le produit ne
+s'adresse jamais a l'adulte accompagnant ; ce que je demande ici est du texte enfant, de la meme
+famille que le retour qui existe deja, et il n'y a aucun avertissement adresse a un parent.
+
+### 3. Une ligne du referentiel que cet arbitrage ferme a la saisie - `R6`, neuf, CP
+
+- **`R6` (2026-08-25) - *Ecrire de maniere autonome un mot simple en respectant les correspondances
+  grapheme/phoneme connues* (francais CP).** **Refusee a la saisie** tant que les deux appareils sont
+  vises avec la correction acceptee.
+
+**Le motif n'est pas neuf, il est a moi et il est anterieur a la question** : j'ai ecrit le
+2026-08-24, en fondant `SAI-1`, qu'**"un verdict ne peut pas dependre du materiel de la maison"**.
+Ici il en depend entierement. Cette ligne demande a l'enfant de **produire les lettres** ; sur un
+clavier physique il les produit, sur un clavier qui corrige c'est l'appareil qui les produit et la
+mecanique valide une correspondance grapheme/phoneme que l'enfant n'a pas etablie. Le meme enfant,
+avec le meme savoir, reussit ou echoue selon l'appareil.
+
+**Ce que `R6` change a ce que j'ai ecrit ce matin, et je le dis plutot que de le laisser trouver** :
+j'ai decrit cette ligne comme demandant *"saisie et audio ensemble"*, donc comme un candidat futur.
+**Elle cesse d'etre un candidat.** Ce n'est pas un retour deguise de `SAI-11`, que j'ai levee ce
+matin et que je ne rouvre pas : `SAI-11` portait sur l'equipement et la familiarite du clavier, `R6`
+porte sur le fait que l'appareil produit la reponse a la place de l'enfant. Motifs distincts, et
+`R6` vaudrait meme dans une maison parfaitement equipee.
+
+**`R6` est levable, et je nomme comment pour qu'il ne soit pas eternel** : que la correction
+automatique cesse d'etre acceptee, ou que cette ligne ne soit servie que sur un appareil ou elle ne
+s'applique pas. **Je ne demande ni l'un ni l'autre** - l'utilisatrice a ecarte l'option de
+neutralisation et je ne la reintroduis pas par la bande.
+
+**Aucune autre ligne des quatre referentiels n'est fermee par cet arbitrage**, verifie ligne par
+ligne : il n'existe **pas** de ligne d'orthographe lexicale au CM1 - la section "Orthographe et
+grammaire" y porte les deux accords, les homophones, la conjugaison et la ligne de reperes ajoutee
+par `DEC-0046`, et aucune ne demande a l'enfant de produire l'orthographe d'un mot du lexique.
+
+### 4. Les autres conditions, triees par le critere de la section 1
+
+**Touchees, parce qu'elles reposaient sur l'identite rompue :**
+
+- **`SAI-9a` et `SAI-9b`** - *"le retour montre ce que l'enfant a ecrit"*. Sur un clavier qui
+  corrige, **ce n'est plus ce que l'enfant a ecrit, c'est ce que l'appareil a envoye**. Le cas qui me
+  gene n'est pas le mot repare en bonne reponse - il n'y a alors pas de refus - mais **le mot repare
+  en une autre faute** : l'enfant tape *bato*, l'appareil envoie *baton*, et le retour lui dit *"Tu
+  as écrit : bâton"*. Il n'a jamais ecrit cela et il ne comprendra pas. **Je ne change pas le
+  libelle** : montrer la chaine recue est tout ce que le serveur peut faire, et le faire reste
+  meilleur que ne rien montrer. **J'inscris la limite**, parce que `SAI-9` a ete ecrite pour que
+  l'enfant comprenne son erreur et que, dans ce cas precis, elle ne le permet pas.
+- **`SAI-6` et `SAI-7`** - les listes de formes acceptees sont calibrees sur *"les fautes previsibles
+  de ce mot precis"*. Si l'appareil repare la faute avant l'envoi, **la liste n'est jamais
+  sollicitee sur cet appareil et l'est sur l'autre**. Elle reste juste ; sa couverture devient
+  inegale. Aucun changement de libelle, mais un piege de lecture que je nomme : **des items qui
+  passent ne prouveront plus que la liste est bonne.**
+- **`SAI-12`** - la liste de ce que l'enfant a deja ecrit sur la manche montre des chaines
+  d'appareil. Meme limite que `SAI-9a`, meme decision : libelle inchange.
+- **`SEUIL-2`** - *"si une reponse juste refusee pour une question de forme coute un essai, la saisie
+  ne doit pas exister"*. Une correction automatique peut defaire une reponse **juste**. C'est rare et
+  c'est exactement le scenario de `SEUIL-2`. Le seuil n'est pas franchi - `SAI-1`, `SAI-3` et `SAI-4`
+  absorbent l'ecrasante majorite des cas - mais la cause est desormais double.
+
+**Non touchees, et je dis pourquoi plutot que de les enumerer :**
+
+- **`SAI-1` (accents), `SAI-3` (casse), `SAI-4` (espaces)** : ce sont des **tolerances**. Elles
+  elargissent l'ensemble des reponses acceptees ; une correction automatique ne peut que produire une
+  chaine deja dans cet ensemble ou une chaine plus proche de la reference. **Elles n'ont rien a
+  perdre a cet arbitrage.** `SAI-3` y gagne meme : la capitale initiale posee par l'appareil, que je
+  notais ce matin comme une hypothese, est desormais un **fait acquis du produit**, et son motif
+  cesse d'etre conjectural.
+- **`SAI-5`** (aucun appariement approximatif), **`SAI-8`** (montrer la forme de reference),
+  **`SAI-10`** (jamais la couleur seule), **`SAI-11`** (levee ce matin) : aucune ne suppose que la
+  chaine recue soit celle de l'enfant.
+- **`SEUIL-1`** - *"si l'enfant ne voit pas ce qu'il a ecrit au moment du verdict"*. **Il n'est pas
+  franchi et je le dis explicitement pour que personne ne l'invoque** : `SEUIL-1` exige que l'enfant
+  ait sous les yeux une chaine a corriger, pas que cette chaine soit prouvee sienne. Il l'a.
+- **`SEUIL-3`, `SEUIL-4`, `SEUIL-5`**, **`R1` a `R5`** : inchanges.
+
+### 5. Ma reponse differe-t-elle entre CP et CM1 ? Oui, sur un seul point, et pas celui qu'on attend
+
+**Elle differe sur `R6`, et seulement sur `R6` :** la ligne d'ecriture autonome de mots n'existe
+qu'au CP. Il n'y a **aucune ligne equivalente au CM1**, verifie ci-dessus. `SAI-2b` et `SAI-2c`
+valent identiquement aux deux niveaux.
+
+**Et elle ne differe pas la ou on pourrait le croire.** On pourrait penser le CP mieux protege,
+puisque l'utilisatrice a arbitre ce matin qu'un eleve de CP est toujours accompagne : un adulte
+present verrait la chaine affichee par `SAI-2c` et remarquerait que l'appareil a corrige. **Je
+refuse de compter cela comme une protection.** Le produit ne s'adresse jamais a l'adulte - c'est
+l'arbitrage de ce jour - donc rien ne lui demande de regarder, et j'ai deja ecrit deux fois qu'une
+propriete tenue par personne n'est pas tenue. La presence de l'adulte est un fait, pas un
+garde-fou. **L'exposition reelle est donc la meme aux deux niveaux.**
+
+### 6. Ce que je n'ai pas fait, et que je nomme pour qu'on puisse le verifier
+
+**Je n'ai demande aucune neutralisation technique, ni directement ni sous un autre nom.** Aucune de
+`SAI-2b`, `SAI-2c` et `R6` ne suppose qu'un attribut desactive la correction, ni qu'un champ soit
+configure d'une facon plutot qu'une autre. `SAI-2b` est une regle d'**ecriture de contenu**,
+`SAI-2c` une regle de **texte affiche a l'enfant**, `R6` un **refus de ligne**. L'utilisatrice a
+ecarte l'option de neutralisation ; je ne la reintroduis pas et je ne la regrette pas par ecrit.
+
+**Je prends acte du troisieme arbitrage et il ferme un de mes points.** J'ai route deux fois
+aujourd'hui, sans le trancher, le fait que le produit repose sur un adulte a qui il ne demande rien.
+La reponse est que le produit ne s'adressera jamais a lui. **Ce point est clos, je le retire de mes
+routages**, et il contraint ma propre solution ci-dessus - ce que `SAI-2c` fait voir, elle le fait
+voir a l'enfant.
+
+### 7. Sur quelles proprietes je reste la seule garde, apres cet amendement
+
+- **`SAI-2b`** - qu'une faute attendue soit ou non un mot valide se juge **mot par mot, en francais**.
+  Aucun test ne le dira, et un paquet qui se trompe la-dessus aura une CI verte.
+- **`SAI-6` et `SAI-7`**, aggravees : le bareme etait deja le point le plus dangereux de cette
+  mecanique, et **des items qui passent ne prouvent plus que la liste est bonne**. Ma relecture des
+  listes n'est plus seulement necessaire, elle est desormais la seule chose qui les eprouve.
+- **`SAI-2c`** - qu'un enfant de six ou neuf ans comprenne la chaine qu'on lui montre. Un test dira
+  qu'elle est affichee, jamais qu'elle est lue.
+- **`R6`** - rien ne l'empeche d'etre viole. Le jour ou une story ouvrira cette ligne en saisie, la
+  CI sera verte et je serai la seule a dire non.
+- **Le comportement reel d'un clavier virtuel** - inchange depuis ce matin, sauf que ce n'est plus
+  une question ouverte mais un **fait accepte** dont je ne connais toujours pas l'ampleur. C'est
+  desormais un angle mort assume du produit, et il est ecrit.

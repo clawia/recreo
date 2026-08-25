@@ -682,3 +682,25 @@ la famille de defaut qui a deja traverse une CI verte quatre fois sur ce produit
 
 `REP-2` est celle qui se perdra le plus facilement, parce qu'un paquet ou toutes les phrases ont une
 faute est **plus simple a ecrire** et se lit tres bien.
+
+---
+
+## Note du 2026-08-25, en fin de journee - la correction automatique renforce `B.3`, elle ne le contredit pas
+
+L'utilisatrice a tranche, apres l'amendement ci-dessus, que la saisie vise **l'ordinateur et la
+tablette, correction automatique acceptee** (voir `ARBITRAGE-PREALABLE-s19-mecanique-de-saisie.md`,
+troisieme amendement du 2026-08-25).
+
+**Cela ne change rien a ma reponse `B.3`** - la competence detachee reste couvrable par la mecanique
+existante, en choix parmi des propositions, sans saisie. **Mais cela ajoute une seconde raison,
+independante de la premiere, de ne jamais la servir en saisie**, et je l'ecris maintenant parce
+qu'elle ne se verra pas plus tard.
+
+La competence detachee porte, entre autres reperes, **la majuscule initiale**. Or un clavier virtuel
+**met une capitale a la premiere lettre d'un champ tout seul**. Un exercice de saisie sur cette
+ligne donnerait donc la reponse a l'enfant sur une part de ses items, sans que rien ne le signale.
+`B.3` la recommandait en choix pour des motifs de lisibilite et de largeur de rangee ; **le choix
+est desormais aussi la seule forme qui ne soit pas corrompue par l'appareil.**
+
+Cette ligne n'entre pas dans `R6` - elle n'est pas refusee, elle est servie autrement. Je le note
+pour qu'aucune story ne la bascule en saisie en croyant gagner quelque chose.
