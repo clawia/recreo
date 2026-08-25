@@ -605,6 +605,18 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | bandit-manchot-synonymes-cm1, bandit-manchot-antonymes-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | - | - | non couvert |
 
+**Note du 2026-08-25 (s20, `camille-po`) - question ouverte, routee a `nadia-prof`, statut
+inchange.** `theo-archi` a mesure qu'a la reference du produit (744 x 551, `DEC-0040`), `bandit-
+manchot-synonymes-cm1` porte 7 items sur 16 avec leur bloc de message sous le pli et `bandit-
+manchot-antonymes-cm1` en porte 1 sur 17. **Ces deux jeux ne sont pas un cas isole** : la mesure
+porte sur dix jeux au total (sur les quinze mesures), et **les dix sont `couvert-valide`** - verifie
+ligne par ligne dans cette matrice plutot que suppose. Le detail complet, jeu par jeu, vit dans
+`squad/sprints/s20-mot-cible-designe-et-conception-de-la-saisie/mesure-budget-vertical.md`, section
+6, et le routage integral dans `DEC-0040` et `DEC-0047` (amendements du 2026-08-25, troisieme
+passage). `theo-archi` refuse lui-meme de qualifier ces items : *"combien de ces items relevent
+d'une reserve deja acceptee est la lecture de `nadia-prof`"*. Je ne juge aucun de ces items et je ne
+fais bouger ni ce statut ni aucun autre sur la foi de cette mesure.
+
 **Note du 2026-08-25 (hors sprint, `camille-po`) - competence detachee, acceptee par
 l'utilisatrice, amendee au referentiel** (`DEC-0046`, section 2, sur proposition de `nadia-prof`,
 `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md`, amendement du
