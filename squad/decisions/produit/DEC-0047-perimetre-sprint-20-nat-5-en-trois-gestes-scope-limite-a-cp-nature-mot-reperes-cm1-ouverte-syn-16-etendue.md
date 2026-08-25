@@ -428,10 +428,17 @@ Trace complete, avec le detail du parc retire : `DEC-0040`, amendement du 2026-0
 ### 2. Cet arbitrage ne ferme pas le defaut - je ne clos rien a la reference
 
 `theo-archi` a mesure qu'a la reference meme du produit (744 x 551, ou le Done est prononce),
-**95 items sur 296 (32 %) ont deja leur bloc de message sous le pli**, sur dix jeux dont
-`cm1-synonymes` et `cm1-antonymes`, tous deux `couvert-valide`. Sa conclusion, que je retiens mot
-pour mot : *"`SYN-16` a ete instruit trois sprints comme un defaut de la bande. Il ne l'est pas : la
-bande aggrave un ecart qui existe a la reference."*
+**95 items sur 296 (32 %) ont deja leur bloc de message sous le pli**, sur dix jeux.
+**Verifie avant d'ecrire, plutot que repris du brief qui m'a routee : les dix jeux mesures sont
+tous `couvert-valide`, pas seulement `cm1-synonymes` et `cm1-antonymes`** - `bandit-manchot-
+problemes-additifs-cp`, `bandit-manchot-perimetre-cm1`, `bandit-manchot-accord-sujet-verbe-cm1`,
+`bandit-manchot-grands-nombres-cm1`, `bandit-manchot-accords-groupe-nominal-cm1`, `bandit-manchot-
+conjugaison-present-cm1`, `bandit-manchot-homophones-cm1` et `bandit-manchot-conversions-unites-
+cm1` le sont egalement (`squad/programme/MATRICE-couverture.md`, verifie ligne par ligne). Le fait
+est donc plus large que "deux jeux touches" : c'est la totalite de la population mesuree qui porte
+deja un Done pedagogique. Sa conclusion, que je retiens mot pour mot : *"`SYN-16` a ete instruit
+trois sprints comme un defaut de la bande. Il ne l'est pas : la bande aggrave un ecart qui existe a
+la reference."*
 
 **Sortir la bande de la cible retire donc la part aggravee d'un defaut plus large, pas le defaut
 lui-meme.** Je ne le referme pas et je ne le minimise pas en refermant la bande. `theo-archi` refuse
@@ -466,9 +473,9 @@ arbitrage, son retrait ne libere aucune capacite a reaffecter ce sprint.
 
 ### Ce que je route
 
-- **`nadia-prof`** : lire les 95 items sous le pli a la reference (dix jeux, dont deux
-  `couvert-valide`) et dire combien relevent d'une reserve deja acceptee et combien n'ont jamais ete
-  regardes. Aucun delai impose, aucune lecture presumee de ma part.
+- **`nadia-prof`** : lire les 95 items sous le pli a la reference (dix jeux, **tous
+  `couvert-valide`**) et dire combien relevent d'une reserve deja acceptee et combien n'ont jamais
+  ete regardes. Aucun delai impose, aucune lecture presumee de ma part.
 - **`sofia-sm`** : verser cet amendement au planning de s20 ; retirer `S19-6a`/`S19-6b` du suivi de
   sprint sans reaffecter leur capacite ailleurs sans instruction nouvelle.
 - **`ines-design`**, **`theo-archi`** : rien de nouveau ici au-dela de leurs mandats deja poses par

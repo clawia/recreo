@@ -396,8 +396,9 @@ configuration ne fait plus partie de ce que le produit vise a servir correctemen
 
 `theo-archi` a chiffre, avant cet arbitrage, un fait que la bande ne cree pas : a la reference meme
 du produit (744 x 551, la ou le Done est prononce), **95 items sur 296 (32 %) ont deja leur bloc de
-message sous le pli**, sur dix jeux dont `cm1-synonymes` et `cm1-antonymes`, tous deux
-`couvert-valide` (`squad/sprints/s20-mot-cible-designe-et-conception-de-la-saisie/mesure-budget-
+message sous le pli**, sur dix jeux, **tous `couvert-valide`** - verifie ligne par ligne contre
+`squad/programme/MATRICE-couverture.md` plutot que repris du seul exemple cite dans l'arbitrage qui
+me route (`squad/sprints/s20-mot-cible-designe-et-conception-de-la-saisie/mesure-budget-
 vertical.md`, section 6). Dans ses mots : *"`SYN-16` a ete instruit trois sprints comme un defaut de
 la bande. Il ne l'est pas : la bande aggrave un ecart qui existe a la reference, elle ne le
 cree pas."*
@@ -422,9 +423,9 @@ matrice ou un Done. Detail complet, chiffre par jeu : `DEC-0047`, amendement du 
 
 ### Ce que je route
 
-- **`nadia-prof`** : lire les 95 items sous le pli a la reference (dix jeux, dont deux
-  `couvert-valide`) et dire combien relevent d'une reserve deja acceptee et combien n'ont jamais ete
-  regardes. Aucun delai impose.
+- **`nadia-prof`** : lire les 95 items sous le pli a la reference (dix jeux, **tous
+  `couvert-valide`**) et dire combien relevent d'une reserve deja acceptee et combien n'ont jamais
+  ete regardes. Aucun delai impose.
 - **`sofia-sm`** : verser cet amendement et celui de `DEC-0047` au planning de s20 ; le perimetre de
   developpement gele n'est pas rouvert par ce constat.
 - **`ines-design`** et **`theo-archi`** : rien de nouveau ici - leurs mandats respectifs sur `NAT-5`
