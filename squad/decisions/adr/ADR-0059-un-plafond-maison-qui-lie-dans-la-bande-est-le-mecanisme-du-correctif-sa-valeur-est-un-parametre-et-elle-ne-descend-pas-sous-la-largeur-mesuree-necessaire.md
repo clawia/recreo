@@ -315,3 +315,103 @@ du meme commit. **C'est une dette explicite, elle est la mienne, et elle est dat
    **sous** le plancher, et le refuser rendrait la regle rouge sur du materiau que nous ne
    choisissons pas. C'est precisement pour cela que la bande existe : la declaration maison est ce
    qui l'emporte, et c'est elle qui est jugee.
+
+---
+
+## Amendement du 2026-08-25 (s20) - le pire cas passe de 539 a 647 px : le mecanisme tient, trois de mes affirmations non
+
+- **Auteur** : theo-archi. **Fait neuf** : `DEC-0047`, section 3, etend `S19-6a` a **trois** jeux
+  nommes et corrige le pire cas connu de la bande a **647 px** (`cm1-accord-sujet-verbe`,
+  `couvert-valide` depuis s19), contre 539 px (`cm1-synonymes`) et 547 px (`cm1-antonymes`).
+- **Mode** : arithmetique et lecture de code, sur l'arbre `s20-theo` a `c48c0e6`. Aucune mesure de
+  navigateur n'est de moi ; les largeurs necessaires sont celles de `nadia-prof`.
+- **Rien de ce qui precede n'est efface.**
+
+### 1. Ce qui tient, et c'est ce pour quoi cet `ADR` a ete construit
+
+**Le mecanisme ne bouge pas.** La declaration maison qui l'emporte dans la bande, les deux
+selecteurs, les deux litteraux de bande derives de l'escalier tiers, le texte de la regle : rien ne
+change. **La demonstration ne bouge pas non plus** : la couverture reste binaire en `P`, avec le
+meme seuil `L + 40`, et `P` gouverne toujours seulement l'endroit ou le centrage commence. L'`ADR`
+avait ecrit son declencheur de reouverture - *"une remesure de `L` par `nadia-prof`"* - et il vient
+de se produire exactement comme prevu.
+
+### 2. La valeur : `P >= 687 + R`, et 620 px est exclue
+
+Avec `L = 647` et le retranchement mesure de 40 px, l'inegalite de la decision 3 devient :
+
+> **`P >= 687 + R`**
+
+- **La proposition de 620 px d'`ines-design` est exclue**, et pas seulement "non confirmee" comme
+  `DEC-0047` le formulait prudemment. A `P = 620`, la rangee vaut au mieux 580 px dans la bande, la
+  ou `cm1-accord-sujet-verbe` en demande 647 : **elle ne corrige aucune largeur de la bande pour ce
+  jeu**. Elle avait ete calculee sur un pire cas de 547 px, ou elle etait juste.
+- **La marge de police non nulle exigee par `camille-po`** se lit `R > 0`, donc `P > 687`
+  strictement. Pour absorber les 0,6 % de croissance de pile de polices que `nadia-prof` cite,
+  `R >= 4` et donc `P >= 691`.
+- **La reserve au pied de la bande reste nulle quelle que soit la valeur** : a `V = 687`, la rangee
+  vaut 647 px pour tout `P >= 687`. Le troisieme point de la decision 3 est inchange dans sa forme
+  et deplace de 579 a 687 dans ses chiffres. `R` protege contre une **remesure de `L`**, il n'achete
+  aucune robustesse au pied de la bande.
+
+### 3. Ce que je corrige, et le plus couteux est de moi
+
+**a) "141 largeurs de viewport sur 144, ou zero" est perime.** La phrase est vraie a `L = 539`. A
+`L = 647`, aucune valeur de `P` ne peut couvrir un viewport sous 687 px, parce que la rangee y vaut
+au mieux `V - 40`. La couverture devient **33 largeurs sur 144** (687 a 719 px inclus), ou zero.
+**Le residu de bande passe de 3 px a 111 px**, soit 77 % de la bande que `S19-6a` est chargee de
+fermer. La demonstration tient, ses chiffres non - et ce chiffre-la a ete recopie tel quel dans
+`ADR-index.md`, ou il se lit isole de sa condition. Index corrige dans le meme geste.
+
+Consequence que je nomme sans la trancher : **`camille-po` et `nadia-prof` arbitrent desormais un
+residu de 111 px**, pas de trois. Le critere de `S19-6a` sur le residu assume les accueille tel
+quel, mais il a ete ecrit quand le residu valait trois pixels, et une tolerance ne s'accorde pas a
+l'aveugle. L'autre levier existe et n'est pas le mien : reduire `L`, la largeur **demandee** par la
+rangee de `cm1-accord-sujet-verbe` (famille `ADR-0055`), au lieu d'augmenter ce qu'on lui offre.
+
+**b) "Elles changent une ligne de constante chacune" est faux, et c'etait le critere auquel j'ai
+construit la regle.** J'ai verifie au lieu de me relire. Porter
+`LARGEUR_DE_RANGEE_NECESSAIRE_PX` de 539 a 647 porte `PLAFOND_MINIMAL_PX` de 579 a 687, et **le jeu
+fautif commite bascule avec** : son **cas vert** declare `max-width: 640px` dans
+`adapters/adapter-web/src/test/resources/contreexemple/UnPlafondMaisonNAffamePasLaRangeeTest/plafond-maison-suffisant/static/css/feuille-maison.css`,
+donc il devient **rouge** apres la remesure.
+
+Le cout reel d'une remesure de `L` est donc de **deux fichiers**, et le second n'est pas une
+correction mecanique : c'est le cas vert **sans lequel les quatre morsures ne prouvent que la
+moitie**, comme cet `ADR` l'ecrit lui-meme. Sa valeur se rechoisit en connaissance de cause - au-
+dessus du nouveau plancher et clairement au-dessus, pour qu'il continue de prouver ce qu'il prouve -
+pas en la remontant distraitement jusqu'a ce que le vert revienne. **Les trois constantes nommees
+d'une ligne chacune ne suffisent pas a rendre une remesure gratuite, et l'annoncer gratuite etait
+precisement le genre d'affirmation qu'un lecteur reprend sans la verifier.**
+
+**La production reste verte** : les deux plafonds maison declares valent `720px`, au-dessus du
+plancher de 687.
+
+**c) Le declencheur de la dette verticale, tel qu'ecrit, produirait un travail perime.** J'avais
+ecrit : *"le premier lot qui touche un terme vertical du flux au-dessus du verdict - correctif de
+`S19-6` compris - porte cet `ADR` et sa table"*. Deux lots de s20 touchent ce flux : `S19-6a`, et
+`S20-1` dont le renfort `.mot-designe` agrandit la boite de ligne de `.enonce` de +7,19 px
+uniformement et jusqu'a +55,19 px sur un item qui bascule a deux lignes (mesures d'`ines-design`,
+`e5a8360`). **Une table epinglee par le premier des deux serait fausse a la fusion du second** -
+exactement le defaut que je citais en refusant de l'ecrire a s19.
+
+**Le declencheur devient** : la table est portee par **le dernier** lot de s20 qui touche un terme
+vertical de ce flux, avec la mesure de `nadia-prof` du meme commit. **Ce n'est pas un desserrement,
+et je pose la borne qui l'empeche d'en devenir un** : aucun de ces lots n'est fusionne en declarant
+la dette fermee, et le point de controle appartient a `sofia-sm` au planning de s20. Si un seul des
+deux lots entre finalement au sprint, c'est celui-la, et le declencheur d'origine s'applique mot
+pour mot.
+
+### 4. Ce que cet amendement ne change pas
+
+Les decisions 1 et 2, le texte de la regle, son perimetre derive, sa derivation totale, ses quatre
+morsures et son jeu fautif sont inchanges. **Aucun fichier de test n'est modifie par cet
+amendement** : la remesure de `L` appartient au lot qui livre `S19-6a`, avec la valeur que
+`nadia-prof` aura tranchee, et l'ecrire ici sans elle reviendrait a decider la valeur a sa place.
+
+**Mesure du jour**, sur `s20-theo` a `c48c0e6`, arbre propre : `bash outils/mvn-jdk21.sh -B clean
+verify` a la racine - **BUILD SUCCESS, 668 tests, 0 echec** (48 `domain` + 13 `application` +
+328 `adapter-web` + 181 `adapter-content` + 92 `bootstrap` surefire + 6 `failsafe`), JDK **21.0.10**
+de la toolchain declaree. Pas de `-am` a citer, le reacteur est complet par construction.
+`UnPlafondMaisonNAffamePasLaRangeeTest` y porte toujours ses **7 tests, 0 echec**.
+**Compte des regles ArchUnit : 30 regles reelles, inchange.**

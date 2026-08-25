@@ -504,3 +504,140 @@ c'est elle qu'un `Set.copyOf` fait rougir.
 Les sections 1 a 5, 7 et 8, les regles executables, `R-A`, `R-B` et toutes les mesures de cet ADR
 sont inchangees. La conception tient telle qu'elle est ecrite ; c'est une phrase de justification de
 la section 6 qui etait fausse, et le type d'un champ qui s'en deduit.
+
+---
+
+## Amendement du 2026-08-25 (s20) - `SAI-2c` casse la duree de vie sur laquelle ma section 6 etait ecrite : la chaine jugee voyage sur le verdict
+
+- **Auteur** : theo-archi. **Fait neuf** : l'utilisatrice arbitre que la saisie vaudra sur
+  ordinateur **et** sur tablette, avec un clavier virtuel qui corrige et complete
+  (`DEC-0047`, amendement du 2026-08-25, section 2), et `nadia-prof` amende `SAI-2` en trois clauses
+  en consequence (`squad/conformite/ARBITRAGE-PREALABLE-s19-mecanique-de-saisie.md`, troisieme
+  amendement, branche `hs-nadia-arbitrages`, `9707538`, non fusionnee au moment ou j'ecris).
+- **Rien de ce qui precede n'est efface.** Ce bloc est le troisieme de ce fichier.
+- **Perimetre** : conception seule, aucun developpeur n'est affecte a la saisie ce sprint.
+
+### 1. Les trois clauses, triees par ce qu'elles coutent a l'architecture
+
+- **`SAI-2a`** (inchangee) : rien. Le booleen `formeExacteExigee` de la section 1 et la lecture de
+  schema de la section 2 la servent telle quelle.
+- **`SAI-2b`** (neuve - la stricte egalite n'est declarable que si la faute visee est elle-meme un
+  mot francais valide) : **rien, et je le dis plutot que d'inventer une regle pour faire nombre.**
+  C'est une regle d'ecriture de contenu. La juger demanderait un dictionnaire, et `ADR-0039` puis
+  `ADR-0049` ont ferme cette porte pour un motif qui vaut ici aussi. Elle rejoint `SAI-6` et
+  `SAI-7` dans la section "ce qu'aucun automate ne gardera" de cet `ADR` : `nadia-prof` en est la
+  seule garde, elle l'ecrit, je le confirme.
+- **`SAI-2c`** (neuve - sur un paquet strict, la chaine jugee est montree **aussi en cas de
+  reussite**) : **elle coute une piece, et elle contredit une phrase de ma section 6.**
+
+### 2. Ce que ma section 6 disait, et pourquoi c'etait faux
+
+J'ai ecrit : *"La saisie garde le meme champ, avec la meme duree de vie, pour la meme raison plus
+une : le rendre a l'ecran."* La premiere moitie est vraie pour `SAI-9a` (a chaque refus) et pour
+`SAI-12`. **La duree de vie est exactement ce que `SAI-2c` casse**, et le constat est lu dans le
+code, pas deduit.
+
+`BanditManchotSession.jouer` : une bonne reponse appelle `resoudre(true)` ; `resoudre` construit le
+`Verdict`, puis appelle `tirerManche`, qui **reconstruit la session sur la manche suivante** avec
+`Optional.empty()` pour `derniereTentative` et `Set.of()` pour `propositionsEssayees` - ou, si la
+partie est finie, avec les memes valeurs vides et `SessionStatus.TERMINEE`. **Au moment ou l'ecran
+qui porte le verdict de reussite se rend, la chaine recue n'existe plus dans la session.**
+
+Le retypage decide le 2026-08-24 (`List<String> tentatives`, `derniereTentative()` calculee) ne
+change rien a ce constat : c'est la liste entiere qui est videe par le tirage de la manche suivante.
+**Le champ, quel que soit son type, ne peut pas servir `SAI-2c`.**
+
+### 3. Ce que je decide
+
+**La chaine recue et le mode qui l'a jugee voyagent sur le verdict de la mecanique de saisie**, seul
+objet qui survit a la resolution d'une manche.
+
+Ce n'est pas une forme inventee pour l'occasion : c'est **le motif d'`ADR-0024`, mot pour mot**,
+deja ratifie et deja en production sur `Verdict.explication` - *"le verdict porte aussi l'explication
+de l'item qui vient d'etre joue, parce qu'il est la seule trace de cet item une fois la partie
+terminee"*. `bonneReponse` y est deja pour la meme raison. La saisie ajoute deux composantes de meme
+nature sur **son propre** type de verdict, jamais sur `Verdict`, qui appartient a l'autre mecanique
+(clause 6 d'`ADR-0004`, section 5 de cet `ADR`).
+
+**Deux composantes et non une, et voici pourquoi je refuse la forme a une seule.** La forme la plus
+courte serait une seule composante facultative dont la **presence** vaudrait "il faut la montrer",
+la mecanique evaluant la condition au moment ou l'item est encore en main. Je l'ecarte pour deux
+motifs :
+
+- elle loge dans le domaine une **politique d'affichage** - ce que l'ecran montre - alors que le
+  domaine ne fait que transporter ce qu'il recoit, propriete que la Javadoc de `Verdict` porte deja ;
+- elle rend **indiscernables** les deux vacuites : "vide parce que le paquet est tolerant" et "vide
+  parce qu'un defaut a perdu la chaine" produisent le meme objet, et aucun test ne peut les
+  distinguer. C'est la famille de defaut silencieux que cet `ADR` refuse ailleurs.
+
+La chaine est donc portee **a chaque resolution**, sans condition, et le mode declare par l'item
+resolu voyage a cote. Ce que l'ecran en fait - montrer a la reussite stricte (`SAI-2c`), montrer les
+deux chaines a la revelation (`SAI-9b`), ne rien montrer a une reussite tolerante - est une decision
+de rendu et de pedagogie, prise par `ines-design` et `nadia-prof`, jamais par ce fichier.
+
+**Cout total** : deux composantes sur un type de verdict que la saisie possede. Zero ligne dans un
+contrat, zero port touche, zero changement pour la mecanique existante. La section 5 (`Move` et
+`GameSession` ne bougent pas) est intacte.
+
+### 4. Regle executable - `R-D`, due avec le lot de code, rouge aujourd'hui
+
+Comme `R-A` et `R-B`, elle juge des objets qui n'existent pas encore.
+
+> **Sur un item en mode strict resolu par une reussite, le verdict rendu porte la chaine recue, et
+> la session a deja tire la manche suivante.**
+
+**Ce n'est pas une regle ArchUnit** : ArchUnit voit des types, pas la valeur portee par un objet a
+un instant d'une transition. Le mecanisme automatique est un **test unitaire de la mecanique de
+saisie**, du avec son code, dans le module `domain`.
+
+**La seconde moitie de l'enonce est la seule qui rende ce test non decoratif, et je l'ecris comme
+telle.** Un test qui se contenterait d'assertionner que la chaine est presente apres une bonne
+reponse pourrait la lire sur une session **qui n'a pas encore resolu**, et serait vert sur une
+implementation ou la chaine disparait a la resolution - c'est-a-dire sur le defaut exact que cet
+amendement existe pour fermer. Le test doit donc constater, dans la **meme assertion**, que la
+manche a change (manche suivante tiree, ou partie terminee) **et** que la chaine est la.
+
+**Deuxieme moitie du perimetre, contre l'omission** : le meme test verifie qu'une resolution par
+**revelation** porte elle aussi la chaine (`SAI-9b`). Ne juger que la reussite laisserait passer une
+implementation qui ne remplit la composante que dans une branche de `resoudre` - un perimetre
+enumere qui echoue par omission, la lecon que ce depot a payee deux sprints.
+
+**Non-vacuite** : le test s'ecrit sur un item **reellement en mode strict** du premier paquet de
+saisie servi. Tant qu'aucun paquet de saisie n'existe, ni ce test ni cette clause n'existent, et
+c'est pourquoi cet amendement les nomme au lieu de les supposer ecrits.
+
+### 5. Ce que je ne fais pas, et qu'on pourrait me reprocher de ne pas faire
+
+- **Je ne reintroduis aucune neutralisation de la correction automatique, sous aucun nom.**
+  L'utilisatrice l'a ecartee. Rien dans cet amendement ne suppose un attribut, un reglage de champ
+  ou un mode d'appareil. Ce qui change est ce que le serveur **transporte** de ce qu'il a recu.
+- **Je ne repare pas la limite que `nadia-prof` nomme sur `SAI-9`** - l'enfant tape `bato`,
+  l'appareil envoie `baton`, le retour lui dit une chaine qu'il n'a jamais ecrite. **Elle n'a pas de
+  reponse technique.** Le serveur ne connait que ce qu'il recoit ; distinguer la frappe de la
+  correction demanderait precisement l'option ecartee. Je le confirme du cote technique plutot que
+  de fabriquer un contournement qui n'en serait pas un.
+- **Je ne touche pas a `R6`** : c'est un refus de ligne pedagogique, il ne m'appelle rien, et je ne
+  l'affaiblis pas en le commentant.
+- **Alternative ecartee : garder la chaine dans l'etat de partie en session HTTP**
+  (`EtatDePartieEnSession`) plutot que sur le verdict. Elle contourne le probleme au lieu de le
+  resoudre : elle recree dans l'adaptateur un champ parallele a tenir en phase avec chaque
+  construction de session, c'est-a-dire **la forme exacte du defaut d'`ADR-0016`** que la Javadoc de
+  `Verdict` cite deja comme motif de son propre choix. Elle ajouterait en outre un porteur d'etat de
+  jeu hors du domaine, la ou `AccesALEtatDeSessionTest` garde deja qu'un seul type touche la session
+  HTTP.
+
+### 6. Ce que cet amendement ne change pas
+
+Les sections 1 a 5, 7 et 8, les regles executables deja ecrites, `R-A`, `R-B`, `R-C`, l'amendement du
+2026-08-24 et toutes les mesures de cet `ADR` sont inchanges. **Aucune ligne du corps ne bouge** : ce
+sont une phrase de justification de la section 6 qui etait fausse, et une composante de verdict qui
+s'en deduit.
+
+**Mesure du jour**, sur `s20-theo` a `c48c0e6`, arbre propre : `bash outils/mvn-jdk21.sh -B clean
+verify` a la racine - **BUILD SUCCESS, 668 tests, 0 echec** (48 `domain` + 13 `application` +
+328 `adapter-web` + 181 `adapter-content` + 92 `bootstrap` surefire + 6 `failsafe`), JDK **21.0.10**
+de la toolchain declaree. Pas de `-am` a citer, le reacteur est complet par construction.
+**Compte des regles ArchUnit : 30 regles reelles, inchange** - cet amendement n'en ajoute aucune.
+Methode : balayage des sources `.java` du worktree, `target/` exclu ; 35 lignes portent `ArchRule `,
+dont 3 dans le faux depot de contre-exemple de `LesGardeFousSontMisALEpreuveTest` et 2 dans ce meme
+fichier qui ne sont pas des declarations de champ.
