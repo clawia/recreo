@@ -279,6 +279,23 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
     margin-bottom: 0.25rem;
 }
 
+/* ADR-0062, NAT-5 : marque le segment de .enonce que le contenu declare designer, sur un jeu marque
+   seulement (cp-nature-mot) - un jeu non marque ne rend jamais cette classe. Regle reprise de la
+   proposition mesuree d'ines-design (hors-sprint, squad/sprints/s19-contenu-seul-et-conception-de-
+   la-saisie/proposition-ines-nat5-mot-designe.md) : candidat, pas une valeur figee - ines-design et
+   nadia-prof restent seules a la trancher. Trois canaux non colores comme nadia-prof l'exige (jamais
+   la seule couleur) : une boite de fond, un rembourrage, une police superieure au reste de la
+   phrase deja en gras. Les guillemets francais restent hors de cette boite.
+   TailleDesTextesEtBoutonsTest (ADR-0050) exige une unite rem lisible par le garde-fou : 2,3rem
+   reprend au caractere pres le rapport 1,15 propose par ines-design applique aux 2rem de .enonce,
+   jamais une valeur differente. */
+.mot-designe {
+    background-color: #fff59d;
+    border-radius: 0.25rem;
+    padding: 0 0.25rem;
+    font-size: 2.3rem;
+}
+
 /* Conteneur des boutons de reponse : un ecart confortable entre les boutons, au-dessus du
    plancher de 0,75rem constate en s02 (S3-5, reserve 2 de nadia-prof sur S2-1: "un ecart d'au
    moins 1 rem laisserait plus de place a un geste d'enfant").

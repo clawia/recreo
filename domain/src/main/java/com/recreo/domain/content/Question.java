@@ -15,9 +15,19 @@ import java.util.Optional;
  * matiere, et la raison pour laquelle ce champ ne s'appelle pas d'apres le fait de francais qui l'a
  * motive est ecrite dans ADR-0024 : ce record est traverse par toutes les matieres, et un champ de
  * francais y obligerait chaque paquet de mathematiques a porter un mot qui ne le concerne pas.</p>
+ *
+ * <p>ADR-0062 : {@code partDesignee} declare la sous-chaine de {@code enonce} qu'une mecanique de
+ * rendu doit distinguer visuellement, quand le contenu en a une a designer. {@code enonce} ne
+ * change ni de type ni de valeur : il reste la phrase entiere, et {@code partDesignee} n'est jamais
+ * deduite d'une convention de ponctuation (guillemets) - c'est le contenu qui declare, jamais le
+ * gabarit qui devine. Facultative veut dire "l'item n'a rien designe", pas "il manque une valeur" :
+ * un paquet qui ne designe rien ne remplit aucun champ factice, sur le modele deja ratifie pour
+ * {@link #explication()} (ADR-0024). Le nom ne privilegie aucune matiere : une mecanique qui
+ * designe une portion d'un enonce peut un jour designer autre chose qu'un mot.</p>
  */
 public record Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs,
-                        Optional<String> indice, Optional<String> explication) implements Item {
+                        Optional<String> indice, Optional<String> explication,
+                        Optional<String> partDesignee) implements Item {
 
     public Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs) {
         this(id, enonce, bonneReponse, distracteurs, Optional.empty());
@@ -35,5 +45,14 @@ public record Question(ItemId id, String enonce, String bonneReponse, List<Strin
     public Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs,
                      Optional<String> indice) {
         this(id, enonce, bonneReponse, distracteurs, indice, Optional.empty());
+    }
+
+    /**
+     * ADR-0062 : meme defaut d'ADR-0016 qu'au-dessus, assume pour le meme motif - ne pas rouvrir les
+     * sites de construction des paquets qui ne designent rien. Laisse {@code partDesignee} vide.
+     */
+    public Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs,
+                     Optional<String> indice, Optional<String> explication) {
+        this(id, enonce, bonneReponse, distracteurs, indice, explication, Optional.empty());
     }
 }

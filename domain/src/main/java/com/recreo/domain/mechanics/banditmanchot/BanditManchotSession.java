@@ -184,6 +184,15 @@ public final class BanditManchotSession implements GameSession {
         return Optional.ofNullable(mancheCourante).map(Question::enonce);
     }
 
+    /**
+     * ADR-0062 : la part de {@link #enonceManche()} que le contenu declare devoir etre distinguee
+     * visuellement, vide quand l'item n'en designe aucune - c'est le cas ordinaire, jamais un cas
+     * particulier a verifier en plus.
+     */
+    public Optional<String> partDesigneeManche() {
+        return Optional.ofNullable(mancheCourante).flatMap(Question::partDesignee);
+    }
+
     public List<String> propositions() {
         return propositions;
     }

@@ -1,0 +1,17 @@
+schema: 1
+id: paquet-parts-designees-differentes
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CP"
+  domaine: "Orthographe et grammaire"
+  competence: "Paquet licite d'ADR-0062, jamais servi a un enfant"
+items:
+  - enonce: "Le chat noir dort."
+    bonneReponse: "a"
+    distracteurs: ["b"]
+    partDesignee: "chat"
+  - enonce: "Le chat noir dort."
+    bonneReponse: "a"
+    distracteurs: ["b"]
+    partDesignee: "dort"

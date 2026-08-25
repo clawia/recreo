@@ -144,8 +144,12 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
      */
     private static final int BUDGET_DE_TIRAGES = 500;
 
-    /** Ce que l'enfant voit d'un item sur l'ecran de manche : son enonce et ses propositions. */
-    private record Ecran(String enonce, Set<String> propositions) {
+    /**
+     * Ce que l'enfant voit d'un item sur l'ecran de manche : son enonce, ses propositions, et la
+     * part que le contenu a designee (ADR-0062). Deux items de meme enonce et de memes propositions
+     * qui designent deux mots differents sont deux ecrans differents.
+     */
+    private record Ecran(String enonce, Set<String> propositions, Optional<String> partDesignee) {
     }
 
     /** ADR-0013 obligation 1 : les paquets viennent du repertoire, jamais d'une liste. */
@@ -191,15 +195,21 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
         Set<String> propositions = new HashSet<>();
         propositions.add(question.bonneReponse());
         propositions.addAll(question.distracteurs());
-        return new Ecran(question.enonce(), Set.copyOf(propositions));
+        return new Ecran(question.enonce(), Set.copyOf(propositions), question.partDesignee());
     }
 
     /**
      * ADR-0050, clause 2 : les composantes d'un item que l'ecran de manche montre <b>au moment ou il
      * se presente</b>, et qui font donc partie de son identite d'ecran ci-dessus.
+     *
+     * <p>ADR-0062 : {@code partDesignee} y entre. Deux items de meme enonce et de memes propositions
+     * qui designent deux mots differents - {@code "La maitresse ecrit au tableau"} en designant
+     * {@code maitresse}, puis en designant {@code ecrit} - sont deux ecrans differents et deux
+     * questions differentes. Les classer hors de l'identite ferait refuser la seconde comme une
+     * copie de la premiere.</p>
      */
     private static final Set<String> COMPOSANTES_DANS_L_IDENTITE_D_ECRAN =
-            Set.of("enonce", "bonneReponse", "distracteurs");
+            Set.of("enonce", "bonneReponse", "distracteurs", "partDesignee");
 
     /**
      * ADR-0050, clause 2 : les composantes d'un item qui n'entrent pas dans son identite d'ecran, et
@@ -411,6 +421,19 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
         verifierQuAucunItemNeRepeteLEcranDUnAutre(
                 CONTRE_EXEMPLE.resolve("meme-enonce-propositions-differentes"),
                 CONTRE_EXEMPLE_CLASSPATH + "/meme-enonce-propositions-differentes");
+    }
+
+    /**
+     * ADR-0062 : le meme enonce et le meme jeu de propositions, deux parts designees differentes -
+     * "Le chat noir dort." en designant "chat", puis en designant "dort". Sans {@code partDesignee}
+     * dans l'identite d'ecran, ce paquet serait refuse comme une copie ; ce sont deux ecrans
+     * differents, et ce test doit rester vert.
+     */
+    @Test
+    void leMemeEnonceEtLesMemesPropositionsAvecDesPartsDesigneesDifferentesRestentVert() {
+        verifierQuAucunItemNeRepeteLEcranDUnAutre(
+                CONTRE_EXEMPLE.resolve("meme-enonce-et-propositions-parts-designees-differentes"),
+                CONTRE_EXEMPLE_CLASSPATH + "/meme-enonce-et-propositions-parts-designees-differentes");
     }
 
     /**

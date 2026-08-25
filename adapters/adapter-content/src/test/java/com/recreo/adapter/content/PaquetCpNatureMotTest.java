@@ -146,6 +146,24 @@ class PaquetCpNatureMotTest {
                 .hasSize(NOMBRE_D_ITEMS_ATTENDU);
     }
 
+    /**
+     * S20-1 (NAT-5, ADR-0062) : la part designee que ce paquet declare est exactement le mot deja
+     * marque par les guillemets francais dans l'enonce - pas un mot cible nouveau, la meme
+     * designation rendue lisible autrement qu'un signe de ponctuation.
+     */
+    @Test
+    void chaqueItemDeclareSaPartDesigneeEgaleAuMotCibleEntreGuillemets() {
+        for (Question item : tousLesItems(paquet())) {
+            assertThat(item.partDesignee())
+                    .as("item \"%s\" : ce paquet doit declarer sa part designee (S20-1)", item.enonce())
+                    .isPresent();
+            assertThat(item.partDesignee().orElseThrow())
+                    .as("item \"%s\" : la part designee doit etre exactement le mot deja marque par"
+                            + " les guillemets francais, sans eux", item.enonce())
+                    .isEqualTo(motCibleDe(item.enonce()));
+        }
+    }
+
     @Test
     void leDescripteurEstFrancaisCpOrthographeEtGrammaireNatureDuMot() {
         var descripteur = paquet().descriptor();
