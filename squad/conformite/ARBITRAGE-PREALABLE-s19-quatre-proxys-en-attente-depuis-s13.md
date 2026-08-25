@@ -443,3 +443,242 @@ est ecrit sur ces bases :
   (section 4.3). C'est le seul point de ce document qui debloque de la capacite immediatement.
 - **`theo-archi`** : rien ne lui est demande ici. FIG-1 lui reviendra le jour ou la famille visuelle
   ouvrira, et il n'a pas a l'instruire avant.
+
+---
+
+## Amendement du 2026-08-25 (hors sprint) - deux arbitrages de l'utilisatrice, deux reponses a `camille-po`
+
+- **Auteur** : nadia-prof. **Rien du document ci-dessus n'est efface ni reecrit.**
+- **Faits neufs** : l'utilisatrice arbitre que *"la saisie se fait uniquement par le clavier, aucun
+  trace envisage"*, et elle **accepte** la proposition d'amendement du referentiel que la section
+  4.3 lui routait - detacher les reperes de la ligne de relecture pour en faire une competence a
+  part.
+- **Ce que ce bloc est** : deux avis pedagogiques, demandes par `camille-po`. **Je ne classe aucune
+  ligne, je ne deplace rien dans la matrice, je n'ecris aucune decision produit.** Elle tranche
+  apres moi.
+- **Mode** : aucune mesure, aucun jeu. Rien de neuf n'a ete livre ; ces deux points portent sur du
+  texte de referentiel et sur ce qu'une mecanique peut faire, pas sur un increment.
+
+---
+
+## A. "Aucun trace envisage" et la ligne *Reconnaitre, nommer et tracer des figures planes* (mathematiques CM1)
+
+### A.1 D'abord l'intitule exact, parce qu'il porte plus que ce qu'on m'a rapporte
+
+`squad/programme/mathematiques/competences-cm1.md` ecrit, mot pour mot :
+
+> *"Reconnaitre, nommer et tracer des figures planes (carre, rectangle, triangle, cercle) **avec
+> outils (regle, equerre, compas)**."*
+
+**La question qui m'est posee cite les trois verbes et omet les outils.** Ce n'est pas un detail de
+citation : les outils ne sont pas un accessoire du trace, ils sont ce qui distingue cette ligne de
+la ligne de CP. Retirer le trace ne retire donc pas un verbe sur trois, il retire **le trace et les
+outils**, c'est-a-dire la moitie ecrite et la seule qui soit propre au CM1.
+
+### A.2 La reconnaissance et la denomination, sans le trace, couvrent-elles quelque chose de reel pour un CM1 ?
+
+**Non. C'est une couverture de facade, et le motif n'est pas le meme qu'au CP.**
+
+Au CP, *"reconnaitre et nommer quelques figures planes"* **est** la competence entiere, et je l'ai
+refusee pour un motif de rendu (section 2 ci-dessus, `FIG-1` a `FIG-4`) : les proportions d'un glyphe
+sont celles de la police, pas du contenu. Le refus portait sur la faisabilite, pas sur la valeur.
+
+Au CM1, la valeur elle-meme n'y est plus. **Un eleve de CM1 qui ne sait pas nommer un carre n'est
+pas un eleve de CM1.** Cette reconnaissance-la est acquise depuis le cycle 2, et la reciter une
+annee plus tard ne travaille rien. Ce que le CM1 ajoute est exactement ce que le trace instrumente
+oblige a mobiliser : que les quatre cotes soient egaux, que les angles soient droits, que le compas
+reporte une longueur, que l'equerre verifie un angle. **Sans le geste, il ne reste pas une moitie de
+la competence : il reste l'exercice de CP avec une etiquette CM1 dessus.** Servir cette ligne ainsi
+la ferait compter deux fois - une fois au CP, une fois au CM1 - pour le meme travail.
+
+**Je serais malhonnete de m'arreter la, parce qu'il reste quelque chose de reel, et ce n'est pas la
+reconnaissance.** Ce qui est de niveau CM1, sans aucun trace, c'est **la reconnaissance par les
+proprietes enoncees** : *"J'ai quatre cotes de meme longueur et quatre angles droits. Qui suis-je ?"*,
+*"Combien de sommets a un triangle ?"*, *"Quel instrument sert a verifier qu'un angle est droit ?"*.
+C'est du vocabulaire geometrique - cote, sommet, angle droit, diagonale, rayon - et c'est du travail
+de CM1 authentique, servable **aujourd'hui, par la mecanique existante, en texte pur, sans aucune
+figure a l'ecran**. Ce n'est pas la ligne du referentiel. C'est une competence voisine, reelle, et
+la faire compter pour la ligne ecrite serait precisement la couverture partielle que ce depot
+sanctionne depuis s01.
+
+### A.3 Ce que je recommande a `camille-po`, sans le trancher
+
+**La distinction la plus utile que je puisse lui donner est celle-ci, et je la mets en avant parce
+qu'elle porte sur le statut qu'elle va choisir.** *"Non couvrable en l'etat"* recouvre aujourd'hui
+deux impossibilites de nature differente, et les confondre ferait perdre une information :
+
+- *"Lire a voix haute un texte court avec fluidite"* et *"Relire et corriger son texte"* sont hors de
+  portee parce que **juger la reponse demande un humain** - une oreille, un lecteur. Aucune decision
+  produit ne les debloquera jamais.
+- *"tracer des figures planes avec outils"* est hors de portee parce que **le produit a decide de ne
+  pas avoir le geste**. C'est un arbitrage, pas une loi. Il se revise le jour ou l'utilisatrice
+  revise sa phrase.
+
+Si sa matrice ne sait dire que *"non couvrable en l'etat"*, la note de ligne doit porter la
+difference. Le choix du dispositif lui appartient entierement.
+
+**Trois points concrets, dans l'ordre ou je les crois utiles :**
+
+1. **La ligne, telle que le referentiel l'ecrit, n'est pas couvrable** - le trace et les outils en
+   sont la part propre au CM1, et le produit ne les aura pas.
+2. **Je refuse qu'elle soit comptee couverte par la reconnaissance et la denomination seules.** Ce
+   serait une facade, et une facade qui duplique le CP.
+3. **La voie qui existe reellement est un amendement du referentiel**, de la meme famille que celui
+   que l'utilisatrice vient d'accepter pour les reperes : detacher de cette ligne une competence de
+   **vocabulaire et proprietes des figures**, servable en texte pur par la mecanique d'aujourd'hui.
+   Si `camille-po` veut cet intitule-la, je l'ecris - je ne le fais pas maintenant, parce que
+   personne ne me l'a demande et que je ne veux pas qu'un intitule non demande circule comme
+   acquis.
+
+### A.4 Une seconde ligne touchee, que la question ne nommait pas
+
+J'ai relu les quatre referentiels ligne par ligne pour verifier ce que *"aucun trace"* atteint. Une
+seule ligne nomme le verbe *tracer*, celle ci-dessus. **Mais une deuxieme est touchee sans le
+nommer** : *"Reconnaitre et **utiliser** la notion de symetrie axiale simple"* (mathematiques CM1,
+meme section). En classe, *utiliser* la symetrie axiale, c'est **completer une figure par symetrie**,
+sur un quadrillage - un trace. La moitie *reconnaitre* (identifier un axe, dire si deux figures sont
+symetriques) survit sans trace ; la moitie *utiliser* tombe avec la meme phrase que la precedente.
+Cette ligne merite exactement la meme question, et elle est aujourd'hui `non couvert` sans que rien
+ne le signale.
+
+Aucune autre ligne des quatre referentiels n'est atteinte : la ligne CP *"Se reperer et decrire des
+deplacements sur un quadrillage"* demande de **decrire**, pas de tracer, et reste entiere.
+
+---
+
+## B. L'intitule de la competence detachee (francais CM1) - ce que `camille-po` attend de moi
+
+Rappel de ce qui est en jeu : la ligne d'origine est `non couvrable en l'etat` depuis s19, sur mon
+refus de la section 4 ci-dessus. Ce que je detache n'est pas cette ligne : c'est la **connaissance
+des reperes**, que la section 4.3 decrivait deja comme *"servable aujourd'hui par la mecanique
+actuelle, et bien"*.
+
+### B.1 L'intitule que je propose
+
+> **"Reperer et corriger la majuscule et la ponctuation dans une phrase donnee (majuscule initiale,
+> point final, majuscule au nom propre, point d'interrogation d'une question)."**
+
+**Et la meme, integralement accentuee, parce que c'est celle-la qui doit entrer dans le fichier** -
+`squad/programme/francais/competences-cm1.md` est un fichier accentue, et cette ligne est du texte
+de programme scolaire. `camille-po` copie celle-ci, pas la precedente :
+
+> **"Repérer et corriger la majuscule et la ponctuation dans une phrase donnée (majuscule initiale,
+> point final, majuscule au nom propre, point d'interrogation d'une question)."**
+
+Section du referentiel : **"Orthographe et grammaire"**, pas "Ecriture". Le motif est le coeur du
+detachement - la section "Ecriture" de ce referentiel porte la **production** d'un texte (rediger,
+relire son texte) et c'est justement de la production que je detache cette competence. C'est une
+connaissance de la langue, elle va avec les accords et les homophones. Le placement final appartient
+a `camille-po`.
+
+**Chaque morceau de cet intitule porte une decision, et je les rends lisibles pour qu'aucune ne se
+perde en chemin :**
+
+- **"dans une phrase donnee"** est la charniere, et c'est le mot qui empeche les deux lignes de se
+  reconfondre plus tard. Ma section 4.1 refusait le choix parce que *"la difficulte que cette
+  competence nomme est une difficulte de relecture de soi, et elle n'existe que sur son propre
+  texte"*. En detachant, je laisse deliberement cette difficulte-la dans la ligne d'origine. Sur la
+  phrase d'un autre, la cecite a son propre texte disparait - et c'est acceptable ici, parce que ce
+  que la competence detachee evalue n'est plus la relecture, c'est la **connaissance du repere**.
+  **Je ne me contredis pas : je decoupe exactement le long de la ligne de mon propre refus.**
+- **"Reperer et corriger"** plutot que "connaitre". Choisir la phrase bien ponctuee, ou designer ce
+  qui manque, est un acte de correction au sens de la classe. "Connaitre" serait inverifiable ;
+  "relire" ramenerait la ligne d'origine.
+- **L'enumeration entre parentheses est limitative, et c'est voulu.** L'origine dit *"ponctuation"*,
+  ce qui est trop large : **la virgule ne doit pas y entrer.** Son placement releve souvent du style
+  et non de la regle, deux adultes competents la placent differemment, et une mecanique a reponse
+  unique compterait faux un enfant qui a raison. Meme motif pour le point d'exclamation, affaire de
+  ton plus que de regle. Les quatre reperes retenus sont ceux qu'une bonne reponse peut trancher
+  sans discussion.
+- **La forme suit le registre des lignes voisines** - verbe a l'infinitif, complement, precision
+  entre parentheses, comme *"Distinguer et utiliser correctement les principaux homophones
+  grammaticaux (et/est, son/sont, a/a accentue...)"*. Les points de suspension y sont ouverts ; ici
+  je les omets volontairement, parce que ma liste est limitative.
+
+### B.2 Ce qui reste dans la ligne d'origine, et si ce reste demeure hors de portee
+
+La ligne d'origine peut rester litteralement inchangee : *"Relire et corriger son texte a l'aide de
+reperes simples (majuscules, ponctuation)."* Le detachement ne lui retire aucun mot ; il retire
+seulement l'idee qu'un paquet sur les reperes pourrait un jour la couvrir.
+
+**Ce qui reste, et c'est tout ce qui restait deja apres mon refus de la section 4 :**
+
+- **la relecture de soi** - la cecite d'un enfant a son propre texte, qui est la seule chose
+  difficile de cette ligne ;
+- **l'ignorance du nombre d'erreurs** - dans une vraie relecture, l'enfant ne sait ni combien il y
+  en a, ni s'il y en a ;
+- **la dependance structurelle** a *"Rediger un texte narratif court et coherent"*, elle-meme non
+  couverte, sans laquelle il n'y a aucun texte a relire ;
+- **le jugement** de la correction, qui demande un adulte qui lit.
+
+**Oui, ce reste demeure hors de portee, et il l'est exactement au meme degre qu'avant.** Le
+detachement n'ameliore pas cette ligne d'un pouce : il la rend seulement honnete, en lui retirant la
+partie qui donnait l'illusion qu'un contenu pourrait l'entamer. **Je recommande a `camille-po` de
+laisser son statut inchange** ; ce que le detachement change est ailleurs, dans le denominateur,
+puisqu'une ligne servable apparait a cote.
+
+**Si elle prefere un intitule reecrit** - pour que la ligne d'origine dise elle-meme pourquoi elle
+est hors de portee plutot que de renvoyer a une note - voici le texte, et il est optionnel :
+
+> *"Relire son propre texte et le corriger à l'aide des repères connus, sans indication du nombre ni
+> de l'emplacement des erreurs."*
+
+Je ne le recommande ni ne l'ecarte : un referentiel qui explique son impossibilite dans son intitule
+est plus clair a lire et moins fidele a un programme scolaire. C'est un arbitrage de forme, il est a
+elle.
+
+### B.3 Couvrable par la mecanique existante, ou demande-t-elle la saisie ?
+
+**Couvrable par la mecanique existante - un choix parmi des propositions - sans saisie, sans audio,
+sans visuel, sans une ligne de code neuve.** Elle entre donc dans la reserve de contenu seul, pas
+dans la file bloquee. C'est la reponse a la question posee, et elle est nette.
+
+Elle a de plus une vertu que je signale parce que `camille-po` la cherchait : **cette reserve s'etait
+raccourcie de trois lignes par mes propres refus** (section 5 ci-dessus). Celle-ci lui en rend une,
+et c'est une ligne dont le contenu s'ecrit vite.
+
+**Trois formes d'item sont possibles ; elles ne se valent pas et je ne laisse pas le choix a
+l'estime :**
+
+- **Forme A - quatre versions de la meme phrase, une seule correctement marquee.** C'est la forme
+  qui vient a l'esprit et **c'est la moins bonne.** Les propositions sont des phrases entieres : elles
+  sont longues, elles se ressemblent a un signe pres, et l'enfant doit comparer quatre chaines quasi
+  identiques. Charge cognitive elevee pour la competence visee, et surtout ce depot a passe trois
+  sprints sur la largeur des rangees de propositions - quatre phrases cote a cote y retomberaient
+  tout droit. **Je la deconseille.**
+- **Forme B - une phrase, et les propositions nomment ce qui manque** : *"il manque un point"*, *"il
+  manque une majuscule"*, *"il manque une majuscule au prenom"*, *"cette phrase est correcte"*.
+  Propositions courtes, phrase unique bien lisible, et c'est la question qu'un maitre pose vraiment.
+  **C'est la forme que je recommande.** La quatrieme proposition, *"cette phrase est correcte"*,
+  est ce qui rapproche le plus l'exercice d'une vraie relecture, ou l'enfant ne sait pas s'il y a une
+  erreur - c'est la seule part de la difficulte d'origine que le detachement peut sauver, et elle
+  vaut d'etre prise.
+- **Forme C - un signe manquant a choisir en fin de phrase** (`.` contre `?`). Correcte sur le fond,
+  mais les propositions sont alors des glyphes d'un caractere dans des boutons prevus pour des mots.
+  Si elle est retenue, la lisibilite et la taille de cible relevent d'`ines-design`, pas du contenu.
+
+**Quatre conditions prealables, que j'ecris maintenant plutot qu'apres coup**, sur le modele de ce
+que je fais depuis s13. Elles ne remplacent pas mon audit : le paquet passera devant moi comme tout
+autre.
+
+- **`REP-1`** - Les phrases sont **courtes et de vocabulaire CM1**, et surtout **sans virgule**.
+  Une virgule dans l'enonce ramene la question que l'intitule exclut, et un enfant qui doute de la
+  virgule doutera de tout l'item.
+- **`REP-2`** - **Au moins un quart des items ne contient aucune erreur**, et la proposition *"cette
+  phrase est correcte"* y est la bonne reponse. Sans cela, l'enfant apprend qu'il y a toujours une
+  faute, ce qui est le contraire exact de la relecture.
+- **`REP-3`** - **Un seul repere en jeu par item.** Une phrase a la fois sans majuscule et sans
+  point ne dit pas lequel des deux l'enfant a repere, et rend deux propositions justes.
+- **`REP-4`** - Les quatre reperes de l'intitule sont **chacun representes**, aucun ne depassant la
+  moitie des items. Sans cela, la competence annoncee n'est pas celle qui est travaillee.
+
+### B.4 Sur quelles proprietes je reste la seule garde
+
+`REP-1` a `REP-4` portent sur **la composition d'un paquet** - la presence de virgules, la part
+d'items sans erreur, l'unicite du repere en jeu, l'equilibre des quatre reperes. **Aucun test de ce
+depot ne les verifiera**, et un paquet integralement fautif sur les quatre passerait une CI verte
+sans laisser de trace. C'est la meme famille que `DEN-1` a `DEN-8` et que `NAT-1` a `NAT-8`, et c'est
+la famille de defaut qui a deja traverse une CI verte quatre fois sur ce produit.
+
+`REP-2` est celle qui se perdra le plus facilement, parce qu'un paquet ou toutes les phrases ont une
+faute est **plus simple a ecrire** et se lit tres bien.
