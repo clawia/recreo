@@ -336,3 +336,100 @@ que `NAT-5` sera plus facile a evaluer sur une consigne qui ne compense plus le 
 **Aucun Done n'est prononce ici.** Le verdict du 2026-08-24 reste le verdict en vigueur :
 `VALIDE SOUS RESERVE`, une reserve bloquante restant ouverte (`NAT-5`), `NAT-9` etant desormais
 fermable par une seule edition.
+
+---
+
+## Second amendement du 2026-08-25 (hors sprint) - l'arbitrage est elargi : `NAT-9` TOMBE, `NAT-4` est retiree, `NAT-5` tient sur un motif que je nomme
+
+- **Auteur** : nadia-prof. **Fait neuf** : l'utilisatrice elargit son arbitrage - *"considere qu'un
+  eleve de CP est toujours accompagne par un adulte"*. Ce n'est plus le premier essai : c'est l'etat
+  durable.
+- **Ni le verdict du 2026-08-24 ni le premier amendement du 2026-08-25 ne sont effaces ou reecrits.**
+  On doit pouvoir lire l'histoire : un refus, une levee partielle, puis celle-ci.
+- **Mode** : aucun rejeu, et pour la meme raison qu'au premier amendement, verifiee et non supposee -
+  le paquet est inchange (`99d0a75`), rien n'a bouge sous `adapters/adapter-web/src/main/resources/`,
+  et le jeu est hors catalogue par `DEC-0045`. Ce qui change est une premisse, pas un artefact.
+
+### 1. `NAT-9` tombe. Je la leve entierement.
+
+**Mon motif reposait sur un comptage, et ce comptage vient d'etre prive de sa conclusion.** J'avais
+ecrit qu'une convention *"transmise une fois, rappelee par rien, et redemandee dix fois par partie
+des le lendemain, n'est pas tenue par l'artefact : elle est tenue par la memoire de l'enfant seul"*.
+**Il n'y a plus d'enfant seul.** Les trois proprietes que j'avais nommees pour soutenir ce motif -
+le signe hors programme, l'ecran qui ne rappelle rien, les jours entre deux sessions avec `DEC-0028`
+qui n'en garde rien - sont toutes les trois neutralisees par un adulte durablement present. Aucune
+ne survit.
+
+**Je ne cherche pas ce qui pourrait rester.** Une condition qui survivrait a la disparition de son
+motif ne serait plus une condition, ce serait une habitude. `NAT-9` disait *"un enfant de CP ne lit
+pas cette phrase seul"* ; la premisse du produit est desormais qu'il ne la lit jamais seul.
+
+**`NAT-9` est LEVEE au 2026-08-25.** La consigne servie - *"Le mot entre guillemets est-il un nom ou
+un verbe ?"* - est **acceptee telle quelle**. **`lea-dev` n'a rien a reformuler**, et je le dis en
+toutes lettres pour qu'aucune story ne soit ouverte sur du vide.
+
+*Je n'ajoute pas de recommandation de repli.* J'avais propose *"Nom ou verbe ?"* comme reparation ;
+une reparation dont le defaut n'existe plus n'est pas une amelioration a poursuivre, c'est ma
+condition qui reviendrait par la fenetre.
+
+### 2. `NAT-4` n'est pas satisfaite : elle est retiree, et la nuance n'est pas cosmetique
+
+`NAT-4` demandait que *"le paquet tienne pour un enfant seul"*. Elle figure `non tenue` dans mon
+tableau du 2026-08-24. **Sa premisse est supprimee par l'arbitrage pour tout le CP.**
+
+Je l'ecris comme un **retrait**, pas comme une levee, parce que la difference protege `lea-dev`
+autant qu'elle me protege : `NAT-4` n'a pas ete satisfaite par le paquet, et personne ne doit
+pouvoir ecrire plus tard qu'elle l'a ete. Elle a cesse de decrire le produit.
+
+### 3. `NAT-5` tient, et voici exactement sur quoi - motif date d'aujourd'hui
+
+**Ce que l'arbitrage affaiblit reellement dans `NAT-5`, et je le concede avant de defendre quoi que
+ce soit.** Le motif que je lui donnais depuis le 2026-08-24 etait : *"je ne sais pas ce qu'un enfant
+de six ans qui n'a jamais appris les guillemets en fait"*. Un adulte durablement present peut le lui
+expliquer. **Ce motif-la est affaibli, et je ne fais pas semblant du contraire.**
+
+**Ce qui tient, et ce n'est pas un motif de rechange : c'est le meme comptage de dix, redirige.** Le
+comptage que j'ai fait ce matin faisait deux travaux a la fois, et un seul meurt :
+
+- il soutenait `NAT-9` par **la memoire de l'enfant** entre deux sessions - **mort** ;
+- il soutient `NAT-5` par **le travail demande a l'adulte a l'interieur d'une partie** - **vivant**.
+
+**L'asymetrie est nette et c'est elle qui decide** : la consigne porte la **tache**, qui est
+constante sur toute la partie - une lecture a voix haute couvre les dix manches. Le marquage porte
+la **designation**, qui **change a chaque manche** - dix mots differents, dans dix phrases
+differentes. Si l'ecran ne la porte pas, c'est l'adulte qui doit intervenir **dix fois par partie**,
+en posant le doigt sur un mot precis a l'interieur d'une phrase.
+
+**L'arbitrage fournit une presence, il ne prescrit pas dix interventions.** Un adulte *accompagnant*
+est un adulte disponible, qui surveille et qui repond ; ce n'est pas un adulte qui pilote
+l'interface item par item. Et **rien, nulle part dans le produit, ne lui demande de pointer** - c'est
+le meme constat que j'ai deja pose au premier amendement, section 6.
+
+**Pourquoi elle reste BLOQUANTE et pas simplement genante.** Le mode de defaillance est **silencieux**,
+et c'est la seule raison qui me ferait bloquer quoi que ce soit. Un enfant dont l'adulte ne pointe
+pas ne sait pas de quel mot on parle. La tache n'a que deux reponses, et j'ai etabli le 2026-08-24
+qu'a deux propositions et trois essais **un enfant qui presse au hasard finit chaque partie a 10 sur
+10**. Il obtient donc un score parfait sans avoir rien lu, et **ni lui, ni l'adulte, ni le produit
+n'en voient rien**. C'est exactement la famille de defaut que ce depot sanctionne : un resultat vert
+qui ne prouve rien.
+
+**Le libelle de `NAT-5` ne change pas d'un mot** - *le mot cible est designe autrement que par les
+guillemets seuls, et jamais par la couleur seule.* Je ne durcis rien ; je dis quel motif la porte
+maintenant. Elle reste routee a `ines-design`.
+
+### 4. Ce que cet amendement change pour le retour au catalogue
+
+**`NAT-5` est desormais la seule reserve bloquante de ce jeu.** La condition de retour posee par
+`DEC-0045` section 2 est inchangee et le geste appartient a `camille-po` et a `sofia-sm` ; je note
+seulement que le chemin s'est raccourci d'une reserve et qu'il ne passe plus par `lea-dev`.
+
+**Aucun Done n'est prononce ici.** Le verdict en vigueur reste `VALIDE SOUS RESERVE` du 2026-08-24.
+
+### 5. Sur quelles proprietes je reste la seule garde
+
+- **`NAT-5`**, sur le motif de la section 3 : aucun test ne comptera les interventions qu'un
+  dispositif exige d'un adulte.
+- **La presence effective de l'adulte, et maintenant ce qu'on attend de lui.** Le produit fait
+  reposer tout le CP sur un adulte durablement present et **ne lui adresse toujours pas un mot**.
+  C'etait un point produit au premier amendement ; il pese plus lourd depuis que la premisse est
+  passee du premier essai a la session entiere. Route a `camille-po`, toujours sans le trancher.

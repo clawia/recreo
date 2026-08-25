@@ -587,3 +587,119 @@ Inchange par rapport a la section 9 ci-dessus, avec deux ajouts que cet arbitrag
 - **La presence effective de l'adulte au premier essai.** Le produit en depend desormais et ne la
   demande a personne. Je le route a `camille-po` comme un point produit (voir aussi
   `FICHE-bandit-manchot-nature-mot-cp.md`, amendement du 2026-08-25, section 6).
+
+---
+
+## Second amendement du 2026-08-25 (hors sprint) - accompagnement durable au CP : je leve `SAI-11` sur l'alphabetique, comme je m'y etais engagee ce matin
+
+- **Auteur** : nadia-prof. **Fait neuf** : *"considere qu'un eleve de CP est toujours accompagne par
+  un adulte"*. Ce n'est plus le premier essai, c'est l'etat durable.
+- **Rien de ce qui precede n'est efface ni reecrit**, ni le document du 2026-08-24, ni l'amendement
+  du meme jour, ni le premier amendement du 2026-08-25.
+
+### 1. La barre etait la mienne, elle est atteinte, je leve - et ce n'est pas negociable avec moi-meme
+
+J'ai ecrit ce matin, a la fin de la section 3 du premier amendement, mot pour mot :
+
+> *"Ce qui la leverait, nomme pour qu'elle soit fermable et non eternelle : que l'accompagnement d'un
+> adulte soit **durable sur toute une session de CP** et non borne au premier essai. Si
+> l'utilisatrice le dit un jour, **je leve `SAI-11` sur l'alphabetique le jour meme, sans rien y
+> ajouter. Je m'y engage ici pour que ce ne soit pas a rediscuter.**"*
+
+Elle vient de le dire. **Je leve, le jour meme, et je n'ajoute rien.**
+
+Je le fais en sachant tres bien que j'aurais pu argumenter. C'est precisement pour cela que
+l'engagement etait ecrit : une porte pedagogique dont la condition de levee se renegocie le jour ou
+elle est remplie n'est plus une porte, c'est un caprice. **Refuser ce matin une reponse trop etroite
+et lever ce soir une reponse qui couvre est le meme geste, dans les deux sens.**
+
+### 2. `SAI-11`, reformulee au 2026-08-25 (second amendement)
+
+Les deux libelles precedents restent ci-dessus, ils ne sont pas effaces.
+
+- **`SAI-11`, en vigueur** - *Au CP, la saisie est autorisee, pour une reponse numerique comme pour
+  une reponse alphabetique. Le refus de l'alphabetique est leve : la premisse du produit est qu'un
+  eleve de CP est durablement accompagne par un adulte.*
+- **La recommandation positive de la section 6 est inchangee et je la reconduis** : la reponse
+  **numerique d'au plus deux chiffres** reste le meilleur usage de la saisie au CP, parce qu'elle
+  **supprime la chance** sur des paquets de calcul deja `couvert-valide`. Levee ne veut pas dire
+  equivalence : la saisie alphabetique est desormais permise, la saisie numerique courte reste ce
+  que je recommande en premier.
+
+### 3. Les deux motifs, un par un, comme on me le demande
+
+**Motif 1 - la charge cognitive. Il tombe, et je ne le retiens pas.** J'avais ecrit que chercher les
+lettres coute une minute et que *"pendant qu'il cherche le `p`, il perd le mot qu'il voulait
+ecrire"*. Un adulte durablement present repond exactement a ce point : il redit le mot, il indique
+la touche. Ce qui reste est que l'ecriture sera lente - et **la lenteur n'a jamais ete un motif de
+refus**, dans aucun de mes avis.
+
+**Motif 2 - l'equipement. La lecture qui m'est proposee est juste, et je ne le retiens quand meme
+pas.** Il est exact que ce motif parle d'equipement et non de presence, que l'arbitrage ne dit rien
+de l'equipement, et qu'un adulte assis a cote ne met pas un clavier dans une maison qui n'en a pas.
+**Il survivrait donc a l'arbitrage, si je le laissais survivre.**
+
+**Je ne le laisse pas survivre, et le motif est de methode, pas de fond.** Le motif 2 n'etait pas
+une condition separee : c'etait la **deuxieme moitie de `SAI-11`**. Lever `SAI-11` puis rouvrir
+immediatement le meme refus sous un autre numero, avec la moitie du meme raisonnement, quelques
+heures apres avoir ecrit *"sans rien y ajouter"*, serait deplacer mes poteaux en le documentant
+proprement - ce qui est pire que de les deplacer franchement. **La levee est entiere ou elle n'est
+pas.**
+
+**Ou va ma preoccupation, alors, puisqu'elle est reelle.** Elle va la ou elle aurait toujours du
+etre : **dans mon audit de l'increment**, pas dans un refus prealable. Le jour ou un paquet de
+saisie alphabetique au CP sera livre, je le jouerai comme les autres, et **si l'exercice mesure
+visiblement la familiarite avec un clavier plutot que ce que l'enfant sait, ce sera un verdict sur
+cet increment-la, motive et opposable** - pas une condition qui l'aura interdit avant d'exister.
+C'est une position plus faible que le refus prealable, et je l'assume : c'est le prix de
+l'engagement que j'ai pris, et il vaut d'etre paye.
+
+### 4. Ce que cet arbitrage ne touche pas, verifie condition par condition
+
+- **`SAI-1` (accents) et `SAI-3` (casse)** : **inchangees, aux deux niveaux.** Leur motif est
+  materiel - ce que coute une lettre accentuee sur l'appareil, ce qu'un clavier virtuel capitalise
+  tout seul. **Un adulte a cote ne change pas le clavier.** Elles ne dependaient pas de la solitude
+  de l'enfant et ne dependent pas davantage de sa compagnie.
+- **`SAI-2`, `SAI-4` a `SAI-10`, `SAI-12`, `SEUIL-1` a `SEUIL-5`** : inchangees. Aucune ne reposait
+  sur l'hypothese d'un enfant seul.
+- **`R1` a `R5`** : inchangees, relues une par une pour le verifier plutot que l'affirmer. `R1` est
+  un refus **graphomoteur** (tenir l'outil, former les lettres), `R2`, `R3` et `R5` portent sur
+  l'**espace des reponses justes** qu'une comparaison de chaines ne couvre pas, `R4` est hors de
+  portee du produit. **Aucun des cinq ne mentionne ni ne suppose la presence ou l'absence d'un
+  adulte.**
+
+### 5. Le CP seulement - l'arbitrage ne dit rien du CM1 et je ne l'etends pas
+
+**L'arbitrage porte sur *"un eleve de CP"*. Le CM1 n'y est pas, et je refuse de l'y lire.** Je
+l'ecris comme une mise en garde parce que la formule *"toujours accompagne"* est du genre a se
+propager toute seule d'un niveau a l'autre dans un fichier de backlog.
+
+Et je le dis dans le sens pedagogique aussi, pas seulement par prudence de perimetre : **un eleve de
+CM1 durablement assiste par un adulte n'est pas le cas normal a cet age**, et concevoir du contenu
+de CM1 sur cette hypothese serait une erreur plus grave que l'inverse. Au CM1, l'autonomie fait
+partie de ce qu'on travaille. Toute condition visant les deux niveaux garde donc sa portee CM1
+entiere : c'est le cas de `SAI-1` et de `SAI-3`, les seules concernees.
+
+### 6. La question de la section 8 reste ouverte, et elle porte desormais plus lourd
+
+**Je ne la ferme pas par entrainement.** L'arbitrage repond sur l'adulte ; il ne dit **ni l'appareil,
+ni le clavier**, et `DEC-0040` vise l'ordinateur **et** la tablette. Restent donc entieres les deux
+faces que j'ai posees ce matin : **ce que coute un accent sur la tablette visee, et si son clavier
+corrige tout seul** - une correction automatique pouvant crediter un enfant d'une orthographe qu'il
+n'a pas produite, ce qui serait franchement grave sur un paquet en mode strict au titre de `SAI-2`
+comme les homophones, `couvert-valide` depuis s18.
+
+**Et ce que la levee de `SAI-11` fait a cette question, il faut le dire clairement a `sofia-sm` :
+elle devient plus urgente, pas moins.** Tant que l'alphabetique etait refuse au CP, la question ne
+pesait que sur le CM1. Elle pese maintenant sur les deux niveaux, et sur un usage que je viens
+d'autoriser.
+
+### 7. Sur quelles proprietes je reste la seule garde, apres cette levee
+
+- **`SAI-6` et `SAI-7`** - le contenu des listes de formes acceptees. Inchange, et c'est toujours le
+  point le plus dangereux de cette mecanique.
+- **Le comportement reel d'un clavier virtuel** - cout d'un accent, correction silencieuse. Inchange.
+- **Ce que je viens de ceder, et je le nomme pour qu'il ne se perde pas** : la saisie alphabetique au
+  CP n'est plus gardee par aucune condition prealable. **Elle n'est gardee que par mon audit de
+  l'increment**, une fois qu'il existera. C'est plus tard et c'est plus faible ; c'est desormais le
+  seul filet sur cette famille-la.
