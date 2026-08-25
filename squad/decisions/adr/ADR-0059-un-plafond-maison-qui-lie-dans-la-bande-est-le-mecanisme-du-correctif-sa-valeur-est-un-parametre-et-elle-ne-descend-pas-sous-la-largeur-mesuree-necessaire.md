@@ -415,3 +415,97 @@ verify` a la racine - **BUILD SUCCESS, 668 tests, 0 echec** (48 `domain` + 13 `a
 de la toolchain declaree. Pas de `-am` a citer, le reacteur est complet par construction.
 `UnPlafondMaisonNAffamePasLaRangeeTest` y porte toujours ses **7 tests, 0 echec**.
 **Compte des regles ArchUnit : 30 regles reelles, inchange.**
+
+---
+
+## Second amendement du 2026-08-25 (s20) - la dette verticale recoit sa mesure, et son declencheur change de nature
+
+- **Auteur** : theo-archi. **Fait neuf** : `camille-po` ne maintient pas le correctif de largeur et
+  rouvre la famille verticale. Le mecanisme de cet `ADR` n'est donc plus au perimetre de s20 ; sa
+  **dette** l'est.
+- **Rien de ce qui precede n'est efface.**
+- **Mesure complete, methode comprise** :
+  `squad/sprints/s20-mot-cible-designe-et-conception-de-la-saisie/mesure-budget-vertical.md`, appuyee
+  sur deux outils commites dans `squad/outils/theo-archi/`. Ce qui suit n'en reprend que ce qui
+  touche cet `ADR`.
+
+### 1. La decision et la regle sont intactes ; elles n'ont plus d'objet ce sprint
+
+Aucune ligne des decisions 1 a 3 ne devient fausse. L'inegalite `P >= L + R + 40` reste vraie, le
+mecanisme reste celui qu'il faudrait si un plafond revenait un jour, et
+`UnPlafondMaisonNAffamePasLaRangeeTest` continue de garder ce qu'il garde - les deux plafonds maison
+declares valent `720px`, au-dessus du plancher, la production est verte. **`ADR-0059` n'est ni
+remplace ni rejete : il est sans emploi tant qu'aucun plafond n'est decide.** C'est un etat different
+de "faux", et je l'ecris plutot que de laisser un lecteur choisir entre les deux.
+
+**Ce qui l'a rendu sans emploi n'est pas une erreur de l'`ADR`** : c'est mon propre recalcul de la
+couverture (33 largeurs sur 144, premier amendement du jour) plus un motif produit que je n'avais pas
+vu et que `camille-po` apporte - le plancher de 687 px met hors de portee l'ecran de 1280 px partage
+en deux, soit environ 640 px, **le cas d'usage meme qui justifiait la bande**. Un correctif dont le
+plancher exclut sa propre raison d'etre n'est pas un correctif ; c'est une observation que
+l'arithmetique rendait disponible et que seule elle a formulee.
+
+### 2. Une propriete de cet `ADR` est desormais verifiee sur un second axe et sur 251 items
+
+La decision 2 demontre que la feuille tierce capte la zone a 540 px dans toute la bande, donc que la
+rangee y recoit 500 px **quelle que soit la largeur du viewport**. Cette arithmetique avait ete
+reproduite cinq fois sur des mesures de largeur. Elle vient de l'etre **verticalement** : sur
+**251 items mesures a 576 px et a 719 px, le bas du bloc de message est identique au centieme, zero
+exception**. La bande n'a pas de gradient - c'est une seule mise en page, et toute mesure prise
+n'importe ou dedans vaut pour elle entiere.
+
+**Consequence pratique qui vaut d'etre gardee** : le releve d'`ines-design` a 640 px et celui de
+`nadia-prof` a 700 et 719 px decrivent le meme ecran et se comparent directement, ce que personne
+n'avait le droit d'affirmer avant cette verification.
+
+### 3. La dette verticale : elle est mesuree, et elle est plus grande que ce que cet `ADR` supposait
+
+Cet `ADR` ecrivait : *"le correctif ne vaut que par un chiffre vertical - le verdict remonte a
+504,19 px pour un pli a 551 px, soit +46,81 px - et cette marge est tenue par des declarations que
+rien ne compare a rien"*. Le chiffre de 504,19 px est **exact** et mon harnais le reproduit au
+centieme. **La marge de 46,81 px, elle, ne decrit pas l'ecran** : elle s'arrete au bas du texte du
+verdict, alors que l'indice vit en dessous et qu'il est l'objet meme de `BPM-8`. Sur le materiau
+reel, le bas du bloc de message descend jusqu'a **859,19 px**, soit un deficit de **308,19 px** sous
+un pli a 551 - et **134 items sur 294, sur dix jeux servis sur quinze, sont sous le pli dans la
+bande**.
+
+Face a cela, le budget vertical recuperable vaut **80 px** sans rouvrir d'arbitrage acte, **136 px**
+en rouvrant le meuble. Il ferme 90 puis 114 des 134 items, et **aucun** des dix items a trois
+rangees. La dette existe, elle est instruite, et **la piste qu'elle gardait ne ferme pas la bande**.
+
+### 4. Le declencheur change de nature, et je dis pourquoi ce n'est pas un desserrement
+
+J'avais promis une **table** de termes verticaux, portee par le premier lot touchant ce flux, puis -
+premier amendement du jour - par le dernier lot de s20.
+
+**Cette table n'aurait pas attrape le lot qui declenche la dette.** Le declencheur restant est
+`S20-1`, dont le renfort `.mot-designe` ajoute 7,19 px a la boite de ligne de `.enonce`. Cette
+croissance est **dependante du contenu** - un `font-size` sur un fragment de phrase, pas une
+declaration de rembourrage. Une table de termes fixes, la seule qu'un test de CI puisse lire faute de
+navigateur dans `mvn verify`, serait **verte** pendant que `.mot-designe` pousse 46 % des items plus
+bas. Ce serait une regle decorative au sens exact ou ce depot emploie le mot : elle interdirait
+quelque chose de reel, mais **pas ce qui a motive son ecriture**.
+
+**Le declencheur devient donc une mesure et non une table.** Tout lot qui touche un terme vertical du
+flux au-dessus du verdict fait tourner `squad/outils/theo-archi/campagne-budget-vertical.sh` avant et
+apres, et porte les deux chiffres dans son commit. **Ce n'est pas un garde-fou automatique et je ne
+le presente pas comme tel** : c'est une mesure obligatoire, plus faible qu'un test, et plus honnete
+qu'un test vert qui ne regarde pas l'objet.
+
+**Ce qui rendrait la table due, et donc l'`ADR` vertical du** : le jour ou un lot de forme touche un
+terme **fixe** de cette pile - `.entete`, `.zone-jeu`, `.score`, le meuble, les rembourrages de
+`.signal` et de `.indice`. Sur ce lot-la, la table est ecrivable, lisible par un test de CI, et elle
+attraperait exactement ce que le lot ferait. **Declencheur ecrit, date du 2026-08-25, et il reste ma
+dette.**
+
+### 5. Ce que cet amendement ne change pas
+
+Les decisions 1 a 3, le texte de la regle, son perimetre derive, ses quatre morsures, son jeu fautif
+et le premier amendement du jour sont inchanges. Aucun fichier de test n'est modifie.
+
+**Mesure du jour**, sur `s20-theo`, arbre propre : `bash outils/mvn-jdk21.sh -B clean verify` a la
+racine - **BUILD SUCCESS, 668 tests, 0 echec**, JDK **21.0.10** de la toolchain declaree ; pas de
+`-am` a citer, le reacteur est complet par construction. **Compte des regles ArchUnit : 30 regles
+reelles, inchange** - ce lot n'ajoute aucune `ArchRule` et ne touche aucun fichier de code. Les
+campagnes de rendu ne sont pas des tests de ce compte : elles ont besoin d'un navigateur, et elles
+declarent leur perimetre dans leur propre rapport.
