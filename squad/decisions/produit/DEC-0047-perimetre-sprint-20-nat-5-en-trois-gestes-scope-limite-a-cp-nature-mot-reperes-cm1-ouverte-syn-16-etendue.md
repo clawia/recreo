@@ -303,3 +303,97 @@ raison.
 - `docs/backlog/backlog.md` : section "Sprint 20", paragraphe d'introduction mis a jour pour nommer
   le quatrieme chantier (conception, sans story).
 - Aucun autre fichier n'est modifie par cet amendement.
+
+## Amendement du 2026-08-25 (avis de faisabilite de `theo-archi`, branche `s20-theo`, commit `7a398b9`) - `S19-6a` suspendue, la famille verticale rouverte ; le critere de contrat de `S20-1` corrige
+
+`theo-archi` a rendu son avis de faisabilite sur les quatre chantiers de s20. Trois tiennent
+(`S20-1` faisable moyennant `ADR-0062`, `S20-2` faisable en l'etat, `S19-6b` infaisable ce sprint
+pour un motif de sequencement et non de capacite). Le quatrieme touche un arbitrage que j'ai rendu
+moi-meme le jour meme, sur un chiffre qui s'est effondre entre les deux gestes.
+
+### 1. `S19-6a` : le residu que j'ai assume a change de nature, je ne le maintiens pas tel quel
+
+J'ai tranche `S19-6a` sur un residu de 3 px sur 144 (couverture 141/144), dans l'esprit de
+`DEC-0025` - un residu assume parce que petit. Ce chiffre valait pour `L = 539` px, la largeur
+necessaire de `cm1-synonymes`, seul pire cas connu au moment ou j'ai ecrit la story. **C'est moi qui
+ai porte le pire cas reel a `L = 647` px, quelques heures plus tot, en validant l'audit de
+`cm1-accord-sujet-verbe` dans le meme `DEC-0043`** - et rien n'a relie les deux gestes avant que
+`theo-archi` ne refasse le calcul. Avec la bonne valeur (`ADR-0059`, amendement) : la couverture
+tombe a **33 largeurs sur 144**, le residu passe de 3 px a **111 px, soit 77 % de la bande**. La
+proposition de 620 px d'`ines-design`, calculee sur un pire cas depasse, n'est plus "a confirmer" :
+elle est **exclue par l'inegalite du plafond**.
+
+**Ma decision : je ne maintiens pas `S19-6a` sur la piste de largeur telle qu'elle etait affectee.
+Je suspends l'implementation d'une valeur de plafond ce sprint, et je rouvre la famille verticale
+comme piste principale.** Motif : j'avais explicitement refuse la tolerance zero au motif qu'"un
+garde-fou qui cede en silence ne vaut rien" (`DEC-0043`) ; assumer 111 px sur 144 n'est pas la meme
+decision qu'assumer 3 px sur 144, et un correctif qui ne ferme que 23 % de la bande, en laissant
+precisement hors de portee le cas d'usage qui a justifie de l'ouvrir (un ecran de 1280 px partage en
+deux fenetres, environ 640 px, sous le nouveau plancher de 687 px), cederait en silence sur
+l'essentiel tout en ayant l'air ferme. Je ne le retiens pas sans le nommer, et je ne le retiens pas.
+
+La famille verticale avait ete ecartee a l'ouverture de cette story au seul motif que la largeur
+couvrait "presque tout" (`DEC-0043`, section 1) - ce motif n'existe plus. `nadia-prof` a deja
+chiffre son cout sur les items a quatre propositions (68,19 px, `AGN-1`) ; `theo-archi` confirme
+qu'aucun garde-fou de ce depot n'epingle aujourd'hui un terme vertical. Je route a `theo-archi`
+l'ecriture d'un avis de faisabilite sur cette piste, sur le meme modele que celui deja rendu pour la
+largeur (`ADR-0059`).
+
+**Ce que je remonte a l'utilisatrice, sans lui demander de trancher aujourd'hui** : si la piste
+verticale s'avere elle aussi trop couteuse, la seule piste restante n'est plus une question
+d'architecture mais de perimetre - reviser la bande visee (`DEC-0040`/`DEC-0041`) plutot que le
+produit. Je nomme cette troisieme lecture pour qu'elle ne soit pas decouverte plus tard ; je ne la
+choisis pas, faute d'avoir d'abord chiffre la seconde.
+
+**Ce qui ne bouge pas** : le Done pedagogique deja acquis sur les trois jeux nommes reste entier -
+il se mesure a la reference 744 x 551, jamais a la bande basse.
+
+Detail complet, criteres mis a jour et routage : `S19-6a` et `S19-6b`, `docs/backlog/backlog.md`.
+
+### 2. Le critere de `S20-1` prescrivait une forme de contrat que ni `ines-design` ni l'architecture ne retiennent - corrige
+
+`theo-archi` releve que le premier critere d'acceptation de `S20-1` demandait une donnee "distincte
+de l'avant et de l'apres de la phrase" - une formulation qui m'appartient, et non celle
+d'`ines-design`, qui route la forme de la donnee sans jamais proposer trois champs. L'ecart compte :
+un triplet `(avant, motCible, apres)` est exactement la forme qu'il refuse, parce qu'elle ferait
+porter deux composantes vides a douze paquets qui ne designent rien - la dette 2 de `CLAUDE.md`
+citee en toutes lettres. Il retient une composante facultative unique sur `Question`, et un rendu en
+segments derive par le controleur, ou un jeu non marque produit un seul segment sans branche ni
+valeur factice (`ADR-0062`).
+
+**Je reprends son verdict et corrige le critere** (`docs/backlog/backlog.md`, `S20-1`) plutot que de
+laisser une prescription que l'architecture ne peut pas honorer sans reproduire une dette deja
+sanctionnee sur ce produit. Je ne rouvre pas la section 1 de ce document ci-dessus (qui date d'avant
+cette correction) : elle reste lisible telle qu'ecrite, avec cette note a cote.
+
+### Ce que je route
+
+- **`theo-archi`** : avis de faisabilite sur la piste verticale pour `SYN-16`/`S19-6a` (section 1) ;
+  implementation d'`ADR-0062` pour `S20-1` (deja son geste).
+- **`sofia-sm`** : sequencement - la piste verticale n'est pas affectee a un developpeur tant que
+  son avis de faisabilite n'est pas rendu ; mesure de `BPM-8` (`S19-6b`) repoussee jusqu'a ce qu'un
+  correctif de `S19-6a` soit effectivement fusionne, quelle que soit la piste retenue.
+- **`ines-design`** : rien de nouveau a proposer sur la largeur tant que la piste n'est pas
+  confirmee ; sa proposition de 620 px est exclue, pas seulement suspendue.
+- **Signalement a l'utilisatrice, via `sofia-sm`** : le correctif de `SYN-16` ne fermait plus
+  l'essentiel de la bande visee des que le pire cas reel etait connu ; s20 pivote vers une piste
+  verticale non encore chiffree, et une troisieme lecture (reviser la bande) reste nommee sans etre
+  choisie si la seconde echoue aussi.
+
+### Ce que je ne fais pas
+
+- Je ne chiffre aucune piste verticale moi-meme : `theo-archi`.
+- Je ne choisis pas, entre les trois lectures nommees pour `S19-6a`, laquelle l'utilisatrice devra
+  retenir si la piste verticale echoue : je nomme la question, je ne la tranche pas a sa place.
+- Je ne fais bouger aucune ligne de matrice ni aucun Done pedagogique par cet amendement.
+
+### Impact de cet amendement
+
+- `squad/decisions/produit/DEC-0047-...md` (ce fichier) : cette section ajoutee.
+- `docs/backlog/backlog.md` : `S19-6a` suspendue et mise a jour (residu reel, piste verticale
+  rouverte, criteres et routage revises) ; `S19-6b` mise a jour (avis de faisabilite recu,
+  infaisable pour un motif de sequencement) ; `S20-1` critere de contrat corrige (composante
+  facultative unique, segments, `ADR-0062`), plus les references de routage et de lien decision.
+- Aucun fichier sous `domain/`, `application/`, `adapters/` ni `bootstrap/` n'est modifie par cette
+  decision : les regles executables citees (`ADR-0059`, `ADR-0062`) sont ecrites par `theo-archi`
+  dans son propre lot, hors de mon perimetre d'ecriture.
