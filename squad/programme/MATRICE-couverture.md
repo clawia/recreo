@@ -230,8 +230,29 @@ Source : `squad/programme/mathematiques/competences-cm1.md`.
 | mathematiques | CM1 | Grandeurs et mesures | Convertir des unites de longueur, masse, contenance dans le systeme metrique | bandit-manchot-conversions-unites-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Grandeurs et mesures | Calculer un perimetre de figures usuelles (carre, rectangle) | bandit-manchot-perimetre-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Grandeurs et mesures | Resoudre des problemes de durees (calcul d'une duree, d'un horaire d'arrivee) | bandit-manchot-problemes-durees-cm1 | bandit manchot | en cours |
-| mathematiques | CM1 | Espace et geometrie | Reconnaitre, nommer et tracer des figures planes (carre, rectangle, triangle, cercle) avec outils (regle, equerre, compas) | - | - | non couvert |
-| mathematiques | CM1 | Espace et geometrie | Reconnaitre et utiliser la notion de symetrie axiale simple | - | - | non couvert |
+| mathematiques | CM1 | Espace et geometrie | Reconnaitre, nommer et tracer des figures planes (carre, rectangle, triangle, cercle) avec outils (regle, equerre, compas) | - | - | non couvrable en l'etat |
+| mathematiques | CM1 | Espace et geometrie | Reconnaitre et utiliser la notion de symetrie axiale simple | - | - | non couvrable en l'etat |
+
+**Note du 2026-08-25 (hors sprint, `camille-po`) - deux lignes reclassees `non couvert` ->
+`non couvrable en l'etat`, nature reversible** (`DEC-0046`, sur avis de `nadia-prof`,
+`squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md`, amendement du
+2026-08-25, section A) : l'utilisatrice a arbitre qu'aucun geste de trace n'est envisage pour ce
+produit. **"Reconnaitre, nommer et tracer des figures planes ... avec outils"** exige le trace et
+les outils - la seule part propre au CM1 selon `nadia-prof`, qui refuse qu'une reconnaissance et
+une denomination seules comptent (facade dupliquant le CP). **"Reconnaitre et utiliser la notion de
+symetrie axiale simple"** exige un trace pour sa moitie "utiliser" (completer une figure par
+symetrie) ; `nadia-prof` n'a pas rendu, pour cette ligne, le jugement qu'elle a rendu pour la
+precedente sur la valeur d'une couverture partielle du seul verbe "reconnaitre" - la ligne suit
+neanmoins le meme classement, par le motif de capacite qui, lui, est etabli pour les deux verbes
+que la ligne joint. **Cette ligne peut rouvrir `en cours` sur le seul verbe "reconnaitre" le jour
+ou `nadia-prof` juge qu'une telle couverture partielle est honnete** ; ce jugement n'existe pas
+aujourd'hui et je ne le presume pas.
+
+**Nature "reversible", distincte de l'irreversible** (voir `DEC-0046`, section 4.1) : ces deux
+lignes sont hors de portee parce que le produit a choisi de ne pas avoir le geste de trace - un
+arbitrage, pas une loi, qui se revise si l'utilisatrice revise sa phrase. Cela les distingue de
+"Lire a voix haute..." et de "Relire et corriger son texte..." ci-dessous, hors de portee parce que
+juger la reponse demande un humain, ce qu'aucune decision produit ne debloquera jamais.
 
 Note sur les trois lignes `en cours` (tables de multiplication, conversions d'unites, perimetre) :
 `DEC-0029-perimetre-sprint-12-trois-lignes-mathematiques-cm1-ouvertes-cinq-differees.md` les ouvre
@@ -478,7 +499,10 @@ Source : `squad/programme/francais/competences-cp.md`.
 l'etat` sur "Lire a voix haute...".** Cette competence exige une reconnaissance vocale, hors
 d'atteinte de ce produit tel qu'il est defini (trois contraintes fondatrices contredites a la fois,
 plus une question de donnee personnelle sur la voix d'un enfant). Motif complet, sources et
-consequence sur le denominateur de couverture : `DEC-0042`, section 3.
+consequence sur le denominateur de couverture : `DEC-0042`, section 3. **Nature "irreversible"**
+(distinction posee par `DEC-0046`, section 4.1) : juger une lecture a voix haute demande un humain
+qui ecoute ; aucune decision produit ne debloquera jamais cette ligne, a la difference des deux
+lignes de geometrie CM1 reclassees le 2026-08-25 pour un motif "reversible".
 
 **Note du 2026-08-24 (s19, `camille-po`) - ligne "Distinguer les principaux types de mots" ouverte
 par `S19-4`** (`docs/backlog/backlog.md`) : adaptation reelle de `contenu-repris/mots/
@@ -564,8 +588,24 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | bandit-manchot-accords-groupe-nominal-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | bandit-manchot-homophones-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif | bandit-manchot-conjugaison-present-cm1 | bandit manchot | couvert-valide |
+| francais | CM1 | Orthographe et grammaire | Reperer et corriger la majuscule et la ponctuation dans une phrase donnee (majuscule initiale, point final, majuscule au nom propre, point d'interrogation d'une question) | - | - | non couvert |
 | francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | bandit-manchot-synonymes-cm1, bandit-manchot-antonymes-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | - | - | non couvert |
+
+**Note du 2026-08-25 (hors sprint, `camille-po`) - competence detachee, acceptee par
+l'utilisatrice, amendee au referentiel** (`DEC-0046`, section 2, sur proposition de `nadia-prof`,
+`squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md`, amendement du
+2026-08-25, section B). "Reperer et corriger la majuscule et la ponctuation dans une phrase
+donnee..." est detachee de "Relire et corriger son texte..." ci-dessus : la charniere "dans une
+phrase donnee" isole la connaissance du repere de la relecture de son **propre** texte, qui reste
+la seule difficulte de la ligne d'origine. **Couvrable par la mecanique existante, contenu seul,
+sans saisie** - elle entre dans la reserve de contenu seul de `DEC-0042`. Quatre conditions
+prealables `REP-1` a `REP-4` (composition du paquet, aucune tenue par un test) : detail complet
+dans le document cite. La ligne d'origine, ci-dessus, reste `non couvrable en l'etat`, statut
+inchange sur recommandation de `nadia-prof` : le detachement ne l'ameliore pas, il la rend
+honnete. **Nature "irreversible"** (`DEC-0046`, section 4.1) : juger une relecture de soi demande
+un adulte qui lit, distinct des deux lignes de geometrie CM1 ci-dessus, reclassees le meme jour
+pour un motif "reversible".
 
 **Note du 2026-08-24 (s19, `camille-po`) - trois lignes ouvertes par le Lot A de `DEC-0042`**
 (`docs/backlog/backlog.md`, section "Sprint 19") :
@@ -2052,3 +2092,38 @@ bande basse concerne desormais trois paquets nommes (`cm1-synonymes`, `cm1-anton
 
 **Ce qui ne bouge pas.** Le perimetre de developpement de s19 (`S19-1` a `S19-6`, `DEC-0042`) est
 inchange. Aucune autre ligne ne passe `couvert-valide` par ce geste.
+
+## Amendement du 2026-08-25 (hors sprint) - une competence entre, deux lignes sortent du denominateur atteignable, 13/43 (30,2 %)
+
+Trois arbitrages hors sprint de l'utilisatrice, traces dans `DEC-0046`. **Ce mouvement n'est pas un
+mouvement de couverture** : aucun increment n'a ete joue ni audite, c'est un effet de perimetre du
+referentiel.
+
+- **Une competence entre** au referentiel francais CM1 (`non couvert`) : "Reperer et corriger la
+  majuscule et la ponctuation dans une phrase donnee...", detachee de "Relire et corriger son
+  texte...", acceptee par l'utilisatrice.
+- **Deux lignes de mathematiques CM1 sortent du denominateur atteignable** : "Reconnaitre, nommer et
+  tracer des figures planes... avec outils" et "Reconnaitre et utiliser la notion de symetrie
+  axiale simple", `non couvert` -> `non couvrable en l'etat` (nature reversible - le produit a
+  choisi de ne pas avoir le geste de trace, un arbitrage qui se revise, distinct de l'irreversible
+  qui exige un humain pour juger).
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide | non couvrable en l'etat |
+|---|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 | 0 |
+| mathematiques CM1 | 12 | 4 | 2 | 4 | 2 |
+| francais CP | 12 | 9 | 2 | 0 | 1 |
+| francais CM1 | 12 | 6 | 0 | 5 | 1 |
+| **Total** | **47** | **25** | **5** | **13** | **4** |
+
+**Le chiffre, avec sa base.** Le total de competences passe de **46** a **47** (une ligne
+detachee et amendee au referentiel). Le nombre de lignes `non couvrable en l'etat` passe de **2** a
+**4** (deux lignes de geometrie CM1 s'y ajoutent, nature reversible). Le denominateur atteignable
+passe de **44** (46 - 2) a **43** (47 - 4). Le compte de lignes `couvert-valide` ne bouge pas :
+**13**. **13/44 (29,5 %) devient 13/43 (30,2 %)**, sans aucun increment joue ni audite.
+
+**Ce qui ne bouge pas.** Aucune ligne ne passe `couvert-valide` par ce geste. Aucun Done
+pedagogique n'est prononce. Le statut de "Nom ou verbe ?" (`en cours`, hors catalogue par
+`DEC-0045`) et celui de la ligne "Distinguer les principaux types de mots" ne bougent pas : la
+reexamination de `NAT-9` par `nadia-prof`, sur l'arbitrage elargi de l'utilisatrice concernant
+l'accompagnement du CP, reste en attente (`DEC-0046`, section 3).

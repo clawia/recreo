@@ -23,6 +23,8 @@
 - Distinguer et utiliser correctement les principaux homophones grammaticaux (`et/est`,
   `son/sont`, `a/à`...).
 - Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif.
+- Repérer et corriger la majuscule et la ponctuation dans une phrase donnée (majuscule initiale,
+  point final, majuscule au nom propre, point d'interrogation d'une question).
 
 ## Vocabulaire
 
