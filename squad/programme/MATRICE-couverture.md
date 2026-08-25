@@ -521,6 +521,19 @@ guillemets est-il un nom ou un verbe ?", n'est pas lisible seul par un enfant de
 circulaire - `nadia-prof` propose "Nom ou verbe ?", deja le titre du jeu). Elle ecrit que les deux
 se reparent ensemble. Detail complet, criteres correctifs et routage : `DEC-0044`.
 
+**Note du 2026-08-25 (hors sprint, `camille-po`) - `NAT-9` levee, `NAT-5` seule reste bloquante, sur
+un motif recentre** (`squad/conformite/FICHE-bandit-manchot-nature-mot-cp.md`, deux amendements du
+2026-08-25, sur l'arbitrage elargi de l'utilisatrice - un eleve de CP est desormais considere
+toujours accompagne par un adulte, `DEC-0046` section 3). `NAT-9` (consigne circulaire) est
+**LEVEE en entier** : la consigne servie est acceptee telle quelle, aucune reformulation n'est due.
+`NAT-5` **tient**, mais plus sur la comprehension des guillemets par l'enfant (affaiblie par la
+presence durable de l'adulte) : le motif qui la porte desormais est l'asymetrie entre une tache
+constante sur toute la partie et une designation qui change a chaque manche, dix fois par partie,
+sans que rien dans le produit ne demande a l'adulte de la pointer. Le libelle de `NAT-5` ne change
+pas. **`NAT-5` devient donc la seule condition de retour au catalogue** (`DEC-0045`, section 2) ;
+le chantier de s20 qui l'instruit est `S20-1` (`docs/backlog/backlog.md`, `DEC-0047`), scope a
+`cp-nature-mot` seul ce sprint - le detail du perimetre et son motif vivent dans la story, pas ici.
+
 **Note du 2026-08-24 (s19, `camille-po`) - question de validite de proxy due depuis s13, sans
 reponse a ce jour.** La ligne "Decoder un mot regulier inconnu par assemblage syllabique" bloque
 sur une question posee a `nadia-prof` par `DEC-0030` (section 5) le 2026-08-15 : un choix a trois
@@ -588,7 +601,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | bandit-manchot-accords-groupe-nominal-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | bandit-manchot-homophones-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif | bandit-manchot-conjugaison-present-cm1 | bandit manchot | couvert-valide |
-| francais | CM1 | Orthographe et grammaire | Reperer et corriger la majuscule et la ponctuation dans une phrase donnee (majuscule initiale, point final, majuscule au nom propre, point d'interrogation d'une question) | - | - | non couvert |
+| francais | CM1 | Orthographe et grammaire | Reperer et corriger la majuscule et la ponctuation dans une phrase donnee (majuscule initiale, point final, majuscule au nom propre, point d'interrogation d'une question) | bandit-manchot-reperes-cm1 | bandit manchot | en cours |
 | francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | bandit-manchot-synonymes-cm1, bandit-manchot-antonymes-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | - | - | non couvert |
 
@@ -606,6 +619,14 @@ inchange sur recommandation de `nadia-prof` : le detachement ne l'ameliore pas, 
 honnete. **Nature "irreversible"** (`DEC-0046`, section 4.1) : juger une relecture de soi demande
 un adulte qui lit, distinct des deux lignes de geometrie CM1 ci-dessus, reclassees le meme jour
 pour un motif "reversible".
+
+**Note du 2026-08-25 (s20, `camille-po`) - ligne ouverte par `S20-2`** (`docs/backlog/
+backlog.md`, `DEC-0047`) : contenu seul, mecanique `bandit-manchot` existante, aucun arbitrage
+prealable supplementaire du - `nadia-prof` a deja instruit la forme (une phrase, quatre
+propositions qui nomment ce qui manque) et les quatre conditions prealables `REP-1` a `REP-4`.
+Jeu propose `bandit-manchot-reperes-cm1`, a confirmer par le developpeur. Aucune ne passe a
+`couvert-valide` par ce planning : ce statut n'est prononce que par `nadia-prof`, apres audit reel
+de l'increment livre.
 
 **Note du 2026-08-24 (s19, `camille-po`) - trois lignes ouvertes par le Lot A de `DEC-0042`**
 (`docs/backlog/backlog.md`, section "Sprint 19") :
@@ -2127,3 +2148,29 @@ pedagogique n'est prononce. Le statut de "Nom ou verbe ?" (`en cours`, hors cata
 `DEC-0045`) et celui de la ligne "Distinguer les principaux types de mots" ne bougent pas : la
 reexamination de `NAT-9` par `nadia-prof`, sur l'arbitrage elargi de l'utilisatrice concernant
 l'accompagnement du CP, reste en attente (`DEC-0046`, section 3).
+
+*Mise a jour du 2026-08-25, le jour meme : la reexamination annoncee ci-dessus a eu lieu pendant
+que ce paragraphe s'ecrivait. Voir la note dediee, section francais CM1, "`NAT-9` levee, `NAT-5`
+seule reste bloquante" : je ne reecris pas cette phrase pour que l'ecart entre l'attente et sa
+levee reste lisible, sur le meme principe que les amendements de `DEC-0046` eux-memes.*
+
+## Amendement du 2026-08-25 (s20, ouverture) - une ligne s'ouvre en contenu seul, 13/43 (30,2 %) inchange
+
+`S20-2` (`docs/backlog/backlog.md`, `DEC-0047`) ouvre "Reperer et corriger la majuscule et la
+ponctuation dans une phrase donnee..." : `non couvert` -> `en cours`, jeu propose `bandit-manchot-
+reperes-cm1`. Aucun increment n'est encore livre ni audite.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide | non couvrable en l'etat |
+|---|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 | 0 |
+| mathematiques CM1 | 12 | 4 | 2 | 4 | 2 |
+| francais CP | 12 | 9 | 2 | 0 | 1 |
+| francais CM1 | 12 | 5 | 1 | 5 | 1 |
+| **Total** | **47** | **24** | **6** | **13** | **4** |
+
+**Le chiffre, avec sa base.** Le denominateur atteignable reste **43** sur **47**, inchange. Le
+compte de lignes `couvert-valide` ne bouge pas : **13**. **13/43 reste 13/43 (30,2 %)** : ouvrir une
+ligne en `en cours` n'est pas un mouvement de couverture, seul un Done pedagogique en est un.
+
+**Ce qui ne bouge pas.** "Distinguer les principaux types de mots" reste `en cours`, `NAT-5` restant
+la seule condition avant reaudit (note ci-dessus). Aucune autre cellule ne bouge.

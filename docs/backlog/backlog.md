@@ -5503,6 +5503,25 @@ livre** (`squad/conformite/FICHE-bandit-manchot-nature-mot-cp.md`, verdict `ddb0
 `nadia-prof` ecrit que les deux se reparent ensemble, dans le meme chantier. Reaudit requis avant
 tout Done pedagogique sur cette ligne.
 
+**Mise a jour du 2026-08-25 (hors sprint) - `NAT-9` tombe, `NAT-5` seule reste bloquante, sur un
+motif renouvele.** L'utilisatrice a elargi son arbitrage sur l'accompagnement du CP a un etat
+durable ("un eleve de CP est toujours accompagne par un adulte"), pas seulement le premier essai
+(`DEC-0046`, section 3). `nadia-prof` en tire deux consequences ecrites dans
+`squad/conformite/FICHE-bandit-manchot-nature-mot-cp.md`, amendements du 2026-08-25 :
+
+- **`NAT-9` est LEVEE.** La consigne servie ("Le mot entre guillemets est-il un nom ou un verbe ?")
+  est acceptee telle quelle. **Aucune reformulation n'est plus due** : le critere correctif ci-dessus
+  sur `NAT-9` ne s'applique plus et `lea-dev` n'a rien a editer sur ce point.
+- **`NAT-5` reste BLOQUANTE, sur un motif recentre.** Ce n'est plus la comprehension des guillemets
+  par l'enfant (affaiblie par la presence durable d'un adulte) mais l'asymetrie entre une tache
+  constante sur toute la partie (portee par la consigne, lue une fois) et une designation qui change
+  a chaque manche (dix mots differents dans dix phrases differentes) : sans renfort visuel, c'est
+  l'adulte qui doit pointer le mot dix fois par partie, ce que rien dans le produit ne lui demande de
+  faire, et un enfant qui presse au hasard sur cette tache a deux reponses et trois essais finit
+  chaque partie a 10 sur 10 sans avoir rien lu. Le libelle de `NAT-5` ne change pas.
+
+Le chantier de s20 (voir `DEC-0047`, section 1, et `S20-1` ci-dessous) porte donc sur `NAT-5` seule.
+
 ### S19-5 - Migration ADR-0049 (accentuation des descripteurs de matiere)
 
 **Non affectee jusqu'a ce jour, affectee au sprint 19 par `DEC-0042`.** La story complete, son
@@ -5522,57 +5541,115 @@ ServiTest` - je ne fixe pas cet ordre ici.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, avec `theo-archi` pour le mecanisme
   de la bascule et l'ordre de fusion.
 
-### S19-6a - Le pli ne mord pas entre 576 et 719 px de viewport, jeu "Les synonymes" (SYN-16)
+### S19-6a - Le pli ne mord pas entre 576 et 719 px de viewport, jeux "Les synonymes", "Les antonymes" et "Le bon accord" (SYN-16)
 
 > Scindee de l'ancienne `S19-6` par `DEC-0043` : `BPM-8` (ci-dessous, `S19-6b`) relevait d'un
-> mecanisme different et n'avait recu aucune mesure de faisabilite. Candidate de s20, non affectee
-> a s19.
+> mecanisme different et n'avait recu aucune mesure de faisabilite. Affectee au perimetre de s20 par
+> `DEC-0047`, puis **suspendue le meme jour** : le correctif de largeur ne ferme plus qu'un quart de
+> la bande visee (voir la mise a jour du 2026-08-25 ci-dessous). La famille verticale, ecartee a
+> l'ouverture, est rouverte comme piste principale.
+
+**Mise a jour du 2026-08-25 (`camille-po`, avis de faisabilite de `theo-archi`, branche `s20-theo`,
+commit `7a398b9`) - le correctif de largeur est suspendu, la famille verticale est rouverte.**
+J'ai tranche `S19-6a` le 2026-08-25 sur un residu de 3 px sur 144 (141/144 de couverture), dans
+l'esprit de `DEC-0025` - un residu assez petit pour etre assume sans discussion. C'etait vrai a
+`L = 539` px (largeur necessaire de `cm1-synonymes`, seul pire cas connu a l'ecriture de cette
+story). Ce n'est plus vrai a `L = 647` px (`cm1-accord-sujet-verbe`, pire cas que j'ai moi-meme
+porte a `DEC-0043` quelques heures plus tot, sans relier les deux gestes). `theo-archi` a refait le
+calcul avec la bonne valeur (`ADR-0059`, amendement) : **la couverture tombe a 33 largeurs sur
+144**, et **le residu de bande passe de 3 px a 111 px, soit 77 % de la bande que cette story est
+chargee de fermer**. La proposition de 620 px d'`ines-design` n'est plus seulement "a confirmer" :
+elle est **exclue par l'inegalite du plafond** (`P >= L + R + 40`, section 3.2 a de son avis) - elle
+laisse 580 px a une rangee qui en demande 647.
+
+**Assumer 3 px sur 144 et assumer 111 px sur 144 ne sont pas le meme arbitrage, et je refuse de
+glisser du premier au second sans le nommer.** J'avais explicitement pose que le produit n'accepte
+pas un garde-fou a marge nulle parce qu'"un garde-fou qui cede en silence ne vaut rien" (`DEC-0043`,
+section 1) ; un correctif qui ne couvre que 23 % de la bande visee, et qui **laisse precisement hors
+de portee le cas d'usage qui justifie la bande** - un ecran de 1280 px partage en deux fenetres, soit
+environ 640 px, bien en dessous du nouveau plancher de 687 px (`DEC-0041`) - cederait en silence sur
+l'essentiel de ce pour quoi la bande a ete ouverte, tout en ayant l'air ferme. Je ne le retiens pas.
+
+**Decision : je ne fais pas implementer de valeur de plafond ce sprint. Je rouvre la famille
+verticale comme piste principale**, exactement celle que j'avais ecartee a l'ouverture de cette
+story au seul motif que la largeur couvrait "presque tout" (`DEC-0043`, section 1) - un motif que
+le nouveau chiffre retire. `nadia-prof` a deja chiffre le cout vertical des items a quatre
+propositions a 68,19 px (et non 43,19 px, `squad/programme/MATRICE-couverture.md`, `AGN-1`) ;
+`theo-archi` ecrit lui-meme qu'aucun garde-fou de ce depot n'epingle un terme vertical aujourd'hui
+(`ADR-0059`) - c'est un chantier a instruire, pas a implementer a l'aveugle.
+
+**Ce que je ne ferme pas et que je nomme pour l'utilisatrice, sans lui demander de trancher
+aujourd'hui** : si la famille verticale s'avere elle aussi trop couteuse, la seule piste restante
+est de reviser la bande visee elle-meme - amender `DEC-0040`/`DEC-0041` plutot que le produit. Je
+ne le propose pas maintenant : c'est une lecture parmi trois, elle n'est pas mienne a choisir tant
+que la seconde (verticale) n'a pas ete chiffree, et je prefere le dire a l'utilisatrice avant qu'elle
+ne le decouvre que le pretendre tranchee.
+
+**Ce qui ne bouge pas** : le Done pedagogique deja acquis sur les trois jeux (`cm1-synonymes`,
+`cm1-antonymes`, `cm1-accord-sujet-verbe`) est etranger a cette suspension - il se mesure a la
+reference 744 x 551, jamais a la bande basse (`DEC-0040`).
+
+**Mise a jour du 2026-08-25 (`camille-po`, `DEC-0047`) - le perimetre reel touche trois paquets, pas
+un seul.** `DEC-0043` a ete amendee deux fois apres l'ecriture initiale de cette story, sur des
+paquets audites entre-temps par `nadia-prof` : `cm1-antonymes` porte une largeur de rangee
+necessaire de 547 px (contre 539 px pour `cm1-synonymes`), et `cm1-accord-sujet-verbe`, valide le
+meme jour, porte le pire cas reel a **647 px** et ne couvre rien dans la bande basse tant que cette
+story n'est pas livree. Le besoin, le constat et les criteres ci-dessous sont corriges pour porter
+les trois jeux ; je ne les laisse pas nommer "Les synonymes" seul alors que le pire cas connu
+appartient desormais a un autre jeu.
 
 - **Besoin** : en tant qu'eleve de CM1 qui joue sur un ordinateur dont la fenetre du navigateur
   n'occupe pas tout l'ecran (fenetre partagee, fenetre non maximisee), je veux voir entierement les
-  propositions de reponse du jeu "Les synonymes", afin de jouer dans les memes conditions que sur
-  un ordinateur en plein ecran.
+  propositions de reponse des jeux "Les synonymes", "Les antonymes" et "Le bon accord", afin de
+  jouer dans les memes conditions que sur un ordinateur en plein ecran.
 - **Competence programme visee** : transverse - pas de contenu pedagogique.
 - **Constat mesure, pas suppose** (`nadia-prof`, `squad/conformite/FICHE-bandit-manchot-synonymes-
-  cm1.md`, verdict du 2026-08-23 puis mesure du 2026-08-24) : le correctif livre pour `SYN-11` ne
-  mord qu'a partir de 720 px de viewport. Entre 576 et 719 px, cinq items sur seize gardent deux
-  rangees de propositions et leur verdict sous le pli, pire cas 594,19 px. La largeur de rangee
-  **necessaire** aux seize items est 539 px (mesuree le 2026-08-24, contre 680 px connue comme
-  seulement suffisante) : un correctif de largeur ferme 141 des 144 largeurs de la bande et
-  echoue sur 576, 577 et 578 px. Non bloquant pour le Done pedagogique deja rendu, qui se mesure
-  contre la reference unique 744 x 551 (`DEC-0040`).
+  cm1.md`, verdict du 2026-08-23 puis mesure du 2026-08-24 ; `FICHE-bandit-manchot-antonymes-
+  cm1.md` ; `FICHE-bandit-manchot-accord-sujet-verbe-cm1.md`, second verdict) : le correctif livre
+  pour `SYN-11` ne mord qu'a partir de 720 px de viewport. Entre 576 et 719 px, "Les synonymes"
+  garde cinq items sur seize sous le pli (pire cas 594,19 px) ; "Le bon accord" ne couvre rien dans
+  la bande a 500 px offerts aujourd'hui et s'y replie integralement. Largeur de rangee
+  **necessaire**, mesuree et non supposee : 539 px pour `cm1-synonymes`, 547 px pour
+  `cm1-antonymes`, **647 px pour `cm1-accord-sujet-verbe` - le pire cas connu de la bande**. Non
+  bloquant pour le Done pedagogique deja rendu sur chacun des trois jeux, qui se mesure contre la
+  reference unique 744 x 551 (`DEC-0040`).
 - **Perimetre de la bande, tranche par `camille-po` a la cloture de s18** (`DEC-0041`, amendement
   du 2026-08-23) : la bande 576-719 px n'est pas un vide de reference. Un ordinateur de la cible
   produit (1280 px de dalle au plus etroit identifie par `ines-design`) partage en deux fenetres,
   ou simplement non maximise, donne une largeur de viewport dans cette bande - un geste ordinaire
   sur ordinateur, pas un usage marginal. C'est donc un trou reel du produit sur sa cible actuelle,
   et non un appareil hors cible.
-- **Criteres d'acceptation** :
-  - Etant donne le jeu "Les synonymes", quand on rend chaque manche a une largeur de viewport
-    comprise entre la borne basse retenue (au plus 579 px, majoree de la marge de police posee
-    ci-dessous) et 719 px inclus, dans l'etat le plus charge (revelation, trois etats d'echec),
-    alors les propositions de reponse restent entierement visibles au-dessus du pli, sur la
-    totalite des seize items.
-  - Etant donne le plafond de largeur retenu pour cette bande, il porte une marge de securite de
-    police au-dessus des 539 px de rangee necessaire mesures le 2026-08-24 sur une seule machine
-    (`DEC-0043`, section 1) : il n'est pas colle au strict necessaire. La valeur exacte est
-    proposee par `ines-design` et tranchee par `nadia-prof`.
-  - Etant donne les deux criteres ci-dessus, quand le correctif est livre, alors il ne fait
-    regresser aucune des mesures deja tenues a 720 px et au-dela (`SYN-11`), ni la clause
-    "en-tete aligne" ou "aucun element a presser ne se rapproche du bord plus que le rembourrage
-    de la zone" de `SYN-14`, deja tenue a un plafond de 579 px sur huit viewports mesures.
+- **Criteres d'acceptation - suspendus pour la piste de largeur, a reprendre pour la piste
+  verticale une fois chiffree** : les criteres ecrits pour un correctif de largeur supposaient une
+  couverture de 141/144 ; ils ne tiennent plus a 33/144 et je ne les affiche plus comme la
+  definition de "fini" de cette story. Je ne les efface pas : ils redeviennent utilisables tels
+  quels si l'utilisatrice choisit un jour d'assumer le residu de 111 px plutot que de payer la
+  piste verticale.
+  - Etant donne chacun des trois jeux ("Les synonymes", "Les antonymes", "Le bon accord"), quand on
+    rend chaque manche a une largeur de viewport comprise entre la borne basse retenue et 719 px
+    inclus, dans l'etat le plus charge (revelation, trois etats d'echec), alors les propositions de
+    reponse restent entierement visibles au-dessus du pli, sur la totalite des items des trois
+    paquets - **valable pour la piste retenue, largeur ou verticale, quelle qu'elle soit**.
   - Le residu de bande qui reste hors correctif, sous la borne basse retenue, est un residu assume
-    et documente avec son motif dans la fiche de conformite au moment de la mesure finale, pas un
-    silence.
-  - Ce que cette story ne tranche pas, entierement route a `theo-archi` : le mecanisme de
-    correction (regle CSS scopee a la bande, garde-fou `ADR-0054`/`ADR-0055`/`ADR-0056`).
+    et documente avec son motif et son chiffre reel dans la fiche de conformite au moment de la
+    mesure finale, pas un silence - **le chiffre a documenter n'est plus 3 px, il doit etre celui de
+    la piste effectivement retenue**.
+  - Etant donne le correctif livre, quel qu'il soit, alors il ne fait regresser aucune des mesures
+    deja tenues a 720 px et au-dela (`SYN-11`), ni la clause "en-tete aligne" ou "aucun element a
+    presser ne se rapproche du bord plus que le rembourrage de la zone" de `SYN-14`.
+  - Ce que cette story ne tranche pas, entierement route a `theo-archi` : le choix entre la piste de
+    largeur (`ADR-0059`, suspendue) et la piste verticale (a chiffrer, avis de faisabilite du).
   - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
     `nadia-prof` : la mesure finale sur navigateur reel, a `scrollY = 0` verifie, sur la bande
-    retenue et sur `SYN-14`.
+    retenue et sur `SYN-14` - y compris une remesure de `SYN-14` si la piste de largeur revient un
+    jour, puisqu'elle n'a jamais ete mesuree au-dela d'un plafond de 579 px (avis de faisabilite de
+    `theo-archi`, section 3.3).
 - **Lien decision** : `DEC-0041`, amendement du 2026-08-23 ("`SYN-16` : la bande 576-719 px designe
-  un appareil reel") ; `DEC-0043`.
-- **Agent pressenti** : a affecter au planning de s20 par `sofia-sm`, avec `ines-design` pour la
-  marge de police et `nadia-prof` pour la valeur retenue et la mesure finale.
+  un appareil reel") ; `DEC-0043` ; `DEC-0047` et son amendement du 2026-08-25 (suspension, famille
+  verticale rouverte) ; avis de faisabilite de `theo-archi`, `s20-theo` a `7a398b9`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite de la piste verticale (a instruire) ;
+  `sofia-sm` pour le sequencement et la capacite, une fois cet avis rendu ; `ines-design` n'a plus
+  de valeur a reproposer sur la piste de largeur tant qu'elle n'est pas retenue.
 
 ### S19-6b - L'indice reste coupe par le pli entre 576 et 719 px de viewport, jeu "Le bon petit mot" (BPM-8)
 
@@ -5596,8 +5673,167 @@ ServiTest` - je ne fixe pas cet ordre ici.
     hors de portee, sur le meme modele que `S19-6a`.
   - Ce que cette story ne tranche pas et route a `theo-archi` : le mecanisme de correction, dont
     la nature (largeur ou hauteur de contenu) n'est pas encore etablie pour ce jeu.
-- **Ce qui manque avant affectation** : un avis de faisabilite de `theo-archi` sur ce mecanisme
-  propre, puis, s'il nomme un chiffre manquant, une mesure de `nadia-prof` sur navigateur reel -
-  le meme processus qui vient de rendre `S19-6a` affectable.
-- **Lien decision** : `DEC-0041`, amendement du 2026-08-23 ; `DEC-0043`, section 2.
-- **Agent pressenti** : avis de faisabilite de `theo-archi` requis avant affectation.
+- **Avis de faisabilite recu le 2026-08-25 (`theo-archi`, `s20-theo` a `7a398b9`) - infaisable ce
+  sprint, et le motif n'est pas la capacite.** Deux faits qui deplacent cette story plutot que de la
+  debloquer : le mecanisme **n'est pas independant de celui de `S19-6a`**, contrairement a ce que
+  `DEC-0043` supposait en scindant - le plafond maison de `S19-6a` porte sur des selecteurs
+  partages par tous les jeux (`.entete-contenu`, `.zone-jeu`), donc "Le bon petit mot" recoit tout
+  changement de largeur de bande sans qu'aucune ligne ne le vise ; et **aucun chiffre unique ne
+  resume ce defaut** comme `L` le faisait pour la largeur - la position de l'indice est la somme des
+  hauteurs de tout ce qui le precede dans le flux, ce qui demande une decomposition et non une
+  mesure. Une mesure prise aujourd'hui decrirait une mise en page que le denouement de `S19-6a`
+  (piste de largeur ou verticale, encore a choisir) va changer. `theo-archi` recommande de mesurer
+  `BPM-8` **une fois que `S19-6a` aura effectivement livre un correctif**, quelle que soit la piste
+  retenue - pas avant, et pas sur la base d'un merge qui n'a plus lieu ce sprint.
+- **Lien decision** : `DEC-0041`, amendement du 2026-08-23 ; `DEC-0043`, section 2 ; `DEC-0047`
+  et son amendement du 2026-08-25 ; avis de faisabilite de `theo-archi`, section 4.
+- **Agent pressenti** : reste non affectee. Mesure a reprendre par `nadia-prof` une fois qu'un
+  correctif de `S19-6a` (largeur ou vertical) est effectivement fusionne, sequencement a
+  et l'affectation d'une story deviennent candidates d'un sprint suivant, pas necessairement s20.
+
+## Sprint 20 - `NAT-5` (mot cible designe), une competence neuve en contenu seul, extension du correctif de bande basse, conception de la saisie reprise
+
+Perimetre fixe par `DEC-0047-perimetre-sprint-20-nat-5-en-trois-gestes-scope-limite-a-cp-nature-
+mot-reperes-cm1-ouverte-syn-16-etendue.md`, complete par son amendement du 2026-08-25 (les trois
+arbitrages de l'utilisatrice sur la saisie, le clavier et l'adulte accompagnant). Quatre chantiers :
+le renfort du mot cible (`NAT-5`, `S20-1`) ; une competence neuve en contenu seul (`S20-2`) ;
+l'extension du correctif de bande basse a trois jeux nommes (`S19-6a`, ci-dessus, non reecrite
+ici) ; et la reprise de la conception de la mecanique de saisie, **sans capacite de developpement
+affectee**, sur le meme mode que le Lot C de `DEC-0042` a s19 - nommee et routee dans l'amendement
+du 2026-08-25 a `DEC-0047`, jamais recopiee ici sous forme de story a criteres d'acceptation : la
+conception n'en a jamais pris la forme sur ce produit. `S19-6b`, ci-dessus, reste une demande
+d'avis de faisabilite routee, pas une cinquieme story affectee.
+
+### S20-1 - Le mot cible de "Nom ou verbe ?" est designe autrement que par les guillemets seuls (`NAT-5`)
+
+- **Besoin** : en tant qu'eleve de CP qui joue a "Nom ou verbe ?", je veux voir clairement quel mot
+  de la phrase je dois classer, afin de ne pas dependre d'un signe (les guillemets francais) que je
+  n'ai pas encore appris a lire.
+- **Competence programme visee** : francais, CP (cycle 2), "Distinguer les principaux types de mots
+  (nom, verbe) dans une phrase tres simple" (`squad/programme/francais/competences-cp.md`). Cette
+  story ne couvre pas la ligne a elle seule : elle leve la derniere reserve bloquante d'un jeu deja
+  livre (`S19-4`).
+- **Origine et etat de la reserve, pour ne rien reecrire de faux** : `NAT-5` est la seule reserve
+  bloquante restant sur `bandit-manchot-nature-mot-cp` (`squad/conformite/FICHE-bandit-manchot-
+  nature-mot-cp.md`, amendements du 2026-08-25). `NAT-9`, qui portait sur la meme fiche, est
+  **levee** et ne fait plus partie du perimetre de cette story (voir la mise a jour sous `S19-4`
+  ci-dessus). Le jeu est hors catalogue depuis `DEC-0045` et le reste tant que cette story n'est
+  pas livree et reauditee.
+- **Ce que cette story exige, dans les mots de `nadia-prof`, repris a l'identique plutot que
+  traduits en une propriete plus commode a tester** : le mot cible doit etre designe autrement que
+  par les guillemets francais seuls, et jamais par la seule couleur. Le motif exact : la consigne
+  porte une **tache constante** sur toute la partie, lisible une seule fois ; le marquage doit
+  porter la **designation**, qui **change a chaque manche** - sans lui, c'est l'adulte accompagnant
+  qui doit pointer le mot dix fois par partie, ce que rien dans le produit ne lui demande de faire.
+- **Decision de forme, prise ici et pas ailleurs : le renfort visuel entre en service sur
+  `cp-nature-mot` seul, ce sprint. Il n'est pas etendu a `cm1-synonymes` ni `cm1-antonymes`.**
+  `ines-design` a mesure, par injection sur l'application servie (branche `hs-ines-nat5`, commit
+  `e5a8360`, non fusionnee) que la regle generique proposee (`.mot-designe`) :
+  - ne coute rien de mesurable a la reference du produit (744 x 551, `DEC-0040`) ni a 720 px et
+    au-dela, sur les trois paquets qui partagent la convention du mot marque entre guillemets
+    (`cm1-synonymes`, `cm1-antonymes`, `cp-nature-mot`) ;
+  - **cree un residu neuf, mesure, sur `cm1-antonymes` a 640 px** (dans la bande 576-719 px deja
+    fragile, `DEC-0043`/`S19-6a` ci-dessus) : un item qui n'etait pas sous le pli le devient, a
+    cause du seul renfort ;
+  - n'en cree aucun sur `cp-nature-mot` lui-meme a la reference exacte que `nadia-prof` a deja
+    utilisee pour auditer ce jeu (744 x 551, 0 item sur 16 ne bascule).
+
+  `cm1-synonymes` et `cm1-antonymes` sont deja `couvert-valide` : `ines-design` ecrit elle-meme
+  qu'elle ne recommande pas d'y appliquer ce renfort sans repasser devant `nadia-prof` au titre de
+  leur propre Done deja acquis. Etendre le renfort a ces deux jeux ne fait avancer aucune ligne de
+  matrice - `NAT-5` ne porte que sur `cp-nature-mot` - et ferait courir un risque mesure a un Done
+  deja rendu, dans une bande que `S19-6a` (ci-dessus) est justement charge de fermer ce meme sprint.
+  Je ne vois aucune raison produit de payer ce risque maintenant. **Ce que je ne ferme pas** : le
+  jour ou `S19-6a` est livree et mesuree, la question de generaliser le marquage aux jeux qui
+  partagent deja la convention du mot entre guillemets peut se reposer, sur un terrain plus sur -
+  ce n'est pas decide ici, faute d'un motif qui l'exige aujourd'hui.
+- **Criteres d'acceptation, corriges le 2026-08-25 (avis de faisabilite de `theo-archi`,
+  section 1.2) - je prescrivais une forme de contrat qui n'est ni celle d'`ines-design` ni celle
+  que l'architecture retient** : le premier critere ci-dessous disait la donnee "distincte de
+  l'avant et de l'apres de la phrase", une formulation a moi, jamais celle d'`ines-design` (qui
+  route la forme de la donnee sans la prescrire) ; `theo-archi` refuse un triplet a trois champs
+  pour ce motif precis : douze paquets sans mot cible devraient alors porter deux composantes
+  vides, la dette 2 de `CLAUDE.md`. Je reprends son verdict plutot que ma propre formulation :
+  - Etant donne le controleur qui rend l'enonce d'un item de `cp-nature-mot`, quand on lit le
+    contrat qu'il expose au gabarit, alors le mot cible est porte par **une composante facultative
+    unique** sur l'item - jamais deduite par un parcours des guillemets dans le gabarit partage
+    (`fragments/manche.html`), qui reste ignorant de toute convention de contenu (`ADR-0062`).
+  - Etant donne un item qui ne declare aucune part designee (`cm1-synonymes`, `cm1-antonymes`,
+    et tout futur paquet sans mot cible), quand le controleur rend son enonce, alors il produit un
+    segment unique, non designe, sans branche ni valeur vide portee par le contenu - le jeu non
+    marque reste le cas ordinaire, jamais un cas particulier a verifier en plus (`ADR-0062`).
+  - Etant donne le rendu servi d'un item de `cp-nature-mot` qui declare une part designee, quand on
+    lit le HTML de l'enonce, alors le mot cible est entoure d'un element distinct du reste de la
+    phrase, par au moins deux canaux non colores (par exemple une boite de fond, un rembourrage,
+    une taille de police superieure) - jamais par la seule couleur.
+  - Etant donne les seize items de `cp-nature-mot`, quand on les rend a la reference du produit
+    (744 x 551, `DEC-0040`), alors aucun ne bascule a deux lignes du seul fait du renfort (deja
+    mesure a 0 sur 16 par `ines-design`, ce critere en exige la non-regression).
+  - Etant donne `cm1-synonymes` et `cm1-antonymes`, quand on inspecte leur contenu servi et leur
+    rendu, alors aucun des deux ne porte le marquage `.mot-designe` ni aucune donnee de mot cible
+    distincte a l'issue de cette story - la portee du changement de contrat reste `cp-nature-mot`
+    seul, ce sprint.
+  - Ce que cette story ne tranche plus, tranche par `theo-archi` dans `ADR-0062` : la forme exacte
+    du contrat est une composante facultative unique sur `Question`, l'enonce restant la chaine
+    entiere, et le controleur en derive une suite de segments consommee par le gabarit en une
+    boucle unique - ni une deduction sur les guillemets, ni un triplet a trois champs.
+  - Ce que cette story ne tranche pas et route a `ines-design`/`nadia-prof` : la regle CSS exacte
+    du renfort (couleur de fond, rembourrage, taille de police) - la proposition de la section
+    ci-dessus est un candidat, pas une valeur figee.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que la forme retenue satisfasse `NAT-5` pour un enfant de CP, et que la consigne
+    et le marquage ensemble ne soient plus circulaires. Reaudit complet de `bandit-manchot-nature-
+    mot-cp` requis avant tout retour au catalogue (`DEC-0045`, section 2).
+- **Lien decision** : `DEC-0044`, `DEC-0045`, `DEC-0046` (levee de `NAT-9`), `DEC-0047` et son
+  amendement du 2026-08-25 (avis de faisabilite de `theo-archi`, critere de contrat corrige) ;
+  `ADR-0062` (forme du contrat).
+- **Agent pressenti** : `theo-archi` (forme du contrat), un developpeur affecte par `sofia-sm`
+  (implementation), `ines-design` (regle CSS, deja proposee), `nadia-prof` (verdict de forme et
+  reaudit), `sofia-sm` (retour au catalogue dans le meme geste que la fusion du verdict favorable,
+  mecanisme de `DEC-0045`).
+
+### S20-2 - Reperer et corriger la majuscule et la ponctuation dans une phrase donnee (francais CM1)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux dire ce qui manque a une phrase donnee (majuscule
+  ou point) ou reconnaitre qu'elle est deja correcte, afin de reperer les reperes qui font qu'une
+  phrase est bien ecrite, avant de devoir les appliquer moi-meme dans mon propre texte.
+- **Competence programme visee** : francais, CM1 (cycle 3), domaine "Orthographe et grammaire",
+  "Reperer et corriger la majuscule et la ponctuation dans une phrase donnee (majuscule initiale,
+  point final, majuscule au nom propre, point d'interrogation d'une question)"
+  (`squad/programme/francais/competences-cm1.md`, competence detachee et amendee par `DEC-0046`).
+- **Forme retenue, dans les mots de `nadia-prof`** (`squad/conformite/ARBITRAGE-PREALABLE-s19-
+  quatre-proxys-en-attente-depuis-s13.md`, section B.3) : une phrase unique par item, et des
+  propositions courtes qui nomment ce qui manque - "il manque un point", "il manque une
+  majuscule", "il manque une majuscule au prenom", "cette phrase est correcte" - jamais quatre
+  versions completes de la meme phrase (forme ecartee explicitement, charge cognitive trop haute
+  et rangees de propositions trop larges, dette deja rencontree trois fois sur ce produit).
+- **Matiere premiere** : aucune identifiee dans `contenu-repris/` sur ce repere precis - le paquet
+  est integralement neuf.
+- **Criteres d'acceptation**, repris des quatre conditions prealables de `nadia-prof` (`REP-1` a
+  `REP-4`, memes references) :
+  - Etant donne chaque item, quand on lit sa phrase, alors elle est courte, de vocabulaire CM1, et
+    ne contient aucune virgule (`REP-1`).
+  - Etant donne le paquet complet, quand on compte les items dont la phrase ne porte aucune erreur,
+    alors ils representent au moins un quart du paquet, et leur bonne reponse est "cette phrase est
+    correcte" (`REP-2`).
+  - Etant donne un item qui porte une erreur, quand on lit ses quatre reperes possibles (majuscule
+    initiale, point final, majuscule au nom propre, point d'interrogation), alors un seul est en
+    jeu dans cette phrase - jamais une phrase qui cumule deux erreurs a la fois (`REP-3`).
+  - Etant donne le paquet complet, quand on le classe par repere teste, alors les quatre reperes de
+    l'intitule (majuscule initiale, point final, majuscule au nom propre, point d'interrogation)
+    sont chacun representes, aucun ne depassant la moitie des items (`REP-4`).
+  - Etant donne chaque item, quand on lit son indice, alors il aide a reperer le signe attendu sans
+    jamais nommer la reponse.
+  - Etant donne le paquet complet, quand on le compte, alors il porte au moins 16 items.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que chaque phrase soit reellement de niveau CM1, que les quatre propositions par
+    item soient plausibles sans etre ambigues entre elles, et que la composition du paquet tienne
+    reellement `REP-1` a `REP-4` - aucun test de ce depot ne les verifie (meme famille que `DEN-1`
+    a `DEN-8` et `NAT-1` a `NAT-8`).
+- **Identifiants proposes, a confirmer par le developpeur** : `id: bandit-manchot-reperes-cm1`,
+  `paquet: cm1-reperes`.
+- **Lien decision** : `DEC-0046`, section 2 ; `ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-
+  depuis-s13.md`, section B ; `DEC-0047`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`. Aucun arbitrage prealable
+  supplementaire n'est du : `nadia-prof` a deja instruit la forme et les quatre conditions avant
+  tout code.
