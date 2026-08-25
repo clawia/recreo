@@ -1,0 +1,2531 @@
+{
+  "items": {
+    "Elle « range » sa chambre.": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    },
+    "Il « dort » bien fort.": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    },
+    "La « maîtresse » écrit au tableau.": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    },
+    "Le chien « court » dans le jardin.": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    },
+    "Le poisson « nage » dans l'eau.": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    },
+    "Le « chat » dort sur le tapis.": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    },
+    "Le « soleil » brille dans le ciel.": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    },
+    "Les enfants « chantent » une chanson.": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    },
+    "Les petits « oiseaux » chantent dans l'arbre.": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    },
+    "Léa porte un joli « sac ».": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    },
+    "Léa « arrose » les fleurs.": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    },
+    "Papa lave la « voiture ».": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    },
+    "Tom mange un bon « gâteau ».": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    },
+    "Tom « saute » dans la flaque.": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    },
+    "Tu « dessines » un beau soleil.": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    },
+    "« Médor » aboie très fort.": {
+      "aUnIndice": true,
+      "basDuMessage": 512.38,
+      "boites": {
+        ".cabinet": {
+          "bas": 394.38,
+          "bordureHaut": "8px",
+          "haut": 256.38,
+          "hauteur": 138,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-bandeau": {
+          "bas": 296.38,
+          "bordureHaut": "0px",
+          "haut": 264.38,
+          "hauteur": 32,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".cabinet-socle": {
+          "bas": 386.38,
+          "bordureHaut": "0px",
+          "haut": 370.38,
+          "hauteur": 16,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".consigne": {
+          "bas": 193.19,
+          "bordureHaut": "0px",
+          "haut": 163.19,
+          "hauteur": 30,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".ecran-de-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 387.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".enonce": {
+          "bas": 252.38,
+          "bordureHaut": "0px",
+          "haut": 197.19,
+          "hauteur": 55.19,
+          "margeBas": "4px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".entete": {
+          "bas": 85.19,
+          "bordureHaut": "0px",
+          "haut": 0,
+          "hauteur": 85.19,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "16px",
+          "rembourrageHaut": "16px"
+        },
+        ".indice": {
+          "bas": 512.38,
+          "bordureHaut": "2px",
+          "haut": 462.38,
+          "hauteur": 50,
+          "margeBas": "0px",
+          "margeHaut": "4px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".message-jeu": {
+          "bas": 512.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 118,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".propositions": {
+          "bas": 370.38,
+          "bordureHaut": "0px",
+          "haut": 296.38,
+          "hauteur": 74,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".score": {
+          "bas": 155.19,
+          "bordureHaut": "0px",
+          "haut": 125.19,
+          "hauteur": 30,
+          "margeBas": "8px",
+          "margeHaut": "8px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        },
+        ".signal": {
+          "bas": 458.38,
+          "bordureHaut": "0px",
+          "haut": 394.38,
+          "hauteur": 64,
+          "margeBas": "0px",
+          "margeHaut": "0px",
+          "rembourrageBas": "8px",
+          "rembourrageHaut": "8px"
+        },
+        ".verdict": {
+          "bas": 433.38,
+          "bordureHaut": "0px",
+          "haut": 403.38,
+          "hauteur": 30,
+          "margeBas": "16px",
+          "margeHaut": "0px",
+          "rembourrageBas": "0px",
+          "rembourrageHaut": "0px"
+        }
+      },
+      "deficit": -38.62,
+      "defilement": 0,
+      "etapes": [
+        {
+          "aUnIndice": true,
+          "basDuMessage": 512.38,
+          "echecs": 1,
+          "revelee": false
+        }
+      ],
+      "hauteurDocument": 551,
+      "rangees": 1,
+      "revelee": false
+    }
+  },
+  "itemsSousLePli": [],
+  "itemsVus": 16,
+  "jeu": "bandit-manchot-nature-mot-cp",
+  "lecturesADefilementNonNul": 0,
+  "pileDuPireItem": {
+    ".cabinet": {
+      "bas": 394.38,
+      "bordureHaut": "8px",
+      "haut": 256.38,
+      "hauteur": 138,
+      "margeBas": "0px",
+      "margeHaut": "0px",
+      "rembourrageBas": "0px",
+      "rembourrageHaut": "0px"
+    },
+    ".cabinet-bandeau": {
+      "bas": 296.38,
+      "bordureHaut": "0px",
+      "haut": 264.38,
+      "hauteur": 32,
+      "margeBas": "0px",
+      "margeHaut": "0px",
+      "rembourrageBas": "0px",
+      "rembourrageHaut": "0px"
+    },
+    ".cabinet-socle": {
+      "bas": 386.38,
+      "bordureHaut": "0px",
+      "haut": 370.38,
+      "hauteur": 16,
+      "margeBas": "0px",
+      "margeHaut": "0px",
+      "rembourrageBas": "0px",
+      "rembourrageHaut": "0px"
+    },
+    ".consigne": {
+      "bas": 193.19,
+      "bordureHaut": "0px",
+      "haut": 163.19,
+      "hauteur": 30,
+      "margeBas": "4px",
+      "margeHaut": "0px",
+      "rembourrageBas": "0px",
+      "rembourrageHaut": "0px"
+    },
+    ".ecran-de-jeu": {
+      "bas": 512.38,
+      "bordureHaut": "0px",
+      "haut": 125.19,
+      "hauteur": 387.19,
+      "margeBas": "0px",
+      "margeHaut": "0px",
+      "rembourrageBas": "0px",
+      "rembourrageHaut": "0px"
+    },
+    ".enonce": {
+      "bas": 252.38,
+      "bordureHaut": "0px",
+      "haut": 197.19,
+      "hauteur": 55.19,
+      "margeBas": "4px",
+      "margeHaut": "0px",
+      "rembourrageBas": "0px",
+      "rembourrageHaut": "0px"
+    },
+    ".entete": {
+      "bas": 85.19,
+      "bordureHaut": "0px",
+      "haut": 0,
+      "hauteur": 85.19,
+      "margeBas": "0px",
+      "margeHaut": "0px",
+      "rembourrageBas": "16px",
+      "rembourrageHaut": "16px"
+    },
+    ".indice": {
+      "bas": 512.38,
+      "bordureHaut": "2px",
+      "haut": 462.38,
+      "hauteur": 50,
+      "margeBas": "0px",
+      "margeHaut": "4px",
+      "rembourrageBas": "8px",
+      "rembourrageHaut": "8px"
+    },
+    ".message-jeu": {
+      "bas": 512.38,
+      "bordureHaut": "0px",
+      "haut": 394.38,
+      "hauteur": 118,
+      "margeBas": "0px",
+      "margeHaut": "0px",
+      "rembourrageBas": "0px",
+      "rembourrageHaut": "0px"
+    },
+    ".propositions": {
+      "bas": 370.38,
+      "bordureHaut": "0px",
+      "haut": 296.38,
+      "hauteur": 74,
+      "margeBas": "0px",
+      "margeHaut": "0px",
+      "rembourrageBas": "0px",
+      "rembourrageHaut": "0px"
+    },
+    ".score": {
+      "bas": 155.19,
+      "bordureHaut": "0px",
+      "haut": 125.19,
+      "hauteur": 30,
+      "margeBas": "8px",
+      "margeHaut": "8px",
+      "rembourrageBas": "0px",
+      "rembourrageHaut": "0px"
+    },
+    ".signal": {
+      "bas": 458.38,
+      "bordureHaut": "0px",
+      "haut": 394.38,
+      "hauteur": 64,
+      "margeBas": "0px",
+      "margeHaut": "0px",
+      "rembourrageBas": "8px",
+      "rembourrageHaut": "8px"
+    },
+    ".verdict": {
+      "bas": 433.38,
+      "bordureHaut": "0px",
+      "haut": 403.38,
+      "hauteur": 30,
+      "margeBas": "16px",
+      "margeHaut": "0px",
+      "rembourrageBas": "0px",
+      "rembourrageHaut": "0px"
+    }
+  },
+  "pireDeficit": -38.62,
+  "pireItem": "Léa « arrose » les fleurs.",
+  "plafondInjecte": null,
+  "viewport": [
+    744,
+    551
+  ]
+}
