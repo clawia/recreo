@@ -397,3 +397,97 @@ cette correction) : elle reste lisible telle qu'ecrite, avec cette note a cote.
 - Aucun fichier sous `domain/`, `application/`, `adapters/` ni `bootstrap/` n'est modifie par cette
   decision : les regles executables citees (`ADR-0059`, `ADR-0062`) sont ecrites par `theo-archi`
   dans son propre lot, hors de mon perimetre d'ecriture.
+
+## Amendement du 2026-08-25 (troisieme passage) - l'utilisatrice tranche : la bande sort de la cible ; le defaut n'est pas ferme ; `DEC-0043` est atteinte au-dela de la bande
+
+`theo-archi` a chiffre la piste verticale que j'avais rouverte (section precedente) et la troisieme
+lecture que j'avais nommee sans la choisir - reviser la bande visee. Les trois pistes sont
+desormais chiffrees, et aucune ne ferme `SYN-16` : la largeur ferme 33 largeurs sur 144 au pire cas
+reel (647 px), la verticale ferme au mieux 114 items sur 134 sans toucher aux dix items a trois
+rangees, la revision de la bande est la seule qui ferme tout - a un cout de perimetre, pas de code.
+L'utilisatrice tranche cette troisieme option, verbatim : *"amende `DEC-0040`, la bande passe hors
+cible"*.
+
+### 1. Je reverse un arbitrage qui est le mien
+
+J'avais tranche a la cloture de s18 (`DEC-0041`, amendement du 2026-08-23) que la bande 576-719 px
+*"designe un appareil reel, pas un vide de reference"* - une fenetre non maximisee ou partagee sur
+un ordinateur de la cible. C'est cet arbitrage qui avait fait entrer `SYN-16` au perimetre. **Ce
+n'est pas une precision que j'apporte aujourd'hui, c'est le renversement complet de cet arbitrage**,
+et je l'ecris en ces termes pour que personne ne le lise comme une nuance.
+
+**Ce que cela retire du parc vise** : une fenetre de navigateur non maximisee ou partagee en deux,
+sur ordinateur, sort de la cible - y compris sur l'ecran le plus etroit identifie par `ines-design`
+(1280 px), dont la moitie tombait au centre de la bande retiree. Seule une fenetre maximisee reste
+couverte sur cet axe. La tablette n'est pas concernee, son viewport ne variant pas avec une fenetre.
+La reference unique du produit (744 x 551) ne bouge pas : c'est un viewport secondaire qui sort de
+la cible, pas la reference elle-meme.
+
+Trace complete, avec le detail du parc retire : `DEC-0040`, amendement du 2026-08-25 (troisieme).
+
+### 2. Cet arbitrage ne ferme pas le defaut - je ne clos rien a la reference
+
+`theo-archi` a mesure qu'a la reference meme du produit (744 x 551, ou le Done est prononce),
+**95 items sur 296 (32 %) ont deja leur bloc de message sous le pli**, sur dix jeux dont
+`cm1-synonymes` et `cm1-antonymes`, tous deux `couvert-valide`. Sa conclusion, que je retiens mot
+pour mot : *"`SYN-16` a ete instruit trois sprints comme un defaut de la bande. Il ne l'est pas : la
+bande aggrave un ecart qui existe a la reference."*
+
+**Sortir la bande de la cible retire donc la part aggravee d'un defaut plus large, pas le defaut
+lui-meme.** Je ne le referme pas et je ne le minimise pas en refermant la bande. `theo-archi` refuse
+lui-meme de qualifier ces 95 items - *"combien de ces 95 relevent d'une reserve deja acceptee est la
+lecture de `nadia-prof`"* - et je le route a elle telle quelle, sans la devancer et sans en tirer un
+statut de matrice. **Aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge par ce
+constat ; aucun Done pedagogique n'est prononce ou remis en cause ici.**
+
+### 3. `DEC-0043` est atteinte au-dela de la bande
+
+`theo-archi` etablit que la scission de `S19-6` en `S19-6a` (largeur) et `S19-6b` (hauteur), au
+motif de *"mecanismes differents"* (`DEC-0043`, section 3), repose sur un motif faux : mesure a
+l'appui, c'est **le meme ecran, la meme cause (le bloc de message sous le pli), la meme
+population** - dix jeux, et non deux. Ce fait est independant de la sortie de la bande : il aurait
+ete vrai meme si la bande etait restee ciblee. Note versee a `DEC-0043` plutot que reecriture de sa
+section 3, qui reste la trace exacte du raisonnement tenu a sa date.
+
+**Consequence pratique, nommee sans instruire de story** : `theo-archi` retire par ailleurs sa
+propre declaration d'infaisabilite de `S19-6b` (elle reposait sur une dependance a `S19-6a` qui
+n'existe plus) et mesure que "Le bon petit mot" est, dans la bande desormais retiree, le cas le
+moins cher des dix jeux touches. Ce fait est verse au dossier ; il ne rouvre pas `S19-6b` en story,
+la bande qui la motivait n'etant plus visee.
+
+### 4. Consequence sur le backlog de s20
+
+`S19-6a` et `S19-6b` sont **retirees** du backlog affecte (`docs/backlog/backlog.md`) : le viewport
+qu'elles visaient n'est plus dans la cible. Le perimetre de developpement de s20 se resserre donc a
+trois chantiers : `S20-1`, `S20-2`, et la conception de la saisie sans capacite de developpement -
+tous trois inchanges par cet amendement. **Je ne rouvre pas le perimetre de s20 au-dela de ce que
+cet arbitrage impose** : `sofia-sm` a gele le planning, `S19-6a` y etait deja suspendue avant cet
+arbitrage, son retrait ne libere aucune capacite a reaffecter ce sprint.
+
+### Ce que je route
+
+- **`nadia-prof`** : lire les 95 items sous le pli a la reference (dix jeux, dont deux
+  `couvert-valide`) et dire combien relevent d'une reserve deja acceptee et combien n'ont jamais ete
+  regardes. Aucun delai impose, aucune lecture presumee de ma part.
+- **`sofia-sm`** : verser cet amendement au planning de s20 ; retirer `S19-6a`/`S19-6b` du suivi de
+  sprint sans reaffecter leur capacite ailleurs sans instruction nouvelle.
+- **`ines-design`**, **`theo-archi`** : rien de nouveau ici au-dela de leurs mandats deja poses par
+  les sections precedentes de ce document.
+
+### Ce que je ne fais pas
+
+- Je ne prononce aucun statut de couverture et ne juge aucun des 95 items trouves a la reference.
+- Je ne rouvre pas le perimetre de developpement de s20 au-dela du retrait de `S19-6a`/`S19-6b`.
+- Je ne touche pas la reference 744 x 551 px.
+
+### Impact de cet amendement
+
+- `squad/decisions/produit/DEC-0047-...md` (ce fichier) : cette section ajoutee.
+- `squad/decisions/produit/DEC-0040-...md` : amendement du 2026-08-25 (troisieme) ajoute -
+  reversion de l'arbitrage de bande, detail du parc retire, routage a `nadia-prof`.
+- `squad/decisions/produit/DEC-0041-...md` : note datee ajoutee, renvoyant a `DEC-0040`.
+- `squad/decisions/produit/DEC-0043-...md` : note datee ajoutee, motif de scission etabli faux.
+- `docs/backlog/backlog.md` : `S19-6a` et `S19-6b` retirees ; paragraphe d'introduction de la
+  section "Sprint 20" mis a jour (trois chantiers au lieu de quatre plus une extension retiree).
+- Aucun fichier sous `domain/`, `application/`, `adapters/` ni `bootstrap/` n'est modifie ; aucune
+  ligne de `squad/programme/MATRICE-couverture.md` ne bouge.

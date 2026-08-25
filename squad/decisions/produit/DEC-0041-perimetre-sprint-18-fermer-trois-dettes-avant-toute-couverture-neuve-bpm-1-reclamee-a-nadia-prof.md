@@ -555,3 +555,11 @@ correctif sur cette bande : la largeur de rangee necessaire aux seize items de `
 marge de police que je pose en reponse, et la separation d'avec `BPM-8` (dont la mesure ne dit
 rien - defaut different, non mesure) sont traites dans `DEC-0043`, qui ne reecrit rien de cette
 section : l'observation du 2026-08-23 ci-dessus reste exacte pour ce qu'elle savait alors.
+
+**Note du 2026-08-25 (`camille-po`) - arbitrage reverse par l'utilisatrice.** L'amendement
+ci-dessus concluait que la bande 576-719 px *"designe un appareil reel"*. L'utilisatrice tranche
+l'inverse le 2026-08-25 (*"amende `DEC-0040`, la bande passe hors cible"*) : cette bande sort
+explicitement de la cible du produit. L'amendement ci-dessus reste lisible tel qu'ecrit, exact au
+moment ou il a ete rendu ; le renversement et sa consequence sont traces dans `DEC-0040`,
+amendement du 2026-08-25 (troisieme), et dans `DEC-0047`, amendement du meme jour (troisieme
+passage).

@@ -605,6 +605,16 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | bandit-manchot-synonymes-cm1, bandit-manchot-antonymes-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | - | - | non couvert |
 
+**Note du 2026-08-25 (s20, `camille-po`) - question ouverte, routee a `nadia-prof`, statut
+inchange.** `theo-archi` a mesure qu'a la reference du produit (744 x 551, `DEC-0040`), `bandit-
+manchot-synonymes-cm1` porte 7 items sur 16 avec leur bloc de message sous le pli et `bandit-
+manchot-antonymes-cm1` en porte 1 sur 17 (`squad/sprints/s20-mot-cible-designe-et-conception-de-la-
+saisie/mesure-budget-vertical.md`, section 6, population totale de dix jeux). Il refuse lui-meme de
+les qualifier : *"combien de ces items relevent d'une reserve deja acceptee est la lecture de
+`nadia-prof`"*. Je ne juge aucun de ces items et je ne fais bouger ni ce statut ni aucun autre sur
+la foi de cette mesure - detail complet et routage : `DEC-0047`, amendement du 2026-08-25
+(troisieme passage).
+
 **Note du 2026-08-25 (hors sprint, `camille-po`) - competence detachee, acceptee par
 l'utilisatrice, amendee au referentiel** (`DEC-0046`, section 2, sur proposition de `nadia-prof`,
 `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md`, amendement du

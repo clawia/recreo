@@ -246,3 +246,25 @@ que je poserai au moment ou `S19-6a` sera affectee, pas ici sur la foi d'un seul
 - Aucun fichier de conformite n'est modifie. `squad/programme/MATRICE-couverture.md` est modifiee
   par ailleurs, dans le meme geste, pour la ligne "Accorder le verbe avec son sujet" - reference
   croisee, pas une consequence de ce fichier.
+
+## Note du 2026-08-25 (`camille-po`) - la scission de `S19-6` en deux mecanismes est etablie fausse, et la bande visee sort de la cible
+
+`theo-archi` a mesure, en chiffrant la piste verticale routee par `DEC-0047` (branche `s20-theo`,
+commit `3cf891b`), que la distinction posee ici entre `SYN-16` (largeur) et `BPM-8` (hauteur de
+contenu) est **fausse sur la cause** : les deux sont le meme ecran, la meme cause (le bloc de
+message qui passe sous le pli), et la meme population - dix jeux, pas deux. Je le verse ici sans
+reecrire la section 3 ci-dessus, dont la scission en deux stories reste la trace correcte du
+raisonnement tenu a la date ou il a ete ecrit.
+
+**Independamment de ce fait, l'utilisatrice sort la bande 576-719 px de la cible du produit le
+2026-08-25** (*"amende `DEC-0040`, la bande passe hors cible"*), reversant l'arbitrage de `DEC-0041`
+qui l'y avait fait entrer. `S19-6a` et `S19-6b` sont retirees du backlog affecte
+(`docs/backlog/backlog.md`). Detail complet, et le fait plus large que la mesure de `theo-archi`
+decouvre a la reference du produit (95 items sur 296 sous le pli, dix jeux dont deux
+`couvert-valide`, route a `nadia-prof`) : `DEC-0040`, amendement du 2026-08-25 (troisieme) ;
+`DEC-0047`, amendement du meme jour (troisieme passage).
+
+### Impact de cette note
+
+- `squad/decisions/produit/DEC-0043-...md` (ce fichier) : cette section ajoutee.
+- Aucun fichier de conformite, aucune ligne de matrice, aucun Done pedagogique n'est modifie ici.

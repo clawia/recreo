@@ -5544,10 +5544,56 @@ ServiTest` - je ne fixe pas cet ordre ici.
 ### S19-6a - Le pli ne mord pas entre 576 et 719 px de viewport, jeux "Les synonymes", "Les antonymes" et "Le bon accord" (SYN-16)
 
 > Scindee de l'ancienne `S19-6` par `DEC-0043` : `BPM-8` (ci-dessous, `S19-6b`) relevait d'un
-> mecanisme different et n'avait recu aucune mesure de faisabilite. Affectee au perimetre de s20 par
-> `DEC-0047`, puis **suspendue le meme jour** : le correctif de largeur ne ferme plus qu'un quart de
-> la bande visee (voir la mise a jour du 2026-08-25 ci-dessous). La famille verticale, ecartee a
-> l'ouverture, est rouverte comme piste principale.
+> mecanisme different et n'avait recu aucune mesure de faisabilite - fait retire depuis, voir
+> plus bas. Affectee au perimetre de s20 par `DEC-0047`, suspendue le meme jour (correctif de
+> largeur insuffisant), et **retiree le 2026-08-25 (troisieme passage)** : l'utilisatrice sort la
+> bande visee de la cible du produit (amendement de `DEC-0040`). Cette story n'a plus d'objet tel
+> qu'ecrite ; ce qu'elle portait de reel se retrouve, plus large, en section "Mise a jour du
+> 2026-08-25 (troisieme passage)" ci-dessous.
+
+**Mise a jour du 2026-08-25 (troisieme passage, `camille-po`) - la bande sort de la cible sur
+arbitrage de l'utilisatrice ; cette story est retiree, un fait plus large est route a `nadia-prof`,
+rien n'est ferme a la reference.**
+
+`theo-archi` a chiffre la troisieme lecture que j'avais nommee sans la choisir (amendement
+precedent) : reviser la bande visee plutot que le produit. L'utilisatrice tranche, verbatim :
+*"amende `DEC-0040`, la bande passe hors cible"*. Trace complet, avec l'arbitrage et sa consequence
+sur `DEC-0040`, `DEC-0041` et `DEC-0043` : amendement du 2026-08-25 a `DEC-0047`, et amendement
+dedie de `DEC-0040`.
+
+**Ce que j'ecris ici, pour cette story precisement.** `S19-6a` visait a fermer un defaut *"entre
+576 et 719 px de viewport"*. Cette largeur de viewport ne designe plus un appareil de la cible :
+elle designait une fenetre non maximisee ou partagee sur un ordinateur, et c'est precisement cette
+lecture que l'utilisatrice retire. **Je reverse ici un arbitrage qui est le mien** : j'avais
+moi-meme tranche a la cloture de s18 (`DEC-0041`, amendement du 2026-08-23) que cette bande
+*"designe un appareil reel, pas un vide de reference"*, motif exact qui avait fait entrer `SYN-16`
+au perimetre puis a s20. Ce n'est pas une precision que j'apporte a cette decision, c'est un
+renversement complet, et je le dis en ces termes pour que personne ne le lise comme une nuance.
+**Ce que cela retire du parc vise** : la cible ordinateur ne couvre plus une fenetre de navigateur
+non maximisee ou partagee en deux, y compris sur un ecran de 1280 px (le plus etroit identifie par
+`ines-design`) - seule une fenetre maximisee, plein ecran, reste couverte sur cet axe. La tablette
+n'est pas concernee : son viewport ne varie pas avec une fenetre, `DEC-0040` continue de la couvrir
+en entier.
+
+**Ce que cet arbitrage ne fait pas, et c'est le point que je ne laisse pas passer.** `theo-archi` a
+mesure qu'a la reference meme du produit (744 x 551, ou le Done est prononce), **95 items sur 296
+(32 %) ont deja leur bloc de message sous le pli**, sur dix jeux dont `cm1-synonymes` et
+`cm1-antonymes`, tous deux `couvert-valide`. Sa conclusion, que je retiens mot pour mot : *"`SYN-16`
+a ete instruit trois sprints comme un defaut de la bande. Il ne l'est pas : la bande aggrave un
+ecart qui existe a la reference."* Sortir la bande de la cible retire donc **la part aggravee**
+d'un defaut plus large, pas le defaut lui-meme. Je ne le referme pas en fermant cette story.
+
+**Je ne juge aucun de ces 95 items et je ne clos rien a la reference sur la foi de cet arbitrage.**
+`theo-archi` refuse lui-meme de les qualifier - *"combien de ces 95 relevent d'une reserve deja
+acceptee est la lecture de `nadia-prof`"* - et je le route a elle telle quelle, sans la devancer.
+Aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge par ce constat ; aucun statut de
+couverture n'est prononce ici.
+
+**`S19-6a` est retiree du backlog affecte.** Ses criteres d'acceptation, ecrits pour une bande qui
+n'est plus visee, ne sont pas repris comme tels par la question de reference : celle-ci porte sur
+dix jeux entiers a la reference, pas sur un plafond de largeur dans une bande, et elle n'est pas
+mienne a instruire en story tant que `nadia-prof` n'a pas dit ce qu'elle en lit. Je ne rouvre pas le
+perimetre de s20 au-dela de cet arbitrage : le planning reste gele par `sofia-sm`.
 
 **Mise a jour du 2026-08-25 (`camille-po`, avis de faisabilite de `theo-archi`, branche `s20-theo`,
 commit `7a398b9`) - le correctif de largeur est suspendu, la famille verticale est rouverte.**
@@ -5653,9 +5699,25 @@ appartient desormais a un autre jeu.
 
 ### S19-6b - L'indice reste coupe par le pli entre 576 et 719 px de viewport, jeu "Le bon petit mot" (BPM-8)
 
-> Scindee de l'ancienne `S19-6` par `DEC-0043`. Mecanisme different de `S19-6a` : un defaut de
-> hauteur de contenu (l'indice, pas les propositions), sans aucune mesure de largeur ou de hauteur
-> necessaire a ce jour. Candidate de s20, non affectee a s19, non prete sans l'etape suivante.
+> Scindee de l'ancienne `S19-6` par `DEC-0043` au motif de "mecanismes differents" - motif que
+> `theo-archi` etablit faux (meme ecran, meme cause, meme population que `S19-6a`, dix jeux et non
+> deux, voir amendement du 2026-08-25 a `DEC-0047`). **Retiree le 2026-08-25 (troisieme passage)** :
+> la bande qui la motivait sort de la cible du produit, sur le meme arbitrage que `S19-6a`.
+
+**Mise a jour du 2026-08-25 (troisieme passage, `camille-po`) - retiree avec `S19-6a`, pour le meme
+motif.** L'utilisatrice sort la bande 576-719 px de la cible (*"amende `DEC-0040`, la bande passe
+hors cible"*), et le defaut que cette story visait - l'indice de "Le bon petit mot" coupe par le
+pli dans cette bande - ne designe plus un appareil de la cible. `theo-archi` avait par ailleurs
+retire, avant cet arbitrage, sa propre declaration d'infaisabilite de `S19-6b` (elle reposait sur
+une dependance a `S19-6a` qui n'existe plus) et mesure que "Le bon petit mot" est le cas le moins
+cher des dix jeux touches, entierement ferme par le plus modeste des budgets verticaux **dans la
+bande** - un fait que je verse au dossier plutot que de le perdre, meme si la bande qui le rendait
+pertinent sort de la cible.
+
+**Le meme residu que pour `S19-6a` existe a la reference, plus etroit ici** : `theo-archi` mesure
+seulement 2 items sur 296 de "Le bon petit mot" sous le pli a 744 x 551 (deficit 2,19 px) - le plus
+faible des dix jeux touches. Meme regle que pour `S19-6a` : je ne le qualifie pas, je le verse a la
+lecture de `nadia-prof` avec le reste de la population de dix jeux, je ne clos rien ici.
 - **Besoin** : en tant qu'eleve de CM1 qui joue sur un ordinateur dont la fenetre du navigateur
   n'occupe pas tout l'ecran, je veux voir entierement l'indice du jeu "Le bon petit mot", afin de
   jouer dans les memes conditions que sur un ordinateur en plein ecran.
@@ -5691,18 +5753,24 @@ appartient desormais a un autre jeu.
   correctif de `S19-6a` (largeur ou vertical) est effectivement fusionne, sequencement a
   et l'affectation d'une story deviennent candidates d'un sprint suivant, pas necessairement s20.
 
-## Sprint 20 - `NAT-5` (mot cible designe), une competence neuve en contenu seul, extension du correctif de bande basse, conception de la saisie reprise
+## Sprint 20 - `NAT-5` (mot cible designe), une competence neuve en contenu seul, conception de la saisie reprise
 
 Perimetre fixe par `DEC-0047-perimetre-sprint-20-nat-5-en-trois-gestes-scope-limite-a-cp-nature-
-mot-reperes-cm1-ouverte-syn-16-etendue.md`, complete par son amendement du 2026-08-25 (les trois
-arbitrages de l'utilisatrice sur la saisie, le clavier et l'adulte accompagnant). Quatre chantiers :
-le renfort du mot cible (`NAT-5`, `S20-1`) ; une competence neuve en contenu seul (`S20-2`) ;
-l'extension du correctif de bande basse a trois jeux nommes (`S19-6a`, ci-dessus, non reecrite
-ici) ; et la reprise de la conception de la mecanique de saisie, **sans capacite de developpement
-affectee**, sur le meme mode que le Lot C de `DEC-0042` a s19 - nommee et routee dans l'amendement
-du 2026-08-25 a `DEC-0047`, jamais recopiee ici sous forme de story a criteres d'acceptation : la
-conception n'en a jamais pris la forme sur ce produit. `S19-6b`, ci-dessus, reste une demande
-d'avis de faisabilite routee, pas une cinquieme story affectee.
+mot-reperes-cm1-ouverte-syn-16-etendue.md`, complete par ses deux amendements du 2026-08-25 (les
+trois arbitrages de l'utilisatrice sur la saisie, le clavier et l'adulte accompagnant ; puis
+l'amendement de `DEC-0040` qui sort la bande basse de la cible). Trois chantiers restent affectes :
+le renfort du mot cible (`NAT-5`, `S20-1`) ; une competence neuve en contenu seul (`S20-2`) ; et la
+reprise de la conception de la mecanique de saisie, **sans capacite de developpement affectee**, sur
+le meme mode que le Lot C de `DEC-0042` a s19 - nommee et routee dans l'amendement du 2026-08-25 a
+`DEC-0047`, jamais recopiee ici sous forme de story a criteres d'acceptation.
+
+`S19-6a` et `S19-6b`, ci-dessus, sont **retirees** : la bande 576-719 px qu'elles visaient sort de
+la cible du produit sur arbitrage de l'utilisatrice (*"amende `DEC-0040`, la bande passe hors
+cible"*), reversant l'arbitrage que j'avais moi-meme rendu a s18. Ce retrait ne ferme pas un defaut
+plus large que `theo-archi` a trouve **a la reference meme du produit** (95 items sur 296 sous le
+pli, dix jeux dont deux `couvert-valide`) : ce fait est route a `nadia-prof`, non instruit en story
+ce sprint, et le planning reste gele par `sofia-sm`. Detail complet : amendement du 2026-08-25
+(troisieme passage) a `DEC-0047`.
 
 ### S20-1 - Le mot cible de "Nom ou verbe ?" est designe autrement que par les guillemets seuls (`NAT-5`)
 
