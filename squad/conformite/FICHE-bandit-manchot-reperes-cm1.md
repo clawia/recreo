@@ -1,18 +1,33 @@
 # Fiche de conformite - bandit-manchot-reperes-cm1
 
 - **Mecanique** : bandit manchot (mecanique generique, partagee avec les autres jeux du catalogue).
-- **Contenu(s)** : `adapters/adapter-content/src/main/resources/contenu/cm1-reperes.yaml`, a
-  livrer, `type: question`, story `S20-2` (`docs/backlog/backlog.md`). Aucune matiere premiere
-  identifiee dans `contenu-repris/` sur ce repere precis : le paquet est integralement neuf.
-- **Statut global** : **story ecrite, aucun increment livre.** Rien n'a encore ete developpe ni
-  joue par `nadia-prof` sur ce jeu : le Done pedagogique reste entier.
+- **Contenu(s)** : `adapters/adapter-content/src/main/resources/contenu/cm1-reperes.yaml`,
+  livre, `type: question`, 16 items, story `S20-2` (`docs/backlog/backlog.md`). Aucune matiere
+  premiere identifiee dans `contenu-repris/` sur ce repere precis : le paquet est integralement
+  neuf.
+- **Statut global** : **increment livre, Done pedagogique non encore prononce.** Rien n'a encore
+  ete joue par `nadia-prof` sur ce jeu : le Done pedagogique reste entier. Entree de catalogue
+  `bandit-manchot-reperes-cm1` deposee dans le meme commit (titre "Majuscule ou point ?", consigne
+  "Que manque-t-il à cette phrase ?"), suivant la convention deja tenue par les autres paquets de
+  ce catalogue plutot que le mecanisme de retrait/retour de `DEC-0045` (ce mecanisme a servi a
+  restaurer une entree retiree pour une reserve bloquante ; ce paquet-ci n'en porte aucune a ce
+  stade, seul le Done pedagogique reste a prononcer).
+- **Repartition des seize items par repere, pour l'audit de `nadia-prof` (documentee, non
+  recalculee par un test - voir la section suivante)** : items 1-3 majuscule initiale, 4-6 point
+  final, 7-9 majuscule au nom propre, 10-12 point d'interrogation, 13-16 aucune erreur. Les quatre
+  propositions sont fixes et identiques sur chaque item (ordre du paquet) : "Il manque une
+  majuscule.", "Il manque un point.", "Il manque une majuscule au prénom.", "Cette phrase est
+  correcte." Le libelle "Il manque un point." sert a la fois au repere point final et au repere
+  point d'interrogation : la forme retenue par `nadia-prof` (section B.3) ne porte pas de libelle
+  distinct pour ce quatrieme repere, c'est la structure de la phrase (interrogative ou non) qui le
+  porte.
 - **Arbitrage prealable de `nadia-prof` deja rendu, avant tout code** (`squad/conformite/
   ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md`, section B) : forme retenue et
   quatre conditions de composition du paquet, reprises ci-dessous. Aucun arbitrage supplementaire
   n'est du avant le premier increment.
 - **Arbitrage prealable de mecanique en vigueur pour tout le catalogue** (`squad/conformite/
   FICHE-bandit-manchot-additions-cp.md`, conditions M1 a M13).
-- **Derniere mise a jour** : 2026-08-25 (`camille-po`, ouverture de la fiche, `DEC-0047`).
+- **Derniere mise a jour** : 2026-08-25 (`lea-dev`, depot du paquet `S20-2`).
 
 ## Competences visees
 

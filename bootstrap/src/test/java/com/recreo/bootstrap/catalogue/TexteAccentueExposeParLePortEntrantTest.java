@@ -104,6 +104,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-accords-groupe-nominal-cm1",
             // S19-3 : entree neuve, accord du verbe avec un sujet eloigne, compose ou nominal.
             "bandit-manchot-accord-sujet-verbe-cm1",
+            // S20-2 (DEC-0046) : entree neuve, reperes de majuscule et de ponctuation.
+            "bandit-manchot-reperes-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -128,6 +130,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Le bon accord",
             // S19-3 : titre neuf.
             "L'accord du verbe",
+            // S20-2 : titre neuf.
+            "Majuscule ou point ?",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -150,6 +154,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Quel mot complète la phrase ?",
             // S19-3 : consigne neuve.
             "Quelle est la bonne forme du verbe ?",
+            // S20-2 : consigne neuve.
+            "Que manque-t-il à cette phrase ?",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
             // valeur unique pour les jeux du catalogue reel, compte sur catalogue.yaml, pas recopie.
             "bandit-manchot",
@@ -185,7 +191,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S19-2 : competence neuve.
             "Accorder en genre et en nombre dans le groupe nominal (déterminant/nom/adjectif)",
             // S19-3 : competence neuve.
-            "Accorder le verbe avec son sujet (cas fréquents, temps simples : présent, futur, imparfait)");
+            "Accorder le verbe avec son sujet (cas fréquents, temps simples : présent, futur, imparfait)",
+            // S20-2 (DEC-0046) : competence neuve.
+            "Repérer et corriger la majuscule et la ponctuation dans une phrase donnée (majuscule"
+                    + " initiale, point final, majuscule au nom propre, point d'interrogation d'une"
+                    + " question)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

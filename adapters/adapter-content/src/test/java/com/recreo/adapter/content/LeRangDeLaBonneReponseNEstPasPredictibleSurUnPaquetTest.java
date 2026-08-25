@@ -329,7 +329,14 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             "16 items sur 16 portent un seul distracteur, donc deux propositions - hors du domaine"
                     + " au meme titre que cm1-homophones - et les deux propositions sont toujours les"
                     + " memes deux mots (\"nom\", \"verbe\"), jamais une valeur numerique. Mesure du"
-                    + " 2026-08-24 sur le paquet servi");
+                    + " 2026-08-24 sur le paquet servi",
+            "cm1-reperes",
+            "16 items sur 16 portent trois distracteurs, donc quatre propositions : le rang d'une"
+                    + " bonne reponse parmi trois n'y est pas defini. Les quatre propositions sont"
+                    + " en outre des libelles fixes (\"Il manque une majuscule.\", \"Il manque un"
+                    + " point.\", \"Il manque une majuscule au prenom.\", \"Cette phrase est"
+                    + " correcte.\"), jamais une valeur numerique. Mesure du 2026-08-25 sur le"
+                    + " paquet servi");
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
