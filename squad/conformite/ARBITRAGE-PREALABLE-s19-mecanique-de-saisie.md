@@ -446,3 +446,144 @@ correction dans mon autre arbitrage de ce sprint : ni les figures planes ni le d
 n'appellent une mecanique neuve, ce sont des formes d'item. Mes deux routages - visuel et audio -
 portent sur ce que la forme d'item doit pouvoir rendre, jamais sur le geste de l'enfant, et sa
 lecture est la bonne.
+
+---
+
+## Amendement du 2026-08-25 (hors sprint) - "la saisie se fait uniquement par le clavier, aucun trace envisage"
+
+- **Auteur** : nadia-prof. **Fait neuf** : l'utilisatrice arbitre que *"la saisie se fait uniquement
+  par le clavier, aucun trace envisage"* et qu'*"un enfant de CP fait toujours le premier essai
+  accompagne"*. Le second point repond a la **deuxieme** question que la section 8 lui routait.
+- **Rien du document ci-dessus n'est efface ni reecrit.** Cet amendement ajoute, il ne remplace pas.
+- **Mode** : aucune mesure, aucun jeu - la mecanique de saisie n'existe toujours pas. Je relis mes
+  propres conditions contre deux phrases neuves, c'est tout ce que ce bloc est.
+
+### 0. Une inexactitude de decompte, corrigee avant d'aller plus loin
+
+Ce document est cite ailleurs comme portant *"onze conditions `SAI-1` a `SAI-12`"*. Les deux moities
+de cette phrase ne peuvent pas etre vraies ensemble : **il y a douze conditions numerotees,
+`SAI-1` a `SAI-12`**, `SAI-12` ayant ete ajoutee par l'amendement du 2026-08-24 (section 4 de cet
+amendement), et `SAI-9` comptant de plus deux clauses distinctes, `SAI-9a` et `SAI-9b`. Onze etait
+le compte avant cet amendement-la. Je le corrige ici plutot qu'ailleurs, parce que c'est mon fichier
+qui fait foi.
+
+### 1. "Uniquement par le clavier" : aucune des douze conditions ne bouge, et je dis pourquoi plutot que de me taire
+
+**Ce document etait deja ecrit pour un clavier, de bout en bout, et je l'ai verifie mot par mot
+plutot que de m'en souvenir** : le mot *trace* n'y figure nulle part, ni *stylet*, ni *manuscrit*,
+ni *cursive*. `SEUIL-4` exige deja que le champ soit *"atteignable et validable au clavier seul"*, et
+la question de la section 8 oppose deja *"un clavier physique francais"* a *"un clavier virtuel de
+tablette"* - donc deux claviers, jamais un geste trace.
+
+**Consequence : `SAI-1` a `SAI-12`, `R1` a `R5` et `SEUIL-1` a `SEUIL-5` sont inchanges par la
+moitie "clavier" de cet arbitrage.** Je l'ecris explicitement pour qu'on ne lise pas ce silence
+comme un oubli : l'arbitrage confirme une hypothese que j'avais deja prise, il n'en corrige aucune.
+
+**Un seul changement de statut, sans changement de texte.** `SEUIL-4` cesse d'etre une precaution
+d'accessibilite et devient la **definition** de la mecanique : si le clavier est le seul geste, un
+champ qu'on n'atteint pas au clavier n'est pas une mecanique degradee, c'est une mecanique
+inutilisable. Le libelle est bon tel quel, sa portee est plus lourde.
+
+**Un renfort de motif sur `SAI-3`, sans changement de texte non plus.** Sur un clavier virtuel, le
+systeme met tres souvent une capitale a la premiere lettre sans qu'on la demande. `SAI-3` disait
+deja que la casse ne decide jamais du verdict, pour un motif d'enfant (la touche de verrouillage
+oubliee, l'ecriture en capitales du CP) ; s'y ajoute maintenant un motif d'appareil, ou l'enfant
+n'est meme pas l'auteur de la capitale. La condition ne change pas ; elle a un motif de plus, et il
+est plus fort que le premier.
+
+### 2. Ce que cet arbitrage ne tranche pas, et que je n'ai pas suppose
+
+La question de la section 8 - **une lettre accentuee est-elle accessible d'un geste raisonnable sur
+la tablette visee ?** - **reste entierement ouverte.** L'arbitrage dit *clavier*, il ne dit pas
+*lequel*, et `DEC-0040` vise l'ordinateur **et** la tablette. Sur un clavier physique francais une
+lettre accentuee courante est une touche ; sur un clavier virtuel elle peut couter un appui long.
+Tant que ce point n'est pas repondu, **`SAI-1` n'est pas un confort mais la condition d'existence de
+la saisie alphabetique**, exactement comme je l'ecrivais le 2026-08-24.
+
+**J'elargis cette question d'un point que "uniquement par le clavier" fait apparaitre**, et je
+l'ecris comme un elargissement de la question ouverte, pas comme une condition neuve : un clavier
+virtuel **corrige et complete souvent tout seul** ce que l'enfant tape. Une correction automatique
+peut rendre juste une reponse fausse - l'enfant est credite d'une orthographe qu'il n'a pas produite
+- et peut aussi defaire une reponse juste. Cela ne se voit sur aucune capture et aucun test du
+depot ne l'atteindra. Sur un paquet en mode strict au titre de `SAI-2` - les homophones, qui sont
+`couvert-valide` - ce serait franchement grave. **Je ne peux pas le mesurer** : aucun agent de cette
+squad ne dispose de l'appareil. La question est donc double et va a l'utilisatrice avec la premiere :
+sur la tablette visee, **que coute un accent, et le clavier corrige-t-il tout seul ?**
+
+### 3. Ce que "le premier essai accompagne" fait a `SAI-11`, et c'est la seule condition que cet arbitrage deplace
+
+**`SAI-11` est la condition touchee**, plus que `SAI-1` ou `SAI-3`, parce qu'elle est la seule dont
+le libelle contient une clause suspensive qui vient d'etre partiellement remplie. Elle dit :
+
+> *"Au CP, la saisie est autorisee pour une reponse numerique d'au plus deux chiffres, et refusee
+> pour toute reponse alphabetique, tant qu'aucun arbitrage de l'utilisatrice n'a repondu a la
+> question de la section 8."*
+
+Un arbitrage vient d'y repondre. **Je verifie donc d'abord si ma propre barre est atteinte, avant de
+dire quoi que ce soit d'autre** - c'est exactement le cas ou une porte pedagogique se transforme en
+caprice si elle se derobe.
+
+**Ce que j'avais ecrit en section 8** : *"un enfant accompagne peut taper un mot, un enfant seul
+devant une tablette non"*. Cette phrase pose l'accompagnement comme un **etat durable de l'usage**.
+Ce que l'arbitrage accorde est **borne au premier essai**. Ce n'est pas la meme chose, et ce n'est
+pas moi qui retrecis la reponse : c'est la reponse qui est plus etroite que la question. Je le dis
+franchement dans les deux sens - **ma barre n'est pas atteinte, et elle ne l'est pas parce que la
+reponse ne porte pas dessus, non parce que je l'aurais relevee.**
+
+**Sur le fond, les deux motifs du refus survivent intacts a la borne, et c'est cela qui decide.**
+Mon refus de la saisie alphabetique au CP (section 6) tenait a deux choses :
+
+- **la charge cognitive** : chercher les lettres coute une minute, et pendant ce temps l'enfant perd
+  le mot qu'il voulait ecrire. Un adulte assis a cote ne rend pas les touches plus faciles a
+  trouver ; et surtout **cette difficulte revient a chaque item**, dix fois par partie, alors que
+  l'accompagnement, lui, ne revient pas ;
+- **le motif social** : un tel exercice mesure la familiarite de la maison avec un clavier, pas ce
+  que l'enfant sait. Un adulte present au premier essai n'equipe pas la maison.
+
+**`SAI-11` tient donc**, mais **son libelle doit changer**, sinon il expire tout seul sur une
+question qui vient de recevoir une reponse partielle et quelqu'un lira l'expiration comme une levee.
+
+- **`SAI-11`, reformulee au 2026-08-25 (le libelle d'origine reste ci-dessus, il n'est pas efface)** -
+  *Au CP, la saisie est autorisee pour une reponse **numerique d'au plus deux chiffres**. Elle est
+  refusee pour toute reponse alphabetique, pour deux motifs qui ne dependent d'aucune question
+  ouverte : la recherche des lettres est une charge hors sujet qui se represente a chaque item, et
+  le resultat mesure l'equipement de la maison. **Cette clause n'expire plus d'elle-meme.***
+- **Ce qui la leverait, nomme pour qu'elle soit fermable et non eternelle** : que l'accompagnement
+  d'un adulte soit **durable sur toute une session de CP** et non borne au premier essai. Si
+  l'utilisatrice le dit un jour, je leve `SAI-11` sur l'alphabetique le jour meme, sans rien y
+  ajouter. Je m'y engage ici pour que ce ne soit pas a rediscuter.
+
+**Une moitie de ma deuxieme question reste par ailleurs sans reponse** : j'avais demande *"seul, avec
+un adulte a cote, **sur quel appareil** ?"*. L'arbitrage repond sur l'adulte, pas sur l'appareil, et
+je ne le suppose pas.
+
+### 4. Une consequence hors de la mecanique de saisie, que je route sans la trancher
+
+*"Aucun trace envisage"* depasse la saisie et touche la couverture du programme. **Je ne classe
+aucune ligne** - c'est `camille-po` qui le fait. Mon avis, qu'elle m'a demande, est ecrit dans
+`ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md`, amendement du 2026-08-25,
+section A, a cote de mes conditions `FIG-1` a `FIG-4` sur les figures planes du CP, parce que c'est
+la que la geometrie de ce depot est deja instruite.
+
+Deux points brefs qui restent ici parce qu'ils portent sur la saisie :
+
+- **`R1`** - *"Copier un mot, une phrase courte sans erreur, en respectant l'espacement"* (CP). Je
+  l'avais refusee a la saisie pour un motif qui lui est propre. *"Aucun trace envisage"* la ferme
+  une seconde fois et par une autre voie : la copie au CP est un geste d'ecriture manuscrite, et ce
+  produit ne l'aura pas. **Le refus ne change pas, sa cause est desormais double.**
+- **La ligne CP *"Ecrire de maniere autonome un mot simple en respectant les correspondances
+  grapheme/phoneme connues"*** demande saisie **et** audio ensemble (section 6). `SAI-11` restant
+  fermee sur l'alphabetique au CP, elle reste bloquee par un troisieme verrou en plus des deux que
+  j'avais nommes. Rien de neuf, mais le decompte doit etre exact pour `camille-po`.
+
+### 5. Sur quelles proprietes je reste la seule garde, apres cet amendement
+
+Inchange par rapport a la section 9 ci-dessus, avec deux ajouts que cet arbitrage cree :
+
+- **Le comportement reel d'un clavier virtuel** - cout d'un accent, correction automatique
+  silencieuse. Aucun test de ce depot ne l'atteindra, aucune capture ne le montrera, et un bareme
+  fausse par l'appareil ressemble trait pour trait a un bareme faux : une CI verte, et l'enfant seul
+  a payer.
+- **La presence effective de l'adulte au premier essai.** Le produit en depend desormais et ne la
+  demande a personne. Je le route a `camille-po` comme un point produit (voir aussi
+  `FICHE-bandit-manchot-nature-mot-cp.md`, amendement du 2026-08-25, section 6).
