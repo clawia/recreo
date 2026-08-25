@@ -346,3 +346,50 @@ Par ordre de cout, le plus cher d'abord.
 - **L'auteur du contenu de `S20-2`** : l'entree due dans la table d'exclusion de
   `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`, et la marge etroite de l'identite
   d'ecran quand les quatre propositions sont partagees (section 2.1).
+
+---
+
+## Amendement du 2026-08-25, meme jour - `camille-po` retire le correctif de largeur, je chiffre la piste verticale, et trois de mes verdicts tombent
+
+`camille-po` ne maintient pas le correctif de largeur, sur mon propre recalcul (33 largeurs sur 144,
+residu de 111 px) et sur un motif que le chiffre seul ne portait pas : un plancher a 687 px met hors
+de portee l'ecran de 1280 px partage en deux, soit environ 640 px, **le cas d'usage meme qui
+justifiait la bande**. Elle suspend toute valeur de plafond, declare 620 px exclue, et rouvre la
+famille verticale.
+
+**Je ne reecris pas les sections d'origine** : elles restent lisibles telles qu'ecrites, a l'heure ou
+le correctif de largeur etait encore au perimetre. Cet amendement dit ce qui tombe.
+
+La mesure complete, sa methode et ses tableaux vivent dans `mesure-budget-vertical.md`, a cote de ce
+fichier. Ce qui suit n'en est que la consequence sur mes quatre verdicts.
+
+### Ce qui tombe, et le remplacement
+
+| Section | Ce que j'y ai ecrit | Ce que la mesure dit |
+|---|---|---|
+| **3** (`S19-6a`) | faisable, mecanisme inchange | **sans objet** : la story est retiree du perimetre par `camille-po`. L'arithmetique reste juste et `ADR-0059` reste valide ; il n'a plus d'objet ce sprint. |
+| **4** (`S19-6b`, `BPM-8`) | **infaisable ce sprint**, parce qu'une mesure prise avant `S19-6a` decrirait une mise en page sur le point de changer | **le motif est tombe avec `S19-6a`**, et la mesure existe : `BPM-8` porte **8 items sous le pli sur 22 vus, pire deficit 32,19 px**, et il est **entierement ferme par 80 px** de budget vertical. C'est le moins cher des dix jeux touches. Il n'a plus besoin d'un avis de faisabilite, il a une mesure. |
+| **4.1** | 576 px est le pire cas de la bande | **il n'y a pas de pire cas** : 251 items mesures a 576 et a 719 px rendent le meme pixel, au centieme, zero exception. La bande est **une seule mise en page**, la feuille tierce y captant la zone a 540 px partout. |
+| **4.1** | `BPM-8` et `SYN-16` relevent de mecanismes differents (reprise de `DEC-0043`) | **meme ecran, meme cause, meme population** : le bloc de message passe sous le pli sur **dix jeux**, pas deux. |
+| **1** (`S20-1`) et **2** (`S20-2`) | faisable moyennant `ADR-0062` / faisable en l'etat | **inchanges.** Rien dans cette mesure ne les touche. |
+
+### Ce que la mesure ajoute et que je n'avais pas
+
+- **La piste verticale ne ferme pas la bande** : 308,19 px a trouver au pire, contre 80 px
+  disponibles sans rouvrir d'arbitrage et 136 px en rouvrant le meuble. Elle ferme 90 puis 114 des
+  134 items sous le pli, et **aucun** des dix items a trois rangees.
+- **Elle n'est pas nulle non plus** : elle ferme entierement trois jeux sur dix a 80 px, dont
+  `BPM-8`.
+- **Le probleme n'est pas celui de la bande.** A la reference du produit, 744 x 551, **95 items sur
+  296 (32 %) ont deja leur bloc de message sous le pli**, sur dix jeux, dont deux `couvert-valide`.
+  La bande aggrave un ecart qui existe a la reference, elle ne le cree pas.
+- **La troisieme option de `camille-po` est chiffree** : la mise en page ne dependant pas de la
+  hauteur du viewport, la courbe est exacte - le pli a 600 px ferme 76 des 134 items, a 860 px il les
+  ferme tous.
+
+### Ce que je maintiens de la section 3, parce qu'il survit au retrait
+
+Les trois corrections que j'ai apportees a `ADR-0059` tiennent, retrait ou pas : le cout reel d'une
+remesure de `L` est de deux fichiers et non d'une ligne, la couverture n'est pas de 141 sur 144, et
+le declencheur de la dette verticale etait mal ecrit. Elles portaient sur ce que l'`ADR` **dit**, pas
+sur ce que le sprint decide d'en faire.
