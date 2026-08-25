@@ -196,6 +196,28 @@ class BanditManchotTest {
                 .isEmpty();
     }
 
+    /**
+     * ADR-0062 : la part designee de la manche courante suit l'item joue, vide quand il n'en
+     * declare aucune - le cas ordinaire, jamais un cas particulier.
+     */
+    @Test
+    void laPartDesigneeDeLaMancheSuitLItemJoueEtRienQuandIlNEnDeclareAucune() {
+        ContentSource contenu = new ListContentSource(DESCRIPTEUR, List.of(
+                new Question(new ItemId("q1"), "Le chat dort", "nom", List.of("verbe"),
+                        Optional.empty(), Optional.empty(), Optional.of("chat")),
+                new Question(new ItemId("q2"), "deux", "2", List.of("3"))));
+        BanditManchotSession session = demarrer(contenu);
+
+        assertThat(session.partDesigneeManche())
+                .as("le premier item declare 'chat' comme part designee")
+                .contains("chat");
+
+        BanditManchotSession suivante = jouer(session, "nom");
+        assertThat(suivante.partDesigneeManche())
+                .as("le second item ne declare rien : le cas ordinaire, pas une valeur vide oubliee")
+                .isEmpty();
+    }
+
     @Test
     void lEnchainementDesManchesConserveLeScoreCumule() {
         BanditManchotSession session = demarrer(troisManches());

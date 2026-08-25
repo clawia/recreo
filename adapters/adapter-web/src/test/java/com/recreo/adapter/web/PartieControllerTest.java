@@ -49,6 +49,7 @@ class PartieControllerTest {
     private static final String JEU_INFINI_ID = "jeu-infini";
     private static final String JEU_REPETE_ID = "jeu-repete";
     private static final String JEU_QUATRE_PROPOSITIONS_ID = "jeu-quatre-propositions";
+    private static final String JEU_MOT_DESIGNE_ID = "jeu-mot-designe";
 
     /** Le seul niveau du catalogue de test (JeuDeTestConfiguration). */
     private static final String NIVEAU = "CP";
@@ -101,6 +102,36 @@ class PartieControllerTest {
         assertThat(fragment.select(".enonce").text()).isEqualTo("un");
         assertThat(fragment.select(".proposition")).hasSize(2);
         assertThat(html).doesNotContain("data-correct", "data-bonne", "data-solution", "data-reponse");
+    }
+
+    /**
+     * ADR-0062 : un item qui declare une part designee la fait atteindre l'ecran, portee par un
+     * element distinct - {@code .mot-designe} - dans le texte exact declare, sans que l'enonce
+     * change de valeur pour autant.
+     */
+    @Test
+    void demarrerAfficheUnElementDistinctPourLItemQuiDeclareUnePartDesignee() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+
+        String html = mockMvc.perform(post("/parties/{jeuId}", JEU_MOT_DESIGNE_ID).session(session))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.select(".enonce .mot-designe")).hasSize(1);
+        assertThat(fragment.select(".enonce .mot-designe").text()).isEqualTo("chat");
+        assertThat(fragment.select(".enonce").text()).isEqualTo("Le chat dort");
+    }
+
+    /** Le cas ordinaire : un item qui ne declare rien ne porte aucun element de marquage. */
+    @Test
+    void demarrerNAfficheAucunElementDeMarquagePourUnItemQuiNeDeclareRien() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+
+        String html = mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.select(".enonce .mot-designe")).isEmpty();
     }
 
     @Test
@@ -757,6 +788,14 @@ class PartieControllerTest {
                             new ListContentSource(DESCRIPTEUR, List.of(
                                     new Question(new ItemId("q-quatre"), "question", "bonne",
                                             List.of("faux1", "faux2", "faux3")))),
+                            10),
+                    // ADR-0062 : un item qui declare une part designee.
+                    new GameDefinition(JEU_MOT_DESIGNE_ID, "Jeu avec mot designe",
+                            "Choisis la bonne reponse", BanditManchot.ID, DESCRIPTEUR,
+                            new ListContentSource(DESCRIPTEUR, List.of(
+                                    new Question(new ItemId("q-designe"), "Le chat dort", "nom",
+                                            List.of("verbe"), Optional.empty(), Optional.empty(),
+                                            Optional.of("chat")))),
                             10));
             MechanicRegistryPort mecaniques = id -> new BanditManchot();
             RandomSource hasard = bound -> 0;

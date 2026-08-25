@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -309,7 +312,7 @@ public class PartieController {
         boolean fraiche = session.propositionsEssayees().isEmpty();
         modele.addAttribute("jeuId", jeuId);
         modele.addAttribute("consigne", consigne);
-        modele.addAttribute("enonce", session.enonceManche().orElse(""));
+        modele.addAttribute("segmentsEnonce", segmentsEnonce(session));
         modele.addAttribute("propositions", session.propositions());
         modele.addAttribute("score", session.score());
         modele.addAttribute("indice", session.indice().orElse(null));
@@ -370,6 +373,29 @@ public class PartieController {
         modele.addAttribute("bonneReponse", verdict.bonneReponse());
         modele.addAttribute("explication", verdict.explication().orElse(null));
         return "fragments/retour :: retour";
+    }
+
+    /**
+     * ADR-0062 : derive de l'enonce et de la part designee la suite de segments que le gabarit rend
+     * en une boucle unique. Une manche qui ne designe rien rend un seul segment non designe - la
+     * phrase telle quelle, sans branche ni valeur factice. Cette derivation cherche une valeur
+     * declaree, jamais une ponctuation : son unique mode de defaillance (une part declaree absente de
+     * l'enonce, ou qui y figure plus d'une fois) est ferme par un garde-fou de contenu, pas ici.
+     */
+    private static List<EnonceSegment> segmentsEnonce(BanditManchotSession session) {
+        String enonce = session.enonceManche().orElse("");
+        Optional<String> partDesignee = session.partDesigneeManche();
+        if (partDesignee.isEmpty()) {
+            return List.of(new EnonceSegment(enonce, false));
+        }
+        String part = partDesignee.orElseThrow();
+        int debut = enonce.indexOf(part);
+        int fin = debut + part.length();
+        List<EnonceSegment> segments = new ArrayList<>();
+        segments.add(new EnonceSegment(enonce.substring(0, debut), false));
+        segments.add(new EnonceSegment(part, true));
+        segments.add(new EnonceSegment(enonce.substring(fin), false));
+        return segments;
     }
 
     /** M14 : voir le commentaire de {@code mancheModele} sur cette meme condition. */

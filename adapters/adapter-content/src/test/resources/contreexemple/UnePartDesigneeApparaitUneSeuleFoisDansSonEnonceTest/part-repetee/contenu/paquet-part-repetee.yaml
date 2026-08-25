@@ -1,0 +1,13 @@
+schema: 1
+id: paquet-part-repetee
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CP"
+  domaine: "Orthographe et grammaire"
+  competence: "Paquet fautif d'ADR-0062, jamais servi a un enfant"
+items:
+  - enonce: "Le chat regarde un autre chat."
+    bonneReponse: "nom"
+    distracteurs: ["verbe"]
+    partDesignee: "chat"

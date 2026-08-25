@@ -34,6 +34,11 @@ import java.util.Optional;
  * au niveau du paquet et non d'un item, declare que les indices de ce paquet nomment la bonne
  * reponse - la mecanique ne les affichera alors jamais. Absente, elle vaut faux : un paquet neuf
  * n'a rien a declarer pour porter des indices utilisables.</p>
+ *
+ * <p>ADR-0062 : la cle facultative 'partDesignee', sur le meme patron qu''indice' et
+ * 'explication', declare la sous-chaine de l'enonce qu'une mecanique de rendu doit distinguer
+ * visuellement. Absente, elle vaut "rien a designer" - le cas ordinaire, jamais un cas particulier
+ * a remplir d'une valeur factice.</p>
  */
 final class QuestionContentSourceFactory implements ContentSourceFactory {
 
@@ -66,9 +71,11 @@ final class QuestionContentSourceFactory implements ContentSourceFactory {
         List<String> distracteursTexte = distracteurs.stream().map(String::valueOf).toList();
         Object indice = item.get("indice");
         Object explication = item.get("explication");
+        Object partDesignee = item.get("partDesignee");
         return new Question(new ItemId("item-" + position), enonce, bonneReponse, distracteursTexte,
                 indice == null ? Optional.empty() : Optional.of(String.valueOf(indice)),
-                explication == null ? Optional.empty() : Optional.of(String.valueOf(explication)));
+                explication == null ? Optional.empty() : Optional.of(String.valueOf(explication)),
+                partDesignee == null ? Optional.empty() : Optional.of(String.valueOf(partDesignee)));
     }
 
     private String texte(Map<?, ?> item, String champ, int position) {

@@ -37,8 +37,13 @@
     <p class="consigne" th:text="${consigne}"></p>
     <!-- S18, S17-C : tabindex="-1" est declare ici, jamais pose par recreo.js. Un <p> n'est pas
          focalisable nativement ; c'est la seule maniere dont focus() peut l'atteindre quand
-         data-focus="enonce" le designe comme point de focus (M13 clause 4). -->
-    <p class="enonce" tabindex="-1" th:text="${enonce}"></p>
+         data-focus="enonce" le designe comme point de focus (M13 clause 4).
+         ADR-0062 : l'enonce est rendu segment par segment, jamais comme une seule chaine - c'est ce
+         qui permet a un segment de porter une marque que CSS puisse selectionner, la ou un noeud
+         texte unique ne le permettait pas. Une manche qui ne designe rien rend un seul segment non
+         designe, dans une seule boucle sans branche : le gabarit ignore toute convention de contenu
+         (aucun parcours de guillemets), il ne fait que rendre ce que le controleur a decoupe. -->
+    <p class="enonce" tabindex="-1"><th:block th:each="segment : ${segmentsEnonce}"><span th:if="${segment.designe()}" class="mot-designe" th:text="${segment.texte()}"></span><th:block th:unless="${segment.designe()}" th:text="${segment.texte()}"></th:block></th:block></p>
     <!-- S8-1 : le cabinet entoure les colonnes de reponses, jamais la consigne ni l'enonce, qui
          restent au-dessus, hors du cadre (nadia-prof, arbitrage prealable du 2026-08-11, section 2 ;
          proposition-ines-cabinet.md, section 1). Freres purement decoratifs, aria-hidden parce

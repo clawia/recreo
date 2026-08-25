@@ -15,6 +15,10 @@ descripteur:
 # resolvait les seize items sans la competence (NAT-1). Ce paquet-ci melange determinant et
 # adjectif (ou aucun mot) devant le nom, et nom propre ou pronom devant le verbe, pour qu'aucun
 # signal de forme visible sans lire le mot ne separe les deux natures.
+# S20-1 (NAT-5, ADR-0062) : chaque item declare desormais 'partDesignee', la sous-chaine exacte de
+# son enonce - le mot cible, sans les guillemets francais - qu'un renfort visuel doit distinguer.
+# La valeur est toujours celle deja portee entre guillemets dans l'enonce : ce n'est pas un mot
+# cible nouveau, c'est la meme designation, rendue lisible autrement qu'un signe de ponctuation.
 items:
   # Noms (8 items). Determinant immediatement avant la cible : items 1, 3, 7, 8 (4/8).
   # Rien ou un adjectif immediatement avant la cible (NAT-1) : items 2, 4, 5, 6 (4/8).
@@ -23,65 +27,81 @@ items:
     bonneReponse: "nom"
     distracteurs: ["verbe"]
     indice: "Ce mot désigne un animal."
+    partDesignee: "chat"
   - enonce: "Léa porte un joli « sac »."
     bonneReponse: "nom"
     distracteurs: ["verbe"]
     indice: "Ce mot désigne un objet."
+    partDesignee: "sac"
   - enonce: "Le « soleil » brille dans le ciel."
     bonneReponse: "nom"
     distracteurs: ["verbe"]
     indice: "Ce mot désigne une chose qu'on voit dans le ciel."
+    partDesignee: "soleil"
   - enonce: "Tom mange un bon « gâteau »."
     bonneReponse: "nom"
     distracteurs: ["verbe"]
     indice: "Ce mot désigne une chose qu'on peut manger."
+    partDesignee: "gâteau"
   - enonce: "« Médor » aboie très fort."
     bonneReponse: "nom"
     distracteurs: ["verbe"]
     indice: "Ce mot désigne un animal."
+    partDesignee: "Médor"
   - enonce: "Les petits « oiseaux » chantent dans l'arbre."
     bonneReponse: "nom"
     distracteurs: ["verbe"]
     indice: "Ce mot désigne des animaux."
+    partDesignee: "oiseaux"
   - enonce: "Papa lave la « voiture »."
     bonneReponse: "nom"
     distracteurs: ["verbe"]
     indice: "Ce mot désigne un objet qui roule."
+    partDesignee: "voiture"
   - enonce: "La « maîtresse » écrit au tableau."
     bonneReponse: "nom"
     distracteurs: ["verbe"]
     indice: "Ce mot désigne une personne."
+    partDesignee: "maîtresse"
   # Verbes (8 items). Nom ou nom propre immediatement avant la cible : items 9, 10, 12, 13, 14 (5/8).
   # Pronom sujet immediatement avant la cible (NAT-1) : items 11, 15, 16 (3/8).
   - enonce: "Le chien « court » dans le jardin."
     bonneReponse: "verbe"
     distracteurs: ["nom"]
     indice: "Ce mot dit ce que fait le chien."
+    partDesignee: "court"
   - enonce: "Le poisson « nage » dans l'eau."
     bonneReponse: "verbe"
     distracteurs: ["nom"]
     indice: "Ce mot dit ce que fait le poisson."
+    partDesignee: "nage"
   - enonce: "Elle « range » sa chambre."
     bonneReponse: "verbe"
     distracteurs: ["nom"]
     indice: "Ce mot dit ce qu'elle fait."
+    partDesignee: "range"
   - enonce: "Les enfants « chantent » une chanson."
     bonneReponse: "verbe"
     distracteurs: ["nom"]
     indice: "Ce mot dit ce que font les enfants."
+    partDesignee: "chantent"
   - enonce: "Léa « arrose » les fleurs."
     bonneReponse: "verbe"
     distracteurs: ["nom"]
     indice: "Ce mot dit ce que fait Léa."
+    partDesignee: "arrose"
   - enonce: "Tom « saute » dans la flaque."
     bonneReponse: "verbe"
     distracteurs: ["nom"]
     indice: "Ce mot dit ce que fait Tom."
+    partDesignee: "saute"
   - enonce: "Il « dort » bien fort."
     bonneReponse: "verbe"
     distracteurs: ["nom"]
     indice: "Ce mot dit ce qu'il fait."
+    partDesignee: "dort"
   - enonce: "Tu « dessines » un beau soleil."
     bonneReponse: "verbe"
     distracteurs: ["nom"]
     indice: "Ce mot dit ce que tu fais."
+    partDesignee: "dessines"
