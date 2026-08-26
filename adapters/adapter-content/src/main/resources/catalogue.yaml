@@ -96,9 +96,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-accords-groupe-nominal
     nombreDeManches: 10
-  - id: bandit-manchot-reperes-cm1
-    titre: "Majuscule ou point ?"
-    consigne: "Que manque-t-il à cette phrase ?"
+  - id: bandit-manchot-nature-mot-cp
+    titre: "Nom ou verbe ?"
+    consigne: "Le mot entre guillemets est-il un nom ou un verbe ?"
     mecanique: bandit-manchot
-    paquet: cm1-reperes
+    paquet: cp-nature-mot
     nombreDeManches: 10
