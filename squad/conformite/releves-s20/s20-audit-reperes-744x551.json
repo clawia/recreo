@@ -1,0 +1,1606 @@
+{
+ "lectures": 54,
+ "mesureDeJeu": {
+  "Hier soir louis a fini ses devoirs.": {
+   "apresUnEchec": {
+    "basIndice": 724.19,
+    "basProps": 582.19,
+    "basVerdict": 645.19,
+    "defilement": 0,
+    "indiceAuDessusDuPli": false,
+    "rangees": 2,
+    "textIndice": "Un des mots de cette phrase désigne quelqu'un en particulier.",
+    "verdictAuDessusDuPli": false
+   },
+   "auRepos": {
+    "basProps": 582.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 79,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Il manque une majuscule au prénom.",
+   "ordreVu": [
+    "Cette phrase est correcte.",
+    "Il manque un point.",
+    "Il manque une majuscule au prénom.",
+    "Il manque une majuscule."
+   ],
+   "positionBonneReponse": 2
+  },
+  "Le chien aboie très fort dans le jardin.": {
+   "apresUnEchec": {
+    "basIndice": 724.19,
+    "basProps": 582.19,
+    "basVerdict": 645.19,
+    "defilement": 0,
+    "indiceAuDessusDuPli": false,
+    "rangees": 2,
+    "textIndice": "Relis bien toute la phrase avant de répondre.",
+    "verdictAuDessusDuPli": false
+   },
+   "auRepos": {
+    "basProps": 582.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 0,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Cette phrase est correcte.",
+   "ordreVu": [
+    "Il manque un point.",
+    "Il manque une majuscule au prénom.",
+    "Cette phrase est correcte.",
+    "Il manque une majuscule."
+   ],
+   "positionBonneReponse": 2
+  },
+  "Le professeur a félicité julien pour son exposé.": {
+   "apresUnEchec": {
+    "basIndice": 724.19,
+    "basProps": 582.19,
+    "basVerdict": 645.19,
+    "defilement": 0,
+    "indiceAuDessusDuPli": false,
+    "rangees": 2,
+    "textIndice": "Un prénom se cache dans cette phrase.",
+    "verdictAuDessusDuPli": false
+   },
+   "auRepos": {
+    "basProps": 582.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 0,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Il manque une majuscule au prénom.",
+   "ordreVu": [
+    "Il manque une majuscule.",
+    "Il manque une majuscule au prénom.",
+    "Cette phrase est correcte.",
+    "Il manque un point."
+   ],
+   "positionBonneReponse": 1
+  },
+  "Le soleil brille dans le ciel": {
+   "apresUnEchec": {
+    "basIndice": 724.19,
+    "basProps": 582.19,
+    "basVerdict": 645.19,
+    "defilement": 0,
+    "indiceAuDessusDuPli": false,
+    "rangees": 2,
+    "textIndice": "Regarde ce qui se trouve tout à la fin de la phrase.",
+    "verdictAuDessusDuPli": false
+   },
+   "auRepos": {
+    "basProps": 582.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 0,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Il manque un point.",
+   "ordreVu": [
+    "Il manque un point.",
+    "Cette phrase est correcte.",
+    "Il manque une majuscule au prénom.",
+    "Il manque une majuscule."
+   ],
+   "positionBonneReponse": 0
+  },
+  "Léa adore lire des histoires avant de dormir.": {
+   "apresUnEchec": {
+    "basIndice": 724.19,
+    "basProps": 582.19,
+    "basVerdict": 645.19,
+    "defilement": 0,
+    "indiceAuDessusDuPli": false,
+    "rangees": 2,
+    "textIndice": "Vérifie la majuscule et la fin de la phrase.",
+    "verdictAuDessusDuPli": false
+   },
+   "auRepos": {
+    "basProps": 582.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 31,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Cette phrase est correcte.",
+   "ordreVu": [
+    "Il manque une majuscule.",
+    "Cette phrase est correcte.",
+    "Il manque une majuscule au prénom.",
+    "Il manque un point."
+   ],
+   "positionBonneReponse": 1
+  },
+  "Ma cousine léa vient nous voir dimanche.": {
+   "apresUnEchec": {
+    "basIndice": 724.19,
+    "basProps": 582.19,
+    "basVerdict": 645.19,
+    "defilement": 0,
+    "indiceAuDessusDuPli": false,
+    "rangees": 2,
+    "textIndice": "Cherche le prénom caché au milieu de la phrase.",
+    "verdictAuDessusDuPli": false
+   },
+   "auRepos": {
+    "basProps": 582.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 0,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Il manque une majuscule au prénom.",
+   "ordreVu": [
+    "Il manque une majuscule au prénom.",
+    "Il manque un point.",
+    "Cette phrase est correcte.",
+    "Il manque une majuscule."
+   ],
+   "positionBonneReponse": 0
+  },
+  "Mon frère apprend à nager cet été": {
+   "apresUnEchec": {
+    "basIndice": 724.19,
+    "basProps": 582.19,
+    "basVerdict": 645.19,
+    "defilement": 79,
+    "indiceAuDessusDuPli": false,
+    "rangees": 2,
+    "textIndice": "Vérifie le tout dernier caractère de la phrase.",
+    "verdictAuDessusDuPli": false
+   },
+   "auRepos": {
+    "basProps": 582.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 79,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Il manque un point.",
+   "ordreVu": [
+    "Cette phrase est correcte.",
+    "Il manque une majuscule.",
+    "Il manque un point.",
+    "Il manque une majuscule au prénom."
+   ],
+   "positionBonneReponse": 2
+  },
+  "Nous allons à la piscine chaque samedi.": {
+   "apresUnEchec": {
+    "basIndice": 724.19,
+    "basProps": 582.19,
+    "basVerdict": 645.19,
+    "defilement": 0,
+    "indiceAuDessusDuPli": false,
+    "rangees": 2,
+    "textIndice": "Regarde chaque repère avant de choisir.",
+    "verdictAuDessusDuPli": false
+   },
+   "auRepos": {
+    "basProps": 582.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 0,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Cette phrase est correcte.",
+   "ordreVu": [
+    "Il manque une majuscule au prénom.",
+    "Il manque un point.",
+    "Cette phrase est correcte.",
+    "Il manque une majuscule."
+   ],
+   "positionBonneReponse": 2
+  },
+  "Nous partons demain matin pour la montagne": {
+   "apresUnEchec": {
+    "basIndice": 772.19,
+    "basProps": 630.19,
+    "basVerdict": 693.19,
+    "defilement": 31,
+    "indiceAuDessusDuPli": false,
+    "rangees": 2,
+    "textIndice": "Une phrase qui raconte quelque chose se termine toujours par un signe.",
+    "verdictAuDessusDuPli": false
+   },
+   "auRepos": {
+    "basProps": 630.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 31,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Il manque un point.",
+   "ordreVu": [
+    "Il manque une majuscule.",
+    "Il manque une majuscule au prénom.",
+    "Cette phrase est correcte.",
+    "Il manque un point."
+   ],
+   "positionBonneReponse": 3
+  },
+  "Où as-tu rangé tes affaires": {
+   "auRepos": {
+    "basProps": 582.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 0,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Il manque un point.",
+   "ordreVu": [
+    "Il manque un point.",
+    "Il manque une majuscule au prénom.",
+    "Il manque une majuscule.",
+    "Cette phrase est correcte."
+   ],
+   "positionBonneReponse": 0
+  },
+  "Où habite ton cousin Paul ?": {
+   "apresUnEchec": {
+    "basIndice": 724.19,
+    "basProps": 582.19,
+    "basVerdict": 645.19,
+    "defilement": 79,
+    "indiceAuDessusDuPli": false,
+    "rangees": 2,
+    "textIndice": "Cette phrase pose une question et se termine bien.",
+    "verdictAuDessusDuPli": false
+   },
+   "auRepos": {
+    "basProps": 582.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 0,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Cette phrase est correcte.",
+   "ordreVu": [
+    "Il manque une majuscule au prénom.",
+    "Il manque une majuscule.",
+    "Il manque un point.",
+    "Cette phrase est correcte."
+   ],
+   "positionBonneReponse": 3
+  },
+  "Pourquoi les feuilles tombent-elles en automne": {
+   "apresUnEchec": {
+    "basIndice": 772.19,
+    "basProps": 630.19,
+    "basVerdict": 693.19,
+    "defilement": 0,
+    "indiceAuDessusDuPli": false,
+    "rangees": 2,
+    "textIndice": "Cette phrase demande une explication.",
+    "verdictAuDessusDuPli": false
+   },
+   "auRepos": {
+    "basProps": 630.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 0,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Il manque un point.",
+   "ordreVu": [
+    "Il manque une majuscule au prénom.",
+    "Il manque une majuscule.",
+    "Cette phrase est correcte.",
+    "Il manque un point."
+   ],
+   "positionBonneReponse": 3
+  },
+  "Quel âge a ton petit frère": {
+   "auRepos": {
+    "basProps": 582.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 0,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Il manque un point.",
+   "ordreVu": [
+    "Il manque un point.",
+    "Cette phrase est correcte.",
+    "Il manque une majuscule.",
+    "Il manque une majuscule au prénom."
+   ],
+   "positionBonneReponse": 0
+  },
+  "elle prépare son cartable pour demain.": {
+   "apresUnEchec": {
+    "basIndice": 724.19,
+    "basProps": 582.19,
+    "basVerdict": 645.19,
+    "defilement": 0,
+    "indiceAuDessusDuPli": false,
+    "rangees": 2,
+    "textIndice": "Observe la toute première lettre de la phrase.",
+    "verdictAuDessusDuPli": false
+   },
+   "auRepos": {
+    "basProps": 582.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 0,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Il manque une majuscule.",
+   "ordreVu": [
+    "Il manque une majuscule au prénom.",
+    "Il manque un point.",
+    "Il manque une majuscule.",
+    "Cette phrase est correcte."
+   ],
+   "positionBonneReponse": 2
+  },
+  "le chat dort sur le tapis.": {
+   "apresUnEchec": {
+    "basIndice": 724.19,
+    "basProps": 582.19,
+    "basVerdict": 645.19,
+    "defilement": 0,
+    "indiceAuDessusDuPli": false,
+    "rangees": 2,
+    "textIndice": "Regarde comment commence la phrase.",
+    "verdictAuDessusDuPli": false
+   },
+   "auRepos": {
+    "basProps": 582.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 0,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Il manque une majuscule.",
+   "ordreVu": [
+    "Il manque un point.",
+    "Il manque une majuscule.",
+    "Il manque une majuscule au prénom.",
+    "Cette phrase est correcte."
+   ],
+   "positionBonneReponse": 1
+  },
+  "les enfants jouent dans la cour.": {
+   "apresUnEchec": {
+    "basIndice": 724.19,
+    "basProps": 582.19,
+    "basVerdict": 645.19,
+    "defilement": 79,
+    "indiceAuDessusDuPli": false,
+    "rangees": 2,
+    "textIndice": "Une phrase commence toujours de la même façon.",
+    "verdictAuDessusDuPli": false
+   },
+   "auRepos": {
+    "basProps": 582.19,
+    "consigne": "Que manque-t-il à cette phrase ?",
+    "debordement": false,
+    "defilement": 0,
+    "lignesEnonce": 1,
+    "nb": 4,
+    "props": [
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 0,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Cette phrase est correcte.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 116,
+      "i": 1,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 2,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque une majuscule au prénom.",
+      "w": 332
+     },
+     {
+      "clientW": 330,
+      "h": 161,
+      "i": 3,
+      "lignes": 1,
+      "scrollW": 330,
+      "t": "Il manque un point.",
+      "w": 332
+     }
+    ],
+    "rangees": 2
+   },
+   "bonneReponse": "Il manque une majuscule.",
+   "ordreVu": [
+    "Il manque une majuscule.",
+    "Il manque une majuscule au prénom.",
+    "Cette phrase est correcte.",
+    "Il manque un point."
+   ],
+   "positionBonneReponse": 0
+  }
+ },
+ "parties": 3,
+ "pliParItem": {
+  "Hier soir louis a fini ses devoirs.": {
+   "echec": {
+    "docH": 756,
+    "enonce": "Hier soir louis a fini ses devoirs.",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 645.2,
+     "h": 595.2
+    },
+    "nb": 4,
+    "propsBas": 503.2,
+    "rangees": 2,
+    "scrollY": 79,
+    "verdict": {
+     "b": 566.2,
+     "h": 536.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 638,
+    "enonce": "Hier soir louis a fini ses devoirs.",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 503.2,
+    "rangees": 2,
+    "scrollY": 79,
+    "verdict": null,
+    "winH": 551
+   }
+  },
+  "Le chien aboie très fort dans le jardin.": {
+   "echec": {
+    "docH": 756,
+    "enonce": "Le chien aboie très fort dans le jardin.",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 693.2,
+     "h": 643.2
+    },
+    "nb": 4,
+    "propsBas": 551.2,
+    "rangees": 2,
+    "scrollY": 31,
+    "verdict": {
+     "b": 614.2,
+     "h": 584.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 638,
+    "enonce": "Le chien aboie très fort dans le jardin.",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 551.2,
+    "rangees": 2,
+    "scrollY": 31,
+    "verdict": null,
+    "winH": 551
+   }
+  },
+  "Le professeur a félicité julien pour son exposé.": {
+   "echec": {
+    "docH": 756,
+    "enonce": "Le professeur a félicité julien pour son exposé.",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 693.2,
+     "h": 643.2
+    },
+    "nb": 4,
+    "propsBas": 551.2,
+    "rangees": 2,
+    "scrollY": 31,
+    "verdict": {
+     "b": 614.2,
+     "h": 584.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 702,
+    "enonce": "Le professeur a félicité julien pour son exposé.",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 551.2,
+    "rangees": 2,
+    "scrollY": 31,
+    "verdict": {
+     "b": 614.2,
+     "h": 584.2
+    },
+    "winH": 551
+   }
+  },
+  "Le soleil brille dans le ciel": {
+   "echec": {
+    "docH": 756,
+    "enonce": "Le soleil brille dans le ciel",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 724.2,
+     "h": 674.2
+    },
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": {
+     "b": 645.2,
+     "h": 615.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 702,
+    "enonce": "Le soleil brille dans le ciel",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": {
+     "b": 645.2,
+     "h": 615.2
+    },
+    "winH": 551
+   }
+  },
+  "Léa adore lire des histoires avant de dormir.": {
+   "echec": {
+    "docH": 756,
+    "enonce": "Léa adore lire des histoires avant de dormir.",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 724.2,
+     "h": 674.2
+    },
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": {
+     "b": 645.2,
+     "h": 615.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 638,
+    "enonce": "Léa adore lire des histoires avant de dormir.",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": null,
+    "winH": 551
+   }
+  },
+  "Ma cousine léa vient nous voir dimanche.": {
+   "echec": {
+    "docH": 756,
+    "enonce": "Ma cousine léa vient nous voir dimanche.",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 724.2,
+     "h": 674.2
+    },
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": {
+     "b": 645.2,
+     "h": 615.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 702,
+    "enonce": "Ma cousine léa vient nous voir dimanche.",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": {
+     "b": 645.2,
+     "h": 615.2
+    },
+    "winH": 551
+   }
+  },
+  "Mon frère apprend à nager cet été": {
+   "echec": {
+    "docH": 756,
+    "enonce": "Mon frère apprend à nager cet été",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 724.2,
+     "h": 674.2
+    },
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": {
+     "b": 645.2,
+     "h": 615.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 702,
+    "enonce": "Mon frère apprend à nager cet été",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": {
+     "b": 645.2,
+     "h": 615.2
+    },
+    "winH": 551
+   }
+  },
+  "Nous allons à la piscine chaque samedi.": {
+   "echec": {
+    "docH": 756,
+    "enonce": "Nous allons à la piscine chaque samedi.",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 645.2,
+     "h": 595.2
+    },
+    "nb": 4,
+    "propsBas": 503.2,
+    "rangees": 2,
+    "scrollY": 79,
+    "verdict": {
+     "b": 566.2,
+     "h": 536.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 702,
+    "enonce": "Nous allons à la piscine chaque samedi.",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 503.2,
+    "rangees": 2,
+    "scrollY": 79,
+    "verdict": {
+     "b": 566.2,
+     "h": 536.2
+    },
+    "winH": 551
+   }
+  },
+  "Nous partons demain matin pour la montagne": {
+   "echec": {
+    "docH": 804,
+    "enonce": "Nous partons demain matin pour la montagne",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 741.2,
+     "h": 691.2
+    },
+    "nb": 4,
+    "propsBas": 599.2,
+    "rangees": 2,
+    "scrollY": 31,
+    "verdict": {
+     "b": 662.2,
+     "h": 632.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 750,
+    "enonce": "Nous partons demain matin pour la montagne",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 599.2,
+    "rangees": 2,
+    "scrollY": 31,
+    "verdict": {
+     "b": 662.2,
+     "h": 632.2
+    },
+    "winH": 551
+   }
+  },
+  "Où as-tu rangé tes affaires": {
+   "echec": {
+    "docH": 756,
+    "enonce": "Où as-tu rangé tes affaires",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 724.2,
+     "h": 674.2
+    },
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": {
+     "b": 645.2,
+     "h": 615.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 702,
+    "enonce": "Où as-tu rangé tes affaires",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": {
+     "b": 645.2,
+     "h": 615.2
+    },
+    "winH": 551
+   }
+  },
+  "Où habite ton cousin Paul ?": {
+   "echec": {
+    "docH": 756,
+    "enonce": "Où habite ton cousin Paul ?",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 724.2,
+     "h": 674.2
+    },
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": {
+     "b": 645.2,
+     "h": 615.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 702,
+    "enonce": "Où habite ton cousin Paul ?",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": {
+     "b": 645.2,
+     "h": 615.2
+    },
+    "winH": 551
+   }
+  },
+  "Pourquoi les feuilles tombent-elles en automne": {
+   "echec": {
+    "docH": 804,
+    "enonce": "Pourquoi les feuilles tombent-elles en automne",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 741.2,
+     "h": 691.2
+    },
+    "nb": 4,
+    "propsBas": 599.2,
+    "rangees": 2,
+    "scrollY": 31,
+    "verdict": {
+     "b": 662.2,
+     "h": 632.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 686,
+    "enonce": "Pourquoi les feuilles tombent-elles en automne",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 599.2,
+    "rangees": 2,
+    "scrollY": 31,
+    "verdict": null,
+    "winH": 551
+   }
+  },
+  "Quel âge a ton petit frère": {
+   "echec": {
+    "docH": 756,
+    "enonce": "Quel âge a ton petit frère",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 724.2,
+     "h": 674.2
+    },
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": {
+     "b": 645.2,
+     "h": 615.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 702,
+    "enonce": "Quel âge a ton petit frère",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": {
+     "b": 645.2,
+     "h": 615.2
+    },
+    "winH": 551
+   }
+  },
+  "elle prépare son cartable pour demain.": {
+   "echec": {
+    "docH": 756,
+    "enonce": "elle prépare son cartable pour demain.",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 693.2,
+     "h": 643.2
+    },
+    "nb": 4,
+    "propsBas": 551.2,
+    "rangees": 2,
+    "scrollY": 31,
+    "verdict": {
+     "b": 614.2,
+     "h": 584.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 638,
+    "enonce": "elle prépare son cartable pour demain.",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 551.2,
+    "rangees": 2,
+    "scrollY": 31,
+    "verdict": null,
+    "winH": 551
+   }
+  },
+  "le chat dort sur le tapis.": {
+   "echec": {
+    "docH": 756,
+    "enonce": "le chat dort sur le tapis.",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 724.2,
+     "h": 674.2
+    },
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": {
+     "b": 645.2,
+     "h": 615.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 702,
+    "enonce": "le chat dort sur le tapis.",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 582.2,
+    "rangees": 2,
+    "scrollY": 0,
+    "verdict": {
+     "b": 645.2,
+     "h": 615.2
+    },
+    "winH": 551
+   }
+  },
+  "les enfants jouent dans la cour.": {
+   "echec": {
+    "docH": 756,
+    "enonce": "les enfants jouent dans la cour.",
+    "hauteurMaxBouton": 161,
+    "indice": {
+     "b": 693.2,
+     "h": 643.2
+    },
+    "nb": 4,
+    "propsBas": 551.2,
+    "rangees": 2,
+    "scrollY": 31,
+    "verdict": {
+     "b": 614.2,
+     "h": 584.2
+    },
+    "winH": 551
+   },
+   "repos": {
+    "docH": 702,
+    "enonce": "les enfants jouent dans la cour.",
+    "hauteurMaxBouton": 161,
+    "indice": null,
+    "nb": 4,
+    "propsBas": 551.2,
+    "rangees": 2,
+    "scrollY": 31,
+    "verdict": {
+     "b": 614.2,
+     "h": 584.2
+    },
+    "winH": 551
+   }
+  }
+ },
+ "reference": "744x551"
+}

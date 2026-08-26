@@ -433,3 +433,181 @@ seulement que le chemin s'est raccourci d'une reserve et qu'il ne passe plus par
   reposer tout le CP sur un adulte durablement present et **ne lui adresse toujours pas un mot**.
   C'etait un point produit au premier amendement ; il pese plus lourd depuis que la premisse est
   passee du premier essai a la session entiere. Route a `camille-po`, toujours sans le trancher.
+
+---
+
+## Verdict du 2026-08-25 (s20) - reaudition de `NAT-5` sur l'increment livre : **VALIDE**
+
+- **Auteur** : nadia-prof. **Increment** : `round-two` a `f4e0808`, `S20-1` (`ADR-0062`,
+  `Question.partDesignee`, classe `.mot-designe`).
+- **Audit joue, non degrade.** **5 parties, 71 lectures, 16 items sur 16 vus**, a la reference
+  **744 x 551**, au repos et apres un echec, en me trompant volontairement. Application **arretee
+  par son PID**.
+- **Releve** : `squad/conformite/releves-s20/s20-audit-nat5-744x551.json`. Captures :
+  `s20-nat5-744x551-none.png` et `s20-nat5-744x551-achromatopsia.png`.
+
+### 0. Comment j'ai pu jouer un jeu qui est hors du catalogue, et pourquoi je n'ai touche a rien
+
+`DEC-0045` a retire l'entree : le jeu ne s'ouvre pas depuis l'accueil. **Je n'ai pas retabli
+l'entree dans le depot**, meme transitoirement. J'ai construit le jar depuis l'arbre tel quel, puis
+**remplace la seule ressource `catalogue.yaml` dans une copie du jar, hors du depot**, en y ajoutant
+l'entree exactement telle que le commit de retrait l'avait enlevee. **`git status` est vide avant et
+apres.** Aucun fichier sous `adapters/` n'a ete modifie, pas meme une seconde.
+
+Ce que j'ai mesure est donc l'artefact **tel qu'il sera quand `camille-po` rendra le jeu au
+catalogue** - c'est le bon objet a auditer, et non l'etat hors catalogue qui n'atteint aucun enfant.
+Une reserve d'honnetete : le catalogue d'audit est le catalogue **courant** plus cette entree, pas
+celui d'avant le retrait, qui est perime depuis que `cm1-reperes` est entre.
+
+### 1. Le critere, et il est a moi
+
+Je ne reprends pas le motif d'origine de `NAT-5`. Le 2026-08-25 au matin j'ai concede que le motif
+initial - *"je ne sais pas ce qu'un enfant de six ans qui n'a jamais appris les guillemets en
+fait"* - etait **affaibli** par l'arbitrage sur l'accompagnement, et j'ai refonde la condition sur
+un autre motif, date : *"la designation change a chaque manche - dix interventions d'adulte par
+partie, la ou l'arbitrage ne fournit qu'une presence"*. **C'est contre ce critere-la que je juge**,
+et pas contre un autre.
+
+**La question est donc : l'ecran porte-t-il desormais la designation, de sorte que l'adulte n'ait
+plus a pointer dix fois ?**
+
+### 2. Ce que j'ai mesure, et ce que cela repond
+
+| Mesure, 744 x 551 | Resultat |
+|---|---|
+| Items portant `.mot-designe` | **16 sur 16** |
+| Le mot marque est bien celui entre guillemets | **16 sur 16** |
+| `partDesignee` presente **exactement une fois** dans son enonce | **16 sur 16** - aucune ambiguite d'occurrence |
+| Guillemets francais conserves dans l'enonce | **2 par item, 16 sur 16** ; **0 a l'interieur de la boite** |
+| Taille du mot marque contre le reste de la phrase | **36,8 px contre 32 px**, soit **1,15 exactement** |
+| Graisse, couleur du texte | **identiques** au reste de l'enonce (700, `rgb(28,39,51)`) - aucune discrimination par la couleur du texte |
+| Marqueur encore present **apres un echec** | **14 sur 14** |
+| Items sur une seule ligne | **16 sur 16** |
+| Defilement, au repos comme apres un echec | **0 partout, 71 lectures sur 71** |
+| Pire bas d'indice | **512,38 px** pour un pli a 551 - **marge 38,62 px, 0 item sous le pli** |
+| Pire bas de verdict | **433,38 px** - marge 117,62 px |
+
+**Les deux chiffres d'`ines-design` sont confirmes au centieme** : 16 sur 16 sur une ligne, 0 sur 16
+sous le pli, pire marge **38,62 px**. Et la conversion qu'elle signale est exacte : 2,3rem sur 2rem
+donne **36,8/32 = 1,15**, le rapport qu'elle proposait, au caractere pres.
+
+**Reponse au critere : oui, les dix interventions sont supprimees.** Un enfant qui ne sait pas lire
+*guillemets* voit **le mot dans la boite**. C'est un signal qui se percoit **avant** la lecture, et
+c'est exactement le geste du surligneur d'une classe - l'argument d'`ines-design` est le bon, et
+c'est le bon argument pedagogique, pas seulement le bon argument graphique. Le marquage **tient
+toute la manche**, y compris apres un echec, donc a chacun des moments ou l'enfant en a besoin.
+
+### 3. Le cout sur les autres jeux : verifie, et par un argument plus fort qu'une mesure
+
+On m'annonce un cout nul. **Ma premiere mesure ne portait en realite que sur un seul jeu** - mon
+compteur comptait les entrees du catalogue, pas les lancements reussis, et la navigation entre deux
+jeux tombait sur l'ecran de confirmation. **J'ai failli publier un chiffre faux ; je l'ai refaite
+avec une session neuve par jeu.** Je le note parce que c'est precisement le mode de defaillance que
+je reproche aux autres.
+
+Deuxieme mesure, **18 jeux sur 18 reellement lances, 72 manches observees** :
+
+- **0 des 17 autres jeux ne rend `.mot-designe`** ; **0 ne contient le moindre `span`** dans son
+  enonce ; leur enonce est **un unique noeud texte**, et sa taille est **32 px partout**.
+- `cp-nature-mot` rend `#text` / `SPAN` / `#text` : le mot dans la boite, les guillemets dehors.
+
+**Et le delta CSS entier est une seule regle** : `git diff` entre l'etat d'avant et `f4e0808` sur
+`recreo.css` donne **17 lignes ajoutees, 0 supprimee, 0 modifiee**, un unique selecteur
+`.mot-designe`. Un selecteur neuf qui ne correspond a rien ailleurs, sur un DOM structurellement
+identique, **ne peut pas changer un pixel ailleurs**. C'est une preuve, pas un releve, et elle est
+plus solide que la comparaison de deficits qu'on m'a proposee.
+
+### 4. Le point sur lequel j'ai verifie plutot que cru, et ou l'annonce est a moitie fausse
+
+On me presente **trois canaux non colores**. **La boite n'en est pas un**, et je l'ai mesure.
+
+Fond de la boite `#fff59d` contre le fond effectif de la page `rgb(244,247,251)` : **contraste
+1,04:1**. Sous achromatopsie emulee, la boite rend `(242,242,242)` contre `(247,247,247)` -
+**1,045:1**, cinq niveaux sur 255. **La boite est un canal de teinte, pas de luminance : retirez la
+couleur, elle disparait.**
+
+La formule qui m'est rapportee - *"si l'enfant est daltonien ou ne distingue pas le jaune, la boite
+et l'agrandissement restent visibles"* - est donc **juste sur une moitie et fausse sur l'autre**, et
+la distinction compte :
+
+| Vision emulee | Boite contre fond | La boite reste-t-elle visible ? |
+|---|---|---|
+| normale | 1,04:1, mais teinte franche | **oui** |
+| deuteranopie | `(255,245,161)` contre `(245,246,251)` | **oui** - le jaune est preserve |
+| protanopie | `(255,239,150)` | **oui** |
+| tritanopie | `(255,234,223)` | **oui** |
+| achromatopsie | `(242,242,242)` contre `(247,247,247)` | **non** |
+
+**Pour le daltonisme courant - rouge-vert, celui qui touche environ un garcon sur douze - la boite
+tient.** Elle ne tombe qu'en achromatopsie, ou sur un rendu monochrome.
+
+**Et pourtant ma condition est satisfaite, et je le dis franchement.** `NAT-5` demande que le mot
+soit designe *"autrement que par les guillemets seuls, et **jamais par la couleur seule**"*. Retirez
+toute la couleur : **l'agrandissement de 15 % reste, et il se voit** - la capture sous achromatopsie
+le montre, *chantent* est visiblement plus grand que les mots qui l'entourent. La designation
+survit a la suppression complete de la couleur. **C'est exactement ce que ma condition exigeait, et
+c'est atteint.**
+
+## Verdict : **VALIDE. `NAT-5` est LEVEE au 2026-08-25.**
+
+**Plus aucune reserve bloquante n'est ouverte sur ce jeu.** `NAT-9` est tombee ce matin,
+`NAT-5` tombe ce soir sur mesure. La condition de retour au catalogue posee par `DEC-0045`
+section 2 est remplie ; **le geste appartient a `camille-po`**, je ne le fais pas et je ne le
+demande pas.
+
+
+**Je ne retiens pas la boite contre l'increment.** J'ai mesure plus finement que ma condition ne
+demandait ; une barre qu'on releve apres coup parce qu'on voit mieux fait de cette porte un caprice.
+Ce que j'ai vu de plus s'ecrit ci-dessous comme une observation neuve et datee, **non bloquante**.
+
+### 5. Une reserve NEUVE, datee du 2026-08-25, **NON BLOQUANTE** - `NAT-12`
+
+- **`NAT-12`** - *La boite de `.mot-designe` ne porte pratiquement aucun contraste de luminance
+  (1,04:1 contre le fond de page). Elle est un canal de teinte. Le marquage ne repose pas sur elle
+  seule - l'agrandissement le sauve - mais le troisieme canal annonce n'existe pas en rendu
+  monochrome.*
+
+Elle n'est pas bloquante et je ne veux pas qu'elle le devienne par glissement : le jeu fonctionne
+pour la quasi-totalite des enfants, y compris daltoniens. Je la pose pour deux raisons - qu'on cesse
+d'ecrire que la boite est sure sans la couleur, et parce qu'elle se corrige a cout nul si
+`ines-design` le souhaite : **la regle porte un `border-radius` mais aucune bordure**, et un liseret
+sombre donnerait a la boite un contour independant de la teinte sans deplacer un seul pixel de mise
+en page. **Je ne prescris rien** - `ines-design` propose, je tranche ensuite, comme d'habitude.
+
+### 6. Ce que ce Done couvre, et ce qu'il ne couvre pas
+
+**Couvert** : `NAT-1` a `NAT-3`, `NAT-6` a `NAT-8` (verdict du 2026-08-24 ; le paquet est inchange
+sur ces points, seul `partDesignee` s'y est ajoute), `NAT-5` et `NAT-9` (ce jour), la designation du
+mot cible, la mise en page a la reference, et le cout nul sur les autres jeux.
+
+**Non couvert, et je le nomme pour que personne ne le croie couvert** :
+
+- **Ce qu'un lecteur d'ecran annonce** de l'enonce segmente. `ADR-0062` decoupe l'enonce en `span` ;
+  **je n'ai pas ecoute**, personne dans cette squad ne le peut (`F11`), et un mot isole dans un
+  `span` peut s'annoncer autrement qu'un mot dans une phrase continue. **Ce n'est pas une reserve** -
+  je n'ai aucun element disant que c'est mauvais - mais c'est un angle mort du produit qui vient de
+  s'elargir, et il n'existait pas avant `S20-1`.
+- **Toute largeur autre que 744 px.** La bande 576-719 est sortie de la cible ; je n'ai rien mesure
+  sous la reference, et un mot marque qui tomberait sur une fin de ligne verrait sa boite coupee en
+  deux. **Non observe sur 16 items sur 16 a la reference** ; non mesure ailleurs.
+- **`NAT-10` et `NAT-11`** restent ouvertes, non bloquantes, inchangees.
+
+### 7. Sur quelles proprietes je reste la seule garde
+
+- **Que `partDesignee` designe le bon mot.** Rien ne verifie qu'une valeur de contenu corresponde au
+  mot entre guillemets, ni qu'elle n'apparaisse qu'une seule fois dans la phrase. **Je l'ai verifie
+  a la main, 16 sur 16 les deux fois.** Un paquet futur ou `partDesignee` vaudrait *"le"* marquerait
+  le premier *le* venu, et la CI serait verte.
+- **`NAT-12`** - aucun test de ce depot ne mesure un contraste de luminance.
+- **Ce qu'un enfant de six ans fait de la boite.** Je l'ai jugee convaincante en la voyant ; c'est un
+  jugement de maitresse, pas une mesure, et il reste le mien.
+
+### 8. Un constat hors de ce jeu, que je route sans le traiter
+
+En construisant mon catalogue d'audit j'ai vu que **`bandit-manchot-reperes-cm1` ("Majuscule ou
+point ?") est expose dans `catalogue.yaml` a `f4e0808`, et que le bloc de validation de
+`squad/conformite/FICHE-bandit-manchot-reperes-cm1.md` est vide** - aucun audit, aucun verdict.
+`DEC-0045` section 3 dit qu'un jeu ne doit pas etre expose en cas d'*"absence de tout audit sur
+l'increment servi"*. **C'est exactement le trou que `DEC-0045` avait ete ecrite pour fermer, rouvert
+en un sprint.** Je ne touche pas au catalogue et je n'audite pas ce jeu aujourd'hui : je le route a
+`sofia-sm` et `camille-po`, et je le mets dans ma file d'audit.
