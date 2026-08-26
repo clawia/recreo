@@ -1,0 +1,218 @@
+{
+  "baseApres": "f4e0808 (round-two, apres fusion du lot marc-dev)",
+  "baseAvant": "a7ca85b (avant le lot marc-dev, S20-1 geste 1)",
+  "methode": "squad/outils/theo-archi/campagne-budget-vertical.sh, viewport 744x551 (DEC-0040)",
+  "parJeu": {
+    "bandit-manchot-accord-sujet-verbe-cm1": {
+      "itemsSousLePli": {
+        "apres": 18,
+        "avant": 18
+      },
+      "itemsVus": {
+        "apres": 19,
+        "avant": 19
+      },
+      "pireDeficitPx": {
+        "apres": 32.19,
+        "avant": 32.19
+      }
+    },
+    "bandit-manchot-accords-groupe-nominal-cm1": {
+      "itemsSousLePli": {
+        "apres": 7,
+        "avant": 8
+      },
+      "itemsVus": {
+        "apres": 21,
+        "avant": 20
+      },
+      "pireDeficitPx": {
+        "apres": 68.19,
+        "avant": 68.19
+      }
+    },
+    "bandit-manchot-antonymes-cm1": {
+      "itemsSousLePli": {
+        "apres": 1,
+        "avant": 1
+      },
+      "itemsVus": {
+        "apres": 16,
+        "avant": 17
+      },
+      "pireDeficitPx": {
+        "apres": 2.19,
+        "avant": 2.19
+      }
+    },
+    "bandit-manchot-comparer-nombres-cp": {
+      "itemsSousLePli": {
+        "apres": 0,
+        "avant": 0
+      },
+      "itemsVus": {
+        "apres": 21,
+        "avant": 19
+      },
+      "pireDeficitPx": {
+        "apres": -45.81,
+        "avant": -45.81
+      }
+    },
+    "bandit-manchot-complements-10-cp": {
+      "itemsSousLePli": {
+        "apres": 0,
+        "avant": 0
+      },
+      "itemsVus": {
+        "apres": 11,
+        "avant": 11
+      },
+      "pireDeficitPx": {
+        "apres": -15.81,
+        "avant": -15.81
+      }
+    },
+    "bandit-manchot-conjugaison-present-cm1": {
+      "itemsSousLePli": {
+        "apres": 2,
+        "avant": 3
+      },
+      "itemsVus": {
+        "apres": 21,
+        "avant": 24
+      },
+      "pireDeficitPx": {
+        "apres": 32.19,
+        "avant": 32.19
+      }
+    },
+    "bandit-manchot-conversions-unites-cm1": {
+      "itemsSousLePli": {
+        "apres": 2,
+        "avant": 2
+      },
+      "itemsVus": {
+        "apres": 23,
+        "avant": 22
+      },
+      "pireDeficitPx": {
+        "apres": 44.19,
+        "avant": 44.19
+      }
+    },
+    "bandit-manchot-grands-nombres-cm1": {
+      "itemsSousLePli": {
+        "apres": 14,
+        "avant": 16
+      },
+      "itemsVus": {
+        "apres": 25,
+        "avant": 25
+      },
+      "pireDeficitPx": {
+        "apres": 164.19,
+        "avant": 164.19
+      }
+    },
+    "bandit-manchot-homophones-cm1": {
+      "itemsSousLePli": {
+        "apres": 2,
+        "avant": 2
+      },
+      "itemsVus": {
+        "apres": 21,
+        "avant": 22
+      },
+      "pireDeficitPx": {
+        "apres": 2.19,
+        "avant": 2.19
+      }
+    },
+    "bandit-manchot-le-bon-son-cp": {
+      "itemsSousLePli": {
+        "apres": 0,
+        "avant": 0
+      },
+      "itemsVus": {
+        "apres": 14,
+        "avant": 14
+      },
+      "pireDeficitPx": {
+        "apres": -45.81,
+        "avant": -45.81
+      }
+    },
+    "bandit-manchot-perimetre-cm1": {
+      "itemsSousLePli": {
+        "apres": 20,
+        "avant": 17
+      },
+      "itemsVus": {
+        "apres": 22,
+        "avant": 19
+      },
+      "pireDeficitPx": {
+        "apres": 134.19,
+        "avant": 134.19
+      }
+    },
+    "bandit-manchot-problemes-additifs-cp": {
+      "itemsSousLePli": {
+        "apres": 20,
+        "avant": 21
+      },
+      "itemsVus": {
+        "apres": 20,
+        "avant": 21
+      },
+      "pireDeficitPx": {
+        "apres": 2.19,
+        "avant": 2.19
+      }
+    },
+    "bandit-manchot-soustractions-cp": {
+      "itemsSousLePli": {
+        "apres": 0,
+        "avant": 0
+      },
+      "itemsVus": {
+        "apres": 21,
+        "avant": 23
+      },
+      "pireDeficitPx": {
+        "apres": -45.81,
+        "avant": -45.81
+      }
+    },
+    "bandit-manchot-synonymes-cm1": {
+      "itemsSousLePli": {
+        "apres": 7,
+        "avant": 6
+      },
+      "itemsVus": {
+        "apres": 16,
+        "avant": 15
+      },
+      "pireDeficitPx": {
+        "apres": 32.19,
+        "avant": 32.19
+      }
+    },
+    "bandit-manchot-tables-multiplication-cm1": {
+      "itemsSousLePli": {
+        "apres": 0,
+        "avant": 0
+      },
+      "itemsVus": {
+        "apres": 27,
+        "avant": 29
+      },
+      "pireDeficitPx": {
+        "apres": -45.81,
+        "avant": -45.81
+      }
+    }
+  },
+  "perimetre": "15 jeux catalogues (bandit-manchot-additions-cp saute : paquet combinatoire)"
+}
