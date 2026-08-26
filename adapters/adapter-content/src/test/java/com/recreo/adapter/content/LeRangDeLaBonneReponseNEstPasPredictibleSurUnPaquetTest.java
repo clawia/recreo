@@ -331,12 +331,14 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " memes deux mots (\"nom\", \"verbe\"), jamais une valeur numerique. Mesure du"
                     + " 2026-08-24 sur le paquet servi",
             "cm1-reperes",
-            "16 items sur 16 portent trois distracteurs, donc quatre propositions : le rang d'une"
-                    + " bonne reponse parmi trois n'y est pas defini. Les quatre propositions sont"
-                    + " en outre des libelles fixes (\"Il manque une majuscule.\", \"Il manque un"
-                    + " point.\", \"Il manque une majuscule au prenom.\", \"Cette phrase est"
-                    + " correcte.\"), jamais une valeur numerique. Mesure du 2026-08-25 sur le"
-                    + " paquet servi");
+            "16 items sur 16 portent deux distracteurs (trois propositions), mais aucune des"
+                    + " 48 propositions n'est numerique : ce sont des libelles fixes tires d'un"
+                    + " pool de cinq (\"Majuscule initiale\", \"Point final\", \"Majuscule au"
+                    + " prenom\", \"Point d'interrogation\", \"Phrase correcte\"), valeurDe"
+                    + " rend null sur les trois propositions de chaque item. Mesure du"
+                    + " 2026-08-26 sur le paquet servi, apres la correction REP-4 du meme jour"
+                    + " (trois propositions par item, jamais quatre, pour rester au-dessus du"
+                    + " pli - voir le commentaire du paquet servi)");
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
