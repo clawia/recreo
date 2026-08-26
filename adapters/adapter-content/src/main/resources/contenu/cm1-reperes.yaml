@@ -12,100 +12,125 @@ descripteur:
 # la connaissance des reperes sur une phrase donnee, jamais la relecture par l'enfant de son propre
 # texte.
 #
-# Forme retenue par nadia-prof (section B.3, forme B) : une phrase unique par item, quatre
-# propositions fixes qui nomment ce qui manque - jamais quatre versions completes de la meme
-# phrase (forme A, ecartee : charge cognitive trop haute, rangees de propositions trop larges).
-# La virgule est exclue de l'enumeration des reperes par nadia-prof elle-meme : son placement
-# releve du style, une mecanique a reponse unique compterait faux un enfant qui a raison.
+# Correction du 2026-08-26, apres REFUS de nadia-prof (FICHE-bandit-manchot-reperes-cm1.md,
+# verdict du meme jour, commit 9c8aa7b sur hs-nadia-arbitrages). Deux motifs, deux causes dans sa
+# propre specification B.3 :
+#   1. Le pli - les quatre libelles qu'elle recommandait faisaient jusqu'a 34 caracteres ("Il
+#      manque une majuscule au prenom."), provoquant un bouton sur trois lignes (161 px) et un
+#      verdict/indice entierement sous le pli sur 16 items sur 16 a 744 x 551.
+#   2. REP-4 non tenue - quatre libelles ne peuvent pas porter quatre reperes plus le cas correct :
+#      il en fallait cinq. "Point d'interrogation" devient un libelle distinct de "Point final".
+# Les seize phrases ne sont pas touchees (nadia-prof : "la matiere est saine").
 #
-# Les quatre propositions sont fixes et identiques sur tous les items (ordre du YAML, distracteurs
-# dans cet ordre moins la bonne reponse) :
-#   - "Il manque une majuscule."            (repere : majuscule initiale)
-#   - "Il manque un point."                 (repere : point final, et point d'interrogation d'une
-#                                             question - la forme retenue par nadia-prof ne porte
-#                                             pas de libelle distinct pour ce quatrieme repere ;
-#                                             c'est la structure interrogative de la phrase, pas le
-#                                             libelle de la proposition, qui porte ce repere)
-#   - "Il manque une majuscule au prénom."  (repere : majuscule au nom propre)
-#   - "Cette phrase est correcte."          (aucune erreur)
+# CINQ libelles existent desormais (11 a 21 caracteres, jamais la formule "il manque") :
+#   "Majuscule initiale", "Point final", "Majuscule au prénom", "Point d'interrogation",
+#   "Phrase correcte". Chaque item n'en montre que TROIS (bonneReponse + deux distracteurs),
+#   jamais quatre : mesure au premier essai de correction (auditer-paquet.py, 2026-08-26) - a
+#   quatre propositions, la regle CSS du repli a quatre colonnes (50% de largeur, police 1,875rem,
+#   deux rangees) pousse le bas du cabinet a 492 px sur les 551 de la reference, ne laissant plus
+#   assez de place pour verdict et indice quels que soient les libelles (verdict a 555,19 px,
+#   indice a 634,19 px, tous deux sous le pli sur 16 items sur 16). A trois propositions, la regle
+#   generale s'applique (une seule rangee) : mesure refaite ci-dessous, chiffre porte dans la fiche
+#   de conformite.
+#   - Items 1-3 (majuscule initiale) et 7-9 (majuscule au prenom) : {son propre libelle, l'autre
+#     libelle de majuscule, Phrase correcte} - la distinction entre les deux reperes de majuscule
+#     reste testee, REP-4 ne l'a jamais faite tomber.
+#   - Items 4-6 (point final) et 10-12 (point d'interrogation) : {son propre libelle, l'autre
+#     libelle de point, Phrase correcte} - les deux libelles de point cote a cote sur les six
+#     items, ce qui force la distinction que le refus du 2026-08-26 a mesuree absente.
+#   - Items 13, 14, 16 (correctes) et item 15 (correcte, interrogative) : {Phrase correcte, une
+#     majuscule, un point}, un de chaque famille, choisi coherent avec la phrase (jamais "point
+#     d'interrogation" sur une phrase qui n'est pas une question).
+#   "Phrase correcte" figure sur les seize items sans exception : son absence sur un item serait
+#   elle-meme un indice qu'il porte une erreur, la meme famille de fuite que celle qu'ADR-0032 et
+#   les garde-fous de rang refusent ailleurs dans ce depot.
 #
 # REP-1 a REP-4 (arbitrage prealable, section B.3) : aucune n'est verifiee par un automate de ce
-# depot (nadia-prof le dit elle-meme, meme famille que DEN-1 a DEN-8 et NAT-1 a NAT-8). Repartition
-# obtenue, documentee ici pour l'audit de nadia-prof, jamais recalculee par un test :
-#   - REP-1 (aucune virgule, vocabulaire CM1) : tenue sur les seize phrases.
+# depot (nadia-prof le dit elle-meme, meme famille que DEN-1 a DEN-8 et NAT-1 a NAT-8), sauf REP-4
+# qui devient mecaniquement verifiable sur bonneReponse depuis que les cinq libelles sont atomiques
+# (PaquetCm1ReperesTest, chaqueRepereEstRepresenteSansEnDepasserLaMoitie). Repartition documentee :
+#   - REP-1 (aucune virgule, vocabulaire CM1) : tenue sur les seize phrases, inchangees.
 #   - REP-2 (au moins un quart sans erreur) : items 13 a 16, quatre items sur seize (25 %).
 #   - REP-3 (un seul repere par item fautif) : chaque item porte exactement un ecart avec une
 #     phrase par ailleurs correcte.
-#   - REP-4 (les quatre reperes chacun representes, aucun au-dela de la moitie) : trois items par
-#     repere (items 1-3 majuscule initiale, 4-6 point final, 7-9 majuscule au prenom, 10-12 point
-#     d'interrogation), soit un quart chacun.
+#   - REP-4 (les quatre reperes chacun representes, aucun au-dela de la moitie) : items 1-3
+#     majuscule initiale, 4-6 point final, 7-9 majuscule au prenom, 10-12 point d'interrogation -
+#     trois items chacun, un quart du paquet - et les six items 4-12 exigent explicitement la
+#     distinction entre les deux reperes de ponctuation finale.
+#
+# REP-5 (non bloquante, nadia-prof) : les indices des items 8 et 9 nommaient "prenom", le seul mot
+# du libelle correct - corriges ci-dessous sur le modele de l'item 7, qui ne le nommait pas.
+# REP-6 (non bloquante, nadia-prof) : l'item 15, donne pour correct, employait un espace ordinaire
+# avant son point d'interrogation plutot qu'une espace insecable (convention deja tenue par 32
+# occurrences dans cp-nature-mot) - corrige ci-dessous.
 items:
   # Majuscule initiale manquante (3 items). Phrase par ailleurs correcte (point final present).
   - enonce: "le chat dort sur le tapis."
-    bonneReponse: "Il manque une majuscule."
-    distracteurs: ["Il manque un point.", "Il manque une majuscule au prénom.", "Cette phrase est correcte."]
+    bonneReponse: "Majuscule initiale"
+    distracteurs: ["Majuscule au prénom", "Phrase correcte"]
     indice: "Regarde comment commence la phrase."
   - enonce: "les enfants jouent dans la cour."
-    bonneReponse: "Il manque une majuscule."
-    distracteurs: ["Il manque un point.", "Il manque une majuscule au prénom.", "Cette phrase est correcte."]
+    bonneReponse: "Majuscule initiale"
+    distracteurs: ["Majuscule au prénom", "Phrase correcte"]
     indice: "Une phrase commence toujours de la même façon."
   - enonce: "elle prépare son cartable pour demain."
-    bonneReponse: "Il manque une majuscule."
-    distracteurs: ["Il manque un point.", "Il manque une majuscule au prénom.", "Cette phrase est correcte."]
+    bonneReponse: "Majuscule initiale"
+    distracteurs: ["Majuscule au prénom", "Phrase correcte"]
     indice: "Observe la toute première lettre de la phrase."
-  # Point final manquant (3 items). Majuscule initiale par ailleurs presente.
+  # Point final manquant (3 items). Majuscule initiale par ailleurs presente, phrase declarative.
   - enonce: "Le soleil brille dans le ciel"
-    bonneReponse: "Il manque un point."
-    distracteurs: ["Il manque une majuscule.", "Il manque une majuscule au prénom.", "Cette phrase est correcte."]
+    bonneReponse: "Point final"
+    distracteurs: ["Point d'interrogation", "Phrase correcte"]
     indice: "Regarde ce qui se trouve tout à la fin de la phrase."
   - enonce: "Nous partons demain matin pour la montagne"
-    bonneReponse: "Il manque un point."
-    distracteurs: ["Il manque une majuscule.", "Il manque une majuscule au prénom.", "Cette phrase est correcte."]
-    indice: "Une phrase qui raconte quelque chose se termine toujours par un signe."
+    bonneReponse: "Point final"
+    distracteurs: ["Point d'interrogation", "Phrase correcte"]
+    indice: "Regarde la toute fin de la phrase."
   - enonce: "Mon frère apprend à nager cet été"
-    bonneReponse: "Il manque un point."
-    distracteurs: ["Il manque une majuscule.", "Il manque une majuscule au prénom.", "Cette phrase est correcte."]
+    bonneReponse: "Point final"
+    distracteurs: ["Point d'interrogation", "Phrase correcte"]
     indice: "Vérifie le tout dernier caractère de la phrase."
   # Majuscule au nom propre manquante (3 items). Reste de la phrase par ailleurs correct.
   - enonce: "Hier soir louis a fini ses devoirs."
-    bonneReponse: "Il manque une majuscule au prénom."
-    distracteurs: ["Il manque une majuscule.", "Il manque un point.", "Cette phrase est correcte."]
+    bonneReponse: "Majuscule au prénom"
+    distracteurs: ["Majuscule initiale", "Phrase correcte"]
     indice: "Un des mots de cette phrase désigne quelqu'un en particulier."
   - enonce: "Ma cousine léa vient nous voir dimanche."
-    bonneReponse: "Il manque une majuscule au prénom."
-    distracteurs: ["Il manque une majuscule.", "Il manque un point.", "Cette phrase est correcte."]
-    indice: "Cherche le prénom caché au milieu de la phrase."
+    bonneReponse: "Majuscule au prénom"
+    distracteurs: ["Majuscule initiale", "Phrase correcte"]
+    indice: "Un des mots de cette phrase désigne une personne précise."
   - enonce: "Le professeur a félicité julien pour son exposé."
-    bonneReponse: "Il manque une majuscule au prénom."
-    distracteurs: ["Il manque une majuscule.", "Il manque un point.", "Cette phrase est correcte."]
-    indice: "Un prénom se cache dans cette phrase."
-  # Point d'interrogation manquant (3 items). Phrase interrogative, majuscule initiale presente.
+    bonneReponse: "Majuscule au prénom"
+    distracteurs: ["Majuscule initiale", "Phrase correcte"]
+    indice: "Un des mots de cette phrase désigne quelqu'un."
+  # Point d'interrogation manquant (3 items). Phrase interrogative, majuscule initiale presente -
+  # le libelle distinct oblige desormais a reconnaitre la structure de la question.
   - enonce: "Où as-tu rangé tes affaires"
-    bonneReponse: "Il manque un point."
-    distracteurs: ["Il manque une majuscule.", "Il manque une majuscule au prénom.", "Cette phrase est correcte."]
+    bonneReponse: "Point d'interrogation"
+    distracteurs: ["Point final", "Phrase correcte"]
     indice: "Cette phrase pose une question à quelqu'un."
   - enonce: "Pourquoi les feuilles tombent-elles en automne"
-    bonneReponse: "Il manque un point."
-    distracteurs: ["Il manque une majuscule.", "Il manque une majuscule au prénom.", "Cette phrase est correcte."]
+    bonneReponse: "Point d'interrogation"
+    distracteurs: ["Point final", "Phrase correcte"]
     indice: "Cette phrase demande une explication."
   - enonce: "Quel âge a ton petit frère"
-    bonneReponse: "Il manque un point."
-    distracteurs: ["Il manque une majuscule.", "Il manque une majuscule au prénom.", "Cette phrase est correcte."]
-    indice: "Cette phrase attend une réponse précise."
+    bonneReponse: "Point d'interrogation"
+    distracteurs: ["Point final", "Phrase correcte"]
+    indice: "Cette phrase attend une réponse."
   # Aucune erreur (4 items, REP-2).
   - enonce: "Le chien aboie très fort dans le jardin."
-    bonneReponse: "Cette phrase est correcte."
-    distracteurs: ["Il manque une majuscule.", "Il manque un point.", "Il manque une majuscule au prénom."]
-    indice: "Relis bien toute la phrase avant de répondre."
+    bonneReponse: "Phrase correcte"
+    distracteurs: ["Majuscule initiale", "Point final"]
+    indice: "Relis bien la phrase."
   - enonce: "Léa adore lire des histoires avant de dormir."
-    bonneReponse: "Cette phrase est correcte."
-    distracteurs: ["Il manque une majuscule.", "Il manque un point.", "Il manque une majuscule au prénom."]
-    indice: "Vérifie la majuscule et la fin de la phrase."
-  - enonce: "Où habite ton cousin Paul ?"
-    bonneReponse: "Cette phrase est correcte."
-    distracteurs: ["Il manque une majuscule.", "Il manque un point.", "Il manque une majuscule au prénom."]
+    bonneReponse: "Phrase correcte"
+    distracteurs: ["Majuscule au prénom", "Point final"]
+    indice: "Vérifie chaque repère."
+  - enonce: "Où habite ton cousin Paul ?"
+    bonneReponse: "Phrase correcte"
+    distracteurs: ["Majuscule initiale", "Point d'interrogation"]
     indice: "Cette phrase pose une question et se termine bien."
   - enonce: "Nous allons à la piscine chaque samedi."
-    bonneReponse: "Cette phrase est correcte."
-    distracteurs: ["Il manque une majuscule.", "Il manque un point.", "Il manque une majuscule au prénom."]
+    bonneReponse: "Phrase correcte"
+    distracteurs: ["Majuscule au prénom", "Point final"]
     indice: "Regarde chaque repère avant de choisir."
