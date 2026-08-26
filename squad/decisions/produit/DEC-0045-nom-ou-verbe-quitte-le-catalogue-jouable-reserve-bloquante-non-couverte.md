@@ -147,3 +147,24 @@ revue de cloture.
 - `squad/programme/MATRICE-couverture.md` : inchangee.
 - `DEC-0044` : non amendee, non contredite - le sequencement de `NAT-5`/`NAT-9` qu'elle pose reste
   la condition de retour au catalogue (section 2 ci-dessus).
+
+## Note du 2026-08-25 (`camille-po`) - le meme trou s'est reproduit, sur un jeu different, en un sprint
+
+`bandit-manchot-reperes-cm1` (livre par `S20-2`) a ete expose dans `catalogue.yaml` sans qu'aucun
+audit n'existe sur sa fiche - trouve par `nadia-prof`, pas par un controle du depot. Le texte de la
+section 3 ci-dessus couvrait deja ce cas ("absence de tout audit sur l'increment servi") ; ce qui
+manquait est nomme en section 4 : le controle que j'y ai route ("quiconque ecrit ou fusionne un
+verdict de `nadia-prof`") ne nommait que le geste de retrait, jamais le geste symetrique - une
+entree neuve qui entre au catalogue avant qu'aucun verdict n'existe. Ferme dans le meme geste que sa
+decouverte : detail complet, routage et fermeture immediate dans
+`DEC-0048-cp-nature-mot-retourne-au-catalogue-nat-5-valide-cm1-reperes-en-sort-le-temps-de-son-
+audit.md`.
+
+## Note du 2026-08-25 (`camille-po`, second passage) - le jeu expose sans audit etait refusable
+
+`nadia-prof` a audite `bandit-manchot-reperes-cm1` apres coup et prononce `REFUSE` (pli 0 sur 16,
+`REP-4` non tenue). Le trou nomme dans la note ci-dessus n'etait donc pas seulement une question de
+procedure : un jeu reellement refusable est reste expose a des enfants le temps d'un sprint. Detail
+complet, mesure de la gravite et renforcement du controle de `sofia-sm` (obligatoire, non plus
+laisse a son jugement) : `DEC-0049-cm1-reperes-refuse-retiree-du-catalogue-trou-de-gouvernance-
+mesure.md`.

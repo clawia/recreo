@@ -5860,6 +5860,17 @@ ce sprint, et le planning reste gele par `sofia-sm`. Detail complet : amendement
   reaudit), `sofia-sm` (retour au catalogue dans le meme geste que la fusion du verdict favorable,
   mecanisme de `DEC-0045`).
 
+**Mise a jour du 2026-08-25 - livree, VALIDE, Done pedagogique acquis.** `nadia-prof` a reaudite
+l'increment (`round-two` a `f4e0808`, `ADR-0062`) et prononce **VALIDE** : plus aucune reserve
+bloquante (`NAT-9` levee le matin, `NAT-5` levee ce soir sur mesure - 16/16 items marques, 0/16
+sous le pli, cout nul verifie sur les dix-sept autres jeux). Deux points restent ouverts, non
+bloquants : `NAT-10`, `NAT-11` (inchangees) et `NAT-12`, neuve (la boite du marquage n'a pas de
+contraste de luminance ; la designation survit neanmoins a la suppression de toute couleur par
+l'agrandissement seul, ce que `NAT-5` exigeait). Verification complete et perimetre exact de ce
+Done : `DEC-0048`. **Geste 3 execute** : `bandit-manchot-nature-mot-cp` revient au catalogue dans
+le meme geste que cette decision. La ligne de matrice "Distinguer les principaux types de mots"
+passe `couvert-valide` (14/43, 32,6 %).
+
 ### S20-2 - Reperer et corriger la majuscule et la ponctuation dans une phrase donnee (francais CM1)
 
 - **Besoin** : en tant qu'eleve de CM1, je veux dire ce qui manque a une phrase donnee (majuscule
@@ -5905,3 +5916,39 @@ ce sprint, et le planning reste gele par `sofia-sm`. Detail complet : amendement
 - **Agent pressenti** : a affecter au planning par `sofia-sm`. Aucun arbitrage prealable
   supplementaire n'est du : `nadia-prof` a deja instruit la forme et les quatre conditions avant
   tout code.
+
+**Mise a jour du 2026-08-25 - increment livre, audite, REFUSE.** `nadia-prof` a audite l'increment
+(`round-two` a `f4e0808`) et prononce **REFUSE**, sur deux motifs mesures dont elle declare
+elle-meme l'origine dans sa propre specification (`squad/conformite/FICHE-bandit-manchot-reperes-
+cm1.md`, branche `hs-nadia-arbitrages`, commit `9c8aa7b`). `lea-dev` a tenu `REP-1` a `REP-3` et
+l'exactitude des seize enonces ; les deux motifs de refus sont ailleurs. **Le jeu est retire du
+catalogue** (`DEC-0048`, puis `DEC-0049` pour ce second motif independant) ; la ligne de matrice
+reste `en cours`. Detail complet et gravite du trou de gouvernance associe : `DEC-0049`.
+
+**Criteres correctifs, repris avec les mots de `nadia-prof` pour qu'ils ne soient pas affaiblis** :
+
+- **`REP-7` (pli)** - Etant donne chaque item, quand on lit le verdict et l'indice apres un echec a
+  la reference 744 x 551, alors ils restent entierement au-dessus du pli, sur les seize items - pas
+  0 sur 16 comme mesure sur l'increment refuse (pire cas 741,2 px pour un pli a 551, soit 190,2 px
+  de deficit).
+- **`REP-8` (le quatrieme repere)** - Etant donne le paquet complet, quand on lui ajoute un
+  cinquieme libelle qui distingue le point d'interrogation du point final, alors au moins trois
+  items exigent cette distinction pour etre resolus (une phrase interrogative sans signe final a
+  pour bonne reponse ce libelle ; une phrase declarative sans signe final a pour bonne reponse celui
+  du point) - pas zero comme mesure (un enfant ignorant totalement le point d'interrogation
+  obtenait 16 sur 16).
+- Ce que `nadia-prof` ne demande pas : ni de reduire le nombre d'items, ni de toucher aux seize
+  phrases, qu'elle juge bonnes des l'ouverture. Elle ne dicte aucun libelle : la forme revient a
+  `lea-dev`, la mise en page des cinq propositions a `ines-design` si necessaire.
+
+**Deux reserves non bloquantes, consignees, qui ne motivent pas ce refus** :
+
+- **`REP-5`** - Sur les items 8 et 9, l'indice nomme le mot "prenom", qui est aussi le seul mot du
+  libelle correct - un enfant peut apparier les deux mots sans rien savoir (`M21`).
+- **`REP-6`** - L'item 15 emploie une espace ordinaire avant un point d'interrogation la ou la
+  typographie francaise et le paquet voisin `cp-nature-mot` emploient une insecable ; sans effet
+  visible a la reference, mais cet item est precisement celui dont la bonne reponse est "cette
+  phrase est correcte".
+
+**Lien decision** : `DEC-0049`. **Agent pressenti** : `lea-dev` pour la correction, `ines-design`
+si la mise en page des cinq propositions le demande, `nadia-prof` pour le reaudit.

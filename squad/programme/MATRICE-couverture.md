@@ -492,7 +492,7 @@ Source : `squad/programme/francais/competences-cp.md`.
 | francais | CP | Ecriture | Copier un mot, une phrase courte sans erreur, en respectant l'espacement | - | - | non couvert |
 | francais | CP | Ecriture | Ecrire de maniere autonome un mot simple en respectant les correspondances grapheme/phoneme connues | - | - | non couvert |
 | francais | CP | Orthographe et grammaire | Reconnaitre et utiliser les marques du pluriel les plus frequentes (-s) | - | - | non couvert |
-| francais | CP | Orthographe et grammaire | Distinguer les principaux types de mots (nom, verbe) dans une phrase tres simple | bandit-manchot-nature-mot-cp | bandit manchot | en cours |
+| francais | CP | Orthographe et grammaire | Distinguer les principaux types de mots (nom, verbe) dans une phrase tres simple | bandit-manchot-nature-mot-cp | bandit manchot | couvert-valide |
 | francais | CP | Vocabulaire | Utiliser des mots precis pour designer des objets, actions, sensations du quotidien | - | - | non couvert |
 
 **Note du 2026-08-24 (s19, `camille-po`) - arbitrage de l'utilisatrice : statut `non couvrable en
@@ -533,6 +533,16 @@ sans que rien dans le produit ne demande a l'adulte de la pointer. Le libelle de
 pas. **`NAT-5` devient donc la seule condition de retour au catalogue** (`DEC-0045`, section 2) ;
 le chantier de s20 qui l'instruit est `S20-1` (`docs/backlog/backlog.md`, `DEC-0047`), scope a
 `cp-nature-mot` seul ce sprint - le detail du perimetre et son motif vivent dans la story, pas ici.
+
+**Note du 2026-08-25 (s20, `camille-po`) - `NAT-5` VALIDE, ligne `couvert-valide`, verifiee avant de
+bouger.** `nadia-prof` a reaudite l'increment de `S20-1` (`round-two` a `f4e0808`) et prononce
+**VALIDE** : plus aucune reserve bloquante. J'ai relu sa fiche en entier avant de faire bouger cette
+ligne (`squad/README.md`, section 9, etape 6) - detail de ma verification et perimetre exact de ce
+que ce statut recouvre : `DEC-0048`. Restent ouvertes et non bloquantes : `NAT-10`, `NAT-11`
+(inchangees), `NAT-12` (neuve, contraste de luminance de la boite de marquage). Non couvert et
+nomme, sans etre une reserve : ce qu'un lecteur d'ecran annonce de l'enonce segmente par `ADR-0062`,
+et toute largeur autre que la reference 744 x 551. Le jeu revient au catalogue dans le meme geste
+(`DEC-0045`, section 2, condition remplie).
 
 **Note du 2026-08-24 (s19, `camille-po`) - question de validite de proxy due depuis s13, sans
 reponse a ce jour.** La ligne "Decoder un mot regulier inconnu par assemblage syllabique" bloque
@@ -639,6 +649,16 @@ propositions qui nomment ce qui manque) et les quatre conditions prealables `REP
 Jeu propose `bandit-manchot-reperes-cm1`, a confirmer par le developpeur. Aucune ne passe a
 `couvert-valide` par ce planning : ce statut n'est prononce que par `nadia-prof`, apres audit reel
 de l'increment livre.
+
+**Note du 2026-08-25 (s20, `camille-po`) - increment audite, REFUSE, la ligne reste `en cours`.**
+`nadia-prof` a audite `bandit-manchot-reperes-cm1` (`round-two` a `f4e0808`) et prononce **REFUSE**
+sur deux motifs mesures dont elle declare elle-meme l'origine dans sa propre specification : le pli
+(0 verdict sur 16 et 0 indice sur 16 entierement visibles apres un echec, pire cas 190,2 px sous le
+pli) et `REP-4` non tenue (le meme libelle sert de bonne reponse au point final et au point
+d'interrogation sur 6 items sur 16 - un enfant qui ignore l'existence du point d'interrogation
+obtient 16 sur 16). Deux reserves non bloquantes consignees, `REP-5` et `REP-6`. Le jeu est hors
+catalogue (`DEC-0048`, puis `DEC-0049`, ce second motif independant de la simple absence d'audit).
+Detail complet, criteres correctifs verbatim et routage : `DEC-0049`, `docs/backlog/backlog.md`.
 
 **Note du 2026-08-24 (s19, `camille-po`) - trois lignes ouvertes par le Lot A de `DEC-0042`**
 (`docs/backlog/backlog.md`, section "Sprint 19") :
@@ -2186,3 +2206,32 @@ ligne en `en cours` n'est pas un mouvement de couverture, seul un Done pedagogiq
 
 **Ce qui ne bouge pas.** "Distinguer les principaux types de mots" reste `en cours`, `NAT-5` restant
 la seule condition avant reaudit (note ci-dessus). Aucune autre cellule ne bouge.
+
+## Amendement du 2026-08-25 (s20, deuxieme passage) - un increment VALIDE, un increment REFUSE, 14/43 (32,6 %)
+
+Deux verdicts de `nadia-prof` sur les deux jeux ouverts par ce sprint. **`bandit-manchot-nature-
+mot-cp`** (`S20-1`, `NAT-5`) : `VALIDE`, plus aucune reserve bloquante - detail complet et
+verification personnelle avant de faire bouger la ligne : `DEC-0048`. **`bandit-manchot-reperes-
+cm1`** (`S20-2`) : `REFUSE` sur deux motifs mesures - detail complet : `DEC-0049`. Une seule des
+deux lignes bouge.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide | non couvrable en l'etat |
+|---|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 | 0 |
+| mathematiques CM1 | 12 | 4 | 2 | 4 | 2 |
+| francais CP | 12 | 9 | 1 | 1 | 1 |
+| francais CM1 | 12 | 5 | 1 | 5 | 1 |
+| **Total** | **47** | **24** | **5** | **14** | **4** |
+
+Francais CP : `en cours` passe de 2 a 1, `couvert-valide` de 0 a 1 - "Distinguer les principaux
+types de mots" est la ligne qui bouge. Francais CM1 : inchangee - "Reperer et corriger la
+majuscule et la ponctuation..." reste `en cours`, le `REFUSE` ne la fait pas reculer, il l'empeche
+seulement d'avancer.
+
+**Le chiffre, avec sa base.** Le denominateur atteignable reste **43** sur **47**, inchange. Le
+compte de lignes `couvert-valide` passe de **13** a **14**. **13/43 (30,2 %) devient 14/43
+(32,6 %)** - un mouvement de couverture reel, le premier increment joue et audite `VALIDE` depuis la
+cloture de s19.
+
+**Ce qui ne bouge pas.** Aucune ligne ne passe `couvert-valide` pour `cm1-reperes` : ce statut
+n'est prononce que par `nadia-prof`, apres audit reel, et son verdict de ce jour est `REFUSE`.
