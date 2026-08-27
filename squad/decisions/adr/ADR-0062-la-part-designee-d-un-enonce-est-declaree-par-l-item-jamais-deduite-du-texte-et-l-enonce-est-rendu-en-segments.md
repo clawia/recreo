@@ -1,8 +1,16 @@
 # ADR-0062 - La part designee d'un enonce est declaree par l'item, jamais deduite du texte, et l'enonce est rendu en segments dont un seul est le cas ordinaire
 
-- **Statut** : Accepte. **Sa regle est ecrite ici et elle est rouge sur l'arbre d'aujourd'hui** :
-  elle juge des objets qui n'existent pas encore, et son declencheur est le commit qui livre
+- **Statut** : Accepte. **Sa regle etait ecrite ici et rouge le 2026-08-25, jour de cet ADR** :
+  elle jugeait des objets qui n'existaient pas encore, et son declencheur etait le commit qui livre
   `S20-1`. Meme forme que `R-A` et `R-B` d'`ADR-0058`.
+  **Amendement du 2026-08-27 (`theo-archi`, cloture s20)** : `S20-1` est fusionne et **les deux
+  clauses sont vertes** sur `round-two` a `9ccbb1d` -
+  `LaPartDesigneeDUnItemServiEstMarqueeALEcranTest` 6 tests et
+  `UnePartDesigneeApparaitUneSeuleFoisDansSonEnonceTest` 5 tests, 0 echec, lus dans les blocs
+  `Results:` d'un `bash outils/mvn-jdk21.sh -B clean verify` a la racine (694 tests au total).
+  La phrase d'origine est datee plutot que reecrite : elle decrivait l'etat d'un arbre, et un tel
+  enonce se perime avec l'arbre. Mesure et methode dans
+  `squad/sprints/s20-mot-cible-designe-et-conception-de-la-saisie/confirmation-archunit.md`.
 - **Sprint** : s20. **Date** : 2026-08-25. **Auteur** : theo-archi.
 - **Story** : `S20-1` (`docs/backlog/backlog.md`), geste 1, route a `theo-archi` par `DEC-0047`.
 - **Ne decide pas** : la regle CSS, les canaux visuels, la levee de `NAT-5`, la portee produit du
