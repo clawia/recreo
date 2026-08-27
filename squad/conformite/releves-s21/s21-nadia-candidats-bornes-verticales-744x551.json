@@ -1,0 +1,289 @@
+{
+  "viewport": [
+    744,
+    551
+  ],
+  "jeuTemoin": "bandit-manchot-le-bon-son-cp",
+  "cadre": {
+    "largeurEnonce": 696,
+    "largeurRangee": 680,
+    "colonne3": 176,
+    "colonne2": 292,
+    "largeurConsigne": 696,
+    "policeEnonce": "700 32px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "policeProposition": "700 32px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "policeConsigne": "400 20px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "mesurer": {}
+  },
+  "temoinAuRepos": {
+    "consigne": "Dis le mot. Quel son entends-tu ?",
+    "enonce": "LAPIN",
+    "hauteurConsigne": 30,
+    "hauteurEnonce": 48,
+    "rangees": 1,
+    "nbPropositions": 3,
+    "propositions": [
+      "an",
+      "in",
+      "on"
+    ],
+    "hauteurBouton": 74,
+    "basPropositions": 363.19,
+    "basVerdict": null,
+    "basIndice": null,
+    "hauteurIndice": null,
+    "defilement": 0,
+    "hauteurDocument": 551
+  },
+  "temoinApresEchec": {
+    "consigne": "Dis le mot. Quel son entends-tu ?",
+    "enonce": "LAPIN",
+    "hauteurConsigne": 30,
+    "hauteurEnonce": 48,
+    "rangees": 1,
+    "nbPropositions": 3,
+    "propositions": [
+      "an",
+      "in",
+      "on"
+    ],
+    "hauteurBouton": 74,
+    "basPropositions": 363.19,
+    "basVerdict": 426.19,
+    "basIndice": 505.19,
+    "hauteurIndice": 50,
+    "defilement": 0,
+    "hauteurDocument": 551
+  },
+  "cadreIndice": {
+    "largeur": 696,
+    "police": "400 20px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "interligne": "30px"
+  },
+  "temoinDeCalibrage": {
+    "texte": "quatre-vingt-seize mille deux cent trois",
+    "largeur": 590.05,
+    "attendu": 590.05
+  },
+  "largeurs": {
+    "bornes": {
+      "aaaaaaaaaaaaaaaaaa": 309.94,
+      "aaaaaaaaaaaaaaaaaaa": 327.16,
+      "mmmmmmmm": 234.5,
+      "une gomme": 180.17,
+      "une cuillère": 174.09,
+      "un éléphant": 179.41
+    }
+  },
+  "largeursIndice": {
+    "Compare les trois objets sans les mesurer, et souviens-toi qu'il ne faut jamais se servir d'une règle ni d'une balance pour répondre à cette question.": 1293.3,
+    "Dis le mot tout doucement, en le coupant en morceaux, et tape dans tes mains à chaque morceau que tu entends.": 1005.01
+  },
+  "substitutions": [
+    {
+      "consigne": "Regarde bien, puis compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 1,
+      "nbPropositions": 3,
+      "propositions": [
+        "une baignoire",
+        "une girafe",
+        "un chat"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 363.19,
+      "basVerdict": 426.19,
+      "basIndice": 505.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 551,
+      "nom": "borne 3 libelles - somme 519,79 px",
+      "indiceAuDessusDuPli": true,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Regarde bien, puis compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 1,
+      "nbPropositions": 3,
+      "propositions": [
+        "une baignoire",
+        "une girafe",
+        "un lapin"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 363.19,
+      "basVerdict": 426.19,
+      "basIndice": 505.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 551,
+      "nom": "borne 3 libelles - somme 526,44 px",
+      "indiceAuDessusDuPli": true,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Regarde bien, puis compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 1,
+      "nbPropositions": 3,
+      "propositions": [
+        "une baignoire",
+        "une girafe",
+        "un verre"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 363.19,
+      "basVerdict": 426.19,
+      "basIndice": 505.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 551,
+      "nom": "borne 3 libelles - somme 529,86 px",
+      "indiceAuDessusDuPli": true,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Regarde bien, puis compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 1,
+      "nbPropositions": 3,
+      "propositions": [
+        "une baignoire",
+        "une girafe",
+        "un caillou"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 363.19,
+      "basVerdict": 426.19,
+      "basIndice": 505.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 551,
+      "nom": "borne 3 libelles - somme 552,51 px",
+      "indiceAuDessusDuPli": true,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Regarde bien, puis compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 1,
+      "nbPropositions": 2,
+      "propositions": [
+        "une baignoire",
+        "une bouteille"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 363.19,
+      "basVerdict": 426.19,
+      "basIndice": 505.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 551,
+      "nom": "2 libelles - larges",
+      "indiceAuDessusDuPli": true,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Regarde bien, puis compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 1,
+      "nbPropositions": 2,
+      "propositions": [
+        "nom",
+        "verbe"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 363.19,
+      "basVerdict": 426.19,
+      "basIndice": 505.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 551,
+      "nom": "2 libelles - courts",
+      "indiceAuDessusDuPli": true,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Regarde bien, puis compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 1,
+      "nbPropositions": 3,
+      "propositions": [
+        "1",
+        "2",
+        "3"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 363.19,
+      "basVerdict": 426.19,
+      "basIndice": 565.19,
+      "hauteurIndice": 110,
+      "defilement": 0,
+      "hauteurDocument": 597,
+      "nom": "3 libelles courts + indice 3 lignes",
+      "indiceAuDessusDuPli": false,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Regarde bien, puis compare.",
+      "enonce": "Nino a sept crayons dans sa trousse et il en casse deux pendant la récréation du matin.",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 96,
+      "rangees": 1,
+      "nbPropositions": 3,
+      "propositions": [
+        "1",
+        "2",
+        "3"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 411.19,
+      "basVerdict": 474.19,
+      "basIndice": 553.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 585,
+      "nom": "3 libelles courts + enonce 2 lignes",
+      "indiceAuDessusDuPli": false,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Tape dans tes mains pour chaque morceau du mot que tu entends, puis choisis le nombre de syllabes que tu as comptées.",
+      "enonce": "Test",
+      "hauteurConsigne": 60,
+      "hauteurEnonce": 48,
+      "rangees": 1,
+      "nbPropositions": 3,
+      "propositions": [
+        "1",
+        "2",
+        "3"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 393.19,
+      "basVerdict": 456.19,
+      "basIndice": 535.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 567,
+      "nom": "3 libelles courts + consigne 2 lignes",
+      "indiceAuDessusDuPli": true,
+      "verdictAuDessusDuPli": true
+    }
+  ]
+}

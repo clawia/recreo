@@ -1,0 +1,26 @@
+{
+  "textes": {
+    "sondes": {
+      "quoi": "proposition",
+      "valeurs": ["une baignoire", "un bol", "une cuillère", "une gomme", "une bouteille", "une montagne", "un très long libelle de test"]
+    }
+  },
+  "indices": [],
+  "cas": [
+    {"nom": "asymetrique - baignoire + 2 courts", "enonce": "Test", "libelles": ["une baignoire", "un bol", "un bol"], "indice": "Court.", "consigne": "Compare."},
+    {"nom": "asymetrique - montagne + 2 courts", "enonce": "Test", "libelles": ["une montagne", "un bol", "un bol"], "indice": "Court.", "consigne": "Compare."},
+    {"nom": "asymetrique - tres long + 2 courts", "enonce": "Test", "libelles": ["un très long libelle de test", "un bol", "un bol"], "indice": "Court.", "consigne": "Compare."},
+    {"nom": "3 x cuillere (174,09 chacun)", "enonce": "Test", "libelles": ["une cuillère", "une cuillère", "une cuillère"], "indice": "Court.", "consigne": "Compare."},
+    {"nom": "3 x gomme (180,17 chacun)", "enonce": "Test", "libelles": ["une gomme", "une gomme", "une gomme"], "indice": "Court.", "consigne": "Compare."},
+    {"nom": "3 x bouteille (197,86 chacun)", "enonce": "Test", "libelles": ["une bouteille", "une bouteille", "une bouteille"], "indice": "Court.", "consigne": "Compare."},
+    {"nom": "3 x baignoire (208,45 chacun)", "enonce": "Test", "libelles": ["une baignoire", "une baignoire", "une baignoire"], "indice": "Court.", "consigne": "Compare."},
+    {"nom": "baignoire + bouteille + cuillere (580,40)", "enonce": "Test", "libelles": ["une baignoire", "une bouteille", "une cuillère"], "indice": "Court.", "consigne": "Compare."},
+    {"nom": "baignoire + girafe + caillou (552,51)", "enonce": "Test", "libelles": ["une baignoire", "une girafe", "un caillou"], "indice": "Court.", "consigne": "Compare."},
+    {"nom": "baignoire + girafe + cuillere (559,32)", "enonce": "Test", "libelles": ["une baignoire", "une girafe", "une cuillère"], "indice": "Court.", "consigne": "Compare."},
+    {"nom": "baignoire + gomme + cuillere (562,71)", "enonce": "Test", "libelles": ["une baignoire", "une gomme", "une cuillère"], "indice": "Court.", "consigne": "Compare."},
+    {"nom": "baignoire + bouteille + girafe (559,61)", "enonce": "Test", "libelles": ["une baignoire", "une bouteille", "une girafe"], "indice": "Court.", "consigne": "Compare."},
+    {"nom": "baignoire + bouteille + plume (566,09)", "enonce": "Test", "libelles": ["une baignoire", "une bouteille", "une plume"], "indice": "Court.", "consigne": "Compare."},
+    {"nom": "baignoire + bouteille + brique (569,44)", "enonce": "Test", "libelles": ["une baignoire", "une bouteille", "une brique"], "indice": "Court.", "consigne": "Compare."},
+    {"nom": "baignoire + bouteille + fourmi (573,59)", "enonce": "Test", "libelles": ["une baignoire", "une bouteille", "une fourmi"], "indice": "Court.", "consigne": "Compare."}
+  ]
+}

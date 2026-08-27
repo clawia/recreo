@@ -1,0 +1,93 @@
+{
+  "viewport": [
+    744,
+    551
+  ],
+  "cas": [
+    {
+      "nom": "1 rangee, enonce 1 ligne, indice 1 ligne",
+      "sansS21_2": {
+        "rangees": 1,
+        "hauteurBouton": 74,
+        "basVerdict": 426.19,
+        "basIndice": 505.19,
+        "hauteurDocument": 551
+      },
+      "avecS21_2": {
+        "rangees": 1,
+        "hauteurBouton": 66,
+        "basVerdict": 410.19,
+        "basIndice": 489.19,
+        "hauteurDocument": 551
+      }
+    },
+    {
+      "nom": "1 rangee, enonce 1 ligne, indice 2 lignes",
+      "sansS21_2": {
+        "rangees": 1,
+        "hauteurBouton": 74,
+        "basVerdict": 426.19,
+        "basIndice": 535.19,
+        "hauteurDocument": 567
+      },
+      "avecS21_2": {
+        "rangees": 1,
+        "hauteurBouton": 66,
+        "basVerdict": 410.19,
+        "basIndice": 519.19,
+        "hauteurDocument": 551
+      }
+    },
+    {
+      "nom": "2 rangees (3 libelles larges), indice 1 ligne",
+      "sansS21_2": {
+        "rangees": 2,
+        "hauteurBouton": 74,
+        "basVerdict": 516.19,
+        "basIndice": 595.19,
+        "hauteurDocument": 627
+      },
+      "avecS21_2": {
+        "rangees": 2,
+        "hauteurBouton": 66,
+        "basVerdict": 492.19,
+        "basIndice": 571.19,
+        "hauteurDocument": 603
+      }
+    },
+    {
+      "nom": "2 rangees (4 libelles), indice 1 ligne",
+      "sansS21_2": {
+        "rangees": 2,
+        "hauteurBouton": 71,
+        "basVerdict": 510.19,
+        "basIndice": 589.19,
+        "hauteurDocument": 621
+      },
+      "avecS21_2": {
+        "rangees": 2,
+        "hauteurBouton": 63,
+        "basVerdict": 486.19,
+        "basIndice": 565.19,
+        "hauteurDocument": 597
+      }
+    },
+    {
+      "nom": "1 rangee, enonce 2 lignes, indice 1 ligne",
+      "sansS21_2": {
+        "rangees": 1,
+        "hauteurBouton": 74,
+        "basVerdict": 474.19,
+        "basIndice": 553.19,
+        "hauteurDocument": 585
+      },
+      "avecS21_2": {
+        "rangees": 1,
+        "hauteurBouton": 66,
+        "basVerdict": 458.19,
+        "basIndice": 537.19,
+        "hauteurDocument": 569
+      }
+    }
+  ]
+}

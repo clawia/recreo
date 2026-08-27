@@ -1,0 +1,116 @@
+{
+  "textes": {
+    "libellesSyllabes": {
+      "quoi": "proposition",
+      "valeurs": ["1", "2", "3", "4", "1 syllabe", "2 syllabes", "3 syllabes"]
+    },
+    "enoncesSyllabes": {
+      "quoi": "enonce",
+      "valeurs": ["CHAT", "LOUP", "RIZ", "BOL", "SAC", "PAPA", "LAPIN", "BATEAU", "CADEAU", "MAISON", "MOULIN", "CHOCOLAT", "DOMINO", "ANIMAL", "SAMEDI", "PARASOL", "ORDINATEUR", "HELICOPTERE", "chocolat", "hélicoptère"]
+    },
+    "consignes": {
+      "quoi": "consigne",
+      "valeurs": ["Tape dans tes mains. Combien de syllabes ?", "Dis le mot. Combien de syllabes entends-tu ?", "Dis le mot. Quel son entends-tu ?", "Quel mot complète la phrase ?", "Regarde bien, puis compare."]
+    },
+    "libellesMotManquant": {
+      "quoi": "proposition",
+      "valeurs": ["lait", "jus", "sirop", "crayon", "cahier", "cartable", "aboie", "miaule", "bêle", "ciseaux", "crayons", "cahiers", "couteau", "fourchette", "cuillère"]
+    },
+    "enoncesMotManquant": {
+      "quoi": "enonce",
+      "valeurs": ["Le chat boit du ___.", "J'écris avec un ___.", "Le chien ___ quand il voit le facteur.", "Je coupe le papier avec des ___.", "Le poisson nage dans l'___.", "On écrit avec un ___."]
+    },
+    "libellesComparerAvecArticle": {
+      "quoi": "proposition",
+      "valeurs": ["une règle", "un crayon", "une gomme", "un éléphant", "une souris", "une fourmi", "une girafe", "un chat", "un lapin", "une plume", "un caillou", "une brique", "une montagne", "une maison", "une chaise", "une baignoire", "un verre", "une cuillère", "une bouteille", "un seau", "un bol"]
+    },
+    "libellesComparerSansArticle": {
+      "quoi": "proposition",
+      "valeurs": ["règle", "crayon", "gomme", "éléphant", "souris", "fourmi", "girafe", "plume", "caillou", "brique", "montagne", "baignoire", "cuillère", "bouteille", "seau", "verre"]
+    },
+    "enoncesComparer": {
+      "quoi": "enonce",
+      "valeurs": ["Qu'est-ce qui est le plus long ?", "Qu'est-ce qui est le plus lourd ?", "Qu'est-ce qui est le plus léger ?", "Où peut-on mettre le plus d'eau ?", "Où peut-on mettre le moins d'eau ?", "Qu'est-ce qui contient le plus d'eau ?"]
+    }
+  },
+  "indices": [
+    "Dis le mot tout doucement, en le coupant en morceaux.",
+    "Tape dans tes mains à chaque morceau du mot.",
+    "Un seul de ces trois mots se boit.",
+    "Pense à ce que le chien fait avec sa voix.",
+    "Imagine que tu remplis chaque objet avec de l'eau.",
+    "Compare les trois objets sans les mesurer : lequel est le plus grand ?"
+  ],
+  "cas": [
+    {
+      "nom": "syllabes - mot court, 3 libelles chiffres, indice 1 ligne",
+      "consigne": "Tape dans tes mains. Combien de syllabes ?",
+      "enonce": "CHOCOLAT",
+      "libelles": ["1", "2", "3"],
+      "indice": "Tape dans tes mains à chaque morceau du mot."
+    },
+    {
+      "nom": "syllabes - 3 libelles longs (n syllabes)",
+      "consigne": "Tape dans tes mains. Combien de syllabes ?",
+      "enonce": "CHOCOLAT",
+      "libelles": ["1 syllabe", "2 syllabes", "3 syllabes"],
+      "indice": "Tape dans tes mains à chaque morceau du mot."
+    },
+    {
+      "nom": "syllabes - 4 libelles chiffres (regle 1 violee)",
+      "consigne": "Tape dans tes mains. Combien de syllabes ?",
+      "enonce": "HELICOPTERE",
+      "libelles": ["1", "2", "3", "4"],
+      "indice": "Tape dans tes mains à chaque morceau du mot."
+    },
+    {
+      "nom": "syllabes - indice 2 lignes",
+      "consigne": "Tape dans tes mains. Combien de syllabes ?",
+      "enonce": "CHOCOLAT",
+      "libelles": ["1", "2", "3"],
+      "indice": "Dis le mot tout doucement, en le coupant en morceaux, et tape dans tes mains à chaque morceau que tu entends."
+    },
+    {
+      "nom": "mot-manquant - enonce court, 3 libelles",
+      "consigne": "Quel mot complète la phrase ?",
+      "enonce": "Le chat boit du ___.",
+      "libelles": ["lait", "jus", "sirop"],
+      "indice": "Un seul de ces trois mots se boit."
+    },
+    {
+      "nom": "mot-manquant - enonce long (38 car.), 3 libelles",
+      "consigne": "Quel mot complète la phrase ?",
+      "enonce": "Le chien ___ quand il voit le facteur.",
+      "libelles": ["aboie", "miaule", "bêle"],
+      "indice": "Pense à ce que le chien fait avec sa voix."
+    },
+    {
+      "nom": "comparer - libelles avec article (long/court)",
+      "consigne": "Regarde bien, puis compare.",
+      "enonce": "Qu'est-ce qui est le plus long ?",
+      "libelles": ["une règle", "un crayon", "une gomme"],
+      "indice": "Compare les trois objets sans les mesurer."
+    },
+    {
+      "nom": "comparer - contenance avec article",
+      "consigne": "Regarde bien, puis compare.",
+      "enonce": "Où peut-on mettre le plus d'eau ?",
+      "libelles": ["une baignoire", "une bouteille", "une cuillère"],
+      "indice": "Imagine que tu remplis chaque objet avec de l'eau."
+    },
+    {
+      "nom": "comparer - contenance sans article",
+      "consigne": "Regarde bien, puis compare.",
+      "enonce": "Où peut-on mettre le plus d'eau ?",
+      "libelles": ["baignoire", "bouteille", "cuillère"],
+      "indice": "Imagine que tu remplis chaque objet avec de l'eau."
+    },
+    {
+      "nom": "comparer - masse avec article",
+      "consigne": "Regarde bien, puis compare.",
+      "enonce": "Qu'est-ce qui est le plus lourd ?",
+      "libelles": ["un éléphant", "une souris", "une fourmi"],
+      "indice": "Compare les trois objets sans les mesurer."
+    }
+  ]
+}
