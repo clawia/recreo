@@ -1,0 +1,208 @@
+{
+  "cadreMesure": {
+    "largeurOfferteALEnonce": 696,
+    "largeurOfferteAUnLibelleATroisColonnes": 176,
+    "policeDeLEnonce": "700 32px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "policeDeLaProposition": "700 32px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+  },
+  "paquets": {
+    "cm1-accord-sujet-verbe": {
+      "enonceQuiNeTientPasSurUneLigne": 20,
+      "items": 21,
+      "itemsAPlusDeTroisPropositions": 0,
+      "itemsPortantUnLibelleTropLarge": 1,
+      "libelleLePlusLarge": [
+        "laboureront",
+        178.98
+      ],
+      "libellesTropLarges": 1
+    },
+    "cm1-accords-groupe-nominal": {
+      "enonceQuiNeTientPasSurUneLigne": 0,
+      "items": 24,
+      "itemsAPlusDeTroisPropositions": 8,
+      "itemsPortantUnLibelleTropLarge": 0,
+      "libelleLePlusLarge": [
+        "amusantes",
+        160.27
+      ],
+      "libellesTropLarges": 0
+    },
+    "cm1-antonymes": {
+      "enonceQuiNeTientPasSurUneLigne": 1,
+      "items": 17,
+      "itemsAPlusDeTroisPropositions": 0,
+      "itemsPortantUnLibelleTropLarge": 0,
+      "libelleLePlusLarge": [
+        "silencieuse",
+        161.45
+      ],
+      "libellesTropLarges": 0
+    },
+    "cm1-conjugaison-present": {
+      "enonceQuiNeTientPasSurUneLigne": 3,
+      "items": 25,
+      "itemsAPlusDeTroisPropositions": 25,
+      "itemsPortantUnLibelleTropLarge": 0,
+      "libelleLePlusLarge": [
+        "mangeons",
+        156.02
+      ],
+      "libellesTropLarges": 0
+    },
+    "cm1-grands-nombres": {
+      "enonceQuiNeTientPasSurUneLigne": 4,
+      "items": 28,
+      "itemsAPlusDeTroisPropositions": 0,
+      "itemsPortantUnLibelleTropLarge": 13,
+      "libelleLePlusLarge": [
+        "quatre-vingt-seize mille deux cent trois",
+        590.05
+      ],
+      "libellesTropLarges": 36
+    },
+    "cm1-homophones": {
+      "enonceQuiNeTientPasSurUneLigne": 2,
+      "items": 24,
+      "itemsAPlusDeTroisPropositions": 0,
+      "itemsPortantUnLibelleTropLarge": 0,
+      "libelleLePlusLarge": [
+        "mais",
+        69.7
+      ],
+      "libellesTropLarges": 0
+    },
+    "cm1-mesures": {
+      "enonceQuiNeTientPasSurUneLigne": 0,
+      "items": 24,
+      "itemsAPlusDeTroisPropositions": 0,
+      "itemsPortantUnLibelleTropLarge": 3,
+      "libelleLePlusLarge": [
+        "5000000 tonnes",
+        239.67
+      ],
+      "libellesTropLarges": 3
+    },
+    "cm1-perimetre": {
+      "enonceQuiNeTientPasSurUneLigne": 19,
+      "items": 22,
+      "itemsAPlusDeTroisPropositions": 0,
+      "itemsPortantUnLibelleTropLarge": 1,
+      "libelleLePlusLarge": [
+        "la longueur de son contour",
+        406.61
+      ],
+      "libellesTropLarges": 3
+    },
+    "cm1-reperes": {
+      "enonceQuiNeTientPasSurUneLigne": 2,
+      "items": 16,
+      "itemsAPlusDeTroisPropositions": 0,
+      "itemsPortantUnLibelleTropLarge": 16,
+      "libelleLePlusLarge": [
+        "Majuscule au prénom",
+        323.73
+      ],
+      "libellesTropLarges": 39
+    },
+    "cm1-synonymes": {
+      "enonceQuiNeTientPasSurUneLigne": 7,
+      "items": 16,
+      "itemsAPlusDeTroisPropositions": 0,
+      "itemsPortantUnLibelleTropLarge": 1,
+      "libelleLePlusLarge": [
+        "malheureux",
+        178.52
+      ],
+      "libellesTropLarges": 1
+    },
+    "cm1-tables-multiplication": {
+      "enonceQuiNeTientPasSurUneLigne": 0,
+      "items": 99,
+      "itemsAPlusDeTroisPropositions": 0,
+      "itemsPortantUnLibelleTropLarge": 0,
+      "libelleLePlusLarge": [
+        "100",
+        55.22
+      ],
+      "libellesTropLarges": 0
+    },
+    "cp-comparer-nombres": {
+      "enonceQuiNeTientPasSurUneLigne": 0,
+      "items": 24,
+      "itemsAPlusDeTroisPropositions": 0,
+      "itemsPortantUnLibelleTropLarge": 0,
+      "libelleLePlusLarge": [
+        "<",
+        22.63
+      ],
+      "libellesTropLarges": 0
+    },
+    "cp-complements-10": {
+      "enonceQuiNeTientPasSurUneLigne": 0,
+      "items": 11,
+      "itemsAPlusDeTroisPropositions": 0,
+      "itemsPortantUnLibelleTropLarge": 0,
+      "libelleLePlusLarge": [
+        "10",
+        36.81
+      ],
+      "libellesTropLarges": 0
+    },
+    "cp-le-bon-son": {
+      "enonceQuiNeTientPasSurUneLigne": 0,
+      "items": 15,
+      "itemsAPlusDeTroisPropositions": 0,
+      "itemsPortantUnLibelleTropLarge": 0,
+      "libelleLePlusLarge": [
+        "on",
+        38.92
+      ],
+      "libellesTropLarges": 0
+    },
+    "cp-nature-mot": {
+      "enonceQuiNeTientPasSurUneLigne": 0,
+      "items": 16,
+      "itemsAPlusDeTroisPropositions": 0,
+      "itemsPortantUnLibelleTropLarge": 0,
+      "libelleLePlusLarge": [
+        "verbe",
+        84.23
+      ],
+      "libellesTropLarges": 0
+    },
+    "cp-problemes-additifs": {
+      "enonceQuiNeTientPasSurUneLigne": 22,
+      "items": 22,
+      "itemsAPlusDeTroisPropositions": 0,
+      "itemsPortantUnLibelleTropLarge": 0,
+      "libelleLePlusLarge": [
+        "11",
+        36.81
+      ],
+      "libellesTropLarges": 0
+    },
+    "cp-soustractions": {
+      "enonceQuiNeTientPasSurUneLigne": 0,
+      "items": 24,
+      "itemsAPlusDeTroisPropositions": 0,
+      "itemsPortantUnLibelleTropLarge": 0,
+      "libelleLePlusLarge": [
+        "10",
+        36.81
+      ],
+      "libellesTropLarges": 0
+    }
+  },
+  "total": {
+    "enonceQuiNeTientPasSurUneLigne": 80,
+    "items": 428,
+    "itemsAPlusDeTroisPropositions": 33,
+    "itemsPortantUnLibelleTropLarge": 35,
+    "libellesTropLarges": 83
+  },
+  "viewport": [
+    744,
+    551
+  ]
+}

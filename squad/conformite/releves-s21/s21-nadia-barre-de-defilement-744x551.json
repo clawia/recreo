@@ -1,0 +1,62 @@
+{
+  "auteur": "nadia-prof",
+  "configurations": [
+    {
+      "barreDeDefilementPeinte": false,
+      "basDeLaBoiteDIndice": 595.19,
+      "basDeLaDerniereLigneDeTexte": 583.19,
+      "configuration": "barre masquee, largeur de mise en page 744",
+      "hauteurDUnBouton": 74,
+      "hauteurDuDocument": 627,
+      "itemTire": "elle prépare son cartable pour demain.",
+      "largeurDeLaFenetre": 744,
+      "largeurDeLaRangeeDePropositions": 680,
+      "largeurDeMiseEnPage": 744,
+      "rangees": 2
+    },
+    {
+      "apresDefilementJusquEnBas": {
+        "basDeLaBoiteDIndice": 519.19,
+        "defilement": 76
+      },
+      "barreDeDefilementPeinte": true,
+      "basDeLaBoiteDIndice": 595.19,
+      "basDeLaDerniereLigneDeTexte": 583.19,
+      "configuration": "barre de defilement classique peinte, fenetre 744",
+      "hauteurDUnBouton": 74,
+      "hauteurDuDocument": 627,
+      "itemTire": "Ma cousine léa vient nous voir dimanche.",
+      "largeurDeLaFenetre": 744,
+      "largeurDeLaRangeeDePropositions": 680,
+      "largeurDeMiseEnPage": 729,
+      "rangees": 2
+    },
+    {
+      "barreDeDefilementPeinte": false,
+      "basDeLaBoiteDIndice": 595.19,
+      "basDeLaDerniereLigneDeTexte": 583.19,
+      "configuration": "barre masquee, largeur de mise en page forcee a 729",
+      "hauteurDUnBouton": 74,
+      "hauteurDuDocument": 627,
+      "itemTire": "Le chien aboie très fort dans le jardin.",
+      "largeurDeLaFenetre": 729,
+      "largeurDeLaRangeeDePropositions": 680,
+      "largeurDeMiseEnPage": 729,
+      "rangees": 2
+    }
+  ],
+  "date": "2026-08-27",
+  "etatCouvert": "navigateur lance SANS --hide-scrollbars, donc barre de defilement classique peinte, au seul viewport 744 x 551",
+  "etatToujoursNonCouvert": [
+    "toute autre largeur, en particulier 360 px ou la largeur de mise en page tombe sous le plafond de .container et ou la conclusion ci-dessous ne vaut plus",
+    "un appareil tactile a barre superposee, jamais essaye"
+  ],
+  "jeu": "bandit-manchot-reperes-cm1",
+  "objet": "lever ou non ma limite --hide-scrollbars, en mesurant l'etat exact qu'elle laissait de cote",
+  "outil": "squad/outils/nadia-prof/lire-le-pli-a-l-ecran.py",
+  "sprint": "s21",
+  "viewport": [
+    744,
+    551
+  ]
+}

@@ -1,0 +1,384 @@
+{
+  "auteur": "nadia-prof",
+  "date": "2026-08-27",
+  "mesureDirecte": {
+    "balayage": [
+      {
+        "gainParRangeeContreDeuxRemPx": 0.0,
+        "hauteurDUnBoutonPx": 74,
+        "police": "2rem",
+        "policeRendue": "32px"
+      },
+      {
+        "gainParRangeeContreDeuxRemPx": 3.0,
+        "hauteurDUnBoutonPx": 71,
+        "police": "1.875rem",
+        "policeRendue": "30px"
+      },
+      {
+        "gainParRangeeContreDeuxRemPx": 6.0,
+        "hauteurDUnBoutonPx": 68,
+        "police": "1.75rem",
+        "policeRendue": "28px"
+      },
+      {
+        "gainParRangeeContreDeuxRemPx": 12.0,
+        "hauteurDUnBoutonPx": 62,
+        "police": "1.5rem",
+        "policeRendue": "24px"
+      },
+      {
+        "gainParRangeeContreDeuxRemPx": 18.0,
+        "hauteurDUnBoutonPx": 56,
+        "police": "1.25rem",
+        "policeRendue": "20px"
+      },
+      {
+        "gainParRangeeContreDeuxRemPx": 24.0,
+        "hauteurDUnBoutonPx": 50,
+        "police": "1rem",
+        "policeRendue": "16px"
+      }
+    ],
+    "jeu": "bandit-manchot-problemes-additifs-cp",
+    "loi": "hauteur d'un bouton = 24 x police(rem) + 26 px ; une rangee coute cette hauteur plus le gap de 1rem",
+    "outil": "squad/outils/nadia-prof/lire-le-pli-a-l-ecran.py"
+  },
+  "objet": "ce que la police de .proposition peut et ne peut pas fermer sur REP-8",
+  "projection": {
+    "limite": "la projection ne tient pas compte du fait qu'une police plus petite peut aussi reduire le NOMBRE de rangees ; elle est donc pessimiste, et je ne m'en sers que pour montrer qu'aucune valeur ne ferme REP-8",
+    "methode": "basIndice du releve moins le gain, gain = 8 px (marge de .score a 0,25rem) + 8 px par rangee (rembourrage vertical de .proposition a 0,5rem) + 24 x (2 - police) px par rangee ; la loi de gain est verifiee par mesure directe ci-dessus et contre-verifiee sur bandit-manchot-accord-sujet-verbe-cm1 (567,19 px mesures contre 567,19 px projetes)",
+    "parPolice": [
+      {
+        "itemsIndiceSousLePli": 30,
+        "itemsMesures": 157,
+        "jeuxTouches": [
+          "bandit-manchot-accord-sujet-verbe-cm1",
+          "bandit-manchot-accords-groupe-nominal-cm1",
+          "bandit-manchot-conversions-unites-cm1",
+          "bandit-manchot-grands-nombres-cm1",
+          "bandit-manchot-reperes-cm1",
+          "bandit-manchot-synonymes-cm1"
+        ],
+        "pireBasIndice": 683.19,
+        "policeDeProposition": "2rem"
+      },
+      {
+        "itemsIndiceSousLePli": 30,
+        "itemsMesures": 157,
+        "jeuxTouches": [
+          "bandit-manchot-accord-sujet-verbe-cm1",
+          "bandit-manchot-accords-groupe-nominal-cm1",
+          "bandit-manchot-conversions-unites-cm1",
+          "bandit-manchot-grands-nombres-cm1",
+          "bandit-manchot-reperes-cm1",
+          "bandit-manchot-synonymes-cm1"
+        ],
+        "pireBasIndice": 674.19,
+        "policeDeProposition": "1.875rem"
+      },
+      {
+        "itemsIndiceSousLePli": 30,
+        "itemsMesures": 157,
+        "jeuxTouches": [
+          "bandit-manchot-accord-sujet-verbe-cm1",
+          "bandit-manchot-accords-groupe-nominal-cm1",
+          "bandit-manchot-conversions-unites-cm1",
+          "bandit-manchot-grands-nombres-cm1",
+          "bandit-manchot-reperes-cm1",
+          "bandit-manchot-synonymes-cm1"
+        ],
+        "pireBasIndice": 665.19,
+        "policeDeProposition": "1.75rem"
+      },
+      {
+        "itemsIndiceSousLePli": 21,
+        "itemsMesures": 157,
+        "jeuxTouches": [
+          "bandit-manchot-accord-sujet-verbe-cm1",
+          "bandit-manchot-accords-groupe-nominal-cm1",
+          "bandit-manchot-grands-nombres-cm1",
+          "bandit-manchot-reperes-cm1",
+          "bandit-manchot-synonymes-cm1"
+        ],
+        "pireBasIndice": 647.19,
+        "policeDeProposition": "1.5rem"
+      },
+      {
+        "itemsIndiceSousLePli": 7,
+        "itemsMesures": 157,
+        "jeuxTouches": [
+          "bandit-manchot-accords-groupe-nominal-cm1",
+          "bandit-manchot-grands-nombres-cm1",
+          "bandit-manchot-reperes-cm1"
+        ],
+        "pireBasIndice": 629.19,
+        "policeDeProposition": "1.25rem"
+      },
+      {
+        "itemsIndiceSousLePli": 4,
+        "itemsMesures": 157,
+        "jeuxTouches": [
+          "bandit-manchot-grands-nombres-cm1",
+          "bandit-manchot-reperes-cm1"
+        ],
+        "pireBasIndice": 611.19,
+        "policeDeProposition": "1rem"
+      }
+    ],
+    "population": "squad/conformite/releves-s21/s21-pli-du-catalogue-744x551.json (ines-design, 17 jeux, 167 items, 157 items portant un indice lu)",
+    "referenceSansAucunLevier": {
+      "itemsIndiceSousLePli": 56
+    }
+  },
+  "residuApresLesDeuxLeviersDeFormeAPoliceInchangee": {
+    "items": [
+      {
+        "basIndiceProjete": 683.19,
+        "deficitPx": 132.19,
+        "encreDeLaDerniereLigneCoupeePx": 20.0,
+        "enonce": "Décompose 305 421 en valeurs de position.",
+        "jeu": "bandit-manchot-grands-nombres-cm1",
+        "rangees": 3
+      },
+      {
+        "basIndiceProjete": 653.19,
+        "deficitPx": 102.19,
+        "encreDeLaDerniereLigneCoupeePx": 20.0,
+        "enonce": "Décompose 128 000 en valeurs de position.",
+        "jeu": "bandit-manchot-grands-nombres-cm1",
+        "rangees": 3
+      },
+      {
+        "basIndiceProjete": 619.19,
+        "deficitPx": 68.19,
+        "encreDeLaDerniereLigneCoupeePx": 20.0,
+        "enonce": "Nous partons demain matin pour la montagne",
+        "jeu": "bandit-manchot-reperes-cm1",
+        "rangees": 2
+      },
+      {
+        "basIndiceProjete": 619.19,
+        "deficitPx": 68.19,
+        "encreDeLaDerniereLigneCoupeePx": 20.0,
+        "enonce": "Pourquoi les feuilles tombent-elles en automne",
+        "jeu": "bandit-manchot-reperes-cm1",
+        "rangees": 2
+      },
+      {
+        "basIndiceProjete": 595.19,
+        "deficitPx": 44.19,
+        "encreDeLaDerniereLigneCoupeePx": 20.0,
+        "enonce": "Des chats ___.",
+        "jeu": "bandit-manchot-accords-groupe-nominal-cm1",
+        "rangees": 2
+      },
+      {
+        "basIndiceProjete": 595.19,
+        "deficitPx": 44.19,
+        "encreDeLaDerniereLigneCoupeePx": 20.0,
+        "enonce": "Le ballon est ___.",
+        "jeu": "bandit-manchot-accords-groupe-nominal-cm1",
+        "rangees": 2
+      },
+      {
+        "basIndiceProjete": 595.19,
+        "deficitPx": 44.19,
+        "encreDeLaDerniereLigneCoupeePx": 20.0,
+        "enonce": "Un gâteau ___.",
+        "jeu": "bandit-manchot-accords-groupe-nominal-cm1",
+        "rangees": 2
+      },
+      {
+        "basIndiceProjete": 571.19,
+        "deficitPx": 20.19,
+        "encreDeLaDerniereLigneCoupeePx": 3.19,
+        "enonce": "4000 kg, combien de tonnes ?",
+        "jeu": "bandit-manchot-conversions-unites-cm1",
+        "rangees": 2
+      },
+      {
+        "basIndiceProjete": 571.19,
+        "deficitPx": 20.19,
+        "encreDeLaDerniereLigneCoupeePx": 3.19,
+        "enonce": "Hier soir louis a fini ses devoirs.",
+        "jeu": "bandit-manchot-reperes-cm1",
+        "rangees": 2
+      },
+      {
+        "basIndiceProjete": 571.19,
+        "deficitPx": 20.19,
+        "encreDeLaDerniereLigneCoupeePx": 3.19,
+        "enonce": "Le soleil brille dans le ciel",
+        "jeu": "bandit-manchot-reperes-cm1",
+        "rangees": 2
+      },
+      {
+        "basIndiceProjete": 571.19,
+        "deficitPx": 20.19,
+        "encreDeLaDerniereLigneCoupeePx": 3.19,
+        "enonce": "Ma cousine léa vient nous voir dimanche.",
+        "jeu": "bandit-manchot-reperes-cm1",
+        "rangees": 2
+      },
+      {
+        "basIndiceProjete": 571.19,
+        "deficitPx": 20.19,
+        "encreDeLaDerniereLigneCoupeePx": 3.19,
+        "enonce": "Mon frère apprend à nager cet été",
+        "jeu": "bandit-manchot-reperes-cm1",
+        "rangees": 2
+      },
+      {
+        "basIndiceProjete": 571.19,
+        "deficitPx": 20.19,
+        "encreDeLaDerniereLigneCoupeePx": 3.19,
+        "enonce": "Où as-tu rangé tes affaires",
+        "jeu": "bandit-manchot-reperes-cm1",
+        "rangees": 2
+      },
+      {
+        "basIndiceProjete": 571.19,
+        "deficitPx": 20.19,
+        "encreDeLaDerniereLigneCoupeePx": 3.19,
+        "enonce": "elle prépare son cartable pour demain.",
+        "jeu": "bandit-manchot-reperes-cm1",
+        "rangees": 2
+      },
+      {
+        "basIndiceProjete": 571.19,
+        "deficitPx": 20.19,
+        "encreDeLaDerniereLigneCoupeePx": 3.19,
+        "enonce": "le chat dort sur le tapis.",
+        "jeu": "bandit-manchot-reperes-cm1",
+        "rangees": 2
+      },
+      {
+        "basIndiceProjete": 571.19,
+        "deficitPx": 20.19,
+        "encreDeLaDerniereLigneCoupeePx": 3.19,
+        "enonce": "les enfants jouent dans la cour.",
+        "jeu": "bandit-manchot-reperes-cm1",
+        "rangees": 2
+      },
+      {
+        "basIndiceProjete": 567.19,
+        "deficitPx": 16.19,
+        "encreDeLaDerniereLigneCoupeePx": 0.0,
+        "enonce": "Autrefois, les enfants, même les jours de pluie, ___ dehors après l'école.",
+        "jeu": "bandit-manchot-accord-sujet-verbe-cm1",
+        "rangees": 1
+      },
+      {
+        "basIndiceProjete": 567.19,
+        "deficitPx": 16.19,
+        "encreDeLaDerniereLigneCoupeePx": 0.0,
+        "enonce": "Cet été, mes cousins ___ une cabane au fond du jardin.",
+        "jeu": "bandit-manchot-accord-sujet-verbe-cm1",
+        "rangees": 1
+      },
+      {
+        "basIndiceProjete": 567.19,
+        "deficitPx": 16.19,
+        "encreDeLaDerniereLigneCoupeePx": 0.0,
+        "enonce": "Dans deux jours, le chien des voisins ___ un nouveau panier.",
+        "jeu": "bandit-manchot-accord-sujet-verbe-cm1",
+        "rangees": 1
+      },
+      {
+        "basIndiceProjete": 567.19,
+        "deficitPx": 16.19,
+        "encreDeLaDerniereLigneCoupeePx": 0.0,
+        "enonce": "Dans quelques minutes, le train de Paris ___ en gare.",
+        "jeu": "bandit-manchot-accord-sujet-verbe-cm1",
+        "rangees": 1
+      },
+      {
+        "basIndiceProjete": 567.19,
+        "deficitPx": 16.19,
+        "encreDeLaDerniereLigneCoupeePx": 0.0,
+        "enonce": "Il y a longtemps, le vieux tracteur du fermier ___ encore dans le champ.",
+        "jeu": "bandit-manchot-accord-sujet-verbe-cm1",
+        "rangees": 1
+      },
+      {
+        "basIndiceProjete": 567.19,
+        "deficitPx": 16.19,
+        "encreDeLaDerniereLigneCoupeePx": 0.0,
+        "enonce": "L'année prochaine, toi et tes amis ___ dans une nouvelle école.",
+        "jeu": "bandit-manchot-accord-sujet-verbe-cm1",
+        "rangees": 1
+      },
+      {
+        "basIndiceProjete": 567.19,
+        "deficitPx": 16.19,
+        "encreDeLaDerniereLigneCoupeePx": 0.0,
+        "enonce": "Le vieux chêne du parc ___ de l'ombre sur tout le banc.",
+        "jeu": "bandit-manchot-accord-sujet-verbe-cm1",
+        "rangees": 1
+      },
+      {
+        "basIndiceProjete": 567.19,
+        "deficitPx": 16.19,
+        "encreDeLaDerniereLigneCoupeePx": 0.0,
+        "enonce": "Les enfants du voisin ___ dans le jardin tous les après-midis.",
+        "jeu": "bandit-manchot-accord-sujet-verbe-cm1",
+        "rangees": 1
+      },
+      {
+        "basIndiceProjete": 567.19,
+        "deficitPx": 16.19,
+        "encreDeLaDerniereLigneCoupeePx": 0.0,
+        "enonce": "Les élèves de la classe, après la récréation, ___ leur cahier de mathématiques.",
+        "jeu": "bandit-manchot-accord-sujet-verbe-cm1",
+        "rangees": 1
+      },
+      {
+        "basIndiceProjete": 567.19,
+        "deficitPx": 16.19,
+        "encreDeLaDerniereLigneCoupeePx": 0.0,
+        "enonce": "Quand j'étais au CP, mes amis et moi ___ toujours les premiers dans la cour.",
+        "jeu": "bandit-manchot-accord-sujet-verbe-cm1",
+        "rangees": 1
+      },
+      {
+        "basIndiceProjete": 567.19,
+        "deficitPx": 16.19,
+        "encreDeLaDerniereLigneCoupeePx": 0.0,
+        "enonce": "Écris en chiffres : quarante mille sept cent cinq.",
+        "jeu": "bandit-manchot-grands-nombres-cm1",
+        "rangees": 1
+      },
+      {
+        "basIndiceProjete": 567.19,
+        "deficitPx": 16.19,
+        "encreDeLaDerniereLigneCoupeePx": 0.0,
+        "enonce": "Écris en chiffres : trois cent cinq mille quatre cent vingt-et-un.",
+        "jeu": "bandit-manchot-grands-nombres-cm1",
+        "rangees": 1
+      },
+      {
+        "basIndiceProjete": 567.19,
+        "deficitPx": 16.19,
+        "encreDeLaDerniereLigneCoupeePx": 0.0,
+        "enonce": "La maman parle à son bébé d'une voix « douce ».",
+        "jeu": "bandit-manchot-synonymes-cm1",
+        "rangees": 1
+      },
+      {
+        "basIndiceProjete": 567.19,
+        "deficitPx": 16.19,
+        "encreDeLaDerniereLigneCoupeePx": 0.0,
+        "enonce": "Le nouveau voisin est « gentil » avec tout le monde.",
+        "jeu": "bandit-manchot-synonymes-cm1",
+        "rangees": 1
+      }
+    ],
+    "itemsIndiceSousLePli": 30
+  },
+  "sprint": "s21",
+  "viewport": [
+    744,
+    551
+  ]
+}

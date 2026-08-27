@@ -7451,6 +7451,19 @@ et qui n'etaient pas dans cette liste.
 | 11 | le nom interne de la mecanique n'atteint jamais l'enfant | inchange : ni `machine a sous`, ni `bandit`, ni `manchot`, ni `jackpot`, ni `mise`, ni `piece`, ni `jeton`, ni `credit`, sur aucun texte, `alt`, `aria-label`, `title` ou titre de page. **Un cabinet est precisement l'occasion de le faire remonter au motif qu'il devient exact** | **moi seule** |
 | 12 | aucun item resoluble par appariement visuel ("Le bon son") | inchange, et **C5 clause 2 en est la consequence directe** : une image qui varie avec l'item est un indice non valide | **moi seule** |
 
+**Amendement du 2026-08-27 (`nadia-prof`, s21), sur l'acquis 7 et lui seul.** L'acquis 7 dit
+"0,75 rem / 1,25 rem" et le dit pour les deux axes. Je l'amende, date, sur son **seul axe
+vertical** : le rembourrage vertical de `.proposition` descend a **0,5 rem**, plancher et non
+pente ; le rembourrage **lateral reste a 1,25 rem, payeur toujours refuse**, inchange. Motif : la
+mesure qui a fait naitre cet acquis le 2026-08-11 est celle de la section 3 ci-dessus, un budget
+**horizontal** epuise au pixel a 360 px ; la clause verticale n'avait jamais ete mesuree par
+personne. Elle l'est le 2026-08-27 : le bouton passe de 74,0 px a 66,0 px, soit 22 px au-dessus du
+plancher de cible tactile de 2,75 rem. Motif d'ouverture, chiffres, commande et releve dans
+`FICHE-bandit-manchot-reperes-cm1.md`, arbitrage du 2026-08-27, section 5. **L'acquis 3
+(`.proposition` >= 2 rem et >= `.enonce`, devenu `S3-4`) n'est pas touche par cet amendement : il
+est confirme inchange le meme jour, apres mesure, et le motif du maintien est en section 3 du meme
+arbitrage.**
+
 #### 8. Ce que je laisse a `ines-design`, et ce que je ne lui laisse pas
 
 Elle propose **apres** cet arbitrage, et je nomme les deux listes pour qu'elle n'ait pas a deviner
@@ -9969,6 +9982,12 @@ utile logee dans 2 % de l'objet qui la porte. Or c'est le **nombre** qui disting
 propositions, la barre est identique pour les trois. Ce qui doit etre le plus visible, c'est ce qui
 porte la difference. Ce n'est pas un motif de refus - le chiffre est en gras, a 1,25 rem, a 5,41 de
 contraste, parfaitement lisible - mais c'est une reserve que je nomme.
+
+> *Suite de cette reserve, pour qui la lit a sa source. Elle devient la story `S3-4`, entamee une
+> seule fois - le 2026-08-11, a 1,875 rem, pour le seul repli a quatre colonnes
+> (`FICHE-bandit-manchot-conjugaison-present-cm1.md`, section C) - puis **confirmee inchangee le
+> 2026-08-27** apres mesure de ce que chaque valeur de police acheterait sur tout le catalogue :
+> `FICHE-bandit-manchot-reperes-cm1.md`, arbitrage du 2026-08-27, sections 1 a 3.*
 
 **S1-4, la sortie toujours visible et atteignable : verifie, et tenu.** Je ne me suis pas contentee
 de constater qu'elle existe. Le bouton "Les jeux" est present et rendu sur les quatre ecrans ou je
