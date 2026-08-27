@@ -250,6 +250,40 @@ class TailleDesTextesEtBoutonsTest {
         return -1;
     }
 
+    /**
+     * L'index de la declaration <b>qui gagne la cascade</b> pour cette propriete dans ce corps, ou
+     * -1. C'est la <b>derniere</b>, pas la premiere : a specificite egale et a origine egale, la
+     * derniere declaration l'emporte, et {@link #blocsParSelecteur} fusionne les corps successifs
+     * d'un meme selecteur <b>dans l'ordre du document</b> - fichiers tries, blocs dans l'ordre - si
+     * bien que la derniere du corps fusionne est celle que le navigateur applique.
+     *
+     * <p><b>Defaut releve le 2026-08-27 (s21), et il n'est pas theorique.</b> Sur la feuille de la
+     * branche {@code s21-marc}, {@code .proposition} recoit {@code padding: 0.75rem 1.25rem} par le
+     * bloc partage des cinq boutons pleins, puis {@code padding: 0.5rem 1.25rem} par une regle qui
+     * lui est propre et qui vient apres. {@link #debutDeDeclaration} rendait le {@code 0.75rem} -
+     * une valeur que rien ne rend a l'ecran - et
+     * {@code LActionNeDeclarePasMoinsQueLaSortieTest} restait <b>vert 11 sur 11 sans avoir lu la
+     * declaration qu'il devait juger</b>, alors que le {@code 0.5rem} reel passe sous les
+     * {@code 0.6rem} de {@code .lien-accueil} et viole ADR-0017. Ce test ne se trompait pas, il ne
+     * regardait pas - la meme famille de defaut que le balayage qui se declarait termine en ayant
+     * perdu 8 jeux sur 17 (s21, {@code S21-1}).
+     *
+     * <p><b>Ce que cette methode ne resout pas, et qu'il faut lire avant de s'y fier.</b> Elle
+     * suppose l'egalite de specificite et l'absence de {@code !important} : une declaration
+     * {@code !important} anterieure bat une declaration ordinaire posterieure, et le rang dans le
+     * corps ne le dit pas. C'est pourquoi {@link #valeurDeclaree} refuse de rendre une valeur des
+     * qu'un {@code !important} accompagne une propriete declaree plusieurs fois, plutot que de
+     * rendre un chiffre qui aurait l'air juste. Elle ne resout pas non plus la question des
+     * regles-@ : {@link #blocsParSelecteur} range le contenu d'un {@code @media} sous une cle qui
+     * commence par {@code @media}, jamais sous le selecteur interieur, si bien qu'une surcharge
+     * sous media n'entre pas dans ce corps-ci et n'est pas vue - limite ancienne, nommee ici plutot
+     * que corrigee en passant.
+     */
+    static int derniereDeclaration(String corps, String propriete) {
+        List<Integer> positions = declarationsDe(corps, propriete);
+        return positions.isEmpty() ? -1 : positions.get(positions.size() - 1);
+    }
+
     private static boolean estDebutDeDeclaration(String corps, int position) {
         for (int avant = position - 1; avant >= 0; avant--) {
             char caractere = corps.charAt(avant);
@@ -264,7 +298,8 @@ class TailleDesTextesEtBoutonsTest {
     private static double proprieteEnRem(Map<String, String> blocs, String selecteur, String propriete) {
         String corps = blocs.get(selecteur);
         assertThat(corps).as("le selecteur %s doit exister dans le CSS maison", selecteur).isNotNull();
-        int position = debutDeDeclaration(corps, propriete);
+        // s21 : la declaration qui gagne la cascade, jamais la premiere rencontree.
+        int position = derniereDeclaration(corps, propriete);
         assertThat(position).as("%s doit declarer explicitement %s", selecteur, propriete).isNotNegative();
         String valeur = valeurDeclaree(corps, position, propriete);
         assertThat(valeur).as("%s : %s doit etre exprime en rem", selecteur, propriete).endsWith("rem");
@@ -283,7 +318,8 @@ class TailleDesTextesEtBoutonsTest {
      * - une variable et un {@code calc()} n'en sont pas, meme s'ils rendent les memes pixels.
      */
     static Optional<Double> proprieteEnRemSiExiste(String corps, String propriete) {
-        int position = debutDeDeclaration(corps, propriete);
+        // s21 : la declaration qui gagne la cascade, jamais la premiere rencontree.
+        int position = derniereDeclaration(corps, propriete);
         if (position < 0) {
             return Optional.empty();
         }
@@ -294,7 +330,49 @@ class TailleDesTextesEtBoutonsTest {
         return Optional.of(Double.parseDouble(valeur.substring(0, valeur.length() - "rem".length())));
     }
 
+    /**
+     * La valeur litterale declaree a cette position, avec un <b>refus</b> ajoute le 2026-08-27
+     * (s21) : ce point de passage est celui par lequel tout garde-fou de ce module lit une valeur
+     * de feuille, et c'est donc ici qu'une lecture ecrasee par la cascade doit devenir bruyante
+     * plutot que de rendre un chiffre plausible.
+     *
+     * <p>Deux refus, et aucun des deux n'invente une regle de style :</p>
+     * <ul>
+     *   <li><b>la position lue n'est pas la derniere</b> declaration de cette propriete dans ce
+     *       corps : la valeur rendue serait celle qu'une declaration posterieure ecrase, donc une
+     *       valeur qu'aucun ecran ne montre. L'appelant doit lire {@link #derniereDeclaration}, ou
+     *       dire pourquoi la valeur ecrasee est celle qui compte ;</li>
+     *   <li><b>la propriete est declaree plusieurs fois et l'une porte {@code !important}</b> : le
+     *       rang dans le corps ne decide plus, et ce lecteur ne sait pas resoudre cette cascade-la.
+     *       Un chiffre rendu ici serait une affirmation sans methode.</li>
+     * </ul>
+     */
     static String valeurDeclaree(String corps, int position, String propriete) {
+        List<Integer> declarations = declarationsDe(corps, propriete);
+        if (declarations.size() > 1) {
+            List<String> valeurs = declarations.stream()
+                    .map(debut -> valeurBrute(corps, debut, propriete))
+                    .toList();
+            if (valeurs.stream().anyMatch(valeur -> valeur.contains("!important"))) {
+                throw new AssertionError("ce corps declare " + propriete + " " + declarations.size()
+                        + " fois (" + String.join(" | ", valeurs) + ") et l'une porte !important : le "
+                        + "rang dans le corps ne decide plus de la cascade, et ce lecteur ne sait pas "
+                        + "la resoudre. Aucune valeur n'est rendue plutot qu'un chiffre sans methode");
+            }
+            int derniere = declarations.get(declarations.size() - 1);
+            if (position != derniere) {
+                throw new AssertionError("ce corps declare " + propriete + " " + declarations.size()
+                        + " fois (" + String.join(" | ", valeurs) + ") et la lecture porte sur la "
+                        + "declaration de rang " + (declarations.indexOf(position) + 1) + ", que la "
+                        + "derniere ecrase : a specificite egale c'est la derniere qui gagne la "
+                        + "cascade, donc la seule que l'enfant voit. Lire derniereDeclaration(), ou "
+                        + "dire ici pourquoi la valeur ecrasee est celle qui compte");
+            }
+        }
+        return valeurBrute(corps, position, propriete);
+    }
+
+    private static String valeurBrute(String corps, int position, String propriete) {
         int debut = position + propriete.length() + ":".length();
         int fin = corps.indexOf(';', debut);
         return corps.substring(debut, fin < 0 ? corps.length() : fin).strip();
@@ -852,7 +930,7 @@ class TailleDesTextesEtBoutonsTest {
      * la premiere : {@link #debutDeDeclaration} s'arrete au premier debut trouve, ce qui suffit pour
      * lire une valeur qu'on sait unique, jamais pour affirmer qu'aucune autre n'existe.
      */
-    private static List<Integer> declarationsDe(String corps, String propriete) {
+    static List<Integer> declarationsDe(String corps, String propriete) {
         List<Integer> positions = new ArrayList<>();
         String etiquette = propriete + ":";
         int position = corps.indexOf(etiquette);

@@ -124,9 +124,20 @@ h1 {
    .retour-accueil - taille de police, hauteur minimale, rembourrage - pour ne jamais depasser un
    bouton d'action sur l'ecran ou il s'affiche. Contour blanc plutot que la couleur d'accent, parce
    que le fond de l'en-tete est deja cette meme couleur.
-   ADR-0022 : depuis S6-9 ce lien ne s'affiche que sur l'accueil, ou il est confronte a .demarrer.
+   Correction datee du 2026-08-27 (theo-archi, s21) - ces trois lignes disaient le contraire du
+   code, et du commentaire situe six lignes plus haut dans ce meme fichier. Elles affirmaient :
+   "ADR-0022 : depuis S6-9 ce lien ne s'affiche que sur l'accueil, ou il est confronte a .demarrer.
    Il n'est plus confronte a .proposition ni a .encore : la regle de masquage ci-dessous fait qu'il
-   ne se montre jamais en meme temps qu'elles. */
+   ne se montre jamais en meme temps qu'elles." C'est faux depuis S15-3 (arbitrage de
+   l'utilisatrice du 2026-08-18), qui a retire la regle de masquage "body:has(.ecran-de-jeu)
+   .lien-accueil" : la sortie d'en-tete reste visible pendant une manche, donc ce lien EST confronte
+   a .proposition sur les ecrans de jeu. nadia-prof l'a reverifie a l'ecran le 2026-08-27, et
+   leLienDeLEnTeteRedevientConfronteALaReponseSurLesEcransDeJeu l'exige depuis s15 :
+   un commentaire qui contredit un test executable est de la meme famille que la citation d'ADR-0029
+   trouvee dans une Javadoc le meme jour. Ce que ce lien est reellement aujourd'hui : une sortie
+   permanente, confrontee a .demarrer sur l'accueil et a .proposition sur tout ecran de jeu, donc
+   tenue par ADR-0017 sur chacun d'eux. ".encore" n'existe dans aucun gabarit depuis s10 et ne
+   nomme donc plus rien. */
 .lien-accueil {
     display: inline-flex;
     align-items: center;

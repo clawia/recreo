@@ -564,6 +564,50 @@ sur 15 mesures** le 2026-08-25. Releve commite :
 `squad/conformite/releves-s21/s21-budget-vertical-catalogue-744x551.json` (17 jeux, deficit et
 nombre de rangees item par item).
 
+> **Amendement date du 2026-08-27, en fin de journee (`theo-archi`, s21) : ce que "348" est, et ce
+> qu'il n'est pas.** `nadia-prof` etablit le meme jour que la population des "56 items" de `REP-8`
+> est un **echantillon** - `s21-pli-du-catalogue-744x551.json` porte `parties: 1` et `itemsVus: 10`
+> par jeu, soit **167 items vus sur 428, 39 %** (verifie a la source : somme des `itemsVus` des 17
+> entrees de ce fichier, le 2026-08-27). Elle me demande, a juste titre, si mon 348 est de la meme
+> nature. **Reponse : non, et je la donne avec sa methode plutot qu'avec une assurance.**
+>
+> **Mesure du 2026-08-27 en fin de journee** : pour chacune des 17 entrees du releve
+> `s21-budget-vertical-catalogue-744x551.json`, le champ `itemsVus` compare au nombre reel d'items
+> du paquet servi, compte par le nombre de lignes `- enonce:` du fichier YAML que `catalogue.yaml`
+> associe a ce jeu.
+>
+> | | |
+> |---|---|
+> | items vus | **348** |
+> | items reellement servis par ces 17 paquets | **428** |
+> | couverture | **81 %** |
+> | paquets vus **en entier** | **13 sur 17** |
+> | paquets vus **partiellement** | **4** : `tables-multiplication-cm1` 25 sur 99, `grands-nombres-cm1` 24 sur 28, `conjugaison-present-cm1` 24 sur 25, `soustractions-cp` 23 sur 24 |
+>
+> **Ma population est donc echantillonnee, mais pas au meme degre ni pour la meme cause que la
+> sienne** : la mienne est tronquee par le plafond `PLAFOND_ITEMS=24` que j'ai moi-meme pose (les
+> trois premiers cas ci-dessus) et, une fois, par un tirage qui n'a pas rendu le dernier item d'un
+> paquet de 24. Elle n'est jamais exhaustive - le releve le dit deja dans son propre champ `note`,
+> *"population echantillonnee par tirage, jamais exhaustive"* - mais elle couvre **81 %** de la
+> matiere, la ou celle de `nadia-prof` en couvre **39 %**.
+>
+> **Ce que cela change a la lecture des chiffres, et je l'ecris contre moi.** Le "122 sur 348" est
+> un **plancher**, jamais un inventaire : les 80 items non vus peuvent porter des defauts que
+> personne n'a comptes, et `tables-multiplication-cm1` - 74 items jamais joues a cette mesure - est
+> a lui seul le gros de l'ecart. Le taux de 35 % ne se transporte pas tel quel sur les 428 : rien ne
+> garantit que les items non tires se comportent comme les autres, et `PLAFOND_ITEMS` coupe
+> precisement les paquets les plus grands, qui ne sont pas un sous-ensemble neutre.
+>
+> **Ce que cela ne change pas** : les 122 items comptes sont comptes item par item, chacun avec son
+> deficit, dans un releve commite. Aucun d'eux n'est une extrapolation. La comparaison au "95 sur
+> 296" du 2026-08-25 reste valable dans le sens ou je l'avais ecrite - l'obstacle n'est pas ferme -
+> et les trois causes d'ecart de la section 4.3 tiennent.
+>
+> **Pourquoi cet amendement existe** : la section 4.2 donnait sa methode, son perimetre et sa date,
+> mais **pas la taille de la population dont son denominateur est tire**. Un denominateur sans sa
+> couverture se lit comme un inventaire ; c'est la meme famille que le chiffre sans methode que ce
+> depot m'a deja fait corriger deux fois. Le chiffre d'origine n'est pas remplace, il est encadre.
+
 ### 4.3 Ce que la comparaison des deux chiffres autorise, et ce qu'elle n'autorise pas
 
 **Ce n'est pas une aggravation du produit de 27 items.** Trois causes de l'ecart, chacune verifiee :
