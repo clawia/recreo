@@ -6077,10 +6077,19 @@ planning de s21 n'est pas ecrit a la cloture de s20.
     echec, donc 76 px de defilement possible - l'indice est *hors de vue*, pas necessairement
     *inatteignable*, et l'etat avec une barre de defilement classique n'a jamais ete mesure.
 - **Lien decision** : `DEC-0050`.
-- **Agent pressenti** : a affecter au planning par `sofia-sm`, non affectee a s21 par ce document.
-  `camille-po` (priorisation), `ines-design` et `theo-archi` sur la cause de forme - **jamais
-  `lea-dev`** : `nadia-prof` le route explicitement comme une story de catalogue, pas une reprise
-  de paquet.
+- **Agent pressenti** : `camille-po` (priorisation), `ines-design` et `theo-archi` sur la cause de
+  forme - **jamais `lea-dev`** : `nadia-prof` le route explicitement comme une story de catalogue,
+  pas une reprise de paquet.
+
+**Mise a jour du 2026-08-27 (ouverture s21) - affectee en tete de sprint.** L'utilisatrice arbitre
+le perimetre de s21 : le pli est ferme sur tout le catalogue avant tout ajout de jeu, motif retenu
+"les jeux neufs naissent sans le defaut, aucune dette n'est ajoutee", au prix explicitement accepte
+de moins de jeux livres a s21 (`DEC-0051`). Les criteres d'acceptation ci-dessus ne changent pas :
+c'est leur priorite dans le sprint qui change, pas leur contenu. Reste vrai et non modifie par cette
+mise a jour : les criteres restent a affiner en forme par `ines-design` et `theo-archi` avant tout
+developpement (aucune valeur de marge ou de rembourrage seule ne les satisfait, la story le dit
+elle-meme), et le perimetre exact (catalogue entier a 18 jeux, ou le seul sous-ensemble mesure par
+`nadia-prof` a 17 jeux le 2026-08-27) reste a fixer au planning par `sofia-sm`.
 
 #### `REP-9` - Sur `cm1-reperes`, le verdict est coupe en deux sur les deux items a enonce de deux lignes
 
@@ -6131,3 +6140,53 @@ planning de s21 n'est pas ecrit a la cloture de s20.
 - **Lien decision** : `DEC-0050`.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, non affectee a s21 par ce document.
   `lea-dev` pour la correction, `nadia-prof` pour le reaudit.
+
+## Backlog - perimetre volume s21, contenu-repris classe par gain de couverture (intentions non detaillees, `DEC-0051`)
+
+Arbitrage de l'utilisatrice du 2026-08-27 (`DEC-0051`) : le pli se ferme sur tout le catalogue
+(`REP-8`, affectee en tete de s21 ci-dessus) avant tout ajout de jeu ; la matiere des jeux neufs
+vient de `contenu-repris/` avant redaction neuve. Ce qui suit sont des intentions, pas des stories
+pretes a developper - meme regle que la section "Backlog - sprints suivants" plus haut. Le
+classement complet, avec la methode de verification et les fichiers ecartes, vit dans `DEC-0051`
+(sections 3 et 4) ; ce qui suit en est le resume utile au planning.
+
+**Niveau 1 (transposition directe, competence non couverte identifiee)** : `contenu-repris/
+syllabes/cp-syllabes.yml` (francais CP, "Denombrer les syllabes orales d'un mot" - premiere ligne
+du domaine "Langage oral et conscience phonologique", aujourd'hui a zero ligne couverte) ;
+`contenu-repris/quiz/cp-comparer.yml` (mathematiques CP, "Comparer des longueurs, des masses, des
+contenances (sans instrument gradue)" - a trier et completer sur la contenance avant audit) ;
+`contenu-repris/textes-trous/cp-mot-manquant.yml` (francais CP, "Utiliser des mots precis...") ;
+`contenu-repris/quiz/cm1-comprehension.yml` (francais CM1, "Comprendre un texte narratif ou
+documentaire...", sous condition : mesure prealable de la longueur d'enonce contre le budget
+vertical au coeur de `REP-8`, routee a `theo-archi` et `ines-design` avant tout audit).
+
+**Niveau 2 (transposable, mais arbitrage prealable de `nadia-prof` a poser avant tout
+developpement)** : `contenu-repris/mots/cp-premiere-lettre.yml` (candidat sur "Identifier un son
+(phoneme) dans un mot", correspondance lettre initiale / phoneme non tranchee) ;
+`contenu-repris/fractions/cm1-compare.yml` (candidat sur "Notion de fraction simple... et reperage
+sur une droite numerique", risque de couverture partielle deja sanctionne sur ce produit - le
+reperage sur une droite numerique n'y figure pas) ; `contenu-repris/associer/cp-chiffre-mot.yml`
+(deja arbitre sous `DEN-1` a `DEN-8`, ne tient aucune des huit conditions en l'etat, redaction quasi
+entiere a refaire, et resterait `en cours` meme parfaitement tenu par `DEN-2` - priorite basse).
+
+**Niveau 3, ecarte** : les familles `puzzle/`, `memory/`, `phrase/` et la majeure partie
+d'`associer/` exigent une mecanique de reordonnancement, d'appariement par memoire ou de remise en
+ordre que ce produit n'a pas ; je ne propose aucune mecanique neuve.
+
+**Niveau 4, hors perimetre** : les 24 fichiers de `quiz/` sur des matieres sans referentiel
+(histoire, geographie, sciences, EMC) et les fichiers d'anglais n'ont aucune ligne de
+`squad/programme/` a laquelle s'accrocher aujourd'hui - ouvrir un referentiel est une decision
+d'une autre nature que le choix d'un paquet de s21.
+
+**Goulot de planning, chiffre sur deux sprints** : s20 a audite deux paquets (`RAPPORT.md` de s20,
+consommation de tokens de `nadia-prof`), dont un seul sans cycle de refus ; s19 en a audite quatre,
+dont un avec cycle de refus complet dans le sprint et un valide sous reserve bloquante non fermee
+avant s20. Je tiens **deux a trois paquets neufs** comme le nombre auditable a s21 sans compter un
+aleas de refus supplementaire - detail et raisonnement complet dans `DEC-0051`, section 5.
+
+**Agent pressenti** : a affecter au planning par `sofia-sm`, qui choisit le nombre de paquets
+retenus parmi les niveaux 1 et 2 ci-dessus, dans la borne donnee. `marc-dev`/`lea-dev` pour la
+reprise de matiere (sous le schema `bandit-manchot` en usage, jamais sous la structure d'origine de
+`contenu-repris/`), `nadia-prof` pour les arbitrages prealables du niveau 2 et les audits,
+`ines-design`/`theo-archi` pour la condition de forme sur `cm1-comprehension`.
+- **Lien decision** : `DEC-0051`.
