@@ -21,6 +21,18 @@ script ne choisit aucune valeur, il la mesure.
 Ce script n'est pas un garde-fou de CI et ne s'execute pas dans "mvn verify" : il a besoin d'un
 navigateur, que rien dans le depot ne peut garantir (meme limite qu'outils/mesurer-rendu.sh).
 
+Correction du 2026-08-27 (S21-7, trouvee par nadia-prof) : "[data-role=sortie]" est un
+"<a href=\"/\">" (templates/accueil.html) - quitter une partie declenche donc une navigation
+complete, qui recree le "<head>" et jette la regle candidate injectee. La premiere version de ce
+script l'injectait une seule fois, avant la premiere partie, et ne le remarquait jamais : une
+execution a plusieurs parties melangeait silencieusement des items mesures avec la regle et des
+items mesures sans (squad/conformite/FICHE-bandit-manchot-reperes-cm1.md, section 5). Ce script
+repose donc la regle a chaque debut de partie et **verifie sa presence exacte dans le DOM avant
+d'enregistrer la mesure de tout item nouveau** ; si la verification echoue, il s'arrete en erreur
+plutot que de rendre un chiffre qu'il ne peut pas prouver. Les trois releves commites avant ce
+correctif portent tous "parties: 1" et ne sont donc pas touches par ce defaut (verifie par
+nadia-prof et par theo-archi independamment, meme fiche).
+
 Usage :
   python squad/outils/ines-design/mesurer-candidats-rep-8.py <url_de_base> <id_du_jeu> <nb_items> \
       <regle_css_candidate_ou_vide> <json_de_sortie>
@@ -50,6 +62,32 @@ _spec_balayage = importlib.util.spec_from_file_location("balayage_largeur_rangee
 blr = importlib.util.module_from_spec(_spec_balayage)
 _spec_balayage.loader.exec_module(blr)
 
+_ID_NOEUD = "mesure-ines-candidat"
+
+
+def _injecter_regle(nav, regle_css):
+    """Pose (ou repose) la regle candidate en dernier dans le head, comme au premier chargement."""
+    nav.evaluer(
+        "(function(){var n=document.getElementById(%s);"
+        "if(!n){n=document.createElement('style');n.id=%s;document.head.appendChild(n);}"
+        "n.textContent=%s;return true;})();"
+        % (json.dumps(_ID_NOEUD), json.dumps(_ID_NOEUD), json.dumps(regle_css))
+    )
+
+
+def _verifier_regle_presente(nav, regle_css, contexte):
+    """Leve une erreur plutot que de laisser enregistrer une mesure dont la regle candidate ne
+    peut pas etre prouvee presente au moment de la lecture - le defaut du 2026-08-27."""
+    trouvee = nav.evaluer(
+        "(function(){var n=document.getElementById(%s);return n ? n.textContent : null;})();"
+        % json.dumps(_ID_NOEUD)
+    )
+    if trouvee != regle_css:
+        raise RuntimeError(
+            "regle candidate absente ou alteree (%s) : attendue %r, trouvee %r - "
+            "aucune mesure ne peut etre rendue pour cet etat." % (contexte, regle_css, trouvee)
+        )
+
 
 def main():
     if len(sys.argv) != 6:
@@ -74,18 +112,26 @@ def main():
     bonnes = auditer._frere.lire_bonnes_reponses(os.environ.get("PAQUET"))
     profil = tempfile.mkdtemp(prefix="mesure-ines-rep8-")
     nav = blr.Navigateur(binaire, profil, blr.PORT_DEVERMINAGE)
-    vus, parties, lectures = {}, 0, 0
+    vus, parties, lectures, reinjections = {}, 0, 0, 0
     try:
         nav.appeler("Page.navigate", {"url": base + "/"})
         time.sleep(2.5)
         if regle_css:
-            nav.evaluer(
-                "(function(){var n=document.createElement('style');"
-                "n.id='mesure-ines-candidat';n.textContent=%s;"
-                "document.head.appendChild(n);return true;})();" % json.dumps(regle_css)
-            )
+            _injecter_regle(nav, regle_css)
+            _verifier_regle_presente(nav, regle_css, "avant la premiere partie")
         while len(vus) < attendus and parties < 25:
             parties += 1
+            if regle_css and parties > 1:
+                # [data-role=sortie] est une navigation complete (<a href="/">) qui a vide le
+                # head a la fin de la partie precedente : la regle candidate est reposee et
+                # reverifiee avant de rejouer, jamais supposee encore presente.
+                _injecter_regle(nav, regle_css)
+                reinjections += 1
+                sys.stderr.write(
+                    "  regle candidate reposee apres navigation (partie %d)\n" % parties
+                )
+            if regle_css:
+                _verifier_regle_presente(nav, regle_css, "debut de partie %d" % parties)
             nav.evaluer(
                 "document.querySelector('[hx-post*=\"%s\"]').click(); true;" % jeu
             )
@@ -98,6 +144,10 @@ def main():
                 enonce = etat["enonce"]
                 bonne = bonnes.get(enonce)
                 if enonce not in vus:
+                    if regle_css:
+                        _verifier_regle_presente(
+                            nav, regle_css, "lecture de l'item %r" % enonce[:60]
+                        )
                     vus[enonce] = auditer.auditer_un_item(nav, enonce, bonne)
                     lectures += 2
                 if bonne:
@@ -117,6 +167,7 @@ def main():
         "jeu": jeu,
         "regleCssCandidate": regle_css,
         "parties": parties,
+        "reinjectionsDeLaRegle": reinjections,
         "lectures": lectures,
         "itemsVus": len(vus),
         "items": vus,

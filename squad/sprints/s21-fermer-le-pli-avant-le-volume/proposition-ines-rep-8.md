@@ -197,6 +197,19 @@ serre contre l'en-tete, des boutons de reponse moins genereux au toucher. C'est 
 pas une valeur figee - `nadia-prof` reste seule a juger si l'ecart reste assez respirant, exactement
 comme elle l'a fait pour la marge de `.consigne`/`.enonce` a S10 (meme registre de decision).
 
+**Amendement du 2026-08-27 (`ines-design`, s21, `S21-7`), sur ma propre phrase ci-dessus, sans la
+reecrire.** J'avais ecrit que le rembourrage de `.proposition` ne portait aucun plancher
+pedagogique connu. C'est faux : c'est l'**acquis 7** de `nadia-prof` du **2026-08-11**
+(`FICHE-bandit-manchot-additions-cp.md`, section 7), qu'elle a amende et date le 2026-08-27
+(`FICHE-bandit-manchot-reperes-cm1.md`, section 5) - **sur le seul axe vertical**, a un plancher de
+**0,5 rem**, l'axe lateral restant a 1,25 rem, payeur refuse, inchange. Je ne pouvais pas le
+trouver en lisant `TailleDesTextesEtBoutonsTest`, qui ne l'encode pas : c'est exactement le fait
+interessant a garder de cet ecart - **une contrainte pedagogique reelle qu'aucun test n'encode
+reste invisible a qui lit le code**, et seule la garde d'un agent humain la porte. Mon candidat B
+(`.proposition{padding:0.5rem 1.25rem}`, section 2.2) se trouve etre exactement ce plancher ; ce
+n'est pas moi qui l'ai fixe, c'est `nadia-prof` qui l'a verifie apres coup et qui reste seule garde
+sur ce point (section 8 de sa fiche).
+
 ### 2.3 Ce que je nomme sans le tester ni le proposer
 
 - **La police de `.proposition` (2rem)**. `leChiffreDeReponseEstAuMoinsAussiGrosQueLeCalcul` exige
@@ -268,6 +281,32 @@ au-dessus du pli sans repasser par une reprise :
 Les regles 1 a 3 ne fixent aucun libelle ni aucun enonce a la place de `nadia-prof` ou de
 `lea-dev` : elles disent seulement la forme dans laquelle un contenu doit tenir, exactement le
 registre que mon mandat me reserve.
+
+**Amendement du 2026-08-27 (`ines-design`, s21, `S21-7`), sur les quatre regles ci-dessus, sans les
+reecrire.** `nadia-prof` a rendu son arbitrage sur ce contrat le meme jour
+(`FICHE-bandit-manchot-reperes-cm1.md`, section 6), chiffres a l'appui sur les 428 items des 17
+paquets servis :
+
+- **Regle 1 (trois propositions au plus) : autorisee comme regle.** Elle ecarte 33 items sur 428
+  (`cm1-conjugaison-present` 25 sur 25, `cm1-accords-groupe-nominal` 8 sur 24) sans supprimer
+  aucune competence. `theo-archi` l'encode en test (`S21-5`, `ADR-0063`).
+- **Regle 2 (libelle de 10 caracteres au plus) : refusee comme veto.** Elle ecarte 35 items sur
+  428, dont `cm1-reperes` 16 items sur 16 et 13 des 28 de `cm1-grands-nombres`, et supprime la
+  competence "lire, ecrire, decomposer et comparer les nombres entiers jusqu'au million" -
+  `quatre-vingt-seize mille deux cent trois` mesure 590,05 px pour 176 px de colonne disponibles.
+- **Regle 3 (enonce sur une seule ligne) : refusee comme veto.** Elle ecarte 80 items sur 428, dont
+  `cp-problemes-additifs` 22 items sur 22, et supprime la resolution de problemes additifs **en
+  situation**, competence de programme du cycle 2.
+- **Regle 4 (porte de rendu) : inchangee**, seule des quatre a parler du resultat plutot que de
+  prescrire le moyen.
+
+Les regles 2 et 3 restent donc des **conseils de premier recours**, jamais un critere bloquant :
+quand la competence laisse le choix, un libelle court et un enonce d'une ligne sont le bon reflexe
+(90 px et 48 px gagnes) ; quand elle impose un libelle long ou une situation, c'est elle qui
+gagne, et le contrat se ferme autrement (moins de propositions, un indice plus court, un enonce
+reformule sans etre ampute). Je ne reecris pas les regles 2 et 3 telles que je les avais proposees
+plus haut : la trace de ce qui a ete propose puis borne par `nadia-prof` est ce qui rend cette
+decision relisible.
 
 ## 4. Ce que cette proposition ne ferme pas
 
