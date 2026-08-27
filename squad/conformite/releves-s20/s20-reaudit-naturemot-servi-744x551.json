@@ -1,0 +1,388 @@
+{
+  "items": {
+    "Elle « range » sa chambre.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot dit ce qu'elle fait.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "verbe",
+        "nom"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Il « dort » bien fort.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot dit ce qu'il fait.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "verbe",
+        "nom"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "La « maîtresse » écrit au tableau.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot désigne une personne.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "nom",
+        "verbe"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Le chien « court » dans le jardin.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot dit ce que fait le chien.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "verbe",
+        "nom"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Le poisson « nage » dans l'eau.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot dit ce que fait le poisson.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "nom",
+        "verbe"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Le « chat » dort sur le tapis.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot désigne un animal.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "nom",
+        "verbe"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Le « soleil » brille dans le ciel.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot désigne une chose qu'on voit dans le ciel.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "verbe",
+        "nom"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Les enfants « chantent » une chanson.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot dit ce que font les enfants.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "nom",
+        "verbe"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Les petits « oiseaux » chantent dans l'arbre.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot désigne des animaux.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "nom",
+        "verbe"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Léa porte un joli « sac ».": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot désigne un objet.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "verbe",
+        "nom"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Léa « arrose » les fleurs.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot dit ce que fait Léa.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "verbe",
+        "nom"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Papa lave la « voiture ».": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot désigne un objet qui roule.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "verbe",
+        "nom"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Tom mange un bon « gâteau ».": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot désigne une chose qu'on peut manger.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "verbe",
+        "nom"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Tom « saute » dans la flaque.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot dit ce que fait Tom.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "nom",
+        "verbe"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Tu « dessines » un beau soleil.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot dit ce que tu fais.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "verbe",
+        "nom"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "« Médor » aboie très fort.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 512.38,
+        "basDuVerdict": 433.38,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Ce mot désigne un animal.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 370.38,
+      "consigne": "Le mot entre guillemets est-il un nom ou un verbe ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 2,
+      "propositions": [
+        "nom",
+        "verbe"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    }
+  },
+  "itemsADeuxRangees": [],
+  "itemsIndiceSousLePli": [],
+  "itemsVerdictSousLePli": [],
+  "itemsVus": 16,
+  "jeu": "bandit-manchot-nature-mot-cp",
+  "lectures": 76,
+  "lecturesADefilementNonNul": 0,
+  "nombresDePropositions": [
+    2
+  ],
+  "parties": 4,
+  "seuilLargeurMaximum": 400,
+  "viewport": [
+    744,
+    551
+  ]
+}

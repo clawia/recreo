@@ -1,0 +1,1189 @@
+{
+ "bandit-manchot-accord-sujet-verbe-cm1": {
+  "indiceSousLePli": 9,
+  "items": {
+   "Autrefois, les paysans du village ___ leurs champs à la main.": {
+    "basIndice": 583.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Avant les vacances, toi et ta sœur ___ tous les soirs à la bibliothèque.": {
+    "basIndice": 583.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Bientôt, les hirondelles, comme chaque année, ___ vers les pays chauds.": {
+    "basIndice": 583.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Demain, les enfants du quartier ___ un grand tournoi de football.": {
+    "basIndice": 583.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Il y a longtemps, le vieux tracteur du fermier ___ encore dans le champ.": {
+    "basIndice": 583.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "L'année prochaine, toi et tes amis ___ dans une nouvelle école.": {
+    "basIndice": 583.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "La semaine prochaine, mon cousin et moi ___ à la piscine tous les jours.": {
+    "basIndice": 583.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Quand j'étais au CP, mes amis et moi ___ toujours les premiers dans la cour.": {
+    "basIndice": 583.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Quand j'étais petit, mon frère et moi ___ ensemble dans la même chambre.": {
+    "basIndice": 583.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Toi et ton frère ___ la vaisselle après le repas.": {
+    "basIndice": 535.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 10,
+  "nbPropositions": [
+   3
+  ],
+  "pireBasIndice": 583.19,
+  "rangees": [
+   1
+  ],
+  "verdictSousLePli": 0
+ },
+ "bandit-manchot-accords-groupe-nominal-cm1": {
+  "indiceSousLePli": 3,
+  "items": {
+   "Le chat attrape une ___.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 2,
+    "rangees": 1
+   },
+   "Le fermier a un seul ___ dans le pré.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 2,
+    "rangees": 1
+   },
+   "Les garçons sont ___.": {
+    "basIndice": 619.19,
+    "basVerdict": 510.19,
+    "n": 4,
+    "rangees": 2
+   },
+   "Les histoires sont ___.": {
+    "basIndice": 619.19,
+    "basVerdict": 510.19,
+    "n": 4,
+    "rangees": 2
+   },
+   "Léa porte une ___ neuve.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 2,
+    "rangees": 1
+   },
+   "Léa range ___ cahiers dans son sac.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Nous avons vu ___ voiture bleue.": {
+    "basIndice": 535.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Tom a un seul ___ dans sa trousse.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 2,
+    "rangees": 1
+   },
+   "Une pomme ___.": {
+    "basIndice": 619.19,
+    "basVerdict": 510.19,
+    "n": 4,
+    "rangees": 2
+   },
+   "___ chat dort sur le canapé.": {
+    "basIndice": 535.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 10,
+  "nbPropositions": [
+   2,
+   3,
+   4
+  ],
+  "pireBasIndice": 619.19,
+  "rangees": [
+   1,
+   2
+  ],
+  "verdictSousLePli": 0
+ },
+ "bandit-manchot-additions-cp": {
+  "indiceSousLePli": 0,
+  "items": {
+   "6 + 4": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 1,
+  "nbPropositions": [
+   3
+  ],
+  "pireBasIndice": 505.19,
+  "rangees": [
+   1
+  ],
+  "verdictSousLePli": 0
+ },
+ "bandit-manchot-antonymes-cm1": {
+  "indiceSousLePli": 0,
+  "items": {
+   "Ce chien est « vieux ».": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Ce coureur est très « rapide ».": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Ce mur est très « haut ».": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Ce pain est devenu « dur ».": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Cette pièce est « claire » le matin.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Cette route est « large ».": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Cette soupe est encore « chaude ».": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Le nouvel élève est « poli » avec la maîtresse.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Léa doit « ouvrir » la fenêtre avant de partir.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Notre équipe va « gagner » le match.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 10,
+  "nbPropositions": [
+   3
+  ],
+  "pireBasIndice": 505.19,
+  "rangees": [
+   1
+  ],
+  "verdictSousLePli": 0
+ },
+ "bandit-manchot-comparer-nombres-cp": {
+  "indiceSousLePli": 0,
+  "items": {
+   "14 ___ 14": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "23 ___ 47": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "3 ___ 78": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "36 ___ 36": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "41 ___ 90": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "52 ___ 38": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "73 ___ 73": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "8 ___ 15": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "82 ___ 82": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "84 ___ 99": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 10,
+  "nbPropositions": [
+   3
+  ],
+  "pireBasIndice": 505.19,
+  "rangees": [
+   1
+  ],
+  "verdictSousLePli": 0
+ },
+ "bandit-manchot-complements-10-cp": {
+  "indiceSousLePli": 0,
+  "items": {
+   "10 + ? = 10": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "2 + ? = 10": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "3 + ? = 10": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "4 + ? = 10": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "7 + ? = 10": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "8 + ? = 10": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "9 + ? = 10": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 7,
+  "nbPropositions": [
+   3
+  ],
+  "pireBasIndice": 505.19,
+  "rangees": [
+   1
+  ],
+  "verdictSousLePli": 0
+ },
+ "bandit-manchot-conjugaison-present-cm1": {
+  "indiceSousLePli": 0,
+  "items": {
+   "Autrefois, nous ___ toujours les premiers à l'école.": {
+    "basIndice": null,
+    "basVerdict": 558.19,
+    "n": 4,
+    "rangees": 2
+   },
+   "Autrefois, vous ___ moins de devoirs.": {
+    "basIndice": null,
+    "basVerdict": 510.19,
+    "n": 4,
+    "rangees": 2
+   },
+   "Demain, elle ___ son dessin avant le goûter.": {
+    "basIndice": null,
+    "basVerdict": 510.19,
+    "n": 4,
+    "rangees": 2
+   },
+   "Demain, ils ___ une récréation plus longue.": {
+    "basIndice": null,
+    "basVerdict": 510.19,
+    "n": 4,
+    "rangees": 2
+   },
+   "Elles ___ dans le jardin.": {
+    "basIndice": null,
+    "basVerdict": 510.19,
+    "n": 4,
+    "rangees": 2
+   },
+   "Je ___ mon cahier dans mon sac.": {
+    "basIndice": null,
+    "basVerdict": 510.19,
+    "n": 4,
+    "rangees": 2
+   },
+   "Maintenant, elle ___ son frère avant l'école.": {
+    "basIndice": null,
+    "basVerdict": 510.19,
+    "n": 4,
+    "rangees": 2
+   },
+   "Tous les jours, il ___ à l'école.": {
+    "basIndice": null,
+    "basVerdict": 510.19,
+    "n": 4,
+    "rangees": 2
+   },
+   "Tu ___ ton exercice avant la récréation.": {
+    "basIndice": null,
+    "basVerdict": 510.19,
+    "n": 4,
+    "rangees": 2
+   },
+   "Vous ___ du chocolat.": {
+    "basIndice": null,
+    "basVerdict": 510.19,
+    "n": 4,
+    "rangees": 2
+   }
+  },
+  "itemsVus": 10,
+  "nbPropositions": [
+   4
+  ],
+  "pireBasIndice": null,
+  "rangees": [
+   2
+  ],
+  "verdictSousLePli": 1
+ },
+ "bandit-manchot-conversions-unites-cm1": {
+  "indiceSousLePli": 1,
+  "items": {
+   "3 L, combien de ml ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "4 m, combien de cm ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "5000 kg, combien de tonnes ?": {
+    "basIndice": 595.19,
+    "basVerdict": 516.19,
+    "n": 3,
+    "rangees": 2
+   },
+   "5000 mm, combien de m ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "6 cl, combien de ml ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "6000 m, combien de km ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "700 cl, combien de L ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "700 ml, combien de cl ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "700 mm, combien de cm ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "9000 g, combien de kg ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 10,
+  "nbPropositions": [
+   3
+  ],
+  "pireBasIndice": 595.19,
+  "rangees": [
+   1,
+   2
+  ],
+  "verdictSousLePli": 0
+ },
+ "bandit-manchot-grands-nombres-cm1": {
+  "indiceSousLePli": 6,
+  "items": {
+   "Compare 600 400 et 600 040.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Compare 999 999 et 1 000 000.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Décompose 600 040 en valeurs de position.": {
+    "basIndice": 625.19,
+    "basVerdict": 516.19,
+    "n": 3,
+    "rangees": 2
+   },
+   "Décompose 8 004 en valeurs de position.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Lis ce nombre : 213 500.": {
+    "basIndice": 715.19,
+    "basVerdict": 606.19,
+    "n": 3,
+    "rangees": 3
+   },
+   "Lis ce nombre : 47 300.": {
+    "basIndice": 685.19,
+    "basVerdict": 606.19,
+    "n": 3,
+    "rangees": 3
+   },
+   "Lis ce nombre : 70 018.": {
+    "basIndice": 685.19,
+    "basVerdict": 606.19,
+    "n": 3,
+    "rangees": 3
+   },
+   "Écris en chiffres : quatre cent cinquante-deux mille.": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Écris en chiffres : six cent mille quarante.": {
+    "basIndice": 535.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Écris en chiffres : trois cent cinq mille quatre cent vingt-et-un.": {
+    "basIndice": 583.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 10,
+  "nbPropositions": [
+   3
+  ],
+  "pireBasIndice": 715.19,
+  "rangees": [
+   1,
+   2,
+   3
+  ],
+  "verdictSousLePli": 3
+ },
+ "bandit-manchot-homophones-cm1": {
+  "indiceSousLePli": 2,
+  "items": {
+   "Il ___ range soigneusement.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 2,
+    "rangees": 1
+   },
+   "Ils ___ un chien.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 2,
+    "rangees": 1
+   },
+   "Je vais ___ l'école.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 2,
+    "rangees": 1
+   },
+   "Le ciel est dégagé, mais il ___ encore pleuvoir.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 2,
+    "rangees": 1
+   },
+   "Léa a perdu son livre, mais elle ___ enfin retrouvé.": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 2,
+    "rangees": 1
+   },
+   "Léa range son cahier et ___ crayons.": {
+    "basIndice": 535.19,
+    "basVerdict": 426.19,
+    "n": 2,
+    "rangees": 1
+   },
+   "Pose ton cartable ___, à côté du mien.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 2,
+    "rangees": 1
+   },
+   "Regarde ___ oiseaux là-bas !": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 2,
+    "rangees": 1
+   },
+   "Tom cherchait sa gomme, et son voisin ___ enfin repérée.": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 2,
+    "rangees": 1
+   },
+   "___ joue dans la cour.": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 2,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 10,
+  "nbPropositions": [
+   2
+  ],
+  "pireBasIndice": 553.19,
+  "rangees": [
+   1
+  ],
+  "verdictSousLePli": 0
+ },
+ "bandit-manchot-le-bon-son-cp": {
+  "indiceSousLePli": 0,
+  "items": {
+   "BALLON": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "DENT": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "MAMAN": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "MANTEAU": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "MONTRE": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "OMBRE": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "PONT": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "SAPIN": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "TIMBRE": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "VENT": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 10,
+  "nbPropositions": [
+   3
+  ],
+  "pireBasIndice": 505.19,
+  "rangees": [
+   1
+  ],
+  "verdictSousLePli": 0
+ },
+ "bandit-manchot-nature-mot-cp": {
+  "indiceSousLePli": 0,
+  "items": {
+   "Elle « range » sa chambre.": {
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "n": 2,
+    "rangees": 1
+   },
+   "Il « dort » bien fort.": {
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "n": 2,
+    "rangees": 1
+   },
+   "La « maîtresse » écrit au tableau.": {
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "n": 2,
+    "rangees": 1
+   },
+   "Le « chat » dort sur le tapis.": {
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "n": 2,
+    "rangees": 1
+   },
+   "Le « soleil » brille dans le ciel.": {
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "n": 2,
+    "rangees": 1
+   },
+   "Les enfants « chantent » une chanson.": {
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "n": 2,
+    "rangees": 1
+   },
+   "Léa porte un joli « sac ».": {
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "n": 2,
+    "rangees": 1
+   },
+   "Tom mange un bon « gâteau ».": {
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "n": 2,
+    "rangees": 1
+   },
+   "Tom « saute » dans la flaque.": {
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "n": 2,
+    "rangees": 1
+   },
+   "« Médor » aboie très fort.": {
+    "basIndice": 512.38,
+    "basVerdict": 433.38,
+    "n": 2,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 10,
+  "nbPropositions": [
+   2
+  ],
+  "pireBasIndice": 512.38,
+  "rangees": [
+   1
+  ],
+  "verdictSousLePli": 0
+ },
+ "bandit-manchot-perimetre-cm1": {
+  "indiceSousLePli": 9,
+  "items": {
+   "Le périmètre d'une figure, c'est...": {
+    "basIndice": 685.19,
+    "basVerdict": 606.19,
+    "n": 3,
+    "rangees": 3
+   },
+   "Quel est le périmètre d'un carré de côté 3 cm ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Quel est le périmètre d'un carré de côté 5 cm ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Quel est le périmètre d'un carré de côté 8 m ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Quel est le périmètre d'un rectangle de longueur 14 cm et de largeur 6 cm ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Quel est le périmètre d'un rectangle de longueur 20 m et de largeur 5 m ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Quel est le périmètre d'un rectangle de longueur 6 cm et de largeur 4 cm ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Quel est le périmètre d'un rectangle de longueur 7 cm et de largeur 2 cm ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Quel est le périmètre d'un rectangle de longueur 9 cm et de largeur 4 cm ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 10,
+  "nbPropositions": [
+   3
+  ],
+  "pireBasIndice": 685.19,
+  "rangees": [
+   1,
+   3
+  ],
+  "verdictSousLePli": 1
+ },
+ "bandit-manchot-problemes-additifs-cp": {
+  "indiceSousLePli": 10,
+  "items": {
+   "Ali a 8 cartes et en gagne 1. Combien en a-t-il ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Le fermier a 1 chat et en adopte 2. Combien en a-t-il ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Le jardinier a 8 fleurs et 5 fanent. Combien lui en reste-t-il ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Léo a 6 gommes et en perd 1. Combien lui en reste-t-il ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Mamie a 3 gâteaux et en fait 4 de plus. Combien en a-t-elle ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Mamie a 7 gâteaux et on en mange 3. Combien lui en reste-t-il ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Mia a 6 images et en trouve 3. Combien en a-t-elle ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Tom a 4 bonbons et en reçoit 3. Combien en a-t-il ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Tom a 9 bonbons et en mange 4. Combien lui en reste-t-il ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Zoé a 4 jetons et en gagne 5. Combien en a-t-elle ?": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 10,
+  "nbPropositions": [
+   3
+  ],
+  "pireBasIndice": 553.19,
+  "rangees": [
+   1
+  ],
+  "verdictSousLePli": 0
+ },
+ "bandit-manchot-soustractions-cp": {
+  "indiceSousLePli": 0,
+  "items": {
+   "10 - 3 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "3 - 2 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "5 - 3 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "5 - 5 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "6 - 1 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "6 - 5 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "9 - 1 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "9 - 2 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "9 - 5 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "9 - 7 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 10,
+  "nbPropositions": [
+   3
+  ],
+  "pireBasIndice": 505.19,
+  "rangees": [
+   1
+  ],
+  "verdictSousLePli": 0
+ },
+ "bandit-manchot-synonymes-cm1": {
+  "indiceSousLePli": 3,
+  "items": {
+   "Après la course, Tom est « fatigué ».": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Ce désert de sable est très « grand ».": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Ce moteur de camion est très « fort ».": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Cet exercice de mathématiques est « difficile ».": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Cette fourmi est « petite ».": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "La musique du carnaval est « gaie ».": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Le bureau de Léa est « propre ».": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Le petit garçon est « triste » depuis le départ de son ami.": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Le pompier reste « courageux » face au danger.": {
+    "basIndice": 553.19,
+    "basVerdict": 474.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "Léa est « contente » de son cadeau.": {
+    "basIndice": 535.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 10,
+  "nbPropositions": [
+   3
+  ],
+  "pireBasIndice": 553.19,
+  "rangees": [
+   1
+  ],
+  "verdictSousLePli": 0
+ },
+ "bandit-manchot-tables-multiplication-cm1": {
+  "indiceSousLePli": 0,
+  "items": {
+   "1 × 7 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "3 × 6 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "4 × 3 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "4 × 4 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "4 × 9 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "5 × 3 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "5 × 9 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "7 × 10 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   },
+   "9 × 5 = ?": {
+    "basIndice": 505.19,
+    "basVerdict": 426.19,
+    "n": 3,
+    "rangees": 1
+   }
+  },
+  "itemsVus": 9,
+  "nbPropositions": [
+   3
+  ],
+  "pireBasIndice": 505.19,
+  "rangees": [
+   1
+  ],
+  "verdictSousLePli": 0
+ }
+}

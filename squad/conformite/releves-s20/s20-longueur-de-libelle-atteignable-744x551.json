@@ -1,0 +1,295 @@
+{
+ "servi": {
+  "enonce": "Nous partons demain matin pour la montagne",
+  "rangees": 2,
+  "textes": [
+   "Phrase correcte",
+   "Point d'interrogation",
+   "Point final"
+  ],
+  "largeurs": [
+   288.98,
+   375.02,
+   680
+  ],
+  "basProp": 501.19,
+  "basVerdict": null,
+  "basIndice": null,
+  "largeurRangee": 680,
+  "hauteurEnonce": 96
+ },
+ "servi_apres_echec": {
+  "enonce": "Nous partons demain matin pour la montagne",
+  "rangees": 2,
+  "textes": [
+   "Phrase correcte",
+   "Point d'interrogation",
+   "Point final"
+  ],
+  "largeurs": [
+   288.98,
+   375.02,
+   680
+  ],
+  "basProp": 501.19,
+  "basVerdict": 564.19,
+  "basIndice": 643.19,
+  "largeurRangee": 680,
+  "hauteurEnonce": 96
+ },
+ "balayage": {
+  "3": {
+   "rangees": 1,
+   "basProp": 411.19,
+   "basVerdict": 474.19,
+   "basIndice": 553.19,
+   "largeurs": [
+    216,
+    216,
+    216
+   ]
+  },
+  "4": {
+   "rangees": 1,
+   "basProp": 411.19,
+   "basVerdict": 474.19,
+   "basIndice": 553.19,
+   "largeurs": [
+    216,
+    216,
+    216
+   ]
+  },
+  "5": {
+   "rangees": 1,
+   "basProp": 411.19,
+   "basVerdict": 474.19,
+   "basIndice": 553.19,
+   "largeurs": [
+    216,
+    216,
+    216
+   ]
+  },
+  "6": {
+   "rangees": 1,
+   "basProp": 411.19,
+   "basVerdict": 474.19,
+   "basIndice": 553.19,
+   "largeurs": [
+    216,
+    216,
+    216
+   ]
+  },
+  "7": {
+   "rangees": 1,
+   "basProp": 411.19,
+   "basVerdict": 474.19,
+   "basIndice": 553.19,
+   "largeurs": [
+    216,
+    216,
+    216
+   ]
+  },
+  "8": {
+   "rangees": 1,
+   "basProp": 411.19,
+   "basVerdict": 474.19,
+   "basIndice": 553.19,
+   "largeurs": [
+    216,
+    216,
+    216
+   ]
+  },
+  "9": {
+   "rangees": 1,
+   "basProp": 411.19,
+   "basVerdict": 474.19,
+   "basIndice": 553.19,
+   "largeurs": [
+    216,
+    216,
+    216
+   ]
+  },
+  "10": {
+   "rangees": 1,
+   "basProp": 411.19,
+   "basVerdict": 474.19,
+   "basIndice": 553.19,
+   "largeurs": [
+    216,
+    216,
+    216
+   ]
+  },
+  "11": {
+   "rangees": 2,
+   "basProp": 501.19,
+   "basVerdict": 564.19,
+   "basIndice": 643.19,
+   "largeurs": [
+    332,
+    332,
+    680
+   ]
+  },
+  "12": {
+   "rangees": 2,
+   "basProp": 501.19,
+   "basVerdict": 564.19,
+   "basIndice": 643.19,
+   "largeurs": [
+    332,
+    332,
+    680
+   ]
+  },
+  "13": {
+   "rangees": 2,
+   "basProp": 501.19,
+   "basVerdict": 564.19,
+   "basIndice": 643.19,
+   "largeurs": [
+    332,
+    332,
+    680
+   ]
+  },
+  "14": {
+   "rangees": 2,
+   "basProp": 501.19,
+   "basVerdict": 564.19,
+   "basIndice": 643.19,
+   "largeurs": [
+    332,
+    332,
+    680
+   ]
+  },
+  "15": {
+   "rangees": 2,
+   "basProp": 501.19,
+   "basVerdict": 564.19,
+   "basIndice": 643.19,
+   "largeurs": [
+    332,
+    332,
+    680
+   ]
+  },
+  "16": {
+   "rangees": 2,
+   "basProp": 501.19,
+   "basVerdict": 564.19,
+   "basIndice": 643.19,
+   "largeurs": [
+    332,
+    332,
+    680
+   ]
+  },
+  "17": {
+   "rangees": 2,
+   "basProp": 501.19,
+   "basVerdict": 564.19,
+   "basIndice": 643.19,
+   "largeurs": [
+    332,
+    332,
+    680
+   ]
+  },
+  "18": {
+   "rangees": 3,
+   "basProp": 591.19,
+   "basVerdict": 654.19,
+   "basIndice": 733.19,
+   "largeurs": [
+    680,
+    680,
+    680
+   ]
+  },
+  "19": {
+   "rangees": 3,
+   "basProp": 591.19,
+   "basVerdict": 654.19,
+   "basIndice": 733.19,
+   "largeurs": [
+    680,
+    680,
+    680
+   ]
+  },
+  "20": {
+   "rangees": 3,
+   "basProp": 591.19,
+   "basVerdict": 654.19,
+   "basIndice": 733.19,
+   "largeurs": [
+    680,
+    680,
+    680
+   ]
+  },
+  "21": {
+   "rangees": 3,
+   "basProp": 591.19,
+   "basVerdict": 654.19,
+   "basIndice": 733.19,
+   "largeurs": [
+    680,
+    680,
+    680
+   ]
+  },
+  "22": {
+   "rangees": 3,
+   "basProp": 591.19,
+   "basVerdict": 654.19,
+   "basIndice": 733.19,
+   "largeurs": [
+    680,
+    680,
+    680
+   ]
+  },
+  "23": {
+   "rangees": 3,
+   "basProp": 591.19,
+   "basVerdict": 654.19,
+   "basIndice": 733.19,
+   "largeurs": [
+    680,
+    680,
+    680
+   ]
+  },
+  "24": {
+   "rangees": 3,
+   "basProp": 591.19,
+   "basVerdict": 654.19,
+   "basIndice": 733.19,
+   "largeurs": [
+    680,
+    680,
+    680
+   ]
+  },
+  "25": {
+   "rangees": 3,
+   "basProp": 591.19,
+   "basVerdict": 654.19,
+   "basIndice": 733.19,
+   "largeurs": [
+    680,
+    680,
+    680
+   ]
+  }
+ }
+}

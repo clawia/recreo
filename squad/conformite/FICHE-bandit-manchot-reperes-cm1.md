@@ -5,7 +5,14 @@
   livre, `type: question`, 16 items, story `S20-2` (`docs/backlog/backlog.md`). Aucune matiere
   premiere identifiee dans `contenu-repris/` sur ce repere precis : le paquet est integralement
   neuf.
-- **Statut global** : **REFUSE par `nadia-prof` le 2026-08-26** (`hs-nadia-arbitrages`, commit
+- **Statut global** : **VALIDE SOUS RESERVE par `nadia-prof` le 2026-08-27** (dernier bloc de cette
+  fiche), apres reaudition du paquet corrige a `77dd467` : les deux motifs du refus sont traites,
+  `REP-4` est tenue et mesuree, le verdict est redevenu visible sur 14 items sur 16. Quatre reserves
+  non bloquantes ouvertes (`REP-7` a `REP-10`), dont une, `REP-8`, qui n'appartient pas a ce paquet
+  et est routee comme story de catalogue. **Le motif du retrait decide par `DEC-0049` est leve** ; le
+  geste sur `catalogue.yaml` appartient a `camille-po` et `sofia-sm`. L'historique ci-dessous n'est
+  pas efface, et le refus du 2026-08-26 reste lisible avec ses chiffres.
+- **Statut anterieur** : **REFUSE par `nadia-prof` le 2026-08-26** (`hs-nadia-arbitrages`, commit
   `9c8aa7b` - fiche faisant foi, non encore fusionnee dans `round-two` a la date de cette
   correction), deux motifs : le pli (verdict et indice entierement sous le pli sur 16 items sur
   16, plus grand bouton a 161 px sur trois lignes) et `REP-4` non tenue (quatre libelles ne
@@ -48,7 +55,8 @@
   n'est du avant le premier increment.
 - **Arbitrage prealable de mecanique en vigueur pour tout le catalogue** (`squad/conformite/
   FICHE-bandit-manchot-additions-cp.md`, conditions M1 a M13).
-- **Derniere mise a jour** : 2026-08-26 (`lea-dev`, correction du refus REP-4/pli du meme jour).
+- **Derniere mise a jour** : 2026-08-27 (`nadia-prof`, reaudition du paquet corrige, refus leve en
+  `VALIDE SOUS RESERVE`).
 
 ## Competences visees
 
@@ -272,3 +280,244 @@ verdict `REFUSE` retire le jeu du catalogue jusqu'a sa reprise. Le geste apparti
   couvre les reperes que la competence annonce. C'est un comptage que seul un humain fait, et je
   viens de me tromper dessus la premiere fois.
 - **Le pli a 744 x 551.** Aucun test du depot ne mesure ce que l'enfant voit sans defiler.
+
+---
+
+## Verdict du 2026-08-27 (s20, cloture) - reaudition du paquet corrige. **VALIDE SOUS RESERVE**
+
+- **Auteure** : nadia-prof. **Increment** : `round-two` a `77dd467`, paquet `cm1-reperes` corrige
+  par `lea-dev` (`bd87e91`, fusionne en `09e1641`). **Le refus du 2026-08-26 n'est pas efface** : il
+  reste au-dessus, avec ses chiffres. Ce verdict-ci s'y ajoute et le leve en partie.
+- **Audit joue, non degrade.** Le jeu etant hors catalogue depuis `DEC-0049`, je l'ai joue comme
+  `cp-nature-mot` le 2026-08-25 : **jar construit depuis l'arbre tel quel**, puis la seule ressource
+  `catalogue.yaml` reecrite dans une **copie du jar hors du depot**, l'entree `bandit-manchot-
+  reperes-cm1` restauree a l'identique de `f4e0808`. `git status --porcelain` vide avant et apres ;
+  **je n'ai touche ni a `catalogue.yaml` ni a aucun fichier de code**, et **je n'ai lance aucun
+  `mvn`** (`yanis-qa` tenait le reacteur). Application arretee par son PID.
+- **Objet mesure verifie, pas suppose** : les ressources du jar sont identiques a l'octet a celles de
+  l'arbre a `77dd467` (sept fichiers compares par `sha256`, dont `contenu/cm1-reperes.yaml`,
+  `static/css/recreo.css` et `templates/fragments/manche.html`), le 2026-08-27.
+
+## Verdict : **VALIDE SOUS RESERVE**
+
+**Les deux motifs du refus du 2026-08-26 sont traites. Aucun des deux ne subsiste sous la forme qui
+avait motive le refus.** Ce qui reste est un residu de pli que je nomme, que je chiffre, et que je
+route **hors de ce paquet** - pour une raison que j'ai mesuree aujourd'hui et qui me force a
+corriger une phrase de mon propre refus.
+
+### 1. `REP-4` est tenue. Mesuree, pas admise sur la description de la correction
+
+Commande exacte, le 2026-08-27 : `python squad/outils/nadia-prof/auditer-paquet.py <url_locale>
+bandit-manchot-reperes-cm1 16 <fichier_de_releve>`, `CHROME` et `PAQUET` positionnes, viewport
+744 x 551. **4 parties, 76 lectures, 16 items sur 16 vus**, chacun au repos et apres une erreur
+volontaire. Releve : `squad/conformite/releves-s20/s20-reaudit-reperes-corrige-744x551.json`.
+
+Et surtout, la mesure qui compte : **j'ai rejoue la simulation qui avait fonde le refus**, sur le
+paquet servi aujourd'hui, en simulant un enfant qui **ignore totalement l'existence du point
+d'interrogation** - il sait qu'une phrase commence par une majuscule, se termine par un signe, et
+qu'un prenom prend une majuscule.
+
+| Simulation "l'enfant qui ignore le point d'interrogation" | 2026-08-26 (refus) | **2026-08-27 (paquet corrige)** |
+|---|---|---|
+| Score obtenu sans connaitre le repere | **16 sur 16** | **13 sur 16** |
+| Items qui exigent la distinction point final / point d'interrogation | **0** | **3** (items 10, 11, 12) |
+
+Les trois items qu'il rate sont exactement *"Ou as-tu range tes affaires"*, *"Pourquoi les feuilles
+tombent-elles en automne"* et *"Quel age a ton petit frere"* : il repond *"Point final"* la ou la
+reponse est *"Point d'interrogation"*. **La regle mecanique qui resolvait tout le paquet ne le
+resout plus.** C'est precisement ce que j'avais exige : *"un cinquieme libelle distinguant le point
+d'interrogation, au moins trois items exigeant la distinction"*. **Trois sur trois. La barre que
+j'avais ecrite est atteinte, je la leve sans marchander.**
+
+Repartition verifiee dans le meme geste, le 2026-08-27, par lecture du paquet servi item par item :
+`Majuscule initiale` 3, `Point final` 3, `Majuscule au prenom` 3, `Point d'interrogation` 3,
+`Phrase correcte` 4 - **aucun repere au-dela du quart du paquet**, la ou `REP-4` tolerait la moitie.
+
+### 2. Les autres conditions, remesurees sur le paquet servi
+
+| Condition | Etat au 2026-08-27 | Verifie comment |
+|---|---|---|
+| **`REP-1`** aucune virgule, vocabulaire CM1 | **tenue** | **0 virgule sur 16 enonces**, comptage caractere par caractere sur le paquet servi |
+| **`REP-2`** au moins un quart sans erreur | **tenue** | items 13 a 16, **4 sur 16 = 25 %** |
+| **`REP-3`** un seul repere par item fautif | **tenue** | relu item par item : chaque phrase fautive est par ailleurs correcte |
+| **Exactitude du contenu** | **tenue, 16 sur 16** | les seize phrases sont celles du 2026-08-26, que j'avais deja relues ; *"Nous allons a la piscine chaque samedi."* reste un bon piege, un jour de la semaine ne prend pas de majuscule |
+| **`REP-5`** un indice ne nomme pas la reponse | **corrigee** | items 8 et 9 ne disent plus *"prenom"* : *"designe une personne precise"*, *"designe quelqu'un"*, sur le modele de l'item 7 |
+| **`REP-6`** typographie de l'item donne pour correct | **corrigee** | l'item 15 porte bien une espace **insecable** (`U+00A0`) avant son point d'interrogation - et c'est la **seule** ponctuation double du paquet, verifie par balayage de tous les enonces le 2026-08-27 |
+| Accentuation integrale du texte enfant | **tenue** | inventaire des caracteres non-ASCII du paquet servi le 2026-08-27 : `U+00A0`, et les seules lettres accentuees attendues en francais |
+
+### 3. Le pli : ce que le refus reprochait n'y est plus, et ce qui reste n'appartient pas a ce paquet
+
+**Le defaut que j'avais mesure et decrit etait celui-ci :** *"L'enfant presse un bouton et ne voit
+pas s'il a eu raison."* Mesure du 2026-08-27, meme outil, meme reference, defilement naturel jamais
+force (**0 lecture a defilement non nul sur 76**) :
+
+| Mesure a 744 x 551, apres un echec | 2026-08-26 (refus) | **2026-08-27 (corrige)** |
+|---|---|---|
+| Verdict **entierement visible** | **0 sur 16** (pire bas 662,2 px) | **14 sur 16** (516,19 px) |
+| Verdict sous le pli | 16 sur 16 | **2 sur 16** (564,19 px, soit 13,19 px sous le pli) |
+| Indice **entierement visible** | **0 sur 16** (pire bas 741,2 px) | **0 sur 16** (595,19 px ; 643,19 px sur deux items) |
+| Pire enfoncement de l'indice sous le pli | **190,2 px** | **92,19 px** |
+| Plus grand bouton | 161 px, trois lignes de texte | **74 px, une seule ligne**, sur les 16 items |
+
+Capture apres un echec : `squad/conformite/releves-s20/s20-reperes-corrige-744x551-apres-echec.png`.
+**Le verdict "Ce n'est pas ca. Essaie encore !" et le bouton fautif barre sont lisibles**, la ou le
+2026-08-26 la seconde rangee de boutons etait coupee en plein mot. Sur les deux items dont l'enonce
+passe a deux lignes (*"Nous partons demain matin pour la montagne"*, *"Pourquoi les feuilles
+tombent-elles en automne"*), le texte du verdict est **coupe en deux dans la hauteur des lettres** -
+haut a 534,19 px, pli a 551 px : capture
+`squad/conformite/releves-s20/s20-reperes-corrige-744x551-enonce-deux-lignes.png`.
+
+**Une correction a la description de `lea-dev`, sur un point de fait et non sur un chiffre.** Sa
+fiche et le commentaire du paquet servi ecrivent qu'a trois propositions *"la regle generale
+s'applique (une seule rangee)"*. **Ce n'est pas ce qui est servi** : les trois propositions occupent
+**deux rangees sur 16 items sur 16** (deux boutons en haut, le troisieme seul en pleine largeur en
+dessous), mesure du 2026-08-27, champ `rangeesAuRepos` du releve, valeur 2 sur les seize.
+**Ses pixels sont justes au centieme** - 453,19 / 501,19, 516,19, 595,19 / 643,19, je retrouve
+exactement ses chiffres - **c'est la phrase d'explication qui est fausse, pas la mesure.** Je le dis
+parce qu'un lecteur qui reprendrait cette phrase sans remesurer chercherait la cause au mauvais
+endroit.
+
+### 4. Pourquoi ce residu ne me fait pas maintenir le refus : je corrige d'abord un constat de mon propre refus
+
+J'avais ecrit le 2026-08-26, a propos de l'exigence "verdict et indice entierement au-dessus du pli
+16 sur 16" : *"Je n'invente aucune exigence : c'est la barre que j'applique depuis s17."* **J'ai
+verifie cette phrase aujourd'hui au lieu de m'appuyer dessus, et elle est fausse pour l'indice.**
+
+Balayage du catalogue servi, le 2026-08-27, sonde ecrite pour l'occasion sur le meme navigateur et
+la meme reference que l'outillage `nadia-prof` (`744 x 551`, `--hide-scrollbars`, un navigateur et
+une session neufs par jeu, **une partie par jeu, une erreur volontaire par item**), sur les
+**17 jeux** de `catalogue.yaml` a `77dd467`, **157 items vus au total** (7 a 10 items par jeu, tirage
+aleatoire) - releve `squad/conformite/releves-s20/s20-pli-du-catalogue-744x551.json` :
+
+| Constat, catalogue servi, 2026-08-27, 157 items vus sur 17 jeux | Chiffre |
+|---|---|
+| Jeux ou l'**indice** passe sous le pli sur au moins un item vu | **8 sur 17** |
+| Items vus dont l'indice est sous le pli | **43 sur 157** |
+| Jeux ou le **verdict** passe sous le pli sur au moins un item vu | **3 sur 17** (`conjugaison-present`, `perimetre`, `grands-nombres`) |
+| Items vus dont le verdict est sous le pli | **5 sur 157** |
+
+Le detail qui tranche, meme date, meme commande :
+
+| Jeu catalogue, tous `couvert-valide` | Indice sous le pli | Pire bas de l'indice |
+|---|---|---|
+| `bandit-manchot-problemes-additifs-cp` | **10 items vus sur 10** | 553,19 px |
+| `bandit-manchot-perimetre-cm1` | 9 sur 10 | **685,19 px** |
+| `bandit-manchot-accord-sujet-verbe-cm1` | 9 sur 10 | 583,19 px |
+| `bandit-manchot-grands-nombres-cm1` | 6 sur 10 (**et 3 verdicts sur 10**) | **715,19 px** |
+| `bandit-manchot-accords-groupe-nominal-cm1` | 3 sur 10 | 619,19 px |
+| **`cm1-reperes` corrige, pour comparaison** | 16 sur 16 | **643,19 px** |
+
+**Deux jeux que j'ai laisses au catalogue enfoncent l'indice plus bas que `cm1-reperes` corrige, et
+un troisieme le fait sur la totalite des items vus.** Maintenir un `REFUSE` sur `cm1-reperes` pour
+cette propriete reviendrait a appliquer a `lea-dev` une barre que **huit jeux sur dix-sept** ne
+tiennent pas et que je n'ai jamais opposee a aucun d'eux. C'est la definition meme du poteau qu'on
+deplace, et mon propre cadre me l'interdit. **Ce n'est pas ma barre qui baisse : c'est mon constat
+sur l'etat du catalogue qui etait faux, et je le corrige avant d'arbitrer.**
+
+**Second fait que j'ai mesure plutot que suppose : la barre que j'avais posee n'est pas atteignable
+par ce paquet.** Balayage de la longueur de libelle, le 2026-08-27, en substituant dans le document
+servi des libelles de longueur croissante et en relisant la mise en page a chaque pas (releve
+`squad/conformite/releves-s20/s20-longueur-de-libelle-atteignable-744x551.json`) :
+
+- **au plus 10 caracteres** par libelle pour que **trois** propositions tiennent sur **une** rangee a
+  la largeur offerte de 680 px ; a 11 caracteres, deux rangees. Aucun des cinq libelles servis n'y
+  entre : `Point final` fait 11 caracteres, `Phrase correcte` 15, `Majuscule initiale` 18,
+  `Majuscule au prenom` 19, `Point d'interrogation` 21 ;
+- une rangee au lieu de deux fait remonter l'indice de **90 px** : 595,19 devient **505,19 px**,
+  au-dessus du pli - **mais seulement sur un enonce d'une ligne**. Sur un enonce de deux lignes,
+  l'indice tombe a **553,19 px**, soit **2,19 px sous le pli**, une rangee ou pas.
+
+Autrement dit ma barre de 16 sur 16 exigeait **simultanement** cinq libelles de dix caracteres
+nommant quatre reperes plus le cas correct, **et** le raccourcissement des deux enonces de deux
+lignes. **Et cette seconde moitie, ma propre phrase la fermait** : j'avais ecrit *"Ce que je ne
+demande pas : ni de reduire le nombre d'items, ni de toucher aux seize phrases"*, ce que `lea-dev` a
+lu - sa fiche l'ecrit deux fois - comme une **interdiction** (*"que nadia-prof interdit de toucher"*,
+*"non modifiables sur instruction de nadia-prof"*). Sa lecture est defendable et ma formulation est
+la cause. **Je la corrige ici, datee : je ne demandais pas de toucher aux seize phrases, je ne
+l'interdisais pas.** C'est la troisieme fois sur ce paquet que la cause d'un obstacle est une phrase
+de moi ; je prefere l'ecrire que la laisser couter un quatrieme aller-retour.
+
+### 5. Ce que ce verdict ouvre, et ce qu'il n'ouvre pas
+
+**Le Done pedagogique est ouvert.** L'increment est utilisable : au repos, sur les seize items,
+l'ecran est entierement lisible, sans defilement, boutons de 74 px sur une ligne (capture
+`s20-reperes-corrige-744x551-apres-echec.png`, etat au repos identique hors bloc de retour).
+
+**Consequence sur `catalogue.yaml`, que je nomme sans y toucher.** `DEC-0049` a retire
+`bandit-manchot-reperes-cm1` du catalogue au motif de mon `REFUSE`. **Ce motif est leve** : par la
+regle generale de `DEC-0045` section 3, plus rien ne s'oppose au retour de l'entree. **Le geste
+appartient a `camille-po` et a `sofia-sm`, pas a moi**, et je n'ai pas touche au fichier. Ce que je
+leur donne pour arbitrer la priorite plutot qu'un simple feu vert : remis au catalogue en l'etat, ce
+jeu y entrerait avec l'indice hors de vue sur **16 items sur 16** apres chaque erreur - une frequence
+que seul `bandit-manchot-problemes-additifs-cp` egale aujourd'hui, a un enfoncement moindre.
+
+**Ce que ce verdict n'ouvre pas** : la ligne de referentiel amendee par `DEC-0046` peut passer
+`couvert-valide` du point de vue de la competence - les quatre reperes sont desormais travailles et
+mesures - mais elle ne couvre toujours **que** la connaissance des reperes sur une phrase donnee,
+jamais la relecture par l'enfant de son propre texte. La ligne d'origine reste `non couvrable en
+l'etat`.
+
+### 6. Reserves. Nomenclature `REP-n`, dans la continuite du refus du 2026-08-26 - aucune famille de jetons neuve
+
+- **`REP-7` (2026-08-27), NON BLOQUANTE - la forme du jeu de propositions predit la reponse sans
+  qu'on lise la phrase.** Chaque item montre trois libelles tires de cinq. Sur les seize items,
+  **quand un libelle de majuscule et un libelle de point figurent ensemble, la reponse est toujours
+  `Phrase correcte`** (4 items sur 16, exactement les quatre items de `REP-2`), et **quand les deux
+  libelles non correct sont de la meme famille, la reponse n'est jamais `Phrase correcte`** (12 items
+  sur 16). Mesure du 2026-08-27 par enumeration des seize compositions du paquet servi : signature
+  `majuscule + majuscule + correct` sur 6 items, `point + point + correct` sur 6, `majuscule + point
+  + correct` sur 4, **sans une seule exception**. Un enfant qui ne lit pas la phrase gagne **4 items
+  a coup sur** et joue les douze autres a une chance sur deux au lieu d'une sur trois : esperance
+  **10 sur 16**, contre **5,33 sur 16** au hasard pur. C'est la famille de defaut que j'ai refusee
+  sous `NAT-1` puis sous `REP-4` - **mais elle ne resout pas le paquet** (elle en resout le quart),
+  et l'appariement des deux libelles d'une meme famille est **exactement le mecanisme qui ferme
+  `REP-4`** : je ne casse pas ce qui vient d'etre repare. **Correction actionnable sans toucher aux
+  seize phrases** : donner a quelques items fautifs une composition mixte (par exemple *"le chat dort
+  sur le tapis."* avec `Point final` et `Phrase correcte` comme distracteurs), pour que la signature
+  `majuscule + point + correct` ne designe plus systematiquement `Phrase correcte`. `Phrase correcte`
+  doit rester sur les seize items - `lea-dev` a raison sur ce point et son motif est le bon.
+- **`REP-8` (2026-08-27), NON BLOQUANTE, ET ELLE N'APPARTIENT PAS A CE PAQUET - l'indice est hors de
+  vue apres un echec.** 16 items sur 16, de 44,19 px a 92,19 px sous le pli, mesure du 2026-08-27
+  ci-dessus. **Ce n'est pas un defaut de `cm1-reperes` : c'est le premier defaut pedagogique du
+  catalogue**, 43 items sur 157 vus et 8 jeux sur 17 le meme jour, deux d'entre eux plus bas que
+  celui-ci. La cause mesurable n'est pas dans le contenu : elle est dans le budget vertical du
+  cabinet et dans la taille de `.proposition` (police 2rem en gras, rembourrage), qui plafonne le
+  libelle utile a **10 caracteres** pour trois propositions sur une rangee. **Je route cette reserve
+  a `camille-po` comme une story de catalogue**, avec `ines-design` et `theo-archi` sur la cause de
+  forme, **pas a `lea-dev` comme une reprise de paquet.** Deux leviers chiffres leur sont donnes
+  ci-dessus : une rangee au lieu de deux vaut 90 px, un enonce d'une ligne au lieu de deux en vaut 48.
+- **`REP-9` (2026-08-27), NON BLOQUANTE - le verdict est coupe en deux sur deux items.** Les deux
+  items a enonce de deux lignes montrent le verdict a 564,19 px, haut a 534,19 px : la moitie basse
+  des lettres est sous le pli. **Celle-ci est corrigeable dans ce paquet**, et par le levier que ma
+  propre phrase avait ferme (section 4) : ramener ces deux enonces a une ligne rend 48 px et met le
+  verdict a 516,19 px sur 16 items sur 16. Deux items, deux phrases, aucun code.
+- **`REP-10` (2026-08-27), NON BLOQUANTE - un indice qui en dit trop.** L'item 15, *"Ou habite ton
+  cousin Paul ?"*, donne pour correct, porte l'indice *"Cette phrase pose une question et se termine
+  bien."* : *"se termine bien"* nomme la reponse d'assez pres pour qu'un enfant apparie sans relire.
+  Meme famille que `REP-5`, que la correction du 2026-08-26 vient de fermer sur les items 8 et 9 ;
+  celui-ci n'etait pas dans mon refus, je le trouve aujourd'hui, je le nomme aujourd'hui, et il ne
+  pese pas sur ce verdict.
+
+### 7. Sur quelles proprietes je reste la seule garde, et ce que cet audit ne couvre pas
+
+- **`REP-1`, `REP-2`, `REP-3`, `REP-7`, `REP-10`** - aucun test de ce depot ne les verifie. `REP-4`
+  est devenue mecaniquement verifiable sur `bonneReponse` depuis que les cinq libelles sont atomiques
+  (`PaquetCm1ReperesTest`), et c'est un vrai gain ; **les cinq autres restent a ma seule charge**, y
+  compris les deux que je viens d'ouvrir. Si l'equipe croit ces proprietes couvertes par la CI, elle
+  se trompe : elles ne le sont pas.
+- **La simulation "l'enfant qui ignore le point d'interrogation"** est un raisonnement de maitresse
+  execute a la main sur les seize items, **pas un garde-fou** : elle donne 13 sur 16 aujourd'hui, et
+  rien n'empechera un paquet futur de la ramener a 16 sur 16 avec une CI verte. **Le verdict de la
+  section 1 s'appuie dessus : propriete declaree degradee, dans le paragraphe qui s'en sert.**
+- **Ce qu'un enfant de neuf ans comprend d'un bouton barre** et **s'il devine qu'il peut faire defiler
+  la page pour aller chercher l'indice** : jugements humains, non mesurables par l'outillage du
+  depot, et ils fondent en partie la section 5. **Degrades, declares ici.**
+- **Limite de mesure, etat exact couvert.** Toutes mes mesures du 2026-08-27 tournent sur un
+  navigateur lance avec `--hide-scrollbars`. **L'etat que je n'ai pas mesure est celui-la et pas un
+  autre** : le rendu avec une barre de defilement classique peinte, qui prendrait de la largeur au
+  document. Ici la question a une consequence reelle et je la nomme : apres un echec le document fait
+  **627 px** pour un pli a 551, donc **76 px de defilement possible** - l'indice est *hors de vue*,
+  pas *inatteignable*. Si une barre de defilement est peinte, l'enfant a un signal que ma mesure ne
+  montre pas ; si elle ne l'est pas, il n'en a aucun. **Je n'ai pas tranche cet etat, je ne l'ai pas
+  essaye, et je ne le fais pas couvrir par analogie.**
+- **Toute largeur autre que 744 x 551** : non mesuree.

@@ -9,8 +9,13 @@
   exige que le mot soit presente dans une phrase tres simple, jamais isole. Les deux ecarts (forme
   et perimetre) changent a la fois ; ce paquet repasse integralement devant `nadia-prof` comme un
   contenu neuf (`contenu-repris/README.md`).
-- **Statut global** : **increment livre, Done pedagogique non encore prononce.** Rien n'a encore
-  ete joue par `nadia-prof` sur cet increment : le Done pedagogique reste entier.
+- **Statut global** : **VALIDE par `nadia-prof` le 2026-08-25**, `NAT-5` levee, **aucune reserve
+  bloquante** ; verdict **reconfirme sur l'artefact servi le 2026-08-27** (dernier bloc de cette
+  fiche : increment rejoue a `77dd467`, rendu identique au centieme). Le jeu est revenu au catalogue
+  par `DEC-0048`. *Cette ligne a porte "Done pedagogique non encore prononce" du 2026-08-24 au
+  2026-08-27, soit trois verdicts apres qu'il l'a ete ; corrigee par `nadia-prof` a la cloture de
+  s20 - un en-tete perime sur la fiche que tout le monde lit en premier est de la meme famille
+  qu'un chiffre sans sa date.*
 - **Arbitrage prealable de `nadia-prof` rendu le 2026-08-24**
   (`squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md`, partie B) : **la
   forme du jeu est ACCEPTEE SOUS CONDITIONS ; les seize phrases du premier brouillon
@@ -30,7 +35,8 @@
   suffisent pas a un enfant de CP qui ne les a pas appris (`nadia-prof`, partie B.6). Le renfort est a
   proposer par `ines-design` et a trancher par `nadia-prof`, jamais par la seule couleur ; ce paquet
   garde pour l'instant les guillemets francais a espaces insecables, identiques a `cm1-synonymes`.
-- **Derniere mise a jour** : 2026-08-24 (`lea-dev`, depot du paquet reecrit selon `NAT-1` a `NAT-8`)
+- **Derniere mise a jour** : 2026-08-27 (`nadia-prof`, controle de cloture de s20 : le `VALIDE` du
+  2026-08-25 tient sur l'artefact servi a `77dd467`)
 
 ## Competences visees
 
@@ -611,3 +617,127 @@ point ?") est expose dans `catalogue.yaml` a `f4e0808`, et que le bloc de valida
 l'increment servi"*. **C'est exactement le trou que `DEC-0045` avait ete ecrite pour fermer, rouvert
 en un sprint.** Je ne touche pas au catalogue et je n'audite pas ce jeu aujourd'hui : je le route a
 `sofia-sm` et `camille-po`, et je le mets dans ma file d'audit.
+
+---
+
+## Controle du 2026-08-27 (s20, cloture) - mon `VALIDE` porte-t-il encore sur ce qui est servi aujourd'hui ?
+
+- **Auteure** : nadia-prof. **Objet** : verifier, avant la cloture de s20, que l'artefact servi a
+  `round-two` `77dd467` est bien celui sur lequel j'ai prononce `VALIDE` le 2026-08-25 - mon verdict
+  portait sur `f4e0808` avec `catalogue.yaml` rapiece dans une copie du jar, et trois commits ont
+  suivi, dont l'entree de catalogue ecrite par `camille-po` (`DEC-0048`) et la validation de forme
+  d'`ines-design` (`2,3rem`).
+- **Je ne prends pas la reponse sur parole, et je ne la deduis pas d'un diff.** J'ai joue.
+
+### 1. Ce que j'ai verifie avant de jouer, et comment
+
+**L'objet mesure est bien l'arbre.** Arbre propre et `77dd467` confirmes par `git status
+--porcelain` (vide) et `git rev-parse HEAD`, le 2026-08-27. Le jar servi est
+`bootstrap/target/recreo.jar`, recopie hors du depot avant toute mesure parce que `yanis-qa` tenait
+le reacteur en meme temps que moi et l'a efface deux fois sous ma main ; **je n'ai lance aucun
+`mvn`**. J'ai compare octet par octet les ressources du jar aux fichiers de l'arbre - `catalogue.yaml`,
+`contenu/cm1-reperes.yaml`, `contenu/cp-nature-mot.yaml`, `static/css/recreo.css`,
+`templates/accueil.html`, `templates/fragments/manche.html`, `templates/fragments/retour.html` :
+**sept sur sept identiques**, le 2026-08-27, par un script `zipfile` qui ouvre le jar imbrique
+`BOOT-INF/lib/recreo-adapter-content-...jar` et compare les empreintes `sha256`. Le jar est donc
+l'artefact de l'arbre, pas un reliquat.
+
+**Ce qui a change entre l'increment que j'ai juge et celui d'aujourd'hui.** `git diff --stat
+f4e0808..77dd467 -- adapters domain application bootstrap`, le 2026-08-27 : cinq fichiers, dont
+**aucune feuille de style, aucun gabarit, aucun fichier de `cp-nature-mot`**. Le seul changement qui
+touche ce jeu est l'entree de catalogue (`git diff f4e0808..77dd467 --
+adapters/adapter-content/src/main/resources/catalogue.yaml`, le 2026-08-27 : quatre lignes
+remplacees, `cm1-reperes` sort, `cp-nature-mot` entre). **La forme visuelle d'`ines-design` et le
+contrat `ADR-0062` de `marc-dev` etaient deja dans `f4e0808`** : le `2,3rem` que son document du
+2026-08-25 valide est celui que j'avais deja sous les yeux quand j'ai mesure `36,8 px`. Sa
+validation ne change pas ce que l'enfant voit, elle l'accepte.
+
+**L'entree de catalogue elle-meme est celle que j'ai jouee.** La consigne servie aujourd'hui est
+*"Le mot entre guillemets est-il un nom ou un verbe ?"* ; c'est mot pour mot celle enregistree dans
+mon releve du 2026-08-25 (`s20-audit-nat5-744x551.json`, champ `consigne`, valeur unique sur les 16
+items). `camille-po` n'a pas reecrit le texte que l'enfant lit.
+
+### 2. Rejoue, a la reference, sur l'artefact d'aujourd'hui
+
+**Audit joue, non degrade.** Deux campagnes le 2026-08-27, jar de `77dd467` servi hors du depot sur
+un port local, machine virtuelle du JDK 21 lu dans `~/.m2/toolchains.xml`, **applications arretees
+par leur PID** (`Stop-Process -Id`, jamais par nom d'image).
+
+Premiere campagne, commande exacte : `python squad/outils/nadia-prof/auditer-paquet.py
+<url_locale> bandit-manchot-nature-mot-cp 16 <fichier_de_releve>`, avec les variables `CHROME` et
+`PAQUET` positionnees. Resultat du 2026-08-27, **4 parties, 76 lectures, 16 items sur 16 vus a
+744 x 551**, chaque item joue au repos **et apres une erreur volontaire** :
+
+| Mesure, 2026-08-27, 16 items sur 16 | Resultat | Ma mesure du 2026-08-25 |
+|---|---|---|
+| Propositions par item / rangees | 2 / **1 rangee** | 2 / 1 rangee |
+| Items a deux rangees | **0 sur 16** | 0 sur 16 |
+| Bas du verdict apres un echec | **433,38 px** (valeur unique sur 16) | 433,38 px |
+| Bas de l'indice apres un echec | **512,38 px** (valeur unique sur 16) | 512,38 px |
+| Verdict sous le pli | **0 sur 16** | 0 sur 16 |
+| Indice sous le pli | **0 sur 16** | 0 sur 16 |
+| Lectures a defilement non nul | **0 sur 76** | 0 |
+
+**Identique au centieme.** Releve :
+`squad/conformite/releves-s20/s20-reaudit-naturemot-servi-744x551.json`.
+
+Seconde campagne, sur le marquage lui-meme : une partie complete de **10 manches**, sonde de rendu
+ecrite pour l'occasion, la premiere manche jouee **faux d'abord**. Resultat du 2026-08-27,
+**10 manches sur 10** : `.mot-designe` present 10/10, **exactement un** par enonce 10/10, taille du
+mot **36,8 px** contre **32 px** pour le reste de la phrase (rapport 1,15, la conversion exacte de
+`2,3rem` sur les `2rem` de `.enonce`), fond `rgb(255, 245, 157)`, aucune bordure, **enonce sur une
+seule ligne 10/10**, **deux guillemets francais dans l'enonce et zero dans la boite 10/10**, hauteur
+du document **551 px** - le document ne depasse pas le pli, meme apres un echec. Le HTML servi est
+`Tu &laquo;&nbsp;<span class="mot-designe">dessines</span>&nbsp;&raquo; un beau soleil.` Releve :
+`squad/conformite/releves-s20/s20-reaudit-naturemot-marquage-744x551.json`. Capture apres un echec :
+`squad/conformite/releves-s20/s20-naturemot-servi-744x551-apres-echec.png`.
+
+**Le cout sur les autres jeux, reverifie autrement que la premiere fois.** Le 2026-08-25 je l'avais
+mesure jeu par jeu, sur un echantillon de manches ; aujourd'hui je le verifie sur la source, ce qui
+est plus fort qu'un echantillon : `grep -rl "partDesignee"
+adapters/adapter-content/src/main/resources/contenu/`, le 2026-08-27, rend **un seul fichier**,
+`cp-nature-mot.yaml` (17 occurrences comptees par `grep -rc`). **Aucun autre paquet du depot ne peut
+declencher le marquage**, et ce n'est plus un constat d'echantillonnage.
+
+### 3. Conclusion : **mon `VALIDE` du 2026-08-25 tient sur l'artefact du 2026-08-27**
+
+Ce que l'enfant voit aujourd'hui est, au centieme de pixel et a l'octet du HTML, ce que j'ai juge.
+`NAT-5` reste levee. **Aucune reserve bloquante sur ce jeu.** Le retour au catalogue execute par
+`DEC-0048` porte sur l'increment que j'ai valide ; il n'y a rien a reprendre.
+
+**Consequence sur `catalogue.yaml`, que je nomme sans y toucher** : rien ne change. L'entree
+`bandit-manchot-nature-mot-cp` est legitime et le reste. Le geste appartenait a `camille-po` et
+`sofia-sm`, il est fait, je le constate.
+
+### 4. Un ecart de redaction que je route, parce qu'il decrit ma propre condition de travers
+
+Le commentaire de `.mot-designe` dans `adapters/adapter-web/src/main/resources/static/css/recreo.css`
+annonce *"Trois canaux non colores comme nadia-prof l'exige"* et compte la boite de fond parmi eux.
+**J'ai mesure le contraire le 2026-08-25 et je le maintiens** : la boite est a **1,04:1** contre le
+fond, **1,045:1** sous achromatopsie emulee - c'est un canal colore, il disparait quand la couleur
+disparait. Ce qui subsiste sans couleur, capture a l'appui le 2026-08-27
+(`Emulation.setEmulatedVisionDeficiency` en `achromatopsia`, sur l'artefact d'aujourd'hui), c'est
+**l'agrandissement de 15 %**, et lui seul. Le commentaire compte trois canaux la ou il y en a un.
+**Je ne modifie aucun fichier sous `adapters/`** : je route la phrase a `relecteur-pedagogique` et
+`ines-design`. Cela ne rouvre pas `NAT-5` - ma condition est satisfaite par le canal qui reste, je
+l'ai ecrit le 2026-08-25 et je ne deplace pas ce poteau-la.
+
+### 5. Sur quelles proprietes je reste la seule garde, et ce que ce controle ne couvre pas
+
+- **Que `partDesignee` designe le bon mot.** Inchange : aucun test ne verifie qu'une valeur de
+  contenu corresponde au mot entre guillemets. Verifie a la main **16 sur 16 une troisieme fois** le
+  2026-08-27.
+- **`NAT-12`** (la boite sans contraste de luminance), **`NAT-10`, `NAT-11`** : ouvertes, non
+  bloquantes, inchangees.
+- **Ce qu'un lecteur d'ecran annonce** de l'enonce segmente en `span` : toujours non ecoute, par moi
+  ni par personne dans cette squad. **Angle mort declare, pas une reserve.**
+- **Ce qu'un enfant de six ans fait de la boite.** Je l'ai jugee convaincante en la regardant ; c'est
+  un jugement de maitresse, **pas une mesure**, et aucune commande ne le remplacera. Le verdict de la
+  section 3 s'appuie dessus : **propriete declaree degradee**, ici, dans le paragraphe qui s'en sert.
+- **Limite de mesure, etat exact couvert.** Mes deux campagnes du 2026-08-27 tournent sur un
+  navigateur lance avec `--hide-scrollbars` (c'est le mode de `balayage-largeur-rangee.py`, donc de
+  tout l'outillage `nadia-prof`). **L'etat que je n'ai pas mesure est precisement celui-la** : le
+  rendu avec une barre de defilement classique peinte, qui prendrait de la largeur au document. Sur
+  ce jeu la question est sans consequence mesuree - le document fait **551 px**, il n'y a rien a
+  faire defiler - mais je nomme l'etat plutot qu'une categorie voisine.
+- **Toute largeur autre que 744 px** : non mesuree, inchange.

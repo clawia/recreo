@@ -1,0 +1,441 @@
+{
+  "items": {
+    "Hier soir louis a fini ses devoirs.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 595.19,
+        "basDuVerdict": 516.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Un des mots de cette phrase désigne quelqu'un en particulier.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 453.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Majuscule initiale",
+        "Phrase correcte",
+        "Majuscule au prénom"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Le chien aboie très fort dans le jardin.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 595.19,
+        "basDuVerdict": 516.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Relis bien la phrase.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 453.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Majuscule initiale",
+        "Point final",
+        "Phrase correcte"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Le professeur a félicité julien pour son exposé.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 595.19,
+        "basDuVerdict": 516.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Un des mots de cette phrase désigne quelqu'un.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 453.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Majuscule au prénom",
+        "Phrase correcte",
+        "Majuscule initiale"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Le soleil brille dans le ciel": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 595.19,
+        "basDuVerdict": 516.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Regarde ce qui se trouve tout à la fin de la phrase.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 453.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Phrase correcte",
+        "Point final",
+        "Point d'interrogation"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Léa adore lire des histoires avant de dormir.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 595.19,
+        "basDuVerdict": 516.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Vérifie chaque repère.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 453.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Point final",
+        "Majuscule au prénom",
+        "Phrase correcte"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Ma cousine léa vient nous voir dimanche.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 595.19,
+        "basDuVerdict": 516.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Un des mots de cette phrase désigne une personne précise.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 453.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Majuscule initiale",
+        "Majuscule au prénom",
+        "Phrase correcte"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Mon frère apprend à nager cet été": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 595.19,
+        "basDuVerdict": 516.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Vérifie le tout dernier caractère de la phrase.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 453.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Point final",
+        "Phrase correcte",
+        "Point d'interrogation"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Nous allons à la piscine chaque samedi.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 595.19,
+        "basDuVerdict": 516.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Regarde chaque repère avant de choisir.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 453.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Point final",
+        "Phrase correcte",
+        "Majuscule au prénom"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Nous partons demain matin pour la montagne": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 643.19,
+        "basDuVerdict": 564.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Regarde la toute fin de la phrase.",
+        "verdictAuDessusDuPli": false
+      },
+      "basDesPropositions": 501.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Point final",
+        "Phrase correcte",
+        "Point d'interrogation"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Où as-tu rangé tes affaires": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 595.19,
+        "basDuVerdict": 516.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Cette phrase pose une question à quelqu'un.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 453.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Point final",
+        "Phrase correcte",
+        "Point d'interrogation"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Où habite ton cousin Paul ?": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 595.19,
+        "basDuVerdict": 516.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Cette phrase pose une question et se termine bien.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 453.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Majuscule initiale",
+        "Point d'interrogation",
+        "Phrase correcte"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Pourquoi les feuilles tombent-elles en automne": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 643.19,
+        "basDuVerdict": 564.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Cette phrase demande une explication.",
+        "verdictAuDessusDuPli": false
+      },
+      "basDesPropositions": 501.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Phrase correcte",
+        "Point final",
+        "Point d'interrogation"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Quel âge a ton petit frère": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 595.19,
+        "basDuVerdict": 516.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Cette phrase attend une réponse.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 453.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Phrase correcte",
+        "Point final",
+        "Point d'interrogation"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "elle prépare son cartable pour demain.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 595.19,
+        "basDuVerdict": 516.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Observe la toute première lettre de la phrase.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 453.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Majuscule initiale",
+        "Phrase correcte",
+        "Majuscule au prénom"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "le chat dort sur le tapis.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 595.19,
+        "basDuVerdict": 516.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Regarde comment commence la phrase.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 453.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Majuscule initiale",
+        "Majuscule au prénom",
+        "Phrase correcte"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "les enfants jouent dans la cour.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 595.19,
+        "basDuVerdict": 516.19,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": false,
+        "rangees": 2,
+        "texteIndice": "Une phrase commence toujours de la même façon.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 453.19,
+      "consigne": "Que manque-t-il à cette phrase ?",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "Majuscule au prénom",
+        "Phrase correcte",
+        "Majuscule initiale"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    }
+  },
+  "itemsADeuxRangees": [
+    "Hier soir louis a fini ses devoirs.",
+    "Le chien aboie très fort dans le jardin.",
+    "Le professeur a félicité julien pour son exposé.",
+    "Le soleil brille dans le ciel",
+    "Léa adore lire des histoires avant de dormir.",
+    "Ma cousine léa vient nous voir dimanche.",
+    "Mon frère apprend à nager cet été",
+    "Nous allons à la piscine chaque samedi.",
+    "Nous partons demain matin pour la montagne",
+    "Où as-tu rangé tes affaires",
+    "Où habite ton cousin Paul ?",
+    "Pourquoi les feuilles tombent-elles en automne",
+    "Quel âge a ton petit frère",
+    "elle prépare son cartable pour demain.",
+    "le chat dort sur le tapis.",
+    "les enfants jouent dans la cour."
+  ],
+  "itemsIndiceSousLePli": [
+    "Hier soir louis a fini ses devoirs.",
+    "Le chien aboie très fort dans le jardin.",
+    "Le professeur a félicité julien pour son exposé.",
+    "Le soleil brille dans le ciel",
+    "Léa adore lire des histoires avant de dormir.",
+    "Ma cousine léa vient nous voir dimanche.",
+    "Mon frère apprend à nager cet été",
+    "Nous allons à la piscine chaque samedi.",
+    "Nous partons demain matin pour la montagne",
+    "Où as-tu rangé tes affaires",
+    "Où habite ton cousin Paul ?",
+    "Pourquoi les feuilles tombent-elles en automne",
+    "Quel âge a ton petit frère",
+    "elle prépare son cartable pour demain.",
+    "le chat dort sur le tapis.",
+    "les enfants jouent dans la cour."
+  ],
+  "itemsVerdictSousLePli": [
+    "Nous partons demain matin pour la montagne",
+    "Pourquoi les feuilles tombent-elles en automne"
+  ],
+  "itemsVus": 16,
+  "jeu": "bandit-manchot-reperes-cm1",
+  "lectures": 76,
+  "lecturesADefilementNonNul": 0,
+  "nombresDePropositions": [
+    3
+  ],
+  "parties": 4,
+  "seuilLargeurMaximum": null,
+  "viewport": [
+    744,
+    551
+  ]
+}

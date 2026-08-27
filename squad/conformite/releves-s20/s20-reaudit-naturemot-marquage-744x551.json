@@ -1,0 +1,349 @@
+[
+ [
+  "manche1-repos",
+  {
+   "enonce": "Tu « dessines » un beau soleil.",
+   "enonceHTML": "Tu «&nbsp;<span class=\"mot-designe\">dessines</span>&nbsp;» un beau soleil.",
+   "nbSpans": 1,
+   "nbMotDesigne": 1,
+   "motDesigne": "dessines",
+   "tailleMot": "36.8px",
+   "tailleEnonce": "32px",
+   "fondMot": "rgb(255, 245, 157)",
+   "couleurMot": "rgb(28, 39, 51)",
+   "rayonMot": "4px",
+   "padMot": "0px 4px",
+   "bordureMot": "none 0px",
+   "hauteurMot": 49,
+   "lignesEnonce": 1.15,
+   "guillemetsDansEnonce": 2,
+   "guillemetsDansMot": 0,
+   "propositions": [
+    "nom",
+    "verbe"
+   ],
+   "basVerdict": null,
+   "basIndice": null,
+   "verdict": null,
+   "indice": null,
+   "hauteurDocument": 551,
+   "defilement": 0
+  }
+ ],
+ [
+  "manche1-apres-echec",
+  {
+   "enonce": "Tu « dessines » un beau soleil.",
+   "enonceHTML": "Tu «&nbsp;<span class=\"mot-designe\">dessines</span>&nbsp;» un beau soleil.",
+   "nbSpans": 1,
+   "nbMotDesigne": 1,
+   "motDesigne": "dessines",
+   "tailleMot": "36.8px",
+   "tailleEnonce": "32px",
+   "fondMot": "rgb(255, 245, 157)",
+   "couleurMot": "rgb(28, 39, 51)",
+   "rayonMot": "4px",
+   "padMot": "0px 4px",
+   "bordureMot": "none 0px",
+   "hauteurMot": 49,
+   "lignesEnonce": 1.15,
+   "guillemetsDansEnonce": 2,
+   "guillemetsDansMot": 0,
+   "propositions": [
+    "nom",
+    "verbe"
+   ],
+   "basVerdict": 433.38,
+   "basIndice": 512.38,
+   "verdict": "Ce n'est pas ça. Essaie encore !",
+   "indice": "Ce mot dit ce que tu fais.",
+   "hauteurDocument": 551,
+   "defilement": 0
+  }
+ ],
+ [
+  "manche2-repos",
+  {
+   "enonce": "Le poisson « nage » dans l'eau.",
+   "enonceHTML": "Le poisson «&nbsp;<span class=\"mot-designe\">nage</span>&nbsp;» dans l'eau.",
+   "nbSpans": 1,
+   "nbMotDesigne": 1,
+   "motDesigne": "nage",
+   "tailleMot": "36.8px",
+   "tailleEnonce": "32px",
+   "fondMot": "rgb(255, 245, 157)",
+   "couleurMot": "rgb(28, 39, 51)",
+   "rayonMot": "4px",
+   "padMot": "0px 4px",
+   "bordureMot": "none 0px",
+   "hauteurMot": 49,
+   "lignesEnonce": 1.15,
+   "guillemetsDansEnonce": 2,
+   "guillemetsDansMot": 0,
+   "propositions": [
+    "nom",
+    "verbe"
+   ],
+   "basVerdict": 433.38,
+   "basIndice": null,
+   "verdict": "Bravo !",
+   "indice": null,
+   "hauteurDocument": 551,
+   "defilement": 0
+  }
+ ],
+ [
+  "manche3-repos",
+  {
+   "enonce": "Tom mange un bon « gâteau ».",
+   "enonceHTML": "Tom mange un bon «&nbsp;<span class=\"mot-designe\">gâteau</span>&nbsp;».",
+   "nbSpans": 1,
+   "nbMotDesigne": 1,
+   "motDesigne": "gâteau",
+   "tailleMot": "36.8px",
+   "tailleEnonce": "32px",
+   "fondMot": "rgb(255, 245, 157)",
+   "couleurMot": "rgb(28, 39, 51)",
+   "rayonMot": "4px",
+   "padMot": "0px 4px",
+   "bordureMot": "none 0px",
+   "hauteurMot": 49,
+   "lignesEnonce": 1.15,
+   "guillemetsDansEnonce": 2,
+   "guillemetsDansMot": 0,
+   "propositions": [
+    "verbe",
+    "nom"
+   ],
+   "basVerdict": 433.38,
+   "basIndice": null,
+   "verdict": "Bravo !",
+   "indice": null,
+   "hauteurDocument": 551,
+   "defilement": 0
+  }
+ ],
+ [
+  "manche4-repos",
+  {
+   "enonce": "Les petits « oiseaux » chantent dans l'arbre.",
+   "enonceHTML": "Les petits «&nbsp;<span class=\"mot-designe\">oiseaux</span>&nbsp;» chantent dans l'arbre.",
+   "nbSpans": 1,
+   "nbMotDesigne": 1,
+   "motDesigne": "oiseaux",
+   "tailleMot": "36.8px",
+   "tailleEnonce": "32px",
+   "fondMot": "rgb(255, 245, 157)",
+   "couleurMot": "rgb(28, 39, 51)",
+   "rayonMot": "4px",
+   "padMot": "0px 4px",
+   "bordureMot": "none 0px",
+   "hauteurMot": 49,
+   "lignesEnonce": 1.15,
+   "guillemetsDansEnonce": 2,
+   "guillemetsDansMot": 0,
+   "propositions": [
+    "verbe",
+    "nom"
+   ],
+   "basVerdict": 433.38,
+   "basIndice": null,
+   "verdict": "Bravo !",
+   "indice": null,
+   "hauteurDocument": 551,
+   "defilement": 0
+  }
+ ],
+ [
+  "manche5-repos",
+  {
+   "enonce": "Léa porte un joli « sac ».",
+   "enonceHTML": "Léa porte un joli «&nbsp;<span class=\"mot-designe\">sac</span>&nbsp;».",
+   "nbSpans": 1,
+   "nbMotDesigne": 1,
+   "motDesigne": "sac",
+   "tailleMot": "36.8px",
+   "tailleEnonce": "32px",
+   "fondMot": "rgb(255, 245, 157)",
+   "couleurMot": "rgb(28, 39, 51)",
+   "rayonMot": "4px",
+   "padMot": "0px 4px",
+   "bordureMot": "none 0px",
+   "hauteurMot": 49,
+   "lignesEnonce": 1.15,
+   "guillemetsDansEnonce": 2,
+   "guillemetsDansMot": 0,
+   "propositions": [
+    "nom",
+    "verbe"
+   ],
+   "basVerdict": 433.38,
+   "basIndice": null,
+   "verdict": "Bravo !",
+   "indice": null,
+   "hauteurDocument": 551,
+   "defilement": 0
+  }
+ ],
+ [
+  "manche6-repos",
+  {
+   "enonce": "La « maîtresse » écrit au tableau.",
+   "enonceHTML": "La «&nbsp;<span class=\"mot-designe\">maîtresse</span>&nbsp;» écrit au tableau.",
+   "nbSpans": 1,
+   "nbMotDesigne": 1,
+   "motDesigne": "maîtresse",
+   "tailleMot": "36.8px",
+   "tailleEnonce": "32px",
+   "fondMot": "rgb(255, 245, 157)",
+   "couleurMot": "rgb(28, 39, 51)",
+   "rayonMot": "4px",
+   "padMot": "0px 4px",
+   "bordureMot": "none 0px",
+   "hauteurMot": 49,
+   "lignesEnonce": 1.15,
+   "guillemetsDansEnonce": 2,
+   "guillemetsDansMot": 0,
+   "propositions": [
+    "verbe",
+    "nom"
+   ],
+   "basVerdict": 433.38,
+   "basIndice": null,
+   "verdict": "Bravo !",
+   "indice": null,
+   "hauteurDocument": 551,
+   "defilement": 0
+  }
+ ],
+ [
+  "manche7-repos",
+  {
+   "enonce": "Elle « range » sa chambre.",
+   "enonceHTML": "Elle «&nbsp;<span class=\"mot-designe\">range</span>&nbsp;» sa chambre.",
+   "nbSpans": 1,
+   "nbMotDesigne": 1,
+   "motDesigne": "range",
+   "tailleMot": "36.8px",
+   "tailleEnonce": "32px",
+   "fondMot": "rgb(255, 245, 157)",
+   "couleurMot": "rgb(28, 39, 51)",
+   "rayonMot": "4px",
+   "padMot": "0px 4px",
+   "bordureMot": "none 0px",
+   "hauteurMot": 49,
+   "lignesEnonce": 1.15,
+   "guillemetsDansEnonce": 2,
+   "guillemetsDansMot": 0,
+   "propositions": [
+    "nom",
+    "verbe"
+   ],
+   "basVerdict": 433.38,
+   "basIndice": null,
+   "verdict": "Bravo !",
+   "indice": null,
+   "hauteurDocument": 551,
+   "defilement": 0
+  }
+ ],
+ [
+  "manche8-repos",
+  {
+   "enonce": "Le « soleil » brille dans le ciel.",
+   "enonceHTML": "Le «&nbsp;<span class=\"mot-designe\">soleil</span>&nbsp;» brille dans le ciel.",
+   "nbSpans": 1,
+   "nbMotDesigne": 1,
+   "motDesigne": "soleil",
+   "tailleMot": "36.8px",
+   "tailleEnonce": "32px",
+   "fondMot": "rgb(255, 245, 157)",
+   "couleurMot": "rgb(28, 39, 51)",
+   "rayonMot": "4px",
+   "padMot": "0px 4px",
+   "bordureMot": "none 0px",
+   "hauteurMot": 49,
+   "lignesEnonce": 1.15,
+   "guillemetsDansEnonce": 2,
+   "guillemetsDansMot": 0,
+   "propositions": [
+    "verbe",
+    "nom"
+   ],
+   "basVerdict": 433.38,
+   "basIndice": null,
+   "verdict": "Bravo !",
+   "indice": null,
+   "hauteurDocument": 551,
+   "defilement": 0
+  }
+ ],
+ [
+  "manche9-repos",
+  {
+   "enonce": "Les enfants « chantent » une chanson.",
+   "enonceHTML": "Les enfants «&nbsp;<span class=\"mot-designe\">chantent</span>&nbsp;» une chanson.",
+   "nbSpans": 1,
+   "nbMotDesigne": 1,
+   "motDesigne": "chantent",
+   "tailleMot": "36.8px",
+   "tailleEnonce": "32px",
+   "fondMot": "rgb(255, 245, 157)",
+   "couleurMot": "rgb(28, 39, 51)",
+   "rayonMot": "4px",
+   "padMot": "0px 4px",
+   "bordureMot": "none 0px",
+   "hauteurMot": 49,
+   "lignesEnonce": 1.15,
+   "guillemetsDansEnonce": 2,
+   "guillemetsDansMot": 0,
+   "propositions": [
+    "verbe",
+    "nom"
+   ],
+   "basVerdict": 433.38,
+   "basIndice": null,
+   "verdict": "Bravo !",
+   "indice": null,
+   "hauteurDocument": 551,
+   "defilement": 0
+  }
+ ],
+ [
+  "manche10-repos",
+  {
+   "enonce": "Le « chat » dort sur le tapis.",
+   "enonceHTML": "Le «&nbsp;<span class=\"mot-designe\">chat</span>&nbsp;» dort sur le tapis.",
+   "nbSpans": 1,
+   "nbMotDesigne": 1,
+   "motDesigne": "chat",
+   "tailleMot": "36.8px",
+   "tailleEnonce": "32px",
+   "fondMot": "rgb(255, 245, 157)",
+   "couleurMot": "rgb(28, 39, 51)",
+   "rayonMot": "4px",
+   "padMot": "0px 4px",
+   "bordureMot": "none 0px",
+   "hauteurMot": 49,
+   "lignesEnonce": 1.15,
+   "guillemetsDansEnonce": 2,
+   "guillemetsDansMot": 0,
+   "propositions": [
+    "verbe",
+    "nom"
+   ],
+   "basVerdict": 433.38,
+   "basIndice": null,
+   "verdict": "Bravo !",
+   "indice": null,
+   "hauteurDocument": 551,
+   "defilement": 0
+  }
+ ],
+ [
+  "etat-final",
+  {
+   "fini": true
+  }
+ ]
+]
