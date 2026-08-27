@@ -156,6 +156,28 @@ serait venu s'y ajouter. Une etape `outils` est donc ajoutee au workflow, qui ba
 - perimetre derive du repertoire, pas une liste de trois noms. Les enveloppes, qui touchent le poste,
 n'y sont pas executees et le commentaire de l'etape le dit.
 
+**Amendement du 2026-08-27 (`theo-archi`, s21, story `S21-1`). Le meme constat s'est reproduit un
+cran plus bas, et je l'ecris parce que c'est ma propre regle qui n'avait pas ete tenue jusqu'au
+bout.** Le perimetre derive ci-dessus ne derivait que d'**un** repertoire, `outils/`. Or les outils
+de mesure de rendu vivent depuis s18 sous `squad/outils/<agent>/`, et le seul test qui s'y trouvait,
+`squad/outils/sofia-sm/verifier-provenance-lots-test.sh`, **n'etait lance par aucun automate depuis
+sa creation** - verifie le 2026-08-27 par lecture de `.github/workflows/ci.yml`, aucun autre
+workflow n'existant dans le depot. C'est mot pour mot le defaut que cette section 3 avait ouvert
+pour deux autres fichiers.
+
+**Ce qui change, et ce qui ne change pas.** L'etape balaie desormais **deux** motifs,
+`outils/*-test.sh` et `squad/outils/*/*-test.sh` ; le perimetre reste derive du repertoire et
+n'enumere aucun nom de fichier. La decision de fond - un juge pur teste entre en CI, une enveloppe
+qui touche le poste n'y entre pas - est inchangee. **Un garde-fou est ajoute au garde-fou** : un
+motif qui ne rend **aucun** fichier fait echouer l'etape, parce qu'un balayage vide est vert et ne
+prouve rien - la famille de faux vert que ce depot combat depuis `ADR-0013`. Cette clause-la est ce
+qui manquait pour que le perimetre derive tienne sa promesse : sans elle, deplacer les tests
+ailleurs aurait rendu l'etape verte et muette.
+
+**Ce que l'amendement ne pretend pas.** Il n'exige pas qu'un outil de `squad/outils/` porte un juge
+pur : `mesurer-cout-mot-designe.py` n'en a pas, et cette etape ne le rend pas rouge. Elle execute ce
+qui existe ; qu'un outil doive en porter un est une question a decider outil par outil, pas ici.
+
 ### Pourquoi rien de tout cela n'est une `ArchRule`
 
 ArchUnit lit du bytecode. Ni la largeur d'un rendu, ni le verdict d'un script shell n'y sont visibles.

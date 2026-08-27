@@ -22,6 +22,19 @@
   `java du PATH : 1.8.0_202 | JDK de compilation : 21.0.10 | JAVA_HOME : vide | toolchains lu par
   Maven : non (fichier present sous un nom non lu)`. **Toutes les mesures de ce document sont prises
   sur le JDK 21.0.10**, jamais sur le `java` du `PATH`, qui ne compile pas.
+
+> **Amendement date du 2026-08-27 (`theo-archi`, s21, story `S21-6`) - la mesure ci-dessus est
+> intacte, c'est le constat cite qui est corrige.** Le chiffre **21.0.10 est exact**, et a la date
+> de cette mesure c'etait bien le JDK qui compilait : `JAVA_HOME` etait pose a la main sur lui pour
+> la duree de la commande, et l'enveloppe `outils/mvn-jdk21.sh` n'existait pas encore (creee le
+> 2026-08-17, commit `a9c182d`). **Ce qui est faux, c'est le champ `toolchains lu par Maven` du
+> constat cite** : `outils/verifier-jdk.sh` le renseigne en regardant `${HOME}/.m2/toolchains.xml`,
+> ou `HOME` est la variable du shell POSIX, alors que Maven lit `${user.home}/.m2/toolchains.xml`,
+> ou `user.home` est le profil utilisateur de la machine virtuelle Java. Sur ce poste ce sont
+> **deux repertoires differents** : le constat repond donc sur un autre fichier que celui dont il
+> parle, et son verdict `non (fichier present sous un nom non lu)` ne decrit pas ce que Maven a lu.
+> Cela ne change rien au JDK employe ce jour-la - c'etait `JAVA_HOME` qui le designait - mais le
+> constat ne peut pas servir de preuve sur ce point. Aucun chiffre n'est remplace ici.
 - **Ce que je ne fais pas ici** : aucun Done pedagogique ni son anticipation - il appartient a
   `nadia-prof` seule. Aucun arbitrage produit. Aucune reouverture de la decision de capacite de
   `sofia-sm` sur `DEC-0016`. Aucune ligne dans `rapport-qualite.md`, `squad/conformite/` ou

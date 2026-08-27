@@ -1,0 +1,20 @@
+# Le meme paquet neuf, ramene a trois propositions sur son second item : un distracteur de moins,
+# rien d'autre ne change. Le garde-fou doit redevenir vert dessus, sans quoi il refuserait aussi ce
+# qui est correct. Texte de fixture, jamais affiche a un enfant.
+schema: 1
+id: paquet-neuf-a-quatre-propositions
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Competence de fixture"
+items:
+  - enonce: "Enonce de fixture 1"
+    bonneReponse: "juste un"
+    distracteurs: ["faux un a", "faux un b"]
+    indice: "Indice de fixture 1"
+  - enonce: "Enonce de fixture 2"
+    bonneReponse: "juste deux"
+    distracteurs: ["faux deux a", "faux deux b"]
+    indice: "Indice de fixture 2"

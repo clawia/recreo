@@ -114,6 +114,31 @@ def presser(nav, texte):
     time.sleep(0.55)
 
 
+def _poser_la_regle(nav, regle):
+    """Repose la regle candidate et verifie qu'elle est bien la, plutot que de la supposer.
+
+    Reposee avant chaque lecture : une navigation complete recree le <head> et jette le noeud
+    injecte, et un rapport qui melangerait des items mesures avec la regle et des items mesures
+    sans serait exactement l'ecart muet que S21-1 ferme. La verification par juger_regle_injectee
+    est la ceinture : si la pose echouait, le refus est bruyant.
+    """
+    nav.poser_regle(
+        "(function(){var n=document.getElementById('mesure-nadia');"
+        "if(!n){n=document.createElement('style');n.id='mesure-nadia';"
+        "document.head.appendChild(n);}n.textContent=%s;return true;})();" % json.dumps(regle),
+        regle,
+    )
+    _plomberie.refuser(
+        _plomberie.juger_regle_injectee(
+            regle,
+            nav.evaluer(
+                "(function(){var m=document.getElementById('mesure-nadia');"
+                "return m ? m.textContent : null;})();"
+            ),
+        )
+    )
+
+
 def main():
     if len(sys.argv) < 4:
         sys.stderr.write(__doc__)
@@ -143,6 +168,13 @@ def main():
     # aucune boite, ce que le rapport dit item par item plutot que de le supposer.
     echecs_vises = int(os.environ.get("ECHECS", "3"))
 
+    # s21 : REGLE injecte une regle candidate dans le document rendu, jamais dans recreo.css - meme
+    # procede que balayage-largeur-rangee.py, et desormais meme verification : la regle est relue a
+    # chaque lecture d'etat, si bien qu'une navigation qui la jetterait est un refus et non un
+    # silence. Sans ce parametre, ce script ne savait mesurer que le temoin, et comparer un candidat
+    # exigeait de modifier la feuille servie - donc de mesurer autre chose que ce qu'on croit.
+    regle = os.environ.get("REGLE", "")
+
     lire = LIRE.replace("PILE", json.dumps(PILE))
     profil = tempfile.mkdtemp(prefix="mesure-theo-")
     nav = _plomberie.Navigateur(binaire, profil, _plomberie.PORT_DEVERMINAGE)
@@ -152,9 +184,13 @@ def main():
         time.sleep(2.0)
         while len(vus) < attendus and parties < parties_max:
             parties += 1
+            if regle:
+                _poser_la_regle(nav, regle)
             nav.evaluer("document.querySelector('[hx-post*=\"%s\"]').click(); true;" % jeu)
             time.sleep(1.2)
             for _ in range(12):
+                if regle:
+                    _poser_la_regle(nav, regle)
                 etat = nav.evaluer(lire)
                 if etat.get("rangees") is None:
                     break
@@ -218,6 +254,7 @@ def main():
             )
             time.sleep(1.0)
     finally:
+        viewport_lu = getattr(nav, "viewport_lu", None)
         nav.fermer()
         shutil.rmtree(profil, ignore_errors=True)
 
@@ -225,8 +262,10 @@ def main():
     pire_enonce = max(vus, key=lambda k: vus[k]["deficit"]) if vus else None
     rapport = {
         "jeu": jeu,
-        "viewport": [viewport, HAUTEUR_PLI_PX],
-        "plafondInjecte": None,
+        # s21 : le viewport du rapport est LU du navigateur, jamais recopie de l'argument.
+        "viewport": viewport_lu,
+        "viewportDemande": [viewport, HAUTEUR_PLI_PX],
+        "regleInjectee": regle or None,
         "itemsVus": len(vus),
         "itemsSousLePli": sorted(k for k, v in vus.items() if v["deficit"] > 0),
         "pireDeficit": max(deficits) if deficits else None,

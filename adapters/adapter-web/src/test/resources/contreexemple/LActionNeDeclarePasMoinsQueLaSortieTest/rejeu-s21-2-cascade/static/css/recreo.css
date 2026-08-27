@@ -1,0 +1,1311 @@
+/* Materiau reel, pas une fixture de la main de l'auteur de la regle : cette feuille est celle de la
+   branche s21-marc au commit 0e0bc4e (lot S21-2, leviers de forme de REP-8), reprise sans y changer
+   un caractere. Elle est rejouee sous les gabarits de PRODUCTION, jamais sous des gabarits copies.
+
+   Ce qu'elle reproduit. ".proposition" recoit "padding: 0.75rem 1.25rem" par le bloc partage des
+   cinq boutons pleins, puis "padding: 0.5rem 1.25rem" par une regle qui lui est propre et qui vient
+   apres, pour la surclasser a specificite egale (ADR-0014 point 5). Le rembourrage vertical qui
+   arrive a l'ecran est donc 0.5rem, sous les 0.6rem de ".lien-accueil" et de ".retour-accueil" -
+   l'action declare moins que la sortie, ce qu'ADR-0017 interdit.
+
+   Pourquoi ce jeu fautif existe. Le garde-fou est reste VERT 11 sur 11 sur cette feuille, non parce
+   qu'il jugeait mal, mais parce qu'il ne lisait pas la bonne declaration : blocsMaison fusionne les
+   corps successifs d'un meme selecteur et debutDeDeclaration rendait la premiere. Le defaut a
+   traverse une CI verte trois fois. Depuis s21 la valeur lue est celle qui gagne la cascade, et
+   cette feuille est rouge - c'est ce que prouve leRejeuDeLaCascadeDeSVingtEtUnDeuxFaitEchouerLeGardeFou.
+
+   Cette feuille n'est pas servie a un enfant et n'a pas vocation a etre corrigee ici : elle est un
+   etat de l'historique, et sa valeur de preuve tient a ce qu'elle ne bouge pas. Le correctif du
+   produit appartient au lot de marc-dev et a la valeur de rembourrage de la sortie que ines-design
+   pose de son cote (conditions SOR-1 a SOR-4 de nadia-prof). */
+
+/* Palette nommee et reutilisee (S2-2) : toute couleur de l'habillage general vient d'ici, le
+   signal juste/faux reste sur ses propres couleurs, deja fixees par S1-6. */
+:root {
+    --recreo-fond: #f4f7fb;
+    --recreo-texte: #1c2733;
+    --recreo-accent: #2e6f9e;
+    --recreo-accent-texte: #ffffff;
+    --recreo-attention-fond: #fff4e5;
+    --recreo-attention-bordure: #b45309;
+    /* S6-10 : nuance distincte de --recreo-accent, reservee au bandeau d'en-tete (arbitrage de
+       nadia-prof du 2026-08-07, squad/conformite/FICHE-bandit-manchot-additions-cp.md) - le
+       bandeau ne doit plus etre le meme aplat que les boutons d'action. Plancher : plus sombre
+       coute le crayon de favicon.ico, dont le contour et la mine tombent deja sous 3:1 sur cette
+       valeur. Le fond opaque des trois vignettes de favicon.ico est recolore a l'identique
+       (LeFondDeLIconePorteLaCouleurDuBandeauTest). */
+    --recreo-entete-fond: #1d4b6b;
+    /* S8-3 : nuance neutre reservee au bloc d'explication d'une variation graphemique, distincte de
+       l'ambre de --recreo-attention-fond/bordure (deja charge du sens "tu as besoin d'aide") et du
+       vert/rouge du verdict (nadia-prof, arbitrage du 2026-08-11, section 6 : l'aplat doit rester
+       identique apres une reponse juste et apres une reponse fausse - une explication sur fond rouge
+       apprend que comprendre est une punition). --recreo-explication-bordure est une teinte assourdie
+       de --recreo-accent, dans la famille de couleurs de l'application sans reprendre le bleu des
+       boutons d'action, pour ne pas laisser croire que l'explication est elle-meme pressable. */
+    --recreo-explication-fond: #eaf1f7;
+    --recreo-explication-bordure: #5b7c94;
+    /* S10 (forme du meuble, DEC-0023) : le corps du cabinet passe a un second ton, plus sombre que
+       la bordure qui reste --recreo-entete-fond (nadia-prof, arbitrage prealable du 2026-08-12,
+       section 1 - proposition-ines-meuble.md section 1 : "seul le corps derriere le bandeau et le
+       socle passe a --recreo-cabinet-fond [...] l'objet se lit desormais en deux epaisseurs
+       distinctes"). Contraste mesure : 16,11:1 contre la page, 3,20:1 contre --recreo-accent. */
+    --recreo-cabinet-fond: #081c2c;
+    /* S10 : teinte "acier" du levier de flanc, choisie et non devinee (nadia-prof, meme arbitrage,
+       section 2.c ; proposition-ines-meuble-v2.md section 2). Plafonnee par F2 : son contraste ne
+       depasse celui d'un bouton de reponse contre le corps du cabinet (3,20:1) sur aucune surface
+       qu'elle croise reellement - 2,82:1 contre la bordure, 3,05:1 contre le fond de page (v4,
+       proposition-ines-v4-correction-arbitrage-2026-08-13.md, section 1). */
+    --recreo-levier-teinte: #8e8e8e;
+}
+
+/* Base fiable pour les cibles tactiles : min-height/min-width incluent le rembourrage,
+   jamais l'inverse (S2-1, correction du refus sur .proposition). */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ADR-0014 : la pile de polices systeme vient de Reboot (bootstrap.min.css, charge avant cette
+   feuille) ; plus rien a declarer ici pour la police. S6-1 : la marge de page qui poussait tout
+   le contenu, en-tete compris, loin du bord de l'ecran est retiree ; l'en-tete redevient un
+   bandeau pleine largeur et .container (S6-2) porte desormais seul le centrage et les marges
+   laterales du contenu. */
+body {
+    margin: 0;
+    background-color: var(--recreo-fond);
+    color: var(--recreo-texte);
+}
+
+/* S2-1 : le titre ne depend plus du seul comportement par defaut du navigateur pour h1. Depuis
+   S6-1, le seul h1 de la page est le nom du site dans l'en-tete (.nom-site l'ajuste au contexte
+   du bandeau colore, sans redeclarer la taille deja fixee ici). */
+h1 {
+    font-size: 2rem;
+    color: var(--recreo-accent);
+    margin: 0 0 1rem;
+}
+
+/* S6-1 : bandeau d'identite permanent, hors de la zone #jeu remplacee par htmx (DEC-0012) - un
+   frere de #jeu dans le gabarit, jamais efface ni recree quand le jeu change d'ecran. */
+.entete {
+    background-color: var(--recreo-entete-fond);
+    padding: 1rem 0;
+}
+
+/* S15 (troisieme et quatrieme arbitrages de l'utilisatrice) : un seul rang plutot que deux
+   (variante 1 d'ines-design, retenue par nadia-prof - FICHE-barre-entree-niveau.md, arbitrage
+   prealable du 2026-08-18, section 1). flex-wrap: wrap est le seul garde-fou possible du mode de
+   defaillance a largeur insuffisante (theo-archi, exigences-theo-etat-actif.md, section 3) : le
+   rang passe a la ligne plutot que de deborder horizontalement, ce qui couperait des boutons hors
+   de l'ecran sans signal - c'est cette declaration-la, et non son effet, qui est gardable.
+   row-gap distinct de gap : la reforme d'ines-design gagne 8 px au budget du pli par rapport aux
+   deux <nav> empiles d'avant ce lot (151 px contre 143 px a 360 px, S15-7). */
+.entete-contenu {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    row-gap: 0.5rem;
+}
+
+/* Pousse "Les jeux" a droite du rang, sur l'espace que flex-wrap laisse disponible - variante 1
+   d'ines-design (proposition-ines-etat-actif-et-rang-unique.md, section 1.1). Sous le plancher de
+   360 px, si la marge du groupe icone/titre/CP/CM1 est mangee, "CM1" change de voisin plutot que
+   de deborder (nadia-prof l'accepte, section 1 de son arbitrage) : ce mode de panne-la n'est pas
+   gardable par un automate (ADR-0028), seule la declaration qui l'y mene l'est. */
+.entete-contenu .lien-accueil {
+    margin-left: auto;
+}
+
+.icone-entete {
+    width: 2.75rem;
+    height: 2.75rem;
+}
+
+.nom-site {
+    color: var(--recreo-accent-texte);
+    margin: 0;
+    margin-right: auto;
+}
+
+/* DEC-0034 (s15) : .lien-accueil est retabli a l'identique de sa forme d'avant s14 (relevee dans
+   l'historique, cc68304) - S14-2 (BARRE-7, DEC-0033) l'avait retire, l'utilisatrice le retablit en
+   connaissance de ce motif (voir accueil.html). ".menu", le <nav> qui l'enveloppait, disparait en
+   s15 avec la fusion du rang unique (ci-dessus) : .lien-accueil est desormais un enfant direct de
+   .entete-contenu, ce qui est ce qui rend "margin-left: auto" efficace pour le pousser a droite.
+   S15-3 (troisieme arbitrage de l'utilisatrice, 2026-08-18) : sa regle de masquage d'alors
+   (body:has(.ecran-de-jeu) .lien-accueil), qui visait les quatre fragments de jeu a la fois, est
+   retiree plus bas - c'est exactement ce que cet arbitrage annule, la sortie d'en-tete restant
+   desormais visible pendant une manche. Deux regles plus ciblees la remplacent (exigences de
+   theo-archi, squad/sprints/s15-cinq-arbitrages-de-l-en-tete/). */
+
+/* S6-1 : le lien de menu quitte l'ecran en cours comme le bouton "Les jeux" (ADR-0017,
+   data-role="sortie"), et reprend deliberement les memes composantes de boite que
+   .retour-accueil - taille de police, hauteur minimale, rembourrage - pour ne jamais depasser un
+   bouton d'action sur l'ecran ou il s'affiche. Contour blanc plutot que la couleur d'accent, parce
+   que le fond de l'en-tete est deja cette meme couleur.
+   ADR-0022 : depuis S6-9 ce lien ne s'affiche que sur l'accueil, ou il est confronte a .demarrer.
+   Il n'est plus confronte a .proposition ni a .encore : la regle de masquage ci-dessous fait qu'il
+   ne se montre jamais en meme temps qu'elles. */
+.lien-accueil {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    font-size: 1.25rem;
+    color: var(--recreo-accent-texte);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent-texte);
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* S15-3 (troisieme arbitrage de l'utilisatrice, DEC-0034, 2026-08-18) : l'utilisatrice renverse
+   l'arbitrage de nadia-prof du 2026-08-07 (S6-9) sur la manche seule - la sortie d'en-tete y reste
+   visible, "Les jeux" n'etant plus rendu par la zone de contenu (fragments/manche.html ne porte
+   plus de .retour-accueil). Elle disparait toujours sur les trois ecrans qui portent deja leur
+   propre sortie ou qui n'en ouvrent aucune : le second marqueur ("ecran-porte-sa-sortie") couvre le
+   premier motif (BARRE-5, un seul exemplaire du mot par ecran), "ecran-exclusif" couvre le second
+   (clause B, deja en vigueur pour les puces de niveau). Aucun JavaScript n'entre ici (ADR-0008,
+   ADR-0014 point 7), et l'element reste present dans le document (DEC-0012).
+   La forme de chaque regle est le contrat lu par LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest :
+   body:has(.<marqueur>) .<habillage> { display: none }. Deux regles independantes sur le meme
+   habillage, chacune vraie pour son propre motif : la confirmation porte les deux marqueurs a la
+   fois, et ni l'une ni l'autre n'est a retirer au profit de la seconde. */
+body:has(.ecran-exclusif) .lien-accueil {
+    display: none;
+}
+
+body:has(.ecran-porte-sa-sortie) .lien-accueil {
+    display: none;
+}
+
+/* ADR-0046 : la feuille vendorisee declare :hover et :active sur .btn a specificite (0,2,0), egale
+   a celle d'une regle maison sur une seule classe - l'ordre de chargement ne suffit plus a lui
+   seul (ADR-0014 point 5) des que la regle tierce porte une pseudo-classe. Sans etat maison ici,
+   .lien-accueil perdrait son contour et son texte au survol comme a l'appui, exactement le defaut
+   que l'utilisatrice a vu sur .chip-niveau. Forme neutre exigee par ADR-0046 point 4 : chaque etat
+   reprend a l'identique les valeurs du repos, rien ne change sous le pointeur ni sous l'appui - une
+   autre apparence est un arbitrage de nadia-prof, non tranche ici.
+   Second amendement ADR-0046 (s16) : :focus-visible rejoint :hover et :active. .btn:focus-visible
+   ecrase aussi color/background-color/border-color (mesure de theo-archi) ; box-shadow est ecartee
+   des proprietes comparees a cet etat seul (l'anneau de focus clavier tiers, ADR-0030 point 2, reste
+   intact), donc seules les trois couleurs sont redeclarees ici, forme neutre identique aux deux
+   autres etats. */
+/* S17-D (nadia-prof, sonde clavier+pointeur reelle, s17) : un ancetre reel rejoint le
+   sujet a l'etat presse - jamais un ajout au sujet lui-meme. Sans lui, ce sujet a :active
+   valait (0,2,0) contre (0,3,0) pour ".btn:first-child:active" /
+   ":not(.btn-check)+.btn:active" : une specificite tierce plus haute l'emportait sur
+   l'ordre de chargement (ADR-0014 point 5 ne joue qu'a specificite egale) - perte mesuree
+   par nadia-prof a 1,64:1 sur le bandeau, et .demarrer perdait son aplat bleu. Ajouter une
+   classe au sujet lui-meme (par exemple ".btn", deja portee par l'element) romprait
+   silencieusement la derivation d'ADR-0046 : "btn" deviendrait une classe connue de la
+   feuille maison, et l'identite de CHAQUE bouton reel en serait changee, pas seulement
+   celle-ci - mesure par un premier essai de ce lot, revert avant ce commit. Un ancetre reel,
+   separe par un combinateur, est invisible a cette derivation (elle ne lit que le dernier
+   compose, sujetDuSelecteur) - la meme forme que "body:has(.filtre-niveau)" plus bas dans
+   ce fichier. Le trou est de la meme famille que celui deja corrige deux fois en s16 sur
+   cette derivation (S17-D route ce troisieme cas a theo-archi) ; le bloc combine plus bas
+   repare l'anneau de focus sous ce meme etat presse, que la meme cause efface. */
+.lien-accueil:hover,
+.entete-contenu .lien-accueil:active,
+.lien-accueil:focus-visible {
+    color: var(--recreo-accent-texte);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent-texte);
+}
+
+/* .ecran-de-jeu ne porte aucun style propre - c'est un marqueur d'etat pour la feuille et pour les
+   garde-fous (ADR-0022, ADR-0027), jamais un habillage visuel. Regle vide, meme geste que
+   .message-jeu plus bas : nommer la classe pour HabillageDesEcransTest sans lui inventer une
+   apparence qui n'est pas due par cette story. */
+.ecran-de-jeu {
+}
+
+/* S6-2 : le contenu de chaque ecran (liste des jeux ou fragment de jeu) respire au-dessus et
+   au-dessous de la zone que .container centre horizontalement.
+   S6-8, correction proposee par ines-design (squad/sprints/s06-ouvrir-la-conjugaison-et-solder-la-dette/proposition-ines-s6-8-s6-10.md) :
+   le raccourci "padding: 2rem 0" fixait aussi padding-left/padding-right a 0, et l'emportait sur
+   le rembourrage lateral inconditionnel de .container (Bootstrap, 0,75rem) charge avant cette
+   feuille (ADR-0014 point 5) - a toute largeur d'ecran, la marge laterale du contenu disparaissait.
+   Ne plus rien declarer sur les deux axes lateraux laisse la regle de .container s'appliquer
+   telle quelle. Garde-fou : LeConteneurTierGardeSonRembourrageLateralTest. */
+.zone-jeu {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* S18, SYN-11 : correctif de forme arbitre (nadia-prof, 2026-08-23, FICHE-bandit-manchot-synonymes-cm1.md,
+   "Arbitrage de forme du 2026-08-23" - variante d'ines-design ACCEPTEE, portee .zone-jeu ET l'en-tete,
+   mecanisme confirme par theo-archi, ADR-0056, section "L'ecart en-tete / zone de jeu").
+   La feuille tierce plafonne .container a 540px sur toute la bande 576-767.98px (l'escalier
+   qu'ADR-0054 epingle) ; cinq items de cm1-synonymes sur seize demandent plus que les 500px de
+   rangee que ce plafond offre (rembourrage de .container et bordure de .cabinet retires), ce qui
+   les replie sur deux rangees et pousse le bloc de retour juste/faux sous le pli (SYN-11). Relever
+   ce plafond a 720px - la valeur que la feuille tierce offre deja a partir de 768px - rend 680px de
+   rangee (720 - 24 - 16, arithmetique d'ADR-0054 confirmee sur le rendu par nadia-prof a 680,00px)
+   sans toucher a aucun terme de colonne (ADR-0055 n'est pas concerne).
+   Portee .entete-contenu incluse, sur mesure et non sur gout (nadia-prof, section 4 de son
+   arbitrage) : l'en-tete inclus ne coute rien de mesurable (hauteur d'en-tete identique a cinq
+   largeurs de viewport, aucun repli neuf) et l'en-tete exclu decale l'en-tete de 90px par rapport a
+   la zone de jeu qu'il coiffe - un ecran qui a l'air casse. A 768px, le produit sert deja un en-tete
+   aligne sur une zone de jeu de 720px sans aucune regle ajoutee : inclure l'en-tete n'invente rien,
+   il avance d'un palier un alignement deja natif au palier suivant.
+   Bande scopee a 720-767.98px, jamais 576-767.98px : c'est SYN-14 (nadia-prof, meme arbitrage), qui
+   a mesure la forme large sur cette meme regle et trouve qu'un plafond eleve au-dela du viewport ne
+   mord plus - sous 720px la zone perd son centrage et s'etale bord a bord (le bord gauche du premier
+   bouton tombe a 12,0px, plus pres du bord qu'au repos aujourd'hui). Elle exige qu'aucun element a
+   presser ne se rapproche du bord plus que le rembourrage de la zone, et que l'en-tete reste aligne
+   sur la zone de jeu - une forme qui ne modifierait rien sous 720px atteint les deux sans effondrer
+   aucune marge : le plafond de 540px de la feuille tierce, inchange sous 720px, continue d'y regir
+   .entete-contenu comme .zone-jeu a l'identique, donc alignes l'un sur l'autre comme aujourd'hui. La
+   borne haute 767.98px reste le litteral de la feuille tierce (theo-archi, ADR-0056) : sans elle la
+   declaration s'appliquerait aussi a 992px et y abaisserait le plafond de 960 a 720.
+   Garde-fou : LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest (ADR-0054, ADR-0056),
+   ViewportEtLargeurTelephoneTest (seuil de largeur maison, 744px, DEC-0040). */
+@media (min-width: 720px) and (max-width: 767.98px) {
+    .entete-contenu,
+    .zone-jeu {
+        max-width: 720px;
+    }
+}
+
+/* ADR-0014 : list-style et padding-left viennent desormais de .list-unstyled (gabarit), portee
+   par la classe Bootstrap plutot que redeclaree ici. */
+.jeux {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* S10 : resserrement de marge verticale (ines-design, s10-ines-meuble,
+   mesure-ines-budget-vertical-m4.md, section 3), jamais porte par aucun lot jusqu'ici. Remplace le
+   rembourrage par defaut de Bootstrap sur un <p> (1rem) : mesure comme necessaire, avec le
+   resserrement ci-dessous de .indice/.explication/.signal, pour que "Petits problemes" et "Le bon
+   verbe" tiennent au-dessus du pli de M4 (nadia-prof reste seule a juger si ce resserrement reste
+   assez respirant). Ne ferme pas M4 a lui seul : "Le bon petit mot" ne peut pas etre rachete par un
+   geste de forme (meme mesure, section 3, cause nommee sous DEC-0016). */
+.consigne {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.enonce {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+/* ADR-0062, NAT-5 : marque le segment de .enonce que le contenu declare designer, sur un jeu marque
+   seulement (cp-nature-mot) - un jeu non marque ne rend jamais cette classe. Regle reprise de la
+   proposition mesuree d'ines-design (hors-sprint, squad/sprints/s19-contenu-seul-et-conception-de-
+   la-saisie/proposition-ines-nat5-mot-designe.md) : candidat, pas une valeur figee - ines-design et
+   nadia-prof restent seules a la trancher. Trois canaux non colores comme nadia-prof l'exige (jamais
+   la seule couleur) : une boite de fond, un rembourrage, une police superieure au reste de la
+   phrase deja en gras. Les guillemets francais restent hors de cette boite.
+   TailleDesTextesEtBoutonsTest (ADR-0050) exige une unite rem lisible par le garde-fou : 2,3rem
+   reprend au caractere pres le rapport 1,15 propose par ines-design applique aux 2rem de .enonce,
+   jamais une valeur differente. */
+.mot-designe {
+    background-color: #fff59d;
+    border-radius: 0.25rem;
+    padding: 0 0.25rem;
+    font-size: 2.3rem;
+}
+
+/* Conteneur des boutons de reponse : un ecart confortable entre les boutons, au-dessus du
+   plancher de 0,75rem constate en s02 (S3-5, reserve 2 de nadia-prof sur S2-1: "un ecart d'au
+   moins 1 rem laisserait plus de place a un geste d'enfant").
+   S7-1/ADR-0026 : les propositions deviennent des colonnes cote a cote plutot qu'une liste
+   empilee. Aucun element d'habillage n'est ajoute autour de .proposition (ADR-0026 section 5) :
+   la colonne est le bouton lui-meme, mis en ligne par ce conteneur.
+   S13, arbitrage prealable de nadia-prof du 2026-08-16 (voie 4, avis-jeton-en-image.md de
+   theo-archi) : flex-wrap: wrap remplace le repli scope a la seule quatrieme proposition. La
+   cause du defaut refuse ce jour-la n'etait pas le nombre de colonnes mais le couple qui suit -
+   un conteneur qui ne se replie jamais et une base de colonne fixee a zero -, qui forcait les
+   colonnes a se partager la largeur quoi qu'elles contiennent et laissait le texte deborder
+   plutot que de passer a la ligne. Le repli s'applique donc desormais a deux, trois ou quatre
+   colonnes, pas seulement a partir de la quatrieme (ce qui rend caduque l'ancien bloc
+   .propositions:has(.proposition:nth-child(4)) { flex-wrap: wrap; }, retire ici car devenu une
+   simple redite de cette meme declaration - voir TailleDesTextesEtBoutonsTest,
+   leConteneurSeReplieOuLaColonneGardeUneBaseNonNulle). */
+.propositions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0.75rem 0;
+    padding: 0;
+}
+
+.proposition {
+    flex: 1 1 auto;
+}
+
+/* S8-5 : deux propositions du paquet de conjugaison sortaient de leur colonne a 360 px
+   (mangeons a -2,01 px, cherchons a -0,09 px d'air de chaque cote - DEC-0018,
+   FICHE-bandit-manchot-conjugaison-present-cm1.md, verdict du 2026-08-11). Piste retenue par
+   nadia-prof (meme fiche, arbitrage prealable du meme jour, section C, sept conditions) :
+   1,875rem, scope au seul repli a quatre colonnes par ce meme selecteur, litteral - ni variable
+   ni calc (condition 3). C'est un plancher, pas une pente (condition 2) : rien sous 1,875rem
+   n'est accepte ici, et cette regle ne s'applique jamais aux replis a deux ou trois colonnes,
+   ou .proposition reste a 2rem. Voir TailleDesTextesEtBoutonsTest,
+   laPoliceDuRepliAQuatreColonnesEstUneExceptionAuPlancherGeneralDeDeuxRem, qui encode l'exception
+   au mot pres (condition 7 : leChiffreDeReponseEstAuMoinsAussiGrosQueLeCalcul lit le selecteur
+   litteral .proposition et reste vert a bon droit, ce plancher-la general n'a pas change).
+   Amendement de theo-archi, meme sprint : cette exception est la seule accordee, et
+   lesSeulesTaillesDePropositionSontLesDeuxReglesNommees le tient. Une troisieme regle qui fixerait
+   la taille d'une proposition dans un autre contexte - requete de media comprise - rougit ici, quelle
+   que soit sa valeur. La deuxieme exception se demande a nadia-prof, elle ne s'ajoute pas a cette
+   feuille. */
+.propositions:has(.proposition:nth-child(4)) .proposition {
+    flex: 1 1 calc(50% - 0.5rem);
+    font-size: 1.875rem;
+}
+
+/* S8-1 : le cabinet visible qui entoure les colonnes de reponses (nadia-prof, arbitrage prealable
+   du 2026-08-11, section 1 ; ADR-0030). Un seul objet ferme sur ses quatre cotes (C1), qui ne
+   contient que .propositions et rien d'autre qui se presse (C2), jamais anime (C3), jamais couple
+   au verdict puisqu'il n'existe pas sur l'ecran de retour (C4, garantie par le fait que ce
+   balisage n'est ecrit que dans fragments/manche.html, ADR-0030 point 1.d), dont l'unique image
+   est fixe (C5), et qui ne porte aucun code de jeu d'argent (C6). Trois bandes empilees en une
+   seule couleur (--recreo-entete-fond, deja mesuree pour son contraste, S6-10) pour que le corps
+   se lise comme un objet plein plutot qu'un cadre ajoure a travers lequel on voit la page. Le
+   cadre se paye sur la largeur des colonnes (nadia-prof, section 3 de son arbitrage) : aucune
+   marge ni rembourrage n'est ajoute ici sur .propositions, qui remplit toute la largeur
+   interieure du cabinet.
+   ADR-0030 point 2, refuse de proposition-ines-cabinet.md : pas de overflow ici, sous aucune
+   valeur autre que visible. L'anneau de focus clavier de la bibliotheque vendorisee est une ombre
+   portee hors de la boite du bouton (.btn:focus-visible supprime outline) ; un rognage la rendrait
+   invisible sur la premiere et la derniere colonne, en plus de faire du cabinet un conteneur de
+   defilement. Garde par LHabillageNeRogneJamaisUnElementPressableTest.
+
+   S10 : le corps passe a --recreo-cabinet-fond (deux tons, section ci-dessus), la bordure reste
+   --recreo-entete-fond, inchangee en largeur (F5 bloquante de nadia-prof : aucune colonne ne paye
+   ce lot, l'elargissement de bordure envisage puis abandonne - proposition-ines-meuble-v2.md,
+   section 2). Le box-shadow ajoute un filet de relief accepte sans cout mesure (+1 px de hauteur,
+   deja accorde par nadia-prof le 2026-08-12). position: relative ancre .cabinet-levier
+   (ADR-0033 point 7.b : l'ancrage est position: relative sur le bloc qui porte l'element ancre). */
+.cabinet {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--recreo-cabinet-fond);
+    border: 0.5rem solid var(--recreo-entete-fond);
+    border-radius: 0.75rem;
+    box-shadow: 0 0.0625rem 0 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Le rembourrage vertical de .propositions (0,75rem, S3-5) reste utile hors du cabinet ; ici c'est
+   le bandeau et le socle qui separent les colonnes du reste de l'ecran. */
+.cabinet > .propositions {
+    margin: 0;
+}
+
+/* Bandeau haut : 2 rem (32 px). Portait l'unique image fixe du cabinet jusqu'a S8-1 (une etoile) ;
+   S10 la remplace par un visage souriant et une enseigne, cote a cote (nadia-prof, arbitrage
+   prealable du 2026-08-12 puis troisieme arbitrage du 2026-08-13 - proposition-ines-meuble-v2.md
+   section 1 : "je la retire et je mets a sa place, dans la meme bande, a la meme hauteur
+   declaree, un visage et une enseigne"). C5 clause 2 de nadia-prof reste tenue : ce jeu d'images
+   ne depend ni de l'item tire, ni du numero de la colonne, ni de la reponse attendue - le visage
+   ne peut structurellement pas varier, le cabinet n'existant pas sur l'ecran de retour. */
+/* Proposition ines-meuble-illustre (s10, ADR-0036) : un accent peint remplace l'aplat uni sur la
+   partie droite du bandeau, la ou rien d'autre ne vit - le visage et l'emplacement de l'enseigne
+   restent sur le seul fond uni, inchange. background-color reste declare explicitement (identique
+   a la teinte de .cabinet visible par transparence jusqu'ici) : si l'image ne se charge pas, le
+   bandeau garde exactement l'aplat d'aujourd'hui. Chemin litteral, jamais calcule (ADR-0036 point
+   1). Hauteur, position et cible tactile inchangees : aucune propriete de boite n'est touchee ici,
+   seul le remplissage visuel change. */
+.cabinet-bandeau {
+    position: relative;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding: 0 0.75rem;
+    background-color: var(--recreo-cabinet-fond);
+    background-image: url('/images/cabinet-fronton.svg');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: auto 100%;
+    box-shadow: inset 0 -0.0625rem 0 rgba(0, 0, 0, 0.35);
+}
+
+/* L'etoile de S8-1 est retiree : le visage la remplace dans la meme bande (ADR-0027 clause 7 :
+   content reste limite a une valeur statique, ici son absence). */
+.cabinet-bandeau::before {
+    content: none;
+}
+
+/* Le visage : deux yeux, deux joues rosees, un sourire - un seul pseudo-element pour chaque paire
+   (nadia-prof, F4 tenue au troisieme arbitrage du 2026-08-13, proposition-ines-meuble-v2.md
+   section 1). ::before porte le premier oeil ; chaque box-shadow en ajoute une copie decalee de la
+   meme forme - un second oeil et deux joues plus petites, spread negatif, de part et d'autre.
+   ::after est la bouche : un rectangle sans fond dont seule la bordure basse est visible et
+   arrondie - le trace d'un sourire, sans clip-path. Aucun cil, noeud, cheveu, sourcil ni bouche
+   coloree (nadia-prof : rien qui genre la machine). Statique et immobile : aucune regle ne
+   conditionne ce dessin a .signal.est-juste ni .signal.est-faux, et le cabinet n'existe de toute
+   facon pas sur l'ecran de retour (C4, ADR-0030 point 1.d). */
+.cabinet-visage {
+    position: relative;
+    width: 1.375rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+}
+
+.cabinet-visage::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: var(--recreo-accent-texte);
+    box-shadow:
+        0.75rem 0 0 0 var(--recreo-accent-texte),
+        0 0.5rem 0 -0.0625rem #f7a8b8,
+        0.625rem 0.5rem 0 -0.0625rem #f7a8b8;
+}
+
+.cabinet-visage::after {
+    content: "";
+    position: absolute;
+    top: 0.6875rem;
+    left: 0.3125rem;
+    width: 0.75rem;
+    height: 0.375rem;
+    border-bottom: 0.1875rem solid var(--recreo-accent-texte);
+    border-radius: 0 0 50% 50%;
+}
+
+/* L'enseigne : la bande est dessinee ici, le mot ne l'est pas encore. F7/F8 tenues (nadia-prof,
+   troisieme arbitrage du 2026-08-13) : "Le Copain Malin" tient sur une seule ligne sans ellipse
+   dans les huit jeux du catalogue, a cette taille - qui n'est jamais la plus petite police de
+   l'application. content reste limite a la chaine vide partout ailleurs (ADR-0027 clause 7) : ce
+   texte-la est rendu par le serveur, jamais dessine, donc soumis a l'exigence de francais
+   integralement accentue de DEC-0002. Regle non cablee dans fragments/manche.html : F11 (l'
+   emplacement accessible de l'enseigne) reste bloquee par ADR-0035 tant qu'une ecoute reelle de
+   lecteur d'ecran n'a pas eu lieu (nadia-prof, aucun Done ne sera prononce avant). */
+.cabinet-enseigne {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--recreo-accent-texte);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Socle bas : 1 rem (16 px), plein - le pied du coffret. S10 : second ton du corps en deux tons
+   (nadia-prof, arbitrage du 2026-08-12, section 1) et deux etoiles fixes, plus petites et
+   opacifiees que celle retiree du fronton, ancrees sur ce bloc et non sur .cabinet (un decor
+   decoupe ne pend jamais d'un ancetre de pressable - ADR-0033, mutation mesuree sur
+   .cabinet::after). position: relative les ancre (ADR-0033 point 7.b). */
+.cabinet-socle {
+    position: relative;
+    height: 1rem;
+    background-color: #061420;
+}
+
+.cabinet-socle::before,
+.cabinet-socle::after {
+    content: "";
+    position: absolute;
+    top: 0.25rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: var(--recreo-accent-texte);
+    opacity: 0.55;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.cabinet-socle::before { left: 0.5rem; }
+.cabinet-socle::after { right: 0.5rem; }
+
+/* Le levier a boule sur le flanc (DEC-0023 point 3) : platine ramenee dans les 20 px de flanc
+   disponibles a 360 px (F13), zero pixel pose sur le corps du cabinet (F14), donc aucune
+   interception d'appui (F15) - nadia-prof, v4, proposition-ines-v4-correction-arbitrage-2026-08-13.md
+   section 1. Frere de .propositions, jamais son ancetre : sa classe n'entre donc jamais dans la
+   population des ancetres de pressables (ADR-0033). Position de repos, jamais a mi-course :
+   aucune transition, aucune pseudo-classe interactive (ADR-0033). Ancre par bottom: 0 contre la
+   plinthe - c'est cet ancrage, etabli par la comparaison E/F d'ines-design et confirme par
+   nadia-prof le 2026-08-13, qui coupe la lecture de curseur de defilement, pas la teinte ni la
+   forme compacte seules. */
+.cabinet-levier {
+    position: absolute;
+    right: -1.25rem;
+    width: 1.25rem;
+    bottom: 0;
+    height: 2.25rem;
+}
+
+/* La platine : rebord visible (filet clair en haut, filet sombre en bas), plus large que la boule
+   - ce qui la fait lire comme une fixation et non comme la butee d'une piste. */
+.cabinet-levier-embase {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 1.25rem;
+    height: 0.75rem;
+    transform: translateX(-50%);
+    background-color: var(--recreo-levier-teinte);
+    border-radius: 0.125rem;
+    box-shadow:
+        inset 0 0.0625rem 0 rgba(255, 255, 255, 0.25),
+        inset 0 -0.0625rem 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Le fut : un moignon court fixe sur la platine. border-radius en rem, assez grand pour depasser
+   la moitie de la largeur du fut et se plafonner en pilule (regle du modele de boite CSS) - jamais
+   en px, a la difference du meme geste ecrit ailleurs sur .demarrer et .encore (hors du perimetre
+   du cabinet). */
+.cabinet-levier::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0.75rem;
+    width: 0.4375rem;
+    transform: translateX(-50%);
+    background-color: var(--recreo-levier-teinte);
+    border-radius: 999rem;
+}
+
+/* La boule : au sommet du fut, toujours en position de repos. */
+.cabinet-levier::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -1.125rem;
+    width: 1.125rem;
+    height: 1.125rem;
+    transform: translateX(-50%);
+    background-color: var(--recreo-levier-teinte);
+    border-radius: 50%;
+    box-shadow: inset 0 -0.1875rem 0 rgba(0, 0, 0, 0.18);
+}
+
+/* Le rouleau : un voile qui glisse devant un bouton immobile, jamais une bande de mots qui
+   defile (ADR-0026 section 1 ; nadia-prof, arbitrage du 2026-08-10, section 2 : "le mot reste
+   lisible du debut a la fin [...] seul un element decoratif passe devant"). Le texte reel du
+   bouton n'est jamais efface ni remplace : clip-path maintient le voile dans la boite du bouton
+   a chaque instant (nadia-prof, second arbitrage du 2026-08-10, section 1 : "le voile reste dans
+   la boite du bouton a chaque instant"), ce qui rend inutile toute regle de decoupe sur
+   .proposition - son texte n'est donc jamais rogne. content: "" est la seule valeur declaree,
+   comme les deux barres de la croix du signal faux (ADR-0027 clause 7). */
+.proposition {
+    position: relative;
+}
+
+.proposition::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    /* Noir a 20 %, la valeur que nadia-prof mesure elle-meme comme acceptable (second arbitrage
+       du 2026-08-10, section 1) : assombrir augmente le contraste du texte blanc au lieu de le
+       reduire (7,48:1 mesure, contre 5,41:1 au repos). La variante blanche a 45 % proposee par
+       ines-design delavait le mot jusqu'a 2,29:1 sous le plancher de 4,5:1 et est refusee pour
+       cette raison. */
+    background-color: rgba(0, 0, 0, 0.2);
+    /* Bande masquee au repos (0 0 100% 0 : rien n'est visible) - etat que retrouvent aussi les
+       ecrans sans geste et le repli de mouvement, faute d'animation qui s'applique. */
+    clip-path: inset(0 0 100% 0);
+}
+
+/* ADR-0027 clause 5 : seul un ecran arrive par un geste anime - jamais la reprise silencieuse de
+   S1-4. Duree, courbe et decalage choisis par ines-design (proposition-ines-machine-a-sous.md,
+   section 2) dans les bornes chiffrees de nadia-prof (0,3s a 1,2s, decalage 0,25s au plus) :
+   0,6s en ease-out, 0,08s de decalage cumulatif par colonne, un seul passage (ADR-0026 clause 1 :
+   jamais infinite). */
+[data-arrivee=par-un-geste] .proposition::after {
+    animation: rouleau-glisse 0.6s ease-out 1;
+}
+
+[data-arrivee=par-un-geste] .proposition:nth-child(2)::after { animation-delay: 0.08s; }
+[data-arrivee=par-un-geste] .proposition:nth-child(3)::after { animation-delay: 0.16s; }
+[data-arrivee=par-un-geste] .proposition:nth-child(4)::after { animation-delay: 0.24s; }
+
+/* Bande glissant du haut vers le bas, entierement confinee dans la boite a chaque instant.
+   S8-2 : la valeur d'arrivee de top passe de 80 % a 100 %. Avec 80 %, top et bottom progressaient au
+   meme rythme et la bande gardait une hauteur constante de 20 % jusqu'a la derniere image : le voile
+   disparaissait par la fin de l'animation et non par sa progression, ce qui rendait la main avec un
+   cinquieme de la boite encore sombre (13 px mesures par nadia-prof le 2026-08-10, 14,8 px declares
+   - sa reserve unique de s07). Avec 100 %, la hauteur visible vaut 20 % x (1 - t) : elle atteint 0
+   sur la derniere image, et l'image finale est celle du repos (inset(0 0 100% 0), rien de visible).
+   Valeur et verification numerique de la courbe par ines-design (proposition-ines-cabinet.md,
+   section 4) : 0 px sur la derniere image, chute maximale de 0,60 px sur les 150 dernieres ms contre
+   un plafond de 3 px. Le releve image par image sur le rendu livre reste a nadia-prof. La propriete
+   est desormais gardee : derniereImageDeChaqueAnimationEgaleLEtatDeRepos (ADR-0030). */
+@keyframes rouleau-glisse {
+    from { clip-path: inset(0 0 80% 0); }
+    to   { clip-path: inset(100% 0 0 0); }
+}
+
+/* ADR-0026 clause 2 : repli de mouvement, forme litterale exigee par le garde-fou. Un enfant qui
+   a besoin d'un ecran immobile voit un bouton net : sans animation, clip-path retombe a sa valeur
+   de repos (0 0 100% 0, voile entierement invisible). */
+@media (prefers-reduced-motion: reduce) {
+    [data-arrivee=par-un-geste] .proposition::after { animation: none }
+}
+
+/* Boutons d'action pleins : demarrer une partie, choisir une reponse, recommencer apres une
+   erreur, sortir quand c'est la seule action possible (S3-6). Ce sont les boutons sur lesquels
+   l'enfant doit le plus souvent appuyer : ce sont eux qui doivent appeler la main (S2-1,
+   correction du refus sur la hierarchie de saillance). Taille jamais laissee au defaut du
+   navigateur, cible tactile d'au moins 44 x 44 px.
+   ADR-0014 : border, border-radius, text-decoration et cursor viennent de .btn (classe Bootstrap
+   portee par chaque gabarit). Le rembourrage y avait ete delegue aussi (commit 6c83c97), mais
+   nadia-prof a mesure sur le rendu reel que le "6px 12px" de .btn, applique seulement a ce bloc
+   et pas a .retour-accueil qui garde son propre rembourrage, inversait la hierarchie de saillance
+   sur l'ecran de retour (squad/conformite/FICHE-bandit-manchot-additions-cp.md, refus du
+   2026-08-06). Le rembourrage n'est pas une generosite de mise en page que Bootstrap peut fournir
+   a l'identique : sur ces boutons precisement, c'est ce qui fait gagner la saillance a l'action
+   plutot qu'a la sortie, et cette garantie ne se delegue pas plus qu'une couleur ou une taille de
+   police (ADR-0014, point 6 de la decision). Il redevient donc une regle maison, comme avant ce
+   commit.
+   S10 : ".encore" quitte cette liste avec le bouton qui le portait - fragments/retour.html ne rend
+   plus qu'un seul etat (fin de partie), et la disparition de l'ecran intermediaire (arbitrage de
+   mecanique de nadia-prof) fait de "Encore !" un bouton sans plus aucune route qui le pose.
+   S11 : ".continuer-partie" rejoint ce groupe - le bouton qui laisse l'enfant sur sa partie en
+   cours depuis l'ecran de confirmation (ADR-0038, DEC-0026 story 2). Meme boite que les autres
+   actions pleines de l'application ; la forme de cet ecran reste a ines-design. */
+.continuer-partie,
+.demarrer,
+.proposition,
+.recommencer,
+.sortie-pleine {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+    padding: 0.75rem 1.25rem;
+    font-weight: bold;
+    color: var(--recreo-accent-texte);
+    background-color: var(--recreo-accent);
+}
+
+/* ADR-0046 : ces cinq boutons pleins partagent deja la regle de repos ci-dessus ; ils recoivent
+   donc le meme trio d'etat, sur les deux seules proprietes que la feuille tierce leur ecrase
+   (color, background-color - le contour n'entre pas ici, aucun de ces boutons n'en declare).
+   Forme neutre du point 4 : les valeurs du repos, inchangees sous le pointeur et sous l'appui.
+   Second amendement ADR-0046 (s16) : :focus-visible rejoint :hover et :active, box-shadow ecartee
+   a cet etat seul (l'anneau de focus clavier tiers, ADR-0030 point 2, reste intact - aucun de ces
+   cinq boutons hors .demarrer ne declare de box-shadow au repos, et .demarrer non plus ne se voit
+   rien exiger sur cette propriete puisqu'elle est ecartee). */
+/* S17-D (nadia-prof, sonde clavier+pointeur reelle, s17) : un ancetre reel rejoint le
+   sujet a l'etat presse - jamais un ajout au sujet lui-meme. Sans lui, ce sujet a :active
+   valait (0,2,0) contre (0,3,0) pour ".btn:first-child:active" /
+   ":not(.btn-check)+.btn:active" : une specificite tierce plus haute l'emportait sur
+   l'ordre de chargement (ADR-0014 point 5 ne joue qu'a specificite egale) - perte mesuree
+   par nadia-prof a 1,64:1 sur le bandeau, et .demarrer perdait son aplat bleu. Ajouter une
+   classe au sujet lui-meme (par exemple ".btn", deja portee par l'element) romprait
+   silencieusement la derivation d'ADR-0046 : "btn" deviendrait une classe connue de la
+   feuille maison, et l'identite de CHAQUE bouton reel en serait changee, pas seulement
+   celle-ci - mesure par un premier essai de ce lot, revert avant ce commit. Un ancetre reel,
+   separe par un combinateur, est invisible a cette derivation (elle ne lit que le dernier
+   compose, sujetDuSelecteur) - la meme forme que "body:has(.filtre-niveau)" plus bas dans
+   ce fichier. Le trou est de la meme famille que celui deja corrige deux fois en s16 sur
+   cette derivation (S17-D route ce troisieme cas a theo-archi) ; le bloc combine plus bas
+   repare l'anneau de focus sous ce meme etat presse, que la meme cause efface.
+   Correction de S15-8 (nadia-prof, remesure sous appui reel) : ".proposition" a recu par erreur
+   le meme ancetre "#jeu" (un identifiant) que les quatre autres, ce qui a fait passer sa
+   specificite au-dessus de (0,3,0) - au-dessus, donc, des quatre regles cycliques
+   (".propositions .proposition:nth-child(...)", plus bas dans ce fichier) qui doivent rester
+   PLUS FORTES que ce sujet pour que la couleur de position survive sous le doigt (S15-8) : ces
+   deux jeux de regles etaient volontairement a la meme specificite (0,3,0), l'ordre dans le
+   fichier tranchant en faveur des regles cycliques, declarees apres. Un identifiant bat cette
+   egalite sans espoir de retour, quel que soit l'ordre. Le correctif reprend l'ancetre reel deja
+   utilise par les regles cycliques elles-memes, ".propositions" (le conteneur direct de chaque
+   proposition) : ".propositions .proposition:active" vaut exactement (0,3,0) - egalite avec les
+   regles tierces (l'ordre inter-feuilles la tranche, ADR-0014 point 5) et egalite avec les
+   regles cycliques (l'ordre intra-fichier la tranche, comme avant ce lot). Les quatre autres
+   sujets de ce groupe n'ont aucune regle cyclique a proteger et gardent "#jeu". */
+/* S21-2 : rembourrage vertical resserre, levier de forme d'ines-design
+   (proposition-ines-rep-8.md, section 2.2). Accepte par nadia-prof le 2026-08-27, en amendement
+   date (pas en reecriture) de son acquis 7 du 2026-08-11
+   (FICHE-bandit-manchot-additions-cp.md, section 7 ; FICHE-bandit-manchot-reperes-cm1.md,
+   section 5) : l'acquis 7 refusait tout rembourrage payeur sur les deux axes, mais sa mesure
+   d'origine ne portait que sur l'axe lateral, epuise a 360 px. L'axe vertical, mesure pour la
+   premiere fois ce jour-la, descend a 0.5rem et pas plus bas (plancher, pas une pente - toute
+   valeur en dessous revient devant elle) ; l'axe lateral reste a 1.25rem, payeur refuse, inchange.
+   Cette regle ne s'applique qu'a .proposition et vient apres le bloc partage ci-dessus pour le
+   surclasser a specificite egale (ADR-0014 point 5) : les quatre autres boutons pleins
+   (.continuer-partie, .demarrer, .recommencer, .sortie-pleine) gardent 0.75rem 1.25rem. */
+.proposition {
+    padding: 0.5rem 1.25rem;
+}
+
+.continuer-partie:hover,
+.demarrer:hover,
+.proposition:hover,
+.recommencer:hover,
+.sortie-pleine:hover,
+#jeu .continuer-partie:active,
+#jeu .demarrer:active,
+.propositions .proposition:active,
+#jeu .recommencer:active,
+#jeu .sortie-pleine:active,
+.continuer-partie:focus-visible,
+.demarrer:focus-visible,
+.proposition:focus-visible,
+.recommencer:focus-visible,
+.sortie-pleine:focus-visible {
+    color: var(--recreo-accent-texte);
+    background-color: var(--recreo-accent);
+}
+
+/* Amendement ADR-0046 (s16) : ".proposition.deja-essayee" est un sujet compose, donc un pressable
+   distinct de ".proposition" au sens de la clause - il doit declarer ses propres etats, une regle
+   sur ".proposition" seule ne suffit plus a le couvrir. Trou trouve par mutation sur
+   ".chip-niveau.est-actif" (meme derivation, meme famille de defaut) et chiffre par theo-archi :
+   ".proposition.deja-essayee" est le seul des six selecteurs composes du depot qui ne declarait
+   encore aucun etat interactif.
+   Forme neutre retenue par nadia-prof le 2026-08-18 (FICHE-barre-entree-niveau.md, section 4) :
+   "l'absence de tout changement continue de suffire" - ses deux conditions :
+   - S15-8, la couleur de fond de la position cyclique doit survivre sous le doigt : les valeurs
+     ci-dessous sont volontairement celles du repos non cyclique (identiques a la regle de
+     ".proposition:hover, .proposition:active" ci-dessus) et cette regle est placee avant les
+     quatre regles de position ci-dessous, a la meme specificite (0,3,0) qu'elles - y compris pour
+     :focus-visible, ajoute au meme endroit par le second amendement d'ADR-0046 (s16) : la derniere
+     du fichier l'emporte a specificite egale (ADR-0014 point 5), donc chaque position garde son
+     fond et son texte, quel que soit l'etat - ne jamais deplacer ce bloc apres les quatre regles
+     de position ;
+   - S15-9, le trait de M9 (text-decoration et ses trois longhands sur ".proposition.deja-essayee")
+     survit sans etre redeclare ici, et ce n'est pas un releve fige : la derivation d'ADR-0046
+     (reposMaison / exigencesDuTiers / touche()) recroise ces longhands avec la feuille vendorisee
+     servie a chaque execution, jamais avec une liste ecrite a la main. Aujourd'hui, aucune regle de
+     cette feuille ne porte text-decoration a un etat garde, donc aucune exigence n'en nait ; le jour
+     ou une montee de version en ajouterait une, la meme derivation la ferait apparaitre et rougir
+     ici d'elle-meme (verifie par yanis-qa par mutation reelle de la feuille vendorisee : ajouter un
+     soulignement a :hover y fait naitre six exigences neuves). */
+.proposition.deja-essayee:hover,
+.proposition.deja-essayee:active,
+.proposition.deja-essayee:focus-visible {
+    color: var(--recreo-accent-texte);
+    background-color: var(--recreo-accent);
+}
+
+/* Taille du texte des boutons pleins : la plupart partagent la taille commune des boutons
+   actionnables (1,25rem), mais le chiffre d'un bouton de reponse est ce que l'enfant doit
+   comparer entre les trois propositions - il doit peser au moins autant que le calcul affiche
+   (S3-4, reserve 1 de nadia-prof sur S2-1 : "le nombre doit peser plus que la barre qui le
+   porte"). */
+.continuer-partie,
+.demarrer,
+.recommencer,
+.sortie-pleine {
+    font-size: 1.25rem;
+}
+
+.proposition {
+    font-size: 2rem;
+}
+
+/* S10 : quatre teintes cycliques sur les boutons de reponse plutot que le seul --recreo-accent -
+   le corps en deux tons du cabinet ferme la porte a un texte blanc lisible dessus (nadia-prof,
+   troisieme arbitrage du 2026-08-13, demonstration d'impossibilite en luminances relatives : aucune
+   teinte reelle ne peut tenir F9, F10 et un texte blanc a la fois). Texte --recreo-texte, mesure au
+   minimum a 9,55:1 contre les quatre fonds - le gain de lisibilite le plus net de ce chantier, sur
+   le mot que l'enfant doit lire. F18 : la quatrieme teinte (nth-child(4n+2)) est un sarcelle pale,
+   hors de la famille de l'ambre de --recreo-attention-fond/bordure, deja charge du sens "tu as
+   besoin d'aide". La couleur suit la position, jamais la reponse attendue - un decor, pas un
+   second indice (C5 clause 2, nadia-prof section 3). Ce changement d'aspect vaut pour toute
+   l'application - .demarrer, .encore et .sortie-pleine restent pleins a texte blanc (F19) : un
+   bouton qu'on choisit ne ressemble plus a un bouton qui fait avancer le jeu. */
+.propositions .proposition:nth-child(4n+1) { background-color: #bdd2ef; color: var(--recreo-texte); }
+.propositions .proposition:nth-child(4n+2) { background-color: #a9dcd8; color: var(--recreo-texte); }
+.propositions .proposition:nth-child(4n+3) { background-color: #dcc8ed; color: var(--recreo-texte); }
+.propositions .proposition:nth-child(4n+4) { background-color: #eec1d8; color: var(--recreo-texte); }
+
+/* S7-4 : le levier n'est pas un bouton de plus, c'est l'apparence de .demarrer, le bouton qui
+   ouvre deja une manche (ADR-0026 section 3) - zero route, zero etat de session, zero data-role
+   nouveau. Bouton-poussoir rond plutot qu'une manette : nadia-prof pose un veto nomme sur tout
+   geste de traction (arbitrage du 2026-08-10, section 5 ; confirme dans son second arbitrage,
+   section 3) - aucune fleche, aucune manette a demi baissee, aucun glissement. border-radius et
+   box-shadow ne changent ni la taille ni la cible tactile. Scope a .demarrer seulement, jamais a
+   .recommencer ni .sortie-pleine : c'est ce qui garantit qu'aucun decor de levier n'atteint
+   l'ecran de fin de partie (acquis 6 de nadia-prof).
+   S8-1 : la forme ronde et l'ombre de relief restent sur ce bouton - nadia-prof les a validees
+   pour un motif qui tient toujours, elles disent d'appuyer et non de tirer (arbitrage du
+   2026-08-11, section 4).
+   S10 : ".encore" a quitte les trois autres selecteurs de ce fichier avec le bouton qu'il
+   decorait (fragments/retour.html ne le rend plus), mais reste ici : CabinetDeLaMachineTest
+   (lot theo-archi, s10) epingle nommement que .encore garde sa forme ronde et son ombre de
+   relief, et ce fichier de test n'est pas le mien a modifier (il l'ecrit explicitement dans son
+   propre lot). Retirer .encore d'ici rendrait ce garde-fou rouge pour un motif qu'il n'a pas
+   choisi de garder - CSS mort qu'un garde-fou defend, nomme comme tel plutot que corrige en
+   silence ; a router au lot qui porte l'habillage du meuble (voir compte rendu de ce lot). */
+.demarrer,
+.encore {
+    position: relative;
+    border-radius: 999px;
+    box-shadow:
+        inset 0 -0.25rem 0 rgba(0, 0, 0, 0.18),
+        0 0.125rem 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Bouton de sortie sur l'ecran de jeu : reste visible et atteignable partout (S1-4), mais ne doit
+   pas dominer l'ecran ni concurrencer les boutons de reponse (S2-1, correction du refus sur la
+   hierarchie de saillance). Meme famille de couleur, contour au lieu d'un aplat : moins saillant,
+   jamais illisible. Sur l'ecran de fin de partie, cette meme sortie devient la seule action
+   possible : elle prend alors la classe .sortie-pleine (S3-6), un aplat comme les autres boutons
+   d'action plutot que ce contour. */
+.retour-accueil {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    font-size: 1.25rem;
+    color: var(--recreo-accent);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent);
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ADR-0046 : .retour-accueil est, avec .chip-niveau et .lien-accueil, l'un des boutons de contour
+   dont la lisibilite est le contour lui-meme - la propriete qui disparait au survol si la feuille
+   maison ne la redeclare pas ici. Forme neutre du point 4 : les valeurs du repos, inchangees.
+   Second amendement ADR-0046 (s16) : :focus-visible rejoint :hover et :active, box-shadow ecartee
+   a cet etat seul (aucune ombre ici au repos, l'exclusion ne change donc rien de visible). */
+/* S17-D (nadia-prof, sonde clavier+pointeur reelle, s17) : un ancetre reel rejoint le
+   sujet a l'etat presse - jamais un ajout au sujet lui-meme. Sans lui, ce sujet a :active
+   valait (0,2,0) contre (0,3,0) pour ".btn:first-child:active" /
+   ":not(.btn-check)+.btn:active" : une specificite tierce plus haute l'emportait sur
+   l'ordre de chargement (ADR-0014 point 5 ne joue qu'a specificite egale) - perte mesuree
+   par nadia-prof a 1,64:1 sur le bandeau, et .demarrer perdait son aplat bleu. Ajouter une
+   classe au sujet lui-meme (par exemple ".btn", deja portee par l'element) romprait
+   silencieusement la derivation d'ADR-0046 : "btn" deviendrait une classe connue de la
+   feuille maison, et l'identite de CHAQUE bouton reel en serait changee, pas seulement
+   celle-ci - mesure par un premier essai de ce lot, revert avant ce commit. Un ancetre reel,
+   separe par un combinateur, est invisible a cette derivation (elle ne lit que le dernier
+   compose, sujetDuSelecteur) - la meme forme que "body:has(.filtre-niveau)" plus bas dans
+   ce fichier. Le trou est de la meme famille que celui deja corrige deux fois en s16 sur
+   cette derivation (S17-D route ce troisieme cas a theo-archi) ; le bloc combine plus bas
+   repare l'anneau de focus sous ce meme etat presse, que la meme cause efface. */
+.retour-accueil:hover,
+#jeu .retour-accueil:active,
+.retour-accueil:focus-visible {
+    color: var(--recreo-accent);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent);
+}
+
+/* S14-1 (ADR-0043, ADR-0044) : les points d'entree par niveau. S14-2, correction du Done
+   pedagogique refuse par nadia-prof (BARRE-1, BARRE-2) : ils restent permanents sur l'accueil et
+   sur les trois etats de manche (demande de l'utilisatrice, non remise en cause), mais ils sont
+   masques sur la confirmation avant abandon et sur l'ecran d'erreur - voir la regle de masquage
+   sous .chip-niveau, plus bas dans ce fichier.
+   DEC-0034 (s15, arbitrage B) : la bande sombre distincte qui les portait (--recreo-cabinet-fond,
+   contredisait BARRE-9) avait deja disparu au profit du fond commun de l'en-tete.
+   S15 (troisieme et quatrieme arbitrages de l'utilisatrice) : les puces rejoignent le rang unique
+   de l'en-tete (voir .entete-contenu plus haut) - le conteneur ".bandeau-niveaux" qui les portait
+   sur un second rang distinct disparait, avec le rembourrage vertical propre qu'il portait.
+   La boite reprend a l'identique celle de .lien-accueil/.retour-accueil - taille de police,
+   hauteur minimale, rembourrage, forme en contour - pour ne jamais depasser une action de l'ecran
+   ou la puce s'affiche (ADR-0043, LActionNeDeclarePasMoinsQueLaSortieTest, 11 tests sur 11).
+   BARRE-4 : la puce ne porte que son texte, aucun disque ni pictogramme. */
+.chip-niveau {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    font-size: 1.25rem;
+    color: var(--recreo-accent-texte);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent-texte);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.9rem;
+    cursor: pointer;
+}
+
+/* ADR-0046 : le defaut vu par l'utilisatrice - au survol, .btn:hover de la feuille vendorisee
+   (specificite 0,2,0) ecrase color, background-color et border-color sans qu'aucune regle maison
+   ne les redeclare a cet etat (specificite 0,1,0 sur .chip-niveau seule) : la puce perd son
+   contour blanc et son texte devient sombre sur la bande sombre du bandeau. Forme neutre du
+   point 4 : les valeurs du repos, inchangees sous le pointeur et sous l'appui.
+   Second amendement ADR-0046 (s16) : :focus-visible rejoint :hover et :active - la meme perte de
+   contour et de texte se produit au clavier, sur .btn:focus-visible - box-shadow ecartee a cet
+   etat seul (aucune ombre ici au repos). */
+/* S17-D (nadia-prof, sonde clavier+pointeur reelle, s17) : un ancetre reel rejoint le
+   sujet a l'etat presse - jamais un ajout au sujet lui-meme. Sans lui, ce sujet a :active
+   valait (0,2,0) contre (0,3,0) pour ".btn:first-child:active" /
+   ":not(.btn-check)+.btn:active" : une specificite tierce plus haute l'emportait sur
+   l'ordre de chargement (ADR-0014 point 5 ne joue qu'a specificite egale) - perte mesuree
+   par nadia-prof a 1,64:1 sur le bandeau, et .demarrer perdait son aplat bleu. Ajouter une
+   classe au sujet lui-meme (par exemple ".btn", deja portee par l'element) romprait
+   silencieusement la derivation d'ADR-0046 : "btn" deviendrait une classe connue de la
+   feuille maison, et l'identite de CHAQUE bouton reel en serait changee, pas seulement
+   celle-ci - mesure par un premier essai de ce lot, revert avant ce commit. Un ancetre reel,
+   separe par un combinateur, est invisible a cette derivation (elle ne lit que le dernier
+   compose, sujetDuSelecteur) - la meme forme que "body:has(.filtre-niveau)" plus bas dans
+   ce fichier. Le trou est de la meme famille que celui deja corrige deux fois en s16 sur
+   cette derivation (S17-D route ce troisieme cas a theo-archi) ; le bloc combine plus bas
+   repare l'anneau de focus sous ce meme etat presse, que la meme cause efface. */
+.chip-niveau:hover,
+.entete-contenu .chip-niveau:active,
+.chip-niveau:focus-visible {
+    color: var(--recreo-accent-texte);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent-texte);
+}
+
+/* S15 (quatrieme arbitrage de l'utilisatrice, "une couleur sur la puce choisie") : plein contre
+   contour, forme et libelle tranches par nadia-prof (FICHE-barre-entree-niveau.md, arbitrage
+   prealable du 2026-08-18, section 2 ; proposee par ines-design,
+   proposition-ines-etat-actif-et-rang-unique.md, section 2.1). Contraste 9,25:1 dans les deux sens
+   (memes deux teintes que l'etat inactif, seulement inversees entre fond et texte) - a verifier par
+   nadia-prof sur le rendu reel, aucun navigateur ici. Refuse nommement par elle : un remplissage a
+   --recreo-accent (l'exacte apparence du bouton "Jouer" visible sur le meme ecran) et un etat porte
+   par la seule couleur - clause F (theo-archi) : le contour ecrit ici en raccourci complet (comme
+   partout ailleurs dans ce fichier, jamais border-color seul) porte la largeur, pas seulement la
+   teinte, et c'est cette composante-la qui satisfait la clause. Nadia-prof refuse nommement de s'en
+   tenir a une largeur a peine visible (0,0625rem, qu'il avait cite comme suffisant a la clause sans
+   etre vu) : ici le contour garde la largeur deja en vigueur au repos (0,125rem), reellement percue.
+   S15, correction de theo-archi (squad/sprints/s15-cinq-arbitrages-de-l-en-tete/exigences-theo-etat-actif-au-retour.md) :
+   sa premiere forme neutralisait l'apparence active sur le marqueur d'ecran de jeu et laissait donc
+   allumee toute autre route qui rend le catalogue complet sans filtre - defaut vu par l'utilisatrice
+   (CM1 presse puis "Les jeux" : la puce reste pleine). La regle est desormais positive et
+   conditionnelle : l'apparence active n'existe qu'a l'interieur de body:has(.filtre-niveau),
+   la marque que seul le catalogue filtre porte (voir accueil.html). Elle couvre d'un seul geste les
+   trois routes qui rendent le catalogue complet sans filtre et les quatre ecrans de jeu, qui ne
+   portent aucun des deux la marque - une neutralisation aurait du enumerer chacun, une condition
+   positive n'a rien a enumerer. Elle gagne aussi par specificite plutot que par ordre de
+   declaration : body + :has(.filtre-niveau) + .chip-niveau + .est-actif vaut (0,3,1) contre (0,2,0)
+   pour .chip-niveau:hover, quel que soit l'ordre des deux regles dans ce fichier.
+   Couplage voulu a .filtre-niveau (theo-archi, section 2) : une couleur sans phrase serait un
+   defaut silencieux (l'accord de nadia-prof sur l'etat actif repose sur la phrase disant la meme
+   chose dans la meme reponse) ; une phrase sans couleur reste vraie et se voit a la premiere
+   capture. La regle rend le premier etat structurellement inatteignable. */
+body:has(.filtre-niveau) .chip-niveau.est-actif,
+body:has(.filtre-niveau) .chip-niveau.est-actif:hover,
+body:has(.filtre-niveau) .chip-niveau.est-actif:active,
+body:has(.filtre-niveau) .chip-niveau.est-actif:focus-visible {
+    background-color: var(--recreo-accent-texte);
+    color: var(--recreo-entete-fond);
+    border: 0.125rem solid var(--recreo-entete-fond);
+}
+
+/* S17-1 (reserve S16-A de nadia-prof, FICHE-barre-entree-niveau.md) : un enfant qui navigue au
+   clavier voit desormais lequel des sept pressables d'une manche est actuellement selectionne.
+   Forme tranchee par l'arbitrage prealable de nadia-prof (variante 1 d'ines-design,
+   ARBITRAGE-PREALABLE-s17-indicateur-de-focus-clavier.md) : anneau interieur, 3 px, currentColor,
+   sur les memes selecteurs qu'ADR-0046, a :focus-visible seulement - jamais a :hover ni :active
+   (FOC-3, ce qui garde intacte la premisse "rien ne change sous le pointeur" du 2026-08-18).
+   FOC-1 : box-shadow inset plutot qu'un outline ou un contour, pour peindre a l'interieur de la
+   boite du bouton, sur son propre fond - le contraste de l'anneau est donc celui du texte contre
+   ce meme fond, deja mesure (proposition-ines-focus-clavier.md, section 3). FOC-2 : box-shadow ne
+   participe jamais au calcul de boite (deja ecartee des proprietes comparees a :focus-visible par
+   ADR-0046 point 4, second amendement) - aucun pressable ne change de taille, de police ni de
+   position au focus. currentColor : aucune teinte neuve, aucune paire a justifier. */
+.continuer-partie:focus-visible,
+.demarrer:focus-visible,
+.proposition:focus-visible,
+.recommencer:focus-visible,
+.sortie-pleine:focus-visible,
+.proposition.deja-essayee:focus-visible,
+.retour-accueil:focus-visible,
+.lien-accueil:focus-visible,
+.chip-niveau:focus-visible {
+    box-shadow: inset 0 0 0 0.1875rem currentColor;
+}
+
+/* S17-A (nadia-prof, sonde post-livraison de S17-1 puis proposition d'ines-design,
+   proposition-ines-marque-de-focus-puce-active.md) : la puce active est retiree du groupe
+   ci-dessus et recoit sa propre regle. Diagnostic d'ines-design (section 0) : l'etat actif peint
+   l'anneau, la bordure et le bandeau dans la meme variable (--recreo-entete-fond, #1d4b6b) -
+   "currentColor" y vaut donc la couleur de tout ce qui l'entoure, et l'anneau interieur ne cree
+   plus aucune frontiere avec l'exterieur (1,00:1 mesure par nadia-prof). C'est la seule des dix
+   familles ou cette propriete casse - partout ailleurs currentColor differe de son environnement
+   par construction. Correctif (section 2 de la proposition) : un anneau EXTERIEUR, sans "inset",
+   peint sur le bandeau plutot que sur le remplissage blanc de la puce, en blanc declare
+   (--recreo-accent-texte, deja utilise sur ce meme bandeau - aucune teinte neuve). C'est une
+   addition sur un fond qui ne portait aucune marque au repos (la bordure y est deja confondue avec
+   le bandeau), jamais un epaississement d'un trait deja visible (S17-B, qui ne s'applique pas ici
+   pour cette raison). Contraste contre le bandeau, des deux cotes de l'anneau : 9,25:1, reverifie
+   par nadia-prof (L = 0,063549 pour #1d4b6b, contre 0,063569 chez ines-design - l'arrondi tombe du
+   meme cote). box-shadow reste hors du calcul de boite (ADR-0046 point 4) : aucun changement de
+   taille ni de position au focus.
+   Scope inchange, verifie exact par nadia-prof : "body:has(.filtre-niveau)" est la meme condition
+   que celle qui peint l'etat actif lui-meme (S15, quatrieme arbitrage) - elle n'existe que sur le
+   catalogue filtre, jamais sur une manche ni sur les trois routes qui rendent le catalogue complet.
+   C'est pourquoi cette regle est plus etroite d'un ecran que la reserve initiale ne le disait :
+   sur une manche, ".chip-niveau.est-actif" ne recoit jamais l'habillage actif (la condition ne
+   porte pas), donc jamais cet anneau non plus - le pressable y est une puce ordinaire, deja
+   couverte par le groupe ci-dessus. Aucune regle combinee ":active:focus-visible" n'est due ici
+   (S17-D) : ce selecteur porte deja un selecteur de type ("body") qui le place au-dessus du
+   plancher tiers combine, verifie par le test qui accompagne ce lot - la meme raison, et le meme
+   test, que pour l'anneau interieur qu'il remplace. */
+body:has(.filtre-niveau) .chip-niveau.est-actif:focus-visible {
+    box-shadow: 0 0 0 0.1875rem var(--recreo-accent-texte);
+}
+
+/* S17-D (nadia-prof, sonde clavier+pointeur reelle, s17) : le meme trou de specificite efface
+   aussi l'anneau ci-dessus des qu'un pressable est a la fois focalise au clavier et presse - la
+   feuille vendorisee porte une regle distincte pour cet etat compose,
+   ".btn:first-child:active:focus-visible" / ":not(.btn-check)+.btn:active:focus-visible", qui
+   redeclare "box-shadow" a (0,4,0) via une variable non definie sur nos gabarits (invalide au
+   calcul, donc "none" mesure). Le bloc ci-dessus, a (0,2,0) ou (0,3,0), perdait cette propriete
+   precisement quand l'enfant appuie sur le bouton qu'il vient d'atteindre au clavier - l'endroit
+   ou l'anneau est le plus utile. Meme ancetre reel qu'au bloc precedent (jamais une classe
+   ajoutee au sujet, pour la raison qui y est ecrite) : "#jeu" ou ".entete-contenu" portent deja
+   l'element, et l'identifiant "#jeu" depasse (0,4,0) a lui seul (colonne ID). Deux identites n'en
+   ont pas besoin : ".proposition.deja-essayee" atteint deja (0,4,0) avec ses deux classes propres,
+   et la puce active ("body:has(.filtre-niveau) .chip-niveau.est-actif") depasse deja (0,4,0) par
+   son propre selecteur de type "body" - verifie par le test qui accompagne ce lot, pour ne pas
+   ajouter une regle honoree qui n'apporte rien. */
+#jeu .continuer-partie:active:focus-visible,
+#jeu .demarrer:active:focus-visible,
+#jeu .proposition:active:focus-visible,
+#jeu .recommencer:active:focus-visible,
+#jeu .sortie-pleine:active:focus-visible,
+.proposition.deja-essayee:active:focus-visible,
+#jeu .retour-accueil:active:focus-visible,
+.entete-contenu .lien-accueil:active:focus-visible,
+.entete-contenu .chip-niveau:active:focus-visible {
+    box-shadow: inset 0 0 0 0.1875rem currentColor;
+}
+
+/* S14-2, correction du Done pedagogique refuse par nadia-prof (BARRE-1, BARRE-2), forme retenue
+   par theo-archi (ADR-0022, troisieme amendement) : les points d'entree par niveau redeviennent un
+   habillage permanent dont la visibilite depend de l'ecran, sur un marqueur neuf, "ecran-exclusif" -
+   distinct de "ecran-de-jeu" (porte par les quatre fragments, donc structurellement incapable de
+   viser un sous-ensemble : ils doivent disparaitre sur deux ecrans sur quatre et rester sur les
+   deux autres). Un ecran est exclusif quand tout chemin qu'il ouvre a l'enfant vit a l'interieur
+   de lui - la confirmation (continuer ou quitter) et l'erreur (recommencer), jamais la manche ni
+   la fin de partie.
+   BARRE-1 : sur la confirmation, l'ecran pose une question et offre deux reponses ; la puce
+   pressee, republiee dans le rang, redonnerait le meme ecran sans rien changer. BARRE-2 :
+   "Recommencer" reste la seule chose pressable sur l'ecran d'erreur.
+   La forme contractuelle est celle d'ADR-0022 : body:has(.<marqueur>) .<habillage> { display:
+   none }. .chip-niveau est le porteur pressable de l'habillage - depuis s15 il n'a plus de
+   conteneur propre (".bandeau-niveaux" a disparu avec le rang unique), mais la regle nommait deja
+   la puce et non son ancien conteneur : masquer un conteneur aurait laisse les boutons dans
+   l'ordre de tabulation aux yeux d'un garde-fou qui ne lit que la classe portee par l'element
+   candidat lui-meme (AucunArretDeTabulationNEstDestructeurTest), tout en les rendant invisibles a
+   l'ecran - le piege que theo-archi avait nomme d'avance en s14. */
+body:has(.ecran-exclusif) .chip-niveau {
+    display: none;
+}
+
+/* S21-2 : marge resserree de 0.5rem 0 a 0.25rem 0, levier de forme d'ines-design
+   (proposition-ines-rep-8.md, section 2.2), accepte sans reserve par nadia-prof le 2026-08-27 -
+   aucun plancher pedagogique ne porte sur cette marge (FICHE-bandit-manchot-reperes-cm1.md,
+   section 5). */
+.score {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--recreo-accent);
+    margin: 0.25rem 0;
+}
+
+.fin-de-partie {
+    font-size: 1.5rem;
+    color: var(--recreo-accent);
+    text-align: center;
+    margin: 1rem 0;
+}
+
+/* ADR-0024, S6-7 : le texte qui nomme la variation graphemique d'un item, sur l'ecran de retour.
+   Meme plancher de lisibilite que .score et .indice (nadia-prof, planchers non negociables) :
+   texte lu par un enfant de CP en train de dechiffrer une exception a une regle qu'il vient
+   d'apprendre.
+   S8-3 : un aplat de fond et un cadre complet la distinguent desormais du texte courant et du
+   bandeau juste/faux qui la precede - meme motif que .indice, ou nadia-prof a deja refuse le
+   liseret au profit du cadre complet (arbitrage du 2026-08-11, section 6). Neutre et identique
+   apres une reponse juste et apres une reponse fausse : aucune regle ne conditionne .explication a
+   .signal.est-juste ou .signal.est-faux, la couleur est la meme par construction. */
+/* S10 : rembourrage et marge resserres (ines-design, meme mesure que .consigne/.enonce ci-dessus) -
+   0.75rem 1rem / 0.5rem 0 avant ce resserrement. Seul le haut porte une marge : ce bloc est deja le
+   dernier sous le meuble sur les deux etats ou il coexiste avec .indice. */
+.explication {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    background-color: var(--recreo-explication-fond);
+    border: 0.125rem solid var(--recreo-explication-bordure);
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    margin: 0.25rem 0 0;
+}
+
+/* Bandeaux d'attention (indice, reprise) : un cadre complet, pas seulement un liseret, pour
+   rester visibles sans distinguer les couleurs (reserve de nadia-prof sur le faible ecart de
+   luminance entre le fond ambre et le fond de page).
+   S10 : rembourrage et marge resserres (ines-design), meme motif que .explication ci-dessus. */
+.indice {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    background-color: var(--recreo-attention-fond);
+    border: 0.125rem solid var(--recreo-attention-bordure);
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    margin: 0.25rem 0 0;
+}
+
+.erreur {
+    font-size: 1.5rem;
+    color: var(--recreo-attention-bordure);
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.pas-de-jeu {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    margin: 0.5rem 0;
+}
+
+/* S15-2 (nadia-prof, FICHE-barre-entree-niveau.md, arbitrage prealable du 2026-08-18, section 5) :
+   la phrase qui nomme le filtre, due meme sans l'etat actif de la puce - meme plancher de
+   lisibilite que .pas-de-jeu, au-dessus de la liste qu'elle annonce. */
+.filtre-niveau {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    margin: 0.5rem 0;
+}
+
+.message-reprise {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    background-color: var(--recreo-attention-fond);
+    border: 0.125rem solid var(--recreo-attention-bordure);
+    border-radius: 0.25rem;
+    padding: 0.75rem 1rem;
+    margin: 0 0 1rem;
+}
+
+/* S11 (ADR-0038, DEC-0026 story 2) : le texte de l'ecran de confirmation, au minimum lisible
+   (meme plancher que .consigne). */
+.question-confirmation {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    margin: 0 0 0.75rem;
+}
+
+/* ines-design, proposition s11 : la forme de l'ecran de confirmation (ADR-0038, DEC-0026 story 2).
+   Le point qui compte, chiffre a 360 x 640 px (outils/mesurer-rendu.sh) : sans ce conteneur, les
+   deux boutons ne laissaient que 4 px de pixels reellement vides entre eux, cote a cote, de la
+   meme hauteur (chiffre corrige par nadia-prof, arbitrage prealable du 2026-08-14, section 1 : ma
+   soustraction de coordonnees en donnait 5, son comptage des pixels vides en donne 4) - exactement
+   la forme qu'ADR-0017 laisse passer puisqu'il ne compare ni la position ni l'espace (sa section
+   "ce que cette regle ne couvre pas", point 3). Empiler les deux boutons et les ecarter d'un plein
+   gabarit de cible tactile rend le geste sur physiquement plus difficile a manquer, sans toucher
+   aux composantes que le garde-fou compare (font-size, min-height, padding restent ceux de
+   .continuer-partie/.retour-accueil partout ailleurs). L'ecart est de 2,75rem = 44 px, la valeur du
+   min-height que cette application s'impose deja a elle-meme sur toute cible pressable : nadia-prof
+   a refuse les 2rem = 32 px initiaux (arbitrage prealable du 2026-08-14, CONF-1), un espace de
+   separation plus petit que la plus petite cible du produit ne se defendant pas.
+   align-items: center laisse .retour-accueil a sa largeur naturelle, compacte ; align-self: stretch
+   ne s'applique qu'a .continuer-partie ci-dessous, qui devient seul un bandeau pleine largeur - la
+   largeur n'est comparee par aucun garde-fou (ADR-0017 : "min-width sort"). Le budget vertical est
+   large a 360 x 640 (le bloc complet mesure environ 344 px de haut, mesure ci-dessous), donc ce
+   choix ne coute rien au pli de DEC-0016. */
+.confirmation-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.75rem;
+    margin-top: 1.5rem;
+}
+
+.confirmation-actions .continuer-partie {
+    align-self: stretch;
+}
+
+/* S10 : rembourrage vertical resserre (ines-design), meme motif que .explication/.indice - ce bloc
+   est toujours le premier sous le meuble, jamais de marge a lui donner. */
+.signal {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.signal .verdict {
+    font-size: 1.25rem;
+}
+
+/* Boite de l'icone juste/faux : la forme seule doit porter le sens, la couleur n'est
+   qu'un second canal. Taille doublee par rapport au constat du sprint 0 (1,5rem -> 3rem). */
+.icone-signal {
+    position: relative;
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+}
+
+.signal.est-juste {
+    background-color: #e8f5e9;
+}
+
+.signal.est-faux {
+    background-color: #ffebee;
+}
+
+/* Coche : le signe que l'enfant connait deja de son cahier pour "juste". */
+.signal.est-juste .icone-signal {
+    background-color: #2e7d32;
+    clip-path: polygon(
+        5% 61%, 35% 86%, 46% 85%, 96% 20%, 84% 10%, 34% 75%, 45% 74%, 15% 49%
+    );
+}
+
+/* Croix : le signe que l'enfant connait deja de son cahier pour "faux",
+   deux barres croisees plutot qu'un triangle qui n'evoque rien pour un enfant de CP. */
+.signal.est-faux .icone-signal::before,
+.signal.est-faux .icone-signal::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 22%;
+    background-color: #c62828;
+    border-radius: 0.2rem;
+}
+
+.signal.est-faux .icone-signal::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.signal.est-faux .icone-signal::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* S10 : structure posee par le lot mecanique, habillage laisse au lot qui porte le meuble.
+   ".message-jeu" est le bloc unique sous le meuble ou le jeu parle de la reponse de l'enfant -
+   signal, indice, revelation, explication (M1, M6 clause 1). Aucune propriete ici : sa forme
+   revient au lot qui porte le meuble.
+   S10, cloture : le resserrement de marge d'ines-design (mesure-ines-budget-vertical-m4.md,
+   section 3) porte sur .signal/.indice/.explication ci-dessus, les boites qui portent aujourd'hui
+   le rembourrage reel - ce wrapper-ci reste sans propriete tant qu'aucun lot ne l'a fait porter la
+   forme visuelle unique que sa proposition decrit. */
+.message-jeu {
+}
+
+/* ".deja-essayee" marque une proposition deja pressee sur la manche courante (M9 clause 1),
+   toujours composee avec .proposition (jamais seule) pour que TailleDesTextesEtBoutonsTest
+   continue de lire la taille de police et la cible tactile sur .proposition : cette regle ne
+   declare ni l'un ni l'autre, conformement a M9 clause 2 (elle ne change ni la boite, ni la
+   police, ni la position).
+   F16 (condition bloquante de nadia-prof, lot lea-dev/ines-design) : un mot barre, jamais une
+   couleur seule - le blanc maison tombe a 1,54:1 sur les quatre fonds pastels des propositions et
+   la marque y devenait un fantome. Mesure et acceptee a 9,55:1 au minimum sur ces memes fonds ;
+   regle recue de lea-dev (s10-lea-forme) et posee ici dans le meme commit que le cablage de la
+   classe (ADR-0031 : une regle ne nommant aucun jeton pose par un gabarit ne mord pas). */
+.proposition.deja-essayee {
+    text-decoration: line-through;
+    text-decoration-color: var(--recreo-texte);
+    text-decoration-thickness: 0.1875rem;
+    text-decoration-skip-ink: none;
+}

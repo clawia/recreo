@@ -166,6 +166,16 @@ LIRE_RECOUVREMENT = """
 
 def _lire(nav, png, etiquette):
     time.sleep(0.5)
+    # s21 : la regle candidate est relue a chaque lecture, jamais supposee encore la.
+    blr.refuser(
+        blr.juger_regle_injectee(
+            nav.regle_posee,
+            nav.evaluer(
+                "(function(){var m=document.getElementById('mesure-nadia');"
+                "return m ? m.textContent : null;})();"
+            ),
+        )
+    )
     mesure = nav.evaluer(LIRE_RECOUVREMENT)
     mesure["etat"] = etiquette
     mesure["pli"] = auditer.PLI_PX
@@ -220,10 +230,12 @@ def main():
         if not nav.attendre("document.querySelector('[hx-post*=\"%s\"]')" % jeu):
             raise RuntimeError("le jeu %s n'apparait pas sur l'accueil servi" % jeu)
         if regle:
-            nav.evaluer(
-                "(function(){var n=document.createElement('style');n.id='regle-nadia';"
-                "n.textContent=%s;document.head.appendChild(n);return true;})();"
-                % json.dumps(regle)
+            nav.poser_regle(
+                "(function(){var n=document.getElementById('mesure-nadia');"
+                "if(!n){n=document.createElement('style');n.id='mesure-nadia';"
+                "document.head.appendChild(n);}n.textContent=%s;return true;})();"
+                % json.dumps(regle),
+                regle,
             )
         nav.evaluer("document.querySelector('[hx-post*=\"%s\"]').click(); true;" % jeu)
         if not nav.attendre("document.querySelector('.proposition')"):
@@ -322,8 +334,9 @@ def main():
         sortie = {
             "jeu": jeu,
             "regleCssCandidate": regle,
-            "viewportDemande": [blr.VIEWPORT_LARGEUR, blr.VIEWPORT_HAUTEUR],
-            "viewportLuDuNavigateur": nav.evaluer(
+            "viewportDemande": nav.viewport_demande,
+            "viewportLuDuNavigateur": nav.viewport_lu,
+            "largeurDeMiseEnPageLue": nav.evaluer(
                 "[document.documentElement.clientWidth, document.documentElement.clientHeight]"
             ),
             "etats": etats,

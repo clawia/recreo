@@ -103,6 +103,17 @@ defaut de Spring Boot, sans fragment de jeu. L'ecran rendu a l'enfant est inchan
   un `l` manquant, donc Maven ne le lit jamais et ne trouve aucun JDK 21 par ce chemin-la. Le `java`
   du `PATH` par defaut est un JDK 8, ce qui explique le diagnostic errone. Renommer ce fichier
   releve du poste de l'utilisatrice, pas du depot ; je le signale sans y toucher.
+
+> **Note datee du 2026-08-27 (`theo-archi`, s21, story `S21-6`).** Les douze
+> `squad/sprints/*/confirmation-archunit.md` qui citent `21.0.10` ont ete examines un par un ce
+> jour (methode : `grep -rln 21.0.10 squad/sprints/*/confirmation-archunit.md` dans le worktree
+> `s21-theo`, le 2026-08-27), apres decouverte du defaut de `outils/mvn-jdk21.sh` - l'enveloppe lit
+> `${HOME}/.m2/toolchains.xml` du shell POSIX, la ou Maven resout sa toolchain sur `${user.home}`
+> de la machine virtuelle Java, et sur ce poste ce sont deux fichiers declarant deux JDK.
+> **Ce fichier-ci n'est pas corrige, et c'est un resultat, pas un oubli** : sa mesure est anterieure
+> au 2026-08-17, date de creation de l'enveloppe (commit `a9c182d`), et elle n'attribue le JDK ni a
+> une toolchain ni a l'enveloppe mais a un `JAVA_HOME` pose a la main pour la duree de la commande -
+> raccordement qui, lui, est vrai. La phrase d'origine tient, et aucun chiffre n'est remplace.
 - **Deux instances arretees, dites plutot que tuees en silence** : l'instance de l'utilisatrice sur
   le port 8080 (elle tenait `recreo.jar` verrouille, `clean` echouait) et la mienne, lancee sur un
   port distinct pour les mesures ci-dessous. Les deux ports sont libres a l'ecriture de ces lignes ;

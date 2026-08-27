@@ -29,6 +29,7 @@ import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.Re
 import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.reglesMaison;
 import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.reglesTierces;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.debutDeDeclaration;
+import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.declarationsDe;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.valeurDeclaree;
 import static com.recreo.adapter.web.ToutEcranEchangeEstUnDocumentJouableTest.zoneEchangee;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -332,22 +333,53 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
      * Les declarations de {@code proprietes} que ce corps de regle porte, dans l'ordre ou son auteur
      * les a ecrites. ADR-0055 lit le meme corps avec un autre jeu de proprietes : la lecture est la
      * meme, le jeu de proprietes est ce qui distingue la largeur offerte de la largeur demandee.
+     *
+     * <p><b>Correction du 2026-08-27 (s21, theo-archi), trouvee en instruisant le defaut de
+     * cascade de {@code LActionNeDeclarePasMoinsQueLaSortieTest}.</b> Cette methode parcourait bien
+     * chaque declaration du corps, mais relisait chaque fois la valeur par
+     * {@code debutDeDeclaration}, qui rend toujours la <b>premiere</b> declaration de la propriete.
+     * Une propriete declaree plusieurs fois dans un meme corps rendait donc N fois la meme valeur -
+     * la premiere - et les N-1 autres n'etaient <b>jamais lues</b>. Le cas est reel et non
+     * hypothetique : la feuille vendorisee declare {@code width: -webkit-max-content},
+     * {@code width: -moz-max-content} puis {@code width: max-content} dans le meme corps, la
+     * triplette de repli de prefixes habituelle, et cette table epinglait trois fois
+     * {@code -webkit-max-content}. Un changement de la valeur reellement appliquee
+     * ({@code max-content}) ne bougeait pas d'un caractere dans la table censee l'epingler.
+     *
+     * <p>Chaque occurrence est desormais lue <b>a sa propre position</b>. La table epinglee change
+     * de contenu sans qu'un seul pixel rendu change : ce qui change, c'est ce que le garde-fou
+     * voit.
      */
     static List<String> termesDeclares(String corps, Set<String> proprietes) {
+        List<int[]> occurrences = new ArrayList<>();
+        List<String> nomsParOccurrence = new ArrayList<>();
+        for (String propriete : proprietes) {
+            for (int position : declarationsDe(corps, propriete)) {
+                occurrences.add(new int[] {position, nomsParOccurrence.size()});
+                nomsParOccurrence.add(propriete);
+            }
+        }
+        occurrences.sort((gauche, droite) -> Integer.compare(gauche[0], droite[0]));
         List<String> termes = new ArrayList<>();
-        for (String declaration : corps.split(";")) {
-            int deuxPoints = declaration.indexOf(':');
-            if (deuxPoints < 0) {
-                continue;
-            }
-            String propriete = declaration.substring(0, deuxPoints).strip();
-            if (!proprietes.contains(propriete)) {
-                continue;
-            }
-            int position = debutDeDeclaration(corps, propriete);
-            termes.add(propriete + ": " + valeurDeclaree(corps, position, propriete));
+        for (int[] occurrence : occurrences) {
+            String propriete = nomsParOccurrence.get(occurrence[1]);
+            termes.add(propriete + ": " + valeurALaPosition(corps, occurrence[0], propriete));
         }
         return termes;
+    }
+
+    /**
+     * La valeur ecrite a cette position precise, <b>y compris si une declaration posterieure
+     * l'ecrase</b>. C'est ce que cette table epingle, et c'est deliberement different de ce que
+     * {@code valeurDeclaree} rend : celle-ci refuse une lecture ecrasee parce que ses appelants
+     * comparent des valeurs appliquees, alors qu'ici on inventorie ce que l'auteur a ecrit - une
+     * triplette de repli de prefixes doit apparaitre en entier, sans quoi l'inventaire n'en est pas
+     * un.
+     */
+    private static String valeurALaPosition(String corps, int position, String propriete) {
+        int debut = position + propriete.length() + ":".length();
+        int fin = corps.indexOf(';', debut);
+        return corps.substring(debut, fin < 0 ? corps.length() : fin).strip();
     }
 
     /** Vrai si cette regle declare un repli, donc si son sujet est une rangee repliable. */

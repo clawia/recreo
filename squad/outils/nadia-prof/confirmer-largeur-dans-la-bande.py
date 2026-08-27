@@ -170,11 +170,14 @@ def main():
             )
             time.sleep(1.0)
     finally:
+        viewport_lu = getattr(nav, "viewport_lu", None)
         nav.fermer()
         shutil.rmtree(profil, ignore_errors=True)
 
     rapport = {
-        "viewport": [viewport, HAUTEUR_PLI_PX],
+        # s21 : le viewport du rapport est LU du navigateur, jamais recopie de l'argument.
+        "viewport": viewport_lu,
+        "viewportDemande": [viewport, HAUTEUR_PLI_PX],
         "plafondZoneInjecte": plafond,
         "rangeeAttendue": plafond - _frere.RETRAIT_RANGEE_PX,
         "itemsVus": len(vus),

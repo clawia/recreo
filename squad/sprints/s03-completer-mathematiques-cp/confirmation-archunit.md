@@ -16,6 +16,17 @@
 **JDK 21.0.10** (`21.0.10+8-LTS-217`), le JDK 21 reel de ce poste. `JAVA_HOME` positionne dessus
 pour la duree de la commande, jamais ecrit dans un fichier commite.
 
+> **Note datee du 2026-08-27 (`theo-archi`, s21, story `S21-6`).** Les douze
+> `squad/sprints/*/confirmation-archunit.md` qui citent `21.0.10` ont ete examines un par un ce
+> jour (methode : `grep -rln 21.0.10 squad/sprints/*/confirmation-archunit.md` dans le worktree
+> `s21-theo`, le 2026-08-27), apres decouverte du defaut de `outils/mvn-jdk21.sh` - l'enveloppe lit
+> `${HOME}/.m2/toolchains.xml` du shell POSIX, la ou Maven resout sa toolchain sur `${user.home}`
+> de la machine virtuelle Java, et sur ce poste ce sont deux fichiers declarant deux JDK.
+> **Ce fichier-ci n'est pas corrige, et c'est un resultat, pas un oubli** : sa mesure est anterieure
+> au 2026-08-17, date de creation de l'enveloppe (commit `a9c182d`), et elle n'attribue le JDK ni a
+> une toolchain ni a l'enveloppe mais a un `JAVA_HOME` pose a la main pour la duree de la commande -
+> raccordement qui, lui, est vrai. La phrase d'origine tient, et aucun chiffre n'est remplace.
+
 Trois agents ont affirme en s03 que ce JDK n'existait pas et ont valide sur un JDK 25. Il existe.
 La cause trouvee par `lea-dev` est confirmee : **le fichier de toolchains de l'utilisateur porte un
 nom fautif** - `toochains.xml` au lieu de `toolchains.xml` - donc Maven ne le lit jamais, et le

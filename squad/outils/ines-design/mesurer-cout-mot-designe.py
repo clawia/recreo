@@ -227,12 +227,15 @@ def main():
             )
             time.sleep(1.0)
     finally:
+        viewport_lu = getattr(nav, "viewport_lu", None)
         nav.fermer()
         shutil.rmtree(profil, ignore_errors=True)
 
     rapport = {
         "jeu": jeu,
-        "viewport": [largeur, HAUTEUR_PLI_PX],
+        # s21 : le viewport du rapport est LU du navigateur, jamais recopie de l'argument.
+        "viewport": viewport_lu,
+        "viewportDemande": [largeur, HAUTEUR_PLI_PX],
         "regleInjectee": REGLE_MOT_DESIGNE_CSS,
         "itemsVus": len(vus),
         "pireDeltaHauteurEnonce": max(

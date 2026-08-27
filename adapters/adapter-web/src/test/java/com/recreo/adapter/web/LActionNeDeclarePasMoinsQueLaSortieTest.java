@@ -24,6 +24,8 @@ import static com.recreo.adapter.web.LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.m
 import static com.recreo.adapter.web.LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.masquages;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.blocsMaison;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.debutDeDeclaration;
+import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.declarationsDe;
+import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.derniereDeclaration;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.gabarits;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.lire;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.valeurDeclaree;
@@ -472,8 +474,19 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
             return Optional.empty();
         }
         String corps = maison.get(porteurs.get(0));
+        // s21 : la declaration lue est celle qui GAGNE la cascade, jamais la premiere rencontree.
+        // Avant ce correctif, ce garde-fou restait vert 11 sur 11 sans avoir lu la declaration
+        // qu'il devait juger : blocsMaison fusionne les corps successifs d'un meme selecteur, et
+        // .proposition recoit son rembourrage deux fois - une premiere fois par le bloc partage
+        // des cinq boutons pleins, une seconde par une regle qui lui est propre et qui vient
+        // apres. Ce test ne se trompait pas, il ne regardait pas.
+        //
+        // Une propriete declaree deux fois n'est pas un defaut : c'est une surcharge
+        // intentionnelle, et en faire un echec serait un rouge sur une feuille saine. Ce qui
+        // devient un echec, c'est de lire la mauvaise des deux - et ce refus-la vit dans
+        // valeurDeclaree, le point de passage commun a tous les garde-fous de ce module.
         String declaree = valeurDeclaree(corps,
-                debutDeDeclaration(corps, composante.propriete()), composante.propriete());
+                derniereDeclaration(corps, composante.propriete()), composante.propriete());
         List<String> parties = mots(declaree);
         if (parties.isEmpty() || parties.size() > 2) {
             defauts.add(prefixe + " declare " + composante.propriete() + " a " + parties.size()
@@ -784,5 +797,70 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
         Path racine = CONTRE_EXEMPLES.resolve("rejeu-s02-accepte");
         assertThatCode(() -> verifierQueLActionNeDeclarePasMoinsQueLaSortie(racine, racine))
                 .doesNotThrowAnyException();
+    }
+
+    /**
+     * Quatrieme occurrence, s21 (branche {@code s21-marc}, commit {@code 0e0bc4e}) : le rembourrage
+     * vertical de {@code .proposition} descend a 0,5rem, sous les 0,6rem que la sortie d'en-tete
+     * declare. <b>Ce test ne serait pas ici si le garde-fou avait vu ce qu'il devait juger</b> : sur
+     * cette feuille il est reste vert 11 sur 11, parce que {@code blocsMaison} fusionne les corps
+     * successifs d'un meme selecteur et que la valeur lue etait la premiere - le 0,75rem du bloc
+     * partage - au lieu de la derniere, celle qui gagne la cascade et que l'enfant voit.
+     *
+     * <p>Materiau reel plutot que fixture de ma main (lecon d'ADR-0015) : la feuille est reprise du
+     * commit sans y changer un caractere, et elle est rejouee sous les <b>gabarits de
+     * production</b>, ce que la double racine de ce garde-fou permet depuis son ecriture.
+     */
+    @Test
+    void leRejeuDeLaCascadeDeSVingtEtUnDeuxFaitEchouerLeGardeFou() {
+        Path feuilles = CONTRE_EXEMPLES.resolve("rejeu-s21-2-cascade");
+        assertThatThrownBy(
+                () -> verifierQueLActionNeDeclarePasMoinsQueLaSortie(RACINE_PRODUCTION, feuilles))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("la sortie .btn.lien-accueil \"Les jeux\" declare rembourrage "
+                        + "haut et bas a 0,60rem")
+                .hasMessageContaining("se contente de 0,50rem");
+    }
+
+    /**
+     * Un jeu fautif doit echouer <b>pour le motif qu'il annonce</b>. Celui-ci n'a de valeur que s'il
+     * porte encore les deux declarations de rembourrage sur {@code .proposition} : ramene un jour a
+     * une seule, il rougirait toujours - la comparaison 0,5 contre 0,6 tiendrait - mais il ne
+     * prouverait plus rien sur la cascade, et personne ne s'en apercevrait. Ce test epingle donc la
+     * forme du materiau, pas seulement son verdict.
+     */
+    @Test
+    void leJeuFautifDeLaCascadePorteBienDeuxDeclarationsDontLaPremiereEstCelleQuiTrompait() {
+        Map<String, String> maison = blocsMaison(CONTRE_EXEMPLES.resolve("rejeu-s21-2-cascade"));
+        String corps = maison.get(".proposition");
+        assertThat(corps)
+                .as("le jeu fautif doit porter un bloc .proposition")
+                .isNotNull();
+
+        List<Integer> declarations = declarationsDe(corps, "padding");
+        assertThat(declarations)
+                .as("sans deux declarations de rembourrage sur .proposition, ce jeu fautif ne met "
+                        + "plus la cascade a l'epreuve")
+                .hasSize(2);
+        assertThat(valeurALaPositionPourLaPreuve(corps, declarations.get(0)))
+                .as("la premiere declaration est celle que l'ancien lecteur rendait, et elle est "
+                        + "au-dessus des 0,6rem de la sortie : c'est elle qui gardait le garde-fou vert")
+                .isEqualTo("0.75rem 1.25rem");
+        assertThat(valeurDeclaree(corps, derniereDeclaration(corps, "padding"), "padding"))
+                .as("la derniere declaration est celle qui gagne la cascade, et c'est elle qui viole "
+                        + "ADR-0017")
+                .isEqualTo("0.5rem 1.25rem");
+    }
+
+    /**
+     * La valeur ecrite a une position, sans le refus de {@link TailleDesTextesEtBoutonsTest#valeurDeclaree}
+     * - refus qui existe precisement pour interdire cette lecture au reste du depot. Le test
+     * ci-dessus en a besoin pour montrer <b>ce que l'ancien lecteur rendait</b> ; c'est le seul
+     * endroit du module ou lire une declaration ecrasee a un sens.
+     */
+    private static String valeurALaPositionPourLaPreuve(String corps, int position) {
+        int debut = position + "padding".length() + ":".length();
+        int fin = corps.indexOf(';', debut);
+        return corps.substring(debut, fin < 0 ? corps.length() : fin).strip();
     }
 }
