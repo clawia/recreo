@@ -1,0 +1,249 @@
+{
+  "items": {
+    "Compare 213 500 et 213 050.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 551,
+        "basDuVerdict": 442,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Les centaines de mille et les dizaines de mille sont les mêmes : regarde les chiffres suivants.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Lis, écris, décompose ou compare !",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "=",
+        "<",
+        ">"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Compare 600 400 et 600 040.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 551,
+        "basDuVerdict": 472,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Les deux nombres ont les mêmes chiffres : compare les positions un à un.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Lis, écris, décompose ou compare !",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "=",
+        ">",
+        "<"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 400
+    },
+    "Décompose 40 705 en valeurs de position.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 551,
+        "basDuVerdict": 472,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 2,
+        "texteIndice": "Chaque chiffre vaut sa position : compte les zéros qui suivent.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 453.19,
+      "consigne": "Lis, écris, décompose ou compare !",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "40 000 + 700",
+        "40 000 + 70 + 5",
+        "40 000 + 700 + 5"
+      ],
+      "rangeesAuRepos": 2,
+      "seuilLargeurNecessaire": null
+    },
+    "Décompose 452 000 en valeurs de position.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 551,
+        "basDuVerdict": 472,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 3,
+        "texteIndice": "Décompose classe par classe, de la plus grande à la plus petite.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 543.19,
+      "consigne": "Lis, écris, décompose ou compare !",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "400 000 + 50 000 + 200",
+        "400 000 + 5 000 + 2 000",
+        "400 000 + 50 000 + 2 000"
+      ],
+      "rangeesAuRepos": 3,
+      "seuilLargeurNecessaire": null
+    },
+    "Décompose 8 004 en valeurs de position.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 551,
+        "basDuVerdict": 472,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Un zéro entre deux chiffres ne s'écrit pas dans la décomposition.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Lis, écris, décompose ou compare !",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "8 000 + 400",
+        "8 000 + 4",
+        "8 000 + 40"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 637
+    },
+    "Lis ce nombre : 213 500.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 551,
+        "basDuVerdict": 442,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 3,
+        "texteIndice": "Repère si un zéro se cache au milieu du nombre : il ne s'entend pas mais il compte.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 543.19,
+      "consigne": "Lis, écris, décompose ou compare !",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "deux cent treize mille cinq cents",
+        "deux cent treize mille cinq",
+        "deux cent treize mille cinquante"
+      ],
+      "rangeesAuRepos": 3,
+      "seuilLargeurNecessaire": null
+    },
+    "Lis ce nombre : 47 300.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 551,
+        "basDuVerdict": 472,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 3,
+        "texteIndice": "Le groupe avant 'mille' se lit comme un nombre à deux chiffres.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 543.19,
+      "consigne": "Lis, écris, décompose ou compare !",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "quarante-sept mille trois cents",
+        "quarante-sept mille trente",
+        "quatre mille sept cent trente"
+      ],
+      "rangeesAuRepos": 3,
+      "seuilLargeurNecessaire": null
+    },
+    "Lis ce nombre : 528 006.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 551,
+        "basDuVerdict": 472,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 3,
+        "texteIndice": "N'oublie pas de lire chaque classe séparément, même si l'une des deux est petite.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 543.19,
+      "consigne": "Lis, écris, décompose ou compare !",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "cinq cent vingt-huit mille soixante",
+        "cinq cent vingt-huit mille six",
+        "cinquante-deux mille huit cent six"
+      ],
+      "rangeesAuRepos": 3,
+      "seuilLargeurNecessaire": null
+    },
+    "Lis ce nombre : 816 203.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 551,
+        "basDuVerdict": 472,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 3,
+        "texteIndice": "Lis d'abord la classe des mille, puis la classe des unités simples.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 543.19,
+      "consigne": "Lis, écris, décompose ou compare !",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "quatre-vingt-seize mille deux cent trois",
+        "huit cent seize mille deux cent trois",
+        "huit cent seize mille vingt-trois"
+      ],
+      "rangeesAuRepos": 3,
+      "seuilLargeurNecessaire": null
+    },
+    "Écris en chiffres : un million.": {
+      "apresUnEchec": {
+        "basDeLExplication": null,
+        "basDeLIndice": 551,
+        "basDuVerdict": 472,
+        "defilement": 0,
+        "indiceEntierAuDessusDuPli": true,
+        "rangees": 1,
+        "texteIndice": "Un million s'écrit avec six zéros après le 1.",
+        "verdictAuDessusDuPli": true
+      },
+      "basDesPropositions": 363.19,
+      "consigne": "Lis, écris, décompose ou compare !",
+      "defilementAuRepos": 0,
+      "largeurRangeeOfferte": 680,
+      "nbPropositions": 3,
+      "propositions": [
+        "1 000 000",
+        "10 000",
+        "100 000"
+      ],
+      "rangeesAuRepos": 1,
+      "seuilLargeurNecessaire": 525
+    }
+  },
+  "itemsVus": 10,
+  "jeu": "bandit-manchot-grands-nombres-cm1",
+  "lectures": 31,
+  "parties": 1,
+  "regleCssCandidate": ".message-jeu{position:fixed;left:0;right:0;bottom:0;margin:0;background:#ffffff}"
+}

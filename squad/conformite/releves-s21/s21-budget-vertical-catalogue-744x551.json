@@ -1,0 +1,2608 @@
+{
+ "date": "2026-08-27",
+ "jeux": [
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Autrefois, les enfants, même les jours de pluie, ___ dehors après l'école.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Autrefois, les paysans du village ___ leurs champs à la main.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Avant les vacances, toi et ta sœur ___ tous les soirs à la bibliothèque.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Bientôt, les hirondelles, comme chaque année, ___ vers les pays chauds.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Cet été, mes cousins ___ une cabane au fond du jardin.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Chaque hiver, les habitants de la vallée ___ beaucoup de neige.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Dans deux jours, le chien des voisins ___ un nouveau panier.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Dans quelques minutes, le train de Paris ___ en gare.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Demain, les enfants du quartier ___ un grand tournoi de football.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Il y a longtemps, le vieux tracteur du fermier ___ encore dans le champ.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "L'année prochaine, toi et tes amis ___ dans une nouvelle école.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "La semaine prochaine, mon cousin et moi ___ à la piscine tous les jours.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Le chat de ma grand-mère, malgré son âge, ___ encore sur le mur du jardin.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Le vieux chêne du parc ___ de l'ombre sur tout le banc.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Les enfants du voisin ___ dans le jardin tous les après-midis.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Les feuilles des arbres, malgré le vent, ___ encore accrochées aux branches.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Les élèves de la classe, après la récréation, ___ leur cahier de mathématiques.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Mon frère et moi ___ tous les mercredis au foot.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Quand j'étais au CP, mes amis et moi ___ toujours les premiers dans la cour.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Quand j'étais petit, mon frère et moi ___ ensemble dans la même chambre.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -15.81,
+     "enonce": "Toi et ton frère ___ la vaisselle après le repas.",
+     "rangees": 1,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 20,
+   "itemsVus": 21,
+   "jeu": "bandit-manchot-accord-sujet-verbe-cm1",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": 32.19
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": 68.19,
+     "enonce": "Des chats ___.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 68.19,
+     "enonce": "La maison est ___.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 68.19,
+     "enonce": "Le ballon est ___.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 68.19,
+     "enonce": "Les fleurs sont ___.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 68.19,
+     "enonce": "Les garçons sont ___.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 68.19,
+     "enonce": "Les histoires sont ___.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 68.19,
+     "enonce": "Un gâteau ___.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 68.19,
+     "enonce": "Une pomme ___.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -15.81,
+     "enonce": "Léa a acheté ___ ballon rouge.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -15.81,
+     "enonce": "Nous avons vu ___ voiture bleue.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -15.81,
+     "enonce": "Regarde ___ chien là-bas !",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -15.81,
+     "enonce": "Tom a perdu ___ gomme préférée.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -15.81,
+     "enonce": "___ chat dort sur le canapé.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Dans la classe, il y a vingt ___.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Le chat attrape une ___.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Le fermier a un seul ___ dans le pré.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Les enfants ramassent des ___.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Léa a cueilli trois ___.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Léa porte une ___ neuve.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Léa range ___ cahiers dans son sac.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Range ___ crayons dans la trousse.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Sur la table, il y a quatre ___.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Tom a un seul ___ dans sa trousse.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "___ fleurs sentent très bon.",
+     "rangees": 1,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 8,
+   "itemsVus": 24,
+   "jeu": "bandit-manchot-accords-groupe-nominal-cm1",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": 68.19
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Le clown est toujours « joyeux » avec les enfants.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Ce chien est « vieux ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Ce coureur est très « rapide ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Ce mur est très « haut ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Ce pain est devenu « dur ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Ce quartier est très « silencieux » la nuit.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Ce sac est « lourd ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Ce verre est « plein ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Cette pièce est « claire » le matin.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Cette route est « large ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Cette soupe est encore « chaude ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Le chat va « monter » sur le toit.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Le film va « commencer » dans cinq minutes.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Le nouvel élève est « poli » avec la maîtresse.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Léa doit « ouvrir » la fenêtre avant de partir.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Léa est arrivée « première » à la course.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Notre équipe va « gagner » le match.",
+     "rangees": 1,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 1,
+   "itemsVus": 17,
+   "jeu": "bandit-manchot-antonymes-cm1",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": 2.19
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "0 ___ 0",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "100 ___ 100",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "100 ___ 85",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "14 ___ 14",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "17 ___ 6",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "19 ___ 33",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "23 ___ 47",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "3 ___ 78",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "36 ___ 36",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "41 ___ 90",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "45 ___ 40",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "52 ___ 38",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "56 ___ 60",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "58 ___ 58",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "63 ___ 12",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "67 ___ 72",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "70 ___ 22",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "73 ___ 73",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "8 ___ 15",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "82 ___ 82",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "84 ___ 99",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "88 ___ 79",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "9 ___ 9",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "91 ___ 9",
+     "rangees": 1,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 0,
+   "itemsVus": 24,
+   "jeu": "bandit-manchot-comparer-nombres-cp",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": -45.81
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": -15.81,
+     "enonce": "5 + ? = 10",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "0 + ? = 10",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "1 + ? = 10",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "10 + ? = 10",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "2 + ? = 10",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "3 + ? = 10",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "4 + ? = 10",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "6 + ? = 10",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "7 + ? = 10",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "8 + ? = 10",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "9 + ? = 10",
+     "rangees": 1,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 0,
+   "itemsVus": 11,
+   "jeu": "bandit-manchot-complements-10-cp",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": -15.81
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": false,
+     "deficit": 32.19,
+     "enonce": "Elle ___ toujours ses affaires avant de partir en récréation.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": 8.19,
+     "enonce": "Autrefois, ils ___ ce dessin animé chaque mercredi.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": 8.19,
+     "enonce": "Autrefois, nous ___ toujours les premiers à l'école.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -15.81,
+     "enonce": "Autrefois, je ___ tous les jours dans le jardin.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -15.81,
+     "enonce": "Je ___ mon cahier dans mon sac.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Autrefois, il ___ du vélo le dimanche.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Autrefois, tu ___ tes camarades en classe.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Autrefois, vous ___ moins de devoirs.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Demain, elle ___ son dessin avant le goûter.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Demain, je ___ dans le jardin.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Demain, nous ___ un gâteau pour la fête.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Demain, tu ___ tes camarades en classe.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Demain, vous ___ à la piscine avec la classe.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Elles ___ dans le jardin.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Ils ___ une chanson en rentrant de l'école.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Je ___ mes devoirs.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Maintenant, elle ___ son frère avant l'école.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Nous ___ dans la cour pendant la récréation.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Nous ___ une histoire.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Tous les jours, il ___ à l'école.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Tu ___ ton exercice avant la récréation.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Tu ___ un dessin.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Vous ___ du chocolat.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": false,
+     "deficit": -39.81,
+     "enonce": "Vous ___ vos cahiers avant de commencer.",
+     "rangees": 2,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 3,
+   "itemsVus": 24,
+   "jeu": "bandit-manchot-conjugaison-present-cm1",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": 32.19
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "4000 kg, combien de tonnes ?",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "5000 kg, combien de tonnes ?",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "2 kg, combien de g ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "2 m, combien de mm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "3 L, combien de ml ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "3 km, combien de m ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "3 tonnes, combien de kg ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "4 L, combien de cl ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "4 kg, combien de g ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "4 m, combien de cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "4000 ml, combien de L ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "500 cm, combien de m ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "5000 ml, combien de L ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "5000 mm, combien de m ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "6 cl, combien de ml ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "6000 g, combien de kg ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "6000 m, combien de km ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "7 cm, combien de mm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "7 tonnes, combien de kg ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "700 cl, combien de L ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "700 ml, combien de cl ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "700 mm, combien de cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "9 cl, combien de ml ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "9000 g, combien de kg ?",
+     "rangees": 1,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 2,
+   "itemsVus": 24,
+   "jeu": "bandit-manchot-conversions-unites-cm1",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": 44.19
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": 192.19,
+     "enonce": "Décompose 305 421 en valeurs de position.",
+     "rangees": 3,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 192.19,
+     "enonce": "Lis ce nombre : 213 500.",
+     "rangees": 3,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 192.19,
+     "enonce": "Lis ce nombre : 528 006.",
+     "rangees": 3,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 162.19,
+     "enonce": "Décompose 128 000 en valeurs de position.",
+     "rangees": 3,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 162.19,
+     "enonce": "Décompose 452 000 en valeurs de position.",
+     "rangees": 3,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 162.19,
+     "enonce": "Lis ce nombre : 47 300.",
+     "rangees": 3,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 162.19,
+     "enonce": "Lis ce nombre : 816 203.",
+     "rangees": 3,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 134.19,
+     "enonce": "Lis ce nombre : 32 010.",
+     "rangees": 3,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 74.19,
+     "enonce": "Décompose 600 040 en valeurs de position.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 74.19,
+     "enonce": "Décompose 90 090 en valeurs de position.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "Décompose 40 705 en valeurs de position.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Écris en chiffres : quarante mille sept cent cinq.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Écris en chiffres : trois cent cinq mille quatre cent vingt-et-un.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Écris en chiffres : quatre cent cinquante-deux mille.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Écris en chiffres : quatre-vingt-dix mille quatre-vingt-dix.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -15.81,
+     "enonce": "Compare 305 421 et 350 421.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -15.81,
+     "enonce": "Compare 70 018 et 78 000.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -15.81,
+     "enonce": "Écris en chiffres : six cent mille quarante.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Compare 600 400 et 600 040.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Compare 816 203 et 816 023.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Décompose 8 004 en valeurs de position.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Lis ce nombre : 1 000 000.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Écris en chiffres : cent vingt-huit mille.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Écris en chiffres : un million.",
+     "rangees": 1,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 15,
+   "itemsVus": 24,
+   "jeu": "bandit-manchot-grands-nombres-cm1",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": 192.19
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Léa a perdu son livre, mais elle ___ enfin retrouvé.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Tom cherchait sa gomme, et son voisin ___ enfin repérée.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -15.81,
+     "enonce": "Il reste ___ de pain dans le placard.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -15.81,
+     "enonce": "Léa range son cahier et ___ crayons.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -15.81,
+     "enonce": "Tu veux du thé ___ du café ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Après la récréation, les élèves ___ rangent.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Il ___ mangé une pomme.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Il ___ range soigneusement.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Il fait très froid, ___ le soleil brille.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Il prend ___ cartable.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Ils ___ un chien.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "J'ai rangé ___ affaires ce matin.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Je vais ___ l'école.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Le chat ___ noir.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Le chien ne ___ plus courir.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Le ciel est dégagé, mais il ___ encore pleuvoir.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Les enfants ___ partis.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Léa cherche ___ règle dans sa trousse.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Papa ___ maman font la cuisine.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Pose ton cartable ___, à côté du mien.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Regarde ___ oiseaux là-bas !",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "___ cahier appartient à mon petit frère.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "___ joue dans la cour.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "___ vas-tu ?",
+     "rangees": 1,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 2,
+   "itemsVus": 24,
+   "jeu": "bandit-manchot-homophones-cm1",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": 2.19
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": 8.19,
+     "enonce": "DENT",
+     "rangees": 1,
+     "revelee": true
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 8.19,
+     "enonce": "LUNDI",
+     "rangees": 1,
+     "revelee": true
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 8.19,
+     "enonce": "NOMBRE",
+     "rangees": 1,
+     "revelee": true
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 8.19,
+     "enonce": "OMBRE",
+     "rangees": 1,
+     "revelee": true
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 8.19,
+     "enonce": "TIMBRE",
+     "rangees": 1,
+     "revelee": true
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 8.19,
+     "enonce": "VENT",
+     "rangees": 1,
+     "revelee": true
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "BALLON",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "BANC",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "JARDIN",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "LAPIN",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "MAMAN",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "MANTEAU",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "MONTRE",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "PONT",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "SAPIN",
+     "rangees": 1,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 6,
+   "itemsVus": 15,
+   "jeu": "bandit-manchot-le-bon-son-cp",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": 8.19
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "Elle « range » sa chambre.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "Il « dort » bien fort.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "La « maîtresse » écrit au tableau.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "Le chien « court » dans le jardin.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "Le poisson « nage » dans l'eau.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "Le « chat » dort sur le tapis.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "Le « soleil » brille dans le ciel.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "Les enfants « chantent » une chanson.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "Les petits « oiseaux » chantent dans l'arbre.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "Léa porte un joli « sac ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "Léa « arrose » les fleurs.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "Papa lave la « voiture ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "Tom mange un bon « gâteau ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "Tom « saute » dans la flaque.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "Tu « dessines » un beau soleil.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -38.62,
+     "enonce": "« Médor » aboie très fort.",
+     "rangees": 1,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 0,
+   "itemsVus": 16,
+   "jeu": "bandit-manchot-nature-mot-cp",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": -38.62
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": 162.19,
+     "enonce": "Le périmètre d'une figure, c'est...",
+     "rangees": 3,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Comment calcule-t-on le périmètre d'un carré ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un carré de côté 10 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un carré de côté 11 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un carré de côté 12 m ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un carré de côté 15 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un carré de côté 3 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un carré de côté 5 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un carré de côté 6 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un carré de côté 7 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 11 cm et de largeur 3 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 12 cm et de largeur 5 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 13 cm et de largeur 5 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 14 cm et de largeur 6 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 15 cm et de largeur 6 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 20 m et de largeur 5 m ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 6 cm et de largeur 4 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 7 cm et de largeur 2 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 8 cm et de largeur 3 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Quel est le périmètre d'un rectangle de longueur 9 cm et de largeur 4 cm ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Quel est le périmètre d'un carré de côté 8 m ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Quel est le périmètre d'un carré de côté 9 m ?",
+     "rangees": 1,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 20,
+   "itemsVus": 22,
+   "jeu": "bandit-manchot-perimetre-cm1",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": 162.19
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Ali a 8 cartes et en gagne 1. Combien en a-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Ali a 9 cartes et en perd 2. Combien lui en reste-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Le clown a 7 ballons et en gonfle 2 de plus. Combien en a-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Le clown a 8 ballons, 4 s'envolent. Combien lui en reste-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Le fermier a 1 chat et en adopte 2. Combien en a-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Le fermier a 5 chats, 2 partent. Combien lui en reste-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Le jardinier a 6 fleurs et en plante 2 de plus. Combien en a-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Le jardinier a 8 fleurs et 5 fanent. Combien lui en reste-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Léa a 3 billes et en gagne 2. Combien en a-t-elle ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Léa a 8 billes et en perd 3. Combien lui en reste-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Léo a 2 gommes et en gagne 5. Combien en a-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Léo a 6 gommes et en perd 1. Combien lui en reste-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Mamie a 3 gâteaux et en fait 4 de plus. Combien en a-t-elle ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Mamie a 7 gâteaux et on en mange 3. Combien lui en reste-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Mia a 10 images et en donne 6. Combien lui en reste-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Mia a 6 images et en trouve 3. Combien en a-t-elle ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Nino a 5 crayons et en achète 2. Combien en a-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Nino a 7 crayons et en casse 2. Combien lui en reste-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Tom a 4 bonbons et en reçoit 3. Combien en a-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Tom a 9 bonbons et en mange 4. Combien lui en reste-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Zoé a 4 jetons et en gagne 5. Combien en a-t-elle ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Zoé a 9 jetons et en perd 5. Combien lui en reste-t-il ?",
+     "rangees": 1,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 22,
+   "itemsVus": 22,
+   "jeu": "bandit-manchot-problemes-additifs-cp",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": 2.19
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": 92.19,
+     "enonce": "Nous partons demain matin pour la montagne",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 92.19,
+     "enonce": "Pourquoi les feuilles tombent-elles en automne",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "Hier soir louis a fini ses devoirs.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "Le chien aboie très fort dans le jardin.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "Le professeur a félicité julien pour son exposé.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "Le soleil brille dans le ciel",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "Léa adore lire des histoires avant de dormir.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "Ma cousine léa vient nous voir dimanche.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "Mon frère apprend à nager cet été",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "Nous allons à la piscine chaque samedi.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "Où as-tu rangé tes affaires",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "Où habite ton cousin Paul ?",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "Quel âge a ton petit frère",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "elle prépare son cartable pour demain.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "le chat dort sur le tapis.",
+     "rangees": 2,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 44.19,
+     "enonce": "les enfants jouent dans la cour.",
+     "rangees": 2,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 16,
+   "itemsVus": 16,
+   "jeu": "bandit-manchot-reperes-cm1",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": 92.19
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "10 - 0 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "10 - 1 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "10 - 2 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "10 - 3 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "10 - 4 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "10 - 6 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "3 - 2 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "5 - 3 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "5 - 5 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "6 - 1 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "6 - 5 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "7 - 4 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "7 - 5 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "7 - 7 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "8 - 3 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "8 - 5 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "8 - 6 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "9 - 1 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "9 - 2 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "9 - 3 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "9 - 4 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "9 - 5 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "9 - 7 = ?",
+     "rangees": 1,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 0,
+   "itemsVus": 23,
+   "jeu": "bandit-manchot-soustractions-cp",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": -45.81
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Ce jeu de société est « facile » pour les débutants.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "La maman parle à son bébé d'une voix « douce ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 32.19,
+     "enonce": "Le nouveau voisin est « gentil » avec tout le monde.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Cet exercice de mathématiques est « difficile ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Le petit garçon est « triste » depuis le départ de son ami.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Le pompier reste « courageux » face au danger.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": 2.19,
+     "enonce": "Le village est très « calme » le dimanche matin.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -15.81,
+     "enonce": "Léa est « contente » de son cadeau.",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Après la course, Tom est « fatigué ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Ce désert de sable est très « grand ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Ce moteur de camion est très « fort ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Ce paysage de montagne est « beau ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Cette fourmi est « petite ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Dans les fables, le renard est « malin ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "La musique du carnaval est « gaie ».",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "Le bureau de Léa est « propre ».",
+     "rangees": 1,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 7,
+   "itemsVus": 16,
+   "jeu": "bandit-manchot-synonymes-cm1",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": 32.19
+  },
+  {
+   "items": [
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "1 × 5 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "1 × 8 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "1 × 9 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "2 × 10 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "2 × 4 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "2 × 8 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "3 × 2 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "3 × 5 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "3 × 7 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "3 × 9 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "4 × 5 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "5 × 2 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "5 × 9 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "6 × 10 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "6 × 2 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "6 × 3 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "6 × 6 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "7 × 10 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "7 × 4 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "8 × 10 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "8 × 9 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "9 × 10 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "9 × 4 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "9 × 8 = ?",
+     "rangees": 1,
+     "revelee": false
+    },
+    {
+     "aUnIndice": true,
+     "deficit": -45.81,
+     "enonce": "9 × 9 = ?",
+     "rangees": 1,
+     "revelee": false
+    }
+   ],
+   "itemsSousLePli": 0,
+   "itemsVus": 25,
+   "jeu": "bandit-manchot-tables-multiplication-cm1",
+   "lecturesADefilementNonNul": 0,
+   "pireDeficit": -45.81
+  }
+ ],
+ "mesure": "budget vertical - bas du bloc .message-jeu contre le pli a 551 px",
+ "note": "perimetre derive de catalogue.yaml ; bandit-manchot-additions-cp saute (paquet combinatoire, aucun item a lire) ; population echantillonnee par tirage, jamais exhaustive",
+ "outil": "squad/outils/theo-archi/mesurer-budget-vertical.py, ECHECS=3, PARTIES_MAX=12, PLAFOND_ITEMS=24",
+ "tete": "9e2e31a",
+ "total": {
+  "itemsSousLePli": 122,
+  "itemsVus": 348,
+  "jeuxAvecAuMoinsUnItemSousLePli": 12,
+  "jeuxMesures": 17
+ },
+ "viewport": [
+  744,
+  551
+ ]
+}
