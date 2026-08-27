@@ -70,10 +70,19 @@ class PaquetCm1ReperesTest {
             LIBELLE_POINT_FINAL, LIBELLE_MAJUSCULE_PRENOM, LIBELLE_POINT_INTERROGATION);
 
     /**
-     * ADR-0029 et le pli (verdict du 2026-08-26) : trois propositions par item, jamais quatre.
-     * A quatre, mesure faite (`auditer-paquet.py`), la regle CSS du repli a quatre colonnes pousse
-     * le bas du cabinet a 492 px sur 551, laissant verdict et indice sous le pli sur 16 items sur
-     * 16 quels que soient les libelles. A trois, la regle generale s'applique (une seule rangee).
+     * Trois propositions par item, jamais quatre, jamais deux - trois motifs pedagogiques dates,
+     * aucun `ADR` (`nadia-prof`, `squad/conformite/FICHE-bandit-manchot-reperes-cm1.md`,
+     * complement B du 2026-08-27) :
+     * <ol>
+     *   <li>jamais quatre : a quatre, le repli a quatre colonnes pousse le bas du cabinet a
+     *       492 px sur 551, verdict et indice entierement sous le pli sur 16 items sur 16
+     *       (refus du 2026-08-26) ;</li>
+     *   <li>jamais quatre : le pool ne compte que cinq libelles, en montrer quatre revele
+     *       quatre cinquiemes du pool et rend l'item soluble par elimination (`REP-4`) ;</li>
+     *   <li>jamais deux : l'item oppose le repere en jeu a son voisin immediat ("Point final"
+     *       contre "Point d'interrogation"), et a deux propositions l'enfant qui ignore la
+     *       distinction a une chance sur deux de reussir sans la connaitre.</li>
+     * </ol>
      */
     private static final int PROPOSITIONS_PAR_ITEM = 3;
 
@@ -159,9 +168,9 @@ class PaquetCm1ReperesTest {
     }
 
     /**
-     * ADR-0029 : jamais plus de quatre propositions sur un item, jamais moins que le pool complet
-     * n'en offrirait (garde-fou generique de coherence). "Phrase correcte" figure sur les seize
-     * items sans exception - son absence serait elle-meme un indice d'erreur.
+     * Exactement trois propositions par item - voir les trois motifs pedagogiques dates au-dessus
+     * de `PROPOSITIONS_PAR_ITEM`, aucun `ADR` ne porte cette regle. "Phrase correcte" figure sur
+     * les seize items sans exception - son absence serait elle-meme un indice d'erreur.
      */
     @Test
     void chaqueItemProposeExactementTroisPropositionsDontToujoursLaPhraseCorrecte() {
