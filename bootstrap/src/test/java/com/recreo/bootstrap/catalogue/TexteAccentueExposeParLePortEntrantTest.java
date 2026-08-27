@@ -109,6 +109,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // DEC-0050 (S20, cloture) : entree qui revient au catalogue, refus leve en VALIDE
             // SOUS RESERVE.
             "bandit-manchot-reperes-cm1",
+            // S21-9 : entree neuve, premiere ligne couverte du domaine "Langage oral et
+            // conscience phonologique".
+            "bandit-manchot-syllabes-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -137,6 +140,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Nom ou verbe ?",
             // DEC-0050 : titre restaure.
             "Majuscule ou point ?",
+            // S21-9 : titre neuf.
+            "Les syllabes",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -163,6 +168,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Le mot entre guillemets est-il un nom ou un verbe ?",
             // DEC-0050 : consigne restauree.
             "Que manque-t-il à cette phrase ?",
+            // S21-9 : consigne neuve.
+            "Tape dans tes mains. Combien de syllabes ?",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
             // valeur unique pour les jeux du catalogue reel, compte sur catalogue.yaml, pas recopie.
             "bandit-manchot",
@@ -178,6 +185,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Vocabulaire",
             // S19-5 (ADR-0049) : graphie accentuee, corrigee depuis S16-5.
             "Lecture et compréhension de l'écrit",
+            // S21-9 : domaine neuf, premiere ligne couverte.
+            "Langage oral et conscience phonologique",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -204,7 +213,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // DEC-0050 : competence restauree.
             "Repérer et corriger la majuscule et la ponctuation dans une phrase donnée "
                     + "(majuscule initiale, point final, majuscule au nom propre, point "
-                    + "d'interrogation d'une question)");
+                    + "d'interrogation d'une question)",
+            // S21-9 : competence neuve.
+            "Dénombrer les syllabes orales d'un mot (segmentation syllabique)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

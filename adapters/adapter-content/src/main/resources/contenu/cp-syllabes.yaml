@@ -1,0 +1,94 @@
+schema: 1
+id: cp-syllabes
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CP"
+  domaine: "Langage oral et conscience phonologique"
+  competence: "Dénombrer les syllabes orales d'un mot (segmentation syllabique)"
+# S21-9 (squad/conformite/ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md, section 3,
+# conditions SEG-1 a SEG-9). Premiere ligne couverte du domaine "Langage oral et conscience
+# phonologique" (squad/programme/MATRICE-couverture.md, ligne 485) ; les deux autres lignes du
+# domaine restent hors d'atteinte sans emission de son (DEC-0042, arbitrage 2).
+#
+# Matiere reprise de contenu-repris/syllabes/cp-syllabes.yml, jugee mot par mot par nadia-prof :
+# 9 des 14 mots repris sont retenus (chat, riz, loup, papa, lapin, bateau, cadeau, maison,
+# chocolat) ; elephant, parapluie, dinosaure et helicoptere sont ecartes (coupe non decidable par
+# un enfant de six ans ou grapheme hors programme CP), ordinateur est ecarte par SEG-3 (plage
+# fermee a 1-3). Sept mots neufs completent le paquet a seize items (SEG-5) en respectant SEG-1 et
+# SEG-2 : roi, dos, coussin, domino, escargot, kangourou, cheminee.
+#
+# SEG-3 : la plage des reponses est 1, 2 et 3, et les trois propositions sont ces trois memes
+# valeurs a chaque item - aucun mode "pool" dans round-two (YamlContentPackLoader), chaque item
+# porte donc ses deux distracteurs en toutes lettres.
+#
+# Reserve ouverte, routee a theo-archi et camille-po (arbitrage prealable, section 8) : ce paquet
+# ne declare ni graphie ni explication. L'enseignement est la segmentation elle-meme, qui ne peut
+# pas se loger dans l'indice sans donner le compte, et le champ explication (ADR-0024) est
+# verrouille derriere graphie par ChaquePaquetExpliqueSesItemsAVariationTest. Consequence assumee :
+# cp-syllabes n'a aucun retour pedagogique sur l'ecran de retour apres une bonne reponse.
+items:
+  - enonce: "CHAT"
+    bonneReponse: "1"
+    distracteurs: ["2", "3"]
+    indice: "Tape dans tes mains en disant le mot tout doucement."
+  - enonce: "RIZ"
+    bonneReponse: "1"
+    distracteurs: ["2", "3"]
+    indice: "Dis le mot à voix haute en tapant dans tes mains."
+  - enonce: "LOUP"
+    bonneReponse: "1"
+    distracteurs: ["2", "3"]
+    indice: "Prononce le mot très lentement en tapant des mains."
+  - enonce: "ROI"
+    bonneReponse: "1"
+    distracteurs: ["2", "3"]
+    indice: "Dis le mot tout bas, puis tape dans tes mains."
+  - enonce: "DOS"
+    bonneReponse: "1"
+    distracteurs: ["2", "3"]
+    indice: "Chante le mot très lentement en tapant des mains."
+  - enonce: "PAPA"
+    bonneReponse: "2"
+    distracteurs: ["1", "3"]
+    indice: "Ce mot commence par « pa ». Continue à taper les autres morceaux."
+  - enonce: "LAPIN"
+    bonneReponse: "2"
+    distracteurs: ["1", "3"]
+    indice: "Ce mot commence par « la ». Tape le reste du mot."
+  - enonce: "BATEAU"
+    bonneReponse: "2"
+    distracteurs: ["1", "3"]
+    indice: "Ce mot commence par « ba ». Continue à taper."
+  - enonce: "CADEAU"
+    bonneReponse: "2"
+    distracteurs: ["1", "3"]
+    indice: "Ce mot commence par « ca ». Tape la suite du mot."
+  - enonce: "MAISON"
+    bonneReponse: "2"
+    distracteurs: ["1", "3"]
+    indice: "Ce mot commence par « mai ». Continue à taper les morceaux suivants."
+  - enonce: "COUSSIN"
+    bonneReponse: "2"
+    distracteurs: ["1", "3"]
+    indice: "Ce mot commence par « cou ». Tape le reste du mot."
+  - enonce: "CHOCOLAT"
+    bonneReponse: "3"
+    distracteurs: ["1", "2"]
+    indice: "Ce mot commence par « cho ». Continue à taper."
+  - enonce: "DOMINO"
+    bonneReponse: "3"
+    distracteurs: ["1", "2"]
+    indice: "Ce mot commence par « do ». Tape la suite du mot."
+  - enonce: "ESCARGOT"
+    bonneReponse: "3"
+    distracteurs: ["1", "2"]
+    indice: "Ce mot commence par « es ». Continue à taper les morceaux suivants."
+  - enonce: "KANGOUROU"
+    bonneReponse: "3"
+    distracteurs: ["1", "2"]
+    indice: "Ce mot commence par « kan ». Tape le reste du mot."
+  - enonce: "CHEMINÉE"
+    bonneReponse: "3"
+    distracteurs: ["1", "2"]
+    indice: "Ce mot commence par « che ». Continue à taper."
