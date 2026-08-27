@@ -1,0 +1,119 @@
+schema: 1
+id: cp-comparer
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CP"
+  domaine: "Grandeurs et mesures"
+  competence: "Comparer des longueurs, des masses, des contenances (sans instrument gradué)"
+# S21-11 (GRA-1 a GRA-10, squad/conformite/ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md,
+# section 5). Sur les 10 items de contenu-repris/quiz/cp-comparer.yml, nadia-prof en retient 6
+# (items 1, 3, 4, 5, 6, 9), ecarte les items 7 et 8 (comparaison de nombres, hors sujet) et l'item
+# 10 (vitesse, hors sujet et non nomme par le planning), et juge l'item 2 indecidable (crayon
+# contre trousse, l'ordre depend de l'exemplaire). La contenance est absente sur 10 items sur 10 :
+# les six items de contenance ci-dessous sont une ecriture neuve.
+#
+# Repartition (GRA-2, 18 items, aucune grandeur sous le quart) : 6 longueur, 6 masse,
+# 6 contenance. Chaque grandeur porte ses propres formulations d'enonce, jamais partagees avec une
+# autre grandeur (GRA-6). Un tiers au moins des items demandent le plus petit/leger/court ou le
+# moins (GRA-4) : 9 des 18 items sont dans ce sens.
+#
+# Items 1 (long), 5->9 (grand), 11->10 (petit), 13->12 (lourd), 14->13 (leger), 17->16 (haut) : les
+# six triplets d'objets retenus par nadia-prof (numeros de contenu-repris/quiz/cp-comparer.yml
+# entre parentheses ci-dessous). Aucun triplet n'est repete d'un item a l'autre (GRA-5).
+#
+# GRA-3 (decidable sans instrument, aucun objet dont l'ordre depend de l'exemplaire) et GRA-7
+# (vocabulaire de contenance d'un enfant de CP, jamais "contenance" ni "contenir") ont ete tenus
+# item par item a l'ecriture.
+#
+# Budget de pli (arbitrage, section 2.1 et 5.3) : le repli de rangee se joue sur la somme des trois
+# libelles, budget 522 px a 744 x 551. Mesure reelle sur l'application deja construite, jeu temoin
+# bandit-manchot-le-bon-son-cp, outil squad/outils/nadia-prof/mesurer-un-contenu-candidat.py,
+# 2026-08-27 : les 18 triplets ci-dessous tiennent tous sur une rangee, bas de l'indice a
+# 505,19 px (marge 45,81 px). Deux triplets candidats ne tenaient pas a l'ecriture ("le plus
+# court" avec règle/crayon/trousse-like et "le plus haut" avec montagne/maison/chaise, tous deux a
+# 2 rangees, indice a 595,19 px, 44,19 px sous le pli) et ont ete reecrits avec des libelles plus
+# courts avant d'etre retenus ; c'est la mesure qui a tranche, pas une estimation par nombre de
+# caracteres. Les six items de contenance emploient des libelles sans article ("baignoire" plutot
+# que "une baignoire"), route explicitement autorisee par l'arbitrage (section 5.3, point 2) : la
+# comparaison est mathematique, l'article ne la porte pas, et cette route mesure tres largement
+# sous le budget (le triplet le plus charge, "thermos"/"baignoire"/"piscine", reste sous la somme
+# des retenus avec article des autres grandeurs).
+items:
+  # Longueur (6 items). "le plus long/court/grand/petit/haut/bas" : six formulations distinctes,
+  # propres a cette grandeur (GRA-6).
+  - enonce: "Qu'est-ce qui est le plus long ?"
+    bonneReponse: "une règle"
+    distracteurs: ["un crayon", "une gomme"]
+    indice: "Compare la longueur des trois objets, sans les mesurer."
+  - enonce: "Qu'est-ce qui est le plus court ?"
+    bonneReponse: "une gomme"
+    distracteurs: ["un feutre", "une flûte"]
+    indice: "Regarde bien laquelle des trois est la plus petite en longueur."
+  - enonce: "Qu'est-ce qui est le plus grand ?"
+    bonneReponse: "une girafe"
+    distracteurs: ["un chat", "un lapin"]
+    indice: "Pense à la taille de chaque animal, de la tête aux pattes."
+  - enonce: "Qu'est-ce qui est le plus petit ?"
+    bonneReponse: "une fourmi"
+    distracteurs: ["un chien", "un cheval"]
+    indice: "Range les trois animaux du plus petit au plus grand, dans ta tête."
+  - enonce: "Qu'est-ce qui est le plus haut ?"
+    bonneReponse: "une tour"
+    distracteurs: ["une maison", "une chaise"]
+    indice: "Pense à ce qui monte le plus haut dans le ciel."
+  - enonce: "Qu'est-ce qui est le plus bas ?"
+    bonneReponse: "un tabouret"
+    distracteurs: ["une table", "une armoire"]
+    indice: "Pense à la hauteur de chaque meuble, du sol jusqu'en haut."
+  # Masse (6 items). "le plus lourd/leger" : deux formulations, propres a cette grandeur (GRA-6).
+  - enonce: "Qu'est-ce qui est le plus lourd ?"
+    bonneReponse: "un éléphant"
+    distracteurs: ["une souris", "une fourmi"]
+    indice: "Imagine que tu portes chaque animal dans tes bras."
+  - enonce: "Qu'est-ce qui est le plus léger ?"
+    bonneReponse: "une plume"
+    distracteurs: ["un caillou", "une brique"]
+    indice: "Imagine que tu tiens chaque objet dans ta main."
+  - enonce: "Qu'est-ce qui est le plus lourd ?"
+    bonneReponse: "une baleine"
+    distracteurs: ["un chat", "une sardine"]
+    indice: "Pense à la taille de chaque animal pour deviner son poids."
+  - enonce: "Qu'est-ce qui est le plus léger ?"
+    bonneReponse: "un papillon"
+    distracteurs: ["une pierre", "une brique"]
+    indice: "Pense à ce qui s'envole le plus facilement dans le vent."
+  - enonce: "Qu'est-ce qui est le plus lourd ?"
+    bonneReponse: "un camion"
+    distracteurs: ["une trottinette", "un vélo"]
+    indice: "Pense à ce qu'il faudrait le plus de force pour soulever."
+  - enonce: "Qu'est-ce qui est le plus léger ?"
+    bonneReponse: "une feuille"
+    distracteurs: ["un vélo", "un rocher"]
+    indice: "Pense à ce que le vent peut emporter le plus facilement."
+  # Contenance (6 items). "Où peut-on mettre le plus/moins d'eau ?" : deux formulations, propres a
+  # cette grandeur (GRA-6), vocabulaire de CP (GRA-7). Libelles sans article (voir note ci-dessus).
+  - enonce: "Où peut-on mettre le plus d'eau ?"
+    bonneReponse: "baignoire"
+    distracteurs: ["verre", "cuillère"]
+    indice: "Imagine que tu remplis chaque objet avec de l'eau."
+  - enonce: "Où peut-on mettre le moins d'eau ?"
+    bonneReponse: "bol"
+    distracteurs: ["seau", "piscine"]
+    indice: "Pense à celui qui peut recevoir le moins d'eau avant de déborder."
+  - enonce: "Où peut-on mettre le plus d'eau ?"
+    bonneReponse: "piscine"
+    distracteurs: ["gourde", "tasse"]
+    indice: "Pense à celui qui peut recevoir le plus d'eau sans déborder."
+  - enonce: "Où peut-on mettre le moins d'eau ?"
+    bonneReponse: "cuillère"
+    distracteurs: ["marmite", "arrosoir"]
+    indice: "Compare la taille des trois objets, sans les remplir vraiment."
+  - enonce: "Où peut-on mettre le plus d'eau ?"
+    bonneReponse: "marmite"
+    distracteurs: ["tasse", "cuillère"]
+    indice: "Imagine que tu verses de l'eau dans chaque objet, un par un."
+  - enonce: "Où peut-on mettre le moins d'eau ?"
+    bonneReponse: "thermos"
+    distracteurs: ["baignoire", "piscine"]
+    indice: "Pense à celui des trois qui est le plus petit."
