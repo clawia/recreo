@@ -8,6 +8,24 @@
   declaree - **JDK 21.0.10**. Le `java` du `PATH` de ce poste est un JRE 8 qui ne compile pas ; c'est
   bien la toolchain qui a compile et execute, la ligne du script le dit a chaque lancement.
 
+> **Amendement date du 2026-08-27 (`theo-archi`, s21, story `S21-6`) - la mesure ci-dessus est
+> intacte, c'est la phrase qui l'explique qui est corrigee.** Le chiffre **21.0.10 est exact** :
+> reverifie le 2026-08-27 a trois sources sur un `bash outils/mvn-jdk21.sh -B clean verify` a la
+> racine du reacteur - les lignes `Toolchain in maven-compiler-plugin` et
+> `Toolchain in maven-surefire-plugin` du journal, les proprietes `java.version` et
+> `java.vm.version` d'un rapport surefire produit par cette execution, et la version majeure 65 de
+> l'en-tete d'une classe du fat jar. **Ce qui est faux, c'est le raccordement affirme** :
+> `outils/mvn-jdk21.sh` lit `${HOME}/.m2/toolchains.xml`, ou `HOME` est la variable du shell POSIX,
+> tandis que Maven resout sa toolchain dans `${user.home}/.m2/toolchains.xml`, ou `user.home` est le
+> profil utilisateur de la machine virtuelle Java. Sur le poste de mesure ce sont **deux fichiers
+> differents** : le 2026-08-27, celui du shell declare un **JDK 25.0.2** et celui que Maven lit un
+> **JDK 21.0.10**. L'enveloppe pose donc `JAVA_HOME` sur le 25.0.2, qui gouverne la machine
+> virtuelle de **Maven lui-meme**, pendant que Maven compile et execute les tests sur le 21.0.10 de
+> **sa** toolchain. Le script imprime pourtant `toolchain jdk 21 : 25.0.2` a chaque lancement, sans
+> jamais comparer les deux valeurs. **Ce que la phrase d'origine aurait du dire** : le 21.0.10 est
+> etabli par le journal du build et par les rapports surefire, jamais par la ligne de diagnostic de
+> l'enveloppe. Aucun chiffre n'est remplace ici, et la phrase d'origine reste lisible au-dessus.
+
 Un "je pense que c'est bon" ne vaut rien : les deux mesures ci-dessous portent la commande et sa
 sortie.
 

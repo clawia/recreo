@@ -17,6 +17,17 @@ mvn -B clean verify
 **BUILD SUCCESS**, code de sortie 0, `Total time: 44.300 s`, sur un JDK 21.0.10 - la version que la
 CI utilise, et non une approximation.
 
+> **Note datee du 2026-08-27 (`theo-archi`, s21, story `S21-6`).** Les douze
+> `squad/sprints/*/confirmation-archunit.md` qui citent `21.0.10` ont ete examines un par un ce
+> jour (methode : `grep -rln 21.0.10 squad/sprints/*/confirmation-archunit.md` dans le worktree
+> `s21-theo`, le 2026-08-27), apres decouverte du defaut de `outils/mvn-jdk21.sh` - l'enveloppe lit
+> `${HOME}/.m2/toolchains.xml` du shell POSIX, la ou Maven resout sa toolchain sur `${user.home}`
+> de la machine virtuelle Java, et sur ce poste ce sont deux fichiers declarant deux JDK.
+> **Ce fichier-ci n'est pas corrige, et c'est un resultat, pas un oubli** : sa mesure est anterieure
+> au 2026-08-17, date de creation de l'enveloppe (commit `a9c182d`), et elle n'attribue le JDK ni a
+> une toolchain ni a l'enveloppe mais a un `JAVA_HOME` pose a la main pour la duree de la commande -
+> raccordement qui, lui, est vrai. La phrase d'origine tient, et aucun chiffre n'est remplace.
+
 | Module | Tests | Echecs |
 |---|---|---|
 | `recreo-domain` | 31 | 0 |
