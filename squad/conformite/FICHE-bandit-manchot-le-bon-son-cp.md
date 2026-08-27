@@ -935,3 +935,77 @@ quatre jeux. Ce qui concerne **ce jeu-ci** en particulier :
 3. **Aucune colonne ne fait defiler un son autre que le sien.** Meme motif que sur les homophones : un
    enfant de CP qui apprend a associer un grapheme a un phoneme n'a rien a gagner a voir `on` passer
    dans la colonne de `an`.
+
+---
+
+## Complement du 2026-08-27 (s21) - les 6 items sous le pli de la remesure de `theo-archi`
+
+**Ce qui m'est demande** : sa remesure du catalogue du 2026-08-27 rend **6 items sur 15** sous le
+pli sur ce jeu, contre **0** le 2026-08-25, et il ne peut pas trancher l'ecart faute d'avoir commite
+ses rapports par jeu a s20. Il me demande si ces 6 items changent mon verdict.
+
+**Reponse : non, et pour trois raisons dont deux sont des faits verifies aujourd'hui.**
+
+### 1. Une correction de fait, avant tout le reste : ce jeu n'est pas `couvert-valide`
+
+La question m'est posee en decrivant ce jeu comme `couvert-valide` par moi. **Ce n'est pas ce que
+porte le depot**, verifie a la source le 2026-08-27 : `squad/programme/MATRICE-couverture.md`,
+ligne de `bandit-manchot-le-bon-son-cp`, statut **`en cours`**. C'est aussi ce que dit la tete de
+cette fiche - *"Ligne de matrice : reste `en cours`. Le Done pedagogique est accorde, mais la
+competence du referentiel nomme plus que ce que ce paquet travaille"* -, et le statut global du jeu
+est **VALIDE SOUS RESERVE**, pas VALIDE. Il n'y a donc pas de `couvert-valide` a reexaminer. Je le
+signale parce qu'un statut qu'on se repasse sans le relire finit par devenir vrai a force d'etre
+cite.
+
+### 2. Les 6 items sont nommement ceux que ma reserve tient deja ouverte
+
+Son releve commite (`squad/conformite/releves-s21/s21-budget-vertical-catalogue-744x551.json`) donne
+le detail item par item : les 6 items sous le pli sont **DENT, LUNDI, NOMBRE, OMBRE, TIMBRE, VENT**,
+tous avec `revelee: true` et un deficit identique de **8,19 px** ; les 9 autres sont a -45,81 px,
+donc largement au-dessus, tous avec `revelee: false`.
+
+**Ces six-la sont exactement les six items du paquet qui portent une `explication`** - verifie par
+lecture de `cp-le-bon-son.yaml` le 2026-08-27, six occurrences, sur ces six enonces et aucun autre.
+C'est la population de ma **reserve B** du 2026-08-12 et de ma **reserve V** : *"sur cet ecran,
+l'explication et l'indice disent la meme chose deux fois [...] raccourcir l'un des deux ferme un
+defaut de lisibilite et ce defaut de pli dans le meme geste"*. Le mecanisme est celui que j'ai deja
+ecrit dans cette fiche : *"c'est le seul paquet du catalogue qui porte des explications, et c'est ce
+qui le fait deborder a la revelation"*. **Rien de neuf n'apparait ; c'est ma reserve, deja ouverte,
+deja acceptee, que sa metrique voit pour la premiere fois parce qu'elle lit le bloc entier au
+troisieme echec.**
+
+### 3. Je l'ai joue, et l'enfant n'y perd aucun mot
+
+Je ne me suis pas contentee de reconnaitre la population. J'avais ecrit dans cette fiche que je
+verifierais ce point *"sur un item a variation (`DENT`, `OMBRE`, `TIMBRE`, `LUNDI`) et apres trois
+echecs consecutifs pour faire venir l'indice"*. Fait le 2026-08-27, sur `LUNDI`, application servie,
+viewport 744 x 551 :
+`CHROME=<navigateur> PAQUET=adapters/adapter-content/src/main/resources/contenu/cp-le-bon-son.yaml
+PORT_DEV=9401 ENONCE_CIBLE=LUNDI python squad/outils/nadia-prof/lire-le-recouvrement-a-l-ecran.py
+http://127.0.0.1:8127 bandit-manchot-le-bon-son-cp <prefixe>`. Releve
+`squad/conformite/releves-s21/s21-nadia-revelation-le-bon-son-lundi-744x551.json`, capture
+`s21-nadia-le-bon-son-lundi-revelation-744x551.png`.
+
+| Etat | Bas du signal | Bas de l'explication | Bas de la **boite** d'indice | Bas de la derniere **ligne de texte** de l'indice |
+|---|---|---|---|---|
+| apres un echec | 451,19 px | - | 505,19 px | au-dessus du pli |
+| apres deux echecs | 451,19 px | - | 505,19 px | au-dessus du pli |
+| **a la revelation** | 451,19 px | 505,19 px | **559,19 px** (8,19 px sous le pli) | **547,19 px**, soit **3,81 px au-dessus du pli** |
+
+**Ce que l'enfant perd est le liseret ambre du bas de la boite, pas un mot.** C'est precisement la
+distinction que mon outil du 2026-08-27 a ete ecrit pour rendre - la boite descend 12 px plus bas
+que le texte qu'elle porte - et c'est le cas le plus benin de la table de ce matin. Aux deux
+premiers echecs, tout est au-dessus du pli ; le defaut n'existe qu'a la revelation, c'est-a-dire au
+seul etat ou l'explication s'ajoute.
+
+### 4. Verdict
+
+**Aucun changement.** Le VALIDE SOUS RESERVE du 2026-08-10 n'est pas touche, la ligne de matrice
+reste `en cours`, et les 6 items de la remesure sont couverts par mes reserves B et V, deja ecrites
+et deja acceptees. Ils ne fondent aucun refus nouveau.
+
+**Ce que je ne tranche pas, et je le dis pour que personne ne croie que je l'ai fait** : l'ecart
+entre son 0 du 2026-08-25 et son 6 du 2026-08-27 est une question de methode de mesure, pas de
+pedagogie, et elle lui appartient. Je note seulement le fait qui la contraint : sur ce jeu, un item
+n'est sous le pli **que** dans l'etat de revelation, et **que** s'il porte une explication - toute
+execution qui n'atteint pas cet etat sur ces six enonces-la rend 0 sans se tromper.

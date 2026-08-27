@@ -1,0 +1,1233 @@
+{
+ "auteur": "nadia-prof",
+ "date": "2026-08-27",
+ "etats": [
+  {
+   "autresElements": {
+    "bandeauDuCabinet": {
+     "boite": {
+      "bas": 289.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 257.19,
+      "hauteur": 32,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "cabinet": {
+     "boite": {
+      "bas": 567.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 249.19,
+      "hauteur": 318,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "consigne": {
+     "boite": {
+      "bas": 193.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 163.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "enonce": {
+     "boite": {
+      "bas": 245.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 197.19,
+      "hauteur": 48,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "levierDuCabinet": {
+     "boite": {
+      "bas": 559.19,
+      "droite": 732,
+      "gauche": 712,
+      "haut": 523.19,
+      "hauteur": 36,
+      "largeur": 20
+     },
+     "hauteurRecouverte": 0
+    },
+    "rangeeDePropositions": {
+     "boite": {
+      "bas": 543.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 254,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "score": {
+     "boite": {
+      "bas": 155.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 125.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "socleDuCabinet": {
+     "boite": {
+      "bas": 559.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 543.19,
+      "hauteur": 16,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    }
+   },
+   "basDeLExplication": null,
+   "basDeLIndice": null,
+   "basDuSignal": 631.19,
+   "boiteDuMessage": {
+    "bas": 631.19,
+    "droite": 720,
+    "gauche": 24,
+    "haut": 567.19,
+    "hauteur": 64,
+    "largeur": 696
+   },
+   "capture": "temoin3-0-repos.png",
+   "defilement": 0,
+   "enonce": "Lis ce nombre : 816 203.",
+   "etat": "repos, aucun message",
+   "fondCalculeDuMessage": "rgba(0, 0, 0, 0)",
+   "fondsDesEnfantsDuMessage": [
+    {
+     "classe": "signal est-juste",
+     "fond": "rgb(232, 245, 233)"
+    }
+   ],
+   "hauteurDuDocument": 663,
+   "hauteurVisible": 551,
+   "pli": 551,
+   "positionCalculeeDuMessage": "static",
+   "propositions": [
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "huit cent seize mille vingt-trois"
+    },
+    {
+     "boite": {
+      "bas": 453.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 379.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "huit cent seize mille deux cent trois"
+    },
+    {
+     "boite": {
+      "bas": 543.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 469.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "quatre-vingt-seize mille deux cent trois"
+    }
+   ],
+   "regleCandidateEncorePresente": false,
+   "texteDeLExplication": null,
+   "texteDeLIndice": null,
+   "texteDuVerdict": "Bravo !",
+   "trousTransparentsDansLeBloc": 0
+  },
+  {
+   "autresElements": {
+    "bandeauDuCabinet": {
+     "boite": {
+      "bas": 289.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 257.19,
+      "hauteur": 32,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "cabinet": {
+     "boite": {
+      "bas": 567.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 249.19,
+      "hauteur": 318,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "consigne": {
+     "boite": {
+      "bas": 193.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 163.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "enonce": {
+     "boite": {
+      "bas": 245.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 197.19,
+      "hauteur": 48,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "levierDuCabinet": {
+     "boite": {
+      "bas": 559.19,
+      "droite": 732,
+      "gauche": 712,
+      "haut": 523.19,
+      "hauteur": 36,
+      "largeur": 20
+     },
+     "hauteurRecouverte": 0
+    },
+    "rangeeDePropositions": {
+     "boite": {
+      "bas": 543.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 254,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "score": {
+     "boite": {
+      "bas": 155.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 125.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "socleDuCabinet": {
+     "boite": {
+      "bas": 559.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 543.19,
+      "hauteur": 16,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    }
+   },
+   "basDeLExplication": null,
+   "basDeLIndice": 685.19,
+   "basDuSignal": 631.19,
+   "boiteDuMessage": {
+    "bas": 685.19,
+    "droite": 720,
+    "gauche": 24,
+    "haut": 567.19,
+    "hauteur": 118,
+    "largeur": 696
+   },
+   "capture": "temoin3-1-echec.png",
+   "defilement": 0,
+   "enonce": "Lis ce nombre : 816 203.",
+   "etat": "echec 1",
+   "fondCalculeDuMessage": "rgba(0, 0, 0, 0)",
+   "fondsDesEnfantsDuMessage": [
+    {
+     "classe": "signal est-faux",
+     "fond": "rgb(255, 235, 238)"
+    },
+    {
+     "classe": "indice",
+     "fond": "rgb(255, 244, 229)"
+    }
+   ],
+   "hauteurDuDocument": 717,
+   "hauteurVisible": 551,
+   "pli": 551,
+   "positionCalculeeDuMessage": "static",
+   "propositions": [
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "huit cent seize mille vingt-trois"
+    },
+    {
+     "boite": {
+      "bas": 453.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 379.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "huit cent seize mille deux cent trois"
+    },
+    {
+     "boite": {
+      "bas": 543.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 469.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "quatre-vingt-seize mille deux cent trois"
+    }
+   ],
+   "regleCandidateEncorePresente": false,
+   "texteDeLExplication": null,
+   "texteDeLIndice": "Lis d'abord la classe des mille, puis la classe des unités simples.",
+   "texteDuVerdict": "Ce n'est pas ça. Essaie encore !",
+   "trousTransparentsDansLeBloc": 4
+  },
+  {
+   "autresElements": {
+    "bandeauDuCabinet": {
+     "boite": {
+      "bas": 289.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 257.19,
+      "hauteur": 32,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "cabinet": {
+     "boite": {
+      "bas": 567.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 249.19,
+      "hauteur": 318,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "consigne": {
+     "boite": {
+      "bas": 193.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 163.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "enonce": {
+     "boite": {
+      "bas": 245.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 197.19,
+      "hauteur": 48,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "levierDuCabinet": {
+     "boite": {
+      "bas": 559.19,
+      "droite": 732,
+      "gauche": 712,
+      "haut": 523.19,
+      "hauteur": 36,
+      "largeur": 20
+     },
+     "hauteurRecouverte": 0
+    },
+    "rangeeDePropositions": {
+     "boite": {
+      "bas": 543.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 254,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "score": {
+     "boite": {
+      "bas": 155.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 125.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "socleDuCabinet": {
+     "boite": {
+      "bas": 559.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 543.19,
+      "hauteur": 16,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    }
+   },
+   "basDeLExplication": null,
+   "basDeLIndice": 685.19,
+   "basDuSignal": 631.19,
+   "boiteDuMessage": {
+    "bas": 685.19,
+    "droite": 720,
+    "gauche": 24,
+    "haut": 567.19,
+    "hauteur": 118,
+    "largeur": 696
+   },
+   "capture": "temoin3-2-echec.png",
+   "defilement": 0,
+   "enonce": "Lis ce nombre : 816 203.",
+   "etat": "echec 2",
+   "fondCalculeDuMessage": "rgba(0, 0, 0, 0)",
+   "fondsDesEnfantsDuMessage": [
+    {
+     "classe": "signal est-faux",
+     "fond": "rgb(255, 235, 238)"
+    },
+    {
+     "classe": "indice",
+     "fond": "rgb(255, 244, 229)"
+    }
+   ],
+   "hauteurDuDocument": 717,
+   "hauteurVisible": 551,
+   "pli": 551,
+   "positionCalculeeDuMessage": "static",
+   "propositions": [
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "huit cent seize mille vingt-trois"
+    },
+    {
+     "boite": {
+      "bas": 453.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 379.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "huit cent seize mille deux cent trois"
+    },
+    {
+     "boite": {
+      "bas": 543.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 469.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "quatre-vingt-seize mille deux cent trois"
+    }
+   ],
+   "regleCandidateEncorePresente": false,
+   "texteDeLExplication": null,
+   "texteDeLIndice": "Lis d'abord la classe des mille, puis la classe des unités simples.",
+   "texteDuVerdict": "Ce n'est pas ça. Essaie encore !",
+   "trousTransparentsDansLeBloc": 4
+  },
+  {
+   "autresElements": {
+    "bandeauDuCabinet": {
+     "boite": {
+      "bas": 289.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 257.19,
+      "hauteur": 32,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "cabinet": {
+     "boite": {
+      "bas": 567.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 249.19,
+      "hauteur": 318,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "consigne": {
+     "boite": {
+      "bas": 193.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 163.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "enonce": {
+     "boite": {
+      "bas": 245.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 197.19,
+      "hauteur": 48,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "levierDuCabinet": {
+     "boite": {
+      "bas": 559.19,
+      "droite": 732,
+      "gauche": 712,
+      "haut": 523.19,
+      "hauteur": 36,
+      "largeur": 20
+     },
+     "hauteurRecouverte": 0
+    },
+    "rangeeDePropositions": {
+     "boite": {
+      "bas": 543.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 254,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "score": {
+     "boite": {
+      "bas": 155.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 125.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "socleDuCabinet": {
+     "boite": {
+      "bas": 559.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 543.19,
+      "hauteur": 16,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    }
+   },
+   "basDeLExplication": null,
+   "basDeLIndice": 713.19,
+   "basDuSignal": 659.19,
+   "boiteDuMessage": {
+    "bas": 713.19,
+    "droite": 720,
+    "gauche": 24,
+    "haut": 567.19,
+    "hauteur": 146,
+    "largeur": 696
+   },
+   "capture": "temoin3-3-echec.png",
+   "defilement": 0,
+   "enonce": "Lis ce nombre : 816 203.",
+   "etat": "echec 3",
+   "fondCalculeDuMessage": "rgba(0, 0, 0, 0)",
+   "fondsDesEnfantsDuMessage": [
+    {
+     "classe": "signal est-faux",
+     "fond": "rgb(255, 235, 238)"
+    },
+    {
+     "classe": "indice",
+     "fond": "rgb(255, 244, 229)"
+    }
+   ],
+   "hauteurDuDocument": 745,
+   "hauteurVisible": 551,
+   "pli": 551,
+   "positionCalculeeDuMessage": "static",
+   "propositions": [
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "huit cent seize mille vingt-trois"
+    },
+    {
+     "boite": {
+      "bas": 453.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 379.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "huit cent seize mille deux cent trois"
+    },
+    {
+     "boite": {
+      "bas": 543.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 469.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "quatre-vingt-seize mille deux cent trois"
+    }
+   ],
+   "regleCandidateEncorePresente": false,
+   "texteDeLExplication": null,
+   "texteDeLIndice": "Lis d'abord la classe des mille, puis la classe des unités simples.",
+   "texteDuVerdict": "C'est huit cent seize mille deux cent trois. Appuie sur huit cent seize mille deux cent trois.",
+   "trousTransparentsDansLeBloc": 4
+  },
+  {
+   "autresElements": {
+    "bandeauDuCabinet": {
+     "boite": {
+      "bas": 95.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 63.19,
+      "hauteur": 32,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "cabinet": {
+     "boite": {
+      "bas": 373.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 55.19,
+      "hauteur": 318,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "consigne": {
+     "boite": {
+      "bas": -0.81,
+      "droite": 720,
+      "gauche": 24,
+      "haut": -30.81,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "enonce": {
+     "boite": {
+      "bas": 51.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 3.19,
+      "hauteur": 48,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "levierDuCabinet": {
+     "boite": {
+      "bas": 365.19,
+      "droite": 732,
+      "gauche": 712,
+      "haut": 329.19,
+      "hauteur": 36,
+      "largeur": 20
+     },
+     "hauteurRecouverte": 0
+    },
+    "rangeeDePropositions": {
+     "boite": {
+      "bas": 349.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 95.19,
+      "hauteur": 254,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "score": {
+     "boite": {
+      "bas": -38.81,
+      "droite": 720,
+      "gauche": 24,
+      "haut": -68.81,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "socleDuCabinet": {
+     "boite": {
+      "bas": 365.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 349.19,
+      "hauteur": 16,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    }
+   },
+   "basDeLExplication": null,
+   "basDeLIndice": 519.19,
+   "basDuSignal": 465.19,
+   "boiteDuMessage": {
+    "bas": 519.19,
+    "droite": 720,
+    "gauche": 24,
+    "haut": 373.19,
+    "hauteur": 146,
+    "largeur": 696
+   },
+   "capture": "temoin3-4-defile.png",
+   "defilement": 194,
+   "enonce": "Lis ce nombre : 816 203.",
+   "etat": "apres defilement jusqu'en bas, en revelation",
+   "fondCalculeDuMessage": "rgba(0, 0, 0, 0)",
+   "fondsDesEnfantsDuMessage": [
+    {
+     "classe": "signal est-faux",
+     "fond": "rgb(255, 235, 238)"
+    },
+    {
+     "classe": "indice",
+     "fond": "rgb(255, 244, 229)"
+    }
+   ],
+   "hauteurDuDocument": 745,
+   "hauteurVisible": 551,
+   "pli": 551,
+   "positionCalculeeDuMessage": "static",
+   "propositions": [
+    {
+     "boite": {
+      "bas": 169.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 95.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "huit cent seize mille vingt-trois"
+    },
+    {
+     "boite": {
+      "bas": 259.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 185.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "huit cent seize mille deux cent trois"
+    },
+    {
+     "boite": {
+      "bas": 349.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 275.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "quatre-vingt-seize mille deux cent trois"
+    }
+   ],
+   "regleCandidateEncorePresente": false,
+   "texteDeLExplication": null,
+   "texteDeLIndice": "Lis d'abord la classe des mille, puis la classe des unités simples.",
+   "texteDuVerdict": "C'est huit cent seize mille deux cent trois. Appuie sur huit cent seize mille deux cent trois.",
+   "trousTransparentsDansLeBloc": 4
+  },
+  {
+   "autresElements": {
+    "bandeauDuCabinet": {
+     "boite": {
+      "bas": 289.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 257.19,
+      "hauteur": 32,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "cabinet": {
+     "boite": {
+      "bas": 387.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 249.19,
+      "hauteur": 138,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "consigne": {
+     "boite": {
+      "bas": 193.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 163.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "enonce": {
+     "boite": {
+      "bas": 245.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 197.19,
+      "hauteur": 48,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "levierDuCabinet": {
+     "boite": {
+      "bas": 379.19,
+      "droite": 732,
+      "gauche": 712,
+      "haut": 343.19,
+      "hauteur": 36,
+      "largeur": 20
+     },
+     "hauteurRecouverte": 0
+    },
+    "rangeeDePropositions": {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "score": {
+     "boite": {
+      "bas": 155.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 125.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "socleDuCabinet": {
+     "boite": {
+      "bas": 379.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 363.19,
+      "hauteur": 16,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    }
+   },
+   "basDeLExplication": null,
+   "basDeLIndice": null,
+   "basDuSignal": null,
+   "boiteDuMessage": null,
+   "capture": "temoin3-5-apres-revelation.png",
+   "defilement": 0,
+   "enonce": "Compare 305 421 et 350 421.",
+   "etat": "manche suivante, apres revelation",
+   "fondCalculeDuMessage": null,
+   "fondsDesEnfantsDuMessage": null,
+   "hauteurDuDocument": 551,
+   "hauteurVisible": 551,
+   "pli": 551,
+   "positionCalculeeDuMessage": null,
+   "propositions": [
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 248,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 216
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "<"
+    },
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 480,
+      "gauche": 264,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 216
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": ">"
+    },
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 496,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 216
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "="
+    }
+   ],
+   "regleCandidateEncorePresente": false,
+   "texteDeLExplication": null,
+   "texteDeLIndice": null,
+   "texteDuVerdict": null,
+   "trousTransparentsDansLeBloc": null
+  },
+  {
+   "autresElements": {
+    "bandeauDuCabinet": {
+     "boite": {
+      "bas": 289.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 257.19,
+      "hauteur": 32,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "cabinet": {
+     "boite": {
+      "bas": 567.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 249.19,
+      "hauteur": 318,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "consigne": {
+     "boite": {
+      "bas": 193.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 163.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "enonce": {
+     "boite": {
+      "bas": 245.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 197.19,
+      "hauteur": 48,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "levierDuCabinet": {
+     "boite": {
+      "bas": 559.19,
+      "droite": 732,
+      "gauche": 712,
+      "haut": 523.19,
+      "hauteur": 36,
+      "largeur": 20
+     },
+     "hauteurRecouverte": 0
+    },
+    "rangeeDePropositions": {
+     "boite": {
+      "bas": 543.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 254,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "score": {
+     "boite": {
+      "bas": 155.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 125.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "socleDuCabinet": {
+     "boite": {
+      "bas": 559.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 543.19,
+      "hauteur": 16,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    }
+   },
+   "basDeLExplication": null,
+   "basDeLIndice": null,
+   "basDuSignal": 631.19,
+   "boiteDuMessage": {
+    "bas": 631.19,
+    "droite": 720,
+    "gauche": 24,
+    "haut": 567.19,
+    "hauteur": 64,
+    "largeur": 696
+   },
+   "capture": "temoin3-6-reussite.png",
+   "defilement": 0,
+   "enonce": "Lis ce nombre : 70 018.",
+   "etat": "manche suivante, apres une reussite",
+   "fondCalculeDuMessage": "rgba(0, 0, 0, 0)",
+   "fondsDesEnfantsDuMessage": [
+    {
+     "classe": "signal est-juste",
+     "fond": "rgb(232, 245, 233)"
+    }
+   ],
+   "hauteurDuDocument": 663,
+   "hauteurVisible": 551,
+   "pli": 551,
+   "positionCalculeeDuMessage": "static",
+   "propositions": [
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "soixante-dix mille dix-huit"
+    },
+    {
+     "boite": {
+      "bas": 453.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 379.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "sept mille dix-huit"
+    },
+    {
+     "boite": {
+      "bas": 543.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 469.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "soixante-dix-huit mille"
+    }
+   ],
+   "regleCandidateEncorePresente": false,
+   "texteDeLExplication": null,
+   "texteDeLIndice": null,
+   "texteDuVerdict": "Bravo !",
+   "trousTransparentsDansLeBloc": 0
+  }
+ ],
+ "jeu": "bandit-manchot-grands-nombres-cm1",
+ "outil": "squad/outils/nadia-prof/lire-le-recouvrement-a-l-ecran.py",
+ "regleCssCandidate": "",
+ "tete": "f382ebc",
+ "viewportDemande": [
+  744,
+  551
+ ],
+ "viewportLuDuNavigateur": [
+  744,
+  551
+ ]
+}

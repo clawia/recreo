@@ -10652,3 +10652,255 @@ orientations. Le **carre bleu** est neutre a une seule condition, que je verifie
 qu'aucun item du meme lot ne fasse jamais de la couleur le critere de tri, et que la consigne ne
 parle jamais de couleur. Si ces deux conditions tiennent, la couleur est un simple attribut de
 dessin et l'enfant ne peut pas se tromper de critere.
+
+---
+
+## Arbitrage du 2026-08-27 (s21) - le bloc de message epingle au bas de la fenetre : REFUSE
+
+- **Qui demande** : `sofia-sm`, sur le chemin critique de l'ouverture de s21. **Source du levier** :
+  `theo-archi`, `squad/conformite/avis-faisabilite-s21.md`, section 1.3, commit `f382ebc`, lu a la
+  source avant de repondre.
+- **Ce qui m'est demande, dans ses mots** : *"un message qui recouvre le bas du meuble est-il lu par
+  un enfant comme sous le meuble ou comme par-dessus ? C'est litteralement la frontiere que `M1` et
+  `M4` tracent."* Il ne prejuge de rien et il a raison de me le router : son verdict du jour porte
+  sur des leviers de forme, celui-ci n'en est pas un.
+- **Ce bloc est ecrit dans cette fiche-ci** parce que c'est elle qui porte `M1` a `M13` et l'histoire
+  transverse de la mecanique. Il ne touche a aucun verdict anterieur et n'en efface aucun.
+
+### 0. Ce que j'ai fait : j'ai joue, je n'ai pas lu
+
+Application servie depuis le fat jar deja construit (`java -jar bootstrap/target/recreo.jar
+--server.port=8127`, sur un JDK 21 ; aucun `mvn` lance, la porte technique est celle que
+`theo-archi` mesure a 694 tests verts le 2026-08-27). Viewport de reference `DEC-0040`, 744 x 551,
+**lu du navigateur et non recopie de l'argument** : le champ `viewportLuDuNavigateur` de chacun de
+mes releves porte `[744, 551]`.
+
+**Outil ecrit pour cette question et commite dans le meme geste** :
+`squad/outils/nadia-prof/lire-le-recouvrement-a-l-ecran.py`. Il existe parce qu'aucun outil du depot
+ne pouvait repondre : `auditer-paquet.py`, `mesurer-budget-vertical.py` et
+`mesurer-candidats-rep-8.py` rendent tous le bas d'une boite contre un pli, et **aucun ne dit ce
+qu'il y a dessous**. Le mien rend, pour chaque proposition, la hauteur recouverte, le resultat de
+`document.elementFromPoint` en neuf points de la boite du bouton, et surtout un **appui reel**
+(`Input.dispatchMouseEvent`) au centre d'un bouton recouvert - parce qu'un `.click()` sur un noeud
+atteint le noeud meme quand il est recouvert, et qu'un doigt, lui, n'atteint que ce qui est
+au-dessus.
+
+**Commandes exactes, dans le meme paragraphe que les chiffres qu'elles produisent.** Temoin :
+`CHROME=<navigateur> PAQUET=adapters/adapter-content/src/main/resources/contenu/cm1-grands-nombres.yaml
+PORT_DEV=9401 RANGEES_MIN=3 python squad/outils/nadia-prof/lire-le-recouvrement-a-l-ecran.py
+http://127.0.0.1:8127 bandit-manchot-grands-nombres-cm1 <prefixe>`. Candidat : la meme, avec
+`REGLE=".message-jeu{position:sticky;bottom:0}"` - **la regle est injectee dans le document rendu,
+aucune ligne de production, aucun fichier de style n'est modifie.** Campagne : la meme, huit fois.
+
+**Conditions de mesure verifiees a la lecture et non au lancement**, parce que c'est exactement le
+defaut d'outil que `theo-archi` nomme en section 2.4 et que je lui avais route le matin :
+`positionCalculeeDuMessage` vaut `sticky` dans **tous** les etats de tous mes releves candidats et
+`static` dans tous les etats temoins ; `regleCandidateEncorePresente` vaut vrai a chaque lecture.
+Une partie par execution. Aucune de mes lectures ne melange un etat avec regle et un etat sans.
+
+### 1. Le fait qui tranche, et il ne se discute pas : **l'enfant presse, et rien ne se passe**
+
+Sur `bandit-manchot-grands-nombres-cm1`, item a trois rangees, viewport 744 x 551, le 2026-08-27,
+regle `.message-jeu{position:sticky;bottom:0}` :
+
+| Etat | Haut du bloc epingle | Bouton 1 | Bouton 2 | Bouton 3 |
+|---|---|---|---|---|
+| au repos, sans message | - | pressable | pressable | pressable |
+| apres une reussite (le bloc porte *"Bravo !"*) | 487,00 px | pressable | pressable | **75,93 % recouvert, centre mort** |
+| apres un echec | 433,00 px | pressable | 27,28 % recouvert | **100 % recouvert, centre mort** |
+| a la revelation (troisieme echec) | 405,00 px | pressable | **65,12 % recouvert, centre mort** | **100 % recouvert, centre mort** |
+
+"Centre mort" n'est pas une deduction de rectangles : c'est `document.elementFromPoint` au centre du
+bouton qui rend `.verdict`, `.signal est-faux` ou `.indice` au lieu du bouton, et c'est confirme par
+un appui reel. **Campagne de huit parties, huit revelations sur des items a trois rangees, le
+2026-08-27** (releve `squad/conformite/releves-s21/s21-nadia-recouvrement-sticky-campagne-grands-nombres-744x551.json`) :
+
+- **8 revelations sur 8** portent au moins un bouton dont le centre ne repond plus ; deux boutons
+  sur trois a chaque fois ;
+- **6 revelations sur 8**, le bouton que le jeu ordonne de presser - *"C'est X. Appuie sur X."* -
+  **est l'un de ceux qui ne repondent plus** ;
+- **8 appuis reels sur 8**, distribues au centre d'un bouton recouvert, **n'ont eu aucun effet** :
+  enonce identique avant et apres, la partie n'avance pas. Dans **5 de ces 8**, le bouton vise etait
+  precisement celui que le jeu venait d'ordonner de presser.
+
+**Ce que cela fait a `M5`, que j'ai ecrite le 2026-08-12 et qui est toujours en vigueur** : *"au
+troisieme echec, le jeu nomme la reponse et l'enfant la presse pour continuer [...] le seul appui
+qui fait avancer est celui sur la reponse ecrite a l'ecran."* Avec cette declaration, **le seul appui
+qui fait avancer est, six fois sur huit, un appui impossible**. L'enfant lit "Appuie sur X", il
+appuie sur X, il ne se passe rien. Pour un enfant de neuf ans, un bouton qui ne repond pas n'est pas
+une invitation a faire defiler la page : c'est un jeu casse. C'est aussi, mot pour mot, le defaut
+que je decris en `M4` - *"l'enfant presse, rien ne change a l'ecran qu'il voit, et il ne sait meme
+pas que sa reponse a ete prise en compte"* - sauf qu'ici il n'est plus produit par le contenu, il
+est produit par le correctif.
+
+**Un fait de defilement, qui attenue sans sauver** : apres un defilement de 194 px, la position
+collante se decolle, le bloc revient a 373,19-519,19 px et les trois boutons redeviennent pressables
+(mesure du meme releve). L'enfant n'est donc pas enferme pour toujours. Il l'est jusqu'a ce qu'il
+trouve, seul, un geste que rien a l'ecran ne lui demande.
+
+### 2. Le second fait, que personne n'avait vu parce que personne n'avait joue au-dela d'une manche
+
+**Le bloc de message survit a la question qu'il commente.** Mesure du 2026-08-27, temoin comme
+candidat : apres une bonne reponse, la manche suivante est rendue **avec le message de la manche
+precedente**. Aujourd'hui cela ne se voit pas sur un item a trois rangees, parce que ce *"Bravo !"*
+est a 567,19-631,19 px, entierement **sous** le pli.
+
+Epingle, il remonte a 487,00-551,00 px et **se pose sur les propositions d'une question neuve** :
+capture `squad/conformite/releves-s21/s21-nadia-sticky-grands-nombres-bravo-sur-question-neuve-744x551.png`.
+L'enfant y voit l'enonce *"Lis ce nombre : 816 203."*, deux propositions, et un bandeau vert
+*"Bravo !"* pose sur la troisieme - dont il ne reste qu'un liseret mauve, et qui ne repond plus.
+
+**Deux defauts pedagogiques dans une seule image, et le premier est le plus grave** : un enfant de
+CM1 lit *"Bravo !"* sous une question qu'il n'a pas encore traitee. Le signal de reussite cesse de
+designer ce que l'enfant vient de faire. C'est `M6` clause 1 - *"il n'y a jamais deux messages a la
+fois, ni un message a deux endroits"* - prise a revers : il n'y a bien qu'un message, mais il parle
+d'un autre ecran que celui qui le porte.
+
+### 3. Le troisieme fait : la superposition contredit `M6` clause 2, que je garde et qui n'a pas bouge
+
+`M6` clause 2, ecrite par moi le 2026-08-12 dans cette fiche : *"le meuble est rigoureusement
+identique avant la reponse, apres une mauvaise reponse, avec l'indice affiche et sur l'ecran de
+revelation : cadre, bandeau, socle, etoile, decors, visage souriant, tout. Verification : quatre
+captures du meme item dans ces quatre etats ; les pixels du cabinet sont identiques sur les quatre.
+C'est le point de garde le plus important de ce chantier, et c'est moi qui le garde : le jour ou le
+meuble change d'aspect selon la reponse, l'argument qui sauve la metaphore de la machine tombe, et
+mon avis avec lui."*
+
+**Mesure du 2026-08-27, meme item, quatre etats, hauteur du cabinet recouverte par le bloc epingle** :
+0 px au repos, **64 px** apres une reussite, **118 px** apres un echec, **146 px** a la revelation.
+Le meuble ne change pas de declaration, mais **ce que l'enfant en voit change a chaque reponse, et
+change d'une quantite qui depend du verdict**. La verification que `M6` clause 2 prescrit - quatre
+captures, pixels identiques - est rouge par construction avec cette declaration. Ce n'est pas une
+barre que je releve aujourd'hui : c'est une clause ecrite il y a quinze jours, dont j'avais nomme
+moi-meme la consequence si elle tombait.
+
+**Reponse a la question exacte de `theo-archi`, puisque c'est elle qui m'est posee.** Un bloc qui
+traverse le cadre sombre du cabinet d'un bord a l'autre, qui coupe un bouton en pleine hauteur et
+qui laisse apparaitre le haut des lettres du bouton suivant par un interstice, **est vu par un
+enfant comme pose par-dessus la machine**, pas comme place dessous. Il n'y a pas d'ambiguite a
+arbitrer : la capture
+`squad/conformite/releves-s21/s21-nadia-sticky-grands-nombres-revelation-744x551.png` le montre.
+`M1` et `M4` tracent la frontiere sur ce que l'enfant voit, pas sur l'ordre du document - et sur ce
+que l'enfant voit, la superposition tombe **du mauvais cote**.
+
+### 4. Ce que la superposition recouvre exactement, pour que la reponse soit actionnable
+
+Mesure du 2026-08-27, item a trois rangees, etat de revelation, bloc epingle de 146 px :
+
+| Ce qui est recouvert | Hauteur | Mon avis |
+|---|---|---|
+| `.proposition` (deux boutons sur trois) | 48,19 px et 74,00 px | **interdit** - c'est un pressable, et il devient inerte |
+| `.propositions`, la rangee | 138,19 px | **interdit**, meme motif |
+| `.cabinet-socle` | 7,81 px | tolerable en soi (decor, `aria-hidden`), mais il fait rougir `M6` clause 2 |
+| `.cabinet-levier` | 27,81 px | idem |
+| `.enonce`, `.consigne`, `.score` | 0 px | jamais recouverts dans aucun de mes etats, et ils ne doivent jamais l'etre |
+
+**Un detail de forme qui n'est pas un detail** : le bloc n'a **aucun fond** (`background-color`
+calcule : `rgba(0, 0, 0, 0)`, `.message-jeu` etant vide de proprietes par decision de s10). Ce qui
+masque est le fond propre de `.signal` et de `.indice`, et **il reste entre eux un interstice
+transparent de 4,00 px** par lequel on lit le haut des lettres du bouton recouvert. Le `background`
+blanc de la variante `fixed` de `theo-archi` est, comme il l'ecrit, un artefact de mesure. Un bloc
+epingle sans fond opaque de bout en bout est illisible par superposition de deux textes.
+
+### 5. Ce qui, en revanche, marche - et que je consigne parce que ce serait malhonnete de l'omettre
+
+Sur `bandit-manchot-problemes-additifs-cp` (22 items sur 22 sous le pli dans la remesure de
+`theo-archi`, tous a **une** rangee), la meme declaration, mesuree le 2026-08-27 : le bas de
+l'indice passe de 553,19 px a **551,00 px**, donc le pli est ferme, et **aucun bouton n'est
+recouvert** - les trois propositions restent pressables en neuf points sur neuf, dans les trois
+etats. Le bloc n'entame que 2,19 px du cadre du cabinet. Releve
+`s21-nadia-recouvrement-sticky-problemes-additifs-cp-744x551.json`, capture
+`s21-nadia-sticky-problemes-additifs-cp-revelation-744x551.png`.
+
+**La lecture qui en decoule, et elle est deplaisante** : cette declaration est inoffensive
+exactement la ou le pli est superficiel, et destructrice exactement la ou il est profond. Elle ne
+manque pas de peu ; elle est **anti-correlee** au besoin. Plus le meuble descend bas, plus le bloc
+epingle remonte haut, et plus il mange de boutons.
+
+### 6. Verdict
+
+**REFUSE. Le bloc de message ne sera pas epingle au bas de la fenetre au prix d'une superposition
+sur le bas du cabinet.** Trois motifs, chacun mesure aujourd'hui, chacun suffisant seul :
+
+1. **il rend inerte le bouton que le jeu ordonne de presser** - 6 revelations sur 8, appui reel sans
+   effet 8 fois sur 8 ; `M5` est rompue et `M4` est reproduite par le correctif lui-meme ;
+2. **il affiche le verdict d'une question par-dessus les propositions de la suivante** ;
+3. **il fait changer l'aspect du meuble selon la reponse** - 0, 64, 118, 146 px selon l'etat -, ce
+   que `M6` clause 2 interdit nommement depuis le 2026-08-12.
+
+Cela vaut a plus forte raison pour `position: fixed`, qui superpose dans **tous** les etats, y
+compris ceux ou rien ne le justifie.
+
+**Ce verdict ne rouvre rien de ce que `theo-archi` a mesure** : ses chiffres de pli sont justes, je
+les ai retrouves (551,00 px pile, signature d'un bloc epingle, y compris sur les items a trois
+rangees). Le levier **ferme** bien le pli. Il le ferme en prenant a l'enfant quelque chose de plus
+cher que l'indice : le bouton.
+
+### 7. A quelles conditions un epinglage reviendrait devant moi - condition nouvelle et datee du 2026-08-27
+
+Je refuse **la superposition**, pas l'idee de rendre la position du bloc independante de la hauteur
+du contenu. Si une forme est proposee qui tient les quatre conditions ci-dessous, je la regarde sans
+prejuge. Ce sont des conditions neuves, ecrites aujourd'hui ; elles ne durcissent aucune reserve
+anterieure et ne s'appliquent retroactivement a rien.
+
+1. **`P1` - aucun pressable n'est jamais recouvert, dans aucun etat.** Verification : chaque
+   `.proposition` repond a `elementFromPoint` en neuf points sur neuf, et un appui reel a son centre
+   a un effet. L'outil qui le mesure est commite aujourd'hui.
+2. **`P2` - le bloc epingle n'entre pas dans le cadre du cabinet**, `M6` clause 2 restant verifiee
+   par ses quatre captures. Un bloc qui recouvre 2 px de socle la fait rougir comme un bloc qui en
+   recouvre 146 : c'est la clause qui est binaire, pas mon humeur.
+3. **`P3` - le bloc epingle est opaque de bout en bout**, interstices compris. Aujourd'hui il ne
+   l'est pas.
+4. **`P4` - un bloc epingle ne porte jamais le verdict d'une question precedente au-dessus d'une
+   question neuve.** Soit le message ne survit pas a la manche qu'il commente, soit il n'est pas
+   epingle dans cet etat-la.
+
+**Ce que je ne fais pas** : je ne dessine pas cette forme, et je ne route pas `P1` a `P4` a
+`ines-design` comme un travail de forme. Sur les items a trois rangees, `P1` et `P2` ne sont pas
+atteignables en deplacant une valeur : il faudrait changer ce que la fenetre reserve a quoi. C'est
+une decision d'architecture et de produit, donc `theo-archi` et `camille-po` par `sofia-sm`, et pas
+moi.
+
+### 8. Ce que mon refus laisse ouvert, et que j'assume en le nommant
+
+**`REP-8` reste ouverte sur les 16 items que j'ai classes ce matin** comme perdant reellement de
+l'information (`FICHE-bandit-manchot-reperes-cm1.md`, arbitrage du 2026-08-27, section 4) : 9 items
+dont l'encre est rognee de 3,19 px, 3 ou une ligne d'indice manque, 4 ou l'aide est entierement
+perdue. Les 14 autres du residu ne coutent a l'enfant aucun mot, et les 26 restants sont fermes par
+les deux leviers de forme.
+
+**Je corrige ce matin sur un point, avant qu'un autre le fasse a ma place.** J'ecrivais que le
+levier qui ferme ces 16 est un levier de contenu - *"un enonce sur une ligne au lieu de deux rend
+48 px"*. **C'est vrai pour 12 d'entre eux, faux pour 4.** Les deux items a trois rangees de
+`grands-nombres-cm1` manquent 162 px sur ma mesure d'aujourd'hui et jusqu'a 192 px sur celle de
+`theo-archi` : 48 px n'y suffisent pas, et rien dans le contenu ne les sauve, puisque la longueur du
+libelle **est** la competence. Ces **quatre items** - deux de `grands-nombres-cm1`, deux de
+`reperes-cm1` - n'ont aujourd'hui **aucun levier connu**, ni de forme, ni de contenu, ni de
+position. C'est un fait a porter tel quel a `camille-po`, pas une story a ecrire.
+
+**Ce dont je reste la seule garde, et que l'equipe ne doit pas croire couvert :** aucun test de ce
+depot ne verifie qu'un pressable est atteignable, qu'un fond est opaque, qu'un message parle de la
+question qu'il commente, ni que le meuble a le meme aspect dans les quatre etats de `M6` clause 2.
+`ADR-0028` a decide que le pli n'est pas gardable ; ces quatre proprietes-la ne le sont pas
+davantage aujourd'hui, et elles ne sont tenues que parce que je joue.
+
+### 9. Mes limites sur cet arbitrage, declarees ici et non decouvertes par quelqu'un d'autre
+
+- **Audit non degrade** : j'ai joue, sur l'application servie, en me trompant volontairement une,
+  deux et trois fois, sur deux jeux et onze parties.
+- **Ma limite de s15 tient et elle touche cette zone** : l'etat d'un pressable **sous le doigt**
+  (survol, appui, retour tactile) n'est mesurable par aucun outil du depot, et aucune image n'a
+  jamais montre un bouton sous le doigt. Un bloc pose par-dessus des boutons est exactement cette
+  zone. **Ce que je mesure est le test de touche, pas le ressenti de l'appui** ; sur ce point precis
+  mon audit est degrade, et il le restera tant qu'un humain n'aura pas presse pour de bon. Cela ne
+  change pas le verdict : un bouton qui ne recoit pas le clic ne recoit pas non plus le doigt.
+- **Un seul viewport, 744 x 551.** Je n'extrapole pas a 360 px, exactement comme ce matin sur
+  `--hide-scrollbars`. Un viewport plus etroit augmente le nombre de rangees, donc aggrave ce que je
+  refuse ; je le crois, je ne l'ai pas mesure, et je ne m'en sers pas comme argument.
+- **Barre de defilement masquee** (`--hide-scrollbars`), comme dans toutes mes campagnes. Ma levee
+  de ce matin vaut ici : a ce viewport une barre peinte ne change pas la geometrie. Elle change le
+  **signal**, et c'est a noter contre le levier plutot que pour lui : le bloc epingle masque du
+  contenu pendant que la barre continue d'annoncer qu'il y en a plus bas.
+- **Non mesure, et je le dis plutot que de le supposer** : l'atteignabilite d'un bouton recouvert
+  **au clavier**. Un `Tab` fait defiler la page et decollerait vraisemblablement le bloc. Je ne l'ai
+  pas verifie, et cela ne sauverait de toute facon que l'enfant qui joue au clavier.

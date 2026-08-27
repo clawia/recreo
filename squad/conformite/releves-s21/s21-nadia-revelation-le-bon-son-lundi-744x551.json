@@ -1,0 +1,1117 @@
+{
+ "auteur": "nadia-prof",
+ "date": "2026-08-27",
+ "etats": [
+  {
+   "autresElements": {
+    "bandeauDuCabinet": {
+     "boite": {
+      "bas": 289.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 257.19,
+      "hauteur": 32,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "cabinet": {
+     "boite": {
+      "bas": 387.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 249.19,
+      "hauteur": 138,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "consigne": {
+     "boite": {
+      "bas": 193.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 163.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "enonce": {
+     "boite": {
+      "bas": 245.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 197.19,
+      "hauteur": 48,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "levierDuCabinet": {
+     "boite": {
+      "bas": 379.19,
+      "droite": 732,
+      "gauche": 712,
+      "haut": 343.19,
+      "hauteur": 36,
+      "largeur": 20
+     },
+     "hauteurRecouverte": 0
+    },
+    "rangeeDePropositions": {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "score": {
+     "boite": {
+      "bas": 155.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 125.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "socleDuCabinet": {
+     "boite": {
+      "bas": 379.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 363.19,
+      "hauteur": 16,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    }
+   },
+   "basDeLExplication": null,
+   "basDeLIndice": null,
+   "basDeLaDerniereLigneDeTexteDeLIndice": null,
+   "basDuSignal": 451.19,
+   "boiteDuMessage": {
+    "bas": 451.19,
+    "droite": 720,
+    "gauche": 24,
+    "haut": 387.19,
+    "hauteur": 64,
+    "largeur": 696
+   },
+   "capture": "bonson-lundi2-0-repos.png",
+   "defilement": 0,
+   "enonce": "LUNDI",
+   "etat": "repos, aucun message",
+   "fondCalculeDuMessage": "rgba(0, 0, 0, 0)",
+   "fondsDesEnfantsDuMessage": [
+    {
+     "classe": "signal est-juste",
+     "fond": "rgb(232, 245, 233)"
+    }
+   ],
+   "hauteurDuDocument": 551,
+   "hauteurVisible": 551,
+   "pli": 551,
+   "positionCalculeeDuMessage": "static",
+   "propositions": [
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 241.8,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 209.8
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "in"
+    },
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 475.73,
+      "gauche": 257.8,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 217.94
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "an"
+    },
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 491.73,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 220.27
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "on"
+    }
+   ],
+   "regleCandidateEncorePresente": false,
+   "texteDeLExplication": null,
+   "texteDeLIndice": null,
+   "texteDuVerdict": "Bravo !",
+   "trousTransparentsDansLeBloc": 0
+  },
+  {
+   "autresElements": {
+    "bandeauDuCabinet": {
+     "boite": {
+      "bas": 289.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 257.19,
+      "hauteur": 32,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "cabinet": {
+     "boite": {
+      "bas": 387.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 249.19,
+      "hauteur": 138,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "consigne": {
+     "boite": {
+      "bas": 193.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 163.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "enonce": {
+     "boite": {
+      "bas": 245.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 197.19,
+      "hauteur": 48,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "levierDuCabinet": {
+     "boite": {
+      "bas": 379.19,
+      "droite": 732,
+      "gauche": 712,
+      "haut": 343.19,
+      "hauteur": 36,
+      "largeur": 20
+     },
+     "hauteurRecouverte": 0
+    },
+    "rangeeDePropositions": {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "score": {
+     "boite": {
+      "bas": 155.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 125.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "socleDuCabinet": {
+     "boite": {
+      "bas": 379.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 363.19,
+      "hauteur": 16,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    }
+   },
+   "basDeLExplication": null,
+   "basDeLIndice": 505.19,
+   "basDeLaDerniereLigneDeTexteDeLIndice": 493.19,
+   "basDuSignal": 451.19,
+   "boiteDuMessage": {
+    "bas": 505.19,
+    "droite": 720,
+    "gauche": 24,
+    "haut": 387.19,
+    "hauteur": 118,
+    "largeur": 696
+   },
+   "capture": "bonson-lundi2-1-echec.png",
+   "defilement": 0,
+   "enonce": "LUNDI",
+   "etat": "echec 1",
+   "fondCalculeDuMessage": "rgba(0, 0, 0, 0)",
+   "fondsDesEnfantsDuMessage": [
+    {
+     "classe": "signal est-faux",
+     "fond": "rgb(255, 235, 238)"
+    },
+    {
+     "classe": "indice",
+     "fond": "rgb(255, 244, 229)"
+    }
+   ],
+   "hauteurDuDocument": 551,
+   "hauteurVisible": 551,
+   "pli": 551,
+   "positionCalculeeDuMessage": "static",
+   "propositions": [
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 241.8,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 209.8
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "in"
+    },
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 475.73,
+      "gauche": 257.8,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 217.94
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "an"
+    },
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 491.73,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 220.27
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "on"
+    }
+   ],
+   "regleCandidateEncorePresente": false,
+   "texteDeLExplication": null,
+   "texteDeLIndice": "Regarde : les lettres u et n font ce son.",
+   "texteDuVerdict": "Ce n'est pas ça. Essaie encore !",
+   "trousTransparentsDansLeBloc": 4
+  },
+  {
+   "autresElements": {
+    "bandeauDuCabinet": {
+     "boite": {
+      "bas": 289.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 257.19,
+      "hauteur": 32,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "cabinet": {
+     "boite": {
+      "bas": 387.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 249.19,
+      "hauteur": 138,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "consigne": {
+     "boite": {
+      "bas": 193.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 163.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "enonce": {
+     "boite": {
+      "bas": 245.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 197.19,
+      "hauteur": 48,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "levierDuCabinet": {
+     "boite": {
+      "bas": 379.19,
+      "droite": 732,
+      "gauche": 712,
+      "haut": 343.19,
+      "hauteur": 36,
+      "largeur": 20
+     },
+     "hauteurRecouverte": 0
+    },
+    "rangeeDePropositions": {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "score": {
+     "boite": {
+      "bas": 155.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 125.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "socleDuCabinet": {
+     "boite": {
+      "bas": 379.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 363.19,
+      "hauteur": 16,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    }
+   },
+   "basDeLExplication": null,
+   "basDeLIndice": 505.19,
+   "basDeLaDerniereLigneDeTexteDeLIndice": 493.19,
+   "basDuSignal": 451.19,
+   "boiteDuMessage": {
+    "bas": 505.19,
+    "droite": 720,
+    "gauche": 24,
+    "haut": 387.19,
+    "hauteur": 118,
+    "largeur": 696
+   },
+   "capture": "bonson-lundi2-2-echec.png",
+   "defilement": 0,
+   "enonce": "LUNDI",
+   "etat": "echec 2",
+   "fondCalculeDuMessage": "rgba(0, 0, 0, 0)",
+   "fondsDesEnfantsDuMessage": [
+    {
+     "classe": "signal est-faux",
+     "fond": "rgb(255, 235, 238)"
+    },
+    {
+     "classe": "indice",
+     "fond": "rgb(255, 244, 229)"
+    }
+   ],
+   "hauteurDuDocument": 551,
+   "hauteurVisible": 551,
+   "pli": 551,
+   "positionCalculeeDuMessage": "static",
+   "propositions": [
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 241.8,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 209.8
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "in"
+    },
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 475.73,
+      "gauche": 257.8,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 217.94
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "an"
+    },
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 491.73,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 220.27
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "on"
+    }
+   ],
+   "regleCandidateEncorePresente": false,
+   "texteDeLExplication": null,
+   "texteDeLIndice": "Regarde : les lettres u et n font ce son.",
+   "texteDuVerdict": "Ce n'est pas ça. Essaie encore !",
+   "trousTransparentsDansLeBloc": 4
+  },
+  {
+   "autresElements": {
+    "bandeauDuCabinet": {
+     "boite": {
+      "bas": 289.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 257.19,
+      "hauteur": 32,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "cabinet": {
+     "boite": {
+      "bas": 387.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 249.19,
+      "hauteur": 138,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "consigne": {
+     "boite": {
+      "bas": 193.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 163.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "enonce": {
+     "boite": {
+      "bas": 245.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 197.19,
+      "hauteur": 48,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "levierDuCabinet": {
+     "boite": {
+      "bas": 379.19,
+      "droite": 732,
+      "gauche": 712,
+      "haut": 343.19,
+      "hauteur": 36,
+      "largeur": 20
+     },
+     "hauteurRecouverte": 0
+    },
+    "rangeeDePropositions": {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "score": {
+     "boite": {
+      "bas": 155.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 125.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "socleDuCabinet": {
+     "boite": {
+      "bas": 379.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 363.19,
+      "hauteur": 16,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    }
+   },
+   "basDeLExplication": 505.19,
+   "basDeLIndice": 559.19,
+   "basDeLaDerniereLigneDeTexteDeLIndice": 547.19,
+   "basDuSignal": 451.19,
+   "boiteDuMessage": {
+    "bas": 559.19,
+    "droite": 720,
+    "gauche": 24,
+    "haut": 387.19,
+    "hauteur": 172,
+    "largeur": 696
+   },
+   "capture": "bonson-lundi2-3-echec.png",
+   "defilement": 0,
+   "enonce": "LUNDI",
+   "etat": "echec 3",
+   "fondCalculeDuMessage": "rgba(0, 0, 0, 0)",
+   "fondsDesEnfantsDuMessage": [
+    {
+     "classe": "signal est-faux",
+     "fond": "rgb(255, 235, 238)"
+    },
+    {
+     "classe": "explication",
+     "fond": "rgb(234, 241, 247)"
+    },
+    {
+     "classe": "indice",
+     "fond": "rgb(255, 244, 229)"
+    }
+   ],
+   "hauteurDuDocument": 591,
+   "hauteurVisible": 551,
+   "pli": 551,
+   "positionCalculeeDuMessage": "static",
+   "propositions": [
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 241.8,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 209.8
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "in"
+    },
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 475.73,
+      "gauche": 257.8,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 217.94
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "an"
+    },
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 491.73,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 220.27
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "on"
+    }
+   ],
+   "regleCandidateEncorePresente": false,
+   "texteDeLExplication": "Dans LUNDI, ce sont les lettres u et n qui font le son in.",
+   "texteDeLIndice": "Regarde : les lettres u et n font ce son.",
+   "texteDuVerdict": "C'est in. Appuie sur in.",
+   "trousTransparentsDansLeBloc": 8
+  },
+  {
+   "autresElements": {
+    "bandeauDuCabinet": {
+     "boite": {
+      "bas": 249.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 217.19,
+      "hauteur": 32,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "cabinet": {
+     "boite": {
+      "bas": 347.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 209.19,
+      "hauteur": 138,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "consigne": {
+     "boite": {
+      "bas": 153.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 123.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "enonce": {
+     "boite": {
+      "bas": 205.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 157.19,
+      "hauteur": 48,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "levierDuCabinet": {
+     "boite": {
+      "bas": 339.19,
+      "droite": 732,
+      "gauche": 712,
+      "haut": 303.19,
+      "hauteur": 36,
+      "largeur": 20
+     },
+     "hauteurRecouverte": 0
+    },
+    "rangeeDePropositions": {
+     "boite": {
+      "bas": 323.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 249.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "score": {
+     "boite": {
+      "bas": 115.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 85.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "socleDuCabinet": {
+     "boite": {
+      "bas": 339.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 323.19,
+      "hauteur": 16,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    }
+   },
+   "basDeLExplication": 465.19,
+   "basDeLIndice": 519.19,
+   "basDeLaDerniereLigneDeTexteDeLIndice": 507.19,
+   "basDuSignal": 411.19,
+   "boiteDuMessage": {
+    "bas": 519.19,
+    "droite": 720,
+    "gauche": 24,
+    "haut": 347.19,
+    "hauteur": 172,
+    "largeur": 696
+   },
+   "capture": "bonson-lundi2-4-defile.png",
+   "defilement": 40,
+   "enonce": "LUNDI",
+   "etat": "apres defilement jusqu'en bas, en revelation",
+   "fondCalculeDuMessage": "rgba(0, 0, 0, 0)",
+   "fondsDesEnfantsDuMessage": [
+    {
+     "classe": "signal est-faux",
+     "fond": "rgb(255, 235, 238)"
+    },
+    {
+     "classe": "explication",
+     "fond": "rgb(234, 241, 247)"
+    },
+    {
+     "classe": "indice",
+     "fond": "rgb(255, 244, 229)"
+    }
+   ],
+   "hauteurDuDocument": 591,
+   "hauteurVisible": 551,
+   "pli": 551,
+   "positionCalculeeDuMessage": "static",
+   "propositions": [
+    {
+     "boite": {
+      "bas": 323.19,
+      "droite": 241.8,
+      "gauche": 32,
+      "haut": 249.19,
+      "hauteur": 74,
+      "largeur": 209.8
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "in"
+    },
+    {
+     "boite": {
+      "bas": 323.19,
+      "droite": 475.73,
+      "gauche": 257.8,
+      "haut": 249.19,
+      "hauteur": 74,
+      "largeur": 217.94
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "an"
+    },
+    {
+     "boite": {
+      "bas": 323.19,
+      "droite": 712,
+      "gauche": 491.73,
+      "haut": 249.19,
+      "hauteur": 74,
+      "largeur": 220.27
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "on"
+    }
+   ],
+   "regleCandidateEncorePresente": false,
+   "texteDeLExplication": "Dans LUNDI, ce sont les lettres u et n qui font le son in.",
+   "texteDeLIndice": "Regarde : les lettres u et n font ce son.",
+   "texteDuVerdict": "C'est in. Appuie sur in.",
+   "trousTransparentsDansLeBloc": 8
+  },
+  {
+   "autresElements": {
+    "bandeauDuCabinet": {
+     "boite": {
+      "bas": 289.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 257.19,
+      "hauteur": 32,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "cabinet": {
+     "boite": {
+      "bas": 387.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 249.19,
+      "hauteur": 138,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "consigne": {
+     "boite": {
+      "bas": 193.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 163.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "enonce": {
+     "boite": {
+      "bas": 245.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 197.19,
+      "hauteur": 48,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "levierDuCabinet": {
+     "boite": {
+      "bas": 379.19,
+      "droite": 732,
+      "gauche": 712,
+      "haut": 343.19,
+      "hauteur": 36,
+      "largeur": 20
+     },
+     "hauteurRecouverte": 0
+    },
+    "rangeeDePropositions": {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    },
+    "score": {
+     "boite": {
+      "bas": 155.19,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 125.19,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "socleDuCabinet": {
+     "boite": {
+      "bas": 379.19,
+      "droite": 712,
+      "gauche": 32,
+      "haut": 363.19,
+      "hauteur": 16,
+      "largeur": 680
+     },
+     "hauteurRecouverte": 0
+    }
+   },
+   "basDeLExplication": null,
+   "basDeLIndice": null,
+   "basDeLaDerniereLigneDeTexteDeLIndice": null,
+   "basDuSignal": null,
+   "boiteDuMessage": null,
+   "capture": "bonson-lundi2-5-apres-revelation.png",
+   "defilement": 0,
+   "enonce": "JARDIN",
+   "etat": "manche suivante, apres revelation",
+   "fondCalculeDuMessage": null,
+   "fondsDesEnfantsDuMessage": null,
+   "hauteurDuDocument": 551,
+   "hauteurVisible": 551,
+   "pli": 551,
+   "positionCalculeeDuMessage": null,
+   "propositions": [
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 241.8,
+      "gauche": 32,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 209.8
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "in"
+    },
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 478.08,
+      "gauche": 257.8,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 220.28
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "on"
+    },
+    {
+     "boite": {
+      "bas": 363.19,
+      "droite": 712,
+      "gauche": 494.08,
+      "haut": 289.19,
+      "hauteur": 74,
+      "largeur": 217.92
+     },
+     "hauteurRecouverte": 0,
+     "partDeSurfaceRecouverte": 0,
+     "pointsQuiNeRepondentPlus": [],
+     "pressableAuCentre": true,
+     "pressableEnNeufPoints": true,
+     "texte": "an"
+    }
+   ],
+   "regleCandidateEncorePresente": false,
+   "texteDeLExplication": null,
+   "texteDeLIndice": null,
+   "texteDuVerdict": null,
+   "trousTransparentsDansLeBloc": null
+  },
+  {
+   "autresElements": {
+    "bandeauDuCabinet": null,
+    "cabinet": null,
+    "consigne": null,
+    "enonce": null,
+    "levierDuCabinet": null,
+    "rangeeDePropositions": null,
+    "score": {
+     "boite": {
+      "bas": 208,
+      "droite": 720,
+      "gauche": 24,
+      "haut": 178,
+      "hauteur": 30,
+      "largeur": 696
+     },
+     "hauteurRecouverte": 0
+    },
+    "socleDuCabinet": null
+   },
+   "basDeLExplication": null,
+   "basDeLIndice": null,
+   "basDeLaDerniereLigneDeTexteDeLIndice": null,
+   "basDuSignal": null,
+   "boiteDuMessage": null,
+   "capture": "bonson-lundi2-6-reussite.png",
+   "defilement": 0,
+   "enonce": null,
+   "etat": "manche suivante, apres une reussite",
+   "fondCalculeDuMessage": null,
+   "fondsDesEnfantsDuMessage": null,
+   "hauteurDuDocument": 551,
+   "hauteurVisible": 551,
+   "pli": 551,
+   "positionCalculeeDuMessage": null,
+   "propositions": [],
+   "regleCandidateEncorePresente": false,
+   "texteDeLExplication": null,
+   "texteDeLIndice": null,
+   "texteDuVerdict": null,
+   "trousTransparentsDansLeBloc": null
+  }
+ ],
+ "jeu": "bandit-manchot-le-bon-son-cp",
+ "outil": "squad/outils/nadia-prof/lire-le-recouvrement-a-l-ecran.py",
+ "regleCssCandidate": "",
+ "tete": "f382ebc",
+ "viewportDemande": [
+  744,
+  551
+ ],
+ "viewportLuDuNavigateur": [
+  744,
+  551
+ ]
+}

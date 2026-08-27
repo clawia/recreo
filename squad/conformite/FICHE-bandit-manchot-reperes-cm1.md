@@ -861,3 +861,75 @@ Pour que personne ne croie couvert ce qui ne l'est pas.
   **combien** elle vaut, pour qu'on cesse de la citer comme une reserve sans chiffre.
 - **`theo-archi`** : le defaut de l'outil de mesure (section 5, dernier point) et la reference
   `ADR-0029` corrigee en tete de fiche.
+
+---
+
+## Complement du 2026-08-27 (s21), meme jour, apres l'arbitrage du matin : deux points
+
+Ce complement ne modifie ni ne retire une ligne de l'arbitrage du matin. Il l'amende sur un point,
+date, et ajoute une justification que le code reclame.
+
+### A. Le levier de position est REFUSE - `REP-8` reste ouverte, et je dis sur quoi
+
+`theo-archi` a mesure, apres mon arbitrage du matin, un levier que celui-ci ne couvrait pas :
+epingler `.message-jeu` au bas de la fenetre (`avis-faisabilite-s21.md`, section 1.3). Il ferme le
+pli, y compris sur les items a trois rangees. **Je l'ai joue et je l'ai refuse** ; le verdict
+complet, ses onze parties, ses captures et ses quatre conditions de reouverture sont dans
+`FICHE-bandit-manchot-additions-cp.md`, arbitrage du 2026-08-27, parce que c'est cette fiche-la qui
+porte `M1` a `M13`. Motif en une phrase : le bloc epingle rend inerte le bouton que le jeu ordonne
+de presser - 6 revelations sur 8 mesurees le 2026-08-27, appui reel sans effet 8 fois sur 8.
+
+**Consequence pour ce paquet et pour l'objectif de s21** : `REP-8` **reste ouverte** sur les
+16 items que la section 4 du matin classe comme perdant reellement de l'information. Deux d'entre
+eux sont ici : les deux items aux enonces les plus longs de `cm1-reperes`, dont l'indice est
+entierement perdu.
+
+**Amendement date a ma section 4 de ce matin, ecrit contre moi.** J'y concluais que le levier qui
+ferme ces 16 items est un levier de contenu - *"un enonce sur une ligne au lieu de deux rend
+48 px"*. **C'est vrai pour 12 d'entre eux et faux pour 4.** Les deux items a trois rangees de
+`grands-nombres-cm1` manquent 162 px sur ma mesure du 2026-08-27 (bloc de verdict a 713,19 px, pli a
+551) et jusqu'a 192 px sur celle de `theo-archi` du meme jour : 48 px n'y suffisent pas. Pour les
+deux items de `cm1-reperes`, j'ai moi-meme ecrit le 2026-08-26 que leurs enonces ne sont pas
+raccourcissables - *"la matiere est saine"*. **Ces quatre items n'ont aujourd'hui aucun levier
+connu**, ni de forme, ni de contenu, ni de position. Je ne l'habille pas : je le nomme, et il est a
+`camille-po` d'en faire ce qu'elle veut.
+
+### B. La justification pedagogique reelle des trois propositions de ce paquet
+
+`theo-archi` a trouve dans un test commite la meme reference fautive que celle que j'ai corrigee en
+tete de cette fiche ce matin : `adapters/adapter-content/src/test/java/com/recreo/adapter/content/PaquetCm1ReperesTest.java`,
+Javadoc des lignes 73 et 162, invoque `ADR-0029` pour justifier *"trois propositions, jamais
+quatre"*. `ADR-0029` gouverne le decalage d'animation par colonne et **autorise** quatre
+propositions ; il n'en interdit aucune. **Je ne touche pas a ce test, il appartient a `lea-dev`.**
+Voici ce qu'il faut ecrire a la place, et d'ou cela vient.
+
+La regle "exactement trois propositions sur ce paquet" n'est pas une decision d'architecture. Elle a
+**trois sources, toutes pedagogiques, toutes datees, toutes de moi ou mesurees a ma demande** :
+
+1. **Jamais quatre - motif de lisibilite, mesure.** A quatre propositions, la rangee tombe dans le
+   repli a quatre colonnes (police 1,875 rem, deux rangees) et le bas du cabinet descend a 492 px
+   pour un pli a 551 : le verdict **et** l'indice passent entierement sous le pli sur 16 items sur
+   16. C'est le premier motif de mon refus du 2026-08-26. A trois propositions, mesure refaite le
+   meme jour, le verdict revient au-dessus du pli sur 14 items sur 16. Un enfant qui ne voit pas le
+   verdict ne sait pas que sa reponse a ete prise en compte (`M4`).
+2. **Jamais quatre - motif de charge cognitive, anterieur.** Ma specification `B.3`
+   (`ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md`) ecarte nommement la forme a
+   quatre versions completes de la meme phrase pour charge cognitive trop haute. Le pool de ce
+   paquet compte **cinq** libelles depuis la correction du 2026-08-26 ; un item qui en montrerait
+   quatre montrerait quatre cinquiemes du pool, et l'enfant qui reconnait deux libelles trouve le
+   bon par elimination sans lire la phrase. C'est la famille de defaut que j'ai refusee sur `NAT-1`
+   et que `REP-4` sanctionne ici : une regle mecanique qui resout l'item sans la competence.
+3. **Jamais deux - motif de fiabilite de la reussite, et c'est un ajout date du 2026-08-27, pas une
+   reecriture.** La regle generale que j'ai autorisee ce matin dit *"deux ou trois propositions par
+   item, jamais quatre"*. Sur **ce** paquet, deux ne convient pas : l'item oppose le repere en jeu a
+   son voisin immediat - *"Point final"* contre *"Point d'interrogation"* -, et a deux propositions
+   l'enfant qui ignore la distinction a une chance sur deux d'avoir juste. C'est exactement ce que
+   `REP-4` mesure et refuse : le 2026-08-26, j'ai simule un enfant ignorant totalement le point
+   d'interrogation et il obtenait **16 sur 16**. Trois propositions sont le plus petit nombre qui
+   conserve la discrimination et ramene le hasard a une chance sur trois.
+
+**En une phrase pour la Javadoc, si une seule est voulue** : trois propositions par item, jamais
+quatre parce qu'a quatre le verdict et l'indice passent sous le pli (verdict de `nadia-prof` du
+2026-08-26) et parce que montrer quatre libelles d'un pool de cinq rend l'item soluble par
+elimination (`REP-4`), jamais deux parce que la discrimination visee tomberait a une chance sur deux
+(`nadia-prof`, 2026-08-27). Aucun `ADR` ne porte cette regle.
