@@ -226,7 +226,7 @@ class LAnimationRetardeMaisNeDetermineRienTest {
     private static boolean declare(Regle regle, String propriete, String valeurAttendue) {
         int position = debutDeDeclaration(regle.corps(), propriete);
         return position >= 0
-                && valeurDeclaree(regle.corps(), position, propriete).strip().equals(valeurAttendue);
+                && valeurDeclaree(regle.corps(), propriete).strip().equals(valeurAttendue);
     }
 
     private static boolean declareUneAnimation(Regle regle) {
@@ -578,7 +578,7 @@ class LAnimationRetardeMaisNeDetermineRienTest {
                 continue;
             }
             Double retard = secondes(
-                    valeurDeclaree(regle.corps(), position, PROPRIETE_DE_RETARD), regle, defauts);
+                    valeurDeclaree(regle.corps(), PROPRIETE_DE_RETARD), regle, defauts);
             if (retard == null) {
                 continue;
             }
@@ -629,7 +629,7 @@ class LAnimationRetardeMaisNeDetermineRienTest {
         List<Double> temps = new ArrayList<>();
         int position = debutDeDeclaration(regle.corps(), "animation");
         List<String> mots = position >= 0
-                ? mots(valeurDeclaree(regle.corps(), position, "animation"))
+                ? mots(valeurDeclaree(regle.corps(), "animation"))
                 : List.of();
         for (String mot : mots) {
             if (mot.endsWith("ms")) {
@@ -643,7 +643,7 @@ class LAnimationRetardeMaisNeDetermineRienTest {
             if (explicite < 0) {
                 continue;
             }
-            String valeur = valeurDeclaree(regle.corps(), explicite, propriete).strip();
+            String valeur = valeurDeclaree(regle.corps(), propriete).strip();
             double secondes = valeur.endsWith("ms")
                     ? Double.parseDouble(valeur.substring(0, valeur.length() - 2)) / 1000
                     : Double.parseDouble(valeur.substring(0, valeur.length() - 1));
@@ -676,7 +676,7 @@ class LAnimationRetardeMaisNeDetermineRienTest {
                 continue;
             }
             porteuses.add(regle);
-            String valeur = valeurDeclaree(regle.corps(), position, PROPRIETE_DE_TEXTE).strip();
+            String valeur = valeurDeclaree(regle.corps(), PROPRIETE_DE_TEXTE).strip();
             if (!valeur.equals("\"\"") && !valeur.equals("''") && !valeur.equals("none")) {
                 defauts.add(regle.origine() + " : cette regle fabrique du texte (" + PROPRIETE_DE_TEXTE
                         + ": " + valeur + "). Ce que l'enfant lit vient du serveur, jamais d'une feuille "
@@ -942,7 +942,7 @@ class LAnimationRetardeMaisNeDetermineRienTest {
             if (position < 0) {
                 continue;
             }
-            for (String mot : mots(valeurDeclaree(animation.corps(), position, propriete))) {
+            for (String mot : mots(valeurDeclaree(animation.corps(), propriete))) {
                 if (imagesClesDeclarees.contains(mot)) {
                     return Optional.of(mot);
                 }
@@ -978,7 +978,7 @@ class LAnimationRetardeMaisNeDetermineRienTest {
 
     private static String valeurDe(String corps, String propriete) {
         int position = debutDeDeclaration(corps, propriete);
-        return position < 0 ? "" : String.join(" ", mots(valeurDeclaree(corps, position, propriete)));
+        return position < 0 ? "" : String.join(" ", mots(valeurDeclaree(corps, propriete)));
     }
 
     /**

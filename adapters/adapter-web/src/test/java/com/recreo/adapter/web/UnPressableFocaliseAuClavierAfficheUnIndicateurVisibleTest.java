@@ -113,13 +113,13 @@ class UnPressableFocaliseAuClavierAfficheUnIndicateurVisibleTest {
                 continue;
             }
             String valeurFocus =
-                    TailleDesTextesEtBoutonsTest.valeurDeclaree(corpsFocus, positionFocus, PROPRIETE);
+                    TailleDesTextesEtBoutonsTest.valeurDeclaree(corpsFocus, PROPRIETE);
 
             String corpsRepos = maison.getOrDefault(identite, "");
             int positionRepos = TailleDesTextesEtBoutonsTest.debutDeDeclaration(corpsRepos, PROPRIETE);
             boolean differe = positionRepos < 0
                     || !TailleDesTextesEtBoutonsTest
-                            .valeurDeclaree(corpsRepos, positionRepos, PROPRIETE)
+                            .valeurDeclaree(corpsRepos, PROPRIETE)
                             .equals(valeurFocus);
             if (!differe) {
                 sansDifference.add(identite + " declare la meme valeur de " + PROPRIETE

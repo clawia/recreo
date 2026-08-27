@@ -30,6 +30,7 @@ import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.re
 import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.reglesTierces;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.debutDeDeclaration;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.declarationsDe;
+import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.valeurALaPosition;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.valeurDeclaree;
 import static com.recreo.adapter.web.ToutEcranEchangeEstUnDocumentJouableTest.zoneEchangee;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -368,25 +369,12 @@ class LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest {
         return termes;
     }
 
-    /**
-     * La valeur ecrite a cette position precise, <b>y compris si une declaration posterieure
-     * l'ecrase</b>. C'est ce que cette table epingle, et c'est deliberement different de ce que
-     * {@code valeurDeclaree} rend : celle-ci refuse une lecture ecrasee parce que ses appelants
-     * comparent des valeurs appliquees, alors qu'ici on inventorie ce que l'auteur a ecrit - une
-     * triplette de repli de prefixes doit apparaitre en entier, sans quoi l'inventaire n'en est pas
-     * un.
-     */
-    private static String valeurALaPosition(String corps, int position, String propriete) {
-        int debut = position + propriete.length() + ":".length();
-        int fin = corps.indexOf(';', debut);
-        return corps.substring(debut, fin < 0 ? corps.length() : fin).strip();
-    }
 
     /** Vrai si cette regle declare un repli, donc si son sujet est une rangee repliable. */
     static boolean declareUnRepli(Regle regle) {
         int position = debutDeDeclaration(regle.corps(), REPLI);
         return position >= 0
-                && !valeurDeclaree(regle.corps(), position, REPLI).strip().equals("nowrap");
+                && !valeurDeclaree(regle.corps(), REPLI).strip().equals("nowrap");
     }
 
     /**

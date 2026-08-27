@@ -207,7 +207,7 @@ class UnPlafondMaisonNAffamePasLaRangeeTest {
                     .noneMatch(element -> gouverneUneRangee(element, rangees))) {
                 continue;
             }
-            String valeur = valeurDeclaree(regle.corps(), position, PLAFOND);
+            String valeur = valeurDeclaree(regle.corps(), PLAFOND);
             examines.add(regle.origine() + " -> " + valeur);
             assertThat(enPixels(regle, valeur))
                     .as("ADR-0059 : le plafond maison declare par %s affame la rangee. Il lui laisse "

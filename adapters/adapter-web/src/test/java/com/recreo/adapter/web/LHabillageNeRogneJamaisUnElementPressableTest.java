@@ -165,7 +165,7 @@ class LHabillageNeRogneJamaisUnElementPressableTest {
                 if (position < 0) {
                     continue;
                 }
-                String valeur = valeurDeclaree(regle.corps(), position, propriete)
+                String valeur = valeurDeclaree(regle.corps(), propriete)
                         .strip().toLowerCase(Locale.ROOT);
                 if ("overflow".equals(propriete) || propriete.startsWith("overflow-")) {
                     if (valeur.equals(SANS_ROGNAGE)) {

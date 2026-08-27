@@ -274,7 +274,7 @@ class CabinetDeLaMachineTest {
 
         int borderPos = debutDeDeclaration(corps, "border");
         assertThat(borderPos).as(".explication doit declarer un cadre").isNotNegative();
-        String bordure = valeurDeclaree(corps, borderPos, "border");
+        String bordure = valeurDeclaree(corps, "border");
         assertThat(mots(bordure))
                 .as(".explication : border doit declarer largeur, style et couleur ensemble - un "
                         + "cadre complet sur les quatre cotes, pas seulement border-left ou "

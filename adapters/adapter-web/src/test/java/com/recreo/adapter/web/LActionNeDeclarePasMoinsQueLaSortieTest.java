@@ -25,9 +25,10 @@ import static com.recreo.adapter.web.LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.m
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.blocsMaison;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.debutDeDeclaration;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.declarationsDe;
-import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.derniereDeclaration;
+
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.gabarits;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.lire;
+import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.valeurALaPosition;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.valeurDeclaree;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
@@ -485,8 +486,7 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
         // intentionnelle, et en faire un echec serait un rouge sur une feuille saine. Ce qui
         // devient un echec, c'est de lire la mauvaise des deux - et ce refus-la vit dans
         // valeurDeclaree, le point de passage commun a tous les garde-fous de ce module.
-        String declaree = valeurDeclaree(corps,
-                derniereDeclaration(corps, composante.propriete()), composante.propriete());
+        String declaree = valeurDeclaree(corps, composante.propriete());
         List<String> parties = mots(declaree);
         if (parties.isEmpty() || parties.size() > 2) {
             defauts.add(prefixe + " declare " + composante.propriete() + " a " + parties.size()
@@ -842,25 +842,14 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
                 .as("sans deux declarations de rembourrage sur .proposition, ce jeu fautif ne met "
                         + "plus la cascade a l'epreuve")
                 .hasSize(2);
-        assertThat(valeurALaPositionPourLaPreuve(corps, declarations.get(0)))
+        assertThat(valeurALaPosition(corps, declarations.get(0), "padding"))
                 .as("la premiere declaration est celle que l'ancien lecteur rendait, et elle est "
                         + "au-dessus des 0,6rem de la sortie : c'est elle qui gardait le garde-fou vert")
                 .isEqualTo("0.75rem 1.25rem");
-        assertThat(valeurDeclaree(corps, derniereDeclaration(corps, "padding"), "padding"))
+        assertThat(valeurDeclaree(corps, "padding"))
                 .as("la derniere declaration est celle qui gagne la cascade, et c'est elle qui viole "
                         + "ADR-0017")
                 .isEqualTo("0.5rem 1.25rem");
     }
 
-    /**
-     * La valeur ecrite a une position, sans le refus de {@link TailleDesTextesEtBoutonsTest#valeurDeclaree}
-     * - refus qui existe precisement pour interdire cette lecture au reste du depot. Le test
-     * ci-dessus en a besoin pour montrer <b>ce que l'ancien lecteur rendait</b> ; c'est le seul
-     * endroit du module ou lire une declaration ecrasee a un sens.
-     */
-    private static String valeurALaPositionPourLaPreuve(String corps, int position) {
-        int debut = position + "padding".length() + ":".length();
-        int fin = corps.indexOf(';', debut);
-        return corps.substring(debut, fin < 0 ? corps.length() : fin).strip();
-    }
 }

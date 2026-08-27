@@ -196,7 +196,7 @@ class LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest {
             if (declaration < 0) {
                 continue;
             }
-            String valeur = valeurDeclaree(bloc.getValue(), declaration, PROPRIETE_DE_MASQUAGE).strip();
+            String valeur = valeurDeclaree(bloc.getValue(), PROPRIETE_DE_MASQUAGE).strip();
             if (VALEUR_DE_MASQUAGE.equals(valeur)) {
                 masquages.add(forme.get());
             }

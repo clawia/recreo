@@ -301,7 +301,7 @@ class TailleDesTextesEtBoutonsTest {
         // s21 : la declaration qui gagne la cascade, jamais la premiere rencontree.
         int position = derniereDeclaration(corps, propriete);
         assertThat(position).as("%s doit declarer explicitement %s", selecteur, propriete).isNotNegative();
-        String valeur = valeurDeclaree(corps, position, propriete);
+        String valeur = valeurDeclaree(corps, propriete);
         assertThat(valeur).as("%s : %s doit etre exprime en rem", selecteur, propriete).endsWith("rem");
         return Double.parseDouble(valeur.substring(0, valeur.length() - "rem".length()));
     }
@@ -323,7 +323,7 @@ class TailleDesTextesEtBoutonsTest {
         if (position < 0) {
             return Optional.empty();
         }
-        String valeur = valeurDeclaree(corps, position, propriete);
+        String valeur = valeurDeclaree(corps, propriete);
         if (!valeur.endsWith("rem")) {
             return Optional.empty();
         }
@@ -331,27 +331,44 @@ class TailleDesTextesEtBoutonsTest {
     }
 
     /**
-     * La valeur litterale declaree a cette position, avec un <b>refus</b> ajoute le 2026-08-27
-     * (s21) : ce point de passage est celui par lequel tout garde-fou de ce module lit une valeur
-     * de feuille, et c'est donc ici qu'une lecture ecrasee par la cascade doit devenir bruyante
-     * plutot que de rendre un chiffre plausible.
+     * La valeur litterale que ce corps declare pour cette propriete : <b>celle qui gagne la
+     * cascade</b>, jamais une autre. Il n'y a plus de parametre de position, et c'est le correctif
+     * du 2026-08-27 (s21, second passage).
      *
-     * <p>Deux refus, et aucun des deux n'invente une regle de style :</p>
+     * <p><b>Pourquoi la position a disparu de la signature.</b> Elle etait une information
+     * redondante - l'appelant passait deja le corps et la propriete - et elle etait la seule piece
+     * qu'un appelant pouvait se tromper a calculer. Le premier passage de ce correctif avait rendu
+     * ce lecteur strict : il refusait une position ecrasee au lieu de rendre un chiffre plausible.
+     * Le refus a fonctionne - il a rougi -, mais il a rougi <b>en CI sur l'arbre fusionne</b>,
+     * parce qu'un troisieme appelant, {@code LeConteneurTierGardeSonRembourrageLateralTest.lateralDeclare},
+     * n'avait pas ete converti et que le materiau qui le revele - {@code .proposition} portant deux
+     * declarations de rembourrage - n'existait sur aucune des deux branches prises separement. Un
+     * refus a l'execution ne protege que sur le materiau qu'on a sous la main ; une signature qui ne
+     * permet plus d'exprimer l'erreur protege partout, et le compilateur nomme les appelants a
+     * convertir au lieu de laisser un recensement le faire.
+     *
+     * <p>Deux refus subsistent, et aucun n'invente une regle de style :</p>
      * <ul>
-     *   <li><b>la position lue n'est pas la derniere</b> declaration de cette propriete dans ce
-     *       corps : la valeur rendue serait celle qu'une declaration posterieure ecrase, donc une
-     *       valeur qu'aucun ecran ne montre. L'appelant doit lire {@link #derniereDeclaration}, ou
-     *       dire pourquoi la valeur ecrasee est celle qui compte ;</li>
-     *   <li><b>la propriete est declaree plusieurs fois et l'une porte {@code !important}</b> : le
-     *       rang dans le corps ne decide plus, et ce lecteur ne sait pas resoudre cette cascade-la.
-     *       Un chiffre rendu ici serait une affirmation sans methode.</li>
+     *   <li>la propriete est declaree plusieurs fois et <b>l'une porte {@code !important}</b> : le
+     *       rang dans le corps ne decide plus de la cascade, et ce lecteur ne sait pas la resoudre.
+     *       Aucune valeur n'est rendue plutot qu'un chiffre sans methode ;</li>
+     *   <li>la propriete n'est pas declaree du tout : l'appelant doit l'avoir constate avant, par
+     *       {@link #debutDeDeclaration}, et un appel a l'aveugle est un defaut d'appelant.</li>
      * </ul>
+     *
+     * <p>Un appelant qui veut vraiment une occurrence precise - inventorier ce que l'auteur a ecrit
+     * plutot que ce que le navigateur applique - passe par {@link #valeurALaPosition}, dont le nom
+     * dit qu'il sait ce qu'il fait.</p>
      */
-    static String valeurDeclaree(String corps, int position, String propriete) {
+    static String valeurDeclaree(String corps, String propriete) {
         List<Integer> declarations = declarationsDe(corps, propriete);
+        if (declarations.isEmpty()) {
+            throw new AssertionError("ce corps ne declare pas " + propriete + " : constater la "
+                    + "presence par debutDeDeclaration avant de demander une valeur");
+        }
         if (declarations.size() > 1) {
             List<String> valeurs = declarations.stream()
-                    .map(debut -> valeurBrute(corps, debut, propriete))
+                    .map(debut -> valeurALaPosition(corps, debut, propriete))
                     .toList();
             if (valeurs.stream().anyMatch(valeur -> valeur.contains("!important"))) {
                 throw new AssertionError("ce corps declare " + propriete + " " + declarations.size()
@@ -359,20 +376,18 @@ class TailleDesTextesEtBoutonsTest {
                         + "rang dans le corps ne decide plus de la cascade, et ce lecteur ne sait pas "
                         + "la resoudre. Aucune valeur n'est rendue plutot qu'un chiffre sans methode");
             }
-            int derniere = declarations.get(declarations.size() - 1);
-            if (position != derniere) {
-                throw new AssertionError("ce corps declare " + propriete + " " + declarations.size()
-                        + " fois (" + String.join(" | ", valeurs) + ") et la lecture porte sur la "
-                        + "declaration de rang " + (declarations.indexOf(position) + 1) + ", que la "
-                        + "derniere ecrase : a specificite egale c'est la derniere qui gagne la "
-                        + "cascade, donc la seule que l'enfant voit. Lire derniereDeclaration(), ou "
-                        + "dire ici pourquoi la valeur ecrasee est celle qui compte");
-            }
         }
-        return valeurBrute(corps, position, propriete);
+        return valeurALaPosition(corps, declarations.get(declarations.size() - 1), propriete);
     }
 
-    private static String valeurBrute(String corps, int position, String propriete) {
+    /**
+     * La valeur ecrite a cette position precise, <b>y compris si une declaration posterieure
+     * l'ecrase</b>. Deliberement different de {@link #valeurDeclaree} : ce lecteur-ci sert a
+     * inventorier ce que l'auteur d'une feuille a ecrit - une triplette de repli de prefixes doit
+     * apparaitre en entier - jamais a comparer des valeurs appliquees. Son nom est ce qui empeche
+     * de l'employer par distraction.
+     */
+    static String valeurALaPosition(String corps, int position, String propriete) {
         int debut = position + propriete.length() + ":".length();
         int fin = corps.indexOf(';', debut);
         return corps.substring(debut, fin < 0 ? corps.length() : fin).strip();
@@ -593,9 +608,18 @@ class TailleDesTextesEtBoutonsTest {
         }
     }
 
+    /**
+     * Vrai si <b>une</b> declaration de cette propriete porte {@code !important}, pas seulement la
+     * derniere. Corrige le 2026-08-27 (s21) en meme temps que le lecteur de valeurs : la question
+     * posee ici n'est pas "que vaut la propriete" mais "un !important est-il pose quelque part", et
+     * un {@code !important} anterieur bat une declaration ordinaire posterieure. Lire la seule
+     * gagnante manquerait exactement le cas que ce controle existe pour trouver - et la feuille
+     * tierce, ou il s'applique, est precisement celle qui declare une meme propriete plusieurs fois.
+     */
     private static boolean declareEnImportant(String corps, String propriete) {
-        int position = debutDeDeclaration(corps, propriete);
-        return position >= 0 && valeurDeclaree(corps, position, propriete).contains("!important");
+        return declarationsDe(corps, propriete).stream()
+                .anyMatch(position -> valeurALaPosition(corps, position, propriete)
+                        .contains("!important"));
     }
 
     @Test
@@ -980,7 +1004,7 @@ class TailleDesTextesEtBoutonsTest {
         List<String> taillesRelevees = new ArrayList<>();
         for (RegleEcrite regle : regles) {
             for (int position : declarationsDe(regle.corps(), "font-size")) {
-                String valeur = valeurDeclaree(regle.corps(), position, "font-size");
+                String valeur = valeurDeclaree(regle.corps(), "font-size");
                 taillesRelevees.add(regle.selecteur() + " -> " + valeur);
                 assertThat(valeur)
                         .as("%s : la regle %s declare la taille du texte en \"%s\", que ce garde-fou "
@@ -1137,7 +1161,7 @@ class TailleDesTextesEtBoutonsTest {
             return List.of();
         }
         List<Double> valeurs = new ArrayList<>();
-        for (String brute : motsDe(valeurDeclaree(corps, position, propriete))) {
+        for (String brute : motsDe(valeurDeclaree(corps, propriete))) {
             assertThat(brute)
                     .as("%s : %s doit s'exprimer en rem pour se comparer au plancher de nadia-prof",
                             selecteur, propriete)
@@ -1256,7 +1280,7 @@ class TailleDesTextesEtBoutonsTest {
         assertThat(conteneur).as(".propositions doit exister dans le CSS maison").isNotNull();
         int positionRepli = debutDeDeclaration(conteneur, "flex-wrap");
         boolean seReplie = positionRepli >= 0
-                && valeurDeclaree(conteneur, positionRepli, "flex-wrap").equals("wrap");
+                && valeurDeclaree(conteneur, "flex-wrap").equals("wrap");
 
         String colonne = blocs.get(CLASSE_PROPOSITION);
         assertThat(colonne).as(".proposition doit exister dans le CSS maison").isNotNull();
@@ -1277,7 +1301,7 @@ class TailleDesTextesEtBoutonsTest {
         assertThat(position)
                 .as(".proposition doit declarer flex, qui porte la base de flexibilite de la colonne")
                 .isNotNegative();
-        List<String> composantes = motsDe(valeurDeclaree(corps, position, "flex"));
+        List<String> composantes = motsDe(valeurDeclaree(corps, "flex"));
         assertThat(composantes)
                 .as("flex doit s'ecrire avec ses trois composantes (croissance, retrecissement, "
                         + "base), pour qu'une base nulle ne se dissimule pas dans un raccourci a "

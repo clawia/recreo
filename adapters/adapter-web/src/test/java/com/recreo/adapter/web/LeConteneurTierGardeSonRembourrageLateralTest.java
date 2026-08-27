@@ -145,7 +145,7 @@ class LeConteneurTierGardeSonRembourrageLateralTest {
         int raccourci = debutDeDeclaration(corps, "padding");
         if (raccourci >= 0) {
             Optional<ValeursLaterales> laterales =
-                    lateralesDuRaccourci(valeurDeclaree(corps, raccourci, "padding"));
+                    lateralesDuRaccourci(valeurDeclaree(corps, "padding"));
             if (laterales.isPresent()) {
                 gauche = laterales.get().gauche();
                 droite = laterales.get().droite();
@@ -153,11 +153,11 @@ class LeConteneurTierGardeSonRembourrageLateralTest {
         }
         int gaucheExplicite = debutDeDeclaration(corps, "padding-left");
         if (gaucheExplicite >= 0) {
-            gauche = valeurDeclaree(corps, gaucheExplicite, "padding-left");
+            gauche = valeurDeclaree(corps, "padding-left");
         }
         int droiteExplicite = debutDeDeclaration(corps, "padding-right");
         if (droiteExplicite >= 0) {
-            droite = valeurDeclaree(corps, droiteExplicite, "padding-right");
+            droite = valeurDeclaree(corps, "padding-right");
         }
         return new ValeursLaterales(gauche, droite);
     }

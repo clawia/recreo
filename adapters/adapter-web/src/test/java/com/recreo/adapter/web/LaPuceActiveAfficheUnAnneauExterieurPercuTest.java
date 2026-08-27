@@ -65,7 +65,7 @@ class LaPuceActiveAfficheUnAnneauExterieurPercuTest {
         assertThat(position)
                 .as("\"%s\" doit declarer box-shadow", SELECTEUR_PUCE_ACTIVE)
                 .isNotNegative();
-        String valeur = TailleDesTextesEtBoutonsTest.valeurDeclaree(corps, position, "box-shadow");
+        String valeur = TailleDesTextesEtBoutonsTest.valeurDeclaree(corps, "box-shadow");
 
         assertThat(valeur)
                 .as("l'anneau de la puce active doit peindre a l'exterieur (pas \"inset\"), sans "

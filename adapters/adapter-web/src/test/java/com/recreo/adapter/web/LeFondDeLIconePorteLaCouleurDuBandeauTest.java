@@ -92,7 +92,7 @@ class LeFondDeLIconePorteLaCouleurDuBandeauTest {
                 .isNotNull();
         int position = debutDeDeclaration(racine, nomVariable);
         assertThat(position).as(":root doit declarer %s", nomVariable).isNotNegative();
-        return depuisHex(valeurDeclaree(racine, position, nomVariable));
+        return depuisHex(valeurDeclaree(racine, nomVariable));
     }
 
     /** Vrai seulement si .entete lit litteralement la variable de fond, pas une couleur en dur. */
@@ -106,7 +106,7 @@ class LeFondDeLIconePorteLaCouleurDuBandeauTest {
         if (position < 0) {
             return false;
         }
-        String valeur = valeurDeclaree(corps, position, PROPRIETE_FOND).strip();
+        String valeur = valeurDeclaree(corps, PROPRIETE_FOND).strip();
         return valeur.equals("var(" + VARIABLE_FOND_ENTETE + ")");
     }
 
