@@ -290,3 +290,28 @@ mais son urgence oui. Le raccourci ne demande plus a l'enfant de lire trois chai
 leur longueur - il lui suffit de viser la plus petite boite. La correction de contenu que je decris
 plus haut (six a sept items dont le distracteur est plus court que la bonne reponse) ferme les deux
 faces a la fois : elle est la seule que je demande.
+
+
+---
+
+## Renvoi date du 2026-08-27 (s21) - `nadia-prof`, arbitrage `S21-3`
+
+**Le paquet entier a ete joue item par item** (24 items, 744 x 551, 2026-08-27, releve
+`releves-s21/s21-nadia-paquet-entier-cm1-mesures-744x551.json`) : **2 items sur 24** ont leur indice
+sous le pli, `4000 kg, combien de tonnes ?` et `5000 kg, combien de tonnes ?`. Le releve de catalogue
+n'en voyait qu'un.
+
+**Le manque est de 12,95 px** : la somme des trois libelles fait 534,95 px pour un budget de rangee
+de 522 px, et le seul libelle en cause est le distracteur `4000000 tonnes` / `5000000 tonnes`
+(239,67 px).
+
+**`MES-1` (2026-08-27)** : ce distracteur est a remplacer, et **d'abord pour un motif pedagogique**.
+Un facteur un million n'est produit par aucune erreur reelle de conversion d'un enfant de CM1 ; un
+distracteur qu'on ecarte sans savoir convertir ne fait pas travailler la conversion. Une valeur issue
+d'une erreur de facteur dix ou cent le remplace, et referme le defaut de pli du meme geste
+(`40 tonnes` = 147,64 px, somme ramenee a 442,92 px). **`MES-2`** autorise, sans l'imposer,
+l'ecriture de l'unite par son symbole.
+
+Le texte complet, avec les commandes de mesure, les releves et les conditions numerotees, est dans
+`FICHE-bandit-manchot-reperes-cm1.md`, section "Arbitrage du 2026-08-27 (s21) - `S21-3`". Il n'est
+pas recopie ici pour qu'il ne puisse pas y pourrir a moitie.

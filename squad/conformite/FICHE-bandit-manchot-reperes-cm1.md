@@ -933,3 +933,373 @@ quatre parce qu'a quatre le verdict et l'indice passent sous le pli (verdict de 
 2026-08-26) et parce que montrer quatre libelles d'un pool de cinq rend l'item soluble par
 elimination (`REP-4`), jamais deux parce que la discrimination visee tomberait a une chance sur deux
 (`nadia-prof`, 2026-08-27). Aucun `ADR` ne porte cette regle.
+
+---
+
+## Arbitrage du 2026-08-27 (s21) - `S21-3` : **ma mesure du matin est fausse, `lea-dev` a raison, et le levier n'est pas celui que j'ai nomme**
+
+**Ce document n'est pas un Done pedagogique.** `lea-dev` a refute la story `S21-3` avant d'editer
+quoi que ce soit et n'a touche aucun fichier de contenu ; `sofia-sm` me demande de trancher. Je
+tranche sur mesure, pas sur relecture, et la mesure me donne tort.
+
+### 1. Verdict, en une phrase
+
+**Le chiffre de 12 items ne tient pas. Le levier de l'enonce sur une ligne ne ferme AUCUN des 12
+items que `S21-3` lui affectait, parce qu'aucun de ces 12 items n'a d'enonce sur deux lignes.**
+`S21-3` telle qu'elle est ecrite n'a pas d'objet. La cause est ma section 4 du 2026-08-27, ci-dessus,
+que je ne retire pas et que je corrige ici, datee.
+
+### 2. Ce que j'ai mesure, avec la commande exacte
+
+J'ai joue les quatre paquets concernes **en entier, item par item**, au viewport de reference
+744 x 551, le 2026-08-27, sur le fat jar deja construit servi en local, avec et sans les deux
+declarations de `S21-2` injectees dans le document rendu. Aucun `mvn` lance, aucun fichier de
+production touche, serveur arrete par son identifiant de processus. Outil neuf commite dans ce meme
+geste. Commande, une par paquet :
+
+```
+CHROME=<navigateur> PORT_DEV=<port distinct> \
+PAQUET=adapters/adapter-content/src/main/resources/contenu/cm1-reperes.yaml \
+python squad/outils/nadia-prof/auditer-un-paquet-entier.py http://<hote>:<port> \
+    bandit-manchot-reperes-cm1 16 \
+    squad/conformite/releves-s21/s21-nadia-paquet-entier-cm1-reperes-744x551.json
+```
+
+Les quatre releves sont commites sous `squad/conformite/releves-s21/s21-nadia-paquet-entier-*.json`.
+
+### 3. Premiere correction contre moi : **la population des "56 items" est un echantillon, pas le catalogue**
+
+`squad/conformite/releves-s21/s21-pli-du-catalogue-744x551.json`, sur lequel `ines-design`,
+`theo-archi`, `marc-dev` et moi-meme avons tous compte, porte `parties: 1` et `itemsVus: 10` pour
+**chacun** des 17 jeux. Une partie tire dix manches sans remise (`ListContentSource.next`, verifie le
+2026-08-27) : sur un paquet de 16, 24 ou 28 items, elle en montre dix. **Le "56 items sous le pli"
+porte donc sur 167 items vus sur les 428 du catalogue, soit 39 %.** Personne ne l'a ecrit, moi
+comprise, et je l'ai repris tel quel dans ma section 4.
+
+Ce que cela change, mesure sur les **quatre paquets** concernes par mes 16 items residuels, cette
+fois paquet entier :
+
+| Paquet | Items du paquet | Vus par le releve echantillonne | Indice sous le pli, CSS servie | Indice sous le pli, avec `S21-2` |
+|---|---|---|---|---|
+| `cm1-reperes` | **16** | 10 | **16 sur 16** | **16 sur 16** |
+| `cm1-accords-groupe-nominal` | **24** | 10 | **8** (le releve en voyait 3) | **8** |
+| `cm1-mesures` (conversions-unites) | **24** | 10 | **2** (le releve en voyait 1) | **2** |
+| `cm1-grands-nombres` | **28** | 10 | **16** (le releve en voyait 6) | **14** |
+| **Total sur ces quatre paquets** | **92** | 40 | **42** | **40** |
+
+**Je ne reenonce aucun chiffre a l'echelle du catalogue** : je n'ai pas mesure les paquets entiers
+des treize autres jeux, et je ne fais pas couvrir par analogie ce que je n'ai pas joue.
+
+### 4. Deuxieme correction contre moi : le levier de 48 px est reel, et je l'ai attribue a la mauvaise population
+
+Le levier existe et je le remesure aujourd'hui : un enonce ramene de deux lignes a une ligne fait
+remonter le bas de l'indice de **48,00 px** exactement (553,19 -> 505,19 px, mesure du 2026-08-27).
+**Ce n'est pas le chiffre qui est faux, c'est la liste d'items a laquelle je l'ai applique.**
+
+Sur les 92 items des quatre paquets, **6 items seulement** ont un enonce sur deux lignes, et
+**aucun des 12 items de `S21-3` n'en fait partie** :
+
+| Paquet | Items a enonce sur deux lignes | Sont-ils dans la liste de `S21-3` ? |
+|---|---|---|
+| `cm1-reperes` | **2** : `Nous partons demain matin pour la montagne`, `Pourquoi les feuilles tombent-elles en automne` | **Non** - ce sont exactement les deux items que j'avais **exclus** de `S21-3` comme non raccourcissables |
+| `cm1-grands-nombres` | **4** : les quatre enonces `Écris en chiffres : ...` les plus longs | **Non** - ce paquet n'etait pas dans `S21-3` |
+| `cm1-accords-groupe-nominal` | **0** | - |
+| `cm1-mesures` | **0** | - |
+
+**J'ai donc exactement inverse la population** : j'ai affecte le levier aux 8 items de `cm1-reperes`
+dont l'enonce tient deja sur une ligne, et je l'ai refuse aux 2 items ou il s'applique. Les 16 items
+de `cm1-reperes` mesurent **48 px de hauteur d'enonce** pour 14 d'entre eux et **96 px** pour deux ;
+les 8 items de `cm1-accords-groupe-nominal` et les items de `cm1-mesures` vises par `S21-3` mesurent
+tous **48 px**.
+
+**Et meme la ou il s'applique, il ne suffit pas.** Sur les deux items de `cm1-reperes` a deux lignes,
+le levier fait passer le bas de l'indice de 643,19 a 595,19 px : **encore 44,19 px sous le pli**.
+
+### 5. Une correction de methode qui vaut pour `lea-dev` autant que pour moi
+
+`lea-dev` conclut juste, mais **sa troisieme verification ne prouve pas ce qu'elle croit prouver**.
+Elle lit `.enonce.getClientRects().length` et en tire `lignes=1`. **`.enonce` est un `<p>`**
+(`fragments/manche.html`, ligne 46), donc un element de bloc : `getClientRects()` y rend **un seul
+rectangle quel que soit le nombre de lignes du texte**. J'en ai la preuve dans mon propre releve du
+2026-08-27 : les deux items `Nous partons demain matin pour la montagne` et `Pourquoi les feuilles
+tombent-elles en automne` rendent `getClientRects().length = 1` **et** une hauteur de **96 px**,
+c'est-a-dire deux lignes. **C'est la hauteur qui tranche, pas le compte de rectangles.**
+
+Sa conclusion tient parce que ses deux autres verifications - la feuille et le contenu - sont bonnes
+et suffisent. Je le dis quand meme, parce qu'une mesure qui donne le bon resultat pour une mauvaise
+raison est de la meme famille que celle qui m'a fait ecrire 12 : elle passera un jour ou elle ne
+devrait pas. Le piege est ecrit dans l'en-tete de l'outil commite avec cet arbitrage.
+
+### 6. Le vrai levier, mesure paquet par paquet - et ce n'est pas le meme pour les quatre
+
+`lea-dev` a raison sur la cause : ce sont les propositions, pas l'enonce. J'ajoute le chiffre qui
+manquait et je distingue **trois causes differentes**, la ou elle en voyait une.
+
+Rappel du budget, mesure et non deduit le 2026-08-27
+(`ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md`, section 2.1) : la rangee offre **680 px**,
+chaque bouton consomme **42 px** hors texte, l'ecart entre boutons est de **16 px**. **La somme des
+trois libelles doit tenir en 522 px** ; c'est la somme qui decide du repli, jamais le libelle le plus
+large.
+
+| Paquet | Items sous le pli | Cause mesuree | Levier |
+|---|---|---|---|
+| `cm1-reperes` | 16 sur 16 | **somme des libelles de 649,75 a 818,45 px**, budget 522 - deux rangees sur les 16 items | raccourcir les cinq libelles (section 7.1) |
+| `cm1-accords-groupe-nominal` | 8 sur 24 | **quatre propositions**, donc deux rangees imposees par `.propositions:has(.proposition:nth-child(4)) .proposition { flex: 1 1 calc(50% - 0.5rem) }`, **quelle que soit la largeur** : les sommes vont de 234,52 a 542,38 px et **sept des huit tiennent sous les 464 px** d'une rangee de quatre | ni l'enonce ni les libelles - voir section 8 |
+| `cm1-mesures` | 2 sur 24 | **somme de 534,95 px**, budget 522 : **12,95 px de trop**, a cause du seul libelle `4000000 tonnes` / `5000000 tonnes` (239,67 px) | raccourcir ce distracteur (section 7.2) |
+| `cm1-grands-nombres` | 16 sur 28, 14 apres `S21-2` | melange : enonces a deux lignes (4 items), sommes de libelles jusqu'a 1 103,78 px, jusqu'a **trois** rangees | section 7.3 |
+
+### 7. Jusqu'ou les libelles peuvent descendre sans perdre ce qu'ils enseignent
+
+C'est la question qui m'est posee et qui n'appartient qu'a moi : `lea-dev` ne touchera pas a une
+bonne reponse sans mon mot. **J'ecris une barre chiffree et des invariants, pas des libelles** - je
+les ai deja mal choisis une fois sur ce paquet, le 2026-08-26, et ce n'est pas en les choisissant
+une seconde fois que je ferai mieux. Toutes les largeurs ci-dessous sont mesurees le 2026-08-27 avec
+la police reellement rendue (`700 32px`), releve
+`releves-s21/s21-nadia-libelles-raccourcis-744x551.json`, calibrage du canevas verifie a 590,05 px.
+
+#### 7.1 `cm1-reperes` - la barre est **522 px pour les trois libelles les plus larges du jeu**
+
+Les cinq libelles servis mesurent : `Majuscule au prénom` **323,73** - `Point d'interrogation`
+**317,69** - `Majuscule initiale` **263,05** - `Phrase correcte` **231,67** - `Point final`
+**155,03**. Le pire triplet possible fait **818,45 px** : il depasse le budget de **296,45 px**,
+soit de 57 %. `Majuscule au prénom` mange a lui seul **62 %** du budget d'un triplet.
+
+**Ce que j'exige, et rien de plus :**
+
+- **`REP-11` (2026-08-27)** - **les cinq libelles restent cinq et restent distinguables deux a
+  deux.** C'est le motif exact de mon refus du 2026-08-26 (`REP-4`) : quatre libelles ne peuvent pas
+  porter quatre reperes plus le cas correct. **Non negociable, aucune fusion.**
+- **`REP-12` (2026-08-27)** - **les trois libelles les plus larges du paquet totalisent au plus
+  522 px**, mesures a la police rendue. Sur cinq libelles, tout item montre trois d'entre eux : si
+  les trois plus larges tiennent, tous les triplets tiennent.
+- **`REP-13` (2026-08-27)** - **chaque libelle reste un enonce en francais**, pas un signe isole ni
+  un raccourci a dechiffrer. Un bouton `.` ou `?` est un rebus, je le refuse d'avance ; `Un point ?`
+  se lit.
+- **`REP-14` (2026-08-27)** - **la distinction "majuscule de debut de phrase" / "majuscule du nom
+  propre" survit dans les libelles eux-memes**, pas seulement dans l'enonce. C'est la moitie de la
+  competence citee par le descripteur du paquet.
+
+**Deux jeux de libelles que j'ai mesures pour verifier que la barre est atteignable** - ce sont des
+preuves de faisabilite, **pas des libelles a recopier**, et `lea-dev` est libre de faire autrement :
+
+| Jeu candidat | Somme des trois plus larges | Rangees, mesure a l'ecran |
+|---|---|---|
+| `Majuscule` (151,50) + `Prénom` (117,81) + `Correct` (110,00) | 379,31 px | **1** |
+| `Une majuscule` (218,83) + `Un point ?` (154,48) + `Un point` (131,64) | 504,95 px | **1** |
+| le jeu servi aujourd'hui | 818,45 px | **2** |
+
+Ce que je verifierai a l'audit, et que ces chiffres ne disent pas : **je rejouerai le test de
+`REP-4`** - simuler un enfant qui ignore l'un des cinq reperes et compter combien d'items il resout
+quand meme. Si le raccourcissement rend deux categories confondables, le paquet retombe dans le
+defaut du 2026-08-26, et aucune largeur ne le rachetera.
+
+#### 7.2 `cm1-mesures` - **12,95 px a trouver, et le bon geste est pedagogique avant d'etre metrique**
+
+Les deux items sous le pli sont `4000 kg, combien de tonnes ?` et `5000 kg, combien de tonnes ?`,
+tous deux a **534,95 px** de somme pour un budget de 522. Le seul libelle en cause est le
+distracteur `4000000 tonnes` / `5000000 tonnes`, **239,67 px**.
+
+**Et ce distracteur est mauvais pour une raison qui n'a rien a voir avec le pli** : 4 000 000 tonnes
+pour 4 000 kg est un facteur un million. Aucune erreur de conversion d'un enfant de CM1 ne produit ce
+nombre ; un distracteur qu'on ecarte sans savoir convertir ne fait pas travailler la conversion.
+C'est le principe que je tiens depuis le debut de ce produit.
+
+- **`MES-1` (2026-08-27)** - **ce distracteur est remplace par une valeur qu'une erreur reelle
+  produit** - se tromper d'un facteur dix ou cent sur le rapport kg/tonne, par exemple. Mesure a
+  l'appui : `40 tonnes` fait **147,64 px**, ce qui porte la somme a **442,92 px**, 79,08 px sous le
+  budget. **Le defaut pedagogique et le defaut de pli se referment du meme geste.**
+- **`MES-2` (2026-08-27)** - **l'unite peut s'ecrire en toutes lettres ou par son symbole**, au
+  choix de l'auteur : `4 t` fait 39,69 px contre 129,23 px pour `4 tonnes`, et le triplet en symbole
+  tient sur une rangee (mesure a l'ecran, bas d'indice a 505,19 px). **Le symbole est la notation que
+  la competence enseigne, je ne l'interdis pas** ; je ne l'impose pas non plus, l'enonce disant deja
+  "tonnes".
+
+#### 7.3 `cm1-grands-nombres` - **le prefixe de l'enonce n'est pas du remplissage, et je refuse de le retirer**
+
+Les 4 items a deux lignes sont des `Écris en chiffres : <nombre en lettres>`. Retirer le prefixe les
+ramene tous les quatre sur une ligne - mesure : `quarante mille sept cent cinq.` **445,03 px**,
+`quatre cent cinquante-deux mille.` **508,61**, `quatre-vingt-dix mille quatre-vingt-dix.` **595,92**,
+`trois cent cinq mille quatre cent vingt-et-un.` **664,25**, tous sous les 696 px offerts.
+
+**Je le refuse quand meme, et voici pourquoi.** La consigne de ce jeu est
+*"Lis, écris, décompose ou compare !"* : elle annonce **quatre taches differentes** dans le meme
+paquet. Le prefixe de l'enonce est **la seule chose qui dise a l'enfant laquelle des quatre lui est
+demandee**. Un enfant qui lit `trois cent cinq mille quatre cent vingt-et-un.` sans le prefixe ne
+sait pas s'il doit l'ecrire, le decomposer ou le comparer.
+
+- **`GRN-1` (2026-08-27)** - **le prefixe qui nomme la tache reste.** Il peut etre raccourci.
+  Chiffre exact : `Écris en chiffres : ` mesure **261,33 px**, `En chiffres : ` **183,80 px**.
+  Applique aux quatre items, le prefixe court en ramene **deux** sur une ligne (628,83 px et
+  692,41 px) et **pas les deux autres** (779,72 px et 848,05 px, au-dela des 696 offerts). Le second
+  des deux passe a **3,59 px** du bord : je ne compte pas une marge de 3,59 px comme fermee.
+- **`GRN-2` (2026-08-27)** - **le nombre ecrit en lettres n'est jamais raccourci.** C'est l'objet
+  meme de la competence, et c'est deja le motif pour lequel j'ai refuse ce matin la regle des dix
+  caracteres comme veto. **Sur `trois cent cinq mille quatre cent vingt-et-un.` (664,25 px), il ne
+  reste que 31,75 px de budget d'enonce, soit moins de deux caracteres : aucun prefixe n'y tient.**
+  Cet item n'a donc **aucun levier d'enonce**, et je le nomme plutot que de le promettre.
+- **`GRN-3` (2026-08-27), non bloquante** - **un paquet dont la consigne annonce quatre taches
+  oblige chaque enonce a porter son propre marqueur de tache**, et c'est ce qui coute les deux
+  lignes. Le decoupage de ce paquet est une question de produit, pas de forme : je la route a
+  `camille-po` et je ne l'instruis pas ici.
+
+### 8. `cm1-accords-groupe-nominal` : le seul des quatre ou je **n'autorise pas** de toucher au contenu
+
+Les 8 items sous le pli portent quatre propositions : les quatre formes d'accord d'un meme adjectif
+(`noir`, `noire`, `noirs`, `noires`). **Passer a trois propositions retirerait l'une des quatre
+formes de la confrontation, et cette confrontation est l'item.**
+
+Or ce n'est pas la largeur qui les replie. **Sept des huit tiennent sous les 464 px d'une rangee de
+quatre** (sommes mesurees : 234,52 - 285,32 - 286,61 - 325,46 - 326,39 - 392,38 - 400,18 ; seul
+`Les histoires sont ___.` depasse, a 542,38). Les deux rangees viennent d'une declaration de feuille,
+`.propositions:has(.proposition:nth-child(4)) .proposition { flex: 1 1 calc(50% - 0.5rem) }`, qui
+impose un damier de deux fois deux **independamment du texte**.
+
+**Je decris le symptome et je ne tranche pas la cause** : c'est une regle de feuille, elle appartient
+a `ines-design` et a `theo-archi`. Ce que je dis, et qui les concerne :
+
+- **`ACC-1` (2026-08-27)** - **je n'autorise aucun retrait de proposition sur ces 8 items.** Le cout
+  pedagogique est superieur au gain de pli, et il n'y a pas a payer en contenu ce qu'une declaration
+  de forme impose.
+- **`ACC-2` (2026-08-27)** - **la police de 1,875 rem que j'ai accordee le 2026-08-11 pour le repli a
+  quatre colonnes n'est pas en cause et reste ou elle est.** Ce que je signale est le
+  `flex: 1 1 calc(50% - 0.5rem)` de la meme regle, que je n'avais jamais mesure. Si une rangee unique
+  de quatre est possible sans descendre sous mes planchers, elle ferme sept de ces huit items **sans
+  toucher un mot** : le gain projete est de 87 px par item, soit un bas d'indice a 532,19 px contre
+  619,19 aujourd'hui. **Projection, non mesuree** - je ne l'ai pas essayee a l'ecran, et c'est a
+  `ines-design` de la mesurer si elle la retient.
+
+### 9. Ce que `sofia-sm` doit decider, et ce que je ne decide pas a sa place
+
+**`S21-3` telle qu'elle est ecrite n'a pas d'objet** : elle affecte a `lea-dev` un levier qui ne
+s'applique a aucun de ses 12 items. Elle **change d'objet ou elle sort du sprint** ; le choix est de
+`sofia-sm` et de `camille-po`, pas de moi. Ce que j'ai fourni pour qu'ils choisissent : la cause
+mesuree paquet par paquet, la barre chiffree pour les libelles, et deux jeux de libelles dont j'ai
+verifie a l'ecran qu'ils tiennent.
+
+**Ce que je ne compte pas contre `lea-dev`** : elle a verifie avant d'editer, elle n'a touche aucun
+fichier de contenu, et elle a signale plutot que d'executer une consigne fausse. **C'est exactement
+le geste que ce depot doit produire, et c'est le second sprint de suite ou il me corrige.**
+
+### 10. Sur quelles proprietes je reste la seule garde, apres cet arbitrage
+
+- **`REP-11` a `REP-14`, `MES-1`, `MES-2`, `GRN-1` a `GRN-3`, `ACC-1`** - aucune n'est tenue par un
+  test et aucune ne doit l'etre.
+- **Qu'un paquet entier soit couvert par une mesure.** Aucun outil de ce depot ne rejouait jusqu'a
+  voir tous les items avant celui que je commite ici ; le releve du catalogue voyait 39 % des items
+  et personne ne le disait.
+- **Qu'un libelle raccourci enseigne encore.** Non mecanisable, et c'est precisement la ou je me suis
+  trompee le 2026-08-26.
+
+---
+
+## Arbitrage du 2026-08-27 (s21) - `ADR-0017` inverse sur un axe apres `S21-2` : **l'ordre est retabli par la sortie qui descend, pas par l'action qui remonte**
+
+`marc-dev` a livre `S21-2` (`0e0bc4e`, branche `s21-marc`) et a trouve, sans le trancher seul, que
+`.proposition` (role **action**) declare desormais `padding: 0.5rem 1.25rem` quand `.lien-accueil`
+(role **sortie**) declare `padding: 0.6rem 1.1rem`. Sur l'axe haut/bas, **l'action declare moins que
+la sortie**, ce qu'`ADR-0017` interdit. La question m'est posee parce qu'`ADR-0017` encode une regle
+pedagogique : ce qui fait avancer le jeu ne doit pas etre plus petit que ce qui en sort.
+
+### 1. J'ai verifie le defaut de garde-fou moi-meme, sans croire sur parole
+
+`blocsParSelecteur` (`TailleDesTextesEtBoutonsTest`, ligne 189) fusionne les corps successifs d'un
+meme selecteur par `ancien + ";" + nouveau`, dans l'ordre du fichier ; `debutDeDeclaration`
+(ligne 241) rend la **premiere** declaration trouvee. Dans la feuille de `0e0bc4e`, `.proposition`
+recoit `padding: 0.75rem 1.25rem` **ligne 667** (bloc partage par les cinq boutons pleins) puis
+`padding: 0.5rem 1.25rem` **ligne 721** (la regle de `S21-2`). **Le garde-fou lit 0,75 rem ; la
+cascade applique 0,5 rem.** Il compare 0,75 a 0,6 et passe au vert sur une valeur qui n'est pas celle
+que l'enfant voit. Le diagnostic de `marc-dev` est exact, et je le confirme par lecture du code, pas
+par confiance.
+
+### 2. Ce que l'inversion vaut pour l'enfant : je l'ai mesuree a l'ecran
+
+Mesure du 2026-08-27, viewport 744 x 551, ecran de manche de `bandit-manchot-reperes-cm1`, les deux
+declarations de `0e0bc4e` injectees dans le document rendu du fat jar deja construit. Commande :
+
+```
+CHROME=<navigateur> PORT_DEV=9381 python <script de mesure des boites> http://<hote>:<port> \
+    bandit-manchot-reperes-cm1 <dossier de sortie>
+```
+
+Releve commite : `releves-s21/s21-nadia-adr17-boites-744x551.json` ; captures
+`releves-s21/s21-nadia-adr17-manche-sans-s21-2-744x551.png` et `...-avec-s21-2-744x551.png`.
+
+| Bouton, ecran de manche, avec `S21-2` | Role | Hauteur rendue | Largeur rendue | Surface rendue | Police | Rembourrage haut/bas |
+|---|---|---|---|---|---|---|
+| `.proposition` la plus etroite (`Point final`) | **action** | **66,00 px** | 293,67 px | **19 382 px2** | 32 px | 8 px |
+| `.lien-accueil` (`Les jeux`) | **sortie** | **53,19 px** | 108,83 px | **5 788 px2** | 20 px | 9,6 px |
+
+**Le plus petit bouton d'action est 3,35 fois la surface du bouton de sortie et le depasse de
+12,81 px en hauteur.** Avant `S21-2`, le rapport etait de 3,75 et l'ecart de 20,81 px. L'inversion
+declaree vaut **1,6 px par cote, 3,2 px au total**, et elle est entierement absorbee par l'ecart de
+police : 32 px contre 20 px, soit 12 px de boite de ligne en plus pour l'action.
+
+**Compare aux trois incidents qui ont motive `ADR-0017`** : a s02 la sortie faisait 2,87 fois la
+surface de l'action ; au lot Bootstrap le rapport action/sortie tombait de 1,15 a 0,77. Ici il est de
+**3,35**. Rien de ce que cet ADR a ete ecrit pour attraper n'est present a l'ecran.
+
+### 3. Mon verdict : **ni la premiere issue, ni la troisieme. La deuxieme.**
+
+**Je refuse la premiere issue - remonter `.proposition` au-dessus de 0,6 rem.** Elle reprendrait a
+26 items un gain que j'ai accorde ce matin sur mesure, pour recuperer 1,6 px par cote qu'aucun enfant
+ne peut voir. Le rembourrage passerait de 8 px a 9,6 px, la hauteur de bouton de 66,0 a 69,2 px, et
+chaque rangee reprendrait 3,2 px sur les 8 px que le levier rendait : **le levier perdrait 40 % de son
+effet vertical pour une propriete que la mesure declare invisible.** Ce serait deplacer mes poteaux
+apres coup, et je ne le fais pas.
+
+**Je refuse aussi la troisieme - declarer l'inversion acceptable.** Non parce qu'elle nuit a l'enfant
+aujourd'hui - elle ne lui nuit pas, la mesure ci-dessus le dit - mais parce qu'`ADR-0017` est
+**deliberement declaratif**, et `theo-archi` a ecrit pourquoi dans l'ADR lui-meme : *"une regle de
+saillance approximative rendrait la quatrieme occurrence plus probable"*. Un ADR qui compare des
+declarations et dont on accepte une exception au motif que le rendu va bien **cesse de garder quoi
+que ce soit** : la prochaine inversion sera acceptee au meme motif, et celle-la se verra. Trois fois
+ce defaut a traverse une CI verte sur ce produit. **Je ne prends pas la responsabilite d'ouvrir la
+quatrieme porte pour 1,6 px.**
+
+**Je retiens la deuxieme issue : le rembourrage de la sortie descend.** C'est la seule des trois qui
+ne coute rien a l'enfant et qui retablit l'ordre declare.
+
+- **`SOR-1` (2026-08-27)** - **le rembourrage vertical de la sortie descend jusqu'a etre au plus egal
+  a celui de l'action.** `ADR-0017` interdit une composante **superieure** : l'egalite passe. La
+  valeur exacte appartient a `ines-design` ; ce que je garantis est le plancher.
+- **`SOR-2` (2026-08-27)** - **le plancher de cible tactile de 2,75 rem tient, et il tient largement.**
+  `.lien-accueil` declare `min-height: 2.75rem` (44 px) et rend 53,19 px aujourd'hui. A rembourrage
+  egal a celui de l'action, sa hauteur rendue devient **50 px environ** (contenu 29,99 px + 16 px de
+  rembourrage + 4 px de bordure) : **6 px au-dessus du plancher**, et le `min-height` reste declare.
+  Aucune police ne bouge. **Chiffre projete depuis les composantes mesurees ce jour, non mesure a
+  l'ecran** - c'est a `ines-design` de le confirmer avant fusion.
+- **`SOR-3` (2026-08-27)** - **`.retour-accueil` porte la meme boite que `.lien-accueil`** (mesure sur
+  `0e0bc4e` : `min-height: 2.75rem`, `font-size: 1.25rem`, `padding: 0.6rem 1.1rem`) et la feuille dit
+  que c'est **delibere**. Les deux sont des sorties : **elles descendent ensemble ou elles ne
+  descendent pas.** Une sortie qui resterait plus grande que l'autre serait le meme defaut deplace.
+- **`SOR-4` (2026-08-27)** - **la sortie ne doit pas devenir difficile a atteindre.** Ce que je
+  verifierai a l'audit, en jouant : que `Les jeux` reste visible, lisible et pressable du premier
+  coup. Une sortie qu'un enfant n'arrive plus a atteindre est un defaut symetrique de celui
+  qu'`ADR-0017` garde, et je le tiens pour aussi grave.
+
+### 4. Ce qui n'est pas de moi, et que je route
+
+- **Le garde-fou aveugle.** `LActionNeDeclarePasMoinsQueLaSortieTest` lit la premiere declaration au
+  lieu de la derniere : il resterait vert apres n'importe quelle inversion posee dans un bloc
+  ulterieur. **C'est un defaut technique et il est a `theo-archi`.** Je note seulement ceci, qui est
+  de mon ressort : tant qu'il n'est pas corrige, **cette famille de defaut n'a aucun garde-fou et je
+  suis la seule a la voir**. `marc-dev` a eu raison de ne pas le corriger dans son lot et de le
+  signaler.
+- **Le choix de la valeur exacte du rembourrage de sortie** : `ines-design`, sous `SOR-1` a `SOR-4`.
+- **Un ecart de commentaire, sans effet mais trompeur.** La feuille dit encore, au-dessus de
+  `.lien-accueil` : *"ADR-0022 : depuis S6-9 ce lien ne s'affiche que sur l'accueil (...) Il n'est
+  plus confronte a .proposition ni a .encore"*. **C'est faux depuis `S15-3` / `DEC-0034`**, et le
+  paragraphe suivant de la meme feuille le dit lui-meme. Je l'ai verifie a l'ecran le 2026-08-27 :
+  `Les jeux` est **bien visible pendant une manche**, aux cotes des propositions. Un commentaire qui
+  affirme qu'une confrontation n'existe plus, dans le fichier meme ou elle existe, est exactement ce
+  qui fait qu'on ne cherche pas. A `theo-archi` ou a `ines-design`, selon leur partage.
+
+### 5. Ce que ce verdict ne fait pas
+
+Il **ne rouvre pas** `S21-2`. Ce que ma remesure du 2026-08-27 confirme de son lot est **l'effet par
+item** : -8 px a plat et -8 px par rangee, constant sur les cinq configurations mesurees avec et sans
+la regle. **Je ne confirme pas le compte de 26**, et je ne le conteste pas non plus : il est etabli
+sur la meme population echantillonnee de 167 items que la section 3 ci-dessus corrige, et je n'ai
+mesure que quatre paquets entiers. Il **ne touche pas** au plancher de 0,5 rem accorde ce matin : il
+reste un plancher, pas une pente. Et il **ne prononce aucun Done pedagogique** : `S21-2` sera audite
+comme le reste.

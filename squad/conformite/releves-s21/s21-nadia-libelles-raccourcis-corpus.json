@@ -1,0 +1,18 @@
+{
+  "textes": {
+    "reperesActuels": {"quoi": "proposition", "valeurs": ["Phrase correcte", "Majuscule initiale", "Majuscule au prénom", "Point final", "Point d'interrogation"]},
+    "reperesCandidatsCourts": {"quoi": "proposition", "valeurs": ["Correct", "C'est correct", "Rien à changer", "Majuscule", "La majuscule", "Majuscule au début", "Prénom", "Le prénom", "Majuscule au prénom", "Point", "Le point final", "Point final", "Point ?", "Le point ?", "Interrogation", "Point d'interrogation", "Une majuscule", "Un point", "Un point ?"]},
+    "conversionsActuels": {"quoi": "proposition", "valeurs": ["4 tonnes", "400 tonnes", "4000000 tonnes", "5 tonnes", "500 tonnes", "5000000 tonnes"]},
+    "conversionsCandidats": {"quoi": "proposition", "valeurs": ["4 t", "400 t", "4000000 t", "4 000 000 t", "40 tonnes", "4000 tonnes", "40000 tonnes"]},
+    "grandsNombresEnonces": {"quoi": "enonce", "valeurs": ["Écris en chiffres : quarante mille sept cent cinq.", "quarante mille sept cent cinq.", "Écris en chiffres : trois cent cinq mille quatre cent vingt-et-un.", "trois cent cinq mille quatre cent vingt-et-un.", "Écris en chiffres : quatre cent cinquante-deux mille.", "quatre cent cinquante-deux mille.", "Écris en chiffres : quatre-vingt-dix mille quatre-vingt-dix.", "quatre-vingt-dix mille quatre-vingt-dix."]}
+  },
+  "indices": [],
+  "cas": [
+    {"nom": "reperes - triplet le plus large actuel", "consigne": "Que manque-t-il ?", "enonce": "le chat dort sur le tapis.", "libelles": ["Majuscule au prénom", "Majuscule initiale", "Phrase correcte"], "indice": "Court."},
+    {"nom": "reperes - triplet court candidat A", "consigne": "Que manque-t-il ?", "enonce": "le chat dort sur le tapis.", "libelles": ["Majuscule", "Prénom", "Correct"], "indice": "Court."},
+    {"nom": "reperes - triplet court candidat B", "consigne": "Que manque-t-il ?", "enonce": "le chat dort sur le tapis.", "libelles": ["Une majuscule", "Un point", "Un point ?"], "indice": "Court."},
+    {"nom": "conversions - triplet actuel", "consigne": "Convertis dans la bonne unité !", "enonce": "4000 kg, combien de tonnes ?", "libelles": ["4 tonnes", "400 tonnes", "4000000 tonnes"], "indice": "Court."},
+    {"nom": "conversions - triplet en symbole t", "consigne": "Convertis dans la bonne unité !", "enonce": "4000 kg, combien de tonnes ?", "libelles": ["4 t", "400 t", "4000000 t"], "indice": "Court."},
+    {"nom": "grands-nombres - enonce sans le prefixe", "consigne": "Lis, écris, décompose ou compare !", "enonce": "quarante mille sept cent cinq.", "libelles": ["1", "2", "3"], "indice": "Court."}
+  ]
+}

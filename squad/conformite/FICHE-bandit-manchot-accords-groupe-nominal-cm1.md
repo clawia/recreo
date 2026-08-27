@@ -155,3 +155,27 @@ enfant d'apprendre l'accord dans le groupe nominal avec ce jeu.
 **Ce que ce Done ne couvre pas** : ce qu'un lecteur d'ecran annonce, ce qu'un enfant reel comprend, et
 tout rendu sur une largeur, une hauteur ou une pile de polices que je n'ai pas mesurees - en
 particulier la bande 576-719 px, ou les items a quatre propositions n'ont pas ete mesures.
+
+
+---
+
+## Renvoi date du 2026-08-27 (s21) - `nadia-prof`, arbitrage `S21-3`
+
+**Le paquet entier a ete joue item par item pour la premiere fois** (24 items, 744 x 551,
+2026-08-27, releve `releves-s21/s21-nadia-paquet-entier-cm1-accords-groupe-nominal-744x551.json`) :
+**8 items sur 24 ont leur indice sous le pli apres un echec**, et ils y restent avec `S21-2`. Le
+releve de catalogue n'en voyait que 3, parce qu'il ne joue qu'une partie de dix manches par jeu.
+
+**La cause n'est ni l'enonce ni la largeur des libelles** : les 8 items portent quatre propositions,
+et `.propositions:has(.proposition:nth-child(4)) .proposition { flex: 1 1 calc(50% - 0.5rem) }`
+impose un damier de deux fois deux quelle que soit la largeur. **Sept des huit tiendraient sous les
+464 px offerts a une rangee de quatre** (sommes mesurees de 234,52 a 542,38 px).
+
+**`ACC-1` (2026-08-27) : je n'autorise aucun retrait de proposition sur ces 8 items.** Les quatre
+propositions sont les quatre formes d'accord du meme adjectif, et leur confrontation en un seul
+ecran **est** l'item. Il n'y a pas a payer en contenu ce qu'une declaration de forme impose.
+**`ACC-2`** route le symptome de forme a `ines-design` et `theo-archi`, sans que je tranche la cause.
+
+Le texte complet, avec les commandes de mesure, les releves et les conditions numerotees, est dans
+`FICHE-bandit-manchot-reperes-cm1.md`, section "Arbitrage du 2026-08-27 (s21) - `S21-3`". Il n'est
+pas recopie ici pour qu'il ne puisse pas y pourrir a moitie.

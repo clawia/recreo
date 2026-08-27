@@ -1,0 +1,2652 @@
+{
+  "items": {
+    "Dans la classe, il y a vingt ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Dans la classe, il y a vingt ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.06,
+            92.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "élève",
+            "élèves"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 170.2,
+          "texteIndice": "Le mot 'vingt' annonce le pluriel : il faut le nom au pluriel."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Dans la classe, il y a vingt ___.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.06,
+            92.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "élève",
+            "élèves"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 170.2,
+          "texteIndice": "Le mot 'vingt' annonce le pluriel : il faut le nom au pluriel."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Dans la classe, il y a vingt ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.06,
+            92.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "élève",
+            "élèves"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 170.2,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Dans la classe, il y a vingt ___.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.06,
+            92.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "élève",
+            "élèves"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 170.2,
+          "texteIndice": null
+        }
+      }
+    },
+    "Des chats ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 595.19,
+          "basVerdict": 486.19,
+          "defilement": 0,
+          "enonce": "Des chats ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            73.07,
+            70.33,
+            56.95,
+            86.26
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "noire",
+            "noirs",
+            "noir",
+            "noires"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 286.61,
+          "texteIndice": "Le nom 'chats' est masculin pluriel : l'adjectif doit être accordé au masculin pluriel."
+        },
+        "sans": {
+          "basIndice": 619.19,
+          "basVerdict": 510.19,
+          "defilement": 0,
+          "enonce": "Des chats ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            73.07,
+            70.33,
+            56.95,
+            86.26
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "noire",
+            "noirs",
+            "noir",
+            "noires"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 286.61,
+          "texteIndice": "Le nom 'chats' est masculin pluriel : l'adjectif doit être accordé au masculin pluriel."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 486.19,
+          "defilement": 0,
+          "enonce": "Des chats ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            73.07,
+            70.33,
+            56.95,
+            86.26
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "noire",
+            "noirs",
+            "noir",
+            "noires"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 286.61,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 510.19,
+          "defilement": 0,
+          "enonce": "Des chats ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            73.07,
+            70.33,
+            56.95,
+            86.26
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "noire",
+            "noirs",
+            "noir",
+            "noires"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 286.61,
+          "texteIndice": null
+        }
+      }
+    },
+    "La maison est ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 595.19,
+          "basVerdict": 486.19,
+          "defilement": 0,
+          "enonce": "La maison est ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            112.81,
+            96.58,
+            83.38,
+            99.61
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "grandes",
+            "grands",
+            "grand",
+            "grande"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 392.38,
+          "texteIndice": "Le nom 'maison' est féminin singulier : l'adjectif doit être accordé au féminin singulier."
+        },
+        "sans": {
+          "basIndice": 619.19,
+          "basVerdict": 510.19,
+          "defilement": 0,
+          "enonce": "La maison est ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            112.81,
+            96.58,
+            83.38,
+            99.61
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "grandes",
+            "grands",
+            "grand",
+            "grande"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 392.38,
+          "texteIndice": "Le nom 'maison' est féminin singulier : l'adjectif doit être accordé au féminin singulier."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 486.19,
+          "defilement": 0,
+          "enonce": "La maison est ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            112.81,
+            96.58,
+            83.38,
+            99.61
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "grandes",
+            "grands",
+            "grand",
+            "grande"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 392.38,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 510.19,
+          "defilement": 0,
+          "enonce": "La maison est ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            112.81,
+            96.58,
+            83.38,
+            99.61
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "grandes",
+            "grands",
+            "grand",
+            "grande"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 392.38,
+          "texteIndice": null
+        }
+      }
+    },
+    "Le ballon est ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 595.19,
+          "basVerdict": 486.19,
+          "defilement": 0,
+          "enonce": "Le ballon est ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            83.12,
+            80.08,
+            66.88,
+            96.31
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "ronde",
+            "ronds",
+            "rond",
+            "rondes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 326.39,
+          "texteIndice": "Le nom 'ballon' est masculin singulier : l'adjectif doit être accordé au masculin singulier."
+        },
+        "sans": {
+          "basIndice": 619.19,
+          "basVerdict": 510.19,
+          "defilement": 0,
+          "enonce": "Le ballon est ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            83.12,
+            80.08,
+            66.88,
+            96.31
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "ronde",
+            "ronds",
+            "rond",
+            "rondes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 326.39,
+          "texteIndice": "Le nom 'ballon' est masculin singulier : l'adjectif doit être accordé au masculin singulier."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Le ballon est ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            83.12,
+            80.08,
+            66.88,
+            96.31
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "ronde",
+            "ronds",
+            "rond",
+            "rondes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 326.39,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Le ballon est ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            83.12,
+            80.08,
+            66.88,
+            96.31
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "ronde",
+            "ronds",
+            "rond",
+            "rondes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 326.39,
+          "texteIndice": null
+        }
+      }
+    },
+    "Le chat attrape une ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Le chat attrape une ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.25,
+            86.33
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "balle",
+            "balles"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 158.58,
+          "texteIndice": "'une' annonce le singulier : il faut le nom au singulier."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Le chat attrape une ___.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.25,
+            86.33
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "balle",
+            "balles"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 158.58,
+          "texteIndice": "'une' annonce le singulier : il faut le nom au singulier."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Le chat attrape une ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.25,
+            86.33
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "balle",
+            "balles"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 158.58,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Le chat attrape une ___.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.25,
+            86.33
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "balle",
+            "balles"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 158.58,
+          "texteIndice": null
+        }
+      }
+    },
+    "Le fermier a un seul ___ dans le pré.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Le fermier a un seul ___ dans le pré.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            95.11,
+            123.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "cheval",
+            "chevaux"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 218.16,
+          "texteIndice": "'un seul' annonce le singulier : il faut le nom au singulier."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Le fermier a un seul ___ dans le pré.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            95.11,
+            123.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "cheval",
+            "chevaux"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 218.16,
+          "texteIndice": "'un seul' annonce le singulier : il faut le nom au singulier."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Le fermier a un seul ___ dans le pré.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            95.11,
+            123.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "cheval",
+            "chevaux"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 218.16,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Le fermier a un seul ___ dans le pré.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            95.11,
+            123.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "cheval",
+            "chevaux"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 218.16,
+          "texteIndice": null
+        }
+      }
+    },
+    "Les enfants ramassent des ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Les enfants ramassent des ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            107.61,
+            93.53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "feuilles",
+            "feuille"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 201.14,
+          "texteIndice": "Le mot 'des' annonce le pluriel : il faut le nom au pluriel."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Les enfants ramassent des ___.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            107.61,
+            93.53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "feuilles",
+            "feuille"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 201.14,
+          "texteIndice": "Le mot 'des' annonce le pluriel : il faut le nom au pluriel."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Les enfants ramassent des ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            107.61,
+            93.53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "feuilles",
+            "feuille"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 201.14,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Les enfants ramassent des ___.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            107.61,
+            93.53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "feuilles",
+            "feuille"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 201.14,
+          "texteIndice": null
+        }
+      }
+    },
+    "Les fleurs sont ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 595.19,
+          "basVerdict": 486.19,
+          "defilement": 0,
+          "enonce": "Les fleurs sont ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            73.34,
+            57.11,
+            43.92,
+            60.15
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "jolies",
+            "jolis",
+            "joli",
+            "jolie"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 234.52,
+          "texteIndice": "Le nom 'fleurs' est féminin pluriel : l'adjectif doit être accordé au féminin pluriel."
+        },
+        "sans": {
+          "basIndice": 619.19,
+          "basVerdict": 510.19,
+          "defilement": 0,
+          "enonce": "Les fleurs sont ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            73.34,
+            57.11,
+            43.92,
+            60.15
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "jolies",
+            "jolis",
+            "joli",
+            "jolie"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 234.52,
+          "texteIndice": "Le nom 'fleurs' est féminin pluriel : l'adjectif doit être accordé au féminin pluriel."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 486.19,
+          "defilement": 0,
+          "enonce": "Les fleurs sont ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            73.34,
+            57.11,
+            43.92,
+            60.15
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "jolies",
+            "jolis",
+            "joli",
+            "jolie"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 234.52,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 510.19,
+          "defilement": 0,
+          "enonce": "Les fleurs sont ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            73.34,
+            57.11,
+            43.92,
+            60.15
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "jolies",
+            "jolis",
+            "joli",
+            "jolie"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 234.52,
+          "texteIndice": null
+        }
+      }
+    },
+    "Les garçons sont ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 595.19,
+          "basVerdict": 486.19,
+          "defilement": 0,
+          "enonce": "Les garçons sont ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            82.82,
+            96.02,
+            79.91,
+            66.71
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "petite",
+            "petites",
+            "petits",
+            "petit"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 325.46,
+          "texteIndice": "Le nom 'garçons' est masculin pluriel : l'adjectif doit être accordé au masculin pluriel."
+        },
+        "sans": {
+          "basIndice": 619.19,
+          "basVerdict": 510.19,
+          "defilement": 0,
+          "enonce": "Les garçons sont ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            82.82,
+            96.02,
+            79.91,
+            66.71
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "petite",
+            "petites",
+            "petits",
+            "petit"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 325.46,
+          "texteIndice": "Le nom 'garçons' est masculin pluriel : l'adjectif doit être accordé au masculin pluriel."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 486.19,
+          "defilement": 0,
+          "enonce": "Les garçons sont ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            82.82,
+            96.02,
+            79.91,
+            66.71
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "petite",
+            "petites",
+            "petits",
+            "petit"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 325.46,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 510.19,
+          "defilement": 0,
+          "enonce": "Les garçons sont ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            82.82,
+            96.02,
+            79.91,
+            66.71
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "petite",
+            "petites",
+            "petits",
+            "petit"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 325.46,
+          "texteIndice": null
+        }
+      }
+    },
+    "Les histoires sont ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 595.19,
+          "basVerdict": 486.19,
+          "defilement": 0,
+          "enonce": "Les histoires sont ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            120.94,
+            137.05,
+            134.14,
+            150.25
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "amusant",
+            "amusante",
+            "amusants",
+            "amusantes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 542.38,
+          "texteIndice": "Le nom 'histoires' est féminin pluriel : l'adjectif doit être accordé au féminin pluriel."
+        },
+        "sans": {
+          "basIndice": 619.19,
+          "basVerdict": 510.19,
+          "defilement": 0,
+          "enonce": "Les histoires sont ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            120.94,
+            137.05,
+            134.14,
+            150.25
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "amusant",
+            "amusante",
+            "amusants",
+            "amusantes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 542.38,
+          "texteIndice": "Le nom 'histoires' est féminin pluriel : l'adjectif doit être accordé au féminin pluriel."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Les histoires sont ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            120.94,
+            137.05,
+            134.14,
+            150.25
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "amusant",
+            "amusante",
+            "amusants",
+            "amusantes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 542.38,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Les histoires sont ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            120.94,
+            137.05,
+            134.14,
+            150.25
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "amusant",
+            "amusante",
+            "amusants",
+            "amusantes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 542.38,
+          "texteIndice": null
+        }
+      }
+    },
+    "Léa a acheté ___ ballon rouge.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 519.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Léa a acheté ___ ballon rouge.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            56.03,
+            51.2,
+            38.72
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "une",
+            "des",
+            "un"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 145.95,
+          "texteIndice": "Le nom 'ballon' est masculin singulier : il faut un déterminant masculin singulier."
+        },
+        "sans": {
+          "basIndice": 535.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Léa a acheté ___ ballon rouge.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            56.03,
+            51.2,
+            38.72
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "une",
+            "des",
+            "un"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 145.95,
+          "texteIndice": "Le nom 'ballon' est masculin singulier : il faut un déterminant masculin singulier."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Léa a acheté ___ ballon rouge.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            56.03,
+            51.2,
+            38.72
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "une",
+            "des",
+            "un"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 145.95,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Léa a acheté ___ ballon rouge.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            56.03,
+            51.2,
+            38.72
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "une",
+            "des",
+            "un"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 145.95,
+          "texteIndice": null
+        }
+      }
+    },
+    "Léa a cueilli trois ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Léa a cueilli trois ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            70.92,
+            85.19
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "fleur",
+            "fleurs"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 156.11,
+          "texteIndice": "Le mot 'trois' annonce le pluriel : il faut le nom au pluriel."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Léa a cueilli trois ___.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            70.92,
+            85.19
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "fleur",
+            "fleurs"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 156.11,
+          "texteIndice": "Le mot 'trois' annonce le pluriel : il faut le nom au pluriel."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Léa a cueilli trois ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            70.92,
+            85.19
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "fleur",
+            "fleurs"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 156.11,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Léa a cueilli trois ___.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            70.92,
+            85.19
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "fleur",
+            "fleurs"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 156.11,
+          "texteIndice": null
+        }
+      }
+    },
+    "Léa porte une ___ neuve.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Léa porte une ___ neuve.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            69.33,
+            83.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "robe",
+            "robes"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 152.74,
+          "texteIndice": "'une' annonce le singulier : il faut le nom au singulier."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Léa porte une ___ neuve.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            69.33,
+            83.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "robe",
+            "robes"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 152.74,
+          "texteIndice": "'une' annonce le singulier : il faut le nom au singulier."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Léa porte une ___ neuve.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            69.33,
+            83.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "robe",
+            "robes"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 152.74,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Léa porte une ___ neuve.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            69.33,
+            83.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "robe",
+            "robes"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 152.74,
+          "texteIndice": null
+        }
+      }
+    },
+    "Léa range ___ cahiers dans son sac.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Léa range ___ cahiers dans son sac.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            45.47,
+            31.3,
+            53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "ses",
+            "sa",
+            "son"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 129.77,
+          "texteIndice": "Le nom 'cahiers' est au pluriel : il faut un déterminant pluriel."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Léa range ___ cahiers dans son sac.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            45.47,
+            31.3,
+            53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "ses",
+            "sa",
+            "son"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 129.77,
+          "texteIndice": "Le nom 'cahiers' est au pluriel : il faut un déterminant pluriel."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Léa range ___ cahiers dans son sac.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            45.47,
+            31.3,
+            53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "ses",
+            "sa",
+            "son"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 129.77,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Léa range ___ cahiers dans son sac.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            45.47,
+            31.3,
+            53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "ses",
+            "sa",
+            "son"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 129.77,
+          "texteIndice": null
+        }
+      }
+    },
+    "Nous avons vu ___ voiture bleue.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 519.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Nous avons vu ___ voiture bleue.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            56.03,
+            38.72,
+            51.2
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "une",
+            "un",
+            "des"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 145.95,
+          "texteIndice": "Le nom 'voiture' est féminin singulier : il faut un déterminant féminin singulier."
+        },
+        "sans": {
+          "basIndice": 535.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Nous avons vu ___ voiture bleue.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            56.03,
+            38.72,
+            51.2
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "une",
+            "un",
+            "des"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 145.95,
+          "texteIndice": "Le nom 'voiture' est féminin singulier : il faut un déterminant féminin singulier."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Nous avons vu ___ voiture bleue.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            56.03,
+            38.72,
+            51.2
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "une",
+            "un",
+            "des"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 145.95,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Nous avons vu ___ voiture bleue.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            56.03,
+            38.72,
+            51.2
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "une",
+            "un",
+            "des"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 145.95,
+          "texteIndice": null
+        }
+      }
+    },
+    "Range ___ crayons dans la trousse.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Range ___ crayons dans la trousse.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.77,
+            32.67,
+            46.75
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cette",
+            "ce",
+            "ces"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 154.19,
+          "texteIndice": "Le nom 'crayons' est au pluriel : il faut un déterminant pluriel."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Range ___ crayons dans la trousse.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.77,
+            32.67,
+            46.75
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cette",
+            "ce",
+            "ces"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 154.19,
+          "texteIndice": "Le nom 'crayons' est au pluriel : il faut un déterminant pluriel."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Range ___ crayons dans la trousse.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.77,
+            32.67,
+            46.75
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cette",
+            "ce",
+            "ces"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 154.19,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Range ___ crayons dans la trousse.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.77,
+            32.67,
+            46.75
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cette",
+            "ce",
+            "ces"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 154.19,
+          "texteIndice": null
+        }
+      }
+    },
+    "Regarde ___ chien là-bas !": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 519.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Regarde ___ chien là-bas !",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.77,
+            46.75,
+            32.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cette",
+            "ces",
+            "ce"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 154.19,
+          "texteIndice": "Le nom 'chien' est masculin singulier : il faut un déterminant masculin singulier."
+        },
+        "sans": {
+          "basIndice": 535.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Regarde ___ chien là-bas !",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.77,
+            46.75,
+            32.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cette",
+            "ces",
+            "ce"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 154.19,
+          "texteIndice": "Le nom 'chien' est masculin singulier : il faut un déterminant masculin singulier."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Regarde ___ chien là-bas !",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.77,
+            46.75,
+            32.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cette",
+            "ces",
+            "ce"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 154.19,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Regarde ___ chien là-bas !",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.77,
+            46.75,
+            32.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cette",
+            "ces",
+            "ce"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 154.19,
+          "texteIndice": null
+        }
+      }
+    },
+    "Sur la table, il y a quatre ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Sur la table, il y a quatre ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            127.95,
+            113.88
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "assiettes",
+            "assiette"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 241.83,
+          "texteIndice": "Le mot 'quatre' annonce le pluriel : il faut le nom au pluriel."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Sur la table, il y a quatre ___.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            127.95,
+            113.88
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "assiettes",
+            "assiette"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 241.83,
+          "texteIndice": "Le mot 'quatre' annonce le pluriel : il faut le nom au pluriel."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Sur la table, il y a quatre ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            127.95,
+            113.88
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "assiettes",
+            "assiette"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 241.83,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Sur la table, il y a quatre ___.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            127.95,
+            113.88
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "assiettes",
+            "assiette"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 241.83,
+          "texteIndice": null
+        }
+      }
+    },
+    "Tom a perdu ___ gomme préférée.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 519.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Tom a perdu ___ gomme préférée.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            31.3,
+            45.47,
+            53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sa",
+            "ses",
+            "son"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 129.77,
+          "texteIndice": "Le nom 'gomme' est féminin singulier : il faut un déterminant féminin singulier."
+        },
+        "sans": {
+          "basIndice": 535.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Tom a perdu ___ gomme préférée.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            31.3,
+            45.47,
+            53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sa",
+            "ses",
+            "son"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 129.77,
+          "texteIndice": "Le nom 'gomme' est féminin singulier : il faut un déterminant féminin singulier."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Tom a perdu ___ gomme préférée.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            31.3,
+            45.47,
+            53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sa",
+            "ses",
+            "son"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 129.77,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Tom a perdu ___ gomme préférée.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            31.3,
+            45.47,
+            53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sa",
+            "ses",
+            "son"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 129.77,
+          "texteIndice": null
+        }
+      }
+    },
+    "Tom a un seul ___ dans sa trousse.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Tom a un seul ___ dans sa trousse.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            101.14,
+            115.22
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "crayon",
+            "crayons"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 216.36,
+          "texteIndice": "'un seul' annonce le singulier : il faut le nom au singulier."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Tom a un seul ___ dans sa trousse.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            101.14,
+            115.22
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "crayon",
+            "crayons"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 216.36,
+          "texteIndice": "'un seul' annonce le singulier : il faut le nom au singulier."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Tom a un seul ___ dans sa trousse.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            101.14,
+            115.22
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "crayon",
+            "crayons"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 216.36,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Tom a un seul ___ dans sa trousse.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            101.14,
+            115.22
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 2,
+          "policeProposition": "32px",
+          "propositions": [
+            "crayon",
+            "crayons"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 216.36,
+          "texteIndice": null
+        }
+      }
+    },
+    "Un gâteau ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 595.19,
+          "basVerdict": 486.19,
+          "defilement": 0,
+          "enonce": "Un gâteau ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            114.76,
+            85.33,
+            101.56,
+            98.53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "chaudes",
+            "chaud",
+            "chaude",
+            "chauds"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 400.18,
+          "texteIndice": "Le nom 'gâteau' est masculin singulier : l'adjectif doit être accordé au masculin singulier."
+        },
+        "sans": {
+          "basIndice": 619.19,
+          "basVerdict": 510.19,
+          "defilement": 0,
+          "enonce": "Un gâteau ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            114.76,
+            85.33,
+            101.56,
+            98.53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "chaudes",
+            "chaud",
+            "chaude",
+            "chauds"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 400.18,
+          "texteIndice": "Le nom 'gâteau' est masculin singulier : l'adjectif doit être accordé au masculin singulier."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 486.19,
+          "defilement": 0,
+          "enonce": "Un gâteau ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            114.76,
+            85.33,
+            101.56,
+            98.53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "chaudes",
+            "chaud",
+            "chaude",
+            "chauds"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 400.18,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 510.19,
+          "defilement": 0,
+          "enonce": "Un gâteau ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            114.76,
+            85.33,
+            101.56,
+            98.53
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "chaudes",
+            "chaud",
+            "chaude",
+            "chauds"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 400.18,
+          "texteIndice": null
+        }
+      }
+    },
+    "Une pomme ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 595.19,
+          "basVerdict": 486.19,
+          "defilement": 0,
+          "enonce": "Une pomme ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.79,
+            56.67,
+            69.87,
+            85.99
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "verte",
+            "vert",
+            "verts",
+            "vertes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 285.32,
+          "texteIndice": "Le nom 'pomme' est féminin singulier : l'adjectif doit être accordé au féminin singulier."
+        },
+        "sans": {
+          "basIndice": 619.19,
+          "basVerdict": 510.19,
+          "defilement": 0,
+          "enonce": "Une pomme ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.79,
+            56.67,
+            69.87,
+            85.99
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "verte",
+            "vert",
+            "verts",
+            "vertes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 285.32,
+          "texteIndice": "Le nom 'pomme' est féminin singulier : l'adjectif doit être accordé au féminin singulier."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 486.19,
+          "defilement": 0,
+          "enonce": "Une pomme ___.",
+          "hauteurBouton": 63,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.79,
+            56.67,
+            69.87,
+            85.99
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "verte",
+            "vert",
+            "verts",
+            "vertes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 285.32,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 510.19,
+          "defilement": 0,
+          "enonce": "Une pomme ___.",
+          "hauteurBouton": 71,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.79,
+            56.67,
+            69.87,
+            85.99
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 4,
+          "policeProposition": "30px",
+          "propositions": [
+            "verte",
+            "vert",
+            "verts",
+            "vertes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 285.32,
+          "texteIndice": null
+        }
+      }
+    },
+    "___ chat dort sur le canapé.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 519.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "___ chat dort sur le canapé.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            47.75,
+            33.58,
+            33.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Les",
+            "La",
+            "Le"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 115,
+          "texteIndice": "Le nom 'chat' est masculin singulier : il faut un déterminant masculin singulier."
+        },
+        "sans": {
+          "basIndice": 535.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "___ chat dort sur le canapé.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            47.75,
+            33.58,
+            33.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Les",
+            "La",
+            "Le"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 115,
+          "texteIndice": "Le nom 'chat' est masculin singulier : il faut un déterminant masculin singulier."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "___ chat dort sur le canapé.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            47.75,
+            33.58,
+            33.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Les",
+            "La",
+            "Le"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 115,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "___ chat dort sur le canapé.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            47.75,
+            33.58,
+            33.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Les",
+            "La",
+            "Le"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 115,
+          "texteIndice": null
+        }
+      }
+    },
+    "___ fleurs sentent très bon.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "___ fleurs sentent très bon.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            33.67,
+            33.58,
+            47.75
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Le",
+            "La",
+            "Les"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 115,
+          "texteIndice": "Le nom 'fleurs' est au pluriel : il faut un déterminant pluriel."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "___ fleurs sentent très bon.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            33.67,
+            33.58,
+            47.75
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Le",
+            "La",
+            "Les"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 115,
+          "texteIndice": "Le nom 'fleurs' est au pluriel : il faut un déterminant pluriel."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "___ fleurs sentent très bon.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            33.67,
+            33.58,
+            47.75
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Le",
+            "La",
+            "Les"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 115,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "___ fleurs sentent très bon.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            33.67,
+            33.58,
+            47.75
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Le",
+            "La",
+            "Les"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 115,
+          "texteIndice": null
+        }
+      }
+    }
+  },
+  "itemsVus": 24,
+  "jeu": "bandit-manchot-accords-groupe-nominal-cm1",
+  "parties": 5,
+  "pli": 551,
+  "viewport": [
+    744,
+    551
+  ]
+}

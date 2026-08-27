@@ -10904,3 +10904,28 @@ davantage aujourd'hui, et elles ne sont tenues que parce que je joue.
 - **Non mesure, et je le dis plutot que de le supposer** : l'atteignabilite d'un bouton recouvert
   **au clavier**. Un `Tab` fait defiler la page et decollerait vraisemblablement le bloc. Je ne l'ai
   pas verifie, et cela ne sauverait de toute facon que l'enfant qui joue au clavier.
+
+
+---
+
+## Renvoi date du 2026-08-27 (s21) - `nadia-prof`, arbitrage `S21-3`
+
+**Mon acquis 7 du 2026-08-11 et son amendement du 2026-08-27 (axe vertical de `.proposition` a
+0,5 rem) sont confirmes et ne bougent pas.** Ce renvoi note seulement la consequence trouvee par
+`marc-dev` en livrant `S21-2` : a 0,5 rem, `.proposition` (role **action**) declare **moins** que
+`.lien-accueil` (role **sortie**, 0,6 rem) sur l'axe haut/bas, ce qu'`ADR-0017` interdit.
+
+**Mesure du 2026-08-27 a 744 x 551, ecran de manche** : le plus petit bouton d'action rend 66,00 px
+de haut et 19 382 px2 de surface ; le bouton de sortie rend 53,19 px et 5 788 px2. **L'action fait
+3,35 fois la surface de la sortie** ; l'inversion declaree vaut 1,6 px par cote. Pour l'enfant, elle
+ne vaut rien.
+
+**Je n'ai pourtant retenu ni de remonter `.proposition` - ce serait reprendre un gain accorde le
+matin pour 1,6 px invisibles - ni de declarer l'inversion acceptable - un ADR declaratif dont on
+accepte une exception au motif que le rendu va bien cesse de garder quoi que ce soit.** C'est le
+rembourrage de la **sortie** qui descend (`SOR-1` a `SOR-4`), le plancher tactile de 2,75 rem restant
+tenu.
+
+Le texte complet, avec les commandes de mesure, les releves et les conditions numerotees, est dans
+`FICHE-bandit-manchot-reperes-cm1.md`, section "Arbitrage du 2026-08-27 (s21) - `S21-3`". Il n'est
+pas recopie ici pour qu'il ne puisse pas y pourrir a moitie.

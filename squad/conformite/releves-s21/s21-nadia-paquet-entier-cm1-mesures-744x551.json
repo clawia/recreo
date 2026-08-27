@@ -1,0 +1,2652 @@
+{
+  "items": {
+    "2 kg, combien de g ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "2 kg, combien de g ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            83.86,
+            65.45,
+            102.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "200 g",
+            "20 g",
+            "2000 g"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 251.58,
+          "texteIndice": "1 kg, c'est 1000 g."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "2 kg, combien de g ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            83.86,
+            65.45,
+            102.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "200 g",
+            "20 g",
+            "2000 g"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 251.58,
+          "texteIndice": "1 kg, c'est 1000 g."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "2 kg, combien de g ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            83.86,
+            65.45,
+            102.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "200 g",
+            "20 g",
+            "2000 g"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 251.58,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "2 kg, combien de g ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            83.86,
+            65.45,
+            102.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "200 g",
+            "20 g",
+            "2000 g"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 251.58,
+          "texteIndice": null
+        }
+      }
+    },
+    "2 m, combien de mm ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "2 m, combien de mm ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            122.67,
+            141.08,
+            104.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "200 mm",
+            "2000 mm",
+            "20 mm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 368.02,
+          "texteIndice": "1 m, c'est 1000 mm."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "2 m, combien de mm ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            122.67,
+            141.08,
+            104.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "200 mm",
+            "2000 mm",
+            "20 mm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 368.02,
+          "texteIndice": "1 m, c'est 1000 mm."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "2 m, combien de mm ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            122.67,
+            141.08,
+            104.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "200 mm",
+            "2000 mm",
+            "20 mm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 368.02,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "2 m, combien de mm ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            122.67,
+            141.08,
+            104.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "200 mm",
+            "2000 mm",
+            "20 mm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 368.02,
+          "texteIndice": null
+        }
+      }
+    },
+    "3 L, combien de ml ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "3 L, combien de ml ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            102.45,
+            120.86,
+            84.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "300 ml",
+            "3000 ml",
+            "30 ml"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.36,
+          "texteIndice": "1 L, c'est 1000 ml."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "3 L, combien de ml ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            102.45,
+            120.86,
+            84.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "300 ml",
+            "3000 ml",
+            "30 ml"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.36,
+          "texteIndice": "1 L, c'est 1000 ml."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "3 L, combien de ml ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            102.45,
+            120.86,
+            84.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "300 ml",
+            "3000 ml",
+            "30 ml"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.36,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "3 L, combien de ml ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            102.45,
+            120.86,
+            84.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "300 ml",
+            "3000 ml",
+            "30 ml"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.36,
+          "texteIndice": null
+        }
+      }
+    },
+    "3 km, combien de m ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "3 km, combien de m ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.95,
+            111.77,
+            93.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "30 m",
+            "3000 m",
+            "300 m"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 280.08,
+          "texteIndice": "1 km, c'est 1000 m."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "3 km, combien de m ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.95,
+            111.77,
+            93.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "30 m",
+            "3000 m",
+            "300 m"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 280.08,
+          "texteIndice": "1 km, c'est 1000 m."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "3 km, combien de m ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.95,
+            111.77,
+            93.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "30 m",
+            "3000 m",
+            "300 m"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 280.08,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "3 km, combien de m ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.95,
+            111.77,
+            93.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "30 m",
+            "3000 m",
+            "300 m"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 280.08,
+          "texteIndice": null
+        }
+      }
+    },
+    "3 tonnes, combien de kg ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "3 tonnes, combien de kg ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.7,
+            101.3,
+            82.89
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3000 kg",
+            "300 kg",
+            "30 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 303.89,
+          "texteIndice": "1 tonne, c'est 1000 kg."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "3 tonnes, combien de kg ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.7,
+            101.3,
+            82.89
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3000 kg",
+            "300 kg",
+            "30 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 303.89,
+          "texteIndice": "1 tonne, c'est 1000 kg."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "3 tonnes, combien de kg ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.7,
+            101.3,
+            82.89
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3000 kg",
+            "300 kg",
+            "30 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 303.89,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "3 tonnes, combien de kg ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.7,
+            101.3,
+            82.89
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3000 kg",
+            "300 kg",
+            "30 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 303.89,
+          "texteIndice": null
+        }
+      }
+    },
+    "4 L, combien de cl ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "4 L, combien de cl ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            88.5,
+            106.91,
+            70.09
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 cl",
+            "4000 cl",
+            "40 cl"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 265.5,
+          "texteIndice": "1 L, c'est 100 cl."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "4 L, combien de cl ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            88.5,
+            106.91,
+            70.09
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 cl",
+            "4000 cl",
+            "40 cl"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 265.5,
+          "texteIndice": "1 L, c'est 100 cl."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "4 L, combien de cl ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            88.5,
+            106.91,
+            70.09
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 cl",
+            "4000 cl",
+            "40 cl"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 265.5,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "4 L, combien de cl ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            88.5,
+            106.91,
+            70.09
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 cl",
+            "4000 cl",
+            "40 cl"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 265.5,
+          "texteIndice": null
+        }
+      }
+    },
+    "4 kg, combien de g ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "4 kg, combien de g ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            83.86,
+            65.45,
+            102.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 g",
+            "40 g",
+            "4000 g"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 251.58,
+          "texteIndice": "1 kg, c'est 1000 g."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "4 kg, combien de g ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            83.86,
+            65.45,
+            102.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 g",
+            "40 g",
+            "4000 g"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 251.58,
+          "texteIndice": "1 kg, c'est 1000 g."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "4 kg, combien de g ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            83.86,
+            65.45,
+            102.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 g",
+            "40 g",
+            "4000 g"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 251.58,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "4 kg, combien de g ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            83.86,
+            65.45,
+            102.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 g",
+            "40 g",
+            "4000 g"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 251.58,
+          "texteIndice": null
+        }
+      }
+    },
+    "4 m, combien de cm ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "4 m, combien de cm ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            127.13,
+            108.72,
+            90.31
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "4000 cm",
+            "400 cm",
+            "40 cm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 326.16,
+          "texteIndice": "1 m, c'est 100 cm."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "4 m, combien de cm ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            127.13,
+            108.72,
+            90.31
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "4000 cm",
+            "400 cm",
+            "40 cm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 326.16,
+          "texteIndice": "1 m, c'est 100 cm."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "4 m, combien de cm ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            127.13,
+            108.72,
+            90.31
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "4000 cm",
+            "400 cm",
+            "40 cm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 326.16,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "4 m, combien de cm ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            127.13,
+            108.72,
+            90.31
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "4000 cm",
+            "400 cm",
+            "40 cm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 326.16,
+          "texteIndice": null
+        }
+      }
+    },
+    "4000 kg, combien de tonnes ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "4000 kg, combien de tonnes ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            129.23,
+            166.05,
+            239.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "4 tonnes",
+            "400 tonnes",
+            "4000000 tonnes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 534.95,
+          "texteIndice": "1 tonne, c'est 1000 kg."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "4000 kg, combien de tonnes ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            129.23,
+            166.05,
+            239.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "4 tonnes",
+            "400 tonnes",
+            "4000000 tonnes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 534.95,
+          "texteIndice": "1 tonne, c'est 1000 kg."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "4000 kg, combien de tonnes ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            129.23,
+            166.05,
+            239.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "4 tonnes",
+            "400 tonnes",
+            "4000000 tonnes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 534.95,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "4000 kg, combien de tonnes ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            129.23,
+            166.05,
+            239.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "4 tonnes",
+            "400 tonnes",
+            "4000000 tonnes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 534.95,
+          "texteIndice": null
+        }
+      }
+    },
+    "4000 ml, combien de L ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "4000 ml, combien de L ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            154.03,
+            80.41,
+            43.59
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "4000000 L",
+            "400 L",
+            "4 L"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 278.03,
+          "texteIndice": "1 L, c'est 1000 ml."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "4000 ml, combien de L ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            154.03,
+            80.41,
+            43.59
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "4000000 L",
+            "400 L",
+            "4 L"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 278.03,
+          "texteIndice": "1 L, c'est 1000 ml."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "4000 ml, combien de L ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            154.03,
+            80.41,
+            43.59
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "4000000 L",
+            "400 L",
+            "4 L"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 278.03,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "4000 ml, combien de L ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            154.03,
+            80.41,
+            43.59
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "4000000 L",
+            "400 L",
+            "4 L"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 278.03,
+          "texteIndice": null
+        }
+      }
+    },
+    "500 cm, combien de m ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "500 cm, combien de m ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            130.17,
+            74.95,
+            56.55
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "50000 m",
+            "50 m",
+            "5 m"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 261.67,
+          "texteIndice": "1 m, c'est 100 cm."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "500 cm, combien de m ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            130.17,
+            74.95,
+            56.55
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "50000 m",
+            "50 m",
+            "5 m"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 261.67,
+          "texteIndice": "1 m, c'est 100 cm."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "500 cm, combien de m ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            130.17,
+            74.95,
+            56.55
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "50000 m",
+            "50 m",
+            "5 m"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 261.67,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "500 cm, combien de m ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            130.17,
+            74.95,
+            56.55
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "50000 m",
+            "50 m",
+            "5 m"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 261.67,
+          "texteIndice": null
+        }
+      }
+    },
+    "5000 kg, combien de tonnes ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "5000 kg, combien de tonnes ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            239.67,
+            166.05,
+            129.23
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "5000000 tonnes",
+            "500 tonnes",
+            "5 tonnes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 534.95,
+          "texteIndice": "1 tonne, c'est 1000 kg."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "5000 kg, combien de tonnes ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            239.67,
+            166.05,
+            129.23
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "5000000 tonnes",
+            "500 tonnes",
+            "5 tonnes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 534.95,
+          "texteIndice": "1 tonne, c'est 1000 kg."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "5000 kg, combien de tonnes ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            239.67,
+            166.05,
+            129.23
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "5000000 tonnes",
+            "500 tonnes",
+            "5 tonnes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 534.95,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "5000 kg, combien de tonnes ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            239.67,
+            166.05,
+            129.23
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "5000000 tonnes",
+            "500 tonnes",
+            "5 tonnes"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 534.95,
+          "texteIndice": null
+        }
+      }
+    },
+    "5000 ml, combien de L ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "5000 ml, combien de L ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            154.03,
+            80.41,
+            43.59
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "5000000 L",
+            "500 L",
+            "5 L"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 278.03,
+          "texteIndice": "1 L, c'est 1000 ml."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "5000 ml, combien de L ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            154.03,
+            80.41,
+            43.59
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "5000000 L",
+            "500 L",
+            "5 L"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 278.03,
+          "texteIndice": "1 L, c'est 1000 ml."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "5000 ml, combien de L ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            154.03,
+            80.41,
+            43.59
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "5000000 L",
+            "500 L",
+            "5 L"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 278.03,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "5000 ml, combien de L ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            154.03,
+            80.41,
+            43.59
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "5000000 L",
+            "500 L",
+            "5 L"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 278.03,
+          "texteIndice": null
+        }
+      }
+    },
+    "5000 mm, combien de m ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "5000 mm, combien de m ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            166.98,
+            56.55,
+            93.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "5000000 m",
+            "5 m",
+            "500 m"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 316.89,
+          "texteIndice": "1 m, c'est 1000 mm."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "5000 mm, combien de m ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            166.98,
+            56.55,
+            93.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "5000000 m",
+            "5 m",
+            "500 m"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 316.89,
+          "texteIndice": "1 m, c'est 1000 mm."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "5000 mm, combien de m ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            166.98,
+            56.55,
+            93.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "5000000 m",
+            "5 m",
+            "500 m"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 316.89,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "5000 mm, combien de m ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            166.98,
+            56.55,
+            93.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "5000000 m",
+            "5 m",
+            "500 m"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 316.89,
+          "texteIndice": null
+        }
+      }
+    },
+    "6 cl, combien de ml ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "6 cl, combien de ml ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            102.45,
+            120.86,
+            84.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "600 ml",
+            "6000 ml",
+            "60 ml"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.36,
+          "texteIndice": "1 cl, c'est 10 ml."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "6 cl, combien de ml ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            102.45,
+            120.86,
+            84.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "600 ml",
+            "6000 ml",
+            "60 ml"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.36,
+          "texteIndice": "1 cl, c'est 10 ml."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "6 cl, combien de ml ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            102.45,
+            120.86,
+            84.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "600 ml",
+            "6000 ml",
+            "60 ml"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.36,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "6 cl, combien de ml ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            102.45,
+            120.86,
+            84.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "600 ml",
+            "6000 ml",
+            "60 ml"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.36,
+          "texteIndice": null
+        }
+      }
+    },
+    "6000 g, combien de kg ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "6000 g, combien de kg ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            64.48,
+            101.3,
+            174.92
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "6 kg",
+            "600 kg",
+            "6000000 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 340.7,
+          "texteIndice": "1 kg, c'est 1000 g."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "6000 g, combien de kg ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            64.48,
+            101.3,
+            174.92
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "6 kg",
+            "600 kg",
+            "6000000 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 340.7,
+          "texteIndice": "1 kg, c'est 1000 g."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "6000 g, combien de kg ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            64.48,
+            101.3,
+            174.92
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "6 kg",
+            "600 kg",
+            "6000000 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 340.7,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "6000 g, combien de kg ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            64.48,
+            101.3,
+            174.92
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "6 kg",
+            "600 kg",
+            "6000000 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 340.7,
+          "texteIndice": null
+        }
+      }
+    },
+    "6000 m, combien de km ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "6000 m, combien de km ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.44,
+            184.88,
+            111.25
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "6 km",
+            "6000000 km",
+            "600 km"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 370.57,
+          "texteIndice": "1 km, c'est 1000 m."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "6000 m, combien de km ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.44,
+            184.88,
+            111.25
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "6 km",
+            "6000000 km",
+            "600 km"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 370.57,
+          "texteIndice": "1 km, c'est 1000 m."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "6000 m, combien de km ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.44,
+            184.88,
+            111.25
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "6 km",
+            "6000000 km",
+            "600 km"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 370.57,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "6000 m, combien de km ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            74.44,
+            184.88,
+            111.25
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "6 km",
+            "6000000 km",
+            "600 km"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 370.57,
+          "texteIndice": null
+        }
+      }
+    },
+    "7 cm, combien de mm ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "7 cm, combien de mm ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            104.27,
+            141.08,
+            122.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "70 mm",
+            "7000 mm",
+            "700 mm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 368.02,
+          "texteIndice": "1 cm, c'est 10 mm."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "7 cm, combien de mm ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            104.27,
+            141.08,
+            122.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "70 mm",
+            "7000 mm",
+            "700 mm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 368.02,
+          "texteIndice": "1 cm, c'est 10 mm."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "7 cm, combien de mm ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            104.27,
+            141.08,
+            122.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "70 mm",
+            "7000 mm",
+            "700 mm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 368.02,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "7 cm, combien de mm ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            104.27,
+            141.08,
+            122.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "70 mm",
+            "7000 mm",
+            "700 mm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 368.02,
+          "texteIndice": null
+        }
+      }
+    },
+    "7 tonnes, combien de kg ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "7 tonnes, combien de kg ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.7,
+            101.3,
+            82.89
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7000 kg",
+            "700 kg",
+            "70 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 303.89,
+          "texteIndice": "1 tonne, c'est 1000 kg."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "7 tonnes, combien de kg ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.7,
+            101.3,
+            82.89
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7000 kg",
+            "700 kg",
+            "70 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 303.89,
+          "texteIndice": "1 tonne, c'est 1000 kg."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "7 tonnes, combien de kg ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.7,
+            101.3,
+            82.89
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7000 kg",
+            "700 kg",
+            "70 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 303.89,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "7 tonnes, combien de kg ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.7,
+            101.3,
+            82.89
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7000 kg",
+            "700 kg",
+            "70 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 303.89,
+          "texteIndice": null
+        }
+      }
+    },
+    "700 cl, combien de L ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "700 cl, combien de L ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            43.59,
+            62,
+            117.22
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7 L",
+            "70 L",
+            "70000 L"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 222.81,
+          "texteIndice": "1 L, c'est 100 cl."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "700 cl, combien de L ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            43.59,
+            62,
+            117.22
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7 L",
+            "70 L",
+            "70000 L"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 222.81,
+          "texteIndice": "1 L, c'est 100 cl."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "700 cl, combien de L ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            43.59,
+            62,
+            117.22
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7 L",
+            "70 L",
+            "70000 L"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 222.81,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "700 cl, combien de L ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            43.59,
+            62,
+            117.22
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7 L",
+            "70 L",
+            "70000 L"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 222.81,
+          "texteIndice": null
+        }
+      }
+    },
+    "700 ml, combien de cl ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "700 ml, combien de cl ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            51.69,
+            106.91,
+            70.09
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7 cl",
+            "7000 cl",
+            "70 cl"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 228.69,
+          "texteIndice": "1 cl, c'est 10 ml."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "700 ml, combien de cl ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            51.69,
+            106.91,
+            70.09
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7 cl",
+            "7000 cl",
+            "70 cl"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 228.69,
+          "texteIndice": "1 cl, c'est 10 ml."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "700 ml, combien de cl ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            51.69,
+            106.91,
+            70.09
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7 cl",
+            "7000 cl",
+            "70 cl"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 228.69,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "700 ml, combien de cl ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            51.69,
+            106.91,
+            70.09
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7 cl",
+            "7000 cl",
+            "70 cl"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 228.69,
+          "texteIndice": null
+        }
+      }
+    },
+    "700 mm, combien de cm ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "700 mm, combien de cm ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            71.91,
+            90.31,
+            127.13
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7 cm",
+            "70 cm",
+            "7000 cm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 289.35,
+          "texteIndice": "1 cm, c'est 10 mm."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "700 mm, combien de cm ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            71.91,
+            90.31,
+            127.13
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7 cm",
+            "70 cm",
+            "7000 cm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 289.35,
+          "texteIndice": "1 cm, c'est 10 mm."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "700 mm, combien de cm ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            71.91,
+            90.31,
+            127.13
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7 cm",
+            "70 cm",
+            "7000 cm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 289.35,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "700 mm, combien de cm ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            71.91,
+            90.31,
+            127.13
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "7 cm",
+            "70 cm",
+            "7000 cm"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 289.35,
+          "texteIndice": null
+        }
+      }
+    },
+    "9 cl, combien de ml ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "9 cl, combien de ml ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            120.86,
+            102.45,
+            84.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "9000 ml",
+            "900 ml",
+            "90 ml"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.36,
+          "texteIndice": "1 cl, c'est 10 ml."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "9 cl, combien de ml ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            120.86,
+            102.45,
+            84.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "9000 ml",
+            "900 ml",
+            "90 ml"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.36,
+          "texteIndice": "1 cl, c'est 10 ml."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "9 cl, combien de ml ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            120.86,
+            102.45,
+            84.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "9000 ml",
+            "900 ml",
+            "90 ml"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.36,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "9 cl, combien de ml ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            120.86,
+            102.45,
+            84.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "9000 ml",
+            "900 ml",
+            "90 ml"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.36,
+          "texteIndice": null
+        }
+      }
+    },
+    "9000 g, combien de kg ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "9000 g, combien de kg ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            174.92,
+            101.3,
+            64.48
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "9000000 kg",
+            "900 kg",
+            "9 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 340.7,
+          "texteIndice": "1 kg, c'est 1000 g."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "9000 g, combien de kg ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            174.92,
+            101.3,
+            64.48
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "9000000 kg",
+            "900 kg",
+            "9 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 340.7,
+          "texteIndice": "1 kg, c'est 1000 g."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "9000 g, combien de kg ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            174.92,
+            101.3,
+            64.48
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "9000000 kg",
+            "900 kg",
+            "9 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 340.7,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "9000 g, combien de kg ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            174.92,
+            101.3,
+            64.48
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "9000000 kg",
+            "900 kg",
+            "9 kg"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 340.7,
+          "texteIndice": null
+        }
+      }
+    }
+  },
+  "itemsVus": 24,
+  "jeu": "bandit-manchot-conversions-unites-cm1",
+  "parties": 6,
+  "pli": 551,
+  "viewport": [
+    744,
+    551
+  ]
+}

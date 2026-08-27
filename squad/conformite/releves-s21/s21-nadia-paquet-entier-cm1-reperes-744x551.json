@@ -1,0 +1,1772 @@
+{
+  "items": {
+    "Hier soir louis a fini ses devoirs.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Hier soir louis a fini ses devoirs.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            263.05,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule initiale",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": "Un des mots de cette phrase désigne quelqu'un en particulier."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Hier soir louis a fini ses devoirs.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            263.05,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule initiale",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": "Un des mots de cette phrase désigne quelqu'un en particulier."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Hier soir louis a fini ses devoirs.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            263.05,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule initiale",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Hier soir louis a fini ses devoirs.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            263.05,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule initiale",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": null
+        }
+      }
+    },
+    "Le chien aboie très fort dans le jardin.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Le chien aboie très fort dans le jardin.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            263.05,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Majuscule initiale",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 649.75,
+          "texteIndice": "Relis bien la phrase."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Le chien aboie très fort dans le jardin.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            263.05,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Majuscule initiale",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 649.75,
+          "texteIndice": "Relis bien la phrase."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Le chien aboie très fort dans le jardin.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            263.05,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Majuscule initiale",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 649.75,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Le chien aboie très fort dans le jardin.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            263.05,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Majuscule initiale",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 649.75,
+          "texteIndice": null
+        }
+      }
+    },
+    "Le professeur a félicité julien pour son exposé.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Le professeur a félicité julien pour son exposé.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            263.05,
+            231.67,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Majuscule initiale",
+            "Phrase correcte",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": "Un des mots de cette phrase désigne quelqu'un."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Le professeur a félicité julien pour son exposé.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            263.05,
+            231.67,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Majuscule initiale",
+            "Phrase correcte",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": "Un des mots de cette phrase désigne quelqu'un."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Le professeur a félicité julien pour son exposé.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            263.05,
+            231.67,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Majuscule initiale",
+            "Phrase correcte",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Le professeur a félicité julien pour son exposé.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            263.05,
+            231.67,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Majuscule initiale",
+            "Phrase correcte",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": null
+        }
+      }
+    },
+    "Le soleil brille dans le ciel": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Le soleil brille dans le ciel",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            155.03,
+            317.69
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point final",
+            "Point d'interrogation"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": "Regarde ce qui se trouve tout à la fin de la phrase."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Le soleil brille dans le ciel",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            155.03,
+            317.69
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point final",
+            "Point d'interrogation"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": "Regarde ce qui se trouve tout à la fin de la phrase."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Le soleil brille dans le ciel",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            155.03,
+            317.69
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point final",
+            "Point d'interrogation"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Le soleil brille dans le ciel",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            155.03,
+            317.69
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point final",
+            "Point d'interrogation"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": null
+        }
+      }
+    },
+    "Léa adore lire des histoires avant de dormir.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Léa adore lire des histoires avant de dormir.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            155.03,
+            231.67,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point final",
+            "Phrase correcte",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 710.43,
+          "texteIndice": "Vérifie chaque repère."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Léa adore lire des histoires avant de dormir.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            155.03,
+            231.67,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point final",
+            "Phrase correcte",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 710.43,
+          "texteIndice": "Vérifie chaque repère."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Léa adore lire des histoires avant de dormir.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            155.03,
+            231.67,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point final",
+            "Phrase correcte",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 710.43,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Léa adore lire des histoires avant de dormir.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            155.03,
+            231.67,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point final",
+            "Phrase correcte",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 710.43,
+          "texteIndice": null
+        }
+      }
+    },
+    "Ma cousine léa vient nous voir dimanche.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Ma cousine léa vient nous voir dimanche.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            263.05,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule initiale",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": "Un des mots de cette phrase désigne une personne précise."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Ma cousine léa vient nous voir dimanche.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            263.05,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule initiale",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": "Un des mots de cette phrase désigne une personne précise."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Ma cousine léa vient nous voir dimanche.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            263.05,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule initiale",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Ma cousine léa vient nous voir dimanche.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            263.05,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule initiale",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": null
+        }
+      }
+    },
+    "Mon frère apprend à nager cet été": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Mon frère apprend à nager cet été",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            317.69,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point d'interrogation",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": "Vérifie le tout dernier caractère de la phrase."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Mon frère apprend à nager cet été",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            317.69,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point d'interrogation",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": "Vérifie le tout dernier caractère de la phrase."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Mon frère apprend à nager cet été",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            317.69,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point d'interrogation",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Mon frère apprend à nager cet été",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            317.69,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point d'interrogation",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": null
+        }
+      }
+    },
+    "Nous allons à la piscine chaque samedi.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Nous allons à la piscine chaque samedi.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            155.03,
+            323.73,
+            231.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point final",
+            "Majuscule au prénom",
+            "Phrase correcte"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 710.43,
+          "texteIndice": "Regarde chaque repère avant de choisir."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Nous allons à la piscine chaque samedi.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            155.03,
+            323.73,
+            231.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point final",
+            "Majuscule au prénom",
+            "Phrase correcte"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 710.43,
+          "texteIndice": "Regarde chaque repère avant de choisir."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Nous allons à la piscine chaque samedi.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            155.03,
+            323.73,
+            231.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point final",
+            "Majuscule au prénom",
+            "Phrase correcte"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 710.43,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Nous allons à la piscine chaque samedi.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            155.03,
+            323.73,
+            231.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point final",
+            "Majuscule au prénom",
+            "Phrase correcte"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 710.43,
+          "texteIndice": null
+        }
+      }
+    },
+    "Nous partons demain matin pour la montagne": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 619.19,
+          "basVerdict": 540.19,
+          "defilement": 0,
+          "enonce": "Nous partons demain matin pour la montagne",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            231.67,
+            317.69,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point d'interrogation",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": "Regarde la toute fin de la phrase."
+        },
+        "sans": {
+          "basIndice": 643.19,
+          "basVerdict": 564.19,
+          "defilement": 0,
+          "enonce": "Nous partons demain matin pour la montagne",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            231.67,
+            317.69,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point d'interrogation",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": "Regarde la toute fin de la phrase."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 540.19,
+          "defilement": 0,
+          "enonce": "Nous partons demain matin pour la montagne",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            231.67,
+            317.69,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point d'interrogation",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 564.19,
+          "defilement": 0,
+          "enonce": "Nous partons demain matin pour la montagne",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            231.67,
+            317.69,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point d'interrogation",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": null
+        }
+      }
+    },
+    "Où as-tu rangé tes affaires": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Où as-tu rangé tes affaires",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            155.03,
+            317.69
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point final",
+            "Point d'interrogation"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": "Cette phrase pose une question à quelqu'un."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Où as-tu rangé tes affaires",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            155.03,
+            317.69
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point final",
+            "Point d'interrogation"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": "Cette phrase pose une question à quelqu'un."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Où as-tu rangé tes affaires",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            155.03,
+            317.69
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point final",
+            "Point d'interrogation"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Où as-tu rangé tes affaires",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            155.03,
+            317.69
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point final",
+            "Point d'interrogation"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": null
+        }
+      }
+    },
+    "Où habite ton cousin Paul ?": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Où habite ton cousin Paul ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            317.69,
+            263.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point d'interrogation",
+            "Majuscule initiale"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 812.41,
+          "texteIndice": "Cette phrase pose une question et se termine bien."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Où habite ton cousin Paul ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            317.69,
+            263.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point d'interrogation",
+            "Majuscule initiale"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 812.41,
+          "texteIndice": "Cette phrase pose une question et se termine bien."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Où habite ton cousin Paul ?",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            317.69,
+            263.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point d'interrogation",
+            "Majuscule initiale"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 812.41,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Où habite ton cousin Paul ?",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            317.69,
+            263.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Point d'interrogation",
+            "Majuscule initiale"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 812.41,
+          "texteIndice": null
+        }
+      }
+    },
+    "Pourquoi les feuilles tombent-elles en automne": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 619.19,
+          "basVerdict": 540.19,
+          "defilement": 0,
+          "enonce": "Pourquoi les feuilles tombent-elles en automne",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            317.69,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point d'interrogation",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": "Cette phrase demande une explication."
+        },
+        "sans": {
+          "basIndice": 643.19,
+          "basVerdict": 564.19,
+          "defilement": 0,
+          "enonce": "Pourquoi les feuilles tombent-elles en automne",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            317.69,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point d'interrogation",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": "Cette phrase demande une explication."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 540.19,
+          "defilement": 0,
+          "enonce": "Pourquoi les feuilles tombent-elles en automne",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            317.69,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point d'interrogation",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 564.19,
+          "defilement": 0,
+          "enonce": "Pourquoi les feuilles tombent-elles en automne",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            317.69,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point d'interrogation",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": null
+        }
+      }
+    },
+    "Quel âge a ton petit frère": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Quel âge a ton petit frère",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            317.69,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point d'interrogation",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": "Cette phrase attend une réponse."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Quel âge a ton petit frère",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            317.69,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point d'interrogation",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": "Cette phrase attend une réponse."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Quel âge a ton petit frère",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            317.69,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point d'interrogation",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Quel âge a ton petit frère",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            317.69,
+            231.67,
+            155.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Point d'interrogation",
+            "Phrase correcte",
+            "Point final"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 704.39,
+          "texteIndice": null
+        }
+      }
+    },
+    "elle prépare son cartable pour demain.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "elle prépare son cartable pour demain.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            263.05,
+            323.73,
+            231.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Majuscule initiale",
+            "Majuscule au prénom",
+            "Phrase correcte"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": "Observe la toute première lettre de la phrase."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "elle prépare son cartable pour demain.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            263.05,
+            323.73,
+            231.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Majuscule initiale",
+            "Majuscule au prénom",
+            "Phrase correcte"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": "Observe la toute première lettre de la phrase."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "elle prépare son cartable pour demain.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            263.05,
+            323.73,
+            231.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Majuscule initiale",
+            "Majuscule au prénom",
+            "Phrase correcte"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "elle prépare son cartable pour demain.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            263.05,
+            323.73,
+            231.67
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Majuscule initiale",
+            "Majuscule au prénom",
+            "Phrase correcte"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": null
+        }
+      }
+    },
+    "le chat dort sur le tapis.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "le chat dort sur le tapis.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            323.73,
+            263.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule au prénom",
+            "Majuscule initiale"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": "Regarde comment commence la phrase."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "le chat dort sur le tapis.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            323.73,
+            263.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule au prénom",
+            "Majuscule initiale"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": "Regarde comment commence la phrase."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "le chat dort sur le tapis.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            323.73,
+            263.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule au prénom",
+            "Majuscule initiale"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "le chat dort sur le tapis.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            323.73,
+            263.05
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule au prénom",
+            "Majuscule initiale"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": null
+        }
+      }
+    },
+    "les enfants jouent dans la cour.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "les enfants jouent dans la cour.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            263.05,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule initiale",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": "Une phrase commence toujours de la même façon."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "les enfants jouent dans la cour.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            263.05,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule initiale",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": "Une phrase commence toujours de la même façon."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "les enfants jouent dans la cour.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            263.05,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule initiale",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "les enfants jouent dans la cour.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            231.67,
+            263.05,
+            323.73
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "Phrase correcte",
+            "Majuscule initiale",
+            "Majuscule au prénom"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 818.45,
+          "texteIndice": null
+        }
+      }
+    }
+  },
+  "itemsVus": 16,
+  "jeu": "bandit-manchot-reperes-cm1",
+  "parties": 3,
+  "pli": 551,
+  "viewport": [
+    744,
+    551
+  ]
+}
