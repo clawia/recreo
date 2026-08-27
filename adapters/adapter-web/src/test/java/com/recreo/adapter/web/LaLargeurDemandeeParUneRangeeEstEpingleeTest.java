@@ -171,6 +171,7 @@ class LaLargeurDemandeeParUneRangeeEstEpingleeTest {
             "form.propositions > button.btn.proposition | recreo.css | - | .proposition | flex: 1 1 auto",
             "form.propositions > button.btn.proposition | recreo.css | - | .propositions:has(.proposition:nth-child(4)) .proposition | flex: 1 1 calc(50% - 0.5rem); font-size: 1.875rem",
             "form.propositions > button.btn.proposition | recreo.css | - | .proposition | min-width: 2.75rem; padding: 0.75rem 1.25rem",
+            "form.propositions > button.btn.proposition | recreo.css | - | .proposition | padding: 0.5rem 1.25rem",
             "form.propositions > button.btn.proposition | recreo.css | - | .proposition | font-size: 2rem");
 
     @Autowired
