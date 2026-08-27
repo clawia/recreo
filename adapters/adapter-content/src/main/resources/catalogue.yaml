@@ -108,3 +108,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-reperes
     nombreDeManches: 10
+  - id: bandit-manchot-mot-manquant-cp
+    titre: "Le mot qui manque"
+    consigne: "Trouve le mot qui complète la phrase."
+    mecanique: bandit-manchot
+    paquet: cp-mot-manquant
+    nombreDeManches: 10

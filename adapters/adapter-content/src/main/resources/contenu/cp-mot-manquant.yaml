@@ -1,0 +1,90 @@
+schema: 1
+id: cp-mot-manquant
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CP"
+  domaine: "Vocabulaire"
+  competence: "Utiliser des mots précis pour désigner des objets, actions, sensations du quotidien"
+# S21-10 (DEC-0051). Arbitrage prealable de nadia-prof rendu le 2026-08-27
+# (squad/conformite/ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md, partie 4, conditions
+# PRE-1 a PRE-8) : contenu-repris/textes-trous/cp-mot-manquant.yml ne travaillait pas la competence
+# visee - sur ses 15 distracteurs, 0 obligeait a choisir un mot precis, tous s'eliminaient par
+# incompatibilite grossiere de sens ou par la grammaire. Ce paquet est donc une ecriture neuve, pas
+# une transposition : seule la forme (phrase a trou, trois propositions) est reprise du fichier
+# repris, aucun item ni aucun distracteur.
+#
+# Chaque item respecte PRE-1 (les trois propositions sont grammaticalement admissibles dans le
+# trou : meme genre, meme nombre, meme classe de mot) et PRE-2 (au moins deux des trois
+# propositions appartiennent au meme champ que la bonne reponse, pour que le choix se fasse sur la
+# precision du mot et non sur son absurdite). Les trois familles nommees par la competence sont
+# representees (PRE-4) : objets (items 1 a 6), actions (items 7 a 11), sensations (items 12 a 16) -
+# aucune sous un quart des seize items.
+items:
+  # Objets (6 items). Determinant et genre constants a l'interieur d'un meme item (PRE-1).
+  - enonce: "Pour balayer la cuisine, Maman prend un ___."
+    bonneReponse: "balai"
+    distracteurs: ["marteau", "tournevis"]
+    indice: "C'est un objet à long manche, avec des poils au bout, pour nettoyer le sol."
+  - enonce: "Pour se laver les mains, Léa utilise du ___."
+    bonneReponse: "savon"
+    distracteurs: ["sable", "sel"]
+    indice: "Ça mousse quand on le frotte avec de l'eau."
+  - enonce: "Léa dessine avec un ___."
+    bonneReponse: "crayon"
+    distracteurs: ["marteau", "couteau"]
+    indice: "C'est un petit bâton de bois qui laisse une trace sur le papier."
+  - enonce: "Sous la pluie, Tom prend son ___."
+    bonneReponse: "parapluie"
+    distracteurs: ["ballon", "tapis"]
+    indice: "On l'ouvre au-dessus de la tête quand il pleut."
+  - enonce: "Pour manger la soupe, Léa prend une ___."
+    bonneReponse: "cuillère"
+    distracteurs: ["fourchette", "brosse"]
+    indice: "On la plonge dans le bol pour porter la soupe à la bouche."
+  - enonce: "La nuit, Tom allume sa ___."
+    bonneReponse: "lampe"
+    distracteurs: ["radio", "télé"]
+    indice: "Elle donne de la lumière quand on appuie sur le bouton."
+  # Actions (5 items). Verbes conjugues, sujet et temps constants a l'interieur d'un meme item.
+  - enonce: "Le chien ___ dès qu'on sonne à la porte."
+    bonneReponse: "aboie"
+    distracteurs: ["chante", "parle"]
+    indice: "C'est le cri du chien pour prévenir toute la maison."
+  - enonce: "Le poisson ___ dans son bocal toute la journée."
+    bonneReponse: "nage"
+    distracteurs: ["saute", "marche"]
+    indice: "C'est ce qu'il fait avec ses nageoires dans l'eau."
+  - enonce: "Léa ___ sa chambre avant le dîner."
+    bonneReponse: "range"
+    distracteurs: ["lave", "coupe"]
+    indice: "Elle remet chaque jouet à sa place."
+  - enonce: "Le bébé ___ dès qu'il a faim."
+    bonneReponse: "pleure"
+    distracteurs: ["saute", "chante"]
+    indice: "Des larmes coulent sur ses joues et il crie."
+  - enonce: "Tom ___ la lumière avant de dormir."
+    bonneReponse: "éteint"
+    distracteurs: ["allume", "casse"]
+    indice: "Il appuie sur le bouton pour que tout devienne noir."
+  # Sensations (5 items). Adjectifs, genre constant a l'interieur d'un meme item.
+  - enonce: "Le café est trop ___ pour le boire tout de suite."
+    bonneReponse: "chaud"
+    distracteurs: ["froid", "tiède"]
+    indice: "Il vient de sortir de la casserole et il fait de la fumée."
+  - enonce: "Le citron a un goût très ___."
+    bonneReponse: "acide"
+    distracteurs: ["sucré", "salé"]
+    indice: "Ça pique un peu la langue quand on y goûte."
+  - enonce: "Le hérisson est tout ___ quand on le touche."
+    bonneReponse: "piquant"
+    distracteurs: ["doux", "mou"]
+    indice: "Il a plein de petites pointes sur le dos pour se protéger."
+  - enonce: "Le miel a un goût très ___."
+    bonneReponse: "sucré"
+    distracteurs: ["acide", "salé"]
+    indice: "Les abeilles le fabriquent et il donne envie d'en reprendre."
+  - enonce: "Le poivre est très ___ dans la bouche."
+    bonneReponse: "piquant"
+    distracteurs: ["sucré", "salé"]
+    indice: "Ça donne une petite sensation de chaleur sur la langue."
