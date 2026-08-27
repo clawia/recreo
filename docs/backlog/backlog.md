@@ -6141,6 +6141,159 @@ elle-meme), et le perimetre exact (catalogue entier a 18 jeux, ou le seul sous-e
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, non affectee a s21 par ce document.
   `lea-dev` pour la correction, `nadia-prof` pour le reaudit.
 
+### `S21-3` recadree (2026-08-27, en cours de sprint) - la reformulation d'enonces n'avait pas d'objet, deux reserves de forme la remplacent
+
+`S21-3` affectait a `lea-dev` la reformulation de 12 enonces sur une seule ligne, pour fermer une
+part du deficit de pli sur trois paquets. `lea-dev` a verifie avant d'editer et n'a touche aucun
+fichier de contenu ; `nadia-prof` a rejoue les paquets concernes et **s'est donnee tort contre sa
+propre mesure du matin** (`round-two` a `3cfe9e3`, 2026-08-27, message de commit) : elle avait
+inverse la population des 12 items vises et des 2 items exclus. Les 12 items ont deja un enonce
+d'une ligne (48 px) ; les 2 items exclus sont ceux a deux lignes (96 px), et meme les ramener a une
+ligne laisse **44,19 px** de deficit sur ces deux-la. **La reformulation d'enonce ne ferme donc rien
+de ce que `S21-3` visait.**
+
+En jouant quatre paquets entiers, item par item (`cm1-reperes`, `cm1-accords-groupe-nominal`,
+`cm1-mesures`, `cm1-grands-nombres`, outil neuf `squad/outils/nadia-prof/auditer-un-paquet-
+entier.py`, memes commit et date), `nadia-prof` ouvre deux reserves neuves qui portent, elles, sur
+un levier reel. **`S21-3` change d'objet dans ce sprint pour les porter** : meme paquet
+(`cm1-reperes`) que sa premisse d'origine pour l'une, meme famille de defaut (contenu, pas de
+mecanique neuve) pour les deux. `lea-dev` reste l'agent pressenti, a la suite de `S21-10` qu'elle
+ecrit au moment ou ce document est redige - aucune nouvelle capacite n'est demandee au sprint, la
+meme affectation est redirigee vers un travail qui ferme reellement quelque chose.
+
+#### `REP-11` a `REP-14` - Sur `cm1-reperes`, les libelles de proposition depassent le budget de largeur d'une rangee
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue a "Majuscule ou point ?", je veux que les quatre
+  boutons de reponse tiennent sur une seule rangee a l'ecran, afin de lire l'indice apres une
+  erreur sans avoir a faire defiler la page.
+- **Competence programme visee** : francais, CM1 (cycle 3), meme ligne que `REP-7` a `REP-10`
+  ci-dessus (`squad/programme/francais/competences-cm1.md`).
+- **Constat chiffre, dans les mots de `nadia-prof`** (`round-two` a `3cfe9e3`, 2026-08-27, message
+  de commit) : les trois libelles de proposition les plus larges totalisent au plus **522 px** pour
+  tenir sur une rangee (barre deja etablie par elle pour le volume de s21,
+  `squad/conformite/ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md`) ; ils totalisent
+  **818,45 px** aujourd'hui sur `cm1-reperes`, et `Majuscule au prénom` a lui seul en mange 62 %.
+- **Ce que `nadia-prof` autorise, dans ses mots, cites sans les affaiblir** : *"cinq libelles, cinq
+  et distinguables ; du francais, pas un rebus ; la distinction debut de phrase / nom propre
+  survit dans les libelles"*. Elle a deja mesure que deux jeux de libelles candidats tiennent sur
+  une rangee a l'ecran. **Elle ne dicte aucun libelle** - elle ecrit avoir "deja mal choisi" les
+  siens une fois (le refus du 2026-08-26 sur `REP-4`) : l'auteur porte le risque de proposition,
+  elle porte le jugement.
+- **Criteres d'acceptation** :
+  - Etant donne les cinq libelles de proposition du paquet corrige (les quatre reperes existants
+    plus le libelle neuf de `REP-4`), quand on additionne la largeur rendue des trois plus larges a
+    la reference du produit (744 x 551), alors la somme est au plus **522 px**.
+  - Etant donne les cinq libelles, quand on les relit, alors ils restent cinq mots ou groupes de
+    mots du francais courant, distinguables entre eux sans ambiguite, et la distinction entre
+    majuscule de debut de phrase et majuscule de nom propre reste lisible dans leur formulation -
+    aucun libelle n'est un rebus ni une abreviation.
+  - Etant donne le paquet corrige, quand on relit ses seize items, alors le repere teste et la
+    bonne reponse de chacun restent inchanges (`REP-1` a `REP-4` deja tenues, non rouvertes par
+    cette story).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que les cinq libelles retenus soient effectivement distinguables pour un enfant
+    de CM1 et ne recreent pas la meme confusion que celle deja corrigee sur `REP-4`.
+- **Lien decision** : `DEC-0050` (paquet), commit `3cfe9e3` (constat et budget).
+- **Agent pressenti** : `lea-dev`, a la suite de `S21-10`. `nadia-prof` pour le reaudit, sur les
+  libelles proposes uniquement.
+
+#### `MES-1` - Sur `cm1-mesures`, un distracteur numeriquement implausible degrade a la fois la pedagogie et le pli
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue a "Les mesures", je veux comparer des reponses dont
+  l'ecart correspond a une confusion que je pourrais vraiment faire (facteur 10, 100 ou 1000 entre
+  unites), afin qu'une mauvaise reponse ecartee le soit parce qu'elle est fausse, pas parce qu'elle
+  est absurde.
+- **Competence programme visee** : mathematiques, CM1 (cycle 3), "Convertir des unites de
+  longueur, masse, contenance dans le systeme metrique" - meme ligne que la fiche de conformite du
+  paquet (`squad/conformite/FICHE-bandit-manchot-conversions-unites-cm1.md`), dont un critere deja
+  pose par `camille-po` a l'ouverture exige des "distracteurs numeriques plausibles (confusion de
+  facteur 10/100/1000), jamais un nombre arbitraire" - critere que ce constat rouvre sur un item
+  precis, il ne l'invente pas.
+- **Constat chiffre, dans les mots de `nadia-prof`** (`round-two` a `3cfe9e3`, 2026-08-27, message
+  de commit) : il manque **12,95 px** pour que l'indice de l'item concerne repasse au-dessus du
+  pli, et le distracteur en cause, `4000000 tonnes`, differe de la bonne reponse par un facteur
+  **un million** - hors de la plage 10/100/1000 que le critere de la fiche autorise, pour un motif
+  independant du pli.
+- **Ce que `nadia-prof` observe** : remplacer ce seul distracteur ferme les deux defauts du meme
+  geste (le motif pedagogique et le deficit de pli).
+- **Criteres d'acceptation** :
+  - Etant donne l'item de `cm1-mesures` qui porte le distracteur `4000000 tonnes`, quand on le
+    remplace, alors le distracteur neuf differe de la bonne reponse par confusion de facteur 10,
+    100 ou 1000, comme l'exige deja le critere pose sur ce paquet.
+  - Etant donne cet item corrige, quand on lit l'indice apres un echec a la reference (744 x 551),
+    alors il est entierement au-dessus du pli (deficit ramene de 12,95 px a 0).
+  - Etant donne le paquet corrige, quand on le relit, alors le repere teste, la bonne reponse et les
+    autres distracteurs de cet item restent inchanges.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que le distracteur neuf reste une confusion plausible pour un eleve de CM1.
+- **Lien decision** : `DEC-0050` (famille de defaut), commit `3cfe9e3` (constat).
+- **Agent pressenti** : `lea-dev`, meme lot que `REP-11` a `REP-14`. `nadia-prof` pour le reaudit.
+
+#### Ce qui ne devient pas une story : `GRN-1`/`GRN-2` confirment un obstacle deja route, `ACC-1` en ouvre un neuf hors de mon perimetre
+
+- **`GRN-1`/`GRN-2` (`cm1-grands-nombres`, dans les mots de `nadia-prof`, commit `3cfe9e3`)** :
+  *"`GRN-1` refuse le retrait du prefixe 'Ecris en chiffres', seul marqueur de tache d'un paquet
+  dont la consigne en annonce quatre"* ; *"`GRN-2` : sur l'enonce le plus long il reste 31,75 px de
+  budget, moins de deux caracteres - cet item n'a aucun levier d'enonce"*. Ce constat **confirme et
+  chiffre**, sans le remplacer, l'obstacle deja nomme au planning de s21 par `camille-po` ("4 items
+  sans levier connu, deux de `bandit-manchot-grands-nombres-cm1`, deux de
+  `bandit-manchot-reperes-cm1`", `squad/sprints/s21-fermer-le-pli-avant-le-volume/planning.md`,
+  tableau des obstacles) - jusqu'ici trace uniquement dans ce document de sprint, jamais dans le
+  backlog : je l'y ecris maintenant, pour que l'absence de levier ne se perde pas au prochain
+  sprint. **Il n'y a rien a affecter a `lea-dev` ici** : aucune reformulation ni aucun remplacement
+  de distracteur ne ferme ces deux items, `nadia-prof` le dit elle-meme. Reste `en cours` sur la
+  matrice, hors perimetre de s21, aucun statut de couverture supplementaire prononce par ce
+  document.
+- **`ACC-1` (`cm1-accords-groupe-nominal`, dans les mots de `nadia-prof`, commit `3cfe9e3`)** :
+  *"je n'autorise AUCUN retrait de proposition. Les 4 formes d'accord sont l'item. Les 2 rangees
+  viennent d'une declaration de feuille, pas de la largeur : 7 des 8 tiendraient sous les 464 px
+  d'une rangee de quatre."* Ce n'est pas un defaut de contenu : la cause nommee est une regle de
+  style, pas une largeur de libelle, et `nadia-prof` la route explicitement a `ines-design` et
+  `theo-archi`, sans la trancher elle-meme. Je ne l'affecte pas a `lea-dev` ni a une story de
+  contenu pour ce motif. **Agent pressenti** : a affecter au planning par `sofia-sm`, vers
+  `ines-design` (diagnostic de la declaration de feuille en cause) puis `theo-archi` si la cause est
+  confirmee technique ; non affectee a s21 par ce document faute de capacite nommee sur ces deux
+  agents ce sprint.
+
+### Obstacle transverse route depuis `S21-8` - `explication` n'est atteignable que par un detour propre au francais
+
+`nadia-prof` route depuis `S21-8` (arbitrage prealable du volume CP) un constat qui n'est ni un
+motif de refus ni une story de s21 : `cp-syllabes`, que `marc-dev` ecrit en ce moment, n'aura aucun
+texte d'explication apres une reponse, quelle qu'elle soit.
+
+**Ce que le depot dit deja, verifie ce jour.** `ADR-0024` fait porter `explication` par le verdict
+d'un item, mais seulement quand le paquet declare une `graphie` qui differe de la bonne reponse -
+mecanisme concu pour "Le bon son" (une graphie ecrite differente du son entendu, par exemple `en`
+pour le son `an`). `ChaquePaquetExpliqueSesItemsAVariationTest`
+(`adapters/adapter-content/src/test/java/com/recreo/adapter/content/
+ChaquePaquetExpliqueSesItemsAVariationTest.java`) le garde de deux facons : un paquet qui declare
+`graphie` sur un seul item doit la declarer sur tous, et un item ne peut porter `explication` que
+si sa `graphie` differe de sa `bonneReponse`. **`nadia-prof` a deja verifie le detour et l'a
+refuse, dans ses mots** (`ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md`, section 3, ligne
+548) : *"pour `cp-syllabes`, l'enseignement est la segmentation, et elle a sa place sur l'ecran de
+retour, pas dans un indice qui donnerait le compte"* ; *"declarer `graphie: 'cho-co-lat'` sur un
+paquet de syllabes ferait passer le garde-fou en detournant le sens d'un champ de phonologie : je
+ne l'autorise pas."* Le champ `explication` existe sur `Question` sans nom de matiere (`ADR-0024`,
+geste 1), mais le seul chemin qui l'atteint aujourd'hui est un declencheur propre a la phonetique
+du francais - et le detourner pour l'atteindre autrement est deja instruit et refuse.
+
+**Ce que j'en dis, comme jugement produit et non technique.** Le principe directeur du produit
+tient une mecanique decouplee d'un contenu pilote par des regles ; ici, un canal de retour
+pedagogique generique (le texte affiche apres une reponse) n'est en pratique accessible qu'a une
+seule famille de contenu. C'est une forme plus etroite que la dette 2 de la version precedente
+(une configuration entiere taillee pour une matiere) mais de la meme famille : un mecanisme neuf,
+ouvert pour un seul besoin constate, se revele fermer les besoins suivants plutot que de rester
+neutre. **Cela ne bloque pas `cp-syllabes` a s21** : l'indice reste disponible apres trois echecs,
+generique et independant de `graphie` (`S3-2`, `S3-3`), donc l'enfant n'est pas prive de toute aide
+- seulement de l'explication affichee apres chaque reponse, que seuls les paquets a variation
+phonique portent aujourd'hui. Je ne tranche pas comment l'ouvrir (elargir le perimetre du
+garde-fou d'`ADR-0024`, ou concevoir un second canal declare par le paquet sans passer par
+`graphie`) : c'est un choix d'architecture, pas un choix de contenu.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, vers `theo-archi` pour instruire les
+  options ; non affectee a s21 (ni motif de refus, ni story, selon `nadia-prof` elle-meme,
+  `ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md`).
+
 ## Backlog - perimetre volume s21, contenu-repris classe par gain de couverture (intentions non detaillees, `DEC-0051`)
 
 Arbitrage de l'utilisatrice du 2026-08-27 (`DEC-0051`) : le pli se ferme sur tout le catalogue
