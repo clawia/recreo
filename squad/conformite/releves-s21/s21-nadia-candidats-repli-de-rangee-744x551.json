@@ -1,0 +1,427 @@
+{
+  "viewport": [
+    744,
+    551
+  ],
+  "jeuTemoin": "bandit-manchot-le-bon-son-cp",
+  "cadre": {
+    "largeurEnonce": 696,
+    "largeurRangee": 680,
+    "colonne3": 176,
+    "colonne2": 292,
+    "largeurConsigne": 696,
+    "policeEnonce": "700 32px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "policeProposition": "700 32px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "policeConsigne": "400 20px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "mesurer": {}
+  },
+  "temoinAuRepos": {
+    "consigne": "Dis le mot. Quel son entends-tu ?",
+    "enonce": "BALLON",
+    "hauteurConsigne": 30,
+    "hauteurEnonce": 48,
+    "rangees": 1,
+    "nbPropositions": 3,
+    "propositions": [
+      "in",
+      "on",
+      "an"
+    ],
+    "hauteurBouton": 74,
+    "basPropositions": 363.19,
+    "basVerdict": null,
+    "basIndice": null,
+    "hauteurIndice": null,
+    "defilement": 0,
+    "hauteurDocument": 551
+  },
+  "temoinApresEchec": {
+    "consigne": "Dis le mot. Quel son entends-tu ?",
+    "enonce": "BALLON",
+    "hauteurConsigne": 30,
+    "hauteurEnonce": 48,
+    "rangees": 1,
+    "nbPropositions": 3,
+    "propositions": [
+      "in",
+      "on",
+      "an"
+    ],
+    "hauteurBouton": 74,
+    "basPropositions": 363.19,
+    "basVerdict": 426.19,
+    "basIndice": 505.19,
+    "hauteurIndice": 50,
+    "defilement": 0,
+    "hauteurDocument": 551
+  },
+  "cadreIndice": {
+    "largeur": 696,
+    "police": "400 20px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "interligne": "30px"
+  },
+  "temoinDeCalibrage": {
+    "texte": "quatre-vingt-seize mille deux cent trois",
+    "largeur": 590.05,
+    "attendu": 590.05
+  },
+  "largeurs": {
+    "sondes": {
+      "une baignoire": 208.45,
+      "un bol": 96.05,
+      "une cuillère": 174.09,
+      "une gomme": 180.17,
+      "une bouteille": 197.86,
+      "une montagne": 219.25,
+      "un très long libelle de test": 391.28
+    }
+  },
+  "largeursIndice": {},
+  "substitutions": [
+    {
+      "consigne": "Compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 1,
+      "nbPropositions": 3,
+      "propositions": [
+        "une baignoire",
+        "un bol",
+        "un bol"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 363.19,
+      "basVerdict": 426.19,
+      "basIndice": 505.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 551,
+      "nom": "asymetrique - baignoire + 2 courts",
+      "indiceAuDessusDuPli": true,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 1,
+      "nbPropositions": 3,
+      "propositions": [
+        "une montagne",
+        "un bol",
+        "un bol"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 363.19,
+      "basVerdict": 426.19,
+      "basIndice": 505.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 551,
+      "nom": "asymetrique - montagne + 2 courts",
+      "indiceAuDessusDuPli": true,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 2,
+      "nbPropositions": 3,
+      "propositions": [
+        "un très long libelle de test",
+        "un bol",
+        "un bol"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 453.19,
+      "basVerdict": 516.19,
+      "basIndice": 595.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 627,
+      "nom": "asymetrique - tres long + 2 courts",
+      "indiceAuDessusDuPli": false,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 2,
+      "nbPropositions": 3,
+      "propositions": [
+        "une cuillère",
+        "une cuillère",
+        "une cuillère"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 453.19,
+      "basVerdict": 516.19,
+      "basIndice": 595.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 627,
+      "nom": "3 x cuillere (174,09 chacun)",
+      "indiceAuDessusDuPli": false,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 2,
+      "nbPropositions": 3,
+      "propositions": [
+        "une gomme",
+        "une gomme",
+        "une gomme"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 453.19,
+      "basVerdict": 516.19,
+      "basIndice": 595.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 627,
+      "nom": "3 x gomme (180,17 chacun)",
+      "indiceAuDessusDuPli": false,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 2,
+      "nbPropositions": 3,
+      "propositions": [
+        "une bouteille",
+        "une bouteille",
+        "une bouteille"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 453.19,
+      "basVerdict": 516.19,
+      "basIndice": 595.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 627,
+      "nom": "3 x bouteille (197,86 chacun)",
+      "indiceAuDessusDuPli": false,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 2,
+      "nbPropositions": 3,
+      "propositions": [
+        "une baignoire",
+        "une baignoire",
+        "une baignoire"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 453.19,
+      "basVerdict": 516.19,
+      "basIndice": 595.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 627,
+      "nom": "3 x baignoire (208,45 chacun)",
+      "indiceAuDessusDuPli": false,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 2,
+      "nbPropositions": 3,
+      "propositions": [
+        "une baignoire",
+        "une bouteille",
+        "une cuillère"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 453.19,
+      "basVerdict": 516.19,
+      "basIndice": 595.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 627,
+      "nom": "baignoire + bouteille + cuillere (580,40)",
+      "indiceAuDessusDuPli": false,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 1,
+      "nbPropositions": 3,
+      "propositions": [
+        "une baignoire",
+        "une girafe",
+        "un caillou"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 363.19,
+      "basVerdict": 426.19,
+      "basIndice": 505.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 551,
+      "nom": "baignoire + girafe + caillou (552,51)",
+      "indiceAuDessusDuPli": true,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 2,
+      "nbPropositions": 3,
+      "propositions": [
+        "une baignoire",
+        "une girafe",
+        "une cuillère"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 453.19,
+      "basVerdict": 516.19,
+      "basIndice": 595.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 627,
+      "nom": "baignoire + girafe + cuillere (559,32)",
+      "indiceAuDessusDuPli": false,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 2,
+      "nbPropositions": 3,
+      "propositions": [
+        "une baignoire",
+        "une gomme",
+        "une cuillère"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 453.19,
+      "basVerdict": 516.19,
+      "basIndice": 595.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 627,
+      "nom": "baignoire + gomme + cuillere (562,71)",
+      "indiceAuDessusDuPli": false,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 2,
+      "nbPropositions": 3,
+      "propositions": [
+        "une baignoire",
+        "une bouteille",
+        "une girafe"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 453.19,
+      "basVerdict": 516.19,
+      "basIndice": 595.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 627,
+      "nom": "baignoire + bouteille + girafe (559,61)",
+      "indiceAuDessusDuPli": false,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 2,
+      "nbPropositions": 3,
+      "propositions": [
+        "une baignoire",
+        "une bouteille",
+        "une plume"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 453.19,
+      "basVerdict": 516.19,
+      "basIndice": 595.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 627,
+      "nom": "baignoire + bouteille + plume (566,09)",
+      "indiceAuDessusDuPli": false,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 2,
+      "nbPropositions": 3,
+      "propositions": [
+        "une baignoire",
+        "une bouteille",
+        "une brique"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 453.19,
+      "basVerdict": 516.19,
+      "basIndice": 595.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 627,
+      "nom": "baignoire + bouteille + brique (569,44)",
+      "indiceAuDessusDuPli": false,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "consigne": "Compare.",
+      "enonce": "Test",
+      "hauteurConsigne": 30,
+      "hauteurEnonce": 48,
+      "rangees": 2,
+      "nbPropositions": 3,
+      "propositions": [
+        "une baignoire",
+        "une bouteille",
+        "une fourmi"
+      ],
+      "hauteurBouton": 74,
+      "basPropositions": 453.19,
+      "basVerdict": 516.19,
+      "basIndice": 595.19,
+      "hauteurIndice": 50,
+      "defilement": 0,
+      "hauteurDocument": 627,
+      "nom": "baignoire + bouteille + fourmi (573,59)",
+      "indiceAuDessusDuPli": false,
+      "verdictAuDessusDuPli": true
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "viewport": [
+    744,
+    551
+  ],
+  "jeuJoue": "bandit-manchot-le-bon-son-cp",
+  "etapes": [
+    [
+      "repos",
+      {
+        "enonce": "BANC",
+        "propositions": [
+          "in",
+          "on",
+          "an"
+        ],
+        "rangees": 1,
+        "verdict": null,
+        "indice": null,
+        "basVerdict": null,
+        "basIndice": null,
+        "defilement": 0,
+        "hauteurDocument": 551
+      }
+    ],
+    [
+      "essai1",
+      {
+        "enonce": "BANC",
+        "propositions": [
+          "in",
+          "on",
+          "an"
+        ],
+        "rangees": 1,
+        "verdict": "Ce n'est pas ça. Essaie encore !",
+        "indice": "On entend aussi ce son dans le mot manteau.",
+        "basVerdict": 426.19,
+        "basIndice": 505.19,
+        "defilement": 0,
+        "hauteurDocument": 551
+      }
+    ],
+    [
+      "essai2",
+      {
+        "enonce": "BANC",
+        "propositions": [
+          "in",
+          "on",
+          "an"
+        ],
+        "rangees": 1,
+        "verdict": "Ce n'est pas ça. Essaie encore !",
+        "indice": "On entend aussi ce son dans le mot manteau.",
+        "basVerdict": 426.19,
+        "basIndice": 505.19,
+        "defilement": 0,
+        "hauteurDocument": 551
+      }
+    ],
+    [
+      "essai3",
+      {
+        "enonce": "LAPIN",
+        "propositions": [
+          "an",
+          "on",
+          "in"
+        ],
+        "rangees": 1,
+        "verdict": "Bravo !",
+        "indice": null,
+        "basVerdict": 426.19,
+        "basIndice": null,
+        "defilement": 0,
+        "hauteurDocument": 551
+      }
+    ],
+    [
+      "avec-article",
+      {
+        "enonce": "Où peut-on mettre le plus d'eau ?",
+        "propositions": [
+          "une baignoire",
+          "une bouteille",
+          "une cuillère"
+        ],
+        "rangees": 2,
+        "verdict": "Ce n'est pas ça.",
+        "indice": null,
+        "basVerdict": 516.19,
+        "basIndice": null,
+        "defilement": 0,
+        "hauteurDocument": 573
+      }
+    ],
+    [
+      "sans-article",
+      {
+        "enonce": "Où peut-on mettre le plus d'eau ?",
+        "propositions": [
+          "baignoire",
+          "bouteille",
+          "cuillère"
+        ],
+        "rangees": 1,
+        "verdict": "Ce n'est pas ça.",
+        "indice": null,
+        "basVerdict": 426.19,
+        "basIndice": null,
+        "defilement": 0,
+        "hauteurDocument": 551
+      }
+    ],
+    [
+      "syllabes",
+      {
+        "enonce": "CHOCOLAT",
+        "propositions": [
+          "1",
+          "2",
+          "3"
+        ],
+        "rangees": 1,
+        "verdict": "Ce n'est pas ça.",
+        "indice": null,
+        "basVerdict": 426.19,
+        "basIndice": null,
+        "defilement": 0,
+        "hauteurDocument": 551
+      }
+    ]
+  ]
+}
