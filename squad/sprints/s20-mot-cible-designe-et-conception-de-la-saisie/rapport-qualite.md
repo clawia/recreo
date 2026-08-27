@@ -101,11 +101,15 @@ automatisable porte un test qui le nomme :
   (`validation-ines-mot-designe-2rem.md`, `mesure-budget-vertical.md`), pas un test JUnit :
   conforme a la famille `ADR-0054`-`ADR-0059`, dont la mesure vit hors de la suite automatisee.
 
-**`S20-2`** (`REP-1` a `REP-4`, `REP-7`/`REP-8` correctifs) - `PaquetCm1ReperesTest` nomme chaque
+**`S20-2`** (`REP-1` a `REP-4`, `REP-7`/`REP-8` correctifs - `REP-7`/`REP-8`, labels de `camille-po`
+du 2026-08-25 (le pli, le cinquieme libelle), distincts des `REP-7`/`REP-8` que `nadia-prof`
+introduit le 2026-08-27, voir `DEC-0050`. Renvoi ajoute par `sofia-sm` a la review, ce paragraphe
+etant ecrit avant que la seconde paire de labels n'existe) - `PaquetCm1ReperesTest` nomme chaque
 critere dans ses assertions (`.as("REP-1 : ...")`, etc.) :
 `auMoinsTroisItemsExigentLaDistinctionEntrePointFinalEtPointDInterrogation` couvre le motif exact
 du refus (`DEC-0049`) ; `REP-3` reste, comme le backlog le dit lui-meme, hors de portee d'un
-automate (plausibilite des propositions). `REP-7` (le pli) n'est couvert par aucun test JUnit -
+automate (plausibilite des propositions). `REP-7` (le pli, meme renvoi que ci-dessus) n'est couvert
+par aucun test JUnit -
 c'est la meme famille que `S20-1` ci-dessus, mesuree par script, pas par la suite Maven - et son
 etat a `77dd467` reste un residu route a `sofia-sm` (14 items sur 16 au-dessus du pli, pas 16 sur
 16 ; message de `bd87e91`), non ferme par ce commit.
@@ -200,7 +204,9 @@ decrit autre chose que l'arbre qu'on croit mesurer.
 
 ## 7. Ce qui reste ouvert, hors de mon perimetre de correction
 
-- **`REP-7` (le pli sur `cm1-reperes`)** : residu non ferme a `77dd467`, route par `bd87e91` a
+- **`REP-7` (le pli sur `cm1-reperes`, label de `camille-po` du 2026-08-25 - voir le renvoi de la
+  section 3, distinct des `REP-7`/`REP-8` que `nadia-prof` introduit le 2026-08-27, `DEC-0050`)** :
+  residu non ferme a `77dd467`, route par `bd87e91` a
   `sofia-sm` comme une decision de forme (police, rembourrage de `.proposition` hors du repli a
   quatre colonnes) qui appartient a `ines-design`. Aucun test JUnit ne le garde : la mesure du pli
   est un script, pas la suite Maven, meme famille que `S19-6a`/`ADR-0059`. Je ne le rouvre pas moi-
@@ -239,5 +245,7 @@ constate, fichier restaure et verifie identique, vert reconstate.
 - pas un defaut de code, une regle de lecture du journal avant de citer un vert.
 
 **Ce qui reste ouvert, non ferme par les commits mesures ici** : le pli de `cm1-reperes` (`REP-7`,
-14/16 au-dessus du pli, pas 16/16), route a `sofia-sm`/`ines-design` ; le controle catalogue-
-contre-audit de `DEC-0049` reste manuel, pas automatise.
+label de `camille-po` du 2026-08-25, meme renvoi que la section 3 - distinct des `REP-7`/`REP-8` de
+`nadia-prof` du 2026-08-27, `DEC-0050` - 14/16 au-dessus du pli, pas 16/16), route a
+`sofia-sm`/`ines-design` ; le controle catalogue-contre-audit de `DEC-0049` reste manuel, pas
+automatise.
