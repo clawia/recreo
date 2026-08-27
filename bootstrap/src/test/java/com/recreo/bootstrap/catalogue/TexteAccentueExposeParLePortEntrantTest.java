@@ -106,6 +106,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-accord-sujet-verbe-cm1",
             // DEC-0048 (S20-1) : entree qui revient au catalogue apres NAT-5 levee.
             "bandit-manchot-nature-mot-cp",
+            // DEC-0050 (S20, cloture) : entree qui revient au catalogue, refus leve en VALIDE
+            // SOUS RESERVE.
+            "bandit-manchot-reperes-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -132,6 +135,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "L'accord du verbe",
             // DEC-0048 : titre restaure.
             "Nom ou verbe ?",
+            // DEC-0050 : titre restaure.
+            "Majuscule ou point ?",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -156,6 +161,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Quelle est la bonne forme du verbe ?",
             // DEC-0048 : consigne restauree.
             "Le mot entre guillemets est-il un nom ou un verbe ?",
+            // DEC-0050 : consigne restauree.
+            "Que manque-t-il à cette phrase ?",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
             // valeur unique pour les jeux du catalogue reel, compte sur catalogue.yaml, pas recopie.
             "bandit-manchot",
@@ -193,7 +200,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S19-3 : competence neuve.
             "Accorder le verbe avec son sujet (cas fréquents, temps simples : présent, futur, imparfait)",
             // DEC-0048 : competence restauree.
-            "Distinguer les principaux types de mots (nom, verbe) dans une phrase très simple");
+            "Distinguer les principaux types de mots (nom, verbe) dans une phrase très simple",
+            // DEC-0050 : competence restauree.
+            "Repérer et corriger la majuscule et la ponctuation dans une phrase donnée "
+                    + "(majuscule initiale, point final, majuscule au nom propre, point "
+                    + "d'interrogation d'une question)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

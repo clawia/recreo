@@ -102,3 +102,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-nature-mot
     nombreDeManches: 10
+  - id: bandit-manchot-reperes-cm1
+    titre: "Majuscule ou point ?"
+    consigne: "Que manque-t-il à cette phrase ?"
+    mecanique: bandit-manchot
+    paquet: cm1-reperes
+    nombreDeManches: 10
