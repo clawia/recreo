@@ -309,3 +309,48 @@ comme cela s'est deja produit sur `NAT-5` et sur `DEN-1` a `DEN-8`.
 - Aucun fichier sous `domain/`, `application/`, `adapters/` ou `bootstrap/` n'est modifie par cette
   decision. `squad/programme/MATRICE-couverture.md` n'est pas modifiee : aucune ligne ne change de
   statut aujourd'hui.
+
+## Amendement du 2026-08-27 (s21, en cours) - la population des chiffres cites est un echantillon, jamais le catalogue entier ; l'arbitrage tient quand meme
+
+Rien ci-dessus n'est reecrit. Cet amendement dit sur quelle population portent les chiffres deja
+ecrits dans ce document, parce que personne ne l'avait dit - `nadia-prof` la premiere, contre sa
+propre mesure du matin (`round-two` a `3cfe9e3`, 2026-08-27, message de commit, section "Correction
+plus grave contre moi").
+
+**Ce que `nadia-prof` a etabli, avec sa methode.** `squad/conformite/releves-s21/s21-pli-du-
+catalogue-744x551.json` porte `parties: 1` et `itemsVus: 10` (7 pour un jeu combinatoire) pour
+chacun des 17 jeux qu'il balaie. Verifie ce jour par lecture directe du fichier : somme des
+`itemsVus`, **167**. Le catalogue compte **428** items (somme des `items` de chaque paquet YAML
+servi, 18 fichiers, verifie ce jour). **167 sur 428, soit 39 %.** Sur les quatre paquets qu'elle a
+joues **entiers**, item par item, avec l'outil neuf `squad/outils/nadia-prof/auditer-un-paquet-
+entier.py` (memes commit et date) : **92 items exhaustifs, 42 sous le pli avant les leviers de
+forme de `S21-2`, 40 encore apres**.
+
+**Ce qui, dans ce document-ci, portait deja cette meme population sans le nommer aussi nettement.**
+La section "Option ecartee" du premier paragraphe de la Decision cite *"huit jeux sur dix-sept et
+quarante-trois items sur cent cinquante-sept du catalogue servi"* (`DEC-0050`, section 4). `DEC-
+0050` qualifiait deja ce chiffre de **"plancher"**, tirage aleatoire, 7 a 10 items vus par jeu - je
+ne le decouvre pas, je le rends explicite ici, parce que la formule reprise dans ce document,
+*"cent cinquante-sept du catalogue servi"*, ne porte plus elle-meme ce mot en la recopiant, et
+c'est exactement la coupure que `nadia-prof` a mesuree le 2026-08-27 sur cinq documents distincts,
+le sien compris : un chiffre d'echantillon relu comme un compte de catalogue. **157 et 167 sont deux
+mesures du meme type (plancher, une partie par jeu), prises a deux dates differentes (avant et apres
+le retour de `cm1-reperes`), et aucune des deux n'est un inventaire.**
+
+**Ce que je ne fais pas ici.** Je ne recalcule aucun pourcentage catalogue-entier a partir des 92
+items exhaustifs : quatre paquets sur dix-huit ne permettent d'en tirer aucune moyenne fiable, et
+`nadia-prof` le dit elle-meme en refusant de reenoncer un chiffre a cette echelle faute d'avoir joue
+les treize autres paquets. Ce document ne le fait pas non plus.
+
+**Ce que cela change, ou non, a l'arbitrage de l'utilisatrice.** Son arbitrage ("fermer le pli
+d'abord, puis le volume") repose, dans ce document, sur un motif qui ne depend pas de la taille
+exacte de la population mesuree : les jeux neufs heriteraient du meme defaut de forme (budget
+vertical du cabinet, taille de `.proposition`) si le volume s'ouvrait avant que ce defaut soit
+traite, quel que soit le pourcentage du catalogue qu'il touche aujourd'hui. Le chiffre servait a
+motiver l'urgence, pas la nature de la decision. Sur la seule population que `nadia-prof` a
+mesuree en entier, le taux est **plus defavorable** que le plancher cite ici (42 sur 92, 45,7 %,
+contre 43 sur 157, 27,4 %) : la correction va dans le sens qui renforce le motif retenu, pas dans
+celui qui l'affaiblirait. **Je ne repose donc pas la question a l'utilisatrice** : rien dans la
+population reelle, telle qu'elle est connue a ce jour sur quatre paquets sur dix-huit, ne contredit
+le prix qu'elle a explicitement accepte de payer. Si les treize paquets restants, une fois mesures
+en entier, renversaient ce sens, la question redeviendrait sienne - ce n'est pas le cas aujourd'hui.
