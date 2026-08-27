@@ -144,3 +144,14 @@ plus dependante d'un humain qui la regarde **avant** que l'exposition n'ait lieu
 - `adapters/adapter-content/src/main/resources/catalogue.yaml` : aucun changement par ce document -
   l'entree est deja absente depuis `DEC-0048`.
 - Aucun fichier sous `domain/`, `application/`, `adapters/` ni `bootstrap/` n'est modifie.
+
+## Note du 2026-08-27 (s20, cloture) - le motif du retrait est leve, le retour est trace ailleurs
+
+`nadia-prof` a reaudite le paquet corrige par `lea-dev` et prononce **VALIDE SOUS RESERVE** le
+2026-08-27 (`squad/conformite/FICHE-bandit-manchot-reperes-cm1.md`) : les deux motifs de ce refus
+sont traites et mesures. **Ce document n'est pas reecrit** : ses chiffres du 2026-08-26 restent
+exacts pour l'increment qu'il jugeait alors. Le retour au catalogue, le mouvement de matrice et les
+quatre reserves non bloquantes neuves (`REP-7` a `REP-10`) sont traces dans
+`DEC-0050-cm1-reperes-retourne-au-catalogue-valide-sous-reserve-rep-8-route-comme-defaut-de-
+catalogue.md`, une nouvelle reference plutot qu'un amendement sur place, pour que les deux etats
+(refuse puis leve) restent lisibles independamment.

@@ -5772,6 +5772,12 @@ pli, dix jeux dont deux `couvert-valide`) : ce fait est route a `nadia-prof`, no
 ce sprint, et le planning reste gele par `sofia-sm`. Detail complet : amendement du 2026-08-25
 (troisieme passage) a `DEC-0047`.
 
+**Mise a jour du 2026-08-27 (s20, cloture)** : `nadia-prof` a rendu sa mesure independante sur ce
+meme defaut (`REP-8`, catalogue servi, 17 jeux, 157 items, methode et perimetre distincts de la
+mesure de `theo-archi`), sans qualifier les items de l'un ou l'autre releve. Confrontation chiffree
+et backlog : `DEC-0050` et la section "Reserves de cloture s20", sous `S20-2` ci-dessous. Ni ce fait
+ni `REP-8` ne sont instruits en story affectee a s21 par ce document.
+
 ### S20-1 - Le mot cible de "Nom ou verbe ?" est designe autrement que par les guillemets seuls (`NAT-5`)
 
 - **Besoin** : en tant qu'eleve de CP qui joue a "Nom ou verbe ?", je veux voir clairement quel mot
@@ -5952,3 +5958,176 @@ reste `en cours`. Detail complet et gravite du trou de gouvernance associe : `DE
 
 **Lien decision** : `DEC-0049`. **Agent pressenti** : `lea-dev` pour la correction, `ines-design`
 si la mise en page des cinq propositions le demande, `nadia-prof` pour le reaudit.
+
+**Mise a jour du 2026-08-27 (s20, cloture) - increment livre, reaudite, VALIDE SOUS RESERVE.**
+`nadia-prof` a reaudite le paquet corrige par `lea-dev` (`round-two` a `77dd467`) et prononce
+**VALIDE SOUS RESERVE** : les deux criteres correctifs ci-dessus sont traites - `REP-4` tenue
+(simulation de l'enfant qui ignore le point d'interrogation, 16 sur 16 -> 13 sur 16, trois items
+exigeant la distinction) ; le pli lisible sur le verdict, 14 items sur 16 apres un echec (0 sur 16
+au refus), l'indice restant sous le pli sur 16 items sur 16 mais **non retenu contre ce paquet** -
+`nadia-prof` verifie sa propre barre et la trouve non tenue par 8 jeux sur 17 du catalogue servi.
+**Le Done pedagogique est acquis, sous reserve.** Le jeu revient au catalogue et la ligne de matrice
+passe `couvert-valide` (15/43, 34,9 %) : detail complet, verification personnelle avant de faire
+bouger la ligne, et confrontation chiffree avec l'obstacle nomme ci-dessus (95 items sur 296, dix
+jeux) : `DEC-0050`.
+
+**Collision de nommage, signalee et non corrigee.** Les criteres correctifs ci-dessus portent les
+labels "`REP-7` (pli)" et "`REP-8` (le quatrieme repere)" - des labels que j'avais moi-meme inventes
+le 2026-08-25 pour nommer ces deux exigences, avant que `nadia-prof` ne reutilise `REP-7` et `REP-8`
+le 2026-08-27 pour deux reserves neuves et sans rapport (`REP-7` : la composition des propositions
+predit la reponse sans lire la phrase ; `REP-8` : l'indice reste hors de vue apres un echec, defaut
+de catalogue). **Ce sont quatre objets differents portant deux paires de labels identiques.** Je ne
+renomme pas mes labels du 2026-08-25 : ils restent lisibles par leur date et leur objet dans ce
+paragraphe, et les reecrire effacerait la trace de ce qui a motive la correction de `lea-dev`. Un
+lecteur qui cite "`REP-7`" ou "`REP-8`" sur ce jeu doit preciser la date.
+
+**Quatre reserves non bloquantes neuves du 2026-08-27, non affectees a un sprint** (voir la section
+dediee ci-dessous, apres `S20-2`) : `REP-7`, `REP-8`, `REP-9`, `REP-10` (nomenclature de
+`nadia-prof`, distincte des labels du paragraphe ci-dessus).
+
+### Reserves de cloture s20 (`nadia-prof`, 2026-08-27) - non affectees a un sprint
+
+Quatre reserves non bloquantes, ouvertes par `nadia-prof` a la reaudition de `cm1-reperes`
+(`squad/conformite/FICHE-bandit-manchot-reperes-cm1.md`, verdict du 2026-08-27 ; `DEC-0050`). Elles
+n'affectent pas le Done pedagogique deja rendu sur `cm1-reperes`. **Non affectees a s21** : le
+planning de s21 n'est pas ecrit a la cloture de s20.
+
+#### `REP-7` - Sur `cm1-reperes`, la composition des trois propositions predit la reponse sans lire la phrase
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue a "Majuscule ou point ?", je veux devoir lire la
+  phrase pour repondre juste, afin que reussir le jeu demande de connaitre les reperes plutot que
+  de reconnaitre la forme des trois boutons proposes.
+- **Competence programme visee** : francais, CM1 (cycle 3), "Reperer et corriger la majuscule et la
+  ponctuation dans une phrase donnee..." (meme ligne que `S20-2`, deja `couvert-valide`, cette
+  story en corrige un residu).
+- **Constat chiffre, dans les mots de `nadia-prof`, repris sans les affaiblir** : sur les seize
+  items, quand un libelle de majuscule et un libelle de point figurent ensemble avec "Phrase
+  correcte", la reponse est toujours "Phrase correcte" (4 items sur 16) ; quand les deux libelles
+  non corrects sont de la meme famille (deux majuscules ou deux points), la reponse n'est jamais
+  "Phrase correcte" (12 items sur 16) - sans exception, sur les treize compositions distinctes du
+  paquet servi. Un enfant qui ne lit pas la phrase gagne 4 items a coup sur et joue les douze autres
+  a une chance sur deux : esperance 10 items sur 16, contre 5,33 au hasard pur.
+- **Ce que `nadia-prof` ne demande pas** : elle ne demande pas de retirer "Phrase correcte" d'un
+  seul item - elle ecrit que `lea-dev` a raison de la garder sur les seize.
+- **Criteres d'acceptation** :
+  - Etant donne le paquet corrige, quand on enumere ses seize compositions de trois libelles,
+    alors la signature "un libelle de majuscule + un libelle de point + Phrase correcte" ne designe
+    plus systematiquement "Phrase correcte" comme bonne reponse sur les quatre items ou elle
+    apparait aujourd'hui - au moins une partie de ces items porte une composition mixte (deux
+    libelles de familles differentes, dont un faux) qui empeche la prediction par la seule forme.
+  - Etant donne le paquet corrige, quand on relit les seize items, alors "Phrase correcte" reste
+    presente sur les seize items comme bonne ou mauvaise reponse, sans reduction du nombre d'items
+    ni des seize phrases (`nadia-prof` le confirme deja bon).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que la nouvelle composition des propositions reste plausible sans etre ambigue,
+    et que l'esperance d'un enfant qui ne lit pas la phrase redescende reellement pres du hasard
+    (5,33 sur 16) - `REP-7` est une propriete de comptage, pas gardee par un test de ce depot,
+    meme famille que `REP-1` a `REP-4`.
+- **Lien decision** : `DEC-0050`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, non affectee a s21 par ce document.
+  `lea-dev` pour la correction (meme paquet que `S20-2`), `nadia-prof` pour le reaudit.
+
+#### `REP-8` - L'indice reste hors de vue apres un echec sur huit jeux sur dix-sept du catalogue (defaut de catalogue, pas de paquet)
+
+- **Besoin** : en tant qu'eleve qui vient de se tromper dans n'importe quel jeu du catalogue, je
+  veux voir l'indice qui m'aide a comprendre mon erreur sans avoir a faire defiler la page, afin de
+  recevoir l'aide au moment ou j'en ai besoin plutot que de rester bloque sur un ecran qui semble
+  ne rien dire.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. `nadia-prof` le nomme
+  explicitement : *"Ce n'est pas un defaut de `cm1-reperes` : c'est le premier defaut pedagogique du
+  catalogue aujourd'hui"* ; la cause qu'elle mesure n'est pas dans un contenu, elle est dans le
+  budget vertical du cabinet et la taille de `.proposition`.
+- **Constat chiffre du 2026-08-27** (`nadia-prof`, balayage du catalogue servi a `77dd467`, 744 x
+  551, un navigateur et une session neufs par jeu, une partie par jeu, une erreur volontaire par
+  item, 17 jeux, 157 items vus - **un plancher, pas un inventaire**) : l'indice passe sous le pli
+  sur au moins un item vu dans **8 jeux sur 17**, sur **43 items sur 157** vus, pire enfoncement
+  92,19 px. Deux jeux l'enfoncent plus bas que `cm1-reperes` corrige
+  (`bandit-manchot-perimetre-cm1` a 685,19 px, `bandit-manchot-grands-nombres-cm1` a 715,19 px) et
+  un sur la totalite des items vus (`bandit-manchot-problemes-additifs-cp`, 10 sur 10). Le verdict,
+  mesure separement, passe sous le pli sur **3 jeux sur 17**, **5 items sur 157**
+  (`bandit-manchot-conjugaison-present-cm1`, `bandit-manchot-perimetre-cm1`,
+  `bandit-manchot-grands-nombres-cm1`).
+- **Ce que cette mesure n'est pas** : elle n'est ni identique ni independante de l'obstacle nomme au
+  planning de s20 (*"95 items sur 296 (32 %), sur dix jeux, ont deja leur bloc de message sous le
+  pli"*, `theo-archi`, 2026-08-25). Confrontation complete, perimetre par perimetre :
+  `DEC-0050`, section 4. En resume : trois jeux figurent dans les deux mesures
+  (`bandit-manchot-problemes-additifs-cp`, `bandit-manchot-perimetre-cm1`,
+  `bandit-manchot-grands-nombres-cm1`) - meme famille de defaut, meme cause nommee des deux cotes -
+  mais les deux chiffres ne se somment pas : perimetres de jeux differents (10 contre 17), 296 items
+  exhaustifs contre 157 items en plancher echantillonne, etat le plus charge (trois echecs et
+  revelation) contre un seul echec, un bloc combine (signal, verdict, explication, indice) contre
+  deux visibilites mesurees separement (verdict, indice). **Je ne prononce aucun statut de
+  couverture sur les items de l'une ou l'autre mesure.**
+- **Criteres d'acceptation** :
+  - Etant donne un item de n'importe quel jeu du catalogue, quand l'enfant se trompe une fois, alors
+    l'indice qui suit est entierement visible a la reference du produit (744 x 551, `DEC-0040`)
+    sans avoir a faire defiler la page. **Ce critere n'est pas atteignable par une seule valeur de
+    marge ou de rembourrage sans arbitrage de forme** (`nadia-prof` le mesure elle-meme sur
+    `cm1-reperes` : au plus 10 caracteres par libelle pour trois propositions sur une rangee ; une
+    rangee au lieu de deux vaut 90 px, un enonce d'une ligne au lieu de deux en vaut 48) - la forme
+    exacte (budget vertical du cabinet, taille de `.proposition`) revient a `ines-design` et
+    `theo-archi`, je ne la prescris pas ici.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : si un enfant de neuf ans comprend qu'il peut faire defiler la page pour aller
+    chercher l'indice, et ce qu'un signal de defilement devrait porter pour le lui dire - elle nomme
+    elle-meme ces jugements comme non mesurables par l'outillage du depot.
+  - Ce qui reste a mesurer avant tout arbitrage de forme, nomme par `nadia-prof` et non tranche par
+    cette story : toutes ses campagnes tournent avec un navigateur sans barre de defilement peinte
+    (`--hide-scrollbars`) ; sur `cm1-reperes` le document fait 627 px pour un pli a 551 apres un
+    echec, donc 76 px de defilement possible - l'indice est *hors de vue*, pas necessairement
+    *inatteignable*, et l'etat avec une barre de defilement classique n'a jamais ete mesure.
+- **Lien decision** : `DEC-0050`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, non affectee a s21 par ce document.
+  `camille-po` (priorisation), `ines-design` et `theo-archi` sur la cause de forme - **jamais
+  `lea-dev`** : `nadia-prof` le route explicitement comme une story de catalogue, pas une reprise
+  de paquet.
+
+#### `REP-9` - Sur `cm1-reperes`, le verdict est coupe en deux sur les deux items a enonce de deux lignes
+
+- **Besoin** : en tant qu'eleve de CM1 qui vient de repondre a un item dont la phrase est longue, je
+  veux lire le message qui me dit si j'ai reussi en entier, afin de ne pas devoir deviner la moitie
+  d'un mot coupe par le bas de l'ecran.
+- **Competence programme visee** : francais, CM1 (cycle 3), meme ligne que `REP-7` ci-dessus.
+- **Constat chiffre** : sur les deux items dont l'enonce passe a deux lignes (*"Nous partons demain
+  matin pour la montagne"*, *"Pourquoi les feuilles tombent-elles en automne"*), le texte du verdict
+  est coupe en deux dans la hauteur des lettres (haut a 534,19 px, pli a 551 px).
+- **Correction nommee par `nadia-prof`, qui corrige au meme geste une de ses propres phrases** :
+  elle avait ecrit au refus *"ce que je ne demande pas : ni de toucher aux seize phrases"*, lue par
+  `lea-dev` comme une interdiction. Elle precise le 2026-08-27 : *"je ne demandais pas de les
+  toucher, je ne l'interdisais pas"*. Ramener ces deux enonces a une seule ligne fait remonter le
+  verdict a 516,19 px sur les seize items.
+- **Criteres d'acceptation** :
+  - Etant donne les deux items a enonce de deux lignes du paquet corrige, quand on les relit,
+    alors leur phrase tient sur une seule ligne a la reference du produit (744 x 551), sans changer
+    le repere qu'ils testent ni leur bonne reponse.
+  - Etant donne les seize items du paquet corrige, quand on lit le verdict apres un echec a la
+    reference, alors il est entierement au-dessus du pli sur les seize (0 coupe, contre 2 sur 16
+    avant cette story).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que les deux phrases reformulees restent du meme niveau CM1, avec le meme piege
+    ou la meme absence de piege que l'original.
+- **Lien decision** : `DEC-0050`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, non affectee a s21 par ce document.
+  `lea-dev` pour la correction, `nadia-prof` pour le reaudit.
+
+#### `REP-10` - Sur `cm1-reperes`, l'indice de l'item 15 nomme la reponse de trop pres
+
+- **Besoin** : en tant qu'eleve de CM1 qui se trompe sur l'item "Ou habite ton cousin Paul ?", je
+  veux un indice qui m'aide a reperer le signe attendu sans me donner directement la reponse, afin
+  que reussir l'item demande de comprendre le repere plutot que d'apparier deux mots de l'indice.
+- **Competence programme visee** : francais, CM1 (cycle 3), meme ligne que `REP-7` ci-dessus.
+- **Constat, dans les mots de `nadia-prof`** : l'item 15, dont la bonne reponse est "Phrase
+  correcte", porte l'indice *"Cette phrase pose une question et se termine bien."* - *"se termine
+  bien"* nomme la reponse d'assez pres pour qu'un enfant apparie sans relire. Meme famille que
+  `REP-5`, deja fermee par la correction du 2026-08-26 sur les items 8 et 9 (`M21`, un indice qui
+  nomme la reponse est une revelation deguisee).
+- **Criteres d'acceptation** :
+  - Etant donne l'indice de l'item 15, quand on le relit, alors il n'emploie plus le mot "bien" ni
+    aucun mot qui reprend le libelle de la bonne reponse ("Phrase correcte") - sur le modele deja
+    retenu pour les items 8 et 9 (aider a reperer le signe, sans nommer le verdict).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'un enfant de CM1 ne puisse plus apparier l'indice reformule a la reponse sans
+    relire la phrase.
+- **Lien decision** : `DEC-0050`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, non affectee a s21 par ce document.
+  `lea-dev` pour la correction, `nadia-prof` pour le reaudit.

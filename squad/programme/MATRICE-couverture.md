@@ -611,7 +611,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | bandit-manchot-accords-groupe-nominal-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...) | bandit-manchot-homophones-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif | bandit-manchot-conjugaison-present-cm1 | bandit manchot | couvert-valide |
-| francais | CM1 | Orthographe et grammaire | Reperer et corriger la majuscule et la ponctuation dans une phrase donnee (majuscule initiale, point final, majuscule au nom propre, point d'interrogation d'une question) | bandit-manchot-reperes-cm1 | bandit manchot | en cours |
+| francais | CM1 | Orthographe et grammaire | Reperer et corriger la majuscule et la ponctuation dans une phrase donnee (majuscule initiale, point final, majuscule au nom propre, point d'interrogation d'une question) | bandit-manchot-reperes-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | bandit-manchot-synonymes-cm1, bandit-manchot-antonymes-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | - | - | non couvert |
 
@@ -659,6 +659,38 @@ d'interrogation sur 6 items sur 16 - un enfant qui ignore l'existence du point d
 obtient 16 sur 16). Deux reserves non bloquantes consignees, `REP-5` et `REP-6`. Le jeu est hors
 catalogue (`DEC-0048`, puis `DEC-0049`, ce second motif independant de la simple absence d'audit).
 Detail complet, criteres correctifs verbatim et routage : `DEC-0049`, `docs/backlog/backlog.md`.
+
+**Note du 2026-08-27 (s20, cloture, `camille-po`) - reaudition VALIDE SOUS RESERVE, la ligne passe
+`couvert-valide`.** `nadia-prof` a reaudite le paquet corrige par `lea-dev` (`round-two` a
+`77dd467`) et prononce **VALIDE SOUS RESERVE** le 2026-08-27
+(`squad/conformite/FICHE-bandit-manchot-reperes-cm1.md`, verdict du 2026-08-27 ;
+`squad/sprints/s20-mot-cible-designe-et-conception-de-la-saisie/avis-nadia-cloture.md`). Les deux
+motifs du `REFUSE` du 2026-08-26 sont traites et mesures : `REP-4` est tenue (la simulation d'un
+enfant qui ignore le point d'interrogation passe de 16 sur 16 a 13 sur 16, trois items exigeant
+desormais la distinction, ce que `nadia-prof` exigeait au caractere pres) ; le pli est lisible sur
+14 items sur 16 apres un echec (0 sur 16 au refus). **Le Done pedagogique est prononce et le motif
+du retrait de `DEC-0049` est leve** : `DEC-0050` trace la reprise et route le geste sur
+`catalogue.yaml` a `sofia-sm`. La ligne passe `en cours` -> `couvert-valide`.
+
+**Perimetre exact de ce `couvert-valide`, dans les mots de `nadia-prof`.** Ce statut couvre la
+connaissance des quatre reperes sur une phrase donnee, mesuree et tenue. Il ne couvre **pas** la
+relecture par l'enfant de son propre texte : la ligne d'origine ("Relire et corriger son texte...")
+reste `non couvrable en l'etat`, inchangee. Quatre reserves non bloquantes restent ouvertes,
+`REP-7` a `REP-10` (2026-08-27) : `REP-7` (la composition des trois propositions par item predit la
+reponse sans lire la phrase sur 4 items sur 16, esperance 10 sur 16 au lieu de 5,33 au hasard),
+`REP-9` (le verdict est coupe en deux sur les 2 items a enonce de deux lignes) et `REP-10` (l'indice
+de l'item 15 nomme la reponse de trop pres) sont propres a ce paquet, routees a `lea-dev` ;
+`REP-8` (l'indice reste hors de vue apres un echec sur 16 items sur 16, 44,19 a 92,19 px sous le
+pli) **n'est pas un defaut de ce paquet** - `nadia-prof` la qualifie elle-meme de premier defaut
+pedagogique du catalogue aujourd'hui, mesure sur 8 jeux sur 17 et 43 items sur 157 le 2026-08-27,
+et la route comme story de catalogue plutot que comme reprise de paquet. Detail des quatre
+reserves et leur mise en backlog (non affectees) : `docs/backlog/backlog.md`, section "Sprint 20".
+
+**Le chiffre, avec sa base, verifie ligne par ligne contre cette matrice avant d'etre ecrit
+(2026-08-27).** Le denominateur atteignable reste **43** sur **47** : aucune ligne `non couvrable en
+l'etat` ne bouge. Le compte de lignes `couvert-valide` passe de **14** a **15** (la seule ligne qui
+bouge est celle-ci ; verifie en relisant les quatre tableaux de matiere ci-dessus terme a terme).
+**14/43 (32,6 %) devient 15/43 (34,9 %)**.
 
 **Note du 2026-08-24 (s19, `camille-po`) - trois lignes ouvertes par le Lot A de `DEC-0042`**
 (`docs/backlog/backlog.md`, section "Sprint 19") :
@@ -2235,3 +2267,46 @@ cloture de s19.
 
 **Ce qui ne bouge pas.** Aucune ligne ne passe `couvert-valide` pour `cm1-reperes` : ce statut
 n'est prononce que par `nadia-prof`, apres audit reel, et son verdict de ce jour est `REFUSE`.
+
+## Amendement du 2026-08-27 (s20, cloture) - `cm1-reperes` VALIDE SOUS RESERVE, 15/43 (34,9 %)
+
+`nadia-prof` a reaudite le paquet corrige par `lea-dev` (`round-two` a `77dd467`) et prononce
+**VALIDE SOUS RESERVE** le 2026-08-27 - detail complet et verification personnelle avant de faire
+bouger la ligne : `DEC-0050`. Les deux motifs du `REFUSE` du 2026-08-26 sont traites : `REP-4` est
+tenue et mesuree (13 sur 16 au lieu de 16 sur 16 sur la simulation de l'enfant qui ignore le point
+d'interrogation, trois items exigeant desormais la distinction) ; le pli est lisible sur 14 items
+sur 16 apres un echec (0 sur 16 au refus). "Reperer et corriger la majuscule et la ponctuation dans
+une phrase donnee..." passe `en cours` -> `couvert-valide`.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide | non couvrable en l'etat |
+|---|---|---|---|---|---|
+| mathematiques CP | 11 | 6 | 1 | 4 | 0 |
+| mathematiques CM1 | 12 | 4 | 2 | 4 | 2 |
+| francais CP | 12 | 9 | 1 | 1 | 1 |
+| francais CM1 | 12 | 5 | 0 | 6 | 1 |
+| **Total** | **47** | **24** | **4** | **15** | **4** |
+
+Francais CM1 : `en cours` passe de 1 a 0, `couvert-valide` de 5 a 6 - "Reperer et corriger la
+majuscule et la ponctuation..." est la seule ligne qui bouge. Aucune autre matiere n'est touchee par
+ce geste.
+
+**Le chiffre, avec sa base, verifie ligne par ligne contre les quatre tableaux de matiere de cette
+matrice avant d'etre ecrit (2026-08-27), pas repris d'un autre document du depot.** Le denominateur
+atteignable reste **43** sur **47**, inchange : aucune ligne `non couvrable en l'etat` ne bouge. Le
+compte de lignes `couvert-valide` passe de **14** a **15**. **14/43 (32,6 %) devient 15/43
+(34,9 %)** - un mouvement de couverture reel, le second increment joue et audite `VALIDE` (ou
+`VALIDE SOUS RESERVE`) depuis la cloture de s19.
+
+**Ce que ce mouvement ne couvre pas, nomme pour que personne ne le croie couvert.** La ligne
+d'origine ("Relire et corriger son texte a l'aide de reperes simples") reste `non couvrable en
+l'etat`, inchangee : ce paquet ne couvre que la connaissance des reperes sur une phrase donnee,
+jamais la relecture par l'enfant de son propre texte. Quatre reserves non bloquantes restent
+ouvertes sur ce Done (`REP-7`, `REP-8`, `REP-9`, `REP-10`, 2026-08-27) - detail dans la section
+francais CM1 ci-dessus et dans `docs/backlog/backlog.md`, "Sprint 20". `REP-8` en particulier n'est
+pas propre a ce paquet : `nadia-prof` la nomme premier defaut pedagogique du catalogue aujourd'hui
+(8 jeux sur 17, 43 items sur 157, mesure du 2026-08-27), routee comme story de catalogue et non
+comme reprise de ce paquet.
+
+**Ce qui ne bouge pas.** Le geste materiel sur `catalogue.yaml` (retour de l'entree
+`bandit-manchot-reperes-cm1`) est execute par `sofia-sm`, pas par ce document. Aucune autre ligne de
+cette matrice ne bouge par ce mouvement.
