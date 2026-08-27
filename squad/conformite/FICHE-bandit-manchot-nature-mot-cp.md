@@ -741,3 +741,5 @@ l'ai ecrit le 2026-08-25 et je ne deplace pas ce poteau-la.
   ce jeu la question est sans consequence mesuree - le document fait **551 px**, il n'y a rien a
   faire defiler - mais je nomme l'etat plutot qu'une categorie voisine.
 - **Toute largeur autre que 744 px** : non mesuree, inchange.
+
+> **Note du 2026-08-27, ajoutee juste apres le depot de ce lot.** `round-two` a avance pendant mon audit : `9ccbb1d` (`yanis-qa`) puis `6228d77` (`theo-archi`) se sont poses au-dessus de `77dd467`. **Ils ne changent rien a ce que j'ai mesure**, et je le verifie plutot que je le suppose : `git diff --name-only 77dd467..6228d77 -- adapters domain application bootstrap`, le 2026-08-27, ne rend **aucun fichier** - les deux commits ne portent que des documents de `squad/`. L'artefact servi a la tete de branche est donc identique a celui que j'ai joue.
