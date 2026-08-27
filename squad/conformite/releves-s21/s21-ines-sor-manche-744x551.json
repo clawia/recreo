@@ -1,0 +1,100 @@
+{
+  "boutons": {
+    "action:btn proposition#3": {
+      "borderTopWidth": "1px",
+      "fontSize": "32px",
+      "hauteurRendue": 66,
+      "largeurRendue": 375,
+      "minHeight": "44px",
+      "paddingBas": "8px",
+      "paddingDroite": "20px",
+      "paddingGauche": "20px",
+      "paddingHaut": "8px",
+      "role": "action",
+      "surfaceRendue": 24750,
+      "texte": "Point d'interrogation",
+      "visible": true
+    },
+    "action:btn proposition#4": {
+      "borderTopWidth": "1px",
+      "fontSize": "32px",
+      "hauteurRendue": 66,
+      "largeurRendue": 289,
+      "minHeight": "44px",
+      "paddingBas": "8px",
+      "paddingDroite": "20px",
+      "paddingGauche": "20px",
+      "paddingHaut": "8px",
+      "role": "action",
+      "surfaceRendue": 19074,
+      "texte": "Phrase correcte",
+      "visible": true
+    },
+    "action:btn proposition#5": {
+      "borderTopWidth": "1px",
+      "fontSize": "32px",
+      "hauteurRendue": 66,
+      "largeurRendue": 680,
+      "minHeight": "44px",
+      "paddingBas": "8px",
+      "paddingDroite": "20px",
+      "paddingGauche": "20px",
+      "paddingHaut": "8px",
+      "role": "action",
+      "surfaceRendue": 44880,
+      "texte": "Point final",
+      "visible": true
+    },
+    "entree:btn chip-niveau#0": {
+      "borderTopWidth": "2px",
+      "fontSize": "20px",
+      "hauteurRendue": 50,
+      "largeurRendue": 56.38,
+      "minHeight": "44px",
+      "paddingBas": "8px",
+      "paddingDroite": "14.4px",
+      "paddingGauche": "14.4px",
+      "paddingHaut": "8px",
+      "role": "entree",
+      "surfaceRendue": 2818.75,
+      "texte": "CP",
+      "visible": true
+    },
+    "entree:btn chip-niveau#1": {
+      "borderTopWidth": "2px",
+      "fontSize": "20px",
+      "hauteurRendue": 50,
+      "largeurRendue": 73.91,
+      "minHeight": "44px",
+      "paddingBas": "8px",
+      "paddingDroite": "14.4px",
+      "paddingGauche": "14.4px",
+      "paddingHaut": "8px",
+      "role": "entree",
+      "surfaceRendue": 3695.31,
+      "texte": "CM1",
+      "visible": true
+    },
+    "sortie:btn lien-accueil#2": {
+      "borderTopWidth": "2px",
+      "fontSize": "20px",
+      "hauteurRendue": 50,
+      "largeurRendue": 108.83,
+      "minHeight": "44px",
+      "paddingBas": "8px",
+      "paddingDroite": "17.6px",
+      "paddingGauche": "17.6px",
+      "paddingHaut": "8px",
+      "role": "sortie",
+      "surfaceRendue": 5441.41,
+      "texte": "Les jeux",
+      "visible": true
+    }
+  },
+  "ecran": "manche",
+  "jeu": "bandit-manchot-reperes-cm1",
+  "viewport": [
+    744,
+    551
+  ]
+}

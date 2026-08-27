@@ -159,7 +159,7 @@ class LaLargeurDemandeeParUneRangeeEstEpingleeTest {
             "nav.container.entete-contenu > a.btn.lien-accueil | bootstrap.min.css | - | .btn | padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x); font-size: var(--bs-btn-font-size); border: var(--bs-btn-border-width) solid var(--bs-btn-border-color)",
             "nav.container.entete-contenu > a.btn.lien-accueil | recreo.css | - | * | box-sizing: border-box",
             "nav.container.entete-contenu > a.btn.lien-accueil | recreo.css | - | .entete-contenu .lien-accueil | margin-left: auto",
-            "nav.container.entete-contenu > a.btn.lien-accueil | recreo.css | - | .lien-accueil | font-size: 1.25rem; border: 0.125rem solid var(--recreo-accent-texte); padding: 0.6rem 1.1rem",
+            "nav.container.entete-contenu > a.btn.lien-accueil | recreo.css | - | .lien-accueil | font-size: 1.25rem; border: 0.125rem solid var(--recreo-accent-texte); padding: 0.5rem 1.1rem",
             "nav.container.entete-contenu > a.btn.lien-accueil | recreo.css | - | .lien-accueil:hover | border: 0.125rem solid var(--recreo-accent-texte)",
             "nav.container.entete-contenu > a.btn.lien-accueil | recreo.css | - | .entete-contenu .lien-accueil:active | border: 0.125rem solid var(--recreo-accent-texte)",
             "nav.container.entete-contenu > a.btn.lien-accueil | recreo.css | - | .lien-accueil:focus-visible | border: 0.125rem solid var(--recreo-accent-texte)",
@@ -171,6 +171,7 @@ class LaLargeurDemandeeParUneRangeeEstEpingleeTest {
             "form.propositions > button.btn.proposition | recreo.css | - | .proposition | flex: 1 1 auto",
             "form.propositions > button.btn.proposition | recreo.css | - | .propositions:has(.proposition:nth-child(4)) .proposition | flex: 1 1 calc(50% - 0.5rem); font-size: 1.875rem",
             "form.propositions > button.btn.proposition | recreo.css | - | .proposition | min-width: 2.75rem; padding: 0.75rem 1.25rem",
+            "form.propositions > button.btn.proposition | recreo.css | - | .proposition | padding: 0.5rem 1.25rem",
             "form.propositions > button.btn.proposition | recreo.css | - | .proposition | font-size: 2rem");
 
     @Autowired

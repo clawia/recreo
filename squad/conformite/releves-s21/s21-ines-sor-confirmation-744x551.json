@@ -1,0 +1,85 @@
+{
+  "boutons": {
+    "action:btn continuer-partie#3": {
+      "borderTopWidth": "1px",
+      "fontSize": "20px",
+      "hauteurRendue": 56,
+      "largeurRendue": 696,
+      "minHeight": "44px",
+      "paddingBas": "12px",
+      "paddingDroite": "20px",
+      "paddingGauche": "20px",
+      "paddingHaut": "12px",
+      "role": "action",
+      "surfaceRendue": 38976,
+      "texte": "Continuer la partie",
+      "visible": true
+    },
+    "entree:btn chip-niveau#0": {
+      "borderTopWidth": "2px",
+      "fontSize": "20px",
+      "hauteurRendue": 0,
+      "largeurRendue": 0,
+      "minHeight": "44px",
+      "paddingBas": "8px",
+      "paddingDroite": "14.4px",
+      "paddingGauche": "14.4px",
+      "paddingHaut": "8px",
+      "role": "entree",
+      "surfaceRendue": 0,
+      "texte": "CP",
+      "visible": false
+    },
+    "entree:btn chip-niveau#1": {
+      "borderTopWidth": "2px",
+      "fontSize": "20px",
+      "hauteurRendue": 0,
+      "largeurRendue": 0,
+      "minHeight": "44px",
+      "paddingBas": "8px",
+      "paddingDroite": "14.4px",
+      "paddingGauche": "14.4px",
+      "paddingHaut": "8px",
+      "role": "entree",
+      "surfaceRendue": 0,
+      "texte": "CM1",
+      "visible": false
+    },
+    "sortie:btn lien-accueil#2": {
+      "borderTopWidth": "2px",
+      "fontSize": "20px",
+      "hauteurRendue": 0,
+      "largeurRendue": 0,
+      "minHeight": "44px",
+      "paddingBas": "8px",
+      "paddingDroite": "17.6px",
+      "paddingGauche": "17.6px",
+      "paddingHaut": "8px",
+      "role": "sortie",
+      "surfaceRendue": 0,
+      "texte": "Les jeux",
+      "visible": false
+    },
+    "sortie:btn retour-accueil#4": {
+      "borderTopWidth": "2px",
+      "fontSize": "20px",
+      "hauteurRendue": 50,
+      "largeurRendue": 108.83,
+      "minHeight": "44px",
+      "paddingBas": "8px",
+      "paddingDroite": "17.6px",
+      "paddingGauche": "17.6px",
+      "paddingHaut": "8px",
+      "role": "sortie",
+      "surfaceRendue": 5441.41,
+      "texte": "Les jeux",
+      "visible": true
+    }
+  },
+  "ecran": "confirmation",
+  "jeu": "bandit-manchot-reperes-cm1",
+  "viewport": [
+    744,
+    551
+  ]
+}

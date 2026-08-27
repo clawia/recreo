@@ -124,20 +124,25 @@ h1 {
    .retour-accueil - taille de police, hauteur minimale, rembourrage - pour ne jamais depasser un
    bouton d'action sur l'ecran ou il s'affiche. Contour blanc plutot que la couleur d'accent, parce
    que le fond de l'en-tete est deja cette meme couleur.
-   Correction datee du 2026-08-27 (theo-archi, s21) - ces trois lignes disaient le contraire du
-   code, et du commentaire situe six lignes plus haut dans ce meme fichier. Elles affirmaient :
-   "ADR-0022 : depuis S6-9 ce lien ne s'affiche que sur l'accueil, ou il est confronte a .demarrer.
-   Il n'est plus confronte a .proposition ni a .encore : la regle de masquage ci-dessous fait qu'il
-   ne se montre jamais en meme temps qu'elles." C'est faux depuis S15-3 (arbitrage de
-   l'utilisatrice du 2026-08-18), qui a retire la regle de masquage "body:has(.ecran-de-jeu)
-   .lien-accueil" : la sortie d'en-tete reste visible pendant une manche, donc ce lien EST confronte
-   a .proposition sur les ecrans de jeu. nadia-prof l'a reverifie a l'ecran le 2026-08-27, et
-   leLienDeLEnTeteRedevientConfronteALaReponseSurLesEcransDeJeu l'exige depuis s15 :
-   un commentaire qui contredit un test executable est de la meme famille que la citation d'ADR-0029
-   trouvee dans une Javadoc le meme jour. Ce que ce lien est reellement aujourd'hui : une sortie
-   permanente, confrontee a .demarrer sur l'accueil et a .proposition sur tout ecran de jeu, donc
-   tenue par ADR-0017 sur chacun d'eux. ".encore" n'existe dans aucun gabarit depuis s10 et ne
-   nomme donc plus rien. */
+   Correction datee du 2026-08-27 (theo-archi, s21, confirmee par nadia-prof, FICHE-bandit-manchot-
+   reperes-cm1.md, section 4) - ces trois lignes disaient le contraire du code, et du commentaire
+   situe six lignes plus haut dans ce meme fichier. Elles affirmaient : "ADR-0022 : depuis S6-9 ce
+   lien ne s'affiche que sur l'accueil, ou il est confronte a .demarrer. Il n'est plus confronte a
+   .proposition ni a .encore : la regle de masquage ci-dessous fait qu'il ne se montre jamais en
+   meme temps qu'elles." C'est faux depuis S15-3/DEC-0034 (troisieme arbitrage de l'utilisatrice du
+   2026-08-18), qui a retire la regle de masquage "body:has(.ecran-de-jeu) .lien-accueil" : la
+   sortie d'en-tete reste visible pendant une manche (masquee seulement sur confirmation, erreur et
+   retour, voir les deux regles de masquage ci-dessous), donc ce lien EST confronte a .proposition
+   sur les ecrans de jeu. nadia-prof l'a reverifie a l'ecran le 2026-08-27, et
+   leLienDeLEnTeteRedevientConfronteALaReponseSurLesEcransDeJeu l'exige depuis s15 : un commentaire
+   qui contredit un test executable est de la meme famille que la citation d'ADR-0029 trouvee dans
+   une Javadoc le meme jour. Ce que ce lien est reellement aujourd'hui : une sortie permanente,
+   confrontee a .demarrer sur l'accueil et a .proposition sur tout ecran de jeu, donc tenue par
+   ADR-0017 sur chacun d'eux. ".encore" n'existe dans aucun gabarit depuis s10 et ne nomme donc plus
+   rien.
+   S21 (nadia-prof, ines-design, SOR-1 a SOR-4, meme fiche) : le rembourrage vertical descend de
+   0.6rem a 0.5rem, ce qui ferme l'inversion trouvee par marc-dev sur S21-2 sans toucher
+   .proposition - voir mesure-ines-sor1-a-sor4.md pour la valeur et sa verification. */
 .lien-accueil {
     display: inline-flex;
     align-items: center;
@@ -148,7 +153,7 @@ h1 {
     background-color: transparent;
     border: 0.125rem solid var(--recreo-accent-texte);
     border-radius: 0.5rem;
-    padding: 0.6rem 1.1rem;
+    padding: 0.5rem 1.1rem;
     text-decoration: none;
     cursor: pointer;
 }
@@ -717,6 +722,21 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    regles tierces (l'ordre inter-feuilles la tranche, ADR-0014 point 5) et egalite avec les
    regles cycliques (l'ordre intra-fichier la tranche, comme avant ce lot). Les quatre autres
    sujets de ce groupe n'ont aucune regle cyclique a proteger et gardent "#jeu". */
+/* S21-2 : rembourrage vertical resserre, levier de forme d'ines-design
+   (proposition-ines-rep-8.md, section 2.2). Accepte par nadia-prof le 2026-08-27, en amendement
+   date (pas en reecriture) de son acquis 7 du 2026-08-11
+   (FICHE-bandit-manchot-additions-cp.md, section 7 ; FICHE-bandit-manchot-reperes-cm1.md,
+   section 5) : l'acquis 7 refusait tout rembourrage payeur sur les deux axes, mais sa mesure
+   d'origine ne portait que sur l'axe lateral, epuise a 360 px. L'axe vertical, mesure pour la
+   premiere fois ce jour-la, descend a 0.5rem et pas plus bas (plancher, pas une pente - toute
+   valeur en dessous revient devant elle) ; l'axe lateral reste a 1.25rem, payeur refuse, inchange.
+   Cette regle ne s'applique qu'a .proposition et vient apres le bloc partage ci-dessus pour le
+   surclasser a specificite egale (ADR-0014 point 5) : les quatre autres boutons pleins
+   (.continuer-partie, .demarrer, .recommencer, .sortie-pleine) gardent 0.75rem 1.25rem. */
+.proposition {
+    padding: 0.5rem 1.25rem;
+}
+
 .continuer-partie:hover,
 .demarrer:hover,
 .proposition:hover,
@@ -832,6 +852,10 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    jamais illisible. Sur l'ecran de fin de partie, cette meme sortie devient la seule action
    possible : elle prend alors la classe .sortie-pleine (S3-6), un aplat comme les autres boutons
    d'action plutot que ce contour. */
+/* S21 (nadia-prof, ines-design, FICHE-bandit-manchot-reperes-cm1.md, SOR-1 a SOR-4) : le
+   rembourrage vertical descend de 0.6rem a 0.5rem, la meme valeur et le meme motif que
+   .lien-accueil ci-dessus, avec qui .retour-accueil doit toujours porter la meme boite (SOR-3) -
+   voir mesure-ines-sor1-a-sor4.md pour la valeur et sa verification. */
 .retour-accueil {
     display: inline-flex;
     align-items: center;
@@ -842,7 +866,7 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
     background-color: transparent;
     border: 0.125rem solid var(--recreo-accent);
     border-radius: 0.5rem;
-    padding: 0.6rem 1.1rem;
+    padding: 0.5rem 1.1rem;
     text-decoration: none;
     cursor: pointer;
 }
@@ -1072,11 +1096,15 @@ body:has(.ecran-exclusif) .chip-niveau {
     display: none;
 }
 
+/* S21-2 : marge resserree de 0.5rem 0 a 0.25rem 0, levier de forme d'ines-design
+   (proposition-ines-rep-8.md, section 2.2), accepte sans reserve par nadia-prof le 2026-08-27 -
+   aucun plancher pedagogique ne porte sur cette marge (FICHE-bandit-manchot-reperes-cm1.md,
+   section 5). */
 .score {
     font-size: 1.25rem;
     font-weight: bold;
     color: var(--recreo-accent);
-    margin: 0.5rem 0;
+    margin: 0.25rem 0;
 }
 
 .fin-de-partie {

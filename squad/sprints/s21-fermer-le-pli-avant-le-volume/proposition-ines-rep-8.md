@@ -12,6 +12,23 @@
   livre par ce document) - toute valeur citee ci-dessous est une mesure sur une regle **injectee**
   dans le rendu, jamais commitee dans `recreo.css`.
 
+**Correction du 2026-08-27 (ines-design, s21), sur la population que ce document mesure - amendee,
+pas reecrite.** `nadia-prof` a etabli (`FICHE-bandit-manchot-reperes-cm1.md`, arbitrage du
+2026-08-27, "S21-3 refutee CONFIRMEE contre moi") que la mesure de la section 1 ci-dessous est un
+**echantillon**, pas un inventaire du catalogue : `s21-pli-du-catalogue-744x551.json` porte
+`parties: 1` et `itemsVus: 10` (ou 7 pour le seul jeu a moins de dix manches) pour chacun des 17
+jeux mesures, soit **167 items vus sur les 428 que comptent les 17 paquets servis** (verifie a la
+source, `FICHE-bandit-manchot-reperes-cm1.md`, section "Premiere correction contre moi : la
+population des '56 items' est un echantillon, pas le catalogue"), **39 %**. Je ne l'avais pas
+ecrit, et le titre de la
+section 1 ("Ma mesure du catalogue servi aujourd'hui") pouvait laisser lire une couverture
+complete qu'elle n'est pas. Les chiffres des sections 1 et 2.2 (167 items, 56 items indice sous le
+pli, 26 fermes par le candidat A) portent donc sur cet echantillon de 167 items, jamais sur les 428
+items reels des 17 paquets - exactement ce que la section "Ma population n'est pas celle de
+`nadia-prof`" disait deja d'elle-meme face a sa mesure a elle, sans le dire face au catalogue
+entier. Aucun chiffre de ce document n'est corrige : c'est la population qu'ils decrivent qui
+l'est.
+
 ## 0. Perimetre et methode, avant tout chiffre
 
 **Le jar `bootstrap/target/recreo.jar` n'a pas ete reconstruit.** Verifie plutot que suppose : les
