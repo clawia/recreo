@@ -84,6 +84,8 @@ LIRE_FIN = """
     hauts[Math.round(b.getBoundingClientRect().top)] = 1;
   });
   return {
+    regleInjectee: (function(){var m = document.getElementById('mesure-nadia');
+                              return m ? m.textContent : null;})(),
     enonce: enonce ? enonce.textContent : null,
     texteIndice: indice ? indice.textContent.trim() : null,
     basDeLaBoiteDIndice: indice ? r(indice.getBoundingClientRect().bottom) : null,
@@ -124,39 +126,16 @@ class Navigateur(blr.Navigateur):
             "--window-size=%d,%d" % (largeur + 200, blr.VIEWPORT_HAUTEUR + 400),
             "about:blank",
         ]
-        self.processus = subprocess.Popen(
-            options, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
-        )
-        cible = None
-        for _ in range(120):
-            time.sleep(0.5)
-            try:
-                brut = urllib.request.urlopen(
-                    "http://127.0.0.1:%d/json/list" % port, timeout=2
-                ).read()
-                for entree in json.loads(brut):
-                    if entree.get("type") == "page":
-                        cible = entree["webSocketDebuggerUrl"]
-                        break
-                if cible:
-                    break
-            except Exception:
-                continue
-        if not cible:
-            raise RuntimeError("le navigateur n'a pas ouvert de page de deverminage")
+        # s21 : l'attachement passe par la classe mere plutot que par une boucle recopiee ici.
+        # Cette copie etait le trou : le refus de port ecrit dans la mere n'aurait pas existe dans
+        # la fille, et c'est cette fille qui a rendu les captures de REP-8.
+        self.processus, cible = blr.lancer_et_attacher(options, profil, port)
         self.ws = websocket.create_connection(cible, timeout=30)
         self.compteur = 0
+        self.regle_posee = None
         self.appeler("Page.enable")
         self.appeler("Runtime.enable")
-        self.appeler(
-            "Emulation.setDeviceMetricsOverride",
-            {
-                "width": largeur,
-                "height": blr.VIEWPORT_HAUTEUR,
-                "deviceScaleFactor": 1,
-                "mobile": False,
-            },
-        )
+        self.regler_viewport(largeur, blr.VIEWPORT_HAUTEUR)
 
     def attendre(self, expression, secondes=20):
         for _ in range(int(secondes * 2)):
@@ -203,9 +182,14 @@ def main():
         if not nav.attendre("document.querySelector('[hx-post*=\"%s\"]')" % jeu):
             raise RuntimeError("le jeu %s n'apparait pas sur l'accueil servi" % jeu)
         if regle:
-            nav.evaluer(
-                "(function(){var n=document.createElement('style');n.textContent=%s;"
-                "document.head.appendChild(n);return true;})();" % json.dumps(regle)
+            # Le noeud porte l'identifiant que LIRE_FIN relit : sans identifiant, une regle jetee
+            # par une navigation etait indiscernable d'une regle en place (defaut de s21).
+            nav.poser_regle(
+                "(function(){var n=document.getElementById('mesure-nadia');"
+                "if(!n){n=document.createElement('style');n.id='mesure-nadia';"
+                "document.head.appendChild(n);}n.textContent=%s;return true;})();"
+                % json.dumps(regle),
+                regle,
             )
         nav.evaluer("document.querySelector('[hx-post*=\"%s\"]').click(); true;" % jeu)
         if not nav.attendre("document.querySelector('.proposition')"):
@@ -221,7 +205,9 @@ def main():
         nav.attendre("document.querySelector('.message-jeu')")
         time.sleep(0.5)
 
-        mesure = nav.evaluer(LIRE_FIN)
+        mesure = nav.verifier_regle(nav.evaluer(LIRE_FIN))
+        mesure["viewport"] = nav.viewport_lu
+        mesure["viewportDemande"] = nav.viewport_demande
         mesure["pli"] = auditer.PLI_PX
         mesure["barreDeDefilementPeinte"] = barre_peinte
         mesure["regleCssCandidate"] = regle

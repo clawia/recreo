@@ -218,6 +218,7 @@ def main():
             )
             time.sleep(1.0)
     finally:
+        viewport_lu = getattr(nav, "viewport_lu", None)
         nav.fermer()
         shutil.rmtree(profil, ignore_errors=True)
 
@@ -225,7 +226,9 @@ def main():
     pire_enonce = max(vus, key=lambda k: vus[k]["deficit"]) if vus else None
     rapport = {
         "jeu": jeu,
-        "viewport": [viewport, HAUTEUR_PLI_PX],
+        # s21 : le viewport du rapport est LU du navigateur, jamais recopie de l'argument.
+        "viewport": viewport_lu,
+        "viewportDemande": [viewport, HAUTEUR_PLI_PX],
         "plafondInjecte": None,
         "itemsVus": len(vus),
         "itemsSousLePli": sorted(k for k, v in vus.items() if v["deficit"] > 0),

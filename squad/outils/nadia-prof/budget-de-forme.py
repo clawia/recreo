@@ -188,7 +188,10 @@ def main():
             detail[nom] = compte
 
         rapport = {
-            "viewport": [blr.VIEWPORT_LARGEUR, blr.VIEWPORT_HAUTEUR],
+            # s21 : le viewport du rapport est LU du navigateur, jamais recopie de
+            # l'argument.
+            "viewport": nav.viewport_lu,
+            "viewportDemande": [blr.VIEWPORT_LARGEUR, blr.VIEWPORT_HAUTEUR],
             "cadreMesure": cadre,
             "total": total,
             "paquets": detail,

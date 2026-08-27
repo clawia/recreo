@@ -66,18 +66,37 @@ jobs:
       - uses: actions/checkout@v4
 
       # ADR-0009 : un garde-fou dont le test n'est lance par personne n'est pas un garde-fou. Les
-      # trois outils de outils/ portent chacun un juge pur teste par des entrees fabriquees, sans
+      # outils de outils/ portent chacun un juge pur teste par des entrees fabriquees, sans
       # aucune dependance au poste - ils s'executent donc ici comme n'importe quel test. Les
       # enveloppes, elles, touchent le poste (git, java, un navigateur) et ne sont pas executees ici :
       # leur preuve est manuelle et nommee dans chaque script. Ajoute par ADR-0025, qui constate que
       # verifier-lignee-test.sh et verifier-jdk-test.sh n'etaient lances par aucun automate.
-      - name: Tester les juges purs de outils/
+      #
+      # s21 (2026-08-27) : le meme constat se reproduisait un cran plus bas. Les outils de mesure
+      # vivent aussi sous squad/outils/, et le seul test qui s'y trouvait
+      # (verifier-provenance-lots-test.sh) n'etait lance par aucun automate depuis sa creation. Le
+      # perimetre reste derive du repertoire, jamais une liste de noms : les deux emplacements sont
+      # balayes, et l'etape est rouge si l'un des deux ne rend aucun fichier - un motif de balayage
+      # qui ne trouve plus rien est le faux vert que ce depot combat depuis ADR-0013.
+      - name: Tester les juges purs des outils
         run: |
           set -euo pipefail
-          for test in outils/*-test.sh; do
-            echo "--- ${test}"
-            bash "${test}"
+          total=0
+          for motif in "outils/*-test.sh" "squad/outils/*/*-test.sh"; do
+            trouves=0
+            for test in ${motif}; do
+              [ -f "${test}" ] || continue
+              echo "--- ${test}"
+              bash "${test}"
+              trouves=$((trouves + 1))
+            done
+            if [ "${trouves}" -eq 0 ]; then
+              echo "::error::le motif ${motif} ne rend aucun fichier de test : un balayage vide est un faux vert."
+              exit 1
+            fi
+            total=$((total + trouves))
           done
+          echo "${total} juge(s) pur(s) execute(s)."
 
   build:
     name: Build et tests (Java 21)
