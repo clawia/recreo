@@ -1,0 +1,84 @@
+{
+  "cadre": {
+    "budgetTexteADeuxLibelles": 580,
+    "budgetTexteATroisLibelles": 522,
+    "ecartEntreBoutons": 16,
+    "largeurHorsTexteDUnBouton": 42,
+    "largeurOfferteALEnonce": 696,
+    "largeurOfferteALaConsigne": 696,
+    "largeurRangee": 680,
+    "mesurer": {},
+    "policeDeLEnonce": "700 32px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "policeDeLaConsigne": "400 20px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "policeDeLaProposition": "700 32px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+  },
+  "cadreDeLIndice": {
+    "interligneDeLIndice": "30px",
+    "largeurOfferteALIndice": 696,
+    "policeDeLIndice": "400 20px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+  },
+  "calibrage": {
+    "attendu": 590.05,
+    "mesure": 590.05,
+    "texte": "quatre-vingt-seize mille deux cent trois"
+  },
+  "cas": [],
+  "jeuTemoin": "bandit-manchot-le-bon-son-cp",
+  "largeurs": {
+    "prefixes": {
+      "Chiffres : ": 143.19,
+      "En chiffres : ": 183.8,
+      "En chiffres : quarante mille sept cent cinq.": 628.83,
+      "En chiffres : quatre cent cinquante-deux mille.": 692.41,
+      "En chiffres : quatre-vingt-dix mille quatre-vingt-dix.": 779.72,
+      "En chiffres : trois cent cinq mille quatre cent vingt-et-un.": 848.05,
+      "Écris en chiffres : ": 261.33
+    }
+  },
+  "largeursDIndice": {},
+  "pli": 551,
+  "temoinApresUnEchec": {
+    "basDeLIndice": 505.19,
+    "basDesPropositions": 363.19,
+    "basDuVerdict": 426.19,
+    "consigne": "Dis le mot. Quel son entends-tu ?",
+    "defilement": 0,
+    "enonce": "NOMBRE",
+    "hauteurBouton": 74,
+    "hauteurConsigne": 30,
+    "hauteurDocument": 551,
+    "hauteurEnonce": 48,
+    "hauteurIndice": 50,
+    "nbPropositions": 3,
+    "propositions": [
+      "in",
+      "an",
+      "on"
+    ],
+    "rangees": 1
+  },
+  "temoinAuRepos": {
+    "basDeLIndice": null,
+    "basDesPropositions": 363.19,
+    "basDuVerdict": null,
+    "consigne": "Dis le mot. Quel son entends-tu ?",
+    "defilement": 0,
+    "enonce": "TIMBRE",
+    "hauteurBouton": 74,
+    "hauteurConsigne": 30,
+    "hauteurDocument": 551,
+    "hauteurEnonce": 48,
+    "hauteurIndice": null,
+    "nbPropositions": 3,
+    "propositions": [
+      "in",
+      "an",
+      "on"
+    ],
+    "rangees": 1
+  },
+  "viewport": [
+    744,
+    551
+  ]
+}

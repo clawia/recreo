@@ -1,0 +1,269 @@
+{
+  "cadre": {
+    "budgetTexteADeuxLibelles": 580,
+    "budgetTexteATroisLibelles": 522,
+    "ecartEntreBoutons": 16,
+    "largeurHorsTexteDUnBouton": 42,
+    "largeurOfferteALEnonce": 696,
+    "largeurOfferteALaConsigne": 696,
+    "largeurRangee": 680,
+    "mesurer": {},
+    "policeDeLEnonce": "700 32px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "policeDeLaConsigne": "400 20px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "policeDeLaProposition": "700 32px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+  },
+  "cadreDeLIndice": {
+    "interligneDeLIndice": "30px",
+    "largeurOfferteALIndice": 696,
+    "policeDeLIndice": "400 20px system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", \"Liberation Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+  },
+  "calibrage": {
+    "attendu": 590.05,
+    "mesure": 590.05,
+    "texte": "quatre-vingt-seize mille deux cent trois"
+  },
+  "cas": [
+    {
+      "basDeLIndice": 595.19,
+      "basDesPropositions": 453.19,
+      "basDuVerdict": 516.19,
+      "consigne": "Que manque-t-il ?",
+      "defilement": 0,
+      "enonce": "le chat dort sur le tapis.",
+      "hauteurBouton": 74,
+      "hauteurConsigne": 30,
+      "hauteurDocument": 627,
+      "hauteurEnonce": 48,
+      "hauteurIndice": 50,
+      "indiceEntierAuDessusDuPli": false,
+      "nbPropositions": 3,
+      "nom": "reperes - triplet le plus large actuel",
+      "propositions": [
+        "Majuscule au prénom",
+        "Majuscule initiale",
+        "Phrase correcte"
+      ],
+      "rangees": 2,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "basDeLIndice": 505.19,
+      "basDesPropositions": 363.19,
+      "basDuVerdict": 426.19,
+      "consigne": "Que manque-t-il ?",
+      "defilement": 0,
+      "enonce": "le chat dort sur le tapis.",
+      "hauteurBouton": 74,
+      "hauteurConsigne": 30,
+      "hauteurDocument": 551,
+      "hauteurEnonce": 48,
+      "hauteurIndice": 50,
+      "indiceEntierAuDessusDuPli": true,
+      "nbPropositions": 3,
+      "nom": "reperes - triplet court candidat A",
+      "propositions": [
+        "Majuscule",
+        "Prénom",
+        "Correct"
+      ],
+      "rangees": 1,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "basDeLIndice": 505.19,
+      "basDesPropositions": 363.19,
+      "basDuVerdict": 426.19,
+      "consigne": "Que manque-t-il ?",
+      "defilement": 0,
+      "enonce": "le chat dort sur le tapis.",
+      "hauteurBouton": 74,
+      "hauteurConsigne": 30,
+      "hauteurDocument": 551,
+      "hauteurEnonce": 48,
+      "hauteurIndice": 50,
+      "indiceEntierAuDessusDuPli": true,
+      "nbPropositions": 3,
+      "nom": "reperes - triplet court candidat B",
+      "propositions": [
+        "Une majuscule",
+        "Un point",
+        "Un point ?"
+      ],
+      "rangees": 1,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "basDeLIndice": 595.19,
+      "basDesPropositions": 453.19,
+      "basDuVerdict": 516.19,
+      "consigne": "Convertis dans la bonne unité !",
+      "defilement": 0,
+      "enonce": "4000 kg, combien de tonnes ?",
+      "hauteurBouton": 74,
+      "hauteurConsigne": 30,
+      "hauteurDocument": 627,
+      "hauteurEnonce": 48,
+      "hauteurIndice": 50,
+      "indiceEntierAuDessusDuPli": false,
+      "nbPropositions": 3,
+      "nom": "conversions - triplet actuel",
+      "propositions": [
+        "4 tonnes",
+        "400 tonnes",
+        "4000000 tonnes"
+      ],
+      "rangees": 2,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "basDeLIndice": 505.19,
+      "basDesPropositions": 363.19,
+      "basDuVerdict": 426.19,
+      "consigne": "Convertis dans la bonne unité !",
+      "defilement": 0,
+      "enonce": "4000 kg, combien de tonnes ?",
+      "hauteurBouton": 74,
+      "hauteurConsigne": 30,
+      "hauteurDocument": 551,
+      "hauteurEnonce": 48,
+      "hauteurIndice": 50,
+      "indiceEntierAuDessusDuPli": true,
+      "nbPropositions": 3,
+      "nom": "conversions - triplet en symbole t",
+      "propositions": [
+        "4 t",
+        "400 t",
+        "4000000 t"
+      ],
+      "rangees": 1,
+      "verdictAuDessusDuPli": true
+    },
+    {
+      "basDeLIndice": 505.19,
+      "basDesPropositions": 363.19,
+      "basDuVerdict": 426.19,
+      "consigne": "Lis, écris, décompose ou compare !",
+      "defilement": 0,
+      "enonce": "quarante mille sept cent cinq.",
+      "hauteurBouton": 74,
+      "hauteurConsigne": 30,
+      "hauteurDocument": 551,
+      "hauteurEnonce": 48,
+      "hauteurIndice": 50,
+      "indiceEntierAuDessusDuPli": true,
+      "nbPropositions": 3,
+      "nom": "grands-nombres - enonce sans le prefixe",
+      "propositions": [
+        "1",
+        "2",
+        "3"
+      ],
+      "rangees": 1,
+      "verdictAuDessusDuPli": true
+    }
+  ],
+  "jeuTemoin": "bandit-manchot-le-bon-son-cp",
+  "largeurs": {
+    "conversionsActuels": {
+      "4 tonnes": 129.23,
+      "400 tonnes": 166.05,
+      "4000000 tonnes": 239.67,
+      "5 tonnes": 129.23,
+      "500 tonnes": 166.05,
+      "5000000 tonnes": 239.67
+    },
+    "conversionsCandidats": {
+      "4 000 000 t": 167.78,
+      "4 t": 39.69,
+      "40 tonnes": 147.64,
+      "400 t": 76.5,
+      "4000 tonnes": 184.45,
+      "40000 tonnes": 202.86,
+      "4000000 t": 150.13
+    },
+    "grandsNombresEnonces": {
+      "quarante mille sept cent cinq.": 445.03,
+      "quatre cent cinquante-deux mille.": 508.61,
+      "quatre-vingt-dix mille quatre-vingt-dix.": 595.92,
+      "trois cent cinq mille quatre cent vingt-et-un.": 664.25,
+      "Écris en chiffres : quarante mille sept cent cinq.": 706.36,
+      "Écris en chiffres : quatre cent cinquante-deux mille.": 769.94,
+      "Écris en chiffres : quatre-vingt-dix mille quatre-vingt-dix.": 857.25,
+      "Écris en chiffres : trois cent cinq mille quatre cent vingt-et-un.": 925.58
+    },
+    "reperesActuels": {
+      "Majuscule au prénom": 323.73,
+      "Majuscule initiale": 263.05,
+      "Phrase correcte": 231.67,
+      "Point d'interrogation": 317.69,
+      "Point final": 155.03
+    },
+    "reperesCandidatsCourts": {
+      "C'est correct": 187.41,
+      "Correct": 110,
+      "Interrogation": 201.55,
+      "La majuscule": 192.59,
+      "Le point ?": 145.66,
+      "Le point final": 198.67,
+      "Le prénom": 160.5,
+      "Majuscule": 151.5,
+      "Majuscule au début": 294.52,
+      "Majuscule au prénom": 323.73,
+      "Point": 79.17,
+      "Point ?": 102.02,
+      "Point d'interrogation": 317.69,
+      "Point final": 155.03,
+      "Prénom": 117.81,
+      "Rien à changer": 222.59,
+      "Un point": 131.64,
+      "Un point ?": 154.48,
+      "Une majuscule": 218.83
+    }
+  },
+  "largeursDIndice": {},
+  "pli": 551,
+  "temoinApresUnEchec": {
+    "basDeLIndice": 505.19,
+    "basDesPropositions": 363.19,
+    "basDuVerdict": 426.19,
+    "consigne": "Dis le mot. Quel son entends-tu ?",
+    "defilement": 0,
+    "enonce": "BANC",
+    "hauteurBouton": 74,
+    "hauteurConsigne": 30,
+    "hauteurDocument": 551,
+    "hauteurEnonce": 48,
+    "hauteurIndice": 50,
+    "nbPropositions": 3,
+    "propositions": [
+      "on",
+      "in",
+      "an"
+    ],
+    "rangees": 1
+  },
+  "temoinAuRepos": {
+    "basDeLIndice": null,
+    "basDesPropositions": 363.19,
+    "basDuVerdict": null,
+    "consigne": "Dis le mot. Quel son entends-tu ?",
+    "defilement": 0,
+    "enonce": "BANC",
+    "hauteurBouton": 74,
+    "hauteurConsigne": 30,
+    "hauteurDocument": 551,
+    "hauteurEnonce": 48,
+    "hauteurIndice": null,
+    "nbPropositions": 3,
+    "propositions": [
+      "on",
+      "in",
+      "an"
+    ],
+    "rangees": 1
+  },
+  "viewport": [
+    744,
+    551
+  ]
+}

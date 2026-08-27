@@ -850,3 +850,28 @@ La liste du 2026-08-16 est inchangee sauf sur un point, et elle **s'agrandit d'u
   quoi le catalogue rentrera avec une entree que plus aucun test ne relie a son contenu. Ce n'est pas
   un motif pedagogique et ce n'est pas mon perimetre : c'est un fait que seule ma reinstallation
   pouvait reveler.
+
+
+---
+
+## Renvoi date du 2026-08-27 (s21) - `nadia-prof`, arbitrage `S21-3`
+
+**Le paquet entier a ete joue item par item pour la premiere fois** (28 items, 744 x 551,
+2026-08-27, releve `releves-s21/s21-nadia-paquet-entier-cm1-grands-nombres-744x551.json`) :
+**16 items sur 28 ont leur indice sous le pli**, **14 encore avec `S21-2`**. Le releve de catalogue
+n'en voyait que 6, parce qu'il ne joue qu'une partie de dix manches par jeu.
+
+**Quatre items ont un enonce sur deux lignes** - les `Écris en chiffres : <nombre en lettres>` les
+plus longs. Retirer le prefixe les ramenerait tous les quatre sur une ligne, et **je le refuse** :
+la consigne de ce jeu annonce quatre taches differentes (*"Lis, écris, décompose ou compare !"*), et
+le prefixe est la seule chose qui dise a l'enfant laquelle lui est demandee (`GRN-1`).
+
+**`GRN-2`** : le nombre ecrit en lettres n'est jamais raccourci, c'est l'objet meme de la competence.
+Sur `trois cent cinq mille quatre cent vingt-et-un.` (664,25 px sur 696 offerts), **il ne reste que
+31,75 px de budget d'enonce, moins de deux caracteres** : cet item n'a aucun levier d'enonce, et je
+le nomme plutot que de le promettre. **`GRN-3`**, non bloquante, route a `camille-po` la question du
+decoupage d'un paquet dont la consigne annonce quatre taches.
+
+Le texte complet, avec les commandes de mesure, les releves et les conditions numerotees, est dans
+`FICHE-bandit-manchot-reperes-cm1.md`, section "Arbitrage du 2026-08-27 (s21) - `S21-3`". Il n'est
+pas recopie ici pour qu'il ne puisse pas y pourrir a moitie.

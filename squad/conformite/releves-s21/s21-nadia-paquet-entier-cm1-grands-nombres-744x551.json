@@ -1,0 +1,3092 @@
+{
+  "items": {
+    "Compare 213 500 et 213 050.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 519.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Compare 213 500 et 213 050.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            ">",
+            "=",
+            "<"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": "Les centaines de mille et les dizaines de mille sont les mêmes : regarde les chiffres suivants."
+        },
+        "sans": {
+          "basIndice": 535.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Compare 213 500 et 213 050.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            ">",
+            "=",
+            "<"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": "Les centaines de mille et les dizaines de mille sont les mêmes : regarde les chiffres suivants."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Compare 213 500 et 213 050.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            ">",
+            "=",
+            "<"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Compare 213 500 et 213 050.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            ">",
+            "=",
+            "<"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": null
+        }
+      }
+    },
+    "Compare 305 421 et 350 421.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 519.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Compare 305 421 et 350 421.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "=",
+            ">",
+            "<"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": "Compare d'abord le nombre de chiffres, puis chiffre après chiffre en partant de la gauche."
+        },
+        "sans": {
+          "basIndice": 535.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Compare 305 421 et 350 421.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "=",
+            ">",
+            "<"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": "Compare d'abord le nombre de chiffres, puis chiffre après chiffre en partant de la gauche."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Compare 305 421 et 350 421.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "=",
+            ">",
+            "<"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Compare 305 421 et 350 421.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "=",
+            ">",
+            "<"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": null
+        }
+      }
+    },
+    "Compare 452 000 et 425 000.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Compare 452 000 et 425 000.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "<",
+            "=",
+            ">"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": "Un seul chiffre change de position : repère lequel."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Compare 452 000 et 425 000.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "<",
+            "=",
+            ">"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": "Un seul chiffre change de position : repère lequel."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Compare 452 000 et 425 000.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "<",
+            "=",
+            ">"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Compare 452 000 et 425 000.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "<",
+            "=",
+            ">"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": null
+        }
+      }
+    },
+    "Compare 600 400 et 600 040.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Compare 600 400 et 600 040.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "=",
+            "<",
+            ">"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": "Les deux nombres ont les mêmes chiffres : compare les positions un à un."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Compare 600 400 et 600 040.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "=",
+            "<",
+            ">"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": "Les deux nombres ont les mêmes chiffres : compare les positions un à un."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Compare 600 400 et 600 040.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "=",
+            "<",
+            ">"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Compare 600 400 et 600 040.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "=",
+            "<",
+            ">"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": null
+        }
+      }
+    },
+    "Compare 70 018 et 78 000.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 519.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Compare 70 018 et 78 000.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "<",
+            ">",
+            "="
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": "Compare d'abord le nombre de chiffres avant de regarder les chiffres eux-mêmes."
+        },
+        "sans": {
+          "basIndice": 535.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Compare 70 018 et 78 000.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "<",
+            ">",
+            "="
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": "Compare d'abord le nombre de chiffres avant de regarder les chiffres eux-mêmes."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Compare 70 018 et 78 000.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "<",
+            ">",
+            "="
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Compare 70 018 et 78 000.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "<",
+            ">",
+            "="
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": null
+        }
+      }
+    },
+    "Compare 816 203 et 816 023.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Compare 816 203 et 816 023.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "=",
+            "<",
+            ">"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": "Compare classe par classe, en partant de la gauche."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Compare 816 203 et 816 023.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "=",
+            "<",
+            ">"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": "Compare classe par classe, en partant de la gauche."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Compare 816 203 et 816 023.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "=",
+            "<",
+            ">"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Compare 816 203 et 816 023.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "=",
+            "<",
+            ">"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": null
+        }
+      }
+    },
+    "Compare 999 999 et 1 000 000.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Compare 999 999 et 1 000 000.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            ">",
+            "<",
+            "="
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": "999 999, c'est juste avant 1 000 000."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Compare 999 999 et 1 000 000.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            ">",
+            "<",
+            "="
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": "999 999, c'est juste avant 1 000 000."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Compare 999 999 et 1 000 000.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            ">",
+            "<",
+            "="
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Compare 999 999 et 1 000 000.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            22.63,
+            22.63,
+            22.63
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            ">",
+            "<",
+            "="
+          ],
+          "rangees": 1,
+          "sommeLibelles": 67.89,
+          "texteIndice": null
+        }
+      }
+    },
+    "Décompose 128 000 en valeurs de position.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 653.19,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Décompose 128 000 en valeurs de position.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            355.91,
+            364.73,
+            383.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "100 000 + 20 000 + 800",
+            "100 000 + 2 000 + 8 000",
+            "100 000 + 20 000 + 8 000"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1103.78,
+          "texteIndice": "Rien après 'mille' : les trois derniers chiffres sont des zéros."
+        },
+        "sans": {
+          "basIndice": 685.19,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Décompose 128 000 en valeurs de position.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            355.91,
+            364.73,
+            383.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "100 000 + 20 000 + 800",
+            "100 000 + 2 000 + 8 000",
+            "100 000 + 20 000 + 8 000"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1103.78,
+          "texteIndice": "Rien après 'mille' : les trois derniers chiffres sont des zéros."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Décompose 128 000 en valeurs de position.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            355.91,
+            364.73,
+            383.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "100 000 + 20 000 + 800",
+            "100 000 + 2 000 + 8 000",
+            "100 000 + 20 000 + 8 000"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1103.78,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Décompose 128 000 en valeurs de position.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            355.91,
+            364.73,
+            383.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "100 000 + 20 000 + 800",
+            "100 000 + 2 000 + 8 000",
+            "100 000 + 20 000 + 8 000"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1103.78,
+          "texteIndice": null
+        }
+      }
+    },
+    "Décompose 305 421 en valeurs de position.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 683.19,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Décompose 305 421 en valeurs de position.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            491.69,
+            454.88,
+            473.28
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "300 000 + 50 000 + 400 + 20 + 1",
+            "300 000 + 5 000 + 400 + 2 + 1",
+            "300 000 + 5 000 + 400 + 20 + 1"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1419.85,
+          "texteIndice": "Repère la classe des mille et la classe des unités simples, puis décompose chacune."
+        },
+        "sans": {
+          "basIndice": 715.19,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Décompose 305 421 en valeurs de position.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            491.69,
+            454.88,
+            473.28
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "300 000 + 50 000 + 400 + 20 + 1",
+            "300 000 + 5 000 + 400 + 2 + 1",
+            "300 000 + 5 000 + 400 + 20 + 1"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1419.85,
+          "texteIndice": "Repère la classe des mille et la classe des unités simples, puis décompose chacune."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Décompose 305 421 en valeurs de position.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            491.69,
+            454.88,
+            473.28
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "300 000 + 50 000 + 400 + 20 + 1",
+            "300 000 + 5 000 + 400 + 2 + 1",
+            "300 000 + 5 000 + 400 + 20 + 1"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1419.85,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Décompose 305 421 en valeurs de position.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            491.69,
+            454.88,
+            473.28
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "300 000 + 50 000 + 400 + 20 + 1",
+            "300 000 + 5 000 + 400 + 2 + 1",
+            "300 000 + 5 000 + 400 + 20 + 1"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1419.85,
+          "texteIndice": null
+        }
+      }
+    },
+    "Décompose 40 705 en valeurs de position.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 571.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Décompose 40 705 en valeurs de position.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            255.05,
+            196.36,
+            236.64
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "40 000 + 700 + 5",
+            "40 000 + 700",
+            "40 000 + 70 + 5"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 688.05,
+          "texteIndice": "Chaque chiffre vaut sa position : compte les zéros qui suivent."
+        },
+        "sans": {
+          "basIndice": 595.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Décompose 40 705 en valeurs de position.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            255.05,
+            196.36,
+            236.64
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "40 000 + 700 + 5",
+            "40 000 + 700",
+            "40 000 + 70 + 5"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 688.05,
+          "texteIndice": "Chaque chiffre vaut sa position : compte les zéros qui suivent."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Décompose 40 705 en valeurs de position.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            255.05,
+            196.36,
+            236.64
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "40 000 + 700 + 5",
+            "40 000 + 700",
+            "40 000 + 70 + 5"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 688.05,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Décompose 40 705 en valeurs de position.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            255.05,
+            196.36,
+            236.64
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "40 000 + 700 + 5",
+            "40 000 + 700",
+            "40 000 + 70 + 5"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 688.05,
+          "texteIndice": null
+        }
+      }
+    },
+    "Décompose 452 000 en valeurs de position.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 653.19,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Décompose 452 000 en valeurs de position.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            364.73,
+            355.91,
+            383.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 000 + 5 000 + 2 000",
+            "400 000 + 50 000 + 200",
+            "400 000 + 50 000 + 2 000"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1103.78,
+          "texteIndice": "Décompose classe par classe, de la plus grande à la plus petite."
+        },
+        "sans": {
+          "basIndice": 685.19,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Décompose 452 000 en valeurs de position.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            364.73,
+            355.91,
+            383.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 000 + 5 000 + 2 000",
+            "400 000 + 50 000 + 200",
+            "400 000 + 50 000 + 2 000"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1103.78,
+          "texteIndice": "Décompose classe par classe, de la plus grande à la plus petite."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Décompose 452 000 en valeurs de position.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            364.73,
+            355.91,
+            383.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 000 + 5 000 + 2 000",
+            "400 000 + 50 000 + 200",
+            "400 000 + 50 000 + 2 000"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1103.78,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Décompose 452 000 en valeurs de position.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            364.73,
+            355.91,
+            383.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 000 + 5 000 + 2 000",
+            "400 000 + 50 000 + 200",
+            "400 000 + 50 000 + 2 000"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1103.78,
+          "texteIndice": null
+        }
+      }
+    },
+    "Décompose 600 040 en valeurs de position.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 601.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Décompose 600 040 en valeurs de position.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            177.95,
+            214.77,
+            196.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "600 000 + 4",
+            "600 000 + 400",
+            "600 000 + 40"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 589.08,
+          "texteIndice": "Aucune dizaine de mille, aucun millier, aucune centaine ni unité dans ce nombre : il ne reste que des centaines de mille et des dizaines."
+        },
+        "sans": {
+          "basIndice": 625.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Décompose 600 040 en valeurs de position.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            177.95,
+            214.77,
+            196.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "600 000 + 4",
+            "600 000 + 400",
+            "600 000 + 40"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 589.08,
+          "texteIndice": "Aucune dizaine de mille, aucun millier, aucune centaine ni unité dans ce nombre : il ne reste que des centaines de mille et des dizaines."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Décompose 600 040 en valeurs de position.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            177.95,
+            214.77,
+            196.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "600 000 + 4",
+            "600 000 + 400",
+            "600 000 + 40"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 589.08,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Décompose 600 040 en valeurs de position.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            177.95,
+            214.77,
+            196.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "600 000 + 4",
+            "600 000 + 400",
+            "600 000 + 40"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 589.08,
+          "texteIndice": null
+        }
+      }
+    },
+    "Décompose 8 004 en valeurs de position.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Décompose 8 004 en valeurs de position.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            141.14,
+            177.95,
+            159.55
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "8 000 + 4",
+            "8 000 + 400",
+            "8 000 + 40"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 478.64,
+          "texteIndice": "Un zéro entre deux chiffres ne s'écrit pas dans la décomposition."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Décompose 8 004 en valeurs de position.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            141.14,
+            177.95,
+            159.55
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "8 000 + 4",
+            "8 000 + 400",
+            "8 000 + 40"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 478.64,
+          "texteIndice": "Un zéro entre deux chiffres ne s'écrit pas dans la décomposition."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Décompose 8 004 en valeurs de position.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            141.14,
+            177.95,
+            159.55
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "8 000 + 4",
+            "8 000 + 400",
+            "8 000 + 40"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 478.64,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Décompose 8 004 en valeurs de position.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            141.14,
+            177.95,
+            159.55
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "8 000 + 4",
+            "8 000 + 400",
+            "8 000 + 40"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 478.64,
+          "texteIndice": null
+        }
+      }
+    },
+    "Décompose 90 090 en valeurs de position.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 601.19,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Décompose 90 090 en valeurs de position.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            159.55,
+            177.95,
+            196.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "90 000 + 9",
+            "90 000 + 90",
+            "90 000 + 900"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 533.86,
+          "texteIndice": "Le même chiffre peut apparaître dans deux positions différentes du nombre."
+        },
+        "sans": {
+          "basIndice": 625.19,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Décompose 90 090 en valeurs de position.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            159.55,
+            177.95,
+            196.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "90 000 + 9",
+            "90 000 + 90",
+            "90 000 + 900"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 533.86,
+          "texteIndice": "Le même chiffre peut apparaître dans deux positions différentes du nombre."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 492.19,
+          "defilement": 0,
+          "enonce": "Décompose 90 090 en valeurs de position.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            159.55,
+            177.95,
+            196.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "90 000 + 9",
+            "90 000 + 90",
+            "90 000 + 900"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 533.86,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 516.19,
+          "defilement": 0,
+          "enonce": "Décompose 90 090 en valeurs de position.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            159.55,
+            177.95,
+            196.36
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "90 000 + 9",
+            "90 000 + 90",
+            "90 000 + 900"
+          ],
+          "rangees": 2,
+          "sommeLibelles": 533.86,
+          "texteIndice": null
+        }
+      }
+    },
+    "Lis ce nombre : 1 000 000.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 1 000 000.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            129.31,
+            152.16,
+            147.22
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "dix mille",
+            "un million",
+            "cent mille"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 428.69,
+          "texteIndice": "Un million, c'est mille fois mille."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 1 000 000.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            129.31,
+            152.16,
+            147.22
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "dix mille",
+            "un million",
+            "cent mille"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 428.69,
+          "texteIndice": "Un million, c'est mille fois mille."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 1 000 000.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            129.31,
+            152.16,
+            147.22
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "dix mille",
+            "un million",
+            "cent mille"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 428.69,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 1 000 000.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            129.31,
+            152.16,
+            147.22
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "dix mille",
+            "un million",
+            "cent mille"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 428.69,
+          "texteIndice": null
+        }
+      }
+    },
+    "Lis ce nombre : 213 500.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 683.19,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 213 500.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            481.17,
+            395.59,
+            482.98
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "deux cent treize mille cinquante",
+            "deux cent treize mille cinq",
+            "deux cent treize mille cinq cents"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1359.74,
+          "texteIndice": "Repère si un zéro se cache au milieu du nombre : il ne s'entend pas mais il compte."
+        },
+        "sans": {
+          "basIndice": 715.19,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 213 500.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            481.17,
+            395.59,
+            482.98
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "deux cent treize mille cinquante",
+            "deux cent treize mille cinq",
+            "deux cent treize mille cinq cents"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1359.74,
+          "texteIndice": "Repère si un zéro se cache au milieu du nombre : il ne s'entend pas mais il compte."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 213 500.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            481.17,
+            395.59,
+            482.98
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "deux cent treize mille cinquante",
+            "deux cent treize mille cinq",
+            "deux cent treize mille cinq cents"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1359.74,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 213 500.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            481.17,
+            395.59,
+            482.98
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "deux cent treize mille cinquante",
+            "deux cent treize mille cinq",
+            "deux cent treize mille cinq cents"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1359.74,
+          "texteIndice": null
+        }
+      }
+    },
+    "Lis ce nombre : 32 010.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 653.19,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 32 010.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            316.61,
+            334.52,
+            362.23
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "trente-deux mille dix",
+            "trente-deux mille cent",
+            "trois mille deux cent dix"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1013.36,
+          "texteIndice": "Le nombre après 'mille' se lit pour lui-même, même s'il est petit."
+        },
+        "sans": {
+          "basIndice": 685.19,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 32 010.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            316.61,
+            334.52,
+            362.23
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "trente-deux mille dix",
+            "trente-deux mille cent",
+            "trois mille deux cent dix"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1013.36,
+          "texteIndice": "Le nombre après 'mille' se lit pour lui-même, même s'il est petit."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 32 010.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            316.61,
+            334.52,
+            362.23
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "trente-deux mille dix",
+            "trente-deux mille cent",
+            "trois mille deux cent dix"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1013.36,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 32 010.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            316.61,
+            334.52,
+            362.23
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "trente-deux mille dix",
+            "trente-deux mille cent",
+            "trois mille deux cent dix"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1013.36,
+          "texteIndice": null
+        }
+      }
+    },
+    "Lis ce nombre : 47 300.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 653.19,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 47 300.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            394.91,
+            427.53,
+            458.72
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "quarante-sept mille trente",
+            "quatre mille sept cent trente",
+            "quarante-sept mille trois cents"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1281.16,
+          "texteIndice": "Le groupe avant 'mille' se lit comme un nombre à deux chiffres."
+        },
+        "sans": {
+          "basIndice": 685.19,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 47 300.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            394.91,
+            427.53,
+            458.72
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "quarante-sept mille trente",
+            "quatre mille sept cent trente",
+            "quarante-sept mille trois cents"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1281.16,
+          "texteIndice": "Le groupe avant 'mille' se lit comme un nombre à deux chiffres."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 47 300.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            394.91,
+            427.53,
+            458.72
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "quarante-sept mille trente",
+            "quatre mille sept cent trente",
+            "quarante-sept mille trois cents"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1281.16,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 47 300.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            394.91,
+            427.53,
+            458.72
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "quarante-sept mille trente",
+            "quatre mille sept cent trente",
+            "quarante-sept mille trois cents"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1281.16,
+          "texteIndice": null
+        }
+      }
+    },
+    "Lis ce nombre : 528 006.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 683.19,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 528 006.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            427.91,
+            513.69,
+            511.02
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cinq cent vingt-huit mille six",
+            "cinq cent vingt-huit mille soixante",
+            "cinquante-deux mille huit cent six"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1452.62,
+          "texteIndice": "N'oublie pas de lire chaque classe séparément, même si l'une des deux est petite."
+        },
+        "sans": {
+          "basIndice": 715.19,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 528 006.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            427.91,
+            513.69,
+            511.02
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cinq cent vingt-huit mille six",
+            "cinq cent vingt-huit mille soixante",
+            "cinquante-deux mille huit cent six"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1452.62,
+          "texteIndice": "N'oublie pas de lire chaque classe séparément, même si l'une des deux est petite."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 528 006.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            427.91,
+            513.69,
+            511.02
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cinq cent vingt-huit mille six",
+            "cinq cent vingt-huit mille soixante",
+            "cinquante-deux mille huit cent six"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1452.62,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 528 006.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            427.91,
+            513.69,
+            511.02
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cinq cent vingt-huit mille six",
+            "cinq cent vingt-huit mille soixante",
+            "cinquante-deux mille huit cent six"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1452.62,
+          "texteIndice": null
+        }
+      }
+    },
+    "Lis ce nombre : 70 018.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 653.19,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 70 018.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            274.94,
+            397.39,
+            341.98
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sept mille dix-huit",
+            "soixante-dix mille dix-huit",
+            "soixante-dix-huit mille"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1014.31,
+          "texteIndice": "Sépare d'abord les milliers, puis lis le reste comme un nombre à part."
+        },
+        "sans": {
+          "basIndice": 685.19,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 70 018.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            274.94,
+            397.39,
+            341.98
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sept mille dix-huit",
+            "soixante-dix mille dix-huit",
+            "soixante-dix-huit mille"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1014.31,
+          "texteIndice": "Sépare d'abord les milliers, puis lis le reste comme un nombre à part."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 70 018.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            274.94,
+            397.39,
+            341.98
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sept mille dix-huit",
+            "soixante-dix mille dix-huit",
+            "soixante-dix-huit mille"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1014.31,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 70 018.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            274.94,
+            397.39,
+            341.98
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sept mille dix-huit",
+            "soixante-dix mille dix-huit",
+            "soixante-dix-huit mille"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1014.31,
+          "texteIndice": null
+        }
+      }
+    },
+    "Lis ce nombre : 816 203.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 653.19,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 816 203.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            464.36,
+            590.05,
+            531.09
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "huit cent seize mille vingt-trois",
+            "quatre-vingt-seize mille deux cent trois",
+            "huit cent seize mille deux cent trois"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1585.5,
+          "texteIndice": "Lis d'abord la classe des mille, puis la classe des unités simples."
+        },
+        "sans": {
+          "basIndice": 685.19,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 816 203.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            464.36,
+            590.05,
+            531.09
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "huit cent seize mille vingt-trois",
+            "quatre-vingt-seize mille deux cent trois",
+            "huit cent seize mille deux cent trois"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1585.5,
+          "texteIndice": "Lis d'abord la classe des mille, puis la classe des unités simples."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 574.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 816 203.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            464.36,
+            590.05,
+            531.09
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "huit cent seize mille vingt-trois",
+            "quatre-vingt-seize mille deux cent trois",
+            "huit cent seize mille deux cent trois"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1585.5,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 606.19,
+          "defilement": 0,
+          "enonce": "Lis ce nombre : 816 203.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            464.36,
+            590.05,
+            531.09
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "huit cent seize mille vingt-trois",
+            "quatre-vingt-seize mille deux cent trois",
+            "huit cent seize mille deux cent trois"
+          ],
+          "rangees": 3,
+          "sommeLibelles": 1585.5,
+          "texteIndice": null
+        }
+      }
+    },
+    "Écris en chiffres : cent vingt-huit mille.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : cent vingt-huit mille.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.27,
+            119.27,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "128 000",
+            "182 000",
+            "820 000"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 357.81,
+          "texteIndice": "Rien n'est écrit après 'mille' : le nombre se termine par trois zéros."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : cent vingt-huit mille.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.27,
+            119.27,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "128 000",
+            "182 000",
+            "820 000"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 357.81,
+          "texteIndice": "Rien n'est écrit après 'mille' : le nombre se termine par trois zéros."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : cent vingt-huit mille.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.27,
+            119.27,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "128 000",
+            "182 000",
+            "820 000"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 357.81,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : cent vingt-huit mille.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.27,
+            119.27,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "128 000",
+            "182 000",
+            "820 000"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 357.81,
+          "texteIndice": null
+        }
+      }
+    },
+    "Écris en chiffres : quarante mille sept cent cinq.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 567.19,
+          "basVerdict": 458.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : quarante mille sept cent cinq.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            119.27,
+            119.27,
+            100.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 705",
+            "407 050",
+            "40 705"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.4,
+          "texteIndice": "Repère le mot 'mille' : tout ce qui précède donne les milliers, le reste donne les unités simples."
+        },
+        "sans": {
+          "basIndice": 583.19,
+          "basVerdict": 474.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : quarante mille sept cent cinq.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            119.27,
+            119.27,
+            100.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 705",
+            "407 050",
+            "40 705"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.4,
+          "texteIndice": "Repère le mot 'mille' : tout ce qui précède donne les milliers, le reste donne les unités simples."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 458.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : quarante mille sept cent cinq.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            119.27,
+            119.27,
+            100.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 705",
+            "407 050",
+            "40 705"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.4,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 474.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : quarante mille sept cent cinq.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            119.27,
+            119.27,
+            100.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "400 705",
+            "407 050",
+            "40 705"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.4,
+          "texteIndice": null
+        }
+      }
+    },
+    "Écris en chiffres : quatre cent cinquante-deux mille.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 537.19,
+          "basVerdict": 458.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : quatre cent cinquante-deux mille.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            100.86,
+            119.27,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "45 200",
+            "452 000",
+            "425 000"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.4,
+          "texteIndice": "Rien n'est écrit après 'mille' : le nombre se termine par trois zéros."
+        },
+        "sans": {
+          "basIndice": 553.19,
+          "basVerdict": 474.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : quatre cent cinquante-deux mille.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            100.86,
+            119.27,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "45 200",
+            "452 000",
+            "425 000"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.4,
+          "texteIndice": "Rien n'est écrit après 'mille' : le nombre se termine par trois zéros."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 458.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : quatre cent cinquante-deux mille.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            100.86,
+            119.27,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "45 200",
+            "452 000",
+            "425 000"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.4,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 474.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : quatre cent cinquante-deux mille.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            100.86,
+            119.27,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "45 200",
+            "452 000",
+            "425 000"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.4,
+          "texteIndice": null
+        }
+      }
+    },
+    "Écris en chiffres : quatre-vingt-dix mille quatre-vingt-dix.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 537.19,
+          "basVerdict": 458.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : quatre-vingt-dix mille quatre-vingt-dix.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            82.45,
+            100.86,
+            100.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "9 090",
+            "90 900",
+            "90 090"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 284.17,
+          "texteIndice": "Le même groupe de chiffres peut apparaître avant et après 'mille'."
+        },
+        "sans": {
+          "basIndice": 553.19,
+          "basVerdict": 474.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : quatre-vingt-dix mille quatre-vingt-dix.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            82.45,
+            100.86,
+            100.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "9 090",
+            "90 900",
+            "90 090"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 284.17,
+          "texteIndice": "Le même groupe de chiffres peut apparaître avant et après 'mille'."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : quatre-vingt-dix mille quatre-vingt-dix.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            82.45,
+            100.86,
+            100.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "9 090",
+            "90 900",
+            "90 090"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 284.17,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : quatre-vingt-dix mille quatre-vingt-dix.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            82.45,
+            100.86,
+            100.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "9 090",
+            "90 900",
+            "90 090"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 284.17,
+          "texteIndice": null
+        }
+      }
+    },
+    "Écris en chiffres : six cent mille quarante.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 519.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : six cent mille quarante.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.27,
+            100.86,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "600 040",
+            "60 040",
+            "600 400"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.4,
+          "texteIndice": "Aucune dizaine de mille, aucun millier, aucune centaine ni unité ici : seulement des centaines de mille et des dizaines."
+        },
+        "sans": {
+          "basIndice": 535.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : six cent mille quarante.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.27,
+            100.86,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "600 040",
+            "60 040",
+            "600 400"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.4,
+          "texteIndice": "Aucune dizaine de mille, aucun millier, aucune centaine ni unité ici : seulement des centaines de mille et des dizaines."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : six cent mille quarante.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.27,
+            100.86,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "600 040",
+            "60 040",
+            "600 400"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.4,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : six cent mille quarante.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.27,
+            100.86,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "600 040",
+            "60 040",
+            "600 400"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.4,
+          "texteIndice": null
+        }
+      }
+    },
+    "Écris en chiffres : trois cent cinq mille quatre cent vingt-et-un.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 567.19,
+          "basVerdict": 458.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : trois cent cinq mille quatre cent vingt-et-un.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            82.45,
+            119.27,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3 521",
+            "305 421",
+            "350 421"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 320.99,
+          "texteIndice": "Repère le groupe avant 'mille' et le groupe après : ce sont les deux classes du nombre."
+        },
+        "sans": {
+          "basIndice": 583.19,
+          "basVerdict": 474.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : trois cent cinq mille quatre cent vingt-et-un.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            82.45,
+            119.27,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3 521",
+            "305 421",
+            "350 421"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 320.99,
+          "texteIndice": "Repère le groupe avant 'mille' et le groupe après : ce sont les deux classes du nombre."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 458.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : trois cent cinq mille quatre cent vingt-et-un.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            82.45,
+            119.27,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3 521",
+            "305 421",
+            "350 421"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 320.99,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 474.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : trois cent cinq mille quatre cent vingt-et-un.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 96,
+          "largeursPropositions": [
+            82.45,
+            119.27,
+            119.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3 521",
+            "305 421",
+            "350 421"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 320.99,
+          "texteIndice": null
+        }
+      }
+    },
+    "Écris en chiffres : un million.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 489.19,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : un million.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.27,
+            146.5,
+            100.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "100 000",
+            "1 000 000",
+            "10 000"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 366.63,
+          "texteIndice": "Un million s'écrit avec six zéros après le 1."
+        },
+        "sans": {
+          "basIndice": 505.19,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : un million.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.27,
+            146.5,
+            100.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "100 000",
+            "1 000 000",
+            "10 000"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 366.63,
+          "texteIndice": "Un million s'écrit avec six zéros après le 1."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 410.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : un million.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.27,
+            146.5,
+            100.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "100 000",
+            "1 000 000",
+            "10 000"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 366.63,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 426.19,
+          "defilement": 0,
+          "enonce": "Écris en chiffres : un million.",
+          "hauteurBouton": 74,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            119.27,
+            146.5,
+            100.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "100 000",
+            "1 000 000",
+            "10 000"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 366.63,
+          "texteIndice": null
+        }
+      }
+    }
+  },
+  "itemsVus": 28,
+  "jeu": "bandit-manchot-grands-nombres-cm1",
+  "parties": 10,
+  "pli": 551,
+  "viewport": [
+    744,
+    551
+  ]
+}
