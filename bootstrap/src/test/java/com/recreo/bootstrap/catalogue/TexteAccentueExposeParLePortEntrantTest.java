@@ -114,6 +114,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-syllabes-cp",
             // S21-10 (DEC-0051) : entree neuve, vocabulaire precis (objets, actions, sensations).
             "bandit-manchot-mot-manquant-cp",
+            // S21-11 (arbitrage prealable du 2026-08-27, conditions GRA-1 a GRA-10) : entree
+            // neuve, comparaison de longueurs, masses et contenances.
+            "bandit-manchot-comparer-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -146,6 +149,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les syllabes",
             // S21-10 : titre neuf.
             "Le mot qui manque",
+            // S21-11 : titre neuf.
+            "Compare les grandeurs",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -176,6 +181,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Tape dans tes mains. Combien de syllabes ?",
             // S21-10 : consigne neuve.
             "Trouve le mot qui complète la phrase.",
+            // S21-11 : consigne neuve.
+            "Regarde bien, puis compare.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
             // valeur unique pour les jeux du catalogue reel, compte sur catalogue.yaml, pas recopie.
             "bandit-manchot",
@@ -223,7 +230,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S21-9 : competence neuve.
             "Dénombrer les syllabes orales d'un mot (segmentation syllabique)",
             // S21-10 : competence neuve.
-            "Utiliser des mots précis pour désigner des objets, actions, sensations du quotidien");
+            "Utiliser des mots précis pour désigner des objets, actions, sensations du quotidien",
+            // S21-11 : competence neuve.
+            "Comparer des longueurs, des masses, des contenances (sans instrument gradué)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

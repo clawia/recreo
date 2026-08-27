@@ -345,7 +345,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " (objets, actions, sensations et leurs distracteurs), valeurDe rend null"
                     + " sur les trois propositions de chaque item. Mesure du 2026-08-27 sur le"
                     + " paquet servi (S21-10) : aucune des 48 propositions ne commence par un"
-                    + " chiffre"));
+                    + " chiffre"),
+            // S21-11 : entree neuve.
+            Map.entry("cp-comparer",
+            "18 items sur 18 portent deux distracteurs (trois propositions), mais aucune des 54"
+                    + " propositions n'est numerique : ce sont des noms d'objets, d'animaux ou de"
+                    + " meubles compares en longueur, en masse ou en contenance (\"une girafe\","
+                    + " \"baignoire\"...), valeurDe rend null sur les trois propositions de chaque"
+                    + " item. Mesure du 2026-08-27 sur le paquet servi : aucune des 54 propositions"
+                    + " ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

@@ -120,3 +120,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-mot-manquant
     nombreDeManches: 10
+  - id: bandit-manchot-comparer-cp
+    titre: "Compare les grandeurs"
+    consigne: "Regarde bien, puis compare."
+    mecanique: bandit-manchot
+    paquet: cp-comparer
+    nombreDeManches: 10
