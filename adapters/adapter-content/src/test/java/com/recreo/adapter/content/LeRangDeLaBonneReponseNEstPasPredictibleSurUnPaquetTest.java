@@ -283,54 +283,54 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
      * le programme scolaire qui le demande. Le cout de sa croissance est ailleurs - chaque nom qui s'y
      * ajoute mesure la part du contenu servi sur laquelle cette propriete n'est gardee par rien.</p>
      */
-    private static final Map<String, String> PAQUETS_HORS_DU_DOMAINE_NUMERIQUE = Map.of(
-            "cm1-conjugaison-present",
+    private static final Map<String, String> PAQUETS_HORS_DU_DOMAINE_NUMERIQUE = Map.ofEntries(
+            Map.entry("cm1-conjugaison-present",
             "25 items sur 25 portent trois distracteurs, donc quatre propositions : le rang d'une"
                     + " bonne reponse parmi trois n'y est pas defini. Mesure du 2026-08-19, comptage"
-                    + " des cles distracteurs du paquet servi",
-            "cm1-homophones",
+                    + " des cles distracteurs du paquet servi"),
+            Map.entry("cm1-homophones",
             "24 items sur 24 portent un seul distracteur, donc deux propositions : meme motif, en"
-                    + " sens inverse. Mesure du 2026-08-19",
-            "cp-comparer-nombres",
+                    + " sens inverse. Mesure du 2026-08-19"),
+            Map.entry("cp-comparer-nombres",
             "24 items sur 24 proposent les trois symboles de comparaison (\"<\", \">\", \"=\") :"
                     + " deux distracteurs, mais aucune des trois propositions n'a de valeur"
-                    + " numerique. C'est l'enonce qui porte les nombres, jamais les propositions",
-            "cp-le-bon-son",
+                    + " numerique. C'est l'enonce qui porte les nombres, jamais les propositions"),
+            Map.entry("cp-le-bon-son",
             "15 items sur 15 proposent des graphies de phonemes (\"on\", \"in\", \"an\") : deux"
-                    + " distracteurs, aucune valeur numerique lisible",
-            "cm1-synonymes",
+                    + " distracteurs, aucune valeur numerique lisible"),
+            Map.entry("cm1-synonymes",
             "16 items sur 16 portent deux distracteurs (trois propositions), mais aucune des 48"
                     + " propositions n'est numerique : ce sont des mots de vocabulaire (synonymes et"
                     + " distracteurs), valeurDe rend null sur les trois propositions de chaque item."
                     + " Mesure du 2026-08-19, verification directe : aucune des 60 propositions ne"
                     + " commence par un chiffre - remesure du 2026-08-20 apres le retrait de quatre"
                     + " items par camille-po (vite, ancien, poli, drole), meme motif inchange sur"
-                    + " les 16 restants et leurs 48 propositions",
-            "cm1-accords-groupe-nominal",
+                    + " les 16 restants et leurs 48 propositions"),
+            Map.entry("cm1-accords-groupe-nominal",
             "24 items, un nombre de distracteurs qui varie selon la composante testee (1 pour le"
                     + " nom, 2 pour le determinant, 3 pour l'adjectif) : les huit items de"
                     + " determinant portent bien deux distracteurs, mais aucune des 72 propositions"
                     + " du paquet n'est numerique - ce sont des mots (determinants, noms,"
                     + " adjectifs), valeurDe rend null sur chacune. Mesure du 2026-08-24 sur le"
-                    + " paquet servi",
-            "cm1-accord-sujet-verbe",
+                    + " paquet servi"),
+            Map.entry("cm1-accord-sujet-verbe",
             "21 items sur 21 portent deux distracteurs (trois propositions), mais aucune des 63"
                     + " propositions n'est numerique : ce sont des formes conjuguees d'un verbe"
                     + " (bonne reponse et deux erreurs d'accord), valeurDe rend null sur les trois"
                     + " propositions de chaque item. Mesure du 2026-08-24 : aucune des 63"
-                    + " propositions ne commence par un chiffre",
-            "cm1-antonymes",
+                    + " propositions ne commence par un chiffre"),
+            Map.entry("cm1-antonymes",
             "17 items sur 17 portent deux distracteurs (trois propositions), mais aucune des 51"
                     + " propositions n'est numerique : ce sont des mots de vocabulaire (antonymes et"
                     + " distracteurs), valeurDe rend null sur les trois propositions de chaque item."
                     + " Mesure du 2026-08-24 sur le paquet servi (arbitrage ANT-1 a ANT-7 de"
-                    + " nadia-prof) : aucune des 51 propositions ne commence par un chiffre",
-            "cp-nature-mot",
+                    + " nadia-prof) : aucune des 51 propositions ne commence par un chiffre"),
+            Map.entry("cp-nature-mot",
             "16 items sur 16 portent un seul distracteur, donc deux propositions - hors du domaine"
                     + " au meme titre que cm1-homophones - et les deux propositions sont toujours les"
                     + " memes deux mots (\"nom\", \"verbe\"), jamais une valeur numerique. Mesure du"
-                    + " 2026-08-24 sur le paquet servi",
-            "cm1-reperes",
+                    + " 2026-08-24 sur le paquet servi"),
+            Map.entry("cm1-reperes",
             "16 items sur 16 portent deux distracteurs (trois propositions), mais aucune des"
                     + " 48 propositions n'est numerique : ce sont des libelles fixes tires d'un"
                     + " pool de cinq (\"Majuscule initiale\", \"Point final\", \"Majuscule au"
@@ -338,7 +338,14 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " rend null sur les trois propositions de chaque item. Mesure du"
                     + " 2026-08-26 sur le paquet servi, apres la correction REP-4 du meme jour"
                     + " (trois propositions par item, jamais quatre, pour rester au-dessus du"
-                    + " pli - voir le commentaire du paquet servi)");
+                    + " pli - voir le commentaire du paquet servi)"),
+            Map.entry("cp-mot-manquant",
+            "16 items sur 16 portent deux distracteurs (trois propositions), mais aucune des"
+                    + " 48 propositions n'est numerique : ce sont des mots de vocabulaire"
+                    + " (objets, actions, sensations et leurs distracteurs), valeurDe rend null"
+                    + " sur les trois propositions de chaque item. Mesure du 2026-08-27 sur le"
+                    + " paquet servi (S21-10) : aucune des 48 propositions ne commence par un"
+                    + " chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
