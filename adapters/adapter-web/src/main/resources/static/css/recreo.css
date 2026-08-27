@@ -125,8 +125,14 @@ h1 {
    bouton d'action sur l'ecran ou il s'affiche. Contour blanc plutot que la couleur d'accent, parce
    que le fond de l'en-tete est deja cette meme couleur.
    ADR-0022 : depuis S6-9 ce lien ne s'affiche que sur l'accueil, ou il est confronte a .demarrer.
-   Il n'est plus confronte a .proposition ni a .encore : la regle de masquage ci-dessous fait qu'il
-   ne se montre jamais en meme temps qu'elles. */
+   Correction du 2026-08-27 (nadia-prof, s21, FICHE-bandit-manchot-reperes-cm1.md, section 4) : la
+   phrase precedente affirmait qu'il n'est plus confronte a .proposition ni a .encore, ce qui est
+   faux depuis S15-3/DEC-0034 - .lien-accueil s'affiche aussi pendant une manche (masque seulement
+   sur confirmation, erreur et retour, voir les deux regles de masquage ci-dessous), donc confronte
+   a .proposition. .encore, lui, n'existe plus depuis S10.
+   S21 (nadia-prof, ines-design) : le rembourrage vertical descend de 0.6rem a 0.5rem, ce qui
+   ferme l'inversion trouvee par marc-dev sur S21-2 sans toucher .proposition (SOR-1 a SOR-4,
+   meme fiche) - voir mesure-ines-sor1-a-sor4.md pour la valeur et sa verification. */
 .lien-accueil {
     display: inline-flex;
     align-items: center;
@@ -137,7 +143,7 @@ h1 {
     background-color: transparent;
     border: 0.125rem solid var(--recreo-accent-texte);
     border-radius: 0.5rem;
-    padding: 0.6rem 1.1rem;
+    padding: 0.5rem 1.1rem;
     text-decoration: none;
     cursor: pointer;
 }
@@ -836,6 +842,10 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    jamais illisible. Sur l'ecran de fin de partie, cette meme sortie devient la seule action
    possible : elle prend alors la classe .sortie-pleine (S3-6), un aplat comme les autres boutons
    d'action plutot que ce contour. */
+/* S21 (nadia-prof, ines-design, FICHE-bandit-manchot-reperes-cm1.md, SOR-1 a SOR-4) : le
+   rembourrage vertical descend de 0.6rem a 0.5rem, la meme valeur et le meme motif que
+   .lien-accueil ci-dessus, avec qui .retour-accueil doit toujours porter la meme boite (SOR-3) -
+   voir mesure-ines-sor1-a-sor4.md pour la valeur et sa verification. */
 .retour-accueil {
     display: inline-flex;
     align-items: center;
@@ -846,7 +856,7 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
     background-color: transparent;
     border: 0.125rem solid var(--recreo-accent);
     border-radius: 0.5rem;
-    padding: 0.6rem 1.1rem;
+    padding: 0.5rem 1.1rem;
     text-decoration: none;
     cursor: pointer;
 }
