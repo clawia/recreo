@@ -1,0 +1,21 @@
+# Jeu fautif : un paquet neuf, jamais livre, qu'aucune liste de test ne nomme. Seul un perimetre
+# derive du repertoire de contenu peut le voir. Son second item presente quatre propositions - la
+# bonne reponse et trois distracteurs - donc il tombe dans le repli a quatre colonnes qu'ADR-0063
+# refuse. Le garde-fou doit etre rouge dessus. Texte de fixture, jamais affiche a un enfant.
+schema: 1
+id: paquet-neuf-a-quatre-propositions
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Competence de fixture"
+items:
+  - enonce: "Enonce de fixture 1"
+    bonneReponse: "juste un"
+    distracteurs: ["faux un a", "faux un b"]
+    indice: "Indice de fixture 1"
+  - enonce: "Enonce de fixture 2"
+    bonneReponse: "juste deux"
+    distracteurs: ["faux deux a", "faux deux b", "faux deux c"]
+    indice: "Indice de fixture 2"
