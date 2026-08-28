@@ -354,3 +354,77 @@ celui qui l'affaiblirait. **Je ne repose donc pas la question a l'utilisatrice**
 population reelle, telle qu'elle est connue a ce jour sur quatre paquets sur dix-huit, ne contredit
 le prix qu'elle a explicitement accepte de payer. Si les treize paquets restants, une fois mesures
 en entier, renversaient ce sens, la question redeviendrait sienne - ce n'est pas le cas aujourd'hui.
+
+## Amendement du 2026-08-28 (troisieme, `camille-po`) - la population reelle du catalogue est 478
+## items, pas 428 ; le catalogue entier est mesure, ce n'est plus un plancher
+
+**Ce que je corrige contre moi-meme, avant que quiconque d'autre n'ait a le faire.** Le second
+amendement ci-dessus, ecrit le 2026-08-27 au matin, porte la phrase *"Le catalogue compte 428
+items... 18 fichiers, verifie ce jour"*. C'etait exact au moment ou je l'ai ecrite : le catalogue
+comptait alors 18 fichiers de contenu, avant que `S21-9`, `S21-10` et `S21-11` ne livrent leurs
+trois paquets neufs. **Ce n'est plus l'etat du catalogue aujourd'hui**, et une phrase qui dit "le
+catalogue compte" au present, sans la date qui la borne, vieillit mal - exactement le defaut
+qu'`ADR-0061` et `squad/README.md` (section 4, amendement hors sprint du 2026-08-24) nomment deja.
+Je ne reecris pas la phrase d'origine : elle reste exacte pour l'etat qu'elle decrivait. J'ecris
+ici l'etat d'aujourd'hui.
+
+**Verifie ce jour (2026-08-28), contre la source primaire et non repris d'un autre document** :
+`ls adapters/adapter-content/src/main/resources/contenu/*.yaml` compte **21 fichiers** (18 d'avant
+s21, plus `cp-syllabes.yaml`, `cp-mot-manquant.yaml`, `cp-comparer.yaml`) ; `grep -c "^  - id:"` sur
+`catalogue.yaml` compte **21 entrees**, correspondance un pour un maintenue. La somme du nombre
+d'occurrences du champ `enonce:` sur les 21 fichiers vaut **478** - `bandit-manchot-additions-cp`
+(paquet `additions-bornees` genere, sans item statique) y compte pour 0, conforme a ce que
+`nadia-prof` ecrit (*"20 jeux enumeres sur 21"*). **478 = 428 (etat du 2026-08-27 matin) + 50 (16 +
+16 + 18, les trois paquets neufs)** : les deux chiffres ne se contredisent pas, ils decrivent deux
+etats successifs du meme catalogue.
+
+**Ce que `nadia-prof` a mesure sur cette population, avec sa methode et sa date, verifie contre sa
+source primaire (`squad/conformite/FICHE-bandit-manchot-comparer-cp.md`, section 7, et
+`avis-nadia-done-pedagogique-s21.md`, `s21-nadia-2`, 2026-08-27)** : le **catalogue entier**, item
+par item, 744 x 551, **478 items sur 478** - **ce n'est plus un plancher echantillonne comme 167 sur
+428 ou 157 sur 428 (`DEC-0050`) l'etaient : c'est un compte.**
+
+| Etat, meme arbre, sans mutation de fichier | Indice sous le pli | Verdict sous le pli |
+|---|---|---|
+| **Servi** (arbre fusionne de s21) | **64** sur 478 | **10** sur 478 |
+| **Avant s21** (trois declarations d'avant reinjectees) | **114** sur 478 | **15** sur 478 |
+| **Ecart ferme** | **50** | **5** |
+
+**Ce que ce chiffre ne fait pas, dans les mots de `nadia-prof` que je reprends sans les
+affaiblir.** Les trois declarations retirees pour obtenir la colonne "avant s21" (`.score` a
+`0.25rem 0`, `.proposition` a `0.5rem 1.25rem`, les deux sorties a `0.5rem 1.1rem`, toutes
+reposees a leur valeur d'avant s21 ensemble) melangent l'effet de `S21-2` (`marc-dev`) et celui de
+la descente de la sortie sous `SOR-1` a `SOR-4` (`ines-design`, `nadia-prof`). **50 est donc l'effet
+du travail vertical de s21 dans son entier, pas celui de `S21-2` seul, et il ne remplace pas le 26**
+du second amendement ci-dessus, qui portait sur `S21-2` seul et sur un echantillon de 167 items sur
+428. Les deux chiffres restent chacun exacts pour ce qu'ils mesurent ; je ne les substitue pas l'un
+a l'autre.
+
+**Ce que la mesure du catalogue entier apprend, et qui va au perimetre volume de s21 (section 4
+ci-dessus, inchangee)** : **le pli est ferme sur les 9 jeux CP enumeres (162 items, 0 sous le pli,
+contre 22 avant s21)**. Les **64 items qui restent sous le pli sont tous CM1**, sur 316. Quatre jeux
+en portent 58 sur 64 : `bandit-manchot-accord-sujet-verbe-cm1` (20 sur 21),
+`bandit-manchot-reperes-cm1` (16 sur 16), `bandit-manchot-grands-nombres-cm1` (14 sur 28),
+`bandit-manchot-accords-groupe-nominal-cm1` (8 sur 24). Les deux jeux ou s21 a le plus ferme sont
+`bandit-manchot-problemes-additifs-cp` (22 sur 22 avant s21, 0 sur 22 aujourd'hui) et
+`bandit-manchot-perimetre-cm1` (20 sur 22 avant, 1 sur 22 aujourd'hui), qui a eux deux portent 41
+des 50 items fermes.
+
+**Ce que je ne fais pas ici.** Je ne prononce aucun statut de couverture sur ces items. Je ne rouvre
+pas l'arbitrage de la section "Decision" ci-dessus : le motif retenu par l'utilisatrice (les jeux
+neufs ne doivent pas naitre avec le defaut de pli) est confirme, pas affaibli, par une mesure plus
+complete que celle dont elle disposait. **Ce que j'en tire pour le planning suivant, sans le
+trancher ici** : le pli n'est plus un defaut de catalogue generique - il est concentre sur quatre
+jeux CM1 nommement identifies, ce qui change la nature du prochain geste (quatre paquets a corriger,
+pas une regle de forme a generaliser). Route a `sofia-sm` pour le planning du sprint suivant.
+
+### Impact de cet amendement
+
+- `squad/decisions/produit/DEC-0051-...md` (ce fichier) : cette section ajoutee, rien reecrit
+  au-dessus.
+- `squad/decisions/produit/DEC-0052-...md` : renvoie ici pour la population du catalogue plutot que
+  de la recopier.
+- `squad/decisions/produit/DEC-index.md` : ligne `DEC-0051` mise a jour.
+- Aucun fichier sous `domain/`, `application/`, `adapters/` ou `bootstrap/` n'est modifie.
+  `squad/programme/MATRICE-couverture.md` n'est pas modifiee par cet amendement : aucune ligne ne
+  bouge sur la foi de ce chiffre.
