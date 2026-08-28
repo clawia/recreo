@@ -185,6 +185,32 @@ de la seconde vague ne soient tous reunis. Le detail et la verification vivent d
 | `bash outils/mvn-jdk21.sh -B clean verify` rouge sur `round-two` apres la fusion complete de la seconde vague : `LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest.unRembourrageLateralAjouteSurLaChaineFaitEchouerLeGardeFou` et `LeConteneurTierGardeSonRembourrageLateralTest.leConteneurTierGardeSonRembourrageLateralSurLaProduction` echouent tous deux sur le meme message (`ce corps declare padding 2 fois... Lire derniereDeclaration()`), racine identifiee par lecture du code : `lateralDeclare` n'a pas ete mis a jour par `S21-12` | Technique, garde-fou | `theo-archi` | **Clos.** `s21-theo-2` (`369e690`, fusion en fast-forward sur `round-two`, 2026-08-27) : `theo-archi` retire le parametre de position de `valeurDeclaree` (26 appels dans 12 classes, convertis par le compilateur) plutot que de convertir le seul troisieme appelant, pour fermer la classe de defaut - un appelant oublie devient une erreur de compilation, pas un rouge de fusion. `bash outils/mvn-jdk21.sh -B clean verify` a la racine, mesure par moi-meme sur `round-two` fusionne (pas recopiee), le 2026-08-27 : `BUILD SUCCESS`, six blocs `Results:` releves dans le journal - domain 49, application 13, adapter-web 332, adapter-content 224, bootstrap 98 (surefire) et 6 (failsafe), total 722. Detail dans `fusion-correctif-porte-rouge-s21-theo-2.md`. |
 | `ChaqueColonneQueLeContenuPeutProduirePorteSonDecalageTest` (module `bootstrap`) porte son propre lecteur prive de feuille, meme forme de trou que `lateralDeclare` (lit la premiere occurrence par sous-chaine, pas la declaration gagnante) - nomme par `theo-archi` dans `correctif-porte-rouge-troisieme-appelant.md`, section 6 | Technique, garde-fou | `theo-archi` | **Ouvert, non corrige par choix.** Vert aujourd'hui : aucune regle du depot ne declare deux fois `animation-delay`, la propriete qu'il lit, et aucun autre module ne lit de feuille. `theo-archi` ne le convertit pas au point de passage partage sans usage reel constate ; declencheur ecrit : une regle qui declare deux fois cette propriete, ou un troisieme module qui se met a lire des feuilles. |
 
+**Amendement du 2026-08-28, fusion finale du sprint.** Etat final des onze stories affectees dans
+le tableau d'ouverture, apres fusion complete de `s21-nadia-2`, `s21-lea-3` et `s21-camille-2`
+(`s21-marc-3` fermee sans commit). Detail et verification : `fusion-finale-nadia-2-lea-3-camille-2.md`
+(ce repertoire) et les journaux des vagues precedentes qu'il cite.
+
+| Story | Etat final |
+|---|---|
+| `S21-1` - correctif outillage de mesure du pli | **Livree et confirmee.** `theo-archi`, fusionnee dans `52f0092` (lot theo, seconde vague). |
+| `S21-2` - `REP-8`, leviers de forme | **Livree et vert**, 26 sur 56 items fermes (confirme sur `round-two` fusionne). `marc-dev`, portee par `s21-ines-2`. |
+| `S21-3` - reformulation de 12 enonces sur une ligne | **Non livree, recadree.** `lea-dev` a mesure que les 12 enonces tenaient deja sur une ligne ; `nadia-prof` refute sa propre mesure du matin et reoriente l'obstacle vers `S21-11`/`REP-11` a `REP-14` (largeur des libelles, pas la casse des enonces). |
+| `S21-4` - correction Javadoc `PaquetCm1ReperesTest` | **Livree.** `lea-dev` (`74e8f4a`), fusionnee dans `4a5617a`. |
+| `S21-5` - `ADR` encodant la regle 1 du contrat de forme | **Livree.** `theo-archi`, `ADR-0063` (`1e64551`), fusionnee dans `52f0092`. |
+| `S21-6` - amendement date des douze `confirmation-archunit.md` | **Livree.** `theo-archi` (`c5398c8`), fusionnee dans `52f0092`. |
+| `S21-7` - correctif de `mesurer-candidats-rep-8.py` | **Livree.** `ines-design` (`3daf481`), fusionnee dans `455875e`. |
+| `S21-8` - arbitrage prealable de `nadia-prof` sur les trois paquets de volume | **Livree.** Verdicts initiaux dans `s21-nadia` (audit du premier passage), refus et leves documentes dans `s21-nadia-2` (`c0b8a66`, cette fusion). |
+| `S21-9` - volume, `cp-syllabes` | **Livree, Done pedagogique `VALIDE SOUS RESERVE`.** `marc-dev` (`31bcc9b`) ; verdict initial REFUSE sur `cheminee`, motif tombe par arbitrage utilisatrice du 2026-08-28, repris `VALIDE SOUS RESERVE` par `nadia-prof` (`4326f3b`, cette fusion), `SEG-1` amendee. |
+| `S21-10` - volume, `cp-mot-manquant` | **Livree, Done pedagogique `VALIDE SOUS RESERVE`.** `lea-dev` (livraison initiale `ec0abe4`, corrigee deux fois par `fabd6cb` et `4543d8d`, cette fusion) ; REFUSE puis REFUS MAINTENU puis leve par `nadia-prof` (`18d1220`, `c9190ea`, `2d2cea9`, cette fusion). |
+| `S21-11` - volume, `cp-comparer` | **Livree, Done pedagogique `VALIDE SOUS RESERVE`.** `sofia-sm` casquette dev (`dd0ec5c`) ; `VALIDE SOUS RESERVE` des l'audit initial de `nadia-prof` (`18d1220`, cette fusion). |
+
+**Neuf stories sur onze livrees et closes sans reserve de sprint** (`S21-1`, `S21-2`, `S21-4` a
+`S21-11`). **Une story recadree en cours de sprint** (`S21-3`, absorbee par `S21-11` avec
+l'accord de `nadia-prof`, ecrit dans le tableau d'origine ci-dessus, pas dans un `ADR`/`DEC`
+distinct - je le note ici comme fait de gouvernance, pas comme un geste que je tranche). Le
+catalogue reste a 21 entrees et la matrice a 18/43 (41,9 %), les deux verifies contre leur source
+primaire dans `fusion-finale-nadia-2-lea-3-camille-2.md`.
+
 ## Ce que je ne fais pas
 
 - Je n'ecris ni `ADR`, ni `DEC`, ni fiche de conformite : ce sont les gestes de `theo-archi`, de
