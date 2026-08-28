@@ -211,6 +211,22 @@ distinct - je le note ici comme fait de gouvernance, pas comme un geste que je t
 catalogue reste a 21 entrees et la matrice a 18/43 (41,9 %), les deux verifies contre leur source
 primaire dans `fusion-finale-nadia-2-lea-3-camille-2.md`.
 
+**Amendement du 2026-08-28, corrige par le `relecteur-pedagogique` (`10f5b4e`), sans reecrire.**
+Ce document ecrit "56 items" et "26 sur 56" a six reprises ci-dessus (sections "L'objectif tel
+qu'il m'est arrive", "Objectif gele", tableau des stories et amendement de cloture), y compris
+dans l'amendement du 2026-08-28 lui-meme, comme si 56 etait le compte d'items du catalogue. C'est
+faux : **56 est un compte sur un echantillon de 167 items vus sur une population de 428**, mesure
+par `ines-design` le 2026-08-27 et deja qualifie comme tel dans l'amendement du meme jour a
+`DEC-0051` - avant ma toute premiere ecriture de ce planning (`caad2f0`). Je n'avais pas repris ce
+qualificatif et je l'ai laisse se relire comme un inventaire quatre fois de suite.
+
+La population reelle, etablie par `nadia-prof` en jouant les vingt jeux enumeres du catalogue
+(2026-08-27, reprise et verifiee independamment par `theo-archi` le 2026-08-28 dans
+l'amendement a `ADR-0063`) : **478 items sur 478, 114 sous le pli avant s21, 64 apres.** Les deux
+chiffres restent chacun exacts pour ce qu'ils mesurent - 56 pour l'echantillon de 167 sur 428 du
+2026-08-27, 478/114/64 pour le catalogue entier apres s21 - je ne les substitue pas l'un a
+l'autre, je nomme desormais lequel est lequel.
+
 ## Ce que je ne fais pas
 
 - Je n'ecris ni `ADR`, ni `DEC`, ni fiche de conformite : ce sont les gestes de `theo-archi`, de
