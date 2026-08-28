@@ -2393,3 +2393,34 @@ SOUS RESERVE` obtenus au premier verdict de fond (`cp-syllabes` apres arbitrage 
 
 **Ce que ce document ne fait pas.** Il ne prononce aucun Done pedagogique lui-meme et ne fait
 bouger aucune autre ligne que celle nommee ci-dessus.
+
+## Note du 2026-08-28 (ouverture s22, `camille-po`) - le pli sort de la porte pedagogique, aucune ligne ne bouge par cette note
+
+L'utilisatrice arbitre, a l'ouverture du sprint 22, que le pli (un element du jeu - indice, verdict,
+proposition - qui reste hors de vue sans defiler) sort de la porte pedagogique sur **tout le
+catalogue**, paquets neufs compris : `nadia-prof` ne prononce plus de `REFUSE` sur ce seul motif,
+elle le consigne en reserve non bloquante. Detail complet, motif retenu et point de vigilance sur ce
+que cet arbitrage ne touche pas (les garde-fous techniques `ADR-0017`, `ADR-0063` restent en
+vigueur, independants de tout jugement pedagogique) : `DEC-0053`, arbitrage 1.
+
+**Consequence pour la lecture de cette matrice, a garder a l'esprit a chaque ligne `couvert-valide`
+future** : un statut `couvert-valide` prononce a partir de ce jour ne garantit plus qu'aucun element
+du jeu ne reste sous le pli - cette dette est desormais explicitement croissante et assumee par
+l'utilisatrice (`REP-8`, `docs/backlog/backlog.md`, reste ouverte et nommee, de meme que les 4 items
+sans levier connu de l'obstacle 21 de s21). Ce n'etait deja pas garanti pour les statuts prononces
+avant cette date sur un motif autre que le pli, mais la possibilite qu'un motif de pli seul ait
+empeche un `REFUSE` disparait a partir de maintenant. **Aucune ligne de cette matrice ne change de
+statut par cette note** : elle documente un changement de critere de validation, pas un mouvement de
+couverture.
+
+**Complement du 2026-08-28 (meme jour) - portee confirmee par l'utilisatrice, contrepartie ecrite.**
+La lecture large ci-dessus (indice, verdict, proposition, tout element du meme bloc) a ete portee a
+l'utilisatrice par `sofia-sm`, avec la consequence dans les mots de `nadia-prof` et le precedent de
+son `REFUSE` sur `cm1-reperes` a s20 ; **elle la confirme** (`squad/conformite/PORTE-PEDAGOGIQUE-
+apres-arbitrage-du-2026-08-28.md`, section 10, `nadia-prof`). La contrepartie qu'elle a demandee est
+desormais une clause opposable et non une intention de sprint : **`MNC-1`**, obligatoire sur tout
+Done pedagogique prononce a partir de ce jour, versee au gabarit de fiche de conformite
+(`squad/TEMPLATES.md`, section 7) pour qu'elle ne depende pas de la memoire d'un agent. Un lecteur de
+cette matrice qui voit un `couvert-valide` date d'apres le 2026-08-28 trouve `MNC-1` dans la fiche
+correspondante ; s'il ne l'y trouve pas, c'est un defaut de la fiche a signaler, pas une garantie
+acquise.

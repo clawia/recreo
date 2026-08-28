@@ -8,15 +8,19 @@
   (melange addition, soustraction et multiplication, sans borner aux multiples de 10 et 100) - voir
   `DEC-0029`, section "Ce que le schema existant peut porter sans code neuf".
 - **Statut global** : **ouverte, aucun increment livre a ce jour.** Rien n'a encore ete joue.
-- **Arbitrage prealable de `nadia-prof` demande et non encore rendu** (`DEC-0030`, section 5) : ce
-  contenu n'a jamais ete instruit au niveau de detail des trois lignes du sprint 12. Les criteres
-  ci-dessous, notamment les bornes (multiples de 10 et 100 seulement, aucune ecriture decimale), sont
-  ceux de `camille-po` et n'ont pas valeur de jugement pedagogique tant que `nadia-prof` ne les a pas
-  confirmes ou corriges.
+- **Arbitrage prealable de `nadia-prof` : rendu le 2026-08-15** (voir section dediee plus bas,
+  `MD-1` a `MD-10`) - la ligne ci-dessus disait encore "demande et non encore rendu" jusqu'au
+  2026-08-28, perimee depuis huit sprints ; corrigee ici plutot que laissee en l'etat. Les criteres
+  ci-dessous, notamment les bornes, restent ceux de `camille-po` a l'ouverture, **completes et
+  confirmes** par l'arbitrage rendu.
 - **Arbitrage prealable de mecanique en vigueur pour tout le catalogue** (`squad/conformite/
   FICHE-bandit-manchot-additions-cp.md`, branche `s10-nadia-mecanique` et audits suivants) :
   conditions M1 a M13. Rien n'est mesure ici a l'ouverture de la fiche, faute d'increment a mesurer.
-- **Derniere mise a jour** : 2026-08-15 (ouverture par `camille-po`, `DEC-0030`)
+- **Priorite s22** (`DEC-0053`, section 4) : premiere candidate du perimetre du sprint, verrou
+  d'arbitrage leve, aucun obstacle nomme sur ce paquet en dehors de l'avis de faisabilite de
+  `theo-archi`, encore du.
+- **Derniere mise a jour** : 2026-08-28 (`camille-po`, correction de statut et priorisation s22,
+  `DEC-0053`)
 
 ## Competences visees
 

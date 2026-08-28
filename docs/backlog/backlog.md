@@ -3947,10 +3947,16 @@ ces deux lignes avant que le code ne commence, sur le meme modele que le sprint 
     ecriture decimale) sont les bonnes - cette story demande un arbitrage prealable, voir la decision
     liee.
 - **Lien decision** : `DEC-0030-perimetre-sprint-13-trois-lignes-mathematiques-cm1-et-le-plafond-de-
-  la-mecanique-unique.md`, section 5 - arbitrage prealable de `nadia-prof` demande et non encore rendu
-  sur ce contenu, contrairement a S13-1.
-- **Agent pressenti** : a affecter au planning par `sofia-sm`, apres l'arbitrage prealable de
-  `nadia-prof` et l'avis de faisabilite de `theo-archi`.
+  la-mecanique-unique.md`, section 5.
+- **Mise a jour du 2026-08-28 (ouverture s22, `camille-po`)** : l'arbitrage prealable demande
+  ci-dessus est **rendu depuis le 2026-08-15**
+  (`squad/conformite/ARBITRAGE-PREALABLE-s13-multiplications-divisions-et-durees-cm1.md`, section 2,
+  conditions `MD-1` a `MD-10`) - le paragraphe precedent restait perime depuis huit sprints, corrige
+  ici plutot que laisse en l'etat. La ligne ouvre en entier, verrou de `DEC-0030` leve, **zero code
+  ecrit depuis** (verifie : aucune entree de catalogue, aucun fichier de contenu). Story affectee au
+  planning de s22 (`DEC-0053`), priorite 1 de son perimetre.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, apres l'avis de faisabilite de
+  `theo-archi` (arbitrage pedagogique deja rendu, ne bloque plus le code).
 
 ### S13-3 - Resoudre des problemes de durees
 
@@ -3988,10 +3994,27 @@ ces deux lignes avant que le code ne commence, sur le meme modele que le sprint 
     plausibilite des distracteurs, et si mes bornes (une seule journee, minutes rondes de 5 en 5) sont
     les bonnes - cette story demande un arbitrage prealable, voir la decision liee.
 - **Lien decision** : `DEC-0030-perimetre-sprint-13-trois-lignes-mathematiques-cm1-et-le-plafond-de-
-  la-mecanique-unique.md`, section 5 - arbitrage prealable de `nadia-prof` demande et non encore rendu
-  sur ce contenu.
-- **Agent pressenti** : a affecter au planning par `sofia-sm`, apres l'arbitrage prealable de
-  `nadia-prof` et l'avis de faisabilite de `theo-archi`.
+  la-mecanique-unique.md`, section 5.
+- **Mise a jour du 2026-08-28 (ouverture s22, `camille-po`)** : l'arbitrage prealable demande
+  ci-dessus est **rendu depuis le 2026-08-15**
+  (`squad/conformite/ARBITRAGE-PREALABLE-s13-multiplications-divisions-et-durees-cm1.md`, section 3,
+  conditions `D-1` a `D-11`) - le paragraphe precedent restait perime depuis huit sprints, corrige
+  ici plutot que laisse en l'etat. La ligne ouvre en entier sur les deux formes nommees par le
+  referentiel, verrou de `DEC-0030` leve, **zero code ecrit depuis**. Un obstacle technique avait ete
+  signale d'avance par le meme arbitrage (section 3.6) : les deux garde-fous de rang liraient
+  l'entier de tete d'une proposition et classeraient `1 h 30` sous `45 min` sur ce contenu.
+- **Mise a jour du 2026-08-28 (meme jour, `camille-po`) - obstacle ferme, verifie contre le code.**
+  `nadia-prof` a relu `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`
+  (`adapters/adapter-content/src/test/java/com/recreo/adapter/content/`) et signale que
+  `dureeEnMinutes`/`lireValeur` lisent deja une duree en minutes avant toute lecture de nombre nu, et
+  que `rangDe` rend `null` sur un conflit de valeurs plutot que de classer silencieusement "la plus
+  petite" (`DEC-0053`, amendement du 2026-08-28). **Verifie par moi-meme dans le fichier cite** :
+  les deux methodes existent telles que decrites. L'obstacle ci-dessus n'a donc plus d'objet ; rien
+  n'est route a `theo-archi`/`yanis-qa` sur ce point.
+- Story affectee au planning de s22 (`DEC-0053`), priorite 2 de son perimetre.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (arbitrage pedagogique deja rendu et
+  obstacle technique ferme, plus rien ne bloque le code hors l'avis de faisabilite habituel de
+  `theo-archi`).
 
 ### S13-4 - Correction de reserve - Un enonce des tables de multiplication ne revient plus une partie
 ### sur cinq
@@ -4838,6 +4861,38 @@ s17** : aucun agent n'y travaille a ce jour, et aucun code de production n'exist
 titre que les autres lignes differees de `DEC-0039` section 5, jusqu'a ce qu'un arbitrage de mise
 en page ou de mecanisme trouve les 90 a 120 px manquants - arbitrage que je nomme et route a
 `sofia-sm` (voir `DEC-0039`), pas que je prends ici.
+
+**Mise a jour du 2026-08-28 (ouverture s22, `camille-po`)** : l'utilisatrice arbitre que le pli
+sort de la porte pedagogique sur tout le catalogue, paquets neufs compris (`DEC-0053`, arbitrage 1).
+`COMP-4` et `COMP-7` ci-dessus sont exactement un critere de cette famille (visibilite sans
+defilement). **Je pose la question a `nadia-prof`, je ne tranche pas a sa place** (`DEC-0053`,
+section 5) : cet arbitrage couvre-t-il aussi ce blocage precis, qu'elle avait ecrit le 2026-08-19
+comme non negociable pour ce paquet ? Si elle confirme, le budget de 4 lignes / 20 mots cesse d'etre
+bloquant (devient une reserve non bloquante comme `REP-8`), `COMP-3` redevient atteignable, et cette
+story est **affectee au planning de s22** comme troisieme candidate de priorite (`DEC-0053`, section
+4), sans attendre l'arbitrage de mise en page ou de mecanisme nomme au paragraphe precedent - il
+n'a alors plus d'objet. Si elle ne confirme pas, cette story reste hors du perimetre de s22, dans
+les memes termes qu'a la sortie de s17.
+
+**Mise a jour du 2026-08-28 (meme jour, `camille-po`) - `nadia-prof` confirme sur le fond ; la
+question de portee est desormais tranchee par l'utilisatrice, la ligne est confirmee sans reserve.**
+`nadia-prof` a relu ses propres conditions (`squad/conformite/PORTE-PEDAGOGIQUE-apres-arbitrage-du-
+2026-08-28.md`, section 3.3) : `COMP-4` et `COMP-7` tombent, `COMP-1`, `COMP-2`, `COMP-3` et
+`COMP-5` restent inchangees et bloquantes, et elle ecrit *"le blocage que j'avais pose sur la story
+est leve - elle est developpable"*. La question de portee (l'arbitrage 1 couvre-t-il le verdict et
+les propositions, pas seulement l'indice) a ete portee par `sofia-sm` a l'utilisatrice avec la
+consequence dans les mots de `nadia-prof` et le precedent de son `REFUSE` sur `cm1-reperes` a s20 -
+**elle choisit la lecture large** (`squad/conformite/PORTE-PEDAGOGIQUE-apres-arbitrage-du-2026-08-28.md`,
+section 10 ; `DEC-0053`, second amendement du 2026-08-28). **Story confirmee developpable, sans
+reserve de portee : candidate de priorite 3 du perimetre de s22, au meme titre que `S13-2` et
+`S13-3`.** Contrepartie ecrite par `nadia-prof`, `MNC-1`, desormais obligatoire sur tout Done
+pedagogique a partir d'aujourd'hui (`squad/TEMPLATES.md`, section 7). Nuance versee par `nadia-prof`
+a porter dans cette story, distincte de `MNC-1` : sa propriete n'est plus "visible sans defiler"
+mais "relisible" - un texte qu'on rejoint en faisant defiler satisfait sa competence ; elle demande
+qu'un Done eventuel nomme la propriete non couverte si l'enfant doit memoriser le texte pour
+repondre. **Ordre de livraison demande par `nadia-prof`** (cout d'audit croissant) : `S13-2`
+d'abord, puis `S13-3`, `S17-2` jamais en dernier - un paquet livre la veille de la cloture ne peut
+pas absorber un cycle de refus.
 
 ### S17-3 - Synonymes en contexte (francais CM1, couverture partielle nommee, jamais couvert-valide sur ce seul paquet)
 
@@ -6091,6 +6146,21 @@ developpement (aucune valeur de marge ou de rembourrage seule ne les satisfait, 
 elle-meme), et le perimetre exact (catalogue entier a 18 jeux, ou le seul sous-ensemble mesure par
 `nadia-prof` a 17 jeux le 2026-08-27) reste a fixer au planning par `sofia-sm`.
 
+**Mise a jour du 2026-08-28 (ouverture s22, `camille-po`) - le motif de priorisation change de
+nature, la story reste ouverte.** L'utilisatrice arbitre que le pli sort de la porte pedagogique sur
+tout le catalogue, paquets neufs de s22 compris (`DEC-0053`, arbitrage 1) : motif retenu, une
+livraison test doit arriver la semaine prochaine et la mesure du pli n'est plus necessaire a la
+validation d'un jeu, meme si cela ouvre une dette croissante sur le reste du catalogue. **Consequence
+directe sur ce critere d'acceptation** : `nadia-prof` ne prononce plus de `REFUSE` sur son seul
+motif ; elle le consigne en reserve non bloquante, comme elle le fait deja pour `REP-7`, `REP-9` et
+`REP-10`. Cette story **n'est plus affectee en tete de sprint** comme le prescrivait `DEC-0051` -
+elle n'est plus une priorite 1 obligatoire avant tout ajout de jeu - mais elle **reste ouverte et
+nommee**, sa dette desormais explicitement croissante et assumee : les paquets neufs de s22
+(`S13-2`, `S13-3`, et `S17-2` sous condition) peuvent l'agrandir. Les criteres d'acceptation
+ci-dessus ne changent pas de contenu, seulement de statut (non bloquant plutot que bloquant) et de
+priorite (non affectee plutot qu'en tete). Les 4 items sans levier connu (obstacle 21 de s21)
+suivent le meme regime.
+
 #### `REP-9` - Sur `cm1-reperes`, le verdict est coupe en deux sur les deux items a enonce de deux lignes
 
 - **Besoin** : en tant qu'eleve de CM1 qui vient de repondre a un item dont la phrase est longue, je
@@ -6583,3 +6653,49 @@ reprise de matiere (sous le schema `bandit-manchot` en usage, jamais sous la str
 `contenu-repris/`), `nadia-prof` pour les arbitrages prealables du niveau 2 et les audits,
 `ines-design`/`theo-archi` pour la condition de forme sur `cm1-comprehension`.
 - **Lien decision** : `DEC-0051`.
+
+## Backlog - perimetre volume s22 (`DEC-0053`)
+
+**Perimetre retenu, classe par gain de couverture reel sur le compteur de la matrice** : `S13-2`
+(pretes, arbitrage prealable rendu depuis le 2026-08-15, verrou leve) et `S13-3` (idem), toutes deux
+detaillees plus haut dans ce fichier ; `S17-2`, conditionnelle a la confirmation de `nadia-prof` sur
+la portee de l'arbitrage 1 pour ce paquet precis (`COMP-4`/`COMP-7`), detaillee plus haut. Borne de
+capacite tenue a trois paquets neufs, methode et verification complete dans `DEC-0053`, section 3.
+
+**Arbitrages prealables poses des maintenant, aucun ne developpe ce sprint** (`DEC-0053`, sections 6
+et 7), pour ne pas reproduire le defaut deja nomme sur `NAT-5` et `DEN-1` a `DEN-8` (perdre un
+sprint a instruire un arbitrage une fois le developpement pret) :
+
+- **Niveau 2 de `DEC-0051`, jamais pose depuis leur identification le 2026-08-27** :
+  `contenu-repris/mots/cp-premiere-lettre.yml` (francais CP, "Identifier un son (phoneme) dans un
+  mot" - la premiere lettre ecrite d'un mot satisfait-elle un phoneme entendu ?) ;
+  `contenu-repris/fractions/cm1-compare.yml` (mathematiques CM1, la moitie "notion de fraction
+  simple" seule, en couverture partielle nommee, sans laisser croire que "reperage sur une droite
+  numerique" est traite).
+- **Six candidates de contenu seul, jamais arbitrees individuellement, releve complet dans
+  `DEC-0053`, section 7.1** : la moitie "ranger" de "Comparer et ranger des nombres jusqu'a 100"
+  (mathematiques CP) ; "Resoudre des problemes a plusieurs etapes mobilisant les 4 operations"
+  (mathematiques CM1, risque nomme par `DEC-0021`) ; "Comprendre un texte narratif tres court"
+  (francais CP) ; "Reconnaitre et utiliser les marques du pluriel (-s)" (francais CP) ; "Reperer les
+  substituts d'un personnage" (francais CM1) ; "Utiliser a bon escient des mots de liaison simples"
+  (francais CM1).
+- **Quatre candidates d'item visuel, famille etablie mais item non arbitre individuellement,
+  `DEC-0053` section 7.1** : "Reconnaitre et utiliser la monnaie" - moitie "reconnaitre" ;
+  "Se reperer dans la journee/la semaine, lire l'heure pleine sur une horloge" ; "Se reperer et
+  decrire des deplacements sur un quadrillage simple" (mathematiques CP, les trois) ; la moitie
+  "reperage sur une droite numerique" reste `REFUSE` de longue date (`ARBITRAGE-PREALABLE-s12-
+  mathematiques-cm1.md`) et n'est pas reposee ici.
+- **Deux candidates d'item audio, famille etablie (aucun texte seul ne peut porter une conscience
+  phonologique orale), item non arbitre individuellement** : "Localiser une syllabe dans un mot" et
+  "Identifier un son (phoneme) dans un mot" (francais CP) - meme obstacle de production que les deux
+  autres lignes deja nommees (aucun agent de cette squad ne peut fournir un enregistrement de voix
+  humaine), a router a l'utilisatrice avant tout arbitrage de contenu.
+
+**Ce que je ne fais pas** : je ne propose aucune de ces dix lignes comme story de s22, je ne
+prejuge d'aucune reponse de `nadia-prof`, et je ne fixe aucun sprint d'ouverture. Elles sont posees
+pour que la reponse existe avant que la capacite libere un prochain paquet.
+
+**Agent pressenti** : `nadia-prof` pour les dix arbitrages ; `camille-po` pour l'affectation d'un
+prochain paquet des qu'une reponse favorable existe ; l'utilisatrice pour la source d'enregistrement
+de voix humaine que les deux candidates audio exigent avant tout arbitrage de contenu.
+- **Lien decision** : `DEC-0053`.
