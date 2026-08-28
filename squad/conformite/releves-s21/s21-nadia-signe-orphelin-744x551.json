@@ -1,0 +1,137 @@
+{
+ "viewport": [
+  744,
+  551
+ ],
+ "textesMesures": 402,
+ "textesQuiSeReplient": 204,
+ "signesOrphelins": 14,
+ "orphelins": [
+  {
+   "fichier": "cm1-perimetre.yaml",
+   "champ": "enonce",
+   "texte": "Comment calcule-t-on le périmètre d'un carré ?",
+   "lignes": [
+    "Comment calcule-t-on le périmètre d'un carré ",
+    "?"
+   ]
+  },
+  {
+   "fichier": "cm1-perimetre.yaml",
+   "champ": "enonce",
+   "texte": "Quel est le périmètre d'un carré de côté 5 cm ?",
+   "lignes": [
+    "Quel est le périmètre d'un carré de côté 5 cm ",
+    "?"
+   ]
+  },
+  {
+   "fichier": "cm1-perimetre.yaml",
+   "champ": "enonce",
+   "texte": "Quel est le périmètre d'un carré de côté 10 cm ?",
+   "lignes": [
+    "Quel est le périmètre d'un carré de côté 10 cm ",
+    "?"
+   ]
+  },
+  {
+   "fichier": "cm1-perimetre.yaml",
+   "champ": "enonce",
+   "texte": "Quel est le périmètre d'un carré de côté 3 cm ?",
+   "lignes": [
+    "Quel est le périmètre d'un carré de côté 3 cm ",
+    "?"
+   ]
+  },
+  {
+   "fichier": "cm1-perimetre.yaml",
+   "champ": "enonce",
+   "texte": "Quel est le périmètre d'un carré de côté 6 cm ?",
+   "lignes": [
+    "Quel est le périmètre d'un carré de côté 6 cm ",
+    "?"
+   ]
+  },
+  {
+   "fichier": "cm1-perimetre.yaml",
+   "champ": "enonce",
+   "texte": "Quel est le périmètre d'un carré de côté 7 cm ?",
+   "lignes": [
+    "Quel est le périmètre d'un carré de côté 7 cm ",
+    "?"
+   ]
+  },
+  {
+   "fichier": "cm1-perimetre.yaml",
+   "champ": "enonce",
+   "texte": "Quel est le périmètre d'un carré de côté 11 cm ?",
+   "lignes": [
+    "Quel est le périmètre d'un carré de côté 11 cm ",
+    "?"
+   ]
+  },
+  {
+   "fichier": "cm1-perimetre.yaml",
+   "champ": "enonce",
+   "texte": "Quel est le périmètre d'un carré de côté 12 m ?",
+   "lignes": [
+    "Quel est le périmètre d'un carré de côté 12 m ",
+    "?"
+   ]
+  },
+  {
+   "fichier": "cm1-perimetre.yaml",
+   "champ": "enonce",
+   "texte": "Quel est le périmètre d'un carré de côté 15 cm ?",
+   "lignes": [
+    "Quel est le périmètre d'un carré de côté 15 cm ",
+    "?"
+   ]
+  },
+  {
+   "fichier": "cp-problemes-additifs.yaml",
+   "champ": "enonce",
+   "texte": "Léa a 3 billes et en gagne 2. Combien en a-t-elle ?",
+   "lignes": [
+    "Léa a 3 billes et en gagne 2. Combien en a-t-elle",
+    " ?"
+   ]
+  },
+  {
+   "fichier": "cp-problemes-additifs.yaml",
+   "champ": "enonce",
+   "texte": "Mia a 6 images et en trouve 3. Combien en a-t-elle ?",
+   "lignes": [
+    "Mia a 6 images et en trouve 3. Combien en a-t-elle",
+    " ?"
+   ]
+  },
+  {
+   "fichier": "cp-problemes-additifs.yaml",
+   "champ": "enonce",
+   "texte": "Léo a 2 gommes et en gagne 5. Combien en a-t-il ?",
+   "lignes": [
+    "Léo a 2 gommes et en gagne 5. Combien en a-t-il",
+    " ?"
+   ]
+  },
+  {
+   "fichier": "cp-problemes-additifs.yaml",
+   "champ": "enonce",
+   "texte": "Zoé a 4 jetons et en gagne 5. Combien en a-t-elle ?",
+   "lignes": [
+    "Zoé a 4 jetons et en gagne 5. Combien en a-t-elle",
+    " ?"
+   ]
+  },
+  {
+   "fichier": "cp-problemes-additifs.yaml",
+   "champ": "enonce",
+   "texte": "Ali a 8 cartes et en gagne 1. Combien en a-t-il ?",
+   "lignes": [
+    "Ali a 8 cartes et en gagne 1. Combien en a-t-il ",
+    "?"
+   ]
+  }
+ ]
+}

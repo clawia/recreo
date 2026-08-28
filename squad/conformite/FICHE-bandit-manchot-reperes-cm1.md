@@ -266,6 +266,23 @@ sont bonnes. La matiere est saine ; ce sont les boutons et un libelle manquant q
   bonne reponse est "Cette phrase est correcte."** : une phrase presentee a l'enfant comme
   irreprochable doit l'etre jusqu'a sa typographie.
 
+  > **Portee de `REP-6`, ecrite le 2026-08-28 pour qu'elle ne soit pas relue comme generale.**
+  > `REP-6` etait et reste **locale a cet item**, et sa raison est le **contenu** : la typographie y
+  > est l'objet meme du jugement demande a l'enfant. Elle n'a jamais ete une regle typographique
+  > generale du catalogue. **La regle generale existe depuis le 2026-08-28 et s'appelle `TYP-1`**
+  > (`squad/conformite/ARBITRAGE-typographie-espace-avant-signe-double.md`) ; elle a un autre motif,
+  > le **rendu** - qu'aucun signe ne se detache de sa phrase en fin de ligne. Un item comme celui-ci
+  > releve des deux ; la plupart des autres ne relevent que de `TYP-1`. *J'ecris cette portee parce
+  > que `SEG-1` a ete relue comme generale alors qu'elle etait trop large, et qu'une condition sans
+  > perimetre ecrit derive au sprint suivant.*
+  >
+  > **Correction du 2026-08-28, contre moi** : l'entree ci-dessus oppose l'item 15 au paquet
+  > `cp-nature-mot`, *"qui en emploie 32"*. Le chiffre est exact, **le rapprochement est
+  > trompeur** : verifie a l'octet, les 32 insecables de `cp-nature-mot` sont **toutes a l'interieur
+  > des guillemets francais**, et ce fichier n'en porte **aucune** devant un signe de ponctuation
+  > double. Avant un tel signe, la pratique du catalogue etait uniformement l'espace ordinaire, et
+  > **la seule exception est celle que `REP-6` a elle-meme creee**.
+
 ### 7. Ce que je ne compte pas contre ce contenu
 
 **Le fait que ce jeu ait ete expose au catalogue sans aucun audit n'entre pas dans ce verdict.**
