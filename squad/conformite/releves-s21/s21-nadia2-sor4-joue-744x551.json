@@ -1,0 +1,381 @@
+{
+ "cas": [
+  {
+   "ecranApresPremierAppui": {
+    "confirmation": true,
+    "jeux": 0,
+    "texte": "Si tu pars, ta partie s'arrête.\n\nContinuer la partie\nLes jeux"
+   },
+   "ecranApresSecondAppui": {
+    "jeux": 21
+   },
+   "etape": "manche1",
+   "jeu": "bandit-manchot-syllabes-cp",
+   "premierAppui": {
+    "cible": "btn lien-accueil htmx-request",
+    "ok": true
+   },
+   "secondAppui": {
+    "cible": "btn retour-accueil htmx-request",
+    "ok": true
+   },
+   "sortieDeConfirmation": {
+    "bas": 312,
+    "bordure": "2px",
+    "centreLibre": true,
+    "classe": "btn retour-accueil",
+    "defilement": 0,
+    "distanceAuPlusProcheBouton": null,
+    "droite": 426.41,
+    "elementAuCentre": "btn retour-accueil",
+    "entierementDansLeViewport": true,
+    "gauche": 317.58,
+    "haut": 262,
+    "hauteur": 50,
+    "largeur": 108.83,
+    "minHeight": "44px",
+    "police": "20px",
+    "rembourrage": "8px 17.6px",
+    "texte": "Les jeux",
+    "trouvee": true,
+    "url": "/niveaux/CP"
+   },
+   "sortieEnTete": {
+    "bas": 66,
+    "bordure": "2px",
+    "centreLibre": true,
+    "classe": "btn lien-accueil",
+    "defilement": 0,
+    "distanceAuPlusProcheBouton": 212,
+    "droite": 720,
+    "elementAuCentre": "btn lien-accueil",
+    "entierementDansLeViewport": true,
+    "gauche": 611.17,
+    "haut": 16,
+    "hauteur": 50,
+    "largeur": 108.83,
+    "minHeight": "44px",
+    "police": "20px",
+    "rembourrage": "8px 17.6px",
+    "texte": "Les jeux",
+    "trouvee": true,
+    "url": "/niveaux/CP"
+   }
+  },
+  {
+   "ecranApresPremierAppui": {
+    "confirmation": true,
+    "jeux": 0,
+    "texte": "Si tu pars, ta partie s'arrête.\n\nContinuer la partie\nLes jeux"
+   },
+   "ecranApresSecondAppui": {
+    "jeux": 21
+   },
+   "etape": "apres-un-echec",
+   "jeu": "bandit-manchot-syllabes-cp",
+   "premierAppui": {
+    "cible": "btn lien-accueil htmx-request",
+    "ok": true
+   },
+   "secondAppui": {
+    "cible": "btn retour-accueil htmx-request",
+    "ok": true
+   },
+   "sortieDeConfirmation": {
+    "bas": 312,
+    "bordure": "2px",
+    "centreLibre": true,
+    "classe": "btn retour-accueil",
+    "defilement": 0,
+    "distanceAuPlusProcheBouton": null,
+    "droite": 426.41,
+    "elementAuCentre": "btn retour-accueil",
+    "entierementDansLeViewport": true,
+    "gauche": 317.58,
+    "haut": 262,
+    "hauteur": 50,
+    "largeur": 108.83,
+    "minHeight": "44px",
+    "police": "20px",
+    "rembourrage": "8px 17.6px",
+    "texte": "Les jeux",
+    "trouvee": true,
+    "url": "/niveaux/CP"
+   },
+   "sortieEnTete": {
+    "bas": 66,
+    "bordure": "2px",
+    "centreLibre": true,
+    "classe": "btn lien-accueil",
+    "defilement": 0,
+    "distanceAuPlusProcheBouton": 212,
+    "droite": 720,
+    "elementAuCentre": "btn lien-accueil",
+    "entierementDansLeViewport": true,
+    "gauche": 611.17,
+    "haut": 16,
+    "hauteur": 50,
+    "largeur": 108.83,
+    "minHeight": "44px",
+    "police": "20px",
+    "rembourrage": "8px 17.6px",
+    "texte": "Les jeux",
+    "trouvee": true,
+    "url": "/niveaux/CP"
+   }
+  },
+  {
+   "ecranApresPremierAppui": {
+    "confirmation": true,
+    "jeux": 0,
+    "texte": "Si tu pars, ta partie s'arrête.\n\nContinuer la partie\nLes jeux"
+   },
+   "ecranApresSecondAppui": {
+    "jeux": 21
+   },
+   "etape": "manche1",
+   "jeu": "bandit-manchot-mot-manquant-cp",
+   "premierAppui": {
+    "cible": "btn lien-accueil htmx-request",
+    "ok": true
+   },
+   "secondAppui": {
+    "cible": "btn retour-accueil htmx-request",
+    "ok": true
+   },
+   "sortieDeConfirmation": {
+    "bas": 312,
+    "bordure": "2px",
+    "centreLibre": true,
+    "classe": "btn retour-accueil",
+    "defilement": 0,
+    "distanceAuPlusProcheBouton": null,
+    "droite": 426.41,
+    "elementAuCentre": "btn retour-accueil",
+    "entierementDansLeViewport": true,
+    "gauche": 317.58,
+    "haut": 262,
+    "hauteur": 50,
+    "largeur": 108.83,
+    "minHeight": "44px",
+    "police": "20px",
+    "rembourrage": "8px 17.6px",
+    "texte": "Les jeux",
+    "trouvee": true,
+    "url": "/niveaux/CP"
+   },
+   "sortieEnTete": {
+    "bas": 66,
+    "bordure": "2px",
+    "centreLibre": true,
+    "classe": "btn lien-accueil",
+    "defilement": 0,
+    "distanceAuPlusProcheBouton": 212,
+    "droite": 720,
+    "elementAuCentre": "btn lien-accueil",
+    "entierementDansLeViewport": true,
+    "gauche": 611.17,
+    "haut": 16,
+    "hauteur": 50,
+    "largeur": 108.83,
+    "minHeight": "44px",
+    "police": "20px",
+    "rembourrage": "8px 17.6px",
+    "texte": "Les jeux",
+    "trouvee": true,
+    "url": "/niveaux/CP"
+   }
+  },
+  {
+   "ecranApresPremierAppui": {
+    "confirmation": true,
+    "jeux": 0,
+    "texte": "Si tu pars, ta partie s'arrête.\n\nContinuer la partie\nLes jeux"
+   },
+   "ecranApresSecondAppui": {
+    "jeux": 21
+   },
+   "etape": "apres-un-echec",
+   "jeu": "bandit-manchot-mot-manquant-cp",
+   "premierAppui": {
+    "cible": "btn lien-accueil htmx-request",
+    "ok": true
+   },
+   "secondAppui": {
+    "cible": "btn retour-accueil htmx-request",
+    "ok": true
+   },
+   "sortieDeConfirmation": {
+    "bas": 312,
+    "bordure": "2px",
+    "centreLibre": true,
+    "classe": "btn retour-accueil",
+    "defilement": 0,
+    "distanceAuPlusProcheBouton": null,
+    "droite": 426.41,
+    "elementAuCentre": "btn retour-accueil",
+    "entierementDansLeViewport": true,
+    "gauche": 317.58,
+    "haut": 262,
+    "hauteur": 50,
+    "largeur": 108.83,
+    "minHeight": "44px",
+    "police": "20px",
+    "rembourrage": "8px 17.6px",
+    "texte": "Les jeux",
+    "trouvee": true,
+    "url": "/niveaux/CP"
+   },
+   "sortieEnTete": {
+    "bas": 66,
+    "bordure": "2px",
+    "centreLibre": true,
+    "classe": "btn lien-accueil",
+    "defilement": 0,
+    "distanceAuPlusProcheBouton": 212,
+    "droite": 720,
+    "elementAuCentre": "btn lien-accueil",
+    "entierementDansLeViewport": true,
+    "gauche": 611.17,
+    "haut": 16,
+    "hauteur": 50,
+    "largeur": 108.83,
+    "minHeight": "44px",
+    "police": "20px",
+    "rembourrage": "8px 17.6px",
+    "texte": "Les jeux",
+    "trouvee": true,
+    "url": "/niveaux/CP"
+   }
+  },
+  {
+   "ecranApresPremierAppui": {
+    "confirmation": true,
+    "jeux": 0,
+    "texte": "Si tu pars, ta partie s'arrête.\n\nContinuer la partie\nLes jeux"
+   },
+   "ecranApresSecondAppui": {
+    "jeux": 21
+   },
+   "etape": "manche1",
+   "jeu": "bandit-manchot-comparer-cp",
+   "premierAppui": {
+    "cible": "btn lien-accueil htmx-request",
+    "ok": true
+   },
+   "secondAppui": {
+    "cible": "btn retour-accueil htmx-request",
+    "ok": true
+   },
+   "sortieDeConfirmation": {
+    "bas": 312,
+    "bordure": "2px",
+    "centreLibre": true,
+    "classe": "btn retour-accueil",
+    "defilement": 0,
+    "distanceAuPlusProcheBouton": null,
+    "droite": 426.41,
+    "elementAuCentre": "btn retour-accueil",
+    "entierementDansLeViewport": true,
+    "gauche": 317.58,
+    "haut": 262,
+    "hauteur": 50,
+    "largeur": 108.83,
+    "minHeight": "44px",
+    "police": "20px",
+    "rembourrage": "8px 17.6px",
+    "texte": "Les jeux",
+    "trouvee": true,
+    "url": "/niveaux/CP"
+   },
+   "sortieEnTete": {
+    "bas": 66,
+    "bordure": "2px",
+    "centreLibre": true,
+    "classe": "btn lien-accueil",
+    "defilement": 0,
+    "distanceAuPlusProcheBouton": 212,
+    "droite": 720,
+    "elementAuCentre": "btn lien-accueil",
+    "entierementDansLeViewport": true,
+    "gauche": 611.17,
+    "haut": 16,
+    "hauteur": 50,
+    "largeur": 108.83,
+    "minHeight": "44px",
+    "police": "20px",
+    "rembourrage": "8px 17.6px",
+    "texte": "Les jeux",
+    "trouvee": true,
+    "url": "/niveaux/CP"
+   }
+  },
+  {
+   "ecranApresPremierAppui": {
+    "confirmation": true,
+    "jeux": 0,
+    "texte": "Si tu pars, ta partie s'arrête.\n\nContinuer la partie\nLes jeux"
+   },
+   "ecranApresSecondAppui": {
+    "jeux": 21
+   },
+   "etape": "apres-un-echec",
+   "jeu": "bandit-manchot-comparer-cp",
+   "premierAppui": {
+    "cible": "btn lien-accueil htmx-request",
+    "ok": true
+   },
+   "secondAppui": {
+    "cible": "btn retour-accueil htmx-request",
+    "ok": true
+   },
+   "sortieDeConfirmation": {
+    "bas": 312,
+    "bordure": "2px",
+    "centreLibre": true,
+    "classe": "btn retour-accueil",
+    "defilement": 0,
+    "distanceAuPlusProcheBouton": null,
+    "droite": 426.41,
+    "elementAuCentre": "btn retour-accueil",
+    "entierementDansLeViewport": true,
+    "gauche": 317.58,
+    "haut": 262,
+    "hauteur": 50,
+    "largeur": 108.83,
+    "minHeight": "44px",
+    "police": "20px",
+    "rembourrage": "8px 17.6px",
+    "texte": "Les jeux",
+    "trouvee": true,
+    "url": "/niveaux/CP"
+   },
+   "sortieEnTete": {
+    "bas": 66,
+    "bordure": "2px",
+    "centreLibre": true,
+    "classe": "btn lien-accueil",
+    "defilement": 0,
+    "distanceAuPlusProcheBouton": 212,
+    "droite": 720,
+    "elementAuCentre": "btn lien-accueil",
+    "entierementDansLeViewport": true,
+    "gauche": 611.17,
+    "haut": 16,
+    "hauteur": 50,
+    "largeur": 108.83,
+    "minHeight": "44px",
+    "police": "20px",
+    "rembourrage": "8px 17.6px",
+    "texte": "Les jeux",
+    "trouvee": true,
+    "url": "/niveaux/CP"
+   }
+  }
+ ],
+ "date": "2026-08-27",
+ "viewport": [
+  744,
+  551
+ ]
+}

@@ -1,0 +1,1772 @@
+{
+  "items": {
+    "La nuit, Tom allume sa ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "La nuit, Tom allume sa ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            92.78,
+            56.05,
+            78.42
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "lampe",
+            "télé",
+            "radio"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 227.25,
+          "texteIndice": "Elle donne de la lumière quand on appuie sur le bouton."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "La nuit, Tom allume sa ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            92.78,
+            56.05,
+            78.42
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "lampe",
+            "télé",
+            "radio"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 227.25,
+          "texteIndice": "Elle donne de la lumière quand on appuie sur le bouton."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "La nuit, Tom allume sa ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            92.78,
+            56.05,
+            78.42
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "lampe",
+            "télé",
+            "radio"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 227.25,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "La nuit, Tom allume sa ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            92.78,
+            56.05,
+            78.42
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "lampe",
+            "télé",
+            "radio"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 227.25,
+          "texteIndice": null
+        }
+      }
+    },
+    "Le bébé ___ dès qu'il a faim.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le bébé ___ dès qu'il a faim.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            80.3,
+            95.53,
+            100.84
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "saute",
+            "pleure",
+            "chante"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 276.67,
+          "texteIndice": "Des larmes coulent sur ses joues et il crie."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le bébé ___ dès qu'il a faim.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            80.3,
+            95.53,
+            100.84
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "saute",
+            "pleure",
+            "chante"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 276.67,
+          "texteIndice": "Des larmes coulent sur ses joues et il crie."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le bébé ___ dès qu'il a faim.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            80.3,
+            95.53,
+            100.84
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "saute",
+            "pleure",
+            "chante"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 276.67,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le bébé ___ dès qu'il a faim.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            80.3,
+            95.53,
+            100.84
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "saute",
+            "pleure",
+            "chante"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 276.67,
+          "texteIndice": null
+        }
+      }
+    },
+    "Le café est trop ___ pour le boire tout de suite.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le café est trop ___ pour le boire tout de suite.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            75.98,
+            91.02,
+            73.34
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "tiède",
+            "chaud",
+            "froid"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 240.34,
+          "texteIndice": "Il vient de sortir de la casserole et il fait de la fumée."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le café est trop ___ pour le boire tout de suite.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            75.98,
+            91.02,
+            73.34
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "tiède",
+            "chaud",
+            "froid"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 240.34,
+          "texteIndice": "Il vient de sortir de la casserole et il fait de la fumée."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le café est trop ___ pour le boire tout de suite.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            75.98,
+            91.02,
+            73.34
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "tiède",
+            "chaud",
+            "froid"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 240.34,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le café est trop ___ pour le boire tout de suite.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            75.98,
+            91.02,
+            73.34
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "tiède",
+            "chaud",
+            "froid"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 240.34,
+          "texteIndice": null
+        }
+      }
+    },
+    "Le chien ___ dès qu'on sonne à la porte.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le chien ___ dès qu'on sonne à la porte.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            100.84,
+            75.89,
+            83.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "chante",
+            "parle",
+            "aboie"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 259.76,
+          "texteIndice": "C'est le cri du chien pour prévenir toute la maison."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le chien ___ dès qu'on sonne à la porte.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            100.84,
+            75.89,
+            83.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "chante",
+            "parle",
+            "aboie"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 259.76,
+          "texteIndice": "C'est le cri du chien pour prévenir toute la maison."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le chien ___ dès qu'on sonne à la porte.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            100.84,
+            75.89,
+            83.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "chante",
+            "parle",
+            "aboie"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 259.76,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le chien ___ dès qu'on sonne à la porte.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            100.84,
+            75.89,
+            83.03
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "chante",
+            "parle",
+            "aboie"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 259.76,
+          "texteIndice": null
+        }
+      }
+    },
+    "Le citron a un goût très ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le citron a un goût très ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.72,
+            57.7,
+            78.8
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sucré",
+            "salé",
+            "acide"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 215.22,
+          "texteIndice": "Ça pique un peu la langue quand on y goûte."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le citron a un goût très ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.72,
+            57.7,
+            78.8
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sucré",
+            "salé",
+            "acide"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 215.22,
+          "texteIndice": "Ça pique un peu la langue quand on y goûte."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le citron a un goût très ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.72,
+            57.7,
+            78.8
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sucré",
+            "salé",
+            "acide"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 215.22,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le citron a un goût très ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.72,
+            57.7,
+            78.8
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sucré",
+            "salé",
+            "acide"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 215.22,
+          "texteIndice": null
+        }
+      }
+    },
+    "Le hérisson est tout ___ quand on le touche.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le hérisson est tout ___ quand on le touche.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            76.41,
+            117.14,
+            68.23
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "doux",
+            "piquant",
+            "mou"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 261.78,
+          "texteIndice": "Il a plein de petites pointes sur le dos pour se protéger."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le hérisson est tout ___ quand on le touche.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            76.41,
+            117.14,
+            68.23
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "doux",
+            "piquant",
+            "mou"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 261.78,
+          "texteIndice": "Il a plein de petites pointes sur le dos pour se protéger."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le hérisson est tout ___ quand on le touche.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            76.41,
+            117.14,
+            68.23
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "doux",
+            "piquant",
+            "mou"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 261.78,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le hérisson est tout ___ quand on le touche.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            76.41,
+            117.14,
+            68.23
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "doux",
+            "piquant",
+            "mou"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 261.78,
+          "texteIndice": null
+        }
+      }
+    },
+    "Le miel a un goût très ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le miel a un goût très ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.8,
+            78.72,
+            57.7
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "acide",
+            "sucré",
+            "salé"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 215.22,
+          "texteIndice": "Les abeilles le fabriquent et il donne envie d'en reprendre."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le miel a un goût très ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.8,
+            78.72,
+            57.7
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "acide",
+            "sucré",
+            "salé"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 215.22,
+          "texteIndice": "Les abeilles le fabriquent et il donne envie d'en reprendre."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le miel a un goût très ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.8,
+            78.72,
+            57.7
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "acide",
+            "sucré",
+            "salé"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 215.22,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le miel a un goût très ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.8,
+            78.72,
+            57.7
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "acide",
+            "sucré",
+            "salé"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 215.22,
+          "texteIndice": null
+        }
+      }
+    },
+    "Le poisson ___ dans son bocal toute la journée.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le poisson ___ dans son bocal toute la journée.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            111.08,
+            80.3,
+            73.7
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "marche",
+            "saute",
+            "nage"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 265.08,
+          "texteIndice": "C'est ce qu'il fait avec ses nageoires dans l'eau."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le poisson ___ dans son bocal toute la journée.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            111.08,
+            80.3,
+            73.7
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "marche",
+            "saute",
+            "nage"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 265.08,
+          "texteIndice": "C'est ce qu'il fait avec ses nageoires dans l'eau."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le poisson ___ dans son bocal toute la journée.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            111.08,
+            80.3,
+            73.7
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "marche",
+            "saute",
+            "nage"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 265.08,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le poisson ___ dans son bocal toute la journée.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            111.08,
+            80.3,
+            73.7
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "marche",
+            "saute",
+            "nage"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 265.08,
+          "texteIndice": null
+        }
+      }
+    },
+    "Le poivre est très ___ dans la bouche.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le poivre est très ___ dans la bouche.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.72,
+            117.14,
+            57.7
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sucré",
+            "piquant",
+            "salé"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 253.56,
+          "texteIndice": "Ça donne une petite sensation de chaleur sur la langue."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le poivre est très ___ dans la bouche.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.72,
+            117.14,
+            57.7
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sucré",
+            "piquant",
+            "salé"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 253.56,
+          "texteIndice": "Ça donne une petite sensation de chaleur sur la langue."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le poivre est très ___ dans la bouche.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.72,
+            117.14,
+            57.7
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sucré",
+            "piquant",
+            "salé"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 253.56,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Le poivre est très ___ dans la bouche.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            78.72,
+            117.14,
+            57.7
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "sucré",
+            "piquant",
+            "salé"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 253.56,
+          "texteIndice": null
+        }
+      }
+    },
+    "Léa ___ sa chambre avant le dîner.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Léa ___ sa chambre avant le dîner.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            86.44,
+            60.66,
+            91.44
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "range",
+            "lave",
+            "coupe"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 238.54,
+          "texteIndice": "Elle remet chaque jouet à sa place."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Léa ___ sa chambre avant le dîner.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            86.44,
+            60.66,
+            91.44
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "range",
+            "lave",
+            "coupe"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 238.54,
+          "texteIndice": "Elle remet chaque jouet à sa place."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Léa ___ sa chambre avant le dîner.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            86.44,
+            60.66,
+            91.44
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "range",
+            "lave",
+            "coupe"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 238.54,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Léa ___ sa chambre avant le dîner.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            86.44,
+            60.66,
+            91.44
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "range",
+            "lave",
+            "coupe"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 238.54,
+          "texteIndice": null
+        }
+      }
+    },
+    "Léa dessine avec un ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Léa dessine avec un ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            120.5,
+            126.41,
+            101.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "couteau",
+            "marteau",
+            "crayon"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 348.05,
+          "texteIndice": "C'est un petit bâton de bois qui laisse une trace sur le papier."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Léa dessine avec un ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            120.5,
+            126.41,
+            101.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "couteau",
+            "marteau",
+            "crayon"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 348.05,
+          "texteIndice": "C'est un petit bâton de bois qui laisse une trace sur le papier."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Léa dessine avec un ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            120.5,
+            126.41,
+            101.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "couteau",
+            "marteau",
+            "crayon"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 348.05,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Léa dessine avec un ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            120.5,
+            126.41,
+            101.14
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "couteau",
+            "marteau",
+            "crayon"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 348.05,
+          "texteIndice": null
+        }
+      }
+    },
+    "Pour balayer la cuisine, Maman prend un ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Pour balayer la cuisine, Maman prend un ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.16,
+            126.41,
+            141.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "balai",
+            "marteau",
+            "tournevis"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.84,
+          "texteIndice": "C'est un objet à long manche, avec des poils au bout, pour nettoyer le sol."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Pour balayer la cuisine, Maman prend un ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.16,
+            126.41,
+            141.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "balai",
+            "marteau",
+            "tournevis"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.84,
+          "texteIndice": "C'est un objet à long manche, avec des poils au bout, pour nettoyer le sol."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Pour balayer la cuisine, Maman prend un ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.16,
+            126.41,
+            141.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "balai",
+            "marteau",
+            "tournevis"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.84,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Pour balayer la cuisine, Maman prend un ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.16,
+            126.41,
+            141.27
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "balai",
+            "marteau",
+            "tournevis"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 339.84,
+          "texteIndice": null
+        }
+      }
+    },
+    "Pour manger la soupe, Léa prend une ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Pour manger la soupe, Léa prend une ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            109.23,
+            97.48,
+            157.83
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cuillère",
+            "brosse",
+            "fourchette"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 364.54,
+          "texteIndice": "On la plonge dans le bol pour porter la soupe à la bouche."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Pour manger la soupe, Léa prend une ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            109.23,
+            97.48,
+            157.83
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cuillère",
+            "brosse",
+            "fourchette"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 364.54,
+          "texteIndice": "On la plonge dans le bol pour porter la soupe à la bouche."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Pour manger la soupe, Léa prend une ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            109.23,
+            97.48,
+            157.83
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cuillère",
+            "brosse",
+            "fourchette"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 364.54,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Pour manger la soupe, Léa prend une ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            109.23,
+            97.48,
+            157.83
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "cuillère",
+            "brosse",
+            "fourchette"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 364.54,
+          "texteIndice": null
+        }
+      }
+    },
+    "Pour se laver les mains, Léa utilise du ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Pour se laver les mains, Léa utilise du ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            87.25,
+            77.55,
+            40.48
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "savon",
+            "sable",
+            "sel"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 205.28,
+          "texteIndice": "Ça mousse quand on le frotte avec de l'eau."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Pour se laver les mains, Léa utilise du ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            87.25,
+            77.55,
+            40.48
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "savon",
+            "sable",
+            "sel"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 205.28,
+          "texteIndice": "Ça mousse quand on le frotte avec de l'eau."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Pour se laver les mains, Léa utilise du ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            87.25,
+            77.55,
+            40.48
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "savon",
+            "sable",
+            "sel"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 205.28,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "Pour se laver les mains, Léa utilise du ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            87.25,
+            77.55,
+            40.48
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "savon",
+            "sable",
+            "sel"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 205.28,
+          "texteIndice": null
+        }
+      }
+    },
+    "Sous la pluie, Tom prend son ___.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Sous la pluie, Tom prend son ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.69,
+            93.86,
+            141.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "tapis",
+            "ballon",
+            "parapluie"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.96,
+          "texteIndice": "On l'ouvre au-dessus de la tête quand il pleut."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Sous la pluie, Tom prend son ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.69,
+            93.86,
+            141.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "tapis",
+            "ballon",
+            "parapluie"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.96,
+          "texteIndice": "On l'ouvre au-dessus de la tête quand il pleut."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Sous la pluie, Tom prend son ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.69,
+            93.86,
+            141.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "tapis",
+            "ballon",
+            "parapluie"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.96,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Sous la pluie, Tom prend son ___.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            72.69,
+            93.86,
+            141.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "tapis",
+            "ballon",
+            "parapluie"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 307.96,
+          "texteIndice": null
+        }
+      }
+    },
+    "Tom ___ la lumière avant de dormir.": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Tom ___ la lumière avant de dormir.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            101.39,
+            78.05,
+            87.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "allume",
+            "casse",
+            "éteint"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 267.3,
+          "texteIndice": "Il appuie sur le bouton pour que tout devienne noir."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Tom ___ la lumière avant de dormir.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            101.39,
+            78.05,
+            87.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "allume",
+            "casse",
+            "éteint"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 267.3,
+          "texteIndice": "Il appuie sur le bouton pour que tout devienne noir."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Tom ___ la lumière avant de dormir.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            101.39,
+            78.05,
+            87.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "allume",
+            "casse",
+            "éteint"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 267.3,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "Tom ___ la lumière avant de dormir.",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            101.39,
+            78.05,
+            87.86
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "allume",
+            "casse",
+            "éteint"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 267.3,
+          "texteIndice": null
+        }
+      }
+    }
+  },
+  "itemsVus": 16,
+  "jeu": "bandit-manchot-mot-manquant-cp",
+  "parties": 5,
+  "pli": 551,
+  "viewport": [
+    744,
+    551
+  ]
+}
