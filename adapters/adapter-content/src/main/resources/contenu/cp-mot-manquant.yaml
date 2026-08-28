@@ -20,6 +20,24 @@ descripteur:
 # precision du mot et non sur son absurdite). Les trois familles nommees par la competence sont
 # representees (PRE-4) : objets (items 1 a 6), actions (items 7 a 11), sensations (items 12 a 16) -
 # aucune sous un quart des seize items.
+#
+# Correction du 2026-08-28, apres REFUS de nadia-prof (FICHE-bandit-manchot-mot-manquant-cp.md,
+# verdict du 2026-08-28). Deux motifs :
+#   1. PRE-3 - item 6 ("La nuit, Tom allume sa ___.", lampe/radio/télé) admettait deux reponses
+#      defendables : rien dans l'enonce ne discriminait entre les trois appareils qu'on allume.
+#      L'enonce porte desormais l'element de sens qui manquait (lire, qui appelle une lumiere et
+#      non un son ou une image) ; les trois propositions ne changent pas.
+#   2. PRE-2 - les items 3 ("Léa dessine avec un ___.") et 4 ("Sous la pluie, Tom prend son ___.")
+#      ne portaient aucun distracteur du champ de la bonne reponse (marteau/couteau, ballon/tapis) :
+#      les deux s'eliminaient par incompatibilite grossiere, sans vocabulaire. L'item 3 recoit deux
+#      distracteurs du champ "instrument pour tracer" (feutre, pinceau), la bonne reponse et
+#      l'enonce ne changent pas. L'item 4 recoit deux distracteurs du champ "equipement de pluie"
+#      (impermeable, capuchon) et un enonce qui ne contient plus "pluie" (fuite morphologique
+#      relevee par nadia-prof en meme temps que l'echec de champ), tout en conservant le seul
+#      element qui rend "parapluie" seul defendable (on l'ouvre au-dessus de la tete).
+# Les onze autres items ne sont pas touches : nadia-prof les tient pour bons, y compris les cinq
+# items de la famille "sensations" qu'elle nomme "le meilleur travail de vocabulaire du catalogue
+# CP".
 items:
   # Objets (6 items). Determinant et genre constants a l'interieur d'un meme item (PRE-1).
   - enonce: "Pour balayer la cuisine, Maman prend un ___."
@@ -32,17 +50,17 @@ items:
     indice: "Ça mousse quand on le frotte avec de l'eau."
   - enonce: "Léa dessine avec un ___."
     bonneReponse: "crayon"
-    distracteurs: ["marteau", "couteau"]
+    distracteurs: ["feutre", "pinceau"]
     indice: "C'est un petit bâton de bois qui laisse une trace sur le papier."
-  - enonce: "Sous la pluie, Tom prend son ___."
+  - enonce: "Tom ouvre son ___ au-dessus de la tête."
     bonneReponse: "parapluie"
-    distracteurs: ["ballon", "tapis"]
+    distracteurs: ["imperméable", "capuchon"]
     indice: "On l'ouvre au-dessus de la tête quand il pleut."
   - enonce: "Pour manger la soupe, Léa prend une ___."
     bonneReponse: "cuillère"
     distracteurs: ["fourchette", "brosse"]
     indice: "On la plonge dans le bol pour porter la soupe à la bouche."
-  - enonce: "La nuit, Tom allume sa ___."
+  - enonce: "Pour lire le soir, Tom allume sa ___."
     bonneReponse: "lampe"
     distracteurs: ["radio", "télé"]
     indice: "Elle donne de la lumière quand on appuie sur le bouton."
