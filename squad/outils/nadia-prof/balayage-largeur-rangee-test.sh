@@ -9,6 +9,13 @@
 # sa preuve est manuelle, nommee dans le lot de S21-1 : meme decoupe qu'ADR-0009 impose a
 # verifier-lignee.sh et qu'ADR-0025 impose a mesurer-rendu.sh.
 #
+# Correction datee du 2026-08-28. Ce paragraphe decrivait la decoupe comme faite ; elle ne l'etait
+# que dans l'intention. Le module portait "import websocket" en tete de fichier, si bien qu'aucun
+# juge n'etait atteignable sans la bibliotheque qui pilote le navigateur : la CI a rougi sur les 23
+# cas d'un coup, sans en juger un seul. Un juge pur ecrit plus bas dans le meme fichier que
+# l'enveloppe n'est pas separe d'elle. L'import vit desormais dans la seule fonction qui ouvre la
+# connexion, et le dernier cas de ce fichier verifie la decoupe au lieu de l'affirmer.
+#
 # Comme pour un contre-exemple ArchUnit, un cas qui echoue ne suffit pas : il doit echouer pour le
 # bon motif. Chaque cas attendu en refus verifie donc la presence d'un fragment du message.
 #
@@ -191,6 +198,68 @@ verifier "un ecart de largeur est refuse, et les deux couples sont cites" refus 
 
 verifier "un ecart de hauteur seule est refuse" refus "744x551, viewport lu du navigateur 744x900" \
   juger_viewport '[744, 551]' '[744, 900]'
+
+echo "--- les juges sont atteignables sans aucune dependance hors bibliotheque standard"
+
+# Ce cas existe parce que le vert local ne prouvait rien. Le 2026-08-28, l'etape "Juges purs des
+# outils de poste" de la CI a rougi sur les 23 cas d'un coup, sans en juger un seul : le module
+# faisait "import websocket" au niveau du module, et le runner n'a pas cette bibliotheque. Sur ce
+# poste, elle est installee - les memes 23 cas passaient. Une mesure juste, faite sur un
+# environnement qui n'est pas celui qu'on croit mesurer : la famille du "-pl" sans "-am".
+#
+# Le cas ci-dessous rend la panne reproductible PARTOUT, sans dependre de ce qui est installe : il
+# charge le module dans un interpreteur ou tout import hors bibliotheque standard est refuse, et
+# appelle un juge. Le perimetre des noms refuses est DERIVE de sys.stdlib_module_names, jamais une
+# liste ecrite ici : une dependance tierce neuve, quel que soit son nom, tombe dedans sans que
+# personne y pense.
+sans_tiers="$(MODULE="${MODULE}" "${PY}" - <<'PYTHON' 2>&1
+import importlib.abc
+import importlib.util
+import os
+import sys
+
+
+class RefuseToutTiers(importlib.abc.MetaPathFinder):
+    """Refuse tout import dont le nom de tete n'est pas dans la bibliotheque standard."""
+
+    def find_spec(self, nom, chemin, cible=None):
+        tete = nom.split(".")[0]
+        if tete in sys.stdlib_module_names or tete == "blr":
+            return None
+        raise ImportError(
+            "import tiers refuse par ce cas de test : %s. Un juge pur doit rester atteignable "
+            "sans aucune dependance hors bibliotheque standard (ADR-0009)." % nom
+        )
+
+
+sys.meta_path.insert(0, RefuseToutTiers())
+spec = importlib.util.spec_from_file_location("blr", os.environ["MODULE"])
+blr = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(blr)
+
+# Un juge de chaque famille, pour que le cas ne se contente pas de charger le module.
+verdicts = [
+    blr.juger_port_libre_avant_lancement(9319, None),
+    blr.juger_port_du_profil(
+        0, "57387" + chr(10) + "/devtools/browser/8c97b034" + chr(10))[1],
+    blr.juger_regle_injectee(".a{x:1}", None),
+    blr.juger_viewport([744, 551], [744, 900]),
+]
+sys.stdout.write("juges atteints : %d refus sur 4 appels" % sum(1 for v in verdicts if v))
+PYTHON
+)"
+code_sans_tiers=$?
+
+if [ "${code_sans_tiers}" -ne 0 ] || [ "${sans_tiers}" != "juges atteints : 2 refus sur 4 appels" ]; then
+  echo "ECHEC : les juges ne sont pas atteignables sans dependance tierce."
+  echo "  Un import de bibliotheque au niveau du module rend TOUS les cas de ce fichier rouges"
+  echo "  avant le moindre jugement, et le vert de ce poste ne le montre pas - c'est la panne de"
+  echo "  CI du 2026-08-28. Deplacer l'import dans la fonction qui en a besoin."
+  echo "  Sortie obtenue : ${sans_tiers}"
+  ECHECS=$((ECHECS + 1))
+else
+  echo "ok les quatre juges repondent dans un interpreteur qui refuse tout import tiers"
+fi
 
 echo "--- la campagne nomme les jeux perdus au lieu de se declarer terminee"
 

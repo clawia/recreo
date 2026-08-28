@@ -63,7 +63,12 @@ import tempfile
 import time
 import urllib.request
 
-import websocket
+# "websocket" (le module websocket-client) n'est PAS importe ici, et c'est une decision, pas un
+# oubli - voir ouvrir_connexion. Un import de bibliotheque tierce au niveau du module rendrait les
+# juges purs de ce fichier inatteignables sans elle : charger le module pour appeler
+# juger_viewport ferait echouer l'import bien avant le moindre jugement. C'est exactement ce qui
+# est arrive le 2026-08-28 - l'etape "Juges purs des outils de poste" de la CI a rougi sur les 23
+# cas d'un coup, sans en juger un seul, sur un runner qui n'a pas cette bibliotheque.
 
 VIEWPORT_LARGEUR = 744
 VIEWPORT_HAUTEUR = 551
@@ -232,6 +237,31 @@ def refuser(motif):
         raise MesureNonFiable(motif)
 
 
+def ouvrir_connexion(url_ws, secondes=30):
+    """Ouvre la connexion de deverminage, et c'est le SEUL endroit du depot qui touche websocket.
+
+    L'import est fait ici plutot qu'en tete de fichier pour que la decoupe d'ADR-0009 soit reelle et
+    pas seulement declaree : les juges purs de ce module - juger_port_libre_avant_lancement,
+    juger_port_du_profil, juger_regle_injectee, juger_viewport - doivent etre atteignables sans
+    aucune bibliotheque tierce, puisque c'est a ce titre que la CI les execute. Ecrire "les juges
+    sont purs" en commentaire et importer la bibliotheque du navigateur trois lignes plus haut,
+    c'est une decoupe d'intention ; ceci en est une de fait.
+
+    Le prerequis n'est pas supprime, il est deplace au point ou il est reellement necessaire : sans
+    websocket-client, ce sont les mesures qui echouent - bruyamment, avec la marche a suivre - et
+    non les juges.
+    """
+    try:
+        import websocket
+    except ImportError as absent:
+        raise MesureNonFiable(
+            "le module python \"websocket-client\" est absent : aucune mesure au navigateur n'est "
+            "possible. Les juges de ce module, eux, n'en ont pas besoin et restent executables. "
+            "Installer websocket-client pour mesurer. Detail : %s" % absent
+        ) from absent
+    return websocket.create_connection(url_ws, timeout=secondes)
+
+
 def sonder_port(port):
     """Ce que le port de deverminage repond, ou None s'il ne repond pas. Impur, non teste en CI."""
     try:
@@ -322,7 +352,7 @@ class Navigateur:
             profil,
             port,
         )
-        self.ws = websocket.create_connection(cible, timeout=30)
+        self.ws = ouvrir_connexion(cible)
         self.compteur = 0
         self.regle_posee = None
         self.appeler("Page.enable")

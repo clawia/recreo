@@ -178,6 +178,67 @@ ailleurs aurait rendu l'etape verte et muette.
 pur : `mesurer-cout-mot-designe.py` n'en a pas, et cette etape ne le rend pas rouge. Elle execute ce
 qui existe ; qu'un outil doive en porter un est une question a decider outil par outil, pas ici.
 
+**Second amendement, du 2026-08-28 (`theo-archi`), et il est ecrit contre moi : l'etape elargie a
+trouve un defaut des sa premiere execution reelle, et le defaut etait dans mon propre lot.** La CI a
+rougi sur `squad/outils/nadia-prof/balayage-largeur-rangee-test.sh`, **23 cas d'un coup, sans en
+juger un seul** : `balayage-largeur-rangee.py` portait `import websocket` au niveau du module, le
+test charge ce module par `importlib` pour appeler ses juges, et le runner n'a pas cette
+bibliotheque.
+
+**Ce que ce defaut apprend sur la doctrine de cette section, et qui la precise.** La decoupe
+"juge pur teste / enveloppe prouvee a la main" d'`ADR-0009` ne se realise pas en ecrivant les juges
+plus bas dans le meme fichier que l'enveloppe. **Un juge qu'on ne peut pas atteindre sans charger la
+bibliotheque qui touche le poste n'est pas separe de l'enveloppe** : il est seulement range a cote.
+La clause implicite qui manquait est donc ecrite ici : **un fichier dont un juge pur est teste par
+cette etape ne fait aucun import hors bibliotheque standard au niveau du module** ; les dependances
+tierces vivent dans les fonctions qui en ont besoin.
+
+**Et le vert local ne prouvait rien**, ce qui est la partie generale. Les six juges passaient sur le
+poste de mesure - parce que cette machine a `websocket` installe. Une mesure juste, faite sur un
+environnement qui n'est pas celui qu'on croit mesurer : meme famille que le `-pl` sans `-am` de
+`CLAUDE.md`, et meme famille que la lecon d'union des arbres tiree la veille. **Le correctif ne s'en
+remet pas a la CI pour la prochaine fois** : le dernier cas du fichier de test charge le module dans
+un interpreteur ou **tout** import hors bibliotheque standard est refuse - perimetre derive de
+`sys.stdlib_module_names`, jamais une liste de noms - puis appelle quatre juges. Morsure verifiee
+par mutation le 2026-08-28 sur le poste **ou la bibliotheque est installee** : l'import remis en
+tete de fichier rend ce cas rouge et lui seul, 29 cas sur 30 restant verts.
+
+**Le defaut n'etait pas isole, et je l'etablis par une commande plutot que par une lecture.** Chaque
+module python de `outils/` et de `squad/outils/` est charge par `importlib` dans un interpreteur qui
+ne voit pas les paquets installes (`python -S`), et on releve ceux qui refusent de se charger :
+
+```
+python -S -c "import glob,importlib.util,os; [ ... spec_from_file_location(f) + exec_module(...) ... ]"   sur glob('outils/*.py') + glob('squad/outils/*/*.py')
+```
+
+Executee le 2026-08-28 dans le worktree `s21-theo-4`, **avant** le correctif : **9 modules sur 17
+refusent de se charger**, tous sur `ModuleNotFoundError: No module named 'websocket'` -
+`auditer-paquet.py`, `balayage-largeur-rangee.py`, `budget-de-forme.py`,
+`confirmer-largeur-dans-la-bande.py`, `lire-le-pli-a-l-ecran.py`,
+`lire-le-recouvrement-a-l-ecran.py`, `mesurer-budget-vertical.py`, **`mesurer-candidats-rep-8.py`**
+et `mesurer-cout-mot-designe.py`. **Apres** le correctif : **zero**. Une seule ligne deplacee dans le
+module de plomberie, plus une dans son frere, libere les neuf - les sept autres n'en dependaient que
+par import transitif.
+
+**Ce qui a fait rougir la CI n'est donc qu'une instance sur neuf**, et c'est la seule qui avait un
+`*-test.sh` : verifie par la meme methode, `grep -oE '[A-Za-z0-9_-]+\.py'` sur les six fichiers de
+test, seuls `rapport-tokens.py` et `balayage-largeur-rangee.py` sont charges par un test. Les huit
+autres modules portaient la meme propriete sans que rien ne puisse la voir. **L'etape n'a pas trouve
+un defaut : elle a trouve le seul defaut de sa famille qui etait observable**, et c'est une raison de
+plus pour que la clause ci-dessus soit ecrite plutot que laissee a la vigilance.
+
+**Une seconde propriete, trouvee par la meme commande, nommee et non corrigee** : cinq scripts de
+`squad/outils/nadia-prof/` echouent au chargement sur `IndexError` parce qu'ils lisent `sys.argv`
+**au niveau du module** - ils s'executent a l'import. Aucun n'est charge par un `*-test.sh`
+aujourd'hui, donc aucun n'est concerne par cette etape. **Declencheur ecrit** : le jour ou l'un
+d'eux recoit un juge pur teste ici, son corps de script passe sous un `if __name__ == "__main__":`
+comme les autres.
+
+**Ce que l'etape n'installe pas, et pourquoi.** Ajouter `websocket-client` au workflow aurait rendu
+le job vert et lui aurait fait perdre son sens : un juge pur qui a besoin de la bibliotheque du
+navigateur pour etre teste n'est plus un juge pur, et l'etape ne dirait plus rien de la decoupe.
+Le refus d'installer est donc une clause de cette decision, pas une preference d'implementation.
+
 ### Pourquoi rien de tout cela n'est une `ArchRule`
 
 ArchUnit lit du bytecode. Ni la largeur d'un rendu, ni le verdict d'un script shell n'y sont visibles.

@@ -46,7 +46,8 @@ import tempfile
 import time
 import urllib.request
 
-import websocket
+# Pas d'import de "websocket" ici : la connexion passe par blr.ouvrir_connexion, qui
+# l'importe au point ou elle est reellement necessaire (meme motif que le module frere).
 
 _dossier = os.path.dirname(os.path.abspath(__file__))
 
@@ -130,7 +131,7 @@ class Navigateur(blr.Navigateur):
         # Cette copie etait le trou : le refus de port ecrit dans la mere n'aurait pas existe dans
         # la fille, et c'est cette fille qui a rendu les captures de REP-8.
         self.processus, cible = blr.lancer_et_attacher(options, profil, port)
-        self.ws = websocket.create_connection(cible, timeout=30)
+        self.ws = blr.ouvrir_connexion(cible)
         self.compteur = 0
         self.regle_posee = None
         self.appeler("Page.enable")
