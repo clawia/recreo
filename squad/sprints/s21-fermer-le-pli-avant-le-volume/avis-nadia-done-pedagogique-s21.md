@@ -37,6 +37,13 @@ geste materiel - retenu a temps - n'a pas eu a etre execute ni defait.
 conscience phonologique" ; les deux autres restent hors d'atteinte sans emission de son
 (`DEC-0042`, arbitrage 2). **Ne pas lire cette ouverture comme l'ouverture du domaine.**
 
+> **CADUC AU 2026-08-28, ET RIEN NE DOIT ETRE FAIT SUR CE FONDEMENT.** Les deux paragraphes qui
+> suivent ont ete ecrits quand `cp-syllabes` et `cp-mot-manquant` etaient tous deux refuses.
+> **Les deux refus ont ete leves depuis** - le premier par arbitrage de l'utilisatrice, le second
+> apres deux corrections de `lea-dev`. **Aucune entree n'est a retirer du catalogue.** Ils sont
+> conserves parce qu'un etat efface n'a aucune valeur de preuve ; l'etat courant est dans la
+> conclusion, en fin de document.
+
 **Le retrait des deux entrees refusees du catalogue releve de `DEC-0045` section 3 : le geste
 appartient a `camille-po` et `sofia-sm`, pas a moi.** Je n'ai touche ni `catalogue.yaml`, ni aucun
 fichier de contenu, ni la matrice. Je n'ai rien pousse et rien fusionne.
@@ -47,6 +54,11 @@ qui en fait du backlog. **Aucune condition nouvelle n'est posee sur les deux paq
 verifie et bon pour que la reprise ne le refasse pas.
 
 ## Sur la symetrie des deux refus, parce qu'elle sera contestee
+
+> **Section historique, conservee et datee.** Elle rend compte de mon raisonnement du
+> 2026-08-28 au moment ou les deux paquets etaient refuses. **Les deux refus ont ete leves
+> depuis**, et le motif cite ici pour `cp-mot-manquant` a ete corrige par `lea-dev`. Le
+> raisonnement de symetrie, lui, reste ce qui a fonde les deux verdicts et il n'est pas retire.
 
 Les deux paquets sont refuses pour **la meme famille de defaut** : un item qui dit a un enfant qui a
 raison qu'il a tort. `CHEMINEE` pour `marc-dev`, *"La nuit, Tom allume sa ___."* pour `lea-dev`.
@@ -211,27 +223,67 @@ porte enfin le trait qui distingue le crayon de ses voisins de champ.
 tiens.** Mon refus de `cp-syllabes` n'etait pas une erreur d'application : c'etait l'application
 exacte d'une condition que j'avais ecrite **avant** que le paquet existe, et cette condition etait
 **environ quatre fois trop large** - mesure du 2026-08-28 sur les 650 mots du corpus CP du depot :
-39 cas de schwa attrapes, 30 a tort, dont `petit`, `cheval`, `renard` et `semaine`. **C'est la
-troisieme fois en deux sprints qu'une de mes conditions ou de mes exemples, et non le travail
-qu'ils encadraient, est la cause racine d'un refus** - a s20 des libelles que j'avais dits courts
-et qui faisaient 34 caracteres ; ce matin `SEG-1` ; et au reaudit de `cp-mot-manquant` le triplet
-`crayon`/`feutre`/`pinceau` que j'avais qualifie d'*"evident"* et que `lea-dev` a repris au mot
-pres. **Le defaut commun est identifiable : je propose des exemples la ou je devrais nommer la
-propriete a tenir.** Un exemple se revele faux ; une propriete se verifie. Un arbitrage prealable
-evite un cycle quand il est juste ; il en coute un quand il est faux, et il faut le compter.
+39 cas de schwa attrapes, 30 a tort, dont `petit`, `cheval`, `renard` et `semaine`. **C'est le
+troisieme refus, sur les quatre prononces depuis s20, dont la cause racine est une de mes
+conditions ou de mes exemples plutot que le travail qu'ils encadraient** - a s20 des libelles que
+j'avais dits courts et qui faisaient 34 caracteres ; ce matin `SEG-1` ; et au reaudit de
+`cp-mot-manquant` le triplet `crayon`/`feutre`/`pinceau` que j'avais qualifie d'*"evident"* et que
+`lea-dev` a repris au mot pres. **Les trois sont enumeres avec leur perimetre dans la conclusion
+ci-dessous, et c'est cette enumeration qui fait foi** : un ratio se perime des qu'un verdict bouge.
+**Le defaut commun est identifiable : je propose des exemples la ou je devrais nommer la propriete
+a tenir.** Un exemple se revele faux ; une propriete se verifie.
 
 **Le sprint a atteint ce qu'il visait sur le pli** : les 50 items neufs sont au-dessus, `SOR-4` est
 fermee, et le pli est desormais ferme sur les 162 items des 9 jeux CP enumeres.
 
-**Les trois paquets finissent le sprint valides ; aucun n'y est arrive du premier coup, et aucun
-n'a jamais achoppe sur la forme.** Les quatre refus prononces ce sprint portaient tous sur le
-contenu - un compte de syllabes, une reponse defendable refusee, un distracteur hors champ -, et la
-porte technique etait verte a 722 tests a chacun d'eux. **C'est la seule chose que la CI ne
-regardera jamais, et c'est ce que ce sprint aura montre le plus clairement.**
+*Comptage corrige le 2026-08-28. Ce paragraphe portait **"les quatre refus prononces ce sprint"**
+et **"sur ces quatre refus, trois ont leur cause racine..."**. **`yanis-qa` a trouve l'ecart en
+verifiant mon chiffre contre sa source primaire** (rapport qualite, commit `6c06c23`), et il avait
+raison. **Le bon compte pour s21 est trois**, et je l'ecrivais correctement six lignes plus haut
+dans ce meme document. Ce que je comptais sans le dire, c'etait le refus de `cm1-reperes`, qui est
+de **s20**. **Ce n'est donc pas le chiffre qu'il fallait baisser, c'est le perimetre qu'il fallait
+ecrire** ; les deux comptes sont vrais et je les donne tous les deux ci-dessous. Verifie par moi le
+2026-08-28 sur les fiches de conformite, source primaire : `grep "^## Verdict : \*\*REFUSE\*\*"
+squad/conformite/*.md` rend **quatre** verdicts, dont **trois dates de s21** et **un du
+2026-08-26, s20**. Un chiffre faux dans une conclusion sur la rigueur des chiffres est exactement
+le defaut que ce depot sanctionne, et il etait de moi.*
 
-**Le second enseignement est contre moi et il compte autant.** Sur ces quatre refus, **trois ont
-leur cause racine dans ce que j'avais ecrit avant** - `SEG-1`, le triplet
-`crayon`/`feutre`/`pinceau`, et l'absence de condition de lisibilite sur `cp-mot-manquant`. Une
-porte pedagogique qui refuse pour de bons motifs mais dont les specifications sont fausses coute
-des cycles sans rien proteger. **Ce qu'elle doit corriger est identifie : nommer la propriete a
-tenir, jamais l'exemple qui l'illustre.**
+**Les trois paquets finissent le sprint valides ; aucun n'y est arrive du premier coup, et aucun
+n'a jamais achoppe sur la forme.** **Trois refus ont ete prononces dans s21** - un sur
+`cp-syllabes`, deux sur `cp-mot-manquant` - et **ils portaient tous sur le contenu** : un compte de
+syllabes, une reponse defendable refusee, un distracteur hors champ. **La porte technique etait
+verte a 722 tests a chacun d'eux et n'en a vu aucun** (`yanis-qa`, rapport qualite de s21). Sur les
+**27 conditions prealables** des trois paquets neufs, **3 seulement sont partiellement couvertes par
+un test** (meme rapport). **C'est la seule chose que la CI ne regardera jamais, et c'est ce que ce
+sprint aura montre le plus clairement.**
+
+**Je ne demande pas de garde-fou supplementaire pour autant**, et c'est delibere : `ADR-0028` et le
+precedent de s20 ont etabli qu'un classifieur heuristique qui trancherait seul la plausibilite d'un
+distracteur ou la stabilite d'une coupe syllabique **serait pire qu'une absence de garde**. La
+contrepartie assumee est que ces 24 conditions n'ont pour garde que moi.
+
+**Le second enseignement est contre moi et il compte autant.** Je le donne **en enumeration et non
+en ratio** : un rapport se perime des qu'un verdict bouge, une liste nommee se verifie.
+
+| Refus | Sprint | Cause racine | A qui elle est |
+|---|---|---|---|
+| `cm1-reperes` | **s20**, 2026-08-26 | des libelles que j'avais **dits courts** et qui faisaient 34 caracteres, et quatre libelles a qui je demandais de porter cinq cas | **moi** (la fiche le dit : *"Les deux causes racines sont les miennes"*) |
+| `cp-syllabes` | **s21**, 2026-08-28 | **`SEG-1` clause (c)**, environ quatre fois trop large : 39 cas de schwa attrapes sur le corpus CP, 30 a tort, dont `petit`, `cheval`, `renard`, `semaine` | **moi** |
+| `cp-mot-manquant`, 1er verdict | **s21**, 2026-08-28 | les items 3, 4 et 6 ne tenaient pas `PRE-2` et `PRE-3` ; **mes conditions etaient justes, le paquet ne les tenait pas** | `lea-dev` |
+| `cp-mot-manquant`, reaudit | **s21**, 2026-08-28 | le triplet **`crayon`/`feutre`/`pinceau`** que j'avais qualifie d'*"evident"* et que `lea-dev` a repris au mot pres | **moi** |
+
+**Donc : deux des trois refus de s21 ont leur cause racine dans ma specification, et trois des
+quatre si l'on remonte a s20.** Les deux chiffres sont vrais ; chacun porte son perimetre.
+
+**Une lacune de specification de plus, qui n'a cause aucun refus et que je ne compte donc pas
+comme tel** : `cp-mot-manquant` ne porte **aucune condition de lisibilite** sur ses propositions,
+la ou `SEG-2` en porte une pour les syllabes. C'est ce qui m'a fait ouvrir `PRE-15` sur
+`impermeable` **en reserve et non en motif**. Je la nomme ici parce que la retro doit l'instruire,
+et je precise qu'elle n'a produit qu'une reserve - l'inclure dans le compte des refus serait
+refaire, en sens inverse, l'erreur que `yanis-qa` vient de trouver.
+
+**Ce que la retro doit instruire** : une porte pedagogique qui refuse pour de bons motifs mais dont
+les specifications sont fausses coute des cycles sans rien proteger. **Le defaut commun aux trois
+causes qui sont miennes est le meme : j'ecris l'exemple qui illustre la propriete au lieu d'ecrire
+la propriete.** Un exemple se revele faux ; une propriete se verifie. Un arbitrage prealable evite
+un cycle quand il est juste ; il en coute un quand il est faux, et il faut le compter.
