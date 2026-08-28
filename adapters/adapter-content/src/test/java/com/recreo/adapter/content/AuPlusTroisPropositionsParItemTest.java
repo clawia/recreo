@@ -99,11 +99,21 @@ class AuPlusTroisPropositionsParItemTest {
     private static final int PROPOSITIONS_MAXIMUM = 3;
 
     /**
-     * Tirages effectues sur chaque paquet. Un paquet enumere s'epuise bien avant ; un paquet
-     * combinatoire ne s'epuise jamais, d'ou la borne. Meme valeur et meme motif que
-     * {@link AucunePropositionNEstEgaleAUneAutreDansUnItemTest}.
+     * Tirages effectues sur un paquet <b>combinatoire</b>, le seul qui ne s'epuise jamais. Sur un
+     * tel paquet, cette borne rend la lecture <b>partielle par construction</b>, et le garde-fou le
+     * declare plutot que de le taire (ADR-0051).
+     *
+     * <p><b>Correction du 2026-08-28 (s21, cloture), trouvee en verifiant la population de ce
+     * cliquet a la demande du relecteur.</b> Une borne unique de 60 tirages servait a <b>tous</b>
+     * les paquets, y compris enumeres. Or {@code cm1-tables-multiplication} en declare <b>99</b> :
+     * ce garde-fou n'en voyait que 60, et <b>39 items n'etaient examines par personne</b>, en
+     * silence. Aucun defaut ne s'y cachait - une lecture exacte des 21 fichiers de {@code contenu/}
+     * le 2026-08-28 rend 33 items a plus de trois propositions, tous dans les deux paquets exemptes
+     * - mais la clause 1 etait verifiee sur un echantillon pour ce paquet-la, et personne ne
+     * l'aurait su. C'est le defaut meme que ce sprint a instruit six fois : une mesure qui porte sur
+     * moins que ce qu'elle annonce, sans le dire.
      */
-    private static final int TIRAGES = 60;
+    private static final int TIRAGES_SUR_UN_PAQUET_COMBINATOIRE = 60;
 
     /**
      * La dette existante, au paquet et a l'item pres, mesuree le 2026-08-27 sur les 18 fichiers de
@@ -131,12 +141,30 @@ class AuPlusTroisPropositionsParItemTest {
         }
     }
 
+    /**
+     * Le nombre d'items qu'un paquet declare sur disque, 0 pour un paquet combinatoire qui n'en
+     * enumere aucun. Lu dans le fichier <b>uniquement pour borner les tirages</b> : les valeurs
+     * jugees, elles, viennent toujours du chargeur reel (ADR-0013, obligation 1). Sans cette
+     * derivation, la borne serait un nombre ecrit a la main, et un paquet plus grand qu'elle serait
+     * lu en partie sans que rien ne le signale.
+     */
+    private static int itemsDeclares(Path racine, String paquet) {
+        Path fichier = racine.resolve("contenu").resolve(paquet + ".yaml");
+        try {
+            return (int) Files.readAllLines(fichier).stream()
+                    .filter(ligne -> ligne.strip().startsWith("- enonce:"))
+                    .count();
+        } catch (IOException echec) {
+            throw new UncheckedIOException(echec);
+        }
+    }
+
     /** Les items reellement tires par la chaine de contenu, pas relus dans le YAML. */
-    private static List<Question> itemsTires(ContentSource contenu) {
+    private static List<Question> itemsTires(ContentSource contenu, int tirages) {
         RandomSource hasard = new Random(7)::nextInt;
         Set<ItemId> dejaVus = new HashSet<>();
         List<Question> items = new ArrayList<>();
-        for (int tirage = 0; tirage < TIRAGES; tirage++) {
+        for (int tirage = 0; tirage < tirages; tirage++) {
             Item item = contenu.next(hasard, dejaVus).orElse(null);
             if (item == null) {
                 break;
@@ -165,10 +193,25 @@ class AuPlusTroisPropositionsParItemTest {
 
         Map<String, List<String>> depassements = new LinkedHashMap<>();
         for (String paquet : paquets) {
-            List<Question> items = itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet));
+            // La borne est derivee du paquet, jamais ecrite a la main : de quoi l'epuiser, plus un
+            // tirage pour constater l'epuisement.
+            int declares = itemsDeclares(racine, paquet);
+            int tirages = declares > 0 ? declares + 1 : TIRAGES_SUR_UN_PAQUET_COMBINATOIRE;
+            List<Question> items =
+                    itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet), tirages);
             assertThat(items)
                     .as("%s : un paquet qui ne rend aucun item ne peut rien promettre", paquet)
                     .isNotEmpty();
+            if (declares > 0) {
+                // Le garde-fou dit sur quoi il a porte. Un paquet enumere est lu EN ENTIER ou le
+                // test est rouge : une clause verifiee sur une partie des items, sans le dire, est
+                // exactement le defaut que ce sprint a instruit six fois.
+                assertThat(items)
+                        .as("%s declare %d items sur disque et ce garde-fou n'en a tire que %d : la"
+                                + " clause porterait sur un echantillon sans le dire", paquet, declares,
+                                items.size())
+                        .hasSize(declares);
+            }
             for (Question item : items) {
                 int propositions = nombreDePropositions(item);
                 if (propositions > PROPOSITIONS_MAXIMUM) {

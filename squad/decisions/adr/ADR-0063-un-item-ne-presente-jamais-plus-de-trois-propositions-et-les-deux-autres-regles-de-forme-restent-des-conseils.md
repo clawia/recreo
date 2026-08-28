@@ -14,6 +14,46 @@ neufs, apres avoir mesure que 56 items du catalogue laissent l'indice sous le pl
 dix caracteres au plus ; un enonce qui tient sur une seule ligne a 744 px ; une porte de rendu avant
 fusion.
 
+> **Amendement date du 2026-08-28 (`theo-archi`, cloture de s21), sur signalement du
+> `relecteur-pedagogique` (`10f5b4e`) : le chiffre du paragraphe ci-dessus ne portait pas sa
+> population, et il ne dit donc pas ce qu'il a l'air de dire.** Les deux chiffres sont ecrits l'un a
+> cote de l'autre, chacun avec sa date, et **celui d'origine n'est ni efface ni remplace** - un
+> chiffre efface n'a plus aucune valeur de preuve, et c'est la discipline que ce sprint a appliquee
+> partout ailleurs.
+>
+> - **Mesure d'origine, 2026-08-27, `ines-design`** : **56 items** laissent l'indice sous le pli
+>   apres un echec, sur une population de **167 items vus sur 428 servis (39 %)** - releve
+>   `s21-pli-du-catalogue-744x551.json`, qui porte `parties: 1` et `itemsVus: 10` par jeu. Ce n'est
+>   donc pas "56 items du catalogue" mais **56 items d'un echantillon de 167**, et la phrase
+>   ci-dessus omet ce qualificatif.
+> - **Mesure etablie depuis, 2026-08-27, `nadia-prof`**, en jouant les **20 jeux enumeres du
+>   catalogue** - le vingt-et-unieme est le paquet combinatoire, qui n'enumere aucun item :
+>   **478 items sur 478**, dont **114** laissaient l'indice sous le pli **avant s21** et **64**
+>   apres. Verifie a sa source primaire plutot qu'a une reference :
+>   `squad/sprints/s21-fermer-le-pli-avant-le-volume/avis-nadia-done-pedagogique-s21.md`, section
+>   *"478 items sur 478, 20 jeux enumeres sur 21. Ce n'est pas un echantillon"*, releve commite
+>   `squad/conformite/releves-s21/s21-nadia2-catalogue-entier-744x551.json`. **Sa population de 478
+>   et la mienne concordent** : mon recomptage independant des 21 fichiers de `contenu/` le
+>   2026-08-28 rend le meme total, par une autre methode - elle joue les jeux, je lis les fichiers.
+>
+> **Ce que cet amendement change au raisonnement de cet `ADR` : rien, et je le verifie plutot que de
+> l'affirmer.** Le chiffre de `REP-8` n'est ici qu'un **motif d'ouverture** - il explique pourquoi
+> `ines-design` propose un contrat de forme - et la decision, elle, ne s'appuie sur aucun des deux
+> nombres : elle s'appuie sur la mesure de la dette du paragraphe suivant, **exacte et non
+> echantillonnee** (section "La mesure de la dette"), et sur les mesures de `nadia-prof` qui
+> refusent les regles 2 et 3. La regle 1 n'a jamais pretendu fermer `REP-8`, et cet `ADR` l'ecrit
+> deja dans sa decision 1 (*"Cette regle ne ferme pas `REP-8` et ne pretend pas le faire"*).
+>
+> **Pourquoi cet amendement existe quand meme, et pourquoi ici plutot qu'ailleurs.** Presque tous
+> les autres documents de s21 ont fini par porter ce qualificatif - `DEC-0051`, la proposition
+> d'`ines-design`, mon propre `avis-faisabilite.md` section 4.2, que j'ai amende et date le
+> 2026-08-27 au soir. **Cet `ADR` etait reste en arriere, et c'est le plus durable des trois** : un
+> `ADR` est relu des sprints plus tard, hors de son contexte, par quelqu'un qui n'aura pas le fil du
+> sprint. Un chiffre sans sa population y devient un inventaire dans l'esprit du lecteur. C'est la
+> meme faute que celle que j'ai corrigee douze fois le 2026-08-27 sur les `confirmation-archunit.md`
+> - un chiffre juste dont la methode citee n'est pas celle qui l'a produit - et je ne l'avais pas
+> reconnue dans mon propre `ADR`.
+
 **Le probleme reel n'est pas "faut-il un contrat", c'est "laquelle de ces quatre regles peut devenir
 un test sans rendre rouge du contenu que la porte pedagogique a valide".** C'est la question que
 `ADR-0028` a deja tranchee une fois, dans l'autre sens, et dont le motif de refus etait exactement
@@ -25,6 +65,32 @@ celui-la : *"il serait de plus rouge sur du contenu que `nadia-prof` a valide"*.
 `adapters/adapter-content/src/main/resources/contenu/` lus le 2026-08-27, sur `9e2e31a`. Pour chaque
 item, le nombre de propositions est la taille de l'ensemble `{bonneReponse} union {distracteurs}`.
 Le paquet combinatoire `cp-additions-jusqu-a-10.yaml` n'a pas d'items a lire et est declare tel.
+**Cette mesure-ci n'est pas un echantillon** : elle lit **tous** les items de **tous** les fichiers,
+et c'est ce qui la distingue du chiffre de `REP-8` amende ci-dessus.
+
+> **Verification du 2026-08-28 (`theo-archi`, cloture de s21), demandee par le
+> `relecteur-pedagogique` : le cliquet repose-t-il lui aussi sur une population partielle ?**
+> Recomptage independant du test, par lecture des **21** fichiers de `contenu/` du depot a
+> `10f5b4e`, le 2026-08-28, chaque item compte : **478 items, 33 depassements**, exactement
+> `cm1-conjugaison-present` **25** et `cm1-accords-groupe-nominal` **8**. Le cliquet est donc **un
+> comptage exact sur le catalogue reel**, inchange, et les **trois paquets neufs de s21**
+> (`cp-syllabes` 16 items, `cp-mot-manquant` 16, `cp-comparer` 18) **n'y ajoutent rien** : aucun de
+> leurs items ne presente plus de trois propositions. C'est pour cela qu'un cliquet ecrit **en
+> egalite**, qui mord dans les deux sens, ne mord pas alors que le catalogue est passe de 18 a 21
+> jeux - la dette n'a ni grandi ni diminue.
+>
+> **Un defaut reel trouve par cette verification, et il n'etait pas dans le cliquet mais dans la
+> population que le garde-fou lisait.** Le test bornait ses tirages a **60 par paquet**, une valeur
+> unique ecrite a la main. Or `cm1-tables-multiplication` declare **99 items** : ce garde-fou n'en
+> voyait que 60, et **39 items n'etaient examines par personne**, en silence. Aucun defaut ne s'y
+> cachait - le recomptage exact ci-dessus le confirme - mais la clause 1 etait verifiee sur un
+> echantillon pour ce paquet-la, sans le dire. **Corrige dans le meme commit** : la borne est
+> **derivee du paquet** (le nombre d'items qu'il declare, plus un tirage pour constater
+> l'epuisement), et un paquet enumere qui ne serait pas lu en entier **rend le test rouge** en
+> nommant le paquet et les deux comptes. Morsure verifiee par mutation le 2026-08-28 - borne
+> ramenee a 60 : **5 tests sur 7 rouges**, message *"cm1-tables-multiplication declare 99 items sur
+> disque et ce garde-fou n'en a tire que 60"*. Seul un paquet **combinatoire**, qui ne s'epuise
+> jamais, reste lu partiellement, et le code le declare a cet endroit plutot que de le taire.
 
 | Regle proposee | Items ecartes sur les 428 servis | Ce que cela represente |
 |---|---|---|
@@ -150,7 +216,10 @@ build, jamais une valeur recopiee dans une table que plus personne ne verifie.
   `ChaquePaquetPorteUnIndiceTest`. Les items viennent du chargeur reel.
 - **Derivation totale** : chaque item tire est compte, sans exception. Le test refuse aussi un
   repertoire qui ne rend aucun paquet et un paquet qui ne rend aucun item : un garde-fou qui
-  n'examine rien serait vert et ne prouverait rien.
+  n'examine rien serait vert et ne prouverait rien. **Amendement du 2026-08-28** : la derivation est
+  totale **aussi sur la population**, ce qu'elle n'etait pas a l'ecriture - le nombre de tirages est
+  desormais derive du paquet et non borne a une valeur ecrite a la main, et un paquet enumere lu en
+  partie est un echec nomme.
 - **Mise a l'epreuve** : un paquet fautif neuf, jamais livre, sous
   `src/test/resources/contreexemple/AuPlusTroisPropositionsParItemTest/`, dont le second item porte
   quatre propositions ; et sa version corrigee, un distracteur de moins et rien d'autre, qui doit
@@ -188,9 +257,17 @@ l'item sont nommes, pas seulement comptes.
 - **Il ne voit pas un paquet qui n'est pas sous `contenu/`.** Un contenu servi depuis un autre
   emplacement lui echappe ; aucun n'existe aujourd'hui, et `ProvenanceDesClassesAmontEstLeDepotTest`
   garde une propriete voisine sur les classes.
-- **Il ne voit d'un paquet combinatoire que ce que 60 tirages en rendent.** La borne est celle de
-  `AucunePropositionNEstEgaleAUneAutreDansUnItemTest`, pour la meme raison : un paquet enumere
-  s'epuise bien avant, un paquet combinatoire ne s'epuise jamais.
+- **Il ne voit d'un paquet combinatoire que ce que 60 tirages en rendent**, et lui seul.
+  **Amendement du 2026-08-28** : cette phrase disait vrai du paquet combinatoire et **faux des
+  paquets enumeres**, dont elle affirmait qu'ils *"s'epuisent bien avant"*. `cm1-tables-multiplication`
+  en declare 99 et ne s'epuisait donc pas ; la borne est desormais derivee du paquet, et seul le
+  paquet combinatoire reste lu partiellement. **Une phrase de limite qui se trompe sur son propre
+  perimetre est pire qu'absente** : elle fait croire qu'on a regarde.
+- **Dette voisine, nommee et non corrigee ici** :
+  `AucunePropositionNEstEgaleAUneAutreDansUnItemTest` porte la meme borne de 60 tirages ecrite a la
+  main, donc le meme angle mort sur `cm1-tables-multiplication`. Son correctif appartient a un lot
+  qui le vise ; **son declencheur est ecrit** : le prochain lot qui touche ce garde-fou derive sa
+  borne comme celui-ci.
 - **Il ne dit rien de la largeur rendue.** Trois propositions a libelles longs se replient sur trois
   rangees, et c'est le cas des pires items du catalogue.
 
