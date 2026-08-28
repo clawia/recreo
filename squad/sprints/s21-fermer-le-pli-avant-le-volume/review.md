@@ -133,6 +133,7 @@ Les trois sont clos a cette review.
 | 22 | `REP-8` reste ouverte sur CM1 : 64 items sous le pli sur le catalogue entier (478 items), concentres sur 4 jeux (`accord-sujet-verbe-cm1`, `reperes-cm1`, `grands-nombres-cm1`, `accords-groupe-nominal-cm1`) | Pedagogie, produit | `camille-po` | **OUVERT.** Volume de contenu a retravailler, pas un garde-fou technique manquant |
 | 23 | `outils/mvn-jdk21.sh` pose `JAVA_HOME` depuis un fichier de toolchains different de celui que Maven lit reellement | Technique | `theo-archi` | **OUVERT, hors perimetre de s21**, sans consequence sur la CI ni sur le bytecode livre |
 | 24 | Divergence non reconciliee entre deux releves de `nadia-prof` sur `cm1-reperes` (14/16 vs 16/16 items au-dessus du pli, outils differents) | Qualite, mesure | `nadia-prof` | **OUVERT, pour memoire**, ne bouge aucun verdict |
+| 25 | CI rouge sur `6512e55` (post-cloture) - job "Juges purs des outils de poste", `import websocket` au niveau du module rendait 23 cas inatteignables ; 9 modules sur 17 de `outils/` et `squad/outils/` portaient le meme defaut, dont 2 seulement observables par un test | Qualite, CI | `theo-archi` | **CLOS**, correctif `s21-theo-4` (`00ff7a5`) fusionne hors sprint, journal `correctif-ci-juges-purs-websocket.md`. Dette residuelle nommee (cinq scripts de `nadia-prof` executes a l'import, non testes aujourd'hui) : **OUVERTE** |
 
 ## Avis de `nadia-prof` et Done pedagogique
 
