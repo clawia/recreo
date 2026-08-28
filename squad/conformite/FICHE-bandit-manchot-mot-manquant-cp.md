@@ -16,10 +16,15 @@
   la forme. **Elle a suivi ma specification, et c'est le bon reflexe.**
 - **Conditions prealables** : `PRE-1` a `PRE-8`,
   `squad/conformite/ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md`, section 4.
-- **Statut global** : **REFUSE par `nadia-prof` le 2026-08-28**, sur **deux motifs**. Onze items
-  sur seize tiennent `PRE-2` et cinq d'entre eux sont le meilleur travail de vocabulaire du
-  catalogue CP ; le detail est ecrit item par item pour que la reprise ne jette pas ce qui est bon.
-- **Derniere mise a jour** : 2026-08-28 (`nadia-prof`, audit de s21).
+- **Statut global** : **REFUSE par `nadia-prof` le 2026-08-28** *(reaudit du meme jour, sur la
+  correction `fabd6cb` de `lea-dev`)*. **Le premier refus portait deux motifs sur trois items ;
+  deux sont fermes et un reste ouvert.** Motif restant, unique : **l'item 3
+  (*"Lea dessine avec un ___."*, `crayon`/`feutre`/`pinceau`) a trois reponses defendables sur
+  trois** - `feutre` et `pinceau` sont refuses a l'ecran alors qu'ils sont corrects. **La cause
+  racine est ma propre specification** : c'est moi qui avais nomme ce triplet. Quinze items sur
+  seize sont bons, le pli est tenu sur 16 sur 16, et la correction demandee ne touche qu'un enonce.
+  Les deux verdicts sont conserves ci-dessous, dates.
+- **Derniere mise a jour** : 2026-08-28 (`nadia-prof`, reaudit de la correction `fabd6cb`).
 
 ## Table de correspondance des jetons de cette fiche
 
@@ -310,3 +315,247 @@ que ce que le fichier repris offrait, et que **deux items le rouvrent**.
   2026-08-27, entre 22:02 et 22:35. **Arbre audite** : `round-two` a `8e21613`, reconstruit, servi
   et joue depuis le worktree `s21-nadia-2`.
 - **Audit non degrade** : l'application a ete construite, servie et **jouee**.
+
+---
+
+## Reaudit du 2026-08-28 (s21) - `S21-10` corrige par `lea-dev`, commit `fabd6cb`
+
+**Ce bloc ne remplace pas le verdict ci-dessus, il s'y ajoute.** Le premier refus, ses deux motifs
+et ce que j'y avais tenu pour bon restent lisibles tels quels.
+
+### 1. Ce que j'ai fait, et sur quel artefact
+
+**J'ai joue, puis j'ai mesure.** Je n'ai pas lu le compte rendu de `lea-dev` pour en tirer un
+verdict : j'ai construit son arbre et presse ses boutons. C'est un paquet dont j'avais ecrit qu'il
+serait le plus fragile des trois a l'audit, *"parce que la qualite d'un distracteur ne se mesure
+avec aucun chiffre"*, et les trois formulations neuves n'avaient jamais ete devant moi.
+
+- **Arbre audite** : commit `fabd6cb`, reparti de `round-two` a `8e21613`. Verifie moi-meme :
+  **un seul fichier touche** (`cp-mot-manquant.yaml`, blob `6b3ef9c`), 22 insertions et 4
+  suppressions, **aucun test Java, `catalogue.yaml` intact**. Worktree detache dedie, arbre propre.
+- **Construit et servi** depuis cet arbre (`bash outils/mvn-jdk21.sh -B -q clean package
+  -DskipTests`, puis `java -jar bootstrap/target/recreo.jar --server.port=<port>` sur un JDK 21).
+  **Serveur arrete par son identifiant de processus**, apres avoir verifie que le processus etait
+  bien le mien.
+- **Parties jouees le 2026-08-28**, par l'interface HTTP, en me trompant volontairement ; puis,
+  sur les trois items corriges, **j'ai presse chacune des trois propositions** pour lire ce que
+  l'application repond a un enfant qui choisit une reponse defendable.
+
+### 2. Les trois items corriges, presses proposition par proposition le 2026-08-28
+
+| Item | Ce que l'enfant lit | Proposition pressee | Verdict rendu |
+|---|---|---|---|
+| **6** | *"Pour lire le soir, Tom allume sa ___."* | `lampe` | **Bravo !** |
+| | | `tele` | *"Ce n'est pas ca."* |
+| | | `radio` | *"Ce n'est pas ca."* |
+| **4** | *"Tom ouvre son ___ au-dessus de la tete."* | `parapluie` | **Bravo !** |
+| | | `capuchon` | *"Ce n'est pas ca."* |
+| | | `impermeable` | *"Ce n'est pas ca."* |
+| **3** | *"Lea dessine avec un ___."* | `crayon` | **Bravo !** |
+| | | `feutre` | ***"Ce n'est pas ca."*** |
+| | | `pinceau` | ***"Ce n'est pas ca."*** |
+
+### 3. Motif 1 (`PRE-3`, item 6) : **FERME**
+
+*"Pour lire le soir"* apporte exactement l'element de sens qui manquait. **Lire demande de la
+lumiere**, pas un son ni une image : *"Pour lire le soir, Tom allume sa radio"* et *"...sa tele"*
+ne sont plus defendables, et `lampe` l'est seule. Les trois propositions n'ont pas bouge, donc
+`PRE-2` reste tenue. **C'est la correction exacte que j'avais demandee, dans la forme que j'avais
+demandee** : l'enonce porte le trait discriminant, les propositions restent du meme champ.
+
+### 4. Motif 2 (`PRE-2`), item 4 : **FERME, et bien ferme**
+
+`impermeable` et `capuchon` sont **du champ de la bonne reponse** - trois equipements de pluie.
+`PRE-2` est tenue, et mieux que par le triplet que j'avais en tete.
+
+**Sur la question qui m'est posee - un enfant de CP connait-il le trait qui tranche ? Oui.**
+Le trait est *"on l'**ouvre** au-dessus de la tete"*. Un parapluie **s'ouvre** : c'est son geste
+propre, celui que tout enfant de six ans a vu et fait. Un capuchon **se met** ou **se rabat**, il
+ne s'ouvre pas. Un impermeable **s'enfile** ; *"ouvrir son impermeable"* signifie le deboutonner,
+jamais le tenir au-dessus de la tete. **Le trait est connu d'un enfant de CP, et il est le seul a
+tenir sur les trois.** `PRE-3` est tenue.
+
+**`lea-dev` a en outre ferme une fuite que mon refus ne comptait pas comme motif** : l'ancien
+enonce contenait *pluie* et la bonne reponse etait *para-pluie*. C'etait ma reserve **`PRE-11`**,
+que je **ferme ici**. Elle est allee plus loin que ce que je demandais, et dans la bonne direction.
+
+### 5. Motif 2 (`PRE-2`), item 3 : `PRE-2` est ferme, mais l'item echoue desormais `PRE-3`
+
+`feutre` et `pinceau` sont bien du champ *"instrument pour tracer"* : **`PRE-2` est tenue.**
+
+**Mais l'enonce n'a pas bouge, et il ne discrimine rien.** *"Lea dessine avec un feutre"* et
+*"Lea dessine avec un pinceau"* sont deux phrases francaises vraies et ordinaires. **Un enfant de
+CP dessine au feutre tous les jours.** Presse a l'ecran le 2026-08-28 : `feutre` rend *"Ce n'est
+pas ca. Essaie encore !"*, `pinceau` aussi.
+
+**L'item avait deux reponses defendables sur trois avant correction ; il en a trois sur trois
+apres.** L'indice (*"C'est un petit baton de bois..."*) tranche, mais il n'arrive **qu'apres un
+echec** : au moment de choisir, l'enfant n'a que l'enonce.
+
+C'est **`PRE-3`, mot pour mot**, et c'est le defaut dont j'ai fait le **motif 1** de mon premier
+refus, il y a un jour, sur l'item 6. **Je ne peux pas le tenir pour un motif sur l'item 6 et pour
+une reserve sur l'item 3**, surtout pas quand ce qui distingue les deux cas est que le second
+m'appartient.
+
+### 6. La cause racine est ma specification, pour la troisieme fois en deux sprints
+
+**Le triplet `crayon` / `feutre` / `pinceau` est le mien.** Je l'ai ecrit dans cette fiche au
+premier refus, en le qualifiant d'*"evident"* : *"Le triplet qui aurait travaille la competence
+existe et il est evident : `crayon`/`feutre`/`pinceau`."* `lea-dev` l'a repris au mot pres, et elle
+a eu raison de suivre ma specification. **C'est ma specification qui etait fausse**, exactement
+comme a s20, ou elle avait recopie des libelles que j'avais dits courts et qui faisaient 34
+caracteres, et comme ce matin, ou `SEG-1` clause (c) etait quatre fois trop large.
+
+**Trois fois en deux sprints, la cause racine d'un refus est dans ce que j'ai ecrit avant, et non
+dans le travail que j'encadrais.** Je l'ecris parce que c'est un motif qui doit se compter, et
+parce qu'il dit ou est mon defaut : **je propose des exemples au lieu de nommer la propriete a
+tenir.** Un exemple se revele faux ; une propriete se verifie.
+
+**Ce que j'aurais du ecrire, et que j'ecris maintenant** - c'est la seule chose a retenir de ce
+bloc :
+
+> **`PRE-2` et `PRE-3` tirent en sens inverse, et c'est l'enonce qui les reconcilie.** Plus les
+> distracteurs sont du champ de la bonne reponse, moins le sens general de la phrase suffit a
+> trancher. **Un item de vocabulaire precis n'est complet que si l'enonce porte le trait qui
+> distingue la bonne reponse de ses voisines de champ.** Les items 6 et 4 le font desormais -
+> *pour lire*, *on l'ouvre au-dessus de la tete*. L'item 3 ne le fait pas.
+
+**Ce que je demande pour l'item 3, en propriete et non en libelle** : que l'enonce nomme un trait
+que **seul le crayon** possede parmi les trois - ce qu'on gomme, ce qu'on taille, ce qui est en
+bois. **Je ne propose aucune formulation, et c'est delibere** : mes formulations sont ce qui a fait
+echouer ce paquet deux fois. Les distracteurs `feutre` et `pinceau` sont bons et n'ont pas a bouger.
+
+### 7. Ce que je n'ai pas rouvert
+
+Les onze items non touches restent tels que je les ai juges le 2026-08-27 : **`PRE-1` tenue sur 16
+sur 16**, `PRE-4` a `PRE-8` tenues, et les cinq items de sensations restent le meilleur travail de
+vocabulaire du catalogue CP. **Les reserves `PRE-9`, `PRE-10`, `PRE-12`, `PRE-13` et `PRE-14` sont
+inchangees et ne sont toujours pas des motifs.** `PRE-11` est **fermee** (section 4).
+
+Effet de bord favorable, constate au comptage du 2026-08-28 : `marteau` n'est plus distracteur que
+sur un item au lieu de deux, ce qui allege `PRE-10` sans que ce fut demande.
+
+### 8. Le pli, remesure par moi sur le paquet entier
+
+Mesure du **2026-08-28**, viewport de reference de `DEC-0040`, **744 x 551 lu du navigateur**,
+**population : les 16 items du paquet, tous vus, en 4 parties - ce n'est pas un echantillon** :
+
+```
+CHROME=<navigateur> PAQUET=adapters/adapter-content/src/main/resources/contenu/cp-mot-manquant.yaml \
+    PORT_DEV=9421 python squad/outils/nadia-prof/auditer-un-paquet-entier.py \
+    http://<hote>:<port> bandit-manchot-mot-manquant-cp 16 <json_de_sortie>
+```
+
+| Grandeur lue, apres un echec | Pire valeur sur les 16 items |
+|---|---|
+| Rangees de propositions | **1** |
+| Hauteur de l'enonce | **48 px**, soit **une ligne partout** |
+| Lignes de l'indice | **1** |
+| Bas de l'indice | **486 px**, **65 px au-dessus du pli de 551** |
+| Defilement | **0** |
+| Somme la plus lourde | **485,22 px** sur 522 (`impermeable` / `capuchon` / `parapluie`), **36,78 px de marge** |
+
+**16 items sur 16 sont au-dessus du pli. Les chiffres de `lea-dev` sont exacts : je les ai
+reproduits, je ne les ai pas recopies.** Le pli n'est pas un motif et ne l'a jamais ete sur ce
+paquet.
+
+**Sur sa methode, et cela merite d'etre dit** : sa premiere formulation de l'item 4 rendait **deux
+lignes** d'enonce (`hauteurEnonce=96` contre 48 ailleurs) et poussait l'indice a 534 px. Elle l'a
+trouve **en jouant**, en lisant la **hauteur** et non le nombre de rectangles - le piege etant que
+`getClientRects().length` reste a 1 sur un `<p>` de deux lignes. **C'est la bonne facon de mesurer
+cette propriete**, et c'est un des rares points de ce chantier ou l'outillage a evite un defaut au
+lieu de le laisser passer.
+
+### 9. Reserves neuves, **nouvelles et datees**, non bloquantes
+
+- **`PRE-15` (2026-08-28) - `impermeable` est hors de portee d'un lecteur de CP.** Onze lettres, un
+  `im` nasal, un `e` accentue et une finale `-ble` : un enfant de CP ne dechiffre pas ce mot. Il le
+  **connait a l'oral**, et l'item reste decidable pour qui sait ce qu'est un impermeable - c'est
+  pourquoi ce n'est pas un motif, et c'est aussi ce qui le distingue de `thermos` (`GRA-11`, sur
+  `cp-comparer`), inconnu **et** illisible. **Aucune de mes conditions `PRE-1` a `PRE-8` ne porte
+  sur la lisibilite des propositions**, contrairement a `SEG-2` pour les syllabes : **c'est encore
+  un manque de ma specification**, et je l'ouvre donc en reserve et non en motif.
+- **`PRE-16` (2026-08-28) - l'indice de l'item 4 reformule desormais l'enonce.** L'enonce dit *"Tom
+  ouvre son ___ au-dessus de la tete."* et l'indice dit *"On l'ouvre au-dessus de la tete quand il
+  pleut."* : ils partagent `ouvre`, `au-dessus` et `tete` (comptage du 2026-08-28), et l'indice
+  n'ajoute que *"quand il pleut"*. **C'est un effet de la correction**, qui a deplace le trait
+  discriminant de l'indice vers l'enonce - le bon geste - sans reecrire l'indice derriere. Meme
+  famille que `GRA-16` sur `cp-comparer`. `PRE-7` n'exige que de ne pas nommer la reponse, et c'est
+  tenu : reserve, pas motif.
+
+### 10. Ce qui appartient a d'autres, et que je ne touche pas
+
+**Pour `camille-po`, qui instruit le retrait ou le maintien conditionnel de cette entree et qui
+attend ma reponse pour trancher** : **le refus est maintenu**, donc `DEC-0045` section 3
+s'applique, et **le geste sur `catalogue.yaml` est le sien et celui de `sofia-sm`, pas le mien -
+je n'y ai pas touche.** Ce que je peux lui donner pour peser, et qui est de mon ressort :
+
+- **le defaut porte sur 1 item sur 16**, et sur cet item **deux propositions sur trois sont des
+  reponses correctes refusees** ;
+- une partie tire **10 manches sans remise** parmi 16 items : l'enfant rencontre cet item avec une
+  probabilite de **10/16 = 0,625**, soit pres de deux parties sur trois ;
+- **les quinze autres items sont bons**, deux des trois corrections sont exactes, et **la cause
+  racine du defaut restant est ma specification, pas le travail de `lea-dev`** ;
+- **la correction demandee ne touche qu'un enonce** et laisse les distracteurs en place.
+
+Je ne recommande ni le retrait ni le maintien : **ce n'est pas ma decision**, et je ne veux pas
+qu'un avis de ma part sur ce point passe pour une condition pedagogique.
+
+---
+
+## Verdict du reaudit, 2026-08-28 - `S21-10`, "Le mot qui manque"
+
+## Verdict : **REFUSE**
+
+**Le premier refus portait deux motifs sur trois items. Deux items sont corriges ; le troisieme ne
+l'est pas.**
+
+- **Motif 1 (`PRE-3`, item 6) : FERME.** *"Pour lire le soir"* rend `lampe` seule defendable.
+  Verifie en pressant les trois propositions le 2026-08-28.
+- **Motif 2 (`PRE-2`), item 4 : FERME**, et il ferme en plus la reserve `PRE-11`. `impermeable` et
+  `capuchon` sont du champ de `parapluie`, et le trait qui tranche - *on l'ouvre au-dessus de la
+  tete* - **est connu d'un enfant de CP** : un parapluie s'ouvre, un capuchon se rabat, un
+  impermeable s'enfile.
+- **Motif 2 (`PRE-2`), item 3 : `PRE-2` est ferme, mais l'item echoue maintenant `PRE-3`.**
+  L'enonce *"Lea dessine avec un ___."* n'a pas bouge et ne discrimine rien : **`feutre` et
+  `pinceau` sont deux reponses correctes, et l'application repond *"Ce n'est pas ca"* aux deux**,
+  presse a l'ecran le 2026-08-28. Un enfant de CP dessine au feutre tous les jours.
+
+**Motif unique du present refus : l'item 3 a trois reponses defendables sur trois.** C'est le
+defaut exact dont j'ai fait mon motif 1 hier, sur l'item 6. Le tenir pour un motif la et pour une
+reserve ici reviendrait a deplacer mes poteaux pour epargner ma propre suggestion.
+
+**Car la cause racine est ma specification, pour la troisieme fois en deux sprints** : le triplet
+`crayon`/`feutre`/`pinceau` est celui que j'avais moi-meme qualifie d'*"evident"* dans le verdict
+que `lea-dev` corrigeait. Elle l'a repris au mot pres et elle a eu raison de le faire.
+
+**Correction demandee, nommee en propriete et non en libelle** - c'est le changement de methode que
+ce refus doit produire chez moi : **que l'enonce de l'item 3 porte un trait que seul le crayon
+possede parmi les trois** (ce qu'on gomme, ce qu'on taille, ce qui est en bois). **Je ne propose
+aucune formulation.** Les distracteurs `feutre` et `pinceau` sont bons et ne doivent pas bouger.
+Rien d'autre n'est demande.
+
+**Regle generale que j'ajoute, et qui explique les trois items d'un coup** : `PRE-2` et `PRE-3`
+tirent en sens inverse, et **c'est l'enonce qui les reconcilie**. Un item de vocabulaire precis
+n'est complet que si l'enonce porte le trait qui distingue la bonne reponse de ses voisines de
+champ. Les items 6 et 4 le font ; l'item 3 ne le fait pas.
+
+**Ce que j'ai verifie et qui tient** : `PRE-1` sur 16 sur 16 ; `PRE-2` desormais tenue sur les
+trois items corriges ; `PRE-4` a `PRE-8` tenues ; les onze items non touches inchanges, dont les
+cinq items de sensations ; **le pli tenu sur 16 items sur 16**, remesure par moi sur le paquet
+entier a 744 x 551 le 2026-08-28 - indice a 486 px, 65 px de marge, zero defilement, **les chiffres
+de `lea-dev` reproduits et non recopies**.
+
+**Deux reserves neuves, non bloquantes** : `PRE-15` (`impermeable` hors de portee d'un lecteur de
+CP - encore un manque de ma specification, qui ne porte aucune condition de lisibilite sur ce
+paquet) et `PRE-16` (l'indice de l'item 4 reformule desormais l'enonce).
+
+**Le retrait ou le maintien conditionnel de l'entree au catalogue appartient a `camille-po` et
+`sofia-sm`** : je n'ai touche ni `catalogue.yaml`, ni la matrice, ni aucun fichier de contenu. La
+ligne 496 de `MATRICE-couverture.md` reste **`non couvert`**.
+
+- **Auditrice** : `nadia-prof`. **Reaudit et verdict prononces le** 2026-08-28. **Arbre audite** :
+  `fabd6cb` (branche `s21-lea-3`, repartie de `round-two` a `8e21613`), construit, servi et **joue**
+  depuis un worktree detache dedie.
+- **Audit non degrade** : l'application a ete construite, servie et **jouee**, et les trois items
+  corriges ont ete presses proposition par proposition.

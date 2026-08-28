@@ -18,7 +18,7 @@ conformite et n'est pas recopie ici.
 | Jeu | Story | Verdict | Motif, en une ligne |
 |---|---|---|---|
 | `bandit-manchot-syllabes-cp` | `S21-9` | **VALIDE SOUS RESERVE** *(revise le 2026-08-28 ; d'abord REFUSE le meme jour)* | Refus prononce sur l'item `CHEMINEE`, puis **leve apres arbitrage de l'utilisatrice** : *"cheminee vaut bien 3 syllabes"*. Le motif tombe ; c'est ma condition `SEG-1` qui etait trop large, et elle est amendee. Reserve neuve `SEG-13` |
-| `bandit-manchot-mot-manquant-cp` | `S21-10` | **REFUSE** | (1) *"La nuit, Tom allume sa ___."* admet `radio` et `tele` autant que `lampe` ; (2) `PRE-2` rouvre sur deux items (`crayon`/marteau/couteau et `parapluie`/ballon/tapis), le defaut meme pour lequel ce paquet a ete entierement reecrit |
+| `bandit-manchot-mot-manquant-cp` | `S21-10` | **REFUSE** *(maintenu au reaudit du 2026-08-28, correction `fabd6cb`)* | Des deux motifs d'origine, **deux items sur trois sont corriges** (item 6 par *"Pour lire le soir"*, item 4 par `impermeable`/`capuchon`, qui ferme aussi `PRE-11`). **Motif restant : l'item 3, *"Lea dessine avec un ___."*, a trois reponses defendables sur trois** - `feutre` et `pinceau` sont refuses a l'ecran alors qu'ils sont corrects. **Le triplet est celui que j'avais moi-meme nomme** |
 | `bandit-manchot-comparer-cp` | `S21-11` | **VALIDE SOUS RESERVE** | Les dix conditions tenues, 18 items sur 18 decidables, aucune erreur factuelle. Sept reserves non bloquantes |
 
 Fiches : `squad/conformite/FICHE-bandit-manchot-syllabes-cp.md`,
@@ -197,18 +197,23 @@ date, dans `FICHE-bandit-manchot-syllabes-cp.md`.*
 sur 18 decidables sans instrument, aucune erreur factuelle, sept reserves non bloquantes.
 `bandit-manchot-syllabes-cp` est **VALIDE SOUS RESERVE** : je l'avais refuse sur l'item `CHEMINEE`,
 **l'utilisatrice a tranche que le mot vaut trois syllabes, et le motif est tombe**. Une reserve
-neuve (`SEG-13`) y est ouverte. `bandit-manchot-mot-manquant-cp` **reste REFUSE**, sur ses deux
-motifs, inchanges.
+neuve (`SEG-13`) y est ouverte. `bandit-manchot-mot-manquant-cp` **reste REFUSE apres reaudit de la
+correction `fabd6cb`** : `lea-dev` a corrige deux items sur trois, et bien - mais l'item 3 a
+desormais **trois reponses defendables sur trois**, et **le triplet en cause est celui que j'avais
+moi-meme nomme**.
 
 **Ce que ce sprint doit retenir de mon lot, et ce n'est pas a l'avantage de la porte que je
 tiens.** Mon refus de `cp-syllabes` n'etait pas une erreur d'application : c'etait l'application
 exacte d'une condition que j'avais ecrite **avant** que le paquet existe, et cette condition etait
 **environ quatre fois trop large** - mesure du 2026-08-28 sur les 650 mots du corpus CP du depot :
 39 cas de schwa attrapes, 30 a tort, dont `petit`, `cheval`, `renard` et `semaine`. **C'est la
-deuxieme fois en deux sprints qu'une de mes conditions prealables, et non le travail qu'elle
-encadrait, est la cause racine d'un refus** - a s20 c'etaient des libelles que j'avais dits courts
-et qui faisaient 34 caracteres. Un arbitrage prealable evite un cycle quand il est juste ; il en
-coute un quand il est faux, et il faut le compter.
+troisieme fois en deux sprints qu'une de mes conditions ou de mes exemples, et non le travail
+qu'ils encadraient, est la cause racine d'un refus** - a s20 des libelles que j'avais dits courts
+et qui faisaient 34 caracteres ; ce matin `SEG-1` ; et au reaudit de `cp-mot-manquant` le triplet
+`crayon`/`feutre`/`pinceau` que j'avais qualifie d'*"evident"* et que `lea-dev` a repris au mot
+pres. **Le defaut commun est identifiable : je propose des exemples la ou je devrais nommer la
+propriete a tenir.** Un exemple se revele faux ; une propriete se verifie. Un arbitrage prealable
+evite un cycle quand il est juste ; il en coute un quand il est faux, et il faut le compter.
 
 **Le sprint a atteint ce qu'il visait sur le pli** : les 50 items neufs sont au-dessus, `SOR-4` est
 fermee, et le pli est desormais ferme sur les 162 items des 9 jeux CP enumeres. **Ce n'est pas la
