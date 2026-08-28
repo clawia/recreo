@@ -33,7 +33,7 @@ Convention exigee par `squad/README.md`, section 2, amendement s16.
 
 | Jeton | Ce qu'il designe | Ou il est ecrit |
 |---|---|---|
-| `PRE-1` a `PRE-8` | **Conditions prealables** a l'ecriture, posees le 2026-08-27 **avant** que le paquet existe | `ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md`, section 4.3 |
+| `PRE-1` a `PRE-8` | **Conditions prealables** a l'ecriture, posees le 2026-08-27 **avant** que le paquet existe | `ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md`, section 4.2 |
 | `PRE-9` et suivants | **Reserves ouvertes a l'audit** du 2026-08-28 | cette fiche, section 5 |
 | `M21` | Defaut deja nomme dans ce depot : un indice qui nomme la reponse est une revelation deguisee | `FICHE-bandit-manchot-additions-cp.md` |
 | `M1` a `M13` | Conditions de la **mecanique**, hors du perimetre de cette fiche | `FICHE-bandit-manchot-additions-cp.md` |

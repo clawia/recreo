@@ -24,7 +24,7 @@ Convention exigee par `squad/README.md`, section 2, amendement s16.
 
 | Jeton | Ce qu'il designe | Ou il est ecrit |
 |---|---|---|
-| `GRA-1` a `GRA-10` | **Conditions prealables** a l'ecriture, posees le 2026-08-27 **avant** que le paquet existe | `ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md`, section 5.3 |
+| `GRA-1` a `GRA-10` | **Conditions prealables** a l'ecriture, posees le 2026-08-27 **avant** que le paquet existe | `ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md`, section 5.2 |
 | `GRA-11` et suivants | **Reserves ouvertes a l'audit** du 2026-08-28 | cette fiche, section 5 |
 | `SOR-1` a `SOR-4` | Conditions sur le **rembourrage de la sortie**, posees le 2026-08-27 | `FICHE-bandit-manchot-reperes-cm1.md`, section 3 |
 | `M1` a `M13` | Conditions de la **mecanique**, hors du perimetre de cette fiche | `FICHE-bandit-manchot-additions-cp.md` |
