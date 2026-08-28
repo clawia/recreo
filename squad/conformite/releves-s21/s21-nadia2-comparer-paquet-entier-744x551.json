@@ -1,0 +1,553 @@
+{
+ "items": {
+  "Où peut-on mettre le moins d'eau ? || arrosoir / cuillère / marmite": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Où peut-on mettre le moins d'eau ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     109.23,
+     117.59,
+     127.41
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "cuillère",
+     "arrosoir",
+     "marmite"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 354.23,
+    "texteIndice": "Compare la taille des trois objets, sans les remplir vraiment."
+   },
+   "bonneReponse": "cuillère",
+   "enonceYaml": "Où peut-on mettre le moins d'eau ?"
+  },
+  "Où peut-on mettre le moins d'eau ? || baignoire / piscine / thermos": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Où peut-on mettre le moins d'eau ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     124.81,
+     104.14,
+     143.59
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "thermos",
+     "piscine",
+     "baignoire"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 372.54,
+    "texteIndice": "Pense à celui des trois qui est le plus petit."
+   },
+   "bonneReponse": "thermos",
+   "enonceYaml": "Où peut-on mettre le moins d'eau ?"
+  },
+  "Où peut-on mettre le moins d'eau ? || bol / piscine / seau": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Où peut-on mettre le moins d'eau ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     104.14,
+     67.97,
+     48.5
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "piscine",
+     "seau",
+     "bol"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 220.61,
+    "texteIndice": "Pense à celui qui peut recevoir le moins d'eau avant de déborder."
+   },
+   "bonneReponse": "bol",
+   "enonceYaml": "Où peut-on mettre le moins d'eau ?"
+  },
+  "Où peut-on mettre le plus d'eau ? || baignoire / cuillère / verre": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Où peut-on mettre le plus d'eau ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     77,
+     143.59,
+     109.23
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "verre",
+     "baignoire",
+     "cuillère"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 329.82,
+    "texteIndice": "Imagine que tu remplis chaque objet avec de l'eau."
+   },
+   "bonneReponse": "baignoire",
+   "enonceYaml": "Où peut-on mettre le plus d'eau ?"
+  },
+  "Où peut-on mettre le plus d'eau ? || cuillère / marmite / tasse": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Où peut-on mettre le plus d'eau ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     75.14,
+     127.41,
+     109.23
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "tasse",
+     "marmite",
+     "cuillère"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 311.78,
+    "texteIndice": "Imagine que tu verses de l'eau dans chaque objet, un par un."
+   },
+   "bonneReponse": "marmite",
+   "enonceYaml": "Où peut-on mettre le plus d'eau ?"
+  },
+  "Où peut-on mettre le plus d'eau ? || gourde / piscine / tasse": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Où peut-on mettre le plus d'eau ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     108.47,
+     104.14,
+     75.14
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "gourde",
+     "piscine",
+     "tasse"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 287.75,
+    "texteIndice": "Pense à celui qui peut recevoir le plus d'eau sans déborder."
+   },
+   "bonneReponse": "piscine",
+   "enonceYaml": "Où peut-on mettre le plus d'eau ?"
+  },
+  "Qu'est-ce qui est le plus bas ? || un tabouret / une armoire / une table": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Qu'est-ce qui est le plus bas ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     178.36,
+     182.8,
+     140.78
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "un tabouret",
+     "une armoire",
+     "une table"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 501.94,
+    "texteIndice": "Pense à la hauteur de chaque meuble, du sol jusqu'en haut."
+   },
+   "bonneReponse": "un tabouret",
+   "enonceYaml": "Qu'est-ce qui est le plus bas ?"
+  },
+  "Qu'est-ce qui est le plus court ? || un feutre / une flûte / une gomme": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Qu'est-ce qui est le plus court ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     180.17,
+     135.38,
+     138.86
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "une gomme",
+     "une flûte",
+     "un feutre"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 454.41,
+    "texteIndice": "Regarde bien laquelle des trois est la plus petite en longueur."
+   },
+   "bonneReponse": "une gomme",
+   "enonceYaml": "Qu'est-ce qui est le plus court ?"
+  },
+  "Qu'est-ce qui est le plus grand ? || un chat / un lapin / une girafe": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Qu'est-ce qui est le plus grand ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     111.84,
+     122.16,
+     153.3
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "un chat",
+     "un lapin",
+     "une girafe"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 387.3,
+    "texteIndice": "Pense à la taille de chaque animal, de la tête aux pattes."
+   },
+   "bonneReponse": "une girafe",
+   "enonceYaml": "Qu'est-ce qui est le plus grand ?"
+  },
+  "Qu'est-ce qui est le plus haut ? || une chaise / une maison / une tour": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Qu'est-ce qui est le plus haut ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     128.84,
+     173.48,
+     157.19
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "une tour",
+     "une maison",
+     "une chaise"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 459.51,
+    "texteIndice": "Pense à ce qui monte le plus haut dans le ciel."
+   },
+   "bonneReponse": "une tour",
+   "enonceYaml": "Qu'est-ce qui est le plus haut ?"
+  },
+  "Qu'est-ce qui est le plus long ? || un crayon / une gomme / une règle": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Qu'est-ce qui est le plus long ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     148.69,
+     141,
+     180.17
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "un crayon",
+     "une règle",
+     "une gomme"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 469.86,
+    "texteIndice": "Compare la longueur des trois objets, sans les mesurer."
+   },
+   "bonneReponse": "une règle",
+   "enonceYaml": "Qu'est-ce qui est le plus long ?"
+  },
+  "Qu'est-ce qui est le plus lourd ? || un camion / un vélo / une trottinette": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Qu'est-ce qui est le plus lourd ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     222.25,
+     157.45,
+     110.55
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "une trottinette",
+     "un camion",
+     "un vélo"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 490.25,
+    "texteIndice": "Pense à ce qu'il faudrait le plus de force pour soulever."
+   },
+   "bonneReponse": "un camion",
+   "enonceYaml": "Qu'est-ce qui est le plus lourd ?"
+  },
+  "Qu'est-ce qui est le plus lourd ? || un chat / une baleine / une sardine": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Qu'est-ce qui est le plus lourd ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     174.34,
+     173.78,
+     111.84
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "une sardine",
+     "une baleine",
+     "un chat"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 459.96,
+    "texteIndice": "Pense à la taille de chaque animal pour deviner son poids."
+   },
+   "bonneReponse": "une baleine",
+   "enonceYaml": "Qu'est-ce qui est le plus lourd ?"
+  },
+  "Qu'est-ce qui est le plus lourd ? || un éléphant / une fourmi / une souris": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Qu'est-ce qui est le plus lourd ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     153.89,
+     179.41,
+     167.28
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "une souris",
+     "un éléphant",
+     "une fourmi"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 500.58,
+    "texteIndice": "Imagine que tu portes chaque animal dans tes bras."
+   },
+   "bonneReponse": "un éléphant",
+   "enonceYaml": "Qu'est-ce qui est le plus lourd ?"
+  },
+  "Qu'est-ce qui est le plus léger ? || un caillou / une brique / une plume": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Qu'est-ce qui est le plus léger ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     146.33,
+     163.14,
+     159.78
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "un caillou",
+     "une brique",
+     "une plume"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 469.25,
+    "texteIndice": "Imagine que tu tiens chaque objet dans ta main."
+   },
+   "bonneReponse": "une plume",
+   "enonceYaml": "Qu'est-ce qui est le plus léger ?"
+  },
+  "Qu'est-ce qui est le plus léger ? || un papillon / une brique / une pierre": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Qu'est-ce qui est le plus léger ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     163.14,
+     153.77,
+     170.34
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "une brique",
+     "une pierre",
+     "un papillon"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 487.25,
+    "texteIndice": "Pense à ce qui s'envole le plus facilement dans le vent."
+   },
+   "bonneReponse": "un papillon",
+   "enonceYaml": "Qu'est-ce qui est le plus léger ?"
+  },
+  "Qu'est-ce qui est le plus léger ? || un rocher / un vélo / une feuille": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Qu'est-ce qui est le plus léger ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     144.39,
+     110.55,
+     158.39
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "un rocher",
+     "un vélo",
+     "une feuille"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 413.33,
+    "texteIndice": "Pense à ce que le vent peut emporter le plus facilement."
+   },
+   "bonneReponse": "une feuille",
+   "enonceYaml": "Qu'est-ce qui est le plus léger ?"
+  },
+  "Qu'est-ce qui est le plus petit ? || un cheval / un chien / une fourmi": {
+   "apresUnEchec": {
+    "basIndice": 486,
+    "basVerdict": 407,
+    "defilement": 0,
+    "enonce": "Qu'est-ce qui est le plus petit ?",
+    "hauteurBouton": 66,
+    "hauteurEnonce": 48,
+    "largeursPropositions": [
+     167.28,
+     127.94,
+     142.66
+    ],
+    "lignesConsigne": 1,
+    "lignesEnonce": 1,
+    "lignesIndice": 1,
+    "nbPropositions": 3,
+    "policeProposition": "32px",
+    "propositions": [
+     "une fourmi",
+     "un chien",
+     "un cheval"
+    ],
+    "rangees": 1,
+    "sommeLibelles": 437.88,
+    "texteIndice": "Range les trois animaux du plus petit au plus grand, dans ta tête."
+   },
+   "bonneReponse": "une fourmi",
+   "enonceYaml": "Qu'est-ce qui est le plus petit ?"
+  }
+ },
+ "itemsAttendus": 18,
+ "itemsVus": 18,
+ "jeu": "bandit-manchot-comparer-cp",
+ "parties": 4,
+ "pli": 551,
+ "viewport": [
+  744,
+  551
+ ]
+}

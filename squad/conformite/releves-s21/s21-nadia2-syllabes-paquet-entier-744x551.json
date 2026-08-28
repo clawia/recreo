@@ -1,0 +1,1772 @@
+{
+  "items": {
+    "BATEAU": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "BATEAU",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "2",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « ba ». Continue à taper."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "BATEAU",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "2",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « ba ». Continue à taper."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "BATEAU",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "2",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "BATEAU",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "2",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    },
+    "CADEAU": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "CADEAU",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "3",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « ca ». Tape la suite du mot."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "CADEAU",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "3",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « ca ». Tape la suite du mot."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "CADEAU",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "3",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "CADEAU",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "3",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    },
+    "CHAT": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "CHAT",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Tape dans tes mains en disant le mot tout doucement."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "CHAT",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Tape dans tes mains en disant le mot tout doucement."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "CHAT",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "CHAT",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    },
+    "CHEMINÉE": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "CHEMINÉE",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "3",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « che ». Continue à taper."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "CHEMINÉE",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "3",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « che ». Continue à taper."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "CHEMINÉE",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "3",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "CHEMINÉE",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "3",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    },
+    "CHOCOLAT": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "CHOCOLAT",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "3",
+            "2"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « cho ». Continue à taper."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "CHOCOLAT",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "3",
+            "2"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « cho ». Continue à taper."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "CHOCOLAT",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "3",
+            "2"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "CHOCOLAT",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "3",
+            "2"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    },
+    "COUSSIN": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "COUSSIN",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "2",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « cou ». Tape le reste du mot."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "COUSSIN",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "2",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « cou ». Tape le reste du mot."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "COUSSIN",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "2",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": null,
+          "defilement": 0,
+          "enonce": "COUSSIN",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "2",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    },
+    "DOMINO": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "DOMINO",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3",
+            "2",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « do ». Tape la suite du mot."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "DOMINO",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3",
+            "2",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « do ». Tape la suite du mot."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "DOMINO",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3",
+            "2",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "DOMINO",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3",
+            "2",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    },
+    "DOS": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "DOS",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3",
+            "2",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Chante le mot très lentement en tapant des mains."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "DOS",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3",
+            "2",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Chante le mot très lentement en tapant des mains."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "DOS",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3",
+            "2",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "DOS",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3",
+            "2",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    },
+    "ESCARGOT": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "ESCARGOT",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "3",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « es ». Continue à taper les morceaux suivants."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "ESCARGOT",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "3",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « es ». Continue à taper les morceaux suivants."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "ESCARGOT",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "3",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "ESCARGOT",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "3",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    },
+    "KANGOUROU": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "KANGOUROU",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "3",
+            "2"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « kan ». Tape le reste du mot."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "KANGOUROU",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "3",
+            "2"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « kan ». Tape le reste du mot."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "KANGOUROU",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "3",
+            "2"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "KANGOUROU",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "3",
+            "2"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    },
+    "LAPIN": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "LAPIN",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "2",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « la ». Tape le reste du mot."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "LAPIN",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "2",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « la ». Tape le reste du mot."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "LAPIN",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "2",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "LAPIN",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "2",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    },
+    "LOUP": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "LOUP",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "3",
+            "2"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Prononce le mot très lentement en tapant des mains."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "LOUP",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "3",
+            "2"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Prononce le mot très lentement en tapant des mains."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "LOUP",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "3",
+            "2"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "LOUP",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "1",
+            "3",
+            "2"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    },
+    "MAISON": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "MAISON",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « mai ». Continue à taper les morceaux suivants."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "MAISON",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « mai ». Continue à taper les morceaux suivants."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "MAISON",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "MAISON",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    },
+    "PAPA": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "PAPA",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « pa ». Continue à taper les autres morceaux."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "PAPA",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Ce mot commence par « pa ». Continue à taper les autres morceaux."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "PAPA",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "PAPA",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    },
+    "RIZ": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "RIZ",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Dis le mot à voix haute en tapant dans tes mains."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "RIZ",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Dis le mot à voix haute en tapant dans tes mains."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "RIZ",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "RIZ",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "2",
+            "1",
+            "3"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    },
+    "ROI": {
+      "apresUnEchec": {
+        "avec": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "ROI",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3",
+            "2",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Dis le mot tout bas, puis tape dans tes mains."
+        },
+        "sans": {
+          "basIndice": 486,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "ROI",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": 1,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3",
+            "2",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": "Dis le mot tout bas, puis tape dans tes mains."
+        }
+      },
+      "repos": {
+        "avec": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "ROI",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3",
+            "2",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        },
+        "sans": {
+          "basIndice": null,
+          "basVerdict": 407,
+          "defilement": 0,
+          "enonce": "ROI",
+          "hauteurBouton": 66,
+          "hauteurEnonce": 48,
+          "largeursPropositions": [
+            18.41,
+            18.41,
+            18.41
+          ],
+          "lignesConsigne": 1,
+          "lignesEnonce": 1,
+          "lignesIndice": null,
+          "nbPropositions": 3,
+          "policeProposition": "32px",
+          "propositions": [
+            "3",
+            "2",
+            "1"
+          ],
+          "rangees": 1,
+          "sommeLibelles": 55.23,
+          "texteIndice": null
+        }
+      }
+    }
+  },
+  "itemsVus": 16,
+  "jeu": "bandit-manchot-syllabes-cp",
+  "parties": 4,
+  "pli": 551,
+  "viewport": [
+    744,
+    551
+  ]
+}
