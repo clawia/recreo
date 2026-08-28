@@ -10,15 +10,20 @@
   structure du fichier (`contenu-repris/README.md`) : ils repassent devant `nadia-prof` comme un
   contenu neuf.
 - **Statut global** : **ouverte, aucun increment livre a ce jour.** Rien n'a encore ete joue.
-- **Arbitrage prealable de `nadia-prof` demande et non encore rendu** (`DEC-0030`, section 5) : ce
-  contenu n'a jamais ete instruit au niveau de detail des trois lignes du sprint 12. Les criteres
-  ci-dessous, notamment les bornes (une seule journee, minutes rondes de 5 en 5), sont ceux de
-  `camille-po` et n'ont pas valeur de jugement pedagogique tant que `nadia-prof` ne les a pas
-  confirmes ou corriges.
+- **Arbitrage prealable de `nadia-prof` : rendu le 2026-08-15** (voir section dediee plus bas, `D-1`
+  a `D-11`, plus un obstacle technique signale d'avance section 3.6) - la ligne ci-dessus disait
+  encore "demande et non encore rendu" jusqu'au 2026-08-28, perimee depuis huit sprints ; corrigee
+  ici plutot que laissee en l'etat. Les criteres ci-dessous, notamment les bornes, restent ceux de
+  `camille-po` a l'ouverture, **completes et confirmes** par l'arbitrage rendu.
 - **Arbitrage prealable de mecanique en vigueur pour tout le catalogue** (`squad/conformite/
   FICHE-bandit-manchot-additions-cp.md`, branche `s10-nadia-mecanique` et audits suivants) :
   conditions M1 a M13. Rien n'est mesure ici a l'ouverture de la fiche, faute d'increment a mesurer.
-- **Derniere mise a jour** : 2026-08-15 (ouverture par `camille-po`, `DEC-0030`)
+- **Priorite s22** (`DEC-0053`, section 4) : seconde candidate du perimetre du sprint, verrou
+  d'arbitrage leve. Obstacle technique deja nomme (section 3.6 de l'arbitrage) : les garde-fous de
+  rang lisent l'entier de tete d'une proposition et classeraient `1 h 30` sous `45 min` sur ce
+  contenu - route a `theo-archi` et `yanis-qa`, ne bloque pas l'ecriture du contenu.
+- **Derniere mise a jour** : 2026-08-28 (`camille-po`, correction de statut et priorisation s22,
+  `DEC-0053`)
 
 ## Competences visees
 

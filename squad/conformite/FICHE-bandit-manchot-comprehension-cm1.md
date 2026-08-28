@@ -14,6 +14,16 @@
   les consequences sur cette fiche).
   Complete le 2026-08-19 par le jugement de lisibilite du texte-support de `nadia-prof`
   (COMP-5 satisfaite, COMP-6 et COMP-7 nouvelles, budget de 8 lignes retire) - derniere section.
+- **Question posee le 2026-08-28 (ouverture s22, `camille-po`, `DEC-0053` section 5)** : l'utilisatrice
+  arbitre que le pli sort de la porte pedagogique sur tout le catalogue, paquets neufs compris
+  (`DEC-0053`, arbitrage 1). `COMP-4` et `COMP-7` ci-dessous sont exactement un critere de cette
+  famille ("entierement visibles a 360 x 640 sans defiler"), que vous avez ecrit le 2026-08-19 comme
+  non negociable pour ce paquet precis ("ma condition sur le resultat ... ne bouge pas"). **Confirmez-
+  vous que l'arbitrage de l'utilisatrice couvre aussi ce cas, et que le budget de 4 lignes / 20 mots
+  cesse d'etre bloquant (devenant une reserve non bloquante, comme pour `REP-8`), ou maintenez-vous
+  cette condition specifique en dehors du regime nouveau ?** Je n'ai pas de position sur cette
+  question pedagogique ; je la pose, je n'y reponds pas. Reponse attendue avant tout premier commit
+  de code sur ce paquet si `S17-2` est retenue au perimetre de s22.
 
 **Mise a jour du 2026-08-19, apres l'arbitrage prealable de `nadia-prof`**
 (`squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md`, section 1, branche

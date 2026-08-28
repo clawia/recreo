@@ -2393,3 +2393,22 @@ SOUS RESERVE` obtenus au premier verdict de fond (`cp-syllabes` apres arbitrage 
 
 **Ce que ce document ne fait pas.** Il ne prononce aucun Done pedagogique lui-meme et ne fait
 bouger aucune autre ligne que celle nommee ci-dessus.
+
+## Note du 2026-08-28 (ouverture s22, `camille-po`) - le pli sort de la porte pedagogique, aucune ligne ne bouge par cette note
+
+L'utilisatrice arbitre, a l'ouverture du sprint 22, que le pli (un element du jeu - indice, verdict,
+proposition - qui reste hors de vue sans defiler) sort de la porte pedagogique sur **tout le
+catalogue**, paquets neufs compris : `nadia-prof` ne prononce plus de `REFUSE` sur ce seul motif,
+elle le consigne en reserve non bloquante. Detail complet, motif retenu et point de vigilance sur ce
+que cet arbitrage ne touche pas (les garde-fous techniques `ADR-0017`, `ADR-0063` restent en
+vigueur, independants de tout jugement pedagogique) : `DEC-0053`, arbitrage 1.
+
+**Consequence pour la lecture de cette matrice, a garder a l'esprit a chaque ligne `couvert-valide`
+future** : un statut `couvert-valide` prononce a partir de ce jour ne garantit plus qu'aucun element
+du jeu ne reste sous le pli - cette dette est desormais explicitement croissante et assumee par
+l'utilisatrice (`REP-8`, `docs/backlog/backlog.md`, reste ouverte et nommee, de meme que les 4 items
+sans levier connu de l'obstacle 21 de s21). Ce n'etait deja pas garanti pour les statuts prononces
+avant cette date sur un motif autre que le pli, mais la possibilite qu'un motif de pli seul ait
+empeche un `REFUSE` disparait a partir de maintenant. **Aucune ligne de cette matrice ne change de
+statut par cette note** : elle documente un changement de critere de validation, pas un mouvement de
+couverture.
