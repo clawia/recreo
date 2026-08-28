@@ -569,3 +569,120 @@ trois sont `non couvert` et le restent tant qu'un Done pedagogique n'est pas pro
 522 px a respecter. **Le plus fragile a l'audit sera `cp-mot-manquant`**, parce que la qualite d'un
 distracteur ne se mesure avec aucun chiffre : elle se juge item par item, et 15 distracteurs sur 15
 viennent d'echouer ce jugement.
+
+## 10. Amendement de `SEG-1`, clause (c) - 2026-08-28
+
+**Rien de ce qui precede n'est reecrit.** Cette section s'ajoute et se date : la trace de ce qui a
+ete pose puis borne est ce qui rend la decision relisible.
+
+### 10.1 Ce qui a declenche cet amendement
+
+L'utilisatrice a tranche le **2026-08-28** : *"pour les syllabes cheminee vaut bien 3 syllabes"*.
+C'est une decision de son rang et elle prime sur le verdict pedagogique. J'avais refuse
+`bandit-manchot-syllabes-cp` le meme jour, sur ce seul item.
+
+**Mon refus n'etait pas une erreur d'application : c'etait l'application exacte de la clause (c)
+que j'avais ecrite le 2026-08-27**, laquelle exclut *"les mots ou un `e` interieur peut disparaitre
+a l'oral (`samedi` se dit couramment en deux syllabes)"*. Si `cheminee` vaut trois syllabes, **ce
+n'est donc pas l'item qui etait mauvais, c'est ma clause qui etait trop large.** Une exception
+nommee pour `cheminee` ne tiendrait pas : elle se dissoudrait au premier `petit` venu.
+
+### 10.2 Ce que j'ai mesure avant de trancher, avec sa population et sa date
+
+**Population** : le lexique francais **reellement mis devant un enfant de CP par ce produit** - les
+10 paquets CP servis (`adapters/adapter-content/src/main/resources/contenu/cp-*.yaml`) et les
+fichiers CP de `contenu-repris/`, soit **29 fichiers**. Seuls les champs que l'enfant lit sont
+retenus (enonces, propositions, indices, explications). **650 mots francais distincts**, mesure du
+**2026-08-28**. **Ce n'est pas un echantillon** : c'est tout le corpus CP du depot.
+
+Clause (c) appliquee mecaniquement, en cherchant un `e` **nu en syllabe ouverte** - precede d'une
+lettre, suivi d'**une seule** consonne puis d'une voyelle. Un `e` suivi de deux consonnes est en
+syllabe fermee : c'est un [E] plein et jamais un schwa, ce qui est le cas d'`escargot`,
+d'`escalier` et d'`esprit`.
+
+| | Mots |
+|---|---|
+| Corpus CP du depot | **650** |
+| Attrapes par la clause (c) d'origine | **40** |
+| Dont artefact de detection : `VELO`, capitale privee de son accent (`contenu-repris/mots/cp-premiere-lettre.yml`, ligne 32) | **1** |
+| **Cas de schwa reels** | **39** |
+| **Ecartes a tort** - l'articulation lente restitue le `e` | **30** |
+| **Ecartes a bon droit** - la forme reduite *est* la forme de citation ordinaire | **9** |
+
+**Les 30 ecartes a tort** : `besoin`, `celui`, `cheminee`, `cheval`, `dehors`, `demande`,
+`devienne`, `devient`, `deviner`, `genou`, `jetons`, `lequel`, `lever`, `leves`, `mesure`,
+`mesurer`, `petit`, `petite`, `petites`, `petits`, `premier`, `recevoir`, `regarde`, `regardes`,
+`remet`, `renard`, `recoit`, `seconde`, `semaine`, `tournevis`.
+
+**C'est le coeur du lexique de CP.** Ma clause d'origine ecartait `petit`, `cheval`, `renard`,
+`semaine`, `regarde` et `premier` d'un jeu de denombrement syllabique destine a des enfants de six
+ans. Elle etait **environ quatre fois trop large** : 39 mots attrapes pour 9 cas legitimes.
+
+**Les 9 ecartes a bon droit** : `acheter`, `casserole`, `doucement`, `facilement`, `lentement`,
+`prevenir`, `samedi`, `seulement`, `soulever`.
+
+**`samedi`, mon exemple fondateur, est dans ce second groupe.** La clause ne reposait donc **pas**
+sur rien : elle visait un phenomene reel, et elle l'a manque en attrapant quatre fois trop large.
+C'est pourquoi j'amende plutot que je ne supprime. **Je le dis explicitement parce que la
+suppression pure etait sur la table et que c'est la mesure qui l'a ecartee.**
+
+### 10.3 Le mecanisme qui separe les trois clauses, et pourquoi il ne se dissout pas au cas suivant
+
+En cherchant ce qui distingue `cheminee` de `dinosaure`, j'ai trouve un critere qui n'est pas propre
+a ce mot, et qui explique pourquoi les clauses (a) et (b) survivent quand la clause (c) tombe.
+
+**La tache elle-meme demande a l'enfant de dire le mot lentement** : la consigne dit *"Tape dans tes
+mains"*, et les indices du paquet disent *"en disant le mot tout doucement"* et *"Prononce le mot
+tres lentement"*. Or l'articulation lente et deliberee est precisement le registre ou les schwas du
+francais **reapparaissent**.
+
+- **Clause (c)** : l'articulation lente **resout** l'ambiguite. `che-mi-nee`, `pe-tit`, `che-val` se
+  disent avec leur `e` des qu'on ralentit. **La tache guerit le probleme.**
+- **Clauses (a) et (b)** : l'articulation lente **cree** l'ambiguite, en ajoutant une syllabe.
+  Ralentir `dinosaure` invite a faire sonner le `e` final (`di-no-sau-re`, 4 au lieu de 3) ;
+  ralentir `parapluie` invite a scinder la semi-voyelle (`plu-ie`, 2 au lieu de 1). **La tache
+  aggrave le probleme.**
+
+**Ce critere est general et verifiable sur n'importe quel mot** : il ne depend ni de `cheminee`, ni
+de mon oreille. C'est ce qui l'empeche de se dissoudre au premier cas suivant.
+
+### 10.4 `SEG-1`, clause (c), dans sa forme amendee
+
+La clause (c) du 2026-08-27 disait : *"les mots ou un `e` interieur peut disparaitre a l'oral
+(`samedi` se dit couramment en deux syllabes)"*. **Elle est remplacee, a compter du 2026-08-28,
+par :**
+
+> **`SEG-1` clause (c), amendee** - sont exclus **les mots dont la forme reduite est la forme de
+> citation ordinaire**, c'est-a-dire ceux ou **l'articulation lente ne restitue pas le `e`**
+> (`medecin`, `acheter`, `samedi`, et les adverbes en `-ement` du type `doucement`, `lentement`).
+> **Un `e` que l'articulation lente restitue n'est pas un motif d'exclusion** : `petit`, `cheval`,
+> `cheminee`, `renard`, `semaine` et `regarde` sont **autorises**, parce que la tache demande a
+> l'enfant de dire le mot lentement et que le compte y est alors stable.
+
+**Ce qu'elle cesse d'exclure** : les 30 mots listes en 10.2, dont tout mot a schwa initial - la
+famille `pe-`, `che-`, `re-`, `de-`, `se-`, qui est la plus courante du lexique de CP.
+
+**Ce qu'elle exclut toujours** : les 9 mots listes en 10.2, et tout mot dont la prononciation de
+reference a lexicalise la chute du `e`.
+
+**Les clauses (a) et (b) sont inchangees.** `dinosaure`, `parapluie` et `helicoptere` restent
+ecartes, pour le motif de 10.3 : sur eux, ralentir aggrave.
+
+### 10.5 Ce que cet amendement ne fait pas
+
+- **Il ne rouvre aucun verdict rendu contre un autre paquet.** `PRE-1` a `PRE-8` et `GRA-1` a
+  `GRA-10` ne sont pas touches.
+- **Il n'est pas retroactif contre les auteurs.** `marc-dev` a suivi ma specification ; c'est ma
+  specification qui etait trop large - comme a s20, ou `lea-dev` avait recopie des libelles que
+  j'avais dits courts et qui faisaient 34 caracteres. **C'est la deuxieme fois en deux sprints
+  qu'une de mes conditions prealables, et non le travail qu'elle encadrait, est la cause racine
+  d'un refus.** Je l'ecris ici parce que c'est le genre de motif qui doit se compter.
+- **Il ne change ni le pli, ni aucune mesure de forme.**
+
+### 10.6 Suite routee, trouvee en mesurant
+
+`contenu-repris/mots/cp-premiere-lettre.yml`, ligne 32, porte `prompt: "VELO"` - une capitale
+**privee de son accent**. Ce fichier est de la **matiere premiere de reprise et n'est pas servi a un
+enfant aujourd'hui** : ce n'est donc pas un defaut en production. Mais si ce paquet est repris, la
+capitale doit porter son accent, par `SEG-9` et par l'amendement du 2026-08-04 a `DEC-0002`.
+**A `camille-po`**, pour le jour ou cette matiere passera devant moi.

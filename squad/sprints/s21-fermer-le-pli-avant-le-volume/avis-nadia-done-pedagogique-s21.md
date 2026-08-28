@@ -17,16 +17,21 @@ conformite et n'est pas recopie ici.
 
 | Jeu | Story | Verdict | Motif, en une ligne |
 |---|---|---|---|
-| `bandit-manchot-syllabes-cp` | `S21-9` | **REFUSE** | `CHEMINEE` declare 3 syllabes ; *ch'minee* en vaut 2 dans la prononciation ordinaire. L'item n'a pas une bonne reponse, il en a deux, et l'application exige de l'enfant qu'il valide la sienne |
+| `bandit-manchot-syllabes-cp` | `S21-9` | **VALIDE SOUS RESERVE** *(revise le 2026-08-28 ; d'abord REFUSE le meme jour)* | Refus prononce sur l'item `CHEMINEE`, puis **leve apres arbitrage de l'utilisatrice** : *"cheminee vaut bien 3 syllabes"*. Le motif tombe ; c'est ma condition `SEG-1` qui etait trop large, et elle est amendee. Reserve neuve `SEG-13` |
 | `bandit-manchot-mot-manquant-cp` | `S21-10` | **REFUSE** | (1) *"La nuit, Tom allume sa ___."* admet `radio` et `tele` autant que `lampe` ; (2) `PRE-2` rouvre sur deux items (`crayon`/marteau/couteau et `parapluie`/ballon/tapis), le defaut meme pour lequel ce paquet a ete entierement reecrit |
 | `bandit-manchot-comparer-cp` | `S21-11` | **VALIDE SOUS RESERVE** | Les dix conditions tenues, 18 items sur 18 decidables, aucune erreur factuelle. Sept reserves non bloquantes |
 
 Fiches : `squad/conformite/FICHE-bandit-manchot-syllabes-cp.md`,
 `FICHE-bandit-manchot-mot-manquant-cp.md`, `FICHE-bandit-manchot-comparer-cp.md`.
 
-**Un seul Done pedagogique est prononce, celui de `cp-comparer`.** `camille-po` peut passer la
-ligne 89 de `MATRICE-couverture.md` a `couvert-valide`. Les lignes 485 et 496 restent
-**`non couvert`** et ne bougent pas.
+**Deux Done pedagogiques sont prononces** *(revise le 2026-08-28 : un seul l'etait a la premiere
+redaction de ce fichier)* : `cp-comparer` et, apres arbitrage de l'utilisatrice, `cp-syllabes`.
+`camille-po` peut passer les lignes **89** et **485** de `MATRICE-couverture.md` a
+`couvert-valide`. **La ligne 496 reste `non couvert`** : `cp-mot-manquant` demeure refuse.
+
+**Sur la ligne 485** : elle ouvre la premiere des trois lignes du domaine "Langage oral et
+conscience phonologique" ; les deux autres restent hors d'atteinte sans emission de son
+(`DEC-0042`, arbitrage 2). **Ne pas lire cette ouverture comme l'ouverture du domaine.**
 
 **Le retrait des deux entrees refusees du catalogue releve de `DEC-0045` section 3 : le geste
 appartient a `camille-po` et `sofia-sm`, pas a moi.** Je n'ai touche ni `catalogue.yaml`, ni aucun
@@ -181,14 +186,31 @@ aucune couverture automatique :
 
 ## Conclusion a reprendre dans `review.md`
 
-**Done pedagogique de s21 : un valide sous reserve, deux refus.**
+*Revisee le 2026-08-28 apres l'arbitrage de l'utilisatrice sur `cheminee`. La version d'origine
+disait "un valide sous reserve, deux refus" et donnait `cp-syllabes` pour refuse ; elle est
+corrigee ici plutot que laissee a pourrir, et le detail des deux verdicts successifs est conserve,
+date, dans `FICHE-bandit-manchot-syllabes-cp.md`.*
+
+**Done pedagogique de s21 : deux valides sous reserve, un refus.**
 
 `bandit-manchot-comparer-cp` est **VALIDE SOUS RESERVE** - dix conditions sur dix tenues, 18 items
 sur 18 decidables sans instrument, aucune erreur factuelle, sept reserves non bloquantes.
-`bandit-manchot-syllabes-cp` et `bandit-manchot-mot-manquant-cp` sont **REFUSES**, sur la meme
-famille de defaut : un item qui dit a un enfant qui a raison qu'il a tort.
+`bandit-manchot-syllabes-cp` est **VALIDE SOUS RESERVE** : je l'avais refuse sur l'item `CHEMINEE`,
+**l'utilisatrice a tranche que le mot vaut trois syllabes, et le motif est tombe**. Une reserve
+neuve (`SEG-13`) y est ouverte. `bandit-manchot-mot-manquant-cp` **reste REFUSE**, sur ses deux
+motifs, inchanges.
+
+**Ce que ce sprint doit retenir de mon lot, et ce n'est pas a l'avantage de la porte que je
+tiens.** Mon refus de `cp-syllabes` n'etait pas une erreur d'application : c'etait l'application
+exacte d'une condition que j'avais ecrite **avant** que le paquet existe, et cette condition etait
+**environ quatre fois trop large** - mesure du 2026-08-28 sur les 650 mots du corpus CP du depot :
+39 cas de schwa attrapes, 30 a tort, dont `petit`, `cheval`, `renard` et `semaine`. **C'est la
+deuxieme fois en deux sprints qu'une de mes conditions prealables, et non le travail qu'elle
+encadrait, est la cause racine d'un refus** - a s20 c'etaient des libelles que j'avais dits courts
+et qui faisaient 34 caracteres. Un arbitrage prealable evite un cycle quand il est juste ; il en
+coute un quand il est faux, et il faut le compter.
 
 **Le sprint a atteint ce qu'il visait sur le pli** : les 50 items neufs sont au-dessus, `SOR-4` est
 fermee, et le pli est desormais ferme sur les 162 items des 9 jeux CP enumeres. **Ce n'est pas la
-forme qui fait echouer deux paquets sur trois, c'est le contenu**, et c'est la seule chose que la
-CI ne regardera jamais.
+forme qui a fait echouer un paquet sur trois, c'est le contenu**, et c'est la seule chose que la CI
+ne regardera jamais.

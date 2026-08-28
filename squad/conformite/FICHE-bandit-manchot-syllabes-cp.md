@@ -12,10 +12,13 @@
   (`squad/programme/francais/competences-cp.md`, ligne 9 ; verifie le 2026-08-27).
 - **Conditions prealables** : `SEG-1` a `SEG-9`,
   `squad/conformite/ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md`, section 3.
-- **Statut global** : **REFUSE par `nadia-prof` le 2026-08-28**, sur **un motif unique et isole**
-  (item `CHEMINEE`). Quinze items sur seize sont exacts et toutes les autres conditions sont
-  tenues ; le detail est ecrit ci-dessous pour que la reprise ne refasse pas le travail deja bon.
-- **Derniere mise a jour** : 2026-08-28 (`nadia-prof`, audit de s21).
+- **Statut global** : **VALIDE SOUS RESERVE par `nadia-prof` le 2026-08-28**, apres arbitrage de
+  l'utilisatrice. **Le paquet a d'abord ete REFUSE le meme jour** sur un motif unique (l'item
+  `CHEMINEE`) ; l'utilisatrice a tranche que *"cheminee vaut bien 3 syllabes"*, **le motif est
+  tombe, et c'est ma condition `SEG-1` qui etait trop large, pas l'item**. Le refus et sa levee
+  sont tous deux conserves ci-dessous, dates : un refus efface n'a aucune valeur de preuve. Une
+  reserve neuve (`SEG-13`) est ouverte au passage.
+- **Derniere mise a jour** : 2026-08-28 (`nadia-prof`, reprise du verdict apres arbitrage).
 
 ## Table de correspondance des jetons de cette fiche
 
@@ -76,6 +79,13 @@ de l'argument.
 ## 2. Le motif du refus
 
 ### `CHEMINEE` (item 16) n'a pas une bonne reponse : il en a deux
+> **MOTIF TOMBE LE 2026-08-28, par arbitrage de l'utilisatrice** : *"pour les syllabes cheminee
+> vaut bien 3 syllabes"*. **Cette section est conservee telle qu'elle a ete ecrite** - un refus
+> efface n'a aucune valeur de preuve - **mais elle ne fonde plus rien, et aucune correction n'est
+> demandee sur cet item.** Ce qu'elle a revele est ailleurs : `SEG-1` clause (c) etait environ
+> quatre fois trop large, et elle est amendee (arbitrage prealable, section 10, du 2026-08-28).
+> Lire la reprise de verdict en fin de fiche.
+
 
 Le paquet declare `bonneReponse: "3"` pour `CHEMINEE`. **Che-mi-nee vaut trois syllabes en forme de
 citation et deux dans la prononciation ordinaire** : *ch'minee*, avec chute du `e` caduc de la
@@ -142,7 +152,7 @@ emission de son (`DEC-0042`, arbitrage 2).
 
 | Condition | Verdict | Ce que j'ai verifie, et comment |
 |---|---|---|
-| `SEG-1` coupe stable | **TENUE SUR 15 ITEMS SUR 16** | Les seize comptes relus a la main le 2026-08-27. Quinze sont exacts et stables. `CHEMINEE` est le seul defaut : c'est le motif de la section 2 |
+| `SEG-1` coupe stable | **TENUE, 16 sur 16** *(revise le 2026-08-28)* | Les seize comptes relus a la main le 2026-08-27 : quinze etaient exacts sous la clause (c) d'origine, `CHEMINEE` seul y echouait. **La clause (c) est amendee le 2026-08-28** (arbitrage prealable, section 10) : elle n'exclut plus un `e` que l'articulation lente restitue. `CHEMINEE` la tient donc, et le paquet passe a **16 sur 16**. Verifie mecaniquement le 2026-08-28 : sur les seize mots, la clause (a) ne mord sur aucun - `CHEMINEE` finit par `ee`, digramme du son /e/, et non par un `e` muet -, la clause (b) sur aucun, et la clause (c) amendee sur aucun |
 | `SEG-2` dechiffrable au CP | **TENUE, 16 sur 16** | `roi` (`oi`), `dos` (`s` muet final), `coussin` (`ou`, `in`), `domino`, `escargot`, `kangourou` (`an`, `ou`, `g` dur) sont decodables en fin de CP. **Correction que je porte contre moi** : ma redaction de `SEG-2` enumerait des graphemes *"du referentiel"* en omettant `ai`, alors que ma propre table du meme jour retenait `maison` **pour** son `ai`. Le referentiel ne donne aucun inventaire ferme (`competences-cp.md`, ligne 15, se termine par des points de suspension) : ma liste etait une construction personnelle et incomplete, et **je ne refuse rien sur elle** |
 | `SEG-3` plage 1-3, trois memes valeurs a chaque item | **TENUE, 16 sur 16** | Verifie dans le fichier **et a l'ecran** : les trois boutons portent toujours `1`, `2`, `3`. Leur **ordre change a chaque manche** (`1 2 3`, `1 3 2`, `2 1 3`, `3 1 2` releves en jouant), ce qui oblige a lire le chiffre et interdit de memoriser une position. Le comptage d'etiquettes fait avant l'ecriture tient : trois etiquettes, trois reperes, aucun cas supplementaire a loger |
 | `SEG-4` plage 1-4 | sans objet | L'auteur a choisi `SEG-3`, la route la moins risquee. Rien a verifier |
@@ -212,6 +222,36 @@ mes conditions prealables.
   second appui dessus consomme un essai. Sur trois essais, un enfant de CP peut en bruler deux sur
   le meme bouton. **Constat de mecanique, hors de ce paquet**, route a `camille-po` pour arbitrage :
   c'est une question de conception, pas un defaut de contenu, et je ne la tranche pas ici.
+
+- **`SEG-13` (2026-08-28) - la FORME de l'indice trahit la reponse sur 5 items sur 16.** Trouve en
+  reprenant le paquet apres l'arbitrage, et **je ne l'avais pas vu la premiere fois**. Le paquet
+  emploie deux familles d'indice, et elles se partagent exactement selon la reponse :
+
+  | Forme de l'indice | Items | Reponses possibles |
+  |---|---|---|
+  | Indice de procede (*"Tape dans tes mains en disant le mot tout doucement."*) | `CHAT`, `RIZ`, `LOUP`, `ROI`, `DOS` | **1, et rien d'autre** |
+  | *"Ce mot commence par << xx >>."* | les 11 autres | 2 ou 3 |
+
+  Verifie mecaniquement sur le fichier servi le 2026-08-28 : **la partition est parfaite**. Un
+  enfant qui a echoue une fois et qui recoit un indice de procede peut en deduire `1` **sans
+  compter une seule syllabe** - soit 5 items sur 16, un peu moins d'un tiers du paquet.
+
+  **Ce n'est pas une violation de `SEG-7`, et je ne le presente pas comme telle** : c'est moi qui
+  ai autorise ce partage, en ecrivant que les mots d'une syllabe *"prendront un indice de
+  procede"* puisqu'y nommer la premiere syllabe nommerait le mot entier. **Ce que je n'avais pas
+  vu, c'est qu'une fois le paquet ecrit, la forme devient elle-meme un signal.** C'est la famille
+  de defaut que j'ai refusee a s19 sur `cp-nature-mot` (la regle *"petit mot juste avant"* donnait
+  seize bonnes reponses sur seize sans lire le mot cible) : une regularite de systeme qui rend la
+  reponse sans faire la tache.
+
+  **Pourquoi c'est une reserve et non un motif** : l'indice n'apparait qu'apres un echec, la
+  deduction demande d'avoir joue plusieurs parties, et elle ne porte que sur la valeur `1`.
+
+  **La correction est deja demontree dans ce paquet.** `marc-dev` a brasse les cinq formulations de
+  relance entre les items a 2 et a 3 syllabes pour qu'aucune ne correle avec la reponse - c'est du
+  bon travail, et je l'ai dit. **Il suffit d'appliquer la meme technique d'une famille a l'autre** :
+  donner un indice de procede a quelques mots de 2 et 3 syllabes, pour que la forme cesse de
+  designer la reponse.
 
 ## 7. Sur quelles proprietes je reste la seule garde
 
@@ -285,4 +325,107 @@ defaut est dans la mecanique, pas dans ce paquet.
 - **Auditrice** : `nadia-prof`. **Verdict prononce le** 2026-08-28. **Mesures et parties** :
   2026-08-27, entre 22:02 et 22:35. **Arbre audite** : `round-two` a `8e21613`, reconstruit, servi
   et joue depuis le worktree `s21-nadia-2`.
+- **Audit non degrade** : l'application a ete construite, servie et **jouee**.
+
+---
+
+## Verdict du 2026-08-28 (s21), reprise apres arbitrage de l'utilisatrice - `S21-9`, "Les syllabes"
+
+**Ce bloc leve le `REFUSE` ci-dessus. Le refus n'est pas efface** : il est date, son motif est
+lisible, et le bandeau qui le coiffe dit qu'il ne fonde plus rien. Un refus efface n'a aucune
+valeur de preuve.
+
+## Verdict : **VALIDE SOUS RESERVE**
+
+**Done pedagogique prononce.** `camille-po` peut passer la ligne 485 de `MATRICE-couverture.md` a
+`couvert-valide` - ligne qui ouvre le domaine "Langage oral et conscience phonologique", **dont
+elle reste la seule des trois couvertes** : les deux autres sont hors d'atteinte sans emission de
+son (`DEC-0042`, arbitrage 2). **Ne pas lire cette ouverture comme l'ouverture du domaine.**
+
+### Ce qui a change, et ce qui ne change pas
+
+L'utilisatrice a tranche le 2026-08-28 : *"pour les syllabes cheminee vaut bien 3 syllabes"*.
+**Mon motif unique tombe.** J'avais ecrit moi-meme que *"quinze items sur seize sont exacts et
+toutes les autres conditions sont tenues"* : le motif retire, il ne reste rien qui fasse obstacle.
+
+**Je ne cherche pas a sauver mon refus.** Je n'ai trouve aucun motif de remplacement, et j'ai
+regarde : la reserve `SEG-13` ci-dessous est reelle mais elle n'est pas bloquante, pour les raisons
+qui y sont ecrites.
+
+**Je ne le brade pas non plus.** Deux choses sont ecrites aujourd'hui plutot que dans un sprint :
+la reserve `SEG-13`, que je n'avais pas vue au premier passage, et l'amendement de `SEG-1`.
+
+### Ce que j'ai verifie pour cette reprise, et comment
+
+- **L'artefact n'a pas bouge.** Le blob de `cp-syllabes.yaml` est `1fc3537`, identique a celui que
+  j'ai audite hier ; `s21-marc-3` et `round-two` designent le meme commit `8e21613` et ne portent
+  aucun commit propre ; l'arbre de travail est propre. **`CHEMINEE` garde `bonneReponse: "3"`.**
+  Toutes mes mesures du 2026-08-27 portent donc sur l'artefact servi aujourd'hui, et **il n'y a
+  rien a remesurer** : le pli reste de **16 items sur 16 au-dessus**, bas de l'indice a 486 px pour
+  un pli a 551, zero defilement. *Je le dis plutot que de rejouer, parce que rejouer un artefact
+  bit-a-bit identique sur une feuille de style identique ne produirait pas une mesure neuve, mais
+  une seconde copie de la meme.*
+- **Les six autres mots neufs, verifies moi-meme et non pris sur parole** - c'est le comptage sur
+  lequel je me suis deja trompee une fois. Les trois clauses de `SEG-1` appliquees mecaniquement
+  aux seize mots servis, le 2026-08-28 :
+  - `ROI`, `DOS`, `COUSSIN`, `DOMINO`, `KANGOUROU` **ne contiennent aucun `e`**. Rien a examiner ;
+  - `ESCARGOT` porte un `e` **initial suivi de `sc`, donc de deux consonnes** : syllabe **fermee**,
+    [E] plein de la famille d'`escalier` et d'`esprit`, **jamais elidable**. Ce n'est pas le
+    mecanisme de la clause (c). **L'analyse de `marc-dev` est exacte, et je l'ai refaite ;**
+  - **aucune finale en `e` muet** sur les seize - `CHEMINEE` finit par `ee`, digramme du son /e/,
+    et non par un `e` muet : la clause (a) ne mord pas, contrairement a ce qu'une lecture rapide
+    de *"se termine par un `e`"* laisserait croire ;
+  - **aucune finale en semi-voyelle** : la clause (b) ne mord pas.
+
+  **`CHEMINEE` etait le seul mot du paquet que la clause (c) touchait.** Le motif tombe, et il ne
+  reste aucun item a corriger.
+- **`SEG-2` a `SEG-9` restent tenues**, telles que verifiees le 2026-08-27 et consignees en
+  section 4. `SEG-6` : la repartition 5/6/5 est exacte et inchangee.
+
+### `SEG-1` : la vraie question, et elle depassait cet item
+
+**Mon refus n'etait pas une erreur d'application : c'etait l'application exacte d'une condition que
+j'avais posee avant que le paquet existe.** Si `cheminee` vaut trois syllabes, c'est la condition
+qui etait trop large.
+
+**Mesure du 2026-08-28, sur les 650 mots francais distincts du corpus CP du depot** - 10 paquets CP
+servis et les fichiers CP de `contenu-repris`, 29 fichiers, **population entiere et non
+echantillon** : la clause (c) d'origine attrapait **39 cas de schwa reels**, dont **30 a tort** et
+**9 a bon droit**. Elle etait **environ quatre fois trop large**, et elle ecartait `petit`,
+`cheval`, `renard`, `semaine`, `regarde` et `premier` - **le coeur du lexique de CP** - d'un jeu de
+denombrement syllabique destine a des enfants de six ans.
+
+**`SEG-1` clause (c) est donc amendee, pas supprimee et pas exceptee** : `samedi`, mon exemple
+fondateur, est dans les 9 cas legitimes, donc la clause visait bien un phenomene reel. Le critere
+retenu n'est pas propre a `cheminee` : **sont exclus les mots dont l'articulation lente ne restitue
+pas le `e`** (`medecin`, `acheter`, `samedi`, les adverbes en `-ement`). Les clauses (a) et (b)
+survivent parce que, sur elles, **ralentir cree l'ambiguite en ajoutant une syllabe**, quand sur la
+clause (c) **ralentir la resout** - et la tache demande justement a l'enfant de dire le mot
+lentement. Detail, chiffres et liste des 39 mots : **arbitrage prealable, section 10**, ajoutee et
+datee sans que rien y soit reecrit.
+
+### Reserves, aucune bloquante
+
+- **`SEG-13` (neuve, 2026-08-28)** - **la forme de l'indice trahit la reponse sur 5 items sur 16** :
+  un indice de procede signifie `1`, un indice *"Ce mot commence par..."* signifie 2 ou 3, et la
+  partition est parfaite. J'avais autorise ce partage ; je n'avais pas vu qu'il devient un signal.
+  La correction est deja demontree dans le paquet, sur les formulations de relance.
+- **`SEG-10`** - le retour apres une bonne reponse est **attache au mot suivant** : le *"Bravo !"*
+  s'affiche a cote du mot d'apres. Defaut de mecanique, route a `theo-archi` et `camille-po`. **Je
+  continue de ne pas autoriser** qu'un paquet de syllabes declare une `graphie` pour franchir
+  `ChaquePaquetExpliqueSesItemsAVariationTest`.
+- **`SEG-11`** - l'ecran de fin ne revient sur aucun mot rate. Mecanique.
+- **`SEG-12`** - un bouton barre reste pressable et l'essai est consomme. Mecanique.
+
+### Ce qui appartient a d'autres
+
+- **Le retour de l'entree au catalogue n'a pas lieu d'etre : elle n'en est jamais sortie.**
+  `camille-po` et `sofia-sm` ont instruit en parallele et n'ont rien retire. **Je n'ai touche ni
+  `catalogue.yaml`, ni la matrice, ni aucun fichier de contenu.**
+- **La ligne 485 de `MATRICE-couverture.md`** : le geste est a `camille-po`.
+- **`SEG-13`** devient une story par `camille-po`. Je produis des motifs, je n'ecris pas le backlog.
+
+- **Auditrice** : `nadia-prof`. **Verdict de reprise prononce le** 2026-08-28. **Mesure du corpus
+  CP** : 2026-08-28. **Mesures de rendu et parties** : 2026-08-27, entre 22:02 et 22:35, sur un
+  artefact dont le blob est inchange (`1fc3537`). **Arbre audite** : `round-two` a `8e21613`.
 - **Audit non degrade** : l'application a ete construite, servie et **jouee**.
