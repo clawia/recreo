@@ -181,6 +181,57 @@ faux. Distinct des amendements de s06 (un chiffre porte sa methode) et de s17 (v
 sa source primaire) : ici la methode et la source etaient justes, ce qui manquait est une
 date portee par la phrase elle-meme plutot que par le contexte d'ecriture.
 
+**Quand un lot durcit un lecteur partage a plusieurs modules ou plusieurs feuilles de style
+(une methode `static` importee ailleurs, un lecteur de feuille de style, un port de deverminage
+fixe), il est mesure sur l'union des arbres du sprint avant sa fusion, jamais sur son seul arbre**
+(amendement s21, retro de s21, confirme par `theo-archi` a l'ouverture de s22 avec trois
+precisions, `squad/sprints/s22-couverture-maximale-du-catalogue/avis-faisabilite.md` section 5).
+Formule par lui-meme sur l'obstacle 13 (un correctif casse un troisieme appelant, visible
+seulement une fois deux lots fusionnes, alors qu'aucun des deux arbres separes ne portait a la
+fois le materiau et le lecteur strict). **Ce qu'est un lecteur partage, de facon derivable** : un
+point de passage dont un autre fichier depend, lisible dans un diff. **Ce que la regle achete** :
+du temps et du contexte - le defaut se trouve pendant que son auteur y est encore, pas a la
+cloture quand le coupable n'est plus identifiable en un diff ; elle ne garantit aucune couverture
+neuve, la CI sur l'arbre fusionne l'aurait trouve de toute facon. **Ce n'est pas une regle
+`ArchUnit`** : elle porte sur quand on mesure, pas sur ce que le code contient.
+
+**Une condition pedagogique qui filtre un contenu (une clause de la forme "exclure si...") est
+mesuree contre la population entiere qu'elle gouverne au moment ou elle est ecrite, pas seulement
+testee sur les tirages qu'elle rencontre au fil des paquets livres** (amendement s21, retro de
+s21, adopte par `nadia-prof` a l'ouverture de s22, `squad/conformite/
+PORTE-PEDAGOGIQUE-apres-arbitrage-du-2026-08-28.md` section 4). Fonde sur `SEG-1` : une clause
+qu'elle avait ecrite avant que le paquet n'existe excluait a tort 30 mots sur 39 attrapes sur le
+corpus CP entier, et n'a ete decouverte que par un arbitrage sur un seul mot d'un seul paquet -
+une clause trop large qui n'attrape jamais un mot tire ne se revele jamais. **Bornee aux
+populations enumerables et deja existantes** (un corpus de mots, un catalogue, un paquet livre) :
+elle ne s'applique pas telle quelle a une condition qui gouverne un contenu pas encore ecrit, ou
+il n'y a rien a balayer. Pour ce second cas, l'obligation de remplacement est que la condition
+soit ecrite comme une propriete decidable item par item, jamais comme un exemple ni comme une
+liste fermee, avec la population qu'elle gouverne nommee - et sa non-enumerabilite dite
+explicitement quand c'est le cas.
+
+**Une regle de conduite trouvee en cours de sprint (incident, defaut de methode, correction d'un
+agent contre lui-meme) est ecrite dans un fichier du depot avant la cloture qui la constate, pas
+seulement gardee en memoire d'agent** (amendement s21, retro de s21, tranche par `sofia-sm` a
+l'ouverture de s22). Motif : un incident de conduite deja consigne une fois en memoire de session
+et jamais ecrit dans un fichier du depot s'est reproduit, faute d'un garde-fou ecrit pour
+n'importe quel agent. **Un troisieme cas, trouve le jour meme ou cet amendement s'ecrit, confirme
+pourquoi** : l'ouverture de s22 demandait trois branches dediees sans demander trois worktrees
+dedies, alors que la section 9 impose deja un worktree par agent depuis s06 - les lots de
+`nadia-prof` ont atterri sur la branche de `camille-po` plutot que sur un worktree propre, parce
+que la consigne nommait la branche et pas le worktree. Voir la precision ajoutee section 9.
+
+**Une condition pedagogique de refus distingue, dans le chiffrage de capacite d'un sprint, un
+cycle cause par le contenu livre d'un cycle cause par la specification prealable elle-meme, parce
+que les deux n'ont pas le meme cout ni la meme correction** (amendement s21, retro de s21,
+applique par `camille-po` dans son rechiffrage d'ouverture de s22, `DEC-0053` section 3, et
+confirme par `sofia-sm` comme methode desormais requise a chaque rechiffrage de capacite). Sur les
+quatre refus prononces depuis s20, trois ont leur cause racine dans une specification prealable
+fausse de `nadia-prof`, un seul dans le contenu livre - distinction absente du chiffrage de
+`DEC-0051`. Elle ne change pas mecaniquement une borne deja posee (un cycle cause par une
+specification fausse coute quand meme un cycle), mais elle est desormais nommee a chaque
+rechiffrage plutot que noyee dans un total unique.
+
 ## 5. La synthese de sprint - `RAPPORT.md`
 
 C'est le document qu'on lit en premier pour savoir ce qui s'est passe. Ecrit par Sofia a la
@@ -340,6 +391,18 @@ premier geste qui a failli deux fois sur dix-huit sprints, chez deux agents diff
 relue au planning ne suffit pas a elle seule a empecher la recurrence ; `sofia-sm` verifie
 desormais explicitement, a chaque fusion, que le lot recu n'a jamais existe que dans un worktree
 distinct du depot principal (deja sa pratique de fait depuis s14, faite regle explicite ici).
+
+**Une branche dediee nommee pour un agent implique un worktree dedie du meme nom, que la consigne
+qui l'ouvre nomme le worktree explicitement ou non** (amendement s21, retro de s21, tranche par
+`sofia-sm` a l'ouverture de s22, section 4). A l'ouverture de s22, trois branches dediees ont ete
+demandees sans que trois worktrees dedies ne soient demandes avec elles : les commits de
+`nadia-prof` ont ete ecrits dans le depot principal pendant qu'il portait la branche de
+`camille-po`, produisant deux commits ancetres reels d'une branche qui n'etait pas la sienne et un
+troisieme sous un identifiant different sur sa propre branche - constate et verifie par
+`sofia-sm` a la fusion, sans consequence de contenu grace a la lecture faite avant de fusionner.
+**Nommer seulement une branche n'exempte personne de la regle deja ecrite ci-dessus** : la premiere
+ecriture d'un lot ouvre son propre worktree, quel que soit le vocabulaire de la consigne qui l'a
+demande.
 
 **Un sprint peut etre pilote par des arbitrages successifs de l'autorite produit plutot que par un
 objectif gele au planning, et le process le nomme plutot que de le taire** (amendement s15, cloture
