@@ -221,6 +221,51 @@ Les quatre compteurs (`input`, `output`, `cache cree`, `cache lu`) sont toujours
 depasse couramment l'output de deux ordres de grandeur. Le rapport ne convertit rien en euros :
 ce sont des compteurs de tokens.
 
+**Reprendre la meme instance d'un agent est un choix, pas un defaut a corriger par une economie**
+(amendement hors sprint, 2026-08-28, arbitrage de l'utilisatrice sur un diagnostic de `sofia-sm`).
+Sur s21, `nadia-prof` porte 694 tours - le double de tout autre agent - 511 133 tokens d'output et
+176 583 704 tokens de cache lu, contre 115 602 611 pour `theo-archi` et 83 525 725 pour `sofia-sm`
+(`squad/sprints/s21-fermer-le-pli-avant-le-volume/RAPPORT-tokens.md`, fenetre du 2026-08-27 13:45
+au 2026-08-28 10:30 UTC). Rapporte a ses tours, c'est de l'ordre de 254 000 tokens de contexte relu
+a chaque tour (176 583 704 / 694).
+
+Trois causes, dans l'ordre de leur poids - la premiere est la seule sur laquelle cette regle agit :
+
+1. **La conduite d'orchestration de `sofia-sm`.** Sur s21, la meme instance de `nadia-prof` a ete
+   reprise six fois par message plutot que relancee (arbitrage prealable, Done pedagogique,
+   reprise apres l'arbitrage de l'utilisatrice, reaudition, correction du comptage des refus,
+   decision typographique) : chaque reprise rejoue l'integralite du transcript, et son contexte
+   cumule est passe d'environ 271 000 a environ 489 000 tokens au fil des six (releve fait par
+   l'orchestratrice sur le fil de session de s21 le 2026-08-28 ; a la difference des chiffres du
+   paragraphe precedent, ce compte n'est pas recalculable depuis un fichier commite du depot).
+2. **La nature de son travail** : elle joue le produit, construit le jar, pilote un navigateur et
+   mesure item par item, la ou la plupart des autres agents lisent des fichiers.
+3. **L'elargissement reel de son perimetre pendant s21** : 478 items du catalogue joues entiers
+   (`avis-nadia-done-pedagogique-s21.md`, mesure du 2026-08-27 a 744x551), le corpus CP entier de
+   650 mots (`SEG-1`, `retro.md`), et 511 occurrences typographiques sur 17 fichiers (`TYP-1`,
+   commit `a78882c`, mesure du 2026-08-28).
+
+Ce n'est pas une regle d'economie : les reprises de s21 ont produit ce qui a le plus de valeur du
+sprint - trois auto-contradictions de `nadia-prof` contre sa propre specification anterieure (la
+barre de pli, `SEG-1`, le comptage des refus), qu'une instance neuve, sans le contexte de la
+mesure qui les avait produites, n'aurait pas pu voir. Le critere qui suit distingue, il n'economise
+pas :
+
+- **Reprendre la meme instance** quand la question s'appuie sur la mesure ou le jugement anterieur
+  du meme agent - reaudition apres correction, reprise de verdict, contradiction a instruire. Le
+  contexte accumule est la valeur recherchee.
+- **Lancer une instance neuve** quand la question repart d'un materiau que l'agent n'a jamais lu.
+  Deux reprises a tort en s21 : la decision typographique `TYP-1` (l'agent repartait de zero sur un
+  corpus de 511 occurrences jamais ouvert) et la correction du comptage des refus (un `grep` sur
+  des fiches de conformite) - aucune des deux n'avait besoin de l'audit deja en contexte de
+  l'instance reprise.
+
+Cette distinction ne tient que parce qu'un agent qui **commite ses releves** peut les relire dans
+une instance neuve, la ou un agent qui les garde seulement en memoire de session oblige a la
+reprise : `nadia-prof`, `theo-archi` et `ines-design` commitent deja les leurs sous
+`squad/conformite/releves-sNN/` - c'est ce qui rend cette regle applicable sans alourdir aucune
+ceremonie.
+
 ## 7. Le double Done
 
 **Done technique** : `mvn verify` vert - compilation, tests unitaires, tests d'integration Spring
@@ -509,6 +554,31 @@ tenues par la commande recopiee a la main et par la prose du rapport qualite. Le
 JDK 21.0.10 est installe et compile sur un poste ou le fichier de toolchains Maven declare bien
 trois JDK dont un 21 sous un nom que Maven ne lit pas - quatre agents avaient conclu a tort en s05
 qu'aucun JDK 21 n'y etait disponible, une erreur de fond et non seulement de methode.
+
+**Une regle de conduite trouvee en cours de sprint est ecrite dans un fichier du depot avant la
+cloture qui la constate, pas seulement gardee en memoire d'agent** (amendement hors sprint,
+2026-08-28, arbitrage de l'utilisatrice sur une proposition de `sofia-sm` a la retro de s21).
+`sofia-sm` avait nomme cette regle et refuse de la trancher elle-meme ("a trancher par moi-meme...
+je le propose ici plutot que de l'acter seule dans ce meme document, pour qu'il soit visible avant
+d'etre applique", `retro.md` de s21) : ce n'est donc pas elle qui l'acte ici, c'est l'utilisatrice
+- exactement le geste que la regle protege.
+
+Motif, avec son cout reel : le 2026-08-27, dans son lot dev `S21-11`, `sofia-sm` a lance
+`taskkill //IM chrome.exe //F` pour arreter un navigateur de mesure - une commande qui tue par nom
+d'image et non par identifiant de processus (PID). Ce n'etait pas la premiere fois : le meme geste
+avait deja ferme des navigateurs qui n'etaient pas les siens - les fenetres personnelles de
+l'utilisatrice - et la regle qui l'interdit existait deja, mais seulement dans une memoire de
+session, jamais ecrite dans un fichier du depot. C'est pour cela qu'elle s'est repetee : une regle
+de conduite qui ne vit pas dans le depot ne vaut pour aucun agent, quelle que soit la discipline de
+celui qui l'a apprise une fois.
+
+La regle generale, au-dela de cet incident : toute regle de conduite trouvee en cours de sprint -
+incident, defaut de methode, correction d'un agent contre lui-meme - est ecrite dans un fichier du
+depot des qu'elle est trouvee, ou au plus tard proposee a la retro avec le nom de qui doit la
+trancher, jamais laissee vivre seulement dans la memoire d'un agent jusqu'a la prochaine ceremonie.
+
+Son instance est ecrite dans le meme geste : **un processus s'arrete par son identifiant de
+processus (PID), jamais par nom d'image, et son identite est verifiee avant l'arret.**
 
 ## 10. Frontieres entre agents
 
