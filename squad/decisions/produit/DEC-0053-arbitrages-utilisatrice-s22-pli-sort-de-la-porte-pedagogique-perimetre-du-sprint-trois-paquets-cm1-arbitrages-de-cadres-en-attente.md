@@ -607,3 +607,90 @@ arbitrera la saisie.
   toutes lettres, bloc de validation pedagogique non touche.
 - Aucun fichier sous `domain/`, `application/`, `adapters/` ou `bootstrap/` n'est modifie par cette
   decision.
+
+## Amendement du 2026-08-28 (apres premier commit) - relecture de `nadia-prof`, une correction que je fais, une question que je repose plutot que de la presumer tranchee
+
+`nadia-prof` a rendu, en parallele et sans se lire avec moi, sa propre position pedagogique
+d'ouverture de s22 (`squad/conformite/PORTE-PEDAGOGIQUE-apres-arbitrage-du-2026-08-28.md`, commits
+`9f9489e` et `ad66c1f`, ce second commit trouvant ce document non commite dans l'arbre de travail).
+Je verifie ce qui suit contre sa source avant de le reprendre, comme pour tout verdict.
+
+### 1. Ce qu'elle confirme sur les trois candidats - je le reprends
+
+- **`S13-2` et `S13-3` : aucune de ses vingt-et-une conditions ne tombe.** Elle avait ete ecrite sans
+  motif de pli pour dix d'entre elles ; le pli n'etait qu'un avantage secondaire, jamais le motif,
+  sur la onzieme (`MD-9`).
+- **`S17-2` : confirme developpable.** `COMP-4` et `COMP-7` tombent comme conditions bloquantes,
+  `COMP-1`, `COMP-2`, `COMP-3` et `COMP-5` restent inchangees et bloquantes. Elle l'ecrit sans
+  ambiguite : *"le blocage que j'avais pose sur la story est leve - elle est developpable"*. Je
+  releve donc, section 4 ci-dessus, la mention "conditionnel" en "confirme" pour cette ligne (voir
+  point 3 ci-dessous pour la nuance qui reste).
+- **Obstacle technique de `S13-3` deja route (section 2 ci-dessus, "garde-fous de rang lisant
+  l'entier de tete") : perime, verifie par moi contre le code, pas seulement contre son dire.** Elle
+  ecrit avoir relu `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`
+  (`adapters/adapter-content/src/test/java/com/recreo/adapter/content/`) et y avoir trouve
+  `dureeEnMinutes`/`lireValeur`, qui lisent deja une duree en minutes avant toute lecture de nombre
+  nu, et un `rangDe` qui rend `null` sur un conflit de valeurs plutot que de classer silencieusement
+  "la plus petite". **Verifie par moi-meme, independamment, dans le fichier cite** : les deux
+  methodes existent telles qu'elle les decrit (`grep -n "dureeEnMinutes\|lireValeur\|rangDe"` sur ce
+  fichier, lu en entier autour des occurrences). **L'obstacle que j'avais route a `theo-archi` et
+  `yanis-qa`, section 2 et "Ce que je route" ci-dessus, n'a donc plus d'objet** : le garde-fou de
+  rang est deja correct pour ce contenu, sans qu'aucun code n'ait ete touche par cette decision ni
+  par la sienne.
+
+### 2. Ce qui converge sur la capacite, sans que j'aie besoin de changer mon chiffre
+
+`nadia-prof` avait d'abord tenu quatre paquets pour s22, sur un compte errone de s19 (elle comptait
+les paquets audites, pas ceux ayant atteint un Done pedagogique dans le sprint). Elle a verifie
+elle-meme contre la source primaire (`FICHE-bandit-manchot-nature-mot-cp.md` : Done prononce le
+2026-08-25, hors de s19) et corrige son propre chiffre a trois, aligne sur ma section 3. Je ne
+change donc rien a ma borne : elle est desormais verifiee deux fois, par deux methodes
+independantes, avec le meme resultat.
+
+### 3. Ce que je ne presume pas tranche, et que je repose a `sofia-sm` plutot que de le lire dans un fichier non commite
+
+`nadia-prof` note, dans son document, une divergence de portee entre sa premiere lecture (section
+1.4 de son fichier : l'arbitrage de l'utilisatrice porte sur l'indice seul, elle gardait le verdict
+et les propositions comme motifs de refus possibles) et ma section "Point de vigilance" ci-dessus,
+qui lit l'arbitrage plus largement ("un element du jeu - indice, verdict, proposition"). Elle ecrit
+qu'elle n'oppose pas sa lecture et qu'elle applique la mienne des lors que ce document est commite -
+**mais je constate, en relisant ma propre section "Point de vigilance", que ma formulation va
+au-dela de ce qui m'a ete rapporte mot pour mot a l'ouverture du sprint** ("le motif 'indice sous le
+pli'"). Le fichier de `nadia-prof` porte, au moment ou j'ecris cet amendement, des annotations non
+commitees affirmant que l'utilisatrice aurait deja tranche cette lecture large - je ne les reprends
+pas ici : un etat non commite n'est pas une decision au sens de la regle de gouvernance de ce depot,
+quelle que soit la personne qui l'a ecrit.
+
+**Ce que je fais donc, plutot que de trancher a sa place ou de presumer un arbitrage que je n'ai pas
+vu ecrit** : je maintiens ma lecture large dans ce document (elle reste ma meilleure lecture de la
+phrase de l'utilisatrice, "le pli sort de la porte pedagogique, pour tout le catalogue"), et je
+demande explicitement a `sofia-sm` de faire confirmer par l'utilisatrice, dans un fichier commite,
+si cette lecture large couvre bien la visibilite du verdict et des propositions avant reponse
+(`COMP-4`), et pas seulement celle de l'indice apres une erreur (`REP-8`) - avec la consequence que
+`nadia-prof` nomme elle-meme et que je reprends sans l'affaiblir : **sous la lecture large, un jeu
+ou l'enfant presse un bouton sans recevoir aucun retour visible pourrait obtenir un Done
+pedagogique**, ce qui etait exactement le motif de son `REFUSE` sur `cm1-reperes` a s20. Tant que
+cette confirmation n'est pas ecrite, je garde le statut "confirme developpable" sur `S17-2` (point 1
+ci-dessus, sur la seule foi du jugement pedagogique de `nadia-prof`, qui ne depend pas de cette
+question de portee), mais je ne fais pas passer la mention de perimetre de mon tableau de section 4
+au-dela de "conditionnel" tant que la portee exacte de l'arbitrage n'est pas ecrite dans un fichier
+commite.
+
+**Nuance neuve versee par `nadia-prof` sur `S17-2`, a porter dans la story plutot qu'a trancher
+ici** : sa propriete n'est plus "visible sans defiler" mais "relisible" - un texte qu'on rejoint en
+faisant defiler satisfait sa competence, un texte qu'on ne peut pas rejoindre du tout ne la
+satisfait pas. Elle ne refusera pas dessus a s22, mais demande qu'un Done eventuel nomme la
+propriete non couverte ("l'enfant peut avoir a memoriser le texte pour repondre") si elle n'est pas
+tenue. Je verse cette nuance a la story `S17-2` plutot que de l'arbitrer moi-meme.
+
+### Impact de cet amendement
+
+- Ce fichier : section ajoutee, rien reecrit au-dessus.
+- `docs/backlog/backlog.md` : note ajoutee sur `S13-3` (obstacle technique du garde-fou de rang
+  ferme, verifie contre le code) et sur `S17-2` (confirme developpable sur le fond pedagogique,
+  portee exacte de l'arbitrage encore a confirmer).
+- `squad/conformite/FICHE-bandit-manchot-problemes-durees-cm1.md` : note de fermeture de l'obstacle
+  technique.
+- Route a `sofia-sm` : faire confirmer par l'utilisatrice, dans un fichier commite, la portee exacte
+  de l'arbitrage 1 (indice seul, ou aussi verdict et propositions), avec la consequence nommee par
+  `nadia-prof` ci-dessus.

@@ -4000,13 +4000,21 @@ ces deux lignes avant que le code ne commence, sur le meme modele que le sprint 
   (`squad/conformite/ARBITRAGE-PREALABLE-s13-multiplications-divisions-et-durees-cm1.md`, section 3,
   conditions `D-1` a `D-11`) - le paragraphe precedent restait perime depuis huit sprints, corrige
   ici plutot que laisse en l'etat. La ligne ouvre en entier sur les deux formes nommees par le
-  referentiel, verrou de `DEC-0030` leve, **zero code ecrit depuis**. Un obstacle technique est
-  signale d'avance par le meme arbitrage (section 3.6) : les deux garde-fous de rang lisent l'entier
-  de tete d'une proposition et classeraient `1 h 30` sous `45 min` sur ce contenu - route a
-  `theo-archi` et `yanis-qa`, ne bloque pas l'ecriture du contenu, conditionne la lecture de la CI a
-  la review. Story affectee au planning de s22 (`DEC-0053`), priorite 2 de son perimetre.
-- **Agent pressenti** : a affecter au planning par `sofia-sm`, apres l'avis de faisabilite de
-  `theo-archi` (arbitrage pedagogique deja rendu, ne bloque plus le code).
+  referentiel, verrou de `DEC-0030` leve, **zero code ecrit depuis**. Un obstacle technique avait ete
+  signale d'avance par le meme arbitrage (section 3.6) : les deux garde-fous de rang liraient
+  l'entier de tete d'une proposition et classeraient `1 h 30` sous `45 min` sur ce contenu.
+- **Mise a jour du 2026-08-28 (meme jour, `camille-po`) - obstacle ferme, verifie contre le code.**
+  `nadia-prof` a relu `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`
+  (`adapters/adapter-content/src/test/java/com/recreo/adapter/content/`) et signale que
+  `dureeEnMinutes`/`lireValeur` lisent deja une duree en minutes avant toute lecture de nombre nu, et
+  que `rangDe` rend `null` sur un conflit de valeurs plutot que de classer silencieusement "la plus
+  petite" (`DEC-0053`, amendement du 2026-08-28). **Verifie par moi-meme dans le fichier cite** :
+  les deux methodes existent telles que decrites. L'obstacle ci-dessus n'a donc plus d'objet ; rien
+  n'est route a `theo-archi`/`yanis-qa` sur ce point.
+- Story affectee au planning de s22 (`DEC-0053`), priorite 2 de son perimetre.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` (arbitrage pedagogique deja rendu et
+  obstacle technique ferme, plus rien ne bloque le code hors l'avis de faisabilite habituel de
+  `theo-archi`).
 
 ### S13-4 - Correction de reserve - Un enonce des tables de multiplication ne revient plus une partie
 ### sur cinq
@@ -4865,6 +4873,21 @@ story est **affectee au planning de s22** comme troisieme candidate de priorite 
 4), sans attendre l'arbitrage de mise en page ou de mecanisme nomme au paragraphe precedent - il
 n'a alors plus d'objet. Si elle ne confirme pas, cette story reste hors du perimetre de s22, dans
 les memes termes qu'a la sortie de s17.
+
+**Mise a jour du 2026-08-28 (meme jour, `camille-po`) - `nadia-prof` confirme sur le fond, une
+question de portee reste a fermer avant de considerer la ligne definitivement debloquee.**
+`nadia-prof` a relu ses propres conditions (`squad/conformite/PORTE-PEDAGOGIQUE-apres-arbitrage-du-
+2026-08-28.md`, section 3.3) : `COMP-4` et `COMP-7` tombent, `COMP-1`, `COMP-2`, `COMP-3` et
+`COMP-5` restent inchangees et bloquantes, et elle ecrit *"le blocage que j'avais pose sur la story
+est leve - elle est developpable"*. **Story confirmee developpable sur le fond pedagogique.** Reste
+ouverte, et non tranchee dans un fichier commite au moment ou j'ecris, la question de savoir si
+l'arbitrage 1 couvre la meme portee que celle que `nadia-prof` a jugee (question posee et non
+prejuge par moi, `DEC-0053`, amendement du 2026-08-28) - `sofia-sm` porte cette confirmation a
+l'utilisatrice avant de considerer le perimetre de la ligne definitivement ferme. Nuance versee par
+`nadia-prof` a porter dans cette story : sa propriete n'est plus "visible sans defiler" mais
+"relisible" - un texte qu'on rejoint en faisant defiler satisfait sa competence ; elle demande
+qu'un Done eventuel nomme la propriete non couverte si l'enfant doit memoriser le texte pour
+repondre.
 
 ### S17-3 - Synonymes en contexte (francais CM1, couverture partielle nommee, jamais couvert-valide sur ce seul paquet)
 
