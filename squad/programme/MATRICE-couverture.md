@@ -86,7 +86,7 @@ Source : `squad/programme/mathematiques/competences-cp.md`.
 | mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Resoudre des problemes simples d'addition/soustraction en situation (1 etape) | bandit-manchot-problemes-additifs-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets | - | - | non couvert |
-| mathematiques | CP | Grandeurs et mesures | Comparer des longueurs, des masses, des contenances (sans instrument gradue) | - | - | non couvert |
+| mathematiques | CP | Grandeurs et mesures | Comparer des longueurs, des masses, des contenances (sans instrument gradue) | bandit-manchot-comparer-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Grandeurs et mesures | Se reperer dans la journee, la semaine ; lire l'heure pleine sur une horloge | - | - | non couvert |
 | mathematiques | CP | Espace et geometrie | Se reperer et decrire des deplacements sur un quadrillage simple | - | - | non couvert |
 | mathematiques | CP | Espace et geometrie | Reconnaitre et nommer quelques figures planes (carre, rectangle, triangle, cercle) | - | - | non couvert |
@@ -482,7 +482,7 @@ Source : `squad/programme/francais/competences-cp.md`.
 
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
-| francais | CP | Langage oral et conscience phonologique | Denombrer les syllabes orales d'un mot (segmentation syllabique) | - | - | non couvert |
+| francais | CP | Langage oral et conscience phonologique | Denombrer les syllabes orales d'un mot (segmentation syllabique) | bandit-manchot-syllabes-cp | bandit manchot | couvert-valide |
 | francais | CP | Langage oral et conscience phonologique | Localiser une syllabe dans un mot (debut / milieu / fin) | - | - | non couvert |
 | francais | CP | Langage oral et conscience phonologique | Identifier un son (phoneme) dans un mot | - | - | non couvert |
 | francais | CP | Lecture et comprehension de l'ecrit | Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...) | bandit-manchot-le-bon-son-cp | bandit manchot | en cours |
@@ -2310,3 +2310,48 @@ comme reprise de ce paquet.
 **Ce qui ne bouge pas.** Le geste materiel sur `catalogue.yaml` (retour de l'entree
 `bandit-manchot-reperes-cm1`) est execute par `sofia-sm`, pas par ce document. Aucune autre ligne de
 cette matrice ne bouge par ce mouvement.
+
+## Amendement du 2026-08-28 (s21, cloture) - `cp-comparer` et `cp-syllabes` VALIDE SOUS RESERVE, 17/43 (39,5 %) ; une ligne reste decrite sans etre deplacee
+
+`nadia-prof` a rendu son Done pedagogique de s21 le 2026-08-28 (branche `s21-nadia-2`, commit
+`18d1220`) : `bandit-manchot-comparer-cp` **VALIDE SOUS RESERVE** (dix conditions sur dix tenues, 18
+items sur 18 decidables, sept reserves non bloquantes) ; `bandit-manchot-syllabes-cp` **REFUSE**
+puis, apres arbitrage de l'utilisatrice sur l'item `CHEMINEE` (*"cheminee vaut bien 3 syllabes"*) et
+amendement de `SEG-1` clause (c), verdict repris le meme jour (commit `4326f3b`) en **VALIDE SOUS
+RESERVE** ; `bandit-manchot-mot-manquant-cp` **REFUSE**, verdict inchange. Detail complet et
+verification personnelle avant de faire bouger une ligne : `DEC-0052`.
+
+**"Comparer des longueurs, des masses, des contenances (sans instrument gradue)"** (mathematiques
+CP) et **"Denombrer les syllabes orales d'un mot (segmentation syllabique)"** (francais CP) passent
+`non couvert` -> `couvert-valide`.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide | non couvrable en l'etat |
+|---|---|---|---|---|---|
+| mathematiques CP | 11 | 5 | 1 | 5 | 0 |
+| mathematiques CM1 | 12 | 4 | 2 | 4 | 2 |
+| francais CP | 12 | 8 | 1 | 2 | 1 |
+| francais CM1 | 12 | 5 | 0 | 6 | 1 |
+| **Total** | **47** | **22** | **4** | **17** | **4** |
+
+**Le chiffre, avec sa base, verifie ligne par ligne contre les quatre tableaux de matiere de cette
+matrice avant d'etre ecrit (2026-08-28), pas repris d'un autre document du depot.** Le denominateur
+atteignable reste **43** sur **47**, inchange. Le compte de lignes `couvert-valide` passe de **15**
+a **17**. **15/43 (34,9 %) devient 17/43 (39,5 %)**.
+
+**Sur la ligne "Denombrer les syllabes orales d'un mot", dans les mots de `nadia-prof` que je
+reprends sans les affaiblir** : elle ouvre **une ligne sur trois** du domaine "Langage oral et
+conscience phonologique" ; les deux autres restent hors d'atteinte sans emission de son
+(`DEC-0042`, arbitrage 2). **Ne pas lire ce mouvement comme l'ouverture du domaine.**
+
+### La ligne 496 reste `non couvert` : ou elle en est, ce qui manque pour bouger
+
+**Ligne 496 - "Utiliser des mots precis pour designer des objets, actions, sensations du
+quotidien".** Le paquet `bandit-manchot-mot-manquant-cp` (`S21-10`) existe et a ete audite,
+**REFUSE** sur deux motifs de contenu entiers (item 6 ; items 3 et 4, `PRE-2` et `PRE-3`) et
+**retire du catalogue** (`DEC-0052`, section 3). `lea-dev` corrige les items concernes. **Ce qui
+manque pour que cette ligne bouge** : la correction livree, puis un reaudit de `nadia-prof` qui ne
+nomme plus les deux motifs.
+
+**Ce que ce document ne fait pas.** Il ne prononce aucun Done pedagogique lui-meme, ne prejuge pas
+du reaudit a venir sur `cp-mot-manquant`, et ne fait bouger aucune autre ligne que les deux nommees
+ci-dessus.

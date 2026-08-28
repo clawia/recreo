@@ -6255,11 +6255,11 @@ meme affectation est redirigee vers un travail qui ferme reellement quelque chos
   confirmee technique ; non affectee a s21 par ce document faute de capacite nommee sur ces deux
   agents ce sprint.
 
-### Obstacle transverse route depuis `S21-8` - `explication` n'est atteignable que par un detour propre au francais
+### Obstacle transverse - le canal `explication` n'est atteignable que par un detour propre au francais (inchange)
 
 `nadia-prof` route depuis `S21-8` (arbitrage prealable du volume CP) un constat qui n'est ni un
-motif de refus ni une story de s21 : `cp-syllabes`, que `marc-dev` ecrit en ce moment, n'aura aucun
-texte d'explication apres une reponse, quelle qu'elle soit.
+motif de refus ni une story de s21 : `cp-syllabes` n'a aucun texte d'explication apres une reponse,
+quelle qu'elle soit.
 
 **Ce que le depot dit deja, verifie ce jour.** `ADR-0024` fait porter `explication` par le verdict
 d'un item, mais seulement quand le paquet declare une `graphie` qui differe de la bonne reponse -
@@ -6283,7 +6283,7 @@ pedagogique generique (le texte affiche apres une reponse) n'est en pratique acc
 seule famille de contenu. C'est une forme plus etroite que la dette 2 de la version precedente
 (une configuration entiere taillee pour une matiere) mais de la meme famille : un mecanisme neuf,
 ouvert pour un seul besoin constate, se revele fermer les besoins suivants plutot que de rester
-neutre. **Cela ne bloque pas `cp-syllabes` a s21** : l'indice reste disponible apres trois echecs,
+neutre. **Cela ne bloque pas `cp-syllabes`** : l'indice reste disponible apres trois echecs,
 generique et independant de `graphie` (`S3-2`, `S3-3`), donc l'enfant n'est pas prive de toute aide
 - seulement de l'explication affichee apres chaque reponse, que seuls les paquets a variation
 phonique portent aujourd'hui. Je ne tranche pas comment l'ouvrir (elargir le perimetre du
@@ -6291,8 +6291,191 @@ garde-fou d'`ADR-0024`, ou concevoir un second canal declare par le paquet sans 
 `graphie`) : c'est un choix d'architecture, pas un choix de contenu.
 - **Competence programme visee** : transverse - pas de contenu pedagogique.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, vers `theo-archi` pour instruire les
-  options ; non affectee a s21 (ni motif de refus, ni story, selon `nadia-prof` elle-meme,
-  `ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md`).
+  options ; non affectee.
+
+### `SEG-10` (requalifiee, 2026-08-28) - le retour apres une bonne reponse est attache au mauvais mot, defaut de mecanique et non de contenu
+
+**Ce que j'avais route ici jusqu'a la cloture de s21 traitait `cp-syllabes` comme prive de retour
+pedagogique par construction (aucun canal `explication` accessible).** `nadia-prof` a joue le
+paquet et corrige ce fait : le retour **existe**, mais il est **mal place**. La mecanique re-rend
+l'ecran entier avec le mot suivant a chaque manche, si bien que le "Bravo !" du mot repondu
+s'affiche a cote du mot d'apres. Releve textuel du 2026-08-27, apres une bonne reponse sur
+`CADEAU` : *"Score : 1 / Tape dans tes mains. Combien de syllabes ? / COUSSIN / 1 3 2 / Bravo !"* -
+`CADEAU` n'est plus a l'ecran (`squad/conformite/FICHE-bandit-manchot-syllabes-cp.md`, `SEG-10`).
+
+- **Besoin** : en tant qu'eleve de CP qui vient de compter juste le nombre de syllabes d'un mot, je
+  veux voir le signal qui confirme ma reussite a cote du mot que je viens de compter, afin de
+  savoir ce que j'ai reussi plutot que de recevoir un encouragement associe au mot suivant.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Le defaut est dans la
+  mecanique du bandit manchot (le re-rendu de l'ecran entier a l'avancee de manche), pas dans un
+  paquet de contenu.
+- **Pourquoi ce n'est pas seulement un defaut de `cp-syllabes`, et pourquoi je le requalifie plus
+  grave que l'obstacle `explication` ci-dessus** : `nadia-prof` l'ecrit elle-meme, *"le defaut est
+  dans la mecanique, partagee par vingt autres jeux deja valides, pas dans ce paquet"*. Sur les
+  paquets ou la bonne reponse se suffit a elle-meme (un calcul, une comparaison), l'association au
+  mauvais item est invisible parce que rien ne distingue un "Bravo !" generique d'un autre. Sur
+  `cp-syllabes`, ou l'enseignement **est** la segmentation du mot qu'on vient de compter, le defaut
+  devient visible : il n'existe aucun instant ou le mot et son compte sont montres ensemble, ni
+  pendant la partie, ni sur l'ecran de fin (`SEG-11`, ci-dessous, meme fiche).
+- **Criteres d'acceptation** :
+  - Etant donne un enfant qui vient de repondre juste sur un item, quand l'ecran suivant se rend,
+    alors le signal de reussite ("Bravo !" ou equivalent) reste associe au mot ou a l'item qui
+    vient d'etre resolu, jamais a l'item suivant deja affiche.
+  - Etant donne les vingt et un jeux servis par la mecanique du bandit manchot, quand on rejoue une
+    manche apres une bonne reponse sur chacun, alors aucun ne montre le signal de reussite a cote
+    d'un enonce, d'une consigne ou d'un contenu different de celui qui vient d'etre resolu.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que le moment ou le mot et sa coupe syllabique restent visibles ensemble soit
+    suffisant pour que l'enfant relie sa reponse au mot compte.
+- **Lien decision** : `DEC-0052`, section 4 ; `squad/conformite/FICHE-bandit-manchot-syllabes-cp.md`
+  (`SEG-10`, `SEG-11`).
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, vers `theo-archi` (mecanique) ;
+  `nadia-prof` pour confirmer que la correction ferme le defaut sur `cp-syllabes`.
+
+### `SEG-13` (neuve, 2026-08-28) - sur `cp-syllabes`, la forme de l'indice trahit la reponse sur cinq items sur seize
+
+- **Besoin** : en tant qu'eleve de CP qui s'est trompe sur un mot d'une syllabe, je veux un indice
+  qui m'aide a recompter plutot qu'un indice dont la simple forme me dit deja la reponse sans que
+  j'aie besoin de compter.
+- **Competence programme visee** : francais, CP (cycle 2), "Denombrer les syllabes orales d'un mot
+  (segmentation syllabique)" (`squad/programme/francais/competences-cp.md`, ligne 9).
+- **Constat, dans les mots de `nadia-prof`** (`FICHE-bandit-manchot-syllabes-cp.md`, reserve
+  `SEG-13`, verifie mecaniquement le 2026-08-28) : le paquet emploie deux familles d'indice qui se
+  partagent exactement selon la reponse - un indice de procede (*"Tape dans tes mains en disant le
+  mot tout doucement."*) sur les cinq items dont la reponse est `1`, un indice *"Ce mot commence
+  par << xx >>."* sur les onze items dont la reponse est `2` ou `3`. La partition est parfaite : un
+  enfant qui a echoue une fois et qui recoit un indice de procede peut en deduire `1` sans compter
+  une seule syllabe.
+- **Ce que `nadia-prof` precise** : ce n'est pas une violation de `SEG-7` (elle avait elle-meme
+  autorise ce partage, les mots d'une syllabe ne pouvant recevoir un indice qui nomme leur premiere
+  syllabe sans nommer le mot entier) ; c'est un effet non vu du partage, de la meme famille que le
+  defaut refuse a s19 sur `cp-nature-mot` (une regularite de systeme qui rend la reponse sans faire
+  la tache).
+- **Criteres d'acceptation** :
+  - Etant donne les cinq items de `cp-syllabes` dont la bonne reponse est `1`, quand on relit leurs
+    indices, alors au moins une partie d'entre eux emploie une formulation du type "Ce mot commence
+    par..." plutot qu'exclusivement une formulation de procede - sur le modele deja demontre dans
+    ce meme paquet pour brasser les formulations entre 2 et 3 syllabes.
+  - Etant donne le paquet corrige, quand on lit la forme de chaque indice, alors elle ne permet
+    plus de deduire la bonne reponse sans compter, sur aucune des seize valeurs possibles.
+  - Etant donne le paquet corrige, quand on relit ses seize items, alors le mot, sa coupe et sa
+    bonne reponse restent inchanges - seule la formulation des indices bouge.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'un enfant qui a echoue une fois ne puisse plus deduire la reponse de la seule
+    forme de l'indice.
+- **Lien decision** : `DEC-0052`, section 4.
+- **Agent pressenti** : `marc-dev`, a la suite de `S21-9`. `nadia-prof` pour le reaudit.
+
+### Story corrective - `bandit-manchot-mot-manquant-cp` reste refuse, deux items a corriger avant reaudit
+
+- **Besoin** : en tant qu'eleve de CP qui joue a "Le mot qui manque" et qui choisit un mot juste,
+  je veux que l'application reconnaisse ma reponse quand elle est vraiment defendable, afin de ne
+  pas apprendre qu'une bonne reponse a moi est une erreur.
+- **Competence programme visee** : francais, CP (cycle 2), "Utiliser des mots precis pour designer
+  des objets, actions, sensations du quotidien" (`squad/programme/francais/competences-cp.md`,
+  ligne 34).
+- **Statut** : le paquet est **REFUSE** par `nadia-prof` le 2026-08-28
+  (`squad/conformite/FICHE-bandit-manchot-mot-manquant-cp.md`) et **retire du catalogue**
+  (`DEC-0052`, section 3). Onze items sur seize tiennent deja `PRE-2`, et la famille "sensations"
+  (cinq items) est, dans ses mots, *"le meilleur travail de vocabulaire du catalogue CP"* : la
+  reprise porte sur deux motifs precis, pas sur le paquet entier.
+- **Criteres d'acceptation, repris verbatim du motif du refus, sans les affaiblir** :
+  - Etant donne l'item 6 (*"La nuit, Tom allume sa ___."*, propositions `lampe`/`radio`/`tele`),
+    quand on relit l'enonce corrige, alors un seul des trois mots reste defendable - correction
+    demandee par l'ajout a l'enonce du seul element de sens qui manque, sans toucher aux trois
+    propositions.
+  - Etant donne l'item 3 (*"Lea dessine avec un ___."*, propositions `crayon`/marteau/couteau),
+    quand on relit les distracteurs corriges, alors ils appartiennent au champ "instrument pour
+    tracer", du meme champ que la bonne reponse `crayon`.
+  - Etant donne l'item 4 (*"Sous la pluie, Tom prend son ___."*, propositions
+    `parapluie`/ballon/tapis), quand on relit l'item corrige, alors soit les distracteurs
+    appartiennent au champ de la bonne reponse `parapluie`, soit l'enonce ne contient plus le mot
+    *pluie* (fuite morphologique nommee par `nadia-prof`, item 4 seulement).
+  - Etant donne le paquet corrige, quand on le relit en entier, alors les treize autres items
+    restent inchanges, y compris les cinq items de la famille "sensations" et les cinq de la
+    famille "actions", que `nadia-prof` juge deja bons.
+  - Etant donne le paquet corrige, quand on le rend a la reference du produit (744 x 551,
+    `DEC-0040`), alors les seize items restent entierement au-dessus du pli, verdict et indice
+    compris (deja tenu a 16 sur 16 avant correction, non-regression exigee).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que les distracteurs neufs restent effectivement plausibles pour un enfant de
+    six ans, ni trop absurdes ni trop proches de trahir la reponse.
+- **Lien decision** : `DEC-0052`, section 3 ; `FICHE-bandit-manchot-mot-manquant-cp.md`, section 3.
+- **Agent pressenti** : `lea-dev` (correction deja engagee). `nadia-prof` pour le reaudit, qui
+  conditionne le retour au catalogue (`DEC-0045` section 2).
+
+### Sept reserves versees en stories - `bandit-manchot-comparer-cp`, `VALIDE SOUS RESERVE`, aucune bloquante
+
+`bandit-manchot-comparer-cp` (`S21-11`) est **VALIDE SOUS RESERVE** depuis le 2026-08-28
+(`squad/conformite/FICHE-bandit-manchot-comparer-cp.md`) : dix conditions sur dix tenues, 18 items
+sur 18 decidables, aucune erreur factuelle. Sept reserves non bloquantes sont versees ici, comme la
+fiche le demande explicitement (*"les sept reserves `GRA-11` a `GRA-17` deviennent des stories par
+`camille-po`. Je produis des motifs, je n'ecris pas le backlog"*).
+
+**Besoin commun aux sept** : en tant qu'eleve de CP qui joue a "Compare les grandeurs", je veux que
+les mots et les indices que je lis soient de mon niveau et m'aident vraiment, afin que le jeu reste
+une tache de comparaison et non un obstacle de lecture ou une source de fausse regle.
+
+**Competence programme visee** : mathematiques, CP (cycle 2), "Comparer des longueurs, des masses,
+des contenances (sans instrument gradue)" (`squad/programme/mathematiques/competences-cp.md`,
+ligne 19).
+
+- **`GRA-11` - le libelle `thermos` n'est pas lisible par un lecteur de CP** (item 18). Critere :
+  etant donne l'item 18, quand on remplace `thermos` par un mot du meme champ que sait lire un
+  enfant de CP (`nadia-prof` cite `gourde`, deja dans le paquet), alors la comparaison porte sur le
+  meme triplet d'objets qu'avant, sans changer la reponse attendue.
+- **`GRA-12` - le titre du jeu ("Compare les grandeurs") emploie un mot d'adulte sur la carte que
+  l'enfant choisit**, a cote de "Compare les nombres". Critere : etant donne le titre du jeu tel
+  qu'affiche sur l'ecran d'accueil, quand on le relit, alors il ne repose plus sur le seul mot
+  `grandeurs` pour se distinguer de "Compare les nombres" - sans qu'aucun mot soit dicte ici.
+- **`GRA-13` - quatre chaines d'enonce servent trois items chacune**, et une partie de dix manches
+  en tire regulierement deux identiques (six manches sur dix observees). Critere : etant donne les
+  dix-huit enonces du paquet, quand on en relit le texte, alors le nombre de chaines d'enonce
+  distinctes augmente sans changer la grandeur, le sens ("le plus"/"le moins") ni la bonne reponse
+  d'aucun item.
+- **`GRA-14` - deux paires d'items sont proches au point de faire double emploi** (items 8/10 :
+  meme question, meme distracteur `brique`, `pierre` et `caillou` quasi identiques pour un enfant
+  de six ans ; items 16/17 : meme grandeur, sens inverse, deux objets communs sur trois). Critere :
+  etant donne ces deux paires, quand on remplace au moins un objet de chaque paire, alors les
+  quatre items restent decidables (`GRA-3`) et le triplet reste unique (`GRA-5`), non regresses.
+- **`GRA-15` - l'indice de l'item 9 enseigne une regle fausse** (*"Pense a la taille de chaque
+  animal pour deviner son poids."*, alors que la taille ne donne pas la masse - la confusion meme
+  que la competence existe pour defaire). Critere : etant donne l'indice de l'item 9, quand on le
+  reformule, alors il n'associe plus la taille au poids, sur le modele deja retenu par l'item 7 du
+  meme paquet (*"Imagine que tu portes chaque animal dans tes bras."*).
+- **`GRA-16` - deux indices ne font que reformuler l'enonce** (items 14 et 15), sans rien apprendre
+  de neuf a un enfant qui a echoue. Critere : etant donne les indices de ces deux items, quand on
+  les reformule, alors chacun apporte un element que l'enonce ne donne pas deja (sur le modele des
+  indices de contenance deja bien formes dans le paquet).
+- **`GRA-17` - la consigne du catalogue ("Regarde bien, puis compare.") n'apprend rien** a l'enfant
+  sur quoi comparer ni comment, a la difference de "Tape dans tes mains. Combien de syllabes ?" sur
+  `cp-syllabes`. Non bloquant : l'enonce de chaque item suffit. Critere : etant donne la consigne du
+  catalogue pour ce jeu, quand on la reformule, alors elle nomme le geste attendu (comparer deux ou
+  trois objets sur une grandeur) sans allonger le texte au point de risquer le pli.
+
+**Ce qui n'est testable par aucun automate et releve de la seule porte pedagogique de
+`nadia-prof`, pour les sept** : que les reformulations retenues restent effectivement plus claires,
+plus lisibles ou plus justes pour un enfant de six ans - `nadia-prof` ne dicte aucune des sept
+formulations, elle pose la barre.
+
+- **Lien decision** : `DEC-0052`, section 5 ; `FICHE-bandit-manchot-comparer-cp.md`, section 5.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`. `sofia-sm` (casquette developpeuse,
+  auteure du paquet) ou toute autre developpeuse pour la reprise ; `nadia-prof` pour confirmer que
+  chaque reformulation ferme sa reserve sans en ouvrir une neuve. Aucune n'est bloquante : aucune
+  n'empeche le jeu de rester expose pendant la reprise (`DEC-0045`, section 3).
+
+### Note - `contenu-repris/mots/cp-premiere-lettre.yml`, artefact d'accent trouve en mesurant, matiere de reserve non servie
+
+`nadia-prof` a trouve, en mesurant le corpus CP du depot pour amender `SEG-1` (section 10.2 de
+l'arbitrage prealable), que `contenu-repris/mots/cp-premiere-lettre.yml`, ligne 32, porte `"VELO"`
+en capitale privee de son accent (`VÉLO` attendu). **Ce fichier n'est pas servi** : il fait partie
+de la reserve `contenu-repris/`, classe en niveau 2 dans `DEC-0051` (candidat sur "Identifier un
+son (phoneme) dans un mot", arbitrage prealable de `nadia-prof` requis avant tout developpement, la
+correspondance lettre initiale / phoneme n'etant pas tranchee). Aucun enfant n'est expose a cet
+artefact aujourd'hui. Je le note ici pour qu'il soit corrige si ce fichier remonte comme matiere
+d'un paquet, plutot que de le laisser se reperdre dans la reserve.
+- **Lien decision** : `DEC-0051`, section 4 (niveau 2) ; `DEC-0052`, section 4.
+- **Agent pressenti** : sans objet tant que ce fichier n'est pas retenu pour un developpement.
 
 ## Backlog - perimetre volume s21, contenu-repris classe par gain de couverture (intentions non detaillees, `DEC-0051`)
 
