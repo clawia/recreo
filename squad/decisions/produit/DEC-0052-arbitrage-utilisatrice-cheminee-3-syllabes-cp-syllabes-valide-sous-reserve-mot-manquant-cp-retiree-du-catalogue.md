@@ -243,3 +243,151 @@ une preuve de qualite pedagogique.
 - `squad/decisions/produit/DEC-0051-...md` : troisieme amendement ajoute (population reelle du
   catalogue, 478 items, distincte des chiffres precedents) - trace separement pour ne pas melanger
   deux sujets dans un seul document.
+
+## Amendement du 2026-08-28 (second, `camille-po`) - le refus fondant le retrait de `mot-manquant-cp` est leve ; le retrait n'a plus d'objet
+
+**Rien ci-dessus n'est reecrit.** La section 3 reste telle qu'elle a ete ecrite, sur l'etat qui
+etait le sien : elle a ete prise sur un refus reel, mesure, et sa trace vaut - c'est la meme
+discipline que `nadia-prof` applique a ses propres refus, conserves dates sous un bandeau disant
+qu'ils ne fondent plus rien.
+
+### Ce qui s'est passe, verifie contre la source primaire
+
+`lea-dev` a corrige l'item 3 de `cp-mot-manquant` (`4543d8d` sur `s21-lea-3`, un seul champ :
+l'enonce devient *"Avant de dessiner, Lea taille son ___."*, distracteurs et bonne reponse
+inchanges). Entre-temps, un premier correctif (`fabd6cb`) avait deja ferme les motifs des items 6
+et 4, mais rouvert `PRE-3` sur l'item 3 lui-meme (`feutre` et `pinceau` devenus des reponses
+defendables sur l'enonce non corrige) - `nadia-prof` avait alors maintenu le refus (`c9190ea`,
+**REFUS MAINTENU**, 2026-08-28 10:14:49). Elle a reaudite `4543d8d` **en jouant**, presse chacune
+des trois propositions de l'item 3 a l'ecran, et prononce **`VALIDE SOUS RESERVE`** (`2d2cea9`,
+2026-08-28 10:44:00) : *"Je leve le refus : le motif du retrait de `DEC-0052` tombe."*
+
+**Chronologie complete, verifiee sur les horodatages de commit** : premier `REFUSE` a 09:08:36,
+correction insuffisante `fabd6cb` a 09:57:44, `REFUS MAINTENU` a 10:14:49, correction `4543d8d` a
+10:28:41, `VALIDE SOUS RESERVE` a 10:44:00. **Un peu moins d'une heure et demie separe le premier
+refus du verdict qui le leve**, et le paquet est reste reellement defectueux (motif ouvert, pas
+seulement refuse sur le papier) pendant plus d'une heure de cette fenetre.
+
+### Ce que cela change ici, et pourquoi ce n'est pas une reevaluation de ma decision
+
+**Le retrait que je prescrivais en section 3 n'a plus d'objet : le refus qui le fondait n'existe
+plus.** Ce n'est pas moi qui ai change d'avis sur l'etat que j'avais sous les yeux le 2026-08-28 au
+matin - cet etat (deux motifs de contenu entiers, aucune autorite ne les ayant dits corrects)
+rendait le retrait immediat la seule decision defendable, et je la referais a l'identique sur cet
+etat-la. **C'est l'etat qui a change, par une correction intra-sprint, pas par une reevaluation de
+mon raisonnement.**
+
+**Le geste materiel n'a jamais ete execute.** `sofia-sm` l'a retenu - une decision qui lui
+appartient, sur l'execution, pas sur le fond - le temps de la correction de `lea-dev`, precisement
+pour eviter de retirer une entree et de la remettre dans l'heure. `nadia-prof` le confirme : *"le
+geste ayant ete retenu, il n'y a rien a restaurer - retirer l'entree l'aurait fait remettre dans
+l'heure, exactement le cout d'aller-retour que `DEC-0052` invoquait."* **Il n'y a donc rien a
+executer et rien a annuler** : `catalogue.yaml` porte l'entree `bandit-manchot-mot-manquant-cp`
+depuis le debut du sprint, sans interruption, verifie ce jour.
+
+**Ce que je nomme sans le juger, parce que ce n'est pas mon perimetre** : la section 3 routait un
+retrait immediat, sans attendre une story, "dans le meme geste que la fusion de ce document" - et
+ce n'est pas le geste qui a eu lieu. `sofia-sm` a exerce une discretion d'execution que ma decision
+n'avait pas prevue. Je ne rejuge pas ce choix d'execution : il n'etait pas de mon ressort, et il
+s'est avere heureux sur cet etat-ci. Je le nomme parce que c'est un fait de gouvernance que la
+section suivante doit connaitre avant de trancher.
+
+## 8. `DEC-0045` section 3 doit-elle etre amendee ? Deux cas mesures, une conclusion : pas encore, et je dis pourquoi plutot que de trancher a l'aveugle
+
+**Les deux cas, mis cote a cote, avec leur duree et leur cout verifies sur les horodatages de
+commit et non estimes :**
+
+| | `cm1-reperes` (s20) | `mot-manquant-cp` (s21) |
+|---|---|---|
+| Regime applique | Retrait immediat, execute | Retrait retenu par `sofia-sm`, jamais execute |
+| Duree entre le refus et le verdict qui le leve | `86a1abd` (retrait, 2026-08-26 17:11:49) a `a266b4c` (retour, 2026-08-27 10:07:43) : **16 h 56 min** | `18d1220` (refus, 09:08:36) a `2d2cea9` (leve, 10:44:00) : **1 h 35 min**, dont plus d'une heure ou le paquet restait reellement defectueux (`c9190ea`, refus maintenu a 10:14:49) |
+| Cout materiel mesure | 2 editions de `catalogue.yaml`, 2 `DEC` (`DEC-0049`, `DEC-0050`), 1 test casse par l'edition et corrige le meme jour (`77dd467`, 17 minutes plus tard) | 0 edition de `catalogue.yaml`, aucun `DEC` d'execution (ce present amendement excepte), aucun test touche |
+| Risque d'exposition pendant la fenetre | Nul : le jeu etait hors catalogue tout du long | Reel, non materialise : le jeu est reste expose pendant que le motif restait ouvert (jusqu'a 10:14:49 au moins) |
+
+**Ce que ces deux cas ne permettent pas de conclure.** Le second cas n'est pas la preuve qu'une
+fenetre de grace est sure : c'est la preuve qu'**une fois**, un enfant n'a pas rencontre `feutre`
+ou `pinceau` sur l'item 3 pendant l'heure et quart ou la reponse correcte restait jugee fausse.
+Rien dans ce que j'ai mesure ne dit si cette fenetre aurait ete de vingt minutes ou de deux jours si
+le premier correctif de `lea-dev` n'avait pas efface deux motifs sur trois d'entree de jeu. **Fixer
+une borne aujourd'hui - deux heures, une demi-journee, "avant la fin du sprint" - reviendrait a
+ajuster une regle sur l'unique cas ou elle a bien fini**, exactement le defaut que `nadia-prof`
+vient de nommer contre elle-meme : *"un exemple se revele faux, une propriete se verifie."* Je ne
+veux pas ecrire une regle de gouvernance sur le meme mode que j'ai vu une condition pedagogique
+echouer trois fois ce sprint.
+
+**Je ne tranche donc pas d'amendement a `DEC-0045` section 3.** Elle reste telle qu'ecrite :
+retrait immediat sur `REFUSE`, sans fenetre de grace codifiee.
+
+**Ce que je verse a la retro, nomme precisement pour qu'elle n'ait pas a le redecouvrir** :
+
+1. **Le cout du regime actuel est reel et mesure deux fois** (2 editions et 1 test casse a s20 ;
+   1 fenetre d'exposition non materialisee mais reelle a s21) - une regle qui ne coute jamais rien
+   n'existe pas, et celle-ci a un cout des deux cotes selon comment elle est appliquee.
+2. **Une discretion d'execution existe deja dans les faits, non ecrite.** `sofia-sm` a retenu un
+   geste que ma decision routait en execution immediate. Qu'elle ait bien fait ne dit rien sur si
+   elle aurait du le pouvoir : une discretion non ecrite qui s'avere juste une fois est le meme
+   risque qu'une discretion non ecrite qui s'avere fausse la fois suivante - la seule difference
+   est laquelle des deux le depot a vue jusqu'ici.
+3. **La question a trancher n'est pas binaire.** Ce n'est pas "toujours immediat" contre "toujours
+   une fenetre" : c'est, si une fenetre existe, sur quel critere verifiable elle s'ouvre (ampleur du
+   motif restant, nombre d'items touches, existence d'une correction deja engagee) et sur quelle
+   borne elle se ferme obligatoirement - et cette conception a besoin de plus de deux cas, ou d'un
+   arbitrage delibere plutot que d'une regle inferee sous la pression de la cloture d'un sprint.
+
+**Ce que je ne fais pas** : je ne fixe aucune borne, je n'ecris aucun regime de maintien
+conditionnel, et je ne reproche rien a `sofia-sm` sur son choix d'execution - qui n'est pas mon
+perimetre de decision.
+
+## 9. Matrice de couverture - ligne 496
+
+`squad/programme/MATRICE-couverture.md` est mis a jour dans le meme geste que cet amendement :
+**ligne 496** ("Utiliser des mots precis pour designer des objets, actions, sensations du
+quotidien", francais CP) passe `non couvert` -> `couvert-valide` - Done pedagogique `VALIDE SOUS
+RESERVE` sur `bandit-manchot-mot-manquant-cp`, motif unique restant ferme, sept reserves non
+bloquantes. **Chiffre** : le compte de lignes `couvert-valide` passe de **17** a **18**. Le
+denominateur atteignable reste **43** sur **47**, inchange. **17/43 (39,5 %) devient 18/43
+(41,9 %)**.
+
+## 10. Deux reserves neuves versees au backlog
+
+`PRE-15` (*"impermeable"* hors de portee d'un lecteur de CP, appuyee par une mesure sur les 745 mots
+distincts du corpus CP du depot : 11 lettres, 5 syllabes, aucune occurrence ailleurs dans le
+corpus, contre *"taille"*, deja servi trois fois dans `cp-comparer.yaml`, 6 lettres, 1 syllabe) et
+`PRE-16` (l'indice de l'item 4 reformule l'enonce plutot que d'apporter un element neuf) sont
+versees en stories dans `docs/backlog/backlog.md`. Detail complet dans le backlog lui-meme.
+
+## 11. Le fait le plus lourd du sprint, et ce qu'il vaut pour mon propre chiffrage - complement a la section 6
+
+`nadia-prof` l'ecrit contre elle-meme, et je le retiens comme fait de capacite autant que de
+qualite : *"les trois paquets finissent le sprint valides ; aucun n'y est arrive du premier coup, et
+aucun n'a jamais achoppe sur la forme. Les quatre refus prononces ce sprint portaient tous sur le
+contenu... et la porte technique etait verte a 722 tests a chacun d'eux."* Et, contre elle-meme :
+*"sur ces quatre refus, trois ont leur cause racine dans ce que j'avais ecrit avant"* - `SEG-1`, le
+triplet `crayon`/`feutre`/`pinceau`, l'absence de condition de lisibilite sur `cp-mot-manquant`.
+Son diagnostic : *"je propose des exemples au lieu de nommer la propriete a tenir. Un exemple se
+revele faux ; une propriete se verifie."*
+
+**Ce que cela complete, au-dela de ce que la section 6 disait deja.** `DEC-0051`, section 5, tenait
+*"deux a trois paquets neufs"* comme borne haute auditable a s21, chiffree sur le taux de cycles de
+refus observes en deux sprints, sans distinguer un cycle cause par le contenu livre d'un cycle
+cause par une condition prealable fausse. **Trois des quatre refus de ce sprint sont maintenant de
+cette seconde famille**, contre deux sur six paquets observes au moment ou j'avais pose ce chiffre.
+Je ne rechiffre toujours pas la borne ici - ce n'est ni le lieu ni le moment, et une regle ajustee a
+chaud sur le cas qui vient de se produire est exactement le risque nomme en section 8. **Verse a
+l'instruction de la retro, comme fait de capacite** : le goulot de `nadia-prof` n'est pas seulement
+le temps de jouer et de mesurer chaque paquet, c'est aussi le temps que ses propres specifications,
+ecrites avant que le contenu existe, lui coutent quand elles se revelent fausses - et ce cout-la
+n'etait pas dans mon chiffrage d'ouverture de sprint.
+
+## Impact de cet amendement
+
+- `squad/decisions/produit/DEC-0052-...md` (ce fichier) : sections 8 a 11 ajoutees, rien reecrit
+  au-dessus.
+- `squad/programme/MATRICE-couverture.md` : ligne 496 `non couvert` -> `couvert-valide` ; synthese
+  18/43 (41,9 %).
+- `squad/decisions/produit/DEC-index.md` : ligne `DEC-0052` mise a jour.
+- `docs/backlog/backlog.md` : `PRE-15` et `PRE-16` versees en stories ; note de cloture ajoutee sous
+  la story corrective de `mot-manquant-cp`.
+- `adapters/adapter-content/src/main/resources/catalogue.yaml` : aucune edition, sur aucun des trois
+  jeux du sprint - verifie ce jour, les 21 entrees inchangees depuis l'ouverture du sprint.
+- `squad/decisions/produit/DEC-0045-...md` : non amendee. Question versee a la retro, section 8.

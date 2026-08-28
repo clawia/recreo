@@ -493,7 +493,7 @@ Source : `squad/programme/francais/competences-cp.md`.
 | francais | CP | Ecriture | Ecrire de maniere autonome un mot simple en respectant les correspondances grapheme/phoneme connues | - | - | non couvert |
 | francais | CP | Orthographe et grammaire | Reconnaitre et utiliser les marques du pluriel les plus frequentes (-s) | - | - | non couvert |
 | francais | CP | Orthographe et grammaire | Distinguer les principaux types de mots (nom, verbe) dans une phrase tres simple | bandit-manchot-nature-mot-cp | bandit manchot | couvert-valide |
-| francais | CP | Vocabulaire | Utiliser des mots precis pour designer des objets, actions, sensations du quotidien | - | - | non couvert |
+| francais | CP | Vocabulaire | Utiliser des mots precis pour designer des objets, actions, sensations du quotidien | bandit-manchot-mot-manquant-cp | bandit manchot | couvert-valide |
 
 **Note du 2026-08-24 (s19, `camille-po`) - arbitrage de l'utilisatrice : statut `non couvrable en
 l'etat` sur "Lire a voix haute...".** Cette competence exige une reconnaissance vocale, hors
@@ -2355,3 +2355,41 @@ nomme plus les deux motifs.
 **Ce que ce document ne fait pas.** Il ne prononce aucun Done pedagogique lui-meme, ne prejuge pas
 du reaudit a venir sur `cp-mot-manquant`, et ne fait bouger aucune autre ligne que les deux nommees
 ci-dessus.
+
+## Amendement du 2026-08-28 (second, s21 cloture) - `cp-mot-manquant` VALIDE SOUS RESERVE au second reaudit, 18/43 (41,9 %)
+
+**Rien ci-dessus n'est reecrit** : la section precedente decrivait un etat reel (paquet REFUSE,
+ligne non deplacee), et cet etat a change par une correction intra-sprint, pas par une erreur de
+lecture. Detail complet et verification personnelle avant de faire bouger la ligne : `DEC-0052`,
+amendement du 2026-08-28 (second).
+
+`lea-dev` a corrige l'item 3 de `cp-mot-manquant` (`4543d8d`, un seul champ, l'enonce). `nadia-prof`
+a reaudite en jouant et pressant chaque proposition de l'item corrige, et prononce **`VALIDE SOUS
+RESERVE`** (`2d2cea9`, 2026-08-28) : le motif unique restant (item 3, `PRE-3`) est ferme, `PRE-2`
+reste tenue, le pli reste tenu sur seize items sur seize. Sept reserves non bloquantes restent
+ouvertes.
+
+**"Utiliser des mots precis pour designer des objets, actions, sensations du quotidien"** (francais
+CP) passe `non couvert` -> `couvert-valide`.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide | non couvrable en l'etat |
+|---|---|---|---|---|---|
+| mathematiques CP | 11 | 5 | 1 | 5 | 0 |
+| mathematiques CM1 | 12 | 4 | 2 | 4 | 2 |
+| francais CP | 12 | 7 | 1 | 3 | 1 |
+| francais CM1 | 12 | 5 | 0 | 6 | 1 |
+| **Total** | **47** | **21** | **4** | **18** | **4** |
+
+**Le chiffre, avec sa base, verifie ligne par ligne contre les quatre tableaux de matiere de cette
+matrice avant d'etre ecrit (2026-08-28), pas repris d'un autre document du depot.** Le denominateur
+atteignable reste **43** sur **47**, inchange. Le compte de lignes `couvert-valide` passe de **17**
+a **18**. **17/43 (39,5 %) devient 18/43 (41,9 %)**.
+
+**Ce que ce mouvement fait, et pas plus.** Les trois paquets de volume de s21 (`cp-syllabes`,
+`cp-mot-manquant`, `cp-comparer`) ont chacun un Done pedagogique desormais prononce - deux `VALIDE
+SOUS RESERVE` obtenus au premier verdict de fond (`cp-syllabes` apres arbitrage de l'utilisatrice,
+`cp-comparer` directement), un troisieme apres deux refus et trois tours de correction
+(`cp-mot-manquant`). Aucune ligne au-dela des trois ciblees par ces paquets ne bouge ici.
+
+**Ce que ce document ne fait pas.** Il ne prononce aucun Done pedagogique lui-meme et ne fait
+bouger aucune autre ligne que celle nommee ci-dessus.

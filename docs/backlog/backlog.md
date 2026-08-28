@@ -6404,6 +6404,63 @@ s'affiche a cote du mot d'apres. Releve textuel du 2026-08-27, apres une bonne r
 - **Agent pressenti** : `lea-dev` (correction deja engagee). `nadia-prof` pour le reaudit, qui
   conditionne le retour au catalogue (`DEC-0045` section 2).
 
+**Cloture (2026-08-28, `camille-po`).** Les trois criteres ci-dessus sont tenus, en deux temps.
+`lea-dev` a ferme les items 6 et 4 en un correctif (`fabd6cb`), rouvrant `PRE-3` sur l'item 3
+(`feutre` et `pinceau` devenaient defendables sur l'enonce non corrige) - `nadia-prof` a alors
+maintenu le refus sur ce seul motif (`c9190ea`, **REFUS MAINTENU**). `lea-dev` a corrige l'item 3
+(`4543d8d` : *"Avant de dessiner, Lea taille son ___."*) ; `nadia-prof` a reaudite en pressant
+chaque proposition et prononce **`VALIDE SOUS RESERVE`** (`2d2cea9`, 2026-08-28) - `PRE-11` est
+fermee au passage (fuite morphologique de l'item 4, plus exigee que ce que ce critere demandait).
+Le retrait de catalogue instruit par `DEC-0052` section 3 n'a plus d'objet (`DEC-0052`, amendement
+du 2026-08-28, second) : le motif est tombe avant que le geste materiel n'ait ete execute, l'entree
+n'a jamais quitte `catalogue.yaml`. Deux reserves neuves non bloquantes (`PRE-15`, `PRE-16`) sont
+versees ci-dessous.
+
+### Deux reserves neuves versees en stories - `bandit-manchot-mot-manquant-cp`, ouvertes au reaudit
+
+**Besoin commun aux deux** : en tant qu'eleve de CP qui joue a "Le mot qui manque", je veux que les
+mots que je lis soient de mon niveau et que les indices m'apprennent quelque chose de neuf quand je
+me trompe, afin que le jeu reste une tache de vocabulaire et non un obstacle de lecture ou une
+redite de l'enonce.
+
+**Competence programme visee** : francais, CP (cycle 2), "Utiliser des mots precis pour designer
+des objets, actions, sensations du quotidien" (`squad/programme/francais/competences-cp.md`,
+ligne 34).
+
+- **`PRE-15` - le mot `impermeable` (item 4) est hors de portee d'un lecteur de CP.** Constat, dans
+  les mots de `nadia-prof`, appuye par une mesure et non par son oreille (`FICHE-bandit-manchot-mot-
+  manquant-cp.md`, section 3 du second reaudit) : **population, le corpus CP entier du depot -
+  10 paquets CP servis et les fichiers CP de `contenu-repris/`, 29 fichiers, 745 mots distincts, ce
+  n'est pas un echantillon, mesure du 2026-08-28.** `impermeable` y est **absent de toute autre
+  occurrence**, onze lettres, cinq syllabes ; a titre de comparaison, `taille` (utilise dans l'item
+  3 corrige) est deja servi trois fois dans `cp-comparer.yaml`, six lettres, une syllabe, dans un
+  paquet valide le meme jour. L'item reste decidable pour un enfant qui connait l'objet a l'oral :
+  ce n'est pas un motif, c'est une reserve de lisibilite, non couverte par `PRE-1` a `PRE-8`.
+  - Critere d'acceptation : etant donne le libelle `impermeable` de l'item 4, quand on le remplace
+    par un mot du meme champ (equipement de pluie) dechiffrable par un lecteur de CP, alors l'item
+    reste decidable (`PRE-3` : `parapluie` reste seul defendable sur l'enonce actuel) et le champ
+    semantique des trois propositions reste commun (`PRE-2`).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que le mot de remplacement soit effectivement lisible par un enfant en fin de
+    CP.
+- **`PRE-16` - l'indice de l'item 4 reformule desormais l'enonce au lieu d'apporter un element
+  neuf.** Constat, dans les mots de `nadia-prof` : l'enonce dit *"Tom ouvre son ___ au-dessus de la
+  tete."*, l'indice dit *"On l'ouvre au-dessus de la tete quand il pleut."* - ils partagent
+  `ouvre`, `au-dessus` et `tete`, et l'indice n'ajoute que *"quand il pleut"*. Effet de la
+  correction qui a deplace le trait discriminant de l'indice vers l'enonce (le bon geste) sans
+  reecrire l'indice derriere. Meme famille que `GRA-16` sur `cp-comparer`. `PRE-7` n'exige que de
+  ne pas nommer la reponse, et c'est tenu : reserve, pas motif.
+  - Critere d'acceptation : etant donne l'indice de l'item 4, quand on le reformule, alors il
+    n'emploie plus les memes mots que l'enonce pour designer le geste ("ouvre", "au-dessus", "tete")
+    et apporte un element que l'enonce ne donne pas deja.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'un enfant qui a echoue et lit l'indice reformule y trouve une aide reelle et
+    non une redite.
+- **Lien decision** : `DEC-0052`, amendement du 2026-08-28 (second) ; `FICHE-bandit-manchot-mot-
+  manquant-cp.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`. `lea-dev` pour la reprise ;
+  `nadia-prof` pour confirmer que chaque reformulation ferme sa reserve. Aucune n'est bloquante.
+
 ### Sept reserves versees en stories - `bandit-manchot-comparer-cp`, `VALIDE SOUS RESERVE`, aucune bloquante
 
 `bandit-manchot-comparer-cp` (`S21-11`) est **VALIDE SOUS RESERVE** depuis le 2026-08-28
