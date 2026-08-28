@@ -18,16 +18,20 @@ conformite et n'est pas recopie ici.
 | Jeu | Story | Verdict | Motif, en une ligne |
 |---|---|---|---|
 | `bandit-manchot-syllabes-cp` | `S21-9` | **VALIDE SOUS RESERVE** *(revise le 2026-08-28 ; d'abord REFUSE le meme jour)* | Refus prononce sur l'item `CHEMINEE`, puis **leve apres arbitrage de l'utilisatrice** : *"cheminee vaut bien 3 syllabes"*. Le motif tombe ; c'est ma condition `SEG-1` qui etait trop large, et elle est amendee. Reserve neuve `SEG-13` |
-| `bandit-manchot-mot-manquant-cp` | `S21-10` | **REFUSE** *(maintenu au reaudit du 2026-08-28, correction `fabd6cb`)* | Des deux motifs d'origine, **deux items sur trois sont corriges** (item 6 par *"Pour lire le soir"*, item 4 par `impermeable`/`capuchon`, qui ferme aussi `PRE-11`). **Motif restant : l'item 3, *"Lea dessine avec un ___."*, a trois reponses defendables sur trois** - `feutre` et `pinceau` sont refuses a l'ecran alors qu'ils sont corrects. **Le triplet est celui que j'avais moi-meme nomme** |
+| `bandit-manchot-mot-manquant-cp` | `S21-10` | **VALIDE SOUS RESERVE** *(second reaudit du 2026-08-28, correction `4543d8d` ; REFUSE deux fois avant)* | Les trois items sont corriges et verifies proposition par proposition. L'item 3 porte enfin le trait discriminant (*"Avant de dessiner, Lea taille son ___."*) : **`feutre` et `pinceau` sont desormais refuses parce qu'ils sont faux, non parce qu'ils sont corrects**. Sept reserves ouvertes, aucune bloquante |
 | `bandit-manchot-comparer-cp` | `S21-11` | **VALIDE SOUS RESERVE** | Les dix conditions tenues, 18 items sur 18 decidables, aucune erreur factuelle. Sept reserves non bloquantes |
 
 Fiches : `squad/conformite/FICHE-bandit-manchot-syllabes-cp.md`,
 `FICHE-bandit-manchot-mot-manquant-cp.md`, `FICHE-bandit-manchot-comparer-cp.md`.
 
-**Deux Done pedagogiques sont prononces** *(revise le 2026-08-28 : un seul l'etait a la premiere
-redaction de ce fichier)* : `cp-comparer` et, apres arbitrage de l'utilisatrice, `cp-syllabes`.
-`camille-po` peut passer les lignes **89** et **485** de `MATRICE-couverture.md` a
-`couvert-valide`. **La ligne 496 reste `non couvert`** : `cp-mot-manquant` demeure refuse.
+**Les trois Done pedagogiques sont prononces** *(revise deux fois le 2026-08-28 : un seul l'etait
+a la premiere redaction de ce fichier)* : `cp-comparer`, `cp-syllabes` apres arbitrage de
+l'utilisatrice, et `cp-mot-manquant` apres deux corrections de `lea-dev`. `camille-po` peut passer
+les lignes **89**, **485** et **496** de `MATRICE-couverture.md` a `couvert-valide`.
+
+**Consequence pour `DEC-0052`** : le retrait de l'entree `bandit-manchot-mot-manquant-cp` etait
+fonde sur un refus qui n'existe plus. **Le motif tombe**, la decision revient a `camille-po`, et le
+geste materiel - retenu a temps - n'a pas eu a etre execute ni defait.
 
 **Sur la ligne 485** : elle ouvre la premiere des trois lignes du domaine "Langage oral et
 conscience phonologique" ; les deux autres restent hors d'atteinte sans emission de son
@@ -191,16 +195,17 @@ disait "un valide sous reserve, deux refus" et donnait `cp-syllabes` pour refuse
 corrigee ici plutot que laissee a pourrir, et le detail des deux verdicts successifs est conserve,
 date, dans `FICHE-bandit-manchot-syllabes-cp.md`.*
 
-**Done pedagogique de s21 : deux valides sous reserve, un refus.**
+**Done pedagogique de s21 : trois valides sous reserve, aucun refus subsistant.** *(Revise une
+seconde fois le 2026-08-28, apres la correction `4543d8d` de `lea-dev`. Les etats intermediaires -
+deux refus sur `cp-mot-manquant`, un sur `cp-syllabes` - sont conserves, dates, dans les fiches.)*
 
 `bandit-manchot-comparer-cp` est **VALIDE SOUS RESERVE** - dix conditions sur dix tenues, 18 items
 sur 18 decidables sans instrument, aucune erreur factuelle, sept reserves non bloquantes.
 `bandit-manchot-syllabes-cp` est **VALIDE SOUS RESERVE** : je l'avais refuse sur l'item `CHEMINEE`,
 **l'utilisatrice a tranche que le mot vaut trois syllabes, et le motif est tombe**. Une reserve
-neuve (`SEG-13`) y est ouverte. `bandit-manchot-mot-manquant-cp` **reste REFUSE apres reaudit de la
-correction `fabd6cb`** : `lea-dev` a corrige deux items sur trois, et bien - mais l'item 3 a
-desormais **trois reponses defendables sur trois**, et **le triplet en cause est celui que j'avais
-moi-meme nomme**.
+neuve (`SEG-13`) y est ouverte. `bandit-manchot-mot-manquant-cp` est **VALIDE SOUS RESERVE au second
+reaudit** (`4543d8d`), apres deux refus le meme jour : les trois items sont corriges, et l'item 3
+porte enfin le trait qui distingue le crayon de ses voisins de champ.
 
 **Ce que ce sprint doit retenir de mon lot, et ce n'est pas a l'avantage de la porte que je
 tiens.** Mon refus de `cp-syllabes` n'etait pas une erreur d'application : c'etait l'application
@@ -216,6 +221,17 @@ propriete a tenir.** Un exemple se revele faux ; une propriete se verifie. Un ar
 evite un cycle quand il est juste ; il en coute un quand il est faux, et il faut le compter.
 
 **Le sprint a atteint ce qu'il visait sur le pli** : les 50 items neufs sont au-dessus, `SOR-4` est
-fermee, et le pli est desormais ferme sur les 162 items des 9 jeux CP enumeres. **Ce n'est pas la
-forme qui a fait echouer un paquet sur trois, c'est le contenu**, et c'est la seule chose que la CI
-ne regardera jamais.
+fermee, et le pli est desormais ferme sur les 162 items des 9 jeux CP enumeres.
+
+**Les trois paquets finissent le sprint valides ; aucun n'y est arrive du premier coup, et aucun
+n'a jamais achoppe sur la forme.** Les quatre refus prononces ce sprint portaient tous sur le
+contenu - un compte de syllabes, une reponse defendable refusee, un distracteur hors champ -, et la
+porte technique etait verte a 722 tests a chacun d'eux. **C'est la seule chose que la CI ne
+regardera jamais, et c'est ce que ce sprint aura montre le plus clairement.**
+
+**Le second enseignement est contre moi et il compte autant.** Sur ces quatre refus, **trois ont
+leur cause racine dans ce que j'avais ecrit avant** - `SEG-1`, le triplet
+`crayon`/`feutre`/`pinceau`, et l'absence de condition de lisibilite sur `cp-mot-manquant`. Une
+porte pedagogique qui refuse pour de bons motifs mais dont les specifications sont fausses coute
+des cycles sans rien proteger. **Ce qu'elle doit corriger est identifie : nommer la propriete a
+tenir, jamais l'exemple qui l'illustre.**

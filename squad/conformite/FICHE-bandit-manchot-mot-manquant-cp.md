@@ -16,15 +16,16 @@
   la forme. **Elle a suivi ma specification, et c'est le bon reflexe.**
 - **Conditions prealables** : `PRE-1` a `PRE-8`,
   `squad/conformite/ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md`, section 4.
-- **Statut global** : **REFUSE par `nadia-prof` le 2026-08-28** *(reaudit du meme jour, sur la
-  correction `fabd6cb` de `lea-dev`)*. **Le premier refus portait deux motifs sur trois items ;
-  deux sont fermes et un reste ouvert.** Motif restant, unique : **l'item 3
-  (*"Lea dessine avec un ___."*, `crayon`/`feutre`/`pinceau`) a trois reponses defendables sur
-  trois** - `feutre` et `pinceau` sont refuses a l'ecran alors qu'ils sont corrects. **La cause
-  racine est ma propre specification** : c'est moi qui avais nomme ce triplet. Quinze items sur
-  seize sont bons, le pli est tenu sur 16 sur 16, et la correction demandee ne touche qu'un enonce.
-  Les deux verdicts sont conserves ci-dessous, dates.
-- **Derniere mise a jour** : 2026-08-28 (`nadia-prof`, reaudit de la correction `fabd6cb`).
+- **Statut global** : **VALIDE SOUS RESERVE par `nadia-prof` le 2026-08-28**, au second reaudit
+  (correction `4543d8d` de `lea-dev`). **Le paquet a ete REFUSE deux fois le meme jour** : d'abord
+  sur deux motifs et trois items, puis sur l'item 3 seul. **Les trois items sont maintenant
+  corriges et verifies proposition par proposition ; tous les motifs sont fermes.** Sept reserves
+  restent ouvertes, aucune bloquante. **La cause racine des deux derniers tours etait dans ma
+  propre specification**, pas dans le travail de `lea-dev` : le triplet `crayon`/`feutre`/`pinceau`
+  que j'avais qualifie d'*"evident"*, et l'absence de toute condition de lisibilite sur ce paquet.
+  **Les trois verdicts sont conserves ci-dessous, dates** : un refus efface n'a aucune valeur de
+  preuve.
+- **Derniere mise a jour** : 2026-08-28 (`nadia-prof`, second reaudit, correction `4543d8d`).
 
 ## Table de correspondance des jetons de cette fiche
 
@@ -559,3 +560,223 @@ ligne 496 de `MATRICE-couverture.md` reste **`non couvert`**.
   depuis un worktree detache dedie.
 - **Audit non degrade** : l'application a ete construite, servie et **jouee**, et les trois items
   corriges ont ete presses proposition par proposition.
+
+---
+
+## Second reaudit du 2026-08-28 (s21) - item 3 corrige par `lea-dev`, commit `4543d8d`
+
+**Ce bloc s'ajoute aux deux precedents.** Le premier refus, le premier reaudit et leurs motifs
+restent lisibles tels quels.
+
+### 1. Ce que j'ai fait, et sur quel artefact
+
+**J'ai joue, puis j'ai mesure.** Le compte rendu de `lea-dev` ne remplace pas ma main sur les
+boutons : c'est en pressant moi-meme que j'ai trouve le defaut au tour precedent.
+
+- **Arbre audite** : commit `4543d8d`, au-dessus de `fabd6cb`, branche `s21-lea-3`. Verifie
+  moi-meme : **un seul fichier touche** (`cp-mot-manquant.yaml`), **8 insertions et 1 suppression**,
+  dont **une seule ligne de contenu** - le champ `enonce` de l'item 3. Bonne reponse et distracteurs
+  inchanges. Worktree detache dedie, arbre propre.
+- **Construit et servi** depuis cet arbre (`bash outils/mvn-jdk21.sh -B -q clean package
+  -DskipTests`, puis `java -jar bootstrap/target/recreo.jar --server.port=<port>` sur un JDK 21).
+  **Serveur arrete par son identifiant de processus**, apres verification que le processus etait
+  bien le mien.
+- **Joue le 2026-08-28** : les trois propositions de l'item 3 pressees une par une, puis une partie
+  complete de dix manches pour verifier que rien d'autre n'a bouge.
+
+### 2. L'item 3, presse proposition par proposition le 2026-08-28
+
+Enonce servi : ***"Avant de dessiner, Lea taille son ___."***
+
+| Proposition pressee | Verdict rendu | Est-elle defendable ? |
+|---|---|---|
+| `crayon` | **Bravo !** | oui, et elle seule |
+| `feutre` | *"Ce n'est pas ca."* | **non** - on ne taille pas un feutre |
+| `pinceau` | *"Ce n'est pas ca."* | **non** - on ne taille pas un pinceau |
+
+**Le motif est ferme.** Au tour precedent, `feutre` et `pinceau` etaient refuses alors qu'ils
+etaient **corrects** ; ils sont maintenant refuses parce qu'ils sont **faux**. C'est toute la
+difference, et c'est celle que `PRE-3` demande.
+
+**`PRE-2` reste tenue** : les trois propositions sont toujours du champ *"instrument pour tracer"*,
+puisque les distracteurs n'ont pas bouge. **L'enonce porte desormais le trait discriminant**, ce
+qui est exactement la propriete que j'avais demandee - et non un libelle que j'aurais dicte.
+
+**Partie complete jouee le 2026-08-28** : les dix manches se deroulent sans accroc, les accents
+sont intacts a l'ecran (`Lea`, `diner`, `herisson`, `lumiere`, `cuillere`, `cafe`, `gout`, `sale`,
+`sucre`), et les items 4 et 6 se comportent comme au tour precedent.
+
+### 3. Le mot `taille` : mesure, et non jugement a l'oreille
+
+Ce mot est neuf dans ce paquet et il m'est demande de le juger. **Je viens d'ouvrir `PRE-15` sur
+`impermeable` pour un motif de lisibilite ; je dois donc dire pourquoi `taille` ne recoit pas le
+meme traitement, et le dire sur une mesure, pas sur mon oreille** - sans quoi je deplacerais mes
+poteaux d'un mot a l'autre.
+
+**Mesure du 2026-08-28, population : le corpus CP entier du depot** - 10 paquets CP servis et les
+fichiers CP de `contenu-repris`, **29 fichiers, 745 mots distincts** lus par un enfant dans les
+champs qu'il voit (enonces, propositions, indices, explications). **Ce n'est pas un echantillon.**
+
+| Mot | Occurrences ailleurs dans le corpus CP | Lettres | Syllabes |
+|---|---|---|---|
+| **`taille`** | **3 dans `cp-comparer.yaml`** (*"Pense a la taille de chaque animal..."*, deux fois, et *"Compare la taille des trois objets..."*), plus `cp-longueurs.yml` et `cp-geometrie.yml` | 6 | **1** |
+| `impermeable` | **aucune** - absent de tout le reste du corpus CP | 11 | **5** |
+
+**Le mot `taille` est deja servi a un enfant de CP par ce produit, dans `cp-comparer`, un paquet que
+j'ai valide moi-meme ce matin - et dans le meme registre de lecture, celui d'un indice affiche a
+l'ecran.** Objecter aujourd'hui a sa lisibilite reviendrait a refuser un mot que j'ai accepte il y
+a quelques heures. **`taille` n'est pas un probleme de lisibilite**, et la mesure le montre sans
+que j'aie a en appeler a mon jugement.
+
+**Ce que la meme mesure fait a `PRE-15`** : elle ne la durcit pas, elle **l'appuie**.
+`impermeable` est **absent de tout le reste du corpus CP**, deux fois plus long et cinq fois plus
+long en syllabes. `PRE-15` reste **une reserve, au meme niveau qu'il y a une heure**, et elle
+repose desormais sur un chiffre plutot que sur mon seul avis.
+
+**Sur le sens du mot, qui est l'autre moitie de la question.** `tailler` au sens d'affuter est le
+verbe propre du crayon en francais, et tout enfant de CP possede un **taille-crayon** : le sens lui
+vient par l'objet avant de lui venir par le verbe. **La polysemie ne mord pas** : `taille` est un
+nom apres determinant dans `cp-comparer` (*"la taille de chaque animal"*) et un verbe entre un sujet
+propre et un complement ici (*"Lea taille son ___"*). La syntaxe tranche seule, et rencontrer un
+homographe dans deux emplois clairs n'est pas un defaut - c'est du vocabulaire.
+
+### 4. Le raisonnement de `lea-dev` sur le choix du trait : il tient, et il va plus loin que ce que je demandais
+
+J'avais nomme trois traits possibles - gommer, tailler, le bois - **en propriete et sans en imposer
+aucun**. Elle retient `tailler` au motif que c'est le seul qui **ne recoupe pas l'indice existant**
+(*"C'est un petit baton de bois qui laisse une trace sur le papier."*).
+
+**Ce raisonnement tient, et je le verifie trait par trait :**
+
+- **le bois** est **litteralement dans l'indice**. Un enonce bati dessus aurait rendu l'indice
+  redondant ;
+- **gommer** touche *"laisse une trace sur le papier"* - effacer est l'envers de laisser une trace.
+  Le recoupement est semantique, plus faible, mais reel ;
+- **tailler** n'apparait ni en toutes lettres ni en substance dans l'indice. **Aucun recoupement.**
+
+**Le trait qu'elle a retenu est le seul des trois qui laisse l'indice apporter quelque chose de
+neuf apres un echec.** C'est exactement le defaut que j'ai ouvert il y a une heure sous `PRE-16`,
+sur l'item 4, dont l'indice reformule desormais l'enonce - **et elle l'a evite sur l'item 3 sans
+que je le lui demande, en generalisant une reserve que je venais d'ecrire sur un autre item.**
+Aucun de mes criteres ne le lui imposait. **C'est du bon travail, et c'est le genre de
+consideration que je devrais avoir portee moi-meme dans ma demande de correction.**
+
+### 5. Le pli, remesure par moi sur le paquet entier
+
+Mesure du **2026-08-28**, viewport de reference de `DEC-0040`, **744 x 551 lu du navigateur**,
+**population : les 16 items du paquet, tous vus, en 4 parties - ce n'est pas un echantillon** :
+
+```
+CHROME=<navigateur> PAQUET=adapters/adapter-content/src/main/resources/contenu/cp-mot-manquant.yaml \
+    PORT_DEV=9431 python squad/outils/nadia-prof/auditer-un-paquet-entier.py \
+    http://<hote>:<port> bandit-manchot-mot-manquant-cp 16 <json_de_sortie>
+```
+
+| Grandeur lue, apres un echec | Pire valeur sur les 16 items |
+|---|---|
+| Rangees de propositions | **1** |
+| Hauteur de l'enonce | **48 px**, soit **une ligne partout** |
+| Lignes de l'indice | **1** |
+| Bas de l'indice | **486 px**, **65 px au-dessus du pli de 551** |
+| Defilement | **0** |
+| Somme la plus lourde | **485,22 px** sur 522, item 4, **36,78 px de marge** |
+
+**Item 3, celui qui a change** : l'enonce passe de 24 a 38 caracteres et **reste sur une ligne**
+(`hauteurEnonce=48`) ; somme des libelles **310,00 px**, soit **212,00 px de marge** ; indice a
+486 px ; zero defilement. **L'allongement de l'enonce n'a rien coute au pli.**
+
+**16 items sur 16 sont au-dessus du pli, identique a `fabd6cb`. Les chiffres de `lea-dev` sont
+exacts : je les ai reproduits, je ne les ai pas recopies.** Elle a mesure avec la methode que
+j'avais documentee - la **hauteur** de l'enonce et non le nombre de rectangles - et c'est la bonne.
+
+### 6. L'etat des reserves
+
+- **`PRE-11` : fermee** au reaudit precedent (fuite morphologique de l'item 4).
+- **`PRE-15` et `PRE-16` : inchangees, toujours des reserves.** `lea-dev` ne les a pas touchees,
+  comme demande. **Rien n'a change depuis que je les ai ouvertes**, sinon que la mesure de la
+  section 3 donne a `PRE-15` un appui chiffre qu'elle n'avait pas. **Je ne les transforme pas en
+  motifs.**
+- **`PRE-9`, `PRE-10`, `PRE-12`, `PRE-13`, `PRE-14` : inchangees**, non bloquantes.
+- **Aucune reserve neuve a ce tour.** J'ai cherche : l'enonce neuf ne cree ni fuite morphologique
+  (il ne contient rien de `crayon`), ni recoupement avec son indice, ni charge de lecture nouvelle,
+  et il ne coute rien au pli.
+
+### 7. Ce qui appartient a d'autres, et que je ne touche pas
+
+**Pour `camille-po` et `sofia-sm`, explicitement, et sans que j'y touche** : **je leve le refus.
+Le motif du retrait de l'entree `bandit-manchot-mot-manquant-cp` tombe.** `DEC-0052` (commit
+`ee031cb`) tranchait le retrait au titre de `DEC-0045` section 3, sur le fondement d'un refus qui
+n'existe plus : **la decision revient a `camille-po`**, et le geste materiel a `sofia-sm`. **Je n'ai
+touche ni `catalogue.yaml`, ni la matrice, ni aucun fichier de contenu.**
+
+**Le geste materiel ayant ete retenu, il n'y a rien a restaurer** : l'entree n'est jamais sortie du
+catalogue. Retenir ce geste aura evite de retirer une entree et de la remettre dans l'heure - c'est
+exactement le cout d'aller-retour que `DEC-0052` invoquait, et l'attente l'a economise.
+
+**La ligne 496 de `MATRICE-couverture.md`** peut passer a **`couvert-valide`** : le geste est a
+`camille-po`, pas a moi.
+
+---
+
+## Verdict du second reaudit, 2026-08-28 - `S21-10`, "Le mot qui manque"
+
+## Verdict : **VALIDE SOUS RESERVE**
+
+**Done pedagogique prononce.** Ce verdict leve le refus du 2026-08-28 et celui de son premier
+reaudit. **Les deux refus ne sont pas effaces** : ils restent au-dessus, dates, avec leurs motifs -
+un refus efface n'a aucune valeur de preuve, et l'histoire de ce paquet est ce qui rend le present
+verdict relisible.
+
+**Le motif unique restant est ferme.** L'enonce de l'item 3 porte desormais le trait discriminant :
+*"Avant de dessiner, Lea taille son ___."* On taille un crayon ; on ne taille ni un feutre ni un
+pinceau. **Presse a l'ecran le 2026-08-28** : `crayon` rend *"Bravo !"*, `feutre` et `pinceau` sont
+refuses - **et cette fois ils sont refuses parce qu'ils sont faux, non parce qu'ils sont corrects.**
+C'est toute la difference que `PRE-3` demande. `PRE-2` reste tenue, les distracteurs n'ayant pas
+bouge.
+
+**Sur le mot `taille`, juge par la mesure et non a l'oreille** (section 3) : il est **deja servi a
+un enfant de CP par ce produit**, trois fois dans `cp-comparer.yaml`, un paquet que **j'ai valide
+moi-meme ce matin**, et dans le meme registre de lecture. Six lettres, une syllabe, contre onze
+lettres et cinq syllabes pour `impermeable`, qui est **absent de tout le reste du corpus CP**
+(745 mots, 29 fichiers, population entiere). **Objecter a `taille` reviendrait a refuser un mot que
+j'ai accepte il y a quelques heures.** La meme mesure **appuie `PRE-15` sans la durcir** : elle
+reste une reserve, au meme niveau qu'il y a une heure.
+
+**Le raisonnement de `lea-dev` sur le choix du trait tient** (section 4), et il va plus loin que ce
+que je demandais : `tailler` est bien le seul des trois traits qui **ne recoupe pas l'indice
+existant** - le bois y est en toutes lettres, gommer touche *"laisse une trace"*. **Elle a evite sur
+l'item 3 le defaut que je venais d'ouvrir sous `PRE-16` sur l'item 4, sans que je le lui demande et
+sans qu'aucun de mes criteres le lui impose.** C'est une consideration que j'aurais du porter
+moi-meme dans ma demande de correction.
+
+**Ce que j'ai verifie et qui tient** : `PRE-1` a `PRE-8` tenues sur 16 items sur 16 ; les trois
+items corriges au fil des deux reaudits (3, 4, 6) verifies proposition par proposition ; les onze
+items non touches inchanges, dont les cinq items de sensations qui restent le meilleur travail de
+vocabulaire du catalogue CP ; **le pli tenu sur 16 items sur 16**, remesure par moi sur le paquet
+entier a 744 x 551 le 2026-08-28 - une rangee, enonce d'une ligne partout, indice a 486 px, 65 px de
+marge, zero defilement -, **les chiffres de `lea-dev` reproduits et non recopies**.
+
+**Reserves ouvertes, aucune bloquante**, a transformer en stories par `camille-po` : `PRE-9`
+(l'item 11 est au bord de `PRE-3`), `PRE-10` (trois items ou `PRE-2` est faible sans echouer),
+`PRE-12` (les items 13 et 15 portent le meme triplet), `PRE-13` (`sale` est distracteur trois fois
+et bonne reponse zero fois), `PRE-14` (la seule adulte du paquet est une mere qui balaie, et aucun
+garcon ne fait de tache menagere), `PRE-15` (`impermeable` hors de portee d'un lecteur de CP),
+`PRE-16` (l'indice de l'item 4 reformule desormais l'enonce). **`PRE-11` est fermee.** **Aucune
+reserve neuve a ce tour** : j'ai cherche.
+
+**Ce que ce paquet aura coute, et a qui l'imputer.** Deux refus et trois tours de correction, dont
+**la cause racine des deux derniers etait dans ma propre specification** : le triplet
+`crayon`/`feutre`/`pinceau` que j'avais qualifie d'*"evident"*, et l'absence de toute condition de
+lisibilite sur ce paquet. `lea-dev` a suivi ma specification a chaque tour, et elle a eu raison de
+le faire. **Le travail livre est bon ; ce qui a coute, c'est ce que j'avais ecrit avant.**
+
+**Pour `camille-po` et `sofia-sm`** : **je leve le refus, donc le motif du retrait de `DEC-0052`
+tombe**, et la decision revient a `camille-po`. **Je n'ai touche ni `catalogue.yaml`, ni la
+matrice.** L'entree n'etant jamais sortie du catalogue, il n'y a rien a restaurer. La ligne 496 de
+`MATRICE-couverture.md` peut passer a **`couvert-valide`** : le geste est a `camille-po`.
+
+- **Auditrice** : `nadia-prof`. **Second reaudit et verdict prononces le** 2026-08-28. **Arbre
+  audite** : `4543d8d` (branche `s21-lea-3`, au-dessus de `fabd6cb`, repartie de `round-two` a
+  `8e21613`), construit, servi et **joue** depuis un worktree detache dedie.
+- **Audit non degrade** : l'application a ete construite, servie et **jouee**, l'item corrige a ete
+  presse proposition par proposition, et une partie complete de dix manches a ete jouee.
