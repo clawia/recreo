@@ -694,3 +694,48 @@ tenue. Je verse cette nuance a la story `S17-2` plutot que de l'arbitrer moi-mem
 - Route a `sofia-sm` : faire confirmer par l'utilisatrice, dans un fichier commite, la portee exacte
   de l'arbitrage 1 (indice seul, ou aussi verdict et propositions), avec la consequence nommee par
   `nadia-prof` ci-dessus.
+
+## Amendement du 2026-08-28 (second, apres commit de la portee tranchee) - la question posee ci-dessus est fermee, ecrite dans un fichier commite
+
+Entre mon amendement precedent et celui-ci, `nadia-prof` a commite
+(`squad/conformite/PORTE-PEDAGOGIQUE-apres-arbitrage-du-2026-08-28.md`, commit dont je verifie qu'il
+existe bien sur cette branche avant de m'en servir) sa section 10, qui porte l'arbitrage que
+j'attendais : **l'utilisatrice, sollicitee par `sofia-sm` avec la consequence dans les mots de
+`nadia-prof` et le precedent de son `REFUSE` sur `cm1-reperes` a s20, choisit la lecture large.**
+
+**Ce qui est desormais ecrit, et que je reprends** : `nadia-prof` ne prononce plus de `REFUSE` sur
+le motif "un element du jeu reste hors de vue sans faire defiler la page" - indice, verdict,
+proposition, ou tout autre element du meme bloc. Ma lecture large de la section "Point de vigilance"
+ci-dessus est donc confirmee, pas seulement maintenue par defaut. Je releve, section 4, la mention
+de perimetre de `S17-2` de "conditionnel" a **confirme** : les trois candidats de ce sprint (`S13-2`,
+`S13-3`, `S17-2`) sont desormais tous les trois pretes sans reserve de portee. **L'objectif de
+sprint redevient donc, sans condition, 21/43 (48,8 %) si les trois aboutissent** - la formulation
+"20 ou 21/43 selon `S17-2`" de la section 4 et du `DEC-index` est perimee sur ce point precis.
+
+**La contrepartie ecrite par `nadia-prof`, `MNC-1`, que je reprends comme le mecanisme qui rend
+"dette croissante et assumee" verifiable plutot qu'une formule.** Tout Done pedagogique prononce a
+partir d'aujourd'hui porte, dans le bloc de validation de sa fiche, la mention fixe qu'elle a
+redigee : ce Done ne couvre pas la visibilite sans defilement d'aucun element du jeu, cette
+propriete est sortie par cet arbitrage, sa dette est ouverte et non mesuree sur ce paquet. Un Done
+qui ne porte pas cette mention est incomplet - c'est un defaut de fiche a corriger, pas un motif de
+refus du paquet. Je verse `MNC-1` a la note que j'ai deja ajoutee dans
+`squad/programme/MATRICE-couverture.md`, pour que la matrice pointe vers le texte exact plutot que
+vers ma paraphrase.
+
+**Ce que je fais du texte de `MNC-1`, sur demande explicite de `nadia-prof` relayee par
+`sofia-sm`** : je ne le recopie pas dans ce document, dont ce n'est pas la fonction, mais je le
+verse dans le gabarit du bloc de validation pedagogique (`squad/TEMPLATES.md`, section 7), pour que
+sa presence sur chaque fiche a venir ne depende pas de la memoire de `nadia-prof` d'un sprint a
+l'autre - c'est le geste qui me revient, elle en est l'autrice.
+
+### Impact de ce second amendement
+
+- Ce fichier : section ajoutee, rien reecrit au-dessus - la question posee dans l'amendement
+  precedent reste lisible telle qu'ecrite, a l'heure ou elle etait encore ouverte.
+- `squad/TEMPLATES.md` : le gabarit de la fiche de conformite (section 7) porte desormais une
+  sous-section "Mentions de non-couverture opposables", avec `MNC-1` reprise mot pour mot depuis sa
+  source.
+- `squad/decisions/produit/DEC-index.md` : a corriger par moi dans le meme geste, la ligne `DEC-0053`
+  portant encore "20 ou 21/43 selon `S17-2`".
+- `squad/programme/MATRICE-couverture.md` : note complementaire ajoutee, renvoi a `MNC-1`.
+- `docs/backlog/backlog.md` : note ajoutee sur `S17-2`, perimetre confirme sans reserve.

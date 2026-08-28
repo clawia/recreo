@@ -4874,20 +4874,25 @@ story est **affectee au planning de s22** comme troisieme candidate de priorite 
 n'a alors plus d'objet. Si elle ne confirme pas, cette story reste hors du perimetre de s22, dans
 les memes termes qu'a la sortie de s17.
 
-**Mise a jour du 2026-08-28 (meme jour, `camille-po`) - `nadia-prof` confirme sur le fond, une
-question de portee reste a fermer avant de considerer la ligne definitivement debloquee.**
+**Mise a jour du 2026-08-28 (meme jour, `camille-po`) - `nadia-prof` confirme sur le fond ; la
+question de portee est desormais tranchee par l'utilisatrice, la ligne est confirmee sans reserve.**
 `nadia-prof` a relu ses propres conditions (`squad/conformite/PORTE-PEDAGOGIQUE-apres-arbitrage-du-
 2026-08-28.md`, section 3.3) : `COMP-4` et `COMP-7` tombent, `COMP-1`, `COMP-2`, `COMP-3` et
 `COMP-5` restent inchangees et bloquantes, et elle ecrit *"le blocage que j'avais pose sur la story
-est leve - elle est developpable"*. **Story confirmee developpable sur le fond pedagogique.** Reste
-ouverte, et non tranchee dans un fichier commite au moment ou j'ecris, la question de savoir si
-l'arbitrage 1 couvre la meme portee que celle que `nadia-prof` a jugee (question posee et non
-prejuge par moi, `DEC-0053`, amendement du 2026-08-28) - `sofia-sm` porte cette confirmation a
-l'utilisatrice avant de considerer le perimetre de la ligne definitivement ferme. Nuance versee par
-`nadia-prof` a porter dans cette story : sa propriete n'est plus "visible sans defiler" mais
-"relisible" - un texte qu'on rejoint en faisant defiler satisfait sa competence ; elle demande
+est leve - elle est developpable"*. La question de portee (l'arbitrage 1 couvre-t-il le verdict et
+les propositions, pas seulement l'indice) a ete portee par `sofia-sm` a l'utilisatrice avec la
+consequence dans les mots de `nadia-prof` et le precedent de son `REFUSE` sur `cm1-reperes` a s20 -
+**elle choisit la lecture large** (`squad/conformite/PORTE-PEDAGOGIQUE-apres-arbitrage-du-2026-08-28.md`,
+section 10 ; `DEC-0053`, second amendement du 2026-08-28). **Story confirmee developpable, sans
+reserve de portee : candidate de priorite 3 du perimetre de s22, au meme titre que `S13-2` et
+`S13-3`.** Contrepartie ecrite par `nadia-prof`, `MNC-1`, desormais obligatoire sur tout Done
+pedagogique a partir d'aujourd'hui (`squad/TEMPLATES.md`, section 7). Nuance versee par `nadia-prof`
+a porter dans cette story, distincte de `MNC-1` : sa propriete n'est plus "visible sans defiler"
+mais "relisible" - un texte qu'on rejoint en faisant defiler satisfait sa competence ; elle demande
 qu'un Done eventuel nomme la propriete non couverte si l'enfant doit memoriser le texte pour
-repondre.
+repondre. **Ordre de livraison demande par `nadia-prof`** (cout d'audit croissant) : `S13-2`
+d'abord, puis `S13-3`, `S17-2` jamais en dernier - un paquet livre la veille de la cloture ne peut
+pas absorber un cycle de refus.
 
 ### S17-3 - Synonymes en contexte (francais CM1, couverture partielle nommee, jamais couvert-valide sur ce seul paquet)
 

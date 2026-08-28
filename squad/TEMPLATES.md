@@ -302,6 +302,21 @@ programme de CP".>
 ### Reserves
 
 <Si VALIDE SOUS RESERVE : la liste nommee, que camille-po transforme en stories.>
+
+### Mentions de non-couverture opposables
+
+<Toute clause de ce type en vigueur au moment du Done, reprise mot pour mot depuis sa source -
+jamais paraphrasee. Depuis le 2026-08-28 (`DEC-0053`, arbitrage de l'utilisatrice sur la portee du
+pli), `MNC-1` est obligatoire sur tout Done `VALIDE` ou `VALIDE SOUS RESERVE` :>
+
+> **`MNC-1`** - Ce Done ne couvre pas que l'enfant voie, sans faire defiler la page, un element
+> quelconque du jeu, y compris le retour qui suit sa reponse - verdict, indice, proposition. Cette
+> propriete est sortie de la porte pedagogique par arbitrage de l'utilisatrice du 2026-08-28
+> (`DEC-0053`) ; sa dette est ouverte, croissante et assumee. Aucune mesure ne l'a instruite sur ce
+> paquet.
+
+<Un Done sans cette mention est incomplet : c'est un defaut de la fiche, pas du paquet
+(`squad/conformite/PORTE-PEDAGOGIQUE-apres-arbitrage-du-2026-08-28.md`, section 10.2, nadia-prof).>
 ```
 
 ---

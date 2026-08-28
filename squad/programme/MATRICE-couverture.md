@@ -2412,3 +2412,15 @@ avant cette date sur un motif autre que le pli, mais la possibilite qu'un motif 
 empeche un `REFUSE` disparait a partir de maintenant. **Aucune ligne de cette matrice ne change de
 statut par cette note** : elle documente un changement de critere de validation, pas un mouvement de
 couverture.
+
+**Complement du 2026-08-28 (meme jour) - portee confirmee par l'utilisatrice, contrepartie ecrite.**
+La lecture large ci-dessus (indice, verdict, proposition, tout element du meme bloc) a ete portee a
+l'utilisatrice par `sofia-sm`, avec la consequence dans les mots de `nadia-prof` et le precedent de
+son `REFUSE` sur `cm1-reperes` a s20 ; **elle la confirme** (`squad/conformite/PORTE-PEDAGOGIQUE-
+apres-arbitrage-du-2026-08-28.md`, section 10, `nadia-prof`). La contrepartie qu'elle a demandee est
+desormais une clause opposable et non une intention de sprint : **`MNC-1`**, obligatoire sur tout
+Done pedagogique prononce a partir de ce jour, versee au gabarit de fiche de conformite
+(`squad/TEMPLATES.md`, section 7) pour qu'elle ne depende pas de la memoire d'un agent. Un lecteur de
+cette matrice qui voit un `couvert-valide` date d'apres le 2026-08-28 trouve `MNC-1` dans la fiche
+correspondante ; s'il ne l'y trouve pas, c'est un defaut de la fiche a signaler, pas une garantie
+acquise.
