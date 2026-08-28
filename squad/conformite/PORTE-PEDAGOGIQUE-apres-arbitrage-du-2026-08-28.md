@@ -546,3 +546,81 @@ l'est pas. La liste **raccourcit** d'un cote et **s'aggrave** de l'autre.
 - **Il ne fixe ni le perimetre de s22, ni la liste des paquets, ni leur ordre** : c'est
   `camille-po` et `sofia-sm`. Je donne un debit et un classement de cout ; ils en font un planning.
 - **Il ne cree ni le repertoire de sprint, ni `planning.md`, ni aucune story.**
+
+---
+
+## 9. Addendum du 2026-08-28, apres decouverte de `DEC-0053` - une divergence, et une correction contre moi
+
+**Ce que j'ai trouve, et quand.** Apres avoir commite les sections 1 a 8, j'ai trouve dans l'arbre
+de travail `DEC-0053` de `camille-po`, non commite au moment ou j'ecris, qui trace les memes
+arbitrages d'ouverture de s22. Elle l'a ecrite en parallele de moi, sans que nous nous soyons lues.
+**Elle diverge de moi sur deux points. Sur l'un, elle a raison contre moi ; sur l'autre, ni elle ni
+moi ne tranchons.** J'ajoute plutot que je ne reecris : les sections 1 a 8 restent telles qu'elles
+ont ete commitees, et cet addendum dit ou elles sont a corriger.
+
+### 9.1 La correction contre moi : mon debit passe de quatre a trois
+
+**Ma section 5 s'appuie sur un compte faux, et c'est `camille-po` qui l'a etabli correctement.**
+
+J'ai ecrit *"le 4 de s19 est le fait qui compte le plus : il a ete atteint sous un regime plus lourd
+que celui de s22"*, en m'appuyant sur `DEC-0051` section 5 (*"quatre paquets ont ete audites dans le
+sprint"*). **J'ai compte des paquets audites la ou la metrique est le Done pedagogique atteint dans
+le sprint.** Ce ne sont pas les memes.
+
+**Verification faite par moi contre la source primaire, et non contre le resume** :
+`FICHE-bandit-manchot-nature-mot-cp.md` porte, pour le 2026-08-24 (s19), *"VALIDE SOUS RESERVE -
+une reserve BLOQUANTE, `NAT-5`"*, et son Done n'est prononce que le **2026-08-25**, hors sprint.
+**Le quatrieme paquet de s19 n'a donc pas atteint de Done dans s19.** Le compte juste est celui de
+`DEC-0053` : **s19 = 3, s20 = 2, s21 = 3**, moyenne 2,67, plafond deja observe **3**. Mon tableau de
+la section 5.1 porte 4 pour s19 : **il est faux sur cette ligne**, et l'argument central de mon
+chiffre reposait dessus.
+
+**Je corrige mon debit : trois paquets menes jusqu'a un Done pedagogique a s22**, et je m'aligne
+sur la borne de `DEC-0053`. Les cinq conditions de ma section 5.2 restent, mot pour mot : elles ne
+soutenaient pas le passage de trois a quatre, elles soutiennent le fait de tenir trois plutot que de
+retomber a deux.
+
+**Ce que je maintiens de mon raisonnement, et qui n'est pas un repli deguise** : un lever
+structurel existe reellement a s22 et n'a jamais existe avant - **les vingt-huit conditions des
+trois candidats sont ecrites depuis s13 et s17**, alors qu'a s21 j'ai ecrit les vingt-sept
+conditions des trois paquets **et** audite les trois dans le meme sprint. Ce levier ne suffit pas a
+poser un quatrieme paquet, pour la raison que `camille-po` nomme et que j'accepte contre moi :
+`MD-1` a `MD-10` et `D-1` a `D-11` ont ete ecrites **par categorie de raisonnement, jamais
+confrontees a un contenu reel** - c'est exactement le mecanisme de `SEG-1`, et rien ne garantit
+qu'elles survivent intactes au premier paquet ecrit contre elles. **Un quatrieme paquet ne devient
+possible que si les trois aboutissent sans aucun cycle de refus, et il n'existe aujourd'hui aucun
+quatrieme candidat dont les conditions soient deja ecrites.** Donc : trois.
+
+### 9.2 La divergence de portee, que je ne tranche pas et que je n'oppose pas
+
+`DEC-0053`, arbitrage 1, ecrit que je ne prononce plus de `REFUSE` sur le motif *"un element du jeu
+(indice, verdict, proposition) reste hors de vue sans defiler"* - **l'indice, le verdict, et tout
+autre element du meme bloc**. **Ma section 1.4 retient la lecture etroite** : `REP-8` porte sur
+l'indice, et je gardais le verdict et les propositions.
+
+**Ce que je fais, et je le dis sans ambiguite : je n'oppose pas ma lecture a la sienne.** Le
+perimetre d'un arbitrage de l'utilisatrice appartient a l'utilisatrice et sa trace au produit, pas a
+moi. **Si `DEC-0053` est commitee telle qu'elle est ecrite, la lecture large s'applique et je
+l'applique** - je ne refuserai ni sur le verdict, ni sur l'indice, ni sur une proposition hors de
+vue. Ma section 1.4 cesse alors de decrire ma porte et ne vaut plus que comme la question que j'ai
+posee.
+
+**Ce que je demande en echange, et c'est la seule chose que je demande** : que la consequence soit
+ecrite plutot que decouverte. Sous la lecture large, **un jeu ou l'enfant presse un bouton et ne
+recoit aucun retour visible peut obtenir un Done pedagogique de moi** - c'etait le motif exact de
+mon `REFUSE` de `cm1-reperes` a s20 (*"l'enfant presse un bouton et ne voit pas s'il a eu raison"*),
+et il ne serait plus un motif. **Je le nommerai dans chaque Done concerne** comme propriete non
+couverte, au meme titre que ce qu'un lecteur d'ecran annonce. C'est le prix de l'arbitrage, il est
+peut-etre le bon prix pour une livraison test, et il doit etre lisible par celle qui l'a paye.
+
+**Un seul point ne depend d'aucune des deux lectures**, parce qu'il n'appartient pas a ma porte
+pedagogique : **je ne peux auditer que ce que je peux jouer.** Un ecran dont aucune proposition
+n'est atteignable ne me donne pas un increment refusable, il me donne un increment non evaluable, et
+c'est le Done technique qui manque alors, pas le mien (`squad/README.md`, section 7). Ce n'est ni
+une reserve de pouvoir ni un motif de repli : c'est la meme phrase que ma fiche de role porte depuis
+le premier sprint.
+
+**Route a `sofia-sm`** : la ligne de ma section 7 sur la portee est **fermee par `DEC-0053`** des
+qu'elle est commitee, et n'a plus a etre reposee a l'utilisatrice. Reste ouverte, elle, la question
+de `S17-2` (le rendu et la competence n'y sont pas separables) : celle-la n'est pas une question de
+portee, c'est une question de ce que le Done devra dire.
