@@ -38,6 +38,13 @@ descripteur:
 # Les onze autres items ne sont pas touches : nadia-prof les tient pour bons, y compris les cinq
 # items de la famille "sensations" qu'elle nomme "le meilleur travail de vocabulaire du catalogue
 # CP".
+#
+# Reaudit du 2026-08-28 (FICHE-bandit-manchot-mot-manquant-cp.md, commit fabd6cb) : items 4 et 6
+# fermes, item 3 rouvre - PRE-2 tenue (feutre/pinceau sont bien du champ "instrument pour tracer")
+# mais PRE-3 echoue desormais : rien dans l'enonce ne distinguait crayon de feutre ou de pinceau,
+# les trois etant des reponses defendables pour "dessiner". L'enonce porte desormais le seul
+# trait que ni feutre ni pinceau ne possedent (on taille un crayon, jamais un feutre ni un
+# pinceau) ; les distracteurs et la bonne reponse ne changent pas.
 items:
   # Objets (6 items). Determinant et genre constants a l'interieur d'un meme item (PRE-1).
   - enonce: "Pour balayer la cuisine, Maman prend un ___."
@@ -48,7 +55,7 @@ items:
     bonneReponse: "savon"
     distracteurs: ["sable", "sel"]
     indice: "Ça mousse quand on le frotte avec de l'eau."
-  - enonce: "Léa dessine avec un ___."
+  - enonce: "Avant de dessiner, Léa taille son ___."
     bonneReponse: "crayon"
     distracteurs: ["feutre", "pinceau"]
     indice: "C'est un petit bâton de bois qui laisse une trace sur le papier."
