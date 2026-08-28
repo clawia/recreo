@@ -80,6 +80,13 @@ Sans changement, et un `REFUSE` sur l'un de ces motifs reste un `REFUSE` :
 
 ### 1.4 Les trois precisions, parce que la phrase relue serait lue de travers sans elles
 
+> **DEPASSEE SUR SES PRECISIONS 1 ET 2 AU 2026-08-28, PAR ARBITRAGE DE L'UTILISATRICE.** Cette
+> section a ete ecrite avant que la portee ne soit tranchee. **L'utilisatrice a choisi la lecture
+> large** : le verdict et les propositions sortent de ma porte avec l'indice. **La precision 1 et la
+> precision 2 ne decrivent donc plus ma porte** ; la precision 3 (je cesse de mesurer, pas de
+> regarder) tient. **Section 10, qui fait foi.** La section est conservee, non reecrite : c'est
+> l'etat qui a servi a poser la question, et un etat efface n'a aucune valeur de preuve.
+
 **Precision 1 - le verdict n'est pas l'indice, et il ne sort pas avec lui.**
 `REP-8` porte sur l'indice. **Que l'enfant sache s'il a eu raison ou tort est une autre propriete**,
 mesuree separement depuis le debut (le 2026-08-27 : indice sous le pli sur 8 jeux sur 17 ; verdict
@@ -593,6 +600,13 @@ quatrieme candidat dont les conditions soient deja ecrites.** Donc : trois.
 
 ### 9.2 La divergence de portee, que je ne tranche pas et que je n'oppose pas
 
+> **DEPASSEE AU 2026-08-28, LE MEME JOUR, PAR ARBITRAGE DE L'UTILISATRICE.** Cette section decrit
+> une divergence entre `DEC-0053` et moi. **Il n'y a plus de divergence : la question a ete portee a
+> l'utilisatrice avec la consequence dans mes mots, et elle a tranche la lecture large.** Ce qui
+> reste vrai de cette section : la conduite que j'y annoncais - ne pas opposer ma lecture, demander
+> que la consequence soit ecrite - et sa derniere phrase sur ce qui ne depend d'aucune lecture.
+> **Section 10, qui fait foi.** Conservee, non reecrite.
+
 `DEC-0053`, arbitrage 1, ecrit que je ne prononce plus de `REFUSE` sur le motif *"un element du jeu
 (indice, verdict, proposition) reste hors de vue sans defiler"* - **l'indice, le verdict, et tout
 autre element du meme bloc**. **Ma section 1.4 retient la lecture etroite** : `REP-8` porte sur
@@ -624,3 +638,133 @@ le premier sprint.
 qu'elle est commitee, et n'a plus a etre reposee a l'utilisatrice. Reste ouverte, elle, la question
 de `S17-2` (le rendu et la competence n'y sont pas separables) : celle-la n'est pas une question de
 portee, c'est une question de ce que le Done devra dire.
+
+---
+
+## 10. Arbitrage de l'utilisatrice du 2026-08-28 sur la portee - la lecture large, et sa contrepartie
+
+**Cette section fait foi sur la portee.** Elle remplace la precision 1 et la precision 2 de ma
+section 1.4, et elle clot la divergence decrite en 9.2. Les deux sections restent lisibles a leur
+place, marquees et datees.
+
+### 10.1 Ce qui est tranche
+
+La question a ete portee a l'utilisatrice par `sofia-sm`, **avec la consequence dans mes mots**
+(*"un jeu ou l'enfant repond et ne recoit aucun retour visible peut desormais obtenir un Done de
+moi"*) et avec le precedent qui la rend concrete (mon `REFUSE` de `cm1-reperes` a s20 :
+*"l'enfant presse un bouton et ne voit pas s'il a eu raison"*). L'option etroite lui a ete
+presentee, et la large lui a ete presentee comme une garantie minimale nulle sur ce point.
+
+**Elle choisit la lecture large de `DEC-0053`.** Elle est desormais ma porte, sans reserve de ma
+part :
+
+**Je ne prononce plus de `REFUSE` sur le motif "un element du jeu reste hors de vue sans faire
+defiler la page" - quel que soit cet element : l'indice, le verdict, une proposition, ou tout autre
+element du meme bloc.**
+
+**Ce que je ne fais pas, et je le dis parce que c'est ma discipline la plus fragile** : je ne
+recycle pas la propriete sous un autre nom, je ne la fais pas rentrer par la lisibilite, ni par la
+charge cognitive, ni par le traitement de l'erreur. Une propriete sortie par arbitrage est sortie.
+Si je la voyais revenir dans un motif que j'ecris, ce serait un deplacement de poteau, et c'est moi
+qu'il faudrait corriger.
+
+**Le seul point qui n'a jamais dependu de cette question, et qui n'en depend toujours pas** : je ne
+peux auditer que ce que je peux jouer. Un ecran ou aucune proposition n'est **atteignable** ne me
+donne pas un increment refusable, il me donne un increment non evaluable, et c'est le Done technique
+qui manque alors, pas le mien (`squad/README.md`, section 7). Ce n'est pas une reserve de pouvoir :
+c'est la phrase que porte ma fiche de role depuis le premier sprint, et elle vaut identiquement sous
+les deux lectures.
+
+### 10.2 `MNC-1` - la contrepartie, ecrite pour ne dependre d'aucune memoire
+
+J'avais demande que la consequence soit ecrite plutot que decouverte, et j'avais annonce que je la
+nommerais dans chaque Done concerne. **Une intention annoncee dans un document de sprint est
+exactement ce que la lecon 3 de la retro de s21 interdit** : une regle qui ne vit que dans la
+memoire d'un agent ne vaut pour aucun autre, et ne me protege pas moi-meme d'un sprint a l'autre.
+Je l'ecris donc comme une clause nommee, numerotee et opposable.
+
+> **`MNC-1` (mention de non-couverture, 2026-08-28).** **Tout Done pedagogique - `VALIDE` ou
+> `VALIDE SOUS RESERVE` - prononce a partir du 2026-08-28 porte, dans le bloc de validation de sa
+> fiche, une mention de non-couverture dont le texte est le suivant :**
+>
+> > **`MNC-1`** - Ce Done ne couvre pas que l'enfant voie, sans faire defiler la page, un element
+> > quelconque du jeu, y compris le retour qui suit sa reponse - verdict, indice, proposition. Cette
+> > propriete est sortie de la porte pedagogique par arbitrage de l'utilisatrice du 2026-08-28
+> > (`DEC-0053`) ; sa dette est ouverte, croissante et assumee. Aucune mesure ne l'a instruite sur
+> > ce paquet.
+>
+> **Un Done dont la fiche ne porte pas cette mention est incomplet, et c'est un defaut de la fiche,
+> pas du paquet.**
+
+**Pourquoi elle porte sur *tout* Done et non sur *chaque Done concerne*, comme je l'avais d'abord
+ecrit.** Savoir quels Done sont "concernes" exigerait de mesurer quel paquet pousse quoi sous le
+pli - c'est-a-dire exactement la mesure que l'arbitrage retire. **Une clause conditionnee a une
+mesure qui n'existe plus est une clause qui ne s'applique jamais.** Inconditionnelle, elle est
+exacte : sous ce regime, aucun de mes Done ne couvre cette propriete, y compris ceux ou le defaut se
+trouve absent par chance.
+
+**Application de ma propre regle de la section 4 a cette clause, parce qu'elle vaut aussi contre
+moi.**
+
+- **C'est une propriete, pas un exemple.** Elle ne cite ni un jeu, ni un item, ni un pixel : elle
+  nomme ce que le Done ne couvre pas.
+- **Elle est decidable par un tiers, sans me la redemander** : la fiche porte la mention ou elle ne
+  la porte pas. **Verification** : chercher `MNC-1` dans toute fiche de `squad/conformite/` dont le
+  dernier verdict est date du 2026-08-28 ou apres, et rendre rouge celle qui ne le porte pas.
+  N'importe qui peut la faire, y compris contre moi.
+- **La population qu'elle gouverne est nommee et enumerable** : les fiches
+  `squad/conformite/FICHE-*.md` dont le dernier verdict est date du 2026-08-28 ou apres. **Mesuree
+  contre cette population au moment ou je l'ecris, comme ma propre regle l'exige : elle est vide
+  aujourd'hui** - aucun Done n'a encore ete prononce a s22 - donc la clause n'attrape aujourd'hui
+  aucun cas, ni a tort ni a raison. Elle mordra a partir du premier Done de s22.
+- **Elle porte sa condition d'extinction**, sans laquelle elle vivrait indefiniment par inertie :
+  **`MNC-1` cesse de s'appliquer le jour ou la propriete redevient couverte** - soit par un
+  arbitrage qui la reinscrit dans ma porte, soit par un garde-fou executable qui la juge sans moi.
+  Ce jour-la, la clause est close par une note datee, et les Done anterieurs gardent leur mention :
+  elle etait vraie a leur date.
+
+**Ce que `MNC-1` n'est pas** : ni un `REFUSE` differe, ni une reserve bloquante, ni une condition
+sur le contenu. Elle ne retient aucun Done, elle n'entre dans aucun motif, elle ne demande aucun
+travail a un developpeur. **Elle dit seulement ce que mon tampon ne dit pas**, pour qu'une ligne de
+`MATRICE-couverture.md` passee `couvert-valide` ne soit pas lue comme couvrant ce qu'elle ne couvre
+pas.
+
+**Rapport avec `REP-8-CONSTAT` (section 2), pour qu'on ne les confonde pas** : `REP-8-CONSTAT` est
+un **constat**, ecrit quand je vois le defaut en jouant, absent quand je ne le vois pas ; `MNC-1`
+est une **mention de non-couverture**, presente sur tout Done, independamment de ce que j'ai vu. La
+premiere dit ce que j'ai constate, la seconde dit ce que je n'ai pas instruit. Les deux sont
+necessaires : sans la seconde, une fiche sans constat se lirait comme une fiche sans defaut.
+
+### 10.3 Ce que la lecture large change a ma section 3 : rien
+
+J'avais etabli la liste des conditions qui tombent sous la lecture etroite. **Je l'ai reprise
+condition par condition sous la lecture large, et aucune ne tombe differemment.**
+
+- **`S13-2` (`MD-1` a `MD-10`) et `S13-3` (`D-1` a `D-11`) : inchange, aucune ne tombe.** Aucune de
+  mes vingt-et-une conditions ne portait sur la visibilite du verdict ni sur celle des propositions.
+  Il n'y avait rien de plus a retirer sous la lecture large qu'il n'y en avait sous l'etroite.
+- **`S17-2` : inchange.** `COMP-4` tombait deja **en entier** sous la lecture etroite - je l'avais
+  ecrit ainsi, et non "pour sa part indice" - parce que c'etait une condition unique de visibilite
+  composee, portant du meme geste le support, la question et les propositions. `COMP-7` tombe avec
+  elle, le premier motif de `COMP-6` tombe. `COMP-1`, `COMP-2`, `COMP-3` et `COMP-5` tiennent :
+  aucune ne parle d'un ecran.
+- **Ma barre du "relisible" sur le texte-support de `S17-2` (section 3.3) tient telle que je l'ai
+  ecrite, et je redis pourquoi ce n'est pas un contournement** : elle n'est pas une barre de
+  visibilite sans defilement - c'est **l'inverse exact**, puisqu'un texte qu'on rejoint en faisant
+  defiler la page la satisfait. Ce qu'elle refuse est un texte **inatteignable**, ce qui est la
+  meme famille que le point non evaluable de 10.1. **Et je maintiens ce que j'ai deja ecrit : je ne
+  refuserai pas dessus a s22**, je l'ecrirai en `REP-8-CONSTAT` si je la vois manquer.
+- **La question que j'avais routee sur `S17-2` est repondue par `MNC-1`, et je la ferme.** Je
+  demandais a savoir si le Done de `S17-2` devrait porter une mention de non-couverture. **Oui,
+  automatiquement, comme tout Done a partir d'aujourd'hui.** `sofia-sm` n'a plus a la porter a
+  l'utilisatrice, et la ligne correspondante de ma section 7 est close.
+
+### 10.4 Ce qui reste route apres cet arbitrage
+
+- **`camille-po`** : `MNC-1` est a reprendre dans le gabarit du bloc de validation des fiches de
+  conformite, pour que sa presence ne depende pas de ma memoire a chaque verdict. **Je ne touche
+  aucune fiche dans ce lot** ; la clause est ecrite ici pour etre reprenable telle quelle.
+- **`camille-po`** : la ligne de ma section 7 sur la portee est **close**. La ligne sur `S17-2` est
+  **close** aussi (10.3). Les six autres restent ouvertes, inchangees.
+- **Personne** : la portee n'est plus une question ouverte. Un agent qui lirait ma section 1.4 sans
+  son marqueur croirait le contraire ; c'est pour cela que le marqueur y est.
