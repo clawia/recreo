@@ -301,8 +301,10 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    texte-support") : meme taille que .consigne (1,25rem, plancher de lisibilite de
    TailleDesTextesEtBoutonsTest), graisse normale, couleur et interligne herites, sans cadre.
    COMP-6, second motif : ce bloc se distingue de .consigne par sa position (entre la consigne et
-   l'enonce) et par le contenu qu'il porte, pas par une regle CSS de plus - nadia-prof juge ce
-   moyen suffisant tant que la consigne du jeu tient sur une seule ligne rendue. */
+   l'enonce) et par le contenu qu'il porte, pas par une regle CSS de plus. Ce point n'etait pas
+   juge le 2026-08-19 - le commentaire l'anticipait a tort. nadia-prof le juge suffisant le
+   2026-08-29 (squad/sprints/s22-couverture-maximale-du-catalogue/avis-nadia-done-pedagogique-s22.md,
+   section 7), tant que la consigne du jeu tient sur une seule ligne rendue. */
 .texte-support {
     font-size: 1.25rem;
     margin-bottom: 0.25rem;
