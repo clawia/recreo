@@ -1,0 +1,129 @@
+schema: 1
+id: cm1-comprehension
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CM1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Comprendre un texte narratif ou documentaire (questions explicites et implicites, inférences simples)"
+#
+# S17-2 (DEC-0053, ADR-0050, ADR-0062 comme patron technique). Arbitrage prealable de
+# nadia-prof du 2026-08-19 (ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md) : principe
+# ACCEPTE sous COMP-1 a COMP-5 ; matiere premiere (contenu-repris/quiz/cm1-comprehension.yml)
+# REFUSEE, ce paquet est integralement neuf. COMP-4 et COMP-7 et le premier motif de COMP-6 sont
+# tombes avec le pli le 2026-08-28 (PORTE-PEDAGOGIQUE-apres-arbitrage-du-2026-08-28.md) ;
+# COMP-1, COMP-2, COMP-3, COMP-5 restent bloquantes, COMP-6 reformulee en propriete.
+#
+# COMP-3 (bloquante) : au moins un tiers des items relient deux informations distinctes du
+# texte-support, jamais un fragment recopie comme bonne reponse. 17 items sur 20 sont
+# marques '# COMP-3' ci-dessous, chacun avec les deux informations qu'il relie dans son
+# commentaire - au dela du plancher d'un tiers (7/20), assume : le motif de refus de s02 ne
+# depend d'aucun ecran et ne se relache pas au premier tiers atteint.
+#
+# COMP-1 : sur les vingt items, aucune proposition (bonne reponse ou distracteur) ne recopie
+# un mot du texte-support - verifie par script (outils de generation, non commite) sur les
+# mots de 4 lettres et plus hors mots-outils, jamais une seule proposition sur trois.
+#
+# COMP-2 : dans chaque item, les trois propositions restent plausibles sans avoir lu le texte -
+# aucune n'est absurde, aucune ne se devine par la seule culture generale.
+items:
+  - enonce: "Quel temps fait-il dehors ?"  # COMP-3 : parapluie/bottes + flaques -> pluie
+    texteSupport: "Léa enfile son parapluie et ses bottes avant de sortir. Sur le trottoir, elle saute dans toutes les flaques qu'elle trouve."
+    bonneReponse: "il pleut"
+    distracteurs: ["il fait beau", "il neige"]
+    indice: "Repense à ce que porte Léa pour sortir de chez elle."
+  - enonce: "Que va faire Tom juste après ?"  # COMP-3 : heure de fin de classe + rangement du cartable -> rentre chez lui
+    texteSupport: "Tom regarde la pendule qui affiche seize heures trente. Il range son cahier dans son cartable et enfile son manteau avant de sortir de la classe."
+    bonneReponse: "rentrer chez lui"
+    distracteurs: ["aller à la cantine", "commencer un cours"]
+    indice: "Observe l'heure affichée et ce que fait Tom avec ses affaires."
+  - enonce: "Où Nino a-t-il oublié son ballon ?"  # COMP-3 : chêne + banc -> lieu probable, un parc
+    texteSupport: "Nino cherche partout son ballon de football. Il se souvient l'avoir oublié près du grand chêne, à côté du banc rouge, quand il jouait avec ses copains hier après-midi."
+    bonneReponse: "dans le parc"
+    distracteurs: ["à l'école", "sous son lit"]
+    indice: "Repense aux deux détails que Nino se rappelle près de l'endroit."
+  - enonce: "Où Zoé va-t-elle probablement passer l'après-midi ?"  # COMP-3 : affaires de bain + protection solaire -> baignade au bord de l'eau
+    texteSupport: "Zoé glisse son maillot de bain, ses lunettes et une serviette dans son sac. Sa maman ajoute un tube de crème contre le soleil avant de fermer la fermeture éclair."
+    bonneReponse: "au bord de l'eau"
+    distracteurs: ["à la bibliothèque", "chez le dentiste"]
+    indice: "Observe tous les objets que Zoé emporte dans son sac."
+  - enonce: "Que fait Monsieur Albert de ses journées ?"  # COMP-3 : arrosage des tomates + tenue de jardinage -> il jardine
+    texteSupport: "Le vieux Monsieur Albert arrose ses tomates tous les matins avant le lever du soleil. Il porte toujours son grand chapeau de paille et ses bottes couvertes de terre."
+    bonneReponse: "il jardine"
+    distracteurs: ["il travaille au bureau", "il enseigne à l'école"]
+    indice: "Repense à ce qu'arrose Monsieur Albert et à ce qu'il porte."
+  - enonce: "À quoi va servir le cahier rouge ?"
+    texteSupport: "La maîtresse distribue des cahiers rouges à toute la classe. Elle explique que ce cahier servira à noter les devoirs jusqu'à la fin de l'année."
+    bonneReponse: "à écrire les leçons du soir"
+    distracteurs: ["à dessiner en récréation", "à ranger les crayons"]
+    indice: "Relis ce que dit la maîtresse à propos du cahier."
+  - enonce: "Qu'a-t-il pu se passer cette nuit ?"  # COMP-3 : branches cassées/barrière couchée + toit endommagé -> tempête
+    texteSupport: "Ce matin, des branches cassées jonchent le jardin et la barrière du voisin est couchée par terre. Plusieurs éléments du toit sont tombés dans l'allée."
+    bonneReponse: "une grosse tempête"
+    distracteurs: ["une chute de neige", "la visite d'un animal"]
+    indice: "Observe tous les dégâts autour du jardin et du toit."
+  - enonce: "Comment le lion organise-t-il ses journées ?"  # COMP-3 : repos la majeure partie du jour + chasse au lever et au coucher du soleil -> rythme précis
+    texteSupport: "Le lion se repose la majeure partie de la journée à l'ombre d'un acacia. C'est surtout au lever et au coucher du soleil qu'il part chasser avec le reste de son groupe."
+    bonneReponse: "seulement matin et soir"
+    distracteurs: ["tout le temps", "seulement la nuit"]
+    indice: "Relis les deux moments où le texte dit que le lion part chasser."
+  - enonce: "Pourquoi les pompiers sont-ils venus ?"  # COMP-3 : camion de pompiers/sirène + fumée grise -> incendie
+    texteSupport: "Le camion de pompiers freine devant l'immeuble, sirène allumée. Une épaisse fumée grise sort par la fenêtre du deuxième étage."
+    bonneReponse: "un incendie"
+    distracteurs: ["un chat coincé", "une fuite d'eau"]
+    indice: "Repense à ce qui sort de la fenêtre du deuxième étage."
+  - enonce: "Que contient probablement ce carton ?"  # COMP-3 : étiquette « Cuisine » + odeur de pain chaud -> produits de boulangerie
+    texteSupport: "Le facteur dépose un grand carton devant la porte des Dupont, marqué d'une étiquette jaune « Cuisine ». Une bonne odeur de pain chaud s'échappe du carton pendant qu'il repart."
+    bonneReponse: "des produits de boulangerie"
+    distracteurs: ["des jouets pour enfants", "des outils de jardinage"]
+    indice: "Relie l'étiquette du carton à l'odeur qui s'en échappe."
+  - enonce: "Quel genre de sortie Grand-père prépare-t-il ?"  # COMP-3 : gourde/carte du sentier + chaussures à crampons -> randonnée en montagne
+    texteSupport: "Avant de partir en promenade, Grand-père glisse une gourde d'eau et une carte du sentier dans son sac à dos. Il chausse ses grosses chaussures de marche à crampons."
+    bonneReponse: "une randonnée en montagne"
+    distracteurs: ["une sortie au cinéma", "une visite médicale"]
+    indice: "Observe les objets que Grand-père prépare et ce qu'il chausse."
+  - enonce: "Que la classe s'apprête-t-elle à faire ?"  # COMP-3 : pièce assombrie + écran/vidéoprojecteur installés -> projection d'un film
+    texteSupport: "La maîtresse éteint la lumière et ferme les rideaux de la classe. Elle installe le grand écran blanc devant le tableau et allume le vidéoprojecteur."
+    bonneReponse: "regarder un film"
+    distracteurs: ["faire la sieste", "manger le goûter"]
+    indice: "Repense à ce que la maîtresse installe devant le tableau."
+  - enonce: "Pourquoi le chien aboie-t-il ainsi ?"  # COMP-3 : chien qui aboie à la porte + animal perché dans l'arbre -> cause de l'aboiement
+    texteSupport: "Le chien de Sami gratte frénétiquement à la porte du jardin en aboyant. Dehors, un chat noir est perché tout en haut du grand sapin, immobile."
+    bonneReponse: "un animal est dans l'arbre"
+    distracteurs: ["il a faim", "un orage arrive"]
+    indice: "Repense à ce qui se trouve dehors, en haut de l'arbre."
+  - enonce: "Quel métier exerce probablement la personne qui vit ici ?"  # COMP-3 : cahiers corrigés/copies + stylo rouge -> métier d'enseignant
+    texteSupport: "Sur la table de la cuisine, une pile de cahiers corrigés attend à côté d'un stylo rouge posé sur une pile de copies. Une odeur de café refroidi flotte dans la pièce depuis longtemps."
+    bonneReponse: "enseignant"
+    distracteurs: ["cuisinier", "médecin"]
+    indice: "Repense aux objets posés sur la table de la cuisine."
+  - enonce: "Que vend le vieux pêcheur au marché ?"
+    texteSupport: "Au marché, le vieux pêcheur installe son étal juste avant l'aube. Des caisses de glace pilée entourent les poissons argentés fraîchement pêchés."
+    bonneReponse: "des produits de la mer"
+    distracteurs: ["des fruits et légumes", "des vêtements chauds"]
+    indice: "Repense à ce qu'entourent les caisses de glace pilée."
+  - enonce: "Pourquoi les voisins utilisent-ils des bougies ?"
+    texteSupport: "Depuis que la panne d'électricité a commencé hier soir, toute la rue est plongée dans le noir. Les voisins ont sorti des bougies et des lampes de poche pour s'éclairer."
+    bonneReponse: "le courant est coupé"
+    distracteurs: ["ils fêtent un anniversaire", "ils regardent les étoiles"]
+    indice: "Relis ce qui a commencé la veille au soir dans la rue."
+  - enonce: "Quelle saison correspond le mieux à cette scène ?"  # COMP-3 : plusieurs couches de vêtements chauds + trottoir verglacé/souffle visible -> hiver
+    texteSupport: "Léo a mis trois pulls l'un sur l'autre et un gros bonnet avant de sortir. Sur le trottoir verglacé, son souffle forme un petit nuage blanc devant sa bouche."
+    bonneReponse: "l'hiver"
+    distracteurs: ["l'été", "le printemps"]
+    indice: "Repense à ce que porte Léo et à ce qui se forme devant sa bouche."
+  - enonce: "Que vient-il de se passer sur le terrain ?"  # COMP-3 : cris de joie des supporters + chiffre du tableau qui change -> but marqué
+    texteSupport: "La sirène du stade retentit et les supporters se lèvent tous en même temps en criant de joie. Sur le grand tableau d'affichage, le chiffre à droite vient de changer."
+    bonneReponse: "un but marqué"
+    distracteurs: ["le match commence", "l'arbitre siffle la fin"]
+    indice: "Relie les cris de joie des supporters au tableau d'affichage."
+  - enonce: "Pourquoi Manon réagit-elle ainsi ?"  # COMP-3 : grenier aux caisses jamais ouvertes + éternuements/yeux qui piquent -> poussière
+    texteSupport: "Manon éternue sans arrêt depuis qu'elle est entrée dans le grenier. Elle a les yeux qui piquent au milieu des vieilles caisses en carton jamais ouvertes depuis des années."
+    bonneReponse: "la poussière la gêne"
+    distracteurs: ["un plat épicé", "une longue course"]
+    indice: "Repense à l'endroit où se trouve Manon et à ce que contiennent les caisses."
+  - enonce: "Que peut-on penser de cette situation ?"  # COMP-3 : arrêt prolongé, moteur éteint + aucun enfant ne descend -> un souci retient tout le monde
+    texteSupport: "Le car scolaire est arrêté depuis dix minutes devant l'école, moteur éteint. Les enfants restent assis, cartable sur les genoux, sans que personne ne descende."
+    bonneReponse: "un souci les retient"
+    distracteurs: ["ils font la sieste", "on distribue des bonbons"]
+    indice: "Repense au temps d'arrêt du car et au fait que personne ne descend."

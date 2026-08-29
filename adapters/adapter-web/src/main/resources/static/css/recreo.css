@@ -295,6 +295,19 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
     margin-bottom: 0.25rem;
 }
 
+/* ADR-0050 (S17-2), COMP-5 : le texte-support recoit un style distinct de celui de l'enonce, plus
+   petit - la variante nue jugee lisible par nadia-prof le 2026-08-19
+   (squad/conformite/FICHE-bandit-manchot-comprehension-cm1.md, "Jugement de lisibilite du
+   texte-support") : meme taille que .consigne (1,25rem, plancher de lisibilite de
+   TailleDesTextesEtBoutonsTest), graisse normale, couleur et interligne herites, sans cadre.
+   COMP-6, second motif : ce bloc se distingue de .consigne par sa position (entre la consigne et
+   l'enonce) et par le contenu qu'il porte, pas par une regle CSS de plus - nadia-prof juge ce
+   moyen suffisant tant que la consigne du jeu tient sur une seule ligne rendue. */
+.texte-support {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
 /* ADR-0062, NAT-5 : marque le segment de .enonce que le contenu declare designer, sur un jeu marque
    seulement (cp-nature-mot) - un jeu non marque ne rend jamais cette classe. Regle reprise de la
    proposition mesuree d'ines-design (hors-sprint, squad/sprints/s19-contenu-seul-et-conception-de-

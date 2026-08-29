@@ -312,6 +312,9 @@ public class PartieController {
         boolean fraiche = session.propositionsEssayees().isEmpty();
         modele.addAttribute("jeuId", jeuId);
         modele.addAttribute("consigne", consigne);
+        // ADR-0050 : le texte-support d'un item de comprehension, vide sur tout item qui n'en porte
+        // pas - le gabarit ne rend alors aucun paragraphe (th:if), jamais une balise vide.
+        modele.addAttribute("texteSupport", session.texteSupportManche().orElse(null));
         modele.addAttribute("segmentsEnonce", segmentsEnonce(session));
         modele.addAttribute("propositions", session.propositions());
         modele.addAttribute("score", session.score());

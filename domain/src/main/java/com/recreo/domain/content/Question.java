@@ -24,10 +24,16 @@ import java.util.Optional;
  * un paquet qui ne designe rien ne remplit aucun champ factice, sur le modele deja ratifie pour
  * {@link #explication()} (ADR-0024). Le nom ne privilegie aucune matiere : une mecanique qui
  * designe une portion d'un enonce peut un jour designer autre chose qu'un mot.</p>
+ *
+ * <p>ADR-0050 : {@code texteSupport} porte un texte distinct de {@code enonce} - le support qu'une
+ * question de comprehension lit avant de repondre (S17-2) - rendu par le gabarit dans un style
+ * propre, plus petit que celui de la question. Meme genre que {@code indice} et {@code explication} :
+ * un champ de contenu optionnel, jamais lu par la mecanique, jamais rempli d'une valeur factice par
+ * un paquet qui n'en porte pas.</p>
  */
 public record Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs,
                         Optional<String> indice, Optional<String> explication,
-                        Optional<String> partDesignee) implements Item {
+                        Optional<String> partDesignee, Optional<String> texteSupport) implements Item {
 
     public Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs) {
         this(id, enonce, bonneReponse, distracteurs, Optional.empty());
@@ -54,5 +60,16 @@ public record Question(ItemId id, String enonce, String bonneReponse, List<Strin
     public Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs,
                      Optional<String> indice, Optional<String> explication) {
         this(id, enonce, bonneReponse, distracteurs, indice, explication, Optional.empty());
+    }
+
+    /**
+     * ADR-0050 : meme defaut d'ADR-0016 qu'au-dessus, assume pour le meme motif - ne pas rouvrir les
+     * sites de construction des paquets qui ne portent pas de texte-support. Laisse
+     * {@code texteSupport} vide.
+     */
+    public Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs,
+                     Optional<String> indice, Optional<String> explication,
+                     Optional<String> partDesignee) {
+        this(id, enonce, bonneReponse, distracteurs, indice, explication, partDesignee, Optional.empty());
     }
 }
