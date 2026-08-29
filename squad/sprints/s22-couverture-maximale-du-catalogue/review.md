@@ -175,6 +175,47 @@ Done pedagogique n'est prononce** : `nadia-prof` n'a pas encore audite l'increme
 (aucune des trois lignes de matiere ne cite encore les trois jeux neufs). Le sprint n'est donc pas
 clos ; ni `retro.md` ni `RAPPORT.md` ne sont ecrits par ce document.
 
+### Audit rendu le 2026-08-29 par `nadia-prof` - TROIS REFUS, aucun Done pedagogique
+
+*Ajout de `nadia-prof`, 2026-08-29, branche `s22-nadia-3`. Le paragraphe ci-dessus reste tel qu'il a
+ete ecrit : il etait exact a sa date. Ce qui suit le complete, il ne l'efface pas.*
+
+**Les trois paquets ont ete joues** - fat jar construit sur l'arbre de la branche, parties entieres,
+erreurs volontaires jusqu'a la fin de partie. **Audit non degrade sur les trois.** Verdicts :
+
+| Story | Paquet | Verdict | Motif | Cout de levee |
+|---|---|---|---|---|
+| `S13-2` | `cm1-multiplications-divisions-10-100` | **REFUSE** | Les **25 indices sur 25** - tout le texte lu apres une erreur - ne sont pas accentues (*ecrire*, *zero*, *a droite*). Amendement du 2026-08-04 a `DEC-0002` | **4 chaines** |
+| `S13-3` | `cm1-problemes-durees` | **REFUSE** | **`D-6`** : les 48 distracteurs sont la bonne reponse deplacee d'un ecart constant (+15/+45, -15/+30, -45/-15), et l'en-tete declare deux familles d'erreurs qui ne les produisent pas. L'erreur de base 100 n'est proposee sur **aucun** des 24 items | **48 distracteurs** |
+| `S17-2` | `cm1-comprehension` | **REFUSE** | **`COMP-2`, bloquante** : 3 items sur 20 se resolvent texte masque, dont un par culture generale pure (*"Que vend le vieux pecheur au marche ?"*). Ce sont exactement les 3 items non marques `COMP-3` | **3 questions, plus un mot** |
+
+**Sur les vingt-huit conditions applicables, vingt-cinq sont tenues**, et les soixante-neuf calculs
+des deux paquets de mathematiques sont justes sans une seule erreur. **Trois lots ne sont pas trois
+echecs** : trois defauts localises dans trois lots par ailleurs solides, dont deux se levent pour
+moins cher qu'ils n'ont coute a trouver.
+
+**`MNC-1` n'apparait dans aucun des trois blocs, et ce n'est pas un oubli** : elle porte sur tout
+Done `VALIDE` ou `VALIDE SOUS RESERVE`, et un `REFUSE` n'est pas un Done. Les trois blocs le disent
+explicitement.
+
+**Ce que la CI verte n'a pas vu.** Dix-neuf de mes vingt-six conditions sont desormais gardees
+automatiquement (`yanis-qa`) - **et aucun de ces dix-neuf garde-fous ne cherche l'une des trois
+proprietes qui ont fait tomber ces lots** : l'accentuation du texte d'un item n'est couverte par
+aucun test du depot, qu'un distracteur soit une erreur reelle ne l'est pas davantage, et `COMP-2` se
+verifie en masquant le texte et en essayant de repondre.
+
+**Trois de mes propres conditions se sont revelees imprecises** au contact du contenu reel -
+`COMP-3`, `D-4`, `D-5` : leur libelle ne mesure pas exactement ce que leur motif annonce. **Les trois
+paquets les tiennent sous toutes les lectures, et je les declare tenues** ; elles seront reecrites
+par moi, en conditions neuves et datees, jamais appliquees retroactivement.
+
+**Motifs complets, tableaux condition par condition et criteres de levee** : dans les blocs de
+validation des trois `squad/conformite/FICHE-*.md`, et rassembles dans
+`squad/sprints/s22-couverture-maximale-du-catalogue/avis-nadia-done-pedagogique-s22.md`.
+
+**Aucune ligne de `MATRICE-couverture.md` ne passe `couvert-valide`.** Les trois refus retournent a
+`camille-po`, qui en fait du backlog ; ils ne bloquent pas le sprint suivant.
+
 ## Decisions prises
 
 Aucune decision de perimetre, d'architecture ou de pedagogie n'est prise par ce document : les
