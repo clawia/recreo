@@ -43,8 +43,17 @@ condition pour qu'elle veuille dire quelque chose : **478 items**, **20 paquets 
 `cm1-tables-multiplication`, **99 items**. Les cinq garde-fous en lisaient **60**, donc **39 items
 n'etaient examines par personne, cinq fois**. Ce total de 478 concorde avec celui que `nadia-prof`
 a etabli le 2026-08-27 en jouant les 20 jeux enumeres, par une methode entierement differente.
-**Ce chiffre vieillira** : trois paquets neufs arrivent dans ce sprint, et c'est precisement ce que
-la decision ci-dessous prend en charge.
+**L'arbre mesure, nomme plutot que sous-entendu** : `round-two` a `2968591` augmente de ce seul lot,
+c'est-a-dire la branche `s22-theo-2`, qui n'apporte aucun paquet de contenu.
+
+**Ce chiffre a vieilli avant meme d'etre commite, et c'est le cas d'usage de la decision 3.**
+Mesure le 2026-08-29 sur les branches de contenu de ce sprint, non fusionnees, par le meme
+comptage : `s22-lea` a `04aa35f` porte **22 paquets et 503 items** (`cm1-multiplications-divisions-10-100`,
+25 items) ; `s22-sofia-2` a `8da64f5` porte **22 paquets et 502 items** (`cm1-problemes-durees`,
+24 items) ; `s22-marc` a `4dedb00` en porte encore 21 et 478, son paquet n'etant pas commite.
+**Sur les trois, le plus grand paquet enumere reste `cm1-tables-multiplication`, 99 items** : aucune
+des cinq bornes ecrites a la main n'est approchee, et les bornes derivees suivent les paquets neufs
+sans que personne ait a y penser. C'est exactement ce que cette decision achete.
 
 **Rapport a `ADR-0051`, et pourquoi ce cas-ci est le plus dangereux des deux.** `ADR-0051` traite
 le garde-fou qui n'examine **aucun** de ses objets et exige qu'il le declare. Celui-ci traite le

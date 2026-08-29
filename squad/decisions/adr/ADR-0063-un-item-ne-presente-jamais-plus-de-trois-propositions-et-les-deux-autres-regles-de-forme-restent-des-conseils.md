@@ -224,6 +224,36 @@ explicitement, ecrits dans `docs/backlog/backlog.md` et dans
 > reste valide et inchange, et un second s'y ajoute - un arbitrage de l'utilisatrice ou de
 > `camille-po` remettant le pli en critere de validation. Ni l'un ni l'autre n'est un geste
 > d'architecte.
+>
+> **Verification faite apres coup contre le balayage des conditions de mecanique de `nadia-prof`
+> du 2026-08-29** (`ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md`), parce
+> qu'un amendement ecrit le matin et un balayage rendu le meme jour peuvent se contredire sans que
+> personne s'en apercoive :
+>
+> - **Cet amendement ne requalifie aucune de ses conditions, et ne le peut pas** : `M4`, `M8`,
+>   `M17`, `M18` sont des conditions **pedagogiques**, prononcees par elle. Rien ici ne les lit, ne
+>   les leve ni ne les interprete. Ce qui change de regime est la **regle 4 d'un `ADR`**, qui est de
+>   moi.
+> - **Elle a coupe `M17` clause 1 en deux, et c'est exactement la forme que j'avais nommee comme le
+>   risque le plus fin de ce sprint** : une clause qui porte deux interdictions dans la meme phrase,
+>   dont **une seule** est le pli. *"L'indice ouvert est entierement au-dessus du pli"* tombe ;
+>   *"un indice qui s'ouvre en recouvrant les propositions"* tient - son motif, au mot :
+>   **faire defiler la page repare un pli, cela ne repare pas un calque pose par-dessus**. Deux
+>   defauts, deux remedes. **Je le consigne parce que la meme forme vaut pour ma propre decision 1
+>   ci-dessus**, et que la coincidence de deux relectures independantes sur la meme forme est ce qui
+>   la rend fiable, pas ce qui la rend superflue.
+> - **`M18` sort en entier** - non-regression verticale mesuree en pixels, meme famille que `M4`.
+>   **Aucun test du depot ne changeait de verdict avec elle, et aucun ne change sans elle** :
+>   `ADR-0028` avait deja refuse d'automatiser cette famille, et le refus tient.
+> - **`M8` porte desormais seule** ce qui empeche de regler un depassement vertical en poussant les
+>   propositions sous le doigt de l'enfant ; elle avait `M4` et `M18` en contrepoids et ne les a
+>   plus. `camille-po` me le relaie nommement. **Consequence technique, et je m'en tiens la** : rien
+>   dans le depot ne change, et la **decision 1 de cet `ADR`** - au plus trois propositions, donc
+>   pas de repli a quatre colonnes - se trouve etre desormais **la seule chose executable** qui
+>   borne le nombre de colonnes d'un ecran de manche. Elle n'a pas ete ecrite pour cela et ne
+>   remplace pas `M8`, qui est d'une autre nature et d'une autre autorite ; **c'est un motif de ne
+>   pas l'affaiblir, pas un motif de la relire plus largement**. Tout ce qui releve du jugement
+>   pedagogique sur `M8` reste a `nadia-prof`.
 
 ## Regle executable
 

@@ -32,9 +32,10 @@ recreo-bootstrap : SUCCESS
 sont comptes separement.
 
 **Pourquoi le XML et pas le `.txt`, dit ici plutot que subi.** J'ai d'abord agrege les en-tetes
-`Tests run:` des rapports **texte**, et ce compte est **faux par defaut de 7** : il rend 331 pour
-`adapter-web` et **96** pour `bootstrap`, la ou Maven imprime lui-meme `Tests run: 102` pour
-`bootstrap` a la fin de sa phase de test. **Cause identifiee plutot que supposee**, par comparaison
+`Tests run:` des rapports **texte**, et ce compte est **faux par defaut de 7** : mesure faite avant
+le correctif de la section 7, il rendait **331** pour `adapter-web` et **96** pour `bootstrap`, la
+ou Maven imprimait lui-meme `Tests run: 102` pour `bootstrap` a la fin de sa phase de test.
+**Cause identifiee plutot que supposee**, par comparaison
 fichier par fichier des deux formats : **quatre classes divergent**, toutes portees par le moteur
 JUnit d'ArchUnit - `AbstractionsCiteesTest` (XML 5, texte 1), `ChargementDuContenuTest` (2 / 1),
 `LesReglesMordentTest` (29 / 28) et `AssertionsWebTest` (2 / 1). Le rapport texte y resume le jeu
@@ -49,10 +50,10 @@ concorde avec les lignes `Results` de Maven.**
 | `application` | 13 | - |
 | `adapters/adapter-web` | 332 | - |
 | `adapters/adapter-content` | 224 | - |
-| `bootstrap` | 102 | 6 |
-| **Total** | **720** | **6** |
+| `bootstrap` | 104 | 6 |
+| **Total** | **722** | **6** |
 
-**726 tests, 0 echec, 0 erreur, 0 ignore.**
+**728 tests, 0 echec, 0 erreur, 0 ignore.** Les deux derniers sont ceux de la section 7.
 
 **Regles ArchUnit : 30, inchange.** Methode : le compte n'est pas un `grep`, c'est la derivation du
 depot lui-meme - `LesGardeFousSontMisALEpreuveTest.toutesLesRegles(racine)`, qui balaie les sources
@@ -96,8 +97,8 @@ identifiant que le corps de la boucle alimente.
 `adapters/adapter-content/src/main/resources/contenu/`, le **2026-08-29**, une occurrence de
 `- enonce:` par item enumere. **478 items**, **20 paquets enumeres** et **1 paquet combinatoire**
 qui n'enumere rien. **Un seul paquet depasse 60** : `cm1-tables-multiplication`, **99 items**. Ce
-chiffre vieillira dans ce sprint meme - trois paquets neufs sont annonces - et c'est pourquoi il
-porte sa date.
+chiffre a vieilli pendant l'ecriture de ce lot, et la section 9 le remesure sur les branches de
+contenu du sprint plutot que de le laisser dater.
 
 **Verdict : aucun defaut cache.** Les cinq garde-fous lisent desormais les 99 items de ce paquet et
 sont verts. Ce n'est pas une deduction, c'est le resultat du `clean verify` ci-dessus. Deux points
@@ -185,7 +186,69 @@ d'`ADR-0063` avant d'ecrire l'amendement, et l'amendement l'ecrit :
 la regle 4 n'etait executee par rien. C'est verifiable dans le `verify` ci-dessus, qui ne porte
 aucune modification de test liee au pli.
 
-## 7. Deux points signales, non traites, avec leur declencheur
+**Verifie ensuite contre le balayage des conditions de mecanique de `nadia-prof` du 2026-08-29**,
+rendu le meme jour que cet amendement - deux ecrits du meme jour peuvent se contredire sans que
+personne le voie. Lu a sa source (`ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md`
+sur `s22-nadia-2` a `a2cd22d`), pas sur resume :
+
+- **`M18` sort en entier**, **`M17` clause 1 se scinde** - la moitie *"entierement au-dessus du
+  pli"* tombe, la moitie *"un indice qui s'ouvre en recouvrant les propositions"* tient. **C'est la
+  forme exacte que j'avais nommee comme le risque le plus fin du sprint**, trouvee independamment
+  par elle sur son propre materiau. Son motif, au mot : *faire defiler la page repare un pli, cela
+  ne repare pas un calque*. **Mon amendement ne touche a rien de tout cela** : ce sont ses
+  conditions, pas mes regles.
+- **`M8` porte seule** ce qui empeche de regler un depassement vertical en poussant les propositions
+  vers le bas ; `camille-po` me le relaie nommement. **Consequence technique : nulle sur le depot.**
+  Je consigne seulement, dans l'amendement lui-meme, que la decision 1 d'`ADR-0063` se trouve etre
+  desormais la seule chose **executable** qui borne le nombre de colonnes - **motif de ne pas
+  l'affaiblir, jamais motif de la relire plus largement**, et surtout pas un substitut a `M8`, qui
+  est d'une autre nature et d'une autre autorite.
+
+## 7. `TYP-1` - l'angle mort que `lea-dev` me route, traite
+
+**Le fait, refait plutot que repris sur parole.** `lea-dev` mesure que l'espace insecable devant `?`
+ne survit pas a la comparaison exacte de `LaConsigneDUnJeuServiAtteintLEcranDeMancheTest` sur le
+champ `consigne` de `catalogue.yaml`, alors que le HTML brut servi la porte intacte - verifie par
+elle en hexadecimal sur le jar reellement lance.
+
+**Cause identifiee, mesuree sur la bibliotheque telle qu'elle est.** `Element.text()` de jsoup
+**1.23.1** tient `U+00A0` pour une espace et la **normalise en `U+0020`**. Mesure : sur
+`"Combien ca fait ?"` rendu puis relu, la suite de points de code est
+`... 0066 0061 0069 0074 0020 003F` - un `0020` la ou la source portait `00A0`. Deux faits voisins,
+verifies dans la meme mesure pour ne pas confondre les causes : `String.strip()` ne retire **pas**
+l'insecable (`Character.isWhitespace` la refuse), ce n'etait donc pas elle ; et la re-serialisation
+jsoup rend `&nbsp;`, ce qui n'est pas ce que `lea-dev` a lu - elle a lu le corps HTTP, avant jsoup.
+
+**Etat de l'etat du depot au moment de la mesure** : `catalogue.yaml` sur `s22-theo-2` porte
+**16 espaces ordinaires devant `?` et 3 devant `!`, zero insecable** (comptage par point de code du
+caractere precedent, 2026-08-29). Le defaut est donc **latent, et certain** : il ne se declare pas
+aujourd'hui, il se declarera le jour ou le moyen de `TYP-1` sera applique.
+
+**Pourquoi je le traite au lieu de le nommer.** Un garde-fou qui rougit sur un correctif juste
+n'est pas seulement inutile : il **apprend a defaire le correctif**. Celui-ci aurait pousse le
+depot hors d'une condition pedagogique que `nadia-prof` a ecrite, au motif d'une normalisation de
+bibliotheque qui n'a rien a voir avec la propriete gardee. C'est le cas ou l'inaction coute plus
+cher que le geste, et le geste tient en une ligne.
+
+**Le correctif** : la comparaison ramene l'insecable a l'espace ordinaire **des deux cotes**, et la
+Javadoc porte le motif, la mesure et le cout. **Morsure prouvee** : normalisation neutralisee,
+**1 des 4 tests echoue, exactement celui de l'insecable** ; le test de la consigne etrangere reste
+vert, ce qui prouve que la normalisation ne deborde pas sur autre chose.
+
+**Ce que le correctif ne fait pas, et son declencheur.** La propriete *"le document servi porte
+bien l'insecable"* reste **sans garde-fou executable** : jsoup confond les deux espaces avant que
+tout test ne les voie, et un garde-fou ecrit aujourd'hui aurait une population vide - la forme
+qu'`ADR-0051` interdit de laisser silencieuse. **Declencheur** : le jour ou `catalogue.yaml` ou un
+paquet porte une insecable devant un signe double, un garde-fou lisant le **corps de la reponse**
+plutot que l'arbre jsoup devient a la fois ecrivable et non vide. Il ne sera pas une regexp sur du
+HTML - dette 5 de `CLAUDE.md` - mais une comparaison de points de code sur le champ rendu.
+
+**Ce que je ne fais pas** : je ne choisis pas le moyen de `TYP-1`. L'arbitrage
+(`ARBITRAGE-typographie-espace-avant-signe-double.md`, section 6) le confie a `theo-archi` **et**
+`sofia-sm` conjointement ; je leve l'obstacle technique qui rendait le moyen le plus evident
+impossible a livrer vert, et la decision reste a prendre a deux.
+
+### Deux autres points signales, non traites, avec leur declencheur
 
 - **`squad/outils/ines-design/mesurer-au-glyphe.py` importe `PIL` au niveau du module**
   (`from PIL import Image`, ligne 49). **Sans effet aujourd'hui** : aucun fichier du depot ne
@@ -202,7 +265,46 @@ aucune modification de test liee au pli.
   touche pas `recreo.css`** - `git diff --stat` ne porte aucun fichier de `adapters/adapter-web`. Le
   declencheur reste arme pour les autres lots du sprint, et il reste un `grep`, pas une story.
 
-## 8. Ce que ce lot ne prononce pas
+## 8. Mesure sur l'union des arbres du sprint, avant fusion
+
+**Pourquoi cette section existe** : ce lot durcit des garde-fous dont la matiere est le catalogue,
+et le catalogue est precisement ce que les autres lots du sprint changent. L'amendement de la retro
+de s21 que j'ai confirme moi-meme s'applique donc a moi : *un lot qui durcit un lecteur partage est
+mesure sur l'union des arbres du sprint avant sa fusion, jamais sur son seul arbre.*
+
+**L'arbre de mes chiffres de la section 4** : `round-two` a `2968591` augmente de ce seul lot -
+branche `s22-theo-2`, aucun paquet de contenu apporte. **478 items, 21 paquets.**
+
+**Les branches de contenu, mesurees le 2026-08-29 par le meme comptage** (`- enonce:` en tete de
+ligne, dans `adapters/adapter-content/src/main/resources/contenu/`) :
+
+| Branche | Commit | Paquets | Items | Paquet neuf |
+|---|---|---|---|---|
+| `s22-lea` | `04aa35f` | 22 | 503 | `cm1-multiplications-divisions-10-100`, 25 items |
+| `s22-sofia-2` | `8da64f5` | 22 | 502 | `cm1-problemes-durees`, 24 items |
+| `s22-marc` | `4dedb00` | 21 | 478 | aucun encore commite |
+
+**Le fait qui compte pour `ADR-0064` : le plus grand paquet enumere ne bouge pas.**
+`cm1-tables-multiplication`, **99 items**, sur les trois branches. Aucune des cinq bornes ecrites a
+la main (200, 150, 500, 500, 2000) n'est approchee, et les bornes derivees suivent les paquets neufs
+par construction.
+
+**Deux unions construites et mesurees, puis detruites** (branche jetable, jamais poussee, worktree
+supprime - `s22-theo-2` n'est fusionnee avec rien) :
+
+| Union | Items | `adapter-content` | `bootstrap` | Verdict |
+|---|---|---|---|---|
+| `s22-theo-2` + `s22-lea` | 503 | 234 tests | 104 tests | 0 echec, 0 erreur |
+| `s22-theo-2` + `s22-sofia-2` | 502 | 243 tests | 104 tests | 0 echec, 0 erreur |
+
+**Un fait que je route a `sofia-sm`, constate en construisant ces unions** : `s22-lea` et
+`s22-sofia-2` **entrent en conflit entre elles**, sur `adapters/adapter-content/src/main/resources/catalogue.yaml`
+et sur `bootstrap/src/test/java/com/recreo/bootstrap/catalogue/TexteAccentueExposeParLePortEntrantTest.java`
+- deux lots de contenu qui ajoutent chacun une entree de catalogue. **Ni l'une ni l'autre n'entre en
+conflit avec mon lot.** Je ne resous rien : l'ordre de fusion appartient a `sofia-sm`, et resoudre
+le conflit de deux autres lots dans un arbre jetable ne prouverait rien sur celui qu'elle fusionnera.
+
+## 9. Ce que ce lot ne prononce pas
 
 Aucun statut de couverture, aucun Done technique de sprint, aucun Done pedagogique. La fusion
 appartient a `sofia-sm`.
