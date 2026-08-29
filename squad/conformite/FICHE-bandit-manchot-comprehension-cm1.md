@@ -10,10 +10,17 @@
   cette fiche. Arbitrage prealable rendu le 2026-08-19 (voir section dediee) : principe **ACCEPTE**
   sous cinq conditions bloquantes (COMP-1 a COMP-5) ; matiere premiere **REFUSEE**. Aucun code ecrit
   a ce jour.
+  **Perime sur ce dernier point depuis le 2026-08-28 : voir mise a jour du 2026-08-29 ci-dessous.**
+  Aujourd'hui, quatre conditions restent bloquantes (`COMP-1`, `COMP-2`, `COMP-3`, `COMP-5`), le
+  blocage de developpement est leve, et le developpement de `S17-2` est en cours (`marc-dev`).
 - **Derniere mise a jour** : 2026-08-19 (arbitrage prealable de `nadia-prof`, `camille-po` en tire
   les consequences sur cette fiche).
   Complete le 2026-08-19 par le jugement de lisibilite du texte-support de `nadia-prof`
   (COMP-5 satisfaite, COMP-6 et COMP-7 nouvelles, budget de 8 lignes retire) - derniere section.
+  **Mise a jour du 2026-08-29 (`camille-po`, s22) : fiche perimee corrigee contre l'arbitrage de
+  l'utilisatrice du 2026-08-28 (`DEC-0053`) et la relecture de `nadia-prof`
+  (`PORTE-PEDAGOGIQUE-apres-arbitrage-du-2026-08-28.md`, section 3.3) - voir le detail en fin de
+  preambule et dans la checklist.**
 - **Question posee le 2026-08-28 (ouverture s22, `camille-po`, `DEC-0053` section 5)** : l'utilisatrice
   arbitre que le pli sort de la porte pedagogique sur tout le catalogue, paquets neufs compris
   (`DEC-0053`, arbitrage 1). `COMP-4` et `COMP-7` ci-dessous sont exactement un critere de cette
@@ -24,6 +31,75 @@
   cette condition specifique en dehors du regime nouveau ?** Je n'ai pas de position sur cette
   question pedagogique ; je la pose, je n'y reponds pas. Reponse attendue avant tout premier commit
   de code sur ce paquet si `S17-2` est retenue au perimetre de s22.
+
+  > **REPONDUE le 2026-08-28**, le meme jour, par `nadia-prof`
+  > (`squad/conformite/PORTE-PEDAGOGIQUE-apres-arbitrage-du-2026-08-28.md`, section 3.3) puis par
+  > l'utilisatrice sur la portee la plus large de la question (meme document, section 10 ;
+  > `DEC-0053`, second amendement du 2026-08-28). Cette question ne reste ouverte pour personne.
+  > Le detail de ce qui tombe et de ce qui tient est repris, condition par condition, dans la
+  > "Mise a jour du 2026-08-29" ci-dessous et dans la checklist qui suit. Ce paragraphe est
+  > conserve tel qu'ecrit le 2026-08-28 : c'est lui qui a servi a poser la question.
+
+- **Mise a jour du 2026-08-29 (s22, `camille-po`) - la fiche etait perimee depuis le 2026-08-28,
+  voici ou et pourquoi.** Cette fiche portait encore comme bloquantes des conditions que
+  `nadia-prof` a levees par ecrit le 2026-08-28, et une formule que `theo-archi` a qualifiee de
+  fausse. Source primaire :
+  `squad/conformite/PORTE-PEDAGOGIQUE-apres-arbitrage-du-2026-08-28.md`, section 3.3, et
+  `squad/sprints/s22-couverture-maximale-du-catalogue/avis-faisabilite.md`, section 3.3. Je ne
+  reecris aucune condition d'origine ; je trace ce qui change, avec sa date et sa source, a cote
+  d'elles.
+  - **Tombent comme conditions bloquantes** : `COMP-4` (entierement derivee du pli), `COMP-7`
+    (qui n'existait que pour interdire un chiffre de remplacement a `COMP-4`), et le **premier**
+    motif de `COMP-6` (les 30 px gagnes par une consigne d'une ligne). Motif : arbitrage de
+    l'utilisatrice du 2026-08-28, `DEC-0053`, arbitrage 1 - le pli sort de la porte pedagogique sur
+    tout le catalogue, paquets neufs compris.
+  - **Tiennent, inchangees et bloquantes** : `COMP-1`, `COMP-2`, `COMP-3`. Ce sont le motif de s02
+    applique a cette competence, et ce motif ne depend d'aucun ecran ; `nadia-prof` l'ecrit
+    elle-meme dans sa relecture du 2026-08-28. `COMP-5` **reste satisfaite et close** depuis le
+    2026-08-19 : elle a ete acceptee sur la lisibilite (taille, graisse, contrastes), jamais sur le
+    cout vertical, donc elle ne tombe pas avec le pli. Le **second** motif de `COMP-6` (distinguer
+    `.texte-support` de `.consigne`, aujourd'hui rendues a l'identique) tient pour la meme raison :
+    ce n'est pas une question de pixels.
+  - **`COMP-6` est reformulee en propriete, son moyen d'origine (consigne d'une ligne) devenant une
+    facon suffisante de la tenir et non plus la seule.** Formulation qui fait foi a partir
+    d'aujourd'hui, mot pour mot celle de `nadia-prof` : *"un enfant de CM1 distingue, sans qu'on le
+    lui dise, la consigne du texte a lire."* Le moyen ne lui appartient pas : `ines-design` pour la
+    forme, `theo-archi` pour le mecanisme ; elle juge le resultat en jouant.
+  - **Le blocage de `nadia-prof` sur cette story est leve.** Elle avait ecrit, le 2026-08-19, que
+    `marc-dev` ne pouvait pas ecrire les vingt items parce que le plafond mesure de 4 lignes / 20
+    mots ne portait pas d'inference. Ce blocage etait entierement bati sur le budget vertical ; il
+    n'a plus de fondement. **`S17-2` est developpable a s22**, et son avis de s17 ne doit plus etre
+    lu comme un veto.
+  - **Ce qui reste du texte de deux phrases, une fois le rendu sorti de la porte pedagogique : un
+    plancher, pas un plafond - c'est l'inverse de ce que produisait le regime precedent.** Le texte
+    doit rester assez long pour porter deux informations distinctes a relier, sans quoi `COMP-3`
+    est inatteignable et le paquet retombe dans le reperage litteral refuse en s02 ; deux phrases en
+    sont le minimum vraisemblable, sans nombre fixe - un nombre serait exactement l'exemple que la
+    regle de methode de `nadia-prof` (section 4 du meme document) lui interdit desormais d'ecrire a
+    la place d'une propriete. Le plafond, lui, n'est plus vertical : c'est la charge de lecture d'un
+    CM1, jugee en jouant et non mesuree.
+  - **Une propriete nommee par `nadia-prof`, qu'elle ne fait pas d'un motif de refus a s22** : si
+    l'enfant ne peut pas revenir au texte pendant qu'il repond, l'inference demandee devient un
+    exercice de memoire. Sa barre n'est pas "visible sans defiler" mais **"relisible"** : un texte
+    qu'on rejoint en faisant defiler la page la satisfait, un texte qu'on ne peut pas rejoindre du
+    tout ne la satisfait pas. Elle ne refusera pas dessus a s22 ; si le Done de `S17-2` est
+    prononce, elle y nommera cette propriete comme non couverte plutot que de laisser une ligne
+    `couvert-valide` dire une chose fausse. **Ce n'est pas un critere de plus pour `yanis-qa`** :
+    c'est une information sur ce que le Done, s'il vient, devra dire.
+  - **`MNC-1` s'appliquera automatiquement au premier Done pedagogique prononce sur ce paquet**,
+    comme sur tout Done a partir du 2026-08-28 (`DEC-0053` ; gabarit dans `squad/TEMPLATES.md`,
+    section 7). Je n'ecris rien dans le bloc de validation ci-dessous : cette clause est de la
+    seule main de `nadia-prof`, au moment ou elle la remplit.
+  - **La formule "sans code Java neuf autre que le support de style de `COMP-5`" est corrigee : elle
+    est fausse.** `theo-archi` l'a qualifiee "fausse a la lettre"
+    (`squad/sprints/s22-couverture-maximale-du-catalogue/avis-faisabilite.md`, section 3.3) : la
+    story coute cinq fichiers dans quatre modules (`Question` dans `domain/content`,
+    `BanditManchotSession` dans `domain/mechanics`, `QuestionContentSourceFactory` dans
+    `adapter-content`, `PartieController` et `fragments/manche.html` plus `recreo.css` dans
+    `adapter-web`), en suivant le patron deja trace par `partDesignee` (`ADR-0062`, s20). Voir la
+    correction du dernier critere de la checklist ci-dessous.
+  - **Statut de construction** : le developpement de `S17-2` est en cours (`marc-dev`), et n'est
+    plus a l'arret dans l'attente de cette fiche.
 
 **Mise a jour du 2026-08-19, apres l'arbitrage prealable de `nadia-prof`**
 (`squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md`, section 1, branche
@@ -72,6 +148,11 @@ cette fiche est **retire** : `nadia-prof` a mesure qu'il est incompatible avec l
   texte, et pour ceux-la la bonne reponse n'est pas un fragment recopie du support.
 - [ ] **COMP-4.** Le support, la question et toutes les propositions sont entierement visibles a
   360 x 640 sans defiler, mesure par `outils/mesurer-rendu.sh` sur la totalite des items du paquet.
+  *Tombe comme condition bloquante le 2026-08-28 : arbitrage de l'utilisatrice, le pli sort de la
+  porte pedagogique sur tout le catalogue (`DEC-0053`, arbitrage 1). `nadia-prof` le confirme dans
+  `PORTE-PEDAGOGIQUE-apres-arbitrage-du-2026-08-28.md`, section 3.3 - c'etait, mot pour mot, "la
+  seule condition de ce document que je devrai mesurer moi-meme". Elle n'est plus opposable ; elle
+  n'est pas effacee, pour que l'ecart reste lisible (mise a jour du 2026-08-29, `camille-po`).*
 - [ ] **COMP-5.** Le texte-support recoit un style distinct de celui de l'enonce, plus petit
   (budget mesure par `nadia-prof` : 5 lignes avec le style d'enonce actuel, insuffisant pour un
   texte a inference ; 8 lignes avec un style a la taille de la consigne, suffisant). Forme exacte
@@ -83,8 +164,16 @@ cette fiche est **retire** : `nadia-prof` a mesure qu'il est incompatible avec l
   n'est pas effacee, pour que l'ecart reste lisible : voir "Jugement de lisibilite du texte-support
   (COMP-5)" en fin de fiche.*
 - [ ] Le paquet compte au moins 20 items.
-- [ ] Le paquet valide le schema `type: question` (`ADR-0007`) sans code Java neuf autre que le
-  support de style de COMP-5.
+- [ ] Le paquet valide le schema `type: question` (`ADR-0007`).
+  *Correction du 2026-08-29 (`camille-po`) : la formule d'origine ("sans code Java neuf autre que
+  le support de style de COMP-5") est retiree parce qu'elle est fausse, pas parce qu'elle a change
+  de sens. `theo-archi` l'a qualifiee "fausse a la lettre"
+  (`squad/sprints/s22-couverture-maximale-du-catalogue/avis-faisabilite.md`, section 3.3) : le
+  champ `texteSupport` n'existe dans aucun fichier Java, et la chaine coute cinq fichiers dans
+  quatre modules (`Question` dans `domain/content`, `BanditManchotSession` dans
+  `domain/mechanics`, `QuestionContentSourceFactory` dans `adapter-content`, `PartieController` et
+  `fragments/manche.html` plus `recreo.css` dans `adapter-web`), en suivant le patron deja trace
+  par `partDesignee` (`ADR-0062`, s20). `S17-2` n'est pas une story de contenu seul.*
 
 **Limite du proxy, a porter sur la matrice le jour ou cette ligne bouge** (`nadia-prof`, meme
 arbitrage, section 1.5) : un item est un texte de 45 mots maximum : "textes courts, un texte par
@@ -280,17 +369,31 @@ assemblage. Elle a recommande la bonne des deux, et pour le bon motif.
   sait pas ou l'histoire commence ; sur le releve a consigne d'une ligne, la distinction se fait
   seule. **Verification** : la sonde de la section 3, `.consigne` a une hauteur d'exactement un
   interligne.
+  *Mise a jour du 2026-08-29 (`camille-po`), reprenant `PORTE-PEDAGOGIQUE-apres-arbitrage-du-
+  2026-08-28.md`, section 3.3 : le premier motif ci-dessus (les 30 px) tombe avec le pli, arbitrage
+  de l'utilisatrice du 2026-08-28 (`DEC-0053`). Le second motif tient et devient la condition
+  elle-meme, reformulee en propriete sans son moyen : "un enfant de CM1 distingue, sans qu'on le
+  lui dise, la consigne du texte a lire." Une consigne d'une ligne reste une facon suffisante de la
+  tenir ; ce n'est plus la seule.*
 - **COMP-7 (bloquante, nouvelle, 2026-08-19).** **Le chiffre "8 lignes / 45 mots" de `COMP-5` est
   retire et remplace par : aucun nombre de lignes n'est un budget en soi.** Ce qui est mesure, item
   par item, est le bas de la derniere proposition a `y <= 640`, texte-support **et** question **et**
   toutes les propositions comprises. `COMP-4` disait deja cela ; `COMP-7` dit qu'aucun autre chiffre
   ne peut lui etre substitue, y compris un chiffre de moi.
+  *Tombe comme condition bloquante le 2026-08-28 (meme source que `COMP-4` ci-dessus) : elle
+  n'existait que pour interdire qu'un autre chiffre soit substitue a `COMP-4`, et `COMP-4` n'a plus
+  d'objet (mise a jour du 2026-08-29, `camille-po`).*
 - **Reserve nouvelle et datee, non bloquante (2026-08-19), routee a `ines-design`** : la distinction
   visuelle entre `.consigne` et `.texte-support` repose aujourd'hui entierement sur `COMP-6`. Si un
   jour une consigne de ce jeu passe a deux lignes, il faudra un signal propre. **Contrainte a lui
   transmettre avec la question : le budget vertical restant est de 4,81 px dans le meilleur
   assemblage mesure**, donc une reponse qui coute des pixels verticaux ne passe pas. Je ne dessine
   pas ce signal a sa place.
+  *Mise a jour du 2026-08-29 (`camille-po`) : la contrainte de pixels ci-dessus n'a plus d'objet, le
+  budget vertical n'etant plus une condition (voir mise a jour de `COMP-6` ci-dessus, meme source).
+  Ce qui reste de cette reserve - un signal propre si la consigne passe un jour a deux lignes - n'est
+  plus borne par un budget de pixels ; je ne l'ai pas reposee a `ines-design`, elle n'a pas ete
+  activee a s22.*
 
 ### 5. Ce que `marc-dev` peut ecrire des maintenant sans que mon accord tombe
 
@@ -325,6 +428,13 @@ prioriser par `camille-po`. Je dis seulement ou ils sont : les trois postes du t
 texte qui porte une inference et toutes ses propositions, entierement visibles a 360 x 640 sans
 defiler.**
 
+> **Mise a jour du 2026-08-29 (`camille-po`).** C'est cette derniere phrase que la question posee le
+> 2026-08-28 citait comme non negociable. Elle a bouge : arbitrage de l'utilisatrice du 2026-08-28
+> (`DEC-0053`, arbitrage 1), confirme par `nadia-prof`
+> (`PORTE-PEDAGOGIQUE-apres-arbitrage-du-2026-08-28.md`, section 3.3). La visibilite sans defilement
+> n'est plus la condition ; ce qui la remplace est trace au debut de cette fiche et dans la checklist
+> ci-dessus. Ce paragraphe est conserve tel qu'ecrit le 2026-08-19, pour que l'ecart reste lisible.
+
 ### 6. Reponses aux trois questions d'`ines-design`
 
 1. **Oui**, la variante nue satisfait "un style distinct, plus petit" au sens de `COMP-5`. Je
@@ -343,3 +453,11 @@ un ecran dont l'enfant ne voit aucune proposition : le releve `s17-comp5-compose
 en est l'image. `COMP-4`, `COMP-6` et `COMP-7` n'ont **aucun garde-fou executable** ; ils n'existent
 que par ma mesure, item par item, sur le rendu reel. Tant qu'il en est ainsi, c'est moi le garde-fou,
 et je le suis en regardant l'ecran.
+
+> **Mise a jour du 2026-08-29 (`camille-po`).** `COMP-4` et `COMP-7` sont tombees comme conditions
+> bloquantes le 2026-08-28 (`DEC-0053`, arbitrage 1) ; il n'y a donc plus de garde manquant a leur
+> sujet, puisqu'il n'y a plus de condition a garder. Ce que `nadia-prof` reste seule a garder,
+> desormais, est la propriete **"relisible"** qu'elle nomme dans la meme relecture
+> (`PORTE-PEDAGOGIQUE-apres-arbitrage-du-2026-08-28.md`, section 3.3) : elle ne refusera pas dessus,
+> elle la nommera comme non couverte dans le Done s'il vient. `COMP-6`, elle, garde un garde-fou
+> humain sur son second motif (distinguer visuellement la consigne du texte-support), inchange.
