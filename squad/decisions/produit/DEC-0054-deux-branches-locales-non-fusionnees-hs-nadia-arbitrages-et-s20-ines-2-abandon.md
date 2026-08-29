@@ -181,3 +181,40 @@ mien.
 - Aucun fichier de code, aucune fiche de conformite n'est modifie par cette decision : elle
   constate un etat deja present dans `round-two` (branche 1) ou rendu sans objet par un arbitrage
   posterieur (branche 2), elle n'en cree pas.
+
+## Amendement du 2026-08-29 (sofia-sm) : l'outil de mesure au glyphe est recupere, sur arbitrage de
+## l'utilisatrice, sans rouvrir le reste
+
+Cette decision abandonne les deux branches et range explicitement `mesurer-au-glyphe.py` parmi ce
+qu'elle ne recupere pas de sa propre initiative ("un outil non demande ... serait une abstraction
+pour une seule operation deja rendue sans objet"). J'ai porte ce point a l'utilisatrice en nommant
+la consequence : supprimer `s20-ines-2` detruisait cet instrument definitivement, seul element des
+deux branches dans ce cas. Son arbitrage du 2026-08-29 : recuperer l'outil, abandonner tout le
+reste des deux branches sans exception.
+
+En consequence, `squad/outils/ines-design/mesurer-au-glyphe.py` (tel qu'il existait au commit
+`7b0b5e5` de `s20-ines-2`) est copie a l'identique dans `round-two`, dans le meme commit que cet
+amendement. Rien d'autre de `s20-ines-2` n'est recupere : ni `.enonce { line-height: 1.3 }` dans
+`recreo.css`, ni les releves de mesure, ni le document de correctif - `DEC-0054` les abandonne
+toujours et cet arbitrage ne les concerne pas. `hs-nadia-arbitrages` n'est pas concernee par cet
+amendement : son abandon reste entier.
+
+**Verification faite avant de commiter, plutot qu'une reprise a l'aveugle** : le fichier ne porte
+aucun chemin absolu de poste de travail ni nom d'utilisateur (seul `os.path.dirname(os.path.abspath(__file__))`,
+relatif au fichier lui-meme) ; il porte deja `if __name__ == "__main__":`, donc aucun des cinq
+scripts sans cette garde nommes par `theo-archi` a la cloture de s21 ne le concerne - ces cinq sont
+tous dans `squad/outils/nadia-prof/`. Il n'existe, a ce jour, aucun `squad/outils/ines-design/*-test.sh` :
+le job de CI "Juges purs des outils de poste" (`.github/workflows/ci.yml`, motif
+`squad/outils/*/*-test.sh`) ne charge donc ce fichier sous aucune forme, et son ajout ne peut pas
+le faire rougir ni le faire verdir a tort. Un point reste pour `theo-archi`, note ici et pas
+corrige : ce fichier importe `PIL` (Pillow, tierce) au niveau du module, la meme famille d'import
+que celui que `theo-archi` a deplace dans `balayage-largeur-rangee.py` le 2026-08-28 - sans
+consequence aujourd'hui puisqu'aucun juge pur n'y est teste, mais a traiter si un `-test.sh` lui
+est un jour ajoute.
+
+## Impact de l'amendement
+
+- `squad/outils/ines-design/mesurer-au-glyphe.py` : cree, copie a l'identique de `s20-ines-2`
+  (`7b0b5e5`).
+- Ce fichier `DEC-0054` : amende, section ajoutee. La decision d'origine (abandon des deux
+  branches, verification de recapture) n'est pas reecrite.
