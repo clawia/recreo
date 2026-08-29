@@ -31,6 +31,11 @@
   FICHE-bandit-manchot-additions-cp.md`, conditions M1 a M13) et **forme deja validee pour un mot
   marque en contexte de phrase** (`FICHE-bandit-manchot-synonymes-cm1.md`, conditions SYN-1, SYN-6,
   SYN-9, reprises par analogie ci-dessous pour marquer le mot cible).
+  **Mise a jour du 2026-08-29 (`camille-po`)** : `M4` est sortie de la porte pedagogique le
+  2026-08-28 (`DEC-0053`) et sa reference `360 x 640` etait deja morte depuis `DEC-0040`
+  (2026-08-22) ; voir `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, en-tete, et
+  `squad/conformite/ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md`
+  (`nadia-prof`) avant de citer ce bloc.
 - **NAT-5 (renfort visuel du mot cible), non encore instruit** : les guillemets francais seuls ne
   suffisent pas a un enfant de CP qui ne les a pas appris (`nadia-prof`, partie B.6). Le renfort est a
   proposer par `ines-design` et a trancher par `nadia-prof`, jamais par la seule couleur ; ce paquet

@@ -269,3 +269,42 @@ amendement.
   reecrites, seule la lecture qu'en donne cet amendement est correcte a compter du 2026-08-14.
 - `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee.
 - Aucun Done pedagogique ni statut de catalogue n'est modifie par cet amendement.
+
+## Amendement du 2026-08-29 (s22) - le declencheur du point 4 est sans objet a compter du 2026-08-28
+
+**Source** : `nadia-prof`,
+`squad/conformite/ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md`, section 2.
+Point trouve par `camille-po`, route a `nadia-prof` parce qu'il s'adresse a elle, et qu'elle seule
+peut dire si elle l'execute encore. Je ne l'ai pas tranche a sa place.
+
+**Ce que cet amendement trace, sans amender le fond de la decision d'origine.** Le point 4 de la
+section "Decision" ci-dessus ecrit : *"M4 revient devant `nadia-prof` pour remesure, sur le rendu
+reel a 360 x 640, des que les trois stories de la section suivante sont livrees (...)."*
+`nadia-prof` declare ce declencheur **sans objet a compter du 2026-08-28**, pour deux motifs
+independants dont chacun suffit :
+
+1. **Son objet lui est retire en entier.** Le declencheur prescrit une remesure par elle puis une
+   reevaluation de `M4` comme condition bloquante. L'arbitrage de l'utilisatrice du 2026-08-28
+   (`DEC-0053`) retire les deux gestes : la mesure n'est plus necessaire a la validation du jeu, et
+   elle ne prononce plus de `REFUSE` sur ce motif. Un declencheur dont le seul aboutissement est une
+   decision qu'elle ne peut plus prendre ne declenche rien.
+2. **Sa reference est morte depuis le 2026-08-22.** Il prescrit une remesure "sur le rendu reel a
+   360 x 640" ; `DEC-0040` a remplace cette reference par 744 x 551 six jours avant l'arbitrage du
+   2026-08-28, sans que quiconque - `nadia-prof` comprise - ne l'ait alors corrige.
+
+**Ce que je n'amende pas, et pourquoi.** Cette decision reste exacte pour l'etat qu'elle decrivait
+le 2026-08-13 : le point 4 n'est pas efface, et le fond de la decision (points 1 a 3, la levee de
+`M4` comme condition bloquante pour la livraison du sprint 10) n'est pas rouvert. Ce que j'ecris ici
+est que **le geste que ce point 4 prescrivait ne sera plus execute**, sur declaration de la
+destinataire elle-meme du geste, pour les deux motifs ci-dessus. Le remplacement de ce declencheur -
+un arbitrage de l'utilisatrice, ou un garde-fou executable, jamais une mesure de `nadia-prof` - est
+ecrit dans sa propre source citee plus haut, pas ici.
+
+### Impact de cet amendement
+
+- Le point 4 de la section "Decision" ci-dessus reste tel qu'ecrit le 2026-08-13 ; il n'est pas
+  reecrit, seule sa portee change a compter du 2026-08-28.
+- `squad/decisions/produit/DEC-index.md` : note d'amendement ajoutee.
+- `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, en-tete : renvoi ajoute vers cet
+  amendement.
+- Aucun Done pedagogique ni statut de catalogue n'est modifie par cet amendement.

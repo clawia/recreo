@@ -16,6 +16,11 @@
 - **Arbitrage prealable de mecanique en vigueur pour tout le catalogue** (`squad/conformite/
   FICHE-bandit-manchot-additions-cp.md`, branche `s10-nadia-mecanique` et audits suivants) :
   conditions M1 a M13. Rien n'est mesure ici a l'ouverture de la fiche, faute d'increment a mesurer.
+  **Mise a jour du 2026-08-29 (`camille-po`)** : `M4` est sortie de la porte pedagogique le
+  2026-08-28 (`DEC-0053`) et sa reference `360 x 640` etait deja morte depuis `DEC-0040`
+  (2026-08-22) ; voir `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, en-tete, et
+  `squad/conformite/ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md`
+  (`nadia-prof`) avant de citer ce bloc.
 - **Priorite s22** (`DEC-0053`, section 4) : premiere candidate du perimetre du sprint, verrou
   d'arbitrage leve, aucun obstacle nomme sur ce paquet en dehors de l'avis de faisabilite de
   `theo-archi`, encore du.

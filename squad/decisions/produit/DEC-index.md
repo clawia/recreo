@@ -28,7 +28,7 @@ Une ligne par decision produit. Numeros jamais reutilises.
 | DEC-0022 | Perimetre du sprint 10 : le manche du bandit manchot est dessine et immobile, trois demandes de l'utilisatrice ecartees avec leurs declencheurs de reouverture | s10 | 2026-08-12 | Acceptee, deux des trois exclusions (points 1 et 3) remplacees par DEC-0023 le meme jour, point 2 inchange |
 | DEC-0023 | Le perimetre du sprint 10 est repris sur les references de l'utilisatrice : la machine est redessinee en CSS pur, le veto de nadia-prof sur la manette est leve, l'ecran intermediaire est questionne | s10 | 2026-08-12 | Acceptee sur les points 1 a 5, point 6 ferme par DEC-0024 |
 | DEC-0024 | "Le bon petit mot" quitte le catalogue jouable : contenu valide, ecran trop court, condition de retour executable | s10 | 2026-08-12 | Acceptee, note du 2026-08-19 (s17, chiffre du point 5 corrige a 24 indices sur 24 au lieu de 22, conclusion inchangee) ; amendement du 2026-08-19 (s17, l'entree de catalogue restituee par lea-dev sur une branche non fusionnee reste hors du catalogue jusqu'a BPM-1 et un Done pedagogique complet sur le paquet raccourci) |
-| DEC-0025 | Levee de la condition M4 de nadia-prof : le sprint 10 est livre avec un defaut de pli assume par ecrit | s10 | 2026-08-13 | Acceptee, amendee le 2026-08-14 (chiffres du resserrement de marges corriges, trois jeux fermes et non deux, aucun n'est celui nomme a l'origine ; conclusion inchangee) |
+| DEC-0025 | Levee de la condition M4 de nadia-prof : le sprint 10 est livre avec un defaut de pli assume par ecrit | s10 | 2026-08-13 | Acceptee, amendee le 2026-08-14 (chiffres du resserrement de marges corriges, trois jeux fermes et non deux, aucun n'est celui nomme a l'origine ; conclusion inchangee) ; amendee le 2026-08-29 (declencheur de reouverture du point 4 declare sans objet par nadia-prof a compter du 2026-08-28, DEC-0053 ; fond de la decision inchange) |
 | DEC-0026 | Levee de la clause 1 de M13 de nadia-prof, bornee au seul ecran de revelation de M5 : le sprint 10 est livre avec une perte de partie sans confirmation, assumee par ecrit | s10 (cloture) | 2026-08-14 | Acceptee, amendee le 2026-08-14 (l'etendue mesuree couvre aussi l'ecran de reprise, pas seulement la revelation ; la levee et le declencheur de reouverture sont etendus aux deux ecrans) ; declencheur non satisfait a la cloture de s11 (conditions 2 et 4 sans preuve), reconduite a s12 sur decision de l'utilisatrice du 2026-08-14 (premier report sur cette decision) |
 | DEC-0027 | Le retrait du bouton de sortie du fragment de manche reouvre l'arbitrage valide de S6-9 / ADR-0022 : arbitrage prealable de nadia-prof requis avant developpement | s11 | 2026-08-14 | Acceptee, amendee le 2026-08-14 (arbitrage prealable rendu par nadia-prof : principe accepte sous six conditions, forme instruite refusee ; perimetre corrige a trois ecrans et non un, chiffre du 2026-08-07 corrige) |
 | DEC-0028 | Abandon de la persistance : recreo ne conserve aucune partie entre deux sessions | s12 | 2026-08-14 | Acceptee, completee le 2026-08-15 (reponse sur la phrase plus large d'ADR-0001, gardee sans extension) |
@@ -235,6 +235,19 @@ il ferme en realite "Comparer les nombres", "Soustractions CP" et "Les complemen
 six comme ecrit a l'origine. La levee de M4 elle-meme n'est pas rouverte par cet amendement ; les
 sections d'origine de `DEC-0025` restent telles qu'ecrites le 2026-08-13, non effacees. Voir la
 section "Amendement du 2026-08-14 (s10, cloture)" dans
+`DEC-0025-levee-de-la-condition-m4-le-sprint-10-est-livre-avec-un-defaut-de-pli-assume.md`.
+
+Amendement (pas une nouvelle reference) : `DEC-0025` a ete amendee une seconde fois le 2026-08-29,
+sur trace de `nadia-prof`
+(`squad/conformite/ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md`). Le
+declencheur de reouverture du point 4 (M4 revient devant elle pour remesure a 360 x 640) est
+declare **sans objet a compter du 2026-08-28** pour deux motifs independants : l'arbitrage de
+l'utilisatrice de ce jour (`DEC-0053`) lui retire les deux gestes que le declencheur prescrivait
+(remesure, puis reevaluation comme condition bloquante), et sa reference `360 x 640` etait deja
+morte depuis `DEC-0040` (2026-08-22), six jours avant l'arbitrage. `nadia-prof` n'amende pas le
+fond de `DEC-0025` : le point 4 n'est pas efface, seule sa portee change, et le remplacement du
+declencheur (arbitrage de l'utilisatrice ou garde-fou executable, jamais une mesure d'elle) est
+ecrit dans sa propre source. Voir la section "Amendement du 2026-08-29 (s22)" dans
 `DEC-0025-levee-de-la-condition-m4-le-sprint-10-est-livre-avec-un-defaut-de-pli-assume.md`.
 
 Amendement (pas une nouvelle reference) : `DEC-0026` a ete amendee le 2026-08-14, a la cloture du

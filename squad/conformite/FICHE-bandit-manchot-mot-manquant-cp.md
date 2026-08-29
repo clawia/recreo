@@ -3,6 +3,11 @@
 - **Mecanique** : bandit manchot (mecanique generique du catalogue, conditions `M1` a `M13`,
   `FICHE-bandit-manchot-additions-cp.md`). Cette fiche n'audite pas la mecanique : elle audite le
   paquet servi au travers d'elle.
+  **Mise a jour du 2026-08-29 (`camille-po`)** : `M4` est sortie de la porte pedagogique le
+  2026-08-28 (`DEC-0053`) et sa reference `360 x 640` etait deja morte depuis `DEC-0040`
+  (2026-08-22) ; voir `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, en-tete, et
+  `squad/conformite/ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md`
+  (`nadia-prof`) avant de citer ce bloc.
 - **Contenu servi** : `adapters/adapter-content/src/main/resources/contenu/cp-mot-manquant.yaml`,
   `type: question`, **16 items** (6 objets, 5 actions, 5 sensations), story `S21-10`, ecrit par
   `lea-dev`.

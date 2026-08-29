@@ -28,6 +28,13 @@
   d'erreur doit etre vu sans defiler a 360 x 640) et la clause 1 de M13 (apres une reponse, la
   tabulation ne detruit jamais la partie sans confirmation). Rien n'est mesure ici a l'ouverture de la
   fiche, faute d'increment a mesurer.
+  **Mise a jour du 2026-08-29 (`camille-po`)** : ce compte est perime depuis le 2026-08-28. `M4` est
+  sortie de la porte pedagogique (arbitrage de l'utilisatrice, `DEC-0053`) et ne bloquait deja plus
+  depuis `DEC-0025` (2026-08-13) ; sa reference `360 x 640` est morte depuis `DEC-0040` (2026-08-22).
+  Seule la clause 1 de `M13` reste bloquante par nature, et elle est tenue depuis le 2026-08-14.
+  Detail : `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, en-tete, et
+  `squad/conformite/ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md`
+  (`nadia-prof`). Le texte d'origine ci-dessus n'est pas efface.
 - **Derniere mise a jour** : 2026-08-16 (second Done pedagogique REFUSE par `nadia-prof`, apres
   avoir rejoue le lot de reprise)
 

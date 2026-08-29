@@ -38,6 +38,13 @@
   sans defiler a 360 x 640) et la clause 1 de M13 (apres une reponse, le focus ne va jamais sur la
   sortie, qui detruit la partie sans confirmation). Ce n'est pas un Done pedagogique, rien n'est
   code.
+  **Mise a jour du 2026-08-29 (`camille-po`)** : ce compte est perime depuis le 2026-08-28. `M4` est
+  sortie de la porte pedagogique (arbitrage de l'utilisatrice, `DEC-0053`) et ne bloquait deja plus
+  depuis `DEC-0025` (2026-08-13) ; sa reference `360 x 640` est morte depuis `DEC-0040` (2026-08-22).
+  Seule la clause 1 de `M13` reste bloquante par nature, et elle est tenue depuis le 2026-08-14.
+  Detail : `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, en-tete, et
+  `squad/conformite/ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md`
+  (`nadia-prof`). Le texte d'origine ci-dessus n'est pas efface.
   **Ce jeu est vise nommement par deux points** : la **reserve B** du 2026-08-12 - ses **six**
   explications sont les seules du catalogue, elles nomment toutes la bonne reponse par la forme que
   j'ai moi-meme dictee le 2026-08-06, et l'enfant qui trouve du premier coup ne les verra plus - et
