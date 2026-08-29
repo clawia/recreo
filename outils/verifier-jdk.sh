@@ -55,6 +55,46 @@ extraire_version_java() {
   fi
 }
 
+# version_majeure_java <version>
+# Pure. Rend le numero de version majeure d'une version rendue par extraire_version_java :
+# "21.0.10" -> 21, "1.8.0_202" -> 8 (forme historique), "25" -> 25. Rend "inconnue" si la forme
+# n'est pas reconnue - un java -version inhabituel ne doit jamais faire echouer le constat.
+version_majeure_java() {
+  version="$1"
+  case "${version}" in
+    1.*) majeure="$(printf '%s' "${version}" | sed -n 's/^1\.\([0-9][0-9]*\).*/\1/p')" ;;
+    *) majeure="$(printf '%s' "${version}" | sed -n 's/^\([0-9][0-9]*\).*/\1/p')" ;;
+  esac
+  if [ -z "${majeure}" ]; then
+    echo "inconnue"
+  else
+    echo "${majeure}"
+  fi
+}
+
+# ligne_de_lancement <version_demandee> <version_constatee>
+# Pure. La ligne que mvn-jdk21.sh affiche avant de lancer Maven.
+#
+# Correction du 2026-08-29 (obstacle 23, ouvert en s21). Cette ligne recopiait la version
+# *declaree* par la toolchain, jamais celle que rapporte le JDK designe. Elle annoncait donc
+# "toolchain jdk 21" tout en affichant une autre version dans la meme phrase, sur un poste ou la
+# declaration ne dit pas la verite - ou simplement ou HOME et le profil utilisateur de la machine
+# virtuelle ne designent pas le meme repertoire, auquel cas l'enveloppe et Maven ne lisent pas le
+# meme fichier de toolchains. Un chiffre faux dans l'outil qui sert a mesurer est le pire endroit
+# ou en laisser un : la version affichee est desormais derivee de ce que le JDK rapporte, et la
+# declaration n'est repetee que lorsqu'elle est confirmee.
+ligne_de_lancement() {
+  demandee="$1"
+  constatee="$2"
+  if [ "$(version_majeure_java "${constatee}")" = "${demandee}" ]; then
+    printf 'Maven lance sur le JDK de la toolchain jdk %s : %s\n' "${demandee}" "${constatee}"
+  else
+    printf "Maven lance sur le JDK que designe la toolchain jdk %s, et ce JDK rapporte %s : la declaration de version n'a pas ete confirmee
+" \
+      "${demandee}" "${constatee}"
+  fi
+}
+
 # etat_renseignee <valeur>
 # Pure. Rend "renseignee" si la valeur est non vide, "vide" sinon. Ne recopie jamais la valeur :
 # c'est le cas exact nomme par l'avis de faisabilite (JAVA_HOME valant un chemin de poste doit

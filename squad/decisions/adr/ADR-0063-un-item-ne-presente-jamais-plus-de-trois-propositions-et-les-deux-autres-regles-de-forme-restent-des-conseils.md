@@ -181,6 +181,50 @@ silence.
 explicitement, ecrits dans `docs/backlog/backlog.md` et dans
 `FICHE-bandit-manchot-reperes-cm1.md`, **jamais en critere bloquant**.
 
+> **Amendement date du 2026-08-29 (`theo-archi`, s22) : la regle 4 a perdu son demandeur, elle ne
+> disparait pas et elle ne se tait pas non plus.**
+>
+> `DEC-0053`, arbitrage 1 de l'utilisatrice du 2026-08-28, sort le pli de la porte pedagogique
+> **pour tout le catalogue, paquets neufs compris**, avec la lecture large confirmee : indice,
+> verdict, propositions. La regle 4 est *"aucun item ne laisse l'indice ni le verdict sous le pli a
+> 744 x 551"*. Son enonce entier est un critere de pli. `nadia-prof` ne prononce plus de refus sur
+> ce motif ; plus personne, dans la chaine de decision, ne demande ce resultat.
+>
+> **Ce que cet amendement change** : la regle 4 cesse d'etre une **etape de revue avant fusion** et
+> devient un **conseil de premier recours**, au meme rang que les regles 2 et 3, avec le meme
+> regime - ecrite dans `docs/backlog/backlog.md` et dans la fiche de conformite du jeu, jamais en
+> critere bloquant, jamais en condition de fusion. Elle n'est retiree de nulle part : un enonce qui
+> disparait sans laisser de trace ment autant qu'un enonce qui reste en vigueur sans demandeur.
+> C'est pourquoi cet amendement porte sa date et laisse le texte d'origine intact au-dessus.
+>
+> **Ce que cet amendement ne change pas, verifie plutot qu'affirme.** J'ai relu chaque motif du
+> reste de cet `ADR` avant d'ecrire cette phrase, parce que le risque de ce sprint n'est pas qu'on
+> supprime une regle - cela se voit dans un diff - mais qu'on **relise au singulier un motif qui en
+> porte plusieurs** :
+>
+> - **La decision 1** (au plus trois propositions) est **intacte**. Elle interdit le repli a quatre
+>   colonnes, constate sur `cm1-reperes` ; le pli n'y est qu'un **motif d'ouverture**, et cet `ADR`
+>   ecrivait deja *"Cette regle ne ferme pas `REP-8` et ne pretend pas le faire"*. Elle est executee
+>   par `AuPlusTroisPropositionsParItemTest`, que `DEC-0053` nomme explicitement comme restant en
+>   vigueur.
+> - **Le cliquet de la decision 2** (deux paquets, 33 items) est **intact** : il compte des
+>   propositions, pas des pixels, et aucune de ses quatre clauses ne mentionne une hauteur.
+> - **`PROPOSITIONS_PAR_ITEM = 3` de `PaquetCm1ReperesTest` est intact, et c'est le point le plus
+>   fin** : cette constante porte **trois** motifs de `nadia-prof`, dont **un seul** est le pli. A
+>   quatre propositions, le pool de cinq libelles rend l'item soluble par elimination (`REP-4`) ; a
+>   deux, l'enfant a une chance sur deux sans connaitre la distinction. Ces deux motifs-la survivent
+>   entierement a l'arbitrage. **Cet amendement ne les touche pas** et ne requalifie rien d'autre que
+>   la regle 4 elle-meme.
+> - **Aucun test du depot ne change de verdict** du fait de cet amendement, et aucun ne peut le
+>   faire : la regle 4 n'etait executee par rien. C'est precisement ce qui rendait necessaire de la
+>   dater plutot que de la laisser dormir - un enonce non executable est le seul qu'un lecteur
+>   puisse lire comme en vigueur sans qu'une CI le detrompe.
+>
+> **Ce qui la rouvrirait** : le declencheur ecrit plus bas (*"Sur la regle 3 et sur la regle 4"*)
+> reste valide et inchange, et un second s'y ajoute - un arbitrage de l'utilisatrice ou de
+> `camille-po` remettant le pli en critere de validation. Ni l'un ni l'autre n'est un geste
+> d'architecte.
+
 ## Regle executable
 
 **Ce n'est pas une regle ArchUnit, et le compte de regles ArchUnit du depot est inchange.** ArchUnit
@@ -286,6 +330,9 @@ l'item sont nommes, pas seulement comptes.
 - **La regle 4 reste une promesse tenue par une revue humaine.** C'est la septieme dette de
   `CLAUDE.md` si personne ne l'ecrit dans les criteres d'acceptation : elle doit y etre nommee comme
   **etape de revue**, jamais comme quelque chose que la CI tient.
+  *Amende le 2026-08-29 (section Decision, point 3) : cette revue n'a plus de demandeur depuis
+  `DEC-0053` arbitrage 1, et la regle 4 passe au regime des regles 2 et 3 - conseil de premier
+  recours, jamais critere bloquant.*
 - **Le compte de regles ArchUnit du depot est inchange** : cet ADR n'en revendique aucune.
 
 ## Ce qui me ferait changer d'avis

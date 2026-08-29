@@ -136,6 +136,48 @@ verifier_egal "une version de compilation corrompue en chemin de poste est refus
   "java du PATH : 1.8.0_202 | JDK de compilation : valeur refusee (ressemble a un chemin de poste de travail) | JAVA_HOME : vide | toolchains lu par Maven : non (aucun fichier trouve)" \
   "$(formater_constat "1.8.0_202" "${chemin_unix_simule}" "vide" "non (aucun fichier trouve)")"
 
+# --- version_majeure_java et ligne_de_lancement (obstacle 23, 2026-08-29) ---
+#
+# Le cas qui compte : la ligne affichee avant de lancer Maven ne repete jamais la version demandee
+# quand le JDK resolu en rapporte une autre. C'est le defaut mesure le 2026-08-28, ou l'enveloppe
+# annoncait "toolchain jdk 21" en affichant 25.0.2 dans la meme phrase.
+
+verifier_egal "une version 21 rend sa majeure" \
+  "21" \
+  "$(version_majeure_java "21.0.10")"
+
+verifier_egal "une version sans micro rend sa majeure" \
+  "25" \
+  "$(version_majeure_java "25")"
+
+verifier_egal "la forme historique 1.x rend la majeure historique, pas 1" \
+  "8" \
+  "$(version_majeure_java "1.8.0_202")"
+
+verifier_egal "une version inconnue reste inconnue et ne rend jamais un nombre" \
+  "inconnue" \
+  "$(version_majeure_java "inconnue")"
+
+verifier_egal "une version vide reste inconnue" \
+  "inconnue" \
+  "$(version_majeure_java "")"
+
+verifier_egal "une version confirmee est annoncee comme telle" \
+  "Maven lance sur le JDK de la toolchain jdk 21 : 21.0.10" \
+  "$(ligne_de_lancement "21" "21.0.10")"
+
+verifier_egal "une toolchain jdk 21 qui designe un JDK 25 ne fait plus annoncer 21" \
+  "Maven lance sur le JDK que designe la toolchain jdk 21, et ce JDK rapporte 25.0.2 : la declaration de version n'a pas ete confirmee" \
+  "$(ligne_de_lancement "21" "25.0.2")"
+
+verifier_egal "une toolchain jdk 21 qui designe un JRE 8 ne fait plus annoncer 21 non plus" \
+  "Maven lance sur le JDK que designe la toolchain jdk 21, et ce JDK rapporte 1.8.0_202 : la declaration de version n'a pas ete confirmee" \
+  "$(ligne_de_lancement "21" "1.8.0_202")"
+
+verifier_egal "un JDK muet sur sa version ne fait rien confirmer" \
+  "Maven lance sur le JDK que designe la toolchain jdk 21, et ce JDK rapporte inconnue : la declaration de version n'a pas ete confirmee" \
+  "$(ligne_de_lancement "21" "inconnue")"
+
 # --- test negatif global : aucune sortie collectee, quel que soit le cas, ne contient de chemin ---
 
 ctx='(^|[^0-9A-Za-z/])'
