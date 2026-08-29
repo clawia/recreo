@@ -461,3 +461,190 @@ et je le suis en regardant l'ecran.
 > (`PORTE-PEDAGOGIQUE-apres-arbitrage-du-2026-08-28.md`, section 3.3) : elle ne refusera pas dessus,
 > elle la nommera comme non couverte dans le Done s'il vient. `COMP-6`, elle, garde un garde-fou
 > humain sur son second motif (distinguer visuellement la consigne du texte-support), inchange.
+
+---
+
+## Done pedagogique - 2026-08-29 (s22) - REFUSE
+
+**Verdict : REFUSE.** Motif : **`COMP-2`, bloquante, n'est pas tenue.** Un item sur les vingt se
+resout sans lire le texte, et il s'y resout par le chemin exact que `COMP-2` nomme et interdit - un
+fait de culture generale. Deux autres items donnent un avantage plus faible mais reel au meme
+enfant. **Ce sont, tous les trois, les seuls items que `marc-dev` n'a pas marques `COMP-3`.**
+
+**Ce que je dis d'abord, parce que ce refus ne doit pas etre lu comme un jugement sur le lot.** Sur
+dix-sept des vingt items, ce paquet fait ce que j'avais refuse a s02 et jamais obtenu depuis sur
+cette competence : il oblige a lire. Les textes sont bons, les inferences sont vraies, les
+distracteurs sont des situations reelles, et `COMP-1` est tenue sur la branche la plus dure. Le
+defaut est localise, il porte sur trois items sur vingt, et il se corrige en reecrivant des
+questions - pas des textes.
+
+### Comment j'ai audite, et ce que je declare
+
+- **J'ai joue.** Application lancee depuis le fat jar construit sur l'arbre de la branche. Parties
+  entieres, en me trompant volontairement pour voir l'indice, jusqu'a avoir rencontre a l'ecran les
+  vingt items - dont les quatre sur lesquels porte ce verdict, vus rendus, pas seulement lus dans le
+  fichier. **Audit non degrade.**
+- **J'ai applique la procedure de verification que `COMP-1` et `COMP-2` prescrivent** : masquer la
+  question et essayer de repondre, item par item ; puis masquer le texte et essayer de repondre,
+  item par item. Vingt items dans chaque sens.
+- **Perimetre de tout chiffre ci-dessous** : le seul paquet `cm1-comprehension`, vingt items, arbre
+  de `s22-nadia-3` issu de `round-two` a `62037c7`.
+
+### Le motif du refus - `COMP-2`
+
+**L'item du pecheur, texte masque, se resout en une seconde :**
+
+> Question : *"Que vend le vieux pecheur au marche ?"*
+> Propositions : *des produits de la mer* / *des fruits et legumes* / *des vetements chauds*
+
+**La question nomme le metier ; la reponse est ce que ce metier vend.** Un CM1 qui n'a pas lu une
+ligne du texte repond juste, et il repond juste **parce qu'il sait ce qu'est un pecheur**, pas parce
+qu'il a compris quoi que ce soit. `COMP-2` interdit cela nommement : *"les questions dont la reponse
+est un fait de culture generale (le hibou, le vent)"*. C'est le meme defaut que celui que j'ai
+refuse a s02, sur un paquet de comprehension, et c'est la raison pour laquelle `COMP-2` a ete ecrite
+bloquante.
+
+**Le texte de cet item, lui, est bon** - *"Des caisses de glace pilee entourent les poissons
+argentes fraichement peches"* - et il porterait un item honnete sous une **autre question**. Ce
+n'est pas le support qu'il faut jeter, c'est la question qui donne sa propre reponse.
+
+**Deux items donnent un avantage plus faible, et je les nomme parce qu'ils se corrigent dans le meme
+geste.**
+
+- **Le cahier rouge.** Propositions : *a ecrire les lecons du soir* / *a dessiner en recreation* /
+  *a ranger les crayons*. **Un cahier ne range pas des crayons** : un CM1 ecarte cette proposition
+  sans avoir lu, et se retrouve a une chance sur deux au lieu d'une sur trois. C'est le second
+  interdit de `COMP-2` - *"les distracteurs absurdes qui s'eliminent seuls"*.
+- **Les bougies.** Question : *"Pourquoi les voisins utilisent-ils des bougies ?"* Propositions :
+  *le courant est coupe* / *ils fetent un anniversaire* / *ils regardent les etoiles*. On ne
+  s'eclaire pas aux bougies pour regarder les etoiles, et la panne est la raison canonique. Meme
+  mecanisme, plus faible.
+
+**Le fait qui rend ces trois-la reperables sans moi, et que je verse au dossier** : ce sont
+**exactement** les trois items que `marc-dev` n'a pas marques `COMP-3` dans le fichier. Les
+dix-sept items qui exigent de relier deux informations sont aussi les dix-sept qui resistent au
+texte masque. **La ou l'inference est reelle, `COMP-2` tient toute seule ; la ou elle ne l'est pas,
+`COMP-2` tombe.** Ce n'est pas une coincidence, c'est la meme propriete vue de deux cotes, et cela
+donne a `camille-po` un critere de reecriture sans qu'elle ait a me redemander quoi que ce soit :
+**les trois items a reprendre sont ceux qui ne portent pas la marque.**
+
+### Un second defaut, sur l'exactitude, qui n'est pas le motif du refus mais qui doit etre corrige avec lui
+
+**L'item du lion fait valider a l'enfant une lecture que le texte contredit.**
+
+> Texte : *"Le lion se repose la majeure partie de la journee a l'ombre d'un acacia. C'est
+> **surtout** au lever et au coucher du soleil qu'il part chasser avec le reste de son groupe."*
+> Bonne reponse : *"**seulement** matin et soir"*
+
+Le texte dit *surtout*, la bonne reponse dit *seulement*. **Dans un exercice de comprehension, la
+precision de la lecture est la competence elle-meme** : un enfant qui remarque la difference - et un
+bon lecteur de CM1 la remarque - voit son observation juste sanctionnee comme fausse, et un enfant
+qui ne la remarque pas apprend que *surtout* et *seulement* disent la meme chose. C'est de la famille
+de l'indice qui enseigne une regle fausse (`GRA-15`, s21), en plus grave, parce que c'est la bonne
+reponse et non l'indice.
+
+**L'item reste decidable** - les deux autres propositions sont contredites par le texte - donc ce
+n'est pas le motif du refus, et je ne le compte pas deux fois. Il se corrige en un mot : *surtout* a
+l'un des deux endroits, ou *souvent* dans la proposition.
+
+### Les conditions, une par une, contre le contenu reel
+
+| Condition | Etat | Ce que j'ai verifie moi-meme |
+|---|---|---|
+| `COMP-1` (bloquante) | **tenue, sur sa branche la plus dure** | **Zero recouvrement sur 20 items sur 20** : aucune proposition, bonne reponse ou distracteur, ne reprend un mot de son texte-support (mots de quatre lettres et plus, hors mots-outils). La clause *"toutes, ou aucune, jamais une seule"* est donc tenue par le cote "aucune" partout. Recompte par moi sur le fichier, independamment du test permanent que `marc-dev` a commite |
+| `COMP-2` (bloquante) | **NON TENUE** | Motif du refus. **1 item** franchement (le pecheur), **2** plus faiblement (le cahier rouge, les bougies) - soit **3 items sur 20** ou l'enfant fait mieux que le hasard sans lire |
+| `COMP-3` (bloquante) | **tenue** | 17 items marques, plancher d'un tiers a 7. Verifie sur le critere que j'ai ecrit : la bonne reponse ne se lit dans aucune phrase du texte, sur les 17. **Mais voir ci-dessous : mon critere ne dit pas ce que je croyais qu'il disait** |
+| `COMP-4`, `COMP-7` | **sans objet** | Tombees le 2026-08-28 (`DEC-0053`). Je ne les rouvre par aucun autre nom |
+| `COMP-5` (bloquante) | **satisfaite et close** | Jugee le 2026-08-19 sur la lisibilite. Je ne rejuge pas un rendu que j'ai accepte |
+| `COMP-6` reformulee | **tenue** | Juge en jouant, comme je m'y etais engagee. La consigne est une ligne imperative courte, le support un paragraphe narratif, la question en grand et en gras : **je distingue les trois sans qu'on me le dise**, et la consigne d'une ligne est le moyen que j'avais moi-meme declare suffisant. Voir la reserve 3 |
+
+**Exactitude du contenu, hors l'item du lion** : les vingt textes sont justes, correctement
+orthographies et **integralement accentues** ; les vingt questions sont grammaticalement correctes ;
+les distracteurs sont des situations reelles, jamais des remplissages. Aucun stereotype de genre,
+d'origine, de milieu ni de configuration familiale : la maitresse enseigne, Monsieur Albert jardine,
+le metier deduit des cahiers corriges est *enseignant* sans genre, et aucune situation ne suppose un
+bien que tous les enfants n'ont pas.
+
+**Un point de construction que je releve comme bon, parce qu'il est rare** : l'item du metier pose
+*"une pile de cahiers corriges"* sur *"la table de la cuisine"* et offre *cuisinier* en distracteur.
+L'enfant qui apparie des mots au lieu de comprendre tombe dans le piege. C'est exactement ce que
+`COMP-1` cherche a produire, et c'est bien fait.
+
+### Ce que le contenu reel a mis en defaut dans mes propres conditions
+
+**`COMP-3` ne mesure pas ce que je croyais.** Je l'avais ecrite ainsi : *"au moins un tiers des items
+exigent de relier deux informations distinctes du texte (...) si la reponse se lit dans une seule
+phrase du texte, l'item ne compte pas dans le tiers."* Le critere que j'ai rendu decidable - *la
+reponse se lit dans une seule phrase* - **ne separe pas l'inference a deux indices de l'inference a
+un seul**, parce que dans un item d'inference la reponse ne se lit litteralement dans **aucune**
+phrase. Consequence : sous mon critere ecrit, les 17 items comptent tous ; sous l'intention que le
+critere servait, **six a sept** seulement exigent reellement deux informations - dans plusieurs
+items marques, une seule suffit (*parapluie et bottes* donnent la pluie sans les flaques ; *arrose
+ses tomates* donne le jardinage sans le chapeau de paille).
+
+**Je ne durcis rien et je ne bouge pas ma barre.** Le plancher etait un tiers, il est atteint sous
+le critere que j'ai ecrit, **et je le declare atteint**. Le paquet ne doit rien de plus a `COMP-3`.
+Ce constat est **une reserve nouvelle et datee**, adressee a ma propre facon de specifier, exactement
+comme la regle que j'ai adoptee le 2026-08-28 m'y oblige : *"une condition est ecrite comme une
+propriete decidable item par item par un tiers"* - `COMP-3` l'est, mais elle decide autre chose que
+ce qu'elle annonce. C'est le troisieme cas de cette famille en deux jours, apres `SEG-1` et `D-9`, et
+il confirme que le defaut est chez moi et pas chez ceux qui appliquent.
+
+**`COMP-2`, elle, a parfaitement mordu.** Elle a attrape trois items qu'aucune autre condition,
+aucun garde-fou et aucune relecture n'avaient vus, et elle les a attrapes par la procedure exacte
+que j'avais ecrite avec elle. C'est la premiere fois qu'elle rencontre un contenu reel, et elle
+tient.
+
+### Reserves
+
+- **Reserve 1, BLOQUANTE, 2026-08-29 - `COMP-2` sur trois items.** *Que vend le vieux pecheur au
+  marche ?* est a reecrire integralement (la question porte sa reponse) ; *A quoi va servir le cahier
+  rouge ?* et *Pourquoi les voisins utilisent-ils des bougies ?* sont a reecrire sur leurs
+  propositions, dont l'une s'elimine sans le texte. **Critere de verification par un tiers, sans me
+  le redemander** : masquer le texte-support, presenter la question et les trois propositions a
+  quelqu'un qui n'a pas lu, et verifier qu'il ne peut pas ecarter une proposition.
+- **Reserve 2, BLOQUANTE, 2026-08-29 - exactitude de l'item du lion.** Le texte dit *surtout*, la
+  bonne reponse dit *seulement*. A aligner dans un sens ou dans l'autre.
+- **Reserve 3, non bloquante, 2026-08-29 - un commentaire du code m'attribue un jugement que je
+  n'avais pas rendu.** La regle `.texte-support` de la feuille de style porte *"nadia-prof juge ce
+  moyen suffisant tant que la consigne du jeu tient sur une seule ligne rendue"*. **Je rends ce
+  jugement aujourd'hui, apres avoir joue, et il est positif** - donc la phrase se trouve vraie. Mais
+  elle a ete ecrite avant que je le rende. Un commentaire qui anticipe la porte pedagogique la
+  transforme en formalite ; qu'il ait eu raison cette fois ne change pas ce qu'il aurait coute s'il
+  avait eu tort. A reformuler au passe et avec la date reelle. **Cette reserve ne demande aucun
+  travail sur le contenu et ne retient aucun Done.**
+- **`REP-8-CONSTAT`, 2026-08-29** - vu en jouant, sur ce paquet : sur les items ou le texte-support
+  fait deux phrases pleines, l'indice qui suit un echec arrive bas dans la page. **Constat, non
+  bloquant, sans mesure** : je ne mesure plus, l'arbitrage du 2026-08-28 l'a retire. Aucun effet sur
+  le verdict.
+
+### Ce que je reste seule a garder sur ce paquet, et que personne ne doit croire couvert
+
+1. **Qu'aucun chemin ne contourne la lecture** - `COMP-1`, `COMP-2`, `COMP-3`. C'est ce refus meme
+   qui le prouve : la porte technique etait verte et n'a vu aucun des trois items.
+2. **L'exactitude d'un texte face a sa bonne reponse** - l'item du lion en est l'exemple : aucun
+   automate ne peut voir que *seulement* trahit *surtout*.
+3. **Que le vocabulaire et la charge de lecture soient d'un CM1.** Juge en jouant : ils le sont.
+4. **La propriete "relisible"** - que l'enfant puisse revenir au texte pendant qu'il repond. **Je ne
+   refuse pas dessus et je ne l'ai pas instruite**, conformement a ce que j'ai ecrit le 2026-08-28.
+   Elle reste non couverte.
+5. **Ce qu'un lecteur d'ecran annonce** : jamais couvert par aucun de mes Done.
+6. **La distinction visuelle consigne / texte-support** (`COMP-6`) : tenue aujourd'hui **par la
+   brievete de la consigne, pas par une regle de style** - `.consigne` et `.texte-support` portent
+   la meme taille et la meme graisse. **Une consigne plus longue sur un futur jeu la ferait tomber
+   sans que rien ne s'allume.** C'est une fragilite, pas un defaut, et elle est a ma seule garde.
+
+### `MNC-1`
+
+**Aucun Done pedagogique n'etant prononce ici, `MNC-1` n'a pas a y figurer** - elle porte sur tout
+Done `VALIDE` ou `VALIDE SOUS RESERVE` a partir du 2026-08-28, et un `REFUSE` n'est pas un Done. Son
+absence de ce bloc n'est pas un oubli. Le bloc qui prononcera le Done de ce paquet devra la porter.
+
+### Ce que je route
+
+| Suite | Destinataire | Ce que je demande |
+|---|---|---|
+| **Les reserves 1 et 2, bloquantes** - trois questions a reecrire, un mot a aligner | `camille-po` | En faire du backlog. Critere de reecriture donne dans la reserve 1, applicable sans moi |
+| **`COMP-3` ne separe pas l'inference a deux indices de celle a un seul** | `camille-po` | **Ne pas l'appliquer retroactivement a ce paquet** : le plancher est atteint sous le critere ecrit et je le declare atteint. A reecrire par moi avant le prochain paquet de comprehension, comme une condition neuve et datee |
+| **La reserve 3 - un commentaire de code qui anticipe mon jugement** | `theo-archi`, `ines-design` | Reformuler au passe, avec la date du jugement reel. Aucune urgence, mais le pli est mauvais |
+| **Aucun garde-fou ne peut voir `COMP-2`** et personne ne doit croire le contraire | `yanis-qa`, `sofia-sm` | Le porter au rapport qualite : dix-neuf conditions gardees automatiquement, et la seule qui a fait tomber ce lot n'en fait pas partie |
