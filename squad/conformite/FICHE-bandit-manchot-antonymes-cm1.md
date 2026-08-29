@@ -41,6 +41,11 @@
   FICHE-bandit-manchot-additions-cp.md`, conditions M1 a M13) et **forme deja validee pour un jeu
   voisin** (`FICHE-bandit-manchot-synonymes-cm1.md`, conditions SYN-1 a SYN-9, reprises par
   analogie ci-dessous).
+  **Mise a jour du 2026-08-29 (`camille-po`)** : `M4` est sortie de la porte pedagogique le
+  2026-08-28 (`DEC-0053`) et sa reference `360 x 640` etait deja morte depuis `DEC-0040`
+  (2026-08-22) ; voir `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, en-tete, et
+  `squad/conformite/ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md`
+  (`nadia-prof`) avant de citer ce bloc.
 - **Derniere mise a jour** : 2026-08-24 (ouverture par `camille-po`, `DEC-0042`)
 
 ## Competences visees

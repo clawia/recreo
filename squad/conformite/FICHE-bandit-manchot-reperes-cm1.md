@@ -65,6 +65,11 @@
   n'est du avant le premier increment.
 - **Arbitrage prealable de mecanique en vigueur pour tout le catalogue** (`squad/conformite/
   FICHE-bandit-manchot-additions-cp.md`, conditions M1 a M13).
+  **Mise a jour du 2026-08-29 (`camille-po`)** : `M4` est sortie de la porte pedagogique le
+  2026-08-28 (`DEC-0053`) et sa reference `360 x 640` etait deja morte depuis `DEC-0040`
+  (2026-08-22) ; voir `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, en-tete, et
+  `squad/conformite/ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md`
+  (`nadia-prof`) avant de citer ce bloc.
 - **Derniere mise a jour** : 2026-08-27 (`nadia-prof`, s21 : arbitrage sur le gel de la police de
   `.proposition`, en fin de fiche - **le gel tient**, `REP-8` ne peut pas etre entierement fermee a
   s21, et ma limite `--hide-scrollbars` est levee au seul viewport 744 x 551. Le verdict du paquet

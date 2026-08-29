@@ -83,7 +83,20 @@
   doit etre vu sans defiler, or le bas du cabinet est deja a 636 px sur "Le bon verbe" pour un pli a
   640 px) et la clause 1 de M13 (**la premiere touche pressee apres chaque reponse menerait a "Les
   jeux", qui detruit la partie sans confirmation** - M13 est ajoutee le meme jour, sur une mesure de
-  `theo-archi`, et elle manquait a mes douze). **Une mise en oeuvre declaree inacceptable au CP quelle que soit sa forme** : retirer la
+  `theo-archi`, et elle manquait a mes douze).
+  **Mise a jour du 2026-08-29 (`nadia-prof`, propagee par `camille-po`,
+  `squad/conformite/ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md`)** : le
+  compte "deux bloquantes" ci-dessus est faux deux fois. `M4` ne bloque plus depuis `DEC-0025`
+  (2026-08-13, elle devient une condition non tenue mais reouvrable) et **sort entierement de ma
+  porte pedagogique le 2026-08-28** (`DEC-0053`) - ce n'est plus une condition, c'est une propriete
+  que je ne juge plus. Sa reference `360 x 640` etait de toute facon morte depuis `DEC-0040`
+  (2026-08-22). La clause 1 de `M13`, elle, **reste bloquante par nature et se trouve tenue depuis
+  le 2026-08-14** (53 cas, zero partie detruite) : une condition bloquante tenue n'est pas une
+  condition qui a cesse de bloquer, si elle cassait demain elle bloquerait de nouveau. **Compte
+  juste aujourd'hui : sur les treize, une seule est bloquante par nature, et elle est tenue.** Le
+  declencheur de reouverture de `M4` (`DEC-0025` point 4) est declare sans objet a compter du
+  2026-08-28 - voir `DEC-0025`, amendement du 2026-08-29. Texte d'origine ci-dessus non efface.
+  **Une mise en oeuvre declaree inacceptable au CP quelle que soit sa forme** : retirer la
   proposition fautive du rendu, parce qu'un appui peut alors tomber sur une reponse que l'enfant n'a
   pas choisie. **Un point que les trois questions ne nommaient pas** : le jeu devient muet sur la
   reussite et bavard sur l'echec, et M11 le corrige. **Je corrige un manquement qui est le mien** :
@@ -3879,6 +3892,17 @@ clauses. **Clause bloquante, et c'est la seule de ce bloc.**
    (0 bis, B). Ce n'est pas une barre neuve : M1 exigeait deja l'indice sur les essais restants de la
    question, revelation comprise. **Je cede l'affichage sur les essais 1 et 2 ; je le garde ici.**
 
+**Mise a jour du 2026-08-29 (`nadia-prof`, propagee par `camille-po`,
+`squad/conformite/ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md`, section 4)** :
+la clause 1 ci-dessus se scinde. Sa premiere moitie ("l'indice ouvert est entierement au-dessus du
+pli") **tombe**, meme motif que `M4` (arbitrage de l'utilisatrice du 2026-08-28, `DEC-0053`). Sa
+seconde moitie ("je refuse (...) un indice qui s'ouvre en recouvrant les propositions") **tient** :
+un recouvrement n'est pas un hors-de-vue, faire defiler la page repare un pli, pas un calque pose
+par-dessus, et le depot porte deja les deux instruments separement
+(`squad/outils/nadia-prof/lire-le-pli-a-l-ecran.py` et `lire-le-recouvrement-a-l-ecran.py`). `M17`
+reste donc bloquante, par cette moitie survivante et par sa clause 2 ci-dessous ; ce qui se mesure
+pour la tenir est desormais le recouvrement, plus jamais le pli. Texte d'origine non efface.
+
 **M18 - l'ampoule ne se paie pas avec les pixels du message.** Le **bas du cabinet ne descend sur
 aucun jeu** par rapport au rendu de `2d34a15`, que j'ai mesure ce jour et que j'inscris pour qu'on
 puisse comparer : **539,19 et 635,19 px** sur "Le bon verbe" selon la longueur de l'enonce,
@@ -3887,6 +3911,16 @@ valeurs mesurees, pas deduites, et constantes d'un item a l'autre sauf sur "Le b
 *Verification* : meme mesure avant et apres, sur les sept jeux, dans l'etat "question neuve".
 *Motif* : une ampoule posee dans le flux au-dessus du meuble rendrait d'une main ce qu'elle reprend
 de l'autre, et sur "Le bon verbe" il ne reste que **5 px** entre le bas du cabinet et le pli.
+
+**Mise a jour du 2026-08-29 (`nadia-prof`, propagee par `camille-po`, meme source, section 4)** :
+`M18` **sort entierement de ma porte pedagogique**. Son objet entier est la non-regression
+verticale mesuree en pixels, avec le pli pour seul enjeu declare ("il ne reste que 5 px entre le
+bas du cabinet et le pli") : c'est la meme famille que `M4`, sur un autre element, et elle sort pour
+le meme motif (arbitrage de l'utilisatrice du 2026-08-28, `DEC-0053`), sans discussion. Texte
+d'origine non efface. **`M8` (rien ne bouge au-dessus du point ou l'enfant appuie) porte desormais
+seule ce que `M4` et `M18` contrepesaient** : elle reste la seule condition qui empeche de "regler"
+un depassement vertical en poussant les propositions vers le bas, sous le doigt de l'enfant. `M8`
+n'est ni durcie ni modifiee par cette note.
 
 **M19 - l'ampoule porte son mot ecrit, et ce mot est "Aide".** Un pictogramme seul ne dit rien a un
 enfant qui ne lit pas encore une consigne, et c'est le motif par lequel j'ai deja exige qu'un levier
