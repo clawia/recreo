@@ -117,6 +117,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S21-11 (arbitrage prealable du 2026-08-27, conditions GRA-1 a GRA-10) : entree
             // neuve, comparaison de longueurs, masses et contenances.
             "bandit-manchot-comparer-cp",
+            // S13-3 (DEC-0053, arbitrage prealable D-1 a D-11) : entree neuve, problemes de
+            // durees CM1.
+            "bandit-manchot-problemes-durees-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -151,6 +154,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Le mot qui manque",
             // S21-11 : titre neuf.
             "Compare les grandeurs",
+            // S13-3 : titre neuf.
+            "Les durées et les horaires",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -183,6 +188,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Trouve le mot qui complète la phrase.",
             // S21-11 : consigne neuve.
             "Regarde bien, puis compare.",
+            // S13-3 : consigne neuve.
+            "Trouve la durée ou l'heure qui manque !",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
             // valeur unique pour les jeux du catalogue reel, compte sur catalogue.yaml, pas recopie.
             "bandit-manchot",
@@ -232,7 +239,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S21-10 : competence neuve.
             "Utiliser des mots précis pour désigner des objets, actions, sensations du quotidien",
             // S21-11 : competence neuve.
-            "Comparer des longueurs, des masses, des contenances (sans instrument gradué)");
+            "Comparer des longueurs, des masses, des contenances (sans instrument gradué)",
+            // S13-3 : competence neuve.
+            "Résoudre des problèmes de durées (calcul d'une durée, d'un horaire d'arrivée)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
