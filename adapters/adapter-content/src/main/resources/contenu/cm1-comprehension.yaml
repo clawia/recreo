@@ -97,7 +97,7 @@ items:
     bonneReponse: "enseignant"
     distracteurs: ["cuisinier", "médecin"]
     indice: "Repense aux objets posés sur la table de la cuisine."
-  - enonce: "Que vend le pêcheur aujourd'hui à son étal ?"  # COMP-3 : filet revenu vide + pots de miel et pain d'épice sur l'étal -> il vend des produits sucrés a la place du poisson
+  - enonce: "Que vend le pêcheur aujourd'hui à son étal ?"  # COMP-3 : filet revenu vide + pots de miel et pain d'épice sur l'étal -> il vend des produits sucrés à la place du poisson
     texteSupport: "Ce matin, le filet du pêcheur est revenu vide de la mer. Sur son étal, il a posé des pots au miel doré et des sachets de pain d'épice faits par sa femme."
     bonneReponse: "des produits sucrés"
     distracteurs: ["des poissons frais", "des vêtements chauds"]
