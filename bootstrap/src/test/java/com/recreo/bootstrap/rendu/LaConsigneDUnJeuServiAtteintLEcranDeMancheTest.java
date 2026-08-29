@@ -70,6 +70,36 @@ class LaConsigneDUnJeuServiAtteintLEcranDeMancheTest {
     @Autowired
     private MockMvc mockMvc;
 
+    /** L'espace insecable, moyen ordinaire de TYP-1 : le signe double ne peut plus partir seul. */
+    private static final char ESPACE_INSECABLE = (char) 0x00A0;
+
+    /**
+     * Ramene l'espace insecable a l'espace ordinaire, <b>des deux cotes de la comparaison</b>.
+     *
+     * <p><b>Ce n'est pas une tolerance de confort, c'est la seule comparaison que ce garde-fou
+     * puisse faire, et le motif est mesure.</b> {@code Element.text()} de jsoup (1.23.1) tient
+     * {@code U+00A0} pour une espace et la <b>normalise en {@code U+0020}</b> : sur la consigne
+     * "Combien ca fait&#160;?" il rend le point de code {@code 0020} devant le {@code 003F}. Le
+     * document servi, lui, porte l'insecable intacte - {@code lea-dev} l'a verifie en hexadecimal
+     * sur le jar reellement lance, et la mesure de jsoup ci-dessus a ete refaite sur la
+     * bibliotheque telle qu'elle est, jamais supposee.
+     *
+     * <p><b>Sans cette normalisation, ce garde-fou serait rouge le jour ou {@code catalogue.yaml}
+     * appliquerait le moyen de {@code TYP-1}</b> - une insecable devant chaque signe double - alors
+     * que le serveur ferait exactement ce qu'on lui demande. Un rouge sur un correctif juste
+     * apprend a defaire le correctif : c'est le garde-fou qui pousserait le depot <b>hors</b> d'une
+     * condition pedagogique validee.
+     *
+     * <p><b>Ce que cette normalisation coute, ecrit plutot que taisu.</b> Ce garde-fou ne distingue
+     * plus une insecable d'une espace ordinaire dans le texte rendu. Il ne le pouvait deja pas :
+     * jsoup les a confondues avant lui. La propriete "le document servi porte bien l'insecable"
+     * reste donc <b>sans garde-fou executable</b>, et son declencheur est ecrit dans ADR-0064,
+     * section 7 du rapport de porte technique de s22.
+     */
+    private static String espacesComparables(String texte) {
+        return texte.replace(ESPACE_INSECABLE, ' ');
+    }
+
     /** Ce qui manque a un ecran de manche pour porter la consigne du jeu qu'il joue. */
     static Set<String> manquements(Document ecran, String consigneAttendue) {
         Set<String> defauts = new TreeSet<>();
@@ -84,7 +114,8 @@ class LaConsigneDUnJeuServiAtteintLEcranDeMancheTest {
             defauts.add("aucune consigne lisible sur cet ecran de manche");
             return defauts;
         }
-        if (consignes.stream().noneMatch(bloc -> consigneAttendue.equals(bloc.text().strip()))) {
+        String attendue = espacesComparables(consigneAttendue).strip();
+        if (consignes.stream().noneMatch(bloc -> attendue.equals(espacesComparables(bloc.text()).strip()))) {
             defauts.add("la consigne rendue n'est pas celle que l'entree de catalogue declare :"
                     + " attendue \"" + consigneAttendue + "\", rendue \""
                     + consignes.get(0).text().strip() + "\"");
@@ -154,6 +185,50 @@ class LaConsigneDUnJeuServiAtteintLEcranDeMancheTest {
                 .as("une consigne qui n'est pas celle de l'entree jouee doit rendre ce garde-fou"
                         + " rouge : c'est la forme qu'un croisement de jeux produirait, et l'egalite"
                         + " est le seul critere qui la voie")
+                .isNotEmpty();
+    }
+
+    /**
+     * <b>Angle mort de {@code TYP-1}, mesure par {@code lea-dev} le 2026-08-29 et route a
+     * {@code theo-archi} : une consigne qui porte l'espace insecable de {@code TYP-1} ne doit pas
+     * rendre ce garde-fou rouge.</b>
+     *
+     * <p>Le materiau n'est pas une fixture de mon imagination : c'est la sortie de la bibliotheque
+     * telle qu'elle est. {@code Element.text()} de jsoup normalise {@code U+00A0} en {@code U+0020}
+     * - mesure sur jsoup 1.23.1 - la ou le document servi porte l'insecable intacte. Sans la
+     * normalisation des deux cotes, l'egalite exacte serait fausse, et ce garde-fou rougirait sur
+     * un correctif juste.
+     */
+    @Test
+    void uneConsigneQuiPorteLEspaceInsecableDeTyp1NeFaitPasRougirLeGardeFou() {
+        String consigneDuCatalogue = "Combien ca fait" + ESPACE_INSECABLE + "?";
+        Document ecranServi = Jsoup.parseBodyFragment(
+                "<p class=\"consigne\">" + consigneDuCatalogue + "</p>"
+                        + "<p class=\"enonce\">3 + 4</p>");
+
+        assertThat(manquements(ecranServi, consigneDuCatalogue))
+                .as("TYP-1 : le jour ou catalogue.yaml applique l'espace insecable, ce garde-fou doit"
+                        + " rester vert. jsoup rend U+0020 la ou le serveur emet U+00A0 : comparer les"
+                        + " deux formes brutes ferait rougir un correctif juste, et apprendrait a"
+                        + " defaire le correctif plutot qu'a corriger le garde-fou")
+                .isEmpty();
+    }
+
+    /**
+     * Le contrepoids du test ci-dessus, sans lequel il ne prouverait que la moitie de ce qu'il
+     * annonce : la normalisation des espaces ne doit rien laisser passer d'autre. Une consigne
+     * etrangere reste refusee, insecable ou pas.
+     */
+    @Test
+    void laNormalisationDesEspacesNeLaissePasPasserUneConsigneEtrangere() {
+        String consigneDuCatalogue = "Combien ca fait" + ESPACE_INSECABLE + "?";
+        Document ecranServi = Jsoup.parseBodyFragment(
+                "<p class=\"consigne\">Quel mot complete la phrase" + ESPACE_INSECABLE + "?</p>"
+                        + "<p class=\"enonce\">3 + 4</p>");
+
+        assertThat(manquements(ecranServi, consigneDuCatalogue))
+                .as("la normalisation porte sur l'espace insecable, et sur rien d'autre : une consigne"
+                        + " qui n'est pas celle de l'entree jouee reste refusee")
                 .isNotEmpty();
     }
 }

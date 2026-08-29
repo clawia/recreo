@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Depot fictif : il n'est jamais construit, il est lu comme donnee par
+  UnGardeFouNeBorneJamaisSesTiragesSousLePlusGrandPaquetTest, qui doit y trouver deux tireurs sur
+  le meme paquet de cinq items - l'un borne a trois a la main, l'autre derive - et ne nommer que le
+  premier. Un pom agregateur est indispensable ici : le recensement derive la liste des modules de
+  ce fichier, et pas d'une liste ecrite dans le test (ADR-0013).
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.recreo.faux</groupId>
+  <artifactId>depot-fautif-bornes-de-tirage</artifactId>
+  <version>0</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>faux-module</module>
+  </modules>
+</project>

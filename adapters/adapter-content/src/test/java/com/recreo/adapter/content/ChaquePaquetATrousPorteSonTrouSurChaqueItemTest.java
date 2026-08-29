@@ -48,10 +48,11 @@ class ChaquePaquetATrousPorteSonTrouSurChaqueItemTest {
             "/contreexemple/ChaquePaquetATrousPorteSonTrouSurChaqueItemTest";
 
     /**
-     * Tirages effectues sur chaque paquet. Un paquet enumere s'epuise bien avant ; un paquet
-     * combinatoire ne s'epuise jamais, d'ou la borne.
+     * Tirages effectues sur un paquet <b>combinatoire</b>, le seul qui n'enumere aucun item et ne
+     * s'epuise donc jamais. ADR-0064 : sur un paquet enumere, la borne n'est pas ecrite ici, elle
+     * est derivee de ce que le paquet declare, et une lecture partielle est un echec nomme.
      */
-    private static final int TIRAGES = 60;
+    private static final int TIRAGES_SUR_UN_PAQUET_COMBINATOIRE = 60;
 
     /** ADR-0013 obligation 1 : les paquets viennent du repertoire, jamais d'une liste. */
     static List<String> paquets(Path racine) {
@@ -71,11 +72,11 @@ class ChaquePaquetATrousPorteSonTrouSurChaqueItemTest {
         }
     }
 
-    private static List<Question> itemsTires(ContentSource contenu) {
+    private static List<Question> itemsTires(ContentSource contenu, int tirages) {
         RandomSource hasard = new Random(11)::nextInt;
         Set<ItemId> dejaVus = new HashSet<>();
         List<Question> items = new ArrayList<>();
-        for (int tirage = 0; tirage < TIRAGES; tirage++) {
+        for (int tirage = 0; tirage < tirages; tirage++) {
             Item item = contenu.next(hasard, dejaVus).orElse(null);
             if (item == null) {
                 break;
@@ -94,10 +95,23 @@ class ChaquePaquetATrousPorteSonTrouSurChaqueItemTest {
                 .isNotEmpty();
 
         for (String paquet : paquets) {
-            List<Question> items = itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet));
+            // ADR-0064 : la borne vient du paquet, jamais d'un nombre ecrit ici. De quoi
+            // l'epuiser, plus un tirage pour constater l'epuisement.
+            int declares = ChaquePaquetPorteUnIndiceTest.itemsDeclares(racine, paquet);
+            int tirages = declares > 0 ? declares + 1 : TIRAGES_SUR_UN_PAQUET_COMBINATOIRE;
+            List<Question> items =
+                    itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet), tirages);
             assertThat(items)
                     .as("%s : un paquet qui ne rend aucun item ne peut rien promettre", paquet)
                     .isNotEmpty();
+            if (declares > 0) {
+                // ADR-0064 : un paquet enumere est lu EN ENTIER, ou ce garde-fou est rouge et le dit.
+                assertThat(items)
+                        .as("%s declare %d items sur disque et ce garde-fou n'en a tire que %d : la"
+                                + " clause porterait sur un echantillon sans le dire", paquet, declares,
+                                items.size())
+                        .hasSize(declares);
+            }
 
             boolean paquetATrous = items.stream().anyMatch(item -> item.enonce().contains(MARQUEUR_DE_TROU));
             if (!paquetATrous) {

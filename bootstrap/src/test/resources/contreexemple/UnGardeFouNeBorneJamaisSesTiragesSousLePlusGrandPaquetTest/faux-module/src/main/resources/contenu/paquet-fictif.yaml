@@ -1,0 +1,14 @@
+# Paquet fictif, jamais servi a un enfant : il n'existe que pour donner au depot fautif un plus
+# grand paquet enumere de cinq items, sous lequel une borne ecrite a la main devient partielle.
+id: paquet-fictif
+items:
+  - enonce: premier enonce fictif
+    bonneReponse: un
+  - enonce: deuxieme enonce fictif
+    bonneReponse: deux
+  - enonce: troisieme enonce fictif
+    bonneReponse: trois
+  - enonce: quatrieme enonce fictif
+    bonneReponse: quatre
+  - enonce: cinquieme enonce fictif
+    bonneReponse: cinq

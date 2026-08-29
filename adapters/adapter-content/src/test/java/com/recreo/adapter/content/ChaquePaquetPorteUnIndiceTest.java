@@ -50,10 +50,11 @@ class ChaquePaquetPorteUnIndiceTest {
     private static final String CONTRE_EXEMPLE_CLASSPATH = "/contreexemple/ChaquePaquetPorteUnIndiceTest";
 
     /**
-     * Tirages effectues sur chaque paquet. Un paquet enumere s'epuise bien avant ; un paquet
-     * combinatoire ne s'epuise jamais, d'ou la borne.
+     * Tirages effectues sur un paquet <b>combinatoire</b>, le seul qui n'enumere aucun item et ne
+     * s'epuise donc jamais. ADR-0064 : sur un paquet enumere, la borne n'est pas ecrite ici, elle
+     * est derivee de ce que le paquet declare, et une lecture partielle est un echec nomme.
      */
-    private static final int TIRAGES = 60;
+    private static final int TIRAGES_SUR_UN_PAQUET_COMBINATOIRE = 60;
 
     /**
      * Paquets ecrits avant ADR-0016, dont aucun item ne porte encore d'indice. Cette liste exempte,
@@ -98,15 +99,36 @@ class ChaquePaquetPorteUnIndiceTest {
     }
 
     /**
+     * Le nombre d'items qu'un paquet declare sur disque, 0 pour un paquet combinatoire qui n'en
+     * enumere aucun. ADR-0064 : lu dans le fichier <b>uniquement pour borner les tirages</b>, les
+     * valeurs jugees venant toujours du chargeur reel (ADR-0013, obligation 1).
+     *
+     * <p>Partage avec les garde-fous voisins qui tirent sur les memes paquets, comme
+     * {@link #paquets(Path)} l'est deja. Ce qui est partage est un comptage de lignes, jamais le
+     * critere garde : chaque garde-fou garde sa boucle de tirage et sa propre assertion
+     * d'exhaustivite, sans quoi une seule regle vaudrait pour cinq coquilles vides.</p>
+     */
+    static int itemsDeclares(Path racine, String paquet) {
+        Path fichier = racine.resolve("contenu").resolve(paquet + ".yaml");
+        try {
+            return (int) Files.readAllLines(fichier).stream()
+                    .filter(ligne -> ligne.strip().startsWith("- enonce:"))
+                    .count();
+        } catch (IOException echec) {
+            throw new UncheckedIOException(echec);
+        }
+    }
+
+    /**
      * Les items que la mecanique peut reellement recevoir de ce paquet, tires par le chargeur reel
      * et non relus dans le YAML : c'est la chaine complete (schema, fabrique, source de contenu)
      * qui doit conserver l'indice, et c'est en son milieu qu'il se perdait.
      */
-    private static List<Question> itemsTires(ContentSource contenu) {
+    private static List<Question> itemsTires(ContentSource contenu, int tirages) {
         RandomSource hasard = new Random(7)::nextInt;
         Set<ItemId> dejaVus = new HashSet<>();
         List<Question> items = new ArrayList<>();
-        for (int tirage = 0; tirage < TIRAGES; tirage++) {
+        for (int tirage = 0; tirage < tirages; tirage++) {
             Item item = contenu.next(hasard, dejaVus).orElse(null);
             if (item == null) {
                 break;
@@ -128,10 +150,23 @@ class ChaquePaquetPorteUnIndiceTest {
             if (dette.contains(paquet)) {
                 continue;
             }
-            List<Question> items = itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet));
+            // ADR-0064 : la borne vient du paquet, jamais d'un nombre ecrit ici. De quoi
+            // l'epuiser, plus un tirage pour constater l'epuisement.
+            int declares = itemsDeclares(racine, paquet);
+            int tirages = declares > 0 ? declares + 1 : TIRAGES_SUR_UN_PAQUET_COMBINATOIRE;
+            List<Question> items =
+                    itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet), tirages);
             assertThat(items)
                     .as("%s : un paquet qui ne rend aucun item ne peut rien promettre", paquet)
                     .isNotEmpty();
+            if (declares > 0) {
+                // ADR-0064 : un paquet enumere est lu EN ENTIER, ou ce garde-fou est rouge et le dit.
+                assertThat(items)
+                        .as("%s declare %d items sur disque et ce garde-fou n'en a tire que %d : la"
+                                + " clause porterait sur un echantillon sans le dire", paquet, declares,
+                                items.size())
+                        .hasSize(declares);
+            }
             for (Question item : items) {
                 assertThat(item.indice())
                         .as("paquet %s, item \"%s\" : la mecanique promet une aide apres trois echecs"

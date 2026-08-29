@@ -135,8 +135,12 @@ class LesGardeFousSontMisALEpreuveTest {
         return compact.toString();
     }
 
-    /** Le pom agregateur, seul endroit du depot qui dise quels modules existent vraiment. */
-    private static Path racineDuDepot() {
+    /**
+     * Le pom agregateur, seul endroit du depot qui dise quels modules existent vraiment. Ouvert au
+     * paquet le 2026-08-29 (ADR-0064) : le recensement des bornes de tirage derive son perimetre de
+     * la meme facon, et deux implementations de "quels modules existent" divergeraient un jour.
+     */
+    static Path racineDuDepot() {
         Path candidat = Path.of("").toAbsolutePath();
         while (candidat != null) {
             Path pom = candidat.resolve("pom.xml");
@@ -148,7 +152,7 @@ class LesGardeFousSontMisALEpreuveTest {
         throw new IllegalStateException("aucun pom.xml agregateur au-dessus du repertoire courant");
     }
 
-    private static List<String> modulesDeclares(Path racine) {
+    static List<String> modulesDeclares(Path racine) {
         String pom = lire(racine.resolve("pom.xml"));
         List<String> modules = new ArrayList<>();
         int position = 0;
@@ -178,6 +182,14 @@ class LesGardeFousSontMisALEpreuveTest {
             }
         }
         return sources;
+    }
+
+    /**
+     * Les fichiers de source de test de tous les modules declares, sans le critere de balayage :
+     * la population brute, offerte au paquet pour ADR-0064.
+     */
+    static List<Path> fichiersDeTest(Path racine) {
+        return sourcesDeTest(racine).stream().map(SourceDeTest::fichier).toList();
     }
 
     /**
