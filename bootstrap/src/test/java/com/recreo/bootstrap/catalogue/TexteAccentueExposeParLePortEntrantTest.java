@@ -117,6 +117,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S21-11 (arbitrage prealable du 2026-08-27, conditions GRA-1 a GRA-10) : entree
             // neuve, comparaison de longueurs, masses et contenances.
             "bandit-manchot-comparer-cp",
+            // S22 (S17-2, DEC-0053, ADR-0050) : entree neuve, comprehension de texte CM1.
+            "bandit-manchot-comprehension-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -151,6 +153,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Le mot qui manque",
             // S21-11 : titre neuf.
             "Compare les grandeurs",
+            // S22 (S17-2) : titre neuf.
+            "Lis et comprends",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -183,6 +187,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Trouve le mot qui complète la phrase.",
             // S21-11 : consigne neuve.
             "Regarde bien, puis compare.",
+            // S22 (S17-2) : consigne neuve, generique - ne nomme aucun texte-support d'aucun item.
+            "Lis le texte, puis réponds à la question.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
             // valeur unique pour les jeux du catalogue reel, compte sur catalogue.yaml, pas recopie.
             "bandit-manchot",
@@ -232,7 +238,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S21-10 : competence neuve.
             "Utiliser des mots précis pour désigner des objets, actions, sensations du quotidien",
             // S21-11 : competence neuve.
-            "Comparer des longueurs, des masses, des contenances (sans instrument gradué)");
+            "Comparer des longueurs, des masses, des contenances (sans instrument gradué)",
+            // S22 (S17-2) : competence neuve.
+            "Comprendre un texte narratif ou documentaire (questions explicites et implicites, "
+                    + "inférences simples)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

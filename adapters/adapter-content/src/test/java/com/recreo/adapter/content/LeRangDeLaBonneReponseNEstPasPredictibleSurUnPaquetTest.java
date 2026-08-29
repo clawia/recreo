@@ -353,7 +353,14 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " meubles compares en longueur, en masse ou en contenance (\"une girafe\","
                     + " \"baignoire\"...), valeurDe rend null sur les trois propositions de chaque"
                     + " item. Mesure du 2026-08-27 sur le paquet servi : aucune des 54 propositions"
-                    + " ne commence par un chiffre"));
+                    + " ne commence par un chiffre"),
+            // S22 (S17-2, ADR-0050) : entree neuve, comprehension de texte CM1.
+            Map.entry("cm1-comprehension",
+            "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"
+                    + " propositions n'est numerique : ce sont des reponses en texte libre (une"
+                    + " situation, un lieu, un metier...), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-08-29 sur le paquet servi :"
+                    + " aucune des 60 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
