@@ -126,3 +126,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-comparer
     nombreDeManches: 10
+  - id: bandit-manchot-multiplications-divisions-10-100-cm1
+    titre: "Multiplier ou diviser par 10 et 100"
+    consigne: "Quel est le résultat ?"
+    mecanique: bandit-manchot
+    paquet: cm1-multiplications-divisions-10-100
+    nombreDeManches: 10
