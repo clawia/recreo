@@ -132,3 +132,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-multiplications-divisions-10-100
     nombreDeManches: 10
+  - id: bandit-manchot-problemes-durees-cm1
+    titre: "Les durées et les horaires"
+    consigne: "Trouve la durée ou l'heure qui manque !"
+    mecanique: bandit-manchot
+    paquet: cm1-problemes-durees
+    nombreDeManches: 10
