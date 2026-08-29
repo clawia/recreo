@@ -117,6 +117,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S21-11 (arbitrage prealable du 2026-08-27, conditions GRA-1 a GRA-10) : entree
             // neuve, comparaison de longueurs, masses et contenances.
             "bandit-manchot-comparer-cp",
+            // S22 (S13-2, arbitrage prealable du 2026-08-15, conditions MD-1 a MD-10) : entree
+            // neuve, calcul mental des multiplications et divisions par 10 et par 100.
+            "bandit-manchot-multiplications-divisions-10-100-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -151,6 +154,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Le mot qui manque",
             // S21-11 : titre neuf.
             "Compare les grandeurs",
+            // S22 (S13-2) : titre neuf, annonce les deux operations (MD-10).
+            "Multiplier ou diviser par 10 et 100",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -232,7 +237,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S21-10 : competence neuve.
             "Utiliser des mots précis pour désigner des objets, actions, sensations du quotidien",
             // S21-11 : competence neuve.
-            "Comparer des longueurs, des masses, des contenances (sans instrument gradué)");
+            "Comparer des longueurs, des masses, des contenances (sans instrument gradué)",
+            // S22 (S13-2) : competence neuve.
+            "Calcul mental - multiplications et divisions simples (multiples de 10, 100)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
