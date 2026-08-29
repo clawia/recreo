@@ -1,0 +1,17 @@
+schema: 1
+id: paquet-textes-support-differents
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CM1"
+  domaine: "Lecture et comprehension de l'ecrit"
+  competence: "Paquet licite d'ADR-0050, jamais servi a un enfant"
+items:
+  - enonce: "Que ressent le personnage ?"
+    bonneReponse: "de la joie"
+    distracteurs: ["de la peur"]
+    texteSupport: "Léa ouvre son cadeau et sourit de toutes ses dents."
+  - enonce: "Que ressent le personnage ?"
+    bonneReponse: "de la joie"
+    distracteurs: ["de la peur"]
+    texteSupport: "Tom découvre son vélo neuf sous le sapin et saute de joie."

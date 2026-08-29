@@ -193,6 +193,14 @@ public final class BanditManchotSession implements GameSession {
         return Optional.ofNullable(mancheCourante).flatMap(Question::partDesignee);
     }
 
+    /**
+     * ADR-0050 : le texte-support de la manche courante, vide quand l'item n'en porte pas - le cas
+     * ordinaire, jamais un cas particulier a verifier en plus.
+     */
+    public Optional<String> texteSupportManche() {
+        return Optional.ofNullable(mancheCourante).flatMap(Question::texteSupport);
+    }
+
     public List<String> propositions() {
         return propositions;
     }

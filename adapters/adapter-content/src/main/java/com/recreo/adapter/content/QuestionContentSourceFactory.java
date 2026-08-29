@@ -39,6 +39,10 @@ import java.util.Optional;
  * 'explication', declare la sous-chaine de l'enonce qu'une mecanique de rendu doit distinguer
  * visuellement. Absente, elle vaut "rien a designer" - le cas ordinaire, jamais un cas particulier
  * a remplir d'une valeur factice.</p>
+ *
+ * <p>ADR-0050 : la cle facultative 'texteSupport', meme patron, declare un texte distinct de
+ * l'enonce que le gabarit rend dans un style propre, plus petit (S17-2). Absente, elle vaut "aucun
+ * texte-support" - le cas ordinaire.</p>
  */
 final class QuestionContentSourceFactory implements ContentSourceFactory {
 
@@ -72,10 +76,12 @@ final class QuestionContentSourceFactory implements ContentSourceFactory {
         Object indice = item.get("indice");
         Object explication = item.get("explication");
         Object partDesignee = item.get("partDesignee");
+        Object texteSupport = item.get("texteSupport");
         return new Question(new ItemId("item-" + position), enonce, bonneReponse, distracteursTexte,
                 indice == null ? Optional.empty() : Optional.of(String.valueOf(indice)),
                 explication == null ? Optional.empty() : Optional.of(String.valueOf(explication)),
-                partDesignee == null ? Optional.empty() : Optional.of(String.valueOf(partDesignee)));
+                partDesignee == null ? Optional.empty() : Optional.of(String.valueOf(partDesignee)),
+                texteSupport == null ? Optional.empty() : Optional.of(String.valueOf(texteSupport)));
     }
 
     private String texte(Map<?, ?> item, String champ, int position) {
