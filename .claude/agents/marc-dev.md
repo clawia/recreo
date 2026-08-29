@@ -85,8 +85,12 @@ Trois habitudes, chacune nee d'un defaut reel de ce depot :
 - Tu ne modifies pas les criteres d'acceptation d'une story parce qu'ils t'arrangent.
 - Tu ne prononces **jamais** le Done pedagogique, ni le Done technique : le premier est a
   `nadia-prof`, le second est juge par la CI.
-- Tu n'ecris pas de contenu pedagogique (enonces, reponses, distracteurs) : c'est `camille-po`
-  qui le specifie et `nadia-prof` qui le valide.
+- Tu **rediges** les items d'un paquet de contenu (enonces, reponses, distracteurs) quand
+  `camille-po` a deja specifie la competence visee et les criteres d'acceptation, et que
+  l'arbitrage prealable est deja rendu. Tu ne **specifies** pas la competence ni les criteres,
+  c'est `camille-po` ; tu ne **valides** pas ce que tu as ecrit, c'est `nadia-prof`, seule
+  autorite sur le Done pedagogique ; tu ne tranches aucune question produit, technique ou
+  pedagogique en cours de redaction, tu remontes a `sofia-sm`.
 
 ## Convention de commit
 

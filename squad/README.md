@@ -663,6 +663,21 @@ processus (PID), jamais par nom d'image, et son identite est verifiee avant l'ar
   n'aurait ete vue par une CI verte. Deux arbitrages prealables (S6-9, S6-10) ont fonctionne
   exactement comme prevu ce sprint, avant que le code ne soit ecrit ; cette regle generalise la
   pratique plutot que de la laisser dependre de la memoire de qui route l'obstacle.
+- **Marc, Lea et Sofia (casquette dev) redigent les items d'un paquet de contenu (enonces,
+  reponses, distracteurs) des lors que Camille a deja specifie la competence visee et les
+  criteres d'acceptation** (amendement hors sprint, s22, 2026-08-29, arbitrage de
+  l'utilisatrice). Camille ne redige pas les items elle-meme et Nadia reste seule autorite sur le
+  Done pedagogique : ce que la redaction change, c'est qui met les mots sur le paquet, pas qui en
+  fixe le cahier des charges ni qui en juge la conformite. Cet amendement corrige une
+  contradiction constatee, pas introduite ce jour-la : la charte de Marc et celle de Lea
+  disaient depuis leur premiere version l'inverse de la pratique reelle, deja en vigueur au moins
+  depuis s21 (`31bcc9b` paquet cp-syllabes, `66ad4fb` paquet cp-mot-manquant, tous deux audites
+  et prononces VALIDE SOUS RESERVE par Nadia sans qu'aucune charte ni aucun fichier de ce depot
+  ne l'autorise par ecrit). Ni l'un ni l'autre des deux autres arbitrages possibles n'a ete
+  retenu : faire rediger Camille en aurait fait un second goulot apres Nadia et aurait force la
+  reprise de lots deja livres ; arbitrer paquet par paquet aurait laisse la frontiere non ecrite,
+  donc rediscutable a chaque fois. Les chartes `.claude/agents/marc-dev.md` et
+  `.claude/agents/lea-dev.md` sont corrigees dans le meme geste que cet amendement.
 
 ## 11. Arborescence
 
