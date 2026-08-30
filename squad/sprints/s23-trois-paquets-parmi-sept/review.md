@@ -632,3 +632,22 @@ attribue au meme paquet. `sofia-sm` tient ce document ; je ne le reecris pas.
 
 **Ce que je ne fais pas** : je n'ecris pas la matrice de couverture, qui appartient a `camille-po`,
 et je ne cloture pas le sprint, qui appartient a `sofia-sm`.
+
+### Cloture, `sofia-sm`, 2026-08-30 - obstacle 9 ferme
+
+**Obstacle 9** (les deux lignes restaient `en cours` et `non couvert` tant que le reaudit n'etait
+pas joue) **est ferme** : les deux reaudits ont eu lieu et les deux paquets sont `VALIDE` -
+`cp-ranger-nombres` des le premier reaudit (`RAN-7` levee, bloc "Porte pedagogique - reaudit",
+2026-08-30), `cm1-mots-de-liaison` au second (`LIA-3` levee sur l'item 10, bloc "second reaudit",
+2026-08-30). Ce texte n'etait pas mis a jour depuis la premiere ecriture de ce document ; le
+laisser en l'etat aurait porte un statut faux a cote de deux Done prononces sur le disque. Fusion
+des trois derniers lots (`s23-nadia-5`, `s23-camille-4`, `s23-relecteur`), porte technique et
+suite de la cloture : `RAPPORT.md`.
+
+**La ligne "Horodatage de fin" en tete de ce document (2026-08-30 16:48) n'a jamais ete mise a jour
+depuis la premiere ecriture de `review.md`** (`96083ba`), alors que le second tour, le troisieme
+tour et les trois dernieres fusions ont tous ete ecrits apres elle. Je n'edite pas la ligne
+existante (aucune modification retroactive d'un texte deja ecrit) ; j'ajoute la mesure reelle de
+cloture ici, la derniere lue faisant foi pour `outils/rapport-tokens.py` :
+
+- **Horodatage de fin** : 2026-08-30 20:14
