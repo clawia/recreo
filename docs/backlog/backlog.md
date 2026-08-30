@@ -6758,6 +6758,35 @@ tache de calcul de duree et non un exercice de lecture d'indices visuels ou de m
   plus l'item de Nour comme se deroulant "en classe" si l'item ne le dit pas (ou l'item de Nour le
   dit explicitement). **Cout : une phrase de commentaire.**
 
+### Note - `TYP-1` s'applique a tout paquet neuf a compter du 2026-08-30, condition neuve et datee de `nadia-prof`
+
+`nadia-prof` clarifie une ambiguite qu'elle declare sienne (`squad/conformite/ARBITRAGE-
+typographie-espace-avant-signe-double.md`, `TYP-1` : *"aucune ligne rendue d'un texte lu par un
+enfant ne se compose uniquement de ponctuation"*) : sa redaction du 2026-08-28 ne disait pas si
+`TYP-1` s'applique au contenu neuf livre apres cette date. **A compter du 2026-08-30, tout paquet
+neuf applique `TYP-1`** ; aucun paquet existant n'en est justiciable retroactivement. Je le verse
+ici pour que ce ne soit pas une phrase qui pourrit dans un bloc de validation : tout critere
+pedagogique attendu que j'ecris desormais pour un paquet neuf, dans une fiche de conformite
+ouverte a partir de cette date, porte `TYP-1` a cote des criteres de contenu.
+
+Elle mesure aussi, dans le meme releve (`squad/outils/nadia-prof/chercher-un-signe-orphelin.py`,
+navigateur reel a 744 x 551, 453 textes dont 229 se replient) que **le catalogue compte 18 signes
+orphelins contre 14 le 2026-08-28**, et qu'un second defaut, non couvert par `TYP-1` - un instant
+qui se coupe entre son nombre et son unite (*"9 h 10"*) - existe et n'est nomme par aucune
+condition (reserve C ci-dessus). **Fait de `yanis-qa`, qui rend cette clarification plus
+urgente** : `catalogue.yaml` porte **zero** espace insecable sur l'ensemble de ses champs, et
+**aucun garde-fou n'en exige aujourd'hui la presence** - un texte qui applique l'insecable et un
+texte qui ne l'applique pas passent le meme test (`squad/sprints/s22-couverture-maximale-du-
+catalogue/rapport-qualite.md`, section 3). Ce gouffre technique est deja porte comme obstacle
+`OUVERT` dans `squad/sprints/s22-couverture-maximale-du-catalogue/review.md` (obstacle 7) : je ne
+le reouvre pas ici comme une story neuve, je verse la clarification de `nadia-prof` a cote pour
+qu'un lecteur de ce backlog ne la retrouve pas seulement dans un bloc de validation daté.
+
+- **Lien decision** : `squad/conformite/ARBITRAGE-typographie-espace-avant-signe-double.md`,
+  section `TYP-1` ; `squad/conformite/FICHE-bandit-manchot-problemes-durees-cm1.md`, reserve B.
+- **Agent pressenti** : `camille-po`, reflexe a chaque fiche neuve ouverte a partir du 2026-08-30 ;
+  `theo-archi` et `yanis-qa` pour le garde-fou technique, deja route par l'obstacle 7 de s22.
+
 ### `cm1-comprehension` (`S17-2`) - deux reserves
 
 **Besoin commun** : en tant qu'eleve de CM1 qui joue a "Comprendre un texte", je veux que ce qu'un
