@@ -437,7 +437,7 @@ paquet sans regarder le determinant. `PLU-1`, `PLU-4` et `PLU-5` ferment ce chem
   15 caracteres (`une trottinette`).*
 - **`PLU-7` - Vocabulaire.** Aucun mot de la phrase ni d'une proposition ne depasse **neuf lettres**,
   apostrophe non comptee. *Meme mesure et meme motif que `NAR-3`, meme population, meme date.*
-- **`PLU-8` - Indice.** Il renvoie au determinant, jamais a la reponse. *"Regarde le petit mot placé
+- **`PLU-8` - Indice.** Il renvoie au determinant, jamais a la reponse. *"Regarde le petit mot
   devant le nom."* est un indice. **Huit mots au plus.**
 - **`PLU-9` - Au moins vingt items**, et aucun nom n'est utilise plus de deux fois dans le paquet.
 
@@ -721,7 +721,9 @@ de parts l'unite est partagee.
 
 **Comparer deux fractions ne fait rien de cela.** Et cette competence-la n'apparait **nulle part**
 dans `squad/programme/mathematiques/competences-cm1.md` : ni sous "Nombres et calculs", ni ailleurs.
-*Verifie ligne par ligne le 2026-08-30 sur les treize lignes du referentiel CM1.* Un paquet qui la
+*Verifie ligne par ligne le 2026-08-30 sur les douze lignes du referentiel de
+mathematiques CM1 : sept en "Nombres et calculs", trois en "Grandeurs et mesures", deux en
+"Espace et geometrie".* Un paquet qui la
 travaillerait ne couvrirait aucune ligne de la matrice.
 
 ### Motif 2 - la mesure du fichier lui-meme, et elle est accablante
