@@ -419,3 +419,139 @@ catalogue, et c'est moi qui l'ai ecrit le 2026-08-19.
 ne sait pas si un nombre est une erreur ; **l'exactitude des 24 calculs de duree** ;
 **l'accentuation** ; **et la derniere clause de `D-6`**, dont la reserve A montre qu'aucune mesure
 existante ne la voit.
+
+### Reaudit - 2026-08-30 (s23) - VALIDE SOUS RESERVE (maintenu)
+
+**Reaudit conduit par `nadia-prof` le 2026-08-30**, apres le lot de `lea-dev` qui repond aux cinq
+reserves non bloquantes du Done du 2026-08-30 ci-dessus. **Les verdicts et les reserves anterieurs
+restent ecrits tels quels au-dessus et ne sont ni effaces ni reecrits.**
+
+**Ce reaudit ne pouvait que maintenir la ligne ou la faire reculer. Il la maintient.** La ligne de
+`S13-3` reste `couvert-valide`. **Quatre reserves sur cinq sont levees ; la reserve D ne l'est
+pas.**
+
+**Audit conduit en jouant et en mesurant a l'ecran**, application lancee depuis le fat jar construit
+sur l'arbre du worktree, sur le JDK 21 de la toolchain declaree.
+
+#### Correction de ma propre mesure, faite avant de m'en servir
+
+**Mon instrument de la reserve B rend un chiffre faux depuis que l'espace insecable existe dans ce
+paquet, et je le corrige plutot que de l'invoquer.**
+
+`squad/outils/nadia-prof/chercher-un-signe-orphelin.py` rapporte le 2026-08-30, au meme viewport
+`744 x 551` qu'au releve precedent : **454 textes mesures, 229 se replient, 17 signes orphelins**,
+dont **3 dans `cm1-problemes-durees`** - les enonces de Malo, Zoe et Maya.
+
+**Ces trois-la sont un artefact de l'instrument, pas un defaut de la page servie.** L'instrument
+construit une replique ou **chaque jeton est enveloppe dans son propre `<span>`**, et son decoupage
+en jetons coupe a l'espace insecable comme a n'importe quelle espace. Il fabrique ainsi une
+occasion de coupure que la page reelle n'a pas.
+
+*Verification directe, meme date, meme viewport `744 x 551`, meme navigateur, mais sur le **balisage
+reellement servi** par l'application - fragment recupere en session HTTP, place dans la coquille
+reelle avec les feuilles de style reelles, coupures de ligne lues caractere par caractere :*
+
+| Enonce | Lignes rendues | Derniere ligne |
+|---|---|---|
+| Zoe | 2 | `15 minutes. A quelle heure se termine-t-elle ?` - **aucun signe orphelin** |
+| Iris | 2 | `10. Combien de temps a dure la preparation ?` - **aucun signe orphelin** |
+| Malo | 3 | `elle ?` - **aucun signe orphelin** au sens de mon critere, la ligne ne contient pas que de la ponctuation |
+
+*J'ai verifie sur les octets que la page servie porte bien `U+00A0` avant le `?`.*
+
+**Chiffre corrige du catalogue entier sur le balisage reellement servi : 14 signes orphelins**, et
+non 17 - `cm1-perimetre` 9 et `cp-problemes-additifs` 5, deux paquets qui emploient encore l'espace
+ordinaire, ce que j'ai verifie. **`cm1-problemes-durees` en porte 0**, contre 4 le 2026-08-30.
+
+**Ma mesure du 2026-08-30 - 18 orphelins dans le catalogue, dont 4 dans ce paquet - reste exacte a
+sa date** : le paquet employait alors l'espace ordinaire, l'occasion de coupure etait reelle, et
+l'instrument mesurait juste. **C'est la correction apportee par `lea-dev` qui a rendu l'instrument
+aveugle**, pas l'inverse. Je le signale a `yanis-qa` et `theo-archi` sans corriger l'outil
+moi-meme.
+
+#### Reserve par reserve
+
+| Reserve | Verdict au 2026-08-30 (s23) | Ce que j'ai mesure moi-meme |
+|---|---|---|
+| **A** - `D-6`, l'anomalie visible est seule | **LEVEE** | Le paquet porte desormais **deux** ecritures superieures a 59 minutes sur ses 72 propositions : `1 heure 75 minutes` (item 9, ajoutee) et `2 heures 70 minutes` (item 11). **C'est exactement le critere de levee que j'avais ecrit** - *"une seconde ecriture de base 100 sur un autre item de la forme duree, ou le retrait de celle-ci"* |
+| **B** - `TYP-1`, quatre signes orphelins | **LEVEE** | Les 24 enonces portent `U+00A0` devant leur `?`, verifie sur les octets de la source **et** sur le HTML servi. Sur le balisage reel, **0 signe orphelin** dans ce paquet, contre 4 |
+| **C** - un horaire coupe en deux lignes | **LEVEE sur sa lettre** | Ma reserve nommait *"l'instant 9 h 10 est coupe **entre le nombre et son unite**"*. Cette coupure-la a disparu : `9` et `h` sont desormais lies. Voir le constat neuf 2 ci-dessous |
+| **D** - la bonne reponse n'est jamais la plus petite sur la forme "horaire d'arrivee" | **NON LEVEE, reduite** | Voir ci-dessous |
+| **E** - l'en-tete depasse son contenu | **LEVEE** | L'en-tete n'attribue plus *"en classe"* qu'a l'item d'Iris, qui l'ecrit ; l'item de Nour n'est plus concerne |
+
+#### Reserve D - non levee, et pourquoi je ne la ferme pas
+
+*Mesure du 2026-08-30 (s23) sur la population entiere des 12 items de la forme "horaire d'arrivee",
+items 13 a 24 - exactement la population de ma mesure precedente :*
+
+| Rang de la bonne reponse | Le 2026-08-30 (s22) | Le 2026-08-30 (s23), apres le lot | 
+|---|---|---|
+| la plus petite | **0** | **1** (8,3 %) |
+| celle du milieu | 8 | 8 (66,7 %) |
+| la plus grande | 4 | 3 (25,0 %) |
+
+*Paquet entier : 7 / 12 / 5, soit 29,2 / 50,0 / 20,8 %. Le chiffre declare par `lea-dev` est exact.*
+
+**Ce que ma reserve nommait est toujours la.** Je l'avais ecrite ainsi : *"Un enfant qui a repere la
+forme peut ecarter la proposition la plus matinale sans calculer, sur la moitie du paquet."* Ce
+raccourci reussissait sur **12 items sur 12** ; il reussit maintenant sur **11 sur 12**. Un item
+reecrit ne change pas la structure qui produit le defaut : `ERR-INVERSE` et la recopie de l'heure de
+depart rendent toutes deux un horaire anterieur.
+
+**Elle reste non bloquante**, comme elle l'etait : `D-7` est tenue et je la declare tenue, le paquet
+n'enseigne rien de faux, et je ne transforme pas un constat en motif de refus apres coup.
+
+**Ce que j'ajoute, et je le nomme comme neuf plutot que comme un durcissement : ma reserve D
+n'avait pas de critere de levee, et c'est mon defaut.** `lea-dev` ne pouvait pas savoir ou etait la
+barre. Je l'ecris maintenant, datee du 2026-08-30, opposable et verifiable par un tiers :
+
+> **Critere de levee de la reserve D.** Sur les 12 items de la forme "horaire d'arrivee", la bonne
+> reponse est la plus petite des trois propositions sur **au moins 3 items**. *Unite de compte :
+> l'item.* Il en faut donc deux de plus qu'aujourd'hui, construits comme l'item 15 l'a ete - deux
+> distracteurs qui surestiment tous deux l'horaire d'arrivee, a partir des familles d'erreur deja
+> nommees par le fichier, sans en inventer aucune.
+
+#### Constats neufs et dates du 2026-08-30 (s23), non bloquants
+
+Ils ne rouvrent aucune reserve levee et n'entrent dans aucun verdict.
+
+1. **Mon critere de levee de la reserve A ne ferme pas ce que la reserve visait.** `D-6` demandait
+   que l'ecriture superieure a 59 minutes ne soit pas *"la seule anomalie visible du paquet, sinon
+   elle s'elimine a l'oeil sans calcul"*. Il y en a deux maintenant - la lettre est tenue, mon
+   critere est tenu, et **l'enfant qui ecarte a vue toute ecriture de plus de 59 minutes elimine
+   encore un distracteur sans calculer, sur les items 9 et 11 tous les deux**. Deux anomalies de la
+   meme classe ne se camouflent pas l'une l'autre. **C'est mon critere qui etait mal choisi, pas le
+   travail de `lea-dev`**, qui a fait exactement ce que j'avais ecrit. Ce qui fermerait reellement
+   ce raccourci est une anomalie d'une **autre** classe, ou l'abandon de l'ecriture superieure a
+   59 minutes ; je ne tranche pas aujourd'hui et je ne pose pas de condition sur un paquet deja
+   valide.
+2. **L'instant `9 h 10` est toujours coupe en deux lignes, autrement.** *Mesure du 2026-08-30 (s23)
+   au navigateur reel, `744 x 551`, sur le balisage servi :* l'enonce d'Iris rend
+   `... de 8 h 45 a 9 h ` en fin de ligne et `10. Combien...` au debut de la suivante. La coupure ne
+   passe plus entre `9` et `h` - ce que ma reserve C nommait, et qui est corrige - mais **entre
+   l'heure et les minutes**. Pour un enfant qui apprend a lire l'heure, la gene est de la meme
+   famille. **Je ne rouvre pas la reserve C**, qui est levee sur ce qu'elle disait ; c'est un
+   constat nouveau et date.
+3. **L'enonce de Malo se coupe a l'interieur d'un mot.** *Meme mesure :* la ligne 2 finit par
+   `dure-t-` et la ligne 3 porte `elle ?`. Le navigateur coupe le mot compose a son trait d'union.
+   Ce n'est pas un signe orphelin au sens de mon critere et cela n'etait pas mesurable avant, la
+   coupure ayant lieu ailleurs. Pour un lecteur de CM1, un mot coupe en fin de ligne coute plus
+   qu'un signe seul. **Constat, pas condition.**
+
+#### `MNC-1`
+
+**`MNC-1`** - Ce Done ne couvre pas que l'enfant voie, sans faire defiler la page, un element
+quelconque du jeu, y compris le retour qui suit sa reponse - verdict, indice, proposition. Cette
+propriete est sortie de la porte pedagogique par arbitrage de l'utilisatrice du 2026-08-28
+(`DEC-0053`) ; sa dette est ouverte, croissante et assumee. Aucune mesure ne l'a instruite sur ce
+paquet.
+
+#### Ce que je route apres ce reaudit
+
+| Suite | Destinataire | Ce que je demande |
+|---|---|---|
+| **Quatre reserves levees (A, B, C, E). La ligne de `S13-3` reste `couvert-valide`** | `camille-po` | Fermer les quatre stories correspondantes |
+| **Reserve D non levee, reduite de 12/12 a 11/12. Critere de levee ecrit et date** | `camille-po` | La garder ouverte, avec le critere ci-dessus. Deux items a construire comme l'item 15 |
+| **Mon instrument de signes orphelins rend un faux positif sur tout texte a espace insecable** | `yanis-qa`, `theo-archi` | Je decris le symptome, je ne corrige pas l'outil. Chiffre reel du catalogue : **14**, pas 17. Ne pas recopier 17 |
+| **Trois constats neufs et dates, non bloquants** | `camille-po` | Ils n'entrent dans aucun verdict et ne rouvrent rien. A traiter ou a laisser, ce n'est pas moi qui priorise |
+| **La note de `lea-dev` sur le backlog qui rattache la reserve D a `D-6` plutot qu'a `D-7`** | `camille-po` | Elle a raison et elle a eu raison de ne pas corriger le backlog elle-meme. Ma reserve D porte sur le rang, donc sur la famille de `D-7`, jamais sur `D-6` |
