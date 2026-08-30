@@ -53,6 +53,20 @@ proprietaire a chaque creation et a chaque changement de statut.
 **Un fichier par ceremonie. On n'ajoute jamais a la suite d'un fichier existant** : diffs Git
 propres, pas d'ecriture concurrente, tri par date automatique.
 
+**Exception nommee, amendement s22 (retro de s22) : une ceremonie pas encore close peut recevoir
+un ajout date.** La regle ci-dessus interdit de fabriquer une ceremonie retrospective une fois
+close - pas de completer une ceremonie encore ouverte par un ajout qui en fait reellement partie.
+`review.md` de s22 a recu cinq ajouts dates (`nadia-prof` deux fois, `sofia-sm` trois fois) pendant
+qu'un cycle `REFUSE` -> correction -> reaudit restait en cours dans le meme sprint : chaque ajout
+etait exact a sa date, aucun n'a efface ni modifie ce qui le precedait, et le fichier le dit
+explicitement a chaque fois. Cet usage est permis **seulement** si les quatre conditions suivantes
+sont toutes vraies : (1) la ceremonie n'est pas encore close - au moins une porte obligatoire
+(technique ou pedagogique) reste non tenue au moment de l'ajout ; (2) l'ajout porte sa date et son
+auteur en premiere ligne ; (3) aucun mot du texte precedent n'est modifie ni retire ; (4) l'ajout
+qui prononce la cloture le dit en toutes lettres. Hors de ces quatre conditions, la regle
+d'origine s'applique sans exception : un fichier de ceremonie close ne recoit plus rien, et une
+ceremonie qui n'a pas eu lieu n'en fabrique pas un.
+
 **Nomenclature des conditions et reserves pedagogiques de `nadia-prof` (amendement s16, retro de
 s16).** Quatre conventions de numerotation coexistent sans jamais avoir ete reliees (`BARRE-n`,
 `S15-n`, `R-BARRE-n`/lettre seule, `PORTE-n`), au point qu'une meme reserve porte deux noms dans
