@@ -621,3 +621,86 @@ Mais decider qu'un distracteur rend le texte **faux** et non seulement moins bon
 langue qu'aucun serveur ne rendra, et la declaration de `LIA-3` ne me dispense pas de la verifier -
 elle me permet seulement de la **recompter** au lieu de l'etablir, ce qui est le gain le plus
 rentable de s22.
+
+---
+
+## 7. `contenu-repris/mots/cp-premiere-lettre.yml` sur "Identifier un son (phoneme) dans un mot" (francais CP)
+
+**Verdict : REFUSE.** Trois motifs, dont un qui suffirait seul.
+
+### Motif 1 - la tache ne demande aucun phoneme, et c'est deja juge
+
+Le fichier montre un mot en capitales et demande **par quelle lettre il commence**. La reponse est
+**le premier caractere affiche a l'ecran**. Un enfant qui ne sait pas lire du tout reussit les
+vingt-quatre items en appariant deux formes.
+
+**Ce n'est pas une barre neuve : c'est le critere que j'ai ecrit le 2026-08-10** dans
+`FICHE-bandit-manchot-le-bon-son-cp.md` et qui n'a jamais ete contredit depuis :
+
+> *"Tant qu'aucun son n'est emis, cette tache ne peut exiger le phoneme que la ou le grapheme ne
+> suffit pas a le donner, c'est-a-dire la ou le son admet plusieurs graphies."*
+
+*Mesure : sur les **24 items** du fichier - population entiere, pas un echantillon -, le grapheme
+donne le phoneme **24 fois sur 24**, puisque la reponse attendue est litteralement la premiere
+lettre ecrite.* Il n'y a pas un seul item ou quelque chose se travaille.
+
+### Motif 2 - trois items sont faux, et une erreur factuelle suffit a refuser
+
+Lus comme des items de **phoneme**, ce que la ligne visee demande, trois items du fichier enoncent
+une correspondance fausse. *Mesure sur les 24 items :*
+
+| Item | Reponse attendue | Ce qui est faux |
+|---|---|---|
+| `CHAT` | `C` | Le premier phoneme de *chat* est le son **[ch]**, ecrit par le digramme `CH`. `C` seul ne le note pas. |
+| `HIBOU` | `H` | Le `h` francais **ne note aucun phoneme**. *hibou* commence par le son [i]. |
+| `WAGON` | `W` | En francais, *wagon* se prononce avec le son **[v]**. La lettre `W` n'y note pas le son qu'elle nomme. |
+
+Un enfant de CP a qui l'on enseigne que *chat* commence par le son `C` devra desapprendre cela
+l'annee suivante, au moment precis ou il aborde les digrammes. **Une erreur factuelle dans un
+contenu scolaire est un motif de refus a elle seule, sans discussion**, et c'est la regle que je
+tiens depuis le premier sprint.
+
+### Motif 3 - les distracteurs ne sont pas des erreurs, ce sont des lettres au hasard
+
+Le fichier declare `distractorMode: pool` : les deux mauvaises propositions sont tirees parmi les
+autres bonnes reponses du jeu, c'est-a-dire **parmi les vingt-trois autres lettres**. Un distracteur
+tire au hasard dans l'alphabet n'est pas plausible : il ne correspond a aucune erreur qu'un enfant
+fait. Cela transforme l'exercice en recherche visuelle et prive le verdict de toute valeur
+d'apprentissage. C'est le meme motif que celui pour lequel j'exige, partout ailleurs, des familles
+de distracteurs **nommees et derivees** (`P-6`, `D-6`, `ETA-4`, `PLU-4`, `RAN-4`).
+
+### Ce qui manque, precisement
+
+**Un son emis, donc une decision d'utilisatrice, pas un travail de developpement.** La ligne
+"Identifier un son (phoneme) dans un mot" appartient au domaine *"Langage oral et conscience
+phonologique"* du referentiel. Sans emission sonore, on ne peut pas demander a un enfant
+d'identifier un son autrement qu'en lui montrant les lettres qui l'ecrivent. **Ce n'est ni un
+manque de contenu, ni un manque de mecanique, ni un manque d'architecture : c'est la source d'un
+enregistrement de voix humaine, que `DEC-0053` section 7.3 dit deja qu'aucun agent de cette squad
+ne peut produire.** Tant que l'utilisatrice n'a pas tranche cette source, la ligne est **hors
+d'atteinte**, quel que soit le nombre de sprints.
+
+### La part servable, et je la nomme sans l'arbitrer
+
+Mon propre critere du 2026-08-10 laisse ouverte une porte etroite : la tache peut exiger le phoneme
+**la ou le son admet plusieurs graphies**, ou bien la ou l'ecriture **contredit** le son (le `t`
+muet de *petit*, le `s` qui se dit [z] dans *maison*, le `h` de *hibou*). Un paquet construit
+uniquement sur ces cas travaillerait un phoneme sans emettre de son.
+
+**Je ne l'arbitre pas ici, et je dis pourquoi plutot que de le laisser en suspens** : un tel paquet
+aurait la meme forme que `cp-le-bon-son`, qui sert deja la ligne voisine *"Associer les graphemes
+aux phonemes"*, aujourd'hui `en cours`. **Le risque est de couvrir deux lignes du referentiel avec
+le meme exercice**, ce qui gonflerait la matrice sans rien apprendre de plus a l'enfant. Trancher
+cela demande de savoir si les deux lignes du socle designent bien deux competences distinctes -
+c'est une question sur **le referentiel**, pas sur un paquet, et elle appartient a `camille-po` et a
+l'utilisatrice. **Je la leur route, formulee ainsi** : *les lignes "Identifier un son (phoneme) dans
+un mot" et "Associer les graphemes aux phonemes" designent-elles deux competences distinctes dans ce
+socle, ou la premiere est-elle la version orale de la seconde ?* Si la reponse est "deux
+competences distinctes", je rendrai un arbitrage sur la part non sonore ; si c'est "la version
+orale", la ligne reste bloquee sur la voix et je n'ai rien de plus a dire.
+
+### Sur l'artefact d'accentuation du fichier
+
+`DEC-0052` avait note que ce fichier porte `VELO` sans accent. **Ce point ne m'appartient plus** :
+`DEC-0056` a rendu l'accentuation du texte lu par l'enfant au `relecteur-pedagogique`, et je m'y
+range. Je le signale ici uniquement pour que la trace ne se perde pas, sans en faire un motif.
