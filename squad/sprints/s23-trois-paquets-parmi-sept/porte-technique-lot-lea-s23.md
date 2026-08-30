@@ -92,7 +92,7 @@ l'arbre fusionne reste a etablir par `sofia-sm`.
 
 ## 6. Ce que je route
 
-- `camille-po` : la reference errone de `docs/backlog/backlog.md` (`D-6` cite avec un "plafond
+- `camille-po` : la reference erronee de `docs/backlog/backlog.md` (`D-6` cite avec un "plafond
   du tiers" qui appartient a `MD-6`), section 1 ci-dessus.
 - `nadia-prof` : reaudit de `cm1-problemes-durees` a sa prochaine ceremonie - les cinq reserves
   sont levees sur leur substance, mais seule elle prononce si elles le sont sur le fond.

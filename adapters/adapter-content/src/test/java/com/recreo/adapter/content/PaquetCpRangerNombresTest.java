@@ -236,7 +236,7 @@ class PaquetCpRangerNombresTest {
      *       l'item, present a l'ecran.</li>
      * </ul>
      *
-     * <p><b>Pourquoi les quatre autres textes sont surs, motif corrige le 2026-09-01</b> (avis de
+     * <p><b>Pourquoi les trois autres textes sont surs, motif corrige le 2026-09-01</b> (avis de
      * nadia-prof sur ce test, FICHE-bandit-manchot-ranger-nombres-cp.md, reaudit du 2026-08-30,
      * section "Mon avis sur le test qui encode RAN-7") : la Javadoc precedente disait qu'ils "ne
      * decrivent aucune position de chiffre et restent valides sur tout triplet" - le fait est
@@ -248,7 +248,7 @@ class PaquetCpRangerNombresTest {
      * garantissent designer sans ambiguite (a un partage pres avec un distracteur sous
      * {@code RAN-5b}, le sous-ensemble strict que nadia-prof autorise) ; "Compare les nombres deux
      * a deux avant de ranger." ne nomme aucune position de chiffre et reste donc valide par
-     * construction. Ces quatre textes ne sont pas testes ci-dessous : leur surete tient a
+     * construction. Ces trois textes ne sont pas testes ci-dessous : leur surete tient a
      * {@code RAN-1} et {@code RAN-4}, gardees par
      * {@link #laBonneReponseEstToujoursLOrdreCroissantEtLesDeuxDistracteursSontLesDeuxFamillesDeclarees()}
      * dans ce meme fichier, pas par ce test-ci.</p>

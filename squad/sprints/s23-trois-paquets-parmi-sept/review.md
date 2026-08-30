@@ -461,10 +461,10 @@ qualitative ("trop fragile") est verifiable sur le fichier.
 **`LIA` a ete refuse deux fois, et les deux fois sur un point que son auteure avait signale
 elle-meme** : le premier refus, sur la frontiere de necessite physique qu'elle avait deja notee
 comme fragile ; le second, sur son propre compte errone (38 distracteurs bons sur 40 annonce,
-37 reels - trouve par `sofia-sm` en verifiant plutot qu'en relayant) et sur une reserve C qui ne
-nommait que 2 des 6 items concernes par l'ambiguite "N groupes" (compte complete par `marc-dev`).
-Ces deux corrections de compte sont deja documentees par `nadia-prof` elle-meme dans le bloc de
-reaudit ci-dessus (fusionne depuis `s23-nadia-4`).
+37 reels - trouve par `sofia-sm` en verifiant plutot qu'en relayant). Cette correction de compte
+est deja documentee par `nadia-prof` elle-meme dans le bloc de reaudit ci-dessus (fusionne depuis
+`s23-nadia-4`). La reserve C, qui ne nommait que 2 des 6 items concernes par l'ambiguite
+"N groupes" (compte complete par `marc-dev`), appartient a `cm1-problemes-etapes`, pas a `LIA`.
 
 ## Ce que ce document ne fait pas
 
