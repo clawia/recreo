@@ -623,7 +623,32 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Orthographe et grammaire | Conjuguer les verbes frequents au present, futur et imparfait de l'indicatif | bandit-manchot-conjugaison-present-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Reperer et corriger la majuscule et la ponctuation dans une phrase donnee (majuscule initiale, point final, majuscule au nom propre, point d'interrogation d'une question) | bandit-manchot-reperes-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Vocabulaire | Utiliser des synonymes et antonymes pour preciser ou nuancer un propos | bandit-manchot-synonymes-cm1, bandit-manchot-antonymes-cm1 | bandit manchot | couvert-valide |
-| francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | - | - | non couvert |
+| francais | CM1 | Vocabulaire | Utiliser a bon escient des mots de liaison simples pour structurer un texte court | bandit-manchot-mots-de-liaison-cm1 | bandit manchot | couvert-valide |
+
+**Note du 2026-08-30 (s23, `camille-po`) - couverture partielle nommee, mention exacte de `nadia-
+prof`, a porter avec cette ligne plutot qu'a laisser dans l'ombre d'un statut vert.** `nadia-prof`
+fixe elle-meme la mention, avant tout jugement de ma part (`LIA-10`,
+`squad/conformite/FICHE-bandit-manchot-mots-de-liaison-cm1.md`) :
+
+> **choix du mot de liaison entre deux ou trois phrases, sans production de texte**
+
+**Ce que le paquet couvre** : le choix d'un connecteur parmi trois sur un texte de deux ou trois
+phrases deja ecrit ; quatre relations logiques (opposition, consequence, cause, succession) a parts
+egales ; une population fermee de dix connecteurs simples ; le connecteur en tete de seconde phrase
+comme en milieu de phrase.
+
+**Ce que ce paquet ne couvre pas, dans les mots de `nadia-prof`, pour que ce statut vert ne laisse
+rien dans l'ombre** :
+
+- **la production de texte** - l'enfant presse un bouton, il ne redige jamais rien. *C'est la limite
+  principale, et c'est elle qui justifie la mention partielle* ;
+- la structuration d'un texte entier (trois phrases au maximum, un seul connecteur a la fois) ;
+- les connecteurs de registre soutenu (`cependant`, `neanmoins`, `toutefois`, `en effet`, `par
+  consequent`) et `et`, `ou`, `ni`, `or` ;
+- l'arbitrage entre deux connecteurs egalement possibles - le paquet est construit pour qu'un seul
+  convienne ;
+- la place et la ponctuation du connecteur, toujours donnees par l'enonce, jamais choisies ;
+- les relations non servies : le but, la condition, l'hypothese, l'enumeration.
 
 **Note du 2026-08-25 (s20, `camille-po`) - question ouverte, routee a `nadia-prof`, statut
 inchange.** `theo-archi` a mesure qu'a la reference du produit (744 x 551, `DEC-0040`), `bandit-
@@ -2615,6 +2640,61 @@ a **23**. **22/43 (51,2 %) devient 23/43 (53,5 %)**.
 **Ce que ce mouvement fait, et pas plus.** Il ne prejuge d'aucune correction en cours sur `LIA`
 (second refus, item 10) : la ligne concernee reste `non couvert` jusqu'a un reaudit qui ne la nomme
 plus en defaut. Il ne change rien non plus a `cm1-problemes-durees`, hors perimetre de ce reaudit.
+
+**Ce que ce document ne fait pas.** Il ne prononce aucun Done pedagogique lui-meme et ne fait
+bouger aucune autre ligne que celle nommee ci-dessus.
+
+## Amendement du 2026-08-30 (s23, en cours) - `cm1-mots-de-liaison` passe `couvert-valide` en couverture partielle nommee, 24/43 (55,8 %) ; `cm1-problemes-etapes` passe de "valide sous reserve" a "valide", sans mouvement de ligne
+
+`nadia-prof` a rendu ses derniers verdicts du sprint le 2026-08-30 (branche `s23-nadia-5`, non
+fusionnee, trois commits) : `cm1-mots-de-liaison` **VALIDE, aucune reserve** (`LIA-3` levee sur
+l'item 10, troisieme et dernier compte sur les 40 distracteurs) ; `cm1-problemes-etapes` **VALIDE**
+(reserves D et E levees, les cinq reserves A a E du paquet desormais fermees). Source complete :
+les derniers blocs des deux `squad/conformite/FICHE-bandit-manchot-*.md` correspondantes.
+
+**Une ligne bouge, en couverture partielle nommee.**
+
+- **"Utiliser a bon escient des mots de liaison simples pour structurer un texte court"** (francais
+  CM1, `S23-LIA`) : `non couvert` -> `couvert-valide`. La mention de couverture partielle, ecrite
+  par `nadia-prof` avant tout jugement (`LIA-10`) et non par moi, est portee avec la ligne dans la
+  section "Francais - CM1" ci-dessus, juste apres le tableau : *"choix du mot de liaison entre deux
+  ou trois phrases, sans production de texte"*. La limite principale qu'elle nomme - l'enfant ne
+  redige jamais, il choisit - est ecrite en toutes lettres a cet endroit, avec le reste de ce que le
+  paquet ne couvre pas, pour qu'un statut vert ne la laisse pas dans l'ombre.
+
+**Une ligne ne bouge pas, mais le Done qui la couvre change de verdict.**
+
+- **"Resoudre des problemes a plusieurs etapes mobilisant les 4 operations"** (mathematiques CM1,
+  `S23-ETA`) : la ligne est deja `couvert-valide` sans mention partielle depuis l'amendement du
+  2026-08-30 precedent, et `nadia-prof` l'ecrit elle-meme - *"rien a ecrire sur la matrice"*. **Ce
+  qui change est le verdict de la fiche, pas le statut de cette matrice** : les cinq reserves A a E
+  sont desormais toutes fermees (A, B, C au premier reaudit ; D et E a celui-ci), et un increment
+  sans reserve pendante n'est plus "sous reserve" - `squad/conformite/FICHE-bandit-manchot-
+  problemes-etapes-cm1.md` porte donc **VALIDE** la ou elle portait **VALIDE SOUS RESERVE**. Je le
+  note ici pour qu'un lecteur de cette matrice, qui ne voit qu'un statut `couvert-valide` inchange,
+  sache que la fiche qui le fonde a fini de bouger.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide | non couvrable en l'etat |
+|---|---|---|---|---|---|
+| mathematiques CP | 11 | 5 | 0 | 6 | 0 |
+| mathematiques CM1 | 12 | 3 | 0 | 7 | 2 |
+| francais CP | 12 | 7 | 1 | 3 | 1 |
+| francais CM1 | 12 | 3 | 0 | 8 | 1 |
+| **Total** | **47** | **18** | **1** | **24** | **4** |
+
+**Le chiffre, avec sa base, verifie ligne par ligne contre les quatre tableaux de matiere de cette
+matrice avant d'etre ecrit (2026-08-30), pas repris d'un autre document du depot.** Le denominateur
+atteignable reste **43** sur **47**, inchange. Le compte de lignes `couvert-valide` passe de **23**
+a **24**. **23/43 (53,5 %) devient 24/43 (55,8 %)**.
+
+**Sur la date de ce reaudit.** `nadia-prof` signale que ses blocs portent le 2026-08-30, verifie par
+elle contre `git log --date=short` sur les onze commits du second tour de correction, tandis que des
+commentaires ecrits dans les paquets par d'autres agents portent le 2026-09-01 pour le meme travail.
+Je date cet amendement du 2026-08-30, sur la meme verification, et je n'ai trouve cette date fautive
+dans aucun document que j'ai ecrit (voir `docs/backlog/backlog.md`, section "Sprint 23").
+
+**Ce que ce mouvement fait, et pas plus.** Il ne fait bouger aucune ligne au-dela de celle nommee.
+`cm1-problemes-durees` et `cp-ranger-nombres` restent hors du perimetre de ce reaudit.
 
 **Ce que ce document ne fait pas.** Il ne prononce aucun Done pedagogique lui-meme et ne fait
 bouger aucune autre ligne que celle nommee ci-dessus.
