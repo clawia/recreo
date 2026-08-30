@@ -68,13 +68,16 @@ class AucunSigneDoubleNEstDetachableDeSonMotTest {
      * C'est pourquoi il differe des 511 occurrences sur 17 fichiers que nadia-prof a relevees le
      * 2026-08-28 : son releve lisait les fichiers, commentaires compris, le mien lit ce que l'enfant
      * recoit. Les deux sont exacts, ils ne comptent pas la meme chose.
+     *
+     * <p><b>Remesure le 2026-08-30</b> (s23, lea-dev, reserve B de {@code FICHE-bandit-manchot-
+     * problemes-durees-cm1.md}) : {@code cm1-problemes-durees} baisse de 27 a 3, seule baisse de ce
+     * sprint. Le total ({@link #DETTE_TOTALE}) baisse d'autant, de 540 a 516.
      */
     private static final Map<String, Integer> DETTE_PAR_FICHIER = new TreeMap<>(Map.ofEntries(
             Map.entry("cm1-tables-multiplication", 179),
             Map.entry("cp-problemes-additifs", 44),
             Map.entry("cm1-conjugaison-present", 31),
             Map.entry("cm1-homophones", 27),
-            Map.entry("cm1-problemes-durees", 27),
             Map.entry("cp-soustractions", 27),
             Map.entry("cm1-grands-nombres", 26),
             Map.entry("cm1-accords-groupe-nominal", 25),
@@ -85,11 +88,15 @@ class AucunSigneDoubleNEstDetachableDeSonMotTest {
             Map.entry("cp-comparer", 18),
             Map.entry("cp-complements-10", 14),
             Map.entry("cp-le-bon-son", 6),
+            // cm1-problemes-durees baisse de 27 a 3 le 2026-08-30 (reserve B, s23, lea-dev) : les
+            // 24 enonces posent desormais l'espace insecable devant leur "?" final ; seules les
+            // 3 occurrences des indices (hors perimetre de la reserve) restent.
+            Map.entry("cm1-problemes-durees", 3),
             Map.entry("cm1-antonymes", 3),
             Map.entry(CATALOGUE, 23)));
 
     /** Le total, ecrit une fois pour que la somme ne puisse pas deriver de la table sans le dire. */
-    private static final int DETTE_TOTALE = 540;
+    private static final int DETTE_TOTALE = 516;
 
     static int occurrencesDe(String valeur) {
         int compte = 0;

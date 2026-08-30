@@ -45,8 +45,13 @@ class PaquetCm1ProblemesDureesTest {
     /**
      * D-2 : un instant s'ecrit en abrege ("10 h 15", "9 h 05"). Le mot entier "heure(s)" est
      * exclu par la frontiere de mot qui suit "h" : "heure" ne matche jamais ce motif.
+     *
+     * <p>Reserve C (2026-08-30) : l'item 8 pose une espace insecable (U+00A0) entre le nombre et
+     * "h" de son second instant, pour qu'il ne se coupe plus entre eux a l'ecran. Le motif tolere
+     * ce caractere a cote de l'espace ordinaire, aux deux endroits ou un blanc peut apparaitre.
      */
-    private static final Pattern INSTANT = Pattern.compile("(\\d+)\\s*h\\b(?:\\s*(\\d+))?");
+    private static final Pattern INSTANT =
+            Pattern.compile("(\\d+)[\\s\\u00A0]*h\\b(?:[\\s\\u00A0]*(\\d+))?");
 
     /** D-2 : une duree s'ecrit en toutes lettres ("25 minutes", "1 heure 15 minutes", "1 heure"). */
     private static final Pattern DUREE_LETTRES =
