@@ -277,3 +277,145 @@ absence de ce bloc n'est pas un oubli. Le bloc qui prononcera le Done de ce paqu
 | **`D-4` et `D-5` sont ambigues** ; le paquet les tient sous les deux lectures | `camille-po` | **Ne rien appliquer retroactivement** : les deux conditions sont tenues et je les declare tenues. A reecrire par moi avant le prochain paquet de durees, comme des conditions neuves et datees |
 | **Score plein malgre les erreurs** : une propriete de la mecanique, sur tout le catalogue | `camille-po` | Une question de produit, jamais un motif contre ce lot |
 | **`D-6` n'est gardee par aucun automate**, et c'est elle qui a fait tomber le lot | `yanis-qa`, `sofia-sm` | A porter au rapport qualite, a cote du compte des dix-neuf conditions gardees |
+
+---
+
+### Done pedagogique - 2026-08-30 (s22) - VALIDE SOUS RESERVE
+
+**Reaudit apres le lot de `sofia-sm` (casquette dev). Audit non degrade : fat jar reconstruit sur
+l'arbre de ma branche, application lancee, paquet joue.**
+
+#### Ce que j'ai joue
+
+**Neuf parties, 24 items sur 24 servis.** Sur chaque item, les **deux** propositions fausses
+pressees avant la bonne, puis une troisieme pression pour atteindre la revelation. Propositions
+relues dans le HTML rendu et comparees au fichier apres desechappement : **zero ecart** sur les
+24 enonces, 24 bonnes reponses, 48 distracteurs et 24 indices. L'indice apparait des le premier
+echec ; apres trois echecs la reponse est nommee et la manche se debloque.
+
+#### `D-6` - le motif du refus du 2026-08-29 est leve sur sa substance
+
+**J'ai recalcule les 48 distracteurs un par un depuis les instants et la duree de leur propre item**,
+et non verifie un echantillon. Les trois familles declarees en en-tete produisent exactement les
+valeurs servies :
+
+- **Forme "duree ecoulee" (items 1 a 12)** : `ERR-INVERSE` donne `60 - (duree reelle modulo 60)`,
+  `ERR-REPORT` donne `duree reelle -/+ 60`. Verifie sur les 24 distracteurs de la forme.
+- **Forme "horaire d'arrivee" (items 13 a 24)** : `ERR-INVERSE` soustrait la duree au lieu de
+  l'ajouter, `ERR-REPORT` ajoute une heure en trop **ou** recopie l'heure de depart. Verifie sur les
+  24 distracteurs de la forme.
+- **`ERR-BASE100`** : presente une fois sur chaque forme, comme ma reserve l'exigeait - item 11,
+  "2 heures 70 minutes" (190 minutes, reellement distinct des 90 de la bonne reponse) ; item 14,
+  "10 h 50" (l'enfant compte 140 minutes pour une duree de 1 heure 40 minutes).
+
+**Aucun ecart constant par bloc ne subsiste** : c'etait le coeur de mon refus et il est corrige.
+**Les 24 calculs sont justes**, aucune collision de valeur dans aucun item sur les 72 propositions.
+
+#### `D-7` - recompte a la main, contre la declaration de l'auteure
+
+Je ne reprends pas son chiffre, je le refais. **Rang de la bonne reponse mesure sur la valeur reelle**
+(durees converties en minutes, instants convertis en minutes depuis minuit) :
+
+| Rang | Items | Part |
+|---|---|---|
+| la plus petite | 1, 3, 4, 6, 8, 10 | **6 / 24 = 25,0 %** |
+| intermediaire | 2, 5, 9, 11, 13, 14, 16, 17, 19, 20, 22, 23 | **12 / 24 = 50,0 %** |
+| la plus grande | 7, 12, 15, 18, 21, 24 | **6 / 24 = 25,0 %** |
+
+**Le chiffre de `sofia-sm` est exact.** `D-7` exige qu'aucun rang ne depasse 50 % ni ne tombe sous
+10 % : **50,0 % n'excede pas 50 %**, la comparaison est stricte et je la lis comme je l'ai ecrite le
+2026-08-19. **Tenue.**
+
+#### Les autres conditions
+
+| Condition | Verdict | Mesure |
+|---|---|---|
+| `D-1` | **tenue** | Douze items par forme, aucune lecture d'heure seule, aucune conversion seule, aucune recherche d'heure de depart |
+| `D-2` | **tenue** | Verifiee par appariement de forme sur les **72** propositions : aucun item ne melange une ecriture d'instant et une ecriture de duree |
+| `D-3` | **tenue** | Plage horaire servie de 8 h a 19 h 30, aucun franchissement de minuit, aucune seconde |
+| `D-4`, `D-5` | **tenues** | Declarees imprecises **par moi** le 2026-08-29 et tenues sous les deux lectures. **Je ne les rouvre pas** : elles seront reecrites en conditions neuves et datees, jamais appliquees en arriere. Duree maximale servie : 2 heures 10 minutes, sous le plafond de cinq heures |
+| `D-8` | **tenue** | Mesure sur les 24 enonces : **20 a 25 mots, deux phrases**, contre un plafond de vingt-cinq mots et deux phrases. Deux items sont a 25 pile ; le plafond est inclusif, comme je l'ai ecrit |
+| `D-9` | **tenue - reserve 6 levee** | Ecole, recreation, cantine, bus, train, bibliotheque, musee, ferme pedagogique, match, film, recette. Prenoms varies. **L'attribution de la recette a un garcon a disparu de l'en-tete**, ce qui etait ma reserve 6 |
+| `D-10` | **tenue** | **Quatre** indices distincts sur la forme "duree", **trois** sur la forme "horaire" |
+| `D-11` | **tenue** | 24 items, plancher de 20 |
+| **Accentuation** | **tenue** | Meme methode que sur `S13-2` : 124 chaines, 133 jetons distincts, 104 sans caractere accentue, **dont aucun ne devrait en porter**. Les homographes accentuables (a, la, du, des, sur) ont ete releves en contexte un par un : tous corrects |
+
+#### VERDICT : VALIDE SOUS RESERVE
+
+**Done pedagogique prononce le 2026-08-30 par `nadia-prof`.** `camille-po` peut passer la ligne de
+matrice de `S13-3` a `couvert-valide`. **La reserve 1 (bloquante, 2026-08-29) est levee sur sa
+substance** ; la reserve 6 (non bloquante) aussi. Les verdicts du 2026-08-29 restent ecrits au-dessus.
+
+**Pourquoi "sous reserve" et pas "valide" :** cinq points ci-dessous, dont un qui porte sur une
+clause de `D-6` elle-meme. Le paquet est **utilisable** - il n'enseigne rien de faux, ses 24 calculs
+sont justes, aucun item ne devient une devinette - mais ces cinq points sont reels et deux d'entre
+eux sont **mesures a l'ecran**.
+
+#### Reserves
+
+- **Reserve A, non bloquante, 2026-08-30 - `D-6`, derniere clause : l'anomalie visible est seule.**
+  `D-6` (arbitrage du 2026-08-19, point 16) dit : "si une ecriture de ce genre est retenue, elle ne
+  doit pas etre la seule anomalie visible du paquet, sinon elle s'elimine a l'oeil sans calcul".
+  **Balayage mecanique des 72 propositions : une seule porte un compte de minutes superieur a 59**,
+  "2 heures 70 minutes" a l'item 11. Le second `ERR-BASE100`, "10 h 50" a l'item 14, est un horaire
+  parfaitement bien forme et ne constitue donc pas une seconde anomalie. **La clause n'est pas
+  tenue.**
+  **Pourquoi elle ne bloque pas, et je le dis plutot que de le laisser deduire** : cette clause
+  **ne figure pas** dans ma propre liste de ce que je refusais d'avance (arbitrage du 2026-08-19,
+  section 3.5), liste que j'avais ecrite "pour qu'aucun lot ne revienne avec ceci dedans". En faire
+  aujourd'hui un motif de refus serait deplacer un poteau apres coup, et je me l'interdis.
+  **Second fait que je dois a l'auteure** : c'est **ma** reserve du 2026-08-29 - "au moins un item
+  par famille propose la valeur qu'ecrit l'enfant qui compte en base 100" - qui rend cette ecriture
+  obligatoire sur la forme "duree", ou l'erreur de base 100 produit mecaniquement plus de
+  59 minutes. **Mes deux exigences sont en tension et c'est mon defaut, pas le sien.**
+  **Levee** : une seconde ecriture de base 100 sur un autre item de la forme "duree", ou le retrait
+  de celle-ci. Une chaine.
+- **Reserve B, non bloquante, 2026-08-30 - `TYP-1` : quatre signes orphelins, mesures.** Ce paquet
+  est le seul des trois de s22 a ne pas porter d'espace insecable devant le signe - 0 sur 24, contre
+  25 sur 25 pour `S13-2` et 20 sur 20 pour `S17-2`. **Mesure au navigateur reel a 744 x 551 avec mon
+  propre instrument** (`squad/outils/nadia-prof/chercher-un-signe-orphelin.py`, 453 textes mesures,
+  229 se replient) : **18 signes orphelins dans le catalogue contre 14 le 2026-08-28, et les 4
+  nouveaux sont tous dans ce paquet** - items Malo, Iris, Zoe, Maya, dont le point d'interrogation
+  occupe seul une troisieme ligne.
+  **Pourquoi elle ne bloque pas** : `TYP-1` porte sa propre phrase - "Aucun lot n'est un prealable
+  au Done pedagogique d'aucun paquet". **Cette phrase est mienne et je m'y tiens.**
+  **Ce que je clarifie, comme une condition neuve et datee et non comme un durcissement** : ma
+  redaction du 2026-08-28 ne disait pas si `TYP-1` s'applique au **contenu neuf** livre apres cette
+  date. **L'ambiguite est la mienne.** A compter du 2026-08-30, tout paquet neuf applique `TYP-1` ;
+  ce paquet-ci n'en est pas justiciable retroactivement, et son en-tete disait honnetement pourquoi
+  il ne l'appliquait pas.
+- **Reserve C, non bloquante, 2026-08-30 - un horaire coupe en deux lignes.** Dans le meme releve,
+  l'item d'Iris rend "de 8 h 45 a 9" en fin de ligne et "h 10." au debut de la suivante :
+  **l'instant 9 h 10 est coupe entre le nombre et son unite.** Pour un enfant qui apprend a lire
+  l'heure, c'est plus genant qu'un signe orphelin. `TYP-1` ne couvre que la ponctuation double et
+  **ne couvre pas ce cas** ; je le nomme sans le transformer en condition aujourd'hui.
+- **Reserve D, non bloquante, 2026-08-30 - la bonne reponse n'est jamais la plus petite sur la forme
+  "horaire d'arrivee".** Sur les 12 items de cette forme, le compte est **0 la plus petite / 8
+  intermediaire / 4 la plus grande**. C'est structurel : `ERR-INVERSE` et la recopie de l'heure de
+  depart produisent toutes deux un horaire anterieur, jamais posterieur. **Un enfant qui a repere la
+  forme peut ecarter la proposition la plus matinale sans calculer**, sur la moitie du paquet.
+  **`D-7` est tenue et je la declare tenue** : elle se mesure sur le paquet, ou le compte est
+  25,0 / 50,0 / 25,0. **Ceci est un constat neuf et date, pas un durcissement de `D-7`**, et il est
+  une consequence directe de la correction que j'ai exigee le 2026-08-29.
+- **Reserve E, non bloquante, 2026-08-30 - l'en-tete depasse encore un peu son contenu.** Il ecrit
+  que "la recette est preparee en classe par des filles - Iris, Nour" ; l'item d'Iris dit bien "en
+  classe", celui de Nour ne le dit pas. `D-9` reste tenue - c'est la phrase qui devance le contenu,
+  pas le contenu qui manque. Meme famille que ma reserve 6 du 2026-08-29, en beaucoup plus petit.
+
+#### `MNC-1`
+
+**`MNC-1`** - Ce Done ne couvre pas que l'enfant voie, sans faire defiler la page, un element
+quelconque du jeu, y compris le retour qui suit sa reponse - verdict, indice, proposition. Cette
+propriete est sortie de la porte pedagogique par arbitrage de l'utilisatrice du 2026-08-28
+(`DEC-0053`) ; sa dette est ouverte, croissante et assumee. Aucune mesure ne l'a instruite sur ce
+paquet.
+
+Le rappel n'est pas de pure forme sur ce paquet : ce sont ses enonces qui sont les plus longs du
+catalogue, et c'est moi qui l'ai ecrit le 2026-08-19.
+
+#### Ce que je reste seule a garder sur ce paquet
+
+**Que 48 distracteurs soient des erreurs reelles d'enfant** - un automate compte les propositions, il
+ne sait pas si un nombre est une erreur ; **l'exactitude des 24 calculs de duree** ;
+**l'accentuation** ; **et la derniere clause de `D-6`**, dont la reserve A montre qu'aucune mesure
+existante ne la voit.

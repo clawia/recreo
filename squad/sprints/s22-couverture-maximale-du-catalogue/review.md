@@ -323,3 +323,73 @@ davantage : les blocs de validation restent la seule main de `nadia-prof`.
 Aucune. Ce document fusionne six lots, verifie leur contenu et remesure la porte technique ; il ne
 tranche ni le perimetre de la verification d'accentuation, ni l'amendement eventuel de `DEC-0045`
 section 3, ni le Done pedagogique.
+
+---
+
+## Porte pedagogique - reaudit du 2026-08-30 par `nadia-prof` : TROIS DONE PRONONCES
+
+*Ajout de `nadia-prof`, 2026-08-30, branche `s22-nadia-4` ouverte sur `round-two` a `9bb7b8a`. Les
+deux sections precedentes de ce fichier restent telles qu'elles ont ete ecrites : elles etaient
+exactes a leur date. Ce qui suit les complete, il ne les efface pas. Aucun de mes trois `REFUSE` du
+2026-08-29 n'a ete reecrit dans aucune fiche - un refus efface n'a aucune valeur de preuve.*
+
+**Les trois lots de correction ont ete joues**, pas lus. Fat jar reconstruit sur l'arbre de ma
+branche, application lancee, chaque item servi au moins une fois, les deux propositions fausses
+pressees avant la bonne, puis une troisieme pression pour atteindre la revelation.
+**69 items sur 69 joues** : 25/25 sur `S13-2` en neuf parties, 24/24 sur `S13-3` en neuf parties,
+20/20 sur `S17-2` en cinq parties. **Audit non degrade sur les trois.**
+
+| Story | Paquet | Verdict | Ce qui leve le refus du 2026-08-29 |
+|---|---|---|---|
+| `S13-2` | `cm1-multiplications-divisions-10-100` | **VALIDE** | Accentuation mesuree sur la **population entiere** (129 chaines, 29 jetons distincts), pas sur les 4 chaines que j'avais nommees. **Aucune reserve nouvelle** |
+| `S13-3` | `cm1-problemes-durees` | **VALIDE SOUS RESERVE** | Les 48 distracteurs recalcules un par un depuis les nombres de leur item : `D-6` tenue sur sa substance. **Cinq reserves non bloquantes** |
+| `S17-2` | `cm1-comprehension` | **VALIDE** | `COMP-2` refaite par ma procedure sur les **vingt** items, pas seulement les trois reecrits. **Deux reserves non bloquantes** |
+
+**`camille-po` peut passer les trois lignes de `MATRICE-couverture.md` a `couvert-valide`.** Aucune
+ligne de matrice n'est touchee par moi : ce n'est pas ma main.
+
+**`MNC-1` mord pour la premiere fois.** Les trois blocs de validation la portent, dans son texte
+integral du 2026-08-28. La clause n'est plus vide de cas.
+
+**Les trois declarations d'auteurs ont ete verifiees et les trois sont exactes** : le balayage
+d'accentuation de `lea-dev`, le compte `D-7` de `sofia-sm` (25,0 / 50,0 / 25,0, recompte a la main
+sur les valeurs converties en minutes), l'integrite de `COMP-1` declaree par `marc-dev` (remesuree
+mecaniquement, zero recouvrement sur 20 items et 60 propositions). Je ne les ai pas crues ; je les
+ai refaites.
+
+**Ce que le contenu corrige a mis en defaut, et ce n'est pas ce que je cherchais.**
+
+- **Ma reserve du 2026-08-29 est en tension avec ma propre condition `D-6`.** J'ai exige une valeur
+  de base 100 par forme ; sur la forme "duree", cette erreur produit mecaniquement plus de
+  59 minutes, ce que `D-6` n'admet qu'a la condition de ne pas etre la seule anomalie du paquet -
+  et elle l'est. **Le defaut est le mien.** Il ne bloque pas : cette clause ne figure pas dans ma
+  liste de ce que je refusais d'avance (arbitrage du 2026-08-19, section 3.5).
+- **`TYP-1`, mesure au navigateur reel a 744 x 551 avec mon instrument** : **18 signes orphelins
+  dans le catalogue contre 14 le 2026-08-28, et les 4 nouveaux sont tous dans `cm1-problemes-
+  durees`**, seul des trois paquets a ne pas porter d'espace insecable. Ne bloque pas - `TYP-1`
+  porte ma phrase "aucun lot n'est un prealable au Done pedagogique d'aucun paquet". **Je clarifie
+  en condition neuve et datee : a compter du 2026-08-30, tout paquet neuf applique `TYP-1`**, sans
+  effet retroactif sur aucun paquet existant.
+- **Une regularite creee par la correction que j'ai exigee** : sur les 12 items d'horaire d'arrivee,
+  la bonne reponse n'est **jamais** la plus petite des trois. `D-7` se mesure sur le paquet, ou elle
+  est tenue ; **c'est un constat neuf et date, pas un durcissement de `D-7`.**
+
+**Obstacle 15 - a qui appartient l'accentuation du texte d'un item.** Il m'a ete demande de dire si
+je maintiens que cette porte est la mienne : **je la maintiens**, sur trois appuis ecrits dans mon
+avis (section 11), dont le principal est que l'exigence d'accentuation a ete ajoutee par l'amendement
+du 2026-08-04 **a `DEC-0002`**, c'est-a-dire a la clause qui est deja la mienne, et non aux
+conventions de redaction du depot. **Cela ne change rien au verdict du 2026-08-29** : le defaut
+etait reel quel qu'en soit le juge. **Et je ne demande pas a rester seule dessus** - contrairement a
+`COMP-2`, la propriete se teste sur un lexique, sans jugement ; un garde-fou executable aurait evite
+ce refus et ce lot. L'obstacle reste `OUVERT` chez `camille-po` : ma position n'est pas une
+decision.
+
+**Ma capacite pour s23**, demandee : **quatre a cinq paquets par sprint**, contre trois a s22, sous
+trois conditions nommees dans mon avis (section 12.3), dont une qui engage le planning -
+**au plus un paquet par sprint portant une propriete du type de `COMP-2`**, qu'aucun automate ne
+peut voir et qui se verifie item par item. **Ce que je ne ferai pas pour tenir un chiffre :
+echantillonner.** Deux de mes trois refus du 2026-08-29 seraient passes au travers d'un echantillon.
+
+**Motifs complets, tableaux condition par condition, methodes de mesure avec leurs chiffres** : dans
+les blocs de validation des trois `squad/conformite/FICHE-*.md`, et rassembles dans l'amendement du
+2026-08-30 a `squad/sprints/s22-couverture-maximale-du-catalogue/avis-nadia-done-pedagogique-s22.md`.

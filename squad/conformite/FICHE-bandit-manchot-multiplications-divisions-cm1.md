@@ -213,3 +213,89 @@ de ce paquet, quel qu'en soit le sprint.
 | **Le refus, et son cout de levee : quatre chaines** | `camille-po` | En faire du backlog, ou juger que cela revient dans s22 - c'est sa main, pas la mienne |
 | **La reserve 2 (`MD-6` non declaree)** | `camille-po` | Une story, ou un ajout au meme lot que la reserve 1 |
 | **A qui appartient l'accentuation du texte d'un item : `relecteur-pedagogique` ou moi ?** | `sofia-sm`, puis `camille-po` | Trancher, et dire si un garde-fou executable est possible. **Aucun n'existe aujourd'hui**, et le defaut a traverse une CI verte et un lot livre |
+
+---
+
+### Done pedagogique - 2026-08-30 (s22) - VALIDE
+
+**Reaudit apres le lot de `lea-dev`. Audit non degrade : j'ai reconstruit le fat jar sur l'arbre de
+ma branche, lance l'application et joue le paquet.**
+
+#### Ce que j'ai joue, et comment je le sais
+
+**Neuf parties, 25 items sur 25 servis au moins une fois.** Sur chaque item j'ai presse les **deux**
+propositions fausses avant la bonne, puis reappuye sur une fausse pour atteindre la revelation.
+Methode : session HTTP reelle contre l'application lancee sur le fat jar de l'arbre, les propositions
+servies etant relues dans le HTML rendu et comparees champ par champ au fichier de contenu apres
+desechappement HTML. **Zero ecart** entre ce que le fichier declare et ce que l'ecran sert, sur les
+25 enonces, les 25 bonnes reponses, les 50 distracteurs et les 25 indices.
+
+Ce que j'ai vu apres une erreur : *"Ce n'est pas ca. Essaie encore !"* accompagne de l'indice de
+l'item. Apres trois erreurs : la reponse est revelee et nommee, la manche se debloque. **Un enfant
+bloque peut avancer** ; c'est ce que je verifie et c'est tenu.
+
+#### Le motif du refus du 2026-08-29 est leve, et je l'ai mesure autrement que la ou j'avais refuse
+
+`lea-dev` declare un balayage exhaustif du fichier. **Je ne l'ai pas cru, je l'ai mesure contre la
+population entiere**, comme la regle que j'ai adoptee le 2026-08-28 m'y oblige - et non contre les
+quatre chaines que j'avais nommees, ce qui n'aurait prouve que la correction de mon propre exemple.
+
+**Methode, pour qu'un tiers la refasse sans me la redemander** : extraction de **toutes** les chaines
+entre guillemets du fichier hors lignes de commentaire, puis de tous les jetons alphabetiques de ces
+chaines, puis lecture de la liste des jetons distincts.
+
+| Population mesuree | Chiffre |
+|---|---|
+| Chaines lues par l'enfant ou exposees au catalogue | **129** |
+| Jetons alphabetiques distincts | **29** |
+| Jetons distincts ne portant aucun caractere accentue | **25** |
+| Parmi ces 25, jetons qui devraient en porter un | **0** |
+
+Les quatre jetons accentues sont `Mathematiques`, `ecrire`, `zero`, `zeros` et la preposition `a`.
+Les 25 autres - `Calcul`, `mental`, `multiples`, `simples`, `divisions`, `nombre`, `droite`,
+`enlever`, `deux`, `plus`, `par`, `du`, `un`, `et`, `Nombres`, `calculs`, `Multiplier`, `Diviser`,
+`c'est`, `CM`, et les mots-outils - **n'en prennent aucun**. **La declaration de `lea-dev` est
+exacte sur la population entiere, pas seulement sur mon echantillon.**
+
+#### Les conditions, revues sur le contenu servi
+
+| Condition | Verdict | Ce que j'ai mesure |
+|---|---|---|
+| Exactitude des 25 resultats | **tenue** | Recalcul des 25 operations. **25 justes sur 25**, zero erreur |
+| `MD-1` | **tenue** | Operateur 10 ou 100 sur les 25 items, aucun autre |
+| `MD-3`, `MD-4` | **tenues** | Aucune virgule, aucune ecriture decimale ; les signes servis sont bien les signes mathematiques, jamais la lettre ni la barre oblique |
+| `MD-5` | **tenue** | Rang de la bonne reponse recompte a la main sur les valeurs reelles : **8 la plus petite / 8 intermediaire / 9 la plus grande** sur 25, soit 32,0 % / 32,0 % / 36,0 % |
+| `MD-6` clause du tiers | **tenue** | `ERR-INCHANGEE` compte **8 items sur 25**, contre un plafond de 8,33. Aucune collision de valeur dans aucun item, verifiee sur les 75 propositions |
+| `MD-6` erreurs nommees | **tenue - reserve 2 levee** | L'en-tete declare desormais `ERR-SENS`, `ERR-ZERO` et `ERR-INCHANGEE`, et son compte du tiers est exact au chiffre pres |
+| `MD-7` | **tenue** | Les quatre indices donnent la methode, jamais le resultat |
+| `MD-8` | **tenue** | Aucune mise en situation, aucun facteur manquant, aucun item definitionnel |
+| **Accentuation** (amendement du 2026-08-04 a `DEC-0002`) | **tenue** | Section ci-dessus |
+| `TYP-1` | **tenue** | Les 25 enonces portent une espace insecable devant le signe. **Mesure au navigateur reel a 744 x 551 : zero signe orphelin sur ce paquet** |
+
+#### VERDICT : VALIDE
+
+**Done pedagogique prononce le 2026-08-30 par `nadia-prof`.** `camille-po` peut passer la ligne de
+matrice de `S13-2` a `couvert-valide`.
+
+**Reserve 1 (bloquante, 2026-08-29) : levee.** **Reserve 2 (non bloquante, 2026-08-29) : levee.**
+Les deux verdicts du 2026-08-29 restent ecrits au-dessus ; ils ne sont pas effaces, ils sont dates
+et leves.
+
+**Aucune reserve nouvelle.** Je l'ecris en clair parce que l'absence de reserve doit se distinguer
+d'un oubli de ma part : j'ai cherche et je n'ai rien trouve a porter.
+
+#### `MNC-1`
+
+**`MNC-1`** - Ce Done ne couvre pas que l'enfant voie, sans faire defiler la page, un element
+quelconque du jeu, y compris le retour qui suit sa reponse - verdict, indice, proposition. Cette
+propriete est sortie de la porte pedagogique par arbitrage de l'utilisatrice du 2026-08-28
+(`DEC-0053`) ; sa dette est ouverte, croissante et assumee. Aucune mesure ne l'a instruite sur ce
+paquet.
+
+#### Ce que je reste seule a garder sur ce paquet, apres ce Done
+
+Pour que l'equipe ne croie pas couvert ce qui ne l'est pas : **exactitude des 25 resultats**,
+**plausibilite des 50 distracteurs**, **qu'un indice n'enseigne pas une regle fausse**, et
+**l'accentuation de ce que l'enfant lit dans un item**. Cette derniere n'a toujours aucun garde-fou
+executable ; c'est un lot livre et une CI verte qui l'ont prouve le 2026-08-29, et rien n'a change
+depuis sur ce point. Le refus a coute un lot ; il aurait ete evite par un garde-fou de quatre lignes.
