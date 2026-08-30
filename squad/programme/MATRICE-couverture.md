@@ -222,14 +222,14 @@ Source : `squad/programme/mathematiques/competences-cm1.md`.
 |---|---|---|---|---|---|---|
 | mathematiques | CM1 | Nombres et calculs | Lire, ecrire, decomposer et comparer les nombres entiers jusqu'au million | bandit-manchot-grands-nombres-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Nombres et calculs | Calcul mental - tables de multiplication (jusqu'a ×10), rappel automatise | bandit-manchot-tables-multiplication-cm1 | bandit manchot | couvert-valide |
-| mathematiques | CM1 | Nombres et calculs | Calcul mental - multiplications et divisions simples (multiples de 10, 100) | bandit-manchot-multiplications-divisions-cm1 | bandit manchot | en cours |
+| mathematiques | CM1 | Nombres et calculs | Calcul mental - multiplications et divisions simples (multiples de 10, 100) | bandit-manchot-multiplications-divisions-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Nombres et calculs | Effectuer une multiplication posee d'un nombre a 2-3 chiffres par un nombre a 1-2 chiffres | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Effectuer une division euclidienne simple (quotient et reste) par un diviseur a 1 chiffre | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Notion de fraction simple (unites fractionnaires, fractions inferieures a 1) et reperage sur une droite numerique | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Resoudre des problemes a plusieurs etapes mobilisant les 4 operations | - | - | non couvert |
 | mathematiques | CM1 | Grandeurs et mesures | Convertir des unites de longueur, masse, contenance dans le systeme metrique | bandit-manchot-conversions-unites-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Grandeurs et mesures | Calculer un perimetre de figures usuelles (carre, rectangle) | bandit-manchot-perimetre-cm1 | bandit manchot | couvert-valide |
-| mathematiques | CM1 | Grandeurs et mesures | Resoudre des problemes de durees (calcul d'une duree, d'un horaire d'arrivee) | bandit-manchot-problemes-durees-cm1 | bandit manchot | en cours |
+| mathematiques | CM1 | Grandeurs et mesures | Resoudre des problemes de durees (calcul d'une duree, d'un horaire d'arrivee) | bandit-manchot-problemes-durees-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Espace et geometrie | Reconnaitre, nommer et tracer des figures planes (carre, rectangle, triangle, cercle) avec outils (regle, equerre, compas) | - | - | non couvrable en l'etat |
 | mathematiques | CM1 | Espace et geometrie | Reconnaitre et utiliser la notion de symetrie axiale simple | - | - | non couvrable en l'etat |
 
@@ -603,7 +603,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
 | francais | CM1 | Lecture et comprehension de l'ecrit | Lire silencieusement un texte de longueur croissante et en restituer l'essentiel | - | - | non couvert |
-| francais | CM1 | Lecture et comprehension de l'ecrit | Comprendre un texte narratif ou documentaire (questions explicites et implicites, inferences simples) | - | - | non couvert |
+| francais | CM1 | Lecture et comprehension de l'ecrit | Comprendre un texte narratif ou documentaire (questions explicites et implicites, inferences simples) | bandit-manchot-comprehension-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Lecture et comprehension de l'ecrit | Reperer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte | - | - | non couvert |
 | francais | CM1 | Ecriture | Rediger un texte narratif court et coherent (quelques phrases, temps du recit respecte) | - | - | non couvert |
 | francais | CM1 | Ecriture | Relire et corriger son texte a l'aide de reperes simples (majuscules, ponctuation) | - | - | non couvrable en l'etat |
@@ -2424,3 +2424,62 @@ Done pedagogique prononce a partir de ce jour, versee au gabarit de fiche de con
 cette matrice qui voit un `couvert-valide` date d'apres le 2026-08-28 trouve `MNC-1` dans la fiche
 correspondante ; s'il ne l'y trouve pas, c'est un defaut de la fiche a signaler, pas une garantie
 acquise.
+
+## Amendement du 2026-08-30 (s22, cloture) - S13-2, S13-3 et S17-2 passent `couvert-valide`, 21/43 (48,8 %)
+
+`nadia-prof` a prononce trois Done pedagogique le 2026-08-30 (branche `s22-nadia-4`, ouverte sur
+`round-two` a `9bb7b8a`) : `bandit-manchot-multiplications-divisions-cm1` (`S13-2`) **VALIDE**,
+aucune reserve nouvelle ; `bandit-manchot-problemes-durees-cm1` (`S13-3`) **VALIDE SOUS RESERVE**,
+cinq reserves non bloquantes ; `bandit-manchot-comprehension-cm1` (`S17-2`) **VALIDE**, deux reserves
+non bloquantes. Aucune reserve bloquante sur aucun des trois. Elle l'ecrit elle-meme : *"`camille-po`
+peut passer les trois lignes de matrice a `couvert-valide` - ce n'est pas ma main."* Detail complet,
+motifs et methodes de mesure : les blocs de validation des trois `squad/conformite/FICHE-*.md`
+correspondantes, et `squad/sprints/s22-couverture-maximale-du-catalogue/review.md`.
+
+**Trois lignes passent** :
+
+- **"Calcul mental - multiplications et divisions simples (multiples de 10, 100)"** (mathematiques
+  CM1) : `en cours` -> `couvert-valide`.
+- **"Resoudre des problemes de durees (calcul d'une duree, d'un horaire d'arrivee)"** (mathematiques
+  CM1) : `en cours` -> `couvert-valide`.
+- **"Comprendre un texte narratif ou documentaire (questions explicites et implicites, inferences
+  simples)"** (francais CM1) : `non couvert` -> `couvert-valide`.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide | non couvrable en l'etat |
+|---|---|---|---|---|---|
+| mathematiques CP | 11 | 5 | 1 | 5 | 0 |
+| mathematiques CM1 | 12 | 4 | 0 | 6 | 2 |
+| francais CP | 12 | 7 | 1 | 3 | 1 |
+| francais CM1 | 12 | 4 | 0 | 7 | 1 |
+| **Total** | **47** | **20** | **2** | **21** | **4** |
+
+**Le chiffre, avec sa base, verifie ligne par ligne contre les quatre tableaux de matiere de cette
+matrice avant d'etre ecrit (2026-08-30), pas repris d'un autre document du depot.** Le denominateur
+atteignable reste **43** sur **47**, inchange. Le compte de lignes `couvert-valide` passe de **18** a
+**21**. **18/43 (41,9 %) devient 21/43 (48,8 %)**.
+
+**Deux precisions a porter avec les lignes, pas a laisser dans l'ombre d'un statut vert.**
+
+- **Sur la ligne des durees (`S13-3`)** : sur les douze items de la forme "horaire d'arrivee", la
+  bonne reponse **n'est jamais la plus petite des trois propositions (0 sur 12), structurellement**
+  - `ERR-INVERSE` et la recopie de l'heure de depart produisent toutes deux un horaire anterieur,
+  jamais posterieur. `nadia-prof` le nomme comme une regularite **creee par la correction qu'elle a
+  elle-meme exigee** sur `D-6` (reserve D, `squad/conformite/FICHE-bandit-manchot-problemes-durees-
+  cm1.md`). Non bloquante, `D-7` reste tenue au chiffre (mesuree sur le paquet entier, pas sur cette
+  seule forme), mais un enfant qui repere la forme peut ecarter la proposition la plus matinale sans
+  calculer, sur la moitie du paquet.
+- **Sur la ligne de comprehension (`S17-2`)** : cette ligne ouvre une competence sur trois du domaine
+  "Lecture et comprehension de l'ecrit" en francais CM1. Les deux autres - **"Lire silencieusement un
+  texte de longueur croissante et en restituer l'essentiel"** et **"Reperer les substituts d'un
+  personnage (pronoms, groupes nominaux) dans un texte"** - restent `non couvert` : ce paquet ne les
+  couvre pas et ne les ouvre pas. Ne pas lire ce mouvement comme l'ouverture du domaine, meme lecture
+  que pour la segmentation syllabique a s21.
+
+**`MNC-1` mord pour la premiere fois.** Les trois blocs de validation la portent, dans son texte
+integral du 2026-08-28 (`DEC-0053`) : *"ce Done ne couvre pas que l'enfant voie, sans faire defiler
+la page, un element quelconque du jeu, y compris le retour qui suit sa reponse - verdict, indice,
+proposition"*. Aucune mesure ne l'a instruite sur les trois paquets ; la clause reste ouverte,
+croissante et assumee, elle n'est plus vide de cas.
+
+**Ce que ce document ne fait pas.** Il ne prononce aucun Done pedagogique lui-meme et ne fait bouger
+aucune autre ligne que les trois nommees ci-dessus.
