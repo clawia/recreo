@@ -504,3 +504,22 @@ bloquantes (backlog, `camille-po`), `TYP-1` et l'obstacle 25 residuel (`theo-arc
 (`camille-po`) - aucun n'est ferme ici, tous restent ouverts.
 
 **Le sprint est clos par ce document.** `retro.md` et `RAPPORT.md` suivent.
+
+---
+
+## Horodatage de fin reel, pour `outils/rapport-tokens.py`
+
+*Ajout de `sofia-sm`, 2026-08-30. Le champ d'en-tete de ce fichier ("Horodatage de fin :
+2026-08-29 20:32") reste tel qu'il a ete ecrit : il datait la premiere tentative de cloture, avant
+que le cycle `REFUSE` -> correction -> reaudit ne rouvre la porte pedagogique pour deux jours de
+plus. Ce sprint n'a reellement fini qu'ici.*
+
+- **Horodatage de fin** : 2026-08-30 10:40
+
+`outils/rapport-tokens.py` lit desormais le **dernier** horodatage d'une etiquette dans un fichier
+de ceremonie, pas le premier (corrige a cette cloture, `outils/rapport-tokens-horodatage-test.py`) :
+sans ce correctif, la fenetre de mesure des tokens du sprint serait restee figee au 2026-08-29
+20:32 et aurait silencieusement exclu deux journees de travail reel - les trois Done pedagogique,
+`DEC-0055`, `DEC-0056`, les trois dernieres fusions, la correction des deux fiches d'agent et cette
+retro. C'est le meme mode de defaillance que le fil rouge de ce sprint et du precedent : un chiffre
+s'affiche sans que la fenetre qui le produit ait ete regardee.

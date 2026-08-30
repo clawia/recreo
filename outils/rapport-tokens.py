@@ -70,11 +70,15 @@ def encoder_chemin_projet(repo: Path) -> str:
 def lire_horodatage(fichier: Path, etiquette: str):
     """Extrait un horodatage local d'un fichier de ceremonie et le rend en UTC.
 
-    `etiquette` est cherchee sans accent ni casse ("debut", "fin"), le premier
-    horodatage de la ligne correspondante est retenu.
+    `etiquette` est cherchee sans accent ni casse ("debut", "fin"), le dernier
+    horodatage de la ligne correspondante est retenu, pas le premier : depuis
+    l'amendement de squad/README.md section 2 (retro de s22), un `review.md` non
+    encore clos peut recevoir plusieurs ajouts dates, chacun pouvant porter sa
+    propre ligne "Horodatage de fin" ; seule la derniere reflete la cloture reelle.
     """
     if not fichier.exists():
         return None
+    resultat = None
     for ligne in fichier.read_text(encoding="utf-8", errors="replace").splitlines():
         normalisee = ligne.lower().replace("é", "e").replace("è", "e")
         if "horodatage" not in normalisee or etiquette not in normalisee:
@@ -85,8 +89,8 @@ def lire_horodatage(fichier: Path, etiquette: str):
         naif = datetime.strptime(f"{trouve.group(1)} {trouve.group(2)}", "%Y-%m-%d %H:%M")
         # Les fichiers de ceremonie sont ecrits en heure locale, les transcriptions
         # en UTC : on convertit pour pouvoir comparer.
-        return naif.astimezone().astimezone(timezone.utc)
-    return None
+        resultat = naif.astimezone().astimezone(timezone.utc)
+    return resultat
 
 
 def charger_fenetres_sprints(repo: Path):
