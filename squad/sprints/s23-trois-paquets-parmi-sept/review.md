@@ -135,11 +135,14 @@ correction sur le disque. Non traite, faute de matiere.
 | 5 | Sur 63 appels reels a `.text()` de jsoup dans les sources de test, un seul mentait une propriete que la normalisation de l'espace insecable empeche de voir | Qualite, garde-fou de test | `yanis-qa` | - | **CLOS** - `LExplicationDUnItemReelAtteintLEcranDeRetourTest` corrige (`wholeText().strip()`), morsure prouvee sur materiau reel |
 | 6 | Conflit a trois fichiers a la fusion (`catalogue.yaml`, `TexteAccentueExposeParLePortEntrantTest`, `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`) entre `s23-sofia-dev` et `s23-marc` (ce dernier portant deja `s23-theo-2`) | Technique, fusion | `sofia-sm` | - | **CLOS** - resolution additive sur les deux premiers, resolution verifiee non triviale sur le troisieme (modification de corps de methode + deux ajouts de map disjoints), porte technique verte, 27 entrees de catalogue verifiees bidirectionnelles |
 | 7 | Deux agents sur quatre ont commence leur lot dans le depot principal au lieu d'ouvrir un worktree dedie avant leur premiere ecriture, alors que la regle est ecrite dans `squad/README.md` section 9 depuis s22 (et deja constatee en s06, s18, s21 sous des formes voisines) - deuxieme occurrence en trois jours, sans qu'aucun garde-fou executable ne la fasse rougir | Process, gouvernance | `sofia-sm` (pour reaffectation de pratique), route a la retrospective | - | **OUVERT** - reporte a `retro.md`, la regle relue ne suffit pas seule a empecher la recurrence ; aucun garde-fou n'existe encore pour la faire rougir automatiquement |
-| 8 | `nadia-prof` signale que les trois premieres etapes de sa nouvelle procedure de specification (enumeration de la population, verification de satisfaisabilite, mesure du taux de reussite d'un raccourci nomme) sont du calcul et non du jugement pedagogique, et propose qu'elles soient outillees plutot que tenues dans ses seules mains - signalement, non priorise, non demande par elle | Qualite, outillage | `yanis-qa`, `theo-archi` (deja nommes par elle dans `ARBITRAGE-PREALABLE-s23-...md`, section 12.3) | - | **OUVERT** - signale, non priorise ; a verser au backlog par `camille-po` si retenu |
+| 8 | `nadia-prof` signale que les trois premieres etapes de sa nouvelle procedure de specification (enumeration de la population, verification de satisfaisabilite, mesure du taux de reussite d'un raccourci nomme) sont du calcul et non du jugement pedagogique, et propose qu'elles soient outillees plutot que tenues dans ses seules mains - signalement, non priorise, non demande par elle | Qualite, outillage | `yanis-qa`, `theo-archi` (deja nommes par elle dans `ARBITRAGE-PREALABLE-s23-...md`, section 12.3) | `DEC-0058` | **CLOS** - `camille-po` verse la story au backlog de s24, sans capacite prise sur s23 ; faisabilite et forme technique restent a `theo-archi` et `yanis-qa` |
+| 9 | `nadia-prof` refuse `RAN-7` (`cp-ranger-nombres`) et `LIA-3` (`cm1-mots-de-liaison`) ; les deux correctifs sont fusionnes (indice recalcule pour `RAN-7`, deux distracteurs remplaces par "car" pour `LIA-3`), mais aucun reaudit n'a encore ete joue sur les deux paquets corriges | Pedagogie, Done | `nadia-prof` | - | **OUVERT** - les deux lignes restent `en cours` (`cp-ranger-nombres`) et `non couvert` (`cm1-mots-de-liaison`) tant que le reaudit n'est pas joue ; le sprint reste ouvert pour ce motif |
+| 10 | Trois agents sur cinq ont commence leur travail sur ce sprint dans le checkout principal au lieu d'un worktree dedie avant leur premiere ecriture - `marc-dev`, `sofia-sm` (casquette developpeuse) et `camille-po`, en plus des deux deja portes par l'obstacle 7 sur la premiere moitie de ce meme sprint. Les trois s'en sont apercus et ont rejoue proprement avant tout commit sur la branche visee | Process, gouvernance | `sofia-sm` (reaffectation de pratique), route a la retrospective | - | **OUVERT** - reporte a `retro.md` ; la regle ecrite dans `squad/README.md` section 9 depuis s22 ne suffit pas seule, aucun garde-fou ne la fait rougir, et le compte monte a chaque sprint |
+| 11 | Ecart de consigne assume : j'avais demande a `marc-dev` de ne chercher aucun garde-fou pour `RAN-7` et de router la question a `yanis-qa` et `theo-archi` ; il en a ecrit un quand meme, une methode de test propre a `PaquetCpRangerNombresTest` qui encode la regle de validite de `nadia-prof` pour ce seul paquet. Le fond est defendable et le resultat est bon - ma consigne visait un garde-fou generique et etait trop large | Process, ma consigne (casquette Scrum Master) | moi-meme (constat), question de fond routee a `yanis-qa` et `theo-archi` | - | **OUVERT sur la question de fond, pas sur le test** - le test de `RAN-7` reste, defendable et verifie ; la question de `yanis-qa` et `theo-archi` reste entiere sur `LIA-3` et sur la plausibilite de la famille (c) d'`ETA-4b`, pas sur `RAN-7` |
 
 Rappel : un obstacle n'est `clos` que si le fichier de decision existe physiquement - verifie pour
-chacune des lignes ci-dessus (`ADR-0068`, amendements dans `ARBITRAGE-PREALABLE-s23-huit-candidats-
-six-de-contenu-seul-et-deux-de-niveau-2.md`).
+chacune des lignes ci-dessus (`ADR-0068`, `DEC-0058`, amendements dans
+`ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md`).
 
 ## Cliquet `TYP-1`
 
@@ -188,8 +191,95 @@ sont tenues, y compris les trois que j'avais amendees en cours de sprint (`ETA-4
 **Le `relecteur-pedagogique` n'est pas passe sur ce sprint** : l'orthographe, l'accentuation et la
 ponctuation de ces trois paquets ne sont pas jugees par ces verdicts (`DEC-0056`).
 
+## Suite de review, 2026-08-30 - fusion des quatre lots de correction
+
+Quatre branches fusionnees dans cette meme review, apres le bloc ci-dessus : `s23-nadia-3`,
+`s23-marc-2`, `s23-sofia-dev-2`, `s23-camille-2`, dans cet ordre. Lignee verifiee par
+`git merge-base --is-ancestor 86eea1d <branche>` pour les quatre : vraie dans les quatre cas,
+aucune n'a divergé sur une base perimee. Les quatre fusions sont additives : aucun marqueur de
+conflit sur aucun fichier (recherche des marqueurs `<<<<<<<`/`=======`/`>>>>>>>` sur l'arbre
+fusionne, zero occurrence), et `git status` rend un arbre propre apres les quatre `merge --no-ff`.
+
+### Increment complete par ces quatre lots
+
+- `cp-ranger-nombres` (`RAN-7`) : l'indice est desormais choisi pour son item et non distribue par
+  un cycle independant du contenu - corrige par `marc-dev`, verifie en jouant six parties completes
+  (`verification-en-jeu-marc-corrections.md`). **Aucun reaudit de `nadia-prof` n'a encore ete
+  joue** : la ligne de matrice reste `en cours`.
+- `cm1-problemes-etapes` : les trois reserves non bloquantes A, B, C du `VALIDE SOUS RESERVE` sont
+  fermees (item 17 ramene de 31 a 30 mots ; verbes des items 22 a 24 remplaces par "perd" ; enonce
+  des deux ateliers de poterie et de couture corrige). Ces fermetures ne rouvrent pas le Done deja
+  prononce : c'etaient des reserves explicitement non bloquantes.
+- `cm1-mots-de-liaison` (`LIA-3`) : les deux distracteurs en defaut, items 3 et 18, sont remplaces
+  par "car" (`sofia-dev`, casquette developpeuse). **Aucun reaudit de `nadia-prof` n'a encore ete
+  joue** : la ligne de matrice reste `non couvert`.
+- Matrice de couverture ecrite par `camille-po` : **22/43 (51,2 %)**, 22 lignes `couvert-valide`
+  comptees directement dans `squad/programme/MATRICE-couverture.md` (une seule ligne bouge par
+  rapport a la version precedente, `cm1-problemes-etapes`), egal au tableau recapitulatif que le
+  document y ajoute.
+- `DEC-0058` cree : l'outillage des trois etapes calculables de la procedure de specification de
+  `nadia-prof` est verse au backlog de s24, sans capacite prise sur le perimetre deja engage de s23
+  (obstacle 8 ci-dessus, desormais clos par cette decision).
+- `DEC-0057` corrige par sa propre autrice : la mention "21 signes orphelins mesures" (section 3.4)
+  n'avait aucune mesure du depot derriere elle. Detail plus bas.
+
+### Porte technique, mesuree apres la fusion complete des quatre lots
+
+`bash outils/mvn-jdk21.sh -B clean verify` sur le reacteur complet des six modules
+(`recreo`, `recreo-domain`, `recreo-application`, `recreo-adapter-web`, `recreo-adapter-content`,
+`recreo-bootstrap`) : **BUILD SUCCESS**.
+
+**Tests : 801**, par sommation des lignes de synthese `Tests run:` de chaque module sur l'arbre
+fusionne (surefire puis failsafe) : 49 (`domain`) + 13 (`application`) + 332 (`adapter-web`) + 287
+(`adapter-content`) + 114 (`bootstrap`, surefire) + 6 (`bootstrap`, failsafe/IT) = **801**.
+Conforme au chiffre annonce par `marc-dev` : 800 de base (le total mesure a la premiere moitie de
+cette review) plus un test neuf, la mise a l'epreuve de `RAN-7` dans `PaquetCpRangerNombresTest`.
+
+### Les trois corrections, verifiees sur l'arbre fusionne - pas relayees sur la parole de leur auteur
+
+- `cp-ranger-nombres.yaml` : les indices sont reaffectes selon les deux contraintes decrites dans
+  le commentaire du fichier (lignes 39 a 46) - verifie sur le fichier de l'arbre fusionne, pas
+  suppose depuis le message de commit.
+- `cm1-mots-de-liaison.yaml` : item 3 (`distracteurs: ["mais", "car"]`) et item 18
+  (`distracteurs: ["car", "pourtant"]`) portent tous les deux "car" - verifie par comptage
+  positionnel des vingt items du fichier fusionne.
+- `cm1-problemes-etapes.yaml`, item 17 : l'enonce du timbre compte **30 mots** par comptage direct
+  (methode de reference de `nadia-prof`, qui compte la ponctuation separee comme un jeton), contre
+  31 avant correction.
+
+### Quatre mesures fautives trouvees ce sprint, dont trois par leur propre auteur
+
+De la meme famille : un chiffre annonce se reverifie, il ne se relaie pas.
+
+1. **`nadia-prof`** : son instrument de mesure de signes orphelins
+   (`squad/outils/nadia-prof/chercher-un-signe-orphelin.py`) enveloppe chaque jeton dans une balise
+   et coupe a l'espace insecable comme a une espace ordinaire - faux positif sur tout texte qui en
+   porte une. Chiffre reel du catalogue sur le balisage reellement servi : **14**, pas 17. Trouve
+   et corrige par elle-meme, documente dans `squad/conformite/FICHE-bandit-manchot-problemes-durees-
+   cm1.md`, section du reaudit.
+2. **`camille-po`** : `DEC-0057`, son propre document, ecrivait "21 signes orphelins mesures" - un
+   chiffre sans rapport avec aucune mesure du depot. Elle identifie elle-meme la confusion, avec le
+   "21/43" de couverture ecrit dans le meme document, et corrige sur place.
+3. **`marc-dev`** : son test de `ETA-3` retirait le point d'interrogation avant de compter les mots
+   - une methode qui n'aurait jamais pu attraper la breche de l'item 17 (31 mots) que `nadia-prof`
+   a trouvee en jouant, avec sa propre methode qui compte la ponctuation separee comme un mot.
+   Corrige, la breche et la methode de comparaison sont commentees en toutes lettres dans le test.
+4. **Trouve en amont, rappele pour la meme famille** : le garde-fou d'egalite de valeurs
+   (`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`, `lireValeur`) rendait un verdict qui
+   n'etait pas celui de sa propriete sur une liste ordonnee - deja clos par `ADR-0068` (obstacle 3
+   ci-dessus).
+
+**Point de methode de `camille-po`, porte tel quel** : le chiffre **18** deja commite dans
+`round-two` (mesure du 2026-08-30, avant la correction de `lea-dev` sur `cm1-problemes-durees`)
+**reste exact a sa date** et n'est pas reecrit - le paquet portait alors l'espace ordinaire, la
+mesure etait juste. Le **14** est ecrit la ou il a un sens : le reaudit, sur le balisage
+effectivement servi apres le correctif. Un depot qui reecrit ses anciens chiffres perd la trace de
+ce qu'il savait quand.
+
 ## Ce que ce document ne fait pas
 
 Ni retro, ni rapports (`RAPPORT.md`, `RAPPORT-tokens.md`) : ils appartiennent a la cloture du
 sprint, qui n'a pas eu lieu ici. Aucune fiche de conformite ni la matrice de couverture ne sont
-touchees par ce document.
+touchees par ce document. **Le sprint reste ouvert** : `cp-ranger-nombres` (`RAN-7`) et
+`cm1-mots-de-liaison` (`LIA-3`) attendent un reaudit de `nadia-prof` avant de pouvoir passer
+`couvert-valide`.
