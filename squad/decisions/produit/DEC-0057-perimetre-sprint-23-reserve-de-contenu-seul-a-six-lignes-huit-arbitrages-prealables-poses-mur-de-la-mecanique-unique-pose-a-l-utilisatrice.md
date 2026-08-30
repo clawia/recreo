@@ -368,3 +368,17 @@ mecanique.md` : audio, puis visuel, puis saisie) et a l'utilisatrice pour l'arbi
   seul a six lignes non arbitrees, aucune ligne ne change de statut).
 - Aucun fichier sous `domain/`, `application/`, `adapters/` ou `bootstrap/` n'est modifie par cette
   decision.
+
+## Note du 2026-08-30 (s23, correction factuelle, pas un amendement de fond)
+
+La section 3.4 ci-dessus ecrivait *"zero insecable aujourd'hui sur 21 signes orphelins mesures"*.
+**Ce chiffre est faux et je le corrige** : aucune mesure du depot ne porte 21 a la date ou ce
+document a ete ecrit. La mesure de cloture de s22, verifiee contre
+`squad/decisions/adr/ADR-0067-le-moyen-de-typ-1-est-la-donnee-et-la-dette-est-arretee-par-un-cliquet-
+exact-avant-d-etre-corrigee.md` (ligne 17 : *"Etat a la cloture de s22 : 18 signes orphelins mesures
+au navigateur reel"*) et contre
+`squad/conformite/FICHE-bandit-manchot-problemes-durees-cm1.md` (reserve B d'origine), porte **18**,
+pas 21. Le 21 est une confusion de ma part avec le chiffre de couverture du meme document (section 1,
+"21/43"), qui n'a aucun rapport avec un compte de signes orphelins. Le reste de la section 3.4 est
+inchange : le choix du caractere reste route a `theo-archi` et `sofia-sm`, la priorisation finale
+entre `TYP-1` "le moyen" et l'obstacle 25 residuel leur appartient toujours.
