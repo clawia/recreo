@@ -45,14 +45,25 @@ descripteur:
 # LIA-6, LIA-7 : longueur et vocabulaire mesures par PaquetCm1MotsDeLiaisonTest sur les champs
 # enonce, bonneReponse, distracteurs et indice de chaque item.
 #
-# Correction du 2026-08-31 (Done pedagogique REFUSE, nadia-prof,
-# FICHE-bandit-manchot-mots-de-liaison-cm1.md) : LIA-3 tenue sur 38 distracteurs sur 40, en
-# defaut sur deux - item 3 ("puis" rendait un texte vrai : la succession y etait reelle) et item
-# 18 ("donc" rendait un texte vrai : une fusee qui decolle traverse necessairement les nuages).
-# Les deux distracteurs sont remplaces par "car" (causalite inversee, impossible dans les deux
-# textes) ; LIA-4, LIA-5 et LIA-9 restent tenues, verifie apres correction. L'item 20 ("donc",
-# meme mot que l'item 18) n'est pas touche : nadia-prof l'a explicitement distingue, la
-# consequence y est reellement absente (longer une riviere n'entraine pas d'atteindre un sommet).
+# Correction du 2026-08-30 (Done pedagogique REFUSE, nadia-prof,
+# FICHE-bandit-manchot-mots-de-liaison-cm1.md, premier refus) : deux distracteurs rendaient un
+# texte vrai plutot que faux - item 3 ("puis", la succession y etait reelle) et item 18 ("donc",
+# une fusee qui decolle traverse necessairement les nuages). Remplaces par "car" (causalite
+# inversee, impossible dans les deux textes) ; LIA-4, LIA-5 et LIA-9 restent tenues, verifie apres
+# correction. L'item 20 ("donc", meme mot que l'item 18) n'est pas touche : nadia-prof l'a
+# explicitement distingue, la consequence y est reellement absente (longer une riviere n'entraine
+# pas d'atteindre un sommet).
+#
+# Deuxieme correction du 2026-08-30 (Done pedagogique REFUSE une seconde fois, nadia-prof,
+# reaudit dans la meme fiche) : sa frontiere du premier refus etait formulee en termes de
+# necessite physique - une preuve sur les deux premiers items, pas le test qu'elle appliquait
+# reellement. Reenoncee : "un distracteur est refuse si la relation qu'il affirme est celle qui
+# existe entre les deux faits de l'enonce, lus tels qu'ecrits, sans croyance apportee ni
+# renversement de l'ordre pose par le texte". Sous ce test, l'item 10 ("mais") affirmait une
+# opposition reellement presente : arroser sert a garder la terre humide, et elle est seche -
+# aucun adulte ne corrigerait cette phrase. Remplace par "donc" (l'arrosage ne rend pas la terre
+# seche, la consequence affirmee n'existe pas et va meme a son encontre). Items 3, 18 et 20
+# confirmes bons sous ce meme test reenonce, non retouches.
 items:
   - enonce: "Léa a raté son bus. ___, elle est arrivée en retard à l'école."
     bonneReponse: "donc"
@@ -128,11 +139,11 @@ items:
       puis: "succession - faux : la fin du spectacle n'est pas un événement qui suit les cris de joie, c'est ce qui les déclenche"
   - enonce: "Le jardinier arrose les fleurs chaque soir ___ la terre est très sèche en été."
     bonneReponse: "parce que"
-    distracteurs: ["mais", "d'abord"]
+    distracteurs: ["donc", "d'abord"]
     indice: "Cherche ce qui explique le geste du jardinier."
     relationBonneReponse: "cause"
     relationsDistracteurs:
-      mais: "opposition - faux : la sécheresse de la terre n'entre pas en contradiction avec le fait d'arroser, elle en est la raison"
+      donc: "consequence - faux : l'arrosage ne rend pas la terre sèche, c'est l'inverse qui est vrai, la conséquence affirmée n'existe pas et va même à l'encontre de l'effet de l'arrosage"
       d'abord: "succession - faux : la sécheresse n'est pas une première étape d'une suite d'actions du jardinier, c'est la raison constante de son geste"
   - enonce: "Le magasin est fermé ___ la lumière reste allumée à l'intérieur."
     bonneReponse: "mais"
