@@ -3,6 +3,13 @@
 # section 3, D-1 a D-11), reformulation de D-9 et levee du comptage manuel de D-7 par
 # squad/conformite/PORTE-PEDAGOGIQUE-apres-arbitrage-du-2026-08-28.md.
 #
+# Cinq reserves non bloquantes du Done pedagogique VALIDE SOUS RESERVE du 2026-08-30
+# (squad/conformite/FICHE-bandit-manchot-problemes-durees-cm1.md, docs/backlog/backlog.md,
+# section "Sprint 22"), levees le 2026-08-30 (s23, lea-dev) : reserve A (item 9), reserve B
+# (espace insecable devant "?" sur les 24 enonces), reserve C (espace insecable dans l'instant de
+# l'item 8), reserve D (item 15), reserve E (ligne D-9 ci-dessous). Detail a cote de chaque
+# condition touchee.
+#
 # Les deux formes du referentiel (D-1) : les douze premiers items calculent une duree ecoulee
 # entre deux instants donnes, les douze suivants calculent un horaire d'arrivee a partir d'un
 # instant de depart et d'une duree. Aucune lecture de l'heure seule, aucune conversion d'unite
@@ -39,19 +46,33 @@
 #       - item 14 (horaire d'arrivee) : l'enfant convertit la duree en comptant cent minutes par
 #         heure au lieu de soixante ("1 heure 40 minutes" devient 140 dans son calcul, pas 100),
 #         puis l'ajoute normalement a l'heure de depart ("10 h 50" au lieu de "10 h 10").
+#       - item 9 (calcul d'une duree), ajoute le 2026-08-30 (reserve A du Done pedagogique du
+#         2026-08-30) : meme erreur que l'item 11, calculee sur les instants propres de l'item 9
+#         (17 h 40 a 18 h 15) - "1 heure 75 minutes" au lieu de "1 heure 35 minutes" - pour que
+#         l'ecriture de l'item 11, superieure a 59 minutes, ne soit plus la seule anomalie visible
+#         du paquet sur les 72 propositions (D-6, derniere clause). L'autre distracteur de
+#         l'item 9 (ERR-INVERSE) est inchange.
 # Aucune proposition egale a une autre dans un item.
+#
+# D-6, item 15 (horaire d'arrivee), reecrit le 2026-08-30 (reserve D) : les deux distracteurs
+# passent de ERR-INVERSE (11 h 30) + recopie du depart (13 h 05) - qui rendaient tous deux la
+# bonne reponse la plus grande des trois - a ERR-REPORT trop (15 h 40, correction ajoutee en trop)
+# et ERR-BASE100 (15 h 20, duree comptee a cent minutes par heure), deux erreurs deja nommees
+# ci-dessus. La bonne reponse (14 h 40) devient la plus petite des trois sur cet item, seul
+# changement demande par la reserve D : aucun autre item n'est retouche.
 #
 # D-4 : minutes multiples de 5, un seul item sur les vingt-quatre a ses deux instants sur un
 # quart d'heure exact - tres en dessous de la moitie admise.
 # D-5 : quinze items sur vingt-quatre (62,5 %) franchissent une heure ronde, entre le tiers et
 # les deux tiers demandes ; la duree la plus longue est de 2 heures 10 minutes, sous le plafond
 # de cinq heures.
-# D-7, remesure le 2026-08-29 apres la correction de D-6 : vingt-quatre items sur vingt-quatre
-# classes - six fois la plus petite, douze fois intermediaire, six fois la plus grande
-# (25,0 % / 50,0 % / 25,0 %), a l'interieur des 10 % a 50 % demandes (50,0 % pile n'excede pas le
-# seuil, comparaison stricte, meme lecture que cp-soustractions dans le garde-fou). Mesure a la
-# main sur les valeurs du paquet servi ; la CI remesure elle-meme (ADR-0041, dureeEnMinutes/
-# lireValeur).
+# D-7, remesure le 2026-08-30 apres la reecriture de l'item 15 (reserve D) : vingt-quatre items sur
+# vingt-quatre classes - sept fois la plus petite, douze fois intermediaire, cinq fois la plus
+# grande (29,2 % / 50,0 % / 20,8 %), a l'interieur des 10 % a 50 % demandes (50,0 % pile n'excede
+# pas le seuil, comparaison stricte, meme lecture que cp-soustractions dans le garde-fou). Avant
+# la reserve D (2026-08-29) : 25,0 % / 50,0 % / 25,0 %, egalement dans les bornes - la reserve D ne
+# devait pas faire sortir D-7 de ses bornes et ne l'a pas fait. Mesure a la main sur les valeurs
+# du paquet servi ; la CI remesure elle-meme (ADR-0041, dureeEnMinutes/lireValeur).
 # D-8 : chaque enonce tient en deux phrases et dix-huit a vingt-quatre mots, sous le plafond de
 # vingt-cinq.
 # D-9 (version reformulee du 2026-08-28, corrigee le 2026-08-29 - reserve 2 de nadia-prof :
@@ -59,7 +80,9 @@
 # service ou une pratique que tous les enfants n'ont pas chez eux - ecole, cantine, recreation,
 # bus, train, bibliotheque, musee, ferme pedagogique, match, film, recette. Prenoms varies, roles
 # non stereotypes (le basket et le football sont joues ou regardes par des filles et des garcons,
-# la recette est preparee en classe par des filles - Iris, Nour -, jamais associee a une mere).
+# la recette est preparee par des filles - Iris, Nour -, jamais associee a une mere ; l'item
+# d'Iris se deroule "en classe", corrige le 2026-08-30 (reserve E) pour ne plus preter cette
+# precision a l'item de Nour, qui ne l'ecrit pas).
 # D-10 : quatre indices distincts pour le calcul de duree, trois distincts pour l'horaire
 # d'arrivee, jamais le meme sur tout le paquet.
 # D-11 : vingt-quatre items, au-dessus du plancher de vingt. La matiere premiere partielle de
@@ -68,11 +91,23 @@
 # indice a ajouter, ecriture instant/duree a corriger pour D-2), sans que la reprise ne reduise
 # l'effort de redaction sur un paquet de cette taille.
 #
-# Typographie : TYP-1 (squad/conformite/ARBITRAGE-typographie-espace-avant-signe-double.md) n'est
-# pas appliquee ici par une espace insecable devant "?" - ce paquet suit la convention deja en
-# vigueur sur les vingt paquets existants (seul cm1-reperes en porte une, pour le motif local
-# REP-6). La verification par rendu reel (squad/outils/nadia-prof/chercher-un-signe-orphelin.py)
-# n'a pas ete lancee dans ce lot : c'est l'instrument de nadia-prof, hors du mandat de cette story.
+# Typographie, corrige le 2026-08-30 (reserve B) : les 24 enonces portent desormais une espace
+# insecable (U+00A0) devant leur "?" final, au lieu de l'espace ordinaire d'origine - meme
+# caractere que cm1-reperes (REP-6), seul autre paquet du depot a deja poser ce caractere devant un
+# signe double. Le choix du caractere pour le reste de la dette du catalogue (espace insecable
+# ordinaire U+00A0, insecable etroite U+202F, ou retrait) reste ouvert et route a theo-archi,
+# ines-design et sofia-sm (ADR-0067) ; cette correction-ci suit le seul precedent deja ecrit dans
+# ce depot plutot que d'en poser un nouveau, et serait a revoir si ce choix se fermait autrement.
+# Le cliquet de dette (AucunSigneDoubleNEstDetachableDeSonMotTest, ADR-0067) est mis a jour dans le
+# meme commit. Les 3 occurrences des indices ("... pas 100 : compte bien.") ne sont pas dans le
+# perimetre de la reserve B (limitee aux 24 enonces) et restent inchangees.
+#
+# Reserve C (2026-08-30) : l'instant "9 h 10" de l'item 8 se coupait entre son nombre et son unite
+# a l'ecran (744 x 551, releve de nadia-prof). Une espace insecable est posee entre "9" et "h" sur
+# ce seul cas mesure ; le paquet n'a pas ete balaye pour d'autres occurrences du meme defaut
+# (squad/conformite/FICHE-bandit-manchot-problemes-durees-cm1.md, reserve C). Le motif local
+# INSTANT de PaquetCm1ProblemesDureesTest tolere desormais U+00A0 a cote de l'espace ordinaire pour
+# continuer a lire cet instant.
 schema: 1
 id: cm1-problemes-durees
 type: question
@@ -82,99 +117,99 @@ descripteur:
   domaine: "Grandeurs et mesures"
   competence: "Résoudre des problèmes de durées (calcul d'une durée, d'un horaire d'arrivée)"
 items:
-  - enonce: "La récréation de Malo commence à 10 h 15 et se termine à 10 h 40. Combien de temps dure-t-elle ?"
+  - enonce: "La récréation de Malo commence à 10 h 15 et se termine à 10 h 40. Combien de temps dure-t-elle ?"
     bonneReponse: "25 minutes"
     distracteurs: ["35 minutes", "1 heure 25 minutes"]
     indice: "Compte d'abord jusqu'à l'heure ronde, puis ajoute le reste des minutes."
-  - enonce: "Aya arrive à la cantine à 9 h 20 et repart à 9 h 55. Combien de temps est-elle restée ?"
+  - enonce: "Aya arrive à la cantine à 9 h 20 et repart à 9 h 55. Combien de temps est-elle restée ?"
     bonneReponse: "35 minutes"
     distracteurs: ["25 minutes", "1 heure 35 minutes"]
     indice: "Une heure, c'est 60 minutes, pas 100 : compte bien."
-  - enonce: "Hugo commence un exercice de lecture à 13 h 30 et le termine à 13 h 50. Combien de temps a-t-il travaillé ?"
+  - enonce: "Hugo commence un exercice de lecture à 13 h 30 et le termine à 13 h 50. Combien de temps a-t-il travaillé ?"
     bonneReponse: "20 minutes"
     distracteurs: ["40 minutes", "1 heure 20 minutes"]
     indice: "Regarde les deux heures données et calcule ce qui les sépare."
-  - enonce: "L'entraînement de basket de Salma commence à 16 h et se termine à 16 h 25. Combien de temps a-t-il duré ?"
+  - enonce: "L'entraînement de basket de Salma commence à 16 h et se termine à 16 h 25. Combien de temps a-t-il duré ?"
     bonneReponse: "25 minutes"
     distracteurs: ["35 minutes", "1 heure 25 minutes"]
     indice: "Avance minute par minute jusqu'à l'heure ronde, puis compte ce qu'il reste."
-  - enonce: "Le bus scolaire d'Elio part à 11 h 10 et arrive à 11 h 45. Combien de temps dure le trajet ?"
+  - enonce: "Le bus scolaire d'Elio part à 11 h 10 et arrive à 11 h 45. Combien de temps dure le trajet ?"
     bonneReponse: "35 minutes"
     distracteurs: ["25 minutes", "1 heure 35 minutes"]
     indice: "Compte d'abord jusqu'à l'heure ronde, puis ajoute le reste des minutes."
-  - enonce: "Manon entre dans la bibliothèque à 18 h 05 et en sort à 18 h 30. Combien de temps y est-elle restée ?"
+  - enonce: "Manon entre dans la bibliothèque à 18 h 05 et en sort à 18 h 30. Combien de temps y est-elle restée ?"
     bonneReponse: "25 minutes"
     distracteurs: ["35 minutes", "1 heure 25 minutes"]
     indice: "Une heure, c'est 60 minutes, pas 100 : compte bien."
-  - enonce: "Noah visite la ferme pédagogique de 14 h 05 à 15 h 20. Combien de temps a duré la visite ?"
+  - enonce: "Noah visite la ferme pédagogique de 14 h 05 à 15 h 20. Combien de temps a duré la visite ?"
     bonneReponse: "1 heure 15 minutes"
     distracteurs: ["45 minutes", "15 minutes"]
     indice: "Regarde les deux heures données et calcule ce qui les sépare."
-  - enonce: "Iris prépare une recette en classe de 8 h 45 à 9 h 10. Combien de temps a duré la préparation ?"
+  - enonce: "Iris prépare une recette en classe de 8 h 45 à 9 h 10. Combien de temps a duré la préparation ?"
     bonneReponse: "25 minutes"
     distracteurs: ["35 minutes", "1 heure 25 minutes"]
     indice: "Avance minute par minute jusqu'à l'heure ronde, puis compte ce qu'il reste."
-  - enonce: "Diego regarde un match de football à la télévision de 17 h 40 à 18 h 15. Combien de temps a duré le match ?"
+  - enonce: "Diego regarde un match de football à la télévision de 17 h 40 à 18 h 15. Combien de temps a duré le match ?"
     bonneReponse: "35 minutes"
-    distracteurs: ["25 minutes", "1 heure 35 minutes"]
+    distracteurs: ["25 minutes", "1 heure 75 minutes"]
     indice: "Compte d'abord jusqu'à l'heure ronde, puis ajoute le reste des minutes."
-  - enonce: "Fatou regarde un film en classe de 9 h 55 à 10 h 20. Combien de temps a duré le film ?"
+  - enonce: "Fatou regarde un film en classe de 9 h 55 à 10 h 20. Combien de temps a duré le film ?"
     bonneReponse: "25 minutes"
     distracteurs: ["35 minutes", "1 heure 25 minutes"]
     indice: "Une heure, c'est 60 minutes, pas 100 : compte bien."
-  - enonce: "Le trajet en train de Milo commence à 15 h 40 et se termine à 17 h 10. Combien de temps a-t-il duré ?"
+  - enonce: "Le trajet en train de Milo commence à 15 h 40 et se termine à 17 h 10. Combien de temps a-t-il duré ?"
     bonneReponse: "1 heure 30 minutes"
     distracteurs: ["30 minutes", "2 heures 70 minutes"]
     indice: "Regarde les deux heures données et calcule ce qui les sépare."
-  - enonce: "Yasmine regarde un film à la télévision de 10 h 50 à 12 h 05. Combien de temps a duré le film ?"
+  - enonce: "Yasmine regarde un film à la télévision de 10 h 50 à 12 h 05. Combien de temps a duré le film ?"
     bonneReponse: "1 heure 15 minutes"
     distracteurs: ["45 minutes", "15 minutes"]
     indice: "Avance minute par minute jusqu'à l'heure ronde, puis compte ce qu'il reste."
-  - enonce: "Le match de basket de Nils commence à 9 h 15 et dure 1 heure 25 minutes. À quelle heure se termine-t-il ?"
+  - enonce: "Le match de basket de Nils commence à 9 h 15 et dure 1 heure 25 minutes. À quelle heure se termine-t-il ?"
     bonneReponse: "10 h 40"
     distracteurs: ["7 h 50", "11 h 40"]
     indice: "Ajoute d'abord les heures, puis les minutes, et reporte si tu dépasses 60."
-  - enonce: "Le car de Chloé part à 8 h 30 pour une sortie scolaire qui dure 1 heure 40 minutes. À quelle heure arrive-t-il ?"
+  - enonce: "Le car de Chloé part à 8 h 30 pour une sortie scolaire qui dure 1 heure 40 minutes. À quelle heure arrive-t-il ?"
     bonneReponse: "10 h 10"
     distracteurs: ["8 h 30", "10 h 50"]
     indice: "Va d'abord jusqu'à l'heure ronde, puis ajoute ce qu'il reste de la durée."
-  - enonce: "Un film à la télévision commence à 13 h 05 et dure 1 heure 35 minutes. À quelle heure se termine-t-il ?"
+  - enonce: "Un film à la télévision commence à 13 h 05 et dure 1 heure 35 minutes. À quelle heure se termine-t-il ?"
     bonneReponse: "14 h 40"
-    distracteurs: ["11 h 30", "13 h 05"]
+    distracteurs: ["15 h 20", "15 h 40"]
     indice: "Additionne l'heure de départ et la durée, minute après minute."
-  - enonce: "La visite du musée d'Amir commence à 10 h 40 et dure 1 heure 50 minutes. À quelle heure se termine-t-elle ?"
+  - enonce: "La visite du musée d'Amir commence à 10 h 40 et dure 1 heure 50 minutes. À quelle heure se termine-t-elle ?"
     bonneReponse: "12 h 30"
     distracteurs: ["8 h 50", "13 h 30"]
     indice: "Ajoute d'abord les heures, puis les minutes, et reporte si tu dépasses 60."
-  - enonce: "La visite de la bibliothèque commence à 17 h 05 et dure 1 heure 10 minutes. À quelle heure se termine-t-elle ?"
+  - enonce: "La visite de la bibliothèque commence à 17 h 05 et dure 1 heure 10 minutes. À quelle heure se termine-t-elle ?"
     bonneReponse: "18 h 15"
     distracteurs: ["17 h 05", "19 h 15"]
     indice: "Va d'abord jusqu'à l'heure ronde, puis ajoute ce qu'il reste de la durée."
-  - enonce: "La récréation prolongée de Kofi commence à 11 h 50 et dure 2 heures 10 minutes. À quelle heure se termine-t-elle ?"
+  - enonce: "La récréation prolongée de Kofi commence à 11 h 50 et dure 2 heures 10 minutes. À quelle heure se termine-t-elle ?"
     bonneReponse: "14 h"
     distracteurs: ["9 h 40", "11 h 50"]
     indice: "Additionne l'heure de départ et la durée, minute après minute."
-  - enonce: "Paul arrive à la cantine à 14 h 40 pour un service qui dure 20 minutes. À quelle heure repart-il ?"
+  - enonce: "Paul arrive à la cantine à 14 h 40 pour un service qui dure 20 minutes. À quelle heure repart-il ?"
     bonneReponse: "15 h"
     distracteurs: ["14 h 20", "16 h"]
     indice: "Ajoute d'abord les heures, puis les minutes, et reporte si tu dépasses 60."
-  - enonce: "Nour commence à préparer un gâteau à 16 h 10 et la recette dure 35 minutes. À quelle heure le gâteau est-il prêt ?"
+  - enonce: "Nour commence à préparer un gâteau à 16 h 10 et la recette dure 35 minutes. À quelle heure le gâteau est-il prêt ?"
     bonneReponse: "16 h 45"
     distracteurs: ["16 h 10", "17 h 45"]
     indice: "Va d'abord jusqu'à l'heure ronde, puis ajoute ce qu'il reste de la durée."
-  - enonce: "La récréation de Zoé commence à 9 h 45 et dure 15 minutes. À quelle heure se termine-t-elle ?"
+  - enonce: "La récréation de Zoé commence à 9 h 45 et dure 15 minutes. À quelle heure se termine-t-elle ?"
     bonneReponse: "10 h"
     distracteurs: ["9 h 30", "9 h 45"]
     indice: "Additionne l'heure de départ et la durée, minute après minute."
-  - enonce: "Adama arrive à la cantine à 12 h 20 pour un repas qui dure 40 minutes. À quelle heure repart-il ?"
+  - enonce: "Adama arrive à la cantine à 12 h 20 pour un repas qui dure 40 minutes. À quelle heure repart-il ?"
     bonneReponse: "13 h"
     distracteurs: ["11 h 40", "14 h"]
     indice: "Ajoute d'abord les heures, puis les minutes, et reporte si tu dépasses 60."
-  - enonce: "Un match de football à la télévision commence à 18 h 05 et dure 25 minutes. À quelle heure se termine-t-il ?"
+  - enonce: "Un match de football à la télévision commence à 18 h 05 et dure 25 minutes. À quelle heure se termine-t-il ?"
     bonneReponse: "18 h 30"
     distracteurs: ["18 h 05", "19 h 30"]
     indice: "Va d'abord jusqu'à l'heure ronde, puis ajoute ce qu'il reste de la durée."
-  - enonce: "Maya prend le bus à 15 h 10 pour un trajet qui dure 45 minutes. À quelle heure arrive-t-elle ?"
+  - enonce: "Maya prend le bus à 15 h 10 pour un trajet qui dure 45 minutes. À quelle heure arrive-t-elle ?"
     bonneReponse: "15 h 55"
     distracteurs: ["14 h 25", "15 h 10"]
     indice: "Additionne l'heure de départ et la durée, minute après minute."
