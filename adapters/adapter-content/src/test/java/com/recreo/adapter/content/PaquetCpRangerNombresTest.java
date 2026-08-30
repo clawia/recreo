@@ -236,10 +236,43 @@ class PaquetCpRangerNombresTest {
      *       l'item, present a l'ecran.</li>
      * </ul>
      *
-     * <p>Les quatre autres textes ("Cherche d'abord le plus petit des trois.", "Repere d'abord
-     * le nombre le plus grand.", "Compare les nombres deux a deux avant de ranger.") ne decrivent
-     * aucune position de chiffre et restent valides sur tout triplet.</p>
+     * <p><b>Pourquoi les quatre autres textes sont surs, motif corrige le 2026-09-01</b> (avis de
+     * nadia-prof sur ce test, FICHE-bandit-manchot-ranger-nombres-cp.md, reaudit du 2026-08-30,
+     * section "Mon avis sur le test qui encode RAN-7") : la Javadoc precedente disait qu'ils "ne
+     * decrivent aucune position de chiffre et restent valides sur tout triplet" - le fait est
+     * juste, le motif ne l'est pas. La vraie raison est sous {@code RAN-1} : la bonne reponse
+     * commence toujours par le plus petit des trois nombres et finit toujours par le plus grand,
+     * et la famille (a) - l'ordre decroissant, {@code RAN-4} - commence toujours par le plus
+     * grand. "Cherche d'abord le plus petit des trois." et "Repere d'abord le nombre le plus
+     * grand." demandent donc chacun exactement la quantite que {@code RAN-1}/{@code RAN-4}
+     * garantissent designer sans ambiguite (a un partage pres avec un distracteur sous
+     * {@code RAN-5b}, le sous-ensemble strict que nadia-prof autorise) ; "Compare les nombres deux
+     * a deux avant de ranger." ne nomme aucune position de chiffre et reste donc valide par
+     * construction. Ces quatre textes ne sont pas testes ci-dessous : leur surete tient a
+     * {@code RAN-1} et {@code RAN-4}, gardees par
+     * {@link #laBonneReponseEstToujoursLOrdreCroissantEtLesDeuxDistracteursSontLesDeuxFamillesDeclarees()}
+     * dans ce meme fichier, pas par ce test-ci.</p>
+     *
+     * <p><b>Couplage muet, nomme pour ne plus l'etre</b> (meme avis) : ce test n'encode pas la
+     * propriete de {@code RAN-7} en general, il encode ses deux seuls symptomes connus sous les
+     * familles de distracteurs actuelles. Son equivalence avec le critere de nadia-prof - verifiee
+     * par elle par enumeration exhaustive des 81 180 triplets admissibles croises avec les six
+     * textes d'indice, 487 080 couples, zero desaccord - **repose sur {@code RAN-1}, {@code RAN-4}
+     * et {@code RAN-4b} restant telles qu'elles sont**. Si ces familles changent un jour, ce test
+     * doit etre reverifie contre le critere de nadia-prof avant d'etre cru a nouveau equivalent ;
+     * rien ne le rappellera automatiquement.</p>
+     *
+     * <p><b>Pas de branche par defaut, fermee</b> (meme avis) : un septieme texte d'indice, ou l'un
+     * des six reformule, traversait silencieusement ce test sans qu'aucune assertion ne s'applique.
+     * La liste des six textes connus est desormais fermee : {@link #TEXTE_SANS_POSITION_DE_CHIFFRE}
+     * nomme les trois textes toujours surs, et tout texte qui ne correspond a aucun des six motifs
+     * connus fait echouer le test explicitement plutot que de le traverser en silence.</p>
      */
+    private static final Set<String> TEXTE_SANS_POSITION_DE_CHIFFRE = Set.of(
+            "Cherche d'abord le plus petit des trois.",
+            "Repère d'abord le nombre le plus grand.",
+            "Compare les nombres deux à deux avant de ranger.");
+
     @Test
     void chaqueIndiceEstChoisiPourSonItemJamaisDistribueParUnCycle() {
         for (Question item : tousLesItems()) {
@@ -261,6 +294,12 @@ class PaquetCpRangerNombresTest {
                                 + " dizaines se lit comme celui d'un nombre a un chiffre (RAN-7)",
                                 item.bonneReponse())
                         .allMatch(n -> n < 100);
+            } else if (!TEXTE_SANS_POSITION_DE_CHIFFRE.contains(indice)) {
+                org.assertj.core.api.Assertions.fail(
+                        "'%s' : texte d'indice inconnu de ce test (RAN-7). Un texte neuf ou"
+                                + " reformule doit etre ajoute a TEXTE_SANS_POSITION_DE_CHIFFRE ou"
+                                + " reçoit sa propre clause, jamais traverser ce test sans"
+                                + " assertion", indice);
             }
         }
     }

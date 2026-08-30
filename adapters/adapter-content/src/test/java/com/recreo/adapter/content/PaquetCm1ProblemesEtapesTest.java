@@ -274,6 +274,35 @@ class PaquetCm1ProblemesEtapesTest {
         }
     }
 
+    /**
+     * Reserve D, correctif du 2026-08-30 (reaudit de nadia-prof,
+     * FICHE-bandit-manchot-problemes-etapes-cm1.md) : le correctif de la reserve B avait change
+     * les enonces des items 22 a 24 ("distribue"/"retire"/"vend" devenus "perd"), sans toucher
+     * leurs indices, qui continuaient a nommer l'ancien verbe - un evenement absent de l'enonce
+     * que l'enfant lit apres une erreur. **Quatrieme defaut du sprint qu'une CI entierement verte
+     * n'a pas vu**, nomme par nadia-prof comme hors de tout garde-fou. Ce test ne generalise pas
+     * une regle de coherence indice/enonce - une verification generique s'est averee trop fragile
+     * face aux variations morphologiques du francais (participe vs conjugaison, paraphrase) pour
+     * valoir mieux qu'une lecture a l'oeil - il fixe seulement la regression exacte que
+     * nadia-prof a nommee, sur les trois items qu'elle a nommes.
+     */
+    @Test
+    void lesIndicesDesItemsCorrigesParLaReserveBNommentLeVerbeDeLeurEnonce() {
+        List<Question> items = tousLesItems();
+        for (Question item : items) {
+            int position = positionDe(item);
+            if (position == 21 || position == 22 || position == 23) {
+                assertThat(item.indice().orElseThrow())
+                        .as("'%s' : nomme 'perdu(e)', le verbe reellement employe par l'enonce"
+                                + " (reserve D)", item.enonce())
+                        .containsIgnoringCase("perdu")
+                        .doesNotContainIgnoringCase("distribu")
+                        .doesNotContainIgnoringCase("retir")
+                        .doesNotContainIgnoringCase("vend");
+            }
+        }
+    }
+
     /** Enumere tous les items distincts du paquet en faisant grossir le tirage deja-vu jusqu'a epuisement. */
     private static List<Question> tousLesItems() {
         ContentSource contenu = new YamlContentPackLoader().chargerPaquet(PAQUET);

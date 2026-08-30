@@ -58,6 +58,19 @@ descripteur:
 # "perd", du meme genre que l'item 21 deja juge bon ; reserve C, "3 ateliers"/"4 ecoles" sur les
 # items 6 et 7 se lisait de deux facons - precise par "celui-ci compris"/"celle-ci comprise".
 # Aucun nombre, aucune famille de distracteur, aucun rang ETA-7 ne change : verifie par le test.
+#
+# Correctifs du 2026-09-01 (reaudit VALIDE SOUS RESERVE maintenu de nadia-prof, meme fiche),
+# deux reserves nouvelles fermees : reserve D, le correctif de la reserve B avait change les
+# enonces des items 22 a 24 sans toucher leurs indices, qui nommaient encore "distribues",
+# "retirees" et "vendus" - un evenement absent de l'enonce, vu en jouant. Les trois indices
+# nomment desormais "perdu(e)s", comme l'item 21 deja juge bon, verifie par un test dedie ;
+# reserve E, la meme ambiguite "N groupes" que celle fermee sur les items 6 et 7 portait aussi
+# sur les items 3, 4, 5 et 8 (compte incomplet de nadia-prof le 2026-08-30, pas un manque de
+# l'auteur) - precisee de meme par "celui-ci compris"/"celle-ci comprise" ; l'item 7 nommait en
+# outre son groupe "ecoles" alors que son sujet est "l'atelier de couture" (pronom "celle-ci"
+# sans antecedent feminin) - renomme "ateliers"/"celui-ci compris", meme correction appliquee a
+# l'item 8 pour la meme raison. Aucun nombre ne change ; ETA-3 reste tenue, sept enonces a la
+# borne exacte de 30 mots.
 items:
   - enonce: "La bibliothèque de l'école reçoit 24 romans et 18 bandes dessinées. Elle en prête ensuite 30. Combien de livres lui reste-t-il ?"  # ETA-4b: add,sub,a+b
     bonneReponse: "12"
@@ -67,15 +80,15 @@ items:
     bonneReponse: "22"
     distracteurs: ["72", "122"]
     indice: "Additionne d'abord les albums et les magazines reçus."
-  - enonce: "La classe fabrique 34 bracelets lundi et 29 mardi pour la kermesse. 3 classes fabriquent chacune ce même nombre. Combien de bracelets fabrique-t-on en tout ?"  # ETA-4b: add,mul,a+b
+  - enonce: "La classe fabrique 34 bracelets lundi et 29 mardi pour la kermesse. 3 classes, celle-ci comprise, fabriquent chacune ce même nombre. Combien de bracelets fabrique-t-on en tout ?"  # ETA-4b: add,mul,a+b
     bonneReponse: "189"
     distracteurs: ["63", "21"]
     indice: "Additionne d'abord les bracelets faits lundi et mardi."
-  - enonce: "L'école imprime 12 affiches le premier jour et 8 le second pour le spectacle. 4 écoles impriment chacune ce même nombre. Combien d'affiches imprime-t-on en tout ?"  # ETA-4b: add,mul,a+b
+  - enonce: "L'école imprime 12 affiches le premier jour et 8 le second pour le spectacle. 4 écoles, celle-ci comprise, impriment chacune ce même nombre. Combien d'affiches imprime-t-on en tout ?"  # ETA-4b: add,mul,a+b
     bonneReponse: "80"
     distracteurs: ["20", "5"]
     indice: "Additionne d'abord les affiches imprimées les deux jours."
-  - enonce: "Le club prépare 18 médailles pour les benjamins et 14 pour les minimes lors du tournoi. 2 clubs préparent chacun ce même nombre. Combien de médailles prépare-t-on en tout ?"  # ETA-4b: add,mul,a+b
+  - enonce: "Le club prépare 18 médailles pour les benjamins et 14 pour les minimes. 2 clubs, celui-ci compris, préparent chacun ce même nombre. Combien de médailles prépare-t-on en tout ?"  # ETA-4b: add,mul,a+b
     bonneReponse: "64"
     distracteurs: ["32", "16"]
     indice: "Additionne d'abord les médailles préparées pour les deux catégories."
@@ -83,11 +96,11 @@ items:
     bonneReponse: "171"
     distracteurs: ["57", "19"]
     indice: "Soustrais d'abord les bols abîmés du total fabriqué."
-  - enonce: "L'atelier de couture prépare 50 coussins, dont 10 sont refusés. 4 écoles, celle-ci comprise, préparent chacune ce même nombre de coussins réussis. Combien de coussins réussis obtient-on en tout ?"  # ETA-4b: sub,mul,a+b
+  - enonce: "L'atelier de couture prépare 50 coussins, dont 10 sont refusés. 4 ateliers, celui-ci compris, préparent chacun ce même nombre de coussins réussis. Combien de coussins réussis obtient-on en tout ?"  # ETA-4b: sub,mul,a+b
     bonneReponse: "160"
     distracteurs: ["40", "10"]
     indice: "Soustrais d'abord les coussins refusés du total préparé."
-  - enonce: "L'atelier de peinture prépare 90 affiches, dont 30 sont abîmées. 2 écoles préparent chacune ce même nombre d'affiches réussies. Combien d'affiches réussies obtient-on en tout ?"  # ETA-4b: sub,mul,a+b
+  - enonce: "L'atelier de peinture prépare 90 affiches, dont 30 sont abîmées. 2 ateliers, celui-ci compris, préparent chacun ce même nombre d'affiches réussies. Combien d'affiches réussies obtient-on en tout ?"  # ETA-4b: sub,mul,a+b
     bonneReponse: "120"
     distracteurs: ["60", "30"]
     indice: "Soustrais d'abord les affiches abîmées du total préparé."
@@ -146,12 +159,12 @@ items:
   - enonce: "La réserve a 40 cahiers, en perd 15 en début d'année. Elle en reçoit ensuite 14 livrés en cours d'année. Combien de cahiers reste-t-il dans la réserve ?"  # ETA-4b: sub,add,a+c
     bonneReponse: "39"
     distracteurs: ["25", "69"]
-    indice: "Soustrais d'abord les cahiers distribués en début d'année."
+    indice: "Soustrais d'abord les cahiers perdus en début d'année."
   - enonce: "L'école a 50 chaises, en perd 22 pour une autre activité. Elle en reçoit ensuite 10 prêtées par une classe voisine. Combien de chaises reste-t-il dans la salle ?"  # ETA-4b: sub,add,a+c
     bonneReponse: "38"
     distracteurs: ["28", "82"]
-    indice: "Soustrais d'abord les chaises retirées pour l'autre activité."
+    indice: "Soustrais d'abord les chaises perdues pour l'autre activité."
   - enonce: "La classe a 35 crayons en réserve, en perd 13 le premier jour. Elle en reçoit ensuite 16 livrés le lendemain. Combien de crayons la classe a-t-elle maintenant ?"  # ETA-4b: sub,add,a+c
     bonneReponse: "38"
     distracteurs: ["22", "64"]
-    indice: "Soustrais d'abord les crayons vendus le premier jour."
+    indice: "Soustrais d'abord les crayons perdus le premier jour."
