@@ -648,3 +648,129 @@ absence de ce bloc n'est pas un oubli. Le bloc qui prononcera le Done de ce paqu
 | **`COMP-3` ne separe pas l'inference a deux indices de celle a un seul** | `camille-po` | **Ne pas l'appliquer retroactivement a ce paquet** : le plancher est atteint sous le critere ecrit et je le declare atteint. A reecrire par moi avant le prochain paquet de comprehension, comme une condition neuve et datee |
 | **La reserve 3 - un commentaire de code qui anticipe mon jugement** | `theo-archi`, `ines-design` | Reformuler au passe, avec la date du jugement reel. Aucune urgence, mais le pli est mauvais |
 | **Aucun garde-fou ne peut voir `COMP-2`** et personne ne doit croire le contraire | `yanis-qa`, `sofia-sm` | Le porter au rapport qualite : dix-neuf conditions gardees automatiquement, et la seule qui a fait tomber ce lot n'en fait pas partie |
+
+---
+
+### Done pedagogique - 2026-08-30 (s22) - VALIDE
+
+**Reaudit apres le lot de `marc-dev`. Audit non degrade : fat jar reconstruit sur l'arbre de ma
+branche, application lancee, paquet joue.**
+
+#### Ce que j'ai joue
+
+**Cinq parties, 20 items sur 20 servis.** Sur chaque item, les deux propositions fausses pressees
+avant la bonne, puis une troisieme pression pour atteindre la revelation. Enonce, texte-support,
+propositions et indice relus dans le HTML rendu et compares au fichier apres desechappement :
+**zero ecart** sur les 20 enonces, 20 textes-supports, 20 bonnes reponses, 40 distracteurs et
+20 indices. Le texte-support est bien rendu entre la consigne et l'enonce, dans un style distinct.
+
+#### `COMP-2` - refaite item par item, par ma propre procedure, sur les vingt
+
+Le motif de mon refus du 2026-08-29 etait `COMP-2`, et j'avais ecrit son critere de levee :
+**masquer le texte-support, presenter question et propositions a quelqu'un qui n'a pas lu, verifier
+qu'il ne peut ecarter aucune proposition.** Je l'ai refaite sur les vingt items, pas seulement sur
+les trois reecrits - un item que j'avais laisse passer peut avoir ete casse par la reecriture d'un
+autre, et je n'avais aucune raison de le supposer indemne.
+
+**Aucun des vingt items ne permet d'ecarter une proposition sans lire le texte. `COMP-2` est
+tenue.**
+
+**Les trois items reecrits, verifies sur le principe declare par l'auteur** - le distracteur porte
+desormais le stereotype, la bonne reponse exige la lecture :
+
+| Item | Ce qu'un enfant qui n'a pas lu repondrait | Ou se trouve cette reponse |
+|---|---|---|
+| Le pecheur | "des poissons frais" | **distracteur** ; la bonne reponse est "des produits sucres", inaccessible sans le filet revenu vide |
+| Le cahier rouge | "a noter les devoirs du soir" | **distracteur** ; la bonne reponse exige de relier la mesure hebdomadaire et le chiffre inscrit |
+| Les bougies | voir la reserve 2 ci-dessous |  |
+
+**L'inversion est reelle sur les deux premiers** : la culture generale y conduit desormais a la
+mauvaise reponse, ce qui est exactement le contraire du defaut que j'avais refuse.
+
+**Un item que je n'avais pas signale le 2026-08-29 et que je reverifie plutot que de le supposer
+indemne** : "Pourquoi les pompiers sont-ils venus ?", avec "un incendie", "un chat coince" et "une
+fuite d'eau". Je le tiens conforme, et je dis pourquoi plutot que de le taire : les trois sont des
+interventions de pompiers que tout enfant connait, **aucune ne s'ecarte**, et "un incendie" n'est
+qu'un pari de frequence, pas une reponse definitionnelle. C'est ce qui le distingue de l'ancien
+"Que vend le vieux pecheur au marche ?", ou "des produits de la mer" etait dans la definition meme
+du mot "pecheur". **C'est la distinction que j'ai appliquee le 2026-08-29 et je l'applique
+identiquement aujourd'hui.**
+
+#### `COMP-1` - reverifiee mecaniquement, contre la declaration de l'auteur
+
+`marc-dev` declare avoir verifie que `COMP-1` reste intacte apres la reecriture. **Je l'ai remesuree
+plutot que de le croire.**
+
+Methode : pour chacun des vingt items, extraction des mots de **quatre lettres ou plus** du
+texte-support et des trois propositions, comparaison **insensible aux accents et a la casse**, mots
+grammaticaux exclus. **Zero recouvrement sur les vingt items, soixante propositions.** La declaration
+est exacte.
+
+#### Les autres conditions
+
+| Condition | Verdict | Mesure |
+|---|---|---|
+| `COMP-3` | **tenue** | Les **20 items sur 20** portent desormais le marquage et ses deux informations reliees, contre 17 avant le lot. Le plancher d'un tiers (7/20) est tres largement franchi. **Je ne rouvre pas le critere que j'ai declare imprecis le 2026-08-29** : il sera reecrit en condition neuve et datee avant le prochain paquet de comprehension |
+| `COMP-5` | **tenue** | Satisfaite et close depuis le 2026-08-19. Je n'ai pas rejuge un rendu que j'ai accepte |
+| `COMP-6` | **tenue** | Jugee sur sa formulation du 2026-08-28, par le moyen que j'avais moi-meme declare suffisant. **Je ne deplace pas ce poteau** |
+| **Exactitude - item du lion** | **tenue - reserve 4 levee** | La bonne reponse dit desormais "principalement matin et soir" la ou le texte dit "surtout au lever et au coucher du soleil". **Le mot "seulement", qui rendait la reponse fausse, a disparu.** Le choix de "principalement" plutot que du mot du texte est le bon : reprendre "surtout" aurait viole `COMP-1`. Et la culture generale de l'enfant, qui associe le lion a la nuit, le conduit ici au distracteur - donc elle ne donne pas la reponse |
+| **Accentuation** | **tenue** | Meme methode que sur les deux autres paquets : 124 chaines, 480 jetons distincts, 385 sans caractere accentue, **dont aucun ne devrait en porter**. Les homographes accentuables (a, ou, la, du, des, sur) releves en contexte un par un : tous corrects |
+| `TYP-1` | **tenue** | Les 20 enonces portent une espace insecable devant le signe. **Mesure au navigateur reel a 744 x 551 : zero signe orphelin sur ce paquet** |
+| **Biais et ton** | **tenue** | Prenoms et roles varies. Le jardinage est tenu par un homme age, l'enseignement par une maitresse, la randonnee par un grand-pere ; aucune configuration familiale n'est presupposee ; aucun item ne suppose un bien que tous les enfants n'ont pas |
+
+#### VERDICT : VALIDE
+
+**Done pedagogique prononce le 2026-08-30 par `nadia-prof`.** `camille-po` peut passer la ligne de
+matrice de `S17-2` a `couvert-valide`.
+
+**Reserve 3 (bloquante, 2026-08-29, `COMP-2`) : levee.** **Reserve 4 (bloquante, 2026-08-29, le mot
+du lion) : levee.** **Reserve 7 (non bloquante, le commentaire de feuille de style qui m'attribuait
+un jugement) : levee** - j'ai verifie que la phrase a disparu du depot, elle n'y figure plus nulle
+part. Les verdicts du 2026-08-29 restent ecrits au-dessus.
+
+#### Reserves nouvelles, non bloquantes
+
+- **Reserve 1, non bloquante, 2026-08-30 - l'en-tete se sous-declare.** Il affirme que "17 items sur
+  20 sont marques `# COMP-3`" ; le fichier en porte **20 sur 20**. La phrase etait vraie avant le
+  lot et ne l'est plus. Ce n'est pas un defaut de contenu et l'enfant ne le lit pas, mais un tiers
+  qui verifie `COMP-3` sans rejouer le paquet lira un chiffre faux. Meme famille que la reserve E
+  du paquet des durees.
+- **Reserve 2, non bloquante, 2026-08-30 - l'item des bougies a la marge la plus mince des vingt.**
+  La reecriture a permute les deux propositions les plus fortes : "le courant est coupe" etait la
+  bonne reponse, c'est desormais un distracteur, et "ils fetent un anniversaire" a fait le chemin
+  inverse. Les trois propositions sont les memes qu'avant.
+  **Sous ma procedure ecrite - l'elimination - `COMP-2` est tenue** : rien ne s'ecarte, et un enfant
+  qui n'a pas lu se trouve devant deux candidats aussi forts l'un que l'autre, qu'il ne peut
+  departager qu'avec l'odeur de gateau depuis midi et les volets fermes avant la nuit. **Je la
+  declare tenue.**
+  **Ce que je note quand meme** : l'association bougie-anniversaire est, pour un enfant, au moins
+  aussi immediate que l'association bougie-panne. La seconde clause de `COMP-2` - "aucune ne se
+  devine par la seule culture generale" - **ne tranche pas ce cas**, et c'est une imprecision de ma
+  redaction, de la meme famille que les trois que j'ai reconnues le 2026-08-29. **Je ne l'applique
+  pas plus durement aujourd'hui qu'hier** ; je la reecrirai en condition neuve et datee avant le
+  prochain paquet de comprehension, avec un test qui separe l'elimination du pari.
+
+#### `MNC-1`
+
+**`MNC-1`** - Ce Done ne couvre pas que l'enfant voie, sans faire defiler la page, un element
+quelconque du jeu, y compris le retour qui suit sa reponse - verdict, indice, proposition. Cette
+propriete est sortie de la porte pedagogique par arbitrage de l'utilisatrice du 2026-08-28
+(`DEC-0053`) ; sa dette est ouverte, croissante et assumee. Aucune mesure ne l'a instruite sur ce
+paquet.
+
+Ce paquet est le seul du catalogue a rendre **trois** blocs de texte avant les propositions -
+consigne, texte-support, enonce. La mention le concerne donc plus que les autres, et elle reste
+exactement aussi inconditionnelle.
+
+#### Ce que je reste seule a garder sur ce paquet
+
+**`COMP-2`**, et je confirme le motif de `marc-dev` parce qu'il est le mien : un automate n'a pas de
+culture generale a mettre en defaut, et les deux voies envisageables retombent soit sur une liste
+figee d'associations, soit sur un critere aussi imprecis que celui que je viens de reconnaitre a la
+reserve 2. **Aucun garde-fou n'existe et je n'en demande pas un mauvais.** Je garde aussi
+**`COMP-3`** dans son intention - relier deux informations, et non une seule -, **l'exactitude des
+vingt textes-supports**, **l'accentuation**, et **l'absence de stereotype**.
+
+**Le corollaire, pour que personne ne se trompe sur ce que ce Done couvre** : `COMP-2` est verifiee
+par une personne, item par item, a chaque livraison. Un item ajoute a ce paquet sans que je le
+rejoue n'est couvert par rien.
