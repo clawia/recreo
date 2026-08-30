@@ -216,3 +216,214 @@ mes conditions sur ce paquet, et sur ma propre porte, qui couvre *ce que l'enfan
   sont declarees **tenues** par les paquets qui les rencontrent.
 - **Il ne repriorise rien et n'ecrit aucune story.** Je produis des motifs et des couts ;
   `camille-po` en fait du backlog.
+
+---
+
+# Amendement du 2026-08-30 - reaudit des trois lots de correction
+
+- **Auteure** : `nadia-prof`. **Date** : 2026-08-30. **Sprint** : s22.
+- **Branche** : `s22-nadia-4`, ouverte sur `round-two` a `9bb7b8a`. Aucun fichier de code, aucun
+  contenu, aucune ligne de matrice touchee. J'ai ecrit trois blocs de validation et cet amendement.
+- **Ce que cet amendement ne fait pas** : il ne reecrit pas une ligne de ce qui precede. Les trois
+  `REFUSE` du 2026-08-29 restent ecrits, avec leurs motifs. **Un refus efface n'a aucune valeur de
+  preuve**, et deux des trois verdicts d'aujourd'hui n'ont de sens que lus a cote de celui qu'ils
+  levent.
+- **Audit non degrade sur les trois.** Fat jar reconstruit sur l'arbre de ma branche, application
+  lancee, les trois paquets joues avec erreurs volontaires jusqu'a la revelation.
+
+---
+
+## 9. Les trois verdicts du 2026-08-30
+
+| Story | Paquet | Verdict | Ce qui a leve le refus |
+|---|---|---|---|
+| `S13-2` | `cm1-multiplications-divisions-10-100` | **VALIDE** | Accentuation mesuree sur la **population entiere** du fichier, pas sur mes quatre chaines. Aucune reserve nouvelle |
+| `S13-3` | `cm1-problemes-durees` | **VALIDE SOUS RESERVE** | Les 48 distracteurs recalcules item par item : `D-6` tenue sur sa substance. **Cinq reserves non bloquantes**, dont une clause de `D-6` elle-meme et quatre signes orphelins mesures a l'ecran |
+| `S17-2` | `cm1-comprehension` | **VALIDE** | `COMP-2` refaite par ma procedure sur les **vingt** items, pas seulement les trois reecrits. Deux reserves non bloquantes |
+
+**Trois Done pedagogiques prononces. Zero refus.** Les motifs precis, les tableaux condition par
+condition et les methodes de mesure vivent dans les trois blocs de validation ; ce fichier ne les
+recopie pas.
+
+---
+
+## 10. Ce que le contenu corrige a mis en defaut - et ce n'est pas ce que je cherchais
+
+**J'ai reaudite les trois lots en entier, pas les trois defauts.** Un lot de correction est
+exactement le moment ou un defaut nouveau entre, et deux des cinq reserves du paquet des durees
+n'existaient pas avant la correction que j'ai moi-meme exigee.
+
+### 10.1 Le fait le plus important : ma reserve du 2026-08-29 est en tension avec ma condition `D-6`
+
+J'avais exige, en levant `D-6`, qu'**au moins un item par forme propose la valeur qu'ecrit l'enfant
+qui compte en base 100**. Sur la forme "duree ecoulee", cette erreur produit mecaniquement un compte
+de minutes superieur a 59 - ici *"2 heures 70 minutes"*. Or `D-6` dit, dans la meme condition, qu'une
+telle ecriture **ne doit pas etre la seule anomalie visible du paquet**, sinon elle s'elimine a
+l'oeil sans calcul. **Balayage des 72 propositions : elle est seule.**
+
+**Mes deux exigences ne peuvent pas etre satisfaites ensemble par un seul item.** Le defaut est le
+mien, pas celui de `sofia-sm`, et je l'ecris dans son bloc de validation plutot que de le porter a
+son debit.
+
+**Pourquoi ce n'est pas un motif de refus** : cette clause **ne figure pas** dans ma liste de ce que
+je refusais d'avance (arbitrage du 2026-08-19, section 3.5) - liste que j'avais ecrite exactement
+pour qu'on n'ait pas a me redemander ce que je refuse. En faire aujourd'hui un motif serait deplacer
+un poteau apres coup.
+
+### 10.2 Une propriete que la correction a creee, et qu'aucune de mes conditions ne mesure
+
+En rendant les 48 distracteurs derivables des nombres de leur item, la correction a produit une
+regularite : sur les **12 items d'horaire d'arrivee**, la bonne reponse est **0 fois la plus
+petite** des trois. C'est structurel - l'erreur inverse et la recopie de l'heure de depart donnent
+toutes deux un horaire anterieur. **Un enfant qui a repere la forme ecarte la proposition la plus
+matinale sans calculer, sur la moitie du paquet.**
+
+`D-7` se mesure sur le paquet entier, ou le compte est 25,0 / 50,0 / 25,0 : **elle est tenue et je
+la declare tenue.** Le constat est neuf, date, et route comme tel - **pas comme un durcissement de
+`D-7`**.
+
+### 10.3 Ce que j'ai mesure a l'ecran plutot que suppose
+
+**J'ai lance mon propre instrument** (`squad/outils/nadia-prof/chercher-un-signe-orphelin.py`) dans
+un navigateur reel, a 744 x 551, sur les 453 textes du catalogue portant une espace avant un signe
+double, dont 229 se replient.
+
+| Date | Signes orphelins | Fichiers |
+|---|---|---|
+| 2026-08-28 | **14** | `cm1-perimetre` (9), `cp-problemes-additifs` (5) |
+| **2026-08-30** | **18** | les memes, plus **`cm1-problemes-durees` (4)** |
+
+**Les quatre nouveaux orphelins du catalogue sont tous dans un paquet livre a s22**, le seul des
+trois a ne pas porter d'espace insecable. Le meme releve montre un second defaut que `TYP-1` ne
+couvre pas : l'instant `9 h 10` coupe entre le nombre et son unite.
+
+**Aucun des deux ne bloque**, parce que `TYP-1` porte ma propre phrase - *"Aucun lot n'est un
+prealable au Done pedagogique d'aucun paquet"*. **Ce que je clarifie, en condition neuve et datee :**
+ma redaction du 2026-08-28 ne disait pas si `TYP-1` s'applique au **contenu neuf** livre apres cette
+date. L'ambiguite est la mienne. **A compter du 2026-08-30, tout paquet neuf applique `TYP-1`** - et
+ce paquet-ci n'en est pas justiciable retroactivement.
+
+### 10.4 Les trois declarations d'auteurs, verifiees une par une
+
+**Je ne les ai pas crues, et les trois sont exactes.** C'est un resultat, et il vaut d'etre ecrit
+parce que le sprint precedent avait donne l'inverse.
+
+| Declaration | Ce que j'ai fait | Resultat |
+|---|---|---|
+| `lea-dev` : balayage exhaustif de l'accentuation | Extraction des **129 chaines** et des **29 jetons distincts**, lecture de la liste entiere | **Exacte.** Aucun jeton ne manque son accent |
+| `sofia-sm` : `D-7` a 25,0 / 50,0 / 25,0 sur 24 items | Recompte a la main sur les valeurs converties en minutes | **Exacte, au dixieme** |
+| `marc-dev` : `COMP-1` reste intacte apres reecriture | Remesure mecanique, mots de 4 lettres et plus, insensible aux accents, sur 20 items et 60 propositions | **Exacte.** Zero recouvrement |
+
+---
+
+## 11. La porte de l'accentuation - ma reponse, demandee et non tranchee ailleurs
+
+L'obstacle est reel : `CLAUDE.md` assigne l'accentuation du texte lu par l'enfant au
+`relecteur-pedagogique`, ma fiche de role me l'assigne, et **aucun garde-fou executable n'existe**.
+`sofia-sm` l'a route sans le trancher.
+
+**Je maintiens que cette porte est la mienne, et voici sur quoi je m'appuie plutot que sur ma fiche
+de role.**
+
+1. **Ce n'est pas une regle de redaction du depot, c'est du contenu enfant.** `CLAUDE.md` place
+   explicitement le texte lu par l'enfant hors du registre du `relecteur-pedagogique` et sous ma
+   porte (`DEC-0002`). L'exigence d'accentuation lui a ete **ajoutee par l'amendement du 2026-08-04
+   a `DEC-0002`** - c'est-a-dire ajoutee **a la clause qui est deja la mienne**, pas a la liste des
+   conventions de redaction. **L'amendement suit la porte ; il ne la deplace pas.**
+2. **Le critere pratique** : un accent manquant dans un `README` coute une relecture ; un accent
+   manquant dans un indice est lu par un enfant en cours d'apprentissage de la lecture. Ce sont deux
+   defauts differents, et le second est de ma competence.
+3. **Ce que ma revendication m'engage a faire, et que j'ai fait aujourd'hui** : la mesurer sur la
+   **population entiere** de chaque fichier, pas sur un echantillon. Trois fois sur trois paquets,
+   avec la methode ecrite dans chaque bloc.
+
+**Mais je ne demande pas a rester seule dessus, et c'est le point qui compte.** Un garde-fou
+executable est **facile** ici, contrairement a `COMP-2` : la propriete se formule sans jugement -
+*aucune chaine lue par un enfant ne contient un mot francais qui prendrait un accent et ne le porte
+pas*. Elle se teste sur un lexique, pas sur une culture generale. **Si un tel garde-fou existait,
+mon refus du 2026-08-29 n'aurait jamais eu lieu et un lot n'aurait pas ete perdu.**
+
+**Ma position en une phrase** : la porte reste la mienne, le garde-fou appartient a `yanis-qa` et
+`theo-archi`, et les deux ne sont pas en concurrence - **un automate qui attrape le cas facile me
+laisse le temps du cas difficile.** Si `camille-po` tranche dans l'autre sens et l'attribue au
+`relecteur-pedagogique`, je m'y range sans reserve ; ce qui serait mauvais, c'est que la question
+reste ouverte un sprint de plus, parce qu'alors **personne** ne la tient.
+
+---
+
+## 12. Ma capacite - ce qui me permettrait d'auditer plus de paquets par sprint
+
+Question posee pour s23. **Je reponds en mon nom, et ma reponse n'est pas "plus de temps".**
+
+### 12.1 Ce qui n'est pas la contrainte, et que je refuse de laisser croire
+
+**Ni le nombre de paquets, ni la livraison groupee.** J'ai audite trois paquets en entier le
+2026-08-29 et les trois lots de correction le 2026-08-30, en jouant, en un jour chaque fois. Le
+sequencement que j'avais demande a s21 servait a etaler l'effort ; **s22 ne montre pas qu'il etait
+necessaire**, et je ne m'abriterai pas derriere.
+
+**Ce qui coute, c'est la lecture item par item d'une propriete qu'aucun automate ne sait voir** -
+`COMP-2` sur vingt items, la derivation de 48 distracteurs, la plausibilite de 50 distracteurs. Ce
+cout est **proportionnel au nombre d'items**, pas au nombre de paquets, et il ne descend pas parce
+que je me depeche.
+
+### 12.2 Ce qui le ferait descendre, par ordre d'effet decroissant
+
+**1. Mesurer mes conditions prealables contre le contenu AVANT la livraison.** C'est la piste qui
+m'a ete versee et **je la prends, avec une precision qui la rend utile** : les trois refus du
+2026-08-29 auraient tous ete trouves avant l'audit, mais **par des moyens de nature differente**.
+
+| Refus de s22 | Trouvable avant par | Cout |
+|---|---|---|
+| Accentuation (`S13-2`) | **Un automate.** La propriete se teste sur un lexique | Quelques lignes. **A ecrire, c'est le meilleur rapport du lot** |
+| `D-6`, distracteurs non derives (`S13-3`) | **Une declaration verifiable de l'auteur** : le fichier nomme la formule de chaque famille, un tiers la recalcule | Nul cote outillage. C'est une convention de redaction du fichier de contenu |
+| `COMP-2` (`S17-2`) | **Personne d'autre que moi**, et l'auteur l'a explicitement etabli | Irreductible |
+
+**Deux des trois sortent de ma file. Le troisieme n'en sortira jamais**, et c'est celui qui coute le
+plus. Je le dis maintenant pour qu'on ne me promette pas un debit qui suppose le contraire.
+
+**2. Que les auteurs declarent leurs comptes dans le fichier, et que je les recompte plutot que je
+les etablisse.** Les trois lots l'ont fait aujourd'hui et **les trois declarations etaient exactes**
+(section 10.4). Recompter un chiffre declare coute une fraction de ce que coute l'etablir : c'est ce
+qui m'a permis de tenir trois reaudits dans la journee. **C'est la pratique la plus rentable de
+s22 et elle n'a rien coute a personne.** Elle a une condition : le fichier nomme sa **methode** a
+cote de son chiffre, faute de quoi je recompte autre chose que lui - `D-8` en donne un exemple
+benin aujourd'hui, ou l'ecart entre l'en-tete et mon compte ne tient qu'a la maniere de decouper
+"a-t-il".
+
+**3. Auditer en parallele plutot qu'en serie.** Seconde piste versee. **Je la prends aussi, mais
+elle a un plafond que je nomme** : ce qui parallelise, c'est la **mesure** - accentuation, calculs,
+rangs, recouvrements. Ce qui ne parallelise pas, c'est la lecture d'un item comme le ferait un
+enfant : elle demande de se remettre dans un niveau et une matiere, et l'alternance rapide entre un
+paquet de CM1 en mathematiques et un paquet de francais **degrade ce jugement-la**. **Je paralleliserai
+les mesures et je serialiserai les lectures.**
+
+### 12.3 Le chiffre que j'avance pour s23, et ce qu'il suppose
+
+**Quatre a cinq paquets par sprint**, contre trois a s22, **si et seulement si** :
+
+- l'accentuation est gardee par un automate - sinon je la mesure a la main sur chaque population,
+  ce que j'ai fait trois fois aujourd'hui ;
+- chaque paquet arrive avec ses comptes declares et leur methode ;
+- **au plus un paquet par sprint porte une propriete du type de `COMP-2`** - une propriete qu'aucun
+  automate ne peut voir et qui se verifie item par item. Deux paquets de comprehension dans le meme
+  sprint me ramenent a trois, et je previens plutot que de le decouvrir en fin de sprint.
+
+**Ce que je ne ferai pas pour tenir un chiffre** : echantillonner. Le 2026-08-29, mes trois refus
+portaient sur 4 chaines sur 129, 48 distracteurs sur 48, et 3 items sur 20. **Deux des trois
+seraient passes au travers d'un echantillon.** Si le debit demande exige d'echantillonner, je
+prefererai auditer moins de paquets et le dire.
+
+---
+
+## 13. Ce que je route
+
+| Suite | Destinataire | Ce que je demande |
+|---|---|---|
+| **Les sept reserves nouvelles** (cinq sur `S13-3`, deux sur `S17-2`) | `camille-po` | En faire du backlog. La plus chere - `TYP-1` sur les 24 enonces de `cm1-problemes-durees` - est un remplacement d'espaces ; la reserve A est **une chaine** |
+| **`D-6` : ma reserve du 2026-08-29 et ma condition du 2026-08-19 sont en tension** (10.1) | `camille-po`, retro de s22 | Une lecon contre moi. A reecrire par moi en condition neuve et datee |
+| **`TYP-1` s'applique au contenu neuf a compter du 2026-08-30** (10.3) | `camille-po`, `sofia-sm` | Une clarification, pas un durcissement. Aucun paquet existant n'en est justiciable |
+| **La porte de l'accentuation** (section 11) | `camille-po` | **Trancher.** Ma position est ecrite ; ce qui serait mauvais, c'est un sprint de plus sans decision |
+| **Un garde-fou d'accentuation est facile et il manque** (section 11) | `yanis-qa`, `theo-archi` | La propriete se teste sur un lexique. Il aurait evite un refus et un lot |
+| **Ma capacite pour s23 : 4 a 5 paquets sous trois conditions** (section 12.3) | `camille-po`, `sofia-sm` | Dont une qui les concerne directement : **au plus un paquet par sprint du type de `COMP-2`** |
+| **`MNC-1` a mordu pour la premiere fois**, sur trois Done | `camille-po` | La clause n'est plus vide de cas. Sa condition d'extinction reste ce qu'elle etait |
