@@ -223,3 +223,103 @@ resolutions de conflit qu'il rapporte sont additives et deja couvertes par les d
 dans le tableau des obstacles (`ADR-0064`, `ADR-0063` amendee, `ADR-0050`, `DEC-0053`, `DEC-0025`
 amendee). Ce que ce document tranche en propre, sous ma responsabilite de fusion : l'ordre des huit
 fusions et la resolution manuelle des deux conflits additifs, verifiees ci-dessus.
+
+## Fusion des corrections post-REFUSE (2026-08-30) - sofia-sm, casquette Scrum Master
+
+*Ajout de sofia-sm, 2026-08-30. Les sections precedentes restent telles qu'elles ont ete ecrites :
+exactes a leur date. Ce qui suit les complete, il ne les efface pas. Le sprint reste ouvert : la
+porte pedagogique n'a pas ete repassee par ce document, aucun statut de `MATRICE-couverture.md`
+n'est prononce ici et aucune fiche de conformite n'est modifiee par ce document.*
+
+Les trois `REFUSE` du 2026-08-29 ont chacun recu une correction, livree sur la tete de la branche
+d'origine plutot que sur une branche neuve. Six lots restaient a fusionner dans `round-two`. Trois
+partent de `HEAD` de la review precedente (`62037c7`) - `yanis`, `sofia-4`, `nadia-3`. Les trois
+autres reprennent chacun la tete de son propre lot de contenu du sprint, tres en arriere de
+`62037c7` - `04aa35f` pour `lea`, `7e259a4` pour `marc`, `8da64f5` pour `sofia-2` : verifie individuellement par
+`git merge-base --is-ancestor round-two <branche>` (faux pour les six) et
+`git merge-base --is-ancestor <branche> round-two` (faux pour les six) avant toute fusion, puis
+`git merge-base --is-ancestor <branche> HEAD` (vrai pour les six) apres. Aucun des six lots ne
+touche `catalogue.yaml`, donc aucun des trois conflits rencontres a la fusion precedente ne se
+reproduit ici.
+
+| Ordre | Branche | Tete | Contenu | Fusion | Conflit |
+|---|---|---|---|---|---|
+| 1 | `s22-lea` | `be63ce3` | `S13-2` corrigee - accentuation des 25 indices, `MD-6` declaree | `83f3898` | aucun |
+| 2 | `s22-marc` | `1c4a9c8` | `S17-2` corrigee - trois items `COMP-2` reecrits en `COMP-3`, item du lion en "principalement", commentaire de feuille de style, plus un accent releve apres coup | `89d323b` | aucun |
+| 3 | `s22-sofia-2` | `0158b4c` | `S13-3` corrigee - 48 distracteurs recalcules par item (`ERR-INVERSE`, `ERR-REPORT`, `ERR-BASE100`), en-tete corrige (Iris et Nour, pas un garcon), `D-7` remesure | `fb2f3e8` | aucun |
+| 4 | `s22-yanis` | `e29a640` | Rapport qualite de s22 | `5f58131` | aucun |
+| 5 | `s22-sofia-4` | `22c452b` | Obstacle de gouvernance sur l'accentuation route, journal hors sprint (troisieme cas de discretion `DEC-0045` section 3) | `db6f4ff` | aucun |
+| 6 | `s22-nadia-3` | `904ea4d` | Les trois blocs `REFUSE`, l'avis de Done pedagogique, l'ajout du 2026-08-29 a ce meme fichier | `a76c653` | aucun |
+
+**Ordre choisi et son motif** : les trois corrections de contenu d'abord, dans l'ordre du tableau
+des lots d'origine (`lea`, `marc`, `sofia-2` avait ete l'ordre inverse a la premiere fusion ; ici
+l'ordre ne conditionne aucune resolution puisqu'aucun conflit n'apparait), puis `yanis` et
+`sofia-4` qui n'ajoutent que des fichiers neufs sans rapport entre eux, puis `nadia-3` en dernier
+parce que c'est la seule branche qui modifie `review.md` - la fusionner en dernier isole le risque
+de conflit sur mon propre fichier au dernier pas, ou il est le plus facile a inspecter.
+
+### Verification que les trois corrections sont dans l'arbre fusionne
+
+Pas seulement que la fusion a reussi - relu directement dans les fichiers apres fusion :
+
+- `cm1-multiplications-divisions-10-100.yaml` : les 25 `indice:` accentues (*ecrire*, *zero*,
+  *a droite*) ; en-tete de fichier declarant `MD-6` (erreur reelle + plafond du tiers).
+- `cm1-comprehension.yaml` : item du lion en "principalement" (ligne 65) ; les trois items
+  auparavant non marques (cahier rouge, pecheur, bougies) portent desormais `# COMP-3` avec les
+  deux informations qu'ils relient.
+- `cm1-problemes-durees.yaml` : `ERR-BASE100` present dans l'en-tete des trois familles nommees ;
+  la recette est portee par Iris et Nour, plus par un garcon.
+
+### Porte technique remesuree sur l'arbre fusionne, methode XML
+
+```
+bash outils/mvn-jdk21.sh -B clean verify
+```
+
+Reacteur complet (racine, aucun `-pl`), sur `HEAD` (`a76c653`), le 2026-08-30. **BUILD SUCCESS**,
+les six modules en `SUCCESS`.
+
+Compte de tests, methode XML (somme des attributs `tests`/`failures`/`errors`/`skipped` de
+l'element `<testsuite>` de tous les `TEST-*.xml` de `target/surefire-reports/` et
+`target/failsafe-reports/` sur le reacteur complet, pas le rapport texte) : **761 tests, 0 echec,
+0 erreur, 0 ignore.**
+
+**Aucun ecart avec le dernier chiffre fusionne connu (761, section precedente)**, et c'est attendu :
+aucune des trois corrections n'ajoute, ne retire ni ne modifie un fichier de test - `lea`, `sofia-2`
+et `marc` (son second commit excepte, un accent dans un commentaire YAML) ne touchent que du
+contenu YAML ; `marc` touche en plus `recreo.css` (six lignes, un commentaire) ; aucun des six lots
+fusionnes ici ne touche un fichier `.java` (verifie par `git diff --name-only 62037c7 HEAD -- '*.java'`,
+vide). Les regles ArchUnit (30, confirmees a la fusion precedente) sont donc inchangees par
+construction, pour la meme raison.
+
+**Les comptes annonces par les auteurs sur leurs propres worktrees - 732 (`lea-dev`), 736
+(`marc-dev`), 731 (moi-meme, casquette dev, sur `sofia-2`) - ne sont pas des ecarts avec 761 : ce
+sont trois totaux de worktree**, chacun mesurant sa propre branche (baseline a `04aa35f`/`7e259a4`/
+`8da64f5`, tres en arriere de `round-two`) plus son propre lot, jamais l'arbre fusionne. Aucun des
+trois ne pretendait mesurer autre chose ; le seul chiffre qui engage la porte technique du sprint
+est celui mesure ici, sur le reacteur complet apres fusion.
+
+### Obstacles - mise a jour
+
+| # | Description | Categorie | Agent route | Decision liee | Statut |
+|---|---|---|---|---|---|
+| 14 | Regime de retrait immediat du catalogue sur un `REFUSE` (`DEC-0045` section 3) | Produit, gouvernance | `camille-po` | - | **OUVERT, reste ouvert** - l'utilisatrice a arbitre le 2026-08-29 de ne pas retirer les trois paquets pendant que les corrections etaient en cours (troisieme cas de discretion d'execution sur cette regle, apres `cm1-reperes` s20 et `cp-mot-manquant` s21 : `JOURNAL-gouvernance-hors-sprint.md`, entree du 2026-08-29). Les trois corrections sont desormais fusionnees, donc la question qui restait explicitement suspendue a leur issue - `camille-po` juge-t-elle que trois cas suffisent a instruire un amendement de `DEC-0045` section 3 - est murie et n'est toujours pas tranchee. Aucun `DEC` ne l'acte a ce jour |
+| 15 | Deux textes du depot assignent la meme verification (l'accentuation du texte lu par l'enfant) a deux roles differents sans se citer l'un l'autre - `CLAUDE.md` nomme `relecteur-pedagogique`, la fiche de `nadia-prof` se nomme elle-meme. Revele par le `REFUSE` de `S13-2` (25 indices non accentues), route par `sofia-sm` (`obstacle-qui-verifie-l-accentuation-d-un-item.md`, `s22-sofia-4`) | Produit, perimetre d'un role, et technique, faisabilite d'une regle | `camille-po` (perimetre), `theo-archi` (faisabilite d'un garde-fou) | - | **OUVERT** - deux questions distinctes routees, aucune tranchee par ce document |
+
+Rappel : un obstacle n'est `clos` que si le fichier de decision existe physiquement. Les deux lignes
+ci-dessus restent `OUVERT` precisement parce qu'aucun `DEC` ni `ADR` ne les tranche a ce jour -
+seul un journal de gouvernance et un fichier de routage existent, et ni l'un ni l'autre n'est une
+decision.
+
+### Porte pedagogique
+
+**Toujours non tenue.** Les trois corrections sont fusionnees et techniquement vertes ; `nadia-prof`
+doit reauditer l'arbre fusionne avant qu'un Done pedagogique quelconque ne soit prononce. Aucune
+ligne de `MATRICE-couverture.md` n'est touchee par ce document, aucune fiche de conformite ne l'est
+davantage : les blocs de validation restent la seule main de `nadia-prof`.
+
+### Decisions prises par ce document
+
+Aucune. Ce document fusionne six lots, verifie leur contenu et remesure la porte technique ; il ne
+tranche ni le perimetre de la verification d'accentuation, ni l'amendement eventuel de `DEC-0045`
+section 3, ni le Done pedagogique.
