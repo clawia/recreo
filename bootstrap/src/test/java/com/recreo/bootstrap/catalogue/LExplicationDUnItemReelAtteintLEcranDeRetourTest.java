@@ -14,6 +14,7 @@ import com.recreo.domain.content.source.ListContentSource;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchot;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -147,8 +148,18 @@ class LExplicationDUnItemReelAtteintLEcranDeRetourTest {
                         .param("propositionChoisie", String.valueOf(item.get("bonneReponse"))))
                 .andReturn().getResponse().getContentAsString();
         Document fragment = Jsoup.parse(html);
+        Element explication = fragment.selectFirst(".explication");
+        assertThat(explication)
+                .as("l'item reel \"%s\" declare une explication dans cp-le-bon-son.yaml ; aucun"
+                        + " element .explication n'atteint l'ecran de retour", item.get("enonce"))
+                .isNotNull();
 
-        assertThat(fragment.select(".explication").text())
+        // s23 (yanis-qa) : lu par wholeText et non par text. Element.text() de jsoup (1.23.1)
+        // normalise U+00A0 en U+0020 (mesure ADR-0060) ; ce garde-fou promet "telle quelle" et ne
+        // pouvait donc pas voir une espace insecable que l'explication porterait, ni distinguer un
+        // rendu qui la perd d'un rendu qui la porte fidelement. Meme defaut et meme correctif que
+        // LeTexteSupportDUnItemReelAtteintLEcranDeMancheTest (ADR-0050).
+        assertThat(explication.wholeText().strip())
                 .as("l'item reel \"%s\" declare une explication dans cp-le-bon-son.yaml ; elle doit"
                         + " atteindre l'ecran de retour telle quelle", item.get("enonce"))
                 .isEqualTo(explicationAttendue);
