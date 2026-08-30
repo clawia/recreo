@@ -1,0 +1,22 @@
+schema: 1
+id: paquet-neuf-a-signe-detachable
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Contre-exemple d'ADR-0067 - ce paquet n'est servi par aucun catalogue"
+#
+# Jeu fautif d'ADR-0067. Chaque enonce porte une espace ordinaire devant son point
+# d'interrogation, et ce paquet ne figure dans aucune table de dette : c'est exactement l'etat
+# dans lequel un paquet neuf ne doit jamais arriver. Aucun accent manquant ici, pour que le
+# rouge ne puisse pas etre confondu avec celui d'ADR-0065.
+items:
+  - enonce: "Combien font 2 et 3 ?"
+    bonneReponse: "5"
+    distracteurs: ["4", "6"]
+    indice: "Compte sur tes doigts, puis vérifie !"
+  - enonce: "Combien font 4 et 1 ?"
+    bonneReponse: "5"
+    distracteurs: ["3", "6"]
+    indice: "Ajoute un de plus ; que trouves-tu ?"

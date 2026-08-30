@@ -207,9 +207,13 @@ class LeTexteSupportDUnItemReelAtteintLEcranDeMancheTest {
         if (textesSupport.size() != 1) {
             defauts.add("jeu " + jeuId + ", item \"" + item.enonce() + "\" : " + textesSupport.size()
                     + " element(s) .texte-support, un seul attendu (ADR-0050, decision 6)");
-        } else if (!attendu.equals(textesSupport.get(0).text())) {
+        } else if (!attendu.equals(textesSupport.get(0).wholeText().strip())) {
+            // s23 : lu par wholeText et non par text. Element.text() de jsoup normalise les blancs et
+            // remplace l'espace insecable par une espace ordinaire ; ce garde-fou promet "exactement
+            // son texte" et ne pouvait donc pas voir le seul caractere qu'ADR-0060 clause 2 exige.
+            // Defaut trouve en s23 en corrigeant un guillemet francais de cm1-comprehension.
             defauts.add("jeu " + jeuId + ", item \"" + item.enonce() + "\" : le texte-support rendu"
-                    + " vaut \"" + textesSupport.get(0).text() + "\", attendu exactement \"" + attendu
+                    + " vaut \"" + textesSupport.get(0).wholeText().strip() + "\", attendu exactement \"" + attendu
                     + "\" (ADR-0050, decision 6, premiere moitie)");
         }
         return defauts;
