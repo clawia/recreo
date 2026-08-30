@@ -44,6 +44,15 @@ descripteur:
 #
 # LIA-6, LIA-7 : longueur et vocabulaire mesures par PaquetCm1MotsDeLiaisonTest sur les champs
 # enonce, bonneReponse, distracteurs et indice de chaque item.
+#
+# Correction du 2026-08-31 (Done pedagogique REFUSE, nadia-prof,
+# FICHE-bandit-manchot-mots-de-liaison-cm1.md) : LIA-3 tenue sur 38 distracteurs sur 40, en
+# defaut sur deux - item 3 ("puis" rendait un texte vrai : la succession y etait reelle) et item
+# 18 ("donc" rendait un texte vrai : une fusee qui decolle traverse necessairement les nuages).
+# Les deux distracteurs sont remplaces par "car" (causalite inversee, impossible dans les deux
+# textes) ; LIA-4, LIA-5 et LIA-9 restent tenues, verifie apres correction. L'item 20 ("donc",
+# meme mot que l'item 18) n'est pas touche : nadia-prof l'a explicitement distingue, la
+# consequence y est reellement absente (longer une riviere n'entraine pas d'atteindre un sommet).
 items:
   - enonce: "Léa a raté son bus. ___, elle est arrivée en retard à l'école."
     bonneReponse: "donc"
@@ -63,12 +72,12 @@ items:
       pourtant: "opposition - faux : ne pas pouvoir entrer est la suite attendue de l'oubli des clés, ce n'est pas un fait surprenant qui contredirait le premier"
   - enonce: "Il a beaucoup révisé ses leçons. ___, il a réussi son contrôle."
     bonneReponse: "donc"
-    distracteurs: ["mais", "puis"]
+    distracteurs: ["mais", "car"]
     indice: "Cherche si la réussite découle du travail fourni."
     relationBonneReponse: "consequence"
     relationsDistracteurs:
       mais: "opposition - faux : réussir après avoir révisé n'est pas contradictoire, c'est le résultat attendu, aucune tension n'existe entre les deux faits"
-      puis: "succession - faux : la réussite n'est pas un événement indépendant qui suit simplement dans le temps, elle découle directement du travail fourni"
+      car: "cause - faux : la réussite au contrôle ne peut pas être la cause du fait d'avoir beaucoup révisé, elle survient après et ne peut pas expliquer un travail déjà accompli, la causalité serait inversée dans le temps"
   - enonce: "Le ciel est devenu tout noir. ___, les promeneurs ont pressé le pas."
     bonneReponse: "alors"
     distracteurs: ["car", "enfin"]
@@ -183,11 +192,11 @@ items:
       mais: "opposition - faux : il n'y a aucune contradiction entre nettoyer les pinceaux et ranger la palette, ce sont deux étapes qui s'enchaînent normalement"
   - enonce: "La fusée quitte le sol. ___, elle traverse les nuages."
     bonneReponse: "puis"
-    distracteurs: ["donc", "pourtant"]
+    distracteurs: ["car", "pourtant"]
     indice: "Cherche l'ordre des étapes du décollage."
     relationBonneReponse: "succession"
     relationsDistracteurs:
-      donc: "consequence - faux : traverser les nuages n'est pas une conséquence logique du décollage, c'est simplement l'étape suivante dans le temps"
+      car: "cause - faux : le décollage de la fusée n'est pas causé par la traversée des nuages, c'est l'inverse qui est vrai, elle traverse les nuages parce qu'elle a décollé, la causalité serait inversée"
       pourtant: "opposition - faux : il n'y a aucune contradiction entre le décollage et la traversée des nuages, ce sont deux moments d'un même trajet"
   - enonce: "Le boulanger pétrit la pâte. ___, il la laisse reposer une heure."
     bonneReponse: "ensuite"
