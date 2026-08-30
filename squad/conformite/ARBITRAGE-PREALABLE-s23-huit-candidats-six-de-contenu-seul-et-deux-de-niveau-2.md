@@ -273,3 +273,98 @@ genre), `ETA-9` et le jugement de niveau.
 Ligne entiere, sans mention de couverture partielle : "resoudre des problemes a plusieurs etapes
 mobilisant les 4 operations" est exactement ce que le paquet ferait, a deux etapes, qui est le
 "plusieurs" du CM1.
+
+---
+
+## 3. "Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi)" (francais CP)
+
+**Verdict : ACCEPTE sous conditions `NAR-1` a `NAR-10`.** C'est celui des six que j'ai failli
+refuser, et je dis pourquoi je ne le fais pas.
+
+### Le point ou je ne transpose pas mes conditions de CM1, et c'est deliberer
+
+`DEC-0057` classe ce candidat avec `S17-2` comme portant "le meme risque d'appariement". **La
+transposition serait fausse, et l'appliquer serait deplacer mes poteaux d'un niveau a l'autre.**
+
+`COMP-1`, ecrite pour le CM1 le 2026-08-19, interdit qu'un item se resolve en cherchant laquelle
+des propositions figure dans le texte, parce que la ligne CM1 demande des **inferences simples**.
+**La ligne CP ne demande pas cela** : elle dit, mot pour mot, *"questions explicites : qui, ou,
+quoi"*. Au CP, retrouver dans un texte qui a fait quoi **est** la competence, et c'est deja un
+resultat : cela demande d'avoir decode et d'avoir tenu le sens de deux phrases. **Exiger une
+inference au CP serait exiger la ligne du CM1 sur un enfant de six ans.** Je ne le fais pas.
+
+**Mais le risque d'appariement existe bel et bien au CP, sous une autre forme, et il est plus
+grave.** Un lecteur debutant apparie des chaines de caracteres : si la bonne reponse est le seul
+mot des trois qui figure dans le texte, il la trouve **sans lire**. La bonne condition n'est donc
+pas `COMP-1` transposee, c'est `COMP-1` **retournee** - c'est `NAR-5`.
+
+### La charge de lecture, mesuree plutot qu'estimee
+
+*Mesure du 2026-08-30, sur la population entiere des enonces des dix paquets CP servis :* l'enonce
+le plus long jamais valide au CP fait **15 mots et 67 caracteres** (`cp-problemes-additifs` :
+*"Le clown a 7 ballons et en gonfle 2 de plus. Combien en a-t-il ?"*), pour une mediane de 13 mots
+sur ce paquet. Un item de ce candidat demande un texte **plus** une question. Les bornes de `NAR-2`
+placent le total a **25 mots au plus**, soit environ **1,7 fois** ce qui est deja valide au CP.
+
+**C'est plus, et je l'accepte, avec une limite que je nomme** : ce paquet s'adresse a un enfant qui
+decode deja. Il n'est pas utilisable en debut de CP. Ce n'est pas propre a ce candidat -
+`cp-mot-manquant` et `cp-problemes-additifs` sont dans le meme cas depuis qu'ils existent - et ce
+produit n'a pas de niveau a l'interieur du CP. Je le dis pour que la matrice ne laisse pas croire
+autre chose.
+
+### Conditions
+
+- **`NAR-1` - Le support est porte par la cle `texteSupport`**, l'item par `enonce`. Aucune
+  architecture neuve : la cle est facultative et generique (`ADR-0050`), verifie au depot.
+- **`NAR-2` - Longueur.** Le `texteSupport` compte **au plus 18 mots** et **au plus deux phrases** ;
+  le `texteSupport` et l'`enonce` reunis comptent **au plus 25 mots**. *Un mot est une suite de
+  caracteres sans espace ; l'unite de compte est l'item.*
+- **`NAR-3` - Vocabulaire.** Aucun mot du `texteSupport` ni de l'`enonce` ne depasse **neuf
+  lettres**, l'apostrophe n'etant pas comptee. *Mesure de cette clause contre la population qu'elle
+  filtre, faite le 2026-08-30 sur le corpus CP entier du depot - 2 215 occurrences de mots dans les
+  champs `enonce`, `indice` et `explication` des dix paquets CP servis : **99,4 % des occurrences
+  font neuf lettres ou moins**, et les trois seuls mots plus longs (`additionne`, `fabriquent`,
+  `facilement`) n'apparaissent que dans des indices, jamais dans un enonce. **Cette clause n'ecarte
+  donc rien de ce que le CP de ce produit sert deja**, et c'est exactement la verification qui
+  manquait a `SEG-1`.*
+- **`NAR-4` - Question explicite, et rien d'autre.** L'enonce commence par *"Qui"*, *"Ou"* ou
+  *"Que"*, et sa reponse se lit litteralement dans le texte. **Aucune inference n'est demandee** :
+  relier deux informations est la ligne du CM1, et un paquet de CP qui l'exigerait empieterait sur
+  une ligne deja ouverte ailleurs.
+- **`NAR-5` - Les trois propositions figurent toutes les trois, en toutes lettres, dans le
+  `texteSupport` de leur propre item.** Motif : au CP, l'enfant est un lecteur debutant qui apparie
+  des chaines ; si une seule proposition figure dans le texte, il reussit sans comprendre. **C'est
+  la branche inverse de `COMP-1`**, et elle **s'automatise** par un test de la meme forme que
+  `aucuneCompositionNeRecopieUnMotDuTexteSupport` de `PaquetCm1ComprehensionTest`, l'assertion
+  retournee. **Cette propriete sort de ma main le jour ou ce test existe** ; je ne demande pas
+  qu'il soit ecrit dans le meme lot, je dis qu'il est possible.
+- **`NAR-6` - Texte masque, la question ne se repond pas.** Un enfant qui n'a pas lu le
+  `texteSupport` ne fait pas mieux que le hasard. Cela interdit les questions dont la reponse est un
+  fait de culture generale et les distracteurs qui s'eliminent seuls. **Verification par un tiers :
+  masquer le `texteSupport`, item par item, sur la totalite des items et non sur un echantillon.**
+  **Aucun automate ne voit cette propriete.** C'est `COMP-2`, et **ce paquet compte donc a lui seul
+  contre ma condition d'au plus un paquet de ce type par sprint.**
+- **`NAR-7` - Personnages.** Sur l'ensemble du paquet, les prenoms sont **equilibres en genre a un
+  pres** (*unite de compte : le prenom distinct*), et aucun role, aucune activite, aucune emotion
+  n'est distribuee par genre.
+- **`NAR-8` - Aucune situation ne suppose** une configuration familiale, un logement, un animal, un
+  depart en vacances ou un objet possede.
+- **`NAR-9` - Indice.** Il dit **ou regarder** dans le texte, jamais la reponse. *"Relis la deuxieme
+  phrase."* est un indice. **Huit mots au plus.**
+- **`NAR-10` - Au moins vingt items**, et deux items ne partagent jamais le meme `texteSupport` :
+  la mecanique tire une manche au hasard et ne sait pas poser deux questions sur un meme texte.
+
+### Ce qui reste dans ma seule main sur ce paquet
+
+**`NAR-6`, et elle est irreductible** : c'est la propriete du type de `COMP-2`, celle que s22 a
+montre qu'aucun automate ni aucun auteur ne voit a ma place - elle a attrape trois items sur vingt
+le 2026-08-29, precisement les trois que l'auteur croyait bons. `NAR-4`, `NAR-7`, `NAR-8` et
+`NAR-9` sont aussi de mon jugement. `NAR-2`, `NAR-3`, `NAR-5` et `NAR-10` sont calculables.
+
+### Couverture
+
+Ligne entiere pour ce que la ligne dit, **avec la meme limite de mecanisme que `S17-2`**, et la
+mention exacte que je demande sur la matrice le jour ou la ligne bouge est : **"textes de deux
+phrases, un texte par question, questions explicites seulement"**. Un enfant ne lira jamais, dans
+ce jeu, un texte assez long pour que la comprehension d'ensemble soit en jeu ; ce n'est pas un
+defaut du lot a venir, c'est la limite du mecanisme, et elle doit etre ecrite.
