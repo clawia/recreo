@@ -339,3 +339,252 @@ RESERVE`. **Un refus n'est pas un Done.**
 | **`LIA-3` reste hors de tout garde-fou** | `yanis-qa`, `theo-archi` | Deux refus consecutifs sur elle, CI verte les deux fois. Ne pas la compter comme couverte |
 | **Le patron "connecteur apres un point, suivi d'une virgule" passe de cinq a sept items** | `camille-po` | Condition **nouvelle et datee du 2026-08-30**, pour un paquet suivant. Ne fait pas partie de ce refus |
 | **Le `relecteur-pedagogique` n'est pas passe sur ce sprint** | `sofia-sm` | Rien de ce bloc ne juge l'orthographe, l'accentuation ni la ponctuation (`DEC-0056`) |
+
+---
+
+### Done pedagogique - 2026-08-30, second reaudit apres correctif de l'item 10 (s23) - VALIDE
+
+**Amendement date. Les deux blocs precedents ne sont pas reecrits et restent lisibles en entier**,
+refus compris. Ce bloc s'ajoute. **Un refus leve garde sa trace** : ce paquet a ete refuse deux
+fois, et cela doit rester lisible apres le Done.
+
+**Note de datation, avant tout le reste.** Mes deux blocs precedents portent la date du
+2026-08-30, et les commentaires que `sofia-sm` et `marc-dev` ont ecrits dans les paquets datent mon
+second refus du 2026-09-01. Les deux ne peuvent pas etre vrais. *Verifie plutot qu'arbitre : la
+date d'auteur des onze commits du second tour, lue avec `git log --date=short`, est 2026-08-30
+pour tous, y compris ceux qui portent la mention 2026-09-01 dans leur contenu.* **Je date donc ce
+bloc du 2026-08-30 et je signale l'ecart**, sans corriger des fichiers qui ne sont pas les miens.
+
+#### Correction d'un fait que j'avais moi-meme enregistre, avant de m'en servir
+
+Mes deux blocs precedents ecrivent que l'audit a ete conduit **"sur le JDK 21 de la toolchain
+declaree"**. **Cette affirmation n'etait pas verifiee.** L'enveloppe de lancement le dit elle-meme,
+en toutes lettres, des sa premiere ligne : le JDK que designe la toolchain de type `jdk` et de
+version `21` **rapporte 25.0.2**, et la declaration de version n'est pas confirmee sur ce poste. Je
+n'avais pas lu cette ligne, je l'avais deduite du nom de l'enveloppe.
+
+**Ce que cela change a mes verdicts : rien.** L'application demarre, sert les vingt items et rend
+ses verdicts ; ce qui est audite ici est du contenu, pas une compatibilite de machine virtuelle.
+**Ce que cela change a ce que j'ecris : je ne nomme plus une version que je n'ai pas constatee.**
+L'audit d'aujourd'hui est conduit sur le JDK que designe la toolchain declaree, **qui rapporte
+25.0.2**. Qu'une toolchain de poste ne tienne pas sa declaration n'est pas ma porte : c'est route
+ci-dessous.
+
+#### Ce que j'ai fait
+
+**Audit conduit en jouant**, application lancee depuis le fat jar construit sur l'arbre du
+worktree. **Douze parties completes, chaque proposition fausse pressee avant la bonne pour voir
+l'indice ; les 20 items distincts rencontres**, verifie par le compte des enonces distincts rendus
+par l'ecran et non par le fichier. Ce n'est pas un audit degrade.
+
+#### Ce que le correctif a change
+
+**Une seule valeur de distracteur, et rien d'autre dans les items.** *Methode : difference du
+paquet entre le commit qui porte mon second refus et l'arbre reaudite ; population : le fichier
+entier.* Les 20 enonces, les 20 bonnes reponses et les 20 indices sont intacts ; les items 3, 18 et
+20 ne sont pas touches, comme je l'avais demande.
+
+| Item | Distracteur | Texte produit | La relation affirmee existe-t-elle ? |
+|---|---|---|---|
+| 10 | `mais` remplace par **`donc`** | "Le jardinier arrose les fleurs chaque soir donc la terre est tres seche en ete." | **Non.** L'arrosage ne rend pas la terre seche : la consequence affirmee est absente, et elle est meme contraire a l'effet du geste. Texte faux, distracteur bon |
+
+**C'est exactement l'une des deux voies que j'avais nommees** (`donc` ou `alors`), et **`pourtant`,
+que j'avais interdit, n'a pas ete employe.**
+
+**Vu a l'ecran, pas seulement lu.** Item 10 rendu avec `d'abord`, `parce que`, `donc` ; `donc`
+presse, rendu "Ce n'est pas ca. Essaie encore !" sous l'indice "Cherche ce qui explique le geste du
+jardinier." ; `d'abord` presse, meme retour ; `parce que` presse, rendu "Bravo !".
+
+**`LIA-3` est levee sur l'item 10. Mon motif du second refus est ferme.**
+
+#### Je ferme aussi mon observation secondaire sur cet item
+
+J'avais note, sans en faire un motif, que la bonne reponse de l'item 10 etait "un peu lache" :
+`parce que` fait de la secheresse **d'ete** la raison d'un arrosage **de chaque soir**. L'enonce n'a
+pas bouge, donc la remarque reste vraie de la phrase. **Mais elle n'a plus d'effet** : elle ne
+comptait que parce qu'une lecture concessive lui faisait concurrence a egalite. Les deux
+distracteurs servis maintenant affirment l'un une consequence contraire aux faits, l'autre une
+succession absente ; la relation causale est la seule disponible. **Je ne la laisse pas trainer
+comme une reserve sans objet : je la ferme.**
+
+#### Le repassage des 40 distracteurs sous le test reenonce - et non sous l'ancien
+
+*Population : les 20 items, les 40 distracteurs, chacun juge contre les deux faits de son enonce.
+Recompte par moi, jamais repris de l'auteure.* Test applique, celui que j'ai reenonce au second
+refus :
+
+> **un distracteur est refuse quand la relation qu'il affirme se lit sur les deux faits tels qu'ils
+> sont ecrits, sans qu'il faille apporter une croyance absente du texte ni renverser l'ordre que le
+> texte pose.**
+
+**Les 40 tiennent.** C'est le troisieme compte que je rends sur cette population, et les deux
+premiers etaient faux (38 puis 39 annonces, pour 37 puis 39 reels). **Celui-ci porte sur les 40
+distracteurs relus un par un apres le correctif, y compris ceux des 19 items que le correctif ne
+touche pas.**
+
+Les cinq cas ou le jugement demande plus qu'une lecture, avec leur motif :
+
+| Item | Distracteur | Pourquoi il tient |
+|---|---|---|
+| 6 | `puis` | "Manon met un gros pull puis il fait froid dehors." La succession affirmee suppose un froid qui arrive apres le pull ; le texte pose le froid comme deja la. Ordre renverse |
+| 7 | `mais` | Deja garde au second refus, garde a l'identique. Exige la croyance "un chien qui aboie fait fuir les inconnus" et le renversement de l'ordre que `car` installe |
+| 7 | `ensuite` | La succession affirmee met l'aboiement avant l'inconnu ; le texte pose l'inverse |
+| 13 | `d'abord` | Marque la defaite comme premiere etape ; elle est la derniere du texte |
+| 20 | `donc` | Deja garde deux fois, garde a l'identique. Longer une riviere n'entraine pas d'atteindre un sommet |
+
+#### Ma reponse a `sofia-sm` sur l'item 9 - le distracteur `pourtant` tient
+
+> "Les eleves crient de joie **pourtant** le spectacle vient de se terminer."
+
+**Sa lecture est la bonne, et son jugement est le mien.** L'opposition n'y est lisible que si le
+lecteur **apporte** la croyance "la fin d'un spectacle attriste". Cette croyance n'est nulle part
+dans le texte : ni "spectacle" ni "se terminer" ne portent de valeur affective, et le script
+ordinaire de la fin d'un spectacle pour des eleves est precisement d'applaudir et de crier. **C'est
+le cas de l'item 7, que j'ai garde deux fois, et mon test l'exclut explicitement.**
+
+**Je donne la raison de fond, parce qu'une regle qui ne tient que par sa lettre ne vaut rien.** Ce
+qu'un distracteur "moins bon que faux" abime, c'est l'enfant qui a raison et a qui on dit non. Ici
+l'enfant qui choisit `pourtant` n'a pas mal lu le texte : il lui a ajoute quelque chose. Le jeu qui
+lui repond non, puis lui sert "Cherche ce qui explique les cris des eleves", **lui apprend
+exactement la bonne chose** - que le connecteur se choisit sur ce que le texte dit et non sur ce
+qu'on suppose. **A l'item 10 avant correctif, c'etait l'inverse** : l'enfant avait lu la phrase
+telle qu'elle etait ecrite, et on lui disait qu'il avait tort.
+
+*Verification supplementaire que j'ai faite avant de repondre* : la bonne reponse de l'item 9
+resiste aux deux scripts. Que l'enfant croie les eleves joyeux d'avoir vu le spectacle ou joyeux
+qu'il soit fini, la relation reste causale dans les deux cas, et `parce que` reste le seul mot
+juste. **Rien ne dependait donc de l'emotion que l'enfant apporte.**
+
+**Ou je place l'item 9 dans mon echelle, et je ne l'enjolive pas.** C'est **le cas le plus mince du
+paquet, plus mince que l'item 7** : l'item 7 echoue aux deux criteres de mon test - croyance
+apportee **et** ordre renverse ; l'item 9 n'echoue qu'au premier. Un seul des deux suffit pour que
+le distracteur tienne, et c'est ce qui le sauve. **Un autre professeur pourrait trancher
+autrement.** Si quelqu'un veut le traiter, ce sera une condition nouvelle et datee, pas un
+durcissement de celle-ci - et surement pas un troisieme refus sur une regle que j'ai deja appliquee
+deux fois dans l'autre sens.
+
+**Sur la conduite de `sofia-sm`, et c'est important pour la suite.** C'est son troisieme
+signalement sur ce paquet ; les deux premiers ont trouve un defaut reel que j'avais manque,
+celui-ci n'en trouve pas. **Cela ne le rend pas moins bon.** J'ai juge l'item 9 sur son texte, pas
+sur le taux de reussite de celle qui me l'a route ; si j'avais laisse ce taux peser, j'aurais
+refuse un item correct pour ne pas la desavouer, et ce serait le meme defaut de jugement que
+valider parce que le sprint est fini. **Une porte qui suit celui qui a eu raison la derniere fois
+n'est pas une porte.** Router sans trancher a ma place est la bonne conduite, quelle que soit ma
+reponse.
+
+#### Les conditions calculables, recomptees apres correctif
+
+*Population : les 20 items et les 60 mots servis, recomptes sur l'arbre reaudite, jamais repris de
+l'auteure ni de mes propres blocs.*
+
+| Condition | Verdict | Mesure |
+|---|---|---|
+| `LIA-1` | **tenue** | Un seul `___` sur chacun des 20 items ; consigne du catalogue constante |
+| `LIA-2` | **tenue** | Les 60 mots servis appartiennent tous a la population fermee de dix. Aucun `et`, `ou`, `ni`, `or`, aucun registre soutenu |
+| `LIA-3` | **tenue** | 40 distracteurs sur 40 sous le test reenonce. **Motif de mes deux refus ferme** |
+| `LIA-4` | **tenue** | Sur les 20 items, les trois relations declarees sont deux a deux distinctes. Item 10 : cause / consequence / succession |
+| `LIA-5` | **tenue** | opposition 5, consequence 5, cause 5, succession 5, contre un plancher de 3 |
+| `LIA-6` | **tenue** | Enonce le plus long : **15 mots**, borne 35 |
+| `LIA-7` | **tenue** | Mot le plus long : **11 lettres**, borne 11 |
+| `LIA-8` | **tenue** | Les 20 indices nomment la relation a chercher ; **aucun ne contient un des dix connecteurs de la population**, verifie mot a mot. Douze mots au plus. Vus a l'ecran apres erreur |
+| `LIA-9` | **tenue** | `donc` 3, `car` 3, `mais` 3, `alors` 2, `parce que` 2, `pourtant` 2, `puis` 2, `ensuite` 1, `enfin` 1, `d'abord` 1. Plafond de six jamais approche |
+| `LIA-10` | **portee ci-dessous** | La mention de couverture partielle est ecrite, a `camille-po` de la porter |
+
+**Le correctif n'a casse aucune autre condition.**
+
+#### `LIA-10` - ce que ce Done couvre, et ce qu'il ne couvre pas
+
+**La ligne peut bouger, avec la mention exacte que j'avais fixee d'avance et que je ne change
+pas :**
+
+> **choix du mot de liaison entre deux ou trois phrases, sans production de texte**
+
+**Ce paquet couvre :**
+
+- le **choix** d'un connecteur parmi trois, sur un texte de deux ou trois phrases deja ecrit ;
+- **quatre relations logiques** - opposition, consequence, cause, succession - servies a parts
+  egales, 5 items chacune ;
+- une **population fermee de dix connecteurs simples** : `mais`, `donc`, `car`, `puis`, `ensuite`,
+  `enfin`, `d'abord`, `alors`, `pourtant`, `parce que` ;
+- le connecteur en **tete de seconde phrase** comme en **milieu de phrase**, les deux positions
+  etant servies.
+
+**Ce paquet ne couvre pas, et la ligne de matrice ne doit pas laisser croire le contraire :**
+
+- **la production de texte.** L'enfant ne redige jamais rien : il presse un bouton. La competence du
+  referentiel dit "utiliser a bon escient pour structurer un texte court" ; ce paquet en travaille
+  la reconnaissance, pas l'emploi en production. **C'est la limite principale, et c'est elle qui
+  justifie la mention partielle.**
+- **la structuration d'un texte entier** : trois phrases au maximum, un seul connecteur a la fois.
+  Enchainer plusieurs connecteurs sur un paragraphe n'est jamais demande ;
+- **les connecteurs du registre soutenu** (`cependant`, `neanmoins`, `toutefois`, `en effet`, `par
+  consequent`) et `et`, `ou`, `ni`, `or`, exclus par `LIA-2` pour des motifs ecrits dans mon
+  arbitrage. Un CM1 les rencontre en lecture ; ce paquet ne les travaille pas ;
+- **l'arbitrage entre deux connecteurs egalement possibles.** Le paquet est construit pour qu'un
+  seul mot convienne - c'est `LIA-3`, et c'est ce qui l'a fait refuser deux fois. L'enfant n'y
+  apprend donc pas a choisir entre deux formulations toutes deux correctes ;
+- **la place et la ponctuation du connecteur**, toujours donnees par l'enonce, jamais choisies ;
+- **les relations non servies** : le but, la condition, l'hypothese, l'enumeration.
+
+#### Constat non bloquant, redate du 2026-08-30, qui n'est pas une reserve
+
+Le patron que j'ai date deux fois - **un connecteur place apres un point et suivi d'une virgule**,
+que l'enfant peut ecarter a l'oreille sans raisonner sur la relation - **reste a sept items sur 20.
+Le correctif de l'item 10 ne l'etend pas** : son blanc est en milieu de phrase, et `donc` y est de
+forme parfaitement ordinaire. *Mesure : items dont le blanc suit un point ou ouvre l'enonce et dont
+un distracteur est `car` - items 2, 3, 4, 16, 17, 18, 19, soit sept sur 20.*
+
+**Je precise ce constat plutot que de le repeter tel quel, parce que je l'avais laisse plus lourd
+qu'il n'est.** Sur ces sept items, **le second distracteur reste de forme irreprochable sur quatre
+d'entre eux** (`pourtant` ou `enfin` en tete de phrase : items 2, 4, 16, 18) et seulement un peu
+gauche sur trois (`Mais,` en tete : items 3, 17, 19). **Un enfant qui ecarte `car` a l'oreille doit
+donc encore choisir entre la bonne reponse et un distracteur qu'aucune forme ne trahit.** L'item
+reste un exercice de sens.
+
+**Pourquoi ce n'est pas une reserve, et je le dis pour qu'on ne me le redemande pas** : je l'ai
+nomme deux fois comme condition pour un paquet suivant et jamais comme motif ; en faire une reserve
+aujourd'hui, au moment de valider, serait relever la barre apres coup. Il reste ce qu'il etait :
+**une condition nouvelle et datee, a la main de `camille-po` pour un paquet de connecteurs
+ulterieur.** La ponctuation elle-meme n'est pas ma porte (`DEC-0056`) ; ce que je nomme est son
+effet sur la difficulte.
+
+#### `MNC-1`
+
+**`MNC-1` s'applique a ce Done, et ce Done ne le couvre pas.** Rien ne garantit ici que l'enfant
+voie, sans faire defiler la page, un element quelconque du jeu, y compris le retour qui suit sa
+reponse - verdict, indice, proposition. Propriete sortie de la porte pedagogique par arbitrage de
+l'utilisatrice du 2026-08-28 (`DEC-0053`) ; dette ouverte, croissante, assumee. **Aucune mesure ne
+l'a instruite sur ce paquet.** Mes deux blocs precedents ecrivaient "sans objet, un refus n'est pas
+un Done" : ce n'est plus le cas aujourd'hui, et la clause s'applique donc pleinement.
+
+#### Ce que ce Done ne dit pas
+
+**Le `relecteur-pedagogique` n'est pas passe sur ce sprint.** L'orthographe, l'accentuation et la
+ponctuation des 20 enonces, des 60 propositions et des 20 indices ne sont pas jugees par moi
+(`DEC-0002` amende le 2026-08-04, `DEC-0056`). **Ce Done n'en dit rien**, et il ne vaut pas
+approbation de la forme ecrite de ce paquet.
+
+#### Ce sur quoi je reste la seule garde sur ce paquet
+
+Je le nomme pour que personne ne croie couvert ce qui ne l'est pas :
+
+- **`LIA-3`, integralement.** Elle a fonde deux refus, la CI etait verte les deux fois, et **aucun
+  automate ne la voit** - son auteure l'ecrit elle-meme. Le test declaratif de `sofia-sm` verifie
+  que les relations sont admises et deux a deux distinctes ; il ne dit rien de ce qu'un texte
+  affirme. **Ce Done repose sur ma lecture des 40 distracteurs, et sur rien d'autre.**
+- **La justesse de la relation declaree** face au texte reel, item par item : tenue sur les 20.
+- **Le jugement de niveau** : lisibilite, vocabulaire, charge cognitive.
+
+#### Ce que je route
+
+| Suite | Destinataire | Ce que je demande |
+|---|---|---|
+| **Done pedagogique prononce, `VALIDE`. La ligne peut passer a `couvert-valide`** avec la mention "choix du mot de liaison entre deux ou trois phrases, sans production de texte" | `camille-po` | Ecrire la matrice. Ce n'est pas moi qui l'ecris. **La mention n'est pas facultative** : c'est `LIA-10` |
+| **Aucune reserve. Rien a corriger sur ce paquet** | `camille-po` | Ne pas fabriquer de story qui n'existe pas |
+| **Item 9 : le distracteur `pourtant` tient, avec son motif de fond** | `sofia-sm`, `camille-po` | Ne pas y toucher. Le motif est ecrit pour qu'un tiers puisse s'en servir sans me le redemander |
+| **Mon compte est complet au troisieme essai : 40 sur 40** | `camille-po`, `sofia-sm` | Les deux premiers etaient faux et restent lisibles plus haut. C'est le prix de la trace, pas une raison de l'effacer |
+| **`LIA-3` reste hors de tout garde-fou apres ce Done** | `yanis-qa`, `theo-archi` | **Un Done ne la couvre pas davantage qu'un refus.** Ne pas la compter comme couverte au motif que le paquet est valide |
+| **Le patron "connecteur apres un point suivi d'une virgule", sept items sur 20, precise** | `camille-po` | Condition datee pour un paquet de connecteurs ulterieur. **Pas une reserve, pas un motif** |
+| **La toolchain de type `jdk` et de version `21` du poste rapporte 25.0.2, et mes deux blocs precedents ecrivaient "JDK 21" sans l'avoir constate** | `theo-archi`, `sofia-sm` | Ce n'est pas ma porte et cela ne change aucun verdict. **C'est un fait que j'ai enregistre deux fois sans le verifier**, et l'enveloppe le disait des sa premiere ligne |
+| **Mes blocs datent le second refus du 2026-08-30, les commentaires des paquets le datent du 2026-09-01** | `sofia-sm` | Les onze commits du second tour portent tous 2026-08-30. Deux dates pour un meme jour dans la memoire partagee |
+| **Le `relecteur-pedagogique` n'est pas passe** | `sofia-sm` | Ce Done ne dit rien de l'orthographe ni de la ponctuation des textes lus par l'enfant |
