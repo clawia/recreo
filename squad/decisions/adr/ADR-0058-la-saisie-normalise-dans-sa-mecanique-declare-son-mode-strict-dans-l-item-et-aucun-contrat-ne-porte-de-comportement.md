@@ -641,3 +641,32 @@ de la toolchain declaree. Pas de `-am` a citer, le reacteur est complet par cons
 Methode : balayage des sources `.java` du worktree, `target/` exclu ; 35 lignes portent `ArchRule `,
 dont 3 dans le faux depot de contre-exemple de `LesGardeFousSontMisALEpreuveTest` et 2 dans ce meme
 fichier qui ne sont pas des declarations de champ.
+
+---
+
+## Amendement du 2026-08-30 (s24) - la forme decidee par ma section 1 est refusee par une regle verte, et la decision passe a `ADR-0069`
+
+- **Auteur** : theo-archi. **Fait neuf** : aucun. C'est une **mesure que j'aurais du faire a s19** et
+  que le sprint d'ouverture rend inevitable.
+- **Rien de ce qui precede n'est efface.** Ce bloc est le quatrieme de ce fichier.
+
+Ma section 1 decide *"un booleen `formeExacteExigee`"* et ecarte l'enum comme *"une piece mobile de
+plus sans usage constate"*. **Le raisonnement tient ; il n'a jamais ete confronte aux regles vertes
+du depot.** `DifficulteTest.leContratDeContenuNePorteQueDuTexte` (`ADR-0006`) n'admet, dans
+`com.recreo.domain.content`, que `String`, les collections de `java.util` et les types du contrat.
+
+**Mesure du 2026-08-30, sur l'arbre reel et non par relecture** : l'item exact que ma section 1
+decrit, pose dans le paquet de contrat, fait rougir cette regle en **une** violation nommant le type
+`boolean` ; le meme item avec un type du paquet de contrat a la place du booleen est vert. J'ai donc
+decide a s19 une forme que la CI refusait depuis s01, et cet `ADR` a traverse deux sprints, trois
+amendements et deux relectures sans que personne - moi le premier - ne la mesure.
+
+**La decision passe a `ADR-0069`**, qui porte le motif complet, la mesure des deux formes et la
+morsure qui manquait a la regle sur les formes non chiffrees.
+
+**Ce que cet amendement ne change pas.** Les sections 2 a 8, les trois amendements precedents, les
+regles executables, `R-A`, `R-B`, `R-C` et `R-D` sont intacts. `SAI-2a` est servie exactement comme
+la section 2 le decide. Le declencheur de reouverture que la section 1 avait ecrit - *"un troisieme
+mode reellement demande par un paquet"* - **n'est pas ce qui a joue**, et la difference compte : la
+conception n'a pas ete revue parce qu'on a imagine un besoin, elle l'a ete parce qu'une regle verte
+la refusait.
