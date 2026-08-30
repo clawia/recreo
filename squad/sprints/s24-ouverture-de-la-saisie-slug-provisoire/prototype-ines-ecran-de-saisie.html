@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prototype - ecran de saisie (ines-design, s24)</title>
+    <!--
+      VEHICULE DE MESURE, JAMAIS DU CODE SERVI.
+
+      Ce fichier n'est pas un gabarit Thymeleaf et n'est charge par aucun controleur : c'est
+      l'artefact sur lequel les chiffres de proposition-ines-ecran-de-saisie.md ont ete releves,
+      commite pour que la mesure soit rejouable (squad/README.md section 4 : un chiffre sans sa
+      methode n'est pas une mesure).
+
+      Il charge les DEUX feuilles reelles de l'application, par chemin relatif, dans l'ordre
+      qu'ADR-0014 impose (tierce d'abord, maison ensuite). Les regles candidates de la proposition
+      sont ecrites plus bas dans un <style> unique, apres la feuille maison, exactement comme elles
+      s'appliqueraient si elles y etaient ajoutees : rien n'est mesure ici qui ne le serait a
+      l'identique une fois la proposition versee dans recreo.css.
+
+      L'en-tete et la coquille (#jeu.container.zone-jeu) sont recopies de templates/accueil.html,
+      pour que la hauteur au-dessus du pli et le rembourrage lateral soient ceux de l'application.
+
+      Les huit etats de l'ecran vivent cote a cote dans ce document, chacun sous [data-etat].
+      Ils sont tous masques par defaut ; l'outil de mesure en affiche un seul a la fois
+      (squad/outils/ines-design/mesurer-ecran-de-saisie.py). Un seul etat visible a la fois est ce
+      qui rend la mesure du pli honnete.
+
+      LES TEXTES D'ENFANT SONT DES CANDIDATS, PAS DES ACQUIS. Le mot "eleve"/"élève" et ses fautes
+      sont l'exemple que nadia-prof emploie elle-meme dans son arbitrage prealable ; les phrases de
+      verdict sont des propositions. La formulation des retours (SAI-8, SAI-9a, SAI-9b, SAI-2c) est
+      a elle, jamais a moi.
+    -->
+    <link rel="stylesheet" href="../../../adapters/adapter-web/src/main/resources/static/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../adapters/adapter-web/src/main/resources/static/css/recreo.css">
+    <style>
+        /* ------------------------------------------------------------------
+           Regles candidates - proposition-ines-ecran-de-saisie.md, section 5.1.
+           Aucune n'est aujourd'hui dans recreo.css : c'est le lot 4 qui les y verse.
+           ------------------------------------------------------------------ */
+
+        /* La zone d'ecriture : un rang qui se replie, meme forme que .propositions. */
+        .saisie {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            margin: 0.75rem 0;
+            padding: 0;
+        }
+
+        /* Le champ. Largeur independante de la reponse attendue (elle la trahirait), plafonnee
+           pour ne pas devenir un bandeau sur grand ecran. */
+        .champ-reponse {
+            flex: 1 1 12rem;
+            max-width: 24rem;
+            min-height: 3.5rem;
+            min-width: 2.75rem;
+            padding: 0.5rem 1.25rem;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--recreo-texte);
+            background-color: var(--recreo-accent-texte);
+            border: 0.125rem solid var(--recreo-accent);
+            border-radius: 0.5rem;
+        }
+
+        /* L'anneau de focus clavier, sur la meme forme que les neuf autres pressables (FOC-1). */
+        .champ-reponse:focus-visible {
+            box-shadow: inset 0 0 0 0.1875rem currentColor;
+        }
+
+        /* .valider et .continuer-manche rejoignent les blocs partages des boutons pleins de
+           recreo.css - ces trois regles sont ici la recopie de ce que le lot 4 obtient en ajoutant
+           deux selecteurs a des blocs existants, jamais un habillage a part. */
+        .valider,
+        .continuer-manche {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 2.75rem;
+            min-width: 2.75rem;
+            padding: 0.75rem 1.25rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--recreo-accent-texte);
+            background-color: var(--recreo-accent);
+        }
+
+        .valider:hover,
+        .continuer-manche:hover,
+        #jeu .valider:active,
+        #jeu .continuer-manche:active,
+        .valider:focus-visible,
+        .continuer-manche:focus-visible {
+            color: var(--recreo-accent-texte);
+            background-color: var(--recreo-accent);
+        }
+
+        .valider:focus-visible,
+        .continuer-manche:focus-visible {
+            box-shadow: inset 0 0 0 0.1875rem currentColor;
+        }
+
+        /* Ce que l'enfant a deja ecrit sur cette manche (SAI-12), barre comme M9 barre une
+           proposition deja pressee - meme signe pour le meme sens, jamais une couleur seule. */
+        .tentatives {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem 1rem;
+            margin: 0.25rem 0 0;
+            padding: 0;
+            font-size: 1.25rem;
+            list-style: none;
+        }
+
+        .tentative-passee {
+            text-decoration: line-through;
+            text-decoration-color: var(--recreo-texte);
+            text-decoration-thickness: 0.1875rem;
+            text-decoration-skip-ink: none;
+        }
+
+        /* La chaine sur laquelle le verdict a ete rendu (SEUIL-1, SAI-9b, SAI-2c). */
+        .chaine-jugee {
+            font-size: 1.25rem;
+            color: var(--recreo-texte);
+            margin: 0.25rem 0 0;
+        }
+
+        /* La forme de reference, montree seulement a la revelation et a la reussite (SAI-8, SAI-9b).
+           Le mot lui-meme est ce que l'enfant doit lire en premier : il est le plus grand de la
+           boite, sur le patron deja arbitre de .mot-designe dans .enonce (ADR-0062). */
+        .forme-de-reference {
+            font-size: 1.25rem;
+            color: var(--recreo-texte);
+            margin: 0.25rem 0 0;
+        }
+
+        .forme-attendue {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        /* --- hors proposition : uniquement le commutateur d'etat du vehicule de mesure --- */
+        [data-etat] { display: none; }
+    </style>
+</head>
+<body>
+<header class="entete">
+    <nav class="container entete-contenu">
+        <img src="../../../adapters/adapter-web/src/main/resources/static/favicon.ico" alt="" class="icone-entete">
+        <h1 class="nom-site">Recreo</h1>
+        <a class="btn chip-niveau" data-role="entree" href="#">CP</a>
+        <a class="btn chip-niveau" data-role="entree" href="#">CM1</a>
+        <a class="btn lien-accueil" data-role="sortie" href="#">Les jeux</a>
+    </nav>
+</header>
+<main id="jeu" class="container zone-jeu">
+
+    <!-- ETAT 1 - manche fraiche. Aucun message : le jeu n'a rien a dire tant que l'enfant n'a
+         rien envoye. Le champ est vide, il porte le focus declare par le serveur. -->
+    <div data-etat="fraiche" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <label class="consigne" for="reponse-ecrite-1">Écris le mot.</label>
+        <p class="enonce" tabindex="-1">Un ___ lève le doigt.</p>
+        <form class="saisie">
+            <input class="champ-reponse" id="reponse-ecrite-1" name="reponseEcrite" type="text"
+                   inputmode="text" autocomplete="off" data-role="action" data-focus-cible="true"
+                   value="">
+            <button type="submit" class="btn valider" data-role="action">Je réponds</button>
+        </form>
+    </div>
+
+    <!-- ETAT 2 - premier refus. SAI-9a : la chaine de l'enfant reste visible ET modifiable, dans
+         le champ ; la reponse attendue n'est nommee nulle part. Aucune tentative passee a lister :
+         la seule qui existe est celle du champ. -->
+    <div data-etat="echec-1" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <label class="consigne" for="reponse-ecrite-2">Écris le mot.</label>
+        <p class="enonce" tabindex="-1">Un ___ lève le doigt.</p>
+        <form class="saisie">
+            <input class="champ-reponse" id="reponse-ecrite-2" name="reponseEcrite" type="text"
+                   inputmode="text" autocomplete="off" data-role="action" data-focus-cible="true"
+                   value="elleve">
+            <button type="submit" class="btn valider" data-role="action">Je réponds</button>
+        </form>
+        <div class="message-jeu" role="status">
+            <div class="signal est-faux">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">Ce n'est pas ça. Corrige et réessaie.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAT 3 - second refus. SAI-12 : la tentative deja depensee est listee, barree, sous le
+         verdict ; celle que l'enfant peut encore corriger est dans le champ, jamais dans les deux
+         endroits a la fois. -->
+    <div data-etat="echec-2" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <label class="consigne" for="reponse-ecrite-3">Écris le mot.</label>
+        <p class="enonce" tabindex="-1">Un ___ lève le doigt.</p>
+        <form class="saisie">
+            <input class="champ-reponse" id="reponse-ecrite-3" name="reponseEcrite" type="text"
+                   inputmode="text" autocomplete="off" data-role="action" data-focus-cible="true"
+                   value="ellève">
+            <button type="submit" class="btn valider" data-role="action">Je réponds</button>
+        </form>
+        <div class="message-jeu" role="status">
+            <div class="signal est-faux">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">Ce n'est pas ça. Tu as déjà écrit :</p>
+            </div>
+            <ul class="tentatives">
+                <li class="tentative-passee">elleve</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ETAT 4 - revelation, apres le troisieme refus. SAI-9b : la chaine de l'enfant et la forme
+         de reference sont montrees ensemble, et c'est le seul moment ou la reponse est nommee.
+         Le champ disparait : la manche est resolue, une seule action reste possible. -->
+    <div data-etat="revelation" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">Écris le mot.</p>
+        <p class="enonce" tabindex="-1">Un ___ lève le doigt.</p>
+        <button type="button" class="btn continuer-manche" data-role="action"
+                data-focus-cible="true">Continuer</button>
+        <div class="message-jeu" role="status">
+            <div class="signal est-faux">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">Ce n'est pas ça.</p>
+            </div>
+            <p class="chaine-jugee">Tu as écrit : ellevve.</p>
+            <p class="forme-de-reference">On écrit : <span class="forme-attendue">élève</span></p>
+            <ul class="tentatives">
+                <li class="tentative-passee">elleve</li>
+                <li class="tentative-passee">ellève</li>
+                <li class="tentative-passee">ellevve</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ETAT 5 - reussite par tolerance (SAI-8). Le verdict est juste, la manche est reussie, et le
+         retour montre la forme de reference integralement accentuee. -->
+    <div data-etat="reussite" class="ecran-de-jeu">
+        <p class="score">Score : 3</p>
+        <p class="consigne">Écris le mot.</p>
+        <p class="enonce" tabindex="-1">Un ___ lève le doigt.</p>
+        <button type="button" class="btn continuer-manche" data-role="action"
+                data-focus-cible="true">Continuer</button>
+        <div class="message-jeu" role="status">
+            <div class="signal est-juste">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">Oui !</p>
+            </div>
+            <p class="forme-de-reference">On écrit : <span class="forme-attendue">élève</span></p>
+        </div>
+    </div>
+
+    <!-- ETAT 6 - reussite sur un item en mode strict (SAI-2c). La chaine jugee est montree aussi
+         quand la reponse est bonne : c'est ce qui rend visible une correction automatique du
+         clavier, la seule protection ecrivable contre un angle mort que personne ici ne mesure. -->
+    <div data-etat="reussite-stricte" class="ecran-de-jeu">
+        <p class="score">Score : 3</p>
+        <p class="consigne">Écris le mot qui manque.</p>
+        <p class="enonce" tabindex="-1">Je vais ___ l'école.</p>
+        <button type="button" class="btn continuer-manche" data-role="action"
+                data-focus-cible="true">Continuer</button>
+        <div class="message-jeu" role="status">
+            <div class="signal est-juste">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">Oui !</p>
+            </div>
+            <p class="chaine-jugee">Tu as écrit : à.</p>
+        </div>
+    </div>
+
+    <!-- ETAT 7 - manche fraiche a reponse numerique courte, l'usage que nadia-prof recommande en
+         premier. Seul inputmode change : ni la largeur du champ, ni sa taille, ni sa forme ne
+         disent combien de caracteres sont attendus. -->
+    <div data-etat="numerique" class="ecran-de-jeu">
+        <p class="score">Score : 5</p>
+        <label class="consigne" for="reponse-ecrite-7">Écris le résultat.</label>
+        <p class="enonce" tabindex="-1">7 + 5 = ?</p>
+        <form class="saisie">
+            <input class="champ-reponse" id="reponse-ecrite-7" name="reponseEcrite" type="text"
+                   inputmode="numeric" autocomplete="off" data-role="action" data-focus-cible="true"
+                   value="">
+            <button type="submit" class="btn valider" data-role="action">Je réponds</button>
+        </form>
+    </div>
+
+    <!-- ETAT 8 - le meme ecran avec le rang de touches accentuees de la section 6, variante 2.
+         Rendu ici pour etre mesure, pas pour etre recommande tel quel : il ne s'affiche que sur un
+         item en mode strict, et son cout vertical est le chiffre qui decide. -->
+    <div data-etat="accents" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <label class="consigne" for="reponse-ecrite-8">Écris le mot qui manque.</label>
+        <p class="enonce" tabindex="-1">Je vais ___ l'école.</p>
+        <form class="saisie">
+            <input class="champ-reponse" id="reponse-ecrite-8" name="reponseEcrite" type="text"
+                   inputmode="text" autocomplete="off" data-role="action" data-focus-cible="true"
+                   value="">
+            <button type="submit" class="btn valider" data-role="action">Je réponds</button>
+            <!-- Dans le meme formulaire, jamais a cote : c'est ce qui fait qu'un appui sur une
+                 touche renvoie au serveur ce que l'enfant a deja ecrit, sans aucun script. -->
+            <div class="touches-accentuees">
+                <button type="submit" class="btn touche-accentuee" data-role="action" name="lettre" value="é">é</button>
+                <button type="submit" class="btn touche-accentuee" data-role="action" name="lettre" value="è">è</button>
+                <button type="submit" class="btn touche-accentuee" data-role="action" name="lettre" value="à">à</button>
+                <button type="submit" class="btn touche-accentuee" data-role="action" name="lettre" value="ù">ù</button>
+                <button type="submit" class="btn touche-accentuee" data-role="action" name="lettre" value="ê">ê</button>
+                <button type="submit" class="btn touche-accentuee" data-role="action" name="lettre" value="ç">ç</button>
+            </div>
+        </form>
+    </div>
+
+</main>
+<style>
+    /* Regles du seul etat 8, tenues a part parce que la variante 2 de la section 6 n'est pas
+       recommandee en l'etat : elle ne se verse dans recreo.css que si l'arbitrage la retient. */
+    .touches-accentuees {
+        flex: 1 1 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0;
+    }
+
+    /* Rembourrage lateral a 1,1rem et non 0,75rem : ADR-0017 compare les deux axes du raccourci
+       padding, et .lien-accueil (la sortie d'en-tete, visible sur cet ecran) declare 1,1rem. Une
+       touche a 0,75rem ferait declarer a la sortie plus qu'a une action du meme ecran. */
+    .touche-accentuee {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.75rem;
+        min-width: 2.75rem;
+        padding: 0.5rem 1.1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--recreo-texte);
+        background-color: var(--recreo-accent-texte);
+        border: 0.125rem solid var(--recreo-accent);
+        border-radius: 0.5rem;
+    }
+</style>
+</body>
+</html>
