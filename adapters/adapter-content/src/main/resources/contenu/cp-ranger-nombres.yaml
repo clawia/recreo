@@ -36,7 +36,15 @@ descripteur:
 # RAN-6 : au moins un tiers des items opposent deux nombres de la meme dizaine - tenu sur 9 items
 # sur 24 (>= 8 requis).
 #
-# RAN-7 : l'indice donne une methode, jamais le triplet range.
+# RAN-7 : l'indice donne une methode, jamais le triplet range, et est choisi pour son item -
+# jamais distribue par un cycle independant du contenu (correctif du 2026-08-30, REFUS de
+# nadia-prof du meme jour, FICHE-bandit-manchot-ranger-nombres-cp.md). Deux contraintes
+# tiennent l'appariement, verifiees par le test : "Compare le nombre de chiffres de chaque
+# nombre." n'est affectee qu'aux items ou les trois nombres n'ont pas tous le meme nombre de
+# chiffres (sinon la methode ne separe rien) ; "Regarde d'abord les dizaines..." et "Compare
+# les dizaines, puis les unites si besoin." ne sont affectees qu'aux items sans le nombre 100
+# (son chiffre des dizaines lu seul, 0, le fait confondre avec un nombre a un chiffre - c'est
+# exactement l'erreur factuelle que nadia-prof a vue en jouant sur les items alors 16 et 22).
 # RAN-8 : vingt-quatre items, aucun triplet ne se repete.
 #
 # ADR-0068 : les propositions de ce paquet sont des listes ordonnees de trois nombres, pas des
@@ -47,7 +55,7 @@ items:
   - enonce: "66, 54, 59"
     bonneReponse: "54, 59, 66"
     distracteurs: ["66, 59, 54", "54, 66, 59"]
-    indice: "Compare le nombre de chiffres de chaque nombre."
+    indice: "Compare les dizaines, puis les unités si besoin."
   - enonce: "29, 27, 68"
     bonneReponse: "27, 29, 68"
     distracteurs: ["68, 29, 27", "27, 68, 29"]
@@ -95,7 +103,7 @@ items:
   - enonce: "94, 11, 56"
     bonneReponse: "11, 56, 94"
     distracteurs: ["94, 56, 11", "11, 94, 56"]
-    indice: "Compare le nombre de chiffres de chaque nombre."
+    indice: "Compare les dizaines, puis les unités si besoin."
   - enonce: "16, 55, 51"
     bonneReponse: "16, 51, 55"
     distracteurs: ["55, 51, 16", "51, 55, 16"]
@@ -107,7 +115,7 @@ items:
   - enonce: "48, 2, 100"
     bonneReponse: "2, 48, 100"
     distracteurs: ["100, 48, 2", "100, 2, 48"]
-    indice: "Compare les dizaines, puis les unités si besoin."
+    indice: "Compare le nombre de chiffres de chaque nombre."
   - enonce: "71, 54, 93"
     bonneReponse: "54, 71, 93"
     distracteurs: ["93, 71, 54", "71, 93, 54"]
@@ -119,7 +127,7 @@ items:
   - enonce: "52, 91, 86"
     bonneReponse: "52, 86, 91"
     distracteurs: ["91, 86, 52", "91, 52, 86"]
-    indice: "Compare le nombre de chiffres de chaque nombre."
+    indice: "Compare les dizaines, puis les unités si besoin."
   - enonce: "30, 94, 23"
     bonneReponse: "23, 30, 94"
     distracteurs: ["94, 30, 23", "30, 23, 94"]
@@ -131,7 +139,7 @@ items:
   - enonce: "37, 100, 16"
     bonneReponse: "16, 37, 100"
     distracteurs: ["100, 37, 16", "100, 16, 37"]
-    indice: "Compare les dizaines, puis les unités si besoin."
+    indice: "Compare le nombre de chiffres de chaque nombre."
   - enonce: "7, 65, 48"
     bonneReponse: "7, 48, 65"
     distracteurs: ["65, 48, 7", "65, 7, 48"]
