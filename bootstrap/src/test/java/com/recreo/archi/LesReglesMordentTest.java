@@ -310,6 +310,23 @@ class LesReglesMordentTest {
                 .hasMessageContaining("int");
     }
 
+    /**
+     * ADR-0069 : la meme regle, sur un booleen. Les trois morsures ci-dessus portent toutes sur une
+     * <b>grandeur</b> - un entier, un entier cache dans un argument generique - et laissaient croire
+     * que la regle ne visait que les bornes chiffrees. Elle refuse aussi un mode declare en booleen,
+     * et c'est ce que la conception de la saisie a rencontre : la section 1 d'ADR-0058 decidait "un
+     * booleen formeExacteExigee" sur l'item, forme mesuree rouge sur l'arbre reel le 2026-08-30.
+     * Sans cette morsure, la portee reelle de la regle restait a decouvrir par un lot.
+     */
+    @Test
+    void unModeDeComparaisonEnBooleenDansLeContratDeContenuEstRefuse() {
+        assertThatThrownBy(() -> DifficulteTest.leContratDeContenuNePorteQueDuTexte
+                .check(contreExemples("com.recreo.domain.content")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("com.recreo.domain.content.ModeDeSaisieEnBooleenContreExemple.formeExacteExigee")
+                .hasMessageContaining("boolean");
+    }
+
     /** ADR-0007 : le dixieme chargeur, hors de l'adaptateur de contenu. */
     @Test
     void unChargeurHorsDeLAdaptateurDeContenuEstRefuse() {
