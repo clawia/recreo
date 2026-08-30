@@ -6699,3 +6699,121 @@ pour que la reponse existe avant que la capacite libere un prochain paquet.
 prochain paquet des qu'une reponse favorable existe ; l'utilisatrice pour la source d'enregistrement
 de voix humaine que les deux candidates audio exigent avant tout arbitrage de contenu.
 - **Lien decision** : `DEC-0053`.
+
+## Sprint 22 (cloture, 2026-08-30) - Sept reserves non bloquantes versees en stories, reaudit de `nadia-prof`
+
+`nadia-prof` a prononce trois Done pedagogique le 2026-08-30 (`S13-2` **VALIDE**, `S13-3` **VALIDE
+SOUS RESERVE**, `S17-2` **VALIDE** - detail dans `squad/programme/MATRICE-couverture.md`, amendement
+du 2026-08-30). Sept reserves non bloquantes en sortent, comme sa fiche et son amendement le
+demandent explicitement (*"les sept reserves nouvelles - cinq sur `S13-3`, deux sur `S17-2` -
+`camille-po` en fait du backlog"*). Aucune n'empeche les deux jeux de rester exposes au catalogue
+pendant leur reprise (`DEC-0045`, section 3).
+
+### `cm1-problemes-durees` (`S13-3`) - cinq reserves
+
+**Besoin commun** : en tant qu'eleve de CM1 qui joue a "Les problemes de durees", je veux que le
+texte, les propositions et leur mise en page soient exacts et complets, afin que le jeu reste une
+tache de calcul de duree et non un exercice de lecture d'indices visuels ou de mise en page.
+
+**Competence programme visee** : mathematiques, CM1 (cycle 3), "Resoudre des problemes de durees
+(calcul d'une duree, d'un horaire d'arrivee)" (`squad/programme/mathematiques/competences-cm1.md`).
+
+- **Reserve A - la derniere clause de `D-6` n'est pas tenue** : sur les 72 propositions du paquet,
+  une seule porte un compte de minutes superieur a 59 (*"2 heures 70 minutes"*, item 11), et c'est
+  la seule anomalie visible du paquet, ce que `D-6` interdit dans les mots memes de `nadia-prof` :
+  *"elle ne doit pas etre la seule anomalie visible du paquet, sinon elle s'elimine a l'oeil sans
+  calcul"*. Critere : etant donne le paquet, quand on ajoute une seconde ecriture de ce type sur un
+  autre item de la forme "duree ecoulee" (ou qu'on retire celle de l'item 11), alors un balayage
+  mecanique des 72 propositions ne trouve plus une anomalie de ce type qui soit seule. **Cout : une
+  chaine** (chiffre de `nadia-prof`).
+- **Reserve B - `TYP-1`, quatre signes orphelins mesures a l'ecran.** Seul des trois paquets de s22
+  a ne porter aucune espace insecable devant un signe de ponctuation double : 0 sur 24, contre 25
+  sur 25 (`S13-2`) et 20 sur 20 (`S17-2`). Critere, dans les mots de `TYP-1`
+  (`squad/conformite/ARBITRAGE-typographie-espace-avant-signe-double.md`) : *"aucune ligne rendue
+  d'un texte lu par un enfant ne se compose uniquement de ponctuation"*. Etant donne les 24 enonces
+  du paquet, rendus au navigateur reel a 744 x 551, quand on insere une espace insecable devant
+  chaque signe de ponctuation double qui en manque, alors `squad/outils/nadia-prof/chercher-un-
+  signe-orphelin.py` ne compte plus aucun signe orphelin sur ce paquet. **Cout : remplacement
+  d'espaces sur les 24 enonces - la plus chere des sept reserves** (chiffre de `nadia-prof`).
+- **Reserve C - un instant coupe entre le nombre et son unite**, non couvert par `TYP-1` : l'item
+  d'Iris rend *"9"* en fin de ligne et *"h 10."* au debut de la suivante. Critere : etant donne les
+  instants au format "nombre h nombre" servis par ce paquet, quand on insere une espace insecable
+  entre le nombre et "h", alors aucun instant ne se coupe entre son nombre et son unite, mesure au
+  meme viewport (744 x 551). **Cout : un cas mesure** (item d'Iris) ; le paquet n'a pas ete balaye
+  exhaustivement pour ce defaut precis, et le cout reel depend de ce que ce balayage trouve.
+- **Reserve D - sur les douze items "horaire d'arrivee", la bonne reponse n'est jamais la plus
+  petite des trois (0 sur 12), structurellement** : `ERR-INVERSE` et la recopie de l'heure de depart
+  produisent toutes deux un horaire anterieur, jamais posterieur - regularite creee par la
+  correction de `D-6` que `nadia-prof` a elle-meme exigee, et qu'elle nomme comme telle. Critere :
+  etant donne les douze items de la forme "horaire d'arrivee", quand on revoit leurs distracteurs,
+  alors au moins un item propose une bonne reponse qui est la plus petite des trois propositions,
+  sans que `D-6` (plausibilite et plafond du tiers), `D-7` (bornes de rang sur le paquet entier,
+  25,0 / 50,0 / 25,0 aujourd'hui) ni `D-9` (absence de stereotype) ne cessent d'etre tenues. **Cout :
+  reconception de contenu sur une partie des douze items, pas une simple chaine** - toute nouvelle
+  ecriture doit reverifier `D-6` et `D-7` dans le meme geste.
+- **Reserve E - l'en-tete surdeclare son propre contenu** : il ecrit que *"la recette est preparee
+  en classe par des filles - Iris, Nour"* ; l'item d'Iris dit bien "en classe", celui de Nour ne le
+  dit pas. `D-9` reste tenue - c'est la phrase qui devance le contenu, pas le contenu qui manque.
+  Critere : etant donne le commentaire d'en-tete du fichier, quand on le relit, alors il ne decrit
+  plus l'item de Nour comme se deroulant "en classe" si l'item ne le dit pas (ou l'item de Nour le
+  dit explicitement). **Cout : une phrase de commentaire.**
+
+### Note - `TYP-1` s'applique a tout paquet neuf a compter du 2026-08-30, condition neuve et datee de `nadia-prof`
+
+`nadia-prof` clarifie une ambiguite qu'elle declare sienne (`squad/conformite/ARBITRAGE-
+typographie-espace-avant-signe-double.md`, `TYP-1` : *"aucune ligne rendue d'un texte lu par un
+enfant ne se compose uniquement de ponctuation"*) : sa redaction du 2026-08-28 ne disait pas si
+`TYP-1` s'applique au contenu neuf livre apres cette date. **A compter du 2026-08-30, tout paquet
+neuf applique `TYP-1`** ; aucun paquet existant n'en est justiciable retroactivement. Je le verse
+ici pour que ce ne soit pas une phrase qui pourrit dans un bloc de validation : tout critere
+pedagogique attendu que j'ecris desormais pour un paquet neuf, dans une fiche de conformite
+ouverte a partir de cette date, porte `TYP-1` a cote des criteres de contenu.
+
+Elle mesure aussi, dans le meme releve (`squad/outils/nadia-prof/chercher-un-signe-orphelin.py`,
+navigateur reel a 744 x 551, 453 textes dont 229 se replient) que **le catalogue compte 18 signes
+orphelins contre 14 le 2026-08-28**, et qu'un second defaut, non couvert par `TYP-1` - un instant
+qui se coupe entre son nombre et son unite (*"9 h 10"*) - existe et n'est nomme par aucune
+condition (reserve C ci-dessus). **Fait de `yanis-qa`, qui rend cette clarification plus
+urgente** : `catalogue.yaml` porte **zero** espace insecable sur l'ensemble de ses champs, et
+**aucun garde-fou n'en exige aujourd'hui la presence** - un texte qui applique l'insecable et un
+texte qui ne l'applique pas passent le meme test (`squad/sprints/s22-couverture-maximale-du-
+catalogue/rapport-qualite.md`, section 3). Ce gouffre technique est deja porte comme obstacle
+`OUVERT` dans `squad/sprints/s22-couverture-maximale-du-catalogue/review.md` (obstacle 7) : je ne
+le reouvre pas ici comme une story neuve, je verse la clarification de `nadia-prof` a cote pour
+qu'un lecteur de ce backlog ne la retrouve pas seulement dans un bloc de validation daté.
+
+- **Lien decision** : `squad/conformite/ARBITRAGE-typographie-espace-avant-signe-double.md`,
+  section `TYP-1` ; `squad/conformite/FICHE-bandit-manchot-problemes-durees-cm1.md`, reserve B.
+- **Agent pressenti** : `camille-po`, reflexe a chaque fiche neuve ouverte a partir du 2026-08-30 ;
+  `theo-archi` et `yanis-qa` pour le garde-fou technique, deja route par l'obstacle 7 de s22.
+
+### `cm1-comprehension` (`S17-2`) - deux reserves
+
+**Besoin commun** : en tant qu'eleve de CM1 qui joue a "Comprendre un texte", je veux que ce qu'un
+adulte lit dans l'en-tete du fichier corresponde a ce que le paquet contient reellement, afin qu'un
+tiers qui verifie sans rejouer ne se trompe pas sur ce qui est couvert.
+
+**Competence programme visee** : francais, CM1 (cycle 3), "Comprendre un texte narratif ou
+documentaire (questions explicites et implicites, inferences simples)"
+(`squad/programme/francais/competences-cm1.md`).
+
+- **Reserve 1 - l'en-tete se sous-declare** : il affirme que *"17 items sur 20 sont marques
+  `# COMP-3`"* ; le fichier en porte 20 sur 20 depuis la correction de `marc-dev`. Critere : etant
+  donne le commentaire d'en-tete du fichier, quand on le relit, alors le chiffre qu'il donne pour le
+  marquage `COMP-3` correspond au compte reel du fichier. **Cout : une ligne de commentaire.**
+- **Reserve 2 - l'item des bougies, marge la plus mince des vingt sous `COMP-2` - rien a corriger
+  sur le paquet.** `nadia-prof` le declare **tenu** sous sa procedure ecrite (l'elimination) et nomme
+  une imprecision de sa propre condition : *"aucune ne se devine par la seule culture generale" ne
+  tranche pas ce cas*. Elle ne l'applique pas plus durement aujourd'hui qu'hier et reecrira `COMP-2`
+  en condition neuve et datee, avec un test qui separe l'elimination du pari, avant le prochain
+  paquet de comprehension. **Cout : aucun cote contenu ou developpement** ; le cout est la
+  reecriture de la condition elle-meme, porte par `nadia-prof`, pas une story de developpement.
+
+- **Lien decision** : `DEC-0053` ; `squad/conformite/FICHE-bandit-manchot-problemes-durees-cm1.md` ;
+  `squad/conformite/FICHE-bandit-manchot-comprehension-cm1.md` ; `squad/programme/MATRICE-
+  couverture.md`, amendement du 2026-08-30.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`. `lea-dev` (auteure du paquet des
+  durees) pour les reserves A, B, C, D ; `marc-dev` (auteur du paquet de comprehension) pour la
+  reserve 1 ; `nadia-prof` pour confirmer chaque levee, pour reecrire `D-6` (tension nommee dans son
+  amendement du 2026-08-30, section 10.1) et pour reecrire `COMP-2` (reserve 2). Aucune des sept
+  n'est bloquante.

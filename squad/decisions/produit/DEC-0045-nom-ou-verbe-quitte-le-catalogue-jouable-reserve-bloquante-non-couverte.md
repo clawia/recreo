@@ -168,3 +168,15 @@ procedure : un jeu reellement refusable est reste expose a des enfants le temps 
 complet, mesure de la gravite et renforcement du controle de `sofia-sm` (obligatoire, non plus
 laisse a son jugement) : `DEC-0049-cm1-reperes-refuse-retiree-du-catalogue-trou-de-gouvernance-
 mesure.md`.
+
+## Amendement du 2026-08-30 (`camille-po`, s22) - la section 3 reste le regime par defaut ; une exception cadree et bornee lui est ajoutee
+
+Le retrait immediat sur `REFUSE`, tel qu'ecrit en section 3, **n'est pas modifie**. Une fenetre de
+grace peut desormais s'ouvrir, sous trois conditions cumulatives verifiables (arbitrage explicite
+et ecrit, correction deja engagee avec proprietaire nomme, motif residuel nomme et borne) et
+seulement avec une borne de fermeture obligatoire fixee a l'ouverture - jamais une discretion
+silencieuse comme celle mesuree sur `cp-mot-manquant` a s21. Motif complet, les trois cas mesures
+qui le fondent (`cm1-reperes` a s20, `cp-mot-manquant` a s21, les trois paquets `REFUSE` du
+2026-08-29 a s22, maintenus au catalogue par arbitrage explicite de l'utilisatrice) et le detail de
+la regle : `DEC-0055-dec-0045-section-3-amendee-fenetre-de-grace-critere-verifiable-et-borne-
+obligatoire.md`.
