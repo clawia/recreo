@@ -7151,6 +7151,134 @@ rendrait a la main sur au moins les cas cites ci-dessus.
   rang que `TYP-1` "le moyen" et l'obstacle 25 residuel (`DEC-0057`, section 3.4). `theo-archi` et
   `yanis-qa` pour la faisabilite et la forme ; `nadia-prof` pour la confirmation finale.
 
+### Reaudit du 2026-08-30 (s23) - `RAN-7` levee, `LIA` refusee une seconde fois (item 10), `ETA` maintenue avec deux reserves nouvelles
+
+`nadia-prof` a reaudite trois paquets corriges le meme jour (branche `s23-nadia-4`, non fusionnee) :
+`cp-ranger-nombres` **VALIDE sans reserve**, `cm1-mots-de-liaison` **REFUSE** (second refus, motif
+nouveau), `cm1-problemes-etapes` **VALIDE SOUS RESERVE (maintenu)**. Source complete : les blocs de
+reaudit des trois `squad/conformite/FICHE-bandit-manchot-*.md`, et l'amendement du 2026-08-30 a
+`squad/sprints/s23-trois-paquets-parmi-sept/avis-nadia-done-pedagogique-s23.md`. Mouvement de
+matrice : `squad/programme/MATRICE-couverture.md`, amendement du 2026-08-30 (s23, en cours, reaudit).
+
+#### `cp-ranger-nombres` (`S23-RAN`) - story fermee, `RAN-7` levee
+
+Story de la section precedente **fermee** : les cinq indices nommes (16, 22, 1, 13, 19) sont
+reapparies, verifies par `nadia-prof` sur les 24 items et confirmes par un test qu'elle a confronte
+elle-meme a 81 180 triplets sans desaccord. Done pedagogique **VALIDE, sans reserve**. Ligne de
+matrice "Comparer et ranger des nombres jusqu'a 100" : `en cours` -> `couvert-valide`.
+
+`nadia-prof` nomme trois limites du test qui encode `RAN-7`, qu'elle ne compte pas comme couvrant
+la condition en general : il n'a pas de branche par defaut sur un texte d'indice inconnu, il est
+couple sans le dire a `RAN-4`/`RAN-4b`, et sa Javadoc justifie les quatre indices surs par un motif
+qui n'est pas le bon (le fait est juste, la raison ecrite ne l'est pas). Aucune des trois n'est une
+story de contenu ; je les verse a `yanis-qa` et `theo-archi`, qui les ont deja recues directement de
+`nadia-prof` (`FICHE-bandit-manchot-ranger-nombres-cp.md`, bloc de reaudit, "Ce que je route").
+
+- **Lien decision** : `squad/conformite/FICHE-bandit-manchot-ranger-nombres-cp.md`, bloc de reaudit
+  du 2026-08-30.
+- **Agent pressenti** : aucun - story fermee. `yanis-qa`/`theo-archi` pour les trois limites du test.
+
+#### `cm1-mots-de-liaison` (`S23-LIA`) - premier motif ferme, second refus ouvert sur l'item 10
+
+**Le motif du 2026-08-30 sur les items 3 et 18 est ferme** : la story de la section precedente est
+close, les deux distracteurs sont remplaces par `car` exactement comme demande, `LIA-4` reste
+tenue. **Ne pas rouvrir ces deux items.**
+
+`nadia-prof` corrige aussi son propre compte du 2026-08-30 : elle avait ecrit "trente-huit
+distracteurs sur 40 tiennent" (texte non reecrit ci-dessus, exact a sa date) ; **le compte reel
+etait trente-sept**, `sofia-sm` ayant verifie les 38 declares bons et trouve l'item 10 en defaut.
+Le compte d'aujourd'hui, complet, relu un par un : **39 des 40 distracteurs tiennent**.
+
+**Second refus, sur l'item 10 seul, `mais`** : *"Le jardinier arrose les fleurs chaque soir mais la
+terre est tres seche en ete."* La relation d'opposition que `mais` affirme existe reellement entre
+les deux faits ; l'enfant qui le choisit est compte faux en ayant raison. `nadia-prof` reenonce le
+test qu'elle applique (sa formulation du 2026-08-30, en termes de necessite physique, etait sa
+preuve sur les deux premiers items, pas son test general) :
+
+> Un connecteur affirme une relation entre les deux faits de l'enonce. Le distracteur est valide si
+> la relation qu'il affirme n'est pas celle qui existe entre ces deux faits ; il est refuse si elle
+> l'est.
+
+Elle verifie que l'item 20, cas voisin garde depuis le 2026-08-30, reste bon sous ce test reenonce.
+
+**Critere d'acceptation**, repris des mots exacts de `nadia-prof` (`FICHE-bandit-manchot-mots-de-
+liaison-cm1.md`, bloc de reaudit, "Ce qui rendrait ce refus levable") :
+
+- Etant donne l'item 10, quand le distracteur `mais` est remplace par `donc` ou par `alors`
+  (relation `consequence` : l'arrosage ne rend pas la terre seche, la consequence affirmee est
+  meme contraire, donc le texte produit est faux), alors le distracteur est bon.
+- **Jamais par `pourtant`** : il porte la meme concession que `mais` et reproduirait le meme defaut.
+- Etant donne l'item apres remplacement, quand on relit ses trois relations declarees, alors
+  `LIA-4`, `LIA-5` et `LIA-9` restent tenues - `LIA-9` ne compte que les bonnes reponses, qu'aucun
+  de ces remplacements ne touche.
+- **Ce que cette story ne rouvre pas** : les items 3, 18 et 20 ne sont pas concernes. Le cas voisin
+  de l'item 7 (`mais` sur "Le chien aboie fort") n'entre pas dans ce refus - `nadia-prof` nomme
+  elle-meme que son jugement y est le plus mince, et que le traiter serait une condition nouvelle et
+  datee, jamais un durcissement de celle-ci.
+
+**Porte de sortie** : le critere ci-dessus tenu, `mvn verify` vert, puis reaudit de `nadia-prof` ne
+nommant plus `LIA-3` en defaut. La ligne de matrice reste `non couvert` jusqu'a ce reaudit ;
+`nadia-prof` l'ecrit elle-meme : il n'y aura pas de troisieme tour attendu sur `LIA-3` au-dela de
+ce seul item.
+
+**Fait signale, pas une story de backlog** : `nadia-prof` note qu'une date "2026-08-31" est ecrite
+dans `cm1-mots-de-liaison.yaml` (commentaire "Correction du 2026-08-31") pour un commit du
+2026-08-30, ainsi que dans la demande de reaudit qui lui a ete transmise. Verifie : aucun document
+que j'ai ecrit (`docs/backlog/backlog.md`, `squad/programme/MATRICE-couverture.md`,
+`squad/decisions/produit/DEC-0057*.md`, `DEC-0058*.md`, `DEC-index.md`) ne porte cette date fautive.
+Le fichier de contenu et la chronologie de la demande de reaudit ne sont pas de mon ressort ; je
+route a `sofia-sm` et au `relecteur-pedagogique`, comme `nadia-prof` le fait elle-meme.
+
+- **Lien decision** : `squad/conformite/FICHE-bandit-manchot-mots-de-liaison-cm1.md`, bloc de
+  reaudit du 2026-08-30 (second refus).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; `sofia-sm`, auteure du paquet, pour
+  le remplacement de l'item 10 ; `sofia-sm`/`relecteur-pedagogique` pour la date fautive du fichier
+  de contenu.
+
+#### `cm1-problemes-etapes` (`S23-ETA`) - reserves A, B et C fermees, deux reserves nouvelles (D, E)
+
+**Les trois reserves de la section precedente sont fermees**, confirmees sur du contenu rejoue :
+item 17 a 30 mots (reserve A), les trois enonces des items 22 a 24 emploient "perd" (reserve B),
+les items 6 et 7 portent "celui-ci compris"/"celle-ci comprise" (reserve C). Le Done reste
+**VALIDE SOUS RESERVE (maintenu)**, la ligne de matrice reste `couvert-valide` sans mention
+partielle - ce reaudit ne l'etend ni ne la retire.
+
+**Reserve D, nouvelle, creee par le correctif de la reserve B lui-meme** : les enonces des items 22
+a 24 disent maintenant "perd", mais leurs indices, non touches par le correctif, gardent
+respectivement "distribues", "retirees" et "vendus" - un evenement absent de l'enonce que l'enfant
+lit apres une erreur. Critere de levee, dans les mots de `nadia-prof` : aligner les trois indices
+sur le verbe de leur enonce - "les cahiers perdus en debut d'annee" (item 22), "les chaises perdues
+pour l'autre activite" (item 23), "les crayons perdus le premier jour" (item 24). Aucun autre
+indice du paquet n'est concerne, verifie sur les 24. **Cout : trois mots.**
+
+**Reserve E, nouvelle, correction du propre compte de `nadia-prof`** : sa reserve C du 2026-08-30 ne
+nommait que les items 6 et 7 ; la meme construction ("N groupes preparent chacun ce meme nombre")
+porte la meme ambiguite de lecture sur quatre autres items (3, 4, 5, 8), qu'elle n'avait pas
+comptes. **Ce n'est pas un defaut du travail de `marc-dev`**, qui a corrige exactement les deux
+items qu'elle avait nommes. Critere de levee, dans les mots de `nadia-prof` : porter "celui-ci
+compris"/"celle-ci comprise" sur les items 3, 4, 5 et 8 comme sur les items 6 et 7 ; et, sur l'item
+7 deja corrige, nommer le groupe par le mot du sujet ("4 ateliers, celui-ci compris") plutot que par
+"ecoles", le pronom "celle-ci" n'ayant pas d'antecedent feminin dans cet enonce. **`ETA-3` est
+tenue sans marge** (sept enonces sur 24 exactement a la borne de 30 mots) : tout ajout de mots sur
+ces items devra en retirer autant ailleurs dans le meme enonce.
+
+- **Lien decision** : `squad/conformite/FICHE-bandit-manchot-problemes-etapes-cm1.md`, bloc de
+  reaudit du 2026-08-30 ; `squad/programme/MATRICE-couverture.md`, amendement du 2026-08-30 (s23,
+  en cours, reaudit).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; `marc-dev`, auteur du paquet, pour
+  les reserves D et E ; `nadia-prof` pour confirmer chaque levee.
+
+#### Ce qui reste hors de tout garde-fou technique, ajoute par ce reaudit
+
+`nadia-prof` nomme un quatrieme defaut du sprint invisible a une CI verte : le correctif d'une de
+ses reserves d'`ETA` (la B) en a cree une autre (la D) sans qu'aucun test ne relie l'indice a
+l'enonce de son item. `LIA-3` porte desormais deux refus consecutifs, CI verte les deux fois. Je
+verse ces deux faits, comme les precedents, a `yanis-qa` et `theo-archi`, sans en juger la
+faisabilite.
+
+- **Lien decision** : aucune - signalement, pas une decision de perimetre.
+- **Agent pressenti** : `yanis-qa`, `theo-archi`.
+
 - **Lien decision (section entiere)** : `DEC-0057` ; `DEC-0058` ; `squad/conformite/FICHE-bandit-
   manchot-ranger-nombres-cp.md` ; `squad/conformite/FICHE-bandit-manchot-mots-de-liaison-cm1.md` ;
   `squad/conformite/FICHE-bandit-manchot-problemes-etapes-cm1.md` ;
@@ -7161,4 +7289,7 @@ rendrait a la main sur au moins les cas cites ci-dessus.
   `lea-dev` pour la reserve D de `cm1-problemes-durees` si elle est reprise ; `nadia-prof` pour
   confirmer chaque levee et pour poser, au prochain arbitrage prealable concerne, les deux
   conditions nouvelles ci-dessus ; `theo-archi`/`yanis-qa` pour l'obstacle 8 (`DEC-0058`), candidat
-  d'ouverture de s24.
+  d'ouverture de s24. Reaudit du 2026-08-30 (sous-section ci-dessus) : `marc-dev` pour les
+  reserves D et E de `S23-ETA` ; `sofia-sm` pour l'item 10 de `S23-LIA` (second refus) et, avec
+  `relecteur-pedagogique`, pour la date fautive de `cm1-mots-de-liaison.yaml` ; `nadia-prof` pour
+  confirmer chaque levee.
