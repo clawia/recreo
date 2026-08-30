@@ -704,3 +704,130 @@ orale", la ligne reste bloquee sur la voix et je n'ai rien de plus a dire.
 `DEC-0052` avait note que ce fichier porte `VELO` sans accent. **Ce point ne m'appartient plus** :
 `DEC-0056` a rendu l'accentuation du texte lu par l'enfant au `relecteur-pedagogique`, et je m'y
 range. Je le signale ici uniquement pour que la trace ne se perde pas, sans en faire un motif.
+
+---
+
+## 8. `contenu-repris/fractions/cm1-compare.yml` sur la moitie "notion de fraction simple" (mathematiques CM1)
+
+**Verdict : REFUSE.** Le fichier ne couvre pas la moitie "notion". **La moitie "notion" reste
+servable, et je l'arbitre en 8bis** pour que ce refus ne soit pas un renvoi.
+
+### Motif 1 - comparer deux fractions n'est pas la competence demandee, et n'est nulle part dans ce socle
+
+La ligne dit, mot pour mot : *"Notion de fraction simple (unites fractionnaires, fractions
+inferieures a 1) et reperage sur une droite numerique."* La **notion**, c'est qu'une fraction est un
+nombre de parts egales d'une unite, que `1/4` se dit *un quart*, que le denominateur dit en combien
+de parts l'unite est partagee.
+
+**Comparer deux fractions ne fait rien de cela.** Et cette competence-la n'apparait **nulle part**
+dans `squad/programme/mathematiques/competences-cm1.md` : ni sous "Nombres et calculs", ni ailleurs.
+*Verifie ligne par ligne le 2026-08-30 sur les treize lignes du referentiel CM1.* Un paquet qui la
+travaillerait ne couvrirait aucune ligne de la matrice.
+
+### Motif 2 - la mesure du fichier lui-meme, et elle est accablante
+
+Le fichier fournit **11 fractions** en reserve, et non des items : la mecanique en tirerait des
+paires. *Mesure du 2026-08-30 sur la population entiere des **55 paires** possibles de ces
+11 fractions :*
+
+| | Paires | Part |
+|---|---|---|
+| Paires exigeant une mise au meme denominateur | **36** | **65,5 %** |
+| Paires de meme numerateur (comparaison d'unites fractionnaires : plus de parts, donc des parts plus petites) | 13 | 23,6 % |
+| Paires de meme denominateur | 6 | 10,9 % |
+| Paires dont la reponse est `=` | **5** | **9,1 %** |
+
+**Ce que ces chiffres disent :**
+
+- **65,5 % des paires exigent une mise au meme denominateur.** C'est une technique de CM2 et de
+  sixieme, pas la *notion* de fraction, et pas une ligne de ce socle. Un enfant de CM1 devant
+  `2/3` contre `3/4` n'a aucun moyen appris de repondre : il devine.
+- **La reponse `=` ne sort que sur 5 paires sur 55.** Un enfant qui ne presse **jamais** `=`
+  reussit 90,9 % des tirages sur ce seul reflexe. C'est exactement la devinette que je refuse
+  partout ailleurs.
+- Les 5 paires egales (`1/2` et `2/4`, `1/2` et `3/6`, `2/4` et `3/6`, `1/3` et `2/6`, `1/4` et
+  `2/8`) reposent toutes sur l'**equivalence de fractions**, qui n'est pas davantage dans ce socle
+  que la comparaison.
+
+*Un point a porter au credit du fichier, verifie : ses 11 fractions sont toutes inferieures a 1,
+donc il respecte le perimetre que la ligne nomme. Ce n'est pas ce qui le disqualifie.*
+
+### Motif 3 - la mecanique qu'il suppose n'existe pas
+
+Le fichier declare `gameKey: compare-fractions` et une structure `fractions:` qui n'est **pas** le
+contrat de contenu de ce depot (`type: question`, `items`, `enonce`, `bonneReponse`,
+`distracteurs`). Il n'y a ni items, ni regle de tirage des paires, ni indices. **Ce n'est pas de la
+matiere premiere reprise, c'est la configuration d'un autre produit.** Meme si la competence avait
+convenu, il n'y aurait rien a reprendre ici.
+
+### Ce qui manque, precisement
+
+**Rien qui bloque.** Contrairement au candidat 7, il ne manque ici **ni source sonore, ni
+architecture, ni decision d'utilisatrice** : il manque **un contenu**, qui reste a ecrire, et qui ne
+peut pas l'etre a partir de ce fichier. C'est une ligne **differee**, pas une ligne hors d'atteinte,
+et c'est la difference que `camille-po` m'a demande de nommer.
+
+---
+
+## 8bis. La moitie "notion de fraction simple", servable en couverture partielle nommee
+
+**Verdict : ACCEPTE sous conditions `FRA-1` a `FRA-9`.**
+
+### Ce n'est pas un arbitrage neuf, c'est celui du 2026-08-14 rendu actionnable
+
+J'ai deja ecrit, dans `ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md`, section 1, "Proxy 2" - et non
+section 2, comme `DEC-0057` le cite par erreur :
+
+> *"Sa premiere moitie, 'notion de fraction simple', est entierement servable **sans aucun proxy** :
+> reconnaitre l'unite fractionnaire, associer une fraction a son ecriture, a sa denomination ('un
+> quart', 'trois cinquiemes'), a une part d'un tout partage en parts egales."*
+
+**Je ne deplace pas mes poteaux : je pose les conditions de ce que j'avais deja dit servable**,
+parce que sans elles la ligne reste fermee faute de specification, ce qui est le defaut que
+`DEC-0057` cherche precisement a eviter. **Aucun visuel, aucun dessin** : les conditions ci-dessous
+tiennent entierement en mots, ce que j'ai verifie forme par forme en les ecrivant.
+
+### Conditions
+
+- **`FRA-1` - Perimetre.** Toutes les fractions **enoncees et toutes les bonnes reponses** du paquet
+  sont **inferieures a 1**, avec un denominateur de **2 a 10**. *Reprise stricte de ce que la ligne
+  nomme, sans elargissement. La clause ne porte pas sur les distracteurs : voir `FRA-5`.*
+- **`FRA-2` - Formes d'items admises, et seulement celles-la.** **(a)** de l'ecriture chiffree vers
+  la denomination ; **(b)** de la denomination vers l'ecriture chiffree ; **(c)** de la situation de
+  partage vers la fraction ; **(d)** la lecture du denominateur seul. **Aucune comparaison de deux
+  fractions, aucun calcul, aucune equivalence** : ce sont d'autres competences, et aucune n'est dans
+  ce socle.
+- **`FRA-3` - Chacune des quatre formes de `FRA-2` porte au moins trois items** du paquet. *Unite de
+  compte : l'item.*
+- **`FRA-4` - Les unites fractionnaires sont servies.** Au moins `arrondi inferieur(N/3)` items du
+  paquet portent une fraction de numerateur 1. *Unite de compte : l'item.* Motif : la ligne les
+  nomme explicitement, et c'est par elles que la notion s'installe.
+- **`FRA-5` - Les deux distracteurs sont derives, et le fichier nomme la derivation.** Trois
+  familles, et seulement celles-la : **(a)** le numerateur et le denominateur echanges - c'est
+  l'erreur la plus frequente ; **(b)** le denominateur decale de un ; **(c)** pour les formes (a) et
+  (b) de `FRA-2`, une denomination formee sur le **numerateur** au lieu du denominateur. Un tiers
+  doit pouvoir recalculer les deux distracteurs a partir de la bonne reponse et de la famille
+  declaree.
+  *Verification de coherence faite en ecrivant la clause : la famille (a) produit une fraction
+  superieure a 1, donc hors des bornes de `FRA-1`. C'est voulu et sans danger - un distracteur n'est
+  pas un contenu enseigne, c'est une erreur a reconnaitre. C'est pourquoi `FRA-1` nomme les enonces
+  et les bonnes reponses, et pas les distracteurs : sans cette precision, la clause aurait eu deux
+  lectures, et j'ai assez paye `D-4` et `D-5` pour ne pas recommencer.*
+- **`FRA-6` - Les trois propositions d'un item sont deux a deux distinctes.**
+- **`FRA-7` - Longueur.** L'enonce compte **au plus 25 mots**, un mot etant une suite de caracteres
+  sans espace. Aucun mot ne depasse **onze lettres**. *Meme mesure et meme motif que `LIA-7`.*
+- **`FRA-8` - Indice et situations.** L'indice rappelle **ce que dit le denominateur**, jamais la
+  reponse. **Douze mots au plus.** Aucune situation de partage ne suppose un gouter, un
+  anniversaire, une part de gateau ou un objet possede : une bande de papier, un ruban, une longueur
+  conviennent a tout le monde.
+- **`FRA-9` - Au moins vingt items**, et **couverture partielle nommee, qui est une condition et pas
+  une remarque** : la mention exacte que j'exige sur la matrice le jour ou la ligne bouge est
+  **"moitie 'notion de fraction simple' seule ; la moitie 'reperage sur une droite numerique' reste
+  non couverte"**. Mon avis de fond du 2026-08-14 est inchange et je ne le rouvre pas : le reperage
+  exige une ligne reellement dessinee et graduee, et je prefere une case vide a une case fausse.
+
+### Ce qui reste dans ma seule main sur ce paquet
+
+**Presque rien.** `FRA-1` a `FRA-7` et `FRA-9` sont calculables a partir du fichier. **Ce paquet
+n'est pas du type `COMP-2`** et ne consomme pas ma condition d'au plus un par sprint. Je garde
+`FRA-8` et le jugement de niveau.
