@@ -393,3 +393,114 @@ echantillonner.** Deux de mes trois refus du 2026-08-29 seraient passes au trave
 **Motifs complets, tableaux condition par condition, methodes de mesure avec leurs chiffres** : dans
 les blocs de validation des trois `squad/conformite/FICHE-*.md`, et rassembles dans l'amendement du
 2026-08-30 a `squad/sprints/s22-couverture-maximale-du-catalogue/avis-nadia-done-pedagogique-s22.md`.
+
+---
+
+## Fusion des trois derniers lots et cloture du sprint (2026-08-30) - sofia-sm, casquette Scrum Master
+
+*Ajout de `sofia-sm`, 2026-08-30. Les sections precedentes restent telles qu'elles ont ete ecrites :
+exactes a leur date. Ce qui suit les complete, il ne les efface pas.*
+
+Trois branches restaient a fusionner : `s22-nadia-4` (4 commits - les trois Done pedagogique, les
+blocs de validation, le reaudit), `s22-camille-7` (5 commits - matrice a 21/43, backlog, `DEC-0055`,
+`DEC-0056`, note a `DEC-0045`), `s22-relecteur` (1 commit - un compte perime corrige dans
+`cm1-comprehension.yaml` et son garde-fou de test).
+
+**Lignee verifiee avant fusion**, pas supposee : `git merge-base --is-ancestor round-two <branche>`
+vrai pour les trois (les trois sont ouvertes sur `round-two` a `9bb7b8a`, tete de la fusion
+precedente). **Fichiers touches verifies avant fusion, pas crus sur parole** :
+
+- `s22-camille-7` ne touche aucun fichier de `squad/sprints/s22-...` : `docs/backlog/backlog.md`,
+  trois `DEC` (`DEC-0045` amendee, `DEC-0055` creee, `DEC-0056` creee), `DEC-index.md`,
+  `squad/programme/MATRICE-couverture.md`. Confirme.
+- `s22-relecteur` ne touche que deux fichiers : `cm1-comprehension.yaml` (commentaire d'en-tete,
+  "17 items sur 20" corrige en "les vingt items") et `PaquetCm1ComprehensionTest.java` (meme
+  correction dans le commentaire du test). Confirme.
+- `s22-nadia-4` touche les trois `FICHE-*.md` de conformite, `avis-nadia-done-pedagogique-s22.md`
+  et ce fichier (`review.md`, addendum date ci-dessus). Confirme.
+
+Fusion dans l'ordre nadia, camille, relecteur - aucun des trois lots ne touche un fichier modifie
+par un autre, aucun conflit sur les trois fusions.
+
+### Porte technique, reacteur complet, methode XML
+
+```
+bash outils/mvn-jdk21.sh -B clean verify
+```
+
+Reacteur complet (racine, aucun `-pl`), sur `HEAD` apres les trois fusions. **BUILD SUCCESS**, les
+six modules en `SUCCESS`. Compte de tests, methode XML (somme des attributs
+`tests`/`failures`/`errors`/`skipped` de l'element `<testsuite>` de chaque `TEST-*.xml` de
+`target/surefire-reports/` et `target/failsafe-reports/`, sur les 116 fichiers de rapport produits
+par ce build) : **761 tests, 0 echec, 0 erreur, 0 ignore.**
+
+**Aucun ecart avec le dernier chiffre fusionne (761, section precedente), et c'est attendu** :
+aucune des trois branches ne touche un fichier `.java` autre que le commentaire de
+`PaquetCm1ComprehensionTest.java` (`s22-relecteur`), qui ne change ni le nombre ni le corps
+d'aucune methode `@Test`. Les regles ArchUnit (30, confirmees a la fusion precedente) restent donc
+inchangees par construction, pour la meme raison.
+
+### Couverture, verifiee ligne par ligne sur la matrice fusionnee, pas recopiee de `camille-po`
+
+Comptage direct des 47 lignes de competence de `squad/programme/MATRICE-couverture.md` (les quatre
+tableaux de matiere), par statut : **20 `non couvert`, 2 `en cours`, 21 `couvert-valide`, 4
+`non couvrable en l'etat`.** Denominateur atteignable (47 moins les 4 `non couvrable en l'etat`) :
+**43**. **21/43 = 48,8 %.** Meme comptage sur `HEAD` de la fusion precedente (`9bb7b8a`, avant
+`s22-camille-7`) : 18 `couvert-valide`, 4 `en cours`, 21 `non couvert`, 4 `non couvrable en l'etat` -
+**18/43 = 41,9 %.** Le mouvement **18/43 (41,9 %) -> 21/43 (48,8 %)** annonce par `camille-po` est
+confirme, chiffre par chiffre, sur l'arbre fusionne.
+
+Catalogue de contenu (fichiers YAML sous `adapters/adapter-content/src/main/resources/contenu/`) :
+**24**, inchange par ces trois fusions (deja a 24 avant elles, la croissance de 21 a 24 vient des
+trois paquets neufs fusionnes a l'etape precedente du sprint). Confirme par comptage direct de
+l'arbre, pas recopie.
+
+### Deux chartes d'agent corrigees - `DEC-0056` routee, executee
+
+`DEC-0056` tranche que la porte de l'accentuation du texte lu par l'enfant reste celle de
+`relecteur-pedagogique` (`DEC-0002`, amendement du 2026-08-04), et route sa correction a
+`sofia-sm` sans trancher elle-meme le texte des deux fiches. Corrige, hors casquette Scrum Master
+(casquette developpeuse, meme regle de non-arbitrage sur mon propre obstacle) :
+
+- `.claude/agents/relecteur-pedagogique.md` : la phrase conditionnelle ("si tu reperes une faute
+  d'orthographe evidente [...], signale-la a `nadia-prof`") remplacee par un controle systematique,
+  a chaque relecture de livrable, de l'orthographe, l'accentuation et la ponctuation du texte
+  destine a l'enfant - `nadia-prof` garde seule le vocabulaire, le ton, le fond et le niveau
+  scolaire.
+- `.claude/agents/nadia-prof.md` : la phrase "tu corriges [...] ce que l'enfant lit a l'ecran",
+  assez large pour laisser croire qu'elle couvrait l'orthographe, precisee a son perimetre reel -
+  vocabulaire, ton, fond, niveau scolaire - avec renvoi explicite vers `DEC-0002` et `DEC-0056`
+  pour l'orthographe, l'accentuation et la ponctuation.
+
+Commit `[SOF] s22: aligne relecteur-pedagogique et nadia-prof sur DEC-0056 [...]`. Aucun autre
+passage des deux fiches ne contredit `DEC-0002` ou `DEC-0056` (verifie par recherche des occurrences
+d'"accentu" et "orthograph" dans les deux fichiers apres correction).
+
+### Obstacles - mise a jour finale
+
+| # | Description | Categorie | Agent route | Decision liee | Statut |
+|---|---|---|---|---|---|
+| 14 | Regime de retrait immediat du catalogue sur un `REFUSE` (`DEC-0045` section 3) | Produit, gouvernance | `camille-po` | `DEC-0055` | **CLOS** - troisieme cas instruit comme annonce, `DEC-0045` section 3 reste le regime par defaut, une exception a trois conditions cumulatives et une borne de fermeture obligatoire lui est ajoutee |
+| 15 | A qui appartient la verification de l'accentuation du texte lu par l'enfant, entre `CLAUDE.md` (`relecteur-pedagogique`) et la fiche de `nadia-prof` (plus large) | Produit, perimetre d'un role ; technique, faisabilite d'une regle | `camille-po` (perimetre), `theo-archi` (faisabilite) | `DEC-0056` | **Perimetre CLOS** - la porte reste celle du `relecteur-pedagogique`, sans arbitrage neuf, deux fiches d'agent corrigees. **Faisabilite d'un garde-fou executable toujours OUVERTE chez `theo-archi`**, non traitee par ce document |
+
+Les treize autres lignes du tableau (obstacles 1 a 13) restent dans l'etat ou la review precedente
+les a laissees : dix `CLOS` (1 a 6, 8 a 11), trois `OUVERT` - obstacle 7 (`TYP-1`, "le moyen"),
+obstacle 12 (l'obstacle 25 residuel), obstacle 13 (l'obstacle 21). **Aucun obstacle non ferme par
+ce document n'est declare clos ici.**
+
+### Porte pedagogique - confirmee
+
+Les trois Done pedagogique de `nadia-prof` (`S13-2` **VALIDE**, `S13-3` **VALIDE SOUS RESERVE**,
+`S17-2` **VALIDE**) sont ecrits dans les trois `squad/conformite/FICHE-*.md` fusionnees et repris
+dans `squad/programme/MATRICE-couverture.md` par `camille-po`. Les sept reserves non bloquantes
+(cinq sur `S13-3`, deux sur `S17-2`) sont versees en stories dans `docs/backlog/backlog.md`.
+
+### Ce que ce document tranche, ce qu'il ne tranche pas
+
+Tranche : l'ordre et la resolution des trois dernieres fusions, la porte technique remesuree, le
+chiffre de couverture verifie, la correction des deux fiches d'agent routee par `DEC-0056`.
+Ne tranche pas : la faisabilite d'un garde-fou d'accentuation (`theo-archi`), les sept reserves non
+bloquantes (backlog, `camille-po`), `TYP-1` et l'obstacle 25 residuel (`theo-archi`), l'obstacle 21
+(`camille-po`) - aucun n'est ferme ici, tous restent ouverts.
+
+**Le sprint est clos par ce document.** `retro.md` et `RAPPORT.md` suivent.
