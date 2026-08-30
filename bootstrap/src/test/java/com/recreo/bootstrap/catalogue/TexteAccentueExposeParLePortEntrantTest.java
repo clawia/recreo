@@ -125,6 +125,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-problemes-durees-cm1",
             // S22 (S17-2, DEC-0053, ADR-0050) : entree neuve, comprehension de texte CM1.
             "bandit-manchot-comprehension-cm1",
+            // S23-LIA (arbitrage prealable de nadia-prof du 2026-08-30, conditions LIA-1 a
+            // LIA-10) : entree neuve, mots de liaison simples CM1, couverture partielle nommee.
+            "bandit-manchot-mots-de-liaison-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -165,6 +168,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les durées et les horaires",
             // S22 (S17-2) : titre neuf.
             "Lis et comprends",
+            // S23-LIA : titre neuf.
+            "Le bon mot de liaison",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -201,6 +206,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Trouve la durée ou l'heure qui manque !",
             // S22 (S17-2) : consigne neuve, generique - ne nomme aucun texte-support d'aucun item.
             "Lis le texte, puis réponds à la question.",
+            // S23-LIA : consigne neuve.
+            "Quel mot complète le texte ?",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
             // valeur unique pour les jeux du catalogue reel, compte sur catalogue.yaml, pas recopie.
             "bandit-manchot",
@@ -257,7 +264,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Résoudre des problèmes de durées (calcul d'une durée, d'un horaire d'arrivée)",
             // S22 (S17-2) : competence neuve.
             "Comprendre un texte narratif ou documentaire (questions explicites et implicites, "
-                    + "inférences simples)");
+                    + "inférences simples)",
+            // S23-LIA : competence neuve, couverture partielle nommee (LIA-10).
+            "Utiliser à bon escient des mots de liaison simples pour structurer un texte court");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

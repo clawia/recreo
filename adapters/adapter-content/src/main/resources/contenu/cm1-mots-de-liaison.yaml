@@ -1,0 +1,207 @@
+schema: 1
+id: cm1-mots-de-liaison
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CM1"
+  domaine: "Vocabulaire"
+  competence: "Utiliser à bon escient des mots de liaison simples pour structurer un texte court"
+#
+# S23-LIA (DEC-0057 section 2, arbitrage prealable de nadia-prof du 2026-08-30,
+# ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md, section 6,
+# LIA-1 a LIA-10). Paquet integralement neuf.
+#
+# LIA-10 (couverture partielle nommee, condition et non remarque) : ce paquet fait choisir un mot
+# de liaison entre deux ou trois phrases ; il ne fait jamais ecrire un texte, ni ordonner plus de
+# trois phrases. La mention exacte que nadia-prof exige sur la matrice le jour ou la ligne bouge
+# est : "choix du mot de liaison entre deux ou trois phrases, sans production de texte".
+#
+# LIA-2 : population fermee des dix mots de liaison admis, et seulement ceux-la : mais, donc, car,
+# puis, ensuite, enfin, d'abord, alors, pourtant, parce que. "et" est exclu (compatible avec
+# presque toute succession de deux propositions, ce qui rendrait un distracteur non falsifiable) ;
+# "ou", "ni", "or" et le registre soutenu (cependant, neanmoins, toutefois, en effet, par
+# consequent) le sont aussi, pour les motifs ecrits dans l'arbitrage.
+#
+# LIA-3 (bloquante, du type COMP-2, verifiee item par item par nadia-prof - ce paquet compte a lui
+# seul contre sa condition d'au plus un paquet de ce type par sprint) : chaque item declare, dans
+# les cles 'relationBonneReponse' et 'relationsDistracteurs' ci-dessous, la relation logique de la
+# bonne reponse et, pour chacun des deux distracteurs, la relation qu'il exprime et la raison pour
+# laquelle cette relation est fausse dans ce texte precis. Ces deux cles ne sont lues par aucune
+# fabrique (meme patron que 'graphie' sur cp-le-bon-son) : ce sont des declarations d'auteur,
+# relues par un test et par nadia-prof, jamais une donnee de jeu.
+#
+# LIA-4 (recalculee par PaquetCm1MotsDeLiaisonTest a partir de 'relationBonneReponse' et
+# 'relationsDistracteurs') : sur chaque item, les trois relations (bonne reponse et deux
+# distracteurs) sont deux a deux distinctes.
+#
+# LIA-5 (recalculee) : chacune des quatre relations (opposition, consequence, cause, succession)
+# est la relation de la bonne reponse sur au moins arrondi-inferieur(20/6) = 3 items. Compte reel
+# sur ce paquet : opposition 5, consequence 5, cause 5, succession 5.
+#
+# LIA-9 (recalculee) : vingt items, aucun mot de liaison n'est la bonne reponse de plus de six
+# items. Compte reel : donc 3, alors 2, car 3, parce que 2, mais 3, pourtant 2, puis 2, ensuite 1,
+# enfin 1, d'abord 1.
+#
+# LIA-6, LIA-7 : longueur et vocabulaire mesures par PaquetCm1MotsDeLiaisonTest sur les champs
+# enonce, bonneReponse, distracteurs et indice de chaque item.
+items:
+  - enonce: "Léa a raté son bus. ___, elle est arrivée en retard à l'école."
+    bonneReponse: "donc"
+    distracteurs: ["mais", "d'abord"]
+    indice: "Cherche si le retard est la conséquence du bus raté."
+    relationBonneReponse: "consequence"
+    relationsDistracteurs:
+      mais: "opposition - faux : arriver en retard n'est pas en contradiction avec le fait d'avoir raté le bus, c'est exactement ce que cela entraîne, aucun contraste n'existe entre les deux faits"
+      d'abord: "succession - faux : le retard n'est pas une première étape d'une suite d'actions de Léa, c'est la conséquence subie du bus raté, pas un événement qu'elle enchaîne ensuite"
+  - enonce: "Le gardien a oublié ses clés. ___, il ne peut pas entrer dans la salle."
+    bonneReponse: "donc"
+    distracteurs: ["car", "pourtant"]
+    indice: "Cherche ce que l'oubli des clés empêche de faire."
+    relationBonneReponse: "consequence"
+    relationsDistracteurs:
+      car: "cause - faux : l'incapacité à entrer n'explique pas pourquoi il a oublié ses clés, c'est l'inverse qui est vrai, l'oubli est la cause et non la conséquence de cette incapacité"
+      pourtant: "opposition - faux : ne pas pouvoir entrer est la suite attendue de l'oubli des clés, ce n'est pas un fait surprenant qui contredirait le premier"
+  - enonce: "Il a beaucoup révisé ses leçons. ___, il a réussi son contrôle."
+    bonneReponse: "donc"
+    distracteurs: ["mais", "puis"]
+    indice: "Cherche si la réussite découle du travail fourni."
+    relationBonneReponse: "consequence"
+    relationsDistracteurs:
+      mais: "opposition - faux : réussir après avoir révisé n'est pas contradictoire, c'est le résultat attendu, aucune tension n'existe entre les deux faits"
+      puis: "succession - faux : la réussite n'est pas un événement indépendant qui suit simplement dans le temps, elle découle directement du travail fourni"
+  - enonce: "Le ciel est devenu tout noir. ___, les promeneurs ont pressé le pas."
+    bonneReponse: "alors"
+    distracteurs: ["car", "enfin"]
+    indice: "Cherche si le geste des promeneurs suit le ciel noir."
+    relationBonneReponse: "consequence"
+    relationsDistracteurs:
+      car: "cause - faux : le ciel noir n'est pas expliqué par le fait que les promeneurs pressent le pas, c'est l'inverse qui est vrai"
+      enfin: "succession - faux : presser le pas n'est pas la dernière étape d'une suite d'actions des promeneurs, c'est leur réaction immédiate au ciel noir"
+  - enonce: "La rivière a débordé. ___, le sentier est resté fermé."
+    bonneReponse: "alors"
+    distracteurs: ["pourtant", "d'abord"]
+    indice: "Cherche si la fermeture découle de la crue de la rivière."
+    relationBonneReponse: "consequence"
+    relationsDistracteurs:
+      pourtant: "opposition - faux : le sentier fermé est la conséquence attendue d'une rivière qui déborde, ce n'est pas un fait qui la contredit"
+      d'abord: "succession - faux : la fermeture du sentier n'est pas une première étape d'une suite d'actions, c'est le résultat direct du débordement"
+  - enonce: "Manon met un gros pull ___ il fait froid dehors."
+    bonneReponse: "car"
+    distracteurs: ["donc", "puis"]
+    indice: "Cherche ce qui explique le choix du pull."
+    relationBonneReponse: "cause"
+    relationsDistracteurs:
+      donc: "consequence - faux : le froid n'est pas la conséquence du fait qu'elle porte un pull, c'est l'inverse, le froid est la raison pour laquelle elle met le pull"
+      puis: "succession - faux : le froid n'est pas un événement qui suit le port du pull dans le temps, c'est la raison déjà présente avant cette action"
+  - enonce: "Le chien aboie fort ___ un inconnu s'approche de la maison."
+    bonneReponse: "car"
+    distracteurs: ["mais", "ensuite"]
+    indice: "Cherche ce qui explique les aboiements du chien."
+    relationBonneReponse: "cause"
+    relationsDistracteurs:
+      mais: "opposition - faux : l'arrivée d'un inconnu n'entre pas en contradiction avec le fait que le chien aboie, c'est justement ce qui l'explique"
+      ensuite: "succession - faux : l'inconnu qui s'approche n'est pas un événement qui vient après l'aboiement dans une suite d'actions, c'est la cause simultanée de cet aboiement"
+  - enonce: "Théo reste à la maison aujourd'hui ___ il est malade."
+    bonneReponse: "car"
+    distracteurs: ["donc", "enfin"]
+    indice: "Cherche ce qui explique pourquoi Théo reste chez lui."
+    relationBonneReponse: "cause"
+    relationsDistracteurs:
+      donc: "consequence - faux : être malade n'est pas la conséquence du fait de rester à la maison, c'est l'inverse qui motive la décision"
+      enfin: "succession - faux : la maladie n'est pas la dernière étape d'une suite d'actions de Théo, c'est la raison présente depuis le début de la situation"
+  - enonce: "Les élèves crient de joie ___ le spectacle vient de se terminer."
+    bonneReponse: "parce que"
+    distracteurs: ["pourtant", "puis"]
+    indice: "Cherche ce qui explique les cris des élèves."
+    relationBonneReponse: "cause"
+    relationsDistracteurs:
+      pourtant: "opposition - faux : la fin du spectacle n'entre pas en contradiction avec les cris de joie, elle en est la raison attendue"
+      puis: "succession - faux : la fin du spectacle n'est pas un événement qui suit les cris de joie, c'est ce qui les déclenche"
+  - enonce: "Le jardinier arrose les fleurs chaque soir ___ la terre est très sèche en été."
+    bonneReponse: "parce que"
+    distracteurs: ["mais", "d'abord"]
+    indice: "Cherche ce qui explique le geste du jardinier."
+    relationBonneReponse: "cause"
+    relationsDistracteurs:
+      mais: "opposition - faux : la sécheresse de la terre n'entre pas en contradiction avec le fait d'arroser, elle en est la raison"
+      d'abord: "succession - faux : la sécheresse n'est pas une première étape d'une suite d'actions du jardinier, c'est la raison constante de son geste"
+  - enonce: "Le magasin est fermé ___ la lumière reste allumée à l'intérieur."
+    bonneReponse: "mais"
+    distracteurs: ["donc", "puis"]
+    indice: "Cherche si les deux phrases s'opposent vraiment."
+    relationBonneReponse: "opposition"
+    relationsDistracteurs:
+      donc: "consequence - faux : la lumière allumée n'est pas la conséquence logique d'un magasin fermé, c'est un fait surprenant qui contredit cette attente"
+      puis: "succession - faux : les deux faits sont simultanés, ce ne sont pas deux événements qui se succèdent dans le temps"
+  - enonce: "Karim connaît bien la réponse ___ il n'ose pas lever la main."
+    bonneReponse: "mais"
+    distracteurs: ["car", "ensuite"]
+    indice: "Cherche si Karim agit comme on l'attendrait."
+    relationBonneReponse: "opposition"
+    relationsDistracteurs:
+      car: "cause - faux : le fait de bien connaître la réponse n'explique pas pourquoi il n'ose pas lever la main, c'est plutôt le contraire qu'on attendrait"
+      ensuite: "succession - faux : les deux faits ne forment pas une suite d'événements dans le temps, mais un contraste entre ce qu'il sait et ce qu'il fait"
+  - enonce: "L'équipe a mené tout le match ___ elle a perdu dans les dernières secondes."
+    bonneReponse: "mais"
+    distracteurs: ["donc", "d'abord"]
+    indice: "Cherche si la fin du match contredit son début."
+    relationBonneReponse: "opposition"
+    relationsDistracteurs:
+      donc: "consequence - faux : perdre n'est pas la conséquence attendue d'avoir mené tout le match, c'est un fait surprenant qui s'y oppose"
+      d'abord: "succession - faux : la défaite finale n'est pas une première étape d'une suite, c'est un retournement qui contredit ce qui précédait"
+  - enonce: "Le vieux pont paraît fragile ___ il supporte encore le passage des camions."
+    bonneReponse: "pourtant"
+    distracteurs: ["car", "enfin"]
+    indice: "Cherche si l'apparence du pont contredit les faits."
+    relationBonneReponse: "opposition"
+    relationsDistracteurs:
+      car: "cause - faux : le fait qu'il supporte les camions n'explique pas pourquoi il paraît fragile, c'est un fait qui contredit cette apparence"
+      enfin: "succession - faux : les deux faits ne forment pas une suite d'événements, ils se contredisent l'un l'autre"
+  - enonce: "Le petit chat semble craintif ___ il n'hésite jamais à défendre son territoire."
+    bonneReponse: "pourtant"
+    distracteurs: ["parce que", "puis"]
+    indice: "Cherche si l'attitude du chat contredit son courage."
+    relationBonneReponse: "opposition"
+    relationsDistracteurs:
+      parce que: "cause - faux : le fait de défendre son territoire n'explique pas pourquoi il semble craintif, c'est un fait qui contredit cette apparence"
+      puis: "succession - faux : les deux faits ne se succèdent pas dans le temps, ils se contredisent l'un l'autre"
+  - enonce: "___, le cuisinier épluche les légumes. Il fera cuire le riz après."
+    bonneReponse: "d'abord"
+    distracteurs: ["car", "pourtant"]
+    indice: "Cherche quelle étape vient en premier dans la recette."
+    relationBonneReponse: "succession"
+    relationsDistracteurs:
+      car: "cause - faux : éplucher les légumes n'est pas la cause du fait de cuire le riz ensuite, c'est simplement la première étape d'une suite d'actions"
+      pourtant: "opposition - faux : il n'y a aucune contradiction entre éplucher les légumes et cuire le riz, ce sont deux étapes complémentaires d'une même suite"
+  - enonce: "Le peintre nettoie ses pinceaux. ___, il range sa palette dans le tiroir."
+    bonneReponse: "puis"
+    distracteurs: ["car", "mais"]
+    indice: "Cherche l'ordre des gestes du peintre."
+    relationBonneReponse: "succession"
+    relationsDistracteurs:
+      car: "cause - faux : ranger la palette n'est pas la cause du nettoyage des pinceaux, ce sont deux actions simplement successives"
+      mais: "opposition - faux : il n'y a aucune contradiction entre nettoyer les pinceaux et ranger la palette, ce sont deux étapes qui s'enchaînent normalement"
+  - enonce: "La fusée quitte le sol. ___, elle traverse les nuages."
+    bonneReponse: "puis"
+    distracteurs: ["donc", "pourtant"]
+    indice: "Cherche l'ordre des étapes du décollage."
+    relationBonneReponse: "succession"
+    relationsDistracteurs:
+      donc: "consequence - faux : traverser les nuages n'est pas une conséquence logique du décollage, c'est simplement l'étape suivante dans le temps"
+      pourtant: "opposition - faux : il n'y a aucune contradiction entre le décollage et la traversée des nuages, ce sont deux moments d'un même trajet"
+  - enonce: "Le boulanger pétrit la pâte. ___, il la laisse reposer une heure."
+    bonneReponse: "ensuite"
+    distracteurs: ["mais", "car"]
+    indice: "Cherche l'ordre des étapes de la recette."
+    relationBonneReponse: "succession"
+    relationsDistracteurs:
+      mais: "opposition - faux : laisser reposer la pâte n'entre pas en contradiction avec le fait de la pétrir, ce sont deux étapes successives d'une même recette"
+      car: "cause - faux : le repos de la pâte n'explique pas pourquoi le boulanger l'a pétrie, c'est simplement l'étape qui suit"
+  - enonce: "Les randonneurs traversent la forêt. Ils longent la rivière. ___, ils atteignent le sommet."
+    bonneReponse: "enfin"
+    distracteurs: ["donc", "pourtant"]
+    indice: "Cherche quelle étape vient en dernier dans la marche."
+    relationBonneReponse: "succession"
+    relationsDistracteurs:
+      donc: "consequence - faux : atteindre le sommet n'est pas présenté comme une conséquence logique des étapes précédentes, mais comme la dernière étape d'un trajet en plusieurs temps"
+      pourtant: "opposition - faux : il n'y a aucune contradiction entre les étapes précédentes et le fait d'atteindre le sommet, c'est l'aboutissement normal du trajet"
