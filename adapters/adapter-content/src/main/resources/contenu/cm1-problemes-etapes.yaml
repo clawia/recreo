@@ -1,0 +1,147 @@
+schema: 1
+id: cm1-problemes-etapes
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CM1"
+  domaine: "Nombres et calculs"
+  competence: "Résoudre des problèmes à deux étapes mobilisant les quatre opérations"
+#
+# S23-ETA (squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-
+# niveau-2.md, section 2, ETA-1 a ETA-10 ; section 12.1, amendement ETA-4b du 2026-08-30, ETA-7
+# inchangee). Ferme la ligne mathematiques | CM1 | Nombres et calculs | Resoudre des problemes a
+# plusieurs etapes mobilisant les 4 operations, differee deux fois pour capacite (DEC-0029 a s12,
+# DEC-0030 a s13).
+#
+# ETA-1 : chaque item pose exactement deux etapes (premiere operation sur deux nombres donnes,
+# seconde operation sur le resultat de la premiere et un troisieme nombre donne).
+#
+# ETA-2 : les quatre operations sont servies, chacune etant l'une des deux etapes d'au moins trois
+# items - compte sur ce paquet : addition 15, soustraction 16, multiplication 11, division 6.
+#
+# ETA-4b (remplace ETA-4, amendement du 2026-08-30) : trois familles de distracteurs, jamais
+# d'autres ; chaque item en declare exactement deux, nommees dans le commentaire a cote de l'enonce
+# ("op1,op2,a+b" ou "op1,op2,a+c") :
+#   (a) le resultat intermediaire, c'est-a-dire le resultat de la premiere etape seule ;
+#   (b) le resultat obtenu en remplacant l'operation de la seconde etape par son operation inverse,
+#       la premiere etape restant correcte ;
+#   (c) le resultat obtenu en remplacant l'operation de la PREMIERE etape par son operation
+#       inverse, la seconde etape etant ensuite conduite correctement - l'enfant qui lit "de plus"
+#       la ou il y a "de moins", ou l'inverse.
+# La famille (a) figure sur les 24 items (le plancher amende exige au moins la moitie). La famille
+# (c) n'est utilisee que lorsque l'operation inversee correspond a une melecture plausible de
+# l'enonce (addition/soustraction seulement sur ce paquet) et qu'elle rend un entier positif ;
+# cette plausibilite reste un jugement de nadia-prof, aucun garde-fou ne la voit.
+#
+# ETA-5 / ETA-6 : aucune etape n'a pour operande 0 ni 1 ; les trois propositions de chaque item
+# sont des entiers positifs deux a deux distincts, et aucun resultat intermediaire n'egale le
+# resultat final (verifie a la generation, sur les 24 items).
+#
+# ETA-7 (inchangee) : sur les 24 items, la bonne reponse est la plus grande sur 8, la plus petite
+# sur 8, celle du milieu sur 8 - exactement un tiers chacun, largement au-dessus du plancher d'un
+# quart. Rendu possible par ETA-4b : les items de rang median declarent (a)+(c), les autres (a)+(b).
+#
+# ETA-8 : aucune situation ne suppose un jardin, une piscine, une chambre a soi, un animal, un
+# depart en vacances ou de l'argent de poche ; les sujets sont des collectifs (classe, ecole, club,
+# atelier, bibliotheque, cantine, reserve, magasin scolaire) plutot que des enfants nommes, pour
+# ecarter tout role distribue par genre.
+#
+# ETA-9 : l'indice donne la methode de la premiere etape seule, jamais un resultat.
+# ETA-10 : vingt-quatre items.
+items:
+  - enonce: "La bibliothèque de l'école reçoit 24 romans et 18 bandes dessinées. Elle en prête ensuite 30. Combien de livres lui reste-t-il ?"  # ETA-4b: add,sub,a+b
+    bonneReponse: "12"
+    distracteurs: ["42", "72"]
+    indice: "Additionne d'abord les romans et les bandes dessinées reçus."
+  - enonce: "La bibliothèque reçoit 45 albums et 27 magazines dans la même semaine. Elle en prête ensuite 50. Combien lui en reste-t-il ?"  # ETA-4b: add,sub,a+b
+    bonneReponse: "22"
+    distracteurs: ["72", "122"]
+    indice: "Additionne d'abord les albums et les magazines reçus."
+  - enonce: "La classe fabrique 34 bracelets lundi et 29 mardi pour la kermesse. 3 classes fabriquent chacune ce même nombre. Combien de bracelets fabrique-t-on en tout ?"  # ETA-4b: add,mul,a+b
+    bonneReponse: "189"
+    distracteurs: ["63", "21"]
+    indice: "Additionne d'abord les bracelets faits lundi et mardi."
+  - enonce: "L'école imprime 12 affiches le premier jour et 8 le second pour le spectacle. 4 écoles impriment chacune ce même nombre. Combien d'affiches imprime-t-on en tout ?"  # ETA-4b: add,mul,a+b
+    bonneReponse: "80"
+    distracteurs: ["20", "5"]
+    indice: "Additionne d'abord les affiches imprimées les deux jours."
+  - enonce: "Le club prépare 18 médailles pour les benjamins et 14 pour les minimes lors du tournoi. 2 clubs préparent chacun ce même nombre. Combien de médailles prépare-t-on en tout ?"  # ETA-4b: add,mul,a+b
+    bonneReponse: "64"
+    distracteurs: ["32", "16"]
+    indice: "Additionne d'abord les médailles préparées pour les deux catégories."
+  - enonce: "L'atelier de poterie fabrique 75 bols, dont 18 sont abîmés. 3 ateliers fabriquent chacun ce même nombre de bols réussis. Combien de bols réussis obtient-on en tout ?"  # ETA-4b: sub,mul,a+b
+    bonneReponse: "171"
+    distracteurs: ["57", "19"]
+    indice: "Soustrais d'abord les bols abîmés du total fabriqué."
+  - enonce: "L'atelier de couture prépare 50 coussins, dont 10 sont refusés. 4 écoles préparent chacune ce même nombre de coussins réussis. Combien de coussins réussis obtient-on en tout ?"  # ETA-4b: sub,mul,a+b
+    bonneReponse: "160"
+    distracteurs: ["40", "10"]
+    indice: "Soustrais d'abord les coussins refusés du total préparé."
+  - enonce: "L'atelier de peinture prépare 90 affiches, dont 30 sont abîmées. 2 écoles préparent chacune ce même nombre d'affiches réussies. Combien d'affiches réussies obtient-on en tout ?"  # ETA-4b: sub,mul,a+b
+    bonneReponse: "120"
+    distracteurs: ["60", "30"]
+    indice: "Soustrais d'abord les affiches abîmées du total préparé."
+  - enonce: "L'épicerie de l'école reçoit 8 caisses de 6 oranges chacune, puis 5 oranges offertes en plus par un producteur local. Combien d'oranges l'épicerie reçoit-elle en tout ?"  # ETA-4b: mul,add,a+b
+    bonneReponse: "53"
+    distracteurs: ["48", "43"]
+    indice: "Multiplie d'abord le nombre de caisses par les oranges de chacune."
+  - enonce: "La cantine reçoit 7 cageots de 9 yaourts chacun, puis 12 yaourts offerts en plus par le fournisseur. Combien de yaourts la cantine reçoit-elle en tout ?"  # ETA-4b: mul,add,a+b
+    bonneReponse: "75"
+    distracteurs: ["63", "51"]
+    indice: "Multiplie d'abord le nombre de cageots par les yaourts de chacun."
+  - enonce: "Pour une recette partagée en classe, on prépare 4 plateaux de 9 parts chacun. Les parts sont ensuite réparties également entre 6 classes. Combien de parts chaque classe reçoit-elle ?"  # ETA-4b: mul,div,a+b
+    bonneReponse: "6"
+    distracteurs: ["36", "216"]
+    indice: "Multiplie d'abord le nombre de plateaux par les parts de chacun."
+  - enonce: "Pour un goûter collectif, on prépare 5 plateaux de 8 parts chacun. Les parts sont ensuite réparties également entre 4 classes. Combien de parts chaque classe reçoit-elle ?"  # ETA-4b: mul,div,a+b
+    bonneReponse: "10"
+    distracteurs: ["40", "160"]
+    indice: "Multiplie d'abord le nombre de plateaux par les parts de chacun."
+  - enonce: "Pour la fête de l'école, on prépare 3 plateaux de 14 parts chacun. Les parts sont ensuite réparties également entre 7 groupes d'élèves. Combien de parts chaque groupe reçoit-il ?"  # ETA-4b: mul,div,a+b
+    bonneReponse: "6"
+    distracteurs: ["42", "294"]
+    indice: "Multiplie d'abord le nombre de plateaux par les parts de chacun."
+  - enonce: "Le tri sélectif collecte 108 bouteilles réparties également dans 9 bacs. Un bac est vidé de 6 bouteilles pour une exposition. Combien de bouteilles reste-t-il dans ce bac ?"  # ETA-4b: div,sub,a+b
+    bonneReponse: "6"
+    distracteurs: ["12", "18"]
+    indice: "Divise d'abord les bouteilles également entre les bacs."
+  - enonce: "Le tri sélectif collecte 91 cartons répartis également dans 7 bacs. Un bac est vidé de 5 cartons pour un atelier. Combien de cartons reste-t-il dans ce bac ?"  # ETA-4b: div,sub,a+b
+    bonneReponse: "8"
+    distracteurs: ["13", "18"]
+    indice: "Divise d'abord les cartons également entre les bacs."
+  - enonce: "Le tri sélectif collecte 88 boîtes réparties également dans 4 bacs. Un bac est vidé de 10 boîtes pour une collecte. Combien de boîtes reste-t-il dans ce bac ?"  # ETA-4b: div,sub,a+b
+    bonneReponse: "12"
+    distracteurs: ["22", "32"]
+    indice: "Divise d'abord les boîtes également entre les bacs."
+  - enonce: "La classe récolte 40 timbres, puis en reçoit 15 de plus pour une collection commune. Elle en donne ensuite 10 à une autre école. Combien de timbres la classe garde-t-elle ?"  # ETA-4b: add,sub,a+c
+    bonneReponse: "45"
+    distracteurs: ["55", "15"]
+    indice: "Additionne d'abord les timbres des deux collectes."
+  - enonce: "La bibliothèque reçoit 50 livres, puis en reçoit 20 de plus donnés par une association. Elle en prête ensuite 12. Combien de livres reste-t-il à la bibliothèque ?"  # ETA-4b: add,sub,a+c
+    bonneReponse: "58"
+    distracteurs: ["70", "18"]
+    indice: "Additionne d'abord les deux dons de livres reçus."
+  - enonce: "L'atelier reçoit 36 perles, puis en reçoit 14 de plus pour un bracelet collectif. Il en utilise ensuite 8 pour un autre projet. Combien de perles reste-t-il à l'atelier ?"  # ETA-4b: add,sub,a+c
+    bonneReponse: "42"
+    distracteurs: ["50", "14"]
+    indice: "Additionne d'abord les deux arrivées de perles."
+  - enonce: "La cantine reçoit 45 pommes, puis en reçoit 17 de plus livrées l'après-midi. Elle en distribue ensuite 11 au goûter. Combien de pommes reste-t-il à la cantine ?"  # ETA-4b: add,sub,a+c
+    bonneReponse: "51"
+    distracteurs: ["62", "17"]
+    indice: "Additionne d'abord les deux livraisons de pommes."
+  - enonce: "Le club a 30 ballons, en perd 12 pendant le tournoi. Il en reçoit ensuite 9 offerts par un sponsor. Combien de ballons le club a-t-il maintenant ?"  # ETA-4b: sub,add,a+c
+    bonneReponse: "27"
+    distracteurs: ["18", "51"]
+    indice: "Soustrais d'abord les ballons perdus pendant le tournoi."
+  - enonce: "La réserve a 40 cahiers, en distribue 15 en début d'année. Elle en reçoit ensuite 14 livrés en cours d'année. Combien de cahiers reste-t-il dans la réserve ?"  # ETA-4b: sub,add,a+c
+    bonneReponse: "39"
+    distracteurs: ["25", "69"]
+    indice: "Soustrais d'abord les cahiers distribués en début d'année."
+  - enonce: "L'école a 50 chaises, en retire 22 pour une autre activité. Elle en reçoit ensuite 10 prêtées par une classe voisine. Combien de chaises reste-t-il dans la salle ?"  # ETA-4b: sub,add,a+c
+    bonneReponse: "38"
+    distracteurs: ["28", "82"]
+    indice: "Soustrais d'abord les chaises retirées pour l'autre activité."
+  - enonce: "Le magasin scolaire a 35 crayons en rayon, en vend 13 le premier jour. Il en reçoit ensuite 16 livrés le lendemain. Combien de crayons le magasin a-t-il maintenant ?"  # ETA-4b: sub,add,a+c
+    bonneReponse: "38"
+    distracteurs: ["22", "64"]
+    indice: "Soustrais d'abord les crayons vendus le premier jour."

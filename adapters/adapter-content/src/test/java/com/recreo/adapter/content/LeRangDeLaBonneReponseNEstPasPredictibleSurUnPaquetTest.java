@@ -284,6 +284,11 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
      * ajoute mesure la part du contenu servi sur laquelle cette propriete n'est gardee par rien.</p>
      */
     private static final Map<String, String> PAQUETS_HORS_DU_DOMAINE_NUMERIQUE = Map.ofEntries(
+            Map.entry("cp-ranger-nombres",
+            "24 items sur 24 proposent une liste ordonnee de trois nombres (\"a, b, c\"), pas"
+                    + " une valeur scalaire unique : depuis ADR-0068, lireValeur y rend null (le"
+                    + " reste apres le premier nombre porte encore un chiffre). Mesure du"
+                    + " 2026-08-30, verification directe sur les 72 propositions du paquet"),
             Map.entry("cm1-conjugaison-present",
             "25 items sur 25 portent trois distracteurs, donc quatre propositions : le rang d'une"
                     + " bonne reponse parmi trois n'y est pas defini. Mesure du 2026-08-19, comptage"
@@ -507,6 +512,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
      * <p><b>La somme de termes est ratifiee par ADR-0041</b> (amendement du 2026-08-15, cas 2 de la
      * decision) : elle n'etait pas dans le perimetre ferme par la version initiale de cet ADR et y
      * vivait comme une correction locale en attente de doctrine.</p>
+     *
+     * <p><b>ADR-0068, le 2026-08-30 : une lecture qui laisse un chiffre derriere elle n'a rien
+     * lu.</b> Le troisieme cas rendait jusqu'ici une valeur des qu'une proposition commencait par
+     * un chiffre, quel que soit ce qu'il en restait. Sur une proposition qui ecrit plusieurs
+     * nombres et que ni la duree ni la somme ne consomment - {@code "32, 33, 40"}, une liste a
+     * ranger - il rendait 32 et presentait cette valeur comme celle de la proposition entiere.
+     * Une telle proposition n'a pas de valeur comparable : elle sort du domaine
+     * ({@code null}), comme un mot ou un symbole, plutot que d'en recevoir une fausse. Voir
+     * {@link #unChiffreEstRestePourCompte}.</p>
      */
     static Lue lireValeur(String proposition) {
         String texte = proposition.strip();
@@ -522,8 +536,31 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
         if (!matcher.find()) {
             return null;
         }
+        String reste = texte.substring(matcher.end()).strip();
+        if (unChiffreEstRestePourCompte(reste)) {
+            return null;
+        }
         String sansSeparateur = SEPARATEUR_DE_MILLIERS.matcher(matcher.group()).replaceAll("");
-        return new Lue(Long.parseLong(sansSeparateur), texte.substring(matcher.end()).strip());
+        return new Lue(Long.parseLong(sansSeparateur), reste);
+    }
+
+    /**
+     * Vrai si le reste d'une lecture porte encore un chiffre - ADR-0068. La lecture s'est alors
+     * arretee sur un prefixe d'une proposition qui ecrit plusieurs nombres, et la valeur qu'elle
+     * rendrait serait celle d'un seul d'entre eux, presentee comme celle de la proposition entiere.
+     *
+     * <p>Le critere est le chiffre, jamais la forme qui le porte : une liste, une fraction, un
+     * intervalle ou une ecriture decimale a la virgule sont attrapees par la meme ligne, sans
+     * qu'aucune ne soit nommee (ADR-0039). Une unite ecrite ({@code "20 cm"}) ne porte pas de
+     * chiffre et reste dans le domaine, ou la clause du reste d'ADR-0041 la garde deja.</p>
+     */
+    private static boolean unChiffreEstRestePourCompte(String reste) {
+        for (int position = 0; position < reste.length(); position++) {
+            if (Character.isDigit(reste.charAt(position))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /** La seule valeur comparable d'une proposition, ou {@code null}. Voir {@link #lireValeur}. */
@@ -913,6 +950,17 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
      * soit les deux propositions designent reellement le meme nombre (l'item n'a pas de reponse
      * unique), soit la lecture est trop courte pour les distinguer (une somme non lue, par exemple).
      * Dans les deux cas, rien ne doit le laisser passer en silence.
+     *
+     * <p><b>ADR-0068 partage ces deux cas, et n'en laisse qu'un ici.</b> Le second - la lecture est
+     * trop courte - suppose qu'on puisse toujours l'allonger jusqu'a une valeur ; c'est vrai d'une
+     * somme, c'est faux d'une proposition qui n'a pas de valeur du tout, et cette clause-ci
+     * repondait alors "deux propositions valent la meme chose" a un item ou aucune des deux ne
+     * vaut quoi que ce soit. Depuis ADR-0068, une lecture qui laisse un chiffre derriere elle rend
+     * {@code null} : l'item sort du domaine avant d'arriver ici, et le seul cas qui reste est celui
+     * de deux propositions <b>entierement</b> lues qui coincident. Le premier cas - deux
+     * propositions qui designent reellement le meme nombre - reste garde ici, et sa forme textuelle
+     * l'est en plus par {@code AucunePropositionNEstEgaleAUneAutreDansUnItemTest}, qui ne depend
+     * d'aucune lecture de valeur.</p>
      */
     static void verifierQuAucuneValeurNeCoincide(Path racine, String racineClasspath) {
         List<String> paquets = paquets(racine);

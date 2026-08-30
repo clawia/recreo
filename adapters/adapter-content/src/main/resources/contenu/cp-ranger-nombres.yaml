@@ -1,0 +1,142 @@
+schema: 1
+id: cp-ranger-nombres
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Ranger des nombres entiers jusqu'à 100 dans l'ordre croissant"
+#
+# S23-RAN (squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-
+# niveau-2.md, section 1, RAN-1 a RAN-8, section 12.2 amendements RAN-4b/RAN-5b du 2026-08-30).
+# Ferme la moitie "ranger" de la ligne mathematiques | CP | Nombres et calculs | Comparer et ranger
+# des nombres jusqu'a 100 (<, >, =), en cours depuis s09 ; la moitie "comparer" est deja servie par
+# cp-comparer-nombres.
+#
+# RAN-1 : chaque item presente trois entiers ; chacune des trois propositions est une liste des
+# memes trois nombres, ecrite "a, b, c". La consigne du jeu (catalogue.yaml) fixe l'ordre croissant
+# pour tout le paquet et ne change jamais de sens d'un item a l'autre.
+#
+# RAN-4 / RAN-4b : deux familles de distracteurs, jamais d'autres, recalculables depuis les trois
+# nombres :
+#   (a) les trois nombres dans le sens inverse de la consigne (ordre decroissant) ;
+#   (b) les trois nombres ranges en ne comparant que leur chiffre des unites.
+# RAN-4b (amendement du 2026-08-30) : la famille (b) n'est definie que si les trois chiffres des
+# unites sont deux a deux distincts - aucun triplet de ce paquet n'a deux nombres de meme chiffre
+# des unites. Aucun triplet retenu ne laisse en outre la famille (b) reproduire la famille (a) ou la
+# bonne reponse (verifie a la generation, sur la population entiere des candidats).
+#
+# RAN-2 / RAN-3 : entiers de 0 a 100, deux a deux distincts par item ; toute proposition "a, b, c"
+# tient sur 12 caracteres au plus (la plus longue de ce paquet en fait 11).
+#
+# RAN-5b (amendement du 2026-08-30, remplace RAN-5) : sur au moins la moitie des items, au moins un
+# distracteur commence par le meme nombre que la bonne reponse - RAN-5 d'origine se contentait d'un
+# partage entre les deux distracteurs, ce qui laissait le raccourci "premier nombre le plus petit"
+# entierement gagnant. Tenu sur 13 items sur 24 (>= 12 requis).
+# RAN-6 : au moins un tiers des items opposent deux nombres de la meme dizaine - tenu sur 9 items
+# sur 24 (>= 8 requis).
+#
+# RAN-7 : l'indice donne une methode, jamais le triplet range.
+# RAN-8 : vingt-quatre items, aucun triplet ne se repete.
+#
+# ADR-0068 : les propositions de ce paquet sont des listes ordonnees de trois nombres, pas des
+# valeurs scalaires uniques - "cp-ranger-nombres" est donc declare hors du domaine numerique des
+# garde-fous generiques de rang (voir LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest,
+# PAQUETS_HORS_DU_DOMAINE_NUMERIQUE), qui ne jugent que des propositions a valeur scalaire unique.
+items:
+  - enonce: "66, 54, 59"
+    bonneReponse: "54, 59, 66"
+    distracteurs: ["66, 59, 54", "54, 66, 59"]
+    indice: "Compare le nombre de chiffres de chaque nombre."
+  - enonce: "29, 27, 68"
+    bonneReponse: "27, 29, 68"
+    distracteurs: ["68, 29, 27", "27, 68, 29"]
+    indice: "Regarde d'abord les dizaines de chaque nombre."
+  - enonce: "54, 23, 27"
+    bonneReponse: "23, 27, 54"
+    distracteurs: ["54, 27, 23", "23, 54, 27"]
+    indice: "Cherche d'abord le plus petit des trois."
+  - enonce: "4, 1, 63"
+    bonneReponse: "1, 4, 63"
+    distracteurs: ["63, 4, 1", "1, 63, 4"]
+    indice: "Compare les dizaines, puis les unités si besoin."
+  - enonce: "8, 1, 56"
+    bonneReponse: "1, 8, 56"
+    distracteurs: ["56, 8, 1", "1, 56, 8"]
+    indice: "Repère d'abord le nombre le plus grand."
+  - enonce: "97, 0, 8"
+    bonneReponse: "0, 8, 97"
+    distracteurs: ["97, 8, 0", "0, 97, 8"]
+    indice: "Compare les nombres deux à deux avant de ranger."
+  - enonce: "8, 3, 84"
+    bonneReponse: "3, 8, 84"
+    distracteurs: ["84, 8, 3", "3, 84, 8"]
+    indice: "Compare le nombre de chiffres de chaque nombre."
+  - enonce: "17, 66, 13"
+    bonneReponse: "13, 17, 66"
+    distracteurs: ["66, 17, 13", "13, 66, 17"]
+    indice: "Regarde d'abord les dizaines de chaque nombre."
+  - enonce: "13, 0, 91"
+    bonneReponse: "0, 13, 91"
+    distracteurs: ["91, 13, 0", "0, 91, 13"]
+    indice: "Cherche d'abord le plus petit des trois."
+  - enonce: "61, 30, 52"
+    bonneReponse: "30, 52, 61"
+    distracteurs: ["61, 52, 30", "30, 61, 52"]
+    indice: "Compare les dizaines, puis les unités si besoin."
+  - enonce: "65, 32, 94"
+    bonneReponse: "32, 65, 94"
+    distracteurs: ["94, 65, 32", "32, 94, 65"]
+    indice: "Repère d'abord le nombre le plus grand."
+  - enonce: "28, 2, 57"
+    bonneReponse: "2, 28, 57"
+    distracteurs: ["57, 28, 2", "2, 57, 28"]
+    indice: "Compare les nombres deux à deux avant de ranger."
+  - enonce: "94, 11, 56"
+    bonneReponse: "11, 56, 94"
+    distracteurs: ["94, 56, 11", "11, 94, 56"]
+    indice: "Compare le nombre de chiffres de chaque nombre."
+  - enonce: "16, 55, 51"
+    bonneReponse: "16, 51, 55"
+    distracteurs: ["55, 51, 16", "51, 55, 16"]
+    indice: "Regarde d'abord les dizaines de chaque nombre."
+  - enonce: "57, 44, 63"
+    bonneReponse: "44, 57, 63"
+    distracteurs: ["63, 57, 44", "63, 44, 57"]
+    indice: "Cherche d'abord le plus petit des trois."
+  - enonce: "48, 2, 100"
+    bonneReponse: "2, 48, 100"
+    distracteurs: ["100, 48, 2", "100, 2, 48"]
+    indice: "Compare les dizaines, puis les unités si besoin."
+  - enonce: "71, 54, 93"
+    bonneReponse: "54, 71, 93"
+    distracteurs: ["93, 71, 54", "71, 93, 54"]
+    indice: "Repère d'abord le nombre le plus grand."
+  - enonce: "36, 3, 20"
+    bonneReponse: "3, 20, 36"
+    distracteurs: ["36, 20, 3", "20, 3, 36"]
+    indice: "Compare les nombres deux à deux avant de ranger."
+  - enonce: "52, 91, 86"
+    bonneReponse: "52, 86, 91"
+    distracteurs: ["91, 86, 52", "91, 52, 86"]
+    indice: "Compare le nombre de chiffres de chaque nombre."
+  - enonce: "30, 94, 23"
+    bonneReponse: "23, 30, 94"
+    distracteurs: ["94, 30, 23", "30, 23, 94"]
+    indice: "Regarde d'abord les dizaines de chaque nombre."
+  - enonce: "81, 96, 24"
+    bonneReponse: "24, 81, 96"
+    distracteurs: ["96, 81, 24", "81, 24, 96"]
+    indice: "Cherche d'abord le plus petit des trois."
+  - enonce: "37, 100, 16"
+    bonneReponse: "16, 37, 100"
+    distracteurs: ["100, 37, 16", "100, 16, 37"]
+    indice: "Compare les dizaines, puis les unités si besoin."
+  - enonce: "7, 65, 48"
+    bonneReponse: "7, 48, 65"
+    distracteurs: ["65, 48, 7", "65, 7, 48"]
+    indice: "Repère d'abord le nombre le plus grand."
+  - enonce: "65, 18, 53"
+    bonneReponse: "18, 53, 65"
+    distracteurs: ["65, 53, 18", "53, 65, 18"]
+    indice: "Compare les nombres deux à deux avant de ranger."

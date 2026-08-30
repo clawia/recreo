@@ -345,6 +345,63 @@ class LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest {
     }
 
     /**
+     * <b>ADR-0068, troisieme angle mort : le chiffre laisse dans le reste.</b> La clause du reste
+     * ci-dessus compare les trois restes d'un item entre eux ; elle est donc muette sur un item
+     * dont les trois propositions laissent le <b>meme</b> reste et dont ce reste porte pourtant un
+     * nombre que la lecture a ignore. C'est le cas d'une proposition qui ecrit une liste de
+     * nombres : la lecture rend le premier et abandonne les autres, sur les trois propositions a la
+     * fois. Depuis ADR-0068, une telle proposition n'a plus de valeur du tout.
+     *
+     * <p><b>La mutation, sur le corpus reel et non sur une fixture</b> (lecon de s05, et meme geste
+     * que {@link #chaqueItemReelDontUnResteEstReecritFaitEchouerLaClause}) : chaque proposition du
+     * domaine que la production ecrit se voit coller derriere elle une autre proposition <b>du meme
+     * item</b>, separee par la virgule. Le texte obtenu est une liste de nombres que la production
+     * ecrit vraiment - la forme exacte qu'un paquet de rangement presente - et aucun nombre n'y est
+     * de ma main. Chacune de ces mutations doit cesser d'avoir une valeur.</p>
+     *
+     * <p>Ce que cette mise a l'epreuve ne prouve pas : que le corpus non mute garde ses valeurs.
+     * C'est {@link #aucunPaquetNEstJugeSurUnePartieDeSesItemsSansQueLeDepotLeDeclare} qui l'exige,
+     * en comparant a l'egalite exacte le nombre d'items ecartes par paquet - une lecture devenue
+     * trop severe la ferait rougir immediatement.</p>
+     */
+    @Test
+    void chaqueValeurReelleCesseDEtreLueDesQuUneAutrePropositionLuiEstCollee() {
+        List<String> lecturesQuiSurvivent = new ArrayList<>();
+        int mutants = 0;
+        for (String paquet : paquets(CONTENU_DE_PRODUCTION)) {
+            for (Lecture lecture : lecturesDe(paquet, "")) {
+                if (!lecture.dansLeDomaine()) {
+                    continue;
+                }
+                List<String> propositions = lecture.propositions();
+                for (int rang = 0; rang < propositions.size(); rang++) {
+                    String mutee = propositions.get(rang) + ", "
+                            + propositions.get((rang + 1) % propositions.size());
+                    mutants++;
+                    Lue lue = LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest
+                            .lireValeur(mutee);
+                    if (lue != null) {
+                        lecturesQuiSurvivent.add(String.format(
+                                "paquet %s : \"%s\" est lue %d et laisse \"%s\"",
+                                paquet, mutee, lue.valeur(), lue.reste()));
+                    }
+                }
+            }
+        }
+
+        assertThat(mutants)
+                .as("aucune proposition du domaine a muter : cette mise a l'epreuve ne prouve rien")
+                .isPositive();
+        assertThat(lecturesQuiSurvivent)
+                .as("ADR-0068 : une proposition qui ecrit plusieurs nombres n'a pas de valeur"
+                        + " comparable. Une lecture qui s'arrete au premier et laisse les autres"
+                        + " derriere elle rend la valeur d'un morceau en la presentant comme celle"
+                        + " de la proposition entiere - et les garde-fous qui comparent ces valeurs"
+                        + " jugent alors un objet qui n'existe pas")
+                .isEmpty();
+    }
+
+    /**
      * ADR-0003 : les deux clauses ne prouvent rien si la production ne leur offre aucun item du
      * domaine a juger. Ce n'est pas une redite des assertions de non-vacuite ci-dessus, qui ne
      * comptent que les paquets : un depot ou plus aucune proposition n'aurait de valeur les
