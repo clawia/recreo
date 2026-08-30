@@ -342,3 +342,245 @@ l'item 7, en revanche, est bien de ma porte : c'est le sens de ce que l'enfant l
 | **`ETA-3` est tenue sans marge : sept enonces sur 24 a la borne exacte** | `camille-po` | Signalement. Toute correction qui allonge un enonce devra en raccourcir un autre |
 | **`marc-dev` a aligne son propre test d'`ETA-3` sur ma convention de comptage** | `yanis-qa` | Il a trouve contre lui-meme que son test retirait le "?" avant de compter et n'aurait jamais pu attraper la breche. Le garde-fou mesure maintenant ce que je mesure |
 | **`MNC-1` non couvert, et le `relecteur-pedagogique` n'est pas passe** | `sofia-sm` | Ce Done ne dit rien de la hauteur utile ni de l'orthographe |
+
+---
+
+### Done pedagogique - 2026-08-30, confirmation des fermetures des reserves D et E (s23) - VALIDE
+
+**Amendement date. Les deux blocs precedents ne sont pas reecrits et restent lisibles en entier**,
+avec leurs cinq reserves et leurs deux corrections de mes propres comptes. Ce bloc s'ajoute.
+
+**Ce qui change, et ce qui ne change pas.** Le Done prononce le 2026-08-30 tient : il n'est **ni
+etendu ni retire**, la ligne reste `couvert-valide` **sans mention de couverture partielle**, et le
+perimetre de ce que ce paquet couvre est exactement celui du premier bloc. **Ce qui change est la
+mention de reserve, et elle seule** : les reserves D et E sont levees, aucune reserve nouvelle n'est
+ouverte, **les cinq reserves A a E de ce paquet sont donc toutes fermees**. Un increment sans
+reserve pendante n'est plus "sous reserve" : le verdict passe a `VALIDE`.
+
+**Note de datation.** Mes blocs precedents portent 2026-08-30 ; les commentaires ecrits dans le
+paquet par `marc-dev` datent mon reaudit du 2026-09-01. La date d'auteur des commits du second tour
+est 2026-08-30 pour tous. Je date ce bloc du 2026-08-30 et je signale l'ecart, sans corriger un
+fichier qui n'est pas le mien.
+
+**Correction d'un fait que j'avais enregistre.** Mes deux blocs precedents ecrivent que l'audit a
+ete conduit "sur le JDK 21 de la toolchain declaree" ; **je ne l'avais pas constate**, et
+l'enveloppe de lancement dit des sa premiere ligne que le JDK designe par la toolchain de type
+`jdk` et de version `21` rapporte 25.0.2. Cela ne change aucun verdict de contenu ; je ne nomme
+plus une version que je n'ai pas verifiee. Route comme sur l'autre fiche du sprint.
+
+#### Ce que j'ai fait
+
+**Audit conduit en jouant.** Seize parties completes, chaque proposition fausse pressee avant la
+bonne ; **les 24 items distincts rencontres**, compte fait sur les enonces rendus par l'ecran et
+non sur le fichier. Le tirage m'ayant servi la bonne reponse en premier sur deux des trois items de
+la reserve D, **j'ai rejoue en pressant une proposition fausse nommee sur ces items-la** pour voir
+l'indice a l'ecran, au lieu de conclure du fichier. Ce n'est pas un audit degrade.
+
+#### Reserve D - levee
+
+**Critere que j'avais ecrit** : *"aligner les trois indices sur le verbe de leur enonce - 'les
+cahiers perdus en debut d'annee', 'les chaises perdues pour l'autre activite', 'les crayons perdus
+le premier jour'."*
+
+**Les trois indices portent exactement ces trois formulations, mot pour mot.**
+
+| Item | Enonce | Indice servi apres l'erreur | Ecart |
+|---|---|---|---|
+| 22 | "La reserve a 40 cahiers, en **perd** 15 en debut d'annee." | "Soustrais d'abord les cahiers **perdus** en debut d'annee." | **aucun** |
+| 23 | "L'ecole a 50 chaises, en **perd** 22 pour une autre activite." | "Soustrais d'abord les chaises **perdues** pour l'autre activite." | **aucun** |
+| 24 | "La classe a 35 crayons en reserve, en **perd** 13 le premier jour." | "Soustrais d'abord les crayons **perdus** le premier jour." | **aucun** |
+
+**Vu a l'ecran, pas deduit du fichier.** Sur l'item 24, j'ai presse 22, recu "Ce n'est pas ca.
+Essaie encore !" et, sous les propositions, "Soustrais d'abord les crayons perdus le premier jour."
+**Plus rien n'est vendu dans un enonce ou rien ne se vend.** Meme verification conduite sur les
+items 22 et 23, avec 25 et 28.
+
+*Recompte sur la population entiere, et pas seulement sur les trois items corriges : les 24
+indices confrontes a leurs 24 enonces, chaque nom et chaque participe de l'indice cherche dans
+l'enonce de son item.* **Zero ecart de l'espece qui a fonde la reserve D** - aucun indice ne nomme
+un evenement absent de son enonce ni contraire a lui.
+
+**Deux indices meritent d'etre nommes sans etre comptes en defaut**, parce qu'une lecture pressee
+pourrait les y ranger et que je prefere avoir dit pourquoi je ne le fais pas. L'item 17 dit
+*"Additionne d'abord les timbres des deux **collectes**"* la ou l'enonce dit "recolte 40 timbres,
+puis en recoit 15 de plus", et l'item 18 dit *"les deux **dons** de livres recus"* la ou l'enonce
+dit "recoit 50 livres, puis en recoit 20 de plus donnes par une association". **Dans les deux cas,
+le mot de l'indice recouvre la quantite de l'enonce sans le contredire** : une reception est
+compatible avec une collecte et avec un don, et la quantite designee reste la seule candidate. **Ce
+n'est pas le defaut de la reserve D**, ou l'indice affirmait un evenement que l'enonce niait.
+
+#### Reserve E - levee, et un peu au-dela de ce que j'avais demande
+
+**Critere que j'avais ecrit** : *"porter 'celui-ci compris' / 'celle-ci comprise' sur les items 3,
+4, 5 et 8 comme sur les items 6 et 7 ; et, sur l'item 7, nommer le groupe par le mot du sujet ('4
+ateliers, celui-ci compris') plutot que par 'ecoles'."*
+
+| Item | Sujet de l'enonce | Formule livree | Le pronom a-t-il son antecedent ? |
+|---|---|---|---|
+| 3 | La classe | "3 classes, **celle-ci comprise**" | oui, feminin |
+| 4 | L'ecole | "4 ecoles, **celle-ci comprise**" | oui, feminin |
+| 5 | Le club | "2 clubs, **celui-ci compris**" | oui, masculin |
+| 7 | L'atelier de couture | "4 **ateliers**, **celui-ci compris**" | oui - le groupe est renomme comme je l'avais demande |
+| 8 | L'atelier de peinture | "2 **ateliers**, **celui-ci compris**" | oui - **et je n'avais pas demande ce renommage-la** |
+
+**`marc-dev` a trouve contre moi, et il a eu raison.** Ma reserve E nommait l'item 8 pour
+l'ambiguite de compte, et le defaut de pronom **seulement** pour l'item 7. L'item 8 portait le meme
+defaut : son sujet est *l'atelier* de peinture, son groupe etait nomme "2 **ecoles**", et appliquer
+ma demande a la lettre y aurait pose un "celle-ci comprise" sans antecedent feminin - **c'est-a-dire
+qu'il aurait cree, en fermant ma reserve, exactement le defaut que ma reserve corrigeait ailleurs.**
+Il a applique l'esprit et pas la lettre. **C'est la troisieme fois de ce sprint qu'un membre de la
+squad complete un de mes comptes**, et c'est la conduite qui rend la porte utile.
+
+**Vu a l'ecran** sur les six items (3, 4, 5, 6, 7, 8). La lecture qui excluait le groupe initial
+n'est plus possible sur aucun d'eux.
+
+#### `ETA-3` - le prix paye, mesure
+
+`marc-dev` a du retirer trois mots a l'enonce de l'item 5 ("lors du tournoi") pour loger les deux
+mots de "celui-ci compris". **C'est ce que j'avais annonce en ecrivant la reserve E** : le paquet
+etait a la borne, cet ajout devait etre compense.
+
+*Mesure sur la population entiere des 24 enonces, par le decompte de `ETA-3` - un mot est une suite
+de caracteres sans espace, le point d'interrogation compris des qu'une espace l'en separe.* **De 22
+a 30 mots. Aucun enonce ne depasse 30. La borne est tenue.**
+
+**Je corrige un chiffre qui vient de moi et que le fichier a recopie.** Le commentaire du paquet
+ecrit *"sept enonces a la borne exacte de 30 mots"*. **C'etait vrai avant le correctif, ce ne l'est
+plus apres.** Les enonces a exactement 30 mots sont maintenant **six** - items 6, 7, 11, 13, 17,
+19 - parce que l'item 5, qui etait le septieme, est descendu a 29 du fait du correctif lui-meme. Le
+chiffre est le mien, date de mon reaudit ; il a ete recopie sans etre refait apres un changement qui
+le rendait faux. **Non bloquant, et ce n'est pas une reserve : c'est un chiffre a rafraichir dans un
+commentaire, pas un defaut de contenu.**
+
+**Une observation que je nomme sans en faire une reserve**, comme je l'avais fait pour le mot
+"autre" retire de l'item 17 : les trois mots retires sont *"lors du tournoi"*, c'est-a-dire la
+situation qui donnait sa raison d'etre aux medailles. L'enonce reste resoluble et le calcul est
+inchange ; il est seulement un peu plus sec. **C'est le cout de `ETA-3` sur un paquet qui n'a plus
+de marge, et je l'ai accepte en ecrivant la borne.**
+
+#### Les conditions recomptees apres correctif, sur la population entiere
+
+*Population : les 24 items. Recomptees sur l'arbre reaudite, jamais reprises de mes blocs
+precedents ni de la declaration de l'auteur.*
+
+| Condition | Verdict | Mesure |
+|---|---|---|
+| `ETA-1` | **tenue** | 24 items a exactement deux etapes, la premiere produisant la quantite que la seconde consomme |
+| `ETA-2` | **tenue** | add **15**, sub **16**, mul **11**, div **6**. *Unite de compte : l'item ; une operation par etape.* Plancher 3 |
+| `ETA-3` | **tenue** | Maximum **30 mots** sur les 24 enonces, borne 30. **Six** enonces a la borne exacte |
+| `ETA-4b` | **tenue** | **Les 48 distracteurs recalcules depuis les nombres de l'enonce et les deux familles declarees : 0 ecart sur 24 items.** 16 items en (a) + (b), 8 en (a) + (c). Famille (a) sur les 24 |
+| `ETA-5` | **tenue** | Aucun operande 0 ni 1 sur les 72 operandes ; aucun resultat intermediaire egal au resultat final |
+| `ETA-6` | **tenue** | 72 propositions, entiers positifs, deux a deux distinctes dans chaque item |
+| `ETA-7` | **tenue** | **8 petite / 8 milieu / 8 grande**, plancher `arrondi superieur(24/4)` = 6. Inchange : aucun nombre n'a bouge |
+| `ETA-8` | **tenue** | 24 sujets collectifs, aucun role distribue par genre, aucun enfant nomme. Le passage de "ecoles" a "ateliers" sur les items 7 et 8 ne change pas ce verdict |
+| `ETA-9` | **tenue sur 24 items sur 24** | Onze mots au plus, borne 12 ; aucun indice ne revele un resultat ; **les 24 indices sont coherents avec leur enonce, la reserve D est fermee** (deux formulations larges nommees ci-dessus, sans ecart). Vus a l'ecran apres erreur |
+| `ETA-10` | **tenue** | 24 items |
+
+**La plausibilite de la famille (c)** comme melecture reelle - la clause qui a fonde la reserve B et
+qui reste dans ma seule main - **tient sur les huit items concernes** depuis le passage a "perd", et
+les indices alignes la renforcent au lieu de la contredire.
+
+#### Correction d'un constat que j'avais ecrit sur ce paquet, avant de m'en servir
+
+Le 2026-08-30, premier bloc, j'ai ecrit sous `ETA-9` : *"Les 24 indices donnent la methode de la
+premiere etape seule, jamais un resultat, **et sont propres a leur item**."* **La derniere clause
+est fausse, et elle l'etait deja quand je l'ai ecrite** : les items 11, 12 et 13 partagent le meme
+indice mot pour mot - *"Multiplie d'abord le nombre de plateaux par les parts de chacun."* Il y a
+**22 textes d'indice distincts pour 24 items**, pas 24. *Verifie sur l'arbre d'aujourd'hui et sur
+celui de mon premier audit : le doublon est le meme aux deux dates, le correctif n'y est pour
+rien.*
+
+**Ce que cela change au verdict : rien, et je refuse de faire semblant du contraire.** `ETA-9`, tel
+que je l'ai arbitre avant le sprint, exige trois choses et trois seulement : la methode de la
+premiere etape seule, jamais un resultat, douze mots au plus. **Elle n'a jamais exige qu'un indice
+soit unique.** "Propres a leur item" etait une glose que j'ai ajoutee dans un bloc d'audit, pas une
+condition ; et l'indice partage est **juste** pour les trois items qu'il sert, qui posent la meme
+premiere etape. **Transformer aujourd'hui ma glose en exigence serait deplacer mes poteaux au
+moment ou je valide.** Je ne le fais pas. Je corrige seulement le fait, parce que je l'ai affirme
+sans le compter.
+
+#### Condition nouvelle et datee du 2026-08-30, non bloquante, qui n'est pas une reserve
+
+**Ce paquet est construit sur peu de trames, et je ne l'avais jamais mesure.**
+
+*Mesure sur la population entiere des 24 items, par le couple d'operations declare en `ETA-4b` :*
+**sept couples distincts pour 24 items** - `add,sub` 6 items, `sub,add` 4, `add,mul` 3, `sub,mul`
+3, `mul,div` 3, `div,sub` 3, `mul,add` 2. **Aucun item n'est seul de sa forme.** Le groupe
+`add,sub` se scinde en deux trames lexicales (le pret de la bibliotheque, et le "de plus" suivi
+d'un don), ce qui fait huit trames lexicales pour 24 items.
+
+**Consequence, et elle est certaine, pas probable** : une partie compte dix manches tirees de 24
+items repartis sur sept couples d'operations ; **l'enfant rencontre donc necessairement au moins
+deux items de meme forme dans chaque partie**, et le plus souvent bien davantage.
+
+**Ce que j'en dis, des deux cotes.** Repeter une procedure sur des nombres differents est une facon
+legitime de l'installer, et c'est meme ce qu'on fait en classe. Mais la competence visee est
+*resoudre des problemes*, pas *appliquer une procedure* : le risque est que l'enfant reconnaisse la
+trame au lieu de lire la situation, et reussisse le second item sans l'avoir compris. **Je ne
+tranche pas ce point aujourd'hui et je ne le transforme pas en reserve** : le paquet etait construit
+ainsi quand je l'ai valide le 2026-08-30, et le decouvrir maintenant ne me donne pas le droit de
+relever la barre apres coup. **C'est une condition datee, pour la conception d'un paquet de
+problemes ulterieur**, a la main de `camille-po`.
+
+#### Le garde-fou que `marc-dev` a jete, et ce qu'il laisse a ma charge
+
+Il a prototype une regle **generique** de coherence entre indice et enonce, l'a mesuree contre la
+morphologie verbale francaise, l'a trouvee inexploitable et **l'a jetee en documentant son
+renoncement** dans la Javadoc du test livre. Il a livre a la place un test etroit qui fige les
+trois items que j'avais nommes. **C'est la bonne decision et c'est un resultat**, pas une absence :
+un garde-fou qui crie sans raison finit desactive, et c'est alors une propriete non gardee qu'on
+croit gardee - la famille de defaut que ce depot sanctionne.
+
+**Ce que cela laisse a ma charge, et que je nomme pour que personne ne s'y trompe** : le test livre
+verifie que **les indices des items 22, 23 et 24** nomment "perdu". **Il ne verifie rien sur les 21
+autres.** La propriete "l'indice ne nomme pas un evenement absent de son enonce" reste **entierement
+dans ma main** partout ailleurs, et le sprint vient de montrer qu'elle se casse par un correctif
+d'un autre point, sans qu'une CI entierement verte le voie. **Un prochain correctif qui touche
+l'enonce d'un des 21 autres items peut refaire exactement le meme defaut, et rien ne l'attrapera.**
+
+#### `MNC-1`
+
+**`MNC-1` s'applique a ce Done, et ce Done ne le couvre pas.** Rien ne garantit ici que l'enfant
+voie, sans faire defiler la page, un element quelconque du jeu, y compris le retour qui suit sa
+reponse - verdict, indice, proposition. Propriete sortie de la porte pedagogique par arbitrage de
+l'utilisatrice du 2026-08-28 (`DEC-0053`) ; dette ouverte, croissante, assumee. **Aucune mesure ne
+l'a instruite sur ce paquet.**
+
+**Le rappel n'est pas de pure forme et il ne s'allege pas** : ce sont toujours les enonces les plus
+longs du catalogue, six d'entre eux a la borne de 30 mots, et l'indice - le texte sur lequel portait
+la reserve D - s'affiche **sous** les propositions, c'est-a-dire a l'endroit le plus expose de
+l'ecran a cette dette. **La fermeture de la reserve D rend cet indice juste ; elle ne le rend pas
+visible.**
+
+#### Ce que ce Done ne dit pas
+
+**Le `relecteur-pedagogique` n'est pas passe sur ce sprint.** L'orthographe, l'accentuation et la
+ponctuation des 24 enonces, des 72 propositions et des 24 indices ne sont pas jugees par moi
+(`DEC-0002` amende le 2026-08-04, `DEC-0056`). **Ce Done n'en dit rien.** Les accords de "perdus" /
+"perdues" que j'ai verifies plus haut, je les ai verifies comme **sens** - le participe designe bien
+la quantite de l'enonce - et non comme orthographe.
+
+#### Ce sur quoi je reste la seule garde sur ce paquet
+
+- **La coherence entre l'indice et son enonce, sur 21 des 24 items.** Trois seulement sont gardes,
+  et par un test qui fige un cas, pas une regle.
+- **La plausibilite de la famille (c)** comme melecture reelle d'un enfant : tenue sur les huit
+  items depuis le passage a "perd". Aucun automate ne la voit.
+- **Que les deux etapes en soient reellement deux** : tenue sur 24.
+- **`ETA-8`**, les presupposes sociaux et les roles de genre, et **le jugement de niveau**.
+- **La lisibilite reelle d'un enonce de 30 mots pour un CM1** - ma borne est un decompte, pas une
+  mesure de lecture.
+
+#### Ce que je route
+
+| Suite | Destinataire | Ce que je demande |
+|---|---|---|
+| **Reserves D et E levees, avec leur critere verifie en jouant. Les cinq reserves A a E sont fermees** | `camille-po` | Fermer les deux stories. **Aucune reserve nouvelle** |
+| **Verdict porte de `VALIDE SOUS RESERVE` a `VALIDE`. Le perimetre du Done ne bouge pas** | `camille-po` | **Rien a ecrire sur la matrice** : la ligne est deja `couvert-valide` sans mention partielle, et elle le reste. Seule la mention de reserve disparait |
+| **`marc-dev` a corrige sur l'item 8 un defaut de pronom que je n'avais nomme que sur l'item 7** | `sofia-sm`, `camille-po` | Appliquer ma reserve a la lettre aurait cree le defaut qu'elle corrigeait. C'est un compte de moi complete par un tiers, le troisieme du sprint |
+| **Le commentaire du paquet ecrit "sept enonces a la borne exacte" ; ils sont six depuis le correctif** | `marc-dev`, par `sofia-sm` | Chiffre a rafraichir. **C'est mon chiffre**, recopie sans etre refait apres un changement qui le rendait faux. Non bloquant |
+| **Ma glose "les 24 indices sont propres a leur item" etait fausse : 22 textes distincts pour 24 items** | `camille-po`, `yanis-qa` | **Correction de mon propre constat, sans consequence de verdict** : `ETA-9` n'a jamais exige l'unicite. **Ne pas en faire une exigence retroactive** |
+| **La coherence indice/enonce reste non gardee sur 21 items sur 24** | `yanis-qa`, `theo-archi` | Le test livre fige trois cas nommes. **Ne pas compter la propriete comme couverte.** Le renoncement de `marc-dev` au garde-fou generique est le bon choix et ne change pas ce fait |
+| **Sept couples d'operations pour 24 items ; aucun item seul de sa forme ; deux items de meme forme au moins par partie de dix manches** | `camille-po` | **Condition datee du 2026-08-30 pour un paquet de problemes ulterieur.** Pas une reserve, pas un motif : ce paquet etait ainsi quand je l'ai valide |
+| **`MNC-1` non couvert, et il pese plus ici qu'ailleurs** | `sofia-sm` | Enonces les plus longs du catalogue, indice affiche sous les propositions |
+| **Le `relecteur-pedagogique` n'est pas passe** | `sofia-sm` | Ce Done ne dit rien de l'orthographe ni de la ponctuation |
