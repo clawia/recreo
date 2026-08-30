@@ -96,3 +96,84 @@ n'est pas une preference, c'est ce qui a coute trois refus le 2026-08-29.
 | 8 | `contenu-repris/fractions/cm1-compare.yml` sur la moitie "notion de fraction simple" | **REFUSE**, part servable nommee et arbitree en 8bis | `FRA-1` a `FRA-9` |
 
 Le detail de chaque verdict suit, dans cet ordre. Chacun a ete commite des qu'il a ete rendu.
+
+---
+
+## 1. "Comparer et ranger des nombres jusqu'a 100" - moitie "ranger" (mathematiques CP)
+
+**Verdict : ACCEPTE sous conditions `RAN-1` a `RAN-8`.**
+
+### Ce que je verifie d'abord
+
+La ligne est `en cours` depuis s09. La moitie "comparer" est validee pedagogiquement depuis le
+2026-08-12 (`FICHE-bandit-manchot-comparer-nombres-cp.md`, second audit). Ce qui manque est nomme
+depuis `DEC-0019` et repris dans la matrice : **"ordonner une suite de trois nombres ou plus"**.
+C'est bien cette moitie-la que j'arbitre, et c'est elle qui ferait passer la ligne de `en cours` a
+`couvert-valide`.
+
+**Le geste est celui de la mecanique.** Ranger trois nombres, c'est choisir la liste bien rangee
+parmi trois : presser une proposition parmi trois, sans rien de neuf. Je ne prends pas le raccourci
+qui consisterait a faire "trouver le plus petit des trois", qui n'est pas ranger et qui ne serait
+que la comparaison deja validee, servie une seconde fois.
+
+### Conditions
+
+- **`RAN-1` - Forme, et un seul sens sur tout le paquet.** L'item presente trois nombres ; chacune
+  des trois propositions est une liste de ces trois memes nombres dans un ordre different. La
+  consigne est constante sur tout le paquet et nomme un seul sens de rangement. **Le sens ne change
+  jamais d'un item a l'autre** : un paquet qui alterne le croissant et le decroissant change
+  silencieusement ce que l'enfant doit faire, ce que j'ai deja refuse sous `P-4` le 2026-08-14.
+- **`RAN-2` - Bornes.** Les trois nombres sont des entiers de 0 a 100, deux a deux distincts dans
+  un meme item.
+- **`RAN-3` - Longueur d'une proposition.** Une proposition s'ecrit sous la forme `a, b, c` et ne
+  depasse pas **12 caracteres, espaces comprises**. *Mesure de reference, faite le 2026-08-30 sur
+  la population entiere des 470 propositions des dix paquets CP servis
+  (`adapters/adapter-content/src/main/resources/contenu/cp-*.yaml`) : la proposition la plus longue
+  jamais validee au CP fait 15 caracteres (`une trottinette`, `cp-comparer`). Avec trois entiers
+  d'au plus 100, dont un seul peut avoir trois chiffres, le pire cas fait 11 caracteres. La borne
+  de 12 est donc sous ce qui est deja valide.*
+- **`RAN-4` - Les deux distracteurs sont derives, et le fichier nomme la derivation a cote de
+  l'item.** Deux familles, et seulement celles-la :
+  **(a)** les trois memes nombres dans le sens inverse de celui de la consigne ;
+  **(b)** les trois memes nombres ranges en ne comparant que leur chiffre des unites.
+  Un tiers doit pouvoir **recalculer** les deux distracteurs a partir des trois nombres et de la
+  famille declaree. **Si la famille (b) reproduit la famille (a) ou la bonne reponse, le triplet
+  est ecarte** : l'item n'aurait que deux propositions distinctes.
+  *Mesure de cette clause d'exclusion contre la population qu'elle filtre, faite le 2026-08-30 :
+  sur les **166 650** triplets d'entiers distincts de 0 a 100 - population entiere, pas un
+  echantillon -, la collision ecarte **58 515 triplets (35,1 %)** et en laisse **108 135**. La
+  clause n'assechera donc pas la matiere.*
+- **`RAN-5` - Le premier nombre ne suffit jamais a decider, sur au moins la moitie du paquet.** Sur
+  les `N` items du paquet, **au moins `arrondi superieur(N/2)`** items ont **au moins deux
+  propositions qui commencent par le meme nombre**. *Unite de compte : l'item.* Motif : sans cette
+  clause, un enfant qui regarde uniquement le premier nombre de chaque liste et choisit la plus
+  petite reussit sans jamais ranger. C'est la meme famille de defaut que la reserve de `DEC-0021`.
+  *Mesure de satisfaisabilite, meme population et meme date : parmi les 108 135 triplets retenus
+  par `RAN-4`, **55 305 (51,1 %)** satisfont deja `RAN-5`. Une majorite d'items la tiendra sans
+  effort particulier.*
+- **`RAN-6` - Au moins un tiers des items opposent deux nombres de la meme dizaine.** Sur les `N`
+  items, **au moins `arrondi inferieur(N/3)`** items contiennent deux nombres dont le chiffre des
+  dizaines est le meme (par exemple 34 et 38). *Unite de compte : l'item.* Motif : sans cela, le
+  rangement se fait sur le seul chiffre des dizaines et n'exerce pas la comparaison a l'unite pres.
+  *Verification de satisfaisabilite conjointe, meme population et meme date : **13 275 triplets**
+  satisfont `RAN-4`, `RAN-5` et `RAN-6` a la fois. `RAN-5` et `RAN-6` n'ont meme pas besoin de
+  porter sur les memes items pour etre tenues toutes les deux.*
+- **`RAN-7` - Indice.** Il donne la methode, jamais la liste. *"Cherche d'abord le plus petit des
+  trois."* est un indice ; *"C'est 12, 25, 40."* n'en est pas un. **Dix mots au plus**, un mot
+  etant une suite de caracteres sans espace.
+- **`RAN-8` - Au moins vingt items**, et aucun item ne presente le meme triplet qu'un autre.
+
+### Ce qui reste dans ma seule main sur ce paquet
+
+**Presque rien, et c'est rare.** `RAN-1` a `RAN-6` et `RAN-8` sont toutes calculables a partir du
+fichier : un test peut recalculer les deux distracteurs, compter les items ou deux propositions
+commencent par le meme nombre, et compter les dizaines partagees. **Ce paquet n'est pas du type
+`COMP-2`** et ne consomme pas ma condition d'au plus un par sprint. Je garde la lecture des
+indices (`RAN-7`) et le jugement de niveau, rien de plus.
+
+### Couverture
+
+Si le paquet tient ces conditions et passe l'audit, la ligne `mathematiques | CP | Nombres et
+calculs | Comparer et ranger des nombres jusqu'a 100` passe de `en cours` a `couvert-valide`,
+**sans mention de couverture partielle** : les deux moities seront servies. C'est `camille-po` qui
+ecrit la matrice, pas moi.
