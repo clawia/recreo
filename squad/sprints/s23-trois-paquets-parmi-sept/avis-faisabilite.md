@@ -356,3 +356,138 @@ que les cinq scripts sont toujours cinq. Le chiffre est celui de s22, repris tel
 | `yanis-qa` | **66 occurrences de `.text()`** dans les tests de rendu, chacune aveugle a l'espace insecable la ou elle compare un texte exact (section 1.5) |
 | `camille-po` | Le lot d'ouverture de la saisie porte **onze decisions de perimetre de garde-fou** en plus de son code (section 3.3) |
 | `camille-po` | Les lots 1, 2 et 3 de `TYP-1` restent entiers ; le cliquet les rend mesurables, il ne les fait pas (section 4.1) |
+
+---
+
+## 6. Deux blocages routes par `marc-dev` le 2026-08-30 - ce qui est de moi, ce qui ne l'est pas
+
+*Ajout date. Branche `s23-theo-2`, worktree dedie, depuis `round-two` a `b1d8d9f`. Les mesures de
+cette section portent sur les 24 paquets commites a `b1d8d9f` **plus les deux brouillons non
+commites de `marc-dev`** (`cp-ranger-nombres`, `cm1-problemes-etapes`), copies dans mon worktree
+pour la seule duree de la mesure et retires avant le commit ; chaque paquet est charge par le
+chargeur reel et lu en entier. JDK : celui que designe la toolchain `jdk 21` du poste, qui rapporte
+`25.0.2`.*
+
+### 6.1 `S23-RAN` - le garde-fou avait tort, et il est corrige : `ADR-0068`
+
+Le verdict complet est dans `ADR-0068`. En une phrase : **la lecture de valeur nommait "valeur"
+le premier nombre d'une liste**, si bien que le garde-fou d'egalite annoncait que deux propositions
+valaient la meme chose sur 24 items sur 24 d'un paquet irreprochable. Ce n'est pas le seuil du
+garde-fou qui etait faux, c'est la lecture. Elle rend desormais `null` sur toute proposition dont
+elle laisse un chiffre derriere elle. Aucun contenu n'est modifie, aucune exemption n'est ecrite.
+
+**Ce qui reste a faire dans le lot de `marc-dev`, et qui n'est pas de moi** : `cp-ranger-nombres`
+n'entre plus dans le calcul de rang du tout, et `ADR-0051` rend cela **rouge** tant que le paquet
+n'est pas inscrit dans `PAQUETS_HORS_DU_DOMAINE_NUMERIQUE` avec son motif. Cette ligne appartient au
+commit qui apporte le paquet, pas au mien : je n'ai pas son contenu.
+
+### 6.2 `RAN-5` ne bloque pas le raccourci que son propre motif nomme - fait remonte a `nadia-prof`
+
+`RAN-5` est ecrite ainsi : *au moins la moitie des items ont au moins deux propositions qui
+commencent par le meme nombre*. Son motif est ecrit juste a cote, et il est plus precis que la
+clause : *"un enfant qui regarde uniquement le premier nombre de chaque liste et choisit **la plus
+petite** reussit sans jamais ranger"*.
+
+Les deux ne disent pas la meme chose. Une egalite de premiers nombres **qui ne porte pas sur le plus
+petit** laisse le raccourci intact : sur `["32, 33, 40", "40, 33, 32", "40, 32, 33"]`, deux
+propositions commencent bien par le meme nombre - `RAN-5` est tenue - et le plus petit premier
+nombre, 32, designe pourtant la bonne reponse a lui seul.
+
+**Mesure sur les 24 items du brouillon de `marc-dev`**, methode : pour chaque item, le premier
+nombre de chacune des trois propositions ; le raccourci "presser la proposition dont le premier
+nombre est le plus petit" est dit *decisif* quand ce minimum est atteint par une seule proposition.
+
+| | Items |
+|---|---|
+| `RAN-5` tenue (au moins deux memes premiers nombres) | **24 sur 24** |
+| raccourci decisif **et gagnant** | **16** |
+| raccourci decisif et perdant | **0** |
+| raccourci bloque par une egalite sur le plus petit | **8** |
+
+Un enfant qui n'applique que ce raccourci gagne donc **16 items sur 24 sans jamais ranger**, plus
+environ un tiers des 8 restants au hasard : de l'ordre de **78 %** des manches, contre 33 % par
+hasard. Le paquet tient `RAN-5` a 24 sur 24.
+
+**Ce que je ne fais pas** : je ne reecris pas `RAN-5`, je ne dis pas quel seuil est bon, et je ne
+prononce aucun Done. La clause est de `nadia-prof`. **Ce que je constate** est qu'elle ne mesure pas
+ce que son motif decrit, et que la difference est d'un mot : l'egalite devrait porter sur le **plus
+petit** premier nombre, pas sur n'importe lequel. Si elle amende en ce sens, la clause devient
+calculable exactement comme aujourd'hui, dans le meme test de story, sans rien de neuf.
+
+### 6.3 `S23-ETA` - `ETA-4` et `ETA-7` s'excluent, et ce n'est pas une question de donnees
+
+Je confirme la mesure de `marc-dev` a l'identique, avec la lecture reelle du depot : sur ses 24
+items, **la bonne reponse est la plus petite 9 fois, celle du milieu 0 fois, la plus grande 15
+fois**. Aucun item hors du domaine, aucune egalite de valeurs.
+
+**Ce n'est pas un choix d'auteur, c'est un theoreme.** `ETA-4` fixe deux familles de distracteurs :
+(a) le resultat intermediaire `I`, (b) le resultat obtenu en remplacant l'operation de la seconde
+etape par son inverse. Si la seconde etape mene de `I` a la bonne reponse `F`, l'operation inverse
+mene de `I` a un `F'` situe **de l'autre cote de `I`**. Donc, dans les quatre cas :
+
+| Seconde etape | Ordre des trois propositions | Rang de la bonne reponse |
+|---|---|---|
+| `+ y` | `F' < I < F` | la plus grande |
+| `- y` | `F < I < F'` | la plus petite |
+| `x y` | `F' < I < F` | la plus grande |
+| `: y` | `F < I < F'` | la plus petite |
+
+`ETA-5` (aucun operande 0 ni 1, aucun intermediaire egal au final) garantit que les trois sont
+distinctes. **Le distracteur (a) occupe donc structurellement le rang du milieu, et la bonne reponse
+n'y est jamais.** `ETA-7`, qui exige le milieu sur au moins un quart des items, est **insatisfaisable
+avec `ETA-4`** - pas difficile, insatisfaisable.
+
+### 6.4 Mes deux seuils de rang sur cette famille : ce qu'ils disent juste, et ce qu'ils supposent
+
+C'est la question que `nadia-prof` m'a posee, et les deux seuils n'ont pas la meme reponse.
+
+**Le seuil de majorite (50 %) dit juste, et il est a sa limite.** Sa propriete - *une strategie a
+rang constant ne doit pas gagner la majorite des manches* - reste exactement aussi vraie sur cette
+famille que partout ailleurs : un enfant qui presse toujours la plus grande gagne la part des items
+dont la seconde etape est une addition ou une multiplication, sans lire un enonce. Ce que le milieu
+vide change n'est pas la propriete, c'est la **marge** : avec un rang structurellement vide, les
+deux autres se partagent 100 % des items, et la meilleure strategie constante vaut donc **au moins
+50 %** quoi qu'on fasse. Le seuil etant compare strictement, un paquet de cette famille ne peut
+etre vert qu'a l'**egalite exacte** - 12 items d'un cote, 12 de l'autre sur 24. C'est atteignable,
+et un seul item modifie le renverse. Un vert sans aucune marge est deja nomme comme une fragilite
+dans `ADR-0041`, non-preuve 6, a propos de deux paquets qui s'y tiennent.
+
+**Le seuil minimal (10 % par rang) suppose une liberte que cette famille n'a pas.** Il exige que
+chacun des trois rangs existe ; sur un paquet dont les deux distracteurs encadrent la bonne reponse,
+le rang du milieu est vide **par construction**, et aucun choix de nombres, d'operations ou de
+situations ne le remplira. Ce seuil est donc **insatisfaisable** ici, au meme titre qu'`ETA-7`, et
+pour exactement la meme raison mathematique. Il ne mesure pas un defaut du contenu : il mesure que
+`ETA-4` n'offre que deux rangs.
+
+**Le cout de chacune des deux corrections possibles, pour que `nadia-prof` tranche en le sachant.**
+Je ne choisis pas, et je n'ai pas d'avis pedagogique sur ce que doit apprendre un enfant qui se
+trompe.
+
+- **Amender `ETA-7`** (retirer l'exigence du milieu) : le paquet reste a deux rangs, mon seuil
+  minimal reste rouge dessus, et il faudrait une exemption. Or `DETTE_DE_SEUIL_MINIMUM` porte
+  aujourd'hui trois noms pour un plafond de trois, avec la mention *"ce nombre ne remonte jamais"*.
+  **Il n'y a pas de place.** Faire monter un plafond de cliquet pour y loger un paquet neuf est
+  precisement ce que ce depot a sanctionne plusieurs fois : un cliquet dont le plafond suit la dette
+  n'est pas un cliquet. Et il y aurait une seconde raison de refuser : une dette est faite pour du
+  contenu ancien qu'on ne rouvre pas, pas pour un contenu qu'on ecrit aujourd'hui en sachant qu'il
+  ne tiendra pas.
+- **Amender `ETA-4`** (ouvrir une troisieme famille de distracteurs qui ne soit pas encadrante -
+  par exemple une erreur de valeur de position, ou une erreur sur l'operande de la premiere etape) :
+  le milieu redevient occupable, `ETA-7` redevient satisfaisable telle qu'elle est ecrite, et mes
+  deux seuils tiennent avec de la marge, sans exemption ni dette. **C'est la correction la moins
+  chere du point de vue des garde-fous**, et je le dis sans prejuger de ce qu'une troisieme famille
+  de distracteurs vaut pedagogiquement - ce jugement-la est le sien, et c'est lui qui decide.
+
+**Ce que je ne fais pas** : je ne touche a aucun des deux seuils. Le 50 % et le 10 % sont de
+`nadia-prof` depuis le 2026-08-15, ils ne sont pas negociables par moi, et rien dans ce que j'ai
+mesure ne montre qu'ils disent faux - seulement que l'un des deux ne peut pas etre tenu par un
+contenu dont les distracteurs encadrent la bonne reponse.
+
+### 6.5 Ce que je route, en une ligne chacun
+
+| A qui | Quoi |
+|---|---|
+| `marc-dev` | `S23-RAN` est debloque : `ADR-0068` corrige la lecture. Reste a inscrire `cp-ranger-nombres` dans `PAQUETS_HORS_DU_DOMAINE_NUMERIQUE` avec son motif, dans le commit qui apporte le paquet (section 6.1) |
+| `nadia-prof` | `RAN-5` est tenue 24 sur 24 et le raccourci qu'elle vise gagne quand meme **16 items sur 24** : l'egalite devrait porter sur le **plus petit** premier nombre (section 6.2) |
+| `nadia-prof` | `ETA-4` et `ETA-7` s'excluent par un theoreme, pas par un choix de donnees. **Amender `ETA-4` ne coute aucune exemption ; amender `ETA-7` en demande une, et le cliquet de dette est plein** (sections 6.3 et 6.4) |
+| `sofia-sm` | Deux stories de s23 sont bloquees par une decision pedagogique en cours d'instruction ; la part technique de `S23-RAN` est levee, celle de `S23-ETA` ne l'est pas et ne peut pas l'etre par moi |
