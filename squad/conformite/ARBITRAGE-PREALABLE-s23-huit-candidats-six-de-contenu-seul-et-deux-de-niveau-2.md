@@ -368,3 +368,89 @@ mention exacte que je demande sur la matrice le jour ou la ligne bouge est : **"
 phrases, un texte par question, questions explicites seulement"**. Un enfant ne lira jamais, dans
 ce jeu, un texte assez long pour que la comprehension d'ensemble soit en jeu ; ce n'est pas un
 defaut du lot a venir, c'est la limite du mecanisme, et elle doit etre ecrite.
+
+---
+
+## 4. "Reconnaitre et utiliser les marques du pluriel les plus frequentes (`-s`)" (francais CP)
+
+**Verdict : ACCEPTE sous conditions `PLU-1` a `PLU-9`.**
+
+### Ce que je verifie d'abord
+
+La ligne est `non couvert`. Elle porte deux verbes : *reconnaitre* et *utiliser*. Dans une mecanique
+ou l'enfant presse une proposition, *utiliser* veut dire **choisir la forme correcte**, pas
+l'ecrire : c'est une couverture reelle du verbe, pas un contournement, parce que le geste
+orthographique demande ici est un **choix entre des formes**, ce qu'un enfant de CP fait aussi sur
+sa feuille avant de savoir ecrire vite.
+
+**Le `-s` du pluriel est muet en francais.** C'est precisement pourquoi la competence est
+orthographique et pourquoi un exercice ecrit est la bonne forme : rien ne s'entend, tout se voit et
+se raisonne a partir du determinant. C'est un des rares candidats ou la mecanique est mieux placee
+que la voix.
+
+**Le piege que je dois fermer** : si l'item montre *"les ___ dorment"* avec les propositions
+`chat` / `chats`, l'enfant peut apprendre "choisis toujours celle qui a un `s`" et reussir tout le
+paquet sans regarder le determinant. `PLU-1`, `PLU-4` et `PLU-5` ferment ce chemin.
+
+### Conditions
+
+- **`PLU-1` - Forme : la proposition porte le groupe entier, determinant compris.** L'item presente
+  une phrase dont un groupe est remplace par `___` ; les trois propositions sont trois ecritures du
+  **meme groupe determinant + nom**, par exemple `les chats` / `les chat` / `le chats`. **La phrase
+  ne contient aucun autre indice de nombre pour ce groupe** : c'est l'accord interne au groupe qui
+  decide, et rien d'autre.
+- **`PLU-2` - Determinants admis, population fermee et enumeree :** `un`, `une`, `le`, `la`, `les`,
+  `des`. **Six elements, et aucun autre.** Motif : c'est le seul ensemble dont le passage du
+  singulier au pluriel est mecanique et sans ambiguite pour un enfant de six ans, ce qui rend la
+  derivation de `PLU-4` recalculable par un tiers. *Verifie le 2026-08-30 : les six figurent deja
+  dans le corpus CP du depot.*
+- **`PLU-3` - Population des noms admis.** Sont **exclus** les noms dont le pluriel n'est pas en
+  `-s` : ceux termines par `-eau`, `-au`, `-eu`, `-al`, `-ail`, les sept noms en `-ou` qui prennent
+  `-x` (`bijou`, `caillou`, `chou`, `genou`, `hibou`, `joujou`, `pou` - liste fermee et complete),
+  et les noms deja termines par `-s`, `-x` ou `-z` au singulier.
+  *Mesure de cette clause contre la population qu'elle filtre, faite le 2026-08-30 sur le corpus CP
+  entier du depot - 30 fichiers, dix paquets servis et vingt fichiers CP de `contenu-repris`, champs
+  lus par l'enfant, **797 mots distincts** : elle ecarte **14 mots en `-eau`** (`agneau`, `bateau`,
+  `cadeau`, `chateau`, `eau`, `gateau`, `manteau`, `marteau`, `pinceau`, `seau`, `tableau`, `veau`,
+  plus `beau` et `au` qui ne sont pas des noms communs), **2 en `-eu`**, **7 en `-al`** (dont
+  `animal`, `bocal`, `cheval`), **0 en `-ail`**, **3 des sept noms en `-ou`** (`caillou`, `genou`,
+  `hibou`) et les mots deja termines par `-s`, `-x` ou `-z`. **Elle laisse tres largement de quoi
+  ecrire vingt items** et n'ecarte que les mots sur lesquels la reponse attendue serait fausse.*
+  **Ce n'est pas un retrecissement de la ligne** : la ligne elle-meme dit *"les marques du pluriel
+  **les plus frequentes (`-s`)**"*. Les pluriels en `-x` ne sont pas dans son perimetre.
+- **`PLU-4` - Les deux distracteurs sont derives, et le fichier nomme la derivation.** Deux
+  familles, et seulement celles-la, obtenues **a partir de la bonne reponse** :
+  **(a)** le nom porte la marque inverse de celle qu'exige son determinant, le determinant restant
+  celui de la bonne reponse (`les chats` donne `les chat`) ;
+  **(b)** le determinant passe au nombre inverse, le nom restant celui de la bonne reponse
+  (`les chats` donne `le chats`).
+  Un tiers doit pouvoir **recalculer** les deux distracteurs a partir de la bonne reponse et de la
+  table de `PLU-2` (`un` et `une` donnent `des` ; `le` et `la` donnent `les` ; `les` et `des`
+  donnent le singulier du genre du nom).
+- **`PLU-5` - Le `-s` ne decide pas.** Sur les `N` items du paquet, la bonne reponse porte la marque
+  `-s` sur le nom sur **au moins `arrondi inferieur(N/3)`** items et **ne la porte pas** sur **au
+  moins `arrondi inferieur(N/3)`** items. *Unite de compte : l'item.* Motif : sans cette clause, un
+  enfant qui choisit toujours la forme la plus longue reussit tout le paquet.
+- **`PLU-6` - Longueur.** La phrase support compte **au plus 10 mots** ; une proposition ne depasse
+  pas **15 caracteres, espaces comprises**. *Mesure de reference, 2026-08-30, population entiere des
+  470 propositions des dix paquets CP servis : la plus longue jamais validee au CP fait exactement
+  15 caracteres (`une trottinette`).*
+- **`PLU-7` - Vocabulaire.** Aucun mot de la phrase ni d'une proposition ne depasse **neuf lettres**,
+  apostrophe non comptee. *Meme mesure et meme motif que `NAR-3`, meme population, meme date.*
+- **`PLU-8` - Indice.** Il renvoie au determinant, jamais a la reponse. *"Regarde le petit mot placé
+  devant le nom."* est un indice. **Huit mots au plus.**
+- **`PLU-9` - Au moins vingt items**, et aucun nom n'est utilise plus de deux fois dans le paquet.
+
+### Ce qui reste dans ma seule main sur ce paquet
+
+**Presque rien.** `PLU-2` a `PLU-7` et `PLU-9` sont calculables a partir du fichier : la table de
+derivation de `PLU-4` se recalcule, la repartition de `PLU-5` se compte, les longueurs se mesurent.
+**Ce paquet n'est pas du type `COMP-2`** et ne consomme pas ma condition d'au plus un par sprint.
+Je garde `PLU-1` (la phrase ne doit porter aucun autre indice de nombre - un jugement de langue),
+`PLU-8` et le niveau.
+
+### Couverture
+
+Ligne entiere pour ce que la ligne dit. **Aucune mention de couverture partielle n'est necessaire** :
+la ligne se restreint deja d'elle-meme au `-s`, et `PLU-3` suit cette restriction au lieu de
+l'inventer.
