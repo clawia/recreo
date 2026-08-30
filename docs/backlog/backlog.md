@@ -7279,6 +7279,90 @@ faisabilite.
 - **Lien decision** : aucune - signalement, pas une decision de perimetre.
 - **Agent pressenti** : `yanis-qa`, `theo-archi`.
 
+### Derniers verdicts du 2026-08-30 (s23) - `LIA` fermee sans reserve, `ETA` sans reserve pendante
+
+`nadia-prof` a rendu ses derniers verdicts du sprint le meme jour (branche `s23-nadia-5`, non
+fusionnee) : `cm1-mots-de-liaison` **VALIDE, aucune reserve** ; `cm1-problemes-etapes` **VALIDE**
+(les cinq reserves A a E fermees, le verdict passe de "sous reserve" a "valide"). Source complete :
+les derniers blocs des deux `squad/conformite/FICHE-bandit-manchot-*.md` correspondantes.
+
+#### `cm1-mots-de-liaison` (`S23-LIA`) - story fermee, aucune reserve
+
+**La story de la section precedente (item 10) est fermee.** Le distracteur `mais` de l'item 10 est
+remplace par `donc`, exactement l'une des deux voies demandees ; `pourtant` n'a pas ete employe.
+`nadia-prof` releve les 40 distracteurs un par un contre le test reenonce : **les 40 tiennent**.
+Aucune reserve n'est ouverte. `nadia-prof` l'ecrit elle-meme : *"aucune reserve, rien a corriger sur
+ce paquet"* - **ne pas fabriquer de story qui n'existe pas.**
+
+**Un signalement, pas une story** : `sofia-sm` a route un troisieme item (l'item 9, distracteur
+`pourtant`) sans trancher a sa place. `nadia-prof` juge le distracteur bon (l'opposition n'y est
+lisible qu'en apportant une croyance absente du texte, exactement le cas de l'item 7 deja garde) et
+en fait un cas nomme et opposable, pas une reserve. **Ne pas y toucher.**
+
+- **Lien decision** : `squad/conformite/FICHE-bandit-manchot-mots-de-liaison-cm1.md`, dernier bloc
+  du 2026-08-30 ; `squad/programme/MATRICE-couverture.md`, amendement du 2026-08-30 (s23, en cours).
+- **Agent pressenti** : aucun - story fermee, aucune reserve.
+
+#### `cm1-problemes-etapes` (`S23-ETA`) - reserves D et E fermees, les cinq A a E sont closes
+
+**Les deux stories de la section precedente sont fermees.** Reserve D : les trois indices des
+items 22 a 24 portent desormais "perdus"/"perdues", mot pour mot le critere ecrit, verifie a
+l'ecran et sur les 24 indices confrontes a leurs 24 enonces (zero ecart de l'espece qui fondait la
+reserve). Reserve E : les six items (3, 4, 5, 6, 7, 8) portent "celui-ci compris"/"celle-ci
+comprise" avec un antecedent correct sur chacun - `marc-dev` a corrige sur l'item 8 un defaut de
+pronom que la reserve ne nommait que sur l'item 7, en appliquant l'esprit de la demande plutot que
+sa lettre.
+
+**Les cinq reserves A a E de ce paquet sont donc toutes fermees.** Le verdict de la fiche passe de
+`VALIDE SOUS RESERVE` a `VALIDE` ; la ligne de matrice ne bouge pas, elle est deja `couvert-valide`
+sans mention partielle depuis le premier Done.
+
+**Deux chiffres a rafraichir, signales par `nadia-prof` elle-meme, non bloquants** :
+- le commentaire du paquet dit "sept enonces a la borne exacte de 30 mots" ; ils sont **six** depuis
+  que le correctif de la reserve E a fait descendre l'item 5 a 29 mots (routee a `marc-dev`, par
+  `sofia-sm`, pas une story) ;
+- sa propre glose du premier audit, "les 24 indices sont propres a leur item", etait fausse (les
+  items 11, 12 et 13 partagent un indice, **22 textes distincts pour 24 items**) - `nadia-prof` le
+  dit elle-meme : `ETA-9` n'a jamais exige l'unicite, ce n'est pas une exigence retroactive et
+  aucune story n'en sort.
+
+**Une condition nouvelle et datee, pas une reserve, pour un paquet de problemes ulterieur** :
+`nadia-prof` mesure que les 24 items du paquet se repartissent sur sept couples d'operations
+seulement, donc que toute partie de dix manches rencontre necessairement au moins deux items de
+meme forme. Elle ne transforme pas ce constat en reserve sur un paquet deja valide ; je le garde
+comme point de vigilance pour la conception d'un prochain paquet de problemes, a instruire quand ce
+paquet s'ouvrira.
+
+- **Lien decision** : `squad/conformite/FICHE-bandit-manchot-problemes-etapes-cm1.md`, dernier bloc
+  du 2026-08-30 ; `squad/programme/MATRICE-couverture.md`, amendement du 2026-08-30 (s23, en cours).
+- **Agent pressenti** : aucun - les deux stories sont fermees. `marc-dev`, par `sofia-sm`, pour le
+  chiffre de commentaire a rafraichir (non bloquant).
+
+#### Ce dont `nadia-prof` reste seule garde, verse a la gouvernance plutot qu'a une story
+
+`LIA-3` **integralement** - un Done ne la couvre pas davantage qu'un refus ne la couvrait, aucun
+garde-fou ne l'a jamais vue. Et, sur `ETA`, **la coherence entre indice et enonce sur 21 des 24
+items** : `marc-dev` a prototype une regle generique, l'a mesuree contre la morphologie verbale
+francaise, l'a trouvee inexploitable et l'a jetee en le documentant plutot que de livrer un
+garde-fou qui crierait sans raison ; le test livre ne fige que les trois items que `nadia-prof`
+avait nommes (22, 23, 24). Son avertissement, repris tel quel : *"son renoncement au garde-fou
+generique est le bon choix, a condition que personne ne lise 'test livre' comme 'propriete
+couverte'."* Je le verse ici pour qu'un lecteur du backlog le retrouve sans avoir a rejouer les deux
+fiches, et je ne tranche aucune faisabilite technique.
+
+- **Lien decision** : aucune - signalement, pas une decision de perimetre.
+- **Agent pressenti** : `yanis-qa`, `theo-archi`.
+
+#### Etat de la formule "JDK 21 de la toolchain declaree" dans mes documents - verifie, absente
+
+`nadia-prof` signale avoir ecrit huit fois, dans cinq de ses documents, qu'elle auditait "sur le JDK
+21 de la toolchain declaree", sans l'avoir constate : l'enveloppe de lancement annonce elle-meme,
+des sa premiere ligne, que ce JDK rapporte 25.0.2 sur ce poste. **Verifie sur tout document que j'ai
+ecrit** (`docs/backlog/backlog.md`, `squad/programme/MATRICE-couverture.md`, `DEC-0057`,
+`DEC-0058`) : cette formule n'y apparait nulle part - je n'ai jamais affirme moi-meme sur quel JDK un
+audit etait conduit. Rien a corriger de mon cote ; le fait reste route par elle a `theo-archi` et
+`sofia-sm`, hors de mon perimetre.
+
 - **Lien decision (section entiere)** : `DEC-0057` ; `DEC-0058` ; `squad/conformite/FICHE-bandit-
   manchot-ranger-nombres-cp.md` ; `squad/conformite/FICHE-bandit-manchot-mots-de-liaison-cm1.md` ;
   `squad/conformite/FICHE-bandit-manchot-problemes-etapes-cm1.md` ;
@@ -7292,4 +7376,7 @@ faisabilite.
   d'ouverture de s24. Reaudit du 2026-08-30 (sous-section ci-dessus) : `marc-dev` pour les
   reserves D et E de `S23-ETA` ; `sofia-sm` pour l'item 10 de `S23-LIA` (second refus) et, avec
   `relecteur-pedagogique`, pour la date fautive de `cm1-mots-de-liaison.yaml` ; `nadia-prof` pour
-  confirmer chaque levee.
+  confirmer chaque levee. Derniers verdicts du 2026-08-30 (sous-section
+  la plus recente) : toutes les stories de `S23-LIA` et de `S23-ETA` sont fermees, aucune n'attend
+  plus d'agent ; `yanis-qa`/`theo-archi` restent destinataires du signalement sur `LIA-3` et sur la
+  coherence indice/enonce des 21 items d'`ETA` non gardes par un test.
