@@ -196,3 +196,175 @@ l'audit pour laisser passer un contenu.
 | **`RAN-7`, `LIA-3` et la plausibilite de la famille (c) restent hors de tout garde-fou** | `yanis-qa`, `theo-archi` | Ne pas les compter comme couvertes. Les deux refus du sprint portent sur les deux premieres, et la CI etait verte |
 | **Mon instrument de signes orphelins rend un faux positif sur les textes a espace insecable** | `yanis-qa`, `theo-archi` | Je decris le symptome, je ne corrige pas l'outil. Chiffre reel du catalogue : 14, pas 17 |
 | **Le `relecteur-pedagogique` n'est pas passe sur ce sprint** | `sofia-sm` | L'orthographe, l'accentuation et la ponctuation de ces trois paquets ne sont pas jugees par moi (`DEC-0056`). Mes deux Done n'en disent rien |
+
+---
+
+## Amendement du 2026-08-30 - reaudit des deux refus et des trois reserves d'`ETA`
+
+- **Branche** : `s23-nadia-4`, worktree dedie depuis `round-two` a `96083ba`
+- **Perimetre** : reaudit de `cp-ranger-nombres` (`RAN-7`), de `cm1-mots-de-liaison` (`LIA-3`) et
+  d'`cm1-problemes-etapes` apres fermeture de ses trois reserves
+- **Rien de ce qui precede n'est reecrit.** Les verdicts du 2026-08-30 restent lisibles en entier
+  dans les fiches et dans les sections 1 a 8 ci-dessus. Ce bloc s'ajoute.
+- **Non fusionne.** La fusion appartient a `sofia-sm`.
+
+### 1. Les trois verdicts
+
+| Paquet | Verdict du 2026-08-30 | Verdict du reaudit | Ligne de matrice |
+|---|---|---|---|
+| `cp-ranger-nombres` | REFUSE (`RAN-7`) | **VALIDE**, sans reserve | peut passer `couvert-valide` |
+| `cm1-mots-de-liaison` | REFUSE (`LIA-3`, items 3 et 18) | **REFUSE** (`LIA-3`, item 10) - **motif du 2026-08-30 leve, motif nouveau** | reste `non couvert` |
+| `cm1-problemes-etapes` | VALIDE SOUS RESERVE (A, B, C) | **VALIDE SOUS RESERVE (maintenu)** - A, B, C levees, D et E ouvertes | reste `couvert-valide` |
+
+**Joues, pas lus.** Fat jar construit sur l'arbre du worktree, lance sur le JDK 21 de la toolchain
+declaree, session HTTP reelle. Dix parties sur `RAN`, douze sur `LIA`, quatorze sur `ETA`, chaque
+proposition fausse pressee avant la bonne pour voir l'indice. **Les 24 items de `RAN`, les 20 de
+`LIA` et les 24 d'`ETA` ont ete rencontres a l'ecran. Aucun des trois audits n'est degrade.**
+
+### 2. Une date fausse, corrigee avant de m'en servir
+
+La demande de reaudit datait mes deux refus du **2026-08-31**. Ils sont dates du **2026-08-30**,
+dans les fiches comme dans les commits qui les portent, et les lots de correction sont du meme
+jour. `cm1-mots-de-liaison.yaml` porte lui aussi "Correction du 2026-08-31" pour un commit du
+2026-08-30. Je le signale a `sofia-sm` et au `relecteur-pedagogique` : une date qui ne correspond
+a aucun commit rend illisible la chronologie de la seule memoire partagee du projet.
+
+### 3. Ce que les auteurs declarent, et ce que le contenu reel dit
+
+**Les trois declarations sont exactes, et je les ai refaites au lieu de les croire.**
+
+| Declaration | Verifiee sur | Verdict |
+|---|---|---|
+| `marc-dev` : les deux textes d'indice fautifs ont ete **echanges** entre cinq items, aucun des six textes reecrit | difference du fichier, ligne a ligne | **exacte** - cinq lignes `indice` changent, rien d'autre, et ce sont les cinq items que j'avais nommes |
+| `sofia-sm` : les deux distracteurs remplaces par `car`, item 20 intact | difference du fichier | **exacte**, et la frontiere que j'avais tracee est respectee a la lettre |
+| `marc-dev` : item 17 a 30 mots, famille (c) sur "perd", ambiguite des items 6 et 7 levee | les 24 enonces recomptes | **exacte sur les trois** |
+| `marc-dev` : "aucun nombre, aucune famille de distracteur, aucun rang `ETA-7` ne change" | les 24 items, 48 distracteurs recalcules | **exacte** - 15/16/11/6 operations, 8/8/8 rangs, 0 ecart |
+
+### 4. Ce que le contenu reel a mis en defaut : mes propres constats, encore
+
+**Deux fois, et ce sont les deux seuls defauts que ce reaudit ajoute.**
+
+1. **Mon compte du 2026-08-30 sur `LIA` etait faux.** J'avais ecrit "j'ai lu les 40 distracteurs un
+   par un, trente-huit tiennent". Il y en avait **trente-sept**. `sofia-sm` a verifie les 38 que
+   j'avais declares bons et en a trouve un qui ne l'est pas : l'item 10. **Elle a eu raison de le
+   remonter et raison de ne pas trancher a ma place.**
+2. **Ma reserve C sur `ETA` ne nommait que deux des six items concernes.** La construction "3
+   classes / 4 ecoles / 2 clubs preparent chacune ce meme nombre" porte la meme ambiguite sur les
+   items 3, 4, 5 et 8. `marc-dev` a corrige exactement les items que j'avais nommes : **le compte
+   incomplet est le mien, pas son travail.**
+
+**Et une erreur d'instrument, corrigee avant publication.** Ma premiere enumeration du domaine de
+`RAN-7` lisait "les dizaines" comme le *nombre* de dizaines - 10 pour 100 - et annoncait 1 980
+desaccords entre le test et ma condition. C'est faux : ma condition, et le defaut que j'avais vu en
+jouant, reposent sur le **chiffre de la colonne des dizaines**, qui vaut 0 pour 100. Instrument
+corrige, mesure refaite : **0 desaccord**. Je dis lequel des deux chiffres etait faux plutot que de
+ne montrer que le second.
+
+**Rappel du chiffre corrige de mon instrument de signes orphelins** : **14** pour le catalogue, pas
+17. `camille-po` a ecrit le 14 la ou il a un sens et n'a pas reecrit le 18 deja commite, qui reste
+exact a sa date. C'est la bonne conduite et je la confirme.
+
+### 5. Ma reponse a `sofia-sm` sur l'item 10 de `LIA` : le distracteur `mais` est en defaut
+
+> "Le jardinier arrose les fleurs chaque soir **mais** la terre est tres seche en ete."
+
+**La relation que `mais` affirme existe reellement** : arroser sert a garder la terre humide, et la
+terre est tres seche - le second fait defait l'attente que le premier cree. C'est la concession, et
+c'est la structure que le paquet tient lui-meme pour legitime a l'item 14. **Aucun adulte ne
+corrigerait cette phrase**, ce qui est le critere de levee que j'avais ecrit. L'enfant qui la
+choisit est compte faux en ayant raison.
+
+**Sa lecture de ma frontiere etait correcte ; c'est ma frontiere qui etait mal ecrite.** Le
+2026-08-30 je l'avais formulee en termes de necessite physique ("une fusee qui decolle traverse
+necessairement les nuages"), et son motif de ne pas trancher reprend exactement cette necessite. La
+necessite etait ma **preuve** sur ces items-la, pas mon **test**. Le test, reenonce et opposable
+sans moi :
+
+> Un connecteur affirme une relation entre les deux faits de l'enonce. Le distracteur est valide si
+> la relation qu'il affirme n'est pas celle qui existe entre ces deux faits ; il est refuse si elle
+> l'est.
+
+**Ce n'est pas un durcissement, et je le verifie plutot que de l'affirmer** : sous ce test, l'item
+20 - le cas voisin que j'avais garde le 2026-08-30 - reste bon, pour la meme raison qu'alors.
+**Le poteau n'a pas bouge ; ma phrase a ete mieux ecrite.**
+
+**Le compte d'aujourd'hui est complet : 39 des 40 distracteurs tiennent, un ne tient pas.** J'ai
+relu les 40 un par un contre ce test. **Il n'y aura pas de troisieme tour sur `LIA-3`.** Le cas
+voisin que je garde cette fois est l'item 7 (`mais` sur "Le chien aboie fort"), et je dis pourquoi
+dans la fiche : son opposition exige d'apporter une croyance absente du texte et d'inverser l'ordre
+que le texte pose, ce que l'item 10 ne demande ni l'un ni l'autre. **C'est aussi la ou mon jugement
+est le plus mince, et je le nomme.**
+
+**Levee** : remplacer le seul `mais` de l'item 10 par `donc` ou `alors`, jamais par `pourtant`.
+
+### 6. Mon avis sur le test qui encode `RAN-7`
+
+**Il dit ce que ma condition dit, sur tout le domaine que ce paquet peut prendre.** *Methode :
+enumeration de **tous** les triplets d'entiers de 0 a 100 admissibles par `RAN-2`, `RAN-4b` et
+`RAN-4` - **81 180 triplets** - croises avec les six textes d'indice du paquet, soit **487 080
+couples**, chacun juge deux fois : par les deux garde-fous du test, et par ma condition telle
+qu'ecrite dans mon refus. **Zero desaccord, dans les deux sens.***
+
+**Le risque nomme ne s'est pas realise** : le test ne rend pas un verdict etranger a sa propriete.
+La regle encodee est la mienne, et je n'ai pas eu a la deplacer pour qu'elle passe. **Je le garde.**
+
+**Trois choses qu'il ne dit pas, et que personne ne doit croire couvertes.**
+
+1. **Il encode mes deux symptomes, pas ma propriete.** L'equivalence est un resultat, pas une
+   lecture : elle repose sur `RAN-1`, `RAN-4` et `RAN-4b`, gardees ailleurs. Le jour ou les familles
+   de distracteurs changent, le garde-fou de `RAN-7` cesse de garder `RAN-7` **sans qu'aucun test ne
+   rougisse**. C'est le seul point qui m'inquiete.
+2. **Il n'a pas de branche par defaut.** Un septieme texte d'indice, ou l'un des six reformule,
+   traverse le test sans qu'aucune assertion ne s'applique, et le test reste vert.
+3. **Sa Javadoc justifie les quatre autres textes par un motif inexact.** Le fait est juste, la
+   raison ecrite ne l'est pas - et c'est ce qui fait qu'on ne voit pas venir le jour ou un garde-fou
+   cesse de tenir.
+
+**C'est la premiere fois qu'une de mes conditions de jugement recoit un garde-fou, et le bilan est
+bon.** Je le dis parce que j'ai dit l'inverse assez souvent pour que ce soit credible.
+
+### 7. Ce que ma regle d'ordre d'audit a donne
+
+La regle, posee le 2026-08-30 : **auditer en premier les conditions du paquet que je n'ai PAS
+amendees.**
+
+| Paquet | Ce qu'elle a donne |
+|---|---|
+| `RAN` | **Rien.** Un reaudit d'une seule condition ; l'ordre ne pouvait rien deplacer. Je ne lui invente pas un credit |
+| `LIA` | **Rien non plus.** C'est `sofia-sm` qui m'a route l'item 10, pas ma regle |
+| `ETA` | **Elle a servi.** Elle range `ETA-9` dans le premier groupe ; c'est en lisant les indices a cote de leurs enonces, avant de regarder `ETA-4b`, que le decalage de la reserve D est apparu |
+
+**Ce qu'elle confirme, mesure sur les trois paquets neufs du sprint plutot qu'affirmee** : les
+trois defauts que j'ai retenus - `RAN-7`, `LIA-3`, `ETA-9` - **tombent tous les trois sur une
+condition que je n'ai jamais amendee et sur sa part non calculable**. Zero defaut sur `ETA-4b`,
+`RAN-4b` et `RAN-5b`, les trois conditions amendees en cours de sprint. **Trois sur trois** :
+l'angle mort du regime d'amendement est bien la ou je l'avais annonce, et il n'est pas la ou on
+craignait qu'il soit - la complaisance.
+
+**La limite de ce resultat, que je dis moi-meme** : trois paquets ne font pas une loi, et sur deux
+des trois la regle n'a rien produit. **Je la garde et je la remesurerai au prochain sprint d'audits
+neufs.**
+
+### 8. Ce que ces trois Done et ce refus ne disent pas
+
+- **`MNC-1` n'est couvert par aucun des deux Done prononces** (`RAN` et `ETA`). Dette ouverte,
+  croissante, assumee (`DEC-0053`). Elle pese plus qu'au 2026-08-30 sur `ETA` : sept enonces sur 24
+  sont maintenant a la borne de 30 mots, et la reserve D porte sur l'indice, le texte le plus
+  expose de l'ecran a cette dette.
+- **Le `relecteur-pedagogique` n'est pas passe sur ce sprint.** L'orthographe, l'accentuation et la
+  ponctuation des trois paquets ne sont pas jugees par moi (`DEC-0002` amende le 2026-08-04,
+  `DEC-0056`). Le pronom sans antecedent de l'item 7 d'`ETA` est en revanche de ma porte : c'est le
+  sens de ce que l'enfant lit, pas sa forme.
+
+### 9. Ce que je route
+
+| Suite | Destinataire | Ce que je demande |
+|---|---|---|
+| **`RAN` : Done prononce, sans reserve. La ligne peut passer `couvert-valide`** | `camille-po` | Ecrire la matrice. Ce n'est pas moi qui l'ecris |
+| **`ETA` : Done maintenu. La ligne reste `couvert-valide`. A, B, C fermees ; D et E ouvertes** | `camille-po` | Fermer trois stories, en ouvrir deux |
+| **`LIA` : refus sur `LIA-3`, item 10, un mot a changer. Le motif du 2026-08-30 est ferme** | `camille-po`, par `sofia-sm` | Backlog. Ne pas rouvrir les items 3 et 18 : ils sont corriges comme demande |
+| **Le test de `RAN-7` : branche par defaut absente, couplage muet a `RAN-4b`, Javadoc au motif inexact** | `yanis-qa`, `theo-archi` | Trois points, pas un refus du test |
+| **Le correctif d'une de mes reserves d'`ETA` en a cree une autre, invisible a la CI** | `yanis-qa`, `theo-archi` | Aucun test ne relie l'indice a l'enonce de son item. Quatrieme defaut du sprint qu'une CI verte n'a pas vu |
+| **`LIA-3` et la coherence indice/enonce restent hors de tout garde-fou** | `yanis-qa`, `theo-archi` | Ne pas les compter comme couvertes. `LIA-3` porte deux refus consecutifs, CI verte les deux fois |
+| **Une date "2026-08-31" ecrite pour des commits du 2026-08-30** | `sofia-sm`, `relecteur-pedagogique` | Dans `cm1-mots-de-liaison.yaml` et dans la demande de reaudit |
+| **`ETA-3` est tenue sans marge : sept enonces sur 24 a la borne exacte** | `camille-po` | Toute correction qui allonge un enonce devra en raccourcir un autre |

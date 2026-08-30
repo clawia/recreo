@@ -191,6 +191,60 @@ sont tenues, y compris les trois que j'avais amendees en cours de sprint (`ETA-4
 **Le `relecteur-pedagogique` n'est pas passe sur ce sprint** : l'orthographe, l'accentuation et la
 ponctuation de ces trois paquets ne sont pas jugees par ces verdicts (`DEC-0056`).
 
+
+### Reaudit du 2026-08-30 (branche `s23-nadia-4`), apres les quatre lots de correction
+
+**Ajoute par `nadia-prof`. Les deux blocs ci-dessus ne sont pas reecrits** : ils restent exacts a
+leur date, et l'un decrit l'etat d'avant l'audit, l'autre les verdicts du premier passage. On
+ajoute et on date.
+
+Amendement complet et motifs :
+`squad/sprints/s23-trois-paquets-parmi-sept/avis-nadia-done-pedagogique-s23.md`, section "Amendement
+du 2026-08-30 - reaudit". Les blocs de validation sont en fin de chaque fiche de conformite.
+
+**Joues, pas lus** : dix parties sur `RAN`, douze sur `LIA`, quatorze sur `ETA`, chaque proposition
+fausse pressee avant la bonne pour voir l'indice. Les 24 items de `RAN`, les 20 de `LIA` et les 24
+d'`ETA` rencontres a l'ecran. Aucun des trois audits n'est degrade.
+
+| Paquet | Verdict du reaudit | Ce qui change | Ligne de matrice |
+|---|---|---|---|
+| `cp-ranger-nombres` (`S23-RAN`) | **VALIDE**, sans reserve | `RAN-7` levee. Les cinq indices reapparies sont les cinq items nommes ; ma condition tenue sur les 24 items | **peut passer `couvert-valide`** |
+| `cm1-problemes-etapes` (`S23-ETA`) | **VALIDE SOUS RESERVE (maintenu)** | Reserves A, B et C levees ; reserves D et E ouvertes. Le Done du 2026-08-30 tient tel quel | reste `couvert-valide` |
+| `cm1-mots-de-liaison` (`S23-LIA`) | **REFUSE** - second refus, motif nouveau | `LIA-3` levee sur les items 3 et 18 ; en defaut sur l'item 10, distracteur `mais`, que `sofia-sm` m'a route sans y toucher | reste `non couvert` |
+
+**Sous reserve de l'ecriture de la matrice par `camille-po`, qui seule la tient, la couverture
+passerait de 22/43 a 23/43 (53,5 %).** Je ne l'ecris pas moi-meme.
+
+**Ce que ce reaudit ajoute au sprint, en trois points.**
+
+- **Les deux correctifs font exactement ce que j'avais demande**, verifie ligne a ligne sur la
+  difference des fichiers : cinq lignes `indice` echangees sur `RAN` sans qu'aucun des six textes
+  soit reecrit, deux valeurs de distracteur sur `LIA` avec l'item 20 intact. **Les trois reserves
+  d'`ETA` sont fermees par les criteres que j'avais ecrits**, y compris le passage a "perd", verbe
+  que j'avais deja juge bon.
+- **Les deux defauts que ce reaudit ajoute sont des corrections de mes propres comptes**, pas des
+  defauts du travail livre. Mon compte du 2026-08-30 sur `LIA` disait 38 distracteurs bons sur 40 :
+  il y en avait 37 - `sofia-sm` a verifie ce que j'avais declare bon et a trouve l'item 10. Ma
+  reserve C sur `ETA` nommait deux des six items qui portent la meme ambiguite : `marc-dev` a
+  corrige exactement ceux que j'avais nommes.
+- **Une reserve nouvelle a ete creee par le correctif d'une autre**, et une CI entierement verte ne
+  l'a pas vue : les enonces des items 22 a 24 d'`ETA` passent a "perd" et leurs indices gardent
+  "distribues", "retirees", "vendus". Aucun test ne relie un indice a l'enonce de son item.
+  **Quatrieme defaut de ce sprint invisible a la porte technique.**
+
+**Sur le test de `RAN-7`, ecrit par `marc-dev` hors de la consigne de `sofia-sm` (obstacle 11).**
+Il encode ma condition et il ne rend pas un verdict etranger a sa propriete : *enumeration de tous
+les triplets admissibles par `RAN-2`, `RAN-4b` et `RAN-4` - **81 180 triplets** - croises avec les
+six textes d'indice, soit **487 080 couples** juges deux fois, par le test et par ma condition :
+**zero desaccord, dans les deux sens**.* **Je le garde.** Trois manques a traiter, ecrits dans la
+fiche : pas de branche par defaut, couplage muet a `RAN-4` / `RAN-4b`, Javadoc au motif inexact.
+
+**Ce que ces verdicts ne disent pas.** `MNC-1` n'est couvert par aucun des deux Done prononces
+(dette assumee, `DEC-0053`). Le `relecteur-pedagogique` n'est pas passe sur ce sprint :
+l'orthographe, l'accentuation et la ponctuation des trois paquets ne sont pas jugees par ces
+verdicts (`DEC-0056`). Une date "2026-08-31" est ecrite dans `cm1-mots-de-liaison.yaml` pour un
+commit du 2026-08-30, signalee a `sofia-sm` et au `relecteur-pedagogique`.
+
 ## Suite de review, 2026-08-30 - fusion des quatre lots de correction
 
 Quatre branches fusionnees dans cette meme review, apres le bloc ci-dessus : `s23-nadia-3`,
