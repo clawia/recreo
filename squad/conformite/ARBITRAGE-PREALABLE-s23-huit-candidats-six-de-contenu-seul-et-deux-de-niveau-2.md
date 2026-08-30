@@ -454,3 +454,81 @@ Je garde `PLU-1` (la phrase ne doit porter aucun autre indice de nombre - un jug
 Ligne entiere pour ce que la ligne dit. **Aucune mention de couverture partielle n'est necessaire** :
 la ligne se restreint deja d'elle-meme au `-s`, et `PLU-3` suit cette restriction au lieu de
 l'inventer.
+
+---
+
+## 5. "Reperer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte" (francais CM1)
+
+**Verdict : ACCEPTE sous conditions `SUB-1` a `SUB-10`.**
+
+### Ce que je verifie d'abord
+
+La ligne est `non couvert`. Elle est l'une des trois du domaine "Lecture et comprehension de
+l'ecrit" en francais CM1, et la matrice dit deja, depuis le 2026-08-30, que `cm1-comprehension`
+**ne l'ouvre pas et ne la couvre pas** : je l'avais exige a l'audit de `S17-2`. J'arbitre donc bien
+une ligne distincte, pas une extension de celle qui vient d'etre validee.
+
+**Le geste est celui de la mecanique et le mecanisme existe deja** : un texte-support, une
+question, trois propositions. `texteSupport` est generique, verifie au depot. **Aucune architecture
+neuve.**
+
+**Les deux chemins par lesquels un enfant peut reussir sans lire, et que je ferme** :
+- **le genre et le nombre.** Si le texte nomme un seul personnage feminin et qu'on demande a qui
+  renvoie *"elle"*, la reponse se donne sans lire le texte. C'est `SUB-4`.
+- **la proximite.** Si le referent est toujours le groupe nominal compatible le plus proche a
+  gauche, l'enfant apprend la regle du plus proche et cesse de comprendre. C'est `SUB-5`, et c'est
+  la condition la plus utile du lot : un enfant qui ne bute jamais sur un referent eloigne n'a
+  jamais travaille la competence.
+
+### Conditions
+
+- **`SUB-1` - Forme.** Le `texteSupport` porte le texte ; l'`enonce` demande a qui renvoie un mot
+  du texte, **cite entre guillemets dans l'enonce**. Les trois propositions sont trois personnages
+  ou groupes nominaux **presents dans le texte de leur propre item**.
+- **`SUB-2` - Longueur.** Le `texteSupport` compte **au plus 45 mots** et **au plus trois phrases** ;
+  l'`enonce` compte **au plus 12 mots**. *Un mot est une suite de caracteres sans espace ; unite de
+  compte : l'item. Mesure de reference, 2026-08-30, population entiere des 20 textes-supports de
+  `cm1-comprehension.yaml`, valides la veille : ils comptent de **20 a 38 mots**. La borne de 45
+  laisse la place d'un troisieme personnage sans sortir de ce qui est deja valide au CM1.*
+- **`SUB-3` - Les deux familles de la ligne sont servies.** Sur les `N` items du paquet, le
+  substitut interroge est **un pronom** sur au moins `arrondi inferieur(N/3)` items et **un groupe
+  nominal** (*"le garcon"*, *"la fillette"*, *"l'animal"*) sur au moins `arrondi inferieur(N/3)`
+  items. *Unite de compte : l'item.* Motif : la ligne dit *"pronoms, groupes nominaux"*, et un
+  paquet qui ne servirait que les pronoms ne la couvrirait qu'a moitie.
+- **`SUB-4` - Le genre et le nombre ne decident jamais seuls.** Sur **chaque** item, **au moins deux
+  des trois propositions s'accordent en genre et en nombre avec le substitut interroge**.
+  *Verification par un tiers, item par item, sur la totalite du paquet.*
+- **`SUB-5` - La proximite ne decide pas toujours.** Sur **au moins `arrondi inferieur(N/3)`** items
+  du paquet, le referent **n'est pas** le groupe nominal compatible en genre et en nombre le plus
+  proche a gauche du substitut. *"Le plus proche a gauche" se compte en nombre de mots separant le
+  dernier mot du groupe du premier mot du substitut, dans le texte tel qu'il est ecrit ; unite de
+  compte : l'item.* Cette definition est donnee pour que la clause n'ait **qu'une seule lecture
+  chiffree** - c'est exactement ce qui manquait a `D-4` et `D-5`.
+- **`SUB-6` - Texte masque, la question ne se repond pas.** Meme procedure que `NAR-6` : masquer le
+  `texteSupport`, item par item, sur la totalite du paquet. **Aucun automate ne voit cette
+  propriete.** C'est `COMP-2`, et **ce paquet compte a lui seul contre ma condition d'au plus un
+  paquet de ce type par sprint.**
+- **`SUB-7` - Un seul substitut par item, et il n'apparait qu'une fois dans le texte.** Si le mot
+  cite figure deux fois, l'enfant ne sait pas duquel on lui parle, et l'item n'a plus de reponse
+  unique.
+- **`SUB-8` - Personnages.** Les prenoms du paquet sont **equilibres en genre a un pres** (*unite de
+  compte : le prenom distinct*), et aucun role, aucun metier, aucune activite n'est distribue par
+  genre. Aucune situation ne suppose une configuration familiale ou un logement particulier.
+- **`SUB-9` - Indice.** Il dit **quelle partie du texte relire**, jamais le referent. *"Relis la
+  phrase qui precede ce mot."* est un indice. **Dix mots au plus.**
+- **`SUB-10` - Au moins vingt items**, et deux items ne partagent jamais le meme `texteSupport`.
+
+### Ce qui reste dans ma seule main sur ce paquet
+
+**`SUB-4`, `SUB-5` et `SUB-6`.** `SUB-5` est **partiellement** calculable - la distance en mots se
+compte -, mais l'accord en genre et en nombre d'un groupe nominal francais n'est pas decidable par
+un automate sans lexique morphologique, et ce depot n'en a pas. **Je porte donc `SUB-4` et `SUB-5`
+a la main, item par item, en plus de `SUB-6`.** C'est le paquet du lot dont l'audit me coutera le
+plus cher apres `NAR`, et je le dis avant qu'on me l'assigne.
+
+### Couverture
+
+Ligne entiere pour ce que la ligne dit, avec la meme limite de mecanisme que `S17-2` et `NAR` : un
+texte par question, trois phrases au plus. La mention exacte que je demande sur la matrice le jour
+ou la ligne bouge est : **"textes de trois phrases au plus, un texte par question, pronoms et
+groupes nominaux servis tous les deux"**.
