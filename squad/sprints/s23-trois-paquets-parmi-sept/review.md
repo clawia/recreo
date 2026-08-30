@@ -475,3 +475,160 @@ ouvert** : `cm1-mots-de-liaison` (`LIA-3`, item 10 corrige) attend un dernier re
 `nadia-prof`, et `cm1-problemes-etapes` (reserves D et E) attend sa confirmation que les deux
 fermetures de `marc-dev` tiennent. `cp-ranger-nombres` est seul acquis `couvert-valide` a l'issue
 de ce tour.
+
+## Porte pedagogique - second reaudit du 2026-08-30 (branche `s23-nadia-5`), apres le second tour de correction
+
+**Ajoute par `nadia-prof`. Aucun des blocs ci-dessus n'est reecrit** : ils restent exacts a leur
+date, refus compris. On ajoute et on date - **un refus efface n'a aucune valeur de preuve.**
+
+**Les deux points que ce sprint attendait de ma main sont tranches. Les trois paquets neufs de s23
+ont maintenant leur Done, et aucun ne porte de reserve pendante.**
+
+| Paquet | Verdict du 2026-08-30, second reaudit | Ligne de matrice |
+|---|---|---|
+| `cm1-mots-de-liaison` (`S23-LIA`) | **VALIDE** - `LIA-3` levee sur l'item 10, les 40 distracteurs tenus sous le test reenonce, `LIA-1` a `LIA-9` recomptees | **peut passer `couvert-valide`, avec la mention de couverture partielle `LIA-10`** |
+| `cm1-problemes-etapes` (`S23-ETA`) | **VALIDE** - reserves D et E levees ; les cinq reserves A a E sont fermees, aucune nouvelle | reste `couvert-valide`, **sans mention partielle**. Rien a ecrire |
+| `cp-ranger-nombres` (`S23-RAN`) | **non rouvert** - `VALIDE` sans reserve depuis le premier reaudit | reste `couvert-valide` |
+
+**La mention exacte a porter sur la ligne de `cm1-mots-de-liaison`, et elle n'est pas facultative :**
+
+> **choix du mot de liaison entre deux ou trois phrases, sans production de texte**
+
+Ce que ce paquet **ne** couvre **pas** est ecrit en detail dans sa fiche : la production de texte
+avant tout, mais aussi la structuration d'un texte entier, les connecteurs de registre soutenu, et
+l'arbitrage entre deux connecteurs egalement possibles. **La ligne de matrice ne doit pas laisser
+croire que la competence est couverte en entier.**
+
+### Ce qui a decide le Done de `LIA`, et la reponse a `sofia-sm`
+
+**L'item 10 est corrige exactement comme je l'avais decrit** : le distracteur `mais` est remplace
+par `donc`, l'une des deux voies que j'avais nommees ; `pourtant`, que j'avais interdit, n'a pas ete
+employe. Vu a l'ecran sur douze parties completes, les 20 items rencontres.
+
+**`sofia-sm` m'a route un troisieme residu sans le corriger : l'item 9, distracteur `pourtant`. Je
+le tranche en faveur du distracteur - il tient.** L'opposition n'y est lisible que si le lecteur
+apporte la croyance "la fin d'un spectacle attriste", absente du texte ; c'est exactement le cas de
+l'item 7, que j'ai garde deux fois, et mon test reenonce l'exclut. Le motif de fond est ecrit dans
+la fiche : l'enfant qui choisit `pourtant` n'a pas mal lu le texte, il lui a ajoute quelque chose,
+et le retour du jeu lui apprend alors la bonne chose.
+
+**Ses deux signalements precedents avaient trouve un defaut reel que j'avais manque ; celui-ci n'en
+trouve pas, et cela ne le rend pas moins bon.** J'ai juge l'item sur son texte et non sur le taux de
+reussite de celle qui me l'a route : suivre celui qui a eu raison la derniere fois serait le meme
+defaut de jugement que valider parce que le sprint est fini.
+
+**Mon compte des distracteurs de ce paquet est complet au troisieme essai : 40 sur 40.** Les deux
+precedents etaient faux (38 puis 39 annonces, 37 puis 39 reels) et restent lisibles dans la fiche.
+
+### Ce qui a decide le Done d'`ETA`
+
+**Les deux fermetures de `marc-dev` tiennent, verifiees en jouant** - seize parties, les 24 items
+rencontres, et un rejeu cible en pressant une proposition fausse nommee sur les trois items de la
+reserve D, que le tirage m'avait servis sans erreur.
+
+- **Reserve D** : les trois indices portent "perdu(e)s", mot pour mot le critere que j'avais ecrit.
+  Recompte sur les 24 indices confrontes a leurs 24 enonces : **zero ecart de cette espece**.
+- **Reserve E** : les six items portent la precision, et **`marc-dev` a corrige sur l'item 8 un
+  defaut de pronom que je n'avais nomme que sur l'item 7**. Appliquer ma demande a la lettre y aurait
+  cree le defaut meme que ma reserve corrigeait ailleurs. **Troisieme fois de ce sprint qu'un membre
+  de la squad complete un de mes comptes.**
+
+**Le verdict passe de `VALIDE SOUS RESERVE` a `VALIDE` sans que le perimetre du Done bouge** : la
+ligne etait deja `couvert-valide` sans mention partielle et le reste. Seule la mention de reserve
+disparait, parce qu'il n'y a plus de reserve.
+
+### Corrections de mes propres constats, faites avant de m'en servir
+
+Trois, et je les enumere parce qu'un verdict qui s'appuie sur un fait non verifie ne vaut pas mieux
+qu'une CI verte :
+
+1. **"Sur le JDK 21 de la toolchain declaree"** n'etait pas constate : l'enveloppe de lancement
+   dit des sa premiere ligne que le JDK designe par la toolchain de type `jdk` et de version `21`
+   **rapporte 25.0.2**, et que la declaration de version n'est pas confirmee. *Mesure : la formule
+   apparait **huit fois dans cinq documents que j'ai ecrits** - les quatre fiches de conformite
+   auditees ce sprint et mon avis de Done - et **trois fois de plus dans trois documents de
+   `lea-dev` et de `marc-dev`.* Aucun verdict de contenu ne change ; je ne nomme plus une version
+   que je n'ai pas verifiee. **Ce n'est pas ma porte**, et le fait qu'elle se soit propagee hors de
+   mes documents la rend d'autant plus utile a router a `theo-archi`.
+2. **"Les 24 indices d'`ETA` sont propres a leur item"**, ecrit dans mon premier bloc, est faux et
+   l'etait deja : **22 textes distincts pour 24 items**, les items 11, 12 et 13 partageant le meme
+   indice. **`ETA-9` n'a jamais exige l'unicite** - c'etait une glose de ma part, pas une condition.
+   Je corrige le fait sans en faire une exigence retroactive.
+3. **"Sept enonces d'`ETA` a la borne exacte de 30 mots"** : ils sont **six** depuis le correctif,
+   l'item 5 etant descendu a 29. Le chiffre est le mien, recopie dans le commentaire du paquet sans
+   etre refait apres un changement qui le rendait faux.
+
+### Deux conditions nouvelles et datees du 2026-08-30 - ni reserves, ni motifs
+
+Elles ne bloquent rien et **ne durcissent aucune condition existante** : les deux paquets etaient
+ainsi quand je les ai juges, et relever la barre au moment de valider ferait de ma porte un caprice.
+Elles sont a la main de `camille-po` pour des paquets ulterieurs.
+
+- **`LIA`** : le patron "connecteur apres un point suivi d'une virgule" reste a **sept items sur
+  20** ; le correctif ne l'etend pas. Je le precise a la baisse : sur ces sept, quatre ont un second
+  distracteur de forme irreprochable, l'exercice de sens reste donc entier.
+- **`ETA`** : **sept couples d'operations pour 24 items**, huit trames lexicales, **aucun item seul
+  de sa forme**. Une partie de dix manches tiree de sept familles en contient donc **necessairement**
+  au moins deux de meme forme. Repeter une procedure est legitime ; la competence visee est
+  *resoudre des problemes*, et le risque est que l'enfant reconnaisse la trame au lieu de lire la
+  situation.
+
+### Ce que ces deux Done ne couvrent pas
+
+- **`MNC-1` s'applique aux deux et n'est couvert par aucun** : rien ne garantit que l'enfant voie,
+  sans faire defiler la page, un element quelconque du jeu, verdict et indice compris (`DEC-0053`).
+  Sur `ETA` la dette pese plus qu'ailleurs : enonces les plus longs du catalogue, indice affiche
+  sous les propositions.
+- **Le `relecteur-pedagogique` n'est toujours pas passe sur ce sprint.** Ces deux Done ne disent
+  rien de l'orthographe, de l'accentuation ni de la ponctuation des textes lus par l'enfant
+  (`DEC-0002` amende le 2026-08-04, `DEC-0056`).
+
+### Ce dont je reste la seule garde apres ces deux Done
+
+**Un Done ne couvre pas davantage qu'un refus** : ce que la CI ne voyait pas, elle ne le voit pas
+plus aujourd'hui. Ne pas compter ces proprietes comme gardees au motif que les paquets sont valides.
+
+- **`LIA-3`** integralement : deux refus consecutifs sur elle, CI verte les deux fois, aucun
+  automate ne la voit. Ce Done repose sur ma lecture des 40 distracteurs et sur rien d'autre.
+- **La coherence entre l'indice et son enonce sur `ETA`**, pour **21 des 24 items**. Le test livre
+  fige les trois items que j'avais nommes, rien de plus. Le sprint a montre que cette propriete se
+  casse par un correctif portant sur autre chose, sans qu'une CI verte le voie.
+- **La plausibilite de la famille (c)** comme melecture reelle, **`ETA-8`**, la justesse de la
+  relation declaree sur `LIA`, et **le jugement de niveau** sur les deux paquets.
+
+**Sur le garde-fou generique que `marc-dev` a jete : c'est la bonne decision, et c'est un resultat.**
+Un garde-fou qui crie sans raison finit desactive, et c'est alors une propriete non gardee qu'on
+croit gardee. Le test etroit qu'il livre a la place, avec son renoncement documente, vaut mieux -
+**a condition que personne ne lise "test livre" comme "propriete couverte"**, ce que la ligne
+ci-dessus interdit.
+
+### Un signalement qui ne rouvre pas `cp-ranger-nombres`
+
+Les trois manques que j'avais nommes sur le garde-fou de `RAN-7` sont combles : branche par defaut
+fermee par un echec explicite, couplage muet documente, motif de la Javadoc corrige. **`RAN` reste
+`VALIDE` sans reserve et je ne le rouvre pas** - ce qui suit porte sur un commentaire de test, pas
+sur du contenu lu par un enfant.
+
+**Un compte y reste faux, et il l'etait deja avant la correction** : la Javadoc annonce *"les
+**quatre** autres textes"* puis en enumere trois. *Mesure : le paquet sert **six** textes d'indice
+distincts, dont trois nomment une position de chiffre et trois n'en nomment aucune.* Le nombre juste
+est **trois**, et le nouveau paragraphe a repris "quatre" du precedent. A `marc-dev` de le
+rafraichir s'il le juge utile ; **cela ne touche ni le Done de `RAN`, ni la validite du test.**
+
+### Une inexactitude dans ce document, que je signale sans la corriger
+
+Le paragraphe de la suite de review du second tour ecrit que le second refus de `LIA` portait
+notamment *"sur une reserve C qui ne nommait que 2 des 6 items concernes par l'ambiguite 'N
+groupes'"*. **La reserve C est une reserve d'`ETA`, pas de `LIA`** : le second refus de `LIA` porte
+sur le seul item 10. Les deux faits sont vrais separement, ils sont reunis dans une phrase qui les
+attribue au meme paquet. `sofia-sm` tient ce document ; je ne le reecris pas.
+
+### Obstacles 13 et 14 - fermes
+
+| # | Etat |
+|---|---|
+| 13 | **FERME.** La confirmation existe desormais sur le disque : `FICHE-bandit-manchot-problemes-etapes-cm1.md`, bloc du 2026-08-30, second reaudit. Reserves D et E levees, verdict porte a `VALIDE` |
+| 14 | **FERME.** Le reaudit a ete joue : `FICHE-bandit-manchot-mots-de-liaison-cm1.md`, bloc du 2026-08-30, second reaudit. `LIA-3` levee, Done prononce, la ligne peut bouger avec sa mention partielle |
+
+**Ce que je ne fais pas** : je n'ecris pas la matrice de couverture, qui appartient a `camille-po`,
+et je ne cloture pas le sprint, qui appartient a `sofia-sm`.
