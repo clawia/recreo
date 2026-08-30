@@ -15,7 +15,7 @@ descripteur:
 # COMP-1, COMP-2, COMP-3, COMP-5 restent bloquantes, COMP-6 reformulee en propriete.
 #
 # COMP-3 (bloquante) : au moins un tiers des items relient deux informations distinctes du
-# texte-support, jamais un fragment recopie comme bonne reponse. 17 items sur 20 sont
+# texte-support, jamais un fragment recopie comme bonne reponse. Les vingt items sont
 # marques '# COMP-3' ci-dessous, chacun avec les deux informations qu'il relie dans son
 # commentaire - au dela du plancher d'un tiers (7/20), assume : le motif de refus de s02 ne
 # depend d'aucun ecran et ne se relache pas au premier tiers atteint.

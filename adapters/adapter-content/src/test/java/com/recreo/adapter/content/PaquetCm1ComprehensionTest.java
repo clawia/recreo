@@ -44,7 +44,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * <p><b>COMP-3 (bloquante).</b> "Au moins un tiers des items exigent de relier deux informations
  * distinctes du texte, et pour ceux-la la bonne reponse n'est pas un fragment recopie du support."
  * Le plancher exact sur vingt items est sept (arrondi superieur d'un tiers). Ce que ce garde-fou
- * peut prouver : le paquet servi marque bien dix-sept items "# COMP-3" dans le YAML - un marqueur
+ * peut prouver : le paquet servi marque bien vingt items "# COMP-3" dans le YAML - un marqueur
  * qu'aucun code de production ne lit, pose pour que `nadia-prof` retrouve directement, en jouant,
  * quels items sont concus pour cette condition et les deux informations que chacun relie (le
  * commentaire porte les deux). Ce que ce garde-fou ne peut pas prouver : que la liaison entre les
