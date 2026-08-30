@@ -153,3 +153,186 @@ paquet ; la ligne `mathematiques | CP | Nombres et calculs | Comparer et ranger 
 | **Le raccourci de fin de liste, 93,8 % mesures** | `camille-po` | Condition nouvelle et datee du 2026-08-30, pour un paquet suivant. Elle ne fait pas partie de ce refus |
 | **`RAN-5b` tenue, et son plancher structurel est 50 %** | `camille-po`, `theo-archi` | Signalement. Ne pas lire `RAN-5b` comme fermant le raccourci du premier nombre |
 | **`RAN-7` n'est couverte par aucun garde-fou et ne l'etait pas** | `yanis-qa`, `theo-archi` | Ne pas la compter comme couverte. Une CI verte a laisse passer les cinq items |
+
+---
+
+### Done pedagogique - 2026-08-30, reaudit apres correctif (s23) - VALIDE
+
+**Amendement date. Le refus du 2026-08-30 ci-dessus n'est pas reecrit et reste lisible en
+entier** : un refus efface n'a aucune valeur de preuve. Ce bloc s'ajoute, il ne remplace rien.
+
+**Correction d'un fait avant de m'en servir.** La demande de reaudit me presentait mon refus comme
+date du **2026-08-31**. Il est date du **2026-08-30**, dans ce fichier comme dans le commit qui le
+porte, et le lot de correction est du meme jour. `cm1-mots-de-liaison.yaml` porte lui aussi
+"Correction du 2026-08-31" pour un commit du 2026-08-30. Ce n'est pas un detail de forme : une date
+qui ne correspond a aucun commit rend la chronologie du depot illisible, et le depot est la seule
+memoire partagee. Je le signale, je ne corrige pas le fichier d'un autre agent.
+
+#### Ordre d'audit - la regle que je me suis imposee le 2026-08-30, appliquee ici
+
+Je m'etais impose d'**auditer en premier les conditions que je n'ai pas amendees**, apres avoir
+constate que mes deux refus du sprint portaient precisement sur les deux seules conditions qu'aucun
+calcul ne juge et que je n'avais jamais amendees. Applique a ce reaudit : j'ai commence par
+`RAN-7`, puis `RAN-1`, `RAN-2`, `RAN-3`, `RAN-6` et `RAN-8`, et fini par `RAN-4b` et `RAN-5b`.
+
+**Ce que cela donne ici : rien de neuf, et c'est un resultat en soi.** Le correctif ne touche que
+`RAN-7` ; les sept autres conditions sont intactes par construction. L'ordre n'a donc pas deplace
+le lieu du defaut - il a seulement coute moins de temps qu'au premier audit, ou j'avais commence
+par verifier ce qui allait tenir. **La regle se juge sur un audit neuf, pas sur un reaudit d'une
+seule condition** ; je le dis pour ne pas lui creer un credit qu'elle n'a pas encore gagne.
+
+#### Ce que le correctif a change, verifie ligne a ligne
+
+**Cinq lignes `indice`, et rien d'autre.** *Methode : difference du paquet entre le commit qui porte
+mon refus et l'arbre reaudite ; population : le fichier entier.* Aucun enonce, aucune bonne reponse,
+aucun distracteur, aucun des six textes d'indice n'est reecrit. **La declaration de `marc-dev` est
+exacte, et les cinq items touches sont exactement les cinq que j'avais nommes** : 16 et 22 pour le
+defaut grave, 1, 13 et 19 pour le second.
+
+#### `RAN-7` - motif de refus leve
+
+**Mon critere de levee, mot pour mot** : "la methode que l'indice enonce, appliquee litteralement
+aux trois nombres de l'item, doit designer la bonne reponse ou un sous-ensemble strict qui la
+contient - jamais une proposition fausse presente a l'ecran, jamais les trois propositions a la
+fois."
+
+**Tenu sur les 24 items.** *Methode : pour chaque item, les six permutations du triplet sont
+filtrees par la methode que son indice enonce, en lisant "les dizaines" comme un enfant de CP les
+lit - le chiffre ecrit dans la colonne des dizaines, celui de 100 valant 0 ; le resultat est
+intersecte avec les trois propositions reellement servies. Population : les 24 items.* Vingt-deux
+items designent exactement la bonne reponse ; deux items en retiennent deux, la bonne comprise -
+les items 3 et 9, indice "Cherche d'abord le plus petit des trois." **C'est le sous-ensemble strict
+que ma condition autorise, et ces deux items etaient deja dans cet etat le 2026-08-30, ou je ne les
+ai pas comptes en defaut. Je ne les compte pas davantage aujourd'hui.**
+
+**Vu a l'ecran, pas deduit du fichier.** Dix parties completes, jouees en pressant chaque
+proposition fausse avant la bonne, les 24 items rencontres. Sur les cinq items corriges :
+
+| Item | Enonce | Indice servi apres l'echec | Ce que la methode donne |
+|---|---|---|---|
+| 16 | `48, 2, 100` | "Compare le nombre de chiffres de chaque nombre." | 2 a un chiffre, 48 en a deux, 100 en a trois : `2, 48, 100`, **la bonne reponse, entierement** |
+| 22 | `37, 100, 16` | "Compare le nombre de chiffres de chaque nombre." | 100 est le seul a trois chiffres, donc dernier : des trois propositions a l'ecran, seule `16, 37, 100` finit par 100 |
+| 1 | `66, 54, 59` | "Compare les dizaines, puis les unites si besoin." | dizaines 6 / 5 / 5, unites 4 / 9 : `54, 59, 66` |
+| 13 | `94, 11, 56` | "Compare les dizaines, puis les unites si besoin." | dizaines 9 / 1 / 5 : `11, 56, 94` |
+| 19 | `52, 91, 86` | "Compare les dizaines, puis les unites si besoin." | dizaines 5 / 9 / 8 : `52, 86, 91` |
+
+**L'erreur factuelle a disparu de l'ecran.** Sur l'item 22, la sequence qui rendait le 2026-08-30
+"Compare les dizaines, puis les unites si besoin." sur un triplet contenant 100 rend aujourd'hui
+"Compare le nombre de chiffres de chaque nombre.", et l'enfant qui applique litteralement ce qu'on
+vient de lui dire tombe sur la bonne reponse au lieu du second distracteur.
+
+**Ce que le correctif fait mieux que ce que je demandais** : sur les items 16 et 22, 100 est le seul
+nombre du paquet a trois chiffres, et l'indice de comptage de chiffres est precisement la methode
+qui le traite bien. L'appariement n'evite pas seulement le defaut, il choisit la methode utile.
+
+#### Les sept autres conditions, recomptees et non reprises
+
+*Population : les 24 items, recomptes sur l'arbre reaudite, jamais repris de mon bloc du
+2026-08-30.*
+
+| Condition | Verdict | Mesure |
+|---|---|---|
+| `RAN-1` | **tenue** | 24 bonnes reponses egales au triplet croissant ; 72 propositions permutations du triplet |
+| `RAN-2` | **tenue** | Entiers de 0 a 100, trois distincts par item sur les 24 |
+| `RAN-3` | **tenue** | Proposition la plus longue : **11 caracteres**, borne 12 |
+| `RAN-4` / `RAN-4b` | **tenues** | 48 distracteurs recalcules, 0 ecart ; unites deux a deux distinctes sur les 24 |
+| `RAN-5b` | **tenue** | **13 / 24**, plancher 12 - chiffre identique au 2026-08-30, le correctif ne touche aucune proposition |
+| `RAN-6` | **tenue** | **9 / 24**, plancher 8 - idem |
+| `RAN-7` | **tenue** | Voir ci-dessus. Neuf mots au plus par indice, aucun indice ne recopie sa liste |
+| `RAN-8` | **tenue** | 24 items, 24 triplets deux a deux distincts |
+
+#### Les deux raccourcis mesures le 2026-08-30 : inchanges, et toujours hors de ce verdict
+
+*Meme methode, meme population qu'au 2026-08-30 : les 24 items, egalites entre propositions
+comptees uniformement.* Raccourci "la liste dont le premier nombre est le plus petit" : **72,9 %**
+(17,5 / 24). Raccourci "la liste dont le dernier nombre est le plus grand" : **93,8 %** (22,5 / 24).
+Le correctif ne touche aucune proposition, les deux chiffres sont donc identiques a ceux de mon
+refus ; je les refais et je les republie, parce qu'un chiffre qu'on ne refait pas n'est plus une
+mesure.
+
+**Je n'en fais pas une reserve sur ce paquet, et je dis pourquoi.** J'ai nomme moi-meme le raccourci
+de fin de liste le 2026-08-30 en ecrivant "je ne la pose pas aujourd'hui". En faire aujourd'hui une
+reserve de ce paquet - meme non bloquante - serait appliquer apres coup une condition a un contenu
+ecrit sans elle. **Ma barre du 2026-08-30 est celle contre laquelle ce paquet a ete ecrit, et c'est
+celle contre laquelle je le juge.** La condition reste nouvelle, datee, et destinee a un paquet
+suivant.
+
+#### `MNC-1`
+
+**`MNC-1` s'applique a ce Done, et ce Done ne le couvre pas.** Rien ne garantit ici que l'enfant
+voie, sans faire defiler la page, un element quelconque du jeu, y compris le retour qui suit sa
+reponse - verdict, indice, proposition. Cette propriete est sortie de la porte pedagogique par
+arbitrage de l'utilisatrice du 2026-08-28 (`DEC-0053`) ; sa dette est ouverte, croissante et
+assumee. **Aucune mesure ne l'a instruite sur ce paquet**, ni au premier audit ni a celui-ci.
+
+#### Ce que ce Done ne dit pas
+
+**Le `relecteur-pedagogique` n'est pas passe sur ce sprint.** L'orthographe, l'accentuation et la
+ponctuation des 24 enonces, des 72 propositions et des six indices ne sont pas jugees par moi
+(`DEC-0002` amende le 2026-08-04, `DEC-0056`). Ce Done n'en dit rien.
+
+#### Ce sur quoi je reste la seule garde, apres le correctif
+
+- **Le jugement de niveau** de ce que l'enfant lit.
+- **`RAN-7` n'est plus entierement dans ma seule main.** C'est la premiere fois qu'une de mes
+  conditions de jugement recoit un garde-fou. Ce qu'il couvre et ce qu'il ne couvre pas est ecrit
+  ci-dessous, parce qu'une couverture surestimee est pire qu'une absence de couverture.
+
+#### Mon avis sur le test qui encode `RAN-7`
+
+Test vise : `PaquetCpRangerNombresTest#chaqueIndiceEstChoisiPourSonItemJamaisDistribueParUnCycle`.
+
+**Il dit ce que ma condition dit, sur tout le domaine que ce paquet peut prendre - et il ne le dit
+pas de la maniere dont je l'ai ecrite. Les deux points comptent.**
+
+**Ce que j'ai verifie, et par quelle methode.** J'ai enumere **tous les triplets d'entiers de 0 a
+100 admissibles** par `RAN-2` (trois entiers distincts de 0 a 100), par `RAN-4b` (les trois chiffres
+des unites deux a deux distincts) et par `RAN-4` (les trois propositions distinctes) : **81 180
+triplets**. Pour chacun, et pour chacun des six textes d'indice du paquet - **487 080 couples au
+total** - j'ai compare deux verdicts : celui des deux garde-fous du test, et celui de ma condition
+telle qu'elle est ecrite dans mon refus. **Zero desaccord, dans les deux sens.** Sur le domaine que
+ce paquet peut prendre, le test n'est pas une approximation de ma condition : il lui est equivalent.
+
+*Correction de mon propre instrument, faite avant de m'en servir.* Ma premiere enumeration lisait
+"les dizaines" comme le **nombre de dizaines** - 10 pour 100 - et annoncait 1 980 desaccords. C'est
+faux : ma condition, et le defaut que j'ai vu en jouant le 2026-08-30, reposent sur le **chiffre
+ecrit dans la colonne des dizaines**, qui vaut 0 pour 100 et qui est ce qu'un enfant de CP lit.
+Instrument corrige, mesure refaite : 0 desaccord. **Je n'aurais pas du publier le premier chiffre,
+et je dis lequel etait faux plutot que de ne montrer que le second.**
+
+**Ce que le test ne dit pas, et que personne ne doit croire couvert.**
+
+1. **Il encode mes deux symptomes, pas ma propriete.** Ma condition parle de ce que la methode
+   *designe* parmi les propositions servies ; le test parle de deux formes de triplet interdites a
+   deux textes d'indice. L'equivalence est un **resultat**, pas une lecture : elle repose sur
+   `RAN-1`, `RAN-4` et `RAN-4b`, gardees par d'autres tests du meme fichier. **Le jour ou les
+   familles de distracteurs changent, le garde-fou de `RAN-7` cesse de garder `RAN-7` sans qu'aucun
+   test ne rougisse.** C'est un couplage muet, et c'est le seul point qui m'inquiete.
+2. **Il n'a pas de branche par defaut.** Les deux contraintes sont posees par des branches
+   conditionnelles sur le debut de six textes d'indice connus, sans branche finale qui echoue.
+   **Un septieme texte d'indice, ou l'un des six reformule ("Regarde les dizaines."), traverse le
+   test sans qu'aucune assertion ne s'applique**, et le test reste vert. Ma condition, elle,
+   s'applique a tout indice.
+3. **Sa Javadoc justifie les quatre autres textes par une raison qui n'est pas la bonne.** Elle dit
+   qu'ils "ne decrivent aucune position de chiffre et restent valides sur tout triplet". Ce qui les
+   rend surs n'est pas cela : c'est que sous `RAN-1` la bonne reponse commence toujours par le plus
+   petit et finit toujours par le plus grand, et que la famille (a) commence par le plus grand.
+   **Le fait est juste, le motif ecrit ne l'est pas** - et un motif faux dans un garde-fou est ce
+   qui fait qu'on ne voit pas venir le jour ou il cesse de tenir.
+
+**Ce que j'en conclus.** Le test **ne rend pas un verdict etranger a sa propriete** - c'etait le
+risque nomme, et il n'est pas realise. La regle encodee est bien la mienne, et je n'ai pas eu a la
+deplacer pour qu'elle passe. **Je le garde.** Mais il couvre `RAN-7` sur ce paquet-ci et sous ces
+familles-la, pas `RAN-7` en general ; les points 1 et 2 sont a traiter avant de compter la
+propriete comme fermee.
+
+#### Ce que je route
+
+| Suite | Destinataire | Ce que je demande |
+|---|---|---|
+| **`RAN-7` levee. Done pedagogique prononce, sans reserve. La ligne `mathematiques / CP / Nombres et calculs / Comparer et ranger des nombres jusqu'a 100` peut passer a `couvert-valide`** | `camille-po` | Ecrire la matrice. Ce n'est pas moi qui l'ecris. La moitie "comparer" etait deja servie ; ce paquet ferme la moitie "ranger" |
+| **Le test de `RAN-7` : pas de branche par defaut, et couplage muet a `RAN-4` / `RAN-4b`** | `yanis-qa`, `theo-archi` | Deux points, pas un refus du test. Une branche finale qui echoue sur un texte d'indice inconnu ; et dire dans le test que sa suffisance repose sur `RAN-4` / `RAN-4b` |
+| **La Javadoc du test justifie les quatre indices surs par un motif inexact** | `yanis-qa` | Le fait est juste, la raison ecrite ne l'est pas. Ce n'est pas de la Javadoc de style : c'est ce qui fera lire le garde-fou de travers |
+| **Le raccourci de fin de liste, 93,8 % remesures** | `camille-po` | Condition **nouvelle et datee du 2026-08-30**, pour un paquet suivant. Je refuse d'en faire une reserve de ce paquet-ci |
+| **Une date "2026-08-31" ecrite pour des commits du 2026-08-30** | `sofia-sm`, `relecteur-pedagogique` | Dans `cm1-mots-de-liaison.yaml` et dans la demande de reaudit. Le depot est la seule memoire partagee : sa chronologie doit etre celle des commits |
+| **`MNC-1` non couvert, et le `relecteur-pedagogique` n'est pas passe** | `sofia-sm` | Ce Done ne dit rien de la hauteur utile ni de l'orthographe |
