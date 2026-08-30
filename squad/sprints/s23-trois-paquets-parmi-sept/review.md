@@ -155,10 +155,38 @@ porte technique verte. Le cliquet atterrit a **516** sur l'arbre fusionne.
 
 ## Porte pedagogique - nadia-prof
 
-Non prononcee pour les trois paquets neufs de ce sprint. `nadia-prof` n'a pas joue l'increment
-livre ; son activite de ce sprint (`s23-nadia-2`) porte sur l'amendement de conditions de
-specification en amont du developpement, pas sur un audit de Done. La couverture reste a **21/43
-(48,8 %)**, inchangee.
+**Le paragraphe ci-dessous decrivait l'etat du 2026-08-30 au moment de la review, avant l'audit. Il
+est conserve tel quel et corrige par le bloc qui le suit, comme le veut la regle de ce depot : on
+ajoute et on date, on n'efface pas.**
+
+> Non prononcee pour les trois paquets neufs de ce sprint. `nadia-prof` n'a pas joue l'increment
+> livre ; son activite de ce sprint (`s23-nadia-2`) porte sur l'amendement de conditions de
+> specification en amont du developpement, pas sur un audit de Done. La couverture reste a **21/43
+> (48,8 %)**, inchangee.
+
+### Prononcee le 2026-08-30 (branche `s23-nadia-3`), apres avoir joue les quatre jeux
+
+Avis complet et motifs : `squad/sprints/s23-trois-paquets-parmi-sept/avis-nadia-done-pedagogique-s23.md`.
+Les blocs de validation sont dans les fiches de conformite de chaque paquet.
+
+| Paquet | Verdict | Ligne de matrice |
+|---|---|---|
+| `cp-ranger-nombres` (`S23-RAN`) | **REFUSE** - `RAN-7`, cinq items sur 24 dont deux ou l'indice conduit sur un distracteur present a l'ecran | reste `en cours` |
+| `cm1-problemes-etapes` (`S23-ETA`) | **VALIDE SOUS RESERVE** - `ETA-1` a `ETA-10` tenues, trois reserves non bloquantes | **peut passer `couvert-valide`**, sans mention partielle |
+| `cm1-mots-de-liaison` (`S23-LIA`) | **REFUSE** - `LIA-3`, deux distracteurs sur 40 rendent le texte moins bon et non faux | reste `non couvert` |
+| `cm1-problemes-durees` (reaudit) | **VALIDE SOUS RESERVE, maintenu** - quatre reserves levees sur cinq, reserve D non levee | reste `couvert-valide` |
+
+**Un seul Done neuf sur trois paquets neufs.** Sous reserve de l'ecriture de la matrice par
+`camille-po`, qui seule la tient, la couverture passerait de **21/43** a **22/43 (51,2 %)**. Je ne
+l'ecris pas moi-meme.
+
+**Les deux refus portent sur les deux seules conditions de leur paquet qu'aucun calcul ne juge**, et
+la porte technique etait verte sur les deux. Toutes les conditions calculables des trois paquets
+sont tenues, y compris les trois que j'avais amendees en cours de sprint (`ETA-4b`, `RAN-4b`,
+`RAN-5b`), recomptees par moi sur les populations entieres.
+
+**Le `relecteur-pedagogique` n'est pas passe sur ce sprint** : l'orthographe, l'accentuation et la
+ponctuation de ces trois paquets ne sont pas jugees par ces verdicts (`DEC-0056`).
 
 ## Ce que ce document ne fait pas
 
