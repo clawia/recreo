@@ -72,8 +72,8 @@ items:
     bonneReponse: "un incendie"
     distracteurs: ["un chat coincé", "une fuite d'eau"]
     indice: "Repense à ce qui sort de la fenêtre du deuxième étage."
-  - enonce: "Que contient probablement ce carton ?"  # COMP-3 : étiquette « Cuisine » + odeur de pain chaud -> produits de boulangerie
-    texteSupport: "Le facteur dépose un grand carton devant la porte des Dupont, marqué d'une étiquette jaune « Cuisine ». Une bonne odeur de pain chaud s'échappe du carton pendant qu'il repart."
+  - enonce: "Que contient probablement ce carton ?"  # COMP-3 : étiquette « Cuisine » + odeur de pain chaud -> produits de boulangerie
+    texteSupport: "Le facteur dépose un grand carton devant la porte des Dupont, marqué d'une étiquette jaune « Cuisine ». Une bonne odeur de pain chaud s'échappe du carton pendant qu'il repart."
     bonneReponse: "des produits de boulangerie"
     distracteurs: ["des jouets pour enfants", "des outils de jardinage"]
     indice: "Relie l'étiquette du carton à l'odeur qui s'en échappe."

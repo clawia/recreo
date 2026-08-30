@@ -34,6 +34,7 @@
     <archunit.version>1.5.0</archunit.version>
     <jsoup.version>1.23.1</jsoup.version>
     <nashorn.version>15.7</nashorn.version>
+    <french-pos-dict.version>0.7</french-pos-dict.version>
     <maven-toolchains-plugin.version>3.2.0</maven-toolchains-plugin.version>
     <maven-enforcer-plugin.version>3.6.3</maven-enforcer-plugin.version>
   </properties>
@@ -144,6 +145,18 @@
         <groupId>org.openjdk.nashorn</groupId>
         <artifactId>nashorn-core</artifactId>
         <version>${nashorn.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <!--
+        ADR-0065 : lexique morphologique francais, portee test uniquement - il ne rejoint jamais le
+        fat jar. C'est la seule source d'orthographe que ce depot n'ecrit pas lui-meme, et le motif
+        est mesure : 78 pour cent des formes accentuees du contenu servi n'apparaissent que dans un
+        seul paquet, un critere derive du corpus ne juge donc que sa coherence interne (ADR-0045).
+      -->
+      <dependency>
+        <groupId>org.languagetool</groupId>
+        <artifactId>french-pos-dict</artifactId>
+        <version>${french-pos-dict.version}</version>
         <scope>test</scope>
       </dependency>
     </dependencies>

@@ -1,0 +1,109 @@
+schema: 1
+id: cm1-multiplications-divisions-10-100
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CM1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - multiplications et divisions simples (multiples de 10, 100)"
+items:
+  - enonce: "305 × 10 = ?"
+    bonneReponse: "3 050"
+    distracteurs: ["305", "30 500"]
+    indice: "Multiplier par 10, c'est ecrire un zero de plus a droite du nombre."
+  - enonce: "9 × 10 = ?"
+    bonneReponse: "90"
+    distracteurs: ["9", "900"]
+    indice: "Multiplier par 10, c'est ecrire un zero de plus a droite du nombre."
+  - enonce: "2 050 × 10 = ?"
+    bonneReponse: "20 500"
+    distracteurs: ["205", "205 000"]
+    indice: "Multiplier par 10, c'est ecrire un zero de plus a droite du nombre."
+  - enonce: "630 × 10 = ?"
+    bonneReponse: "6 300"
+    distracteurs: ["63", "630"]
+    indice: "Multiplier par 10, c'est ecrire un zero de plus a droite du nombre."
+  - enonce: "180 × 10 = ?"
+    bonneReponse: "1 800"
+    distracteurs: ["18", "180"]
+    indice: "Multiplier par 10, c'est ecrire un zero de plus a droite du nombre."
+  - enonce: "2 400 × 10 = ?"
+    bonneReponse: "24 000"
+    distracteurs: ["240", "2 400"]
+    indice: "Multiplier par 10, c'est ecrire un zero de plus a droite du nombre."
+  - enonce: "2 007 × 100 = ?"
+    bonneReponse: "200 700"
+    distracteurs: ["2 007", "20 070"]
+    indice: "Multiplier par 100, c'est ecrire deux zeros de plus a droite du nombre."
+  - enonce: "7 × 100 = ?"
+    bonneReponse: "700"
+    distracteurs: ["7", "70"]
+    indice: "Multiplier par 100, c'est ecrire deux zeros de plus a droite du nombre."
+  - enonce: "340 × 100 = ?"
+    bonneReponse: "34 000"
+    distracteurs: ["34", "3 400"]
+    indice: "Multiplier par 100, c'est ecrire deux zeros de plus a droite du nombre."
+  - enonce: "1 250 × 100 = ?"
+    bonneReponse: "125 000"
+    distracteurs: ["125", "12 500"]
+    indice: "Multiplier par 100, c'est ecrire deux zeros de plus a droite du nombre."
+  - enonce: "60 × 100 = ?"
+    bonneReponse: "6 000"
+    distracteurs: ["6", "600"]
+    indice: "Multiplier par 100, c'est ecrire deux zeros de plus a droite du nombre."
+  - enonce: "8 100 × 100 = ?"
+    bonneReponse: "810 000"
+    distracteurs: ["810", "81 000"]
+    indice: "Multiplier par 100, c'est ecrire deux zeros de plus a droite du nombre."
+  - enonce: "9 020 ÷ 10 = ?"
+    bonneReponse: "902"
+    distracteurs: ["9 020", "90 200"]
+    indice: "Diviser par 10, c'est enlever un zero a droite du nombre."
+  - enonce: "4 800 ÷ 10 = ?"
+    bonneReponse: "480"
+    distracteurs: ["48", "48 000"]
+    indice: "Diviser par 10, c'est enlever un zero a droite du nombre."
+  - enonce: "9 200 ÷ 10 = ?"
+    bonneReponse: "920"
+    distracteurs: ["92", "92 000"]
+    indice: "Diviser par 10, c'est enlever un zero a droite du nombre."
+  - enonce: "2 600 ÷ 10 = ?"
+    bonneReponse: "260"
+    distracteurs: ["26", "26 000"]
+    indice: "Diviser par 10, c'est enlever un zero a droite du nombre."
+  - enonce: "7 500 ÷ 10 = ?"
+    bonneReponse: "750"
+    distracteurs: ["75", "75 000"]
+    indice: "Diviser par 10, c'est enlever un zero a droite du nombre."
+  - enonce: "3 900 ÷ 10 = ?"
+    bonneReponse: "390"
+    distracteurs: ["39", "39 000"]
+    indice: "Diviser par 10, c'est enlever un zero a droite du nombre."
+  - enonce: "3 400 ÷ 100 = ?"
+    bonneReponse: "34"
+    distracteurs: ["340", "34 000"]
+    indice: "Diviser par 100, c'est enlever deux zeros a droite du nombre."
+  - enonce: "7 800 ÷ 100 = ?"
+    bonneReponse: "78"
+    distracteurs: ["780", "78 000"]
+    indice: "Diviser par 100, c'est enlever deux zeros a droite du nombre."
+  - enonce: "6 300 ÷ 100 = ?"
+    bonneReponse: "63"
+    distracteurs: ["630", "63 000"]
+    indice: "Diviser par 100, c'est enlever deux zeros a droite du nombre."
+  - enonce: "9 100 ÷ 100 = ?"
+    bonneReponse: "91"
+    distracteurs: ["910", "91 000"]
+    indice: "Diviser par 100, c'est enlever deux zeros a droite du nombre."
+  - enonce: "2 500 ÷ 100 = ?"
+    bonneReponse: "25"
+    distracteurs: ["250", "25 000"]
+    indice: "Diviser par 100, c'est enlever deux zeros a droite du nombre."
+  - enonce: "5 600 ÷ 100 = ?"
+    bonneReponse: "56"
+    distracteurs: ["560", "56 000"]
+    indice: "Diviser par 100, c'est enlever deux zeros a droite du nombre."
+  - enonce: "8 200 ÷ 100 = ?"
+    bonneReponse: "82"
+    distracteurs: ["820", "82 000"]
+    indice: "Diviser par 100, c'est enlever deux zeros a droite du nombre."

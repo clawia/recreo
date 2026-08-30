@@ -106,7 +106,7 @@ class LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest {
     private static final List<Pattern> NOTATIONS = List.of(CONTRE_BARRE, ENTITE_HTML, POINT_DE_CODE);
 
     /** Un texte tel que l'enfant le recoit, avec l'origine qui l'a produit (pour le message). */
-    private record TexteServi(String paquet, String champ, String enonceDeLItem, String valeur) {
+    record TexteServi(String paquet, String champ, String enonceDeLItem, String valeur) {
 
         String origine() {
             return "paquet " + paquet + ", item \"" + enonceDeLItem + "\", champ " + champ;
@@ -175,6 +175,15 @@ class LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest {
                         textes.add(new TexteServi(paquet, "indice", item.enonce(), indice)));
                 item.explication().ifPresent(explication ->
                         textes.add(new TexteServi(paquet, "explication", item.enonce(), explication)));
+                // s23 : deux champs lus par l'enfant que ce perimetre ne ramassait pas. texteSupport
+                // (ADR-0050, s22) est le plus long texte servi du depot ; partDesignee (ADR-0062) est
+                // le fragment de l'enonce que l'ecran met en evidence. Les deux traversaient les deux
+                // clauses de ce garde-fou sans etre lus - un perimetre qui a cesse de suivre son objet
+                // quand l'objet s'est etendu.
+                item.texteSupport().ifPresent(texte ->
+                        textes.add(new TexteServi(paquet, "texteSupport", item.enonce(), texte)));
+                item.partDesignee().ifPresent(part ->
+                        textes.add(new TexteServi(paquet, "partDesignee", item.enonce(), part)));
             }
         }
         return textes;
