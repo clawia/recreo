@@ -831,3 +831,136 @@ tiennent entierement en mots, ce que j'ai verifie forme par forme en les ecrivan
 **Presque rien.** `FRA-1` a `FRA-7` et `FRA-9` sont calculables a partir du fichier. **Ce paquet
 n'est pas du type `COMP-2`** et ne consomme pas ma condition d'au plus un par sprint. Je garde
 `FRA-8` et le jugement de niveau.
+
+---
+
+## 9. Ce que ces huit reponses rendent reellement ouvrable, et ce qu'elles ne rendent pas ouvrable
+
+### 9.1 Le compte, avec sa methode
+
+**Methode** : je compte un candidat comme "ouvrable" quand il ne lui manque, apres mon arbitrage,
+**que du contenu a ecrire** - ni mecanique, ni architecture, ni decision d'utilisatrice, ni jugement
+que je n'aurais pas rendu. *Perimetre : les huit candidats de `DEC-0057` section 2, plus la moitie
+"notion de fraction simple" que le refus 8 rend explicite.*
+
+| | Candidats | Ouvrables |
+|---|---|---|
+| Contenu seul, acceptes sous conditions | `RAN`, `ETA`, `NAR`, `PLU`, `SUB`, `LIA` | **6** |
+| Niveau 2, refuses | `cp-premiere-lettre`, `cm1-compare` | 0 |
+| Part servable nommee dans un refus | `FRA` (moitie "notion") | **1** |
+| **Total** | | **7** |
+
+**Sept paquets sont ouvrables. La borne de capacite de s23 est de trois.** L'ecart n'est pas un
+probleme : c'est **une reserve de quatre paquets deja arbitres pour s24**, la premiere depuis s19,
+et c'est exactement ce que `DEC-0057` cherchait a produire en posant ces questions a l'ouverture
+plutot qu'a la cloture.
+
+### 9.2 Ce qui borne s23 en plus de la capacite : ma propre condition 3
+
+**Trois des sept portent une propriete du type de `COMP-2`** - `NAR-6`, `SUB-6` et `LIA-3` : elles
+se verifient item par item, aucun automate ne les voit, et ce sont elles qui coutent. Ma condition
+d'**au plus un paquet de ce type par sprint** tient telle quelle.
+
+**Ce que cela donne concretement pour s23, et c'est la reponse a la question de `camille-po` :**
+
+- **trois paquets au plus**, la borne de capacite etant inchangee tant que le garde-fou
+  d'accentuation n'existe pas (`s23-theo` ne porte aucun commit au moment ou j'ecris) ;
+- **au plus un** de ces trois est pris parmi `NAR`, `SUB`, `LIA` ;
+- les deux autres sont pris librement parmi `RAN`, `ETA`, `PLU`, `FRA`, qui sont tous les quatre
+  hors du type `COMP-2`.
+
+**Il y a donc au moins quatre combinaisons de trois paquets qui respectent toutes mes conditions.**
+Le choix entre elles est de `camille-po` et de `sofia-sm`, pas de moi : je n'ai aucune preference
+pedagogique entre ces sept lignes, et je ne priorise pas.
+
+**Si `theo-archi` livre le garde-fou d'accentuation pendant le sprint**, la borne peut monter a
+quatre ou cinq comme je l'ai ecrit le 2026-08-30, **sans que la condition 3 bouge** : un quatrieme
+et un cinquieme paquet seraient pris parmi `RAN`, `ETA`, `PLU`, `FRA`, jamais parmi les trois du
+type `COMP-2`.
+
+### 9.3 Le declencheur du mur de la mecanique unique **ne se produit pas**
+
+`DEC-0053` section 7.4 et `DEC-0057` section 7 le definissent ainsi : *moins de trois des six
+candidats survivent comme contenu seul une fois arbitres*. **Six sur six survivent, plus une part
+servable degagee d'un refus.** Le declencheur n'est pas atteint, ni de peu ni de justesse.
+
+**Cela ne repond pas a la question posee a l'utilisatrice et je ne pretends pas le faire** :
+`DEC-0057` section 7 lui demande le **moment** d'ouvrir la mecanique de saisie, et mon arbitrage ne
+fait que reporter l'echeance de deux sprints environ (sept paquets a trois par sprint). La question
+de fond - onze conditions pedagogiques et une architecture deja ecrites, zero ligne de code - reste
+entiere et reste la sienne.
+
+### 9.4 Pourquoi 6 sur 6 aujourd'hui contre 0 sur 4 dans l'historique, et pourquoi ce n'est pas de la complaisance
+
+`DEC-0057` nomme le risque avec son chiffre : *sur les quatre lignes que `DEC-0030` avait pensees
+"contenu seul", les quatre ont ete redirigees une fois l'arbitrage rendu*. **Je dois expliquer
+pourquoi je ne reproduis pas ce taux, faute de quoi mon verdict ressemblerait a une porte qui
+s'ouvre parce que la reserve est vide.**
+
+*Verification faite ligne par ligne sur les quatre redirections historiques :*
+
+| Ligne redirigee | Vers quoi | Ce qui lui manquait |
+|---|---|---|
+| Denombrer jusqu'a 100 | manipulation reelle | **un geste** : deplacer, marquer, grouper une collection |
+| Figures planes | item visuel | **un dessin** : une forme rendue |
+| Decoder par assemblage syllabique | item audio | **un son** : une voix humaine |
+| Relire et corriger son texte | `non couvrable en l'etat` | **une production** : un texte ecrit par l'enfant |
+
+**Les quatre avaient en commun d'exiger quelque chose que "presser une proposition parmi trois" ne
+fait pas** : un geste, un dessin, un son, une production. **Les six candidats d'aujourd'hui n'en
+exigent aucun** : ranger trois nombres, resoudre un probleme a deux etapes, repondre a une question
+sur deux phrases affichees, choisir une forme du pluriel, dire a qui renvoie un pronom, choisir un
+mot de liaison - **les six se lisent et se pressent**, et vingt et une lignes deja validees le
+prouvent sur ce meme geste.
+
+**Le taux de 0 sur 4 ne dit pas que mes arbitrages refusent souvent ; il dit que `DEC-0030` avait
+mal classe quatre lignes.** Ce n'est pas le meme fait, et le confondre aurait conduit soit a une
+prevision fausse, soit - plus grave - a me faire refuser un candidat pour tenir une statistique.
+
+**Et les deux candidats de niveau 2, eux, sont refuses tous les deux.** C'est la meilleure preuve
+que je puisse donner que la porte n'est pas devenue un tampon : ils venaient de la meme demande, le
+meme jour, avec la meme pression de reserve vide, et l'un des deux comporte trois erreurs
+factuelles.
+
+### 9.5 Ce sur quoi je reste la seule garde, recapitule pour que personne ne croie couvert ce qui ne l'est pas
+
+| Propriete | Paquets concernes | Garde-fou possible ? |
+|---|---|---|
+| **Texte masque, la question ne se repond pas** (`NAR-6`, `SUB-6`) | `NAR`, `SUB` | **Non. Jamais.** C'est `COMP-2`, l'auteur de `S17-2` l'a etabli et s22 l'a confirme sur trois items sur vingt |
+| **Un distracteur rend le texte faux, pas seulement moins bon** (`LIA-3`) | `LIA` | **Non.** Jugement de langue |
+| **Accord en genre et en nombre d'un groupe nominal** (`SUB-4`, `SUB-5`) | `SUB` | Non en l'etat : il faudrait un lexique morphologique, que ce depot n'a pas |
+| **Les trois propositions figurent dans le texte** (`NAR-5`) | `NAR` | **Oui**, par un test de la forme de `aucuneCompositionNeRecopieUnMotDuTexteSupport`, assertion retournee |
+| **Distracteurs derives** (`RAN-4`, `ETA-4`, `PLU-4`, `FRA-5`) | `RAN`, `ETA`, `PLU`, `FRA` | **Oui**, des lors que le fichier declare sa derivation |
+| **Rangs, comptes, longueurs, populations fermees** | tous | **Oui**, tous calculables |
+| **Presupposes sociaux et roles de genre** (`ETA-8`, `NAR-7`, `NAR-8`, `SUB-8`, `FRA-8`) | tous | **Non.** Aucun automate ne voit un presuppose |
+| **Orthographe, accentuation, ponctuation** | tous | **Ce n'est plus ma porte** : `DEC-0056`, `relecteur-pedagogique` |
+
+## 10. Ce que je route
+
+| Suite | Destinataire | Ce que je demande |
+|---|---|---|
+| **Six candidats acceptes sous conditions, plus `FRA`** | `camille-po` | En faire du backlog. Les conditions sont ecrites pour etre reprises telles quelles dans les criteres de story |
+| **Sept paquets ouvrables, borne a trois, au plus un du type `COMP-2`** | `camille-po`, `sofia-sm` | La composition du lot de s23 leur appartient ; je n'ai aucune preference entre les sept lignes |
+| **`cp-premiere-lettre.yml` refuse - la ligne "Identifier un son" est bloquee sur une source de voix humaine** | `camille-po`, puis l'utilisatrice | Ligne **hors d'atteinte**, pas differee, tant que la source n'est pas tranchee |
+| **Question sur le referentiel : "Identifier un son (phoneme)" et "Associer les graphemes aux phonemes" sont-elles deux competences distinctes ?** | `camille-po`, par `sofia-sm` | De sa reponse depend l'existence d'une part non sonore servable. Je n'arbitre pas contre un referentiel dont je ne sais pas ce qu'il veut dire sur ce point |
+| **`cm1-compare.yml` refuse - la ligne fraction est differee, pas hors d'atteinte** | `camille-po` | Il n'y manque qu'un contenu, arbitre en 8bis |
+| **`DEC-0057` cite "section 2" pour le refus du proxy de fraction ; c'est la section 1, "Proxy 2"** | `camille-po` | Une reference qui pointe a cote se recopie |
+| **Le declencheur du mur de la mecanique unique ne se produit pas** | `sofia-sm`, pour le portage a l'utilisatrice | Sept paquets a trois par sprint reportent l'echeance d'environ deux sprints. La question du **moment** d'ouvrir la saisie reste entiere |
+| **Le garde-fou d'accentuation n'existe pas ; ma condition 1 n'est pas remplie** | `theo-archi` | Je confirme la borne de trois de `camille-po`. Je veux aussi savoir **ce que ce garde-fou ne verrait pas**, avant de compter dessus |
+| **`NAR-5` est automatisable par un test existant, assertion retournee** | `yanis-qa`, `theo-archi` | Pas dans le meme lot si cela coute ; je dis qu'il est possible, pas qu'il est urgent |
+
+## 11. Ce que ce document ne fait pas
+
+- **Il ne prononce aucun Done pedagogique.** Aucun des sept paquets n'existe ; ces conditions sont a
+  verifier a l'audit, et un paquet qui les tiendrait toutes peut encore etre refuse sur ce que je
+  verrai en jouant - c'est arrive trois fois a s22.
+- **Il ne fait bouger aucune ligne de `squad/programme/MATRICE-couverture.md`** et n'en ecrit
+  aucune : c'est `camille-po`.
+- **Il n'ouvre aucune story et ne priorise rien.**
+- **Il ne tranche aucune question technique** : le portage des textes-supports, la forme des
+  fichiers, les garde-fous possibles sont a `theo-archi` et `yanis-qa`.
+- **Il ne corrige ni l'orthographe, ni l'accentuation, ni la ponctuation** d'aucun texte, y compris
+  destine a l'enfant : `DEC-0056`, `relecteur-pedagogique`.
+- **Il n'efface aucun verdict anterieur.** Les deux refus du jour s'ajoutent ; le refus du proxy de
+  fraction du 2026-08-14 reste lisible tel qu'il a ete ecrit, et mon avis de fond sur le reperage
+  sur une droite numerique est inchange.
