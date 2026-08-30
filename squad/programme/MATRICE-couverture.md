@@ -80,7 +80,7 @@ Source : `squad/programme/mathematiques/competences-cp.md`.
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
 | mathematiques | CP | Nombres et calculs | Denombrer, lire, ecrire et decomposer les nombres jusqu'a 100 | - | - | non couvert |
-| mathematiques | CP | Nombres et calculs | Comparer et ranger des nombres jusqu'a 100 (<, >, =) | bandit-manchot-comparer-nombres-cp | bandit manchot | en cours |
+| mathematiques | CP | Nombres et calculs | Comparer et ranger des nombres jusqu'a 100 (<, >, =) | bandit-manchot-comparer-nombres-cp, cp-ranger-nombres | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Calcul mental - additions dans la limite de 10 (puis 20) | bandit-manchot-additions-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | bandit-manchot-soustractions-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp | bandit manchot | couvert-valide |
@@ -146,6 +146,16 @@ dise, pour que la matrice ne perde pas une information que la fiche detient : **
 manque encore.** Aucun statut autre que `en cours` n'existe dans la nomenclature de cette matrice
 pour porter cette nuance ; elle est donc ecrite en toutes lettres ici plutot que par un statut
 invente.
+
+**Cette precision est soldee le 2026-08-30 (s23), sans etre effacee : elle disait vrai a sa date, et
+elle ne dit plus rien aujourd'hui.** `cp-ranger-nombres` (`S23-RAN`), un second jeu sur la meme
+mecanique, couvre desormais la moitie "ranger" que `bandit-manchot-comparer-nombres-cp` ne couvrait
+pas - `nadia-prof` prononce **VALIDE**, sans reserve, le 2026-08-30 (reaudit apres levee de
+`RAN-7`, `squad/conformite/FICHE-bandit-manchot-ranger-nombres-cp.md`). La phrase "le 'ranger' [...]
+reste hors du perimetre de ce jeu" ci-dessus reste exacte : elle parlait du seul jeu de comparaison,
+qui n'a pas change. Ce qui a change est qu'un second jeu existe. La ligne passe `en cours` ->
+`couvert-valide`, colonne "Jeu(x) couvrant" portant desormais les deux noms. Detail complet dans
+l'amendement du 2026-08-30 (s23, en cours) en bas de fichier.
 
 Note sur les lignes `en cours` (soustractions, complements a 10, problemes) : `DEC-0019` les ouvre
 au sprint 9 sur `docs/backlog/backlog.md`, stories S9-1, S9-2, S9-4, chacune sur un contenu neuf en
@@ -2551,6 +2561,60 @@ compte de lignes `couvert-valide` passe de **21** a **22**. **21/43 (48,8 %) dev
 le reaudit de `nadia-prof` sur ce meme paquet le maintient (`VALIDE SOUS RESERVE, maintenu`), quatre
 reserves non bloquantes levees, une (reserve D) non levee et non bloquante ; aucune ligne n'en
 depend, voir `docs/backlog/backlog.md`, section "Sprint 23", pour le detail des reserves.
+
+**Ce que ce document ne fait pas.** Il ne prononce aucun Done pedagogique lui-meme et ne fait
+bouger aucune autre ligne que celle nommee ci-dessus.
+
+## Amendement du 2026-08-30 (s23, en cours, reaudit) - `RAN-7` levee, "Comparer et ranger des nombres jusqu'a 100" passe `couvert-valide`, 23/43 (53,5 %) ; `LIA` refusee une seconde fois, `ETA` maintenue
+
+`nadia-prof` a reaudite le 2026-08-30 (branche `s23-nadia-4`, non fusionnee) trois paquets corriges
+depuis son premier verdict : `cp-ranger-nombres`, `cm1-mots-de-liaison`, `cm1-problemes-etapes`.
+Detail complet, motifs et methodes de mesure : les blocs de reaudit des trois
+`squad/conformite/FICHE-bandit-manchot-*.md` correspondantes, et l'amendement du meme jour a
+`squad/sprints/s23-trois-paquets-parmi-sept/avis-nadia-done-pedagogique-s23.md`.
+
+**Une ligne bouge.**
+
+- **"Comparer et ranger des nombres jusqu'a 100 (`<`, `>`, `=`)"** (mathematiques CP, `S23-RAN`) :
+  `en cours` -> `couvert-valide`. `nadia-prof` prononce **VALIDE, sans reserve** sur
+  `cp-ranger-nombres` (`RAN-7` levee, cinq indices reapparies, verifiee sur les 24 items et par un
+  garde-fou qu'elle a elle-meme confronte a 487 080 couples). Cette ligne portait, depuis le
+  sprint 9, une precision disant que "ranger" restait hors du perimetre du jeu qui la couvrait
+  alors (`bandit-manchot-comparer-nombres-cp`) : **cette precision ne disait pas autre chose que ce
+  qu'elle disait a sa date, et elle est desormais soldee** (voir la note ajoutee au 2026-08-30 dans
+  la section "Mathematiques - CP" ci-dessus, juste apres le texte d'origine, qui reste lisible).
+  Ce n'est pas le jeu de comparaison qui s'est etendu ; c'est un second jeu, `cp-ranger-nombres`, qui
+  couvre desormais la moitie manquante. La colonne "Jeu(x) couvrant" porte donc les deux noms.
+
+**Deux paquets ne font bouger aucune ligne.**
+
+- **`cm1-mots-de-liaison` (`S23-LIA`)** : `nadia-prof` ferme son premier motif (items 3 et 18) et
+  en ouvre un second, sur un troisieme item (item 10, distracteur `mais`) qu'elle n'avait pas vu au
+  premier audit. **REFUSE**, second refus. La ligne "Utiliser a bon escient des mots de liaison
+  simples pour structurer un texte court" (francais CM1) **reste `non couvert`**.
+- **`cm1-problemes-etapes` (`S23-ETA`)** : **VALIDE SOUS RESERVE (maintenu)**. Les reserves A, B et
+  C du premier verdict sont levees ; deux reserves nouvelles s'ouvrent (D : trois indices nomment un
+  evenement que le correctif a retire de leur enonce ; E : la reserve C d'origine ne nommait que
+  deux des six items portant la meme ambiguite). La ligne "Resoudre des problemes a plusieurs
+  etapes mobilisant les 4 operations" (mathematiques CM1) **reste `couvert-valide`**, sans mention
+  de couverture partielle - le Done du 2026-08-30 n'est ni etendu ni retire par ce reaudit.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide | non couvrable en l'etat |
+|---|---|---|---|---|---|
+| mathematiques CP | 11 | 5 | 0 | 6 | 0 |
+| mathematiques CM1 | 12 | 3 | 0 | 7 | 2 |
+| francais CP | 12 | 7 | 1 | 3 | 1 |
+| francais CM1 | 12 | 4 | 0 | 7 | 1 |
+| **Total** | **47** | **19** | **1** | **23** | **4** |
+
+**Le chiffre, avec sa base, verifie ligne par ligne contre les quatre tableaux de matiere de cette
+matrice avant d'etre ecrit (2026-08-30), pas repris d'un autre document du depot.** Le denominateur
+atteignable reste **43** sur **47**, inchange. Le compte de lignes `couvert-valide` passe de **22**
+a **23**. **22/43 (51,2 %) devient 23/43 (53,5 %)**.
+
+**Ce que ce mouvement fait, et pas plus.** Il ne prejuge d'aucune correction en cours sur `LIA`
+(second refus, item 10) : la ligne concernee reste `non couvert` jusqu'a un reaudit qui ne la nomme
+plus en defaut. Il ne change rien non plus a `cm1-problemes-durees`, hors perimetre de ce reaudit.
 
 **Ce que ce document ne fait pas.** Il ne prononce aucun Done pedagogique lui-meme et ne fait
 bouger aucune autre ligne que celle nommee ci-dessus.
