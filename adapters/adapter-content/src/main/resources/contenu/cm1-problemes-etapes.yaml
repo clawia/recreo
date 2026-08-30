@@ -48,6 +48,16 @@ descripteur:
 #
 # ETA-9 : l'indice donne la methode de la premiere etape seule, jamais un resultat.
 # ETA-10 : vingt-quatre items.
+#
+# Correctifs du 2026-08-30 (VALIDE SOUS RESERVE de nadia-prof,
+# FICHE-bandit-manchot-problemes-etapes-cm1.md), les trois non bloquants mais fermes ici :
+# reserve A, item 17 breche ETA-3 d'un jeton (31 mots, le "?" compte comme un mot des qu'il
+# est separe du precedent par une espace insecable) - un mot retire, sans toucher les nombres ;
+# reserve B, la famille (c) des items 22 a 24 reposait sur un verbe de sortie de stock sans
+# ambiguite ("distribue", "retire", "vend") plutot que sur une melecture reelle - remplaces par
+# "perd", du meme genre que l'item 21 deja juge bon ; reserve C, "3 ateliers"/"4 ecoles" sur les
+# items 6 et 7 se lisait de deux facons - precise par "celui-ci compris"/"celle-ci comprise".
+# Aucun nombre, aucune famille de distracteur, aucun rang ETA-7 ne change : verifie par le test.
 items:
   - enonce: "La bibliothèque de l'école reçoit 24 romans et 18 bandes dessinées. Elle en prête ensuite 30. Combien de livres lui reste-t-il ?"  # ETA-4b: add,sub,a+b
     bonneReponse: "12"
@@ -69,11 +79,11 @@ items:
     bonneReponse: "64"
     distracteurs: ["32", "16"]
     indice: "Additionne d'abord les médailles préparées pour les deux catégories."
-  - enonce: "L'atelier de poterie fabrique 75 bols, dont 18 sont abîmés. 3 ateliers fabriquent chacun ce même nombre de bols réussis. Combien de bols réussis obtient-on en tout ?"  # ETA-4b: sub,mul,a+b
+  - enonce: "L'atelier de poterie fabrique 75 bols, dont 18 sont abîmés. 3 ateliers, celui-ci compris, fabriquent chacun ce même nombre de bols réussis. Combien de bols réussis obtient-on en tout ?"  # ETA-4b: sub,mul,a+b
     bonneReponse: "171"
     distracteurs: ["57", "19"]
     indice: "Soustrais d'abord les bols abîmés du total fabriqué."
-  - enonce: "L'atelier de couture prépare 50 coussins, dont 10 sont refusés. 4 écoles préparent chacune ce même nombre de coussins réussis. Combien de coussins réussis obtient-on en tout ?"  # ETA-4b: sub,mul,a+b
+  - enonce: "L'atelier de couture prépare 50 coussins, dont 10 sont refusés. 4 écoles, celle-ci comprise, préparent chacune ce même nombre de coussins réussis. Combien de coussins réussis obtient-on en tout ?"  # ETA-4b: sub,mul,a+b
     bonneReponse: "160"
     distracteurs: ["40", "10"]
     indice: "Soustrais d'abord les coussins refusés du total préparé."
@@ -113,7 +123,7 @@ items:
     bonneReponse: "12"
     distracteurs: ["22", "32"]
     indice: "Divise d'abord les boîtes également entre les bacs."
-  - enonce: "La classe récolte 40 timbres, puis en reçoit 15 de plus pour une collection commune. Elle en donne ensuite 10 à une autre école. Combien de timbres la classe garde-t-elle ?"  # ETA-4b: add,sub,a+c
+  - enonce: "La classe récolte 40 timbres, puis en reçoit 15 de plus pour une collection commune. Elle en donne ensuite 10 à une école. Combien de timbres la classe garde-t-elle ?"  # ETA-4b: add,sub,a+c
     bonneReponse: "45"
     distracteurs: ["55", "15"]
     indice: "Additionne d'abord les timbres des deux collectes."
@@ -133,15 +143,15 @@ items:
     bonneReponse: "27"
     distracteurs: ["18", "51"]
     indice: "Soustrais d'abord les ballons perdus pendant le tournoi."
-  - enonce: "La réserve a 40 cahiers, en distribue 15 en début d'année. Elle en reçoit ensuite 14 livrés en cours d'année. Combien de cahiers reste-t-il dans la réserve ?"  # ETA-4b: sub,add,a+c
+  - enonce: "La réserve a 40 cahiers, en perd 15 en début d'année. Elle en reçoit ensuite 14 livrés en cours d'année. Combien de cahiers reste-t-il dans la réserve ?"  # ETA-4b: sub,add,a+c
     bonneReponse: "39"
     distracteurs: ["25", "69"]
     indice: "Soustrais d'abord les cahiers distribués en début d'année."
-  - enonce: "L'école a 50 chaises, en retire 22 pour une autre activité. Elle en reçoit ensuite 10 prêtées par une classe voisine. Combien de chaises reste-t-il dans la salle ?"  # ETA-4b: sub,add,a+c
+  - enonce: "L'école a 50 chaises, en perd 22 pour une autre activité. Elle en reçoit ensuite 10 prêtées par une classe voisine. Combien de chaises reste-t-il dans la salle ?"  # ETA-4b: sub,add,a+c
     bonneReponse: "38"
     distracteurs: ["28", "82"]
     indice: "Soustrais d'abord les chaises retirées pour l'autre activité."
-  - enonce: "Le magasin scolaire a 35 crayons en rayon, en vend 13 le premier jour. Il en reçoit ensuite 16 livrés le lendemain. Combien de crayons le magasin a-t-il maintenant ?"  # ETA-4b: sub,add,a+c
+  - enonce: "La classe a 35 crayons en réserve, en perd 13 le premier jour. Elle en reçoit ensuite 16 livrés le lendemain. Combien de crayons la classe a-t-elle maintenant ?"  # ETA-4b: sub,add,a+c
     bonneReponse: "38"
     distracteurs: ["22", "64"]
     indice: "Soustrais d'abord les crayons vendus le premier jour."

@@ -231,14 +231,22 @@ class PaquetCm1ProblemesEtapesTest {
                 .isGreaterThanOrEqualTo(seuil);
     }
 
+    /**
+     * ETA-3, decompte corrige le 2026-08-30 (reserve A de nadia-prof,
+     * FICHE-bandit-manchot-problemes-etapes-cm1.md) : le "?" compte comme un mot des qu'il est
+     * separe du precedent par une espace, insecable ou non - c'est la methode de reference
+     * (D-8, cm1-problemes-durees) et c'est elle qui a trouve l'item 17 a 31 mots, la ou une
+     * version precedente de ce test, qui retirait le "?" avant de compter, ne l'aurait jamais vu.
+     */
     @Test
     void chaqueEnonceTientEnAuPlusTrenteMotsEtChaqueIndiceEnAuPlusDouzeSansReveler() {
         for (Question item : tousLesItems()) {
             String enonce = item.enonce();
-            String sansPonctuation = enonce.replace("\u00a0?", "").replace("?", "").replace(".", "")
-                    .replace(",", "").strip();
-            int motsEnonce = sansPonctuation.isEmpty() ? 0 : sansPonctuation.split("\\s+").length;
+            String sansPonctuation = enonce.replace(".", "").replace(",", "").strip();
+            int motsEnonce = sansPonctuation.isEmpty() ? 0
+                    : sansPonctuation.split("[\s ]+").length;
             assertThat(motsEnonce).as("'%s' : au plus trente mots (ETA-3)", enonce).isLessThanOrEqualTo(30);
+
 
             String indice = item.indice().orElseThrow(() -> new AssertionError("indice manquant"));
             int motsIndice = indice.strip().split("\\s+").length;
