@@ -128,6 +128,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S23-RAN (arbitrage prealable s23, RAN-1 a RAN-8) : entree neuve, ranger des
             // nombres jusqu'a 100.
             "bandit-manchot-ranger-nombres-cp",
+            // S23-ETA (arbitrage prealable s23, ETA-1 a ETA-10, ETA-4b) : entree neuve,
+            // problemes a deux etapes mobilisant les quatre operations.
+            "bandit-manchot-problemes-etapes-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -170,6 +173,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis et comprends",
             // S23-RAN : titre neuf.
             "Range les nombres",
+            // S23-ETA : titre neuf.
+            "Les problèmes à deux étapes",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -208,6 +213,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis le texte, puis réponds à la question.",
             // S23-RAN : consigne neuve, fixe le sens croissant pour tout le paquet (RAN-1).
             "Choisis la liste rangée du plus petit au plus grand.",
+            // S23-ETA : consigne neuve.
+            "Lis bien, résous les deux étapes, puis choisis la réponse.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
             // valeur unique pour les jeux du catalogue reel, compte sur catalogue.yaml, pas recopie.
             "bandit-manchot",
@@ -266,7 +273,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Comprendre un texte narratif ou documentaire (questions explicites et implicites, "
                     + "inférences simples)",
             // S23-RAN : competence neuve, moitie "ranger" de la ligne comparer-et-ranger.
-            "Ranger des nombres entiers jusqu'à 100 dans l'ordre croissant");
+            "Ranger des nombres entiers jusqu'à 100 dans l'ordre croissant",
+            // S23-ETA : competence neuve.
+            "Résoudre des problèmes à deux étapes mobilisant les quatre opérations");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

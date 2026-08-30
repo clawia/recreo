@@ -150,3 +150,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-ranger-nombres
     nombreDeManches: 10
+  - id: bandit-manchot-problemes-etapes-cm1
+    titre: "Les problèmes à deux étapes"
+    consigne: "Lis bien, résous les deux étapes, puis choisis la réponse."
+    mecanique: bandit-manchot
+    paquet: cm1-problemes-etapes
+    nombreDeManches: 10
