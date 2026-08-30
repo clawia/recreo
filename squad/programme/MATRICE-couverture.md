@@ -226,7 +226,7 @@ Source : `squad/programme/mathematiques/competences-cm1.md`.
 | mathematiques | CM1 | Nombres et calculs | Effectuer une multiplication posee d'un nombre a 2-3 chiffres par un nombre a 1-2 chiffres | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Effectuer une division euclidienne simple (quotient et reste) par un diviseur a 1 chiffre | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Notion de fraction simple (unites fractionnaires, fractions inferieures a 1) et reperage sur une droite numerique | - | - | non couvert |
-| mathematiques | CM1 | Nombres et calculs | Resoudre des problemes a plusieurs etapes mobilisant les 4 operations | - | - | non couvert |
+| mathematiques | CM1 | Nombres et calculs | Resoudre des problemes a plusieurs etapes mobilisant les 4 operations | bandit-manchot-problemes-etapes-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Grandeurs et mesures | Convertir des unites de longueur, masse, contenance dans le systeme metrique | bandit-manchot-conversions-unites-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Grandeurs et mesures | Calculer un perimetre de figures usuelles (carre, rectangle) | bandit-manchot-perimetre-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Grandeurs et mesures | Resoudre des problemes de durees (calcul d'une duree, d'un horaire d'arrivee) | bandit-manchot-problemes-durees-cm1 | bandit manchot | couvert-valide |
@@ -2502,3 +2502,55 @@ jamais arbitres individuellement, plus deux candidats de niveau 2 de `DEC-0051` 
 et jamais repondus depuis) : `DEC-0057`.
 
 **Aucune ligne de cette matrice ne change de statut par cette note.**
+
+## Amendement du 2026-08-30 (s23, en cours) - `cm1-problemes-etapes` passe `couvert-valide`, 22/43 (51,2 %) ; deux refus, aucune ligne ne bouge sur eux
+
+`nadia-prof` a rendu quatre verdicts le 2026-08-30 (branche `s23-nadia-3`, non fusionnee) : un Done
+pedagogique neuf, deux refus, un reaudit maintenu. Detail complet, motifs et methodes de mesure :
+les blocs de validation des quatre `squad/conformite/FICHE-bandit-manchot-*.md` correspondantes, et
+`squad/sprints/s23-trois-paquets-parmi-sept/avis-nadia-done-pedagogique-s23.md`.
+
+**Une seule ligne bouge.**
+
+- **"Resoudre des problemes a plusieurs etapes mobilisant les 4 operations"** (mathematiques CM1,
+  `S23-ETA`) : `non couvert` -> `couvert-valide`. `nadia-prof` prononce **VALIDE SOUS RESERVE**
+  (trois reserves non bloquantes, aucune bloquante) et l'ecrit elle-meme en toutes lettres :
+  *"`camille-po` peut passer la ligne a `couvert-valide`, sans mention de couverture partielle :
+  'a deux etapes' est le 'plusieurs' du CM1, et c'est exactement ce que le paquet fait."* Contrairement
+  a la ligne des durees (une competence sur trois du meme domaine) ou a celle de comprehension
+  (idem), cette competence est unique dans son domaine : aucune mention de couverture partielle n'y
+  est donc attachee.
+
+**Deux refus ne font bouger aucune ligne**, par construction de la nomenclature de cette matrice
+(un refus n'est pas un Done) :
+
+- **"Comparer et ranger des nombres jusqu'a 100"** (mathematiques CP, `S23-RAN`) : `nadia-prof`
+  refuse sur `RAN-7` (l'indice ne donne pas la methode de son item, cinq items en defaut). La ligne
+  reste `en cours` - la moitie "comparer" y est deja validee depuis le 2026-08-12, seule la moitie
+  "ranger" est concernee par ce refus.
+- **"Utiliser a bon escient des mots de liaison simples pour structurer un texte court"** (francais
+  CM1, `S23-LIA`) : `nadia-prof` refuse sur `LIA-3` (deux distracteurs sur 40 rendent le texte
+  moins bon et non faux). La ligne reste `non couvert`.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide | non couvrable en l'etat |
+|---|---|---|---|---|---|
+| mathematiques CP | 11 | 5 | 1 | 5 | 0 |
+| mathematiques CM1 | 12 | 3 | 0 | 7 | 2 |
+| francais CP | 12 | 7 | 1 | 3 | 1 |
+| francais CM1 | 12 | 4 | 0 | 7 | 1 |
+| **Total** | **47** | **19** | **2** | **22** | **4** |
+
+**Le chiffre, avec sa base, verifie ligne par ligne contre les quatre tableaux de matiere de cette
+matrice avant d'etre ecrit (2026-08-30), pas repris d'un autre document du depot** - `nadia-prof`
+mentionne elle-meme, dans son avis, un mouvement "21/43 vers 22/43" en precisant explicitement que
+ce compte n'est pas le sien. Le denominateur atteignable reste **43** sur **47**, inchange. Le
+compte de lignes `couvert-valide` passe de **21** a **22**. **21/43 (48,8 %) devient 22/43
+(51,2 %)**.
+
+**Ce que ce mouvement fait, et pas plus.** `cm1-problemes-durees` (`S13-3`) reste `couvert-valide` :
+le reaudit de `nadia-prof` sur ce meme paquet le maintient (`VALIDE SOUS RESERVE, maintenu`), quatre
+reserves non bloquantes levees, une (reserve D) non levee et non bloquante ; aucune ligne n'en
+depend, voir `docs/backlog/backlog.md`, section "Sprint 23", pour le detail des reserves.
+
+**Ce que ce document ne fait pas.** Il ne prononce aucun Done pedagogique lui-meme et ne fait
+bouger aucune autre ligne que celle nommee ci-dessus.

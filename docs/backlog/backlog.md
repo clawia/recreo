@@ -6876,3 +6876,289 @@ story de correction ouverte.
   perimetre garanti et le portage a l'utilisatrice de la question du mur de la mecanique unique
   (section 7 de `DEC-0057`) ; `theo-archi` pour le garde-fou d'accentuation et le garde-fou de
   coherence charte ; `lea-dev`/`marc-dev` pour les sept reserves de s22.
+
+## Sprint 23 (en cours, 2026-08-30) - Quatre verdicts de `nadia-prof` : un Done pedagogique, deux
+## refus verses en stories correctives, un reaudit qui ferme quatre reserves de s22 sur cinq
+
+`nadia-prof` a rendu quatre verdicts le 2026-08-30 (branche `s23-nadia-3`, non fusionnee, non
+mesuree comme un lot en attente d'audit) : `cm1-problemes-etapes` (`S23-ETA`) **VALIDE SOUS
+RESERVE**, `cp-ranger-nombres` (`S23-RAN`) **REFUSE**, `cm1-mots-de-liaison` (`S23-LIA`) **REFUSE**,
+et un reaudit de `cm1-problemes-durees` (`S13-3`) **VALIDE SOUS RESERVE (maintenu)**. Detail complet,
+motifs et methodes de mesure : les blocs de validation des quatre
+`squad/conformite/FICHE-bandit-manchot-*.md` correspondantes, et `squad/sprints/s23-trois-paquets-
+parmi-sept/avis-nadia-done-pedagogique-s23.md`. Mouvement de matrice :
+`squad/programme/MATRICE-couverture.md`, amendement du 2026-08-30 (s23, en cours).
+
+### `cp-ranger-nombres` (`S23-RAN`) - REFUSE sur `RAN-7` : l'indice n'est pas choisi pour son item
+
+**Besoin** : en tant qu'eleve de CP qui joue a "Ranger les nombres" et se trompe, je veux que
+l'indice qui m'est propose me guide vraiment vers la bonne reponse, afin de ne pas etre conduit une
+seconde fois vers une reponse fausse par le message meme qui est cense m'aider.
+
+**Competence programme visee** : mathematiques, CP (cycle 2), "Comparer et ranger des nombres
+jusqu'a 100 (`<`, `>`, `=`)" - moitie "ranger" (`squad/programme/mathematiques/competences-cp.md`,
+ligne 10). La moitie "comparer" reste validee depuis le 2026-08-12
+(`FICHE-bandit-manchot-comparer-nombres-cp.md`) ; ce refus ne la concerne pas.
+
+**Ce que cette story ne rouvre pas** : `RAN-1` a `RAN-6` et `RAN-8` sont tenues, recomptees par
+`nadia-prof` sur la population entiere des 24 items. Le contenu numerique du paquet (les triplets,
+les bonnes reponses, les distracteurs) n'est pas en cause et n'est pas a reecrire ; seule
+l'affectation des six indices aux items l'est.
+
+**Criteres d'acceptation**, repris des mots exacts de `nadia-prof`
+(`squad/conformite/FICHE-bandit-manchot-ranger-nombres-cp.md`, "Ce qui rendrait ce refus levable") :
+
+- Etant donne un item du paquet et l'indice qui lui est servi apres une erreur, quand on applique
+  litteralement la methode que l'indice enonce aux trois nombres de cet item, alors elle designe la
+  bonne reponse ou un sous-ensemble strict qui la contient - jamais une proposition fausse presente
+  a l'ecran, jamais les trois propositions a la fois. Verifiable par un tiers, sur les 24 items.
+- Etant donne les six indices deja ecrits dans le fichier, quand on les relit, alors ils restent
+  inchanges : ils sont bons, c'est leur affectation par item qui ne l'est pas.
+- Etant donne les cinq items nommes par `nadia-prof` (16 et 22 pour le defaut grave - l'indice
+  designe le second distracteur, present a l'ecran ; 1, 13 et 19 pour le second - l'indice ne
+  separe rien sur des triplets ou les trois nombres ont le meme nombre de chiffres), quand le
+  paquet corrige est rejoue en se trompant volontairement sur chacun, alors aucun des cinq ne
+  reproduit le defaut nomme.
+- **Ce que cette story ne tranche pas** : le mecanisme d'affectation (regle explicite par item,
+  fonction de choix, autre) - a `marc-dev` et `theo-archi` si un choix technique s'impose.
+- **Ce qui n'est pas testable par un automate et reste sous la garde de `nadia-prof`** : que la
+  methode enoncee par chaque indice reste, en langue, comprehensible par un enfant de CP - `RAN-7`
+  elle-meme n'est verifiable par aucun garde-fou du depot aujourd'hui.
+- **Ce que cette story ne rouvre pas non plus** : le raccourci de fin de liste (93,8 %, voir
+  "Conditions nouvelles" ci-dessous) n'entre pas dans ce refus et n'est pas une condition de levee.
+
+**Porte de sortie** : les criteres testables ci-dessus tenus, `mvn verify` vert, puis reaudit de
+`nadia-prof` sur `FICHE-bandit-manchot-ranger-nombres-cp.md` ne nommant plus `RAN-7` en defaut. La
+ligne de matrice "Comparer et ranger des nombres jusqu'a 100" reste `en cours` jusqu'a ce reaudit.
+
+- **Lien decision** : `DEC-0057` (perimetre de s23) ;
+  `squad/conformite/FICHE-bandit-manchot-ranger-nombres-cp.md`, motif de refus `RAN-7`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; `marc-dev`, auteur du paquet.
+
+### `cm1-mots-de-liaison` (`S23-LIA`) - REFUSE sur `LIA-3` : deux distracteurs sur 40 rendent le texte moins bon, pas faux
+
+**Besoin** : en tant qu'eleve de CM1 qui joue a "Les mots de liaison" et choisis une proposition qui
+rend le texte vrai, je veux que ma reponse soit comptee bonne, afin de ne jamais apprendre que
+j'avais tort quand j'avais raison.
+
+**Competence programme visee** : francais, CM1 (cycle 3), "Utiliser a bon escient des mots de
+liaison simples pour structurer un texte court" (`squad/programme/francais/competences-cm1.md`,
+ligne 32).
+
+**Ce que cette story ne rouvre pas** : `LIA-1`, `LIA-2`, `LIA-4` a `LIA-9` sont tenues, recomptees
+par `nadia-prof` sur la population entiere des 20 items. Trente-huit distracteurs sur 40 tiennent ;
+le paquet n'est pas a reecrire, seuls deux distracteurs le sont.
+
+**Criteres d'acceptation**, repris des mots exacts de `nadia-prof`
+(`squad/conformite/FICHE-bandit-manchot-mots-de-liaison-cm1.md`, "Ce qui rendrait ce refus levable") :
+
+- Etant donne l'item 3 (`"Il a beaucoup revise ses lecons. ___, il a reussi son controle."`), quand
+  le distracteur `puis` est remplace par un mot de la population fermee dont la relation est
+  reellement absente entre les deux phrases (`pourtant` ou `car`, `car` inversant la causalite),
+  alors le texte qu'il produit est un texte qu'un adulte corrigerait, pas un texte qu'il trouverait
+  seulement moins elegant.
+- Etant donne l'item 18 (`"La fusee quitte le sol. ___, elle traverse les nuages."`), quand le
+  distracteur `donc` est remplace par `car` (le decollage n'est pas cause par la traversee des
+  nuages) ou par `mais` (aucune opposition), ou que la seconde phrase est changee pour un evenement
+  qui ne decoule pas du decollage, alors le meme critere est tenu.
+- Etant donne l'item apres remplacement, quand on relit ses trois relations declarees (bonne
+  reponse et deux distracteurs), alors elles restent deux a deux distinctes (`LIA-4` reste tenue).
+- **La frontiere entre "faux" et "moins bon"**, ecrite par `nadia-prof` avec son cas voisin non
+  compte en defaut (item 20, distracteur `donc` : *"atteindre un sommet n'est pas entraine par le
+  fait de longer une riviere, la relation de consequence y est reellement absente"*), est
+  reutilisable par l'auteure sans redemander l'arbitrage a `nadia-prof`.
+- **Ce qui n'est pas testable par un automate et reste sous la garde de `nadia-prof`** : la
+  justesse de la relation declaree face au texte reel, item par item - son auteure l'ecrit
+  elle-meme, aucun automate ne la voit.
+
+**Porte de sortie** : les criteres testables ci-dessus tenus, `mvn verify` vert (y compris le test
+declaratif deja ecrit par `sofia-sm`, qui prouve l'existence et la distinction des relations mais
+pas leur justesse), puis reaudit de `nadia-prof` ne nommant plus `LIA-3` en defaut. La ligne de
+matrice "Utiliser a bon escient des mots de liaison simples..." reste `non couvert` jusqu'a ce
+reaudit ; le jour ou elle bouge, la mention de couverture partielle `LIA-10` deja ecrite par
+`nadia-prof` (*"choix du mot de liaison entre deux ou trois phrases, sans production de texte"*)
+l'accompagne.
+
+- **Lien decision** : `DEC-0057` (perimetre de s23) ;
+  `squad/conformite/FICHE-bandit-manchot-mots-de-liaison-cm1.md`, motif de refus `LIA-3`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; `sofia-sm`, auteure du paquet.
+
+### `cm1-problemes-etapes` (`S23-ETA`) - Done pedagogique prononce, trois reserves non bloquantes versees en stories
+
+`nadia-prof` prononce **VALIDE SOUS RESERVE** le 2026-08-30
+(`squad/conformite/FICHE-bandit-manchot-problemes-etapes-cm1.md`) : *"`camille-po` peut passer la
+ligne a `couvert-valide`, sans mention de couverture partielle"*. Fait dans
+`squad/programme/MATRICE-couverture.md`, amendement du 2026-08-30 (s23, en cours). Trois reserves
+non bloquantes en sortent.
+
+**Besoin commun** : en tant qu'eleve de CM1 qui joue a "Les problemes a plusieurs etapes", je veux
+que l'enonce, ses distracteurs et son commentaire d'auteur soient exacts et sans ambiguite de
+lecture, afin que le jeu reste une tache de calcul et non un exercice de decodage d'une formulation
+piegeuse.
+
+**Competence programme visee** : mathematiques, CM1 (cycle 3), "Resoudre des problemes a plusieurs
+etapes mobilisant les 4 operations" (`squad/programme/mathematiques/competences-cm1.md`, ligne 16).
+
+- **Reserve A - `ETA-3` brechee d'un jeton sur l'item 17** : l'enonce compte 31 mots par le decompte
+  de `ETA-3` (borne : 30), le jeton en trop etant le point d'interrogation ; la charge de lecture
+  reelle est de 30 mots. Critere de levee, dans les mots de `nadia-prof` : retirer un mot a l'enonce
+  de l'item 17. **Cout : une chaine.**
+- **Reserve B - la famille (c) repose sur une melecture mince sur trois items** (22, 23, 24) : les
+  verbes *"distribue"*, *"retire"*, *"vend"* designent sans ambiguite une sortie de stock, et les
+  lire comme une entree n'est pas l'erreur qu'un CM1 commet reellement, contrairement a *"perd"*
+  (item 21) ou *"de plus"* (items 17 a 20). Critere de levee, dans les mots de `nadia-prof` :
+  reformuler le premier enonce de ces trois items avec un verbe dont la melecture est reelle
+  (*"perd"*, *"en donne"*), ou basculer ces items sur (a) + (b) en compensant le rang median
+  ailleurs. **Cout : reconception de contenu sur trois items** ; `ETA-4b` et `ETA-7` doivent rester
+  tenues apres reecriture.
+- **Reserve C - "3 ateliers" se lit de deux facons sur les items 6 et 7** : un enfant peut lire "3
+  ateliers" comme incluant le premier atelier (lecture voulue) ou comme trois autres ateliers.
+  L'item se resout dans les deux cas (la seconde lecture n'a pas de reponse proposee), mais
+  l'enfant qui a fait la seconde lecture ne comprend pas pourquoi il a raison. Critere de levee,
+  dans les mots de `nadia-prof` : ecrire *"l'atelier et deux autres ateliers"*, ou *"chacun des 3
+  ateliers de la ville, celui-ci compris"*. **Cout : deux phrases d'enonce.**
+
+- **Lien decision** : `squad/conformite/FICHE-bandit-manchot-problemes-etapes-cm1.md`, reserves A,
+  B, C ; `squad/programme/MATRICE-couverture.md`, amendement du 2026-08-30 (s23, en cours).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; `marc-dev`, auteur du paquet, pour
+  les reserves A et C ; `nadia-prof` pour confirmer chaque levee. La reserve B reste, par
+  construction, un jugement de `nadia-prof` sur la plausibilite de la melecture apres reecriture -
+  aucun automate ne peut la confirmer seul.
+
+### `cm1-problemes-durees` (`S13-3`, reaudit du 2026-08-30) - quatre reserves fermees sur cinq, la reserve D reste ouverte avec un critere de levee ecrit et date
+
+`nadia-prof` a reaudite le paquet le 2026-08-30, apres le lot de `lea-dev` qui repondait aux cinq
+reserves versees en stories a la cloture de s22 (section "Sprint 22", ci-dessus). Verdict maintenu :
+**VALIDE SOUS RESERVE**, la ligne de matrice "Resoudre des problemes de durees..." reste
+`couvert-valide` sans interruption. Source complete :
+`squad/conformite/FICHE-bandit-manchot-problemes-durees-cm1.md`, bloc "Reaudit - 2026-08-30 (s23)".
+
+**Quatre stories fermees, confirmees par `nadia-prof` sur du contenu reellement rejoue** :
+
+- **Reserve A** - **FERMEE**. Le paquet porte desormais deux ecritures superieures a 59 minutes sur
+  ses 72 propositions (`1 heure 75 minutes`, item 9 ; `2 heures 70 minutes`, item 11) : exactement
+  le critere de levee qui avait ete ecrit. `nadia-prof` nomme neanmoins, en constat neuf et non
+  bloquant, que son propre critere ne fermait pas ce que la reserve visait (l'enfant elimine
+  toujours les deux ecritures a vue) - voir "Conditions nouvelles" ci-dessous.
+- **Reserve B** - **FERMEE**. Les 24 enonces portent une espace insecable devant leur `?`, verifiee
+  par `nadia-prof` sur les octets de la source et sur le HTML servi. **Chiffre reel du catalogue,
+  sur le balisage reellement servi : 14 signes orphelins, pas 17.** Ce 17 est un chiffre
+  intermediaire de l'instrument de mesure de `nadia-prof` (`chercher-un-signe-orphelin.py`), qui
+  enveloppe chaque jeton dans un `<span>` et coupe a l'espace insecable comme a n'importe quelle
+  espace, fabriquant une occasion de coupure que la page reelle n'a pas ; sur ce paquet precis,
+  l'instrument comptait encore 3 orphelins la ou le rendu reel en porte 0. **Je ne recopie pas ce
+  17** - `nadia-prof` le demande explicitement. Le chiffre de **18** date du 2026-08-30 (s22,
+  cloture, `squad/decisions/adr/ADR-0067-...md` et ce meme fichier, reserve B d'origine) **reste
+  exact a sa date** : le paquet portait alors une espace ordinaire et l'occasion de coupure etait
+  reelle. Le chiffre a jour du catalogue, apres la correction de `lea-dev` sur ce paquet, est
+  **14** (`cm1-perimetre` 9, `cp-problemes-additifs` 5, deux paquets qui emploient encore l'espace
+  ordinaire ; `cm1-problemes-durees` 0).
+- **Reserve C** - **FERMEE sur sa lettre**. L'instant `9 h 10` n'est plus coupe entre le nombre et
+  son unite (`9` et `h` sont lies). `nadia-prof` nomme un constat neuf, non bloquant et distinct :
+  la coupure existe toujours ailleurs, entre l'heure et les minutes (`9 h ` / `10.`). Ce n'est pas
+  une reouverture de la reserve C, qui est levee sur ce qu'elle disait.
+- **Reserve E** - **FERMEE**. L'en-tete n'attribue plus *"en classe"* qu'a l'item d'Iris, qui
+  l'ecrit ; l'item de Nour n'est plus concerne.
+
+**Reserve D - reste ouverte, non levee, reduite de 12/12 a 11/12.** Sur les douze items de la forme
+"horaire d'arrivee", le raccourci qu'elle nomme ("ecarter la proposition la plus matinale sans
+calculer") reussissait sur 12 items sur 12 ; il reussit desormais sur 11 sur 12 - un item reecrit
+n'a pas change la structure qui produit le defaut. `nadia-prof` ecrit elle-meme que son critere de
+levee d'origine manquait, et en pose un neuf, date, opposable, qui **remplace** celui ecrit a la
+cloture de s22 (section "Sprint 22" ci-dessus, "reconception de contenu ... au moins un item
+propose une bonne reponse qui est la plus petite") :
+
+> **Critere de levee de la reserve D (2026-08-30, s23).** Sur les 12 items de la forme "horaire
+> d'arrivee", la bonne reponse est la plus petite des trois propositions sur au moins 3 items.
+> Unite de compte : l'item. Il en faut donc deux de plus qu'aujourd'hui, construits comme l'item 15
+> l'a ete - deux distracteurs qui surestiment tous deux l'horaire d'arrivee, a partir des familles
+> d'erreur deja nommees par le fichier, sans en inventer aucune.
+
+**Cout : reconception de contenu sur deux items**, qui doit reverifier `D-6` et `D-7` dans le meme
+geste, exactement comme le critere d'origine le demandait.
+
+- **Lien decision** : `DEC-0053` ;
+  `squad/conformite/FICHE-bandit-manchot-problemes-durees-cm1.md`, bloc de reaudit du 2026-08-30.
+- **Agent pressenti** : `lea-dev` si la reserve D est reprise ; `nadia-prof` pour confirmer.
+
+### Conditions nouvelles et datees du 2026-08-30 - pour un paquet suivant, aucune n'entre dans un refus ni ne rouvre une reserve
+
+- **Raccourci de fin de liste sur les listes rangees** : *"prendre la liste dont le dernier nombre
+  est le plus grand"* gagne 93,8 % de `cp-ranger-nombres` (22,5 / 24, egalites comptees
+  uniformement). `nadia-prof` l'a nomme elle-meme le 2026-08-30 dans son arbitrage prealable et
+  ecrit explicitement qu'elle ne la pose pas aujourd'hui ; elle ne fait pas partie du refus sur
+  `RAN-7`. **Condition candidate pour le prochain paquet de rangement**, a poser par `nadia-prof`
+  au moment de son prochain arbitrage prealable, pas retroactivement sur `cp-ranger-nombres`.
+- **Indice de ponctuation sur les connecteurs a `___` median** : sur `cm1-mots-de-liaison`, cinq
+  distracteurs adverbes (`puis`, `ensuite`, `enfin`, `d'abord`) juxtaposent deux propositions
+  independantes sans virgule quand le blanc est en milieu de phrase, ce qui rend ces items un peu
+  plus faciles a l'oreille qu'a la logique. La ponctuation elle-meme reste hors de la porte
+  pedagogique (`DEC-0056`) ; l'effet sur la difficulte, lui, y est. **Condition candidate pour le
+  prochain paquet de connecteurs.**
+
+### Ce qui reste hors de tout garde-fou technique - route par `nadia-prof` a `yanis-qa` et `theo-archi`, verse ici pour que ce ne soit pas visible seulement dans une fiche
+
+`nadia-prof` le nomme dans son avis (section 8) : `RAN-7`, `LIA-3` et la plausibilite de la famille
+(c) de `S23-ETA` ne sont couvertes par aucun test du depot, et la CI etait verte sur les deux
+paquets refuses. Je ne juge pas ici de la faisabilite d'un garde-fou sur ces trois points - c'est
+une question technique, a `yanis-qa` et `theo-archi`. Je verse le fait au backlog pour qu'un
+prochain sprint qui chercherait "pourquoi une CI verte a laisse passer un refus" le retrouve ici et
+pas seulement dans `squad/conformite/FICHE-bandit-manchot-ranger-nombres-cp.md`,
+`FICHE-bandit-manchot-mots-de-liaison-cm1.md` et `FICHE-bandit-manchot-problemes-etapes-cm1.md`.
+
+- **Lien decision** : aucune - signalement, pas une decision de perimetre.
+- **Agent pressenti** : `yanis-qa`, `theo-archi`.
+
+### Obstacle 8 - outiller les trois etapes calculables de la procedure de specification de `nadia-prof`
+
+**Besoin** : en tant que squad qui ecrit des conditions pedagogiques avant tout contenu, je veux
+qu'une contradiction entre deux conditions calculables (une condition de forme rendant
+insatisfaisable une condition de distribution, ou un raccourci nomme dont le taux de reussite
+depasse ce que la condition tolere) soit detectee avant qu'un contenu ne soit ecrit sur sa base,
+afin qu'une specification impossible ne bloque plus une story une fois le contenu deja produit.
+
+**Competence programme visee** : transverse - pas de contenu pedagogique.
+
+**Ce que cette story ne fait pas** : elle n'automatise aucun jugement pedagogique. `nadia-prof`
+l'ecrit elle-meme (`squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-
+deux-de-niveau-2.md`, section 12.3) : *"elle ne juge que des conditions calculables"* - `ETA-8`,
+`ETA-9`, `RAN-7` et la plausibilite de la famille (c) restent, et resteront, sous sa seule garde.
+
+**Criteres d'acceptation**, repris de la procedure ecrite par `nadia-prof` (section 12.3, points
+1 a 3) :
+
+- Etant donne une condition de forme (comment les propositions d'un item sont construites) et une
+  condition de distribution (une cible chiffree sur la population du paquet), quand on enumere la
+  population que la forme autorise et qu'on y compte la cible de la distribution, alors l'outil
+  rend un verdict "satisfaisable" ou "insatisfaisable" avec le compte trouve - le meme verdict que
+  `nadia-prof` a rendu a la main sur `ETA-4` contre `ETA-7` (insatisfaisable, rang median impossible)
+  et sur `RAN-4b` (satisfaisable, 81 180 triplets retenus).
+- Etant donne une condition dont le motif nomme un raccourci ("un enfant qui fait X gagne sans
+  apprendre"), quand on calcule le taux de reussite de ce raccourci sur la population que la
+  condition laisse passer, alors l'outil rend ce taux avec sa population - le meme calcul que
+  `nadia-prof` a fait a la main sur `RAN-5` (52,4 %) et sur `ETA-4` d'origine (50,0 %).
+- Etant donne un chiffre rendu par l'outil, quand on le compare a un chiffre deja etabli a la main
+  par `nadia-prof` sur un cas cite ci-dessus, alors les deux coincident.
+- **Ce que cette story ne tranche pas** : la forme technique (script autonome, garde-fou de CI,
+  extension d'un outil existant) et l'endroit ou l'outil vit dans le depot - a `theo-archi`.
+
+**Porte de sortie** : les criteres testables ci-dessus tenus, `mvn verify` vert si l'outil entre
+dans le reacteur Maven, puis confirmation de `nadia-prof` que l'outil rend le verdict qu'elle
+rendrait a la main sur au moins les cas cites ci-dessus.
+
+- **Lien decision** : `DEC-0058`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, candidat d'ouverture de s24, au meme
+  rang que `TYP-1` "le moyen" et l'obstacle 25 residuel (`DEC-0057`, section 3.4). `theo-archi` et
+  `yanis-qa` pour la faisabilite et la forme ; `nadia-prof` pour la confirmation finale.
+
+- **Lien decision (section entiere)** : `DEC-0057` ; `DEC-0058` ; `squad/conformite/FICHE-bandit-
+  manchot-ranger-nombres-cp.md` ; `squad/conformite/FICHE-bandit-manchot-mots-de-liaison-cm1.md` ;
+  `squad/conformite/FICHE-bandit-manchot-problemes-etapes-cm1.md` ;
+  `squad/conformite/FICHE-bandit-manchot-problemes-durees-cm1.md`, bloc de reaudit ;
+  `squad/sprints/s23-trois-paquets-parmi-sept/avis-nadia-done-pedagogique-s23.md`.
+- **Agent pressenti (section entiere)** : a affecter au planning par `sofia-sm`. `marc-dev` pour
+  `S23-RAN` (`RAN-7`) et les reserves A et C de `S23-ETA` ; `sofia-sm` pour `S23-LIA` (`LIA-3`) ;
+  `lea-dev` pour la reserve D de `cm1-problemes-durees` si elle est reprise ; `nadia-prof` pour
+  confirmer chaque levee et pour poser, au prochain arbitrage prealable concerne, les deux
+  conditions nouvelles ci-dessus ; `theo-archi`/`yanis-qa` pour l'obstacle 8 (`DEC-0058`), candidat
+  d'ouverture de s24.
