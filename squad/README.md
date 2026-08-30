@@ -452,6 +452,17 @@ plutot que reecrite a la validation.
 
 **3. Daily.** Sofia collecte et route. Pas de fichier.
 
+**A chaque daily, Sofia demande explicitement a chaque agent en cours de lot de confirmer que son
+premier commit a bien ete ecrit dans un worktree dedie** (amendement s23, retro de s23), plutot que
+de le verifier seulement a la fusion comme c'est deja sa pratique depuis s14. La regle de fond ne
+change pas (section 9, ci-dessus, ecrite depuis s06 et deja amendee trois fois) ; ce qui change est
+le moment ou elle est mise a l'epreuve. En s23, cinq occurrences de la meme faute sur un seul
+sprint (deux agents a l'ouverture, trois de plus a mi-sprint dont Sofia elle-meme sous sa casquette
+developpeuse) ont toutes ete autocorrigees par leur auteur avant tout commit sur la branche visee,
+sans qu'aucune n'ait jamais ete detectee au daily : la regle relue au planning ne suffit pas seule,
+et la verifier plus tot dans le cycle - avant que le travail ne s'accumule sur la mauvaise branche
+- coute moins cher que de la verifier seulement a la fusion.
+
 **4. Porte technique.** `mvn verify` vert. Yanis produit le rapport qualite, Theo confirme
 ArchUnit avec le resultat de la commande. **Un garde-fou cite comme fermant un refus pedagogique ou
 une dette nommee n'est declare complet, dans le `review.md` qui le cite, qu'une fois la preuve de
