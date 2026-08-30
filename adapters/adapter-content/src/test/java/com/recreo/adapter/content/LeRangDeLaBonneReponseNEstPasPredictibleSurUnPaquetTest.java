@@ -284,6 +284,11 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
      * ajoute mesure la part du contenu servi sur laquelle cette propriete n'est gardee par rien.</p>
      */
     private static final Map<String, String> PAQUETS_HORS_DU_DOMAINE_NUMERIQUE = Map.ofEntries(
+            Map.entry("cp-ranger-nombres",
+            "24 items sur 24 proposent une liste ordonnee de trois nombres (\"a, b, c\"), pas"
+                    + " une valeur scalaire unique : depuis ADR-0068, lireValeur y rend null (le"
+                    + " reste apres le premier nombre porte encore un chiffre). Mesure du"
+                    + " 2026-08-30, verification directe sur les 72 propositions du paquet"),
             Map.entry("cm1-conjugaison-present",
             "25 items sur 25 portent trois distracteurs, donc quatre propositions : le rang d'une"
                     + " bonne reponse parmi trois n'y est pas defini. Mesure du 2026-08-19, comptage"
