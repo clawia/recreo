@@ -532,3 +532,92 @@ Ligne entiere pour ce que la ligne dit, avec la meme limite de mecanisme que `S1
 texte par question, trois phrases au plus. La mention exacte que je demande sur la matrice le jour
 ou la ligne bouge est : **"textes de trois phrases au plus, un texte par question, pronoms et
 groupes nominaux servis tous les deux"**.
+
+---
+
+## 6. "Utiliser a bon escient des mots de liaison simples pour structurer un texte court" (francais CM1)
+
+**Verdict : ACCEPTE sous conditions `LIA-1` a `LIA-10`, avec couverture partielle nommee.** C'est le
+plus risque des six, et le risque n'est pas celui qu'on croit.
+
+### Le risque reel, et ce n'est pas l'appariement
+
+Ce n'est pas qu'un enfant reussisse sans lire ; c'est que **deux propositions soient correctes a la
+fois**. *"Il pleut ___ je prends mon parapluie"* accepte `donc` et `alors` sans qu'on puisse
+departager. Un item a deux reponses justes dont une seule est comptee bonne n'apprend pas une
+regle : il apprend a l'enfant qu'il a tort quand il a raison, et c'est le pire defaut qu'un contenu
+scolaire puisse avoir. C'est la meme famille que *"aucun item n'admet deux lectures correctes"*, que
+je tiens sur les homophones et sur la conjugaison depuis s10.
+
+**Ce risque est fermable, et voici par quoi** : en exigeant que chaque distracteur exprime une
+relation logique **fausse dans ce texte**, pas seulement moins bonne, et que le fichier le
+**declare**. C'est `LIA-3`.
+
+### La population des mots de liaison, enumeree en entier plutot qu'illustree
+
+C'est une population fermee et petite : je l'enumere donc integralement, dans les deux sens - ce qui
+entre et ce qui sort, avec le motif de chaque sortie. C'est ce que `SEG-1` n'avait pas fait, et
+c'est ce qui lui a coute d'etre quatre fois trop large.
+
+### Conditions
+
+- **`LIA-1` - Forme.** L'item presente **deux ou trois phrases**, dont l'une comporte `___` a la
+  place du mot de liaison. La consigne est constante sur tout le paquet. Le choix du champ qui porte
+  ces phrases (`enonce` seul ou `texteSupport` plus `enonce`) est une decision technique : ce n'est
+  pas la mienne, et aucune de mes conditions n'en depend.
+- **`LIA-2` - Population fermee des mots de liaison admis**, et **seulement** ceux-la :
+  `mais`, `donc`, `car`, `puis`, `ensuite`, `enfin`, `d'abord`, `alors`, `pourtant`, `parce que`.
+  **Dix elements.**
+  **Sont exclus, avec leur motif :**
+  - **`et`** - il est compatible avec presque toute succession de deux propositions. En bonne
+    reponse il rend l'item non unique ; en distracteur il rend le distracteur non falsifiable.
+    **C'est la seule exclusion du lot qui soit indispensable**, et `LIA-3` serait inapplicable sans
+    elle.
+  - **`ou`, `ni`, `or`** - `ou` et `ni` n'expriment pas une relation entre deux idees mais une
+    alternative ou une negation double, hors de ce que la ligne appelle "structurer" ; `or` n'est
+    pas un mot d'enfant de neuf ans.
+  - **`cependant`, `neanmoins`, `toutefois`, `en effet`, `par consequent`** - registre ecrit
+    soutenu, hors de l'usage d'un CM1. `pourtant` les remplace tous pour l'opposition.
+- **`LIA-3` - Reponse unique, et le fichier le demontre.** Pour **chaque** item, le fichier nomme
+  **la relation logique** exprimee par la bonne reponse (opposition, consequence, cause,
+  succession) et, **pour chacun des deux distracteurs**, la relation qu'il exprime **et la raison
+  pour laquelle cette relation est fausse dans ce texte**. **Un distracteur qui produit un texte
+  seulement moins bon, et non faux, est refuse.** *Verification par un tiers, item par item, sur la
+  totalite du paquet.* **Aucun automate ne voit cette propriete** : c'est du type `COMP-2`, et **ce
+  paquet compte a lui seul contre ma condition d'au plus un paquet de ce type par sprint.**
+- **`LIA-4` - Trois relations distinctes par item.** Les deux distracteurs d'un item expriment deux
+  relations logiques differentes l'une de l'autre et differentes de celle de la bonne reponse.
+  Motif : deux distracteurs de meme relation reduisent l'item a un choix entre deux, et le hasard
+  y passe de un tiers a une moitie.
+- **`LIA-5` - Les quatre relations sont servies.** Chacune des quatre relations (opposition,
+  consequence, cause, succession) est la relation de la **bonne reponse** sur **au moins
+  `arrondi inferieur(N/6)`** items du paquet. *Unite de compte : l'item.* Motif : la ligne dit
+  "structurer", et un paquet qui ne ferait que de la succession n'enseignerait qu'une relation sur
+  quatre.
+- **`LIA-6` - Longueur.** Les phrases de l'item comptent **au plus 35 mots au total**, un mot etant
+  une suite de caracteres sans espace.
+- **`LIA-7` - Vocabulaire.** Aucun mot de l'item ne depasse **onze lettres**, apostrophe non
+  comptee. *Mesure de cette clause contre la population qu'elle filtre, faite le 2026-08-30 sur le
+  corpus CM1 entier du depot - **6 788 occurrences de mots** dans les champs `enonce`,
+  `texteSupport`, `indice` et `explication` des quatorze paquets CM1 servis : **99,8 % des
+  occurrences font onze lettres ou moins**. La clause n'ecarte donc quasiment rien de ce que le CM1
+  de ce produit sert deja.*
+- **`LIA-8` - Indice.** Il nomme **la relation a chercher**, jamais le mot. *"Cherche si la seconde
+  phrase s'oppose a la premiere."* est un indice ; *"C'est mais."* n'en est pas un. **Douze mots au
+  plus.**
+- **`LIA-9` - Au moins vingt items**, et aucun mot de liaison n'est la bonne reponse de plus de six
+  items.
+- **`LIA-10` - Couverture partielle nommee, et c'est une condition, pas une remarque.** La ligne dit
+  *"utiliser a bon escient des mots de liaison simples **pour structurer un texte court**"*. Ce
+  paquet fait **choisir** un mot de liaison entre deux ou trois phrases ; il ne fait jamais ecrire
+  un texte, ni ordonner plus de trois phrases. La mention exacte que j'exige sur la matrice le jour
+  ou la ligne bouge est : **"choix du mot de liaison entre deux ou trois phrases, sans production
+  de texte"**. Je prefere une case a moitie vraie et dite telle qu'une case verte qui ment.
+
+### Ce qui reste dans ma seule main sur ce paquet
+
+**`LIA-3` et `LIA-4`, qui sont l'essentiel.** `LIA-2`, `LIA-6`, `LIA-7` et `LIA-9` sont calculables.
+Mais decider qu'un distracteur rend le texte **faux** et non seulement moins bon est un jugement de
+langue qu'aucun serveur ne rendra, et la declaration de `LIA-3` ne me dispense pas de la verifier -
+elle me permet seulement de la **recompter** au lieu de l'etablir, ce qui est le gain le plus
+rentable de s22.
