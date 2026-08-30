@@ -177,3 +177,99 @@ Si le paquet tient ces conditions et passe l'audit, la ligne `mathematiques | CP
 calculs | Comparer et ranger des nombres jusqu'a 100` passe de `en cours` a `couvert-valide`,
 **sans mention de couverture partielle** : les deux moities seront servies. C'est `camille-po` qui
 ecrit la matrice, pas moi.
+
+---
+
+## 2. "Resoudre des problemes a plusieurs etapes mobilisant les 4 operations" (mathematiques CM1)
+
+**Verdict : ACCEPTE sous conditions `ETA-1` a `ETA-10`.**
+
+### Ce que je verifie d'abord
+
+La ligne est `non couvert` et a ete differee deux fois pour capacite (`DEC-0029` a s12,
+`DEC-0030` a s13), jamais pour un motif pedagogique. `DEC-0057` la donne accompagnee d'un
+"risque nomme d'avance par `DEC-0021`". **J'ai lu `DEC-0021` avant de m'en servir** : il ne porte
+pas sur les problemes a plusieurs etapes, il reporte une reserve que j'avais posee le 2026-08-12
+sur `bandit-manchot-problemes-additifs-cp` - *la bonne reponse y est onze fois sur onze le plus
+grand des trois nombres proposes*. C'est un defaut de **construction des distracteurs**, pas un
+defaut de la competence, et il est transposable a n'importe quel paquet de problemes. C'est ce que
+`ETA-7` traite.
+
+**J'ai recompte cette reserve avant de l'invoquer**, parce que je ne m'appuie pas sur un chiffre de
+2026-08-12 sans le reverifier. *Mesure du 2026-08-30 sur la population entiere des 22 items de
+`cp-problemes-additifs.yaml` : la bonne reponse est **la plus grande des trois propositions 11
+fois**, celle du milieu **7 fois**, la plus petite **4 fois**. La reserve de `DEC-0021` est donc
+toujours ouverte aujourd'hui.* Mon chiffre de 2026-08-12 disait "onze fois sur onze" sur les seuls
+items d'addition ; sur le paquet entier, additions et soustractions confondues, c'est 11 sur 22.
+**Les deux comptes sont exacts et ne portent pas sur la meme population** ; je le precise pour que
+personne ne recopie l'un en croyant citer l'autre.
+
+**Le geste est celui de la mecanique**, et la forme a choix multiple est ici un atout plutot qu'un
+pis-aller : le distracteur naturel d'un probleme a deux etapes est **le resultat de la premiere
+etape**, c'est-a-dire l'erreur que l'enfant fait reellement quand il s'arrete en chemin. Un enfant
+qui la choisit apprend quelque chose de precis.
+
+### Conditions
+
+- **`ETA-1` - Exactement deux etapes par item.** Un item a une etape appartient a la ligne
+  "problemes simples a 1 etape" du CP ; un item a trois etapes depasse ce que ce socle nomme pour
+  le CM1.
+- **`ETA-2` - Les quatre operations sont servies.** Chacune des quatre operations (addition,
+  soustraction, multiplication, division) est l'une des deux etapes d'**au moins trois items** du
+  paquet. *Unite de compte : l'item ; un item ou l'operation apparait aux deux etapes compte une
+  fois.* Motif : la ligne dit "mobilisant les 4 operations", et un paquet ou la division n'apparait
+  pas ne la couvre pas.
+- **`ETA-3` - Longueur de l'enonce : au plus 30 mots**, un mot etant une suite de caracteres sans
+  espace. *Mesure de reference, faite le 2026-08-30 sur la population entiere des 24 enonces de
+  `cm1-problemes-durees.yaml`, valides la veille : ils comptent de **19 a 25 mots** par ce meme
+  decompte. La borne de 30 laisse de la place pour la seconde etape sans sortir de ce qui est deja
+  valide au CM1.*
+- **`ETA-4` - Les deux distracteurs sont derives, et le fichier nomme la derivation a cote de
+  l'item.** Deux familles, et seulement celles-la :
+  **(a)** le **resultat intermediaire**, c'est-a-dire le resultat de la premiere etape seule -
+  l'enfant s'est arrete en chemin ;
+  **(b)** le resultat obtenu en remplacant l'operation de la **seconde** etape par son operation
+  inverse (addition contre soustraction, multiplication contre division).
+  Un tiers doit pouvoir **recalculer** les deux distracteurs a partir de l'enonce et de la famille
+  declaree. C'est la condition `D-6`, dont s22 a montre qu'elle attrape ce qu'aucun automate ne
+  voit tant que la derivation n'est pas declaree.
+- **`ETA-5` - Aucune etape n'a pour operande 0 ni 1**, et **aucun resultat intermediaire n'est egal
+  au resultat final**. Sans cela, la famille (a) de `ETA-4` produit un doublon et l'item n'a plus
+  trois propositions distinctes.
+- **`ETA-6` - Les trois propositions d'un item sont deux a deux distinctes et sont des entiers
+  positifs.** Aucun nombre decimal, aucune virgule : le socle CM1 de ce depot ne nomme que les
+  entiers jusqu'au million et les fractions inferieures a 1. *Reprise de `P-1` (2026-08-14),
+  appliquee ici, non elargie.*
+- **`ETA-7` - Rang de grandeur de la bonne reponse.** Sur les `N` items du paquet, la bonne reponse
+  est **la plus grande** des trois propositions sur au moins `arrondi superieur(N/4)` items, **la
+  plus petite** sur au moins `arrondi superieur(N/4)` items, et **celle du milieu** sur au moins
+  `arrondi superieur(N/4)` items. *Unite de compte : l'item ; le rang se lit sur la valeur
+  numerique des trois propositions, que `ETA-6` rend deux a deux distinctes.* Motif : c'est la
+  reserve de `DEC-0021`, rendue verifiable. **Cette condition n'est pas retroactive** : elle vaut
+  pour le paquet a ecrire, jamais contre `cp-problemes-additifs`, qui ne la tiendrait pas
+  aujourd'hui (11 / 7 / 4 sur 22, mesure ci-dessus) et que je ne rouvre pas.
+  *Verification de satisfaisabilite avant de la poser : elle exige au moins un quart d'items ou la
+  bonne reponse est la plus petite des trois, donc au moins un quart d'items dont la seconde etape
+  est une soustraction ou une division - ce que `ETA-2` demande deja par ailleurs. Les deux clauses
+  vont dans le meme sens et ne se contredisent pas.*
+- **`ETA-8` - Situations.** Aucune situation ne suppose que l'enfant a un jardin, une piscine, une
+  chambre a lui, un animal, un depart en vacances ou de l'argent de poche. *Reprise de `P-10`.* Et
+  **aucun role n'est distribue par genre** : pas la fille qui achete des fleurs pendant que le
+  garcon compte des billes.
+- **`ETA-9` - Indice.** Il donne la methode de la **premiere etape seule**, jamais un resultat.
+  *"Commence par chercher le prix des trois cahiers."* est un indice. **Douze mots au plus.**
+- **`ETA-10` - Au moins vingt items.**
+
+### Ce qui reste dans ma seule main sur ce paquet
+
+`ETA-1`, `ETA-2`, `ETA-4` a `ETA-7` et `ETA-10` sont **calculables** : un test peut recalculer les
+distracteurs depuis la derivation declaree, compter les operations et compter les rangs de
+grandeur. `ETA-3` est mesurable. **Ce paquet n'est pas du type `COMP-2`** et ne consomme pas ma
+condition d'au plus un par sprint. Je garde `ETA-8` (les presupposes sociaux et les roles de
+genre), `ETA-9` et le jugement de niveau.
+
+### Couverture
+
+Ligne entiere, sans mention de couverture partielle : "resoudre des problemes a plusieurs etapes
+mobilisant les 4 operations" est exactement ce que le paquet ferait, a deux etapes, qui est le
+"plusieurs" du CM1.
