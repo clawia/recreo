@@ -6817,3 +6817,62 @@ documentaire (questions explicites et implicites, inferences simples)"
   reserve 1 ; `nadia-prof` pour confirmer chaque levee, pour reecrire `D-6` (tension nommee dans son
   amendement du 2026-08-30, section 10.1) et pour reecrire `COMP-2` (reserve 2). Aucune des sept
   n'est bloquante.
+
+## Backlog - perimetre s23 (`DEC-0057`)
+
+**La reserve de contenu seul deja arbitree tombe a zero.** Les trois candidats pretes de `DEC-0053`
+(`S13-2`, `S13-3`, `S17-2`) sont consommes par s22 ; les trois autres qu'elle nommait deja arbitres
+(figures planes, fraction-reperage, decoder par assemblage syllabique) restent bloques sur une
+architecture d'item visuel non ecrite ou une source de voix humaine non tranchee, pas sur
+l'arbitrage pedagogique. **Priorite absolue du sprint : huit arbitrages prealables, poses des
+maintenant plutot que d'attendre que le developpement soit pret** (meme defaut deja nomme sur
+`NAT-5` et `DEN-1` a `DEN-8`).
+
+**Six candidats de contenu seul, jamais arbitres individuellement** (`DEC-0053`, section 7.1) :
+
+- "Comparer et ranger des nombres jusqu'a 100" - moitie "ranger" (mathematiques CP).
+- "Resoudre des problemes a plusieurs etapes mobilisant les 4 operations" (mathematiques CM1,
+  risque nomme d'avance par `DEC-0021`).
+- "Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi)" (francais CP).
+- "Reconnaitre et utiliser les marques du pluriel les plus frequentes (`-s`)" (francais CP).
+- "Reperer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte" (francais CM1).
+- "Utiliser a bon escient des mots de liaison simples pour structurer un texte court" (francais
+  CM1).
+
+**Deux candidats de niveau 2 de `DEC-0051`, poses le 2026-08-28 par `DEC-0053` section 6, jamais
+repondus** :
+
+- `contenu-repris/mots/cp-premiere-lettre.yml` sur "Identifier un son (phoneme) dans un mot"
+  (francais CP) : la premiere lettre ecrite d'un mot satisfait-elle un phoneme entendu ?
+- `contenu-repris/fractions/cm1-compare.yml` sur "Notion de fraction simple..." (mathematiques CM1) :
+  la moitie "notion" seule, en couverture partielle nommee, peut-elle etre couverte sans laisser
+  croire que "reperage sur une droite numerique" est traite ?
+
+**Je ne propose aucune de ces huit lignes comme story de developpement de s23** : je pose les huit
+questions pour que la reponse existe le plus tot possible dans le sprint. Aucun agent n'est affecte
+au developpement d'un candidat tant que `nadia-prof` ne l'a pas arbitre. **Risque nomme et non
+suppose** : sur les quatre lignes que `DEC-0030` avait pensees "contenu seul", les quatre ont ete
+redirigees une fois l'arbitrage rendu (taux de redirection 4 sur 4) - je ne peux pas planifier sur
+l'hypothese que les six candidats d'aujourd'hui survivront mieux.
+
+**Perimetre garanti, sans attendre aucun arbitrage neuf** : les sept reserves non bloquantes de s22
+ci-dessus (`lea-dev` pour `cm1-problemes-durees`, `marc-dev` pour `cm1-comprehension`) ; le
+garde-fou de coherence charte d'agent / `DEC` / `ADR`, propose par `sofia-sm` a la retro de s22
+(faisabilite `theo-archi`) ; le garde-fou d'accentuation, si `theo-archi` le confirme faisable et le
+livre pendant le sprint (condition 1 de la capacite rechiffree de `nadia-prof`, section 12.3 de son
+avis).
+
+**Borne de capacite tenue a trois paquets** pour s23, la meme qu'a s22 : le chiffre de quatre a cinq
+avance par `nadia-prof` suppose trois conditions cumulatives (garde-fou d'accentuation livre,
+comptes declares par les auteurs, au plus un paquet par sprint du type de `COMP-2`), et la premiere
+n'est pas remplie a l'ouverture du sprint.
+
+**Obstacle 21 (4 items sans levier connu) clos** plutot que reporte une troisieme fois : absorbe par
+l'arbitrage 1 de `DEC-0053` (le pli sort de la porte pedagogique) et par la clause `MNC-1`, aucune
+story de correction ouverte.
+
+- **Lien decision** : `DEC-0057`.
+- **Agent pressenti** : `nadia-prof` pour les huit arbitrages ; `sofia-sm` pour l'affectation du
+  perimetre garanti et le portage a l'utilisatrice de la question du mur de la mecanique unique
+  (section 7 de `DEC-0057`) ; `theo-archi` pour le garde-fou d'accentuation et le garde-fou de
+  coherence charte ; `lea-dev`/`marc-dev` pour les sept reserves de s22.
