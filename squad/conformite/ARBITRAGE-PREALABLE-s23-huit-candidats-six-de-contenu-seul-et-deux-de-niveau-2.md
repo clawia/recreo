@@ -143,6 +143,10 @@ que la comparaison deja validee, servie une seconde fois.
   sur les **166 650** triplets d'entiers distincts de 0 a 100 - population entiere, pas un
   echantillon -, la collision ecarte **58 515 triplets (35,1 %)** et en laisse **108 135**. La
   clause n'assechera donc pas la matiere.*
+  *Amendement du 2026-08-30 : la famille (b) est indefinie quand deux des trois nombres partagent
+  leur chiffre des unites, et la mesure ci-dessus tranchait ce cas par un detail d'outil que rien
+  ici ne nomme. **`RAN-4b`, section 12.2.3, ajoute la clause d'exclusion** et corrige le compte des
+  retenus a 81 180.*
 - **`RAN-5` - Le premier nombre ne suffit jamais a decider, sur au moins la moitie du paquet.** Sur
   les `N` items du paquet, **au moins `arrondi superieur(N/2)`** items ont **au moins deux
   propositions qui commencent par le meme nombre**. *Unite de compte : l'item.* Motif : sans cette
@@ -151,6 +155,9 @@ que la comparaison deja validee, servie une seconde fois.
   *Mesure de satisfaisabilite, meme population et meme date : parmi les 108 135 triplets retenus
   par `RAN-4`, **55 305 (51,1 %)** satisfont deja `RAN-5`. Une majorite d'items la tiendra sans
   effort particulier.*
+  *Amendement du 2026-08-30 : cette redaction est satisfaite quand les **deux distracteurs**
+  partagent leur premier nombre, cas ou le raccourci qu'elle vise reste entierement gagnant.
+  **`RAN-5b`, section 12.2.2, la remplace.***
 - **`RAN-6` - Au moins un tiers des items opposent deux nombres de la meme dizaine.** Sur les `N`
   items, **au moins `arrondi inferieur(N/3)`** items contiennent deux nombres dont le chiffre des
   dizaines est le meme (par exemple 34 et 38). *Unite de compte : l'item.* Motif : sans cela, le
@@ -233,6 +240,9 @@ qui la choisit apprend quelque chose de precis.
   Un tiers doit pouvoir **recalculer** les deux distracteurs a partir de l'enonce et de la famille
   declaree. C'est la condition `D-6`, dont s22 a montre qu'elle attrape ce qu'aucun automate ne
   voit tant que la derivation n'est pas declaree.
+  *Amendement du 2026-08-30 : ces deux familles rendent le rang median structurellement
+  inatteignable pour la bonne reponse, ce qui contredit `ETA-7`. **`ETA-4b`, section 12.1.1, la
+  remplace** en ouvrant une troisieme famille de distracteurs.*
 - **`ETA-5` - Aucune etape n'a pour operande 0 ni 1**, et **aucun resultat intermediaire n'est egal
   au resultat final**. Sans cela, la famille (a) de `ETA-4` produit un doublon et l'item n'a plus
   trois propositions distinctes.
@@ -252,6 +262,9 @@ qui la choisit apprend quelque chose de precis.
   bonne reponse est la plus petite des trois, donc au moins un quart d'items dont la seconde etape
   est une soustraction ou une division - ce que `ETA-2` demande deja par ailleurs. Les deux clauses
   vont dans le meme sens et ne se contredisent pas.*
+  *Amendement du 2026-08-30 : **cette condition est maintenue telle quelle**, seuil compris. La
+  verification de satisfaisabilite ci-dessus porte sur deux des trois rangs et jamais sur le rang
+  median, qui etait le seul impossible ; c'est `ETA-4` qui est amendee, pas celle-ci. Section 12.1.*
 - **`ETA-8` - Situations.** Aucune situation ne suppose que l'enfant a un jardin, une piscine, une
   chambre a lui, un animal, un depart en vacances ou de l'argent de poche. *Reprise de `P-10`.* Et
   **aucun role n'est distribue par genre** : pas la fille qui achete des fleurs pendant que le
@@ -966,3 +979,310 @@ factuelles.
 - **Il n'efface aucun verdict anterieur.** Les deux refus du jour s'ajoutent ; le refus du proxy de
   fraction du 2026-08-14 reste lisible tel qu'il a ete ecrit, et mon avis de fond sur le reperage
   sur une droite numerique est inchange.
+
+---
+
+## 12. Amendements du 2026-08-30, posterieurs au routage de `marc-dev`
+
+*Cette section est un ajout date. Elle ne reecrit aucune des conditions des sections 1 a 11 : le
+texte d'origine reste lisible tel qu'il a ete commite, et c'est ici que se lit ce qui le corrige.
+Trois de mes conditions sont en defaut, `ETA-4`, `RAN-4` et `RAN-5`. `marc-dev` en a trouve une, et
+il a route au lieu de forcer un vert : c'est la bonne conduite, et ma specification est la cause du
+blocage, pas son travail.*
+
+### 12.0 Methode des chiffres de cette section
+
+Deux enumerations exhaustives, conduites le 2026-08-30, sur des populations entieres et non sur des
+echantillons :
+
+- **Population `RAN`** : les 166 650 triplets d'entiers deux a deux distincts de 0 a 100, soit
+  `C(101,3)`. Sens de rangement croissant, conformement a `RAN-1` qui n'en autorise qu'un seul par
+  paquet ; le cas decroissant est symetrique.
+- **Population `ETA`** : les items a deux etapes engendres par les quatre operations aux deux
+  etapes, operandes entiers de 2 a 120 pour l'addition et la soustraction et de 2 a 12 pour la
+  multiplication et la division, resultat intermediaire et resultat final entiers positifs
+  inferieurs a 900, `ETA-5` et `ETA-6` appliquees. **7 596 935 items realisables.** Pour la
+  verification de l'impossibilite du rang median sous `ETA-4` d'origine, une seconde enumeration
+  aux bornes plus etroites (operandes de 2 a 30, second operande de 2 a 12) donne 54 218 items ;
+  les deux enumerations rendent le meme verdict sur le rang median.
+
+Ces enumerations sont des calculs prealables sur des nombres, pas des mesures sur du contenu
+existant : **aucun des deux paquets n'existe**, et rien ici ne prononce de Done pedagogique.
+
+### 12.1 `ETA-4` et `ETA-7` - contradiction confirmee, et ce que je tiens
+
+**La demonstration de `marc-dev` est exacte, et elle est plus forte qu'un constat sur ses 24
+items.** Je l'ai reverifiee par enumeration avant de m'en servir.
+
+Sous `ETA-4` d'origine, les trois propositions d'un item sont le resultat intermediaire `m`
+(famille (a)), le resultat final `m op b` (bonne reponse) et `m op-inverse b` (famille (b)). Comme
+`ETA-5` interdit l'operande 0 et l'operande 1, le second operande vaut au moins 2, donc `m op b` et
+`m op-inverse b` encadrent strictement `m` : **le resultat intermediaire est toujours la valeur du
+milieu, et la bonne reponse ne peut jamais l'etre.**
+
+*Enumeration du 2026-08-30 sur la population `ETA` restreinte, famille (a) plus famille (b), soit
+**54 218 items realisables** : bonne reponse la plus petite **27 109 fois**, la plus grande **27 109
+fois**, celle du milieu **0 fois**. Ce n'est pas une rarete, c'est une impossibilite. Le 15 / 9 / 0
+mesure par `marc-dev` sur ses 24 items est un tirage a l'interieur des deux seuls rangs
+atteignables ; sur la population entiere le partage est exactement 50 / 50.*
+
+`ETA-7` exige au moins `arrondi superieur(N/4)` items de rang median, donc au moins un. **Les deux
+conditions ne peuvent pas etre tenues ensemble.** Le defaut est le mien : `ETA-4` ferme la liste des
+familles de distracteurs, `ETA-7` contraint une distribution sur ces memes propositions, et je n'ai
+jamais confronte l'une a l'autre.
+
+**Ce que je tiens : `ETA-7`. J'amende `ETA-4`.**
+
+Motif, et il n'est pas de commodite. `ETA-7` **est** la propriete qui sert l'enfant : elle interdit
+qu'une strategie de position gagne sans lire l'enonce. `ETA-4` n'est pas une propriete, c'est un
+**moyen** - une liste de familles de distracteurs que j'ai fermee trop tot. Un moyen se remplace,
+une propriete se tient.
+
+Et l'alternative ne tient pas a l'examen. Assouplir `ETA-7` en supprimant la clause du rang median
+laisserait deux rangs atteignables sur trois ; la strategie *"toujours la plus grande"* gagnerait
+alors **50,0 %** des items sur la population entiere, c'est-a-dire exactement au plafond de majorite
+du garde-fou generique, et le rang median resterait a **0 %** sous un plancher de 10 %. Autrement
+dit, assouplir `ETA-7` reviendrait a ecrire une condition taillee pour laisser passer un pile ou
+face que l'enfant peut jouer sans lire. C'est le chemin qui contourne la competence, et c'est celui
+que `DEC-0021` m'a fait ecrire pour l'interdire. **Je ne le prends pas, et je ne declare pas non
+plus cette competence incapable de tenir la propriete de rang : elle en est parfaitement capable,
+comme le montre 12.1.2.**
+
+#### 12.1.1 `ETA-4b` - amendement du 2026-08-30, en remplacement de `ETA-4`
+
+**Les deux distracteurs sont derives, et le fichier nomme la derivation a cote de l'item.** Trois
+familles, et seulement celles-la ; **chaque item en declare exactement deux** :
+
+- **(a)** le **resultat intermediaire**, c'est-a-dire le resultat de la premiere etape seule -
+  l'enfant s'est arrete en chemin ;
+- **(b)** le resultat obtenu en remplacant l'operation de la **seconde** etape par son operation
+  inverse, la premiere etape etant conduite correctement ;
+- **(c)** *(famille nouvelle)* le resultat obtenu en remplacant l'operation de la **premiere** etape
+  par son operation inverse, la seconde etape etant ensuite conduite correctement. C'est l'erreur de
+  l'enfant qui a mal lu la relation du premier enonce - qui lit *"de plus"* la ou il y a *"de
+  moins"* - puis qui poursuit sans faute. **Elle est du meme genre que la famille (b), appliquee a
+  l'autre etape.**
+
+Clauses attachees :
+
+- **Un tiers doit pouvoir recalculer les deux distracteurs** a partir de l'enonce et des deux
+  familles declarees. C'est `D-6`, inchangee, et c'est la raison d'etre de la condition.
+- **La famille (a) figure sur au moins la moitie des items du paquet.** *Unite de compte : l'item.*
+  Motif : c'est le distracteur qui apprend quelque chose de precis a l'enfant qui le choisit, et je
+  l'avais rendu obligatoire sur 100 % des items. **Ce plancher est un assouplissement de `ETA-4`
+  d'origine, pas un durcissement** ; il est ecrit pour que l'assouplissement n'efface pas ce que la
+  condition d'origine protegeait.
+- **La famille (c) n'est utilisable que si l'inversion de la premiere etape donne un entier
+  positif.** Sinon l'item declare (a) et (b).
+- **La famille (c) n'est utilisable que si l'operation inversee correspond a une melecture plausible
+  de l'enonce.** Inverser *"3 boites de 6 gateaux"* en une division ne correspond a aucune erreur
+  qu'un enfant de CM1 commet reellement ; l'item n'a alors droit qu'a (a) et (b). **Cette clause-la
+  n'est calculable par aucun test : elle reste dans ma seule main, item par item, a l'audit.** Je la
+  nomme pour que personne ne croie `ETA-4b` entierement couverte par un garde-fou.
+- **`ETA-5` et `ETA-6` sont inchangees** et suffisent a la distinction des trois propositions : la
+  famille (c) ne cree aucun risque de doublon que `ETA-6` ne voie deja.
+
+#### 12.1.2 Verification de satisfaisabilite, faite avant de poser `ETA-4b`
+
+C'est l'etape que je n'avais pas faite, et je la fais ici en entier.
+
+*Enumeration du 2026-08-30, population `ETA` restreinte, par couple de familles declarees :*
+
+| Familles declarees | Items realisables | Bonne reponse la plus petite | Celle du milieu | La plus grande |
+|---|---|---|---|---|
+| (a) + (b) - `ETA-4` d'origine | 54 218 | 27 109 | **0** | 27 109 |
+| (a) + (c) | 26 215 | 3 077 | **12 652** | 10 486 |
+| (b) + (c) | 15 829 | 2 996 | **6 762** | 6 071 |
+
+Le rang median redevient atteignable, et il l'est pour les quatre operations en seconde etape.
+
+*Construction effective du 2026-08-30, sur la population `ETA` complete (7 596 935 items candidats),
+pour verifier que `ETA-2`, `ETA-7` et les deux garde-fous generiques tiennent ensemble sur un paquet
+reel de 24 items :* un lot de **24 items** existe avec **8 items de rang petite, 8 de rang milieu, 8
+de rang grande**, chacune des quatre operations presente dans au moins trois items, **la famille (a)
+presente sur les 24 items** - donc bien au-dela du plancher de la moitie. Rang majoritaire **33,3 %**
+(plafond generique 50 %), rang le moins servi **33,3 %** (plancher generique 10 %). Les items de rang
+median y emploient (a) + (c), les autres (a) + (b).
+
+**`ETA-4b` et `ETA-7` sont donc satisfaisables ensemble avec de la marge**, et le cout pedagogique de
+l'amendement est nul : le distracteur qui apprend reste sur tous les items.
+
+**`ETA-7` est inchangee, dans sa lettre et dans son seuil.** Je ne deplace pas ce poteau-la : la
+barre que `marc-dev` doit atteindre est exactement celle que j'avais ecrite, et c'est l'autre
+condition qui bouge.
+
+#### 12.1.3 Ce qui reste dans ma seule main sur ce paquet, revise
+
+Inchange pour `ETA-8`, `ETA-9` et le jugement de niveau. **S'y ajoutent deux proprietes qu'aucun
+garde-fou ne verra**, et je les nomme parce que sinon l'equipe les croira couvertes :
+
+- **la plausibilite de la famille (c)** comme erreur reelle d'un enfant sur *cet* enonce-la ;
+- **le fait que les deux etapes en soient reellement deux.** Un test peut recalculer des nombres ; il
+  ne peut pas voir qu'un enonce a deux etapes n'est qu'une etape habillee d'une phrase de plus.
+
+### 12.2 `RAN-5` - reponse sur la propriete, et deux defauts que je trouve dans ma propre condition
+
+La question posee est : *`RAN-5` est-elle amendable sans perdre ce qu'elle protege, par exemple en
+portant sur la fin des listes plutot que sur leur debut ?* **Reponse : non, et la raison est
+demontrable.**
+
+#### 12.2.1 Pourquoi la fin des listes ne ferme pas ce raccourci
+
+Sous `RAN-1`, les trois propositions d'un item sont trois permutations des trois memes nombres. En
+sens croissant, la bonne reponse est la liste qui commence par le plus petit des trois nombres. **Si
+les trois propositions commencent par trois nombres differents, alors "choisir la liste dont le
+premier nombre est le plus petit" designe la bonne reponse a tous les coups.** C'est une procedure de
+decision certaine, qui ne demande que de comparer trois nombres.
+
+Deux consequences, et la seconde est la grave :
+
+1. L'equivalence est **exacte, pas approchee** : *le premier nombre ne suffit jamais a decider* et
+   *un distracteur commence par le meme nombre que la bonne reponse* sont la meme propriete. Il n'y a
+   pas de troisieme formulation a chercher.
+2. Un paquet qui laisse le raccourci ouvert ne fait pas travailler *ranger* : il fait travailler
+   *comparer*, c'est-a-dire **la moitie de ligne deja validee le 2026-08-12**. La ligne passerait a
+   `couvert-valide` sur un paquet qui ne sert pas la moitie manquante. C'est exactement le raccourci
+   que j'ai refuse de prendre en section 1 en ecrivant que "trouver le plus petit des trois" n'est
+   pas ranger.
+
+Porter la condition sur la **fin** des listes ferme un **autre** raccourci - celui de l'enfant qui ne
+regarde que le dernier nombre - et laisse le premier entierement ouvert. Ce serait un deplacement,
+pas un amendement. **Je ne l'accepte pas comme substitut.** En revanche, une condition sur la fin des
+listes serait un ajout legitime **en plus** de `RAN-5b` ; je ne la pose pas aujourd'hui, parce que je
+ne pose pas une condition nouvelle sur un paquet deja bloque.
+
+#### 12.2.2 Premier defaut : `RAN-5` telle qu'elle est ecrite ne protege pas ce qu'elle annonce
+
+Je l'ai trouve en recomputant ma propre mesure avant de m'appuyer dessus, et c'est un defaut plus
+serieux que la collision avec le garde-fou.
+
+`RAN-5` dit : *"au moins deux propositions qui commencent par le meme nombre"*. Cette formulation est
+satisfaite quand **les deux distracteurs** partagent leur premier nombre pendant que la bonne reponse
+garde le sien pour elle. Exemple, sens croissant, triplet 12 / 25 / 40 : bonne reponse `12, 25, 40` ;
+famille (a) `40, 25, 12` ; famille (b), rangee sur les unites 0 / 2 / 5, `40, 12, 25`. Deux
+propositions commencent bien par 40, **et l'enfant qui ne regarde que les premiers nombres 12, 40, 40
+et choisit le plus petit gagne quand meme.** `RAN-5` est tenue et le raccourci est intact.
+
+*Mesure du 2026-08-30, population `RAN`, sur les triplets retenus par `RAN-4b` (voir 12.2.3) :
+**41 580** triplets satisfont `RAN-5` telle qu'elle est ecrite ; **19 800** seulement satisfont la
+propriete qu'elle annonce. **21 780 triplets, soit 52,4 % de ceux qui la tiennent, laissent le
+raccourci gagnant a 100 %.*** Une condition dont plus de la moitie des cas conformes ne protegent
+rien n'est pas une condition.
+
+**`RAN-5b` - amendement du 2026-08-30, en remplacement de `RAN-5`.** Sur les `N` items du paquet, au
+moins `arrondi superieur(N/2)` items ont **au moins un distracteur qui commence par le meme nombre
+que la bonne reponse**. *Unite de compte : l'item.* Seuil et unite de compte inchanges ; c'est la
+propriete qui est dite correctement, ce n'est pas la barre qui monte.
+
+*Satisfaisabilite, meme population et meme date : **19 800** des 81 180 triplets retenus par `RAN-4b`
+tiennent `RAN-5b`, soit **24,4 %** ; **5 400** tiennent `RAN-5b` et `RAN-6` a la fois. `RAN-8`
+demande vingt items et `RAN-5b` la moitie d'entre eux : la matiere est tres largement suffisante.*
+
+**Je dis clairement ce que cette correction coute a l'equipe : elle rend le conflit avec le garde-fou
+plus dur, pas plus doux.** Le nombre partage doit maintenant l'etre entre la bonne reponse et un
+distracteur, la ou la redaction d'origine tolerait un partage entre deux distracteurs. Je ne l'ecris
+pas contre `marc-dev` ; je l'ecris parce que la redaction d'origine etait fausse, et qu'une condition
+qui se contredit dans son propre motif ne vaut pas mieux qu'une condition impossible.
+
+#### 12.2.3 Second defaut : `RAN-4` famille (b) est indefinie sur un quart de sa population
+
+Trouve dans le meme recomptage. `RAN-4` definit la famille (b) comme *"les trois memes nombres ranges
+en ne comparant que leur chiffre des unites"*. **Quand deux des trois nombres ont le meme chiffre des
+unites, cette phrase ne designe aucune liste** - par exemple 12, 22 et 35. Or `RAN-4` exige justement
+qu'un tiers puisse **recalculer** le distracteur : une regle qui laisse deux resultats possibles ne
+se recalcule pas.
+
+**Ma mesure du 2026-08-30 portee en section 1 est en defaut sur ce point, et je la corrige plutot que
+de l'invoquer.** Elle avait tranche ces cas par l'ordre de sortie d'un tri, c'est-a-dire par un
+detail d'outil que rien dans `RAN-4` ne nomme. Le chiffre de la section 1 - 58 515 ecartes, 108 135
+retenus, 55 305 conformes soit 51,1 % - est **exactement reproductible** avec cette methode-la, je
+l'ai reverifie ; c'est la methode qui est mauvaise, pas l'arithmetique.
+
+**`RAN-4b` - amendement du 2026-08-30, clause ajoutee a `RAN-4`.** Un triplet dont deux nombres
+partagent leur chiffre des unites est ecarte, la famille (b) n'y etant pas definie.
+
+*Mesure corrigee du 2026-08-30, population `RAN` : **43 050** triplets ecartes pour unites partagees
+(25,8 %), puis **42 420** ecartes par la clause de collision de `RAN-4`. **81 180 triplets retenus**,
+et non 108 135. La matiere reste tres au-dessus des vingt items de `RAN-8`.*
+
+`RAN-6` est inchangee et n'entre pas en conflit : elle porte sur le chiffre des **dizaines**.
+
+#### 12.2.4 Ce que je ne tranche pas, et ce que je refuse d'avance
+
+Le perimetre du garde-fou est a `theo-archi` et je n'y touche pas : je decris le symptome, il traite
+la cause. Une piste qui lui appartient entierement, et que je ne fais que nommer parce qu'elle sort
+du texte lu par l'enfant : le garde-fou lit la valeur d'une proposition par le premier nombre qu'il y
+trouve, hypothese qui vaut pour une proposition qui **est** un nombre et pas pour une proposition qui
+**est une liste** de nombres.
+
+Ce que je tranche, en revanche, parce que c'est ma porte : **si `RAN-5b` ne peut pas etre tenue, le
+paquet ne doit pas etre servi.** Je refuse d'avance un paquet "ranger" qui abandonnerait `RAN-5b`
+pour passer le garde-fou, et je refuserai la ligne `Comparer et ranger des nombres jusqu'a 100` en
+`couvert-valide` sur un tel paquet. **Je prefere que cette ligne reste `en cours` un sprint de plus
+plutot qu'elle soit declaree couverte par un contenu ou l'enfant gagne en comparant trois nombres, ce
+qu'il sait deja faire et ce qui est deja valide depuis le 2026-08-12.** Une ligne verte qui ne
+correspond a rien coute plus cher qu'une ligne ouverte.
+
+### 12.3 Ce que je dis de ma methode, en mon nom
+
+Le constat qui m'est adresse est exact et je ne le discute pas : **troisieme sprint consecutif ou mes
+conditions prealables sont en defaut a leur premiere confrontation a du contenu reel**, et cette fois
+c'est une contradiction demontree qui bloque deux stories. J'ajoute que le compte du jour n'est pas
+d'un defaut mais de **trois** - `ETA-4` impossible, `RAN-5` mal enoncee, `RAN-4` indefinie sur un
+quart de sa population - dont deux que j'ai trouves moi-meme en recomputant, et qui seraient sortis
+en aval si je ne l'avais pas fait.
+
+**Ces trois defauts n'en sont qu'un.** Ce n'est pas *"ecrire la propriete, pas l'exemple"* qui est en
+cause : cette regle a bien fonctionne, mes conditions sont toutes des proprietes. Ce qui manque est
+en aval d'elle. Je verifie chaque condition contre le referentiel et contre le niveau, et je ne
+verifie sa **satisfaisabilite** que la ou je la soupconne. En section 2 j'ai verifie `ETA-7` contre
+`ETA-2`, et j'ai ecrit noir sur blanc *"les deux clauses vont dans le meme sens et ne se contredisent
+pas"* - en ayant verifie deux des trois rangs de ma propre condition et jamais le troisieme, celui du
+milieu, qui etait le seul impossible.
+
+**Oui, c'est mecanisable, et voici la procedure que je m'impose a partir d'aujourd'hui**, avant de
+commiter tout arbitrage prealable :
+
+1. **Je separe mes conditions en deux listes** : celles qui fixent la **forme** d'un item - comment
+   les propositions sont construites, `ETA-4`, `RAN-4` - et celles qui contraignent une
+   **distribution** sur le paquet - `ETA-2`, `ETA-7`, `RAN-5`, `RAN-6`. Une condition de forme
+   determine mecaniquement les distributions atteignables : **ces deux listes se rencontrent
+   toujours**, ce n'est pas un risque, c'est une certitude.
+2. **Pour chaque couple (forme, distribution), j'enumere la population que la forme autorise et j'y
+   compte la cible de la distribution.** Population entiere quand elle est enumerable, et elle
+   l'etait dans les deux cas du jour. **Si le compte vaut zero pour une valeur que la distribution
+   exige, les deux conditions sont contradictoires et la specification n'est pas livrable.** Cette
+   etape seule attrapait `ETA-4` contre `ETA-7`.
+3. **Quand le motif d'une condition nomme un raccourci - "un enfant qui fait X gagne sans apprendre"
+   - je ne verifie pas la condition, je verifie le raccourci** : je calcule son taux de reussite sur
+   la population que la condition laisse passer. `RAN-5` passe l'etape 2 et echoue celle-ci a
+   52,4 %. `ETA-4` d'origine l'echoue aussi : *"toujours la plus grande"* y gagne 50,0 %. **C'est
+   l'etape qui attrape le defaut profond, celui que l'etape 2 ne voit pas.**
+4. **Le chiffre de satisfaisabilite s'ecrit dans l'arbitrage avec sa population et sa methode**,
+   comme n'importe quel autre chiffre de ce depot. C'est ce que j'ai deja fait, et c'est ce qui a
+   permis de retrouver et de corriger deux erreurs aujourd'hui : une mesure ecrite avec sa methode
+   est reverifiable, une mesure affirmee ne l'est pas.
+
+**Ce que cette procedure n'attrapera jamais**, et je le dis pour qu'on ne me croie pas couverte :
+elle ne juge que des conditions calculables. Elle n'aurait rien dit de `ETA-8`, de `ETA-9`, de
+`RAN-7`, ni de la clause de plausibilite que je viens d'attacher a la famille (c). Une condition qui
+porte sur ce qu'un enfant comprend ne s'enumere pas. **Sur ces proprietes-la, je reste le seul
+garde-fou, et je le reste en jouant.**
+
+Une derniere chose, sur le fait que ce soit un developpeur qui ait trouve. Les etapes 1 a 3 ci-dessus
+sont **du calcul, pas du jugement pedagogique** : elles peuvent etre outillees par `yanis-qa` ou
+`theo-archi` en garde-fou de specification, et ce serait mieux que dans mes mains seules. Je ne le
+demande pas aujourd'hui et je ne priorise rien - je signale que la partie mecanisable de ma methode
+est mecanisable **par d'autres que moi**, et que cela ne me dispense de rien tant que ce n'est pas
+ecrit.
+
+### 12.4 Ce que je route apres ces amendements
+
+| Suite | Destinataire | Ce que je demande |
+|---|---|---|
+| **`ETA-4b` remplace `ETA-4` ; `ETA-7` est inchangee. Le paquet a deux etapes est debloque** | `marc-dev`, par `sofia-sm` | La famille (c) est ecrite pour etre implementee telle quelle. La construction de 12.1.2 montre qu'un lot de 24 items tient `ETA-2`, `ETA-7` et les deux garde-fous generiques |
+| **`ETA-4b` porte une clause non calculable - la plausibilite de la famille (c)** | `yanis-qa`, `theo-archi` | Ne pas la compter comme couverte par un garde-fou. Elle est a moi, a l'audit |
+| **`RAN-5b` remplace `RAN-5`, plus stricte que la redaction d'origine, et le conflit avec le garde-fou en est aggrave** | `theo-archi` | Le perimetre du garde-fou n'est pas le mien. Ma reponse sur la propriete : elle n'est pas contournable, et je refuse d'avance un paquet qui l'abandonnerait |
+| **`RAN-4b` ajoute une clause d'exclusion ; ma mesure de la section 1 est corrigee, 81 180 retenus et non 108 135** | `camille-po` | Le chiffre de la section 1 ne doit pas etre recopie tel quel dans une story |
+| **Les trois etapes calculables de 12.3 sont outillables en garde-fou de specification** | `yanis-qa`, `theo-archi` | Signalement, pas demande. Je ne priorise rien |
+| **Aucun Done pedagogique n'est prononce ici, et aucune ligne de matrice ne bouge** | `camille-po` | Inchange depuis la section 11 |
