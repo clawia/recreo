@@ -6,7 +6,8 @@
   la regle restait a decouvrir par un lot de code.
 - **Sprint** : s24. **Date** : 2026-08-30. **Auteur** : theo-archi.
 - **Arbre mesure** : worktree `s24-theo`, branche `round-two` a `ea546cf`. Toutes les mesures de cet
-  `ADR` sont faites sur cet arbre, sur le JDK **21.0.10** de la toolchain declaree, par
+  `ADR` sont faites sur cet arbre, sur le JDK **21.0.10** - version que la machine virtuelle des tests rapporte d'elle-meme, jamais
+  celle qu'une toolchain declare (`ADR-0071`) - par
   `bash outils/mvn-jdk21.sh`.
 - **Corrige** : `ADR-0058` section 1, clause *"un booleen `formeExacteExigee`"*. Le corps
   d'`ADR-0058` n'est pas reecrit ; il recoit un quatrieme amendement date qui renvoie ici.
@@ -184,7 +185,8 @@ section "Regles executables" d'`ADR-0058` avait deja documentee.
 **Mesure de cloture de ce lot, methode comprise.** `bash outils/mvn-jdk21.sh -B clean verify` a la
 racine du reacteur - **BUILD SUCCESS, 807 tests, 0 echec** (49 `domain` + 13 `application` +
 332 `adapter-web` + 288 `adapter-content` + 119 `bootstrap` surefire + 6 `failsafe`), JDK 21.0.10 de
-la toolchain declaree. Pas de `-am` a citer : le reacteur est complet par construction. Ce lot ajoute
+la toolchain - version rapportee par la machine virtuelle des tests elle-meme, jamais lue sur une
+declaration (`ADR-0071`). Pas de `-am` a citer : le reacteur est complet par construction. Ce lot ajoute
 **cinq tests** - les quatre d'`AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest` et la morsure
 d'`ADR-0069` ; je n'ai pas rejoue le build de reference avant le lot, et le delta se lit dans le
 diff plutot que dans un chiffre que je n'aurais pas mesure.

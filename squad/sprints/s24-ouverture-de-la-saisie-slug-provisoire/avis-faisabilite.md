@@ -451,7 +451,8 @@ autre calcul, et il est de `camille-po`.
 `bash outils/mvn-jdk21.sh -B clean verify` a la racine du reacteur, arbre du worktree `s24-theo`
 avec les livrables de ce document : **BUILD SUCCESS, 807 tests, 0 echec** (49 `domain` +
 13 `application` + 332 `adapter-web` + 288 `adapter-content` + 119 `bootstrap` surefire +
-6 `failsafe`), JDK **21.0.10** de la toolchain declaree. Pas de `-am` a citer : le reacteur est
+6 `failsafe`), JDK **21.0.10** de la toolchain - version rapportee par la machine virtuelle des tests elle-meme, jamais lue sur une
+declaration (`ADR-0071`). Pas de `-am` a citer : le reacteur est
 complet par construction, c'est la commande de la porte technique.
 
 Ce lot ajoute **cinq tests** : les quatre d'`AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest` et
@@ -461,3 +462,24 @@ dans le diff plutot que dans un chiffre que je n'aurais pas mesure.
 Le garde-fou de chemins de la CI est passe sur l'index complet des fichiers suivis du worktree :
 `git ls-files ... | bash .github/scripts/verifier-chemins.sh` - **aucun chemin de poste de travail ni
 nom de compte**.
+
+---
+
+## 8. Complement du 2026-08-30 - la version de JDK declaree contre celle qui execute
+
+`sofia-sm` route un constat de `nadia-prof` : une entree de toolchain declarant `21` et designant un
+JDK 25. **Le mecanisme est exact et je l'ai reproduit ; la conclusion sur ce build ne l'est pas.** La
+machine virtuelle qui execute les tests rapporte d'elle-meme `java.version = 21.0.10`. Ce qui etait
+faux dans mes documents est la **methode** citee, pas le chiffre - il etait lu sur une declaration,
+il l'est desormais sur l'execution. `ADR-0071` rend la coherence verifiable a chaque build.
+
+Le detail - le fait constate, la correction, le perimetre historique avec sa methode, et ce qu'un
+garde-fou peut ou ne peut pas arreter - vit dans
+`complement-jdk-declare-contre-execute.md`, dans ce meme repertoire. **Le verdict de faisabilite de
+la section 5 est inchange.**
+
+**Mesure apres ce complement**, meme commande a la racine : **BUILD SUCCESS, 811 tests, 0 echec**
+(49 `domain` + 13 `application` + 332 `adapter-web` + 288 `adapter-content` + 123 `bootstrap`
+surefire + 6 `failsafe`). Les quatre tests de plus que les 807 de la section 7 sont ceux du garde-fou
+d'`ADR-0071` ; le chiffre de la section 7 n'est pas corrige, il datait de l'etat de l'arbre a ce
+moment-la.
