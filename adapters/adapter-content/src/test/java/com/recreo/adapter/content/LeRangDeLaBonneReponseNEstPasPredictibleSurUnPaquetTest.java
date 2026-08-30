@@ -360,7 +360,14 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " propositions n'est numerique : ce sont des reponses en texte libre (une"
                     + " situation, un lieu, un metier...), valeurDe rend null sur les trois"
                     + " propositions de chaque item. Mesure du 2026-08-29 sur le paquet servi :"
-                    + " aucune des 60 propositions ne commence par un chiffre"));
+                    + " aucune des 60 propositions ne commence par un chiffre"),
+            // S23-LIA : entree neuve, mots de liaison CM1.
+            Map.entry("cm1-mots-de-liaison",
+            "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"
+                    + " propositions n'est numerique : ce sont des mots de liaison (\"donc\","
+                    + " \"car\", \"pourtant\"...), valeurDe rend null sur les trois propositions"
+                    + " de chaque item. Mesure du 2026-08-30 sur le paquet servi : aucune des 60"
+                    + " propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

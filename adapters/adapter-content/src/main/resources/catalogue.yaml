@@ -144,3 +144,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-comprehension
     nombreDeManches: 10
+  - id: bandit-manchot-mots-de-liaison-cm1
+    titre: "Le bon mot de liaison"
+    consigne: "Quel mot complète le texte ?"
+    mecanique: bandit-manchot
+    paquet: cm1-mots-de-liaison
+    nombreDeManches: 10
