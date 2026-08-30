@@ -219,6 +219,52 @@ class PaquetCpRangerNombresTest {
         }
     }
 
+    /**
+     * RAN-7, correctif du 2026-08-30 (REFUS de nadia-prof,
+     * FICHE-bandit-manchot-ranger-nombres-cp.md) : un indice est choisi pour son item, jamais
+     * distribue par un cycle independant du contenu. Deux des six textes d'indice decrivent une
+     * methode dont la validite depend des trois nombres de l'item, jamais du triplet en general :
+     *
+     * <ul>
+     *   <li>"Compare le nombre de chiffres de chaque nombre." ne separe rien si les trois nombres
+     *       ont le meme nombre de chiffres - vu en jouant par nadia-prof sur les items alors 1, 13
+     *       et 19, tous des triplets a deux chiffres ;</li>
+     *   <li>"Regarde d'abord les dizaines de chaque nombre." et "Compare les dizaines, puis les
+     *       unites si besoin." lisent le chiffre des dizaines de 100 comme 0, le confondant avec
+     *       un nombre a un chiffre - vu en jouant par nadia-prof sur les items alors 16 et 22, ou
+     *       la methode, appliquee litteralement, designait exactement le second distracteur de
+     *       l'item, present a l'ecran.</li>
+     * </ul>
+     *
+     * <p>Les quatre autres textes ("Cherche d'abord le plus petit des trois.", "Repere d'abord
+     * le nombre le plus grand.", "Compare les nombres deux a deux avant de ranger.") ne decrivent
+     * aucune position de chiffre et restent valides sur tout triplet.</p>
+     */
+    @Test
+    void chaqueIndiceEstChoisiPourSonItemJamaisDistribueParUnCycle() {
+        for (Question item : tousLesItems()) {
+            List<Integer> nombres = nombresDe(item.bonneReponse());
+            String indice = item.indice().orElseThrow(() -> new AssertionError("indice manquant"));
+
+            if (indice.startsWith("Compare le nombre de chiffres")) {
+                long chiffresDistincts = nombres.stream().map(String::valueOf)
+                        .map(String::length).distinct().count();
+                assertThat(chiffresDistincts)
+                        .as("'%s' : les trois nombres n'ont pas tous le meme nombre de"
+                                + " chiffres, sinon 'Compare le nombre de chiffres' ne separe rien"
+                                + " (RAN-7)", item.bonneReponse())
+                        .isGreaterThan(1);
+            } else if (indice.startsWith("Regarde d'abord les dizaines")
+                    || indice.startsWith("Compare les dizaines")) {
+                assertThat(nombres)
+                        .as("'%s' : aucun nombre a trois chiffres, sinon son chiffre des"
+                                + " dizaines se lit comme celui d'un nombre a un chiffre (RAN-7)",
+                                item.bonneReponse())
+                        .allMatch(n -> n < 100);
+            }
+        }
+    }
+
     /** Enumere tous les items distincts du paquet en faisant grossir le tirage deja-vu jusqu'a epuisement. */
     private static List<Question> tousLesItems() {
         ContentSource contenu = new YamlContentPackLoader().chargerPaquet(PAQUET);
