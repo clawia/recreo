@@ -7,7 +7,7 @@ donc aucun outil de cette squad ne peut la jouer (auditer-paquet.py, lire-le-pli
 mesurer-candidats-rep-8.py pilotent tous l'application servie). Une proposition de rendu qui
 n'aurait ete verifiee que sur du CSS lu est exactement ce que le mandat d'ines-design refuse : un
 CSS qui compile n'est pas un CSS qui se voit. Le vehicule est donc un document statique commite,
-squad/sprints/s24-ouverture-de-la-saisie-slug-provisoire/prototype-ines-ecran-de-saisie.html, qui
+squad/sprints/s24-trois-paquets-et-ouverture-de-la-saisie/prototype-ines-ecran-de-saisie.html, qui
 charge les deux feuilles reelles de l'application dans l'ordre reel et recopie la coquille de
 templates/accueil.html.
 

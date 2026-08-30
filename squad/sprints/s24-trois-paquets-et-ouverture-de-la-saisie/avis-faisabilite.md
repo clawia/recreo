@@ -2,10 +2,9 @@
 
 - **Auteur** : theo-archi. **Date** : 2026-08-30. **Sprint** : s24 (ouverture).
 - **Branche** : `s24-theo`, worktree dedie. **Arbre mesure** : `round-two` a `ea546cf`.
-- **Repertoire provisoire.** Le slug du sprint n'est pas fixe : `camille-po` travaille le perimetre
-  en parallele, `sofia-sm` animera le planning. Ce document vit sous
-  `squad/sprints/s24-ouverture-de-la-saisie-slug-provisoire/`, **slug provisoire assume**, a renommer
-  par `sofia-sm` a la fixation du perimetre.
+- **Repertoire renomme le 2026-08-30 par `sofia-sm`** au planning, comme ce document le demandait :
+  ce fichier vit sous `squad/sprints/s24-trois-paquets-et-ouverture-de-la-saisie/`. Le slug etait
+  provisoire a l'ecriture de cet avis ; seul le chemin a change, aucun contenu n'a ete deplace.
 - **JDK** : toutes les mesures de ce document sont faites sur le JDK **21.0.10** de la toolchain
   declaree, par `bash outils/mvn-jdk21.sh`. Toute mesure partielle citee ici porte `-am` et nomme son
   perimetre ; un module mesure n'est pas le depot.

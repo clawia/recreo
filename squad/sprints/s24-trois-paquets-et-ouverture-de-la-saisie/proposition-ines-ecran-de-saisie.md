@@ -2,10 +2,10 @@
 
 - **Auteure** : `ines-design`. **Date** : 2026-08-30. **Sprint** : s24 (ouverture).
 - **Branche** : `s24-ines`, worktree dedie. **Arbre de depart** : `round-two` a `ea546cf`.
-- **Repertoire provisoire, aligne sur `theo-archi`.** Le slug du sprint n'est pas fixe. Ce document
-  vit sous `squad/sprints/s24-ouverture-de-la-saisie-slug-provisoire/`, **le meme slug provisoire
-  que son avis de faisabilite**, a renommer par `sofia-sm` a la fixation du perimetre. Je le signale
-  ici pour que le renommage porte sur les deux fichiers ensemble.
+- **Repertoire renomme le 2026-08-30 par `sofia-sm`** au planning, sur la dependance `D7` de ce
+  document : ce fichier, le prototype et le script de mesure pointent desormais
+  `squad/sprints/s24-trois-paquets-et-ouverture-de-la-saisie/`. Seuls les chemins ont change, aucun
+  contenu n'a ete deplace.
 - **Ce que ce document est** : la dependance nommee par `theo-archi` comme bloquante de son lot 4
   (*"ce lot ne peut pas commencer avant cette proposition"*). Il donne la forme de l'ecran, le
   balisage Thymeleaf, les regles de feuille, et les chiffres releves sur un rendu reel.
@@ -663,9 +663,9 @@ decrivent le meme arbre plus des lots disjoints.
 
 ## Impact
 
-- `squad/sprints/s24-ouverture-de-la-saisie-slug-provisoire/proposition-ines-ecran-de-saisie.md`
+- `squad/sprints/s24-trois-paquets-et-ouverture-de-la-saisie/proposition-ines-ecran-de-saisie.md`
   (ce fichier) : cree.
-- `squad/sprints/s24-ouverture-de-la-saisie-slug-provisoire/prototype-ines-ecran-de-saisie.html` :
+- `squad/sprints/s24-trois-paquets-et-ouverture-de-la-saisie/prototype-ines-ecran-de-saisie.html` :
   cree - vehicule de mesure, jamais servi.
 - `squad/outils/ines-design/mesurer-ecran-de-saisie.py` : cree.
 - `squad/conformite/releves-s24/s24-ines-ecran-de-saisie-dix-largeurs-551.json` : cree, 80 mesures.
