@@ -330,10 +330,148 @@ mesure etait juste. Le **14** est ecrit la ou il a un sens : le reaudit, sur le 
 effectivement servi apres le correctif. Un depot qui reecrit ses anciens chiffres perd la trace de
 ce qu'il savait quand.
 
+## Suite de review, 2026-08-30 (second tour de correction) - fusion des quatre lots de reaudit
+
+Quatre branches fusionnees dans cette meme review, apres les deux blocs ci-dessus : `s23-camille-3`,
+`s23-sofia-dev-3`, `s23-marc-3`, `s23-nadia-4`, dans cet ordre. Lignee verifiee par
+`git merge-base round-two <branche>` pour les quatre : identique a la tete `96083ba` dans les
+quatre cas, aucune n'a divergé sur une base perimee. Les quatre fusions sont additives : aucun
+fichier n'est touche par deux branches a la fois (verifie par `git diff --name-only` sur chacune
+avant de fusionner), aucun marqueur de conflit sur l'arbre fusionne, `git status` rend un arbre
+propre apres les quatre `merge --no-ff`.
+
+### Increment complete par ces quatre lots
+
+- `cp-ranger-nombres` (`S23-RAN`) : **VALIDE, sans reserve** (reaudit de `nadia-prof`, `RAN-7`
+  levee, cinq indices reapparies, verifiee sur les 24 items et par enumeration exhaustive du test
+  de `marc-dev`, 487 080 couples, zero desaccord). Matrice ecrite par `camille-po` : la ligne
+  "Comparer et ranger des nombres jusqu'a 100" passe `en cours` -> `couvert-valide` - **seule ligne
+  qui bouge**, verifie par `git diff 96083ba..HEAD -- squad/programme/MATRICE-couverture.md`, pas
+  suppose.
+- `cm1-problemes-etapes` (`S23-ETA`) : **VALIDE SOUS RESERVE, maintenu**. Les reserves A, B, C
+  etaient deja fermees au tour precedent. Les reserves D et E (creees par le correctif de la
+  reserve B - enonces des items 22 a 24 passes a "perd" sans que leurs indices suivent, et
+  ambiguite "N groupes" incomplete sur les items 3, 4, 5, 8) sont fermees par `marc-dev` dans ce
+  lot, et **auto-verifiees en jouant par lui** (`verification-en-jeu-marc-reserves-d-e.md`) - **pas
+  encore confirmees par `nadia-prof`**, dont le dernier commit de reaudit (18:36) precede les deux
+  commits de fermeture de `marc-dev` (18:55). Voir obstacle 13.
+- `cm1-mots-de-liaison` (`S23-LIA`) : **REFUSE une seconde fois** par `nadia-prof` (18:30), sur
+  l'item 10 - le distracteur "mais" affirmait une opposition reellement presente dans le texte
+  sous sa frontiere reenoncee. Corrige par `sofia-sm` (casquette developpeuse, `s23-sofia-dev-3`,
+  18:46, apres le refus) : distracteur remplace par "donc", et la date erronee "2026-08-31" du
+  commentaire du fichier corrigee en "2026-08-30" au passage. **Ce correctif n'a pas encore ete
+  reaudite** : il est fusionne apres le dernier commit de reaudit de `nadia-prof`. Voir obstacle 12.
+
+### Verification independante de la couverture, 23/43 (53,5 %)
+
+Recomptee ligne par ligne sur l'arbre fusionne, pas relayee sur la parole de `camille-po` : les
+quatre tableaux de matiere (`squad/programme/MATRICE-couverture.md`) rendent respectivement
+6 `couvert-valide` sur 11 (mathematiques CP), 7 sur 12 (mathematiques CM1), 3 sur 12 (francais CP)
+et 7 sur 12 (francais CM1), soit **23 sur 47**, dont 4 lignes `non couvrable en l'etat`
+retranchees du denominateur atteignable : **23/43 (53,5 %)**, egal au tableau recapitulatif que
+`camille-po` y ajoute. Un seul mouvement de statut entre `96083ba` et cette fusion, confirme par
+diff : `cp-ranger-nombres`. `cm1-problemes-etapes` reste `couvert-valide` (deja compte, ses
+reserves sont non bloquantes) ; `cm1-mots-de-liaison` reste `non couvert` (correctif non reaudite).
+
+### Corrections verifiees sur le fichier fusionne - pas relayees sur le message de commit
+
+- `cm1-mots-de-liaison.yaml`, item 10 : `distracteurs: ["donc", "d'abord"]` (`"mais"` retire),
+  motif reenonce dans le commentaire du fichier ; verifie par lecture directe.
+- `cm1-problemes-etapes.yaml`, items 22 a 24 : les trois indices nomment desormais "perdu(e)s",
+  accordes au verbe "perd" de leur enonce (`"...cahiers perdus..."`, `"...chaises perdues..."`,
+  `"...crayons perdus..."`), verifie par lecture directe des quatre lignes concernees.
+- `cm1-problemes-etapes.yaml`, items 3, 4, 5, 6, 7, 8 : les six portent desormais
+  "celui-ci compris" (groupe masculin) ou "celle-ci comprise" (groupe feminin), et les items 7 et
+  8 nomment leur groupe du meme mot que leur sujet ("ateliers") - verifie par lecture directe des
+  six items.
+
+### Porte technique, mesuree apres la fusion complete des quatre lots
+
+`bash outils/mvn-jdk21.sh -B clean verify` sur le reacteur complet des six modules : **BUILD
+SUCCESS**.
+
+**Tests : 802**, verifie par deux methodes independantes qui concordent :
+- synthese `Results:` de chaque module (celle deja utilisee dans ce document) : 49 (`domain`) + 13
+  (`application`) + 332 (`adapter-web`) + 288 (`adapter-content`, +1 sur les 287 du tour precedent)
+  + 114 (`bootstrap`, surefire) + 6 (`bootstrap`, failsafe/IT) = **802** ;
+- sommation de l'attribut `tests` de chaque `TEST-*.xml` (surefire et failsafe), 122 rapports :
+  **802**.
+
+Conforme au chiffre annonce par `marc-dev` (802, soit 801 plus un test neuf,
+`chaqueIndiceEstChoisiPourSonItemJamaisDistribueParUnCycle` mis a l'epreuve sur `PaquetCpRanger-
+NombresTest`) ; `nadia-prof`, `camille-po` et `sofia-sm` (casquette developpeuse) n'ajoutent aucune
+methode `@Test`.
+
+**Regles ArchUnit : 30, inchange.** Aucun des quatre lots ne touche `domain`, `application`, ni
+l'outillage de recensement des regles (`ArchRule`, `LesGardeFousSontMisALEpreuveTest`) - confirme
+par `git diff --name-only` sur chacune des quatre branches, aucune n'apparait.
+
+### L'ecart de mesure signale par `theo-archi` a l'ouverture du sprint - reverifie, pas reconduit tel quel
+
+`theo-archi` avait etabli que **le compte de tests par les rapports texte sous-compte de 7**,
+quatre classes portees par le moteur JUnit d'ArchUnit y resumant leur jeu en une ligne. Cet ecart
+ne s'etait manifeste a aucune des deux mesures precedentes de ce document (801 par la synthese de
+module, 801 par la sommation XML, les deux concordantes) ; je l'ai donc reverifie sur l'arbre
+fusionne plutot que de le relayer.
+
+**L'ecart existe, exactement a 7, mais seulement sous une troisieme methode, non celle utilisee
+jusqu'ici dans ce document** : la premiere ligne `Tests run:` de chaque rapport **texte** par
+classe (`target/surefire-reports/*.txt`, `target/failsafe-reports/*.txt`), sommee fichier par
+fichier, rend **795**, contre **802** par les deux methodes ci-dessus. Localise classe par classe,
+l'ecart de 7 se decompose ainsi :
+
+| Classe | `tests` (XML) | `Tests run:` (texte, 1re ligne) | Ecart |
+|---|---|---|---|
+| `com.recreo.adapter.web.archi.AssertionsWebTest` | 2 | 1 | 1 |
+| `com.recreo.archi.AbstractionsCiteesTest` | 5 | 1 | 4 |
+| `com.recreo.archi.ChargementDuContenuTest` | 2 | 1 | 1 |
+| `com.recreo.archi.LesReglesMordentTest` | 29 | 28 | 1 |
+| **Total** | | | **7** |
+
+Les quatre classes declarent leurs assertions ArchUnit comme des tests dynamiques a l'interieur
+d'une seule methode JUnit annotee : le rapport XML compte chaque assertion, le rapport texte ne
+garde que la premiere ligne de synthese de la methode porteuse.
+
+**La regle telle qu'ecrite ("les rapports texte sous-comptent de 7") est donc plus large que ce
+qu'elle decrit** : elle ne vaut que pour cette troisieme methode (sommation manuelle de la
+premiere ligne de chaque rapport `.txt`, par classe) - pas pour la synthese `Results:` par module
+ni pour la sommation XML par rapport, les deux deja utilisees dans ce document depuis le premier
+tour de ce sprint, et qui concordent entre elles a 801 puis 802 sans aucun ecart. Aucun chiffre
+deja publie dans ce document n'est donc a corriger. **Je ne reformule pas la regle moi-meme** :
+routee a `theo-archi`, obstacle 12.
+
+### Obstacles de ce second tour
+
+| # | Description | Categorie | Agent route | Decision liee | Statut |
+|---|---|---|---|---|---|
+| 12 | La regle de mesure de `theo-archi` ("les rapports texte sous-comptent de 7") decrit un ecart reel mais seulement sous une methode de sommation particuliere (premiere ligne de chaque rapport `.txt` par classe) ; elle ne vaut ni pour la synthese `Results:` par module ni pour la sommation XML, les deux methodes utilisees dans ce document | Technique, garde-fou de mesure | `theo-archi` | - | **OUVERT** - reverification et reformulation de la portee exacte de la regle attendues de `theo-archi` ; localisation des quatre classes en cause fournie ci-dessus |
+| 13 | Les reserves D et E de `cm1-problemes-etapes` sont fermees par `marc-dev` et auto-verifiees en jouant, mais le dernier commit de reaudit de `nadia-prof` les precede : aucune confirmation d'elle n'existe sur le disque pour ce correctif | Pedagogie, Done | `nadia-prof` | - | **OUVERT** - le Done pedagogique de `cm1-problemes-etapes` reste `VALIDE SOUS RESERVE` tel que prononce ; la fermeture de D et E attend sa confirmation |
+| 14 | L'item 10 de `cm1-mots-de-liaison` est corrige (distracteur "donc" remplace "mais") mais fusionne apres le second refus de `nadia-prof` : aucun reaudit n'a encore ete joue sur ce correctif | Pedagogie, Done | `nadia-prof` | - | **OUVERT** - la ligne de matrice reste `non couvert` tant que le reaudit n'est pas joue ; le sprint reste ouvert pour ce motif |
+
+**Un resultat, pas une absence** : `marc-dev` a prototype une regle generique de coherence
+indice/enonce sur l'ensemble du paquet (au-dela des trois items nommes par `nadia-prof`) et l'a
+ecartee - trop fragile face aux variations morphologiques du francais (participe vs conjugaison,
+paraphrase) pour valoir mieux qu'une lecture a l'oeil. Documente en Javadoc du test livre
+(`PaquetCm1ProblemesEtapesTest`, commentaire de
+`lesIndicesDesItemsCorrigesParLaReserveBNommentLeVerbeDeLeurEnonce`) plutot qu'expedie sous forme
+de garde-fou fragile. Aucun chiffre de taux de faux positifs n'est ecrit dans ce commentaire ni
+ailleurs sur le disque : je ne recopie donc aucun pourcentage precis, seule la conclusion
+qualitative ("trop fragile") est verifiable sur le fichier.
+
+**`LIA` a ete refuse deux fois, et les deux fois sur un point que son auteure avait signale
+elle-meme** : le premier refus, sur la frontiere de necessite physique qu'elle avait deja notee
+comme fragile ; le second, sur son propre compte errone (38 distracteurs bons sur 40 annonce,
+37 reels - trouve par `sofia-sm` en verifiant plutot qu'en relayant) et sur une reserve C qui ne
+nommait que 2 des 6 items concernes par l'ambiguite "N groupes" (compte complete par `marc-dev`).
+Ces deux corrections de compte sont deja documentees par `nadia-prof` elle-meme dans le bloc de
+reaudit ci-dessus (fusionne depuis `s23-nadia-4`).
+
 ## Ce que ce document ne fait pas
 
 Ni retro, ni rapports (`RAPPORT.md`, `RAPPORT-tokens.md`) : ils appartiennent a la cloture du
 sprint, qui n'a pas eu lieu ici. Aucune fiche de conformite ni la matrice de couverture ne sont
-touchees par ce document. **Le sprint reste ouvert** : `cp-ranger-nombres` (`RAN-7`) et
-`cm1-mots-de-liaison` (`LIA-3`) attendent un reaudit de `nadia-prof` avant de pouvoir passer
-`couvert-valide`.
+touchees par ce document au-dela de la lecture de verification ci-dessus. **Le sprint reste
+ouvert** : `cm1-mots-de-liaison` (`LIA-3`, item 10 corrige) attend un dernier reaudit de
+`nadia-prof`, et `cm1-problemes-etapes` (reserves D et E) attend sa confirmation que les deux
+fermetures de `marc-dev` tiennent. `cp-ranger-nombres` est seul acquis `couvert-valide` a l'issue
+de ce tour.
