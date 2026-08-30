@@ -2483,3 +2483,22 @@ croissante et assumee, elle n'est plus vide de cas.
 
 **Ce que ce document ne fait pas.** Il ne prononce aucun Done pedagogique lui-meme et ne fait bouger
 aucune autre ligne que les trois nommees ci-dessus.
+
+## Note du 2026-08-30 (ouverture s23, `camille-po`) - la reserve de contenu seul deja arbitree tombe
+## a zero, huit arbitrages prealables poses, aucune ligne ne bouge par cette note
+
+A l'ouverture de s22, six lignes de cette matrice etaient deja arbitrees pedagogiquement et pretes a
+developper sans arbitrage supplementaire (`DEC-0053`, section 7). Trois sont desormais
+`couvert-valide` (voir amendement ci-dessus). **Les trois autres restent `non couvert`/`en cours`,
+mais aucune n'est developpable aujourd'hui pour un motif d'arbitrage pedagogique** : "Reconnaitre et
+nommer des figures planes" (mathematiques CP) et la moitie "reperage sur une droite numerique" de
+"Notion de fraction simple..." (mathematiques CM1) attendent une decision d'architecture pour un
+item visuel qui n'existe pas encore ; "Decoder un mot regulier inconnu par assemblage syllabique"
+(francais CP) attend une source d'enregistrement de voix humaine qu'aucun agent de cette squad ne
+peut fournir. **La reserve de contenu seul reellement pret a developper est donc de zero ligne** au
+2026-08-30, la premiere fois que ce backlog est vide a l'ouverture d'un sprint depuis s19. Detail
+complet, huit arbitrages prealables poses en priorite pour s23 (six candidats de contenu seul,
+jamais arbitres individuellement, plus deux candidats de niveau 2 de `DEC-0051` poses le 2026-08-28
+et jamais repondus depuis) : `DEC-0057`.
+
+**Aucune ligne de cette matrice ne change de statut par cette note.**
