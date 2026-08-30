@@ -77,3 +77,33 @@ methode (regle deja ecrite, `squad/README.md` section 4, amendements s06/s16/s17
 porter sa date dans la phrase elle-meme**, jamais dans une parenthese a cote qu'un lecteur presse
 saute. Amendement retenu et verse a `squad/README.md` section 4 par `sofia-sm`, dans le meme geste
 que cette entree de journal.
+
+## 2026-08-29 - Troisieme cas de discretion d'execution sur `DEC-0045` section 3, cette fois arbitre par l'utilisatrice (`sofia-sm`)
+
+**Le fait.** Les trois paquets du sprint 22 (`cm1-multiplications-divisions-10-100`,
+`cm1-problemes-durees`, `cm1-comprehension`) ont ete `REFUSE` par `nadia-prof` le 2026-08-29
+(`avis-nadia-done-pedagogique-s22.md`). `DEC-0045` section 3 prescrit le retrait immediat du
+catalogue sur `REFUSE`. **L'utilisatrice arbitre d'attendre les corrections en cours plutot que de
+retirer**, sur le precedent de `cp-mot-manquant` a s21 (`DEC-0052`, section 8) : les corrections de
+`lea-dev` et `theo-archi` sont deja engagees sur deux des trois lots au moment de l'arbitrage, et
+un retrait aurait impose un aller-retour de `catalogue.yaml` dans l'heure, exactement le cout que
+`DEC-0052` mesurait sur ce meme precedent.
+
+**Ce que je verse, sans le trancher : c'est le troisieme cas, pas le premier ni le second.**
+
+| | `cm1-reperes` (s20) | `mot-manquant-cp` (s21) | trois paquets s22 |
+|---|---|---|---|
+| Regime applique | Retrait immediat, execute | Retrait retenu par `sofia-sm`, jamais execute | Retrait retenu par arbitrage de l'utilisatrice, jamais execute |
+| Qui a decide de ne pas executer | - (execution conforme a la section 3) | `sofia-sm`, discretion d'execution non ecrite | l'utilisatrice elle-meme, sur instruction directe |
+
+`camille-po` ecrivait en `DEC-0052` section 8, en refusant de trancher un amendement a
+`DEC-0045` section 3 sur seulement deux cas : *"cette conception a besoin de plus de deux cas, ou
+d'un arbitrage delibere plutot que d'une regle inferee sous la pression de la cloture d'un
+sprint."* Le present fait est ce troisieme cas, et il est cette fois un arbitrage delibere,
+pas une discretion silencieuse de `sofia-sm` comme au second. Je le nomme ici pour qu'il ne se
+perde pas avant que `camille-po` ne juge si trois cas suffisent a instruire un amendement -
+**ce n'est pas a moi de le juger**.
+
+**Ce qui reste ouvert.** Le retrait des trois entrees, s'il doit avoir lieu, n'est pas execute
+tant que les corrections en cours n'ont pas ete verifiees et fusionnees. Aucune entree de
+`catalogue.yaml` n'est modifiee par ce fait.
