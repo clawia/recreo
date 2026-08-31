@@ -26,8 +26,14 @@ developpeur.
 
 ## 1. Le cas, avec sa provenance declaree
 
-**L'enonce fautif** : *"l'ouverture de la saisie fera passer la couverture de 28 a 33 lignes sur
+**L'enonce fautif** : *"l'ouverture de la saisie ferait passer la couverture de 28 a 33 lignes sur
 43"*. Il a servi d'appui a l'utilisatrice pour arbitrer l'ouverture de la mecanique de saisie.
+
+> **Correction du 2026-08-31 (cloture de s24).** Cette phrase portait *"fera"* la ou les trois
+> documents de `sofia-sm` portent *"ferait"*. **L'ecart est de moi et il est aligne ici sur
+> l'occurrence la plus ancienne**, par la regle 3.5 que cet ecart a fait ecrire. Ecart trouve par
+> `relecteur-pedagogique`, qui l'a **nomme sans le lever** - conduite exacte, et c'est son refus de
+> choisir qui a montre que la regle manquait. Voir l'amendement, section B.
 
 **Il est faux sur ses deux bornes, et c'est etabli trois fois independamment :**
 
@@ -285,3 +291,106 @@ c'est un garde-fou existant qui mord dans le bon sens.
 | Ajout du critere de relecture a la fiche de `relecteur-pedagogique` | `sofia-sm` | **Route**, apres l'amendement du README |
 | Correction de la section 4 du planning de s24 sous la forme 3 nommee | `sofia-sm` | **Route**, inchange |
 | Mecanisation eventuelle de la resolution des references de forme 1 | `theo-archi`, `yanis-qa` | **Question posee, pas une demande**, inchangee |
+
+---
+
+## Amendement B du 2026-08-31 (cloture de s24) - la citation se fige a la reception : la regle que l'ecart *"fera"* / *"ferait"* a fait manquer
+
+### B.1 L'ecart, et qui l'a trouve
+
+`relecteur-pedagogique` a trouve que **le meme enonce recu de MASTER est cite differemment dans deux
+documents** :
+
+| Ou | Comment il est cite |
+|---|---|
+| `DEC-0062`, section 1 (moi, 2026-08-31) | *"...la saisie **fera** passer la couverture..."* |
+| `planning.md` de s24, `review.md`, `RAPPORT.md` (`sofia-sm`, 2026-08-30 et 2026-08-31) | *"...la saisie **ferait** passer la couverture..."* |
+
+**Elle a nomme l'ecart et a refuse de le lever**, au motif que choisir fabriquerait la citation.
+**C'est exactement la bonne conduite**, et c'est ce refus qui rend le trou visible : ma section 3.1
+exige la citation *"mot pour mot"* et ma section 3.2 interdit de resumer, mais **aucune des deux ne
+dit qui fige les mots, ni quand**. La convention se faisait donc violer par le premier document qui
+l'appliquait - le mien.
+
+### B.2 Les deux regles qui manquaient
+
+**`3.5` - la citation se fige a la reception, et une seule fois.**
+
+> **Le premier agent qui ecrit dans un fichier commite un enonce recu de MASTER en fige la
+> citation**, dans les mots ou il l'a recu et au moment ou il le recoit - jamais reconstitue apres
+> coup, jamais de memoire.
+>
+> **Tout agent ulterieur cite ce fichier-la, et sa citation devient de forme 1** (`de <agent>`, avec
+> le fichier et la section). Il ne recite pas sa propre reception.
+
+C'est le geste qui ferme structurellement la faille plutot que de la rattraper : apres le premier
+gel, **il n'existe plus qu'une seule source dans le depot**, et une divergence devient impossible au
+lieu d'etre detectable.
+
+**`3.6` - le depart d'egalite, pour les ecarts deja crees.**
+
+> **Quand deux documents citent differemment un enonce de forme 3 et que la reception n'est pas dans
+> le depot, l'occurrence commitee la plus ancienne gouverne.** Les autres y sont alignees par une
+> correction datee qui n'efface pas le texte corrige.
+>
+> **Le motif n'est pas l'arithmetique** - ce n'est ni un vote ni une majorite - **c'est
+> l'anteriorite** : la premiere occurrence est la seule qui ne soit pas une retranscription. Elle se
+> determine par `git log`, donc par un tiers, sans arbitrage.
+>
+> **Si l'anteriorite ne se determine pas** - meme commit, ou deux branches sans ordre - **aucune
+> version n'est promue** : l'enonce est rapporte indirectement, sans guillemets, et l'ecart est
+> ecrit.
+
+### B.3 Application immediate a l'ecart trouve
+
+**`ferait` gouverne**, parce que `planning.md` de `sofia-sm` (2026-08-30) precede ma `DEC-0062`
+(2026-08-31). **Ma section 1 est corrigee et la correction est marquee, pas effacee.**
+
+**Je ne me couvre pas derriere la regle** : l'ecart est de ma main, et sa cause est nommee dans le
+document meme qui l'interdisait. J'ai ecrit cette citation **a l'interieur d'une phrase courante**,
+en la reconstituant plutot qu'en la relevant. C'est precisement le geste que la forme 3 est censee
+empecher, commis par l'auteure de la forme 3, sur sa premiere application. **Une convention dont la
+premiere violation est le fait de celle qui l'ecrit n'est pas discreditee - elle est renseignee** :
+elle montre ou elle etait trop courte.
+
+### B.4 Ce que cela rend verifiable
+
+Les deux regles sont **binaires et n'appellent aucun jugement**, ce qui est la condition posee par la
+section 4 :
+
+- une citation de forme 3 apparait-elle plus d'une fois dans le depot avec des mots differents ?
+  C'est une comparaison de chaines ;
+- si oui, la plus ancienne gouverne-t-elle ? C'est `git log`.
+
+**Je ne dis pas que c'est mecanisable**, et je ne le demande pas : la question reste posee a
+`theo-archi` et `yanis-qa` comme en section 4, ni plus ni moins.
+
+---
+
+## Amendement C du 2026-08-31 - la charte de `relecteur-pedagogique` reste a amender, et je n'y touche pas
+
+`relecteur-pedagogique` a releve contre `DEC-0062` un defaut de sa premiere version : **elle se
+defendait d'etre un garde-fou annonce mais absent en affirmant qu'il verifiait la convention, alors
+que la convention n'existait dans aucun fichier qu'il lit.** La section 4 disait *"elle est verifiee
+par `relecteur-pedagogique`"* - au present - d'une regle ecrite le jour meme et qui ne figurait ni
+dans `squad/README.md`, ni dans sa charte. **C'est le defaut nomme en tete de `CLAUDE.md`, commis
+dans le paragraphe qui s'en defendait.**
+
+`sofia-sm` a ferme la moitie process en amendant `squad/README.md`. **La charte de l'agent, elle,
+reste a amender**, et elle a refuse d'y toucher au motif que c'est de la configuration d'agent.
+
+**Je ne la modifie pas non plus, et pour deux motifs que je separe :**
+
+1. **Ce n'est pas mon perimetre.** `.claude/agents/` porte la definition des agents ; je n'ecris ni
+   dans le code, ni dans la configuration de qui que ce soit.
+2. **Et c'est le meme motif qui vaut dans les deux sens** : je viens d'ecrire, en section 5, que je
+   ne reecris pas le document d'un autre agent. Une charte est plus que son document, c'est ce qui le
+   definit.
+
+**Route a `sofia-sm`**, qui tient `squad/README.md` et le roster, pour arbitrage de la voie - et a
+l'utilisatrice si `sofia-sm` juge qu'une charte d'agent ne se modifie pas sans elle.
+
+**En attendant, la section 4 doit se lire au conditionnel, et je le marque ici plutot que de la
+reecrire** : la convention est **due** a la relecture, elle n'y est pas encore opposable. **Une
+convention qui n'est pas dans la charte de celui qui doit la verifier n'est pas verifiee**, et ce
+document ne pretendra pas le contraire une seconde fois.
