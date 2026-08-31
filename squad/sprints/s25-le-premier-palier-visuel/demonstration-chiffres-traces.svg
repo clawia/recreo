@@ -18,17 +18,20 @@
      scolaire - le 1 a-t-il une base, le 7 une barre, le 4 est-il ferme - est un jugement
      pedagogique, jamais un jugement de dessin. Je trace ; elle juge.
 
-     Le trace est un SQUELETTE STROKE, pas un contour rempli : chaque chiffre est la ligne que la
+     Le trace est un squelette epaissi par stroke-width, pas un contour rempli : chaque chiffre est la ligne que la
      main de l'enfant suit quand il l'ecrit, epaissie par stroke-width. C'est ce qui rend le trace
      producible a la main plutot que par un extracteur de contours de police - et le depot ne
      vendorise aucune police, donc un contour extrait ne serait reproductible sur aucun appareil.
 
      Une seule couleur, aucun remplissage : FIG-3 et QUA-5 exigent qu'une figure lue en niveaux de
-     gris donne la meme reponse. currentColor laisse la feuille decider de la teinte sans qu'aucune
-     regle de couleur soit ecrite ici. -->
+     gris donne la meme reponse. La teinte est ecrite EN CLAIR et vaut #1c2733, la valeur de
+     --recreo-texte. Ni currentColor, ni une variable CSS : mesure du 2026-08-31, un SVG charge
+     par <img> est un document isole - la couleur de la page n'y entre pas, currentColor y rend
+     du noir, et une variable maison n'y est pas definie. Une teinte non declaree est donc une
+     teinte que personne ne gouverne. -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
      viewBox="0 0 400 400" width="400" height="400" role="img" fill="none"
-     stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+     stroke="#1c2733" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
 
   <!-- Les dix glyphes, definis une fois. Chaque glyphe est trace dans une boite de 40 unites de
        large et 60 de haut, origine en haut a gauche. C'est le point de cout qui repond a la
@@ -95,5 +98,5 @@
     <path d="M200 200 L200 78"/>
     <path d="M200 200 L282 200"/>
   </g>
-  <circle cx="200" cy="200" r="8" fill="currentColor" stroke="none"/>
+  <circle cx="200" cy="200" r="8" fill="#1c2733" stroke="none"/>
 </svg>
