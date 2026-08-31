@@ -232,3 +232,28 @@ fusion d'`origin/s24-sofia-dev` : **BUILD SUCCESS, 830 tests, 0 echec** (49 `dom
 pour chacune des 27 entrees. C'est ce vert-la, et lui seul, que la section 1.4 invoque - non pas
 comme preuve d'invariance de rendu, ce qu'il n'est pas, mais comme preuve que la forme d'item de
 chaque paquet est presentable par la mecanique de son entree.
+
+---
+
+## Amendement du 2026-08-31 - la moitie "lot 3" de ma phrase portait sur un fait faux
+
+**Rien de ce qui precede n'est efface.** Ma section 2 ecrit *"Lot 3 - il n'existe pas"*, sur un
+recensement de huit branches. **Ce recensement etait incomplet : il omettait `s24-marc`**, qui porte
+le lot 2 (`1317e4f`), le lot 3 (`3dac4f5`) et le lot 4 (`c83d4c3`). Ecart trouve par `nadia-prof` en
+instruisant ma reponse.
+
+**La faute de methode, qui est le fait interessant.** J'ai ecrit *"aucune branche poussee du depot ne
+le contient"* alors que ce que j'avais mesure etait *"aucune branche connue de mon clone"*. Ce sont
+deux enonces differents et je les ai confondus. Mesure a l'appui : le reflog de `refs/remotes/origin/
+s24-marc` de ce worktree porte **une seule entree, au 2026-08-31 10:36:15**, quand mon commit
+`2989bc5` est de **10:16:18** - la branche n'etait pas dans mon clone au moment ou j'ai ecrit la
+phrase. **Ce que ce reflog ne dit pas**, et je ne le suppose pas : si elle etait deja sur `origin` et
+que mon `fetch` l'a precedee, ou si elle n'y etait pas encore. Les dates de commit sont des dates
+d'ecriture, pas de poussee, et aucune des deux lectures ne m'excuse : **un recensement de references
+distantes est un instantane d'un clone, et je l'ai presente comme un fait sur le depot.**
+
+**Ce que la correction ne change pas** : la section 1, sur le lot 1, tient telle quelle - sa mesure
+portait sur un diff commite, pas sur un recensement de branches.
+
+**Le verdict sur le lot 3, mesure cette fois**, vit dans
+`correction-et-verdict-lot-3.md`, dans ce meme repertoire.
