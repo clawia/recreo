@@ -183,3 +183,54 @@ etre rendus sans que Q2 soit tranchee. Ce que Q2 decide, c'est ce qui se passe a
 - **Aucun developpeur de s24 n'a rien a faire de ce document.**
 - La review et le `RAPPORT.md` de s24 le portent comme **candidat de tete a l'ouverture de s25**,
   avec les points 1 et 2 de la section 5 nommes et non rendus.
+
+---
+
+## Amendement du 2026-08-31 (meme jour) - `Q2` et `Q3` sont rendues : le cout de la correction est desormais chiffre, et le rang tient
+
+### A.1 Ce que l'utilisatrice a repondu, verbatim
+
+- **`Q3`** : *"constat est ouvert"*. **Cette decision existe grace a cette reponse.** Si le constat
+  avait ete ferme en meme temps que la validation, la reserve 5 elargie du 2026-08-30 n'aurait pas pu
+  etre ecrite et le defaut n'aurait pas ete nomme. La section 7.2 de `DEC-0060` est confirmee.
+- **`Q2`** : *"1 ils rentrent"*. Elle designe l'issue 1 de `DEC-0060`, section 7.3, dont le texte
+  disait : *"les 27 rentrent, et la correction de `M5` s'etale sur cinq a sept sprints d'audit"*.
+
+### A.2 Le cout de la correction, maintenant qu'il est connu
+
+**J'avais ecrit que l'issue 1 "rendrait la correction impraticable". L'utilisatrice l'a choisie en
+connaissance de cette phrase.** Je n'y reviens pas et je ne la repose pas : c'est exactement le
+regime que je demandais, un cout paye les yeux ouverts plutot que decouvert a la porte.
+
+**Ce que `S25-SCO-1` coute desormais, ecrit dans la story et dans ce document** : au cout de
+developpement s'ajoute **le reaudit des 27 jeux du catalogue**, dont la magnitude reelle depend d'une
+seule reponse encore due - celle de `nadia-prof` a la section 4.1 de `DEC-0063` : un reaudit apres un
+changement de code partage compte-t-il comme un paquet contre sa borne de 4 a 5, ou est-ce un acte
+d'une autre nature ? **Tant qu'elle n'a pas repondu, "cinq a sept sprints" est un plafond, pas une
+estimation, et je refuse de le citer autrement.**
+
+### A.3 Ce qui ne change pas : le rang
+
+**`S25-SCO-1` reste candidate de tete a l'ouverture de s25**, et le cout neuf ne l'affaiblit pas. Il
+la renforce, par une observation de sequencement que je verse a `sofia-sm` **comme un fait et non
+comme un ordre** - le sequencement est a elle :
+
+> **s24 fait deja rentrer les 27 jeux dans la porte**, du seul fait des lots 1 et 3 et de `Q1`
+> (`DEC-0063`, section 1). La file de reaudit des 27 s'ouvre donc **que `M5` soit corrige ou non**.
+> Corriger `M5` pendant que cette file est ouverte fait payer **une fois** un reaudit qui, autrement,
+> serait paye **deux fois** : une premiere pour le retypage de s24, une seconde le jour de `M5`.
+
+**Et le cout du report grandit tout seul** : chaque sprint ajoute des jeux au catalogue, donc des
+jeux a reauditer le jour de la correction. **C'est le seul poste de ce backlog dont le prix augmente
+mecaniquement a chaque sprint d'attente.** Le report compte en section 4 reste **le premier**, et
+cette phrase-ci est ce qu'il faudra relire avant d'ecrire le motif du second.
+
+### A.4 Ce qui ne change pas non plus
+
+- **Aucun Done retire, aucune ligne de matrice touchee, aucun retrait de catalogue.**
+- **Rien n'entre au perimetre de s24.**
+- **Le routage ordonne de la section 5 est inchange** : `nadia-prof` rend le resultat attendu, puis
+  `theo-archi` la forme et le cout. **Le point 4 de ce tableau est desormais rendu** : `Q2` a
+  repondu, les 27 jeux rentrent, et la ligne du tableau doit se lire ainsi.
+- **Les sept criteres de `S25-SCO-1` sont inchanges.** Trois rouges verifies contre
+  `BanditManchotSession`, quatre verts qui bornent le remede.
