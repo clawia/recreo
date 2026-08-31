@@ -1,0 +1,113 @@
+schema: 1
+id: cp-pluriel
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CP"
+  domaine: "Orthographe et grammaire"
+  competence: "Reconnaître et utiliser les marques du pluriel les plus fréquentes (-s)"
+#
+# S24-PLU (DEC-0059). Arbitrage prealable de nadia-prof du 2026-08-30
+# (squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md,
+# partie 4, conditions PLU-1 a PLU-9). Ecriture neuve : aucun fichier de contenu-repris ne porte
+# cette competence.
+#
+# PLU-1 : la proposition porte le groupe entier, determinant compris, et le groupe a trou n'est
+# jamais le sujet du verbe - aucune phrase ne porte donc d'autre indice de nombre pour ce groupe
+# (ni accord du verbe, ni adjectif, ni nombre ecrit). C'est l'accord interne au groupe qui decide.
+# PLU-2 : les six determinants admis, et aucun autre - un, une, le, la, les, des. Les six sont
+# employes dans ce paquet.
+# PLU-4 : les deux distracteurs sont derives de la bonne reponse et recalculables par un tiers -
+# (a) le nom porte la marque inverse de celle qu'exige son determinant, le determinant inchange ;
+# (b) le determinant passe au nombre inverse (un/une -> des, le/la -> les, les -> le/la, des ->
+# un/une, selon le genre du nom), le nom inchange. Ils sont ecrits dans cet ordre sur chaque item.
+# PLU-5 : sur les 21 items, la bonne reponse porte la marque -s sur le nom sur 10 items et ne la
+# porte pas sur 11 - le plancher de nadia-prof est de 7 de chaque cote (partie entiere de 21/3).
+#
+# PLU-1 (aucun autre indice de nombre) et PLU-8 (ce que dit l'indice) restent le jugement de
+# nadia-prof. Les conditions calculables sont verifiees par PaquetCpPlurielTest.
+items:
+  - enonce: "Léo pose ___ sur la table."
+    bonneReponse: "une assiette"
+    distracteurs: ["une assiettes", "des assiette"]
+    indice: "Regarde le petit mot devant le nom."
+  - enonce: "Anna cherche ___ dans le sac."
+    bonneReponse: "les crayons"
+    distracteurs: ["les crayon", "le crayons"]
+    indice: "Le petit mot devant t'indique le nombre."
+  - enonce: "Le vent secoue ___."
+    bonneReponse: "des branches"
+    distracteurs: ["des branche", "une branches"]
+    indice: "Observe d'abord le mot placé devant."
+  - enonce: "Tom dessine ___ en silence."
+    bonneReponse: "une fleur"
+    distracteurs: ["une fleurs", "des fleur"]
+    indice: "Le mot devant le nom donne l'accord."
+  - enonce: "Iris range ___ dans le tiroir."
+    bonneReponse: "les cartes"
+    distracteurs: ["les carte", "la cartes"]
+    indice: "Regarde le petit mot devant le nom."
+  - enonce: "Hugo mange ___ après le sport."
+    bonneReponse: "une pomme"
+    distracteurs: ["une pommes", "des pomme"]
+    indice: "Le petit mot devant t'indique le nombre."
+  - enonce: "Maya porte ___ jusqu'au banc."
+    bonneReponse: "un panier"
+    distracteurs: ["un paniers", "des panier"]
+    indice: "Observe d'abord le mot placé devant."
+  - enonce: "Noé montre ___ devant la porte."
+    bonneReponse: "les marches"
+    distracteurs: ["les marche", "la marches"]
+    indice: "Le mot devant le nom donne l'accord."
+  - enonce: "Elsa colle ___ sur le carton."
+    bonneReponse: "des images"
+    distracteurs: ["des image", "une images"]
+    indice: "Regarde le petit mot devant le nom."
+  - enonce: "Théo cherche ___ sous le banc."
+    bonneReponse: "la gomme"
+    distracteurs: ["la gommes", "les gomme"]
+    indice: "Le petit mot devant t'indique le nombre."
+  - enonce: "Lila arrose ___ chaque matin."
+    bonneReponse: "les plantes"
+    distracteurs: ["les plante", "la plantes"]
+    indice: "Observe d'abord le mot placé devant."
+  - enonce: "Ivan attrape ___ dans la corbeille."
+    bonneReponse: "le ballon"
+    distracteurs: ["le ballons", "les ballon"]
+    indice: "Le mot devant le nom donne l'accord."
+  - enonce: "Sara plie ___ avec soin."
+    bonneReponse: "une nappe"
+    distracteurs: ["une nappes", "des nappe"]
+    indice: "Regarde le petit mot devant le nom."
+  - enonce: "Malo choisit ___ dans la boîte."
+    bonneReponse: "des billes"
+    distracteurs: ["des bille", "une billes"]
+    indice: "Le petit mot devant t'indique le nombre."
+  - enonce: "Zoé écrit ___ au tableau."
+    bonneReponse: "un mot"
+    distracteurs: ["un mots", "des mot"]
+    indice: "Observe d'abord le mot placé devant."
+  - enonce: "Ali secoue ___ devant la classe."
+    bonneReponse: "les cordes"
+    distracteurs: ["les corde", "la cordes"]
+    indice: "Le mot devant le nom donne l'accord."
+  - enonce: "Nina remplit ___ avec de l'eau."
+    bonneReponse: "un verre"
+    distracteurs: ["un verres", "des verre"]
+    indice: "Regarde le petit mot devant le nom."
+  - enonce: "Jules ramasse ___ dans la cour."
+    bonneReponse: "des feuilles"
+    distracteurs: ["des feuille", "une feuilles"]
+    indice: "Le petit mot devant t'indique le nombre."
+  - enonce: "Alba pose ___ près du seau."
+    bonneReponse: "la brosse"
+    distracteurs: ["la brosses", "les brosse"]
+    indice: "Observe d'abord le mot placé devant."
+  - enonce: "Rémi pousse ___ contre le mur."
+    bonneReponse: "les chaises"
+    distracteurs: ["les chaise", "la chaises"]
+    indice: "Le mot devant le nom donne l'accord."
+  - enonce: "Nour découpe ___ avec soin."
+    bonneReponse: "une carte"
+    distracteurs: ["une cartes", "des carte"]
+    indice: "Regarde le petit mot devant le nom."

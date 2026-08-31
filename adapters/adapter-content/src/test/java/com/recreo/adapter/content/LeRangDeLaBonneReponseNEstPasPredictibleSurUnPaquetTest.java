@@ -372,7 +372,21 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " propositions n'est numerique : ce sont des mots de liaison (\"donc\","
                     + " \"car\", \"pourtant\"...), valeurDe rend null sur les trois propositions"
                     + " de chaque item. Mesure du 2026-08-30 sur le paquet servi : aucune des 60"
-                    + " propositions ne commence par un chiffre"));
+                    + " propositions ne commence par un chiffre"),
+            // S24-NAR : entree neuve, comprehension d'un texte narratif tres court, CP.
+            Map.entry("cp-texte-narratif",
+            "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"
+                    + " propositions n'est numerique : ce sont des fragments recopies du"
+                    + " texte-support (un prenom, un lieu, un objet), valeurDe rend null sur les"
+                    + " trois propositions de chaque item. Mesure du 2026-08-31 sur le paquet"
+                    + " servi : aucune des 60 propositions ne commence par un chiffre"),
+            // S24-PLU : entree neuve, marques du pluriel en -s, CP.
+            Map.entry("cp-pluriel",
+            "21 items sur 21 portent deux distracteurs (trois propositions), mais aucune des 63"
+                    + " propositions n'est numerique : ce sont des groupes determinant + nom"
+                    + " (\"les chats\", \"les chat\", \"le chats\"), valeurDe rend null sur les"
+                    + " trois propositions de chaque item. Mesure du 2026-08-31 sur le paquet"
+                    + " servi : aucune des 63 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
