@@ -79,6 +79,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * desormais le silence : une composante de plus rend ce garde-fou rouge tant que personne n'a ecrit
  * si l'ecran la montre.</p>
  *
+ * <p><b>Amendement du 2026-08-31 (sofia-sm, lot 5b de s24), sur la portee de cette promesse et non
+ * sur le critere.</b> Le classement reflechissait sur {@code Question.class} seule. Il tenait donc sa
+ * promesse pour une composante de plus sur {@link Question}, et <b>pas</b> pour les composantes d'une
+ * <b>forme d'item nouvelle</b> : mesure du 2026-08-31 sur une sonde de saisie chargeable, sept
+ * composantes traversent sans etre classees et la clause reste verte. Le classement derive desormais
+ * de la scellure d'{@link Item} (ADR-0004). Aucun critere n'a bouge, aucune composante n'a change de
+ * camp : c'est la population jugee qui etait plus etroite que la phrase qui la decrivait.</p>
+ *
  * <p><b>Mesure de l'etat au 2026-08-11 (s10), avec sa methode et sa date, parce qu'un garde-fou
  * ecrit avant son defaut doit dire ce qu'il trouvait le jour ou il est entre.</b> Sur les 397 items
  * lisibles des 65 paquets du depot d'alors (les 4 paquets servis de
@@ -262,20 +270,58 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
      */
     static void verifierQueChaqueComposanteDUnItemEstClassee(
             Set<String> dansLIdentite, Set<String> horsIdentite) {
+        verifierQueChaqueComposanteDUnItemEstClassee(
+                dansLIdentite, horsIdentite, Item.class.getPermittedSubclasses());
+    }
+
+    /**
+     * <b>Lot 5a de s24, decision 3 : le classement porte sur toutes les formes permises par
+     * {@link Item}, jamais sur {@link Question} seule.</b>
+     *
+     * <p>La clause ci-dessus promettait qu'"une composante de plus rend ce garde-fou rouge tant que
+     * personne n'a ecrit si l'ecran la montre". Elle tenait cette promesse par reflexion sur
+     * {@code Question.class} <b>uniquement</b>. Une composante de plus portee par une <b>forme
+     * d'item nouvelle</b> n'etait donc classee par personne, et la clause restait <b>verte</b> :
+     * mesure du 2026-08-31 sur une sonde de saisie chargeable, cette classe rougit par transtypage
+     * et jamais par cette clause-la. C'est un vert silencieux, de la meme famille que l'omission par
+     * enumeration de types que ce depot a deja payee, et la promesse etait donc plus large que ce
+     * que le code tenait.</p>
+     *
+     * <p>Les formes sont derivees de la <b>scellure</b> d'{@link Item} (ADR-0004), jamais enumerees
+     * ici : la deuxieme forme d'item la fait rougir le jour ou elle entre, et la troisieme aussi -
+     * l'operation posee est deja nommee par ADR-0058. Le parametre n'existe que pour la mise a
+     * l'epreuve : c'est le seul moyen de prouver que cette derivation voit plus que
+     * {@link Question}, tant qu'une seule forme est permise.</p>
+     */
+    static void verifierQueChaqueComposanteDUnItemEstClassee(
+            Set<String> dansLIdentite, Set<String> horsIdentite, Class<?>[] formesDItem) {
         Set<String> communes = new TreeSet<>(dansLIdentite);
         communes.retainAll(horsIdentite);
         assertThat(communes)
                 .as("une composante ne peut pas etre a la fois dans l'identite d'ecran et hors d'elle")
                 .isEmpty();
 
+        assertThat(formesDItem)
+                .as("ADR-0050 : ce classement ne prouve rien s'il ne voit aucune forme d'item. Item"
+                        + " est scelle (ADR-0004) et permet au moins une forme")
+                .isNotEmpty();
+
         Set<String> classees = new TreeSet<>(dansLIdentite);
         classees.addAll(horsIdentite);
-        Set<String> portees = Arrays.stream(Question.class.getRecordComponents())
-                .map(RecordComponent::getName)
-                .collect(TreeSet::new, Set::add, Set::addAll);
+        Set<String> portees = new TreeSet<>();
+        for (Class<?> forme : formesDItem) {
+            RecordComponent[] composantes = forme.getRecordComponents();
+            assertThat(composantes)
+                    .as("%s : une forme d'item qui n'est pas un record ne rend pas ses composantes"
+                            + " lisibles, et ce classement ne peut alors rien affirmer d'elle",
+                            forme.getSimpleName())
+                    .isNotNull();
+            Arrays.stream(composantes).map(RecordComponent::getName).forEach(portees::add);
+        }
 
         assertThat(classees)
-                .as("ADR-0050 : chaque composante de Question est classee - dans l'identite d'ecran"
+                .as("ADR-0050 : chaque composante de chaque forme permise par Item est classee - dans"
+                        + " l'identite d'ecran"
                         + " d'ADR-0032, ou hors d'elle avec son motif. Une composante portee et non"
                         + " classee est une composante dont personne n'a dit si l'enfant la voit au"
                         + " moment ou l'ecran se presente : si elle est rendue, ecranDe doit la lire"
@@ -321,6 +367,47 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
                 COMPOSANTES_DANS_L_IDENTITE_D_ECRAN, horsIdentiteEnTrop))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("graphie");
+    }
+
+    /**
+     * Jeu fautif du lot 5b : une seconde forme d'item, jamais livree, qui porte deux composantes que
+     * le classement d'ADR-0050 ne nomme pas. Elle n'implemente pas {@link Item} - la scellure
+     * l'interdit, et c'est bien ce qu'on veut - mais la derivation ne lit d'une forme que ses
+     * composantes de record, donc l'objet juge est de la meme nature que celui de la production.
+     */
+    private record SecondeFormeDItemContreExemple(ItemId id, String enonce, String formeDeReference,
+                                                   List<String> formesAcceptees) {
+    }
+
+    /**
+     * ADR-0013 obligation 3, pour la decision 3 du lot 5a : sans cette clause, "le classement ne voit
+     * que Question" et "le classement voit toutes les formes" seraient <b>le meme vert</b> tant
+     * qu'une seule forme est permise. C'est exactement la forme du defaut mesure le 2026-08-31 : la
+     * clause promettait de rougir sur une composante de plus et restait verte sur les composantes
+     * d'une forme neuve.
+     */
+    @Test
+    void uneComposanteDUneSecondeFormeDItemQueLeClassementNeNommePasFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifierQueChaqueComposanteDUnItemEstClassee(
+                COMPOSANTES_DANS_L_IDENTITE_D_ECRAN, COMPOSANTES_HORS_IDENTITE_D_ECRAN.keySet(),
+                new Class<?>[] {Question.class, SecondeFormeDItemContreExemple.class}))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("formeDeReference")
+                .hasMessageContaining("formesAcceptees");
+    }
+
+    /**
+     * L'autre moitie de la morsure : la derivation part bien de la scellure d'{@link Item} et non
+     * d'un nom ecrit ici. Une forme permise que ce fichier ignorerait rendrait la clause muette sur
+     * elle, ce qui est le defaut que la clause precedente eprouve.
+     */
+    @Test
+    void lesFormesDItemJugeesSontCellesQueLaScellureDItemPermet() {
+        assertThat(Item.class.getPermittedSubclasses())
+                .as("ADR-0004 : Item est scelle, et c'est cette liste-la qui donne les formes a"
+                        + " classer - jamais une enumeration ecrite dans un test")
+                .isNotEmpty()
+                .contains(Question.class);
     }
 
     static void verifierQuAucunItemNeRepeteLEcranDUnAutre(Path racine, String racineClasspath) {

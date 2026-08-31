@@ -103,6 +103,16 @@ class ChaquePaquetPorteUnIndiceTest {
      * enumere aucun. ADR-0064 : lu dans le fichier <b>uniquement pour borner les tirages</b>, les
      * valeurs jugees venant toujours du chargeur reel (ADR-0013, obligation 1).
      *
+     * <p><b>Amendement du 2026-08-31 (sofia-sm, lot 5b de s24).</b> Zero avait deux sens que rien ne
+     * distinguait : "paquet combinatoire, qui n'enumere aucun item" - legitime - et "paquet enumere
+     * que ce comptage n'a pas su lire" - qui fait sauter la clause {@code hasSize(declares)} de tous
+     * les appelants et juge le paquet sur un tirage borne <b>sans le dire</b>. C'est la seule
+     * defaillance muette trouvee par le tri des garde-fous face a un item de saisie, et elle se
+     * declenche des qu'un item porte un autre premier champ qu'{@code enonce}. Les deux sens se
+     * separent sur un fait du fichier, pas sur une convention supposee : un paquet combinatoire ne
+     * porte pas de cle {@code items:}. Une convention qu'un garde-fou suppose sans la verifier n'est
+     * pas une convention.</p>
+     *
      * <p>Partage avec les garde-fous voisins qui tirent sur les memes paquets, comme
      * {@link #paquets(Path)} l'est deja. Ce qui est partage est un comptage de lignes, jamais le
      * critere garde : chaque garde-fou garde sa boucle de tirage et sa propre assertion
@@ -110,13 +120,27 @@ class ChaquePaquetPorteUnIndiceTest {
      */
     static int itemsDeclares(Path racine, String paquet) {
         Path fichier = racine.resolve("contenu").resolve(paquet + ".yaml");
+        List<String> lignes;
         try {
-            return (int) Files.readAllLines(fichier).stream()
-                    .filter(ligne -> ligne.strip().startsWith("- enonce:"))
-                    .count();
+            lignes = Files.readAllLines(fichier);
         } catch (IOException echec) {
             throw new UncheckedIOException(echec);
         }
+        int comptes = (int) lignes.stream()
+                .filter(ligne -> ligne.strip().startsWith("- enonce:"))
+                .count();
+        boolean enumere = lignes.stream().anyMatch(ligne -> ligne.strip().equals("items:"));
+        if (enumere) {
+            assertThat(comptes)
+                    .as("%s porte une liste 'items:' et ce comptage n'y trouve aucun item. Zero"
+                            + " signifierait alors 'paquet combinatoire, rien a enumerer', et le"
+                            + " paquet serait juge sur un tirage borne sans que rien ne le dise -"
+                            + " un vert silencieux, pas un rouge. Un item enumere porte 'enonce' en"
+                            + " premier champ, quelle que soit sa forme (ADR-0064, lot 5a de s24)",
+                            paquet)
+                    .isPositive();
+        }
+        return comptes;
     }
 
     /**
@@ -212,6 +236,44 @@ class ChaquePaquetPorteUnIndiceTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("paquet-neuf-sans-indice")
                 .hasMessageContaining("promet une aide");
+    }
+
+    /**
+     * ADR-0013 obligation 3, pour la decision 8 du lot 5a : le jeu fautif est un paquet enumere dont
+     * les items ne portent pas {@code enonce} en premier champ. Avant cette clause, ce comptage y
+     * rendait zero, la clause {@code hasSize(declares)} etait sautee chez tous les appelants, et le
+     * paquet passait sur un tirage borne <b>sans que rien ne le dise</b>. Le test porte sur le
+     * comptage lui-meme et non sur le verdict du garde-fou : c'est la que le silence naissait.
+     */
+    @Test
+    void unPaquetEnumereQueLeComptageNeSaitPasLireEstRefuse() {
+        assertThatThrownBy(() -> itemsDeclares(
+                CONTRE_EXEMPLE.resolve("premier-champ-autre"), "paquet-enumere-au-premier-champ-autre"))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("paquet-enumere-au-premier-champ-autre")
+                .hasMessageContaining("vert silencieux");
+    }
+
+    /**
+     * L'autre moitie de la morsure : le meme paquet, ses items reecrits avec {@code enonce} en
+     * premier champ, redevient comptable. Sans elle, "le comptage refuse tout paquet enumere" et
+     * "le comptage refuse celui-la" seraient le meme rouge.
+     */
+    @Test
+    void leMemePaquetRemisAvecEnoncePremierChampEstCompte() {
+        assertThat(itemsDeclares(CONTRE_EXEMPLE.resolve("premier-champ-autre/corrige"),
+                "paquet-enumere-au-premier-champ-autre"))
+                .isEqualTo(2);
+    }
+
+    /**
+     * Et un paquet <b>combinatoire</b>, qui n'enumere aucun item et ne porte donc pas de cle
+     * {@code items:}, rend toujours zero sans rien reprocher : c'est le seul sens legitime de zero,
+     * et la clause ne doit pas l'avoir emporte avec l'autre.
+     */
+    @Test
+    void unPaquetCombinatoireRendToujoursZeroSansRienReprocher() {
+        assertThat(itemsDeclares(CONTENU_DE_PRODUCTION, "cp-additions-jusqu-a-10")).isZero();
     }
 
     /** Le meme paquet neuf, une fois son indice ecrit, ne doit plus rien reprocher. */
