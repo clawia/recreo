@@ -43,6 +43,16 @@ import java.util.Optional;
  * <p>ADR-0050 : la cle facultative 'texteSupport', meme patron, declare un texte distinct de
  * l'enonce que le gabarit rend dans un style propre, plus petit (S17-2). Absente, elle vaut "aucun
  * texte-support" - le cas ordinaire.</p>
+ *
+ * <p>ADR-0073 : les deux cles facultatives 'illustration' et 'illustrationTexteAlternatif', meme
+ * patron encore. La premiere porte un <b>identifiant</b> - jamais un chemin, jamais une extension,
+ * jamais des octets - et cette fabrique ne l'interprete pas : elle le transmet tel qu'il est ecrit.
+ * Ou le fichier est servi est une affaire de l'adapter web, et le decider ici ferait entrer
+ * l'agencement du serveur dans un contenu que nadia-prof relit. Absentes, elles valent "cet item ne
+ * montre rien" - le cas ordinaire. Qu'elles soient presentes ensemble est un invariant du record
+ * {@link Question} (clause 5), et qu'un identifiant declare resolve vers un fichier reellement servi
+ * est verifie par {@code LIllustrationDeContenuResoutEtAucuneNeDortTest}, sur la donnee et non sur
+ * le gabarit.</p>
  */
 final class QuestionContentSourceFactory implements ContentSourceFactory {
 
@@ -77,11 +87,16 @@ final class QuestionContentSourceFactory implements ContentSourceFactory {
         Object explication = item.get("explication");
         Object partDesignee = item.get("partDesignee");
         Object texteSupport = item.get("texteSupport");
+        Object illustration = item.get("illustration");
+        Object illustrationTexteAlternatif = item.get("illustrationTexteAlternatif");
         return new Question(new ItemId("item-" + position), enonce, bonneReponse, distracteursTexte,
                 indice == null ? Optional.empty() : Optional.of(String.valueOf(indice)),
                 explication == null ? Optional.empty() : Optional.of(String.valueOf(explication)),
                 partDesignee == null ? Optional.empty() : Optional.of(String.valueOf(partDesignee)),
-                texteSupport == null ? Optional.empty() : Optional.of(String.valueOf(texteSupport)));
+                texteSupport == null ? Optional.empty() : Optional.of(String.valueOf(texteSupport)),
+                illustration == null ? Optional.empty() : Optional.of(String.valueOf(illustration)),
+                illustrationTexteAlternatif == null
+                        ? Optional.empty() : Optional.of(String.valueOf(illustrationTexteAlternatif)));
     }
 
     private String texte(Map<?, ?> item, String champ, int position) {

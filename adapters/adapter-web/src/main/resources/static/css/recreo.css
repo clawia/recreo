@@ -310,6 +310,48 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
     margin-bottom: 0.25rem;
 }
 
+/* ADR-0073, palier 1 du visuel : le bloc qui porte le dessin d'un item. Il centre, il espace, et
+   rien d'autre - ni fond, ni bordure, ni rembourrage. Ce n'est pas une economie de style, c'est une
+   mesure d'ines-design (proposition-ines-palier-1-du-visuel.md, section 8) : un aplat sous le dessin
+   lui donnerait une surface declaree, donc un contraste calculable, alors que le seuil d'un
+   graphique non textuel (3:1) est deja franchi cinq fois - il achete 1,05 point et coute 16 px du
+   budget vertical. Aucune bordure non plus : la bordure appartient au cabinet, qui dit "ici on
+   presse", et une illustration ne se presse pas. */
+.illustration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.25rem 0 0.75rem;
+}
+
+/* Le dessin lui-meme. Chacune de ces declarations sert FIG-1 - "un rectangle reste un rectangle a
+   toute taille d'ecran, verifiable autrement que par l'oeil" - et aucune n'est decorative :
+   max-height plafonne la seule dimension que le pli compte ; max-width empeche le dessin de sortir
+   de la zone sur un ecran etroit ; height:auto et width:auto laissent le RAPPORT du fichier
+   gouverner, jamais la feuille ; object-fit:contain est la ceinture si une regle future posait les
+   deux dimensions. Elles sont quatre et non deux parce qu'ines-design a mesure la variante fautive :
+   avec un height fixe a la place de max-height, a 576 px - la ou max-width mord -, la boite rendue
+   vaut 516 x 176 et porte un rapport de 2,932 pour un fichier qui en declare 3,0. Le dessin lui-meme
+   n'est pas etire, mais la propriete que FIG-1 demande de pouvoir verifier n'est plus verifiable sur
+   la boite rendue.
+   La valeur de max-height est celle du confort de lecture mesure par ines-design (11rem, 176 px), la
+   seule des deux qu'elle ait chiffree comme telle ; l'autre (3,3125rem, 53 px) est ce que le budget
+   de pli laisse aujourd'hui, et le pli est hors de la porte pedagogique (DEC-0051, DEC-0053,
+   reconfirmes par arbitrage de l'utilisatrice du 2026-08-31). La retenir ici mettrait un veto
+   technique la ou le planning de s25 ecrit qu'il n'y en a aucun. La valeur reste a ines-design et a
+   nadia-prof, et elle est remontee comme telle.
+   Aucune couleur, aucun filtre, aucune ombre : FIG-3 et QUA-5 exigent qu'une figure lue en niveaux
+   de gris donne la meme reponse, et une feuille qui recolorerait un dessin d'item pourrait en changer
+   le sens sans que le contenu le sache. La feuille ne touche pas au dessin, elle le dimensionne. */
+.image-item {
+    display: block;
+    max-height: 11rem;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+}
+
 /* ADR-0062, NAT-5 : marque le segment de .enonce que le contenu declare designer, sur un jeu marque
    seulement (cp-nature-mot) - un jeu non marque ne rend jamais cette classe. Regle reprise de la
    proposition mesuree d'ines-design (hors-sprint, squad/sprints/s19-contenu-seul-et-conception-de-
