@@ -161,3 +161,87 @@ Elle **ne s'applique pas a ce lot** et vaut pour les paquets a formes multiples 
   **Je l'ai revu en jouant ce jeu** : sur un item a trois propositions, deux erreurs epuisent les
   distracteurs et le troisieme appui est compte comme une reussite. Ce n'est pas un defaut de ce
   contenu.
+
+---
+
+### Verdict du 2026-08-31, second passage (s24) - apres le correctif de `marc-dev`
+
+## Verdict : **VALIDE** - la reserve 1 est **levee**
+
+**Le verdict du premier passage n'est pas efface**, ni sa reserve. Ils restent lisibles avec leur
+date.
+
+*Arbre joue : ma branche `s24-nadia-2`, qui reunit les trois correctifs de ce second passage.
+Empreinte du fichier audite : `9bd75dafd99703a78aa867df3b5e858ae5ac50b8`.*
+
+### 1. La reserve 1 - ce que je demandais, et ce que j'ai obtenu
+
+**Ce que je demandais** : *"que les indices des items de forme (d) parlent de compter les parts et
+non de les nommer"*, sur les deux items que j'avais nommes.
+
+**Les six indices de la forme (d), lus dans le fichier livre :**
+
+| Fraction | Reponse | Indice |
+|---|---|---|
+| 3/8 | 8 | Le nombre du bas dit en combien de parts on partage. |
+| 2/5 | 5 | Regarde le nombre du bas : il compte les parts egales. |
+| **3/4** | **4** | **Le nombre du bas dit combien de parts il faut compter.** |
+| 1/6 | 6 | Compte les parts annoncees par le nombre du bas. |
+| **7/10** | **10** | **Cherche le nombre de parts, il est ecrit en bas.** |
+| 1/9 | 9 | Le nombre du bas compte toutes les parts egales. |
+
+**Les six parlent desormais de compter. Aucun ne parle de nommer.**
+
+**Et je les ai joues**, pas seulement lus. Sur *"Dans 7/10, en combien de parts egales le tout
+est-il partage ?"*, une reponse fausse fait apparaitre *"Cherche le nombre de parts, il est ecrit en
+bas."* : l'indice pointe le 10 et demande de compter. **Un enfant bloque ne cherche plus une
+denomination parmi 7, 9 et 10.** Meme verification sur *"Dans 3/4"*.
+
+`FRA-8` reste tenue sur les deux textes neufs : **11 mots et 10 mots**, borne 12 ; aucun ne nomme sa
+reponse.
+
+### 2. Ce que le correctif ne touche pas - verifie champ par champ, pas suppose
+
+Le fichier declare que rien d'autre n'a bouge. **Je ne l'ai pas cru : j'ai compare les 24 items
+avant et apres, champ par champ.**
+
+> **Deux champs modifies sur tout le paquet. Les deux sont des indices. Les deux sont sur les items
+> 21 et 23, ceux que j'avais nommes.**
+
+Aucune bonne reponse, aucun distracteur, aucun enonce, aucune fraction, aucune forme, aucune famille
+declaree n'a change. Et les comptes que je verifie a chaque passage sont identiques : **24 items, six
+par forme, rangs 2/2/2 sur la forme (d), famille (a) sur 4 des 6, 10 fractions de numerateur 1.**
+
+### 3. Ce qu'il a refuse de faire, et il a eu raison
+
+**Il n'a pas etendu la correction aux autres formes.** Les deux textes retires de la forme (d)
+restent en place sur des items des formes (a), (b) et (c) - **ou la reponse *est* une denomination**,
+et ou parler du nom de la part est exactement ce que la question demande.
+
+**C'est le bon geste et c'est celui que ma reserve appelait.** Le defaut n'etait jamais dans les
+textes : il etait dans leur distribution mecanique, sans regard a la forme. Corriger les textes
+partout aurait remplace un desaccord par un autre.
+
+**Il n'a ecrit aucun garde-fou pour `FRA-11`**, et son motif est juste : *"qu'un indice conduise vers
+ce que sa forme demande est un jugement de sens ; un automate qui pretendrait le tenir serait
+decoratif."* **Je le confirme, et c'est ma porte qui parle** : `FRA-11` reste dans ma seule main, et
+je prefere une condition que je tiens a la main a une regle verte qui ne verrait rien. Ce depot a
+une dette nommee pour ce genre de regle.
+
+**Et il a trouve une faute dans son propre outil de verification** plutot que de conclure trop vite -
+son controle rougissait a tort sur un mot qui contient la sous-chaine cherchee. **Verifier son
+instrument avant de s'en servir est ce que je demande a chacun**, y compris a moi ; je l'ai fait deux
+fois cette semaine sur mes propres constats.
+
+### 4. Ce que ce second verdict fait, et ce qu'il ne fait pas
+
+- Il **leve la reserve 1** et **prononce le Done pedagogique** sur `bandit-manchot-fractions-cm1`.
+- Il **maintient l'exigence de `FRA-9`** : la ligne de matrice porte la mention exacte *"moitie
+  'notion de fraction simple' seule ; la moitie 'reperage sur une droite numerique' reste non
+  couverte"*. **Sans elle, la ligne dirait plus que ce que le jeu sert.**
+- Il **n'applique `FRA-11` a aucun item de ce paquet** : elle est neuve et non retroactive, et elle
+  vaut pour les paquets a formes multiples suivants.
+- Il **ne rouvre pas** le refus de s23 sur la moitie *"reperage sur une droite numerique"*.
+- Il **n'est pas fonde sur la CI.**
+- **Sur quelles proprietes je reste la seule garde** : inchange - la plausibilite de la famille (e)
+  item par item, `FRA-8`, `FRA-11`, et le jugement de niveau.

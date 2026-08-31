@@ -627,3 +627,56 @@ troisieme forme de preuve de structure de `theo-archi` tient, et je l'ai reverif
 tort. `SAI-6` et `SAI-7` etaient nommees le 2026-08-30 comme *"le point le plus dangereux de la
 mecanique de saisie : un bareme faux passe une CI verte sans laisser de trace"*. **C'est arrive, et
 le seul garde-fou qui l'a vu, c'est d'avoir joue.**
+
+---
+
+## 10. Second passage de la porte pedagogique - `nadia-prof`, 2026-08-31
+
+*Section ajoutee apres la livraison des trois correctifs. **Je ne modifie pas un mot des sections 1
+a 9.***
+
+**J'ai rejoue.** Cette fois **sans aucune sonde** : l'entree de catalogue existe et le jeu de saisie
+s'ouvre depuis la liste du CP. Mon audit du premier passage etait degrade sur ce point ; il ne l'est
+plus.
+
+| Increment | Premier passage | Second passage |
+|---|---|---|
+| `S24-SAI-2` - le paquet de saisie | **REFUSE** | **VALIDE** - refus leve |
+| `bandit-manchot-texte-narratif-cp` | VALIDE SOUS RESERVE | **VALIDE** - reserve levee |
+| `bandit-manchot-fractions-cm1` | VALIDE SOUS RESERVE | **VALIDE** - reserve levee |
+| `bandit-manchot-pluriel-cp` | **VALIDE** | inchange, non rejoue - rien n'a bouge dessus |
+| `S24-SAI-1` - la mecanique | audit rendu | confirme, joue depuis le catalogue livre |
+
+**Aucun verdict anterieur n'est efface.** Les quatre fiches portent les deux passages, dates.
+
+**Ce que j'ai verifie moi-meme plutot que repris** : les onze items de saisie en zero initial, onze
+sur onze ; la matrice entiere des formes acceptees et refusees ; le piege octal, mesure sur le
+lecteur YAML **et** dans `SaisieContentSourceFactory`, qui convertit par `String::valueOf` sans
+erreur ; la morsure du garde-fou de `CPL-3`, en remettant le paquet dans l'etat que j'avais refuse ;
+les huit chiffres de `NAR`, avant et apres ; les deux champs modifies de `FRA`, par comparaison
+champ par champ des 24 items.
+
+**Ce que je remonte, et qui n'est pas un defaut des correctifs.** **L'arbre de reference qui m'a ete
+donne ne contenait qu'un des trois correctifs** ; les deux autres vivaient sur `s24-lea` et
+`s24-marc-2`, et **aucune branche poussee ne portait les trois**. J'ai construit l'arbre que j'ai
+joue en les reunissant sur ma branche. **Mes verdicts portent sur cet arbre-la**, et les quatre
+empreintes de fichiers qui l'identifient sont dans
+`squad/conformite/FICHE-saisie-complements-10-cp.md`, section 6 du second verdict. **L'integration de
+cloture reste due, et si elle ne rend pas ces quatre empreintes, elle ne porte pas ce que j'ai
+valide.**
+
+*Porte technique sur cet arbre, mesuree par moi a la racine du reacteur complet : **926 tests, 0
+echec, 0 erreur, 0 ignore**, BUILD SUCCESS, JDK 21.0.10 rapporte par la machine virtuelle des tests.
+Le chiffre coincide avec celui annonce pour un arbre a un seul correctif, et l'explication est que
+les deux autres ne touchent que du YAML. **La coincidence est expliquee, pas suspecte - mais elle
+montre qu'un compte de tests ne distingue pas deux arbres.***
+
+**Ce qui reste ouvert, et je ne l'adoucis pas** : le garde-fou de `CPL-3` garde ce paquet-ci et **ne
+gardera pas le prochain bareme**. Sur ce paquet les formes acceptees sont calculables depuis
+l'enonce ; sur un paquet alphabetique elles sont un jugement de francais, qu'aucun automate
+n'engendre. **`SAI-6` et `SAI-7` restent dans ma seule main**, et le premier passage a montre ce que
+cela coute quand personne ne joue : 923 tests verts, et un enfant de CP qui ecrit `03` a tort.
+
+**Et un fait que je verse pour la retro** : le catalogue contient desormais **un jeu ou un enfant qui
+ne sait pas peut echouer**, sur trente et un. C'est ce que la mecanique de saisie apporte, et c'est
+ce qu'aucun compteur de couverture ne verra.

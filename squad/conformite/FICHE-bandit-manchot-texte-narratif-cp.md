@@ -152,3 +152,133 @@ inexacte - `theo-archi` l'a corrigee et il a eu raison - ne retire rien au const
 - Il **n'est pas fonde sur la CI**, ni sur le vert d'`ADR-0072`.
 - Il **ne dit rien** du score de fin de partie, qui reste sous la reserve 5 elargie du 2026-08-30 et
   tranche par `DEC-0061`.
+
+---
+
+### Verdict du 2026-08-31, second passage (s24) - apres le correctif de `lea-dev`
+
+## Verdict : **VALIDE** - la reserve 1 est **levee**
+
+**Le verdict du premier passage n'est pas efface.** Il est date, il porte sa reserve, et c'est lui
+qui a fait exister le correctif.
+
+*Arbre joue : ma branche `s24-nadia-2`, qui reunit les trois correctifs de ce second passage.
+Empreinte du fichier audite : `3f3911392df562af8c3e6284ed15d474f273a7fe`.*
+
+### 1. La reserve 1 - ce que je demandais, et ce que j'ai obtenu
+
+**Ce que je demandais**, mot pour mot : *"que le lieu au salon de l'item 2 soit remplace par un lieu
+qui ne suppose aucun logement, en gardant les trois lieux presents dans le support (`NAR-5`) et la
+reponse dans la premiere phrase"*.
+
+**Ce que j'ai verifie sur l'item livre, et joue a l'ecran** :
+
+| Ce que j'exigeais | Etat |
+|---|---|
+| Aucun lieu ne suppose un logement | **tenu.** Le lieu d'habitation a disparu ; celui qui le remplace est un equipement scolaire, comme le reste du paquet. Balayage du paquet entier : **aucun mot de logement ni de configuration familiale** |
+| Les trois lieux presents dans le support (`NAR-5`) | **tenu.** Les trois propositions figurent en toutes lettres |
+| La reponse dans la premiere phrase | **tenu** |
+| `NAR-2` | **tenu.** Support **17 mots** (borne 18), **2 phrases**, support plus enonce **22 mots** (borne 25) |
+| `NAR-3` | **tenu.** Mot le plus long de l'item : **8 lettres** (borne 9) |
+
+### 2. Ce qu'elle a fait de plus que ce que je demandais, et qui vaut mieux
+
+**Elle n'a pas seulement retire le mot : elle a deplace un distracteur dans la premiere phrase.**
+
+Avant, la premiere phrase portait la bonne reponse et rien d'autre : un enfant qui ne lisait que la
+premiere phrase gagnait. **Maintenant elle porte la bonne reponse et un distracteur**, et le
+personnage **passe** pres d'un lieu sans y ranger l'objet. L'enfant doit donc distinguer deux verbes
+plutot que reperer un lieu.
+
+**Je l'ai joue** : j'ai presse le distracteur de la premiere phrase, il est refuse, et l'indice
+*"Relis la première phrase."* renvoie a une phrase ou les deux lieux cohabitent. **L'indice dit
+toujours ou regarder et il oblige maintenant a lire le verbe.** C'est un meilleur item qu'avant, pas
+seulement un item conforme.
+
+Sa formule - *"l'enfant doit lire le verbe, pas reperer un lieu"* - est exactement ce que la
+competence demande : *"comprendre un texte narratif tres court"*, pas apparier des chaines.
+
+### 3. Les quatre chiffres, reproduits par moi
+
+**Elle a reproduit mes quatre chiffres sur l'etat d'avant avant de mesurer l'apres. J'ai refait les
+huit.**
+
+*Methode : la mienne du 2026-08-31, celle qui a servi au premier verdict - decoupage sur les trois
+ponctuations fortes, repliage de casse, occurrence par sous-chaine, sur les 20 items ; gain decisif
+quand la phrase porte la bonne reponse et aucun distracteur ; esperance de gain quand elle porte la
+bonne reponse et des distracteurs. Aucun build.*
+
+| | Gains decisifs, phrase 1 | Esperance, phrase 1 | Gains decisifs, phrase 2 | Esperance, phrase 2 |
+|---|---|---|---|---|
+| **Avant** | 10 / 20 = **50,0 %** | **56,7 %** | 10 / 20 = 50,0 % | 50,0 % |
+| **Apres** | 9 / 20 = **45,0 %** | **54,2 %** | 10 / 20 = **50,0 %** | 50,0 % |
+
+**Les quatre chiffres qu'elle annonce sont exacts a la decimale**, et les quatre d'avant aussi.
+
+**Et elle ne cache pas ce qui ne bouge pas** : le maximum reste a **50,0 %**, desormais porte par la
+**seconde** phrase - a laquelle l'item corrige n'apportait deja rien. **Dire cela plutot que
+d'annoncer une baisse est la seule conduite qui rende un chiffre utilisable**, et je la note.
+
+### 4. Le paquet entier, reverifie et non suppose
+
+Un item a change ; deux de mes conditions se comptent sur le paquet et pouvaient bouger avec lui. Je
+les ai toutes refaites plutot que de raisonner sur le diff.
+
+| Condition | Etat apres correction |
+|---|---|
+| `NAR-2` | support max **18 mots**, **2 phrases** max, support plus enonce max **23 mots** |
+| `NAR-3` | mot le plus long **9 lettres**, a la borne |
+| `NAR-4` | les 20 enonces commencent par *Qui*, *Ou* ou *Que* |
+| `NAR-5` | **zero proposition absente** de son support, sur les 60 |
+| `NAR-7` | **20 prenoms distincts, 10 masculins et 10 feminins.** L'item corrige reemploie un prenom deja present : l'equilibre est inchange |
+| `NAR-8` | **aucun mot de logement ni de configuration familiale** dans le paquet |
+| `NAR-9` | indice le plus long **7 mots**, borne 8 ; aucun indice ne nomme sa reponse |
+| `NAR-10` | 20 items, **20 supports distincts** |
+
+### 5. Faut-il aller plus loin ? Non, et le motif n'est pas la fatigue
+
+`lea-dev` refuse de rouvrir seule un audit `COMP-2` et remonte le point : descendre le maximum de
+50,0 % demanderait deux ou trois items de plus **et mon accord prealable**. Elle a raison de ne pas
+le faire sans moi. **Ma reponse est non, et pour un motif de fond.**
+
+**Ajouter des items ne retire aucun raccourci : cela dilue un denominateur.** Les dix items
+gagnables en ne lisant que la seconde phrase resteraient gagnables, un par un, exactement comme
+aujourd'hui. Avec 23 items au lieu de 20, le taux tomberait mecaniquement vers 43 pour cent et le
+garde-fou verdirait **sans qu'un seul enfant ait a lire une phrase de plus**. **Ce serait rendre un
+compteur plus vert en laissant le defaut ou il est**, c'est-a-dire la famille de defaut exacte que ce
+depot vient de sanctionner trois fois en un jour. *"Compter une population n'est pas la juger"*
+vaut aussi quand c'est moi qui commanderais le comptage.
+
+**Ce qui retirerait vraiment un raccourci est ce que `lea-dev` a fait sur l'item 2** : mettre un
+distracteur dans la meme phrase que la reponse, pour qu'aucune phrase seule ne decide. Cela se fait
+**item par item, sur les items existants**, et c'est un travail de reecriture, pas d'ajout.
+
+**Je n'ouvre pas de reserve neuve sur ce paquet, et je dis pourquoi plutot que de le laisser
+supposer.** Trois raisons, dans l'ordre de leur poids :
+
+1. **`NAR-11` est non retroactive, je l'ai ecrite ainsi hier, et je m'y tiens.** Ouvrir aujourd'hui
+   une reserve qui applique une barre posee apres coup serait deplacer mes poteaux sur le meme paquet
+   deux jours de suite.
+2. **Au CP, reperer la phrase qui porte la reponse est une part de la competence**, pas un
+   contournement pur. Ce n'est pas comparable a presser toujours la plus grande des trois valeurs
+   numeriques sans lire : l'enfant lit une phrase et il apparie ce qu'il y trouve. **Le raccourci est
+   reel, et il est moins grave que celui de s12.**
+3. **La propriete est desormais gardee pour la suite** : `ADR-0072` la tient sur tout paquet a texte
+   support, et `NAR-11` la tient de ma main sur les paquets a venir. **Le trou se referme par
+   l'avant, pas par la reecriture du passe.**
+
+**Ce que je dis a `camille-po`, pour que ce ne soit pas a rediscuter** : si le produit veut abaisser
+ce taux sur `cp-texte-narratif`, c'est **du backlog et non une affaire de porte** ; le libelle utile
+est *"reecrire les items dont une seule phrase decide, pour qu'aucune phrase seule ne suffise"*, et
+**surement pas** *"ajouter des items"*. Je ne le demande pas et je ne le bloque pas.
+
+### 6. Ce que ce second verdict fait, et ce qu'il ne fait pas
+
+- Il **leve la reserve 1** et **prononce le Done pedagogique** sur
+  `bandit-manchot-texte-narratif-cp`.
+- Il **n'efface pas** le verdict du premier passage ni sa reserve, qui restent lisibles avec leur
+  date.
+- Il **n'ouvre aucune reserve neuve** et n'applique `NAR-11` a aucun item de ce paquet.
+- Il **n'est pas fonde sur la CI** ni sur le vert d'`ADR-0072`.
+- **Sur quelles proprietes je reste la seule garde** : inchange par rapport au premier passage -
+  `NAR-6` integralement, `NAR-4`, `NAR-7`, `NAR-8`, et desormais `NAR-11` pour les paquets suivants.

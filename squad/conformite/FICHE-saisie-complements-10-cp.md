@@ -255,3 +255,191 @@ ensuite. Je n'ai rien a y redire ; c'est du sequencement.
   ligne verte, et cela vaut aujourd'hui qu'un refus est prononce.
 - Il **n'est pas fonde sur la CI.** La porte technique est verte ; ce refus vient d'avoir joue.
 - Il **ne demande le retrait d'aucun jeu du catalogue** : le jeu refuse n'y est pas.
+
+---
+
+### Verdict du 2026-08-31, second passage (s24) - apres le correctif de `sofia-sm`
+
+## Verdict : **VALIDE** - le refus du 2026-08-31 est **leve**
+
+**Le verdict REFUSE ci-dessus n'est pas efface et ne le sera jamais.** Il est date, il porte un
+motif, et c'est lui qui a fait exister le correctif. Un refus efface n'a aucune valeur de preuve.
+
+### 1. Ce que j'ai fait, et la difference avec le premier passage
+
+**J'ai rejoue, et cette fois sans aucune sonde.** L'entree de catalogue existe :
+`saisie-complements-10-cp` apparait dans la liste du niveau CP, quatorzieme jeu de la liste. **Mon
+audit n'est plus degrade** : le premier passage l'etait sur ce point precis, il ne l'est plus.
+
+*Arbre joue : ma branche `s24-nadia-2`, qui reunit les trois correctifs - `5a8a428` de `sofia-sm`,
+`16d4a24` de `lea-dev`, `fdfff7c` de `marc-dev`. Jar construit dessus, sur le JDK 21 de la toolchain
+declaree. **Aucune branche poussee ne contenait les trois quand j'ai ete appelee** : section 6.*
+
+### 2. `CPL-3` - les onze items, joues un par un
+
+**Ma condition depuis s17 est la totalite et non un echantillon.** Le premier passage n'avait atteint
+que huit items sur onze par tirage aleatoire ; celui-ci les a tous.
+
+*Methode : je redemarre une partie jusqu'a rencontrer chaque item, puis je tape la reponse precedee
+d'un zero. 31 tirages pour couvrir les onze.*
+
+| Enonce | Reponse | J'ai tape | Resultat |
+|---|---|---|---|
+| `10 + ? = 10` | 0 | `00` | **acceptee** |
+| `9 + ? = 10` | 1 | `01` | **acceptee** |
+| `8 + ? = 10` | 2 | `02` | **acceptee** |
+| `7 + ? = 10` | 3 | `03` | **acceptee** |
+| `6 + ? = 10` | 4 | `04` | **acceptee** |
+| `5 + ? = 10` | 5 | `05` | **acceptee** |
+| `4 + ? = 10` | 6 | `06` | **acceptee** |
+| `3 + ? = 10` | 7 | `07` | **acceptee** |
+| `2 + ? = 10` | 8 | `08` | **acceptee** |
+| `1 + ? = 10` | 9 | `09` | **acceptee** |
+| `0 + ? = 10` | 10 | `010` | **acceptee** |
+
+**Onze sur onze.** `03` etait le cas que j'avais refuse ; il passe.
+
+**Et j'ai rejoue la matrice entiere de `CPL-3`**, pour verifier que le correctif n'a rien ouvert
+d'autre :
+
+- **acceptees, et elles le sont** : chiffres, lettres, lettres en majuscules, lettres avec capitale,
+  lettres sans accent (`zero` pour la forme accentuee), zero initial, espaces de bord, **zero initial
+  et espaces ensemble** ;
+- **refusees, et elles le sont** : l'operation ecrite, la phrase, un autre nombre, les lettres d'un
+  autre nombre.
+
+**`CPL-3` est tenue dans ses deux moities** : ce qu'elle accepte est accepte, ce qu'elle exclut est
+exclu. **`SEUIL-2` n'est plus franchi.**
+
+### 3. Le piege octal - verifie plutot que cru
+
+`sofia-sm` ecrit que `010` non quote est lu **en octal** et sert `8`. **Je l'ai mesure moi-meme**, et
+la mesure dit plus que sa phrase :
+
+| Ecriture nue dans le YAML | Ce que le lecteur rend |
+|---|---|
+| `010` | l'entier **8** |
+| `07` | l'entier 7 |
+| `00` | l'entier 0 |
+| `01` | l'entier 1 |
+| `09` | la chaine `09` - octal invalide, repli en chaine |
+
+**Et j'ai verifie pourquoi cela se chargerait sans bruit** : `SaisieContentSourceFactory` lit les
+formes acceptees par `String::valueOf`. Un entier `8` y devient la chaine `"8"` **sans erreur**. Le
+paquet resterait valide, se chargerait, et servirait un bareme faux - exactement ce qu'elle decrit.
+Et `07`, `00`, `01` ne rendraient pas une valeur fausse mais **perdraient silencieusement leur
+zero**, ce qui ramenerait le defaut que je venais de refuser.
+
+**Les onze ecritures sont entre guillemets dans le fichier livre, et le fichier dit pourquoi.** J'ai
+verifie a l'ecran que le piege ne mord pas : sur `0 + ? = 10`, dont la reponse est `10`, taper `8`
+est **refuse**.
+
+### 4. Le garde-fou de `CPL-3` - eprouve, pas cru
+
+`CPL-3` etait **une condition ecrite, datee, precise, qu'aucune regle n'executait**. C'est ce trou
+qui a laisse passer le defaut sous 923 tests verts. Il est desormais ferme par
+`PaquetCpComplements10SaisieTest`.
+
+**Ce qui fait sa valeur, et je le nomme parce que c'est reproductible ailleurs** : les formes
+attendues sont **calculees depuis l'enonce** - le complement a 10 - et **jamais lues dans le
+paquet**. Une clause qui lirait le fichier des deux cotes verrait un paquet coherent avec lui-meme,
+ce qu'il etait deja quand je l'ai refuse. **C'est la difference entre compter une population et la
+juger**, et c'est ce qui rend cette regle capable de voir une declaration **manquante**.
+
+**Morsure verifiee par moi**, et non reprise d'un rapport : j'ai remis le fichier du paquet dans
+l'etat exact que j'avais joue et refuse, puis relance la classe.
+
+*Perimetre de la mesure : module `adapter-content` et ses amonts, **pas le depot**. Le `-am` est
+porte.*
+
+> `Tests run: 3, Failures: 1` - message rendu :
+> *"CPL-3 enumere l'ecriture 010 et la mecanique doit l'accepter. SEUIL-2 : une reponse juste
+> refusee sur une question de forme coute un essai a l'enfant, et trois de ces refus brulent la
+> manche en lui apprenant qu'il avait tort."*
+
+**La regle rougit sur le materiau reel du defaut, et son message porte mon motif.** Le fichier a ete
+restaure ensuite ; l'empreinte du paquet servi est inchangee.
+
+### 5. `CPL-9` - l'entree de catalogue
+
+*Mesures faites par moi sur le catalogue servi. Unite de compte : le mot est une suite de caracteres
+sans espace, ponctuation isolee non comptee.*
+
+| Clause | Verdict | Mesure |
+|---|---|---|
+| **`CPL-9a`** - distinguable de l'entree existante **sans l'ouvrir** | **tenue** | Les deux entrees figurent bien ensemble dans la liste du CP, que j'ai ouverte. Elles se distinguent par le **verbe d'action** en tete du titre et de la consigne, et par aucun mot d'interface. Un enfant de CP lit ce verbe-la |
+| **`CPL-9b`** - la consigne dit que l'enfant ecrit | **tenue** | La difference d'action est dans la consigne, pas decouverte a l'ecran |
+| **`CPL-9c`** - titre au plus 5 mots, consigne au plus 8 | **tenue, aux deux bornes** | Titre **5 mots**, consigne **8 mots**. *Et je confirme la mesure qui avait motive la retenue : l'ancienne proposition compte **9 mots**. Je l'ai recomptee moi-meme, je ne l'ai pas relayee* |
+| **`CPL-9d`** - vocabulaire de CP | **tenue** | La consigne n'emploie que des mots courts et courants. Le titre emploie un terme **deja porte par l'entree voisine** : l'entree neuve n'introduit aucun vocabulaire que le catalogue ne servait pas |
+| **`CPL-9e`** - la consigne ne nomme pas la reponse | **tenue** | Elle enonce la tache, elle ne donne ni la reponse ni une methode |
+
+**Inventaire verifie** : **31 entrees au catalogue, 31 paquets servis, aucun paquet orphelin.** Au
+premier passage il y en avait un, et c'etait celui-ci.
+
+### 6. Ce que je remonte, et qui n'est pas un defaut du correctif
+
+**L'arbre de reference qu'on m'a donne pour reverifier ne contient qu'un des trois correctifs.**
+Verifie par moi : celui de `lea-dev` vit sur `s24-lea`, celui de `marc-dev` sur `s24-marc-2`, et
+**aucune branche poussee ne portait les trois**.
+
+**J'ai donc construit l'arbre que j'ai joue**, en reunissant les trois sur ma branche. **Mes trois
+verdicts portent sur cet arbre-la**, et un tiers peut le refaire. Empreintes des fichiers audites :
+
+| Fichier | Empreinte |
+|---|---|
+| `cp-complements-10-saisie.yaml` | `8c92fe5d1d6b048f209c3aa6e7cf47bd3fa127c1` |
+| `cp-texte-narratif.yaml` | `3f3911392df562af8c3e6284ed15d474f273a7fe` |
+| `cm1-fractions.yaml` | `9bd75dafd99703a78aa867df3b5e858ae5ac50b8` |
+| `catalogue.yaml` | `bf70e7eea690569d9607eea04ea1e847a7ff10e2` |
+
+**Si l'integration de cloture ne rend pas ces quatre empreintes, elle ne porte pas ce que j'ai
+valide.**
+
+*Porte technique sur cet arbre, mesuree par moi : `mvn -B clean verify` a la racine du reacteur
+complet - **926 tests, 0 echec, 0 erreur, 0 ignore**, BUILD SUCCESS, JDK **21.0.10** rapporte par la
+machine virtuelle des tests. **Ce chiffre ne prononce rien** ; il dit que l'arbre que j'ai joue tient
+debout. Il coincide avec celui qu'on m'a annonce pour un arbre a un seul correctif, et l'explication
+est simple : les deux autres correctifs ne touchent que du YAML de contenu et n'ajoutent aucun test.
+**La coincidence est expliquee, pas suspecte** - mais elle montre qu'un compte de tests ne distingue
+pas deux arbres.*
+
+### 7. Ce qui reste ouvert, et je ne l'adoucis pas
+
+**Le garde-fou de `CPL-3` garde ce paquet-ci. Il ne gardera pas le prochain bareme.** `sofia-sm` le
+concede et elle a raison. Voici **pourquoi**, parce que le motif compte plus que le constat.
+
+- **Sur ce paquet, les formes acceptees sont calculables** : la reponse est une fonction de l'enonce,
+  et les ecritures tolerees d'un nombre forment un ensemble ferme et mecanique - chiffres, zero
+  initial, lettres. Un automate peut les engendrer sans lire le paquet.
+- **Sur un paquet alphabetique, elles ne le sont pas** : savoir quelles variantes d'un mot comptent
+  pour la meme reponse est **un jugement de francais**, pas une fonction de l'enonce. Aucun automate
+  ne les engendre, et `SEUIL-5` le dit depuis le 2026-08-24 : *"Si les formes acceptees d'un paquet
+  ne sont relues par personne de competent en francais, la saisie ne doit pas exister."*
+
+**Ce qui reste donc dans ma seule main** : **la completude des formes acceptees d'un paquet face a ce
+qu'un enfant de ce niveau ecrirait legitimement.** Une regle peut prouver la **coherence** d'un
+paquet avec un calcul ; elle ne peut pas prouver sa **completude** face a un enfant. C'est `SAI-6` et
+`SAI-7`, et le premier passage a montre ce que cela coute quand personne ne joue.
+
+**Ce que je route comme une question, et non comme une demande** - a `theo-archi` et `yanis-qa` : la
+**forme** de ce garde-fou est transferable meme quand son calcul ne l'est pas. Sur un paquet
+alphabetique, la source independante du paquet ne serait plus l'enonce mais **ma liste ecrite dans la
+fiche**. Cela deplace le risque vers une erreur de transcription, ce qui n'est pas rien. **Je dis que
+c'est concevable ; je ne dis pas qu'il faut l'ecrire**, et je ne l'exigerai pas avant le premier
+paquet de saisie alphabetique.
+
+### 8. Ce que ce second verdict fait, et ce qu'il ne fait pas
+
+- Il **leve le refus** du 2026-08-31 sur `S24-SAI-2` et **prononce le Done pedagogique**.
+- Il **n'efface pas le refus**, qui reste lisible avec sa date et son motif.
+- Il **ne fait bouger aucune ligne de matrice.** `CPL-1` le disait d'avance : la ligne *"Complements
+  a 10"* est deja `couvert-valide` par un autre jeu et **ne bouge pas**. Deux entrees sur une meme
+  ligne ne sont pas une double couverture.
+- Il **confirme l'audit de la mecanique de saisie** rendu au premier passage, cette fois joue depuis
+  le catalogue livre : les cinq seuils tiennent, la revelation debloque, la partie se termine.
+- **Un fait que je verse, et qui n'est pas rien** : le catalogue contient desormais **un jeu ou un
+  enfant qui ne sait pas peut echouer**. Sur les trente autres il ne le peut pas - c'est la reserve 5
+  elargie, tranchee par `DEC-0061`. **La saisie est la premiere breche dans ce mur, et elle est d'un
+  jeu sur trente et un.**
+- **`CPL-7` sur tablette reste hors de ma portee**, et la reserve du premier passage tient telle
+  qu'elle est ecrite. Personne dans cette squad n'a l'appareil.
