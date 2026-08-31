@@ -167,6 +167,11 @@ en recoit change** - son contenu, son ecran, son comportement, ce qu'il lit apre
 son score. Il ne l'est pas quand seule la forme du code qui le produit change **et que ce qu'il rend
 est inchange**.
 
+> **RENVERSE le 2026-08-31 par la reponse de l'utilisatrice a `Q1` - voir l'amendement en fin de
+> document.** Elle a choisi l'autre lecture : *"tout changement du code"*. Ce critere-ci n'est plus
+> celui du produit. **Le texte reste ici, non efface** : il vaut comme la proposition que j'ai faite
+> et comme la mesure de l'ecart entre ce que je proposais et ce qu'elle a voulu.
+
 ### 6.3 Ce que je ne tranche pas, et je m'arrete la
 
 **Savoir si les lots 1 et 3 laissent ce que rendent les 27 jeux strictement inchange est un fait
@@ -178,6 +183,11 @@ plusieurs fois la difference entre concu pour et mesure.
 l'utilisatrice a ete maintenu apres qu'on lui a signale cette lecture. **Les 27 jeux existants
 restent hors de la porte de `nadia-prof` a s24**, quelle que soit la reponse de `theo-archi`, et la
 CI est alors leur seul garde - avec le trou nomme en 5.a, qui est le prix et non un desaccord.
+
+> **CADUC le 2026-08-31.** Ce paragraphe enregistrait un echange anterieur a la reponse de
+> l'utilisatrice a `Q1`. Sous *"tout changement du code"*, **les 27 jeux existants rentrent au
+> contraire dans la porte de `nadia-prof` a la cloture de s24**, et le cout de cette entree est
+> instruit par `DEC-0063`. Non efface, date, remplace.
 
 **Ce que je demande, et ce n'est pas un lot de plus** : que la cloture de s24 dise **si** l'invariance
 de rendu des 27 jeux a ete **mesuree** ou seulement **attendue**. Une phrase, avec sa methode ou avec
@@ -294,3 +304,102 @@ et la lecon qui en est tiree). Voici les proprietaires.
 - Elle **ne rouvre pas le perimetre de s24**, gele par `DEC-0059`.
 - Elle **ne durcit ni n'elargit** les deux lignes de l'utilisatrice. Partout ou elle a du choisir,
   elle a ecrit qu'elle choisissait, au nom de qui, et ce que l'autre lecture aurait donne.
+
+---
+
+## Amendement du 2026-08-31 (meme jour) - l'utilisatrice repond aux six questions, et l'une d'elles renverse mon critere
+
+### A.1 Ses reponses, recopiees telles quelles
+
+Six reponses, dans l'ordre ou elle les a ecrites. **Recopiees mot pour mot, sans reformulation** -
+c'est la discipline que la section 1 de ce document s'impose, et elle vaut aussi pour ce qui me
+donne tort.
+
+| # | Sa reponse, verbatim | Ce qu'elle repond |
+|---|---|---|
+| `Q1` | *"tout changement du code"* | La maille de "modifie" (section 8 de ce document) |
+| `Q2` | *"1 ils rentrent"* | Le sort des 27 jeux sous une correction partagee (section 8, issue 1 de la section 7.3) |
+| `Q3` | *"constat est ouvert"* | Le constat est-il ferme comme la validation (section 8) |
+| `Q4` | *"oui"* | Nommer le canal d'animation dans le depot (`DEC-0062`, section 6) |
+| `Q5` | *"MASTER"* | Le nom du canal (`DEC-0062`, section 6) |
+| `Q6` | *"oui"* | La borne *"un enonce de forme 3 ne vaut jamais motif"* (`DEC-0062`, section 6) |
+
+**Une precision de provenance, et elle applique la convention que `DEC-0062` propose** : la
+numerotation `Q4` a `Q6` n'est pas de moi - `DEC-0062`, section 6, posait trois points sans les
+numeroter. Elle m'est parvenue **de MASTER, sans source dans le depot**. La correspondance
+ci-dessus est celle que MASTER donne ; je la reprends parce qu'elle est univoque sur les trois
+points de `DEC-0062`, et je le signale plutot que de laisser croire que j'avais numerote.
+
+### A.2 Ce qui est renverse - `Q1`, et c'est mon propre critere
+
+**J'avais propose que "modifie" se lise sur ce que l'enfant recoit. Elle a choisi l'autre lecture.**
+
+> **Le critere du produit est desormais : un jeu est *modifie* quand le code qui produit son ecran
+> change.** L'effet de ce changement sur ce que l'enfant voit n'entre pas dans la qualification.
+
+**Ce que j'ai marque sans l'effacer** : la section 6.2 porte l'avertissement de renversement, et le
+paragraphe de la section 6.3 qui affirmait que les 27 jeux restaient hors de la porte a s24 est
+marque caduc. Les deux textes restent lisibles a leur place. **Un dossier ou l'on efface ce qui
+avait ete propose avant d'etre corrige ne permet plus de mesurer l'ecart, et c'est l'ecart qui
+enseigne.**
+
+**Ce que je ne fais pas dire a sa reponse.** L'option qu'elle designe portait, dans `Q1`, le texte
+complet *"tout changement du code qui produit son ecran"*. **Je la lis comme designant cette
+option-la, et pas comme un "tout code, sans distinction".** Consequence : **le code de test ne
+produit aucun ecran d'enfant** ; un garde-fou modifie dans `src/test` ne rend donc aucun jeu
+modifie. Je resous cette residuelle dans le sens etroit **pour ne rien bloquer**, je la signale
+plutot que de la taire, et si l'utilisatrice voulait dire "tout code y compris les tests", il suffit
+d'un mot pour que la ligne bouge - le cout, lui, changerait beaucoup.
+
+### A.3 Le point que MASTER me demande d'instruire : une invariance de rendu mesuree changerait-elle quelque chose ?
+
+**Sur la qualification : non, et la lecture de MASTER est la bonne.** Le critere retenu par
+l'utilisatrice porte **sur le code, pas sur son effet**. Mesurer que les 27 jeux rendent exactement
+la meme chose apres les lots 1 et 3 ne rend pas leur code inchange. **Les 27 sont modifies, mesure
+ou pas.** C'est precisement ce qui distingue la lecture qu'elle a choisie de celle que je proposais :
+la mienne interrogeait l'effet, la sienne constate le geste. Une regle qui constate un geste est plus
+simple a tenir et ne se discute pas ; c'est probablement pourquoi elle l'a prise.
+
+**Sur le cout : oui, et lourdement.** Une invariance de rendu mesuree ne change pas *si* les 27 jeux
+rentrent dans la porte, elle change **ce que leur reaudit coute a `nadia-prof`**. Rejouer 27 jeux
+sans rien savoir de ce qui a bouge n'est pas le meme travail que les rejouer avec la preuve qu'aucun
+de leurs ecrans n'a change. **La phrase que j'avais routee a `theo-archi` comme une formalite de
+cloture cesse d'en etre une** : elle devient l'entree qui dimensionne la file de reaudit.
+
+**Je releve donc son rang, et je ne demande pas de travail neuf** : ce que je demande a
+`theo-archi`, par `sofia-sm`, c'est de dire **si une telle mesure existe deja ou se derive de ce que
+les lots produisent de toute facon** - et sinon, de le dire aussi. **Si l'etablir demandait un lot,
+la decision de le prendre est de capacite, donc de `sofia-sm`, et je ne la prends pas.** Le
+perimetre de s24 n'est pas rouvert par cette demande.
+
+**Ce que je ne tranche pas non plus** : l'enumeration exacte des lots de s24 qui touchent du code
+producteur d'ecran. Les lots 1 et 3 en sont, cela ne fait aucun doute - `domain`, `adapter-content`,
+`bootstrap` et `adapter-web` en production. Pour les lots 2, 4 et 5b, la frontiere entre production
+et test se lit dans l'arbre, pas dans ma tete : **l'enumeration est de `theo-archi`.** Le critere,
+lui, est ci-dessus et il est ferme.
+
+### A.4 Ce qui est confirme
+
+- **`Q3` confirme ma lecture de la section 7.2** : *"constat est ouvert"*. `nadia-prof` peut
+  constater et router un fait sur un jeu existant sans que ce soit valider ni retester. **C'est la
+  reponse qui maintient en vie la reserve 5 elargie**, et donc `DEC-0061`.
+- **`Q2` confirme l'issue 1 de la section 7.3** : *"1 ils rentrent"*. J'avais ecrit que cette issue
+  *"rendrait la correction impraticable"* ; **elle l'a choisie en connaissance de cette phrase**, ce
+  qui est exactement le regime que je demandais - un cout paye les yeux ouverts, pas decouvert.
+  `DEC-0061` en tient compte par son amendement du meme jour.
+- **`Q4`, `Q5` et `Q6`** ferment la section 6 de `DEC-0062`, qui passe de `Proposee` a `Acceptee`.
+
+### A.5 Ce que cet amendement declenche, et qui le porte
+
+**Une decision qui implique un changement sans proprietaire nomme n'est pas prise.** `Q1` implique un
+changement lourd sur la cloture de s24 : **les 27 jeux du catalogue deviennent modifies**, contre une
+borne d'audit de 4 a 5 paquets par sprint.
+
+**Ce cout est instruit dans `DEC-0063`**, ecrite dans le meme geste que cet amendement, et route a
+ses trois proprietaires - `camille-po` pour le perimetre et la matrice, `sofia-sm` pour le
+sequencement et la capacite, `nadia-prof` pour ce qu'elle peut reellement porter. **Il n'est ni
+tranche seul, ni laisse sans proprietaire.**
+
+**Ce que cet amendement ne fait pas** : il ne rouvre pas le perimetre de s24, ne declare aucune
+bascule, ne prononce aucun Done, ne touche aucune ligne de matrice par lui-meme, et ne demande a
+aucun developpeur de s24 de changer quoi que ce soit a ce qu'il fait aujourd'hui.
