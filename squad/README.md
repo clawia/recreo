@@ -334,9 +334,8 @@ ceremonie.
 ## 7. Le double Done
 
 **Done technique** : `mvn verify` vert - compilation, tests unitaires, tests d'integration Spring
-Boot, ArchUnit, et integration H2 une fois `adapter-persistence` cree. C'est **la CI qui juge**,
-pas un agent. Yanis et Theo en sont les garants : ils rendent le jugement fiable et le rapportent
-honnetement.
+Boot, ArchUnit. C'est **la CI qui juge**, pas un agent. Yanis et Theo en sont les garants : ils
+rendent le jugement fiable et le rapportent honnetement.
 
 **Done pedagogique** : prononce par **`nadia-prof`**, et par elle seule, avec un motif ecrit dans
 `squad/conformite/FICHE-<jeu>.md`. Trois verdicts : `VALIDE`, `VALIDE SOUS RESERVE`, `REFUSE`.
