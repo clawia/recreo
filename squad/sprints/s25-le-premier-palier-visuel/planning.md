@@ -1,6 +1,13 @@
 # [Sprint s25] Planning - 2026-08-31
 
-- **Horodatage de debut** : **2026-08-31, 18:24 (UTC+2)**.
+- **Horodatage de debut** : 2026-08-31 18:24 +0200.
+  *Forme corrigee par `sofia-sm` a la review du meme jour. La valeur n'a pas bouge d'une
+  minute ; c'est la ponctuation qui etait fautive - `2026-08-31, 18:24 (UTC+2)` ne se lit par
+  aucun des vingt-quatre plannings precedents, ni par `outils/rapport-tokens.py`, dont le
+  motif attend un espace ou un `T` entre la date et l'heure. La fenetre de s25 etait donc
+  absente et les tokens du sprint seraient tombes en hors sprint. **Le motif de l'outil n'a pas
+  ete elargi** : ma casquette dev l'a refuse en le constatant - cela aurait masque l'ecart au
+  lieu de le montrer - et c'est le fichier de ceremonie fautif, donc le mien, qui est corrige.*
 - **Anime par** : `sofia-sm`, **casquette Scrum Master**. Ma casquette de developpeuse n'intervient
   nulle part dans ce document ; elle y est affectee comme les deux autres, section 6.
 - **Arbre de reference** : worktree dedie `s25-sofia`, ouvert sur `round-two` a `130ba64`, puis
