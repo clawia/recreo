@@ -111,6 +111,9 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
     private static final String PROPOSITION_FAUSSE = "mauvaise";
 
     /** Le seul niveau du catalogue de test (PartieControllerTest.JeuDeTestConfiguration). */
+    /** S24 : le jeu de la seconde mecanique du catalogue de test (PartieControllerTest). */
+    private static final String JEU_SAISIE_ID = PartieControllerTest.JEU_SAISIE_ID;
+
     private static final String NIVEAU = "CP";
 
     /**
@@ -237,7 +240,35 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
         reponses.add(reponse("confirmation du changement de niveau, retour a la liste filtree",
                 "POST /niveaux/{niveau}/confirmer", confirmerLeChangementDeNiveau()));
 
+        // S24, ADR-0058 : les deux routes de la seconde mecanique. Aucune ne rend d'ecran de jeu
+        // avec des propositions - un ecran de saisie n'en porte aucune - donc ecransAnimables() y
+        // sera vide et les clauses de cette classe ne les jugeront pas. Seule la couverture des
+        // routes l'exige, exactement comme pour les deux routes de niveau ci-dessus. C'est aussi ce
+        // qui explique que le fragment de saisie ne pose pas data-arrivee : un marqueur qu'aucune
+        // regle ne lit serait un drapeau mort.
+        reponses.add(reponse("manche de saisie apres une reponse fausse, la partie continue",
+                "POST /parties/{jeuId}/reponses", reponseEcriteFausse()));
+        reponses.add(reponse("manche de saisie suivante, apres le geste de suite",
+                "POST /parties/{jeuId}/manche", gesteDeSuiteApresLaRevelation()));
+
         return reponses;
+    }
+
+    private MockHttpServletRequestBuilder reponseEcriteFausse() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_SAISIE_ID).session(session));
+        return post("/parties/{jeuId}/reponses", JEU_SAISIE_ID).session(session)
+                .param("reponseEcrite", "3");
+    }
+
+    private MockHttpServletRequestBuilder gesteDeSuiteApresLaRevelation() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_SAISIE_ID).session(session));
+        for (String faux : java.util.List.of("1", "2", "3")) {
+            mockMvc.perform(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID).session(session)
+                    .param("reponseEcrite", faux));
+        }
+        return post("/parties/{jeuId}/manche", JEU_SAISIE_ID).session(session);
     }
 
     private MockHttpServletRequestBuilder demandeDeConfirmationDeNiveau() throws Exception {

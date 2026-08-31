@@ -125,7 +125,17 @@ class TexteAccentueDesGabaritsTest {
             "Non, c'est",                          // idem ; la reponse suit, posee par le modele
             "C'est fini !",                        // S10 : remplace le message refuse a S02
             "Oups ! Le jeu a un souci.",           // aucun arbitrage nomme dans le depot
-            "Recommencer");                        // arbitrage du 2026-08-07 : seule chose pressable
+            "Recommencer",                         // arbitrage du 2026-08-07 : seule chose pressable
+            // S24, fragments/saisie.html. Les trois textes de cet ecran sont des CANDIDATS au sens
+            // ou ines-design l'emploie (proposition-ines-ecran-de-saisie.md, section 2.6) : elle
+            // les propose et ecrit que nadia-prof seule arbitre ce qu'un enfant de six ans lit,
+            // apres avoir joue l'increment. Ils entrent dans cet inventaire pour que le prochain
+            // qui les changerait le fasse en clair, jamais en silence - c'est tout ce que ce
+            // garde-fou dit, il ne les valide pas. Le quatrieme texte de cet ecran, "Ce n'est pas
+            // ca.", est pose par le modele et n'est donc pas un noeud de texte de gabarit.
+            "Je réponds",                          // candidat d'ines-design, section 2.6
+            "Continuer",                           // candidat d'ines-design, section 2.4
+            "On écrit :");                         // SAI-9b, exemple de nadia-prof du 2026-08-24
 
     /** ADR-0013 obligation 1 : le perimetre balaye vient du repertoire, jamais d'une liste. */
     private static List<Path> tousLesGabarits(Path racine) {

@@ -88,6 +88,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 class AucunArretDeTabulationNEstDestructeurTest {
 
     private static final String JEU_ID = "un-jeu";
+    /** S24 : le jeu de la seconde mecanique du catalogue de test (PartieControllerTest). */
+    private static final String JEU_SAISIE_ID = PartieControllerTest.JEU_SAISIE_ID;
+
     private static final String JEU_REPETE_ID = "jeu-repete";
     private static final String PROPOSITION_FAUSSE = "mauvaise";
 
@@ -199,6 +202,41 @@ class AucunArretDeTabulationNEstDestructeurTest {
                             .param("propositionChoisie", PROPOSITION_FAUSSE));
                 }));
 
+        // S24, ADR-0058 : les deux routes de la seconde mecanique. SEUIL-4 est la condition de
+        // nadia-prof qui mord ici - "si le champ de saisie n'est pas atteignable et validable au
+        // clavier seul, la saisie ne doit pas exister" - et le clavier est le seul geste depuis
+        // l'arbitrage du 2026-08-25. Le champ est un arret de tabulation de plus, et il entre dans
+        // ce corpus par le meme selecteur que les autres.
+        ecrans.add(ecranFragment("manche de saisie apres une reponse fausse, la partie continue",
+                "POST /parties/{jeuId}/reponses", session -> {
+                    corps(post("/parties/{jeuId}", JEU_SAISIE_ID).session(session));
+                    return corps(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID).session(session)
+                            .param("reponseEcrite", "3"));
+                }));
+
+        ecrans.add(ecranFragment("manche de saisie en revelation, le champ a disparu",
+                "POST /parties/{jeuId}/reponses", session -> {
+                    corps(post("/parties/{jeuId}", JEU_SAISIE_ID).session(session));
+                    corps(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID).session(session)
+                            .param("reponseEcrite", "1"));
+                    corps(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID).session(session)
+                            .param("reponseEcrite", "2"));
+                    return corps(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID).session(session)
+                            .param("reponseEcrite", "3"));
+                }));
+
+        ecrans.add(ecranFragment("manche de saisie suivante, apres le geste de suite",
+                "POST /parties/{jeuId}/manche", session -> {
+                    corps(post("/parties/{jeuId}", JEU_SAISIE_ID).session(session));
+                    corps(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID).session(session)
+                            .param("reponseEcrite", "1"));
+                    corps(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID).session(session)
+                            .param("reponseEcrite", "2"));
+                    corps(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID).session(session)
+                            .param("reponseEcrite", "3"));
+                    return corps(post("/parties/{jeuId}/manche", JEU_SAISIE_ID).session(session));
+                }));
+
         ecrans.add(ecranFragment("demande de confirmation avant d'abandonner, la partie continue",
                 "POST /retour", session -> {
                     corps(post("/parties/{jeuId}", JEU_ID).session(session));
@@ -305,16 +343,26 @@ class AucunArretDeTabulationNEstDestructeurTest {
         if (arret.hasAttr("hx-get")) {
             return Optional.of(new RequeteDeclaree("GET", arret.attr("hx-get"), Map.of()));
         }
-        if ("submit".equals(arret.attr("type"))) {
-            Element formulaire = arret.closest("form");
-            if (formulaire != null && formulaire.hasAttr("hx-post")) {
-                Map<String, String> parametres = new LinkedHashMap<>();
-                String nom = arret.attr("name");
-                if (!nom.isBlank()) {
-                    parametres.put(nom, arret.attr("value"));
-                }
-                return Optional.of(new RequeteDeclaree("POST", formulaire.attr("hx-post"), parametres));
+        // S24, ADR-0058 : un arret de tabulation peut desormais etre un CHAMP et non un declencheur.
+        // Un <input> n'envoie rien de lui-meme ; ce qu'il peut faire partir, c'est la requete de son
+        // formulaire, avec sa propre valeur dedans. Cette branche ne teste donc plus type="submit" :
+        // elle juge tout arret vivant dans un formulaire qui declare une requete SUR CETTE REQUETE,
+        // qu'il la declenche ou qu'il la nourrisse. Le bouton de soumission reste le cas particulier
+        // ou nom et valeur designent le choix presse ; le champ est le cas general.
+        //
+        // Ce que cela ne relache pas : un arret qui ne declare rien ET ne vit dans aucun formulaire
+        // qui declare quelque chose fait toujours echouer l'obligation 2 ci-dessous. Le silence d'un
+        // bouton dont le hx-post aurait disparu reste rouge - ce que ce garde-fou existe pour
+        // attraper. Ce que la branche ajoute est un cas ou l'arret a bien une requete lisible, mais
+        // portee par son formulaire plutot que par lui-meme.
+        Element formulaire = arret.closest("form");
+        if (formulaire != null && formulaire.hasAttr("hx-post")) {
+            Map<String, String> parametres = new LinkedHashMap<>();
+            String nom = arret.attr("name");
+            if (!nom.isBlank()) {
+                parametres.put(nom, arret.attr("value"));
             }
+            return Optional.of(new RequeteDeclaree("POST", formulaire.attr("hx-post"), parametres));
         }
         if (arret.hasAttr("href")) {
             return Optional.of(new RequeteDeclaree("GET", arret.attr("href"), Map.of()));

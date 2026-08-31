@@ -685,11 +685,13 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    S11 : ".continuer-partie" rejoint ce groupe - le bouton qui laisse l'enfant sur sa partie en
    cours depuis l'ecran de confirmation (ADR-0038, DEC-0026 story 2). Meme boite que les autres
    actions pleines de l'application ; la forme de cet ecran reste a ines-design. */
+.continuer-manche,
 .continuer-partie,
 .demarrer,
 .proposition,
 .recommencer,
-.sortie-pleine {
+.sortie-pleine,
+.valider {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -752,21 +754,27 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
     padding: 0.5rem 1.25rem;
 }
 
+.continuer-manche:hover,
 .continuer-partie:hover,
 .demarrer:hover,
 .proposition:hover,
 .recommencer:hover,
 .sortie-pleine:hover,
+.valider:hover,
+#jeu .continuer-manche:active,
 #jeu .continuer-partie:active,
 #jeu .demarrer:active,
 .propositions .proposition:active,
 #jeu .recommencer:active,
 #jeu .sortie-pleine:active,
+#jeu .valider:active,
+.continuer-manche:focus-visible,
 .continuer-partie:focus-visible,
 .demarrer:focus-visible,
 .proposition:focus-visible,
 .recommencer:focus-visible,
-.sortie-pleine:focus-visible {
+.sortie-pleine:focus-visible,
+.valider:focus-visible {
     color: var(--recreo-accent-texte);
     background-color: var(--recreo-accent);
 }
@@ -807,10 +815,12 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    comparer entre les trois propositions - il doit peser au moins autant que le calcul affiche
    (S3-4, reserve 1 de nadia-prof sur S2-1 : "le nombre doit peser plus que la barre qui le
    porte"). */
+.continuer-manche,
 .continuer-partie,
 .demarrer,
 .recommencer,
-.sortie-pleine {
+.sortie-pleine,
+.valider {
     font-size: 1.25rem;
 }
 
@@ -1021,11 +1031,14 @@ body:has(.filtre-niveau) .chip-niveau.est-actif:focus-visible {
    participe jamais au calcul de boite (deja ecartee des proprietes comparees a :focus-visible par
    ADR-0046 point 4, second amendement) - aucun pressable ne change de taille, de police ni de
    position au focus. currentColor : aucune teinte neuve, aucune paire a justifier. */
+.champ-reponse:focus-visible,
+.continuer-manche:focus-visible,
 .continuer-partie:focus-visible,
 .demarrer:focus-visible,
 .proposition:focus-visible,
 .recommencer:focus-visible,
 .sortie-pleine:focus-visible,
+.valider:focus-visible,
 .proposition.deja-essayee:focus-visible,
 .retour-accueil:focus-visible,
 .lien-accueil:focus-visible,
@@ -1077,11 +1090,14 @@ body:has(.filtre-niveau) .chip-niveau.est-actif:focus-visible {
    et la puce active ("body:has(.filtre-niveau) .chip-niveau.est-actif") depasse deja (0,4,0) par
    son propre selecteur de type "body" - verifie par le test qui accompagne ce lot, pour ne pas
    ajouter une regle honoree qui n'apporte rien. */
+#jeu .champ-reponse:active:focus-visible,
+#jeu .continuer-manche:active:focus-visible,
 #jeu .continuer-partie:active:focus-visible,
 #jeu .demarrer:active:focus-visible,
 #jeu .proposition:active:focus-visible,
 #jeu .recommencer:active:focus-visible,
 #jeu .sortie-pleine:active:focus-visible,
+#jeu .valider:active:focus-visible,
 .proposition.deja-essayee:active:focus-visible,
 #jeu .retour-accueil:active:focus-visible,
 .entete-contenu .lien-accueil:active:focus-visible,
@@ -1322,4 +1338,100 @@ body:has(.ecran-exclusif) .chip-niveau {
     text-decoration-color: var(--recreo-texte);
     text-decoration-thickness: 0.1875rem;
     text-decoration-skip-ink: none;
+}
+
+/* ------------------------------------------------------------------------------------------------
+   S24, l'ecran de saisie. Regles reprises de proposition-ines-ecran-de-saisie.md, section 5.1, avec
+   ses chiffres mesures sur son prototype - qui charge les deux feuilles reelles dans l'ordre
+   d'ADR-0014 - et sur dix largeurs. Aucune couleur neuve : toutes viennent de la palette nommee de
+   :root (S2-2). Le releve refait sur le jar une fois ce lot livre reste du, et il reste a
+   nadia-prof.
+   .valider et .continuer-manche ne sont pas habilles ici : ils rejoignent les cinq boutons pleins
+   plus haut dans ce fichier (bloc de repos, bloc de police, bloc d'etats neutres d'ADR-0046, anneau
+   de focus de S17-1 et anneau sous l'appui de S17-D). Un habillage a part aurait cree un sixieme
+   pressable a tenir en phase avec les cinq autres. */
+.saisie {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.75rem 0;
+    padding: 0;
+}
+
+/* Quatre choix de forme qui ne sont pas des gouts (proposition d'ines-design, section 5.2) :
+   - 2rem, la meme taille que .enonce et que le plancher de .proposition. C'est le texte que
+     l'enfant produit et relit : il ne peut pas etre plus petit que le bouton qui le valide ;
+   - la largeur ne depend JAMAIS de la reponse attendue. Un champ taille sur la reponse dirait a
+     l'enfant combien de caracteres il doit ecrire - un second indice, gratuit, que rien dans le
+     contenu n'a decide de lui donner. "flex: 1 1 12rem; max-width: 24rem" depend de la place
+     disponible et jamais de l'item : c'est la clause qui rend cette regle valable pour une
+     mecanique et non pour un contenu ;
+   - blanc a bord bleu, jamais un aplat : les cinq boutons pleins sont des aplats, les propositions
+     du bandit manchot des aplats pastel. Une boite blanche cernee se lit comme un endroit ou l'on
+     ecrit, pas comme un endroit sur lequel on appuie ;
+   - le plafond de 24rem existe pour qu'un grand ecran ne rende pas un champ-bandeau de 1200 px pour
+     trois chiffres. Le rembourrage lateral est a 1.25rem et pas moins pour une raison exacte et non
+     par gout : le champ entre dans la comparaison action/sortie d'ADR-0017 des que le selecteur des
+     pressables voit un <input>, et resserrer cette valeur rendrait rouge un garde-fou dont le
+     rapport ne se voit pas.
+   Le champ portera DEUX marques de focus, et le lot le sait plutot que de le decouvrir : la regle
+   maison peint l'anneau interieur et le contour par defaut du navigateur reste, parce que
+   ".btn:focus-visible" de la feuille vendorisee - qui le supprime sur les cinq boutons pleins - ne
+   s'applique pas a un <input> sans classe tierce. ines-design recommande de garder les deux et de
+   ne rien declarer de plus ; c'est une difference visible d'un ecran a l'autre, donc nadia-prof
+   doit la voir sur le rendu avant de prononcer. */
+.champ-reponse {
+    flex: 1 1 12rem;
+    max-width: 24rem;
+    min-height: 3.5rem;
+    min-width: 2.75rem;
+    padding: 0.5rem 1.25rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--recreo-texte);
+    background-color: var(--recreo-accent-texte);
+    border: 0.125rem solid var(--recreo-accent);
+    border-radius: 0.5rem;
+}
+
+/* SAI-12 et la condition de D5 (nadia-prof, 2026-08-31) : les tentatives deja ecrites sur cette
+   manche, toutes, dans l'ordre d'ecriture, barrees. La derniere est aussi celle du champ, et c'est
+   voulu - "l'une dit refusee, l'autre dit modifiable". Le trait est une forme et non une teinte : il
+   survit a toute cecite aux couleurs, et c'est le signe deja arbitre par F16 pour ce sens.
+   text-decoration-skip-ink: none pour que le trait ne s'interrompe pas sous les jambages. */
+.tentatives {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    margin: 0.25rem 0;
+    padding: 0;
+    font-size: 1.25rem;
+    list-style: none;
+}
+
+.tentative-passee {
+    text-decoration: line-through;
+    text-decoration-color: var(--recreo-texte);
+    text-decoration-thickness: 0.1875rem;
+    text-decoration-skip-ink: none;
+}
+
+/* SAI-2c et SAI-9b : la chaine sur laquelle le verdict a ete rendu, et la forme de reference.
+   Trois canaux separent les deux chaines a la revelation - la taille (2rem contre 1.25rem), la
+   position, et le mot qui les introduit - et aucun n'est colore. Le patron de la taille est celui
+   de .mot-designe dans .enonce (ADR-0062) : un <span> plus grand a l'interieur d'un paragraphe a la
+   taille courante. Ce que l'enfant doit lire en premier a ce moment est la bonne reponse, pas son
+   erreur. */
+.chaine-jugee,
+.forme-de-reference {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    margin: 0.25rem 0 0;
+}
+
+.forme-attendue {
+    font-size: 2rem;
+    font-weight: bold;
 }

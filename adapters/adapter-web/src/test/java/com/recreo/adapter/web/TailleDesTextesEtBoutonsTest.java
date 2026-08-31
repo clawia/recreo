@@ -19,6 +19,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 
+import static com.recreo.adapter.web.LHabillageNeRogneJamaisUnElementPressableTest.PRESSABLES;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -486,7 +487,7 @@ class TailleDesTextesEtBoutonsTest {
         List<BoutonRendu> etats = new ArrayList<>();
         for (Path gabarit : gabarits(racine)) {
             Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
-            for (Element bouton : document.select("button, a[href]")) {
+            for (Element bouton : document.select(PRESSABLES)) {
                 for (List<String> classes : etatsDe(bouton)) {
                     etats.add(new BoutonRendu(bouton, classes));
                 }
@@ -1036,6 +1037,93 @@ class TailleDesTextesEtBoutonsTest {
     @Test
     void aucuneTailleDeclareeParLaFeuilleMaisonNePasseSousLePlancher() {
         verifierQuAucuneTailleDeclareeNePasseSousLePlancher(RACINE_PRODUCTION);
+    }
+
+    /**
+     * S24, ADR-0058 section 7 : la <b>mesure</b> de ce que l'extension du selecteur des pressables a
+     * "input" ajoute a la population de ce garde-fou. Avant elle, le champ de saisie n'etait
+     * confronte ni au plancher de lisibilite de 1,25 rem ni a la cible tactile de 44 px, et une CI
+     * entierement verte l'aurait laisse passer. Ce test dit ce que le garde-fou voit ; le suivant dit
+     * qu'il mord dessus.
+     */
+    @Test
+    void leChampDeSaisieEntreDansLaPopulationDesPressables() {
+        assertThat(etatsRendus(RACINE_PRODUCTION).stream()
+                .filter(etat -> "input".equals(etat.bouton().tagName()))
+                .map(BoutonRendu::classes)
+                .toList())
+                .as("le champ de saisie doit etre passe au crible comme les boutons")
+                .contains(List.of("champ-reponse"));
+    }
+
+    /**
+     * ADR-0013 obligation 3, sur du materiau reel mute : la feuille servie, avec la seule cible
+     * tactile du champ de saisie abaissee sous le plancher. Sans "input" dans le selecteur des
+     * pressables, cette mutation passait une CI verte - c'est l'omission par enumeration de types,
+     * la lecon que ce depot a payee deux sprints.
+     *
+     * <p>La seconde moitie de l'assertion est celle qui rend la morsure non decorative : le message
+     * doit nommer <b>le champ</b>, et pas seulement echouer. Une morsure qui se contenterait du rouge
+     * serait verte sur une regle qui refuserait n'importe quelle feuille.</p>
+     */
+    @Test
+    void unChampDeSaisieSousLaCibleTactileFaitEchouerLeGardeFou(@TempDir Path racine)
+            throws IOException {
+        String avant = "    min-height: 3.5rem;\n    min-width: 2.75rem;";
+        String apres = "    min-height: 2rem;\n    min-width: 2.75rem;";
+        Path feuille = preparerLaFeuilleMutee(racine, avant, apres);
+        assertThat(feuille).isRegularFile();
+
+        assertThatThrownBy(() -> verifierCibleTactile(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining(".champ-reponse")
+                .hasMessageContaining("la hauteur minimale doit atteindre au moins 44px");
+    }
+
+    /**
+     * Le meme materiau, la meme population, mais la mutation porte cette fois sur la taille du
+     * texte : les deux planchers sont mordus separement, parce qu'une extension qui n'en servirait
+     * qu'un laisserait l'autre muet.
+     */
+    @Test
+    void unChampDeSaisieSousLePlancherDeLisibiliteFaitEchouerLeGardeFou(@TempDir Path racine)
+            throws IOException {
+        preparerLaFeuilleMutee(racine,
+                "    font-size: 2rem;\n    font-weight: bold;\n    color: var(--recreo-texte);",
+                "    font-size: 1rem;\n    font-weight: bold;\n    color: var(--recreo-texte);");
+
+        assertThatThrownBy(() -> verifierPlancherDeLisibilite(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("champ-reponse");
+    }
+
+    /**
+     * Recopie les gabarits et la feuille reels sous {@code racine}, la feuille portant la mutation
+     * demandee. La mutation doit porter sur une declaration que la feuille servie porte vraiment :
+     * une fixture ecrite de ma main ressemblerait a ce que j'imagine (lecon d'ADR-0015).
+     */
+    private static Path preparerLaFeuilleMutee(Path racine, String avant, String apres)
+            throws IOException {
+        String reelle = lire(RACINE_PRODUCTION.resolve("static/css/recreo.css"))
+                .replace("\r\n", "\n");
+        assertThat(reelle)
+                .as("la mutation doit porter sur une regle que la feuille servie porte vraiment")
+                .contains(avant);
+        Path feuille = racine.resolve("static/css/recreo.css");
+        Files.createDirectories(feuille.getParent());
+        Files.writeString(feuille, reelle.replace(avant, apres));
+
+        for (Path gabarit : gabarits(RACINE_PRODUCTION)) {
+            Path copie = racine.resolve(RACINE_PRODUCTION.relativize(gabarit));
+            Files.createDirectories(copie.getParent());
+            Files.writeString(copie, lire(gabarit));
+        }
+        Path tiers = racine.resolve("static/vendor");
+        Files.createDirectories(tiers);
+        for (Path feuilleTierce : Files.list(RACINE_PRODUCTION.resolve("static/vendor")).toList()) {
+            Files.copy(feuilleTierce, tiers.resolve(feuilleTierce.getFileName()));
+        }
+        return feuille;
     }
 
     /**

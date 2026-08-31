@@ -1,0 +1,11 @@
+schema: 1
+id: paquet-saisie-sans-forme-de-reference
+type: saisie
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "sonde du lot 1, jamais servie a un enfant"
+items:
+  - enonce: "2 + ? = 10"
+    formesAcceptees: []
