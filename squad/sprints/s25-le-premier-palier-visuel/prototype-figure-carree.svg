@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- VEHICULE DE MESURE, JAMAIS DU CONTENU SERVI.
+
+     Ce dessin n'est pas un item, il n'est declare par aucun paquet et aucun controleur ne le sert.
+     Il existe pour qu'un <img> du prototype ait une geometrie intrinseque reelle - un rapport de
+     1 pour 1, le pire cas vertical du palier 1 - et pour verifier qu'une regle de feuille qui pose
+     max-height et max-width sans toucher au rapport ne deforme pas la figure. C'est la seule chose
+     que ce fichier prouve.
+
+     Le trait est noir plein et la surface est laissee vide : nadia-prof est seule garde de
+     l'exactitude de ce qui serait dessine (proportions, graduations, cases carrees), et FIG-3
+     interdit que la couleur distingue deux formes. Un carre de mesure n'a donc ni remplissage ni
+     teinte a defendre. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="480" height="480"
+     role="img">
+  <rect x="14" y="14" width="72" height="72" fill="none" stroke="#1c2733" stroke-width="6"
+        stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DEMONSTRATION DE FAISABILITE, JAMAIS DU CONTENU SERVI.
+
+     Ce fichier repond a une question et a une seule : douze chiffres traces en geometrie
+     sont-ils producibles, sans aucun <text> ni <tspan> (ADR-0073, clause 4) ?
+
+     Ce n'est pas un item. Aucun paquet ne le declare, aucun controleur ne le sert, il ne vit pas
+     sous le repertoire d'illustrations d'adapter-web, et le garde-fou bidirectionnel de theo-archi
+     ne le voit donc pas - c'est voulu : une illustration deposee sans paquet qui la declare rougit,
+     et une demonstration de faisabilite n'est pas une illustration.
+
+     CE QUE CE FICHIER ETABLIT : que les dix glyphes de chiffres s'ecrivent en commandes de trace,
+     qu'ils se definissent UNE FOIS et se reutilisent, et que les douze nombres d'un cadran en
+     demandent quinze instances et pas un glyphe de plus.
+
+     CE QUE CE FICHIER N'ETABLIT PAS, et c'est la porte de nadia-prof : qu'un enfant de CP
+     RECONNAISSE ces formes-la comme les chiffres qu'on lui apprend a ecrire. La forme d'un chiffre
+     scolaire - le 1 a-t-il une base, le 7 une barre, le 4 est-il ferme - est un jugement
+     pedagogique, jamais un jugement de dessin. Je trace ; elle juge.
+
+     Le trace est un SQUELETTE STROKE, pas un contour rempli : chaque chiffre est la ligne que la
+     main de l'enfant suit quand il l'ecrit, epaissie par stroke-width. C'est ce qui rend le trace
+     producible a la main plutot que par un extracteur de contours de police - et le depot ne
+     vendorise aucune police, donc un contour extrait ne serait reproductible sur aucun appareil.
+
+     Une seule couleur, aucun remplissage : FIG-3 et QUA-5 exigent qu'une figure lue en niveaux de
+     gris donne la meme reponse. currentColor laisse la feuille decider de la teinte sans qu'aucune
+     regle de couleur soit ecrite ici. -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 400 400" width="400" height="400" role="img" fill="none"
+     stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+
+  <!-- Les dix glyphes, definis une fois. Chaque glyphe est trace dans une boite de 40 unites de
+       large et 60 de haut, origine en haut a gauche. C'est le point de cout qui repond a la
+       question posee : les douze nombres d'un cadran ne demandent pas douze dessins, ils demandent
+       DIX GLYPHES et QUINZE instances - 1 a 9 en portent une chacun, 10, 11 et 12 en portent deux.
+       Le douzieme nombre coute donc un <use>, pas un glyphe. -->
+  <defs>
+    <path id="c0" d="M20 2 A18 22 0 0 1 20 58 A18 22 0 0 1 20 2 Z"/>
+    <path id="c1" d="M8 14 L20 2 L20 58"/>
+    <path id="c2" d="M4 16 A16 15 0 1 1 20 32 L4 58 L36 58"/>
+    <path id="c3" d="M4 12 A15 12 0 1 1 19 30 A15 14 0 1 1 4 48"/>
+    <path id="c4" d="M28 58 L28 2 L2 42 L38 42"/>
+    <path id="c5" d="M34 2 L10 2 L7 26 A16 16 0 1 1 5 47"/>
+    <path id="c6" d="M32 4 A20 26 0 0 0 6 34 A15 14 0 1 0 34 40 A15 14 0 0 0 6 36"/>
+    <path id="c7" d="M3 2 L37 2 L14 58"/>
+    <path id="c8" d="M20 30 A13 14 0 1 1 20 2 A13 14 0 1 1 20 30 A15 15 0 1 1 20 58 A15 15 0 1 1 20 30 Z"/>
+    <path id="c9" d="M34 26 A15 14 0 1 0 6 20 A15 14 0 0 0 34 26 A20 26 0 0 1 8 56"/>
+  </defs>
+
+  <!-- Le cadran : un cercle, douze reperes horaires, deux aiguilles. Rien d'autre. -->
+  <circle cx="200" cy="200" r="188"/>
+
+  <g stroke-width="7">
+    <path d="M200 12 L200 32"/>
+    <path d="M294 37.2 L284 54.5"/>
+    <path d="M362.8 106 L345.5 116"/>
+    <path d="M388 200 L368 200"/>
+    <path d="M362.8 294 L345.5 284"/>
+    <path d="M294 362.8 L284 345.5"/>
+    <path d="M200 388 L200 368"/>
+    <path d="M106 362.8 L116 345.5"/>
+    <path d="M37.2 294 L54.5 284"/>
+    <path d="M12 200 L32 200"/>
+    <path d="M37.2 106 L54.5 116"/>
+    <path d="M106 37.2 L116 54.5"/>
+  </g>
+
+  <!-- Les douze nombres, poses sur un anneau de rayon 124, a l'echelle 0,80. Chaque instance est
+       centree sur l'anneau par une seule transformation - translation au point de l'anneau, echelle,
+       puis recentrage de la demi-boite du glyphe (20 x 30). Les nombres a deux chiffres portent deux
+       instances ecartees de 26 unites, soit 13 de part et d'autre du point.
+       Aucun <text>, aucun <tspan>, aucune police : uniquement des <use> vers les dix <path>
+       ci-dessus. -->
+  <use xlink:href="#c1" transform="translate(262.00 92.61) scale(0.80) translate(-20 -30)"/>
+  <use xlink:href="#c2" transform="translate(307.39 138.00) scale(0.80) translate(-20 -30)"/>
+  <use xlink:href="#c3" transform="translate(324.00 200.00) scale(0.80) translate(-20 -30)"/>
+  <use xlink:href="#c4" transform="translate(307.39 262.00) scale(0.80) translate(-20 -30)"/>
+  <use xlink:href="#c5" transform="translate(262.00 307.39) scale(0.80) translate(-20 -30)"/>
+  <use xlink:href="#c6" transform="translate(200.00 324.00) scale(0.80) translate(-20 -30)"/>
+  <use xlink:href="#c7" transform="translate(138.00 307.39) scale(0.80) translate(-20 -30)"/>
+  <use xlink:href="#c8" transform="translate(92.61 262.00) scale(0.80) translate(-20 -30)"/>
+  <use xlink:href="#c9" transform="translate(76.00 200.00) scale(0.80) translate(-20 -30)"/>
+  <use xlink:href="#c1" transform="translate(79.61 138.00) scale(0.80) translate(-20 -30)"/>
+  <use xlink:href="#c0" transform="translate(105.61 138.00) scale(0.80) translate(-20 -30)"/>
+  <use xlink:href="#c1" transform="translate(125.00 92.61) scale(0.80) translate(-20 -30)"/>
+  <use xlink:href="#c1" transform="translate(151.00 92.61) scale(0.80) translate(-20 -30)"/>
+  <use xlink:href="#c1" transform="translate(187.00 76.00) scale(0.80) translate(-20 -30)"/>
+  <use xlink:href="#c2" transform="translate(213.00 76.00) scale(0.80) translate(-20 -30)"/>
+
+  <!-- Deux aiguilles, tracees et non ecrites elles aussi. La grande sur le 12, la petite sur le 3 :
+       c'est la position du contre-exemple de contrefacon que nadia-prof cite dans son arbitrage
+       (cp-durees.yml, items 8 et 9), et c'est la seule raison pour laquelle elle est ici. -->
+  <g stroke-width="11">
+    <path d="M200 200 L200 78"/>
+    <path d="M200 200 L282 200"/>
+  </g>
+  <circle cx="200" cy="200" r="8" fill="currentColor" stroke="none"/>
+</svg>
