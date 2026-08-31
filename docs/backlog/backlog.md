@@ -8294,3 +8294,328 @@ soit posee autrement.
   `hasSize(declares)`). **Ils sont a `theo-archi` et a `yanis-qa`, pas a moi** : je les range dans
   `DEC-0065`, section 4, avec le cout de ne pas les prendre, et je ne les traduis pas en stories
   produit.
+
+---
+
+# Perimetre de s25, refait apres les arbitrages du 2026-08-31 (`DEC-0065` amendee, `DEC-0066`)
+
+**Ce bloc corrige le precedent, il ne le remplace pas** : le bloc ci-dessus reste lisible avec sa
+date, y compris les deux endroits ou il etait faux. Trois arbitrages sont tombes dans la journee -
+*"Ouvrir le visuel, palier 1"* et *"Reclasser, taux revu"* de l'utilisatrice, plus l'arbitrage
+prealable de `nadia-prof` sur les seize lignes.
+
+**La regle de la cloture de s24 continue de s'appliquer a toutes ces stories** : jamais une plage de
+conditions, chaque condition applicable devient un critere nomme dans les mots de la condition, et
+une reponse d'arbitrage non recopiee en criteres n'a pas ete recue.
+
+## Statut des deux stories conditionnelles ecrites le matin
+
+### `S25-MON-1` - **CLOSE, REFUSEE.** La ligne ne s'ouvrira pas sans image
+
+- **Verdict de `nadia-prof`, 2026-08-31, section 2.2 de son arbitrage prealable de s25** : **REFUSE
+  sur la ligne entiere.**
+- **Le motif, et ce n'est pas celui que j'avais** : j'avais ecrit que la moitie *"utiliser"* etait
+  servable en texte. Elle a relu les huit items de `contenu-repris/quiz/cp-monnaie.yml` un par un :
+  *"Sur les huit items, sept sont un jeu deja valide avec un symbole d'euro colle au resultat. Un
+  enfant qui joue ce paquet ne travaille pas la monnaie ; **il refait du calcul**."* Addition,
+  soustraction et comparaison sont trois lignes deja vertes.
+- **Et la regle qui ferme la porte** : *reconnaitre* est le premier verbe de la ligne et **il fonde**
+  *utiliser* - *"un enfant qui ne sait pas qu'un disque jaune vaut deux euros ne compose rien"*. La
+  ligne resterait `en cours` meme avec un bon paquet textuel, comme `DEN`.
+- **Ce que je retiens contre moi** : j'ai propose cette ligne sur un critere de forme - *"le contenu
+  est textuel, donc la mecanique existante le sert"* - sans verifier ce que les items **apprennent**.
+  Sept items sur huit rejouaient une competence deja verte. **Le critere n'est pas "un paquet
+  est-il ecrivable", c'est "un enfant apprend-il quelque chose que le catalogue ne lui apprend pas
+  deja".** Je ne l'avais pas dans mes reflexes ; je l'y mets.
+- **Ce qui l'ouvrira** : `MON-1` a `MON-5`, **image obligatoire**, et **deux paquets** - un visuel et
+  un textuel - pour une seule ligne. Elle n'est pas le premier paquet visuel a ecrire pour cette
+  raison de cout. Story a rouvrir le jour ou le palier 1 existe.
+
+### `S25-JOU-1` - **remplacee par `S25-SEM-1` ci-dessous**
+
+L'intuition etait juste - la ligne se coupe au point-virgule et sa premiere moitie est textuelle -
+et `nadia-prof` l'a confirmee en cherchant : *"C'est le seul candidat neuf de ce sprint, et je l'ai
+cherche."* **Mes criteres n'existaient pas, comme la regle l'exige ; les siens existent maintenant,
+et `S25-SEM-1` les porte.**
+
+---
+
+### S25-SEM-1 - Se reperer dans la journee, la semaine (mathematiques CP) - RANG 2, +1 LIGNE
+
+- **Statut** : **au perimetre, sans condition prealable.** Arbitrage rendu le 2026-08-31,
+  `ACCEPTE SOUS CONDITIONS SEM-1 a SEM-9`, avec couverture partielle nommee et **ligne au vert**
+  (`squad/conformite/ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md`,
+  section 2.3). **Aucun arbitrage supplementaire n'est du.**
+- **Ce qu'elle rapporte** : **+1 ligne.**
+- **Besoin** : en tant qu'eleve de CP, je veux savoir quel jour vient apres mardi, quel mois ouvre
+  l'annee et ce qu'on fait le matin plutot que la nuit, afin de me reperer dans ma journee et dans ma
+  semaine sans avoir besoin qu'on me le dise.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Grandeurs et mesures",
+  "Se reperer dans la journee, la semaine ; lire l'heure pleine sur une horloge"
+  (`squad/programme/mathematiques/competences-cp.md`), **premiere moitie seule**.
+- **Pourquoi cette moitie porte la ligne au vert alors que `DEN` reste `en cours`**, dans ses mots :
+  *"ce n'est pas une faveur, c'est ma regle. Dans `DEN`, la part manquante - denombrer - fonde la
+  part servie. Ici, **aucune des deux moities ne fonde l'autre**."* *Se reperer dans la journee et la
+  semaine* est *"un apprentissage entier, celui du rituel de la date, que le CP mene tous les
+  matins"* ; *lire l'heure pleine* est *"un objet instrumental : il faut un cadran"*.
+- **Criteres d'acceptation**, **un par condition**, avec ses mots et ses unites de compte :
+  - **`SEM-1` - Perimetre.** Etant donne chaque item, quand on lit son objet, alors il porte sur **les
+    moments de la journee** (matin, midi, apres-midi, soir, nuit), **les jours de la semaine et leur
+    ordre**, **les mois et leur ordre**, ou **les saisons**. **Rien d'autre.**
+  - **`SEM-2` - Aucun calcul de duree.** Etant donne chaque item, quand on lit sa tache, alors elle ne
+    demande pas de calculer une duree. *Motif : le calcul de duree est une ligne de CM1 deja verte
+    (`bandit-manchot-problemes-durees-cm1`) ; un item de CP qui l'exigerait empieterait sur elle.*
+  - **`SEM-3` - Aucune horloge, sous aucune forme.** Etant donne chaque item, quand on lit son enonce
+    et ses propositions, alors **aucun ne decrit une horloge, un cadran ni la position d'une
+    aiguille**, sous quelque forme que ce soit. *Elle ecarte nommement les items 8 et 9 de
+    `contenu-repris/quiz/cp-durees.yml` - "La grande aiguille est sur le 12 et la petite aiguille sur
+    le 3" - parce que **cette phrase decrit le cadran a la place de l'enfant** : "lire l'heure pleine,
+    c'est precisement trouver ou pointe la petite aiguille ; quand le texte l'a dit, il ne reste qu'a
+    savoir laquelle des deux aiguilles donne l'heure". **Cette moitie de la ligne n'est pas servie et
+    le paquet ne fait pas semblant de la servir.*** `nadia-prof` recommande cette condition comme
+    celle du lot qu'elle ecrirait le plus volontiers en test - *"c'est celle qui reintroduirait la
+    contrefacon sans qu'on s'en apercoive"* -, **recommandation et non demande**, adressee a
+    `theo-archi` et `yanis-qa`.
+  - **`SEM-4` - Longueur.** Etant donne chaque item, quand on compte, alors l'`enonce` compte **au
+    plus 12 mots** et **aucun mot ne depasse neuf lettres**. *Un mot est une suite de caracteres sans
+    espace ; unite de compte : l'item. Elle precise qu'elle ne durcit rien : `NAR-3` pose deja le
+    plafond de neuf lettres au CP, et `septembre`, le mois le plus long, le tient exactement.*
+  - **`SEM-5` - Distracteurs de meme categorie.** Etant donne chaque item, quand on lit ses
+    propositions, alors elles sont **de la meme categorie que la bonne reponse**. *"A une question sur
+    un jour, on ne repond pas par un mois. Un distracteur d'une autre categorie s'elimine sans
+    savoir."*
+  - **`SEM-6` - Un tiers des items demande un ordre.** Etant donne le paquet complet, quand on compte
+    les items dont la reponse porte sur **ce qui vient juste avant ou juste apres**, alors ils
+    representent **au moins un tiers** des items. *Unite de compte : l'item. Motif : "se reperer est
+    un fait d'ordre ; reciter la liste des sept jours n'est pas s'y reperer."*
+  - **`SEM-7` - Situations.** Etant donne chaque item, quand on lit sa situation, alors elle ne
+    suppose **ni** configuration familiale, **ni** rythme scolaire particulier, **ni** depart en
+    vacances, **ni** fete religieuse, **ni** pays. *Elle precise : le mercredi et le samedi ne portent
+    aucune activite.*
+  - **`SEM-8` - Indice.** Etant donne chaque item, quand on lit son indice, alors il dit **quoi se
+    rappeler**, jamais la reponse, en **huit mots au plus**. *Meme plafond que `NAR-9`.*
+  - **`SEM-9` - Volume et unicite.** Etant donne le paquet complet, quand on compte ses items, alors
+    il en porte **au moins vingt** ; et **deux items ne posent jamais la meme question**.
+- **La mention exacte que `nadia-prof` exigera sur la matrice le jour ou la ligne bougera**, ecrite
+  par elle et non par moi, et qui est une condition et non une remarque : **"moitie 'se reperer dans
+  la journee, la semaine' seule ; la moitie 'lire l'heure pleine sur une horloge' reste non
+  couverte"**.
+- **Matiere premiere** : `contenu-repris/quiz/cp-durees.yml`, **onze items dont neuf utilisables**
+  comme matiere (jours et leur ordre, mois, saisons, moments du jour, comparaison de durees) et
+  **deux a ecarter** - les items 8 et 9, qui sont exactement la contrefacon que `SEM-3` interdit.
+  Comptage de `nadia-prof`, verifie par moi sur le fichier. **Reserve a relire, pas un point de
+  depart** : le fichier porte des items a plus de trois propositions, ce qu'`ADR-0063` interdit.
+- **Ce que `SEM-2` implique et qu'il vaut mieux savoir avant d'ecrire** : la comparaison de durees
+  (*"Qu'est-ce qui dure le plus longtemps ?"*) est a la frontiere. Comparer n'est pas calculer, mais
+  le developpeur qui hesite remonte a `sofia-sm` plutot que de trancher : c'est une correction de
+  specification et elle est a `nadia-prof`.
+- **Ce qui n'est pas testable par un automate** : `SEM-1`, `SEM-2`, `SEM-5` et `SEM-7` se jugent ;
+  `SEM-4`, `SEM-6`, `SEM-8` et `SEM-9` se comptent ; `SEM-3` se compte **partiellement** (un balayage
+  de vocabulaire attrape *aiguille*, *cadran*, *horloge*, il n'attrape pas une periphrase).
+  **Ce paquet n'est pas du type `COMP-2`** et ne consomme pas le quota du sprint.
+- **Identifiants proposes, a confirmer par le developpeur** : `id: bandit-manchot-semaine-cp`,
+  `paquet: cp-semaine`.
+- **Lien decision** : `DEC-0065`, amendement, sections A.2 et A.3 ; arbitrage prealable de s25,
+  section 2.3.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S25-FIG-1 - Reconnaitre et nommer quelques figures planes (mathematiques CP) - RANG 3, PREMIER PAQUET DU PALIER 1 VISUEL
+
+- **Statut** : **au perimetre sur arbitrage de l'utilisatrice** (*"Ouvrir le visuel, palier 1"*,
+  2026-08-31), **et bloquee par deux livrables qui ne sont pas de moi** : l'architecture d'un item
+  visuel (`theo-archi`, aucun `ADR` ne la decrit a ce jour) et le rendu plus la mesure du pli avec
+  une image (`ines-design`). **Aucun contenu ne s'ecrit avant.**
+- **Ce qu'elle rapporte** : **+1 ligne**, et c'est **la ligne la moins chere du palier 1** - un seul
+  paquet, la ou la monnaie en demande deux et le quadrillage un palier superieur.
+- **Besoin** : en tant qu'eleve de CP, je veux regarder une forme et dire si c'est un carre, un
+  rectangle, un triangle ou un cercle, afin de reconnaitre ces formes ou qu'elles soient et quelle
+  que soit leur taille.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Espace et geometrie",
+  "Reconnaitre et nommer quelques figures planes (carre, rectangle, triangle, cercle)"
+  (`squad/programme/mathematiques/competences-cp.md`). **Ligne entiere.**
+- **Arbitrage prealable** : `FIG-1` a `FIG-4`, rendues le **2026-08-24**
+  (`squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md`, section 2.4),
+  et **reconduites sans changement le 2026-08-31**. **Ce qui reste du a `nadia-prof` : l'arbitrage
+  prealable du paquet lui-meme**, une fois la forme du rendu connue - elle ecrit *"je ne sais pas ce
+  que coute une image dans ce produit, et je n'ai aucun avis sur la forme qu'elle prendrait"*.
+- **Ce que l'enfant doit faire, dans ses mots, section 3.2** : *"regarder une figure, choisir son
+  nom"* - **une image fixe** plus des propositions en texte, que la mecanique de choix rend deja.
+  **C'est le palier 1, et il ne demande ni propositions positionnees ni manipulation.**
+- **Criteres d'acceptation de contenu**, **un par condition**, dans ses mots :
+  - **`FIG-1` - La figure est dessinee et ses proportions sont declarees par le contenu.** Etant donne
+    chaque item, quand on lit sa source, alors la figure est **dessinee** et ses proportions sont
+    **declarees par le contenu, pas par une police**. *"Un rectangle est un rectangle a toute taille
+    d'ecran, **verifiable autrement que par mon oeil**."*
+  - **`FIG-2` - Trois exemples au moins par forme, varies.** Etant donne le paquet complet, quand on
+    compte les exemples de chaque forme, alors il y en a **au moins trois**, variant **l'orientation,
+    la taille et les proportions**. *"Un carre pose sur la pointe reste un carre : c'est precisement
+    ce qu'un CP doit apprendre, et un paquet a un exemplaire par forme enseigne le contraire."*
+  - **`FIG-3` - La couleur ne distingue jamais.** Etant donne chaque item, quand on lit ses figures et
+    sa consigne, alors **la couleur ne distingue jamais deux formes entre elles a l'interieur d'un
+    meme item**, et **aucune consigne ne la mentionne**. *Reconduction de `DEC-0002`, amendement du
+    2026-08-04. Motif demontre sur le materiau du depot : `contenu-repris/associer/cp-formes.yml`
+    associe le glyphe carre orange a la cible "rectangle" et le glyphe carre bleu a la cible "carre"
+    - **la meme forme, deux reponses, departagees par la couleur**.*
+  - **`FIG-4` - Ni cercle contre disque, ni plan contre solide.** Etant donne le paquet complet, quand
+    on lit ses intitules et ses figures, alors il **ne confond ni "cercle" et "disque", ni figure
+    plane et solide**.
+- **Un critere de plus que je porte, et il vient de son avis de fond du 2026-08-15** : `nadia-prof`
+  ecrit qu'une mecanique visuelle ajoute **l'exactitude de ce qui est dessine, et que c'est du
+  contenu** - *"un cadran dont les aiguilles sont a peu pres placees, une case qui n'est pas carree,
+  un disque qu'on prend pour un cercle : **ce sont des reponses fausses, pas des defauts de
+  forme**"*. **Cela se verifie image par image, item par item, et rien ne le verifiera a sa place.**
+  Je le porte comme une exigence de lot, pas comme un critere que je formulerais a sa place : **le
+  paquet arrive avec ses figures declarees et leurs proportions verifiables, ou il n'est pas
+  auditable.**
+- **Ce que cette story ne dit pas, et ce n'est pas un oubli** : elle ne dit **rien** de la forme du
+  rendu - fichier, format, geometrie declarative, feuille de style. C'est a `theo-archi`, avec son
+  `ADR`, et a `ines-design` pour l'apparence. **Je ne tranche aucune question technique.**
+- **Le risque de perimetre, nomme plutot que decouvert** : la saisie, ouverte a s24 dans les memes
+  termes, avait derriere elle `SAI-1` a `SAI-12`, `SEUIL-1` a `SEUIL-5`, `ADR-0058` et `ADR-0059`,
+  tous rendus **avant** le sprint. **Le visuel n'a rien de cela aujourd'hui.** Et `nadia-prof` a ecrit
+  qu'elle **decline par ecrit** un lot qui arrive trop tard plutot que de l'auditer a la va-vite.
+- **Matiere premiere** : `contenu-repris/associer/cp-formes.yml` et
+  `contenu-repris/quiz/cp-geometrie.yml` existent sur cette ligne et **sont tous deux refuses comme
+  contenu** - le premier departage deux formes identiques par la couleur, le second demande
+  *"Combien de cotes a un triangle ?"*, qui *"n'est pas reconnaitre, c'est reciter une propriete"*.
+  **Ils servent d'exemples de ce qu'il ne faut pas faire, pas de point de depart.**
+- **Lien decision** : arbitrage de l'utilisatrice du 2026-08-31 ; `DEC-0065`, amendement, section
+  A.3 ; arbitrage prealable de s19, section 2.4 ; arbitrage prealable de s25, sections 3.1 a 3.4.
+- **Agent pressenti** : **aucun tant que l'architecture n'existe pas.** `sofia-sm` affecte ensuite.
+
+### S25-LIS-1 - Lire silencieusement, restituer l'essentiel (francais CM1) - REPORTEE, PREMIER REPORT, MOTIF ECRIT
+
+- **Statut** : **reportee. Premier report, s25.** **Deux motifs, tous deux ecrits maintenant :**
+  1. **`LIS-6` la rend exclusive de `SUB`.** Les deux portent la propriete du type de `COMP-2`, et le
+     quota de `nadia-prof` est d'un paquet de ce type par sprint. `SUB` est au rang 1 et ne peut plus
+     etre reportee sans un motif que je n'ai pas. **`nadia-prof` n'a aucune preference entre les deux
+     et ne priorise pas** : le choix est de `camille-po` et `sofia-sm`, et il est fait ici.
+  2. **Sa condition d'ouverture n'est pas remplie.** Une mesure de pli d'`ines-design` est due
+     **avant** l'ecriture du paquet : un `texteSupport` de 45 a 70 mots, sa question et ses trois
+     propositions tiennent-ils au-dessus du pli ? *"Sans cette mesure, je ne fais pas ouvrir cette
+     ligne."* Elle n'est pas rendue.
+- **Ce que le report coute, et pourquoi il n'est pas gratuit** : `LIS` est **la seule ligne ouvrable
+  du produit qui ne demande ni image, ni son, ni mecanique neuve** apres `SEM` et `SUB`. La reporter,
+  c'est vider la reserve de contenu seul a zero a la cloture de s25. **Un second report a s26 devra
+  porter un motif neuf**, et la mesure de pli aura eu un sprint entier pour etre rendue : si elle ne
+  l'est pas, c'est ce paragraphe-ci qu'il faudra relire.
+- **Besoin** : en tant qu'eleve de CM1, je veux dire de quoi parle un texte que je viens de lire, et
+  pas seulement retrouver un detail, afin d'apprendre a saisir l'essentiel plutot que ce qui m'a
+  frappe.
+- **Competence programme visee** : francais, CM1 (cycle 3), domaine "Lecture et comprehension de
+  l'ecrit", "Lire silencieusement un texte de longueur croissante et en restituer l'essentiel"
+  (`squad/programme/francais/competences-cm1.md`).
+- **Arbitrage prealable** : rendu le 2026-08-31, `ACCEPTE SOUS CONDITIONS LIS-1 a LIS-10`, avec
+  couverture partielle nommee et sous la reserve mesuree ci-dessus (arbitrage prealable de s25,
+  section 9.1).
+- **Ce que la ligne n'est pas** : elle est **distincte** de *"Comprendre un texte narratif ou
+  documentaire"*, deja verte. `nadia-prof` a relu les vingt enonces de `cm1-comprehension` un par un :
+  *"les vingt portent sur un detail [...] **aucun ne demande de quoi le texte parle**. Restituer
+  l'essentiel [...] est un autre geste, et c'est celui qu'un CM1 rate le plus souvent : il retient un
+  detail frappant et le prend pour le sujet."*
+- **Criteres d'acceptation**, **un par condition**, recopies maintenant pour que le report ne les
+  perde pas :
+  - **`LIS-1` - Forme.** Le `texteSupport` porte le texte ; l'`enonce` demande **de quoi parle le
+    texte** - un titre, une phrase qui le resume, ce qu'on en retiendrait. Trois propositions.
+  - **`LIS-2` - Longueur.** Le `texteSupport` compte **au moins 45 mots et au plus 70**, et **au plus
+    cinq phrases**. *Un mot est une suite de caracteres sans espace ; unite de compte : l'item. Le
+    plancher de 45 est pose contre sa mesure des vingt textes de `cm1-comprehension` - de 20 a 38
+    mots, moyenne 28,9 : au-dessous, ce paquet servirait des textes de la longueur d'une ligne deja
+    verte et travaillerait la meme chose. **Le plafond de 70 est provisoire et appartient a la mesure
+    d'`ines-design`, pas a elle.***
+  - **`LIS-3` - L'`enonce` compte au plus 12 mots.**
+  - **`LIS-4` - Aucune proposition n'est une phrase recopiee du texte.** *"Un CM1 qui apparie des
+    chaines reussirait sans avoir rien resume."* Meme famille que `NAR-5`, prise dans l'autre sens.
+  - **`LIS-5` - Chaque distracteur est vrai a propos du texte, et partiel.** *"C'est la condition
+    centrale et c'est tout l'exercice : un distracteur faux transforme la question en reperage
+    d'erreur, un distracteur absurde en devinette. **Le bon distracteur est un detail exact du texte
+    promu au rang de sujet** - c'est l'erreur que l'enfant fait reellement, et c'est celle qu'il doit
+    apprendre a ne plus faire."*
+  - **`LIS-6` - Texte masque, la question ne se repond pas.** Item par item, sur la totalite. *"Aucun
+    automate ne voit cette propriete. C'est `COMP-2`, et ce paquet compte a lui seul contre ma
+    condition d'au plus un par sprint - donc **`LIS` et `SUB` ne peuvent pas etre pris dans le meme
+    sprint**."*
+  - **`LIS-7` - Le texte est autonome.** Aucune connaissance de culture generale requise, aucun nom
+    propre reel, aucun renvoi a un autre item.
+  - **`LIS-8` - Personnages et situations.** Prenoms equilibres en genre a un pres ; aucun role,
+    metier ou activite distribue par genre ; aucune situation qui suppose une configuration
+    familiale, un logement ou un depart en vacances. *Reconduction de `NAR-7`, `NAR-8`, `SUB-8`.*
+  - **`LIS-9` - Indice.** Il dit **quelle partie du texte relire pour trouver le sujet**, jamais le
+    sujet. **Dix mots au plus.**
+  - **`LIS-10` - Au moins vingt items**, et deux items ne partagent jamais le meme `texteSupport`.
+- **La mention exacte exigee sur la matrice le jour ou la ligne bougera** : **"restituer l'essentiel
+  seul ; la longueur croissante n'est pas servie, le tirage d'une manche etant sans ordre"**.
+- **Une reserve de produit qu'elle reconduit sans la rendre bloquante, et que je note sans
+  l'engager** : *"aucun jeu de ce produit n'a de progression de difficulte"*, le tirage etant
+  aleatoire. Reserve ouverte le 2026-08-10 sur `cp-le-bon-son`, jamais instruite depuis.
+- **Lien decision** : `DEC-0065`, amendement, sections A.3 et A.6 ; `DEC-0066`, section 2.3 (ou
+  j'explique pourquoi j'avais propose de reclasser cette ligne le matin meme) ; arbitrage prealable
+  de s25, section 9.1.
+- **Agent pressenti** : aucun a s25.
+
+### S25-FRA-1 - Item 18 de `cm1-fractions` : on ne court pas une part - UN ITEM, UN VERBE
+
+- **Statut** : **non engagee**, route a moi par `nadia-prof` comme un **defaut de contenu**, pas
+  comme un motif de refus.
+- **Ce qu'elle rapporte** : **zero ligne.** La ligne des fractions est `couvert-valide` depuis le
+  2026-08-31 et **le Done n'est pas retire** - *"il a ete prononce le 2026-08-31, il reste ecrit, et
+  un verdict prononce ne se reecrit pas"*.
+- **Besoin** : en tant qu'eleve de CM1, je veux lire un enonce de mathematiques dans des mots que je
+  connais, afin de depenser mon attention sur la fraction et pas sur la phrase.
+- **Competence programme visee** : mathematiques, CM1 (cycle 3), "Notion de fraction simple [...]",
+  **ligne deja `couvert-valide` - cette story ne la fait pas bouger.**
+- **Le fait, dans ses mots, apres 70 parties ouvertes jusqu'a ce que l'item sorte** : l'item lit
+  *"Une piste est partagee en 3 parts egales. **On en court 1.** Quelle fraction est courue ?"*. Les
+  cinq items freres de la meme forme emploient *colorie*, *prend*, *garde*, *peint*, *coupe* -
+  *"cinq verbes dont le complement d'objet direct est naturellement une part. On colorie une part, on
+  coupe une part. **On ne court pas une part.**"* Et *"est courue"* est *"un participe passif qu'il ne
+  rencontrera nulle part ailleurs"*.
+- **Critere d'acceptation - rouge aujourd'hui, verifie contre l'existant** :
+  - **`FRA-13`** - Etant donne l'item 18 de `cm1-fractions`, quand on lit son enonce, alors le verbe
+    qui designe le prelevement **admet une part comme complement d'objet direct en francais courant**,
+    et son participe passe est un mot que le CM1 a deja lu. *Aujourd'hui il ne l'est pas : le verbe
+    est `courir` et le participe `courue`.* **Le libelle est celui de `FRA-12` ; je ne le traduis
+    pas.**
+- **Criteres de non-regression - verts aujourd'hui** :
+  - **`FRA-14`** - le paquet compte toujours **24 items**, aucun ajoute, aucun retire.
+  - **`FRA-15`** - `FRA-1` a `FRA-11` tiennent toutes, **reverifiees sur le paquet entier et non sur
+    le diff**. *Motif : c'est le standard que `nadia-prof` a tenu sur `NAR` a s24, et une correction
+    d'enonce touche le materiau que ces conditions comptent.*
+- **La condition neuve qui encadre les paquets suivants, dans ses mots, non retroactive** :
+  > **`FRA-12`** - *"Sur un item de mise en situation, le verbe qui designe le prelevement admet une
+  > part comme complement d'objet direct en francais courant, et son participe passe est un mot que
+  > le niveau vise a deja lu. Verification : item par item, par moi. **Aucun automate ne verra jamais
+  > qu'on ne court pas une part.**"*
+  **Elle ne s'applique pas aux 24 items deja valides** et vaut pour les paquets de mise en situation
+  suivants. **Portee au dossier des conditions par cette story.**
+- **Ce que je n'ecris pas** : le texte de remplacement. *"Je n'ecris pas le texte"*, dit-elle, et moi
+  non plus - c'est au developpeur, sur le patron des cinq items freres.
+- **Ce qu'elle ecrit contre elle-meme et que je verse sans le commenter** : *"Je ne cache pas que
+  j'ai valide sans avoir tranche ce point. Il m'avait ete route pendant le sprint et mon verdict ne
+  le mentionne pas. **C'est un manque de ma part**, pas du relecteur qui l'avait signale ni de
+  `marc-dev` qui a corrige ce que je lui avais demande."*
+- **Lien decision** : `DEC-0065`, amendement, section A.8 ; arbitrage prealable de s25, section 7 ;
+  `FICHE-bandit-manchot-fractions-cm1.md`.
+- **Agent pressenti** : a affecter par `sofia-sm`. **Un item, un verbe.**
+
+### Ce que ce bloc ne contient toujours pas
+
+- **Aucune story audio.** Les quatre lignes audio butent sur la source de la voix. `nadia-prof` a de
+  plus **corrige sa propre phrase de s24** sur les graphemes et phonemes : elle avait ecrit que ce
+  qui manquait a cette ligne etait *"un trou de contenu sur la mecanique de choix"* ; sa barre du
+  2026-08-10 exige que *"les digraphes `ou`, `oi` et `ch` soient couverts par un jeu qui emet un
+  son"*. **Cette ligne ne peut pas passer `couvert-valide` a s25, quel que soit le contenu ecrit, et
+  elle le dit avant qu'on l'ecrive plutot qu'apres.**
+- **Aucune story sur le quadrillage** : il demande **des propositions positionnees sur l'image**
+  (`QUA-3`), donc le palier 2, que l'utilisatrice n'a pas ouvert.
+- **Aucune story sur `denombrer`** : palier 3, manipulation reelle. *"Je ne deplace pas ce poteau et
+  je ne l'assouplis pas."*
+- **Aucune story sur la multiplication posee ni la division euclidienne** : `POS-1` a `POS-6` sont
+  desormais ecrites, et elles decrivent **une saisie positionnee a plusieurs champs**, *"ni la saisie
+  a un champ, ni la famille visuelle"*. Elle les instruit *"pour que le jour ou on les ouvrira on
+  sache ce qu'elles exigent"* et ajoute : ***"je ne les reclame pas."***
+- **Aucune story sur les trois postes de garde-fou ranges en tete par la squad.** Ils restent a
+  `theo-archi` et `yanis-qa`, et leur cout de report est reconduit dans `DEC-0065`, amendement,
+  section A.7 - **avec un fait neuf qui joue contre le perimetre que je propose** : un sprint qui
+  ouvre une mecanique de rendu cree des gabarits neufs et rend le comportement client tentant, c'est
+  a dire le moment le plus cher pour reporter ces trois-la.

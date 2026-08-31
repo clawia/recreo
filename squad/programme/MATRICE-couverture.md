@@ -510,7 +510,7 @@ Source : `squad/programme/francais/competences-cp.md`.
 | francais | CP | Lecture et comprehension de l'ecrit | Decoder un mot regulier inconnu par assemblage syllabique | - | - | non couvert |
 | francais | CP | Lecture et comprehension de l'ecrit | Lire a voix haute un texte court et simple avec fluidite croissante | - | - | non couvrable en l'etat |
 | francais | CP | Lecture et comprehension de l'ecrit | Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi) | bandit-manchot-texte-narratif-cp | bandit manchot | **couvert-valide** (2026-08-31, s24, second passage - reserve levee) |
-| francais | CP | Ecriture | Copier un mot, une phrase courte sans erreur, en respectant l'espacement | - | - | non couvert |
+| francais | CP | Ecriture | Copier un mot, une phrase courte sans erreur, en respectant l'espacement | - | - | **non couvrable en l'etat** (2026-08-31, s25, DEC-0066) - **contrainte fondatrice, nature reversible** : la competence est graphomotrice, et DEC-0046 a ecarte tout geste de trace pour ce produit. nadia-prof, 2026-08-31 : *"ni un clavier ni un choix ne produisent un geste d'ecriture ; former des lettres est un geste de trace"* |
 | francais | CP | Ecriture | Ecrire de maniere autonome un mot simple en respectant les correspondances grapheme/phoneme connues | - | - | non couvert |
 | francais | CP | Orthographe et grammaire | Reconnaitre et utiliser les marques du pluriel les plus frequentes (-s) | bandit-manchot-pluriel-cp | bandit manchot | **couvert-valide** (2026-08-31, s24) |
 | francais | CP | Orthographe et grammaire | Distinguer les principaux types de mots (nom, verbe) dans une phrase tres simple | bandit-manchot-nature-mot-cp | bandit manchot | couvert-valide |
@@ -649,7 +649,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Lecture et comprehension de l'ecrit | Lire silencieusement un texte de longueur croissante et en restituer l'essentiel | - | - | non couvert |
 | francais | CM1 | Lecture et comprehension de l'ecrit | Comprendre un texte narratif ou documentaire (questions explicites et implicites, inferences simples) | bandit-manchot-comprehension-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Lecture et comprehension de l'ecrit | Reperer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte | - | - | non couvert |
-| francais | CM1 | Ecriture | Rediger un texte narratif court et coherent (quelques phrases, temps du recit respecte) | - | - | non couvert |
+| francais | CM1 | Ecriture | Rediger un texte narratif court et coherent (quelques phrases, temps du recit respecte) | - | - | **non couvrable en l'etat** (2026-08-31, s25, DEC-0066) - **jugement humain sur une production libre (ADR-0008), nature irreversible** : la ligne dit *rediger*. nadia-prof, 2026-08-31 : *"R3 refusait par avance quelle que soit la qualite du lot ; je le reconduis et je l'etends au choix [...] l'enfant ne redige pas"* |
 | francais | CM1 | Ecriture | Relire et corriger son texte a l'aide de reperes simples (majuscules, ponctuation) | - | - | non couvrable en l'etat |
 | francais | CM1 | Orthographe et grammaire | Accorder le verbe avec son sujet (cas frequents, temps simples : present, futur, imparfait) | bandit-manchot-accord-sujet-verbe-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | bandit-manchot-accords-groupe-nominal-cm1 | bandit manchot | couvert-valide |
@@ -2978,3 +2978,74 @@ nomme dans la question. `DEC-0065`, section 5.4.
 - Elle **ne reclasse pas les quatre lignes ci-dessus** et ne prejuge pas de la reponse.
 - `SUB` **n'est pas reportee une seconde fois** : elle est au rang 1 de `DEC-0065`. Le report unique
   compte a `DEC-0059`, section 2, reste le premier et le seul.
+
+## Amendement du 2026-08-31 (meme jour, apres deux arbitrages de l'utilisatrice) - la section precedente est corrigee sur deux points, et le denominateur change
+
+**La section ci-dessus a ete ecrite le matin du 2026-08-31, avant l'arbitrage prealable de
+`nadia-prof` et avant deux arbitrages de l'utilisatrice. Elle reste lisible telle quelle** - ce
+depot n'efface pas - **et elle est fausse sur deux points que ce bloc corrige.**
+
+### 1. Ce que la section precedente disait de faux
+
+| Ce que j'ai ecrit le matin | Ce qui est vrai le soir | Source |
+|---|---|---|
+| La moitie *"utiliser"* de la **monnaie** pouvait porter sa ligne au vert | **REFUSE.** *"Sur les huit items, sept sont un jeu deja valide avec un symbole d'euro colle au resultat. Un enfant qui joue ce paquet ne travaille pas la monnaie ; il refait du calcul."* Et *reconnaitre* fonde *utiliser* : la ligne resterait `en cours` meme avec un bon paquet textuel | `nadia-prof`, arbitrage prealable de s25, section 2.2, `MON-1` a `MON-5` |
+| *"Lire silencieusement [...] et en restituer l'essentiel"* butait sur une production libre et devait etre reclassee | **OUVRABLE**, `LIS-1` a `LIS-10`, sous une mesure de pli due a `ines-design`. J'avais lu *"restituer l'essentiel"* comme *"produire un resume"* ; le geste est servable par le choix | meme document, section 9.1 ; `DEC-0066`, section 2.3 |
+
+**Un troisieme point n'etait pas faux mais etait incomplet** : la moitie *"se reperer dans la
+journee, la semaine"* est bien ouvrable, et `nadia-prof` lui a donne ses conditions `SEM-1` a
+`SEM-9`. **C'est le seul candidat neuf de contenu seul du sprint.**
+
+### 2. Le denominateur change - les deux taux, avec leur date
+
+`DEC-0066` applique l'arbitrage de l'utilisatrice du 2026-08-31 (*"Reclasser, taux revu"*) : **deux
+lignes sortent du denominateur, deux candidates n'y satisfaisaient pas et y restent.**
+
+| Date | Vertes | Denominateur | Taux |
+|---|---|---|---|
+| **2026-08-31, avant `DEC-0066`** | **27** | **43** | **62,8 %** |
+| **2026-08-31, apres `DEC-0066`** | **27** | **41** | **65,9 %** |
+
+> **Le numerateur n'a pas bouge. Le saut de 3,1 points est un changement de denominateur, pas un
+> progres.** Toute lecture de la serie de couverture de ce produit doit **couper la serie au
+> 2026-08-31** : avant, un pourcentage sur 43 ; apres, un pourcentage sur 41. Les deux ne se
+> comparent pas directement.
+
+*Methode : comptage automatise des quatre tableaux de matiere de ce fichier, colonne `Statut`, sur
+ce seul fichier, aucun module compile - la question du `-am` ne se pose pas. Apres : 27
+`couvert-valide`, 13 `non couvert`, 1 `en cours`, 6 `non couvrable en l'etat`, total 47.*
+
+**Les deux lignes qui ne sont pas sorties, et pourquoi** (`DEC-0066`, sections 2.3 et 2.4) :
+*"Lire silencieusement, restituer l'essentiel"* est **ouvrable** depuis le 2026-08-31 - la
+reclasser aurait retire une ligne du produit et non de l'affichage ; *"Ecrire de maniere autonome un
+mot simple"* attend **l'audio**, qui est un obstacle de production que l'utilisatrice peut lever par
+une reponse, et non une contrainte fondatrice.
+
+### 3. Ce que s25 peut faire bouger, corrige
+
+| Ligne | Ce qui la ferait bouger | Cout en paquets |
+|---|---|---|
+| **Se reperer dans la journee, la semaine ; lire l'heure pleine** (maths CP) | `SEM-1` a `SEM-9`, contenu seul. **Vert avec mention** : *"moitie 'se reperer dans la journee, la semaine' seule ; la moitie 'lire l'heure pleine sur une horloge' reste non couverte"* | 1 |
+| **Reperer les substituts d'un personnage** (francais CM1) | `SUB-1` a `SUB-10`, rien a attendre | 1 |
+| **Lire silencieusement, restituer l'essentiel** (francais CM1) | `LIS-1` a `LIS-10`, **plus une mesure de pli d'`ines-design` due avant l'ecriture du paquet** | 1 |
+| **Reconnaitre et nommer quelques figures planes** (maths CP) | `FIG-1` a `FIG-4` **plus** un rendu d'image reel - premier palier de la famille visuelle, ouvert par l'utilisatrice le 2026-08-31 | 1 paquet + une mecanique neuve |
+| **Reconnaitre et utiliser la monnaie** (maths CP) | `MON-1` a `MON-5`, **image obligatoire** : les pieces sont montrees, pas nommees | **2 paquets** (visuel + textuel) |
+
+**`LIS` et `SUB` ne tiennent pas dans le meme sprint** : `LIS-6` et `SUB-6` portent toutes deux la
+propriete du type de `COMP-2`, et `nadia-prof` n'en accepte qu'une par sprint. **Le maximum de s25
+sans mecanique neuve est donc de deux lignes, soit 29 sur 41 (70,7 %)** - son chiffre, corrige par
+elle contre son propre tableau, transpose au denominateur de `DEC-0066`.
+
+**Une interaction de comptage a ne pas rater** : la ligne de l'heure **ne compte qu'une fois**. `SEM`
+la fait passer au vert avec mention ; le palier visuel ne ferait ensuite que **lever la mention**.
+Un sprint qui prend `SEM` **et** le palier 1 ne gagne pas deux lignes sur cet objet.
+
+### 4. Ce que cet amendement ne fait pas
+
+- Il **ne fait passer aucune ligne a `couvert-valide`** et n'en retire aucune du vert.
+- Il **ne reecrit pas la section precedente**, qui reste lisible avec sa date et son erreur.
+- Il **ne presente le nouveau taux comme un progres a aucun endroit**.
+- La **symetrie axiale CM1** reste `non couvrable en l'etat` : `nadia-prof` a rendu le 2026-08-31 le
+  jugement que j'attendais depuis le 2026-08-25 et qu'elle refuse - *"reconnaitre une symetrie et
+  l'utiliser pour completer une figure [...] c'est le meme objet a deux degres, et le degre servi
+  serait le plus facile"*.

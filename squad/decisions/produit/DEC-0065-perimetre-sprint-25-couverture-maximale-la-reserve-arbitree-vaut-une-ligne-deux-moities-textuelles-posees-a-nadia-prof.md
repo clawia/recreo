@@ -1,6 +1,6 @@
 # DEC-0065 - Perimetre du sprint 25 : objectif de couverture maximale, la reserve arbitree ne vaut qu'une ligne, deux moities textuelles posees a `nadia-prof` comme seule voie d'elargissement
 
-- **Statut** : Proposee
+- **Statut** : Acceptee, **amendee le 2026-08-31** (deux arbitrages de l'utilisatrice et l'arbitrage prealable de nadia-prof : MON refusee, SEM et LIS ouvertes, palier 1 visuel ouvert, denominateur revu par DEC-0066). Voir l'amendement en fin de document.
 - **Date** : 2026-08-31
 - **Auteur** : `camille-po`
 - **Sprint** : s25 (ouverture)
@@ -366,3 +366,202 @@ ni arbitree a l'ouverture de s26, c'est un report et il devra etre ecrit comme t
   l'arithmetique de 4.2 : celle-ci montre que la borne de la porte pedagogique ne les oppose pas ;
   la capacite de developpement peut les opposer, et elle n'est pas de moi.
 - Elle **ne conteste aucun refus pedagogique** et n'en reouvre aucun.
+
+---
+
+## Amendement du 2026-08-31 (meme jour) - deux arbitrages de l'utilisatrice et l'arbitrage prealable de `nadia-prof` refont le perimetre : `MON` tombe, `SEM` et `LIS` naissent, le palier 1 visuel est ouvert
+
+**Statut de la decision apres cet amendement : Acceptee, amendee le 2026-08-31.**
+
+**Le texte ci-dessus n'est pas efface.** Il est fausse sur deux points de fait et sur un chiffre, et
+cet amendement dit lesquels. Ce qu'il gardait de juste - le fait central, la reserve a une ligne, le
+conflit avec le rang de la squad, la discipline de report - est reconduit et non reecrit.
+
+### A.1 Ce qui a ete tranche, et par qui
+
+| Arbitrage | Auteur | Verbatim |
+|---|---|---|
+| **Ouvrir la famille visuelle, palier 1** - image fixe, propositions en texte | l'utilisatrice | *"Ouvrir le visuel, palier 1"* |
+| **Reclasser les lignes hors d'atteinte, taux revu** | l'utilisatrice | *"Reclasser, taux revu"* - applique par `DEC-0066`, **deux lignes sur quatre seulement**, les deux autres ne remplissant pas le critere de la matrice |
+| **Les seize lignes instruites, dix jamais arbitrees** | `nadia-prof` | `squad/conformite/ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md` |
+
+**L'utilisatrice a choisi le visuel en connaissance de son cout** : une architecture qu'aucun `ADR`
+ne decrit, la descente de `nadia-prof` a trois paquets, le fait que le pli n'a **jamais** ete mesure
+avec une image, et l'ordre pedagogique *"audio, puis visuel, puis saisie"* du 2026-08-15 qu'elle
+place donc en second. **Je ne le rediscute pas et je ne le repose pas.**
+
+### A.2 Ce que la section 5.1 demandait, et ce que `nadia-prof` a repondu
+
+Je posais une question et j'ai eu une regle. **Elle l'a ecrite une fois pour toutes** (son arbitrage,
+section 2.8), verifiee contre cinq verdicts deja prononces, dont aucun ne la contredit :
+
+> *"Une couverture partielle nommee fait passer la ligne a `couvert-valide` quand la part servie est
+> un apprentissage entier que l'enfant peut mener a son terme sans la part manquante, **et** que la
+> part manquante est un objet distinct. Elle laisse la ligne `en cours` quand la part manquante
+> **fonde** la part servie, ou quand la part servie n'est qu'un degre plus facile du meme objet."*
+
+**Elle repond aussi a ce que je n'avais pas demande** : *"Si un tiers y trouve une contradiction avec
+un verdict que j'ai rendu, c'est ma regle qui cede, pas le verdict."*
+
+**Ce que cette regle donne sur mes deux candidates :**
+
+- **`MON` - REFUSE, et le motif n'est pas celui que j'avais.** J'avais ecrit que la moitie
+  *"utiliser"* etait servable en texte. Elle l'a verifiee item par item et repond : *"Sur les huit
+  items, sept sont un jeu deja valide avec un symbole d'euro colle au resultat. Un enfant qui joue ce
+  paquet ne travaille pas la monnaie ; il refait du calcul."* Et *reconnaitre* **fonde** *utiliser* :
+  la ligne resterait `en cours`. **`S25-MON-1` est close comme refusee**, et la ligne ne s'ouvrira
+  qu'avec une image (`MON-1` a `MON-5`).
+- **`SEM` - ACCEPTE, `SEM-1` a `SEM-9`, ligne au vert avec mention.** *"C'est le seul candidat neuf de
+  ce sprint, et je l'ai cherche."* La moitie *"se reperer dans la journee, la semaine"* est un
+  apprentissage entier - le rituel de la date - qui ne repose pas sur la lecture de l'horloge.
+
+**Et une ligne que je n'avais pas vue, qu'elle a ouverte** : **`LIS`**, *"Lire silencieusement [...]
+et en restituer l'essentiel"*, `LIS-1` a `LIS-10`. **Je l'avais proposee au reclassement le matin
+meme.** J'avais lu *"restituer l'essentiel"* comme *"produire un resume"* ; elle a vu qu'on peut
+faire **choisir** entre trois formulations du sujet dont deux sont des details exacts promus au rang
+de sujet. **Ma lecture du verbe etait trop large, la ligne n'etait pas fermee**, et `DEC-0066`
+section 2.3 porte cette erreur avec son motif.
+
+### A.3 Le perimetre reel de s25
+
+**Ce qui borne ce sprint n'est plus la capacite d'audit : c'est l'offre.** `nadia-prof` l'ecrit :
+*"Ma borne n'est pas atteinte par l'offre. C'est l'inverse de s24, et c'est le fait de planning le
+plus important de ce document."*
+
+| Rang | Lot | Story | Lignes | Ce qu'il attend |
+|---|---|---|---|---|
+| 1 | **`SUB`** - substituts d'un personnage (fr. CM1) | `S25-SUB-1` | **+1** | **rien** |
+| 2 | **`SEM`** - se reperer dans la journee, la semaine (maths CP) | `S25-SEM-1` | **+1** | **rien** - `SEM-1` a `SEM-9` rendues |
+| 3 | **`FIG`** - figures planes (maths CP), **premier paquet du palier 1 visuel** | `S25-FIG-1` | **+1** | l'architecture d'item visuel (`theo-archi`), le rendu et la mesure de pli avec image (`ines-design`) |
+| 4 | **`SCO`** - le score cesse d'etre parfait par elimination | `S25-SCO-1` | 0 | le resultat attendu (`nadia-prof`), puis l'`ADR` (`theo-archi`) |
+| 5 | **`DEN`** - lire, ecrire, decomposer jusqu'a 100 (maths CP) | `S25-DEN-1` | 0 | rien |
+| - | **`LIS`** - restituer l'essentiel (fr. CM1) | `S25-LIS-1` | +1, **exclusive de `SUB`** | la mesure de pli d'`ines-design`, **due avant l'ecriture du paquet** |
+| - | **`MON`** - monnaie (maths CP) | `S25-MON-1`, **close** | 0 | une image. Deux paquets, pas un |
+
+**Trois faits de composition, tous de `nadia-prof`, aucun de moi :**
+
+1. **`LIS` et `SUB` ne tiennent pas dans le meme sprint.** `LIS-6` et `SUB-6` portent toutes deux la
+   propriete du type de `COMP-2`, et son quota est d'un paquet de ce type par sprint. **Elle n'a
+   aucune preference entre les deux et ne priorise pas.**
+2. **Le quota `COMP-2` est un quota par sprint, pas une file qu'une ligne verte libere.** Elle
+   corrige mon motif tout en confirmant ma conclusion : *"s25 ouvre une place neuve quel qu'ait ete
+   le sort de `NAR`."* Ce que le vert de `NAR` change, c'est qu'il ne laisse **aucun reaudit
+   `COMP-2` du a s25** - et c'est cela qui rend `SUB` eligible.
+3. **La ligne de l'heure ne compte qu'une fois.** `SEM` la fait passer au vert avec mention ; le
+   palier visuel ne ferait ensuite que **lever la mention**. Un sprint qui prend `SEM` et le palier 1
+   ne gagne pas deux lignes sur cet objet. *Ce point est de moi, tire de sa section 3.1, et il
+   corrige a la baisse le "+3 du palier 1" tel qu'il m'a ete transmis.*
+
+**Pourquoi `FIG` plutot que `MON` comme premier paquet visuel, et c'est un fait de cout, pas un
+jugement pedagogique** : `FIG` demande **un** paquet visuel pour une ligne ; `MON` en demande
+**deux** - un visuel et un textuel - pour une ligne aussi. `nadia-prof` : *"deux d'entre elles -
+monnaie et `DEN` - demandent le visuel **et** un paquet textuel, donc deux paquets chacune."* Le
+choix du premier contenu visuel reste a `sofia-sm` et a l'arbitrage prealable de `nadia-prof` sur le
+paquet retenu ; je donne le cout, pas la decision.
+
+### A.4 Le plafond de s25, refait avec le denominateur de `DEC-0066`
+
+| Scenario | Lot | Lignes | Taux |
+|---|---|---|---|
+| Reserve seule | `SUB` | +1 | **28/41 (68,3 %)** |
+| **Contenu seul, sans mecanique neuve** | `SEM` + **un** de `SUB` ou `LIS` (+ `DEN` a zero ligne) | **+2** | **29/41 (70,7 %)** - *plafond de `nadia-prof`, corrige par elle contre son propre tableau* |
+| **Contenu seul + palier 1 livrant un paquet** | `SEM` + `SUB` + `FIG` | **+3** | **30/41 (73,2 %)** |
+| Theorique, hors capacite | + `MON` (2 paquets) | +4 | 31/41 (75,6 %) |
+
+**Aucun de ces chiffres n'est une prevision.** Ce sont des plafonds : ils supposent qu'un paquet
+ecrit dans le sprint passe la porte du premier coup, ce qui n'est jamais arrive sur ce produit.
+
+**Et le troisieme scenario suppose une chose qui n'existe pas** : une mecanique de rendu visuel dont
+aucun `ADR` ne decrit l'architecture, livree, auditee et servant un paquet dans le sprint de son
+ouverture. **La saisie, ouverte a s24 dans les memes termes, avait derriere elle `SAI-1` a `SAI-12`,
+`SEUIL-1` a `SEUIL-5`, `ADR-0058` et `ADR-0059`, tous rendus avant le sprint. Le visuel n'a rien de
+tout cela aujourd'hui.** Je le pose comme un risque de perimetre, pas comme un avis technique :
+`theo-archi` dit ce que cela coute.
+
+### A.5 La capacite, refaite avec le chiffre de `nadia-prof`
+
+**Son chiffre gouverne, pas mon objectif.** Elle descend a **trois paquets de contenu** dans le
+scenario ou une mecanique visuelle arrive, et elle price ce que sa borne ne pricait pas :
+
+> *"Une mecanique visuelle ajoute l'exactitude de ce qui est dessine, et c'est du contenu. Un cadran
+> dont les aiguilles sont a peu pres placees, une case qui n'est pas carree, un disque qu'on prend
+> pour un cercle : ce sont des reponses fausses, pas des defauts de forme. [...] Cela se verifie
+> image par image, item par item, et rien ne le verifiera a ma place."*
+
+| Scenario | Ce qu'elle porte |
+|---|---|
+| A - contenu seul | 4 paquets : `SEM`, `DEN`, plus **un** de `LIS`/`SUB`. Borne basse, pas en dessous |
+| **B - contenu seul + un palier visuel qui livre un paquet** | **3 paquets de contenu** + l'audit de la mecanique visuelle + son premier paquet |
+| C - contenu seul + mecanique visuelle sans paquet | 4 paquets, rien a auditer sur la mecanique |
+
+**Le perimetre de A.3 est le scenario B** : `SEM` + `SUB` + `DEN` = 3 paquets de contenu, plus `FIG`
+comme premier paquet visuel, plus l'audit de la mecanique. **C'est exactement sa borne dans ce
+scenario, et je ne demande rien au-dela.**
+
+**Ce qu'elle refuse de faire pour tenir un chiffre, et que je reprends comme une contrainte de
+planning et non comme une reserve** : *"Ce que je ne ferai pas pour tenir un chiffre :
+echantillonner. Ni sur les items, ni sur les images. Si un lot arrive trop tard ou trop gros, je
+decline par ecrit plutot que de rendre un verdict que je n'ai pas les moyens d'avoir rendu."*
+**Un lot visuel qui arriverait en fin de sprint ne serait pas audite. `sofia-sm` a le sequencement ;
+je nomme la consequence.**
+
+### A.6 Les reports, recomptes - c'est la partie que je ne me laisse pas passer
+
+- **`SUB` : rang 1, aucun report.** Le probleme que `DEC-0059` m'avait laisse est clos par la voie
+  qui le ferme. **Si `sofia-sm` ne peut pas la loger, ce serait un second report** : la composition
+  `COMP-2` n'est plus un motif disponible - `SUB` **est** le paquet `COMP-2` du sprint - et le
+  desequilibre entre niveaux ne l'est plus non plus. **Il resterait la capacite de developpement, et
+  ce motif devrait etre ecrit par `sofia-sm`, pas par moi.**
+- **`S25-NAR-1` : premier report, s25**, motif inchange et deja ecrit en section 3.1 - le quota
+  `COMP-2` est pris par `SUB`, qui rapporte une ligne la ou elle n'en rapporte aucune.
+- **`S25-LIS-1` : premier report, s25**, motif neuf et ecrit maintenant : `LIS-6` la rend exclusive
+  de `SUB`, **et** sa condition d'ouverture - la mesure de pli d'`ines-design` sur un texte de 45 a
+  70 mots - n'est pas rendue. `nadia-prof` : *"Sans cette mesure, je ne fais pas ouvrir cette
+  ligne."* **Un second report a s26 devra porter un motif neuf, et la mesure de pli aura eu un
+  sprint pour etre rendue.**
+- **`DEC-0061` / `S25-SCO-1`** : si le sujet n'est pas engage a s25, **c'est le second report**, et
+  les deux motifs tombes le 2026-08-31 (cout inconnu, file de reaudit ouverte) ne peuvent plus
+  servir. Section 4.2 ci-dessus, inchangee.
+- **La capture de rendu de reference** (`DEC-0063`) reste nommee, non engagee, proprietaire
+  technique. Section 7 ci-dessus, inchangee.
+
+### A.7 Le conflit avec le rang de la squad - reconduit, pas abandonne
+
+**Il n'est pas resolu par ce changement de perimetre, il est deplace.** L'utilisatrice a choisi la
+couverture ; les trois postes de tete de la squad continuent de rapporter **zero ligne** :
+
+| Poste | Lignes | Ce que le report coute, inchange depuis la section 4 |
+|---|---|---|
+| Le score parfait par elimination (`S25-SCO-1`) | 0 | **Le seul poste dont le prix augmente mecaniquement a chaque sprint** : chaque jeu neuf est un jeu de plus dans la partition R-B. s25 en ajoutera 1 a 3, plus une mecanique dont la partition n'existe pas encore |
+| Le JavaScript inline invisible d'`ADR-0008` | 0 | Porte de la dette n. 4 de `CLAUDE.md`. **Et un sprint qui ouvre une mecanique de rendu est precisement celui ou du comportement client devient tentant** - je le signale comme un fait de sequencement, la decision est a `theo-archi` |
+| Le cliquet d'`ADR-0067` aveugle aux gabarits | 0 | 3 orphelins neufs en un sprint, dans le perimetre exact ou le cliquet ne voit rien. **Une mecanique neuve apporte des gabarits neufs** |
+
+**Ce qui a change en leur faveur, et je le signale bien qu'il joue contre le perimetre que je
+propose** : les trois postes touchent tous des gabarits ou du comportement, et s25 en cree. **Les
+reporter dans le sprint qui ouvre une mecanique de rendu est le moment le plus cher pour le faire.**
+Je ne les fais pas entrer au perimetre - l'objectif est de l'utilisatrice et la capacite est a
+`sofia-sm` - **mais je refuse de laisser tomber ce chiffrage avec l'ancien perimetre.**
+
+### A.8 Trois suites que `nadia-prof` me route et qui entrent au backlog
+
+- **Item 18 de `cm1-fractions`** : *"On en court 1"*. Defaut de niveau constate apres 70 parties,
+  **Done non retire**, correction bornee a **un item et un verbe**. Story `S25-FRA-1`.
+- **`FRA-12`**, condition neuve du 2026-08-31, **non retroactive** : le verbe d'un item de mise en
+  situation admet une part comme complement d'objet direct en francais courant. Portee au dossier des
+  conditions, applicable aux paquets de mise en situation suivants.
+- **Deux constats qu'elle me rend et que je note sans les engager** : *"aucun jeu de ce produit n'a
+  de progression de difficulte"*, reserve du 2026-08-10 jamais instruite ; et **les deux fois et
+  demie de volume de texte de `SUB` sont un cout du `relecteur-pedagogique`, pas le sien**, depuis
+  que `DEC-0056` a sorti l'accentuation de sa porte - **a pricer au planning chez celui qui le
+  porte**.
+
+### A.9 Ce que cet amendement ne fait pas
+
+- Il **n'efface rien** du texte d'origine, y compris les deux points ou il etait faux.
+- Il **ne fait bouger aucune ligne** de la matrice : `DEC-0066` porte le reclassement, et aucun
+  passage au vert n'est decide ici.
+- Il **ne tranche rien de technique** : ni l'architecture d'un item visuel, ni son cout, ni la forme
+  de la correction de `M5`.
+- Il **ne rediscute aucun des deux arbitrages de l'utilisatrice** et ne les repose pas.
+- Il **ne releve la borne de `nadia-prof` d'aucune unite** et ne lui demande rien au-dela du scenario
+  B qu'elle a elle-meme decrit.
