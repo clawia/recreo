@@ -33,6 +33,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * tenue sur tous ses items - pour ce paquet comme pour tout paquet a trous a venir. Un paquet qui
  * n'utilise jamais ce marqueur (par exemple "cp-le-bon-son", qui presente un mot entier a lire)
  * n'entre pas dans son perimetre.</p>
+ *
+ * <p><b>Lot 5a de s24, decision 7 : etendu a l'item de saisie.</b> Le critere ne lit que l'enonce,
+ * et son perimetre se derive du paquet lui-meme. Un paquet de saisie est le contenu ou la convention
+ * du trou est la plus tentante - {@code CPL-6} demande que l'enfant comprenne que sa saisie prend la
+ * place du signe qui manque. Le garde-fou ne choisit pas entre le marqueur de trou et un autre
+ * signe : ce choix est pedagogique. Il exige la coherence de celui qui a ete choisi.</p>
  */
 class ChaquePaquetATrousPorteSonTrouSurChaqueItemTest {
 
@@ -72,18 +78,17 @@ class ChaquePaquetATrousPorteSonTrouSurChaqueItemTest {
         }
     }
 
-    private static List<Question> itemsTires(ContentSource contenu, int tirages) {
+    private static List<Item> itemsTires(ContentSource contenu, int tirages) {
         RandomSource hasard = new Random(11)::nextInt;
         Set<ItemId> dejaVus = new HashSet<>();
-        List<Question> items = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
         for (int tirage = 0; tirage < tirages; tirage++) {
             Item item = contenu.next(hasard, dejaVus).orElse(null);
             if (item == null) {
                 break;
             }
-            Question question = (Question) item;
-            items.add(question);
-            dejaVus.add(question.id());
+            items.add(item);
+            dejaVus.add(item.id());
         }
         return items;
     }
@@ -99,8 +104,13 @@ class ChaquePaquetATrousPorteSonTrouSurChaqueItemTest {
             // l'epuiser, plus un tirage pour constater l'epuisement.
             int declares = ChaquePaquetPorteUnIndiceTest.itemsDeclares(racine, paquet);
             int tirages = declares > 0 ? declares + 1 : TIRAGES_SUR_UN_PAQUET_COMBINATOIRE;
-            List<Question> items =
-                    itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet), tirages);
+            // Lot 5a de s24, decision 7 : etendu a l'item de saisie. Le critere ne lit que
+            // l'enonce, et son perimetre se derive du paquet lui-meme - un paquet qui n'emploie
+            // jamais le marqueur n'y entre pas. Un paquet de saisie est justement le contenu ou la
+            // convention du trou est la plus tentante : CPL-6 demande que l'enfant comprenne que sa
+            // saisie prend la place du signe qui manque.
+            List<ClassementDesItems.ItemLu> items = ClassementDesItems.lus(
+                    itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet), tirages));
             assertThat(items)
                     .as("%s : un paquet qui ne rend aucun item ne peut rien promettre", paquet)
                     .isNotEmpty();
@@ -117,7 +127,7 @@ class ChaquePaquetATrousPorteSonTrouSurChaqueItemTest {
             if (!paquetATrous) {
                 continue;
             }
-            for (Question item : items) {
+            for (ClassementDesItems.ItemLu item : items) {
                 assertThat(item.enonce())
                         .as("paquet %s, item \"%s\" : ce paquet utilise deja le marqueur de trou '___'"
                                 + " sur au moins un item, donc la reponse ne peut plus etre ecrite en"

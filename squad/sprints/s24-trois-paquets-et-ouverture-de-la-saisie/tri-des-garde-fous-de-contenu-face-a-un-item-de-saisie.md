@@ -457,6 +457,38 @@ sur le second, pas sur le premier.
 
 ---
 
+## 5 bis. Amendement du 2026-08-31, apres execution du lot 5b : quatorze ne suffit pas
+
+**Ce que l'execution a mesure et que la section 1 n'avait pas vu.** Le lot 1 fusionne et le paquet
+depose, `mvn -B clean verify` a la racine rend **deux garde-fous de plus**, et tous les deux vivent
+dans `bootstrap` - hors du perimetre `adapter-content` sur lequel les deux sondes avaient ete
+mesurees. Ils ne se declenchent pas au depot du fichier, mais a l'**entree de catalogue**, comme le
+n° 14.
+
+| Garde-fou | Module | Ce qu'il exige |
+|---|---|---|
+| `TexteAccentueExposeParLePortEntrantTest` | `bootstrap` | Toute chaine exposee par le port entrant est inventoriee. Message du garde-fou : *"soit `nadia-prof` l'a arbitree et l'inventaire s'etend dans le meme commit, soit cette chaine n'aurait pas du entrer"* |
+| `LaConsigneDUnJeuServiAtteintLEcranDeMancheTest` | `bootstrap` | La consigne et l'enonce du jeu declare atteignent son **ecran de manche rendu** |
+
+**Ce que cela change au sequencement, et c'est un fait, pas un arbitrage.** Le second exige un
+**ecran** : il n'y en a pas tant que les lots 2 et 4 n'ont pas livre la mecanique et son fragment.
+**L'entree de catalogue de `S24-SAI-2` ne peut donc pas etre verte avant les lots 2 et 4**, alors que
+le **paquet dans `contenu/` ne depend que du lot 1**. Les deux etaient comptes comme un seul geste
+par le planning (*"lot 5b et `S24-SAI-2` en une seule fusion"*).
+
+**Ce que j'en fais, et c'est du sequencement, donc de mon ressort de developpeuse** : je livre le
+paquet dans `contenu/` avec les quatorze garde-fous verts, et **je retiens l'entree de catalogue**
+jusqu'a ce que les lots 2 et 4 soient la. Mesure a l'appui, sur l'arbre de ma branche : avec l'entree
+de catalogue, `bootstrap` rend 123 tests et **4 echecs** ; sans elle, **0**.
+
+**Ce que je route et ne tranche pas** : le titre et la consigne de l'entree de catalogue - *"Ecris le
+complement a 10"* et *"Ecris le nombre qui manque pour arriver a 10."* - sont **du texte neuf lu par
+un enfant**. `CPL-1` a `CPL-8` gouvernent le paquet, aucune ne gouverne l'entree de catalogue. Ce sont
+deux chaines a porter a la fiche pour l'audit de `nadia-prof`, et le garde-fou de `bootstrap` le dit
+lui-meme. Voir la ligne F de la section 6.
+
+---
+
 ## 6. Ce que ce document route et ne tranche pas
 
 | # | Objet | Categorie | Destinataire |
@@ -466,6 +498,8 @@ sur le second, pas sur le premier.
 | C | *"Deux formes acceptees identiques dans un meme item"* - meme famille formelle que le n° 6, faute differente. Candidat a une regle neuve, **non engage a s24** | Technique | `theo-archi` |
 | D | L'espace insecable devant `?` et `:` du paquet de saisie : moyen laisse ouvert par `ADR-0067`, decide ici, **porte a la fiche** parce que `nadia-prof` lit le fichier meme si l'enfant ne voit aucune difference | Information, aucune demande d'arbitrage | `nadia-prof` |
 | E | Le choix entre `?` et le marqueur de trou dans l'enonce d'un item de saisie (n° 7) reste pedagogique. `CPL-6` cite `?` et je m'y tiens | Pedagogie | `nadia-prof`, si elle veut le rouvrir |
+| F | **Le titre et la consigne de l'entree de catalogue de `S24-SAI-2` sont du texte neuf lu par un enfant, et aucune condition `CPL` ne les gouverne.** `TexteAccentueExposeParLePortEntrantTest` exige qu'une chaine exposee par le port entrant ait ete arbitree avant d'entrer dans son inventaire (section 5 bis) | Pedagogie | `nadia-prof`, a la fiche de `S24-SAI-2` |
+| G | **L'entree de catalogue de `S24-SAI-2` depend des lots 2 et 4, pas seulement du lot 1**, ce que l'ordre de fusion du planning ne prevoit pas (section 5 bis). Le paquet est livre sans elle | Sequencement, capacite | `sofia-sm` casquette Scrum Master |
 
 **Aucun obstacle n'est clos par ce document**, et aucun ne le sera sur une intention annoncee : le
 fichier `ADR` ou `DEC` qui tranche existe sur le disque, ou l'obstacle reste ouvert.

@@ -38,6 +38,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * reel, ses items sont tires par la meme chaine que celle qu'un enfant traverse, et un item qui ne
  * porte pas d'indice fait echouer le test. Un type de contenu dont la fabrique perd l'indice en
  * route est donc rouge des son premier paquet, quel que soit ce que dit son YAML.</p>
+ *
+ * <p><b>Lot 5a de s24, decision 8 : etendu a l'item de saisie.</b> Il porte {@code indice} et
+ * {@code explication} comme {@code Question} (ADR-0058 section 1), l'ecran de saisie affiche
+ * l'indice, et {@code CPL-5} n'existerait pas s'il n'etait pas lu : nadia-prof y fait reecrire quatre
+ * indices parce qu'ils le seront. <b>Ce que l'extension interdit</b> : rendre ce garde-fou vert en
+ * declarant {@code indicesNommentLaReponse} au niveau d'un paquet de saisie. Le code l'accepterait -
+ * M21 est prevue pour cela - et la mecanique cesserait d'afficher les indices, ce qui viderait la
+ * promesse de S3-2 au lieu de la tenir.</p>
  */
 class ChaquePaquetPorteUnIndiceTest {
 
@@ -148,18 +156,17 @@ class ChaquePaquetPorteUnIndiceTest {
      * et non relus dans le YAML : c'est la chaine complete (schema, fabrique, source de contenu)
      * qui doit conserver l'indice, et c'est en son milieu qu'il se perdait.
      */
-    private static List<Question> itemsTires(ContentSource contenu, int tirages) {
+    private static List<Item> itemsTires(ContentSource contenu, int tirages) {
         RandomSource hasard = new Random(7)::nextInt;
         Set<ItemId> dejaVus = new HashSet<>();
-        List<Question> items = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
         for (int tirage = 0; tirage < tirages; tirage++) {
             Item item = contenu.next(hasard, dejaVus).orElse(null);
             if (item == null) {
                 break;
             }
-            Question question = (Question) item;
-            items.add(question);
-            dejaVus.add(question.id());
+            items.add(item);
+            dejaVus.add(item.id());
         }
         return items;
     }
@@ -178,8 +185,12 @@ class ChaquePaquetPorteUnIndiceTest {
             // l'epuiser, plus un tirage pour constater l'epuisement.
             int declares = itemsDeclares(racine, paquet);
             int tirages = declares > 0 ? declares + 1 : TIRAGES_SUR_UN_PAQUET_COMBINATOIRE;
-            List<Question> items =
-                    itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet), tirages);
+            // Lot 5a de s24, decision 8 : etendu a l'item de saisie. L'item de saisie porte indice
+            // et explication comme Question (ADR-0058 section 1), l'ecran de saisie affiche l'indice,
+            // et CPL-5 n'existerait pas s'il n'etait pas lu - nadia-prof fait reecrire quatre indices
+            // parce qu'ils le seront. La promesse d'aide est plus forte en saisie, pas plus faible.
+            List<ClassementDesItems.ItemLu> items = ClassementDesItems.lus(
+                    itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet), tirages));
             assertThat(items)
                     .as("%s : un paquet qui ne rend aucun item ne peut rien promettre", paquet)
                     .isNotEmpty();
@@ -191,7 +202,7 @@ class ChaquePaquetPorteUnIndiceTest {
                                 items.size())
                         .hasSize(declares);
             }
-            for (Question item : items) {
+            for (ClassementDesItems.ItemLu item : items) {
                 assertThat(item.indice())
                         .as("paquet %s, item \"%s\" : la mecanique promet une aide apres trois echecs"
                                 + " consecutifs (S3-2) et ne peut afficher que ce que le contenu lui"

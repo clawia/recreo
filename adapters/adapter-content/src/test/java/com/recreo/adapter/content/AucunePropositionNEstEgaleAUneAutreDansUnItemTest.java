@@ -51,6 +51,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * <p>Le critere lui-meme n'est pas une liste enumeree (ADR-0039) : c'est une propriete calculee sur
  * les propositions de chaque item - la bonne reponse et ses distracteurs ne doivent jamais coincider,
  * quel que soit leur texte.</p>
+ *
+ * <p><b>Lot 5a de s24, decision 6 : borne a l'item qui presente des propositions, avec son
+ * motif.</b> La faute decrite ici est un <b>choix</b> rendu indecidable - "un enfant qui choisit le
+ * doublon n'a rien fait de mal en le choisissant". Sans choix, elle n'a pas d'objet, et la phrase
+ * ci-dessus ("toute mecanique qui presente un choix parmi des propositions traverse ce garde-fou")
+ * reste vraie sans retouche. Deux formes acceptees identiques dans un meme item sont de la meme
+ * famille formelle mais pas de la meme faute - un doublon de tolerance est sans effet pour l'enfant -
+ * et une regle neuve pour ce cas est routee, non ecrite ici.</p>
  */
 class AucunePropositionNEstEgaleAUneAutreDansUnItemTest {
 
@@ -89,18 +97,17 @@ class AucunePropositionNEstEgaleAUneAutreDansUnItemTest {
     }
 
     /** Les items reellement tires par la chaine de contenu, pas relus dans le YAML. */
-    private static List<Question> itemsTires(ContentSource contenu, int tirages) {
+    private static List<Item> itemsTires(ContentSource contenu, int tirages) {
         RandomSource hasard = new Random(7)::nextInt;
         Set<ItemId> dejaVus = new HashSet<>();
-        List<Question> items = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
         for (int tirage = 0; tirage < tirages; tirage++) {
             Item item = contenu.next(hasard, dejaVus).orElse(null);
             if (item == null) {
                 break;
             }
-            Question question = (Question) item;
-            items.add(question);
-            dejaVus.add(question.id());
+            items.add(item);
+            dejaVus.add(item.id());
         }
         return items;
     }
@@ -136,29 +143,45 @@ class AucunePropositionNEstEgaleAUneAutreDansUnItemTest {
                 .isNotEmpty();
 
         List<String> defauts = new ArrayList<>();
+        int itemsDeSaisieEcartes = 0;
+        int itemsAPropositionsJuges = 0;
         for (String paquet : paquets) {
             // ADR-0064 : la borne vient du paquet, jamais d'un nombre ecrit ici. De quoi
             // l'epuiser, plus un tirage pour constater l'epuisement.
             int declares = ChaquePaquetPorteUnIndiceTest.itemsDeclares(racine, paquet);
             int tirages = declares > 0 ? declares + 1 : TIRAGES_SUR_UN_PAQUET_COMBINATOIRE;
-            List<Question> items =
+            List<Item> tires =
                     itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet), tirages);
-            assertThat(items)
+            assertThat(tires)
                     .as("%s : un paquet qui ne rend aucun item ne peut rien promettre", paquet)
                     .isNotEmpty();
             if (declares > 0) {
                 // ADR-0064 : un paquet enumere est lu EN ENTIER, ou ce garde-fou est rouge et le dit.
-                assertThat(items)
+                // La lecture porte sur les items tires, avant classement : c'est la lecture du paquet
+                // qui doit etre entiere, et le classement vient apres elle.
+                assertThat(tires)
                         .as("%s declare %d items sur disque et ce garde-fou n'en a tire que %d : la"
                                 + " clause porterait sur un echantillon sans le dire", paquet, declares,
-                                items.size())
+                                tires.size())
                         .hasSize(declares);
             }
+            // Lot 5a de s24, decision 6 : borne aux items qui presentent des propositions. La faute
+            // que cette regle decrit est un CHOIX rendu indecidable - "un enfant qui choisit le
+            // doublon n'a rien fait de mal en le choisissant". Sans choix, elle n'a pas d'objet, et
+            // la phrase de la Javadoc reste vraie sans retouche.
+            List<Question> items = ClassementDesItems.presentantDesPropositions(tires);
+            itemsDeSaisieEcartes += tires.size() - items.size();
+            itemsAPropositionsJuges += items.size();
             for (Question item : items) {
                 defauts.addAll(doublonsDe(paquet, item));
             }
         }
 
+        assertThat(itemsAPropositionsJuges)
+                .as("%s : ce garde-fou a ecarte %d item(s) de saisie et n'en a juge aucun qui presente"
+                        + " des propositions. Une borne qui emporte toute la population n'est plus une"
+                        + " borne", racine, itemsDeSaisieEcartes)
+                .isPositive();
         assertThat(defauts)
                 .as("aucune proposition d'un item ne doit egaler une autre proposition du meme item")
                 .isEmpty();
