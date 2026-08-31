@@ -1,0 +1,21 @@
+# Le meme paquet corrige : deux enonces distincts. Jeu du lot 5b de s24, forme de saisie : deux items qui posent le meme enonce. La forme de
+# reference et les formes acceptees different, et cela ne fait pas deux ecrans - l'enfant ne les voit
+# ni l'une ni les autres au moment ou il repond. Jamais livre, jamais servi a un enfant.
+schema: 1
+id: paquet-saisie-au-meme-enonce
+type: saisie
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Competence de fixture"
+exigenceDeForme: libre
+items:
+  - enonce: "Enonce de fixture 1"
+    formeDeReference: "7"
+    formesAcceptees: ["sept"]
+    indice: "Indice de fixture 1"
+  - enonce: "Enonce de fixture 2"
+    formeDeReference: "3"
+    formesAcceptees: ["trois"]
+    indice: "Indice de fixture 2"

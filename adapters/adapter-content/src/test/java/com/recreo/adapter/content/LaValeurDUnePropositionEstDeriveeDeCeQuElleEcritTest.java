@@ -66,6 +66,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * egales, dans les deux sens. Un paquet melange non declare est rouge, un paquet declare qui ne
  * melange plus est rouge, un nombre faux est rouge. Il n'y a pas de plafond parce qu'il n'y a
  * aucune place libre a plafonner.</p>
+ *
+ * <p><b>Lot 5a de s24, decision 9 : borne, par la borne du garde-fou qu'il sert.</b> Cette classe
+ * est entierement au service de {@link LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest} : elle
+ * ne juge que la fiabilite de son taux de rang. Ce garde-fou-la etant borne a l'item qui presente des
+ * propositions (decision 10), celui-ci l'est par la meme raison - l'etendre serait le laisser garder
+ * un calcul que plus personne ne fait. Un paquet de saisie n'entre pas dans
+ * {@link #PAQUETS_A_ITEMS_ECARTES} : il n'est pas <i>melange</i>, il est hors du domaine en entier,
+ * cas qu'ADR-0041 traite deja - aucun taux n'est calcule et rien n'est affirme.</p>
  */
 class LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest {
 

@@ -83,6 +83,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * {@code nadia-prof} n'a prononce aucun refus dessus, et leur correction eventuelle est une
  * question de contenu qui ne m'appartient pas. Le cliquet dit seulement qu'ils existent, combien
  * ils sont, et qu'ils ne se multiplieront pas en silence.</p>
+ *
+ * <p><b>Lot 5a de s24, decision 1 : borne a l'item qui presente des propositions, avec son
+ * motif.</b> La promesse porte sur ce que l'enfant <b>presse</b> et sur la place que cela prend a
+ * l'ecran ; un item de saisie n'en presente aucune et le repli a quatre colonnes n'a pas d'objet.
+ * Etendre reviendrait a compter les <b>formes acceptees</b> comme si elles etaient affichees - elles
+ * ne le sont jamais - et rendrait rouge un paquet qu'aucun enfant n'a vu depasser : un faux rouge par
+ * construction. La borne n'est pas muette : le nombre d'items ecartes est compte, et un perimetre ou
+ * ce garde-fou ne jugerait plus aucun item a propositions est rouge.</p>
  */
 class AuPlusTroisPropositionsParItemTest {
 
@@ -160,18 +168,17 @@ class AuPlusTroisPropositionsParItemTest {
     }
 
     /** Les items reellement tires par la chaine de contenu, pas relus dans le YAML. */
-    private static List<Question> itemsTires(ContentSource contenu, int tirages) {
+    private static List<Item> itemsTires(ContentSource contenu, int tirages) {
         RandomSource hasard = new Random(7)::nextInt;
         Set<ItemId> dejaVus = new HashSet<>();
-        List<Question> items = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
         for (int tirage = 0; tirage < tirages; tirage++) {
             Item item = contenu.next(hasard, dejaVus).orElse(null);
             if (item == null) {
                 break;
             }
-            Question question = (Question) item;
-            items.add(question);
-            dejaVus.add(question.id());
+            items.add(item);
+            dejaVus.add(item.id());
         }
         return items;
     }
@@ -191,25 +198,35 @@ class AuPlusTroisPropositionsParItemTest {
                 .as("ce garde-fou ne prouve rien s'il ne trouve aucun paquet sous %s", racine)
                 .isNotEmpty();
 
+        int itemsDeSaisieEcartes = 0;
+        int itemsAPropositionsJuges = 0;
         Map<String, List<String>> depassements = new LinkedHashMap<>();
         for (String paquet : paquets) {
             // La borne est derivee du paquet, jamais ecrite a la main : de quoi l'epuiser, plus un
             // tirage pour constater l'epuisement.
             int declares = itemsDeclares(racine, paquet);
             int tirages = declares > 0 ? declares + 1 : TIRAGES_SUR_UN_PAQUET_COMBINATOIRE;
-            List<Question> items =
+            List<Item> tires =
                     itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet), tirages);
-            assertThat(items)
+            assertThat(tires)
                     .as("%s : un paquet qui ne rend aucun item ne peut rien promettre", paquet)
                     .isNotEmpty();
+            // Lot 5a de s24, decision 1 : borne aux items qui presentent des propositions. Le motif
+            // est dans la Javadoc de cette classe ; le compte des items ecartes est porte par
+            // itemsDeSaisieEcartes, et une borne qui emporterait tout le contenu servi est rouge.
+            List<Question> items = ClassementDesItems.presentantDesPropositions(tires);
+            itemsDeSaisieEcartes += tires.size() - items.size();
+            itemsAPropositionsJuges += items.size();
             if (declares > 0) {
                 // Le garde-fou dit sur quoi il a porte. Un paquet enumere est lu EN ENTIER ou le
                 // test est rouge : une clause verifiee sur une partie des items, sans le dire, est
-                // exactement le defaut que ce sprint a instruit six fois.
-                assertThat(items)
+                // exactement le defaut que ce sprint a instruit six fois. La lecture porte sur les
+                // items TIRES, avant classement : c'est la lecture du paquet qui doit etre entiere,
+                // et le classement vient apres elle.
+                assertThat(tires)
                         .as("%s declare %d items sur disque et ce garde-fou n'en a tire que %d : la"
                                 + " clause porterait sur un echantillon sans le dire", paquet, declares,
-                                items.size())
+                                tires.size())
                         .hasSize(declares);
             }
             for (Question item : items) {
@@ -221,6 +238,11 @@ class AuPlusTroisPropositionsParItemTest {
                 }
             }
         }
+        assertThat(itemsAPropositionsJuges)
+                .as("%s : ce garde-fou a ecarte %d item(s) de saisie et n'en a juge aucun qui presente"
+                        + " des propositions. Une borne qui emporte toute la population n'est plus une"
+                        + " borne, c'est une exemption generale", racine, itemsDeSaisieEcartes)
+                .isPositive();
         return depassements;
     }
 
