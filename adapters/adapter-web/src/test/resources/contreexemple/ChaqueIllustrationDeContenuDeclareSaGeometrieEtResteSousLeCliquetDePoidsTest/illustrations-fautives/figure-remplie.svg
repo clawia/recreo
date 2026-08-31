@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- JEU FAUTIF, JAMAIS SERVI. La surface est remplie d une teinte : la figure ne donne plus la
      meme reponse lue en niveaux de gris, et ce cercle-la est un disque (FIG-3, FIG-4). -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="480" height="480" role="img">
-  <circle cx="50" cy="50" r="42" fill="#e8a33d" stroke="#1c2733"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
+  <circle cx="50" cy="50" r="42" fill="#e8a33d" stroke="#1c2733" stroke-width="6"/>
 </svg>

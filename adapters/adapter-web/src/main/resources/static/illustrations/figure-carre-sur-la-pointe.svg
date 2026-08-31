@@ -3,7 +3,7 @@
      FIG-2, et c'est le motif meme de la condition : un carre pose sur la pointe reste un carre.
      La rotation vit dans le dessin, jamais dans la feuille - une feuille qui tournerait un item
      tournerait tous les autres. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="480" height="480" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
   <rect x="20" y="20" width="60" height="60" fill="none" stroke="#1c2733" stroke-width="6"
         stroke-linejoin="round" transform="rotate(45 50 50)"/>
 </svg>

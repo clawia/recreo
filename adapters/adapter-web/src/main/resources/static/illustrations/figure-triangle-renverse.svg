@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- FIG, item illustre du palier 1. Triangle pointe vers le bas, petite taille. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="480" height="480" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
   <polygon points="22,26 78,26 50,76" fill="none" stroke="#1c2733" stroke-width="6"
            stroke-linejoin="round"/>
 </svg>

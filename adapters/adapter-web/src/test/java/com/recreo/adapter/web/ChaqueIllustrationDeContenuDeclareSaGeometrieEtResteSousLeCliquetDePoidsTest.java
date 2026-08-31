@@ -32,12 +32,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *       dessinee, et ses proportions sont declarees par le contenu, pas par une police. Un
  *       rectangle est un rectangle a toute taille d'ecran, verifiable autrement que par mon
  *       oeil."</i> Le {@code viewBox} est l'endroit ou ces proportions se declarent ;</li>
- *   <li><b>DV-1</b> (ines-design, proposition de palier 1, sections 3.2 et 11, affectee au lot des
- *       dessins par le planning de s25) : les quatre declarations de la feuille - {@code max-height},
- *       {@code max-width}, {@code height: auto}, {@code width: auto} - <b>ne font jamais grandir un
- *       dessin au-dela de sa taille naturelle</b>. Un fichier declare a 100 x 100 resterait a 100 px
- *       sous un plafond de 176. La taille intrinseque est donc une propriete du fichier, et elle
- *       vaut au moins le plafond de rendu ;</li>
+ *   <li><b>DES-1 a DES-7</b> (ines-design, {@code contrainte-ines-ce-qu-un-dessin-servi-doit-declarer.md},
+ *       2026-08-31), qui <b>remplacent la dependance DV-1</b> et en corrigent le sens. DV-1 disait
+ *       <i>"des dimensions au moins egales au plafond retenu"</i>, et ce fichier l'avait encode
+ *       ainsi. <b>Sa mesure sur les quatre declarations reellement servies dit l'inverse</b> : un
+ *       fichier qui ne porte qu'un cadre de vue sort a 176 px quoi qu'il soit - c'est la feuille qui
+ *       decide -, et un fichier qui declare 480 sort a 176 lui aussi, parce que {@code max-height}
+ *       est un plafond et jamais une taille. <b>Declarer plus que le plafond est donc sans effet et
+ *       trompeur</b>, et le seuil se lit dans l'autre sens ;</li>
  *   <li><b>FIG-3</b> (nadia-prof, reconduction de DEC-0002 amende le 2026-08-04) : la couleur ne
  *       distingue jamais deux formes. Sa moitie calculable sur le fichier est qu'aucun dessin ne
  *       remplit de surface et qu'ils n'emploient tous qu'une seule couleur de trait. Le motif est
@@ -88,23 +90,69 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
             + "/ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTest");
 
     /**
-     * DV-1 : le plafond de rendu retenu par la feuille, en pixels. C'est le {@code max-height} de
-     * {@code .image-item} propose par ines-design - 11 rem, soit 176 px, la valeur du confort de
-     * lecture qu'elle a mesuree. Un fichier qui declarerait moins ne grandirait jamais jusqu'a lui.
+     * DES-3, plafond : le {@code max-height} de {@code .image-item}, en pixels. 11 rem, soit 176 px,
+     * valeur posee par marc-dev et <b>confirmee et tranchee</b> par ines-design le 2026-08-31 -
+     * <i>"tranchee, plus a trancher"</i>, nadia-prof gardant son veto. Elle passe le plancher de
+     * lisibilite du dessin le plus exigeant du palier 1 - un cadran a douze nombres, 123 px - avec
+     * 53 px de marge, et reste sous le niveau de confort de 202 px.
+     *
+     * <p>Un dessin qui declarerait davantage serait rogne par la feuille : sa declaration n'aurait
+     * aucun effet et annoncerait une taille que rien ne rend. C'est pour cela que ce nombre est un
+     * <b>plafond</b> et non un plancher, et c'est la correction que DES-3 apporte a DV-1.
      */
     private static final int PLAFOND_DE_RENDU_EN_PIXELS = 176;
 
-    /** Cliquet de poids, ADR-0036 clause 5 : le plus gros dessin, fins de ligne normalisees en LF. */
-    private static final int POIDS_D_UN_DESSIN_MAXIMUM = 1112;
+    /**
+     * DES-3, plancher de trait : <i>"le trait rend au moins 2 px"</i>, la plus fine ligne que recreo
+     * dessine deja en lui faisant porter un sens - la bordure de {@code 0.125rem} de
+     * {@code .champ-reponse} et des deux sorties. Une epaisseur qui tombe sous le pixel disparait.
+     *
+     * <p>C'est le seul plancher qui tienne une figure plane : ines-design ecrit qu'<i>"une figure
+     * plane sans chiffre n'est tenue que par le plancher de trait"</i>. Le second plancher qu'elle
+     * pose - <b>l'encre d'un chiffre trace rend au moins 14 px</b> - ne s'applique qu'a un dessin qui
+     * porte un chiffre, et <b>ce garde-fou ne le verifie pas</b> : il faudrait savoir lesquelles des
+     * commandes de trace d'un fichier sont un glyphe, et aucune propriete du fichier ne le dit. Il
+     * est nomme ici plutot que passe sous silence ; il mordra sur la chaine de la monnaie, et il
+     * reste dans la main d'ines-design et de nadia-prof.
+     */
+    private static final int PLANCHER_DE_TRAIT_EN_PIXELS = 2;
 
-    /** Cliquet de poids, ADR-0036 clause 5 : le repertoire entier, fins de ligne normalisees en LF. */
-    private static final int POIDS_TOTAL_MAXIMUM = 6206;
+    /**
+     * Cliquet de poids, ADR-0036 clause 5 : le plus gros dessin.
+     *
+     * <p><b>Ce que ce cliquet mesure, ecrit explicitement parce qu'ines-design a montre que la
+     * question se pose</b> : <b>le fichier commite, commentaires compris</b>, fins de ligne
+     * normalisees en LF - jamais les seules commandes de trace. Sa mesure du 2026-08-31 : une
+     * figure plane nue pese <b>275 octets de trace pour 1 084 octets commites</b> une fois commentee
+     * comme ce depot commente ses fichiers, et <i>"un seuil pose sur l'un ne veut rien dire sur
+     * l'autre"</i>. C'est donc le fichier ; qui deplacera ce cliquet deplacera la meme chose.
+     */
+    private static final int POIDS_D_UN_DESSIN_MAXIMUM = 1430;
+
+    /**
+     * Cliquet de poids, ADR-0036 clause 5 : le repertoire entier, meme perimetre et meme methode que
+     * ci-dessus.
+     *
+     * <p><b>Ces deux valeurs ont monte une fois, et le motif est ecrit plutot que tu</b> : 1 112 a
+     * 1 430 octets pour le plus gros dessin, 6 206 a 6 524 pour le repertoire, quand le commentaire
+     * de {@code figure-carre-droit.svg} a ete reecrit pour porter DES-1 a DES-3 a la place de DV-1.
+     * <b>La taille declaree n'y est pour rien</b> : passer de {@code width="480"} a
+     * {@code width="176"} n'a coute aucun octet, ce qui verifie sur ce corpus ce qu'ines-design pose
+     * - <i>"les dimensions declarees : effet nul"</i>. Ce sont les commentaires qui pesent,
+     * <i>"a la hausse, et je l'assume"</i>.
+     */
+    private static final int POIDS_TOTAL_MAXIMUM = 6524;
 
     private static final String VUE = "viewBox";
 
     private static final String REMPLISSAGE = "fill";
 
     private static final String TRAIT = "stroke";
+
+    private static final String EPAISSEUR_DE_TRAIT = "stroke-width";
+
+    /** DES-4 : ce qui decouplerait l'epaisseur du trait de l'echelle du dessin. */
+    private static final String EFFET_VECTORIEL = "non-scaling-stroke";
 
     private static final String JETON_DE_TEXTE = "--recreo-texte:";
 
@@ -211,24 +259,54 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
             total += poids;
 
             String racine = baliseRacine(source);
-            if (valeursDeLAttribut(racine, VUE).isEmpty()) {
+            List<String> vue = valeursDeLAttribut(racine, VUE);
+            if (vue.isEmpty()) {
                 fautes.add(nom + " : aucun viewBox. Les proportions de la figure sont alors"
                         + " gouvernees par la boite que la feuille lui donne, et un rectangle cesse"
-                        + " d'etre le meme rectangle a toute largeur d'ecran (FIG-1)");
+                        + " d'etre le meme rectangle a toute largeur d'ecran (FIG-1, DES-1)");
             }
 
-            for (String dimension : List.of("width", "height")) {
-                List<String> declarees = valeursDeLAttribut(racine, dimension);
-                if (declarees.isEmpty()) {
-                    fautes.add(nom + " : aucune dimension intrinseque '" + dimension + "'. La"
-                            + " feuille ne fait jamais grandir un dessin au-dela de sa taille"
-                            + " naturelle (DV-1)");
-                } else if (enPixels(declarees.get(0)) < PLAFOND_DE_RENDU_EN_PIXELS) {
-                    fautes.add(nom + " : " + dimension + " intrinseque de " + declarees.get(0)
-                            + " px, sous le plafond de rendu de " + PLAFOND_DE_RENDU_EN_PIXELS
-                            + " px. Le dessin ne grandira jamais jusqu'a ce plafond et sera servi"
-                            + " plus petit que ce que la feuille autorise (DV-1)");
-                }
+            List<String> largeurs = valeursDeLAttribut(racine, "width");
+            List<String> hauteurs = valeursDeLAttribut(racine, "height");
+            if (largeurs.isEmpty() || hauteurs.isEmpty()) {
+                fautes.add(nom + " : le dessin ne declare pas sa taille. Un fichier qui ne porte"
+                        + " qu'un cadre de vue sort exactement au plafond de la feuille, quel qu'il"
+                        + " soit - c'est la feuille qui decide de sa taille, pas lui (DES-1)");
+                continue;
+            }
+            int largeur = enUnitesUtilisateur(largeurs.get(0));
+            int hauteur = enUnitesUtilisateur(hauteurs.get(0));
+            if (largeur == 0 || hauteur == 0) {
+                fautes.add(nom + " : la taille declaree ('" + largeurs.get(0) + "' x '"
+                        + hauteurs.get(0) + "') n'est pas en unites utilisateur. Un pourcentage ou"
+                        + " une unite rend la boite au plafond de la feuille, donc rend la"
+                        + " declaration muette (DES-1)");
+                continue;
+            }
+            if (hauteur > PLAFOND_DE_RENDU_EN_PIXELS) {
+                fautes.add(nom + " : hauteur declaree de " + hauteur + " px, au-dessus du plafond"
+                        + " de rendu de " + PLAFOND_DE_RENDU_EN_PIXELS + " px. La feuille rogne :"
+                        + " la declaration est sans effet et annonce une taille que rien ne rend"
+                        + " (DES-3)");
+            }
+            if (!vue.isEmpty() && !memeRapport(vue.get(0), largeur, hauteur)) {
+                fautes.add(nom + " : la taille declaree (" + largeur + " x " + hauteur + ") n'est"
+                        + " pas dans le rapport du cadre de vue ('" + vue.get(0) + "'). Le fichier"
+                        + " declarerait un rapport qu'il ne rend pas, et FIG-1 cesserait d'etre"
+                        + " verifiable autrement que par un oeil (DES-2)");
+            }
+            int traitRendu = traitRenduEnPixels(source, vue.isEmpty() ? null : vue.get(0), hauteur);
+            if (traitRendu < PLANCHER_DE_TRAIT_EN_PIXELS) {
+                fautes.add(nom + " : le trait le plus fin rend " + traitRendu + " px a la hauteur"
+                        + " declaree, sous le plancher de " + PLANCHER_DE_TRAIT_EN_PIXELS + " px."
+                        + " Une epaisseur qui tombe sous le pixel disparait (DES-3)");
+            }
+
+            if (source.contains(EFFET_VECTORIEL)) {
+                fautes.add(nom + " : le dessin declare " + EFFET_VECTORIEL + ". L'epaisseur du"
+                        + " trait cesse alors de suivre l'echelle du dessin, et le plancher de trait"
+                        + " ci-dessus, qui se calcule sur cette echelle, cesse de dire vrai"
+                        + " (DES-4)");
             }
 
             for (String remplissage : valeursDeLAttribut(source, REMPLISSAGE)) {
@@ -251,8 +329,11 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
 
         if (!couleursDeTrait.equals(Set.of(couleurDuTexte))) {
             fautes.add("les dessins emploient les couleurs de trait " + couleursDeTrait + " au lieu"
-                    + " de la seule couleur du texte de la page. Deux couleurs de trait rendent"
-                    + " possible qu'une couleur porte l'information, ce que FIG-3 interdit");
+                    + " de la seule couleur du texte de la page, ecrite en clair. Deux couleurs de"
+                    + " trait rendent possible qu'une couleur porte l'information (FIG-3) ; et une"
+                    + " teinte qui n'est pas une valeur litterale - currentColor, une variable de"
+                    + " feuille - n'est gouvernee par personne, parce qu'un dessin charge comme"
+                    + " image est un document isole ou la couleur de la page n'entre pas (DES-5)");
         }
 
         if (total > POIDS_TOTAL_MAXIMUM) {
@@ -268,16 +349,75 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
     }
 
     /**
-     * Une dimension intrinseque declaree sans unite vaut des pixels. Une valeur ecrite autrement -
-     * un pourcentage, une unite - ne se compare pas au plafond de rendu, et elle est rendue nulle
-     * plutot que devinee : c'est le sens de DV-1 qu'elle trahit, et le message le dira.
+     * DES-1 : une dimension declaree en <b>unites utilisateur</b> est un nombre nu. Un pourcentage
+     * ou une unite rend zero plutot qu'une valeur devinee - c'est exactement le cas qu'ines-design a
+     * mesure comme rendant la boite au plafond de la feuille, donc comme rendant la declaration
+     * muette -, et l'appelant le nomme.
      */
-    private static int enPixels(String declaree) {
+    private static int enUnitesUtilisateur(String declaree) {
         try {
             return Integer.parseInt(declaree.strip());
-        } catch (NumberFormatException pasUnNombreDePixels) {
+        } catch (NumberFormatException pasUneUniteUtilisateur) {
             return 0;
         }
+    }
+
+    /** Les quatre nombres d'un cadre de vue, ou un tableau vide si la forme n'est pas celle-la. */
+    private static double[] cadreDeVue(String vue) {
+        String[] morceaux = vue.strip().split("[ ,]+");
+        if (morceaux.length != 4) {
+            return new double[0];
+        }
+        double[] nombres = new double[4];
+        for (int rang = 0; rang < 4; rang++) {
+            try {
+                nombres[rang] = Double.parseDouble(morceaux[rang]);
+            } catch (NumberFormatException pasUnCadreDeVue) {
+                return new double[0];
+            }
+        }
+        return nombres;
+    }
+
+    /**
+     * DES-2 : la taille declaree est dans le rapport du cadre de vue. La comparaison est faite en
+     * produit croise et non en division, pour qu'aucun arrondi ne decide du verdict ; la tolerance
+     * d'un demi-pixel absorbe une taille entiere posee sur un rapport qui ne tombe pas juste, et
+     * rien de plus - a 176 px de haut, un demi-pixel de largeur ne se voit pas, un pixel se voit.
+     */
+    private static boolean memeRapport(String vue, int largeur, int hauteur) {
+        double[] cadre = cadreDeVue(vue);
+        if (cadre.length != 4 || cadre[2] <= 0 || cadre[3] <= 0) {
+            return true;
+        }
+        return Math.abs(largeur * cadre[3] - hauteur * cadre[2]) <= cadre[3] / 2;
+    }
+
+    /**
+     * DES-3, plancher de trait : l'epaisseur rendue du trait <b>le plus fin</b> du dessin, a la
+     * hauteur qu'il declare. Le plus fin et non le premier : c'est celui qui disparait en premier,
+     * et un dessin n'a pas a n'avoir qu'une epaisseur.
+     *
+     * <p>Le calcul est celui du rendu : une epaisseur declaree dans le systeme du cadre de vue est
+     * mise a l'echelle avec lui. DES-4 est ce qui rend ce calcul juste, et c'est pourquoi elle
+     * interdit {@code vector-effect: non-scaling-stroke} - qui decouplerait l'epaisseur de l'echelle
+     * et ferait mentir ce plancher.
+     */
+    private static int traitRenduEnPixels(String source, String vue, int hauteurDeclaree) {
+        double plusFin = Double.MAX_VALUE;
+        for (String epaisseur : valeursDeLAttribut(source, EPAISSEUR_DE_TRAIT)) {
+            try {
+                plusFin = Math.min(plusFin, Double.parseDouble(epaisseur.strip()));
+            } catch (NumberFormatException pasUneEpaisseurEnUnitesUtilisateur) {
+                return 0;
+            }
+        }
+        if (plusFin == Double.MAX_VALUE) {
+            return Integer.MAX_VALUE;
+        }
+        double[] cadre = vue == null ? new double[0] : cadreDeVue(vue);
+        double hauteurDuCadre = cadre.length == 4 && cadre[3] > 0 ? cadre[3] : hauteurDeclaree;
+        return (int) Math.floor(plusFin * hauteurDeclaree / hauteurDuCadre);
     }
 
     @Test
@@ -326,20 +466,117 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
                 .hasMessageContaining("FIG-1");
     }
 
-    /** Morsure 2 : un dessin plus petit que le plafond de rendu, donc servi plus petit qu'il ne peut. */
+    /**
+     * Morsure 2 : un dessin qui declare plus que le plafond de rendu. C'est le cas qu'ines-design a
+     * mesure - un fichier a 480 sort a 176 comme un fichier sans taille du tout -, et c'est celui
+     * que ce garde-fou refusait dans l'autre sens avant DES-3.
+     */
     @Test
-    void unDessinPlusPetitQueLePlafondDeRenduFaitEchouerLeGardeFou() {
+    void unDessinQuiDeclarePlusQueLePlafondDeRenduFaitEchouerLeGardeFou() {
         Map<String, String> dessins = new LinkedHashMap<>(dessinsDe(ILLUSTRATIONS));
         String premier = dessins.keySet().iterator().next();
         dessins.put(premier, dessins.get(premier)
-                .replace("width=\"480\" height=\"480\"", "width=\"120\" height=\"120\""));
+                .replace("width=\"176\" height=\"176\"", "width=\"480\" height=\"480\""));
 
         assertThatThrownBy(() -> verifier(dessins, couleurDuTexte(FEUILLE_MAISON)))
                 .isInstanceOf(AssertionError.class)
-                .hasMessageContaining("DV-1");
+                .hasMessageContaining("DES-3");
     }
 
-    /** Morsure 3 : une couleur de trait de plus, c'est-a-dire une couleur qui peut porter du sens. */
+    /**
+     * Morsure 3 : un dessin qui ne porte qu'un cadre de vue. <b>C'est le defaut que le paquet de
+     * contre-exemple d'ADR-0073 porte</b> - ines-design le signale nommement -, donc celui dont tout
+     * dessin copie sur ce modele herite : il sort au plafond de la feuille quoi qu'il soit, et une
+     * rangee de pieces qui n'a besoin que de 43 px en occuperait 176.
+     */
+    @Test
+    void unDessinSansTailleDeclareeFaitEchouerLeGardeFou() {
+        Map<String, String> dessins = new LinkedHashMap<>(dessinsDe(ILLUSTRATIONS));
+        String premier = dessins.keySet().iterator().next();
+        dessins.put(premier, dessins.get(premier).replace(" width=\"176\" height=\"176\"", ""));
+
+        assertThatThrownBy(() -> verifier(dessins, couleurDuTexte(FEUILLE_MAISON)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("DES-1");
+    }
+
+    /**
+     * Morsure 4 : une taille declaree qui n'est pas dans le rapport du cadre de vue. Le fichier
+     * annoncerait alors un rapport qu'il ne rend pas, et FIG-1 - <i>"un rectangle est un rectangle a
+     * toute taille d'ecran, verifiable autrement que par mon oeil"</i> - cesserait d'etre verifiable
+     * sur la declaration.
+     */
+    @Test
+    void uneTailleHorsDuRapportDuCadreDeVueFaitEchouerLeGardeFou() {
+        Map<String, String> dessins = new LinkedHashMap<>(dessinsDe(ILLUSTRATIONS));
+        String premier = dessins.keySet().iterator().next();
+        dessins.put(premier, dessins.get(premier)
+                .replace("width=\"176\" height=\"176\"", "width=\"120\" height=\"176\""));
+
+        assertThatThrownBy(() -> verifier(dessins, couleurDuTexte(FEUILLE_MAISON)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("DES-2");
+    }
+
+    /**
+     * Morsure 5 : une teinte de trait qui n'est pas une valeur litterale. <b>Ce n'est pas un cas
+     * imagine</b> : ines-design a mesure au pixel qu'un dessin charge comme image est un document
+     * isole, ou {@code currentColor} rend du noir et ou une variable de feuille n'est pas definie du
+     * tout - et ses deux propres demonstrations portaient ce defaut avant qu'elle ne le corrige.
+     *
+     * <p>Elle vaut aussi comme reponse a la question posee sur le mecanisme de ce garde-fou : il
+     * <b>lit</b> la teinte du texte dans la feuille maison et la compare a ce que le dessin
+     * <b>ecrit</b>. Il n'a jamais suppose qu'un dessin heritait de la couleur de la page - ce qui
+     * serait faux -, il exige que le dessin ecrive la meme valeur que le jeton. Le fait du document
+     * isole ne le casse donc pas : il est exactement ce qui rend DES-5 necessaire, et cette morsure
+     * montre que la clause l'attrape.
+     */
+    @Test
+    void uneTeinteHeriteeAuLieuDUneValeurLitteraleFaitEchouerLeGardeFou() {
+        Map<String, String> dessins = new LinkedHashMap<>(dessinsDe(ILLUSTRATIONS));
+        String premier = dessins.keySet().iterator().next();
+        String couleur = couleurDuTexte(FEUILLE_MAISON);
+        dessins.put(premier, dessins.get(premier)
+                .replace("stroke=\"" + couleur + "\"", "stroke=\"currentColor\""));
+
+        assertThatThrownBy(() -> verifier(dessins, couleur))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("DES-5")
+                .hasMessageContaining("currentColor");
+    }
+
+    /**
+     * Morsure 6 : l'effet vectoriel qui decouple l'epaisseur du trait de l'echelle du dessin, et qui
+     * ferait donc mentir le plancher de trait calcule au-dessus.
+     */
+    @Test
+    void unTraitAEchelleFixeFaitEchouerLeGardeFou() {
+        Map<String, String> dessins = new LinkedHashMap<>(dessinsDe(ILLUSTRATIONS));
+        String premier = dessins.keySet().iterator().next();
+        dessins.put(premier, dessins.get(premier).replace("stroke-width=\"6\"",
+                "stroke-width=\"6\" vector-effect=\"non-scaling-stroke\""));
+
+        assertThatThrownBy(() -> verifier(dessins, couleurDuTexte(FEUILLE_MAISON)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("DES-4");
+    }
+
+    /**
+     * Morsure 7 : un trait trop fin pour la hauteur que le dessin declare. Le plancher de DES-3 est
+     * mordu par une epaisseur reelle mise a l'echelle, jamais par un nombre invente.
+     */
+    @Test
+    void unTraitSousLePlancherFaitEchouerLeGardeFou() {
+        Map<String, String> dessins = new LinkedHashMap<>(dessinsDe(ILLUSTRATIONS));
+        String premier = dessins.keySet().iterator().next();
+        dessins.put(premier, dessins.get(premier).replace("stroke-width=\"6\"", "stroke-width=\"1\""));
+
+        assertThatThrownBy(() -> verifier(dessins, couleurDuTexte(FEUILLE_MAISON)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("DES-3");
+    }
+
+    /** Morsure 8 : une couleur de trait de plus, c'est-a-dire une couleur qui peut porter du sens. */
     @Test
     void unDessinAUneSecondeCouleurDeTraitFaitEchouerLeGardeFou() {
         Map<String, String> dessins = new LinkedHashMap<>(dessinsDe(ILLUSTRATIONS));
@@ -353,7 +590,7 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
                 .hasMessageContaining("FIG-3");
     }
 
-    /** Morsure 4 : le cliquet de poids, mordu par un dessin de plus et non par un nombre invente. */
+    /** Morsure 9 : le cliquet de poids, mordu par un dessin de plus et non par un nombre invente. */
     @Test
     void unDessinDeTropFaitEchouerLeCliquetDePoids() {
         Map<String, String> dessins = new LinkedHashMap<>(dessinsDe(ILLUSTRATIONS));
@@ -365,7 +602,7 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
                 .hasMessageContaining("ADR-0036 clause 5");
     }
 
-    /** Morsure 5 : la clause de non-vacuite mord elle aussi (ADR-0051). */
+    /** Morsure 10 : la clause de non-vacuite mord elle aussi (ADR-0051). */
     @Test
     void unPerimetreDeDessinsVideFaitEchouerLeGardeFou() {
         assertThatThrownBy(() -> verifier(Map.of(), couleurDuTexte(FEUILLE_MAISON)))
@@ -375,10 +612,11 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
 
     /**
      * ADR-0013 obligation 3, morsure sur le <b>jeu fautif commite</b>, et elle n'est pas une redite
-     * des cinq precedentes : celles-la mutent la sortie du recensement, celle-ci la traverse. C'est
+     * des dix precedentes : celles-la mutent la sortie du recensement, celle-ci la traverse. C'est
      * le seul test du fichier qui prouve que {@link #dessinsDe} sait lire un repertoire de dessins
-     * sur disque. Le jeu fautif porte trois fautes de forme d'un seul coup - une figure sans
-     * viewBox, une figure trop petite pour le plafond de rendu, une figure remplie d'un aplat.
+     * sur disque. Le jeu fautif porte trois fautes de forme, une par fichier - une figure sans
+     * cadre de vue, une figure qui ne declare pas sa taille et sort donc au plafond de la
+     * feuille quoi qu'elle soit, une figure remplie d'un aplat.
      */
     @Test
     void leJeuFautifCommiteEstRefuseSurSesTroisFautes() {
@@ -391,7 +629,7 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
         assertThatThrownBy(() -> verifier(fautifs, couleurDuTexte(FEUILLE_MAISON)))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("figure-sans-proportions.svg")
-                .hasMessageContaining("figure-trop-petite.svg")
+                .hasMessageContaining("figure-sans-taille-declaree.svg")
                 .hasMessageContaining("figure-remplie.svg");
     }
 }
