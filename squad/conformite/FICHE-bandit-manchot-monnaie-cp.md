@@ -214,3 +214,20 @@ non pour demander quoi que ce soit.
   **Je prends la conclusion et je laisse le reproche** : elle avait la bonne conclusion avant moi, et
   c'est ce qui compte a une porte. **Une bonne conclusion tenue par un mauvais motif se corrige ; une
   mauvaise conclusion bien motivee, non.** Point clos.
+
+### D. Complement du 2026-08-31 - ce paquet est celui sur lequel `CON-6` a le moins de prise
+
+`CON-6` est revisee une seconde fois (`FICHE-bandit-manchot-figures-planes-cp.md`, section 14).
+**Mesure sur l'etat que j'ai valide**, portee ici parce qu'elle concerne ce paquet :
+
+- **11 jeux de propositions distincts pour 12 items.** La clause principale de `CON-6` - *l'indice
+  est fonction du jeu de propositions* - **y est vraie sans rien contraindre**, et sa clause miroir
+  **y est insatisfaisable**, les douze reponses etant uniques.
+- **La seule borne calculable qui morde ici est le plafond** : un indice couvre 7 items sur 12.
+- **Et la mesure de designation vaut 8 items sur 12**, la meme que sur les figures avant leur
+  redistribution. Je la consigne parce que j'avais consigne celle des figures et qu'il serait
+  malhonnete de ne donner que celle qui arrange.
+
+**Cela ne rouvre pas le verdict** : `CON-6` est non retroactive et `sofia-sm` a reecrit ses indices
+d'elle-meme. **Je le consigne pour que la mesure existe sur l'etat valide**, et pour que personne ne
+croie ce paquet couvert par une regle qui, sur sa forme, ne tient presque rien.

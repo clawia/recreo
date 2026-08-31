@@ -345,3 +345,103 @@ un choix que je defendrais, **c'etait un oubli**, et je le corrige plutot que de
   score, et elle a grave l'angle mort dans la Javadoc du test plutot que dans un rapport. **C'est
   exactement la conduite qui rend une condition utile**, et sans elle j'aurais laisse passer une
   regle qui ne gardait rien.
+
+### 14. Seconde revision de `CON-6`, le 2026-08-31 - la construction de `lea-dev` est la reponse, sa clause de coupe ne l'est pas
+
+**Ce que j'ai verifie avant de repondre** : la redistribution **n'est pas dans l'arbre de review**,
+elle vit sur `s25-lea` a `943e6f7`. J'ai mesure sur son commit, pas sur son resume.
+
+#### 14.1 Ses chiffres sont exacts, et sa construction est exacte
+
+| Mesure | FIG avant (l'etat que j'ai valide) | **FIG apres `943e6f7`** | MON (etat valide) |
+|---|---|---|---|
+| designation - l'indice designe la reponse | **8 / 12** | **0 / 12** | 8 / 12 |
+| (a) chaque indice porte au moins deux reponses | non | **oui** | oui |
+| (a') chaque reponse portee par au moins deux indices | non | **oui** | non |
+| (b) l'indice est fonction du jeu de propositions | non | **oui** | oui, **mais a vide** |
+| (b') chaque jeu de propositions servi par ses trois reponses | oui | **oui** | non |
+| (c) indice le plus repandu | 6 / 12 | 6 / 12 | **7 / 12** |
+
+**Les quatre jeux de propositions portent chacun trois items dont les trois bonnes reponses
+different, et l'indice ne depend que du jeu.** L'indice ne porte donc **aucune** information sur la
+reponse - ce n'est pas une part reduite, c'est une independance exacte. **Son 0 sur 12 est verifie.**
+
+#### 14.2 Oui, c'est la seconde borne - et c'est **l'independance**, pas la coupe
+
+**J'adopte sa construction et je la prefere aux deux bornes chiffrees que j'avais posees hier**, pour
+un motif simple : mes deux bornes etaient des **approximations** de ce que ma propre phrase disait,
+et la sienne **est** cette phrase. *"L'indice est choisi d'apres les propositions de l'item, jamais
+d'apres sa bonne reponse"* se mesure exactement ainsi.
+
+**Preuve que c'est mieux et non seulement plus elegant** : sur l'etat que j'avais valide, **(a), (a')
+et (b) echouent toutes les trois**, alors que **ma clause d'hier passait a 50 pour cent**. Le paquet
+qui a motive la condition est enfin attrape, par trois chemins au lieu d'aucun.
+
+#### 14.3 Ce que je n'adopte pas : *"la coupe en deux et une, jamais en trois"*
+
+**Je decline cette clause-la comme condition, et je dis pourquoi plutot que de la laisser passer dans
+un garde-fou.**
+
+Sa phrase est : *"un indice qui separerait les trois serait la reponse"*. **Je ne le crois pas.**
+Prenons *"Compte les cotes de la figure"* sur les propositions carre, cercle, triangle : les comptes
+sont 4, 0 et 3, donc l'indice separe les trois. **L'enfant doit encore regarder le dessin et compter.
+L'indice ne lui donne pas la reponse : il lui donne une methode complete pour la trouver lui-meme.**
+
+- **`CON-1` reste satisfaite** : en effacant l'image, la reponse n'est toujours pas trouvable. C'est
+  le test qui decide s'il y a contrefacon, et il ne mord pas ici.
+- **Et pedagogiquement, je vais plus loin : pour un enfant de CP qui vient d'echouer, une methode
+  complete vaut mieux qu'une methode partielle.** L'indice n'apparait qu'apres une erreur. A ce
+  moment-la, le laisser encore hesiter entre deux propositions n'est pas une vertu. **Interdire la
+  coupe en trois interdirait le meilleur indice.**
+
+**Ce que je ne fais pas** : je ne lui demande aucun changement. Son paquet tient la coupe en deux et
+une, et c'est tres bien ainsi - **je refuse seulement d'en faire une regle opposable aux paquets
+suivants.** Un auteur qui ecrirait un indice separant les trois ne serait pas en faute.
+
+*Elle a eu raison de l'ecrire comme un principe et de me le router : c'est un jugement sur ce qu'un
+indice doit apporter, et ce jugement est de moi. Elle ne l'a pas pris a ma place.*
+
+#### 14.4 La clause, seconde revision - et **un trou que je nomme au lieu de le masquer**
+
+> **`CON-6`, clause du 2026-08-31, seconde revision.** Le libelle de la section 11 et la clause de la
+> section 13.4 restent lisibles ; celle-ci les remplace.
+>
+> - **(a) Aucun indice ne va avec une seule reponse.** Chaque indice du paquet accompagne au moins
+>   deux bonnes reponses differentes. *Inchangee.*
+> - **(b) Quand plusieurs items partagent un meme jeu de propositions, l'indice est fonction de ce
+>   jeu et de rien d'autre**, et ce jeu est servi par toutes ses reponses. **C'est la construction de
+>   `lea-dev`, et c'est la borne principale.**
+> - **(b') Miroir de (a), la ou il est satisfaisable : chaque reponse est accompagnee d'au moins deux
+>   indices differents.** *C'est la borne qui mordait le plus fort sur l'etat fautif - elle y echoue
+>   sur les quatre reponses, quand (a) n'echoue que sur deux indices.*
+> - **(c) Aucun indice ne couvre plus de la moitie des items.** *Conservee comme filet, et son role
+>   est explique ci-dessous.*
+> - **(d) Non calculable, et dans ma seule main : l'indice apporte ce que la consigne ne dit pas
+>   deja.**
+
+**Le trou, et il faut qu'il soit ecrit avant que ce soit un garde-fou de depot** : **(b) et (b') sont
+vides sur un paquet dont les items ont tous des jeux de propositions distincts.** `cp-monnaie` en est
+un - **11 jeux distincts pour 12 items** - et j'ai mesure que **(b) y est vraie sans rien
+contraindre** et que **(b') y est insatisfaisable**, les reponses etant uniques.
+
+**Sur un tel paquet, la seule borne calculable qui reste est (c)** - et c'est elle, et elle seule, qui
+attrape l'uniformite que `sofia-sm` a signalee, a 7 items sur 12. **C'est pourquoi je ne la retire
+pas**, alors que sur `cp-figures-planes` elle ne sert plus a rien.
+
+**Ce que cela veut dire pour `theo-archi` et `yanis-qa`, et c'est le seul point ou j'insiste** : un
+garde-fou qui n'encoderait que (b) serait **vert et vide** sur `cp-monnaie` et sur tout paquet de sa
+forme. **C'est exactement le defaut que ce sprint a poursuivi trois fois** - une regle verte qui ne
+garde rien. **Les quatre clauses ensemble, ou alors que le test dise dans sa Javadoc laquelle des
+quatre il ne tient pas**, comme `sofia-sm` l'a fait pour son propre angle mort.
+
+#### 14.5 Ce que cette revision ne change pas
+
+- **Aucun verdict.** `cp-figures-planes` reste **VALIDE SOUS RESERVE**, et **la reserve de la section
+  10 est levee par `943e6f7`** - je le constate ici, je ne le prononce pas : le lot n'est pas
+  fusionne et je jugerai l'arbre que la cloture me presentera.
+- **`CON-6` reste non retroactive.**
+- **Les deux points annexes qu'elle a traites sont conformes a ce que je demandais** : la phrase du
+  commentaire du triangle est corrigee et non le dessin ; la borne de `FIG-2` sur le cercle est
+  reportee dans le paquet comme n'etant pas un precedent. **Et sa verification que le diff des douze
+  dessins ne touche aucune ligne de geometrie confirme ma propre passe** - deux lectures
+  independantes, meme resultat.
