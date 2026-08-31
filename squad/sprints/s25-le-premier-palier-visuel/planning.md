@@ -10,6 +10,12 @@
   d'autre.**
 - **Ce qu'il ne decide pas** : aucun perimetre produit, aucune architecture, aucune pedagogie. Le
   desaccord de la section 5 est **route, pas tranche**.
+- **Statut** : **finalise le 2026-08-31 par l'amendement de finalisation en fin de document.**
+  `Q1` et `Q2` de la section 5.3 ont recu leur reponse, l'utilisatrice a tranche la bascule de la
+  section 6.5, et la composition passe a **quatre paquets**. **Rien du texte ci-dessous n'est
+  efface** : `DEC-0065` second amendement cite nommement mes sections 5.3 et 6.5, et une reference
+  qui pointe vers rien est de la meme famille de defaut qu'un chiffre sans methode. Les enonces que
+  la finalisation remplace portent un renvoi a l'endroit ou ils sont remplaces.
 
 ---
 
@@ -265,6 +271,10 @@ sanctionnee il y a un jour.
 personne dessus. **Aucun developpeur ne commence un dessin de piece avant que l'amendement de
 `DEC-0065` existe sur le disque.** Un obstacle ne se clot pas sur une intention annoncee.
 
+> **`Q1` et `Q2` sont closes** - `nadia-prof` et `camille-po` ont rendu, et **l'amendement de
+> `DEC-0065` existe sur le disque**. Voir l'amendement de finalisation, section F.1. La condition que
+> je posais ci-dessus est remplie.
+
 ### 5.4 Ce que ce desaccord vaut, en lignes, verifie par moi
 
 **Le piege de comptage m'a ete signale ; je l'ai verifie plutot que de le supposer.** Sur les onze
@@ -296,6 +306,10 @@ sur ce produit"* (`camille-po`, `DEC-0065` A.4).
 > **La quatrieme ligne n'appartient a personne dans cette squad tant que `Q1` et `Q2` n'ont pas
 > rendu.**
 
+*Elles ont rendu. **Le plafond retenu passe a +4 lignes, soit 31 / 41 = 75,6 %**, avec la meme
+methode et le meme denominateur - amendement de finalisation, section F.2. Ce paragraphe reste
+lisible a sa place : c'est lui que `DEC-0065` B.4 cite.*
+
 ---
 
 ## 6. Capacite, lots et affectations
@@ -310,6 +324,10 @@ sur ce produit"* (`camille-po`, `DEC-0065` A.4).
 **Le perimetre engage en consomme trois, dont un visuel. Je suis sous sa borne et je n'y touche
 pas.** Le quatrieme paquet est celui de la section 5 ; s'il s'ouvre, sa borne est atteinte
 exactement, pas depassee.
+
+*La composition finale consomme les **quatre** paquets de sa borne, dont les deux visuels qu'elle
+autorise - amendement de finalisation, section F.2. Sa borne est atteinte exactement, jamais
+depassee.*
 
 **Ce qu'elle refuse de faire pour tenir un chiffre, et que je traite comme une contrainte de
 sequencement et non comme une reserve** :
@@ -328,6 +346,10 @@ anticipee (section 7.1) et dans le declencheur de bascule (section 6.4).**
 Trois developpeurs : `marc-dev`, `lea-dev`, `sofia-sm` (casquette dev). **Huit items** - un de moins
 que les neuf que s24 a portes.
 
+> **Ce tableau est remplace par celui de la section F.3** : le lot G sort, la chaine `MON` entre, et
+> les affectations sont refaites. **Neuf items, trois par tete.** Les criteres de chaque lot survivant
+> sont inchanges et se lisent ici.
+
 | Ordre | Item | Nature | Competence visee | Criteres | Affecte a |
 |---|---|---|---|---|---|
 | 1 | **Lot A** - le champ de contenu, du domaine jusqu'a l'ecran | technique | transverse | `ADR-0073` clauses 1 a 6 ; les **trois obligations mesurees** de l'avis de faisabilite section 4 ; la borne de l'exemption de `RessourcesTiercesTest` **mordue dans les deux sens** | `marc-dev` |
@@ -343,12 +365,20 @@ que les neuf que s24 a portes.
 
 **`marc-dev` porte le lot A seul et en premier, sans rien d'autre sur sa table.** Le lot A est le
 **seul blocage de l'increment entier** : les lots B et C en dependent, et l'audit d'ecran de
-`nadia-prof` aussi. Contrairement a s24, **je ne mets aucun paquet de contenu derriere lui sur la
-meme tete** : a s24 ce placement rendait operationnel l'ordre de priorite de `camille-po` - *"le
-contenu prime"* - en faisant glisser le lot technique ; **ici, faire glisser le lot technique fait
-tomber le paquet visuel**, c'est-a-dire le seul element de l'ordre de sacrifice de `nadia-prof` qui
-ne tombe jamais. Le patron de s24 etait bon ; il ne s'applique pas a un lot qui bloque son propre
+`nadia-prof` aussi. Contrairement a s24, **je ne place aucun paquet de contenu en concurrence avec lui
+sur la meme tete** : a s24 ce placement rendait operationnel l'ordre de priorite de `camille-po` -
+*"le contenu prime"* - en faisant glisser le lot technique ; **ici, faire glisser le lot technique
+fait tomber le paquet visuel**, c'est-a-dire le seul element de l'ordre de sacrifice de `nadia-prof`
+qui ne tombe jamais. Le patron de s24 etait bon ; il ne s'applique pas a un lot qui bloque son propre
 paquet.
+
+*Correction de ma main, 2026-08-31 : cette phrase disait d'abord "je ne mets **aucun paquet de
+contenu derriere lui** sur la meme tete", et le paragraphe suivant placait `S25-SUB-1` derriere le
+lot A sur cette meme tete. **Les deux ne pouvaient pas etre vrais en meme temps.** Ce que je decidais
+est ce qui est ecrit maintenant - aucun paquet **en concurrence** avec le lot A, la file d'une tete
+n'etant pas une concurrence. C'est une contradiction interne dans un document que tous les
+developpeurs lisent, du meme genre que celle que j'ai relevee chez une autre en section 5.2, et je la
+corrige au meme titre.*
 
 `S25-SUB-1` arrive sur sa tete **apres** le lot A. C'est la ligne garantie du sprint et le seul
 paquet `COMP-2` autorise ; **si `marc-dev` est serre apres le lot A, c'est `S25-SUB-1` qui reste, et
@@ -375,6 +405,10 @@ Un sprint n'a pas de timebox sur ce produit. Le declencheur ne peut donc pas etr
 > **Si `S25-SUB-1` et `S25-SEM-1` sont tous deux fusionnes verts alors que le lot A ne l'est pas
 > encore, je bascule** : `marc-dev` et `lea-dev` passent tous les deux sur le lot A, et les lots G et
 > H sortent du perimetre engage, avec leur motif ecrit dans `review.md`.
+
+*Ce declencheur cesse d'etre observable avec les affectations finales - `S25-SUB-1` y est derriere le
+lot A. **Il est remplace par les deux declencheurs de la section F.4**, qui portent le meme objet :
+proteger ce qui ne tombe jamais.*
 
 **Motif** : le seul point de l'ordre de sacrifice de `nadia-prof` qui ne tombe jamais est **le
 premier paquet visuel** - *"une mecanique livree sans aucun paquet est une mecanique que je ne peux
@@ -415,6 +449,12 @@ les dessins et le paquet de `MON` iraient sur `sofia-sm`, et **le lot G sortirai
 engage**. Je l'ecris maintenant pour que l'arbitrage se fasse en le sachant : **le quatrieme paquet
 et l'instruction de la dette de pli ne tiennent pas ensemble sur trois tetes.** Le choix entre les
 deux appartient a `camille-po` pour le perimetre, pas a moi.
+
+*C'est ce paragraphe que `DEC-0065` B.4 cite, et l'arbitrage est tombe : **le lot G sort, la
+quatrieme ligne reste**. La phrase reste vraie et le sacrifice est acte en section F.5. **Mais
+l'affectation que j'annoncais - la chaine `MON` sur ma propre tete - n'est pas celle que je retiens**,
+et la section F.3 dit pourquoi : ce que j'avais annonce protegeait mal la ligne que l'utilisatrice a
+choisi de garder.*
 
 ### 6.6 Les deux dettes que je n'achete pas, mais dont j'arrete la croissance
 
@@ -470,6 +510,10 @@ et c'est moi qui reponds de ce que je fusionne.
 5. **Lot G**, quand il est rendu. Aucun module, aucun conflit possible.
 6. **Lot H**, a tout moment - il touche un paquet existant, pas le catalogue.
 
+> **Cet ordre est complete, non remplace, par la section F.6** : une seconde paire indissociable
+> (`MON`) s'ajoute, quatre lots touchent desormais `catalogue.yaml` au lieu de trois, et la premiere
+> paire fusionnee pose le cliquet de poids.
+
 ### 7.1 L'audit de `nadia-prof` ne se demande pas a la review
 
 **C'est ma reponse au risque de la section 6.1, et c'est un ecart delibere avec la conduite
@@ -485,6 +529,11 @@ Motif : elle *"decline par ecrit un lot qui arrive trop tard plutot que de l'aud
 d'ecran demande a la review arriverait apres tous les autres lots, sur le seul objet du sprint
 qu'aucune fiche anterieure ne couvre. **Le seul levier que j'aie sur ce risque est le moment ou je le
 lui demande.**
+
+> **Cette parade tient telle quelle avec deux paquets visuels, et elle ne suffit plus a elle seule.**
+> Section F.7 : l'audit d'ecran est *"une fois, pas par paquet"*, donc il reste demande a la premiere
+> paire visuelle verte ; **mais l'audit de contenu du second paquet visuel, lui, est par paquet**, et
+> c'est le sequencement de la section F.3 qui le protege, pas cette demande-ci.
 
 ---
 
@@ -503,6 +552,9 @@ lancer** plutot que de les supposer lances.
 
 **Aucun des deux ne prononce de Done**, ni technique ni pedagogique. Le premier est juge par la CI,
 le second par `nadia-prof` seule.
+
+> **Le point de declenchement exact de chacun est nomme en section F.8**, comme il m'a ete demande de
+> le faire plutot que de le laisser deduire.
 
 ---
 
@@ -529,6 +581,11 @@ meme famille que `D4` a s24 - portee non bloquante alors, elle mord aujourd'hui 
 ferme une story -, et `DV-2` touchait `ADR-0073`, qui l'a tranchee avant l'ouverture. **La premiere
 est la raison pour laquelle je ne recopie pas le traitement de s24 ; la seconde est la raison pour
 laquelle le lot A ne decouvre rien.**
+
+> **Trois lignes de ce tableau changent de traitement avec la sortie du lot G** - `DV-4`, `DV-8` et
+> `DV-9`, qui y etaient affectees. **Section F.5.** Aucune n'est abandonnee : `DV-4` change de
+> proprietaire, `DV-8` et `DV-9` retournent au backlog avec le lot, et le fait qui les accompagne est
+> ecrit.
 
 ---
 
@@ -565,6 +622,12 @@ laquelle le lot A ne decouvre rien.**
    sur le fichier dont il parle, les deux ont un harnais et une etape de CI. **Une enveloppe qui
    imprime au lieu de refuser est un garde-fou qui ne garde rien.**
 10. **Les tests dans le meme commit que le code, dans tous les modules.** Aucun lot de rattrapage.
+11. **Le cliquet de poids ne monte pas silencieusement au second paquet illustre** - critere neuf que
+    le quatrieme paquet cree, section F.6.
+
+*Les dix criteres ci-dessus tiennent tels quels avec un quatrieme paquet ; le onzieme est le seul que
+la seconde chaine visuelle rend necessaire. Verifie critere par critere en section F.6, plutot que
+reconduit en bloc.*
 
 ### Done pedagogique - prononce uniquement par `nadia-prof`
 
@@ -630,6 +693,10 @@ piece.**
 **Aucun de ces dix obstacles n'est clos par ce document, et aucun ne le sera sur une intention
 annoncee** - seulement quand le fichier `DEC` ou `ADR` qui le tranche existera sur le disque.
 
+> **Quatre lignes de ce tableau ont bouge** : les obstacles 1 et 2 sont **CLOS par des fichiers qui
+> existent**, l'obstacle 6 change de proprietaire, l'obstacle 7 retourne au backlog. **Etat a jour en
+> section F.9**, avec les obstacles neufs que la finalisation ouvre.
+
 ---
 
 ## 13. Discipline de worktree - la confirmation quotidienne s'applique
@@ -675,3 +742,325 @@ Toutes dans mon domaine - capacite, sequencement, affectation, conduite de cerem
 `DEC-0066` (*Acceptee*), `ADR-0073` (*Accepte*, amende). **Aucune autre.** Les dix obstacles de la
 section 12 n'ont produit a ce jour **aucun fichier de decision**, et c'est ecrit ici plutot que
 laisse vide.
+
+---
+
+## Amendement de finalisation du 2026-08-31 - `Q1` et `Q2` ont rendu, l'utilisatrice a tranche la bascule, la composition passe a quatre paquets
+
+**Statut du planning apres cet amendement : finalise.**
+
+**Pourquoi un amendement et non une reecriture** : `DEC-0065`, second amendement, **cite nommement
+mes sections 5.3 et 6.5**, et `docs/backlog/backlog.md` cite la seconde dans la story rouverte.
+Reecrire ces sections ferait pointer deux references vers rien, dans une decision *Acceptee*. C'est
+la famille de defaut que `CLAUDE.md` porte deja une fois corrigee. **Rien n'est efface ; ce qui est
+remplace porte un renvoi a l'endroit ou il l'est.**
+
+### F.1 Les deux questions sont closes, et par des fichiers qui existent
+
+| Question | Reponse | Fichier sur le disque |
+|---|---|---|
+| **`Q1`** - un paquet illustre de monnaie ou deux ? | **Un paquet, ligne entiere.** *"C'est la phrase du palier 1 qui gouverne."* | `nadia-prof`, arbitrage des seize lignes, **section 12** (commit `b47c5dc`) |
+| **`Q2`** - le quatrieme paquet est-il `MON` illustre ? | **Oui**, `S25-MON-1` **rouverte** sur sa forme illustree | `camille-po`, **`DEC-0065` second amendement**, sections B.2 et B.3 ; story rouverte dans `docs/backlog/backlog.md` (commit `b5aaec4`) |
+
+**Ce que je verifie avant de m'appuyer dessus, plutot que de le relayer** : `nadia-prof` tranche **par
+son propre document**, sans rien d'exterieur - *"compter deux paquets, c'etait compter comme second
+paquet celui que je venais de refuser trois pages plus haut. Ce n'est pas une hesitation entre deux
+lectures defendables : c'est une incoherence interne."* Et le moyen de verifier qu'elle n'a pas choisi
+le chiffre qui arrange est dans le fichier : **`MON-3` et le `REFUSE` du textuel sont ecrits dans la
+version du matin, avant que la question du cout ne se pose.** Relu par moi sur le fichier : c'est
+exact. *"Si le chiffre juste avait ete deux, il m'aurait fallu rouvrir un refus ; c'est l'inverse."*
+
+**Et `camille-po` rouvre avec son propre critere, pas par consequence** - `nadia-prof` ayant ecrit
+n'avoir aucune preference entre monnaie et figures planes : *"le paquet textuel nommait les pieces, la
+reconnaissance etait deja faite a la place de l'enfant. Le paquet illustre les montre. **Deux objets,
+pas deux lectures.**"*
+
+**Ce que je n'avais pas vu et qu'elle corrige chez elle** : `DEN` **reste a deux paquets** -
+`nadia-prof` le verifie au lieu de l'aligner par commodite, *"deux exercices differents, pas deux
+verbes du meme item"*. Ma section 5.2 opposait deux phrases sur la monnaie ; **elle ne disait rien de
+`DEN`, et c'etait juste de ne rien en dire.**
+
+### F.2 La composition finale - quatre paquets, quatre lignes distinctes
+
+| Paquet | Nature | Ligne visee | Story |
+|---|---|---|---|
+| **`FIG`** - figures planes | **visuel, 1 sur 2** | Reconnaitre et nommer quelques figures planes (maths CP), **ligne entiere** | `S25-FIG-1` |
+| **`MON`** - la monnaie illustree | **visuel, 2 sur 2** | Reconnaitre et utiliser la monnaie (maths CP), **ligne entiere** | `S25-MON-1`, **rouverte** |
+| **`SEM`** - se reperer dans la journee, la semaine | texte | La ligne de l'heure (maths CP), **avec mention** | `S25-SEM-1` |
+| **`SUB`** - substituts d'un personnage | texte, **`COMP-2` du sprint** | Reperer les substituts (francais CM1), **ligne entiere** | `S25-SUB-1` |
+
+> **Plafond retenu : +4 lignes, soit 31 / 41 = 75,6 %.**
+
+**Methode, refaite par moi sur l'arbre fusionne et non recopiee** : 27 lignes `couvert-valide`, 13
+`non couvert`, 1 `en cours`, 6 `non couvrable en l'etat` sur les quatre tableaux de matiere de
+`squad/programme/MATRICE-couverture.md`, total 47, denominateur 47 - 6 = 41 ; quatre paquets bougeant
+chacun **une ligne distincte** ajoutent quatre au numerateur. *Perimetre : les quatre tableaux de
+matiere. Aucun module compile, donc aucune question de `-am`.* **Les deux commits amont de cette
+finalisation n'ont fait bouger aucun statut de la matrice** - recompte par moi apres fusion, les
+quatre chiffres sont identiques a ceux de la section 2.3.
+
+**Ce chiffre reste un plafond et pas une prevision** : il suppose que **quatre** paquets ecrits dans
+le sprint passent la porte pedagogique du premier coup, ce qui n'est jamais arrive sur ce produit avec
+un seul.
+
+**La borne de `nadia-prof` est atteinte exactement** - quatre paquets, dont deux visuels - **et jamais
+depassee.** `CON-4`, le controle exhaustif par masquage de l'image, porte sur **chaque** paquet
+visuel ; elle a ecrit qu'elle ne lui applique **pas** le quota `COMP-2` et pourquoi, *"une demi-passe
+de plus sur un paquet, pas un paquet"*. **Le quota `COMP-2` de s25 reste donc pris par `S25-SUB-1`, et
+par lui seul** - je le note parce que deux paquets visuels auraient pu laisser croire le contraire.
+
+**Le piege de comptage sert une troisieme fois, et c'est ce qui rend `MON` irremplacable** : `HOR` vise
+la meme et unique ligne que `SEM`. **Tout autre quatrieme paquet que `MON` ferait quatre paquets pour
+trois lignes.**
+
+### F.3 Les affectations finales - neuf items, trois par tete
+
+**Le lot G sort ; la chaine `MON` entre en deux lots.** Huit items deviennent neuf.
+
+| Ordre | Item | Nature | Competence visee | Affecte a | Depend de |
+|---|---|---|---|---|---|
+| 1 | **Lot A** - le champ de contenu, du domaine jusqu'a l'ecran | technique | transverse | `marc-dev` | rien |
+| 2 | **Lot F** - les deux dettes d'outillage de s24 | technique, outillage | aucune ligne | `sofia-sm` (dev) | rien |
+| 3 | **Lot B** - les dessins de `FIG` et le cliquet de poids | technique et contenu visuel | mathematiques CP, espace et geometrie | `lea-dev` | rien |
+| 4 | **Lot I** - les dessins de `MON` | technique et contenu visuel | mathematiques CP, nombres et calculs | `sofia-sm` (dev) | rien |
+| 5 | **Lot C** - le paquet `FIG` et son entree de catalogue | contenu | mathematiques CP, espace et geometrie, **ligne entiere** | `lea-dev` | **lots A et B** |
+| 6 | **Lot J** - le paquet `MON` et son entree de catalogue | contenu | mathematiques CP, nombres et calculs, **ligne entiere** | `sofia-sm` (dev) | **lots A et I** |
+| 7 | **Lot E** - `S25-SUB-1` | contenu | francais CM1, lecture et comprehension de l'ecrit | `marc-dev` | rien |
+| 8 | **Lot D** - `S25-SEM-1` | contenu | mathematiques CP, grandeurs et mesures, **mention** | `lea-dev` | rien |
+| 9 | **Lot H** - `S25-FRA-1` | contenu, correction | aucune ligne, **Done non retire** | `marc-dev` | rien |
+
+**Les criteres de chaque lot survivant sont ceux de la section 6.2 et ne bougent pas.** Les criteres
+du lot J sont `MON-1` a `MON-5` plus `CON-1` a `CON-5`, dans les mots de `nadia-prof`, tels que la
+story rouverte les porte ; ceux du lot I sont `ADR-0073` clause 4, `DV-1`, et **`MON-1` traduit en
+dessin** - les pieces montrees portent leur valeur **gravee en geometrie**, jamais en element de
+texte.
+
+**Le motif de cette repartition, et il n'est pas celui que j'avais annonce en section 6.5 :**
+
+- **Les deux chaines visuelles courent sur deux tetes differentes, en parallele, et jamais l'une
+  derriere l'autre.** C'est la seule disposition qui protege la quatrieme ligne, et **la quatrieme
+  ligne est ce que l'utilisatrice vient de choisir de garder.** En section 6.5 j'annoncais la chaine
+  `MON` sur ma propre tete a cote du lot G ; le lot G etant sorti, cette contrainte est tombee, et la
+  mettre derriere la chaine `FIG` sur une seule tete aurait fait arriver le second paquet visuel en
+  fin de sprint - **exactement les conditions dans lesquelles `nadia-prof` decline par ecrit.**
+- **Les deux lots de dessins ne dependent de rien** (`theo-archi` : le lot des dessins *"ne depend
+  d'aucun autre"*). Ils occupent donc l'attente du lot A sur les deux tetes qui ne le portent pas.
+  **L'attente du lot A est le seul temps mort structurel du sprint, et les dessins sont le seul
+  travail visuel qui puisse le remplir.**
+- **La main qui trace declare les proportions.** `lea-dev` dessine et ecrit `FIG` ; `sofia-sm` dessine
+  et ecrit `MON`. `FIG-1` exige que *"les proportions de la figure soient declarees par le contenu"*,
+  et `MON-2` que les valeurs montrees soient celles qui existent : les separer ferait declarer par une
+  tete ce qu'une autre a dessine.
+- **`marc-dev` porte le lot A seul et en tete**, puis les deux items qui ne bloquent personne -
+  `S25-SUB-1`, le plus gros paquet de texte et le seul `COMP-2` autorise, puis le lot H. **Il est
+  aussi le renfort des deux declencheurs de la section F.4** : la tete qui a ecrit le champ
+  d'illustration est celle qui debloque le plus vite une chaine visuelle en retard.
+- **Les deux paquets de contenu seul sont en fin de file sur leur tete respective.** Ce n'est pas un
+  hasard : ce sont **les premiers a tomber dans l'ordre de sacrifice de `nadia-prof`**, et la place
+  qu'ils occupent dans une file doit dire la meme chose que cet ordre.
+
+**Ce que cette repartition ne resout pas, et je l'ecris plutot que de le decouvrir** : neuf items pour
+trois tetes est le niveau de s24, et s24 n'a pas tout livre. La difference est que **le lot qui glisse
+en premier est designe d'avance** par la place qu'il occupe, et que deux declencheurs objectifs
+transforment un glissement en decision plutot qu'en constat de cloture.
+
+### F.4 Les deux declencheurs - objectifs, verifiables par moi, sans calendrier
+
+Le declencheur de la section 6.4 cesse d'etre observable : `S25-SUB-1` y est desormais derriere le lot
+A. **Il est remplace par deux declencheurs, qui portent le meme objet.**
+
+> **Declencheur 1 - le lot A bloque deux chaines.** Si les branches des lots B **et** I portent
+> chacune au moins un dessin commite et que le lot A n'est pas fusionne vert, **`lea-dev` rejoint
+> `marc-dev` sur le lot A.** *Motif : les deux chaines visuelles sont alors entierement bloquees par
+> un lot que `theo-archi` decrit comme "le plus petit des trois", et deux tetes attendent. C'est un
+> renfort, aucun lot ne sort.*
+
+> **Declencheur 2 - la quatrieme ligne.** Si le lot C est fusionne vert alors que **la branche du lot
+> I ne porte aucun dessin commite**, je reaffecte `lea-dev` sur le lot I, et **`S25-SEM-1` sort du
+> perimetre engage**, motif ecrit dans `review.md`. *Motif : les dessins sont la seule partie de la
+> chaine `MON` qui pouvait etre faite pendant l'attente du lot A ; s'ils ne le sont pas quand le
+> premier paquet illustre est deja vert, le second arrivera en fin de sprint. `S25-SEM-1` est un
+> paquet de contenu seul, le premier a tomber dans l'ordre de `nadia-prof`, et le seul lot dont la
+> chute ne fait tomber que sa propre ligne.*
+
+**Les deux se verifient par `git`, sur une branche, sans que personne ait a se declarer.** C'est
+volontaire : la confirmation quotidienne de worktree (section 13) porte deja sur une declaration, et
+un declencheur de capacite qui reposerait aussi sur une declaration ne serait verifie par rien.
+
+### F.5 Le lot G sort - ce qui le suit, et le fait qui l'accompagne
+
+> **L'utilisatrice a tranche la bascule que `camille-po` lui avait rendue en une phrase :
+> "Garder la quatrieme ligne".** *De l'utilisatrice, 2026-08-31, cite mot pour mot et fige a la
+> reception - aucune occurrence de cet enonce n'existait dans l'arbre suivi avant cette ligne.*
+
+**Le lot G - l'instruction de la dette de pli sur le catalogue livre - sort du perimetre engage comme
+lot de developpeur. Le comptage n'aura pas lieu a s25.** Je l'ecris sans l'habiller, comme
+`camille-po` a refuse de l'habiller.
+
+**Ce qui survit et ne consomme aucune tete** : `camille-po` prend **`DV-4`**, la borne sur la longueur
+des propositions, qui lui etait deja routee. Elle pose la question a `nadia-prof` avec le materiau
+qu'`ines-design` a deja produit. **Ce n'est pas un substitut au comptage, et elle l'ecrit elle-meme** :
+*"personne ne doit lire ce paragraphe comme si l'arbitrage etait execute."*
+
+**Ce qui retourne au backlog avec le lot** :
+
+| Ce qui retourne | Etat |
+|---|---|
+| **Le comptage du pli item par item sur tout le catalogue enumere** | **Au backlog**, non instruit a s25. L'outil existe (`squad/outils/nadia-prof/compter-le-pli-du-catalogue-entier.py`) et le lot F le rend fiable ; il ne manque qu'une tete |
+| **`DV-8`** - les onze items de `bandit-manchot-comprehension-cm1` sous le pli, sur les treize vus | **Au backlog** avec le comptage. Route a `nadia-prof` et `camille-po`, non instruit |
+| **`DV-9`** - la revelation de l'ecran de saisie sous le pli a sept largeurs sur dix | **Au backlog** avec le comptage. Route a `nadia-prof`, non instruit |
+| **`DV-4`** - la borne de longueur d'une proposition | **Change de proprietaire** : prise par `camille-po` dans s25, sans tete de developpeur |
+
+**Le fait qui doit rester attache a ce report, et qui n'est pas de moi** : `camille-po` ecrit que **la
+dette de pli n'a pas de terme** - un sprint de plus a l'instruire ne coute rien d'irreversible, la ou
+la quatrieme ligne ne se rattraperait pas au meme prix, le plafond de deux paquets visuels de
+`nadia-prof` ne valant *"pour s25 seulement"*.
+
+**Et le fait que je refuse de laisser tomber avec le lot** : **un jeu deja valide a onze de ses treize
+items vus sous le pli**, a la largeur de reference, apres un echec - le critere meme de `DEC-0051`.
+`bandit-manchot-comprehension-cm1` est ne a s22, apres la mesure de catalogue de `DEC-0051`, qui ne
+pouvait donc pas le contenir. **Personne ne sait aujourd'hui si c'est un cas isole ou un motif**, et
+c'est precisement ce que le comptage aurait dit. Ce fait est d'`ines-design`, section 4.4 de sa
+proposition, et il reste ouvert.
+
+**Le lot F garde son rang au jour 1, et son motif change** - je le dis parce que le motif que j'avais
+ecrit dependait du lot G :
+
+- **Ce qui tombe** : *"on repare l'instrument avant de mesurer avec"* ne s'appuie plus sur le lot G,
+  qui n'a plus lieu. `camille-po` a d'ailleurs ecarte de sacrifier F **a cause** de cette dependance,
+  et cette raison-la disparait avec G.
+- **Ce qui reste, et qui suffit** : le sprint mesure encore a chaque fusion - ma porte technique, le
+  cliquet de poids pose sur une valeur mesuree, la campagne de `yanis-qa`. **L'enveloppe est l'outil
+  de toutes ces mesures.** Et j'ai refuse par ecrit, a la review de s24, qu'une quatrieme occurrence
+  documentee glisse une cinquieme fois.
+- **Ce qui decide vraiment son rang, et c'est du sequencement pur** : **le lot F occupe le seul creneau
+  du sprint ou une tete n'a rien de bloquant a faire** - l'attente du lot A. Il ne prend sa place a
+  aucun autre lot. **Un item gratuit ne se reporte pas.**
+
+### F.6 Les criteres de sortie tiennent-ils avec un quatrieme paquet ? - verifie critere par critere
+
+| Critere | Tient-il ? |
+|---|---|
+| 1 - porte technique mesuree par moi sur l'arbre de cloture | **oui**, inchange |
+| 2 - garde-fou d'`ADR-0073` bidirectionnel, deux morsures vertes | **oui**, et il est desormais **exerce par deux paquets** au lieu d'un |
+| 3 - borne de l'exemption de `RessourcesTiercesTest`, mordue dans les deux sens | **oui**, inchange - c'est une propriete du lot A, pas du nombre de paquets |
+| 4 - cliquet de poids d'`ADR-0036` clause 5 | **oui, mais il ne suffit plus seul** - voir le critere 11 |
+| 5 - `enonce` en premiere cle de chaque item illustre | **oui**, et il porte maintenant sur **deux** paquets |
+| 6 - zero attribut d'evenement inline | **oui**, et son motif se renforce : deux chaines visuelles font deux fois plus de gabarit |
+| 7 - zero occurrence typographique neuve | **oui**, inchange |
+| 8 - aucun chemin de poste ni nom de compte | **oui**, inchange |
+| 9 - lot F | **oui**, inchange |
+| 10 - tests dans le commit de leur code | **oui**, inchange |
+
+**Le seul critere que le quatrieme paquet rend necessaire, et il est neuf :**
+
+> **11 - Le cliquet de poids ne monte pas silencieusement au second paquet illustre.** `ADR-0036`
+> clause 5 fait poser le cliquet par *"le commit qui livre la premiere image illustree"*. **Avec deux
+> chaines visuelles, il y a une premiere et une seconde.** La premiere paire fusionnee pose le cliquet
+> sur la valeur qu'elle installe ; **la seconde le respecte, ou le deplace dans le meme commit avec son
+> motif ecrit et sa valeur mesuree.** Un cliquet releve sans motif au second lot ne cliquete plus rien
+> - c'est la definition meme d'un garde-fou qui ne garde plus, et ce depot l'a deja sanctionnee.
+
+**L'ordre de fusion est complete, non remplace** :
+
+1. **Lot F**, le plus tot possible. Aucun module de production.
+2. **Lot A**, seul, vert, **avant toute paire visuelle**.
+3. **Lot B + C en une fusion**, et **lot I + J en une fusion**, **chaque paire indissociable**, dans
+   l'ordre ou elles deviennent vertes. *Motif inchange et desormais double : le garde-fou
+   bidirectionnel d'`ADR-0073` refuse une illustration deposee sans paquet qui la declare, donc un lot
+   de dessins fusionne seul rendrait la porte technique rouge.* **La premiere paire fusionnee pose le
+   cliquet de poids ; la seconde tombe sous le critere 11.**
+4. **Lots E et D**, chacun des qu'il est vert.
+5. **Lot H**, a tout moment.
+
+**Quatre lots touchent desormais `catalogue.yaml`** - C, J, E et D - au lieu de trois. Ce sont des
+ajouts en fin de liste : **je resous les conflits a la fusion, jamais l'auteur dans sa branche.**
+
+### F.7 La parade contre le lot tardif, avec deux paquets visuels
+
+**Elle tient telle quelle sur la moitie qu'elle couvrait, et elle ne couvre pas l'autre.**
+
+- **L'audit d'ecran de `nadia-prof` est *"une fois, pas par paquet"*** - c'est sa definition, section
+  9.2. **Je le lui demande donc des que la premiere paire visuelle est fusionnee verte**, section 7.1,
+  inchangee. Un second paquet illustre ne le fait pas rejouer.
+- **L'audit de contenu d'un paquet visuel, lui, est par paquet** - la passe d'exactitude image par
+  image plus le masquage de `CON-4`. **C'est celui-la qu'elle decline s'il arrive trop tard**, et
+  aucune demande anticipee ne peut le devancer : il exige que le paquet existe. **Ce qui le protege est
+  le sequencement de la section F.3** - deux chaines paralleles sur deux tetes - **et le declencheur 2
+  de la section F.4.**
+
+**Je le formule ainsi parce que la parade que j'avais ecrite aurait pu passer pour couvrir les deux, et
+elle n'en couvre qu'une.**
+
+### F.8 Quand lancer `yanis-qa` et `relecteur-pedagogique` - les points nommes
+
+Le sequencement de la section 8 est inchange : **les deux avant la review, jamais apres.** Ce qui
+manquait est le point de declenchement, et il m'a ete demande de le nommer plutot que de le laisser
+deduire.
+
+| Qui | Je le nomme quand | Observable |
+|---|---|---|
+| **`relecteur-pedagogique`** | **quand les quatre lots de contenu et le lot H sont fusionnes verts** - C, J, E, D, H | `git log` sur `s25-sofia` : les cinq fusions sont dans l'arbre |
+| **`yanis-qa`** | **quand la derniere fusion technique est verte** - A, F et les deux paires visuelles - **et apres le rapport du relecteur**, pour qu'une correction de texte ne rouvre pas sa mesure | `git log` : lots A, F, B+C, I+J fusionnes ; rapport du relecteur sur le disque |
+
+**Si les deux conditions tombent en meme temps, le relecteur passe en premier** : ses corrections
+touchent des fichiers servis, et une campagne de mutation lancee avant elles porterait sur un arbre qui
+n'est pas celui de la cloture.
+
+**Le cout de `S25-SUB-1` reste price chez le `relecteur-pedagogique`** - deux fois et demie le volume
+de texte d'un paquet ordinaire, depuis que `DEC-0056` a sorti l'accentuation de la porte de
+`nadia-prof`. **Et il porte maintenant, en plus, les textes alternatifs de deux paquets illustres**,
+dont `CON-5` fait le seul endroit du produit ou une reponse peut fuir sans que personne s'en apercoive.
+
+### F.9 Etat des obstacles apres finalisation
+
+| # | Obstacle | Etat |
+|---|---|---|
+| 1 | Un paquet illustre de monnaie fait-il passer la ligne entiere ? | **CLOS** - `nadia-prof`, section 12 de son arbitrage des seize lignes, sur le disque |
+| 2 | `S25-MON-1` rouverte sur sa forme illustree ? | **CLOS** - `DEC-0065` second amendement, *Acceptee*, sur le disque |
+| 3 | Le rang des trois lots de dette de `theo-archi` | **OUVERT**, inchange. Croissance arretee par les criteres 6 et 7 |
+| 4 | Le caractere retenu pour `TYP-1` | **OUVERT**, inchange |
+| 5 | Le contraste du trait d'un `.svg` servi (`DV-3`) | **OUVERT**, inchange - et il porte desormais sur **deux** paquets illustres au lieu d'un |
+| 6 | La borne de longueur d'une proposition (`DV-4`) | **OUVERT, proprietaire change** : prise par `camille-po` dans s25, sans tete de developpeur. Le lot G ne la mesure plus |
+| 7 | Les onze items sous le pli d'un jeu vert (`DV-8`) et la revelation de l'ecran de saisie (`DV-9`) | **OUVERT, retourne au backlog** avec le comptage. **Non instruit a s25**, avec le fait de la section F.5 |
+| 8 | Une ligne du programme devient injouable sans la vue (`DV-6`) | **OUVERT**, et il **s'aggrave** : deux lignes du programme, pas une. Remonte par moi a la review |
+| 9 | La coupure `explication` / `graphie` | **OUVERT**, ne mord pas a s25 |
+| 10 | `S25-SCO-1`, second report | **OUVERT**, inchange |
+| **11** | **La longueur des propositions n'est bornee par aucune condition** - `nadia-prof` note que `LIS-2` et `LIS-3` bornent le texte support et l'enonce, et que **rien chez elle ne borne les propositions** : *"un manque de ma part"* | **OUVERT** - c'est le fond de `DV-4`, et l'autrice des conditions le nomme elle-meme. Elle ecrira la condition manquante quand `LIS` reviendra |
+| **12** | **`nadia-prof` ignore que la collision des chiffres traces est reglee** : elle ecrit *"la question reste posee a `theo-archi` si elle n'a pas deja recu de reponse"*, alors qu'`ADR-0073` amende y repond nommement sur `MON-1` depuis le meme jour | **OUVERT, et il est a moi** : c'est une synchronisation d'information, pas une decision. **Je le lui porte au premier daily**, avec la reference qui resout. Un audit conduit en croyant une contrainte non levee n'est pas le meme audit |
+
+**Aucun de ces obstacles n'est clos sur une intention.** Les obstacles 1 et 2 le sont parce que **deux
+fichiers existent sur le disque et que je les ai lus.**
+
+### F.10 Les deux faits techniques que la monnaie consomme, et qui ne sont pas de moi
+
+Ils sont acquis, ils sont mesures, et ils portent la quatrieme ligne :
+
+- **Une piece dessinee peut porter sa valeur gravee.** `theo-archi`, `ADR-0073` amende, repond
+  **nommement sur `MON-1`** : un chiffre **trace en geometrie** passe la clause 4, le meme **ecrit en
+  element de texte** la fait rougir - mesure sur **la meme piece de deux euros deux fois**, sur le
+  chemin de production reel. **Aucune clause n'a ete elargie pour faire tenir une ligne** ; le compte
+  des morsures monte de six a sept.
+- **La monnaie illustree passe le pli, et pas le cadran.** `ines-design` mesure **43 px** pour une
+  piece contre un budget de **53 px** ; le cadran en demande **123**. Ce qui ne bloque plus le cadran,
+  **le pli restant hors de la porte pedagogique par arbitrage de l'utilisatrice** - et `nadia-prof`
+  ecrit le prendre sans le rouvrir a sa porte.
+- **Un fait de methode que je releve parce qu'il est rare** : la mesure du budget par `ines-design`
+  (53 px) et celle que `nadia-prof` avait tiree de ses archives de s21 (65 px) **convergent**, les
+  12 px d'ecart etant les marges du bloc d'illustration. **Deux mesures independantes qui se rejoignent
+  valent mieux que l'une des deux repetee** - c'est ce que les exigences `P1` a `P5` cherchaient a
+  produire, et c'est ce qu'elles ont produit.
+
+### F.11 Ce que cet amendement ne fait pas
+
+- Il **n'efface rien** du planning, y compris les enonces qu'il remplace et les deux que `DEC-0065`
+  cite.
+- Il **ne rouvre aucun des deux arbitrages** de `nadia-prof` ni le perimetre de `camille-po`, et il
+  **ne releve la borne pedagogique d'aucune unite**.
+- Il **ne prononce aucun Done**, ne fait bouger aucune ligne de la matrice, et **n'anticipe aucun
+  verdict** sur les quatre paquets.
+- Il **ne recompose pas les criteres d'acceptation** d'un seul lot : ils sont de `camille-po` et de
+  `nadia-prof`, et ils se lisent dans le backlog et dans les arbitrages.
+- Il **ne fait entrer aucun des trois lots de dette de `theo-archi`** au perimetre : la place liberee
+  par le lot G est prise par la chaine `MON`, sur l'arbitrage de l'utilisatrice, et le rang de ces
+  trois lots reste a `camille-po`.
