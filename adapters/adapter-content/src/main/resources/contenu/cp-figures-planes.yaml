@@ -65,8 +65,23 @@ descripteur:
 # leur DISTRIBUTION, comme elle le demande. L'indice est desormais une fonction du JEU DE
 # PROPOSITIONS, et de rien d'autre. Les quatre jeux possibles portent chacun trois items dont les
 # trois bonnes reponses different, donc un indice ne peut plus rien designer : il ne dit a l'enfant
-# que ce que les trois boutons lui montrent deja. Mesure apres correction : 0 item sur 12 designe,
-# CON-6 tenue par 12 items sur 12 pour un plancher de 6. Comptage dans PaquetCpFiguresPlanesTest.
+# que ce que les trois boutons lui montrent deja. Mesure apres correction : 0 item sur 12 designe.
+#
+# La clause de verification de CON-6 a ete remplacee le meme jour, apres cette correction (section 13
+# de la meme fiche), parce que celle de la veille ne mesurait qu'un bout et laissait passer ce
+# paquet-ci a 50 pour cent pile. Les deux bornes amendees, mesurees sur l'etat ci-dessous et
+# comptees dans PaquetCpFiguresPlanesTest :
+#   - borne basse - aucun indice ne va avec une seule reponse : TENUE, les trois indices vont avec
+#     3, 3 et 4 reponses differentes pour un plancher de 2 ;
+#   - borne haute - aucun indice ne couvre plus de la moitie des items : TENUE, le plus repandu en
+#     couvre 6 sur 12. EXACTEMENT a la borne, et la marge nulle est structurelle : douze items
+#     n'offrent que quatre jeux de propositions, l'indice est une fonction de ce jeu, et trois
+#     indices sur quatre jeux en mettent forcement un sur deux jeux. Descendre sous six demanderait
+#     un quatrieme texte, et les seuls candidats vrais coupent les propositions au meme endroit
+#     qu'un indice existant - ce serait un texte de plus pour ecarter un chiffre, pas une aide de
+#     plus pour l'enfant. Le fait est remonte, il n'est pas corrige ici.
+# La troisieme borne - l'indice apporte quelque chose que la consigne ne dit pas deja - n'est pas
+# calculable et reste dans la seule main de nadia-prof.
 #
 # Chaque indice coupe les trois propositions de son item en DEUX ET UNE, jamais en trois : un
 # indice qui separerait les trois serait la reponse. "Compare la longueur des cotes" separe le carre
