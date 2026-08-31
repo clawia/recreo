@@ -510,7 +510,7 @@ Source : `squad/programme/francais/competences-cp.md`.
 | francais | CP | Lecture et comprehension de l'ecrit | Decoder un mot regulier inconnu par assemblage syllabique | - | - | non couvert |
 | francais | CP | Lecture et comprehension de l'ecrit | Lire a voix haute un texte court et simple avec fluidite croissante | - | - | non couvrable en l'etat |
 | francais | CP | Lecture et comprehension de l'ecrit | Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi) | bandit-manchot-texte-narratif-cp | bandit manchot | **couvert-valide** (2026-08-31, s24, second passage - reserve levee) |
-| francais | CP | Ecriture | Copier un mot, une phrase courte sans erreur, en respectant l'espacement | - | - | non couvert |
+| francais | CP | Ecriture | Copier un mot, une phrase courte sans erreur, en respectant l'espacement | - | - | **non couvrable en l'etat** (2026-08-31, s25, DEC-0066) - **contrainte fondatrice, nature reversible** : la competence est graphomotrice, et DEC-0046 a ecarte tout geste de trace pour ce produit. nadia-prof, 2026-08-31 : *"ni un clavier ni un choix ne produisent un geste d'ecriture ; former des lettres est un geste de trace"* |
 | francais | CP | Ecriture | Ecrire de maniere autonome un mot simple en respectant les correspondances grapheme/phoneme connues | - | - | non couvert |
 | francais | CP | Orthographe et grammaire | Reconnaitre et utiliser les marques du pluriel les plus frequentes (-s) | bandit-manchot-pluriel-cp | bandit manchot | **couvert-valide** (2026-08-31, s24) |
 | francais | CP | Orthographe et grammaire | Distinguer les principaux types de mots (nom, verbe) dans une phrase tres simple | bandit-manchot-nature-mot-cp | bandit manchot | couvert-valide |
@@ -649,7 +649,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 | francais | CM1 | Lecture et comprehension de l'ecrit | Lire silencieusement un texte de longueur croissante et en restituer l'essentiel | - | - | non couvert |
 | francais | CM1 | Lecture et comprehension de l'ecrit | Comprendre un texte narratif ou documentaire (questions explicites et implicites, inferences simples) | bandit-manchot-comprehension-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Lecture et comprehension de l'ecrit | Reperer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte | - | - | non couvert |
-| francais | CM1 | Ecriture | Rediger un texte narratif court et coherent (quelques phrases, temps du recit respecte) | - | - | non couvert |
+| francais | CM1 | Ecriture | Rediger un texte narratif court et coherent (quelques phrases, temps du recit respecte) | - | - | **non couvrable en l'etat** (2026-08-31, s25, DEC-0066) - **jugement humain sur une production libre (ADR-0008), nature irreversible** : la ligne dit *rediger*. nadia-prof, 2026-08-31 : *"R3 refusait par avance quelle que soit la qualite du lot ; je le reconduis et je l'etends au choix [...] l'enfant ne redige pas"* |
 | francais | CM1 | Ecriture | Relire et corriger son texte a l'aide de reperes simples (majuscules, ponctuation) | - | - | non couvrable en l'etat |
 | francais | CM1 | Orthographe et grammaire | Accorder le verbe avec son sujet (cas frequents, temps simples : present, futur, imparfait) | bandit-manchot-accord-sujet-verbe-cm1 | bandit manchot | couvert-valide |
 | francais | CM1 | Orthographe et grammaire | Accorder en genre et en nombre dans le groupe nominal (determinant/nom/adjectif) | bandit-manchot-accords-groupe-nominal-cm1 | bandit manchot | couvert-valide |
@@ -2911,3 +2911,141 @@ ferait rentrer les 27 dans la porte**, et ce jour-la la mention de `DEC-0063` se
 - `SUB` reste `non couvert` et son report reste **le premier**, compte a `DEC-0059`, section 2. Le
   motif de composition qui l'a ecartee - au plus un paquet du type `COMP-2` par sprint - a ete
   consomme par `NAR`, qui est desormais verte. **Le motif ne vaut plus pour s25.**
+
+## Perimetre de s25 (2026-08-31) - le plafond calcule a s22 est atteint, et ce que cette matrice peut encore bouger
+
+`DEC-0065` ouvre s25 sur l'objectif de l'utilisatrice : **"la plus grande couverture"**. Cette
+section dit ce que cette matrice peut en attendre. **Elle ne deplace aucune ligne.**
+
+### Le fait, avec sa methode
+
+**Comptage automatise des quatre tableaux ci-dessus, colonne `Statut`, aucun module compile - la
+question du `-am` ne se pose donc pas pour cette mesure** : 27 `couvert-valide`, 15 `non couvert`,
+1 `en cours`, 4 `non couvrable en l'etat`, total 47. Denominateur 47 - 4 = 43. **27/43 = 62,8 %.**
+
+**Ce chiffre est exactement celui que `DEC-0053`, section 7.1, avait calcule le 2026-08-28 comme le
+"plafond realiste a court terme, ecartant l'audio et le visuel"** : *"18 + 9 = 27/43 (62,8 %) au
+mieux, sans construire quoi que ce soit de neuf"*. Des 9 lignes de contenu seul qui composaient ce
+plafond, **8 sont vertes et `SUB` est la neuvieme**. Le produit est a 27 et non a 26 parce que `FRA`
+a rapporte une ligne qui n'etait pas dans ces 9 - la moitie *"notion"* des fractions, classee
+visuelle a s22 et redirigee en contenu seul par l'arbitrage 8bis du 2026-08-30.
+
+**Le mur de la mecanique unique, pose a l'utilisatrice par `DEC-0057`, est atteint a la date prevue.
+s25 est le premier sprint qui se tient dessus.**
+
+### Ce que s25 peut faire bouger, et rien de plus
+
+| Ligne | Ce qui la ferait bouger a s25 | Plafond |
+|---|---|---|
+| **Reperer les substituts d'un personnage** (francais CM1) | **Rien a attendre.** Arbitree `SUB-1` a `SUB-10` le 2026-08-30, contenu seul, mecanisme existant. `S25-SUB-1` | **28/43 (65,1 %)** |
+| **Reconnaitre et utiliser la monnaie** (maths CP), moitie *"utiliser"* | Un arbitrage de `nadia-prof` **qui n'existe pas** : une moitie textuelle d'une ligne classee visuelle peut-elle porter sa ligne au vert avec une mention de couverture partielle nommee ? `S25-MON-1` | **29/43** si oui |
+| **Se reperer dans la journee, la semaine** (maths CP), premiere moitie de la ligne, separee par un point-virgule dans le referentiel | Meme question, meme reponse attendue. `S25-JOU-1` | **30/43 (69,8 %)** si oui pour les deux |
+| **Denombrer, lire, ecrire et decomposer jusqu'a 100** (maths CP) | `S25-DEN-1` la ferait passer `non couvert` -> `en cours`. **Elle ne peut pas devenir `couvert-valide`** : `DEN-2`, reconfirmee le 2026-08-30 et declaree non negociable | inchange |
+
+**La question de la ligne 2 et de la ligne 3 est la seule qui puisse elargir ce plafond a s25, et
+elle est entierement a `nadia-prof`.** Deux precedents de sa main s'opposent : `FRA-9` et `LIA-10`
+ont fait passer une ligne au vert avec une mention qu'elle a dictee ; `DEN-2` maintient `en cours`.
+**Rien dans ces trois textes ne dit ce qui separe les deux cas, et l'inventer serait exactement ce
+que ma charte m'interdit.** `DEC-0065`, section 5.1.
+
+**Aucune des 12 autres lignes hors `couvert-valide` ne peut atteindre `couvert-valide` a s25** :
+4 sont visuelles sans aucune architecture ecrite (dont 3 sans arbitrage individuel), 4 sont audio et
+bloquees sur une source de voix humaine que seule l'utilisatrice peut trancher, 2 demandent une
+troisieme mecanique jamais instruite, 4 butent sur une contrainte fondatrice de ce produit.
+L'instruction ligne par ligne est dans
+`squad/programme/INSTRUCTION-s25-les-16-lignes-hors-couvert-valide.md`.
+
+### Quatre lignes qui gonflent le denominateur sans qu'aucun sprint puisse les atteindre
+
+*"Copier un mot, une phrase courte"* (`R1`, graphomotrice), *"Ecrire de maniere autonome un mot
+simple"* (`R6`, l'appareil produit les lettres), *"Lire silencieusement [...] et en restituer
+l'essentiel"* et *"Rediger un texte narratif court"* (production libre, jugement humain) portent le
+statut `non couvert` alors qu'aucune capacite de developpement ne les ouvrira.
+
+**Les reclasser `non couvrable en l'etat` ferait passer le denominateur de 43 a 39 et la couverture
+affichee de 62,8 % a 69,2 % sans qu'une ligne de code soit ecrite. C'est precisement pourquoi je ne
+le fais pas dans le sprint ou l'utilisatrice me demande de maximiser cet indicateur** : la question
+part a `nadia-prof` pour le motif et a l'utilisatrice pour l'arbitrage, avec le gain d'affichage
+nomme dans la question. `DEC-0065`, section 5.4.
+
+### Ce que cette section ne fait pas
+
+- Elle **ne deplace aucune ligne**, n'en ajoute aucune, n'en retire aucune.
+- Elle **ne prononce aucun Done** et n'en anticipe aucun. Les plafonds ci-dessus supposent qu'un
+  paquet ecrit dans le sprint passe la porte du premier coup, ce qui n'est jamais arrive sur ce
+  produit : a s23, trois paquets ouverts ont donne trois lignes, mais apres deux refus, trois tours
+  de correction et cinq reaudits.
+- Elle **ne reclasse pas les quatre lignes ci-dessus** et ne prejuge pas de la reponse.
+- `SUB` **n'est pas reportee une seconde fois** : elle est au rang 1 de `DEC-0065`. Le report unique
+  compte a `DEC-0059`, section 2, reste le premier et le seul.
+
+## Amendement du 2026-08-31 (meme jour, apres deux arbitrages de l'utilisatrice) - la section precedente est corrigee sur deux points, et le denominateur change
+
+**La section ci-dessus a ete ecrite le matin du 2026-08-31, avant l'arbitrage prealable de
+`nadia-prof` et avant deux arbitrages de l'utilisatrice. Elle reste lisible telle quelle** - ce
+depot n'efface pas - **et elle est fausse sur deux points que ce bloc corrige.**
+
+### 1. Ce que la section precedente disait de faux
+
+| Ce que j'ai ecrit le matin | Ce qui est vrai le soir | Source |
+|---|---|---|
+| La moitie *"utiliser"* de la **monnaie** pouvait porter sa ligne au vert | **REFUSE.** *"Sur les huit items, sept sont un jeu deja valide avec un symbole d'euro colle au resultat. Un enfant qui joue ce paquet ne travaille pas la monnaie ; il refait du calcul."* Et *reconnaitre* fonde *utiliser* : la ligne resterait `en cours` meme avec un bon paquet textuel | `nadia-prof`, arbitrage prealable de s25, section 2.2, `MON-1` a `MON-5` |
+| *"Lire silencieusement [...] et en restituer l'essentiel"* butait sur une production libre et devait etre reclassee | **OUVRABLE**, `LIS-1` a `LIS-10`, sous une mesure de pli due a `ines-design`. J'avais lu *"restituer l'essentiel"* comme *"produire un resume"* ; le geste est servable par le choix | meme document, section 9.1 ; `DEC-0066`, section 2.3 |
+
+**Un troisieme point n'etait pas faux mais etait incomplet** : la moitie *"se reperer dans la
+journee, la semaine"* est bien ouvrable, et `nadia-prof` lui a donne ses conditions `SEM-1` a
+`SEM-9`. **C'est le seul candidat neuf de contenu seul du sprint.**
+
+### 2. Le denominateur change - les deux taux, avec leur date
+
+`DEC-0066` applique l'arbitrage de l'utilisatrice du 2026-08-31 (*"Reclasser, taux revu"*) : **deux
+lignes sortent du denominateur, deux candidates n'y satisfaisaient pas et y restent.**
+
+| Date | Vertes | Denominateur | Taux |
+|---|---|---|---|
+| **2026-08-31, avant `DEC-0066`** | **27** | **43** | **62,8 %** |
+| **2026-08-31, apres `DEC-0066`** | **27** | **41** | **65,9 %** |
+
+> **Le numerateur n'a pas bouge. Le saut de 3,1 points est un changement de denominateur, pas un
+> progres.** Toute lecture de la serie de couverture de ce produit doit **couper la serie au
+> 2026-08-31** : avant, un pourcentage sur 43 ; apres, un pourcentage sur 41. Les deux ne se
+> comparent pas directement.
+
+*Methode : comptage automatise des quatre tableaux de matiere de ce fichier, colonne `Statut`, sur
+ce seul fichier, aucun module compile - la question du `-am` ne se pose pas. Apres : 27
+`couvert-valide`, 13 `non couvert`, 1 `en cours`, 6 `non couvrable en l'etat`, total 47.*
+
+**Les deux lignes qui ne sont pas sorties, et pourquoi** (`DEC-0066`, sections 2.3 et 2.4) :
+*"Lire silencieusement, restituer l'essentiel"* est **ouvrable** depuis le 2026-08-31 - la
+reclasser aurait retire une ligne du produit et non de l'affichage ; *"Ecrire de maniere autonome un
+mot simple"* attend **l'audio**, qui est un obstacle de production que l'utilisatrice peut lever par
+une reponse, et non une contrainte fondatrice.
+
+### 3. Ce que s25 peut faire bouger, corrige
+
+| Ligne | Ce qui la ferait bouger | Cout en paquets |
+|---|---|---|
+| **Se reperer dans la journee, la semaine ; lire l'heure pleine** (maths CP) | `SEM-1` a `SEM-9`, contenu seul. **Vert avec mention** : *"moitie 'se reperer dans la journee, la semaine' seule ; la moitie 'lire l'heure pleine sur une horloge' reste non couverte"* | 1 |
+| **Reperer les substituts d'un personnage** (francais CM1) | `SUB-1` a `SUB-10`, rien a attendre | 1 |
+| **Lire silencieusement, restituer l'essentiel** (francais CM1) | `LIS-1` a `LIS-10`, **plus une mesure de pli d'`ines-design` due avant l'ecriture du paquet** | 1 |
+| **Reconnaitre et nommer quelques figures planes** (maths CP) | `FIG-1` a `FIG-4` **plus** un rendu d'image reel - premier palier de la famille visuelle, ouvert par l'utilisatrice le 2026-08-31 | 1 paquet + une mecanique neuve |
+| **Reconnaitre et utiliser la monnaie** (maths CP) | `MON-1` a `MON-5`, **image obligatoire** : les pieces sont montrees, pas nommees | **2 paquets** (visuel + textuel) |
+
+**`LIS` et `SUB` ne tiennent pas dans le meme sprint** : `LIS-6` et `SUB-6` portent toutes deux la
+propriete du type de `COMP-2`, et `nadia-prof` n'en accepte qu'une par sprint. **Le maximum de s25
+sans mecanique neuve est donc de deux lignes, soit 29 sur 41 (70,7 %)** - son chiffre, corrige par
+elle contre son propre tableau, transpose au denominateur de `DEC-0066`.
+
+**Une interaction de comptage a ne pas rater** : la ligne de l'heure **ne compte qu'une fois**. `SEM`
+la fait passer au vert avec mention ; le palier visuel ne ferait ensuite que **lever la mention**.
+Un sprint qui prend `SEM` **et** le palier 1 ne gagne pas deux lignes sur cet objet.
+
+### 4. Ce que cet amendement ne fait pas
+
+- Il **ne fait passer aucune ligne a `couvert-valide`** et n'en retire aucune du vert.
+- Il **ne reecrit pas la section precedente**, qui reste lisible avec sa date et son erreur.
+- Il **ne presente le nouveau taux comme un progres a aucun endroit**.
+- La **symetrie axiale CM1** reste `non couvrable en l'etat` : `nadia-prof` a rendu le 2026-08-31 le
+  jugement que j'attendais depuis le 2026-08-25 et qu'elle refuse - *"reconnaitre une symetrie et
+  l'utiliser pour completer une figure [...] c'est le meme objet a deux degres, et le degre servi
+  serait le plus facile"*.
