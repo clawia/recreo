@@ -147,6 +147,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // section 5.2, FRA-10 ; amendement du 2026-08-31, famille (e)) : entree neuve, la
             // notion de fraction simple au CM1, moitie "notion" seule.
             "bandit-manchot-fractions-cm1",
+            // S25-MON-1 (arbitrage prealable de s25 sur les seize lignes, section 2.2, MON-1 a
+            // MON-5 ; arbitrage du palier 1, CON-1 a CON-5) : entree neuve, premier paquet illustre
+            // du produit. La ligne de la monnaie avait ete refusee en contenu textuel le meme jour
+            // et rouverte sur sa forme illustree - "le paquet textuel nommait les pieces, le paquet
+            // illustre les montre".
+            "bandit-manchot-monnaie-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -200,6 +206,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Un ou plusieurs ?",
             // S24-FRA : titre neuf.
             "Les fractions simples",
+            // S25-MON-1 : titre neuf.
+            "La monnaie",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -249,6 +257,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Choisis la bonne écriture pour compléter la phrase.",
             // S24-FRA : consigne neuve.
             "Lis bien la fraction, puis choisis la réponse.",
+            // S25-MON-1 : consigne neuve. Elle ne nomme aucune valeur et ne decrit ni la position,
+            // ni la forme, ni la quantite, ni la couleur de ce que les dessins montrent (MON-1,
+            // CON-2) - elle dit seulement ou regarder.
+            "Regarde bien l'argent, puis réponds.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -324,7 +336,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // reellement est la moitie "notion", et la mention exacte que nadia-prof exige sur la
             // matrice reste due le jour ou la ligne bougera.
             "Notion de fraction simple (unités fractionnaires, fractions inférieures à 1) et "
-                    + "repérage sur une droite numérique");
+                    + "repérage sur une droite numérique",
+            // S25-MON-1 : competence neuve, et la ligne est entiere - nadia-prof ecrit que "le
+            // paquet sert reconnaitre par l'image et utiliser par la question". Le libelle est
+            // celui du referentiel, mot pour mot.
+            "Reconnaître et utiliser la monnaie (pièces/billets simples) dans des problèmes "
+                    + "concrets");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

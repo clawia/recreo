@@ -5,6 +5,7 @@ import org.yaml.snakeyaml.Yaml;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -110,6 +111,49 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      * peut designer que le repertoire prevu.
      */
     private static final String ALPHABET = "[a-z0-9-]+";
+
+    /**
+     * ADR-0051 : la taille exacte des deux populations illustrees du depot au 2026-08-31, apres
+     * l'entree du premier paquet illustre (S25-MON-1, {@code cp-monnaie} : douze items, douze
+     * dessins). Ces deux nombres ne sont pas des plafonds de confort : ils valent exactement la
+     * population, et un lot qui l'agrandit les releve dans son propre commit.
+     */
+    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 12;
+
+    private static final int FICHIERS_D_ILLUSTRATION = 12;
+
+    /**
+     * ADR-0036 clause 5 : le cliquet de poids d'une illustration, en octets, fins de ligne
+     * normalisees en LF.
+     *
+     * <p><b>Ce cliquet est un doublon assume, et il est nomme comme tel.</b> {@code lea-dev} a pose
+     * le meme le 2026-08-31, quelques heures plus tot, dans
+     * {@code ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTest}
+     * (adapter-web), qu'elle a explicitement nomme <i>foyer commun des deux chaines visuelles</i>.
+     * <b>Sa version est celle qui survit a la fusion</b> - elle cliquete en plus le poids total du
+     * repertoire, que celle-ci ne regarde pas - et ce test-ci part avec elle. Il existe pour que la
+     * dette d'ADR-0036 clause 5 soit payee sur cette branche prise seule, quel que soit l'ordre de
+     * fusion des deux paires ; il n'existe pas pour vivre a cote du sien.
+     *
+     * <p><b>Critere 11 du planning de s25, execute : je deplace, avec motif ecrit et valeur
+     * mesuree.</b> Son cliquet vaut 1 112 octets pour un dessin et 6 206 pour le repertoire, mesures
+     * sur ses douze figures planes. Mes douze dessins de monnaie ne les tiennent pas, et le motif
+     * n'est pas une negligence de trace : une figure plane est <b>un</b> trace - un {@code rect},
+     * un {@code circle}, un {@code path} - la ou une scene de monnaie porte jusqu'a six objets, dont
+     * chacun demande un contour, un contour interieur et une a deux instances de glyphe. Le trace
+     * est plus gros par construction, pas par relachement.
+     *
+     * <p><b>Les valeurs mesurees, sur les fins de ligne normalisees, methode d'ines-design</b> :
+     * mes douze pesent 22 912 octets, le plus lourd {@code monnaie-meme-somme-e.svg} a
+     * <b>2 685</b>, le plus leger 1 445. Sur l'arbre fusionne des deux paires : <b>24 fichiers,
+     * 29 118 octets, maximum 2 685</b>. Ce sont les deux nombres que son garde-fou prend.
+     *
+     * <p><b>Ce que ce cliquet mesure, et ines-design demande que ce soit dit</b> : les octets
+     * <b>commites</b>, en-tete de commentaire compris, pas les octets de trace. Ses fichiers pesent
+     * 275 octets de trace pour 1 084 commites, et <i>"un seuil pose sur l'un ne veut rien dire sur
+     * l'autre"</i>. Le choix des octets commites est celui de ce que l'enfant telecharge.
+     */
+    private static final int PLAFOND_DE_POIDS_EN_OCTETS = 2685;
 
     private static String lire(Path fichier) {
         try {
@@ -317,24 +361,103 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
     }
 
     /**
-     * ADR-0051, et le cliquet dont le plafond vaut exactement la taille de la population. Ce test
-     * <b>doit</b> rougir le jour ou le premier paquet illustre entre : c'est ainsi que le lot qui le
-     * pose lit ADR-0073 au lieu de le decouvrir apres coup.
+     * ADR-0051, et le cliquet dont le plafond vaut exactement la taille de la population.
+     *
+     * <p><b>Le zero est tombe le 2026-08-31, et c'etait le signal voulu.</b> Ce test s'appelait
+     * {@code aucunPaquetServiNeDeclareEncoreDIllustration} et exigeait deux populations vides ; il
+     * a rougi quand le premier paquet illustre est entre - S25-MON-1, {@code cp-monnaie}, douze
+     * items et douze dessins - exactement comme ADR-0073 l'avait ecrit : "le lot qui pose ce paquet
+     * lit cet ADR au lieu de le decouvrir six mois plus tard". Il est leve ici par le lot qui l'a
+     * fait rougir, et non contourne : la propriete ne disparait pas, elle change de valeur. Le
+     * plafond vaut toujours <b>exactement</b> la taille de la population, jamais un chiffre rond ni
+     * une marge.
+     *
+     * <p><b>Ce que le second paquet illustre doit faire, et il est ecrit ici avant qu'il arrive</b>
+     * (critere 11 du planning de s25) : ces deux nombres montent d'autant d'items et de fichiers
+     * qu'il en apporte, <b>dans le commit qui les apporte</b>, avec sa valeur mesuree. Un cliquet
+     * releve sans motif ne cliquete plus rien. La chaine FIG de lea-dev est la seconde ; c'est le
+     * seul endroit du depot ou les deux paires se croisent, et il est nomme pour que le conflit se
+     * resolve sur un nombre plutot qu'a la fusion.
      */
     @Test
-    void aucunPaquetServiNeDeclareEncoreDIllustration() {
+    void lesDeuxPopulationsIllustreesValentExactementCeQueLeDepotSert() {
         Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
 
         assertThat(declareesDuDepot(racine))
-                .as("ADR-0051 : les clauses 1, 2, 4 et 5 d'ADR-0073 portent aujourd'hui sur une"
-                        + " population vide, et ce garde-fou le declare plutot que de passer en"
-                        + " silence. Quand ce test rougit, ce n'est pas un defaut : c'est le premier"
-                        + " paquet illustre qui arrive, et il faut lire ADR-0073 avant de lever ce"
-                        + " rouge")
-                .isEmpty();
+                .as("ADR-0051 : le nombre d'items qui declarent une illustration vaut exactement"
+                        + " %d. S'il monte, c'est qu'un paquet illustre est entre : relever ce"
+                        + " nombre dans le commit qui l'apporte, avec sa valeur mesuree",
+                        ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION)
+                .hasSize(ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION);
         assertThat(illustrationsDuDepot(racine))
-                .as("meme motif : aucun fichier ne vit encore sous " + ILLUSTRATIONS_DE_CONTENU)
-                .isEmpty();
+                .as("meme motif, sur l'autre population : %d fichiers sous %s",
+                        FICHIERS_D_ILLUSTRATION, ILLUSTRATIONS_DE_CONTENU)
+                .hasSize(FICHIERS_D_ILLUSTRATION);
+    }
+
+    /**
+     * ADR-0036 clause 5, dette explicite ouverte depuis s10 et due au lot qui livre la premiere
+     * image illustree : <i>"le commit qui livre la premiere image illustree pose le cliquet de
+     * poids, sur la valeur qu'il installe. Tant que ce cliquet n'existe pas, rien dans ce depot
+     * n'empeche une illustration de 4 Mo."</i> Le voici, et il est pose par ce commit-la.
+     *
+     * <p><b>Le plafond porte sur une illustration, pas sur leur somme, et le motif n'est pas un
+     * gout.</b> ADR-0036 nomme le risque au singulier - une image de 4 Mo - et refuse par ecrit un
+     * nombre absolu comme un plafond relatif. Un plafond sur la somme monterait mecaniquement a
+     * chaque paquet sans rien dire du risque qu'il garde, et mettrait deux lots en conflit sur un
+     * nombre qui ne signifie rien. La cible de poids <b>total</b> servi a un enfant reste ce
+     * qu'ADR-0036 en dit : une cible produit et pedagogique, qui appartient a sofia-sm et a
+     * nadia-prof, et qu'aucun developpeur ne fixe.
+     *
+     * <p><b>La valeur est mesuree, jamais inventee</b> : c'est la taille du plus lourd des douze
+     * dessins que ce lot installe, {@code monnaie-meme-somme-e.svg}. Le mecanisme est celui que le
+     * planning de s25 fixe - un cliquet se pose sur une valeur mesuree - et le nombre est celui que
+     * le lot installe, pas un objectif.
+     */
+    @Test
+    void aucuneIllustrationDeContenuNeDepasseLePoidsQueCeLotInstalle() {
+        verifierLePoids(illustrationsDuDepot(LesGardeFousSontMisALEpreuveTest.racineDuDepot()));
+    }
+
+    /** Morsure du cliquet de poids, sur materiau reel mute en memoire. */
+    @Test
+    void uneIllustrationPlusLourdeQueLePlafondFaitEchouerLeGardeFou() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        Map<String, String> illustrations =
+                new LinkedHashMap<>(illustrationsDuDepot(racine));
+        illustrations.put("mutation-en-memoire", "x".repeat(PLAFOND_DE_POIDS_EN_OCTETS + 1));
+
+        assertThatThrownBy(() -> verifierLePoids(illustrations))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ADR-0036 clause 5")
+                .hasMessageContaining("mutation-en-memoire");
+    }
+
+    /**
+     * Le juge du poids, pur : il recoit le contenu des fichiers et n'ouvre rien. Le poids est celui
+     * des octets UTF-8 du fichier servi, c'est-a-dire ce que le navigateur telecharge, jamais un
+     * nombre de caracteres.
+     */
+    static void verifierLePoids(Map<String, String> illustrations) {
+        List<String> trop = new ArrayList<>();
+        for (Map.Entry<String, String> illustration : illustrations.entrySet()) {
+            // Fins de ligne normalisees avant de compter : le meme fichier extrait avec des fins de
+            // ligne Windows pese une ligne de plus par ligne, et le cliquet dirait alors deux
+            // nombres differents pour un contenu identique. C'est la methode de lea-dev, reprise
+            // telle quelle pour que les deux chaines visuelles comptent la meme chose.
+            int octets = illustration.getValue().replace("\r\n", "\n")
+                    .getBytes(StandardCharsets.UTF_8).length;
+            if (octets > PLAFOND_DE_POIDS_EN_OCTETS) {
+                trop.add(illustration.getKey() + EXTENSION + " pese " + octets + " octets");
+            }
+        }
+        if (!trop.isEmpty()) {
+            throw new AssertionError("ADR-0036 clause 5 : une illustration de contenu depasse le"
+                    + " cliquet de poids de " + PLAFOND_DE_POIDS_EN_OCTETS + " octets, pose sur la"
+                    + " valeur mesuree du lot qui a livre la premiere image illustree. Un lot qui"
+                    + " l'alourdit deplace ce plafond dans son propre commit, avec sa valeur"
+                    + " mesuree et son motif ecrit : " + trop);
+        }
     }
 
     /** Morsure 1, sur materiau reel mute en memoire : un identifiant qui ne resout aucun fichier. */

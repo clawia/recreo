@@ -1,0 +1,125 @@
+schema: 1
+id: cp-monnaie
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Reconnaître et utiliser la monnaie (pièces/billets simples) dans des problèmes concrets"
+#
+# S25-MON-1, paquet illustre (ADR-0073). Arbitrage prealable de nadia-prof du 2026-08-31 :
+# conditions MON-1 a MON-5 (arbitrage des seize lignes, section 2.2) et CON-1 a CON-5 (arbitrage du
+# palier 1, section 3, et son amendement du meme jour). La matiere premiere
+# contenu-repris/quiz/cp-monnaie.yml est REFUSEE en entier - "sur les huit items, sept sont un jeu
+# deja valide avec un symbole d'euro colle au resultat" - et ce paquet est integralement neuf.
+#
+# MON-1 (bloquante) : AUCUNE VALEUR N'EST ECRITE DANS UN ENONCE. La valeur se lit sur l'image, et
+# nulle part ailleurs. C'est la condition qui separe ce paquet de celui qui a ete refuse.
+#
+# MON-2 : les valeurs montrees sont 1 et 2 euros en pieces, 5, 10 et 20 euros en billets. Aucune
+# valeur inventee. MON-4 : aucune somme ne depasse 20 euros, aucun centime nulle part.
+#
+# MON-3 (bloquante) : au moins un tiers des items demandent de composer une somme avec les valeurs
+# montrees. Les cinq items marques '# MON-3' ci-dessous le font - 5 sur 12, au-dela du plancher de
+# 4. Leur enonce ne porte aucun nombre : la somme a atteindre est celle du billet ou de la piece
+# posee a gauche du trait, et elle ne se connait qu'en la lisant sur le dessin.
+#
+# CON-1 (bloquante) : en effacant l'image, aucun de ces douze items ne se repond. Les items R ne
+# disent pas ce qu'il y a a compter ; les items C ne disent pas quelle somme atteindre.
+# CON-3 : aucune donnee necessaire a la reponse ne figure a la fois dans l'image et dans le texte.
+# CON-5 : les textes alternatifs decrivent ce qu'il y a a regarder - des pieces, des billets, un
+# trait - et jamais une valeur, jamais un compte, jamais la reponse.
+#
+# ADR-0073 clause 6 : 'enonce' est la premiere cle de chaque item, sans exception.
+#
+# TYP-1 : les enonces posent une espace insecable devant leur point d'interrogation, comme
+# cm1-problemes-durees depuis s23. Ce paquet n'ajoute aucune occurrence a la dette de
+# AucunSigneDoubleNEstDetachableDeSonMotTest, et il ne tranche pas le choix de caractere, qui reste
+# ouvert chez nadia-prof.
+#
+items:
+  # R1 - reconnaitre deux pieces et les ajouter. Bonne reponse : la plus petite des trois.
+  - enonce: "Combien y a-t-il en tout ?"
+    bonneReponse: "3 euros"
+    distracteurs: ["4 euros", "5 euros"]
+    indice: "Lis le nombre gravé sur chaque objet, puis ajoute."
+    illustration: "monnaie-en-tout-a"
+    illustrationTexteAlternatif: "Des pièces posées côte à côte."
+  # R2 - trois pieces. Bonne reponse : la plus grande des trois.
+  - enonce: "Combien y a-t-il en tout ?"
+    bonneReponse: "5 euros"
+    distracteurs: ["3 euros", "4 euros"]
+    indice: "Lis le nombre gravé sur chaque objet, puis ajoute."
+    illustration: "monnaie-en-tout-b"
+    illustrationTexteAlternatif: "Des pièces posées côte à côte."
+  # R3 - trois pieces de meme valeur : compter, et non lire un seul nombre.
+  - enonce: "Combien y a-t-il en tout ?"
+    bonneReponse: "3 euros"
+    distracteurs: ["2 euros", "4 euros"]
+    indice: "Lis le nombre gravé sur chaque objet, puis ajoute."
+    illustration: "monnaie-en-tout-c"
+    illustrationTexteAlternatif: "Des pièces posées côte à côte."
+  # R4 - premier billet du paquet, avec une piece.
+  - enonce: "Combien y a-t-il en tout ?"
+    bonneReponse: "7 euros"
+    distracteurs: ["8 euros", "10 euros"]
+    indice: "Lis le nombre gravé sur chaque objet, puis ajoute."
+    illustration: "monnaie-en-tout-d"
+    illustrationTexteAlternatif: "Un billet et une pièce posés côte à côte."
+  # R5 - deux billets de meme valeur.
+  - enonce: "Combien y a-t-il en tout ?"
+    bonneReponse: "10 euros"
+    distracteurs: ["5 euros", "15 euros"]
+    indice: "Lis le nombre gravé sur chaque objet, puis ajoute."
+    illustration: "monnaie-en-tout-e"
+    illustrationTexteAlternatif: "Des billets posés côte à côte."
+  # R6 - un billet et deux pieces.
+  - enonce: "Combien y a-t-il en tout ?"
+    bonneReponse: "14 euros"
+    distracteurs: ["12 euros", "16 euros"]
+    indice: "Lis le nombre gravé sur chaque objet, puis ajoute."
+    illustration: "monnaie-en-tout-f"
+    illustrationTexteAlternatif: "Un billet et des pièces posés côte à côte."
+  # R7 - la somme la plus grande du paquet, et elle reste sous 20 euros (MON-4).
+  - enonce: "Combien y a-t-il en tout ?"
+    bonneReponse: "19 euros"
+    distracteurs: ["17 euros", "18 euros"]
+    indice: "Lis le nombre gravé sur chaque objet, puis ajoute."
+    illustration: "monnaie-en-tout-g"
+    illustrationTexteAlternatif: "Des billets et des pièces posés côte à côte."
+  # MON-3 - C1. La somme a atteindre est celle du billet, et elle ne se lit que sur l'image.
+  - enonce: "Comment faire la même somme que le billet ?"
+    bonneReponse: "2 + 2 + 1"
+    distracteurs: ["2 + 1 + 1", "2 + 2 + 2"]
+    indice: "Lis d'abord ce qui est à gauche du trait, puis cherche à droite."
+    illustration: "monnaie-meme-somme-a"
+    illustrationTexteAlternatif: "Un billet à gauche d'un trait, de la monnaie à droite."
+  # MON-3 - C2. Meme billet, une autre bourse : la reponse change sans que l'enonce change.
+  - enonce: "Comment faire la même somme que le billet ?"
+    bonneReponse: "2 + 1 + 1 + 1"
+    distracteurs: ["1 + 1 + 1", "2 + 1 + 1"]
+    indice: "Lis d'abord ce qui est à gauche du trait, puis cherche à droite."
+    illustration: "monnaie-meme-somme-b"
+    illustrationTexteAlternatif: "Un billet à gauche d'un trait, de la monnaie à droite."
+  # MON-3 - C3. La reference est une piece et non un billet : l'enfant ne peut pas s'en remettre
+  # a une habitude de forme.
+  - enonce: "Comment faire la même somme que la pièce ?"
+    bonneReponse: "1 + 1"
+    distracteurs: ["1 + 1 + 1", "1 + 1 + 1 + 1"]
+    indice: "Lis d'abord ce qui est à gauche du trait, puis cherche à droite."
+    illustration: "monnaie-meme-somme-c"
+    illustrationTexteAlternatif: "Une pièce à gauche d'un trait, de la monnaie à droite."
+  # MON-3 - C4. La bourse melange un billet et des pieces.
+  - enonce: "Comment faire la même somme que le billet ?"
+    bonneReponse: "5 + 2 + 2 + 1"
+    distracteurs: ["5 + 2 + 1", "5 + 2 + 2"]
+    indice: "Lis d'abord ce qui est à gauche du trait, puis cherche à droite."
+    illustration: "monnaie-meme-somme-d"
+    illustrationTexteAlternatif: "Un billet à gauche d'un trait, de la monnaie à droite."
+  # MON-3 - C5. La somme la plus grande a composer, exactement a la borne de MON-4.
+  - enonce: "Comment faire la même somme que le billet ?"
+    bonneReponse: "10 + 5 + 2 + 2 + 1"
+    distracteurs: ["10 + 5 + 2", "10 + 5 + 2 + 2"]
+    indice: "Lis d'abord ce qui est à gauche du trait, puis cherche à droite."
+    illustration: "monnaie-meme-somme-e"
+    illustrationTexteAlternatif: "Un billet à gauche d'un trait, de la monnaie à droite."
