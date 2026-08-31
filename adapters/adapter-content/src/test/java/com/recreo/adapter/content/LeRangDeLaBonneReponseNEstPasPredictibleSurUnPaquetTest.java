@@ -421,7 +421,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " nominaux tires du texte de leur propre item (\"Nadia\", \"les"
                     + " jardiniers\", \"la troupe\"), valeurDe rend null sur les trois"
                     + " propositions de chaque item. Mesure du 2026-08-31 sur le paquet servi :"
-                    + " aucune des 60 propositions ne commence par un chiffre"));
+                    + " aucune des 60 propositions ne commence par un chiffre"),
+            // S25-SEM : entree neuve, se reperer dans la journee et la semaine, CP.
+            Map.entry("cp-semaine",
+            "23 items sur 23 portent deux distracteurs (trois propositions), mais aucune des 69"
+                    + " propositions n'est numerique : ce sont des noms de jours, de mois, de"
+                    + " saisons et de moments de la journee (\"mercredi\", \"decembre\","
+                    + " \"l'hiver\", \"le matin\"), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-08-31 sur le paquet servi :"
+                    + " aucune des 69 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
