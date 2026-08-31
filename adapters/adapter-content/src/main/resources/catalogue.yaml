@@ -162,3 +162,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-problemes-etapes
     nombreDeManches: 10
+  - id: bandit-manchot-fractions-cm1
+    titre: "Les fractions simples"
+    consigne: "Lis bien la fraction, puis choisis la réponse."
+    mecanique: bandit-manchot
+    paquet: cm1-fractions
+    nombreDeManches: 10

@@ -1,0 +1,266 @@
+schema: 1
+id: cm1-fractions
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CM1"
+  domaine: "Nombres et calculs"
+  competence: "Notion de fraction simple (unités fractionnaires, fractions inférieures à 1) et repérage sur une droite numérique"
+#
+# S24-FRA (DEC-0059 section 2, docs/backlog/backlog.md ; arbitrage prealable de nadia-prof du
+# 2026-08-30, ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md,
+# section 8bis, FRA-1 a FRA-9 ; et
+# ARBITRAGE-PREALABLE-s24-borne-den-premier-paquet-de-saisie-et-deux-points-de-satisfaisabilite.md,
+# section 5.2, qui arrete la lecture de FRA-5 sur la forme (d) et ajoute FRA-10). Paquet
+# integralement neuf : contenu-repris/fractions/cm1-compare.yml a ete REFUSE par nadia-prof et
+# n'est pas la matiere de ce paquet.
+#
+# FRA-9, couverture partielle nommee : ce paquet ne porte que la moitie "notion de fraction
+# simple". La moitie "reperage sur une droite numerique" reste non couverte - elle exige une ligne
+# reellement dessinee et graduee.
+#
+# Trois cles de declaration d'auteur, sur le patron deja en service pour 'graphie' (cp-le-bon-son)
+# et 'relationBonneReponse' (cm1-mots-de-liaison) : 'fraction', 'forme' et 'famillesDistracteurs'.
+# Aucune fabrique ne les lit ; PaquetCm1FractionsTest les relit et recalcule a partir d'elles la
+# bonne reponse et les deux distracteurs de chaque item. C'est ce que FRA-5 demande - qu'un tiers
+# puisse recalculer les deux distracteurs a partir de la famille declaree, et sur la forme (d) a
+# partir de la fraction enoncee, qui est dans l'item.
+#
+# FRA-2 et FRA-3, les quatre formes et leur effectif : (a) de l'ecriture chiffree vers la
+# denomination, 6 items ; (b) de la denomination vers l'ecriture chiffree, 6 ; (c) de la situation
+# de partage vers la fraction, 6 ; (d) la lecture du denominateur seul, 6.
+#
+# FRA-4 : dix items sur vingt-quatre ont pour numerateur 1, pour un minimum de
+# arrondi-inferieur(24/3) = 8.
+#
+# FRA-5, les familles employees : (a) le numerateur et le denominateur echanges ; (b) le
+# denominateur decale de un. La famille (c) - une denomination formee sur le numerateur - n'est
+# employee par aucun item : FRA-5 l'autorise sur les formes (a) et (b) sans l'exiger, et la
+# famille (a) est indisponible sur un item de numerateur 1, ou l'echange produit d/1, qui n'a pas
+# de denomination. Ces items-la portent donc deux distracteurs de famille (b), un par decalage :
+# FRA-5 n'exige pas deux familles distinctes, il exige que chaque distracteur appartienne a une
+# famille et que la derivation soit nommee.
+#
+# FRA-10 : sur l'item "Dans 3/4", le decalage vers le bas produirait 3, deja donne par la famille
+# (a) ; c'est donc le decalage vers le haut qui est retenu, 5.
+#
+# FRA-8 : aucune situation de partage ne suppose gouter, anniversaire, part de gateau ni objet
+# possede. Les six situations portent sur une bande de papier, un ruban, une ficelle, une
+# longueur, une corde et une piste, aucune rattachee a quelqu'un.
+items:
+  - enonce: "Comment lit-on la fraction 3/8 ?"
+    bonneReponse: "trois huitièmes"
+    distracteurs: ["huit tiers", "trois neuvièmes"]
+    indice: "Le nombre du bas dit en combien de parts on partage."
+    fraction: "3/8"
+    forme: "a"
+    famillesDistracteurs:
+      "huit tiers": "a"
+      "trois neuvièmes": "b"
+  - enonce: "Comment lit-on la fraction 1/4 ?"
+    bonneReponse: "un quart"
+    distracteurs: ["un tiers", "un cinquième"]
+    indice: "Regarde le nombre du bas : il compte les parts égales."
+    fraction: "1/4"
+    forme: "a"
+    famillesDistracteurs:
+      "un tiers": "b"
+      "un cinquième": "b"
+  - enonce: "Comment lit-on la fraction 2/5 ?"
+    bonneReponse: "deux cinquièmes"
+    distracteurs: ["cinq demis", "deux sixièmes"]
+    indice: "Le nombre du bas donne le nom de la part."
+    fraction: "2/5"
+    forme: "a"
+    famillesDistracteurs:
+      "cinq demis": "a"
+      "deux sixièmes": "b"
+  - enonce: "Comment lit-on la fraction 1/6 ?"
+    bonneReponse: "un sixième"
+    distracteurs: ["un cinquième", "un septième"]
+    indice: "Compte les parts annoncées par le nombre du bas."
+    fraction: "1/6"
+    forme: "a"
+    famillesDistracteurs:
+      "un cinquième": "b"
+      "un septième": "b"
+  - enonce: "Comment lit-on la fraction 3/4 ?"
+    bonneReponse: "trois quarts"
+    distracteurs: ["quatre tiers", "trois cinquièmes"]
+    indice: "Le nombre du bas compte toutes les parts égales."
+    fraction: "3/4"
+    forme: "a"
+    famillesDistracteurs:
+      "quatre tiers": "a"
+      "trois cinquièmes": "b"
+  - enonce: "Comment lit-on la fraction 2/9 ?"
+    bonneReponse: "deux neuvièmes"
+    distracteurs: ["neuf demis", "deux huitièmes"]
+    indice: "Le nom de la part vient du nombre du bas."
+    fraction: "2/9"
+    forme: "a"
+    famillesDistracteurs:
+      "neuf demis": "a"
+      "deux huitièmes": "b"
+  - enonce: "Écris en chiffres la fraction trois quarts."
+    bonneReponse: "3/4"
+    distracteurs: ["4/3", "3/5"]
+    indice: "Le nombre du bas dit en combien de parts on partage."
+    fraction: "3/4"
+    forme: "b"
+    famillesDistracteurs:
+      "4/3": "a"
+      "3/5": "b"
+  - enonce: "Écris en chiffres la fraction un cinquième."
+    bonneReponse: "1/5"
+    distracteurs: ["1/4", "1/6"]
+    indice: "Regarde le nombre du bas : il compte les parts égales."
+    fraction: "1/5"
+    forme: "b"
+    famillesDistracteurs:
+      "1/4": "b"
+      "1/6": "b"
+  - enonce: "Écris en chiffres la fraction deux tiers."
+    bonneReponse: "2/3"
+    distracteurs: ["3/2", "2/4"]
+    indice: "Le nombre du bas donne le nom de la part."
+    fraction: "2/3"
+    forme: "b"
+    famillesDistracteurs:
+      "3/2": "a"
+      "2/4": "b"
+  - enonce: "Écris en chiffres la fraction un huitième."
+    bonneReponse: "1/8"
+    distracteurs: ["1/7", "1/9"]
+    indice: "Compte les parts annoncées par le nombre du bas."
+    fraction: "1/8"
+    forme: "b"
+    famillesDistracteurs:
+      "1/7": "b"
+      "1/9": "b"
+  - enonce: "Écris en chiffres la fraction cinq sixièmes."
+    bonneReponse: "5/6"
+    distracteurs: ["6/5", "5/7"]
+    indice: "Le nom de la part vient du nombre du bas."
+    fraction: "5/6"
+    forme: "b"
+    famillesDistracteurs:
+      "6/5": "a"
+      "5/7": "b"
+  - enonce: "Écris en chiffres la fraction un neuvième."
+    bonneReponse: "1/9"
+    distracteurs: ["1/8", "1/10"]
+    indice: "Le nombre du bas compte toutes les parts égales."
+    fraction: "1/9"
+    forme: "b"
+    famillesDistracteurs:
+      "1/8": "b"
+      "1/10": "b"
+  - enonce: "Une bande de papier est partagée en 8 parts égales. On en colorie 3. Quelle fraction est coloriée ?"
+    bonneReponse: "3/8"
+    distracteurs: ["8/3", "3/7"]
+    indice: "Le nombre du bas dit en combien de parts on partage."
+    fraction: "3/8"
+    forme: "c"
+    famillesDistracteurs:
+      "8/3": "a"
+      "3/7": "b"
+  - enonce: "Un ruban est partagé en 4 parts égales. On en prend 1. Quelle fraction est prise ?"
+    bonneReponse: "1/4"
+    distracteurs: ["1/3", "1/5"]
+    indice: "Regarde le nombre du bas : il compte les parts égales."
+    fraction: "1/4"
+    forme: "c"
+    famillesDistracteurs:
+      "1/3": "b"
+      "1/5": "b"
+  - enonce: "Une ficelle est partagée en 10 parts égales. On en garde 7. Quelle fraction est gardée ?"
+    bonneReponse: "7/10"
+    distracteurs: ["10/7", "7/9"]
+    indice: "Le nombre du bas donne le nom de la part."
+    fraction: "7/10"
+    forme: "c"
+    famillesDistracteurs:
+      "10/7": "a"
+      "7/9": "b"
+  - enonce: "Une longueur est partagée en 6 parts égales. On en peint 1. Quelle fraction est peinte ?"
+    bonneReponse: "1/6"
+    distracteurs: ["1/5", "1/7"]
+    indice: "Compte les parts annoncées par le nombre du bas."
+    fraction: "1/6"
+    forme: "c"
+    famillesDistracteurs:
+      "1/5": "b"
+      "1/7": "b"
+  - enonce: "Une corde est partagée en 5 parts égales. On en coupe 2. Quelle fraction est coupée ?"
+    bonneReponse: "2/5"
+    distracteurs: ["5/2", "2/4"]
+    indice: "Le nom de la part vient du nombre du bas."
+    fraction: "2/5"
+    forme: "c"
+    famillesDistracteurs:
+      "5/2": "a"
+      "2/4": "b"
+  - enonce: "Une piste est partagée en 3 parts égales. On en court 1. Quelle fraction est courue ?"
+    bonneReponse: "1/3"
+    distracteurs: ["1/2", "1/4"]
+    indice: "Le nombre du bas compte toutes les parts égales."
+    fraction: "1/3"
+    forme: "c"
+    famillesDistracteurs:
+      "1/2": "b"
+      "1/4": "b"
+  - enonce: "Dans 3/8, en combien de parts égales le tout est-il partagé ?"
+    bonneReponse: "8"
+    distracteurs: ["3", "9"]
+    indice: "Le nombre du bas dit en combien de parts on partage."
+    fraction: "3/8"
+    forme: "d"
+    famillesDistracteurs:
+      "3": "a"
+      "9": "b"
+  - enonce: "Dans 2/5, en combien de parts égales le tout est-il partagé ?"
+    bonneReponse: "5"
+    distracteurs: ["2", "4"]
+    indice: "Regarde le nombre du bas : il compte les parts égales."
+    fraction: "2/5"
+    forme: "d"
+    famillesDistracteurs:
+      "2": "a"
+      "4": "b"
+  - enonce: "Dans 3/4, en combien de parts égales le tout est-il partagé ?"
+    bonneReponse: "4"
+    distracteurs: ["3", "5"]
+    indice: "Le nombre du bas donne le nom de la part."
+    fraction: "3/4"
+    forme: "d"
+    famillesDistracteurs:
+      "3": "a"
+      "5": "b"
+  - enonce: "Dans 1/6, en combien de parts égales le tout est-il partagé ?"
+    bonneReponse: "6"
+    distracteurs: ["1", "5"]
+    indice: "Compte les parts annoncées par le nombre du bas."
+    fraction: "1/6"
+    forme: "d"
+    famillesDistracteurs:
+      "1": "a"
+      "5": "b"
+  - enonce: "Dans 7/10, en combien de parts égales le tout est-il partagé ?"
+    bonneReponse: "10"
+    distracteurs: ["7", "9"]
+    indice: "Le nom de la part vient du nombre du bas."
+    fraction: "7/10"
+    forme: "d"
+    famillesDistracteurs:
+      "7": "a"
+      "9": "b"
+  - enonce: "Dans 1/9, en combien de parts égales le tout est-il partagé ?"
+    bonneReponse: "9"
+    distracteurs: ["1", "10"]
+    indice: "Le nombre du bas compte toutes les parts égales."
+    fraction: "1/9"
+    forme: "d"
+    famillesDistracteurs:
+      "1": "a"
+      "10": "b"
