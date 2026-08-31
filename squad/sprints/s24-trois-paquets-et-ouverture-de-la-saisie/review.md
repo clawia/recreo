@@ -680,3 +680,227 @@ cela coute quand personne ne joue : 923 tests verts, et un enfant de CP qui ecri
 **Et un fait que je verse pour la retro** : le catalogue contient desormais **un jeu ou un enfant qui
 ne sait pas peut echouer**, sur trente et un. C'est ce que la mecanique de saisie apporte, et c'est
 ce qu'aucun compteur de couverture ne verra.
+
+---
+
+## 11. Cloture - `sofia-sm`, 2026-08-31, apres les trois correctifs et les quatre VALIDE
+
+- **Horodatage de fin du sprint** : **2026-08-31 14:10** - la cloture reelle. La ligne 3 porte
+  l'horodatage de la review rendue a 11:45 et **n'est pas reecrite** : les deux sont des faits
+  distincts, et c'est le second qui borne la fenetre du rapport de tokens (`squad/README.md`
+  section 2, amendement de la retro de s22 - `outils/rapport-tokens.py` retient le dernier
+  horodatage de fin, pas le premier, precisement pour ce cas).
+- **Duree effective** : **15 h 38 min**, une nuit comprise.
+
+*Section ajoutee a la cloture. **Je ne modifie pas un mot des sections 1 a 10.** Les sections 1 a 8
+decrivent l'etat du 2026-08-31 a 11:45 - porte rouge, saisie non jouable - et restent lisibles telles
+qu'elles ont ete rendues. Les deux ont change depuis, et cette section dit comment.*
+
+### 11.1 Les quatre empreintes de `nadia-prof` - verifiees, et rendues
+
+`nadia-prof` a construit elle-meme l'arbre qu'elle a joue, l'arbre de reference qui lui avait ete
+donne ne portant qu'un des trois correctifs. Elle identifie ses verdicts par quatre empreintes et
+ecrit : *"si l'integration de cloture ne rend pas ces quatre empreintes, elle ne porte pas ce que j'ai
+valide."*
+
+**Methode, reproductible par un tiers** : `git hash-object <fichier>` sur l'arbre de cloture, compare
+a la table de `FICHE-saisie-complements-10-cp.md` section 6. Ce sont des empreintes de **blob git**,
+et non des sommes de controle du contenu - je l'ai etabli en recalculant les deux sur sa propre
+branche avant de comparer, plutot que de supposer la methode.
+
+| Fichier | Empreinte attendue | Rendue par l'arbre de cloture |
+|---|---|---|
+| `cp-complements-10-saisie.yaml` | `8c92fe5d1d6b048f209c3aa6e7cf47bd3fa127c1` | **oui** |
+| `cp-texte-narratif.yaml` | `3f3911392df562af8c3e6284ed15d474f273a7fe` | **oui** |
+| `cm1-fractions.yaml` | `9bd75dafd99703a78aa867df3b5e858ae5ac50b8` | **oui** |
+| `catalogue.yaml` | `bf70e7eea690569d9607eea04ea1e847a7ff10e2` | **oui** |
+
+> **Quatre sur quatre. L'arbre de cloture porte exactement les fichiers sur lesquels les quatre
+> verdicts ont ete prononces.**
+
+**Le fait de methode qu'elle verse et que je reprends parce qu'il vaut au-dela de ce cas** : son
+compte de tests coincide avec celui d'un arbre a **un seul** correctif, les deux autres ne touchant
+que du YAML de contenu. *"Coincidence expliquee, pas suspecte - mais elle montre qu'un compte de tests
+ne distingue pas deux arbres."* **C'est pourquoi ce sont les empreintes qui identifient l'arbre ici,
+et pas mon 926.**
+
+### 11.2 La porte technique - VERTE
+
+```
+mvn -B clean verify
+```
+
+a la racine du reacteur, **reacteur complet, aucun `-pl`, donc aucun `-am` a citer**. Mesuree par moi
+sur l'arbre de cloture, jamais relayee.
+
+> **BUILD SUCCESS. Six modules sur six en SUCCESS. Le Done technique de s24 est atteint.**
+
+**133 rapports, 926 tests, 0 echec, 0 erreur, 0 ignore.** Methode inchangee (section 1.1). Perimetre :
+**le depot**, cette fois - `bootstrap` a tourne. Repartition : `adapter-content` 355, `adapter-web`
+349, `bootstrap` 125 surefire et 6 failsafe, `domain` 78, `application` 13. **31 regles ArchUnit**,
+inchange depuis la fusion du lot 2. JDK **21.0.10**, version rapportee par la machine virtuelle des
+tests elle-meme et verifiee a chaque build depuis `ADR-0071`.
+
+**D'ou vient l'ecart avec le 787 de la section 1.1** : ce chiffre-la portait sur quatre modules et un
+build interrompu. **Les deux ne se comparent pas et je ne les soustrais pas.** L'enchainement des
+chiffres annonces pendant la journee, chacun exact sur son arbre : 811 a l'ouverture, 923 apres le
+correctif du fil-piege du lot 4, **926 a la cloture** - les trois de plus sont les trois clauses de
+`CPL-3` que le correctif du refus a ecrites.
+
+**La cause du rouge de la section 1.2 est fermee, et par son auteur.** `theo-archi` a corrige le
+garde-fou d'`ADR-0072` sur le patron du lot 5a - le garde-fou **declare son domaine** par rapport a
+`ClassementDesItems` au lieu de transtyper en aveugle, avec son motif, son compte d'ecartes et sa
+morsure. **Aucune assertion n'a ete affaiblie, aucun second classement n'a ete invente**, et il ecrit
+le mecanisme contre lui-meme : *"deux verts sur deux branches ne font pas un vert, et le seul remede
+est de mesurer sur l'arbre fusionne - ce que je n'avais pas fait."*
+
+### 11.3 Ce qui est livre, et la saisie est jouable
+
+**L'obstacle 3 de la section 7 est clos, et il l'est par un fichier sur le disque.** L'entree de
+catalogue de `S24-SAI-2` est entree : titre *"Ecris le complement a 10"* (**cinq mots**), consigne
+*"Ecris le nombre qui manque pour faire 10."* (**huit mots, contre une borne de huit**) - la mesure
+qui avait motive la retenue est confirmee par `nadia-prof`, qui a recompte les neuf mots de
+l'ancienne proposition elle-meme au lieu de la relayer.
+
+**`nadia-prof` a rejoue sans aucune sonde**, depuis la liste du CP, et elle le distingue explicitement
+de son premier passage qu'elle avait declare degrade sur ce point. **Catalogue : 31 entrees, 31
+paquets servis, aucun paquet orphelin.** Au premier passage il y en avait un, et c'etait celui-la.
+
+**Ce que la retenue a coute, dans ses mots** : *"ce que la retenue a coute n'est pas un bon jeu retenu,
+c'est un jeu defectueux non servi."* Mon arbitrage de la section 3.2 avait pour motif que le texte ne
+tenait pas `CPL-9c` ; **il a eu un effet que je n'avais pas prevu et que je ne mets pas a mon
+credit** - le paquet retenu portait aussi le defaut de `CPL-3`, que seul le fait de jouer a trouve.
+
+### 11.4 Le Done pedagogique - quatre VALIDE, prononces par `nadia-prof` et par elle seule
+
+**Je ne le prononce pas, je le rapporte.** Il est dans les sections 9 et 10 ci-dessus, sous sa plume,
+et dans quatre fiches de conformite.
+
+| Increment | Premier passage | Verdict final |
+|---|---|---|
+| `bandit-manchot-pluriel-cp` | VALIDE | **VALIDE** - non rejoue, rien n'a bouge dessus |
+| `bandit-manchot-texte-narratif-cp` | VALIDE SOUS RESERVE | **VALIDE** - reserve levee |
+| `bandit-manchot-fractions-cm1` | VALIDE SOUS RESERVE | **VALIDE** - reserve levee |
+| `saisie-complements-10-cp` | REFUSE | **VALIDE** - refus leve |
+| `S24-SAI-1` - la mecanique de saisie | audit rendu, degrade sur un point | **confirme**, joue depuis le catalogue livre |
+
+**La decharge des lots 3 et 4 est prononcee** par elle, sur la troisieme forme de preuve de structure
+de `theo-archi` qu'elle a reverifiee. **L'obstacle 2 de la section 7 est clos.**
+
+### 11.5 La matrice - le ratio est recompte, et son ecriture n'est pas de moi
+
+**Methode, identique a celle de la section 5** : comptage de la colonne Statut des quatre tableaux de
+matiere, sur l'arbre de cloture. **Perimetre : les quatre tableaux de matiere, pas les tableaux de
+synthese historiques du meme fichier.**
+
+**Etat du fichier a cet instant : 24 `couvert-valide`, 4 `en cours`, 15 `non couvert`, 4 `non
+couvrable en l'etat`, 47 lignes, 43 atteignables. 24/43, soit 55,8 % - inchange.**
+
+**Ce que les verdicts rendent du** : trois lignes portees `en cours` a l'ouverture - `S24-NAR`,
+`S24-PLU`, `S24-FRA` - ont chacune un verdict `VALIDE`. **Recompte et non infere : le ratio devient
+27/43, soit 62,8 %.** Le paquet de saisie **n'ajoute aucune ligne** : il porte sur une ligne deja
+verte, ce que `camille-po` avait etabli sur 18 lignes et `nadia-prof` confirme sur 23.
+
+> **Je n'ecris pas cette mise a jour, et ce n'est pas une prudence : c'est la frontiere.**
+> `squad/programme/MATRICE-couverture.md` a un proprietaire nomme, et ce n'est pas moi - *"`camille-po`
+> la met a jour [...] a la review, [...] seulement si `nadia-prof` a rendu un verdict `VALIDE`, en
+> faisant passer la ligne a `couvert-valide`"*. Le geste est mecanique, les verdicts existent sur le
+> disque, et il reste le sien. **Je fournis le comptage avec sa methode ; elle porte l'ecriture.**
+
+**Deux dettes sur ce meme fichier, meme proprietaire, groupees pour qu'elles ne se cherchent pas** :
+les trois lignes a passer `couvert-valide` **avec la mention exacte de `FRA-9` que `nadia-prof` exige
+sur la ligne des fractions**, et la mention datee de `DEC-0063` section 3 sur les lignes touchees par
+les lots 1 et 3. **Obstacle 5, requalifie et echu.**
+
+### 11.6 Les trois corrections que `relecteur-pedagogique` me route - faites
+
+Sa relecture porte sur 120 fichiers et 40 commits. **Les quatre paquets neufs ont ete relus mot par
+mot, 76 items, controle systematique et non par echantillon : zero faute d'orthographe,
+d'accentuation ou de ponctuation** dans le texte lu par l'enfant.
+
+Il applique le critere binaire de `DEC-0062` et rend trois ecarts qu'il refuse de corriger lui-meme,
+a juste titre. **Les trois sont traites dans l'amendement date du `planning.md`**, patron `S21-6` -
+amender, jamais reecrire :
+
+| Ecart | Ce que j'ai tranche |
+|---|---|
+| *"il est de moi"*, `planning.md` section 4 - la fausse attribution que `DEC-0062` existe pour corriger, laissee dans le sprint qui l'a creee | **Corrigee.** Le chiffre est **recu de MASTER, le 2026-08-30, sans source dans le depot**. La faute de relais reste de moi ; le chiffre ne l'est pas |
+| *"fera"* chez `camille-po` contre *"ferait"* chez moi - deux citations du meme enonce, l'une des deux n'est pas le mot pour mot | **Incertitude nommee, non levee.** Le canal n'ecrit nulle part, je ne peux produire aucune source, et choisir fabriquerait la citation. **Aucun des deux libelles n'est reecrit.** Ce que le cas apprend sur la convention part a `camille-po` (obstacle 20) |
+| L'attribution a `nadia-prof` du constat sur le fichier de toolchains, reference de forme 1 qui ne resout pas | **Tranchee en deux morceaux, source retrouvee.** Son constat existe - `FICHE-bandit-manchot-additions-cp.md`, commit `8877015` du **2026-08-05** - mais il dit *"le poste d'audit ne dispose que d'un JDK 25"*, et **non** ce que je lui faisais dire. La lecture du fichier de toolchains est un **quatrieme fait recu de MASTER** |
+
+**Et l'amendement que `DEC-0062` me devait depuis son acceptation** : la convention `MASTER` **existe
+desormais dans `squad/README.md`**, section 2 bis - les trois formes, les deux bornes, la regle
+d'ecriture du nom, et l'exemple reel de ce qu'elle empeche. **C'etait un garde-fou annonce mais
+absent** - la dette 7 de `CLAUDE.md` reproduite dans le sprint qui l'a creee - et le relecteur ecrit
+la consequence exacte : *"un prochain relecteur invoque sans ce brief n'aura aucun moyen de savoir
+qu'il doit l'appliquer."*
+
+**Ce que je ne fais pas, et le motif est ferme** : je n'ajoute pas le critere a
+`.claude/agents/relecteur-pedagogique.md`. **C'est de la configuration d'agent, pas un livrable de
+process**, et je ne modifie pas la configuration d'un agent sur la demande d'un autre agent -
+`DEC-0062` la route a moi, mais le routage d'une decision ne change pas la nature du fichier.
+**L'obstacle reste ouvert et nomme** (obstacle 21) plutot que clos sur une intention. Le README etant
+lu par tous les agents et cite par `CLAUDE.md`, la dette 7 est **fermee sur le fond** ; le brief
+specifique du relecteur reste du.
+
+### 11.7 Ce que la cloture ajoute au tableau des obstacles
+
+**Clos par un fichier qui existe sur le disque :**
+
+| # | Obstacle | Ce qui l'a clos |
+|---|---|---|
+| 1 | Le garde-fou d'`ADR-0072` cassait le build apres fusion | **`0fe674a`** - le garde-fou declare son domaine par rapport a `ClassementDesItems`, avec motif, compte d'ecartes et morsure. `ADR-0072` amende. Porte technique verte |
+| 2 | Le lot 3 n'etait discharge par personne | **Decharge prononcee par `nadia-prof`**, clause opposable section 12, sur la troisieme forme reverifiee par elle |
+| 3 | La saisie n'etait atteignable par aucun enfant | **`5a8a428`** - entree de catalogue entree sous `CPL-9a` a `CPL-9e`, consigne a huit mots. `nadia-prof` a rejoue sans sonde |
+| 7 | `squad/README.md` decrivait une integration H2 supprimee par `DEC-0028` | **`5c0964f`** - corrige par `relecteur-pedagogique` |
+
+**Toujours ouvert et laisse dans ce tableau volontairement** : l'obstacle 6 - la formule de JDK
+disqualifiee dans le document d'`ines-design`, qui n'a pas ete invoquee. `relecteur-pedagogique` le
+confirme et le route a son auteure **plutot que de le contourner**. Quatre agents ont refuse de
+reecrire le document d'un cinquieme ce sprint, et c'est la bonne conduite.
+
+**Ouverts et neufs a la cloture :**
+
+| # | Obstacle | Categorie | Proprietaire | Artefact attendu |
+|---|---|---|---|---|
+| 20 | **La forme 3 de `DEC-0062` exige le mot pour mot d'un canal qui n'ecrit nulle part.** Deux citations divergentes du meme enonce coexistent, aucune n'est certifiable, et le figer apres coup est impossible | Produit, convention | `camille-po` | Amendement a `DEC-0062` : **la citation est figee par son premier destinataire au moment de la reception**, ou la divergence est assumee comme telle. Le cas de s24 est le materiau |
+| 21 | **Le critere de relecture de `DEC-0062` n'est pas dans la fiche de `relecteur-pedagogique`.** Il l'a applique a s24 parce que son brief le lui demandait nommement | Configuration d'agent | `camille-po` ou l'utilisatrice - **pas moi** | Ajout a la fiche. **Je ne modifie pas la configuration d'un agent** ; la convention est en revanche dans `squad/README.md` depuis ce jour, donc lisible par tous |
+| 22 | **`TYP-1` ne voit pas la moitie du texte que l'enfant lit.** Le cliquet d'`ADR-0067` derive son perimetre des paquets ; les gabarits et les constantes de message en sont hors. **11 occurrences, dont 3 neuves a s24**, entrees sous une porte verte | Technique, perimetre d'un garde-fou | `theo-archi` ; `nadia-prof` pour le choix de caractere qu'`ADR-0067` laisse ouvert | Extension du perimetre du cliquet. **Le relecteur refuse a raison de poser un caractere dans onze chaines lues par un enfant sans que `nadia-prof` l'ait vu** |
+| 23 | **Le maximum de strategie du paquet narratif reste a 50,0 %**, porte par la seconde phrase. `nadia-prof` **refuse** de le faire baisser en ajoutant des items : *"ajouter des items ne retire aucun raccourci, cela dilue un denominateur"* | Produit, backlog | `camille-po` | Story de backlog. **Non engage a s24** |
+| 24 | **Un seul concept porte trois noms**, dont l'un vit dans la section Regle executable d'un `ADR` accepte | Technique, nommage | `theo-archi` | Terme canonique tranche |
+| 25 | *"On en court 1. Quelle fraction est courue ?"* - `cm1-fractions`, item 18. Grammaticalement defendable, lisibilite au CM1 non jugee | Pedagogie | `nadia-prof` | Avis, hors de la porte du relecteur |
+| 26 | **`CPL-3` garde ce paquet-ci et ne gardera pas le prochain bareme.** Sur un paquet alphabetique, les formes acceptees sont un jugement de francais qu'aucun automate n'engendre. **`SAI-6` et `SAI-7` restent dans la seule main de `nadia-prof`** | Fait a garder visible | - | **Aucune decision demandee.** Reconduit pour que le prochain paquet de saisie ne le redecouvre pas |
+
+**Les obstacles 4, 5, 8 a 19 de la section 7 restent ouverts et inchanges**, avec leurs proprietaires
+nommes. L'obstacle 5 est requalifie : il porte desormais **deux** dettes de `camille-po` sur la
+matrice, dont les trois lignes a passer `couvert-valide` avec la mention exacte de `FRA-9`.
+
+### 11.8 Ce qui n'a pas eu lieu, et qui n'est pas de ma main
+
+**`yanis-qa` a travaille et n'a rien rendu au depot, et les deux moities de cette phrase sont
+mesurees.** Sa branche n'est pas poussee a la cloture - `git fetch` puis `git branch -r`, dix-sept
+references distantes, **aucune `s24-yanis`**. Et le rapport de tokens, produit apres que la fenetre du
+sprint eut ete bornee a la cloture reelle, le compte a **218 tours et 77 954 tokens d'output**.
+
+**Ce n'est donc pas une absence d'invocation : c'est un travail qui n'a laisse aucune trace dans la
+seule memoire partagee de la squad.** Au sens du principe de gouvernance de ce depot, **ce rapport
+qualite n'existe pas** - et c'est la formulation exacte, pas une facon de parler. **Le sprint se
+cloture sans rapport qualite, pour le second sprint consecutif**, et je le dis plutot que de fermer en
+silence.
+
+**Ce que ce fait ajoute a l'amendement de process de la retro** : convoquer `yanis-qa` au planning ne
+suffit pas si le rendu ne descend pas dans une branche. **L'item de planning doit nommer son livrable
+et sa branche**, comme n'importe quel lot de developpement. Je l'ajoute a l'amendement 3.4.
+
+**Un ecart de conduite de ceremonie, ecrit sous la forme de `DEC-0062` parce qu'il n'est pas de ma
+main** :
+
+> *"`yanis-qa` et `relecteur-pedagogique` ont ete lances apres ta review au lieu d'avant"*
+> - **recu de MASTER, le 2026-08-31, sans source dans le depot.**
+
+**Ce que j'en fais** : je le verse tel quel. La section 2.3 de `retro.md` porte ce manque a ma charge
+- *"c'est un manque de conduite de ceremonie et il est de moi : je ne les ai pas appeles"* - et cette
+attribution etait fausse sur le **moment de l'invocation**, qui ne m'appartient pas. **Je ne reecris
+pas la retro** : son amendement date dit ce qui est etabli. **Ce qui reste de moi et que je ne deplace
+pas** : ma review a ete rendue sans les avoir demandes, et l'amendement de process que je propose -
+les convoquer au planning et non a la review - vaut exactement contre cela.

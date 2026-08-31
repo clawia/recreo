@@ -232,3 +232,181 @@ depuis un worktree. **Je ne choisis pas entre les deux : c'est technique et c'es
   s25, avec le reste de la conduite du sprint suivant, ou ils sont amendes si l'utilisatrice ou un
   agent les conteste d'ici la. Seul le 3.1 est ecrit, parce qu'il transcrit une decision deja prise
   et qu'il m'etait explicitement route.
+
+---
+
+## 5. Amendement du 2026-08-31 - ce que la cloture a ajoute a la retrospective
+
+*Bloc ajoute par `sofia-sm` apres les trois correctifs, les quatre `VALIDE` et la relecture. **Rien
+des sections 1 a 4 n'est efface** : elles decrivent le sprint tel qu'il etait quand la retro a ete
+tenue, porte rouge et saisie non jouable. Ce qui suit vient apres, et les faits les plus lourds du
+sprint sont dans ce bloc-ci.*
+
+### 5.1 Le fait qui domine le sprint - quatre proprietes promises et non tenues par leur code, en une journee
+
+Ce n'est pas quatre accidents, c'est **un motif**, et il est de la meme famille que la dette 7 de
+`CLAUDE.md` - *"un garde-fou annonce mais absent"* - sauf que le garde-fou existe et qu'il ment sur ce
+qu'il garde.
+
+| # | Ce qui etait promis | Ce que le code faisait | Trouve par |
+|---|---|---|---|
+| 1 | La traversee de saisie derive du **repertoire**, ecrit mot pour mot dans sa Javadoc | Elle lisait `games()` - le catalogue. L'entree de catalogue etant retenue, **elle serait restee sur une branche vide** pendant que le fil-piege voisin passait au vert | le fil-piege de `marc-dev` |
+| 2 | Les onze items d'un paquet sont juges | Tirage a hasard constant zero : la mecanique rendait **toujours le premier item**, et les dix autres sortaient par un `return true` silencieux, **compteur en hausse**. *Compter une population n'est pas la juger* | `sofia-sm` (dev) |
+| 3 | Les formes acceptees d'un item servi sont le bareme reel | Les formes attendues etaient lues **dans l'item charge des deux cotes de l'assertion**. Une fabrique qui perdait les formes les perdait **des deux cotes**, et le garde-fou restait vert **sur le defaut meme que sa premiere phrase annonce** | `sofia-sm` (dev), reproduit par mutation |
+| 4 | **`CPL-3`** - l'ecriture a zero initial est acceptee. Condition **ecrite, datee, precise**, du 2026-08-30 | **Rien ne l'executait.** Un enfant de CP qui ecrit `03` pour `3` s'entend dire qu'il s'est trompe et perd un essai | **`nadia-prof`, en jouant** |
+
+**Ce que les quatre ont en commun** : un enonce qui affirme plus large que ce que son code verifie, et
+**une CI verte qui le certifie**. Les trois premiers sont des garde-fous ; le quatrieme est une
+condition pedagogique que personne n'avait traduite. **La forme est identique : le texte promet, le
+vert confirme, et personne ne compare les deux.**
+
+**Ce que le sprint a mis en face, et qui a marche** : le fil-piege de `marc-dev` a saute et a montre
+que **mettre son compte a jour n'aurait rien corrige** - ses deux clauses ne derivaient pas leur
+perimetre de la meme source. Un fil-piege qui, en sautant, montre que la reparation evidente est la
+mauvaise, vaut plus que le defaut qu'il signale.
+
+**Ce que je propose d'en tirer, en section 6.**
+
+### 5.2 Deux defauts d'integration sous la meme forme - et la phrase de `theo-archi` vaut pour quatre
+
+**Vert sur une branche, vert sur l'autre, rouge une fois ensemble.** Deux fois dans la meme journee :
+
+- le garde-fou d'`ADR-0072` contre le paquet de saisie du lot 5b (`review.md`, section 1.2) ;
+- le fil-piege du lot 4 contre l'entree de catalogue retenue (section 5.1, ligne 1).
+
+`theo-archi` l'ecrit **contre lui-meme**, et c'est la formulation la plus utile du sprint :
+
+> *"J'ai decrit mon clone en croyant decrire le depot."*
+
+Il l'ecrit d'abord de son recensement de branches - il avait mesure *"aucune branche connue de mon
+clone"* et ecrit *"aucune branche poussee du depot"* - puis il en tire la regle generale : *"deux verts
+sur deux branches ne font pas un vert, et le seul remede est de mesurer sur l'arbre fusionne."*
+
+**Cette phrase vaut pour quatre, pas pour lui** :
+
+- pour **`theo-archi`**, sur son recensement et sur son garde-fou ;
+- pour **`marc-dev`** et pour **`sofia-sm` (dev)**, dont les 825 tests annonces etaient le meme nombre
+  sur deux arbres differents ;
+- pour **moi**, qui reponds de ce que je fusionne et qui n'ai mesure l'arbre fusionne qu'a la porte -
+  c'est-a-dire au dernier moment ou le defaut coute le plus cher a corriger ;
+- et pour **le pilotage du sprint**, qui a donne a `nadia-prof` un arbre de reference ne portant qu'un
+  des trois correctifs. **Elle a construit le sien et l'a identifie par quatre empreintes**, ce qui est
+  exactement le remede applique par la personne qui n'avait pas cause le probleme.
+
+**Ce que la cloture doit a `nadia-prof` sur ce point** : sans ses quatre empreintes, l'integration de
+cloture aurait porte un arbre dont **personne n'aurait pu prouver** qu'il etait celui des verdicts. Le
+compte de tests ne l'aurait pas dit - le sien coincide avec celui d'un arbre a un seul correctif, les
+deux autres ne touchant que du YAML. **Un compte de tests ne distingue pas deux arbres ; une empreinte
+de fichier, oui.**
+
+### 5.3 `TYP-1` ne voit que la moitie du texte que l'enfant lit
+
+`relecteur-pedagogique` mesure : le cliquet d'`ADR-0067` derive son perimetre du **texte servi par les
+paquets**, et les quatre paquets neufs y entrent a zero - c'est propre. **Mais l'enfant lit aussi ce
+que les gabarits ecrivent**, et rien ne le regarde : **onze occurrences, dont trois neuves a s24**,
+dans `fragments/saisie.html`, entrees sous une porte technique verte.
+
+**Pourquoi c'est un fait de retro et pas une liste de onze corrections** : `ADR-0067` dit que le
+cliquet existe *"pour arreter la croissance"*, apres *"quatre orphelins neufs apparus a s22"*. Trois
+orphelins neufs viennent d'apparaitre **dans le perimetre exact ou le cliquet ne peut pas les voir**.
+**Un cliquet qui ne couvre qu'une des deux sources du texte rendu arrete la croissance a un endroit et
+l'autorise a l'autre** - et il donne, entre-temps, l'impression que la croissance est arretee.
+
+Ce n'est pas un reproche a l'auteur du lot 4 : `fragments/saisie.html` reprend `'Score : '` de
+`fragments/manche.html` a l'identique, ce qui est la bonne facon d'ecrire un second fragment.
+**C'est le perimetre du cliquet qui est en cause, pas la main qui a copie** - meme structure exacte
+que la section 5.1.
+
+Le relecteur **refuse de corriger** les onze chaines, et il a raison : `ADR-0067` laisse ouvert le
+choix entre l'insecable ordinaire, l'insecable etroite et le retrait de l'espace, et poser un
+caractere dans onze chaines lues par un enfant **trancherait ce choix par un commit de relecture**,
+sans que `nadia-prof` l'ait vu. **Obstacle 22.**
+
+### 5.4 923 tests verts, et un enfant de CP qui ecrit `03` a tort
+
+C'est `nadia-prof` qui l'ecrit, et c'est la phrase que ce sprint doit garder :
+
+> *"`SAI-6` et `SAI-7` etaient nommees le 2026-08-30 comme le point le plus dangereux de la mecanique
+> de saisie : un bareme faux passe une CI verte sans laisser de trace. **C'est arrive, et le seul
+> garde-fou qui l'a vu, c'est d'avoir joue.**"*
+
+**Ce que cela dit du Done technique, et il faut le dire exactement** : la CI n'a pas failli. Elle a
+juge ce qu'on lui avait demande de juger, et personne ne lui avait demande `CPL-3`. **Le Done
+technique n'est pas une approximation du Done pedagogique** - c'est un autre jugement, sur un autre
+objet, et le sprint vient de montrer ce que coute de les confondre : un paquet a **onze items sur
+onze** en defaut, sous 923 tests verts.
+
+**Ce que cela dit de la porte pedagogique** : elle a paye son cout et elle l'a justifie dans le meme
+geste. Sans le fait de jouer, `S24-SAI-2` serait entre au catalogue, aurait ete compte comme couvert,
+et **le premier enfant a l'ouvrir aurait perdu un essai pour avoir eu raison**.
+
+**Et le fait que `nadia-prof` verse pour la retro, qu'aucun compteur de couverture ne verra** :
+
+> *"Le catalogue contient desormais **un jeu sur trente et un ou un enfant qui ne sait pas peut
+> echouer**."*
+
+C'est ce que la mecanique de saisie apporte reellement. **C'est la phrase qui a remplace le chiffre
+faux de 33 lignes sur 43**, et elle est mesurable, datee, et de sa main.
+
+### 5.5 Le paquet narratif reste a 50,0 %, et `nadia-prof` refuse la reparation evidente
+
+`lea-dev` remonte que le maximum de strategie sur `cp-texte-narratif` **reste a 50,0 %**, porte par la
+seconde phrase, apres la correction qui avait ramene la premiere phrase sous le seuil.
+
+**`nadia-prof` refuse de le faire baisser en ajoutant des items** :
+
+> *"Ajouter des items ne retire aucun raccourci, cela dilue un denominateur."*
+
+**C'est le refus le plus instructif du sprint**, parce que la reparation refusee aurait rendu le
+chiffre vert sans rien changer pour l'enfant - exactement la famille de defaut que `marc-dev` avait
+refusee sur `FRA` (*"rendre un garde-fou aveugle par la redaction"*) et que `theo-archi` avait refusee
+sur `ADR-0072` (une exemption qui n'ecarte personne). **Trois refus de la meme forme, par trois
+agents, dans le meme sprint.** C'est ce que la squad a fait de mieux ce sprint-ci.
+
+**A verser au backlog, pas a s24.** Obstacle 23, a `camille-po`.
+
+### 5.6 Un ecart de conduite de ceremonie qui n'est pas de ma main
+
+La section 2.3 ecrit *"c'est un manque de conduite de ceremonie et il est de moi : je ne les ai pas
+appeles"*. **Cette attribution est fausse sur un point, et je la corrige ici sans reecrire la
+section** :
+
+> *"`yanis-qa` et `relecteur-pedagogique` ont ete lances apres ta review au lieu d'avant"*
+> - **recu de MASTER, le 2026-08-31, sans source dans le depot.**
+
+**Le moment de l'invocation d'un agent ne m'appartient pas.** Ce qui reste de moi et que je ne deplace
+pas : **ma review a ete rendue sans les avoir demandes**, et l'amendement 3.4 - les convoquer au
+planning et non a la review - vaut exactement contre cela. C'est aussi la raison pour laquelle je le
+maintiens : un amendement qui place la demande **au planning** la rend inratable, quel que soit
+l'ordre dans lequel les agents sont lances.
+
+**`yanis-qa` n'a pas rendu du tout** : sa branche n'est pas poussee a la cloture. Second sprint
+consecutif sans rapport qualite. **Le defaut de la section 5.1 est exactement ce qu'un passage qualite
+sur l'arbre fusionne aurait trouve** - et c'est le troisieme argument, apres les deux de la section
+2.3, en faveur de l'amendement 3.4.
+
+---
+
+## 6. Amendement supplementaire propose - section 9, la promesse d'un garde-fou est mesuree, pas relue
+
+**Motif** : section 5.1, quatre occurrences en une journee ; section 5.3, une cinquieme d'une autre
+forme. **Un garde-fou vert ne prouve pas que ce qu'il promet est vrai** - il prouve que ce qu'il
+regarde l'est, et ces deux ensembles ont diverge cinq fois dans ce sprint.
+
+> **Un garde-fou dont la Javadoc ou le message d'erreur promet un perimetre porte, dans le meme
+> fichier, une clause qui mesure ce perimetre** - le nombre d'elements reellement juges, et non le
+> nombre parcouru. **Une population comptee n'est pas une population jugee**, et une clause de
+> non-vacuite qui ne compte que les elements traverses ne mord pas sur un `return true` silencieux.
+>
+> **Quand un garde-fou est ecrit ou corrige, sa morsure est etablie par mutation** - on casse ce qu'il
+> promet de voir et on verifie qu'il rougit **en nommant ce qui a change**. Une morsure non mesuree
+> est une promesse, et ce sprint en a paye cinq.
+
+**Ma ligne** (conduite d'equipe et qualite de ce que la squad produit). **Si sa forme executable devait
+etre tranchee** - une regle ArchUnit, un patron impose - **elle serait a `theo-archi`, et je ne
+l'ecris pas a sa place.** Ce que je propose ici est la discipline, pas le mecanisme.
+
+**Ce qui existe deja et qui va dans ce sens, plutot que d'inventer** : `ADR-0013` obligation 3 impose
+un jeu fautif a tout garde-fou qui balaie un repertoire, et le lot 5b a etabli le patron du domaine
+declare (`ClassementDesItems`). **L'amendement ne cree rien : il generalise deux pratiques que ce
+sprint a validees separement.**

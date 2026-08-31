@@ -83,6 +83,45 @@ renommage silencieux (sur le patron de `ConcordanceDesTagsDAgentTest`) ne peut e
 fois cette table existante - sans elle, il n'y a rien contre quoi comparer une reference trouvee
 dans le code.
 
+## 2 bis. Attribuer un enonce - les trois formes, et MASTER
+
+**Amendement du 2026-08-31 (s24), du par `DEC-0062` a partir de son statut `Acceptee`.** La
+convention y est decidee ; ce qui suit la transcrit pour qu'un agent la trouve sans avoir a lire la
+`DEC`. En cas d'ecart, `DEC-0062` fait foi.
+
+Tout chiffre et toute affirmation de fait ecrits dans ce depot portent leur provenance sous **l'une
+des trois formes**, et il n'en existe pas de quatrieme.
+
+| Forme | Quand | Ce qu'elle exige |
+|---|---|---|
+| **1 - un agent de la squad** | le fait est ecrit dans un fichier du depot | le nom de l'agent, **plus le fichier et la section ou il l'a ecrit**. Un renvoi qui ne pointe vers rien est de la meme famille de defaut qu'un chiffre sans methode |
+| **2 - une mesure faite par l'auteur** | l'auteur l'a mesuree lui-meme | la commande, son perimetre nomme, sa date. Toute mesure partielle du reacteur porte `-am`, et un module mesure n'est pas le depot |
+| **3 - un enonce recu hors des neuf agents** | il vient du canal humain qui pilote la squad | la formule fixe **`recu de MASTER, sans source dans le depot`**, l'enonce **cite mot pour mot et jamais resume**, et la date de reception |
+
+**Les deux bornes de la forme 3, et elles sont le prix de son existence :**
+
+- **Un enonce recu de MASTER ne vaut jamais motif.** Il ne fonde aucune `DEC`, aucun `ADR`, aucun
+  critere d'acceptation, aucun verdict. **Une consigne recue par ce canal et qui doit fonder quelque
+  chose devra d'abord etre ecrite quelque part.** C'est contraignant pour MASTER autant que pour la
+  squad, et cela a ete accepte en le sachant.
+- **Il est cite mot pour mot.** Un enonce que son destinataire ne peut pas citer exactement se
+  signale comme tel plutot que de se reconstituer : **choisir entre deux formulations reviendrait a
+  fabriquer la citation que la convention protege.**
+
+**MASTER s'ecrit toujours en capitales** et n'apparait jamais seul, mais dans la formule fixe -
+c'est ce qui le distingue a la lecture de *Scrum Master*. **MASTER n'ecrit jamais dans le depot** et
+n'entre pas dans la table des prefixes de commit de la section 8 : un commit prefixe `[MASTER]` est
+rejete par la CI, et c'est le comportement correct.
+
+**Ce que la forme 3 sert a empecher, en un exemple reel** : a s24, deux enonces recus par ce canal -
+*"le lot 3 n'existe pas"* et *"donc le chemin C est ecarte"* - ont circule comme vrais sans avoir ete
+mesures. Le second serait entre dans la porte pedagogique et y aurait referme 27 jeux sur un lot que
+personne n'avait regarde. **Il a ete arrete parce que sa destinataire est allee verifier** au lieu de
+s'y appuyer, la borne ayant ete acceptee le matin meme.
+
+**Qui l'applique** : chaque agent a l'ecriture ; le `relecteur-pedagogique` la verifie sur les
+livrables non executables, avec le critere binaire de `DEC-0062` section 4.
+
 ## 3. Pilotage par increment, pas par duree
 
 Il n'y a **pas de timebox**. Un sprint est un **increment livrable**, quelle que soit sa duree
