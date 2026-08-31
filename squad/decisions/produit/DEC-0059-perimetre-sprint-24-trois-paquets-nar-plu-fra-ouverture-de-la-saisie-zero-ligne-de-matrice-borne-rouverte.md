@@ -30,10 +30,33 @@ parole. Verification faite sur le worktree `s24-camille`, ouvert sur `round-two`
 |---|---|---|
 | 802 tests, 0 echec | **exact** | `bash outils/mvn-jdk21.sh -B clean verify` a la **racine du reacteur**, aucun `-pl`, donc aucune question de `-am` : BUILD SUCCESS. Somme de l'attribut `tests` des fichiers `TEST-*.xml` de `target/surefire-reports/` et `target/failsafe-reports/` sur les cinq modules porteurs de tests = **802**. Aucun fichier ne porte un attribut `failures`, `errors` ou `skipped` non nul. Repartition : `adapter-web` 332, `adapter-content` 288, `bootstrap` 120, `domain` 49, `application` 13 |
 | Couverture 24/43 = 55,8 % | **exact** | Comptage des lignes des quatre tableaux de matiere de `squad/programme/MATRICE-couverture.md`, colonne Statut : 24 `couvert-valide`, 1 `en cours`, 18 `non couvert`, 4 `non couvrable en l'etat`, total 47. Denominateur atteignable 47 - 4 = **43**. 24/43 = 55,8 % |
-| Catalogue a 27 jeux | **exact** | `grep -c '^  - id:' adapters/adapter-content/src/main/resources/catalogue.yaml` = **27**. A comparer aux 28 fichiers de `adapters/adapter-content/src/main/resources/contenu/` : l'ecart d'un est `cm1-reperes.yaml`, present sur le disque et hors catalogue depuis `DEC-0049`/`DEC-0050`, ce qui est conforme |
+| Catalogue a 27 jeux | **exact** | `grep -c '^  - id:' adapters/adapter-content/src/main/resources/catalogue.yaml` = **27**. A comparer aux 28 fichiers de `adapters/adapter-content/src/main/resources/contenu/` : l'ecart d'un est `cm1-reperes.yaml`, present sur le disque et hors catalogue depuis `DEC-0049`/`DEC-0050`, ce qui est conforme **- phrase fausse, corrigee par la note du 2026-08-31 ci-dessous ; le verdict "exact" sur les 27 jeux, lui, tient** |
 | - | **un ecart mineur, sans consequence** | `RAPPORT.md` de s23 ecrit *"les 123 fichiers `TEST-*.xml`"*. J'en compte **122** par la meme methode sur le meme arbre. La **somme** des attributs `tests` est identique (802) et c'est elle qui porte le chiffre annonce ; je le note parce qu'un compte de fichiers cite a cote d'un compte de tests se recopie, pas parce qu'il change quoi que ce soit |
 
 **Aucun des trois chiffres de `sofia-sm` n'est faux.**
+
+### Correction du 2026-08-31 (s24, en cours) - la remarque sur les 28 fichiers est fausse, le verdict qu'elle accompagne ne l'est pas
+
+`sofia-sm` a releve ce point au planning de s24 (obstacle 5). **Elle a raison, et j'ai verifie moi-meme
+plutot que de la croire sur parole**, sur l'arbre fusionne de `s24-sofia` :
+
+| Ce que ma phrase du 2026-08-30 affirmait | Ce qui est vrai le 2026-08-31 |
+|---|---|
+| "28 fichiers de `contenu/`" | **27 fichiers.** `ls adapters/adapter-content/src/main/resources/contenu/` |
+| "l'ecart d'un est `cm1-reperes.yaml`" | **Il n'y a aucun ecart.** Comparaison de la liste triee des valeurs de la cle `paquet:` de `catalogue.yaml` avec la liste triee des noms de fichiers de `contenu/`, prive de l'extension : **difference nulle dans les deux sens**, 27 contre 27 |
+| "`cm1-reperes.yaml` [...] hors catalogue depuis `DEC-0049`/`DEC-0050`" | **`cm1-reperes` est au catalogue**, sous l'identifiant `bandit-manchot-reperes-cm1`, ligne 105 de `catalogue.yaml`. C'est exactement ce que `DEC-0050` a decide - le retrait de `DEC-0049` a ete annule par le retour du paquet valide sous reserve. **Ma phrase citait `DEC-0050` en lui faisant dire le contraire de ce qu'elle dit** |
+
+**Ce qui n'est pas touche** : le verdict *"Catalogue a 27 jeux - exact"* et son comptage
+`grep -c '^  - id:' catalogue.yaml` = 27 restent justes, et aucune decision de ce document ne repose
+sur la phrase fausse. **Le texte d'origine reste lisible ci-dessus**, marque, comme toutes les
+corrections de ce depot.
+
+**Ce que j'en tire contre moi** : la phrase fausse etait une remarque ecrite *a cote* d'un chiffre
+verifie. Le chiffre a ete verifie, la remarque ne l'a pas ete - elle a ete ecrite de memoire sur
+`DEC-0049`/`DEC-0050`, dont j'avais retenu le retrait sans retenir le retour. **Une remarque posee a
+cote d'un chiffre verifie se recopie avec la meme autorite que lui.** C'est la meme famille que
+l'ecart de comptage de fichiers que ce meme tableau signalait, une ligne plus bas, chez quelqu'un
+d'autre.
 
 ## 2. Les trois paquets retenus
 
@@ -387,6 +410,89 @@ la vigilance d'un agent. La capacite qu'ils prennent est celle de `sofia-sm`.
   paquet sont encore a confirmer par les developpeurs (voir les stories).
 - Elle **ne modifie aucun fichier** sous `domain/`, `application/`, `adapters/` ou `bootstrap/`.
 
+## Amendement du 2026-08-31 (s24, en cours) - le point de bascule de `sofia-sm` amende la section 5.3, ecrit avant le declencheur et non apres
+
+### A.1 Ce qui est demande, et par qui
+
+`sofia-sm` a scinde le lot 5 en 5a et 5b et pose un **point de bascule** au planning de s24
+(section 5.3) : si le tri ecrit des treize garde-fous n'existe pas au moment ou les lots 1 et 2 sont
+fusionnes verts, **`S24-SAI-2` sort du sprint et `S24-DEN` prend sa place**. Elle constate que s24
+livrerait alors une mecanique de saisie que personne ne peut jouer, **ce que la section 5.3 de cette
+decision refuse d'avance**, et elle me route la contradiction en demandant un amendement ecrit
+**avant** que le declencheur ne se produise. Elle a raison sur les deux points : la contradiction est
+reelle, et une decision de perimetre ecrite apres coup n'est pas une decision, c'est un constat.
+
+**Ce que je ne rouvre pas** : la scission du lot 5, le placement du lot 5a au jour 1, le declencheur
+lui-meme et son caractere objectif sont de la capacite et du sequencement. Ils sont a `sofia-sm` et
+je n'y touche pas.
+
+### A.2 Ce que la section 5.3 protegeait reellement, verifie contre son propre texte
+
+La section 5.3 dit : *"s24 vise la mecanique jouable, pas la mecanique seule"*, et son motif est
+nomme - *"ce produit a deja ete sanctionne pour avoir cloture quatre sprints sans increment jouable
+(`DEC-0037`, cloture de s17)"*.
+
+**Le mal contre lequel elle protege est un sprint qui se cloture sans aucun increment jouable. Ce
+n'est pas ce que la bascule produit**, et je dois l'ecrire avant de decider quoi que ce soit :
+
+- sous la bascule, s24 livre `S24-NAR`, `S24-PLU`, `S24-FRA` **et** `S24-DEN` - **quatre jeux neufs
+  qu'un enfant peut ouvrir depuis le catalogue** ;
+- ce qui manque n'est pas *un* increment jouable, c'est *la saisie* jouable.
+
+**La formulation de la section 5.3 est donc plus large que son motif.** Elle interdit une chose que
+son propre motif ne vise pas. C'est de ma main, et c'est ce que cet amendement corrige.
+
+### A.3 Ce que je decide
+
+**La section 5.3 est amendee, et seulement dans le cas de la bascule.** Sa regle generale - un sprint
+qui ouvre une mecanique vise la mecanique jouable - est **maintenue mot pour mot** et reste ce qui
+gouverne le sprint tant que la bascule n'est pas declaree.
+
+> **Si et seulement si `sofia-sm` declare la bascule sur son declencheur ecrit, s24 peut se cloturer
+> avec la mecanique de saisie livree et atteignable par aucune entree de catalogue.** Ce n'est pas une
+> option de planification : c'est un repli declenche par un fait objectif, constatable par un tiers.
+
+**Quatre conditions, cumulatives, et elles sont de mon perimetre :**
+
+1. **s24 se cloture avec au moins un jeu neuf atteignable depuis le catalogue, livre.** Sous la
+   bascule, quatre le sont. Je ne parle que de livraison : **le Done pedagogique reste a
+   `nadia-prof`** et rien ici ne l'anticipe.
+2. **La mecanique de saisie non atteignable est nommee comme une dette ouverte** dans `review.md` et
+   dans `RAPPORT.md` de s24, avec cette decision citee. **Elle n'est comptee nulle part comme de la
+   valeur livree** - ni ligne de matrice, ni jeu au catalogue, ni fiche de conformite. La matrice ne
+   bouge pas d'une ligne du fait de ce lot, ce que la section 5.1 etablit deja.
+3. **`S24-SAI-2` n'est pas supprimee et ne devient pas une intention.** Sa story reste au backlog,
+   son statut devient *reportee a s25, rang 1*, et **le report est compte : premier report du premier
+   paquet de saisie, s24, 2026-08-31.** Si elle est reportee une seconde fois a s25 sur un motif a
+   nouveau defendable, c'est ce paragraphe qu'il faudra relire - meme discipline que pour `SUB` en
+   section 2 et pour `DEC-0061`.
+4. **La question du code non atteignable est posee a `theo-archi`, par `sofia-sm`, a la cloture** :
+   une mecanique livree dans `domain` et un ecran dans `adapter-web` qu'aucune entree de catalogue ne
+   joint sont-ils acceptables en l'etat, ou appellent-ils un `ADR` ? `CLAUDE.md` porte la dette
+   inverse en tete de sa liste - *"une abstraction centrale documentee partout mais jamais
+   implementee [...] soit une abstraction existe dans le code, soit un `ADR` acte explicitement son
+   abandon"* - et le cas de la bascule en est le miroir : implementee et inatteignable. **Je pose la
+   question, je ne la tranche pas.**
+
+### A.4 L'option que j'ai ecartee, et son motif
+
+**Retenir les lots 1 a 4 hors de la fusion** jusqu'a ce que la saisie soit jouable aurait tenu la
+section 5.3 sans l'amender. **Je l'ecarte.** Ce depot a deja abandonne deux jeux de branches locales
+non fusionnees - `DEC-0038` (trois branches, s16) et `DEC-0054` (deux branches, s22) - et dans les
+deux cas le travail a ete perdu ou recapture a un cout superieur a celui de l'avoir fusionne. **Une
+mecanique fusionnee et inatteignable est une dette lisible dans l'arbre ; une branche retenue est une
+dette qui disparait de la vue de tout le monde.** Entre les deux, je prends celle qui se voit.
+
+### A.5 Ce que cet amendement ne fait pas
+
+- Il **ne declare pas la bascule** et n'anticipe pas qu'elle se produise. Le declencheur est objectif
+  et il est a `sofia-sm`.
+- Il **n'engage pas `S24-DEN` au perimetre** hors du cas de la bascule : la story reste *non
+  engagee*, comme la section 4.4 le pose.
+- Il **ne modifie ni la borne de capacite de `nadia-prof`, ni l'ordre de priorite de la section
+  5.2** - le contenu prime la saisie, inchange.
+- Il **ne prononce aucun Done pedagogique** et n'en anticipe aucun.
+
 ## Impact
 
 - `squad/decisions/produit/DEC-0059-...md` (ce fichier) : cree.
@@ -395,3 +501,12 @@ la vigilance d'un agent. La capacite qu'ils prennent est celle de `sofia-sm`.
   (`S24-NAR`, `S24-PLU`, `S24-FRA`, `S24-SAI-1`, `S24-SAI-2`, `S24-DEN`).
 - `squad/programme/MATRICE-couverture.md` : trois lignes passent `en cours`, amendement date du
   2026-08-30 ajoute sans rien effacer.
+
+### Impact du 2026-08-31 (correction de section 1 et amendement)
+
+- Section 1 : la remarque sur "28 fichiers" est marquee fausse **sans etre effacee**, et corrigee par
+  une note datee. Le verdict "Catalogue a 27 jeux - exact" est inchange.
+- Section 5.3 : amendee par la section A.3 **dans le seul cas de la bascule**. Sa regle generale est
+  maintenue mot pour mot.
+- `docs/backlog/backlog.md` : `S24-SAI-2` recoit une note de statut renvoyant a la section A.3.
+- Aucune ligne de matrice ne bouge du fait de cette correction ni de cet amendement.
