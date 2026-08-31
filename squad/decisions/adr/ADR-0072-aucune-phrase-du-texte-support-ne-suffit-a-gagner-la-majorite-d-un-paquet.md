@@ -203,3 +203,57 @@ prononce rien sur le paquet.
 5. **Compter l'esperance de gain plutot que les gains decisifs.** Ecartee : elle ferait entrer une
    hypothese de comportement d'enfant dans un garde-fou. Consequence assumee et nommee : c'est ce qui
    place le paquet corrige a la borne exacte plutot qu'au-dessus.
+
+---
+
+## Amendement du 2026-08-31 (s24, cloture) - la regle etait vraie sur son perimetre et fausse des qu'une seconde forme d'item est entree dans le repertoire
+
+- **Auteur** : theo-archi. **Fait neuf** : la fusion des huit branches de s24.
+- **Rien de ce qui precede n'est efface.** Second bloc date de ce fichier, apres celui qui note que
+  le garde-fou etait parti un commit avant son `ADR`.
+
+**Le defaut, tel que la porte technique l'a rendu.** Sur l'arbre fusionne par `sofia-sm`, le
+reacteur echoue : deux erreurs, `bootstrap` en `SKIPPED`, et la cause unique est ce garde-fou. Il
+tirait ses items par `Question item = (Question) tire.orElseThrow();` - **un transtypage en aveugle
+qui suppose que toute forme d'item est une `Question`**. Le lot 5b de `sofia-sm` a fait entrer dans
+le repertoire de contenu servi un paquet de saisie ; le transtypage a leve une
+`ClassCastException`.
+
+**Le mecanisme est plus interessant que la faute.** Ce garde-fou est le **quinzieme** de ce module,
+ecrit pendant le sprint **apres** que le tri du lot 5a eut ferme sa liste a quatorze. **Il etait
+vert sur ma branche et vert sur la sienne** : ma branche ne portait aucun paquet de saisie servi, la
+sienne ne portait pas ce garde-fou. **Deux verts sur deux branches ne font pas un vert**, et aucun
+de nous deux ne pouvait le voir depuis son propre arbre. C'est un defaut d'integration, et il n'a
+qu'un remede : mesurer sur l'arbre fusionne, ce que je n'avais pas fait.
+
+**Ce que je corrige, et selon quel patron.** Pas d'exemption, pas de liste de noms, pas de second
+mecanisme : **le classement des formes d'item est ecrit une fois** (`ClassementDesItems`, lot 5a),
+et ce garde-fou **declare son domaine** par rapport a lui, comme les quatorze autres. Inventer une
+seconde facon de classer les memes formes serait la dette 3 de `CLAUDE.md` - neuf familles de
+chargeurs quasi identiques - reproduite sur les garde-fous.
+
+**Le domaine, et ses deux bornes ont chacune leur motif :**
+
+- **un item de saisie est ecarte**, et pour une raison plus forte qu'une inapplicabilite : la
+  strategie jugee ici presse *la seule proposition trouvee dans une phrase*, et un item auquel
+  l'enfant repond en ecrivant n'en presente aucune. La donnee que le critere lit n'existe pas
+  davantage - **`ReponseAEcrire` ne porte pas de texte support** ; ce n'est pas une composante vide,
+  c'est une composante absente du type ;
+- **un item sans texte support reste hors du domaine**, comme avant.
+
+**Et le compte des ecartes est tenu** : une borne qui emporterait toute la population servie n'est
+plus une borne, c'est une exemption generale, et elle est desormais rouge - avec sa morsure, sur un
+repertoire qui ne porte que des items de saisie. La clause porte sur un ecart **reellement
+constate** : sans cette precision, un repertoire vide aurait declenche ce message-la en parlant
+d'une exemption qui n'a ecarte personne, et aurait masque la clause de non-vacuite, qui est celle
+qui dit vrai dans ce cas.
+
+**Le garde-fou passe de 5 a 6 tests.** La sixieme est la morsure de la borne de domaine.
+
+**Ce que cet amendement ne change pas** : la decision, son seuil, son perimetre derive, ses deux
+morsures sur le materiau reel de `lea-dev` et le fait route a `nadia-prof` sur la marge nulle. **La
+propriete gardee est la meme** ; ce qui change est qu'elle dit desormais sur quoi elle porte.
+
+**Mesure de cet amendement**, sur l'arbre fusionne (`origin/s24-sofia-review` fusionne dans
+`s24-theo`), `bash outils/mvn-jdk21.sh -B clean verify` a la racine du reacteur : **`adapter-content`
+vert, 348 tests, 0 echec**, la ou l'arbre fusionne rendait 2 erreurs et `bootstrap` en `SKIPPED`.

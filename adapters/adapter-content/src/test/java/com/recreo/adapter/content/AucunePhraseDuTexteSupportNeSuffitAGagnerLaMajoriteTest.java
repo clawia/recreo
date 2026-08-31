@@ -35,10 +35,22 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * numeriques" ; elle est ici "ne lire qu'une phrase du support". Le seuil de majorite est celui de
  * s12, repris sans le renegocier, et la comparaison est stricte comme la sienne.
  *
- * <p><b>Le domaine.</b> Les items qui portent un texte support, sur tous les paquets du repertoire
- * de contenu. Un item sans texte support n'est pas un objet ignore par erreur : la strategie
- * "ne lire qu'une phrase du support" n'a aucun sens sur un item qui n'en porte pas, exactement
- * comme le rang d'une proposition non numerique n'en a pas dans le garde-fou de s12.
+ * <p><b>Le domaine, declare et non suppose (lot 5a de s24).</b> Les items qui <b>presentent des
+ * propositions</b> - classement partage par {@link ClassementDesItems}, jamais reecrit ici - et qui
+ * portent un texte support. Les deux bornes ont chacune leur motif :
+ *
+ * <ul>
+ *   <li><b>un item de saisie est ecarte</b>, et pour une raison plus forte qu'une inapplicabilite :
+ *       la strategie jugee ici presse <i>la seule proposition trouvee dans une phrase</i>, et un item
+ *       auquel l'enfant repond en ecrivant n'en presente aucune. La donnee que ce critere lit
+ *       n'existe pas davantage - {@code ReponseAEcrire} ne porte pas de texte support, ce n'est pas
+ *       une composante vide, c'est une composante absente du type ;</li>
+ *   <li><b>un item sans texte support est hors du domaine</b>, exactement comme le rang d'une
+ *       proposition non numerique l'est dans le garde-fou de s12.</li>
+ * </ul>
+ *
+ * <p><b>Et le compte des ecartes est tenu</b> : une borne qui emporterait toute la population servie
+ * n'est plus une borne, c'est une exemption generale, et elle est rouge.
  *
  * <p><b>Ce que ce garde-fou ne tient pas, et il faut le lire avant de croire qu'il tient la famille
  * entiere.</b> Il tient <b>une</b> strategie aveugle, celle qui porte sur le decoupage en phrases.
@@ -64,6 +76,8 @@ class AucunePhraseDuTexteSupportNeSuffitAGagnerLaMajoriteTest {
     private static final String JEU_FAUTIF = "reponse-toujours-dans-la-premiere-phrase";
 
     private static final String CAS_VERT = "reponse-repartie-entre-les-deux-phrases";
+
+    private static final String POPULATION_ECARTEE = "population-entierement-ecartee";
 
     /**
      * Le seuil de s12, repris tel quel : une strategie qui ignore le contenu ne doit jamais etre
@@ -155,19 +169,24 @@ class AucunePhraseDuTexteSupportNeSuffitAGagnerLaMajoriteTest {
                 (double) meilleursGains / avecSupport.size());
     }
 
-    private static List<Question> itemsDe(String racineClasspath, Path racineFichiers, String paquet) {
+    /**
+     * Les items du paquet, <b>de toutes les formes</b>, tires par le chargeur reel. Le classement
+     * vient apres la lecture, jamais pendant : c'est la lecture du paquet qui doit etre entiere, et
+     * transtyper pendant le tirage ferait echouer la lecture au lieu de classer ce qu'elle a lu.
+     */
+    private static List<Item> itemsDe(String racineClasspath, Path racineFichiers, String paquet) {
         ContentSource source = new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet);
         int declares = ChaquePaquetPorteUnIndiceTest.itemsDeclares(racineFichiers, paquet);
         int budget = declares == 0 ? TIRAGES_SUR_UN_PAQUET_COMBINATOIRE : declares;
         Random alea = new Random(20260831L);
         Set<ItemId> vus = new LinkedHashSet<>();
-        List<Question> items = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
         for (int tirage = 0; tirage < budget; tirage++) {
             Optional<Item> tire = source.next(alea::nextInt, vus);
             if (tire.isEmpty()) {
                 break;
             }
-            Question item = (Question) tire.orElseThrow();
+            Item item = tire.orElseThrow();
             vus.add(item.id());
             items.add(item);
         }
@@ -181,8 +200,17 @@ class AucunePhraseDuTexteSupportNeSuffitAGagnerLaMajoriteTest {
     static void verifier(String racineClasspath, Path racineFichiers) {
         List<String> fautifs = new ArrayList<>();
         int itemsJuges = 0;
+        int itemsAPropositionsClasses = 0;
+        int itemsDeSaisieEcartes = 0;
         for (String paquet : ChaquePaquetPorteUnIndiceTest.paquets(racineFichiers)) {
-            Strategie strategie = meilleureStrategie(itemsDe(racineClasspath, racineFichiers, paquet));
+            List<Item> tires = itemsDe(racineClasspath, racineFichiers, paquet);
+            // Lot 5a de s24 : le classement est ecrit une fois, le motif reste ici. Le compte des
+            // items ecartes est porte plus bas, et une borne qui emporterait toute la population
+            // servie est rouge.
+            List<Question> aPropositions = ClassementDesItems.presentantDesPropositions(tires);
+            itemsAPropositionsClasses += aPropositions.size();
+            itemsDeSaisieEcartes += tires.size() - aPropositions.size();
+            Strategie strategie = meilleureStrategie(aPropositions);
             itemsJuges += strategie.itemsAvecSupport();
             if (strategie.partGagnee() > SEUIL_MAJORITE) {
                 fautifs.add(paquet + " : une strategie qui ne lit que la phrase "
@@ -190,6 +218,16 @@ class AucunePhraseDuTexteSupportNeSuffitAGagnerLaMajoriteTest {
                         + Math.round(strategie.partGagnee() * 1000) / 10.0 + " % de ses "
                         + strategie.itemsAvecSupport() + " items a texte support");
             }
+        }
+        // Lot 5a de s24 : une borne qui emporte toute la population n'est plus une borne. La
+        // condition porte sur un ecart REELLEMENT constate - sans elle, un repertoire vide
+        // declencherait ce message-ci en parlant d'une exemption qui n'a ecarte personne, et
+        // masquerait la clause de non-vacuite qui suit, qui est celle qui dit vrai dans ce cas.
+        if (itemsAPropositionsClasses == 0 && itemsDeSaisieEcartes > 0) {
+            throw new AssertionError("ADR-0072 : ce garde-fou a ecarte " + itemsDeSaisieEcartes
+                    + " item(s) de saisie et n'en a classe aucun qui presente des propositions. Une"
+                    + " borne qui emporte toute la population n'est plus une borne, c'est une"
+                    + " exemption generale");
         }
         if (itemsJuges == 0) {
             throw new AssertionError("ADR-0051, ADR-0072 : aucun item a texte support examine - le"
@@ -213,8 +251,8 @@ class AucunePhraseDuTexteSupportNeSuffitAGagnerLaMajoriteTest {
     void leDomaineExamineNEstPasVide() {
         int itemsAvecSupport = 0;
         for (String paquet : ChaquePaquetPorteUnIndiceTest.paquets(CONTENU_DE_PRODUCTION)) {
-            itemsAvecSupport += meilleureStrategie(itemsDe("", CONTENU_DE_PRODUCTION, paquet))
-                    .itemsAvecSupport();
+            itemsAvecSupport += meilleureStrategie(ClassementDesItems.presentantDesPropositions(
+                    itemsDe("", CONTENU_DE_PRODUCTION, paquet))).itemsAvecSupport();
         }
         assertThat(itemsAvecSupport)
                 .as("ADR-0072 : ce garde-fou ne prouve rien s'il n'examine aucun item a texte support")
@@ -254,12 +292,27 @@ class AucunePhraseDuTexteSupportNeSuffitAGagnerLaMajoriteTest {
         Path racineFichiers = CONTRE_EXEMPLE.resolve(CAS_VERT);
         verifier(CONTRE_EXEMPLE_CLASSPATH + "/" + CAS_VERT, racineFichiers);
 
-        Strategie strategie = meilleureStrategie(
+        Strategie strategie = meilleureStrategie(ClassementDesItems.presentantDesPropositions(
                 itemsDe(CONTRE_EXEMPLE_CLASSPATH + "/" + CAS_VERT, racineFichiers,
-                        "cp-texte-narratif-apres-correction"));
+                        "cp-texte-narratif-apres-correction")));
         assertThat(strategie.partGagnee())
                 .as("ADR-0072 : le paquet corrige est exactement a la borne du seuil, marge nulle")
                 .isEqualTo(SEUIL_MAJORITE);
+    }
+
+    /**
+     * ADR-0013 obligation 3 : la borne du domaine mord elle aussi. Un repertoire qui ne porte que
+     * des items de saisie voit sa population <b>entierement</b> ecartee par le classement ; le
+     * garde-fou serait alors vert sur zero objet juge, ce qui est une exemption generale sous le nom
+     * d'une borne. Le paquet du jeu fautif n'est pas invente : c'est celui de la sonde du lot 1,
+     * repris tel quel - ce qui est fautif ici n'est pas son contenu, c'est la population qu'il forme.
+     */
+    @Test
+    void unePopulationEntierementEcarteeParLeClassementFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifier(CONTRE_EXEMPLE_CLASSPATH + "/" + POPULATION_ECARTEE,
+                CONTRE_EXEMPLE.resolve(POPULATION_ECARTEE)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("exemption generale");
     }
 
     /** ADR-0051 : la clause de non-vacuite mord, elle aussi. */
