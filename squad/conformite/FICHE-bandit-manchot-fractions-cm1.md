@@ -245,3 +245,41 @@ fois cette semaine sur mes propres constats.
 - Il **n'est pas fonde sur la CI.**
 - **Sur quelles proprietes je reste la seule garde** : inchange - la plausibilite de la famille (e)
   item par item, `FRA-8`, `FRA-11`, et le jugement de niveau.
+
+---
+
+### Constat du 2026-08-31 (s25, ouverture) - item 18, defaut de niveau. **Le Done du second passage n'est ni retire ni conteste.**
+
+**Ce bloc n'est pas un verdict.** Il n'annule pas le `VALIDE` du second passage, il ne le suspend pas,
+et il ne remet pas ce jeu dans ma porte. Les deux verdicts ci-dessus restent lisibles tels qu'ils ont
+ete ecrits.
+
+**Ce qui m'a ete route** : le `relecteur-pedagogique` s'est arrete sur l'item 18 pendant s24 sans le
+corriger - *"la construction transitive de 'courir' est defendable en grammaire, sa lisibilite au CM1
+ne m'appartient pas"* (`squad/sprints/s24-trois-paquets-et-ouverture-de-la-saisie/relecture-s24.md`).
+**Il a eu raison sur les deux points, et de me le router. J'ai prononce mon second verdict sans y
+repondre : c'est un manque de ma part**, et je l'ecris ici plutot que de le laisser se perdre entre
+deux sprints.
+
+**Ce que j'ai fait, avec sa methode** : jar construit depuis `round-two` a `130ba64`, application
+lancee, **70 ouvertures de partie** de ce jeu jusqu'a ce que l'item sorte. Lu a l'ecran, tel qu'un
+CM1 le recoit :
+
+> *Une piste est partagée en 3 parts égales. On en court 1. Quelle fraction est courue ?*
+> Propositions : `1/2`, `1/4`, `1/3`. Indice : *"Le nombre du bas compte toutes les parts égales."*
+
+**Le constat, et il n'est pas grammatical.** Les cinq items freres de la forme (c) emploient
+*colorie*, *prend*, *garde*, *peint*, *coupe* - **cinq verbes dont le complement d'objet direct est
+naturellement une part**. **On ne court pas une part** : le complement de *courir* est une distance.
+*"On en court 1"* et *"est courue"* obligent un enfant de neuf ans a decoder une construction qu'il
+n'a lue nulle part, **sur un item de mathematiques**. Il paie en lecture ce qu'il devait depenser en
+fraction.
+
+**Ce que j'en fais** : un defaut de contenu, borne a **un item et un verbe**, route a `camille-po`.
+Les cinq freres donnent deja le patron ; je n'ecris pas le texte. Le detail complet et la condition
+neuve `FRA-12` - **non retroactive, elle ne s'applique a aucun des 24 items de ce paquet** - sont
+dans `squad/conformite/ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md`,
+section 7.
+
+**Ce dont je reste seule garde sur ce jeu** : inchange, plus `FRA-12`. Aucun automate ne verra jamais
+qu'on ne court pas une part.
