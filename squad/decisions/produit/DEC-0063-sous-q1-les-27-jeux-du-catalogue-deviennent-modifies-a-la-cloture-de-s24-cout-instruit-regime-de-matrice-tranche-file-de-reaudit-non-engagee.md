@@ -212,3 +212,72 @@ n'avait quand elle l'a tranchee.
 - Elle **ne dit pas ce que `nadia-prof` doit regarder dans un reaudit**, ni ce qu'il doit lui couter.
 - Elle **ne conteste pas l'arbitrage de l'utilisatrice** et ne le repose pas. Elle nomme une
   condition sous laquelle un fait neuf devra lui etre rendu.
+
+---
+
+## Amendement du 2026-08-31 (cloture de s24) - la mention prevue en section 3 n'est pas ecrite, et c'est `nadia-prof` qui l'a rendue sans objet
+
+### A.1 Ce qui s'est produit
+
+La section 3 prevoyait qu'une ligne dont le jeu devient modifie par un changement de code partage
+garde `couvert-valide` **et recoive une mention datee** *"reaudit du au titre de `DEC-0060`, `Q1`"*.
+Sous `Q1`, les lots 1 et 3 rendaient bien les 27 jeux modifies, et le chiffre de la section 1 - 31
+contre une borne de 4 a 5 - etait exact a sa date.
+
+**La mention n'est pas ecrite dans la matrice, parce qu'elle serait fausse.** `nadia-prof` a prononce
+le 2026-08-31 :
+
+> *"Les lots 3 et 4 sont discharges sous R-C. Les 27 jeux existants ne sont pas rejoues, et le chemin
+> C est ecarte pour s24."*
+> `squad/conformite/CLAUSE-PORTE-PEDAGOGIQUE-perimetre-apres-les-six-reponses-du-2026-08-31.md`,
+> section 12.
+
+**Aucun reaudit n'est du. La file de reaudit ouverte par la section 6 est videe avant d'avoir servi.**
+
+### A.2 Ce que cela dit de cette decision, sans l'arranger
+
+**La condition explicite de la section 3 a joue exactement comme elle etait ecrite**, et dans le sens
+que je n'avais pas anticipe. J'avais ecrit : *"Sa clause gouverne la porte ; ce document ne gouverne
+que la matrice"*, en prevoyant le cas ou elle durcirait. **Elle a allege**, et la matrice suit de la
+meme facon. Une condition qui ne vaudrait que dans le sens defavorable ne serait pas une condition.
+
+**Ce que j'avais mal estime, et je l'ecris plutot que de le laisser passer** : la section 4.1 posait
+a `nadia-prof` la question *"un reaudit apres retypage compte-t-il comme un paquet contre votre
+borne ?"* en presentant deux issues - un paquet chacun, ou un acte plus court. **Elle en a trouve une
+troisieme que je n'avais pas vue** : etablir que le reaudit n'a pas lieu d'etre, par une preuve de
+structure - garde invariablement vraie plus corps identique a l'octet - qu'elle a ajoutee a ses
+propres exigences comme une voie `(iii)`, datee et non retroactive, apres que `theo-archi` l'a
+etablie et qu'elle l'a reverifiee elle-meme. **Mon tableau de la section 2 offrait trois lectures a
+la matrice ; il n'envisageait pas que la question elle-meme puisse tomber.**
+
+**Le chiffre de la section 1 n'est pas efface** : il etait exact le matin du 2026-08-31, avec sa
+reserve d'unite attachee, et c'est lui qui a rendu le cout de cloture connu **avant** la porte plutot
+que pendant - ce qui etait l'objet de ce document et reste acquis.
+
+### A.3 Ce qui reste vrai, et ce qu'il faut en garder
+
+- **La section 5 tient integralement.** Sous `Q1`, tout sprint qui touche du code de production
+  partage remodifie l'integralite du catalogue. C'est le regime permanent, s24 en a ete la premiere
+  application, et il s'est bien produit.
+- **La decharge ne cree aucune presomption**, et c'est `nadia-prof` qui l'ecrit : chaque lot partage
+  est instruit pour lui-meme, et les deux clauses de sa voie `(iii)` sont a etablir a chaque fois.
+  **Un lot qui modifierait un corps qui s'execute ferait rentrer les 27 dans la porte, et ce jour-la
+  la mention de la section 3 sera due.** Elle n'est pas retiree de cette decision : elle est en
+  attente d'un cas.
+- **La section 3 reste le regime de la matrice** pour ce cas-la. Elle n'est ni annulee ni remplacee.
+- **La condition de retour a l'utilisatrice de la section 5 n'est pas declenchee** : `nadia-prof` n'a
+  pas repondu qu'un reaudit coute un paquet, elle a etabli un chemin ou il n'y en a pas. **La regle
+  et la borne ne sont donc pas montrees incompatibles**, et rien ne remonte a l'utilisatrice de ce
+  fait.
+- **Ce qui remonte, en revanche** : la voie `(iii)` a un cout, et il est nomme par `nadia-prof`
+  elle-meme - la capture de reference chiffree par `theo-archi` *"reste la seule voie pour un lot qui
+  modifie un corps qui s'execute"*, et elle n'est pas financee. **C'est du backlog d'outillage, avec
+  un proprietaire technique, et je le note au rang de s25 sans l'engager.**
+
+### A.4 Ce que cet amendement ne fait pas
+
+- Il **ne retire pas la section 3** et ne l'annule pas : elle vaut pour le prochain lot partage qui
+  ne pourra pas etre discharge.
+- Il **ne prononce aucun Done** et n'en interprete aucun. La decharge est de `nadia-prof`, je la
+  reporte.
+- Il **ne rouvre pas s24**, clos.
