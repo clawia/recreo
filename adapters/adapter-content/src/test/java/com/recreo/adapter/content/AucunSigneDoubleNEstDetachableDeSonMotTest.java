@@ -109,14 +109,30 @@ class AucunSigneDoubleNEstDetachableDeSonMotTest {
         return compte;
     }
 
+    /**
+     * <b>Lot 5a de s24, decision 5 : borne aux chaines que l'enfant lit</b>, meme partage et meme
+     * motif qu'{@link AucunMotServiNeSEcarteDeSonAccentTest#textesDesItems}. Un orphelin est un
+     * accident de <b>repli a l'ecran</b> : une chaine que rien n'affiche ne se replie nulle part, et
+     * une forme acceptee est comparee, jamais rendue. Un paquet neuf n'herite d'aucune dette, y
+     * compris sur ces chaines-la.
+     */
     static Map<String, Integer> detteMesuree(Path racine, String racineClasspath,
                                              boolean avecCatalogue) {
         Map<String, Integer> parFichier = new TreeMap<>();
+        int lues = 0;
         for (LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest.TexteServi texte
                 : LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest.textesServis(
                         racine, racineClasspath)) {
+            if (!texte.luParLEnfant()) {
+                continue;
+            }
+            lues++;
             parFichier.merge(texte.paquet(), occurrencesDe(texte.valeur()), Integer::sum);
         }
+        assertThat(lues)
+                .as("%s : aucune chaine lue par l'enfant sous cette racine, ce cliquet ne mesure"
+                        + " alors rien", racine)
+                .isPositive();
         if (avecCatalogue) {
             int catalogue = 0;
             for (GameDefinition jeu : new YamlContentPackLoader().games()) {

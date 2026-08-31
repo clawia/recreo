@@ -18,6 +18,15 @@ class DecouplageMecaniqueContenuTest {
     private static final String CONTRAT_CONTENU = "com.recreo.domain.content";
     private static final String CONTRAT_MECANIQUE = "com.recreo.domain.mechanic";
     private static final String MECANIQUES = "com.recreo.domain.mechanics..";
+    private static final String ADAPTATEUR_DE_RENDU = "com.recreo.adapter.web..";
+
+    /**
+     * ADR-0058, R-A : le seul type d'{@code adapter-web} autorise a nommer une mecanique. Ecrit en
+     * nom pleinement qualifie et non en motif : un motif laisserait entrer un second point de
+     * descente le jour ou quelqu'un nommerait sa classe de la meme famille, et R-A tient
+     * precisement a ce que ce point soit <b>un</b> et qu'il soit nomme.
+     */
+    private static final String POINT_DE_DESCENTE = "com.recreo.adapter.web.PartieController";
 
     /** (1) Aucun comportement partage possible dans le contrat de contenu. */
     @ArchTest
@@ -101,6 +110,35 @@ class DecouplageMecaniqueContenuTest {
             .as("ADR-0058 : une interface de contrat ne declare que des methodes abstraites - ni"
                     + " statique, ni par defaut, ni privee. Un contrat qui porte du comportement est"
                     + " un moteur partage, quelle que soit la forme du type qui le porte");
+
+    /**
+     * (9) ADR-0058, R-A, due avec le lot qui ouvre la seconde mecanique. Avant s24, la chaine
+     * {@code BanditManchot} figurait sur 20 lignes de 3 fichiers de production de ce module :
+     * {@code PartieController}, {@code EtatDePartieEnSession} et {@code EtatDePartie} etaient tous
+     * les trois types sur la mecanique existante, et l'adaptateur descendait du contrat vers le type
+     * concret des la construction de l'etat de partie.
+     *
+     * <p><b>Ce qu'elle interdit reellement</b>, et pourquoi elle n'est pas decorative : sans elle,
+     * la clause 7 d'ADR-0004 - deux mecaniques ne dependent pas l'une de l'autre - serait respectee
+     * dans le domaine et defaite dans l'adaptateur, ou un porteur d'etat type sur une mecanique
+     * oblige toute mecanique suivante a passer par elle ou a etre transtypee a cote d'elle.</p>
+     *
+     * <p><b>Perimetre.</b> Tout type de {@code com.recreo.adapter.web..} sauf le point de descente
+     * nomme. La forme retenue est celle que {@code theo-archi} recommande pour deux mecaniques :
+     * des branches nommees dans le point de descente, plutot qu'un type par mecanique dans
+     * l'adaptateur - une abstraction de dispatch ecrite pour deux cas est une abstraction ecrite
+     * pour un usage imagine. Le jour d'une troisieme mecanique, c'est la forme qui change, pas cette
+     * regle : elle continue de dire qu'il y a <b>un</b> point de descente et qu'il est nomme.</p>
+     */
+    @ArchTest
+    static final ArchRule adapterWebNeNommeAucuneMecaniqueHorsDeSonPointDeDescente = noClasses()
+            .that().resideInAPackage(ADAPTATEUR_DE_RENDU)
+            .and().doNotHaveFullyQualifiedName(POINT_DE_DESCENTE)
+            .should().dependOnClassesThat().resideInAPackage(MECANIQUES)
+            .allowEmptyShould(false)
+            .as("ADR-0058 R-A : aucun type de l'adaptateur de rendu ne nomme une mecanique hors de"
+                    + " son point de descente. Un porteur d'etat type sur une mecanique defait dans"
+                    + " l'adaptateur l'isolation que le domaine tient");
 
     /** (7) Isolation, desormais adossee a (1), (2), (6) et (8). */
     @ArchTest

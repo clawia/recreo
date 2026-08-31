@@ -64,6 +64,14 @@ import static org.assertj.core.api.Assertions.assertThat;
  * plus le nombre de manches declare
  * ({@code YamlContentPackLoaderTest}, et pour "cp-complements-10",
  * {@code PaquetCpComplements10S9Test}).</p>
+ *
+ * <p><b>Lot 5a de s24, decision 14 : etendu a l'item de saisie, et ce garde-fou n'etait pas dans les
+ * treize.</b> Il se declenche a l'<b>entree de catalogue</b>, pas au depot du fichier dans le
+ * repertoire : la sonde de l'avis de faisabilite etait posee hors catalogue et ne l'a donc pas
+ * reveille (mesure du 2026-08-31, lot 5a, etats A et C). La propriete ne parle ni de propositions ni
+ * de texte lu, elle parle de deux chemins de chargement qui doivent coincider - et elle vaut
+ * davantage au moment ou une seconde fabrique entre dans la table du chargeur. La comparaison porte
+ * sur l'item entier, quelle que soit sa forme.</p>
  */
 class ChaqueEntreeDuCatalogueChargeBienSonPaquetTest {
 
@@ -130,18 +138,23 @@ class ChaqueEntreeDuCatalogueChargeBienSonPaquetTest {
      * (Optional.empty()). Un paquet combinatoire, qui ne s'epuise jamais, est ainsi compare sur un
      * echantillon borne plutot que jamais atteint.
      */
-    private static List<Question> itemsTires(ContentSource contenu) {
+    private static List<Item> itemsTires(ContentSource contenu) {
         RandomSource hasard = new Random(1)::nextInt;
         Set<ItemId> dejaVus = new HashSet<>();
-        List<Question> items = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
         for (int tirage = 0; tirage < TIRAGES; tirage++) {
             Optional<Item> tire = contenu.next(hasard, dejaVus);
             if (tire.isEmpty()) {
                 break;
             }
-            Question question = (Question) tire.orElseThrow();
-            items.add(question);
-            dejaVus.add(question.id());
+            // Lot 5a de s24, decision 14 : etendu. Cette propriete ne parle ni de propositions ni
+            // de texte lu, elle parle de DEUX CHEMINS DE CODE qui doivent coincider, et elle vaut
+            // davantage au moment ou une seconde fabrique entre dans la table du chargeur. La
+            // comparaison porte sur l'item entier, quelle que soit sa forme : les deux formes sont
+            // des records, leur egalite est celle de leurs composantes.
+            Item item = tire.orElseThrow();
+            items.add(item);
+            dejaVus.add(item.id());
         }
         return items;
     }

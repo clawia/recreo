@@ -1,0 +1,19 @@
+# Le meme paquet fautif, corrige : "enonce" en premier champ de chaque item. Il doit redevenir
+# comptable. Jamais livre, jamais servi a un enfant.
+schema: 1
+id: paquet-enumere-au-premier-champ-autre
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Competence de fixture"
+items:
+  - enonce: "Enonce de fixture 1"
+    bonneReponse: "juste"
+    distracteurs: ["faux"]
+    indice: "Indice de fixture 1"
+  - enonce: "Enonce de fixture 2"
+    bonneReponse: "juste"
+    distracteurs: ["faux"]
+    indice: "Indice de fixture 2"

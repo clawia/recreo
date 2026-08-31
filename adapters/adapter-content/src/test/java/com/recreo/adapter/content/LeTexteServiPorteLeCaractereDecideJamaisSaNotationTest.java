@@ -5,6 +5,7 @@ import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
+import com.recreo.domain.content.ReponseAEcrire;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -105,8 +106,28 @@ class LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest {
 
     private static final List<Pattern> NOTATIONS = List.of(CONTRE_BARRE, ENTITE_HTML, POINT_DE_CODE);
 
-    /** Un texte tel que l'enfant le recoit, avec l'origine qui l'a produit (pour le message). */
-    record TexteServi(String paquet, String champ, String enonceDeLItem, String valeur) {
+    /**
+     * Un texte que ce module sert, avec l'origine qui l'a produit (pour le message) et le fait de
+     * savoir si l'enfant le <b>lit</b> ou si la mecanique le <b>compare</b>.
+     *
+     * <p><b>Lot 5a de s24, decisions 4, 5 et 11</b> : l'item de saisie a introduit des chaines que ce
+     * module sert sans que personne ne les lise - les formes acceptees, qui sont le bareme auquel la
+     * mecanique compare ce que l'enfant ecrit. Elles doivent traverser la clause 1 de ce garde-fou
+     * (une notation d'echappement y rend la tolerance morte, et personne ne le verrait) et rester
+     * hors des garde-fous d'accent et de signe double (une regle qui exigerait l'accent sur une forme
+     * acceptee rougirait sur la tolerance que nadia-prof a demandee).</p>
+     *
+     * <p>Le fait est <b>declare a la construction</b>, jamais deduit du nom du champ : c'est le
+     * producteur qui sait si l'enfant lit ce qu'il ajoute, et un jour ou l'autre un nom de champ
+     * ressemblerait a un autre.</p>
+     */
+    record TexteServi(String paquet, String champ, String enonceDeLItem, String valeur,
+                       boolean luParLEnfant) {
+
+        /** Le cas ordinaire : tout ce que ce module servait avant la saisie est lu par l'enfant. */
+        TexteServi(String paquet, String champ, String enonceDeLItem, String valeur) {
+            this(paquet, champ, enonceDeLItem, valeur, true);
+        }
 
         String origine() {
             return "paquet " + paquet + ", item \"" + enonceDeLItem + "\", champ " + champ;
@@ -131,18 +152,17 @@ class LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest {
         }
     }
 
-    private static List<Question> itemsTires(ContentSource contenu, int tirages) {
+    private static List<Item> itemsTires(ContentSource contenu, int tirages) {
         RandomSource hasard = new Random(7)::nextInt;
         Set<ItemId> dejaVus = new HashSet<>();
-        List<Question> items = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
         for (int tirage = 0; tirage < tirages; tirage++) {
             Item item = contenu.next(hasard, dejaVus).orElse(null);
             if (item == null) {
                 break;
             }
-            Question question = (Question) item;
-            items.add(question);
-            dejaVus.add(question.id());
+            items.add(item);
+            dejaVus.add(item.id());
         }
         return items;
     }
@@ -155,7 +175,7 @@ class LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest {
             // l'epuiser, plus un tirage pour constater l'epuisement.
             int declares = ChaquePaquetPorteUnIndiceTest.itemsDeclares(racine, paquet);
             int tirages = declares > 0 ? declares + 1 : TIRAGES_SUR_UN_PAQUET_COMBINATOIRE;
-            List<Question> items = itemsTires(source, tirages);
+            List<Item> items = itemsTires(source, tirages);
             if (declares > 0) {
                 // ADR-0064 : un paquet enumere est lu EN ENTIER, ou ce garde-fou est rouge et le dit.
                 assertThat(items)
@@ -164,7 +184,12 @@ class LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest {
                                 items.size())
                         .hasSize(declares);
             }
-            for (Question item : items) {
+            for (Item itemTire : items) {
+                if (itemTire instanceof ReponseAEcrire reponse) {
+                    textes.addAll(textesDUnItemDeSaisie(paquet, reponse));
+                    continue;
+                }
+                Question item = (Question) itemTire;
                 textes.add(new TexteServi(paquet, "enonce", item.enonce(), item.enonce()));
                 textes.add(new TexteServi(paquet, "bonneReponse", item.enonce(), item.bonneReponse()));
                 for (int rang = 0; rang < item.distracteurs().size(); rang++) {
@@ -186,6 +211,30 @@ class LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest {
                         textes.add(new TexteServi(paquet, "partDesignee", item.enonce(), part)));
             }
         }
+        return textes;
+    }
+
+    /**
+     * Les chaines qu'un item de saisie fait servir a ce module, et pour chacune si l'enfant la lit.
+     *
+     * <p>L'enonce et la forme de reference sont lus - le second au verdict, quand la mecanique montre
+     * la forme attendue (SAI-8). L'indice et l'explication le sont comme sur un item de choix. <b>Les
+     * formes acceptees ne le sont jamais</b> : elles sont le bareme auquel la mecanique compare ce que
+     * l'enfant ecrit, et {@code CPL-3} y fait figurer des ecritures que SAI-1 et SAI-3 tolerent
+     * precisement parce qu'elles ne sont pas irreprochables.</p>
+     */
+    private static List<TexteServi> textesDUnItemDeSaisie(String paquet, ReponseAEcrire item) {
+        List<TexteServi> textes = new ArrayList<>();
+        textes.add(new TexteServi(paquet, "enonce", item.enonce(), item.enonce()));
+        textes.add(new TexteServi(paquet, "formeDeReference", item.enonce(), item.formeDeReference()));
+        for (int rang = 0; rang < item.formesAcceptees().size(); rang++) {
+            textes.add(new TexteServi(paquet, "forme acceptee " + (rang + 1), item.enonce(),
+                    item.formesAcceptees().get(rang), false));
+        }
+        item.indice().ifPresent(indice ->
+                textes.add(new TexteServi(paquet, "indice", item.enonce(), indice)));
+        item.explication().ifPresent(explication ->
+                textes.add(new TexteServi(paquet, "explication", item.enonce(), explication)));
         return textes;
     }
 

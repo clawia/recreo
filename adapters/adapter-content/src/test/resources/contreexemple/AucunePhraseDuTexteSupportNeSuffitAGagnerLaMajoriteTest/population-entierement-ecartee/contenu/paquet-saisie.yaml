@@ -1,0 +1,40 @@
+# JEU FAUTIF (ADR-0013, ADR-0072) : un repertoire de contenu qui ne porte QUE des items de saisie.
+#
+# Il n'est pas fautif par son contenu - c'est le paquet de saisie de la sonde du lot 1, repris tel
+# quel. Il est fautif par la population qu'il forme : le classement de ce garde-fou l'ecarte
+# entierement, et une borne qui emporte toute la population n'est plus une borne, c'est une
+# exemption generale. C'est cette clause-la, et elle seule, que ce repertoire met a l'epreuve.
+#
+schema: 1
+id: paquet-saisie
+type: saisie
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "sonde du lot 1, jamais servie a un enfant"
+#
+# Paquet de sonde du lot 1 de s24. Il vit sous src/test/resources et jamais sous
+# src/main/resources/contenu : un paquet pose la-bas, meme hors catalogue, declenche a lui seul le
+# lot 5 - les treize garde-fous de contenu derivent leur perimetre du repertoire, pas du catalogue
+# (planning de s24, section 5.3.c ; avis de faisabilite, lot 1).
+#
+# Il exerce les trois etats de SAI-2a : le paquet declare 'libre', un item ne declare rien et prend
+# donc le defaut du paquet, un autre declare 'exacte' et l'emporte sur lui, un troisieme redeclare
+# 'libre' explicitement.
+exigenceDeForme: libre
+items:
+  - enonce: "3 + ? = 10"
+    formeDeReference: "7"
+    formesAcceptees: ["sept"]
+    indice: "Compte ceux qui manquent."
+  - enonce: "Ecris le mot 'eleve' comme on l'ecrit."
+    formeDeReference: "eleve"
+    formesAcceptees: []
+    exigenceDeForme: exacte
+    explication: "La sonde n'explique rien a personne."
+  - enonce: "5 + ? = 10"
+    formeDeReference: "5"
+    formesAcceptees: ["cinq"]
+    exigenceDeForme: libre
+    indice: "Il en manque autant qu'il y en a."

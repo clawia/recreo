@@ -521,3 +521,93 @@ disque.
 
 **Decisions du sprint a l'ouverture, deja sur le disque** : `DEC-0059` (perimetre, statut
 *Proposee*), `ADR-0069`, `ADR-0070`, `ADR-0071` (tous *Acceptes*), amendement 4 d'`ADR-0058`.
+
+---
+
+## Amendement du 2026-08-31 (cloture de s24) - trois attributions corrigees sous `DEC-0062`
+
+*Bloc ajoute par `sofia-sm` a la cloture, sur la relecture de `relecteur-pedagogique`
+(`relecture-s24.md`, section 4.2). **Rien de ce qui precede n'est efface** : les sections 1 a 12
+decrivent l'etat du 2026-08-30 et restent lisibles a leur place. Le patron est celui de `S21-6` -
+amender, jamais reecrire.*
+
+### A. La section 4 s'attribuait un chiffre qui n'est pas de moi
+
+**Ce que la section 4 dit** : *"J'ai affirme a l'utilisatrice que l'ouverture de la saisie ferait
+passer la couverture de 28 a 33 lignes sur 43. Ce chiffre est faux, **et il est de moi**."*
+
+**Ce qui est faux dans cette phrase, c'est la signature.** Le chiffre ne vient d'aucun agent de cette
+squad, et je ne l'ai pas produit : je l'ai **relaye**. Sa provenance exacte est celle-ci :
+
+> Le chiffre de *"28 a 33 lignes sur 43"* est **recu de MASTER, le 2026-08-30, sans source dans le
+> depot.**
+
+**Pourquoi cette correction n'est pas cosmetique et pourquoi elle m'incombe.** `DEC-0062` section 3.1
+nomme *"il est de moi"* comme la forme **interdite** : elle attribue a un agent identifiable un
+enonce qui n'est de personne de cette squad, et elle **efface le canal** au moment meme ou le depot
+essaie de le rendre visible. C'est la fausse attribution que `DEC-0062` a ete ecrite pour corriger,
+laissee dans le sprint qui l'a creee - **la dette 7 de `CLAUDE.md` sous une autre forme** : une
+convention affirmee dans une decision et absente du document qu'elle vise.
+
+**Ce qui ne change pas** : le chiffre reste faux, ses deux bornes restent fausses, et l'arbitrage
+rendu dessus tient toujours par les motifs de `DEC-0059` section 5.2. **Ce que je continue d'assumer
+sans le deplacer** : je l'ai relaye sans le mesurer, et le mesurer m'aurait pris le meme comptage que
+celui de la section 4. **La faute de relais est de moi ; le chiffre ne l'est pas.**
+
+### B. Le verbe de cet enonce - je ne peux pas etablir le mot pour mot, et je le dis
+
+`relecteur-pedagogique` releve que le meme enonce est cite avec deux verbes : *"**fera** passer"*
+chez `camille-po` (`DEC-0062` section 1), *"**ferait** passer"* chez moi (ici, `review.md`,
+`RAPPORT.md`). Les deux ne peuvent pas etre le mot pour mot, et `DEC-0062` exige le mot pour mot.
+
+**J'ai cherche la source et je ne peux pas la produire.** Le canal MASTER ne laisse rien dans le
+depot - c'est sa definition meme - et aucun des deux libelles n'est adosse a un fichier. **Je refuse
+de choisir**, pour le motif exact que le relecteur donne : choisir reviendrait a **fabriquer la
+citation que la convention protege**, ce qui serait un defaut plus grave que la divergence.
+
+> **Ce que je tranche** : l'incertitude est nommee et non levee. **Le verbe exact de cet enonce n'est
+> pas etabli**, deux formulations coexistent dans le depot, aucune des deux n'est certifiee mot pour
+> mot, **et l'enonce ne vaut de toute facon jamais motif**. Aucun des deux libelles n'est reecrit :
+> les reecrire pour les aligner produirait une citation unique et fausse a la place de deux citations
+> divergentes et honnetes.
+
+**Ce que cela apprend sur la convention, et qui vaut plus que ce cas** : la forme 3 exige le mot pour
+mot d'un canal qui n'ecrit nulle part. **La citation doit donc etre figee par son premier
+destinataire, au moment de la reception**, ou elle ne sera plus figeable ensuite. C'est une limite
+reelle de `DEC-0062`, elle est portee au tableau des obstacles a l'attention de `camille-po`, et
+**c'est un fait sur la convention, pas une demande de la desserrer**.
+
+### C. Une attribution de forme 1 a `nadia-prof` qui ne dit pas ce qu'elle a ecrit
+
+**Ce que la section 8 dit** : *"`nadia-prof` a constate qu'un fichier de toolchains du poste declare
+une toolchain `jdk` de version `21` en designant une racine de JDK 25."*
+
+**Ce que la recherche rend, methode nommee** : `git log -S` sur la chaine, dans les fiches de
+conformite. `nadia-prof` **a bien ecrit un constat sur ce sujet**, et il est plus ancien que s24 :
+
+> `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, rubrique *"Moyens, dits franchement"*,
+> commit `8877015` du **2026-08-05 (s01)** : *"le poste d'audit ne dispose que d'un JDK 25, pas du
+> JDK 21 de la CI."*
+
+**Les deux enonces ne sont pas le meme.** Le sien porte sur **son poste d'audit** et sur ce dont il
+dispose. Celui que je lui attribue porte sur **le contenu d'un fichier de toolchains** - une
+toolchain declaree `21` qui designe une racine `25` - qui est un fait tout autre, plus precis, et le
+seul qui rende `ADR-0071` necessaire. **Cette precision-la n'est nulle part sous sa plume.**
+
+> **Ce que je tranche, et c'est l'issue 2 du relecteur** : la reference de forme 1 est **corrigee en
+> deux morceaux**. Le constat de disponibilite du JDK sur le poste d'audit est de `nadia-prof`,
+> **forme 1, avec sa reference qui resout desormais** (fiche et commit ci-dessus). La lecture du
+> fichier de toolchains est **un quatrieme fait recu de MASTER, le 2026-08-30, sans source dans le
+> depot** : je ne peux produire aucun fichier ou elle serait ecrite, et l'affirmer de `nadia-prof`
+> serait lui attribuer un enonce qu'elle n'a pas ecrit.
+
+**Ce que cela ne change pas** : `ADR-0071` ne se fonde ni sur l'un ni sur l'autre. `theo-archi` a
+**reproduit le mecanisme lui-meme** et son garde-fou verifie l'egalite entre la version que la machine
+virtuelle des tests rapporte et celle que le build exige. L'enonce recu a fait chercher ; il n'a rien
+fonde, et c'est exactement le regime que `DEC-0062` prevoit.
+
+**Ce que cela dit du tri de la section 4.3 de `review.md`, et qui est neuf** : ce quatrieme fait est
+**distinct** de celui de la section 4.2 (*"toutes les mesures locales tournaient sur un JDK 25"*).
+Deux enonces recus sur le meme objet, l'un sur les mesures et l'autre sur un fichier de
+configuration ; les distinguer est ce qui permet de dire lequel a ete demonte et lequel n'a jamais
+ete verifiable.

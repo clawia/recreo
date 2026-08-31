@@ -1,0 +1,160 @@
+# CAS VERT (ADR-0013, ADR-0072). Ce fichier n'est pas un paquet servi.
+#
+# C'est l'etat de `cp-texte-narratif` apres la correction que `lea-dev` a livree le 2026-08-31
+# (`s24-lea`, commit `44188a8`), en regard de l'etat fautif range dans le repertoire voisin.
+# Les deux sont le meme paquet a un jour d'intervalle, ecrits par la meme personne.
+#
+# Sans ce cas vert, la morsure prouverait seulement que le garde-fou rougit sur quelque chose ;
+# avec lui, elle prouve qu'il distingue exactement le changement que `lea-dev` a fait : la
+# strategie "ne lire que la premiere phrase" passe de 65 % a 50,0 %.
+#
+# 50,0 % pile est la borne du seuil, atteinte et non depassee. Ce fait est ecrit dans ADR-0072 et
+# route a `nadia-prof` : c'est a elle, pas a ce fichier, de dire si une marge nulle lui convient.
+#
+schema: 1
+id: cp-texte-narratif
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CP"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Comprendre un texte narratif très court (questions explicites : qui, où, quoi)"
+#
+# S24-NAR (DEC-0059). Arbitrage prealable de nadia-prof du 2026-08-30
+# (squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md,
+# partie 3, conditions NAR-1 a NAR-10), complete par l'arbitrage prealable de s24, section 5.1 :
+# NAR-2 contre NAR-5 est satisfaisable y compris sur la forme "Ou", avec deux precisions d'unite de
+# compte - un mot est une suite de caracteres sans espace, la ponctuation isolee non comptee
+# (NAR-2) ; les neuf lettres se comptent sur le mot graphique delimite par les espaces, les
+# apostrophes et les traits d'union (NAR-3).
+#
+# Les trois items ecrits par nadia-prof pour prouver la satisfaisabilite sont repris tels quels,
+# un par forme de question : items 1 (Qui), 2 (Ou, le cas le plus serre a 17 mots sur 18) et
+# 3 (Que). Les dix-sept autres sont neufs.
+#
+# Deux repartitions tenues a la main, parce que le refus de S12-3 portait exactement sur ce
+# defaut-la transpose au rang d'une proposition numerique : la reponse d'un item "Ou" se lit
+# tantot dans la premiere phrase (items 2, 5, 11, 14), tantot dans la seconde (items 8, 17, 20),
+# et la preposition de la bonne reponse est tiree du meme vivier que celle des distracteurs
+# ("sous", "dans", "sur", "pres", "devant" apparaissent des deux cotes). Sans cela, un enfant
+# gagnerait en lisant la premiere phrase seule, ou en pressant la seule proposition qui commence
+# par "sous". Meme raison pour les items "Qui" : l'acteur cherche est nomme dans la seconde phrase
+# sur quatre items et dans la premiere sur trois.
+#
+# NAR-4 : chaque enonce commence par "Qui", "Ou" ou "Que" et sa reponse se lit litteralement dans
+# le texte - aucune inference n'est demandee, la ligne CP ne la demande pas.
+# NAR-5 : les trois propositions de chaque item figurent en toutes lettres dans le texteSupport de
+# ce meme item. C'est la branche inverse de COMP-1 : au CP, l'enfant apparie des chaines, et une
+# bonne reponse seule presente dans le texte se trouverait sans lire.
+# NAR-7 : dix prenoms feminins distincts (Sara, Nina, Nour, Iris, Zoe, Anna, Elsa, Maya, Lila,
+# Alba) et dix masculins (Malo, Tom, Leo, Remi, Hugo, Ivan, Theo, Jules, Ali, Noe).
+# NAR-8 : aucune situation ne suppose une configuration familiale, un logement, un animal, un
+# depart en vacances ou un objet possede - "le ballon" et jamais "son ballon".
+#
+# NAR-6 (texte masque, la question ne se repond pas) reste entierement dans la main de nadia-prof :
+# aucun automate de ce depot ne la voit. Les conditions calculables sont verifiees par
+# PaquetCpTexteNarratifTest.
+#
+# TYP-1 (ADR-0067) : l'espace qui precede le point d'interrogation d'un enonce est insecable ; ce
+# paquet entre a zero occurrence detachable.
+items:
+  - enonce: "Qui ramasse une feuille ?"
+    texteSupport: "Malo, Sara et Tom jouent dans la cour. Tom ramasse une feuille et la garde."
+    bonneReponse: "Tom"
+    distracteurs: ["Malo", "Sara"]
+    indice: "Relis la deuxième phrase."
+  - enonce: "Où Nina range-t-elle le ballon ?"
+    texteSupport: "Nina range le ballon sous l'escalier. Puis elle va au salon et s'assoit près de la fenêtre."
+    bonneReponse: "sous l'escalier"
+    distracteurs: ["au salon", "près de la fenêtre"]
+    indice: "Relis la première phrase."
+  - enonce: "Que sort Nour de la boîte ?"
+    texteSupport: "Nour ouvre une boîte et sort un vieux train. Puis elle range un ballon et une corde."
+    bonneReponse: "un vieux train"
+    distracteurs: ["un ballon", "une corde"]
+    indice: "Regarde la fin de la première phrase."
+  - enonce: "Qui ouvre la fenêtre ?"
+    texteSupport: "Iris ouvre la fenêtre sans faire de bruit. Puis Léo et Rémi entrent dans la classe."
+    bonneReponse: "Iris"
+    distracteurs: ["Léo", "Rémi"]
+    indice: "Relis la première phrase."
+  - enonce: "Où Hugo pose-t-il le sac ?"
+    texteSupport: "Hugo pose le sac devant la porte. Il passe sous le préau puis sort dans la cour."
+    bonneReponse: "devant la porte"
+    distracteurs: ["sous le préau", "dans la cour"]
+    indice: "Relis la première phrase."
+  - enonce: "Que sort Ivan du placard ?"
+    texteSupport: "Ivan ouvre le placard et sort une règle. Puis il pose un crayon et une gomme."
+    bonneReponse: "une règle"
+    distracteurs: ["un crayon", "une gomme"]
+    indice: "Regarde la fin de la première phrase."
+  - enonce: "Qui efface les mots ?"
+    texteSupport: "Zoé, Théo et Anna attendent devant le tableau. Théo efface les mots écrits en bleu."
+    bonneReponse: "Théo"
+    distracteurs: ["Zoé", "Anna"]
+    indice: "Relis la deuxième phrase."
+  - enonce: "Où Elsa oublie-t-elle la craie ?"
+    texteSupport: "Elsa attend près du banc puis monte sur la scène. Elle oublie la craie dans le couloir."
+    bonneReponse: "dans le couloir"
+    distracteurs: ["près du banc", "sur la scène"]
+    indice: "Relis la deuxième phrase."
+  - enonce: "Que découvre Jules ?"
+    texteSupport: "Jules plie un papier et une nappe. Ensuite il soulève un tissu et découvre une carte."
+    bonneReponse: "une carte"
+    distracteurs: ["un papier", "une nappe"]
+    indice: "Regarde la fin de la deuxième phrase."
+  - enonce: "Qui compte les marches ?"
+    texteSupport: "Maya compte les marches à voix haute. Ali et Léo montent vers la classe."
+    bonneReponse: "Maya"
+    distracteurs: ["Ali", "Léo"]
+    indice: "Relis la première phrase."
+  - enonce: "Où Noé glisse-t-il la corde ?"
+    texteSupport: "Noé glisse la corde sur le banc. Puis il court derrière le rideau et grimpe vers le mur."
+    bonneReponse: "sur le banc"
+    distracteurs: ["derrière le rideau", "vers le mur"]
+    indice: "Relis la première phrase."
+  - enonce: "Que sort Lila du sac ?"
+    texteSupport: "Lila fouille un sac et sort un cahier. Ensuite elle range une trousse et un stylo."
+    bonneReponse: "un cahier"
+    distracteurs: ["une trousse", "un stylo"]
+    indice: "Regarde la fin de la première phrase."
+  - enonce: "Qui ramène les chaises ?"
+    texteSupport: "Tom, Nina et Hugo poussent la table du fond. Nina ramène les chaises près du mur."
+    bonneReponse: "Nina"
+    distracteurs: ["Tom", "Hugo"]
+    indice: "Relis la deuxième phrase."
+  - enonce: "Où Iris pose-t-elle la boîte ?"
+    texteSupport: "Iris pose la boîte sous le préau. Elle marche entre deux caisses puis monte sur la scène."
+    bonneReponse: "sous le préau"
+    distracteurs: ["entre deux caisses", "sur la scène"]
+    indice: "Relis la première phrase."
+  - enonce: "Que prend Théo dans le tiroir ?"
+    texteSupport: "Théo pose un ticket et une carte. Puis il ouvre un tiroir et prend une clé."
+    bonneReponse: "une clé"
+    distracteurs: ["un ticket", "une carte"]
+    indice: "Regarde la fin de la deuxième phrase."
+  - enonce: "Qui choisit un album ?"
+    texteSupport: "Rémi choisit un album très épais. Alba et Elsa lisent au coin des livres."
+    bonneReponse: "Rémi"
+    distracteurs: ["Alba", "Elsa"]
+    indice: "Relis la première phrase."
+  - enonce: "Où Maya laisse-t-elle la lampe ?"
+    texteSupport: "Maya entre dans l'atelier puis s'arrête derrière la porte. Elle laisse la lampe près du seau."
+    bonneReponse: "près du seau"
+    distracteurs: ["dans l'atelier", "derrière la porte"]
+    indice: "Relis la deuxième phrase."
+  - enonce: "Que trouve Ivan dans le panier ?"
+    texteSupport: "Ivan plie un tissu et une nappe. Ensuite il vide un panier et trouve une écharpe."
+    bonneReponse: "une écharpe"
+    distracteurs: ["un tissu", "une nappe"]
+    indice: "Regarde la fin de la deuxième phrase."
+  - enonce: "Qui colle une étiquette ?"
+    texteSupport: "Zoé, Malo et Anna trient des cartons dans le hall. Malo colle une étiquette sur le plus grand."
+    bonneReponse: "Malo"
+    distracteurs: ["Zoé", "Anna"]
+    indice: "Relis la deuxième phrase."
+  - enonce: "Où Léo dépose-t-il le seau ?"
+    texteSupport: "Léo file au bord du bac puis revient vers la grille. Il dépose le seau sous le tilleul."
+    bonneReponse: "sous le tilleul"
+    distracteurs: ["au bord du bac", "vers la grille"]
+    indice: "Relis la deuxième phrase."

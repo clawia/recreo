@@ -127,6 +127,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * Ce que cette ratification ne couvre pas - le seul operateur "+", la somme mal formee qui n'a pas
  * de valeur plutot qu'une valeur partielle, la decomposition non canonique - est ecrit dans ADR-0041,
  * non-preuves 8 a 10, et n'est pas paraphrase ici.</p>
+ *
+ * <p><b>Lot 5a de s24, decision 10 : borne a l'item qui presente des propositions, et c'est la borne
+ * la mieux payee du tri.</b> La propriete decrit une <b>strategie de pression</b> ; en saisie il n'y a
+ * ni rang, ni bouton, ni ordre a exploiter. La garantie qu'elle achete n'est pas perdue pour autant,
+ * elle est obtenue <b>par construction</b>, et c'est nadia-prof qui l'a chiffree : "un enfant qui ne
+ * sait rien obtient aujourd'hui 7 manches sur 7. En saisie, avec trois essais sur onze reponses
+ * possibles, il en obtient au plus trois sur onze par manche." Un paquet entierement de saisie se
+ * declare dans {@link #PAQUETS_HORS_DU_DOMAINE_NUMERIQUE} avec son motif, comme tout paquet qu'aucun
+ * item ne fait entrer dans le calcul (ADR-0051) : la borne passe par la porte qui existait deja, elle
+ * n'en ouvre pas une seconde.</p>
  */
 class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
 
@@ -284,6 +294,13 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
      * ajoute mesure la part du contenu servi sur laquelle cette propriete n'est gardee par rien.</p>
      */
     private static final Map<String, String> PAQUETS_HORS_DU_DOMAINE_NUMERIQUE = Map.ofEntries(
+            Map.entry("cp-complements-10-saisie",
+            "11 items sur 11 sont des items de saisie : ils ne presentent aucune proposition, donc"
+                    + " aucun rang. Lot 5a de s24, decision 10 - la propriete decrit une strategie de"
+                    + " pression, et en saisie il n'y a ni bouton ni ordre a exploiter. La garantie"
+                    + " qu'elle achete n'est pas perdue, elle est obtenue par construction et"
+                    + " nadia-prof l'a chiffree : un enfant qui ne sait rien obtient 7 manches sur 7"
+                    + " avec des boutons, et au plus trois sur onze par manche en saisie"),
             Map.entry("cp-ranger-nombres",
             "24 items sur 24 proposent une liste ordonnee de trois nombres (\"a, b, c\"), pas"
                     + " une valeur scalaire unique : depuis ADR-0068, lireValeur y rend null (le"
@@ -372,7 +389,21 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " propositions n'est numerique : ce sont des mots de liaison (\"donc\","
                     + " \"car\", \"pourtant\"...), valeurDe rend null sur les trois propositions"
                     + " de chaque item. Mesure du 2026-08-30 sur le paquet servi : aucune des 60"
-                    + " propositions ne commence par un chiffre"));
+                    + " propositions ne commence par un chiffre"),
+            // S24-NAR : entree neuve, comprehension d'un texte narratif tres court, CP.
+            Map.entry("cp-texte-narratif",
+            "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"
+                    + " propositions n'est numerique : ce sont des fragments recopies du"
+                    + " texte-support (un prenom, un lieu, un objet), valeurDe rend null sur les"
+                    + " trois propositions de chaque item. Mesure du 2026-08-31 sur le paquet"
+                    + " servi : aucune des 60 propositions ne commence par un chiffre"),
+            // S24-PLU : entree neuve, marques du pluriel en -s, CP.
+            Map.entry("cp-pluriel",
+            "21 items sur 21 portent deux distracteurs (trois propositions), mais aucune des 63"
+                    + " propositions n'est numerique : ce sont des groupes determinant + nom"
+                    + " (\"les chats\", \"les chat\", \"le chats\"), valeurDe rend null sur les"
+                    + " trois propositions de chaque item. Mesure du 2026-08-31 sur le paquet"
+                    + " servi : aucune des 63 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
@@ -404,7 +435,7 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
     static List<Question> itemsTires(ContentSource contenu) {
         RandomSource hasard = new Random(5)::nextInt;
         Set<ItemId> dejaVus = new java.util.HashSet<>();
-        Map<ItemId, Question> items = new LinkedHashMap<>();
+        Map<ItemId, Item> items = new LinkedHashMap<>();
         int tiragesSansNouveaute = 0;
         for (int tirage = 0; tirage < BUDGET_DE_TIRAGES
                 && tiragesSansNouveaute < TIRAGES_SANS_NOUVEAUTE_AVANT_ARRET; tirage++) {
@@ -412,15 +443,22 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             if (item == null) {
                 break;
             }
-            Question question = (Question) item;
-            dejaVus.add(question.id());
-            if (items.put(question.id(), question) == null) {
+            dejaVus.add(item.id());
+            if (items.put(item.id(), item) == null) {
                 tiragesSansNouveaute = 0;
             } else {
                 tiragesSansNouveaute++;
             }
         }
-        return List.copyOf(items.values());
+        // Lot 5a de s24, decision 10 : borne aux items qui presentent des propositions. La propriete
+        // decrit une STRATEGIE DE PRESSION - "une strategie qui choisit toujours le meme rang parmi
+        // les trois propositions, sans jamais lire l'enonce". En saisie il n'y a ni rang, ni bouton,
+        // ni ordre a exploiter, et la garantie n'est pas perdue : elle est obtenue par construction,
+        // nadia-prof l'ayant chiffree - un enfant qui ne sait rien obtient 7 manches sur 7 avec des
+        // boutons, et au plus trois sur onze par manche en saisie. Un paquet entierement de saisie
+        // rend ici une liste vide, ce que les appelants traitent deja comme "hors du domaine, aucun
+        // taux calcule et rien d'affirme" (le meme sort qu'un paquet sans item numerique).
+        return ClassementDesItems.presentantDesPropositions(List.copyOf(items.values()));
     }
 
     /**

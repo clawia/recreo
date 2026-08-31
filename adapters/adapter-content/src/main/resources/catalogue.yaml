@@ -162,3 +162,27 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-problemes-etapes
     nombreDeManches: 10
+  - id: bandit-manchot-texte-narratif-cp
+    titre: "Lis et réponds"
+    consigne: "Lis le petit texte, puis réponds à la question."
+    mecanique: bandit-manchot
+    paquet: cp-texte-narratif
+    nombreDeManches: 10
+  - id: bandit-manchot-pluriel-cp
+    titre: "Un ou plusieurs ?"
+    consigne: "Choisis la bonne écriture pour compléter la phrase."
+    mecanique: bandit-manchot
+    paquet: cp-pluriel
+    nombreDeManches: 10
+  - id: bandit-manchot-fractions-cm1
+    titre: "Les fractions simples"
+    consigne: "Lis bien la fraction, puis choisis la réponse."
+    mecanique: bandit-manchot
+    paquet: cm1-fractions
+    nombreDeManches: 10
+  - id: saisie-complements-10-cp
+    titre: "Écris le complément à 10"
+    consigne: "Écris le nombre qui manque pour faire 10."
+    mecanique: saisie
+    paquet: cp-complements-10-saisie
+    nombreDeManches: 7

@@ -6,10 +6,10 @@ import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
+import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.SessionStatus;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchot;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMove;
-import com.recreo.domain.mechanics.banditmanchot.BanditManchotSession;
 import jakarta.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -60,7 +60,7 @@ class EtatDePartieEnSessionTest {
         premier.join();
         second.join();
 
-        BanditManchotSession finale = new EtatDePartieEnSession(requete).lire().session();
+        GameSession finale = new EtatDePartieEnSession(requete).lire().session();
         assertThat(finale.score().tentatives())
                 .as("deux coups joues, deux tentatives comptees : aucune ecriture n'en a ecrase une autre")
                 .isEqualTo(2);
@@ -78,10 +78,10 @@ class EtatDePartieEnSessionTest {
     void unCoupRecuSurUnePartieTermineeNeRejoueRienEtRendLEtatFinal() {
         MockHttpServletRequest requete = requeteAvecPartieEnCours(1);
         EtatDePartieEnSession etat = new EtatDePartieEnSession(requete);
-        BanditManchotSession terminee = etat.jouer(JEU_ID, EtatDePartieEnSessionTest::coup).session();
+        GameSession terminee = etat.jouer(JEU_ID, EtatDePartieEnSessionTest::coup).session();
         assertThat(terminee.status()).isEqualTo(SessionStatus.TERMINEE);
 
-        BanditManchotSession apresLeSecondAppui =
+        GameSession apresLeSecondAppui =
                 etat.jouer(JEU_ID, EtatDePartieEnSessionTest::coup).session();
 
         assertThat(apresLeSecondAppui).isSameAs(terminee);
@@ -131,15 +131,14 @@ class EtatDePartieEnSessionTest {
         }
     }
 
-    private static BanditManchotSession coup(BanditManchotSession actuelle) {
-        return (BanditManchotSession) new BanditManchot().apply(actuelle, new BanditManchotMove("bonne"));
+    private static GameSession coup(GameSession actuelle) {
+        return new BanditManchot().apply(actuelle, new BanditManchotMove("bonne"));
     }
 
     private MockHttpServletRequest requeteAvecPartieEnCours(int nombreDeManches) {
         MockHttpServletRequest requete = new MockHttpServletRequest();
         requete.setSession(new MockHttpSession());
-        BanditManchotSession session = (BanditManchotSession)
-                new BanditManchot().start(contenuRepete(), bound -> 0, nombreDeManches);
+        GameSession session = new BanditManchot().start(contenuRepete(), bound -> 0, nombreDeManches);
         new EtatDePartieEnSession(requete).demarrer(JEU_ID, "Choisis la bonne reponse", session);
         return requete;
     }

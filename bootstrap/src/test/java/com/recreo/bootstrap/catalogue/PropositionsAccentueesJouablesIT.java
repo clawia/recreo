@@ -168,9 +168,17 @@ class PropositionsAccentueesJouablesIT {
             if (tirage.isEmpty()) {
                 break;
             }
-            Question question = switch (tirage.orElseThrow()) {
-                case Question q -> q;
-            };
+            // s24, couture scellee d'Item : le contrat de contenu porte depuis ce sprint une
+            // seconde forme d'item, celle de la mecanique de saisie. Ce controle porte sur les
+            // propositions offertes a l'appui, et un item auquel on repond en ecrivant n'en offre
+            // aucune - il n'a donc rien a verser ici. Le cas ne se presente pas tant qu'aucun
+            // paquet de saisie n'est au catalogue, et il ne fera rien de faux le jour ou il s'y
+            // presentera.
+            Item tire = tirage.orElseThrow();
+            if (!(tire instanceof Question question)) {
+                dejaVus.add(tire.id());
+                continue;
+            }
             dejaVus.add(question.id());
             ajouterSiNonAscii(resultat, question.bonneReponse());
             question.distracteurs().forEach(distracteur -> ajouterSiNonAscii(resultat, distracteur));
