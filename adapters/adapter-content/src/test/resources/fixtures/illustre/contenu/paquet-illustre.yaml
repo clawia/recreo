@@ -1,0 +1,17 @@
+schema: 1
+id: paquet-illustre
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CP"
+  domaine: "Formes"
+  competence: "reconnaitre les formes"
+items:
+  - enonce: "Quelle est cette forme ?"
+    bonneReponse: "un carre"
+    distracteurs: ["un triangle", "un cercle"]
+    illustration: "fixture-forme-a"
+    illustrationTexteAlternatif: "Une forme fermee a quatre cotes egaux."
+  - enonce: "Combien de cotes a un triangle ?"
+    bonneReponse: "3"
+    distracteurs: ["4", "2"]

@@ -84,6 +84,33 @@ class YamlContentPackLoaderTest {
         assertThat(question.indice()).contains("Compte sur tes doigts.");
     }
 
+    /**
+     * ADR-0073 : les deux cles de l'illustration traversent le chargeur jusqu'a l'item, telles
+     * qu'elles sont ecrites - un identifiant, jamais un chemin, jamais une extension. Sans cette
+     * lecture, une cle ecrite par un auteur de contenu serait ignoree en silence et n'atteindrait
+     * jamais l'ecran : c'est exactement l'ecart muet que la Javadoc de
+     * {@link QuestionContentSourceFactory} nomme.
+     */
+    @Test
+    void lesDeuxClesDeLIllustrationTraversentLeChargeurJusquALItem() {
+        List<GameDefinition> jeux = new YamlContentPackLoader("/fixtures/illustre").games();
+        ContentSource contenu = jeu(jeux, "jeu-illustre").contenu();
+
+        Question premier = (Question) contenu.next(borne -> 0, Set.<ItemId>of()).orElseThrow();
+        assertThat(premier.illustration())
+                .as("l'identifiant declare par l'item arrive tel quel, sans repertoire ni extension")
+                .contains("fixture-forme-a");
+        assertThat(premier.illustrationTexteAlternatif())
+                .as("ADR-0073 clause 5 : le texte alternatif declare par le meme item arrive avec lui")
+                .contains("Une forme fermee a quatre cotes egaux.");
+
+        Question second = (Question) contenu.next(borne -> 0, Set.of(premier.id())).orElseThrow();
+        assertThat(second.illustration())
+                .as("un item qui ne montre rien ne porte aucune valeur factice")
+                .isEmpty();
+        assertThat(second.illustrationTexteAlternatif()).isEmpty();
+    }
+
     @Test
     void unChampObligatoireManquantNommeLeFichierEtLeChamp() {
         assertThatThrownBy(() -> new YamlContentPackLoader("/fixtures/champ-manquant").games())

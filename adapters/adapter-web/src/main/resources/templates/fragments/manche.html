@@ -40,6 +40,27 @@
          COMP-6). Jamais un paragraphe vide (ADR-0020) : th:if garde ce bloc absent des jeux qui
          n'en portent pas, plutot que de le nourrir d'une valeur factice. -->
     <p class="texte-support" th:if="${texteSupport != null}" th:text="${texteSupport}"></p>
+    <!-- ADR-0073, palier 1 du visuel : l'image fixe qu'un item declare. Elle occupe l'emplacement du
+         texte-support - "la matiere sur laquelle porte la question" (ADR-0050) -, entre la consigne
+         et l'enonce, et n'invente aucun emplacement neuf : ines-design a mesure les deux placements
+         possibles aux dix largeurs et aux trois etats, les trente couples de chiffres sont identiques
+         au pixel, le choix est donc semantique (proposition-ines-palier-1-du-visuel.md, section 6.2).
+         Le cabinet n'entoure PAS ce bloc : ADR-0030 point 1.a a 1.d fait du meuble ce qui entoure les
+         colonnes de reponses et rien d'autre, et sa condition C5 n'y autorise qu'une image fixe,
+         celle du bandeau. Un dessin d'item a l'interieur ferait croire qu'il se presse.
+         th:if, jamais un bloc vide (ADR-0020) : un jeu qui ne declare aucun dessin ne rend pas ce
+         noeud, plutot que de le nourrir d'une valeur factice.
+         Le chemin est compose ici et nulle part ailleurs (ADR-0073 clause 1 et 3) : le contenu
+         declare un identifiant, l'adapter connait le repertoire et l'extension. C'est la seule
+         expression calculee que RessourcesTiercesTest admette, et sa forme y est bornee au terme
+         pres - prefixe litteral, un unique terme calcule, extension litterale.
+         alt vient du modele, jamais du gabarit : un alt ecrit ici serait le meme pour tous les
+         dessins d'un paquet, donc n'en decrirait aucun (clause 5). Ce que ce texte dit appartient a
+         nadia-prof (CON-5), jamais a ce fichier. -->
+    <div class="illustration" th:if="${illustration != null}">
+        <img class="image-item" th:src="@{'/illustrations/' + ${illustration} + '.svg'}"
+             th:alt="${illustrationTexteAlternatif}">
+    </div>
     <!-- S18, S17-C : tabindex="-1" est declare ici, jamais pose par recreo.js. Un <p> n'est pas
          focalisable nativement ; c'est la seule maniere dont focus() peut l'atteindre quand
          data-focus="enonce" le designe comme point de focus (M13 clause 4).
