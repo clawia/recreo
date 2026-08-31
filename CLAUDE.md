@@ -47,8 +47,17 @@ Deux exigences, declarees dans le POM parent et donc verifiees a chaque `mvn`, d
   virtuelle de Maven. Sans cela, `maven-enforcer-plugin` arrete le build avec la marche a suivre.
 
 Sur un poste dont le `java` du `PATH` n'est pas un JDK 21, `bash outils/mvn-jdk21.sh -B clean
-verify` lance Maven sur le JDK de la toolchain declaree : plus besoin de positionner `JAVA_HOME` a
-la main a chaque commande, et la version sur laquelle on a mesure est celle de la toolchain.
+verify` lance Maven sur le JDK que designe la toolchain declaree, ou **refuse** : plus besoin de
+positionner `JAVA_HOME` a la main a chaque commande.
+Amendement du 2026-08-31 (`sofia-sm`, s25, lot F) : cette phrase se terminait par *"et la version
+sur laquelle on a mesure est celle de la toolchain"*. C'est la formule qu'`ADR-0071` disqualifie
+comme methode - la version d'une mesure est celle que la **machine virtuelle des tests rapporte**,
+jamais celle qu'une entree de toolchain declare, et les deux se sont averees differentes sur ce
+poste. L'enveloppe demande desormais sa version au JDK qu'elle a resolu, et **sort en erreur sans
+lancer Maven** quand ce JDK dement l'entree qui le designe. Ce refus paie la dette ouverte par
+`S21-6` le 2026-08-27 - *"il doit refuser au lieu d'imprimer"* - documentee quatre fois sans etre
+payee, dont une ou l'avertissement imprime a ete filtre par son propre auteur le jour ou il
+l'ecrivait. Il est mordu par `outils/mvn-jdk21-test.sh`, qui verifie que **Maven n'est pas lance**.
 
 Une troisieme exigence s'ajoute aux deux precedentes, **d'une autre nature : aucun `mvn` ne la
 verifie**, aucun plugin ne l'arrete, et c'est exactement pourquoi elle est ecrite ici.
