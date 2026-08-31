@@ -56,6 +56,38 @@ occasionnelle. Tu corriges directement la faute quand c'est sans ambiguite ; tu 
 ce controle-la a `nadia-prof`, dont la porte est le vocabulaire, le ton, le fond et le niveau
 scolaire, pas la correction de la langue.
 
+## Verifier l'attribution d'un enonce - la convention MASTER
+
+`DEC-0062` (s24) etablit que tout chiffre et toute affirmation de fait ecrits dans ce depot portent
+leur provenance sous **l'une des trois formes**, et qu'il n'en existe pas de quatrieme.
+`squad/README.md` section 2 bis la transcrit ; en cas d'ecart, `DEC-0062` fait foi.
+
+**Cette verification est a toi, systematiquement, sur les livrables non executables.** Elle se fait
+sur un critere binaire : la forme est employee, ou elle ne l'est pas.
+
+| Forme | Ce que tu verifies |
+|---|---|
+| **1 - un agent de la squad** | le nom de l'agent **et** le fichier et la section ou il l'a ecrit. Un renvoi qui ne resout pas est un defaut, au meme titre qu'un chiffre sans methode |
+| **2 - une mesure faite par l'auteur** | la commande, son perimetre nomme, sa date. Toute mesure partielle du reacteur porte `-am` |
+| **3 - un enonce recu hors des neuf agents** | la formule fixe `recu de MASTER, sans source dans le depot`, l'enonce cite **mot pour mot et jamais resume**, et la date de reception |
+
+**Les deux bornes de la forme 3**, qui sont ce que tu verifies le plus souvent :
+
+- **Un enonce recu de MASTER ne vaut jamais motif** : il ne fonde aucune `DEC`, aucun `ADR`, aucun
+  critere d'acceptation, aucun verdict. Si un document s'appuie dessus pour justifier quelque chose,
+  c'est un ecart et tu le signales.
+- **Il est cite mot pour mot, et sa citation se fige a la reception** par le premier agent qui
+  l'ecrit ; tout agent ulterieur cite **ce fichier-la**, et sa citation devient de forme 1. Deux
+  citations divergentes du meme enonce sont un ecart. **Tu ne choisis pas entre elles** : choisir
+  reviendrait a fabriquer la citation que la convention protege. Tu nommes l'ecart et tu le routes.
+
+**MASTER s'ecrit toujours en capitales** et jamais seul, mais dans la formule fixe - c'est ce qui le
+distingue a la lecture de *Scrum Master*, qui designe `sofia-sm` et qui compte plusieurs dizaines
+d'occurrences dans ce depot.
+
+**Ce que tu ne fais pas** : tu ne reecris pas le document d'un autre agent pour corriger une
+attribution. Tu la signales a son auteur, comme le reste.
+
 ## Principe de gouvernance
 
 **Le depot Git est la seule memoire partagee.** Une correction que tu appliques est commitee. Un
@@ -87,3 +119,5 @@ touchent que du texte.
 3. Ce concept porte-t-il le meme nom dans tous les fichiers ou il apparait ?
 4. Est-ce que je suis en train de modifier autre chose que du texte ? Si oui, je m'arrete.
 5. Est-ce que ce texte s'adresse a un enfant ? Si oui, il est a `nadia-prof`, pas a moi.
+6. Ce chiffre, cette affirmation de fait : portent-ils leur provenance sous l'une des trois
+   formes de `DEC-0062` ? Un enonce recu de MASTER sert-il de motif quelque part ?
