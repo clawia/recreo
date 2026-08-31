@@ -15,13 +15,31 @@ descripteur:
 # (NAR-2) ; les neuf lettres se comptent sur le mot graphique delimite par les espaces, les
 # apostrophes et les traits d'union (NAR-3).
 #
-# Les trois items ecrits par nadia-prof pour prouver la satisfaisabilite sont repris tels quels,
-# un par forme de question : items 1 (Qui), 2 (Ou, le cas le plus serre a 17 mots sur 18) et
+# Les trois items ecrits par nadia-prof pour prouver la satisfaisabilite sont repris d'elle, un
+# par forme de question : items 1 (Qui), 2 (Ou, le cas le plus serre a 17 mots sur 18) et
 # 3 (Que). Les dix-sept autres sont neufs.
+#
+# Item 2, amende le 2026-08-31 sur la reserve 1 du Done pedagogique
+# (squad/conformite/FICHE-bandit-manchot-texte-narratif-cp.md, section 3) : le lieu "au salon"
+# nommait une piece d'habitation, ce que NAR-8 interdit, et c'etait le seul item du paquet a
+# sortir du decor scolaire. Il est remplace par "au gymnase". Les trois lieux restent presents
+# dans le support (NAR-5) et la reponse reste dans la premiere phrase, comme nadia-prof le
+# demande. Le texte est reordonne pour qu'un distracteur figure dans la premiere phrase : voir
+# le paragraphe suivant.
 #
 # Deux repartitions tenues a la main, parce que le refus de S12-3 portait exactement sur ce
 # defaut-la transpose au rang d'une proposition numerique : la reponse d'un item "Ou" se lit
 # tantot dans la premiere phrase (items 2, 5, 11, 14), tantot dans la seconde (items 8, 17, 20),
+# et ADR-0072 en a fait une regle executable depuis le 2026-08-31,
+# AucunePhraseDuTexteSupportNeSuffitAGagnerLaMajoriteTest. Mesure du 2026-08-31 sur ce paquet,
+# methode d'ADR-0072 - decoupage sur les trois ponctuations fortes, repliage de casse,
+# occurrence par sous-chaine, gain compte comme decisif quand la phrase porte la bonne reponse
+# et aucun distracteur : phrase 1 a 9 gains sur 20 (45,0 %), phrase 2 a 10 sur 20 (50,0 %), pour
+# un seuil de majorite a 50,0 % en comparaison stricte. L'item 2 amende cesse d'etre un gain
+# decisif de phrase 1 : sa premiere phrase porte desormais un distracteur a cote de la bonne
+# reponse, et l'enfant qui ne lit qu'elle doit encore choisir entre deux lieux. Ce que le
+# maximum de 50,0 %, lui, ne doit pas a l'item 2 : il est porte par la phrase 2, donc par des
+# items qu'aucune reserve ne rouvre.
 # et la preposition de la bonne reponse est tiree du meme vivier que celle des distracteurs
 # ("sous", "dans", "sur", "pres", "devant" apparaissent des deux cotes). Sans cela, un enfant
 # gagnerait en lisant la premiere phrase seule, ou en pressant la seule proposition qui commence
@@ -51,9 +69,9 @@ items:
     distracteurs: ["Malo", "Sara"]
     indice: "Relis la deuxième phrase."
   - enonce: "Où Nina range-t-elle le ballon ?"
-    texteSupport: "Nina range le ballon sous l'escalier. Puis elle va au salon et s'assoit près de la fenêtre."
+    texteSupport: "Nina passe près de la fenêtre puis range le ballon sous l'escalier. Elle va ensuite au gymnase."
     bonneReponse: "sous l'escalier"
-    distracteurs: ["au salon", "près de la fenêtre"]
+    distracteurs: ["près de la fenêtre", "au gymnase"]
     indice: "Relis la première phrase."
   - enonce: "Que sort Nour de la boîte ?"
     texteSupport: "Nour ouvre une boîte et sort un vieux train. Puis elle range un ballon et une corde."
