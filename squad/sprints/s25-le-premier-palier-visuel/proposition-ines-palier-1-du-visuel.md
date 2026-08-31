@@ -46,10 +46,17 @@ document-ci** et il faut la lire avec : le trace est producible, une piece porta
 **43 px** de hauteur d'image et **passe** les 53 px ci-dessus, un cadran a douze nombres en demande
 **123 px** et **ne les passe pas**.
 
-**Et une cinquieme chose est sortie de ces mesures sans que personne l'ait demandee**, section 5.4 :
-`bandit-manchot-comprehension-cm1`, ligne verte, a **onze de ses treize items vus sous le pli** a la
-largeur de reference. Ce jeu est ne a s22, apres la mesure de catalogue de `DEC-0051`. Je ne le
-juge pas ; je le route.
+**Et deux faits sont sortis de ces mesures sans que personne les ait demandes.** Je ne les juge pas ;
+je les route.
+
+- **Section 4.4** : `bandit-manchot-comprehension-cm1`, ligne verte, a **onze de ses treize items
+  vus sous le pli** a la largeur de reference, apres un echec - le critere meme de `DEC-0051`. Ce
+  jeu est ne a **s22**, apres la mesure de catalogue de `DEC-0051`, qui ne pouvait donc pas le
+  contenir.
+- **Section 5.4** : sur l'ecran de saisie servi, **la revelation passe sous le pli a sept des dix
+  largeurs**, dont la largeur de reference sur deux items. Les deux etats de refus, eux, sont propres
+  partout des 576 px - **sur le critere du depot, cet ecran est propre**, et ce que ce chiffre revele
+  est peut-etre un trou du critere plutot qu'un defaut du lot.
 
 ---
 
@@ -903,7 +910,22 @@ Ni une decision ni une demande : ce que ma proposition suppose et que je n'ecris
 ## Porte technique
 
 `bash outils/mvn-jdk21.sh -B clean verify` a la racine du reacteur, sur l'arbre de ce worktree :
-**REMPLACER_RESULTAT**. Perimetre : le reacteur complet, aucun `-pl`, donc aucun `-am` a citer.
+**BUILD SUCCESS, 937 tests, 0 echec** (931 surefire - 78 `domain`, 13 `application`, 349
+`adapter-web`, 355 `adapter-content`, 136 `bootstrap` - et 6 failsafe). Perimetre : le reacteur
+complet, aucun `-pl`, donc aucun `-am` a citer.
+
+**Cet arbre porte une fusion de `s25-theo`, et le motif est une morsure de garde-fou.** Ma premiere
+execution a echoue, et sur le bon motif : `ToutesLesReferencesDeDecisionResolventTest` (`ADR-0066`,
+clause 1) refuse une reference de decision qui ne resout pas, et ma reponse sur les chiffres traces
+cite `ADR-0073` quatre fois - un `ADR` qui vit sur `s25-theo` et pas encore sur `round-two`. **Je
+n'ai ni contourne le garde-fou ni retire la citation** : un document sur la clause 4 qui ne la
+nommerait pas serait illisible. J'ai fusionne la branche qui la porte, pour que ma porte technique
+mesure un arbre ou la reference existe reellement. **Cette fusion ne valide pas le lot de
+`theo-archi` et n'en juge aucun fichier** ; `sofia-sm` reste seule a ordonner les fusions.
+
+**Les 937 tests sont donc ceux de mon arbre apres cette fusion**, dont les 11 de
+`LIllustrationDeContenuResoutEtAucuneNeDortTest` qui viennent de lui. **Mon lot n'ajoute et ne
+retire aucun test.**
 
 **Ce commit n'ajoute et ne retire aucun test, et c'est attendu** : il ne touche aucun module. Il
 n'ajoute aucune classe CSS ni aucun jeton de gabarit servi, donc **aucun test structurel
@@ -915,7 +937,20 @@ ici parce qu'il n'y a pas de code.
 **La version de JDK est celle que la machine virtuelle des tests rapporte d'elle-meme**, et non
 celle qu'une toolchain declare : c'est ce qu'`ADR-0071` decide et ce que son garde-fou verifie a
 chaque build, en comparant la version exigee par le pom agregateur a celle de l'execution.
-**REMPLACER_JDK**
+
+**Ce que je peux affirmer, et rien de plus** : **la machine virtuelle qui a execute ces tests
+rapporte la version majeure 21**. Ce n'est pas une lecture de ma part - c'est ce que
+`LaMachineVirtuelleDesTestsPorteLaVersionQueLeBuildExigeTest` a verifie a cette execution, en
+comparant `Runtime.version().feature()` a la version de toolchain que le pom agregateur reclame,
+par une egalite et non par un plancher. **Je ne cite aucun numero de correctif** : le garde-fou ne
+lit que la version majeure, donc je n'ai lu que celle-la. C'est exactement la discipline que ma
+formule de s24 n'avait pas.
+
+*Un fait de poste que je verse parce qu'il a l'air d'une anomalie et n'en est pas* : l'enveloppe
+`outils/mvn-jdk21.sh` a signale que **le JDK sur lequel Maven lui-meme tourne rapporte 25**.
+`ADR-0071`, section 4, le declare explicitement conforme - une toolchain ne gouverne pas la machine
+virtuelle de Maven, et rien n'exige que ce soit la meme. **Ce qui compte est celle des tests, et le
+garde-fou l'a mordue.**
 
 *Ce que cette porte ne couvre pas, et qui est la raison d'etre de ce document : `mvn verify` ne voit
 aucun des chiffres ci-dessus. Un CSS qui compile n'est pas un CSS qui se voit, et les trois releves

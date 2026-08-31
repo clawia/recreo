@@ -242,3 +242,24 @@ produisent a l'oreille.** Ma proposition maintient le seul point qui soit de moi
 - `squad/conformite/releves-s25/s25-ines-chiffres-traces.json` : cree.
 - **Aucun fichier de `domain/`, `application/`, `adapters/`, `bootstrap/` n'a change.** Aucune
   illustration n'est deposee sous le repertoire que le garde-fou d'`ADR-0073` surveille.
+
+---
+
+## 8. Porte technique
+
+`bash outils/mvn-jdk21.sh -B clean verify` a la racine du reacteur, sur l'arbre de ce worktree :
+**BUILD SUCCESS, 937 tests, 0 echec**. Perimetre : le reacteur complet, aucun `-pl`, donc aucun
+`-am` a citer. **La machine virtuelle qui a execute ces tests rapporte la version majeure 21** -
+verifie a cette execution par `LaMachineVirtuelleDesTestsPorteLaVersionQueLeBuildExigeTest`
+(`ADR-0071`), jamais lu dans une declaration de toolchain.
+
+Le detail de cette porte, et le motif pour lequel cet arbre porte une fusion de `s25-theo`, sont
+dans `proposition-ines-palier-1-du-visuel.md`, section "Porte technique" : ma premiere execution a
+echoue parce que ce document-ci cite `ADR-0073`, que `round-two` ne porte pas encore.
+**`ToutesLesReferencesDeDecisionResolventTest` a mordu exactement comme il devait.**
+
+**Les deux dessins de demonstration ne sont vus par aucun garde-fou de contenu, et c'est voulu** :
+`LIllustrationDeContenuResoutEtAucuneNeDortTest` derive sa population du repertoire d'illustrations
+d'`adapter-web`, ou ces deux fichiers ne sont pas. Une illustration deposee la sans paquet qui la
+declare rougirait - c'est la seconde direction du garde-fou de `theo-archi`, et une demonstration de
+faisabilite n'a rien a y faire.
