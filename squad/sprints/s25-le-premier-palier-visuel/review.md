@@ -565,3 +565,177 @@ contrainte non levee n'est pas le meme audit.*
   deja circule sur ce sujet, et je ne fabrique pas le quatrieme.
 - **Corrections du `relecteur-pedagogique`** : **dues.**
 - **Avis de `nadia-prof` et Done pedagogique** : **dus.** **Je ne le prononce jamais.**
+
+---
+
+## 11. Ajout du 2026-08-31 - le correctif de `lea-dev`, et l'obstacle 1 se ferme
+
+*Bloc ajoute par `sofia-sm` apres l'integration de `6bad75e`. **Rien de ce qui precede n'est
+efface** : les sections 1 a 10 disent ce que j'ai mesure sur l'arbre d'avant, et ce bloc dit ce qui a
+change. Les chiffres remplaces portent un renvoi ici.*
+
+### 11.1 L'obstacle 1 est CLOS, et pas par ceux a qui je l'avais route
+
+**Je l'avais route a `ines-design` et `theo-archi` comme une contradiction entre une contrainte
+ecrite et un garde-fou executable. Ce n'en etait pas une.** `lea-dev` l'a trouvee en verifiant ses
+douze dessins contre les sept contraintes, **dans son propre garde-fou** :
+
+> *"mon garde-fou verifiait-il les dimensions declarees ? Oui, mais **dans le mauvais sens** : il
+> exigeait au moins le plafond de rendu, lecture directe de `DV-1`. Sa mesure dit l'inverse - un
+> fichier a 480 sort a 176 exactement comme un fichier sans taille."*
+
+**`DV-1` et `DES-3` ne se contredisaient pas : `DES-3` corrigeait `DV-1`, et le garde-fou avait fige
+la lecture d'avant.** Il n'y avait donc rien a arbitrer entre deux agents - il y avait un sens
+d'inegalite a retourner.
+
+| Etat | 12 figures planes | 12 dessins de monnaie |
+|---|---|---|
+| Section 7.1, avant | `480 x 480` - passe le garde-fou, **refusee par `DES-3`** | hauteur `176` |
+| **Maintenant**, verifie par moi sur les 24 fichiers | hauteur **`176`** | hauteur **`176`** |
+
+> **Les vingt-quatre dessins servis declarent tous une hauteur de 176.** *Methode : lecture de la
+> balise racine de chacun des 24 `.svg` du repertoire servi, sur l'arbre final.*
+
+**L'obstacle 14 tombe avec lui** : plus aucun dessin ne declare une hauteur que la feuille rogne.
+
+**Ce que je demande a `ines-design` et `theo-archi`, et c'est le contraire de ce que je leur
+demandais** : **ne travaillez pas dessus.** L'obstacle est clos par son autrice. S'il reste une
+raison d'y revenir - `DV-1` ecrite ailleurs dans sa forme d'origine, par exemple - **qu'elle soit
+dite ; mais personne n'est attendu sur un obstacle resolu.**
+
+**Ce qui n'a pas change, et elle l'a mesure plutot que suppose** : *"l'ecran joue est pixel pour
+pixel le meme"* aux largeurs 576, 744 et 1 440. *Mesure d'elle, sur son corpus ; je ne l'ai pas
+refaite - elle demande de servir l'application - et je le dis plutot que de la faire passer pour
+mienne.* **C'est ce qui autorise a ne pas interrompre l'audit de `nadia-prof`** : ce qu'elle joue n'a
+pas bouge d'un pixel. *"Ce qui change est qui decide : le fichier, plus la feuille."*
+
+### 11.2 Le garde-fou execute quatre des sept contraintes, et nomme les trois autres
+
+**Cinq morsures neuves**, dont **la forme du contre-exemple d'`ADR-0073`** - un dessin qui ne porte
+qu'un cadre de vue. Le fixture `figure-trop-petite.svg` disparait, remplace par
+`figure-sans-taille-declaree.svg` : **le contre-exemple de l'ancienne lecture n'etait plus une
+faute.** *Controle par moi : aucune reference pendante au fichier supprime dans tout l'index, et le
+perimetre des fautifs reste derive du repertoire, jamais d'une liste de noms.*
+
+**Ce qu'elle nomme dans le fichier plutot que dans son rapport, et c'est la bonne place** : le
+**second plancher de `DES-3`** - l'encre d'un chiffre trace rend au moins 14 px - et **`DES-6`**
+demandent de savoir lesquelles des commandes de trace d'un fichier sont un glyphe, *"et aucune
+propriete du fichier ne le dit"*. **Ils ne sont pas verifies, ils mordront sur la chaine de la
+monnaie, et ils restent chez `ines-design` et `nadia-prof`.** Un garde-fou qui declare ce qu'il ne
+voit pas vaut mieux qu'un garde-fou muet : c'est `ADR-0051` applique a lui-meme.
+
+**Obstacle 19, neuf**, ouvert par ce constat : *le second plancher de `DES-3` et `DES-6` portent sur
+les douze dessins de monnaie et ne sont executes par rien.* **`ines-design` et `nadia-prof`.**
+
+### 11.3 Le critere 11, refait par moi sur l'arbre final
+
+**Deux chaines ont deplace le meme cliquet, et j'ai moi-meme ecrit a s25 qu'un lot mesure exactement
+sa branche et se trompe apres fusion. Je ne reprends donc aucune des deux valeurs : je remesure.**
+
+*Methode et perimetre, identiques a ceux du garde-fou : les octets du fichier **commite**,
+commentaires compris, **fins de ligne normalisees en LF**, sur les 24 dessins du repertoire servi de
+l'arbre final.*
+
+| Qui mesure, et sur quel arbre | Plus gros dessin | Repertoire entier |
+|---|---|---|
+| `lea-dev`, sa chaine seule | 1 430 | 6 524 |
+| `sofia-sm`, arbre d'avant le correctif (section 4) | 2 685 | 29 118 |
+| **`sofia-sm`, arbre final** | **2 685** | **29 436** |
+
+- **Le plafond par dessin ne bouge pas**, et c'est verifie et non suppose : le plus gros des figures
+  planes vaut **1 430**, celui de la monnaie **2 685** (`monnaie-meme-somme-e.svg`). 1 430 est sous
+  2 685, donc la hausse de sa chaine ne traverse pas.
+- **Le plafond du repertoire monte de 318 octets** : **6 524** pour les douze figures, **22 912** pour
+  les douze de monnaie, **29 436** au total. Les 318 sont **exactement** l'ecart qu'elle annonce sur
+  sa propre chaine (6 206 -> 6 524). **Cela verifie sur l'arbre fusionne ce qu'elle verifie sur le
+  sien : passer de 480 a 176 n'a coute aucun octet ; ce sont les commentaires qui pesent.**
+
+> **Trois chiffres circulent pour le meme cliquet - 1 430 / 6 524, 2 685 / 29 118 et 2 685 / 29 436 -
+> et aucun n'est faux : chacun est exact sur l'arbre qui l'a mesure. Seul le dernier decrit ce que le
+> depot sert.** La phrase est ecrite **dans le garde-fou**, pas seulement ici.
+
+**Le cliquet dit desormais ce qu'il mesure, et c'est sa Javadoc qui le dit, pas la mienne.** J'avais
+porte l'avertissement d'`ines-design` a la fusion precedente ; **sa formulation est meilleure et je
+garde la sienne** - elle cite les 275 octets de trace pour 1 084 commites **pour rendre la
+distinction opposable**, la ou j'en faisais une note. La demande est satisfaite dans le garde-fou et
+non dans un rapport.
+
+### 11.4 Le piege de fusion - cherche, et il ne s'est pas represente sous la meme forme
+
+**Il m'est signale parce que je l'ai attrape deux fois. Je l'ai donc cherche avant de resoudre, et je
+dis ce que j'ai controle plutot que de conclure qu'il n'y en avait pas.**
+
+- **Aucune ligne partagee** dans ce conflit : il ne touche ni `catalogue.yaml`, ni aucune liste
+  blanche. La forme exacte du piege precedent n'existait pas ici.
+- **Rien de mon cote n'a disparu** en prenant le sien : le diff du garde-fou ne retire **aucune ligne
+  qui ne soit un commentaire**. Controle, pas suppose.
+- **Aucune reference pendante** au fixture supprime, sur l'index complet.
+
+**Le vrai risque de cette fusion etait ailleurs, et il est croise : c'est mon arbre, et lui seul, qui
+soumet les douze dessins de monnaie aux contraintes neuves d'une chaine qui ne les a jamais vus.**
+Deux points le decidaient, tous deux verifies dans le corps du juge **avant** de lancer quoi que ce
+soit :
+
+- **le plafond de hauteur ne s'applique qu'a `height`, jamais a `width`.** Mes douze dessins declarent
+  une hauteur de 176 et des largeurs de 278 a 678 : ils passent. **Si le plafond avait porte sur les
+  deux, douze dessins seraient tombes** ;
+- **le plancher de trait neuf s'applique aux vingt-quatre.**
+
+**La porte technique tranche : les deux chaines passent les contraintes de l'autre.**
+
+### 11.5 Porte technique de l'arbre final
+
+```
+mvn -B -t <fichier de toolchains hors depot> clean verify
+```
+
+> **BUILD SUCCESS**, cinq modules, **1 006 tests, 0 echec, 0 erreur, 0 ignore.**
+
+**Meme methode et meme perimetre qu'en section 3.2** : somme des lignes de resultat **de module**,
+reacteur complet a la racine, **aucun `-pl` et donc aucune question de `-am`**. Le JDK reste celui de
+la toolchain designee pour cette execution, qui rapporte 21.0.10 - **la configuration du poste n'a
+toujours pas ete touchee**, et l'obstacle 11 reste entier.
+
+| Module | Tests |
+|---|---|
+| `recreo-domain` | 80 |
+| `recreo-application` | 13 |
+| `recreo-adapter-web` | **364** |
+| `recreo-adapter-content` | 398 |
+| `recreo-bootstrap` (surefire) | 145 |
+| `recreo-bootstrap` (failsafe) | 6 |
+| **Total** | **1 006** |
+
+**Ecart 1 001 -> 1 006 : +5, etabli classe par classe.** Les cinq sont **entierement** dans
+`ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTest`, 8 -> 13 : ses cinq
+morsures neuves. **Aucune autre classe ne bouge, aucune ne disparait.** L'ecart constant de 7 entre
+la somme par classe et la somme par module se retrouve identique - 999 contre 1 006 - obstacle 12,
+toujours ouvert chez `theo-archi`.
+
+**Ses 982 tests ne sont pas comparables aux miens et je dis pourquoi** : sa branche ne porte ni la
+chaine de la monnaie, ni `SUB`, ni `SEM`, ni la correction de `cm1-fractions`. **Exact chez elle.**
+
+### 11.6 Etat des obstacles apres cet ajout
+
+| # | Obstacle | Etat |
+|---|---|---|
+| **1** | La hauteur declaree, au moins 176 contre au plus 176 | **CLOS** par `lea-dev`. `ines-design` et `theo-archi` **ne sont plus attendus** |
+| **14** | Douze dessins declarent une hauteur que la feuille rogne | **CLOS** - les 24 declarent 176 |
+| **19** | *Neuf* : le second plancher de `DES-3` et `DES-6` portent sur les dessins de monnaie et **ne sont executes par rien** | **OUVERT** - `ines-design`, `nadia-prof` |
+| 11 | La toolchain du poste declare 21 et designe un JDK 25.0.2 | **OUVERT**, inchange |
+| 12 | La somme par classe sous-compte de 7 | **OUVERT**, inchange |
+| autres | 2 a 10, 13, 15 a 18 | **inchanges** |
+
+**Les sections 3.2, 4 et 7.1 restent lisibles a leur place** : elles decrivent l'arbre d'avant, avec
+leur methode, et ce bloc dit ce qui a bouge. **1 001 n'est pas un chiffre faux ; c'est le chiffre
+d'un autre arbre.**
+
+### 11.7 Ce que cet ajout ne change pas
+
+- **La review reste ouverte** : pas d'horodatage de fin, pas de duree effective.
+- **L'ordre des trois ceremonies est inchange** (section 9). `nadia-prof` joue - et **ce qu'elle joue
+  n'a pas bouge d'un pixel**, ce qui est la raison pour laquelle son audit n'a pas ete interrompu.
+  `relecteur-pedagogique` relit ; **`yanis-qa` vient apres lui**, et il trouvera les cinq morsures
+  neuves et les deux cliquets deplaces.
+- **La matrice ne bouge pas** : 27 / 41. Aucune ligne ne passe sans le verdict de `nadia-prof`.
+- **Aucun Done pedagogique n'est prononce ici.**
