@@ -186,3 +186,9 @@ jeux:
     mecanique: saisie
     paquet: cp-complements-10-saisie
     nombreDeManches: 7
+  - id: bandit-manchot-substituts-cm1
+    titre: "De qui parle le texte"
+    consigne: "Lis le texte, puis dis de qui on parle."
+    mecanique: bandit-manchot
+    paquet: cm1-substituts
+    nombreDeManches: 10

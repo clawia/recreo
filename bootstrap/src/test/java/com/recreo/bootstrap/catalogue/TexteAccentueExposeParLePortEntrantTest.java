@@ -147,6 +147,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // section 5.2, FRA-10 ; amendement du 2026-08-31, famille (e)) : entree neuve, la
             // notion de fraction simple au CM1, moitie "notion" seule.
             "bandit-manchot-fractions-cm1",
+            // S25-SUB (arbitrage prealable s23, section 5, SUB-1 a SUB-10) : entree neuve,
+            // reperer les substituts d'un personnage dans un texte, CM1.
+            "bandit-manchot-substituts-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -200,6 +203,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Un ou plusieurs ?",
             // S24-FRA : titre neuf.
             "Les fractions simples",
+            // S25-SUB : titre neuf. Sans point d'interrogation, donc sans espace devant un signe
+            // double : un contenu neuf n'herite d'aucune dette (TYP-1, ADR-0067).
+            "De qui parle le texte",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -249,6 +255,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Choisis la bonne écriture pour compléter la phrase.",
             // S24-FRA : consigne neuve.
             "Lis bien la fraction, puis choisis la réponse.",
+            // S25-SUB : consigne neuve, generique - elle ne nomme aucun texte-support ni aucun
+            // personnage d'aucun item.
+            "Lis le texte, puis dis de qui on parle.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -324,7 +333,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // reellement est la moitie "notion", et la mention exacte que nadia-prof exige sur la
             // matrice reste due le jour ou la ligne bougera.
             "Notion de fraction simple (unités fractionnaires, fractions inférieures à 1) et "
-                    + "repérage sur une droite numérique");
+                    + "repérage sur une droite numérique",
+            // S25-SUB : competence neuve, ligne entiere. nadia-prof a verifie avant d'arbitrer
+            // qu'elle est distincte de "Comprendre un texte narratif ou documentaire", deja verte.
+            "Repérer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
