@@ -5,6 +5,7 @@ import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
+import com.recreo.domain.content.ReponseAEcrire;
 import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.Score;
 import com.recreo.domain.mechanic.SessionStatus;
@@ -161,9 +162,20 @@ public final class BanditManchotSession implements GameSession {
                 SessionStatus.EN_COURS);
     }
 
+    /**
+     * ADR-0004, couture scellee d'{@link Item} : depuis s24 le contrat de contenu porte une seconde
+     * forme d'item, celle de la mecanique de saisie. Cette mecanique-ci ne sait pas la presenter -
+     * elle distribue des propositions, et un item auquel on repond en ecrivant n'en porte aucune -
+     * et elle le dit plutot que de l'ignorer. Le cas est celui d'une entree de catalogue qui
+     * associerait un paquet de saisie a cette mecanique ; le message nomme les deux.
+     */
     private static Question questionDe(Item item) {
         return switch (item) {
             case Question question -> question;
+            case ReponseAEcrire reponse -> throw new IllegalArgumentException(
+                    "item inconnu de la mecanique bandit manchot : " + reponse.id().value()
+                            + " attend une reponse ecrite, cette mecanique ne presente que des"
+                            + " propositions");
         };
     }
 
