@@ -444,3 +444,57 @@ Le texte ci-dessus n'est pas modifie. Cette section s'y ajoute, comme la clause 
 - **Une condition de contenu est amendee** : `FRA-5` gagne une famille (e) sur la forme (d) de
   `FRA-2`, avec son plancher et sa verification de satisfaisabilite
   (`squad/conformite/ARBITRAGE-FRA-la-forme-d-contre-le-seuil-minimal-de-rang.md`).
+
+
+---
+
+## 12. Ajout date du 2026-08-31, soir - la moitie (iii), et la decharge des lots 3 et 4
+
+J'avais ecrit, en routant la question a `theo-archi` : *"Si elle est etablissable, elle merite
+d'entrer dans mon exigence comme une moitie (iii), et je l'y ajouterai avec sa date."* Il l'a
+etablie. Je tiens ma phrase.
+
+**Amendement de l'exigence 2, troisieme voie, ajoutee le 2026-08-31, non retroactive :**
+
+> **(iii) Garde invariablement vraie plus corps identique.** Une preuve de structure vaut la
+> comparaison de rendu quand **(1)** tout code ajoute sur le chemin d'execution est place derriere
+> une garde dont on etablit qu'elle est vraie pour la totalite des jeux concernes, par une
+> enumeration recomptable, **et (2)** le corps garde est **identique a l'octet** a celui qui
+> s'executait avant, l'identite etant etablie par extraction et comparaison caractere a caractere,
+> et non par lecture.
+>
+> **Les deux clauses sont conjointes.** Une garde vraie devant un corps modifie ne prouve rien ; un
+> corps identique derriere une garde parfois fausse ne prouve rien non plus.
+
+### Ce que j'ai reverifie moi-meme avant de prononcer
+
+- **La garde** : `session instanceof BanditManchotSession` dans `PartieController.mancheModele`. Elle
+  est vraie pour les 27 si les 27 entrees de catalogue portent la mecanique `bandit-manchot`.
+  **Mesure : les 30 entrees du catalogue servi declarent `mecanique: bandit-manchot`, sans exception**
+  - comptage sur le fichier, methode reproductible. Les 27 en sont un sous-ensemble.
+- **Le corps** : extraction du corps de `mancheModele` avant le lot 3 (`1317e4f`) et du corps de
+  `mancheDeBanditManchot` apres (`3dac4f5`), comparaison caractere a caractere. **Identiques.** *Mon
+  extraction rend 2418 caracteres la ou `theo-archi` en compte 2423 : la difference est la ligne de
+  fermeture, incluse chez lui et pas chez moi. **Ce n'est pas un desaccord de mesure**, c'est une
+  convention de bornes, et la conclusion est la meme des deux cotes.*
+- **La feuille de style du lot 4** : **115 ajouts, 3 suppressions.** J'ai lu les trois lignes
+  supprimees : `.sortie-pleine {`, `.sortie-pleine:focus-visible {`, `.sortie-pleine {`. **Chacune est
+  reecrite en conservant son selecteur** et en lui adjoignant un selecteur neuf sur la ligne suivante.
+  **Aucune declaration servie aux 27 ne disparait ni ne change.**
+
+### Verdict
+
+> **Les lots 3 et 4 sont discharges sous R-C. Les 27 jeux existants ne sont pas rejoues, et le
+> chemin C est ecarte pour s24.**
+
+`theo-archi` a refuse trois fois de prononcer cette decharge lui-meme alors qu'il en avait tous les
+elements. **Il a eu raison chaque fois** : la porte est a moi, et une decharge qu'un autre prononce
+n'est pas une porte.
+
+### Ce que cette decharge ne couvre pas
+
+- Elle porte sur **les lots 1, 3 et 4 de s24**, et sur rien d'autre.
+- **Elle ne cree aucune presomption pour le prochain lot partage.** Chaque lot est instruit pour
+  lui-meme, et les deux clauses de (iii) sont a etablir a chaque fois.
+- **La capture de reference que `theo-archi` a chiffree reste la seule voie pour un lot qui modifie
+  un corps qui s'execute.** Je ne la demande pas ; si elle est financee, je m'en servirai.
