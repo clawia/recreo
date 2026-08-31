@@ -7716,6 +7716,15 @@ sa place, plutot que laisses a decouvrir. L'outillage de ces etapes est au backl
 
 - **Statut** : **conditionnelle a un arbitrage prealable de `nadia-prof`, pose des l'ouverture du
   sprint** (`DEC-0059`, section 6.2). **Aucun developpement ne commence avant sa reponse.**
+- **Note du 2026-08-31 - le statut sous la bascule, ecrit avant le declencheur** : `nadia-prof` a
+  repondu le 2026-08-30 (complements a 10 en saisie numerique, `CPL-1` a `CPL-8`), la condition
+  ci-dessus est donc levee et la story est engagee au perimetre. **Si `sofia-sm` declare la bascule
+  de son planning de s24** (section 5.3 de `planning.md`), **cette story sort du sprint et son statut
+  devient *reportee a s25, rang 1*** - elle n'est ni supprimee ni transformee en intention, et le
+  report est compte comme le premier de ce paquet (`DEC-0059`, amendement du 2026-08-31, section A.3,
+  condition 3). Dans ce cas `S24-DEN` prend sa place et la mecanique de saisie est livree sans etre
+  atteignable depuis le catalogue, ce que la meme section A.3 autorise sous quatre conditions
+  cumulatives.
 - **Pourquoi cette story existe** : une mecanique qui n'apparait dans aucune entree de catalogue
   n'est jouable par aucun enfant, et ce produit a deja cloture quatre sprints d'affilee sans
   increment jouable (`DEC-0037`, cloture de s17). s24 vise la mecanique **jouable**.
@@ -7819,3 +7828,86 @@ sa place, plutot que laisses a decouvrir. L'outillage de ces etapes est au backl
   `ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md`, section 1.
 - **Agent pressenti** : **aucun tant que `nadia-prof` n'a pas repondu.** `sofia-sm` affecte ensuite,
   si elle a la capacite.
+
+---
+
+## Backlog - le score cesse d'etre parfait par elimination (`DEC-0061`), non engage a s24
+
+Ecrit le 2026-08-31, hors du perimetre gele de s24, sur la reserve 5 elargie de `nadia-prof` du
+2026-08-30 et l'obstacle 2 du planning de s24 que `sofia-sm` m'a rendu au fond.
+
+### S25-SCO-1 - Le score d'une partie cesse d'etre parfait par elimination - NON ENGAGEE, candidate de tete a s25
+
+- **Statut** : **non engagee.** Candidate de tete a l'ouverture de s25 (`DEC-0061`, section 4).
+  **Bloquee par deux instructions nommees, dans cet ordre** : le resultat pedagogique attendu, du a
+  `nadia-prof` ; puis la forme de la correction et son cout, dus a `theo-archi` avec son `ADR`
+  (`DEC-0061`, section 5). **Aucun developpement ne commence avant les deux.**
+- **Besoin** : en tant qu'eleve de CP ou de CM1, je veux que le resultat affiche a la fin d'une
+  partie me dise vraiment ce que j'ai su faire, afin qu'un bon score veuille dire quelque chose et
+  que je sache sur quoi revenir.
+- **Competence programme visee** : **transverse - pas de contenu pedagogique.** Le defaut est une
+  propriete de la mecanique `M5` face au nombre de propositions d'un item ; `nadia-prof` l'ecrit
+  ainsi : *"Ce n'est pas un defaut de contenu, c'est une propriete de `M5`"*. **Aucune ligne de la
+  matrice ne bouge**, ni par cette story ni par sa livraison.
+- **Le fait, avec sa source** : sur les 615 items enumeres des 27 paquets, **582 (94,6 pour cent)
+  portent deux ou trois propositions** ; un enfant qui presse au hasard sans represser une
+  proposition barree y a necessairement raison au dernier essai, compte comme reussite. Chiffre,
+  population et methode de `nadia-prof` (arbitrage prealable de s24, section 7.1), **non reproduits
+  par moi**. Ce que j'ai verifie moi-meme dans `BanditManchotSession.java` :
+  `ESSAIS_AVANT_REVELATION` vaut `3`, `jouer` teste la bonne reponse avant de compter l'essai,
+  `resoudre(true)` incremente `reussites` sans regarder `essaisSurLaManche`, et
+  `propositionsEssayees` conserve les propositions pressees.
+
+#### Criteres d'acceptation correctifs - rouges aujourd'hui, verifies contre l'existant avant d'etre ecrits
+
+Chacun a ete confronte au comportement actuel de `BanditManchotSession` avant d'etre ecrit ; c'est
+ce qui les distingue d'une phrase.
+
+- **`SCO-1`** - Etant donne un item a **trois** propositions, quand l'enfant presse successivement
+  les deux distracteurs puis la bonne reponse, alors **la manche n'est pas comptee comme une
+  reussite**. *Aujourd'hui elle l'est : `resoudre(true)` fait `reussites + 1` quel que soit le nombre
+  d'essais deja depenses.*
+- **`SCO-2`** - Etant donne un item a **deux** propositions, quand l'enfant presse le distracteur
+  puis la bonne reponse, alors **la manche n'est pas comptee comme une reussite**. *Aujourd'hui elle
+  l'est, par le meme chemin.*
+- **`SCO-3`** - Etant donne un paquet dont **tous** les items portent trois propositions, quand une
+  partie complete est jouee par un choix qui ne presse jamais deux fois la meme proposition et ne
+  connait aucune reponse, alors **le score final n'est pas parfait**. *Aujourd'hui il l'est,
+  systematiquement et sur 94,6 pour cent des items du catalogue.* **C'est le critere qui porte
+  l'intention produit ; les deux precedents en sont le detail.**
+
+#### Criteres de non-regression - verts aujourd'hui, et ecrits pour qu'une correction ne deborde pas
+
+Ils ne corrigent rien et je ne les presente pas comme des correctifs. Ils bornent le remede.
+
+- **`SCO-4`** - Sur n'importe quel item, une manche resolue **au premier essai** reste comptee comme
+  une reussite. *Vert aujourd'hui.*
+- **`SCO-5`** - Une manche resolue par la **revelation** n'est jamais comptee comme une reussite
+  (`M11`, clause 3). *Vert aujourd'hui.*
+- **`SCO-6`** - Une partie de `nombreDeManches` manches en presente toujours `nombreDeManches`
+  distinctes, quel que soit le nombre d'essais depenses sur chacune, et ne se termine jamais au
+  milieu d'une question (`M3`). *Vert aujourd'hui.*
+- **`SCO-7`** - **Une reponse juste ne coute jamais un essai** (`SEUIL-2`). *Vert aujourd'hui, et
+  `nadia-prof` nomme `SEUIL-2` parmi les proprietes qu'aucun garde-fou executable ne tient
+  (arbitrage prealable de s24, section 8).* Cette story est l'occasion de le rendre executable ; ce
+  n'est pas une exigence de plus, c'est le meme comportement, ecrit.
+
+#### Ce que cette story ne dit pas, et ce n'est pas un oubli
+
+- **Elle ne dit pas comment `M5` change.** Le nombre d'essais, sa modulation par le nombre de
+  propositions, le comptage du score, ou toute autre voie sont a `theo-archi` avec son `ADR`. Les
+  criteres ci-dessus sont des **resultats observables**, jamais un chemin.
+- **Elle ne dit pas ce qu'un enfant doit pouvoir faire d'une manche** quand l'elimination est
+  possible : c'est a `nadia-prof`, et c'est la premiere des deux instructions bloquantes.
+- **Elle ne retire aucun Done** et ne conteste aucun contenu : tous les paquets vises ont ete valides
+  sur leur contenu, qui est juste.
+- **Le sort des Done deja prononces sur les 27 jeux que la correction ferait bouger n'est pas
+  tranche ici** : la question est posee a l'utilisatrice par `DEC-0060`, section 8, `Q2`. Elle est
+  bloquante pour la livraison, pas pour l'instruction.
+- **Ce qui n'est pas testable par un automate** : rien, une fois le remede choisi. `SCO-1` a `SCO-7`
+  sont tous calculables sur la session du domaine, sans navigateur et sans jugement. C'est
+  precisement pourquoi ce defaut aurait pu etre attrape par un test des s04, et ne l'a pas ete.
+- **Lien decision** : `DEC-0061` ; `DEC-0044`, section 1 (non rouverte, exacte sur ce qu'elle a
+  juge) ; reserve 5 de `nadia-prof`, elargie le 2026-08-30.
+- **Agent pressenti** : **aucun.** `nadia-prof` rend le resultat attendu, `theo-archi` rend l'`ADR`,
+  puis `sofia-sm` affecte si elle a la capacite.
