@@ -253,3 +253,95 @@ l'arbre final**, et c'est cet arbre-la que juge ce verdict.
 *Je le raconte parce que le fait inverse aurait ete invisible : un dessin corrige apres une passe
 d'exactitude, et un Done prononce sur des coordonnees qui n'existent plus. C'est le meme mode de
 defaillance que le jar de la section 2, deux fois dans le meme audit.*
+
+### 13. Amendement de `CON-6`, le 2026-08-31 - `sofia-sm` a raison, et j'ai trouve pire en verifiant
+
+**Rien n'est efface : le libelle de `CON-6` reste lisible en section 11, tel qu'il a ete ecrit, et il
+continue de dire ce qu'il disait. C'est sa clause de verification qui est remplacee ici.**
+
+#### 13.1 Son fait, refait par moi
+
+*Methode : pour chaque paquet illustre de l'arbre, l'ensemble des bonnes reponses que porte chaque
+indice, et la part d'items dont l'indice couvre plus d'une reponse. Perimetre : les deux paquets
+illustres de s25, a l'etat de `1a47644` - **la reecriture de ses indices n'est pas dans cet arbre**,
+je mesure donc bien le paquet que j'ai valide.*
+
+| Paquet | Indices distincts | Plancher `CON-6` | Indice le plus repandu |
+|---|---|---|---|
+| `cp-monnaie` | **2** pour 12 items | **12/12 = 100 %** | 7 items sur 12 |
+| `cp-figures-planes` | 3 pour 12 items | **6/12 = 50 %** | 6 items sur 12 |
+
+**Elle a raison, et sa demonstration est exacte** : deux indices pour douze items donnent **100 pour
+cent**, parce qu'un indice tres partage est **forcement** porte par un item de reponse differente.
+**Ma clause recompense l'uniformite sans aucune borne**, et son optimum degenere est *un seul indice
+pour tout le paquet* - c'est-a-dire le pire indice possible, celui qui ne nomme la propriete
+d'aucun item. Sa formule est la bonne : **les deux bornes sont a un seul bout.**
+
+#### 13.2 Ce que j'ai trouve en verifiant, et qui est plus grave que ce qu'elle m'a signale
+
+**`cp-figures-planes` marque exactement 50 pour cent, donc il passe mon plancher.**
+
+**C'est le paquet qui a motive `CON-6`.** J'ai ecrit cette condition hier apres avoir mesure que son
+indice designe la reponse sur 8 items sur 12 - et **la clause que j'ai ecrite pour l'attraper ne
+l'attrape pas**. Elle le laisse passer d'un cheveu.
+
+**C'est la forme exacte de `CPL-3`** : ecrite, datee, precise, et sans morsure sur le materiau qui
+l'a motivee. Je l'ai sanctionnee trois fois cette semaine chez d'autres ; elle est de moi cette
+fois-ci, et le fait qu'un tiers ait du me la faire chercher est le vrai enseignement.
+
+#### 13.3 Le diagnostic, en une phrase
+
+**Ma phrase etait juste, ma clause ne la mesurait pas.** `CON-6` dit *"l'indice est choisi d'apres
+les propositions de l'item, jamais d'apres sa bonne reponse"*. **Etre choisi d'apres les propositions
+implique de varier avec elles** : ni colle a la reponse, ni constant sur le paquet. **Ma clause ne
+mesurait que le premier bout.**
+
+#### 13.4 La clause de verification, remplacee - **deux bornes, et une troisieme qui reste a moi**
+
+> **`CON-6`, clause amendee le 2026-08-31.** Sur un paquet illustre :
+>
+> - **Borne basse - aucun indice ne va avec une seule reponse.** **Chaque** indice du paquet est porte
+>   par au moins deux items dont les bonnes reponses different. *Ce n'est plus "la moitie des items" :
+>   c'est **tous les indices**, sans part toleree.* Motif : un indice qui n'accompagne qu'une reponse
+>   **est** une designation des qu'il s'affiche, et il n'y a aucune raison d'en tolerer une part.
+> - **Borne haute - aucun indice ne couvre plus de la moitie des items du paquet.** *Unite de compte :
+>   l'item.* Motif : au-dela, l'indice ne dit plus rien de **cet** item et ne fait que repeter la
+>   consigne. C'est la borne que `sofia-sm` a nommee et qui manquait.
+> - **Troisieme borne, non calculable, et elle reste dans ma seule main** : **l'indice apporte quelque
+>   chose que la consigne ne dit pas deja.** Aucun automate ne verra que *"Lis le nombre grave sur
+>   chaque objet, puis ajoute"* redit *"Regarde bien l'argent, puis reponds"*. **C'est elle qui juge
+>   si un indice aide**, et les deux bornes chiffrees ne font qu'ecarter les deux degenerescences.
+
+**Ce que les deux bornes donnent sur le materiau reel**, pour qu'on sache ce qu'elles couteraient :
+
+| Paquet mesure | Borne basse | Borne haute |
+|---|---|---|
+| `cp-figures-planes` | **echoue** - deux indices ne vont qu'avec une seule reponse | tenue de justesse : 6 sur 12 |
+| `cp-monnaie` (avant reecriture) | tenue | **echoue** - 7 items sur 12 |
+
+**Chacun des deux paquets echoue a une borne differente, et aucun n'echouait a ma clause d'hier.**
+C'est la meilleure preuve que la borne unique etait un oubli.
+
+#### 13.5 La question qu'elle me pose expressement, tranchee
+
+Elle demande si un indice **partage** est acceptable et si seule la taille sur mesure est fautive.
+
+**Non : un indice partage n'est pas seulement acceptable, il est exige** - c'est la borne basse. **Le
+partage est la bonne propriete ; c'est son exces qui est fautif.** La borne unique n'etait donc pas
+un choix que je defendrais, **c'etait un oubli**, et je le corrige plutot que de l'habiller.
+
+#### 13.6 Ce que cet amendement change, et ce qu'il ne change pas
+
+- **Il ne change aucun verdict.** `cp-figures-planes` reste **VALIDE SOUS RESERVE** : la reserve de la
+  section 10 demandait deja la reecriture des indices, et `lea-dev` la conduit. `cp-monnaie` reste
+  **VALIDE SOUS RESERVE**. **Je ne rouvre rien.**
+- **`CON-6` reste non retroactive** : elle ne s'applique a aucun des vingt-quatre items deja valides,
+  amendee ou non.
+- **Ce qu'il change** : `theo-archi` et `yanis-qa` doivent encoder **les deux bornes**, pas la
+  premiere. **La clause d'hier, encodee telle quelle, aurait ete un garde-fou vert sur les deux
+  paquets qui l'ont motivee.**
+- **Sur la facon dont `sofia-sm` s'y est prise** : elle a mesure sa propre conformite **avant**
+  d'ecrire, elle a refuse de compter un 100 pour cent comme un merite, elle a reecrit malgre son
+  score, et elle a grave l'angle mort dans la Javadoc du test plutot que dans un rapport. **C'est
+  exactement la conduite qui rend une condition utile**, et sans elle j'aurais laisse passer une
+  regle qui ne gardait rien.

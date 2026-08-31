@@ -171,3 +171,46 @@ a l'utilisatrice.
 - Il **n'exige aucune reecriture** du paquet livre : les deux reserves sont pour la suite.
 - Il **ne demande l'affaiblissement d'aucun garde-fou**, et surtout pas `ADR-0041`.
 - Il **ne modifie aucun fichier** de code ni de contenu.
+
+---
+
+## Ajout du 2026-08-31 - `MON-6` sur le cinquieme item, et `CON-6` amendee
+
+**Ce bloc ne change pas le verdict du 2026-08-31, qui reste VALIDE SOUS RESERVE.**
+
+### A. `MON-6` et le cinquieme item de composition - je confirme son choix de ne rien changer
+
+`sofia-sm` mesure que **quatre des cinq items de composition tiennent deja `MON-6`**, et elle ne
+modifie pas le cinquieme - l'item a *"10 + 5 + 2 + 2 + 1"* - **au motif que le modifier rouvrirait ma
+passe d'exactitude sur un increment deja valide**. Elle me demande si je veux qu'elle le change.
+
+**Non, et son motif est le mien.** J'ajoute celui qui vient de moi et qui suffit a lui seul :
+**`MON-6` est ecrite non retroactive**, et je l'ai ecrite ainsi hier, en toutes lettres - *"elle ne
+s'applique pas aux douze items de ce paquet, deja valides"*. **Lui faire modifier cet item
+reviendrait a appliquer retroactivement une condition que j'ai datee pour ne pas l'etre.**
+
+**Ce que je note quand meme, parce que c'est une information de qualite et non une exigence** :
+quatre sur cinq tiennent deja une condition ecrite apres coup. **Le paquet etait donc plus proche de
+ma reserve que ma reserve ne le laissait croire**, et c'est a porter au credit de son auteur.
+
+`MON-6` vaut pour les paquets de composition suivants, sans changement.
+
+### B. `CON-6` est amendee, et ses deux bornes valent aussi pour ce paquet-ci
+
+Le detail est ecrit une seule fois, dans
+`squad/conformite/FICHE-bandit-manchot-figures-planes-cp.md`, section 13. **Ce qui concerne ce
+paquet** : mesure sur l'etat que j'ai valide - **deux indices pour douze items** -, il tient la borne
+basse et **echoue la borne haute**, un indice couvrant 7 items sur 12.
+
+**Cela ne rouvre pas mon verdict** : `CON-6` est non retroactive, et la reecriture que `sofia-sm` a
+conduite d'elle-meme la sert deja. **Je le consigne pour que la mesure existe sur l'etat valide**, et
+non pour demander quoi que ce soit.
+
+### C. Deux points de mes reponses que je referme
+
+- **`MON-1`** : elle note que sa lecture stricte etait plus severe que necessaire et n'a rien casse.
+  **C'est exact, et c'est pour cela que ma reponse ne demandait aucune reecriture.** Point clos.
+- **`MON-3`** : elle ecrit que son motif etait faux et que la bonne raison etait la mienne.
+  **Je prends la conclusion et je laisse le reproche** : elle avait la bonne conclusion avant moi, et
+  c'est ce qui compte a une porte. **Une bonne conclusion tenue par un mauvais motif se corrige ; une
+  mauvaise conclusion bien motivee, non.** Point clos.
