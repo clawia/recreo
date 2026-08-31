@@ -94,11 +94,39 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      */
     private static final int PLAFOND_DE_RENDU_EN_PIXELS = 176;
 
-    /** Cliquet de poids, ADR-0036 clause 5 : le plus gros dessin, fins de ligne normalisees en LF. */
-    private static final int POIDS_D_UN_DESSIN_MAXIMUM = 1112;
+    /**
+     * Cliquet de poids, ADR-0036 clause 5 : le plus gros dessin, fins de ligne normalisees en LF.
+     *
+     * <p><b>Deplace a la fusion des deux paires visuelles par sofia-sm, casquette Scrum Master,
+     * 2026-08-31 - critere 11 du planning de s25, execute.</b> Ce cliquet valait 1 112 octets,
+     * mesures par lea-dev sur ses douze figures planes ; il vaut desormais {@code 2 685}, la taille
+     * du plus lourd des vingt-quatre dessins servis, {@code monnaie-meme-somme-e.svg}. <b>Valeur
+     * mesuree par la Scrum Master sur l'arbre fusionne</b>, jamais relayee depuis l'annonce d'un
+     * lot, et deplacee dans le commit qui apporte la seconde chaine - c'est la condition exacte que
+     * le critere 11 pose : <i>"la seconde le respecte, ou le deplace dans le meme commit avec son
+     * motif ecrit et sa valeur mesuree. Un cliquet releve sans motif ne cliquete plus rien."</i>
+     *
+     * <p><b>Le motif de la hausse, et il n'est pas un relachement de trace</b> : une figure plane
+     * est <b>un</b> trace - un {@code rect}, un {@code circle}, un {@code path} - la ou une scene de
+     * monnaie porte jusqu'a six objets, dont chacun demande un contour, un contour interieur et une
+     * a deux instances de glyphe. Le trace est plus gros par construction. Motif de sofia-sm,
+     * casquette dev, verifie par la Scrum Master sur les fichiers avant d'etre repris.
+     *
+     * <p><b>Ce que ce cliquet mesure, et ines-design demande que ce soit dit</b> : les octets
+     * <b>commites</b>, en-tete de commentaire compris, <b>pas les octets de trace</b>. Ses propres
+     * fichiers de demonstration pesent 275 octets de trace pour 1 084 commites, et <i>"un seuil pose
+     * sur l'un ne veut rien dire sur l'autre, et le cliquet doit dire lequel il mesure"</i>. Les
+     * octets commites sont retenus parce que ce sont ceux que l'enfant telecharge.
+     */
+    private static final int POIDS_D_UN_DESSIN_MAXIMUM = 2685;
 
-    /** Cliquet de poids, ADR-0036 clause 5 : le repertoire entier, fins de ligne normalisees en LF. */
-    private static final int POIDS_TOTAL_MAXIMUM = 6206;
+    /**
+     * Cliquet de poids, ADR-0036 clause 5 : le repertoire entier, fins de ligne normalisees en LF.
+     *
+     * <p>Meme deplacement, meme motif et meme methode que ci-dessus : 6 206 octets pour les douze
+     * figures planes seules, <b>29 118</b> pour les vingt-quatre dessins servis apres fusion.
+     */
+    private static final int POIDS_TOTAL_MAXIMUM = 29118;
 
     private static final String VUE = "viewBox";
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MON, item illustre du palier 1 (S25-MON-1). Deux billets.
+     ADR-0073 clause 4 et DES-7 : aucun element de texte, tout est trace. Les deux balises que
+     la clause 4 refuse ne sont pas citees ici, le garde-fou lisant le fichier entier.
+     MON-1, MON-2 : la valeur de chaque objet est gravee en geometrie, jamais nommee, et seules
+     les valeurs qui existent sont montrees. MON-4 : aucun centime.
+     DES-1 a DES-6 : cadre de vue et dimensions en unites utilisateur au meme rapport, hauteur
+     declaree a 176 px, trait en unites utilisateur, teinte en clair, glyphes definis une
+     fois et instancies. Glyphes d'ines-design, recopies a l'identique. -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 466 176" width="466" height="176" role="img" fill="none"
+     stroke="#1c2733" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <path id="g5" d="M34 2 L10 2 L7 26 A16 16 0 1 1 5 47"/>
+  </defs>
+    <rect x="12" y="32" width="210" height="112" rx="10"/>
+    <rect x="24" y="44" width="186" height="88" rx="6" stroke-width="4"/>
+    <use xlink:href="#g5" transform="translate(117 88) scale(1) translate(-20 -30)"/>
+    <rect x="244" y="32" width="210" height="112" rx="10"/>
+    <rect x="256" y="44" width="186" height="88" rx="6" stroke-width="4"/>
+    <use xlink:href="#g5" transform="translate(349 88) scale(1) translate(-20 -30)"/>
+</svg>

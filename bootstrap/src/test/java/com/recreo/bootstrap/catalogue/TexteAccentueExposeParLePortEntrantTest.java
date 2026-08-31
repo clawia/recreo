@@ -149,8 +149,15 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-fractions-cm1",
             // S25-FIG (DEC-0065 amendement A.3 ; FIG-1 a FIG-4 du 2026-08-24, reconduites le
             // 2026-08-31 ; CON-1 a CON-5) : entree neuve, reconnaitre et nommer quelques figures
-            // planes, CP. Premier jeu illustre du produit (ADR-0073).
+            // planes, CP. Les deux entrees ci-dessous sont les deux premiers jeux illustres du
+            // produit (ADR-0073) ; elles sont nees le meme jour, et aucune des deux n'est "le
+            // premier" - c'est la fusion qui les ordonne, pas leur contenu.
             "bandit-manchot-figures-planes-cp",
+            // S25-MON-1 (arbitrage prealable de s25 sur les seize lignes, section 2.2, MON-1 a
+            // MON-5 ; arbitrage du palier 1, CON-1 a CON-5) : entree neuve. La ligne de la monnaie
+            // avait ete refusee en contenu textuel le meme jour et rouverte sur sa forme illustree
+            // - "le paquet textuel nommait les pieces, le paquet illustre les montre".
+            "bandit-manchot-monnaie-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -206,6 +213,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les fractions simples",
             // S25-FIG : titre neuf.
             "Les figures",
+            // S25-MON-1 : titre neuf.
+            "La monnaie",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -258,6 +267,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S25-FIG : consigne neuve, generique - elle dit quoi faire du dessin et ne decrit
             // aucune figure (CON-2).
             "Regarde bien le dessin, puis choisis son nom.",
+            // S25-MON-1 : consigne neuve. Elle ne nomme aucune valeur et ne decrit ni la position,
+            // ni la forme, ni la quantite, ni la couleur de ce que les dessins montrent (MON-1,
+            // CON-2) - elle dit seulement ou regarder.
+            "Regarde bien l'argent, puis réponds.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -337,7 +350,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Notion de fraction simple (unités fractionnaires, fractions inférieures à 1) et "
                     + "repérage sur une droite numérique",
             // S25-FIG : competence neuve, ligne entiere.
-            "Reconnaître et nommer quelques figures planes (carré, rectangle, triangle, cercle)");
+            "Reconnaître et nommer quelques figures planes (carré, rectangle, triangle, cercle)",
+            // S25-MON-1 : competence neuve, et la ligne est entiere - nadia-prof ecrit que "le
+            // paquet sert reconnaitre par l'image et utiliser par la question". Le libelle est
+            // celui du referentiel, mot pour mot.
+            "Reconnaître et utiliser la monnaie (pièces/billets simples) dans des problèmes "
+                    + "concrets");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

@@ -192,3 +192,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-figures-planes
     nombreDeManches: 10
+  - id: bandit-manchot-monnaie-cp
+    titre: "La monnaie"
+    consigne: "Regarde bien l'argent, puis réponds."
+    mecanique: bandit-manchot
+    paquet: cp-monnaie
+    nombreDeManches: 10

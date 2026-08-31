@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MON, item illustre du palier 1 (S25-MON-1). Deux billets et trois pieces.
+     ADR-0073 clause 4 et DES-7 : aucun element de texte, tout est trace. Les deux balises que
+     la clause 4 refuse ne sont pas citees ici, le garde-fou lisant le fichier entier.
+     MON-1, MON-2 : la valeur de chaque objet est gravee en geometrie, jamais nommee, et seules
+     les valeurs qui existent sont montrees. MON-4 : aucun centime.
+     DES-1 a DES-6 : cadre de vue et dimensions en unites utilisateur au meme rapport, hauteur
+     declaree a 176 px, trait en unites utilisateur, teinte en clair, glyphes definis une
+     fois et instancies. Glyphes d'ines-design, recopies a l'identique. -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 616 352" width="308" height="176" role="img" fill="none"
+     stroke="#1c2733" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <path id="g0" d="M20 2 A18 22 0 0 1 20 58 A18 22 0 0 1 20 2 Z"/>
+    <path id="g1" d="M8 14 L20 2 L20 58"/>
+    <path id="g2" d="M4 16 A16 15 0 1 1 20 32 L4 58 L36 58"/>
+    <path id="g5" d="M34 2 L10 2 L7 26 A16 16 0 1 1 5 47"/>
+  </defs>
+    <rect x="12" y="32" width="210" height="112" rx="10"/>
+    <rect x="24" y="44" width="186" height="88" rx="6" stroke-width="4"/>
+    <use xlink:href="#g1" transform="translate(93 88) scale(1) translate(-20 -30)"/>
+    <use xlink:href="#g0" transform="translate(141 88) scale(1) translate(-20 -30)"/>
+    <rect x="244" y="32" width="210" height="112" rx="10"/>
+    <rect x="256" y="44" width="186" height="88" rx="6" stroke-width="4"/>
+    <use xlink:href="#g5" transform="translate(349 88) scale(1) translate(-20 -30)"/>
+    <circle cx="540" cy="88" r="64"/>
+    <circle cx="540" cy="88" r="55" stroke-width="4"/>
+    <use xlink:href="#g2" transform="translate(540 88) scale(1.26) translate(-20 -30)"/>
+    <circle cx="64" cy="264" r="52"/>
+    <circle cx="64" cy="264" r="43" stroke-width="4"/>
+    <use xlink:href="#g1" transform="translate(64 264) scale(1.02) translate(-20 -30)"/>
+    <circle cx="190" cy="264" r="52"/>
+    <circle cx="190" cy="264" r="43" stroke-width="4"/>
+    <use xlink:href="#g1" transform="translate(190 264) scale(1.02) translate(-20 -30)"/>
+</svg>

@@ -5,6 +5,7 @@ import org.yaml.snakeyaml.Yaml;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -112,6 +113,21 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      * peut designer que le repertoire prevu.
      */
     private static final String ALPHABET = "[a-z0-9-]+";
+
+    /**
+     * ADR-0051 : la taille exacte des deux populations illustrees du depot au 2026-08-31, apres
+     * l'entree des <b>deux</b> paquets illustres du sprint - S25-FIG-1 ({@code cp-figures-planes},
+     * douze items et douze dessins) et S25-MON-1 ({@code cp-monnaie}, douze et douze). Ces deux
+     * nombres ne sont pas des plafonds de confort : ils valent exactement la population, et un lot
+     * qui l'agrandit les releve dans son propre commit.
+     *
+     * <p><b>Mesures par sofia-sm sur l'arbre fusionne des deux paires</b>, et non recopies depuis
+     * l'annonce d'un lot : chaque lot avait mesure 12 et 12 sur sa propre branche, ce qui etait
+     * exact chez lui et faux apres fusion.
+     */
+    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 24;
+
+    private static final int FICHIERS_D_ILLUSTRATION = 24;
 
     private static String lire(Path fichier) {
         try {
@@ -321,35 +337,48 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
     /**
      * ADR-0051, et le cliquet dont le plafond vaut exactement la taille de la population.
      *
-     * <p><b>Ce test s'appelait {@code aucunPaquetServiNeDeclareEncoreDIllustration} et epinglait le
-     * zero</b> : theo-archi l'avait ecrit pour qu'il rougisse le jour ou le premier paquet illustre
-     * entrerait, <i>"c'est ainsi que le lot qui le pose lit ADR-0073 au lieu de le decouvrir apres
-     * coup"</i>. Ce jour est le 2026-08-31 et ce lot est celui de S25-FIG-1 : douze items de
-     * {@code cp-figures-planes} declarent une illustration, douze dessins vivent sous
-     * {@code static/illustrations}. Le rouge attendu a eu lieu, ADR-0073 a ete lu, et le cliquet est
-     * <b>retourne</b> plutot que supprime.
+     * <p><b>Le zero est tombe le 2026-08-31, et c'etait le signal voulu.</b> Ce test s'appelait
+     * {@code aucunPaquetServiNeDeclareEncoreDIllustration} et exigeait deux populations vides.
+     * theo-archi l'avait ecrit pour qu'il rougisse le jour ou le premier paquet illustre entrerait,
+     * <i>"c'est ainsi que le lot qui le pose lit ADR-0073 au lieu de le decouvrir apres coup"</i>.
+     * Ce jour est le 2026-08-31, et <b>deux</b> lots l'ont fait rougir le meme jour : S25-FIG-1
+     * (lea-dev, {@code cp-figures-planes}) et S25-MON-1 (sofia-sm, {@code cp-monnaie}). Le rouge
+     * attendu a eu lieu, ADR-0073 a ete lu, et le cliquet est <b>retourne</b> plutot que supprime.
      *
-     * <p><b>Pourquoi retourne et non retire.</b> ADR-0051 demande qu'un garde-fou declare ce qu'il
-     * examine. Tant que la population etait vide, le declarer voulait dire epingler le zero ; elle
-     * ne l'est plus, et le declarer veut dire epingler qu'elle ne l'est pas. Retirer ce test aurait
-     * rendu les quatre clauses de {@link #verifier} muettes le jour ou un paquet illustre sortirait
-     * du catalogue ou ou un repertoire d'illustrations disparaitrait : elles passeraient au vert sur
-     * une population vide, exactement le silence contre lequel ce test a ete ecrit.
+     * <p><b>Pourquoi retourne et non retire</b> - le motif est de lea-dev et il est repris mot pour
+     * mot : ADR-0051 demande qu'un garde-fou declare ce qu'il examine. Tant que la population etait
+     * vide, le declarer voulait dire epingler le zero ; elle ne l'est plus, et le declarer veut dire
+     * epingler qu'elle ne l'est pas. Retirer ce test aurait rendu les quatre clauses de
+     * {@link #verifier} muettes le jour ou un paquet illustre sortirait du catalogue ou ou un
+     * repertoire d'illustrations disparaitrait : elles passeraient au vert sur une population vide,
+     * exactement le silence contre lequel ce test a ete ecrit.
+     *
+     * <p><b>Resolution de fusion, par sofia-sm, casquette Scrum Master, 2026-08-31.</b> Les deux
+     * paires visuelles ont ecrit ce test chacune de son cote : lea-dev exige une population
+     * <b>non vide</b>, sofia-sm une <b>taille exacte</b>. C'est l'assertion exacte qui est retenue,
+     * et le motif n'est pas l'anciennete : <b>un conflit ne se resout jamais en affaiblissant une
+     * assertion</b>, et seule la taille exacte attrape un paquet qui perdrait la moitie de ses
+     * illustrations sans en perdre la totalite. Le motif de conservation ci-dessus est celui de
+     * lea-dev, l'assertion est celle de sofia-sm : les deux parties survivent par ce qu'elles ont
+     * de plus fort.
+     *
+     * <p><b>Les deux nombres sont mesures par la Scrum Master sur l'arbre fusionne</b>, jamais
+     * relayes depuis l'annonce d'un lot : 12 items et 12 dessins par chaine, 24 et 24 apres fusion.
      */
     @Test
-    void lesClausesDIllustrationPortentDesormaisSurUnePopulationNonVide() {
+    void lesDeuxPopulationsIllustreesValentExactementCeQueLeDepotSert() {
         Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
 
         assertThat(declareesDuDepot(racine))
-                .as("ADR-0051 : les clauses 1, 2, 5 et 6 d'ADR-0073 jugent les illustrations que les"
-                        + " paquets servis declarent. Si ce perimetre redevenait vide, elles"
-                        + " passeraient au vert sans rien examiner")
-                .isNotEmpty();
+                .as("ADR-0051 : le nombre d'items qui declarent une illustration vaut exactement"
+                        + " %d. S'il monte, c'est qu'un paquet illustre est entre : relever ce"
+                        + " nombre dans le commit qui l'apporte, avec sa valeur mesuree",
+                        ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION)
+                .hasSize(ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION);
         assertThat(illustrationsDuDepot(racine))
-                .as("meme motif pour la clause 4 : sans un seul fichier sous "
-                        + ILLUSTRATIONS_DE_CONTENU + ", ni le sens 'aucun dessin ne dort' ni"
-                        + " l'interdiction de texte dans un dessin ne portent sur quoi que ce soit")
-                .isNotEmpty();
+                .as("meme motif, sur l'autre population : %d fichiers sous %s",
+                        FICHIERS_D_ILLUSTRATION, ILLUSTRATIONS_DE_CONTENU)
+                .hasSize(FICHIERS_D_ILLUSTRATION);
     }
 
     /** Morsure 1, sur materiau reel mute en memoire : un identifiant qui ne resout aucun fichier. */
