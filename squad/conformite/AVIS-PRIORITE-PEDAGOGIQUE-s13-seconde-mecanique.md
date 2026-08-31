@@ -150,3 +150,35 @@ plus faible et le risque d'enseigner mal le plus eleve.**
   traitees par ce fichier et restent dues. Deux d'entre elles - le denombrement par
   pictogramme-caractere et les figures planes - touchent directement au perimetre de la famille
   visuelle ci-dessus.
+
+---
+
+## Ajout du 2026-08-31 (s25) - deux phrases de cet avis sont devenues fausses, et l'ordre tient quand meme
+
+**Rien n'est efface ci-dessus.** Cet avis dit ce qu'il disait le 2026-08-15 et il reste lisible tel
+quel. Ce bloc ajoute ce que je sais aujourd'hui et que je ne savais pas alors.
+
+**Les deux phrases a corriger, et c'est moi qui les ai rendues fausses :**
+
+- *"Ces trois lignes sont les seules des 35 qui ne peuvent recevoir aucun contenu, pas meme un
+  morceau."* **Ce sont desormais deux lignes, pas trois.**
+- *"Un CP prive de conscience phonologique n'a **rien** qui la remplace dans ce catalogue."* **Il a
+  desormais un morceau.**
+
+**Le fait qui les corrige** : le 2026-08-28 j'ai prononce le Done pedagogique sur
+`bandit-manchot-syllabes-cp`, qui sert *"Denombrer les syllabes orales d'un mot"* **sans aucun son**,
+par la clause de transposition que j'ai posee dans sa fiche. Le domaine "Langage oral et conscience
+phonologique" est passe de **zero sur trois a une sur trois**.
+
+**Ce qui ne bouge pas** : *localiser une syllabe* et *identifier un phoneme* restent hors d'atteinte
+sans emission de son, et j'ai enfin ecrit le motif ligne par ligne - **sur ces deux-la, le mot ecrit
+porte la reponse**, ce qui n'est pas le cas du denombrement. Voir
+`ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md`,
+section 2.5.
+
+**L'ordre de cet avis - audio, puis visuel, puis saisie - est reconfirme le 2026-08-31**, avec son
+motif de fond intact, dans
+`ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md`, section 1.
+Il n'est ni perime ni ecarte : il repondait a la question du **manque**, et l'utilisatrice a tranche
+celle du **cout et du moment** en ouvrant le palier 1 visuel a s25. Les deux peuvent etre justes
+ensemble.
