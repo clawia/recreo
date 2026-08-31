@@ -4,6 +4,7 @@ import com.recreo.application.port.out.MechanicRegistryPort;
 import com.recreo.domain.mechanic.GameMechanic;
 import com.recreo.domain.mechanic.MechanicId;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchot;
+import com.recreo.domain.mechanics.saisie.Saisie;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -23,6 +24,11 @@ class MecaniquesConfiguration {
     @Bean
     GameMechanic banditManchot() {
         return new BanditManchot();
+    }
+
+    @Bean
+    GameMechanic saisie() {
+        return new Saisie();
     }
 
     @Bean
