@@ -134,6 +134,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S23-ETA (arbitrage prealable s23, ETA-1 a ETA-10, ETA-4b) : entree neuve,
             // problemes a deux etapes mobilisant les quatre operations.
             "bandit-manchot-problemes-etapes-cm1",
+            // S24-NAR (arbitrage prealable de nadia-prof du 2026-08-30, conditions NAR-1 a
+            // NAR-10) : entree neuve, comprehension d'un texte narratif tres court, CP.
+            "bandit-manchot-texte-narratif-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -180,6 +183,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Range les nombres",
             // S23-ETA : titre neuf.
             "Les problèmes à deux étapes",
+            // S24-NAR : titre neuf.
+            "Lis et réponds",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -222,6 +227,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Choisis la liste rangée du plus petit au plus grand.",
             // S23-ETA : consigne neuve.
             "Lis bien, résous les deux étapes, puis choisis la réponse.",
+            // S24-NAR : consigne neuve, generique - ne nomme aucun texte-support d'aucun item.
+            "Lis le petit texte, puis réponds à la question.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
             // valeur unique pour les jeux du catalogue reel, compte sur catalogue.yaml, pas recopie.
             "bandit-manchot",
@@ -284,7 +291,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S23-RAN : competence neuve, moitie "ranger" de la ligne comparer-et-ranger.
             "Ranger des nombres entiers jusqu'à 100 dans l'ordre croissant",
             // S23-ETA : competence neuve.
-            "Résoudre des problèmes à deux étapes mobilisant les quatre opérations");
+            "Résoudre des problèmes à deux étapes mobilisant les quatre opérations",
+            // S24-NAR : competence neuve.
+            "Comprendre un texte narratif très court (questions explicites : qui, où, quoi)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

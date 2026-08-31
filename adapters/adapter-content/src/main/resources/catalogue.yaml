@@ -162,3 +162,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-problemes-etapes
     nombreDeManches: 10
+  - id: bandit-manchot-texte-narratif-cp
+    titre: "Lis et réponds"
+    consigne: "Lis le petit texte, puis réponds à la question."
+    mecanique: bandit-manchot
+    paquet: cp-texte-narratif
+    nombreDeManches: 10
