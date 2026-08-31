@@ -40,6 +40,17 @@ import static org.assertj.core.api.Assertions.assertThat;
  * lot A du sprint et il n'est pas de moi. Le jour ou il entre, ces trois clauses-la se relisent par
  * le chargeur comme les autres, et la traversee jusqu'au HTML servi lui appartient.
  *
+ * <p><b>CON-6 est neuve, datee du 2026-08-31, et elle vient d'une reserve sur ce paquet-ci</b>
+ * ({@code FICHE-bandit-manchot-figures-planes-cp.md}, section 10). nadia-prof a mesure que
+ * l'indice - <b>seul texte qui varie entre les douze items</b> - partitionnait les bonnes reponses,
+ * et que <b>sur 8 items sur 12 il designait la reponse a lui seul</b>. Son diagnostic vise ses
+ * propres conditions : <i>"CON-5 gouverne le texte alternatif, SEM-8 gouverne l'indice de la
+ * semaine, rien ne gouvernait l'indice d'un paquet illustre. C'est mon trou."</i> Elle en tire une
+ * condition, <b>non retroactive</b> - d'ou une reserve et non un refus -, et demande la correction
+ * pour un sprint suivant. Elle est faite ici, et les deux clauses ci-dessous la comptent : celle
+ * qui execute CON-6 telle qu'elle est ecrite, et celle qui refait <b>sa</b> mesure de reserve, dont
+ * la valeur doit passer de 8 a 0.
+ *
  * <p><b>Ce que ce garde-fou ne juge pas, et rien ne le jugera a sa place.</b> CON-1 (<i>"en effacant
  * l'image, la reponse reste-t-elle trouvable ?"</i>), CON-3, CON-4 - le masquage exhaustif item par
  * item - et CON-5 - le texte alternatif ne porte jamais la reponse - sont la main de nadia-prof.
@@ -310,5 +321,74 @@ class PaquetCpFiguresPlanesTest {
                         .doesNotContain(sansAccent(forme).substring("un ".length()));
             }
         }
+    }
+
+    /**
+     * <b>CON-6, telle que nadia-prof l'ecrit</b> : <i>"sur un paquet illustre, l'indice est choisi
+     * d'apres les propositions de l'item, jamais d'apres sa bonne reponse. Verification : sur au
+     * moins la moitie des items, l'indice de l'item est aussi porte par un item dont la bonne
+     * reponse est differente. Unite de compte : l'item."</i>
+     *
+     * <p>Le plancher est la moitie ; ce paquet le tient sur les douze items, et la marge est voulue.
+     * Elle l'est par construction plutot que par prudence : <b>l'indice est ici une fonction du jeu
+     * de propositions et de rien d'autre</b>, et les quatre jeux possibles portent chacun trois
+     * items dont les trois bonnes reponses different.
+     */
+    @Test
+    void chaqueIndiceAccompagneDesReponsesDifferentes() {
+        List<Question> items = tousLesItems(paquet());
+        long tenus = items.stream()
+                .filter(item -> items.stream().anyMatch(autre -> autre.indice().equals(item.indice())
+                        && !autre.bonneReponse().equals(item.bonneReponse())))
+                .count();
+
+        assertThat(tenus * 2)
+                .as("CON-6 : %d items sur %d portent un indice qu'un item de bonne reponse"
+                        + " differente porte aussi, il en faut au moins la moitie", tenus,
+                        items.size())
+                .isGreaterThanOrEqualTo(items.size());
+    }
+
+    /**
+     * <b>La mesure de la reserve, refaite dans les termes exacts de nadia-prof</b> :
+     * <i>"pour chaque item, l'intersection de ses trois propositions avec l'ensemble des bonnes
+     * reponses que son indice porte dans le paquet ; l'item est compte designe si cette intersection
+     * est un singleton."</i>
+     *
+     * <p>Elle est plus severe que CON-6 et c'est pour cela qu'elle est ici en plus : CON-6 se
+     * contente qu'un indice accompagne deux reponses differentes <b>quelque part dans le paquet</b>,
+     * alors que celle-ci demande que, <b>sur l'ecran que l'enfant a sous les yeux</b>, l'indice
+     * laisse plus d'un candidat. Un paquet peut tenir la premiere et manquer la seconde.
+     *
+     * <p><b>Elle valait 8 sur 12 avant correction</b> - le chiffre de nadia-prof, retrouve en
+     * refaisant sa methode sur le paquet d'avant, apres que le relecteur-pedagogique en eut compte 6
+     * et qu'elle eut corrige a la hausse. <b>Elle vaut zero maintenant, et le zero est epingle</b> :
+     * un indice qui redeviendrait fonction de la bonne reponse ferait remonter ce compte, et le
+     * plafond vaut exactement la taille de la dette.
+     */
+    @Test
+    void aucunIndiceNeDesigneLaReponseSurLEcranDeSonItem() {
+        List<Question> items = tousLesItems(paquet());
+        List<String> designes = new ArrayList<>();
+        for (Question item : items) {
+            Set<String> porteesParLIndice = items.stream()
+                    .filter(autre -> autre.indice().equals(item.indice()))
+                    .map(Question::bonneReponse)
+                    .collect(java.util.stream.Collectors.toCollection(TreeSet::new));
+            Set<String> propositions = new TreeSet<>(item.distracteurs());
+            propositions.add(item.bonneReponse());
+            propositions.retainAll(porteesParLIndice);
+            if (propositions.size() == 1) {
+                designes.add("'" + item.enonce() + "' + " + item.illustration().orElse("?")
+                        + " : l'indice " + item.indice().orElse("?") + " ne laisse que "
+                        + propositions);
+            }
+        }
+
+        assertThat(designes)
+                .as("reserve du Done pedagogique du 2026-08-31 : un indice qui ne va qu'avec une"
+                        + " seule des propositions affichees devient une designation et non une"
+                        + " aide. Etat avant correction : 8 items sur 12")
+                .isEmpty();
     }
 }
