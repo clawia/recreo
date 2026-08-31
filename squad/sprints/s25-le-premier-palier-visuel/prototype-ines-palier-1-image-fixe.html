@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prototype - palier 1 du visuel, image fixe et propositions en texte (ines-design, s25)</title>
+    <!--
+      VEHICULE DE MESURE, JAMAIS DU CODE SERVI.
+
+      Ce fichier n'est pas un gabarit Thymeleaf et n'est charge par aucun controleur : c'est
+      l'artefact sur lequel les chiffres de proposition-ines-palier-1-du-visuel.md ont ete releves,
+      commite pour que la mesure soit rejouable (squad/README.md section 4 : un chiffre sans sa
+      methode n'est pas une mesure). Meme vehicule et meme protocole qu'a s24
+      (prototype-ines-ecran-de-saisie.html), pour que les deux releves se comparent.
+
+      Il charge les DEUX feuilles reelles de l'application, par chemin relatif, dans l'ordre
+      qu'ADR-0014 impose (tierce d'abord, maison ensuite). Les regles candidates de la proposition
+      sont ecrites plus bas dans un <style> unique, apres la feuille maison, exactement comme elles
+      s'appliqueraient si elles y etaient ajoutees.
+
+      L'en-tete et la coquille (#jeu.container.zone-jeu) sont recopies de templates/accueil.html ;
+      le bloc .cabinet, .propositions et .message-jeu sont recopies de fragments/manche.html SANS
+      changer une seule de leurs regles. Ce que ce prototype ajoute au balisage servi aujourd'hui
+      est un seul bloc : .illustration et son <img class="image-item">.
+
+      Les etats vivent cote a cote sous [data-etat], tous masques par defaut ; l'outil de mesure
+      (squad/outils/ines-design/mesurer-l-illustration.py) en affiche un seul a la fois. Un seul
+      etat visible a la fois est ce qui rend la mesure du pli honnete.
+
+      CE QUI N'EST PAS TRANCHE ICI ET NE PEUT PAS L'ETRE. Le contenu des dessins, leur exactitude
+      (proportions, graduations, cases carrees) et le texte de remplacement des images sont la
+      seule main de nadia-prof. Les figures de ce prototype (prototype-figure-carree.svg,
+      prototype-rangee-large.svg) ne sont pas des items : elles portent un rapport de geometrie et
+      rien d'autre. Les enonces, propositions, verdicts et indices ecrits ici sont des GABARITS DE
+      LONGUEUR, pas des candidats de contenu.
+    -->
+    <link rel="stylesheet" href="../../../adapters/adapter-web/src/main/resources/static/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../adapters/adapter-web/src/main/resources/static/css/recreo.css">
+    <style>
+        /* ------------------------------------------------------------------
+           Regles candidates - proposition-ines-palier-1-du-visuel.md, section 5.
+           Aucune n'est aujourd'hui dans recreo.css : elle n'y entrera que le jour ou un
+           controleur nourrit ce bloc (ADR-0031 : une regle qui ne nomme aucun jeton pose par un
+           gabarit ne mord pas ; DEC-0009/DEC-0014 : un drapeau mort est un defaut).
+           ------------------------------------------------------------------ */
+
+        /* Le bloc qui porte le dessin. Il centre, il espace, et il ne fait rien d'autre :
+           NI FOND, NI BORDURE, NI REMBOURRAGE. Ce n'est pas une economie de style, c'est une
+           mesure. Un aplat blanc sous le dessin a ete envisage pour lui donner une surface
+           declaree, donc un contraste calculable ; il n'apporte rien et il coute. Contraste de
+           --recreo-texte (#1c2733), la teinte de trait de ce prototype : 14,09:1 contre
+           --recreo-fond, 15,14:1 contre du blanc, quand le seuil d'un graphique non textuel est
+           3:1. L'aplat achete 1,05 point au-dessus d'un seuil deja franchi cinq fois, et il coute
+           16 px du budget vertical que la mesure du pli compte au pixel. Il est donc retire.
+           Aucune bordure non plus : la bordure appartient au cabinet, qui dit "ici on presse", et
+           l'illustration ne se presse pas. */
+        .illustration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0.25rem 0 0.75rem;
+        }
+
+        /* Le dessin lui-meme. Trois declarations et pas une de plus, et chacune sert FIG-1 :
+           - max-height plafonne le budget vertical, la seule dimension que le pli compte ;
+           - max-width l'empeche de sortir de la zone sur un ecran etroit ;
+           - height:auto laisse le RAPPORT du fichier gouverner, jamais la feuille.
+           object-fit: contain est la ceinture : si un jour une regle posait les deux dimensions,
+           le dessin serait mis a l'echelle, jamais etire. Un rectangle reste un rectangle a toute
+           taille d'ecran - c'est litteralement ce que FIG-1 demande, et c'est verifiable
+           autrement que par mon oeil. */
+        .image-item {
+            display: block;
+            max-height: 11rem;
+            max-width: 100%;
+            height: auto;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* --- hors proposition : uniquement le commutateur d'etat du vehicule de mesure --- */
+        [data-etat] { display: none; }
+    </style>
+</head>
+<body>
+<header class="entete">
+    <nav class="container entete-contenu">
+        <img src="../../../adapters/adapter-web/src/main/resources/static/favicon.ico" alt="" class="icone-entete">
+        <h1 class="nom-site">Recreo</h1>
+        <a class="btn chip-niveau" data-role="entree" href="#">CP</a>
+        <a class="btn chip-niveau" data-role="entree" href="#">CM1</a>
+        <a class="btn lien-accueil" data-role="sortie" href="#">Les jeux</a>
+    </nav>
+</header>
+<main id="jeu" class="container zone-jeu">
+
+    <!-- ETAT 1 - manche fraiche, rapport 1:1 (le pire cas vertical). L'illustration occupe la
+         place du texte-support : entre la consigne et l'enonce. Motif de gabarit generique, jamais
+         de contenu : le texte-support est deja le bloc "la matiere sur laquelle porte la
+         question", et une image fixe joue exactement ce role. Aucun slot neuf n'est invente. -->
+    <div data-etat="haut-fraiche" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">Regarde bien la figure.</p>
+        <div class="illustration">
+            <img class="image-item" src="prototype-figure-carree.svg" alt="">
+        </div>
+        <p class="enonce" tabindex="-1">Quelle est cette figure ?</p>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions">
+                <button type="submit" class="btn proposition" data-role="action">un carré</button>
+                <button type="submit" class="btn proposition" data-role="action">un rectangle</button>
+                <button type="submit" class="btn proposition" data-role="action">un triangle</button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+    </div>
+
+    <!-- ETAT 2 - apres un echec, rapport 1:1. L'indice apparait sous le meuble (M6). C'est l'etat
+         que le catalogue mesure d'habitude : c'est celui de DEC-0051 et de REP-8. L'indice ecrit
+         ici fait 14 mots. Il n'est ni le plus court ni le plus long de ce que le catalogue sert :
+         SEM-8 et NAR-9 bornent l'indice a huit mots, LIS-9 a dix, et l'indice le plus long des 31
+         paquets servis en compte 27 (cm1-accord-sujet-verbe, compte mecanique sur les fichiers de
+         contenu de cet arbre). Quatorze est donc une hypothese de milieu, et le releve dit
+         explicitement, section 3.3 de la proposition, combien de pixels une ligne d'indice de plus
+         coute. -->
+    <div data-etat="haut-echec" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">Regarde bien la figure.</p>
+        <div class="illustration">
+            <img class="image-item" src="prototype-figure-carree.svg" alt="">
+        </div>
+        <p class="enonce" tabindex="-1">Quelle est cette figure ?</p>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions">
+                <button type="submit" class="btn proposition deja-essayee" data-role="action">un carré</button>
+                <button type="submit" class="btn proposition" data-role="action">un rectangle</button>
+                <button type="submit" class="btn proposition" data-role="action">un triangle</button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+        <div class="message-jeu" role="status">
+            <div class="signal est-faux">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">Ce n'est pas ça.</p>
+            </div>
+            <p class="indice">Compte les côtés de la figure, puis regarde s'ils ont tous la même longueur.</p>
+        </div>
+    </div>
+
+    <!-- ETAT 3 - revelation, rapport 1:1. C'est le PIRE CAS de hauteur du produit : verdict,
+         explication et indice sont montres ensemble (M6, M7), et l'illustration reste a l'ecran -
+         elle doit y rester, sans quoi l'enfant lit la bonne reponse sans pouvoir la rapporter au
+         dessin qu'on lui a montre. C'est cet etat-la qui decide si le palier 1 tient. -->
+    <div data-etat="haut-revelation" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">Regarde bien la figure.</p>
+        <div class="illustration">
+            <img class="image-item" src="prototype-figure-carree.svg" alt="">
+        </div>
+        <p class="enonce" tabindex="-1">Quelle est cette figure ?</p>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions">
+                <button type="submit" class="btn proposition deja-essayee" data-role="action">un carré</button>
+                <button type="submit" class="btn proposition deja-essayee" data-role="action">un rectangle</button>
+                <button type="submit" class="btn proposition" data-role="action">un triangle</button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+        <div class="message-jeu" role="status">
+            <div class="signal est-faux">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">La réponse était : un carré.</p>
+            </div>
+            <p class="explication">Un carré a quatre côtés de la même longueur ; un rectangle a quatre côtés aussi, mais deux sont plus longs.</p>
+            <p class="indice">Compte les côtés de la figure, puis regarde s'ils ont tous la même longueur.</p>
+        </div>
+    </div>
+
+    <!-- ETATS 4 a 6 - les memes trois etats avec un rapport de 3:1. Ils ne sont pas une redite :
+         sur un ecran etroit, c'est la LARGEUR disponible qui plafonne la hauteur d'un dessin large,
+         et la regle max-height ne mord plus. Sans ces trois etats, le releve dirait qu'un plafond
+         de hauteur gouverne toutes les images, ce qui est faux pour la moitie des lignes du
+         palier 1. -->
+    <div data-etat="large-fraiche" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">Regarde bien la figure.</p>
+        <div class="illustration">
+            <img class="image-item" src="prototype-rangee-large.svg" alt="">
+        </div>
+        <p class="enonce" tabindex="-1">Quelle est cette figure ?</p>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions">
+                <button type="submit" class="btn proposition" data-role="action">un carré</button>
+                <button type="submit" class="btn proposition" data-role="action">un rectangle</button>
+                <button type="submit" class="btn proposition" data-role="action">un triangle</button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+    </div>
+
+    <div data-etat="large-echec" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">Regarde bien la figure.</p>
+        <div class="illustration">
+            <img class="image-item" src="prototype-rangee-large.svg" alt="">
+        </div>
+        <p class="enonce" tabindex="-1">Quelle est cette figure ?</p>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions">
+                <button type="submit" class="btn proposition deja-essayee" data-role="action">un carré</button>
+                <button type="submit" class="btn proposition" data-role="action">un rectangle</button>
+                <button type="submit" class="btn proposition" data-role="action">un triangle</button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+        <div class="message-jeu" role="status">
+            <div class="signal est-faux">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">Ce n'est pas ça.</p>
+            </div>
+            <p class="indice">Compte les côtés de la figure, puis regarde s'ils ont tous la même longueur.</p>
+        </div>
+    </div>
+
+    <div data-etat="large-revelation" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">Regarde bien la figure.</p>
+        <div class="illustration">
+            <img class="image-item" src="prototype-rangee-large.svg" alt="">
+        </div>
+        <p class="enonce" tabindex="-1">Quelle est cette figure ?</p>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions">
+                <button type="submit" class="btn proposition deja-essayee" data-role="action">un carré</button>
+                <button type="submit" class="btn proposition deja-essayee" data-role="action">un rectangle</button>
+                <button type="submit" class="btn proposition" data-role="action">un triangle</button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+        <div class="message-jeu" role="status">
+            <div class="signal est-faux">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">La réponse était : un carré.</p>
+            </div>
+            <p class="explication">Un carré a quatre côtés de la même longueur ; un rectangle a quatre côtés aussi, mais deux sont plus longs.</p>
+            <p class="indice">Compte les côtés de la figure, puis regarde s'ils ont tous la même longueur.</p>
+        </div>
+    </div>
+
+    <!-- ETATS 7 a 9 - le meme ecran, l'illustration placee ENTRE l'enonce et le meuble plutot
+         qu'avant l'enonce. Variante de placement, mesuree et non supposee : c'est la seule facon
+         de dire si le choix entre les deux places est un choix de sens ou un choix de pixels. -->
+    <div data-etat="bas-fraiche" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">Regarde bien la figure.</p>
+        <p class="enonce" tabindex="-1">Quelle est cette figure ?</p>
+        <div class="illustration">
+            <img class="image-item" src="prototype-figure-carree.svg" alt="">
+        </div>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions">
+                <button type="submit" class="btn proposition" data-role="action">un carré</button>
+                <button type="submit" class="btn proposition" data-role="action">un rectangle</button>
+                <button type="submit" class="btn proposition" data-role="action">un triangle</button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+    </div>
+
+    <div data-etat="bas-echec" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">Regarde bien la figure.</p>
+        <p class="enonce" tabindex="-1">Quelle est cette figure ?</p>
+        <div class="illustration">
+            <img class="image-item" src="prototype-figure-carree.svg" alt="">
+        </div>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions">
+                <button type="submit" class="btn proposition deja-essayee" data-role="action">un carré</button>
+                <button type="submit" class="btn proposition" data-role="action">un rectangle</button>
+                <button type="submit" class="btn proposition" data-role="action">un triangle</button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+        <div class="message-jeu" role="status">
+            <div class="signal est-faux">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">Ce n'est pas ça.</p>
+            </div>
+            <p class="indice">Compte les côtés de la figure, puis regarde s'ils ont tous la même longueur.</p>
+        </div>
+    </div>
+
+    <div data-etat="bas-revelation" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">Regarde bien la figure.</p>
+        <p class="enonce" tabindex="-1">Quelle est cette figure ?</p>
+        <div class="illustration">
+            <img class="image-item" src="prototype-figure-carree.svg" alt="">
+        </div>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions">
+                <button type="submit" class="btn proposition deja-essayee" data-role="action">un carré</button>
+                <button type="submit" class="btn proposition deja-essayee" data-role="action">un rectangle</button>
+                <button type="submit" class="btn proposition" data-role="action">un triangle</button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+        <div class="message-jeu" role="status">
+            <div class="signal est-faux">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">La réponse était : un carré.</p>
+            </div>
+            <p class="explication">Un carré a quatre côtés de la même longueur ; un rectangle a quatre côtés aussi, mais deux sont plus longs.</p>
+            <p class="indice">Compte les côtés de la figure, puis regarde s'ils ont tous la même longueur.</p>
+        </div>
+    </div>
+
+    <!-- ETATS 10 a 12 - LIS, la seconde mesure due a nadia-prof, sur le meme vehicule et le meme
+         protocole. Aucune image : un texteSupport de 45 a 70 mots, une question d'au plus 12 mots
+         (LIS-3) et trois propositions qui ne recopient aucune phrase du texte (LIS-4). Le texte
+         ci-dessous est un GABARIT DE LONGUEUR, pas un candidat d'item : il compte exactement 70
+         mots - le plafond que LIS-2 declare provisoire et remet a cette mesure -, avec une
+         longueur moyenne de mot proche de celle des vingt texteSupport de cm1-comprehension.yaml.
+         L'outil de mesure retire des mots de la fin pour redescendre a 65, 60, 55, 50 et 45. -->
+    <div data-etat="lis-fraiche" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">Lis le texte, puis réponds.</p>
+        <p class="texte-support" data-mots="70">Chaque matin, Nour prend le même chemin pour aller à l'école, et chaque matin elle passe devant la boulangerie du coin de la rue. Elle regarde les pains dorés alignés derrière la vitre, elle respire l'odeur du four, puis elle repart en courant parce qu'elle a peur d'arriver en retard. Un jour, la boulangère lui a fait un signe de la main, et depuis, Nour ralentit toujours un peu devant cette vitre.</p>
+        <p class="enonce" tabindex="-1">De quoi parle surtout ce texte ?</p>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions">
+                <button type="submit" class="btn proposition" data-role="action">Le trajet quotidien de Nour et son arrêt devant la boulangerie</button>
+                <button type="submit" class="btn proposition" data-role="action">L'odeur du four de la boulangerie</button>
+                <button type="submit" class="btn proposition" data-role="action">La peur d'arriver en retard à l'école</button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+    </div>
+
+    <div data-etat="lis-echec" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">Lis le texte, puis réponds.</p>
+        <p class="texte-support" data-mots="70">Chaque matin, Nour prend le même chemin pour aller à l'école, et chaque matin elle passe devant la boulangerie du coin de la rue. Elle regarde les pains dorés alignés derrière la vitre, elle respire l'odeur du four, puis elle repart en courant parce qu'elle a peur d'arriver en retard. Un jour, la boulangère lui a fait un signe de la main, et depuis, Nour ralentit toujours un peu devant cette vitre.</p>
+        <p class="enonce" tabindex="-1">De quoi parle surtout ce texte ?</p>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions">
+                <button type="submit" class="btn proposition deja-essayee" data-role="action">Le trajet quotidien de Nour et son arrêt devant la boulangerie</button>
+                <button type="submit" class="btn proposition" data-role="action">L'odeur du four de la boulangerie</button>
+                <button type="submit" class="btn proposition" data-role="action">La peur d'arriver en retard à l'école</button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+        <div class="message-jeu" role="status">
+            <div class="signal est-faux">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">Ce n'est pas ça.</p>
+            </div>
+            <p class="indice">Relis la première et la dernière phrase du texte.</p>
+        </div>
+    </div>
+
+    <div data-etat="lis-revelation" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">Lis le texte, puis réponds.</p>
+        <p class="texte-support" data-mots="70">Chaque matin, Nour prend le même chemin pour aller à l'école, et chaque matin elle passe devant la boulangerie du coin de la rue. Elle regarde les pains dorés alignés derrière la vitre, elle respire l'odeur du four, puis elle repart en courant parce qu'elle a peur d'arriver en retard. Un jour, la boulangère lui a fait un signe de la main, et depuis, Nour ralentit toujours un peu devant cette vitre.</p>
+        <p class="enonce" tabindex="-1">De quoi parle surtout ce texte ?</p>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions">
+                <button type="submit" class="btn proposition deja-essayee" data-role="action">Le trajet quotidien de Nour et son arrêt devant la boulangerie</button>
+                <button type="submit" class="btn proposition deja-essayee" data-role="action">L'odeur du four de la boulangerie</button>
+                <button type="submit" class="btn proposition" data-role="action">La peur d'arriver en retard à l'école</button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+        <div class="message-jeu" role="status">
+            <div class="signal est-faux">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">La réponse était la première.</p>
+            </div>
+            <p class="explication">Les deux autres réponses sont vraies, mais elles ne disent qu'un détail du texte.</p>
+            <p class="indice">Relis la première et la dernière phrase du texte.</p>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>

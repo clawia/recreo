@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DEMONSTRATION DE FAISABILITE, JAMAIS DU CONTENU SERVI.
+
+     Second cas de la meme question : un chiffre grave sur une piece, trace en geometrie, sans
+     aucun <text> ni <tspan> (ADR-0073, clause 4). theo-archi a deja demontre le trace sur une
+     piece ; ce fichier n'ajoute pas la demonstration, il ajoute LA MESURE - combien de pixels de
+     hauteur d'image il faut pour que le chiffre grave atteigne la hauteur d'encre du plus petit
+     texte que le produit sert deja.
+
+     Ce n'est pas un item. Aucun paquet ne le declare, il ne vit pas sous le repertoire
+     d'illustrations d'adapter-web, et le garde-fou bidirectionnel ne le voit donc pas.
+
+     LES DIX GLYPHES SONT LES MEMES QUE CEUX DU CADRAN, recopies a l'identique. C'est le fait qui
+     compte pour un planning : le jeu de glyphes est ecrit une fois pour la famille visuelle
+     entiere, pas une fois par paquet.
+
+     CE QUE CE FICHIER N'ETABLIT PAS : qu'un enfant de CP reconnaisse ces disques comme des pieces,
+     ni que ces valeurs soient les bonnes. MON-1 a MON-5 sont a nadia-prof, et l'exactitude de ce
+     qui est dessine aussi. Ces trois disques ne portent aucune denomination, aucun relief, aucune
+     face nationale : ils portent un chiffre et un rapport de taille, et rien d'autre.
+
+     Aucune couleur : FIG-3 et QUA-5 exigent qu'une figure lue en niveaux de gris donne la meme
+     reponse. Ce qui distingue les trois disques ici est le chiffre grave et le diametre, jamais
+     une teinte. -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 300 100" width="300" height="100" role="img" fill="none"
+     stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+
+  <defs>
+    <path id="p0" d="M20 2 A18 22 0 0 1 20 58 A18 22 0 0 1 20 2 Z"/>
+    <path id="p1" d="M8 14 L20 2 L20 58"/>
+    <path id="p2" d="M4 16 A16 15 0 1 1 20 32 L4 58 L36 58"/>
+    <path id="p3" d="M4 12 A15 12 0 1 1 19 30 A15 14 0 1 1 4 48"/>
+    <path id="p4" d="M28 58 L28 2 L2 42 L38 42"/>
+    <path id="p5" d="M34 2 L10 2 L7 26 A16 16 0 1 1 5 47"/>
+    <path id="p6" d="M32 4 A20 26 0 0 0 6 34 A15 14 0 1 0 34 40 A15 14 0 0 0 6 36"/>
+    <path id="p7" d="M3 2 L37 2 L14 58"/>
+    <path id="p8" d="M20 30 A13 14 0 1 1 20 2 A13 14 0 1 1 20 30 A15 15 0 1 1 20 58 A15 15 0 1 1 20 30 Z"/>
+    <path id="p9" d="M34 26 A15 14 0 1 0 6 20 A15 14 0 0 0 34 26 A20 26 0 0 1 8 56"/>
+  </defs>
+
+  <!-- Trois disques. Le double cercle est la seule marque de "piece" : un anneau exterieur et le
+       champ interieur, ce qu'un enfant reconnait d'une piece sans qu'aucun mot ne soit ecrit.
+       Le chiffre grave occupe 56 des 100 unites de hauteur de l'image - c'est ce rapport-la qui
+       est mesure, et c'est lui qui decide de la hauteur d'image minimale. -->
+  <g>
+    <circle cx="50" cy="50" r="46"/>
+    <circle cx="50" cy="50" r="38" stroke-width="3"/>
+    <use xlink:href="#p2" transform="translate(50 50) scale(0.93) translate(-20 -30)"/>
+  </g>
+  <g>
+    <circle cx="150" cy="50" r="40"/>
+    <circle cx="150" cy="50" r="33" stroke-width="3"/>
+    <use xlink:href="#p1" transform="translate(150 50) scale(0.80) translate(-20 -30)"/>
+  </g>
+  <g>
+    <circle cx="250" cy="50" r="46"/>
+    <circle cx="250" cy="50" r="38" stroke-width="3"/>
+    <use xlink:href="#p2" transform="translate(250 50) scale(0.93) translate(-20 -30)"/>
+  </g>
+</svg>

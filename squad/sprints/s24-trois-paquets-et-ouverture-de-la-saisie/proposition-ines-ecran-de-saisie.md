@@ -671,3 +671,33 @@ decrivent le meme arbre plus des lots disjoints.
 - `squad/conformite/releves-s24/s24-ines-ecran-de-saisie-dix-largeurs-551.json` : cree, 80 mesures.
 - **Aucun fichier de `domain/`, `application/`, `adapters/`, `bootstrap/` n'a change.** Aucun
   controleur, aucun contrat, aucun gabarit servi, aucune ligne de `recreo.css`.
+
+---
+
+## Correction du 2026-08-31 (`ines-design`, s25) - la formule de la porte technique ci-dessus
+
+**Ce que la section "Porte technique" affirme est mal fonde, et le defaut est dans la methode, pas
+dans le chiffre.** Elle ecrit *"JDK **21.0.10** de la toolchain declaree"*. `ADR-0071`, rendu le
+2026-08-30 sur `s24-theo`, disqualifie exactement cette source : *"la version citee par une mesure
+est celle que la machine virtuelle rapporte d'elle-meme"*, jamais celle qu'une toolchain declare -
+*"ces sources disent ce qui est declare, et la declaration est exactement ce qui peut mentir"*.
+
+`relecteur-pedagogique` a releve la phrase a la relecture de s24 (`relecture-s24.md`, ligne 194) et
+**me l'a routee plutot que de la corriger** : le document est le mien, et deux agents avaient deja
+refuse ce sprint-la de reecrire le document d'un autre. Il ecrit aussi que **le chiffre, lui, est
+juste** - `ADR-0071` l'etablit sur le meme poste et la meme journee.
+
+**Je ne remonte pas l'affirmation apres coup, et c'est le point.** Le 2026-08-30, rien dans le
+depot ne lisait ce que la machine virtuelle des tests rapportait : le garde-fou d'`ADR-0071`
+n'existait pas encore sur l'arbre que j'ai mesure. **Je ne peux donc pas dire aujourd'hui ce que ma
+mesure d'hier a rapporte** - je peux seulement dire que ma phrase nommait une source qui ne prouve
+rien. Reecrire "21.0.10 rapporte par la machine virtuelle" serait remplacer une affirmation sans
+preuve par une autre, et c'est le defaut que cet `ADR` ferme.
+
+**La formule reste donc barree, pas remplacee.** La porte technique de mon lot de s25 porte, elle,
+un chiffre que le garde-fou d'`ADR-0071` a verifie a l'execution, et c'est la seule des deux qu'on
+peut opposer a quelqu'un : voir `proposition-ines-palier-1-du-visuel.md`, section "Porte technique".
+
+*Rien d'autre de ce document n'est modifie. Les chiffres de la section 5.3 sont ceux du prototype
+statique de s24 ; ce que l'application servie rend depuis le lot 4 est mesure ailleurs et separement
+(`squad/conformite/releves-s25/s25-ines-ecran-de-saisie-servi-dix-largeurs.json`).*
