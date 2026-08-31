@@ -76,6 +76,9 @@ class PaquetCm1SubstitutsTest {
      */
     private static final int MOTS_DE_LA_PLUS_LONGUE_PROPOSITION = 4;
 
+    /** SUB-12 : ce qui fait d'une proposition un couple, dans les mots de nadia-prof - "X et Y". */
+    private static final String MARQUE_DU_COUPLE = " et ";
+
     /** ADR-0060 clause 2 : le caractere decide a l'interieur des guillemets francais. */
     private static final char INSECABLE = 160;
 
@@ -420,5 +423,273 @@ class PaquetCm1SubstitutsTest {
         assertThat(defauts)
                 .as("epinglage de ce que ce paquet livre, la borne de la famille n'etant pas rendue")
                 .isEmpty();
+    }
+
+    /**
+     * <b>SUB-11 et SUB-12, et le motif du refus du 2026-08-31.</b> {@code nadia-prof} a joue 25
+     * parties, 210 manches, les vingt textes rencontres, en n'appliquant qu'une seule regle -
+     * <i>choisir la proposition qui contient le premier prenom du texte</i> - et a gagne <b>199
+     * fois sur 210, soit 94,8 %</b>, contre 33,3 % de hasard. Sa verification independante sur le
+     * fichier rend le meme fait : <b>19 items sur 20</b>. Le raccourci recompense etait
+     * <i>"l'histoire parle de celui qu'on nomme en premier"</i>, c'est-a-dire exactement la
+     * representation que cette ligne du programme existe pour remplacer.
+     *
+     * <p><b>Le mecanisme, et il vaut d'etre lu avant de corriger un autre paquet de cette
+     * famille.</b> {@code SUB-5} demande que le referent ne soit pas le groupe compatible le plus
+     * proche a gauche ; la facon la plus simple de la tenir est de placer le referent loin, donc au
+     * debut. <b>Fermer tres soigneusement le raccourci de proximite a ouvert celui
+     * d'anteriorite.</b> Aucune des dix conditions ne portait cette propriete, et la porte technique
+     * etait verte.
+     *
+     * <p><b>Ce que la position se mesure sans aucune liste ecrite a la main</b> : les propositions
+     * d'un item de cette famille sont des extraits de son propre texte ({@code SUB-1}), donc chacune
+     * a une position dans ce texte. La strategie jugee ici est <i>prendre la proposition qui
+     * apparait la premiere</i> - elle n'ouvre aucune phrase, ne lit aucun accord, et ne demande ni
+     * lexique ni liste de prenoms. C'est la meme famille que la strategie d'{@code ADR-0072}, prise
+     * par un autre bout : celle-la lit <b>une phrase</b>, celle-ci lit <b>un rang</b>.
+     */
+    private record RangsDuReferent(int premiere, int derniere, int milieu, int juges) {
+    }
+
+    /**
+     * Le juge, pur : il ne lit ni disque ni classpath et recoit les items deja tires. C'est ce qui
+     * permet de le mordre en mutant le materiau reel en memoire plutot qu'en fabriquant un paquet
+     * fautif qui ressemblerait a ce que j'imagine (lecon de s05).
+     *
+     * <p>Un item dont une proposition n'apparait pas dans son texte est <b>hors du domaine</b> : la
+     * position n'y est pas definie. Sur ce paquet le domaine est plein - {@code SUB-1} l'exige - et
+     * la clause de non-vacuite ci-dessous le verifie plutot que de le supposer.</p>
+     */
+    static RangsDuReferent rangsDuReferent(List<Question> items) {
+        int premiere = 0;
+        int derniere = 0;
+        int milieu = 0;
+        int juges = 0;
+        for (Question item : items) {
+            if (item.texteSupport().isEmpty()) {
+                continue;
+            }
+            String texte = item.texteSupport().orElseThrow().toLowerCase(Locale.ROOT);
+            List<String> propositions = new ArrayList<>();
+            propositions.add(item.bonneReponse());
+            propositions.addAll(item.distracteurs());
+            List<String> parPosition = propositions.stream()
+                    .filter(proposition -> texte.contains(proposition.toLowerCase(Locale.ROOT)))
+                    .sorted((gauche, droite) -> Integer.compare(
+                            texte.indexOf(gauche.toLowerCase(Locale.ROOT)),
+                            texte.indexOf(droite.toLowerCase(Locale.ROOT))))
+                    .toList();
+            if (parPosition.size() != propositions.size()) {
+                continue;
+            }
+            juges++;
+            int rang = parPosition.indexOf(item.bonneReponse());
+            if (rang == 0) {
+                premiere++;
+            }
+            if (rang == parPosition.size() - 1) {
+                derniere++;
+            }
+            if (rang > 0 && rang < parPosition.size() - 1) {
+                milieu++;
+            }
+        }
+        return new RangsDuReferent(premiere, derniere, milieu, juges);
+    }
+
+    /**
+     * <b>SUB-11, la condition opposable</b> : <i>"le referent n'est pas le premier personnage nomme
+     * du texte sur au moins la moitie des items"</i>. Unite de compte : l'item.
+     */
+    @Test
+    void leReferentNEstPasLaPremierePropositionDuTexteSurAuMoinsLaMoitieDesItems() {
+        RangsDuReferent rangs = rangsDuReferent(tousLesItems(paquet()));
+
+        assertThat(rangs.juges())
+                .as("ADR-0051 : cette clause ne juge rien si aucun item ne porte ses trois"
+                        + " propositions dans son texte - SUB-1 l'exige, et le domaine est donc plein")
+                .isEqualTo(NOMBRE_D_ITEMS_ATTENDU);
+        assertThat(rangs.premiere())
+                .as("SUB-11 : le referent est la premiere proposition du texte sur %d items sur %d."
+                        + " Au-dela de la moitie, un enfant gagne en prenant celui qu'on nomme en"
+                        + " premier, sans lire la phrase du substitut - et c'est la representation"
+                        + " que cette ligne du programme existe pour remplacer",
+                        rangs.premiere(), rangs.juges())
+                .isLessThanOrEqualTo(NOMBRE_D_ITEMS_ATTENDU / 2);
+    }
+
+    /**
+     * <b>Ce que la correction a du ajouter, et ce n'est pas une condition de {@code nadia-prof} :
+     * c'est le constat que sa condition, prise seule, est satisfiable par le raccourci
+     * symetrique.</b>
+     *
+     * <p>Un paquet ou le referent serait <b>toujours le dernier</b> nomme tiendrait {@code SUB-11}
+     * a 0 % et rendrait pourtant le jeu gagnable par <i>"prendre celui qu'on nomme en dernier"</i>.
+     * La premiere reecriture de ce paquet est passee par la : {@code SUB-11} y valait deja 35 %,
+     * mais la position <i>derniere</i> valait <b>55 %</b>. <b>Aucune position ne doit etre
+     * majoritaire</b>, et c'est le seuil d'{@code ADR-0072}, repris tel quel plutot que renegocie.
+     *
+     * <p>Je le remonte comme un fait plutot que comme une regle : la condition qui gouverne est
+     * celle de {@code nadia-prof}, et c'est a elle de dire si elle veut ce complement. Ici il est
+     * epingle sur ce paquet, pas oppose a la famille.</p>
+     */
+    @Test
+    void aucunePositionDeLaBonneReponseDansLeTexteNEstMajoritaire() {
+        RangsDuReferent rangs = rangsDuReferent(tousLesItems(paquet()));
+        int majorite = NOMBRE_D_ITEMS_ATTENDU / 2;
+
+        assertThat(rangs.premiere())
+                .as("prendre la premiere proposition du texte gagne %d items sur %d",
+                        rangs.premiere(), rangs.juges())
+                .isLessThanOrEqualTo(majorite);
+        assertThat(rangs.derniere())
+                .as("prendre la derniere proposition du texte gagne %d items sur %d - le raccourci"
+                        + " symetrique de celui qui a coute ce sprint", rangs.derniere(), rangs.juges())
+                .isLessThanOrEqualTo(majorite);
+        assertThat(rangs.milieu())
+                .as("prendre celle du milieu gagne %d items sur %d", rangs.milieu(), rangs.juges())
+                .isLessThanOrEqualTo(majorite);
+    }
+
+    /**
+     * ADR-0013 obligation 3 : le materiau reel mute en memoire. La bonne reponse est recopiee en
+     * tete du texte de chaque item, ce qui la place en premiere position sans rien changer d'autre -
+     * c'est la forme exacte du paquet refuse le 2026-08-31, ou 19 items sur 20 la portaient deja.
+     */
+    @Test
+    void unReferentRemisEnTeteDuTexteFaitEchouerLaClause() {
+        List<Question> mutes = new ArrayList<>();
+        for (Question item : tousLesItems(paquet())) {
+            mutes.add(new Question(item.id(), item.enonce(), item.bonneReponse(), item.distracteurs(),
+                    item.indice(), item.explication(), item.partDesignee(),
+                    java.util.Optional.of(item.bonneReponse() + " arrive. "
+                            + item.texteSupport().orElseThrow())));
+        }
+
+        RangsDuReferent rangs = rangsDuReferent(mutes);
+
+        assertThat(rangs.premiere())
+                .as("le referent remis en tete de chaque texte doit faire remonter la position"
+                        + " premiere au-dela de la moitie, sans quoi cette clause ne mord pas")
+                .isGreaterThan(NOMBRE_D_ITEMS_ATTENDU / 2);
+    }
+
+    /**
+     * <b>SUB-12</b> : <i>"aucune propriete de forme ne distingue la bonne reponse de ses
+     * distracteurs : si la bonne reponse est un couple X et Y, au moins un distracteur en est un
+     * aussi"</i>. Sur le paquet refuse, les cinq items a couple portaient deux distracteurs en
+     * <i>"les ..."</i>, et la regle <i>"prendre celle qui contient et"</i> gagnait <b>cinq fois sur
+     * cinq</b> sans ouvrir le texte.
+     */
+    @Test
+    void aucunePropositionEnCoupleNEstSeuleDeSonEspeceDansSonItem() {
+        List<String> defauts = new ArrayList<>();
+        for (Question item : tousLesItems(paquet())) {
+            if (!item.bonneReponse().contains(MARQUE_DU_COUPLE)) {
+                continue;
+            }
+            boolean unDistracteurEnCouple = item.distracteurs().stream()
+                    .anyMatch(distracteur -> distracteur.contains(MARQUE_DU_COUPLE));
+            if (!unDistracteurEnCouple) {
+                defauts.add("'" + item.enonce() + "' : la bonne reponse '" + item.bonneReponse()
+                        + "' est le seul couple de son item, et la regle 'prendre celle qui"
+                        + " contient et' gagne sans ouvrir le texte (SUB-12)");
+            }
+        }
+        assertThat(defauts)
+                .as("SUB-12 : aucune propriete de forme ne distingue la bonne reponse de ses"
+                        + " distracteurs")
+                .isEmpty();
+    }
+
+    /**
+     * <b>Epinglage, et surtout pas une condition : personne ne me l'a demande.</b> L'indice ne
+     * s'affiche qu'apres un premier echec, donc il ne fait jamais gagner du premier coup et ne
+     * relevait d'aucune des mesures de {@code nadia-prof} sur ce paquet. Mais elle a releve <b>le
+     * meme jour, sur un autre paquet</b>, qu'un indice qui designe la reponse est une marque de
+     * surface, et elle n'a pas refuse faute d'une condition qui la gouverne.
+     *
+     * <p>Sur la version refusee, l'indice designait une phrase ou <b>un seul candidat figurait</b>
+     * sur 12 items sur 20. Ce paquet-ci en porte zero : chaque indice designe une portion de texte
+     * ou au moins deux des trois propositions se trouvent, donc il dit ou relire ({@code SUB-9})
+     * sans dire quoi repondre. <b>Ce que ce test tient est ce chiffre-la, sur ce paquet ; il
+     * n'oppose rien a la famille</b>, et c'est a {@code nadia-prof} de decider s'il lui faut une
+     * condition.</p>
+     */
+    @Test
+    void aucunIndiceNeDesigneUnePortionDeTexteOuLaBonneReponseEstSeule() {
+        List<String> defauts = new ArrayList<>();
+        for (Question item : tousLesItems(paquet())) {
+            String portion = portionDesigneeParLIndice(item);
+            if (portion == null) {
+                continue;
+            }
+            List<String> presentes = new ArrayList<>();
+            for (String proposition : propositionsDe(item)) {
+                if (portion.toLowerCase(Locale.ROOT).contains(proposition.toLowerCase(Locale.ROOT))) {
+                    presentes.add(proposition);
+                }
+            }
+            if (presentes.size() == 1 && presentes.get(0).equals(item.bonneReponse())) {
+                defauts.add("'" + item.enonce() + "' : l'indice designe une portion de texte ou la"
+                        + " bonne reponse est le seul candidat, il donne donc la reponse au lieu de"
+                        + " dire quoi relire");
+            }
+        }
+        assertThat(defauts)
+                .as("epinglage de ce que ce paquet livre - zero - et non une condition opposable")
+                .isEmpty();
+    }
+
+    private static List<String> propositionsDe(Question item) {
+        List<String> propositions = new ArrayList<>();
+        propositions.add(item.bonneReponse());
+        propositions.addAll(item.distracteurs());
+        return propositions;
+    }
+
+    /**
+     * La portion de texte que l'indice designe, quand il en designe une. Les quatre libelles employes
+     * par ce paquet sont lus ici ; un libelle qui n'en serait aucun rend {@code null} et sort du
+     * comptage plutot que d'etre devine.
+     */
+    private static String portionDesigneeParLIndice(Question item) {
+        String texte = item.texteSupport().orElseThrow();
+        List<String> phrases = phrasesDe(texte);
+        String libelle = item.indice().orElse("").toLowerCase(Locale.ROOT);
+        if (libelle.contains("deux premi")) {
+            return String.join(" ", phrases.subList(0, Math.min(2, phrases.size())));
+        }
+        if (libelle.contains("deux derni")) {
+            return String.join(" ", phrases.subList(Math.max(0, phrases.size() - 2), phrases.size()));
+        }
+        if (libelle.contains("premi")) {
+            return phrases.get(0);
+        }
+        if (libelle.contains("milieu")) {
+            return phrases.size() > 1 ? phrases.get(1) : null;
+        }
+        if (libelle.contains("derni")) {
+            return phrases.get(phrases.size() - 1);
+        }
+        return null;
+    }
+
+    /** Le decoupage en phrases sur les trois ponctuations fortes, celui d'ADR-0072. */
+    private static List<String> phrasesDe(String texte) {
+        List<String> phrases = new ArrayList<>();
+        StringBuilder courante = new StringBuilder();
+        for (int rang = 0; rang < texte.length(); rang++) {
+            char caractere = texte.charAt(rang);
+            courante.append(caractere);
+            if (caractere == '.' || caractere == '!' || caractere == '?') {
+                phrases.add(courante.toString());
+                courante.setLength(0);
+            }
+        }
+        if (!courante.toString().isBlank()) {
+            phrases.add(courante.toString());
+        }
+        return phrases;
     }
 }

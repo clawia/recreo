@@ -8,123 +8,134 @@ descripteur:
   competence: "Repérer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte"
 #
 # S25-SUB-1. Arbitrage prealable de nadia-prof du 2026-08-30, ACCEPTE sous conditions SUB-1 a
-# SUB-10 (ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md,
-# section 5). Paquet integralement neuf : aucune matiere premiere de contenu-repris/ sur cette
-# ligne, recherche deja faite a DEC-0039.
+# SUB-10 ; REFUSE le 2026-08-31 sur une marque de surface qu'aucune des dix ne portait, et
+# conditions SUB-11 et SUB-12 posees le meme jour
+# (FICHE-bandit-manchot-substituts-cm1.md, sections 3 et 6). Paquet integralement neuf.
+#
+# SUB-11 : le referent n'est pas le premier personnage nomme du texte sur au moins la moitie des
+# items. Le rang du referent parmi les personnages nommes, dans l'ordre du texte, est ecrit sur
+# chaque item ci-dessous ('rang 1', 'rang 2', 'rang 3') - un marqueur qu'aucun code de production
+# ne lit. Le motif du refus est que fermer tres soigneusement le raccourci de proximite (SUB-5,
+# tenue sur 18 items quand 6 etaient demandes) avait ouvert celui d'anteriorite : 19 items sur 20
+# placaient le referent en premier, et "l'histoire parle de celui qu'on nomme en premier" est
+# exactement la representation que cette ligne existe pour remplacer.
+#
+# SUB-12 : aucune propriete de forme ne distingue la bonne reponse de ses distracteurs. Les items
+# dont la bonne reponse est un couple "X et Y" sont marques '# SUB-12' et portent au moins un
+# distracteur qui en est un aussi ; deux d'entre eux en portent deux, la ou le texte s'y pretait
+# sans rien perdre par ailleurs.
 #
 # SUB-3 : la ligne du programme dit "pronoms, groupes nominaux", et un paquet qui ne servirait
 # qu'une des deux familles ne la couvrirait qu'a moitie. Le substitut interroge est marque
-# '# pronom' ou '# groupe nominal' sur chaque item ci-dessous - un marqueur qu'aucun code de
-# production ne lit, pose pour que le compte se refasse en lisant le fichier.
+# '# pronom' ou '# groupe nominal' sur chaque item.
 #
 # SUB-5 : sur les items marques '# SUB-5', le referent n'est PAS le groupe nominal compatible en
-# genre et en nombre le plus proche a gauche du substitut. C'est la condition que nadia-prof nomme
-# la plus utile du lot - "un enfant qui ne bute jamais sur un referent eloigne n'a jamais
-# travaille la competence".
+# genre et en nombre le plus proche a gauche du substitut. La condition reste tenue au-dessus de
+# son plancher apres la correction, et nadia-prof a explicitement demande de ne pas y toucher.
 #
-# SUB-4, SUB-5 et SUB-6 ne sont pas jugeables par un automate de ce depot : l'accord en genre et
-# en nombre d'un groupe nominal francais demande un lexique morphologique qui n'existe pas ici, et
-# le masquage du texte est un jugement de sens. nadia-prof les porte a la main, item par item, et
-# elle l'a ecrit avant qu'on les lui assigne.
+# SUB-4, SUB-5, SUB-6, SUB-11 et SUB-12 sont verifiees par elle, item par item : l'accord en genre
+# et en nombre d'un groupe nominal francais demande un lexique morphologique qui n'existe pas ici,
+# et le masquage du texte est un jugement de sens. Ce que les tests tiennent est le rang, le
+# marquage et la forme des propositions, jamais la lecture de langue.
 #
 items:
-  - enonce: "À qui renvoie « Elle » dans ce texte ?"  # pronom, SUB-5
-    texteSupport: "Nadia répète son exposé depuis deux semaines. Inès et Lila l'écoutent une dernière fois. Elle monte enfin sur l'estrade."
+  - enonce: "À qui renvoie « Elle » dans ce texte ?"  # pronom, SUB-5, rang 2
+    texteSupport: "Inès prépare la salle en silence. Nadia répète son exposé depuis deux semaines, pendant que Lila installe les chaises. Elle monte enfin sur l'estrade."
     bonneReponse: "Nadia"
     distracteurs: ["Inès", "Lila"]
-    indice: "Relis la première phrase du texte."
-  - enonce: "À qui renvoie « Il » dans ce texte ?"  # pronom, SUB-5
-    texteSupport: "Malo arbitre le tournoi depuis le matin. Théo et Rachid gonflent les ballons près du banc. Il siffle enfin le début du match."
+    indice: "Relis la phrase du milieu."
+  - enonce: "À qui renvoie « Il » dans ce texte ?"  # pronom, rang 3
+    texteSupport: "Théo et Rachid gonflent les ballons près du banc. Malo arbitre le tournoi depuis le matin. Il siffle enfin le début du match."
     bonneReponse: "Malo"
     distracteurs: ["Théo", "Rachid"]
-    indice: "Relis la première phrase du texte."
-  - enonce: "À qui renvoie « la gardienne » dans ce texte ?"  # groupe nominal, SUB-5
+    indice: "Relis les deux premières phrases."
+  - enonce: "À qui renvoie « la gardienne » dans ce texte ?"  # groupe nominal, SUB-5, rang 1
     texteSupport: "Zoé et Jade arrivent les premières au gymnase. Zoé plonge sans arrêt pour attraper les ballons pendant que Sofia range les plots. La gardienne se relève en souriant."
     bonneReponse: "Zoé"
     distracteurs: ["Jade", "Sofia"]
     indice: "Relis la phrase du milieu."
-  - enonce: "À qui renvoie « Ils » dans ce texte ?"  # pronom, SUB-5
-    texteSupport: "Théo et Adam remplissent les seaux à la pompe du jardin. Plus loin, les jardiniers taillent la haie. Ils versent l'eau sur les jeunes plants."
+  - enonce: "À qui renvoie « Ils » dans ce texte ?"  # pronom, SUB-12, rang 3
+    texteSupport: "Noé et Tom taillent la haie près du portail, pendant que Lila et Jade ratissent l'allée. Théo et Adam remplissent les seaux à la pompe du jardin. Ils versent l'eau sur les jeunes plants."
     bonneReponse: "Théo et Adam"
-    distracteurs: ["les jardiniers", "les jeunes plants"]
-    indice: "Relis la première phrase du texte."
-  - enonce: "À qui renvoie « le cuisinier » dans ce texte ?"  # groupe nominal, SUB-5
-    texteSupport: "Ilan prépare la soupe depuis le début de l'après-midi, aidé par Noé. Tom dresse les assiettes sur le comptoir. Le cuisinier goûte enfin son bouillon."
+    distracteurs: ["Noé et Tom", "Lila et Jade"]
+    indice: "Relis les deux premières phrases."
+  - enonce: "À qui renvoie « le cuisinier » dans ce texte ?"  # groupe nominal, rang 3
+    texteSupport: "Noé lave les légumes dans la grande bassine. Tom dresse les assiettes sur le comptoir. Ilan prépare la soupe depuis le début de l'après-midi, et le cuisinier goûte enfin son bouillon."
     bonneReponse: "Ilan"
     distracteurs: ["Noé", "Tom"]
-    indice: "Relis la première phrase du texte."
-  - enonce: "À qui renvoie « Elle » dans ce texte ?"  # pronom
+    indice: "Relis les deux dernières phrases."
+  - enonce: "À qui renvoie « Elle » dans ce texte ?"  # pronom, rang 3
     texteSupport: "Lila et Jade apportent un roman policier au club de lecture. Manon s'installe près de la fenêtre. Elle ouvre le livre à la première page."
     bonneReponse: "Manon"
     distracteurs: ["Lila", "Jade"]
-    indice: "Relis la phrase du milieu."
-  - enonce: "À qui renvoie « la cycliste » dans ce texte ?"  # groupe nominal, SUB-5
+    indice: "Relis les deux premières phrases."
+  - enonce: "À qui renvoie « la cycliste » dans ce texte ?"  # groupe nominal, SUB-5, rang 1
     texteSupport: "Sofia et Anna s'entraînent chaque mercredi sur la piste. Sofia grimpe la côte sans ralentir tandis que Nadia règle son casque. La cycliste franchit la ligne la première."
     bonneReponse: "Sofia"
     distracteurs: ["Anna", "Nadia"]
     indice: "Relis la phrase du milieu."
-  - enonce: "À qui renvoie « Elles » dans ce texte ?"  # pronom, SUB-5
-    texteSupport: "Jade et Inès plantent des radis dans le carré du potager. Un peu plus loin, les grandes du CM2 arrosent les fraisiers. Elles tassent la terre autour des graines."
+  - enonce: "À qui renvoie « Elles » dans ce texte ?"  # pronom, SUB-5, SUB-12, rang 1
+    texteSupport: "Jade et Inès plantent des radis dans le carré du potager, pendant que Sofia et Anna arrosent les fraisiers. Les grandes du CM2 ramassent les feuilles près du portail. Elles tassent la terre autour des graines."
     bonneReponse: "Jade et Inès"
-    distracteurs: ["les grandes du CM2", "les fraisiers"]
+    distracteurs: ["Sofia et Anna", "les grandes du CM2"]
     indice: "Relis la première phrase du texte."
-  - enonce: "À qui renvoie « le danseur » dans ce texte ?"  # groupe nominal, SUB-5
-    texteSupport: "La troupe répète depuis une heure. Enzo enchaîne les sauts au centre du plateau. Malo règle la musique et le danseur salue à la fin du morceau."
+  - enonce: "À qui renvoie « le danseur » dans ce texte ?"  # groupe nominal, rang 2
+    texteSupport: "Malo règle la musique au fond de la salle. Enzo enchaîne les sauts au centre du plateau, pendant que Rachid installe les praticables. Le danseur salue à la fin du morceau."
     bonneReponse: "Enzo"
-    distracteurs: ["Malo", "la troupe"]
+    distracteurs: ["Malo", "Rachid"]
     indice: "Relis la phrase du milieu."
-  - enonce: "À qui renvoie « Il » dans ce texte ?"  # pronom, SUB-5
+  - enonce: "À qui renvoie « Il » dans ce texte ?"  # pronom, SUB-5, rang 1
     texteSupport: "Adam répare la chaîne de son vélo devant l'atelier, aidé par Tom. Yanis gonfle les pneus d'une trottinette. Il repart en roulant tout doucement."
     bonneReponse: "Adam"
     distracteurs: ["Tom", "Yanis"]
     indice: "Relis la première phrase du texte."
-  - enonce: "À qui renvoie « la scientifique » dans ce texte ?"  # groupe nominal, SUB-5
-    texteSupport: "Le club sciences observe la mare depuis le ponton. Anna note la couleur de l'eau dans son carnet. Lila prépare les tubes et la scientifique annonce ses résultats."
+  - enonce: "À qui renvoie « la scientifique » dans ce texte ?"  # groupe nominal, rang 2
+    texteSupport: "Lila prépare les tubes sur le ponton. Anna note la couleur de l'eau dans son carnet, pendant que Jade tient le filet. La scientifique annonce ses résultats devant la mare."
     bonneReponse: "Anna"
-    distracteurs: ["Lila", "la mare"]
+    distracteurs: ["Lila", "Jade"]
     indice: "Relis la phrase du milieu."
-  - enonce: "À qui renvoie « Elle » dans ce texte ?"  # pronom, SUB-5
-    texteSupport: "Léna et Chloé installent le décor du spectacle. Léna accroche les guirlandes pendant que Zoé teste les projecteurs. Elle descend enfin de l'estrade."
+  - enonce: "À qui renvoie « Elle » dans ce texte ?"  # pronom, rang 3
+    texteSupport: "Chloé installe le décor pendant que Zoé teste les projecteurs. Léna accroche les guirlandes tout en haut. Elle descend enfin de l'estrade."
     bonneReponse: "Léna"
     distracteurs: ["Chloé", "Zoé"]
-    indice: "Relis la phrase du milieu."
-  - enonce: "À qui renvoie « le libraire » dans ce texte ?"  # groupe nominal, SUB-5
-    texteSupport: "Yanis range les albums sur les étagères basses depuis ce matin. Tom et Noé collent les étiquettes. Le libraire conseille un roman à un élève."
+    indice: "Relis les deux premières phrases."
+  - enonce: "À qui renvoie « le libraire » dans ce texte ?"  # groupe nominal, rang 3
+    texteSupport: "Tom colle les étiquettes pendant que Noé trie les revues. Yanis range les romans sur les étagères basses depuis ce matin. Le libraire en conseille un à un élève."
     bonneReponse: "Yanis"
     distracteurs: ["Tom", "Noé"]
-    indice: "Relis la première phrase du texte."
-  - enonce: "À qui renvoie « Ils » dans ce texte ?"  # pronom, SUB-5
-    texteSupport: "Rachid et Ilan repeignent le banc du préau depuis la récréation. Les autres élèves ramassent les feuilles près du portail. Ils posent enfin leurs pinceaux."
+    indice: "Relis les deux premières phrases."
+  - enonce: "À qui renvoie « Ils » dans ce texte ?"  # pronom, SUB-12, rang 2
+    texteSupport: "Noé et Tom lavent les vitres du préau. Rachid et Ilan repeignent le banc depuis la récréation, pendant que Malo et Enzo ramassent les feuilles. Ils posent enfin leurs pinceaux."
     bonneReponse: "Rachid et Ilan"
-    distracteurs: ["les autres élèves", "les feuilles"]
-    indice: "Relis la première phrase du texte."
-  - enonce: "À qui renvoie « la nageuse » dans ce texte ?"  # groupe nominal, SUB-5
-    texteSupport: "Le club se retrouve au bord du bassin. Inès plonge la première et rejoint l'autre bord. Jade et Anna comptent les longueurs, et la nageuse sort de l'eau."
+    distracteurs: ["Noé et Tom", "Malo et Enzo"]
+    indice: "Relis la phrase du milieu."
+  - enonce: "À qui renvoie « la nageuse » dans ce texte ?"  # groupe nominal, SUB-5, rang 1
+    texteSupport: "Inès plonge la première et rejoint l'autre bord du bassin. Jade et Anna comptent les longueurs depuis le bord. La nageuse sort enfin de l'eau."
     bonneReponse: "Inès"
     distracteurs: ["Jade", "Anna"]
-    indice: "Relis la phrase du milieu."
-  - enonce: "À qui renvoie « Elles » dans ce texte ?"  # pronom, SUB-5
-    texteSupport: "Manon et Lila trient les livres abîmés pendant que les bibliothécaires notent les titres. Dans la réserve, les cartons montent jusqu'au plafond. Elles referment la porte à la fin."
+    indice: "Relis les deux premières phrases."
+  - enonce: "À qui renvoie « Elles » dans ce texte ?"  # pronom, SUB-5, SUB-12, rang 1
+    texteSupport: "Manon et Lila trient les livres abîmés dans la réserve pendant que Sofia et Zoé notent les titres. Plus tard, Anna et Inès rapportent les cartons vides. Elles referment la porte de la réserve à la fin."
     bonneReponse: "Manon et Lila"
-    distracteurs: ["les bibliothécaires", "les cartons"]
+    distracteurs: ["Sofia et Zoé", "Anna et Inès"]
     indice: "Relis la première phrase du texte."
-  - enonce: "À qui renvoie « le gardien » dans ce texte ?"  # groupe nominal, SUB-5
-    texteSupport: "Théo garde la cage pendant tout le match. Adam tire au but et Malo court sur l'aile. Le gardien arrête le ballon du bout des doigts."
+  - enonce: "À qui renvoie « le gardien » dans ce texte ?"  # groupe nominal, rang 3
+    texteSupport: "Adam tire au but pendant que Malo court sur l'aile. Théo garde la cage pendant tout le match. Le gardien arrête le ballon du bout des doigts."
     bonneReponse: "Théo"
     distracteurs: ["Adam", "Malo"]
-    indice: "Relis la première phrase du texte."
-  - enonce: "À qui renvoie « Il » dans ce texte ?"  # pronom
-    texteSupport: "Noé et Tom montent la tente près des arbres pendant qu'Enzo plante les piquets. Noé déroule les tapis de sol. Il installe ensuite les lampes."
+    indice: "Relis les deux premières phrases."
+  - enonce: "À qui renvoie « Il » dans ce texte ?"  # pronom, SUB-5, rang 2
+    texteSupport: "Tom monte la tente près des arbres. Noé déroule les tapis de sol à l'intérieur pendant qu'Enzo plante les piquets. Il installe ensuite les lampes avant la nuit."
     bonneReponse: "Noé"
     distracteurs: ["Tom", "Enzo"]
     indice: "Relis la phrase du milieu."
-  - enonce: "À qui renvoie « la jardinière » dans ce texte ?"  # groupe nominal, SUB-5
+  - enonce: "À qui renvoie « la jardinière » dans ce texte ?"  # groupe nominal, SUB-5, rang 1
     texteSupport: "Sofia et Zoé sèment des tournesols au fond de la cour. Sofia arrose les graines chaque matin tandis que Nadia ratisse l'allée. La jardinière compte les premières pousses."
     bonneReponse: "Sofia"
     distracteurs: ["Zoé", "Nadia"]
     indice: "Relis la phrase du milieu."
-  - enonce: "À qui renvoie « Elles » dans ce texte ?"  # pronom, SUB-5
-    texteSupport: "La chorale prépare le concert de fin d'année. Chloé et Jade répètent le refrain devant le piano, pendant que les choristes rangent les chaises. Elles chantent sans la partition."
+  - enonce: "À qui renvoie « Elles » dans ce texte ?"  # pronom, SUB-5, SUB-12, rang 2
+    texteSupport: "Léna et Manon distribuent les partitions à l'entrée. Chloé et Jade répètent le refrain depuis une heure, pendant que Sofia et Anna rangent les chaises. Elles chantent enfin sans regarder le texte."
     bonneReponse: "Chloé et Jade"
-    distracteurs: ["les choristes", "la chorale"]
+    distracteurs: ["Léna et Manon", "Sofia et Anna"]
     indice: "Relis la phrase du milieu."
