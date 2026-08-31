@@ -97,9 +97,17 @@ class LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest {
      * construction, ni {@code LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest}, qui ne
      * calcule un taux que sur les items dans le domaine. Ce qui les garde : la relecture
      * pedagogique de {@code nadia-prof} sur chaque distracteur.</p>
+     *
+     * <p>{@code cm1-fractions} (S24-FRA) porte 24 items a trois propositions dont 6 dans le domaine
+     * et 18 ecartes. Les 6 du domaine sont ceux de la forme (d) de FRA-2, "la lecture du
+     * denominateur seul", dont les trois propositions sont des nombres nus. Les 18 autres sont les
+     * formes (a), (b) et (c) : leurs propositions sont soit une denomination en toutes lettres
+     * ("trois huitiemes"), soit une fraction ecrite en chiffres ("3/8"), que la lecture de valeur
+     * ecarte depuis ADR-0068 parce que le reste apres le premier nombre porte encore un chiffre.
+     * Mesure du 2026-08-31, sur le paquet servi.</p>
      */
     private static final Map<String, Integer> PAQUETS_A_ITEMS_ECARTES =
-            Map.of("cm1-perimetre", 2, "cm1-grands-nombres", 14);
+            Map.of("cm1-perimetre", 2, "cm1-grands-nombres", 14, "cm1-fractions", 18);
 
     /** Un item a trois propositions, vu par la lecture de valeur. */
     private record Lecture(List<String> propositions, List<Lue> lues) {

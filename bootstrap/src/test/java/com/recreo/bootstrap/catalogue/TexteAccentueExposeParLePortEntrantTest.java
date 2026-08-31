@@ -140,6 +140,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S24-PLU (meme arbitrage, conditions PLU-1 a PLU-9) : entree neuve, marques du
             // pluriel les plus frequentes, CP.
             "bandit-manchot-pluriel-cp",
+            // S24-FRA (arbitrage prealable s23, section 8bis, FRA-1 a FRA-9 ; arbitrage de s24,
+            // section 5.2, FRA-10 ; amendement du 2026-08-31, famille (e)) : entree neuve, la
+            // notion de fraction simple au CM1, moitie "notion" seule.
+            "bandit-manchot-fractions-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -190,6 +194,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis et réponds",
             // S24-PLU : titre neuf, espace insecable devant le point d'interrogation (TYP-1).
             "Un ou plusieurs ?",
+            // S24-FRA : titre neuf.
+            "Les fractions simples",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -236,6 +242,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis le petit texte, puis réponds à la question.",
             // S24-PLU : consigne neuve.
             "Choisis la bonne écriture pour compléter la phrase.",
+            // S24-FRA : consigne neuve.
+            "Lis bien la fraction, puis choisis la réponse.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
             // valeur unique pour les jeux du catalogue reel, compte sur catalogue.yaml, pas recopie.
             "bandit-manchot",
@@ -302,7 +310,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S24-NAR : competence neuve.
             "Comprendre un texte narratif très court (questions explicites : qui, où, quoi)",
             // S24-PLU : competence neuve.
-            "Reconnaître et utiliser les marques du pluriel les plus fréquentes (-s)");
+            "Reconnaître et utiliser les marques du pluriel les plus fréquentes (-s)",
+            // S24-FRA : competence neuve, couverture partielle nommee (FRA-9). Le libelle est celui
+            // du referentiel, la moitie "reperage sur une droite numerique" comprise, parce que
+            // c'est la ligne entiere que le descripteur du paquet nomme ; ce que le paquet couvre
+            // reellement est la moitie "notion", et la mention exacte que nadia-prof exige sur la
+            // matrice reste due le jour ou la ligne bougera.
+            "Notion de fraction simple (unités fractionnaires, fractions inférieures à 1) et "
+                    + "repérage sur une droite numérique");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
