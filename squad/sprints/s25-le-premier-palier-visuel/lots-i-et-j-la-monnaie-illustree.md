@@ -297,3 +297,113 @@ sienne pour le motif, la mienne pour l'assertion, et les nombres deviennent **24
   de `bootstrap` passe donc de 147 a 145 dans l'arbre fusionne.
 - **Aucune assertion n'a ete affaiblie pour faire tenir la fusion**, et aucun chiffre n'a ete
   recopie : les 986 sont lus dans le journal du build de l'arbre fusionne.
+
+---
+
+## 10. Les reserves de `nadia-prof`, traitees - et un chiffre qui n'est pas un merite
+
+**Arbre de mesure** : `1a47644`, `s25-sofia-review`, plus les deux fichiers de ce lot. **Mesure
+lancee apres `clean`**, donc sur un jar reconstruit : `nadia-prof` a audite un jar de la veille sans
+s'en apercevoir jusqu'a en regarder l'horodatage, et ce mode de defaillance est le meme que celui
+qu'elle raconte deux fois dans sa fiche.
+
+### 10.1 `CON-6` - mesure faite avant d'ecrire, et le resultat est contre-intuitif
+
+`CON-6` est **neuve et non retroactive** : elle ne conditionnait pas le Done de ce paquet. Je l'ai
+quand meme mesuree sur mes douze items, avant toute reecriture.
+
+> **Avant reecriture : 12 / 12, soit 100 %**, pour un plancher de 50 %.
+
+**Ce chiffre n'est pas un merite, et c'est le fait que je remonte.** Il vient de l'uniformite : deux
+indices pour douze items. Un indice partage par tout le paquet est **maximalement conforme** a
+`CON-6`, puisqu'il est forcement porte par un item de reponse differente. **La parade que `lea-dev`
+avait trouvee pour les textes alternatifs - les rendre identiques - passe donc `CON-6` avec un score
+parfait**, alors que c'est exactement ce que l'avertissement vise : *un indice qui ne varie pas ne
+sert plus l'enfant qui vient d'echouer.*
+
+`CON-6` attrape l'indice **taille pour une reponse**. Elle ne distingue pas l'indice **partage** de
+l'indice **si general qu'il n'aide plus**. Les deux bornes de la condition sont donc a un seul bout.
+**Ce n'est pas un reproche a une condition ecrite en trois heures sur un trou reel** : c'est le point
+qui doit revenir a son autrice avant que `theo-archi` et `yanis-qa` decident si elle devient un
+garde-fou de depot, parce qu'un garde-fou qui rend 100 % sur le cas degenere ne garde pas ce que sa
+phrase promet.
+
+### 10.2 Reserve 1 - le vocabulaire de l'indice : corrigee
+
+*"**grave** n'est pas un mot du CP [...] **objet** est abstrait pour designer une piece ou un
+billet."* **Les deux mots ont disparu des douze indices** - verifie, zero occurrence.
+
+**Je n'ai pas remplace deux mots : j'ai redistribue les indices**, parce que la reserve de
+vocabulaire et l'avertissement sur l'uniformite portent sur le meme champ et se corrigent d'un seul
+geste. **Trois indices au lieu de deux, distribues par scene et non par reponse** :
+
+| Indice | Items | Ce qu'il ajoute a l'enfant qui vient d'echouer |
+|---|---|---|
+| *"Commence par le plus grand nombre, puis ajoute les autres."* | 5 | Une **methode**, vraie et reutilisable, la ou l'ancien indice ne faisait que repeter la consigne |
+| *"Tout est pareil ici. Ajoute plusieurs fois le meme nombre."* | 2 | Les deux seules scenes ou tout est identique, et ou "commencer par le plus grand" n'aide en rien |
+| *"Ajoute ce qui est a droite du trait pour retrouver le nombre de gauche."* | 5 | Nomme le trait comme repere, ce que l'ancien indice faisait deja, sans le mot *gauche* avant le mot *trait* |
+
+**Mesure apres reecriture** : `CON-6` **12 / 12**, inchange - ce qui confirme 10.1 plutot que de le
+contredire. Aucun mot de plus de neuf lettres. **Zero occurrence typographique neuve.**
+
+### 10.3 Reserve 2 et `MON-6` - mesuree, et rien n'est change dessus
+
+`MON-6` est **neuve et non retroactive** ; `nadia-prof` ecrit qu'elle *"ne s'applique pas aux douze
+items de ce paquet, deja valides"*. **Je l'ai mesuree quand meme, pour que le chiffre existe avant le
+paquet suivant** :
+
+| Item de composition | Termes | Somme des trois premiers | `MON-6` |
+|---|---|---|---|
+| `2 + 2 + 1` | 3 | 5 | tient |
+| `2 + 1 + 1 + 1` | 4 | 4 | tient |
+| `1 + 1` | 2 | 2 | tient |
+| `5 + 2 + 2 + 1` | 4 | 9 | tient |
+| `10 + 5 + 2 + 2 + 1` | **5** | **17** | **ne tient pas** |
+
+**Quatre items sur cinq tiennent deja la condition qui n'existait pas quand ils ont ete ecrits.**
+Le cinquieme est exactement celui qu'elle nomme. **Je ne le change pas** : le modifier rouvrirait sa
+passe d'exactitude sur un increment qu'elle a valide, et deplacer son poteau dans l'autre sens ne
+vaut pas mieux que le deplacer dans le sien.
+
+### 10.4 Ses deux autres reponses - ce qu'elles changent, c'est-a-dire rien
+
+- **`MON-1`, le motif et non la lettre.** Un nombre qui nomme **la valeur d'un objet montre** est
+  interdit ; un nombre qui nomme **une cible a atteindre** est permis. **Ma lecture etait plus severe
+  que necessaire et elle n'a rien casse** : elle ecrit qu'aucune reecriture n'en decoule. Les douze
+  enonces restent a **zero chiffre**, ce qui tient la lettre comme le motif.
+- **La forme forte de `MON-3`, et mon motif etait faux.** Je l'avais bloquee sur `ADR-0041`. Le vrai
+  motif est ailleurs et il est meilleur : l'enonce ne liant pas l'enfant aux pieces montrees, **un
+  distracteur de meme valeur donnerait deux reponses justes**. *"Limite de mecanique, pas manquement
+  de contenu."* **Le garde-fou n'avait pas a etre affaibli, et il ne l'a pas ete** - mais je notais
+  la bonne conclusion pour la mauvaise raison, et c'est elle qui a trouve la bonne.
+
+### 10.5 Ce que j'ai verifie et qui ne bouge pas
+
+| Ce qui est verifie | Resultat |
+|---|---|
+| Les vingt-quatre dessins | **zero octet change** par ce lot - `git diff` vide sur le repertoire |
+| Cliquet de poids, **remesure par moi** | **24 fichiers, 29 436 octets, maximum 2 685** - identique a ce que porte l'arbre final |
+| Part de `MON` dans ce total | 12 fichiers, **22 912 octets**, maximum 2 685 - inchangee depuis mon premier commit |
+| Population epinglee | **24 et 24** |
+| `MON-1`, `MON-3`, `MON-4`, `CON-3`, clause 6 | 0 chiffre sur 12 enonces ; 5 items sur 12 (41,7 %) ; 20 euros ; 12 dessins distincts ; 12 fois `enonce` en premiere cle |
+| `CON-5` | **7 textes alternatifs distincts**, inchanges |
+| Porte technique | `mvn -B clean verify`, racine du reacteur complet, **BUILD SUCCESS, 1 007 tests** |
+
+**Les 1 007 se recomptent** : 1 006 sur l'arbre final, plus **un** - le test de `CON-6` ajoute ici.
+Detail par module : 80 + 13 + 364 + 399 + 145 + 6.
+
+### 10.6 Ce que je remonte, et qui touche mon propre lot F
+
+**Le refus de l'enveloppe de build est un faux rouge, et la cause est dans ma moitie du lot F.**
+`outils/mvn-jdk21.sh` resout sa toolchain dans le fichier du **shell**, et refuse sur ce qu'elle y
+lit ; Maven, lui, lit le fichier du **repertoire utilisateur de sa machine virtuelle**, ou la
+declaration est juste. **Le refus est donc exact sur le fichier qu'il regarde et sans objet pour le
+build qu'il empeche** - c'est le defaut de `S21-1` section 6.3, deplace de `verifier-jdk.sh` vers
+l'enveloppe.
+
+**L'ingredient du correctif existe deja, ecrit dans le meme lot F** :
+`repertoire_utilisateur_de_la_machine_virtuelle`, juge pur, teste, et deja employe par
+`verifier-jdk.sh` - c'est lui qui fait dire au constat *"toolchains lu par Maven : oui (un autre que
+celui lu par ce script)"*. **Je ne l'applique pas a l'enveloppe** : `theo-archi` instruit ce
+correctif, et deux mains sur le meme fichier est ce qui produit les conflits que ce sprint a passe sa
+journee a resoudre. **Je nomme l'ingredient pour que son correctif soit un appel, pas une enquete.**

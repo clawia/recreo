@@ -264,6 +264,46 @@ class PaquetCpMonnaieTest {
                 .doesNotHaveDuplicates();
     }
 
+    /**
+     * `CON-6`, ecrite par nadia-prof le 2026-08-31 sur la fiche de {@code cp-figures-planes}, apres
+     * avoir mesure que l'indice y designait la reponse sur 8 items sur 12 : <i>"sur un paquet
+     * illustre, l'indice est choisi d'apres les propositions de l'item, jamais d'apres sa bonne
+     * reponse. Verification : sur au moins la moitie des items, l'indice de l'item est aussi porte
+     * par un item dont la bonne reponse est differente."</i> Son motif : l'indice n'apparait
+     * qu'apres un echec, et un indice qui ne va qu'avec une seule reponse devient a ce moment-la une
+     * designation et non une aide.
+     *
+     * <p>Elle est <b>neuve et non retroactive</b>, donc elle ne conditionnait pas le Done de ce
+     * paquet. Elle est encodee ici quand meme, et sur ce paquet-ci seulement : nadia-prof recommande
+     * qu'elle devienne un garde-fou, et le perimetre d'un garde-fou de depot est a theo-archi et
+     * yanis-qa. Ce test ne prejuge pas du leur.
+     *
+     * <p><b>Ce que ce test ne voit pas, et il faut le dire ici parce que le chiffre est trompeur</b>
+     * : un paquet qui donnerait <b>le meme indice a ses douze items</b> passe ce critere a 100 %.
+     * La condition attrape l'indice taille pour une reponse ; elle ne distingue pas l'indice
+     * partage de l'indice si general qu'il n'aide plus personne - la parade que lea-dev avait
+     * trouvee pour les textes alternatifs, transposee aux indices. Mesure faite sur ce paquet le
+     * 2026-08-31 : avant reecriture, deux indices pour douze items, <b>12/12</b> ; apres
+     * reecriture, trois indices distribues par scene, <b>12/12</b>. Le chiffre ne bouge pas, et
+     * c'est ce qui doit remonter a son autrice.
+     */
+    @Test
+    void chaqueIndiceEstPorteParUnItemDontLaReponseEstDifferente() {
+        List<Question> items = tousLesItems(paquet());
+        List<Question> conformes = items.stream()
+                .filter(item -> items.stream().anyMatch(autre -> autre != item
+                        && autre.indice().equals(item.indice())
+                        && !autre.bonneReponse().equals(item.bonneReponse())))
+                .toList();
+
+        assertThat(conformes.size() * 2)
+                .as("CON-6 : %d items sur %d portent un indice qu'aucun item de reponse differente"
+                        + " ne partage, donc leur indice ne va qu'avec leur propre reponse. L'indice"
+                        + " s'affiche apres un echec : a ce moment-la il designe au lieu d'aider",
+                        items.size() - conformes.size(), items.size())
+                .isGreaterThanOrEqualTo(items.size());
+    }
+
     @Test
     void lePaquetCompteExactementDouzeItems() {
         assertThat(tousLesItems(paquet())).hasSize(NOMBRE_D_ITEMS_ATTENDU);
