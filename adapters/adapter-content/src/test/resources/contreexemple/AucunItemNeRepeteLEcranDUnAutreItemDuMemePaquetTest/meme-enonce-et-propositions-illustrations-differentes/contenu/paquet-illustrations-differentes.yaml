@@ -1,0 +1,19 @@
+schema: 1
+id: paquet-illustrations-differentes
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CP"
+  domaine: "Espace et géométrie"
+  competence: "Paquet licite d'ADR-0073, jamais servi à un enfant"
+items:
+  - enonce: "Quelle est cette forme ?"
+    bonneReponse: "un carré"
+    distracteurs: ["un triangle"]
+    illustration: "preuve-forme-a"
+    illustrationTexteAlternatif: "Une forme fermée à quatre côtés."
+  - enonce: "Quelle est cette forme ?"
+    bonneReponse: "un carré"
+    distracteurs: ["un triangle"]
+    illustration: "preuve-forme-b"
+    illustrationTexteAlternatif: "Une autre forme fermée à quatre côtés."

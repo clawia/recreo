@@ -155,12 +155,13 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
 
     /**
      * Ce que l'enfant voit d'un item sur l'ecran de manche : son enonce, ses propositions, la
-     * part que le contenu a designee (ADR-0062) et le texte-support qu'il porte (ADR-0050). Deux
-     * items de meme enonce et de memes propositions qui designent deux mots differents, ou qui
-     * portent deux textes-support differents, sont deux ecrans differents.
+     * part que le contenu a designee (ADR-0062), le texte-support qu'il porte (ADR-0050) et
+     * l'illustration qu'il montre (ADR-0073). Deux items de meme enonce et de memes propositions qui
+     * designent deux mots differents, qui portent deux textes-support differents, ou qui montrent
+     * deux dessins differents, sont deux ecrans differents.
      */
     private record Ecran(String enonce, Set<String> propositions, Optional<String> partDesignee,
-                          Optional<String> texteSupport) {
+                          Optional<String> texteSupport, Optional<String> illustration) {
     }
 
     /** ADR-0013 obligation 1 : les paquets viennent du repertoire, jamais d'une liste. */
@@ -226,10 +227,10 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
                 propositions.add(question.bonneReponse());
                 propositions.addAll(question.distracteurs());
                 yield new Ecran(question.enonce(), Set.copyOf(propositions), question.partDesignee(),
-                        question.texteSupport());
+                        question.texteSupport(), question.illustration());
             }
             case ReponseAEcrire reponse -> new Ecran(reponse.enonce(), Set.of(), Optional.empty(),
-                    Optional.empty());
+                    Optional.empty(), Optional.empty());
         };
     }
 
@@ -247,9 +248,17 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
      * memes propositions poses sur deux textes-support differents - "Que ressent le personnage ?"
      * avec les memes trois choix, une fois sur un texte et une fois sur un autre - sont deux ecrans
      * differents : le support fait partie de ce que l'enfant lit au moment ou l'ecran se presente.</p>
+     *
+     * <p>ADR-0073 : {@code illustration} y entre, et c'est structurel plutot que prudent. Un paquet
+     * illustre pose la meme question sur des dessins differents - meme enonce, memes propositions,
+     * un dessin par item : la classer hors de l'identite refuserait tous les items sauf le premier
+     * comme des copies, alors que l'enfant voit un ecran different a chaque fois. C'est exactement le
+     * faux rouge que la clause de classement decrit pour le texte-support, et il serait ici la regle
+     * et non le cas limite.</p>
      */
     private static final Set<String> COMPOSANTES_DANS_L_IDENTITE_D_ECRAN =
-            Set.of("enonce", "bonneReponse", "distracteurs", "partDesignee", "texteSupport");
+            Set.of("enonce", "bonneReponse", "distracteurs", "partDesignee", "texteSupport",
+                    "illustration");
 
     /**
      * ADR-0050, clause 2 : les composantes d'un item qui n'entrent pas dans son identite d'ecran, et
@@ -273,7 +282,13 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
                     + " posee deux fois",
             "exigenceDeForme", "elle gouverne la comparaison, jamais l'affichage : rien a l'ecran ne"
                     + " dit a l'enfant si son accent comptera. Ce fait est lui-meme une propriete que"
-                    + " nadia-prof juge en jouant (SAI-2), pas une composante d'ecran");
+                    + " nadia-prof juge en jouant (SAI-2), pas une composante d'ecran",
+            "illustrationTexteAlternatif", "il n'est jamais montre : c'est ce qu'une lecture d'ecran"
+                    + " annonce de l'image, et l'image, elle, est deja dans l'identite par son"
+                    + " identifiant (ADR-0073 clause 5). Deux items de meme enonce, de memes"
+                    + " propositions et de meme dessin presentent le meme ecran quel que soit le"
+                    + " libelle de ce texte - le classer dans l'identite laisserait un mot de plus"
+                    + " dans l'alternatif suffire a faire passer une repetition d'ecran");
 
     /**
      * <b>ADR-0050, clause 2 : aucune composante d'un item n'echappe au classement de l'identite
@@ -595,6 +610,20 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
         verifierQuAucunItemNeRepeteLEcranDUnAutre(
                 CONTRE_EXEMPLE.resolve("meme-enonce-et-propositions-parts-designees-differentes"),
                 CONTRE_EXEMPLE_CLASSPATH + "/meme-enonce-et-propositions-parts-designees-differentes");
+    }
+
+    /**
+     * ADR-0073 : le meme enonce et le meme jeu de propositions, deux dessins differents - c'est la
+     * forme ordinaire d'un paquet illustre, ou la question ne change pas d'un item a l'autre et ou
+     * seul le dessin change. Sans {@code illustration} dans l'identite d'ecran, un tel paquet serait
+     * refuse en entier des le second item ; ce sont deux ecrans differents, et ce test doit rester
+     * vert.
+     */
+    @Test
+    void leMemeEnonceEtLesMemesPropositionsAvecDesIllustrationsDifferentesRestentVert() {
+        verifierQuAucunItemNeRepeteLEcranDUnAutre(
+                CONTRE_EXEMPLE.resolve("meme-enonce-et-propositions-illustrations-differentes"),
+                CONTRE_EXEMPLE_CLASSPATH + "/meme-enonce-et-propositions-illustrations-differentes");
     }
 
     /**
