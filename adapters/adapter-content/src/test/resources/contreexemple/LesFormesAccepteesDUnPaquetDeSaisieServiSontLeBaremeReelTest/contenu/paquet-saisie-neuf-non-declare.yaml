@@ -1,0 +1,22 @@
+# Jeu fautif d'ADR-0013 : un paquet de saisie neuf, jamais livre, qu'aucune liste ne nomme - ni le
+# catalogue, ni la declaration du garde-fou. Seul un perimetre derive du repertoire peut le voir,
+# et c'est la forme exacte qu'aurait le prochain paquet de saisie depose sans que la declaration
+# bouge. Texte de fixture, jamais affiche a un enfant.
+schema: 1
+id: paquet-saisie-neuf-non-declare
+type: saisie
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Competence de fixture"
+exigenceDeForme: libre
+items:
+  - enonce: "Enonce de fixture 1"
+    formeDeReference: "7"
+    formesAcceptees: ["sept"]
+    indice: "Indice de fixture 1"
+  - enonce: "Enonce de fixture 2"
+    formeDeReference: "0"
+    formesAcceptees: ["zéro"]
+    indice: "Indice de fixture 2"
