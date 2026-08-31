@@ -8619,3 +8619,114 @@ et `S25-SEM-1` les porte.**
   section A.7 - **avec un fait neuf qui joue contre le perimetre que je propose** : un sprint qui
   ouvre une mecanique de rendu cree des gabarits neufs et rend le comportement client tentant, c'est
   a dire le moment le plus cher pour reporter ces trois-la.
+
+---
+
+## `S25-MON-1` ROUVERTE le 2026-08-31 sur sa forme illustree (`DEC-0065`, second amendement)
+
+**Le bloc qui la fermait, plus haut dans ce fichier, reste lisible avec sa date.** Il portait un
+fait faux - *"une image. Deux paquets, pas un"* - relaye de la section 3.1 de l'arbitrage des seize
+lignes de `nadia-prof`, que son autrice a corrigee le soir meme : **un paquet, ligne entiere.** Et il
+jugeait un **paquet textuel**, que `nadia-prof` refuse comme moi. **Le paquet illustre est un autre
+objet et je ne l'avais jamais juge.**
+
+### S25-MON-1 - Reconnaitre et utiliser la monnaie, en images (mathematiques CP) - QUATRIEME PAQUET, DEUXIEME VISUEL
+
+- **Statut** : **au perimetre**, quatrieme paquet du sprint et **second des deux paquets visuels**
+  que la borne de `nadia-prof` autorise. Bloquee, comme `S25-FIG-1`, par le lot technique du champ
+  d'illustration ; **aucun contenu ne s'ecrit avant.**
+- **Ce qu'elle rapporte** : **+1 ligne, entiere.** C'est la ligne qui fait passer le sprint de +3 a
+  +4, et **la seule qui le puisse** : tout autre quatrieme paquet viserait la ligne de l'heure, deja
+  prise par `S25-SEM-1`.
+- **Besoin** : en tant qu'eleve de CP, je veux regarder les pieces que j'ai dans la main et dire
+  combien j'ai, afin de savoir si je peux acheter ce que je veux acheter.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Nombres et calculs",
+  "Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets"
+  (`squad/programme/mathematiques/competences-cp.md`). **Ligne entiere** - `nadia-prof` :
+  *"le paquet sert reconnaitre par l'image et utiliser par la question"*.
+- **Arbitrage prealable** : **ACCEPTE** sous `MON-1` a `MON-5` (2026-08-31 au matin) **plus `CON-1` a
+  `CON-5`** (2026-08-31, arbitrage du palier 1 et son amendement). **Aucun arbitrage supplementaire
+  n'est du.**
+- **Ce que ce paquet n'est pas, et le confondre serait refaire le refus** : ce n'est **pas** le
+  paquet textuel de `contenu-repris/quiz/cp-monnaie.yml`, refuse par `nadia-prof` et par moi le meme
+  jour. *"Sur les huit items, sept sont un jeu deja valide avec un symbole d'euro colle au
+  resultat."* **Un enonce qui ecrit *"une piece de 2 euros"* a deja fait la reconnaissance a la place
+  de l'enfant, et `MON-1` l'interdit.**
+- **Criteres d'acceptation de contenu**, **un par condition**, dans les mots de `nadia-prof` :
+  - **`MON-1` - Les pieces et les billets sont montres, pas nommes.** Etant donne chaque item, quand
+    on lit son enonce, alors **aucune valeur n'y est ecrite** : la valeur se lit sur l'image. *"Un
+    enonce qui ecrit 'une piece de 2 euros' a deja fait la reconnaissance a la place de l'enfant."*
+  - **`MON-2` - Les valeurs servies sont celles qui existent.** Etant donne le paquet complet, quand
+    on releve les valeurs montrees, alors ce sont **1, 2, 5, 10, 20 centimes puis 1 et 2 euros en
+    pieces ; 5, 10, 20 euros en billets**. **Aucune valeur inventee, jamais.**
+  - **`MON-3` - Un tiers des items demande de composer une somme.** Etant donne le paquet complet,
+    quand on compte les items dont la reponse demande de **composer une somme avec les valeurs
+    montrees** - et non de faire une addition qui serait juste avec n'importe quels nombres - alors
+    ils representent **au moins un tiers** des items. *Unite de compte : l'item. C'est la condition
+    qui distingue ce paquet d'un jeu de calcul, et c'est sur elle que je l'ai rouvert.*
+  - **`MON-4` - Les sommes restent dans la limite que le CP sait calculer** : **au plus 20 euros,
+    sans centimes**, tant que la ligne "additions jusqu'a 10 (puis 20)" porte sa propre borne a 10.
+  - **`MON-5` - Situations.** Etant donne chaque item, quand on lit sa situation, alors elle ne
+    suppose **ni** argent de poche, **ni** course faite seul, **ni** achat qu'un enfant ne pourrait
+    pas faire. *Meme famille que `NAR-8` et `SUB-8`.*
+- **Criteres d'acceptation communs a tout paquet illustre**, **un par condition**, dans ses mots -
+  ils s'appliquent aussi a `S25-FIG-1` :
+  - **`CON-1` - Le test, en une phrase.** Etant donne chaque item, quand on **efface l'image**, alors
+    la reponse **n'est plus trouvable**. *"Si le geste que le texte remplace est le geste que la ligne
+    nomme, l'item est une contrefacon. [...] Si oui, l'image est un decor (`V4`) ou le texte est une
+    contrefacon."*
+  - **`CON-2` - Ce que l'enonce ne dit jamais.** Etant donne chaque item, quand on lit son enonce,
+    alors il **ne decrit ni la position, ni la forme, ni la quantite, ni la couleur** de ce que
+    l'image montre. *"'Il y a trois pieces' est une contrefacon. L'enonce pose la question ; l'image
+    porte la donnee."*
+  - **`CON-3` - L'image porte la donnee, une seule fois.** Etant donne chaque item, quand on compare
+    l'image et le texte, alors **aucune donnee necessaire a la reponse ne figure dans les deux**.
+    *"Une donnee redondante permet a l'enfant de ne jamais regarder."*
+  - **`CON-4` - Le controle est exhaustif et il est de `nadia-prof`.** Item par item, sur la totalite
+    du paquet, **jamais sur un echantillon** : elle masque l'image et verifie qu'aucun item ne se
+    repond. *Meme procedure que `NAR-6` et `SUB-6`, avec l'image a la place du texte support.*
+  - **`CON-5` - Le texte alternatif ne livre pas la reponse.** Etant donne chaque item, quand on ne
+    garde que son `illustrationTexteAlternatif`, alors la reponse **n'est pas trouvable**. *"'Une
+    figure geometrique a reconnaitre' convient ; 'trois pieces de deux euros' est une contrefacon."*
+    **Motif qu'elle demande de retenir** : *"le texte alternatif est le seul endroit du produit ou une
+    reponse peut fuir sans que personne s'en apercoive [...] un enfant qui utilise un lecteur d'ecran
+    recevrait la reponse, un enfant qui n'en utilise pas ne la recevrait pas - le meme exercice ne
+    serait pas le meme pour les deux."*
+- **Ce que le palier 1 interdit et qui vaut aussi pour ce paquet** : `V4` - **aucune image ne sert de
+  decor**. *"Une image qui ne porte pas la donnee de l'exercice n'a rien a faire sur l'ecran d'un
+  enfant de six ans."*
+- **Deux faits techniques que ce paquet consomme, et qui ne sont pas de moi** :
+  - **Une piece dessinee peut porter sa valeur gravee.** `theo-archi`, `ADR-0073` amende le
+    2026-08-31, repond nommement sur `MON-1` : un chiffre **trace en geometrie** passe la clause 4, le
+    meme **ecrit en texte** la fait rougir. **La collision nommee par `nadia-prof` en section 9.5 de
+    son arbitrage du palier 1 est reglee**, et elle ecrit ne pas encore le savoir.
+  - **Le pli passe** : `ines-design` mesure **43 px** pour une piece contre un budget de **53 px**,
+    mesure qui **converge au pixel** avec celle de `nadia-prof`, faite independamment.
+- **Ce qui n'est pas testable par un automate** : `MON-1`, `MON-3`, `MON-5`, `CON-1`, `CON-3`,
+  `CON-4` et `CON-5` se jugent ; `MON-2` et `MON-4` se comptent ; **`CON-2` est automatisable** -
+  `nadia-prof` le recommande, *"la presence dans un enonce d'un mot d'une liste declaree - piece de,
+  un nom de couleur - se cherche"* -, **recommandation et non demande**, adressee a `theo-archi` et
+  `yanis-qa`, meme famille que `SEM-3`.
+- **Ce que `CON-4` coute a `nadia-prof`, qu'elle nomme d'avance** : c'est une propriete **du type de
+  `COMP-2`**, et elle porte sur **chaque paquet visuel**. Elle ne lui applique **pas** son quota d'un
+  par sprint, et elle ecrit pourquoi plutot que de se donner une exception : *"masquer une image et
+  regarder si l'enonce suffit est un geste beaucoup plus court [...] je le price comme une demi-passe
+  de plus sur un paquet, pas comme un paquet. Si je me trompe, c'est a mon audit que cela se verra."*
+  **Le quota `COMP-2` de s25 reste donc pris par `S25-SUB-1`, et par lui seul.**
+- **Matiere premiere** : `contenu-repris/quiz/cp-monnaie.yml` **reste de la matiere premiere pour la
+  part *utiliser*, et rien de plus** - c'est la phrase de `nadia-prof`. Ses huit items sont **refuses
+  comme contenu** : sept rejouent une competence deja verte, et le huitieme nomme les valeurs au lieu
+  de les montrer. **A traiter comme un exemple de ce qu'il ne faut pas faire.** La seule chose
+  monnaie-specifique qu'elle y ait trouvee est la composition d'une somme avec les valeurs reelles -
+  *"quelles pieces pour payer 7 euros"* - et c'est ce que `MON-3` generalise.
+- **Identifiants proposes, a confirmer par le developpeur** : `id: bandit-manchot-monnaie-cp`,
+  `paquet: cp-monnaie`.
+- **Lien decision** : `DEC-0065`, second amendement, sections B.2 et B.3 ; `DEC-0019` (ligne differee
+  le 2026-08-12, motif d'origine) ; arbitrage prealable de s25 sur les seize lignes, section 2.2 ;
+  arbitrage prealable du palier 1, sections 2 et 3 ; `ADR-0073` amende.
+- **Agent pressenti** : **aucun de ma main.** `sofia-sm` affecte, et elle a ecrit que `lea-dev` etant
+  deja sur la chaine visuelle, les dessins et le paquet iraient sur sa propre tete.
+- **Ce que ce paquet coute au sprint, et je l'ecris dans la story pour qu'il ne se perde pas** : le
+  **lot G**, l'instruction de la dette de pli sur le catalogue livre, **sort du perimetre engage**.
+  C'est l'arbitrage *"Instruire dans s25"* de l'utilisatrice, et la bascule lui est rendue en une
+  phrase dans `DEC-0065`, section B.5.
