@@ -2,6 +2,7 @@ package com.recreo.adapter.web;
 
 import com.recreo.application.catalog.GameDefinition;
 import com.recreo.application.port.in.PartieUseCase;
+import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.SessionStatus;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMove;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotSession;
@@ -236,7 +237,7 @@ public class PartieController {
     public String demarrer(@PathVariable String jeuId, HttpServletRequest requete,
                             HttpServletResponse reponse, Model modele) {
         GameDefinition jeu = jeuOuEchec(jeuId);
-        BanditManchotSession session = (BanditManchotSession) partie.demarrer(jeuId);
+        GameSession session = partie.demarrer(jeuId);
 
         new EtatDePartieEnSession(requete).demarrer(jeuId, jeu.consigne(), session);
         synchroniserMarqueurDePartie(session, requete, reponse);
@@ -248,8 +249,7 @@ public class PartieController {
     public String jouer(@PathVariable String jeuId, @RequestParam String propositionChoisie,
                          HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
         EtatDePartie etat = new EtatDePartieEnSession(requete).jouer(jeuId,
-                actuelle -> (BanditManchotSession) partie.jouer(
-                        jeuId, actuelle, new BanditManchotMove(propositionChoisie)));
+                actuelle -> partie.jouer(jeuId, actuelle, new BanditManchotMove(propositionChoisie)));
         synchroniserMarqueurDePartie(etat.session(), requete, reponse);
 
         return mancheModele(modele, jeuId, etat.consigne(), etat.session(), PAR_UN_GESTE,
@@ -286,7 +286,7 @@ public class PartieController {
      * d'un champ neuf sur la session (avis de faisabilite de theo-archi, s10, correction 2).</p>
      */
     private String mancheModele(Model modele, String jeuId, String consigne,
-                                BanditManchotSession session, boolean gesteDeLEnfant) {
+                                GameSession session, boolean gesteDeLEnfant) {
         return mancheModele(modele, jeuId, consigne, session, gesteDeLEnfant, null);
     }
 
@@ -304,8 +304,27 @@ public class PartieController {
      * comme protocole non documente entre les deux surcharges, d'ou ce parametre explicite.
      */
     private String mancheModele(Model modele, String jeuId, String consigne,
-                                BanditManchotSession session, boolean gesteDeLEnfant,
+                                GameSession session, boolean gesteDeLEnfant,
                                 String propositionFraichementPressee) {
+        if (session instanceof BanditManchotSession banditSession) {
+            return mancheDeBanditManchot(modele, jeuId, consigne, banditSession, gesteDeLEnfant,
+                    propositionFraichementPressee);
+        }
+        throw new PartieIndisponible(
+                "aucun ecran de jeu pour ce type de session : " + session.getClass().getSimpleName());
+    }
+
+    /**
+     * ADR-0058, R-A : <b>le point de descente nomme</b> de la mecanique existante. C'est ici, et
+     * dans la seule autre branche de {@code mancheModele}, que ce module descend du contrat vers un
+     * type concret de mecanique ; partout ailleurs dans {@code adapter-web}, la session voyage par
+     * {@code GameSession}. Deux branches nommees plutot qu'une abstraction de dispatch : une
+     * abstraction ecrite pour deux cas est une abstraction ecrite pour un usage imagine, et
+     * {@code theo-archi} recommande cette forme-la tant que deux mecaniques existent.
+     */
+    private String mancheDeBanditManchot(Model modele, String jeuId, String consigne,
+                                          BanditManchotSession session, boolean gesteDeLEnfant,
+                                          String propositionFraichementPressee) {
         if (session.status() == SessionStatus.TERMINEE) {
             return retourModele(modele, jeuId, session);
         }
@@ -434,7 +453,7 @@ public class PartieController {
         return false;
     }
 
-    private static void synchroniserMarqueurDePartie(BanditManchotSession session,
+    private static void synchroniserMarqueurDePartie(GameSession session,
                                                       HttpServletRequest requete, HttpServletResponse reponse) {
         if (session.status() == SessionStatus.TERMINEE) {
             effacerMarqueurDePartie(reponse);

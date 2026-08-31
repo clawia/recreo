@@ -1,7 +1,7 @@
 package com.recreo.adapter.web;
 
+import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.SessionStatus;
-import com.recreo.domain.mechanics.banditmanchot.BanditManchotSession;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.util.WebUtils;
@@ -52,7 +52,7 @@ final class EtatDePartieEnSession {
         }
     }
 
-    void demarrer(String jeuId, String consigne, BanditManchotSession session) {
+    void demarrer(String jeuId, String consigne, GameSession session) {
         synchronized (verrou()) {
             httpSession.setAttribute(ATTRIBUT_JEU_ID, jeuId);
             httpSession.setAttribute(ATTRIBUT_CONSIGNE, consigne);
@@ -83,17 +83,17 @@ final class EtatDePartieEnSession {
      * demander. Consequence visible par l'enfant, a juger par nadia-prof : il revoit l'ecran de fin
      * de partie que son premier appui a produit, au lieu de l'ecran d'erreur.</p>
      */
-    EtatDePartie jouer(String jeuId, UnaryOperator<BanditManchotSession> coup) {
+    EtatDePartie jouer(String jeuId, UnaryOperator<GameSession> coup) {
         synchronized (verrou()) {
             EtatDePartie etat = instantane();
             if (!etat.porte(jeuId)) {
                 throw new PartieIndisponible("aucune partie en cours pour le jeu " + jeuId);
             }
-            BanditManchotSession actuelle = etat.session();
+            GameSession actuelle = etat.session();
             if (actuelle.status() == SessionStatus.TERMINEE) {
                 return etat;
             }
-            BanditManchotSession suivante = coup.apply(actuelle);
+            GameSession suivante = coup.apply(actuelle);
             httpSession.setAttribute(ATTRIBUT_SESSION, suivante);
             return new EtatDePartie(etat.jeuId(), etat.consigne(), suivante);
         }
@@ -103,7 +103,7 @@ final class EtatDePartieEnSession {
         return new EtatDePartie(
                 (String) httpSession.getAttribute(ATTRIBUT_JEU_ID),
                 (String) httpSession.getAttribute(ATTRIBUT_CONSIGNE),
-                (BanditManchotSession) httpSession.getAttribute(ATTRIBUT_SESSION));
+                (GameSession) httpSession.getAttribute(ATTRIBUT_SESSION));
     }
 
     private Object verrou() {
