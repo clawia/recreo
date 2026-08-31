@@ -260,3 +260,40 @@ Quatre rouges, tous rattrapes avant le commit. Chacun est un garde-fou qui a fai
   et les deux cliquets.
 - **`sofia-sm`, casquette Scrum Master** : les obstacles g et h, et l'ordre de fusion des deux
   paires.
+
+---
+
+## 9. Essai de fusion des deux paires visuelles - fait, mesure, et rendu a la Scrum Master
+
+**Fait sur un worktree jetable, jamais sur ma branche** : `s25-sofia-dev` ne contient pas la paire
+de `lea-dev`, et la resolution des conflits appartient a la Scrum Master (planning, section F.6).
+**Ce qui est rendu ici est une mesure et une proposition, pas une fusion.**
+
+> **`115ac28` fusionne avec `origin/s25-lea` : BUILD SUCCESS, 986 tests, 0 echec.**
+> Detail : 80 + 13 + 359 + 383 + 145 + 6.
+
+**Trois conflits, tous des ajouts au meme endroit, aucun sur le fond** :
+
+| Fichier | Nature | Resolution proposee |
+|---|---|---|
+| `catalogue.yaml` | Deux entrees ajoutees en fin de liste par chaque paire | Union, dans l'ordre de fusion |
+| `TexteAccentueExposeParLePortEntrantTest` | Chacune etend le meme inventaire | Union. **Le piege est la parenthese fermante** : la derniere chaine de chaque liste la porte, et une union naive en laisse une au milieu |
+| `LIllustrationDeContenuResoutEtAucuneNeDortTest` | **Les deux paires retournent le cliquet de zero, avec deux redactions differentes** | Voir ci-dessous |
+
+**Le seul conflit qui demande un jugement, et je propose la reponse plutot que le milieu** :
+`lea-dev` exige une population **non vide** ; moi une population de **taille exacte**. Les deux
+disent vrai, et son motif de conservation du test est meilleur que le mien - je l'ai repris mot pour
+mot. **Mais seule la taille exacte attrape un paquet qui perdrait silencieusement la moitie de ses
+illustrations.** *Un conflit ne se resout jamais en affaiblissant une assertion* : la retenue est la
+sienne pour le motif, la mienne pour l'assertion, et les nombres deviennent **24 et 24**.
+
+**Ce que la resolution mesuree etablit en plus** :
+
+- **Mes douze dessins passent le garde-fou de geometrie de `lea-dev` sans une retouche** - `viewBox`,
+  dimensions declarees a 176, teinte unique `#1c2733`, aucun remplissage. C'est le benefice direct
+  d'avoir pris `DES-1` a `DES-7` avant de commiter plutot qu'apres la fusion.
+- **Le cliquet de poids se deplace a 2 685 et 29 118**, dans son fichier a elle, et **mon cliquet de
+  poids disparait** - il etait ecrit comme un doublon temporaire et il part comme prevu. Le compte
+  de `bootstrap` passe donc de 147 a 145 dans l'arbre fusionne.
+- **Aucune assertion n'a ete affaiblie pour faire tenir la fusion**, et aucun chiffre n'a ete
+  recopie : les 986 sont lus dans le journal du build de l'arbre fusionne.
