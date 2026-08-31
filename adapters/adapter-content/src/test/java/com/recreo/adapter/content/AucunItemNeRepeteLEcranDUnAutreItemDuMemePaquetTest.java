@@ -5,6 +5,7 @@ import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
+import com.recreo.domain.content.ReponseAEcrire;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -185,28 +186,51 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
      * qui grossit. Rend vide si la source ne s'epuise pas dans le budget : elle est combinatoire, et
      * l'appelant la laisse hors perimetre.
      */
-    private static Optional<List<Question>> itemsDUneSourceFinie(ContentSource contenu) {
+    private static Optional<List<Item>> itemsDUneSourceFinie(ContentSource contenu) {
         RandomSource hasard = new Random(13)::nextInt;
         Set<ItemId> dejaVus = new HashSet<>();
-        List<Question> items = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
         for (int tirage = 0; tirage < BUDGET_DE_TIRAGES; tirage++) {
             Optional<Item> tire = contenu.next(hasard, dejaVus);
             if (tire.isEmpty()) {
                 return Optional.of(items);
             }
-            Question question = (Question) tire.orElseThrow();
-            items.add(question);
-            dejaVus.add(question.id());
+            Item item = tire.orElseThrow();
+            items.add(item);
+            dejaVus.add(item.id());
         }
         return Optional.empty();
     }
 
-    private static Ecran ecranDe(Question question) {
-        Set<String> propositions = new HashSet<>();
-        propositions.add(question.bonneReponse());
-        propositions.addAll(question.distracteurs());
-        return new Ecran(question.enonce(), Set.copyOf(propositions), question.partDesignee(),
-                question.texteSupport());
+    /**
+     * <b>Lot 5a de s24, decision 3 : ce garde-fou est etendu a l'item de saisie, et son identite
+     * d'ecran est definie pour lui.</b> La propriete d'ADR-0032 ne parle pas de propositions, elle
+     * parle de <b>ce que l'ecran montre</b> ; elle vaut donc mot pour mot en saisie, et la pression
+     * qu'elle refuse y est plus forte - la Javadoc de cette classe nomme elle-meme les complements a
+     * 10 comme le cas ou l'espace d'items est du meme ordre que le nombre de manches.
+     *
+     * <p><b>L'identite d'ecran d'un item de saisie est son enonce seul.</b> La forme de reference
+     * n'apparait qu'apres la reponse, au verdict (SAI-8) ; les formes acceptees ne sont jamais
+     * montrees ; l'exigence de forme gouverne la comparaison, pas l'affichage. Le jeu de
+     * propositions est donc vide, et cela ne cree aucune collision avec un item de choix : celui-ci
+     * porte toujours au moins sa bonne reponse.</p>
+     *
+     * <p>Le {@code switch} est exhaustif sur la scellure d'{@link Item} (ADR-0004) : une troisieme
+     * forme d'item ne compilera pas tant que son ecran n'aura pas ete decrit ici. C'est le meme
+     * refus du silence que la clause de classement, tenu cette fois par le compilateur.</p>
+     */
+    private static Ecran ecranDe(Item item) {
+        return switch (item) {
+            case Question question -> {
+                Set<String> propositions = new HashSet<>();
+                propositions.add(question.bonneReponse());
+                propositions.addAll(question.distracteurs());
+                yield new Ecran(question.enonce(), Set.copyOf(propositions), question.partDesignee(),
+                        question.texteSupport());
+            }
+            case ReponseAEcrire reponse -> new Ecran(reponse.enonce(), Set.of(), Optional.empty(),
+                    Optional.empty());
+        };
     }
 
     /**
@@ -238,7 +262,18 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
             "indice", "il ne s'affiche que sur une manche que l'enfant n'a pas encore resolue, jamais"
                     + " au moment ou l'ecran se presente",
             "explication", "elle ne s'affiche qu'avec la revelation, apres trois echecs, jamais au"
-                    + " moment ou l'ecran se presente");
+                    + " moment ou l'ecran se presente",
+            "formeDeReference", "elle n'apparait qu'apres la reponse, au verdict, quand la mecanique"
+                    + " montre la forme attendue (SAI-8) : l'enfant ne l'a jamais sous les yeux au"
+                    + " moment ou il repond, et deux items qui ne differeraient que par elle lui"
+                    + " presentent bien le meme ecran",
+            "formesAcceptees", "elles ne sont jamais montrees : c'est le bareme de l'exercice, ce a"
+                    + " quoi la mecanique compare ce que l'enfant ecrit. Deux items de meme enonce"
+                    + " dont seules les tolerances differeraient sont, pour l'enfant, la meme manche"
+                    + " posee deux fois",
+            "exigenceDeForme", "elle gouverne la comparaison, jamais l'affichage : rien a l'ecran ne"
+                    + " dit a l'enfant si son accent comptera. Ce fait est lui-meme une propriete que"
+                    + " nadia-prof juge en jouant (SAI-2), pas une composante d'ecran");
 
     /**
      * <b>ADR-0050, clause 2 : aucune composante d'un item n'echappe au classement de l'identite
@@ -421,22 +456,23 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
 
         for (String paquet : paquets) {
             ContentSource contenu = new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet);
-            Optional<List<Question>> finis = itemsDUneSourceFinie(contenu);
+            Optional<List<Item>> finis = itemsDUneSourceFinie(contenu);
             if (finis.isEmpty()) {
                 continue;
             }
-            List<Question> items = finis.orElseThrow();
+            List<Item> items = finis.orElseThrow();
             assertThat(items)
                     .as("%s : un paquet qui ne rend aucun item ne peut rien promettre", paquet)
                     .isNotEmpty();
             paquetsFinisJuges.add(paquet);
 
             Map<Ecran, String> premierPorteur = new HashMap<>();
-            for (Question item : items) {
-                String precedent = premierPorteur.putIfAbsent(ecranDe(item), item.id().value());
+            for (Item item : items) {
+                Ecran ecran = ecranDe(item);
+                String precedent = premierPorteur.putIfAbsent(ecran, item.id().value());
                 if (precedent != null) {
                     defauts.add("paquet " + paquet + ", item " + item.id().value() + " : il presente le"
-                            + " meme ecran que l'item " + precedent + " - meme enonce \"" + item.enonce()
+                            + " meme ecran que l'item " + precedent + " - meme enonce \"" + ecran.enonce()
                             + "\" et meme jeu de propositions. Le tirage reste sans remise sur les"
                             + " identifiants, qui sont derives de la position dans le YAML, et redevient"
                             + " donc avec remise sur ce que l'enfant lit : une partie peut poser deux"
@@ -494,6 +530,36 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
                 CONTRE_EXEMPLE_CLASSPATH + "/propositions-permutees"))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("paquet-aux-propositions-permutees");
+    }
+
+    /**
+     * ADR-0013 obligation 3, pour l'extension du lot 5a a l'item de saisie : deux items de saisie qui
+     * posent le meme enonce presentent le meme ecran, <b>meme si leur forme de reference et leurs
+     * formes acceptees different</b> - l'enfant ne voit ni l'une ni les autres au moment ou il
+     * repond. Sans ce cas, l'extension d'{@link #ecranDe} a la seconde forme d'item serait du code
+     * que rien n'exerce, et la nouvelle branche du {@code switch} pourrait rendre n'importe quoi.
+     */
+    @Test
+    void unPaquetDeSaisieQuiPoseDeuxFoisLeMemeEnonceFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifierQuAucunItemNeRepeteLEcranDUnAutre(
+                CONTRE_EXEMPLE.resolve("saisie-meme-enonce"),
+                CONTRE_EXEMPLE_CLASSPATH + "/saisie-meme-enonce"))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("paquet-saisie-au-meme-enonce")
+                .hasMessageContaining("presente le meme ecran que l'item")
+                .hasMessageContaining("Enonce de fixture partage");
+    }
+
+    /**
+     * Le meme paquet de saisie, ses deux enonces distincts, ne doit plus rien reprocher : sans lui,
+     * "l'extension refuse la repetition" et "l'extension refuse tout paquet de saisie" seraient le
+     * meme rouge.
+     */
+    @Test
+    void leMemePaquetDeSaisieAuxDeuxEnoncesDistinctsPasseLeGardeFou() {
+        verifierQuAucunItemNeRepeteLEcranDUnAutre(
+                CONTRE_EXEMPLE.resolve("saisie-meme-enonce/corrige"),
+                CONTRE_EXEMPLE_CLASSPATH + "/saisie-meme-enonce/corrige");
     }
 
     /** Le meme paquet, sa copie remplacee par un item de plus, ne doit plus rien reprocher. */
