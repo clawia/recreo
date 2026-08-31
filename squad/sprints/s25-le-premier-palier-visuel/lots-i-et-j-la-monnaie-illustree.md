@@ -407,3 +407,75 @@ l'enveloppe.
 celui lu par ce script)"*. **Je ne l'applique pas a l'enveloppe** : `theo-archi` instruit ce
 correctif, et deux mains sur le meme fichier est ce qui produit les conflits que ce sprint a passe sa
 journee a resoudre. **Je nomme l'ingredient pour que son correctif soit un appel, pas une enquete.**
+
+---
+
+## 11. `CON-6` amendee le meme soir - mesure contre les deux bornes, et rien a corriger
+
+**La section 10.1 n'est pas reecrite** : elle porte ce que j'ai mesure a sa date, contre la clause
+qui existait alors. C'est cette clause-la qui a ete remplacee, pas ma mesure.
+
+`nadia-prof` a refait ma mesure, confirme le fait, **et trouve pire** : `cp-figures-planes`, le paquet
+qui avait motive `CON-6`, marquait **exactement 50 %** sous sa clause du matin - donc il passait.
+*"La clause que j'ai ecrite pour l'attraper ne l'attrape pas. C'est la forme exacte de `CPL-3`."*
+Elle remplace la borne unique par trois bornes, dont deux calculables.
+
+### 11.1 Mes trois indices contre les deux bornes - mesure, pas supposition
+
+**Perimetre** : les douze items de `cp-monnaie` a l'etat de ce lot. **Methode** : pour chaque indice
+distinct, l'ensemble des bonnes reponses qu'il accompagne, et le nombre d'items qu'il couvre.
+
+| Indice | Items | Reponses distinctes | Borne basse | Borne haute |
+|---|---|---|---|---|
+| *"Commence par le plus grand nombre, puis ajoute les autres."* | 5 | 5 | tenue | 41,7 % - tenue |
+| *"Tout est pareil ici. Ajoute plusieurs fois le meme nombre."* | 2 | 2 | tenue | 16,7 % - tenue |
+| *"Ajoute ce qui est a droite du trait pour retrouver le nombre de gauche."* | 5 | 5 | tenue | 41,7 % - tenue |
+
+> **Les deux bornes sont tenues, sur les trois indices. Je ne corrige rien.**
+
+**Ce que je ne m'attribue pas** : la borne haute n'existait pas quand j'ai reecrit ces indices. Ma
+reecriture visait la reserve de vocabulaire et l'avertissement sur l'uniformite ; **elle passe une
+borne ecrite apres elle parce que la borne codifie le meme fait**, pas parce que je l'aurais visee.
+Avant reecriture, le paquet aurait echoue a la borne haute - 7 items sur 12 - et `nadia-prof` le
+mesure ainsi dans son tableau.
+
+### 11.2 Le test - la clause d'hier remplacee par les deux bornes, mordues separement
+
+Les deux bornes sont deux tests et non un, sur le patron d'`ADR-0055` : *les deux moities d'une
+comparaison se mordent chacune de son cote, sans quoi une seule des deux est prouvee.*
+
+**Sondes faites sur le materiau reel, chacune restauree** :
+
+| Sonde | Ce qui rougit | Ce qui reste vert |
+|---|---|---|
+| Un seul indice pour les douze items | **borne haute** : *"couvre 12 items sur 12"* | borne basse |
+| Un indice colle a un seul item | **borne basse** : *"n'accompagne qu'une seule bonne reponse"* | borne haute |
+
+**La premiere sonde est exactement le cas que la clause d'hier notait 100 %.** Elle est desormais
+rouge, et sur la borne que le signalement a fait ecrire.
+
+### 11.3 L'angle mort, reecrit - ce qui reste ouvert, et non ce qui l'etait
+
+La Javadoc du test decrivait le defaut que cet amendement ferme. **Elle dit maintenant ce que les
+deux bornes ne couvrent pas** : elles ecartent les deux degenerescences - l'indice colle a une
+reponse, l'indice etale sur tout le paquet - **et rien de plus**. La troisieme borne de la clause
+n'est pas calculable et reste dans la seule main de `nadia-prof` : *"l'indice apporte quelque chose
+que la consigne ne dit pas deja"*, et son exemple vise ce paquet nommement. **Trois indices repartis
+5-2-5 tiennent les deux bornes meme si chacun n'est qu'une reformulation de la consigne : ce que ces
+tests prouvent est une distribution, jamais une utilite.**
+
+### 11.4 Ses deux reponses, portees ici sans etre commentees
+
+- **`MON-6`, cinquieme item** : elle confirme que je ne le change pas, et ajoute un motif qui suffit
+  seul - *"j'ai ecrit `MON-6` non retroactive hier, en toutes lettres. Lui faire modifier cet item la
+  rendrait retroactive."*
+- **`MON-3`** : elle refuse le reproche que je m'adressais en 10.4 - *"une bonne conclusion mal
+  motivee se corrige ; une mauvaise conclusion bien motivee, non."* **Je laisse mon paragraphe tel
+  quel** : il dit ce que je pensais a sa date, et sa reponse est ici.
+
+### 11.5 Porte technique
+
+`mvn -B clean verify` a la racine du reacteur complet, sur `d10a381` plus ce lot : **BUILD SUCCESS,
+1 008 tests, 0 echec** - 80 + 13 + 364 + 400 + 145 + 6. Le seul ecart avec les 1 007 de la section
+10.5 est **le test de `CON-6` devenu deux**. **Aucun fichier de contenu n'est modifie** : le diff de
+ce lot porte sur un seul fichier de test.

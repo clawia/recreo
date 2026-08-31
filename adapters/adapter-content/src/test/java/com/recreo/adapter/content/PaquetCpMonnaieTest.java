@@ -9,8 +9,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -268,42 +272,76 @@ class PaquetCpMonnaieTest {
      * `CON-6`, ecrite par nadia-prof le 2026-08-31 sur la fiche de {@code cp-figures-planes}, apres
      * avoir mesure que l'indice y designait la reponse sur 8 items sur 12 : <i>"sur un paquet
      * illustre, l'indice est choisi d'apres les propositions de l'item, jamais d'apres sa bonne
-     * reponse. Verification : sur au moins la moitie des items, l'indice de l'item est aussi porte
-     * par un item dont la bonne reponse est differente."</i> Son motif : l'indice n'apparait
-     * qu'apres un echec, et un indice qui ne va qu'avec une seule reponse devient a ce moment-la une
-     * designation et non une aide.
+     * reponse."</i> Son motif : l'indice n'apparait qu'apres un echec, et un indice qui ne va
+     * qu'avec une seule reponse devient a ce moment-la une designation et non une aide.
      *
-     * <p>Elle est <b>neuve et non retroactive</b>, donc elle ne conditionnait pas le Done de ce
-     * paquet. Elle est encodee ici quand meme, et sur ce paquet-ci seulement : nadia-prof recommande
-     * qu'elle devienne un garde-fou, et le perimetre d'un garde-fou de depot est a theo-archi et
-     * yanis-qa. Ce test ne prejuge pas du leur.
+     * <p><b>La clause de verification encodee ici est celle du 2026-08-31 au soir</b>, qui remplace
+     * celle du matin. La premiere demandait que <i>la moitie des items</i> portent un indice partage
+     * ; elle recompensait l'uniformite sans aucune borne, et son optimum degenere etait un seul
+     * indice pour tout le paquet. Deux mesures l'ont montre le meme jour : ce paquet-ci la tenait a
+     * <b>100 %</b> avec deux indices pour douze items, et {@code cp-figures-planes} - <b>le paquet
+     * qui avait motive la condition</b> - la tenait a <b>50 %</b>, donc passait. Son autrice a refait
+     * les deux mesures et a tranche : <i>"un indice partage n'est pas seulement acceptable, il est
+     * exige - c'est la borne basse. Le partage est la bonne propriete ; c'est son exces qui est
+     * fautif."</i>
      *
-     * <p><b>Ce que ce test ne voit pas, et il faut le dire ici parce que le chiffre est trompeur</b>
-     * : un paquet qui donnerait <b>le meme indice a ses douze items</b> passe ce critere a 100 %.
-     * La condition attrape l'indice taille pour une reponse ; elle ne distingue pas l'indice
-     * partage de l'indice si general qu'il n'aide plus personne - la parade que lea-dev avait
-     * trouvee pour les textes alternatifs, transposee aux indices. Mesure faite sur ce paquet le
-     * 2026-08-31 : avant reecriture, deux indices pour douze items, <b>12/12</b> ; apres
-     * reecriture, trois indices distribues par scene, <b>12/12</b>. Le chiffre ne bouge pas, et
-     * c'est ce qui doit remonter a son autrice.
+     * <p>Elle reste <b>neuve et non retroactive</b> : elle ne conditionne le Done d'aucun des deux
+     * paquets de s25. Elle est encodee ici sur ce paquet-ci seulement ; le perimetre d'un garde-fou
+     * de depot est a theo-archi et yanis-qa, et ce test ne prejuge pas du leur.
+     *
+     * <p><b>Ce qui reste hors de portee de ces deux bornes, et qui n'est pas un oubli.</b> Elles
+     * ecartent les deux degenerescences - l'indice colle a une reponse, l'indice etale sur tout le
+     * paquet - et rien de plus. <b>La troisieme borne de la clause n'est pas calculable et reste
+     * dans la seule main de nadia-prof</b> : <i>"l'indice apporte quelque chose que la consigne ne
+     * dit pas deja."</i> Son exemple vise ce paquet nommement : <i>"aucun automate ne verra que 'Lis
+     * le nombre grave sur chaque objet, puis ajoute' redit 'Regarde bien l'argent, puis
+     * reponds'."</i> Trois indices repartis 5-2-5 tiennent les deux bornes ci-dessous meme si chacun
+     * n'est qu'une reformulation de la consigne. <b>Ce que ces tests prouvent est une distribution,
+     * jamais une utilite.</b>
      */
     @Test
-    void chaqueIndiceEstPorteParUnItemDontLaReponseEstDifferente() {
+    void chaqueIndiceEstPorteParDeuxItemsDeReponsesDifferentes() {
         List<Question> items = tousLesItems(paquet());
-        List<Question> conformes = items.stream()
-                .filter(item -> items.stream().anyMatch(autre -> autre != item
-                        && autre.indice().equals(item.indice())
-                        && !autre.bonneReponse().equals(item.bonneReponse())))
-                .toList();
+        Map<Optional<String>, Set<String>> reponsesParIndice = new LinkedHashMap<>();
+        for (Question item : items) {
+            reponsesParIndice.computeIfAbsent(item.indice(), inconnu -> new LinkedHashSet<>())
+                    .add(item.bonneReponse());
+        }
 
-        assertThat(conformes.size() * 2)
-                .as("CON-6 : %d items sur %d portent un indice qu'aucun item de reponse differente"
-                        + " ne partage, donc leur indice ne va qu'avec leur propre reponse. L'indice"
-                        + " s'affiche apres un echec : a ce moment-la il designe au lieu d'aider",
-                        items.size() - conformes.size(), items.size())
-                .isGreaterThanOrEqualTo(items.size());
+        for (Map.Entry<Optional<String>, Set<String>> indice : reponsesParIndice.entrySet()) {
+            assertThat(indice.getValue())
+                    .as("CON-6, borne basse : l'indice %s n'accompagne qu'une seule bonne reponse."
+                            + " Il ne s'affiche qu'apres un echec, et a ce moment-la il designe au"
+                            + " lieu d'aider. Aucune part n'est toleree : la borne porte sur chaque"
+                            + " indice du paquet, jamais sur une fraction des items",
+                            indice.getKey().orElse("(absent)"))
+                    .hasSizeGreaterThanOrEqualTo(2);
+        }
     }
 
+    /**
+     * `CON-6`, borne haute, mordue separement de la borne basse (ADR-0055 : les deux moities d'une
+     * comparaison se mordent chacune de son cote, sans quoi une seule des deux est prouvee).
+     * Au-dela de la moitie des items, l'indice ne dit plus rien de <b>cet</b> item et ne fait que
+     * repeter la consigne.
+     */
+    @Test
+    void aucunIndiceNeCouvrePlusDeLaMoitieDesItems() {
+        List<Question> items = tousLesItems(paquet());
+        Map<Optional<String>, Integer> portee = new LinkedHashMap<>();
+        for (Question item : items) {
+            portee.merge(item.indice(), 1, Integer::sum);
+        }
+
+        for (Map.Entry<Optional<String>, Integer> indice : portee.entrySet()) {
+            assertThat(indice.getValue() * 2)
+                    .as("CON-6, borne haute : l'indice %s couvre %d items sur %d, plus de la moitie"
+                            + " du paquet. Un indice etale sur tout le paquet ne nomme la propriete"
+                            + " a regarder d'aucun item",
+                            indice.getKey().orElse("(absent)"), indice.getValue(), items.size())
+                    .isLessThanOrEqualTo(items.size());
+        }
+    }
     @Test
     void lePaquetCompteExactementDouzeItems() {
         assertThat(tousLesItems(paquet())).hasSize(NOMBRE_D_ITEMS_ATTENDU);
