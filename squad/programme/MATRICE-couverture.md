@@ -2911,3 +2911,70 @@ ferait rentrer les 27 dans la porte**, et ce jour-la la mention de `DEC-0063` se
 - `SUB` reste `non couvert` et son report reste **le premier**, compte a `DEC-0059`, section 2. Le
   motif de composition qui l'a ecartee - au plus un paquet du type `COMP-2` par sprint - a ete
   consomme par `NAR`, qui est desormais verte. **Le motif ne vaut plus pour s25.**
+
+## Perimetre de s25 (2026-08-31) - le plafond calcule a s22 est atteint, et ce que cette matrice peut encore bouger
+
+`DEC-0065` ouvre s25 sur l'objectif de l'utilisatrice : **"la plus grande couverture"**. Cette
+section dit ce que cette matrice peut en attendre. **Elle ne deplace aucune ligne.**
+
+### Le fait, avec sa methode
+
+**Comptage automatise des quatre tableaux ci-dessus, colonne `Statut`, aucun module compile - la
+question du `-am` ne se pose donc pas pour cette mesure** : 27 `couvert-valide`, 15 `non couvert`,
+1 `en cours`, 4 `non couvrable en l'etat`, total 47. Denominateur 47 - 4 = 43. **27/43 = 62,8 %.**
+
+**Ce chiffre est exactement celui que `DEC-0053`, section 7.1, avait calcule le 2026-08-28 comme le
+"plafond realiste a court terme, ecartant l'audio et le visuel"** : *"18 + 9 = 27/43 (62,8 %) au
+mieux, sans construire quoi que ce soit de neuf"*. Des 9 lignes de contenu seul qui composaient ce
+plafond, **8 sont vertes et `SUB` est la neuvieme**. Le produit est a 27 et non a 26 parce que `FRA`
+a rapporte une ligne qui n'etait pas dans ces 9 - la moitie *"notion"* des fractions, classee
+visuelle a s22 et redirigee en contenu seul par l'arbitrage 8bis du 2026-08-30.
+
+**Le mur de la mecanique unique, pose a l'utilisatrice par `DEC-0057`, est atteint a la date prevue.
+s25 est le premier sprint qui se tient dessus.**
+
+### Ce que s25 peut faire bouger, et rien de plus
+
+| Ligne | Ce qui la ferait bouger a s25 | Plafond |
+|---|---|---|
+| **Reperer les substituts d'un personnage** (francais CM1) | **Rien a attendre.** Arbitree `SUB-1` a `SUB-10` le 2026-08-30, contenu seul, mecanisme existant. `S25-SUB-1` | **28/43 (65,1 %)** |
+| **Reconnaitre et utiliser la monnaie** (maths CP), moitie *"utiliser"* | Un arbitrage de `nadia-prof` **qui n'existe pas** : une moitie textuelle d'une ligne classee visuelle peut-elle porter sa ligne au vert avec une mention de couverture partielle nommee ? `S25-MON-1` | **29/43** si oui |
+| **Se reperer dans la journee, la semaine** (maths CP), premiere moitie de la ligne, separee par un point-virgule dans le referentiel | Meme question, meme reponse attendue. `S25-JOU-1` | **30/43 (69,8 %)** si oui pour les deux |
+| **Denombrer, lire, ecrire et decomposer jusqu'a 100** (maths CP) | `S25-DEN-1` la ferait passer `non couvert` -> `en cours`. **Elle ne peut pas devenir `couvert-valide`** : `DEN-2`, reconfirmee le 2026-08-30 et declaree non negociable | inchange |
+
+**La question de la ligne 2 et de la ligne 3 est la seule qui puisse elargir ce plafond a s25, et
+elle est entierement a `nadia-prof`.** Deux precedents de sa main s'opposent : `FRA-9` et `LIA-10`
+ont fait passer une ligne au vert avec une mention qu'elle a dictee ; `DEN-2` maintient `en cours`.
+**Rien dans ces trois textes ne dit ce qui separe les deux cas, et l'inventer serait exactement ce
+que ma charte m'interdit.** `DEC-0065`, section 5.1.
+
+**Aucune des 12 autres lignes hors `couvert-valide` ne peut atteindre `couvert-valide` a s25** :
+4 sont visuelles sans aucune architecture ecrite (dont 3 sans arbitrage individuel), 4 sont audio et
+bloquees sur une source de voix humaine que seule l'utilisatrice peut trancher, 2 demandent une
+troisieme mecanique jamais instruite, 4 butent sur une contrainte fondatrice de ce produit.
+L'instruction ligne par ligne est dans
+`squad/programme/INSTRUCTION-s25-les-16-lignes-hors-couvert-valide.md`.
+
+### Quatre lignes qui gonflent le denominateur sans qu'aucun sprint puisse les atteindre
+
+*"Copier un mot, une phrase courte"* (`R1`, graphomotrice), *"Ecrire de maniere autonome un mot
+simple"* (`R6`, l'appareil produit les lettres), *"Lire silencieusement [...] et en restituer
+l'essentiel"* et *"Rediger un texte narratif court"* (production libre, jugement humain) portent le
+statut `non couvert` alors qu'aucune capacite de developpement ne les ouvrira.
+
+**Les reclasser `non couvrable en l'etat` ferait passer le denominateur de 43 a 39 et la couverture
+affichee de 62,8 % a 69,2 % sans qu'une ligne de code soit ecrite. C'est precisement pourquoi je ne
+le fais pas dans le sprint ou l'utilisatrice me demande de maximiser cet indicateur** : la question
+part a `nadia-prof` pour le motif et a l'utilisatrice pour l'arbitrage, avec le gain d'affichage
+nomme dans la question. `DEC-0065`, section 5.4.
+
+### Ce que cette section ne fait pas
+
+- Elle **ne deplace aucune ligne**, n'en ajoute aucune, n'en retire aucune.
+- Elle **ne prononce aucun Done** et n'en anticipe aucun. Les plafonds ci-dessus supposent qu'un
+  paquet ecrit dans le sprint passe la porte du premier coup, ce qui n'est jamais arrive sur ce
+  produit : a s23, trois paquets ouverts ont donne trois lignes, mais apres deux refus, trois tours
+  de correction et cinq reaudits.
+- Elle **ne reclasse pas les quatre lignes ci-dessus** et ne prejuge pas de la reponse.
+- `SUB` **n'est pas reportee une seconde fois** : elle est au rang 1 de `DEC-0065`. Le report unique
+  compte a `DEC-0059`, section 2, reste le premier et le seul.

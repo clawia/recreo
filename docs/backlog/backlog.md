@@ -8072,3 +8072,225 @@ pas de mon perimetre. Ils sont ecrits ici pour qu'ils ne disparaissent pas du fi
 | La charte de `relecteur-pedagogique`, a amender pour que la convention de `DEC-0062` lui soit opposable | `sofia-sm`, ou l'utilisatrice (`DEC-0062`, amendement C) |
 | Dettes d'outillage des obstacles 4, 6 et 7 du planning de s24, toujours non engagees | `camille-po` pour le rang, `theo-archi` pour le contenu |
 | `D4` (longueur maximale d'une reponse a ecrire) et le cout d'un accent sur la tablette visee - **mordront au premier paquet alphabetique de saisie** | `nadia-prof`, `camille-po` ; l'utilisatrice pour l'accent |
+
+---
+
+# Perimetre de s25 - stories (`DEC-0065`, 2026-08-31)
+
+Objectif du sprint, dans les mots de l'utilisatrice : **"planifie s25 pour avoir la plus grande
+couverture"**. L'instruction ligne par ligne qui fonde ces stories est
+`squad/programme/INSTRUCTION-s25-les-16-lignes-hors-couvert-valide.md`.
+
+**La regle que j'ai adoptee a la cloture de s24 s'applique a tout ce bloc, et elle est verifiable
+par un tiers** : *une story ne cite jamais une plage de conditions ; chaque condition applicable
+devient un critere nomme, dans les mots de la condition ; une reponse d'arbitrage non recopiee en
+criteres n'a pas ete recue.* C'est ce qui manquait quand `CPL-3` n'est jamais devenue testable.
+**Deux stories de ce bloc n'ont donc aucun critere, et c'est la regle qui l'exige, pas un oubli.**
+
+### S25-SUB-1 - Reperer les substituts d'un personnage (francais CM1) - RANG 1, LA SEULE LIGNE GARANTIE DU SPRINT
+
+- **Statut** : **au perimetre, sans condition prealable.** L'arbitrage est rendu depuis le
+  2026-08-30 et **aucun arbitrage supplementaire n'est du**. C'est la seule story de ce bloc qui est
+  developpable le jour de l'ouverture.
+- **Ce qu'elle rapporte** : **+1 ligne**, de 27/43 (62,8 %) a 28/43 (65,1 %). C'est la derniere
+  ligne du produit dont la famille est le contenu seul et dont l'arbitrage existe.
+- **Besoin** : en tant qu'eleve de CM1, je veux retrouver de qui on parle quand le texte dit *"elle"*
+  ou *"la fillette"* au lieu de repeter le prenom, afin de suivre une histoire sans perdre le fil de
+  qui fait quoi.
+- **Competence programme visee** : francais, CM1 (cycle 3), domaine "Lecture et comprehension de
+  l'ecrit", "Reperer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte"
+  (`squad/programme/francais/competences-cm1.md`).
+- **Arbitrage prealable** : rendu le 2026-08-30, `ACCEPTE sous conditions SUB-1 a SUB-10`
+  (`squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md`,
+  section 5).
+- **Ce que ce paquet est - la forme, dans les mots de `nadia-prof`** : *"un texte-support, une
+  question, trois propositions. `texteSupport` est generique, verifie au depot. **Aucune
+  architecture neuve.**"*
+- **Ce que la ligne n'est pas** : elle est **distincte** de "Comprendre un texte narratif ou
+  documentaire", deja verte. `nadia-prof` : *"la matrice dit deja, depuis le 2026-08-30, que
+  `cm1-comprehension` ne l'ouvre pas et ne la couvre pas : je l'avais exige a l'audit de `S17-2`.
+  J'arbitre donc bien une ligne distincte, pas une extension de celle qui vient d'etre validee."*
+- **Criteres d'acceptation**, **un par condition**, avec ses mots et ses unites de compte :
+  - **`SUB-1` - Forme.** Etant donne chaque item, quand on le lit, alors le `texteSupport` porte le
+    texte ; l'`enonce` demande a qui renvoie un mot du texte, **cite entre guillemets dans
+    l'enonce** ; et les trois propositions sont trois personnages ou groupes nominaux **presents
+    dans le texte de leur propre item**.
+  - **`SUB-2` - Longueur.** Etant donne chaque item, quand on compte, alors le `texteSupport` compte
+    **au plus 45 mots** et **au plus trois phrases**, et l'`enonce` compte **au plus 12 mots**.
+    *Un mot est une suite de caracteres sans espace ; unite de compte : l'item. Reference de
+    `nadia-prof` : les 20 textes-supports de `cm1-comprehension.yaml`, valides la veille, comptent de
+    20 a 38 mots.*
+  - **`SUB-3` - Les deux familles de la ligne sont servies.** Etant donne le paquet de `N` items,
+    quand on classe le substitut interroge, alors c'est **un pronom** sur au moins
+    `arrondi inferieur(N/3)` items et **un groupe nominal** (*"le garcon"*, *"la fillette"*,
+    *"l'animal"*) sur au moins `arrondi inferieur(N/3)` items. *Unite de compte : l'item. Motif de
+    `nadia-prof` : la ligne dit "pronoms, groupes nominaux", et un paquet qui ne servirait que les
+    pronoms ne la couvrirait qu'a moitie.*
+  - **`SUB-4` - Le genre et le nombre ne decident jamais seuls.** Etant donne **chaque** item, quand
+    on lit ses trois propositions, alors **au moins deux d'entre elles s'accordent en genre et en
+    nombre avec le substitut interroge**. *Verification par un tiers, item par item, sur la totalite
+    du paquet.*
+  - **`SUB-5` - La proximite ne decide pas toujours.** Etant donne le paquet de `N` items, quand on
+    cherche pour chacun le groupe nominal compatible en genre et en nombre le plus proche a gauche du
+    substitut, alors **sur au moins `arrondi inferieur(N/3)` items le referent n'est pas ce
+    groupe-la**. *"Le plus proche a gauche" se compte en nombre de mots separant le dernier mot du
+    groupe du premier mot du substitut, dans le texte tel qu'il est ecrit ; unite de compte :
+    l'item. `nadia-prof` donne cette definition pour que la clause n'ait qu'une seule lecture
+    chiffree - "c'est exactement ce qui manquait a `D-4` et `D-5`". Elle ajoute que `SUB-5` est la
+    condition la plus utile du lot : "un enfant qui ne bute jamais sur un referent eloigne n'a jamais
+    travaille la competence."*
+  - **`SUB-6` - Texte masque, la question ne se repond pas.** Etant donne chaque item, quand on
+    masque son `texteSupport` et qu'on ne laisse que l'`enonce` et les trois propositions, alors la
+    question ne se repond pas. *Meme procedure que `NAR-6`, item par item, sur la totalite du paquet.
+    `nadia-prof` : "**Aucun automate ne voit cette propriete.** C'est `COMP-2`, et ce paquet compte a
+    lui seul contre ma condition d'au plus un paquet de ce type par sprint."*
+  - **`SUB-7` - Un seul substitut par item, et il n'apparait qu'une fois dans le texte.** Etant donne
+    chaque item, quand on cherche dans son `texteSupport` le mot cite entre guillemets dans l'enonce,
+    alors il n'y figure **qu'une seule fois**. *Motif : si le mot figure deux fois, l'enfant ne sait
+    pas duquel on lui parle, et l'item n'a plus de reponse unique.*
+  - **`SUB-8` - Personnages.** Etant donne le paquet complet, quand on compte ses prenoms distincts
+    par genre, alors ils sont **equilibres a un pres** (*unite de compte : le prenom distinct*) ; et
+    quand on lit les roles, metiers et activites, alors **aucun n'est distribue par genre** ; et
+    quand on lit les situations, alors **aucune ne suppose une configuration familiale ou un logement
+    particulier**.
+  - **`SUB-9` - Indice.** Etant donne chaque item, quand on lit son indice, alors il dit **quelle
+    partie du texte relire**, jamais le referent (*"Relis la phrase qui precede ce mot."* est un
+    indice), en **dix mots au plus**.
+  - **`SUB-10` - Volume et unicite.** Etant donne le paquet complet, quand on compte ses items, alors
+    il en porte **au moins vingt** ; et quand on compare leurs `texteSupport` deux a deux, alors
+    **deux items ne partagent jamais le meme**.
+- **Ce qui n'est pas testable par un automate et reste dans la seule main de `nadia-prof`** - elle
+  le nomme elle-meme : **`SUB-4`, `SUB-5` et `SUB-6`**. *"`SUB-5` est partiellement calculable - la
+  distance en mots se compte -, mais l'accord en genre et en nombre d'un groupe nominal francais
+  n'est pas decidable par un automate sans lexique morphologique, et ce depot n'en a pas. Je porte
+  donc `SUB-4` et `SUB-5` a la main, item par item, en plus de `SUB-6`. C'est le paquet du lot dont
+  l'audit me coutera le plus cher apres `NAR`, et je le dis avant qu'on me l'assigne."*
+- **Ce que `nadia-prof` demande d'ecrire sur la matrice le jour ou la ligne bougera**, dans ses mots,
+  et c'est une condition et non une remarque : *"textes de trois phrases au plus, un texte par
+  question, pronoms et groupes nominaux servis tous les deux"*.
+- **Ce que cette story consomme et qui ferme une autre porte** : `SUB-6` est du type `COMP-2`, et
+  `nadia-prof` n'accepte **qu'un paquet de ce type par sprint**. **`S25-SUB-1` prend le quota de
+  s25**, ce qui exclut `S25-NAR-1` du meme sprint - motif ecrit dans `DEC-0065`, section 3.1.
+- **Matiere premiere** : aucune identifiee dans `contenu-repris/` sur cette ligne - recherche ciblee
+  deja faite a `DEC-0039` sur "pronom" et "substitut", sans resultat. Le paquet est integralement
+  neuf.
+- **Identifiants proposes, a confirmer par le developpeur** : `id: bandit-manchot-substituts-cm1`,
+  `paquet: cm1-substituts`.
+- **Lien decision** : `DEC-0065`, sections 2 et 3 ; `DEC-0059`, section 2 (report ferme) ; arbitrage
+  prealable de s23, section 5.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S25-MON-1 - Moitie "utiliser" de la monnaie (mathematiques CP) - CONDITIONNELLE, AUCUN CRITERE A CE JOUR
+
+- **Statut** : **conditionnelle a deux reponses de `nadia-prof`, dans cet ordre** (`DEC-0065`,
+  section 5.1) : le critere de couverture partielle nommee sur une moitie textuelle, puis
+  l'arbitrage prealable de ce paquet avec ses conditions ecrites. **Non developpable en l'etat.**
+- **Ce qu'elle rapporterait** : **+1 ligne si et seulement si** la reponse au critere est celle de
+  `FRA-9` et `LIA-10` (vert avec mention). Si c'est celle de `DEN-2`, la ligne passe `en cours` et le
+  paquet ne rapporte **aucune ligne** - auquel cas cette story sort du perimetre de s25, dont
+  l'objectif est la couverture.
+- **Besoin** : en tant qu'eleve de CP, je veux compter ce que j'ai dans la main quand j'ai plusieurs
+  pieces, et savoir ce qu'on me rend quand je paie, afin de pouvoir acheter quelque chose tout seul
+  sans me tromper.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Nombres et calculs",
+  "Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets"
+  (`squad/programme/mathematiques/competences-cp.md`), **moitie "utiliser" seule** - la moitie
+  "reconnaitre" exige de voir une piece et reste de la famille visuelle.
+- **Le fait qui fonde la demande, verifie et non suppose** : `contenu-repris/quiz/cp-monnaie.yml`
+  porte 8 items qui travaillent "utiliser" **sans aucune image** (*"Tu as une piece de 2 euros et une
+  piece de 1 euro. Combien as-tu en tout ?"*, *"Un pain coute 1 euro. Tu paies avec une piece de 2
+  euros. Combien te rend-on ?"*). J'avais deja etabli ce point a `DEC-0019` : *"il ne travaille que
+  'utiliser'"*.
+- **Criteres d'acceptation** : **aucun, et c'est volontaire.** `nadia-prof` n'a jamais arbitre cette
+  ligne individuellement. Ecrire des criteres avant sa reponse serait inventer une specification
+  pedagogique, et **renvoyer plus tard vers une plage de conditions au lieu de les recopier serait
+  refaire exactement `CPL-3`**. Le jour ou elle repond, **cette story est reprise dans le meme
+  geste** et chaque condition devient un critere nomme.
+- **Reserve que je porte contre ma propre proposition** : `DEC-0053` a etabli que les quatre lignes
+  que `DEC-0030` croyait "contenu seul" ont **toutes les quatre** ete redirigees une fois l'arbitrage
+  rendu - **zero sur quatre**. Cette story peut parfaitement etre refusee, et je ne la presente pas
+  comme acquise.
+- **Matiere premiere** : `contenu-repris/quiz/cp-monnaie.yml`, **a traiter comme une reserve a
+  relire et non comme un point de depart** - elle porte des items a quatre propositions, ce
+  qu'`ADR-0063` interdit, et elle repasserait devant `nadia-prof` comme un contenu neuf
+  (`contenu-repris/README.md`).
+- **Lien decision** : `DEC-0065`, sections 3 et 5.1 ; `DEC-0019` (ligne differee, motif d'origine) ;
+  `squad/programme/INSTRUCTION-s25-les-16-lignes-hors-couvert-valide.md`, section 3.
+- **Agent pressenti** : **aucun tant que `nadia-prof` n'a pas repondu.**
+
+### S25-JOU-1 - Moitie "se reperer dans la journee, la semaine" (mathematiques CP) - CONDITIONNELLE, AUCUN CRITERE A CE JOUR
+
+- **Statut** : **conditionnelle aux deux memes reponses que `S25-MON-1`**, dans le meme ordre.
+  **Non developpable en l'etat.**
+- **Ce qu'elle rapporterait** : **+1 ligne si et seulement si** le critere de couverture partielle
+  nommee l'autorise. Meme alternative que `S25-MON-1`.
+- **Besoin** : en tant qu'eleve de CP, je veux savoir quel jour vient apres mardi, ce qui se passe le
+  matin et ce qui se passe la nuit, afin de me reperer dans ma journee et dans ma semaine sans avoir
+  besoin qu'on me le dise.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Grandeurs et mesures",
+  "Se reperer dans la journee, la semaine ; lire l'heure pleine sur une horloge"
+  (`squad/programme/mathematiques/competences-cp.md`), **premiere moitie seule** - la seconde exige
+  une horloge dessinee et reste de la famille visuelle.
+- **Le fait qui fonde la demande** : le referentiel **separe lui-meme les deux moities par un
+  point-virgule**, et `contenu-repris/quiz/cp-durees.yml` porte 11 items dont 7 sur la premiere
+  moitie, **sans aucune image** : jours de la semaine et leur ordre, mois, saisons, matin, midi et
+  nuit, comparaison de durees.
+- **Un point que je signale d'avance a `nadia-prof` plutot que de le laisser trouver** : le meme
+  fichier porte deux items qui **decrivent en mots la position des aiguilles** (*"La grande aiguille
+  est sur le 12 et la petite aiguille sur le 6"*). C'est un proxy textuel de la seconde moitie, de la
+  meme famille que les proxys par glyphe qu'elle a refuses le 2026-08-24. **Je ne le propose pas et
+  je ne le juge pas** : je le nomme pour que la question soit tranchee dans l'arbitrage plutot que
+  decouverte a l'audit.
+- **Criteres d'acceptation** : **aucun, et c'est volontaire.** Meme motif que `S25-MON-1`.
+- **Matiere premiere** : `contenu-repris/quiz/cp-durees.yml`, meme reserve de lecture.
+- **Lien decision** : `DEC-0065`, sections 3 et 5.1 ;
+  `squad/programme/INSTRUCTION-s25-les-16-lignes-hors-couvert-valide.md`, section 3.
+- **Agent pressenti** : **aucun tant que `nadia-prof` n'a pas repondu.**
+
+### S25-DEN-1 - "Lire, ecrire et decomposer les nombres jusqu'a 100" (mathematiques CP) - RANG 5, ZERO LIGNE
+
+- **Statut** : **c'est la story `S24-DEN` ci-dessus, inchangee, renommee et reclassee.** Ses huit
+  criteres, repris de `DEN-1` a `DEN-8`, sont ecrits la et ne sont pas recopies ici pour qu'ils n'y
+  pourrissent pas a moitie. **La condition qui la bloquait a s24 - la reconfirmation de la borne -
+  est levee** : `nadia-prof` a reconfirme quatre a cinq paquets le 2026-08-30. **Aucun arbitrage
+  supplementaire n'est du.**
+- **Ce qu'elle rapporte** : **zero ligne**, par `DEN-2`, que `nadia-prof` a reconfirmee le
+  2026-08-30 et declaree non negociable.
+- **Pourquoi elle est au rang 5 et pourquoi ce rang n'est pas un jugement** : l'objectif de s25 est
+  la couverture, et cette story n'en apporte pas. **Je verse la phrase entiere de `nadia-prof` plutot
+  que mon rang seul** : *"Aujourd'hui, un enfant de CP dispose de six jeux de mathematiques dans ce
+  catalogue [...] Aucun ne travaille la numeration [...] C'est le trou le plus visible du CP
+  mathematique, et c'est ce sur quoi tout le reste s'appuie [...] Un compteur qui affiche zero sur ce
+  paquet decrit une convention de matrice, pas ce que l'enfant gagne. **Je le dis ici pour que le
+  zero de `DEN-2` ne devienne pas un motif de report permanent.**"* **Dans un sprint dont l'objectif
+  serait la valeur pour l'enfant, cette story serait deuxieme ou troisieme.**
+- **Premier sacrifice en cas de conflit de capacite** (`DEC-0065`, section 6), pour le meme motif.
+- **Lien decision** : `DEC-0065`, sections 3 et 6 ; `DEC-0059`, sections 4.3 et 6.1 ; arbitrage
+  prealable du 2026-08-24, section 1.
+
+### `S25-NAR-1` - reportee. Premier report, s25.
+
+**Motif, ecrit ici et non invente plus tard** : `S25-SUB-1` prend le quota d'un paquet du type
+`COMP-2` par sprint, et une reecriture du paquet narratif rouvre `NAR-6`, qui est du meme type. Les
+deux sont **mutuellement exclusives dans un meme sprint**, et `SUB` rapporte une ligne la ou
+`S25-NAR-1` n'en rapporte aucune - la ligne narrative est `couvert-valide` depuis le 2026-08-31.
+`nadia-prof` a ecrit de cette story : *"Je ne le demande pas et je ne le bloque pas."*
+
+**Si elle est reportee une seconde fois a s26, ce paragraphe-ci est ce qu'il faudra relire, et le
+motif devra etre neuf** : le quota `COMP-2` ne resservira pas deux fois de suite sans que la question
+soit posee autrement.
+
+### Ce que ce bloc ne contient pas, et pourquoi
+
+- **Aucune story visuelle.** Les quatre lignes visuelles n'ont **aucune architecture** - aucun `ADR`
+  ne dit comment un item porte une donnee de dessin - et **trois des quatre n'ont aucun arbitrage
+  individuel**. Une story ecrite aujourd'hui sur l'une d'elles serait une story sans criteres et sans
+  proprietaire : je ne l'ecris pas encore.
+- **Aucune story audio.** Les quatre lignes audio butent sur la **source de la voix**, qui n'est ni
+  une question de capacite ni une question d'architecture : c'est un arbitrage de l'utilisatrice,
+  route par `DEC-0065`, section 5.4.
+- **Aucune story sur les trois postes de garde-fou ranges en tete par la squad** (le JavaScript
+  inline invisible d'`ADR-0008`, le cliquet d'`ADR-0067`, les deux garde-fous de contenu sans clause
+  `hasSize(declares)`). **Ils sont a `theo-archi` et a `yanis-qa`, pas a moi** : je les range dans
+  `DEC-0065`, section 4, avec le cout de ne pas les prendre, et je ne les traduis pas en stories
+  produit.
