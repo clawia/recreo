@@ -7,8 +7,10 @@
 - **Auteur** : camille-po, en partage de perimetre avec `sofia-sm`
 - **Sprint** : s24 (en cours)
 - **Competence programme visee** : **transverse - pas de contenu pedagogique.**
-- **Statut** : **Proposee.** La convention est ecrite pour etre appliquee telle quelle ; **un seul
-  point est rendu a l'utilisatrice** et il est en section 6.
+- **Statut** : **Acceptee** le 2026-08-31, apres reponse de l'utilisatrice aux trois points de la
+  section 6 (`Q4` *"oui"*, `Q5` *"MASTER"*, `Q6` *"oui"*). Voir l'amendement en fin de document, qui
+  porte le nom retenu et une collision de lecture que je signale plutot que de la contourner.
+  **Statut anterieur : `Proposee`, du 2026-08-31 au 2026-08-31.**
 
 ## 0. Ce que ce document est
 
@@ -191,3 +193,95 @@ le trou, lui, est ferme des maintenant.
 - Il **ne corrige pas retroactivement** les enonces deja ecrits dans le depot sous une attribution
   incertaine. Un balayage retroactif serait un lot de relecture a part entiere, du meme genre que
   l'obstacle 6 du planning de s24 - **non engage, et nomme ici pour qu'il ne se decouvre pas.**
+
+---
+
+## Amendement du 2026-08-31 (meme jour) - l'utilisatrice repond, le canal s'appelle MASTER, et une collision de lecture est signalee
+
+### A.1 Ses trois reponses, recopiees telles quelles
+
+| # | Le point de la section 6 | Sa reponse, verbatim |
+|---|---|---|
+| `Q4` | Veut-elle que ce canal soit nomme dans le depot ? | *"oui"* |
+| `Q5` | Sous quel nom ? | *"MASTER"* |
+| `Q6` | La borne *"un enonce de forme 3 ne vaut jamais motif"* lui convient-elle ? | *"oui"* |
+
+**La numerotation `Q4` a `Q6` n'est pas de moi** : la section 6 posait trois points sans les
+numeroter. Elle m'est parvenue **de MASTER, sans source dans le depot**. Je la reprends parce
+qu'elle est univoque, et je le signale parce que c'est exactement ce que cette convention demande de
+faire.
+
+### A.2 Ce que la convention devient
+
+La troisieme forme prend son nom definitif :
+
+> **`recu de MASTER, sans source dans le depot`** - avec l'enonce cite mot pour mot et la date a
+> laquelle il a ete recu.
+
+**Les deux bornes de la section 3.2 sont confirmees par `Q6`, en connaissance de ce qu'elles coutent
+a celle qui repond** : un enonce recu de MASTER ne fonde aucune `DEC`, aucun `ADR`, aucun critere
+d'acceptation, aucun verdict ; et il est cite mot pour mot, jamais resume. **Une consigne recue par
+ce canal et qui doit fonder quelque chose devra d'abord etre ecrite quelque part.** C'est
+contraignant pour MASTER autant que pour la squad, et cela a ete accepte en le sachant.
+
+**Le geste correct de la section 3.3 se relit desormais ainsi**, dans les mots de `sofia-sm` :
+
+> *"Un chiffre faux - de 28 a 33 lignes sur 43 - a servi d'appui a l'arbitrage de l'utilisatrice.
+> **Recu de MASTER, sans source dans le depot.** Il n'est de personne de cette squad, et je le
+> corrige ici : le depart est 24, le gain est nul sur les 23 lignes instruites."*
+
+### A.3 La collision, verifiee et signalee plutot que contournee
+
+**Verification faite sur l'arbre suivi**, methode nommee : `git grep -ni 'master'` sur l'index
+complet, puis tri des occurrences.
+
+- **46 occurrences de "master" dans l'arbre suivi. Les 46 sont "Scrum Master", et les 46 designent
+  `sofia-sm`.** Les deux qui n'apparaissent pas dans un tri sur la chaine complete sont les deux ou
+  le retour a la ligne coupe l'expression entre "Scrum" et "Master".
+- Elles vivent aux endroits les plus lus du depot : `.claude/agents/sofia-sm.md` (quatre fois),
+  `CLAUDE.md`, `squad/EQUIPE.md` (deux fois), **`squad/README.md` section 8, la table meme des
+  prefixes de commit**, et une trentaine de documents de ceremonie.
+- **Aucune branche `master` dans ce depot** : la branche par defaut est `main`, la reconstruction vit
+  sur `round-two`. Aucune collision de ce cote.
+
+**La collision est donc unique et elle est de lecture** : *MASTER* et *Scrum Master* designent deux
+choses differentes, et **la seconde designe `sofia-sm`**. Or **le defaut que cette convention corrige
+est precisement une fausse attribution a `sofia-sm`.** Un nom qui, mal lu, renvoie a la personne a qui
+l'on avait attribue l'enonce a tort est le seul nom dont je devais verifier qu'il ne renvoyait pas a
+elle. **Je le dis franchement plutot que de l'arranger.**
+
+**Ce que je fais, et je ne change pas le nom** : le nom est celui que l'utilisatrice a donne, il est
+a elle, et la collision est de lecture et non de fond - elle ne casse rien, elle peut seulement faire
+trebucher un lecteur presse. Deux regles d'ecriture suffisent a la rendre non viable, et elles ne
+touchent pas au nom :
+
+1. **MASTER s'ecrit toujours en capitales, jamais "Master".** *Scrum Master* garde sa capitale
+   simple, comme dans les 46 occurrences existantes, qui n'ont donc pas a etre touchees.
+2. **MASTER n'apparait jamais seul, mais toujours dans la formule fixe** *"recu de MASTER, sans
+   source dans le depot"*. Cette construction n'existe nulle part pour *Scrum Master* et ne peut pas
+   se confondre avec elle.
+
+**Ce que je ne fais pas** : je ne renomme rien, je ne touche a aucune des 46 occurrences existantes,
+et je ne repose pas la question. **Je signale le fait une fois** : si l'utilisatrice, le sachant,
+prefere un autre nom, c'est un amendement d'une ligne ici et une ligne dans `DEC-index.md`.
+
+### A.4 MASTER n'entre pas dans la table des prefixes de commit, et c'est voulu
+
+**MASTER n'ecrit jamais dans le depot** - c'est la raison meme pour laquelle ses enonces n'avaient
+pas de trace, et c'est le trou que cette convention ferme. Il n'a donc **pas** de tag de commit et
+`squad/README.md`, section 8, n'a pas a en recevoir un.
+
+**Consequence a nommer, parce qu'elle ressemble a un manque et n'en est pas un** : la CI rejette un
+message de commit qui ne commence pas par un tag connu. **Un commit prefixe `[MASTER]` serait donc
+rejete, et c'est le comportement correct** - un enonce de MASTER n'entre dans le depot que porte par
+un agent, sous le tag de cet agent, avec la forme 3 attachee. Ce n'est pas un garde-fou a ajouter,
+c'est un garde-fou existant qui mord dans le bon sens.
+
+### A.5 Ce que cet amendement route
+
+| Ce qui est du | Proprietaire | Etat |
+|---|---|---|
+| Amendement de `squad/README.md` avec la convention et le nom MASTER | `sofia-sm` | **Route.** Le fichier de process est a elle ; le statut `Acceptee` rend l'amendement du a partir d'aujourd'hui |
+| Ajout du critere de relecture a la fiche de `relecteur-pedagogique` | `sofia-sm` | **Route**, apres l'amendement du README |
+| Correction de la section 4 du planning de s24 sous la forme 3 nommee | `sofia-sm` | **Route**, inchange |
+| Mecanisation eventuelle de la resolution des references de forme 1 | `theo-archi`, `yanis-qa` | **Question posee, pas une demande**, inchangee |
