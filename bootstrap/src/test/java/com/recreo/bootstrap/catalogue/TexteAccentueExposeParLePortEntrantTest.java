@@ -158,6 +158,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // avait ete refusee en contenu textuel le meme jour et rouverte sur sa forme illustree
             // - "le paquet textuel nommait les pieces, le paquet illustre les montre".
             "bandit-manchot-monnaie-cp",
+            // S25-SUB (arbitrage prealable s23, section 5, SUB-1 a SUB-10) : entree neuve,
+            // reperer les substituts d'un personnage dans un texte, CM1.
+            "bandit-manchot-substituts-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -215,6 +218,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les figures",
             // S25-MON-1 : titre neuf.
             "La monnaie",
+            // S25-SUB : titre neuf. Sans point d'interrogation, donc sans espace devant un signe
+            // double : un contenu neuf n'herite d'aucune dette (TYP-1, ADR-0067).
+            "De qui parle le texte",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -271,6 +277,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // ni la forme, ni la quantite, ni la couleur de ce que les dessins montrent (MON-1,
             // CON-2) - elle dit seulement ou regarder.
             "Regarde bien l'argent, puis réponds.",
+            // S25-SUB : consigne neuve, generique - elle ne nomme aucun texte-support ni aucun
+            // personnage d'aucun item.
+            "Lis le texte, puis dis de qui on parle.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -355,7 +364,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // paquet sert reconnaitre par l'image et utiliser par la question". Le libelle est
             // celui du referentiel, mot pour mot.
             "Reconnaître et utiliser la monnaie (pièces/billets simples) dans des problèmes "
-                    + "concrets");
+                    + "concrets",
+            // S25-SUB : competence neuve, ligne entiere. nadia-prof a verifie avant d'arbitrer
+            // qu'elle est distincte de "Comprendre un texte narratif ou documentaire", deja verte.
+            "Repérer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
