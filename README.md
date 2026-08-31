@@ -37,7 +37,10 @@ java -jar bootstrap/target/recreo.jar     # http://localhost:8080
 ```
 
 Sur un poste dont le `java` du `PATH` n'est pas un JDK 21, `outils/mvn-jdk21.sh` lance Maven sur le
-JDK de la toolchain declaree, sans avoir a positionner `JAVA_HOME` a la main :
+JDK que designe la toolchain declaree, sans avoir a positionner `JAVA_HOME` a la main. Depuis le
+2026-08-31, il **refuse et sort en erreur** si ce JDK ne rapporte pas la version que l'entree de
+toolchain lui prete : une enveloppe qui imprime au lieu de refuser est un garde-fou qui ne garde
+rien.
 
 ```bash
 bash outils/mvn-jdk21.sh -B clean verify
