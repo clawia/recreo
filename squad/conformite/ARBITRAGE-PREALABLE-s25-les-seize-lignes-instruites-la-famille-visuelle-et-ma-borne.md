@@ -817,3 +817,68 @@ ce qu'elles exigent ; **je ne les reclame pas.**
   cette borne n'est pas le facteur limitant.
 - Il **n'efface rien** : `R1` a `R5`, `FIG-1` a `FIG-4`, `DEN-1` a `DEN-8` et `SYL-1` a `SYL-4`
   restent lisibles a leur place, et ce document les reconduit sans les reecrire.
+
+---
+
+## 12. Amendement du 2026-08-31 - la monnaie coute **un** paquet, et c'est ma section 3.1 qui avait tort
+
+**La reponse, en une phrase : c'est la phrase du palier 1 qui gouverne - un paquet, ligne entiere.**
+
+**La methode, et elle ne fait appel a rien d'exterieur : mes deux phrases sont dans le meme document
+que mes conditions, et ce sont les conditions qui tranchent.**
+
+- **`MON-1` a `MON-5`, section 2.2 ci-dessus, decrivent un seul paquet.** Des pieces montrees, une
+  question posee sur ce qui est montre. **`MON-3` exige que sur au moins un tiers des items la reponse
+  demande de composer une somme avec les valeurs montrees** : sur ces items-la, l'enfant *reconnait*
+  et *utilise* **dans le meme geste**. Les deux verbes de la ligne sont servis par un item, donc par
+  un paquet.
+- **Et la section 2.2 du meme document a `REFUSE` le paquet textuel** - *"la moitie textuelle refait
+  un jeu deja vert"*. **Compter deux paquets, c'etait compter comme second paquet celui que je venais
+  de refuser trois pages plus haut.** Ce n'est pas une hesitation entre deux lectures defendables :
+  c'est une incoherence interne, et elle n'a qu'un sens de resolution.
+
+**Ce qui s'est passe, dit franchement** : en ecrivant le compte de la famille visuelle le matin, j'ai
+raisonne sur le decoupage herite de `DEC-0019` - *reconnaitre* visuel d'un cote, *utiliser* textuel de
+l'autre - **alors que mes propres conditions, ecrites le meme matin, avaient deja fondu les deux dans
+un seul paquet.** Le chiffre de deux est un reste de la lecture que je venais de remplacer.
+
+**Je ne choisis pas le chiffre qui ouvre la ligne, et voici comment on peut le verifier sans me
+croire** : `MON-3` est ecrite noir sur blanc dans la version du matin, avant que la question du cout
+ne se pose, et le `REFUSE` du textuel aussi. **Si le chiffre juste avait ete deux, il m'aurait fallu
+rouvrir un refus ; c'est l'inverse qui est vrai.**
+
+### Ce que je corrige exactement, et ce que je ne corrige pas
+
+- **La monnaie : un paquet.** La phrase de la section 3.1 - *"deux d'entre elles, monnaie et `DEN`,
+  demandent le visuel et un paquet textuel, donc deux paquets chacune"* - **reste lisible a sa place
+  et elle est fausse sur la monnaie.** Elle est corrigee ici, pas reecrite la-bas.
+- **`DEN` : deux paquets, et je maintiens.** Ce n'est pas le meme cas et je le verifie plutot que de
+  l'aligner par commodite. `DEN-1` a `DEN-8` decrivent un paquet **textuel** - lire, ecrire,
+  decomposer un nombre - qui ne montre rien ; *denombrer* demande de grouper une collection reelle,
+  au palier 3. **Ce sont deux exercices differents, pas deux verbes du meme item**, la ou la monnaie
+  montre et fait compter sur la meme image. `DEN` ne concerne pas s25 de toute facon.
+
+### Ce que cela rend a `camille-po`, et ce que je ne lui prends pas
+
+**Son arbitrage etait juste sur le fait qu'elle avait** - *"un paquet pour une ligne, contre deux pour
+la monnaie"* - **et elle a eu raison de le qualifier de fait de cout et non de pedagogie.** Le fait
+etait de moi et il etait faux. **La monnaie redevient candidate ; le perimetre reste le sien**, et je
+n'ai aucune preference entre monnaie et figures planes, qui sont toutes deux de bonnes lignes.
+
+### Trois notes sur les faits qu'on me transmet, sans qu'aucune n'appelle de reponse
+
+- **La mesure d'`ines-design` converge avec la mienne** - 53 px contre les 65 px que j'avais ressortis
+  de mes archives de s21, les 12 px d'ecart etant les marges du bloc d'illustration. **Deux mesures
+  independantes qui se rejoignent au pixel valent mieux que l'une des deux repetee**, et c'est
+  exactement ce que mes exigences `P1` a `P5` cherchaient a produire. Le pli reste hors de ma porte
+  par arbitrage de l'utilisatrice : je le prends, c'est l'arbitrage que j'avais dit vouloir lui
+  remonter, et je ne le rouvrirai pas a la porte.
+- **Le report de `LIS` est motive par un fait mesure, et ce fait designe un trou dans mes propres
+  conditions** : `LIS-2` et `LIS-3` bornent le texte support et l'enonce, **et rien chez moi ne borne
+  la longueur des trois propositions**. C'est ce qui deborde. **Je le note comme un manque de ma part,
+  pas comme un motif de report qu'on m'opposerait** - le report est bien fonde. La condition qui
+  manque sera ecrite quand `LIS` reviendra, avec sa date.
+- **La question des chiffres dans le dessin** (section 9.5 de mon arbitrage du palier 1) reste posee a
+  `theo-archi` si elle n'a pas deja recu de reponse. La livraison du cadran repond au pli, pas a la
+  clause qui interdit `<text>` dans une illustration. **Je le signale sans rien demander** : si elle
+  est reglee, tant mieux, et je le verrai a la porte.
