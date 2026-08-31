@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIG, item illustre du palier 1. Rectangle debout, rapport 36 sur 88.
+     FIG-2 : meme forme que le precedent, orientation et proportions differentes. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="480" height="480" role="img">
+  <rect x="32" y="6" width="36" height="88" fill="none" stroke="#1c2733" stroke-width="6"
+        stroke-linejoin="round"/>
+</svg>

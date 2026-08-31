@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIG, item illustre du palier 1. Triangle a trois cotes egaux, pose sur un cote, grande taille.
+     Trace en polygone : trois sommets declares, aucune police, aucun glyphe. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="480" height="480" role="img">
+  <polygon points="50,10 89,84 11,84" fill="none" stroke="#1c2733" stroke-width="6"
+           stroke-linejoin="round"/>
+</svg>

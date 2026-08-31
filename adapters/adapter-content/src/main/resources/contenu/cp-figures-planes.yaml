@@ -1,0 +1,124 @@
+schema: 1
+id: cp-figures-planes
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CP"
+  domaine: "Espace et géométrie"
+  competence: "Reconnaître et nommer quelques figures planes (carré, rectangle, triangle, cercle)"
+#
+# S25-FIG (DEC-0065, amendement, section A.3). Premier paquet illustre du palier 1 du visuel.
+#
+# Conditions d'ecriture : FIG-1 a FIG-4 de nadia-prof, rendues le 2026-08-24
+# (squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md, section 2.4) et
+# reconduites sans une virgule le 2026-08-31, plus CON-1 a CON-5 de son arbitrage du palier 1
+# (squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md,
+# sections 3 et 9.6). Les conditions calculables sont verifiees par PaquetCpFiguresPlanesTest ; les
+# autres sont la main de nadia-prof et rien ne les verifie a sa place.
+#
+# ADR-0073 : chaque item declare l'illustration qu'il montre par un IDENTIFIANT - jamais un chemin,
+# jamais des octets, jamais une adresse - et l'adapter web le resout. La clause 6 exige que
+# "enonce" soit la PREMIERE cle de chaque item illustre : le comptage textuel partage des garde-fous
+# de contenu (ADR-0064) reconnait un item enumere a sa premiere cle, et un item qui commencerait par
+# "illustration" sortirait de ce comptage sans que rien ne le dise.
+#
+# CON-1, le test que nadia-prof pose en une phrase : en effacant l'image, la reponse reste-t-elle
+# trouvable ? Ici non - les trois propositions sont trois noms de figures et l'enonce n'en designe
+# aucune. CON-2 : aucun enonce ne decrit la position, la forme, la quantite ni la couleur de ce que
+# l'image montre. CON-3 : la donnee est dans l'image, une seule fois.
+#
+# CON-5, le texte alternatif : il decrit ce qu'il y a a regarder, jamais la reponse ni ce qui permet
+# de la deduire. Il est donc identique sur les douze items, et c'est un fait a lire plutot qu'une
+# economie : toute phrase qui distinguerait un dessin d'un autre nommerait la figure, donc la
+# reponse - et alt est aussi ce que le navigateur affiche en clair quand l'image ne charge pas
+# (ines-design, proposition de palier 1, section 9.1, point 2). La formulation est celle que
+# nadia-prof a elle-meme donnee pour acceptable. Ce que cela laisse ouvert - une ligne du programme
+# devient injouable sans la vue - est DV-6 chez ines-design et l'obstacle 8 du planning ; il n'est
+# pas a moi et il n'est pas referme ici.
+#
+# FIG-2 : quatre formes, trois exemples chacune, variant l'orientation, la taille et les
+# proportions. Un cercle n'ayant ni orientation ni proportions a faire varier, ses trois exemplaires
+# varient par la taille seule ; c'est une propriete de la figure, et nadia-prof en juge.
+# FIG-4 : le paquet ne dit "disque" nulle part - les trois cercles sont traces au trait seul, sans
+# remplissage - et il ne nomme aucun solide.
+#
+# ADR-0032 : deux items ne presentent jamais le meme ecran. L'identite d'ecran connue du depot est
+# l'enonce et le jeu des propositions ; les douze couples (enonce, propositions) sont distincts,
+# donc ce paquet tient cette propriete sans dependre du rang que l'illustration prendra dans cette
+# identite.
+#
+# TYP-1 (ADR-0067) : l'espace qui precede le point d'interrogation est insecable. Ce paquet entre a
+# zero occurrence detachable.
+items:
+  - enonce: "Quelle est cette figure ?"
+    illustration: figure-carre-droit
+    illustrationTexteAlternatif: "Une figure géométrique à reconnaître."
+    bonneReponse: "un carré"
+    distracteurs: ["un rectangle", "un triangle"]
+    indice: "Compare la longueur des côtés."
+  - enonce: "Quelle est cette figure ?"
+    illustration: figure-rectangle-couche
+    illustrationTexteAlternatif: "Une figure géométrique à reconnaître."
+    bonneReponse: "un rectangle"
+    distracteurs: ["un carré", "un cercle"]
+    indice: "Compare la longueur des côtés."
+  - enonce: "Quelle est cette figure ?"
+    illustration: figure-cercle-grand
+    illustrationTexteAlternatif: "Une figure géométrique à reconnaître."
+    bonneReponse: "un cercle"
+    distracteurs: ["un carré", "un triangle"]
+    indice: "Regarde si la figure a des coins."
+  - enonce: "Quelle est cette figure ?"
+    illustration: figure-triangle-pose
+    illustrationTexteAlternatif: "Une figure géométrique à reconnaître."
+    bonneReponse: "un triangle"
+    distracteurs: ["un rectangle", "un cercle"]
+    indice: "Compte les côtés de la figure."
+  - enonce: "Comment s'appelle cette figure ?"
+    illustration: figure-rectangle-debout
+    illustrationTexteAlternatif: "Une figure géométrique à reconnaître."
+    bonneReponse: "un rectangle"
+    distracteurs: ["un carré", "un triangle"]
+    indice: "Compare la longueur des côtés."
+  - enonce: "Comment s'appelle cette figure ?"
+    illustration: figure-carre-sur-la-pointe
+    illustrationTexteAlternatif: "Une figure géométrique à reconnaître."
+    bonneReponse: "un carré"
+    distracteurs: ["un rectangle", "un cercle"]
+    indice: "Compare la longueur des côtés."
+  - enonce: "Comment s'appelle cette figure ?"
+    illustration: figure-triangle-rectangle
+    illustrationTexteAlternatif: "Une figure géométrique à reconnaître."
+    bonneReponse: "un triangle"
+    distracteurs: ["un carré", "un cercle"]
+    indice: "Compte les côtés de la figure."
+  - enonce: "Comment s'appelle cette figure ?"
+    illustration: figure-cercle-moyen
+    illustrationTexteAlternatif: "Une figure géométrique à reconnaître."
+    bonneReponse: "un cercle"
+    distracteurs: ["un rectangle", "un triangle"]
+    indice: "Regarde si la figure a des coins."
+  - enonce: "Quel est le nom de cette figure ?"
+    illustration: figure-triangle-renverse
+    illustrationTexteAlternatif: "Une figure géométrique à reconnaître."
+    bonneReponse: "un triangle"
+    distracteurs: ["un carré", "un rectangle"]
+    indice: "Compte les côtés de la figure."
+  - enonce: "Quel est le nom de cette figure ?"
+    illustration: figure-cercle-petit
+    illustrationTexteAlternatif: "Une figure géométrique à reconnaître."
+    bonneReponse: "un cercle"
+    distracteurs: ["un carré", "un rectangle"]
+    indice: "Regarde si la figure a des coins."
+  - enonce: "Quel est le nom de cette figure ?"
+    illustration: figure-carre-incline
+    illustrationTexteAlternatif: "Une figure géométrique à reconnaître."
+    bonneReponse: "un carré"
+    distracteurs: ["un triangle", "un cercle"]
+    indice: "Compare la longueur des côtés."
+  - enonce: "Quel est le nom de cette figure ?"
+    illustration: figure-rectangle-incline
+    illustrationTexteAlternatif: "Une figure géométrique à reconnaître."
+    bonneReponse: "un rectangle"
+    distracteurs: ["un triangle", "un cercle"]
+    indice: "Compare la longueur des côtés."

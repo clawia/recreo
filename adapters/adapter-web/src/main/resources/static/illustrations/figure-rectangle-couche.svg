@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIG, item illustre du palier 1. Rectangle couche, rapport 84 sur 36.
+     FIG-1 : le rapport est celui du fichier ; la feuille laisse "height: auto" et "width: auto"
+     le gouverner, donc un rectangle reste ce rectangle-la a toute largeur d'ecran. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="480" height="480" role="img">
+  <rect x="8" y="32" width="84" height="36" fill="none" stroke="#1c2733" stroke-width="6"
+        stroke-linejoin="round"/>
+</svg>

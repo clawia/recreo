@@ -186,3 +186,9 @@ jeux:
     mecanique: saisie
     paquet: cp-complements-10-saisie
     nombreDeManches: 7
+  - id: bandit-manchot-figures-planes-cp
+    titre: "Les figures"
+    consigne: "Regarde bien le dessin, puis choisis son nom."
+    mecanique: bandit-manchot
+    paquet: cp-figures-planes
+    nombreDeManches: 10

@@ -403,7 +403,17 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " propositions n'est numerique : ce sont des groupes determinant + nom"
                     + " (\"les chats\", \"les chat\", \"le chats\"), valeurDe rend null sur les"
                     + " trois propositions de chaque item. Mesure du 2026-08-31 sur le paquet"
-                    + " servi : aucune des 63 propositions ne commence par un chiffre"));
+                    + " servi : aucune des 63 propositions ne commence par un chiffre"),
+            // S25-FIG : entree neuve, figures planes CP, premier paquet illustre du produit.
+            Map.entry("cp-figures-planes",
+            "12 items sur 12 portent deux distracteurs (trois propositions), mais aucune des 36"
+                    + " propositions n'est numerique : ce sont les quatre noms de figures planes de"
+                    + " la ligne du programme (\"un carre\", \"un rectangle\", \"un triangle\","
+                    + " \"un cercle\"), valeurDe rend null sur les trois propositions de chaque"
+                    + " item. Mesure du 2026-08-31 sur le paquet servi : aucune des 36 propositions"
+                    + " ne commence par un chiffre. Le fait que ce paquet soit illustre ne change"
+                    + " rien a ce motif - la propriete decrit une strategie de pression sur des"
+                    + " propositions, et les propositions d'un item du palier 1 sont en texte"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
